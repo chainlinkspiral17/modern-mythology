@@ -37,3 +37,7 @@ jobs:
       - name: Validate scene data contract
         working-directory: godot
         run: python3 tools/validate_scenes.py
+
+      - name: Validate music direction
+        working-directory: godot
+        run: python3 tools/music_direction.py validate

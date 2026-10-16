@@ -119,3 +119,24 @@ godot/assets/audio/review/
 # Author-supplied source PDFs at repo root stay local (55MB; the
 # catalogued strips live in lore/small_wood/driftwood/)
 drift wood.pdf
+
+# Music / audio binaries — kept local, synced with Google Drive
+# (My Drive/ModernMythology/godot/assets/audio — `godot/tools/music_drive.sh pull|push`).
+# Files already tracked stay tracked; nothing new gets in. DAW TEMP TRACKS,
+# INTO GAME, TAPE STUDIO and FIELD RECORDER outputs all land under here.
+godot/assets/audio/**/*.ogg
+godot/assets/audio/**/*.mp3
+godot/assets/audio/**/*.wav
+godot/assets/audio/**/*.flac
+godot/assets/audio/**/*.stems/
+godot/assets/audio/**/*.stems.json
+godot/assets/audio/**/*.credits.txt
+godot/assets/audio/**/*.mid
+godot/assets/audio/**/*.midi
+# the tools' working folders — synced with Google Drive whole (music_drive.sh), never in git:
+# AUDIO DIRECTOR takes · the tools' library mirror · DAW projects · audio APPROVE moved aside
+godot/assets/audio/review/
+godot/assets/audio/library/
+godot/assets/audio/projects/
+godot/assets/audio/replaced/
+godot/assets/audio/imports/

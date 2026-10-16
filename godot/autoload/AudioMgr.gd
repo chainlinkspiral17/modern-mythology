@@ -93,6 +93,31 @@ var _oneshot_resume_src: String = ""
 
 const HEARD_PATH := "user://progress/music_heard.cfg"
 
+# ── Adaptive music: stems layered by intensity ───────────────────────────────
+# A catalog track with a sibling "<basename>.stems.json" (written by the DAW's
+# STEMS + MIX export, godot/tools/daw.html) plays as an AudioStreamSynchronized
+# of its stems instead of the stereo mix. Each stem has a `layer` threshold
+# (pad 0 · chords 0 · bass 0.25 · drums 0.5 · lead 0.75); set_music_intensity()
+# fades in every stem whose threshold is at or below the level. Missing or
+# unreadable stems fall back to the mix, so a half-written export never breaks
+# playback. Intensity 1.0 = the full mix, which is the default.
+#
+# Temp tracks (the DAW / AUDIO DIRECTOR) are Ogg Vorbis: "<basename>.temp.ogg" +
+# "<basename>.stems/<part>.ogg", with a manifest marked `temp: true`. The lookup
+# order is the catalog src (real audio) → "<basename>.wav" (FIELD RECORDER /
+# TAPE STUDIO, or a temp from before Ogg) → "<basename>.temp.ogg", and a temp
+# manifest's stems never play over real audio. Ogg has no loop chunk: the
+# manifest's `loop` / `loop_offset` (seconds; the loop end is the stream end)
+# are set on every Ogg stream it names — its mix and its stems.
+const STEM_FADE := 1.5
+var adaptive_music: bool = true
+var _intensity: float = 1.0
+var _stem_stream: AudioStreamSynchronized = null
+var _stem_layers: Array = []      # [{index, layer, name}]
+var _stem_gain: PackedFloat32Array = PackedFloat32Array()
+var _stem_target: PackedFloat32Array = PackedFloat32Array()
+var _stem_rate: float = 1.0 / STEM_FADE
+
 
 func _ready() -> void:
 	_setup_buses()
@@ -166,6 +191,7 @@ func _setup_players() -> void:
 
 
 func _process(delta: float) -> void:
+	_step_stems(delta)
 	if _fade_timer <= 0.0:
 		return
 	_fade_timer -= delta
@@ -579,6 +605,194 @@ func is_paused() -> bool:
 	return _paused
 
 
+# Current playback head in seconds (0 if nothing is loaded).
+func get_playback_position() -> float:
+	if _bgm.stream == null:
+		return 0.0
+	return _bgm.get_playback_position()
+
+
+# Length of the loaded BGM stream in seconds (0 if unknown/none).
+func get_stream_length() -> float:
+	if _bgm.stream == null:
+		return 0.0
+	if _bgm.stream is AudioStreamSynchronized:
+		var sync := _bgm.stream as AudioStreamSynchronized
+		var longest := 0.0
+		for i in sync.stream_count:
+			var sub := sync.get_sync_stream(i)
+			if sub:
+				longest = maxf(longest, sub.get_length())
+		return longest
+	return _bgm.stream.get_length()
+
+
+## 0.0 … 1.0. With layered (stems) music, fades stems in or out over `fade`
+## seconds: 0 = pad / chords only, 0.25 + bass, 0.5 + drums, 0.75+ everything.
+## Remembered across tracks; plain stereo tracks ignore it.
+func set_music_intensity(level: float, fade: float = STEM_FADE) -> void:
+	_intensity = clampf(level, 0.0, 1.0)
+	_stem_rate = 1.0 / maxf(fade, 0.01)
+	for l in _stem_layers:
+		_stem_target[l.index] = 1.0 if _intensity + 0.0001 >= float(l.layer) else 0.0
+
+
+## True when `src` (a catalog path) has something playable on disk: the file,
+## the .wav sibling, the .temp.ogg temp, or a stems manifest. The MusicDirector
+## only picks tracks that pass this, so missing catalog audio never silences
+## a scene that already has music playing.
+func can_play(src: String) -> bool:
+	if src == "" or src in _failed_srcs:
+		return false
+	var base := src.get_basename()
+	for p in [src, base + ".wav", base + ".temp.ogg", base + ".stems.json"]:
+		if _exists(p):
+			# a third-party temp (a cover / sample made from imported audio) is never playable in a release build
+			if (p == base + ".temp.ogg" or p == base + ".stems.json") and _third_party_blocked(base):
+				continue
+			return true
+	return false
+
+
+## Temps made from imported third-party audio (the AUDIO DIRECTOR's REMIX of an import: covers, samples) carry
+## "third_party" in their manifest. They are sketches: a release build never plays them (nor their stems), and
+## the project setting audio/block_third_party_temps (default false) blocks them in the editor too, to hear the
+## game as it would ship. godot/tools/music_release_check.py lists / strips them before an export.
+func _third_party_blocked(base: String) -> bool:
+	var block := not OS.is_debug_build() or bool(ProjectSettings.get_setting("audio/block_third_party_temps", false))
+	if not block:
+		return false
+	var man = _manifest(base)
+	return man != null and man.has("third_party") and man["third_party"] != null
+
+
+func _exists(path: String) -> bool:
+	var p := "res://" + path
+	return ResourceLoader.exists(p) or FileAccess.file_exists(p)
+
+
+# A track's manifest (<basename>.stems.json) as a Dictionary, or null.
+func _manifest(base: String) -> Variant:
+	var path := "res://" + base + ".stems.json"
+	if not FileAccess.file_exists(path):
+		return null
+	var man = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return man if typeof(man) == TYPE_DICTIONARY else null
+
+
+# Ogg loop points come from the manifest that names the file (as its mix or a
+# stem): loop + loop_offset. Any other Ogg (sfx, voice, a real track with no
+# manifest) is left as imported / loaded.
+func _apply_ogg_loop(src: String, s: AudioStream) -> void:
+	if not (s is AudioStreamOggVorbis):
+		return
+	var base := src.get_basename()
+	if base.get_base_dir().ends_with(".stems"):
+		base = base.get_base_dir().get_basename()
+	elif base.ends_with(".temp"):
+		base = base.get_basename()
+	var man = _manifest(base)
+	if man == null:
+		return
+	var named: bool = String(man.get("mix", "")) == src
+	var stems = man.get("stems", [])
+	if typeof(stems) == TYPE_ARRAY:
+		for st in stems:
+			if typeof(st) == TYPE_DICTIONARY and String(st.get("file", "")) == src:
+				named = true
+	if not named:
+		return
+	var ogg := s as AudioStreamOggVorbis
+	ogg.loop = bool(man.get("loop", false))
+	ogg.loop_offset = float(man.get("loop_offset", 0.0))
+
+
+func get_music_intensity() -> float:
+	return _intensity
+
+
+## The stems of the playing track: [{name, layer, gain}] (empty for a stereo track).
+func get_music_layers() -> Array:
+	var out := []
+	for l in _stem_layers:
+		out.append({"name": l.name, "layer": l.layer, "gain": _stem_gain[l.index]})
+	return out
+
+
+func _load_stems(src: String) -> AudioStream:
+	var base := src.get_basename()
+	var man_path := "res://" + base + ".stems.json"
+	if not FileAccess.file_exists(man_path):
+		return null
+	var man = JSON.parse_string(FileAccess.get_file_as_string(man_path))
+	if typeof(man) != TYPE_DICTIONARY or not man.has("stems"):
+		push_warning("AudioMgr: unreadable stems manifest, playing the mix: " + man_path)
+		return null
+	# a temp's stems never layer over real audio (the src itself, or a recorded .wav)
+	if bool(man.get("temp", false)) and (_exists(src) or _exists(base + ".wav")):
+		return null
+	if _third_party_blocked(base):
+		return null
+	var stems: Array = man["stems"]
+	if stems.is_empty() or stems.size() > AudioStreamSynchronized.MAX_STREAMS:
+		return null
+	var sync := AudioStreamSynchronized.new()
+	sync.stream_count = stems.size()
+	var layers := []
+	var gain := PackedFloat32Array()
+	for i in stems.size():
+		var st: Dictionary = stems[i]
+		var sub := _load_audio(String(st.get("file", "")))
+		if sub == null:
+			push_warning("AudioMgr: stem missing, playing the mix instead: " + String(st.get("file", "")))
+			return null
+		var layer := float(st.get("layer", 0.0))
+		var g := 1.0 if _intensity + 0.0001 >= layer else 0.0
+		sync.set_sync_stream(i, sub)
+		sync.set_sync_stream_volume(i, linear_to_db(maxf(g, 0.0001)))
+		layers.append({"index": i, "layer": layer, "name": String(st.get("name", "stem %d" % i))})
+		gain.append(g)
+	_stem_stream = sync
+	_stem_layers = layers
+	_stem_gain = gain
+	_stem_target = gain.duplicate()
+	return sync
+
+
+func _clear_stems() -> void:
+	_stem_stream = null
+	_stem_layers = []
+	_stem_gain = PackedFloat32Array()
+	_stem_target = PackedFloat32Array()
+
+
+func _step_stems(delta: float) -> void:
+	if _stem_stream == null:
+		return
+	for i in _stem_gain.size():
+		var g := _stem_gain[i]
+		var t := _stem_target[i]
+		if g == t:
+			continue
+		g = move_toward(g, t, _stem_rate * delta)
+		_stem_gain[i] = g
+		_stem_stream.set_sync_stream_volume(i, linear_to_db(maxf(g, 0.0001)))
+
+
+# Seek the loaded BGM stream to an absolute position in seconds.
+func seek(pos: float) -> void:
+	if _bgm.stream == null:
+		return
+	var length := _bgm.stream.get_length()
+	if length > 0.0:
+		pos = clampf(pos, 0.0, length - 0.05)
+	_bgm.seek(maxf(pos, 0.0))
+
+
+func is_shuffle() -> bool:
+	return _shuffle
+
+
 func is_heard(src: String) -> bool:
 	return src in _music_heard
 
@@ -757,7 +971,10 @@ func _tween_bgm_bus(target_linear: float, duration: float) -> void:
 
 
 func _start_bgm(src: String, fade: bool = true) -> void:
-	var stream := _load_audio(src)
+	var stream: AudioStream = _load_stems(src) if adaptive_music else null
+	if stream == null:
+		_clear_stems()
+		stream = _load_audio(src)
 	if not stream:
 		# Don't double-log when _load_audio already warned about a
 		# fresh failure. Either way, mark the src failed (idempotent)
@@ -837,6 +1054,15 @@ func _fade_out() -> void:
 
 
 func _on_bgm_finished() -> void:
+	# A track that ends DURING a cross-fade must not swallow the queued one:
+	# without this the finished track restarted (or the queue advanced) and
+	# _pending_src was never played. Found by tests/godot_audiomgr.test.js.
+	if _pending_src != "":
+		var queued := _pending_src
+		_pending_src = ""
+		_fade_timer = 0.0
+		_start_bgm(queued)
+		return
 	# Oneshot resume — a play_oneshot_bgm caller asked us to snap
 	# back to a specific src when this track ends. Clears as soon
 	# as it fires so subsequent finishes use the normal queue/
@@ -968,12 +1194,25 @@ func _load_audio(src: String) -> AudioStream:
 		if s == null:
 			_failed_srcs[src] = true
 			push_warning("AudioMgr: failed to load BGM (marking as skip): " + src)
+		_apply_ogg_loop(src, s)
 		return s
 	# Fallback when the .import sidecar isn't generated yet (e.g.
 	# audio dropped in but the editor hasn't reimported). Without
 	# this, freshly-dropped voicelines silently fail to play.
 	var abs_path := ProjectSettings.globalize_path(path)
 	if not FileAccess.file_exists(abs_path):
+		# Field recordings and tape mixdowns land as a .wav next to the
+		# catalog's .ogg / .mp3 path (godot/tools/field_recorder.html,
+		# field_ingest.py); temp tracks as <basename>.temp.ogg (the DAW /
+		# AUDIO DIRECTOR). Real audio first: the .wav, then the temp.
+		var ext0 := src.get_extension().to_lower()
+		if ext0 != "wav" and not src.ends_with(".temp.ogg"):
+			var wav_src := src.get_basename() + ".wav"
+			if _exists(wav_src):
+				return _load_audio(wav_src)
+			var temp_src := src.get_basename() + ".temp.ogg"
+			if _exists(temp_src) and not _third_party_blocked(src.get_basename()):
+				return _load_audio(temp_src)
 		return null
 	var bytes := FileAccess.get_file_as_bytes(abs_path)
 	if bytes.is_empty():
@@ -985,10 +1224,24 @@ func _load_audio(src: String) -> AudioStream:
 			s.data = bytes
 			return s
 		"ogg":
-			return AudioStreamOggVorbis.load_from_buffer(bytes)
+			var o := AudioStreamOggVorbis.load_from_buffer(bytes)
+			if o == null or o.get_length() <= 0.0:
+				_failed_srcs[src] = true
+				push_warning("AudioMgr: unreadable Ogg (marking as skip): " + src)
+				return null
+			_apply_ogg_loop(src, o)
+			return o
 		"wav":
-			# load_from_buffer parses the RIFF header — assigning the
-			# raw file bytes to .data would misread header as samples.
-			return AudioStreamWAV.load_from_buffer(bytes)
+			# load_from_buffer parses the RIFF header (format, rate,
+			# channels); assigning .data directly would play the header
+			# as audio at the default 8-bit / 44.1 kHz.
+			var w := AudioStreamWAV.load_from_buffer(bytes)
+			# A truncated / non-WAV file comes back as an empty stream,
+			# not null — treat zero length as unreadable too.
+			if w == null or w.get_length() <= 0.0:
+				w = null
+				_failed_srcs[src] = true
+				push_warning("AudioMgr: unreadable WAV (marking as skip): " + src)
+			return w
 	push_warning("AudioMgr: unsupported audio extension '%s' for %s" % [ext, src])
 	return null

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio Test</title>
+<!--
+  AUDIO TEST — which browser audio setups keep sounding on this machine.
+  Each button opens its own AudioContext with one setting changed and plays a soft melody for 15 s
+  while a meter shows what the page is sending. Tap ✔ or ✘ for what you HEAR; COPY the result.
+  Built for the Deck, where the DAW's output level stayed up while nothing was heard after ~0.5 s.
+-->
+<style>
+  :root { --ink: #0d0a08; --bg-0: #15110e; --gold: #b8913a; --gold-hi: #e3c271; --text: #d8cdb8; --dim: #8a7f6c; --ok: #6fbf73; --bad: #d4664f; }
+  body { margin: 0; background: var(--ink); color: var(--text); font: 14px/1.5 "Courier New", monospace; padding: 16px; }
+  h1 { color: var(--gold-hi); font-size: 18px; letter-spacing: 0.15em; font-weight: normal; margin: 0 0 6px; }
+  .note { color: var(--dim); font-size: 12px; max-width: 760px; }
+  .row { display: grid; grid-template-columns: 1fr 120px 92px 92px; gap: 8px; align-items: center; border-bottom: 1px solid #2a221b; padding: 8px 0; max-width: 760px; }
+  .row b { color: var(--gold-hi); font-weight: normal; }
+  button { min-height: 44px; min-width: 44px; background: var(--bg-0); color: var(--text); border: 1px solid var(--gold); font: inherit; cursor: pointer; }
+  button.on { background: var(--gold); color: var(--ink); }
+  button.yes.sel { background: var(--ok); color: var(--ink); border-color: var(--ok); }
+  button.no.sel { background: var(--bad); color: var(--ink); border-color: var(--bad); }
+  .meter { height: 10px; background: #221b15; position: relative; }
+  .meter i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold); width: 0; }
+  .info { font-size: 11px; color: var(--dim); }
+  pre { white-space: pre-wrap; background: var(--bg-0); padding: 8px; max-width: 760px; font-size: 12px; }
+  .actions { margin: 12px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<h1>AUDIO TEST</h1>
+<div class="note">Tap ▶ on one row at a time. It plays a soft melody for 15 seconds. Listen the whole time, then tap <b>✔ HEARD</b> if it kept playing or <b>✘ STOPPED</b> if the sound stopped. Do all six, then COPY and paste the result to Claude.</div>
+<div id="rows"></div>
+<div class="actions"><button id="copy">COPY RESULT</button></div>
+<pre id="out"></pre>
+<script>
+"use strict";
+const TESTS = [
+  { id: 'dev_int', label: 'device rate · interactive (most web pages)', opts: { latencyHint: 'interactive' } },
+  { id: 'dev_play', label: 'device rate · playback buffer', opts: { latencyHint: 'playback' } },
+  { id: '44_int', label: '44.1 kHz · interactive (the DAW before)', opts: { sampleRate: 44100, latencyHint: 'interactive' } },
+  { id: '44_play', label: '44.1 kHz · playback buffer (the DAW now)', opts: { sampleRate: 44100, latencyHint: 'playback' } },
+  { id: 'daw_chain', label: '44.1 kHz · playback + the DAW\'s limiter and reverb', opts: { sampleRate: 44100, latencyHint: 'playback' }, chain: true },
+  { id: 'heavy', label: '44.1 kHz · playback + a busy DAW song\'s load (24 reverbs, 240 voices)', opts: { sampleRate: 44100, latencyHint: 'playback' }, chain: true, heavy: true },
+];
+const R = {};
+let cur = null;
+const $ = id => document.getElementById(id);
+function render() {
+  $('rows').innerHTML = TESTS.map(t => `<div class="row" data-id="${t.id}"><div><b>${t.label}</b><div class="info" id="info-${t.id}"></div><div class="meter"><i id="m-${t.id}"></i></div></div>
+    <button class="play${cur && cur.id === t.id ? ' on' : ''}" data-act="play" data-id="${t.id}">${cur && cur.id === t.id ? '■ STOP' : '▶ PLAY 15 s'}</button>
+    <button class="yes${R[t.id] && R[t.id].heard === true ? ' sel' : ''}" data-act="yes" data-id="${t.id}">✔ HEARD</button>
+    <button class="no${R[t.id] && R[t.id].heard === false ? ' sel' : ''}" data-act="no" data-id="${t.id}">✘ STOPPED</button></div>`).join('');
+  for (const t of TESTS) if (R[t.id] && R[t.id].info) $('info-' + t.id).textContent = R[t.id].info;
+  $('out').textContent = report();
+}
+function report() {
+  const L = ['AUDIO TEST · ' + new Date().toISOString() + ' · ' + navigator.userAgent.replace(/^.*?\) /, '')];
+  for (const t of TESTS) { const r = R[t.id] || {}; L.push((r.heard === true ? '✔ heard   ' : r.heard === false ? '✘ stopped ' : '· not run ') + t.label + (r.info ? ' — ' + r.info : '')); }
+  return L.join('\n');
+}
+async function stop() {
+  if (!cur) return;
+  const c = cur; cur = null;
+  clearInterval(c.timer); clearTimeout(c.end);
+  try { await c.ctx.close(); } catch (e) {}
+  render();
+}
+async function play(t) {
+  await stop();
+  let ctx;
+  try { ctx = new AudioContext(t.opts); } catch (e) { R[t.id] = Object.assign(R[t.id] || {}, { info: 'could not open: ' + e.message }); render(); return; }
+  await ctx.resume();
+  const out = ctx.createGain(); out.gain.value = 0.25;
+  let tail = out;
+  if (t.chain) {                    // the DAW's master: limiter, plus a convolution reverb send
+    const lim = ctx.createDynamicsCompressor(); lim.threshold.value = -2; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.1;
+    const verb = ctx.createConvolver(), n = Math.round(ctx.sampleRate * 2.4), b = ctx.createBuffer(2, n, ctx.sampleRate);
+    for (let ch = 0; ch < 2; ch++) { const d = b.getChannelData(ch); for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 2.8); }
+    verb.buffer = b; const vg = ctx.createGain(); vg.gain.value = 0.3;
+    out.connect(lim); out.connect(verb); verb.connect(vg); vg.connect(lim); tail = lim;
+  }
+  if (t.heavy) {                    // about what a busy DAW song asks of the audio thread: many reverbs + many voices, all inaudible
+    const sink = ctx.createGain(); sink.gain.value = 0.0001; sink.connect(out);
+    for (let k = 0; k < 24; k++) { const cv = ctx.createConvolver(), n = Math.round(ctx.sampleRate * 2.4), b = ctx.createBuffer(2, n, ctx.sampleRate);
+      for (let ch = 0; ch < 2; ch++) { const d = b.getChannelData(ch); for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 2.8); }
+      cv.buffer = b; const o = ctx.createOscillator(); o.frequency.value = 110 + k * 7; o.connect(cv); cv.connect(sink); o.start(); o.stop(ctx.currentTime + 16); }
+    for (let k = 0; k < 240; k++) { const o = ctx.createOscillator(), f = ctx.createBiquadFilter(), p = ctx.createStereoPanner(); o.type = 'sawtooth'; o.frequency.value = 80 + k * 3.3; f.frequency.value = 900; f.Q.value = 4;
+      o.connect(f); f.connect(p); p.connect(sink); o.start(); o.stop(ctx.currentTime + 16); }
+  }
+  const an = ctx.createAnalyser(); an.fftSize = 1024; tail.connect(an); tail.connect(ctx.destination);
+  // a soft repeating melody, scheduled ahead the way the DAW schedules
+  const notes = [57, 60, 64, 67, 64, 60, 62, 65];
+  const t0 = ctx.currentTime + 0.1;
+  for (let i = 0; i < 15 * 4; i++) {
+    const w = t0 + i * 0.25, f = 440 * Math.pow(2, (notes[i % notes.length] - 69) / 12);
+    const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'triangle'; o.frequency.value = f;
+    g.gain.setValueAtTime(0, w); g.gain.linearRampToValueAtTime(0.6, w + 0.01); g.gain.exponentialRampToValueAtTime(0.001, w + 0.24);
+    o.connect(g); g.connect(out); o.start(w); o.stop(w + 0.25);
+  }
+  const buf = new Float32Array(an.fftSize);
+  const info = () => `${ctx.sampleRate} Hz · base ${((ctx.baseLatency || 0) * 1000).toFixed(0)} ms · output ${((ctx.outputLatency || 0) * 1000).toFixed(0)} ms · ${ctx.state} · ${ctx.currentTime.toFixed(1)} s`;
+  cur = { id: t.id, ctx, timer: setInterval(() => {
+    an.getFloatTimeDomainData(buf); let s = 0; for (const v of buf) s += v * v;
+    const el = $('m-' + t.id); if (el) el.style.width = Math.min(100, Math.sqrt(s / buf.length) * 600) + '%';
+    R[t.id] = Object.assign(R[t.id] || {}, { info: info() }); const ie = $('info-' + t.id); if (ie) ie.textContent = R[t.id].info;
+  }, 200), end: setTimeout(() => { R[t.id] = Object.assign(R[t.id] || {}, { info: info() }); stop(); }, 15500) };
+  ctx.onstatechange = () => { R[t.id] = Object.assign(R[t.id] || {}, { info: info() }); };
+  render();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]'); if (!b) return;
+  const t = TESTS.find(x => x.id === b.dataset.id);
+  if (b.dataset.act === 'play') { if (cur && cur.id === t.id) stop(); else play(t); }
+  else { R[t.id] = Object.assign(R[t.id] || {}, { heard: b.dataset.act === 'yes' }); render(); }
+});
+$('copy').addEventListener('click', async () => {
+  const txt = report();
+  try { await navigator.clipboard.writeText(txt); $('copy').textContent = 'COPIED'; }
+  catch (e) { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); $('copy').textContent = 'COPIED'; } catch (x) {} ta.remove(); }
+  setTimeout(() => { $('copy').textContent = 'COPY RESULT'; }, 2000);
+});
+render();
+</script>
+</body>
+</html>

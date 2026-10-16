@@ -5743,6 +5743,18 @@ func _render() -> void:
 		var d_max_for_audio: float = float(_doubt_max)
 		_audio_manipulator.update_stagnation(float(_stagnation) / max(1.0, s_max_for_audio))
 		_audio_manipulator.update_doubt(float(_doubt) / max(1.0, d_max_for_audio))
+	# Layered (stems) music follows the room: threats on the board and the
+	# run's losing stat bring in bass → drums → lead (AudioMgr layers at
+	# 0.25 / 0.5 / 0.75). Plain stereo tracks ignore this.
+	var threat_frac: float = clampf(float(_threats_active.size()) / 3.0, 0.0, 1.0)
+	var stat_frac: float = 0.0
+	if is_magician:
+		var s_max_i: float = float(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
+		stat_frac = maxf(float(_stagnation) / maxf(1.0, s_max_i), float(_doubt) / maxf(1.0, float(_doubt_max)))
+	elif not is_major_arcana:
+		# the Fool: Inertia climbs toward 11, Sanity drains toward 0
+		stat_frac = maxf(float(_inertia) / 11.0, 1.0 - float(_sanity) / maxf(1.0, float(_sanity_max)))
+	AudioMgr.set_music_intensity(clampf(0.25 + 0.45 * threat_frac + 0.30 * clampf(stat_frac, 0.0, 1.0), 0.0, 1.0))
 	# Evocative tooltips driven by the current value — the player
 	# hovers and gets the room's mood at that pressure level.
 	_inertia_label.tooltip_text = _inertia_mood(_inertia)
@@ -10002,3 +10014,490 @@ func _attract_end() -> void:
 	var trip: Node = get_node_or_null("/root/TripSync")
 	if trip != null and trip.has_method("apply_trip_cue"):
 		trip.call("apply_trip_cue", "reset")
+
+
+func _ledger_insight() -> int:
+	return int(_run_ledger.get("insight", 0))
+
+
+# True if the named token is held — committed in a previous run OR
+# earned in this one (pending / lore list). The predicate behind
+# requires_token on cards, visitors and thresholds.
+func _ledger_has_token(token: String) -> bool:
+	if token == "":
+		return false
+	if token in _lore_tokens_collected:
+		return true
+	for p_v in _ledger_pending_tokens:
+		if String((p_v as Dictionary).get("token", "")) == token:
+			return true
+	return (_run_ledger.get("tokens", {}) as Dictionary).has(token)
+
+
+# Buffer a token earn-moment for commit at run end. One entry per
+# token per run — re-earning the same token doesn't double-log it.
+func _ledger_note_token(token: String, kind: String, source_vid: String, moment: String) -> void:
+	if token == "":
+		return
+	for p_v in _ledger_pending_tokens:
+		if String((p_v as Dictionary).get("token", "")) == token:
+			return
+	_ledger_pending_tokens.append({
+		"token": token,
+		"kind": kind,
+		"scenario_id": _scenario_id,
+		"arcana": _arcana_id,
+		"source_visitor_id": source_vid,
+		"timestamp": Time.get_datetime_string_from_system(true),
+		"moment": moment,
+	})
+
+
+# The single ledger write point — called from _trigger_win AND
+# _trigger_loss. Commits pending token entries, bumps the scenario
+# record + streak, banks doctrine, and awards insight on wins.
+func _ledger_commit_run(won: bool) -> void:
+	var tokens: Dictionary = _run_ledger.get("tokens", {})
+	for p_v in _ledger_pending_tokens:
+		var entry: Dictionary = p_v
+		var tid: String = String(entry.get("token", ""))
+		if tid == "":
+			continue
+		var moments: Array = tokens.get(tid, [])
+		moments.append(entry)
+		tokens[tid] = moments
+	_run_ledger["tokens"] = tokens
+	_ledger_pending_tokens.clear()
+	var records: Dictionary = _run_ledger.get("records", {})
+	var rec: Dictionary = records.get(_ledger_record_key(), {"wins": 0, "losses": 0})
+	if won:
+		rec["wins"] = int(rec.get("wins", 0)) + 1
+	else:
+		rec["losses"] = int(rec.get("losses", 0)) + 1
+	records[_ledger_record_key()] = rec
+	_run_ledger["records"] = records
+	var streak: Dictionary = _run_ledger.get("streak", {"current": 0, "best": 0})
+	if won:
+		streak["current"] = int(streak.get("current", 0)) + 1
+		streak["best"] = max(int(streak.get("best", 0)), int(streak["current"]))
+	else:
+		streak["current"] = 0
+	_run_ledger["streak"] = streak
+	# Doctrine banks cross-arcana regardless of outcome — the sermons
+	# stick whether or not the run went well.
+	if _doctrine > 0:
+		_run_ledger["doctrine"] = int(_run_ledger.get("doctrine", 0)) + _doctrine
+	# Insight — the drafting currency — is earned by WINNING runs.
+	if won:
+		_run_ledger["insight"] = _ledger_insight() + 1
+	_write_run_ledger()
+
+
+# One-line cross-run record for the run-start log. Empty string on a
+# fresh install so the opening log stays clean.
+func _ledger_scenario_record_line() -> String:
+	var records: Dictionary = _run_ledger.get("records", {}) as Dictionary
+	if records.is_empty():
+		return ""
+	var streak: Dictionary = _run_ledger.get("streak", {}) as Dictionary
+	var cur: int = int(streak.get("current", 0))
+	var streak_s: String = ("  ·  win streak %d" % cur) if cur > 0 else ""
+	var rec: Dictionary = records.get(_ledger_record_key(), {}) as Dictionary
+	if rec.is_empty():
+		return "Ledger · first attempt at this room.%s" % streak_s
+	return "Ledger · this room's record: %dW / %dL.%s" % [
+		int(rec.get("wins", 0)), int(rec.get("losses", 0)), streak_s]
+
+
+# Doctrine carry — the first explicit cross-arcana penalty. Applied
+# on FRESH Empress runs only (resumed saves already absorbed it);
+# starting the run spends the whole bank even when the cap trims
+# what actually lands on the dial.
+func _apply_doctrine_carry() -> void:
+	if _arcana_id != "empress":
+		return
+	var banked: int = int(_run_ledger.get("doctrine", 0))
+	if banked <= 0:
+		return
+	var applied: int = min(banked, DOCTRINE_DOUBT_CAP)
+	_doubt += applied
+	_run_ledger["doctrine"] = 0
+	_write_run_ledger()
+	_log_line("[color=#c8333c][i]Paul's sermons carry — Doctrine %d compounds your Doubt (+%d).[/i][/color]" %
+		[banked, applied])
+
+
+func _make_ledger_heading(text: String) -> Label:
+	var lbl := Label.new()
+	lbl.text = "  " + text
+	lbl.add_theme_color_override("font_color", C_ACCENT)
+	lbl.add_theme_font_size_override("font_size", 12)
+	return lbl
+
+
+# Mouse-over payload for a wax seal — every moment the token was
+# earned: chapter, scenario, source visitor, timestamp, the beat.
+func _ledger_moment_tooltip(moments: Array) -> String:
+	var lines: PackedStringArray = []
+	for m_v in moments:
+		var m: Dictionary = m_v
+		var line: String = "%s · %s" % [
+			String(m.get("arcana", "?")).replace("_", " "),
+			String(m.get("scenario_id", "?")).replace("_", " ")]
+		var src: String = String(m.get("source_visitor_id", ""))
+		if src != "":
+			line += " · from %s" % src.replace("_", " ")
+		var ts: String = String(m.get("timestamp", ""))
+		if ts != "":
+			line += " · %s" % ts
+		var moment: String = String(m.get("moment", ""))
+		if moment != "":
+			line += "\n    %s" % moment
+		lines.append(line)
+	return "\n".join(lines)
+
+
+# The wax-seal page — accumulated tokens grouped by chapter, with the
+# per-scenario records and banked currencies up top. Mouse-over a
+# seal to see the moment(s) it was earned.
+func _build_ledger_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 6)
+	var head := RichTextLabel.new()
+	head.bbcode_enabled = true
+	head.fit_content = true
+	head.add_theme_color_override("default_color", C_TEXT)
+	head.add_theme_font_size_override("normal_font_size", 12)
+	var streak: Dictionary = _run_ledger.get("streak", {}) as Dictionary
+	head.text = ("[color=#c8a268]Everything the runs remember. Sealed at every run's end — win and loss alike.[/color]\n" +
+		"Win streak: [b]%d[/b] (best %d)   ·   Insight banked: [b]%d[/b] ✦   ·   Doctrine banked: [b]%d[/b]" % [
+			int(streak.get("current", 0)), int(streak.get("best", 0)),
+			_ledger_insight(), int(_run_ledger.get("doctrine", 0))])
+	vb.add_child(head)
+	# Per-scenario records — the picker-facing surface.
+	var records: Dictionary = _run_ledger.get("records", {}) as Dictionary
+	if not records.is_empty():
+		vb.add_child(HSeparator.new())
+		vb.add_child(_make_ledger_heading("RECORDS · per scenario"))
+		var rec_keys: Array = records.keys()
+		rec_keys.sort()
+		for rk in rec_keys:
+			var rec: Dictionary = records[rk] as Dictionary
+			var r_lbl := Label.new()
+			var here: bool = String(rk) == _ledger_record_key()
+			r_lbl.text = "  %s %s — %dW / %dL" % [
+				"›" if here else "·",
+				String(rk).replace("_", " "),
+				int(rec.get("wins", 0)), int(rec.get("losses", 0))]
+			r_lbl.add_theme_font_size_override("font_size", 11)
+			r_lbl.add_theme_color_override("font_color", C_TEXT if here else C_DIM)
+			vb.add_child(r_lbl)
+	# Tokens grouped by chapter (arcana).
+	var tokens: Dictionary = _run_ledger.get("tokens", {}) as Dictionary
+	var by_arcana: Dictionary = {}
+	for tid in tokens:
+		var moments: Array = tokens[tid] as Array
+		var arc: String = "unplaced"
+		if not moments.is_empty():
+			arc = String((moments[0] as Dictionary).get("arcana", "unplaced"))
+		var lst: Array = by_arcana.get(arc, [])
+		lst.append(tid)
+		by_arcana[arc] = lst
+	var arc_keys: Array = by_arcana.keys()
+	arc_keys.sort()
+	for arc in arc_keys:
+		vb.add_child(HSeparator.new())
+		vb.add_child(_make_ledger_heading(String(arc).replace("_", " ").to_upper()))
+		var tids: Array = by_arcana[arc]
+		tids.sort()
+		for tid_v in tids:
+			var tid: String = String(tid_v)
+			var moments: Array = tokens[tid] as Array
+			var kind: String = String((moments[0] as Dictionary).get("kind", "lore")) if not moments.is_empty() else "lore"
+			var t_lbl := Label.new()
+			var count_s: String = ("  ×%d" % moments.size()) if moments.size() > 1 else ""
+			t_lbl.text = "    ✦ %s%s" % [tid.replace("_", " "), count_s]
+			t_lbl.add_theme_font_size_override("font_size", 11)
+			match kind:
+				"leap":       t_lbl.add_theme_color_override("font_color", C_GOOD)
+				"connection": t_lbl.add_theme_color_override("font_color", Color(0.49, 1.0, 0.69))
+				_:            t_lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.48))
+			t_lbl.mouse_filter = Control.MOUSE_FILTER_STOP
+			t_lbl.tooltip_text = _ledger_moment_tooltip(moments)
+			vb.add_child(t_lbl)
+	# This run's unsealed entries.
+	if not _ledger_pending_tokens.is_empty():
+		vb.add_child(HSeparator.new())
+		vb.add_child(_make_ledger_heading("THIS RUN · unsealed until the run ends"))
+		for p_v in _ledger_pending_tokens:
+			var entry: Dictionary = p_v
+			var p_lbl := Label.new()
+			p_lbl.text = "    ✧ %s" % String(entry.get("token", "?")).replace("_", " ")
+			p_lbl.add_theme_font_size_override("font_size", 11)
+			p_lbl.add_theme_color_override("font_color", C_DIM)
+			p_lbl.mouse_filter = Control.MOUSE_FILTER_STOP
+			p_lbl.tooltip_text = _ledger_moment_tooltip([entry])
+			vb.add_child(p_lbl)
+	if tokens.is_empty() and records.is_empty() and _ledger_pending_tokens.is_empty():
+		var empty_lbl := Label.new()
+		empty_lbl.text = "  Nothing sealed yet. Finish a run — win or lose — and the ledger remembers."
+		empty_lbl.add_theme_color_override("font_color", C_DIM)
+		vb.add_child(empty_lbl)
+	return vb
+
+
+# ── Hand drafting (Wave 2 · persistent decks) ───────────────────────
+# Between runs the player spends Insight (earned by winning) to add
+# one card to a hand — drafted from a four-card reveal shaped by the
+# host's location + the player's hand — or to cut one. One slot is
+# editable; edits persist per hand via the Run Ledger and merge into
+# the deck at run start. Drafting carries a doubt penalty on the run
+# that brings the new card. Pool data: framework/draft_pools.json.
+# NOTE · seam: the outline pairs drafting with the Companion Slot in
+# the picker flow; drafting ships standalone here (pre-run panel at
+# turn 1) so the companion work can slot in beside it later.
+const DRAFT_REVEAL_COUNT := 4
+const DRAFT_INSIGHT_COST := 1
+const DRAFT_DOUBT_PENALTY := 1
+const DRAFT_MIN_DECK_SIZE := 5
+
+
+func _drafted_cards_for_hand() -> Array:
+	return (_run_ledger.get("drafted_cards", {}) as Dictionary).get(_hand_id, []) as Array
+
+
+func _removed_cards_for_hand() -> Array:
+	return (_run_ledger.get("removed_cards", {}) as Dictionary).get(_hand_id, []) as Array
+
+
+# The pre-run window: turn 1, action phase, nothing played yet. The
+# draft is a before-you-act decision — the moment a card resolves,
+# the deck is what it is for the rest of the run.
+func _drafting_window_open() -> bool:
+	return (not _game_over and _turn == 1 and _phase == Phase.ACTION
+			and _played_this_turn.is_empty() and _cards_played_this_run.is_empty())
+
+
+func _draft_available() -> bool:
+	return (_drafting_window_open() and _ledger_insight() >= DRAFT_INSIGHT_COST
+			and not _draft_reveal_cards().is_empty())
+
+
+# Draft constraint: the card must resolve in the merged tableau AND
+# be available_in_locations for the host (or universal), and not
+# already be in the deck / a prior edit.
+func _draft_card_eligible(cid: String) -> bool:
+	if cid == "" or cid in _hand_cards:
+		return false
+	if cid in _drafted_cards_for_hand() or cid in _removed_cards_for_hand():
+		return false
+	if not _action_cards.has(cid):
+		return false
+	var locs: Array = (_action_cards[cid] as Dictionary).get("available_in_locations", [])
+	return locs.is_empty() or (_location_id in locs)
+
+
+# The four-card reveal, generated by the host's location + the
+# player's hand: a shuffle SEEDED on that pairing, so reopening the
+# panel shows the same reveal for the same room+hand.
+func _draft_reveal_cards() -> Array:
+	var eligible: Array = []
+	for cid_v in (_draft_pools_def.get("universal", []) as Array):
+		if _draft_card_eligible(String(cid_v)) and not (String(cid_v) in eligible):
+			eligible.append(String(cid_v))
+	var hand_pools: Dictionary = _draft_pools_def.get("hands", {}) as Dictionary
+	for cid_v in (hand_pools.get(_hand_id, []) as Array):
+		if _draft_card_eligible(String(cid_v)) and not (String(cid_v) in eligible):
+			eligible.append(String(cid_v))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = hash("%s/%s" % [_location_id, _hand_id])
+	for i in range(eligible.size() - 1, 0, -1):
+		var j: int = rng.randi_range(0, i)
+		var tmp = eligible[i]
+		eligible[i] = eligible[j]
+		eligible[j] = tmp
+	return eligible.slice(0, DRAFT_REVEAL_COUNT)
+
+
+# Merge the hand's persisted deck edits into _hand_cards at the start
+# of a FRESH run (resumed saves carry the merged hand already).
+func _apply_hand_drafting() -> void:
+	for cid_v in _removed_cards_for_hand():
+		var cut: String = String(cid_v)
+		if cut in _hand_cards:
+			_hand_cards.erase(cut)
+			_log_line("[color=#7c8398][i]Cut from the deck between runs: %s.[/i][/color]" % cut.replace("_", " "))
+	for cid_v in _drafted_cards_for_hand():
+		var cid: String = String(cid_v)
+		if cid in _hand_cards:
+			continue
+		if not _action_cards.has(cid):
+			_log_line("[color=#7c8398][i]Your drafted card (%s) doesn't translate to this room.[/i][/color]" % cid.replace("_", " "))
+			continue
+		var locs: Array = (_action_cards[cid] as Dictionary).get("available_in_locations", [])
+		if not locs.is_empty() and not (_location_id in locs):
+			_log_line("[color=#7c8398][i]Your drafted card (%s) doesn't travel to %s.[/i][/color]" % [cid.replace("_", " "), _location_id])
+			continue
+		_hand_cards.append(cid)
+		_log_line("[color=#ffd07a][i]Drafted card rides with you: %s.[/i][/color]" % cid.replace("_", " "))
+
+
+func _draft_add_card(cid: String) -> void:
+	if not _drafting_window_open():
+		_log_line("[i]the draft window has closed — the deck is set for this run[/i]")
+		return
+	if _ledger_insight() < DRAFT_INSIGHT_COST or not _draft_card_eligible(cid):
+		return
+	# One editable slot — any previously drafted card leaves the deck.
+	var dd: Dictionary = _run_ledger.get("drafted_cards", {})
+	for old_v in (dd.get(_hand_id, []) as Array):
+		_hand_cards.erase(String(old_v))
+	dd[_hand_id] = [cid]
+	_run_ledger["drafted_cards"] = dd
+	_run_ledger["insight"] = _ledger_insight() - DRAFT_INSIGHT_COST
+	_write_run_ledger()
+	_hand_cards.append(cid)
+	var title: String = String((_action_cards.get(cid, {}) as Dictionary).get("title", cid))
+	_log_line("[color=#ffd07a]✦ Drafted [b]%s[/b] into the hand (-%d Insight).[/color]" % [title, DRAFT_INSIGHT_COST])
+	# The doubt penalty — the new card sits uneasy. Once per run,
+	# applied to the run that brings the drafted card.
+	if not _draft_used_this_run:
+		_draft_used_this_run = true
+		_doubt += DRAFT_DOUBT_PENALTY
+		_log_line("[color=#c8333c][i]The new card sits uneasy in the hand — +%d Doubt this run.[/i][/color]" % DRAFT_DOUBT_PENALTY)
+	_render()
+	_open_draft_panel()
+
+
+func _draft_remove_card(cid: String) -> void:
+	if not _drafting_window_open() or not (cid in _hand_cards):
+		return
+	if _ledger_insight() < DRAFT_INSIGHT_COST:
+		return
+	if _hand_cards.size() <= DRAFT_MIN_DECK_SIZE:
+		_log_line("[i]the deck is as thin as it can safely get[/i]")
+		return
+	var drafted: Array = _drafted_cards_for_hand()
+	if cid in drafted:
+		# Cutting the drafted slot just clears it — the card returns
+		# to the pool rather than joining the permanent cuts.
+		var dd: Dictionary = _run_ledger.get("drafted_cards", {})
+		var slot: Array = (dd.get(_hand_id, []) as Array).duplicate()
+		slot.erase(cid)
+		dd[_hand_id] = slot
+		_run_ledger["drafted_cards"] = dd
+	else:
+		var rd: Dictionary = _run_ledger.get("removed_cards", {})
+		var cuts: Array = (rd.get(_hand_id, []) as Array).duplicate()
+		cuts.append(cid)
+		rd[_hand_id] = cuts
+		_run_ledger["removed_cards"] = rd
+	_run_ledger["insight"] = _ledger_insight() - DRAFT_INSIGHT_COST
+	_write_run_ledger()
+	_hand_cards.erase(cid)
+	var title: String = String((_action_cards.get(cid, {}) as Dictionary).get("title", cid))
+	_log_line("[color=#a99070]✂ Cut [b]%s[/b] from the deck (-%d Insight).[/color]" % [title, DRAFT_INSIGHT_COST])
+	_render()
+	_open_draft_panel()
+
+
+func _update_draft_button() -> void:
+	if _draft_btn == null:
+		return
+	if _draft_available():
+		_draft_btn.text = "Draft ✦ %d" % _ledger_insight()
+		_draft_btn.add_theme_color_override("font_color", C_ACCENT)
+		_draft_btn.tooltip_text = "Insight banked — draft one card into this hand (or cut one) before you act. Turn 1 only; +%d Doubt on the run that brings the new card." % DRAFT_DOUBT_PENALTY
+	else:
+		_draft_btn.text = "Deck ✦"
+		_draft_btn.remove_theme_color_override("font_color")
+		_draft_btn.tooltip_text = "The deck this hand brings. Win runs to bank Insight, then draft one card in — or cut one — before acting on turn 1."
+
+
+func _open_draft_panel() -> void:
+	_open_pane_modal("HAND — %s" % String(_hand.get("name", _hand_id)), _build_draft_modal_body)
+
+
+func _build_draft_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 6)
+	var window_open: bool = _drafting_window_open()
+	var insight: int = _ledger_insight()
+	var head := RichTextLabel.new()
+	head.bbcode_enabled = true
+	head.fit_content = true
+	head.add_theme_color_override("default_color", C_TEXT)
+	head.add_theme_font_size_override("normal_font_size", 12)
+	var window_s: String = ("Draft window OPEN — decide before you act." if window_open
+		else "Draft window closed — the deck is set for this run.")
+	head.text = ("[color=#c8a268]%s[/color]\n" % window_s +
+		"Insight banked: [b]%d[/b] ✦  ·  each draft or cut costs %d  ·  drafting carries +%d Doubt on the run that brings the card." % [
+			insight, DRAFT_INSIGHT_COST, DRAFT_DOUBT_PENALTY])
+	vb.add_child(head)
+	# The deck as it will be played, with cut buttons in the window.
+	vb.add_child(HSeparator.new())
+	vb.add_child(_make_ledger_heading("THE DECK · %d cards" % _hand_cards.size()))
+	var can_edit: bool = window_open and insight >= DRAFT_INSIGHT_COST
+	var drafted: Array = _drafted_cards_for_hand()
+	for cid_v in _hand_cards:
+		var cid: String = String(cid_v)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 6)
+		var c_lbl := Label.new()
+		var is_drafted: bool = cid in drafted
+		c_lbl.text = "    %s%s" % [
+			String((_action_cards.get(cid, {}) as Dictionary).get("title", cid)),
+			"  · drafted ✦" if is_drafted else ""]
+		c_lbl.add_theme_font_size_override("font_size", 11)
+		c_lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.48) if is_drafted else C_TEXT)
+		c_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(c_lbl)
+		if window_open:
+			var cut_btn := Button.new()
+			cut_btn.text = "✂ cut · %d ✦" % DRAFT_INSIGHT_COST
+			cut_btn.add_theme_font_size_override("font_size", 10)
+			cut_btn.disabled = (not can_edit) or _hand_cards.size() <= DRAFT_MIN_DECK_SIZE
+			cut_btn.tooltip_text = ("Cut this card from %s's deck. Cuts persist across runs." % String(_hand.get("name", _hand_id))) if not is_drafted else "Clear the drafted slot (the card returns to the pool)."
+			cut_btn.pressed.connect(_draft_remove_card.bind(cid))
+			row.add_child(cut_btn)
+		vb.add_child(row)
+	# The reveal — shaped by the host's location + the player's hand.
+	vb.add_child(HSeparator.new())
+	vb.add_child(_make_ledger_heading("THE REVEAL · shaped by %s + %s" % [
+		String(_location.get("title", _location_id)), String(_hand.get("name", _hand_id))]))
+	var reveal: Array = _draft_reveal_cards()
+	if reveal.is_empty():
+		var none_lbl := Label.new()
+		none_lbl.text = "    (no eligible cards to draft in this room)"
+		none_lbl.add_theme_color_override("font_color", C_DIM)
+		vb.add_child(none_lbl)
+	else:
+		var reveal_hb := HBoxContainer.new()
+		reveal_hb.add_theme_constant_override("separation", 6)
+		for cid_v in reveal:
+			var cid: String = String(cid_v)
+			var card: Dictionary = _action_cards.get(cid, {})
+			var d_btn := Button.new()
+			d_btn.text = "%s\ndraft · %d ✦" % [String(card.get("title", cid)), DRAFT_INSIGHT_COST]
+			d_btn.add_theme_font_size_override("font_size", 11)
+			d_btn.custom_minimum_size = Vector2(150, 64)
+			d_btn.disabled = not can_edit
+			d_btn.tooltip_text = "%s\n\n%s\n\n%s" % [
+				String(card.get("title", cid)),
+				String(card.get("flavor", "")),
+				_card_summary(card)]
+			d_btn.pressed.connect(_draft_add_card.bind(cid))
+			reveal_hb.add_child(d_btn)
+		vb.add_child(reveal_hb)
+	if not window_open:
+		var note := Label.new()
+		note.text = "    Come back at the start of your next run — drafting is a before-you-act decision."
+		note.add_theme_color_override("font_color", C_DIM)
+		note.add_theme_font_size_override("font_size", 10)
+		vb.add_child(note)
+	return vb
+
+
+# Leaving the table: hand the next scene the full mix back.
+func _exit_tree() -> void:
+	AudioMgr.set_music_intensity(1.0, 0.0)

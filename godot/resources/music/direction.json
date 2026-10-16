@@ -1,0 +1,414 @@
+{
+ "_doc": "MUSIC DIRECTOR data — read by scripts/vn/MusicDirector.gd. Edit the authored sections (scenes, locales, characters, defaults, lexicon); regenerate *_auto with `python3 godot/tools/music_direction.py suggest`; CI runs `validate`. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.",
+ "defaults": {
+  "_doc": "intensity 0..1 drives layered (stems) tracks: 0 pad+chords · 0.25 +bass · 0.5 +drums · 0.75 +lead. attack/release are seconds for the smoothed intensity to rise / fall. leitmotif_cooldown_nodes: nodes before another character's theme may be queued in the same scene.",
+  "base_intensity": 0.5,
+  "attack_sec": 2.5,
+  "release_sec": 8.0,
+  "choice_intensity": 0.85,
+  "interlude_intensity": 0.2,
+  "cg_intensity": 0.9,
+  "think_offset": -0.1,
+  "word_step": 0.12,
+  "leitmotifs": true,
+  "leitmotif_cooldown_nodes": 40,
+  "end_of_volume_release": true
+ },
+ "lexicon": {
+  "_doc": "lowercase words / phrases scanned in narrate / say / think text (whole-word for single words).",
+  "tension": [
+   "blood",
+   "gun",
+   "knife",
+   "run",
+   "running",
+   "scream",
+   "screams",
+   "shout",
+   "shouting",
+   "fire",
+   "burning",
+   "dead",
+   "death",
+   "die",
+   "kill",
+   "killed",
+   "threat",
+   "danger",
+   "afraid",
+   "fear",
+   "panic",
+   "storm",
+   "siren",
+   "sirens",
+   "chase",
+   "fight",
+   "hit",
+   "slam",
+   "slams",
+   "crash",
+   "break",
+   "breaks",
+   "now",
+   "hurry",
+   "wrong",
+   "demon",
+   "devil",
+   "trapped",
+   "locked",
+   "lie",
+   "lying",
+   "liar",
+   "shaking"
+  ],
+  "calm": [
+   "quiet",
+   "quietly",
+   "soft",
+   "softly",
+   "gentle",
+   "slow",
+   "slowly",
+   "still",
+   "rest",
+   "sleep",
+   "asleep",
+   "breathe",
+   "breath",
+   "warm",
+   "smile",
+   "smiles",
+   "laugh",
+   "laughs",
+   "home",
+   "tea",
+   "coffee",
+   "rain",
+   "morning",
+   "sunday",
+   "safe",
+   "calm",
+   "hum",
+   "hums"
+  ]
+ },
+ "scenes": {
+  "_doc": "AUTHORED cue sheets, keyed by scene id: {\"track\": catalog id, \"intensity\": 0..1, \"silence\": bool, \"beats\": [{\"at\": node index | \"choice\" | \"cg\" | \"interlude\" | \"end\", \"intensity\": 0..1, \"track\": id, \"stinger\": name, \"silence\": bool, \"fade\": sec}]}. Scene nodes may also carry {\"t\": \"music\", …} directives with the same keys."
+ },
+ "locales": {
+  "_doc": "AUTHORED bg src → {\"<vol>\": catalog id} (or a plain id for every volume)."
+ },
+ "characters": {
+  "_doc": "AUTHORED character key → {\"theme\": catalog id, \"leitmotif\": bool}. leitmotif false = never auto-queue."
+ },
+ "locales_auto": {
+  "3d:bianca_kitchen_morning": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:cabin_interior": {
+   "7": "vol7_cabin_woodstove"
+  },
+  "3d:caldwell_kitchen_night": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:caldwell_porch_night": {
+   "6": "vol6_porch_light_watch"
+  },
+  "3d:chillwave_interior": {
+   "7": "vol7_chillwave_back_room"
+  },
+  "3d:cosmic_comics_back_office": {
+   "6": "vol6_cosmic_comics_interior"
+  },
+  "3d:cosmic_comics_interior": {
+   "6": "vol6_cosmic_comics_interior"
+  },
+  "3d:daily_grind_interior": {
+   "7": "vol7_daily_grind"
+  },
+  "3d:el_rancho_taqueria": {
+   "6": "vol6_el_rancho_interior"
+  },
+  "3d:finn_apartment": {
+   "7": "vol7_apartment_rain"
+  },
+  "3d:grandmother_kitchen_morning": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:henderson_kitchen": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:kai_apartment": {
+   "7": "vol7_apartment_rain"
+  },
+  "3d:kowalski_kitchen": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:kwik_stop_interior": {
+   "6": "vol6_kwik_stop_interior"
+  },
+  "3d:lena_apartment": {
+   "7": "vol7_apartment_rain"
+  },
+  "3d:miller_back_porch": {
+   "6": "vol6_porch_light_watch"
+  },
+  "3d:miller_kitchen": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:new_orleans_bar": {
+   "5": "vol5_where_the_bar_used_to_be"
+  },
+  "3d:pit_stop_interior": {
+   "6": "vol6_kwik_stop_interior"
+  },
+  "3d:pit_stop_office": {
+   "6": "vol6_kwik_stop_interior"
+  },
+  "3d:ramos_kitchen_morning": {
+   "6": "vol6_four_thirty_kitchen"
+  },
+  "3d:riverboat_interior": {
+   "5": "vol5_riverboat_drone"
+  },
+  "3d:school_field_evening": {
+   "6": "vol6_live_oak_field"
+  },
+  "assets/backgrounds/vol1_club_dance.jpg": {
+   "1": "vol1_club_thump"
+  },
+  "assets/backgrounds/vol1_club_sharp.jpg": {
+   "1": "vol1_club_thump"
+  },
+  "assets/backgrounds/vol1_dream_bar.jpg": {
+   "1": "vol1_dream_drone"
+  },
+  "assets/backgrounds/vol1_dream_bed.jpg": {
+   "1": "vol1_dream_drone"
+  },
+  "assets/backgrounds/vol1_pharmacy_floor.jpg": {
+   "1": "vol1_pharmacy"
+  },
+  "assets/backgrounds/vol1_pharmacy_office.jpg": {
+   "1": "vol1_pharmacy"
+  },
+  "assets/backgrounds/vol2_briar_falls_building.jpg": {
+   "2": "vol2_briar_falls_night"
+  },
+  "assets/backgrounds/vol2_briar_falls_overlook.jpg": {
+   "2": "vol2_briar_falls_night"
+  },
+  "assets/backgrounds/vol2_briar_falls_picnic.jpg": {
+   "2": "vol2_briar_falls_night"
+  },
+  "assets/backgrounds/vol2_briar_falls_rest_stop.jpg": {
+   "2": "vol2_briar_falls_night"
+  },
+  "assets/backgrounds/vol2_briar_falls_trail.jpg": {
+   "2": "vol2_briar_falls_night"
+  },
+  "assets/backgrounds/vol2_sapo_falls.jpg": {
+   "2": "vol2_briar_falls_night"
+  },
+  "assets/backgrounds/vol2_seagash_circus_old.jpg": {
+   "2": "vol2_milestone_seagash"
+  }
+ },
+ "characters_auto": {
+  "alberto": {
+   "theme": "vol5_alberto_theme",
+   "leitmotif": true
+  },
+  "alma": {
+   "theme": "vol6_alma_theme",
+   "leitmotif": true
+  },
+  "antonio": {
+   "theme": "vol3_antonio_theme",
+   "leitmotif": true
+  },
+  "anya": {
+   "theme": "vol5_anya_theme",
+   "leitmotif": true,
+   "alias_of": "anya_recording"
+  },
+  "anya_recording": {
+   "theme": "vol5_anya_theme",
+   "leitmotif": true
+  },
+  "aria": {
+   "theme": "vol7_aria_theme",
+   "leitmotif": true
+  },
+  "bbs_caller": {
+   "theme": "vol5_bbs_caller_theme",
+   "leitmotif": true
+  },
+  "bus_kid": {
+   "theme": "vol5_bus_kid_theme",
+   "leitmotif": true
+  },
+  "carl": {
+   "theme": "vol6_carl_theme",
+   "leitmotif": true
+  },
+  "dante": {
+   "theme": "vol4_dante_theme",
+   "leitmotif": true
+  },
+  "diego": {
+   "theme": "vol6_diego_theme",
+   "leitmotif": true
+  },
+  "drunk_uncle": {
+   "theme": "vol5_drunk_uncle_theme",
+   "leitmotif": true
+  },
+  "elicia": {
+   "theme": "vol5_elicia_theme_solo",
+   "leitmotif": true
+  },
+  "faust": {
+   "theme": "vol1_faust_theme",
+   "leitmotif": true,
+   "alias_of": "faust3"
+  },
+  "faust3": {
+   "theme": "vol1_faust_theme",
+   "leitmotif": true
+  },
+  "finn": {
+   "theme": "vol7_finn_theme",
+   "leitmotif": true
+  },
+  "frasier": {
+   "theme": "vol5_frasier_theme_solo",
+   "leitmotif": true
+  },
+  "frasier_temple": {
+   "theme": "vol5_frasier_theme_solo",
+   "leitmotif": true,
+   "alias_of": "frasier"
+  },
+  "gable": {
+   "theme": "vol7_gable_theme",
+   "leitmotif": true
+  },
+  "john": {
+   "theme": "vol5_john_theme",
+   "leitmotif": true
+  },
+  "kai": {
+   "theme": "vol7_kai_theme",
+   "leitmotif": true
+  },
+  "lena": {
+   "theme": "vol2_lena_theme",
+   "leitmotif": true
+  },
+  "line_cook": {
+   "theme": "vol5_line_cook_theme",
+   "leitmotif": true
+  },
+  "mackenzie": {
+   "theme": "vol5_mackenzie_theme",
+   "leitmotif": true
+  },
+  "marit": {
+   "theme": "vol7_marit_theme",
+   "leitmotif": true
+  },
+  "maya": {
+   "theme": "vol6_maya_theme",
+   "leitmotif": true
+  },
+  "maya_kid": {
+   "theme": "vol5_maya_theme",
+   "leitmotif": true
+  },
+  "nicola": {
+   "theme": "vol4_nicola_theme",
+   "leitmotif": true
+  },
+  "per": {
+   "theme": "vol7_per_theme",
+   "leitmotif": true
+  },
+  "petra": {
+   "theme": "vol7_petra_theme",
+   "leitmotif": true
+  },
+  "rick": {
+   "theme": "vol6_rick_theme",
+   "leitmotif": true
+  },
+  "sal": {
+   "theme": "vol7_sal_theme",
+   "leitmotif": true
+  },
+  "sam": {
+   "theme": "vol6_sam_theme",
+   "leitmotif": true
+  },
+  "sharp": {
+   "theme": "vol1_sharp_theme",
+   "leitmotif": true
+  },
+  "skip": {
+   "theme": "vol6_skip_theme",
+   "leitmotif": true
+  },
+  "stranger": {
+   "theme": "vol1_stranger_theme",
+   "leitmotif": true
+  },
+  "tanya": {
+   "theme": "vol6_tanya_theme",
+   "leitmotif": true
+  },
+  "tem": {
+   "theme": "vol7_tem_theme",
+   "leitmotif": true
+  },
+  "the_birdwatcher": {
+   "theme": "vol5_birdwatcher_theme",
+   "leitmotif": true
+  },
+  "the_college_friend": {
+   "theme": "vol5_college_friend_theme",
+   "leitmotif": true
+  },
+  "the_critic": {
+   "theme": "vol5_critic_theme",
+   "leitmotif": true
+  },
+  "the_demon": {
+   "theme": "vol5_the_demon_theme",
+   "leitmotif": true
+  },
+  "the_drifter": {
+   "theme": "vol5_drifter_theme",
+   "leitmotif": true
+  },
+  "the_superfan": {
+   "theme": "vol5_superfan_theme",
+   "leitmotif": true
+  },
+  "the_twins": {
+   "theme": "vol5_twins_theme",
+   "leitmotif": true
+  },
+  "tobor": {
+   "theme": "vol3_tobor_theme",
+   "leitmotif": true
+  },
+  "werner": {
+   "theme": "vol7_werner_theme",
+   "leitmotif": true
+  },
+  "wren": {
+   "theme": "vol7_wren_theme",
+   "leitmotif": true
+  }
+ }
+}

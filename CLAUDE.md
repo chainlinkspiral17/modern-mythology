@@ -151,6 +151,38 @@ Rules:
    a pass finds a cramped plan, enlarge the room before shaving the
    furniture. `walkway_audit` and `case_access_audit` are floors, not
    targets.
+13. `lore/_INSTRUMENT_TOOLS_PLAYBOOK.md` — browser instrument tools
+   and their hardware bridges (`gamepad_input.js` for the Riffmaster
+   guitar, `midi_input.js` / `fm1_dx7.js` for the M-VAVE FM-1 synth).
+   Read before touching any `godot/tools/riffmaster_*.html`,
+   `tarot_synth.html`, `fm1_console.html`, `fm1_checkout.html`, FORGE (`forge_synth.js`),
+   the FM-1 emulators (`fm1_emu.js`), the PATCH BANK (`patch_bank.js`,
+   `patch_sources.js` — generated, `sampler.js`, `dx7_synth.js`), or
+   those helpers. Every
+   FM-1 firmware fact lives in `godot/tools/fm1_firmwares.js`.
+14. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
+   the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,
+   the AUDIO DIRECTOR (`audio_director.html`: make, review / approve / reject
+   temp takes staged in `assets/audio/review/`; both pages make takes through `temp_maker.js`; REMIX makes takes
+   from finished music through `remix.js`), the TAPE MACHINE physical tape model (`tape_model.js`, after
+   CHOW Tape's published model — our own code, never the GPL plugin's), imported audio + sketch covers (flagged
+   `third_party`, never in a release build — run `godot/tools/music_release_check.py --strip` before an export),
+   the shared `audio_kit.js`, the vendored
+   Ogg Vorbis encoder (`godot/tools/vendor/oggvorbis/`), and how audio reaches the game
+   (recordings: `.wav` next to a catalog track's `src`; temp music: small Ogg Vorbis
+   `<base>.temp.ogg` + `.stems/*.ogg` + `.stems.json`; never hand-edit `music_catalog.json`).
+   Read before touching any of them or `AudioMgr._load_audio`.
+15. `lore/_MUSIC_DIRECTION_PLAYBOOK.md` — the VN MusicDirector:
+   which track a scene gets (cue sheet → music node → leitmotif →
+   locale → chapter queue) and how hard it plays (intensity → stems,
+   inferred from the writing). `resources/music/direction.json` is
+   the single source of truth; CI validates it. Read before touching
+   `MusicDirector.gd`, `direction.json`, `music_direction.py`, or
+   adding `{"t":"music"}` nodes. Temp tracks reach the game through
+   the AUDIO DIRECTOR's APPROVE by default (`resources/music/temp_approvals.json`
+   records each approval and rejected seed; never hand-edit it).
+16. The latest commit message on the working branch — recent context.
+17. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -308,6 +340,15 @@ Playbooks currently maintained:
   natural-contact grammar discipline, the zero-regression
   ceilings, the wheel/double-booking defect classes. Read before
   touching godot/tools/audit/ or dismissing an audit report.
+- `lore/_INSTRUMENT_TOOLS_PLAYBOOK.md` — browser instruments, the
+  shared gamepad / Web MIDI helpers, routing-block convention, FM-1
+  wire-level facts, DX7 SysEx push, the firmware registry.
+- `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — recording, cleanup, tape engine,
+  take library, game-folder writes, WAV chunk + loop-point contract
+  with Godot.
+- `lore/_MUSIC_DIRECTION_PLAYBOOK.md` — VN music direction: track
+  priority, intensity inference + smoothing, cue sheets / beats /
+  music nodes, replay on load, `direction.json` discipline.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.

@@ -109,6 +109,8 @@ var _save_thumb: Image       = null   # the scene as it stood when the pause men
 var _settings_ov: Control   = null
 var _music_ov:   Control     = null
 var _toast:      Control     = null
+# Directs the music the way this engine directs the scene (scripts/vn/MusicDirector.gd).
+var _music:      MusicDirector = null
 
 # ── Scene direction (lore/_VN_DIRECTION_PLAYBOOK.md) ─────────────
 # [shot:...] / [panel:...] directives lead narrate/say/think text;
@@ -511,6 +513,11 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
+	if _music == null:
+		_music = MusicDirector.new()
+		_music.name = "MusicDirector"
+		add_child(_music)
+	_music.begin_scene(scene_id, _scene_data)
 	# Persistent chapter echo in the HUD (the plate's quiet twin).
 	_refresh_items()
 	if _hud != null and _hud.has_method("set_chapter"):
@@ -537,6 +544,8 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	# world the reader left.
 	if start_at > 0:
 		_fast_forward_to(start_at)
+		if _music != null:
+			_music.replay(start_at)
 	# Dispatch through the producer's curtain gate: across a real
 	# transition (veil/chapter card up) the first node waits for the
 	# reveal + settle beat; mid-story jumps pass straight through.
@@ -758,6 +767,8 @@ func _run_next() -> void:
 
 
 func _dispatch(n: Dictionary) -> void:
+	if _music != null:
+		_music.on_node(_node_idx - 1, n)
 	# Conditional nodes · cross-chapter callbacks.  A node carrying
 	# when_flag only plays if that flag is set (and, when "is" is
 	# present, equals that value); when_not_flag inverts.  Any node
@@ -795,6 +806,7 @@ func _dispatch(n: Dictionary) -> void:
 		"substrate":  _do_substrate(n); _run_next()
 		"composition": _do_composition(n); _run_next()
 		"bgm":        _do_bgm(n);  _run_next()
+		"music":      _run_next()   # applied by the MusicDirector in on_node
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
 		"jump":       _do_jump(n)

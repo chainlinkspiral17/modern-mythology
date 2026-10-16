@@ -1,0 +1,5 @@
+{
+ "_doc": "The soundtrack-wide layer of the score bible — see README.md. Volume files add volumes / chapters / characters / tracks.",
+ "soundtrack": { "feel": "Modern mythology in small American places: intimate, nocturnal, a little haunted, never bombastic." },
+ "characters": { "title": { "feel": "The title theme's figure — it returns, slower and lower, in the credits." } }
+}

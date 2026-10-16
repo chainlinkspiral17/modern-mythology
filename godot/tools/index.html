@@ -73,6 +73,7 @@
   a.tile .tag.riffmaster { color: var(--emerald-hi); border-color: var(--emerald); }
   a.tile .tag.audio      { color: var(--gold-hi); border-color: var(--gold); }
   a.tile .tag.studio     { color: #c8a4f0; border-color: #6b3fa0; }
+  a.tile .tag.midi       { color: #a8e89c; border-color: #4ea060; }
 
   .footer {
     margin-top: 40px;
@@ -105,7 +106,19 @@
       </div>
     </div>
 
-    <h2>RIFFMASTER INSTRUMENTS · play in the browser with the PDP guitar controller (or click/keyboard)</h2>
+    <div style="background: var(--bg-1); border: 1px solid var(--rule); padding: 14px 20px; margin-bottom: 18px;">
+      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · M-VAVE FM-1 (ANY FIRMWARE — SEE THE ATLAS)</div>
+      <div style="font-size: 11px; line-height: 1.55;">
+        <b style="color: var(--gold);">0.</b> Installing a firmware? Browse the <a href="fm1_firmware_atlas.html" style="color: var(--gold-hi);">FIRMWARE ATLAS</a>, then run <b>godot/tools/fm1_flash.sh</b> in Desktop Mode — it lists every installable firmware, preflights cable / hub / power, blocks sleep, opens that firmware's own installer and verifies the result. On multi-track firmwares (Felucca and its forks) the tools route by instrument automatically, following each firmware's default tracks: bass → track 1, chords → 2, lead → 3, drums → its drum channel.
+        <b style="color: var(--gold);">1.</b> USB-C the FM-1 to the machine, power it on in normal play mode (not the updater — if a port called <i>ota-FM-1</i> shows up, finish the flash and power-cycle).
+        <b style="color: var(--gold);">2.</b> Open any instrument in <b>Chrome or Edge</b> (Web MIDI — same requirement as the Baud Girl installer). Allow the MIDI prompt; say yes to SysEx too if you want to push patches.
+        <b style="color: var(--gold);">3.</b> The <span style="color: var(--emerald-hi);">FM-1 · MIDI</span> panel (bottom-right, left of the Riffmaster panel) should read <i>connected</i>. Its keys now play the instrument. Pick the port by hand if it enumerated as a bare <i>USB Composite Device</i>.
+        <b style="color: var(--gold);">4.</b> Knobs: neither firmware documents CC output, so select a slider in the panel, click <b>LEARN</b>, turn the knob. Mappings are saved and shared across every tool.
+        <b style="color: var(--gold);">5.</b> Tick <b>OUT→FM-1</b> to mirror what the instrument plays to the FM-1's own 6-op engine — Riffmaster guitar in, hardware DX7 out. Open <a href="fm1_console.html" style="color: var(--gold-hi);">FM-1 CONSOLE</a> for the monitor, program change, and DX7 patch push.
+      </div>
+    </div>
+
+    <h2>RIFFMASTER INSTRUMENTS · play in the browser with the PDP guitar controller, the M-VAVE FM-1 keys, or click/keyboard</h2>
     <div class="grid">
       <a class="tile" href="riffmaster_synth.html">
         <div class="ttl">RIFFMASTER SYNTH</div>
@@ -171,12 +184,77 @@
         <div class="desc">22-card synth pad with 4 banks (Diner / Cathedral / Riverboat / Pastoral). Multiple play modes (CARD / SCALE / GUITAR), chord mode, 4-lane 16-step sequencer, gallery-card art swap.</div>
         <div class="tags"><span class="tag audio">synth</span><span class="tag riffmaster">guitar</span></div>
       </a>
+      <a class="tile" href="fm1_console.html">
+        <div class="ttl">FM-1 CONSOLE</div>
+        <div class="desc">Bridge for the M-VAVE FM-1 hardware synth (stock, Baud Girl FM-1+VA, Felucca or SLOOP firmware — auto-detected). Port picker + status, read-only firmware IDENTIFY, MIDI monitor with decode, four-slot knob CC learn (shared with every instrument), program change, on-screen keyboard mirroring the FM-1's keys, and DX7 single-voice SysEx push of the RIFFMASTER FM presets to the hardware engine.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag audio">MIDI</span></div>
+      </a>
+      <a class="tile" href="audio_test.html">
+        <div class="ttl">AUDIO TEST</div>
+        <div class="desc">Sound stops after a moment? Plays the same melody through five browser audio setups (sample rate, buffer, the DAW's limiter and reverb) for 15 s each; tick what you heard and COPY the result.</div>
+        <div class="tags"><span class="tag audio">diagnostics</span></div>
+      </a>
+      <a class="tile" href="fm1_checkout.html">
+        <div class="ttl">FM-1 CHECK-OUT</div>
+        <div class="desc">Guided hardware check of your FM-1, one step at a time: connect and identify the firmware, notes out per part, notes in, knobs and CC, DX7 voice push, clock follow, USB audio level and round-trip latency (saved for the DAW). The page measures what it can and asks ✔ / ✘ for what only you can hear; COPY AS TEXT hands the results back.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag audio">check-out</span></div>
+      </a>
       <a class="tile" href="ambient_synth.html">
         <div class="ttl">AMBIENT SYNTH</div>
         <div class="desc">Chapter-drone generator. 4 tonal voices + 1 noise-floor layer per preset. Live play OR offline-render to WAV (90-300s loopable). 8 presets seeded to the music catalog.</div>
         <div class="tags"><span class="tag audio">drone</span></div>
       </a>
     </div>
+
+    <h2>RECORDING · write, sequence, record, tape loops and the world outside</h2>
+    <div class="grid">
+      <a class="tile" href="daw.html">
+        <div class="ttl">DAW</div>
+        <div class="desc">Sequence, record and generate tracks. Arrangement + piano roll / drum grid, a seeded composer (ten styles, song / loop / game-bed forms) that can take its brief from a catalog track still waiting for audio, MIDI + audio recording, mixer with sends. Play it on FORGE, PATCH BANK instruments, the FM-1 emulators or the real FM-1 — bounce offline (faster than real time), master to game loudness (−14 LUFS), export stems for adaptive music, or let TEMP TRACKS fill catalog entries that have no audio. Undo/redo, .mid export for the SLOOP / Felucca editors.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag audio">sequencer</span><span class="tag studio">generate</span></div>
+      </a>
+      <a class="tile" href="audio_director.html">
+        <div class="ttl">AUDIO DIRECTOR</div>
+        <div class="desc">Review the DAW's temp tracks before the game hears them. Every catalog track with its status (missing · candidates · approved temp · real audio), most-played first with why (the director's briefs). Preview a take's stems at any INTENSITY exactly as AudioMgr layers them, A/B takes at the same spot, PLAY AS SCENE along a scene's director curve with its lines. APPROVE copies a take where the game plays it (never over real audio), REJECT remembers the seed, REVOKE takes a temp back out; MAKE TAKES asks the DAW for more — with a description, instruments, length and parts.</div>
+        <div class="tags"><span class="tag studio">review</span><span class="tag audio">temp tracks</span><span class="tag midi">stems</span></div>
+      </a>
+      <a class="tile" href="patch_bank.html">
+        <div class="ttl">PATCH BANK</div>
+        <div class="desc">A library of public instruments and patches: GeneralUser GS (a whole GM SoundFont), FluidR3 / Musyng Kite / FatBoy per instrument, Salamander Grand, jRhodes3d, Karoryfer and Virtuosity SFZ drums, basses, guitars and saxes, 100+ VCSL instruments, Tone.js orchestra, 4,000 AKWF waveforms, and 1,000+ DX7 voices (Dexed, SynprezFM, Yamaha ROM 1A) you can play here or send to the FM-1. Every item shows its licence and whether game music made with it needs a credit. Downloads once, then offline; import your own .sf2 / SFZ / .syx / sample folders.</div>
+        <div class="tags"><span class="tag audio">instruments</span><span class="tag midi">DX7 · FM-1</span><span class="tag studio">library</span></div>
+      </a>
+      <a class="tile" href="dx7_test.html">
+        <div class="ttl">DX7 PLAYER</div>
+        <div class="desc">A DX7-compatible FM synth in the browser, matched to msfa (the engine inside the FM-1's stock firmware and Dexed) — load any 32-voice .syx bank, audition, edit all six operators and the algorithm, export .syx, or push a voice to the FM-1.</div>
+        <div class="tags"><span class="tag midi">DX7 · FM-1</span><span class="tag audio">synth</span></div>
+      </a>
+      <a class="tile" href="forge_synth.html">
+        <div class="ttl">FORGE</div>
+        <div class="desc">Phase Plant-style modular synth: stack generators (wavetable-ish oscillators, noise, sample-free analog), route them through lanes of snap-in effects, modulate anything with LFOs, envelopes and macros. The DAW's built-in instrument and drum kit.</div>
+        <div class="tags"><span class="tag audio">synth</span><span class="tag midi">MIDI</span></div>
+      </a>
+      <a class="tile" href="fm1_emulator.html">
+        <div class="ttl">FM-1 EMULATOR</div>
+        <div class="desc">Felucca and X0X firmwares running in the browser (their own WebAssembly builds), with the FM-1 panel: keys, knobs, buttons, display. Play them with the mouse, the FM-1, or any MIDI keyboard — the DAW sequences them on their real channels.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag audio">emulator</span></div>
+      </a>
+      <a class="tile" href="tape_studio.html">
+        <div class="ttl">TAPE STUDIO</div>
+        <div class="desc">Bento-style eight-track tape loop machine. Overdub / replace with tape-loop decay, resample the master into a track, count-in + click, per-track DJ filter / drive / crush / echo / verb sends, a master tape stage (saturation, wow, flutter, hiss, age, glue), a hold-to-shred stutter, MIDI clock out so SLOOP / Felucca / X0X follow it, PRINT the master into the library or straight into the game as a seamless loop.</div>
+        <div class="tags"><span class="tag audio">tape</span><span class="tag midi">FM-1 clock</span><span class="tag studio">loops</span></div>
+      </a>
+      <a class="tile" href="field_recorder.html">
+        <div class="ttl">FIELD RECORDER</div>
+        <div class="desc">Record the world on the Deck (or a USB recorder / the FM-1's USB audio): raw input, pre-roll so you never miss the moment, markers, slate metadata with locale, tags and location. Clean it — trim, high-pass, spectral denoise, loudness, fades — make a seamless loop, and write it straight into the game, including the WANTED list of catalog tracks that still have no audio.</div>
+        <div class="tags"><span class="tag audio">field</span><span class="tag studio">ambience</span></div>
+      </a>
+      <a class="tile" href="fm1_firmware_atlas.html">
+        <div class="ttl">FM-1 FIRMWARE ATLAS</div>
+        <div class="desc">Every firmware for the M-VAVE FM-1 the tools know: stock, FM-1+VA, Groove OS, Felucca and its forks (SLOOP, SLOOP ALG, X0X, Jangada, Melodee), research builds and game ports — install links, MIDI maps, DX7 support, recovery. One button reads which one is on your synth.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag studio">reference</span></div>
+      </a>
+    </div>
+    <div class="footer" style="margin-top:10px;">SD-card takes from a Zoom / Tascam and browser downloads go in with <b>python3 godot/tools/field_ingest.py</b> (wanted · scan · ingest · fill).</div>
 
     <h2>STUDIO · authoring tools for game assets</h2>
     <div class="grid">
@@ -233,7 +311,7 @@
     </div>
 
     <div class="footer">
-      Each tool is a single self-contained HTML file. The Riffmaster instruments share <b>gamepad_input.js</b> for HID gamepad polling, axis-as-button bridging, and the controller-overlay debug panel. Drop the device on any browser tab to play.
+      Each tool is a single self-contained HTML file. The Riffmaster instruments share <b>gamepad_input.js</b> for HID gamepad polling, axis-as-button bridging, and the controller-overlay debug panel, and <b>midi_input.js</b> for Web MIDI (FM-1 port auto-select, note / CC / bend events, CC learn, OUT echo). <b>fm1_dx7.js</b> builds DX7 voice SysEx for the FM-1's Dexed core. Drop the device on any browser tab to play. Not yet MIDI-wired: THEREMIN, CHORDS, DRONES, AMBIENT (no natural key→pitch mapping yet).
     </div>
   </div>
 </body>

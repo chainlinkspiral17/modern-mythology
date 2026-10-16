@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAMPLER · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633;
+    --red: #c64a3a; --amber: #f0b94a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; }
+  body { display: grid; grid-template-rows: auto auto auto minmax(0, 1fr) auto auto; }
+  header { padding: 6px 14px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 2px 7px; border: 1px solid var(--rule); color: var(--text-dim); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .sub { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 5px 14px; border-bottom: 1px solid var(--rule); font-size: 11px; }
+  .bar label { color: var(--text-dim); letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 4px; }
+  .bar .sep { width: 1px; height: 22px; background: var(--rule); }
+  select, input[type=text], textarea { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 12px; padding: 5px 6px; min-height: 32px; }
+  input[type=range] { accent-color: var(--rust); }
+  button, .filebtn { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 6px 11px; font-family: inherit; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; min-height: 32px; display: inline-flex; align-items: center; }
+  button:hover:not(:disabled), .filebtn:hover { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  .filebtn input { display: none; }
+  #url { flex: 1; min-width: 260px; }
+  #src { max-width: 260px; }
+  .prog { flex: 1; min-width: 160px; height: 8px; border: 1px solid var(--rule); background: #0a0605; position: relative; }
+  .prog i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--rust); transition: width .15s; }
+  .msg { color: var(--emerald-hi); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60ch; }
+  .msg.err { color: var(--red); }
+  main { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 330px; }
+  #editor { min-height: 0; overflow-y: auto; border-right: 1px solid var(--rule); }
+  #side { min-height: 0; display: flex; flex-direction: column; }
+  #side h3 { margin: 6px 10px 3px; font-size: 11px; letter-spacing: 0.16em; color: var(--gold); font-weight: normal; border-bottom: 1px solid var(--rule); padding-bottom: 3px; }
+  #presets { margin: 0 10px 6px; width: calc(100% - 20px); }
+  #log { flex: 1; min-height: 0; overflow-y: auto; margin: 0 10px 6px; font-size: 10px; line-height: 1.45; color: var(--text-dim); white-space: pre-wrap; word-break: break-word; }
+  #log b { color: var(--gold-hi); font-weight: normal; }
+  #log .e { color: var(--red); }
+  .kbwrap { border-top: 1px solid var(--rule); padding: 6px 14px 6px; display: flex; gap: 10px; align-items: stretch; }
+  .kctl { display: flex; flex-direction: column; gap: 4px; justify-content: center; font-size: 10px; color: var(--text-dim); }
+  .kctl .row { display: flex; gap: 4px; align-items: center; }
+  .wheels { display: flex; gap: 10px; align-items: stretch; }
+  .wheel { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 9px; color: var(--text-dim); letter-spacing: 0.08em; }
+  .wheel input { writing-mode: vertical-lr; direction: rtl; width: 30px; height: 118px; margin: 0; }
+  #kbd { position: relative; flex: 1; height: 140px; touch-action: none; user-select: none; -webkit-user-select: none; }
+  #kbd .k { position: absolute; top: 0; border: 1px solid var(--rule); cursor: pointer; }
+  #kbd .w { height: 100%; background: #e8dcc4; z-index: 1; border-color: #8a7050; border-radius: 0 0 4px 4px; }
+  #kbd .b { height: 60%; background: #1a1410; z-index: 2; border-color: #000; border-radius: 0 0 3px 3px; }
+  #kbd .k.on.w { background: var(--gold); }
+  #kbd .k.on.b { background: var(--rust); }
+  #kbd .k.out.w { background: #9a8c74; }
+  #kbd .k span { position: absolute; bottom: 4px; left: 0; right: 0; text-align: center; font-size: 10px; color: #7a5828; pointer-events: none; }
+  footer { padding: 4px 14px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+  kbd { border: 1px solid var(--rule); padding: 0 3px; color: var(--gold-hi); font-family: inherit; }
+  #urls { display: none; width: 100%; height: 70px; }
+  body.multi #urls { display: block; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SAMPLER</h1>
+  <span class="badge" id="b-audio">AUDIO: off · tap or press a key</span>
+  <span class="badge" id="b-midi">MIDI: —</span>
+  <span class="sub">SFZ · SF2 · midi-js · folders of note-named samples — load, then play</span>
+</header>
+
+<div class="bar">
+  <select id="src" title="known public instruments (CORS-enabled raw GitHub URLs)"></select>
+  <input type="text" id="url" placeholder="URL of a .sfz / .sf2 / .sf3 / midi-js .js, a github.com/…/tree/… folder, or several sample URLs (one per line)" spellcheck="false">
+  <button id="load">LOAD</button>
+  <span class="sep"></span>
+  <label class="filebtn" title="pick an .sfz with its samples, an .sf2, a midi-js .js or note-named audio files">FILES<input type="file" id="files" multiple></label>
+  <button id="folder" title="pick a folder (an SFZ library or a folder of note-named samples)">FOLDER</button>
+  <input type="file" id="dirinput" webkitdirectory multiple hidden>
+  <label title="folders of note-named files: measure the pitch and fix the octave when the names use C3 = middle C"><input type="checkbox" id="autooct" checked>AUTO OCT</label>
+  <label title="keep at most this many velocity layers (big SFZ pianos need gigabytes of RAM otherwise)">LAYERS <select id="layers"><option value="0">all</option><option value="8">8</option><option value="4" selected>4</option><option value="2">2</option><option value="1">1</option></select></label>
+</div>
+<div class="bar">
+  <div class="prog"><i id="progbar"></i></div>
+  <span class="msg" id="msg">no instrument loaded</span>
+  <textarea id="urls" spellcheck="false" placeholder="one sample URL per line (note names in the file names: A3.mp3, As3.mp3, C#4_vl2_rr1.wav …)"></textarea>
+</div>
+
+<main>
+  <div id="editor"></div>
+  <div id="side">
+    <h3>PRESETS</h3>
+    <select id="presets" disabled><option>— SF2 presets appear here —</option></select>
+    <h3>LOG</h3>
+    <div id="log"></div>
+  </div>
+</main>
+
+<div class="kbwrap">
+  <div class="kctl">
+    <div class="row">OCT <button class="dim" id="octdn">−</button><b id="oct" style="color:var(--gold-hi);min-width:14px;text-align:center">3</b><button class="dim" id="octup">+</button></div>
+    <div class="row">VEL <input type="range" id="vel" min="0.05" max="1" step="0.01" value="0.8" style="width:90px"></div>
+    <div class="row"><button class="dim" id="hold" title="sustain pedal (hold Space)">SUSTAIN</button><button class="dim" id="panic">PANIC</button></div>
+  </div>
+  <div class="wheels">
+    <div class="wheel">BEND<input type="range" id="pb" min="-1" max="1" step="0.01" value="0"></div>
+    <div class="wheel">MOD<input type="range" id="mw" min="0" max="1" step="0.01" value="0"></div>
+  </div>
+  <div id="kbd"></div>
+</div>
+
+<footer>
+  <span>← <a href="index.html">all tools</a> · <a href="forge_synth.html">FORGE</a> · <a href="daw.html">DAW</a></span>
+  <span>keys <kbd>Z</kbd>–<kbd>M</kbd> and <kbd>Q</kbd>–<kbd>U</kbd> · <kbd>←</kbd><kbd>→</kbd> octave · hold <kbd>Space</kbd> sustain</span>
+  <span>key velocity = how low on the key you press</span>
+</footer>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
+<script src="sampler.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const SF = window.SampleFormats;
+const RAW = 'https://raw.githubusercontent.com/';
+const SOURCES = [
+  ['', '— public instruments —'],
+  [RAW + 'mrbumpy409/GeneralUser-GS/main/GeneralUser-GS.sf2', 'SF2 · GeneralUser GS (32 MB GM bank)'],
+  [RAW + 'gleitz/midi-js-soundfonts/gh-pages/FluidR3_GM/acoustic_grand_piano-mp3.js', 'midi-js · FluidR3 grand piano'],
+  [RAW + 'gleitz/midi-js-soundfonts/gh-pages/FluidR3_GM/string_ensemble_1-mp3.js', 'midi-js · FluidR3 strings'],
+  [RAW + 'sfzinstruments/SalamanderGrandPiano/master/Salamander%20Grand%20Piano%20V3.sfz', 'SFZ · Salamander Grand (huge: use LAYERS)'],
+  [RAW + 'sfzinstruments/jlearman.jRhodes3d/master/jRhodes3d-mono.sfz', 'SFZ · jRhodes3d mono'],
+  [RAW + 'sfzinstruments/dsmolken.double-bass/master/d_smolken_rubner_bass_pizz.sfz', 'SFZ · double bass pizz'],
+  [RAW + 'sfzinstruments/karoryfer.big-rusty-drums/main/Programs/02-basic.sfz', 'SFZ · Big Rusty Drums basic'],
+  [RAW + 'sfzinstruments/virtuosity_drums/master/Programs/01-basic-kit.sfz', 'SFZ · Virtuosity drums basic'],
+  ['tonejs:cello', 'files · tonejs cello (note-named mp3)'],
+  ['tonejs:piano', 'files · tonejs piano'],
+];
+const TONEJS = {   // file lists (tonejs-instruments has no index file)
+  cello: ['A2', 'A3', 'A4', 'As2', 'As3', 'B2', 'B3', 'B4', 'C2', 'C3', 'C4', 'C5', 'Cs3', 'Cs4', 'D2', 'D3', 'D4', 'Ds2', 'Ds3', 'Ds4', 'E2', 'E3', 'E4', 'F2', 'F3', 'F4', 'Fs3', 'Fs4', 'G2', 'G3', 'G4', 'Gs2', 'Gs3', 'Gs4'],
+  piano: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'As1', 'As2', 'As3', 'As4', 'As5', 'As6', 'As7', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'Cs1', 'Cs2', 'Cs3', 'Cs4', 'Cs5', 'Cs6', 'Cs7', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'Ds1', 'Ds2', 'Ds3', 'Ds4', 'Ds5', 'Ds6', 'Ds7', 'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'Fs1', 'Fs2', 'Fs3', 'Fs4', 'Fs5', 'Fs6', 'Fs7', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'Gs1', 'Gs2', 'Gs3', 'Gs4', 'Gs5', 'Gs6', 'Gs7'],
+};
+for (const [v, t] of SOURCES) { const o = document.createElement('option'); o.value = v; o.textContent = t; $('src').appendChild(o); }
+
+// ── audio + sampler ─────────────────────────────────────────────
+const AC = window.AudioContext || window.webkitAudioContext;
+const ctx = new AC({ latencyHint: 'interactive' });
+const byteCache = new Map();    // url → Promise<ArrayBuffer> (this page only)
+let localFiles = null;          // Map(lowercased relative path → File) for local loads
+function localLookup(url) {
+  let p = url.replace(/^local:\/*/, '');
+  try { p = decodeURIComponent(p); } catch (e) { /* keep */ }
+  p = p.replace(/\\/g, '/').replace(/^\/+/, '');
+  return localFiles && (localFiles.get(p.toLowerCase()) || null);
+}
+function fetchBytes(url) {
+  if (/^local:/.test(url)) {
+    const f = localLookup(url);
+    return f ? f.arrayBuffer() : Promise.reject(new Error('not in the picked files: ' + url.replace(/^local:\/*/, '')));
+  }
+  if (byteCache.has(url)) return byteCache.get(url);
+  const p = SF.defaultFetchBytes(url);
+  byteCache.set(url, p);
+  p.catch(() => byteCache.delete(url));
+  return p;
+}
+function readText(url) {
+  if (/^local:/.test(url)) { const f = localLookup(url); return f ? f.text() : Promise.reject(new Error('missing ' + url)); }
+  return fetch(url).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); });
+}
+const smp = new SampleInstrument(ctx, { maxVoices: 48, fetchBytes });
+smp.init();
+const editor = smp.mountEditor($('editor'), { mapHeight: 230 });
+window.smp = smp;
+
+function refreshAudioBadge() {
+  const b = $('b-audio');
+  if (ctx.state === 'running') { b.className = 'badge ok'; b.textContent = 'AUDIO: ' + ctx.sampleRate + ' Hz'; }
+  else { b.className = 'badge warn'; b.textContent = 'AUDIO: off · tap or press a key'; }
+}
+function ensureAudio() { if (ctx.state !== 'running') ctx.resume().then(refreshAudioBadge).catch(() => {}); }
+['pointerdown', 'keydown', 'touchstart'].forEach(ev => document.addEventListener(ev, ensureAudio, { capture: true }));
+ctx.onstatechange = refreshAudioBadge;
+refreshAudioBadge();
+
+// ── log / progress ──────────────────────────────────────────────
+function log(html, cls) { const d = document.createElement('div'); if (cls) d.className = cls; d.innerHTML = html; $('log').appendChild(d); $('log').scrollTop = 1e9; }
+const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+function msg(t, err) { $('msg').textContent = t; $('msg').className = 'msg' + (err ? ' err' : ''); }
+function prog(f) { $('progbar').style.width = Math.round(Math.max(0, Math.min(1, f)) * 100) + '%'; }
+const MB = b => (b / 1048576).toFixed(1) + ' MB';
+
+// ── loading ─────────────────────────────────────────────────────
+let currentSF2 = null, loadToken = 0;
+async function useInstrument(inst, label, token) {
+  const L = +$('layers').value;
+  if (L > 0) SF.thinLayers(inst, L);
+  const t0 = performance.now();
+  msg('decoding ' + inst.zones.length + ' zones…'); prog(0);
+  const st = await SF.decodeAll(inst, ctx, fetchBytes, (d, t, b) => { if (token === loadToken) { prog(d / t); msg(`loading ${d}/${t} samples · ${MB(b)}`); } });
+  if (token !== loadToken) return;
+  inst.loadStats = st;
+  if ((inst.format === 'files') && $('autooct').checked) {
+    const k = SF.autoOctave(inst);
+    if (k) log(`sample names are ${Math.abs(k)} octave${Math.abs(k) > 1 ? 's' : ''} ${k > 0 ? 'low' : 'high'} (measured pitch) — shifted ${k > 0 ? '+' : ''}${k * 12} keys`);
+  }
+  const info = await smp.load(inst, { id: label });
+  if (token !== loadToken) return;
+  prog(1);
+  msg(`${info.name} · ${info.playable}/${info.zones} zones ready` + (st && st.total ? ` · ${((performance.now() - t0) / 1000).toFixed(1)} s` : '') + (info.failed ? ` · ${info.failed} failed` : ''), !!info.failed && !info.playable);
+  log(`<b>${esc(info.name)}</b> (${info.format}) — ${info.zones} zones, ${info.buffers} buffers, ${info.seconds.toFixed(1)} s of audio, ${MB(info.memoryBytes)} decoded` +
+    (st && st.total ? `, ${st.total} files / ${MB(st.bytes)} fetched + decoded in ${(st.ms / 1000).toFixed(1)} s` : '') +
+    (info.keyLo != null ? `, keys ${SF.midiToNoteName(info.keyLo)}–${SF.midiToNoteName(info.keyHi)}` : ''));
+  if (st && st.errors.length) st.errors.slice(0, 8).forEach(e => log(esc(e.url.slice(-90)) + ' — ' + esc(e.error), 'e'));
+  if (info.unsupported.length) log('ignored: ' + esc(info.unsupported.join(', ')));
+  if (info.warnings && info.warnings.length) log(esc(info.warnings.slice(0, 6).join(' · ')), 'e');
+  if (inst.unmapped && inst.unmapped.length) log('no note in the name: ' + esc(inst.unmapped.slice(0, 12).join(', ')) + (inst.unmapped.length > 12 ? ' …' : ''), 'e');
+  markRange();
+}
+function kindOf(name) {
+  const n = name.toLowerCase().split(/[?#]/)[0];
+  if (n.endsWith('.sfz')) return 'sfz';
+  if (n.endsWith('.sf2') || n.endsWith('.sf3')) return 'sf2';
+  if (n.endsWith('.js')) return 'midijs';
+  if (/\.(wav|flac|ogg|mp3|m4a|aif|aiff|opus|webm)$/.test(n)) return 'audio';
+  return '';
+}
+function showPresets(sf) {
+  const sel = $('presets'); sel.textContent = '';
+  for (const p of sf.presets) { const o = document.createElement('option'); o.value = p.index; o.textContent = (p.bank === 128 ? 'DRUM ' : String(p.bank).padStart(3, '0') + ':') + String(p.program).padStart(3, '0') + ' ' + p.name; sel.appendChild(o); }
+  sel.disabled = false;
+}
+async function loadSF2Bytes(ab, label, token) {
+  const t0 = performance.now();
+  const sf = SF.parseSF2(ab);
+  currentSF2 = { sf, label };
+  showPresets(sf);
+  log(`<b>${esc(sf.name)}</b> SoundFont ${esc(sf.version)}${sf.isSF3 ? ' (sf3, ogg samples)' : ''} — ${sf.presets.length} presets, ${sf.sampleCount} samples, ${MB(sf.sampleBytes)} sample data, ${sf.modulators} modulators · parsed in ${Math.round(performance.now() - t0)} ms`);
+  await loadPreset(sf.presets[0].index, token);
+}
+async function loadPreset(index, token) {
+  if (!currentSF2) return;
+  const { sf, label } = currentSF2;
+  $('presets').value = index;
+  const inst = sf.instrument(+index, ctx);
+  const p = sf.presets.find(x => x.index === +index);
+  await useInstrument(inst, label + '#' + p.bank + ':' + p.program, token);
+}
+$('presets').addEventListener('change', () => { const tk = ++loadToken; loadPreset(+$('presets').value, tk).catch(fail); });
+function fail(e) { console.warn(e); msg('load failed: ' + (e.message || e), true); log(esc(e.message || e), 'e'); }
+
+async function githubFolder(url) {     // https://github.com/owner/repo/tree/branch/path → raw URLs (api.github.com, CORS ok)
+  const m = /^https:\/\/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)\/?(.*)$/.exec(url);
+  if (!m) return null;
+  const api = `https://api.github.com/repos/${m[1]}/${m[2]}/contents/${m[4]}?ref=${m[3]}`;
+  const r = await fetch(api); if (!r.ok) throw new Error('GitHub listing failed: HTTP ' + r.status);
+  const list = await r.json();
+  return list.filter(f => f.type === 'file').map(f => ({ name: f.name, url: f.download_url }));
+}
+async function loadUrl(raw) {
+  const token = ++loadToken;
+  localFiles = null;
+  const lines = raw.split(/\s*\n\s*/).map(s => s.trim()).filter(Boolean);
+  try {
+    if (!lines.length) return;
+    if (lines.length === 1 && /^tonejs:/.test(lines[0])) {
+      const k = lines[0].slice(7), base = RAW + 'nbrosowsky/tonejs-instruments/master/samples/' + k + '/';
+      const files = (TONEJS[k] || []).map(n => ({ name: n + '.mp3', url: base + n + '.mp3' }));
+      return await useInstrument(SF.instrumentFromFiles(files, { name: 'tonejs ' + k }), lines[0], token);
+    }
+    if (lines.length > 1 || kindOf(lines[0]) === 'audio') {
+      const files = lines.map(u => ({ name: decodeURIComponent(u.split('/').pop()), url: u }));
+      return await useInstrument(SF.instrumentFromFiles(files, { name: 'samples' }), 'urls:' + lines.length, token);
+    }
+    const url = lines[0];
+    const gh = await githubFolder(url).catch(e => { throw e; });
+    if (gh) return await useInstrument(SF.instrumentFromFiles(gh, { name: url.split('/').pop() }), url, token);
+    const kind = kindOf(url);
+    msg('fetching ' + url.split('/').pop() + '…'); prog(0.02);
+    if (kind === 'sfz') {
+      const text = await readText(url);
+      const inst = await SF.parseSFZ(text, url, { readText });
+      return await useInstrument(inst, url, token);
+    }
+    if (kind === 'sf2') {
+      const r = await fetch(url); if (!r.ok) throw new Error('HTTP ' + r.status);
+      const ab = await r.arrayBuffer();
+      return await loadSF2Bytes(ab, url, token);
+    }
+    if (kind === 'midijs') {
+      const text = await readText(url);
+      return await useInstrument(SF.parseMidiJsSoundfont(text), url, token);
+    }
+    throw new Error('unknown file type — expected .sfz / .sf2 / .sf3 / .js or audio files');
+  } catch (e) { fail(e); }
+}
+$('load').addEventListener('click', () => loadUrl(document.body.classList.contains('multi') ? $('urls').value : $('url').value));
+$('url').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('load').click(); } });
+$('url').addEventListener('paste', e => {
+  const t = (e.clipboardData || window.clipboardData).getData('text');
+  if (/\n\s*\S/.test(t.trim())) { e.preventDefault(); document.body.classList.add('multi'); $('urls').value = t.trim(); }
+});
+$('src').addEventListener('change', () => { const v = $('src').value; if (!v) return; document.body.classList.remove('multi'); $('url').value = v; loadUrl(v); });
+
+// local files / folders: entries = [{path, file}]
+async function loadLocal(entries) {
+  const token = ++loadToken;
+  try {
+    localFiles = new Map(entries.map(e => [e.path.replace(/\\/g, '/').replace(/^\/+/, '').toLowerCase(), e.file]));
+    const sfz = entries.filter(e => kindOf(e.path) === 'sfz');
+    const sf2 = entries.filter(e => kindOf(e.path) === 'sf2');
+    const js = entries.filter(e => kindOf(e.path) === 'midijs');
+    log(`picked ${entries.length} files` + (sfz.length ? ` · ${sfz.length} .sfz` : ''));
+    if (sfz.length) {
+      let pick = sfz.sort((a, b) => a.path.split('/').length - b.path.split('/').length || a.path.localeCompare(b.path))[0];
+      if (sfz.length > 1) {
+        const names = sfz.map(e => e.path);
+        const ans = prompt('Several .sfz files — which one?\n' + names.slice(0, 30).map((n, i) => (i + 1) + '. ' + n).join('\n'), '1');
+        const i = (parseInt(ans, 10) || 1) - 1; if (sfz[i]) pick = sfz[i];
+      }
+      const text = await pick.file.text();
+      const base = 'local:/' + pick.path.split('/').map(encodeURIComponent).join('/');
+      const inst = await SF.parseSFZ(text, base, { readText, name: pick.path.split('/').pop().replace(/\.sfz$/i, '') });
+      return await useInstrument(inst, 'local:' + pick.path, token);
+    }
+    if (sf2.length) return await loadSF2Bytes(await sf2[0].file.arrayBuffer(), 'local:' + sf2[0].path, token);
+    if (js.length) return await useInstrument(SF.parseMidiJsSoundfont(await js[0].file.text()), 'local:' + js[0].path, token);
+    const audio = entries.filter(e => kindOf(e.path) === 'audio');
+    if (!audio.length) throw new Error('no .sfz / .sf2 / .js / audio files in the selection');
+    const files = audio.map(e => ({ name: e.path.split('/').pop(), url: 'local:/' + e.path.split('/').map(encodeURIComponent).join('/') }));
+    return await useInstrument(SF.instrumentFromFiles(files, { name: (audio[0].path.split('/').slice(-2, -1)[0] || 'local samples') }), 'local-files', token);
+  } catch (e) { fail(e); }
+}
+$('files').addEventListener('change', e => {
+  const fs = [...e.target.files];
+  if (fs.length) loadLocal(fs.map(f => ({ path: f.webkitRelativePath || f.name, file: f })));
+  e.target.value = '';
+});
+$('dirinput').addEventListener('change', e => {
+  const fs = [...e.target.files];
+  if (fs.length) loadLocal(fs.map(f => ({ path: f.webkitRelativePath.split('/').slice(1).join('/') || f.name, file: f })));
+  e.target.value = '';
+});
+$('folder').addEventListener('click', async () => {
+  if (!window.showDirectoryPicker) { $('dirinput').click(); return; }
+  let dir;
+  try { dir = await window.showDirectoryPicker({ mode: 'read' }); } catch (e) { return; }
+  msg('reading folder…');
+  const out = [];
+  async function walk(h, prefix, depth) {
+    if (depth > 8 || out.length > 20000) return;
+    for await (const [name, ent] of h.entries()) {
+      if (name.startsWith('.')) continue;
+      if (ent.kind === 'directory') await walk(ent, prefix + name + '/', depth + 1);
+      else if (/\.(sfz|sfzh|txt|sf2|sf3|js|wav|flac|ogg|mp3|m4a|aif|aiff|opus)$/i.test(name)) out.push({ path: prefix + name, file: await ent.getFile() });
+    }
+  }
+  try { await walk(dir, '', 0); } catch (e) { fail(e); return; }
+  loadLocal(out);
+});
+
+// ── playing (on-screen keys, computer keys, MIDI) ────────────────
+let octave = 3;
+const held = new Map();     // source → note
+let _fromMidi = false, mi = null;
+const vel = () => +$('vel').value;
+function play(note, v) { ensureAudio(); smp.noteOn(note, v); if (!_fromMidi && mi) mi.echoNoteOn(note, v); markKey(note, true); }
+function stop(note) { smp.noteOff(note); if (!_fromMidi && mi) mi.echoNoteOff(note); markKey(note, [...held.values()].filter(n => n === note).length > 1); }
+function releaseAllKeys() { for (const [, n] of held) stop(n); held.clear(); }
+function setOct(o) { releaseAllKeys(); octave = Math.max(0, Math.min(7, o)); $('oct').textContent = octave; buildKbd(); }
+$('octdn').addEventListener('click', () => setOct(octave - 1));
+$('octup').addEventListener('click', () => setOct(octave + 1));
+let sustainLatched = false;
+function setSustain(on) { smp.cc(64, on ? 1 : 0); $('hold').classList.toggle('on', on); }
+$('hold').addEventListener('click', () => { sustainLatched = !sustainLatched; setSustain(sustainLatched); });
+$('panic').addEventListener('click', () => { releaseAllKeys(); smp.panic(); sustainLatched = false; $('hold').classList.remove('on'); if (mi) mi.allNotesOff(); });
+$('mw').addEventListener('input', () => smp.cc(1, +$('mw').value));
+$('pb').addEventListener('input', () => smp.pitchBend(+$('pb').value));
+const springBack = () => { if (+$('pb').value !== 0) { $('pb').value = 0; smp.pitchBend(0); } };
+$('pb').addEventListener('pointerup', springBack); $('pb').addEventListener('change', springBack);
+
+const NN = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+function buildKbd() {
+  const kb = $('kbd'); kb.textContent = '';
+  const base = 12 * (octave + 1), N = 37, whites = [];
+  for (let i = 0; i < N; i++) if (![1, 3, 6, 8, 10].includes(i % 12)) whites.push(i);
+  const ww = 100 / whites.length;
+  let wi = 0;
+  for (let i = 0; i < N; i++) {
+    const n = base + i, black = [1, 3, 6, 8, 10].includes(i % 12);
+    const k = document.createElement('div');
+    k.className = 'k ' + (black ? 'b' : 'w'); k.dataset.note = n;
+    if (black) { k.style.left = (wi * ww - ww * 0.32) + '%'; k.style.width = (ww * 0.64) + '%'; }
+    else { k.style.left = (wi * ww) + '%'; k.style.width = ww + '%'; wi++; if (i % 12 === 0) k.innerHTML = '<span>C' + (Math.floor(n / 12) - 1) + '</span>'; }
+    kb.appendChild(k);
+  }
+  markRange();
+}
+function markRange() {
+  const inf = smp.info();
+  document.querySelectorAll('#kbd .k').forEach(k => { const n = +k.dataset.note; k.classList.toggle('out', inf.keyLo != null && (n < inf.keyLo || n > inf.keyHi)); });
+}
+function markKey(note, on) { const k = document.querySelector('#kbd .k[data-note="' + note + '"]'); if (k) k.classList.toggle('on', on); }
+const kb = $('kbd');
+const keyAt = (x, y) => { const el = document.elementFromPoint(x, y); return el && el.closest ? el.closest('#kbd .k') : null; };
+const keyVel = (k, y) => { const r = k.getBoundingClientRect(); return Math.max(0.12, Math.min(1, (0.3 + 0.7 * (y - r.top) / r.height) * vel() / 0.8)); };
+kb.addEventListener('pointerdown', e => {
+  const k = e.target.closest('.k'); if (!k) return;
+  e.preventDefault();
+  try { kb.setPointerCapture(e.pointerId); } catch (err) { /* ok */ }
+  const id = 'p' + e.pointerId;
+  if (held.has(id)) stop(held.get(id));
+  const n = +k.dataset.note; held.set(id, n); play(n, keyVel(k, e.clientY));
+});
+kb.addEventListener('pointermove', e => {
+  const id = 'p' + e.pointerId; if (!held.has(id)) return;
+  const k = keyAt(e.clientX, e.clientY); if (!k) return;
+  const n = +k.dataset.note, cur = held.get(id);
+  if (n !== cur) { stop(cur); held.set(id, n); play(n, keyVel(k, e.clientY)); }       // glissando
+});
+const kbUp = e => { const id = 'p' + e.pointerId; if (!held.has(id)) return; stop(held.get(id)); held.delete(id); };
+kb.addEventListener('pointerup', kbUp); kb.addEventListener('pointercancel', kbUp);
+kb.addEventListener('contextmenu', e => e.preventDefault());
+
+const LOW = ['KeyZ', 'KeyS', 'KeyX', 'KeyD', 'KeyC', 'KeyV', 'KeyG', 'KeyB', 'KeyH', 'KeyN', 'KeyJ', 'KeyM', 'Comma', 'KeyL', 'Period', 'Semicolon', 'Slash'];
+const HIGH = ['KeyQ', 'Digit2', 'KeyW', 'Digit3', 'KeyE', 'KeyR', 'Digit5', 'KeyT', 'Digit6', 'KeyY', 'Digit7', 'KeyU', 'KeyI', 'Digit9', 'KeyO', 'Digit0', 'KeyP', 'BracketLeft', 'Equal', 'BracketRight'];
+function keyNote(code) {
+  let i = LOW.indexOf(code); if (i >= 0) return 12 * (octave + 1) + i;
+  i = HIGH.indexOf(code); if (i >= 0) return 12 * (octave + 2) + i;
+  return null;
+}
+const typing = e => { const t = e.target, tag = (t.tagName || '').toUpperCase(); return tag === 'TEXTAREA' || tag === 'SELECT' || (tag === 'INPUT' && /^(text|number|search|url)$/.test(t.type)); };
+window.addEventListener('keydown', e => {
+  if (typing(e) || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.code === 'Space') { e.preventDefault(); if (!e.repeat && !sustainLatched) setSustain(true); return; }
+  if (e.code === 'ArrowLeft') { e.preventDefault(); setOct(octave - 1); return; }
+  if (e.code === 'ArrowRight') { e.preventDefault(); setOct(octave + 1); return; }
+  const n = keyNote(e.code);
+  if (n == null || e.repeat || held.has(e.code)) return;
+  e.preventDefault();
+  held.set(e.code, n); play(n, vel());
+});
+window.addEventListener('keyup', e => {
+  if (e.code === 'Space') { if (!sustainLatched) setSustain(false); return; }
+  if (!held.has(e.code)) return;
+  stop(held.get(e.code)); held.delete(e.code);
+});
+window.addEventListener('blur', () => { releaseAllKeys(); if (!sustainLatched) setSustain(false); });
+
+// ── Web MIDI (midi_input.js) ─────────────────────────────────────
+try { if (typeof MidiInput === 'function') { mi = new MidiInput({ role: 'lead' }); mi.start(); } } catch (e) { mi = null; }
+if (mi) {
+  const midiBadge = () => {
+    const b = $('b-midi'), s = mi.snapshot();
+    if (mi.status === 'connected') { b.className = 'badge ok'; b.textContent = 'MIDI: ' + (s.inName || 'in').slice(0, 24); }
+    else { b.className = 'badge' + (mi.status === 'unsupported' || mi.status === 'denied' ? ' bad' : ''); b.textContent = 'MIDI: ' + mi.status; }
+  };
+  ['midiinput-status', 'midiinput-connected', 'midiinput-disconnected'].forEach(ev => window.addEventListener(ev, midiBadge));
+  midiBadge();
+  window.addEventListener('midiinput-connected', ensureAudio);
+} else $('b-midi').textContent = 'MIDI: unavailable';
+window.addEventListener('midiinput-note', e => {
+  const d = e.detail;
+  _fromMidi = true;
+  try { if (d.on && d.vel > 0) play(d.note, d.vel); else stop(d.note); } finally { _fromMidi = false; }
+});
+window.addEventListener('midiinput-cc', e => { const d = e.detail; if (d.target) return; smp.cc(d.cc, d.norm); if (d.cc === 1) $('mw').value = d.norm; });
+window.addEventListener('midiinput-pitchbend', e => { smp.pitchBend(e.detail.value); $('pb').value = e.detail.value; });
+
+smp.on('load', markRange);
+buildKbd();
+</script>
+</body>
+</html>

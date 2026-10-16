@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AUDIO DIRECTOR · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0; --blue: #8ab4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; font-size: 12px; }
+  body { display: grid; grid-template-rows: auto 1fr auto; }
+  header { padding: 6px 12px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.2em; color: var(--gold-hi); font-weight: normal; }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 3px 7px; border: 1px solid var(--rule); color: var(--text-dim); white-space: nowrap; }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .badge.cand { color: var(--blue); border-color: var(--blue); }
+  .badge.real { color: var(--violet); border-color: var(--violet); }
+  #b-counts { max-width: 330px; overflow: hidden; text-overflow: ellipsis; }
+  select, input[type=number], input[type=text], textarea { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 12px; padding: 4px 6px; min-height: 36px; }
+  textarea { width: 100%; min-height: 54px; resize: vertical; }
+  input[type=number] { width: 70px; }
+  input[type=range] { accent-color: var(--rust); min-height: 36px; }
+  input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--rust); vertical-align: middle; }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 4px 10px; min-height: 36px; min-width: 36px; font-family: inherit; font-size: 11px; letter-spacing: 0.06em; cursor: pointer; touch-action: manipulation; }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  button.armed { background: var(--red); color: #fff; border-color: #ffb0a0; }
+  button.go { border-color: var(--emerald); color: var(--emerald-hi); }
+  button.no { border-color: var(--red); color: #f0a090; }
+  main { display: grid; grid-template-columns: 410px 1fr; min-height: 0; overflow: hidden; }
+  /* the Deck at 125 % zoom (≈ 1024 × 640) and smaller: a narrower track list, a tighter header */
+  @media (max-width: 1150px) { main { grid-template-columns: 320px 1fr; } header { gap: 5px; } #b-counts { display: none; } }
+  @media (max-width: 860px) { main { grid-template-columns: 250px 1fr; } }
+  .left { border-right: 1px solid var(--rule); display: grid; grid-template-rows: auto auto 1fr; min-height: 0; }
+  .filters { padding: 6px 8px; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+  .filters input[type=text] { flex: 1; min-width: 120px; }
+  .chips button { padding: 4px 7px; }
+  #list { overflow-y: auto; min-height: 0; }
+  .tr { display: grid; grid-template-columns: 30px 1fr auto; gap: 4px; align-items: center; padding: 5px 8px 5px 4px; border-bottom: 1px solid #2a1c12; cursor: pointer; min-height: 48px; }
+  .tr:hover { background: var(--bg-1); }
+  .tr.sel { background: var(--ink); box-shadow: inset 3px 0 0 var(--rust); }
+  .tr .nm b { color: var(--gold-hi); font-weight: normal; }
+  .tr .nm { min-width: 0; }
+  #t-status .badge + .badge { margin-left: 4px; }
+  .tr .nm i { color: var(--text-dim); font-style: normal; font-size: 10px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tr > div:last-child { display: flex; flex-direction: column; gap: 2px; align-items: flex-end; }
+  .tr .cb { display: flex; align-items: center; justify-content: center; height: 40px; width: 30px; cursor: pointer; }
+  .right { overflow-y: auto; min-height: 0; padding: 8px 14px 40px; }
+  h2 { margin: 12px 0 6px; color: var(--gold); font-size: 11px; letter-spacing: 0.16em; border-bottom: 1px solid var(--rule); padding-bottom: 3px; font-weight: normal; display: flex; gap: 8px; align-items: center; }
+  h2 .sp { flex: 1; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+  .row > label { color: var(--text-dim); min-width: 70px; }
+  .note { color: var(--text-dim); font-size: 11px; line-height: 1.45; font-style: italic; }
+  .msg { color: var(--emerald-hi); font-size: 11px; min-height: 15px; margin: 4px 0; }
+  .msg.err { color: var(--red); }
+  .kv { display: grid; grid-template-columns: 90px 1fr; gap: 2px 8px; font-size: 11px; }
+  .kv b { color: var(--text-dim); font-weight: normal; }
+  .take { border: 1px solid var(--rule); background: var(--bg-1); padding: 6px 8px; margin-bottom: 6px; display: grid; grid-template-columns: 40px 1fr auto; gap: 8px; align-items: start; }
+  .take.cur { border-color: var(--rust); box-shadow: 0 0 0 1px var(--rust) inset; }
+  .take.rejected { opacity: 0.5; }
+  .take.approved { border-color: var(--emerald); }
+  .take .num { font-size: 20px; color: var(--gold-hi); text-align: center; border: 1px solid var(--rule); min-height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .take .bt { display: flex; flex-direction: column; gap: 4px; }
+  .take .mood { color: var(--emerald-hi); }
+  .take .req { color: var(--amber); font-size: 11px; }
+  .transport { position: sticky; top: -8px; z-index: 3; background: var(--bg-0); border: 1px solid var(--rule); padding: 6px 8px; margin: 6px 0; }
+  #seek { width: 100%; height: 54px; display: block; background: var(--bg-1); border: 1px solid var(--rule); cursor: pointer; touch-action: none; }
+  .time { font-size: 16px; color: var(--gold-hi); min-width: 130px; }
+  .layers { display: flex; gap: 6px; flex-wrap: wrap; }
+  .lamp { border: 1px solid var(--rule); padding: 3px 6px; font-size: 10px; min-width: 64px; position: relative; overflow: hidden; }
+  .lamp i { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--emerald-hi); }
+  .lamp.on { color: var(--emerald-hi); border-color: var(--emerald); }
+  #curve { width: 100%; height: 90px; display: block; background: var(--bg-1); border: 1px solid var(--rule); touch-action: none; }
+  .line { border-left: 3px solid var(--rust); padding: 4px 8px; margin: 4px 0; min-height: 40px; color: var(--gold-hi); font-size: 13px; }
+  .line.next { border-color: var(--rule); color: var(--text-dim); font-size: 11px; min-height: 0; }
+  .line .who { color: var(--amber); }
+  .box { border: 1px solid var(--rule); padding: 6px 8px; background: var(--bg-1); }
+  .roles button { min-width: 64px; }
+  .instr { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px; }
+  .instr button { text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.78); display: none; z-index: 60; }
+  .modal.show { display: flex; align-items: center; justify-content: center; }
+  .modal .mbox { background: var(--bg-0); border: 1px solid var(--gold); width: min(1100px, 96vw); height: min(720px, 94vh); display: grid; grid-template-rows: auto 1fr; }
+  .modal .mhead { display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--rule); }
+  .modal .mbody { overflow-y: auto; padding: 6px 10px 30px; }
+  .grp { margin: 8px 0 3px; color: var(--gold); letter-spacing: 0.12em; font-size: 11px; }
+  /* MAKE TAKES: compact rows, the rarer settings folded away, the MAKE button pinned while the box is in view */
+  .row .lb { color: var(--text-dim); font-size: 11px; margin-left: 6px; }
+  #regen select { max-width: 150px; }
+  #regen input[type=number]#r-bpm { width: 64px; }
+  #regen details { margin: 6px 0 2px; border-top: 1px dashed var(--rule); }
+  #regen summary { cursor: pointer; min-height: 36px; display: flex; align-items: center; gap: 8px; color: var(--gold); letter-spacing: 0.12em; font-size: 11px; list-style: none; flex-wrap: wrap; }
+  #regen summary::-webkit-details-marker { display: none; }
+  #regen summary::before { content: '▸'; color: var(--gold-hi); }
+  #regen details[open] > summary::before { content: '▾'; }
+  #regen summary .note { letter-spacing: 0; font-style: normal; }
+  #quickmsg { min-height: 0; margin: 0 0 2px 76px; color: var(--amber); font-style: normal; }
+  #quick button, #ensembles button, #variety button { padding: 4px 8px; }
+  .makebar { position: sticky; bottom: 0; z-index: 2; background: var(--bg-1); margin: 8px -8px -6px; padding: 6px 8px; border-top: 1px solid var(--rule); }
+  .chipset { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chipset button { min-height: 38px; }
+  #cov-tracks button, #cov-srcs button { text-align: left; }
+  footer { border-top: 1px solid var(--rule); padding: 4px 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  footer code { color: var(--gold-hi); background: var(--ink); padding: 2px 6px; }
+  .empty { padding: 30px; color: var(--text-dim); text-align: center; line-height: 1.7; }
+  kbd { border: 1px solid var(--rule); padding: 0 4px; color: var(--gold-hi); font-family: inherit; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AUDIO DIRECTOR</h1>
+  <span class="badge" id="b-ver" title="the build of the tools on this page — after a pull it should show the newest date (if not: Ctrl+Shift+R)">build 2026-10-16 · covers 2</span>
+  <span class="badge" id="b-folder">GAME FOLDER: —</span>
+  <button id="link">⌂ LINK GAME FOLDER</button>
+  <button class="dim" id="refresh" title="re-read catalog, briefs, approvals and review staging">⟳ RESCAN</button>
+  <button class="dim" id="shrink" disabled title="re-encode every temp still in the game as WAV (approved before Ogg) to Ogg Vorbis, about a tenth of the size; real audio is never touched">⇣ SHRINK WAV TEMPS</button>
+  <button class="go" id="coverbtn" title="make sketch covers of a song file (mp3 / ogg / wav …) for a track — transcribed, re-played by our instruments, flagged TEMP ONLY unless you clear its rights">♫ COVER A SONG…</button>
+  <span class="badge" id="b-counts">—</span>
+  <span class="badge" id="b-daw" title="MAKE TAKES composes and renders right here (no DAW tab)">STUDIO: ready</span>
+  <span style="flex:1"></span>
+  <label class="note">who <input type="text" id="who" style="width:110px" placeholder="your name"></label>
+  <button id="helpbtn" title="how to approve a song, step by step">? HOW TO</button>
+  <button class="dim" id="diagbtn" title="copy what happened (messages, errors, the audio engine's log) — paste it to Claude">DIAG</button>
+  <a href="index.html" style="color:var(--text-dim)">tools</a>
+</header>
+<main>
+  <div class="left">
+    <div class="filters chips" id="chips">
+      <button data-f="all" class="on">ALL</button><button data-f="missing">MISSING</button><button data-f="candidates">CANDIDATES</button><button data-f="approved">APPROVED TEMP</button><button data-f="real">REAL AUDIO</button><button data-f="covers" title="tracks with a cover / sample take (third-party, TEMP ONLY)">⚠ COVERS</button>
+    </div>
+    <div class="filters">
+      <select id="vol"><option value="">every volume</option></select>
+      <input type="text" id="q" placeholder="search id / title / character">
+      <label class="note" title="only tracks the VN scenes play (from the director's briefs)"><input type="checkbox" id="played"> played</label>
+    </div>
+    <div id="list"><div class="empty">Link the game folder (the modern-mythology folder or its godot/ folder).<br>Tracks, their briefs and the DAW's candidate takes show up here.</div></div>
+  </div>
+  <div class="right" id="right">
+    <div class="empty" id="welcome">
+      Pick a track on the left.<br>
+      Its takes, <b>⚄ MAKE TAKES</b> and <b>⤳ REMIX</b> (covers and remixes of finished music — including songs you ⇪ IMPORT) open on the right; <b>⤳ REMIX ↓</b> in the TAKES header jumps to it.<br>
+      <kbd>↑</kbd><kbd>↓</kbd> track · <kbd>1</kbd>–<kbd>9</kbd> take (A/B at the same spot) · <kbd>space</kbd> play / stop · <kbd>[</kbd><kbd>]</kbd> intensity · <kbd>a</kbd> approve · <kbd>x</kbd> reject (twice) · <kbd>l</kbd> loop
+    </div>
+    <div id="track" style="display:none">
+      <div class="row">
+        <button class="dim" id="prev" title="previous track (↑)">◀</button>
+        <div style="flex:1"><b id="t-title" style="color:var(--gold-hi);font-size:15px;font-weight:normal"></b> <span id="t-status"></span><br><span class="note" id="t-src"></span></div>
+        <button class="dim" id="next" title="next track (↓)">▶</button>
+      </div>
+      <div class="msg" id="msg" style="height:30px;overflow-y:auto"></div>
+
+      <div class="transport">
+        <div class="row">
+          <button id="play" title="space">▶ PLAY</button>
+          <span class="time" id="time">0:00 / 0:00</span>
+          <button class="dim" id="loop" title="l">⟲ LOOP</button>
+          <span class="note" id="ab">—</span>
+        </div>
+        <canvas id="seek"></canvas>
+        <div class="row">
+          <label title="the game's stem layers: 0 pad + chords · 0.25 + bass · 0.5 + drums · 0.75 + lead">INTENSITY</label>
+          <input type="range" id="int" min="0" max="1" step="0.01" value="1" data-default="1" style="width:180px">
+          <b id="intv" style="color:var(--gold-hi);min-width:36px">1.00</b>
+          <button class="dim" data-int="0">0</button><button class="dim" data-int="0.25">.25</button><button class="dim" data-int="0.5">.5</button><button class="dim" data-int="0.75">.75</button><button class="dim" data-int="1">1</button>
+        </div>
+        <div class="layers" id="layers"></div>
+      </div>
+
+      <h2>PLAY AS SCENE <span class="sp"></span><span class="note">drives the intensity along the director's curve for that scene, as AudioMgr would</span></h2>
+      <div class="row">
+        <select id="scene" style="flex:1;min-width:200px"></select>
+        <select id="pace" title="reading pace"><option value="0.5">fast reader</option><option value="1" selected>normal reader</option><option value="2">slow reader</option></select>
+        <button id="sceneplay">▶ PLAY AS SCENE</button>
+      </div>
+      <canvas id="curve"></canvas>
+      <div class="line" id="line">—</div>
+      <div class="line next" id="line2"></div>
+      <div class="note" id="sceneinfo"></div>
+
+      <h2>TAKES <button class="go" id="make2" title="make takes for this track with the settings in MAKE TAKES below">⚄ MAKE TAKES</button><button class="dim" id="tosettings" title="the take settings: how many, direction, style, parts, instruments">⚙ SETTINGS ↓</button><button class="dim" id="toremix" title="REMIX: takes for this track made from finished music — any take, a recording, or a song you ⇪ IMPORT">⤳ REMIX ↓</button><span class="sp"></span><label class="note"><input type="checkbox" id="showrej"> rejected</label><label class="note" title="REJECT also deletes the take's files (its seed stays recorded)"><input type="checkbox" id="rejdel"> reject deletes files</label></h2>
+      <div class="row"><label>NOTES</label><input type="text" id="notes" style="flex:1" placeholder="why — goes into temp_approvals.json with the approval / rejection"></div>
+      <div id="takes"></div>
+      <div class="row"><button class="dim" id="revoke" title="remove the approved temp from the game path (never real audio)">✕ REVOKE APPROVED TEMP</button><span class="note" id="revnote"></span></div>
+
+      <h2>BRIEF <span class="sp"></span><span class="note" id="briefsrc"></span></h2>
+      <div class="kv" id="brief"></div>
+
+      <h2>MAKE TAKES <span class="sp"></span><span class="note">composed and rendered right here — each take shows up under TAKES when it's done</span></h2>
+      <div class="box" id="regen">
+        <div class="row"><label>FOR</label><span id="forwho" class="note"></span></div>
+        <div class="row"><label>TAKES</label><span class="chipset" id="ntakes"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button><button data-n="6">6</button></span>
+          <span class="lb" title="how different the takes of one request are">VARIETY</span><span class="chipset" id="variety"><button data-v="close" title="same style, key, tempo and instruments — only the notes change">close</button><button data-v="" class="on" title="same style, the instruments vary per take (the default)">mixed</button><button data-v="wide" title="take 1 keeps the brief's style, every other take a different but compatible one">wide</button><button data-v="wild" title="any style, any ensemble — for discovery">wild</button></span></div>
+        <div class="row"><label title="one tap fills the panel with a flavour; it says below what it set">QUICK</label><span class="chipset" id="quick"></span></div>
+        <div class="note" id="quickmsg"></div>
+        <div class="row"><label>DIRECTION</label><textarea id="desc" placeholder="e.g. slower, more dread, a lonely piano over rain — overrides style / mode / pace words from the catalog text"></textarea></div>
+        <div class="row"><label title="an instrument family: each take draws its own line-up from it (INSTRUMENTS picks still win)">ENSEMBLE</label><span class="chipset" id="ensembles"></span></div>
+        <div class="row"><label>STYLE</label><select id="r-style"><option value="">auto</option></select><select id="r-mode"><option value="">auto mode</option></select><select id="r-form"><option value="">auto form</option></select></div>
+        <div class="row"><label>MUSIC</label>
+          <span class="lb">KEY</span><select id="r-key" title="the tonic: auto (the score / the volume's key family), the volume's home key, or a note"><option value="">auto</option><option value="home">volume home</option></select>
+          <span class="lb">BPM</span><input type="number" id="r-bpm" min="30" max="240" placeholder="auto" title="blank: from the brief and style; a number is the final tempo">
+          <span class="lb">FEEL</span><select id="r-feel"><option value="">auto</option></select>
+          <span class="lb">HARMONY</span><select id="r-harm"><option value="">auto</option></select>
+          <span class="lb">PROG</span><select id="r-prog" title="the progression family the chords are drawn from"><option value="">auto</option></select></div>
+        <div class="row"><label>ENERGY</label><input type="range" id="r-energy" min="-0.5" max="0.5" step="0.05" value="0" data-default="0" style="width:140px" title="nudges tempo / density from the brief"><b id="r-energyv" style="min-width:40px">±0</b>
+          <span class="lb">DENSITY</span><label class="note"><input type="checkbox" id="r-densauto" checked> auto</label><input type="range" id="r-dens" min="0.1" max="0.95" step="0.05" value="0.55" data-default="0.55" style="width:120px" disabled><b id="r-densv">auto</b></div>
+        <div class="row"><label>LENGTH</label><select id="r-lenmode"><option value="">auto (≥ 90 s)</option><option value="sec">seconds</option><option value="bars">bars</option></select><input type="number" id="r-len" min="1" max="900" value="90" disabled><label class="note" title="a seamless loop: the game then loops it forever (the loop goes in the Ogg temp's manifest) — only for beds"><input type="checkbox" id="r-loop"> seamless loop points</label></div>
+        <div class="row"><label title="the whole take through a tape machine after it renders: magnetic hysteresis, head losses at the tape speed, wow &amp; flutter, hiss and wear — a physical model after CHOW Tape (tape_model.js)">TAPE</label><select id="r-tape"><option value="">no tape</option></select><span class="note" id="r-tapenote">every stem through the same machine, so the layers still line up in the game</span></div>
+        <details id="more"><summary>MORE — sound design · parts · extra pads · seed <span class="note" id="moresum"></span></summary>
+          <div class="row"><label title="ambience beds under the music (up to two)">TEXTURE</label><select id="r-tex"></select><select id="r-tex2"></select>
+            <span class="lb" title="risers / swells into a lift">FX</span><select id="r-fx"></select><span class="lb" title="one-shots on a lift">HIT</span><select id="r-hit"></select></div>
+          <div class="row roles"><label>PARTS</label><span class="chipset" id="roles"></span></div>
+          <div class="row"><label>EXTRA PADS</label><span class="chipset" id="pads"><button data-p="0" class="on">0</button><button data-p="1">+1 (octave up)</button><button data-p="2">+2 (+ sub drone)</button></span></div>
+          <div class="row"><label>SEED</label><input type="number" id="r-seed" style="width:140px" placeholder="new"><span class="note">blank: a fresh seed per take, never a rejected one</span></div>
+        </details>
+        <details id="moreinst"><summary>INSTRUMENTS — per role, over the ensemble <span class="note" id="instrsum"></span></summary>
+          <div class="instr" id="instr"></div>
+        </details>
+        <div class="row makebar"><button class="go" id="make">⚄ MAKE TAKES</button><button class="dim" id="resetregen">reset</button><span class="msg" id="makemsg"></span></div>
+      </div>
+
+      <h2>REMIX <span class="sp"></span><span class="note">new takes for this track made from finished music — any take, an approved one, a recording</span></h2>
+      <div class="box" id="remix">
+        <div class="row"><label>FROM</label><select id="rx-from" style="flex:1;min-width:220px"></select><button class="dim" id="rx-import" title="bring any audio file (mp3, ogg, wav, flac, m4a) in as a REMIX source — for sketching. Unless you mark it cleared, every take made from it is flagged TEMP ONLY">⇪ IMPORT AUDIO…</button><input type="file" id="rx-file" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac" style="display:none"></div>
+        <div class="row" id="rx-importrow" style="display:none"><label>RIGHTS</label><select id="rx-rights"><option value="unlicensed">someone else's music — takes are flagged TEMP ONLY (cover / sample)</option><option value="cleared">mine / public domain / licensed — not flagged</option></select><button class="go" id="rx-importgo">⇪ IMPORT</button><button class="dim" id="rx-importno">cancel</button><span class="note" id="rx-importname"></span></div>
+        <div class="row"><label>RECIPE</label><span class="chipset" id="rx-recipes"></span></div>
+        <div class="row"><label></label><span class="note" id="rx-hint"></span></div>
+        <div class="row" id="rx-withrow" style="display:none"><label>WITH</label><select id="rx-with" style="flex:1;min-width:220px"></select><span class="note">its theme</span></div>
+        <div class="row"><label>STYLE</label><select id="rx-style"><option value="">auto</option></select><select id="rx-key" title="NOTES recipes: the key the remix plays in"><option value="">key: auto (this track's home)</option></select><select id="rx-tape" title="the remix through a tape machine after it renders (tape_model.js)"><option value="">no tape</option></select>
+          <label>TAKES</label><span class="chipset" id="rx-n"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button></span></div>
+        <div class="row" style="margin-top:8px"><button class="go" id="rx-go">⤳ REMIX</button><span class="msg" id="rxmsg"></span></div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <span class="note" id="foot">music stays out of git — after approving, back it up to Google Drive:</span><code>godot/tools/music_drive.sh push</code>
+  <span style="flex:1"></span>
+  <span class="note" id="dawmsg"></span>
+</footer>
+
+<div class="modal" id="covdlg"><div class="mbox" style="height:auto;max-height:94vh">
+  <div class="mhead"><b style="color:var(--gold-hi);font-weight:normal;letter-spacing:0.14em">♫ COVER A SONG</b><span style="flex:1"></span><button id="cov-close">✕ CLOSE</button></div>
+  <div class="mbody" style="font-size:13px;line-height:1.6">
+    <div class="note">A sketch cover: the song is transcribed (tempo, key, chords, sections, melody, bass) and re-played by our instruments in the style you pick. The takes land under TAKES of the track below, like any take.</div>
+    <div class="row"><label>SONG</label><span class="chipset" id="cov-srcs" style="flex:1"></span><button class="dim" id="cov-pick">⇪ NEW FILE…</button><input type="file" id="cov-file" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac" style="display:none"></div>
+    <div class="row" id="cov-newrow" style="display:none"><label>RIGHTS</label><select id="cov-rights"><option value="unlicensed">someone else's music — flagged ⚠ TEMP ONLY</option><option value="cleared">mine / public domain / licensed — not flagged</option></select><span class="note" id="cov-fname"></span></div>
+    <div class="row"><label>FOR TRACK</label><b id="cov-cur" style="color:var(--gold-hi);font-weight:normal"></b><input type="text" id="cov-q" placeholder="search tracks (title, id, volume)" style="flex:1;min-width:160px"><label class="note"><input type="checkbox" id="cov-missing"> missing only</label></div>
+    <div class="chipset" id="cov-tracks" style="max-height:200px;overflow-y:auto;margin:0 0 4px 76px"></div>
+    <div class="row"><label>STYLE</label><select id="cov-style"><option value="">auto (the track's own)</option></select><select id="cov-tape"><option value="">no tape</option></select>
+      <label>TAKES</label><select id="cov-n"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+    <div class="row" style="margin-top:8px"><button class="go" id="cov-go">⤳ MAKE COVER</button><span class="msg" id="covmsg"></span></div>
+    <div class="note">Flagged covers can't reach a release build: the game never plays them, and <code>python3 godot/tools/music_release_check.py --strip</code> removes them before an export. Track list → <b>⚠ COVERS</b> shows every track that has one.</div>
+  </div>
+</div></div>
+<div class="modal" id="help"><div class="mbox" style="height:auto;max-height:94vh">
+  <div class="mhead"><b style="color:var(--gold-hi);font-weight:normal;letter-spacing:0.14em">HOW TO APPROVE A SONG</b><span style="flex:1"></span><button id="help-close">✕ CLOSE</button></div>
+  <div class="mbody" style="font-size:13px;line-height:1.6">
+    <ol>
+      <li><b>⌂ LINK GAME FOLDER</b> (top left) → pick the <code>godot</code> folder inside your checkout (<code>…/mm-fm1/godot</code>) → Chrome asks to let the page edit files → <b>Allow</b>. The badge then reads <i>GAME FOLDER: godot</i>. After a restart the button may say <b>⌂ ALLOW GAME FOLDER</b>: tap it once. <b>Without this, APPROVE can't put anything in the game.</b></li>
+      <li>Type your name in <b>who</b> (top right) — it goes into the approval record.</li>
+      <li>Pick a track in the list on the left. <b>CANDIDATES</b> shows tracks with takes waiting for a verdict; <b>MISSING</b> shows tracks with no music yet.</li>
+      <li>No takes yet? Tap <b>⚄ MAKE TAKES</b> in the TAKES header. To steer them first, <b>⚙ SETTINGS ↓</b> jumps to the box where you set how many (1–6) and can write a <b>DIRECTION</b> (“slower, a lonely piano over rain”). They are composed and rendered right here — the message under the button counts through each take (composing → rendering stems → saving), and each one appears under TAKES as soon as it's done. Keep this page open while it works.</li>
+      <li>Steering the takes (all optional — blank / <i>auto</i> means the brief decides): a <b>QUICK</b> chip (<i>lonely night</i>, <i>chase</i>, <i>dread</i>, <i>neon</i> …) fills the panel with a flavour and the line under it says what it set; <b>🎲 SURPRISE ME</b> rolls a style, an ensemble that suits it, a feel, a harmony and a sound. <b>ENSEMBLE</b> picks an instrument family (orchestra, jazz, rock, choir, chiptune, lo-fi …) and each take draws its own line-up from it. <b>VARIETY</b>: <i>close</i> keeps style and instruments and changes only the notes, <i>mixed</i> varies the instruments, <i>wide</i> gives each take after the first a different but related style, <i>wild</i> anything. <b>MUSIC</b> sets KEY (or the volume's home key), BPM, FEEL (straight, swung, shuffle, half / double time), HARMONY (plain, sevenths, lush 9ths, open, modal) and the PROGression family. <b>MORE</b> holds the sound design (ambience beds, risers, hits), parts, extra pads and the seed; <b>INSTRUMENTS</b> picks one role by hand and wins over the ensemble.</li>
+      <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
+      <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
+      <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
+      <li><b>♫ COVER A SONG…</b> (top bar) is the quick way: pick the song file and its rights, the track it's for, a style → <b>⤳ MAKE COVER</b>. <b>⇪ IMPORT AUDIO…</b> (in REMIX) brings any mp3 / ogg / wav in as a source. Pick its RIGHTS: someone else's music makes every take from it <b>⚠ TEMP ONLY</b> (a cover or a sample — flagged on the take, its approval and the game's manifest; a release build never plays it, and <code>python3 godot/tools/music_release_check.py --strip</code> removes them before an export). The NOTES recipes (COVER, RESTYLE …) transcribe it first: tempo, key, chords, sections, and the melody + bass when vendor/basicpitch is there — rough on full mixes, so clean the lead up with ✎ EDIT IN DAW.</li>
+      <li><b>REMIX</b> (under MAKE TAKES) makes takes for this track out of music that's already done: pick a take (any track's — an approved one is marked), a recording or an approved temp under <b>FROM</b>, a <b>RECIPE</b>, then <b>⤳ REMIX</b>. RESTYLE / COVER / VARIATIONS / UNDERSCORE / INTENSE / DREAM / BLEND re-compose the take's own chords, sections and theme (they need a take made here); CHOP / DUB / STRETCH / TAPE cut up the audio itself (anything that plays) over new drums and bass. Every take row has <b>⤳ REMIX</b> to start from it. Remixes land under TAKES like any other take.</li>
+      <li>None good? Change the DIRECTION / STYLE / ENSEMBLE / VARIETY / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings (its style, line-up, feel and sound — the card shows what it got). Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
+      <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
+      <li>Songs approved before the Ogg change are still big WAVs in the game: <b>⇣ SHRINK … WAV TEMPS → OGG</b> (top bar) re-encodes all of them in one go and deletes the WAVs. Only temps — never real audio.</li>
+      <li>When you're done: back the music up (it never goes in git) and commit the approval list — see the commands at the bottom of the page / from Claude.</li>
+    </ol>
+    <div class="note">Keys: ↑ ↓ track · 1–6 pick a take · space play / stop · a approve · x reject · v revoke · l loop.</div>
+  </div>
+</div></div>
+<div class="modal" id="picker"><div class="mbox">
+  <div class="mhead"><b id="pk-title" style="color:var(--gold-hi);font-weight:normal"></b><input type="text" id="pk-q" placeholder="search" style="flex:1"><button id="pk-close">✕ CLOSE</button></div>
+  <div class="mbody" id="pk-body"></div>
+</div></div>
+
+<script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
+<script src="seqgen.js"></script>
+<script src="forge_synth.js"></script>
+<script src="patch_sources.js"></script>
+<script src="sampler.js"></script>
+<script src="dx7_synth.js"></script>
+<script src="patch_bank.js"></script>
+<script src="tape_model.js"></script>
+<script src="daw_fx.js"></script>
+<script src="daw_perf.js"></script>
+<script src="smf.js"></script>
+<script src="daw_engine.js"></script>
+<script src="temp_maker.js"></script>
+<script src="remix.js"></script>
+<script src="transcribe_notes.js"></script>
+<script>
+"use strict";
+// AUDIO DIRECTOR — review the DAW's candidate temp tracks, approve one into the game, reject the rest.
+//
+// Staging (MAKE TAKES here, or the DAW's TEMP TRACKS — both through temp_maker.js):
+//   godot/assets/audio/review/<track id>/<take id>/ mix.wav · stems/<role>.wav · stems.json · credits.txt · meta.json
+// APPROVE encodes a take to Ogg Vorbis (AK.game.writeMusic) where AudioMgr looks for the catalog track:
+//   <src base>.temp.ogg · <src base>.stems/<role>.ogg · <src base>.stems.json (temp, loop) · <src base>.temp.ogg.credits.txt
+// and records it in godot/resources/music/temp_approvals.json (committed: the take's mood / seed / request,
+// so it regenerates identically; format and bytes). A real .ogg / .mp3 at the catalog src always wins and is
+// never touched; a .wav that isn't a temp (a FIELD RECORDER / TAPE STUDIO take) counts as real audio too.
+// Temps approved before Ogg are <src base>.wav titled "(temp)": still recognised, revocable, and SHRINK
+// re-encodes them to Ogg in place.
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const REVIEW_DIR = 'assets/audio/review';
+const APPROVALS = 'resources/music/temp_approvals.json';
+// texture: the ambience bed · fx: transitions + hits · perc / arp / counter / double: the arrangement parts (TempMaker.ARR_ROLES)
+const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad', 'perc', 'arp', 'counter', 'double', 'texture', 'fx'];
+const EXTRA_PADS = ['pad2', 'pad3'];
+// AudioMgr.gd: stem layer thresholds, its fade (STEM_FADE) and the director's send fade
+const LAYER = { pad: 0, chords: 0, bass: 0.25, perc: 0.4, drums: 0.5, arp: 0.5, lead: 0.75, counter: 0.75, double: 0.9 };   // = TempMaker.STEM_LAYER
+const STEM_FADE = 1.5, DIRECTOR_FADE = 0.4;
+const layerOn = (layer, level) => level + 0.0001 >= layer;          // AudioMgr.set_music_intensity's rule
+const fmt = s => { s = Math.max(0, s || 0); return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0'); };
+const baseOf = src => src.replace(/\.[^.\/]+$/, '');
+const extOf = src => (src.match(/\.([^.\/]+)$/) || [])[1] || '';
+// every message the page shows (and every page error) also goes into a log DIAG copies
+const LOG = [];
+function logLine(kind, text) { LOG.push(new Date().toISOString().slice(11, 19) + ' ' + kind + ' ' + String(text).slice(0, 400)); if (LOG.length > 300) LOG.shift(); }
+function msg(text, err, id = 'msg') { logLine(err ? 'ERR' : 'msg', '[' + id + '] ' + text); const e = $(id); if (!e) return; e.textContent = text; e.classList.toggle('err', !!err); }
+window.addEventListener('error', e => logLine('PAGE', (e.message || e) + (e.filename ? ' @ ' + e.filename.split('/').pop() + ':' + e.lineno : '')));
+window.addEventListener('unhandledrejection', e => logLine('PAGE', 'unhandled: ' + ((e.reason && (e.reason.stack || e.reason.message)) || e.reason)));
+
+const DIR = {
+  cat: [], briefs: {}, approvals: { tracks: {} }, state: {}, order: [], filter: 'all',
+  sel: null,            // selected track id
+  checked: new Set(),   // tracks ticked for batch MAKE TAKES
+  takes: [],            // metas of the selected track's takes (shown order)
+  cur: -1,              // index into takes of the take loaded in the player
+  defaults: { attack_sec: 2.5, release_sec: 8 },
+  regen: null,
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// game folder · catalog · briefs · approvals · staging scan
+// ═══════════════════════════════════════════════════════════════════
+function folderBadge() {
+  const ok = !!AK.game.root;
+  $('b-folder').textContent = ok ? 'GAME FOLDER: ' + (AK.game.root.name || 'linked') : AK.game._pending ? 'GAME FOLDER: tap to re-allow' : 'GAME FOLDER: not linked';
+  $('b-folder').className = 'badge ' + (ok ? 'ok' : 'warn');
+  $('link').textContent = AK.game._pending && !ok ? '⌂ ALLOW GAME FOLDER' : '⌂ LINK GAME FOLDER';
+}
+async function readJson(path, fallback) { try { return JSON.parse(await AK.game.readText(path)); } catch (e) { return fallback; } }
+async function readApprovals() {
+  const j = await readJson(APPROVALS, null) || {};
+  return Object.assign({ _doc: APPROVALS_DOC, v: 1, tracks: {} }, j, { tracks: j.tracks || {} });
+}
+const APPROVALS_DOC = 'Written by godot/tools/audio_director.html — never hand-edit. Per catalog track id: the APPROVED temp take ' +
+  '(take id, mood {style, form, mode, key, bpm, density, seed}, the request it was made with, instruments, date, who, notes, ' +
+  'loudness, files it wrote) so it can be regenerated identically, every REJECTED seed (new takes skip them) and the history. ' +
+  'The audio itself lives in Google Drive (godot/tools/music_drive.sh), never in git. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.';
+async function writeApprovals(j) {
+  const out = { _doc: APPROVALS_DOC, v: 1, tracks: {} };
+  for (const id of Object.keys(j.tracks).sort()) out.tracks[id] = j.tracks[id];
+  await AK.game.write(APPROVALS, new Blob([JSON.stringify(out, null, 1) + '\n'], { type: 'application/json' }));
+  DIR.approvals = out;
+}
+// a .wav at the game path: ours (a temp — "(temp)" title / mmjs temp flag) or real audio someone recorded?
+const wavKind = path => AK.game.wavKind(path);
+async function scanTakes(id) {
+  const out = [];
+  for (const e of await AK.game.list(REVIEW_DIR + '/' + id)) {
+    if (e.kind !== 'directory') continue;
+    const m = await readJson(REVIEW_DIR + '/' + id + '/' + e.name + '/meta.json', null);
+    if (m) out.push(Object.assign(m, { take: m.take || e.name, dir: REVIEW_DIR + '/' + id + '/' + e.name + '/' }));
+  }
+  // a rejected take stays rejected even if its folder came back (a Drive pull restores deleted takes) — by take id,
+  // since an edit sent from the DAW shares its original's seed
+  const rej = new Set(((DIR.approvals.tracks[id] || {}).rejected || []).map(r => r.take).filter(Boolean));
+  for (const m of out) if (m.status !== 'rejected' && m.status !== 'approved' && rej.has(m.take)) m.status = 'rejected';
+  return out.sort((a, b) => (a.created || '').localeCompare(b.created || '') || a.take.localeCompare(b.take));
+}
+async function scanTrack(t) {
+  const ext = extOf(t.src).toLowerCase(), base = baseOf(t.src);
+  const real = ext !== 'wav' && await AK.game.exists(t.src);
+  const wav = await wavKind(base + '.wav');
+  // the temp in the game: 'ogg' (<base>.temp.ogg) · 'wav' (an older "(temp)" .wav — SHRINK makes it Ogg) · null
+  // (an older .wav temp plays before a .temp.ogg in AudioMgr, so while one is there it is what counts)
+  const temp = wav === 'temp' ? 'wav' : await AK.game.exists(base + '.temp.ogg') ? 'ogg' : null;
+  const takes = await scanTakes(t.id);
+  const approved = (DIR.approvals.tracks[t.id] || {}).approved || null;
+  const cand = takes.filter(m => m.status !== 'rejected').length;
+  const status = real || wav === 'real' ? 'real' : temp ? 'approved' : cand ? 'candidates' : 'missing';
+  return DIR.state[t.id] = { real, wav, temp, takes, approved, cand, status };
+}
+async function refresh() {
+  if (!AK.game.root) { folderBadge(); return; }
+  folderBadge();
+  try { DIR.cat = (await AK.game.catalog()).filter(t => t.src); } catch (e) { msg('catalog unreadable: ' + e.message, true); return; }
+  const b = await readJson('resources/music/temp_briefs.json', { tracks: [] });
+  DIR.briefs = Object.fromEntries((b.tracks || []).map(x => [x.id, x]));
+  DIR.score = await TempMaker.loadScore().catch(() => null);      // resources/music/score/*.json: the written direction
+  DIR.imports = await scanImports().catch(() => []);
+  DIR.approvals = await readApprovals();
+  const dj = await readJson('resources/music/direction.json', null);
+  if (dj && dj.defaults) for (const k of ['attack_sec', 'release_sec']) if (+dj.defaults[k] > 0) DIR.defaults[k] = +dj.defaults[k];
+  DIR.state = {};
+  await Promise.all(DIR.cat.map(t => scanTrack(t)));
+  const vols = [...new Set(DIR.cat.map(t => t.vol))].sort((a, b) => a - b);
+  const vv = $('vol').value; $('vol').innerHTML = '<option value="">every volume</option>' + vols.map(v => `<option value="${v}">vol ${v}</option>`).join(''); $('vol').value = vv;
+  // most-played first (how many scenes the director plays it in), then volume, then id
+  DIR.order = DIR.cat.slice().sort((a, b) => ((DIR.briefs[b.id] || {}).scene_count || 0) - ((DIR.briefs[a.id] || {}).scene_count || 0) || (a.vol || 0) - (b.vol || 0) || a.id.localeCompare(b.id));
+  renderList();
+  if (DIR.sel && DIR.state[DIR.sel]) await selectTrack(DIR.sel, { keep: true });
+}
+async function rescanOne(id) {
+  const t = DIR.cat.find(x => x.id === id); if (!t) return;
+  DIR.approvals = await readApprovals();
+  await scanTrack(t);
+  renderList();
+  if (DIR.sel === id) await selectTrack(id, { keep: true });
+}
+const STATUS_LABEL = { missing: ['MISSING', 'bad'], candidates: ['CANDIDATES', 'cand'], approved: ['APPROVED TEMP', 'ok'], real: ['REAL AUDIO', 'real'] };
+function statusBadge(st) {
+  const [l, c] = STATUS_LABEL[st.status];
+  return `<span class="badge ${c}">${l}${st.status === 'candidates' ? ' (' + st.cand + ')' : ''}</span>` + (st.status !== 'candidates' && st.cand ? `<span class="badge cand">+${st.cand} cand.</span>` : '') +
+    (st.status === 'approved' && st.approved && st.approved.third_party ? `<span class="badge bad" title="the approved temp is a ${esc(st.approved.third_party.kind)} of ${esc(st.approved.third_party.source)} — strip or license before release (godot/tools/music_release_check.py)">⚠ ${esc(st.approved.third_party.kind.toUpperCase())} · TEMP ONLY</span>` : '');
+}
+function whyOf(b) {
+  if (!b) return 'no scene plays it (chapter / volume queue only)';
+  return b.scene_count + ' scene' + (b.scene_count === 1 ? '' : 's') + ' · ' + Object.entries(b.roles || {}).map(([k, v]) => k + ' ' + v).join(', ') +
+    ' · energy ' + Math.round((b.energy ?? 0.5) * 100) + '% · dark ' + Math.round((b.darkness ?? 0.5) * 100) + '%' + (b.chars && b.chars.length ? ' · theme: ' + b.chars.join(', ') : '');
+}
+function visible() {
+  const q = $('q').value.trim().toLowerCase(), vol = $('vol').value, played = $('played').checked;
+  return DIR.order.filter(t => {
+    const st = DIR.state[t.id]; if (!st) return false;
+    if (DIR.filter === 'covers') { if (!(st.takes || []).some(m => m.third_party && m.status !== 'rejected') && !(st.approved && st.approved.third_party)) return false; }
+    else if (DIR.filter !== 'all' && st.status !== DIR.filter && !(DIR.filter === 'candidates' && st.cand)) return false;
+    if (vol && String(t.vol) !== vol) return false;
+    if (played && !DIR.briefs[t.id]) return false;
+    if (q) { const b = DIR.briefs[t.id]; const s = (t.id + ' ' + t.title + ' ' + (t.desc || '') + ' ' + (b ? b.chars.join(' ') : '')).toLowerCase(); if (!s.includes(q)) return false; }
+    return true;
+  });
+}
+function renderList() {
+  const vis = visible(), L = $('list');
+  const n = s => DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].status === s).length;
+  $('b-counts').textContent = DIR.cat.length + ' tracks · ' + n('missing') + ' missing · ' + DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].cand).length + ' with candidates · ' + n('approved') + ' approved temp · ' + n('real') + ' real' + (n3 => n3 ? ' · ⚠ ' + n3 + ' third-party temp' + (n3 > 1 ? 's' : '') : '')(DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].status === 'approved' && DIR.state[t.id].approved && DIR.state[t.id].approved.third_party).length);
+  $('b-counts').title = $('b-counts').textContent;
+  const nw = DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].temp === 'wav').length;
+  $('shrink').textContent = nw ? '⇣ SHRINK ' + nw + ' WAV TEMP' + (nw === 1 ? '' : 'S') + ' → OGG' : '⇣ SHRINK WAV TEMPS'; $('shrink').disabled = !nw || !!DIR.busy;
+  if (!vis.length) { L.innerHTML = '<div class="empty">' + (DIR.cat.length ? 'nothing matches the filter.' : 'no catalog read yet.') + '</div>'; return; }
+  L.innerHTML = vis.map(t => {
+    const st = DIR.state[t.id], b = DIR.briefs[t.id];
+    return `<div class="tr${t.id === DIR.sel ? ' sel' : ''}" data-id="${esc(t.id)}"><label class="cb" title="tick for batch MAKE TAKES"><input type="checkbox" data-ck="${esc(t.id)}"${DIR.checked.has(t.id) ? ' checked' : ''}></label>` +
+      `<div class="nm"><b>${esc(t.title)}</b> <span class="note">v${t.vol} · ${esc(t.id)}</span><i>${esc(whyOf(b))}</i></div><div>${statusBadge(st)}</div></div>`;
+  }).join('');
+}
+$('list').addEventListener('click', e => {
+  const ck = e.target.closest('[data-ck]');
+  if (ck) { if (ck.checked) DIR.checked.add(ck.dataset.ck); else DIR.checked.delete(ck.dataset.ck); forWho(); return; }
+  if (e.target.closest('.cb')) return;                 // the tick cell (its label forwards the tap to the box)
+  const r = e.target.closest('.tr'); if (r) selectTrack(r.dataset.id);
+});
+document.querySelectorAll('#chips [data-f]').forEach(b => b.addEventListener('click', () => { DIR.filter = b.dataset.f; document.querySelectorAll('#chips [data-f]').forEach(x => x.classList.toggle('on', x === b)); renderList(); }));
+$('q').addEventListener('input', renderList); $('vol').addEventListener('change', renderList); $('played').addEventListener('change', renderList);
+$('link').addEventListener('click', async () => {
+  try { if (!(AK.game._pending && await AK.game.restore(true))) await AK.game.link(); await refresh(); }
+  catch (e) { if (e.name !== 'AbortError') msg(e.message || String(e), true); }
+});
+$('refresh').addEventListener('click', refresh);
+$('who').value = (() => { try { return localStorage.getItem('mm_director_who') || ''; } catch (e) { return ''; } })();
+$('who').addEventListener('change', () => { try { localStorage.setItem('mm_director_who', $('who').value.trim()); } catch (e) {} });
+const who = () => $('who').value.trim() || 'user';
+
+// ═══════════════════════════════════════════════════════════════════
+// track view
+// ═══════════════════════════════════════════════════════════════════
+const curTrack = () => DIR.cat.find(t => t.id === DIR.sel) || null;
+async function selectTrack(id, opts = {}) {
+  const t = DIR.cat.find(x => x.id === id); if (!t) return;
+  const changed = DIR.sel !== id;
+  if (changed) { sceneStop(); PV.stop(); PV.pos = 0; DIR.cur = -1; }
+  DIR.sel = id;
+  document.querySelectorAll('#list .tr').forEach(r => r.classList.toggle('sel', r.dataset.id === id));
+  const sr = document.querySelector('#list .tr.sel'); if (sr && changed) sr.scrollIntoView({ block: 'nearest' });
+  $('welcome').style.display = 'none'; $('track').style.display = '';
+  const st = DIR.state[id], b = DIR.briefs[id];
+  $('t-title').textContent = t.title + '  ·  v' + t.vol;
+  $('t-status').innerHTML = statusBadge(st);
+  $('t-src').textContent = t.id + ' · godot/' + t.src + (st.wav !== 'none' ? ' · .wav: ' + st.wav : '') + (st.temp ? ' · temp: ' + (st.temp === 'ogg' ? '.temp.ogg' : '.wav (SHRINK makes it Ogg)') : '') + (st.approved ? ' · approved take ' + st.approved.take + ' (' + (st.approved.date || '').slice(0, 10) + ', ' + (st.approved.by || '?') + ')' : '');
+  renderBrief(t, b);
+  renderTakes();
+  renderScenes(b);
+  forWho();
+  if (changed && !opts.keep) msg('');
+  const visibleTakes = DIR.takes;
+  if (changed || DIR.cur >= visibleTakes.length) {
+    const ai = visibleTakes.findIndex(m => st.approved && m.take === st.approved.take);
+    const first = ai >= 0 ? ai : visibleTakes.findIndex(m => m.status !== 'rejected');
+    if (first >= 0) await pickTake(first, { autoplay: false });
+    else PV.clear();
+  }
+  $('revoke').disabled = !st.temp;
+  $('revnote').textContent = st.temp ? (st.real || st.wav === 'real' ? 'real audio plays over this temp' : '') : st.real || st.wav === 'real' ? 'real audio here — nothing to revoke' : 'no approved temp in the game';
+}
+function renderBrief(t, b) {
+  $('briefsrc').textContent = b ? 'resources/music/temp_briefs.json' : 'no brief — the scenes never pick this track';
+  const kv = (k, v) => v ? `<b>${k}</b><span>${v}</span>` : '';
+  const sc = DIR.score, cue = sc && (sc.tracks || {})[t.id], vol = sc && (sc.volumes || {})[String(t.vol)];
+  const chap = sc && [...new Set((t.chapters || []).map(SeqGen.chapterOf).filter(Boolean))].map(c => (sc.chapters || {})[c]).find(Boolean);
+  const scoreLine = [cue && cue.feel && 'cue: ' + cue.feel, chap && chap.feel && 'chapter: ' + chap.feel, vol && vol.feel && 'volume: ' + vol.feel].filter(Boolean).join(' · ');
+  $('brief').innerHTML = kv('catalog', esc(t.desc || '')) + (scoreLine ? kv('score', esc(scoreLine.slice(0, 400))) : '') + (b ? kv('scenes', b.scene_count + ' — ' + esc((b.scenes || []).join(', ')) + (b.scene_count > (b.scenes || []).length ? ' …' : '')) +
+    kv('roles', esc(Object.entries(b.roles || {}).map(([k, v]) => k + ' ' + v).join(', '))) +
+    kv('intensity', 'p10 ' + b.intensity.p10 + ' · mean ' + b.intensity.mean + ' · p90 ' + b.intensity.p90 + (b.stems ? ' · moves → stems' : '')) +
+    kv('rank', 'energy ' + Math.round(b.energy * 100) + '% · darkness ' + Math.round(b.darkness * 100) + '%') +
+    kv('words', esc((b.words || []).join(', '))) + kv('characters', esc((b.chars || []).join(', '))) + kv('locales', esc((b.locales || []).join(', '))) +
+    kv('moments', esc(Object.entries(b.moments || {}).map(([k, v]) => k + ' ' + v).join(', '))) : '');
+}
+function reqText(r) {
+  if (!r) return '';
+  const a = [];
+  if (r.tape && typeof TapeModel !== 'undefined' && TapeModel.MACHINES[r.tape]) a.push('tape: ' + TapeModel.MACHINES[r.tape].name);
+  if (r.remix) { const x = r.remix; if (x.tape && typeof TapeModel !== 'undefined' && TapeModel.MACHINES[x.tape]) a.push('tape: ' + TapeModel.MACHINES[x.tape].name); a.push('remix ' + x.recipe + ' of ' + ((x.from && (x.from.title + (x.from.take ? ' take ' + x.from.take : ''))) || '?') + (x.with ? ' with ' + x.with.title : '') + (x.style ? ' · style ' + x.style : '')); }
+  if (r.description) a.push('“' + r.description + '”');
+  if (r.style) a.push('style ' + r.style); if (r.mode) a.push('mode ' + r.mode); if (r.form) a.push('form ' + r.form);
+  if (r.energy) a.push('energy ' + (r.energy > 0 ? '+' : '') + r.energy); if (r.density !== undefined) a.push('density ' + r.density);
+  if (r.length) a.push(r.length.sec ? r.length.sec + ' s' : r.length.bars + ' bars'); if (r.loop) a.push('loop points');
+  if (r.roles) a.push('parts ' + r.roles.join('+')); if (r.extraPads) a.push('+' + r.extraPads + ' pad' + (r.extraPads > 1 ? 's' : ''));
+  if (r.instruments) a.push(Object.entries(r.instruments).map(([k, v]) => k + '=' + v).join(' '));
+  if (r.ensemble) a.push('ensemble ' + r.ensemble); if (r.variety) a.push('variety ' + r.variety);
+  if (r.key !== undefined) a.push('key ' + (r.key === 'home' ? 'volume home' : SeqGen.NOTE_NAMES[r.key] || r.key)); if (r.bpm) a.push(r.bpm + ' BPM');
+  if (r.feel) a.push('feel ' + r.feel); if (r.harmony) a.push('harmony ' + r.harmony); if (r.prog) a.push('progression ' + r.prog);
+  if (r.textures) a.push('texture ' + (r.textures === 'none' ? 'none' : r.textures.join('+'))); if (r.fx) a.push('fx ' + r.fx); if (r.hit) a.push('hit ' + r.hit);
+  return a.join(' · ');
+}
+// what the panel's choices gave this take (from its mood): ensemble, feel, harmony colour, progression family
+const takeChoices = mo => [mo.ensemble && TempMaker.ENSEMBLES[mo.ensemble] ? TempMaker.ENSEMBLES[mo.ensemble].name : mo.ensemble, mo.feel && (TempMaker.FEELS[mo.feel] || {}).name,
+  mo.harmony && (TempMaker.HARMONY[mo.harmony] || {}).name, mo.prog && 'prog ' + mo.prog].filter(Boolean).map(x => ' · ' + x).join('');
+function renderTakes() {
+  const st = DIR.state[DIR.sel]; if (!st) return;
+  rxRender();
+  const all = st.takes, show = $('showrej').checked;
+  const keepTake = DIR.cur >= 0 && DIR.takes[DIR.cur] ? DIR.takes[DIR.cur].take : null;
+  DIR.takes = all.filter(m => show || m.status !== 'rejected');
+  DIR.cur = keepTake ? DIR.takes.findIndex(m => m.take === keepTake) : -1;
+  if (!DIR.takes.length) { $('takes').innerHTML = '<div class="note">no candidate takes yet — tap <b>⚄ MAKE TAKES</b> above (settings under ⚙ SETTINGS).</div>'; return; }
+  $('takes').innerHTML = DIR.takes.map((m, i) => {
+    const mo = m.mood || {}, S = SeqGen.STYLES[mo.style], isAp = st.approved && st.approved.take === m.take;
+    const cls = 'take' + (i === DIR.cur ? ' cur' : '') + (m.status === 'rejected' ? ' rejected' : '') + (isAp ? ' approved' : '');
+    const inst = m.instruments ? Object.entries(m.instruments).map(([k, v]) => k + ': ' + v).join(' · ') : '';
+    return `<div class="${cls}" data-i="${i}"><div class="num" data-pick="${i}" title="key ${i + 1}">${i + 1}</div><div>` +
+      `<b style="color:var(--gold-hi);font-weight:normal">${esc(m.take)}</b> ${isAp ? '<span class="badge ok">APPROVED</span>' : m.status === 'rejected' ? '<span class="badge bad">REJECTED</span>' : '<span class="badge cand">CANDIDATE</span>'}<br>` +
+      `<span class="mood">${esc(S ? S.name : mo.style)} · ${esc(mo.form)} · ${esc(SeqGen.NOTE_NAMES[mo.key] || '')} ${esc(mo.mode)} · ${(+mo.bpm).toFixed(+mo.bpm % 1 ? 2 : 0)} BPM · density ${mo.density} · seed ${mo.seed}${esc(takeChoices(mo))}</span><br>` +
+      `<span>${m.lufs != null ? m.lufs.toFixed(1) + ' LUFS · ' : ''}${m.true_peak != null ? m.true_peak.toFixed(1) + ' dBTP · ' : ''}${(+m.seconds).toFixed(1)} s · ${m.bars} bars · ${m.stems && m.stems.length ? m.stems.length + ' stems (' + m.stems.map(s => s.name).join(', ') + ')' : 'no stems'}</span><br>` +
+      (m.third_party ? `<span class="badge bad" title="${esc(m.third_party.note || '')}">⚠ ${esc(String(m.third_party.kind || 'cover').toUpperCase())} OF ${esc(m.third_party.source || '?')} · TEMP ONLY</span><br>` : '') +
+      (m.edited_from ? `<span class="note" style="color:var(--violet)">✎ edited in the DAW from take ${esc(m.edited_from)}</span><br>` : '') +
+      (m.why ? `<span class="note">${esc(m.why)}</span><br>` : '') +
+      (reqText(m.request) ? `<span class="req">asked: ${esc(reqText(m.request))}</span><br>` : '') +
+      (inst ? `<span class="note">instruments: ${esc(inst)}</span>` : '') +
+      (m.credits ? `<br><span class="note">credits: ${esc(m.credits.replace(/\n/g, '; '))}</span>` : '') +
+      `</div><div class="bt"><button data-play="${i}">▶ PLAY</button>` +
+      (m.status === 'rejected' ? `<button class="dim" data-del="${i}">DELETE FILES</button>` : `<button class="go" data-ap="${i}">✓ APPROVE</button><button class="no" data-rej="${i}">✕ REJECT</button>`) +
+      `<button class="dim" data-again="${i}" title="make this take again from its recorded settings">⟳ AGAIN</button><button class="dim" data-edit="${i}" title="open this take in the DAW to change it; ⇪ SEND TO DIRECTOR there adds the edit here as a new take">✎ EDIT IN DAW</button><button class="dim" data-remix="${i}" title="remix from this take (the REMIX box below)">⤳ REMIX</button></div></div>`;
+  }).join('');
+}
+$('showrej').addEventListener('change', () => { renderTakes(); });
+$('takes').addEventListener('click', e => {
+  const g = (k) => { const el = e.target.closest('[data-' + k + ']'); return el ? +el.dataset[k] : null; };
+  let i;
+  if ((i = g('pick')) !== null || (i = g('play')) !== null) { pickTake(i, { autoplay: true }); return; }
+  if ((i = g('ap')) !== null) { approve(i, e.target.closest('button')); return; }
+  if ((i = g('rej')) !== null) { reject(i, e.target.closest('button')); return; }
+  if ((i = g('del')) !== null) { deleteTake(i, e.target.closest('button')); return; }
+  if ((i = g('again')) !== null) { const m = DIR.takes[i]; if (m.request && m.request.remix) requestRemix([DIR.sel], 1, remixAgain(m)); else requestTakes([DIR.sel], 1, regenOpts(m)); }
+  if ((i = g('remix')) !== null) { remixFrom(DIR.takes[i]); return; }
+  if ((i = g('edit')) !== null) { const m = DIR.takes[i]; const w = window.open('daw.html?take=' + encodeURIComponent(m.dir), 'mm_daw'); msg(w ? 'opened take ' + m.take + ' in the DAW — tap START there; ⇪ SEND TO DIRECTOR brings your edit back here as a new take.' : 'pop-up blocked — open daw.html?take=' + m.dir + ' yourself.', !w); }
+});
+$('prev').addEventListener('click', () => stepTrack(-1));
+$('next').addEventListener('click', () => stepTrack(1));
+function stepTrack(d) {
+  const vis = visible(); if (!vis.length) return;
+  const i = vis.findIndex(t => t.id === DIR.sel);
+  const j = i < 0 ? 0 : Math.max(0, Math.min(vis.length - 1, i + d));
+  selectTrack(vis[j].id);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// preview player: the take's stems layered exactly like AudioMgr
+// ═══════════════════════════════════════════════════════════════════
+const PV = {
+  ctx: null, out: null, take: null, layers: [], dur: 0, playing: false, loop: false, pos: 0, t0: 0, p0: 0, gen: 0, intensity: 1, cache: new Map(), peaks: null,
+  ensure() {
+    if (!this.ctx) { this.ctx = new AudioContext({ latencyHint: 'playback' }); this.out = this.ctx.createGain(); this.out.gain.value = 0.9; this.out.connect(this.ctx.destination); }
+    if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+    return this.ctx;
+  },
+  async decode(path) { const f = await AK.game.readFile(path); return this.ctx.decodeAudioData(await f.arrayBuffer()); },
+  // stems when the take has them (AudioMgr plays only the stems then), else the mix
+  async load(meta) {
+    this.ensure();
+    const key = meta.dir;
+    let L = this.cache.get(key);
+    if (!L) {
+      L = [];
+      const man = meta.stems && meta.stems.length ? await readJson(meta.dir + 'stems.json', null) : null;
+      if (man && man.stems && man.stems.length) for (const s of man.stems) L.push({ name: s.name, layer: +s.layer || 0, buf: await this.decode(s.file) });
+      else L.push({ name: 'mix', layer: 0, buf: await this.decode(meta.dir + 'mix.wav'), mix: true });
+      this.cache.set(key, L);
+      while (this.cache.size > 3) this.cache.delete(this.cache.keys().next().value);   // the A/B pair + one
+    }
+    return L;
+  },
+  use(meta, L) {
+    this.take = meta;
+    this.layers = L.map(x => Object.assign({}, x, { g: null, src: null, gain: layerOn(x.layer, this.intensity) || x.mix ? 1 : 0 }));
+    this.dur = Math.max(...L.map(x => x.buf.duration));
+    this.peaks = null;
+    return this;
+  },
+  clear() { this.stop(); this.take = null; this.layers = []; this.dur = 0; this.pos = 0; drawSeek(); renderLayers(); },
+  position() {
+    if (!this.playing) return this.pos;
+    const p = this.p0 + Math.max(0, this.ctx.currentTime - this.t0);      // starts are scheduled 30 ms ahead
+    return this.loop ? p % this.dur : Math.min(p, this.dur);
+  },
+  play(at) {
+    if (!this.take) return;
+    this.ensure(); this.stop(true);
+    const pos = Math.max(0, Math.min(this.dur - 0.01, at ?? this.pos)), now = this.ctx.currentTime + 0.03, gen = ++this.gen;
+    for (const l of this.layers) {
+      const s = this.ctx.createBufferSource(); s.buffer = l.buf; s.loop = this.loop;
+      const g = this.ctx.createGain(); g.gain.value = l.mix ? 1 : l.gain;
+      s.connect(g); g.connect(this.out); s.start(now, pos % l.buf.duration);
+      l.src = s; l.g = g;
+    }
+    this.layers[0].src.onended = () => { if (gen === this.gen && !this.loop) { this.playing = false; this.pos = 0; uiPlay(); } };
+    this.t0 = now; this.p0 = pos; this.playing = true; uiPlay();
+  },
+  stop(keep) {
+    if (this.playing) this.pos = this.position();
+    this.gen++;
+    for (const l of this.layers) { if (l.src) { try { l.src.onended = null; l.src.stop(); } catch (e) {} l.src.disconnect(); l.g.disconnect(); } l.src = l.g = null; }
+    this.playing = false; if (!keep) uiPlay();
+  },
+  seek(pos) { pos = Math.max(0, Math.min(this.dur, pos)); if (this.playing) this.play(pos); else this.pos = pos; drawSeek(); },
+  setLoop(on) { this.loop = !!on; for (const l of this.layers) if (l.src) l.src.loop = this.loop; },
+  // AudioMgr.set_music_intensity(level, fade): each stem's gain moves linearly (move_toward, amplitude) to
+  // 1 if level ≥ its layer else 0, at 1/fade per second
+  setIntensity(level, fade = STEM_FADE) {
+    this.intensity = Math.max(0, Math.min(1, level));
+    const now = this.ctx ? this.ctx.currentTime : 0;
+    for (const l of this.layers) {
+      if (l.mix) continue;
+      const target = layerOn(l.layer, this.intensity) ? 1 : 0;
+      if (l.g) {
+        const cur = l.g.gain.value, p = l.g.gain;
+        p.cancelScheduledValues(now); p.setValueAtTime(cur, now);
+        if (fade <= 0.001) p.setValueAtTime(target, now); else p.linearRampToValueAtTime(target, now + Math.abs(target - cur) * fade);
+      }
+      l.gain = target;
+    }
+    uiIntensity();
+  },
+  // [{name, layer, target, gain}] — target by AudioMgr's rule, gain = what the graph plays right now
+  layerGains() { return this.layers.map(l => ({ name: l.name, layer: l.layer, target: l.mix ? 1 : (layerOn(l.layer, this.intensity) ? 1 : 0), gain: l.g ? l.g.gain.value : l.gain })); },
+};
+function uiPlay() { $('play').textContent = PV.playing ? '■ STOP' : '▶ PLAY'; $('play').classList.toggle('on', PV.playing); }
+function uiIntensity() { $('int').value = PV.intensity; $('intv').textContent = PV.intensity.toFixed(2); renderLayers(); }
+function renderLayers() {
+  if (!PV.layers.length) { $('layers').innerHTML = '<span class="note">no take loaded</span>'; return; }
+  if (PV.layers.length === 1 && PV.layers[0].mix) { $('layers').innerHTML = '<span class="note">no stems: intensity does nothing for this take (the game plays the mix)</span>'; return; }
+  $('layers').innerHTML = PV.layerGains().map(l => `<span class="lamp${l.target ? ' on' : ''}" data-lamp="${esc(l.name)}">${esc(l.name)} ≥${l.layer}<i style="width:${Math.round(l.gain * 100)}%"></i></span>`).join('');
+}
+async function pickTake(i, { autoplay } = {}) {
+  const m = DIR.takes[i]; if (!m) return;
+  const seq = DIR.pickSeq = (DIR.pickSeq || 0) + 1;     // taps can outrun decoding: the latest pick wins
+  let L;
+  try { L = await PV.load(m); } catch (e) { msg('could not load take ' + m.take + ': ' + (e.message || e), true); return; }
+  if (seq !== DIR.pickSeq) return;
+  const was = PV.playing, pos = PV.position(), prev = PV.take;
+  PV.stop(true);
+  PV.use(m, L);
+  DIR.cur = i;
+  document.querySelectorAll('#takes .take').forEach(el => el.classList.toggle('cur', +el.dataset.i === i));
+  // A/B: same position in the other take
+  PV.pos = Math.min(pos, Math.max(0, PV.dur - 0.05));
+  DIR.lastAB = { from: prev ? prev.take : null, to: m.take, at: pos };
+  if (was || autoplay) PV.play(PV.pos); else uiPlay();
+  $('ab').textContent = 'take ' + (i + 1) + (prev && prev.dir !== m.dir ? ' (A/B from take ' + (DIR.takes.findIndex(x => x.dir === prev.dir) + 1 || '?') + ' at ' + fmt(pos) + ')' : '');
+  renderLayers(); drawSeek(true);
+}
+$('play').addEventListener('click', () => { if (!PV.take) { if (DIR.takes.length) pickTake(0, { autoplay: true }); return; } if (PV.playing) PV.stop(); else PV.play(); });
+$('loop').addEventListener('click', () => { PV.setLoop(!PV.loop); $('loop').classList.toggle('on', PV.loop); });
+$('int').addEventListener('input', () => { sceneStop(); PV.setIntensity(+$('int').value); });
+document.querySelectorAll('[data-int]').forEach(b => b.addEventListener('click', () => { sceneStop(); PV.setIntensity(+b.dataset.int); }));
+// seek canvas: the take's waveform (sum of its layers) + playhead; tap / drag to seek
+function fitCanvas(cv) { const r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1; const w = Math.max(10, Math.round(r.width * d)), h = Math.max(10, Math.round(r.height * d)); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } return { w, h, d }; }
+function drawSeek(rebuild) {
+  const cv = $('seek'), { w, h } = fitCanvas(cv), g = cv.getContext('2d');
+  g.fillStyle = '#0e0908'; g.fillRect(0, 0, w, h);
+  if (!PV.layers.length) return;
+  if (rebuild || !PV.peaks || PV.peaks.length !== w) {
+    const pk = new Float32Array(w);
+    for (const l of PV.layers) { const d = l.buf.getChannelData(0), step = d.length / w; for (let x = 0; x < w; x++) { let m = 0; const a = Math.floor(x * step), b = Math.min(d.length, Math.floor((x + 1) * step)); for (let i = a; i < b; i += 16) { const v = Math.abs(d[i]); if (v > m) m = v; } pk[x] += m; } }
+    PV.peaks = pk;
+  }
+  g.fillStyle = '#7a5828';
+  for (let x = 0; x < w; x++) { const v = Math.min(1, PV.peaks[x]) * h * 0.46; g.fillRect(x, h / 2 - v, 1, v * 2 || 1); }
+  const x = PV.dur ? PV.position() / PV.dur * w : 0;
+  g.fillStyle = '#ffd896'; g.fillRect(Math.round(x), 0, 2, h);
+  $('time').textContent = fmt(PV.position()) + ' / ' + fmt(PV.dur);
+}
+(() => {
+  const cv = $('seek'); let down = false;
+  const at = e => { const r = cv.getBoundingClientRect(); return (e.clientX - r.left) / r.width * PV.dur; };
+  cv.addEventListener('pointerdown', e => { if (!PV.take) return; down = true; cv.setPointerCapture(e.pointerId); PV.seek(at(e)); });
+  cv.addEventListener('pointermove', e => { if (down) PV.seek(at(e)); });
+  cv.addEventListener('pointerup', () => { down = false; });
+  cv.addEventListener('pointercancel', () => { down = false; });
+})();
+
+// ═══════════════════════════════════════════════════════════════════
+// PLAY AS SCENE: the director's per-scene curve (temp_briefs.json "curves") → intensity over time
+// ═══════════════════════════════════════════════════════════════════
+const SC = { id: null, nodes: [], curve: null, timeline: [], idx: 0, t: 0, level: 0, target: 0, sent: 0, playing: false, manual: false, trace: [] };
+function renderScenes(b) {
+  const sel = $('scene'), keys = b && b.curves ? Object.keys(b.curves) : [];
+  sel.innerHTML = keys.length ? keys.map(k => `<option value="${esc(k)}">${esc(k)} · ${b.curves[k].n} nodes · peak ${Math.max(...b.curves[k].v).toFixed(2)}</option>`).join('') : '<option value="">no scene plays this track</option>';
+  $('sceneplay').disabled = !keys.length;
+  SC.curve = keys.length ? b.curves[keys[0]] : null;
+  if (SC.id && !keys.includes(SC.id)) { SC.id = null; SC.trace = []; $('line').textContent = '—'; $('line2').textContent = ''; $('sceneinfo').textContent = ''; }
+  drawCurve();
+}
+$('scene').addEventListener('change', () => { const b = DIR.briefs[DIR.sel]; sceneStop(); SC.curve = b && b.curves ? b.curves[$('scene').value] : null; drawCurve(); });
+const curveAt = (c, i) => { let v = c.v[0] ?? 0.5; for (let j = 0; j < c.at.length && c.at[j] <= i; j++) v = c.v[j]; return v; };
+// how long a reader stays on each node (seconds at "normal" pace)
+function nodeSec(n) {
+  const t = n.t, len = String(n.text || '').length;
+  if (t === 'say' || t === 'narrate' || t === 'think') return Math.max(1.6, Math.min(9, 1.2 + len * 0.045));
+  if (t === 'choice') return 4; if (t === 'cg') return 3; if (t === 'interlude') return Math.min(5, (+n.duration || 2000) / 1000);
+  return 0;
+}
+async function sceneStart(sid, opts = {}) {
+  const b = DIR.briefs[DIR.sel]; if (!b || !b.curves || !b.curves[sid]) return false;
+  sceneStop();
+  SC.id = sid; SC.curve = b.curves[sid]; SC.manual = !!opts.manual;
+  const vol = (sid.match(/^(vol\d+)/) || [])[1] || '';
+  const sc = await readJson('resources/scenes/' + vol + '/' + sid + '.json', null);
+  SC.nodes = sc && Array.isArray(sc.nodes) ? sc.nodes : Array.from({ length: SC.curve.n }, () => ({ t: 'narrate', text: '' }));
+  if (!sc) msg('scene file resources/scenes/' + vol + '/' + sid + '.json not found — driving the curve without its lines', true);
+  const pace = +$('pace').value || 1;
+  let t = 0; SC.timeline = SC.nodes.map((n, i) => { const d = nodeSec(n) * pace; const e = { i, t0: t, dur: d }; t += d; return e; });
+  SC.total = t; SC.idx = 0; SC.t = 0; SC.trace = [];
+  // a scene opens on its first target (the director's replay lands there), then smooths like MusicDirector._process
+  SC.target = curveAt(SC.curve, 0); SC.level = SC.target; SC.sent = SC.level;
+  if (!PV.take && DIR.takes.length) await pickTake(0, { autoplay: false });
+  PV.setIntensity(SC.level, 0);
+  if (PV.take && !opts.noAudio) PV.play(0);
+  SC.playing = true; $('sceneplay').textContent = '■ STOP SCENE'; $('sceneplay').classList.add('on');
+  sceneShow(); drawCurve();
+  return true;
+}
+function sceneStop() {
+  if (!SC.playing) return;
+  SC.playing = false; $('sceneplay').textContent = '▶ PLAY AS SCENE'; $('sceneplay').classList.remove('on');
+}
+// advance the scene clock by dt seconds: node by reading time, target from the curve, level smoothed with the
+// director's attack / release (move_toward at dt / tau), sent to the stems when it moved ≥ 0.02 (fade 0.4)
+function sceneTick(dt) {
+  if (!SC.playing) return;
+  SC.t += dt;
+  while (SC.idx < SC.timeline.length - 1 && SC.t >= SC.timeline[SC.idx].t0 + SC.timeline[SC.idx].dur) SC.idx++;
+  SC.target = curveAt(SC.curve, SC.idx);
+  const tau = SC.target > SC.level ? DIR.defaults.attack_sec : DIR.defaults.release_sec, step = dt / Math.max(0.05, tau);
+  SC.level = SC.level < SC.target ? Math.min(SC.target, SC.level + step) : Math.max(SC.target, SC.level - step);
+  if (Math.abs(SC.level - SC.sent) >= 0.02 || (SC.level === SC.target && SC.sent !== SC.level)) { SC.sent = SC.level; PV.setIntensity(SC.level, DIRECTOR_FADE); }
+  SC.trace.push([SC.idx, SC.level]); if (SC.trace.length > 4000) SC.trace.shift();
+  if (SC.t >= SC.total + 2) sceneStop();
+  sceneShow();
+}
+function lineOf(n) {
+  if (!n) return '';
+  if (n.t === 'say' || n.t === 'think') return `<span class="who">${esc(n.char || '')}${n.t === 'think' ? ' (thinks)' : ''}:</span> ${esc(n.text || '')}`;
+  if (n.t === 'narrate') return esc(n.text || '');
+  if (n.t === 'choice') return '<span class="who">CHOICE</span> ' + esc((n.options || n.choices || []).map(o => o.text || o.label || o).join(' / '));
+  if (n.t === 'interlude') return '<span class="who">INTERLUDE</span> ' + esc((n.text || '') + ' ' + (n.sub || ''));
+  if (n.t === 'cg') return '<span class="who">CG</span> ' + esc(n.src || n.id || '');
+  return '<span class="note">' + esc(n.t) + '</span>';
+}
+function sceneShow() {
+  if (!SC.id) return;
+  let i = SC.idx; while (i < SC.nodes.length - 1 && !nodeSec(SC.nodes[i])) i++;
+  let j = i + 1; while (j < SC.nodes.length && !nodeSec(SC.nodes[j])) j++;
+  $('line').innerHTML = lineOf(SC.nodes[i]) || '—'; $('line2').innerHTML = lineOf(SC.nodes[j]);
+  $('sceneinfo').textContent = SC.id + ' · node ' + SC.idx + '/' + SC.nodes.length + ' · target ' + SC.target.toFixed(2) + ' · level ' + SC.level.toFixed(2) +
+    ' · layers ' + PV.layerGains().filter(l => l.target).map(l => l.name).join(' + ');
+  drawCurve();
+}
+function drawCurve() {
+  const cv = $('curve'), { w, h } = fitCanvas(cv), g = cv.getContext('2d');
+  g.fillStyle = '#0e0908'; g.fillRect(0, 0, w, h);
+  const c = SC.curve; if (!c || !c.n) return;
+  const X = i => i / c.n * w, Y = v => h - 4 - v * (h - 8);
+  g.strokeStyle = '#3a2416'; g.setLineDash([3, 4]);
+  for (const th of [0.25, 0.5, 0.75]) { g.beginPath(); g.moveTo(0, Y(th)); g.lineTo(w, Y(th)); g.stroke(); }
+  g.setLineDash([]); g.fillStyle = '#7a5828'; g.font = (10 * (window.devicePixelRatio || 1)) + 'px monospace';
+  g.fillText('bass', 4, Y(0.25) - 2); g.fillText('drums', 4, Y(0.5) - 2); g.fillText('lead', 4, Y(0.75) - 2);
+  g.strokeStyle = '#d8a060'; g.lineWidth = 2; g.beginPath();
+  for (let j = 0; j < c.at.length; j++) { const x0 = X(c.at[j]), x1 = X(j + 1 < c.at.length ? c.at[j + 1] : c.n); if (j === 0) g.moveTo(x0, Y(c.v[j])); else g.lineTo(x0, Y(c.v[j])); g.lineTo(x1, Y(c.v[j])); }
+  g.stroke();
+  if (SC.trace.length && SC.id) { g.strokeStyle = '#a8e89c'; g.lineWidth = 1.5; g.beginPath(); SC.trace.forEach(([i, v], k) => { const x = X(i), y = Y(v); if (k) g.lineTo(x, y); else g.moveTo(x, y); }); g.stroke(); }
+  if (SC.id) { g.fillStyle = '#ffd896'; g.fillRect(X(SC.idx), 0, 2, h); }
+  g.lineWidth = 1;
+}
+$('sceneplay').addEventListener('click', () => { if (SC.playing) { sceneStop(); PV.stop(); } else sceneStart($('scene').value); });
+let lastT = performance.now();
+setInterval(() => { const now = performance.now(), dt = (now - lastT) / 1000; lastT = now; if (SC.playing && !SC.manual) sceneTick(dt); }, 50);
+(function frame() { if (PV.take) drawSeek(); if (PV.playing && PV.layers.some(l => l.g)) renderLayersLight(); requestAnimationFrame(frame); })();
+function renderLayersLight() { for (const l of PV.layerGains()) { const el = document.querySelector(`[data-lamp="${CSS.escape(l.name)}"] i`); if (el) el.style.width = Math.round(l.gain * 100) + '%'; } }
+
+// ═══════════════════════════════════════════════════════════════════
+// approve · reject · revoke · delete
+// ═══════════════════════════════════════════════════════════════════
+// destructive steps ask twice: first tap arms the button for 4 s, the second does it
+const ARM = new Map();
+function twoTap(key, btn, label) {
+  const t = ARM.get(key);
+  if (t && Date.now() - t < 4000) { ARM.delete(key); return true; }
+  ARM.set(key, Date.now());
+  if (btn) { const old = btn.textContent; btn.textContent = label; btn.classList.add('armed'); setTimeout(() => { if (btn.isConnected) { btn.textContent = old; btn.classList.remove('armed'); } }, 4000); }
+  return false;
+}
+const mb = b => (b / 1048576).toFixed(b < 1048576 ? 2 : 1);
+// a staged / legacy WAV as a lazy PCM source for AK.game.writeMusic (decoded sample-exact, one file at a time);
+// `tally` adds up the WAV bytes read, for the before / after sizes
+const wavPcm = (path, tally) => async () => { const f = await AK.game.readFile(path); if (tally) tally.wav += f.size; return AK.wav.decode(await f.arrayBuffer()); };
+// what a non-temp .wav is, from its own chunks: title · who wrote it · when
+async function describeWav(path) {
+  try {
+    const f = await AK.game.readFile(path), c = AK.wav.parseChunks(await f.slice(0, 262144).arrayBuffer());
+    const title = (c.info && c.info.INAM) || (c.bext && c.bext.description) || '', by = (c.bext && c.bext.originator) || (c.mmjs && c.mmjs.originator) || '';
+    const when = (c.bext && c.bext.date) || (c.mmjs && c.mmjs.date ? String(c.mmjs.date).slice(0, 10) : '') || (f.lastModified ? new Date(f.lastModified).toISOString().slice(0, 10) : '');
+    const kind = /MM DAW/i.test(by) ? 'a DAW bounce' : /FIELD|TAPE/i.test(by) ? 'a recording' : 'real audio';
+    return [kind, title && '“' + title + '”', by && 'by ' + by, when, (f.size / 1048576).toFixed(1) + ' MB'].filter(Boolean).join(' · ');
+  } catch (e) { return 'unreadable header'; }
+}
+// a real .wav (+ its stems, manifest, credits) → assets/audio/replaced/<name>.<stamp>…, kept; Godot ignores the folder
+const REPLACED_DIR = 'assets/audio/replaced';
+async function moveAside(base) {
+  const G = AK.game, name = base.split('/').pop(), stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..*$/, '').replace('T', '-');
+  const to = REPLACED_DIR + '/' + name + '.' + stamp, moved = [];
+  if (!(await G.exists(REPLACED_DIR + '/.gdignore'))) await G.write(REPLACED_DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+  const mv = async (from, dest) => { if (!(await G.exists(from))) return; await G.copy(from, dest); await G.remove(from); moved.push(from + ' → ' + dest); };
+  await mv(base + '.wav', to + '.wav');
+  await mv(base + '.wav.credits.txt', to + '.wav.credits.txt');
+  const man = await readJson(base + '.stems.json', null);
+  if (man && !man.temp) {
+    for (const e of await G.list(base + '.stems')) if (e.kind === 'file') await mv(base + '.stems/' + e.name, to + '.stems/' + e.name);
+    await mv(base + '.stems.json', to + '.stems.json');
+  }
+  return moved;
+}
+async function approve(i, btn) {
+  const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
+  if (m.status === 'rejected') { msg('take ' + (i + 1) + ' was rejected — make it again (⟳ AGAIN) to approve it.', true); return { ok: false, why: 'rejected' }; }
+  const st = await scanTrack(t), base = baseOf(t.src), dest = base + '.temp.ogg';
+  if (st.real) { msg('REFUSED: real audio exists at godot/' + t.src + ' — it always wins over a temp, and it is never overwritten.', true); return { ok: false, why: 'real' }; }
+  let aside = null;
+  if (st.wav === 'real') {
+    // a .wav that isn't marked "(temp)": a FIELD RECORDER / TAPE STUDIO take, or a DAW BOUNCE → INTO GAME. Never
+    // overwritten — two taps move it (and its stems / manifest / credits) to assets/audio/replaced/, then approve.
+    const what = await describeWav(base + '.wav');
+    if (!twoTap('aside:' + t.id + ':' + m.take, btn, 'TAP AGAIN: MOVE IT ASIDE + APPROVE')) {
+      msg('godot/' + base + '.wav is not a temp (' + what + '), so the game plays it instead of any approved take. Tap APPROVE again within 4 s to move it to godot/' + REPLACED_DIR + '/ (kept, not deleted) and approve this take.', true);
+      return { ok: false, why: 'real-wav', what };
+    }
+    try { aside = await moveAside(base); } catch (e) { msg('could not move godot/' + base + '.wav aside: ' + (e.message || e), true); return { ok: false, why: 'error', error: String(e) }; }
+    st.wav = 'none'; st.temp = await AK.game.exists(base + '.temp.ogg') ? 'ogg' : null;
+  }
+  if (st.approved && st.approved.take === m.take && st.temp === 'ogg') { msg('take ' + (i + 1) + ' is already the approved temp.'); return { ok: true, same: true }; }
+  if (st.temp && !twoTap('ap:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REPLACE')) {
+    msg('a temp is already approved here' + (st.approved ? ' (take ' + st.approved.take + ')' : ' (an older TEMP TRACKS write)') + ' — tap APPROVE again (or press a again) within 4 s to replace it.');
+    return { ok: false, why: 'confirm' };
+  }
+  if (DIR.busy) { msg('wait: ' + DIR.busy + ' is still running.', true); return { ok: false, why: 'busy' }; }
+  const tag = 'approving take ' + (i + 1) + ' → godot/' + dest;
+  msg(tag + ' …');
+  let out; const tally = { wav: 0 };
+  DIR.busy = 'an approve';
+  try {
+    const tm = m.stems && m.stems.length ? await readJson(m.dir + 'stems.json', null) : null;
+    const credits = (m.files || []).includes('credits.txt') ? await AK.game.readText(m.dir + 'credits.txt').catch(() => '') : '';
+    // the take's WAVs → Ogg Vorbis (a seamless take's smpl loop → the manifest's loop); writeMusic replaces the
+    // old manifest + stems
+    out = await AK.game.writeMusic(base, {
+      mix: wavPcm(m.dir + 'mix.wav', tally), stems: ((tm && tm.stems) || []).map(x => ({ name: x.name, role: x.role, layer: x.layer, pcm: wavPcm(x.file, tally) })),
+      title: (tm && tm.title) || t.title + ' (temp)', credits,
+      extra: { third_party: m.third_party || undefined, bpm: (tm && tm.bpm) || (m.mood || {}).bpm, bars: m.bars, lufs: m.lufs, credits: m.credits || '', approved: { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString() } },
+      onProgress: (f, what) => msg(tag + ' — encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') });
+    // an older .wav temp plays before the .temp.ogg: it goes now that the Ogg is there
+    if (st.wav === 'temp' && (await wavKind(base + '.wav')) === 'temp') { await AK.game.remove(base + '.wav'); await AK.game.remove(base + '.wav.credits.txt'); }
+  } catch (e) { msg('approve failed: ' + (e.message || e), true); return { ok: false, why: 'error', error: String(e) }; }
+  finally { DIR.busy = null; }
+  const files = out.files, bytes = out.bytes.mix + out.bytes.stems;
+  const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
+  rec.rejected = rec.rejected || []; rec.history = rec.history || [];
+  const prev = rec.approved;
+  rec.approved = { take: m.take, seed: (m.mood || {}).seed, mood: m.mood, request: m.request || {}, instruments: m.instruments || {}, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim(),
+    lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files, format: 'ogg', bytes, quality: out.manifest.quality,
+    third_party: m.third_party || undefined };
+  rec.history.push({ action: prev ? 'replace' : 'approve', take: m.take, seed: (m.mood || {}).seed, replaced: prev ? prev.take : undefined, moved_aside: aside || undefined, date: rec.approved.date, by: who(), notes: rec.approved.notes });
+  await writeApprovals(ap);
+  await setMetaStatus(m, 'approved');
+  if (prev && prev.take !== m.take) { const pm = DIR.state[t.id].takes.find(x => x.take === prev.take); if (pm) await setMetaStatus(pm, 'candidate'); }
+  $('notes').value = '';
+  DIR.approvedThisSession = (DIR.approvedThisSession || 0) + 1;
+  $('foot').textContent = DIR.approvedThisSession + ' approval(s) this session — music stays out of git; back it up to Google Drive:';
+  await rescanOne(t.id);
+  msg('approved take ' + m.take + ' → godot/' + dest + (out.manifest.stems.length ? ' + ' + out.manifest.stems.length + ' stems' : '') + ' + manifest' + (out.manifest.loop ? ' (loops)' : '') +
+    ' · Ogg ' + mb(bytes) + ' MB (the WAVs were ' + mb(tally.wav) + ' MB). The game plays it now. Back it up: godot/tools/music_drive.sh push');
+  return { ok: true, files, bytes, wavBytes: tally.wav };
+}
+async function setMetaStatus(m, status) {
+  m.status = status;
+  const clean = Object.assign({}, m); delete clean.dir;
+  try { await AK.game.write(m.dir + 'meta.json', new Blob([JSON.stringify(clean, null, 1)], { type: 'application/json' })); } catch (e) {}
+}
+async function reject(i, btn) {
+  const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
+  const st = DIR.state[t.id];
+  if (st.approved && st.approved.take === m.take && st.temp) { msg('take ' + (i + 1) + ' is the approved temp — REVOKE it first.', true); return { ok: false, why: 'approved' }; }
+  if (!twoTap('rej:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REJECT')) { msg('tap REJECT again (or press x again) to reject take ' + (i + 1) + (($('rejdel').checked) ? ' and delete its files' : '') + '.'); return { ok: false, why: 'confirm' }; }
+  const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
+  rec.rejected = rec.rejected || []; rec.history = rec.history || [];
+  const entry = { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim() };
+  if (!rec.rejected.some(r => r.take === m.take)) rec.rejected.push(entry);
+  rec.history.push(Object.assign({ action: 'reject' }, entry));
+  await writeApprovals(ap);
+  const del = $('rejdel').checked;
+  if (del) await AK.game.remove(m.dir.replace(/\/$/, '')); else await setMetaStatus(m, 'rejected');
+  if (PV.take && PV.take.dir === m.dir) PV.clear();
+  $('notes').value = '';
+  await rescanOne(t.id);
+  msg('rejected take ' + m.take + ' (seed ' + entry.seed + ' — new takes will skip it)' + (del ? '; files deleted.' : '.'));
+  return { ok: true };
+}
+async function deleteTake(i, btn) {
+  const m = DIR.takes[i]; if (!m || m.status !== 'rejected') return;
+  if (!twoTap('del:' + m.dir, btn, 'TAP AGAIN: DELETE')) return;
+  await AK.game.remove(m.dir.replace(/\/$/, ''));
+  if (PV.take && PV.take.dir === m.dir) PV.clear();
+  await rescanOne(DIR.sel);
+  msg('deleted the files of rejected take ' + m.take + ' (its seed stays recorded).');
+}
+async function revoke(btn) {
+  const t = curTrack(); if (!t) return { ok: false };
+  const st = await scanTrack(t), base = baseOf(t.src);
+  if (!st.temp) { const real = st.wav === 'real' || st.real; msg(real ? 'REFUSED: the audio for this track is real, not a temp.' : 'nothing to revoke: no temp in the game for this track.', true); return { ok: false, why: real ? 'real' : st.wav }; }
+  if (!twoTap('rev:' + t.id, btn, 'TAP AGAIN: REVOKE')) { msg('tap REVOKE again within 4 s: removes the temp (godot/' + base + (st.temp === 'ogg' ? '.temp.ogg' : '.wav') + ') + its stems + manifest. Real audio is never touched.'); return { ok: false, why: 'confirm' }; }
+  if (DIR.busy) { msg('wait: ' + DIR.busy + ' is still running.', true); return { ok: false, why: 'busy' }; }
+  const wavTemp = (await wavKind(base + '.wav')) === 'temp';
+  if (st.temp === 'wav' && !wavTemp) { msg('REFUSED: the .wav changed under us and is no longer a temp.', true); return { ok: false }; }
+  const gone = await AK.game.removeTemp(base, wavTemp);
+  const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
+  rec.history = rec.history || []; rec.rejected = rec.rejected || [];
+  const prev = rec.approved; rec.approved = null;
+  rec.history.push({ action: 'revoke', take: prev ? prev.take : undefined, seed: prev ? prev.seed : undefined, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim() });
+  await writeApprovals(ap);
+  if (prev) { const pm = st.takes.find(x => x.take === prev.take); if (pm) await setMetaStatus(pm, 'candidate'); }
+  $('notes').value = '';
+  await rescanOne(t.id);
+  msg('revoked: removed ' + gone.join(', ') + '. The scenes fall back to their next playable track.');
+  return { ok: true, removed: gone };
+}
+// SHRINK: every temp still in the game as WAV (approved before Ogg, or an old TEMP TRACKS write) → Ogg Vorbis in
+// place — <base>.temp.ogg + Ogg stems + manifest — then the .wav, its credits and its WAV stems go. Each .wav is
+// checked to be a temp again right before; real audio is never read, written or removed.
+async function shrinkAll() {
+  if (!AK.game.root) { msg('link the game folder first.', true); return { ok: false }; }
+  if (DIR.busy) { msg('wait: ' + DIR.busy + ' is still running.', true); return { ok: false, why: 'busy' }; }
+  const list = DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].temp === 'wav');
+  if (!list.length) { msg('no WAV temps in the game — nothing to shrink.'); return { ok: true, done: [], failed: [] }; }
+  const done = [], failed = [];
+  DIR.busy = 'SHRINK'; $('shrink').disabled = true;
+  try {
+    for (const [k, t] of list.entries()) {
+      const base = baseOf(t.src), tag = 'SHRINK ' + (k + 1) + '/' + list.length + ' · ' + t.id;
+      try {
+        if ((await wavKind(base + '.wav')) !== 'temp') throw new Error('the .wav is not a temp');
+        const man = await readJson(base + '.stems.json', null), tally = { wav: 0 };
+        const old = man && (!man.mix || man.mix === base + '.wav') && Array.isArray(man.stems) ? man.stems : [];
+        const stems = [];
+        for (const x of old) if (/\.wav$/i.test(x.file || '') && await AK.game.exists(x.file)) stems.push({ name: x.name, role: x.role, layer: x.layer, pcm: wavPcm(x.file, tally) });
+        const head = AK.wav.parseChunks(await (await AK.game.readFile(base + '.wav')).slice(0, 262144).arrayBuffer());
+        const credits = await AK.game.readText(base + '.wav.credits.txt').catch(() => '');
+        const extra = { shrunk_from: 'wav' };
+        for (const key of ['bpm', 'bars', 'lufs', 'credits', 'approved']) if (man && man[key] !== undefined) extra[key] = man[key];
+        const out = await AK.game.writeMusic(base, { mix: wavPcm(base + '.wav', tally), stems, title: (head.info && head.info.INAM) || t.title + ' (temp)', credits, extra,
+          onProgress: (f, what) => msg(tag + ' — encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') });
+        await AK.game.remove(base + '.wav'); await AK.game.remove(base + '.wav.credits.txt');
+        done.push({ id: t.id, files: out.files, before: tally.wav, after: out.bytes.mix + out.bytes.stems, quality: out.manifest.quality });
+      } catch (e) { failed.push({ id: t.id, error: e.message || String(e) }); }
+    }
+    if (done.length) {
+      const ap = await readApprovals(), date = new Date().toISOString();
+      for (const d of done) {
+        const rec = ap.tracks[d.id] = ap.tracks[d.id] || { approved: null, rejected: [], history: [] };
+        rec.rejected = rec.rejected || []; rec.history = rec.history || [];
+        if (rec.approved) Object.assign(rec.approved, { files: d.files, format: 'ogg', bytes: d.after, quality: d.quality });
+        rec.history.push({ action: 'shrink', take: rec.approved ? rec.approved.take : undefined, date, by: who(), wav_bytes: d.before, bytes: d.after });
+      }
+      await writeApprovals(ap);
+    }
+  } finally { DIR.busy = null; }
+  await refresh();
+  const b = done.reduce((a, d) => a + d.before, 0), o = done.reduce((a, d) => a + d.after, 0);
+  msg('SHRINK: ' + done.length + ' temp(s) now Ogg Vorbis — ' + mb(b) + ' MB of WAV → ' + mb(o) + ' MB.' + (failed.length ? ' Failed: ' + failed.map(f => f.id + ' (' + f.error + ')').join('; ') : ' Back it up: godot/tools/music_drive.sh push'), !!failed.length);
+  return { ok: !failed.length, done, failed };
+}
+$('shrink').addEventListener('click', () => shrinkAll());
+$('revoke').addEventListener('click', e => revoke(e.currentTarget));
+
+// ═══════════════════════════════════════════════════════════════════
+// MAKE TAKES: composed, rendered and staged right here (temp_maker.js on a DAW engine of our own — no DAW tab)
+// ═══════════════════════════════════════════════════════════════════
+const RG = { n: 2, roles: ROLES.slice(), pads: 0, instruments: {}, ensemble: '', variety: '' };
+Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('r-style').add(new Option(s.name, id)));
+Object.keys(SeqGen.SCALES).forEach(m => $('r-mode').add(new Option(m, m)));
+Object.keys(SeqGen.FORMS).forEach(f => $('r-form').add(new Option(f, f)));
+// the panel's choice lists come from temp_maker.js (ENSEMBLES, FEELS, HARMONY, the PROGS families, the sound presets)
+SeqGen.NOTE_NAMES.forEach((k, i) => $('r-key').add(new Option(k, String(i))));
+Object.entries(TempMaker.FEELS).forEach(([id, f]) => $('r-feel').add(new Option(f.name, id)));
+Object.entries(TempMaker.HARMONY).forEach(([id, h]) => $('r-harm').add(new Option(h.name, id)));
+TempMaker.progFamilies().forEach(f => $('r-prog').add(new Option(f, f)));
+const SOUND_SEL = { 'r-tex': ['ambient', 'auto', true], 'r-tex2': ['ambient', '+ no 2nd bed', false], 'r-fx': ['fx', 'auto', true], 'r-hit': ['fx', 'auto', true] };
+for (const [id, [kind, first, none]] of Object.entries(SOUND_SEL)) {
+  $(id).add(new Option(first, '')); if (none) $(id).add(new Option('none', 'none'));
+  const ids = [...TempMaker.soundChoices(kind)].filter(x => id === 'r-hit' ? !/riser|sweep|swell|whoosh|tape_stop|downer/.test(x) : id === 'r-fx' ? /riser|sweep|swell|whoosh|tape_stop|downer|flicker/.test(x) : true).sort();
+  for (const x of ids) $(id).add(new Option(x.replace(/^(amb|fx)_/, '').replace(/_/g, ' '), x));
+}
+$('ensembles').innerHTML = `<button data-ens="" class="on" title="the style's own instruments">auto</button>` + Object.entries(TempMaker.ENSEMBLES).map(([id, e]) =>
+  `<button data-ens="${esc(id)}" class="dim" title="${esc(e.name + ' — ' + Object.entries(e.roles).map(([r, l]) => r + ': ' + l.join(', ')).join(' · ') + (e.drop ? ' · no ' + e.drop.join(' / ') : ''))}">${esc(e.short || e.name)}</button>`).join('');
+// QUICK MOODS: one tap fills the flavour of the panel (direction text + style / ensemble / energy / feel / harmony / sound)
+const QUICK = {
+  lonely_night: { name: 'lonely night', desc: 'lonely, slow and sparse, rain on the window at night', style: 'noir', ensemble: 'piano', energy: -0.2, feel: 'straight', harmony: 'sevenths', tape: 'reel_7' },
+  chase: { name: 'chase', desc: 'urgent, driving, tense', style: 'motorik', ensemble: 'rock', energy: 0.4, harmony: 'open', fx: 'fx_riser' },
+  warm_memory: { name: 'warm memory', desc: 'warm, gentle, a memory from another room', style: 'lofi', ensemble: 'lofi', energy: -0.1, feel: 'swung', harmony: 'lush', tape: 'cassette' },
+  dread: { name: 'dread', desc: 'dread, ominous, sparse, something under the floor', style: 'dark_drone', ensemble: 'horror', energy: -0.15, harmony: 'open', hit: 'fx_sub_drop' },
+  sacred: { name: 'sacred', desc: 'sacred, still, slow, warm', style: 'hymn', ensemble: 'choir', energy: -0.2, harmony: 'plain' },
+  neon: { name: 'neon', desc: 'cool, shimmering, a neon night', style: 'synthwave', ensemble: 'synthwave', energy: 0.15, harmony: 'lush', textures: ['amb_city'] },
+  small_town: { name: 'small town', desc: 'warm, rootsy, gentle, a porch at dusk', style: 'folk', ensemble: 'folk', energy: 0, harmony: 'plain', textures: ['amb_crickets'] },
+  dream: { name: 'dream', desc: 'dreamy, floating, ethereal, slow', style: 'ambient', ensemble: 'ambient', energy: -0.2, harmony: 'lush', prog: 'modal', fx: 'fx_reverse_swell', tape: 'vhs' },
+  heist: { name: 'heist', desc: 'cool, smoky, sly', style: 'jazz', ensemble: 'jazz', energy: 0.1, feel: 'swung', harmony: 'sevenths', tape: 'studio_15' },
+  machine: { name: 'machine', desc: 'cold, mechanical, driving', style: 'industrial', ensemble: 'horror', energy: 0.2, harmony: 'open', textures: ['drone_engine'] },
+};
+$('quick').innerHTML = Object.entries(QUICK).map(([id, q]) => `<button data-quick="${id}" class="dim" title="${esc(q.desc)}">${esc(q.name)}</button>`).join('') +
+  `<button id="surprise" title="random style, ensemble, feel, harmony and sound design — within sane bounds">🎲 SURPRISE ME</button>`;
+const selOk = (id, v) => [...$(id).options].some(o => o.value === v);
+// set the flavour controls (anything not named → auto) and say what was set
+function setFlavour(f, label) {
+  if (f.desc !== undefined) $('desc').value = f.desc;
+  $('r-style').value = f.style && selOk('r-style', f.style) ? f.style : '';
+  RG.ensemble = f.ensemble && TempMaker.ENSEMBLES[f.ensemble] ? f.ensemble : '';
+  $('r-energy').value = f.energy || 0;
+  $('r-feel').value = f.feel && selOk('r-feel', f.feel) ? f.feel : '';
+  $('r-harm').value = f.harmony && selOk('r-harm', f.harmony) ? f.harmony : '';
+  $('r-prog').value = f.prog && selOk('r-prog', f.prog) ? f.prog : '';
+  const tx = f.textures === 'none' ? ['none'] : f.textures || [];
+  $('r-tex').value = tx[0] && selOk('r-tex', tx[0]) ? tx[0] : ''; $('r-tex2').value = tx[1] && selOk('r-tex2', tx[1]) ? tx[1] : '';
+  $('r-fx').value = f.fx && selOk('r-fx', f.fx) ? f.fx : ''; $('r-hit').value = f.hit && selOk('r-hit', f.hit) ? f.hit : '';
+  $('r-tape').value = f.tape && selOk('r-tape', f.tape) ? f.tape : '';
+  renderRegen();
+  const o = regenForm(), set = [];
+  if (o.description) set.push('direction “' + o.description + '”');
+  if (o.style) set.push('style ' + SeqGen.STYLES[o.style].name);
+  if (o.ensemble) set.push('ensemble ' + TempMaker.ENSEMBLES[o.ensemble].name);
+  if (o.energy) set.push('energy ' + (o.energy > 0 ? '+' : '') + o.energy);
+  if (o.feel) set.push('feel ' + TempMaker.FEELS[o.feel].name);
+  if (o.harmony) set.push('harmony ' + TempMaker.HARMONY[o.harmony].name);
+  if (o.prog) set.push('progression ' + o.prog);
+  if (o.textures) set.push('texture ' + (o.textures === 'none' ? 'none' : o.textures.join(' + ')));
+  if (o.fx) set.push('fx ' + o.fx); if (o.hit) set.push('hit ' + o.hit);
+  if (o.tape) set.push('tape: ' + TapeModel.MACHINES[o.tape].name);
+  $('quickmsg').textContent = label + ' → ' + (set.join(' · ') || 'everything auto');
+  return o;
+}
+$('quick').addEventListener('click', e => {
+  if (e.target.closest('#surprise')) { surprise(); return; }
+  const b = e.target.closest('[data-quick]'); if (!b) return;
+  setFlavour(QUICK[b.dataset.quick], QUICK[b.dataset.quick].name);
+  document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = x === b ? 'on' : 'dim');
+});
+// 🎲 SURPRISE ME: a random style, an ensemble that suits it (now and then any), a feel the tempo can take, a harmony
+// colour, sometimes a progression family and a sound — shown in the line under the chips
+function surprise(rnd = Math.random) {
+  const pick = a => a[Math.floor(rnd() * a.length)];
+  const styles = Object.keys(SeqGen.STYLES), style = pick(styles), [lo, hi] = SeqGen.STYLES[style].bpm;
+  const ens = Object.keys(TempMaker.ENSEMBLES), fits = ens.filter(id => (TempMaker.ENSEMBLES[id].fits || []).includes(style));
+  const feels = ['straight', 'swung', 'shuffle'].concat(lo >= 110 ? ['half'] : []).concat(hi <= 80 ? ['double'] : []);
+  const amb = [...TempMaker.soundChoices('ambient')], fx = [...$('r-fx').options].map(o => o.value).filter(v => v && v !== 'none'), hit = [...$('r-hit').options].map(o => o.value).filter(v => v && v !== 'none');
+  const f = { style, ensemble: fits.length && rnd() < 0.85 ? pick(fits) : pick(ens), feel: pick(feels), harmony: pick(Object.keys(TempMaker.HARMONY)),
+    energy: Math.round((rnd() * 0.6 - 0.3) * 20) / 20, prog: rnd() < 0.35 ? pick(TempMaker.progFamilies().filter(x => x !== 'drone' || SeqGen.STYLES[style].bed)) : '' };
+  const r = rnd(); if (r < 0.45) f.textures = [pick(amb)]; else if (r < 0.6) f.textures = 'none';
+  if (rnd() < 0.4) f.fx = pick(fx); if (rnd() < 0.4) f.hit = pick(hit);
+  if (rnd() < 0.35) f.tape = pick(['studio_15', 'reel_7', 'cassette', 'cassette', 'worn_cassette', 'vhs', 'master_30']);
+  document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = 'dim');
+  return setFlavour(f, '🎲');
+}
+function renderRegen() {
+  document.querySelectorAll('#ntakes [data-n]').forEach(b => b.classList.toggle('on', +b.dataset.n === RG.n));
+  document.querySelectorAll('#variety [data-v]').forEach(b => b.className = b.dataset.v === RG.variety ? 'on' : 'dim');
+  document.querySelectorAll('#ensembles [data-ens]').forEach(b => b.className = b.dataset.ens === RG.ensemble ? 'on' : 'dim');
+  $('roles').innerHTML = ROLES.map(r => `<button data-role="${r}" class="${RG.roles.includes(r) ? 'on' : 'dim'}">${r}</button>`).join('');
+  document.querySelectorAll('#pads [data-p]').forEach(b => b.classList.toggle('on', +b.dataset.p === RG.pads));
+  const roles = ROLES.concat(EXTRA_PADS.slice(0, RG.pads));
+  $('instr').innerHTML = roles.map(r => `<button data-inst="${r}" class="${RG.instruments[r] ? 'on' : 'dim'}" title="pick the ${r} instrument">${r}: ${esc(instLabel(RG.instruments[r]))}</button>`).join('');
+  $('r-energyv').textContent = (+$('r-energy').value > 0 ? '+' : +$('r-energy').value < 0 ? '' : '±') + (+$('r-energy').value).toFixed(2);
+  $('r-dens').disabled = $('r-densauto').checked; $('r-densv').textContent = $('r-densauto').checked ? 'auto' : (+$('r-dens').value).toFixed(2);
+  $('r-len').disabled = !$('r-lenmode').value;
+  const t1 = $('r-tex').value; $('r-tex2').disabled = !t1 || t1 === 'none';
+  // what the folded sections hold, so a closed one still shows it isn't on auto
+  const nice = x => x.replace(/^(amb|fx)_/, '').replace(/_/g, ' ');
+  const more = [t1 && 'texture ' + (t1 === 'none' ? 'none' : nice(t1) + ($('r-tex2').value && !$('r-tex2').disabled ? ' + ' + nice($('r-tex2').value) : '')),
+    $('r-fx').value && 'fx ' + nice($('r-fx').value), $('r-hit').value && 'hit ' + nice($('r-hit').value),
+    RG.roles.length < ROLES.length && 'parts ' + RG.roles.join('+'), RG.pads && '+' + RG.pads + ' pad' + (RG.pads > 1 ? 's' : ''), $('r-seed').value !== '' && 'seed ' + $('r-seed').value].filter(Boolean);
+  $('moresum').textContent = more.length ? '· ' + more.join(' · ') : '· all auto';
+  const picked = Object.keys(RG.instruments).filter(k => RG.instruments[k] && roles.includes(k));
+  $('instrsum').textContent = picked.length ? '· ' + picked.map(k => k + ' ' + instLabel(RG.instruments[k])).join(' · ') : RG.ensemble ? '· from the ' + TempMaker.ENSEMBLES[RG.ensemble].name + ' ensemble' : '· all auto';
+}
+function instLabel(v) {
+  if (!v) return 'auto';
+  if (v === 'kit') return 'KIT';
+  const [k, ...r] = v.split(':'), id = r.join(':');
+  if (k === 'kit') return 'KIT · ' + (SeqGen.STYLES[id] ? SeqGen.STYLES[id].name : id);
+  if (k === 'forge') { const p = (window.FORGE_PRESETS || []).find(x => x.id === id); return 'FORGE ' + (p ? p.name : id); }
+  if (k === 'patch') return 'PATCH ' + (DIR.patchNames && DIR.patchNames[id] || id);
+  return v;
+}
+$('ntakes').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { RG.n = +b.dataset.n; renderRegen(); studioUI(); } });
+$('variety').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) { RG.variety = b.dataset.v; renderRegen(); } });
+$('ensembles').addEventListener('click', e => { const b = e.target.closest('[data-ens]'); if (b) { RG.ensemble = b.dataset.ens; renderRegen(); } });
+$('roles').addEventListener('click', e => { const b = e.target.closest('[data-role]'); if (!b) return; const r = b.dataset.role; if (RG.roles.includes(r)) { if (RG.roles.length > 1) RG.roles = RG.roles.filter(x => x !== r); } else RG.roles = ROLES.filter(x => x === r || RG.roles.includes(x)); renderRegen(); });
+$('pads').addEventListener('click', e => { const b = e.target.closest('[data-p]'); if (b) { RG.pads = +b.dataset.p; renderRegen(); } });
+$('instr').addEventListener('click', e => { const b = e.target.closest('[data-inst]'); if (b) openPicker(b.dataset.inst); });
+['r-energy', 'r-dens'].forEach(id => $(id).addEventListener('input', renderRegen));
+['r-densauto', 'r-lenmode', 'r-tex', 'r-tex2', 'r-fx', 'r-hit', 'r-seed'].forEach(id => $(id).addEventListener('change', renderRegen));
+$('resetregen').addEventListener('click', () => {
+  Object.assign(RG, { n: 2, roles: ROLES.slice(), pads: 0, instruments: {}, ensemble: '', variety: '' });
+  $('desc').value = ''; $('r-style').value = $('r-mode').value = $('r-form').value = ''; $('r-energy').value = 0; $('r-densauto').checked = true; $('r-lenmode').value = ''; $('r-loop').checked = false; $('r-seed').value = '';
+  for (const id of ['r-key', 'r-bpm', 'r-feel', 'r-harm', 'r-prog', 'r-tex', 'r-tex2', 'r-fx', 'r-hit', 'r-tape']) $(id).value = '';
+  $('quickmsg').textContent = ''; document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = 'dim');
+  renderRegen();
+});
+function regenForm() {
+  const o = {};
+  if ($('desc').value.trim()) o.description = $('desc').value.trim();
+  if ($('r-style').value) o.style = $('r-style').value;
+  if ($('r-mode').value) o.mode = $('r-mode').value;
+  if ($('r-form').value) o.form = $('r-form').value;
+  if (+$('r-energy').value) o.energy = +$('r-energy').value;
+  if (!$('r-densauto').checked) o.density = +$('r-dens').value;
+  if ($('r-lenmode').value && +$('r-len').value > 0) o.length = { [$('r-lenmode').value]: +$('r-len').value };
+  if ($('r-loop').checked) o.loop = true;
+  if (RG.roles.length < ROLES.length) o.roles = RG.roles.slice();
+  if (RG.pads) o.extraPads = RG.pads;
+  const ins = {}; for (const [k, v] of Object.entries(RG.instruments)) if (v && (ROLES.includes(k) || EXTRA_PADS.slice(0, RG.pads).includes(k))) ins[k] = v;
+  if (Object.keys(ins).length) o.instruments = ins;
+  if ($('r-seed').value !== '') o.seed = +$('r-seed').value;
+  // ensemble · variety · key · bpm · feel · harmony · progression · sound design (temp_maker.normOpts validates them)
+  if (RG.ensemble) o.ensemble = RG.ensemble;
+  if (RG.variety) o.variety = RG.variety;
+  const key = $('r-key').value; if (key === 'home') o.key = 'home'; else if (key !== '') o.key = +key;
+  if (+$('r-bpm').value > 0) o.bpm = +$('r-bpm').value;
+  if ($('r-feel').value) o.feel = $('r-feel').value;
+  if ($('r-harm').value) o.harmony = $('r-harm').value;
+  if ($('r-prog').value) o.prog = $('r-prog').value;
+  const t1 = $('r-tex').value, t2 = $('r-tex2').value;
+  if (t1 === 'none') o.textures = 'none'; else if (t1) o.textures = t2 && t2 !== t1 ? [t1, t2] : [t1];
+  if ($('r-fx').value) o.fx = $('r-fx').value;
+  if ($('r-hit').value) o.hit = $('r-hit').value;
+  if ($('r-tape').value) o.tape = $('r-tape').value;
+  return o;
+}
+// the settings a take was made with, for an identical take: the request + the mood it resolved to + its
+// instruments (so a later change to the DAW's per-style picks can't change it). Key only if it was asked.
+// VARIETY is not re-applied (its picks — style, ensemble — are in the mood); the ensemble the take got is.
+function regenOpts(m) {
+  const mo = m.mood || {}, r = Object.assign({}, m.request || {});
+  Object.assign(r, { style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, seed: mo.seed });
+  if (m.request && m.request.key === undefined) delete r.key;
+  delete r.variety;
+  if (mo.ensemble) r.ensemble = mo.ensemble;
+  const ins = {}; for (const [k, v] of Object.entries(m.instruments || {})) if (TempMaker.INSTR_SPEC.test(v)) ins[k] = v;
+  if (Object.keys(ins).length) r.instruments = ins;
+  return r;
+}
+function forWho() {
+  const n = DIR.checked.size;
+  $('forwho').innerHTML = n ? `<b style="color:var(--gold-hi);font-weight:normal">${n} ticked track${n > 1 ? 's' : ''}</b> (${esc([...DIR.checked].slice(0, 6).join(', '))}${n > 6 ? ' …' : ''}) — untick them to make takes for this track only` : 'this track' + (DIR.sel ? ' (' + esc(DIR.sel) + ')' : '');
+}
+function makeNow() {
+  const ids = DIR.checked.size ? [...DIR.checked] : DIR.sel ? [DIR.sel] : [];
+  if (!ids.length) { msg('pick a track (or tick some) first.', true, 'makemsg'); msg('pick a track on the left first.', true); return; }
+  return requestTakes(ids, RG.n, regenForm());
+}
+$('make').addEventListener('click', makeNow);
+$('make2').addEventListener('click', makeNow);
+// the box's top lands just under the sticky transport (scrollIntoView alone would tuck FOR / TAKES / QUICK beneath it)
+// jump the right pane to a box, landing it under the sticky transport bar
+function jumpTo(id) {
+  const tr = document.querySelector('.transport').getBoundingClientRect(), top = $(id).getBoundingClientRect().top;
+  $('right').scrollBy({ top: top - ($('right').getBoundingClientRect().top - 8 + tr.height) - 34, behavior: 'smooth' });
+}
+$('tosettings').addEventListener('click', () => jumpTo('regen'));
+$('toremix').addEventListener('click', () => jumpTo('remix'));
+// One engine for the page, started on the first MAKE TAKES tap (its AudioContext needs the gesture); requests queue
+// and run one after another. Each take lands in review staging and shows up under TAKES as soon as it's written.
+const STUDIO = { E: null, busy: false, queue: [] };
+DIR.requests = {};
+async function studio() {
+  if (!STUDIO.E) STUDIO.E = new DAW.Engine();
+  const E = STUDIO.E; await E.start();
+  if (!E.project) await E.load(DAW.Engine.newProject());
+  return E;
+}
+function studioUI(text, err) {
+  if (text != null) msg(text, err, STUDIO.rx ? 'rxmsg' : 'makemsg');
+  $('rx-go').disabled = STUDIO.busy; $('rx-go').textContent = STUDIO.busy ? '⤳ MAKING…' : '⤳ REMIX' + (RX.n > 1 ? ' × ' + RX.n : '');
+  for (const id of ['make', 'make2']) { $(id).disabled = STUDIO.busy; $(id).textContent = STUDIO.busy ? '⚄ MAKING…' : '⚄ MAKE ' + (RG.n > 1 ? RG.n + ' TAKES' : '1 TAKE'); }
+  // progress shows next to the TAKES header too, so it's visible without scrolling to the settings
+  if (text != null) msg(text, err);
+  $('b-daw').textContent = 'STUDIO: ' + (STUDIO.busy ? 'making' + (STUDIO.queue.length ? ' (+' + STUDIO.queue.length + ' queued)' : '') : 'ready');
+  $('b-daw').className = 'badge' + (STUDIO.busy ? ' warn' : '');
+}
+setTimeout(() => studioUI(), 0);
+// → { rid, done: Promise<request> } — the request records made / failed / state
+function requestTakes(ids, takes, opts, remix) {
+  const rid = 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const R = DIR.requests[rid] = { ids, takes, opts, remix: remix || null, made: 0, failed: 0, errors: [], state: 'queued' };
+  R.done = new Promise(res => { R.resolve = res; });
+  STUDIO.queue.push(rid);
+  if (STUDIO.busy) studioUI('queued: ' + takes + ' take(s) of ' + ids.join(', ') + ' — after the one in progress.');
+  runStudio();
+  return { rid, done: R.done };
+}
+async function runStudio() {
+  if (STUDIO.busy) return;
+  STUDIO.busy = true; studioUI();
+  try {
+    while (STUDIO.queue.length) {
+      const rid = STUDIO.queue.shift(), R = DIR.requests[rid]; R.state = 'making'; STUDIO.rx = !!R.remix; studioUI();
+      const fail = text => { R.state = 'failed'; R.errors.push(text); studioUI(text, true); R.resolve(R); };
+      if (!AK.game.root) { fail('link the game folder first (⌂ LINK GAME FOLDER, top left) — takes are saved into it.'); continue; }
+      const list = R.ids.map(id => DIR.cat.find(c => c.id === id)).filter(Boolean);
+      if (!list.length) { fail('not in the catalog: ' + R.ids.join(', ')); continue; }
+      let E; try { E = await studio(); } catch (e) { fail('could not start the audio engine: ' + (e.message || e)); continue; }
+      const t0 = performance.now(), el = () => Math.round((performance.now() - t0) / 1000) + ' s';
+      try {
+        const made = R.remix ? c => Remix.remixTakes(E, list, Object.assign({ takes: R.takes }, R.remix), c) : c => TempMaker.makeTakes(E, list, { takes: R.takes, review: true, stems: true, opts: R.opts }, c);
+        await made({ briefs: DIR.briefs, score: DIR.score ?? null,
+          onEvent: ev => {
+            if (ev.type === 'progress') { studioUI(ev.text + ' · ' + el()); $('dawmsg').textContent = ev.text; }
+            else if (ev.type === 'take') {
+              if (ev.error) { R.failed++; R.errors.push(ev.id + ': ' + ev.error); } else R.made++;
+              if (ev.id && AK.game.root) rescanOne(ev.id);
+            }
+          } });
+        R.state = 'done';
+        studioUI(R.made + ' take(s) made in ' + el() + (R.failed ? ', ' + R.failed + ' failed: ' + R.errors.join('; ') : '') + (R.made ? ' — ▶ PLAY them under TAKES.' : ''), !!R.failed);
+        $('dawmsg').textContent = '';
+      } catch (e) { fail('making takes failed: ' + (e.message || e)); continue; }
+      R.resolve(R);
+    }
+  } finally { STUDIO.busy = false; studioUI(); }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// REMIX: takes for the selected (or ticked) track made from finished music (remix.js), queued on the same studio
+// ═══════════════════════════════════════════════════════════════════
+const RX = { n: 2, recipe: 'restyle', from: '', with: '', list: [] };
+// TAPE machines (tape_model.js) for MAKE TAKES and REMIX
+if (typeof TapeModel !== 'undefined') for (const id of ['r-tape', 'rx-tape']) for (const [mid, m] of Object.entries(TapeModel.MACHINES)) $(id).add(new Option('tape: ' + m.name, mid));
+Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('rx-style').add(new Option(s.name, id)));
+SeqGen.NOTE_NAMES.forEach((n, i) => $('rx-key').add(new Option('key: ' + n, String(i))));
+const rxKey = x => x.kind === 'take' ? 'take:' + x.dir : 'file:' + x.path;
+const rxSrc = k => RX.list.find(x => rxKey(x) === k) || null;
+function rxRender() {
+  if (!DIR.cat || !DIR.state) return;
+  RX.list = Remix.sourcesFrom(DIR.cat, DIR.state, DIR.approvals || { tracks: {} }, DIR.imports || []);
+  // default source: this track's approved take, else its newest take, else the first approved / real one anywhere
+  if (!rxSrc(RX.from)) {
+    const mine = RX.list.filter(x => x.id === DIR.sel), d = mine.find(x => x.approved) || mine.find(x => x.kind === 'take') || mine[0] || RX.list[0];
+    RX.from = d ? rxKey(d) : '';
+  }
+  const done = x => x.approved || x.real || x.temp;
+  const groups = [['IMPORTED', x => x.imported], ['APPROVED · RECORDINGS', x => !x.imported && done(x)], ['THIS TRACK', x => !x.imported && x.id === DIR.sel && !done(x)], ['OTHER TAKES', x => !x.imported && x.id !== DIR.sel && !done(x)]];
+  const opts = list => groups.map(([g, f]) => { const it = list.filter(f); return it.length ? `<optgroup label="${esc(g)} (${it.length})">` + it.map(x => `<option value="${esc(rxKey(x))}">${esc(x.label)}</option>`).join('') + '</optgroup>' : ''; }).join('');
+  $('rx-from').innerHTML = RX.list.length ? opts(RX.list) : '<option value="">nothing finished yet — make and approve a take first</option>';
+  $('rx-from').value = RX.from;
+  const takes = RX.list.filter(x => x.kind === 'take' && rxKey(x) !== RX.from);
+  if (!takes.some(x => rxKey(x) === RX.with)) RX.with = takes[0] ? rxKey(takes[0]) : '';
+  $('rx-with').innerHTML = takes.length ? opts(takes) : '<option value="">no other take</option>';
+  $('rx-with').value = RX.with;
+  const src = rxSrc(RX.from), notesOk = !!src;              // a recording / import is transcribed for the NOTES recipes
+  if (!notesOk && Remix.RECIPES[RX.recipe].kind === 'notes') RX.recipe = 'chop';
+  $('rx-recipes').innerHTML = Object.entries(Remix.RECIPES).map(([id, r]) => {
+    const off = r.kind === 'notes' && !notesOk;
+    return `<button data-rx="${id}" class="${id === RX.recipe ? 'on' : 'dim'}" ${off ? 'disabled' : ''} title="${esc(r.hint + (off ? ' — needs a take made here (a recording has no notes)' : ''))}">${r.name}</button>`;
+  }).join('');
+  const R0 = Remix.RECIPES[RX.recipe];
+  $('rx-hint').textContent = R0.hint + (R0.kind === 'notes' ? (src && src.kind === 'file' ? ' · transcribes the recording first (chords, sections' + (typeof BasicPitchLite !== 'undefined' ? ', melody, bass' : '; melody needs vendor/basicpitch') + ')' : ' · works from the take’s notes') : ' · works from the audio' + (src && src.kind === 'take' ? ' (its stems minus the drums)' : '')) +
+    (src && (src.imported && src.rights !== 'cleared' || src.third_party) ? ' · ⚠ takes are flagged TEMP ONLY (third-party)' : '');
+  $('rx-withrow').style.display = R0.needsWith ? '' : 'none';
+  $('rx-key').disabled = R0.kind !== 'notes';
+  document.querySelectorAll('#rx-n [data-n]').forEach(b => b.classList.toggle('on', +b.dataset.n === RX.n));
+}
+$('rx-from').addEventListener('change', () => { RX.from = $('rx-from').value; rxRender(); });
+$('rx-with').addEventListener('change', () => { RX.with = $('rx-with').value; });
+$('rx-recipes').addEventListener('click', e => { const b = e.target.closest('[data-rx]'); if (b && !b.disabled) { RX.recipe = b.dataset.rx; rxRender(); } });
+$('rx-n').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { RX.n = +b.dataset.n; rxRender(); studioUI(); } });
+// what a source is, as the remix request records it (enough to find it again: ⟳ AGAIN)
+const rxRef = x => x.kind === 'take' ? { kind: 'take', id: x.id, title: x.title, take: x.take, dir: x.dir } : { kind: 'file', id: x.id, title: x.title, path: x.path, known: x.known, imported: x.imported || undefined, rights: x.rights || undefined };
+function requestRemix(ids, takes, rx) { return requestTakes(ids, takes, {}, rx); }
+// ⇪ IMPORT AUDIO: the file goes to assets/audio/imports/ (Godot ignores it, git ignores it, Drive backs it up) with a
+// sidecar saying what it is and its RIGHTS. Unlicensed → every take made from it carries third_party (TEMP ONLY).
+const IMPORT_DIR = 'assets/audio/imports';
+async function scanImports() {
+  const out = [];
+  for (const e of await AK.game.list(IMPORT_DIR)) {
+    if (e.kind !== 'file' || !/\.(mp3|ogg|wav|flac|m4a|aac)$/i.test(e.name)) continue;
+    const slug = e.name.replace(/\.[^.]+$/, ''), side = await readJson(IMPORT_DIR + '/' + slug + '.json', {}) || {};
+    out.push({ slug, path: IMPORT_DIR + '/' + e.name, name: side.name || slug, rights: side.rights === 'cleared' ? 'cleared' : 'unlicensed', imported: side.imported || null });
+  }
+  return out.sort((a, b) => a.name.localeCompare(b.name));
+}
+async function importAudio(file, rights) {
+  if (!AK.game.root) throw new Error('link the game folder first (⌂ LINK GAME FOLDER)');
+  const ext = (file.name.match(/\.([a-z0-9]+)$/i) || [, 'mp3'])[1].toLowerCase(), name = file.name.replace(/\.[^.]+$/, '');
+  const slug = (AK.util.slug(name) || 'import').slice(0, 60);
+  if (!(await AK.game.exists(IMPORT_DIR + '/.gdignore'))) await AK.game.write(IMPORT_DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+  await AK.game.write(IMPORT_DIR + '/' + slug + '.' + ext, file);
+  await AK.game.write(IMPORT_DIR + '/' + slug + '.json', new Blob([JSON.stringify({ name, file: file.name, rights: rights === 'cleared' ? 'cleared' : 'unlicensed', imported: new Date().toISOString(), by: who(),
+    note: rights === 'cleared' ? 'marked as yours / public domain / licensed' : 'third-party audio for sketching: takes made from it are flagged TEMP ONLY' }, null, 1)], { type: 'application/json' }));
+  DIR.imports = await scanImports();
+  RX.from = 'file:' + IMPORT_DIR + '/' + slug + '.' + ext; rxRender();
+  return slug;
+}
+$('rx-import').addEventListener('click', () => $('rx-file').click());
+$('rx-file').addEventListener('change', () => { const f = $('rx-file').files[0]; if (!f) return; $('rx-importname').textContent = f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; $('rx-importrow').style.display = ''; });
+$('rx-importno').addEventListener('click', () => { $('rx-importrow').style.display = 'none'; $('rx-file').value = ''; });
+$('rx-importgo').addEventListener('click', async () => {
+  const f = $('rx-file').files[0]; if (!f) return;
+  try { await importAudio(f, $('rx-rights').value); $('rx-importrow').style.display = 'none'; $('rx-file').value = ''; msg('imported ' + f.name + ($('rx-rights').value === 'cleared' ? '' : ' — takes from it are flagged TEMP ONLY') + '. Pick a RECIPE, then ⤳ REMIX.', false, 'rxmsg'); }
+  catch (e) { msg('import failed: ' + (e.message || e), true, 'rxmsg'); }
+});
+function remixNow() {
+  const ids = DIR.checked.size ? [...DIR.checked] : DIR.sel ? [DIR.sel] : [];
+  if (!ids.length) { msg('pick a track (or tick some) first — the remix is made for it.', true, 'rxmsg'); return; }
+  const src = rxSrc(RX.from); if (!src) { msg('pick something to remix FROM.', true, 'rxmsg'); return; }
+  const R0 = Remix.RECIPES[RX.recipe], wth = R0.needsWith ? rxSrc(RX.with) : null;
+  if (R0.needsWith && !wth) { msg(R0.name + ' needs a second take under WITH.', true, 'rxmsg'); return; }
+  const rx = { recipe: RX.recipe, from: rxRef(src) };
+  if (wth) rx.with = rxRef(wth);
+  if ($('rx-style').value) rx.style = $('rx-style').value;
+  if (R0.kind === 'notes' && $('rx-key').value !== '') rx.key = +$('rx-key').value;
+  if ($('rx-tape').value) rx.tape = $('rx-tape').value;
+  requestRemix(ids, RX.n, rx);
+}
+$('rx-go').addEventListener('click', remixNow);
+// ⤳ REMIX on a take row: that take becomes the source
+function remixFrom(m) {
+  RX.from = 'take:' + m.dir; rxRender();
+  jumpTo('remix');
+  msg('remixing from take ' + m.take + ' — pick a RECIPE, then ⤳ REMIX.', false, 'rxmsg');
+}
+// ⟳ AGAIN on a remix: the same source, recipe, seed and the style (and key) it got
+function remixAgain(m) {
+  const x = Object.assign({}, m.request.remix), mo = m.mood || {};
+  x.seed = mo.seed; if (mo.style) x.style = mo.style;
+  if ((Remix.RECIPES[x.recipe] || {}).kind === 'notes' && mo.key !== undefined) x.key = mo.key;
+  if (m.bars) x.bars = m.bars;
+  return x;
+}
+
+
+// ♫ COVER A SONG: the one-dialog way to a sketch cover (import if new → REMIX · COVER for a track). Touch-first:
+// the song and the track are tap rows (a 179-entry <select> is unusable on the Deck's screen), the track list searchable.
+const COV = { src: '', track: '' };
+function covRenderSrcs() {
+  const imps = DIR.imports || [];
+  $('cov-srcs').innerHTML = imps.map(im => `<button data-cs="${esc(im.path)}" class="${im.path === COV.src ? 'on' : 'dim'}">${esc(im.name)}${im.rights === 'cleared' ? ' (cleared)' : ' ⚠ temp only'}</button>`).join('') +
+    (COV.src === '' && $('cov-file').files[0] ? `<button class="on">${esc($('cov-file').files[0].name)} (new)</button>` : '') +
+    (!imps.length && !$('cov-file').files[0] ? '<span class="note">no songs imported yet — ⇪ NEW FILE…</span>' : '');
+  $('cov-newrow').style.display = COV.src ? 'none' : '';
+}
+function covRenderTracks() {
+  const q = $('cov-q').value.trim().toLowerCase(), miss = $('cov-missing').checked, order = DIR.order || DIR.cat || [];
+  const list = order.filter(t => (!miss || (DIR.state[t.id] || {}).status === 'missing') && (!q || (t.title + ' ' + t.id + ' vol ' + t.vol).toLowerCase().includes(q)));
+  $('cov-tracks').innerHTML = list.slice(0, 80).map(t => `<button data-ct="${esc(t.id)}" class="${t.id === COV.track ? 'on' : 'dim'}" title="${esc(t.id)}">${esc(t.title)} <span class="note">· vol ${esc(t.vol)} · ${esc((STATUS_LABEL[(DIR.state[t.id] || {}).status] || ['?'])[0])}</span></button>`).join('') +
+    (list.length > 80 ? `<span class="note">… ${list.length - 80} more — search to narrow</span>` : '') + (list.length ? '' : '<span class="note">no track matches</span>');
+  const cur = (DIR.cat || []).find(t => t.id === COV.track);
+  $('cov-cur').textContent = cur ? cur.title + ' (' + cur.id + ')' : '— tap a track below —';
+}
+function covOpen() {
+  if (!AK.game.root) { msg('link the game folder first (⌂ LINK GAME FOLDER, top left).', true); return; }
+  const imps = DIR.imports || [], order = DIR.order || DIR.cat || [];
+  if (!imps.some(im => im.path === COV.src)) COV.src = imps.length ? imps[imps.length - 1].path : '';
+  COV.track = DIR.sel || COV.track || (order.find(t => (DIR.state[t.id] || {}).status === 'missing') || order[0] || {}).id || '';
+  $('cov-q').value = ''; $('cov-fname').textContent = '';
+  if ($('cov-style').options.length < 2) Object.entries(SeqGen.STYLES).forEach(([id, st]) => $('cov-style').add(new Option(st.name, id)));
+  if ($('cov-tape').options.length < 2 && typeof TapeModel !== 'undefined') for (const [mid, m] of Object.entries(TapeModel.MACHINES)) $('cov-tape').add(new Option('tape: ' + m.name, mid));
+  msg('', false, 'covmsg');
+  covRenderSrcs(); covRenderTracks();
+  $('covdlg').classList.add('show');
+}
+$('coverbtn').addEventListener('click', covOpen);
+$('cov-close').addEventListener('click', () => $('covdlg').classList.remove('show'));
+$('covdlg').addEventListener('click', e => { if (e.target === $('covdlg')) $('covdlg').classList.remove('show'); });
+$('cov-pick').addEventListener('click', () => $('cov-file').click());
+$('cov-file').addEventListener('change', () => { const f = $('cov-file').files[0]; if (!f) return; COV.src = ''; $('cov-fname').textContent = f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; covRenderSrcs(); });
+$('cov-srcs').addEventListener('click', e => { const b = e.target.closest('[data-cs]'); if (b) { COV.src = b.dataset.cs; covRenderSrcs(); } });
+$('cov-tracks').addEventListener('click', e => { const b = e.target.closest('[data-ct]'); if (b) { COV.track = b.dataset.ct; covRenderTracks(); } });
+$('cov-q').addEventListener('input', covRenderTracks);
+$('cov-missing').addEventListener('change', covRenderTracks);
+async function covMake() {
+  const tid = COV.track; if (!tid) { msg('tap the track the cover is for.', true, 'covmsg'); return null; }
+  let path = COV.src;
+  if (!path) {
+    const f = $('cov-file').files[0]; if (!f) { msg('pick a song: ⇪ NEW FILE…', true, 'covmsg'); return null; }
+    msg('importing ' + f.name + '…', false, 'covmsg');
+    const slug = await importAudio(f, $('cov-rights').value);
+    path = (DIR.imports.find(im => im.slug === slug) || {}).path;
+  }
+  const im = (DIR.imports || []).find(x => x.path === path); if (!im) { msg('that import is gone — rescan.', true, 'covmsg'); return null; }
+  const rx = { recipe: 'cover', from: { kind: 'file', id: 'import:' + im.slug, title: im.name, path: im.path, imported: true, rights: im.rights } };
+  if ($('cov-style').value) rx.style = $('cov-style').value;
+  if ($('cov-tape').value) rx.tape = $('cov-tape').value;
+  $('covdlg').classList.remove('show');
+  await selectTrack(tid);
+  const req = requestRemix([tid], +$('cov-n').value || 2, rx);
+  jumpTo('remix');
+  msg('covering ' + im.name + ' for ' + tid + ' — transcribing first (a minute or so for a whole song); the takes appear under TAKES.', false);
+  return req;
+}
+$('cov-go').addEventListener('click', () => covMake().catch(e => msg('cover failed: ' + (e.message || e), true, 'covmsg')));
+
+// instrument picker: FORGE presets and PATCH BANK patches, read at runtime (both libraries grow)
+async function openPicker(role) {
+  $('pk-title').textContent = role.toUpperCase() + ' — instrument';
+  $('pk-q').value = '';
+  $('picker').classList.add('show');
+  $('picker').dataset.role = role;
+  $('pk-body').innerHTML = '<div class="note">reading the libraries…</div>';
+  DIR.pickItems = await instrumentChoices(role);
+  renderPicker();
+}
+async function instrumentChoices(role) {
+  const drums = role === 'drums' || role === 'perc', groups = [{ name: 'AUTO', items: [{ v: '', name: RG.ensemble ? 'auto — from the ' + TempMaker.ENSEMBLES[RG.ensemble].name + ' ensemble' : 'auto — the DAW picks for the style' }] }];
+  // the chosen ensemble's own options for this role first (a take draws one of them by its seed)
+  const ens = RG.ensemble && TempMaker.ENSEMBLES[RG.ensemble], el = ens && ens.roles[role] && ens.roles[role].filter(x => drums ? /^kit/.test(x) : (window.FORGE_PRESETS || []).some(p => p.id === x));
+  if (el && el.length) groups.push({ name: 'ENSEMBLE · ' + ens.name, items: el.map(x => drums ? { v: x, name: instLabel(x) } : { v: 'forge:' + x, name: instLabel('forge:' + x).replace(/^FORGE /, '') }) });
+  // a kit: the style's own (auto), the standard one, or any style's pieces (brushes, felt kick, 808, timpani-ish toms …)
+  if (drums) groups.push({ name: 'KIT', items: [{ v: 'kit', name: 'KIT — the style\'s FORGE kit' }, { v: 'kit:standard', name: 'KIT · standard' }].concat(Object.keys((window.DAW && DAW.KIT_STYLES) || {}).map(s => ({ v: 'kit:' + s, name: 'KIT · ' + (SeqGen.STYLES[s] ? SeqGen.STYLES[s].name : s) }))) });
+  const fp = (window.FORGE_PRESETS || []).filter(p => drums ? false : p.category !== 'drums');
+  const fcats = [...new Set(fp.map(p => p.category || 'other'))];
+  for (const c of fcats) groups.push({ name: 'FORGE · ' + c, items: fp.filter(p => (p.category || 'other') === c).map(p => ({ v: 'forge:' + p.id, name: p.name })) });
+  let items = [];
+  try { if (typeof PatchBank !== 'undefined') items = await PatchBank.all(); } catch (e) {}
+  DIR.patchNames = DIR.patchNames || {};
+  items = items.filter(it => it.category !== 'waveform' && (drums ? /drum|perc/.test(it.category || '') : !/drum|perc/.test(it.category || '')));
+  for (const it of items) DIR.patchNames[it.uid] = it.name;
+  const pcats = [...new Set(items.map(it => it.category || 'other'))].sort();
+  for (const c of pcats) groups.push({ name: 'PATCH BANK · ' + c, items: items.filter(it => (it.category || 'other') === c).map(it => ({ v: 'patch:' + it.uid, name: it.name + (it.source ? ' · ' + it.source : '') })) });
+  return groups;
+}
+function renderPicker() {
+  const q = $('pk-q').value.trim().toLowerCase(), role = $('picker').dataset.role, cur = RG.instruments[role] || '';
+  $('pk-body').innerHTML = (DIR.pickItems || []).map(g => {
+    const its = g.items.filter(it => !q || (it.name + ' ' + it.v + ' ' + g.name).toLowerCase().includes(q)).slice(0, 160);
+    if (!its.length) return '';
+    return `<div class="grp">${esc(g.name)} (${its.length})</div><div class="chipset">` + its.map(it => `<button data-pv="${esc(it.v)}" class="${it.v === cur ? 'on' : 'dim'}">${esc(it.name)}</button>`).join('') + '</div>';
+  }).join('') || '<div class="note">nothing matches.</div>';
+}
+$('pk-q').addEventListener('input', renderPicker);
+$('pk-close').addEventListener('click', () => $('picker').classList.remove('show'));
+// back from the DAW (✎ EDIT IN DAW → ⇪ SEND TO DIRECTOR): pick up new takes of the selected track
+window.addEventListener('focus', () => { if (AK.game.root && DIR.sel && !STUDIO.busy) rescanOne(DIR.sel); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden && AK.game.root && DIR.sel && !STUDIO.busy) rescanOne(DIR.sel); });
+async function diagReport() {
+  const L = ['MM AUDIO DIRECTOR diagnostics · ' + new Date().toISOString() + ' · ' + navigator.userAgent.replace(/^.*?\) /, '')];
+  L.push('game folder: ' + (AK.game.root ? 'linked (' + (AK.game.root.name || '?') + ')' : AK.game._pending ? 'needs ALLOW (permission)' : 'NOT linked'));
+  const st = Object.values(DIR.state || {}); L.push('catalog: ' + (DIR.cat || []).length + ' tracks · missing ' + st.filter(x => x.status === 'missing').length + ' · candidates ' + st.filter(x => x.status === 'candidates').length + ' · approved temp ' + st.filter(x => x.status === 'approved').length + ' · real ' + st.filter(x => x.status === 'real').length + ' · briefs ' + Object.keys(DIR.briefs || {}).length);
+  L.push('selected: ' + (DIR.sel || '—') + (DIR.sel && DIR.state[DIR.sel] ? ' · ' + DIR.state[DIR.sel].status + ' · takes ' + DIR.state[DIR.sel].takes.length : ''));
+  L.push('studio: ' + (STUDIO.E ? 'engine ' + (STUDIO.E.ctx ? STUDIO.E.ctx.state + ' ' + STUDIO.E.ctx.sampleRate + ' Hz' : 'not started') : 'not started') + ' · ' + (STUDIO.busy ? 'BUSY' : 'idle') + ' · queued ' + STUDIO.queue.length + ' · FORGE presets ' + ((window.FORGE_PRESETS || []).length));
+  for (const [rid, R] of Object.entries(DIR.requests || {}).slice(-8)) L.push('request ' + rid + ': ' + R.ids.join(',') + ' × ' + R.takes + ' → ' + R.state + ' · made ' + R.made + ' · failed ' + R.failed + (R.errors.length ? ' · ' + R.errors.join(' | ') : '') + ' · opts ' + JSON.stringify(R.opts || {}).slice(0, 200));
+  const D = (STUDIO.E && STUDIO.E.diag) || [];
+  if (D.length) { L.push('— engine log (' + D.length + ') —'); for (const x of D.slice(-60)) L.push(x.kind + (x.n > 1 ? ' ×' + x.n : '') + ' ' + x.msg); }
+  L.push('— page log (' + LOG.length + ') —'); for (const x of LOG.slice(-80)) L.push(x);
+  return L.join('\n');
+}
+$('diagbtn').addEventListener('click', async () => {
+  const txt = await diagReport();
+  try { await navigator.clipboard.writeText(txt); msg('diagnostics copied — paste them to Claude.'); }
+  catch (e) { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); msg('diagnostics copied — paste them to Claude.'); } catch (x) { msg('copy blocked — the text is in the browser console.', true); console.log(txt); } ta.remove(); }
+});
+$('helpbtn').addEventListener('click', () => $('help').classList.add('show'));
+$('help-close').addEventListener('click', () => $('help').classList.remove('show'));
+$('help').addEventListener('click', e => { if (e.target === $('help')) $('help').classList.remove('show'); });
+$('pk-body').addEventListener('click', e => {
+  const b = e.target.closest('[data-pv]'); if (!b) return;
+  const role = $('picker').dataset.role;
+  if (b.dataset.pv) { RG.instruments[role] = b.dataset.pv; if (b.dataset.pv.startsWith('patch:')) DIR.patchNames[b.dataset.pv.slice(6)] = b.textContent.replace(/ · .*$/, ''); } else delete RG.instruments[role];
+  $('picker').classList.remove('show'); renderRegen();
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// keys: ↑↓ / j k track · 1–9 take (A/B) · space play · [ ] intensity · a approve · x reject · v revoke · l loop
+// ═══════════════════════════════════════════════════════════════════
+window.addEventListener('keydown', e => {
+  if (e.target.closest('input[type=text], input[type=number], textarea, select') || e.ctrlKey || e.metaKey || e.altKey) return;
+  if ($('help').classList.contains('show')) { if (e.key === 'Escape') $('help').classList.remove('show'); return; }
+  if ($('covdlg').classList.contains('show')) { if (e.key === 'Escape') $('covdlg').classList.remove('show'); return; }
+  if ($('picker').classList.contains('show')) { if (e.key === 'Escape') $('picker').classList.remove('show'); return; }
+  const k = e.key;
+  if (k === 'ArrowDown' || k === 'j') { stepTrack(1); e.preventDefault(); }
+  else if (k === 'ArrowUp' || k === 'k') { stepTrack(-1); e.preventDefault(); }
+  else if (/^[1-9]$/.test(k)) { const i = +k - 1; if (DIR.takes[i]) pickTake(i, { autoplay: PV.playing }); }
+  else if (k === ' ') { $('play').click(); e.preventDefault(); }
+  else if (k === '[' || k === ']') { sceneStop(); PV.setIntensity(Math.round((PV.intensity + (k === ']' ? 0.25 : -0.25)) * 4) / 4); }
+  else if (k === 'a' && DIR.cur >= 0) approve(DIR.cur, document.querySelector(`[data-ap="${DIR.cur}"]`));
+  else if (k === 'x' && DIR.cur >= 0) reject(DIR.cur, document.querySelector(`[data-rej="${DIR.cur}"]`));
+  else if (k === 'v') revoke($('revoke'));
+  else if (k === 'l') $('loop').click();
+});
+window.addEventListener('resize', () => { drawSeek(true); drawCurve(); });
+
+// boot
+renderRegen(); forWho(); renderLayers();
+AK.game.restore(false).then(h => { folderBadge(); if (h) refresh(); }).catch(() => folderBadge());
+</script>
+</body>
+</html>

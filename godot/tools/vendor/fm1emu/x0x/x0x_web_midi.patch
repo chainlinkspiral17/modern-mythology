@@ -1,0 +1,19 @@
+--- a/web/emu/x0x_web.c
++++ b/web/emu/x0x_web.c
+@@ -119,3 +119,16 @@
+ }
+ /* the slots changed: the break part reloads its loops (and the LOOPS page's names) */
+ __attribute__((used, visibility("default"))) void web_slots_changed(void) { engine_brk_loops(); }
++
++/* MIDI in from the page (an addition for the Modern Mythology tools, not in upstream X0X): a message
++ * queued exactly as host/x0x_host.c's "midi" command queues it (a USB-MIDI packet, CIN 0xF for the
++ * realtime bytes), read by engine.c's drain() -> midi_in(): channel notes per part, clock, start/stop. */
++__attribute__((used, visibility("default"))) uint32_t web_midi(uint32_t s, uint32_t d1, uint32_t d2)
++{
++    uint32_t cin = s >= 0xF0u ? 0x0Fu : s >> 4;
++    if (s < 0x80u || mi_w - mi_r >= MQ)
++        return 0;
++    min_q[mi_w++ % MQ] = cin | s << 8 | (d1 & 127u) << 16 | (d2 & 127u) << 24;
++    return 1;
++}
++__attribute__((used, visibility("default"))) uint32_t web_sample_rate(void) { return 44100u; }

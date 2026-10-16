@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DAW · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; font-size: 11px; }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; }
+  header { padding: 6px 12px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 14px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header input { width: 200px; }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 2px 7px; border: 1px solid var(--rule); color: var(--text-dim); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .transport { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; padding: 6px 12px; border-bottom: 1px solid var(--rule); }
+  .transport label { color: var(--text-dim); }
+  select, input[type=number], input[type=text] { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 11px; padding: 2px 4px; }
+  input[type=number] { width: 52px; }
+  input[type=range] { accent-color: var(--rust); }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 3px 8px; font-family: inherit; font-size: 10px; letter-spacing: 0.06em; cursor: pointer; }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  button.rec.on { background: var(--red); color: #fff; animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 14px rgba(198,74,58,0.8); } }
+  .pos { font-size: 18px; color: var(--gold-hi); min-width: 76px; }
+  main { display: grid; grid-template-columns: 1fr 350px; overflow: hidden; min-height: 0; }
+  .work { display: grid; grid-template-rows: minmax(140px, 44%) 1fr; min-height: 0; overflow: hidden; }
+  .arr { display: grid; grid-template-columns: 210px 1fr; min-height: 0; border-bottom: 1px solid var(--rule); }
+  .heads { overflow: hidden; border-right: 1px solid var(--rule); }
+  .heads .ruler { height: 40px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 4px; padding: 0 4px; }
+  .th { height: 40px; border-bottom: 1px solid #2a1c12; display: grid; grid-template-columns: 6px 1fr auto; gap: 4px; align-items: center; padding: 0 4px 0 0; cursor: pointer; }
+  .th.sel { background: var(--ink); }
+  .th .c { width: 6px; height: 100%; }
+  .th .nm { overflow: hidden; }
+  .th .nm b { color: var(--gold-hi); font-weight: normal; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .th .nm i { color: var(--text-dim); font-style: normal; font-size: 9px; white-space: nowrap; }
+  .th .b { display: flex; gap: 2px; }
+  .th .b button { padding: 1px 4px; font-size: 9px; }
+  .th .b button.arm.on { background: var(--red); border-color: #ffb0a0; color: #fff; }
+  .lanes { position: relative; overflow: auto; }
+  .lanes canvas { display: block; }
+  .roll { display: grid; grid-template-rows: auto 1fr; min-height: 0; }
+  .rollbar { display: flex; gap: 6px; align-items: center; padding: 4px 8px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+  .rollbar b { color: var(--gold-hi); font-weight: normal; }
+  .rollwrap { position: relative; overflow: auto; }
+  .side { border-left: 1px solid var(--rule); display: grid; grid-template-rows: auto 1fr; min-height: 0; }
+  .tabs { display: flex; border-bottom: 1px solid var(--rule); }
+  .tabs button { flex: 1; border: none; border-right: 1px solid var(--rule); background: transparent; color: var(--text-dim); padding: 7px 0; }
+  .tabs button.on { color: var(--gold-hi); background: var(--ink); }
+  .pane { overflow-y: auto; padding: 8px 10px; display: none; }
+  .pane.on { display: block; }
+  h2 { margin: 10px 0 5px; color: var(--gold); font-size: 11px; letter-spacing: 0.14em; border-bottom: 1px solid var(--rule); padding-bottom: 3px; font-weight: normal; }
+  h2:first-child { margin-top: 0; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+  .row > label { color: var(--text-dim); min-width: 54px; }
+  .note { color: var(--text-dim); font-size: 10px; line-height: 1.45; font-style: italic; }
+  .msg { color: var(--emerald-hi); font-size: 10px; min-height: 13px; margin: 4px 0; }
+  .msg.err { color: var(--red); }
+  .strip { border: 1px solid var(--rule); background: var(--bg-1); padding: 5px 7px; margin-bottom: 5px; }
+  .strip .top { display: flex; justify-content: space-between; align-items: center; }
+  .strip .top b { color: var(--gold-hi); font-weight: normal; }
+  .kv { display: grid; grid-template-columns: 40px 1fr; gap: 1px 6px; align-items: center; color: var(--text-dim); }
+  .kv input[type=range] { width: 100%; }
+  canvas.meter { width: 100%; height: 6px; display: block; margin-top: 3px; }
+  .item { border: 1px solid var(--rule); padding: 4px 6px; margin-bottom: 3px; cursor: pointer; font-size: 10px; }
+  .item.pick-row { min-height: 40px; font-size: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chips .chip { min-height: 38px; min-width: 44px; padding: 0 11px; border-radius: 19px; font-size: 11px; letter-spacing: 0.06em; }
+  .chips .chip.on { background: var(--rust); color: var(--ink); }
+  .chips .chip i { font-style: normal; opacity: 0.65; font-size: 10px; }
+  button.pick { flex: 1; min-height: 40px; text-align: left; font-size: 12px; }
+  .item:hover { border-color: var(--gold); }
+  .item.sel { border-color: var(--rust); background: var(--ink); }
+  .item b { color: var(--gold-hi); font-weight: normal; }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: none; z-index: 60; }
+  .modal.show { display: flex; align-items: center; justify-content: center; }
+  .modal .box { background: var(--bg-0); border: 1px solid var(--gold); width: min(1220px, 98vw); height: min(780px, 96vh); display: grid; grid-template-rows: auto 1fr; }
+  .modal .box .mh { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--rule); }
+  .modal .box .mb { overflow: auto; position: relative; }
+  #gate { position: fixed; inset: 0; background: rgba(5,3,4,0.92); z-index: 80; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+  #gate button { font-size: 16px; padding: 12px 26px; }
+  footer { padding: 4px 12px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+  kbd { border: 1px solid var(--rule); padding: 0 3px; color: var(--gold-hi); }
+  /* automation lanes (headers; the lanes themselves are drawn on the arrangement canvas) */
+  #thlist { padding-bottom: 60px; }
+  .th .b button.auto.on { background: var(--violet); color: var(--ink); border-color: #e8d8ff; }
+  .ah, .aadd { display: flex; align-items: center; gap: 3px; padding: 0 4px 0 12px; border-bottom: 1px solid #1a1410; background: #0b0807; }
+  .ah select, .aadd select { flex: 1; min-width: 0; font-size: 10px; }
+  .ah button { padding: 2px 6px; font-size: 9px; }
+  .aadd { background: #070505; border-bottom-color: #2a1c12; }
+  /* mixer inserts + ducking */
+  .fxbox { margin-top: 4px; border-top: 1px dashed #2a1c12; padding-top: 3px; }
+  .fxbox .row { margin: 2px 0; }
+  .fxbox select { font-size: 10px; }
+  .fx { border: 1px solid #2a1c12; margin-top: 3px; padding: 2px 3px; background: #0b0807; }
+  .fx .fh { display: flex; align-items: center; gap: 3px; }
+  .fx .fh b { flex: 1; color: var(--gold-hi); font-weight: normal; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fx.off .fh b { color: var(--text-dim); text-decoration: line-through; }
+  .fx button, .fxbox button { padding: 3px 7px; min-height: 20px; min-width: 22px; }
+  .kv3 { display: grid; grid-template-columns: 50px 1fr 50px; gap: 1px 5px; align-items: center; color: var(--text-dim); margin-top: 2px; }
+  .kv3 input[type=range] { width: 100%; }
+  .kv3 .pv { color: var(--gold-hi); font-size: 9px; text-align: right; white-space: nowrap; overflow: hidden; }
+  .kv3 select { font-size: 10px; }
+  /* PERF panel (per track: scale lock · chord · arp · groove) + STEP view — every control ≥ 36 px for fingers */
+  .th .b button.perf { min-width: 30px; min-height: 30px; font-size: 10px; }
+  .th .b button.perf.on { background: var(--emerald); color: var(--ink); border-color: var(--emerald-hi); }
+  #perfpanel { position: fixed; top: 64px; right: 6px; width: 400px; max-width: calc(100vw - 12px); max-height: calc(100vh - 72px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); z-index: 55; display: none; padding: 6px 10px 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.8); }
+  #perfpanel.show { display: block; }
+  .pf .ph { display: flex; align-items: center; gap: 6px; position: sticky; top: -6px; background: var(--bg-0); padding: 4px 0; z-index: 1; }
+  .pf .ph b { flex: 1; color: var(--gold-hi); font-weight: normal; letter-spacing: 0.1em; }
+  .pf h3 { display: flex; align-items: center; gap: 6px; margin: 10px 0 3px; color: var(--gold); font-size: 11px; letter-spacing: 0.14em; font-weight: normal; border-bottom: 1px solid var(--rule); padding-bottom: 3px; }
+  .pf h3 span { flex: 1; }
+  .pf button, .stepbar button, #stepedit button { min-height: 36px; min-width: 36px; padding: 4px 8px; font-size: 11px; }
+  .pf .seg { display: flex; flex-wrap: wrap; gap: 3px; margin: 3px 0; align-items: center; }
+  .pf .seg > i { color: var(--text-dim); font-style: normal; min-width: 54px; font-size: 10px; }
+  .pf .sl { display: grid; grid-template-columns: 70px 1fr 58px; gap: 4px; align-items: center; color: var(--text-dim); font-size: 10px; }
+  .pf .sl input[type=range] { width: 100%; min-height: 36px; }
+  .pf .sl .pv { color: var(--gold-hi); text-align: right; }
+  .pf input[type=text] { min-height: 36px; font-size: 12px; }
+  .pf .dis { opacity: 0.45; }
+  .stepbar { display: none; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .stepbar.on { display: flex; }
+  #stepcv { display: none; }
+  #stepedit { position: fixed; z-index: 58; display: none; background: var(--bg-0); border: 1px solid var(--gold); padding: 6px 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.8); width: 300px; }
+  #stepedit.show { display: block; }
+  #stepedit .seg { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; margin: 3px 0; }
+  #stepedit .seg i { color: var(--text-dim); font-style: normal; min-width: 40px; }
+  #stepedit .seg b { color: var(--gold-hi); font-weight: normal; min-width: 56px; text-align: center; }
+  /* recording: count-in · punch · mode · latency (transport) and takes rows (under a track) */
+  .transport .rc { min-height: 24px; }
+  .transport button.warn { color: var(--amber); border-color: var(--amber); }
+  #playmode { min-width: 58px; }
+  .th .b button.tk.on { background: var(--emerald); color: var(--ink); border-color: var(--emerald-hi); }
+  .tkh { display: flex; align-items: center; gap: 3px; padding: 0 4px 0 10px; border-bottom: 1px solid #1a1410; background: #0d0a08; }
+  .tkh button { min-width: 36px; min-height: 36px; padding: 0 5px; font-size: 11px; }
+  .tkh select { flex: 1; min-width: 0; min-height: 36px; font-size: 10px; }
+  #diagpanel { position: fixed; z-index: 56; top: 76px; right: 12px; width: 560px; max-width: calc(100vw - 24px); max-height: calc(100vh - 90px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); padding: 8px 12px 10px; display: none; box-shadow: 0 8px 30px rgba(0,0,0,0.7); }
+  #diagpanel.show { display: block; }
+  #diagpanel pre { white-space: pre-wrap; font-size: 10px; color: var(--text); max-height: 52vh; overflow-y: auto; margin: 6px 0; }
+  #diagpanel button { min-height: 36px; min-width: 44px; }
+  #diagbtn.bad { color: #ff8a7a; border-color: #c64a3a; }
+  #latpanel { position: fixed; z-index: 55; top: 76px; right: 12px; width: 470px; max-width: calc(100vw - 24px); max-height: calc(100vh - 90px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); padding: 8px 12px 10px; display: none; box-shadow: 0 8px 30px rgba(0,0,0,0.7); }
+  #latpanel.show { display: block; }
+  #latpanel .lr2 { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+  #latpanel .lr2 b { color: var(--gold-hi); font-weight: normal; min-width: 70px; }
+  #latpanel .lr2 select { min-width: 90px; }
+  #latpanel .lr { display: grid; grid-template-columns: 128px 66px 22px 84px 1fr; gap: 6px; align-items: center; margin-top: 8px; }
+  #latpanel .lr b { color: var(--gold-hi); font-weight: normal; }
+  #latpanel .lr .src { font-size: 9px; letter-spacing: 0.06em; color: var(--emerald-hi); }
+  #latpanel .lr .src.default { color: var(--amber); }
+  #latpanel input[type=number] { width: 66px; }
+  #latpanel button, #latpanel select, #latpanel input { min-height: 36px; }
+  @media (any-pointer: coarse) {
+    .th .b button.perf { min-width: 36px; min-height: 36px; }
+    .transport .rc { min-height: 36px; min-width: 36px; }
+    .th .b button.tk { min-height: 36px; min-width: 32px; }
+    .fx button, .fxbox button, .ah button { min-height: 28px; min-width: 30px; padding: 4px 9px; }
+    .fxbox select, .ah select, .aadd select, .kv3 select { min-height: 28px; }
+  }
+</style>
+</head>
+<body>
+<div id="gate"><div style="color:var(--gold-hi);letter-spacing:0.2em;font-size:18px;">MM · DAW</div><button id="gatebtn">⏻ START</button><div class="note">audio starts on a click (browser rule) · 44.1 kHz so the FM-1 emulators run at pitch</div></div>
+
+<header>
+  <h1>DAW</h1>
+  <input type="text" id="pname" value="untitled">
+  <span class="badge" id="b-engine">ENGINE: —</span>
+  <span class="badge" id="b-forge">FORGE: —</span>
+  <span class="badge" id="b-emu">FM-1 EMU: —</span>
+  <span class="badge" id="b-midi">MIDI: —</span>
+  <span class="badge" id="b-save">—</span>
+  <span id="takebar" style="display:none;gap:6px;align-items:center"><span class="badge ok" id="take-what"></span><button id="takesend" title="render this project as it is now and add it to the AUDIO DIRECTOR as a new take of the same track (the take you opened stays)">⇪ SEND TO DIRECTOR</button><span class="note" id="take-msg"></span></span>
+</header>
+
+<div class="transport">
+  <button id="play">▶</button><button id="stop" class="dim">■</button><button id="rec" class="rec">●</button>
+  <button id="playmode" class="dim rc" title="PLAY: RENDER renders the song or loop at full quality away from the live audio thread and plays it like a WAV — it starts about a second after ▶ and can't overload the Deck; edits are heard on the next ▶. LIVE plays every note in real time (keys, recording; can crackle or cut out on busy songs). Recording always plays LIVE. While it renders this shows how far it got.">RENDER</button>
+  <span class="pos" id="pos">1.1.1</span>
+  <label>BPM</label><input type="number" id="bpm" min="40" max="240" value="96">
+  <label>SWING</label><input type="range" id="swing" min="0" max="0.7" step="0.01" value="0" style="width:56px">
+  <label>KEY</label><select id="key"></select><select id="mode"></select>
+  <button id="loopbtn" class="dim">⟲ LOOP</button><input type="number" id="loopa" min="1" value="1"> – <input type="number" id="loopb" min="2" value="9">
+  <button id="metro" class="dim" title="click (never bounced)">♩</button>
+  <button id="punchbtn" class="dim rc" title="punch in / out: only the red region on the ruler is recorded — drag its edges or its middle">PUNCH</button>
+  <button id="latbtn" class="dim rc" title="recording: quantize · count-in · replace / overdub · latency">REC ⚙</button><button id="diagbtn" class="dim rc" title="diagnostics: errors, audio state, scheduler stalls — COPY and paste them to Claude">DIAG</button>
+  <span style="flex:1"></span>
+  <button class="dim" id="undo" title="undo (Ctrl+Z)">↶</button><button class="dim" id="redo" title="redo (Ctrl+Shift+Z)">↷</button>
+  <button class="dim" id="save">⎙ SAVE</button><button class="dim" id="new">✕ NEW</button>
+</div>
+
+<div id="diagpanel"><div class="row"><b style="flex:1;color:var(--gold-hi);font-weight:normal;letter-spacing:0.1em">DIAGNOSTICS</b><button id="diag-restart" title="suspend + resume the audio: Chrome reopens its output (try it when the meters move but you hear nothing)">RESTART AUDIO</button><button id="diag-copy">COPY</button><button id="diag-clear" class="dim">CLEAR</button><button id="diag-close" class="dim">✕</button></div>
+  <div class="note">Play the song until the sound stops, then COPY and paste this to Claude. It lists errors, audio-context changes, scheduler stalls and this machine's audio setup.</div>
+  <pre id="diag-text"></pre><div class="msg" id="diag-msg"></div></div>
+<div id="latpanel">
+  <div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold-hi);letter-spacing:0.14em">RECORDING</b><button class="dim" id="lat-close">✕</button></div>
+  <div class="lr2"><b>QUANT</b><select id="quant" title="record quantize: notes snap to this grid as they are recorded (the piano roll's GRID uses the same values)"></select>
+    <b>COUNT-IN</b><select id="countin" title="bars of click before recording starts (the transport pre-rolls; the click is never bounced)"><option value="0">off</option><option value="1">1 bar</option><option value="2">2 bars</option></select></div>
+  <div class="lr2"><b>TAKES</b><select id="recmode"><option value="replace">REPLACE</option><option value="overdub">OVERDUB</option><option value="loop">OVERDUB LOOP</option></select></div>
+  <div class="note">REPLACE: a take replaces what was in its region · OVERDUB: it adds to it (audio: a layer on top) · OVERDUB LOOP: every loop pass adds into one MIDI take. With ⟲ LOOP on, each pass is its own take (pick them in the takes row under the track); PUNCH limits recording to the red region on the ruler.</div>
+  <div style="margin-top:10px;color:var(--gold);letter-spacing:0.14em">LATENCY</div>
+  <div class="lr"><b>FM-1 RETURN</b><input type="number" id="lat-fm1" min="0" max="500" step="0.1"><span>ms</span><span class="src" id="lat-fm1-src"></span><button class="dim" id="lat-co" title="use the median FM-1 CHECK-OUT measured (mm_fm1_latency_ms)">⟲ CHECK-OUT</button></div>
+  <div class="note">Audio of the FM-1 coming back on its own USB audio — played by the DAW over MIDI, or on its keys. MIDI out → synth → USB audio in, measured by <a href="fm1_checkout.html" style="color:var(--gold)">FM-1 CHECK-OUT</a> (step 7).</div>
+  <div class="lr"><b>PLAY-ALONG INPUT</b><input type="number" id="lat-input" min="0" max="500" step="0.1"><span>ms</span><span class="src" id="lat-input-src"></span><button class="dim" id="lat-cal" title="play 8 clicks out and time them coming back on the chosen input">⏱ LOOPBACK</button></div>
+  <div class="note">Any other input (mic, guitar, line) recording you playing along to the playback: output + input latency. LOOPBACK: cable the output into the input picked in EXPORT → RECORDING (or hold the mic to the speaker), then press it.</div>
+  <div class="lr"><b>MIDI NOTES</b><input type="number" id="lat-midi" min="-100" max="500" step="0.1"><span>ms</span><span class="src" id="lat-midi-src"></span><span></span></div>
+  <div class="note">FM-1 keys, any MIDI keyboard, the computer keys: notes land where they were heard, by each event's own time stamp. This is only an extra nudge (normally 0).</div>
+  <div class="lr" style="grid-template-columns:128px 1fr"><b>AUDIO TAKES USE</b><select id="lat-use"><option value="auto">auto (by the input's name)</option><option value="fm1">FM-1 RETURN</option><option value="input">PLAY-ALONG INPUT</option></select></div>
+  <div class="lr2"><b>LIVE SOUND</b><button id="live-light" class="dim" title="LIVE playback / recording: reverbs, delays and chorus inside each instrument go to one shared reverb and no unison — about a third less load (default)">LIGHT</button><button id="live-full" class="dim" title="LIVE playback / recording with every instrument effect: heaviest — busy songs can overload the Deck">FULL</button><span class="note" id="live-note">PLAY: RENDER always uses full sound</span></div>
+  <div class="lr2"><b>BUFFER</b><button id="buf-smooth" class="dim" title="a larger output buffer (Chrome playback): fewer crackles when a song is busy (default)">SMOOTH</button><button id="buf-fast" class="dim" title="Chrome's interactive buffer: quickest response for playing live, crackles sooner when the song is busy">FAST</button><span class="note" id="buf-note"></span></div>
+  <div class="note" id="lat-now"></div>
+  <div class="msg" id="lat-msg"></div>
+</div>
+
+<main>
+  <div class="work">
+    <div class="arr">
+      <div class="heads" id="heads"><div class="ruler"><button class="dim" id="addmidi">+ MIDI</button><button class="dim" id="addaudio">+ AUDIO</button><button class="dim" id="autodraw" title="automation: drag across a lane to sketch points (off: tap adds a point, drag moves one, long-press / right-click deletes)">✎ DRAW</button></div><div id="thlist"></div></div>
+      <div class="lanes" id="lanes"><canvas id="arrcv"></canvas></div>
+    </div>
+    <div class="roll">
+      <div class="rollbar" id="rollbar">
+        <b id="rolltitle">select a clip (double-click an empty lane to make one)</b>
+        <label>GRID</label><select id="grid"><option value="24" selected>1/16</option></select>
+        <label>LEN</label><select id="plen"><option>1</option><option>2</option><option>4</option><option>8</option><option>16</option></select>
+        <button class="dim" id="r-dup" title="give this clip its own copy of the pattern">UNIQUE</button>
+        <button class="dim" id="r-up">+1</button><button class="dim" id="r-down">−1</button><button class="dim" id="r-oct">+12</button><button class="dim" id="r-octd">−12</button>
+        <button class="dim" id="r-human">HUMANIZE</button><button class="dim" id="r-clear">CLEAR</button>
+        <button class="dim" id="r-regen" title="re-roll this part with the generator">⚄ RE-ROLL</button>
+        <button class="dim" id="r-zout" title="zoom out">ZOOM −</button><button class="dim" id="r-zin" title="zoom in (bigger notes for fingers)">ZOOM +</button>
+        <button class="dim" id="r-step" title="step sequencer view of this clip (same notes as the piano roll)">▦ STEP</button>
+        <span class="stepbar" id="stepbar"><button class="dim" id="s-res" title="steps per bar">16 / BAR</button><button class="dim" id="s-len" title="length of new steps">LEN 1</button><button class="dim" id="s-octd" title="rows an octave down">OCT −</button><button class="dim" id="s-octu" title="rows an octave up">OCT +</button><button class="dim" id="s-seed" title="new seed for step probability (same seed → same result, live and bounced)">⚄ PROB</button></span>
+        <span class="note" id="rollhint">click/tap: add · drag: move · edge: length · right-click / long-press: delete · drag empty: scroll</span>
+      </div>
+      <div class="rollwrap" id="rollwrap"><canvas id="rollcv"></canvas><canvas id="stepcv"></canvas></div>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="tabs"><button data-tab="gen" class="on">GENERATE</button><button data-tab="dev">DEVICE</button><button data-tab="mix">MIXER</button><button data-tab="exp">EXPORT</button></div>
+
+    <div class="pane on" id="tab-gen">
+      <h2>WRITE A TRACK</h2>
+      <div class="row"><label>STYLE</label><select id="g-style"></select></div>
+      <div class="row"><label>FORM</label><select id="g-form"><option value="song">song (intro · A · B · A · outro)</option><option value="short">short (A · B)</option><option value="loop">loop (8 bars)</option><option value="bed">game bed (16, seamless)</option></select></div>
+      <div class="row"><label>KEY</label><select id="g-key"><option value="">any</option></select><select id="g-mode"><option value="">style's mode</option></select></div>
+      <div class="row"><label>BPM</label><input type="number" id="g-bpm" min="0" max="240" value="0" title="0 = the style picks"><label style="min-width:0">DENSITY</label><input type="range" id="g-dens" min="0" max="1" step="0.05" value="0.6" style="width:80px"></div>
+      <div class="row"><label>SEED</label><input type="number" id="g-seed" style="width:110px" value="1"><button class="dim" id="g-dice">⚄</button></div>
+      <div class="row"><label>PLAY ON</label><select id="g-inst" style="flex:1">
+        <option value="forge">FORGE synths (built in)</option>
+        <option value="felucca">Felucca emulator (+ FORGE pad)</option>
+        <option value="x0x">X0X emulator: 909 · 303s (+ FORGE keys/pad)</option>
+        <option value="hw">the FM-1 itself over MIDI (+ FORGE)</option>
+        <option value="patch">PATCH BANK — real instruments, picked for the style</option>
+      </select></div>
+      <div class="row"><button id="g-go">⚄ GENERATE</button><span class="note" id="g-info"></span></div>
+      <div class="row"><span class="note">re-roll one part:</span><button class="dim" data-reroll="drums">drums</button><button class="dim" data-reroll="bass">bass</button><button class="dim" data-reroll="chords">chords</button><button class="dim" data-reroll="lead">lead</button><button class="dim" data-reroll="pad">pad</button><button class="dim" data-reroll="perc">perc</button><button class="dim" data-reroll="arp">arp</button><button class="dim" data-reroll="counter">counter</button><button class="dim" data-reroll="double">double</button></div>
+      <div class="msg" id="g-msg"></div>
+
+      <h2>FOR THE GAME · catalog tracks with no audio</h2>
+      <div class="row"><button id="g-temp" title="compose, render and master temp tracks for catalog entries with no audio, as candidate takes for review">⚄ TEMP TRACKS</button><input type="number" id="g-tempn" min="1" max="50" value="3" title="how many (the selected one if you picked one)"><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-tempstems" checked> stems</label><label style="cursor:pointer;min-width:0" title="off (default): takes go to assets/audio/review/ for the AUDIO DIRECTOR to approve or reject. On: write <src>.wav straight where the game plays it."><input type="checkbox" id="g-skipreview"> straight into game (skip review)</label></div>
+      <div class="note">takes are staged in assets/audio/review/ — approve / reject them in the <a href="audio_director.html" target="mm_director" style="color:var(--gold-hi)">AUDIO DIRECTOR</a></div>
+      <div class="msg" id="g-tempmsg"></div>
+      <div class="row"><button class="dim" id="g-link">⌂ LINK GAME FOLDER</button><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-musiconly" checked> music-like first</label><label style="cursor:pointer;min-width:0" title="order and shape temp tracks from the MusicDirector's briefs (resources/music/temp_briefs.json): the tracks most scenes play first, tempo / density / mode from how intense and dark those scenes read"><input type="checkbox" id="g-vnfirst" checked> VN scenes first</label></div>
+      <div id="g-wanted" style="max-height:240px;overflow:auto"><div class="note">link the game folder to list the tracks still waiting for audio. Picking one sets style, mode and seed from its brief; GENERATE, then EXPORT → BOUNCE → INTO GAME writes it where the game looks.</div></div>
+    </div>
+
+    <div class="pane" id="tab-dev">
+      <h2>DEVICES</h2>
+      <div class="row">
+        <button class="dim" data-add="forge">+ FORGE</button><button class="dim" data-add="kit">+ KIT</button>
+        <button class="dim" data-add="emu:felucca">+ FELUCCA</button><button class="dim" data-add="emu:x0x">+ X0X</button><button class="dim" data-add="hw">+ FM-1 HW</button><button class="dim" id="add-patch">+ PATCH BANK…</button>
+      </div>
+      <div id="devlist"></div>
+      <h2>SELECTED TRACK</h2>
+      <div id="devdetail"><div class="note">select a track.</div></div>
+    </div>
+
+    <div class="pane" id="tab-mix">
+      <h2>MIXER</h2>
+      <div id="mixlist"></div>
+      <h2>MASTER</h2>
+      <div class="kv">
+        <span>OUT</span><input type="range" id="m-vol" min="0" max="1.4" step="0.01">
+        <span>VERB</span><input type="range" id="m-verb" min="0" max="1.5" step="0.01">
+        <span>SIZE</span><select id="m-size"><option value="1.2">room</option><option value="2.4">hall</option><option value="5">cathedral</option></select>
+        <span>DELAY</span><input type="range" id="m-dmix" min="0" max="1.2" step="0.01">
+        <span>TIME</span><select id="m-dtime"><option value="0.5">1/8</option><option value="0.75">1/8·</option><option value="1">1/4</option><option value="0.333">1/8T</option><option value="1.5">1/4·</option></select>
+        <span>FBK</span><input type="range" id="m-dfb" min="0" max="0.9" step="0.01">
+      </div>
+      <canvas class="meter" id="mL"></canvas><canvas class="meter" id="mR"></canvas>
+    </div>
+
+    <div class="pane" id="tab-exp">
+      <h2>BOUNCE · render the mix</h2>
+      <div class="row"><button id="b-song">⏺ SONG</button><button id="b-loop" title="the loop region, with its tail folded back onto the start — exact length, seamless">⏺ LOOP (seamless)</button><button id="b-stems" title="one file per part (drums, bass, chords, lead, pad…) that sum back to the mix — for adaptive music in the game">⏺ STEMS + MIX</button></div>
+      <div class="row"><label style="cursor:pointer;min-width:0"><input type="checkbox" id="b-master" checked> master to</label><select id="b-lufs"><option value="-14" selected>−14 LUFS (game music)</option><option value="-16">−16 LUFS</option><option value="-18">−18 LUFS (beds / ambience)</option><option value="-23">−23 LUFS (broadcast)</option></select><span class="note">true peak ≤ −1.5 dBTP (≤ −1 after OGG / MP3 encoding)</span></div>
+      <div class="msg" id="b-msg"></div>
+      <div class="row"><button class="dim" id="b-dl" disabled>⇩ WAV</button><button class="dim" id="b-game" disabled>⇢ INTO GAME</button><select id="b-target" style="flex:1"><option value="">assets/audio/daw/…</option></select></div>
+      <div class="note">Bounces render faster than real time unless a track plays on an FM-1 emulator or the hardware. They land in the shared library too. INTO GAME writes Ogg Vorbis (about a tenth of a WAV); a seamless loop's loop goes in the <b>.stems.json</b> manifest beside it (⇩ WAV downloads keep WAV loop points). STEMS + MIX writes the stems into that manifest too: the game layers them by intensity (pad → bass → drums → lead).</div>
+      <h2>CREDITS · instruments this project uses</h2>
+      <div id="credits" class="note">—</div>
+      <div class="row"><button class="dim" id="cr-copy">⎘ COPY CREDITS</button></div>
+      <h2>MIDI FILES</h2>
+      <div class="row"><button class="dim" id="x-song">⇩ SONG .mid</button><button class="dim" id="x-track">⇩ SELECTED TRACK .mid</button></div>
+      <div class="note">The SLOOP / Felucca web editors import a .mid per track (piano roll page); any DAW takes the song.</div>
+      <div class="row"><button class="dim" id="x-import">⇪ IMPORT .mid</button><input type="file" id="x-file" accept=".mid,.midi" style="display:none"></div>
+      <h2>RECORDING</h2>
+      <div class="row"><label>INPUT</label><select id="r-input" style="flex:1"><option value="">— none —</option></select></div>
+      <div class="row"><label>LATENCY</label><span class="note">set with <b>LAT</b> in the transport bar (FM-1 CHECK-OUT · loopback · manual)</span></div>
+      <div class="note">Arm an AUDIO track to record the input (the FM-1's "Felucca" USB audio, a mic…). Arm a MIDI track to record from the FM-1 keys, any MIDI keyboard, or the computer keys (<kbd>Z</kbd>–<kbd>M</kbd>, <kbd>Q</kbd>–<kbd>U</kbd>).</div>
+      <h2>PROJECT</h2>
+      <div class="row"><button class="dim" id="p-export">⇩ PROJECT .json</button><button class="dim" id="p-import">⇪ OPEN .json</button><input type="file" id="p-file" accept=".json" style="display:none"></div>
+      <h2>AUDIO CLIPS</h2>
+      <div class="row"><button class="dim" id="a-add">+ CLIP FROM LIBRARY → selected audio track at the loop start</button></div>
+      <div id="a-lib" style="max-height:180px;overflow:auto"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>← <a href="index.html">all tools</a> · <a href="forge_synth.html">FORGE</a> · <a href="fm1_emulator.html">FM-1 EMULATOR</a> · <a href="tape_studio.html">TAPE</a> · <a href="field_recorder.html">FIELD</a></span>
+  <span><kbd>␣</kbd> play/stop · <kbd>⇧R</kbd> record · <kbd>L</kbd> loop · <kbd>Ctrl D</kbd> duplicate clip · <kbd>Del</kbd> delete · <kbd>Z</kbd>–<kbd>M</kbd> <kbd>Q</kbd>–<kbd>U</kbd> play (<kbd>⇧Z</kbd>/<kbd>⇧X</kbd> octave)</span>
+</footer>
+
+<div id="perfpanel" class="pf"></div>
+<div id="stepedit"></div>
+<div class="modal" id="modal"><div class="box"><div class="mh"><b style="color:var(--gold-hi)" id="modaltitle">EDITOR</b><button class="dim" id="modalclose">✕ CLOSE</button></div><div class="mb" id="modalbody"></div></div></div>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
+<script src="seqgen.js"></script>
+<script src="smf.js"></script>
+<script src="forge_synth.js"></script>
+<script src="vendor/fm1emu/felucca/felucca_wasm.js"></script>
+<script src="vendor/fm1emu/felucca/felucca_worklet.js"></script>
+<script src="vendor/fm1emu/x0x/x0x_wasm.js"></script>
+<script src="vendor/fm1emu/x0x/x0x_worklet.js"></script>
+<script src="fm1_emu.js"></script>
+<script src="patch_sources.js"></script>
+<script src="sampler.js"></script>
+<script src="dx7_synth.js"></script>
+<script src="patch_bank.js"></script>
+<script src="tape_model.js"></script>
+<script src="daw_fx.js"></script>
+<script src="daw_perf.js"></script>
+<script src="daw_engine.js"></script>
+<script src="temp_maker.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const { PPQ, BAR } = DAW;
+const E = new DAW.Engine();
+const COLORS = TempMaker.COLORS;
+const GM_NAMES = { 36: 'kick', 37: 'rim', 38: 'snare', 39: 'clap', 42: 'hat c', 44: 'hat ped', 45: 'tom lo', 46: 'hat o', 48: 'tom hi', 49: 'crash', 51: 'ride', 56: 'bell', 70: 'shaker' };
+const DRUM_ROWS = [36, 37, 38, 39, 42, 44, 46, 45, 48, 49, 51, 70];
+let P = null;                     // project
+let sel = { trackId: null, clip: -1 };
+let song = null;                  // last generator result
+let lastBounce = null;
+let wanted = [];
+const view = { barPx: 28, laneH: 40, rulerH: 40 };
+const TAKES = { H: 42 };          // a takes row under a track (one per recorded region)
+const roll = { tickPx: 0.9, rowH: 12, lo: 24, hi: 96, drag: null, selNotes: new Set(), zoom: 1 };
+const COARSE = window.matchMedia && matchMedia('(any-pointer: coarse)').matches;   // a touchscreen: taller rows
+
+function msg(id, text, err) { const e = $(id); if (!e) return; e.textContent = text; e.classList.toggle('err', !!err); }
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+
+// ═══════════════════════════════════════════════════════════════════
+// boot
+// ═══════════════════════════════════════════════════════════════════
+SeqGen.NOTE_NAMES.forEach((n, i) => { $('key').add(new Option(n, i)); $('g-key').add(new Option(n, i)); });
+Object.keys(SeqGen.SCALES).forEach(m => { $('mode').add(new Option(m, m)); $('g-mode').add(new Option(m, m)); });
+Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('g-style').add(new Option(s.name, id)));
+// the piano roll's GRID and the record QUANT share one list (DAW.GRIDS, ticks at PPQ 96)
+(() => { const g = $('grid'), q = $('quant'); g.innerHTML = ''; q.innerHTML = '<option value="0">off</option>'; for (const x of DAW.GRIDS) { g.add(new Option(x.label, x.v)); q.add(new Option(x.label, x.v)); } g.value = '24'; q.value = '24'; })();
+$('g-seed').value = Math.floor(Math.random() * 1e6);
+
+// daw.html?take=<review dir>: the AUDIO DIRECTOR's ✎ EDIT IN DAW — open that take as the project; ⇪ SEND TO DIRECTOR
+// renders the edit back into review staging as a new take of the same track
+const TAKE_DIR = new URLSearchParams(location.search).get('take');
+let editTake = null;
+if (TAKE_DIR) { const g = document.createElement('div'); g.className = 'note'; g.style.cssText = 'color:var(--gold-hi);font-size:13px'; g.textContent = 'AUDIO DIRECTOR: tap START to open the take for editing.'; $('gate').appendChild(g); }
+$('gatebtn').addEventListener('click', async () => {
+  $('gatebtn').textContent = 'starting…';
+  // Chrome's folder permission prompt needs this tap: ask before the awaits below use it up
+  const grant = TAKE_DIR && !AK.game.root ? AK.game.restore(true).catch(() => null) : null;
+  try {
+    await E.start();
+    const saved = await E.restore();
+    await E.load(saved && saved.v ? saved : DAW.Engine.newProject());
+    P = E.project;
+    $('gate').style.display = 'none';
+    E.emit('project');               // load() fired 'project' before P was set: draw the restored project now
+    badges(); takeInbox();
+    if (TAKE_DIR) { if (grant) await grant; await openTake(TAKE_DIR); }
+  } catch (e) { $('gatebtn').textContent = 'failed: ' + (e.message || e); }
+});
+async function openTake(dir) {
+  if (!AK.game.root) { msg('g-msg', 'link the game folder (EXPORT → TEMP TRACKS → ⌂ LINK GAME FOLDER), then open the take from the AUDIO DIRECTOR again.', true); return; }
+  undoCapture();
+  try {
+    const r = await TM.loadTake(E, dir);
+    P = E.project; if (r.song) song = r.song; editTake = r.meta;
+    sel = { trackId: P.tracks[0] && P.tracks[0].id, clip: 0 }; $('pname').value = P.name; E.emit('project');
+    $('takebar').style.display = 'inline-flex';
+    $('take-what').textContent = 'EDITING TAKE ' + r.meta.take + ' · ' + (r.meta.title || r.meta.id);
+    $('take-msg').textContent = r.exact ? '' : '(rebuilt from its settings)';
+  } catch (e) { msg('g-msg', 'could not open the take: ' + (e.message || e), true); }
+}
+$('takesend').addEventListener('click', async () => {
+  if (!editTake) return;
+  if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { $('take-msg').textContent = 'link the game folder first.'; return; }
+  if (E.playing) E.stop();
+  $('takesend').disabled = true; const t0 = performance.now(), el = () => Math.round((performance.now() - t0) / 1000) + ' s';
+  try {
+    const out = await TM.stageEdit(E, editTake, { master: $('b-master').checked, lufs: +$('b-lufs').value, onProgress: t => { $('take-msg').textContent = t + ' · ' + el(); } });
+    $('take-msg').textContent = 'sent as take ' + out.take + ' (' + el() + ') — it is in the AUDIO DIRECTOR now.';
+  } catch (e) { $('take-msg').textContent = 'send failed: ' + (e.message || e); }
+  $('takesend').disabled = false;
+});
+function badges() {
+  $('b-engine').textContent = 'ENGINE: ' + E.ctx.sampleRate / 1000 + ' kHz'; $('b-engine').className = 'badge ok';
+  const forge = typeof ForgeSynth === 'function';
+  $('b-forge').textContent = forge ? 'FORGE: ready' : 'FORGE: missing (basic synth)'; $('b-forge').className = 'badge ' + (forge ? 'ok' : 'warn');
+  const emus = typeof FM1Emu === 'function' ? (window.FM1EMU_LIST || []).filter(e => e.vendored) : [];
+  $('b-emu').textContent = emus.length ? 'FM-1 EMU: ' + emus.map(e => e.name).join(' · ') : 'FM-1 EMU: not installed'; $('b-emu').className = 'badge ' + (emus.length ? 'ok' : 'warn');
+  const mi = E.midi;
+  $('b-midi').textContent = 'MIDI: ' + (mi ? (mi.status === 'connected' ? (mi.firmwareName || mi.input && mi.input.name || 'connected') : mi.status) : 'off');
+  $('b-midi').className = 'badge ' + (mi && mi.status === 'connected' ? 'ok' : '');
+}
+window.addEventListener('midiinput-firmware', () => P && badges());
+window.addEventListener('midiinput-status', () => P && badges());
+
+E.on('project', () => {
+  if (E.project) P = E.project;                      // temp_maker.js swaps the project in under us
+  if (!P) return;
+  if (sel.trackId && !P.tracks.some(t => t.id === sel.trackId)) sel = { trackId: P.tracks[0] && P.tracks[0].id, clip: 0 };
+  syncTransportUI(); renderHeads(); drawArr(); drawRoll(); renderDevices(); renderMixer(); renderPerf(); saveSoon(); });
+E.on('notes', () => { drawRoll(); drawArr(); saveSoon(); });
+E.on('auto', d => { if (d && d.created) renderHeads(); saveSoon(); });
+E.on('error', m => msg('g-msg', m, true));
+// ── diagnostics ─────────────────────────────────────────────────────
+window.addEventListener('error', e => { try { E.note('page', (e.message || 'error') + (e.filename ? ' @ ' + e.filename.split('/').pop() + ':' + e.lineno : '')); } catch (x) {} });
+window.addEventListener('unhandledrejection', e => { try { E.fault('promise', e.reason); } catch (x) {} });
+async function diagReport() {
+  const c = E.ctx, L = [];
+  L.push('MM DAW diagnostics · ' + new Date().toISOString() + ' · ' + navigator.userAgent.replace(/^.*?\) /, ''));
+  if (c) {
+    L.push('audio: ' + c.state + ' · ' + c.sampleRate + ' Hz · buffer ' + E.buffer + ' · base ' + ((c.baseLatency || 0) * 1000).toFixed(1) + ' ms · output ' + ((c.outputLatency || 0) * 1000).toFixed(1) + ' ms · time ' + c.currentTime.toFixed(2) + ' s' + ('sinkId' in c ? ' · output device: ' + (c.sinkId || 'system default') : ''));
+    try { const outs = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audiooutput'); L.push('outputs: ' + (outs.map(d => (d.label || '(name hidden)') + (d.deviceId === 'default' ? ' [default]' : '')).join(' · ') || 'none listed')); } catch (e) {}
+  } else L.push('audio: not started');
+  L.push('play: ' + E.playMode + (E._rendered ? ' (rendered now)' : '') + ' · live sound ' + E.liveQuality);
+  L.push('transport: ' + (E.playing ? 'playing' : 'stopped') + ' · bpm ' + P.bpm + ' · loop ' + (P.loop.on ? P.loop.a + '–' + P.loop.b : 'off') + ' · song ' + E.songBars() + ' bars');
+  for (const d of P.devices) {
+    const inst = E.devices.get(d.id), v = inst && (inst.voices ? (Array.isArray(inst.voices) ? inst.voices.length : Object.keys(inst.voices).length) : '');
+    const users = P.tracks.filter(t => t.deviceId === d.id).map(t => t.name + (t.mute ? '(muted)' : ''));
+    L.push('device ' + d.name + ' · ' + d.type + (d.preset ? ' ' + d.preset : '') + (d.patch ? ' ' + d.patch : '') + (inst ? '' : ' · NOT LOADED') + (inst && inst.error ? ' · error: ' + inst.error : '') + (v !== '' ? ' · voices ' + v : '') + ' · plays ' + (users.join(', ') || '—'));
+  }
+  const hist = E.outputHistory ? E.outputHistory() : [];
+  if (hist.length) L.push('output level, last ' + hist.length + ' s (rms, oldest first): ' + hist.join(' '));
+  L.push('— log (' + (E.diag || []).length + ') —');
+  const t0 = (E.diag && E.diag[0] && E.diag[0].at) || 0;
+  for (const x of E.diag || []) L.push('+' + ((x.at - t0) / 1000).toFixed(2) + 's ' + x.kind + (x.n > 1 ? ' ×' + x.n : '') + ' [' + x.ctx + '] ' + x.msg);
+  return L.join('\n');
+}
+async function diagUI() { $('diag-text').textContent = await diagReport(); }
+E.on('diag', D => { const bad = D.some(x => x.kind === 'error' || x.kind === 'page' || x.kind === 'stall' || (x.kind === 'audio' && /suspended|interrupted|closed|changed/.test(x.msg))); $('diagbtn').classList.toggle('bad', bad); $('diagbtn').textContent = bad ? 'DIAG ⚠' : 'DIAG'; if ($('diagpanel').classList.contains('show')) diagUI(); });
+$('diagbtn').addEventListener('click', () => { $('diagpanel').classList.toggle('show'); diagUI(); });
+$('diag-close').addEventListener('click', () => $('diagpanel').classList.remove('show'));
+$('diag-restart').addEventListener('click', async () => { const ok = await E.restartAudio(); msg('diag-msg', ok ? 'audio restarted — hear it again?' : 'could not restart (see the log)', !ok); diagUI(); });
+$('diag-clear').addEventListener('click', () => { E.diag = []; $('diagbtn').classList.remove('bad'); $('diagbtn').textContent = 'DIAG'; diagUI(); });
+$('diag-copy').addEventListener('click', async () => {
+  const txt = await diagReport();
+  try { await navigator.clipboard.writeText(txt); msg('diag-msg', 'copied — paste it to Claude.'); }
+  catch (e) { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); msg('diag-msg', 'copied — paste it to Claude.'); } catch (x) { msg('diag-msg', 'copy blocked: select the text above and copy it.', true); } ta.remove(); }
+});
+E.on('transport', ({ playing }) => { $('play').classList.toggle('on', playing); });
+E.on('record', ({ on }) => $('rec').classList.toggle('on', on));
+E.on('takes', d => { if (!P) return; renderHeads(); drawArr(); drawRoll(); if (!d || !d.recording) saveSoon(); });
+E.on('record-arm', () => { if (!UNDO.busy && P) { clearTimeout(UNDO.t); undoTake(); } });    // a recording is one undo step
+
+let saveT = null;
+// ── undo / redo: project snapshots (devices only reload when the device set itself changed) ──
+const UNDO = { past: [], future: [], cur: null, busy: false, t: null };
+const projJson = () => { E.snapshotStates(); return JSON.stringify(P); };
+function undoTake() {
+  const j = projJson();
+  if (UNDO.cur === null) { UNDO.cur = j; return; }
+  if (j === UNDO.cur) return;
+  UNDO.past.push(UNDO.cur); if (UNDO.past.length > 120) UNDO.past.shift();
+  UNDO.cur = j; UNDO.future = []; undoButtons();
+}
+function undoCapture() {
+  if (UNDO.busy || !P || E.recording || E._recStopping) return;     // while recording: one step, taken when it ends
+  clearTimeout(UNDO.t);
+  UNDO.t = setTimeout(undoTake, 250);
+}
+const devSig = p => JSON.stringify(p.devices.map(d => [d.id, d.type, d.patch || '', d.emuId || '', d.preset || '']));
+async function undoApply(j) {
+  UNDO.busy = true;
+  const snap = JSON.parse(j);
+  E.stop();
+  if (devSig(snap) === devSig(P)) {
+    // same instruments: swap the arrangement / mix in place (no reload, no re-download)
+    for (const k of Object.keys(snap)) if (k !== 'devices') P[k] = snap[k];
+    for (const k of Object.keys(P)) if (!(k in snap)) delete P[k];       // e.g. a punch region added since
+    snap.devices.forEach((d, i) => { const live = P.devices[i]; live.mix = d.mix; live.name = d.name; live.clock = d.clock; live.state = d.state; const inst = E.devices.get(live.id); if (inst && d.state && inst.setState) { try { inst.setState(d.state); } catch (e) {} } });
+    for (const t of P.tracks) if (t.kind === 'audio') E.ensureStrip(t.id, t.mix);
+    E.applyMix(); E.applyMaster(); E.emit('project');
+  } else { await E.load(snap); P = E.project; }
+  if (sel.trackId && !E.track(sel.trackId)) sel = { trackId: null, clip: -1 };
+  UNDO.cur = j; UNDO.busy = false; undoButtons(); E.save().catch(() => {});
+}
+async function undo() { if (!UNDO.past.length || E.recording || E._recStopping) return; UNDO.future.push(projJson()); await undoApply(UNDO.past.pop()); }
+async function redo() { if (!UNDO.future.length || E.recording || E._recStopping) return; UNDO.past.push(projJson()); await undoApply(UNDO.future.pop()); }
+function undoButtons() { $('undo').disabled = !UNDO.past.length; $('redo').disabled = !UNDO.future.length; }
+$('undo').addEventListener('click', undo); $('redo').addEventListener('click', redo);
+window.addEventListener('keydown', e => {
+  if (!(e.ctrlKey || e.metaKey) || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+  const k = e.key.toLowerCase();
+  if (k === 'z' && !e.shiftKey) { e.preventDefault(); undo(); } else if ((k === 'z' && e.shiftKey) || k === 'y') { e.preventDefault(); redo(); }
+}, true);
+// the open project also lives in the game project (once the folder is linked), so music_drive.sh backs it up:
+// assets/audio/projects/<name>.daw.json (the whole project) + <name>.mid (every track)
+const PROJECTS_DIR = 'assets/audio/projects';
+async function mirrorProject() {
+  if (!AK.game.root || !P || !P.tracks.length) return null;
+  try {
+    if (!(await AK.game.exists(PROJECTS_DIR + '/.gdignore'))) await AK.game.write(PROJECTS_DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+    const base = PROJECTS_DIR + '/' + (AK.util.slug(P.name || '') || 'untitled');
+    await AK.game.write(base + '.daw.json', new Blob([JSON.stringify(P)], { type: 'application/json' }));
+    await AK.game.write(base + '.mid', new Blob([E.exportMidi()], { type: 'audio/midi' }));
+    return base;
+  } catch (e) { return null; }
+}
+function saveSoon() { if (E._rendered && !rEdited) { rEdited = true; rState = 'EDIT ▶'; playModeUI(); } undoCapture(); clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); const f = await mirrorProject(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString() + (f ? ' · in the game folder' : ''); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
+
+// ═══════════════════════════════════════════════════════════════════
+// transport
+// ═══════════════════════════════════════════════════════════════════
+function syncTransportUI() {
+  $('pname').value = P.name; $('bpm').value = P.bpm; $('swing').value = P.swing; $('key').value = P.key; $('mode').value = P.mode;
+  $('loopbtn').classList.toggle('on', P.loop.on); $('loopa').value = P.loop.a + 1; $('loopb').value = P.loop.b + 1;
+  $('metro').classList.toggle('on', P.metro);
+  const RC = P.rec || {};
+  if (RC.quant != null && P === E.project) E.quantize = +RC.quant || 0;     // (load() fires 'project' before P follows)
+  $('quant').value = String(E.quantize); $('countin').value = String(Math.max(0, Math.min(2, RC.countIn | 0)));
+  $('recmode').value = DAW.REC_MODES.includes(RC.mode) ? RC.mode : 'replace';
+  punchUI();
+  const M = P.master; $('m-vol').value = M.vol; $('m-verb').value = M.verbMix; $('m-size').value = M.verbSize; $('m-dmix').value = M.delayMix; $('m-dtime').value = M.delayBeats; $('m-dfb').value = M.delayFb;
+}
+// ▶ while a render is still getting ahead does nothing (■ cancels it): a second tap used to cancel the wait
+$('play').addEventListener('click', () => E.playing ? E.stop() : E._rplay ? null : E.playAuto());
+// the PLAY mode button doubles as the render's progress (the transport bar must stay one line on the Deck)
+let rState = '';
+function playModeUI() { const m = E.playMode; $('playmode').textContent = rState || (m === 'render' ? 'RENDER' : 'LIVE'); $('playmode').classList.toggle('on', m === 'live'); $('playmode').classList.toggle('warn', !!rState && rState !== 'RENDER'); }
+$('playmode').addEventListener('click', () => { const m = E.playMode === 'render' ? 'live' : 'render', was = E.playing || E._rplay; E.setPlayMode(m); playModeUI(); if (was) { const tk = E.playing ? E.tickNow() : undefined; E.stop(); E.playAuto(tk); } });
+playModeUI();
+let rEdited = false;
+E.on('render-progress', x => {
+  if (x.error) { rState = ''; playModeUI(); return; }             // the engine logged it (DIAG)
+  rState = x.p >= 1 || rEdited ? rState : '◔ ' + Math.round(x.p * 100) + '%';
+  if (x.buffering) $('pos').textContent = x.eta == null ? 'WAIT…' : 'WAIT ' + Math.ceil(x.eta) + ' s';
+  if (x.p >= 1 && !rEdited) rState = '';
+  playModeUI();
+});
+E.on('transport', ({ playing }) => { if (!playing) { rEdited = false; if (!E._rplay) rState = ''; playModeUI(); } });
+$('stop').addEventListener('click', () => { if (!E.playing) E._stopTick = P.loop.on ? P.loop.a * BAR : 0; E.stop(); });
+$('rec').addEventListener('click', async () => { if (E.recording) await E.stopRecord(); else await E.startRecord(); });
+$('pname').addEventListener('change', () => { P.name = $('pname').value; saveSoon(); });
+$('bpm').addEventListener('change', () => { P.bpm = Math.max(40, Math.min(240, +$('bpm').value || 96)); E.applyMaster(); if (E.playing) E.playAuto(E.tickNow()); saveSoon(); });
+$('swing').addEventListener('input', () => { P.swing = +$('swing').value; saveSoon(); });
+$('key').addEventListener('change', () => { P.key = +$('key').value; drawRoll(); saveSoon(); });
+$('mode').addEventListener('change', () => { P.mode = $('mode').value; drawRoll(); saveSoon(); });
+$('loopbtn').addEventListener('click', () => { P.loop.on = !P.loop.on; syncTransportUI(); drawArr(); saveSoon(); });
+['loopa', 'loopb'].forEach(id => $(id).addEventListener('change', () => {
+  const a = Math.max(0, (+$('loopa').value || 1) - 1), b = Math.max(a + 1, (+$('loopb').value || 2) - 1);
+  P.loop.a = a; P.loop.b = b; syncTransportUI(); drawArr(); saveSoon();
+}));
+$('metro').addEventListener('click', () => { P.metro = !P.metro; syncTransportUI(); saveSoon(); });
+// ── recording settings (project: P.rec = {countIn, mode, quant}, P.punch = {on, a, b} bars — all optional) ──
+const recSet = (k, v) => { P.rec = Object.assign({}, P.rec || {}, { [k]: v }); saveSoon(); };
+$('quant').addEventListener('change', () => { E.quantize = +$('quant').value; recSet('quant', E.quantize); });
+$('countin').addEventListener('change', () => recSet('countIn', +$('countin').value));
+$('recmode').addEventListener('change', () => recSet('mode', $('recmode').value));
+function punchUI() {
+  const u = P && P.punch, on = !!(u && u.on);
+  $('punchbtn').classList.toggle('on', on);
+  $('punchbtn').textContent = 'PUNCH' + (on ? ' ' + (u.a + 1) + (u.b - u.a > 1 ? '–' + u.b : '') : '');
+}
+$('punchbtn').addEventListener('click', () => {
+  if (!P) return;
+  if (!P.punch) { const a = P.loop.on ? P.loop.a : Math.max(0, Math.floor(E.tickNow() / BAR)); P.punch = { on: true, a, b: a + Math.max(1, Math.min(2, P.loop.on ? P.loop.b - P.loop.a : 2)) }; }
+  else P.punch.on = !P.punch.on;
+  punchUI(); drawArr(); saveSoon();
+});
+// ── latency: three numbers and where each came from (engine: E.lat, localStorage mm_daw_latency) ──
+const LAT_SRC = { checkout: 'CHECK-OUT', loopback: 'LOOPBACK', manual: 'MANUAL', default: 'DEFAULT' };
+function latUI() {
+  const L = E.lat, k = E.audioLatencyKind();
+  $('latbtn').textContent = 'REC ⚙ ' + Math.round(L[k].ms) + ' ms';
+  $('latbtn').classList.toggle('warn', L[k].src === 'default');
+  $('latbtn').title = 'recording settings · audio takes: ' + L[k].ms + ' ms (' + (k === 'fm1' ? 'FM-1 return' : 'play-along input') + ', ' + (LAT_SRC[L[k].src] || L[k].src) + ') · MIDI nudge ' + L.midi.ms + ' ms';
+  for (const x of ['fm1', 'input', 'midi']) {
+    if (document.activeElement !== $('lat-' + x)) $('lat-' + x).value = L[x].ms;
+    $('lat-' + x + '-src').textContent = LAT_SRC[L[x].src] || L[x].src; $('lat-' + x + '-src').className = 'src ' + L[x].src;
+  }
+  $('lat-use').value = L.use;
+  const c = E.audioComp(), la = (E.outDelay * 1000).toFixed(1);
+  const want = (() => { try { return localStorage.getItem('mm_daw_buffer') || 'smooth'; } catch (e) { return 'smooth'; } })();
+  $('live-light').classList.toggle('on', E.liveQuality === 'light'); $('live-full').classList.toggle('on', E.liveQuality === 'full');
+  $('buf-smooth').classList.toggle('on', want === 'smooth'); $('buf-fast').classList.toggle('on', want === 'fast');
+  $('buf-note').textContent = 'output ' + E.outMs().toFixed(0) + ' ms' + (want !== E.buffer ? ' · RELOAD THE PAGE to switch' : '');
+  $('lat-now').textContent = 'audio takes now shift by ' + c.total.toFixed(1) + ' ms (' + (k === 'fm1' ? 'FM-1 RETURN + ' + la + ' ms master look-ahead' : 'PLAY-ALONG INPUT') + (c.buf ? ' ' + (c.buf > 0 ? '+ ' : '− ') + Math.abs(c.buf).toFixed(1) + ' ms for this output buffer' : '') + ') · ' + (E.inputLabel ? 'input “' + E.inputLabel + '”' : 'no input picked yet (EXPORT → RECORDING)') +
+    ' · the master limiter looks ahead ' + la + ' ms; the click and the FM-1\'s MIDI are delayed to match, so a loopback reading includes it.';
+}
+E.on('latency', latUI);
+$('latbtn').addEventListener('click', () => { $('latpanel').classList.toggle('show'); latUI(); });
+$('lat-close').addEventListener('click', () => $('latpanel').classList.remove('show'));
+['fm1', 'input', 'midi'].forEach(x => $('lat-' + x).addEventListener('change', () => E.setLatency(x, +$('lat-' + x).value, 'manual')));
+$('lat-use').addEventListener('change', () => E.setLatencyUse($('lat-use').value));
+for (const m of ['light', 'full']) $('live-' + m).addEventListener('click', async () => { await E.setLiveQuality(m); latUI(); msg('lat-msg', 'live sound: ' + m + '.'); });
+for (const m of ['smooth', 'fast']) $('buf-' + m).addEventListener('click', () => { E.setBufferMode(m); latUI(); msg('lat-msg', m === E.buffer ? 'buffer: ' + m + '.' : 'buffer → ' + m + ': reload the page (the project is saved) to switch.'); });
+$('lat-co').addEventListener('click', () => {
+  const v = E.checkoutLatency(true);
+  if (v == null) { msg('lat-msg', 'no CHECK-OUT measurement yet: fm1_checkout.html → step 7 → MEASURE.', true); return; }
+  E.saveLatency(); latUI(); msg('lat-msg', 'FM-1 return = ' + E.lat.fm1.ms + ' ms (CHECK-OUT).');
+});
+$('lat-cal').addEventListener('click', async () => {
+  $('lat-cal').disabled = true; msg('lat-msg', 'LOOPBACK: 8 clicks…');
+  try { const r = await E.calibrateLoopback(); msg('lat-msg', 'loopback: median ' + r.ms + ' ms · jitter ±' + r.jitterMs + ' ms · ' + r.found + '/' + r.of + ' clicks · saved'); }
+  catch (e) { msg('lat-msg', e.message || String(e), true); }
+  finally { $('lat-cal').disabled = false; }
+});
+// CHECK-OUT measured in another tab: pick it up live
+window.addEventListener('storage', e => { if (e.key === 'mm_fm1_latency_ms' && E.checkoutLatency() != null) { E.saveLatency(); latUI(); } });
+// a storage event can be missed (seen in Chromium): coming back to this tab — e.g. from FM-1 CHECK-OUT — re-reads it
+const relatency = () => { if (document.visibilityState !== 'visible' || !E.lat) return; const was = JSON.stringify(E.lat.fm1); if (E.checkoutLatency() != null && JSON.stringify(E.lat.fm1) !== was) { E.saveLatency(); latUI(); } };
+window.addEventListener('focus', relatency); document.addEventListener('visibilitychange', relatency);
+latUI();
+// every MIDI / key event's own time stamp reaches the engine before its note does (recording places notes by it)
+window.addEventListener('midiinput-message', e => E.stampInput(e.detail && e.detail.ts));
+window.addEventListener('keydown', e => E.stampInput(e.timeStamp), true);
+window.addEventListener('keyup', e => E.stampInput(e.timeStamp), true);
+$('save').addEventListener('click', () => saveSoon());
+$('new').addEventListener('click', async () => { if (!confirm('Start an empty project? (the current one stays only if exported)')) return; await E.load(DAW.Engine.newProject()); P = E.project; sel = { trackId: null, clip: -1 }; });
+
+// ═══════════════════════════════════════════════════════════════════
+// track headers
+// ═══════════════════════════════════════════════════════════════════
+function trackDevLabel(t) {
+  if (t.kind === 'audio') return 'audio';
+  const d = E.dev(t.deviceId);
+  const st = d && d.type === 'patch' ? patchStatus(d) : '';
+  return d ? d.name + (d.type === 'emu' || d.type === 'hw' ? ' · ch' + t.channel : '') + (st ? ' · ' + st : '') : '— no device —';
+}
+function renderHeads() {
+  const L = $('thlist'); L.innerHTML = '';
+  for (const t of P.tracks) {
+    const d = document.createElement('div');
+    d.className = 'th' + (sel.trackId === t.id ? ' sel' : '');
+    const nAuto = (t.auto || []).length, nTk = (t.takes || []).length;
+    d.innerHTML = `<div class="c" style="background:${t.color}"></div><div class="nm"><b>${esc(t.name)}</b><i>${esc(trackDevLabel(t))}</i></div>
+      <div class="b">${t.kind === 'midi' ? `<button class="dim perf${DawPerf.active(t.perf) || (t.perf && t.perf.groove != null && t.perf.groove !== 1) ? ' on' : ''}${PERF.trackId === t.id ? ' sel' : ''}" data-a="perf" title="PERF: scale lock · chord · arp · groove">P</button>` : ''}${nTk ? `<button class="dim tk${takesOpen(t) ? ' on' : ''}" data-a="takes" title="takes: pick / cycle / delete / keep">T${nTk}</button>` : ''}<button class="dim auto${t.autoOpen ? ' on' : ''}" data-a="auto" title="automation lanes">A${nAuto ? nAuto : ''}</button><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
+    d.addEventListener('click', e => {
+      const a = e.target.dataset.a;
+      if (a === 'mute') t.mute = !t.mute;
+      else if (a === 'solo') t.solo = !t.solo;
+      else if (a === 'arm') t.arm = !t.arm;
+      else if (a === 'auto') t.autoOpen = !t.autoOpen;
+      else if (a === 'perf') { sel.trackId = t.id; openPerf(PERF.trackId === t.id ? null : t.id); renderHeads(); drawArr(); drawRoll(); renderDevDetail(); return; }
+      else if (a === 'takes') t.takesOpen = !takesOpen(t);
+      else if (a === 'del') { if (confirm('Delete track "' + t.name + '"?')) { E.removeTrack(t.id); if (sel.trackId === t.id) sel = { trackId: null, clip: -1 }; } return; }
+      else { sel.trackId = t.id; if (sel.clip >= t.clips.length) sel.clip = -1; }
+      renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon();
+    });
+    d.addEventListener('dblclick', e => { if (e.target.dataset.a) return; const n = prompt('Track name', t.name); if (n) { t.name = n; renderHeads(); saveSoon(); } });
+    L.appendChild(d);
+    if (takesOpen(t)) renderTakeHeads(L, t);
+    if (t.autoOpen) renderAutoHeads(L, t);
+  }
+}
+// takes rows: shown when the track has a region with more than one take (or T is on)
+function takesOpen(t) { return !!(t.takes && t.takes.length) && (t.takesOpen ?? E.takeGroups(t).some(g => g.takes.length > 1)); }
+// one row per recorded region: ▶ next · pick · ✕ delete the playing take · KEEP only the playing take
+function renderTakeHeads(L, t) {
+  for (const g of E.takeGroups(t)) {
+    const h = document.createElement('div'); h.className = 'tkh'; h.style.height = TAKES.H + 'px'; h.dataset.group = g.key;
+    const opts = g.takes.map(k => `<option value="${esc(k.id)}"${k.active ? ' selected' : ''}>${esc(k.name)}</option>`).join('');
+    h.innerHTML = `<button class="dim" data-x="next" title="next take (or tap the takes row)">▶</button><select title="the take that plays in bars ${g.region.a + 1}–${g.region.b}${g.layer ? ' (overdub layer ' + (g.layer + 1) + ')' : ''}">${opts}</select><button class="dim" data-x="del" title="delete the playing take">✕</button><button class="dim" data-x="keep" title="keep only the playing take">KEEP</button>`;
+    h.querySelector('select').addEventListener('change', e => E.pickTake(t.id, e.target.value));
+    h.addEventListener('click', e => {
+      const x = e.target.dataset.x; if (!x) return;
+      if (x === 'next') E.cycleTake(t.id, g.key, 1);
+      else if (x === 'del' && g.active) E.deleteTake(t.id, g.active.id);
+      else if (x === 'keep') E.keepOnlyActive(t.id, g.key);
+    });
+    L.appendChild(h);
+  }
+}
+// automation lane headers: target · on/off · clear · remove, then a "+ lane" picker
+function renderAutoHeads(L, t) {
+  const targets = E.autoTargets(t), opt = (x, cur) => `<option value="${esc(x.target)}" ${x.target === cur ? 'selected' : ''}>${esc(x.label)}</option>`;
+  for (const x of targets) AUTO.labels.set(t.id + '|' + x.target, x.label);     // the canvas draws these every frame
+  (t.auto || []).forEach((ln, i) => {
+    const h = document.createElement('div'); h.className = 'ah'; h.style.height = AUTO.H + 'px';
+    const known = targets.some(x => x.target === ln.target);
+    h.innerHTML = `<select data-i="${i}" title="what this lane moves">${known ? '' : opt({ target: ln.target, label: '? ' + ln.target }, ln.target)}${targets.map(x => opt(x, ln.target)).join('')}</select>
+      <button class="${ln.on !== false ? 'on' : 'dim'}" data-x="on" title="lane on / off">ON</button><button class="dim" data-x="clr" title="clear the points">CLR</button><button class="dim" data-x="rm" title="remove the lane">✕</button>`;
+    h.querySelector('select').addEventListener('change', e => { ln.target = e.target.value; drawArr(); saveSoon(); });
+    h.addEventListener('click', e => {
+      const x = e.target.dataset.x; if (!x) return;
+      if (x === 'on') ln.on = ln.on === false;
+      else if (x === 'clr') { if (ln.points.length && !confirm('Clear ' + ln.points.length + ' point(s)?')) return; ln.points = []; }
+      else if (x === 'rm') { if (ln.points.length && !confirm('Remove this automation lane?')) return; t.auto.splice(i, 1); }
+      E.applyMix(); renderHeads(); drawArr(); saveSoon();
+    });
+    L.appendChild(h);
+  });
+  const add = document.createElement('div'); add.className = 'aadd'; add.style.height = AUTO.ADD + 'px';
+  const used = new Set((t.auto || []).map(l => l.target));
+  add.innerHTML = `<select title="add an automation lane"><option value="">+ automation lane…</option>${targets.filter(x => !used.has(x.target)).map(x => opt(x, '')).join('')}</select>`;
+  add.querySelector('select').addEventListener('change', e => {
+    if (!e.target.value) return;
+    t.auto = Array.isArray(t.auto) ? t.auto : [];
+    t.auto.push({ target: e.target.value, points: [], on: true });
+    renderHeads(); drawArr(); saveSoon();
+  });
+  L.appendChild(add);
+}
+$('addmidi').addEventListener('click', async () => {
+  let dev = P.devices.find(d => d.type === 'forge');
+  if (!dev) dev = await E.addDevice(typeof ForgeSynth === 'function' ? 'forge' : 'basic', { name: 'FORGE 1', preset: 'keys_ep' });
+  const t = E.addTrack('midi', { name: 'midi ' + (P.tracks.length + 1), deviceId: dev.id, color: COLORS.midi });
+  sel.trackId = t.id; renderHeads();
+});
+$('addaudio').addEventListener('click', () => { const t = E.addTrack('audio', { name: 'audio ' + (P.tracks.length + 1), color: COLORS.audio }); sel.trackId = t.id; renderHeads(); });
+
+// ═══════════════════════════════════════════════════════════════════
+// arrangement canvas
+// ═══════════════════════════════════════════════════════════════════
+const arr = { drag: null };
+// automation lanes sit under their track (track.autoOpen); points {t ticks, v 0..1}
+const AUTO = { draw: false, drag: null, H: COARSE ? 52 : 44, ADD: COARSE ? 32 : 26, PAD: 7, SNAP: 12, labels: new Map() };
+function arrLayout() {
+  let y = view.rulerH; const rows = [];
+  for (const t of P.tracks) {
+    const r = { t, y, lanes: [], takes: [] }; y += view.laneH;
+    if (takesOpen(t)) for (const g of E.takeGroups(t)) { r.takes.push({ g, y, t }); y += TAKES.H; }
+    if (t.autoOpen) { for (const ln of (t.auto || [])) { r.lanes.push({ ln, y, t }); y += AUTO.H; } r.addY = y; y += AUTO.ADD; }
+    r.end = y; rows.push(r);
+  }
+  return { rows, h: y };
+}
+function arrSize() {
+  const bars = Math.max(64, E.songBars() + 16, P.loop.b + 8), Lo = arrLayout();
+  const w = bars * view.barPx, h = Lo.h + 20;
+  const cv = $('arrcv'), r = window.devicePixelRatio || 1;
+  cv.style.width = w + 'px'; cv.style.height = h + 'px';
+  if (cv.width !== Math.round(w * r) || cv.height !== Math.round(h * r)) { cv.width = Math.round(w * r); cv.height = Math.round(h * r); }
+  return { w, h, r, bars, Lo };
+}
+const autoY = (a, v) => a.y + AUTO.PAD + (1 - v) * (AUTO.H - 2 * AUTO.PAD);
+const autoX = tk => tk / BAR * view.barPx;
+function drawAutoLane(g, a, w, left) {
+  const ln = a.ln, pts = ln.points || [], col = a.t.color, on = ln.on !== false;
+  g.fillStyle = '#0b0807'; g.fillRect(0, a.y, w, AUTO.H);
+  g.fillStyle = '#1a1410'; g.fillRect(0, a.y + AUTO.H - 1, w, 1); g.fillRect(0, Math.round(autoY(a, 0.5)), w, 1);
+  g.globalAlpha = on ? 1 : 0.35;
+  if (pts.length) {
+    g.beginPath(); g.moveTo(0, autoY(a, pts[0].v));
+    for (const p of pts) g.lineTo(autoX(p.t), autoY(a, p.v));
+    g.lineTo(w, autoY(a, pts[pts.length - 1].v));
+    g.strokeStyle = col; g.lineWidth = 1.5; g.stroke();
+    g.lineTo(w, a.y + AUTO.H - AUTO.PAD); g.lineTo(0, a.y + AUTO.H - AUTO.PAD); g.closePath(); g.fillStyle = col + '1e'; g.fill();
+    const rad = COARSE ? 5 : 4;
+    for (const p of pts) {
+      const hot = AUTO.drag && AUTO.drag.p === p;
+      g.beginPath(); g.arc(autoX(p.t), autoY(a, p.v), hot ? rad + 2 : rad, 0, Math.PI * 2);
+      g.fillStyle = hot ? '#ffd896' : '#050304'; g.fill(); g.strokeStyle = hot ? '#ffd896' : col; g.lineWidth = 1.5; g.stroke();
+    }
+  }
+  g.globalAlpha = 1; g.lineWidth = 1;
+  g.font = '9px "Courier New"'; g.fillStyle = on ? '#7a5828' : '#3a2614';
+  g.fillText((AUTO.labels.get(a.t.id + '|' + ln.target) || ln.target) + (pts.length ? '' : ' — tap to add points' + (AUTO.draw ? ', drag to sketch' : ' · ✎ DRAW to sketch')) + (on ? '' : ' (off)'), left + 4, a.y + 10);
+  const d = AUTO.drag;
+  if (d && d.ln === ln && d.p) { const txt = E.autoValueLabel(a.t, ln.target, d.p.v); g.fillStyle = '#ffd896'; g.fillText(txt, Math.min(w - 60, autoX(d.p.t) + 8), Math.max(a.y + 10, autoY(a, d.p.v) - 6)); }
+}
+// a takes row: the region, one slot per take (the playing one bright), its name; tap = next take
+function drawTakeRow(g, k, w) {
+  const G = k.g, col = k.t.color, x0 = G.region.a * view.barPx, x1 = G.region.b * view.barPx, n = G.takes.length, i = G.takes.indexOf(G.active);
+  g.fillStyle = '#0d0a08'; g.fillRect(0, k.y, w, TAKES.H); g.fillStyle = '#1a1410'; g.fillRect(0, k.y + TAKES.H - 1, w, 1);
+  g.fillStyle = col + '30'; g.fillRect(x0 + 1, k.y + 4, x1 - x0 - 2, TAKES.H - 9);
+  g.strokeStyle = col; g.strokeRect(x0 + 1.5, k.y + 4.5, x1 - x0 - 3, TAKES.H - 10);
+  const sw = (x1 - x0 - 6) / n;
+  for (let j = 0; j < n; j++) { g.fillStyle = j === i ? col : col + '50'; g.fillRect(x0 + 3 + j * sw, k.y + TAKES.H - 11, Math.max(2, sw - 2), 4); }
+  g.fillStyle = '#ffd896'; g.font = '10px "Courier New"';
+  const label = (G.active ? G.active.name : '—') + ' · ' + (i + 1) + '/' + n + (G.layer ? ' · layer ' + (G.layer + 1) : '') + ' · tap: next';
+  g.fillText(label.slice(0, Math.max(3, Math.floor((x1 - x0 - 8) / 6))), x0 + 5, k.y + 18);
+}
+// "k/n" on a clip that is one of several takes
+function takeBadges(t) {
+  const m = new Map();
+  for (const G of E.takeGroups(t)) if (G.takes.length > 1 && G.active) { const s = (G.takes.indexOf(G.active) + 1) + '/' + G.takes.length; m.set(G.active.kind === 'midi' ? 'p:' + G.active.pid : 'a:' + G.active.audioRef.libId + ':' + (G.active.audioRef.offset || 0), s); }
+  return m;
+}
+function drawArr(playTick) {
+  if (!P) return;
+  const { w, h, r, bars, Lo } = arrSize(), g = $('arrcv').getContext('2d'), left = $('lanes').scrollLeft;
+  g.setTransform(r, 0, 0, r, 0, 0);
+  g.fillStyle = '#050304'; g.fillRect(0, 0, w, h);
+  // loop region
+  if (P.loop.on) { g.fillStyle = 'rgba(78,160,96,0.10)'; g.fillRect(P.loop.a * view.barPx, 0, (P.loop.b - P.loop.a) * view.barPx, h); }
+  g.fillStyle = P.loop.on ? '#4ea060' : '#553318'; g.fillRect(P.loop.a * view.barPx, view.rulerH - 4, (P.loop.b - P.loop.a) * view.barPx, 3);
+  // punch region: a red band on the ruler (drag its edges / middle), faint over the lanes
+  if (P.punch && P.punch.on) {
+    const x0 = P.punch.a * view.barPx, x1 = P.punch.b * view.barPx;
+    g.fillStyle = 'rgba(198,74,58,0.07)'; g.fillRect(x0, view.rulerH, x1 - x0, h);
+    g.fillStyle = 'rgba(198,74,58,0.42)'; g.fillRect(x0, 17, x1 - x0, view.rulerH - 22);
+    g.fillStyle = '#ff9a88'; g.fillRect(x0, 15, 3, view.rulerH - 19); g.fillRect(x1 - 3, 15, 3, view.rulerH - 19);
+  }
+  // sections
+  for (const s of P.sections || []) { g.fillStyle = 'rgba(216,160,96,0.15)'; g.fillRect(s.bar * view.barPx, 0, s.bars * view.barPx, 16); g.fillStyle = '#ffd896'; g.font = '10px "Courier New"'; g.fillText(s.name, s.bar * view.barPx + 3, 11); }
+  // automation lanes (under the grid lines)
+  for (const row of Lo.rows) {
+    for (const k of row.takes) drawTakeRow(g, k, w);
+    for (const a of row.lanes) drawAutoLane(g, a, w, left);
+    if (row.addY !== undefined) { g.fillStyle = '#070505'; g.fillRect(0, row.addY, w, AUTO.ADD); g.fillStyle = '#2a1c12'; g.fillRect(0, row.addY + AUTO.ADD - 1, w, 1); }
+  }
+  // bar grid
+  g.font = '9px "Courier New"';
+  for (let b = 0; b <= bars; b++) {
+    const x = b * view.barPx;
+    g.fillStyle = b % 4 === 0 ? '#3a2614' : '#1a1410'; g.fillRect(x, 16, 1, h - 16);
+    if (b % 4 === 0) { g.fillStyle = '#7a5828'; g.fillText(String(b + 1), x + 2, 27); }
+  }
+  // lanes + clips
+  Lo.rows.forEach(row => {
+    const t = row.t, y = row.y, badges = t.takes ? takeBadges(t) : null;
+    const badge = (key, x, cw) => { const s = badges && badges.get(key); if (!s || cw < 30) return; g.font = '9px "Courier New"'; g.fillStyle = '#050304'; g.fillRect(x + cw - 6 * s.length - 8, y + 4, 6 * s.length + 6, 11); g.fillStyle = '#a8e89c'; g.fillText(s, x + cw - 6 * s.length - 5, y + 13); };
+    g.fillStyle = sel.trackId === t.id ? 'rgba(26,20,16,0.9)' : 'transparent'; g.fillRect(0, y, w, view.laneH);
+    g.fillStyle = '#2a1c12'; g.fillRect(0, y + view.laneH - 1, w, 1);
+    if (t.kind === 'midi') t.clips.forEach((c, ci) => {
+      const p = t.patterns[c.pid]; if (!p) return;
+      const x = c.bar * view.barPx, cw = (c.bars || p.lenBars) * view.barPx;
+      const selected = sel.trackId === t.id && sel.clip === ci;
+      g.fillStyle = selected ? t.color : t.color + '55'; g.fillRect(x + 1, y + 3, cw - 2, view.laneH - 7);
+      g.strokeStyle = t.color; g.strokeRect(x + 1.5, y + 3.5, cw - 3, view.laneH - 8);
+      // mini notes
+      if (p.notes.length) {
+        let lo = 127, hi = 0; for (const n of p.notes) { if (n.n < lo) lo = n.n; if (n.n > hi) hi = n.n; }
+        const span = Math.max(12, hi - lo + 1), reps = Math.ceil((c.bars || p.lenBars) / p.lenBars);
+        g.fillStyle = selected ? '#050304' : t.color;
+        for (let k = 0; k < reps; k++) for (const n of p.notes) {
+          const nx = x + (k * p.lenBars * BAR + n.t) / BAR * view.barPx; if (nx > x + cw) continue;
+          g.fillRect(nx, y + 5 + (1 - (n.n - lo) / span) * (view.laneH - 14), Math.max(1, n.d / BAR * view.barPx), 2);
+        }
+      }
+      g.fillStyle = selected ? '#050304' : '#ffd896'; g.font = '9px "Courier New"'; g.fillText(p.name.slice(0, Math.floor(cw / 6)), x + 4, y + view.laneH - 7);
+      badge('p:' + c.pid, x, cw);
+    });
+    else t.audio.forEach((a, ai) => {
+      const x = a.t / BAR * view.barPx, cw = Math.max(4, a.len / (E.spt() * BAR) * view.barPx);
+      g.fillStyle = t.color + '66'; g.fillRect(x + 1, y + 3, cw - 2, view.laneH - 7);
+      g.strokeStyle = t.color; g.strokeRect(x + 1.5, y + 3.5, cw - 3, view.laneH - 8);
+      g.fillStyle = '#ffd896'; g.fillText((a.name || 'audio').slice(0, Math.floor(cw / 6)), x + 4, y + view.laneH - 7);
+      badge('a:' + a.libId + ':' + (a.offset || 0), x, cw);
+    });
+  });
+  // playhead
+  const tk = playTick ?? E.tickNow();
+  g.fillStyle = '#ffd896'; g.fillRect(tk / BAR * view.barPx, 16, 1, h);
+}
+function arrHit(ev, edgePx = 7) {
+  const r = $('arrcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  const bar = x / view.barPx, Lo = arrLayout();
+  let li = -1, t = null, auto = null, take = null;
+  Lo.rows.forEach((row, i) => {
+    if (y < row.y || y >= row.end) return;
+    li = i;
+    if (y < row.y + view.laneH) t = row.t;
+    else { const k = row.takes.find(k => y >= k.y && y < k.y + TAKES.H); if (k) take = k; else { const a = row.lanes.find(a => y >= a.y && y < a.y + AUTO.H); if (a) auto = a; } }
+  });
+  let clip = -1, edge = false;
+  if (t) {
+    if (t.kind === 'midi') t.clips.forEach((c, ci) => { const p = t.patterns[c.pid], len = c.bars || (p ? p.lenBars : 1); if (bar >= c.bar && bar < c.bar + len) { clip = ci; edge = (c.bar + len - bar) * view.barPx < edgePx; } });
+    else t.audio.forEach((a, ai) => { const s = a.t / BAR, l = a.len / (E.spt() * BAR); if (bar >= s && bar < s + l) clip = ai; });
+  }
+  return { x, y, bar, t, li, clip, edge, ruler: y < view.rulerH, auto, take };
+}
+// ── automation editing (mouse + fingers) ──
+const clamp01 = v => Math.max(0, Math.min(1, v));
+const autoTickAt = x => Math.max(0, Math.round(x / view.barPx * BAR / AUTO.SNAP) * AUTO.SNAP);
+const autoVAt = (a, y) => +clamp01(1 - (y - a.y - AUTO.PAD) / (AUTO.H - 2 * AUTO.PAD)).toFixed(4);
+function autoPointAt(h, rad) {
+  const a = h.auto; if (!a) return null;
+  let best = null, bd = rad;
+  for (const p of a.ln.points) { const dd = Math.hypot(autoX(p.t) - h.x, autoY(a, p.v) - h.y); if (dd <= bd) { bd = dd; best = p; } }
+  return best;
+}
+function autoSort(ln) { ln.points.sort((p, q) => p.t - q.t); }
+function autoAdd(h) {
+  const a = h.auto, p = { t: autoTickAt(h.x), v: autoVAt(a, h.y) };
+  a.ln.points = a.ln.points.filter(q => q.t !== p.t); a.ln.points.push(p); autoSort(a.ln);
+  return p;
+}
+function autoDelete(h, rad) { const p = autoPointAt(h, rad); if (!p) return false; h.auto.ln.points = h.auto.ln.points.filter(q => q !== p); AUTO.drag = null; drawArr(); saveSoon(); return true; }
+function autoSketch(x, y) {        // draw mode: the stroke replaces what it passes over
+  const d = AUTO.drag, a = d.a, tick = autoTickAt(x), v = autoVAt(a, y), from = d.last ?? tick;
+  const lo = Math.min(from, tick), hi = Math.max(from, tick);
+  a.ln.points = a.ln.points.filter(q => q.t < lo || q.t > hi || (q === d.lastP && from !== tick));
+  d.lastP = { t: tick, v }; a.ln.points.push(d.lastP); autoSort(a.ln); d.last = tick;
+}
+function autoGrab(h, rad) {
+  if (!h.auto) return false;
+  const p = autoPointAt(h, rad);
+  if (p) { AUTO.drag = { a: h.auto, ln: h.auto.ln, p }; drawArr(); return true; }
+  if (AUTO.draw) { AUTO.drag = { a: h.auto, ln: h.auto.ln, draw: true, last: null }; autoSketch(h.x, h.y); drawArr(); return true; }
+  return false;
+}
+function autoMove(ev) {
+  const d = AUTO.drag; if (!d) return false;
+  const r = $('arrcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  if (d.draw) autoSketch(x, y);
+  else { d.p.t = autoTickAt(x); d.p.v = autoVAt(d.a, y); autoSort(d.ln); }
+  drawArr();
+  return true;
+}
+function autoEnd() { if (!AUTO.drag) return false; AUTO.drag = null; drawArr(); saveSoon(); return true; }
+$('autodraw').addEventListener('click', () => { AUTO.draw = !AUTO.draw; $('autodraw').classList.toggle('on', AUTO.draw); drawArr(); });
+function arrRefresh() { renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon(); }
+function arrSeek(h) { const tick = Math.floor(h.bar) * BAR; E._stopTick = tick; if (E.playing) E.playAuto(tick); drawArr(tick); }
+function arrSelect(h) { if (!h.t) return false; sel.trackId = h.t.id; sel.clip = h.clip; return true; }
+function arrDeleteClip(h) {
+  if (!h.t || h.clip < 0) return;
+  if (h.t.kind === 'midi') h.t.clips.splice(h.clip, 1); else h.t.audio.splice(h.clip, 1);
+  sel.clip = -1;
+}
+function arrGrab(h) {      // start dragging the clip under the pointer
+  if (!h.t || h.clip < 0) return false;
+  const c = h.t.kind === 'midi' ? h.t.clips[h.clip] : h.t.audio[h.clip];
+  arr.drag = { t: h.t, c, startBar: h.bar, orig: h.t.kind === 'midi' ? c.bar : c.t, resize: h.edge && h.t.kind === 'midi', origLen: c.bars || (h.t.patterns[c.pid] || {}).lenBars };
+  return true;
+}
+// punch region on the ruler: drag an edge (snaps to bars) or the middle (moves it)
+const punch = { drag: null };
+function punchHit(h, edge) {
+  const u = P.punch; if (!u || !u.on || !h.ruler) return null;
+  const xa = u.a * view.barPx, xb = u.b * view.barPx, da = Math.abs(h.x - xa), db = Math.abs(h.x - xb);
+  if (Math.min(da, db) <= edge) return da <= db ? 'a' : 'b';
+  return h.x > xa && h.x < xb ? 'move' : null;
+}
+function punchGrab(h, edge) { const m = punchHit(h, edge); if (!m) return false; punch.drag = { m, x0: h.x, a0: P.punch.a, b0: P.punch.b }; return true; }
+function punchMove(ev) {
+  const d = punch.drag; if (!d) return false;
+  const x = ev.clientX - $('arrcv').getBoundingClientRect().left, u = P.punch;
+  if (d.m === 'a') u.a = Math.max(0, Math.min(d.b0 - 1, Math.round(x / view.barPx)));
+  else if (d.m === 'b') u.b = Math.max(d.a0 + 1, Math.round(x / view.barPx));
+  else { u.a = Math.max(0, d.a0 + Math.round((x - d.x0) / view.barPx)); u.b = u.a + (d.b0 - d.a0); }
+  punchUI(); drawArr(); return true;
+}
+function punchEnd() { if (!punch.drag) return false; punch.drag = null; saveSoon(); return true; }
+function arrMove(ev) {
+  if (punchMove(ev)) return;
+  if (autoMove(ev)) return;
+  if (!arr.drag) return;
+  const r = $('arrcv').getBoundingClientRect(), bar = (ev.clientX - r.left) / view.barPx, d = arr.drag;
+  if (d.resize) d.c.bars = Math.max(1, Math.round(d.origLen + (bar - d.startBar)));
+  else if (d.t.kind === 'midi') d.c.bar = Math.max(0, Math.round(d.orig + (bar - d.startBar)));
+  else d.c.t = Math.max(0, Math.round((d.orig / BAR + (bar - d.startBar)) * 4) / 4 * BAR);
+  drawArr();
+}
+function arrEnd() { punchEnd(); autoEnd(); if (arr.drag) { arr.drag = null; saveSoon(); } }
+function arrNewClip(h) {
+  if (!h.t || h.clip >= 0 || h.ruler || h.t.kind !== 'midi') return;
+  const len = +$('plen').value || 4, pid = E.uid('pat');
+  h.t.patterns[pid] = { name: 'pattern ' + (Object.keys(h.t.patterns).length + 1), lenBars: len, notes: [] };
+  h.t.clips.push({ bar: Math.floor(h.bar), pid });
+  sel = { trackId: h.t.id, clip: h.t.clips.length - 1 };
+  drawArr(); drawRoll(); saveSoon();
+}
+// mouse
+$('arrcv').addEventListener('mousedown', ev => {
+  if (!P) return;
+  const h = arrHit(ev);
+  if (h.take) { if (ev.button === 0) E.cycleTake(h.take.t.id, h.take.g.key, 1); return; }
+  if (h.ruler && ev.button === 0 && punchGrab(h, 6)) return;
+  if (h.auto) {      // automation: click empty = add a point and drag it · drag a point · right-click deletes
+    if (ev.button === 2) { autoDelete(h, 7); return; }
+    if (!autoGrab(h, 7)) { const p = autoAdd(h); AUTO.drag = { a: h.auto, ln: h.auto.ln, p }; }
+    drawArr(); return;
+  }
+  if (h.ruler) { arrSeek(h); return; }
+  if (!arrSelect(h)) return;
+  if (ev.button === 2) arrDeleteClip(h); else arrGrab(h);
+  arrRefresh();
+});
+$('arrcv').addEventListener('contextmenu', e => e.preventDefault());
+window.addEventListener('mousemove', arrMove);
+window.addEventListener('mouseup', () => { arrEnd(); rollEnd(); });
+$('arrcv').addEventListener('dblclick', ev => arrNewClip(arrHit(ev)));
+// fingers: drag a clip (its right edge = length) · long-press deletes · tap selects / seeks on the ruler ·
+// double-tap an empty lane = new clip · drag empty space to pan
+// automation lanes: tap = add a point · drag a point = move it · long-press a point = delete · ✎ DRAW: drag sketches
+TouchControls.gesture($('arrcv'), {
+  grab: ev => { if (!P) return false; const h = arrHit(ev, 16); if (h.ruler) return punchGrab(h, 18); if (h.take) return false; if (h.auto) return autoGrab(h, 16); if (h.ruler || h.clip < 0) return false; arrSelect(h); arrGrab(h); arrRefresh(); return true; },
+  move: arrMove, end: arrEnd,
+  tap: ev => { if (!P) return; const h = arrHit(ev); if (h.take) { E.cycleTake(h.take.t.id, h.take.g.key, 1); return; } if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } if (h.ruler) { arrSeek(h); return; } if (arrSelect(h)) arrRefresh(); },
+  doubleTap: ev => { if (!P) return; const h = arrHit(ev); if (h.take) { E.cycleTake(h.take.t.id, h.take.g.key, 1); return; } if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } arrNewClip(h); },
+  longPress: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { autoDelete(h, 16); return; } if (h.clip >= 0) { arr.drag = null; arrSelect(h); arrDeleteClip(h); arrRefresh(); } },
+});
+// the headers follow the lanes' vertical scroll; the lane labels follow the horizontal one
+$('lanes').addEventListener('scroll', () => { $('heads').scrollTop = $('lanes').scrollTop; drawArr(); });
+$('heads').addEventListener('wheel', e => { $('lanes').scrollTop += e.deltaY; }, { passive: true });
+
+// ═══════════════════════════════════════════════════════════════════
+// piano roll / drum grid
+// ═══════════════════════════════════════════════════════════════════
+function curClip() {
+  const t = P && E.track(sel.trackId); if (!t || t.kind !== 'midi' || sel.clip < 0) return null;
+  const c = t.clips[sel.clip]; if (!c) return null;
+  return { t, c, p: t.patterns[c.pid] };
+}
+function isDrum(t) { const d = E.dev(t.deviceId); return t.role === 'drums' || (d && d.type === 'kit'); }
+function rollRows(t) {
+  if (isDrum(t)) return DRUM_ROWS.slice().reverse();
+  const out = []; for (let n = roll.hi; n >= roll.lo; n--) out.push(n); return out;
+}
+function drawRoll() {
+  const stepOn = STEP.on;
+  $('rollcv').style.display = stepOn ? 'none' : 'block'; $('stepcv').style.display = stepOn ? 'block' : 'none';
+  $('stepbar').classList.toggle('on', stepOn); $('r-step').classList.toggle('on', stepOn);
+  $('rollhint').textContent = stepOn ? 'tap: step on/off · drag a step up/down: velocity · long-press / right-click: velocity · length · probability' : 'click/tap: add · drag: move · edge: length · right-click / long-press: delete · drag empty: scroll';
+  if (stepOn) return drawStep();
+  const cv = $('rollcv'), wrap = $('rollwrap'), r = window.devicePixelRatio || 1, cc = P && curClip();
+  if (!cc) {
+    cv.style.width = wrap.clientWidth + 'px'; cv.style.height = '60px'; cv.width = wrap.clientWidth * r; cv.height = 60 * r;
+    const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0); g.fillStyle = '#050304'; g.fillRect(0, 0, wrap.clientWidth, 60);
+    $('rolltitle').textContent = P ? 'select a clip (double-click an empty lane to make one)' : '';
+    return;
+  }
+  const { t, p } = cc, rows = rollRows(t), drum = isDrum(t);
+  roll.rowH = drum ? (COARSE ? 24 : 18) : (COARSE ? 17 : 12);
+  $('rolltitle').textContent = t.name + ' · ' + p.name + ' · ' + p.lenBars + ' bar' + (p.lenBars > 1 ? 's' : '') + (drum ? ' · drum grid' : '');
+  $('plen').value = String(p.lenBars);
+  const KEYW = 46, len = p.lenBars * BAR;
+  roll.tickPx = Math.max(0.35, (wrap.clientWidth - KEYW - 10) / len) * roll.zoom;
+  const w = KEYW + len * roll.tickPx + 2, h = rows.length * roll.rowH + 30;
+  cv.style.width = w + 'px'; cv.style.height = h + 'px'; cv.width = Math.round(w * r); cv.height = Math.round(h * r);
+  const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0);
+  g.fillStyle = '#050304'; g.fillRect(0, 0, w, h);
+  const sc = SeqGen.SCALES[P.mode] || SeqGen.SCALES.minor;
+  rows.forEach((n, i) => {
+    const y = i * roll.rowH, inS = sc.includes(((n - P.key) % 12 + 12) % 12), black = [1, 3, 6, 8, 10].includes(n % 12);
+    g.fillStyle = drum ? (i % 2 ? '#0e0908' : '#120c0a') : inS ? '#140e0b' : '#0a0706'; g.fillRect(KEYW, y, w - KEYW, roll.rowH);
+    g.fillStyle = drum ? '#1a1410' : black ? '#1a1410' : '#c8b89a'; g.fillRect(0, y, KEYW - 2, roll.rowH - 1);
+    g.fillStyle = drum ? '#d8a060' : black ? '#7a5828' : '#2a1c12'; g.font = '9px "Courier New"';
+    if (drum) g.fillText(GM_NAMES[n] || n, 3, y + roll.rowH - 5);
+    else if (n % 12 === 0) g.fillText('C' + (n / 12 - 1), 3, y + roll.rowH - 2);
+    if (!drum && n % 12 === 0) { g.fillStyle = '#2a1c12'; g.fillRect(KEYW, y + roll.rowH - 1, w, 1); }
+  });
+  const grid = +$('grid').value;
+  for (let tk = 0; tk <= len; tk += grid) { const x = KEYW + tk * roll.tickPx; g.fillStyle = tk % BAR === 0 ? '#553318' : tk % PPQ === 0 ? '#2a1c12' : '#160f0c'; g.fillRect(x, 0, 1, rows.length * roll.rowH); }
+  // notes
+  for (const n of p.notes) {
+    const ri = rows.indexOf(n.n); if (ri < 0) continue;
+    const x = KEYW + n.t * roll.tickPx, y = ri * roll.rowH, nw = Math.max(3, n.d * roll.tickPx);
+    const on = roll.selNotes.has(n);
+    g.fillStyle = on ? '#ffd896' : t.color; g.globalAlpha = 0.35 + 0.65 * n.v; g.fillRect(x + 1, y + 1, drum ? Math.min(nw, grid * roll.tickPx - 2) : nw - 1, roll.rowH - 2); g.globalAlpha = 1;
+  }
+  // velocity lane
+  const vy = rows.length * roll.rowH + 2;
+  g.fillStyle = '#0e0908'; g.fillRect(KEYW, vy, w, 26);
+  for (const n of p.notes) { const x = KEYW + n.t * roll.tickPx; g.fillStyle = roll.selNotes.has(n) ? '#ffd896' : t.color; g.fillRect(x + 1, vy + 26 - n.v * 24, 3, n.v * 24); }
+  // playhead inside the clip
+  const tk = E.tickNow(), cs = cc.c.bar * BAR, ce = cs + (cc.c.bars || p.lenBars) * BAR;
+  if (E.playing && tk >= cs && tk < ce) { g.fillStyle = '#ffd896'; g.fillRect(KEYW + ((tk - cs) % len) * roll.tickPx, 0, 1, rows.length * roll.rowH); }
+  roll.KEYW = KEYW; roll.rows = rows; roll.len = len;
+  // a newly opened clip scrolls to where its notes are
+  const key = t.id + '/' + cc.c.pid;
+  if (roll.shown !== key) {
+    roll.shown = key;
+    const idx = p.notes.map(n => rows.indexOf(n.n)).filter(i => i >= 0).sort((a, b) => a - b);
+    const mid = idx.length ? idx[idx.length >> 1] : rows.indexOf(60);
+    wrap.scrollTop = Math.max(0, mid * roll.rowH - wrap.clientHeight / 2);
+  }
+}
+function rollHit(ev) {
+  const cv = $('rollcv'), r = cv.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  const tick = (x - roll.KEYW) / roll.tickPx, ri = Math.floor(y / roll.rowH);
+  return { x, y, tick, ri, note: roll.rows ? roll.rows[ri] : null, vel: ri >= (roll.rows || []).length };
+}
+function rollNoteAt(p, h, minPx = 4) { return h.note == null ? null : p.notes.find(n => n.n === h.note && h.tick >= n.t && h.tick < n.t + Math.max(n.d, minPx / roll.tickPx)); }
+function rollVelGrab(ev, p, h) {     // velocity lane: set the nearest note's velocity
+  const near = p.notes.reduce((b, n) => Math.abs(n.t - h.tick) < Math.abs((b ? b.t : 1e9) - h.tick) ? n : b, null);
+  if (near) { roll.drag = { mode: 'vel', n: near }; setVel(ev, near); drawRoll(); }
+  return !!near;
+}
+function rollNoteGrab(t, hit, h, edgePx, add) {
+  const wPx = hit.d * roll.tickPx, fromEnd = (hit.t + hit.d - h.tick) * roll.tickPx;
+  // narrow notes are all "body" (move); a finger on a short note can't hit a 16 px edge on purpose
+  const edge = !isDrum(t) && fromEnd < Math.min(edgePx, wPx / 3) && (wPx >= 18 || edgePx <= 6);
+  if (!add) roll.selNotes.clear(); roll.selNotes.add(hit);
+  roll.drag = { mode: edge ? 'len' : 'move', n: hit, t0: h.tick, n0: hit.n, st: hit.t, d0: hit.d, ri0: h.ri };
+}
+function rollAddNote(t, p, h) {
+  const grid = +$('grid').value, tq = Math.max(0, Math.floor(h.tick / grid) * grid);
+  if (tq >= roll.len || h.note == null) return null;
+  const nn = { t: tq, d: isDrum(t) ? Math.min(grid, 24) : grid, n: h.note, v: 0.8 };
+  p.notes.push(nn); p.notes.sort((a, b) => a.t - b.t);
+  roll.selNotes.clear(); roll.selNotes.add(nn);
+  previewNote(t, h.note);
+  return nn;
+}
+function rollDelete(p, n) { p.notes.splice(p.notes.indexOf(n), 1); roll.selNotes.delete(n); drawRoll(); drawArr(); saveSoon(); }
+function rollEnd() { if (roll.drag) { roll.drag = null; saveSoon(); E.emit('notes', {}); } }
+// mouse
+$('rollcv').addEventListener('mousedown', ev => {
+  const cc = curClip(); if (!cc) return;
+  const h = rollHit(ev), { p, t } = cc;
+  if (h.x < roll.KEYW) { if (h.note != null) previewNote(t, h.note); return; }
+  if (h.vel) { rollVelGrab(ev, p, h); return; }
+  if (h.note == null) return;
+  const hit = rollNoteAt(p, h);
+  if (ev.button === 2) { if (hit) rollDelete(p, hit); return; }
+  if (hit) rollNoteGrab(t, hit, h, 6, ev.shiftKey);
+  else { const nn = rollAddNote(t, p, h); if (nn) roll.drag = { mode: 'len', n: nn, t0: h.tick, st: nn.t, d0: nn.d }; }
+  drawRoll(); drawArr();
+});
+$('rollcv').addEventListener('contextmenu', e => e.preventDefault());
+// fingers: tap an empty cell = note · drag a note (right edge = length) · long-press deletes ·
+// drag in the velocity lane · tap the keys to hear them · drag empty space to scroll
+TouchControls.gesture($('rollcv'), {
+  grab: ev => {
+    const cc = curClip(); if (!cc) return false;
+    const h = rollHit(ev), { p, t } = cc;
+    if (h.x < roll.KEYW) { if (h.note != null) previewNote(t, h.note); return false; }
+    if (h.vel) return rollVelGrab(ev, p, h);
+    const hit = rollNoteAt(p, h, 12); if (!hit) return false;
+    rollNoteGrab(t, hit, h, 16, false); drawRoll(); return true;
+  },
+  move: ev => rollMove(ev), end: rollEnd,
+  tap: ev => {
+    const cc = curClip(); if (!cc) return;
+    const h = rollHit(ev); if (h.x < roll.KEYW || h.vel || rollNoteAt(cc.p, h, 12)) return;
+    if (rollAddNote(cc.t, cc.p, h)) { drawRoll(); drawArr(); saveSoon(); }
+  },
+  longPress: ev => {
+    const cc = curClip(); if (!cc) return;
+    const h = rollHit(ev), hit = !h.vel && rollNoteAt(cc.p, h, 12);
+    if (hit) { roll.drag = null; rollDelete(cc.p, hit); }
+  },
+});
+function setVel(ev, n) { const r = $('rollcv').getBoundingClientRect(), vy = roll.rows.length * roll.rowH + 2; n.v = Math.max(0.05, Math.min(1, (vy + 26 - (ev.clientY - r.top)) / 24)); }
+window.addEventListener('mousemove', ev => rollMove(ev));
+function rollMove(ev) {
+  const d = roll.drag; if (!d) return;
+  const cc = curClip(); if (!cc) return;
+  const h = rollHit(ev), grid = +$('grid').value;
+  if (d.mode === 'vel') setVel(ev, d.n);
+  else if (d.mode === 'len') d.n.d = Math.max(grid / 2, Math.round((h.tick - d.st) / grid) * grid || grid);
+  else if (d.mode === 'move') {
+    d.n.t = Math.max(0, Math.min(roll.len - 1, d.st + Math.round((h.tick - d.t0) / grid) * grid));
+    const ri = Math.max(0, Math.min(roll.rows.length - 1, h.ri)); d.n.n = roll.rows[ri];
+  }
+  drawRoll();
+}
+function previewNote(t, n) {
+  const inst = E.devices.get(t.deviceId); if (!inst || E.playing) return;
+  const now = E.ctx.currentTime; inst.noteOn(n, 0.8, now, t.channel); inst.noteOff(n, now + 0.25, t.channel);
+}
+// roll tools
+function edit(fn) { const cc = curClip(); if (!cc) return; fn(cc); cc.p.notes.sort((a, b) => a.t - b.t); drawRoll(); drawArr(); saveSoon(); }
+$('grid').addEventListener('change', drawRoll);
+const ZOOMS = [1, 1.5, 2, 3, 4, 6];
+function setZoom(dir) {
+  const wrap = $('rollwrap'), i = Math.max(0, Math.min(ZOOMS.length - 1, ZOOMS.indexOf(roll.zoom) + dir));
+  const mid = (wrap.scrollLeft + wrap.clientWidth / 2) / (roll.zoom || 1);
+  roll.zoom = ZOOMS[i]; drawRoll();
+  wrap.scrollLeft = Math.max(0, mid * roll.zoom - wrap.clientWidth / 2);
+}
+$('r-zin').addEventListener('click', () => setZoom(1)); $('r-zout').addEventListener('click', () => setZoom(-1));
+$('plen').addEventListener('change', () => edit(({ p }) => { p.lenBars = +$('plen').value; p.notes = p.notes.filter(n => n.t < p.lenBars * BAR); }));
+$('r-dup').addEventListener('click', () => edit(({ t, c, p }) => { const pid = E.uid('pat'); t.patterns[pid] = JSON.parse(JSON.stringify(p)); t.patterns[pid].name = p.name + ' ′'; c.pid = pid; }));
+const tr = k => () => edit(({ p }) => { const s = roll.selNotes.size ? [...roll.selNotes] : p.notes; s.forEach(n => n.n = Math.max(0, Math.min(127, n.n + k))); });
+$('r-up').addEventListener('click', tr(1)); $('r-down').addEventListener('click', tr(-1)); $('r-oct').addEventListener('click', tr(12)); $('r-octd').addEventListener('click', tr(-12));
+$('r-human').addEventListener('click', () => edit(({ p }) => p.notes.forEach(n => { n.v = Math.max(0.05, Math.min(1, n.v + (Math.random() - 0.5) * 0.18)); n.t = Math.max(0, n.t + Math.round((Math.random() - 0.5) * 4)); })));
+$('r-clear').addEventListener('click', () => { if (confirm('Clear every note in this pattern?')) edit(({ p }) => { p.notes = []; roll.selNotes.clear(); }); });
+$('r-regen').addEventListener('click', () => { const cc = curClip(); if (cc && cc.t.role && song) reroll(cc.t.role); else msg('g-msg', 'RE-ROLL works on generated parts (GENERATE first).', true); });
+
+// ═══════════════════════════════════════════════════════════════════
+// PERF panel (per track, from the header's P): scale lock → chord → arp → device, + groove (daw_perf.js)
+// Settings live in track.perf / project.groove; every edit goes through saveSoon() → undoable.
+// ═══════════════════════════════════════════════════════════════════
+const PERF = { trackId: null, learning: false };
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+const noteName = n => SeqGen.NOTE_NAMES[((n % 12) + 12) % 12] + (Math.floor(n / 12) - 1);
+const PF_FMT = { pct: v => Math.round(v * 100) + '%', ms: v => (v > 0 ? '+' : '') + Math.round(v) + ' ms', msu: v => Math.round(v) + ' ms', vel: v => '±' + Math.round(v * 100) + '%' };
+function openPerf(id) {
+  if (PERF.learning && PERF.trackId && E.perfLive) E.perfLive.learnChord(PERF.trackId, null);
+  PERF.trackId = id; PERF.learning = false; renderPerf();
+}
+function setPath(o, path, v) { const ks = path.split('.'); for (let i = 0; i < ks.length - 1; i++) o = o[ks[i]] = o[ks[i]] && typeof o[ks[i]] === 'object' ? o[ks[i]] : {}; o[ks[ks.length - 1]] = v; }
+const perfSet = (t, path, v) => setPath(t.perf || (t.perf = {}), path, v);
+const grooveSet = (path, v) => setPath(P.groove || (P.groove = { on: true, type: 'mpc16', swing: 0.58 }), path, v);
+function perfChanged(t) { E.perfReset(t.id); renderPerf(); renderHeads(); drawRoll(); saveSoon(); }
+function swingHint() {
+  const on = !!(P && P.groove && P.groove.on !== false);
+  $('swing').style.opacity = on ? 0.35 : ''; $('swing').title = on ? 'a groove is on (PERF panel): it replaces this swing' : '';
+}
+function renderPerf() {
+  const box = $('perfpanel'), t = P && PERF.trackId ? E.track(PERF.trackId) : null;
+  if (P) swingHint();
+  if (!t || t.kind !== 'midi') { PERF.trackId = null; box.classList.remove('show'); box.innerHTML = ''; return; }
+  const f = DawPerf.norm(t.perf), G0 = P.groove, g = DawPerf.grooveNorm(G0), gOn = !!(G0 && G0.on !== false);
+  const sc = DawPerf.scaleOf(P), keyName = SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode;
+  const seg = (attr, path, cur, items) => items.map(([v, label]) => `<button class="${String(cur) === String(v) ? 'on' : 'dim'}" data-${attr}="${path}" data-v="${v}">${label}</button>`).join('');
+  const tog = (path, on, label) => `<button class="${on ? 'on' : 'dim'}" data-p="${path}" data-v="${on ? 0 : 1}" data-bool="1">${label || (on ? 'ON' : 'OFF')}</button>`;
+  const sl = (attr, path, val, min, max, step, label, fmt) => `<div class="sl"><span>${label}</span><input type="range" data-${attr}="${path}" data-fmt="${fmt}" min="${min}" max="${max}" step="${step}" value="${val}"><span class="pv">${PF_FMT[fmt](val)}</span></div>`;
+  const chords = ROMAN.map((r, d) => { const root = SeqGen.deg2midi(P.key, sc, d, 3); return r + ' ' + DawPerf.chordOf(root, f.chord, P.key, sc).map(noteName).join('·'); }).join('  ');
+  box.innerHTML = `
+    <div class="ph"><b>PERF · ${esc(t.name)}</b><button class="dim" data-x="close" title="close">✕</button></div>
+    <div class="note">live keys run scale lock → chord → arp → device. What you hear is what records.</div>
+    <h3><span>SCALE LOCK · ${esc(keyName)}</span>${tog('scale.on', f.scale.on)}</h3>
+    <div class="seg${f.scale.on ? '' : ' dis'}">${seg('p', 'scale.mode', f.scale.mode, [['nearest', 'NEAREST'], ['up', 'UP'], ['down', 'DOWN'], ['filter', 'FILTER']])}</div>
+    <h3><span>CHORD</span>${tog('chord.on', f.chord.on)}</h3>
+    <div class="${f.chord.on ? '' : 'dis'}">
+      <div class="seg"><i>TYPE</i>${seg('p', 'chord.type', f.chord.type, [['triad', 'TRIAD'], ['seventh', '7TH'], ['sus2', 'SUS2'], ['sus4', 'SUS4'], ['power', 'POWER'], ['custom', 'CUSTOM']])}</div>
+      <div class="seg"><i>INVERSION</i>${seg('p', 'chord.inv', f.chord.inv, [[0, 'ROOT'], [1, '1ST'], [2, '2ND'], [3, '3RD']])}</div>
+      <div class="seg"><i>SPREAD</i>${seg('p', 'chord.spread', f.chord.spread, [['close', 'CLOSE'], ['open', 'OPEN'], ['wide', 'WIDE']])}</div>
+      <div class="seg"><i>CUSTOM</i><input type="text" id="pf-shape" value="${f.chord.shape.join(' ')}" style="width:120px" title="semitones above the key you press, e.g. 0 3 7 10"><button class="${PERF.learning ? 'on' : 'dim'}" data-x="learn" title="hold a chord on the keys, let go: that shape">${PERF.learning ? 'HOLD A CHORD…' : 'LEARN'}</button></div>
+      <div class="note" id="pf-chords">${esc(chords)}</div>
+    </div>
+    <h3><span>ARPEGGIATOR</span>${tog('arp.on', f.arp.on)}</h3>
+    <div class="${f.arp.on ? '' : 'dis'}">
+      <div class="seg"><i>MODE</i>${seg('p', 'arp.mode', f.arp.mode, [['up', 'UP'], ['down', 'DOWN'], ['updown', 'UP-DN'], ['random', 'RAND'], ['played', 'PLAYED'], ['chord', 'CHORD']])}</div>
+      <div class="seg"><i>RATE</i>${seg('p', 'arp.rate', f.arp.rate, Object.keys(DawPerf.RATES).map(r => [r, r]))}</div>
+      <div class="seg"><i>OCTAVES</i>${seg('p', 'arp.oct', f.arp.oct, [[1, '1'], [2, '2'], [3, '3'], [4, '4']])}<span style="flex:1"></span>${tog('arp.latch', f.arp.latch, f.arp.latch ? 'LATCH ON' : 'LATCH')}</div>
+      ${sl('p', 'arp.gate', f.arp.gate, 0.05, 2, 0.05, 'GATE', 'pct')}
+      <div class="note">steps sit on the transport grid while it plays (tempo, loop and groove follow); stopped, the arp runs on its own at ${P.bpm} BPM.</div>
+    </div>
+    <h3><span>ON CLIPS</span>${tog('onClips', f.onClips)}</h3>
+    <div class="note">the chain above also rewrites this track's clip notes on playback and in every bounce — seeded, the same each time.</div>
+    <div class="seg"><i>SEED</i><b style="color:var(--gold-hi);font-weight:normal;min-width:64px">${f.seed}</b><button class="dim" data-x="seed">⚄ NEW SEED</button><span class="note">random arp · step probability</span></div>
+    <h3><span>GROOVE · this track</span></h3>
+    ${sl('p', 'groove', f.groove, 0, 1, 0.05, 'AMOUNT', 'pct')}
+    ${sl('p', 'nudge', f.nudge, -40, 40, 1, 'NUDGE', 'ms')}
+    <h3><span>GROOVE · project</span></h3>
+    <div class="seg"><button class="${gOn ? 'dim' : 'on'}" data-x="goff" title="no groove: the transport SWING slider applies">OFF</button>${Object.entries(DawPerf.GROOVES).map(([id, G]) => `<button class="${gOn && g.type === id ? 'on' : 'dim'}" data-g="type" data-v="${id}">${G.name}</button>`).join('')}</div>
+    <div class="${gOn ? '' : 'dis'}">
+      ${sl('g', 'swing', g.swing, 0.5, 0.75, 0.01, 'SWING', 'pct')}
+      <div class="seg"><i>ACCENT</i>${seg('g', 'accent', typeof g.accent === 'string' ? g.accent : 'custom', Object.keys(DawPerf.ACCENTS).map(a => [a, a.toUpperCase()]))}</div>
+      ${sl('g', 'accentDepth', g.accentDepth, 0, 1, 0.05, 'DEPTH', 'pct')}
+      ${sl('g', 'human.ms', g.human.ms, 0, 30, 1, 'HUMAN TIME', 'msu')}
+      ${sl('g', 'human.vel', g.human.vel, 0, 0.5, 0.01, 'HUMAN VEL', 'vel')}
+      <div class="seg"><i>SEED</i><b style="color:var(--gold-hi);font-weight:normal;min-width:64px">${g.human.seed}</b><button class="dim" data-x="gseed">⚄ NEW SEED</button></div>
+      ${DawPerf.ROLES.map(r => sl('g', 'roles.' + r, g.roles[r], -30, 30, 1, r.toUpperCase(), 'ms')).join('')}
+      <div class="note">roles: − pushes ahead of the beat, + lays back. While a groove is on it replaces the transport SWING. Live and bounced play the same.</div>
+    </div>`;
+  box.classList.add('show');
+}
+$('perfpanel').addEventListener('click', e => {
+  const b = e.target.closest('button'), t = P && E.track(PERF.trackId); if (!b || !t) return;
+  const x = b.dataset.x;
+  if (x === 'close') { openPerf(null); renderHeads(); return; }
+  if (x === 'learn') {
+    PERF.learning = !PERF.learning; E.perfReset(t.id);
+    E.perfLive.learnChord(t.id, PERF.learning ? shape => { perfSet(t, 'chord.shape', shape); perfSet(t, 'chord.type', 'custom'); perfSet(t, 'chord.on', true); PERF.learning = false; perfChanged(t); } : null);
+    renderPerf(); return;
+  }
+  if (x === 'seed') { perfSet(t, 'seed', 1 + Math.floor(Math.random() * 99998)); perfChanged(t); return; }
+  if (x === 'gseed') { grooveSet('human.seed', 1 + Math.floor(Math.random() * 99998)); renderPerf(); saveSoon(); return; }
+  if (x === 'goff') { if (P.groove) P.groove.on = false; renderPerf(); saveSoon(); return; }
+  const raw = b.dataset.v; if (raw === undefined) return;
+  const v = b.dataset.bool ? raw === '1' : /^-?\d+(\.\d+)?$/.test(raw) ? +raw : raw;
+  if (b.dataset.p) { perfSet(t, b.dataset.p, v); perfChanged(t); }
+  else if (b.dataset.g) { grooveSet(b.dataset.g, v); if (b.dataset.g === 'type') P.groove.on = true; renderPerf(); saveSoon(); }
+});
+$('perfpanel').addEventListener('input', e => {
+  const el = e.target, t = P && E.track(PERF.trackId); if (!t || el.type !== 'range') return;
+  const v = +el.value;
+  if (el.dataset.p) perfSet(t, el.dataset.p, v); else if (el.dataset.g) grooveSet(el.dataset.g, v);
+  const pv = el.parentElement.querySelector('.pv'); if (pv) pv.textContent = PF_FMT[el.dataset.fmt](v);
+  saveSoon();
+});
+$('perfpanel').addEventListener('change', e => {
+  const t = P && E.track(PERF.trackId); if (!t || e.target.id !== 'pf-shape') return;
+  const a = e.target.value.split(/[\s,]+/).filter(Boolean).map(Number).filter(Number.isFinite);
+  if (a.length) { perfSet(t, 'chord.shape', a); perfSet(t, 'chord.type', 'custom'); perfChanged(t); }
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// STEP view: the selected clip as a step grid — rows are the kit's drums or the scale's degrees.
+// It edits the same pattern notes as the piano roll (no second model); pattern.steps keeps the
+// resolution, note.p a step's probability (seeded by track.perf.seed: live = bounce).
+// ═══════════════════════════════════════════════════════════════════
+const STEP = { on: false, len: 1, oct: {}, W: 36, H: 36, LBL: 84, TOP: 18, drag: null, edit: null, rows: [], st: 24, total: 16 };
+const STEP_RES = [8, 12, 16, 24, 32], STEP_LENS = [1, 2, 3, 4, 8];
+const stepRes = p => (STEP_RES.includes(p.steps) ? p.steps : 16);
+function drumName(inst, n) {
+  if (GM_NAMES[n]) return GM_NAMES[n];
+  const km = inst && Array.isArray(inst.keymap) && inst.keymap.find(k => k.key === n); if (km) return km.name;
+  const m = (inst && inst.map && inst.map[n]) || DAW.KIT_MAP[n]; return m ? m[0].replace(/_/g, ' ') : noteName(n);
+}
+function stepRows(t, p) {
+  if (isDrum(t)) {
+    const inst = E.devices.get(t.deviceId), extra = [...new Set(p.notes.map(n => n.n))].filter(n => !DRUM_ROWS.includes(n)).sort((a, b) => a - b);
+    STEP.curOct = null;
+    return [...DRUM_ROWS, ...extra].reverse().map(n => ({ n, label: drumName(inst, n) }));
+  }
+  const sc = DawPerf.scaleOf(P);
+  let oct = STEP.oct[t.id];
+  if (oct == null) { const ns = p.notes.map(n => n.n).sort((a, b) => a - b), med = ns.length ? ns[ns.length >> 1] : 60; oct = Math.max(0, Math.min(8, Math.floor((med - 4 - P.key) / 12) - 1)); }
+  STEP.curOct = oct;
+  const rows = [];
+  for (let d = 14; d >= 0; d--) { const n = SeqGen.deg2midi(P.key, sc, d, oct); if (n >= 0 && n <= 127) rows.push({ n, label: (d % 7 + 1) + ' · ' + noteName(n) }); }
+  return rows;
+}
+function drawStep() {
+  const cv = $('stepcv'), wrap = $('rollwrap'), r = window.devicePixelRatio || 1, cc = P && curClip();
+  if (!cc) {
+    cv.style.width = wrap.clientWidth + 'px'; cv.style.height = '60px'; cv.width = wrap.clientWidth * r; cv.height = 60 * r;
+    const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0); g.fillStyle = '#050304'; g.fillRect(0, 0, wrap.clientWidth, 60);
+    $('rolltitle').textContent = P ? 'STEP · select a clip (double-click an empty lane to make one)' : '';
+    return;
+  }
+  const { t, p } = cc, res = stepRes(p), st = BAR / res, total = p.lenBars * res, rows = stepRows(t, p), per = res / 4;
+  const W = STEP.W = Math.max(36, Math.floor((wrap.clientWidth - STEP.LBL - 4) / total)), H = STEP.H, L = STEP.LBL, T = STEP.TOP;
+  const w = L + total * W + 2, h = T + rows.length * H + 2;
+  cv.style.width = w + 'px'; cv.style.height = h + 'px';
+  if (cv.width !== Math.round(w * r) || cv.height !== Math.round(h * r)) { cv.width = Math.round(w * r); cv.height = Math.round(h * r); }
+  const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0);
+  g.fillStyle = '#050304'; g.fillRect(0, 0, w, h);
+  g.font = '9px "Courier New"';
+  for (let i = 0; i < total; i++) {
+    const x = L + i * W;
+    g.fillStyle = Math.floor(i / per) % 2 ? '#0e0908' : '#140e0b'; g.fillRect(x, T, W, rows.length * H);
+    if (i % per === 0) { g.fillStyle = i % res === 0 ? '#d8a060' : '#7a5828'; g.fillText(String(i % res + 1), x + 3, 12); }
+    g.fillStyle = i % res === 0 ? '#553318' : i % per === 0 ? '#2a1c12' : '#1a1410'; g.fillRect(x, T, 1, rows.length * H);
+  }
+  const rowOf = new Map();
+  rows.forEach((row, ri) => {
+    rowOf.set(row.n, ri);
+    const y = T + ri * H;
+    g.fillStyle = ri % 2 ? '#0e0908' : '#120c0a'; g.fillRect(0, y, L - 2, H - 1);
+    g.fillStyle = '#1a1410'; g.fillRect(L, y + H - 1, total * W, 1);
+    g.fillStyle = '#d8a060'; g.fillText(row.label, 4, y + H / 2 + 3);
+  });
+  let hidden = 0;
+  for (const x of p.notes) {
+    const ri = rowOf.get(x.n), i = Math.round(x.t / st);
+    if (ri === undefined || i >= total) { hidden++; continue; }
+    const cx = L + i * W, cy = T + ri * H, prob = x.p ?? 1;
+    const tail = L + Math.min(total * W, (x.t + x.d) / st * W);
+    if (tail > cx + W + 1) { g.fillStyle = t.color; g.globalAlpha = 0.4; g.fillRect(cx + W - 3, cy + H / 2 - 3, tail - cx - W, 6); g.globalAlpha = 1; }
+    g.fillStyle = t.color; g.globalAlpha = 0.22; g.fillRect(cx + 3, cy + 3, W - 6, H - 6);
+    g.globalAlpha = prob < 1 ? 0.55 : 1; const vh = (H - 8) * x.v; g.fillRect(cx + 4, cy + H - 4 - vh, W - 8, vh); g.globalAlpha = 1;
+    g.strokeStyle = prob < 1 ? '#ffd896' : t.color; g.lineWidth = 1.5; if (prob < 1) g.setLineDash([3, 2]);
+    g.strokeRect(cx + 3.5, cy + 3.5, W - 7, H - 7); g.setLineDash([]);
+    if (prob < 1) { g.fillStyle = '#ffd896'; g.fillText(Math.round(prob * 100) + '%', cx + 5, cy + 12); }
+  }
+  const tk = E.tickNow(), cs = cc.c.bar * BAR, ce = cs + (cc.c.bars || p.lenBars) * BAR, len = p.lenBars * BAR;
+  if (E.playing && tk >= cs && tk < ce) { const i = Math.floor(((tk - cs) % len) / st); g.strokeStyle = '#ffd896'; g.lineWidth = 1; g.strokeRect(L + i * W + 0.5, T + 0.5, W - 1, rows.length * H - 1); }
+  STEP.rows = rows; STEP.st = st; STEP.total = total;
+  $('rolltitle').textContent = 'STEP · ' + t.name + ' · ' + p.name + ' · ' + p.lenBars + ' bar' + (p.lenBars > 1 ? 's' : '') + (isDrum(t) ? ' · kit' : ' · ' + SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode) + (hidden ? ' · ' + hidden + ' note' + (hidden > 1 ? 's' : '') + ' off these rows (piano roll)' : '');
+  $('s-res').textContent = res + ' / BAR'; $('s-len').textContent = 'LEN ' + STEP.len;
+  $('s-octd').disabled = $('s-octu').disabled = isDrum(t);
+  $('plen').value = String(p.lenBars);
+  const key = t.id + '/' + cc.c.pid;
+  if (STEP.shown !== key) {          // a newly shown clip scrolls to its notes
+    STEP.shown = key;
+    const idx = p.notes.map(n => rowOf.get(n.n)).filter(i => i !== undefined).sort((a, b) => a - b);
+    wrap.scrollTop = idx.length ? Math.max(0, T + idx[idx.length >> 1] * H - wrap.clientHeight / 2) : (isDrum(t) ? wrap.scrollHeight : 0);
+  }
+}
+function stepHit(ev) {
+  const r = $('stepcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  const i = Math.floor((x - STEP.LBL) / STEP.W), ri = Math.floor((y - STEP.TOP) / STEP.H), row = y >= STEP.TOP ? STEP.rows[ri] : null;
+  return { i, row, ok: !!row && x >= STEP.LBL && i >= 0 && i < STEP.total };
+}
+const stepNotes = (p, i, n) => p.notes.filter(x => x.n === n && Math.round(x.t / STEP.st) === i);
+function stepEdited() { drawRoll(); drawArr(); saveSoon(); }
+function stepToggle(h) {
+  const cc = curClip(); if (!cc || !h.ok) return;
+  const cur = stepNotes(cc.p, h.i, h.row.n);
+  if (cur.length) cc.p.notes = cc.p.notes.filter(x => !cur.includes(x));
+  else {
+    const d = Math.min(STEP.len, STEP.total - h.i) * STEP.st;
+    cc.p.notes.push({ t: h.i * STEP.st, d, n: h.row.n, v: 0.8 }); cc.p.notes.sort((a, b) => a.t - b.t);
+    previewNote(cc.t, h.row.n);
+  }
+  stepEdited();
+}
+// long-press / right-click: VEL · LEN · PROB for one step (an empty step is made first)
+function openStepEdit(ev) {
+  const cc = curClip(); if (!cc) return; const h = stepHit(ev); if (!h.ok) return;
+  if (!stepNotes(cc.p, h.i, h.row.n).length) stepToggle(h);
+  STEP.edit = { i: h.i, n: h.row.n, label: h.row.label };
+  renderStepEdit(ev.clientX, ev.clientY);
+}
+function closeStepEdit() { STEP.edit = null; $('stepedit').classList.remove('show'); }
+function renderStepEdit(x, y) {
+  const box = $('stepedit'), cc = curClip(), S = STEP.edit; if (!cc || !S) return closeStepEdit();
+  const ns = stepNotes(cc.p, S.i, S.n); if (!ns.length) return closeStepEdit();
+  const v = ns[0].v, len = Math.max(1, Math.round(ns[0].d / STEP.st)), pr = ns[0].p ?? 1;
+  box.innerHTML = `<div class="seg"><b style="flex:1;text-align:left">STEP ${S.i + 1} · ${esc(S.label)}</b><button class="dim" data-se="close">✕</button></div>
+    <div class="seg"><i>VEL</i><button class="dim" data-se="vel" data-v="-0.1">−</button><b id="se-vel">${Math.round(v * 100)}%</b><button class="dim" data-se="vel" data-v="0.1">+</button></div>
+    <div class="seg"><i>LEN</i><button class="dim" data-se="len" data-v="-1">−</button><b id="se-len">${len} step${len > 1 ? 's' : ''}</b><button class="dim" data-se="len" data-v="1">+</button></div>
+    <div class="seg"><i>PROB</i>${[1, 0.75, 0.5, 0.25, 0.1].map(q => `<button class="${Math.abs(pr - q) < 1e-6 ? 'on' : 'dim'}" data-se="prob" data-v="${q}">${Math.round(q * 100)}%</button>`).join('')}</div>
+    <div class="seg"><button class="dim" data-se="del">DELETE STEP</button></div>`;
+  if (x !== undefined) {
+    box.style.left = Math.max(4, Math.min(window.innerWidth - 310, x - 150)) + 'px';
+    box.style.top = (y + 250 < window.innerHeight ? y + 24 : Math.max(4, y - 240)) + 'px';
+  }
+  box.classList.add('show');
+}
+$('stepedit').addEventListener('click', e => {
+  const b = e.target.closest('button'), cc = curClip(), S = STEP.edit; if (!b) return;
+  if (!cc || !S || b.dataset.se === 'close') return closeStepEdit();
+  const ns = stepNotes(cc.p, S.i, S.n), v = +b.dataset.v, a = b.dataset.se;
+  if (a === 'del') { cc.p.notes = cc.p.notes.filter(q => !ns.includes(q)); closeStepEdit(); stepEdited(); return; }
+  for (const q of ns) {
+    if (a === 'vel') q.v = +Math.max(0.05, Math.min(1, q.v + v)).toFixed(3);
+    else if (a === 'len') q.d = Math.max(1, Math.min(STEP.total - S.i, Math.round(q.d / STEP.st) + v)) * STEP.st;
+    else if (a === 'prob') { if (v >= 1) delete q.p; else q.p = v; }
+  }
+  stepEdited(); renderStepEdit();
+});
+// mouse right-click opens the step editor (before the gesture sees the press)
+$('stepcv').addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button === 2) { e.stopImmediatePropagation(); e.preventDefault(); openStepEdit(e); } });
+// tap / click: step on / off · drag a step up / down: velocity · long-press: the step editor · drag empty: scroll
+TouchControls.gesture($('stepcv'), {
+  mouse: true, scroller: $('rollwrap'),
+  grab: ev => {
+    const cc = curClip(); if (!cc) return false; const h = stepHit(ev); if (!h.ok) return false;
+    const ns = stepNotes(cc.p, h.i, h.row.n); if (!ns.length) return false;
+    STEP.drag = { ns, y0: ev.clientY, v0: ns[0].v, moved: false }; return true;
+  },
+  move: ev => { const d = STEP.drag; if (!d) return; d.moved = true; const v = Math.max(0.05, Math.min(1, d.v0 + (d.y0 - ev.clientY) / 120)); d.ns.forEach(n => { n.v = +v.toFixed(3); }); drawStep(); },
+  end: () => { const d = STEP.drag; STEP.drag = null; if (d && d.moved) stepEdited(); },
+  tap: ev => { closeStepEdit(); stepToggle(stepHit(ev)); },
+  longPress: ev => { STEP.drag = null; openStepEdit(ev); },
+});
+$('r-step').addEventListener('click', () => { STEP.on = !STEP.on; closeStepEdit(); drawRoll(); });
+$('s-res').addEventListener('click', () => { const cc = curClip(); if (!cc) return; cc.p.steps = STEP_RES[(STEP_RES.indexOf(stepRes(cc.p)) + 1) % STEP_RES.length]; closeStepEdit(); stepEdited(); });
+$('s-len').addEventListener('click', () => { STEP.len = STEP_LENS[(STEP_LENS.indexOf(STEP.len) + 1) % STEP_LENS.length]; drawRoll(); });
+const stepOct = k => () => { const cc = curClip(); if (!cc || isDrum(cc.t) || STEP.curOct == null) return; STEP.oct[cc.t.id] = Math.max(0, Math.min(8, STEP.curOct + k)); closeStepEdit(); drawRoll(); };
+$('s-octd').addEventListener('click', stepOct(-1)); $('s-octu').addEventListener('click', stepOct(1));
+$('s-seed').addEventListener('click', () => { const cc = curClip(); if (!cc) return; perfSet(cc.t, 'seed', 1 + Math.floor(Math.random() * 99998)); renderPerf(); stepEdited(); });
+
+// ═══════════════════════════════════════════════════════════════════
+// keys: transport, computer keyboard, FM-1 / MIDI keyboard
+// ═══════════════════════════════════════════════════════════════════
+const KB = { z: 0, s: 1, x: 2, d: 3, c: 4, v: 5, g: 6, b: 7, h: 8, n: 9, j: 10, m: 11, q: 12, 2: 13, w: 14, 3: 15, e: 16, r: 17, 5: 18, t: 19, 6: 20, y: 21, 7: 22, u: 23 };
+let kbOct = 4; const kbHeld = new Set();
+window.addEventListener('keydown', e => {
+  if (!P) return;
+  const tag = (e.target.tagName || '').toUpperCase(); if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+  if (e.repeat) return;
+  const k = e.key.toLowerCase();
+  if (k === ' ') { e.preventDefault(); E.playing || E._rplay ? E.stop() : E.playAuto(); return; }       // space toggles: it can cancel a wait
+  if (k === 'r' && e.shiftKey) { $('rec').click(); return; }
+  if (k === 'l' && !e.ctrlKey) { $('loopbtn').click(); return; }
+  if (e.key === 'Delete' || e.key === 'Backspace') {
+    const cc = curClip();
+    if (cc && roll.selNotes.size) { cc.p.notes = cc.p.notes.filter(n => !roll.selNotes.has(n)); roll.selNotes.clear(); drawRoll(); drawArr(); saveSoon(); }
+    else if (sel.clip >= 0) { const t = E.track(sel.trackId); if (t) { (t.kind === 'midi' ? t.clips : t.audio).splice(sel.clip, 1); sel.clip = -1; drawArr(); drawRoll(); saveSoon(); } }
+    return;
+  }
+  if (k === 'd' && e.ctrlKey) { e.preventDefault(); const t = E.track(sel.trackId); if (t && t.kind === 'midi' && t.clips[sel.clip]) { const c = t.clips[sel.clip], p = t.patterns[c.pid]; t.clips.push({ bar: c.bar + (c.bars || p.lenBars), pid: c.pid, bars: c.bars }); sel.clip = t.clips.length - 1; drawArr(); saveSoon(); } return; }
+  if (k === 'z' && e.shiftKey) { kbOct = Math.max(1, kbOct - 1); return; }
+  if (k === 'x' && e.shiftKey) { kbOct = Math.min(7, kbOct + 1); return; }
+  const off = KB[k];
+  if (off === undefined || e.ctrlKey || e.metaKey || e.altKey) return;
+  const n = 12 * (kbOct + 1) + off; if (kbHeld.has(n)) return; kbHeld.add(n);
+  if (sel.trackId) E.liveNote(sel.trackId, n, 0.8, true);
+});
+window.addEventListener('keyup', e => {
+  const k = e.key.toLowerCase(), off = KB[k]; if (off === undefined) return;
+  const n = 12 * (kbOct + 1) + off; if (!kbHeld.delete(n)) return;
+  if (sel.trackId) E.liveNote(sel.trackId, n, 0, false);
+});
+window.addEventListener('midiinput-note', e => {
+  if (!P || !sel.trackId) return;
+  const t = E.track(sel.trackId), d = t && E.dev(t.deviceId);
+  // it already sounds on the synth — unless a PERF chain is on: then the processed notes go out (set the synth's local control off)
+  if (d && d.type === 'hw' && !E.perfActive(t)) { if (E.recording && t.arm) E.recordMidi(t, e.detail.note, e.detail.vel, e.detail.on, E.recNow()); return; }
+  E.liveNote(sel.trackId, e.detail.note, e.detail.vel, e.detail.on);
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// generator
+// ═══════════════════════════════════════════════════════════════════
+$('g-dice').addEventListener('click', () => { $('g-seed').value = Math.floor(Math.random() * 1e6); });
+// composition, arrangement, rendering and take staging live in temp_maker.js (shared with the AUDIO DIRECTOR)
+const TM = TempMaker, { ROLE_ORDER, ROLE_LEVEL } = TM;
+async function generate(opts) {
+  if (P.tracks.length && !(opts && opts.force) && !confirm('Replace this project\'s tracks with a generated song?')) return;
+  E.stop();
+  const o = Object.assign({
+    seed: +$('g-seed').value || 1, style: $('g-style').value, form: $('g-form').value,
+    key: $('g-key').value === '' ? undefined : +$('g-key').value, mode: $('g-mode').value || undefined,
+    bpm: +$('g-bpm').value || undefined, density: +$('g-dens').value,
+  }, opts || {});
+  delete o.force;
+  const inst = $('g-inst').value, rt = { patch: inst === 'patch' };
+  song = await TM.compose(E, o, inst); P = E.project;
+  sel = { trackId: P.tracks[0] && P.tracks[0].id, clip: 0 };
+  if (rt.patch) { msg('g-msg', 'loading instruments from the PATCH BANK (first time downloads them)…'); E.whenReady().then(() => { msg('g-msg', 'instruments ready — ▶ to listen.'); renderCredits(); }); }
+  $('g-info').textContent = song.styleName + ' · ' + song.keyName + ' ' + song.mode + ' · ' + song.bpm + ' BPM · ' + song.progressionText + ' · ' + song.bars + ' bars';
+  msg('g-msg', 'generated (seed ' + song.seed + '). ▶ to listen · edit anything · EXPORT → BOUNCE.');
+}
+$('g-go').addEventListener('click', () => generate());
+async function reroll(role) {
+  if (!song) { msg('g-msg', 'GENERATE first.', true); return; }
+  const t = P.tracks.find(x => x.role === role); if (!t) return;
+  const p = SeqGen.part(role, song, { seed: Math.floor(Math.random() * 1e9), density: +$('g-dens').value });
+  t.patterns = p.patterns; t.clips = p.clips; song.parts[role] = p;
+  sel = { trackId: t.id, clip: 0 }; E.emit('project');
+  msg('g-msg', role + ' re-rolled.');
+}
+document.querySelectorAll('[data-reroll]').forEach(b => b.addEventListener('click', () => reroll(b.dataset.reroll)));
+
+// game catalog
+// The MusicDirector's briefs (python3 godot/tools/music_direction.py brief → resources/music/temp_briefs.json):
+// which catalog tracks the VN scenes actually play, how often, and how intense / dark those scenes read.
+let briefs = null;
+async function loadBriefs() {
+  try { const j = JSON.parse(await AK.game.readText('resources/music/temp_briefs.json')); briefs = Object.fromEntries((j.tracks || []).map(b => [b.id, b])); }
+  catch (e) { briefs = null; }
+}
+const briefOf = t => (briefs && $('g-vnfirst').checked && briefs[t.id]) || null;
+const moodOf = t => SeqGen.moodFromBrief(t, briefOf(t));
+function orderWanted() {
+  let list = $('g-musiconly').checked ? wanted.slice().sort((a, b) => a.fieldScore - b.fieldScore) : wanted.slice();
+  if (briefs && $('g-vnfirst').checked) {     // tracks the scenes play, most-played first; the rest keep their order after
+    const n = t => (briefs[t.id] ? briefs[t.id].scene_count : 0);
+    list = list.map((t, i) => [t, i]).sort((a, b) => n(b[0]) - n(a[0]) || a[1] - b[1]).map(x => x[0]);
+  }
+  return list;
+}
+async function refreshWanted() {
+  if (!AK.game.root) return;
+  try { wanted = await AK.game.wanted(); } catch (e) { $('g-wanted').innerHTML = '<div class="note">catalog unreadable: ' + esc(e.message) + '</div>'; return; }
+  await loadBriefs();
+  const list = orderWanted();
+  $('g-wanted').innerHTML = '';
+  for (const t of list) {
+    const m = moodOf(t), b = briefOf(t);
+    const d = document.createElement('div'); d.className = 'item';
+    d.innerHTML = `<b>${esc(t.title)}</b> · v${t.vol} · <span style="color:var(--emerald-hi)">${esc(SeqGen.STYLES[m.style].name)} / ${m.form} · ${m.mode} ${m.bpm}</span>` +
+      (b ? `<br><span class="note" style="color:var(--gold-hi)">♪ ${esc(m.why)}${b.chars.length ? ' · theme: ' + esc(b.chars.join(', ')) : ''}</span>` : '') +
+      `<br><span class="note">${esc((t.desc || '').slice(0, 120))}</span>`;
+    d.addEventListener('click', () => {
+      [...$('g-wanted').children].forEach(c => c.classList.toggle('sel', c === d)); tempPick = t;
+      $('g-style').value = m.style; $('g-form').value = m.form; $('g-mode').value = m.mode; $('g-key').value = ''; $('g-bpm').value = b ? m.bpm : 0;
+      $('g-seed').value = m.seed; $('g-dens').value = m.density;
+      P.name = t.id; $('pname').value = t.id;
+      if (![...$('b-target').options].some(o => o.value === t.id)) $('b-target').add(new Option('fill: ' + t.title, t.id));
+      $('b-target').value = t.id;
+      msg('g-msg', 'set from "' + t.title + '" — GENERATE, then EXPORT → BOUNCE → INTO GAME.');
+    });
+    $('g-wanted').appendChild(d);
+  }
+  $('b-target').innerHTML = '<option value="">assets/audio/daw/…</option>' + wanted.map(t => `<option value="${t.id}">fill: v${t.vol} ${esc(t.title)}</option>`).join('');
+}
+// TEMP TRACKS: for each catalog entry with no audio — compose from its brief, render offline, master and stage a
+// CANDIDATE TAKE in assets/audio/review/<track id>/<take id>/ (temp_maker.js — the AUDIO DIRECTOR makes takes with the
+// same code). The director previews, approves (→ small Ogg Vorbis where AudioMgr looks) or rejects them. "straight into
+// game (skip review)" writes the Ogg directly. Real audio (the .ogg / .mp3 src, or a recorded <src base>.wav) always wins.
+let tempPick = null;
+// make `takes` takes for each catalog track in `list`. req: { takes, review, stems, opts, useBriefs }
+async function makeTakes(list, req) {
+  if (!briefs) await loadBriefs();
+  $('g-temp').disabled = true;
+  let done = [];
+  try {
+    done = await TM.makeTakes(E, list, req, { briefs, inst: $('g-inst').value, master: $('b-master').checked, lufs: +$('b-lufs').value, stems: $('g-tempstems').checked,
+      onEvent: ev => { if (ev.type === 'progress') msg('g-tempmsg', ev.text); } });
+  } finally { $('g-temp').disabled = false; }
+  P = E.project; if (done.song) song = done.song;
+  sel = { trackId: P.tracks[0] && P.tracks[0].id, clip: 0 }; $('pname').value = P.name; E.emit('project');
+  const last = [...done].reverse().find(d => d.render);
+  if (last) { lastBounce = last.render; lastStems = last.render.stems; lastCredits = last.credits; }
+  window.lastTempTracks = done.map(d => { const x = Object.assign({}, d); delete x.render; delete x.credits; return x; });
+  const review = req.review !== false, ok = done.filter(d => !d.error);
+  msg('g-tempmsg', (review ? 'staged ' + ok.length + '/' + done.length + ' take(s) for review: ' : 'wrote ' + ok.length + '/' + done.length + ' temp track(s) into the game: ') +
+    ok.map(d => d.id + ' (' + d.style + ', ' + d.sec.toFixed(1) + ' s' + (d.take ? ', seed ' + d.seed : '') + ')').join(' · ') +
+    (ok.length < done.length ? ' — failed: ' + done.filter(d => d.error).map(d => d.id + ': ' + d.error).join('; ') : '') +
+    (review ? ' · approve or reject them in the AUDIO DIRECTOR (audio_director.html)' : ' · music stays out of git: back it up with godot/tools/music_drive.sh push'), ok.length < done.length);
+  return window.lastTempTracks;
+}
+async function tempTracks() {
+  if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { msg('g-tempmsg', 'link the game folder first.', true); return; }
+  if (!wanted.length) await refreshWanted();
+  const list = tempPick ? [tempPick] : orderWanted().slice(0, Math.max(1, +$('g-tempn').value || 1));
+  if (!list.length) { msg('g-tempmsg', 'every catalog track already has audio.'); return; }
+  if (P.tracks.length && !confirm('Temp tracks replace the open project for each track (it stays undoable). Go?')) return;
+  await makeTakes(list, { takes: 1, review: !$('g-skipreview').checked, useBriefs: $('g-vnfirst').checked });
+  tempPick = null; refreshWanted();
+}
+$('g-temp').addEventListener('click', tempTracks);
+$('g-link').addEventListener('click', async () => { try { await AK.game.link(); refreshWanted(); } catch (e) { if (e.name !== 'AbortError') msg('g-msg', e.message || String(e), true); } });
+$('g-musiconly').addEventListener('change', refreshWanted);
+$('g-vnfirst').addEventListener('change', refreshWanted);
+AK.game.restore(false).then(h => { if (h) refreshWanted(); }).catch(() => {});
+
+// ═══════════════════════════════════════════════════════════════════
+// devices
+// ═══════════════════════════════════════════════════════════════════
+document.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', async () => {
+  const [type, emuId] = b.dataset.add.split(':');
+  const name = type === 'emu' ? emuId.toUpperCase() : type === 'hw' ? 'FM-1 HW' : type.toUpperCase() + ' ' + (P.devices.filter(d => d.type === type).length + 1);
+  const d = await E.addDevice(type === 'forge' && typeof ForgeSynth !== 'function' ? 'basic' : type, { name, emuId, preset: type === 'forge' ? 'keys_ep' : undefined });
+  if (type === 'emu' || type === 'hw') d.clock = true;
+  const t = E.track(sel.trackId); if (t && t.kind === 'midi' && confirm('Play the selected track "' + t.name + '" on ' + name + '?')) { t.deviceId = d.id; }
+  E.emit('project');
+  if (d.type === 'forge') openForgePicker(d);
+}));
+function renderDevices() {
+  const L = $('devlist'); L.innerHTML = '';
+  for (const d of P.devices) {
+    const users = P.tracks.filter(t => t.deviceId === d.id).map(t => t.name + (d.type === 'emu' || d.type === 'hw' ? '·' + t.channel : ''));
+    const div = document.createElement('div'); div.className = 'item';
+    const pst = d.type === 'patch' ? patchStatus(d) : '';
+    div.innerHTML = `<b>${esc(d.name)}</b> · ${d.type === 'patch' ? 'patch bank' : d.type}${d.emuId ? ' ' + d.emuId : ''}${d.preset ? ' · ' + d.preset : ''}${pst ? ' · <span style="color:var(--amber)">' + esc(pst) + '</span>' : ''}<br><span class="note">${users.length ? 'plays: ' + esc(users.join(', ')) : 'unused'}</span>
+      <div class="row">${d.type === 'forge' || d.type === 'kit' || d.type === 'patch' ? '<button class="dim" data-a="edit">EDITOR</button>' : ''}${d.type === 'patch' ? '<button class="dim" data-a="swap">CHANGE…</button>' : ''}${d.type === 'emu' ? '<button class="dim" data-a="panel">FM-1 PANEL</button>' : ''}
+      ${d.type === 'emu' || d.type === 'hw' ? `<label style="cursor:pointer"><input type="checkbox" data-a="clock" ${d.clock ? 'checked' : ''}> clock → device</label>` : ''}<button class="dim" data-a="rm">✕</button></div>`;
+    div.addEventListener('click', e => {
+      const a = e.target.dataset.a;
+      if (a === 'edit') openEditor(d);
+      else if (a === 'panel') openPanel(d);
+      else if (a === 'swap') openPatchPicker(it => E.setPatch(d.id, it.uid, it.name).then(renderCredits));
+      else if (a === 'clock') { d.clock = e.target.checked; saveSoon(); }
+      else if (a === 'rm') { if (confirm('Remove ' + d.name + '?')) E.removeDevice(d.id); }
+    });
+    L.appendChild(div);
+  }
+  renderDevDetail();
+}
+function renderDevDetail() {
+  const box = $('devdetail'), t = P && E.track(sel.trackId);
+  if (!t) { box.innerHTML = '<div class="note">select a track.</div>'; return; }
+  if (t.kind === 'audio') { box.innerHTML = '<div class="note">audio track — record into it (arm ●, pick an INPUT under EXPORT) or add clips from the library.</div>'; return; }
+  const d = E.dev(t.deviceId);
+  const presets = (window.FORGE_PRESETS || []);
+  box.innerHTML = `<div class="row"><label>NAME</label><input type="text" id="dd-name" value="${esc(t.name)}" style="flex:1"></div>
+    <div class="row"><label>DEVICE</label><select id="dd-dev" style="flex:1"><option value="">—</option>${P.devices.map(x => `<option value="${x.id}" ${x.id === t.deviceId ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></div>
+    ${d && (d.type === 'emu' || d.type === 'hw') ? `<div class="row"><label>CHANNEL</label><input type="number" id="dd-ch" min="1" max="16" value="${t.channel}"><span class="note">${d.type === 'emu' && d.emuId === 'x0x' ? '909 ch10 · 808 ch11 · 303s ch2/3 · break ch4' : 'Felucca family: bass 1 · chords 2 · lead 3 · drums 4 (Felucca) / 10'}</span></div>` : ''}
+    ${d && d.type === 'forge' && presets.length ? `<div class="row"><label>PRESET</label><button id="dd-preset" class="pick" title="browse ${presets.length} FORGE presets: search, categories, styles — tap to load and hear">${esc(forgePresetLabel(d))} ▾</button></div>` : ''}
+    ${d && d.type === 'patch' ? `<div class="row"><label>PATCH</label><span style="flex:1;color:var(--gold-hi)">${esc(d.name)}</span><button class="dim" id="dd-swap">CHANGE…</button></div><div class="note" id="dd-credit"></div>${E.devices.get(d.id) && E.devices.get(d.id).keymap ? '<div class="note">kit keys: ' + E.devices.get(d.id).keymap.slice(0, 24).map(k => SeqGen.NOTE_NAMES[k.key % 12] + (Math.floor(k.key / 12) - 1) + ' ' + esc(k.name)).join(' · ') + '</div>' : ''}` : ''}
+    <div class="row"><label>VELOCITY</label><input type="range" id="dd-vel" min="0.2" max="1.5" step="0.01" value="${t.vel ?? 1}"></div>
+    ${d && d.type === 'hw' ? `<div class="row"><label>RETURN</label><select id="dd-ret" style="flex:1"><option value="">— no audio back —</option></select></div><div class="note">pick the FM-1's USB audio ("Felucca" on Felucca-family firmwares) to hear and bounce it here.</div>` : ''}
+    <div class="row">${d && (d.type === 'forge' || d.type === 'kit' || d.type === 'patch') ? '<button id="dd-edit">OPEN EDITOR</button>' : ''}${d && d.type === 'emu' ? '<button id="dd-panel">OPEN FM-1 PANEL</button>' : ''}</div>`;
+  $('dd-name').addEventListener('change', e => { t.name = e.target.value; renderHeads(); saveSoon(); });
+  $('dd-dev').addEventListener('change', e => { t.deviceId = e.target.value || null; E.emit('project'); });
+  if ($('dd-ch')) $('dd-ch').addEventListener('change', e => { t.channel = Math.max(1, Math.min(16, +e.target.value || 1)); renderHeads(); saveSoon(); });
+  if ($('dd-preset')) $('dd-preset').addEventListener('click', () => openForgePicker(d));
+  $('dd-vel').addEventListener('input', e => { t.vel = +e.target.value; saveSoon(); });
+  if ($('dd-edit')) $('dd-edit').addEventListener('click', () => openEditor(d));
+  if ($('dd-panel')) $('dd-panel').addEventListener('click', () => openPanel(d));
+  if ($('dd-swap')) $('dd-swap').addEventListener('click', () => openPatchPicker(it => E.setPatch(d.id, it.uid, it.name).then(renderCredits)));
+  if ($('dd-credit') && typeof PatchBank !== 'undefined') PatchBank.credit(d.patch).then(c => { if (c && $('dd-credit')) $('dd-credit').textContent = c.line + ' — ' + c.licence + (c.game === 'free' ? '' : c.game === 'credit' ? ' (credit it)' : ' (share-alike)'); });
+  if ($('dd-ret')) AK.inputs.list().then(list => {
+    const s = $('dd-ret'); if (!s) return;
+    list.forEach(i => s.add(new Option((i.label || 'input') + (AK.inputs.hint(i.label) ? ' — ' + AK.inputs.hint(i.label) : ''), i.deviceId)));
+    const inst = E.devices.get(d.id); s.value = inst.returnDevice || '';
+    s.addEventListener('change', async () => { try { await inst.setReturn(s.value); saveSoon(); } catch (e) { msg('g-msg', 'audio return: ' + e.message, true); } });
+  });
+}
+// FORGE preset browser (ForgeSynth.mountBrowser): a tap loads the preset into the device and plays a short preview
+function forgePresetLabel(d) {
+  const p = (window.FORGE_PRESETS || []).find(x => x.id === d.preset);
+  return p ? p.name + ' · ' + p.category : 'custom patch';
+}
+function openForgePicker(d) {
+  if (typeof ForgeSynth !== 'function' || !ForgeSynth.mountBrowser) return;
+  if (mounted) { try { mounted.destroy(); } catch (e) {} mounted = null; }
+  $('modaltitle').textContent = d.name + ' · FORGE PRESETS — tap one to load it and hear it';
+  $('modal').classList.add('show');
+  const body = $('modalbody'); body.innerHTML = '<div id="fp-box" style="height:100%"></div>';
+  mounted = ForgeSynth.mountBrowser($('fp-box'), {
+    current: d.preset, title: 'FORGE · ' + (window.FORGE_PRESETS || []).length, onClose: closeModal,
+    onPick: id => {
+      const old = d.preset;
+      E.setPreset(d.id, id);
+      if (old && d.name.endsWith(' · ' + old)) d.name = d.name.slice(0, -old.length) + id;    // generated names follow the patch
+      saveSoon();
+      const inst = E.devices.get(d.id);
+      if (inst && E.ctx && inst.noteOn) { const t = E.ctx.currentTime + 0.03; ForgeSynth.previewNotes(id).forEach(n => { inst.noteOn(n, 0.75, t); inst.noteOff(n, t + 0.7); }); }
+    },
+  });
+}
+let mounted = null;
+function closeModal() { if (mounted) { try { mounted.destroy(); } catch (e) {} mounted = null; } $('modal').classList.remove('show'); $('modalbody').innerHTML = ''; E.snapshotStates(); saveSoon(); renderDevices(); }
+$('modalclose').addEventListener('click', closeModal);
+function openEditor(d) {
+  const inst = E.devices.get(d.id);
+  $('modaltitle').textContent = d.name + ' · ' + d.type.toUpperCase();
+  $('modal').classList.add('show');
+  if (d.type === 'kit') {
+    const box = $('modalbody'); box.innerHTML = '<div style="padding:10px" id="kitbox"></div>';
+    const kb = $('kitbox');
+    if (!inst.voices || !Object.keys(inst.voices).length) { kb.innerHTML = '<div class="note">FORGE not loaded — the kit uses the basic drum voices.</div>'; return; }
+    const ids = Object.keys(inst.voices);
+    kb.innerHTML = '<div class="row">' + ids.map(id => `<button class="dim" data-v="${id}">${id}</button>`).join('') + '</div><div id="kitedit" style="height:680px;position:relative"></div>';
+    kb.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => {
+      if (mounted) { try { mounted.destroy(); } catch (e) {} }
+      kb.querySelectorAll('[data-v]').forEach(x => x.classList.toggle('on', x === b));
+      mounted = inst.voices[b.dataset.v].mountEditor($('kitedit'));
+    }));
+    kb.querySelector('[data-v]').click();
+    return;
+  }
+  if (inst && inst.mountEditor) mounted = inst.mountEditor($('modalbody'));
+  else $('modalbody').innerHTML = '<div class="note" style="padding:10px">this device has no editor (FORGE not loaded?)</div>';
+}
+function openPanel(d) {
+  const inst = E.devices.get(d.id);
+  $('modaltitle').textContent = d.name + ' · FM-1 ' + (d.emuId || '') + ' (emulated)';
+  $('modal').classList.add('show');
+  if (inst && inst.mountPanel) mounted = inst.mountPanel($('modalbody'), { scale: 1 });
+  else $('modalbody').innerHTML = '<div class="note" style="padding:10px">the FM-1 emulator is not installed (vendor/fm1emu).</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// mixer
+// ═══════════════════════════════════════════════════════════════════
+// per strip: VOL / PAN / sends, then the insert chain (add · bypass · reorder · remove · parameters ·
+// presets) and sidechain ducking. Parameter sliders are 0..1 along each param's own curve (log for Hz / s).
+const mixUI = { open: new Set() };          // inserts with their parameter panel open (UI only, not saved)
+const DUCK_SPEC = {
+  amount: { min: 0, max: 1, def: 0.5, label: 'DEPTH', unit: '%' },
+  attack: { min: 0.0005, max: 0.1, curve: 'log', def: 0.005, label: 'ATK', unit: 's' },
+  release: { min: 0.02, max: 1.5, curve: 'log', def: 0.15, label: 'REL', unit: 's' },
+  thresh: { min: -60, max: 0, def: -10, label: 'THRESH', unit: 'dB' },
+};
+function fmtVal(sp, v) {
+  if (typeof v !== 'number') return String(v);
+  switch (sp.unit) {
+    case 'Hz': return v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 1 : 2) + 'k' : Math.round(v) + '';
+    case '%': return Math.round(v * 100) + '%';
+    case 'dB': return v.toFixed(1) + 'dB';
+    case 's': return v < 0.1 ? (v * 1000).toFixed(v < 0.01 ? 1 : 0) + 'ms' : v.toFixed(2) + 's';
+    case 'ms': return Math.round(v) + 'ms';
+    case ':1': return v.toFixed(1) + ':1';
+    default: return Math.abs(v) >= 100 ? Math.round(v) + '' : v.toFixed(2);
+  }
+}
+function paramRow(attr, k, sp, v) {
+  const lab = esc(sp.label || k.toUpperCase());
+  if (sp.opts) return `<span>${lab}</span><select ${attr}="${k}">${sp.opts.map(o => `<option ${o === v ? 'selected' : ''}>${o}</option>`).join('')}</select><span></span>`;
+  if (sp.bool) return `<span>${lab}</span><label style="cursor:pointer"><input type="checkbox" ${attr}="${k}" ${v ? 'checked' : ''}> on</label><span></span>`;
+  if (sp.pattern) return `<span>${lab}</span><input type="text" ${attr}="${k}" value="${esc(v)}" maxlength="16" style="font-size:10px"><span></span>`;
+  return `<span>${lab}</span><input type="range" min="0" max="1" step="0.001" value="${DawFX.toNorm(sp, v)}" data-default="${DawFX.toNorm(sp, sp.def)}" ${attr}="${k}"><span class="pv">${fmtVal(sp, v)}</span>`;
+}
+function fxPanel(f) {
+  const sp = DawFX.spec(f.type), np = DawFX.normParams(f.type, f.params), pre = DawFX.presets(f.type);
+  return `<div class="kv3">${Object.keys(sp).filter(k => !sp[k].hidden).map(k => paramRow('data-p', k, sp[k], np[k])).join('')}</div>` +
+    (pre.length ? `<div class="row"><select data-preset="1"><option value="">preset…</option>${pre.map((x, i) => `<option value="${i}">${esc(x.name)}</option>`).join('')}</select><button class="dim" data-f="reset" title="back to the defaults">INIT</button></div>` : '');
+}
+function renderMixer() {
+  const L = $('mixlist'); L.innerHTML = '';
+  const rows = [...P.devices.map(d => ({ id: d.id, name: d.name, mix: d.mix })), ...P.tracks.filter(t => t.kind === 'audio').map(t => ({ id: t.id, name: t.name + ' (audio)', mix: t.mix }))];
+  const hasFX = typeof DawFX !== 'undefined';
+  for (const r of rows) {
+    const s = document.createElement('div'); s.className = 'strip'; s.dataset.strip = r.id;
+    const fx = Array.isArray(r.mix.fx) ? r.mix.fx : [], dk = r.mix.duck;
+    s.innerHTML = `<div class="top"><b>${esc(r.name)}</b><span><button class="dim${r.mix.mute ? ' on' : ''}" data-k="mute">M</button> <button class="dim${r.mix.solo ? ' on' : ''}" data-k="solo">S</button></span></div>
+      <div class="kv"><span>VOL</span><input type="range" min="0" max="1.4" step="0.01" value="${r.mix.vol}" data-k="vol">
+      <span>PAN</span><input type="range" min="-1" max="1" step="0.01" value="${r.mix.pan}" data-k="pan" data-default="0">
+      <span>VERB</span><input type="range" min="0" max="1" step="0.01" value="${r.mix.sendA}" data-k="sendA">
+      <span>DLY</span><input type="range" min="0" max="1" step="0.01" value="${r.mix.sendB}" data-k="sendB"></div><canvas class="meter" data-meter="${r.id}"></canvas>` +
+      (hasFX ? `<div class="fxbox">
+        ${fx.map((f, i) => `<div class="fx${f.on === false ? ' off' : ''}" data-fx="${f.id}"><div class="fh"><button class="${f.on === false ? 'dim' : 'on'}" data-f="on" title="bypass">⏻</button><b data-f="open" title="parameters">${mixUI.open.has(f.id) ? '▾' : '▸'} ${esc(DawFX.label(f.type))}</b><button class="dim" data-f="up" ${i ? '' : 'disabled'} title="earlier in the chain">▲</button><button class="dim" data-f="down" ${i < fx.length - 1 ? '' : 'disabled'} title="later in the chain">▼</button><button class="dim" data-f="rm" title="remove">✕</button></div>${mixUI.open.has(f.id) ? fxPanel(f) : ''}</div>`).join('')}
+        <div class="row"><select data-a="addfx" style="flex:1"><option value="">+ INSERT FX…</option>${DawFX.TYPES.filter(x => DawFX.spec(x.id)).map(x => `<option value="${x.id}">${esc(x.label)}</option>`).join('')}</select></div>
+        <div class="row"><label style="min-width:40px">DUCK ←</label><select data-d="source" style="flex:1" title="sidechain: this strip dips when the source hits"><option value="">— off —</option>${rows.filter(x => x.id !== r.id).map(x => `<option value="${x.id}" ${dk && dk.source === x.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></div>
+        ${dk && dk.source ? `<div class="kv3">${Object.keys(DUCK_SPEC).map(k => paramRow('data-d', k, DUCK_SPEC[k], dk[k] ?? DUCK_SPEC[k].def)).join('')}</div>` : ''}
+      </div>` : '');
+    const fxOf = el => { const box = el.closest('[data-fx]'); return box && fx.find(f => f.id === box.dataset.fx); };
+    const label = (el, sp, v) => { const pv = el.parentElement && el.nextElementSibling; if (pv && pv.classList.contains('pv')) pv.textContent = fmtVal(sp, v); };
+    const onEdit = (e, ranges) => {
+      const el = e.target;
+      if (!ranges && el.type === 'range' && E.recording && ['vol', 'pan', 'sendA', 'sendB'].includes(el.dataset.k)) { E.recordAutoEnd(r.id, el.dataset.k); return; }   // let go: touch mode ends
+      if ((el.type === 'range') !== ranges) return;
+      const k = el.dataset.k;
+      if (k && ['vol', 'pan', 'sendA', 'sendB'].includes(k)) {
+        r.mix[k] = +el.value;
+        if (E.recording && E.recordAuto(r.id, k, +el.value)) drawArr();    // armed track + record = write automation
+        E.applyMix(); saveSoon(); return;
+      }
+      if (el.dataset.p) {
+        const f = fxOf(el); if (!f) return;
+        const sp = DawFX.spec(f.type)[el.dataset.p];
+        const v = el.type === 'range' ? DawFX.toValue(sp, +el.value) : el.type === 'checkbox' ? el.checked : el.value;
+        E.setFxParam(r.id, f.id, el.dataset.p, v); label(el, sp, v); saveSoon(); return;
+      }
+      if (el.dataset.d) {
+        if (el.dataset.d === 'source') { E.setDuck(r.id, el.value ? { source: el.value } : null); renderMixer(); saveSoon(); return; }
+        const sp = DUCK_SPEC[el.dataset.d], v = DawFX.toValue(sp, +el.value);
+        E.setDuck(r.id, { source: r.mix.duck.source, [el.dataset.d]: +v.toFixed(5) }); label(el, sp, v); saveSoon(); return;
+      }
+      if (el.dataset.a === 'addfx' && el.value) { const f = E.addFx(r.id, el.value); if (f) mixUI.open.add(f.id); renderMixer(); renderHeads(); saveSoon(); return; }
+      if (el.dataset.preset && el.value !== '') {
+        const f = fxOf(el), pr = f && DawFX.presets(f.type)[+el.value]; if (!pr) return;
+        f.params = DawFX.normParams(f.type, Object.assign(DawFX.defaults(f.type), pr.params)); E.applyMix(); renderMixer(); saveSoon();
+      }
+    };
+    s.addEventListener('input', e => onEdit(e, true));
+    s.addEventListener('change', e => onEdit(e, false));
+    s.addEventListener('click', e => {
+      const k = e.target.dataset.k;
+      if (k === 'mute' || k === 'solo') { r.mix[k] = !r.mix[k]; e.target.classList.toggle('on', r.mix[k]); E.applyMix(); saveSoon(); return; }
+      const fa = e.target.dataset.f, f = fa && fxOf(e.target); if (!f) return;
+      if (fa === 'on') { f.on = f.on === false; E.applyMix(); }
+      else if (fa === 'open') { if (mixUI.open.has(f.id)) mixUI.open.delete(f.id); else mixUI.open.add(f.id); }
+      else if (fa === 'up' || fa === 'down') E.moveFx(r.id, f.id, fa === 'up' ? -1 : 1);
+      else if (fa === 'rm') { E.removeFx(r.id, f.id); mixUI.open.delete(f.id); renderHeads(); drawArr(); }
+      else if (fa === 'reset') { f.params = DawFX.defaults(f.type); E.applyMix(); }
+      renderMixer(); if (fa !== 'open') saveSoon();
+    });
+    L.appendChild(s);
+  }
+}
+[['m-vol', 'vol'], ['m-verb', 'verbMix'], ['m-dmix', 'delayMix'], ['m-dfb', 'delayFb']].forEach(([id, k]) => $(id).addEventListener('input', () => { P.master[k] = +$(id).value; E.applyMaster(); saveSoon(); }));
+$('m-size').addEventListener('change', () => { P.master.verbSize = +$('m-size').value; E.applyMaster(); saveSoon(); });
+$('m-dtime').addEventListener('change', () => { P.master.delayBeats = +$('m-dtime').value; E.applyMaster(); saveSoon(); });
+
+// ═══════════════════════════════════════════════════════════════════
+// export / bounce / record
+// ═══════════════════════════════════════════════════════════════════
+// stems: one per generated role (drums / bass / chords / lead / pad), anything else one per track
+const STEM_LAYER = TM.STEM_LAYER;                 // the game's intensity layers per stem (temp_maker.js)
+function stemGroups() {
+  const g = new Map();
+  for (const t of P.tracks) {
+    const hasContent = t.kind === 'midi' ? t.clips.length : t.audio.length; if (!hasContent) continue;
+    const key = t.role || ('t_' + AK.util.slug(t.name));
+    if (!g.has(key)) g.set(key, { name: t.role || AK.util.slug(t.name), role: t.role || '', trackIds: [] });
+    g.get(key).trackIds.push(t.id);
+  }
+  return [...g.values()];
+}
+const sumChannels = list => { const n = Math.max(...list.map(r => r.channels[0].length)); const o = [new Float32Array(n), new Float32Array(n)]; for (const r of list) for (let c = 0; c < 2; c++) { const d = r.channels[c]; for (let i = 0; i < d.length; i++) o[c][i] += d[i]; } return o; };
+async function masterIt(r) {
+  if (!$('b-master').checked) return r;
+  const m = await AK.dsp.master(r.channels, r.sampleRate, { lufs: +$('b-lufs').value, truePeak: -1.5 });
+  return Object.assign({}, r, { channels: m.channels, mastered: m });
+}
+let lastStems = null;
+async function doBounce(loop, stems) {
+  if (!P.tracks.length) { msg('b-msg', 'nothing to bounce.', true); return; }
+  const from = loop ? P.loop.a : 0, to = loop ? P.loop.b : E.songBars();
+  const secs = (to - from) * BAR * E.spt() * (loop ? 2 : 1), offline = E.canRenderOffline();
+  msg('b-msg', 'bouncing ' + (to - from) + ' bars ' + (offline ? 'offline…' : 'in real time (' + Math.round(secs + 2) + ' s — an FM-1 emulator / hardware track is playing)…'));
+  $('b-song').disabled = $('b-loop').disabled = $('b-stems').disabled = true;
+  try {
+    const t0 = performance.now();
+    let r;
+    lastStems = null;
+    if (stems) {
+      if (!offline) throw new Error('stems need every track on FORGE / KIT / PATCH BANK (emulator and hardware tracks render in real time only)');
+      const parts = await E.renderStems({ groups: stemGroups(), fromBar: from, toBar: to, loop, onProgress: p => msg('b-msg', 'stems: ' + p.done + ' of ' + p.total + ' done' + (p.finished ? ' (' + p.name + ')' : '') + '…') });
+      // master the sum; every stem gets the same gain and the same limiter curve → they still add up
+      // to the mastered mix exactly, so the game's layered version is as loud as the stereo one
+      const sum = sumChannels(parts), sr = parts[0].sampleRate;
+      let mixCh = sum, stats = null, stemCh = parts.map(p => p.channels);
+      if ($('b-master').checked) {
+        stats = await AK.dsp.master(sum, sr, { lufs: +$('b-lufs').value, truePeak: -1.5, stems: stemCh });
+        mixCh = stats.channels; stemCh = stats.stems;
+      }
+      lastStems = parts.map((p, i) => Object.assign(p, { channels: stemCh[i] }));
+      r = Object.assign({}, parts[0], { channels: mixCh, mastered: stats });
+    } else r = await masterIt(await E.bounce({ fromBar: from, toBar: to, loop }));
+    r.renderMs = Math.round(performance.now() - t0);
+    lastBounce = r;
+    const name = (P.name || 'daw') + (loop ? ' loop' : ' song');
+    lastCredits = await E.credits();
+    await AK.lib.put({ kind: 'daw-bounce', name: name + ' · ' + AK.util.stamp(), sampleRate: r.sampleRate, loop: r.loop, meta: { title: name, bpm: P.bpm, tags: ['daw', loop ? 'loop' : 'song'], key: SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode, comment: lastCredits.text || undefined, credits: lastCredits.text || undefined } }, r.channels);
+    const pk = AK.util.db(AK.util.peakOf(r.channels));
+    const mst = r.mastered ? ' · ' + r.mastered.after.toFixed(1) + ' LUFS · ' + r.mastered.truePeak.toFixed(1) + ' dBTP' : ' · peak ' + pk.toFixed(1) + ' dBFS';
+    msg('b-msg', 'bounced ' + AK.util.fmtTime(r.channels[0].length / r.sampleRate) + mst + (r.loop ? ' · seamless loop' : '') + (lastStems ? ' · ' + lastStems.length + ' stems (' + lastStems.map(x => x.name).join(', ') + ')' : '') + ' in ' + (r.renderMs / 1000).toFixed(1) + ' s' + (r.offline ? ' (offline)' : '') + ' → library.');
+    $('b-dl').disabled = $('b-game').disabled = false;
+  } catch (e) { msg('b-msg', 'bounce failed: ' + (e.message || e), true); }
+  $('b-song').disabled = $('b-loop').disabled = $('b-stems').disabled = false;
+}
+// a render's stems as AK.game.writeMusic wants them
+const musicStems = (r, stems) => (stems || []).map(st => ({ name: st.name, role: st.role || '', layer: STEM_LAYER[st.name] ?? 0, pcm: { channels: st.channels, sampleRate: st.sampleRate || r.sampleRate } }));
+// a hand-made bounce for a catalog track whose src is .mp3 (no MP3 encoder here): the old WAV write, real audio —
+// <base>.wav · <base>.stems/<part>.wav · <base>.stems.json
+async function writeWavToGame(base, r, stems, credits, meta) {
+  const enc = (chs, extra) => AK.wav.encode(chs, r.sampleRate, { bitDepth: 16, loop: r.loop, meta: Object.assign({ title: meta.title, description: meta.title, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: credits.text ? 'Instruments: ' + credits.text.replace(/\n/g, '; ') : undefined }, extra || {}) });
+  await AK.game.write(base + '.wav', enc(r.channels));
+  const written = [base + '.wav'];
+  if (stems && stems.length) {
+    const dir = base + '.stems/';
+    const man = { v: 1, title: meta.title, bpm: P.bpm, bars: r.bars, length_sec: +(r.channels[0].length / r.sampleRate).toFixed(3), loop: !!r.loop,
+      lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: credits.text || '', mix: base + '.wav', stems: [] };
+    for (const st of stems) {
+      const f = dir + AK.util.slug(st.name) + '.wav';
+      await AK.game.write(f, enc(st.channels, { title: meta.title + ' · ' + st.name }));
+      man.stems.push({ name: st.name, role: st.role || '', file: f, layer: STEM_LAYER[st.name] ?? 0 });
+      written.push(f);
+    }
+    await AK.game.write(base + '.stems.json', new Blob([JSON.stringify(man, null, 1)], { type: 'application/json' }));
+    written.push(base + '.stems.json');
+  }
+  if (credits.worst !== 'free') { await AK.game.write(base + '.wav.credits.txt', new Blob([credits.text + '\n'], { type: 'text/plain' })); written.push(base + '.wav.credits.txt'); }
+  return written;
+}
+$('b-song').addEventListener('click', () => doBounce(false));
+$('b-loop').addEventListener('click', () => doBounce(true));
+$('b-stems').addEventListener('click', () => doBounce(P.loop.on && confirm('Stems of the LOOP region (OK) or the whole SONG (Cancel)?'), true));
+let lastCredits = { lines: [], worst: 'free', text: '' };
+function bounceBlob() { return AK.wav.encode(lastBounce.channels, lastBounce.sampleRate, { bitDepth: 16, loop: lastBounce.loop, meta: { title: P.name, description: P.name, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: lastCredits.text ? 'Instruments: ' + lastCredits.text.replace(/\n/g, '; ') : undefined, credits: lastCredits.text || undefined } }); }
+$('b-dl').addEventListener('click', () => lastBounce && AK.util.download(bounceBlob(), AK.util.slug(P.name) + '.wav'));
+// INTO GAME: the bounce is real audio (hand-made), written as Ogg Vorbis — at the catalog track's own .ogg src
+// (or assets/audio/daw/<name>.ogg), stems + manifest beside it. A catalog .mp3 src keeps the old <base>.wav.
+$('b-game').addEventListener('click', async () => {
+  if (!lastBounce) return;
+  if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { msg('b-msg', 'link the game folder first (GENERATE tab).', true); return; }
+  const id = $('b-target').value, r = lastBounce;
+  let base = 'assets/audio/daw/' + AK.util.slug(P.name), path = base + '.ogg';
+  if (id) { const cat = await AK.game.catalog(); const t = cat.find(x => x.id === id); if (t) { base = t.src.replace(/\.[^.\/]+$/, ''); path = /\.ogg$/i.test(t.src) ? t.src : base + '.wav'; } if (await AK.game.exists(path) && !confirm(path + ' exists. Replace?')) return; }
+  try {
+    let written;
+    if (path.endsWith('.wav')) written = await writeWavToGame(base, r, lastStems, lastCredits, { title: P.name });
+    else written = (await AK.game.writeMusic(base, { temp: false, mixPath: path, mix: r, stems: musicStems(r, lastStems), loop: r.loop, title: P.name,
+      credits: lastCredits.worst !== 'free' ? lastCredits.text : '', extra: { bpm: P.bpm, bars: r.bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: lastCredits.text || '' },
+      onProgress: (f, what) => msg('b-msg', 'encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') })).files;
+    msg('b-msg', 'wrote ' + written.length + ' file(s): godot/' + path + (id ? ' — the game plays it for ' + id : '') + (lastStems ? ' + stems' : '') + (lastCredits.worst !== 'free' ? ' + credits' : ''));
+    if (id) refreshWanted();
+  }
+  catch (e) { msg('b-msg', 'write failed: ' + (e.message || e), true); }
+});
+$('x-song').addEventListener('click', () => AK.util.download(new Blob([E.exportMidi()], { type: 'audio/midi' }), AK.util.slug(P.name) + '.mid'));
+$('x-track').addEventListener('click', () => { const t = E.track(sel.trackId); if (!t) return; AK.util.download(new Blob([E.exportMidi([t.id])], { type: 'audio/midi' }), AK.util.slug(P.name + '_' + t.name) + '.mid'); });
+$('x-import').addEventListener('click', () => $('x-file').click());
+$('x-file').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  try {
+    const m = SMF.read(new Uint8Array(await f.arrayBuffer()));
+    let dev = P.devices.find(d => d.type === 'forge' || d.type === 'basic');
+    if (!dev) dev = await E.addDevice(typeof ForgeSynth === 'function' ? 'forge' : 'basic', { name: 'FORGE 1', preset: 'keys_ep' });
+    for (const tr of m.tracks) {
+      const notes = tr.notes.map(n => ({ t: Math.round(n.t * PPQ / m.ppq), d: Math.max(1, Math.round(n.d * PPQ / m.ppq)), n: n.n, v: n.v }));
+      const end = notes.reduce((a, n) => Math.max(a, n.t + n.d), 0), bars = Math.max(1, Math.ceil(end / BAR));
+      const drums = tr.channel === 10;
+      const d = drums ? (P.devices.find(x => x.type === 'kit') || await E.addDevice('kit', { name: 'KIT' })) : dev;
+      const t = E.addTrack('midi', { name: tr.name, deviceId: d.id, color: drums ? COLORS.drums : COLORS.midi, role: drums ? 'drums' : '' });
+      const pid = E.uid('pat'); t.patterns[pid] = { name: f.name.replace(/\.midi?$/i, ''), lenBars: bars, notes }; t.clips.push({ bar: 0, pid });
+    }
+    if (m.bpm) { P.bpm = Math.round(m.bpm); E.applyMaster(); }
+    E.emit('project'); msg('b-msg', 'imported ' + m.tracks.length + ' track(s) from ' + f.name);
+  } catch (err) { msg('b-msg', 'MIDI import failed: ' + err.message, true); }
+});
+$('p-export').addEventListener('click', () => { E.snapshotStates(); AK.util.download(new Blob([JSON.stringify(P, null, 1)], { type: 'application/json' }), AK.util.slug(P.name) + '.mmdaw.json'); });
+$('p-import').addEventListener('click', () => $('p-file').click());
+$('p-file').addEventListener('change', async e => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; try { const j = JSON.parse(await f.text()); await E.load(j); P = E.project; sel = { trackId: null, clip: -1 }; } catch (err) { msg('b-msg', 'not a DAW project: ' + err.message, true); } });
+// recording input
+AK.inputs.list().then(list => list.forEach(i => $('r-input').add(new Option((i.label || 'input') + (AK.inputs.hint(i.label) ? ' — ' + AK.inputs.hint(i.label) : ''), i.deviceId || 'default'))));
+$('r-input').addEventListener('change', async () => { try { const lab = await E.setInput($('r-input').value ? ($('r-input').value === 'default' ? '' : $('r-input').value) : null); msg('b-msg', lab ? 'input: ' + lab : 'no input.'); } catch (e) { msg('b-msg', 'input: ' + e.message, true); } });
+// library clips → audio track
+async function listLib() {
+  const list = await AK.lib.list().catch(() => []);
+  $('a-lib').innerHTML = '';
+  for (const r of list) {
+    const d = document.createElement('div'); d.className = 'item'; d.innerHTML = `<b>${esc(r.name)}</b> · ${r.kind} · ${AK.util.fmtTime(r.durationSec || 0)}`;
+    d.addEventListener('click', () => { [...$('a-lib').children].forEach(c => c.classList.toggle('sel', c === d)); $('a-add').dataset.lib = r.id; $('a-add').dataset.len = r.durationSec; $('a-add').dataset.name = r.name; });
+    $('a-lib').appendChild(d);
+  }
+}
+$('a-add').addEventListener('click', () => {
+  const b = $('a-add').dataset; if (!b.lib) { msg('b-msg', 'pick a take below first.', true); return; }
+  let t = E.track(sel.trackId); if (!t || t.kind !== 'audio') t = E.addTrack('audio', { name: 'audio', color: COLORS.audio });
+  t.audio.push({ t: (P.loop.on ? P.loop.a : 0) * BAR, libId: b.lib, name: b.name, offset: 0, len: +b.len, gain: 1 });
+  E.emit('project');
+});
+AK.lib.onChange(listLib);
+
+// ═══════════════════════════════════════════════════════════════════
+// PATCH BANK: picker, load progress, credits, "ADD TO DAW" from patch_bank.html
+// ═══════════════════════════════════════════════════════════════════
+const patchProg = {};
+function patchStatus(d) {
+  const inst = E.devices.get(d.id);
+  if (inst && inst.error) return 'failed: ' + inst.error;
+  if (inst && inst.inner) return '';
+  const p = patchProg[d.id];
+  return !p ? 'loading…' : p.phase === 'samples' ? 'samples ' + p.done + '/' + p.total : p.phase === 'ready' ? '' : (p.phase || 'loading') + '…';
+}
+let progT = null;
+E.on('device-progress', ({ id, p }) => { patchProg[id] = p; clearTimeout(progT); progT = setTimeout(() => { if ($('tab-dev').classList.contains('on')) renderDevices(); renderHeads(); }, 120); });
+async function renderCredits() {
+  const box = $('credits'); if (!box || !P) return;
+  const c = await E.credits();
+  box.innerHTML = c.lines.length ? c.lines.map(l => `<div>${esc(l.line)} — <span class="${l.game === 'free' ? '' : 'warn'}" style="color:${l.game === 'free' ? 'var(--emerald-hi)' : l.game === 'credit' ? 'var(--amber)' : 'var(--rust)'}">${esc(l.licence)}</span></div>`).join('') + (c.worst !== 'free' ? '<div style="margin-top:4px">INTO GAME also writes these lines to a .credits.txt beside the file.</div>' : '') : 'only built-in synths — nothing to credit.';
+}
+$('cr-copy').addEventListener('click', async () => { const c = await E.credits(); navigator.clipboard && navigator.clipboard.writeText(c.text || 'no credits needed'); });
+function openPatchPicker(onPick) {
+  if (typeof PatchBank === 'undefined') { msg('g-msg', 'patch_bank.js is not loaded.', true); return; }
+  $('modaltitle').textContent = 'PATCH BANK · pick an instrument';
+  $('modal').classList.add('show');
+  const body = $('modalbody');
+  body.innerHTML = `<div style="padding:10px;display:grid;grid-template-rows:auto auto 1fr;height:100%;gap:8px">
+    <div class="row"><input type="text" id="pp-q" placeholder="search: rhodes, 808, strings, E.PIANO, kalimba…" style="flex:1;font-size:14px;padding:6px;min-height:40px"><select id="pp-src" style="min-height:40px"><option value="">all sources</option></select>
+    <label style="cursor:pointer;min-height:40px;display:inline-flex;align-items:center;gap:4px"><input type="checkbox" id="pp-free"> no-credit only</label><a href="patch_bank.html" target="_blank" style="color:var(--gold)">open PATCH BANK ↗</a></div>
+    <div id="pp-cats" class="chips"></div>
+    <div id="pp-list" style="overflow:auto;touch-action:pan-y"></div></div>`;
+  const srcs = PatchBank.sources();
+  srcs.forEach(s => $('pp-src').add(new Option(s.name + (s.dynamic ? ' (downloads its list)' : ''), s.id)));
+  let all = [], cat = '';
+  const draw = () => {
+    const q = $('pp-q').value.toLowerCase().split(/\s+/).filter(Boolean), src = $('pp-src').value, free = $('pp-free').checked;
+    const base = all.filter(i => (!src || i.source === src) && (src || q.length || cat || i.category !== 'waveform') && (!free || PatchBank.creditSync(i).game === 'free') && q.every(w => (i.name + ' ' + i.category + ' ' + (i.bank || '') + ' ' + i.source).toLowerCase().includes(w)));
+    const counts = {}; base.forEach(i => { counts[i.category] = (counts[i.category] || 0) + 1; });
+    $('pp-cats').innerHTML = `<button class="chip ${cat ? '' : 'on'}" data-cat="">ALL <i>${base.length}</i></button>` + Object.keys(counts).sort((a, b) => counts[b] - counts[a]).slice(0, 16).concat(cat && !counts[cat] ? [cat] : [])
+      .map(c => `<button class="chip ${c === cat ? 'on' : ''}" data-cat="${esc(c)}">${esc(c.toUpperCase())} <i>${counts[c] || 0}</i></button>`).join('');
+    $('pp-cats').querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => { cat = cat === b.dataset.cat ? '' : b.dataset.cat; draw(); }));
+    const list = base.filter(i => !cat || i.category === cat);
+    $('pp-list').innerHTML = list.slice(0, 250).map((i, k) => { const c = PatchBank.creditSync(i); return `<div class="item pick-row" data-k="${k}" style="padding:8px"><b>${esc(i.name)}</b> · ${esc(i.category)} · <span class="note">${esc((PatchBank.source(i.source) || {}).name || i.source)}${i.bank ? ' · ' + esc(i.bank) : ''}</span> <span style="color:${c.game === 'free' ? 'var(--emerald-hi)' : c.game === 'credit' ? 'var(--amber)' : 'var(--rust)'};font-size:9px">${c.game.toUpperCase()}</span></div>`; }).join('') + (list.length > 250 ? '<div class="note" style="padding:8px">' + (list.length - 250) + ' more — search to narrow</div>' : '') + (!list.length ? '<div class="note" style="padding:8px">nothing here yet — pick a source (SoundFont / DX7 banks list their presets once downloaded).</div>' : '');
+    $('pp-list').querySelectorAll('[data-k]').forEach(el => el.addEventListener('click', () => { const it = list[+el.dataset.k]; closeModal(); onPick(it); }));
+  };
+  $('pp-q').addEventListener('input', draw); $('pp-free').addEventListener('change', draw);
+  $('pp-src').addEventListener('change', async () => {
+    const s = PatchBank.source($('pp-src').value);
+    if (s && ['sf2', 'dx7', 'dx7zip'].includes(s.kind) && !all.some(i => i.source === s.id)) { $('pp-list').innerHTML = '<div class="note" style="padding:8px">downloading ' + esc(s.name) + '…</div>'; try { await PatchBank.prepare(s.id); all = await PatchBank.all(); } catch (e) { $('pp-list').innerHTML = '<div class="note" style="padding:8px">failed: ' + esc(e.message) + '</div>'; return; } }
+    draw();
+  });
+  PatchBank.all().then(a => { all = a; draw(); });
+  setTimeout(() => $('pp-q') && $('pp-q').focus(), 50);
+}
+async function addPatchTrack(uid, name) {
+  const it = await PatchBank.item(uid);
+  const d = await E.addDevice('patch', { name: name || (it && it.name) || uid, patch: uid });
+  const drums = it && (it.category === 'drums' || it.category === 'percussion');
+  const t = E.addTrack('midi', { name: (name || (it && it.name) || 'patch').slice(0, 24), deviceId: d.id, color: drums ? COLORS.drums : COLORS.midi, role: drums ? 'drums' : '' });
+  sel = { trackId: t.id, clip: -1 }; E.emit('project'); renderCredits();
+  msg('g-msg', 'added "' + t.name + '" — double-click / double-tap its lane to make a clip, or arm ● and record.');
+}
+$('add-patch').addEventListener('click', () => openPatchPicker(it => addPatchTrack(it.uid, it.name)));
+// patch_bank.html → "ADD TO DAW": live over a BroadcastChannel, or waiting in the inbox
+function takeInbox() {
+  if (!P) return;
+  let inbox = []; try { inbox = JSON.parse(localStorage.getItem('mm_daw_inbox') || '[]'); localStorage.removeItem('mm_daw_inbox'); } catch (e) {}
+  inbox.filter(m => m.type === 'add-patch').forEach(m => addPatchTrack(m.id, m.name));
+}
+try { new BroadcastChannel('mm_daw').onmessage = e => { if (P && e.data && e.data.type === 'add-patch') { localStorage.removeItem('mm_daw_inbox'); addPatchTrack(e.data.id, e.data.name); } }; } catch (e) {}
+window.addEventListener('focus', takeInbox);
+
+// ═══════════════════════════════════════════════════════════════════
+// tabs + frame loop
+// ═══════════════════════════════════════════════════════════════════
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id === 'tab-' + b.dataset.tab));
+  if (b.dataset.tab === 'exp') { listLib(); renderCredits(); }
+}));
+let lastTick = -1;
+function frame() {
+  if (P) {
+    const tk = E.tickNow();
+    if (E._rplay && !E.playing) lastTick = -1;           // a render getting ahead: pos shows WAIT n s
+    else if (tk !== lastTick) {
+      lastTick = tk;
+      const bar = Math.floor(tk / BAR), beat = Math.floor(tk / PPQ) % 4, six = Math.floor(tk / (PPQ / 4)) % 4;
+      const R = E.rec, cin = R && E.recording && !R.fly && R.cfg.countIn && tk < R.a * BAR;
+      $('pos').textContent = cin ? 'IN ' + Math.max(1, Math.ceil((R.a * BAR - tk) / PPQ - 1e-6)) : (bar + 1) + '.' + (beat + 1) + '.' + (six + 1);
+      drawArr(tk);
+      if (E.playing) drawRoll();
+    }
+    if ($('tab-mix').classList.contains('on') && E.ctx) {
+      const [l, r] = E.levels(); AK.draw.meter($('mL'), l, l, l * 0.7, l > 0.99); AK.draw.meter($('mR'), r, r, r * 0.7, r > 0.99);
+      document.querySelectorAll('[data-meter]').forEach(cv => { const p = E.levels(cv.dataset.meter); AK.draw.meter(cv, p, p, p * 0.7, p > 0.99); });
+    }
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.addEventListener('resize', () => { drawArr(); drawRoll(); });
+window.addEventListener('beforeunload', () => { try { E.snapshotStates(); } catch (e) {} });
+</script>
+</body>
+</html>
