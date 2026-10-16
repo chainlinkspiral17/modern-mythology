@@ -803,4 +803,16 @@ The index flags it as AI-assisted prose; it is used here for structure only.
 - **Joven (Vol 8):** Joven is young Nate. It's his Venezuelan nickname.
 - **Chumpa Chump (Vol 9):** recast his later crime with an adult victim.
 - **X2 (Vol 10 lead):** **Arthur Finch is the lead of ROFLcopter.**
-- **X1 (volume numbering):** still open. Does #/Sharp get its own number, and does the Vol 7 wiki's 2025 date become the 2050s?
+- **X1 (volume numbering):** settled. **#/Sharp has always been Vol 4**, and it *is* the 2010 book's back matter: the scrapbook desk, the weep zine, Charlie & Caroline, E/D, "vii. daddy", the string board, the kaleidoscope and the curtain call. The numbering is final and matches the game menu:
+  1. Modern Mythology
+  2. Small Wood Volumes
+  3. The Earthman Chronicles
+  4. #/Sharp
+  5. Major Arcana
+  6. Planned Community
+  7. Land of Milk & Honey
+  8. SCUMM
+  9. Por Puesto
+  10. ROFLcopter
+
+  Still open: the Vol 7 wiki's 2025 date versus the 2042–52 scenes.

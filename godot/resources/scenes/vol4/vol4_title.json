@@ -3,7 +3,7 @@
   "vol": 4,
   "chapter": 0,
   "type": "chapter",
-  "title": "Scraps",
+  "title": "#/Sharp",
   "nodes": [
     {
       "t": "hide",
@@ -32,8 +32,8 @@
     },
     {
       "t": "interlude",
-      "text": "scraps",
-      "sub": "modern mythology. · volume four",
+      "text": "#/Sharp",
+      "sub": "scraps · modern mythology. · volume four",
       "duration": 2400
     },
     {

@@ -7,7 +7,7 @@ The source for adapting the rest of the 2010 book into the visual novel. Each vo
 | `vol1_faust.md` | I — Faust 3 (intro dialogue + Faust/Jacob/Wagner screenplay) | 1–87 | pp 3–52 ✓ |
 | `vol2_small_wood.md` | II — Small Wood Volumes, by D.N. Dean | 88–176 | pp 88–102 ✓ |
 | `vol3_earthman.md` | III — The Earthman Chronicles, by Lafayette Hubbard | 177–291 | none |
-| `vol4_back_matter.md` | IV — scraps, the *weep (FOR THE FUTURE!)* zine, Charlie & Caroline, stories, "vii. daddy" | 292–413 | none |
+| `vol4_back_matter.md` | IV — #/Sharp: scraps, the *weep (FOR THE FUTURE!)* zine, Charlie & Caroline, stories, "vii. daddy" | 292–413 | none |
 
 Page numbers are PDF page indexes. The printed folio is the index + 1.
 
