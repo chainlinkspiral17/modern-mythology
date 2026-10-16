@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Andy goes back down to the basement alone with his notebook."
+      "text": "Afternoon, nobody up yet, the house sleeping off whatever last night was. Andy goes back down to the game room with his hardcover notebook and sinks into the black leather, the refrigerators humming, some screen left on its title loop, and he writes because he told himself he would, a page a day minimum, more if the place gives it up."
     },
     {
       "t": "narrate",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "Under his hand the leather says it, cut deep and gone gray in the grooves: SLOW STICKS. Smaller, under that: put in and wait."
+      "text": "Under his hand the leather is cut all over, initials and dates and house jokes gone gray in the grooves, a phone number for a good time, somebody's girlfriend's name scratched out so hard it goes through to the stuffing."
     },
     {
       "t": "narrate",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "Under the wall of screens is a shelf of big game boxes gone soft at the corners. Final Cut, from a studio called Mountaintop. Wedged behind it, a burned disc in a jewel case: RETINAL BURN. Mountaintop. Beta. Do not distribute."
+      "text": "Under the wall of screens a shelf of game boxes gone soft at the corners, cracked jewel cases, burned discs with sharpie titles nobody remembers burning. One has a folded insert printed off somebody's inkjet, a pitch for a game that never got made or got made by somebody else, retinal burn in lowercase across the top."
     },
     {
       "t": "narrate",
@@ -143,28 +143,24 @@
     },
     {
       "t": "narrate",
-      "text": "Retinal burn. It is in his notebook already, a line he wrote ten minutes ago. He reads the insert again to be sure he didn't write that too."
-    },
-    {
-      "t": "narrate",
-      "text": "Under the jewel case lies a floppy disk, the label in ballpoint: S.C.U.M.M. Under that, D.N.D., and an Oregon phone number one digit short."
+      "text": "Under the jewel cases a floppy disk with no label, and in the corner a beige PC old enough to still take one."
     },
     {
       "t": "choice",
       "opts": [
         {
           "text": "try the floppy in the old machine.",
-          "goto": 34
+          "goto": 33
         },
         {
           "text": "leave it where it was.",
-          "goto": 35
+          "goto": 34
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "The drive grinds and the screen asks for disk two. There is no disk two."
+      "text": "The drive grinds a long time and the screen asks for disk two. There is no disk two."
     },
     {
       "t": "narrate",
@@ -188,7 +184,7 @@
     },
     {
       "t": "narrate",
-      "text": "The sit-down cabinet in the corner cycles its high scores to nobody. At the top, three initials nobody in the house will claim: J.O.K."
+      "text": "The sit-down cabinet in the corner cycles its high scores to nobody, initials of kids long graduated, somebody's ASS at number three, because there is always somebody's ASS at number three."
     },
     {
       "t": "flag",

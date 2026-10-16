@@ -33,16 +33,16 @@
     },
     {
       "t": "narrate",
-      "text": "He is not supposed to get up, so he doesn't. He reaches instead for the bookshelf between the two beds."
+      "text": "He's not supposed to get up, Jane said so, not even to pee, so he doesn't. Three in the morning and wide awake under the curtain glow, he reaches for the bookshelf between the two beds instead."
     },
     {
       "t": "narrate",
-      "text": "Between the Wittgenstein and the Powers is a white binder with no spine label. The cover sheet says IRIS, and under it ONEIRONAUTICS INC., and under that a violet stamp: rev. 22 SEP 09."
+      "text": "Between the Wittgenstein and the Powers a white binder, no label on the spine. The cover sheet says IRIS and nothing else. Design notes for a game, a cast list, the kind of thing Andy writes himself and never finishes."
     },
     {
       "t": "cg",
       "src": "assets/cg/vol3_iris_binder.jpg",
-      "caption": "IRIS · Oneironautics Inc."
+      "caption": "IRIS"
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
         },
         {
           "text": "skip to the part about her.",
-          "goto": 17
+          "goto": 16
         }
       ]
     },
@@ -80,10 +80,6 @@
     {
       "t": "narrate",
       "text": "Jane Huxley - A thirty-six year old woman of the moment, always looking after people as best she can, and always asking about others. A flirt, gossip, grandmotherly-type, despite being quite young."
-    },
-    {
-      "t": "narrate",
-      "text": "Andy reads the name twice. Through the curtain the monitor light does not change."
     },
     {
       "t": "narrate",
@@ -119,15 +115,11 @@
     },
     {
       "t": "narrate",
-      "text": "Andy thinks of another room, the one in Houston, and closes the binder on his thumb."
+      "text": "Last thirty minutes of her life. Andy closes the binder on his thumb. He doesn't want to think about last thirty minutes, Dad in the bed watching the ducks, so he thinks about Jane instead, just out of sight on the other side of the curtain, watching her numbers."
     },
     {
       "t": "narrate",
-      "text": "On the clipboard by the door hangs the week's sign-in sheet. His name is the last line. The line above it is in a neater hand, no school listed: J. Okimoto — Dallas — calibration."
-    },
-    {
-      "t": "narrate",
-      "text": "Somewhere past three he goes under with the binder on his chest. He does not remember putting it back. In the morning it is on the shelf, spine in."
+      "text": "Somewhere past three he goes under with the binder open on his chest."
     },
     {
       "t": "flag",

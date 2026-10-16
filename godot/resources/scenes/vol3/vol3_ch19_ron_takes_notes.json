@@ -33,15 +33,15 @@
     },
     {
       "t": "narrate",
-      "text": "Ron catches me on the stairs after supper and asks if I have an hour. He asks it like he already knows the answer."
+      "text": "Ron catches me on the stairs after supper and asks if I've got an hour. He asks like he already knows."
     },
     {
       "t": "narrate",
-      "text": "His room is the way Betty said it would be. Books on the floor in drifts, dust hanging in the lamplight, nowhere for a body to stand. He clears a place on the bed for me with his forearm. He sits at the desk half turned away."
+      "text": "His room is how Betty said. Books on the floor in drifts, dust in the lamplight, nowhere to stand. He clears a spot on the bed for me with his forearm and sits at the desk half turned away."
     },
     {
       "t": "narrate",
-      "text": "The typewriter is black and the size of an engine block, and he rolls a fresh sheet into it and squares it and waits."
+      "text": "The typewriter is black and big as an engine block. He rolls in a fresh sheet and squares it and waits."
     },
     {
       "t": "show",
@@ -70,11 +70,11 @@
     },
     {
       "t": "narrate",
-      "text": "The page is blank except for a title typed at the top, centered, and underlined twice."
+      "text": "The page is blank except for the title at the top, centered, underlined twice."
     },
     {
       "t": "narrate",
-      "text": "The springs give under me and books slide off the far edge of the bed one after another, like men stepping off a curb."
+      "text": "The springs give under me and books slide off the far side of the bed, one, then another."
     },
     {
       "t": "say",
@@ -100,7 +100,7 @@
     },
     {
       "t": "narrate",
-      "text": "He types. The keys go off like rifle fire down a canyon, a burst, a pause, a burst. The bell rings at the end of the line and he throws the carriage back without looking at it."
+      "text": "He types. Loud, a burst, a pause, a burst. The bell dings at the end of the line and he slaps the carriage back without looking."
     },
     {
       "t": "say",
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "I laugh, the first time in I don't know how long, and it hurts like a cough."
+      "text": "I laugh, first time in I don't know how long, and it hurts like a cough."
     },
     {
       "t": "say",
@@ -188,11 +188,11 @@
     },
     {
       "t": "narrate",
-      "text": "I tell him the floor. I tell him I slept next to the air conditioner because I did that when I was a kid, the hum of it. I tell him I slept through the worst part and woke up when it was already almost over. I haven't said that out loud to anybody."
+      "text": "I tell him the floor. I tell him I slept next to the air conditioner because I used to do that when I was a kid, the hum. I tell him I slept through the worst of it and woke up when it was almost over. I haven't told anybody that."
     },
     {
       "t": "narrate",
-      "text": "I didn't know it was in me until it was out and in the room with the dust."
+      "text": "I didn't know I was going to say it until it was out in the room with the dust."
     },
     {
       "t": "narrate",
@@ -249,16 +249,12 @@
     },
     {
       "t": "narrate",
-      "text": "He types, and I lean and watch the line come up out of the machine over his shoulder, letter by letter, black and wet."
+      "text": "He types. I don't look over his shoulder. I don't want to see what he does with it."
     },
     {
       "t": "cg",
       "src": "assets/cg/vol3_ron_typewriter_page.jpg",
-      "caption": "almost understandable."
-    },
-    {
-      "t": "narrate",
-      "text": "A voice came booming from a machine among machines, it spoke a language not quite English, almost understandable. It was angry, desperate, pleading."
+      "caption": "Ron's page"
     },
     {
       "t": "say",
@@ -314,7 +310,7 @@
     },
     {
       "t": "narrate",
-      "text": "He finds the line he wants and I watch it go down on the paper: the end of the world just outside, perhaps going on business as usual."
+      "text": "He types a long time on that and doesn't ask me anything for a while."
     },
     {
       "t": "say",
@@ -346,11 +342,11 @@
     },
     {
       "t": "narrate",
-      "text": "I lie back on his bed among the books. The typewriter goes on, burst and pause and bell, steady as a machine breathing for somebody. Down the hall Betty is laughing at something Jack said. The window is open and the air comes in heavy with oranges."
+      "text": "I lie back on his bed with the books. The typewriter keeps going, burst and pause and bell. Down the hall Betty is laughing at something Jack said. The window is open and the air comes in heavy with oranges."
     },
     {
       "t": "narrate",
-      "text": "Ron asks me one more question. I am most of the way asleep by then and I don't catch what it is, only the shape of it, the way it lifts at the end."
+      "text": "Ron asks me something else. I'm most of the way asleep by then and I don't catch it."
     },
     {
       "t": "hide",

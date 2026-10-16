@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ron did not sleep that night. The time-traveler sat on the one clear corner of floor among the books, and Ron fed a fresh sheet and a carbon into the machine."
+      "text": "Ron wasn't going to sleep, not tonight, and the kid from the future wasn't either by the look of him, sat cross-legged on the one patch of floor not drowned in books, big as a bear and tired as one. Ron rolled a fresh sheet into the machine with a carbon behind it and squared them up and waited."
     },
     {
       "t": "say",
@@ -57,7 +57,7 @@
       "t": "say",
       "char": "Andy",
       "expr": "tired",
-      "text": "Spaceships, still. Robots. A girl who turns out to be the ship."
+      "text": "Spaceships, still. Robots. I wrote one once, about a girl who turns out to be the ship."
     },
     {
       "t": "say",
@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "At the head of the page Ron typed what the boy gave him. A Script by Andrew Link. Under it, because Ron asked and the boy answered without thinking, a date: Sept. 2003."
+      "text": "The kid shut his eyes to remember it and started in, and Ron typed it as fast as it came, typos and all, the way he typed everything, never going back."
     },
     {
       "t": "bg",
@@ -299,10 +299,6 @@
       "text": "Sometimes antiquities are better suited to the task."
     },
     {
-      "t": "narrate",
-      "text": "Ron asked the boy to say that line again, and typed it twice."
-    },
-    {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
@@ -530,15 +526,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ron laid the sheet and the carbon face down on the stack. He asked what happened when she got there. The boy said he never wrote that part."
-    },
-    {
-      "t": "narrate",
-      "text": "Ron fed a new sheet. Across the top he typed EARTH, then EARTHMAN, and struck the first word out."
-    },
-    {
-      "t": "narrate",
-      "text": "The carbon went into a shoebox under the bed. On the underside of the lid, in a pencil hand that was not Ron's, someone drew a clef over an eye."
+      "text": "Ron pulled the page and its carbon out together and laid them face down on the pile. He asked what happens when she gets there. The kid said he never wrote that part, he never finished much of anything back then, and lay back on the floor among the books with his big shoes still on and was asleep before Ron could ask what back then meant to a boy his age."
     },
     {
       "t": "flag",
