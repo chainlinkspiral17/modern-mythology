@@ -140,14 +140,65 @@ func _chapter_ordinal(chapter_v: Variant) -> int:
 	return absi(s.hash())
 
 
+## A chapter's plate key: "ch07" for a numbered or roman chapter, else
+## "ch_" + its name in [a-z0-9_]. Hero Studio's plate entries use the same
+## key (tools/scene2d_draft.py --plates).
+static func chapter_key(chapter_v: Variant) -> String:
+	var s := String(str(chapter_v)).strip_edges()
+	if chapter_v is int or chapter_v is float or s.is_valid_int():
+		return "ch%02d" % absi(int(s.to_float()))
+	var up := s.to_upper()
+	var vals := {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
+	var total := 0
+	var roman := up.length() > 0
+	for i in range(up.length()):
+		if not vals.has(up[i]):
+			roman = false
+			break
+		var v: int = vals[up[i]]
+		if i + 1 < up.length() and vals.has(up[i + 1]) and int(vals[up[i + 1]]) > v:
+			total -= v
+		else:
+			total += v
+	if roman:
+		return "ch%02d" % total
+	var slug := ""
+	for c in s.to_lower():
+		slug += c if (c >= "a" and c <= "z") or (c >= "0" and c <= "9") else "_"
+	return "ch_" + slug
+
+
+## The painted plate from Hero Studio (`<stem>.jpg`, a scene2d entry,
+## 2026-10-17) wins over the generated endpaper (`<stem>.png`,
+## tools/sprites/gen_chapter_plates.py). A freshly installed .jpg has no
+## import yet, so it is read straight off disk the way backgrounds are.
+func _plate_texture(stem: String) -> Texture2D:
+	var jpg: String = stem + ".jpg"
+	if ResourceLoader.exists(jpg):
+		var t: Texture2D = load(jpg) as Texture2D
+		if t != null:
+			return t
+	var abs_jpg: String = ProjectSettings.globalize_path(jpg)
+	if FileAccess.file_exists(abs_jpg):
+		var img := Image.load_from_file(abs_jpg)
+		if img != null:
+			return ImageTexture.create_from_image(img)
+	var png: String = stem + ".png"
+	if ResourceLoader.exists(png):
+		return load(png) as Texture2D
+	return null
+
+
 func set_plate(vol: int, chapter_v: Variant) -> void:
 	if _plate == null:
 		return
 	var chapter := _chapter_ordinal(chapter_v)
-	var path := PLATE_DIR + "chapter_v%d_%d.png" % [vol, chapter % PLATE_VARIANTS]
-	if not ResourceLoader.exists(path):
-		return
-	var tex: Texture2D = load(path) as Texture2D
+	# Every chapter has a plate of its own (2026-10-17, the user: "each
+	# chapter gets a plate"); until it is painted, the volume's generated
+	# sheet stands in, three variants so consecutive chapters differ.
+	var tex: Texture2D = _plate_texture(PLATE_DIR + "chapter_v%d_%s" % [vol, chapter_key(chapter_v)])
+	if tex == null:
+		tex = _plate_texture(PLATE_DIR + "chapter_v%d_%d" % [vol, chapter % PLATE_VARIANTS])
 	if tex == null:
 		return
 	_plate.texture = tex
