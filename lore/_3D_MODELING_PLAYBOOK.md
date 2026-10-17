@@ -399,6 +399,22 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-17 · four sets in one pass (sleep lab, Caltech, airport, Dean's offices)
+
+- **A Transform3D's nine basis numbers are ROWS** (`x.x, y.x, z.x, x.y, …`), not the three
+  axis vectors one after another. A symmetric matrix (B_KEY_FROM_N) hides the difference; the
+  sleep lab's SpotLight3D pointed at the ceiling until the basis was transposed. Build a spot's
+  basis from where it should point (`-Z` = the beam), then write it out row by row.
+- **Unshadowed lights shine through walls.** Several areas in one GLB means every light, the
+  directional foundation included, gets the presets of its own area (`Key_Sun__a__b__c`), or the
+  courtyard's sun lights the basement and the dark beam view shows the four-screen room's walls.
+- **`join_stock` drops a `__<preset>` suffix** (its key is the name before `_Stock_`), and
+  furniture_grammar ignores `_Stock_` meshes as merchandise, so a bag on a `_Stock_` seat
+  "floats". Join per-preset groups and furniture with a builder-local `join_named(prefix, name)`
+  instead (build_caltech_dabney, build_airport_cabin).
+- **Swivel chairs turned at random need room to face each other.** At 1.2 m pitch a chair spun
+  round sat 0.4 m from the one behind it (seat_clearance_audit: 0.75 m). 1.6 m clears it.
+
 ### 2026-10-17 · a door is in the shot before it is in the plan (the Link house)
 
 - **Decide where a door swings from the camera that looks through it.** The bathroom door,

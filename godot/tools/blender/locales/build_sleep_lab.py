@@ -345,9 +345,9 @@ def build_four_screens():
     for k in range(4):
         for j in range(4):
             make_cyl(f"G_Can_{k}_{j}", (GX0 + 3.0 + k * 4.0, 3.0 + j * 4.0, GH - 0.03), 0.10, 0.06, (0.30, 0.30, 0.30, 1.0), segments=10)
-    # the island: 81 leather executive swivel chairs on bolted plates, 1.2 m
-    # apart, each turned its own way (they spin)
-    n, pitch = 9, 1.2
+    # the island: 81 leather executive swivel chairs on bolted plates, 1.6 m
+    # apart (a chair spun round still leaves knee room), each turned its own way
+    n, pitch = 9, 1.6
     for r in range(n):
         for q in range(n):
             x = GCX + (q - (n - 1) / 2.0) * pitch

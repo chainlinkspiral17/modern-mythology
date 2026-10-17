@@ -29,6 +29,13 @@ def c(r, g, b):
 
 SLEEP_WORK = ("sleep_lab_entry", "sleep_lab_desk")
 NOT_BEAM = "__sleep_lab_entry__sleep_lab_desk__sleep_lab_night__four_screens_wide__four_screens_show"
+COURT = "__dabney_courtyard__dabney_courtyard_1945__dabney_side_yard"
+GAME = "__dabney_game_room__dabney_couch__dabney_couch_carving"
+TUN_LIT = "__caltech_tunnels__caltech_hallway_1945__caltech_bare_room"
+LAX = "__lax_gate__lax_store__lax_seat_close"
+CABIN = "__plane_night__plane_day__plane_vol4"
+ONEI = "__onei_office__onei_office_desk__onei_office_door"
+CLUBO = "__club_office__club_office_after"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -180,6 +187,160 @@ CONFIGS = [
              c(1.0, 0.94, 0.80), 9.0, {"spot_range": 10.0, "spot_angle": 12.0}),
             ("Stalk_Eyes__four_screens_beam", "OmniLight3D", I.format(43.0, 5.0, -13.8), c(1.0, 0.90, 0.66), 1.6,
              {"omni_range": 1.5}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph",
+                        "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's CALTECH (build_caltech_dabney.py): Dabney's courtyard and
+        # side yard by afternoon sun (2003 and 1945, one camera); the
+        # basement game room lit only by its screens, fridges and the
+        # cabinet's attract mode; Spencer's room by its window; the tunnels
+        # under fluorescent tubes, the racquetball room's red and blue
+        # lanterns spilling out (2003); the bare room's one bulb, or only
+        # the light under its door. Each area's lights carry its presets.
+        "out_path": os.path.join(ROOT, "caltech_dabney.tscn"),
+        "uid": "uid://caltech_dabney_v3",
+        "root_node": "CaltechDabney",
+        "glb": "res://assets/3d/locales/caltech_dabney.glb",
+        "env": {"bg": (0.56, 0.72, 0.92, 1), "amb": (0.82, 0.84, 0.90, 1),
+                "amb_e": 0.65, "fog": (0.80, 0.84, 0.90, 1), "fog_e": 0.4,
+                "fog_d": 0.002, "sat": 0.98, "glow_i": 0.6, "glow_b": 0.14},
+        "shader": {"warm": (0.96, 0.88, 0.70, 1), "bg": (0.10, 0.10, 0.12, 1),
+                   "neon_edge": (0.80, 0.70, 0.52, 1), "neon_lo": (0.30, 0.26, 0.20, 1),
+                   "neon_hi": (0.10, 0.10, 0.12, 1), "lim_tint": (0.76, 0.66, 0.50, 1)},
+        "lights": [
+            # the courtyard and side yard: Pasadena afternoon, the sun from the south-west
+            ("Key_Sun" + COURT, "DirectionalLight3D", B_SUN_FROM_S.format(0, 12, 10), c(1.0, 0.92, 0.78), 1.4),
+            ("Fill_Sky" + COURT, "DirectionalLight3D", B_FILL.format(0, 8, -4), c(0.66, 0.76, 0.96), 0.35),
+            ("Back" + COURT, "DirectionalLight3D", B_BACK.format(0, 8, 4), c(0.90, 0.86, 0.80), 0.25),
+            # the game room (blender x 60..72): the wall of screens, the fridges, the cabinet, the PC
+            ("Key_Game" + GAME, "DirectionalLight3D", B_KEY_FROM_N.format(66, 4, -6), c(0.56, 0.60, 0.80), 0.06),
+            ("Screen_Wall_Glow_L" + GAME, "OmniLight3D", I.format(63.6, 1.3, -8.9), c(0.56, 0.66, 0.96), 2.2,
+             {"omni_range": 8.0}),
+            ("Screen_Wall_Glow_R" + GAME, "OmniLight3D", I.format(67.8, 1.5, -8.9), c(0.70, 0.60, 0.92), 2.0,
+             {"omni_range": 8.0}),
+            # the screens' light falling back on the couches
+            ("Screen_Bounce" + GAME, "OmniLight3D", I.format(66.0, 1.3, -6.0), c(0.56, 0.62, 0.92), 0.8, {"omni_range": 4.8}),
+            ("Fridge_Glow" + GAME, "OmniLight3D", I.format(70.9, 1.3, -3.0), c(0.86, 0.92, 1.0), 0.9,
+             {"omni_range": 3.6}),
+            ("Arcade_Glow" + GAME, "OmniLight3D", I.format(61.4, 1.3, -2.7), c(0.80, 0.46, 0.96), 0.8,
+             {"omni_range": 2.6}),
+            ("PC_Glow" + GAME, "OmniLight3D", I.format(60.9, 1.1, -8.6), c(0.56, 0.86, 0.76), 0.4,
+             {"omni_range": 1.8}),
+            # Spencer's room (x 80..84.6): the afternoon through the E window
+            ("Key_Spencer__spencer_room", "DirectionalLight3D", B_KEY_FROM_N.format(82, 4, -4), c(0.92, 0.90, 0.84), 0.30),
+            ("Window_E__spencer_room", "OmniLight3D", I.format(84.1, 1.6, -2.4), c(1.0, 0.94, 0.82), 1.8,
+             {"omni_range": 5.5}),
+            # the tunnels (x 100..103.2): a tube every 6 m, for both years and the lit bare room
+            *[("Fluor_Tun_{}".format(k) + TUN_LIT, "OmniLight3D", I.format(101.6, 2.62, -(3.0 + k * 6.0)),
+               c(0.90, 0.96, 0.90), 1.0, {"omni_range": 5.0}) for k in range(10)],
+            ("Key_Tun" + TUN_LIT, "DirectionalLight3D", B_KEY_FROM_N.format(101, 3, -10), c(0.80, 0.84, 0.80), 0.06),
+            ("Lantern_Red__caltech_tunnels", "OmniLight3D", I.format(93.0, 4.5, -18.5), c(1.0, 0.24, 0.20), 2.2,
+             {"omni_range": 9.0}),
+            ("Lantern_Blue__caltech_tunnels", "OmniLight3D", I.format(97.2, 4.5, -23.5), c(0.26, 0.38, 1.0), 2.2,
+             {"omni_range": 9.0}),
+            ("Clean_Room_Glow__caltech_tunnels", "OmniLight3D", I.format(98.5, 2.3, -34.0), c(0.92, 0.96, 1.0), 1.2,
+             {"omni_range": 4.0}),
+            # the bare room (x 103.2..106.4): its one bulb (lit), or the corridor's light under the shut door
+            ("Bare_Bulb__caltech_bare_room", "OmniLight3D", I.format(104.8, 2.24, -7.6), c(1.0, 0.92, 0.76), 2.0,
+             {"omni_range": 5.0}),
+            ("Door_Spill__caltech_bare_room_dark", "OmniLight3D", I.format(103.36, 0.04, -7.6), c(0.82, 0.94, 0.84), 0.6,
+             {"omni_range": 1.4}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "noir",
+                        "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's AIRPORT (build_airport_cabin.py): the gate at LAX under
+        # its ceiling panels, the convenience store lit across the
+        # concourse; the economy cabin (x 56..64) at night (the cove low,
+        # Andy's reading lamp, the headrest monitor), by day (the windows),
+        # and vol 4's November flight (dim and warm, the shades down).
+        "out_path": os.path.join(ROOT, "airport_cabin.tscn"),
+        "uid": "uid://airport_cabin_v3",
+        "root_node": "AirportCabin",
+        "glb": "res://assets/3d/locales/airport_cabin.glb",
+        "env": {"bg": (0.03, 0.03, 0.05, 1), "amb": (0.70, 0.72, 0.78, 1),
+                "amb_e": 0.40, "fog": (0.30, 0.30, 0.34, 1), "fog_e": 0.2,
+                "fog_d": 0.002, "sat": 0.94, "glow_i": 0.6, "glow_b": 0.14},
+        "shader": {"warm": (0.94, 0.88, 0.74, 1), "bg": (0.08, 0.08, 0.10, 1),
+                   "neon_edge": (0.70, 0.70, 0.66, 1), "neon_lo": (0.26, 0.26, 0.28, 1),
+                   "neon_hi": (0.08, 0.08, 0.10, 1), "lim_tint": (0.66, 0.66, 0.70, 1)},
+        "lights": [
+            ("Key_Gate" + LAX, "DirectionalLight3D", B_KEY_FROM_N.format(0, 8, -20), c(0.90, 0.92, 0.96), 0.25),
+            ("Fill_Gate" + LAX, "DirectionalLight3D", B_FILL.format(0, 5, -20), c(0.80, 0.80, 0.84), 0.15),
+            ("Back" + LAX, "DirectionalLight3D", B_BACK.format(0, 5, -10), c(0.70, 0.72, 0.80), 0.10),
+            # the ceiling's light panels, three rows of three
+            *[("Gate_Overhead_{}_{}".format(i, j) + LAX, "OmniLight3D", I.format(x, 5.1, -y), c(0.96, 0.96, 0.92), 1.3,
+               {"omni_range": 11.0}) for i, x in enumerate((-8.0, 0.0, 8.0)) for j, y in enumerate((8.5, 20.0, 31.5))],
+            # the store: bright inside, spilling out through its glass
+            ("Store_Glow_S" + LAX, "OmniLight3D", I.format(8.0, 2.8, -19.5), c(1.0, 0.96, 0.86), 2.0, {"omni_range": 7.5}),
+            ("Store_Glow_N" + LAX, "OmniLight3D", I.format(8.0, 2.8, -26.5), c(1.0, 0.96, 0.86), 2.0, {"omni_range": 7.5}),
+            # the cabin (aisle x 60)
+            ("Key_Cabin" + CABIN, "DirectionalLight3D", B_KEY_FROM_N.format(60, 4, -6), c(0.80, 0.82, 0.90), 0.08),
+            *[("Cove_Night_{}__plane_night".format(k), "OmniLight3D", I.format(60.0, 2.0, -y), c(0.50, 0.56, 0.90), 0.35,
+               {"omni_range": 5.0}) for k, y in enumerate((3.5, 8.0, 12.5))],
+            # Andy's "satellite lamp" (blender (61.57, 7.97, 1.73)), straight down onto his seat
+            ("Reading_Lamp__plane_night", "SpotLight3D", "Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 61.57, 1.72, -7.97)",
+             c(1.0, 0.92, 0.74), 3.0, {"spot_range": 2.2, "spot_angle": 24.0}),
+            ("Monitor_Glow__plane_night", "OmniLight3D", I.format(61.3, 1.02, -8.2), c(0.62, 0.74, 1.0), 0.6,
+             {"omni_range": 1.8}),
+            *[("Window_Day_{}_{}__plane_day".format(s, k), "OmniLight3D", I.format(60.0 + s * 1.55, 1.25, -y), c(0.92, 0.95, 1.0), 0.9,
+               {"omni_range": 3.2}) for s in (-1, 1) for k, y in enumerate((3.4, 7.6, 11.8))],
+            *[("Cove_Warm_{}__plane_vol4".format(k), "OmniLight3D", I.format(60.0, 2.0, -y), c(1.0, 0.82, 0.60), 0.45,
+               {"omni_range": 5.0}) for k, y in enumerate((3.5, 8.0, 12.5))],
+        ],
+        "mood_strata": ["raw", "memory_warm", "noir", "lithograph",
+                        "candlelight", "silent_film_18"],
+    },
+    {
+        # DICKENS DEAN's rooms (build_dean_offices.py): the trio's Office by
+        # day (the sun through the front glass); the imagined lobby, bright
+        # and hazy; the club's back office at night on its desk lamp, the
+        # club's pink spilling through the open door; the glass house's ring
+        # of monitors (x 100..107); the tower corridor and its city (x 140..146).
+        "out_path": os.path.join(ROOT, "dean_offices.tscn"),
+        "uid": "uid://dean_offices_v1",
+        "root_node": "DeanOffices",
+        "glb": "res://assets/3d/locales/dean_offices.glb",
+        "env": {"bg": (0.03, 0.03, 0.05, 1), "amb": (0.60, 0.62, 0.70, 1),
+                "amb_e": 0.30, "fog": (0.20, 0.20, 0.24, 1), "fog_e": 0.2,
+                "fog_d": 0.003, "sat": 0.94, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.94, 0.86, 0.70, 1), "bg": (0.07, 0.07, 0.09, 1),
+                   "neon_edge": (0.80, 0.56, 0.74, 1), "neon_lo": (0.26, 0.22, 0.26, 1),
+                   "neon_hi": (0.07, 0.07, 0.09, 1), "lim_tint": (0.70, 0.60, 0.70, 1)},
+        "lights": [
+            # the Office: the street's daylight through the S glass
+            ("Key_Sun" + ONEI, "DirectionalLight3D", B_SUN_FROM_S.format(0, 6, 6), c(1.0, 0.94, 0.82), 1.0),
+            ("Fill_Office" + ONEI, "DirectionalLight3D", B_FILL.format(0, 4, -4), c(0.82, 0.86, 0.94), 0.30),
+            ("Back" + ONEI, "DirectionalLight3D", B_BACK.format(0, 4, 0), c(0.86, 0.86, 0.90), 0.20),
+            ("Front_Glass_Day" + ONEI, "OmniLight3D", I.format(0.0, 1.6, -0.8), c(0.96, 0.96, 0.94), 1.6, {"omni_range": 8.0}),
+            ("Office_Overhead" + ONEI, "OmniLight3D", I.format(0.0, 2.8, -5.0), c(0.96, 0.96, 0.92), 0.7, {"omni_range": 7.0}),
+            # the lobby: soft light from everywhere
+            ("Key_Lobby__tutorial_lobby", "DirectionalLight3D", B_KEY_FROM_N.format(37, 4, -5), c(1.0, 1.0, 0.98), 0.40),
+            *[("Lobby_Glow_{}__tutorial_lobby".format(k), "OmniLight3D", I.format(x, 3.6, -5.0), c(1.0, 0.98, 0.96), 1.3,
+               {"omni_range": 10.0}) for k, x in enumerate((32.5, 37.0, 41.5))],
+            # the club office: the desk lamp (blender (66.2, 5.54, 1.17)), the club through the door
+            ("Lamp_Desk_Club" + CLUBO, "OmniLight3D", I.format(66.2, 1.15, -5.5), c(1.0, 0.76, 0.50), 1.3, {"omni_range": 5.0}),
+            ("Club_Door_Spill" + CLUBO, "OmniLight3D", I.format(62.0, 1.8, 0.4), c(0.98, 0.34, 0.70), 1.4, {"omni_range": 4.5}),
+            ("Club_Floor_Glow" + CLUBO, "OmniLight3D", I.format(62.6, 2.4, 6.5), c(0.98, 0.30, 0.66), 2.0, {"omni_range": 6.0}),
+            ("Club_Off_Overhead" + CLUBO, "OmniLight3D", I.format(64.0, 2.8, -3.0), c(0.96, 0.82, 0.70), 1.6, {"omni_range": 7.0}),
+            ("Key_Club" + CLUBO, "DirectionalLight3D", B_KEY_FROM_N.format(64, 3, -3), c(0.60, 0.56, 0.70), 0.05),
+            # the monitor ring (centre blender (104.0, 3.2)), the text game, the night through the glass
+            ("Monitor_Ring_Glow__dean_monitor_room", "OmniLight3D", I.format(104.0, 1.2, -3.2), c(0.56, 0.66, 0.96), 1.6,
+             {"omni_range": 4.5}),
+            ("Text_Game_Glow__dean_monitor_room", "OmniLight3D", I.format(102.9, 1.0, -3.2), c(0.50, 0.96, 0.56), 0.5,
+             {"omni_range": 1.6}),
+            ("Key_Night_Glass__dean_monitor_room", "DirectionalLight3D", B_KEY_FROM_N.format(103, 4, -3), c(0.46, 0.54, 0.80), 0.10),
+            # the tower corridor: the city through the glass, the downlights, the door's light under it
+            *[("City_Glow_{}__dean_tower_corridor".format(k), "OmniLight3D", I.format(145.4, 1.6, -y), c(1.0, 0.80, 0.56), 1.4,
+               {"omni_range": 7.0}) for k, y in enumerate((5.0, 15.0, 25.0))],
+            *[("Tower_Downlight_{}__dean_tower_corridor".format(k), "OmniLight3D", I.format(142.4, 3.1, -y), c(0.86, 0.90, 1.0), 0.9,
+               {"omni_range": 6.0}) for k, y in enumerate((3.0, 9.0, 15.0, 21.0, 27.0))],
+            ("Door_Spill_Tower__dean_tower_corridor", "OmniLight3D", I.format(142.4, 0.05, -29.8), c(1.0, 0.94, 0.80), 0.8,
+             {"omni_range": 1.6}),
+            ("Key_Tower__dean_tower_corridor", "DirectionalLight3D", B_KEY_FROM_N.format(143, 4, -10), c(0.56, 0.60, 0.80), 0.08),
         ],
         "mood_strata": ["raw", "noir", "memory_warm", "lithograph",
                         "candlelight", "silent_film_18"],

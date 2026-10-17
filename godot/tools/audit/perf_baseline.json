@@ -1,9 +1,24 @@
 {
+ "airport_cabin": {
+  "draw": 222,
+  "prims": 71920,
+  "objects": 392
+ },
  "ben_bedroom": {
   "draw": 92
  },
+ "caltech_dabney": {
+  "draw": 150,
+  "prims": 90280,
+  "objects": 320
+ },
  "centro_grocery_aisle": {
   "draw": 214
+ },
+ "dean_offices": {
+  "draw": 116,
+  "prims": 61408,
+  "objects": 286
  },
  "diner": {
   "draw": 1248

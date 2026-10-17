@@ -46,11 +46,15 @@
    "scenes": 1
   },
   "vol1_club_office_night": {
-   "fit": "standin",
-   "to": "3d:foxhole_dressing_room",
-   "build": "dean_office",
-   "note": "the club's back office",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:club_office",
+   "build": "dean_offices",
+   "note": "Dean's back office in Club #: the shirts, the four devices; Aria at rest under a sheet",
+   "scenes": 2,
+   "built": "2026-10-17 draft 1",
+   "by_scene": {
+    "vol1_ch8_triumvirate": "3d:club_office_after"
+   }
   },
   "vol1_club_sharp": {
    "fit": "exact",
@@ -162,11 +166,15 @@
    "scenes": 2
   },
   "vol1_office_day": {
-   "fit": "standin",
-   "to": "3d:new_orleans_office",
-   "build": "dean_office",
-   "note": "INT. THE OFFICE: Dickens Dean's",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:onei_office",
+   "build": "dean_offices",
+   "note": "INT. THE OFFICE: the trio's new office (not Dean's - 'This is your new office'), three desks, the goggles",
+   "scenes": 2,
+   "built": "2026-10-17 draft 1",
+   "by_scene": {
+    "vol1_ch6_debrief": "3d:onei_office_door"
+   }
   },
   "vol1_painting_interior": {
    "fit": "reuse",
@@ -206,11 +214,12 @@
    "scenes": 1
   },
   "vol1_tutorial_lobby": {
-   "fit": "standin",
-   "to": "3d:cedar_tower_lobby",
-   "build": "dean_office",
-   "note": "the tutorial: office spaces carved out of imagination",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:tutorial_lobby",
+   "build": "dean_offices",
+   "note": "the tutorial: a lobby carved out of imagination, Olivia's console, the television",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol1_wagner_home": {
    "fit": "exact",
@@ -758,37 +767,44 @@
    "scenes": 1
   },
   "vol3_caltech_bare_room": {
-   "fit": "standin",
-   "to": "3d:ben_bedroom",
+   "fit": "exact",
+   "to": "3d:caltech_bare_room",
    "build": "caltech_dabney",
-   "note": "Dabney House",
-   "scenes": 2
+   "note": "1945: the bare cement room, one bulb, the door propped open",
+   "scenes": 2,
+   "built": "2026-10-17 draft 1"
   },
   "vol3_caltech_campus_afternoon": {
-   "fit": "standin",
-   "to": "3d:main_street",
+   "fit": "reuse",
+   "to": "3d:dabney_side_yard",
    "build": "caltech_dabney",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the side yard out to the ivy wall and Pasadena (the couchmobile under its tarp)",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_caltech_dabney_day": {
-   "fit": "standin",
-   "to": "3d:main_street",
+   "fit": "exact",
+   "to": "3d:dabney_courtyard_1945",
    "build": "caltech_dabney",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the same courtyard in 1945, from the same camera: no hoop, no speakers, no murals",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_caltech_hallway_1945": {
-   "fit": "standin",
-   "to": "3d:accretion_corridor",
+   "fit": "exact",
+   "to": "3d:caltech_hallway_1945",
    "build": "caltech_dabney",
-   "note": "the same halls in 1945",
-   "scenes": 1
+   "note": "the same corridor in 1945, bare under fluorescent tubes",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol3_caltech_tunnels_night": {
-   "fit": "standin",
-   "to": "3d:accretion_corridor",
+   "fit": "exact",
+   "to": "3d:caltech_tunnels",
    "build": "caltech_dabney",
-   "note": "the steam tunnels",
-   "scenes": 1
+   "note": "the tunnels in 2003: graffiti on everything, the lantern room's red and blue",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol3_car_backseat_streetlamps": {
    "fit": "reuse",
@@ -878,16 +894,23 @@
    "scenes": 1
   },
   "vol3_dabney_courtyard_day": {
-   "fit": "standin",
-   "to": "3d:main_street",
+   "fit": "exact",
+   "to": "3d:dabney_courtyard",
    "build": "caltech_dabney",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the courtyard in 2003: The Birth of God, the palms, the arcade",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_dabney_game_room": {
-   "fit": "standin",
-   "to": "3d:cosmic_comics_back_office",
+   "fit": "exact",
+   "to": "3d:dabney_game_room",
    "build": "caltech_dabney",
-   "scenes": 2
+   "scenes": 2,
+   "note": "Dabney's basement: the U of black leather couches, the wall of screens, the fridges",
+   "built": "2026-10-17 draft 1",
+   "by_scene": {
+    "vol3_ch6_couch": "3d:dabney_couch"
+   }
   },
   "vol3_dance_floor_fog": {
    "fit": "reuse",
@@ -1053,11 +1076,12 @@
    "scenes": 1
   },
   "vol3_lax_terminal_night": {
-   "fit": "standin",
-   "to": "3d:hospital_waiting",
-   "build": "airport",
-   "note": "LAX",
-   "scenes": 3
+   "fit": "exact",
+   "to": "3d:lax_gate",
+   "build": "airport_cabin",
+   "note": "the gate at LAX, the convenience store across the concourse",
+   "scenes": 3,
+   "built": "2026-10-17 draft 1"
   },
   "vol3_meld_time_pod_interior": {
    "fit": "2d",
@@ -1158,16 +1182,20 @@
    "scenes": 1
   },
   "vol3_plane_cabin_day": {
-   "fit": "standin",
-   "to": null,
-   "build": "airport",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:plane_day",
+   "build": "airport_cabin",
+   "scenes": 1,
+   "note": "\"flight number one\": the notebook on his tray, the shades up",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_plane_cabin_night": {
-   "fit": "standin",
-   "to": null,
-   "build": "airport",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:plane_night",
+   "build": "airport_cabin",
+   "scenes": 1,
+   "note": "the late flight: Andy at the window, the armrest up, the cups, the lamp",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_pulp_helipad_dawn": {
    "fit": "2d",
@@ -1222,10 +1250,12 @@
    }
   },
   "vol3_spencer_room": {
-   "fit": "standin",
-   "to": "3d:ben_bedroom",
+   "fit": "exact",
+   "to": "3d:spencer_room",
    "build": "caltech_dabney",
-   "scenes": 1
+   "scenes": 1,
+   "note": "Spencer on the floor with the laptop; the Contra sketch framed on the wall",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_suburban_garage_night": {
    "fit": "reuse",
@@ -1284,10 +1314,12 @@
    "scenes": 2
   },
   "vol4_airplane_cabin": {
-   "fit": "standin",
-   "to": null,
-   "build": "airport",
-   "scenes": 1
+   "fit": "reuse",
+   "to": "3d:plane_vol4",
+   "build": "airport_cabin",
+   "scenes": 1,
+   "note": "November: the cabin full of strangers asleep, most shades down",
+   "built": "2026-10-17 draft 1"
   },
   "vol4_all_over_town": {
    "fit": "reuse",
@@ -1396,10 +1428,12 @@
    "scenes": 2
   },
   "vol4_caltech_basement": {
-   "fit": "standin",
-   "to": "3d:accretion_basement",
+   "fit": "exact",
+   "to": "3d:dabney_couch_carving",
    "build": "caltech_dabney",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the same basement, along the carved couch (the poem)",
+   "built": "2026-10-17 draft 1"
   },
   "vol4_charlie_apartment_day": {
    "fit": "standin",
@@ -1486,10 +1520,12 @@
    "scenes": 1
   },
   "vol4_dean_office_night": {
-   "fit": "standin",
-   "to": "3d:new_orleans_office",
-   "build": "dean_office",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:dean_tower_corridor",
+   "build": "dean_offices",
+   "scenes": 1,
+   "note": "his office building at night: the corridor, the city, the door he leads her through",
+   "built": "2026-10-17 draft 1"
   },
   "vol4_desk_dawn": {
    "fit": "exact",
@@ -1579,11 +1615,12 @@
    "scenes": 1
   },
   "vol4_monitor_room_night": {
-   "fit": "standin",
-   "to": "3d:new_orleans_office",
-   "build": "dean_office",
-   "note": "Dickens Dean's bedroom office of monitors (vol 4's treatment)",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:dean_monitor_room",
+   "build": "dean_offices",
+   "note": "Dean's bedroom office in the glass house: the ring of monitors, the text game",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol4_monitor_wall": {
    "fit": "2d",

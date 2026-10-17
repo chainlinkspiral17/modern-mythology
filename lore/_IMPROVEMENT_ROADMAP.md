@@ -3834,6 +3834,69 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 117: FOUR MORE VOLS 1–4 SETS (draft 1) — THE SLEEP LAB, CALTECH, THE AIRPORT,
+DEAN'S OFFICES.** The user: "continue" (the vols 1–4 backgrounds). Each set was planned from a
+brief that read its scenes in full (what is in the room, what is not, the views each scene needs),
+with every quoted sentence checked against the scene text.
+- **sleep_lab** (`build_sleep_lab.py`):
+  - Jane's sleep study in the basement's basement: two beds with the bookshelf between them, the
+    black curtain round the computer, Kermit on the test CRT, the two posters, the bathroom, the
+    corridor of empty eel aquariums. Views: entry, desk, night (the glow behind the curtain is the
+    only light).
+  - The Portland gallery's four-screen room: 18 x 18 m, 7 m white walls, 81 bolted swivel chairs.
+    Views: wide (house lights), show (the four walls lit), beam (meld_seam_2_3: black, with the
+    stalk machine).
+- **caltech_dabney** (`build_caltech_dabney.py`):
+  - The Dabney courtyard in 2003 and 1945 from one camera. The hoop, the window speakers, the
+    umbrella table and the murals are 2003-only props, so the "this isn't right" difference reads.
+  - The side yard: the couchmobile under its tarp, the ivy wall, Pasadena beyond.
+  - The basement game room: the U of couches, the wall of CRTs and LCDs, the fridges, the PC, the
+    cabinet. Spencer's room. The tunnels in 2003 (graffiti, the lanterns) and 1945 (bare). The
+    bare room, lit or dark.
+- **airport_cabin** (`build_airport_cabin.py`):
+  - The gate at LAX with the convenience store across the concourse.
+  - One unbranded 3 + 3 economy cabin that plays three flights: the night flight (armrest up,
+    cups, the reading lamp, a black window), "flight number one" by day (the notebook) and vol 4's
+    November flight (blankets, shades down).
+- **dean_offices** (`build_dean_offices.py`):
+  - The trio's Office. It is THEIR office, not Dean's; bg_places' note said "Dickens Dean's" and is
+    corrected.
+  - The imagined lobby (Olivia's console, the TV).
+  - Dean's back office in Club #: three shirts, four devices, Aria at rest under a sheet, the club
+    through the door.
+  - The glass house's ring of monitors (the text game on the nearest one).
+  - The tower corridor with the city and the door at its end.
+- **One picture, a view per scene:** a bg_places entry takes `by_scene` ({scene_id: "3d:<preset>"}).
+  GameEngine.resolve_bg and vn_story_audit honour it. The sleep lab plays its desk view in ch6_jane
+  and its night view in ch6_binder and meld_seam_3_4. The game room plays the couch view in
+  ch6_couch, the Office its reverse in the debrief, the club office its "after" in triumvirate,
+  and the four-screen room its beam in meld_seam_2_3.
+- 20 stems re-pointed. vn_story_audit is down from 316 to 313 problems: the three cabins had no
+  picture at all.
+- The geometry gates on all four builders are clean: 0 clips, 0 floating, 0 grammar, 0 doorway,
+  0 facing seats. Draw calls: sleep_lab 348, caltech_dabney 150, airport_cabin 222,
+  dean_offices 116 (perf_baseline.json). The four-screen chairs went to a 1.6 m pitch because a chair spun round faced
+  its neighbour.
+- A SpotLight3D's Transform3D lists its nine basis numbers as ROWS (the beam first pointed up):
+  a lesson in the 3D playbook.
+- Knots the Caltech brief flagged, left unfixed:
+  - ch2 has Jack alone find Andy in his basement office; ch9 has Ron and Jack together.
+  - The 2003 lab is "in the new building, Moore", but in 1945 "There was a whole office here".
+
+DRAFT 2 targets:
+- The beam as a visible shaft (a fog pass).
+- The arcade's arch soffits (the spandrels read as lamp shades at an angle).
+- The gallery lobby through the four-screen room's doors.
+- The observation room behind the sleep lab's E door.
+- The town lights under the night flight's window.
+- The club office as a room of build_club_sharp.py, so the door shows the real floor and Joan's
+  cage.
+- The glass house joined with vol4_glass_tower.
+- The bare room's dark-to-light as a mid-scene bg switch, and the four-screen room's wide view
+  before "The doors close".
+- Deck framing on all four.
+- Next builds by scene count: little_league (7), chau_house (6), copy_shop (5), pasadena_1945 (5).
+
 **2026-10-17 · pass 116: EVERY GENERATION DESCRIPTION READ FROM ITS CHAPTER, THEN CHECKED.** The
 user: "the liar king is chapter 0 but the fool was chapter 0 ... it's broken", "there needs to be
 a plate for the fool", "description generations are still not capturing what the chapter is about.

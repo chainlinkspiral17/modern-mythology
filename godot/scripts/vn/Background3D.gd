@@ -2927,7 +2927,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/sleep_lab.tscn",
 		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
 		# "It is cinema on four screens, all at once." — seated in the island, one wall full-frame, its neighbours at the edges
-		"camera_origin": Vector3(40.6, 1.3, -8.4),
+		"camera_origin": Vector3(40.8, 1.3, -8.2),
 		"camera_rotation": Vector3(0.12, deg_to_rad(0.0), 0.0),
 		"fov": 60.0,
 		"env": {"ambient_color": Color(0.40, 0.40, 0.46, 1), "ambient_energy": 0.22, "fog_color": Color(0.10, 0.10, 0.12, 1)},
@@ -2941,6 +2941,250 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.20, deg_to_rad(-107.0), 0.0),
 		"fov": 62.0,
 		"env": {"ambient_color": Color(0.20, 0.20, 0.26, 1), "ambient_energy": 0.05, "fog_color": Color(0.02, 0.02, 0.03, 1)},
+		"suppress_input": true,
+	},
+	"dabney_courtyard": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# "under the mural" - 2003, mid-afternoon: The Birth of God on the W wing, the palms, the arcade at left
+		"camera_origin": Vector3(10.5, 1.6, -8.5),
+		"camera_rotation": Vector3(0.05, deg_to_rad(88.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"dabney_courtyard_1945": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# 1945: the same camera - no hoop, no speakers in the windows, no umbrella table, no murals
+		"camera_origin": Vector3(10.5, 1.6, -8.5),
+		"camera_rotation": Vector3(0.05, deg_to_rad(88.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"dabney_side_yard": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# the couchmobile under its tarp, the overgrown ivy wall, Pasadena beyond (also the campus establishing shot)
+		"camera_origin": Vector3(16.6, 2.0, -1.2),
+		"camera_rotation": Vector3(0.05, deg_to_rad(-60.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"dabney_game_room": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# "black leather couches" in a U facing the wall of screens; the fridges at right
+		"camera_origin": Vector3(66.0, 1.65, -2.0),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-12.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.32, "fog_color": Color(0.06, 0.06, 0.09, 1)},
+		"suppress_input": true,
+	},
+	"dabney_couch": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# "Afternoon, nobody up yet" - sunk in the back couch, the screens ahead
+		"camera_origin": Vector3(64.6, 1.05, -3.9),
+		"camera_rotation": Vector3(0.02, deg_to_rad(-15.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.32, "fog_color": Color(0.06, 0.06, 0.09, 1)},
+		"suppress_input": true,
+	},
+	"dabney_couch_carving": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# vol 4's poem: low and side-on along the carved couch, the sprite murals beyond
+		"camera_origin": Vector3(68.6, 0.8, -3.2),
+		"camera_rotation": Vector3(0.0, deg_to_rad(75.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.32, "fog_color": Color(0.06, 0.06, 0.09, 1)},
+		"suppress_input": true,
+	},
+	"spencer_room": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# Spencer on the floor in his blanket with the laptop; the frames on the wall, the long Contra sketch
+		"camera_origin": Vector3(84.05, 1.85, -2.2),
+		"camera_rotation": Vector3(-0.40, deg_to_rad(76.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.84, 0.82, 0.76, 1), "ambient_energy": 0.45, "fog_color": Color(0.70, 0.70, 0.68, 1)},
+		"suppress_input": true,
+	},
+	"caltech_tunnels": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# 2003, night: graffiti on everything, down the corridor to its vanishing point
+		"camera_origin": Vector3(101.6, 1.6, -4.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.70, 0.72, 0.70, 1), "ambient_energy": 0.36, "fog_color": Color(0.30, 0.32, 0.30, 1)},
+		"suppress_input": true,
+	},
+	"caltech_hallway_1945": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# 1945: the same corridor bare, "florescent ugly", toward the clinic
+		"camera_origin": Vector3(101.6, 1.6, -4.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.66, 0.74, 0.62, 1), "ambient_energy": 0.36, "fog_color": Color(0.30, 0.34, 0.28, 1)},
+		"suppress_input": true,
+	},
+	"caltech_bare_room": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# 1945: "Not very big at all." - the one bulb on, the door propped open
+		"camera_origin": Vector3(106.1, 1.65, -8.95),
+		"camera_rotation": Vector3(-0.15, deg_to_rad(116.0), 0.0),
+		"fov": 74.0,
+		"env": {"ambient_color": Color(0.70, 0.70, 0.66, 1), "ambient_energy": 0.18, "fog_color": Color(0.20, 0.20, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"caltech_bare_room_dark": {
+		"scene": "res://scenes/locales/caltech_dabney.tscn",
+		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
+		# 1945, waking: dark on the cement, the light under the door
+		"camera_origin": Vector3(105.4, 0.25, -7.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(75.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.40, 0.46, 0.42, 1), "ambient_energy": 0.03, "fog_color": Color(0.02, 0.02, 0.02, 1)},
+		"suppress_input": true,
+	},
+	"lax_gate": {
+		"scene": "res://scenes/locales/airport_cabin.tscn",
+		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
+		# "Janessa waits at LAX for the flight to up up and away." - the seating, the concourse, the store lit across it
+		"camera_origin": Vector3(-8.5, 1.6, -12.5),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-40.0), 0.0),
+		"fov": 68.0,
+		"suppress_input": true,
+	},
+	"lax_store": {
+		"scene": "res://scenes/locales/airport_cabin.tscn",
+		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
+		# "She buys books and gifts in the airport convenience store." - its glass front from the concourse
+		"camera_origin": Vector3(-1.0, 1.6, -21.0),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-85.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"lax_seat_close": {
+		"scene": "res://scenes/locales/airport_cabin.tscn",
+		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
+		# her lists and pen, the small bag, the shop bag with the card - over the seats
+		"camera_origin": Vector3(-4.3, 1.45, -16.2),
+		"camera_rotation": Vector3(-0.51, deg_to_rad(23.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"plane_night": {
+		"scene": "res://scenes/locales/airport_cabin.tscn",
+		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
+		# "seated at the window" - across his row from the aisle: the armrest up, the cups, the lamp on, the black window
+		"camera_origin": Vector3(59.9, 1.15, -7.75),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.40, 0.44, 0.66, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"plane_day": {
+		"scene": "res://scenes/locales/airport_cabin.tscn",
+		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
+		# "flight number one" - the same row by day: the notebook on his tray, the shades up
+		"camera_origin": Vector3(59.9, 1.15, -7.75),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.86, 0.88, 0.92, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.82, 0.86, 1)},
+		"suppress_input": true,
+	},
+	"plane_vol4": {
+		"scene": "res://scenes/locales/airport_cabin.tscn",
+		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
+		# "i fall asleep among strangers" - down the aisle, the cabin full and dim, most shades down
+		"camera_origin": Vector3(60.0, 1.5, -0.6),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.70, 0.64, 0.58, 1), "ambient_energy": 0.22, "fog_color": Color(0.20, 0.18, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"onei_office": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# "Dickens Dean unlocks the door and goes in" - from the street door: the three desks, the goggles
+		"camera_origin": Vector3(-4.5, 1.6, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-30.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.88, 1), "ambient_energy": 0.60, "fog_color": Color(0.80, 0.82, 0.84, 1)},
+		"suppress_input": true,
+	},
+	"onei_office_desk": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# at Faust's desk: the goggles, Jacob's with the card beside it
+		"camera_origin": Vector3(-5.4, 1.25, -6.6),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-62.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.88, 1), "ambient_energy": 0.60, "fog_color": Color(0.80, 0.82, 0.84, 1)},
+		"suppress_input": true,
+	},
+	"onei_office_door": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# the debrief: back toward the street door and the daylight
+		"camera_origin": Vector3(2.0, 1.6, -7.4),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(139.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.88, 1), "ambient_energy": 0.60, "fog_color": Color(0.80, 0.82, 0.84, 1)},
+		"suppress_input": true,
+	},
+	"tutorial_lobby": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# "These office spaces were carved out of imagination" - Hazy: Olivia at her console, the television
+		"camera_origin": Vector3(37.0, 1.6, -0.9),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(10.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(1.0, 0.98, 0.96, 1), "ambient_energy": 1.10, "fog_color": Color(0.94, 0.94, 0.96, 1)},
+		"suppress_input": true,
+	},
+	"club_office": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# the briefing: the three shirts and four devices on the table, Dean's desk behind, the club through the door
+		"camera_origin": Vector3(62.6, 1.6, -0.9),
+		"camera_rotation": Vector3(-0.16, deg_to_rad(-15.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.70, 0.58, 0.70, 1), "ambient_energy": 0.55, "fog_color": Color(0.12, 0.08, 0.12, 1)},
+		"suppress_input": true,
+	},
+	"club_office_after": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# "The office is very quiet without his voice in it." - Aria at rest under the sheet
+		"camera_origin": Vector3(60.8, 1.5, -1.2),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-60.0), 0.0),
+		"fov": 68.0,
+		"env": {"ambient_color": Color(0.52, 0.46, 0.58, 1), "ambient_energy": 0.34, "fog_color": Color(0.06, 0.05, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"dean_monitor_room": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# "stands alone in the center of computer monitors" - from a screen, back to the centre and the door
+		"camera_origin": Vector3(102.4, 1.55, -3.2),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-90.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.40, 0.44, 0.60, 1), "ambient_energy": 0.18, "fog_color": Color(0.04, 0.05, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"dean_tower_corridor": {
+		"scene": "res://scenes/locales/dean_offices.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
+		# "These are the things you probably shouldn't see" - the corridor, the city, the door at the end
+		"camera_origin": Vector3(142.0, 1.6, -1.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(-5.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.50, 0.50, 0.60, 1), "ambient_energy": 0.20, "fog_color": Color(0.06, 0.06, 0.10, 1)},
 		"suppress_input": true,
 	},
 	"kai_apartment": {
