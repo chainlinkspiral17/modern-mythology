@@ -169,7 +169,7 @@ var _show_mat: ShaderMaterial = null
 # slowstick under the shelf). Float dials lerp over REGISTER_FADE;
 # the palette snaps at the midpoint. See lore/_PSYCHEDELIC_DESIGN_BIBLE.md.
 const REGISTERS: Dictionary = {
-	# the base look · rainbow aura, moderate everything (menus, vols 1-4)
+	# the base look · rainbow aura, moderate everything (menus, anything unregistered)
 	# fb_* · THE FEEDBACK (2026-09-11). fb_amount is how much light
 	# enters the buffer; fb_decay is the wake's length in e-folds per
 	# second (LOW = it hangs); fb_zoom is the re-projection rate in
@@ -210,6 +210,47 @@ const REGISTERS: Dictionary = {
 		# the oil projector: the densest feedback of the five — light BLOOMS
 		# outward and turns slowly, which is what a liquid light show is
 		"fb_amount": 0.90, "fb_decay": 3.8, "fb_zoom": 0.17, "fb_spin": 0.10,
+	},
+	# ── VOLS 1-4 (2026-10-17, the user: "vol 1-4 visual novel UIs need to
+	# be brought up to 5-7 standard"). Until now the first four volumes
+	# ran on `base`. Each gets its own register, derived the way the
+	# pillar ones were — from the SOUND, here the cues each volume's own
+	# scenes name (no sound brief from the user yet; draft 1). Palettes
+	# reuse the shader's modes; the dials make each volume its own.
+	# vol 1 · FAUST 3 · club thump, dream drone, night drives, "a guitar
+	# riff buried deep, a lonesome wail into the stardust aether": the
+	# rainbow aura run warm and loud, a little stardust, club light that
+	# blooms outward and turns back against the clock
+	"triumvirate": {
+		"palette_mode": 0, "line_amount": 1.2, "flow_amount": 1.1, "hue_amount": 0.9,
+		"ripple_amount": 1.0, "spark_amount": 0.2, "grain_amount": 0.0, "pulse_decay": 3.2,
+		"fb_amount": 0.60, "fb_decay": 4.5, "fb_zoom": 0.12, "fb_spin": -0.04,
+	},
+	# vol 2 · SMALL WOOD, 1994 · coast wind, the Seagash drone, the dream
+	# journal's adlib: vol 7's oil-projector palette, thirty years
+	# younger and fogged — less colour, a little grain, a wake that hangs
+	# like fog over the bay and barely travels
+	"small_wood": {
+		"palette_mode": 3, "line_amount": 0.8, "flow_amount": 0.9, "hue_amount": 0.6,
+		"ripple_amount": 0.8, "spark_amount": 0.0, "grain_amount": 0.3, "pulse_decay": 3.4,
+		"fb_amount": 0.55, "fb_decay": 3.0, "fb_zoom": 0.06, "fb_spin": 0.00,
+	},
+	# vol 3 · THE EARTHMAN · signal drone, radio 1945, the pulp theme,
+	# neon drift: teal lines with amber on the kick, rings of light on the
+	# beat (a transmission arriving), a few stars (the Melody's space),
+	# and light that SINKS inward — a receiver, not a projector
+	"signal": {
+		"palette_mode": 1, "line_amount": 1.1, "flow_amount": 0.8, "hue_amount": 0.4,
+		"ripple_amount": 1.1, "spark_amount": 0.35, "grain_amount": 0.2, "pulse_decay": 3.8,
+		"fb_amount": 0.50, "fb_decay": 5.0, "fb_zoom": -0.12, "fb_spin": 0.00,
+	},
+	# vol 4 · THE ZINE · xerox hum, the photocopier drone, a chiptune loop:
+	# two riso inks and full toner grain like vol 6, but the copy of a
+	# copy — the wake recedes a little each generation instead of hanging
+	"xerox": {
+		"palette_mode": 2, "line_amount": 1.05, "flow_amount": 0.6, "hue_amount": 0.25,
+		"ripple_amount": 0.6, "spark_amount": 0.0, "grain_amount": 1.0, "pulse_decay": 2.8,
+		"fb_amount": 0.60, "fb_decay": 4.0, "fb_zoom": -0.03, "fb_spin": 0.00,
 	},
 	# DOMESTIC · a warm room in a volume that is otherwise swamp and
 	# arcade (2026-09-11, Deck read: "the lovers should be warm and
@@ -852,6 +893,10 @@ func set_mood_scale(v: float) -> void:
 # ── Registers ─────────────────────────────────────────────────────
 static func register_for_volume(vol: int) -> String:
 	match vol:
+		1: return "triumvirate"
+		2: return "small_wood"
+		3: return "signal"
+		4: return "xerox"
 		5: return "arcana"
 		6: return "community"
 		7: return "milk_honey"

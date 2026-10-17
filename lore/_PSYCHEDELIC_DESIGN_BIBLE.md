@@ -116,7 +116,7 @@ glow, and the hue drift runs 1.7× — the one thing that reads on
 white. Dark scenes keep the glow. The cross-fade is by scene
 luminance per pixel, so a lit window in a dark room still glows.
 
-## The four registers
+## The registers
 
 | Register | Pillar | Sound (the brief) | Visual register (shipped, draft 1) | Game grammar (the queue) |
 |---|---|---|---|---|
@@ -125,7 +125,11 @@ luminance per pixel, so a lit window in a dark room still glows.
 | `milk_honey` | Vol 7 · LAND OF MILK AND HONEY · Smolvud · the substrate · the slowstock shelf's cabin | SCUMM game, psychedelic wall-of-sound classic rock, sci-fi | liquid light show — the oil-projector palette (amber / rose / violet / one cold blue); the densest flow and hue drift of the four (the wall of sound); a sparse starfield of sparks in the dark; big soft ripples | SCUMM: verb-object interaction in the VN chapters (look at / pick up / talk to / use … on — the cabin, the tower, the Daily Grind), an inventory that matters, dialogue trees with wrong answers that are funny not fatal; SCI-FI: the substrate is the engine under a small-town point-and-click — the strange thing is always one room away; WALL OF SOUND: beds + BGM + practicals all breathing together (practicals pulse with the bar at ~10% of lightshow_extreme) |
 | `slowstick` | every slowstick under the shelf | Jeff Minter | the FAINTEST register (draft 2B · "ugly and strobey" as an overlay): a faint neon breath on the lines, nothing on the flats, no sparks. The Minter look lives INSIDE each stick's own rendering — its particles, its glow, its beat-lit lines — never as a screen overlay on a 2D game's type | MINTER: score as spectacle (every point is a particle), escalation by DENSITY not punishment, bonus rounds as pure light synth, the whimsy where a studio's fiction allows it; feedback trails via a SubViewport history buffer (current hardware — Godot does this natively), particles via GPUParticles2D |
 | `domestic` | a WARM ROOM inside a cold pillar — named per scene with `[register:domestic]`, not per pillar | a fridge cycling, a radio two rooms over, people who know each other well enough not to talk | palette 5 HEARTH: amber → rose → cream and nothing on the cold side of the wheel; a LOW aura the colour of light through a curtain; almost no wash and almost no hue drift (a kitchen should stay the colour it is); the pulse never snaps (decay 2.8); the wake is afternoon sun on a wall — faint, slow, going nowhere | — (the chapter's own grammar) |
-| `base` | menus, vols 1–4, anything unregistered | — | rainbow aura, moderate everything | — |
+| `triumvirate` | Vol 1 · FAUST 3 (2026-10-17, draft 1) | the cues vol 1's scenes name: club thump, dream drone, night drives, "a guitar riff buried deep, a lonesome wail into the stardust aether" | the rainbow aura run warm and loud, a little stardust, club light that blooms outward and turns back against the clock | — (no brief yet) |
+| `small_wood` | Vol 2 · SMALL WOOD, 1994 (draft 1) | coast wind, the Seagash drone, the dream journal's adlib | vol 7's oil-projector palette, thirty years younger and fogged: less colour, a little grain, a wake that hangs like fog and barely travels | — (the dream journal is already SCUMM, like vol 7) |
+| `signal` | Vol 3 · THE EARTHMAN (draft 1) | signal drone, radio 1945, the pulp theme, neon drift | teal lines with amber on the kick, rings of light on the beat (a transmission arriving), a few stars, light that SINKS inward — a receiver, not a projector | — |
+| `xerox` | Vol 4 · THE ZINE (draft 1) | xerox hum, the photocopier drone, a chiptune loop | vol 6's two riso inks and full toner grain, but the copy of a copy: the wake recedes a little each generation instead of hanging | — |
+| `base` | menus, anything unregistered | — | rainbow aura, moderate everything | — |
 
 The values live in `TripSync.REGISTERS`; float dials cross-fade
 over 0.9 s when the register changes, the palette snaps at the
@@ -136,8 +140,12 @@ sludge hangs).
 ## Who pushes what
 
 - `GameEngine._apply_skin(vol)` → `register_for_volume(vol)`
-  (5 arcana · 6 community · 7 milk_honey · else base), owner the
-  engine (pops on quit to menu).
+  (1 triumvirate · 2 small_wood · 3 signal · 4 xerox · 5 arcana ·
+  6 community · 7 milk_honey · else base), owner the engine (pops on
+  quit to menu). The vols 1–4 registers (2026-10-17) are derived from
+  the music cues their own scenes name, because the user has not given
+  those volumes a sound brief yet. When the user does, re-derive them
+  from it.
 - `TarotGauntletGame._ready` → `arcana`; `CommunityPlannedGame._ready`
   → `community`. Owner the game root.
 - `SlowstickLook.apply(host, preset)` → `slowstick`, owner the look

@@ -228,6 +228,35 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-17 · a volume's look is a list of tables, and vols 1–4 were missing from all of them
+
+The user: "vol 1-4 visual novel UIs need to be brought up to 5-7 standard."
+Vols 5–7 get their identity from eight places, each keyed by volume or
+speaker:
+- `SceneDataDB.get_next_scene_id`'s `flow_vols`;
+- the chapter plates (`tools/sprites/gen_chapter_plates.py` `VOLUMES`);
+- `TripSync.register_for_volume` and `REGISTERS`;
+- `Background3D.VOLUME_PAPER`;
+- `CharLayer.CHAR_ACCENTS` and `VnBustPortrait._OVERRIDES`;
+- the dialogue box variant;
+- the chapter card.
+
+A new volume that is added only to `SkinDB.VOL_TO_SKIN` silently falls
+back to the defaults in every other table. Grep for `5:` / `"5"` beside
+`6` and `7` before calling a volume integrated.
+- **A `jump` to another scene is a scene change.** It used to call
+  `_load_scene` straight, with no fade and no chapter card, so a volume that
+  changes chapter by jump (vols 1–4, 59 times) never showed a card. Both
+  `end` and `jump` now go through `GameEngine._change_scene`.
+- **The terminal and paper boxes are skins, not exemptions.** They were 13 px
+  and 15 px type in a scrolling 220 px strip. They now take the standard
+  box's height, reading size, column and auto-fit; colours, faces, border
+  and tape stay theirs. Check with `tools/VNTypeSpecimen.tscn --skin
+  signal|zine` at one short and one long passage.
+- `.import` files are gitignored by pattern (`godot/**/*.import`); the
+  chapter plates' are force-added so a run without the editor still finds
+  them (`git add -f`).
+
 ### 2026-10-13 · a test rig must route the trip as the game does
 
 - **A halo that is not in the game.** Every portrait sheet since the

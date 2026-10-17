@@ -393,6 +393,60 @@ const CHAR_ACCENTS := {
 	"wren_haskell": Color("#c8b0e8"),     # vol6's Wren: her lavender streak
 	# vol1
 	"faust":        Color("#c89ae8"),
+	# ── vols 1-4 cast pass (2026-10-17, "vol 1-4 visual novel UIs need to
+	# be brought up to 5-7 standard"): the top speakers of each volume get
+	# a nameplate of their own, hues kept apart within the scenes they
+	# share (Faust's triumvirate; the four facets; the 1945 house).
+	# Generic keys ("woman", "sister", "margaret" — vol 7 has a Margaret)
+	# are left on the default.
+	"dickens_dean":    Color("#e0a050"),
+	"jacob":           Color("#78c8a0"),
+	"wagner":          Color("#f0e070"),
+	"joan":            Color("#e8607a"),
+	"olivia":          Color("#d8b8a0"),
+	"the_writer":      Color("#a8c0e0"),
+	"the_director":    Color("#d0d0d8"),
+	"the_artist":      Color("#f0a070"),
+	"the_human_being": Color("#b0d890"),
+	"air":             Color("#c8e8ff"),
+	"fire":            Color("#ff8040"),
+	"water":           Color("#58c8c0"),
+	"deborah":         Color("#b8a090"),
+	"emily":           Color("#f0e0b0"),
+	"helen":           Color("#d05868"),
+	"eric":            Color("#a08060"),
+	"the_fool":        Color("#f8f0a0"),
+	# vol2 · Small Wood
+	"bernard":         Color("#c0a070"),
+	"david_jarvis":    Color("#9a8a70"),
+	"not_chuck":       Color("#90b0c0"),
+	"guitar_gal":      Color("#e0b080"),
+	"star_gal":        Color("#c0a0e0"),
+	"becca":           Color("#e8a0a0"),
+	"joe_ku":          Color("#80c0e0"),
+	"charles":         Color("#a0b878"),
+	# vol3 · the Earthman
+	"andy":            Color("#7fa8d8"),
+	"ron":             Color("#e07848"),
+	"betty":           Color("#f0c878"),
+	"jack":            Color("#6890b0"),
+	"janessa":         Color("#88c070"),
+	"melody":          Color("#f0e6a0"),
+	"june":            Color("#a0a0e8"),
+	"terry":           Color("#b8a8c8"),
+	"jane":            Color("#d890a0"),
+	"niles":           Color("#d8c890"),
+	"marty":           Color("#a07850"),
+	"the_shopkeeper":  Color("#c0b090"),
+	# vol4 · the zine
+	"charlie":         Color("#88b0d0"),
+	"caroline":        Color("#f0b0c0"),
+	"esther":          Color("#c87850"),
+	"chess":           Color("#a0e0c8"),
+	"todd":            Color("#b0b0a0"),
+	"norm":            Color("#b0b0a0"),
+	"george":          Color("#8888a0"),
+	"hurstwood":       Color("#8888a0"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
 

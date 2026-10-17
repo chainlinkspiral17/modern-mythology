@@ -78,7 +78,11 @@ func get_first_scene(vol_num: int) -> Dictionary:
 
 
 func get_next_scene_id(scene_id: String) -> String:
-	var flow_vols: Array[String] = ["5", "6", "7"]
+	# The book in reading order (2026-10-17, the user: "vol 1-4 visual novel
+	# UIs need to be brought up to 5-7 standard"): vols 1-4 used to stop at
+	# their last scene and drop to the menu; now every volume runs into the
+	# next, as 5 -> 6 -> 7 always did.
+	var flow_vols: Array[String] = ["1", "2", "3", "4", "5", "6", "7"]
 	for vi in range(flow_vols.size()):
 		var vk: String = flow_vols[vi]
 		if not _vol_index.has(vk):

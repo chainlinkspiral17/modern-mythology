@@ -3353,6 +3353,10 @@ var _location_instance: Node = null
 # PAPER is the volume's: each register is painted on its own stock.
 const PAINTED_LAYER: int = 90
 const VOLUME_PAPER := {
+	1: Color(0.93, 0.89, 0.87),   # Faust 3 — a rose-grey rag, the club's wine in it
+	2: Color(0.90, 0.92, 0.92),   # Small Wood, 1994 — sea-fog grey
+	3: Color(0.93, 0.90, 0.82),   # the Earthman — pulp newsprint, desert ochre
+	4: Color(0.92, 0.92, 0.93),   # the zine — copier white, a little toner
 	5: Color(0.90, 0.91, 0.88),   # arcana — a cool, grey-white rag
 	6: Color(0.96, 0.91, 0.81),   # milk & honey / the community — warm cream
 	7: Color(0.91, 0.93, 0.89),   # the cedars — a green-grey wash paper

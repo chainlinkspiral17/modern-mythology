@@ -3834,6 +3834,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 112: VOLS 1–4 VN UI TO THE 5–7 STANDARD (draft 1).** The user: "vol
+1-4 visual novel UIs need to be brought up to 5-7 standard." A survey found eight per-volume
+features that vols 5–7 have and vols 1–4 did not. All eight are fixed on this branch without
+touching the vols 1–4 scene JSON:
+- **The book flows:** vols 1–4 run into the next volume (and 4 into 5), where they used to drop
+  to the menu at every `end`.
+- **Chapter cards on jumps:** a `jump` to another scene now fades and shows the chapter card
+  like an `end` (`GameEngine._change_scene`). Vols 1–4 change chapter by jump 59 times.
+- **Chapter plates for vols 1–4:** oxblood (Faust 3), sea-fog slate (Small Wood), signal teal
+  over ochre (the Earthman), toner and scan-bar pink (the zine).
+- **Trip registers for vols 1–4** (`triumvirate`, `small_wood`, `signal`, `xerox`), derived from
+  each volume's own music cues, and a paper colour for each.
+- **45 speaker colours and 36 pinned bust looks** for the vols 1–4 cast.
+- **The vol 3 terminal and vol 4 paper dialogue boxes read like the standard box:** reading-size
+  type instead of 13/15 px, the 44 % box, the measured column, auto-fit instead of a scrollbar.
+- **Music cues fall back across extensions:** vols 1–4 name `.mp3`; seven of those beds exist as
+  `.wav`.
+
+DRAFT 2 targets:
+- **Bring the vols 1–4 scenes over** (the menu shows vols 3 and 4 empty until then). Keep this
+  branch's direction tags in vol 1/2, take the other branch's text. Then run a direction pass
+  (`[shot]`, `[mood]`, `[beat]`, `[trip]`, `[panel]`) and story panels for vols 1–4. Until
+  then this branch's old vol 1 index puts `vol1_end` ("— End of Volume One —") after chapter 1,
+  and with the flow on it now runs into chapter 2. The merged index replaces it.
+- A sound brief from the user for vols 1–4, to re-derive the four registers.
+- Author the 30 missing vols 1–4 beds, and tag the vols 1–4 scenes in music_catalog `chapters`.
+- `CHARACTER_LIGHTING` for the vols 1–4 leads; volume cover art and blurbs in the menu (no
+  volume has them yet).
+- A Deck read of the terminal and paper boxes at Deck resolution. A three-paragraph passage
+  still overruns the paper box at the size floor.
+
 **2026-10-17 · pass 111: VOLS 1–4 ASSETS ACCOUNTED FOR (draft 1).** The user: "are all the
 characters in there proper for the hero tool to generate?" then "we'll need all the heroes and
 hero props and assets for vol 1-4 accounted for as well."
