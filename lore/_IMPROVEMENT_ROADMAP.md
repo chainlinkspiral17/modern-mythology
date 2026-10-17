@@ -3834,6 +3834,48 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 111: VOLS 1–4 ASSETS ACCOUNTED FOR (draft 1).** The user: "are all the
+characters in there proper for the hero tool to generate?" then "we'll need all the heroes and
+hero props and assets for vol 1-4 accounted for as well."
+- **Hero Studio prompts:** the style preamble's "the American South" is now `{setting}`, chosen
+  by the entry's volumes (`defaults.setting_by_vol`, per-entry `setting`). A new `prompt_name`
+  keeps real people's names out of what the image model reads (Ron, Jack, Betty, the 1945 Andy).
+- **`tools/vol_assets.py`** reads a volume range's scenes (here: the vols 1–4 branch) and lists
+  every speaker, CG, background and music cue with what covers it. At draft 1, against
+  dbabab4a: **112 speakers** (101 in the roster, 11 voice only by the text, 0 unaccounted);
+  **66 CG** (13 already on the vols 1–4 branch, 53 drafted); **291 backgrounds** (232 played by a
+  3D set, 53 drafted pictures, 6 waiting on a set build: airport, andy_family_house, chau_house);
+  **38 music cues, 37 missing**.
+- **Roster +147:** 24 heroes (the dreamgirl, the faceless clerk, the beach-party cast, the
+  four House of Glass actors, Melody, Jules, Verse, the Core, the nurse, the brother-in-law,
+  All Smiles, the video-test woman and her I.F., Alex, the workshop girl); 16 hero props (Joan's
+  dagger, the heron feather, Dean's journal, Ron's typewriter, the IRIS binder, the red string,
+  the derby crab number 0, the key with no teeth, the small yellow raincoat, the 1969 Mercedes,
+  the toy soldier, the kaleidoscope, the star key, Sister Carrie, the cracked headphones, the
+  black guitar pick); **107 `scene2d` pictures** (54 CG, 53 backgrounds).
+- **New kind `scene2d`** (meshy_pipeline + the studio page): a whole-screen picture installed at
+  the very path the scene names (`assets/backgrounds/<stem>.jpg`, `assets/cg/<stem>.jpg`), 1920
+  wide JPEG (Pillow, else Blender). `scene2d_draft.py` drafts the entries from the scene's own
+  words and never overwrites one.
+- Fixes: Aud plays in vols 2 and 4, Faust / Jacob / Wagner in vol 4, vol 1's "Margaret" finds
+  Margaret Hale. 12 new background stems mapped in bg_places.json. Three quotes the vols 1–4
+  branch has since reworded are refreshed (it now names the deejay Arthur Finch — the split
+  stays: Jay Rose's entry is the DJ's look).
+- Every vols 1–4 quote in the roster (629) checked word for word against dbabab4a.
+
+DRAFT 2 targets:
+- **Read the 107 picture drafts in Hero Studio before spending credits.** The quotes are the
+  narration around each picture, so some describe the moment after it. Add `lettering` where a
+  picture carries words.
+- **Music: 37 vols 1–4 cues have no file.** Author them with `audio/author_vn_beds.py`, or point
+  the cues at catalog beds.
+- Sets: a `writers_desk_drawer` view (vol4_drawer_open plays in 11 scenes); the airport,
+  andy_family_house and chau_house builds; then the rest of the build queue.
+- Voices for the 24 new speakers (voice_map on the vols 1–4 branch).
+- Place the 16 props: HeroProp nodes in their sets (the dagger, the typewriter, the string ball
+  in writers_desk's drawer).
+- Re-run vol_assets.py and scene2d_draft.py whenever the vols 1–4 branch changes its text.
+
 **2026-10-16 · pass 110: THE CALENDAR RECONCILED, NAMES MADE DISTINCT.** The user:
 "reconcile what works best for the narrative", "older", "9 years is fine without a new
 model/voice", "they need distinct names, add a surname".

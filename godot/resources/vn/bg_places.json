@@ -285,6 +285,12 @@
    "build": "dean_house_1994",
    "scenes": 2
   },
+  "vol2_bingo_hall_projector": {
+   "fit": "reuse",
+   "to": "3d:small_wood_rec_center",
+   "note": "the bingo hall, projector slides of an impossible coastal theme park",
+   "scenes": 1
+  },
   "vol2_bookstore_back_lounge": {
    "fit": "reuse",
    "to": "3d:salty_tome_office",
@@ -414,6 +420,18 @@
    "to": "3d:school_field_evening",
    "scenes": 1
   },
+  "vol2_glass_apartment_ext_day": {
+   "fit": "2d",
+   "to": null,
+   "note": "the House of Glass promo — the building",
+   "scenes": 1
+  },
+  "vol2_glass_apartment_monitors": {
+   "fit": "2d",
+   "to": null,
+   "note": "the House of Glass — camera views, an empty hallway",
+   "scenes": 1
+  },
   "vol2_glass_mansion_bay": {
    "fit": "2d",
    "to": null,
@@ -523,6 +541,19 @@
    "to": "3d:small_wood_road",
    "scenes": 1
   },
+  "vol2_room_ranch_bedroom": {
+   "fit": "standin",
+   "to": "3d:ben_bedroom",
+   "build": "dean_house_1994",
+   "note": "the room up the hill — white walls, a drain in the floor",
+   "scenes": 1
+  },
+  "vol2_room_roof_dusk": {
+   "fit": "2d",
+   "to": null,
+   "note": "from the roof: the field down to the road, the second house",
+   "scenes": 1
+  },
   "vol2_sapo_falls": {
    "fit": "exact",
    "to": "3d:sapo_falls",
@@ -630,6 +661,19 @@
   "vol2_used_bookstore": {
    "fit": "reuse",
    "to": "3d:salty_tome_interior",
+   "scenes": 1
+  },
+  "vol2_video_store_counter": {
+   "fit": "standin",
+   "to": "3d:cosmic_comics_interior",
+   "build": "video_store",
+   "note": "Small Wood's video store, Chuck's counter",
+   "scenes": 1
+  },
+  "vol2_white_room": {
+   "fit": "2d",
+   "to": null,
+   "note": "the House of Glass promo — a generic white room",
    "scenes": 1
   },
   "vol3_andy_room_day": {
@@ -1429,6 +1473,13 @@
    "scenes": 26,
    "built": "2026-10-16 draft 1"
   },
+  "vol4_drawer_open": {
+   "fit": "exact",
+   "to": "3d:writers_desk",
+   "build": "writers_desk",
+   "note": "the bottom drawer of the scrapbook desk — 11 scenes; draft 2: a writers_desk_drawer view",
+   "scenes": 11
+  },
   "vol4_esther_neighborhood": {
    "fit": "2d",
    "to": null,
@@ -1445,6 +1496,12 @@
    "to": "3d:cedar_tower_exterior",
    "scenes": 2
   },
+  "vol4_graffiti_alley": {
+   "fit": "2d",
+   "to": null,
+   "note": "video tests — graffiti writing itself on the alley wall",
+   "scenes": 1
+  },
   "vol4_grungy_bathroom_night": {
    "fit": "reuse",
    "to": "3d:nexcorp_fueling_restroom",
@@ -1453,6 +1510,12 @@
   "vol4_heavy_breathing_bedroom": {
    "fit": "standin",
    "to": "3d:sam_bedroom",
+   "scenes": 1
+  },
+  "vol4_ivy_wall_door": {
+   "fit": "2d",
+   "to": null,
+   "note": "video tests — the ivy wall, the metal door, the star key",
    "scenes": 1
   },
   "vol4_jack_of_suede_stage": {
@@ -1480,6 +1543,13 @@
    "fit": "2d",
    "to": null,
    "note": "abstract",
+   "scenes": 1
+  },
+  "vol4_monitor_room_night": {
+   "fit": "standin",
+   "to": "3d:new_orleans_office",
+   "build": "dean_office",
+   "note": "Dickens Dean's bedroom office of monitors (vol 4's treatment)",
    "scenes": 1
   },
   "vol4_monitor_wall": {
@@ -1549,6 +1619,12 @@
   "vol4_squirrel_road": {
    "fit": "reuse",
    "to": "3d:small_wood_road",
+   "scenes": 1
+  },
+  "vol4_vacant_lot_dusk": {
+   "fit": "2d",
+   "to": null,
+   "note": "video tests — the vacant lot and the stump",
    "scenes": 1
   },
   "vol4_various_locales": {

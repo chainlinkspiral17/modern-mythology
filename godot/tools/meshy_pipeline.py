@@ -83,7 +83,16 @@ OUT_DIRS = {
     # picture itself (no Meshy); the game lays it on the surface the entry's
     # `apply` rows name (scripts/vn/HeroArt.gd) and hides the box stand-in.
     "art": REPO / "assets" / "art" / "hero",   # (assets/art/<stick>/ is the slowsticks' tracked art)
+    # SCENE2D (2026-10-17): a whole-screen picture the VN shows — a
+    # background no 3D set plays (bg_places.json fit "2d") or a CG still.
+    # `file` is "backgrounds/<stem>.jpg" or "cg/<stem>.jpg", the very path the
+    # scene's bg / cg node names; the make step installs the chosen image
+    # there as a 1920-wide JPEG (GameEngine reads it straight off disk).
+    "scene2d": REPO / "assets",
 }
+SCENE2D_FILE = re.compile(r"^(backgrounds|cg)/[a-z0-9_]+\.jpg$")
+SCENE2D_MAX_W = 1920
+SCENE2D_QUALITY = 86
 ART_EXTS = (".png", ".jpg", ".jpeg", ".webp")
 ART_FACINGS = ("+x", "-x", "+y", "-y", "up")
 KEY_FILES = {
@@ -437,6 +446,8 @@ GIT_SAVE_PATHS = [
     "godot/assets/3d/characters",
     "godot/assets/3d/props",
     "godot/assets/art/hero",
+    "godot/assets/backgrounds",          # SCENE2D pictures (tracked, like the CG)
+    "godot/assets/cg",
     "godot/assets/concept/meshy",
     "godot/assets/concept/scenes",
     "godot/tools/meshy_roster.json",
@@ -1355,6 +1366,9 @@ def load_roster(path=ROSTER_PATH):
                       and isinstance(r.get("size"), list) and len(r["size"]) == 2 and r.get("facing") in ART_FACINGS)
                 if not ok:
                     sys.exit(f"roster entry {e['slug']}: apply rows need locale, center [x,y,z], size [w,h], facing in {ART_FACINGS}")
+        elif e["kind"] == "scene2d":
+            if not SCENE2D_FILE.match(e["file"]):
+                sys.exit(f"roster entry {e['slug']}: a scene2d file is backgrounds/<stem>.jpg or cg/<stem>.jpg")
         elif not e["file"].endswith(".glb"):
             sys.exit(f"roster entry {e['slug']}: file must end in .glb")
         e.setdefault("vol", [])
@@ -1367,8 +1381,8 @@ def load_roster(path=ROSTER_PATH):
             w, h = art_size(e)
             e["size"] = [w, h]
             e["aspect"] = art_aspect(w, h)
-        e.setdefault("aspect", {"prop": "1:1", "art": "4:3"}.get(e["kind"], "3:4"))
-        e.setdefault("pose", None if e["kind"] in ("prop", "art") else "a-pose")
+        e.setdefault("aspect", {"prop": "1:1", "art": "4:3", "scene2d": "16:9"}.get(e["kind"], "3:4"))
+        e.setdefault("pose", None if e["kind"] in ("prop", "art", "scene2d") else "a-pose")
         e.setdefault("texture_prompt", "")
         e.setdefault("tag", "")
         e.setdefault("canon", [])
@@ -1809,6 +1823,76 @@ def install_art(entry, opts, log=print):
     return dst
 
 
+def _to_jpeg(src, dst, max_w, quality):
+    """src → dst as a JPEG no wider than max_w; returns (w, h). Pillow when
+    it is installed, else Blender (the Deck's system Python has no Pillow;
+    Blender is already the slim step's tool)."""
+    try:
+        from PIL import Image
+    except ImportError:
+        Image = None
+    if Image is not None:
+        im = Image.open(src).convert("RGB")
+        if im.width > max_w:
+            im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
+        im.save(dst, "JPEG", quality=quality, optimize=True, progressive=True)
+        return im.width, im.height
+    import subprocess
+    blender = find_blender()
+    if not blender:
+        raise RuntimeError("installing a picture needs Pillow (pip install pillow) or Blender (BLENDER_BIN)")
+    script = (
+        "import bpy, sys\n"
+        "a = sys.argv[sys.argv.index('--') + 1:]\n"
+        "im = bpy.data.images.load(a[0])\n"
+        "w, h = im.size\n"
+        "mw = int(a[2])\n"
+        "if w > mw:\n"
+        "    im.scale(mw, round(h * mw / w))\n"
+        "sc = bpy.context.scene\n"
+        "sc.render.image_settings.file_format = 'JPEG'\n"
+        "sc.render.image_settings.color_mode = 'RGB'\n"
+        "sc.render.image_settings.quality = int(a[3])\n"
+        "im.save_render(a[1], scene=sc)\n"
+        "print('JPEG', im.size[0], im.size[1])\n"
+        "import os\n"
+        "os._exit(0)\n")
+    r = subprocess.run(blender + ["-b", "--factory-startup", "--python-expr", script, "--",
+                                  str(src), str(dst), str(max_w), str(quality)],
+                       capture_output=True, text=True, timeout=300)
+    m = re.search(r"^JPEG (\d+) (\d+)$", r.stdout or "", re.M)
+    if not m or not dst.exists():
+        raise RuntimeError(f"Blender could not write {dst.name}: {(r.stderr or r.stdout)[-400:]}")
+    return int(m.group(1)), int(m.group(2))
+
+
+def install_scene2d(entry, opts, log=print):
+    """SCENE2D: the chosen front image becomes the scene's picture — fitted
+    to SCENE2D_MAX_W wide and saved as JPEG at the path the scene names
+    (godot/assets/<file>). The full-size original stays in the entry's
+    concept folder (Drive)."""
+    src = Path(opts["image"]) if opts.get("image") else chosen_view_path(entry, "front")
+    if src is None:
+        cands = candidates_for(entry, "front")
+        src = cands[0] if cands else None
+    dst = OUT_DIRS["scene2d"] / entry["file"]
+    if src is None or not Path(src).exists():
+        if opts.get("dry_run"):
+            log(f"  scene2d · {entry['slug']} · [DRY] would install the chosen front image → {rel(dst)}")
+            return None
+        raise FileNotFoundError(f"{entry['slug']}: no image yet — generate one first")
+    if opts.get("dry_run"):
+        log(f"  scene2d · {entry['slug']} · [DRY] would install {rel(Path(src))} → {rel(dst)}")
+        return None
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    w, h = _to_jpeg(Path(src), dst, SCENE2D_MAX_W, SCENE2D_QUALITY)
+    log(f"  scene2d · {entry['slug']} · installed {rel(dst)} ({w}x{h}, "
+        f"{dst.stat().st_size // 1024} KB) → {', '.join(entry.get('scenes') or []) or 'its scenes'}")
+    append_manifest({"at": now_iso(), "stage": "scene2d", "slug": entry["slug"], "kind": "scene2d",
+                     "input": rel(Path(src)), "output": rel(dst)})
+    return dst
+
+
 RUNWAY_PROMPT_BUDGET = 1000     # promptText hard cap (UTF-16 units)
 
 
@@ -1827,6 +1911,33 @@ def canon_text(entry, limit=None):
     return out
 
 
+def prompt_name(entry):
+    """The subject's name as the image model reads it: `prompt_name` when the
+    entry has one (a real person the text fictionalises is sent without the
+    real name, so the generator draws the text's figure, not a likeness),
+    else the Hero Studio label `name`."""
+    return (entry.get("prompt_name") or entry["name"]).strip()
+
+
+def setting_for(roster, entry):
+    """Where the story around this subject is set, for the style preamble's
+    {setting}: the entry's own `setting`, else the place its volumes share
+    (defaults.setting_by_vol), else defaults.setting when they differ."""
+    if entry.get("setting"):
+        return entry["setting"].strip()
+    d = roster.get("defaults") or {}
+    by_vol = d.get("setting_by_vol") or {}
+    found = {by_vol.get(str(v)) for v in (entry.get("vol") or [])}
+    found.discard(None)
+    if len(found) == 1:
+        return found.pop()
+    return d.get("setting", "America")
+
+
+def styled(roster, entry, style):
+    return style.replace("{name}", prompt_name(entry)).replace("{setting}", setting_for(roster, entry)).strip()
+
+
 def description_for(roster, entry, budget=None):
     """What the image model is told the subject looks like.
 
@@ -1838,7 +1949,8 @@ def description_for(roster, entry, budget=None):
     canon = canon_text(entry, budget)
     prompt = (entry.get("prompt") or "").strip()
     if canon:
-        head = f"The story describes {entry['name']} like this: "
+        who = prompt_name(entry)
+        head = f"The story describes {who}{',' if ',' in who else ''} like this: "
         desc = head + canon
         if mode == "append" and prompt:
             desc += " Additional direction: " + prompt
@@ -1900,7 +2012,7 @@ def art_suffix(roster, entry):
     calendar is lettering: an art entry's `lettering` says exactly what it
     reads, and the no-text rule gives way to it."""
     suffix = roster["style"].get("suffix", "").strip()
-    lettering = (entry.get("lettering") or "").strip() if entry["kind"] == "art" else ""
+    lettering = (entry.get("lettering") or "").strip() if entry["kind"] in ("art", "scene2d") else ""
     if lettering:
         return (f"Lettering on it reads exactly: {lettering}. Spell it exactly so; no other words. "
                 "No watermark, no border.")
@@ -1914,17 +2026,17 @@ def build_prompt(roster, entry, view="front", provider=None):
     style_key = entry["kind"]
     if provider == "runway":
         style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
-        style = style.replace("{name}", entry["name"]).strip()
+        style = styled(roster, entry, style)
         suffix = art_suffix(roster, entry)
         view_txt = _view_text(roster, view)
-        fixed = len(style) + len(suffix) + len(view_txt) + 6
+        fixed = len(style) + len(_role_text(roster, entry)) + len(suffix) + len(view_txt) + 7
         size_txt = art_size_text(entry) if entry["kind"] == "art" else ""
         fixed += len(size_txt) + 1
         desc = description_for(roster, entry, budget=max(200, RUNWAY_PROMPT_BUDGET - fixed))
-        parts = [desc, size_txt, style, suffix, view_txt]
+        parts = [desc, size_txt, style, _role_text(roster, entry), suffix, view_txt]
         return "\n".join(p for p in parts if p)[:RUNWAY_PROMPT_BUDGET]
     style = roster["style"].get(style_key, "")
-    parts = [description_for(roster, entry), style.replace("{name}", entry["name"]).strip()]
+    parts = [description_for(roster, entry), styled(roster, entry, style), _role_text(roster, entry)]
     if entry["kind"] == "art":
         parts.insert(1, art_size_text(entry))
     suffix = art_suffix(roster, entry)
@@ -1932,6 +2044,13 @@ def build_prompt(roster, entry, view="front", provider=None):
         parts.append(suffix)
     parts.append(_view_text(roster, view))
     return "\n".join(p for p in parts if p)
+
+
+def _role_text(roster, entry):
+    """A scene2d picture is a background or a CG: style.scene2d_<role>."""
+    if entry["kind"] != "scene2d":
+        return ""
+    return roster["style"].get("scene2d_" + (entry.get("role") or "bg"), "").strip()
 
 
 def _view_text(roster, view):
@@ -2440,7 +2559,7 @@ def stage_image(roster, entry, opts, log=print):
         aspect = entry["aspect"]
     if aspect not in GOOGLE_ASPECTS:
         raise ValueError(f"aspect {aspect!r} not in {sorted(GOOGLE_ASPECTS)}")
-    views = list(VIEWS) if opts.get("multiview") and entry["kind"] != "art" else ["front"]
+    views = list(VIEWS) if opts.get("multiview") and entry["kind"] not in ("art", "scene2d") else ["front"]
     dry = bool(opts.get("dry_run"))
     saved = []
 
@@ -2512,6 +2631,8 @@ def stage_mesh(roster, entry, opts, log=print):
     An ART entry has no mesh: its "make" step installs the picture instead."""
     if entry["kind"] == "art":
         return install_art(entry, opts, log=log)
+    if entry["kind"] == "scene2d":
+        return install_scene2d(entry, opts, log=log)
     dry = bool(opts.get("dry_run"))
     out_path = entry_out_path(entry)
     explicit = opts.get("image")
@@ -2609,7 +2730,7 @@ def estimate_cost(entries, opts, stages):
                 total += n * COST_HINTS["openai"] * (3 if opts.get("quality") == "high" else 1)
             else:
                 total += n * COST_HINTS["runway"]
-        if "mesh" in stages and e.get("kind") != "art":    # art installs, it does not call Meshy
+        if "mesh" in stages and e.get("kind") not in ("art", "scene2d"):    # pictures install, they do not call Meshy
             total += COST_HINTS["meshy:textured" if opts.get("texture") else "meshy:draft"]
     return total
 
