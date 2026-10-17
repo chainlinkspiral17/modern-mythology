@@ -36,6 +36,8 @@ LAX = "__lax_gate__lax_store__lax_seat_close"
 CABIN = "__plane_night__plane_day__plane_vol4"
 ONEI = "__onei_office__onei_office_desk__onei_office_door"
 CLUBO = "__club_office__club_office_after"
+CHAU = "__chau_hall_noon__chau_entry_morning__chau_living__chau_bath__chau_game_room"
+AMANDA = "__amanda_hot_tub__amanda_fort__amanda_fort_close"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -343,6 +345,67 @@ CONFIGS = [
             ("Key_Tower__dean_tower_corridor", "DirectionalLight3D", B_KEY_FROM_N.format(143, 4, -10), c(0.56, 0.60, 0.80), 0.08),
         ],
         "mood_strata": ["raw", "noir", "memory_warm", "lithograph",
+                        "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's BALLFIELD (build_little_league.py): Texas, August, "well
+        # past 110 degrees" — a hard high sun, the dugout's shade.
+        "out_path": os.path.join(ROOT, "little_league.tscn"),
+        "uid": "uid://little_league_v3",
+        "root_node": "LittleLeague",
+        "glb": "res://assets/3d/locales/little_league.glb",
+        "env": {"bg": (0.66, 0.78, 0.92, 1), "amb": (0.90, 0.88, 0.82, 1),
+                "amb_e": 0.75, "fog": (0.90, 0.86, 0.76, 1), "fog_e": 0.4,
+                "fog_d": 0.0015, "sat": 0.96, "glow_i": 0.6, "glow_b": 0.16},
+        "shader": {"warm": (0.98, 0.88, 0.66, 1), "bg": (0.12, 0.11, 0.10, 1),
+                   "neon_edge": (0.84, 0.70, 0.48, 1), "neon_lo": (0.34, 0.28, 0.20, 1),
+                   "neon_hi": (0.12, 0.11, 0.10, 1), "lim_tint": (0.80, 0.68, 0.48, 1)},
+        "lights": [
+            ("Key_Sun", "DirectionalLight3D", B_SUN_FROM_S.format(0, 20, 10), c(1.0, 0.94, 0.80), 1.7),
+            ("Fill_Sky", "DirectionalLight3D", B_FILL.format(0, 10, -10), c(0.70, 0.80, 0.96), 0.40),
+            ("Back", "DirectionalLight3D", B_BACK.format(0, 10, 0), c(0.96, 0.90, 0.80), 0.30),
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "noir",
+                        "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's "PASSENGERS" (build_chau_house.py): the Chau house by day
+        # (its windows, Steven's blinds, the bathroom's vanity light, the
+        # game room's TV); Amanda's (x 40..56) at night: the TV through the
+        # sheet, the water's light on the deck.
+        "out_path": os.path.join(ROOT, "chau_house.tscn"),
+        "uid": "uid://chau_house_v3",
+        "root_node": "ChauHouse",
+        "glb": "res://assets/3d/locales/chau_house.glb",
+        "env": {"bg": (0.02, 0.03, 0.06, 1), "amb": (0.80, 0.80, 0.78, 1),
+                "amb_e": 0.45, "fog": (0.30, 0.30, 0.32, 1), "fog_e": 0.2,
+                "fog_d": 0.002, "sat": 0.94, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.94, 0.88, 0.74, 1), "bg": (0.08, 0.08, 0.10, 1),
+                   "neon_edge": (0.72, 0.68, 0.60, 1), "neon_lo": (0.28, 0.26, 0.24, 1),
+                   "neon_hi": (0.08, 0.08, 0.10, 1), "lim_tint": (0.66, 0.62, 0.56, 1)},
+        "lights": [
+            ("Key_Sun" + CHAU, "DirectionalLight3D", B_SUN_FROM_S.format(0, 8, 6), c(1.0, 0.94, 0.84), 0.70),
+            ("Fill_House" + CHAU, "DirectionalLight3D", B_FILL.format(0, 5, -7), c(0.86, 0.88, 0.94), 0.30),
+            ("Back" + CHAU, "DirectionalLight3D", B_BACK.format(0, 5, 0), c(0.90, 0.88, 0.84), 0.20),
+            ("Window_Living_S" + CHAU, "OmniLight3D", I.format(2.5, 1.5, -0.6), c(1.0, 0.98, 0.92), 1.4, {"omni_range": 7.0}),
+            ("Window_Living_N" + CHAU, "OmniLight3D", I.format(-1.5, 1.5, -13.4), c(0.94, 0.96, 1.0), 1.2, {"omni_range": 7.0}),
+            ("Window_Kitchen_S" + CHAU, "OmniLight3D", I.format(-7.0, 1.5, -0.6), c(1.0, 0.98, 0.92), 1.0, {"omni_range": 6.0}),
+            ("Blinds_Steven" + CHAU, "OmniLight3D", I.format(11.6, 1.5, -6.0), c(1.0, 0.96, 0.86), 1.2, {"omni_range": 5.0}),
+            ("Window_Mom" + CHAU, "OmniLight3D", I.format(11.6, 1.5, -11.2), c(1.0, 0.96, 0.86), 0.6, {"omni_range": 4.0}),
+            # the living room's TV left on (the morning's looping intro; noon's distant din)
+            ("Living_TV_Glow__chau_hall_noon__chau_entry_morning", "OmniLight3D", I.format(1.0, 1.45, -13.5), c(0.60, 0.70, 1.0), 0.9,
+             {"omni_range": 4.5}),
+            ("Bath_Vanity_Light__chau_bath", "OmniLight3D", I.format(11.7, 2.0, -1.4), c(1.0, 0.94, 0.80), 1.4, {"omni_range": 4.0}),
+            ("Game_TV_Glow__chau_game_room", "OmniLight3D", I.format(-7.0, 1.5, -6.4), c(0.56, 0.62, 1.0), 1.0, {"omni_range": 5.0}),
+            # Amanda's, at night
+            ("Key_Moon" + AMANDA, "DirectionalLight3D", B_KEY_FROM_N.format(48, 8, -3), c(0.56, 0.62, 0.86), 0.12),
+            ("Am_TV_Glow__amanda_fort", "OmniLight3D", I.format(40.7, 1.25, -3.2), c(0.56, 0.52, 1.0), 1.6, {"omni_range": 6.0}),
+            ("Am_Lamp_Dim__amanda_fort__amanda_fort_close", "OmniLight3D", I.format(45.2, 1.6, -3.2), c(1.0, 0.82, 0.56), 0.5, {"omni_range": 3.2}),
+            ("Am_TV_Glow_Close__amanda_fort_close", "OmniLight3D", I.format(41.2, 1.2, -3.2), c(0.40, 0.52, 1.0), 2.2, {"omni_range": 5.0}),
+            ("Tub_Light__amanda_hot_tub", "OmniLight3D", I.format(51.4, 1.4, -3.6), c(0.46, 0.86, 1.0), 1.8, {"omni_range": 4.5}),
+            ("House_Spill__amanda_hot_tub", "OmniLight3D", I.format(47.4, 1.8, -3.2), c(1.0, 0.84, 0.62), 1.4, {"omni_range": 7.0}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "noir", "lithograph",
                         "candlelight", "silent_film_18"],
     },
 ]

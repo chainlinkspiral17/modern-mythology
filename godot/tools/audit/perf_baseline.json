@@ -15,6 +15,11 @@
  "centro_grocery_aisle": {
   "draw": 214
  },
+ "chau_house": {
+  "draw": 98,
+  "prims": 24408,
+  "objects": 268
+ },
  "dean_offices": {
   "draw": 116,
   "prims": 61408,
@@ -45,6 +50,11 @@
   "draw": 266,
   "prims": 50876,
   "objects": 436
+ },
+ "little_league": {
+  "draw": 74,
+  "prims": 33180,
+  "objects": 244
  },
  "missing_link_interior": {
   "draw": 90

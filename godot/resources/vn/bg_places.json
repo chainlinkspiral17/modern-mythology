@@ -708,36 +708,53 @@
    "note": "Andy's room at night",
    "built": "2026-10-17 draft 1"
   },
-  "vol3_ballfield_concession_stand": {
-   "fit": "standin",
-   "to": "3d:school_field_day",
+  "vol3_ballfield_convenience_stand": {
+   "fit": "exact",
+   "to": "3d:ballfield_stand",
    "build": "little_league",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the convenience stand (the text's word): the counter, the ice cream bar pictures",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_ballfield_dugout_august": {
-   "fit": "standin",
-   "to": "3d:school_field_day",
+   "fit": "exact",
+   "to": "3d:ballfield_dugout",
    "build": "little_league",
-   "note": "acceptable losses",
-   "scenes": 2
+   "note": "the home dugout's bench, Dad gripping it, the field past the front",
+   "scenes": 2,
+   "built": "2026-10-17 draft 1"
+  },
+  "vol3_ballfield_third_base": {
+   "fit": "exact",
+   "to": "3d:ballfield_third_base",
+   "build": "little_league",
+   "scenes": 1,
+   "note": "on third, in at Chris batting and the dusty home plate",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_ballfield_first_base": {
-   "fit": "standin",
-   "to": "3d:school_field_day",
+   "fit": "exact",
+   "to": "3d:ballfield_first_base",
    "build": "little_league",
-   "scenes": 1
+   "scenes": 1,
+   "note": "guarding first base, Larry leading off",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_ballfield_home_plate": {
-   "fit": "standin",
-   "to": "3d:school_field_day",
+   "fit": "exact",
+   "to": "3d:ballfield_home_plate",
    "build": "little_league",
-   "scenes": 2
+   "scenes": 2,
+   "note": "the last inning, in at home from second",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_ballfield_pitchers_mound": {
-   "fit": "standin",
-   "to": "3d:school_field_day",
+   "fit": "exact",
+   "to": "3d:ballfield_mound",
    "build": "little_league",
-   "scenes": 1
+   "scenes": 1,
+   "note": "Chris on the mound, from first base",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_bedroom_closet_dallas": {
    "fit": "standin",
@@ -755,11 +772,15 @@
    "built": "2026-10-17 draft 1"
   },
   "vol3_blanket_fort_night": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom",
-   "build": "chau_house",
+   "fit": "exact",
+   "to": "3d:amanda_fort",
+   "build": "amanda_house",
    "scenes": 2,
-   "note": "the Chau house: pushed-together couches, the fan's sheet"
+   "note": "Amanda's: the pushed-together couches, the fan's sheet (by sequence); a sub-area of build_chau_house.py",
+   "built": "2026-10-17 draft 1",
+   "by_scene": {
+    "vol3_ch8_passengers_c": "3d:amanda_fort_close"
+   }
   },
   "vol3_brick_wall_halloween_night": {
    "fit": "2d",
@@ -822,29 +843,39 @@
    "scenes": 1
   },
   "vol3_chau_bathroom_steam": {
-   "fit": "standin",
-   "to": null,
+   "fit": "exact",
+   "to": "3d:chau_bath",
    "build": "chau_house",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the mirror cabinet, the shower, the towels on the floor",
+   "built": "2026-10-17 draft 1"
   },
-  "vol3_chau_game_room_night": {
-   "fit": "standin",
-   "to": "3d:cosmic_comics_back_office",
+  "vol3_chau_game_room_morning": {
+   "fit": "exact",
+   "to": "3d:chau_game_room",
    "build": "chau_house",
-   "scenes": 1
+   "scenes": 1,
+   "note": "Sunday morning: the pool table, the dartboard, the liquor cabinet, the fern",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_chau_house_day": {
-   "fit": "standin",
-   "to": "3d:meadowlark_circle",
+   "fit": "exact",
+   "to": "3d:chau_hall_noon",
    "build": "chau_house",
-   "note": "passengers",
-   "scenes": 2
+   "note": "Saturday noon: the hall, the candy dish, the locked bathroom door",
+   "scenes": 2,
+   "built": "2026-10-17 draft 1",
+   "by_scene": {
+    "vol3_ch8_passengers_c": "3d:chau_entry_morning"
+   }
   },
   "vol3_chau_living_room": {
-   "fit": "standin",
-   "to": "3d:kowalski_kitchen",
+   "fit": "exact",
+   "to": "3d:chau_living",
    "build": "chau_house",
-   "scenes": 1
+   "scenes": 1,
+   "note": "Mrs. Chau on the couch, the seats round her",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_chris_bedroom_night": {
    "fit": "standin",
@@ -1045,10 +1076,12 @@
    "scenes": 3
   },
   "vol3_hot_tub_night": {
-   "fit": "standin",
-   "to": "3d:kowalski_backyard",
-   "build": "chau_house",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:amanda_hot_tub",
+   "build": "amanda_house",
+   "scenes": 1,
+   "note": "Amanda's, Saturday 10 p.m. (the interlude says so); a sub-area of build_chau_house.py",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_houston_car_night": {
    "fit": "reuse",

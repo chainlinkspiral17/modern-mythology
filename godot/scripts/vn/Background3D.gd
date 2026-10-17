@@ -3081,9 +3081,9 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/airport_cabin.tscn",
 		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
 		# "seated at the window" - across his row from the aisle: the armrest up, the cups, the lamp on, the black window
-		"camera_origin": Vector3(59.9, 1.15, -7.75),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(-90.0), 0.0),
-		"fov": 62.0,
+		"camera_origin": Vector3(59.3, 1.15, -7.75),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(-90.0), 0.0),
+		"fov": 56.0,
 		"env": {"ambient_color": Color(0.40, 0.44, 0.66, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
 		"suppress_input": true,
 	},
@@ -3091,9 +3091,9 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/airport_cabin.tscn",
 		"requires_glb": "res://assets/3d/locales/airport_cabin.glb",
 		# "flight number one" - the same row by day: the notebook on his tray, the shades up
-		"camera_origin": Vector3(59.9, 1.15, -7.75),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(-90.0), 0.0),
-		"fov": 62.0,
+		"camera_origin": Vector3(59.3, 1.15, -7.75),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(-90.0), 0.0),
+		"fov": 56.0,
 		"env": {"ambient_color": Color(0.86, 0.88, 0.92, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.82, 0.86, 1)},
 		"suppress_input": true,
 	},
@@ -3185,6 +3185,140 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.0, deg_to_rad(-5.0), 0.0),
 		"fov": 66.0,
 		"env": {"ambient_color": Color(0.50, 0.50, 0.60, 1), "ambient_energy": 0.20, "fog_color": Color(0.06, 0.06, 0.10, 1)},
+		"suppress_input": true,
+	},
+	"ballfield_dugout": {
+		"scene": "res://scenes/locales/little_league.tscn",
+		"requires_glb": "res://assets/3d/locales/little_league.glb",
+		# "I was sitting next to Dad and a kid named Cody." - the bench, the field past the dugout front
+		"camera_origin": Vector3(-9.0, 1.15, 7.7),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(0.0), 0.0),
+		"fov": 68.0,
+		"suppress_input": true,
+	},
+	"ballfield_third_base": {
+		"scene": "res://scenes/locales/little_league.tscn",
+		"requires_glb": "res://assets/3d/locales/little_league.glb",
+		# "I sat on third" - from the bag, in at the batter and "the dusty home plate"
+		"camera_origin": Vector3(-18.0, 1.3, -0.6),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(-90.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"ballfield_mound": {
+		"scene": "res://scenes/locales/little_league.tscn",
+		"requires_glb": "res://assets/3d/locales/little_league.glb",
+		# "Chris stepped forward and down the mound" - from first base, the catcher beyond
+		"camera_origin": Vector3(1.2, 1.3, -18.8),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(145.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"ballfield_first_base": {
+		"scene": "res://scenes/locales/little_league.tscn",
+		"requires_glb": "res://assets/3d/locales/little_league.glb",
+		# "I was guarding first base" - low by the bag, the mound and home in
+		"camera_origin": Vector3(2.0, 0.9, -20.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(150.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"ballfield_home_plate": {
+		"scene": "res://scenes/locales/little_league.tscn",
+		"requires_glb": "res://assets/3d/locales/little_league.glb",
+		# "I watched from second behind the pitcher" - the last inning, in at home
+		"camera_origin": Vector3(-17.5, 1.2, -17.5),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-135.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"ballfield_stand": {
+		"scene": "res://scenes/locales/little_league.tscn",
+		"requires_glb": "res://assets/3d/locales/little_league.glb",
+		# the convenience stand: the counter, the pictures of ice cream bars, the fridge
+		"camera_origin": Vector3(15.8, 1.45, 10.8),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(141.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"chau_hall_noon": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# "He grabs candy from a candy dish" - the hall at noon, the bathroom door shut, the monitor down the hall
+		"camera_origin": Vector3(6.9, 1.6, -0.3),
+		"camera_rotation": Vector3(-0.16, deg_to_rad(8.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
+		"suppress_input": true,
+	},
+	"chau_entry_morning": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# Sunday morning from the entry: the counter, the kitchen mess, the TV looping in the living room
+		"camera_origin": Vector3(-2.0, 1.6, -0.7),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(30.0), 0.0),
+		"fov": 68.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
+		"suppress_input": true,
+	},
+	"chau_living": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# "Mrs. Chau on the couch" - the living room from the kitchen side, the seats round her
+		"camera_origin": Vector3(-3.6, 1.6, -3.0),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(-46.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
+		"suppress_input": true,
+	},
+	"chau_bath": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# the mirror over the sink, the razors behind it, the shower, the towels on the floor
+		"camera_origin": Vector3(8.4, 1.6, -1.6),
+		"camera_rotation": Vector3(-0.18, deg_to_rad(-90.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.40, "fog_color": Color(0.86, 0.86, 0.86, 1)},
+		"suppress_input": true,
+	},
+	"chau_game_room": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# "The homeless man passes out on the floor of the game room." - low, the pool table, the TV across
+		"camera_origin": Vector3(-4.6, 0.45, -13.3),
+		"camera_rotation": Vector3(0.06, deg_to_rad(135.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.60, 0.62, 0.76, 1), "ambient_energy": 0.26, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
+	"amanda_hot_tub": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# Amanda's, 10 p.m.: the jetted water on the deck, the bottle on the rim
+		"camera_origin": Vector3(48.0, 1.5, -0.2),
+		"camera_rotation": Vector3(-0.25, deg_to_rad(-40.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.30, 0.32, 0.50, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"amanda_fort": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# "pushed together couches ... A large floor fan drones and kicks a sheet into the air"
+		"camera_origin": Vector3(46.4, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.22, deg_to_rad(47.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.30, 0.32, 0.50, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"amanda_fort_close": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# the billowing fort, lit blue by the television
+		"camera_origin": Vector3(45.6, 1.0, -1.2),
+		"camera_rotation": Vector3(0.0, deg_to_rad(45.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.30, 0.32, 0.50, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
 		"suppress_input": true,
 	},
 	"kai_apartment": {

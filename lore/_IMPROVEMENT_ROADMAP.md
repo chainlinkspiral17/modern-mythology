@@ -3834,6 +3834,62 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 118: THE BALLFIELD AND THE CHAU HOUSE (draft 1).** The next two builds by
+scene count, each from a text-read brief.
+- **little_league** (`build_little_league.py`): the Texas field in August.
+  - A 60 ft diamond with an all-dirt infield and the mound, the bags and the chalk.
+  - The home dugout on the third-base side: its bench, the bat rack, the water jug.
+  - The backstop as wires, the outfield fence, the metal bleachers on pavement with the gum and
+    the seeds, the convenience stand (the ice cream bar pictures, the fridge, the pink
+    Coppertone), and the parking lot.
+  - Six views, one per picture, including the new "on third" view.
+- **chau_house** (`build_chau_house.py`):
+  - The new, big, sparse house: the entry with the counter and the coat hooks, the kitchen and
+    its mess, the living room (the couch and four more seats, the TV and its surround).
+  - The hall (the candy dish, the locked bathroom door, Steven's door open on his computer), the
+    bathroom (the mirror cabinet, the shower, the towels), Steven's room behind the blinds, and
+    Mrs. Chau's room.
+  - The game room: the pool table, the dartboard, the liquor cabinet, the TV, the fern.
+  - **Amanda's** (x 40..56) is a separate house in the same file: the deck and the jetted water
+    at night, and the TV room with the couches pushed together under the sheet the fan lifts.
+- 12 stems pointed (two of them per scene). vn_story_audit is at 312.
+- Draw calls: little_league 74, chau_house 98 (perf_baseline.json).
+- Gates on both builders are clean. A chain-link fence or backstop has to be built from its
+  wires: as an opaque panel it reads as a wall and hides the field (lesson in the 3D playbook).
+
+DRAFT 2 targets:
+- The infield's grass and its dirt arc; the visitors' bleachers.
+- The sheet's breathing ("slow as breathing") as motion.
+- The Chau garage and Chris's room; the steam as fog.
+- Next builds: copy_shop (5), pasadena_1945 (5), editing_suite (4), apple_peddler (4).
+
+**Pass 117b · the contradictions, fixed** (the user: "fix the contradictions. continue."). The
+set briefs for the next builds found them; each fix is the smallest that makes the text agree.
+- **Passengers (vol 3):**
+  - Aaron spends the night on Steven's computer, so in part c Chris reads the history in
+    *Steven's* room (it said "his room"; Chris was away all night at the piano competition).
+  - The game room's picture is `vol3_chau_game_room_morning`: its scene says "Sunday morning".
+  - The hot tub ("Amanda's", 10 p.m.) and the blanket fort (straight after it, by sequence) are
+    build `amanda_house`. In pass 115 I had moved the fort to chau_house on the strength of an
+    old note; the text says otherwise.
+- **Acceptable losses (vol 3):**
+  - The block where the narrator "sat on third", watching Chris bat, plays a new picture,
+    `vol3_ballfield_third_base`, not the dugout.
+  - The runner diving back to first "jumped back to the bag" (it said "the plate").
+  - The runner on second rocks "on the balls of my feet" (it said "on my knees").
+  - The stand is the text's "convenience stand" (`vol3_ballfield_convenience_stand`).
+  - meld_kaleidoscope_e's "Great hit, he said." plays at the dugout, where Dad says it, not at
+    home plate (where he says "Great game").
+- **Caltech (vol 3):**
+  - ch2's telling has Jack go "with Ron" and find Andy "half asleep", and Jack pulls him to his
+    feet. ch9 has both men open the door on an Andy already awake.
+  - The 2003 sleep lab is "down where the new building was poured over the old one", so the
+    room Andy wakes in, in 1945, can be under it ("There was a whole office here").
+- Every roster quote (1,490) is still verbatim. The 1945 Andy's description now reads "the big
+  kid Jack and Ron found half asleep".
+- Left alone: the Usenet date in part b ("Mon, 13 Apr") points to 1998. Vol 3's own present is
+  2003, but the master timeline doesn't date this story, so nothing is ratified.
+
 **2026-10-17 · pass 117: FOUR MORE VOLS 1–4 SETS (draft 1) — THE SLEEP LAB, CALTECH, THE AIRPORT,
 DEAN'S OFFICES.** The user: "continue" (the vols 1–4 backgrounds). Each set was planned from a
 brief that read its scenes in full (what is in the room, what is not, the views each scene needs),

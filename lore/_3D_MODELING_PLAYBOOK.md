@@ -412,6 +412,9 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   furniture_grammar ignores `_Stock_` meshes as merchandise, so a bag on a `_Stock_` seat
   "floats". Join per-preset groups and furniture with a builder-local `join_named(prefix, name)`
   instead (build_caltech_dabney, build_airport_cabin).
+- **Chain link is its wires.** Our materials are opaque, so a backstop or dugout front built
+  as a panel reads as a wall and hides the field behind it. Build the frame, then a few
+  horizontal and vertical wires, and join them into one mesh (build_little_league).
 - **Swivel chairs turned at random need room to face each other.** At 1.2 m pitch a chair spun
   round sat 0.4 m from the one behind it (seat_clearance_audit: 0.75 m). 1.6 m clears it.
 
