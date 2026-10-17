@@ -1847,8 +1847,13 @@ def _to_jpeg(src, dst, max_w, quality):
     blender = find_blender()
     if not blender:
         raise RuntimeError("installing a picture needs Pillow (pip install pillow) or Blender (BLENDER_BIN)")
+    # (2026-10-17) the Deck's first plates failed here with an empty error:
+    # the script's print died unflushed in os._exit, so its size line never
+    # reached us. Flush, and read the size from the JPEG itself anyway.
+    # save_render applies the scene's view transform: 'Standard' keeps the
+    # generated colours as they are (the default would grade them).
     script = (
-        "import bpy, sys\n"
+        "import bpy, sys, os\n"
         "a = sys.argv[sys.argv.index('--') + 1:]\n"
         "im = bpy.data.images.load(a[0])\n"
         "w, h = im.size\n"
@@ -1856,20 +1861,53 @@ def _to_jpeg(src, dst, max_w, quality):
         "if w > mw:\n"
         "    im.scale(mw, round(h * mw / w))\n"
         "sc = bpy.context.scene\n"
+        "sc.view_settings.view_transform = 'Standard'\n"
+        "sc.view_settings.look = 'None'\n"
         "sc.render.image_settings.file_format = 'JPEG'\n"
         "sc.render.image_settings.color_mode = 'RGB'\n"
         "sc.render.image_settings.quality = int(a[3])\n"
         "im.save_render(a[1], scene=sc)\n"
-        "print('JPEG', im.size[0], im.size[1])\n"
-        "import os\n"
+        "print('JPEG', im.size[0], im.size[1], flush=True)\n"
+        "sys.stdout.flush()\n"
         "os._exit(0)\n")
+    if dst.exists():
+        dst.unlink()
     r = subprocess.run(blender + ["-b", "--factory-startup", "--python-expr", script, "--",
                                   str(src), str(dst), str(max_w), str(quality)],
                        capture_output=True, text=True, timeout=300)
-    m = re.search(r"^JPEG (\d+) (\d+)$", r.stdout or "", re.M)
-    if not m or not dst.exists():
-        raise RuntimeError(f"Blender could not write {dst.name}: {(r.stderr or r.stdout)[-400:]}")
-    return int(m.group(1)), int(m.group(2))
+    size = _jpeg_size(dst) if dst.exists() else None
+    if size is None:
+        m = re.search(r"^JPEG (\d+) (\d+)$", r.stdout or "", re.M)
+        size = (int(m.group(1)), int(m.group(2))) if m and dst.exists() else None
+    if size is None:
+        tail = ((r.stderr or "") + (r.stdout or "")).strip()[-600:] or f"(no output; exit code {r.returncode})"
+        raise RuntimeError(f"Blender could not write {dst.name}: {tail}")
+    return size
+
+
+def _jpeg_size(path):
+    """(w, h) from a JPEG's SOF marker, or None."""
+    try:
+        b = Path(path).read_bytes()
+    except OSError:
+        return None
+    if b[:2] != b"\xff\xd8":
+        return None
+    i = 2
+    while i + 9 < len(b):
+        if b[i] != 0xFF:
+            i += 1
+            continue
+        mk = b[i + 1]
+        if mk in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
+            h = (b[i + 5] << 8) | b[i + 6]
+            w = (b[i + 7] << 8) | b[i + 8]
+            return (w, h)
+        if mk in (0xD8, 0x01) or 0xD0 <= mk <= 0xD7:
+            i += 2
+            continue
+        i += 2 + ((b[i + 2] << 8) | b[i + 3])
+    return None
 
 
 def install_scene2d(entry, opts, log=print):
