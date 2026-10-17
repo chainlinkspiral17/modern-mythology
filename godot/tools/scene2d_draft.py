@@ -19,11 +19,11 @@ edited entry survives a re-run after the text changes.
     python3 godot/tools/scene2d_draft.py --scenes DIR [--vols 1,2,3,4] [--dry-run]
     python3 godot/tools/scene2d_draft.py --plates --scenes DIR --vols 5,6,7
 
---plates (2026-10-17, the user: "each chapter gets a plate") drafts one
-chapter plate per chapter instead: the endpaper behind its chapter card,
-in the volume's palette, carrying one faint motif from the chapter; canon
-= the chapter's opening narration. The file key matches
-ChapterCard.chapter_key().
+--plates (2026-10-17, the user: "each chapter gets a plate", then "the
+chapter plates need the text for the chapters as well as imagery from that
+chapter") drafts one title plate per chapter instead: lettered with the
+chapter's title, painted from its most visual sentences, in the volume's
+palette. The file key matches ChapterCard.chapter_key().
 
 DIR is a scenes folder (…/resources/scenes); see vol_assets.py.
 """
@@ -114,13 +114,83 @@ def chapter_key(ch):
     return "ch_" + "".join(c if ("a" <= c <= "z" or "0" <= c <= "9") else "_" for c in s.lower())
 
 
+# Words that put something in front of the eye: light, colour, material,
+# weather, the things a room or a road is made of. A sentence's score is how
+# many it carries; the plate's imagery is the chapter's highest scorers.
+VISUAL = set("""
+light lights lit lamp lamps neon glow glowing shadow shadows dark darkness dusk dawn sunrise sunset night moon
+moonlight stars star sky clouds fog mist rain snow storm wind smoke steam fire flame flames candle candles
+red orange yellow green blue purple violet pink white black grey gray gold golden silver brown amber copper
+rust blood glass mirror window windows door doors wall walls floor ceiling roof stairs table chair bed couch
+desk bar counter booth sign signs screen screens monitor television tv radio jukebox car truck bus van boat ship
+river water sea ocean bay beach shore tide waves lake pool sand mud dust road street highway bridge tower field
+forest trees tree woods leaves grass flowers garden house houses room hall kitchen bathroom basement attic
+church cathedral diner club stage painting paint canvas paper book books page photograph photo map coat dress
+shirt hat boots shoes hair eyes face hands skin bones feather heron crab fish bird birds dog cat horse
+cedar pine oak brick stone steel iron wood wooden concrete chrome plastic velvet leather silk sheet blanket
+fan flicker flickers flickering shimmering bright pale faded wet cold warm hot burning frozen
+""".split())
+
+
+def visual_sentences(scenes, limit=4):
+    """The chapter's most visual narration sentences, verbatim, in order of
+    score (ties: earlier first). No dialogue; 40-240 characters."""
+    cands = []
+    order = 0
+    for src, nodes in scenes:
+        for n in nodes:
+            if n.get("t") != "narrate":
+                continue
+            text = re.sub(r"\s+", " ", n.get("text") or "").strip()
+            if NO_NAMES.search(text):
+                continue
+            for sen in re.split(r"(?<=[.!?])\s+", text):
+                sen = re.sub(r"\s*\[[a-z]+:[^\]]*\]\s*", " ", sen).strip()   # direction tags are not prose
+                if not (40 <= len(sen) <= 240) or '"' in sen or "“" in sen:
+                    continue
+                words = re.findall(r"[a-z]+", sen.lower())
+                score = sum(1 for w in words if w in VISUAL)
+                if score >= 1:
+                    cands.append((-score, order, src, sen))
+                order += 1
+    cands.sort()
+    # a chapter with any two-image sentence keeps only those; a short one
+    # (a title page, a curtain call) falls back to its one-image lines
+    if any(c[0] <= -2 for c in cands):
+        cands = [c for c in cands if c[0] <= -2]
+    out, seen = [], set()
+    for _, _, src, sen in cands:
+        if sen in seen:
+            continue
+        seen.add(sen)
+        out.append({"src": src, "text": sen})
+        if len(out) >= limit:
+            break
+    return out
+
+
+def plate_lettering(chapter, title):
+    """The words the plate carries: the chapter mark when the title has no
+    number of its own, then the title as the text writes it."""
+    t = (title or "").strip()
+    numbered = re.match(r"^\s*(ch(apter)?\.?\s*\d+|[ivxlc]+\.|\d+[.:]|act\b)", t, re.I)
+    mark = "" if numbered else f"CHAPTER {str(chapter).upper()}"
+    if mark and t:
+        return f'"{mark}" (small, above) and "{t}" (large)'
+    return f'"{t or mark}"'
+
+
 def draft_plates(a, vols, roster, have):
     """One plate per chapter, grouped the way SceneDataDB.get_volume_chapters
-    groups them (index order; a type=chapter scene names the chapter)."""
+    groups them (index order; a type=chapter scene names the chapter). The
+    plate is the chapter's illustrated title page (the user, 2026-10-17:
+    "the chapter plates need the text for the chapters as well as imagery
+    from that chapter"): lettered with its title, painted from the
+    chapter's most visual sentences."""
     index = json.loads((Path(a.scenes) / "index.json").read_text())
     out = []
     for v in vols:
-        firsts, order = {}, []
+        firsts, order, members = {}, [], {}
         for sid in index.get(str(v), []):
             f = Path(a.scenes) / f"vol{v}" / f"{sid}.json"
             if not f.exists():
@@ -130,6 +200,7 @@ def draft_plates(a, vols, roster, have):
             if ch is None:
                 continue
             k = str(ch)
+            members.setdefault(k, []).append((f"vol{v}/{f.name}", d.get("nodes") or []))
             if k not in firsts:
                 firsts[k] = (d, f)
                 order.append(k)
@@ -142,22 +213,30 @@ def draft_plates(a, vols, roster, have):
             if slug in have:
                 continue
             title = (d.get("title") or "").strip()
-            nodes = d.get("nodes") or []
-            idxs = [i for i, n in enumerate(nodes) if n.get("t") in ("narrate", "interlude")][:6]
-            quotes = quote_list(nodes, idxs, f"vol{v}/{f.name}")[:3]
             label = f"chapter {d.get('chapter')}" + (f" — {title}" if title else "")
+            quotes = visual_sentences(members.get(k, []))
             out.append({
-                "slug": slug, "kind": "scene2d", "name": f"the plate of vol {v}, {label}",
+                "slug": slug, "kind": "scene2d", "name": f"the title plate of vol {v}, {label}",
                 "file": f"vn/plates/chapter_v{v}_{key}.jpg", "vol": [v], "keys": [slug],
-                "tag": f"vol{v} · PLATE · behind the card of {label}",
-                "aspect": "16:9", "pose": None, "role": "plate", "scenes": [d.get("id") or f.stem],
-                "prompt": f"An endpaper of {PLATE_PALETTE.get(v, 'hand-made paper and one ink')}, for {label}. "
-                          "One motif from the chapter, faint, half-dissolved into the marbling.",
+                "tag": f"vol{v} · PLATE · the title page of {label}",
+                "aspect": "16:9", "pose": None, "role": "plate",
+                "scenes": [sid for sid in index.get(str(v), []) if any(
+                    m[0].endswith(f"/{sid}.json") for m in members.get(k, []))],
+                "lettering": plate_lettering(d.get("chapter"), title),
+                "prompt": f"The illustrated title page of {label}. The lettering sits large and clear in the "
+                          f"middle third; around and behind it, painted imagery from the chapter (the quoted "
+                          f"sentences) composed as one picture, in the volume's palette: "
+                          f"{PLATE_PALETTE.get(v, 'its own paper and inks')}.",
                 "prompt_mode": "append", "canon": quotes,
-                "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). "
-                         "The quotes are the chapter's opening lines; pick the one motif the plate should carry and "
-                         "cut the rest before spending credits. Until it is installed the card shows the volume's "
-                         "generated sheet.",
+                "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' "
+                         "and 'the chapter plates need the text for the chapters as well as imagery from that "
+                         "chapter'). The quotes are the chapter's most visual sentences, chosen by word count; "
+                         "keep the ones the picture should show. The lettering is the chapter's title as the "
+                         "text writes it; check the spelling in the generated image. Once installed, the card "
+                         "shows this plate in place of its own typed title."
+                         + ("" if quotes else " NO IMAGERY: a volume title or end page with no narration of its "
+                            "own; its scene may already show the scanned 2010 plate as a CG. Paint it from the "
+                            "volume's imagery, or leave it to the generated sheet."),
             })
     return out
 

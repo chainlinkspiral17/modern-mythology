@@ -3834,6 +3834,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 114: CHAPTER PLATES ARE TITLE PAGES.** The user: "the chapter plates need the
+text for the chapters as well as imagery from that chapter."
+- Each of the 136 plates is now the chapter's illustrated title page, with three parts:
+  - **Lettering:** the chapter's title as the text writes it, plus a small "CHAPTER VI" above it
+    when the title has no number of its own.
+  - **Imagery:** the chapter's most visual sentences, from every scene in the chapter. A sentence
+    scores by the light, colour, material and object words it carries; direction tags are
+    stripped. All 494 quotes are verbatim.
+  - **Style:** a new `plate` preamble — the lettering large and clean in the middle third, the
+    chapter's imagery painted around it.
+- **When a chapter's painted plate is installed, the card shows it in place of its own typed
+  title** (`ChapterCard._plate_lettered`). Without one, the typed title shows over the generated
+  sheet as before. Smoke-tested both ways.
+- Six volume title and end pages have no narration of their own, so they have no imagery. They
+  are flagged in their notes: most already show the scanned 2010 plate.
+
+DRAFT 2 targets:
+- Image models misspell lettering: check every generated title against its `lettering`, and
+  regenerate what's wrong.
+- Some picks are figurative ("my stone cold solemn face"): keep the literal ones before spending
+  credits.
+
 **2026-10-17 · pass 113b: THE PLATES, THE ASSET ACCOUNTING AND THE VOLS 1–4 UI JOIN THE UNIFIED BRANCH.**
 The user: "I want the chapter plates in the hero tool. The other chat thread merged all the vol 1-4
 into the game." Those passes (111–113) were on claude/3d-locales-clean, after the commit the unified

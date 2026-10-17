@@ -39,6 +39,11 @@ func _ready() -> void:
 const PLATE_DIR := "res://assets/vn/plates/"
 const PLATE_VARIANTS := 3
 var _plate: TextureRect = null
+# (2026-10-17, the user: "the chapter plates need the text for the chapters
+# as well as imagery from that chapter") A chapter's painted plate is its
+# illustrated title page, lettered with the title; when it shows, the
+# card's own typed title steps aside instead of printing over it.
+var _plate_lettered: bool = false
 
 
 func _build() -> void:
@@ -197,6 +202,7 @@ func set_plate(vol: int, chapter_v: Variant) -> void:
 	# chapter gets a plate"); until it is painted, the volume's generated
 	# sheet stands in, three variants so consecutive chapters differ.
 	var tex: Texture2D = _plate_texture(PLATE_DIR + "chapter_v%d_%s" % [vol, chapter_key(chapter_v)])
+	_plate_lettered = tex != null
 	if tex == null:
 		tex = _plate_texture(PLATE_DIR + "chapter_v%d_%d" % [vol, chapter % PLATE_VARIANTS])
 	if tex == null:
@@ -214,6 +220,7 @@ func present(kicker: String, title: String, callback: Callable) -> void:
 	_kicker.text = kicker
 	_kicker.visible = kicker != ""
 	_main.text = title
+	_center.visible = not _plate_lettered
 	_state = "in"
 	_hold_left = HOLD_S
 	_center.modulate.a = 0.0
