@@ -26,6 +26,25 @@ var _last_summary: Dictionary = {}
 # ── Data file paths ──────────────────────────────────────────────────
 const DATA_ROOT := "res://resources/games/"
 const FRAMEWORK_CORE := DATA_ROOT + "framework/action_tableau_core.json"
+const FRAMEWORK_DRAFT_POOLS := DATA_ROOT + "framework/draft_pools.json"
+
+
+# Doctrine accrued by Paul's rooms compounds Nicola's doubt on the
+# next Empress run started — capped so a long Hierophant streak can't
+# start an Empress run already lost.
+const DOCTRINE_DOUBT_CAP := 3
+
+var _run_ledger: Dictionary = {}
+
+# Run Ledger (Wave 2) — token entries earned THIS run, buffered with
+# their earn-moment metadata and committed to user:// at run end.
+var _ledger_pending_tokens: Array = []       # [{token, kind, scenario_id, arcana, source_visitor_id, timestamp, moment}]
+
+var _draft_pools_def: Dictionary = {}    # framework/draft_pools.json (Wave-2 hand drafting)
+
+var _draft_used_this_run: bool = false       # a pre-run draft happened (doubt penalty applied once)
+
+var _draft_btn: Button = null            # opens the pre-run Hand / draft panel
 
 # Scenario selection — set by start_scenario() before _ready
 var _arcana_id: String = "fool"
@@ -420,6 +439,9 @@ func _ready() -> void:
 	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks fire on entry
 	set_process_unhandled_key_input(true)
 	_load_data()
+	# Run Ledger (Wave 2) — load the cross-run record before _init_run
+	# so requires_token gates and the doctrine carry can read it.
+	_load_run_ledger()
 	_build_ui()
 	_init_run()
 	# Mid-run save state · attempt to resume a save for this exact
@@ -1061,6 +1083,9 @@ func _load_data() -> void:
 	# universal card of the same id for this run only.
 	for c: Dictionary in _setup.get("scenario_action_cards", []):
 		_action_cards[c["id"]] = c
+	# Hand-drafting pools (Wave 2). Universal + per-hand add-card ids;
+	# eligibility against the merged _action_cards happens at draft time.
+	_draft_pools_def = _load_json(FRAMEWORK_DRAFT_POOLS)
 	# Seed the tableau stock counts. Non-starters, non-leap, non-
 	# bundle cards get a stock count (from the card's `stock` field
 	# or default 2 if unspecified). Each purchase decrements; at 0
@@ -1822,6 +1847,16 @@ func _build_ui() -> void:
 	hand_label.add_theme_font_size_override("font_size", 12)
 	hand_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_title_hb.add_child(hand_label)
+	# Hand drafting (Wave 2) — opens the pre-run HAND panel. Editable
+	# only during the pre-run window (turn 1, before any card is
+	# played); read-only afterward. Label + accent updated by
+	# _update_draft_button on every render.
+	_draft_btn = Button.new()
+	_draft_btn.text = "Deck ✦"
+	_draft_btn.add_theme_font_size_override("font_size", 11)
+	_draft_btn.tooltip_text = "The deck this hand brings. With banked Insight (won runs) you can draft one card in — or cut one — before you act on turn 1."
+	_draft_btn.pressed.connect(_open_draft_panel)
+	hand_title_hb.add_child(_draft_btn)
 	var move_btn := Button.new()
 	move_btn.text = "Move ↪"
 	move_btn.add_theme_font_size_override("font_size", 12)
@@ -9749,6 +9784,16 @@ func _on_leave() -> void:
 # deck order) is included; design data (cards / setups / decks)
 # is reloaded from JSON on resume.
 const GAUNTLET_SAVE_DIR := "user://saves/gauntlet/"
+# ── Run Ledger (Wave 2 · cross-scenario memory) ─────────────────────
+# A persistent, across-runs record: lore / leap / visitor-connection
+# tokens with the moment they were earned, per-scenario win/loss
+# records, the win streak, banked doctrine (the reserved cross-arcana
+# sub-token) and banked insight (the drafting currency). Lives in its
+# OWN file — never overloads the per-run save — and is written at run
+# end, win AND loss. Tokens carried forward become `requires_token`
+# conditions on visitors / thresholds / cards in later scenarios.
+const RUN_LEDGER_PATH := GAUNTLET_SAVE_DIR + "ledger.json"
+const RUN_LEDGER_VERSION := 1
 
 
 func _gauntlet_save_path() -> String:
@@ -9783,6 +9828,11 @@ func _collect_run_state() -> Dictionary:
 		"gravity_last":       _gravity_last_drawn,
 		"gravity_recycles":   _gravity_recycle_count,
 		"lore_tokens":        _lore_tokens_collected,
+		# v2 · Run Ledger — this run's pending token entries (with
+		# their earn-moment metadata) + whether the pre-run draft's
+		# doubt penalty already applied.
+		"ledger_pending":     _ledger_pending_tokens,
+		"draft_used":         _draft_used_this_run,
 	}
 
 
@@ -9811,6 +9861,8 @@ func _apply_run_state(d: Dictionary) -> void:
 	_gravity_last_drawn   = d.get("gravity_last", {})
 	_gravity_recycle_count = int(d.get("gravity_recycles", 0))
 	_lore_tokens_collected = d.get("lore_tokens", [])
+	_ledger_pending_tokens = d.get("ledger_pending", [])
+	_draft_used_this_run   = bool(d.get("draft_used", false))
 
 
 func _write_gauntlet_save() -> void:
@@ -10014,6 +10066,75 @@ func _attract_end() -> void:
 	var trip: Node = get_node_or_null("/root/TripSync")
 	if trip != null and trip.has_method("apply_trip_cue"):
 		trip.call("apply_trip_cue", "reset")
+
+
+
+
+static func _run_ledger_defaults() -> Dictionary:
+	return {
+		"version": RUN_LEDGER_VERSION,
+		"tokens": {},           # token_id → [{kind, scenario_id, arcana, source_visitor_id, timestamp, moment}]
+		"records": {},          # "<arcana>/<scenario_id>" → {wins, losses}
+		"streak": {"current": 0, "best": 0},
+		"doctrine": 0,          # reserved cross-arcana sub-token (Paul → Nicola)
+		"insight": 0,           # drafting currency · +1 per won run
+		"drafted_cards": {},    # hand_id → [cid] (the one editable slot)
+		"removed_cards": {},    # hand_id → [cid] (persistent cuts)
+	}
+
+
+# Read the ledger off disk without a game instance — the gallery /
+
+
+# Read the ledger off disk without a game instance — the gallery /
+# scenario picker can surface per-scenario records through this.
+static func read_run_ledger() -> Dictionary:
+	var out: Dictionary = _run_ledger_defaults()
+	if not FileAccess.file_exists(RUN_LEDGER_PATH):
+		return out
+	var f := FileAccess.open(RUN_LEDGER_PATH, FileAccess.READ)
+	if f == null:
+		return out
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) == TYPE_DICTIONARY:
+		# Merge into defaults so older ledgers don't crash on new keys.
+		for k in (parsed as Dictionary):
+			out[k] = (parsed as Dictionary)[k]
+	return out
+
+
+func _load_run_ledger() -> void:
+	_run_ledger = read_run_ledger()
+
+
+func _write_run_ledger() -> void:
+	DirAccess.make_dir_recursive_absolute(GAUNTLET_SAVE_DIR)
+	var f := FileAccess.open(RUN_LEDGER_PATH, FileAccess.WRITE)
+	if f == null:
+		push_warning("[Gauntlet] could not write run ledger to %s" % RUN_LEDGER_PATH)
+		return
+	f.store_string(JSON.stringify(_run_ledger, "  "))
+
+
+func _ledger_record_key() -> String:
+	return "%s/%s" % [_arcana_id, _scenario_id]
+
+
+# Run Ledger (Wave 2) — a setup thresholds[] entry may declare
+# requires_token: the exit only opens for a player whose ledger (or
+# current run) holds that token. Thresholds without the field are
+# unaffected.
+func _threshold_token_locked(pos: String) -> bool:
+	for t_v in _setup.get("thresholds", []):
+		var t: Dictionary = t_v
+		if String(t.get("id", "")) != pos:
+			continue
+		var tok: String = String(t.get("requires_token", ""))
+		return tok != "" and not _ledger_has_token(tok)
+	return false
+
+
+# Pomegranate Hour: the index of an episode state on the six-step
 
 
 func _ledger_insight() -> int:

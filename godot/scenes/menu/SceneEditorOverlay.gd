@@ -419,7 +419,7 @@ func _refresh_detail() -> void:
 			_detail_vbox.add_child(add_opt_btn)
 
 
-func _text_field(label: String, node: Dictionary, key: String, nodes: Array) -> VBoxContainer:
+func _text_field(label: String, node: Dictionary, key: String, nodes: Array, kind: String = "string") -> VBoxContainer:
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 4)
 	var lbl := Label.new()
@@ -431,8 +431,20 @@ func _text_field(label: String, node: Dictionary, key: String, nodes: Array) -> 
 	line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_style_input(line)
 	var k: String = key
+	var knd: String = kind
 	line.text_changed.connect(func(v: String) -> void:
-		(nodes[_sel_node_idx] as Dictionary)[k] = v
+		var out: Variant = v
+		match knd:
+			"int":
+				out = int(v) if v.is_valid_int() else 0
+			"auto":
+				if v.is_valid_int():
+					out = int(v)
+				elif v.is_valid_float():
+					out = float(v)
+				elif v.to_lower() == "true" or v.to_lower() == "false":
+					out = v.to_lower() == "true"
+		(nodes[_sel_node_idx] as Dictionary)[k] = out
 		_dirty = true
 		_status_lbl.text = "● unsaved"
 		_status_lbl.add_theme_color_override("font_color", Color(0.9, 0.6, 0.3))
