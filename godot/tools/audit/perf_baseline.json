@@ -20,6 +20,11 @@
   "prims": 24408,
   "objects": 268
  },
+ "copy_shop": {
+  "draw": 100,
+  "prims": 24684,
+  "objects": 270
+ },
  "dean_offices": {
   "draw": 116,
   "prims": 61408,
@@ -61,6 +66,11 @@
  },
  "nexcorp_fueling_station": {
   "draw": 174
+ },
+ "pasadena_1945": {
+  "draw": 134,
+  "prims": 74064,
+  "objects": 304
  },
  "pharmacy": {
   "draw": 1096

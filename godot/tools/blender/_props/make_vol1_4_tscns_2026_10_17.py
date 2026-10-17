@@ -38,6 +38,8 @@ ONEI = "__onei_office__onei_office_desk__onei_office_door"
 CLUBO = "__club_office__club_office_after"
 CHAU = "__chau_hall_noon__chau_entry_morning__chau_living__chau_bath__chau_game_room"
 AMANDA = "__amanda_hot_tub__amanda_fort__amanda_fort_close"
+SHOP = "__copy_shop_floor__copy_shop_wastebasket__copy_shop_copier"
+P45 = "__street_day__park_chess__hollywood_shoot"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -407,6 +409,71 @@ CONFIGS = [
         ],
         "mood_strata": ["raw", "memory_warm", "noir", "lithograph",
                         "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 2's COPY SHOP (build_copy_shop.py): the graveyard shift under
+        # the failing tubes, a greenish cast; the copier view adds its pink
+        # scan light. Vol 4's office (x 34..52) after hours: dim panels, the
+        # bright corner where the walls meet.
+        "out_path": os.path.join(ROOT, "copy_shop.tscn"),
+        "uid": "uid://copy_shop_v2",
+        "root_node": "CopyShop",
+        "glb": "res://assets/3d/locales/copy_shop.glb",
+        "env": {"bg": (0.03, 0.03, 0.04, 1), "amb": (0.64, 0.70, 0.64, 1),
+                "amb_e": 0.32, "fog": (0.16, 0.18, 0.16, 1), "fog_e": 0.2,
+                "fog_d": 0.003, "sat": 0.88, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.86, 0.90, 0.78, 1), "bg": (0.06, 0.07, 0.06, 1),
+                   "neon_edge": (0.62, 0.70, 0.60, 1), "neon_lo": (0.22, 0.26, 0.22, 1),
+                   "neon_hi": (0.06, 0.07, 0.06, 1), "lim_tint": (0.56, 0.64, 0.54, 1)},
+        "lights": [
+            ("Key_Shop" + SHOP, "DirectionalLight3D", B_KEY_FROM_N.format(0, 4, -6), c(0.80, 0.86, 0.80), 0.08),
+            ("Fill_Shop" + SHOP, "DirectionalLight3D", B_FILL.format(0, 3, -3), c(0.70, 0.76, 0.70), 0.06),
+            ("Back" + SHOP, "DirectionalLight3D", B_BACK.format(0, 3, 1), c(0.60, 0.66, 0.62), 0.05),
+            # the tubes (blender rows y 3.0 / 6.2); the dying ones left dark
+            *[("Fluor_Shop_{}_{}".format(r, k) + SHOP, "OmniLight3D", I.format(x, 2.9, -y), c(0.86, 0.96, 0.86), 1.0,
+               {"omni_range": 5.0}) for r, y in enumerate((3.0, 6.2)) for k, x in enumerate((-3.6, 0.0, 3.6)) if (r * 3 + k) % 3 != 2],
+            ("Copier_Scan_Glow__copy_shop_copier", "OmniLight3D", I.format(0.0, 1.22, -5.1), c(1.0, 0.50, 0.70), 0.9,
+             {"omni_range": 1.4}),
+            ("Back_Bulb_Glow" + SHOP, "OmniLight3D", I.format(3.6, 2.8, -11.0), c(1.0, 0.86, 0.62), 0.6, {"omni_range": 3.5}),
+            # the office
+            ("Key_Office__office_after_hours", "DirectionalLight3D", B_KEY_FROM_N.format(43, 4, -7), c(0.80, 0.82, 0.90), 0.10),
+            *[("Office_Panel_{}__office_after_hours".format(k), "OmniLight3D", I.format(x, 2.7, -7.0), c(0.92, 0.94, 0.96), 0.6,
+               {"omni_range": 6.0}) for k, x in enumerate((37.0, 43.0, 49.0))],
+            ("Bright_Corner__office_after_hours", "OmniLight3D", I.format(51.4, 2.0, -13.4), c(1.0, 1.0, 0.96), 2.6,
+             {"omni_range": 6.0}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph",
+                        "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's 1945 (build_pasadena_1945.py): the Pasadena street, the
+        # park and Hollywood under a clear sun; the street again in the
+        # meld's rain (grey, the marquee lit); the clinic on its ceiling
+        # light and its window.
+        "out_path": os.path.join(ROOT, "pasadena_1945.tscn"),
+        "uid": "uid://pasadena_1945_v3",
+        "root_node": "Pasadena1945",
+        "glb": "res://assets/3d/locales/pasadena_1945.glb",
+        "env": {"bg": (0.62, 0.76, 0.92, 1), "amb": (0.88, 0.88, 0.84, 1),
+                "amb_e": 0.70, "fog": (0.86, 0.86, 0.82, 1), "fog_e": 0.4,
+                "fog_d": 0.0015, "sat": 0.92, "glow_i": 0.6, "glow_b": 0.14},
+        "shader": {"warm": (0.96, 0.88, 0.70, 1), "bg": (0.10, 0.10, 0.10, 1),
+                   "neon_edge": (0.80, 0.70, 0.54, 1), "neon_lo": (0.30, 0.26, 0.22, 1),
+                   "neon_hi": (0.10, 0.10, 0.10, 1), "lim_tint": (0.76, 0.68, 0.54, 1)},
+        "lights": [
+            ("Key_Sun" + P45, "DirectionalLight3D", B_SUN_FROM_S.format(0, 20, 10), c(1.0, 0.94, 0.82), 1.5),
+            ("Fill_Sky" + P45, "DirectionalLight3D", B_FILL.format(0, 10, -10), c(0.72, 0.80, 0.96), 0.40),
+            ("Back" + P45, "DirectionalLight3D", B_BACK.format(0, 10, 0), c(0.94, 0.90, 0.82), 0.30),
+            ("Key_Rain__street_rain", "DirectionalLight3D", B_KEY_FROM_N.format(0, 20, -20), c(0.70, 0.74, 0.80), 0.40),
+            ("Fill_Rain__street_rain", "DirectionalLight3D", B_FILL.format(0, 10, -10), c(0.62, 0.66, 0.72), 0.25),
+            ("Marquee_Glow__street_rain__street_day", "OmniLight3D", I.format(7.0, 4.3, -46.0), c(1.0, 0.86, 0.56), 1.6,
+             {"omni_range": 7.0}),
+            ("Key_Clinic__clinic_1945", "DirectionalLight3D", B_KEY_FROM_N.format(202, 3, -2), c(0.92, 0.94, 0.90), 0.20),
+            ("Clinic_Ceiling__clinic_1945", "OmniLight3D", I.format(202.5, 2.6, -2.2), c(1.0, 0.98, 0.92), 1.4, {"omni_range": 5.0}),
+            ("Clinic_Window__clinic_1945", "OmniLight3D", I.format(200.3, 1.6, -2.2), c(0.96, 0.96, 0.92), 1.0, {"omni_range": 4.0}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "silent_film_18",
+                        "noir", "candlelight"],
     },
 ]
 

@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol4_office_copier.jpg"
+      "src": "assets/backgrounds/vol4_office_after_hours.jpg"
     },
     {
       "t": "hide",
@@ -142,7 +142,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol4_office_copier.jpg"
+      "src": "assets/backgrounds/vol4_office_after_hours.jpg"
     },
     {
       "t": "narrate",

@@ -3834,6 +3834,43 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 119: THE COPY SHOP AND 1945 PASADENA (draft 1).**
+- **copy_shop** (`build_copy_shop.py`):
+  - Vol 2's "small ugly copy shop" on the graveyard shift: two rows of tubes with every third one
+    dying, walls "greenish black in places", the old store's front blinded, the customers'
+    leftovers, the day crew's jobs, the wastebasket with the stapled copy standing in it, and the
+    back room of boxes.
+  - The melds' copier at 4 a.m.: the lid, the scratched glass, and the pink scan light, which
+    shows only in the copier view.
+  - Vol 4's office after hours (paper cuts), as a separate area: his desk along the row to the
+    bright corner where two walls meet, the copying machine, the cleaning crew's cart.
+- **pasadena_1945** (`build_pasadena_1945.py`):
+  - The Pasadena street: the streetcar line under its wire, readers' benches with their papers
+    and coffee, the newsstand, slow cars, the bus, the movie marquee, orange trees.
+  - The same street in the meld's rain: the wet road, puddles, the streaks, a low cloud.
+  - The park (chess boards in the shade, pigeons, kites), a busier Hollywood street with a
+    location shoot, and the small clinic (the glass of water, the cuff).
+- **Staging fixes the briefs found:**
+  - Paper cuts is an office, not a copy shop, so it plays its own picture,
+    `vol4_office_after_hours`. The melds keep the copier, and the pink scan light (theirs) and the
+    green one (his, behind closed eyes) are two machines.
+  - In ch10, the Hollywood picture now comes before "I'm in Los Angeles…" (that line had played
+    over the Mojave desert).
+- **Not contradictions, left as written:**
+  - The meld's "Small Wood · 1994" fits the spine (Dean's farmhouse basement, 1993–95); the
+    Driftwood "~1997–98" row is a different set of books.
+  - The clear street and the meld's rain are the same street (the meld is a game picture, and its
+    narrator remarks on the rain).
+  - ch2's walk to Dabney can follow ch9's clinic.
+- 7 stems pointed. Gates on both builders are clean. Draw calls 100 and 134. vn_story_audit is at
+  312.
+
+DRAFT 2 targets:
+- Period cars (the shared car model is modern in its lines) and the streetcar itself.
+- The Hollywood shoot closer in its view (it sits small down the walk).
+- The copy shop's back room as its own view.
+- Next builds: editing_suite (4), apple_peddler (4), parsonage_1945 (4), bus_station (4).
+
 **2026-10-17 · pass 118: THE BALLFIELD AND THE CHAU HOUSE (draft 1).** The next two builds by
 scene count, each from a text-read brief.
 - **little_league** (`build_little_league.py`): the Texas field in August.

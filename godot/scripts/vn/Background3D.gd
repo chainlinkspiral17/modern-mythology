@@ -3321,6 +3321,91 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.30, 0.32, 0.50, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
 		"suppress_input": true,
 	},
+	"copy_shop_floor": {
+		"scene": "res://scenes/locales/copy_shop.tscn",
+		"requires_glb": "res://assets/3d/locales/copy_shop.glb",
+		# "a small ugly copy shop" on the graveyard shift - from the back-room door across the floor
+		"camera_origin": Vector3(4.8, 1.65, -8.3),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(140.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"copy_shop_wastebasket": {
+		"scene": "res://scenes/locales/copy_shop.tscn",
+		"requires_glb": "res://assets/3d/locales/copy_shop.glb",
+		# "I came across a story in the wastebasket of the copy shop" - low on it
+		"camera_origin": Vector3(-4.1, 0.75, -3.3),
+		"camera_rotation": Vector3(-0.41, deg_to_rad(133.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"copy_shop_copier": {
+		"scene": "res://scenes/locales/copy_shop.tscn",
+		"requires_glb": "res://assets/3d/locales/copy_shop.glb",
+		# the copier at 4 a.m.: the lid, the scratched glass, the pink scan light
+		"camera_origin": Vector3(-0.5, 1.6, -4.2),
+		"camera_rotation": Vector3(-0.37, deg_to_rad(-27.0), 0.0),
+		"fov": 58.0,
+		"env": {"ambient_color": Color(0.50, 0.50, 0.56, 1), "ambient_energy": 0.18, "fog_color": Color(0.06, 0.06, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"office_after_hours": {
+		"scene": "res://scenes/locales/copy_shop.tscn",
+		"requires_glb": "res://assets/3d/locales/copy_shop.glb",
+		# "How bright it is in the center, at the nexus" - from behind his desk along the row to the corner
+		"camera_origin": Vector3(36.0, 1.2, -12.4),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-70.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.60, 0.62, 0.70, 1), "ambient_energy": 0.22, "fog_color": Color(0.08, 0.08, 0.10, 1)},
+		"suppress_input": true,
+	},
+	"street_day": {
+		"scene": "res://scenes/locales/pasadena_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
+		# "1945 is a walk in the park." - down the street: readers, slow cars, the bus, the marquee
+		"camera_origin": Vector3(-7.6, 1.6, -4.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(-8.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"street_rain": {
+		"scene": "res://scenes/locales/pasadena_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
+		# "A street in the rain. Streetcar wire. A movie marquee. Orange trees." (the game picture)
+		"camera_origin": Vector3(-7.6, 1.6, -4.0),
+		"camera_rotation": Vector3(0.04, deg_to_rad(-8.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.56, 0.60, 0.66, 1), "ambient_energy": 0.40, "fog_color": Color(0.46, 0.48, 0.52, 1)},
+		"suppress_input": true,
+	},
+	"park_chess": {
+		"scene": "res://scenes/locales/pasadena_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
+		# chess boards in the shade, pigeons on the gravel; past the shade, the football and the kites
+		"camera_origin": Vector3(63.0, 1.6, -11.0),
+		"camera_rotation": Vector3(0.12, deg_to_rad(-62.0), 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"hollywood_shoot": {
+		"scene": "res://scenes/locales/pasadena_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
+		# "They shoot on the streets" - a busier street, the camera on its tripod down the walk
+		"camera_origin": Vector3(169.5, 1.6, -14.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(2.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"clinic_1945": {
+		"scene": "res://scenes/locales/pasadena_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
+		# 'Here's the clinic son' - from the door: the exam table, the glass of water, the cuff
+		"camera_origin": Vector3(201.2, 1.6, -0.8),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-27.0), 0.0),
+		"fov": 72.0,
+		"env": {"ambient_color": Color(0.90, 0.92, 0.88, 1), "ambient_energy": 0.50, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

@@ -269,16 +269,16 @@
       "text": "I quiz myself on what I know of the 1940s. Surprisingly little, I find out."
     },
     {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hollywood_street_1945.jpg"
+    },
+    {
       "t": "narrate",
       "text": "I'm in Los Angeles. Home to the faces that survived to live on forever, the achingly beautiful icons and household names. I want to seek them out, see them in the flesh."
     },
     {
       "t": "narrate",
       "text": "This is an opportunity I have been given."
-    },
-    {
-      "t": "bg",
-      "src": "assets/backgrounds/vol3_hollywood_street_1945.jpg"
     },
     {
       "t": "narrate",

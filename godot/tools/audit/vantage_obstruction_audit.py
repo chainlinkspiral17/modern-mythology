@@ -51,8 +51,9 @@ COLS, ROWS = 9, 3
 # (2026-10-04: miriam_subaru — vol 5's back-seat camera looks through
 # the gap between the front seats; the seatbacks frame it on purpose.)
 # (2026-10-17: amanda_fort_close — vol 3's "look at the billowing fort":
-# the sheet lit blue by the TV fills the frame on purpose.)
-DELIBERATE = {"amanda_fort_close", "vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "vehicle_cab_night", "vehicle_cab_rear_night", "vehicle_cab_altima_night", "miriam_subaru_night", "vehicle_cab_corolla", "vehicle_cab_corolla_night", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
+# the sheet lit blue by the TV fills the frame on purpose; copy_shop_copier
+# — the melds' 4 a.m. copier, close on its lid and its pink scan light.)
+DELIBERATE = {"amanda_fort_close", "copy_shop_copier", "vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "vehicle_cab_night", "vehicle_cab_rear_night", "vehicle_cab_altima_night", "miriam_subaru_night", "vehicle_cab_corolla", "vehicle_cab_corolla_night", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 # EMPTY (2026-09-07 · the diner's first shot was a yellow field with a
