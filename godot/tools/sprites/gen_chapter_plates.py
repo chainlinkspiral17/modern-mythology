@@ -2,7 +2,7 @@
 """gen_chapter_plates.py — endpaper plates behind the VN chapter card.
 
 The chapter card is the book's most-seen page (71 boundaries across
-vols 5-7) and it has been type on a flat black field. These are the
+vols 5-7, and every vols 1-4 chapter since 2026-10-17) and it has been type on a flat black field. These are the
 ENDPAPERS: laid paper with chain lines, a fine marbled comb drawn
 in the volume's own ink, foxing where old paper ages, and a heavy
 deckle vignette so the type still owns the middle of the frame.
@@ -20,10 +20,20 @@ OUT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "..", "..", "assets", "vn", "plates"))
 
 # vol -> (paper base, ink for the comb, foxing tint)
+# (2026-10-17, "vol 1-4 visual novel UIs need to be brought up to 5-7
+# standard": the first four volumes get their sheets too)
+# 1 · Faust 3, the dream city — oxblood, wine-dark, the club at 4 a.m.
+# 2 · Small Wood, 1994 — the bay in fog, slate and sea-grey
+# 3 · the Earthman, the signal — transmission teal over desert ochre
+# 4 · the zine, the copy shop — toner grey, the scan bar's pink
 # 5 · the arcana, the river, sodium and brass
 # 6 · Texas, darkroom chemistry, the search — cooler, sparer
 # 7 · the coast, cedar and bowl-brass, green-shot
 VOLUMES = {
+    1: ((50, 34, 38), (132, 62, 72), (108, 72, 62)),
+    2: ((40, 46, 50), (98, 120, 128), (86, 94, 92)),
+    3: ((30, 42, 46), (62, 140, 150), (112, 98, 62)),
+    4: ((44, 42, 46), (152, 82, 112), (92, 90, 94)),
     5: ((54, 43, 32), (128, 92, 46), (104, 74, 40)),
     6: ((38, 44, 54), (74, 104, 130), (78, 84, 100)),
     7: ((38, 48, 42), (76, 118, 96), (74, 94, 74)),

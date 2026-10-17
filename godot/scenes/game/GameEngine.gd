@@ -1498,7 +1498,14 @@ func _do_jump(n: Dictionary) -> void:
 		return
 	var target: String = _s(n, "scene")
 	if target != "":
-		_load_scene(target)
+		# (2026-10-17) A jump to another scene is a scene change like an
+		# `end`: the same fade, and the chapter card when it crosses a
+		# chapter or a volume. Vols 1-4 change chapter by jump (59 times)
+		# and showed no card at all; vols 5-7 change by `end`.
+		_record_vn_reading(_scene_id)
+		_dlg.visible = false
+		AudioMgr.stop_voice()
+		_change_scene(target)
 	else:
 		_end_scene()
 
@@ -2163,6 +2170,13 @@ func _end_scene() -> void:
 		_set_vn_focus(false)
 		game_ended.emit()
 		return
+	_change_scene(next)
+
+
+## Fade to black, load `next` under the veil, and present the chapter card
+## when it opens a new chapter or volume (else fade back in). Shared by
+## `end` and a `jump` to another scene.
+func _change_scene(next: String) -> void:
 	# Producer sequencing: the music dips WITH the fade-out; the bed
 	# stops and the camera releases only at full black. (Before this,
 	# BGM hard-cut and the camera snapped while the scene was still

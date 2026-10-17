@@ -132,6 +132,48 @@ const _OVERRIDES: Dictionary = {
 	"linda":        {"hair_style": 2, "hair_color": 4, "beard": false},
 	"faust":        {"hair_style": 11, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt", "face": "narrow"},
 	"hugo":         {"hair_style": 5, "hair_color": 2, "beard": true},
+
+	# ── vols 1-4 cast pass (2026-10-17) · reads from each roster entry's
+	# description. Dickens Dean pins only the cut and the collar: he is
+	# early 30s in vols 1/4 and silver at 50 in vols 5-6, one key.
+	"dickens_dean":    {"hair_style": 11, "collar": "shirt", "face": "narrow", "beard": false},
+	"jacob":           {"hair_style": 0, "hair_color": 2, "skin_tone": 5, "beard": false, "collar": "hoodie"},
+	"wagner":          {"hair_style": 5, "hair_color": 7, "skin_tone": 5, "beard": false, "collar": "tee"},
+	"joan":            {"hair_style": 6, "hair_color": 0, "skin_tone": 5, "beard": false, "earrings": true},
+	"olivia":          {"hair_style": 7, "hair_color": 3, "beard": false, "collar": "v"},
+	# the author's four facets — one man (very tall, shaggy dark-brown
+	# hair, a chinstrap half-beard); only the collar tells them apart
+	"the_writer":      {"hair_style": 2, "hair_color": 2, "skin_tone": 5, "beard": true, "face": "wide", "collar": "shirt"},
+	"the_director":    {"hair_style": 2, "hair_color": 2, "skin_tone": 5, "beard": true, "face": "wide", "collar": "v"},
+	"the_artist":      {"hair_style": 2, "hair_color": 2, "skin_tone": 5, "beard": true, "face": "wide", "collar": "tee"},
+	"the_human_being": {"hair_style": 2, "hair_color": 2, "skin_tone": 5, "beard": true, "face": "wide", "collar": "hoodie"},
+	"deborah":         {"hair_style": 2, "hair_color": 5, "beard": false, "collar": "v"},
+	"emily":           {"hair_style": 6, "hair_color": 7, "skin_tone": 6, "beard": false},
+	"helen":           {"hair_style": 3, "hair_color": 0, "beard": false, "earrings": true},
+	"eric":            {"hair_style": 0, "hair_color": 2, "beard": true},
+	"the_fool":        {"hair_style": 2, "hair_color": 5, "beard": true, "age": "elder", "collar": "tee"},
+	"bernard":         {"hair_style": 0, "hair_color": 3, "beard": false, "face": "round"},
+	"david_jarvis":    {"hair_style": 5, "hair_color": 1, "beard": false, "collar": "shirt"},
+	"becca":           {"hair_style": 2, "hair_color": 3, "beard": false, "earrings": true},
+	"joe_ku":          {"hair_style": 0, "hair_color": 0, "beard": false, "collar": "tee"},
+	"andy":            {"hair_style": 2, "hair_color": 2, "skin_tone": 5, "beard": true, "face": "wide", "collar": "tee"},
+	"ron":             {"hair_style": 11, "hair_color": 8, "skin_tone": 6, "beard": false, "freckles": true, "face": "wide", "collar": "shirt"},
+	"betty":           {"hair_style": 6, "hair_color": 7, "beard": false, "earrings": true},
+	"jack":            {"hair_style": 11, "hair_color": 0, "beard": false, "collar": "shirt"},
+	"janessa":         {"hair_style": 7, "hair_color": 2, "beard": false, "collar": "tee", "face": "round"},
+	"melody":          {"hair_style": 6, "hair_color": 7, "skin_tone": 6, "beard": false},
+	"june":            {"hair_style": 2, "hair_color": 0, "skin_tone": 4, "beard": false},
+	"terry":           {"hair_style": 2, "hair_color": 5, "beard": false, "glasses": "regular", "collar": "shirt"},
+	"jane":            {"hair_style": 2, "hair_color": 0, "beard": false, "glasses": "regular"},
+	"niles":           {"hair_style": 1, "hair_color": 7, "beard": true, "face": "narrow"},
+	"marty":           {"hair_style": 0, "hair_color": 3, "beard": true, "face": "wide"},
+	"charlie":         {"hair_style": 1, "hair_color": 2, "beard": false, "collar": "shirt"},
+	"caroline":        {"hair_style": 6, "hair_color": 4, "skin_tone": 5, "beard": false},
+	"esther":          {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false, "earrings": true},
+	"todd":            {"hair_style": 1, "hair_color": 0, "skin_tone": 6, "beard": false, "face": "narrow"},
+	"norm":            {"hair_style": 1, "hair_color": 0, "skin_tone": 6, "beard": false, "face": "narrow"},
+	"george":          {"hair_style": 11, "hair_color": 1, "beard": false, "collar": "shirt"},
+	"hurstwood":       {"hair_style": 11, "hair_color": 1, "beard": false, "collar": "shirt"},
 }
 
 static var _cache: Dictionary = {}

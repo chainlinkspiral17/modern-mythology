@@ -1292,6 +1292,21 @@ func _save_heard() -> void:
 	cfg.save(HEARD_PATH)
 
 
+## (2026-10-17) A cue names a file by one extension and the bed was rendered
+## in another — the vols 1-4 scenes ask for vol1_club_thump.mp3 and the
+## synth wrote vol1_club_thump.wav. Same stem, the first extension that
+## exists wins; the name as written when none does.
+func _with_existing_extension(src: String) -> String:
+	if ResourceLoader.exists("res://" + src) or FileAccess.file_exists("res://" + src):
+		return src
+	var stem: String = src.get_basename()
+	for ext: String in ["ogg", "wav", "mp3"]:
+		var alt: String = stem + "." + ext
+		if ResourceLoader.exists("res://" + alt) or FileAccess.file_exists("res://" + alt):
+			return alt
+	return src
+
+
 func _load_audio(src: String) -> AudioStream:
 	# Short-circuit known-bad sources so a corrupt entry in the
 	# catalog (or a missing .ogg that still has an .import sidecar)
@@ -1299,6 +1314,7 @@ func _load_audio(src: String) -> AudioStream:
 	src = src.trim_prefix("res://")
 	if src in _failed_srcs:
 		return null
+	src = _with_existing_extension(src)
 	var path := "res://" + src
 	if ResourceLoader.exists(path):
 		var s := ResourceLoader.load(path) as AudioStream

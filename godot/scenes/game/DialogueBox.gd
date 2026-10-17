@@ -201,11 +201,11 @@ func _slot_for(char_name: String) -> String:
 
 # Slide the body text + speaker name into a narrower column biased
 # toward the speaker's cutout: left slot → hug the left third, right
-# slot → hug the right third, centre/narration → centred. Only the
-# standard modern-VN skin gets this; terminal/paper keep full width.
+# slot → hug the right third, centre/narration → centred. Every skin
+# (terminal and paper too, since 2026-10-17).
 func _anchor_to(slot: String) -> void:
 	_col_slot = slot
-	if _variant != SkinDB.DLG_STANDARD or _body == null:
+	if _body == null:
 		return
 	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
 	var left_pad: float  = float(pad[3])
@@ -388,10 +388,27 @@ func _build_standard() -> void:
 	_anchor_to("center")
 
 
+## (2026-10-17, the user: "vol 1-4 visual novel UIs need to be brought up
+## to 5-7 standard") The terminal (vol 3) and paper (vol 4) boxes keep their
+## look but read like the standard one: the same viewport-relative height,
+## reading-size type, the measured column and auto-fit instead of a 13-15 px
+## face in a scrolling 220 px strip.
+func _size_reading_box(inner_top: float, inner_bot: float) -> void:
+	var vp_h: float = 720.0
+	var vpr := get_viewport_rect()
+	if vpr.size.y > 1.0:
+		vp_h = vpr.size.y
+	_std_box_h = clampf(vp_h * 0.44, 300.0, 460.0)
+	offset_top = -_std_box_h
+	offset_bottom = 0.0
+	custom_minimum_size.y = _std_box_h
+	_std_inner_top = inner_top
+	_std_inner_bot = inner_bot
+
+
 func _build_terminal() -> void:
 	var pad: Array = _skin.get("dlg_pad", [20.0, 40.0, 20.0, 40.0])
-	var min_h: float = _skin.get("dlg_min_h", 220.0)
-	custom_minimum_size.y = min_h
+	_size_reading_box(float(pad[0]) + 6.0, float(pad[2]) + 20.0)
 
 	_bg = Panel.new()
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -420,10 +437,10 @@ func _build_terminal() -> void:
 
 	var sc: float = Settings.get_text_scale()
 	_speaker = Label.new()
-	_speaker.position = Vector2(pad[3], -26.0)
+	_speaker.position = Vector2(pad[3], -34.0)
 	_apply_font(_speaker, _skin.get("spk_font", SkinDB.F_SPACEMONO),
-				int(_skin.get("spk_size", 11) * sc),
-				_skin.get("spk_color", Color(0.0, 0.78, 1.0)))
+				int(maxf(float(_skin.get("spk_size", 11)), float(READ_SPK_PX)) * sc),
+				_skin.get("spk_color", Color(0.0, 0.78, 1.0)), true)
 	_speaker.visible = false
 	add_child(_speaker)
 
@@ -432,32 +449,36 @@ func _build_terminal() -> void:
 	_spk_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_spk_rule)
 
+	# a monospace face sets wide: 0.86 of the reading size holds the measure
+	_body_font_path = _skin.get("txt_font", SkinDB.F_SPACEMONO)
+	_body_base_size = int(maxf(float(_skin.get("txt_size", 13)), READ_BODY_PX * 0.86) * sc)
 	_body = RichTextLabel.new()
 	_body.bbcode_enabled = true
 	_body.fit_content    = false
-	_body.scroll_active  = true
+	_body.scroll_active  = false
 	_body.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_body.offset_top    = pad[0] + 6
 	_body.offset_bottom = -pad[2] - 20
 	_body.offset_left   = pad[3]
 	_body.offset_right  = -pad[1]
-	_apply_rtl_font(_body, _skin.get("txt_font", SkinDB.F_SPACEMONO),
-					int(_skin.get("txt_size", 13) * sc),
-					_skin.get("txt_color", Color(0.78, 0.84, 0.94)))
+	_apply_rtl_font(_body, _body_font_path, _body_base_size,
+					_skin.get("txt_color", Color(0.78, 0.84, 0.94)), true)
 	add_child(_body)
 
 	_cursor = Label.new()
 	_cursor.text = CURSOR_CHAR
-	_apply_font(_cursor, _skin.get("spk_font", SkinDB.F_SPACEMONO), int(11 * sc),
+	_apply_font(_cursor, _skin.get("spk_font", SkinDB.F_SPACEMONO), int(14 * sc),
 				_skin.get("cursor_col", Color(0.0, 0.78, 1.0)))
 	_cursor.visible = false
 	add_child(_cursor)
+	_anchor_to("center")
 
 
 func _build_paper() -> void:
 	var pad: Array  = _skin.get("dlg_pad", [24.0, 36.0, 24.0, 36.0])
-	var min_h: float = _skin.get("dlg_min_h", 240.0)
-	custom_minimum_size.y = min_h
+	# the name sits on the paper's first line; the body starts under it
+	var name_drop: float = 40.0 * Settings.get_text_scale()
+	_size_reading_box(float(pad[0]) + 22.0 + name_drop, float(pad[2]) + 20.0)
 
 	_bg = Panel.new()
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -494,18 +515,19 @@ func _build_paper() -> void:
 	_spk_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_spk_rule)
 
+	_body_font_path = _skin.get("txt_font", SkinDB.F_ELITE)
+	_body_base_size = int(maxf(float(_skin.get("txt_size", 15)), READ_BODY_PX * 0.92) * sc)
 	_body = RichTextLabel.new()
 	_body.bbcode_enabled = true
 	_body.fit_content    = false
-	_body.scroll_active  = true
+	_body.scroll_active  = false
 	_body.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_body.offset_top    = pad[0] + 22
+	_body.offset_top    = pad[0] + 22 + name_drop
 	_body.offset_bottom = -pad[2] - 20
 	_body.offset_left   = pad[3]
 	_body.offset_right  = -pad[1]
-	_apply_rtl_font(_body, _skin.get("txt_font", SkinDB.F_ELITE),
-					int(_skin.get("txt_size", 15) * sc),
-					_skin.get("txt_color", Color(0.10, 0.10, 0.10)))
+	_apply_rtl_font(_body, _body_font_path, _body_base_size,
+					_skin.get("txt_color", Color(0.10, 0.10, 0.10)), true)
 	add_child(_body)
 
 	_cursor = Label.new()
@@ -514,6 +536,7 @@ func _build_paper() -> void:
 				_skin.get("cursor_col", Color(0.04, 0.04, 0.04)))
 	_cursor.visible = false
 	add_child(_cursor)
+	_anchor_to("center")
 
 
 # ── Typewriter ────────────────────────────────────────────────────────────────
@@ -550,9 +573,9 @@ func _refit_once() -> void:
 
 # Auto-fit: keep the big size for short/medium lines; step the font
 # down toward a floor for long passages so the whole block fits the
-# box top-to-bottom without needing a scrollbar. Standard skin only.
+# box top-to-bottom without needing a scrollbar. Every skin.
 func _fit_body_size(text: String) -> void:
-	if _variant != SkinDB.DLG_STANDARD or _body == null or _body_font_path == "":
+	if _body == null or _body_font_path == "":
 		return
 	var col: Color = _skin.get("txt_color", Color(0.98, 0.97, 0.94))
 	var vis: String = _substr_visible(text, _count_visible(text))
