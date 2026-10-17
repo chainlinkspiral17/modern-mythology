@@ -174,7 +174,8 @@ def plate_lettering(chapter, title):
     number of its own, then the title as the text writes it."""
     t = (title or "").strip()
     numbered = re.match(r"^\s*(ch(apter)?\.?\s*\d+|[ivxlc]+\.|\d+[.:]|act\b)", t, re.I)
-    mark = "" if numbered else f"CHAPTER {str(chapter).upper()}"
+    named = chapter_key(chapter).startswith("ch_")       # "Prologue" is its own word, not a chapter number
+    mark = "" if numbered or named else f"CHAPTER {str(chapter).upper()}"
     if mark and t:
         return f'"{mark}" (small, above) and "{t}" (large)'
     return f'"{t or mark}"'

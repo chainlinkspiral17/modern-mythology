@@ -44355,930 +44355,6 @@
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title. NO IMAGERY: a volume title or end page with no narration of its own; its scene may already show the scanned 2010 plate as a CG. Paint it from the volume's imagery, or leave it to the generated sheet."
     },
     {
-      "slug": "plate_v5_ch00",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter 0 — Prologue :: The Liar King",
-      "file": "vn/plates/chapter_v5_ch00.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch00"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter 0 — Prologue :: The Liar King",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_prelude_arcana_liar_king",
-        "vol5_prelude_arcana_channel",
-        "vol5_prelude_arcana_whispers",
-        "vol5_prelude_arcana_ep01_umbra",
-        "vol5_prelude_arcana_ep02_in_flux",
-        "vol5_prelude_arcana_ep04_iris_title",
-        "vol5_prelude_arcana_ep05_iris",
-        "vol5_prelude_arcana_ep06_old_woman",
-        "vol5_prelude_arcana_ep07_backyard_dogs",
-        "vol5_prelude_arcana_ep08_autumn_crop",
-        "vol5_prelude_arcana_ep10_sound_of_silence",
-        "vol5_prelude_arcana_ep11_writ_fer_rain",
-        "vol5_prelude_arcana_ep12_pour_1",
-        "vol5_prelude_arcana_ep13_paper_cuts",
-        "vol5_prelude_arcana_ep14_milk_and_honey",
-        "vol5_prelude_arcana_ep15_lynchs_peak",
-        "vol5_prelude_arcana_ep17_one_hundred_places",
-        "vol5_prelude_arcana_ep18_sigsbees_deep",
-        "vol5_prelude_arcana_ep19_ravensway",
-        "vol5_prelude_arcana_ep20_sisters_wyrd",
-        "vol5_prelude_arcana_ep21_field_guide",
-        "vol5_prelude_arcana_ep22_hanged_man",
-        "vol5_prelude_arcana_ep23_visitation",
-        "vol5_prelude_arcana_john_shift",
-        "vol5_prelude_arcana_john_bar",
-        "vol5_ch0_booth6",
-        "vol5_ch0_frasier",
-        "vol5_ch0_model_city",
-        "vol5_ch0_closing",
-        "vol5_test_tarot_fool"
-      ],
-      "lettering": "\"CHAPTER 0\" (small, above) and \"Prologue :: The Liar King\" (large)",
-      "prompt": "The illustrated title page of chapter 0 — Prologue :: The Liar King. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_prelude_arcana_ep17_one_hundred_places.json",
-          "text": "1 home 4 the wide open road 1 texas 5 the building i tear apart 9 an empty lot where we can dream together at last 2 unkempt bed 6 the other side of the window 5 the inner space inside me 3 green grass yard 5 open pages of a book"
-        },
-        {
-          "src": "vol5/vol5_prelude_arcana_liar_king.json",
-          "text": "The frog inspects long fine digits up against the setting golden hour sun, illuminating the webbing, burning through rubber skin, the purple veins and dark warts can be seen all the way through the other side."
-        },
-        {
-          "src": "vol5/vol5_prelude_arcana_liar_king.json",
-          "text": "Agile child hands feel through bottom silt, grubby face so near reflected, tiny body fighting small splashing waves at the river’s edge."
-        },
-        {
-          "src": "vol5/vol5_prelude_arcana_ep05_iris.json",
-          "text": "Orange Kitty stares out the window or at shadow, but never across canvas."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch01",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter I — The Magician",
-      "file": "vn/plates/chapter_v5_ch01.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch01"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter I — The Magician",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch1_magician"
-      ],
-      "lettering": "\"CHAPTER I\" (small, above) and \"The Magician\" (large)",
-      "prompt": "The illustrated title page of chapter I — The Magician. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch1_magician.json",
-          "text": "The river of crushed blue glass caught the light and lost it again, and somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide."
-        },
-        {
-          "src": "vol5/vol5_ch1_magician.json",
-          "text": "He had even built the river — a meandering channel of crushed blue glass and circuit-board substrate, lit from below by the dying bulbs of an old aquarium pump."
-        },
-        {
-          "src": "vol5/vol5_ch1_magician.json",
-          "text": "Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above."
-        },
-        {
-          "src": "vol5/vol5_ch1_magician.json",
-          "text": "He picked up a soldering iron, its tip glowing hot."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch02",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter II — The High Priestess",
-      "file": "vn/plates/chapter_v5_ch02.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch02"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter II — The High Priestess",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch2_priestess",
-        "vol5_ch2_priestess_b"
-      ],
-      "lettering": "\"CHAPTER II\" (small, above) and \"The High Priestess\" (large)",
-      "prompt": "The illustrated title page of chapter II — The High Priestess. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch2_priestess_b.json",
-          "text": "The mirror shard, on the table, caught the failing light and threw it back in twelve different directions — none of which led out of the room."
-        },
-        {
-          "src": "vol5/vol5_ch2_priestess_b.json",
-          "text": "The glow illuminated her face — sharp cheekbones and shadowed eyes."
-        },
-        {
-          "src": "vol5/vol5_ch2_priestess_b.json",
-          "text": "She put the phone face-down on the kitchen counter."
-        },
-        {
-          "src": "vol5/vol5_ch2_priestess.json",
-          "text": "She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch03",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter III — The Empress",
-      "file": "vn/plates/chapter_v5_ch03.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch03"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter III — The Empress",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch3_empress"
-      ],
-      "lettering": "\"CHAPTER III\" (small, above) and \"The Empress\" (large)",
-      "prompt": "The illustrated title page of chapter III — The Empress. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch3_empress.json",
-          "text": "Lines of shimmering code, emerald green against an infinite black void."
-        },
-        {
-          "src": "vol5/vol5_ch3_empress.json",
-          "text": "She greeted the next party at the door — four-top, eight o'clock reservation, regulars, the woman in the green dress would order the lamb and complain about it."
-        },
-        {
-          "src": "vol5/vol5_ch3_empress.json",
-          "text": "She saw the whole damn messy opera play out nightly: the power plays at Table 4, the whispered betrayals at Table 9, the desperate lunges for connection that usually ended in sticky regret somewhere between coatcheck and cab."
-        },
-        {
-          "src": "vol5/vol5_ch3_empress.json",
-          "text": "The vibration was the bass from the speakers in Table 12's section, set slightly too loud for the room."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch04",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter 4 — The Emperor",
-      "file": "vn/plates/chapter_v5_ch04.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch04"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter 4 — The Emperor",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch4_emperor"
-      ],
-      "lettering": "\"CHAPTER 4\" (small, above) and \"The Emperor\" (large)",
-      "prompt": "The illustrated title page of chapter 4 — The Emperor. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch4_emperor.json",
-          "text": "It was simply here, in the way a tide was here when it came in, and a man could either move his chair up the beach in good time or get his shoes wet."
-        },
-        {
-          "src": "vol5/vol5_ch4_emperor.json",
-          "text": "He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years,"
-        },
-        {
-          "src": "vol5/vol5_ch4_emperor.json",
-          "text": "The amber liquid burned, a familiar fire that did little to warm the chill that had settled in his marrow years ago."
-        },
-        {
-          "src": "vol5/vol5_ch4_emperor.json",
-          "text": "Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch05",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter V — The Hierophant",
-      "file": "vn/plates/chapter_v5_ch05.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch05"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter V — The Hierophant",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch5_hierophant"
-      ],
-      "lettering": "\"CHAPTER V\" (small, above) and \"The Hierophant\" (large)",
-      "prompt": "The illustrated title page of chapter V — The Hierophant. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "Like the metal slide at the playground after it had been in the sun all day, where the top burned your hands but the bottom, where the slide curved into the wood-chips, was still cold from the rain the night before."
-        },
-        {
-          "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "The dress had a tag that bit her between the shoulder blades every time she breathed in, and she had been breathing in all morning because the church inside had smelled wrong —"
-        },
-        {
-          "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "like old incense and wet wood and something older than either of those, something Daddy said was just the building settling but Maya knew better, because buildings did not settle in a smell."
-        },
-        {
-          "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "Strode toward a long black car idling by the curb."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch06",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter VI — The Lovers",
-      "file": "vn/plates/chapter_v5_ch06.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch06"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter VI — The Lovers",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch6_lovers"
-      ],
-      "lettering": "\"CHAPTER VI\" (small, above) and \"The Lovers\" (large)",
-      "prompt": "The illustrated title page of chapter VI — The Lovers. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch6_lovers.json",
-          "text": "The morning light through the screen door making a soft grid on the worn pine floor."
-        },
-        {
-          "src": "vol5/vol5_ch6_lovers.json",
-          "text": "Mackenzie set the photograph on the small table by the door — the table where they kept the keys and the unopened mail and the bowl of pinecones she had collected on a hike four Octobers ago and never thrown out."
-        },
-        {
-          "src": "vol5/vol5_ch6_lovers.json",
-          "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border."
-        },
-        {
-          "src": "vol5/vol5_ch6_lovers.json",
-          "text": "The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole —"
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch07",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter VII — The Chariot",
-      "file": "vn/plates/chapter_v5_ch07.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch07"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter VII — The Chariot",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch7_chariot"
-      ],
-      "lettering": "\"CHAPTER VII\" (small, above) and \"The Chariot\" (large)",
-      "prompt": "The illustrated title page of chapter VII — The Chariot. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch7_chariot.json",
-          "text": "The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran,"
-        },
-        {
-          "src": "vol5/vol5_ch7_chariot.json",
-          "text": "Poured one finger into the chipped glass on the desk."
-        },
-        {
-          "src": "vol5/vol5_ch7_chariot.json",
-          "text": "Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."
-        },
-        {
-          "src": "vol5/vol5_ch7_chariot.json",
-          "text": "His face was the face Jimmy used when he was about to deliver bad news he had already decided how to manage."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch08",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter VIII — Strength",
-      "file": "vn/plates/chapter_v5_ch08.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch08"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter VIII — Strength",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch8_strength"
-      ],
-      "lettering": "\"CHAPTER VIII\" (small, above) and \"Strength\" (large)",
-      "prompt": "The illustrated title page of chapter VIII — Strength. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch8_strength.json",
-          "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins."
-        },
-        {
-          "src": "vol5/vol5_ch8_strength.json",
-          "text": "Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried."
-        },
-        {
-          "src": "vol5/vol5_ch8_strength.json",
-          "text": "He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken."
-        },
-        {
-          "src": "vol5/vol5_ch8_strength.json",
-          "text": "He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional — and left the gray monochrome paintings of Graustark's ruins leaning against the wall of his apartment,"
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch09",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter IX — The Hermit",
-      "file": "vn/plates/chapter_v5_ch09.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch09"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter IX — The Hermit",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch9_hermit"
-      ],
-      "lettering": "\"CHAPTER IX\" (small, above) and \"The Hermit\" (large)",
-      "prompt": "The illustrated title page of chapter IX — The Hermit. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch9_hermit.json",
-          "text": "Twilight bled purple and bruise-grey across the fractured skyline, catching on shards of glass embedded in crumbling concrete like malevolent constellations."
-        },
-        {
-          "src": "vol5/vol5_ch9_hermit.json",
-          "text": "Haunting the stacks of rubble and rust the way a cat haunts a house it has decided, by some process opaque to the humans, has become its territory."
-        },
-        {
-          "src": "vol5/vol5_ch9_hermit.json",
-          "text": "He still wore the faded brown collar he had been wearing on the day Joanna found him asleep in the shadow of the collapsed bandstand, and Joanna had, in a year of trying, never quite been able to bring herself to remove it."
-        },
-        {
-          "src": "vol5/vol5_ch9_hermit.json",
-          "text": "Reflection in the stagnant pool (Oil-slick rainbow) Shows the sky — shows the void — shows the face I wore before this one."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch10",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter X — Wheel of Fortune",
-      "file": "vn/plates/chapter_v5_ch10.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch10"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter X — Wheel of Fortune",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch10_wheel"
-      ],
-      "lettering": "\"CHAPTER X\" (small, above) and \"Wheel of Fortune\" (large)",
-      "prompt": "The illustrated title page of chapter X — Wheel of Fortune. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch10_wheel.json",
-          "text": "Files indexed with obsessive precision, paper and digital, the digital backed up nightly to two separate clouds and the paper rotated quarterly into the firm's secure archive on the seventeenth floor."
-        },
-        {
-          "src": "vol5/vol5_ch10_wheel.json",
-          "text": "The light on the desk made small reflections in the chrome and the glass and the smooth teak."
-        },
-        {
-          "src": "vol5/vol5_ch10_wheel.json",
-          "text": "Erica Campbell stared at the email notification, the crisp black sans-serif font glowing with indifferent finality on her monitor."
-        },
-        {
-          "src": "vol5/vol5_ch10_wheel.json",
-          "text": "She walked to the glass wall of her office and looked out at Houston."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch11",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XI — Justice",
-      "file": "vn/plates/chapter_v5_ch11.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch11"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XI — Justice",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch11_justice"
-      ],
-      "lettering": "\"CHAPTER XI\" (small, above) and \"Justice\" (large)",
-      "prompt": "The illustrated title page of chapter XI — Justice. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch11_justice.json",
-          "text": "She looked at the eleven-page draft on her monitor."
-        },
-        {
-          "src": "vol5/vol5_ch11_justice.json",
-          "text": "recognizably, the wrought-iron columns of a courtroom; the apostrophe, recognizably, a gavel; the underline, recognizably, the kind of redaction-bar that appeared in declassified documents."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch12",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XII — The Hanged Man",
-      "file": "vn/plates/chapter_v5_ch12.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch12"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XII — The Hanged Man",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch12_hanged"
-      ],
-      "lettering": "\"CHAPTER XII\" (small, above) and \"The Hanged Man\" (large)",
-      "prompt": "The illustrated title page of chapter XII — The Hanged Man. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch12_hanged.json",
-          "text": "Tonight, the air tasted like ozone and rain-on-hot-asphalt, even though the sky outside was clear and star-dusted."
-        },
-        {
-          "src": "vol5/vol5_ch12_hanged.json",
-          "text": "Outside, somewhere across the parish, a single bird that was not a bird called once into the dark, and was answered, faintly, from the far side of the river."
-        },
-        {
-          "src": "vol5/vol5_ch12_hanged.json",
-          "text": "slightly more faded than the original at the flagship because the Simons location got more direct sunlight — to the cluttered sanctuary of her own four walls always felt like stepping between pages in a strange book."
-        },
-        {
-          "src": "vol5/vol5_ch12_hanged.json",
-          "text": "For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her,"
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch13",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XIII — Death",
-      "file": "vn/plates/chapter_v5_ch13.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch13"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XIII — Death",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch13_death"
-      ],
-      "lettering": "\"CHAPTER XIII\" (small, above) and \"Death\" (large)",
-      "prompt": "The illustrated title page of chapter XIII — Death. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch13_death.json",
-          "text": "It sat in its small clear glass on the windowsill and existed in the under-cabinet light, white against the sage of the wall behind it, and it was, by any normal accounting, just a rose."
-        },
-        {
-          "src": "vol5/vol5_ch13_death.json",
-          "text": "The walls were the color all hospital walls were — a beige with a slight green undertone that the manufacturer probably called sage and that Alice had been calling, privately, the color of agreed-upon endings."
-        },
-        {
-          "src": "vol5/vol5_ch13_death.json",
-          "text": "On the wall above the bed: a print of a beach Alice did not recognize."
-        },
-        {
-          "src": "vol5/vol5_ch13_death.json",
-          "text": "Outside the window, somewhere in the parking lot below, a car door closed softly."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch14",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XIV — Temperance",
-      "file": "vn/plates/chapter_v5_ch14.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch14"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XIV — Temperance",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch14_temperance"
-      ],
-      "lettering": "\"CHAPTER XIV\" (small, above) and \"Temperance\" (large)",
-      "prompt": "The illustrated title page of chapter XIV — Temperance. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch14_temperance.json",
-          "text": "John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."
-        },
-        {
-          "src": "vol5/vol5_ch14_temperance.json",
-          "text": "Probably acquired during the Great Post-Graustark Diaspora, those blurry years of drifting before he had landed here, in this city of pleasant grey stone and politely circling seasons."
-        },
-        {
-          "src": "vol5/vol5_ch14_temperance.json",
-          "text": "He sat at his desk, a landscape of paper drifts."
-        },
-        {
-          "src": "vol5/vol5_ch14_temperance.json",
-          "text": "He missed Frasier Temple's brilliant terrifying pronouncements echoing through the rust cathedral."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch15",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XV — The Devil",
-      "file": "vn/plates/chapter_v5_ch15.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch15"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XV — The Devil",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch15_devil"
-      ],
-      "lettering": "\"CHAPTER XV\" (small, above) and \"The Devil\" (large)",
-      "prompt": "The illustrated title page of chapter XV — The Devil. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch15_devil.json",
-          "text": "Stirring the thick pre-dawn New Orleans air — a gumbo of stale bourbon, sweat, cheap perfume clinging to the rented sofa he had crashed on, and something vaguely like river mud."
-        },
-        {
-          "src": "vol5/vol5_ch15_devil.json",
-          "text": "Dean was, properly speaking, a dream Jimmy had had once, in the spring of 2009, in the back room of a bar Jimmy could no longer locate on any map of the city he had thought, at the time, he had been in."
-        },
-        {
-          "src": "vol5/vol5_ch15_devil.json",
-          "text": "The ceiling fan wobbled like a dying pelican above Jimmy Daigle's head."
-        },
-        {
-          "src": "vol5/vol5_ch15_devil.json",
-          "text": "He found a half-empty bottle of something brown warming on the counter."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch16",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XVI — The Tower",
-      "file": "vn/plates/chapter_v5_ch16.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch16"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XVI — The Tower",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch16_tower"
-      ],
-      "lettering": "\"CHAPTER XVI\" (small, above) and \"The Tower\" (large)",
-      "prompt": "The illustrated title page of chapter XVI — The Tower. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch16_tower.json",
-          "text": "the entire drive north because she had not been able to bring herself to surrender it to a box — sat on the kitchen counter where it had sat for eleven months, unused, full of dust."
-        },
-        {
-          "src": "vol5/vol5_ch16_tower.json",
-          "text": "Lights of the harbour gleam red and gold afar."
-        },
-        {
-          "src": "vol5/vol5_ch16_tower.json",
-          "text": "Like a faulty CGI effect tearing through the screen — the kind that exposed the green of the screen behind it for a single horrifying frame before the render engine caught up and re-applied the illusion."
-        },
-        {
-          "src": "vol5/vol5_ch16_tower.json",
-          "text": "The little red light a baleful eye in the dimming room."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch17",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XVII — The Star",
-      "file": "vn/plates/chapter_v5_ch17.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch17"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XVII — The Star",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch17_star"
-      ],
-      "lettering": "\"CHAPTER XVII\" (small, above) and \"The Star\" (large)",
-      "prompt": "The illustrated title page of chapter XVII — The Star. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch17_star.json",
-          "text": "The moon tonight was a shard of broken mirror stuck in the bruised velvet throat of the Graustark sky."
-        },
-        {
-          "src": "vol5/vol5_ch17_star.json",
-          "text": "The naked figure kneels at the pool and pours water onto the earth and back into the pool."
-        },
-        {
-          "src": "vol5/vol5_ch17_star.json",
-          "text": "Joanna LeMoine felt its borrowed light scrape against her skin — too bright, too revealing."
-        },
-        {
-          "src": "vol5/vol5_ch17_star.json",
-          "text": "A fragile star burning itself out in the overwhelming darkness."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch18",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XVIII — The Moon",
-      "file": "vn/plates/chapter_v5_ch18.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch18"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XVIII — The Moon",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch18_moon"
-      ],
-      "lettering": "\"CHAPTER XVIII\" (small, above) and \"The Moon\" (large)",
-      "prompt": "The illustrated title page of chapter XVIII — The Moon. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch18_moon.json",
-          "text": "She had, instead, stayed where she was — on the rug, the cards around her, the candle she had lit at midnight burning low — and allowed the room to show her what the room had to show."
-        },
-        {
-          "src": "vol5/vol5_ch18_moon.json",
-          "text": "Face-down, the card did what Moon cards did: emit, from under the printed back, a faint silver humming that Natalie felt, even in her sleep, the way a mother feels the breathing of an infant in the next room."
-        },
-        {
-          "src": "vol5/vol5_ch18_moon.json",
-          "text": "In the small careful way a sleeper's hand moves when the sleeper is groping for a glass of water in the dark."
-        },
-        {
-          "src": "vol5/vol5_ch18_moon.json",
-          "text": "Miriam's car was a 2009 Subaru wagon, dark green, immaculate."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch19",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XIX — The Sun",
-      "file": "vn/plates/chapter_v5_ch19.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch19"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XIX — The Sun",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch19_sun"
-      ],
-      "lettering": "\"CHAPTER XIX\" (small, above) and \"The Sun\" (large)",
-      "prompt": "The illustrated title page of chapter XIX — The Sun. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch19_sun.json",
-          "text": "She was tall, blue-dreadlocked hair tucked under a bright yellow rain slicker (though it was not, today, raining), and she was carrying a cardboard tube of the kind artists used to carry rolled canvases."
-        },
-        {
-          "src": "vol5/vol5_ch19_sun.json",
-          "text": "Not, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did."
-        },
-        {
-          "src": "vol5/vol5_ch19_sun.json",
-          "text": "Sub-pattern: secondary clustering around the new arrival at the window table, blue dreadlocks, yellow slicker."
-        },
-        {
-          "src": "vol5/vol5_ch19_sun.json",
-          "text": "Then out the window, at the Montreal street with its trees beginning to go into their full green, at the ordinary Tuesday commerce of Saint-Viateur."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch20",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XX — Judgement",
-      "file": "vn/plates/chapter_v5_ch20.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch20"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XX — Judgement",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch20_judgement"
-      ],
-      "lettering": "\"CHAPTER XX\" (small, above) and \"Judgement\" (large)",
-      "prompt": "The illustrated title page of chapter XX — Judgement. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch20_judgement.json",
-          "text": "the Third Consciousness kicks once, and the car's radio, which has been off, plays a single note of a melody nobody in the car has ever heard, and the silver-haired driver says, calmly, to the back seat: We're close, dear."
-        },
-        {
-          "src": "vol5/vol5_ch20_judgement.json",
-          "text": "Fire did indeed gather unseen beyond the rim of the world, its reflection flickering in the widening cracks snaking across asphalt and concrete."
-        },
-        {
-          "src": "vol5/vol5_ch20_judgement.json",
-          "text": "In Houston, high in her sterile tower, the Italian marble floor beneath Erica Campbell's expensive shoes did shudder — or perhaps it was only the vibration traveling up her own spine from the epicenter miles away."
-        },
-        {
-          "src": "vol5/vol5_ch20_judgement.json",
-          "text": "Revealing every face at once — Hanged Man, Moon, Tower, Death, all of it happening now, simultaneously."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
-      "slug": "plate_v5_ch21",
-      "kind": "scene2d",
-      "name": "the title plate of vol 5, chapter XXI — The World",
-      "file": "vn/plates/chapter_v5_ch21.jpg",
-      "vol": [
-        5
-      ],
-      "keys": [
-        "plate_v5_ch21"
-      ],
-      "tag": "vol5 · PLATE · the title page of chapter XXI — The World",
-      "aspect": "16:9",
-      "pose": null,
-      "role": "plate",
-      "scenes": [
-        "vol5_ch21_world"
-      ],
-      "lettering": "\"CHAPTER XXI\" (small, above) and \"The World\" (large)",
-      "prompt": "The illustrated title page of chapter XXI — The World. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
-      "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol5/vol5_ch21_world.json",
-          "text": "The smoke ring drifts over the water and, before it dissipates, passes through a single pink wildflower growing at the river's edge, where no wildflower had grown a week ago."
-        },
-        {
-          "src": "vol5/vol5_ch21_world.json",
-          "text": "That black egg doohickey hangs quiet 'round the neck today — dark and cool against the skin."
-        },
-        {
-          "src": "vol5/vol5_ch21_world.json",
-          "text": "The crow sits on the patched roof of the shotgun house, eyes closed, wings half-spread to the afternoon."
-        },
-        {
-          "src": "vol5/vol5_ch21_world.json",
-          "text": "The silver-spoon riverboat, which had walked itself across the workshop floor to its designated position on the model river on Tuesday morning, has stayed there."
-        }
-      ],
-      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
-    },
-    {
       "slug": "plate_v6_ch00",
       "kind": "scene2d",
       "name": "the title plate of vol 6, chapter 0 — Prelude — Harmony Creek Estates",
@@ -47358,6 +46434,970 @@
         {
           "src": "vol7/vol7_epilogue_morning.json",
           "text": "The cedar ceiling above the kitchen was the cedar Eddvard had milled at the small mill in '11."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch_prologue",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter Prologue — Prologue :: The Liar King",
+      "file": "vn/plates/chapter_v5_ch_prologue.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch_prologue"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter Prologue — Prologue :: The Liar King",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_prelude_arcana_liar_king",
+        "vol5_prelude_arcana_channel",
+        "vol5_prelude_arcana_whispers",
+        "vol5_prelude_arcana_ep01_umbra",
+        "vol5_prelude_arcana_ep02_in_flux",
+        "vol5_prelude_arcana_ep04_iris_title",
+        "vol5_prelude_arcana_ep05_iris",
+        "vol5_prelude_arcana_ep06_old_woman",
+        "vol5_prelude_arcana_ep07_backyard_dogs",
+        "vol5_prelude_arcana_ep08_autumn_crop",
+        "vol5_prelude_arcana_ep10_sound_of_silence",
+        "vol5_prelude_arcana_ep11_writ_fer_rain",
+        "vol5_prelude_arcana_ep12_pour_1",
+        "vol5_prelude_arcana_ep13_paper_cuts",
+        "vol5_prelude_arcana_ep14_milk_and_honey",
+        "vol5_prelude_arcana_ep15_lynchs_peak",
+        "vol5_prelude_arcana_ep17_one_hundred_places",
+        "vol5_prelude_arcana_ep18_sigsbees_deep",
+        "vol5_prelude_arcana_ep19_ravensway",
+        "vol5_prelude_arcana_ep20_sisters_wyrd",
+        "vol5_prelude_arcana_ep21_field_guide",
+        "vol5_prelude_arcana_ep22_hanged_man",
+        "vol5_prelude_arcana_ep23_visitation",
+        "vol5_prelude_arcana_john_shift",
+        "vol5_prelude_arcana_john_bar"
+      ],
+      "lettering": "\"Prologue :: The Liar King\"",
+      "prompt": "The illustrated title page of chapter Prologue — Prologue :: The Liar King. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep17_one_hundred_places.json",
+          "text": "1 home 4 the wide open road 1 texas 5 the building i tear apart 9 an empty lot where we can dream together at last 2 unkempt bed 6 the other side of the window 5 the inner space inside me 3 green grass yard 5 open pages of a book"
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The frog inspects long fine digits up against the setting golden hour sun, illuminating the webbing, burning through rubber skin, the purple veins and dark warts can be seen all the way through the other side."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Agile child hands feel through bottom silt, grubby face so near reflected, tiny body fighting small splashing waves at the river’s edge."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep05_iris.json",
+          "text": "Orange Kitty stares out the window or at shadow, but never across canvas."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch00",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter 0 — A Fool Between Acts",
+      "file": "vn/plates/chapter_v5_ch00.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch00"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter 0 — A Fool Between Acts",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch0_booth6",
+        "vol5_ch0_frasier",
+        "vol5_ch0_model_city",
+        "vol5_ch0_closing",
+        "vol5_test_tarot_fool"
+      ],
+      "lettering": "\"CHAPTER 0\" (small, above) and \"A Fool Between Acts\" (large)",
+      "prompt": "The illustrated title page of chapter 0 — A Fool Between Acts. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it."
+        },
+        {
+          "src": "vol5/vol5_ch0_model_city.json",
+          "text": "On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum."
+        },
+        {
+          "src": "vol5/vol5_ch0_closing.json",
+          "text": "He watched the parking lot beyond the door, the pre-dawn light starting, finally, to thin the dark."
+        },
+        {
+          "src": "vol5/vol5_ch0_closing.json",
+          "text": "He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch01",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter I — The Magician",
+      "file": "vn/plates/chapter_v5_ch01.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch01"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter I — The Magician",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch1_magician"
+      ],
+      "lettering": "\"CHAPTER I\" (small, above) and \"The Magician\" (large)",
+      "prompt": "The illustrated title page of chapter I — The Magician. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "The river of crushed blue glass caught the light and lost it again, and somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "He had even built the river — a meandering channel of crushed blue glass and circuit-board substrate, lit from below by the dying bulbs of an old aquarium pump."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "He picked up a soldering iron, its tip glowing hot."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch02",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter II — The High Priestess",
+      "file": "vn/plates/chapter_v5_ch02.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch02"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter II — The High Priestess",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch2_priestess",
+        "vol5_ch2_priestess_b"
+      ],
+      "lettering": "\"CHAPTER II\" (small, above) and \"The High Priestess\" (large)",
+      "prompt": "The illustrated title page of chapter II — The High Priestess. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch2_priestess_b.json",
+          "text": "The mirror shard, on the table, caught the failing light and threw it back in twelve different directions — none of which led out of the room."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess_b.json",
+          "text": "The glow illuminated her face — sharp cheekbones and shadowed eyes."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess_b.json",
+          "text": "She put the phone face-down on the kitchen counter."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch03",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter III — The Empress",
+      "file": "vn/plates/chapter_v5_ch03.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch03"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter III — The Empress",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch3_empress"
+      ],
+      "lettering": "\"CHAPTER III\" (small, above) and \"The Empress\" (large)",
+      "prompt": "The illustrated title page of chapter III — The Empress. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "Lines of shimmering code, emerald green against an infinite black void."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "She greeted the next party at the door — four-top, eight o'clock reservation, regulars, the woman in the green dress would order the lamb and complain about it."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "She saw the whole damn messy opera play out nightly: the power plays at Table 4, the whispered betrayals at Table 9, the desperate lunges for connection that usually ended in sticky regret somewhere between coatcheck and cab."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "The vibration was the bass from the speakers in Table 12's section, set slightly too loud for the room."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch04",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter IV — The Emperor",
+      "file": "vn/plates/chapter_v5_ch04.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch04"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter IV — The Emperor",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch4_emperor"
+      ],
+      "lettering": "\"CHAPTER IV\" (small, above) and \"The Emperor\" (large)",
+      "prompt": "The illustrated title page of chapter IV — The Emperor. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "It was simply here, in the way a tide was here when it came in, and a man could either move his chair up the beach in good time or get his shoes wet."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years,"
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "The amber liquid burned, a familiar fire that did little to warm the chill that had settled in his marrow years ago."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch05",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter V — The Hierophant",
+      "file": "vn/plates/chapter_v5_ch05.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch05"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter V — The Hierophant",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch5_hierophant"
+      ],
+      "lettering": "\"CHAPTER V\" (small, above) and \"The Hierophant\" (large)",
+      "prompt": "The illustrated title page of chapter V — The Hierophant. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Like the metal slide at the playground after it had been in the sun all day, where the top burned your hands but the bottom, where the slide curved into the wood-chips, was still cold from the rain the night before."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "The dress had a tag that bit her between the shoulder blades every time she breathed in, and she had been breathing in all morning because the church inside had smelled wrong —"
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "like old incense and wet wood and something older than either of those, something Daddy said was just the building settling but Maya knew better, because buildings did not settle in a smell."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Strode toward a long black car idling by the curb."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch06",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter VI — The Lovers",
+      "file": "vn/plates/chapter_v5_ch06.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch06"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter VI — The Lovers",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch6_lovers"
+      ],
+      "lettering": "\"CHAPTER VI\" (small, above) and \"The Lovers\" (large)",
+      "prompt": "The illustrated title page of chapter VI — The Lovers. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "The morning light through the screen door making a soft grid on the worn pine floor."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Mackenzie set the photograph on the small table by the door — the table where they kept the keys and the unopened mail and the bowl of pinecones she had collected on a hike four Octobers ago and never thrown out."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole —"
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch07",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter VII — The Chariot",
+      "file": "vn/plates/chapter_v5_ch07.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch07"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter VII — The Chariot",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch7_chariot"
+      ],
+      "lettering": "\"CHAPTER VII\" (small, above) and \"The Chariot\" (large)",
+      "prompt": "The illustrated title page of chapter VII — The Chariot. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran,"
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "Poured one finger into the chipped glass on the desk."
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "His face was the face Jimmy used when he was about to deliver bad news he had already decided how to manage."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch08",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter VIII — Strength",
+      "file": "vn/plates/chapter_v5_ch08.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch08"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter VIII — Strength",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch8_strength"
+      ],
+      "lettering": "\"CHAPTER VIII\" (small, above) and \"Strength\" (large)",
+      "prompt": "The illustrated title page of chapter VIII — Strength. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional — and left the gray monochrome paintings of Graustark's ruins leaning against the wall of his apartment,"
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch09",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter IX — The Hermit",
+      "file": "vn/plates/chapter_v5_ch09.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch09"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter IX — The Hermit",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch9_hermit"
+      ],
+      "lettering": "\"CHAPTER IX\" (small, above) and \"The Hermit\" (large)",
+      "prompt": "The illustrated title page of chapter IX — The Hermit. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "Twilight bled purple and bruise-grey across the fractured skyline, catching on shards of glass embedded in crumbling concrete like malevolent constellations."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "Haunting the stacks of rubble and rust the way a cat haunts a house it has decided, by some process opaque to the humans, has become its territory."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "He still wore the faded brown collar he had been wearing on the day Joanna found him asleep in the shadow of the collapsed bandstand, and Joanna had, in a year of trying, never quite been able to bring herself to remove it."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "Reflection in the stagnant pool (Oil-slick rainbow) Shows the sky — shows the void — shows the face I wore before this one."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch10",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter X — Wheel of Fortune",
+      "file": "vn/plates/chapter_v5_ch10.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch10"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter X — Wheel of Fortune",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch10_wheel"
+      ],
+      "lettering": "\"CHAPTER X\" (small, above) and \"Wheel of Fortune\" (large)",
+      "prompt": "The illustrated title page of chapter X — Wheel of Fortune. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "Files indexed with obsessive precision, paper and digital, the digital backed up nightly to two separate clouds and the paper rotated quarterly into the firm's secure archive on the seventeenth floor."
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "The light on the desk made small reflections in the chrome and the glass and the smooth teak."
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "Erica Campbell stared at the email notification, the crisp black sans-serif font glowing with indifferent finality on her monitor."
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "She walked to the glass wall of her office and looked out at Houston."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch11",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XI — Justice",
+      "file": "vn/plates/chapter_v5_ch11.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch11"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XI — Justice",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch11_justice"
+      ],
+      "lettering": "\"CHAPTER XI\" (small, above) and \"Justice\" (large)",
+      "prompt": "The illustrated title page of chapter XI — Justice. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "She looked at the eleven-page draft on her monitor."
+        },
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "recognizably, the wrought-iron columns of a courtroom; the apostrophe, recognizably, a gavel; the underline, recognizably, the kind of redaction-bar that appeared in declassified documents."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch12",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XII — The Hanged Man",
+      "file": "vn/plates/chapter_v5_ch12.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch12"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XII — The Hanged Man",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch12_hanged"
+      ],
+      "lettering": "\"CHAPTER XII\" (small, above) and \"The Hanged Man\" (large)",
+      "prompt": "The illustrated title page of chapter XII — The Hanged Man. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "Tonight, the air tasted like ozone and rain-on-hot-asphalt, even though the sky outside was clear and star-dusted."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "Outside, somewhere across the parish, a single bird that was not a bird called once into the dark, and was answered, faintly, from the far side of the river."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "slightly more faded than the original at the flagship because the Simons location got more direct sunlight — to the cluttered sanctuary of her own four walls always felt like stepping between pages in a strange book."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her,"
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch13",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XIII — Death",
+      "file": "vn/plates/chapter_v5_ch13.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch13"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XIII — Death",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch13_death"
+      ],
+      "lettering": "\"CHAPTER XIII\" (small, above) and \"Death\" (large)",
+      "prompt": "The illustrated title page of chapter XIII — Death. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "It sat in its small clear glass on the windowsill and existed in the under-cabinet light, white against the sage of the wall behind it, and it was, by any normal accounting, just a rose."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "The walls were the color all hospital walls were — a beige with a slight green undertone that the manufacturer probably called sage and that Alice had been calling, privately, the color of agreed-upon endings."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "On the wall above the bed: a print of a beach Alice did not recognize."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "Outside the window, somewhere in the parking lot below, a car door closed softly."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch14",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XIV — Temperance",
+      "file": "vn/plates/chapter_v5_ch14.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch14"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XIV — Temperance",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch14_temperance"
+      ],
+      "lettering": "\"CHAPTER XIV\" (small, above) and \"Temperance\" (large)",
+      "prompt": "The illustrated title page of chapter XIV — Temperance. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "Probably acquired during the Great Post-Graustark Diaspora, those blurry years of drifting before he had landed here, in this city of pleasant grey stone and politely circling seasons."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "He sat at his desk, a landscape of paper drifts."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "He missed Frasier Temple's brilliant terrifying pronouncements echoing through the rust cathedral."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch15",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XV — The Devil",
+      "file": "vn/plates/chapter_v5_ch15.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch15"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XV — The Devil",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch15_devil"
+      ],
+      "lettering": "\"CHAPTER XV\" (small, above) and \"The Devil\" (large)",
+      "prompt": "The illustrated title page of chapter XV — The Devil. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "Stirring the thick pre-dawn New Orleans air — a gumbo of stale bourbon, sweat, cheap perfume clinging to the rented sofa he had crashed on, and something vaguely like river mud."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "Dean was, properly speaking, a dream Jimmy had had once, in the spring of 2009, in the back room of a bar Jimmy could no longer locate on any map of the city he had thought, at the time, he had been in."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "The ceiling fan wobbled like a dying pelican above Jimmy Daigle's head."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "He found a half-empty bottle of something brown warming on the counter."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch16",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XVI — The Tower",
+      "file": "vn/plates/chapter_v5_ch16.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch16"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XVI — The Tower",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch16_tower"
+      ],
+      "lettering": "\"CHAPTER XVI\" (small, above) and \"The Tower\" (large)",
+      "prompt": "The illustrated title page of chapter XVI — The Tower. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch16_tower.json",
+          "text": "the entire drive north because she had not been able to bring herself to surrender it to a box — sat on the kitchen counter where it had sat for eleven months, unused, full of dust."
+        },
+        {
+          "src": "vol5/vol5_ch16_tower.json",
+          "text": "Lights of the harbour gleam red and gold afar."
+        },
+        {
+          "src": "vol5/vol5_ch16_tower.json",
+          "text": "Like a faulty CGI effect tearing through the screen — the kind that exposed the green of the screen behind it for a single horrifying frame before the render engine caught up and re-applied the illusion."
+        },
+        {
+          "src": "vol5/vol5_ch16_tower.json",
+          "text": "The little red light a baleful eye in the dimming room."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch17",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XVII — The Star",
+      "file": "vn/plates/chapter_v5_ch17.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch17"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XVII — The Star",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch17_star"
+      ],
+      "lettering": "\"CHAPTER XVII\" (small, above) and \"The Star\" (large)",
+      "prompt": "The illustrated title page of chapter XVII — The Star. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "The moon tonight was a shard of broken mirror stuck in the bruised velvet throat of the Graustark sky."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "The naked figure kneels at the pool and pours water onto the earth and back into the pool."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "Joanna LeMoine felt its borrowed light scrape against her skin — too bright, too revealing."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "A fragile star burning itself out in the overwhelming darkness."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch18",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XVIII — The Moon",
+      "file": "vn/plates/chapter_v5_ch18.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch18"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XVIII — The Moon",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch18_moon"
+      ],
+      "lettering": "\"CHAPTER XVIII\" (small, above) and \"The Moon\" (large)",
+      "prompt": "The illustrated title page of chapter XVIII — The Moon. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "She had, instead, stayed where she was — on the rug, the cards around her, the candle she had lit at midnight burning low — and allowed the room to show her what the room had to show."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Face-down, the card did what Moon cards did: emit, from under the printed back, a faint silver humming that Natalie felt, even in her sleep, the way a mother feels the breathing of an infant in the next room."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "In the small careful way a sleeper's hand moves when the sleeper is groping for a glass of water in the dark."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Miriam's car was a 2009 Subaru wagon, dark green, immaculate."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch19",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XIX — The Sun",
+      "file": "vn/plates/chapter_v5_ch19.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch19"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XIX — The Sun",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch19_sun"
+      ],
+      "lettering": "\"CHAPTER XIX\" (small, above) and \"The Sun\" (large)",
+      "prompt": "The illustrated title page of chapter XIX — The Sun. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "She was tall, blue-dreadlocked hair tucked under a bright yellow rain slicker (though it was not, today, raining), and she was carrying a cardboard tube of the kind artists used to carry rolled canvases."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "Not, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "Sub-pattern: secondary clustering around the new arrival at the window table, blue dreadlocks, yellow slicker."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "Then out the window, at the Montreal street with its trees beginning to go into their full green, at the ordinary Tuesday commerce of Saint-Viateur."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch20",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XX — Judgement",
+      "file": "vn/plates/chapter_v5_ch20.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch20"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XX — Judgement",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch20_judgement"
+      ],
+      "lettering": "\"CHAPTER XX\" (small, above) and \"Judgement\" (large)",
+      "prompt": "The illustrated title page of chapter XX — Judgement. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "the Third Consciousness kicks once, and the car's radio, which has been off, plays a single note of a melody nobody in the car has ever heard, and the silver-haired driver says, calmly, to the back seat: We're close, dear."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "Fire did indeed gather unseen beyond the rim of the world, its reflection flickering in the widening cracks snaking across asphalt and concrete."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "In Houston, high in her sterile tower, the Italian marble floor beneath Erica Campbell's expensive shoes did shudder — or perhaps it was only the vibration traveling up her own spine from the epicenter miles away."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "Revealing every face at once — Hanged Man, Moon, Tower, Death, all of it happening now, simultaneously."
+        }
+      ],
+      "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
+    },
+    {
+      "slug": "plate_v5_ch21",
+      "kind": "scene2d",
+      "name": "the title plate of vol 5, chapter XXI — The World",
+      "file": "vn/plates/chapter_v5_ch21.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "plate_v5_ch21"
+      ],
+      "tag": "vol5 · PLATE · the title page of chapter XXI — The World",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "plate",
+      "scenes": [
+        "vol5_ch21_world"
+      ],
+      "lettering": "\"CHAPTER XXI\" (small, above) and \"The World\" (large)",
+      "prompt": "The illustrated title page of chapter XXI — The World. The lettering sits large and clear in the middle third; around and behind it, painted imagery from the chapter (the quoted sentences) composed as one picture, in the volume's palette: bayou-brown paper, sodium-amber and brass inks.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "The smoke ring drifts over the water and, before it dissipates, passes through a single pink wildflower growing at the river's edge, where no wildflower had grown a week ago."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "That black egg doohickey hangs quiet 'round the neck today — dark and cool against the skin."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "The crow sits on the patched roof of the shotgun house, eyes closed, wings half-spread to the afternoon."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "The silver-spoon riverboat, which had walked itself across the workshop floor to its designated position on the model river on Tuesday morning, has stayed there."
         }
       ],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate' and 'the chapter plates need the text for the chapters as well as imagery from that chapter'). The quotes are the chapter's most visual sentences, chosen by word count; keep the ones the picture should show. The lettering is the chapter's title as the text writes it; check the spelling in the generated image. Once installed, the card shows this plate in place of its own typed title."
