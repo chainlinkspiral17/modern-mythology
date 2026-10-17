@@ -38,7 +38,15 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent.parent
 
-DRIVE_REMOTE = os.environ.get("MM_DRIVE_REMOTE", "gdrive:ModernMythology")
+# (2026-10-17) Every upload goes through drive_guard, the project's ONLY
+# Drive writer (the user: "I want nothing more going to a public shared
+# folder. Very serious."): it proves the destination is the owner's My
+# Drive before each write and refuses otherwise. The remote is fixed — no
+# environment override, which could point the tool anywhere.
+sys.path.insert(0, str(HERE.parent))
+import drive_guard  # noqa: E402
+
+DRIVE_REMOTE = f"{drive_guard.REMOTE_NAME}:{drive_guard.ROOT_FOLDER}"
 MANIFEST = HERE / "drive_manifest.json"
 DRIVE_DIRS = [
     "godot/assets/comic",       # renders, sheets, refs, concept pulls
@@ -198,19 +206,23 @@ def push():
             with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as tf:
                 tf.write("".join(r[len(d) + 1:] + "\n" for r in rels))
                 lst = tf.name
-            args = [rc, "copy", str(REPO / d), f"{DRIVE_REMOTE}/{d}", "--files-from", lst,
+            args = ["copy", str(REPO / d), f"{DRIVE_REMOTE}/{d}", "--files-from", lst,  # drive-guarded
                     "--no-traverse", "--transfers", "8", "--checkers", "16"]
             try:
                 if LIVE:
                     print(f"uploading {key} ({len(rels)} file(s); {done}/{total} done) …", flush=True)
-                    r = subprocess.run(args + ["--progress", "--stats-one-line"])
+                    rcode = drive_guard.rclone_write(args + ["--progress", "--stats-one-line"], live=True)
                     err = "see the lines above"
                 else:
-                    r = subprocess.run(args, capture_output=True, text=True)
+                    r = drive_guard.rclone_write(args)
+                    rcode = r.returncode
                     err = (r.stderr or r.stdout or "")[-300:]
+            except drive_guard.DriveRefused as ex:
+                steps.append(f"STOPPED: {ex} Nothing more was uploaded ({done} of {total} image(s) up).")
+                return {"ok": False, "steps": steps}
             finally:
                 os.unlink(lst)
-            if r.returncode:
+            if rcode:
                 steps.append(f"Google Drive upload failed for {key}: {err} ({done} of {total} up)")
                 return {"ok": False, "steps": steps}
             _record(rels)
@@ -229,6 +241,7 @@ def pull():
         dst.mkdir(parents=True, exist_ok=True)
         if LIVE:
             print(f"pulling {d} …", flush=True)
+        # drive-read: Drive → this checkout (writes only local files)
         r = subprocess.run([rc, "copy", f"{DRIVE_REMOTE}/{d}", str(dst), "--ignore-existing", "--transfers", "4"],
                            capture_output=True, text=True, timeout=3600)
         # rclone exits 3 when the folder is not on the Drive yet: nothing to pull

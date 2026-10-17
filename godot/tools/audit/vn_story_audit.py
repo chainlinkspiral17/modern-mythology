@@ -112,6 +112,11 @@ def main():
     only = [a for a in args if not a.startswith("-")]
 
     presets = camera_presets()
+    bg_places_path = os.path.join(GODOT, "resources", "vn", "bg_places.json")
+    bg_places = {}
+    if os.path.exists(bg_places_path):
+        with open(bg_places_path, encoding="utf-8") as f:
+            bg_places = json.load(f).get("places", {})
     moods = mood_names()
 
     # The index is RUNTIME TRUTH: SceneDataDB only loads scene ids
@@ -182,7 +187,15 @@ def main():
                         problems.append((where, "bg 3d preset '%s' not in "
                                          "CAMERA_PRESETS" % src[3:]))
                 elif src and not exists(src):
-                    problems.append((where, "bg file missing: %s" % src))
+                    # (2026-10-17) GameEngine.resolve_bg plays a stem that
+                    # bg_places.json maps to a 3D set instead of the picture
+                    to = str((bg_places.get(os.path.splitext(os.path.basename(src))[0]) or {}).get("to") or "")
+                    if to.startswith("3d:"):
+                        if to[3:] not in presets:
+                            problems.append((where, "bg %s maps to 3d preset '%s', not in "
+                                             "CAMERA_PRESETS" % (src, to[3:])))
+                    else:
+                        problems.append((where, "bg file missing: %s" % src))
             elif t == "cg":
                 src = str(n.get("src", ""))
                 if src and not exists(src):
@@ -200,7 +213,9 @@ def main():
                     problems.append((where, "composition missing: %s" % src))
             elif t in ("bgm", "sfx"):
                 src = str(n.get("src", ""))
-                if src and not exists(src):
+                # AudioMgr falls back across .ogg / .wav / .mp3 (2026-10-17)
+                if src and not any(exists(os.path.splitext(src)[0] + x)
+                                   for x in (os.path.splitext(src)[1], ".ogg", ".wav", ".mp3")):
                     problems.append((where, "%s file missing: %s" % (t, src)))
             elif t == "jump":
                 tgt = str(n.get("scene", ""))

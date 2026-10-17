@@ -3834,6 +3834,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 113b: THE PLATES, THE ASSET ACCOUNTING AND THE VOLS 1–4 UI JOIN THE UNIFIED BRANCH.**
+The user: "I want the chapter plates in the hero tool. The other chat thread merged all the vol 1-4
+into the game." Those passes (111–113) were on claude/3d-locales-clean, after the commit the unified
+branch had merged (54b738d7). They are cherry-picked here.
+- **All 136 plates were redrafted from the merged game's own scenes.** The chapters are the same
+  136; the quotes are the game's current text.
+- vol_assets.py now reads a background named as `3d:<preset>` as a set, and counts a music cue as
+  present in any extension. Against the merged game: speakers, CG and backgrounds 0 open
+  (6 backgrounds wait on the airport and house builds); 34 of 45 music cues have no file on this
+  machine.
+- **DRIVE (hard rule) — fixed:** `godot/tools/comic/comic_drive.py`, which came in with the DRIFT WOOD
+  comic merge, uploaded with a bare `rclone copy` outside drive_guard, and to a remote an
+  environment variable could redirect. drive_write_audit failed on it, the suite's first gate. Its
+  upload now goes through `drive_guard.rclone_write` (which proves the owner's My Drive or refuses),
+  the remote is fixed at gdrive:ModernMythology, and the pull is tagged drive-read. Until the Deck
+  has pulled this and restarted the comic tool, do not press its SAVE.
+- **vn_story_audit fails on this branch, and did before these commits** (674 problems at the
+  branch head; these commits add none). It now knows what the game does: a background that
+  bg_places.json maps to a 3D set plays that set, and a music cue falls back across
+  .ogg/.wav/.mp3. That leaves 318 real gaps from the vols 1–4 and Whispers merges:
+  - 109 backgrounds: 53 drafted as Hero Studio pictures, 6 waiting on the airport and house
+    builds, and 29 vol 5 prelude (Whispers) stems with no mapping or entry;
+  - 56 CGs;
+  - 153 music cues.
+
+  The gate stays red until those are painted, built or authored. Four more gates were already red
+  at the branch head and fail identically with these commits: music_coverage (139 vols 1–4
+  scenes with no catalog entry), audio_reference (276 missing music files), locale_ambient (10)
+  and page_length (265 pages over 300 characters). The other 32 gates pass.
+- **NOT yet here: the vol 7 calendar reconciliation (ef2ee43d on claude/3d-locales-clean)**, along
+  with the surnames (Margaret Hale, Sammy Guidry, Wren Haskell, Nate Ochoa, Brandon Trahan),
+  `miriam_2025` retired, `aud_1994` folded into the ageless Aud, and the Dean daddy_b/c ruling. It
+  edits about 40 vol 7 scenes that this branch has since reworked. It needs a line-by-line pass
+  against the branch's "the text is canon" rule, not a merge. The held items in
+  `_VOL1_4_SETS_AND_CAST.md` § Ages stay held on this branch until then.
+
 **2026-10-17 · pass 113: A PLATE FOR EVERY CHAPTER; A SLOT FOR EVERY VOLUME'S CREDITS.** The
 user: "chapter plates should probably go to 2D hero assets", "each chapter gets a plate", and "I
 will probably add opening and closing credit movies to every volume with their own title

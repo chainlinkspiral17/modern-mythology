@@ -191,7 +191,8 @@ def main():
                 c["caption"] = c["caption"] or n.get("caption", "")
                 c["src"] = n["src"]
             elif t == "bg" and n.get("src"):
-                bgs[Path(n["src"]).stem].add(sid)
+                src = n["src"]
+                bgs[src if src.startswith("3d:") else Path(src).stem].add(sid)
             elif t == "bgm" and n.get("src"):
                 bgm[n["src"]].add(sid)
 
@@ -236,6 +237,11 @@ def main():
     fits = collections.Counter()
     bg_open = 0
     for stem, sids in sorted(bgs.items()):
+        if stem.startswith("3d:"):          # the scene names a 3D set itself (the merged vols 1-2)
+            fits["3d"] += 1
+            table["bg"].append({"stem": stem, "scenes": sorted(sids), "on_disk": False, "to": stem,
+                                "fit": "exact", "entry": None})
+            continue
         on_disk = any((GODOT / "assets" / "backgrounds" / f"{stem}.{x}").exists()
                       or f"assets/backgrounds/{stem}.{x}" in elsewhere for x in ("jpg", "png", "webp"))
         p = places.get(stem) or {}
@@ -253,7 +259,9 @@ def main():
     print("BGM (cue → on disk)")
     bgm_open = 0
     for src, sids in sorted(bgm.items()):
-        ok = (GODOT / src).exists() or src in elsewhere
+        # any extension counts: AudioMgr falls back across .ogg / .wav / .mp3
+        alts = [src] + [str(Path(src).with_suffix(x)) for x in (".ogg", ".wav", ".mp3")]
+        ok = any((GODOT / a).exists() or a in elsewhere for a in alts)
         bgm_open += not ok
         table["bgm"].append({"src": src, "scenes": sorted(sids), "on_disk": ok})
         if not ok:

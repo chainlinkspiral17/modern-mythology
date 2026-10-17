@@ -36566,11 +36566,11 @@
         },
         {
           "src": "vol4/meld_kaleidoscope_c.json",
-          "text": "Aud comes in through the door that isn't on any street. Sleeves rolled, glasses on the chain, pot in hand."
+          "text": "Aud comes in with a pot of coffee, sleeves rolled, glasses on the chain, like it's any other morning."
         },
         {
           "src": "vol2/meld_seam_1_2.json",
-          "text": "They've been at it since I unlocked. Coffee, hon?"
+          "text": "They've been at it since I unlocked. Coffee?"
         }
       ],
       "prompt_mode": "append"
@@ -41710,11 +41710,11 @@
         },
         {
           "src": "vol1/vol1_missing_link.json",
-          "text": "The diner is a single rectangle of warm yellow light pinned to a wet asphalt apron. Two gas pumps, one of them retired in place. A sign hand-lettered on enamel — THE MISSING LINK — with the silhouette of a creature halfway between a man and an ape painted beneath the name with what you would have to call affection."
+          "text": "[shot:establish~][mood:night]The diner is a single rectangle of warm yellow light pinned to a wet asphalt apron. Two gas pumps, one of them retired in place."
         },
         {
           "src": "vol1/vol1_missing_link.json",
-          "text": "Beside the diner, under a metal awning, is the depot bench. The Shillelagh stops here once a day. The schedule is taped to the wall behind cracked plexiglass; the rain has crept in along the seams and the only legible word is SHILLELAGH."
+          "text": "A sign hand-lettered on enamel — THE MISSING LINK — with the silhouette of a creature halfway between a man and an ape painted beneath the name with what you would have to call affection."
         }
       ],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). The quotes are the chapter's opening lines; pick the one motif the plate should carry and cut the rest before spending credits. Until it is installed the card shows the volume's generated sheet."
@@ -41746,7 +41746,7 @@
         },
         {
           "src": "vol1/vol1_ch2_act_one.json",
-          "text": "INT. FAUST'S BEDROOM — NIGHT"
+          "text": "[mood:night]INT. FAUST'S BEDROOM — NIGHT"
         },
         {
           "src": "vol1/vol1_ch2_act_one.json",
@@ -41782,7 +41782,7 @@
         },
         {
           "src": "vol1/vol1_ch3_judgement_day.json",
-          "text": "EXT. DRIVING AROUND — NIGHT"
+          "text": "[mood:night]EXT. DRIVING AROUND — NIGHT"
         },
         {
           "src": "vol1/vol1_ch3_judgement_day.json",
@@ -41818,7 +41818,7 @@
         },
         {
           "src": "vol1/vol1_ch4_dream_states.json",
-          "text": "INT. FAUST'S BEDROOM — NIGHT"
+          "text": "[mood:night]INT. FAUST'S BEDROOM — NIGHT"
         },
         {
           "src": "vol1/vol1_ch4_dream_states.json",
@@ -42362,7 +42362,7 @@
     {
       "slug": "plate_v2_ch01",
       "kind": "scene2d",
-      "name": "the plate of vol 2, chapter 1 — a beginning, now",
+      "name": "the plate of vol 2, chapter 1 — i. A Brief History of Me, Part One",
       "file": "vn/plates/chapter_v2_ch01.jpg",
       "vol": [
         2
@@ -42370,27 +42370,27 @@
       "keys": [
         "plate_v2_ch01"
       ],
-      "tag": "vol2 · PLATE · behind the card of chapter 1 — a beginning, now",
+      "tag": "vol2 · PLATE · behind the card of chapter 1 — i. A Brief History of Me, Part One",
       "aspect": "16:9",
       "pose": null,
       "role": "plate",
       "scenes": [
-        "meld_seam_1_2"
+        "vol2_ch1_history_one"
       ],
-      "prompt": "An endpaper of sea-fog slate and grey-green paper, a heron-blue ink, for chapter 1 — a beginning, now. One motif from the chapter, faint, half-dissolved into the marbling.",
+      "prompt": "An endpaper of sea-fog slate and grey-green paper, a heron-blue ink, for chapter 1 — i. A Brief History of Me, Part One. One motif from the chapter, faint, half-dissolved into the marbling.",
       "prompt_mode": "append",
       "canon": [
         {
-          "src": "vol2/meld_seam_1_2.json",
-          "text": "on cue · INT. EDITING SUITE · Small Wood · low tide"
+          "src": "vol2/vol2_ch1_history_one.json",
+          "text": "i. a brief history of me · part one"
         },
         {
-          "src": "vol2/meld_seam_1_2.json",
-          "text": "A room without windows. Four chairs on casters. A bank of monitors, and every one of them full of water."
+          "src": "vol2/vol2_ch1_history_one.json",
+          "text": "[mood:memory_warm]This will not be a typical bit of biography."
         },
         {
-          "src": "vol2/meld_seam_1_2.json",
-          "text": "Not water. Tide flats. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning."
+          "src": "vol2/vol2_ch1_history_one.json",
+          "text": "At this moment in time I am twenty-six years old — far more potential than actual. I was just recently told this by my mother. That I am stunted developmentally. Not as much an adult as I should be."
         }
       ],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). The quotes are the chapter's opening lines; pick the one motif the plate should carry and cut the rest before spending credits. Until it is installed the card shows the volume's generated sheet."
@@ -42422,7 +42422,7 @@
         },
         {
           "src": "vol2/vol2_ch2_seagash.json",
-          "text": "Her real name was Delores Wiebe."
+          "text": "[shot:establish~][mood:dusk]Her real name was Delores Wiebe."
         },
         {
           "src": "vol2/vol2_ch2_seagash.json",
@@ -42845,7 +42845,7 @@
     {
       "slug": "plate_v3_ch01",
       "kind": "scene2d",
-      "name": "the plate of vol 3, chapter 1 — the time between times",
+      "name": "the plate of vol 3, chapter 1 — i. the boy from pasadena",
       "file": "vn/plates/chapter_v3_ch01.jpg",
       "vol": [
         3
@@ -42853,27 +42853,27 @@
       "keys": [
         "plate_v3_ch01"
       ],
-      "tag": "vol3 · PLATE · behind the card of chapter 1 — the time between times",
+      "tag": "vol3 · PLATE · behind the card of chapter 1 — i. the boy from pasadena",
       "aspect": "16:9",
       "pose": null,
       "role": "plate",
       "scenes": [
-        "meld_seam_2_3"
+        "vol3_ch1_boy_from_pasadena"
       ],
-      "prompt": "An endpaper of desert-ochre pulp newsprint, a transmission-teal ink, for chapter 1 — the time between times. One motif from the chapter, faint, half-dissolved into the marbling.",
+      "prompt": "An endpaper of desert-ochre pulp newsprint, a transmission-teal ink, for chapter 1 — i. the boy from pasadena. One motif from the chapter, faint, half-dissolved into the marbling.",
       "prompt_mode": "append",
       "canon": [
         {
-          "src": "vol3/meld_seam_2_3.json",
-          "text": "transmission · Small Wood · 1994 · transmission · Pasadena"
+          "src": "vol3/vol3_ch1_boy_from_pasadena.json",
+          "text": "i. the boy from pasadena · transmission · the ruined future"
         },
         {
-          "src": "vol3/meld_seam_2_3.json",
-          "text": "That spring I played games on the computer most nights, until the floppy drive was the only sound in the house. tk tk tk tk. Loading the next part of somewhere else."
+          "src": "vol3/vol3_ch1_boy_from_pasadena.json",
+          "text": "The sky was falling and it came down in pieces. Jack Perkins wanted to be strong but he was only just a child. The world at war with itself was one he was stranger to and all he dreamt of was home."
         },
         {
-          "src": "vol3/meld_seam_2_3.json",
-          "text": "The picture came in bands, top to bottom. A street in the rain. Streetcar wire. A movie marquee. Orange trees."
+          "src": "vol3/vol3_ch1_boy_from_pasadena.json",
+          "text": "He feared that if this the true future of the planet earth there wouldn't be much left to build on after all the smoke had settled. He hoped there had been some mistake, some miscalculation in all his years of research, experimentation and thorough planning."
         }
       ],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). The quotes are the chapter's opening lines; pick the one motif the plate should carry and cut the rest before spending credits. Until it is installed the card shows the volume's generated sheet."
@@ -43585,7 +43585,7 @@
     {
       "slug": "plate_v4_ch01",
       "kind": "scene2d",
-      "name": "the plate of vol 4, chapter 1 — letters to myself",
+      "name": "the plate of vol 4, chapter 1 — The desk",
       "file": "vn/plates/chapter_v4_ch01.jpg",
       "vol": [
         4
@@ -43593,29 +43593,16 @@
       "keys": [
         "plate_v4_ch01"
       ],
-      "tag": "vol4 · PLATE · behind the card of chapter 1 — letters to myself",
+      "tag": "vol4 · PLATE · behind the card of chapter 1 — The desk",
       "aspect": "16:9",
       "pose": null,
       "role": "plate",
       "scenes": [
-        "meld_seam_3_4"
+        "vol4_hub"
       ],
-      "prompt": "An endpaper of toner-grey copier paper, one scan-bar pink ink, photocopy speckle, for chapter 1 — letters to myself. One motif from the chapter, faint, half-dissolved into the marbling.",
+      "prompt": "An endpaper of toner-grey copier paper, one scan-bar pink ink, photocopy speckle, for chapter 1 — The desk. One motif from the chapter, faint, half-dissolved into the marbling.",
       "prompt_mode": "append",
-      "canon": [
-        {
-          "src": "vol4/meld_seam_3_4.json",
-          "text": "lights out · the sleep lab · the desk · 2003 · 2006"
-        },
-        {
-          "src": "vol4/meld_seam_3_4.json",
-          "text": "The machinery under the curtain looks simple but expensive. It hums. It's the hum of the air conditioning unit in Dad's room, the one Andy fell asleep beside on the floor, the constant mechanical breeze."
-        },
-        {
-          "src": "vol4/meld_seam_3_4.json",
-          "text": "One-way vector of linear time. What comes next. The rest of her notepad is upside down and he can't make it out."
-        }
-      ],
+      "canon": [],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). The quotes are the chapter's opening lines; pick the one motif the plate should carry and cut the rest before spending credits. Until it is installed the card shows the volume's generated sheet."
     },
     {
@@ -43938,7 +43925,7 @@
     {
       "slug": "plate_v5_ch00",
       "kind": "scene2d",
-      "name": "the plate of vol 5, chapter 0 — A Fool Between Acts",
+      "name": "the plate of vol 5, chapter 0 — Prologue :: The Liar King",
       "file": "vn/plates/chapter_v5_ch00.jpg",
       "vol": [
         5
@@ -43946,27 +43933,27 @@
       "keys": [
         "plate_v5_ch00"
       ],
-      "tag": "vol5 · PLATE · behind the card of chapter 0 — A Fool Between Acts",
+      "tag": "vol5 · PLATE · behind the card of chapter 0 — Prologue :: The Liar King",
       "aspect": "16:9",
       "pose": null,
       "role": "plate",
       "scenes": [
-        "vol5_ch0_booth6"
+        "vol5_prelude_arcana_liar_king"
       ],
-      "prompt": "An endpaper of bayou-brown paper, sodium-amber and brass inks, for chapter 0 — A Fool Between Acts. One motif from the chapter, faint, half-dissolved into the marbling.",
+      "prompt": "An endpaper of bayou-brown paper, sodium-amber and brass inks, for chapter 0 — Prologue :: The Liar King. One motif from the chapter, faint, half-dissolved into the marbling.",
       "prompt_mode": "append",
       "canon": [
         {
-          "src": "vol5/vol5_ch0_booth6.json",
-          "text": "[mood:night]The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it."
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Major Arcana · Prologue :: The Liar King"
         },
         {
-          "src": "vol5/vol5_ch0_booth6.json",
-          "text": "The neon sputtered. The neon resumed. The neon sputtered."
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Agile child hands feel through bottom silt, grubby face so near reflected, tiny body fighting small splashing waves at the river’s edge."
         },
         {
-          "src": "vol5/vol5_ch0_booth6.json",
-          "text": "[stage:john counter_post][shot:insert clock]Three forty-seven AM. Or three forty-eight."
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Over shoulder, a four foot tall frog rolls a cigarette, cork hat pulled down low on his v-shaped face, eyes set apart but centered intently, filthy denim suspenders hanging low, bare-chested, barefooted."
         }
       ],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). The quotes are the chapter's opening lines; pick the one motif the plate should carry and cut the rest before spending credits. Until it is installed the card shows the volume's generated sheet."
@@ -46162,7 +46149,7 @@
         },
         {
           "src": "vol7/vol7_ch15_loft.json",
-          "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's — he had slept on it from '07 until '42."
+          "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's — he had slept on it from '11 until '42."
         }
       ],
       "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). The quotes are the chapter's opening lines; pick the one motif the plate should carry and cut the rest before spending credits. Until it is installed the card shows the volume's generated sheet."
