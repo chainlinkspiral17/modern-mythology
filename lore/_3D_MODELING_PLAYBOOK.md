@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-17 · what the image model reads is the prompt, not the label
+
+- **Every string `build_prompt` touches goes to the generator.** The display `name` was
+  substituted into the preamble and the canon head, so "Ron (L. Ron Hubbard, 1945)" was
+  sent as is. A real person the text fictionalises gets a `prompt_name`, and their prompt
+  says "Jack", not the surname. Check with `run <slug> --dry-run`, which prints the prompt.
+- **A preamble that names a place is wrong for every volume but one.** "Set in the American
+  South" went out with every vol 7 Oregon character. Use `{setting}` from the entry's volumes.
+- **Account for a volume from its scenes, not from memory.** `vol_assets.py` resolves each
+  speaker the way CharLayer does, including the volume filter. That found Aud, Faust, Jacob and
+  Wagner modelled but filtered out of the volumes they speak in.
+- **Quotes drift when another branch owns the text.** Re-check the roster's quotes against the
+  branch head before a generation run. On 2026-10-17, three of 629 had been reworded.
+- To test a Blender fallback without Blender, write a stand-in that takes the same arguments
+  (`--python-expr`, not just `--python`). Otherwise the stand-in loops forever waiting for a
+  flag that never comes.
+
 ### 2026-10-16 · a new set, built and seen in one session (vols 1–4)
 
 - **The builders run under the `bpy` module** (pip `bpy==4.2.0` in a

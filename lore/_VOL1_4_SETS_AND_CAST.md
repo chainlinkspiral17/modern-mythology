@@ -165,3 +165,50 @@ and the roster in step (run by the scoped suite).
    it?
 5. Keys that route to two people: `wren`, `sammy`, `margaret`, `brandon`;
    vol 6's bassist `nate`.
+
+## Accounting: every speaker, prop, picture and cue (2026-10-17, draft 1)
+
+The user: *"we'll need all the heroes and hero props and assets for vol 1-4
+accounted for as well."*
+
+```bash
+git fetch origin claude/vol1-4-source-text && D=$(mktemp -d) && git archive origin/claude/vol1-4-source-text godot/resources/scenes | tar -x -C $D && python3 godot/tools/vol_assets.py --scenes $D/godot/resources/scenes
+```
+
+`vol_assets.py` resolves each speaker the way CharLayer does, including the
+volume filter. It counts a file as present when either branch has it. Against
+dbabab4a:
+
+| | total | covered | open |
+|---|---|---|---|
+| speakers | 112 | 101 roster entries · 11 voice only | 0 |
+| CG | 66 | 13 on the vols 1–4 branch · 53 `scene2d` drafts | 0 |
+| backgrounds | 291 | 232 3D sets · 53 `scene2d` drafts | 6 wait on a build (airport, andy_family_house, chau_house) |
+| music cues | 38 | 1 | **37** |
+
+- **Voice only, by the text:** the voices in Jacob's and Wagner's earbuds,
+  Habes's message, the frame ("Wood"), the voice-over, a Player, the
+  three-at-once line, the passing stranger, the starship's Sentries, and Dean's
+  daughter in vol4_goggles ("We don't see her yet"). The "Man" of
+  vol1_ch4_dream_bar is Dickens Dean before he gives his name, and the scene
+  shows his model. The list lives in `VOICE_ONLY` in the tool.
+- **24 new heroes:**
+  - vol 1: the dreamgirl and the clerk with no face;
+  - vol 2: the beach-party cast (Not Chuck, the DJ in the tent, Guitar Gal,
+    Star Gal, the woman who clings, the Out of Towner, Tourista) and the four
+    House of Glass actors;
+  - vol 3: Melody, Jules, Verse, the Core and the inoculation nurse;
+  - vol 4: the brother-in-law, All Smiles, the workshop girl, the video-test
+    woman and her I.F., and Alex.
+- **16 hero props:** Joan's dagger, the cracked DJ headphones, the black
+  guitar pick, D. Dean's journal, the heron feather, the derby crab number 0,
+  the key with no teeth, the small yellow raincoat, the 1969 Mercedes, Ron's
+  typewriter, the IRIS binder, the toy soldier, the red string, the cardboard
+  kaleidoscope, the star key and the copy of Sister Carrie.
+- **107 pictures** are the new Hero Studio kind `scene2d`. Each installs as a
+  1920-wide JPEG at the exact path its scene names. `scene2d_draft.py` drafted
+  them from the narration around each picture. **Read them before spending
+  credits.**
+- The other branch now names the vol 2 deejay "Arthur Finch" and has Arthur
+  disappear first. Per the ruling, `jay_rose` stays the DJ's look and the
+  blur stays in the text.

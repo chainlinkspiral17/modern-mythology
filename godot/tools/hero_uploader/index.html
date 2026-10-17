@@ -239,10 +239,12 @@
         <option value="hero">heroes</option>
         <option value="demon">demons</option>
         <option value="prop">props</option>
+        <option value="art">art (on surfaces)</option>
+        <option value="scene2d">pictures (backgrounds + CG)</option>
       </select>
       <select id="f-vol">
         <option value="">all vols</option>
-        <option value="1">vol 1</option><option value="2">vol 2</option>
+        <option value="1">vol 1</option><option value="2">vol 2</option><option value="3">vol 3</option><option value="4">vol 4</option>
         <option value="5">vol 5</option><option value="6">vol 6</option><option value="7">vol 7</option>
       </select>
       <select id="f-state">
@@ -374,7 +376,9 @@ const state = {
   previewURL: null,
 };
 const $ = (id) => document.getElementById(id);
-const OUT_DIR = { hero: 'godot/assets/3d/characters/heroes', demon: 'godot/assets/3d/characters/demons', prop: 'godot/assets/3d/props', art: 'godot/assets/art/hero' };
+const OUT_DIR = { hero: 'godot/assets/3d/characters/heroes', demon: 'godot/assets/3d/characters/demons', prop: 'godot/assets/3d/props', art: 'godot/assets/art/hero', scene2d: 'godot/assets' };
+// pictures the make step installs instead of sending to Meshy
+const isPicture = e => e.kind === 'art' || e.kind === 'scene2d';
 const COST = { 'google:gemini': 0.04, 'google:imagen': 0.04, runway: 0.08, openai: 0.07, 'meshy:draft': 0.20, 'meshy:textured': 0.80 };
 
 function log(level, msg) {
@@ -431,7 +435,7 @@ async function boot() {
 function normaliseRoster() {
   for (const e of state.roster.entries) {
     e.status = e.status || { glb_installed: false, chosen: {}, candidates: {} };
-    e.aspect = e.aspect || (e.kind === 'prop' ? '1:1' : e.kind === 'art' ? '4:3' : '3:4');
+    e.aspect = e.aspect || (e.kind === 'prop' ? '1:1' : e.kind === 'art' ? '4:3' : e.kind === 'scene2d' ? '16:9' : '3:4');
   }
   state.roster.providers = state.roster.providers || {
     google: { models: ['gemini-2.5-flash-image', 'gemini-3.1-flash-image', 'gemini-3-pro-image-preview', 'imagen-4.0-generate-001', 'imagen-4.0-fast-generate-001', 'imagen-4.0-ultra-generate-001'], default: 'gemini-2.5-flash-image' },
@@ -526,7 +530,7 @@ function renderRoster() {
   let last = null;
   for (const e of entries) {
     const vols = (e.base ? (bySlug[e.base]?.vol || e.vol) : e.vol) || [];
-    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'art' ? `art (pictures on surfaces) · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
+    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'art' ? `art (pictures on surfaces) · vol ${vols.join(',')}` : e.kind === 'scene2d' ? `pictures (${e.role === 'cg' ? 'CG' : 'backgrounds'}) · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
     if (grp !== last) { const h = document.createElement('div'); h.className = 'group-hdr'; h.textContent = grp; list.appendChild(h); last = grp; }
     const c = document.createElement('div');
     c.className = 'card' + (e.slug === state.selected ? ' selected' : '') + (e.base ? ' look' : '');
@@ -602,11 +606,11 @@ function select(slug) {
   $('e-tag').textContent = [e.kind, ...(e.vol || []).map(v => 'vol' + v), e.tag].filter(Boolean).join(' · ');
   $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}` + (e.kind === 'art'
     ? `  ·  ${(e.size || [0, 0]).map(v => (+v).toFixed(2)).join(' × ')} m (aspect ${e.aspect})  →  laid on: ` + (e.apply || []).map(r => `${r.locale} (${r.label || r.facing})`).join(', ')
-    : '');
-  // ART (2026-10-12): the picture IS the deliverable — no Meshy, the make step installs it
-  $('btn-mesh').textContent = e.kind === 'art' ? 'Install picture' : 'Make 3D';
-  $('btn-run').textContent = e.kind === 'art' ? 'Generate image → Install picture' : 'Generate image → Make 3D';
-  $('o-multiview').disabled = e.kind === 'art';
+    : e.kind === 'scene2d' ? `  ·  ${e.role === 'cg' ? 'CG' : 'background'}, ${e.aspect}  →  shown in: ${(e.scenes || []).join(', ')}` : '');
+  // ART (2026-10-12) / SCENE2D (2026-10-17): the picture IS the deliverable — no Meshy, the make step installs it
+  $('btn-mesh').textContent = isPicture(e) ? 'Install picture' : 'Make 3D';
+  $('btn-run').textContent = isPicture(e) ? 'Generate image → Install picture' : 'Generate image → Make 3D';
+  $('o-multiview').disabled = isPicture(e);
   $('e-notes').style.display = e.notes ? '' : 'none'; $('e-notes').textContent = e.notes || '';
   $('e-prompt').value = e.prompt || '';
   $('e-texprompt').value = e.texture_prompt || '';
@@ -820,7 +824,7 @@ function startGitPolling() { refreshGit(); if (!gitTimer) gitTimer = setInterval
 // ── RECOVERED (models fetched back from the Meshy account, not yet anyone's) ──
 // (esc() is defined above)
 function recHeroes() {
-  return (state.roster?.entries || []).filter(e => e.kind !== 'prop' && e.kind !== 'art')
+  return (state.roster?.entries || []).filter(e => e.kind !== 'prop' && !isPicture(e))
     .map(e => ({ slug: e.slug, name: e.name, tag: e.tag, kind: e.kind, base: e.base, look: e.look, installed: !!e.status?.glb_installed }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
