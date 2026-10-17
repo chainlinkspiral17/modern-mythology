@@ -430,7 +430,11 @@ def check_chairs(boxes):
 
 
 def check_desks(boxes):
-    walls = [b for b in boxes if WALLISH.search(b[0]) and max(b[2]) * 2 > 1.5 and b[2][2] * 2 > 1.5]
+    # (2026-10-17) the wall under a window — a SPANDREL — backs a desk the
+    # way it backs a bed's head (check_beds): "the desk under the window"
+    # in vol 3's Link house stood flush to it and failed
+    walls = [b for b in boxes if WALLISH.search(b[0]) and ((max(b[2]) * 2 > 1.5 and b[2][2] * 2 > 1.5)
+                                                            or re.search(r"spandrel", b[0], re.I))]
     out = []
     for b in boxes:
         if not re.search(r"desk", b[0], re.I) or not TOPISH.search(b[0]) or DESK_FREESTANDING.search(b[0]):

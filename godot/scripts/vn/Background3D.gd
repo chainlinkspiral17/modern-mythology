@@ -2766,6 +2766,126 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	# THE LINK HOUSE (2026-10-17, build_link_house.py; draft 1): vol 3's
+	# family ranch house in Texas — the living room and kitchen across the
+	# front (godot z 0..-5.5), the hall, then the bathroom (x -1.2..1.6) and
+	# Andy's room (x 1.6..6.5) at the back (z -6.7..-10.5). The base scene is
+	# night on the lamps; the day presets lift the environment and add
+	# their window light by name (`__<preset>` in link_house.tscn).
+	"andy_house_kitchen": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# "Tony is looking at me, across from the table. The magazine sits between us."
+		"camera_origin": Vector3(-1.2, 1.5, -0.9),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-64.4), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.20, 0.26, 0.46, 1), "sky_horizon": Color(0.86, 0.56, 0.40, 1),
+			"ground_horizon": Color(0.30, 0.24, 0.22, 1), "ground_bottom": Color(0.10, 0.09, 0.10, 1),
+			"ambient_color": Color(0.70, 0.60, 0.54, 1), "ambient_energy": 0.55, "fog_color": Color(0.40, 0.32, 0.30, 1)},
+		"suppress_input": true,
+	},
+	"andy_house_living": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# "Nick was asleep on the couch ... the television showing a scary movie marathon."
+		"camera_origin": Vector3(-5.8, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.14, deg_to_rad(-43.9), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"andy_house_bath": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# "My dad puts his ear to the bathroom door." — day, the frosted window lit
+		"camera_origin": Vector3(0.0, 1.55, -6.95),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 76.0,
+		"env": {"sky_top": Color(0.52, 0.66, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.50, 0.46, 1), "ground_bottom": Color(0.24, 0.22, 0.20, 1),
+			"ambient_color": Color(0.86, 0.88, 0.90, 1), "ambient_energy": 1.05, "fog_color": Color(0.74, 0.76, 0.78, 1)},
+		"suppress_input": true,
+	},
+	"andy_house_bath_night": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# "It's the middle of the night or early in the morning." — the vanity bar only
+		"camera_origin": Vector3(0.0, 1.55, -6.95),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 76.0,
+		"suppress_input": true,
+	},
+	"andy_house_bedroom": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# Andy's room by day, from the door: the bed, the desk under the window
+		"camera_origin": Vector3(3.4, 1.55, -7.05),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-36.7), 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.52, 0.66, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.50, 0.46, 1), "ground_bottom": Color(0.24, 0.22, 0.20, 1),
+			"ambient_color": Color(0.80, 0.82, 0.86, 1), "ambient_energy": 0.80, "fog_color": Color(0.70, 0.72, 0.74, 1)},
+		"suppress_input": true,
+	},
+	"andy_house_bedroom_night": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# "By that evening, I was back home quiet and moody."
+		"camera_origin": Vector3(3.4, 1.55, -7.05),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-36.7), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"andy_house_bedroom_lamp": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# "I rummage through my bedroom for a book" / "Men get quiet when they need help."
+		"camera_origin": Vector3(4.2, 1.25, -8.0),
+		"camera_rotation": Vector3(-0.18, deg_to_rad(-53.6), 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	# THE SMALL WOOD RANCH (2026-10-17, build_small_wood_ranch.py; draft 1):
+	# vol 2's narrator's room in the family's old ranch house (godot x
+	# -1.9..1.9, z 0..-4.2) and the second house on the property (x 30..34).
+	"ranch_bedroom_night": {
+		"scene": "res://scenes/locales/small_wood_ranch.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		# "I'd just look out my window at the moon on the night horizon, falling behind the many trees"
+		"camera_origin": Vector3(1.2, 1.5, -0.45),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(29.7), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"ranch_bedroom_lamp": {
+		"scene": "res://scenes/locales/small_wood_ranch.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		# "The paperback's pages had gone soft at the corners, the house dark and quiet around the lamp."
+		"camera_origin": Vector3(0.3, 1.2, -2.6),
+		"camera_rotation": Vector3(-0.20, deg_to_rad(31.6), 0.0),
+		"fov": 52.0,
+		"suppress_input": true,
+	},
+	"ranch_bedroom_day": {
+		"scene": "res://scenes/locales/small_wood_ranch.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		# "the room" up the hill, the same afternoon: the plank blinds, the clock radio's nightstand
+		"camera_origin": Vector3(1.2, 1.5, -0.45),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(29.7), 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.56, 0.64, 0.74, 1), "sky_horizon": Color(0.84, 0.86, 0.86, 1),
+			"ground_horizon": Color(0.40, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.18, 1),
+			"ambient_color": Color(0.78, 0.80, 0.82, 1), "ambient_energy": 0.80, "fog_color": Color(0.66, 0.70, 0.72, 1)},
+		"suppress_input": true,
+	},
+	"ranch_second_house": {
+		"scene": "res://scenes/locales/small_wood_ranch.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		# "I'd brought in a kerosene lamp to read by ... the walls shone through bare in places, stripped to the board."
+		"camera_origin": Vector3(31.0, 1.5, -0.35),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-16.8), 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-17 · a door is in the shot before it is in the plan (the Link house)
+
+- **Decide where a door swings from the camera that looks through it.** The bathroom door,
+  hinged on the near jamb and swung 60 degrees in, filled a third of the frame and hid the
+  toilet. Hinge it on the side away from the subject, open it flat against that side, and put
+  the camera on the other half of the doorway. Render before tuning anything else.
+- **A sofa built from a cushion box plus arms floats.** The base has to reach the floor (or
+  stand on legs); support_audit groups the whole sofa and reports it as one 9 cm float.
+- **Run the three geometry gates on one builder while you build:**
+  `prop_overlap_audit.py`, `support_audit.py` and `furniture_grammar_audit.py` with the locale
+  name. Minutes, against an hour for the full suite.
+- **Don't write a new builder into `locales/` while a gate run is going.** The gates scan the
+  folder. Write in the scratchpad, install after the run.
+
 ### 2026-10-17 · what the image model reads is the prompt, not the label
 
 - **Every string `build_prompt` touches goes to the generator.** The display `name` was

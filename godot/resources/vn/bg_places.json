@@ -280,10 +280,12 @@
    "scenes": 1
   },
   "vol2_bedroom_window_night": {
-   "fit": "standin",
-   "to": "3d:ben_bedroom",
-   "build": "dean_house_1994",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:ranch_bedroom_night",
+   "build": "small_wood_ranch",
+   "scenes": 2,
+   "note": "the window, the moon behind the trees",
+   "built": "2026-10-17 draft 1"
   },
   "vol2_bingo_hall_projector": {
    "fit": "reuse",
@@ -520,10 +522,12 @@
    "scenes": 1
   },
   "vol2_reading_lamp_night": {
-   "fit": "standin",
-   "to": "3d:ben_bedroom",
-   "build": "dean_house_1994",
-   "scenes": 2
+   "fit": "reuse",
+   "to": "3d:ranch_bedroom_lamp",
+   "build": "small_wood_ranch",
+   "scenes": 2,
+   "note": "a reading lamp at night (ch10's 'Home · Night' is the adult narrator's house)",
+   "built": "2026-10-17 draft 1"
   },
   "vol2_rec_center_dance": {
    "fit": "exact",
@@ -542,11 +546,12 @@
    "scenes": 1
   },
   "vol2_room_ranch_bedroom": {
-   "fit": "standin",
-   "to": "3d:ben_bedroom",
-   "build": "dean_house_1994",
-   "note": "the room up the hill — white walls, a drain in the floor",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:ranch_bedroom_day",
+   "build": "small_wood_ranch",
+   "note": "\"the room\" up the hill: the narrator's old room, rebuilt",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol2_room_roof_dusk": {
    "fit": "2d",
@@ -631,11 +636,12 @@
    "scenes": 2
   },
   "vol2_second_house_night": {
-   "fit": "standin",
-   "to": "3d:meadowlark_circle_night",
-   "build": "dean_house_1994",
-   "note": "the second house",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:ranch_second_house",
+   "build": "small_wood_ranch",
+   "note": "the second house, the kerosene lamp",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol2_small_town_road": {
    "fit": "exact",
@@ -677,16 +683,20 @@
    "scenes": 1
   },
   "vol3_andy_room_day": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom_day",
-   "build": "andy_family_house",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:andy_house_bedroom",
+   "build": "link_house",
+   "scenes": 1,
+   "note": "Andy's room by day",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_andy_room_night": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom",
-   "build": "andy_family_house",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:andy_house_bedroom_night",
+   "build": "link_house",
+   "scenes": 1,
+   "note": "Andy's room at night",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_ballfield_concession_stand": {
    "fit": "standin",
@@ -722,20 +732,24 @@
   "vol3_bedroom_closet_dallas": {
    "fit": "standin",
    "to": "3d:jesse_bedroom",
-   "build": "andy_family_house",
-   "scenes": 1
+   "build": "june_dallas",
+   "scenes": 1,
+   "note": "June's closet in Dallas"
   },
   "vol3_bedroom_lamp_night": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom",
-   "build": "andy_family_house",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:andy_house_bedroom_lamp",
+   "build": "link_house",
+   "scenes": 2,
+   "note": "the bedside lamp",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_blanket_fort_night": {
    "fit": "standin",
    "to": "3d:jesse_bedroom",
-   "build": "andy_family_house",
-   "scenes": 2
+   "build": "chau_house",
+   "scenes": 2,
+   "note": "the Chau house: pushed-together couches, the fan's sheet"
   },
   "vol3_brick_wall_halloween_night": {
    "fit": "2d",
@@ -901,29 +915,36 @@
    "scenes": 2
   },
   "vol3_family_bathroom_day": {
-   "fit": "standin",
-   "to": null,
-   "build": "andy_family_house",
-   "note": "no bathroom set yet",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:andy_house_bath",
+   "build": "link_house",
+   "note": "the bathroom by day, the dad at the door",
+   "scenes": 1,
+   "built": "2026-10-17 draft 1"
   },
   "vol3_family_bathroom_night": {
-   "fit": "standin",
-   "to": null,
-   "build": "andy_family_house",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:andy_house_bath_night",
+   "build": "link_house",
+   "scenes": 1,
+   "note": "the bathroom before dawn, the vanity light",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_family_kitchen_evening": {
-   "fit": "standin",
-   "to": "3d:kowalski_kitchen",
-   "build": "andy_family_house",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:andy_house_kitchen",
+   "build": "link_house",
+   "scenes": 2,
+   "note": "the kitchen table at evening, the magazine between father and son",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_family_living_room_night": {
-   "fit": "standin",
-   "to": "3d:kowalski_kitchen",
-   "build": "andy_family_house",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:andy_house_living",
+   "build": "link_house",
+   "scenes": 1,
+   "note": "Nick asleep on the couch, the TV on",
+   "built": "2026-10-17 draft 1"
   },
   "vol3_father_bedside": {
    "fit": "reuse",

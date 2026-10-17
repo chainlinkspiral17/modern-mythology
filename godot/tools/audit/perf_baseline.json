@@ -26,6 +26,11 @@
  "lena_apartment": {
   "draw": 156
  },
+ "link_house": {
+  "draw": 266,
+  "prims": 50876,
+  "objects": 436
+ },
  "missing_link_interior": {
   "draw": 90
  },
@@ -45,6 +50,11 @@
   "draw": 236,
   "prims": 128644,
   "objects": 406
+ },
+ "small_wood_ranch": {
+  "draw": 102,
+  "prims": 16776,
+  "objects": 272
  },
  "writers_desk": {
   "draw": 108,

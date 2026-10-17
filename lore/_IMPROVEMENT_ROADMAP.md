@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 115: TWO VOLS 1–4 SETS — THE LINK HOUSE AND THE SMALL WOOD RANCH (draft 1).**
+The user: "go ahead and start working on backgrounds for vol 1-4 as needed." These were the two
+build groups with the most scenes still on stand-ins (9 each).
+- **link_house** (vol 3, `build_link_house.py`), a 13 x 10.5 m brick ranch in Texas: the living
+  room (Nick's couch with the afghan, the CRT and its tapes) open to the kitchen and dining table
+  (the magazine between father and son), the hall, the bathroom (tub, toilet, vanity bar) and
+  Andy's room (the bed, the bedside lamp, the desk under the N window, the bookcase). Seven
+  presets; the night ones run on the house's own lamps, the day ones add window light by name.
+- **small_wood_ranch** (vol 2, `build_small_wood_ranch.py`): the narrator's room in the family's
+  old ranch house (the wood plank blinds his grandmother hung, the clock radio, the jacket hook
+  behind the door, the moon over the firs) and the second house (studs stripped to the board,
+  the painted plaster's shadow figures, two mattresses, the kerosene lamp). "The room" Dean
+  rebuilds up the hill IS this room, so it plays the day preset.
+- 11 stems re-pointed in bg_places.json. The old andy_family_house group held two other people's
+  places: the blanket fort is now build chau_house, June's closet is build june_dallas.
+  dean_house_1994 keeps teenage Dean's own bedroom and basement.
+- Gates on both builders are clean: 0 clips, 0 floating, 0 grammar. 268 and 102 draw calls,
+  recorded in perf_baseline.json. furniture_grammar's DESK rule now takes a window's spandrel as
+  a wall, the way its BED rule already did; the repo-wide counts are unchanged.
+
+DRAFT 2 targets:
+- The Link house's second bedroom (shut in every view), clutter and wear (school photos, the
+  fridge door), the backyard past make_view, and the magazine as a per-preset prop.
+- The ranch: the field and the road between the houses, so vol2_room_roof_dusk ("From the roof
+  the field ran down to the road") can leave 2D; "the room"'s empty state ("white walls and a
+  drain") as a per-preset switch.
+- The next builds by scene count: caltech_dabney (8), dean_office (7), sleep_lab (6), airport
+  (6, three of them blank until it exists).
+
 **2026-10-17 · pass 114: CHAPTER PLATES ARE TITLE PAGES.** The user: "the chapter plates need the
 text for the chapters as well as imagery from that chapter."
 - Each of the 136 plates is now the chapter's illustrated title page, with three parts:
