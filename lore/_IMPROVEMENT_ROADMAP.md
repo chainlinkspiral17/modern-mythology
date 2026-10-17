@@ -3853,15 +3853,32 @@ chapter contents, evoke, get details close to right, and have them be fitting ch
 - **The method stands for every future description** sent to the image model: read the chapter,
   write about + image + quotes, then an independent check. Never select by keyword.
 
-Found in the text, not changed (the text is canon; for the user):
-- Vol 6 contradicts itself in four places:
-  - Rosa's death: ovarian cancer in Albuquerque (ch17), an overdose in Phoenix (ch22);
-  - Coach K's wife: "stage two" (ch19), a bypass (ch22);
-  - Ben's surname: Achterberg (ch0), Kowalski elsewhere;
-  - the Chief Miller's wife label "Eileen" in the ch5 drive.
-- Vol 2's "the room": the clock radio is gone ("where my clock radio used to sit"; a grey plastic
-  stick lies there). The small_wood_ranch day preset still shows the radio: a per-preset prop
-  switch, draft 2.
+**Pass 116b · the inconsistencies, fixed** (the user: "Go ahead and fix the inconsistencies"):
+- **Rosa (vol 6):** chapter 22 is Bianca's full telling (an overdose at fifty-one, 2018, nineteen
+  years struggling, the Phoenix funeral), so chapter 17's porch now says Phoenix and an overdose
+  (it said Albuquerque and ovarian cancer) and "long illness" (it said "later-life illness").
+- **Bianca's six:** the oldest brother and two sisters in Lubbock, Carlos the fourth (in Arizona,
+  "three hours from Phoenix"), Bianca the fifth, Rosa the sixth. "My four older siblings are all
+  in Lubbock. Carlos is in Houston." is now "Three of my four older siblings are in Lubbock. Carlos
+  is in Arizona."; "the seventh and the fifth of six kids" is now "the fourth and the fifth".
+- **Coach K's wife:** chapter 22's bypass runs through the whole chapter, including Linda's "I had
+  the bypass in oh-two", so chapter 19's "Stage two. Treatment" is now "had the bypass in March.
+  Rehab". She speaks as **Eileen Kazantzakis** (17 lines in ch22; the text has "three Eileens in
+  this town"), with her own roster entry, portrait look and colour. One ch22 sentence had put her
+  at Bianca's Friday four-thirty table, which is Eileen Henderson's (ch11, ch22); it is now her
+  cardiac-rehab class.
+- **Ben** is Kowalski; ch0's lone "Achterberg" changed, and the depth-chart art now reads
+  TE-1 KOWALSKI.
+- **Chief Miller's wife** in the ch5 drive is Bianca; the 4 lines were labelled Eileen.
+- The "eileen" portrait bust was the grey-haired 62-year-old; it is Eileen Henderson (late 40s,
+  brown hair) now, and Eileen Kazantzakis has her own.
+- **Vol 2's "the room":** the clock radio shows only at night. In the day preset a grey plastic
+  stick lies where it sat. Background3D now strips MESHES as well as lights named
+  `<Name>__<preset>[__<preset>…]` in every other preset.
+- **Drifted quotes:** vol 6's prose had been split and revised after the roster's quotes were
+  written. 24 quotes are refreshed to the current text, never to a different subject. Four
+  descriptions now match it: Hal owns The Bindery; Coach K wears New Auburn High's polo, not
+  Vinton's; Wren's patch is on the back; the lyric sheet is printed.
 
 **2026-10-17 · pass 115: TWO VOLS 1–4 SETS — THE LINK HOUSE AND THE SMALL WOOD RANCH (draft 1).**
 The user: "go ahead and start working on backgrounds for vol 1-4 as needed." These were the two

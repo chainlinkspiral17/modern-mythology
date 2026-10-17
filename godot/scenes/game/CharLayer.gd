@@ -368,6 +368,7 @@ const CHAR_ACCENTS := {
 	"ben":          Color("#c8987a"),
 	"bianca":       Color("#e07a6a"),
 	"eileen":       Color("#a8c890"),
+	"eileen_kazantzakis": Color("#d8a8b8"),   # Coach K's wife (vol6 ch22), not Eileen Henderson
 	"chief_miller": Color("#7a90b8"),
 	"bt":           Color("#c8c060"),
 	"anita":        Color("#d890b0"),

@@ -125,7 +125,11 @@ const _OVERRIDES: Dictionary = {
 	"diego":        {"hair_style": 0, "hair_color": 0, "skin_tone": 1, "beard": false},
 	"diego_ramos":  {"hair_style": 0, "hair_color": 0, "skin_tone": 1, "beard": false},
 	"bianca":       {"hair_style": 2, "hair_color": 0, "skin_tone": 2, "beard": false, "earrings": true},
-	"eileen":       {"hair_style": 10, "hair_color": 5, "beard": false, "age": "elder", "glasses": "regular"},
+	# (2026-10-17) "eileen" is Eileen Henderson, Jesse's mother, late 40s, brown hair to the shoulder;
+	# Coach K's wife, 62, gray under her 1996 ball cap, speaks as Eileen Kazantzakis (three Eileens in town)
+	"eileen":       {"hair_style": 2, "hair_color": 3, "beard": false, "collar": "shirt"},
+	"eileen_henderson": {"hair_style": 2, "hair_color": 3, "beard": false, "collar": "shirt"},
+	"eileen_kazantzakis": {"hair_style": 5, "hair_color": 5, "beard": false, "age": "elder", "collar": "shirt"},
 	"chief_miller": {"hair_style": 8, "hair_color": 5, "beard": false, "collar": "shirt", "age": "elder"},
 	"bt":           {"hair_style": 3, "hair_color": 1, "beard": true},
 	"anita":        {"hair_style": 6, "hair_color": 1, "skin_tone": 2, "beard": false, "earrings": true},

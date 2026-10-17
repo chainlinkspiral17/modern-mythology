@@ -12,8 +12,10 @@ What the scenes say, and where it is here:
                                          N window, a few hung crooked
   "I'd just look out my window at the moon on the night horizon, falling
    behind the many trees"              → View_N's firs and the Moon disc
-  "On the nightstand where my clock radio used to sit"
-                                       → Nightstand, Clock_Radio
+  "On the nightstand where my clock radio used to sit there was a stick of
+   grey plastic about as long as a pencil"
+                                       → Nightstand; Clock_Radio in the night
+                                         presets, Grey_Stick in "the room"
   "On the hook behind the door where I hung my jacket"
                                        → Door_Hook + Jacket (S wall)
   "The paperback's pages had gone soft at the corners, the house dark and
@@ -98,8 +100,15 @@ def build_bedroom():
     # the nightstand with the clock radio, the reading lamp and the paperback
     nx, ny = -W / 2.0 + 0.10 + 1.25, D - 0.10 - 0.24
     make_box("Nightstand", (nx, ny, 0.29), (0.42, 0.40, 0.58), PINE_DARK)
-    make_box("Clock_Radio", (nx - 0.06, ny + 0.04, 0.635), (0.24, 0.12, 0.09), (0.16, 0.14, 0.13, 1.0))
-    make_box("Clock_Radio_Face", (nx - 0.06, ny - 0.022, 0.64), (0.14, 0.004, 0.04), (0.92, 0.28, 0.16, 1.0))
+    # the clock radio is there at night; in "the room" Dean rebuilt (the day
+    # preset) it is gone — "On the nightstand where my clock radio used to sit
+    # there was a stick of grey plastic about as long as a pencil" — and the
+    # stick lies there instead (Background3D strips `__<preset>` meshes)
+    night = "__ranch_bedroom_night__ranch_bedroom_lamp"
+    make_box("Clock_Radio" + night, (nx - 0.06, ny + 0.04, 0.635), (0.24, 0.12, 0.09), (0.16, 0.14, 0.13, 1.0))
+    make_box("Clock_Radio_Face" + night, (nx - 0.06, ny - 0.022, 0.64), (0.14, 0.004, 0.04), (0.92, 0.28, 0.16, 1.0))
+    make_cyl("Grey_Stick__ranch_bedroom_day", (nx - 0.10, ny - 0.12, 0.592), 0.009, 0.17, (0.58, 0.58, 0.60, 1.0),
+             axis='X', segments=8)
     make_lamp("Lamp_Reading", nx + 0.10, ny + 0.06, base_z=0.58, h=0.46)
     make_box("Paperback", (nx + 0.02, ny - 0.10, 0.596), (0.11, 0.18, 0.025), (0.62, 0.24, 0.18, 1.0))
     make_box("Paperback_Pages", (nx + 0.02, ny - 0.10, 0.598), (0.10, 0.17, 0.02), (0.92, 0.88, 0.76, 1.0))

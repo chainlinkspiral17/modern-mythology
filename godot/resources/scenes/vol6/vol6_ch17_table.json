@@ -1571,7 +1571,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "[shot:closeup person_b]It has not — it has not come up. My four older siblings are all in Lubbock. Carlos is in Houston. I am here. We are not — we are not close. We are fine. We talk at holidays. But we are not close.",
+      "text": "[shot:closeup person_b]It has not — it has not come up. Three of my four older siblings are in Lubbock. Carlos is in Arizona. I am here. We are not — we are not close. We are fine. We talk at holidays. But we are not close.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch17_table/245.mp3"
     },

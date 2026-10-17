@@ -134,7 +134,7 @@
     },
     {
       "t": "show",
-      "char": "eileen",
+      "char": "bianca",
       "expr": "neutral",
       "pos": "right"
     },
@@ -151,7 +151,7 @@
     },
     {
       "t": "say",
-      "char": "Eileen",
+      "char": "Bianca",
       "text": "I know, love.",
       "voice": "assets/audio/voice/vol6_ch5_miller_drive/028.mp3"
     },
@@ -163,7 +163,7 @@
     },
     {
       "t": "say",
-      "char": "Eileen",
+      "char": "Bianca",
       "text": "No.",
       "voice": "assets/audio/voice/vol6_ch5_miller_drive/030.mp3"
     },
@@ -175,7 +175,7 @@
     },
     {
       "t": "say",
-      "char": "Eileen",
+      "char": "Bianca",
       "text": "[shot:closeup person]But I'm okay with you doing what you need to do. That's different.",
       "voice": "assets/audio/voice/vol6_ch5_miller_drive/032.mp3"
     },
@@ -187,7 +187,7 @@
     },
     {
       "t": "say",
-      "char": "Eileen",
+      "char": "Bianca",
       "text": "Eat your pasta.",
       "voice": "assets/audio/voice/vol6_ch5_miller_drive/034.mp3"
     },

@@ -219,7 +219,7 @@
   },
   {
    "t": "show",
-   "char": "eileen",
+   "char": "eileen_kazantzakis",
    "expr": "neutral",
    "pos": "right"
   },
@@ -371,7 +371,7 @@
   },
   {
    "t": "show",
-   "char": "eileen",
+   "char": "eileen_kazantzakis",
    "expr": "neutral",
    "pos": "right"
   },
@@ -495,7 +495,7 @@
   },
   {
    "t": "show",
-   "char": "eileen",
+   "char": "eileen_kazantzakis",
    "expr": "neutral",
    "pos": "right"
   },
@@ -569,7 +569,7 @@
   },
   {
    "t": "show",
-   "char": "eileen",
+   "char": "eileen_kazantzakis",
    "expr": "neutral",
    "pos": "right"
   },
@@ -591,7 +591,7 @@
   },
   {
    "t": "narrate",
-   "text": "By July she had been doing the four-thirty table on Fridays with Bianca and Anita, which had not been her idea — Bianca had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around."
+   "text": "By July she had been doing the cardiac-rehab class on Fridays at the hospital in New Auburn, which had not been her idea — the surgeon had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around."
   },
   {
    "t": "narrate",
@@ -627,7 +627,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "Yes.",
    "expr": "neutral"
   },
@@ -639,7 +639,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person_b]Eileen.",
    "expr": "neutral"
   },
@@ -677,7 +677,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "Yeah.",
    "expr": "neutral"
   },
@@ -689,7 +689,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "Yeah.",
    "expr": "neutral"
   },
@@ -705,7 +705,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "March fourth.",
    "expr": "neutral"
   },
@@ -717,7 +717,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "Probably okay.",
    "expr": "neutral"
   },
@@ -729,7 +729,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person_b]My husband told me yesterday afternoon he wanted to book the Christmas flight.",
    "expr": "neutral"
   },
@@ -745,7 +745,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "Linda.",
    "expr": "neutral"
   },
@@ -757,7 +757,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person]This is the first time I have been at a game since February.",
    "expr": "neutral"
   },
@@ -769,7 +769,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "I am not, right this minute, going to be able to keep my face entirely steady.",
    "expr": "neutral"
   },
@@ -795,7 +795,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person_b]Thank you, Linda.",
    "expr": "neutral"
   },
@@ -963,7 +963,7 @@
   },
   {
    "t": "show",
-   "char": "eileen",
+   "char": "eileen_kazantzakis",
    "expr": "neutral",
    "pos": "center"
   },
@@ -989,7 +989,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "Yeah.",
    "expr": "neutral"
   },
@@ -1001,7 +1001,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
@@ -1013,7 +1013,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "I think so.",
    "expr": "neutral"
   },
@@ -1025,7 +1025,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "All right, Linda.",
    "expr": "neutral"
   },
@@ -1037,7 +1037,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "It's all right.",
    "expr": "neutral"
   },
@@ -1073,7 +1073,7 @@
   },
   {
    "t": "say",
-   "char": "Eileen",
+   "char": "Eileen Kazantzakis",
    "text": "It was — it was the game.",
    "expr": "neutral"
   },

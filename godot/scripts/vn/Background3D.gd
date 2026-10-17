@@ -3741,15 +3741,26 @@ func _apply_preset_env(root: Node, spec: Dictionary) -> void:
 
 
 func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
-	for n in root.find_children("*", "Light3D", true, false):
+	# (2026-10-17) Meshes too, and a name may list several presets: a prop
+	# that belongs to some views of a set and not others is named
+	# `<Name>__<preset>[__<preset>…]` in its builder — vol 2's clock radio
+	# is `Clock_Radio__ranch_bedroom_night__ranch_bedroom_lamp`, because in
+	# "the room" (ranch_bedroom_day) it is gone: "where my clock radio used
+	# to sit". Runs before the set enters the tree, so StaticMerge never
+	# folds a stripped mesh into a batch.
+	var nodes: Array[Node] = root.find_children("*", "Light3D", true, false)
+	nodes.append_array(root.find_children("*", "MeshInstance3D", true, false))
+	for n in nodes:
 		var nm: String = String(n.name)
-		var cut: int = nm.find("__")
-		if cut < 0:
+		if nm.find("__") < 0:
 			continue
-		# only a suffix that NAMES a preset marks a light (a fixture's own
+		# only suffixes that NAME a preset mark a node (a fixture's own
 		# `Prac_PorchScreen_W__2` is a numbered copy, not an area)
-		var owner_preset: String = nm.substr(cut + 2)
-		if owner_preset == preset_id or not CAMERA_PRESETS.has(owner_preset):
+		var owners: Array[String] = []
+		for part: String in nm.split("__").slice(1):
+			if CAMERA_PRESETS.has(part):
+				owners.append(part)
+		if owners.is_empty() or preset_id in owners:
 			continue
 		n.get_parent().remove_child(n)
 		n.free()

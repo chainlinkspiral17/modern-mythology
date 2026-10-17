@@ -477,7 +477,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "[shot:closeup person]Carlos. Stop. You called Monday. You called back Tuesday. The radio is going out today. We are doing what the seventh and the fifth of six kids do. We are okay.",
+   "text": "[shot:closeup person]Carlos. Stop. You called Monday. You called back Tuesday. The radio is going out today. We are doing what the fourth and the fifth of six kids do. We are okay.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch22_bianca/080.mp3"
   },

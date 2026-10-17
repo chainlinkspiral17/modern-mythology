@@ -1338,7 +1338,7 @@
         },
         {
           "src": "vol6/vol6_ch8_courthouse.json",
-          "text": "a silver-haired woman at the wheel who is, at this exact moment, reading a paperback copy of Princess Mononoke: The Art Of and smoking"
+          "text": "The green car is, when they reach the curb, a 2009 Subaru wagon, dark green, immaculate, with a silver-haired woman at the wheel"
         },
         {
           "src": "vol5/vol5_ch20_judgement.json",
@@ -2126,7 +2126,7 @@
         },
         {
           "src": "vol6/vol6_ch6_safehouse.json",
-          "text": "She has set the IV. She has cleaned the worst of the cuts. She has confirmed: concussion is mild, dehydration is severe but treatable, no fractures, no internal bleeding."
+          "text": "She has cleaned the worst of the cuts. She has confirmed: concussion is mild, dehydration is severe but treatable, no fractures, no internal bleeding."
         },
         {
           "src": "vol6/vol6_ch9_safehouse.json",
@@ -2307,7 +2307,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch2_pit_stop_kitchen.json",
-          "text": "Jesse was, at twenty, taller than Ben in height but slighter, all knees and elbows, with the kind of hair that had been a choice in 2018 and had, since, become a habit. He was wearing his Pit Stop shirt untucked and a band tee underneath — Suburban Blight, which was the name of Jesse's own band. He looked tired."
+          "text": "Jesse was, at twenty, taller than Ben in height but slighter, all knees and elbows, with the kind of hair that had been a choice in 2018 and had, since, become a habit."
         },
         {
           "src": "vol6/vol6_ch22_foxhole.json",
@@ -2328,6 +2328,10 @@
         {
           "src": "vol6/vol6_ch4_pit_stop.json",
           "text": "He puts his apron on."
+        },
+        {
+          "src": "vol6/vol6_ch2_pit_stop_kitchen.json",
+          "text": "He was wearing his Pit Stop shirt untucked and a band tee underneath — Suburban Blight, which was the name of Jesse's own band."
         }
       ],
       "looks": [
@@ -2415,7 +2419,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch11_kitchen.json",
-          "text": "The robe is the green one — not the green plaid Mr. Henderson wears next door, but a plain dark green, terrycloth, that Mike had given her for Christmas in 2019. She has worn it almost every morning since."
+          "text": "a plain dark green, terrycloth, that Mike had given her for Christmas in 2019. She has worn it almost every morning since."
         },
         {
           "src": "vol6/vol6_ch22_sunday.json",
@@ -2455,7 +2459,7 @@
         },
         {
           "src": "vol6/vol6_ch8_courthouse.json",
-          "text": "He is in his civilian clothes — the gray slacks her mother had laid out this morning, the white shirt, no tie. His hands are not cuffed. He has, Ramirez had explained at six AM, agreed to a self-surrender arrangement that did not involve cuffs as long as he was cooperating, which he is, fully, intending to do. He looks, in the courtroom light, smaller than Sam had ever seen him."
+          "text": "He is in his civilian clothes — the gray slacks her mother had laid out this morning, the white shirt, no tie. His hands are not cuffed."
         },
         {
           "src": "vol6/vol6_ch6_miller_kitchen.json",
@@ -2507,7 +2511,7 @@
         },
         {
           "src": "vol6/vol6_ch1_graciela.json",
-          "text": "Graciela Ramos is in the kitchen at the small round table under the window. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking"
+          "text": "In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking"
         },
         {
           "src": "vol6/vol6_ch23_sleep.json",
@@ -2538,7 +2542,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch12_porch.json",
-          "text": "The porch light is on. Linda is in the wicker chair — the one she has been in every evening this week, at the careful pace of a seventy-one-year-old whose hip is healed but who does not yet take the healed-ness for granted — with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour."
+          "text": "The porch light is on. Linda is in the wicker chair — the one she has been in every evening this week, at the careful pace of a seventy-one-year-old whose hip is healed but who does not yet take the healed-ness for granted"
         },
         {
           "src": "vol6/vol6_ch8_hospital_318.json",
@@ -2577,7 +2581,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch12_cosmic.json",
-          "text": "Curtis is fifty-six. He is a tall thin man with a short gray ponytail and a t-shirt that says MIRACLEMAN in the old yellow-on-black design from the 1985 Eclipse run. He has, in the four months Maya has been at the shop, worn perhaps eleven different t-shirts in regular rotation, all from runs Maya has had to look up afterward. The MIRACLEMAN one is the one Curtis wears on Tuesdays."
+          "text": "Curtis is fifty-six. He is a tall thin man with a short gray ponytail and a t-shirt that says MIRACLEMAN in the old yellow-on-black design from the 1985 Eclipse run."
         },
         {
           "src": "lore/planned_community/cosmic_comics.md",
@@ -2638,11 +2642,11 @@
       "canon": [
         {
           "src": "vol6/vol6_ch4_kwik_stop.json",
-          "text": "The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in. He had walked directly to the counter. He had not pretended to shop."
+          "text": "The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in."
         },
         {
           "src": "vol6/vol6_ch8_courthouse.json",
-          "text": "Ramirez sits in his civilian clothes. Khakis, a dark polo, the rain jacket folded on his lap. He is, Sam has noticed in the four hours she has now spent in his presence, a man who occupies a chair the way a man occupies a chair when he has spent twenty years occupying chairs in courtrooms — without slumping, without performing alertness, with the small steady patience of a person who is aware that the room's center of gravity will, in a moment, shift, and who intends to be where he needs to be when it does."
+          "text": "Ramirez sits in his civilian clothes. Khakis, a dark polo, the rain jacket folded on his lap."
         },
         {
           "src": "vol6/vol6_ch4_kwik_stop.json",
@@ -2712,7 +2716,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch6_fueling_station.json",
-          "text": "The unmarked van is at pump six. The driver — Vince Kane, late forties, big-shouldered, gray-stubble, the kind of man whose face had been used for trouble for so long that trouble had begun to use his face back — is leaning against the driver's door, smoking."
+          "text": "The driver — Vince Kane, late forties, big-shouldered, gray-stubble, the kind of man whose face had been used for trouble for so long that trouble had begun to use his face back — is leaning against the driver's door, smoking."
         },
         {
           "src": "vol6/vol6_ch6_fueling_station.json",
@@ -2740,7 +2744,11 @@
       "canon": [
         {
           "src": "vol6/vol6_ch22_vinton.json",
-          "text": "Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red. He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
+          "text": "Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red."
+        },
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
         }
       ]
     },
@@ -2828,13 +2836,17 @@
       "tag": "vol6 · 28 · lavender hair · NOT the vol7 Wren",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Wren, 28, the front section of her hair dyed lavender, a canvas overshirt with a band patch on the pocket, black jeans, boots, a canvas messenger bag. Direct, funny, a little sad.",
-      "texture_prompt": "tan canvas overshirt with an embroidered patch, black denim, brown leather boots, lavender and brown hair",
+      "prompt": "Wren, 28, the front section of her hair dyed lavender, a canvas overshirt with a faded band patch on the back, black jeans, boots, a canvas messenger bag. Direct, funny, a little sad.",
+      "texture_prompt": "tan canvas overshirt with a faded band patch on the back, black denim, brown leather boots, lavender and brown hair",
       "notes": "Scene key 'wren' routes to wren.glb (the vol7 15-year-old). Use this file for vol6 scenes explicitly.",
       "canon": [
         {
           "src": "vol6/vol6_ch12_cosmic.json",
-          "text": "Wren is twenty-eight. Wren has, this morning, dyed the front section of her hair a pale lavender Maya had not seen yesterday afternoon when she had left her shift. Wren is wearing the canvas overshirt she always wears, which has, on the back, a faded patch from a band Maya has heard of but has never listened to — Bratmobile, Olympia, 1991 — that Wren had sewn on herself and that has, in the years since, become the thing Wren is most reliably identifiable by from a distance."
+          "text": "Wren is twenty-eight. Wren has, this morning, dyed the front section of her hair a pale lavender Maya had not seen yesterday afternoon when she had left her shift."
+        },
+        {
+          "src": "vol6/vol6_ch12_cosmic.json",
+          "text": "Wren is wearing the canvas overshirt she always wears, which has, on the back, a faded patch from a band Maya has heard of but has never listened to"
         }
       ]
     },
@@ -4890,7 +4902,7 @@
         },
         {
           "src": "vol6/vol6_ch12_porch.json",
-          "text": "The porch light is on. Linda is in the wicker chair — the one she has been in every evening this week, at the careful pace of a seventy-one-year-old whose hip is healed but who does not yet take the healed-ness for granted — with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour."
+          "text": "The porch light is on. Linda is in the wicker chair — the one she has been in every evening this week, at the careful pace of a seventy-one-year-old whose hip is healed but who does not yet take the healed-ness for granted"
         },
         {
           "src": "vol6/vol6_ch21_porch.json",
@@ -4917,7 +4929,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch10_night_shift.json",
-          "text": "The paperback is from 1976, a Penguin Classic edition of The Brothers Karamazov, with a spine that has been creased and re-creased so many times the title is mostly suggestion. He bought it at a bookstore in Beaumont in 1998. He has, in the years since, carried it through three states and two divorces."
+          "text": "The paperback is from 1976, a Penguin Classic edition of The Brothers Karamazov, with a spine that has been creased and re-creased so many times the title is mostly suggestion. He bought it at a bookstore in Beaumont in 1998."
         },
         {
           "src": "vol6/vol6_ch18_stockroom.json",
@@ -4943,12 +4955,12 @@
       "tag": "vol6 · Gallatin Band",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A single sheet of lined notebook paper torn from a spiral pad, folded twice and opened flat, dense handwritten lyrics with crossings-out in two colours of ink, a coffee ring, a chord diagram in the margin.",
-      "texture_prompt": "cream lined paper with torn perforation, black and blue ink, brown coffee ring",
+      "prompt": "A single printed sheet: the lyric sheet for the song Substation Nine, cut from the band's printed flyer — photocopied type on cheap white paper, the song title across the top, the verses set below in plain columns. Folded twice, the way it rode in a shirt's breast pocket, and opened flat on a kitchen table, the creases soft.",
+      "texture_prompt": "cheap white photocopy paper, black printed type, soft fold creases",
       "canon": [
         {
           "src": "vol6/vol6_ch22_foxhole.json",
-          "text": "Jim has, on the table in front of him, a sheet of paper. Jesse, at the kitchen doorway, recognizes the sheet of paper. The sheet of paper is the lyric sheet for Substation Nine that Eileen had brought home for him from the band's printed flyer earlier this week."
+          "text": "The sheet of paper is the lyric sheet for Substation Nine that Eileen had brought home for him from the band's printed flyer earlier this week."
         },
         {
           "src": "vol6/vol6_ch22_foxhole.json",
@@ -4958,7 +4970,8 @@
           "src": "vol6/vol6_ch22_sunday.json",
           "text": "The lyric sheet for Substation Nine is in the breast pocket of the shirt his father is wearing to sleep in."
         }
-      ]
+      ],
+      "notes": " (2026-10-17) The text's sheet is from the band's PRINTED flyer, not handwritten notebook paper; the handwritten lyrics in the scene are a different paper (Jesse's bridge, on the back of an open-mic flyer)."
     },
     {
       "slug": "gracielas_rosary",
@@ -4983,7 +4996,7 @@
         },
         {
           "src": "vol6/vol6_ch1_graciela.json",
-          "text": "Graciela Ramos is in the kitchen at the small round table under the window. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking"
+          "text": "In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking"
         },
         {
           "src": "vol6/vol6_ch23_sleep.json",
@@ -5053,7 +5066,7 @@
         },
         {
           "src": "vol6/vol6_ch14_substation_nine.json",
-          "text": "a small white panel van. The van arrives between one and three AM. The van stays between forty and ninety minutes. The van leaves."
+          "text": "to be visited at night by a small white panel van. The van arrives between one and three AM."
         },
         {
           "src": "vol6/vol6_ch4_kitchen.json",
@@ -6392,6 +6405,39 @@
       "prompt_mode": "append"
     },
     {
+      "slug": "eileen_kazantzakis",
+      "kind": "hero",
+      "name": "Eileen Kazantzakis (Coach K's wife)",
+      "file": "eileen_kazantzakis.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "eileen_kazantzakis"
+      ],
+      "tag": "vol6 ch22 · Coach K's wife · the third row at the Vinton scrimmage · months after the bypass",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Eileen Kazantzakis, 62, Coach K's wife, at a Saturday high-school football scrimmage in East Texas months after heart bypass surgery: slow and careful, private, quietly glad to be there. Gray hair under a faded baseball cap from 1996, jeans, a white short-sleeved blouse, comfortable flat shoes; a small thermos in one hand and a paper fan in the other.",
+      "texture_prompt": "white cotton short-sleeved blouse, blue jeans, faded navy baseball cap, gray hair, small steel thermos, paper fan",
+      "notes": "Not Eileen Henderson: the text says 'There's three Eileens in this town' (vol6_ch19_chains). Hair, age, cap and clothes are canon (vol6_ch22_vinton); the thermos and fan are in the scene.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "She is sixty-two. She had the bypass in March."
+        },
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray."
+        },
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "She climbs the bleacher steps slowly."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
       "slug": "coach_k",
       "kind": "hero",
       "name": "Coach K",
@@ -6408,7 +6454,7 @@
       "aspect": "3:4",
       "pose": "a-pose",
       "texture_prompt": "navy coach's polo, khaki shorts, white sneakers, black lanyard whistle, greying close-cropped hair",
-      "prompt": "Coach K, 50s, a high-school head football coach on a Gulf-coast field, twenty years in. Thick through the chest and shoulders, close-cropped greying hair, a sun-lined face that gives no generic correction. A navy Vinton Athletics coach's polo tucked into khaki coach's shorts, white sneakers, a whistle on a black lanyard, a laminated depth chart folded in one hand.",
+      "prompt": "Coach K, 50s, a high-school head football coach on a Gulf-coast field, twenty years in. Thick through the chest and shoulders, close-cropped greying hair, a sun-lined face that gives no generic correction. A navy New Auburn High School coach's polo tucked into khaki coach's shorts, white sneakers, a whistle on a black lanyard, a laminated depth chart folded in one hand.",
       "canon": [
         {
           "src": "vol6/vol6_ch13_two_a_days.json",
@@ -6416,7 +6462,7 @@
         },
         {
           "src": "vol6/vol6_ch19_chains.json",
-          "text": "Coach K is in his bed beside Eileen. Eileen is asleep. Coach K is not."
+          "text": "In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen."
         },
         {
           "src": "vol6/vol6_ch22_vinton.json",
@@ -6448,7 +6494,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch19_chains.json",
-          "text": "In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen. Eileen is asleep. Coach K is not. Coach K is lying on his back looking at the ceiling."
+          "text": "Coach K is lying on his back looking at the ceiling, doing the small Friday-night-before-a-game thing he has been doing for twenty years, which is going through the depth chart in his head and double-checking that the choices he made are the choices he stands by."
         }
       ],
       "base": "coach_k",
@@ -6555,7 +6601,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch17_table.json",
-          "text": "the scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose."
+          "text": "She is in the specific clean scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose."
         }
       ],
       "base": "anita_kowalski",
@@ -6625,7 +6671,7 @@
         },
         {
           "src": "vol6/vol6_ch8_kowalski_kitchen.json",
-          "text": "Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen."
+          "text": "Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen and is going to need, going forward, to be observed at all meals."
         }
       ],
       "prompt_mode": "append"
@@ -7062,15 +7108,15 @@
       "keys": [
         "hal"
       ],
-      "tag": "vol6 ch12, ch21 · behind the Cosmic Comics counter · sixties, white beard, Hawaiian shirt · calls Thursdays",
+      "tag": "vol6 ch2 · owner of The Bindery, the bookshop on Live Oak Street · sixties, white beard, Hawaiian shirt · calls Thursdays",
       "aspect": "3:4",
       "pose": "a-pose",
       "texture_prompt": "loud Hawaiian shirt, black t-shirt, cargo shorts, sandals, full white beard, glasses on a cord",
-      "prompt": "Hal, 60s, the man behind the Cosmic Comics counter. Big, soft, a full white beard, glasses on a cord. A loud Hawaiian shirt open over a black t-shirt, cargo shorts, sandals, a hardcover held open in one hand.",
+      "prompt": "Hal, 60s, the owner of The Bindery, a narrow bookshop on Live Oak Street in New Auburn. Big, soft, a full white beard, glasses on a cord. A loud Hawaiian shirt open over a black t-shirt, cargo shorts, sandals, a hardcover held open in one hand.",
       "canon": [
         {
-          "src": "vol6/vol6_ch21_cosmic.json",
-          "text": "A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of some"
+          "src": "vol6/vol6_ch2_bindery.json",
+          "text": "A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese — looks up."
         },
         {
           "src": "vol6/vol6_ch12_cosmic.json",
@@ -7760,7 +7806,7 @@
       "canon": [
         {
           "src": "vol6/vol6_ch0_prelude.json",
-          "text": "A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating."
+          "text": "A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating in March."
         }
       ],
       "prompt_mode": "append",
@@ -14641,7 +14687,7 @@
         "school_field_evening_depthchart"
       ],
       "tag": "picture · school_field_evening · 0.15 x 0.21 m · 391 lines play here, 10 mention it",
-      "prompt": "Straight-on view of a single printed sheet of paper pinned with a red pushpin: a Texas high-school football depth chart. Plain office printout, black Times-style type: header NEW AUBURN FOOTBALL · DEPTH CHART · VINTON SCRIMMAGE, then twenty-two starters listed by position in two columns (offense and defense), each with a backup name in parentheses beneath. Mid-column, legible: TE-1 ACHTERBERG with (LeBlanc) below it. Fresh white sheet (RGB 235,230,209), slight humidity ripple, portrait letter format, evenly lit.",
+      "prompt": "Straight-on view of a single printed sheet of paper pinned with a red pushpin: a Texas high-school football depth chart. Plain office printout, black Times-style type: header NEW AUBURN FOOTBALL · DEPTH CHART · VINTON SCRIMMAGE, then twenty-two starters listed by position in two columns (offense and defense), each with a backup name in parentheses beneath. Mid-column, legible: TE-1 KOWALSKI with (LeBlanc) below it. Fresh white sheet (RGB 235,230,209), slight humidity ripple, portrait letter format, evenly lit.",
       "canon": [
         {
           "src": "godot/resources/scenes/vol6/vol6_ch19_depthchart.json",
@@ -14653,7 +14699,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch19 prose (format, TE-1, LeBlanc). Ben's surname taken from vol6_ch0 ('Ben Achterberg'); confirm the TE is the same Ben (the Kowalski scenes call his family Kowalski). Header wording invented.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch19 prose (format, TE-1, LeBlanc). Ben's surname is Kowalski (vol6_ch0's lone 'Achterberg' corrected 2026-10-17). Header wording invented.",
       "art_cat": "PICTURE",
       "score_lines": 391,
       "score_mentions": 10,
@@ -14676,7 +14722,7 @@
           ]
         }
       ],
-      "lettering": "NEW AUBURN FOOTBALL · DEPTH CHART · VINTON SCRIMMAGE · TE-1 ACHTERBERG (LeBlanc)",
+      "lettering": "NEW AUBURN FOOTBALL · DEPTH CHART · VINTON SCRIMMAGE · TE-1 KOWALSKI (LeBlanc)",
       "inspect": true
     },
     {
@@ -31535,7 +31581,7 @@
       "prompt": "Full-screen content of an aging desktop monitor in the back office of a small family diner in 2026: a plain spreadsheet window titled PIT STOP — WEEKLY ORDER, columns for ITEM, VENDOR, PAR, ON HAND, ORDER (eggs, bacon, hash browns, coffee, to-go cups), a few cells highlighted yellow, an email notification in the corner. Dim, slightly green-tinted dark background (RGB 20,36,31) as if the brightness is turned down, a faint dust film. 4:3, no bezel, evenly lit.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Inferred: builder 'CRT monitor' on Ben Achterberg's desk; no prose describes the screen. Content invented.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Inferred: builder 'CRT monitor' on Ben Kowalski's desk; no prose describes the screen. Content invented.",
       "art_cat": "SCREEN",
       "score_lines": 30,
       "score_mentions": 0,
