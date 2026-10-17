@@ -253,6 +253,9 @@ back to the defaults in every other table. Grep for `5:` / `"5"` beside
   box's height, reading size, column and auto-fit; colours, faces, border
   and tape stay theirs. Check with `tools/VNTypeSpecimen.tscn --skin
   signal|zine` at one short and one long passage.
+- **A chapter's plate is keyed by the chapter, not by a variant number** (the user: "each
+  chapter gets a plate"). `ChapterCard.chapter_key()` and `scene2d_draft.chapter_key()` must
+  agree. When either changes, rerun the comparison over every chapter value in the scenes.
 - `.import` files are gitignored by pattern (`godot/**/*.import`); the
   chapter plates' are force-added so a run without the editor still finds
   them (`git add -f`).

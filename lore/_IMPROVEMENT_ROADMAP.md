@@ -3834,6 +3834,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 113: A PLATE FOR EVERY CHAPTER; A SLOT FOR EVERY VOLUME'S CREDITS.** The
+user: "chapter plates should probably go to 2D hero assets", "each chapter gets a plate", and "I
+will probably add opening and closing credit movies to every volume with their own title
+sequences."
+- **136 chapter plates** are Hero Studio `scene2d` entries with role `plate` (vols 1–4: 66 from
+  the vols 1–4 branch; vols 5–7: 70). Each installs at
+  `assets/vn/plates/chapter_v<N>_<key>.jpg`, keyed by `ChapterCard.chapter_key()`: `ch07` for a
+  numbered or roman chapter, `ch_<name>` otherwise. The Python mirror is checked against the
+  GDScript for all 45 chapter values. `scene2d_draft.py --plates` drafts them (the volume's paper
+  and inks, one faint motif, the chapter's opening lines as canon). The card shows the chapter's
+  painted plate when it is installed, else the volume's generated sheet (gen_chapter_plates.py,
+  now the fallback).
+- **Volume credits:** `assets/video/vol<N>/opening.ogv` plays when a volume is begun from its
+  first page and when the story crosses into it. `closing.ogv` plays when it is left, and at the
+  end of the book. Both play full screen over the black veil, can be skipped, and are a no-op
+  while the file is absent (`IntroMovie.volume_video`, `GameEngine._play_volume_movie`).
+
+DRAFT 2 targets:
+- Read the 136 plate drafts in Hero Studio and pick each one's motif before spending credits.
+- When the first credit movie lands: make it with `install_intro_video.sh` into
+  `assets/video/vol<N>/`, then check the hand-off from the movie into the chapter card on the Deck.
+  This container has no Theora encoder, so the hook has only run with no file present.
+- Whether the menu's "begin volume" should play the opening is the user's call. It does now.
+
 **2026-10-17 · pass 112: VOLS 1–4 VN UI TO THE 5–7 STANDARD (draft 1).** The user: "vol
 1-4 visual novel UIs need to be brought up to 5-7 standard." A survey found eight per-volume
 features that vols 5–7 have and vols 1–4 did not. All eight are fixed on this branch without

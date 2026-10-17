@@ -21,6 +21,9 @@ signal finished
 const INTRO_VIDEO := "res://assets/video/intro/modernmythology1.ogv"
 const SKIP_GRACE_S := 0.4
 
+## (2026-10-17) Which movie: the opening by default; GameEngine sets a
+## volume's credits here (volume_video) before adding the node.
+var video_path: String = INTRO_VIDEO
 var _player: VideoStreamPlayer = null
 var _t: float = 0.0
 var _done: bool = false
@@ -28,8 +31,8 @@ var _done: bool = false
 
 ## The intro's stream, or null when the file is not on this machine.
 ## Shared with the pause menu's background loop.
-static func make_stream() -> VideoStream:
-	var abs_path: String = ProjectSettings.globalize_path(INTRO_VIDEO)
+static func make_stream(path: String = INTRO_VIDEO) -> VideoStream:
+	var abs_path: String = ProjectSettings.globalize_path(path)
 	if not FileAccess.file_exists(abs_path):
 		return null
 	var st := VideoStreamTheora.new()
@@ -37,8 +40,17 @@ static func make_stream() -> VideoStream:
 	return st
 
 
-static func available() -> bool:
-	return FileAccess.file_exists(ProjectSettings.globalize_path(INTRO_VIDEO))
+static func available(path: String = INTRO_VIDEO) -> bool:
+	return FileAccess.file_exists(ProjectSettings.globalize_path(path))
+
+
+## A volume's credit movie (2026-10-17, the user: "I will probably add
+## opening and closing credit movies to every volume with their own title
+## sequences"): assets/video/vol<N>/opening.ogv and closing.ogv, Theora
+## like the intro (install_intro_video.sh makes one from an .mp4). Absent
+## → the engine skips it.
+static func volume_video(vol: int, which: String) -> String:
+	return "res://assets/video/vol%d/%s.ogv" % [vol, which]
 
 
 func _ready() -> void:
@@ -49,7 +61,7 @@ func _ready() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
-	var st: VideoStream = make_stream()
+	var st: VideoStream = make_stream(video_path)
 	if st == null:
 		_finish.call_deferred()
 		return

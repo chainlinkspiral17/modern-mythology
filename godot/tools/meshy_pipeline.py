@@ -90,7 +90,11 @@ OUT_DIRS = {
     # there as a 1920-wide JPEG (GameEngine reads it straight off disk).
     "scene2d": REPO / "assets",
 }
-SCENE2D_FILE = re.compile(r"^(backgrounds|cg)/[a-z0-9_]+\.jpg$")
+# (2026-10-17, the user: "chapter plates should probably go to 2D hero
+# assets", then "each chapter gets a plate") — a chapter plate is a scene2d
+# too: vn/plates/chapter_v<N>_<chapter key>.jpg (ChapterCard.chapter_key),
+# which the card prefers over the volume's generated .png sheets.
+SCENE2D_FILE = re.compile(r"^((backgrounds|cg)/[a-z0-9_]+|vn/plates/chapter_v\d+_(\d+|ch\d+|ch_[a-z0-9_]+))\.jpg$")
 SCENE2D_MAX_W = 1920
 SCENE2D_QUALITY = 86
 ART_EXTS = (".png", ".jpg", ".jpeg", ".webp")
@@ -448,6 +452,7 @@ GIT_SAVE_PATHS = [
     "godot/assets/art/hero",
     "godot/assets/backgrounds",          # SCENE2D pictures (tracked, like the CG)
     "godot/assets/cg",
+    "godot/assets/vn/plates",            # SCENE2D chapter plates
     "godot/assets/concept/meshy",
     "godot/assets/concept/scenes",
     "godot/tools/meshy_roster.json",
@@ -1368,7 +1373,8 @@ def load_roster(path=ROSTER_PATH):
                     sys.exit(f"roster entry {e['slug']}: apply rows need locale, center [x,y,z], size [w,h], facing in {ART_FACINGS}")
         elif e["kind"] == "scene2d":
             if not SCENE2D_FILE.match(e["file"]):
-                sys.exit(f"roster entry {e['slug']}: a scene2d file is backgrounds/<stem>.jpg or cg/<stem>.jpg")
+                sys.exit(f"roster entry {e['slug']}: a scene2d file is backgrounds/<stem>.jpg, cg/<stem>.jpg "
+                         f"or vn/plates/chapter_v<N>_<chapter key>.jpg")
         elif not e["file"].endswith(".glb"):
             sys.exit(f"roster entry {e['slug']}: file must end in .glb")
         e.setdefault("vol", [])
@@ -2024,6 +2030,8 @@ def build_prompt(roster, entry, view="front", provider=None):
     view instruction. Runway's promptText is capped at 1000 chars, so for
     it the short preamble is used and the quotes are trimmed to fit."""
     style_key = entry["kind"]
+    if entry["kind"] == "scene2d" and entry.get("role") == "plate":
+        style_key = "plate"          # an endpaper, not a scene: its own preamble
     if provider == "runway":
         style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
         style = styled(roster, entry, style)
@@ -2048,7 +2056,7 @@ def build_prompt(roster, entry, view="front", provider=None):
 
 def _role_text(roster, entry):
     """A scene2d picture is a background or a CG: style.scene2d_<role>."""
-    if entry["kind"] != "scene2d":
+    if entry["kind"] != "scene2d" or entry.get("role") == "plate":
         return ""
     return roster["style"].get("scene2d_" + (entry.get("role") or "bg"), "").strip()
 

@@ -17,6 +17,13 @@ It never overwrites: a stem that already has an entry is skipped, so a hand-
 edited entry survives a re-run after the text changes.
 
     python3 godot/tools/scene2d_draft.py --scenes DIR [--vols 1,2,3,4] [--dry-run]
+    python3 godot/tools/scene2d_draft.py --plates --scenes DIR --vols 5,6,7
+
+--plates (2026-10-17, the user: "each chapter gets a plate") drafts one
+chapter plate per chapter instead: the endpaper behind its chapter card,
+in the volume's palette, carrying one faint motif from the chapter; canon
+= the chapter's opening narration. The file key matches
+ChapterCard.chapter_key().
 
 DIR is a scenes folder (…/resources/scenes); see vol_assets.py.
 """
@@ -78,6 +85,83 @@ def ref_files(ref):
     return {p[len("godot/"):] for p in out}
 
 
+ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
+# the volume's paper and inks — the generated sheets' palette
+# (tools/sprites/gen_chapter_plates.py) and the volume's trip register
+PLATE_PALETTE = {
+    1: "oxblood and wine-dark paper, rose-grey ink, a trace of old gold",
+    2: "sea-fog slate and grey-green paper, a heron-blue ink",
+    3: "desert-ochre pulp newsprint, a transmission-teal ink",
+    4: "toner-grey copier paper, one scan-bar pink ink, photocopy speckle",
+    5: "bayou-brown paper, sodium-amber and brass inks",
+    6: "cool slate-blue paper, darkroom inks, one risograph pink and one teal",
+    7: "cedar green-grey paper, a bowl-brass ink",
+}
+
+
+def chapter_key(ch):
+    """Mirror of ChapterCard.chapter_key()."""
+    s = str(ch).strip()
+    if isinstance(ch, (int, float)) or re.fullmatch(r"[+-]?\d+", s):
+        return "ch%02d" % abs(int(float(s)))
+    up = s.upper()
+    if up and all(c in ROMAN for c in up):
+        total = 0
+        for i, c in enumerate(up):
+            v = ROMAN[c]
+            total += -v if i + 1 < len(up) and ROMAN[up[i + 1]] > v else v
+        return "ch%02d" % total
+    return "ch_" + "".join(c if ("a" <= c <= "z" or "0" <= c <= "9") else "_" for c in s.lower())
+
+
+def draft_plates(a, vols, roster, have):
+    """One plate per chapter, grouped the way SceneDataDB.get_volume_chapters
+    groups them (index order; a type=chapter scene names the chapter)."""
+    index = json.loads((Path(a.scenes) / "index.json").read_text())
+    out = []
+    for v in vols:
+        firsts, order = {}, []
+        for sid in index.get(str(v), []):
+            f = Path(a.scenes) / f"vol{v}" / f"{sid}.json"
+            if not f.exists():
+                continue
+            d = json.loads(f.read_text())
+            ch = d.get("chapter")
+            if ch is None:
+                continue
+            k = str(ch)
+            if k not in firsts:
+                firsts[k] = (d, f)
+                order.append(k)
+            elif d.get("type") == "chapter" and firsts[k][0].get("type") != "chapter":
+                firsts[k] = (d, f)
+        for k in order:
+            d, f = firsts[k]
+            key = chapter_key(d.get("chapter"))
+            slug = f"plate_v{v}_{key}"
+            if slug in have:
+                continue
+            title = (d.get("title") or "").strip()
+            nodes = d.get("nodes") or []
+            idxs = [i for i, n in enumerate(nodes) if n.get("t") in ("narrate", "interlude")][:6]
+            quotes = quote_list(nodes, idxs, f"vol{v}/{f.name}")[:3]
+            label = f"chapter {d.get('chapter')}" + (f" — {title}" if title else "")
+            out.append({
+                "slug": slug, "kind": "scene2d", "name": f"the plate of vol {v}, {label}",
+                "file": f"vn/plates/chapter_v{v}_{key}.jpg", "vol": [v], "keys": [slug],
+                "tag": f"vol{v} · PLATE · behind the card of {label}",
+                "aspect": "16:9", "pose": None, "role": "plate", "scenes": [d.get("id") or f.stem],
+                "prompt": f"An endpaper of {PLATE_PALETTE.get(v, 'hand-made paper and one ink')}, for {label}. "
+                          "One motif from the chapter, faint, half-dissolved into the marbling.",
+                "prompt_mode": "append", "canon": quotes,
+                "notes": "PLATE DRAFT (scene2d_draft.py --plates, 2026-10-17; the user: 'each chapter gets a plate'). "
+                         "The quotes are the chapter's opening lines; pick the one motif the plate should carry and "
+                         "cut the rest before spending credits. Until it is installed the card shows the volume's "
+                         "generated sheet.",
+            })
+    return out
+
+
 def humanize(stem):
     s = re.sub(r"^vol\d+_", "", stem)
     m = re.match(r"scumm_(.+?)(_vga)?$", s)
@@ -102,12 +186,20 @@ def main():
     ap.add_argument("--assets-ref", default="origin/claude/vol1-4-source-text",
                     help="a git ref whose assets count as present ('' for none)")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--plates", action="store_true", help="draft one chapter plate per chapter instead")
     a = ap.parse_args()
     vols = [int(v) for v in a.vols.split(",") if v.strip()]
     text = ROSTER.read_text()
     roster = json.loads(text)
     have = {e["slug"] for e in roster["entries"]}
     places = json.loads(BG_PLACES.read_text()).get("places", {})
+    if a.plates:
+        new = draft_plates(a, vols, roster, have)
+        print(f"scene2d_draft --plates · {len(new)} new plate entr{'y' if len(new) == 1 else 'ies'} for vols {vols}")
+        if new and not a.dry_run:
+            roster["entries"].extend(new)
+            ROSTER.write_text(json.dumps(roster, indent=2, ensure_ascii=False) + "\n")
+        return 0
     elsewhere = ref_files(a.assets_ref)
     drafts = {}
     for v in vols:

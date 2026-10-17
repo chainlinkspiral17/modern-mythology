@@ -8,6 +8,7 @@ const CHOICE_SCENE    := preload("res://scenes/game/ChoiceMenu.tscn")
 const CHAR_SCENE      := preload("res://scenes/game/CharLayer.tscn")
 const INTERLUDE_SCENE := preload("res://scenes/game/InterludePanel.tscn")
 const CG_SCENE        := preload("res://scenes/game/CgPanel.tscn")
+const MOVIE_SCRIPT    := preload("res://scenes/menu/IntroMovie.gd")
 const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
@@ -354,6 +355,10 @@ func start(vol: int, scene_id: String = "", slot: int = -1, start_node: int = 0)
 	# Open on black; the first scene arrives through its chapter card
 	# (fresh sessions always deserve the plate) or a fade-in.
 	_set_veil(1.0)
+	# A volume begun from its first page opens with its credits.
+	var first: Dictionary = SceneDataDB.get_first_scene(vol)
+	if start_node == 0 and scene_id == String(first.get("id", "")):
+		await _play_volume_movie(vol, "opening")
 	_load_scene(scene_id, start_node)
 	var sc := SceneDataDB.get_scene(scene_id)
 	if start_node == 0 and String(sc.get("title", "")).strip_edges() != "":
@@ -2122,6 +2127,8 @@ func _end_scene() -> void:
 	if next == "":
 		AudioMgr.unduck()
 		AudioMgr.stop_scene_bgm()
+		await _fade_veil_in(0.3)
+		await _play_volume_movie(_vol, "closing")
 		if _director != null:
 			_director.call("release")
 		_set_vn_focus(false)
@@ -2159,11 +2166,38 @@ func _change_scene(next: String) -> void:
 		_producer.call("scene_out_black")
 	if _director != null:
 		_director.call("release")
+	# Crossing into another volume: the one ending rolls its closing
+	# credits and the next its opening, at full black.
+	if next_vol != prev_vol:
+		await _play_volume_movie(prev_vol, "closing")
+		await _play_volume_movie(next_vol, "opening")
 	_load_scene(next)
 	if chapter_break and titled:
 		_present_chapter_card(next_scene)
 	else:
 		_fade_veil_out(0.45)
+
+
+# ── Volume credits (2026-10-17) ─────────────────────────────────
+# The user: "I will probably add opening and closing credit movies to
+# every volume with their own title sequences." A volume's movie plays
+# full screen over the black veil (input is already locked there) and
+# returns when it ends or is skipped; with no file on this machine it
+# returns at once, so nothing changes until the movies land.
+func _play_volume_movie(vol: int, which: String) -> void:
+	var path: String = MOVIE_SCRIPT.volume_video(vol, which)
+	if not MOVIE_SCRIPT.available(path):
+		return
+	var layer := CanvasLayer.new()
+	layer.layer = 110
+	layer.add_to_group("game_surface")      # not HUD: F4 leaves it alone
+	add_child(layer)
+	var movie := Control.new()
+	movie.set_script(MOVIE_SCRIPT)
+	movie.set("video_path", path)
+	layer.add_child(movie)
+	await movie.finished
+	layer.queue_free()
 
 
 # ── Transition machinery ────────────────────────────────────────

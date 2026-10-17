@@ -530,7 +530,7 @@ function renderRoster() {
   let last = null;
   for (const e of entries) {
     const vols = (e.base ? (bySlug[e.base]?.vol || e.vol) : e.vol) || [];
-    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'art' ? `art (pictures on surfaces) · vol ${vols.join(',')}` : e.kind === 'scene2d' ? `pictures (${e.role === 'cg' ? 'CG' : 'backgrounds'}) · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
+    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'art' ? `art (pictures on surfaces) · vol ${vols.join(',')}` : e.kind === 'scene2d' ? `pictures (${e.role === 'cg' ? 'CG' : e.role === 'plate' ? 'chapter plates' : 'backgrounds'}) · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
     if (grp !== last) { const h = document.createElement('div'); h.className = 'group-hdr'; h.textContent = grp; list.appendChild(h); last = grp; }
     const c = document.createElement('div');
     c.className = 'card' + (e.slug === state.selected ? ' selected' : '') + (e.base ? ' look' : '');
@@ -606,7 +606,8 @@ function select(slug) {
   $('e-tag').textContent = [e.kind, ...(e.vol || []).map(v => 'vol' + v), e.tag].filter(Boolean).join(' · ');
   $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}` + (e.kind === 'art'
     ? `  ·  ${(e.size || [0, 0]).map(v => (+v).toFixed(2)).join(' × ')} m (aspect ${e.aspect})  →  laid on: ` + (e.apply || []).map(r => `${r.locale} (${r.label || r.facing})`).join(', ')
-    : e.kind === 'scene2d' ? `  ·  ${e.role === 'cg' ? 'CG' : 'background'}, ${e.aspect}  →  shown in: ${(e.scenes || []).join(', ')}` : '');
+    : e.kind === 'scene2d' ? (e.role === 'plate' ? `  ·  chapter plate, ${e.aspect}  →  behind vol ${(e.vol || []).join(',')}'s chapter cards`
+      : `  ·  ${e.role === 'cg' ? 'CG' : 'background'}, ${e.aspect}  →  shown in: ${(e.scenes || []).join(', ')}`) : '');
   // ART (2026-10-12) / SCENE2D (2026-10-17): the picture IS the deliverable — no Meshy, the make step installs it
   $('btn-mesh').textContent = isPicture(e) ? 'Install picture' : 'Make 3D';
   $('btn-run').textContent = isPicture(e) ? 'Generate image → Install picture' : 'Generate image → Make 3D';
