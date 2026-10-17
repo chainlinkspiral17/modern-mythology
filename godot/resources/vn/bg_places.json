@@ -6,7 +6,8 @@
   "fit: exact (the place) · reuse (an existing set that is this kind of place) · standin (the nearest",
   "set until its 'build' locale exists) · 2d (stays a picture; to: null until it is painted).",
   "When a build group's locale lands, point its stems at the new presets and change fit to exact.",
-  "Plan and priorities: lore/_VOL1_4_SETS_AND_CAST.md."
+  "Plan and priorities: lore/_VOL1_4_SETS_AND_CAST.md.",
+  "by_scene (2026-10-17): {scene_id: '3d:<preset>'} picks a different view of the same place for one scene (the sleep lab at work vs. at night)."
  ],
  "places": {
   "vol1_above_the_record": {
@@ -953,10 +954,15 @@
    "scenes": 1
   },
   "vol3_four_screen_room": {
-   "fit": "standin",
-   "to": "3d:hospital_room",
+   "fit": "exact",
+   "to": "3d:four_screens_show",
    "build": "sleep_lab",
-   "scenes": 2
+   "scenes": 2,
+   "built": "2026-10-17 draft 1",
+   "note": "the gallery's back room: the chair island, four walls lit; meld_seam_2_3 is the dark and the beam",
+   "by_scene": {
+    "meld_seam_2_3": "3d:four_screens_beam"
+   }
   },
   "vol3_gas_station_night": {
    "fit": "reuse",
@@ -1203,11 +1209,17 @@
    "scenes": 1
   },
   "vol3_sleep_lab": {
-   "fit": "standin",
-   "to": "3d:hospital_room",
+   "fit": "exact",
+   "to": "3d:sleep_lab_entry",
    "build": "sleep_lab",
-   "note": "Jane's sleep study",
-   "scenes": 3
+   "note": "Jane's sleep study: the two beds, the bookshelf between, the black curtain round the computer",
+   "scenes": 3,
+   "built": "2026-10-17 draft 1",
+   "by_scene": {
+    "vol3_ch6_jane": "3d:sleep_lab_desk",
+    "vol3_ch6_binder": "3d:sleep_lab_night",
+    "meld_seam_3_4": "3d:sleep_lab_night"
+   }
   },
   "vol3_spencer_room": {
    "fit": "standin",

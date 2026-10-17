@@ -189,7 +189,9 @@ def main():
                 elif src and not exists(src):
                     # (2026-10-17) GameEngine.resolve_bg plays a stem that
                     # bg_places.json maps to a 3D set instead of the picture
-                    to = str((bg_places.get(os.path.splitext(os.path.basename(src))[0]) or {}).get("to") or "")
+                    # by_scene: one stem, a different view per scene
+                    place = bg_places.get(os.path.splitext(os.path.basename(src))[0]) or {}
+                    to = str((place.get("by_scene") or {}).get(sid) or place.get("to") or "")
                     if to.startswith("3d:"):
                         if to[3:] not in presets:
                             problems.append((where, "bg %s maps to 3d preset '%s', not in "

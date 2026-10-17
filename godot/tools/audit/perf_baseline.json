@@ -46,6 +46,11 @@
  "salty_tome_interior": {
   "draw": 402
  },
+ "sleep_lab": {
+  "draw": 348,
+  "prims": 31240,
+  "objects": 518
+ },
  "small_wood_high": {
   "draw": 236,
   "prims": 128644,

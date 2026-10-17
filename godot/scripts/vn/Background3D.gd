@@ -2886,6 +2886,63 @@ const CAMERA_PRESETS := {
 		"fov": 72.0,
 		"suppress_input": true,
 	},
+	"sleep_lab_entry": {
+		"scene": "res://scenes/locales/sleep_lab.tscn",
+		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
+		# "The sleep study room is a small office with two beds." — from the door, the curtain in the far corner
+		"camera_origin": Vector3(-1.35, 1.6, -0.55),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-29.5), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"sleep_lab_desk": {
+		"scene": "res://scenes/locales/sleep_lab.tscn",
+		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
+		# "The test is done on the computer." — seated at the test desk, Kermit on the CRT; Jane's side frame-right
+		"camera_origin": Vector3(1.05, 1.18, -1.05),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-50.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"sleep_lab_night": {
+		"scene": "res://scenes/locales/sleep_lab.tscn",
+		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
+		# "curtain glow" — 3 a.m. from Bed_A, the bookshelf between the beds, the curtain lit from behind
+		"camera_origin": Vector3(-1.25, 0.95, -3.1),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-66.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.30, 0.34, 0.48, 1), "ambient_energy": 0.12, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		"suppress_input": true,
+	},
+	"four_screens_wide": {
+		"scene": "res://scenes/locales/sleep_lab.tscn",
+		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
+		# "We are locked in a large room, each wall taller than normal. White." — high in a corner over the chair island
+		"camera_origin": Vector3(32.4, 5.6, -1.4),
+		"camera_rotation": Vector3(-0.42, deg_to_rad(-45.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"four_screens_show": {
+		"scene": "res://scenes/locales/sleep_lab.tscn",
+		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
+		# "It is cinema on four screens, all at once." — seated in the island, one wall full-frame, its neighbours at the edges
+		"camera_origin": Vector3(40.6, 1.3, -8.4),
+		"camera_rotation": Vector3(0.12, deg_to_rad(0.0), 0.0),
+		"fov": 60.0,
+		"env": {"ambient_color": Color(0.40, 0.40, 0.46, 1), "ambient_energy": 0.22, "fog_color": Color(0.10, 0.10, 0.12, 1)},
+		"suppress_input": true,
+	},
+	"four_screens_beam": {
+		"scene": "res://scenes/locales/sleep_lab.tscn",
+		"requires_glb": "res://assets/3d/locales/sleep_lab.glb",
+		# "Then a beam came down out of the dark at a slant, from very high up" — meld_seam_2_3 only: the room black, the stalk's eyes
+		"camera_origin": Vector3(36.0, 1.0, -16.5),
+		"camera_rotation": Vector3(0.20, deg_to_rad(-107.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.20, 0.20, 0.26, 1), "ambient_energy": 0.05, "fog_color": Color(0.02, 0.02, 0.03, 1)},
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

@@ -1229,7 +1229,7 @@ static var _bg_places: Dictionary = {}
 static var _bg_places_loaded: bool = false
 
 
-static func resolve_bg(src: String) -> String:
+static func resolve_bg(src: String, scene_id: String = "") -> String:
 	if src == "" or src.begins_with("3d:"):
 		return src
 	if not _bg_places_loaded:
@@ -1243,6 +1243,13 @@ static func resolve_bg(src: String) -> String:
 	var entry: Variant = _bg_places.get(stem, null)
 	if typeof(entry) != TYPE_DICTIONARY:
 		return src
+	# by_scene: one stem, different views per scene (the sleep lab at work
+	# vs. at night) — {"by_scene": {"<scene_id>": "3d:<preset>"}}
+	var by_scene: Variant = (entry as Dictionary).get("by_scene", null)
+	if scene_id != "" and typeof(by_scene) == TYPE_DICTIONARY:
+		var override: Variant = (by_scene as Dictionary).get(scene_id, null)
+		if typeof(override) == TYPE_STRING and String(override) != "":
+			return String(override)
 	var to: Variant = (entry as Dictionary).get("to", null)
 	if typeof(to) == TYPE_STRING and String(to) != "":
 		return String(to)
@@ -1250,7 +1257,7 @@ static func resolve_bg(src: String) -> String:
 
 
 func _place_of(src: String) -> String:
-	src = resolve_bg(src)
+	src = resolve_bg(src, _scene_id)
 	if not src.begins_with("3d:"):
 		return src
 	var presets: Dictionary = BG3D_SCRIPT.CAMERA_PRESETS
@@ -1262,7 +1269,7 @@ func _place_of(src: String) -> String:
 
 
 func _do_bg(n: Dictionary) -> void:
-	var src: String = resolve_bg(_s(n, "src"))
+	var src: String = resolve_bg(_s(n, "src"), _scene_id)
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:
 		_chars.call("hide_all")

@@ -27,6 +27,8 @@ def c(r, g, b):
     return "Color({}, {}, {}, 1)".format(r, g, b)
 
 
+SLEEP_WORK = ("sleep_lab_entry", "sleep_lab_desk")
+NOT_BEAM = "__sleep_lab_entry__sleep_lab_desk__sleep_lab_night__four_screens_wide__four_screens_show"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -120,6 +122,67 @@ CONFIGS = [
         ],
         "mood_strata": ["raw", "memory_warm", "noir", "candlelight",
                         "lithograph", "silent_film_18"],
+    },
+    {
+        # VOL 3's SLEEP LAB (build_sleep_lab.py): a windowless basement
+        # office at Caltech — at work on its floor lamp, desk lamp and the
+        # CRT; after lights-out only the glow from behind the black curtain
+        # and the corridor's light under the shut door. The four-screen
+        # room (x 31..49) shares the file: dim house cans, the four lit
+        # walls, or the dark and one slanting beam (meld_seam_2_3).
+        "out_path": os.path.join(ROOT, "sleep_lab.tscn"),
+        "uid": "uid://sleep_lab_v3",
+        "root_node": "SleepLab",
+        "glb": "res://assets/3d/locales/sleep_lab.glb",
+        "env": {"bg": (0.02, 0.02, 0.03, 1), "amb": (0.34, 0.34, 0.40, 1),
+                "amb_e": 0.30, "fog": (0.10, 0.10, 0.12, 1), "fog_e": 0.2,
+                "fog_d": 0.004, "sat": 0.92, "glow_i": 0.75, "glow_b": 0.12},
+        "shader": {"warm": (0.92, 0.82, 0.62, 1), "bg": (0.05, 0.05, 0.07, 1),
+                   "neon_edge": (0.62, 0.66, 0.78, 1), "neon_lo": (0.22, 0.22, 0.26, 1),
+                   "neon_hi": (0.05, 0.05, 0.07, 1), "lim_tint": (0.52, 0.56, 0.70, 1)},
+        "lights": [
+            # the foundation plays everywhere but the beam (meld_seam_2_3 is black)
+            ("Key_Room" + NOT_BEAM, "DirectionalLight3D", B_KEY_FROM_N.format(0, 6, -8), c(0.70, 0.70, 0.80), 0.08),
+            ("Fill_Room" + NOT_BEAM, "DirectionalLight3D", B_FILL.format(0, 3, -3), c(0.66, 0.60, 0.54), 0.06),
+            ("Back" + NOT_BEAM, "DirectionalLight3D", B_BACK.format(0, 3, 1), c(0.40, 0.42, 0.56), 0.05),
+            # at work: the floor lamp by Bed_A (blender (-2.55, 4.55, 1.40)), the
+            # desk lamp on the test desk, the test CRT's screen
+            *[("Lamp_Floor__" + p, "OmniLight3D", I.format(-2.55, 1.40, -4.55), c(1.0, 0.80, 0.52), 1.4,
+               {"omni_range": 5.0}) for p in SLEEP_WORK],
+            *[("Lamp_Desk__" + p, "OmniLight3D", I.format(2.74, 1.15, -1.32), c(1.0, 0.86, 0.62), 0.9,
+               {"omni_range": 2.8}) for p in SLEEP_WORK],
+            *[("CRT_Glow__" + p, "OmniLight3D", I.format(2.30, 0.98, -2.20), c(0.62, 0.74, 0.86), 0.5,
+               {"omni_range": 1.8}) for p in SLEEP_WORK],
+            # the corridor's tubes through the open door (work) or under it (night)
+            *[("Fluor_Corr_1__" + p, "OmniLight3D", I.format(-1.0, 2.45, 1.35), c(0.92, 0.96, 0.92), 1.2,
+               {"omni_range": 5.0}) for p in SLEEP_WORK],
+            ("Door_Spill__sleep_lab_night", "OmniLight3D", I.format(-1.30, 0.05, -0.25), c(0.86, 0.92, 0.88), 0.45,
+             {"omni_range": 1.3}),
+            # behind the curtain, always: the Sun's CRT (blender (2.09, 4.64, 1.03))
+            ("Curtain_Glow", "OmniLight3D", I.format(2.10, 1.05, -4.30), c(0.56, 0.66, 0.92), 0.9,
+             {"omni_range": 4.2}),
+            # the four-screen room: the house cans (wide), the four lit walls (show)
+            *[("House_Light_{}__four_screens_wide".format(k), "OmniLight3D", I.format(x, 6.4, -y), c(1.0, 0.86, 0.66), 2.4,
+               {"omni_range": 15.0}) for k, (x, y) in enumerate(((35.0, 5.0), (45.0, 5.0), (35.0, 13.0), (45.0, 13.0)))],
+            ("Screen_N_Glow__four_screens_show", "OmniLight3D", I.format(40.0, 3.5, -15.6), c(0.96, 0.80, 0.60), 1.8,
+             {"omni_range": 15.0}),
+            ("Screen_E_Glow__four_screens_show", "OmniLight3D", I.format(46.6, 3.5, -9.0), c(0.96, 0.62, 0.46), 1.2,
+             {"omni_range": 12.0}),
+            ("Screen_W_Glow__four_screens_show", "OmniLight3D", I.format(33.4, 3.5, -9.0), c(0.56, 0.80, 0.66), 1.0,
+             {"omni_range": 12.0}),
+            ("Screen_S_Glow__four_screens_show", "OmniLight3D", I.format(40.0, 3.5, -2.4), c(0.56, 0.66, 0.96), 1.0,
+             {"omni_range": 12.0}),
+            # (a Transform3D's nine basis numbers are ROWS: x.x, y.x, z.x, x.y, …)
+            # meld_seam_2_3: the beam at a slant from the stalk's head (blender (43.6, 13.5, 5.7))
+            # to the open floor north of the island (40.0, 15.6); its eyes, lit from
+            # the camera's side of the head so they read as points
+            ("Stalk_Beam__four_screens_beam", "SpotLight3D", "Transform3D(0.505, -0.680, 0.531, 0.000, 0.615, 0.788, -0.863, -0.399, 0.311, 43.500, 5.200, -13.550)",
+             c(1.0, 0.94, 0.80), 9.0, {"spot_range": 10.0, "spot_angle": 12.0}),
+            ("Stalk_Eyes__four_screens_beam", "OmniLight3D", I.format(43.0, 5.0, -13.8), c(1.0, 0.90, 0.66), 1.6,
+             {"omni_range": 1.5}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph",
+                        "candlelight", "silent_film_18"],
     },
 ]
 
