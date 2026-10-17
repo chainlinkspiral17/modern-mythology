@@ -3879,6 +3879,21 @@ chapter contents, evoke, get details close to right, and have them be fitting ch
   written. 24 quotes are refreshed to the current text, never to a different subject. Four
   descriptions now match it: Hal owns The Bindery; Coach K wears New Auburn High's polo, not
   Vinton's; Wren's patch is on the back; the lyric sheet is printed.
+- **Vols 5 and 7, the same check:** 36 more drifted quotes refreshed (the prose had been split
+  into more nodes). Eleven descriptions corrected to the text:
+  - Miriam's loose braid;
+  - Frasier's leather bomber;
+  - Kai's grandmother's wool sweater;
+  - the napkin folded into a near-flower, with no writing;
+  - the Polaroid of Houston Street, June 2009;
+  - the spoon-and-motherboard riverboat in its sealed case (its label as lettering);
+  - the cedar bowl: two cupped hands, the spiral outside, a carved face inside;
+  - the portal door: unmarked, with a six-inch window;
+  - the old man at a basalt tide pool;
+  - the cracked 2034 Tess Mariana, which is Mateo's father's board;
+  - Jameson, 16.
+- **Jameson's age:** vol 7 spans weeks, so ch16's "eighteen now" (ch2: sixteen) is now sixteen.
+- Every scene quote in the roster (1,490) is verbatim within a single passage of the current text.
 
 **2026-10-17 · pass 115: TWO VOLS 1–4 SETS — THE LINK HOUSE AND THE SMALL WOOD RANCH (draft 1).**
 The user: "go ahead and start working on backgrounds for vol 1-4 as needed." These were the two

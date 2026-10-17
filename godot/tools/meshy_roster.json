@@ -141,12 +141,12 @@
       "tag": "I The Magician · Cathedral of Rust & Code",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Frasier Temple, young Black man in his late 20s, athletic build, locs twisted up and back off his forehead. Olive-green bomber jacket worn open showing a dark t-shirt with a cream gear logo (GEARING CORP) centered on the chest, dark jeans, dark sneakers. Focused, wry expression; a warehouse sysop who solders his own circuit boards.",
-      "texture_prompt": "olive nylon bomber, dark cotton tee with a cream gear print, dark denim, dark skin, black locs",
+      "prompt": "Frasier Temple, young Black man in his late 20s, athletic build, locs twisted up and back off his forehead. A leather bomber jacket worn open, stained with solder flux and worse, showing a dark t-shirt with a cream gear logo (GEARING CORP) centered on the chest, dark jeans, dark sneakers. Focused, wry expression; a warehouse sysop who solders his own circuit boards.",
+      "texture_prompt": "stained brown leather bomber, dark cotton tee with a cream gear print, dark denim, dark skin, black locs",
       "canon": [
         {
           "src": "vol5/vol5_ch0_frasier.json",
-          "text": "Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both."
+          "text": "Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable."
         },
         {
           "src": "vol5/vol5_ch1_magician.json",
@@ -175,8 +175,13 @@
         {
           "src": "vol5/vol5_ch0_frasier.json",
           "text": "He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas."
+        },
+        {
+          "src": "vol5/vol5_ch0_frasier.json",
+          "text": "Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: a LEATHER bomber, stained (vol5_ch0_frasier)."
     },
     {
       "slug": "elicia_temple",
@@ -212,7 +217,7 @@
         },
         {
           "src": "vol5/vol5_ch19_sun.json",
-          "text": "wearing a denim jacket that had been repaired at the cuff and a scarf that was, John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother."
+          "text": "wearing a denim jacket that had been repaired at the cuff and a scarf"
         },
         {
           "src": "vol5/vol5_ch14_temperance.json",
@@ -229,6 +234,10 @@
         {
           "src": "games/hands/elicia.json",
           "text": "Pale evaluative eyes. Two industries and one unfortunate marriage."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "a scarf that had, she had told him, belonged to her mother"
         }
       ],
       "looks": [
@@ -360,7 +369,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "She saw the tension in his jaw. The slight tic near his eye. The way the cuff of his right sleeve was a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing. Righteousness masking something else. Something brittle. Maybe something afraid."
+          "text": "She saw the tension in his jaw. The slight tic near his eye."
         },
         {
           "src": "vol5/vol5_ch5_hierophant.json",
@@ -380,7 +389,7 @@
         },
         {
           "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "Back when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter. Seminary school dropout, they said."
+          "text": "Back when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter."
         },
         {
           "src": "vol5/vol5_ch5_hierophant.json",
@@ -389,6 +398,14 @@
         {
           "src": "games/hands/quentin_paul.json",
           "text": "Walks like he owns the damn sidewalk and maybe the sky too."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "The way the cuff of his right sleeve was a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Seminary school dropout, they said."
         }
       ]
     },
@@ -505,7 +522,7 @@
         },
         {
           "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "He ran a hand through his hair. The weight of his father's legacy, of Paul's expectations, pressing down."
+          "text": "He ran a hand through his hair."
         },
         {
           "src": "vol5/vol5_ch5_hierophant.json",
@@ -526,6 +543,10 @@
         {
           "src": "games/hierophant/visitors.json",
           "text": "Antonio D'Ambrosio. The younger son. In New Orleans, in the cramped office above Ember & Ash. The wildcard. The artistic temperament."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "The weight of his father's legacy, of Paul's expectations, pressing down."
         }
       ]
     },
@@ -550,7 +571,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch8_strength.json",
-          "text": "Scarred knuckles mapped with the ghosts of busted fences and kitchen brawls from back when Dante's word was law and Douglas's word, to the people who needed it, was Dante's. Calloused cartography of a life spent holding things together."
+          "text": "Scarred knuckles mapped with the ghosts of busted fences and kitchen brawls from back when Dante's word was law and Douglas's word, to the people who needed it, was Dante's."
         },
         {
           "src": "vol5/vol5_ch8_strength.json",
@@ -579,6 +600,10 @@
         {
           "src": "vol5/vol5_ch8_strength.json",
           "text": "He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional"
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "Calloused cartography of a life spent holding things together. Or maybe just holding on."
         }
       ]
     },
@@ -602,7 +627,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch8_strength.json",
-          "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins. Saw her scrawling words on walls with charcoal fingers, surrounded by her court of stray dogs and one-eyed cats."
+          "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins."
         },
         {
           "src": "vol5/vol5_ch9_hermit.json",
@@ -618,7 +643,7 @@
         },
         {
           "src": "vol5/vol5_ch17_star.json",
-          "text": "They had seen the cracks in her smile, the haunted hollows beneath her eyes. They had seen the girl who knew too much, felt too much, the one doomed to chronicle the fall because she was already halfway down."
+          "text": "They had seen the cracks in her smile, the haunted hollows beneath her eyes."
         },
         {
           "src": "vol5/vol5_ch17_star.json",
@@ -627,6 +652,14 @@
         {
           "src": "vol5/vol5_ch9_hermit.json",
           "text": "The Hermit, lantern held aloft — a scavenged flashlight, actually, flickering weakly, batteries Joanna had been meaning to replace for a week — led her small procession deeper into the beautiful terrifying labyrinth she now called home."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "Saw her scrawling words on walls with charcoal fingers, surrounded by her court of stray dogs and one-eyed cats."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "They had seen the girl who knew too much, felt too much, the one doomed to chronicle the fall because she was already halfway down."
         }
       ]
     },
@@ -739,7 +772,7 @@
         },
         {
           "src": "vol5/vol5_ch12_hanged.json",
-          "text": "She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years. The regional company had lasted nine months past her injury."
+          "text": "She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years."
         },
         {
           "src": "vol5/vol5_ch12_hanged.json",
@@ -764,6 +797,10 @@
         {
           "src": "games/moon/setup_pre_dusk_projection_setup.json",
           "text": "You are alone at the concession. Your notebook is in your apron."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life."
         }
       ]
     },
@@ -837,11 +874,11 @@
         },
         {
           "src": "vol5/vol5_ch15_devil.json",
-          "text": "He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate. He pulled on his boots."
+          "text": "He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate."
         },
         {
           "src": "vol5/vol5_ch8_strength.json",
-          "text": "Jimmy running point. Edgy. Talking fast. Eyes darting in the way Jimmy's eyes had been darting since approximately 2011"
+          "text": "Eyes darting in the way Jimmy's eyes had been darting since approximately 2011, when whatever switch in Jimmy that had once been able to be turned off had been, by some person or event Jimmy did not name, permanently broken."
         },
         {
           "src": "games/hierophant/visitors.json",
@@ -885,11 +922,11 @@
       "canon": [
         {
           "src": "vol5/vol5_ch18_moon.json",
-          "text": "Aria opened Nicola's eyes. The eyes were Nicola's eyes. The gaze was not. The gaze was the calm careful scan of something that had been built to assess"
+          "text": "The eyes were Nicola's eyes. The gaze was not."
         },
         {
           "src": "vol5/vol5_ch3_empress.json",
-          "text": "Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:"
+          "text": "Lines of shimmering code, emerald green against an infinite black void."
         },
         {
           "src": "vol5/vol5_ch3_empress.json",
@@ -914,6 +951,14 @@
         {
           "src": "vol5/vol5_ch18_moon.json",
           "text": "The readings had said: two consciousnesses, one body, and a third coming. Not monster. Not mother. Three. The number is three."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "The gaze was the calm careful scan of something that had been built to assess"
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all"
         }
       ],
       "looks": [
@@ -941,7 +986,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch21_world.json",
-          "text": "Four feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes. Rollin' a cigarette between webbed fingers with the unhurried economy of a being who had learned, somewhere in the Paleozoic, that haste was a mammalian invention and not one he had chosen to adopt."
+          "text": "Four feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes."
         },
         {
           "src": "vol5/vol5_ch21_world.json",
@@ -953,7 +998,7 @@
         },
         {
           "src": "vol5/vol5_ch20_judgement.json",
-          "text": "The small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette, watching the buildings come down around him"
+          "text": "The small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette"
         },
         {
           "src": "vol5/vol5_ch21_world.json",
@@ -970,6 +1015,10 @@
         {
           "src": "lore/_GAUNTLET_BUILD_WIKI.md",
           "text": "The Frog (four-foot figure in a cork hat by the river; has been at his post since at least 1987, will be at it for at least seven more years)"
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Rollin' a cigarette between webbed fingers with the unhurried economy of a being who had learned, somewhere in the Paleozoic, that haste was a mammalian invention and not one he had chosen to adopt."
         }
       ]
     },
@@ -1000,7 +1049,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch3_empress.json",
-          "text": "He was middle-aged. He wore a suit that was nicer than the suits the oil-exec types wore — not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal. The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes."
+          "text": "He wore a suit that was nicer than the suits the oil-exec types wore — not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal."
         },
         {
           "src": "vol5/vol5_ch3_empress.json",
@@ -1029,6 +1078,10 @@
         {
           "src": "games/emperor/visitors.json",
           "text": "Plain face, plain shoes, the lapels-smoothing gesture of a man who once cared deeply about his appearance. He is forgettable in the practiced way you have encountered perhaps a dozen times in your life."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes."
         }
       ],
       "looks": [
@@ -1106,7 +1159,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch5_hierophant.json",
-          "text": "Maya's itchy Sunday dress stuck to her back. The dress was new. The dress was stiff. The dress had a tag that bit her between the shoulder blades every time she breathed in"
+          "text": "Maya's itchy Sunday dress stuck to her back. The dress was new."
         },
         {
           "src": "vol6/vol6_ch3_back_room.json",
@@ -1135,6 +1188,10 @@
         {
           "src": "vol5/vol5_ch5_hierophant.json",
           "text": "For now: she finished her lemonade, dropped the cup in the trash, took her father's hand when he came down the steps, and did not mention any of it."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "The dress had a tag that bit her between the shoulder blades every time she breathed in"
         }
       ],
       "looks": [
@@ -1321,12 +1378,12 @@
       "tag": "Ensemble · drives Nicola west · the crow",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Miriam, 60s, Joanna's literary agent, silver hair cut sharp at the jaw. Long grey wool coat, black turtleneck, black trousers, low black boots, driving gloves, a crow perched on her shoulder. Elegant, dry, unhurried.",
+      "prompt": "Miriam, 60s, Joanna's literary agent, silver hair in a loose braid. A gray wool coat that looks like it has been in somebody's family for a while, a canvas bag over one shoulder, black turtleneck, black trousers, low black boots, driving gloves, a crow perched on her shoulder. Elegant, dry, unhurried.",
       "texture_prompt": "grey wool coat, black turtleneck, black trousers, black leather boots, black leather gloves, glossy black crow, silver hair",
       "canon": [
         {
           "src": "vol5/vol5_ch18_moon.json",
-          "text": "It was a woman. Mid-sixties. Silver hair in a loose braid. A gray wool coat that looked like it had been in somebody's family for a while. A canvas bag over one shoulder. On the shoulder, perched, still and bright-eyed, was a crow."
+          "text": "Silver hair in a loose braid. A gray wool coat that looked like it had been in somebody's family for a while."
         },
         {
           "src": "vol5/vol5_ch18_moon.json",
@@ -1351,11 +1408,16 @@
         {
           "src": "lore/_GAUNTLET_BUILD_WIKI.md",
           "text": "silver-haired woman, Joanna's agent; drives Nicola/Aria/Third west to Smolvud; her crow rides on the roof"
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "On the shoulder, perched, still and bright-eyed, was a crow."
         }
       ],
       "looks": [
         "miriam_2025"
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: silver hair in a loose braid, the family gray wool coat, a canvas bag (vol5_ch18_moon)."
     },
     {
       "slug": "father_amato",
@@ -1770,7 +1832,11 @@
         },
         {
           "src": "vol5/vol5_ch6_lovers.json",
-          "text": "Mackenzie offered a wry smile. Leaned against the doorframe. Her quiet grace always seemed most potent when she was observing life's small persistent absurdities"
+          "text": "Mackenzie offered a wry smile. Leaned against the doorframe."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Her quiet grace always seemed most potent when she was observing life's small persistent absurdities"
         }
       ]
     },
@@ -2878,7 +2944,7 @@
         },
         {
           "src": "vol7/vol7_ch3_studio.json",
-          "text": "the small Cale-smile she had been getting from him since she was nineteen and walked into the store for the first time, when she had come up from the south coast with a duffel and a set of brushes"
+          "text": "when she had come up from the south coast with a duffel and a set of brushes"
         },
         {
           "src": "vol7/vol7_ch20_calls.json",
@@ -2895,6 +2961,10 @@
         {
           "src": "lore/milk_and_honey/static_truths.md",
           "text": "Lena is a painter who has been, for almost a year, not painting"
+        },
+        {
+          "src": "vol7/vol7_ch3_studio.json",
+          "text": "the small Cale-smile she had been getting from him since she was nineteen and walked into the store for the first time"
         }
       ]
     },
@@ -3080,8 +3150,8 @@
       "tag": "vol7 · Board Lords · cannery cathedral",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Kai, 30s, runs the Board Lords skate shop. A worn black cap, a faded hoodie with the sleeves cut off, wide skate pants, skate shoes, forearms inked, a skateboard held by the nose. Has known the SCUMM Machine since he was 13.",
-      "texture_prompt": "black cotton cap, faded navy sleeveless hoodie, khaki skate pants, black canvas skate shoes, wooden skateboard, brown skin",
+      "prompt": "Kai, 30s, runs the Board Lords skate shop. His grandmother's wool sweater over a thrift-worn long-sleeve tee, wide skate pants, skate shoes, forearms inked, a skateboard held by the nose. Has known the SCUMM Machine since he was 13.",
+      "texture_prompt": "hand-knit wool sweater, worn long-sleeve tee, khaki skate pants, black canvas skate shoes, wooden skateboard, brown skin",
       "canon": [
         {
           "src": "vol7/vol7_ch7_six_oclock.json",
@@ -3089,7 +3159,7 @@
         },
         {
           "src": "vol7/vol7_ch8_kitchen.json",
-          "text": "He took the wool sweater off and hung it over the back of the kitchen chair. He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times."
+          "text": "He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times."
         },
         {
           "src": "vol7/vol7_ch16_aud.json",
@@ -3110,8 +3180,13 @@
         {
           "src": "vol7/vol7_ch5_roy.json",
           "text": "Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one."
+        },
+        {
+          "src": "vol7/vol7_ch8_kitchen.json",
+          "text": "He took the wool sweater off and hung it over the back of the kitchen chair."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: the grandmother's wool sweater over a worn long-sleeve (vol7_ch8_kitchen); the cut-off hoodie is not in the text."
     },
     {
       "slug": "per",
@@ -3144,7 +3219,7 @@
         },
         {
           "src": "vol7/vol7_ch20_each.json",
-          "text": "Per's face at sixty was the face of a son who had not seen his father since 1978 and was now, at the door of a cabin his father had built in '79 a year after he had drowned, seeing him."
+          "text": "Per's face at sixty was the face of a son who had not seen his father since 2010 and was now, at the door of a cabin his father had built in '11 a year after he had drowned, seeing him."
         },
         {
           "src": "vol7/vol7_ch15_loft.json",
@@ -3569,7 +3644,7 @@
       "tag": "vol7 · Tidewater Creamery cap",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Jameson, 17, a thrift-store parka with a torn pocket, a cap with a Tidewater Creamery patch, a canvas jacket tied around the waist, jeans, sneakers. Lanky, quick to laugh.",
+      "prompt": "Jameson, 16, a thrift-store parka with a torn pocket, a cap with a Tidewater Creamery patch, a canvas jacket tied around the waist, jeans, sneakers. Lanky, quick to laugh.",
       "texture_prompt": "dark green nylon parka, navy cotton cap with an embroidered patch, tan canvas jacket, blue denim, white sneakers",
       "canon": [
         {
@@ -3578,13 +3653,18 @@
         },
         {
           "src": "vol7/vol7_ch16_shop.json",
-          "text": "Jameson was eighteen now — the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana. He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since."
+          "text": "He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since."
         },
         {
           "src": "vol7/vol7_ch16_shop.json",
           "text": "He stood at the counter with his hands in his coat pockets and looked at Kai."
+        },
+        {
+          "src": "vol7/vol7_ch16_shop.json",
+          "text": "Jameson was sixteen — the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: sixteen (vol7_ch2); ch16's 'eighteen now' was corrected to sixteen in the text."
     },
     {
       "slug": "mateo",
@@ -3754,8 +3834,8 @@
       "tag": "vol5 key artifact · D'Ambrosio's",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A hand-built model of a Mississippi paddle-wheel steamboat about half a metre long: red-painted hull, three white decks with tiny railings, twin black smokestacks, and a brass paddle-wheel at the stern. Paint chipped, one railing missing, sitting on two small wooden cradles.",
-      "texture_prompt": "chipped red enamel hull, white painted wood decks, tarnished brass paddle-wheel, black smokestacks",
+      "prompt": "A small model riverboat built from tarnished silver spoons and fragments of motherboards, sealed inside a small glass case, a small handwritten label beside the case. Quiet, tarnished, a monument.",
+      "texture_prompt": "tarnished silver spoons, green circuit-board fragments, clear glass case, white card label",
       "canon": [
         {
           "src": "vol5/vol5_ch1_magician.json",
@@ -3767,7 +3847,7 @@
         },
         {
           "src": "vol5/vol5_ch21_world.json",
-          "text": "It sits now, quiet, a small tarnished monument to the thing it had represented. Frasier has not moved it. Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983–2026. REST."
+          "text": "Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983–2026. REST."
         },
         {
           "src": "games/locations/cathedral.json",
@@ -3788,8 +3868,14 @@
         {
           "src": "vol5/vol5_ch1_magician.json",
           "text": "somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "It sits now, quiet, a small tarnished monument to the thing it had represented."
         }
-      ]
+      ],
+      "lettering": "D'AMBROSIO'S. 1983–2026. REST.",
+      "notes": "(2026-10-17) Corrected to the text: silver spoons and motherboard fragments in a sealed glass case with its label (vol5_ch21_world), not a painted red hull."
     },
     {
       "slug": "bbs_terminal",
@@ -3903,12 +3989,12 @@
       "tag": "VI The Lovers · the boy's Polaroid",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A single instant photograph, slightly bent, white frame with a wide bottom border, the image faded and colour-shifted showing two blurry figures at a porch rail, one corner thumb-worn; a pencil note on the white border.",
+      "prompt": "A single Polaroid photograph, faded around the edges, 'June 2009' in pencil on the white border: late-afternoon light across the brick storefronts of a small-town Houston Street, a young man walking away from the camera, his back to it.",
       "texture_prompt": "glossy faded photo, matte white paper frame, pencil handwriting",
       "canon": [
         {
           "src": "vol5/vol5_ch6_lovers.json",
-          "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole — at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."
+          "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border."
         },
         {
           "src": "vol5/vol5_ch6_lovers.json",
@@ -3925,8 +4011,13 @@
         {
           "src": "vol5/vol5_ch6_lovers.json",
           "text": "A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole"
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: Houston Street storefronts with Mackenzie's brother walking away (vol5_ch6_lovers), not two figures at a porch rail."
     },
     {
       "slug": "water_glass_table_17",
@@ -3990,7 +4081,7 @@
       "canon": [
         {
           "src": "vol5/vol5_ch7_chariot.json",
-          "text": "a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more, when it arrived, than he had any business loving an inanimate object"
+          "text": "a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for"
         },
         {
           "src": "games/chariot/items.json",
@@ -4304,14 +4395,14 @@
       "canon": [
         {
           "src": "vol5/vol5_ch2_priestess.json",
-          "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so."
+          "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production."
         },
         {
           "src": "vol5/vol5_ch2_priestess_b.json",
           "text": "The mirror shard, on the table, caught the failing light and threw it back in twelve different directions — none of which led out of the room."
         },
         {
-          "src": "vol5/vol5_ch2_priestess.json",
+          "src": "vol5/vol5_ch2_priestess_b.json",
           "text": "She picked up the mirror shard again. Looked into the fractal Elicias."
         },
         {
@@ -4325,6 +4416,10 @@
         {
           "src": "games/locations/elicia_bungalow.json",
           "text": "the mirror shard on the third shelf"
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "Picked up because it had caught the light just so."
         }
       ]
     },
@@ -4594,12 +4689,12 @@
       "tag": "0 The Fool · booth 6",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A white paper diner napkin folded into a tight square with a handwritten note visible on the exposed side in blue ballpoint, one edge stained with coffee.",
-      "texture_prompt": "white embossed paper, blue ballpoint ink, brown coffee stain",
+      "prompt": "A cheap white paper diner napkin folded four times into a shape that is not quite anything but, from the right angle and with some generosity, resembles a flower; nothing written on it. Lying on a counter.",
+      "texture_prompt": "cheap white paper, soft creases",
       "canon": [
         {
           "src": "vol5/vol5_ch0_booth6.json",
-          "text": "John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook."
+          "text": "He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower."
         },
         {
           "src": "vol5/vol5_ch0_closing.json",
@@ -4612,8 +4707,13 @@
         {
           "src": "games/priestess/cameo_john_before_montreal.json",
           "text": "He has, in his coat pocket, the folded napkin from booth six."
+        },
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "John folded the napkin from booth six. White, paper, cheap."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: folded into a near-flower; no writing (vol5_ch0_booth6)."
     },
     {
       "slug": "license_plate_notebook",
@@ -5276,7 +5376,7 @@
         },
         {
           "src": "vol7/vol7_ch18_stick.json",
-          "text": "In its waxed-paper sleeve — the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old. The wax yellowed at the edges. A small label on the front with handwriting Finn did not know."
+          "text": "In its waxed-paper sleeve — the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old."
         },
         {
           "src": "lore/milk_and_honey/scumm_machine.md",
@@ -5293,6 +5393,10 @@
         {
           "src": "vol7/vol7_ch8_six_oclock.json",
           "text": "the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip."
+        },
+        {
+          "src": "vol7/vol7_ch18_stick.json",
+          "text": "The wax yellowed at the edges. A small label on the front with handwriting Finn did not know."
         }
       ]
     },
@@ -5341,8 +5445,8 @@
       "tag": "vol7 · Olaf's bowls · 454 mentions",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A palm-sized hand-turned cedar bowl, thin-walled, a spiral incised into the inner surface, the wood warm orange with darker rings, oil-finished, a small chip on the rim.",
-      "texture_prompt": "oil-finished red cedar with visible growth rings, incised spiral",
+      "prompt": "A hand-carved cedar bowl about the size of two cupped hands: a spiral carved round the OUTSIDE that ends a quarter inch short of the rim, the rim finished with a curve back to the cut, a maker's flame pressed into the base; inside, a young woman's face fills the bowl's interior the way a face fills a coin, eyes closed, mouth closed. Warm orange cedar with darker rings, oil-finished.",
+      "texture_prompt": "oil-finished red cedar with visible growth rings, outside spiral, carved face inside",
       "canon": [
         {
           "src": "vol7/vol7_ch11_per.json",
@@ -5358,7 +5462,7 @@
         },
         {
           "src": "vol7/vol7_ch11_bowl.json",
-          "text": "by the rhythm of the spiral, by the way the carver had let the spiral end short of the rim by perhaps a quarter inch and had finished the rim with a curve back to the cut, by the angle at which the flame had been pressed into the base"
+          "text": "by the rhythm of the spiral, by the way the carver had let the spiral end short of the rim by perhaps a quarter inch and had finished the rim with a curve back to the cut"
         },
         {
           "src": "vol7/vol7_ch13_marina.json",
@@ -5366,7 +5470,7 @@
         },
         {
           "src": "vol7/vol7_ch11_per.json",
-          "text": "What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling. The eyes were closed. The mouth was closed."
+          "text": "A young woman's face. The face filled the bowl's interior in the way a face fills a coin."
         },
         {
           "src": "vol7/vol7_ch11_kestrel.json",
@@ -5375,8 +5479,17 @@
         {
           "src": "lore/milk_and_honey/_ART_MANIFEST.md",
           "text": "The cedar bowl. Spiral on the outside. The size of two cupped hands."
+        },
+        {
+          "src": "vol7/vol7_ch11_bowl.json",
+          "text": "by the angle at which the flame had been pressed into the base"
+        },
+        {
+          "src": "vol7/vol7_ch11_per.json",
+          "text": "The eyes were closed. The mouth was closed."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: two cupped hands in size, the spiral outside, a carved face inside (vol7_ch11)."
     },
     {
       "slug": "cedar_bell",
@@ -5478,8 +5591,8 @@
       "tag": "vol7 CG card · the Tower",
       "aspect": "3:4",
       "pose": null,
-      "prompt": "A heavy plank door of red cedar in a rough frame, hand-forged iron strap hinges, an iron ring handle, a spiral carved deep into the centre plank, the wood dark and oiled, light showing through a gap at the bottom.",
-      "texture_prompt": "dark oiled red cedar planks, black wrought iron hinges and ring, carved spiral",
+      "prompt": "An unmarked cedar door at the top of a stairwell landing, plain planks, a simple handle; above the handle, at chest height, a small window six inches by six set into the cedar, its glass gone milky and translucent like frosted substrate. Warm, dark, unchanged cedar around the window.",
+      "texture_prompt": "plain dark red cedar, small milky translucent window, simple metal handle",
       "canon": [
         {
           "src": "vol7/vol7_ch22_portal.json",
@@ -5491,7 +5604,7 @@
         },
         {
           "src": "vol7/vol7_ch22_portal.json",
-          "text": "The window had been ordinary glass when the tower was built. In the years since, the glass had gone translucent — a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged."
+          "text": "In the years since, the glass had gone translucent — a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged."
         },
         {
           "src": "vol7/vol7_ch22_portal.json",
@@ -5500,8 +5613,13 @@
         {
           "src": "lore/milk_and_honey/_ART_MANIFEST.md",
           "text": "The portal-room door. Cedar. Window at chest height, six inches by six."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "The window had been ordinary glass when the tower was built."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: the door is unmarked, with a six-by-six-inch window at chest height (vol7_ch22_portal); no carved spiral, no iron straps."
     },
     {
       "slug": "static_truths_zine",
@@ -5627,7 +5745,7 @@
     {
       "slug": "relic_skate_deck",
       "kind": "prop",
-      "name": "Kai's relic skate deck",
+      "name": "The cracked Tess Mariana (2034)",
       "file": "relic_skate_deck.glb",
       "vol": [
         7
@@ -5635,15 +5753,15 @@
       "keys": [
         "relic_skate_deck"
       ],
-      "tag": "vol7 · Board Lords · the Tess Mariana board",
+      "tag": "vol7 ch9 · Mateo's father's board, cracked, in Board Lords for Kai to repair",
       "aspect": "16:9",
       "pose": null,
-      "prompt": "A vintage skateboard deck mounted as a relic: chipped nose and tail, the graphic worn to bare maple ply, old rusted trucks and yellowed urethane wheels still attached, a hand-lettered name on the grip tape.",
+      "prompt": "An old 2034 Tess Mariana skateboard deck brought into a small coastal skate shop for repair: a long crack through the upper deck, a chunk missing from the tail, the graphic worn to bare maple ply, old trucks and yellowed wheels still on it.",
       "texture_prompt": "worn maple ply, faded screen-printed graphic, rusted trucks, yellowed urethane wheels, black grip tape",
       "canon": [
         {
           "src": "vol7/vol7_ch9_tuesday.json",
-          "text": "The board was an old Tess Mariana from 2034. It had a long crack through the upper deck and a chunk missing from the tail."
+          "text": "It had a long crack through the upper deck and a chunk missing from the tail."
         },
         {
           "src": "vol7/vol7_ch9_tuesday.json",
@@ -5668,8 +5786,13 @@
         {
           "src": "godot/tools/blender/locales/build_kai_apartment.py",
           "text": "COL_DECK_WOOD = (0.72, 0.58, 0.40, 1.0)   # natural maple deck"
+        },
+        {
+          "src": "vol7/vol7_ch9_tuesday.json",
+          "text": "The board was an old Tess Mariana from 2034."
         }
-      ]
+      ],
+      "notes": "(2026-10-17) Corrected to the text: the deck the text describes is Mateo's father's 2034 Tess Mariana (vol7_ch9_tuesday), not Kai's own; no scene describes Kai's first deck."
     },
     {
       "slug": "wagners_yardstick_and_drill",
@@ -7704,7 +7827,7 @@
     {
       "slug": "old_man_kestrel",
       "kind": "hero",
-      "name": "The old man at the pool",
+      "name": "The old man at the tide pool",
       "file": "old_man_kestrel.glb",
       "vol": [
         7
@@ -7718,16 +7841,16 @@
       "tag": "vol7 ch11 Kestrel Mountain · the Bergen carver's imprint · waders, wool cap, kneeling at the second pool",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "An old man of about seventy-five kneeling at the edge of a clear mountain pool: weathered face, white hair under a dark wool cap, eyes that have looked at water for decades. Rubber waders to the waist over a thick wool shirt, sleeves pushed up, big carver's hands.",
+      "prompt": "An old man of about seventy-five kneeling at the edge of a clear tide pool on a dark basalt headland on the Oregon coast: weathered face, white hair under a dark wool cap, the eyes of a man who has been looking at water for decades. Rubber waders to the waist over a thick wool shirt, sleeves pushed up.",
       "texture_prompt": "dark olive rubber waders, grey wool shirt, charcoal wool cap, white hair, weathered tan skin",
-      "notes": "SPARSE — canon gives the cap, the waders, the age and the eyes; the shirt is proposed. Edit before spending credits.",
+      "notes": "SPARSE — canon gives the cap, the waders, the age and the eyes; the shirt is proposed. Edit before spending credits. (2026-10-17) Corrected to the text: a tide pool on a basalt headland in the stick Tideline Survey (vol7_ch18_pool), not a mountain pool; the text does not make him a carver.",
       "canon": [
         {
-          "src": "vol7/vol7_ch11_kestrel.json",
+          "src": "vol7/vol7_ch18_pool.json",
           "text": "At the edge: an old man. In waders to the waist. Kneeling at the edge. White hair under a wool cap. Looking at the water."
         },
         {
-          "src": "vol7/vol7_ch11_kestrel.json",
+          "src": "vol7/vol7_ch18_pool.json",
           "text": "The old man turned. His face: the face of a man maybe seventy-five, weathered, with the kind of eyes that had been looking at water for some decades."
         }
       ],
