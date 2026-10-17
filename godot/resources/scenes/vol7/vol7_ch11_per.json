@@ -106,13 +106,13 @@
     },
     {
       "char": "per",
-      "text": "Eddvard knew my father in '64 when they were both stationed at the cutter base in old-Yaquina. They worked together for a year. They became friends. They stayed friends after my father left the cutter and Eddvard stayed.",
+      "text": "Eddvard knew my father in '92 when they were both stationed at the cutter base in old-Yaquina. They worked together for a year. They became friends. They stayed friends after my father left the cutter and Eddvard stayed.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "[shot:closeup person]They built this cabin together in '79 when my father was forty-one and Eddvard was fifty-two. I came up here with my father seven times in '79 and '80 to help with the build. I was nineteen. I was at Oregon State.",
+      "text": "[shot:closeup person]They built this cabin together in '07 when my father was forty-one and Eddvard was forty-five. I came up here with my father seven times in '07 and '08 to help with the build. I was nineteen. I was at Oregon State.",
       "expr": "neutral",
       "t": "say"
     },
@@ -158,7 +158,7 @@
     },
     {
       "char": "per",
-      "text": "[shot:closeup per]My father went into the water in November of '78. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall.",
+      "text": "[shot:closeup per]My father went into the water in November of '06. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall.",
       "expr": "serious",
       "t": "say"
     },
@@ -190,7 +190,7 @@
     },
     {
       "char": "per",
-      "text": "In April of '79 I came home for spring break. I went up to the room my father had used as his office — a room above the garage at the back of the house. The room had been locked since November. My mother had locked it.",
+      "text": "In April of '07 I came home for spring break. I went up to the room my father had used as his office — a room above the garage at the back of the house. The room had been locked since November. My mother had locked it.",
       "expr": "serious",
       "t": "say"
     },
@@ -224,7 +224,7 @@
     },
     {
       "char": "per",
-      "text": "The notebook was the kind of spiral notebook a man uses when he wants to write a thing nobody is going to find. He had been writing in it since 1971.",
+      "text": "The notebook was the kind of spiral notebook a man uses when he wants to write a thing nobody is going to find. He had been writing in it since 1999.",
       "expr": "serious",
       "t": "say"
     },
@@ -236,7 +236,7 @@
     },
     {
       "char": "per",
-      "text": "He had written about Eddvard's bowl. He had written about my mother's bowl that he had carved her in '74.",
+      "text": "He had written about Eddvard's bowl. He had written about my mother's bowl that he had carved her in '02.",
       "expr": "serious",
       "t": "say"
     },
@@ -286,13 +286,13 @@
     },
     {
       "char": "per",
-      "text": "I have been carrying those words for fifty years. I have not said them to a person. I have not written them.",
+      "text": "I have been carrying those words for forty-five years. I have not said them to a person. I have not written them.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "I burned the notebook in 1986 after I had decided I was not going to be the kind of son who kept his father's secret papers in a drawer the way his father had kept them in a drawer.",
+      "text": "I burned the notebook in 2014 after I had decided I was not going to be the kind of son who kept his father's secret papers in a drawer the way his father had kept them in a drawer.",
       "expr": "serious",
       "t": "say"
     },
@@ -396,7 +396,7 @@
     },
     {
       "char": "per",
-      "text": "The uncle in Switzerland — Olaf's father's brother, my grandfather's brother, who had stayed in Bern — had been sending him things since the early '60s. The uncle was a printer.",
+      "text": "The uncle in Switzerland — Olaf's father's brother, my grandfather's brother, who had stayed in Bern — had been sending him things since the early '90s. The uncle was a printer.",
       "expr": "neutral",
       "t": "say"
     },
@@ -460,7 +460,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans's brother was the one who printed the poem cycle in 1989.",
+      "text": "Hans's brother was the one who printed the poem cycle in 2017.",
       "expr": "serious",
       "t": "say"
     },
@@ -478,7 +478,7 @@
     },
     {
       "char": "per",
-      "text": "Hans's brother took over the family print shop in Bern in '86 when their father died. Hans's brother did the 1989 poem cycle in the same shop my father's books had been printed in. The shop has been in the Schenck family — Hans's family — for four generations.",
+      "text": "Hans's brother took over the family print shop in Bern in '14 when their father died. Hans's brother did the 2017 poem cycle in the same shop my father's books had been printed in. The shop has been in the Schenck family — Hans's family — for four generations.",
       "expr": "serious",
       "t": "say"
     },
@@ -677,7 +677,7 @@
       "t": "narrate"
     },
     {
-      "text": "Or the face was the face the carver had carved when he had thought, in 1974, about what face he was waiting for, and Kai was reading the carver's expectation in the cedar.",
+      "text": "Or the face was the face the carver had carved when he had thought, in 2002, about what face he was waiting for, and Kai was reading the carver's expectation in the cedar.",
       "t": "narrate"
     },
     {
@@ -716,7 +716,7 @@
     },
     {
       "char": "per",
-      "text": "By the notebook — and the notebook was burned in '86 so this is fifty-year-old memory — the second went to a man in San Francisco in 1976. The man's name was Lindholm. Lindholm was the foundation man for the West Coast.",
+      "text": "By the notebook — and the notebook was burned in '14 so this is thirty-eight-year-old memory — the second went to a man in San Francisco in 2004. The man's name was Lindholm. Lindholm was the foundation man for the West Coast.",
       "expr": "neutral",
       "t": "say"
     },
@@ -728,7 +728,7 @@
     },
     {
       "char": "per",
-      "text": "The foundation has had three field people on this coast at various times since the '60s. Lindholm was one of them. Lindholm had the bowl from '76 until he died. After he died the bowl went to the foundation.",
+      "text": "The foundation has had three field people on this coast at various times since the '60s. Lindholm was one of them. Lindholm had the bowl from '04 until he died. After he died the bowl went to the foundation.",
       "expr": "neutral",
       "t": "say"
     },
@@ -798,7 +798,7 @@
     },
     {
       "char": "per",
-      "text": "My father gave a bowl to her grandfather in 1976.",
+      "text": "My father gave a bowl to her grandfather in 2004.",
       "expr": "serious",
       "t": "say"
     },
@@ -934,7 +934,7 @@
     },
     {
       "char": "per",
-      "text": "I have been carrying the name for fifty years and the granddaughter of the man my father gave a bowl to has been at the foundation in Eugene for six years and you have not, in the time you have been at this, contacted her.",
+      "text": "I have been carrying the name for forty-five years and the granddaughter of the man my father gave a bowl to has been at the foundation in Eugene for six years and you have not, in the time you have been at this, contacted her.",
       "expr": "serious",
       "t": "say"
     },

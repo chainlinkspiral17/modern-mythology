@@ -31,7 +31,7 @@
    "t": "narrate"
   },
   {
-   "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's — he had slept on it from '79 until '42.",
+   "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's — he had slept on it from '07 until '42.",
    "t": "narrate"
   },
   {
@@ -39,7 +39,7 @@
    "t": "narrate"
   },
   {
-   "text": "The mattress, by the wear and the smell and the slight depression Eddvard's body had made over forty-three years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
+   "text": "The mattress, by the wear and the smell and the slight depression Eddvard's body had made over thirty-five years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
    "t": "narrate"
   },
   {
@@ -236,7 +236,7 @@
   },
   {
    "char": "tem",
-   "text": "I am going to introduce you when we get there. I am going to introduce you as the foundation's coast operative since 2046 and as the granddaughter of the man Olaf gave the second bowl to in 1976.",
+   "text": "I am going to introduce you when we get there. I am going to introduce you as the foundation's coast operative since 2046 and as the granddaughter of the man Olaf gave the second bowl to in 2004.",
    "expr": "serious",
    "t": "say"
   },
@@ -248,7 +248,7 @@
   },
   {
    "char": "tem",
-   "text": "The foundation is — Hans has been at a distance from the foundation for fifty years. Hans has known about the foundation since his brother in Bern told him in 1969 that there was a foundation.",
+   "text": "The foundation is — Hans has been at a distance from the foundation for fifty-five years. Hans has known about the foundation since his brother in Bern told him in 1997 that there was a foundation.",
    "expr": "serious",
    "t": "say"
   },
@@ -290,7 +290,7 @@
   },
   {
    "char": "tem",
-   "text": "Marit is sixty-eight and has been carrying the bowl Olaf carved her for fifty-one years and has not, in those years, been in a room with any of the people who are going to be at this bakery this morning.",
+   "text": "Marit is eighty-four and has been carrying the bowl Olaf carved her for fifty years and has not, in those years, been in a room with any of the people who are going to be at this bakery this morning.",
    "expr": "serious",
    "t": "say"
   },
@@ -360,7 +360,7 @@
   },
   {
    "char": "cale",
-   "text": "[shot:closeup person]I have been at this for thirty years from the wrong end. You have been at it from the other end. I am — I am glad you are here.",
+   "text": "[shot:closeup person]I have been at this for fifty-eight years from the wrong end. You have been at it from the other end. I am — I am glad you are here.",
    "expr": "serious",
    "t": "say"
   },
@@ -474,7 +474,7 @@
   },
   {
    "char": "tem",
-   "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 1976. She is — she came up to the cabin Thursday night.",
+   "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 2004. She is — she came up to the cabin Thursday night.",
    "expr": "serious",
    "t": "say"
   },
@@ -508,7 +508,7 @@
   },
   {
    "char": "hans",
-   "text": "Werner — my brother — told me in 1969 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it.",
+   "text": "Werner — my brother — told me in 1997 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it.",
    "expr": "serious",
    "t": "say"
   },
@@ -520,7 +520,7 @@
   },
   {
    "char": "hans",
-   "text": "I have been carrying your grandfather's name in a letter in a drawer of the desk in my bedroom for fifty-three years. I have not, in those fifty-three years, written to him.",
+   "text": "I have been carrying your grandfather's name in a letter in a drawer of the desk in my bedroom for fifty-five years. I have not, in those fifty-five years, written to him.",
    "expr": "serious",
    "t": "say"
   },
@@ -550,7 +550,7 @@
   },
   {
    "char": "hans",
-   "text": "[shot:closeup person]Marina. You did not know. The foundation did not, in any of the reports I have read of them, know about me. I have been outside what the foundation knew about. I have been off the map for fifty-three years.",
+   "text": "[shot:closeup person]Marina. You did not know. The foundation did not, in any of the reports I have read of them, know about me. I have been outside what the foundation knew about. I have been off the map for fifty-five years.",
    "expr": "serious",
    "t": "say"
   },
@@ -712,7 +712,7 @@
   },
   {
    "char": "marit",
-   "text": "I am not angry with you, Marina. I have been angry with the foundation for fifty-one years. I have not been angry with the people who work for the foundation. I have been angry with the institution.",
+   "text": "I am not angry with you, Marina. I have been angry with the foundation for fifty years. I have not been angry with the people who work for the foundation. I have been angry with the institution.",
    "expr": "serious",
    "t": "say"
   },

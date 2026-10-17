@@ -152,16 +152,41 @@ godot/tools/voice_ages.py` lists them: **9 new voices to cast**:
 33 eras keep a voice that already exists. `ages_audit.py` keeps the ledger
 and the roster in step (run by the scoped suite).
 
-**Held for the author** (in the ledger's `edits`, marked HELD):
-1. **Vol 7's two calendars.** Its dated events are 2052, but its stated ages
-   (Aud 73, Hans 68, "N years since") count from about 2022–24. Under 2052,
-   Aud and Hans were 15 and 10 in 1994, and their 1994 looks would be dreams
-   of their older selves. Cale would be 77, but the roster says 40s.
-2. Vols 5 and 6 are the same year by the text; the lore's "twenty years of
-   evolution" belongs to an older timeline.
-3. Vol 4 daddy_b/c set Dean 10–20 years after daddy_a. Should those use the
-   older base?
-4. `miriam_2025` rests on a nine-year gap the text doesn't support. Retire
-   it?
-5. Keys that route to two people: `wren`, `sammy`, `margaret`, `brandon`;
-   vol 6's bassist `nate`.
+**The author's rulings (2026-10-16), applied:**
+1. *"Reconcile what works best for the narrative."* Vol 7 stays in **2052**
+   and the ages people state stand. Personal histories inside living
+   characters' lives moved **forward 28 years** (205 edits in 42 vol 7
+   scenes), so every "N years since" adds up:
+   - Olaf drowned in November 2006; the cabin was built in 2007; Marit's
+     bowl dates from 2002; Hans's poem came in November 2017.
+   - Small Wood 1993–94 is fixed by vol 2: Cale was 19 then and is 77 now,
+     and his "thirty years" became fifty-eight.
+   - **Aud is a seam figure**, the same ageless waitress in every era: one
+     model, one voice.
+   - **The 1994 Hans is his uncle, also Hans**, who opened the bakery in
+     1991. Vol 7 names his father as Werner Senior, the Bern printer.
+   - Per is 64 and Marit 84.
+   - Eddvard Halvorsen was 45 in '07 (the one stray "Lindgren" is fixed).
+   - Olaus survived the wreck and died in 2027.
+2. Vol 4 daddy_b/c: **the older Dean** (base model and voice).
+3. Miriam: nine years is fine. **`miriam_2025` is retired**; one model, one
+   voice.
+4. Shared names got **surnames**:
+   - vol 1's **Margaret Hale**;
+   - vol 5's **Sammy Guidry**;
+   - vol 6's **Wren Haskell**;
+   - vol 6's **Nate Ochoa**;
+   - vol 6's BT, **Brandon Trahan**.
+
+   The speaker labels carry the full names. Voiced narration lines were left
+   as recorded.
+
+Still open from the reconciliation (seam readings, not errors):
+- vols 5–6 show Tem as an adult in 2025, though she is born in 2026, and
+  vol 5's "a midwife named Lena" is unborn then;
+- the slowstick catalog has Olaf buying sticks until 2044;
+- `ch22_floors`' release dates differ from the catalog.
+
+On merge, claude/vol1-4-source-text needs:
+- its vol 1 Margaret labelled "Margaret Hale";
+- its vol 2 Aud and Hans read as the ageless Aud and the first Hans.

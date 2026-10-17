@@ -1,8 +1,8 @@
 # VOL 7 · LAND OF MILK AND HONEY · Wiki
 
 > **Era (ruled 2026-09-26): the 2050s.** The text agrees — the cabin
-> built in '79, a funeral in 2042, the Tideline's storefront 2014-2034,
-> Sal at Pizza Pirate since '91. The wiki used to say 2025; every date
+> built in '07, a funeral in 2042, the Tideline's storefront 2014-2034,
+> Sal at Pizza Pirate since '19. The wiki used to say 2025; every date
 > below reads against the 2050s. vol6 (COMMUNITY PLANNED) is 2025.
 
 The synthesizing entry point for vol 7 of *Modern Mythology* — the
@@ -48,7 +48,7 @@ response.
 | **Petra** | The proprietor of the Salty Tome bookstore · Lena's landlord (the apartment is above the bookstore) · Lena's first-issue copier-host · sells everything from tide charts to local zines · holds the John Frank book Wren receives |
 | **Kai** | Runs Board Lords skate shop (in the building's current iteration — was Wagner's Hardware once · was nothing for three years · is now Board Lords) · skater since age fourteen · the cannery is his secondary cathedral · met the SCUMM Machine when he was thirteen and has known Sal Carratura ever since |
 | **Per** | Daily Grind regular · POV chapter 14 · relationship to the SCUMM machine is, by the codex, load-bearing |
-| **Sal Carratura** | 64 · proprietor of Pizza Pirate on Cypress St since 1991 · custodian of the SCUMM Machine since 2007 · accepts new SCUMM sticks without explanation, never buys, never sells |
+| **Sal Carratura** | 64 · proprietor of Pizza Pirate on Cypress St since 2019 · custodian of the SCUMM Machine since 2007 · accepts new SCUMM sticks without explanation, never buys, never sells |
 | **Finn** | Carries the radio that picks up signals not on any allocated band · inspects the cannery's pilings at low tide · carries a portable UV light |
 
 ### Vol 5 / vol 6 figures appearing or referenced

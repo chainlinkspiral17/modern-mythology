@@ -3834,6 +3834,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-16 · pass 110: THE CALENDAR RECONCILED, NAMES MADE DISTINCT.** The user:
+"reconcile what works best for the narrative", "older", "9 years is fine without a new
+model/voice", "they need distinct names, add a surname".
+- **Vol 7 stays in 2052.** 205 edits move personal histories 28 years forward,
+  plus eight follow-ons (Per 64, Marit 84, Eddvard Halvorsen, Olaus survived
+  the wreck, Roy's counts).
+- Aud is ageless (her 1994 look is retired); the 1994 Hans is his uncle;
+  Cale is 77.
+- Young Dean is fenced to vol 1 and daddy_a; `miriam_2025` is retired.
+- New surnames: Margaret Hale, Sammy Guidry, Wren Haskell, Nate Ochoa,
+  Brandon Trahan.
+
+Full list: `lore/_VOL1_4_SETS_AND_CAST.md` § Ages.
+
 **2026-10-16 · pass 109: AGES — A LOOK AND A VOICE PER ERA (draft 1).** The
 user: "characters need new looks and voices as they age." The age ledger
 `godot/tools/ages.json` covers 28 recurring characters and 50 eras across vols 1–7.

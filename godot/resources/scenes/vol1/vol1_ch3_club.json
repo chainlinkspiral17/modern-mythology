@@ -43,7 +43,7 @@
   },
   {
    "t": "show",
-   "char": "margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "pos": "center"
   },
@@ -61,7 +61,7 @@
   },
   {
    "t": "say",
-   "char": "Margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "text": "And seconded. Any of the males want to ratify this amendment?"
   },

@@ -1123,13 +1123,13 @@
     {
       "slug": "sammy",
       "kind": "hero",
-      "name": "Sammy",
+      "name": "Sammy Guidry",
       "file": "sammy.glb",
       "vol": [
         5
       ],
       "keys": [
-        "sammy",
+        "sammy_guidry",
         "sammy_at_the_bar",
         "sammy_for_dante",
         "sammy_phone"
@@ -1160,7 +1160,8 @@
           "src": "games/empress/finale.json",
           "text": "Sammy is wiping down the bar."
         }
-      ]
+      ],
+      "notes": "(2026-10-16: a surname so the name is this person's alone — the user: \"they need distinct names, add a surname\".)"
     },
     {
       "slug": "hector",
@@ -1331,9 +1332,6 @@
           "src": "lore/_GAUNTLET_BUILD_WIKI.md",
           "text": "silver-haired woman, Joanna's agent; drives Nicola/Aria/Third west to Smolvud; her crow rides on the roof"
         }
-      ],
-      "looks": [
-        "miriam_2025"
       ]
     },
     {
@@ -2723,12 +2721,13 @@
     {
       "slug": "nate_bassist",
       "kind": "hero",
-      "name": "Nate (Gallatin Band bassist)",
+      "name": "Nate Ochoa",
       "file": "nate_bassist.glb",
       "vol": [
         6
       ],
       "keys": [
+        "nate_ochoa",
         "nate_bassist"
       ],
       "tag": "vol6 · 17 · green hair · skater",
@@ -2736,7 +2735,7 @@
       "pose": "a-pose",
       "prompt": "Nate, 17, the Gallatin Band's bassist and a skater. Hair dyed traffic-light green, a thrift flannel over a white tee, chinos rolled at the ankle, skate shoes, a bass guitar strap over one shoulder.",
       "texture_prompt": "green and black flannel, white cotton tee, tan chinos, black skate shoes, bright green hair",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits. (2026-10-16: a surname so the name is this person's alone — the user: \"they need distinct names, add a surname\".)",
       "canon": [
         {
           "src": "vol6/vol6_ch5_garage.json",
@@ -2792,21 +2791,21 @@
     {
       "slug": "wren_vol6",
       "kind": "hero",
-      "name": "Wren (vol6)",
+      "name": "Wren Haskell",
       "file": "wren_vol6.glb",
       "vol": [
         6
       ],
       "keys": [
-        "wren_vol6",
-        "wren"
+        "wren_haskell",
+        "wren_vol6"
       ],
       "tag": "vol6 · 28 · lavender hair · NOT the vol7 Wren",
       "aspect": "3:4",
       "pose": "a-pose",
       "prompt": "Wren, 28, the front section of her hair dyed lavender, a canvas overshirt with a band patch on the pocket, black jeans, boots, a canvas messenger bag. Direct, funny, a little sad.",
       "texture_prompt": "tan canvas overshirt with an embroidered patch, black denim, brown leather boots, lavender and brown hair",
-      "notes": "Scene key 'wren' routes to wren.glb (the vol7 15-year-old). Use this file for vol6 scenes explicitly.",
+      "notes": "Scene key 'wren' routes to wren.glb (the vol7 15-year-old). Use this file for vol6 scenes explicitly. (2026-10-16: a surname so the name is this person's alone — the user: \"they need distinct names, add a surname\".)",
       "canon": [
         {
           "src": "vol6/vol6_ch12_cosmic.json",
@@ -3091,7 +3090,7 @@
       "tag": "vol7 · Daily Grind regular · POV ch14",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Per, 60, Hans's son-in-law at the bakery. Tall, big-handed, a canvas work coat with flour on the shoulder, a wool cap, work trousers, boots. A load-bearing quietness.",
+      "prompt": "Per, 64, Hans's son-in-law at the bakery. Tall, big-handed, a canvas work coat with flour on the shoulder, a wool cap, work trousers, boots. A load-bearing quietness.",
       "texture_prompt": "tan canvas work coat dusted with flour, grey wool cap, dark work trousers, brown leather boots",
       "canon": [
         {
@@ -3213,9 +3212,9 @@
       "tag": "vol7 · ChillWave Video · stick shop",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Cale, 40s, runs ChillWave Video, the stick shop. Wax canvas coat that smells of tobacco, a faded t-shirt, jeans, boots, keys to an F-150 in one hand, a SCUMM stick in the other. Stubble, tired amused eyes.",
+      "prompt": "Cale, 77 — white-haired, weathered, still upright — runs ChillWave Video, the stick shop. Wax canvas coat that smells of tobacco, a faded t-shirt, jeans, boots, keys to an F-150 in one hand, a SCUMM stick in the other. Stubble, tired amused eyes.",
       "texture_prompt": "brown waxed canvas coat, faded grey cotton tee, blue denim, brown leather boots",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits. (2026-10-16: nineteen in February 1994, so 77 in 2052.)",
       "canon": [
         {
           "src": "vol7/vol7_ch16_eight.json",
@@ -3350,7 +3349,7 @@
       "tag": "vol7 · keeps Olaf's bowl",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Marit, 68, Per's mother. Small, neat, a blue cardigan buttoned over a white blouse, grey slacks, house shoes, holding a small cedar bowl (Olaf's) in both hands.",
+      "prompt": "Marit, 84, Per's mother. Small, neat, a blue cardigan buttoned over a white blouse, grey slacks, house shoes, holding a small cedar bowl (Olaf's) in both hands.",
       "texture_prompt": "blue wool cardigan, white cotton blouse, grey slacks, grey felt house shoes, small carved cedar bowl",
       "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
       "canon": [
@@ -3494,7 +3493,7 @@
       "pose": "a-pose",
       "prompt": "Aud, 73, runs the Missing Link bar in Smolvud. Tall, gaunt, white hair cropped close, a long black wool coat, a bar towel over one shoulder, dark trousers, boots. Says little.",
       "texture_prompt": "black wool coat, black trousers, black leather boots, white bar towel, white hair, pale skin",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits. (2026-10-16 calendar reconciliation: Aud is a seam figure — the same ageless waitress in 1994, 2009 and 2052; one model, one voice.)",
       "canon": [
         {
           "src": "vol7/vol7_ch9_evening.json",
@@ -3512,9 +3511,6 @@
           "src": "lore/milk_and_honey/_ART_MANIFEST.md",
           "text": "Aud at the counter, seventy-three years old, knows everyone by name."
         }
-      ],
-      "looks": [
-        "aud_1994"
       ]
     },
     {
@@ -5984,14 +5980,14 @@
     {
       "slug": "bt",
       "kind": "hero",
-      "name": "BT (Brandon)",
+      "name": "BT (Brandon Trahan)",
       "file": "bt.glb",
       "vol": [
         6
       ],
       "keys": [
+        "brandon_trahan",
         "b.t.",
-        "brandon",
         "bt"
       ],
       "tag": "vol6 · Brandon · the kid the team protects · Centro Foods nights with Diego · El Rancho at four AM",
@@ -6017,7 +6013,7 @@
           "text": "He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap."
         }
       ],
-      "notes": "SPARSE on the face — canon gives the polo, the tag, the cap, the car. Edit before spending credits.",
+      "notes": "SPARSE on the face — canon gives the polo, the tag, the cap, the car. Edit before spending credits. (2026-10-16: a surname so the name is this person's alone — the user: \"they need distinct names, add a surname\".)",
       "prompt_mode": "append"
     },
     {
@@ -6895,44 +6891,6 @@
         "scenes": [
           "vol5_ch5_hierophant"
         ]
-      },
-      "prompt_mode": "append"
-    },
-    {
-      "slug": "miriam_2025",
-      "kind": "hero",
-      "name": "Miriam (vol6, the courthouse)",
-      "file": "miriam_2025.glb",
-      "vol": [
-        6
-      ],
-      "keys": [
-        "miriam_vol6",
-        "miriam_2025"
-      ],
-      "tag": "vol6 ch3, ch8 · across the aisle at the courthouse · one hand raised off her lap: I am here",
-      "aspect": "3:4",
-      "pose": "a-pose",
-      "texture_prompt": "long grey wool coat, black turtleneck, black trousers, low black boots, white jaw-length hair, silver-headed cane",
-      "prompt": "Miriam in vol6, 70s, Joanna's agent nine years on. The silver hair still cut sharp at the jaw, now white; the long grey wool coat and black turtleneck, black trousers, low black boots; a cane with a silver head instead of the driving gloves. Elegant, dry, unhurried; the crow gone from her shoulder.",
-      "canon": [
-        {
-          "src": "vol6/vol6_ch8_courthouse.json",
-          "text": "Miriam, across the aisle, meets Sam's eye."
-        },
-        {
-          "src": "vol6/vol6_ch8_courthouse.json",
-          "text": "raises one hand off her lap in the universal small gesture of I am here."
-        }
-      ],
-      "notes": "The cane and the missing crow are proposals, not canon. Edit before spending credits.",
-      "base": "miriam",
-      "look": {
-        "label": "vol6, nine years on",
-        "vols": [
-          6
-        ],
-        "when": "the courthouse (ch8) — vol5's Miriam is in her 60s; the scenes are ~9 years apart (Maya 7 → 16)"
       },
       "prompt_mode": "append"
     },
@@ -34485,20 +34443,20 @@
     {
       "slug": "margaret_vol1",
       "kind": "hero",
-      "name": "Margaret (vol1)",
+      "name": "Margaret Hale",
       "file": "margaret_vol1.glb",
       "vol": [
         1
       ],
       "keys": [
-        "margaret"
+        "margaret_hale"
       ],
       "tag": "vol1 ch3 · the bar trio · the one they're setting Faust up with · mock-parliamentary",
       "aspect": "3:4",
       "pose": "a-pose",
       "prompt": "Margaret, late 20s, the stressed one of the bar trio that Helen and Emily keep trying to set up with Faust — softer, wry. Straight auburn hair in a low bun coming loose, a tired pretty face, a half-smile. Straight from work: a charcoal blazer over a cream silk blouse, slim black trousers, low black ankle boots, a work tote on her shoulder and a phone in her hand.",
       "texture_prompt": "charcoal wool blazer, cream silk blouse, black trousers, black leather ankle boots, tan canvas tote, auburn hair",
-      "notes": "SPARSE — vol1's bar chorus has no descriptions; proposed to sit beside helen (dark curls, black slip dress) and emily (fair hair, cardigan) without matching either. A different person from vol7's Margaret (margaret_coop); CharLayer keeps the shared key apart by volume.",
+      "notes": "SPARSE — vol1's bar chorus has no descriptions; proposed to sit beside helen (dark curls, black slip dress) and emily (fair hair, cardigan) without matching either. A different person from vol7's Margaret (margaret_coop); CharLayer keeps the shared key apart by volume. (2026-10-16: a surname so the name is this person's alone — the user: \"they need distinct names, add a surname\".)",
       "canon": [
         {
           "src": "vol1/vol1_ch3_bar.json",
@@ -36001,13 +35959,14 @@
       "prompt_mode": "append",
       "base": "dickens_dean",
       "look": {
-        "label": "young · early 30s (vol1 Faust 3, vol2 'Now', vol4 daddy)",
+        "label": "young · early 30s (vol1 Faust 3; vol4 daddy, the first part)",
         "vols": [
           1,
           2,
           4
         ],
         "scenes": [
+          "vol4_daddy_a",
           "vol1_introduction",
           "vol1_ch4_dream_bar",
           "vol1_ch4_interstitial",
@@ -36028,67 +35987,15 @@
           "vol1_ch13_deep_end",
           "vol1_ch14_painting",
           "vol1_ch15_river_turn",
-          "vol1_ch16_four_am",
-          "vol4_daddy_a",
-          "vol4_daddy_b",
-          "vol4_daddy_c"
+          "vol1_ch16_four_am"
         ],
         "when": "vii. daddy — courting Esther, raising Aria, telling Esther their daughter is gone"
       }
     },
     {
-      "slug": "aud_1994",
-      "kind": "hero",
-      "name": "Aud (1994, the Missing Link in Small Wood)",
-      "file": "aud_1994.glb",
-      "vol": [
-        2,
-        4
-      ],
-      "keys": [],
-      "base": "aud",
-      "look": {
-        "label": "1994 · the Missing Link, before the bread",
-        "vols": [
-          2,
-          4
-        ],
-        "scenes": [
-          "vol2_ch7_scumm_c",
-          "vol2_ch7_scumm_d",
-          "meld_seam_1_2",
-          "meld_kaleidoscope_a",
-          "meld_kaleidoscope_c",
-          "meld_kaleidoscope_g"
-        ],
-        "when": "D. Dean's spring-1994 dream journal (vii. SCUMM) and the meld seams set at Aud's diner — about thirty years before she is vol7's seventy-three"
-      },
-      "tag": "vol2 vii. SCUMM · meld · Aud at the Missing Link counter, 1994 · sleeves rolled, glasses on the chain",
-      "aspect": "3:4",
-      "pose": "a-pose",
-      "prompt": "Aud in 1994, in her early forties, behind the counter of the Missing Link diner in Small Wood on the Oregon coast at 5:40 in the morning. The same long gaunt frame and the same watchful face she has at seventy-three, thirty years younger: dark-blonde hair going early grey, pinned up off the neck, a few loose strands. A faded blue chambray work shirt with the sleeves rolled to the elbow, a short white waitress apron tied at the waist, straight-leg jeans, brown leather work boots; reading glasses hanging on a beaded chain at her chest; a glass coffee pot in one hand. Weathered small-town warmth, says little, misses nothing.",
-      "texture_prompt": "faded blue chambray shirt, white cotton half-apron, straight-leg blue denim, brown leather boots, reading glasses on a beaded chain, glass coffee pot, dark-blonde hair going grey",
-      "notes": "A look of the vol7 aud entry — the base needs \"looks\": [\"aud_1994\"]. Canon gives only 'sleeves rolled, glasses on the chain, pot in hand'; hair, shirt, apron and age are a PROPOSAL. AGE CAUTION: vol7 says 'Aud was seventy-three' and vol7 is ruled the 2050s (~2052), which would make her about 15 in 1994 — impossible for the diner woman in these scenes. vol7's own relative dates (Hans's 'thirty-three years since' Nov 1989, Cale's 'thirty years' since Feb 1994) put vol7's stated ages on a ~2022-24 calendar, which makes 1994 Aud early 40s. If the user instead rules the 1994 Aud is the dream prefiguring the elder Aud ('It's the one you're going to make'), drop this look and route these scenes to aud. Edit before spending credits.",
-      "canon": [
-        {
-          "src": "vol2/vol2_ch7_scumm_c.json",
-          "text": "Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain."
-        },
-        {
-          "src": "vol4/meld_kaleidoscope_c.json",
-          "text": "Aud comes in through the door that isn't on any street. Sleeves rolled, glasses on the chain, pot in hand."
-        },
-        {
-          "src": "vol2/meld_seam_1_2.json",
-          "text": "They've been at it since I unlocked. Coffee, hon?"
-        }
-      ],
-      "prompt_mode": "append"
-    },
-    {
       "slug": "hans_1994",
       "kind": "hero",
-      "name": "Hans (1994, the bakery window in Small Wood)",
+      "name": "the first Hans (Hans's uncle), 1994",
       "file": "hans_1994.glb",
       "vol": [
         2,
@@ -36097,7 +36004,7 @@
       "keys": [],
       "base": "hans",
       "look": {
-        "label": "1994 · the baker in the window, before the cap",
+        "label": "the first Hans (his uncle) · 1994",
         "vols": [
           2,
           4
@@ -36112,9 +36019,9 @@
       "tag": "vol2 vii. SCUMM · Hans in the bakery window, 1994 · 'Bread for the morning'",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Hans the baker in 1994, about forty, in the front window of his bakery in Small Wood on the Oregon coast, lifting a loaf off a tray. The same round strong build and big forearms he has at sixty-eight, his hair still thick and brown with no grey, bare-headed (the wool cap Greta knits him comes decades later), flour on his forearms and in his eyebrows. A long white cotton baker's apron dusted with flour, tied over a short-sleeved white work shirt, sleeves pushed higher; grey work trousers; black clogs. A man who wipes his hands on his apron before he shakes yours.",
+      "prompt": "The first Hans — Hans's uncle, who opened the bakery on Hemlock in 1991 — in 1994, about forty, in the front window of his bakery in Small Wood on the Oregon coast, lifting a loaf off a tray. The same round strong build and big forearms he has at sixty-eight, his hair still thick and brown with no grey, bare-headed (the wool cap Greta knits him comes decades later), flour on his forearms and in his eyebrows. A long white cotton baker's apron dusted with flour, tied over a short-sleeved white work shirt, sleeves pushed higher; grey work trousers; black clogs. A man who wipes his hands on his apron before he shakes yours.",
       "texture_prompt": "white cotton baker's apron dusted with flour, short-sleeved white work shirt, grey work trousers, black leather clogs, brown hair, floured forearms, round loaf of bread",
-      "notes": "A look of the vol7 hans entry — the base needs \"looks\": [\"hans_1994\"]. Canon gives the apron, the bakery window and 'Real Hans'; hair, shirt and age are a PROPOSAL. The bare head is grounded in vol7: Greta knitted his cap in 2046 because he could not, after sixty, work a 4 a.m. winter kitchen without one. AGE CAUTION: 'Hans was sixty-eight' in a 2050s vol7 would make him about 10 in 1994; his own memories (his brother told him of the foundation in 1969; the poem cycle came in November 1989, 'thirty-three years since') need him born about 1954, i.e. about forty in 1994. User ruling needed — see ages.json. Edit before spending credits.",
+      "notes": "A look of the vol7 hans entry — the base needs \"looks\": [\"hans_1994\"]. Canon gives the apron, the bakery window and 'Real Hans'; hair, shirt and age are a PROPOSAL. The bare head is grounded in vol7: Greta knitted his cap in 2046 because he could not, after sixty, work a 4 a.m. winter kitchen without one. AGE CAUTION: 'Hans was sixty-eight' in a 2050s vol7 would make him about 10 in 1994; his own memories (his brother told him of the foundation in 1969; the poem cycle came in November 1989, 'thirty-three years since') need him born about 1954, i.e. about forty in 1994. User ruling needed — see ages.json. Edit before spending credits. (2026-10-16: vol7 names Hans's father as Werner Senior, the Bern printer; the 1994 baker is his uncle, also Hans — the name and the bakery came down. Hans himself was ten in 1994.)",
       "canon": [
         {
           "src": "vol2/vol2_ch7_scumm_a.json",

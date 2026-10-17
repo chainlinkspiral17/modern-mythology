@@ -223,15 +223,15 @@
      "year": 2028,
      "age": "mid-40s to ~50",
      "derivation": "daddy_b runs from Aria aged ten to Aria in a college dorm; daddy_c is 'after' she is gone — 10-20 years past daddy_a.",
-     "look": "dickens_dean_daddy",
+     "look": "dickens_dean",
      "look_status": "EXISTING per the user's ruling (young look for vol4). Text-wise the base (silver, ~50) fits b/c better — optional edit offered",
      "visible": "by the text: greying, heavier, the base's register; by the ruling: unchanged",
      "voice": {
-      "key": "dickens_dean__young",
-      "casting": "same as 'young' unless the look moves to the base; then use dickens_dean__2025.",
-      "shares": "dickens_dean"
+      "key": "dickens_dean__2025",
+      "shares": "dickens_dean__2025",
+      "casting": "the older Dean (the user, 2026-10-16: daddy_b/c use the older look)"
      },
-     "source": "vol4_daddy_b nodes 21-39; vol4_daddy_c node 6"
+     "source": "vol4_daddy_b nodes 21-39; vol4_daddy_c node 6 · user ruling 2026-10-16: older"
     },
     {
      "id": "photo_1978",
@@ -467,7 +467,7 @@
    "keys": [
     "aud"
    ],
-   "born": 1951,
+   "born": null,
    "born_source": "CONFLICT. vol7 'Aud was seventy-three' (vol7_ch9_evening node 37). On vol7's ruled year (2052) she is born 1979 and is 15 in 1994 — impossible for the diner woman of vol2/meld. On the ~2022-24 calendar vol7's own relative counts use (see hans, cale) she is born ~1950-51 and is early 40s in 1994. born=1951 assumes the latter; the user must rule (or read 1994 Aud as the dream prefiguring the elder woman: 'It's the one you're going to make').",
    "eras": [
     {
@@ -487,13 +487,13 @@
      "year": 1994,
      "age": "early 40s",
      "derivation": "see born_source.",
-     "look": "aud_1994",
+     "look": "aud",
      "look_status": "NEW (new_looks.json)",
      "visible": "hair not yet white, sleeves rolled, reading glasses on a chain, coffee pot",
      "voice": {
-      "key": "aud__1994",
-      "casting": "Aud in her early 40s: the diner voice — 'Coffee, hon?' — weathered small-town Oregon warmth, low and slightly gravelly, knows more than she says. (This is what voice_map 'aud' is cast for now: '50s'.)",
-      "shares": "aud"
+      "key": "aud__ageless",
+      "shares": "aud",
+      "casting": "Aud's one voice, ageless across the seams"
      },
      "source": "vol2_ch7_scumm_c node 7; meld_kaleidoscope_c node 7; meld_seam_1_2 node 21"
     },
@@ -517,18 +517,20 @@
      "look_status": "EXISTING base",
      "visible": "cap of white hair, wool coat, brown leather boots",
      "voice": {
-      "key": "aud__2052",
-      "casting": "Aud at 73: an old woman's low, dry, unhurried Oregon voice, thinner and slower than the diner voice, still 'hon'; long pauses."
+      "key": "aud__ageless",
+      "shares": "aud",
+      "casting": "Aud's one voice, ageless across the seams"
      },
      "source": "vol7_ch9_evening node 37; vol7_ch17_bakery (roster canon)"
     }
-   ]
+   ],
+   "identity": "a seam figure: the same ageless waitress in every era (2026-10-16 reconciliation)"
   },
   "hans": {
    "keys": [
     "hans"
    ],
-   "born": 1954,
+   "born": 1984,
    "born_source": "CONFLICT. vol7 'Hans was sixty-eight' (vol7_ch15_loft). His own memories need an earlier birth: his brother told him of the foundation 'in 1969' (vol7_ch15_loft node 47), the poem cycle arrived 'November of '89' and 'the thirty-three years since' (vol7_ch15_bread nodes 31, 45) put vol7's present at ~2022 → born ~1954. On the ruled 2052 he would be born 1984 and 10 in 1994. born=1954 follows his memories; user ruling needed.",
    "eras": [
     {
@@ -543,7 +545,7 @@
       "meld_kaleidoscope_c"
      ],
      "year": 1994,
-     "age": 40,
+     "age": "about 40 (the uncle)",
      "derivation": "born ~1954. 'Real Hans' exists in 1994 (vol2_ch7_scumm_a node 27).",
      "look": "hans_1994",
      "look_status": "NEW (new_looks.json)",
@@ -552,7 +554,8 @@
       "key": "hans__1994",
       "casting": "Hans at 40: a gentle flour-dusted baker's baritone with a faint Swiss-German (Bern) edge, warm and plain; 'Bread for the morning' — one take that nearly breaks."
      },
-     "source": "vol2_ch7_scumm_a nodes 27-32"
+     "source": "vol2_ch7_scumm_a nodes 27-32",
+     "who": "the first Hans — his uncle, who opened the bakery in 1991 (Hans himself was ten)"
     },
     {
      "id": "2052",
@@ -684,7 +687,7 @@
      "visible": "silver braid, grey wool coat, the crow",
      "voice": {
       "key": "miriam__2025",
-      "casting": "Miriam, mid-60s: calm as a nurse, unflappable, warm low alto ('Yes, sweetheart').",
+      "casting": "Miriam's one voice across vols 5-6 (user: no new model or voice for the nine years)",
       "shares": "miriam"
      },
      "source": "vol5_ch18_moon; vol6_ch8_courthouse (roster canon)"
@@ -1348,7 +1351,18 @@
    "notes": "Single era. vol6_ch23_sleep's Helen (Anita's scheduler) and vol7's 'Helen Soong' (Glitch Report) are different people."
   },
   "margaret_vol1": {
-   "keys": "see roster",
+   "keys": [
+    "s",
+    "e",
+    "e",
+    " ",
+    "r",
+    "o",
+    "s",
+    "t",
+    "e",
+    "r"
+   ],
    "born": null,
    "single_era": true,
    "eras": [
@@ -1529,7 +1543,6 @@
   }
  ],
  "_flags": [
-  "VOL7 CARRIES TWO CALENDARS: dated events follow the 2050s ruling ('50, '42, 2052) but stated ages (Aud 73, Hans 68, Per 60, Sal 64) and 'N years since' counts (Hans 'thirty-three years since' Nov 1989; Cale 'thirty years' since Feb 1994; Tem: 'Hans has known about the foundation since his brother in Bern told him in 1969') still assume vol7 ≈ 2022-24. The 1994 eras for Aud and Hans only work on the old calendar. User ruling needed before spending credits on aud_1994 / hans_1994.",
   "VOL5 vs VOL6: by the text they are the same year (spring vs summer 2025); the lore's 'aged forward' / 'twenty years of demon evolution' framing (_VOL5_WIKI.md:73-77, _COMMUNITY_PLANNED_LORE.md:668-670) is from an older timeline. Consequence: no vol5→vol6 era splits for the vol5 cast; miriam_2025 is unnecessary; Frasier's 'middle-aged' CP description conflicts with the young vol5 model.",
   "VOL5 internal drift: 2024 (ch15), 2025 (vol6 cross-ref), 2026 (ch10 comb; ch21 'D'AMBROSIO'S. 1983–2026').",
   "Dickens Dean is born 1977 (vol7), 'perhaps fifty' in 2025 (vol5), yet '~40' in a 1978 photo and 'eighty-something' (vol6) and unchanged since 1987 (vol5 ch20): the traveller's look ages on its own clock.",
@@ -1633,7 +1646,7 @@
     "vol1_ch16_four_am"
    ],
    "why": "OPTIONAL, against the letter of the ruling: daddy_b runs Aria from ten to college and daddy_c is 'after' — Dean is 10-20 years older than in daddy_a; routing b/c to the base (silver, ~50) would match the text. Ask the user.",
-   "status": "HELD: OPTIONAL — the user's call: route vol4 daddy_b/c to the older base"
+   "status": "applied 2026-10-16 (user: older)"
   },
   {
    "slug": "dickens_dean",
@@ -1705,7 +1718,7 @@
    "field": "look (retire or re-scope)",
    "new_value": "retire; route vol6 to miriam",
    "why": "its premise ('nine years on', Maya 7 → 16) is wrong: Maya's age-7 scene is a ten-year flashback, and vol5's present is spring 2025 — six weeks before vol6 opens (vol6_ch1_maya_bedroom nodes 6-7). vol6 still sees 'a silver-haired woman in a gray wool coat'. Cane, white hair and missing crow were proposals.",
-   "status": "HELD: needs the user's calendar decision"
+   "status": "applied 2026-10-16: miriam_2025 retired (user: nine years is fine without a new model or voice)"
   },
   {
    "slug": "chess",
@@ -1786,7 +1799,7 @@
    "field": "prompt",
    "new_value": "(age: '40s' → '70s' if vol7 stays 2052; keep if the user moves vol7's ages to the old calendar)",
    "why": "Cale was nineteen in February 1994 (vol7_ch13_cale node 58) → 77 in 2052.",
-   "status": "HELD: needs the user's calendar decision (vol7 2052 vs the older count)"
+   "status": "applied 2026-10-16: 70s (vol7 stays 2052)"
   },
   {
    "slug": "wagner",
@@ -1804,5 +1817,6 @@
    "why": "that speaker is a fiftyish man in a golf shirt, not the trench-coat Stranger.",
    "status": "HELD: routing note only"
   }
- ]
+ ],
+ "calendar_ruling": "2026-10-16 · the user: 'reconcile what works best for the narrative.' Vol 7 stays in 2052 and its stated ages stand; personal histories inside living characters' lives moved forward 28 years (Olaf drowned Nov 2006, the cabin built 2007, Marit's bowl 2002, Hans's poem Nov 2017); Small Wood 1993-94 is fixed by vol 2 (Cale 19 then, 77 now); Aud is ageless; the 1994 Hans is his uncle; Per 64, Marit 84, Eddvard Halvorsen 45 in '07; Olaus survived the wreck and died in 2027."
 }

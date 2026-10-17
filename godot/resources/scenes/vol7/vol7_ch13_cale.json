@@ -245,7 +245,7 @@
     },
     {
       "char": "cale",
-      "text": "I have been holding this for thirty years. I am — I am going to put it down now.",
+      "text": "I have been holding this for fifty-eight years. I am — I am going to put it down now.",
       "expr": "serious",
       "t": "say"
     },
@@ -399,7 +399,7 @@
     },
     {
       "char": "per",
-      "text": "My father, in the notebook I burned in '86, had three dreams written down at the back of the notebook.",
+      "text": "My father, in the notebook I burned in '14, had three dreams written down at the back of the notebook.",
       "expr": "serious",
       "t": "say"
     },
@@ -417,13 +417,13 @@
     },
     {
       "char": "per",
-      "text": "I burned the notebook in '86 and the dreams went with it.",
+      "text": "I burned the notebook in '14 and the dreams went with it.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "I have been carrying — I have been carrying for fifty years the fact that my father had dreams about a person he could not see who was going to come through the listening, and I have not, in the fifty years, said it.",
+      "text": "I have been carrying — I have been carrying for forty-five years the fact that my father had dreams about a person he could not see who was going to come through the listening, and I have not, in the forty-five years, said it.",
       "expr": "serious",
       "t": "say"
     },

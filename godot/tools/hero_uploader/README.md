@@ -108,8 +108,8 @@ Routing (CharLayer reads the roster at start): a look's own `keys`
 route the scenes that name it (`maya_kid`, `maya_age_7` → the age-7
 model), and a BARE key routes to a look when the current scene falls
 inside the look's `vols` — narrowed to its `scenes` (scene ids) when
-given, because a costume is a scene, not a volume: `miriam` in vol6
-is `miriam_2025.glb`; `ben` in `vol6_ch13_two_a_days` is the pads, in
+given, because a costume is a scene, not a volume: `dickens_dean` in
+vol1 is `dickens_dean_daddy.glb`; `ben` in `vol6_ch13_two_a_days` is the pads, in
 `vol6_ch22_vinton` the TE-1 jersey. A look whose GLB is not built yet
 falls through to the base model.
 

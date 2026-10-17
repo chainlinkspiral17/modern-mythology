@@ -200,7 +200,7 @@
     },
     {
       "t": "show",
-      "char": "nate",
+      "char": "Nate Ochoa",
       "expr": "neutral",
       "pos": "right"
     },
@@ -210,13 +210,13 @@
     },
     {
       "t": "show",
-      "char": "nate",
+      "char": "Nate Ochoa",
       "expr": "neutral",
       "pos": "right"
     },
     {
       "t": "say",
-      "char": "Nate",
+      "char": "Nate Ochoa",
       "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_bridge/039.mp3"
@@ -267,7 +267,7 @@
     },
     {
       "t": "say",
-      "char": "Nate",
+      "char": "Nate Ochoa",
       "text": "That's the song.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_bridge/048.mp3"
@@ -316,7 +316,7 @@
     },
     {
       "t": "say",
-      "char": "Nate",
+      "char": "Nate Ochoa",
       "text": "Yes, ma'am.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_bridge/055.mp3"

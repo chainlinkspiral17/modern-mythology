@@ -129,7 +129,7 @@
     },
     {
       "char": "mateo",
-      "text": "[shot:closeup person]My dad knew. My dad got it off Tess in 2034. He was twenty. He skated it from 2034 to 2018 and then he hung it on the wall because he didn't want to break it.",
+      "text": "[shot:closeup person]My dad knew. My dad got it off Tess in 2034. He was twenty. He skated it from 2034 to 2046 and then he hung it on the wall because he didn't want to break it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -250,7 +250,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:closeup hans]At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. He had been the baker on Hemlock since 1991.",
+      "text": "[shot:closeup hans]At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. His uncle, also Hans, had opened the bakery on Hemlock in 1991.",
       "t": "narrate"
     },
     {
@@ -475,7 +475,7 @@
     },
     {
       "char": "hans",
-      "text": "The book was a private printing my brother made in Bern in 1989, twenty-one copies, of a poem cycle nobody outside our family has ever owned a copy of. I had a copy in Smolvud. I had told nobody.",
+      "text": "The book was a private printing my brother made in Bern in 2017, twenty-one copies, of a poem cycle nobody outside our family has ever owned a copy of. I had a copy in Smolvud. I had told nobody.",
       "expr": "serious",
       "t": "say"
     },

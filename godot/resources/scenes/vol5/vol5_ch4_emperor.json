@@ -287,13 +287,13 @@
   },
   {
    "t": "show",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "expr": "neutral",
    "pos": "right"
   },
   {
    "t": "say",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "text": "Yeah, Mr. D.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/057.mp3"
   },
@@ -305,7 +305,7 @@
   },
   {
    "t": "say",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "text": "Yes sir.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/059.mp3"
   },
@@ -317,7 +317,7 @@
   },
   {
    "t": "say",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "text": "Yes sir.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/061.mp3"
   },
@@ -391,7 +391,7 @@
   },
   {
    "t": "say",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "text": "Said he'd be back. Said he wasn't in a hurry.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/075.mp3"
   },
@@ -403,7 +403,7 @@
   },
   {
    "t": "say",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "text": "Tipped a hundred.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/077.mp3"
   },
@@ -415,7 +415,7 @@
   },
   {
    "t": "say",
-   "char": "sammy",
+   "char": "Sammy Guidry",
    "text": "For nothing, Mr. D.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/079.mp3"
   },

@@ -98,7 +98,7 @@
   },
   {
    "char": "cale",
-   "text": "I have been inside for an hour tonight. I have been at the edge of it for thirty years and now I am in it.",
+   "text": "I have been inside for an hour tonight. I have been at the edge of it for fifty-eight years and now I am in it.",
    "expr": "serious",
    "t": "say"
   },
@@ -161,13 +161,13 @@
   },
   {
    "char": "tem",
-   "text": "[shot:closeup person_b]The fourth is — by what I have been able to figure out — the fourth went to a man in Bandon in 1976 or 1977. I do not know which. The man was — by what is in Brandon's papers — the man was a fisherman named Olaus.",
+   "text": "[shot:closeup person_b]The fourth is — by what I have been able to figure out — the fourth went to a man in Bandon in 2004 or 2005. I do not know which. The man was — by what is in Brandon's papers — the man was a fisherman named Olaus.",
    "expr": "serious",
    "t": "say"
   },
   {
    "char": "tem",
-   "text": "Olaus was on the Margery with Olaf the night Olaf died. Olaus drowned that night too.",
+   "text": "Olaus was on the Margery with Olaf the night Olaf died. Olaus came home that night. Olaf did not.",
    "expr": "serious",
    "t": "say"
   },

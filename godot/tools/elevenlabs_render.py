@@ -93,6 +93,8 @@ def voice_lookup(vmap, char, scene_id=None):
     voice wins; otherwise the character's own voice, as before."""
     chars = vmap.get("characters", {})
     key = char.lower() if char else "_narrator"
+    if key not in chars and key.replace(" ", "_") in chars:
+        key = key.replace(" ", "_")         # "Sammy Guidry" speaks as sammy_guidry, as CharLayer keys him
     era_key = voice_ages.era_voice_key(key, scene_id) if scene_id else None
     era = chars.get(era_key) if era_key else None
     if era and era.get("voice_id"):

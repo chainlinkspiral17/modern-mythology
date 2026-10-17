@@ -156,6 +156,11 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	"dickens_dean":      "dickens_dean.glb",
 	"d._dean":           "dickens_dean.glb",
 	"sammy":             "sammy.glb",
+	"sammy_guidry":      "sammy.glb",          # vol5's bartender, by his full name (2026-10-16)
+	"wren_haskell":      "wren_vol6.glb",      # vol6's Wren (28), not vol7's
+	"nate_ochoa":        "nate_bassist.glb",   # vol6's bassist, not vol7's Nate Dean
+	"margaret_hale":     "margaret_vol1.glb",  # vol1's Margaret, not vol7's Margaret Coop
+	"brandon_trahan":    "bt.glb",             # vol6's BT
 	"hector":            "hector.glb",
 	"gloria":            "gloria_reyes.glb",
 	"gloria_reyes":      "gloria_reyes.glb",
@@ -385,6 +390,7 @@ const CHAR_ACCENTS := {
 	"aud":          Color("#b8b0e0"),
 	"petra":        Color("#c8a8d8"),
 	"wren":         Color("#98d0a0"),
+	"wren_haskell": Color("#c8b0e8"),     # vol6's Wren: her lavender streak
 	# vol1
 	"faust":        Color("#c89ae8"),
 }
@@ -656,8 +662,8 @@ static var _placeholder_logged: Dictionary = {}
 # ── LOOKS (2026-09-26) ── another age or costume of a hero. The roster
 # (godot/tools/meshy_roster.json) marks an entry with `base` (the hero
 # it is a look of) and `look {vols, chapters?}`; when the current scene
-# falls inside them, the BASE key routes to the look's GLB (Miriam in
-# vol6 is miriam_2025.glb; Ben in ch13/19 is the pads, in ch22 the TE-1
+# falls inside them, the BASE key routes to the look's GLB (Dean in
+# vol1 is dickens_dean_daddy.glb; Ben in ch13/19 is the pads, in ch22 the TE-1
 # jersey). The look's own keys (maya_kid → maya_daigle_age7.glb) route
 # through the roster too. A missing GLB falls through to the base.
 const PORTRAIT_3D_ROSTER := "res://tools/meshy_roster.json"

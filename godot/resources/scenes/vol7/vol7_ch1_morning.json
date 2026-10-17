@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cabin held maybe fifty-five degrees by the thermometer that had been on the wall above the door since Tem's grandfather had nailed it there in 1979."
+      "text": "The cabin held maybe fifty-five degrees by the thermometer that had been on the wall above the door since Tem's grandfather had nailed it there in 2007."
     },
     {
       "t": "narrate",
@@ -680,7 +680,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem at the wood stove cracked four eggs into the small cast-iron skillet that had been at the cabin since 1973 and that Tem had been cooking in for the past nineteen years."
+      "text": "Tem at the wood stove cracked four eggs into the small cast-iron skillet that had been at the cabin since 2001 and that Tem had been cooking in for the past nineteen years."
     },
     {
       "t": "narrate",
@@ -917,7 +917,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "The AI has been, on three separate evenings in the past three weeks, addressing me by [wave amp=6 freq=2]a name only my grandmother used[/wave], that I have never spoken aloud in front of any AI or any person who has, since 2019, been alive.",
+      "text": "The AI has been, on three separate evenings in the past three weeks, addressing me by [wave amp=6 freq=2]a name only my grandmother used[/wave], that I have never spoken aloud in front of any AI or any person who has, since 2047, been alive.",
       "expr": "neutral"
     },
     {
@@ -952,7 +952,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "I am not going to tell you the name. Not because I do not trust you. Because the name is the name and the name has stayed inside me since 2019 and I want it to stay there. I am telling you that the AI has been using it.",
+      "text": "I am not going to tell you the name. Not because I do not trust you. Because the name is the name and the name has stayed inside me since 2047 and I want it to stay there. I am telling you that the AI has been using it.",
       "expr": "neutral"
     },
     {

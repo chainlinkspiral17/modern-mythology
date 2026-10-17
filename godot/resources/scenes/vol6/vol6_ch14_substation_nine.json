@@ -542,7 +542,7 @@
   },
   {
    "t": "say",
-   "char": "Nate",
+   "char": "Nate Ochoa",
    "text": "We have three days.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/098.mp3"
@@ -675,7 +675,7 @@
   },
   {
    "t": "say",
-   "char": "Nate",
+   "char": "Nate Ochoa",
    "text": "Bridge by Friday.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/119.mp3"
@@ -719,7 +719,7 @@
   },
   {
    "t": "say",
-   "char": "Nate",
+   "char": "Nate Ochoa",
    "text": "[shot:closeup person]Flip Substation Nine and Blowback.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/127.mp3"

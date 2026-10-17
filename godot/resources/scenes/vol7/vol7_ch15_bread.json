@@ -84,13 +84,13 @@
     },
     {
       "char": "hans",
-      "text": "I have been holding a thing since 1989. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say.",
+      "text": "I have been holding a thing since 2017. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "She has known for forty years. She has not — by her own reading of how I should put it down — said it for me. I am going to say it.",
+      "text": "She has known for thirty-five years. She has not — by her own reading of how I should put it down — said it for me. I am going to say it.",
       "expr": "serious",
       "t": "say"
     },
@@ -130,13 +130,13 @@
     },
     {
       "char": "hans",
-      "text": "My brother Werner Junior took over the press in Bern in '86 when our father died. Werner Senior had been printing for the network since the early '60s.",
+      "text": "My brother Werner Junior took over the press in Bern in '14 when our father died. Werner Senior had been printing for the network since the early '60s.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "He had known about the network since his own father had pulled him into it in the 1920s — my brother told me this in '88.",
+      "text": "He had known about the network since his own father had pulled him into it in the 1920s — my brother told me this in '16.",
       "expr": "serious",
       "t": "say"
     },
@@ -154,7 +154,7 @@
     },
     {
       "char": "hans",
-      "text": "Werner Junior took it over. In '89 he decided to print a poem cycle he had been writing for some years. The cycle was not the kind of writing the press had been doing. The press did manuals. Recipes.",
+      "text": "Werner Junior took it over. In '17 he decided to print a poem cycle he had been writing for some years. The cycle was not the kind of writing the press had been doing. The press did manuals. Recipes.",
       "expr": "serious",
       "t": "say"
     },
@@ -166,7 +166,7 @@
     },
     {
       "char": "hans",
-      "text": "I got my copy in the mail in November of '89.",
+      "text": "I got my copy in the mail in November of '17.",
       "expr": "serious",
       "t": "say"
     },
@@ -196,25 +196,25 @@
     },
     {
       "char": "hans",
-      "text": "I read it twenty-three times that November. In the mornings before I opened the bakery, in the evenings after I closed. I did not know what to do with the poem. I was thirty-seven. I was a baker in Smolvud, Oregon. I did not have a place to put it.",
+      "text": "I read it twenty-three times that November. In the mornings before I opened the bakery, in the evenings after I closed. I did not know what to do with the poem. I was thirty-three. I was a baker in Smolvud, Oregon. I did not have a place to put it.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "I called Werner the third week of November. I asked him: brother. The Aria poem. What is the poem. Werner said: Hans. It is what it is. I have been writing about her since the early seventies.",
+      "text": "I called Werner the third week of November. I asked him: brother. The Aria poem. What is the poem. Werner said: Hans. It is what it is. I have been writing about her since the early two-thousands.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "I have been writing because I have been seeing her. Three times. The first in '73, in the print shop at three in the morning. The second in '78, at the house at two in the afternoon.",
+      "text": "I have been writing because I have been seeing her. Three times. The first in '01, in the print shop at three in the morning. The second in '06, at the house at two in the afternoon.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "The third in '81, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it.",
+      "text": "The third in '09, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it.",
       "expr": "serious",
       "t": "say"
     },
@@ -232,7 +232,7 @@
     },
     {
       "char": "hans",
-      "text": "Werner said: Hans. She is as real as the bread you bake on Wednesdays. She is the work the family has been doing for a hundred and fifteen years. She is going to come. She is going to come somewhere. Bern. Bandon. Smolvud.",
+      "text": "Werner said: Hans. She is as real as the bread you bake on Wednesdays. She is the work the family has been doing for a hundred and forty-three years. She is going to come. She is going to come somewhere. Bern. Bandon. Smolvud.",
       "expr": "serious",
       "t": "say"
     },
@@ -250,7 +250,7 @@
     },
     {
       "char": "hans",
-      "text": "That was the conversation. I have not, in the thirty-three years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name.",
+      "text": "That was the conversation. I have not, in the thirty-five years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name.",
       "expr": "serious",
       "t": "say"
     },
@@ -326,7 +326,7 @@
     },
     {
       "char": "marit",
-      "text": "Werner saw Aria in 1973.",
+      "text": "Werner saw Aria in 2001.",
       "expr": "serious",
       "t": "say"
     },
@@ -350,25 +350,25 @@
     },
     {
       "char": "marit",
-      "text": "Olaf went to Bern in the summer of '73 with the cutter base on the deployment to NATO exercises. He was off the cutter for six weeks in Europe. He came home with three notebooks of writing he had done while he was over there.",
+      "text": "Olaf went to Bern in the summer of '01 with the cutter base on the deployment to NATO exercises. He was off the cutter for six weeks in Europe. He came home with three notebooks of writing he had done while he was over there.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marit",
-      "text": "The notebooks were in the desk in his office. I read them after he died. Per read them too. Per burned them with the rest of the papers in '86.",
+      "text": "The notebooks were in the desk in his office. I read them after he died. Per read them too. Per burned them with the rest of the papers in '14.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marit",
-      "text": "There was a passage in them from late July of '73 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation.",
+      "text": "There was a passage in them from late July of '01 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marit",
-      "text": "The visit was — Olaf wrote — a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '73.",
+      "text": "The visit was — Olaf wrote — a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '01.",
       "expr": "serious",
       "t": "say"
     },
@@ -458,7 +458,7 @@
     },
     {
       "char": "marina",
-      "text": "Olaf has been carving her face since 1976.",
+      "text": "Olaf has been carving her face since 2004.",
       "expr": "serious",
       "t": "say"
     },
@@ -662,7 +662,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans. We have been — I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '76 or '77. The bowl that went missing in '31.",
+      "text": "Hans. We have been — I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '04 or '05. The bowl that went missing in '31.",
       "expr": "serious",
       "t": "say"
     },
@@ -824,7 +824,7 @@
     },
     {
       "char": "hans",
-      "text": "I am going to ask Roy. I have not, in fifty-three years, invited Roy to anything. I have been making the bakery not-his-place since 2031. The not-his-place was the right call for those decades. The decades are over.",
+      "text": "I am going to ask Roy. I have not, in twenty-one years, invited Roy to anything. I have been making the bakery not-his-place since 2031. The not-his-place was the right call for those decades. The decades are over.",
       "expr": "serious",
       "t": "say"
     },
@@ -878,7 +878,7 @@
     },
     {
       "char": "hans",
-      "text": "I am going to need you here. I am going to need all of you here. Tomorrow at six. For the first time in fifty-one years all four bowls will be in one place.",
+      "text": "I am going to need you here. I am going to need all of you here. Tomorrow at six. For the first time in fifty years all four bowls will be in one place.",
       "expr": "serious",
       "t": "say"
     },

@@ -56,7 +56,7 @@ def era_for(char, scene_id, vol=None):
     volume and the scene listed by neither: None, and the renderer keeps the
     character's own voice rather than guess an age."""
     ages = load_ages()
-    base = _cache["by_key"].get((char or "").lower())
+    base = _cache["by_key"].get((char or "").lower().replace(" ", "_"))
     if not base:
         return None
     eras = (ages["characters"][base].get("eras") or [])

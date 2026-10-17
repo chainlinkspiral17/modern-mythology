@@ -45,7 +45,7 @@
   },
   {
    "t": "show",
-   "char": "margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "pos": "center"
   },
@@ -75,7 +75,7 @@
   },
   {
    "t": "say",
-   "char": "Margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "text": "Sounds most affirming. I got yelled at."
   },
@@ -87,7 +87,7 @@
   },
   {
    "t": "say",
-   "char": "Margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "text": "My fault, this time. He's constantly stressing me out."
   },
@@ -121,7 +121,7 @@
   },
   {
    "t": "say",
-   "char": "Margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "text": "Thanks for helping me forget my troubles. If but for a moment."
   },
@@ -189,7 +189,7 @@
   },
   {
    "t": "say",
-   "char": "Margaret",
+   "char": "Margaret Hale",
    "expr": "neutral",
    "text": "Stop showing off, Emily. Else we'll leave you home next time."
   },

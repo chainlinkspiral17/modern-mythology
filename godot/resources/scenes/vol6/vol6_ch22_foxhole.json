@@ -115,7 +115,7 @@
   },
   {
    "t": "show",
-   "char": "nate",
+   "char": "Nate Ochoa",
    "expr": "neutral",
    "pos": "right"
   },
@@ -318,7 +318,7 @@
   },
   {
    "t": "show",
-   "char": "nate",
+   "char": "Nate Ochoa",
    "expr": "neutral",
    "pos": "right"
   },
@@ -352,7 +352,7 @@
   },
   {
    "t": "say",
-   "char": "Nate",
+   "char": "Nate Ochoa",
    "text": "No.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/065.mp3"
@@ -848,13 +848,13 @@
   },
   {
    "t": "show",
-   "char": "nate",
+   "char": "Nate Ochoa",
    "expr": "neutral",
    "pos": "right"
   },
   {
    "t": "say",
-   "char": "Nate",
+   "char": "Nate Ochoa",
    "text": "[shot:closeup person_b]Yeah, dude.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/158.mp3"

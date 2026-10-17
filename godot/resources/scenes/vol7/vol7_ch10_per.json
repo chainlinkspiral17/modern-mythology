@@ -199,7 +199,7 @@
     },
     {
       "char": "hans",
-      "text": "Marit's bowl. My wife's. She has had a bowl from her own mother since 1971. The bowl has been warm since the second week of July. She called Per in Eugene three weeks ago and she has been calling him every Sunday since.",
+      "text": "Marit's bowl. My wife's. She has had a bowl from her own mother since 1999. The bowl has been warm since the second week of July. She called Per in Eugene three weeks ago and she has been calling him every Sunday since.",
       "expr": "neutral",
       "t": "say"
     },
@@ -318,7 +318,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowl had been on Hans's wife's mother's shelf since 1971 and Kai had not known.",
+      "text": "The bowl had been on Hans's wife's mother's shelf since 1999 and Kai had not known.",
       "t": "narrate"
     },
     {

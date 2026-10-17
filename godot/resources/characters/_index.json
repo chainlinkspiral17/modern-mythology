@@ -133,8 +133,8 @@
     },
     {
       "id": "sammy",
-      "name": "Sammy",
-      "aliases": [],
+      "name": "Sammy Guidry",
+      "aliases": ["sammy_guidry"],
       "subtitle": "behind the bar",
       "arcana_associations": [],
       "primary_locale": "dambrosios_storefront",

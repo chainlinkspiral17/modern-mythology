@@ -408,12 +408,12 @@
     },
     {
       "char": "roy",
-      "text": "[shot:closeup roy~]I came to Smolvud in October of 1931. I had been in Bandon for the previous six years working on a fishing boat out of the small commercial harbor. I had been at the boat since 1925 when I had come over from Norway.",
+      "text": "[shot:closeup roy~]I came to Smolvud in October of 2031. I had been in Bandon for the previous six years working on a fishing boat out of the small commercial harbor. I had been at the boat since 2025 when I had come over from Norway.",
       "t": "say"
     },
     {
       "char": "roy",
-      "text": "I was twenty-six in '31. I was forty when the bowl came to me.",
+      "text": "I was twenty-six in '31. I was twenty-six when the bowl came to me.",
       "t": "say"
     },
     {
@@ -428,7 +428,7 @@
     },
     {
       "char": "roy",
-      "text": "She said: Roy Hummel. The bowl is yours. The bowl was Olaus's. Olaus has been dead fifty-three years. The bowl has been in the family until now.",
+      "text": "She said: Roy Hummel. The bowl is yours. The bowl was Olaus's. Olaus has been dead four years. The bowl has been in the family until now.",
       "t": "say"
     },
     {
@@ -512,7 +512,7 @@
     },
     {
       "char": "roy",
-      "text": "Hans's brother had printed the cycle two years earlier and Hans had a copy by every reasoning of how Werner would have sent his brother in Oregon one. Hans said no. I respected the no.",
+      "text": "Hans's brother had printed the cycle fourteen years earlier and Hans had a copy by every reasoning of how Werner would have sent his brother in Oregon one. Hans said no. I respected the no.",
       "t": "say"
     },
     {
@@ -571,7 +571,7 @@
     },
     {
       "char": "roy",
-      "text": "The four bowls are going to be in one room for the first time in fifty-one years.",
+      "text": "The four bowls are going to be in one room for the first time in fifty years.",
       "t": "say"
     },
     {

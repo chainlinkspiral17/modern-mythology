@@ -64,7 +64,7 @@
   },
   {
    "t": "say",
-   "char": "Wren",
+   "char": "Wren Haskell",
    "text": "how was the rest of the day?",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch12_porch/012.mp3"
@@ -83,7 +83,7 @@
   },
   {
    "t": "say",
-   "char": "Wren",
+   "char": "Wren Haskell",
    "text": "good kid. see you wednesday morning.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch12_porch/015.mp3"

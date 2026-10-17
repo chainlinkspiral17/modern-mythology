@@ -117,6 +117,9 @@ const _OVERRIDES: Dictionary = {
 	"nate":    {"hair_style": 1, "beard": false},
 	"petra":   {"hair_style": 2, "glasses": "regular", "beard": false},
 	"wren":    {"hair_style": 6, "beard": false},
+	# vol6's Wren (28) and Nate (the bassist) — distinct people from vol7's (2026-10-16)
+	"wren_haskell": {"hair_style": 2, "beard": false},
+	"nate_ochoa":   {"hair_style": 4, "beard": false},
 
 	# ── T2 cast pass (2026-08 audit) · top vol6/vol1 speakers whose
 	# hash faces were arbitrary get pinned reads.

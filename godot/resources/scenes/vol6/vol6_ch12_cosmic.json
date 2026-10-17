@@ -495,7 +495,7 @@
     },
     {
       "t": "show",
-      "char": "wren",
+      "char": "Wren Haskell",
       "expr": "neutral",
       "pos": "right"
     },
@@ -516,7 +516,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Morning, Maya. Hair okay?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/098.mp3"
@@ -530,7 +530,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Yeah?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/100.mp3"
@@ -544,7 +544,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Cool. I did it last night. I needed — I needed to do something with my hands.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/102.mp3"
@@ -563,7 +563,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Maya. Quick thing.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/105.mp3"
@@ -577,7 +577,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Saturday. I — Rick said it would be okay. I'm going to San Marcos. It's Liz's birthday. I want to go down Friday night, come back Sunday. Are you — is that okay?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/107.mp3"
@@ -601,7 +601,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Okay. I — thank you. I can — I can pick up an extra shift this week if you need. Wednesday or Thursday.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/111.mp3"
@@ -620,7 +620,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "That sounds like Rick.",
       "expr": "happy",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/114.mp3"
@@ -639,7 +639,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "[shot:closeup person_b]You good, kid? First day solo?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/117.mp3"
@@ -653,7 +653,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Curtis behaving?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/119.mp3"
@@ -667,7 +667,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "That's Curtis behaving. He's a good guy. Just — he gets weird when Rick is out. He'll loosen up by Thursday.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/121.mp3"
@@ -686,7 +686,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Hey. Lunch later. I want to talk to you about a thing.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/124.mp3"
@@ -700,7 +700,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Not a — not a thing-thing. Just a thing. Tell you at three when Curtis takes his break.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/126.mp3"
@@ -758,7 +758,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Maya.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/137.mp3"
@@ -772,21 +772,21 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "I am about to tell you something I have not told anybody else who works here. I am telling you because I think you need to know it for the week.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/139.ogg"
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "I am also telling you because you have been, since June, the kind of kid who I have decided I would tell things to. I want you to know that you can not, after I tell you, do anything with it.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/140.ogg"
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "The not-doing is the price of the telling.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/141.ogg"
@@ -822,7 +822,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Yeah. Me too.",
       "expr": "sad",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/147.mp3"
@@ -836,14 +836,14 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "[shot:closeup person_b]I'm okay. Liz is okay. The thing is — the thing is in motion. The thing will be in motion for a while. By the time Rick is back I will have a better answer than I do today.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/149.ogg"
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "I am telling you today because today is the day I needed to tell somebody and you are the person who is here.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/150.ogg"
@@ -857,7 +857,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Curtis doesn't know.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/152.mp3"
@@ -871,7 +871,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "He might guess. Curtis guesses. If he asks you about my face, tell him I had a thing on the phone this morning. Don't tell him what the thing was.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/154.mp3"
@@ -885,7 +885,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Thank you, Maya.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/156.mp3"
@@ -899,7 +899,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Me too.",
       "expr": "sad",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/158.mp3"
@@ -1150,7 +1150,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Curtis. I'm out. Big day Wednesday. Maya, you closing?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/206.mp3"
@@ -1164,7 +1164,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "You good?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/208.mp3"
@@ -1178,7 +1178,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Curtis. Behave.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/210.mp3"
@@ -1197,7 +1197,7 @@
     },
     {
       "t": "say",
-      "char": "Wren",
+      "char": "Wren Haskell",
       "text": "Maya. Text me if anything weird happens.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/213.mp3"

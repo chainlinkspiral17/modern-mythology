@@ -79,7 +79,7 @@
     },
     {
       "char": "aud",
-      "text": "[beat:hit][shot:closeup aud]I'm the third watcher in this town and Hans has been telling me for thirty years.",
+      "text": "[beat:hit][shot:closeup aud]I'm the third watcher in this town and Hans has been telling me for twenty-two years.",
       "t": "say"
     },
     {
@@ -108,7 +108,7 @@
     },
     {
       "char": "aud",
-      "text": "Hans has known I'm the third since '46 when I came up from Coos Bay and bought this diner from the woman who had run it for thirty years before me.",
+      "text": "Hans has known I'm the third since '30 when I came up from Coos Bay and bought this diner from the woman who had run it for thirty years before me.",
       "t": "say"
     },
     {
@@ -128,7 +128,7 @@
     },
     {
       "char": "aud",
-      "text": "I answered: I worked for the foundation in Eugene for sixteen years. My mother. No.",
+      "text": "I answered: I worked for the foundation in Eugene for eighteen years. My mother. No.",
       "t": "say"
     },
     {
@@ -138,7 +138,7 @@
     },
     {
       "char": "aud",
-      "text": "I have had Hans's word for thirty years. Hans has kept it.",
+      "text": "I have had Hans's word for twenty-two years. Hans has kept it.",
       "t": "say"
     },
     {
@@ -207,7 +207,7 @@
     },
     {
       "char": "aud",
-      "text": "[shot:closeup person]Because Marina was the foundation's piece. The foundation's been Marina's to bring. I've been retired twenty-two years. I've been at this diner thirty.",
+      "text": "[shot:closeup person]Because Marina was the foundation's piece. The foundation's been Marina's to bring. I've been retired twenty-two years. I've been at this diner twenty-two.",
       "t": "say"
     },
     {
@@ -269,7 +269,7 @@
       "t": "narrate"
     },
     {
-      "text": "He ate slowly. The soup was the leek Aud made with the kind of careful work she had been doing since '46 — by the cream and the salt and the way she had cut the leeks at the diner this morning at five before the first customer had come in.",
+      "text": "He ate slowly. The soup was the leek Aud made with the kind of careful work she had been doing since '30 — by the cream and the salt and the way she had cut the leeks at the diner this morning at five before the first customer had come in.",
       "t": "narrate"
     },
     {
@@ -277,7 +277,7 @@
       "t": "narrate"
     },
     {
-      "text": "The pie was the kind of pie a person who had been at a diner for thirty years could make from frozen salmonberries and have it taste like the pie she had made at the start of the season.",
+      "text": "The pie was the kind of pie a person who had been at a diner for twenty-two years could make from frozen salmonberries and have it taste like the pie she had made at the start of the season.",
       "t": "narrate"
     },
     {
@@ -325,7 +325,7 @@
     },
     {
       "char": "aud",
-      "text": "Hans was right. You are clear. I have been at this counter looking at people for thirty years. I know what clear looks like.",
+      "text": "Hans was right. You are clear. I have been at this counter looking at people for twenty-two years. I know what clear looks like.",
       "t": "say"
     },
     {
@@ -345,17 +345,17 @@
     },
     {
       "char": "aud",
-      "text": "[shot:closeup aud]Once. In '52. The year I retired. The foundation gave me a Kestrel Mountain stick at my retirement dinner. Marina wouldn't have known this — it was a kind of pension.",
+      "text": "[shot:closeup aud]Once. In '30. The year I retired. The foundation gave me a Kestrel Mountain stick at my retirement dinner. Marina wouldn't have known this — it was a kind of pension.",
       "t": "say"
     },
     {
       "char": "aud",
-      "text": "The foundation had decided in the '40s that senior staff who had been at it over a decade had earned the right to play a stick the foundation knew was good. They gave me one.",
+      "text": "The foundation had decided in the '20s that senior staff who had been at it over a decade had earned the right to play a stick the foundation knew was good. They gave me one.",
       "t": "say"
     },
     {
       "char": "aud",
-      "text": "I played it once in '52 in my apartment in Eugene the night I moved out of my office. I went into the mountain. I went up the path. I came to the second station. I sat at the stream. I did not cross the plank.",
+      "text": "I played it once in '30 in my apartment in Eugene the night I moved out of my office. I went into the mountain. I went up the path. I came to the second station. I sat at the stream. I did not cross the plank.",
       "t": "say"
     },
     {
@@ -409,7 +409,7 @@
     },
     {
       "char": "aud",
-      "text": "[shot:closeup person]He told me — by the way the conversation went, by the question I had been carrying when I sat down on the rocks — he told me what I needed to know about my husband, who had died in 2049 in a way I had not, at the time, been able to live with.",
+      "text": "[shot:closeup person]He told me — by the way the conversation went, by the question I had been carrying when I sat down on the rocks — he told me what I needed to know about my husband, who had died in 2029 in a way I had not, at the time, been able to live with.",
       "t": "say"
     },
     {
@@ -424,7 +424,7 @@
     },
     {
       "char": "aud",
-      "text": "The slow-stick does the work the slow-stick is going to do. It's not for everybody. It's for the person who needs the work. You needed it on Wednesday. The work happened. You're different. You're different the way I was different in '52.",
+      "text": "The slow-stick does the work the slow-stick is going to do. It's not for everybody. It's for the person who needs the work. You needed it on Wednesday. The work happened. You're different. You're different the way I was different in '30.",
       "t": "say"
     },
     {
@@ -719,7 +719,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face had been on the inside of Marit's bowl since 1974 and on the inside of the substrate-bowl since Wednesday at noon.",
+      "text": "The face had been on the inside of Marit's bowl since 2002 and on the inside of the substrate-bowl since Wednesday at noon.",
       "t": "narrate"
     },
     {
@@ -731,7 +731,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face had been carved by Olaf since 1976. The face had been at the edges of this town for some years by Petra's reading.",
+      "text": "The face had been carved by Olaf since 2004. The face had been at the edges of this town for some years by Petra's reading.",
       "t": "narrate"
     },
     {
