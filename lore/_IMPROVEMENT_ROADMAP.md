@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-17 · pass 116: EVERY GENERATION DESCRIPTION READ FROM ITS CHAPTER, THEN CHECKED.** The
+user: "the liar king is chapter 0 but the fool was chapter 0 ... it's broken", "there needs to be
+a plate for the fool", "description generations are still not capturing what the chapter is about.
+the magician isn't really tuned in", and "double-check the generation descriptions versus the
+chapter contents, evoke, get details close to right, and have them be fitting chapter plates."
+- **Vol 5's prologue is its own chapter, "Prologue"** (the Liar King, the Whispers episodes, John's
+  shifts). It used to merge with the Fool's chapter 0 because a number 0 and the text "0" group
+  together. The Emperor's 4 is now "IV".
+- **Briefs are written from a full reading, not from word counts.** Nine readers read every
+  chapter (137 plates) and every scene that shows a picture (107 backgrounds and CGs). For each
+  they wrote what it is about, the one image that stands for it, any lettering the text gives,
+  and 2–3 of the text's own sentences. Then nine independent checkers re-read everything and
+  corrected 78 of 137 plate briefs and 37 of 107 picture briefs. The corrections were wrong
+  people, moments merged from different scenes, invented objects and times of day, and images
+  that missed the chapter's subject. All quotes are verbatim; low confidence is flagged in the
+  notes (9 plates, 10 pictures).
+- **The method stands for every future description** sent to the image model: read the chapter,
+  write about + image + quotes, then an independent check. Never select by keyword.
+
+Found in the text, not changed (the text is canon; for the user):
+- Vol 6 contradicts itself in four places:
+  - Rosa's death: ovarian cancer in Albuquerque (ch17), an overdose in Phoenix (ch22);
+  - Coach K's wife: "stage two" (ch19), a bypass (ch22);
+  - Ben's surname: Achterberg (ch0), Kowalski elsewhere;
+  - the Chief Miller's wife label "Eileen" in the ch5 drive.
+- Vol 2's "the room": the clock radio is gone ("where my clock radio used to sit"; a grey plastic
+  stick lies there). The small_wood_ranch day preset still shows the radio: a per-preset prop
+  switch, draft 2.
+
 **2026-10-17 · pass 115: TWO VOLS 1–4 SETS — THE LINK HOUSE AND THE SMALL WOOD RANCH (draft 1).**
 The user: "go ahead and start working on backgrounds for vol 1-4 as needed." These were the two
 build groups with the most scenes still on stand-ins (9 each).
