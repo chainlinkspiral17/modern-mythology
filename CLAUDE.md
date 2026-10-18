@@ -246,7 +246,10 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
 - Before changing a tool's address, port or storage key, carry the stored
   data across first.
 - The voice IDs: `godot/tools/voice_ids.py` (voice_map.json +
-  voice_ids_backup.json); recovery: `voice_rescue.py` (reads the old
+  voice_ids_backup.json); recovery, exact first: `browser_storage_scan.py`
+  (reads every browser profile's localStorage FILES on disk, Chromium
+  leveldb + Firefox sqlite, every address and version; also the other
+  tools' work into `browser_rescue/`), then `voice_rescue.py` (reads the old
   address's storage, also FORGE patches, the DX7 bank and the other tools'
   work, into `godot/tools/browser_rescue/`) and `voice_recover.py` (rebuilds
   from the ElevenLabs history).
