@@ -72,6 +72,9 @@ def load_voice_map():
 
 def get_api_key():
     k = os.environ.get("ELEVENLABS_API_KEY", "").strip()
+    kf = Path(__file__).resolve().parent / ".elevenlabs_key"      # voice_recover.py keeps it here (git ignores it)
+    if not k and kf.exists():
+        k = kf.read_text(encoding="utf-8").strip()
     if not k:
         sys.exit("ELEVENLABS_API_KEY env var not set.\n"
                  "  export ELEVENLABS_API_KEY=sk_...")

@@ -50,6 +50,18 @@ def api_key():
         k = getpass.getpass("ElevenLabs API key (sk_…, not shown): ").strip()
     if not k:
         sys.exit("No API key.")
+    if not k.startswith("sk_"):
+        sys.exit("That is not an API key: ElevenLabs' keys start with sk_. The settings page lists key IDs\n"
+                 "(labels), not keys; the sk_ value is shown once, when a key is created or rotated.\n"
+                 "  ElevenLabs → Developers → API keys → create (or rotate) a key → copy the sk_… value.")
+    if not KEY_FILE.exists():
+        # keep it for next time (git ignores godot/tools/.*_key)
+        KEY_FILE.write_text(k + "\n", encoding="utf-8")
+        try:
+            KEY_FILE.chmod(0o600)
+        except OSError:
+            pass
+        print(f"(key kept in {KEY_FILE.relative_to(TOOLS.parent.parent)}, which git ignores)")
     return k
 
 
@@ -119,8 +131,10 @@ def main():
     try:
         _get(HISTORY + "?page_size=1", key)
     except RuntimeError as ex:
-        sys.exit(f"{ex}\n  (401 = the key is wrong or lacks the History permission: in ElevenLabs, "
-                 f"Developers → API keys → give the key 'Speech History: read'.)")
+        if KEY_FILE.exists():
+            KEY_FILE.unlink()                    # a key that failed is not kept
+        sys.exit(f"{ex}\n  If the key is right but history is refused, check that the key's permissions "
+                 f"allow reading speech history.")
     idx = line_index()
     per_key = collections.defaultdict(collections.Counter)
     names = {}
