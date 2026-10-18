@@ -238,8 +238,9 @@ def pack(key):
     hist = []
     try:
         for it in history(key):
-            hist.append({k: it.get(k) for k in ("voice_id", "voice_name", "voice_category", "model_id",
-                                                 "date_unix", "text")})
+            # (2026-10-18) the whole item: most v3 items carry no top-level
+            # voice_id or text, so the voice must sit in another field
+            hist.append({k: v for k, v in it.items() if k not in ("feedback",)})
     except Exception as ex:  # noqa: BLE001 — the recordings still count
         print(f"history: not read ({ex})")
     (PACK / "history.json").write_text(json.dumps(hist, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -251,6 +252,24 @@ def pack(key):
                                               "preview_url")})
     except Exception as ex:  # noqa: BLE001
         print(f"workspace voices: not read ({ex})")
+    # every voice's preview clip (some live on a host the cloud cannot reach)
+    prev = PACK / "previews"
+    prev.mkdir(exist_ok=True)
+    got = 0
+    for v in vs:
+        url, dst = v.get("preview_url") or "", prev / f"{v.get('voice_id')}.mp3"
+        if not url or (dst.exists() and dst.stat().st_size > 5000):
+            got += dst.exists()
+            continue
+        try:
+            host = urllib.parse.urlparse(url).hostname or ""
+            hdr = {"xi-api-key": key} if host.endswith(".elevenlabs.io") else {}    # the key goes to ElevenLabs only
+            with urllib.request.urlopen(urllib.request.Request(url, headers=hdr), timeout=60) as r:
+                dst.write_bytes(r.read())
+            got += 1
+        except Exception as ex:  # noqa: BLE001
+            print(f"  preview not fetched: {v.get('name')} ({ex})")
+    print(f"previews: {got} of {len(vs)}")
     (PACK / "workspace_voices.json").write_text(json.dumps(vs, indent=1, ensure_ascii=False) + "\n",
                                                 encoding="utf-8")
     print(f"workspace voices: {len(vs)}")

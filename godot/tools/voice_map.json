@@ -9,14 +9,14 @@
   "_comment": "Fill in voice_id values from https://elevenlabs.io/app/voice-library. Per-character voice_settings override the defaults above; omit them to use defaults. _narrator is used for any 'narrate' line.",
   "characters": {
     "_narrator": {
-      "voice_id": "",
+      "voice_id": "t7JYIPCZ9tqGj3BqKOaA",
       "voice_settings": {
         "stability": 0.55,
         "style": 0.2
       }
     },
     "john": {
-      "voice_id": ""
+      "voice_id": "2CZ8eMKC4NY5H5l4mA3t"
     },
     "frasier": {
       "voice_id": "",
@@ -34,7 +34,7 @@
       "voice_id": ""
     },
     "dante": {
-      "voice_id": "",
+      "voice_id": "q0SAZTsRRakNDYQoTldc",
       "voice_settings": {
         "stability": 0.55,
         "style": 0.25
@@ -47,19 +47,19 @@
       "voice_id": ""
     },
     "quentin_paul": {
-      "voice_id": "",
+      "voice_id": "JOIR3Gn735OhwbPNlY07",
       "voice_settings": {
         "style": 0.35
       }
     },
     "sammy": {
-      "voice_id": ""
+      "voice_id": "G0RZSqf0FzZfBKnZHkqH"
     },
     "philip": {
-      "voice_id": ""
+      "voice_id": "uSR22n7NxaTMu8t6Y3XA"
     },
     "jimmy": {
-      "voice_id": ""
+      "voice_id": "8VRjudv5cnNTBFs8820G"
     },
     "father_amato": {
       "voice_id": "",
@@ -74,7 +74,7 @@
       "voice_id": ""
     },
     "dean": {
-      "voice_id": "",
+      "voice_id": "g8ApuJjVHqj6mZHTWMMq",
       "voice_settings": {
         "stability": 0.65,
         "style": 0.15
@@ -394,12 +394,12 @@
       "appears": "vol5"
     },
     "alberto": {
-      "voice_id": "",
+      "voice_id": "iHlehG75dGoTFETT7zgs",
       "casting": "Alberto, Dante's elder son, who wears sunglasses indoors: flat affect, he issues rather than bargains. 40s male, quiet, clipped.",
       "appears": "vol5"
     },
     "marcus": {
-      "voice_id": "",
+      "voice_id": "bAy7UYgFEN38Rel2l1eW",
       "casting": "Marcus, Erica's assistant ('Yes ma'am'): 20s male, earnest, deferential.",
       "appears": "vol5"
     },
@@ -414,7 +414,7 @@
       "appears": "vol5"
     },
     "the_demon": {
-      "voice_id": "",
+      "voice_id": "8BuXYUd73q1TWK0pQzvR",
       "casting": "Frasier's 'humorous electronic imps': robotic telemetry-speak with deadpan jokes ('Probability of existential navel-gazing...'). Processed, small, fast, genderless.",
       "appears": "vol5"
     },
@@ -429,7 +429,7 @@
       "appears": "vol5"
     },
     "gloria": {
-      "voice_id": "",
+      "voice_id": "oyb5orKqAKJ5eF5JhVmx",
       "casting": "Gloria, D'Ambrosio's staff, talking to Hector about the man who won't eat: 40s female, matter-of-fact.",
       "appears": "vol5"
     },
@@ -469,7 +469,7 @@
       "appears": "vol5 prelude liar_king"
     },
     "_walkon_male": {
-      "voice_id": "",
+      "voice_id": "GZQASZOiepkmMNLGnxqT",
       "casting": "Shared generic adult male for unnamed one-liners (Man, A Player, Voice Over, All Smiles...). Neutral American, 30s.",
       "appears": "walk-ons"
     },
@@ -507,6 +507,75 @@
       "voice_id": "",
       "casting": "June Okimoto, a programmer from Dallas. In 1991 she's in her early 20s, sleepless and wry, quietly stubborn, interviewing at Koa Works in Honolulu. Oneironautics Inc. hires her years later; the 2003 frame of 'arcadeum' is her personnel interview. She is not Aria.",
       "appears": "vol3_ch6_arcadeum"
+    },
+    "abuela": {
+      "voice_id": "aYQAm4rWuigkeuRA5i92"
+    },
+    "ben": {
+      "voice_id": "uSR22n7NxaTMu8t6Y3XA"
+    },
+    "carlos": {
+      "voice_id": "gZgeCxzVQJzACoAiZkVF"
+    },
+    "claire": {
+      "voice_id": "30Bu3NdpCkBMOF2yyBwC"
+    },
+    "coach_dale": {
+      "voice_id": "K3Ks4ke16Al1uadpOim6"
+    },
+    "coach_k": {
+      "voice_id": "2gfDLuf2nZfSrUuWQo1W"
+    },
+    "curtis": {
+      "voice_id": "rNCpBDykmtbS99HIj7Ku"
+    },
+    "doug": {
+      "voice_id": "Q0Et7LOU7VpeoeCRQAVS"
+    },
+    "doyle": {
+      "voice_id": "rNCpBDykmtbS99HIj7Ku"
+    },
+    "em": {
+      "voice_id": "wVOQaU8CfoRJqCWsxoLv"
+    },
+    "graciela": {
+      "voice_id": "aYQAm4rWuigkeuRA5i92"
+    },
+    "grandmother": {
+      "voice_id": "5u41aNhyCU6hXOcjPPv0"
+    },
+    "jen": {
+      "voice_id": "guKlFPMQ7685DwAiM2Go"
+    },
+    "jesse": {
+      "voice_id": "3XOBzXhnDY98yeWQ3GdM"
+    },
+    "linda": {
+      "voice_id": "5u41aNhyCU6hXOcjPPv0"
+    },
+    "lucy": {
+      "voice_id": "QzgYVYSNBgksoEWDkpKt"
+    },
+    "marisol": {
+      "voice_id": "rCuVrCHOUMY3OwyJBJym"
+    },
+    "maya": {
+      "voice_id": "FQa9Cmg4i9Y2IyaeFgKc"
+    },
+    "mrs_miller": {
+      "voice_id": "OZxMHsGaBmV5pjMIDIn0"
+    },
+    "ramirez": {
+      "voice_id": "K3Ks4ke16Al1uadpOim6"
+    },
+    "sam": {
+      "voice_id": "1f9RnWpv02KEl4foblDC"
+    },
+    "sams_mother": {
+      "voice_id": "30Bu3NdpCkBMOF2yyBwC"
+    },
+    "tom_bell": {
+      "voice_id": "rNCpBDykmtbS99HIj7Ku"
     }
   },
   "aliases": {
