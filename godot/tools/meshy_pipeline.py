@@ -466,6 +466,7 @@ GIT_SAVE_PATHS = [
     # the cast's ElevenLabs voice IDs (2026-10-18: they lived only in the
     # studio's localStorage and were lost when the port changed)
     "godot/tools/voice_map.json",
+    "godot/tools/voice_map.js",            # the same cast for the studio opened as a file
     "godot/tools/voice_ids_backup.json",
     "godot/tools/browser_rescue",        # what voice_rescue.py brought back from a browser
     "godot/tools/voice_import_report.md",

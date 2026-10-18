@@ -219,6 +219,7 @@
 
 <!-- JSZip for the drop-in export -->
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="voice_map.js"></script>
 <script>
 'use strict';
 
@@ -575,8 +576,30 @@ function saveVoiceMap() {
 }
 async function loadVoiceMapFromRepo() {
   if (!SERVED) {
-    setSaveStatus('Opened as a file: voice IDs live only in this browser and can be lost. ' +
-                  'Open it from Hero Studio instead: http://127.0.0.1:8877/voice_studio.html', 'bad');
+    // (2026-10-18) opened as a file (the tools home page): the repo's cast
+    // comes in through voice_map.js, which voice_ids.py writes on every save
+    const vm = window.MM_VOICE_MAP;
+    if (!vm || typeof vm.characters !== 'object') {
+      setSaveStatus('Opened as a file and voice_map.js is missing: pull the repo. ' +
+                    'IDs you type here live only in this browser.', 'bad');
+      return;
+    }
+    let n = 0;
+    Object.entries(vm.characters).forEach(([k, e]) => {
+      const id = ((e && e.voice_id) || '').trim();
+      if (id) { voiceMap[charKey(k)] = id; n++; }
+    });
+    applyVoiceMeta(vm);
+    if (scene) reloadLines();
+    buildVoiceMap();
+    document.querySelectorAll('#voiceMap input').forEach(inp => {
+      const c = inp.previousElementSibling.textContent;
+      if (voiceMap[c]) inp.value = voiceMap[c];
+    });
+    try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
+    setSaveStatus(`Cast loaded: ${n} voice IDs from the repo (voice_map.js). Opened as a file, so an ID you ` +
+                  `change here is kept only in this browser; to save changes to the repo, open the studio from ` +
+                  `Hero Studio (http://127.0.0.1:8877/voice_studio.html).`, 'good');
     return;
   }
   try {
@@ -661,8 +684,15 @@ $('voiceMapFile').addEventListener('change', async (e) => {
   const file = e.target.files[0];
   if (!file) return;
   try {
-    const vm = JSON.parse(await file.text());
-    if (!vm || typeof vm.characters !== 'object') throw new Error('no "characters" object');
+    let vm = JSON.parse(await file.text());
+    // (2026-10-18) also voice_ids_backup.json ({"ids": {...}}) or a flat {key: id}
+    if (vm && typeof vm.characters !== 'object') {
+      const flat = (vm.ids && typeof vm.ids === 'object') ? vm.ids : vm;
+      const chars = {};
+      Object.entries(flat || {}).forEach(([k, v]) => { if (typeof v === 'string' && /^[A-Za-z0-9]{12,40}$/.test(v.trim())) chars[k] = { voice_id: v.trim() }; });
+      if (!Object.keys(chars).length) throw new Error('no voice IDs in this file');
+      vm = Object.assign({}, window.MM_VOICE_MAP || {}, { characters: Object.assign({}, (window.MM_VOICE_MAP || {}).characters || {}, chars) });
+    }
     let ids = 0;
     Object.entries(vm.characters).forEach(([k, entry]) => {
       const id = ((entry && entry.voice_id) || '').trim();
