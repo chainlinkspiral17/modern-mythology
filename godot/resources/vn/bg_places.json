@@ -33,11 +33,16 @@
    "scenes": 1
   },
   "vol1_city_color_night": {
-   "fit": "standin",
-   "to": "3d:bar_exterior_night",
-   "build": "city_night_street",
-   "note": "a city street in colour at night",
-   "scenes": 3
+   "fit": "exact",
+   "to": "3d:club_street_curb",
+   "build": "club_street",
+   "note": "the street outside Club #: the curb and Judgement Day; the door (ch8); the neon (the meld)",
+   "scenes": 3,
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol1_ch8_triumvirate": "3d:club_street_door",
+    "meld_kaleidoscope_a": "3d:club_street_neon_wide"
+   }
   },
   "vol1_club_dance": {
    "fit": "exact",
@@ -133,11 +138,12 @@
    "scenes": 2
   },
   "vol1_jacob_house_ext_day": {
-   "fit": "standin",
-   "to": "3d:meadowlark_circle",
-   "build": "faust3_houses",
-   "note": "Act Two homes montage",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:jacob_house_front",
+   "build": "wagner_home",
+   "note": "Jacob's, on another block, plain (apartment in ch2, house in ch5: the author's call)",
+   "scenes": 1,
+   "built": "2026-10-18 draft 1"
   },
   "vol1_jd_driving_day": {
    "fit": "reuse",
@@ -228,18 +234,20 @@
    "scenes": 2
   },
   "vol1_wagner_house_ext_day": {
-   "fit": "standin",
-   "to": "3d:meadowlark_circle",
-   "build": "faust3_houses",
-   "note": "Act Two homes montage",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:wagner_house_steps",
+   "build": "wagner_home",
+   "note": "the steps and the open door, the album playing to an empty room",
+   "scenes": 1,
+   "built": "2026-10-18 draft 1"
   },
   "vol1_wagner_porch_day": {
-   "fit": "standin",
-   "to": "3d:wagner_home",
-   "build": "faust3_houses",
-   "note": "Wagner's porch",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:wagner_porch_morning",
+   "build": "wagner_home",
+   "note": "Wagner on his porch in the morning, reading and smoking",
+   "scenes": 1,
+   "built": "2026-10-18 draft 1"
   },
   "vol2_apple_peddler_diner": {
    "fit": "exact",
@@ -731,19 +739,19 @@
   },
   "vol3_andy_room_day": {
    "fit": "exact",
-   "to": "3d:andy_house_bedroom",
-   "build": "link_house",
+   "to": "3d:oregon_home_day",
+   "build": "vol3_rooms",
    "scenes": 1,
-   "note": "Andy's room by day",
-   "built": "2026-10-17 draft 1"
+   "note": "ch4 the coast: Andy at 22, at home a day's drive from the coast (the Oregon home), not the Texas boyhood room",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_andy_room_night": {
    "fit": "exact",
-   "to": "3d:andy_house_bedroom_night",
-   "build": "link_house",
+   "to": "3d:oregon_home_night",
+   "build": "vol3_rooms",
    "scenes": 1,
-   "note": "Andy's room at night",
-   "built": "2026-10-17 draft 1"
+   "note": "ch4 the coast: 'back home quiet and moody' that evening (the Oregon home)",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_ballfield_convenience_stand": {
    "fit": "exact",
@@ -794,11 +802,12 @@
    "built": "2026-10-17 draft 1"
   },
   "vol3_bedroom_closet_dallas": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom",
-   "build": "june_dallas",
+   "fit": "exact",
+   "to": "3d:june_closet",
+   "build": "vol3_rooms",
    "scenes": 1,
-   "note": "June's closet in Dallas"
+   "note": "June's closet, 1991: the sealed box at the back",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_bedroom_lamp_night": {
    "fit": "exact",
@@ -949,9 +958,12 @@
    "scenes": 1
   },
   "vol3_coast_home_studio": {
-   "fit": "standin",
-   "to": "3d:lena_studio",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:coast_studio",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "note": "the photographer's lent home-studio over the coast",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_coast_road_forest": {
    "fit": "reuse",
@@ -959,9 +971,12 @@
    "scenes": 1
   },
   "vol3_coast_studio_bathroom": {
-   "fit": "standin",
-   "to": "3d:lena_studio",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:coast_bathroom",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "note": "the stranger's bathroom: the tub in the kit lights",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_crt_monitor_newsgroup": {
    "fit": "2d",
@@ -1074,9 +1089,12 @@
    "scenes": 1
   },
   "vol3_glass_condo_demo_unit": {
-   "fit": "standin",
-   "to": "3d:elicia_apartment",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:condo_demo_unit",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "note": "the empty demo unit, Vancouver WA, autumn 2001 (the text never says glass)",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_grandma_house_night": {
    "fit": "exact",
@@ -1106,9 +1124,15 @@
    "scenes": 1
   },
   "vol3_hospital_catwalk_night": {
-   "fit": "standin",
-   "to": "3d:hospital_waiting",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:catwalk_rail_night",
+   "scenes": 2,
+   "build": "vol3_rooms",
+   "note": "the glass catwalk between the towers over the lit city; yellow card walks it",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol3_ch5_yellow_card": "3d:catwalk_walk"
+   }
   },
   "vol3_hospital_elevator_benches": {
    "fit": "reuse",
@@ -1144,9 +1168,12 @@
    "scenes": 1
   },
   "vol3_korean_bbq_night": {
-   "fit": "standin",
-   "to": "3d:el_rancho_taqueria",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:korean_bbq_table",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "note": "Korean barbecue, Pasadena 2003: the booth table and its grill",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_lake_dock_dawn": {
    "fit": "exact",
@@ -1227,14 +1254,20 @@
    "scenes": 1
   },
   "vol3_oregon_apartment_day": {
-   "fit": "standin",
-   "to": "3d:finn_apartment_day",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:oregon_home_day",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "note": "the shared Oregon home by day (the stem says apartment; vol 2 says duplex)",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_oregon_apartment_night": {
-   "fit": "standin",
-   "to": "3d:finn_apartment_night",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:oregon_home_night",
+   "scenes": 2,
+   "build": "vol3_rooms",
+   "note": "their room that evening on the lamp",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_parsonage_hallway": {
    "fit": "exact",
@@ -1297,10 +1330,12 @@
    "scenes": 1
   },
   "vol3_pizza_parlor_rain": {
-   "fit": "standin",
-   "to": "3d:daily_grind_interior",
-   "note": "acceptable losses' pizza parlor",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:pizza_party_window",
+   "note": "the strip-mall pizza parlor's party room on a rainy night",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_plane_cabin_day": {
    "fit": "exact",
@@ -1428,9 +1463,12 @@
    "scenes": 1
   },
   "vol3_warehouse_club_night": {
-   "fit": "standin",
-   "to": "3d:club_sharp",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:warehouse_floor",
+   "scenes": 1,
+   "build": "vol3_rooms",
+   "note": "the club in industrial downtown, 1 a.m.: green and pink through the fog",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_abstract_club_night": {
    "fit": "reuse",
@@ -1918,6 +1956,14 @@
    "to": null,
    "note": "a xeroxed sky",
    "scenes": 2
+  },
+  "vol1_club_street_dawn": {
+   "fit": "exact",
+   "to": "3d:club_street_dawn",
+   "build": "club_street",
+   "note": "ch16: the same street at 4 a.m., ordinary and grey, Judgement Day at the curb",
+   "built": "2026-10-18 draft 1",
+   "scenes": 1
   }
  }
 }

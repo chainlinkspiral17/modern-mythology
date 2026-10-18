@@ -35,6 +35,11 @@
   "prims": 24408,
   "objects": 268
  },
+ "club_street": {
+  "draw": 110,
+  "prims": 14180,
+  "objects": 280
+ },
  "copy_shop": {
   "draw": 100,
   "prims": 24684,
@@ -161,10 +166,20 @@
   "prims": 24688,
   "objects": 244
  },
+ "vol3_rooms": {
+  "draw": 200,
+  "prims": 135652,
+  "objects": 370
+ },
  "vol4_story_rooms": {
   "draw": 138,
   "prims": 51908,
   "objects": 308
+ },
+ "wagner_home": {
+  "draw": 116,
+  "prims": 53396,
+  "objects": 286
  },
  "writers_desk": {
   "draw": 108,

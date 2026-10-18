@@ -284,6 +284,10 @@
       "text": "Faust's palm is clean, completely clean, except deep in the creases, where it's blue."
     },
     {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_street_dawn.jpg"
+    },
+    {
       "t": "narrate",
       "text": "They walk out together into a street that is just a street, ordinary, gray, about to be morning."
     },

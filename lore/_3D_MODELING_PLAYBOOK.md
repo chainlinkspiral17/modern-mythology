@@ -399,6 +399,22 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-18 · extending a hand-tuned set, and the last stand-ins (pass 122)
+
+- **A set's .tscn may be hand-tuned past its generator.** wagner_home.tscn was rewritten by
+  hand in draft 2 (a procedural dusk sky, a shadowed Sun_Front, practicals). Regenerating it from
+  its August config script threw all of that away (52 lines in, 90 out). Check `git diff --stat`
+  after writing any tscn; for a set that has moved past its script, add the new light nodes by
+  hand and leave the script alone.
+- **A step up to a porch is not a doorway block.** A porch deck above the house floor puts its
+  edge across the front door's swing. The doorway gate skips `porch_slab` and `step` by name, and
+  a raised porch you step up onto is a real house. Name the deck `Porch_Slab_*`; keep furniture
+  out of the door's 0.9 m.
+- **A mirror is a mirrored room.** Our materials are opaque, so vol 4's mirror is an opening onto
+  the same room built again, flipped about the mirror's plane. It shows "the world behind her"
+  with real parallax. One light at the mirror's plane lights both sides, because unshadowed
+  lights pass through the wall.
+
 ### 2026-10-18 · five sets from the text (the coast, Nick's house, the lake house, Tulsa)
 
 - **A preset suffix must END the name.** `make_chair("Print_Stool" + "__nick_print_shop", …)`

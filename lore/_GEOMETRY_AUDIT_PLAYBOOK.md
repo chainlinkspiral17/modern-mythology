@@ -158,6 +158,15 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-18 · the marker pass judges a shot by the geometry its own view loads
+
+- wagner_home's draft 3 added a front door standing open only in `wagner_house_steps`. The
+  `--markers` pass saw that leaf between the skateboard insert's lens and the boards, but in the
+  room's own view the leaf is stripped.
+- A box named `<Name>__<preset>…` is now kept for a marker only when its presets include the
+  marker's view: the marker's own suffix, or else the locale's preset of the same name.
+  Unsuffixed boxes and locales with no same-named preset are judged as before.
+
 ### 2026-10-18 · a helper that returns DATA must be recorded, or what it feeds vanishes
 
 - `geometry.rolling_heights` returns a height grid. The recorder's stub returned a `_StubVal`,

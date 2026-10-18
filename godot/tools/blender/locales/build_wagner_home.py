@@ -31,10 +31,23 @@ Coordinate frame: Blender Z-up; y=0 is the front (S) wall, +Y runs back to
 the kitchen; walls x=+-3.6, back wall y=6.0, the kitchen to y=9.4.
 glTF export remaps to Godot (x, z, -y).
 
-Draft 3 targets: the band posters' imagery (the prose names Burzum —
+DRAFT 3 (2026-10-18): THE FRONT. vol 1 ch5 sees the house from outside
+twice on one day: "Wagner is sitting on the porch, reading and smoking."
+(the morning) and "The three approach the steps." / "Through the open door,
+the album on the turn-table plays on to an empty room." (that afternoon).
+So the house has its outside now: lap siding, a gable roof, a porch across
+the front W of the window with a seat, a crate, the book and the ashtray,
+two steps down to the walk; the front door is SHUT in the room's own view
+and the morning, and OPEN for the proposition (`__wagner_house_steps`), so
+the walk looks through it to the stereo. Jacob's house ("Jacob is waiting
+for them outside, smoking") is its own lot on another block (x 80), plain:
+ch2 calls it an apartment, ch5 a house (the author's call).
+
+Draft 4 targets: the band posters' imagery (the prose names Burzum —
 the posters should read as black-metal logos without copying any); the
 afternoon going to evening for "Take the longboat out tonight"; the
-porch and the step outside the door.
+street's other side as built lots, not the view kit; Jacob's house past
+plain once the apartment/house knot is answered.
 """
 import math
 import os
@@ -42,7 +55,7 @@ import random
 import sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_rot_box, make_gable, make_blob, make_chamfer_box, export_glb
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_window
 from _props.views import make_view
 from _props.vehicles import make_car
@@ -94,9 +107,12 @@ def build_shell():
         make_box(f"Curtain_{k}", (cx, Y0 + 0.19, 1.47), (w, 0.08, 1.64), (0.20, 0.16, 0.22, 1.0))
         make_box(f"Curtain_{k}_Rod_Ring", (cx, Y0 + 0.16, 2.29), (0.06, 0.04, 0.04), COL_DARK)
     # the front door, shut, and its deadbolt; the hall and kitchen casings
-    make_box("Front_Door", (-2.5, Y0, 1.02), (0.92, 0.05, 2.04), (0.40, 0.18, 0.14, 1.0))
-    make_cyl("Front_Door_Knob", (-2.15, Y0 + 0.06, 1.00), 0.028, 0.05, (0.72, 0.64, 0.40, 1.0), segments=8, axis='Y')
-    make_box("Front_Door_Deadbolt", (-2.15, Y0 + 0.04, 1.18), (0.05, 0.02, 0.05), (0.72, 0.64, 0.40, 1.0))
+    # shut in the room's view and the morning; open for the proposition
+    SHUT = "__wagner_home__wagner_porch_morning"
+    make_box("Front_Door" + SHUT, (-2.5, Y0, 1.02), (0.92, 0.05, 2.04), (0.40, 0.18, 0.14, 1.0))
+    make_cyl("Front_Door_Knob" + SHUT, (-2.15, Y0 + 0.06, 1.00), 0.028, 0.05, (0.72, 0.64, 0.40, 1.0), segments=8, axis='Y')
+    make_box("Front_Door_Deadbolt" + SHUT, (-2.15, Y0 + 0.04, 1.18), (0.05, 0.02, 0.05), (0.72, 0.64, 0.40, 1.0))
+    make_box("Front_Door_Open__wagner_house_steps", (-2.5 + 0.44, Y0 + 0.10 + 0.44, 1.02), (0.05, 0.88, 2.04), (0.40, 0.18, 0.14, 1.0))
     for nm, cx, w in (("Hall", HALL_X, 0.90), ("Kitchen", 1.7, 1.60)):
         make_box(f"{nm}_Casing_Head", (cx, Y1 - 0.11, 2.12), (w + 0.16, 0.02, 0.10), COL_TRIM)
         for s in (-1, 1):
@@ -233,12 +249,112 @@ def build_living():
     make_cyl("Floor_Lamp_Bulb", (X1 - 0.35, 4.25, 1.50), 0.035, 0.06, (0.98, 0.88, 0.62, 1.0), segments=8)
 
 
+SIDING = (0.62, 0.66, 0.62, 1.0); SIDING_LAP = (0.54, 0.58, 0.54, 1.0)
+ROOF = (0.26, 0.24, 0.24, 1.0)
+PORCH_WOOD = (0.50, 0.40, 0.30, 1.0)
+OUT = "__wagner_porch_morning__wagner_house_steps__jacob_house_front"
+
+
+def siding(prefix, along_axis, a0, a1, at, openings, top):
+    """Lap siding strips that stop at every opening (along, cz, w, h)."""
+    n, k = 13, 0
+    for i in range(n):
+        z0 = i * top / n
+        z1 = z0 + top / n
+        cuts = sorted((c - w / 2.0, c + w / 2.0) for c, cz, w, h in openings
+                      if cz - h / 2.0 < z1 - 1e-3 and cz + h / 2.0 > z0 + 1e-3)
+        spans, a = [], a0
+        for ca, cb in cuts:
+            if ca > a:
+                spans.append((a, ca))
+            a = max(a, cb)
+        if a < a1:
+            spans.append((a, a1))
+        for u0, u1 in spans:
+            if u1 - u0 < 0.02:
+                continue
+            col = (SIDING, SIDING_LAP)[i % 2]
+            if along_axis == 'X':
+                make_box(f"{prefix}_Stock_{k}", ((u0 + u1) / 2.0, at, (z0 + z1) / 2.0), (u1 - u0, 0.03, z1 - z0 - 0.006), col)
+            else:
+                make_box(f"{prefix}_Stock_{k}", (at, (u0 + u1) / 2.0, (z0 + z1) / 2.0), (0.03, u1 - u0, z1 - z0 - 0.006), col)
+            k += 1
+
+
+def build_front():
+    """The house from outside: siding, the gable roof, the porch with its
+    seat, the steps, the walk; the sky for the outside views."""
+    # the siding stands just proud of the walls' ends (they run 0.2 past
+    # the corners)
+    siding("Siding_S", 'X', X0 - 0.23, X1 + 0.23, Y0 - 0.215, [(-2.5, 1.025, 0.95, 2.05), (1.2, 1.45, 2.2, 1.40)], CEIL)
+    siding("Siding_W", 'Y', Y0 - 0.23, Y1 + 0.2, X0 - 0.215, [], CEIL)
+    siding("Siding_E", 'Y', Y0 - 0.23, KY1 + 0.2, X1 + 0.215, [], CEIL)
+    make_gable("House_Roof", (0.0, (Y0 + KY1) / 2.0, CEIL + 0.12 + 1.0), (X1 - X0 + 1.0, KY1 - Y0 + 1.0, 2.0), ROOF, ridge_axis='Y')
+    # the porch across the front W of the window: deck, posts, its roof,
+    # the rail at the W end, two steps down at the door
+    px0, px1, py0, py1 = X0 - 0.15, 0.25, -2.5, Y0 - 0.23
+    make_box("Porch_Slab_Deck", ((px0 + px1) / 2.0, (py0 + py1) / 2.0, 0.18), (px1 - px0, py1 - py0, 0.36), PORCH_WOOD)
+    for k in range(9):
+        make_box(f"Porch_Board_Seam_Stock_{k}", (px0 + 0.45 + k * 0.45, (py0 + py1) / 2.0, 0.362), (0.02, py1 - py0, 0.004),
+                 (0.40, 0.32, 0.24, 1.0))
+    for k, x in enumerate((px0 + 0.08, -1.55, px1 - 0.08)):
+        make_box(f"Porch_Post_{k}", (x, py0 + 0.08, 0.36 + 1.12), (0.12, 0.12, 2.24), (0.84, 0.82, 0.76, 1.0))
+    make_rot_box("Porch_Roof", ((px0 + px1) / 2.0, (py0 + py1) / 2.0 - 0.1, 2.66), (px1 - px0 + 0.3, py1 - py0 + 0.5, 0.10), ROOF, roll=-0.10)
+    make_box("Porch_Rail_W", (px0 + 0.08, (py0 + py1) / 2.0, 0.36 + 0.86), (0.06, py1 - py0 - 0.2, 0.06), (0.84, 0.82, 0.76, 1.0))
+    make_box("Porch_Rail_S_W", ((px0 + (-2.98)) / 2.0, py0 + 0.08, 0.36 + 0.86), (-2.98 - px0, 0.06, 0.06), (0.84, 0.82, 0.76, 1.0))
+    make_box("Porch_Rail_S_E", ((-2.02 + px1) / 2.0, py0 + 0.08, 0.36 + 0.86), (px1 + 2.02, 0.06, 0.06), (0.84, 0.82, 0.76, 1.0))
+    for k, (t, ty) in enumerate(((0.24, py0 - 0.20), (0.12, py0 - 0.60))):
+        make_box(f"Porch_Step_{k}", (-2.5, ty, t / 2.0), (1.10, 0.40, t), PORCH_WOOD)
+    # his seat: an old armchair on the porch, the crate beside it with the
+    # ashtray and a mug; the book face down on the arm
+    sx, sy = -3.0, -1.6                    # clear of the door's swing
+    make_box("Porch_Armchair_Base", (sx, sy, 0.36 + 0.22), (0.80, 0.80, 0.44), (0.36, 0.30, 0.26, 1.0))
+    make_box("Porch_Armchair_Back", (sx - 0.32, sy, 0.36 + 0.70), (0.16, 0.80, 0.56), (0.36, 0.30, 0.26, 1.0))
+    for s_ in (-1, 1):
+        make_box(f"Porch_Armchair_Arm_{s_:+d}", (sx, sy + s_ * 0.34, 0.36 + 0.54), (0.80, 0.12, 0.20), (0.36, 0.30, 0.26, 1.0))
+    make_rot_box("Porch_Book_Face_Down", (sx + 0.1, sy + 0.34, 0.36 + 0.66), (0.20, 0.14, 0.03), (0.60, 0.20, 0.16, 1.0), yaw=0.3)
+    make_box("Porch_Crate", (sx + 0.75, sy - 0.30, 0.36 + 0.18), (0.40, 0.32, 0.36), (0.62, 0.50, 0.32, 1.0))
+    make_cyl("Porch_Ashtray", (sx + 0.70, sy - 0.32, 0.36 + 0.375), 0.07, 0.03, (0.40, 0.42, 0.44, 1.0), segments=10)
+    make_cyl("Porch_Mug", (sx + 0.85, sy - 0.24, 0.36 + 0.41), 0.04, 0.10, (0.20, 0.30, 0.50, 1.0), segments=10)
+    for k in range(3):
+        make_blob(f"Cigarette_Smoke_Cloud_{k}__wagner_porch_morning", (sx + 0.68 + k * 0.05, sy - 0.30, 0.36 + 0.55 + k * 0.22),
+                  0.05 + k * 0.03, (0.84, 0.84, 0.84, 1.0), noise=0.3, seed=60 + k)
+    # the walk from the steps to the sidewalk, the path to the drive
+    make_box("Front_Walk", (-2.5, -6.0, -0.001), (1.0, 5.4, 0.008), (0.62, 0.60, 0.56, 1.0))
+    make_box("Walk_To_Drive", (-0.95, -3.5, -0.001), (2.1, 0.8, 0.008), (0.62, 0.60, 0.56, 1.0))
+    # the sky for the outside views (the room's own env is warm and dark)
+    for tag, col in (("__wagner_porch_morning", (0.76, 0.82, 0.90, 1.0)), ("__wagner_house_steps", (0.70, 0.78, 0.88, 1.0)),
+                     ("__jacob_house_front", (0.72, 0.80, 0.90, 1.0))):
+        make_box("Sky_S" + tag, (0.0, -150.0, 40.0), (400.0, 0.2, 160.0), col)
+        make_box("Sky_W" + tag, (-150.0, 0.0, 40.0), (0.2, 400.0, 160.0), col)
+        make_box("Sky_E" + tag, (150.0, 0.0, 40.0), (0.2, 400.0, 160.0), col)
+        make_box("Sky_N" + tag, (0.0, 150.0, 40.0), (400.0, 0.2, 160.0), col)
+
+
+def build_jacob_house():
+    """Jacob's: another block (x 80), a plain small house, a walk and a
+    stoop; Jacob waits outside (he is the sprite)."""
+    jx = 80.0
+    make_view("Jacob_View_S", "S", 0.0, jx, kind="front", ground_z=0.0, seed=11)
+    make_box("Jacob_House_Body", (jx, 4.0, 1.4), (8.0, 8.0, 2.8), (0.76, 0.70, 0.60, 1.0))
+    make_gable("Jacob_House_Roof", (jx, 4.0, 2.8 + 0.9), (8.8, 8.8, 1.8), ROOF, ridge_axis='X')
+    make_box("Jacob_Front_Door", (jx - 1.2, -0.02, 1.0), (0.90, 0.04, 2.0), (0.30, 0.34, 0.40, 1.0))
+    for k, x in enumerate((jx + 1.4, jx - 3.0)):
+        make_box(f"Jacob_Window_Pane_{k}", (x, -0.02, 1.5), (1.2, 0.03, 1.1), (0.30, 0.34, 0.38, 1.0))
+        for s_ in (-1, 1):
+            make_box(f"Jacob_Window_Frame_Jamb_{k}_{s_:+d}", (x + s_ * 0.63, -0.03, 1.5), (0.06, 0.05, 1.2), (0.88, 0.86, 0.80, 1.0))
+    make_box("Jacob_Porch_Slab_Stoop", (jx - 1.2, -0.6, 0.09), (1.4, 1.2, 0.18), (0.60, 0.58, 0.54, 1.0))
+    make_box("Jacob_Lot_Ground", (jx, 4.0, -0.025), (10.0, 8.6, 0.05), (0.30, 0.36, 0.22, 1.0))
+    make_box("Jacob_Walk", (jx - 1.2, -5.0, -0.001), (1.0, 7.6, 0.008), (0.62, 0.60, 0.56, 1.0))
+    make_box("Jacob_Trash_Can", (jx + 3.4, -0.6, 0.45), (0.56, 0.56, 0.90), (0.30, 0.34, 0.30, 1.0))
+
+
 def build_outside():
     """The yard, the driveway and JD on it; the street of small houses."""
     make_view("View_S", "S", Y0, 0.0, kind="front", ground_z=0.0, seed=27)
     make_box("Driveway", (1.5, -4.5, -0.001), (2.8, 9.0, 0.008), (0.62, 0.60, 0.56, 1.0))
-    make_box("Porch_Step", (-2.5, -0.55, 0.075), (1.40, 0.90, 0.16), (0.62, 0.60, 0.56, 1.0))
-    make_box("Walk_To_Drive", (-0.9, -0.55, -0.001), (1.80, 0.90, 0.008), (0.62, 0.60, 0.56, 1.0))
+    build_front()
+    build_jacob_house()
     # JD: "a beat-up piece of shit" — a faded maroon sedan, nose to the house
     make_car("JD", 1.5, -4.6, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
     make_box("JD_Primer_Patch", (1.5 - 0.885, -4.0, 0.62), (0.006, 0.80, 0.30), (0.56, 0.56, 0.54, 1.0))

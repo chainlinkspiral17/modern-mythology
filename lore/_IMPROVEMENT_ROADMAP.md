@@ -3834,6 +3834,64 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-18 · pass 122: WAGNER'S FRONT, THE STREET OUTSIDE CLUB #, VOL 3'S ROOMS (draft 1).**
+The last vols 1–4 stand-ins, read from the text by two brief agents and built.
+- **wagner_home, draft 3: the front.** ch5 sees the house from outside twice on one day: "Wagner
+  is sitting on the porch, reading and smoking." and, that afternoon, "The three approach the
+  steps." / "Through the open door, the album on the turn-table plays on to an empty room."
+  - The house now has lap siding, a gable roof, a porch with his chair, the book and the
+    ashtray, and two steps down to the walk.
+  - The front door is shut in the room's own view and the morning, and open for the steps, so
+    the walk looks through it to the stereo.
+  - The scene's hand-tuned rig is kept. Two lights are added by hand: a low morning sun and a sky
+    fill for the outside views.
+  - Jacob's house is its own lot on another block, plain. ch2 calls it an apartment and ch5 a
+    house; that is the author's call.
+- **club_street** (new): the street face of Club # (its inside is club_sharp).
+  - The black facade with the # over the door, the sidewalk, the curb with Judgement Day, the
+    sodium streetlights, the far side's lit frontages, a bus with a blank ad.
+  - Four views: out the door (ch8, "a wash of color", left to the mood stack), the curb (ch9),
+    the meld's neon wide, and ch16's 4 a.m.
+  - **ch16 fix:** "They walk out together into a street that is just a street, ordinary, gray,
+    about to be morning." played on the empty club interior. A new stem, `vol1_club_street_dawn`,
+    now switches to the grey street before it.
+  - The frame shirt on the rearview is draft 2: a prop inside the car's body reads as a clip.
+- **vol3_rooms** (new): eight single rooms far apart.
+  - June's closet (1991), with the sealed WHAT LIES BEYOND box at the back.
+  - The shared Oregon home by day (the wall phone, the papers and ticket, the computer) and their
+    room that evening (her bag half-packed).
+  - The photographer's lent home-studio over the coast, and its bathroom (the tub in the kit
+    lights, behind the tripod).
+  - The empty condo demo unit, Vancouver WA, autumn 2001.
+  - The Korean barbecue booth, Pasadena 2003.
+  - The strip-mall pizza parlor's party room in the rain.
+  - The club in industrial downtown (green and pink spots through the fog).
+  - The hospital's glass catwalk over the lit city: the pulp view at the rail, and yellow card
+    walking it (by_scene).
+- **Remaps and text fixes** (the standing "fix the contradictions"):
+  - ch4 "the coast" played Andy at 22 "back home" on the Texas boyhood bedroom (`link_house`).
+    `vol3_andy_room_day` / `_night` (only that scene uses them) now play the Oregon home. The
+    Texas room's day/night presets now have no stem; `vol3_bedroom_lamp_night` still uses the
+    lamp view.
+  - ch5 non stop flights: Justin delivers Andy "to PDX" (it said PAX, which isn't Portland's
+    airport). The 2010 manuscript keeps its text.
+  - Left for the author: Jacob's apartment or house; Jacob's son "maybe six" with "a crib"; in
+    ch4, "back home on the coast of Small Wood" against driving "the many miles to the coast"
+    from home; md_anderson's doctor against yellow card's aide.
+- vantage_obstruction's marker pass now honours preset-only geometry (the open front door was
+  read as blocking the room's skateboard insert).
+- Gates clean on all three builders. Draw calls: wagner_home 116, club_street 110, vol3_rooms 200.
+  vantage_obstruction lists `korean_bbq_table` as deliberate: it is seated at the booth over the
+  grill.
+
+DRAFT 2 targets:
+- Wagner's street as built lots; the frame shirt on JD's rearview.
+- The club's door opening onto club_sharp's floor; the bus in motion.
+- June's whole room; the condo's lobby (the cafe across from the gallery); the hospital's other
+  rooms (today they borrow vol 6's sets) moving into one MD Anderson set.
+- Every vols 1–4 stem now plays a set built for its place. Next: the draft 2 passes on the
+  model-chapter bar (scale, edges, coverage, light) and the vol 5 prelude.
+
 **2026-10-18 · pass 121: THE COAST, NICK'S HOUSE, THE LAKE HOUSE, TULSA, SMALL WOOD, VOL 4'S CITY (draft 1).** The user:
 "No, that can be saved for later, keep going with backgrounds."
 - **sea_cave** (vol 2, ch9): Julie's cave, 18 m deep, the spout and its sinkhole at the back. Three

@@ -49,6 +49,9 @@ CF_N = "__charlie_bedroom_night__charlie_living_night"
 CF_D = "__charlie_apartment_day__charlie_living_day"
 PARTY = "__afterparty_room__afterparty_stools"
 SIS = "__sister_house_yard__sister_house_inside"
+CLUB_N = "__club_street_door__club_street_curb__club_street_neon_wide"
+CAT = "__catwalk_rail_night__catwalk_walk"
+SPOT_DOWN_S = "Transform3D(-1, 0, 0, 0, 0.8, 0.6, 0, 0.6, -0.8, {}, {}, {})"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -907,6 +910,93 @@ CONFIGS = [
                -(3.0 + 70.0 * math.sin(k * 1.5708))), c(1.0, 0.86, 0.66), 2.0, {"omni_range": 60.0}) for k in range(4)],
             ("Floor_Lamp__shanghai_window_night", "OmniLight3D", I.format(707.4, 1.2, -0.6), c(1.0, 0.84, 0.60), 0.6, {"omni_range": 4.0}),
             ("Fill__shanghai_window_night", "DirectionalLight3D", B_FILL.format(704, 2, -3), c(0.50, 0.52, 0.66), 0.05),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 1's STREET OUTSIDE CLUB # (build_club_street.py): night on the
+        # sodium streetlights, the far side's signs and the club's door lamp
+        # (the "wash of color" is the mood stack's); the grey before morning
+        # for ch16.
+        "out_path": os.path.join(ROOT, "club_street.tscn"),
+        "uid": "uid://club_street_v1",
+        "root_node": "ClubStreet",
+        "glb": "res://assets/3d/locales/club_street.glb",
+        "env": {"bg": (0.03, 0.03, 0.06, 1), "amb": (0.50, 0.50, 0.62, 1),
+                "amb_e": 0.20, "fog": (0.08, 0.08, 0.12, 1), "fog_e": 0.3,
+                "fog_d": 0.004, "sat": 0.96, "glow_i": 0.9, "glow_b": 0.14},
+        "shader": {"warm": (0.96, 0.80, 0.60, 1), "bg": (0.05, 0.05, 0.08, 1),
+                   "neon_edge": (0.86, 0.50, 0.80, 1), "neon_lo": (0.26, 0.20, 0.28, 1),
+                   "neon_hi": (0.05, 0.05, 0.08, 1), "lim_tint": (0.70, 0.56, 0.72, 1)},
+        "lights": [
+            ("Fill" + CLUB_N, "DirectionalLight3D", B_FILL.format(8, 6, 0), c(0.46, 0.50, 0.70), 0.06),
+            *[("Streetlight_{}".format(k) + CLUB_N, "OmniLight3D", I.format(5.7, 5.5, -(y + 3.0)), c(1.0, 0.78, 0.46), 2.0,
+               {"omni_range": 16.0}) for k, y in enumerate((-30.0, 0.0, 30.0, 60.0))],
+            *[("Sign_Glow_{}".format(k) + CLUB_N, "OmniLight3D", I.format(17.0, 3.4, -y), col, 1.0, {"omni_range": 8.0})
+              for k, (y, col) in enumerate(((-28.0, c(0.98, 0.40, 0.70)), (0.0, c(0.40, 0.90, 0.98)), (28.0, c(0.98, 0.76, 0.36))))],
+            ("Club_Door_Lamp" + CLUB_N, "OmniLight3D", I.format(0.6, 2.6, -1.3), c(1.0, 0.84, 0.60), 0.9, {"omni_range": 5.0}),
+            ("Grey_Before_Morning__club_street_dawn", "DirectionalLight3D", "Transform3D(0, -0.34, 0.94, 0, 0.94, 0.34, -1, 0, 0, 30, 10, 0)",
+             c(0.70, 0.74, 0.80), 0.55),
+            ("Fill_Dawn__club_street_dawn", "DirectionalLight3D", B_FILL.format(8, 6, 0), c(0.70, 0.72, 0.78), 0.30),
+            *[("Streetlight_Last_{}__club_street_dawn".format(k), "OmniLight3D", I.format(5.7, 5.5, -(y + 3.0)), c(1.0, 0.78, 0.46), 0.6,
+               {"omni_range": 12.0}) for k, y in enumerate((-30.0, 0.0))],
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's ROOMS (build_vol3_rooms.py): eight single rooms far apart,
+        # each lit on its own presets.
+        "out_path": os.path.join(ROOT, "vol3_rooms.tscn"),
+        "uid": "uid://vol3_rooms_v3",
+        "root_node": "Vol3Rooms",
+        "glb": "res://assets/3d/locales/vol3_rooms.glb",
+        "env": {"bg": (0.04, 0.05, 0.08, 1), "amb": (0.56, 0.56, 0.64, 1),
+                "amb_e": 0.20, "fog": (0.08, 0.09, 0.11, 1), "fog_e": 0.2,
+                "fog_d": 0.003, "sat": 0.92, "glow_i": 0.8, "glow_b": 0.12},
+        "shader": {"warm": (0.94, 0.84, 0.66, 1), "bg": (0.06, 0.06, 0.07, 1),
+                   "neon_edge": (0.72, 0.68, 0.62, 1), "neon_lo": (0.24, 0.22, 0.22, 1),
+                   "neon_hi": (0.06, 0.06, 0.07, 1), "lim_tint": (0.64, 0.60, 0.56, 1)},
+        "lights": [
+            ("Desk_Lamp__june_closet", "OmniLight3D", I.format(0.30, 1.2, -1.6), c(1.0, 0.84, 0.60), 0.9, {"omni_range": 4.5}),
+            ("Closet_Dim__june_closet", "OmniLight3D", I.format(2.6, 2.3, -4.6), c(0.96, 0.92, 0.84), 0.4, {"omni_range": 2.5}),
+            ("Fill__june_closet", "DirectionalLight3D", B_FILL.format(2, 2, -2), c(0.60, 0.62, 0.72), 0.05),
+            ("Window_Day__oregon_home_day", "OmniLight3D", I.format(302.4, 1.6, -5.6), c(0.96, 0.98, 1.0), 1.2, {"omni_range": 6.0}),
+            ("Fill_Day__oregon_home_day", "DirectionalLight3D", B_FILL.format(302, 3, -3), c(0.80, 0.84, 0.90), 0.35),
+            ("Bed_Lamp__oregon_home_night", "OmniLight3D", I.format(307.7, 1.0, -5.2), c(1.0, 0.80, 0.56), 1.0, {"omni_range": 5.0}),
+            ("Fill_Night__oregon_home_night", "DirectionalLight3D", B_FILL.format(306, 2, -3), c(0.56, 0.58, 0.70), 0.04),
+            ("Sun_West__coast_studio", "DirectionalLight3D", "Transform3D(0, 0.423, -0.906, 0, 0.906, 0.423, 1, 0, 0, 590, 10, -4)",
+             c(1.0, 0.96, 0.88), 1.0),
+            ("Window_Coast__coast_studio", "OmniLight3D", I.format(601.0, 1.8, -4.0), c(0.96, 0.98, 1.0), 1.2, {"omni_range": 9.0}),
+            ("Fill__coast_studio", "DirectionalLight3D", B_FILL.format(604, 3, -4), c(0.80, 0.84, 0.90), 0.35),
+            ("Kit_Light_A__coast_bathroom", "OmniLight3D", I.format(609.9, 1.8, -5.9), c(1.0, 0.96, 0.88), 1.6, {"omni_range": 4.0}),
+            ("Kit_Light_B__coast_bathroom", "OmniLight3D", I.format(612.2, 1.8, -5.7), c(1.0, 0.96, 0.88), 1.4, {"omni_range": 4.0}),
+            ("Fill__coast_bathroom", "DirectionalLight3D", B_FILL.format(611, 2, -5), c(0.70, 0.74, 0.80), 0.05),
+            ("Daylight_N__condo_demo_unit", "DirectionalLight3D", B_KEY_FROM_N.format(905, 10, -10), c(0.96, 0.98, 1.0), 0.9),
+            ("Window_Light__condo_demo_unit", "OmniLight3D", I.format(905.0, 2.0, -7.4), c(0.96, 0.98, 1.0), 1.2, {"omni_range": 8.0}),
+            ("Pendants__condo_demo_unit", "OmniLight3D", I.format(907.6, 2.2, -3.0), c(1.0, 0.92, 0.78), 0.7, {"omni_range": 4.0}),
+            ("Crew_Light__condo_demo_unit", "OmniLight3D", I.format(909.2, 2.1, -6.8), c(1.0, 0.96, 0.88), 0.8, {"omni_range": 5.0}),
+            *[("Pendant_{}__korean_bbq_table".format(k), "OmniLight3D", I.format(x, 2.4, -5.6), c(1.0, 0.80, 0.54), 1.0, {"omni_range": 6.0})
+              for k, x in enumerate((1202.0, 1207.2))],
+            ("Booth_Light__korean_bbq_table", "OmniLight3D", I.format(1202.0, 1.9, -8.9), c(1.0, 0.84, 0.62), 0.9, {"omni_range": 3.0}),
+            ("Grill_Glow__korean_bbq_table", "OmniLight3D", I.format(1202.0, 0.85, -8.9), c(1.0, 0.50, 0.24), 0.4, {"omni_range": 1.5}),
+            ("Fill__korean_bbq_table", "DirectionalLight3D", B_FILL.format(1207, 2, -5), c(0.60, 0.52, 0.48), 0.05),
+            *[("Tube_{}__pizza_party_window".format(k), "OmniLight3D", I.format(x, 2.6, -4.0), c(0.92, 0.96, 0.92), 1.1, {"omni_range": 7.0})
+              for k, x in enumerate((1504.0, 1508.0))],
+            ("Screen_Bounce__pizza_party_window", "OmniLight3D", I.format(1506.0, 1.6, -7.4), c(0.86, 0.90, 0.80), 0.5, {"omni_range": 4.0}),
+            ("Lot_Light__pizza_party_window", "OmniLight3D", I.format(1509.0, 6.8, 11.6), c(1.0, 0.76, 0.44), 1.5, {"omni_range": 18.0}),
+            ("Fill__pizza_party_window", "DirectionalLight3D", B_FILL.format(1506, 2, -4), c(0.60, 0.60, 0.66), 0.05),
+            *[("Beam_{}__warehouse_floor".format(k), "SpotLight3D", SPOT_DOWN_S.format(1804.0 + k * 6.4, 6.0, -23.4),
+               (c(0.40, 1.0, 0.50), c(1.0, 0.40, 0.80))[k % 2], 8.0, {"spot_range": 28.0, "spot_angle": 20.0}) for k in range(4)],
+            *[("Wash_{}__warehouse_floor".format(k), "OmniLight3D", I.format(1808.0 + k * 14.0, 4.0, -14.0), (c(0.40, 1.0, 0.50), c(1.0, 0.40, 0.80))[k],
+               1.5, {"omni_range": 14.0}) for k in range(2)],
+            ("Fill__warehouse_floor", "DirectionalLight3D", B_FILL.format(1815, 3, -12), c(0.40, 0.40, 0.50), 0.05),
+            *[("Tube_Light_{}".format(k) + CAT, "OmniLight3D", I.format(2100.0, 2.6, -y), c(0.90, 0.96, 1.0), 0.9, {"omni_range": 10.0})
+              for k, y in enumerate((10.0, 30.0))],
+            *[("City_Glow_{}".format(k) + CAT, "OmniLight3D", I.format(2100.0 + 60.0 * math.cos(k * 1.5708), -30.0,
+               -(20.0 + 60.0 * math.sin(k * 1.5708))), c(1.0, 0.86, 0.66), 2.0, {"omni_range": 60.0}) for k in range(4)],
+            ("City_Key_S" + CAT, "DirectionalLight3D", B_SUN_FROM_S.format(2100, 10, 0), c(1.0, 0.84, 0.62), 0.40),
+            ("City_Key_W" + CAT, "DirectionalLight3D", "Transform3D(0, 0.423, -0.906, 0, 0.906, 0.423, 1, 0, 0, 2080, 10, -20)",
+             c(1.0, 0.84, 0.62), 0.40),
         ],
         "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
     },

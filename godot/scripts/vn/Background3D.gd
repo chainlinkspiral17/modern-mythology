@@ -3936,6 +3936,176 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"wagner_porch_morning": {
+		"scene": "res://scenes/locales/wagner_home.tscn",
+		"requires_glb": "res://assets/3d/locales/wagner_home.glb",
+		# "Wagner is sitting on the porch, reading and smoking.": the porch along, his chair, the book, the smoke, the door shut behind
+		"camera_origin": Vector3(-5.8, 1.45, 1.7),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-80.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"wagner_house_steps": {
+		"scene": "res://scenes/locales/wagner_home.tscn",
+		"requires_glb": "res://assets/3d/locales/wagner_home.glb",
+		# "The three approach the steps." / "Through the open door, the album on the turn-table plays on to an empty room."
+		"camera_origin": Vector3(-1.4, 1.6, 5.6),
+		"camera_rotation": Vector3(0.02, deg_to_rad(15.0), 0.0),
+		"fov": 60.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"jacob_house_front": {
+		"scene": "res://scenes/locales/wagner_home.tscn",
+		"requires_glb": "res://assets/3d/locales/wagner_home.glb",
+		# Jacob's on another block, by day: the walk, the house plain (ch2 calls it an apartment, ch5 a house)
+		"camera_origin": Vector3(78.0, 1.6, 9.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(-5.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"club_street_door": {
+		"scene": "res://scenes/locales/club_street.tscn",
+		"requires_glb": "res://assets/3d/locales/club_street.glb",
+		# "Outside, the world is a wash of color and activity.": out the club door along the street
+		"camera_origin": Vector3(1.2, 1.6, -1.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(-150.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"club_street_curb": {
+		"scene": "res://scenes/locales/club_street.tscn",
+		"requires_glb": "res://assets/3d/locales/club_street.glb",
+		# the curb: Judgement Day parked there, the streetlights' halos, a bus with a blank ad, the club door behind
+		"camera_origin": Vector3(2.0, 1.6, 8.5),
+		"camera_rotation": Vector3(0.0, deg_to_rad(-20.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"club_street_neon_wide": {
+		"scene": "res://scenes/locales/club_street.tscn",
+		"requires_glb": "res://assets/3d/locales/club_street.glb",
+		# "neon over a city at night": high and long down the street
+		"camera_origin": Vector3(9.0, 8.0, 60.0),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(0.0), 0.0),
+		"fov": 46.0,
+		"suppress_input": true,
+	},
+	"club_street_dawn": {
+		"scene": "res://scenes/locales/club_street.tscn",
+		"requires_glb": "res://assets/3d/locales/club_street.glb",
+		# "a street that is just a street, ordinary, gray, about to be morning. Judgement Day is parked at the curb."
+		"camera_origin": Vector3(2.4, 1.6, -3.0),
+		"camera_rotation": Vector3(0.0, deg_to_rad(160.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.66, 0.68, 0.72, 1), "ambient_energy": 0.45, "fog_color": Color(0.46, 0.48, 0.52, 1)},
+		"suppress_input": true,
+	},
+	"june_closet": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# June's room, 1991: the closet open, the sealed WHAT LIES BEYOND box at the back
+		"camera_origin": Vector3(1.7, 1.4, -2.2),
+		"camera_rotation": Vector3(-0.22, deg_to_rad(-20.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"oregon_home_day": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# the shared Oregon home by day: the wall phone, the table with the papers and the ticket, the computer
+		"camera_origin": Vector3(304.2, 1.5, -0.6),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(60.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"oregon_home_night": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# their room on the lamp that evening: the bed, her bag half-packed for a trip she won't take
+		"camera_origin": Vector3(304.9, 1.4, -0.5),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-45.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"coast_studio": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# the photographer's home-studio over the coast: the windows on the sea, the backdrop, the crew's cases, a light stand going through
+		"camera_origin": Vector3(607.6, 1.6, -1.2),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(50.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"coast_bathroom": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# behind the tripod: the stranger's bathtub in the kit lights, the bubbles gone to a thin film
+		"camera_origin": Vector3(610.35, 1.62, -3.95),
+		"camera_rotation": Vector3(-0.26, deg_to_rad(-6.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"condo_demo_unit": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# the empty demo unit, glossy like a magazine spread, the crew's light at the edge, the city past the glass
+		"camera_origin": Vector3(900.8, 1.55, -1.2),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-40.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"korean_bbq_table": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# the booth table: the grill at the centre, raw food and the kimchi dishes, the handsome room beyond
+		"camera_origin": Vector3(1201.1, 1.15, -8.92),
+		"camera_rotation": Vector3(-0.30, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"pizza_party_window": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# the party room at the steamed window, rain on the pane, the tables of plates, the projection screen
+		"camera_origin": Vector3(1500.8, 1.2, -0.6),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-70.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"warehouse_floor": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# the dance floor at 1 a.m.: green and pink light cutting the fog, the four walls
+		"camera_origin": Vector3(1815.0, 1.6, -8.0),
+		"camera_rotation": Vector3(0.06, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.56, 0.48, 0.62, 1), "ambient_energy": 0.40, "fog_color": Color(0.30, 0.26, 0.34, 1)},
+		"suppress_input": true,
+	},
+	"catwalk_rail_night": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# "a tube of glass slung out over nothing": at the rail, the city lit below, the road of red and white lights
+		"camera_origin": Vector3(2100.9, 1.5, -20.0),
+		"camera_rotation": Vector3(-0.30, deg_to_rad(-90.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"catwalk_walk": {
+		"scene": "res://scenes/locales/vol3_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
+		# down the catwalk between the towers, the far door at the end
+		"camera_origin": Vector3(2100.0, 1.6, -1.0),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

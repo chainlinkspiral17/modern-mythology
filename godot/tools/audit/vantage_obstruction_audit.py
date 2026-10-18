@@ -53,7 +53,9 @@ COLS, ROWS = 9, 3
 # (2026-10-17: amanda_fort_close — vol 3's "look at the billowing fort":
 # the sheet lit blue by the TV fills the frame on purpose; copy_shop_copier
 # — the melds' 4 a.m. copier, close on its lid and its pink scan light.)
-DELIBERATE = {"amanda_fort_close", "copy_shop_copier", "vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "vehicle_cab_night", "vehicle_cab_rear_night", "vehicle_cab_altima_night", "miriam_subaru_night", "vehicle_cab_corolla", "vehicle_cab_corolla_night", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
+# korean_bbq_table (2026-10-18) is seated at the booth over the grill: the
+# table, the dishes and the hood are the picture.
+DELIBERATE = {"amanda_fort_close", "copy_shop_copier", "korean_bbq_table", "vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "vehicle_cab_night", "vehicle_cab_rear_night", "vehicle_cab_altima_night", "miriam_subaru_night", "vehicle_cab_corolla", "vehicle_cab_corolla_night", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 # EMPTY (2026-09-07 · the diner's first shot was a yellow field with a
@@ -333,10 +335,19 @@ def _near_fraction_owned(origin_b, pitch, yaw, fov, boxes, subj):
     return owned / float(ROWS * COLS)
 
 
+def _in_view(name, view):
+    owners = [p for p in name.split("__")[1:] if p in PRESET_IDS]
+    return not owners or view in owners
+
+
+PRESET_IDS = set()
+
+
 def markers_pass(only, show_all):
     """Every vn_shot marker through the same fan (2026-09-07). The
     marker is a camera pose; fov from metadata/fov (default 42)."""
     import marker_aim_audit as M
+    PRESET_IDS.update(p[0] for p in presets())
     flagged = []
     n = 0
     for fn in sorted(os.listdir(M.LOCALES_TSCN)):
@@ -360,8 +371,16 @@ def markers_pass(only, show_all):
         real = sum(1 for b in boxes if not IGNORE.search(b[0]))
         if real < 20 or glb in UNMEASURED:
             continue      # unmeasured builder (harmony_terrain's drape — see UNMEASURED)
-        name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
+        all_boxes = boxes
         for name, pos, rot in markers:
+            # (2026-10-18) a box named `<Name>__<preset>…` exists only in
+            # those presets (Background3D strips it elsewhere). Judge a marker
+            # against what its own view loads: the marker's suffix if it has
+            # one, else the locale's own preset (wagner_house_steps' open
+            # front door is not in wagner_home's skateboard insert).
+            view = name.split("__")[1] if "__" in name else locale
+            boxes = [b for b in all_boxes if _in_view(b[0], view)] if view in PRESET_IDS else all_boxes
+            name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
             n += 1
             o_b = (pos[0], -pos[2], pos[1])
             fov = fovs.get(name, 42.0)

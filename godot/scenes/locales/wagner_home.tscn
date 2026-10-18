@@ -206,6 +206,21 @@ light_energy = 0.55
 shadow_enabled = false
 omni_range = 7.00
 
+; (2026-10-18, draft 3) the front, outside: the porch in the morning (the
+; sun low in the E, travelling W and down), a sky fill for the three
+; outside views; Sun_Front is the afternoon on the steps and Jacob's
+[node name="Sun_Morning__wagner_porch_morning" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0, -0.34, 0.94, 0, 0.94, 0.34, -1, 0, 0, 10, 8, 2)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 1.1
+shadow_enabled = false
+
+[node name="Sky_Fill__wagner_porch_morning__wagner_house_steps__jacob_house_front" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 6, 4)
+light_color = Color(0.76, 0.82, 0.90, 1)
+light_energy = 0.40
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
