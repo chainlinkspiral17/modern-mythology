@@ -3866,7 +3866,8 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   312.
 
 DRAFT 2 targets:
-- Period cars (the shared car model is modern in its lines) and the streetcar itself.
+- The streetcar itself. (Done 2026-10-18: period cars. A 1940s sedan with a tall rounded cab,
+  separate fenders, running boards and whitewalls replaces the shared modern car in build_pasadena_1945.)
 - The Hollywood shoot closer in its view (it sits small down the walk).
 - The copy shop's back room as its own view.
 - Next builds: editing_suite (4), apple_peddler (4), parsonage_1945 (4), bus_station (4).

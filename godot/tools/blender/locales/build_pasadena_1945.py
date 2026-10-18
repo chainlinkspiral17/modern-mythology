@@ -22,8 +22,7 @@ A small room, not a ward.
 
 Blender: x east, y north, z up; Godot (x, z, -y).
 
-DRAFT 2 targets: period cars (the shared car is modern in its lines), the
-streetcar itself, the crowd as hats and coats on benches, the marquee's
+DRAFT 2 targets: the streetcar itself, the crowd as hats and coats on benches, the marquee's
 lettering (no real title), the park's paths, the clinic's corridor; Deck
 framing.
 """
@@ -33,7 +32,6 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_tube,
                              make_taper_cyl, join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
-from _props.vehicles import make_car
 from _props.trees import make_broadleaf
 from _props.furniture import make_chair
 
@@ -103,6 +101,32 @@ def storefront_block(prefix, x_face, y0, y1, side, storeys=2, seed=0, tall=False
         k += 1
 
 
+def car_1940s(prefix, x, y, col, heading=1):
+    """A 1940s sedan along Y (heading +1 = nose north): the long hood and
+    the tall rounded cab, separate fenders over the wheels, running boards,
+    whitewalls, chrome bumpers and grille, the headlamps on the fenders."""
+    h = heading
+    trim = (min(1.0, col[0] * 0.6 + 0.05), min(1.0, col[1] * 0.6 + 0.05), min(1.0, col[2] * 0.6 + 0.05), 1.0)
+    chrome = (0.84, 0.84, 0.82, 1.0)
+    make_chamfer_box(f"{prefix}_Body", (x, y, 0.72), (1.70, 4.70, 0.56), col, chamfer=0.12)
+    make_chamfer_box(f"{prefix}_Hood", (x, y + h * 1.45, 1.06), (1.12, 1.70, 0.20), col, chamfer=0.08)
+    make_chamfer_box(f"{prefix}_Cab", (x, y - h * 0.35, 1.30), (1.56, 2.20, 0.70), col, chamfer=0.26)
+    make_box(f"{prefix}_Glass_Side_L", (x - 0.782, y - h * 0.35, 1.38), (0.004, 1.70, 0.36), (0.18, 0.22, 0.26, 1.0))
+    make_box(f"{prefix}_Glass_Side_R", (x + 0.782, y - h * 0.35, 1.38), (0.004, 1.70, 0.36), (0.18, 0.22, 0.26, 1.0))
+    make_rot_box(f"{prefix}_Windshield", (x, y + h * 0.70, 1.40), (1.30, 0.004, 0.40), (0.18, 0.22, 0.26, 1.0), roll=h * 0.45)
+    for e in (-1, 1):
+        for s in (-1, 1):
+            wy = y + e * 1.45
+            make_cyl(f"{prefix}_Wheel_{e:+d}_{s:+d}", (x + s * 0.80, wy, 0.36), 0.36, 0.22, (0.08, 0.08, 0.08, 1.0), axis='X', segments=14)
+            make_cyl(f"{prefix}_Whitewall_{e:+d}_{s:+d}", (x + s * 0.915, wy, 0.36), 0.24, 0.01, (0.94, 0.94, 0.92, 1.0), axis='X', segments=14)
+            make_chamfer_box(f"{prefix}_Fender_{e:+d}_{s:+d}", (x + s * 0.80, wy, 0.66), (0.34, 1.10, 0.36), col, chamfer=0.12)
+        make_box(f"{prefix}_Bumper_{e:+d}", (x, y + e * 2.38, 0.50), (1.80, 0.10, 0.12), chrome)
+    for s in (-1, 1):
+        make_box(f"{prefix}_Running_Board_{s:+d}", (x + s * 0.90, y, 0.46), (0.18, 1.80, 0.04), trim)
+        make_cyl(f"{prefix}_Headlamp_{s:+d}", (x + s * 0.80, y + h * 2.02, 0.92), 0.10, 0.12, chrome, axis='Y', segments=12)
+    make_box(f"{prefix}_Grille", (x, y + h * 2.36, 0.78), (0.50, 0.03, 0.42), chrome)
+
+
 def build_street():
     """Pasadena: a long street north, the streetcar line down its middle under
     its wire, sidewalks and shopfronts, the marquee, the orange trees."""
@@ -166,7 +190,7 @@ def build_street():
     # slow cars at the curbs and in the road; the bus
     for k, (x, y, along) in enumerate(((-4.8, 16.0, "Y"), (-4.8, 30.0, "Y"), (4.8, 24.0, "Y"), (4.8, 52.0, "Y"), (-2.4, 44.0, "Y"),
                                         (2.4, 70.0, "Y"))):
-        make_car(f"Car_{k}", x, y, 4.6, CAR_COLS[k % len(CAR_COLS)], along=along)
+        car_1940s(f"Car_{k}", x, y, CAR_COLS[k % len(CAR_COLS)], heading=(1 if x > 0 else -1))
     bx, by = 2.6, 34.0
     make_chamfer_box("Bus_Body", (bx, by, 1.75), (2.5, 10.0, 2.7), (0.86, 0.72, 0.30, 1.0), chamfer=0.25)
     make_box("Bus_Window_Band", (bx - 1.26, by, 2.2), (0.02, 8.6, 0.8), (0.24, 0.28, 0.32, 1.0))
@@ -245,8 +269,8 @@ def build_hollywood():
     storefront_block("HwW", hx - 11.0, L0, L1, -1, storeys=3, seed=2, tall=True)
     storefront_block("HwE", hx + 11.0, L0, L1, +1, storeys=3, seed=5, tall=True)
     for k in range(10):
-        make_car(f"Hw_Car_{k}", hx + (-5.0 if k % 2 else 5.0) + (k % 3 - 1) * 0.4, 6.0 + k * 9.0, 4.6, CAR_COLS[(k + 2) % len(CAR_COLS)],
-                 along="Y")
+        car_1940s(f"Hw_Car_{k}", hx + (-5.0 if k % 2 else 5.0) + (k % 3 - 1) * 0.4, 6.0 + k * 9.0, CAR_COLS[(k + 2) % len(CAR_COLS)],
+                  heading=(-1 if k % 2 else 1))
     # the shoot on the E walk: the camera on its tripod, a lamp on its stand,
     # a reflector, a canvas chair, the rope and its stands, a cable
     sx, sy = hx + 8.4, 30.0
