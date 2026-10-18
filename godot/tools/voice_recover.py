@@ -27,6 +27,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -57,15 +58,27 @@ def norm(t):
     return re.sub(r"[^a-z0-9]+", "", t.lower())
 
 
+def _get(url, key):
+    """GET a JSON page; on an HTTP error, say what ElevenLabs said."""
+    req = urllib.request.Request(url, headers={"xi-api-key": key, "accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as ex:
+        body = ex.read().decode("utf-8", "replace")[:600]
+        raise RuntimeError(f"ElevenLabs answered HTTP {ex.code}: {body}") from None
+
+
 def history(key):
+    """Every history item, oldest pages last. (2026-10-18, the Deck: a
+    page_size of 1000 came back HTTP 400; pages of 100 are the API's own
+    default.)"""
     after = None
     while True:
-        q = {"page_size": 1000}
+        q = {"page_size": 100}
         if after:
             q["start_after_history_item_id"] = after
-        req = urllib.request.Request(HISTORY + "?" + urllib.parse.urlencode(q), headers={"xi-api-key": key})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            page = json.loads(r.read().decode("utf-8"))
+        page = _get(HISTORY + "?" + urllib.parse.urlencode(q), key)
         items = page.get("history") or []
         for it in items:
             yield it
@@ -103,6 +116,11 @@ def main():
     ap.add_argument("--apply", action="store_true", help="write the recovered IDs (gaps only)")
     args = ap.parse_args()
     key = api_key()
+    try:
+        _get(HISTORY + "?page_size=1", key)
+    except RuntimeError as ex:
+        sys.exit(f"{ex}\n  (401 = the key is wrong or lacks the History permission: in ElevenLabs, "
+                 f"Developers → API keys → give the key 'Speech History: read'.)")
     idx = line_index()
     per_key = collections.defaultdict(collections.Counter)
     names = {}
