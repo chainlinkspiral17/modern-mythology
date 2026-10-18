@@ -21299,5 +21299,101 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/plate_v7_ch23/front.png",
     "output": "godot/assets/vn/plates/chapter_v7_ch23.jpg"
+  },
+  {
+    "at": "2026-10-18T17:20:16+00:00",
+    "stage": "image",
+    "slug": "russell",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Russell like this: Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991 Russell folds the Express-News. Additional direction: Russell, 60s, thirty-four years in grocery. Solid, slow, a grey crew cut, reading glasses parked on top of his head and never on his face. A dark-green store apron over a plaid short-sleeve shirt, work jeans, the same brown work boots every shift, a folded Express-News under one arm.\nFull-body concept render of Russell, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/russell/russell_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/russell/russell_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/russell/russell_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-18T17:24:04+00:00",
+    "stage": "mesh",
+    "slug": "russell",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15008-15e2-7147-a53c-d0e8d74cf2b2",
+    "inputs": [
+      "godot/assets/concept/meshy/russell/front.png",
+      "godot/assets/concept/meshy/russell/side.png",
+      "godot/assets/concept/meshy/russell/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/russell.glb",
+    "file_size_kb": 47995.0
+  },
+  {
+    "at": "2026-10-18T17:24:59+00:00",
+    "stage": "image",
+    "slug": "marisol",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Marisol like this: Marisol packs her thermos. Russell folds the Express-News. Doug picks the Karamazov up off the floor and puts it in his jacket pocket. Each of them, on the way past Diego, does one small thing. Additional direction: Marisol, 40s, a grocery night-shift worker. Compact, quick hands, black hair pulled back tight, a steel thermos in one hand. A dark-green store apron over a black long-sleeve t-shirt, black jeans, black sneakers, a small gold cross at the throat.\nFull-body concept render of Marisol, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/marisol/marisol_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marisol/marisol_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marisol/marisol_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-18T17:28:30+00:00",
+    "stage": "mesh",
+    "slug": "marisol",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a1500b-b3f4-7385-8fa1-2adb1c1437e3",
+    "inputs": [
+      "godot/assets/concept/meshy/marisol/front.png",
+      "godot/assets/concept/meshy/marisol/side.png",
+      "godot/assets/concept/meshy/marisol/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/marisol.glb",
+    "file_size_kb": 50362.1
   }
 ]
