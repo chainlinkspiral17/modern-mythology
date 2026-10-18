@@ -21629,5 +21629,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/jen.glb",
     "file_size_kb": 54122.2
+  },
+  {
+    "at": "2026-10-18T18:27:12+00:00",
+    "stage": "image",
+    "slug": "hugo",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Hugo like this: manned by a kid named Hugo who runs the night shift and whose family owns the taqueria. the laugh of a kid who has been working the night shift at a taqueria for two years Additional direction: Hugo, 19, who runs the night window at his family's taqueria. Slim, dark hair under a black cap, a small dry laugh. A white apron over a black El Rancho t-shirt, jeans, black sneakers, a rag over one shoulder.\nFull-body concept render of Hugo, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/hugo/hugo_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hugo/hugo_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hugo/hugo_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

@@ -30,6 +30,36 @@
    "md5": "aa7420a88d47865c865c6f3728531778",
    "size": 458752
   },
+  "godot/assets/3d/characters/heroes/_full/diego_ramos.glb": {
+   "at": "2026-10-18T18:26:34+00:00",
+   "md5": "822d35bb1e1b8a7546f0892ef4d7e107",
+   "size": 52511216
+  },
+  "godot/assets/3d/characters/heroes/_full/jen.glb": {
+   "at": "2026-10-18T18:26:34+00:00",
+   "md5": "668a0ba1c10c392bda219e016cd6d667",
+   "size": 55421088
+  },
+  "godot/assets/3d/characters/heroes/_full/lucy.glb": {
+   "at": "2026-10-18T18:26:34+00:00",
+   "md5": "0966d00c230adc428d382145a5234943",
+   "size": 51118936
+  },
+  "godot/assets/3d/characters/heroes/_full/marisol.glb": {
+   "at": "2026-10-18T18:26:34+00:00",
+   "md5": "63a218bfa1dd6bf5dd2470763a8d8ddb",
+   "size": 51570808
+  },
+  "godot/assets/3d/characters/heroes/_full/mark.glb": {
+   "at": "2026-10-18T18:26:34+00:00",
+   "md5": "f097b8078a499a8c5eabf981d8509dd3",
+   "size": 52644576
+  },
+  "godot/assets/3d/characters/heroes/_full/russell.glb": {
+   "at": "2026-10-18T18:26:34+00:00",
+   "md5": "eb4a279a7dd2e1e0ce30bddb701d4f20",
+   "size": 49146868
+  },
   "godot/assets/3d/characters/heroes/alberto.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "8e4871d528072c64a68e1cdaf77c41d6",
@@ -656,9 +686,9 @@
    "size": 66165
   },
   "godot/assets/3d/characters/heroes/diego_ramos.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "cce4d75c37c0e3e8bb62097b1eaf2bb2",
-   "size": 44354392
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "f583b81cf4e77a79d6e467403bf89c2f",
+   "size": 5189704
   },
   "godot/assets/3d/characters/heroes/diego_ramos_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -679,6 +709,26 @@
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "ef7476fa596294f1b9afcf0ce9f6c57a",
    "size": 69278
+  },
+  "godot/assets/3d/characters/heroes/diego_ramos_Image_0.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "0003cc4f0123fa64d247b93828d491b9",
+   "size": 474159
+  },
+  "godot/assets/3d/characters/heroes/diego_ramos_Image_1.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "f5ea6b2da8e58112fd7c4c33063b382e",
+   "size": 76217
+  },
+  "godot/assets/3d/characters/heroes/diego_ramos_Image_2.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "2a7639f6037111a8c4ce41b228d21faf",
+   "size": 149451
+  },
+  "godot/assets/3d/characters/heroes/diego_ramos_Image_3.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "be2c338fa86ab6b7009c21d79133e15b",
+   "size": 17048
   },
   "godot/assets/3d/characters/heroes/doug.glb": {
    "at": "2026-10-11T21:25:27+00:00",
@@ -1135,6 +1185,11 @@
    "md5": "93bdd74e40e70a58689b502bc85ed302",
    "size": 67724
   },
+  "godot/assets/3d/characters/heroes/jen.glb": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "9ac63fb3ab3c193890013d160170cd80",
+   "size": 5478208
+  },
   "godot/assets/3d/characters/heroes/jessa.glb": {
    "at": "2026-10-11T21:31:59+00:00",
    "md5": "8161199f8da96005e56016fbedc5b44e",
@@ -1390,6 +1445,31 @@
    "md5": "a09aa62a06344d53fc6eb336daf3c865",
    "size": 66927
   },
+  "godot/assets/3d/characters/heroes/lucy.glb": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "33f9bc7280bc1ef943ef991eb4d05e92",
+   "size": 5454808
+  },
+  "godot/assets/3d/characters/heroes/lucy_Image_0.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "d8fa7460ec271619dd1f762ddaf3743b",
+   "size": 487319
+  },
+  "godot/assets/3d/characters/heroes/lucy_Image_1.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "de02372f1ccb8bfd0b8f5f5cc501bb12",
+   "size": 74387
+  },
+  "godot/assets/3d/characters/heroes/lucy_Image_2.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "976030dea81401e191dd2c005fbe9910",
+   "size": 161402
+  },
+  "godot/assets/3d/characters/heroes/lucy_Image_3.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "acdf89704320914f9e92719ca0a75331",
+   "size": 25333
+  },
   "godot/assets/3d/characters/heroes/mackenzie_roberts.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "62a1ecc34953a10bcf94f0ef93c8c4c3",
@@ -1465,6 +1545,31 @@
    "md5": "d17ae0c4286ad17c2f4bde258d03375c",
    "size": 79490
   },
+  "godot/assets/3d/characters/heroes/marisol.glb": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "d2c164009663d859e4d0c8393b20f62f",
+   "size": 4963196
+  },
+  "godot/assets/3d/characters/heroes/marisol_Image_0.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "896cf7a83e730ba149dfde62eefa23c4",
+   "size": 389253
+  },
+  "godot/assets/3d/characters/heroes/marisol_Image_1.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "12433e1b4e22380fb94111da932043a8",
+   "size": 69845
+  },
+  "godot/assets/3d/characters/heroes/marisol_Image_2.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "37008f78d84d4c1dd59abcd1fe61fa52",
+   "size": 130576
+  },
+  "godot/assets/3d/characters/heroes/marisol_Image_3.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "6ace00a10cd7aa5b7883a46743826334",
+   "size": 17042
+  },
   "godot/assets/3d/characters/heroes/marit.glb": {
    "at": "2026-10-11T18:53:14+00:00",
    "md5": "0d472ea6c486e81f061fabe309c72e24",
@@ -1489,6 +1594,11 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "6ee32b3ddfd01535c6d9b8c3d6e9c62a",
    "size": 185013
+  },
+  "godot/assets/3d/characters/heroes/mark.glb": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "9b92ca3c4a5555f2ef0c56ad05db2e5a",
+   "size": 5194668
   },
   "godot/assets/3d/characters/heroes/mateo.glb": {
    "at": "2026-10-11T19:37:20+00:00",
@@ -1864,6 +1974,31 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "4b1b3f61a08d7aac0192ff9d48f05e91",
    "size": 283239
+  },
+  "godot/assets/3d/characters/heroes/russell.glb": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "f1bc9eb8e4c18f06736b402a33ec09ac",
+   "size": 5309268
+  },
+  "godot/assets/3d/characters/heroes/russell_Image_0.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "0b073709b75c68ccb907940b719107e2",
+   "size": 591275
+  },
+  "godot/assets/3d/characters/heroes/russell_Image_1.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "8b84b1581a1792aaeb66998bae0cd8bf",
+   "size": 72888
+  },
+  "godot/assets/3d/characters/heroes/russell_Image_2.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "91c6eeb68ae771a3234501fc35eba29a",
+   "size": 197842
+  },
+  "godot/assets/3d/characters/heroes/russell_Image_3.jpg": {
+   "at": "2026-10-18T18:26:23+00:00",
+   "md5": "0d2a6d34ac215d816aad40d284121dfb",
+   "size": 17249
   },
   "godot/assets/3d/characters/heroes/sal_carratura.glb": {
    "at": "2026-10-11T18:04:51+00:00",
@@ -58080,15 +58215,60 @@
    "md5": "e901e56914f9e6f2b521348a1bbc6475",
    "size": 2287680
   },
+  "godot/assets/concept/meshy/diego_ramos/back.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "eb44eb14336adc713aa40d5d9e702451",
+   "size": 2035270
+  },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "c42e616ca8c5a19591c0e5cf5dafb5a3",
+   "size": 1396089
+  },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "eb44eb14336adc713aa40d5d9e702451",
+   "size": 2035270
+  },
   "godot/assets/concept/meshy/diego_ramos/diego_ramos_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "adeb840d548cb305b2b73fd71443a882",
    "size": 76252
   },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "ea287edfc1708496f49514f341e0177f",
+   "size": 1997479
+  },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "400bdb393925bf98780297e720c2b0fb",
+   "size": 2051834
+  },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "6474cf020ae38c36a5d6043ce0ac5ecd",
+   "size": 1375310
+  },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "073e84032fdded835d6fe757e6180f66",
+   "size": 1961263
+  },
   "godot/assets/concept/meshy/diego_ramos/front.png": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "adeb840d548cb305b2b73fd71443a882",
-   "size": 76252
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "400bdb393925bf98780297e720c2b0fb",
+   "size": 2051834
+  },
+  "godot/assets/concept/meshy/diego_ramos/meshy_thumb.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "bdde21d50453e7f947bc80dccad3d2ad",
+   "size": 84864
+  },
+  "godot/assets/concept/meshy/diego_ramos/side.png": {
+   "at": "2026-10-18T18:26:58+00:00",
+   "md5": "073e84032fdded835d6fe757e6180f66",
+   "size": 1961263
   },
   "godot/assets/concept/meshy/diner_bbs_screen/diner_bbs_screen_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:43:45+00:00",
@@ -59735,6 +59915,41 @@
    "md5": "e47f10f110e900bf6ac307cdb9cc18f6",
    "size": 1978691
   },
+  "godot/assets/concept/meshy/jen/back.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "3576d64b43e343a30f58a1c78ba2f5a1",
+   "size": 1876052
+  },
+  "godot/assets/concept/meshy/jen/front.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "ed3cacf4390a605cf54843f85a15d604",
+   "size": 1981334
+  },
+  "godot/assets/concept/meshy/jen/jen_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "3576d64b43e343a30f58a1c78ba2f5a1",
+   "size": 1876052
+  },
+  "godot/assets/concept/meshy/jen/jen_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "ed3cacf4390a605cf54843f85a15d604",
+   "size": 1981334
+  },
+  "godot/assets/concept/meshy/jen/jen_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "a34e42ec273ea590114945807b6e370c",
+   "size": 1903577
+  },
+  "godot/assets/concept/meshy/jen/meshy_thumb.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "cc417aa5d9c7604729e52e5aa7b86991",
+   "size": 77379
+  },
+  "godot/assets/concept/meshy/jen/side.png": {
+   "at": "2026-10-18T18:27:04+00:00",
+   "md5": "a34e42ec273ea590114945807b6e370c",
+   "size": 1903577
+  },
   "godot/assets/concept/meshy/jessa/back.png": {
    "at": "2026-10-11T21:32:08+00:00",
    "md5": "17835843188d33eec1757101dc7f4a60",
@@ -60470,6 +60685,41 @@
    "md5": "25b23cf86fdcd79fb6bdd2d99af18762",
    "size": 2480273
   },
+  "godot/assets/concept/meshy/lucy/back.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "99d0fe4fc6b6cee2c9772b6676f841df",
+   "size": 1959182
+  },
+  "godot/assets/concept/meshy/lucy/front.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "eae96182d4639aa64f81246f6bf48f74",
+   "size": 2014258
+  },
+  "godot/assets/concept/meshy/lucy/lucy_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "99d0fe4fc6b6cee2c9772b6676f841df",
+   "size": 1959182
+  },
+  "godot/assets/concept/meshy/lucy/lucy_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "eae96182d4639aa64f81246f6bf48f74",
+   "size": 2014258
+  },
+  "godot/assets/concept/meshy/lucy/lucy_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "9ac195504933e42e3033fd845895007b",
+   "size": 1902455
+  },
+  "godot/assets/concept/meshy/lucy/meshy_thumb.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "4081fd905b25bd53b1036f72de39eb79",
+   "size": 70261
+  },
+  "godot/assets/concept/meshy/lucy/side.png": {
+   "at": "2026-10-18T18:27:14+00:00",
+   "md5": "9ac195504933e42e3033fd845895007b",
+   "size": 1902455
+  },
   "godot/assets/concept/meshy/mackenzie_roberts/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "97334bc2c7c690f246cd24923d6e1de9",
@@ -60580,6 +60830,41 @@
    "md5": "6fabe2fbcdf42e751ed14a39abb2c504",
    "size": 1994702
   },
+  "godot/assets/concept/meshy/marisol/back.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "de417938eed2a0b9636e92ee307a3dff",
+   "size": 1925534
+  },
+  "godot/assets/concept/meshy/marisol/front.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "3435f32cc157e9863257a4e6e2b1ce25",
+   "size": 1955581
+  },
+  "godot/assets/concept/meshy/marisol/marisol_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "de417938eed2a0b9636e92ee307a3dff",
+   "size": 1925534
+  },
+  "godot/assets/concept/meshy/marisol/marisol_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "3435f32cc157e9863257a4e6e2b1ce25",
+   "size": 1955581
+  },
+  "godot/assets/concept/meshy/marisol/marisol_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "b9c9788e633047334b9a0c77b1aea95d",
+   "size": 1895550
+  },
+  "godot/assets/concept/meshy/marisol/meshy_thumb.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "acc9ac3089d146672838da45560e2e8f",
+   "size": 82806
+  },
+  "godot/assets/concept/meshy/marisol/side.png": {
+   "at": "2026-10-18T18:27:33+00:00",
+   "md5": "b9c9788e633047334b9a0c77b1aea95d",
+   "size": 1895550
+  },
   "godot/assets/concept/meshy/marit/back.png": {
    "at": "2026-10-11T18:53:25+00:00",
    "md5": "1204955dfedbb63d4c1ca3125cc1a772",
@@ -60614,6 +60899,41 @@
    "at": "2026-10-11T18:53:25+00:00",
    "md5": "b89b20bdf24416da1f416801a3a8189e",
    "size": 2033040
+  },
+  "godot/assets/concept/meshy/mark/back.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "f6d61e406c3e682342764aac1c9fbdc4",
+   "size": 2090047
+  },
+  "godot/assets/concept/meshy/mark/front.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "2bcb7cf136a47e266f830f9cdb94626a",
+   "size": 2166314
+  },
+  "godot/assets/concept/meshy/mark/mark_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "f6d61e406c3e682342764aac1c9fbdc4",
+   "size": 2090047
+  },
+  "godot/assets/concept/meshy/mark/mark_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "2bcb7cf136a47e266f830f9cdb94626a",
+   "size": 2166314
+  },
+  "godot/assets/concept/meshy/mark/mark_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "775a9edf622a64eaf1a62c98adfd3ed1",
+   "size": 1959384
+  },
+  "godot/assets/concept/meshy/mark/meshy_thumb.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "6ae4b73a8e0e9ab38371bc3168725639",
+   "size": 88003
+  },
+  "godot/assets/concept/meshy/mark/side.png": {
+   "at": "2026-10-18T18:27:48+00:00",
+   "md5": "775a9edf622a64eaf1a62c98adfd3ed1",
+   "size": 1959384
   },
   "godot/assets/concept/meshy/master_tape_february/back.png": {
    "at": "2026-10-18T17:13:34+00:00",
@@ -64730,6 +65050,41 @@
    "md5": "acf4ebc38ef736c878d172e8b7d14b42",
    "size": 2045685
   },
+  "godot/assets/concept/meshy/russell/back.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "e34fa0b4fe4bfbff243fda6bd0b9ddca",
+   "size": 2199341
+  },
+  "godot/assets/concept/meshy/russell/front.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "00520ac3dff09d7523d475f3444c0374",
+   "size": 2045595
+  },
+  "godot/assets/concept/meshy/russell/meshy_thumb.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "4afb37467dfe209de0f9d9a40badbafe",
+   "size": 85027
+  },
+  "godot/assets/concept/meshy/russell/russell_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "e34fa0b4fe4bfbff243fda6bd0b9ddca",
+   "size": 2199341
+  },
+  "godot/assets/concept/meshy/russell/russell_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "00520ac3dff09d7523d475f3444c0374",
+   "size": 2045595
+  },
+  "godot/assets/concept/meshy/russell/russell_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "b635dbe360b3b9842c83d29d1402d79a",
+   "size": 1961763
+  },
+  "godot/assets/concept/meshy/russell/side.png": {
+   "at": "2026-10-18T18:27:58+00:00",
+   "md5": "b635dbe360b3b9842c83d29d1402d79a",
+   "size": 1961763
+  },
   "godot/assets/concept/meshy/safehouse_bedroom_hall_print/front.png": {
    "at": "2026-10-14T03:22:43+00:00",
    "md5": "7ca897ccadcade78c5f52da98651416c",
@@ -65139,6 +65494,36 @@
    "at": "2026-10-14T03:26:00+00:00",
    "md5": "62dd7996c293aebb3a533aa94152e1f2",
    "size": 2362082
+  },
+  "godot/assets/concept/meshy/scumm_machine/back.png": {
+   "at": "2026-10-18T18:28:07+00:00",
+   "md5": "c149f48b73e853956153dcbd7437ee1f",
+   "size": 2525534
+  },
+  "godot/assets/concept/meshy/scumm_machine/front.png": {
+   "at": "2026-10-18T18:28:07+00:00",
+   "md5": "e46986ef6d01fcc4c9ac47285c730c38",
+   "size": 2357384
+  },
+  "godot/assets/concept/meshy/scumm_machine/scumm_machine_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:28:07+00:00",
+   "md5": "c149f48b73e853956153dcbd7437ee1f",
+   "size": 2525534
+  },
+  "godot/assets/concept/meshy/scumm_machine/scumm_machine_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:28:07+00:00",
+   "md5": "e46986ef6d01fcc4c9ac47285c730c38",
+   "size": 2357384
+  },
+  "godot/assets/concept/meshy/scumm_machine/scumm_machine_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-18T18:28:07+00:00",
+   "md5": "2929a4dc7282f583c7ef10bca4a1ee56",
+   "size": 2234800
+  },
+  "godot/assets/concept/meshy/scumm_machine/side.png": {
+   "at": "2026-10-18T18:28:07+00:00",
+   "md5": "2929a4dc7282f583c7ef10bca4a1ee56",
+   "size": 2234800
   },
   "godot/assets/concept/meshy/skip_donnelly/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
