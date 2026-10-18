@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-18 · pass 123: THE AUTHOR'S RULINGS ON THE SETS.** The user: "Steven Chau lives at the
+Chau house, yes. Jacob's kid can be a toddler, fix any discrepancy, Dean's house can be the same
+layout, just dressed different. There is the idea of two overlapping houses in the dreams. The
+house is ten miles inland from the coast but 'on the coast'."
+- **One Small Wood room, two houses.** `_props/small_wood_house.py` now holds the narrator's
+  bedroom shell: its walls, its N window and its S door. small_wood_ranch builds its room from it
+  (same 291 objects).
+  - dean_house_1994 is draft 2 on the same shell, dressed for Dean's rented house in 1994: a thin
+    curtain where the ranch has plank blinds, the sheets thrown, the clock, the register over the
+    furnace, yesterday's clothes on a chair.
+  - The basement runs under it, and the window well sits under the same window. The two
+    bedrooms are the overlapping houses of the dreams.
+- **Steven's room is the Chau house's.** vol 4's "the wasted sentiment" plays `chau_steven_room`:
+  Steven's room with a small armchair in the corner by the blinds and the blanket twisted in it
+  ("twisted in a tight spot"). The separate room in vol4_story_rooms is gone.
+- **Jacob's son is a toddler.** ch9's "A kid, maybe six" is now "maybe three", which fits "I have
+  a phone and a crib." The expansion draft and the voice casting follow. (Apartment or house is
+  still open.)
+- **The house is ten miles inland and "on the coast".** That settles the ch4 knot: "back home on
+  the coast of Small Wood" and driving "the many miles to the coast" are the same house.
+  `vol3_andy_room_day` / `_night` (ch4 the coast) now play the Small Wood room: a new
+  `ranch_home_day` (the room as it is, clock radio and all) and `ranch_bedroom_night`.
+  Pass 122 had sent them to the Oregon home.
+
+DRAFT 2 targets:
+- The rest of the shared Small Wood plan: the ground floor and the kitchen, so both houses are
+  whole, and the farmhouse's rooms on the same plan.
+- Steven's room dressed for vol 4's years (it is vol 3's room as it was).
+
 **2026-10-18 · pass 122: WAGNER'S FRONT, THE STREET OUTSIDE CLUB #, VOL 3'S ROOMS (draft 1).**
 The last vols 1–4 stand-ins, read from the text by two brief agents and built.
 - **wagner_home, draft 3: the front.** ch5 sees the house from outside twice on one day: "Wagner

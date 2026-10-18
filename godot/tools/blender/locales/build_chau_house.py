@@ -34,6 +34,10 @@ AMANDA'S (x 40..56) — "the two boys at a friend's house, her name Amanda":
 
 Blender: x east, y north, z up; Godot (x, z, -y).
 
+Vol 4's "the wasted sentiment" is Steven's room too (the user, 2026-10-18:
+"Steven Chau lives at the Chau house, yes"): the armchair he fell asleep
+twisted in, `chau_steven_room`.
+
 DRAFT 2 targets: Chris's room and Mrs. Chau's room past their doors, the
 garage ("the open garage door"), the sheet's breathing as a per-frame
 wobble (it is still), the steam as a fog pass, the kitchen's mess as more
@@ -238,7 +242,18 @@ def build_hall_rooms():
     make_box("Steven_Tower", (dx - 0.05, dy + 0.62, 0.98), (0.44, 0.18, 0.44), (0.80, 0.76, 0.66, 1.0))
     make_box("Steven_Keyboard", (dx + 0.22, dy + 0.10, 0.76), (0.16, 0.44, 0.025), (0.80, 0.76, 0.66, 1.0))
     make_chair("Steven_Chair", dx + 0.66, dy + 0.05, yaw=math.pi / 2.0, wood=(0.24, 0.24, 0.26, 1.0))
-    make_blob("Steven_Clothes", (X1 - 0.6, 4.1, 0.10), 0.28, (0.36, 0.34, 0.30, 1.0), noise=0.3, seed=3, squash=0.4)
+    make_blob("Steven_Clothes", (10.0, 5.9, 0.10), 0.28, (0.36, 0.34, 0.30, 1.0), noise=0.3, seed=3, squash=0.4)
+    # vol 4's "the wasted sentiment" (2026-10-18; the user: "Steven Chau lives
+    # at the Chau house, yes"): "He was still tired and stiff from falling
+    # asleep like he did, twisted in a tight spot" — a small armchair in the
+    # SE corner by the blinds, the blanket twisted in it that morning
+    ax, ay = X1 - 0.07 - 0.45, 3.6 + 0.07 + 0.45
+    make_box("Steven_Armchair_Base", (ax, ay, 0.22), (0.80, 0.80, 0.44), (0.30, 0.34, 0.40, 1.0))
+    make_box("Steven_Armchair_Back", (ax + 0.33, ay, 0.70), (0.14, 0.80, 0.56), (0.30, 0.34, 0.40, 1.0))
+    for s in (-1, 1):
+        make_box(f"Steven_Armchair_Arm_{s:+d}", (ax - 0.06, ay + s * 0.34, 0.54), (0.68, 0.12, 0.20), (0.30, 0.34, 0.40, 1.0))
+    make_rot_box("Steven_Blanket_Twisted__chau_steven_room", (ax - 0.05, ay, 0.47), (0.56, 0.60, 0.06), (0.60, 0.30, 0.28, 1.0), yaw=0.5)
+    make_box("Steven_Controller_On_Arm__chau_steven_room", (ax - 0.10, ay + 0.34, 0.655), (0.14, 0.06, 0.03), (0.14, 0.14, 0.16, 1.0))
     # Mrs. Chau's room (y 9..14): the bed, the dresser and its mirror
     make_bed("Mom_Bed", X1 - 0.10 - 1.1, 12.4, head="+X", w=1.60, d=2.1, blanket_col=(0.80, 0.74, 0.66, 1.0))
     make_box("Mom_Dresser", (HALL_X1 + 0.07 + 0.26, 12.0, 0.42), (0.50, 1.20, 0.84), (0.52, 0.40, 0.30, 1.0))

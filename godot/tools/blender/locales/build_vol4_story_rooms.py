@@ -21,9 +21,8 @@ PDA, a phone in a car.
    "One of those early nintendo systems"; "magazines, strategies and comic
    books"; the waking dream: "soft melodies and blue lighting filled his
    bedroom"                               → aaron_bedroom, aaron_bedroom_blue
-  the wasted sentiment: "Steven didn't want to leave his house"; "falling
-   asleep like he did, twisted in a tight spot" (whether this is the Chau
-   house is the author's call)             → steven_room
+  the wasted sentiment: Steven's room is in the Chau house (the user,
+   2026-10-18): chau_house's `chau_steven_room`, not here
   daddy: "This is too easy, don't you think, Esther asked him one late
    night."; "Just reading a bit longer, okay?" (a comfortable family house,
    no city named)                          → dean_house_late
@@ -234,9 +233,9 @@ def build_mirror_room():
 
 
 def build_boys_rooms():
-    """Aaron's room (x 300..304.4, y 0..3.8) and Steven's (x 340..343.6)."""
+    """Aaron's room (x 300..304.4, y 0..3.8). (Steven's is in chau_house.)"""
     H = 2.4
-    for tag, x0, w, d in (("Aaron", 300.0, 4.4, 3.8), ("Steven", 340.0, 3.6, 3.4)):
+    for tag, x0, w, d in (("Aaron", 300.0, 4.4, 3.8),):
         pal = {"wall": ((0.70, 0.76, 0.82, 1.0) if tag == "Aaron" else (0.80, 0.76, 0.66, 1.0)), "baseboard": (0.40, 0.36, 0.30, 1.0)}
         make_floor(f"{tag}_Floor", (x0 + w / 2.0, d / 2.0, 0.0), size_x=w, size_y=d,
                    palette={"vinyl": (0.46, 0.40, 0.36, 1.0), "seam": (0.40, 0.34, 0.30, 1.0)})
@@ -250,7 +249,7 @@ def build_boys_rooms():
         frame(f"{tag}_Window", 'X', x0 + w / 2.0, d, 1.45, 1.1, 1.1)
         make_box(f"{tag}_Door_Open", (x0 + 0.7 + 0.40, 0.09 + 0.42, 1.0), (0.04, 0.80, 2.0), (0.70, 0.62, 0.50, 1.0))
         make_box(f"{tag}_Window_Sky", (x0 + w / 2.0, d + 0.40, 1.45), (1.6, 0.04, 1.6),
-                 (0.10, 0.12, 0.18, 1.0) if tag == "Aaron" else (0.72, 0.78, 0.86, 1.0))   # Aaron's evening, Steven's morning
+                 (0.10, 0.12, 0.18, 1.0))   # Aaron's evening
     # Aaron: the bed, the toys still out, the small grey console, the
     # magazines and comics, a shelf of toys
     ax = 300.0
@@ -272,21 +271,6 @@ def build_boys_rooms():
         make_box(f"Aaron_Magazine_{k}", (ax + 2.6, 1.0, 0.008 + k * 0.012), (0.21, 0.28, 0.010),
                  ((0.86, 0.30, 0.24, 1.0), (0.30, 0.40, 0.70, 1.0), (0.92, 0.86, 0.40, 1.0))[k % 3])
     make_box("Aaron_Rug", (ax + 2.0, 1.6, 0.004), (1.8, 1.4, 0.008), (0.40, 0.46, 0.56, 1.0))
-    # Steven: the small couch he fell asleep twisted on, the blanket, the
-    # game console and controller, clothes, the bed unslept
-    sx = 340.0
-    lx, ly = sx + 0.85, 3.4 - 0.09 - 0.40
-    make_box("Steven_Loveseat_Base", (lx, ly, 0.22), (1.30, 0.80, 0.44), (0.40, 0.32, 0.28, 1.0))
-    make_box("Steven_Loveseat_Back", (lx, ly + 0.32, 0.62), (1.30, 0.16, 0.40), (0.40, 0.32, 0.28, 1.0))
-    for s in (-1, 1):
-        make_box(f"Steven_Loveseat_Arm_{s:+d}", (lx + s * 0.59, ly, 0.52), (0.12, 0.80, 0.18), (0.40, 0.32, 0.28, 1.0))
-    make_rot_box("Steven_Blanket_Twisted", (lx - 0.1, ly - 0.02, 0.48), (1.0, 0.70, 0.06), (0.50, 0.30, 0.30, 1.0), yaw=0.3)
-    make_bed("Steven_Bed", sx + 3.6 - 0.09 - 0.50, 2.2, head="+Y", w=0.95, d=1.9, made=True, blanket_col=(0.30, 0.34, 0.30, 1.0))
-    make_box("Steven_TV_Stand", (sx + 0.09 + 0.23, 1.6, 0.25), (0.46, 0.80, 0.50), (0.40, 0.32, 0.24, 1.0))
-    make_chamfer_box("Steven_TV", (sx + 0.09 + 0.24, 1.6, 0.72), (0.42, 0.48, 0.44), (0.18, 0.18, 0.18, 1.0), chamfer=0.03)
-    make_box("Steven_Console", (sx + 1.0, 1.7, 0.04), (0.30, 0.22, 0.08), (0.14, 0.14, 0.16, 1.0))
-    make_box("Steven_Controller", (sx + 1.3, 1.4, 0.015), (0.14, 0.06, 0.03), (0.14, 0.14, 0.16, 1.0))
-    make_box("Steven_Clothes_Floor", (sx + 1.9, 1.9, 0.03), (0.50, 0.40, 0.06), (0.30, 0.30, 0.36, 1.0))
 
 
 def build_dean_house():

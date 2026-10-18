@@ -126,7 +126,7 @@ That's the other half of the phone call.
 I never heard her side of it.
 I just said love you too.
 
-Jacob presses play. A kid, maybe six, talking with his mouth full.
+Jacob presses play. A kid, maybe three, talking with his mouth full.
 
 **JACOB'S SON (V.O.)**
 dad

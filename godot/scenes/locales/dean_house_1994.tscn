@@ -161,7 +161,7 @@ light_energy = 0.03
 shadow_enabled = false
 
 [node name="Window_Predawn__dean_bedroom_1994" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.6, -4.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.6, -3.8)
 light_color = Color(0.56, 0.62, 0.8, 1)
 light_energy = 0.5
 shadow_enabled = false
@@ -174,21 +174,21 @@ light_energy = 0.35
 shadow_enabled = false
 
 [node name="Desk_Lamp__dean_basement_1994" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, -1.5, -4.41)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -1.4, -3.81)
 light_color = Color(1.0, 0.86, 0.62, 1)
 light_energy = 0.9
 shadow_enabled = false
 omni_range = 3.0
 
 [node name="Well_First_Light__dean_basement_1994" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, -0.4, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.4, -4.0)
 light_color = Color(0.7, 0.74, 0.82, 1)
 light_energy = 0.6
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="Furnace_Pilot__dean_basement_1994" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, -2.2, -2.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, -2.2, -1.25)
 light_color = Color(1.0, 0.56, 0.24, 1)
 light_energy = 0.15
 shadow_enabled = false

@@ -200,13 +200,13 @@ light_energy = 0.8
 shadow_enabled = false
 omni_range = 3.4
 
-[node name="Sky_N__ranch_bedroom_day" type="DirectionalLight3D" parent="."]
+[node name="Sky_N__ranch_bedroom_day__ranch_home_day" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 0, 0, 0, 0.707, 0.707, 0, 0.707, -0.707, 0, 6, -8)
 light_color = Color(0.92, 0.94, 1.0, 1)
 light_energy = 0.7
 shadow_enabled = false
 
-[node name="Window_N__ranch_bedroom_day" type="OmniLight3D" parent="."]
+[node name="Window_N__ranch_bedroom_day__ranch_home_day" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.5, -3.85)
 light_color = Color(0.92, 0.94, 1.0, 1)
 light_energy = 1.8

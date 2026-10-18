@@ -53,7 +53,7 @@ from _props.furniture import make_bed, make_chair, make_lamp
 from _props.decor import make_faded_poster
 from _props.detail import make_wall_outlet, make_light_switch, make_traffic_wear
 
-W, D, CEIL, T = 3.8, 4.2, 2.45, 0.20
+from _props.small_wood_house import W, D, CEIL, T, WIN_X, WIN_W, WIN_H, WIN_Z, DOOR_X, bedroom_shell
 PAL = {"wall": (0.82, 0.80, 0.72, 1.0), "baseboard": (0.40, 0.32, 0.24, 1.0)}
 FLOOR = (0.50, 0.38, 0.26, 1.0); FLOOR_SEAM = (0.38, 0.28, 0.18, 1.0)
 PINE = (0.62, 0.48, 0.30, 1.0); PINE_DARK = (0.44, 0.32, 0.20, 1.0)
@@ -61,24 +61,16 @@ SLAT = (0.66, 0.52, 0.34, 1.0)
 BOARD = (0.46, 0.38, 0.30, 1.0); BOARD_DARK = (0.32, 0.26, 0.20, 1.0)
 PLASTER = (0.78, 0.74, 0.66, 1.0)
 EARTH = [(0.56, 0.36, 0.22, 1.0), (0.42, 0.44, 0.26, 1.0), (0.62, 0.50, 0.30, 1.0), (0.34, 0.24, 0.20, 1.0)]
-WIN_X, WIN_W, WIN_H, WIN_Z = 0.20, 1.30, 1.25, 1.45
 
 # second house
 HX0, HX1, HD, HCEIL = 30.0, 34.0, 3.6, 2.3
 
 
 def build_bedroom():
-    make_floor("Floor", (0.0, D / 2.0, 0.0), size_x=W + 0.4, size_y=D + 0.4, palette={"vinyl": FLOOR, "seam": FLOOR_SEAM})
-    make_ceiling("Ceil", (0.0, D / 2.0, CEIL), size_x=W + 0.4, size_y=D + 0.4, with_grid=False, with_stains=True,
-                 palette={"tile": (0.90, 0.88, 0.82, 1.0)})
-    make_wall("Wall_W", (-W / 2.0, D / 2.0, 0), length=D + 0.4, height=CEIL, thickness=T, axis='Y', palette=PAL, baseboard_face_sign=+1)
-    make_wall("Wall_E", (W / 2.0, D / 2.0, 0), length=D + 0.4, height=CEIL, thickness=T, axis='Y', palette=PAL, baseboard_face_sign=-1)
-    make_wall_with_openings("Wall_N", (0.0, D, 0), length=W + 0.4, height=CEIL, thickness=T, axis='X', palette=PAL,
-                            baseboard_face_sign=-1, openings=[(WIN_X, WIN_Z, WIN_W, WIN_H)])
-    door_x = 1.20
-    make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=W + 0.4, height=CEIL, thickness=T, axis='X', palette=PAL,
-                            baseboard_face_sign=+1, openings=[(door_x, 1.0, 0.82, 2.0)])
-    make_window("Window_N", (WIN_X, D - 0.10, WIN_Z), width=WIN_W, height=WIN_H, see_through=True)
+    # the room is the shared Small Wood plan (N. Dean's 1994 bedroom is the
+    # same room, dressed for his house: _props/small_wood_house.py)
+    bedroom_shell(PAL, (FLOOR, FLOOR_SEAM), (0.90, 0.88, 0.82, 1.0))
+    door_x = DOOR_X
     # the wood plank blinds: wide slats, the cords, two hanging out of true
     make_box("Blind_N_Head", (WIN_X, D - 0.17, WIN_Z + WIN_H / 2.0 + 0.04), (WIN_W + 0.08, 0.06, 0.05), PINE_DARK)
     for k in range(14):
@@ -107,6 +99,11 @@ def build_bedroom():
     night = "__ranch_bedroom_night__ranch_bedroom_lamp"
     make_box("Clock_Radio" + night, (nx - 0.06, ny + 0.04, 0.635), (0.24, 0.12, 0.09), (0.16, 0.14, 0.13, 1.0))
     make_box("Clock_Radio_Face" + night, (nx - 0.06, ny - 0.022, 0.64), (0.14, 0.004, 0.04), (0.92, 0.28, 0.16, 1.0))
+    # vol 3 ch4's day at home (ranch_home_day): the room as it is, clock radio
+    # and all (the same house, "ten miles inland from the coast but 'on the
+    # coast'" — the user, 2026-10-18)
+    make_box("Clock_Radio_Home__ranch_home_day", (nx - 0.06, ny + 0.04, 0.635), (0.24, 0.12, 0.09), (0.16, 0.14, 0.13, 1.0))
+    make_box("Clock_Radio_Home_Face__ranch_home_day", (nx - 0.06, ny - 0.022, 0.64), (0.14, 0.004, 0.04), (0.92, 0.28, 0.16, 1.0))
     make_cyl("Grey_Stick__ranch_bedroom_day", (nx - 0.10, ny - 0.12, 0.592), 0.009, 0.17, (0.58, 0.58, 0.60, 1.0),
              axis='X', segments=8)
     make_lamp("Lamp_Reading", nx + 0.10, ny + 0.06, base_z=0.58, h=0.46)

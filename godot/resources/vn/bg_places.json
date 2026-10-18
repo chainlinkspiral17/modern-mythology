@@ -739,18 +739,18 @@
   },
   "vol3_andy_room_day": {
    "fit": "exact",
-   "to": "3d:oregon_home_day",
-   "build": "vol3_rooms",
+   "to": "3d:ranch_home_day",
+   "build": "small_wood_ranch",
    "scenes": 1,
-   "note": "ch4 the coast: Andy at 22, at home a day's drive from the coast (the Oregon home), not the Texas boyhood room",
+   "note": "ch4 the coast: back home in Small Wood by day (the house ten miles inland, 'on the coast': the user)",
    "built": "2026-10-18 draft 1"
   },
   "vol3_andy_room_night": {
    "fit": "exact",
-   "to": "3d:oregon_home_night",
-   "build": "vol3_rooms",
+   "to": "3d:ranch_bedroom_night",
+   "build": "small_wood_ranch",
    "scenes": 1,
-   "note": "ch4 the coast: 'back home quiet and moody' that evening (the Oregon home)",
+   "note": "ch4 the coast: 'back home quiet and moody' that evening, the Small Wood house",
    "built": "2026-10-18 draft 1"
   },
   "vol3_ballfield_convenience_stand": {
@@ -1933,10 +1933,10 @@
   },
   "vol4_wasted_sentiment_bedroom": {
    "fit": "exact",
-   "to": "3d:steven_room",
+   "to": "3d:chau_steven_room",
    "scenes": 1,
-   "build": "vol4_story_rooms",
-   "note": "the wasted sentiment: Steven's room, slept twisted on the small couch (whether it is the Chau house is the author's)",
+   "build": "chau_house",
+   "note": "the wasted sentiment: Steven's room at the Chau house, the armchair he slept twisted in (the user: Steven lives at the Chau house)",
    "built": "2026-10-18 draft 1"
   },
   "vol4_what_sort_of_car_dawn": {

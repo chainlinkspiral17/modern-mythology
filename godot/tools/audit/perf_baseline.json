@@ -32,7 +32,7 @@
  },
  "chau_house": {
   "draw": 98,
-  "prims": 24408,
+  "prims": 24872,
   "objects": 268
  },
  "club_street": {
@@ -46,9 +46,9 @@
   "objects": 270
  },
  "dean_house_1994": {
-  "draw": 96,
-  "prims": 17300,
-  "objects": 266
+  "draw": 100,
+  "prims": 17668,
+  "objects": 270
  },
  "dean_offices": {
   "draw": 116,
@@ -153,7 +153,7 @@
  },
  "small_wood_ranch": {
   "draw": 102,
-  "prims": 16776,
+  "prims": 16944,
   "objects": 272
  },
  "small_wood_town": {
@@ -172,9 +172,9 @@
   "objects": 370
  },
  "vol4_story_rooms": {
-  "draw": 138,
-  "prims": 51908,
-  "objects": 308
+  "draw": 132,
+  "prims": 48268,
+  "objects": 302
  },
  "wagner_home": {
   "draw": 116,

@@ -2877,6 +2877,18 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.78, 0.80, 0.82, 1), "ambient_energy": 0.80, "fog_color": Color(0.66, 0.70, 0.72, 1)},
 		"suppress_input": true,
 	},
+	"ranch_home_day": {
+		"scene": "res://scenes/locales/small_wood_ranch.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		# vol 3 ch4, "back home" by day: the same room as it is, the clock radio on the nightstand (the house ten miles inland, "on the coast")
+		"camera_origin": Vector3(1.2, 1.5, -0.45),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(29.7), 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.56, 0.64, 0.74, 1), "sky_horizon": Color(0.84, 0.86, 0.86, 1),
+			"ground_horizon": Color(0.40, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.18, 1),
+			"ambient_color": Color(0.78, 0.80, 0.82, 1), "ambient_energy": 0.80, "fog_color": Color(0.66, 0.70, 0.72, 1)},
+		"suppress_input": true,
+	},
 	"ranch_second_house": {
 		"scene": "res://scenes/locales/small_wood_ranch.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
@@ -3726,9 +3738,9 @@ const CAMERA_PRESETS := {
 	"dean_bedroom_1994": {
 		"scene": "res://scenes/locales/dean_house_1994.tscn",
 		"requires_glb": "res://assets/3d/locales/dean_house_1994.glb",
-		# "Woke up at 3:50": the bed, the sheets thrown, the window grey with rain, the register over the furnace
-		"camera_origin": Vector3(0.6, 1.3, -2.7),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-45.0), 0.0),
+		# "Woke up at 3:50": the narrator's room on the shared plan, dressed as Dean's: the bed, the sheets thrown, the grey window, the register over the furnace
+		"camera_origin": Vector3(1.3, 1.35, -0.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(30.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -3736,7 +3748,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/dean_house_1994.tscn",
 		"requires_glb": "res://assets/3d/locales/dean_house_1994.glb",
 		# the desk under the window well: the graph paper, the CRT left off, the phone; the rain, the pasture, the Hagstrom place
-		"camera_origin": Vector3(1.5, -1.2, -2.0),
+		"camera_origin": Vector3(0.2, -1.2, -1.4),
 		"camera_rotation": Vector3(0.10, deg_to_rad(0.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
@@ -3908,14 +3920,13 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
-	"steven_room": {
-		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
-		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
-		# Steven's room, the morning after: the small couch he slept twisted on, the console, the bed unslept
-		"camera_origin": Vector3(340.6, 1.4, -0.9),
-		"camera_rotation": Vector3(-0.12, deg_to_rad(-20.0), 0.0),
+	"chau_steven_room": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# vol 4's "the wasted sentiment" in Steven's room at the Chau house: the armchair he fell asleep twisted in, the blinds, the bed
+		"camera_origin": Vector3(8.9, 1.5, -7.6),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-120.0), 0.0),
 		"fov": 66.0,
-		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"dean_house_late": {

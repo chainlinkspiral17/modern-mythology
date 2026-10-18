@@ -36,7 +36,7 @@ LAX = "__lax_gate__lax_store__lax_seat_close"
 CABIN = "__plane_night__plane_day__plane_vol4"
 ONEI = "__onei_office__onei_office_desk__onei_office_door"
 CLUBO = "__club_office__club_office_after"
-CHAU = "__chau_hall_noon__chau_entry_morning__chau_living__chau_bath__chau_game_room"
+CHAU = "__chau_hall_noon__chau_entry_morning__chau_living__chau_bath__chau_game_room__chau_steven_room"
 AMANDA = "__amanda_hot_tub__amanda_fort__amanda_fort_close"
 SHOP = "__copy_shop_floor__copy_shop_wastebasket__copy_shop_copier"
 P45 = "__street_day__park_chess__hollywood_shoot"
@@ -133,8 +133,8 @@ CONFIGS = [
             *[("Moon_Window__" + p, "OmniLight3D", I.format(0.20, 1.5, -3.95), c(0.62, 0.70, 0.96), 0.8,
                {"omni_range": 3.4}) for p in ("ranch_bedroom_night", "ranch_bedroom_lamp")],
             # the afternoon: sky through the N window
-            ("Sky_N__ranch_bedroom_day", "DirectionalLight3D", B_KEY_FROM_N.format(0, 6, -8), c(0.92, 0.94, 1.0), 0.7),
-            ("Window_N__ranch_bedroom_day", "OmniLight3D", I.format(0.20, 1.5, -3.85), c(0.92, 0.94, 1.0), 1.8,
+            ("Sky_N__ranch_bedroom_day__ranch_home_day", "DirectionalLight3D", B_KEY_FROM_N.format(0, 6, -8), c(0.92, 0.94, 1.0), 0.7),
+            ("Window_N__ranch_bedroom_day__ranch_home_day", "OmniLight3D", I.format(0.20, 1.5, -3.85), c(0.92, 0.94, 1.0), 1.8,
              {"omni_range": 5.0}),
             # the second house: the kerosene lamp on its crate (blender (31.95, 1.70, 0.55)),
             # the cold through the gone E window
@@ -747,7 +747,8 @@ CONFIGS = [
         "mood_strata": ["raw", "memory_warm", "lithograph", "candlelight", "noir", "silent_film_18"],
     },
     {
-        # VOL 2's DEAN HOUSE 1994 (build_dean_house_1994.py): the rented house
+        # VOL 2's DEAN HOUSE 1994 (build_dean_house_1994.py; draft 2 puts its
+        # bedroom on the shared Small Wood plan): the rented house
         # up the Alsea, March, before dawn. The bedroom on the window's grey
         # alone; the basement on a desk lamp (the CRT stays off) and the
         # window well's first light, the hill and the Hagstrom place lit by
@@ -764,11 +765,11 @@ CONFIGS = [
                    "neon_hi": (0.06, 0.06, 0.07, 1), "lim_tint": (0.56, 0.60, 0.66, 1)},
         "lights": [
             ("Fill__dean_bedroom_1994", "DirectionalLight3D", B_FILL.format(2, 2, -3), c(0.56, 0.60, 0.72), 0.03),
-            ("Window_Predawn__dean_bedroom_1994", "OmniLight3D", I.format(1.8, 1.6, -4.6), c(0.56, 0.62, 0.80), 0.5, {"omni_range": 3.5}),
+            ("Window_Predawn__dean_bedroom_1994", "OmniLight3D", I.format(0.2, 1.6, -3.8), c(0.56, 0.62, 0.80), 0.5, {"omni_range": 3.5}),
             ("Dawn_Outside__dean_basement_1994", "DirectionalLight3D", B_SUN_FROM_S.format(2, 10, 0), c(0.70, 0.74, 0.80), 0.35),
-            ("Desk_Lamp__dean_basement_1994", "OmniLight3D", I.format(1.05, -1.5, -4.41), c(1.0, 0.86, 0.62), 0.9, {"omni_range": 3.0}),
-            ("Well_First_Light__dean_basement_1994", "OmniLight3D", I.format(1.6, -0.4, -4.5), c(0.70, 0.74, 0.82), 0.6, {"omni_range": 4.0}),
-            ("Furnace_Pilot__dean_basement_1994", "OmniLight3D", I.format(3.0, -2.2, -2.8), c(1.0, 0.56, 0.24), 0.15, {"omni_range": 1.0}),
+            ("Desk_Lamp__dean_basement_1994", "OmniLight3D", I.format(-0.35, -1.4, -3.81), c(1.0, 0.86, 0.62), 0.9, {"omni_range": 3.0}),
+            ("Well_First_Light__dean_basement_1994", "OmniLight3D", I.format(0.2, -0.4, -4.0), c(0.70, 0.74, 0.82), 0.6, {"omni_range": 4.0}),
+            ("Furnace_Pilot__dean_basement_1994", "OmniLight3D", I.format(1.8, -2.2, -1.25), c(1.0, 0.56, 0.24), 0.15, {"omni_range": 1.0}),
         ],
         "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
     },
@@ -898,8 +899,6 @@ CONFIGS = [
             ("Fill__aaron_bedroom", "DirectionalLight3D", B_FILL.format(302, 2, -2), c(0.70, 0.70, 0.76), 0.06),
             ("Dream_Blue__aaron_bedroom_blue", "OmniLight3D", I.format(302.2, 2.2, -1.9), c(0.40, 0.52, 1.0), 1.6, {"omni_range": 6.0}),
             ("Fill_Blue__aaron_bedroom_blue", "DirectionalLight3D", B_FILL.format(302, 2, -2), c(0.40, 0.50, 0.90), 0.10),
-            ("Morning_Window__steven_room", "OmniLight3D", I.format(341.8, 1.6, -3.0), c(0.92, 0.94, 1.0), 1.2, {"omni_range": 5.0}),
-            ("Fill__steven_room", "DirectionalLight3D", B_FILL.format(342, 3, -2), c(0.80, 0.82, 0.86), 0.30),
             ("Reading_Lamp__dean_house_late", "OmniLight3D", I.format(423.25, 1.15, -4.1), c(1.0, 0.84, 0.60), 1.4, {"omni_range": 4.5}),
             ("Fill__dean_house_late", "DirectionalLight3D", B_FILL.format(424, 2, -3), c(0.50, 0.52, 0.62), 0.03),
             ("City_Below__shanghai_window_night", "OmniLight3D", I.format(704.0, -20.0, -9.0), c(1.0, 0.84, 0.62), 1.5, {"omni_range": 40.0}),
