@@ -3547,6 +3547,395 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.80, 0.70, 0.58, 1), "ambient_energy": 0.30, "fog_color": Color(0.20, 0.18, 0.14, 1)},
 		"suppress_input": true,
 	},
+	"cave_dawn": {
+		"scene": "res://scenes/locales/sea_cave.tscn",
+		"requires_glb": "res://assets/3d/locales/sea_cave.glb",
+		# flotsam: deep in the cave by the spout, the mouth white-blue, the sun not up
+		"camera_origin": Vector3(0.0, 1.5, -15.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(180.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"cave_low_tide": {
+		"scene": "res://scenes/locales/sea_cave.tscn",
+		"requires_glb": "res://assets/3d/locales/sea_cave.glb",
+		# art class: the sinkhole at low tide, the shells and husks at its lip
+		"camera_origin": Vector3(0.4, 1.6, -12.6),
+		"camera_rotation": Vector3(-0.32, deg_to_rad(0.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"cave_tide_in": {
+		"scene": "res://scenes/locales/sea_cave.tscn",
+		"requires_glb": "res://assets/3d/locales/sea_cave.glb",
+		# the truck: mid-cave, the sea running in over the floor, the body gone
+		"camera_origin": Vector3(0.6, 1.3, -8.0),
+		"camera_rotation": Vector3(-0.15, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"riverbed_sand": {
+		"scene": "res://scenes/locales/sea_cave.tscn",
+		"requires_glb": "res://assets/3d/locales/sea_cave.glb",
+		# Charles's ground: sand near a riverbed, off the roads and beaches; the dig, the bungalow
+		"camera_origin": Vector3(190.0, 1.7, 14.0),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.88, 0.88, 0.84, 1), "ambient_energy": 0.60, "fog_color": Color(0.80, 0.82, 0.84, 1)},
+		"suppress_input": true,
+	},
+	"lighthouse_base_up": {
+		"scene": "res://scenes/locales/oregon_lighthouse.tscn",
+		"requires_glb": "res://assets/3d/locales/oregon_lighthouse.glb",
+		# "looking up in darkness, the stone masonry surrounding, the light twinkling up above shot out of floorboard and crevasse"
+		"camera_origin": Vector3(0.4, 1.0, 0.6),
+		"camera_rotation": Vector3(1.05, deg_to_rad(0.0), 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"lighthouse_gate": {
+		"scene": "res://scenes/locales/oregon_lighthouse.tscn",
+		"requires_glb": "res://assets/3d/locales/oregon_lighthouse.glb",
+		# the high barbed gate on the trail, the brick walkway, the tower lost in the dark above
+		"camera_origin": Vector3(0.6, 1.5, 22.0),
+		"camera_rotation": Vector3(0.40, deg_to_rad(0.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.40, 0.46, 0.62, 1), "ambient_energy": 0.45, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		"suppress_input": true,
+	},
+	"nick_house_front": {
+		"scene": "res://scenes/locales/nick_house.tscn",
+		"requires_glb": "res://assets/3d/locales/nick_house.glb",
+		# Halloween night from the street: grandma's house unlit, the rusting mini-bike outside, the neighbour's fence, lit houses either side
+		"camera_origin": Vector3(-2.0, 1.6, 12.0),
+		"camera_rotation": Vector3(0.04, deg_to_rad(0.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nick_garage_halloween": {
+		"scene": "res://scenes/locales/nick_house.tscn",
+		"requires_glb": "res://assets/3d/locales/nick_house.glb",
+		# the garage, Mark's workshop: the grease-bonded counter, the box of costumes, the broken lightning ball with the hat
+		"camera_origin": Vector3(-9.0, 1.55, -0.6),
+		"camera_rotation": Vector3(-0.18, deg_to_rad(8.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"nick_print_shop": {
+		"scene": "res://scenes/locales/nick_house.tscn",
+		"requires_glb": "res://assets/3d/locales/nick_house.glb",
+		# years later: the press Nick built, T-shirts on the line, comic pages, the ink brush, the family albums
+		"camera_origin": Vector3(-7.6, 1.6, -1.0),
+		"camera_rotation": Vector3(-0.20, deg_to_rad(49.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"nick_room": {
+		"scene": "res://scenes/locales/nick_house.tscn",
+		"requires_glb": "res://assets/3d/locales/nick_house.glb",
+		# Nick's room: drawings on every wall, posters hung from the ceiling, comics on the floor, the closet half packed
+		"camera_origin": Vector3(6.3, 1.5, -4.95),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(40.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"nick_drafting": {
+		"scene": "res://scenes/locales/nick_house.tscn",
+		"requires_glb": "res://assets/3d/locales/nick_house.glb",
+		# the child-sized drafting table, the costume sketch, the latex and make-up tubes
+		"camera_origin": Vector3(5.2, 1.35, -5.4),
+		"camera_rotation": Vector3(-0.35, deg_to_rad(-70.0), 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"lake_house_day": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		# "a big home on the lake, a boathouse out back": the barbecue smoking, the screen door, the lake beyond
+		"camera_origin": Vector3(-11.0, 1.6, 17.0),
+		"camera_rotation": Vector3(0.04, deg_to_rad(-50.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"lake_dock_day": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		# the dock's polished wood out over the lake: sailboats, speedboats, the seams of light, balloons over the far shore
+		"camera_origin": Vector3(22.4, 1.7, 4.0),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"lake_dock_dawn": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		# sunrise from the kitchen table: the window, the sliding glass door, the dock, the sun crawling over the horizon
+		"camera_origin": Vector3(7.4, 1.2, -3.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-100.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.92, 0.72, 0.62, 1), "ambient_energy": 0.40, "fog_color": Color(0.90, 0.74, 0.64, 1)},
+		"suppress_input": true,
+	},
+	"chris_room_day": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		# Chris's room on arrival: the cot by the window, the TV and tapes in the corner, the Rangers posters, the magazines, too clean
+		"camera_origin": Vector3(-3.2, 1.6, -2.5),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(30.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"chris_room_night": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		# that night, the light on: the card game in the corner, the candy, the cot and the sleeping bag, Chris's bed
+		"camera_origin": Vector3(-6.4, 0.95, -5.0),
+		"camera_rotation": Vector3(-0.25, deg_to_rad(45.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.40, 0.44, 0.58, 1), "ambient_energy": 0.14, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		"suppress_input": true,
+	},
+	"lake_bath_night": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		# the lake-house bathroom before dawn on the vanity bar: the tub, the toilet, the mirror
+		"camera_origin": Vector3(-7.0, 1.6, 0.3),
+		"camera_rotation": Vector3(-0.20, deg_to_rad(160.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.40, 0.44, 0.58, 1), "ambient_energy": 0.14, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		"suppress_input": true,
+	},
+	"tulsa_slideshow": {
+		"scene": "res://scenes/locales/tulsa_house.tscn",
+		"requires_glb": "res://assets/3d/locales/tulsa_house.glb",
+		# the slide show from among the guests: the beam to the pull-down screen, the bar with its wine and ports, the lights down
+		"camera_origin": Vector3(2.6, 1.15, -1.6),
+		"camera_rotation": Vector3(0.05, deg_to_rad(30.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"tulsa_patio": {
+		"scene": "res://scenes/locales/tulsa_house.tscn",
+		"requires_glb": "res://assets/3d/locales/tulsa_house.glb",
+		# "Much later on": the patio, the sawdust playground, the wooden fort, the moon between tall skinny trees
+		"camera_origin": Vector3(7.4, 1.6, -4.2),
+		"camera_rotation": Vector3(0.06, deg_to_rad(-92.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"dean_bedroom_1994": {
+		"scene": "res://scenes/locales/dean_house_1994.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_house_1994.glb",
+		# "Woke up at 3:50": the bed, the sheets thrown, the window grey with rain, the register over the furnace
+		"camera_origin": Vector3(0.6, 1.3, -2.7),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-45.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"dean_basement_1994": {
+		"scene": "res://scenes/locales/dean_house_1994.tscn",
+		"requires_glb": "res://assets/3d/locales/dean_house_1994.glb",
+		# the desk under the window well: the graph paper, the CRT left off, the phone; the rain, the pasture, the Hagstrom place
+		"camera_origin": Vector3(1.5, -1.2, -2.0),
+		"camera_rotation": Vector3(0.10, deg_to_rad(0.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"farm_living_night": {
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
+		# the renters' night: the two picture windows black over the valley, the small TV, the afghan, the stair and its banister
+		"camera_origin": Vector3(-0.8, 1.5, -1.2),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(40.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"farm_porch_night": {
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
+		# "A cold ugly night to spit into a cup on the porch": the cup, the bottle, the cats, the window lit with the recliner inside
+		"camera_origin": Vector3(2.5, 1.5, 6.0),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(45.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"farm_kitchen_window": {
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
+		# the kitchen window: past the black fruit trees to the workshop light across the dark yard
+		"camera_origin": Vector3(3.6, 1.55, -7.0),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-90.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"radio_studio": {
+		"scene": "res://scenes/locales/small_wood_town.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_town.glb",
+		# the town's annual radio drama, live on the air, December 1992: the mics, the librarian's script, the on-air lamp, the board through the glass
+		"camera_origin": Vector3(4.6, 1.5, -0.5),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(40.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"video_store_counter": {
+		"scene": "res://scenes/locales/small_wood_town.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_town.glb",
+		# Chuck's counter, February 2013: the tapes racked behind it, MELODY pulled, the aisles of tapes, the grey coast through the front
+		"camera_origin": Vector3(44.0, 1.6, -2.4),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(10.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"charlie_bedroom_night": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# "Charlie is lying in bed, a book over his chest": the bed, the reading lamp, the door to the dark living room
+		"camera_origin": Vector3(1.0, 1.4, -3.0),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-40.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"charlie_apartment_day": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# Charlie wakes and walks through the apartment: the unmade bed, the door, the living room beyond in daylight
+		"camera_origin": Vector3(1.2, 1.5, -4.2),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-50.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"charlie_living_night": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# the couch too small for two, the blanket, the chair across from it, the bedroom door behind
+		"camera_origin": Vector3(9.2, 1.5, -5.4),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(75.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"charlie_living_day": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# "It is morning now, the blanket is still on the couch, but Carrie is gone."
+		"camera_origin": Vector3(9.2, 1.5, -5.4),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(75.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"afterparty_room": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# the after party: the tire swing on its rope, the bar beyond with its stools and the shot glass
+		"camera_origin": Vector3(44.0, 1.6, -1.6),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-30.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"afterparty_stools": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# two stools pushed close at the bar, the back-bar's bottles, the room soft beyond
+		"camera_origin": Vector3(48.0, 1.3, -9.6),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-30.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"sister_house_yard": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# "pretty low rent, in bad shape, maybe two bedrooms": the house, the yard in a sorry state, the street running on
+		"camera_origin": Vector3(86.0, 1.6, 9.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(0.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"sister_house_inside": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		# inside the front door: the cramped main room, the toys, the laundry, the dryer through the door
+		"camera_origin": Vector3(85.0, 1.85, -2.6),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(-30.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"garage_level": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# "The parking garage is the color of honeydew": the tubes, the concrete, the down-ramp with a car coming
+		"camera_origin": Vector3(6.0, 1.6, -12.0),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-80.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"dead_store": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# the dead clothing store, the sun high outside: the glass counter, naked mannequins, slumped banners, the escalator
+		"camera_origin": Vector3(131.0, 1.6, -1.2),
+		"camera_rotation": Vector3(0.04, deg_to_rad(30.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"mirror_room": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# "not herself, but the world behind her": over her shoulder into the mirror, one side bright, the other black
+		"camera_origin": Vector3(261.8, 1.62, -1.2),
+		"camera_rotation": Vector3(0.0, deg_to_rad(0.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"aaron_bedroom": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# Aaron's room at thirteen: the bed, the toys still out, the grey console, the magazines
+		"camera_origin": Vector3(300.6, 1.4, -1.0),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"aaron_bedroom_blue": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# the waking dream: "soft melodies and blue lighting filled his bedroom"
+		"camera_origin": Vector3(300.6, 1.4, -1.0),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"steven_room": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# Steven's room, the morning after: the small couch he slept twisted on, the console, the bed unslept
+		"camera_origin": Vector3(340.6, 1.4, -0.9),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-20.0), 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"dean_house_late": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# "one late night": the armchair under the reading lamp, the books, the dark doorway Esther stands in
+		"camera_origin": Vector3(421.2, 1.5, -5.4),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(-130.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"shanghai_window_night": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# "She wanders from window to window": the one room high over the city, its lights below without end
+		"camera_origin": Vector3(704.6, 1.6, -3.6),
+		"camera_rotation": Vector3(-0.28, deg_to_rad(-30.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

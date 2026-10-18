@@ -399,6 +399,31 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-18 · five sets from the text (the coast, Nick's house, the lake house, Tulsa)
+
+- **A preset suffix must END the name.** `make_chair("Print_Stool" + "__nick_print_shop", …)`
+  names its parts `Print_Stool__nick_print_shop_Seat`, so Background3D read the preset as
+  `nick_print_shop_Seat`, matched nothing, and showed the years-later stool in the Halloween
+  garage. Furniture helpers append part names, so a per-preset piece is built from primitives
+  whose names end in the suffix (or joined and renamed afterwards).
+- **Dress one room per time instead of building two rooms.** Nick's garage is Mark's workshop on
+  Halloween and Nick's print shop years later: one shell, the shared bench and shelves unsuffixed,
+  each era's things under its own preset. The lake house does the same with the sky (day, dawn,
+  night cards) and Chris's sleeping bag (rolled by day, open at night).
+- **Read the compass from the prose.** "Watching the sun crawl over the horizon" from the kitchen
+  table, with Terry "outside the window fishing off the dock", puts the lake EAST of the house.
+  The Oregon coast faces west, so dawn there cannot be "the sun still under the ocean" (fixed in
+  ch9 as "behind the hills").
+- **A gable, not a slab.** Two houses read as flat-roofed boxes from the street until
+  `make_gable` replaced the roof slab. Seat the gable on the ceiling's top (H + 0.08).
+- **The VN camera sees 200 m and no farther** (`scenes/vn/Background3D.tscn`: `far = 200.0`). A sky
+  card, a sun or a far band set at 300–900 m is clipped, and the view shows the environment's bare
+  background instead. Sky cards sit at 170–190 m; everything that has to read stands inside that.
+  The gates can't see this. Measure from the farthest camera that looks that way.
+- **Blender names stop at 63 characters.** `Far_Balloon_0_Basket__lake_house_day__lake_dock_day__
+  chris_room_day` lost its tail (`chris_room`), so that preset no longer owns it. Keep preset
+  lists short on long names, or name the piece shorter.
+
 ### 2026-10-17 · four sets in one pass (sleep lab, Caltech, airport, Dean's offices)
 
 - **A Transform3D's nine basis numbers are ROWS** (`x.x, y.x, z.x, x.y, …`), not the three

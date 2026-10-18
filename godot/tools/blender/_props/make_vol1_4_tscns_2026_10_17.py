@@ -7,7 +7,7 @@ full parity; light positions come from the builder's geometry (blender
 in that preset (Background3D drops it everywhere else). Run with plain
 python3 from the repo root.
 """
-import os, sys
+import os, sys, math
 sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")))
 from _props.make_locale_tscn import write_locale_tscn
 
@@ -41,6 +41,14 @@ AMANDA = "__amanda_hot_tub__amanda_fort__amanda_fort_close"
 SHOP = "__copy_shop_floor__copy_shop_wastebasket__copy_shop_copier"
 P45 = "__street_day__park_chess__hollywood_shoot"
 SUITE = "__suite_wide__suite_tide__suite_4am"
+CAVE = "__cave_dawn__cave_low_tide__cave_tide_in"
+GAR = "__nick_garage_halloween__nick_print_shop"
+NROOM = "__nick_room__nick_drafting"
+LAKE_OUT = "__lake_house_day__lake_dock_day"
+CF_N = "__charlie_bedroom_night__charlie_living_night"
+CF_D = "__charlie_apartment_day__charlie_living_day"
+PARTY = "__afterparty_room__afterparty_stools"
+SIS = "__sister_house_yard__sister_house_inside"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -584,6 +592,323 @@ CONFIGS = [
                {"omni_range": 4.5}) for k in range(3)],
         ],
         "mood_strata": ["raw", "memory_warm", "lithograph", "silent_film_18", "noir", "candlelight"],
+    },
+    {
+        # VOL 2's SEA CAVE (build_sea_cave.py): the cave lit from its mouth
+        # (dawn's white-blue, or a grey day); the riverbed sand (x 200) by day.
+        "out_path": os.path.join(ROOT, "sea_cave.tscn"),
+        "uid": "uid://sea_cave_v2",
+        "root_node": "SeaCave",
+        "glb": "res://assets/3d/locales/sea_cave.glb",
+        "env": {"bg": (0.70, 0.76, 0.82, 1), "amb": (0.70, 0.76, 0.82, 1),
+                "amb_e": 0.40, "fog": (0.70, 0.76, 0.80, 1), "fog_e": 0.4,
+                "fog_d": 0.004, "sat": 0.86, "glow_i": 0.6, "glow_b": 0.14},
+        "shader": {"warm": (0.84, 0.86, 0.84, 1), "bg": (0.08, 0.09, 0.10, 1),
+                   "neon_edge": (0.62, 0.70, 0.72, 1), "neon_lo": (0.22, 0.24, 0.26, 1),
+                   "neon_hi": (0.08, 0.09, 0.10, 1), "lim_tint": (0.56, 0.64, 0.68, 1)},
+        "lights": [
+            ("Key_Mouth" + CAVE, "DirectionalLight3D", B_SUN_FROM_S.format(0, 6, 6), c(0.82, 0.88, 0.96), 0.50),
+            ("Fill_Cave" + CAVE, "DirectionalLight3D", B_FILL.format(0, 3, -8), c(0.60, 0.66, 0.70), 0.12),
+            ("Back" + CAVE, "DirectionalLight3D", B_BACK.format(0, 3, -10), c(0.54, 0.60, 0.66), 0.08),
+            ("Mouth_Light__cave_dawn", "OmniLight3D", I.format(0.0, 2.2, -0.6), c(0.80, 0.88, 1.0), 2.4, {"omni_range": 14.0}),
+            ("Mouth_Light_Grey__cave_low_tide__cave_tide_in", "OmniLight3D", I.format(0.0, 2.2, -0.6), c(0.86, 0.88, 0.90), 2.2,
+             {"omni_range": 14.0}),
+            ("Back_Glow" + CAVE, "OmniLight3D", I.format(0.4, 1.4, -15.6), c(0.60, 0.70, 0.74), 0.5, {"omni_range": 4.0}),
+            ("Sinkhole_Light__cave_low_tide", "OmniLight3D", I.format(0.6, 3.0, -15.4), c(0.80, 0.84, 0.86), 1.6, {"omni_range": 6.0}),
+            ("Key_Sun__riverbed_sand", "DirectionalLight3D", B_SUN_FROM_S.format(200, 20, 10), c(1.0, 0.96, 0.86), 1.4),
+            ("Fill_Sky__riverbed_sand", "DirectionalLight3D", B_FILL.format(200, 10, -10), c(0.74, 0.82, 0.92), 0.40),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 2's LIGHTHOUSE (build_oregon_lighthouse.py): December night,
+        # the beacon above, the light leaking down through the boards.
+        "out_path": os.path.join(ROOT, "oregon_lighthouse.tscn"),
+        "uid": "uid://oregon_lighthouse_v2",
+        "root_node": "OregonLighthouse",
+        "glb": "res://assets/3d/locales/oregon_lighthouse.glb",
+        "env": {"bg": (0.02, 0.03, 0.06, 1), "amb": (0.40, 0.44, 0.58, 1),
+                "amb_e": 0.16, "fog": (0.06, 0.07, 0.10, 1), "fog_e": 0.3,
+                "fog_d": 0.006, "sat": 0.86, "glow_i": 0.8, "glow_b": 0.12},
+        "shader": {"warm": (0.92, 0.84, 0.66, 1), "bg": (0.04, 0.04, 0.06, 1),
+                   "neon_edge": (0.66, 0.66, 0.74, 1), "neon_lo": (0.20, 0.20, 0.24, 1),
+                   "neon_hi": (0.04, 0.04, 0.06, 1), "lim_tint": (0.56, 0.58, 0.70, 1)},
+        "lights": [
+            ("Key_Moon", "DirectionalLight3D", B_KEY_FROM_N.format(0, 20, -10), c(0.50, 0.56, 0.80), 0.10),
+            ("Fill_Night", "DirectionalLight3D", B_FILL.format(0, 10, -10), c(0.40, 0.44, 0.60), 0.05),
+            ("Back", "DirectionalLight3D", B_BACK.format(0, 10, 0), c(0.40, 0.42, 0.56), 0.04),
+            ("Beacon", "OmniLight3D", I.format(0.0, 19.4, 0.0), c(1.0, 0.94, 0.76), 4.0, {"omni_range": 30.0}),
+            ("Boards_Light_Above", "OmniLight3D", I.format(0.0, 7.0, 0.0), c(1.0, 0.86, 0.60), 1.8, {"omni_range": 5.0}),
+            ("Flashlights", "OmniLight3D", I.format(0.2, 1.0, 0.8), c(1.0, 0.92, 0.76), 0.6, {"omni_range": 3.0}),
+            ("Beacon_Glass_Glow", "OmniLight3D", I.format(0.0, 19.6, 2.6), c(1.0, 0.94, 0.76), 3.0, {"omni_range": 5.0}),
+            ("Moon_Gate__lighthouse_gate", "DirectionalLight3D", B_SUN_FROM_S.format(0, 20, 10), c(0.50, 0.56, 0.80), 0.32),
+            ("Flashlight_Gate__lighthouse_gate", "OmniLight3D", I.format(0.8, 1.3, 9.8), c(1.0, 0.92, 0.76), 1.4, {"omni_range": 5.0}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's NICK'S HOUSE (build_nick_house.py): his grandmother's house
+        # on Halloween night, dark from the street; the garage on its bare
+        # bulb (Mark's workshop, then Nick's print shop years later); Nick's
+        # room on its floor lamp, the TV's blue spilling in from the hall.
+        "out_path": os.path.join(ROOT, "nick_house.tscn"),
+        "uid": "uid://nick_house_v3",
+        "root_node": "NickHouse",
+        "glb": "res://assets/3d/locales/nick_house.glb",
+        "env": {"bg": (0.03, 0.04, 0.07, 1), "amb": (0.56, 0.58, 0.70, 1),
+                "amb_e": 0.24, "fog": (0.08, 0.08, 0.11, 1), "fog_e": 0.2,
+                "fog_d": 0.004, "sat": 0.90, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.94, 0.82, 0.62, 1), "bg": (0.05, 0.05, 0.07, 1),
+                   "neon_edge": (0.74, 0.62, 0.46, 1), "neon_lo": (0.26, 0.22, 0.18, 1),
+                   "neon_hi": (0.05, 0.05, 0.07, 1), "lim_tint": (0.66, 0.58, 0.46, 1)},
+        "lights": [
+            ("Key_Moon__nick_house_front", "DirectionalLight3D", B_SUN_FROM_S.format(0, 10, 10), c(0.50, 0.56, 0.80), 0.22),
+            ("Fill_Night__nick_house_front", "DirectionalLight3D", B_FILL.format(0, 6, 8), c(0.40, 0.44, 0.60), 0.06),
+            ("Streetlamp__nick_house_front", "OmniLight3D", I.format(4.0, 5.0, 7.2), c(1.0, 0.84, 0.56), 2.2, {"omni_range": 15.0}),
+            *[("Neighbor_Window_{}__nick_house_front".format(k), "OmniLight3D", I.format(x, 1.4, 1.4), c(1.0, 0.80, 0.50), 1.0,
+               {"omni_range": 5.0}) for k, x in enumerate((-24.0, 20.0))],
+            ("Key" + GAR, "DirectionalLight3D", B_KEY_FROM_N.format(-10, 4, -4), c(0.70, 0.70, 0.76), 0.06),
+            ("Fill" + GAR, "DirectionalLight3D", B_FILL.format(-10, 3, -3), c(0.66, 0.64, 0.60), 0.04),
+            ("Garage_Bulb" + GAR, "OmniLight3D", I.format(-10.15, 2.3, -3.5), c(1.0, 0.86, 0.62), 1.8, {"omni_range": 7.5}),
+            ("Press_Work_Light__nick_print_shop", "OmniLight3D", I.format(-10.6, 2.0, -3.6), c(1.0, 0.92, 0.78), 0.9, {"omni_range": 3.0}),
+            ("Key" + NROOM, "DirectionalLight3D", B_KEY_FROM_N.format(4, 4, -7), c(0.70, 0.70, 0.78), 0.05),
+            ("Fill" + NROOM, "DirectionalLight3D", B_FILL.format(4, 3, -7), c(0.70, 0.66, 0.60), 0.04),
+            ("Floor_Lamp" + NROOM, "OmniLight3D", I.format(6.6, 1.25, -9.6), c(1.0, 0.82, 0.56), 1.5, {"omni_range": 6.5}),
+            ("Room_Ceiling" + NROOM, "OmniLight3D", I.format(4.2, 2.4, -7.3), c(1.0, 0.90, 0.74), 0.7, {"omni_range": 6.0}),
+            ("TV_Spill_Hall" + NROOM, "OmniLight3D", I.format(1.0, 1.2, -6.2), c(0.60, 0.70, 1.0), 0.4, {"omni_range": 2.5}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's LAKE HOUSE (build_lake_house.py): Terry's house on the lake,
+        # the last weekend of summer. Day outside on the sun; Chris's room by
+        # its window, and at night on the overhead light left on; the bath
+        # on its vanity bar before dawn; the kitchen at sunrise, the low sun
+        # coming in off the lake.
+        "out_path": os.path.join(ROOT, "lake_house.tscn"),
+        "uid": "uid://lake_house_v3",
+        "root_node": "LakeHouse",
+        "glb": "res://assets/3d/locales/lake_house.glb",
+        "env": {"bg": (0.62, 0.76, 0.92, 1), "amb": (0.74, 0.78, 0.84, 1),
+                "amb_e": 0.40, "fog": (0.74, 0.80, 0.88, 1), "fog_e": 0.3,
+                "fog_d": 0.0004, "sat": 0.94, "glow_i": 0.6, "glow_b": 0.14},
+        "shader": {"warm": (0.96, 0.88, 0.70, 1), "bg": (0.08, 0.08, 0.09, 1),
+                   "neon_edge": (0.72, 0.70, 0.62, 1), "neon_lo": (0.26, 0.26, 0.24, 1),
+                   "neon_hi": (0.08, 0.08, 0.09, 1), "lim_tint": (0.66, 0.70, 0.66, 1)},
+        "lights": [
+            ("Key_Sun" + LAKE_OUT, "DirectionalLight3D", B_SUN_FROM_S.format(0, 20, 10), c(1.0, 0.94, 0.80), 1.3),
+            ("Fill_Sky" + LAKE_OUT, "DirectionalLight3D", B_FILL.format(10, 10, -10), c(0.70, 0.80, 0.96), 0.45),
+            ("Back" + LAKE_OUT, "DirectionalLight3D", B_BACK.format(10, 10, 0), c(0.86, 0.88, 0.90), 0.25),
+            ("Fill_Room__chris_room_day", "DirectionalLight3D", B_FILL.format(-6, 2, -5), c(0.92, 0.92, 0.90), 0.25),
+            ("Window_Day__chris_room_day", "OmniLight3D", I.format(-6.5, 1.8, -7.3), c(1.0, 0.98, 0.92), 1.6, {"omni_range": 6.5}),
+            ("Fill_Night__chris_room_night__lake_bath_night", "DirectionalLight3D", B_FILL.format(-6, 2, -2), c(0.60, 0.64, 0.76), 0.04),
+            ("Overhead_On__chris_room_night", "OmniLight3D", I.format(-6.0, 2.45, -5.0), c(1.0, 0.97, 0.90), 2.0, {"omni_range": 7.0}),
+            ("Vanity_Bar__lake_bath_night", "OmniLight3D", I.format(-6.3, 2.0, 1.6), c(1.0, 0.94, 0.80), 1.6, {"omni_range": 5.0}),
+            ("Sun_Low_East__lake_dock_dawn", "DirectionalLight3D", "Transform3D(0, -0.259, 0.966, 0, 0.966, 0.259, -1, 0, 0, 30, 6, 0)",
+             c(1.0, 0.76, 0.52), 1.0),
+            ("Fill_Dawn__lake_dock_dawn", "DirectionalLight3D", B_FILL.format(10, 10, -10), c(0.86, 0.70, 0.66), 0.25),
+            ("Kitchen_Fill__lake_dock_dawn", "OmniLight3D", I.format(6.0, 2.2, -2.0), c(1.0, 0.86, 0.70), 0.6, {"omni_range": 7.0}),
+            ("Sun_Disc_Light__lake_dock_dawn", "OmniLight3D", I.format(178.0, 6.5, 26.0), c(1.0, 0.90, 0.70), 6.0, {"omni_range": 12.0}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "candlelight", "noir", "silent_film_18"],
+    },
+    {
+        # VOL 3's TULSA HOUSE (build_tulsa_house.py): Marty and Kathy's, a
+        # party night in the fall, mid-eighties. The slide show with the
+        # room lights down: the projector's beam (a spot), the screen's
+        # bounce, the bar's glow, one lamp left on; the patio later on under
+        # the moon, the house's light spilling out behind.
+        "out_path": os.path.join(ROOT, "tulsa_house.tscn"),
+        "uid": "uid://tulsa_house_v3",
+        "root_node": "TulsaHouse",
+        "glb": "res://assets/3d/locales/tulsa_house.glb",
+        "env": {"bg": (0.03, 0.04, 0.07, 1), "amb": (0.52, 0.50, 0.58, 1),
+                "amb_e": 0.18, "fog": (0.08, 0.08, 0.10, 1), "fog_e": 0.2,
+                "fog_d": 0.002, "sat": 0.92, "glow_i": 0.8, "glow_b": 0.12},
+        "shader": {"warm": (0.96, 0.84, 0.62, 1), "bg": (0.06, 0.05, 0.05, 1),
+                   "neon_edge": (0.78, 0.62, 0.42, 1), "neon_lo": (0.28, 0.22, 0.16, 1),
+                   "neon_hi": (0.06, 0.05, 0.05, 1), "lim_tint": (0.70, 0.58, 0.42, 1)},
+        "lights": [
+            ("Key__tulsa_slideshow", "DirectionalLight3D", B_KEY_FROM_N.format(0, 4, -4), c(0.70, 0.66, 0.62), 0.04),
+            ("Projector_Beam__tulsa_slideshow", "SpotLight3D", I.format(0.0, 0.85, -3.1), c(1.0, 0.94, 0.80), 5.0,
+             {"spot_range": 7.0, "spot_angle": 13.0}),
+            ("Screen_Bounce__tulsa_slideshow", "OmniLight3D", I.format(0.0, 1.9, -8.2), c(0.96, 0.90, 0.76), 0.6, {"omni_range": 5.0}),
+            ("Bar_Glow__tulsa_slideshow", "OmniLight3D", I.format(-4.6, 1.6, -4.6), c(1.0, 0.78, 0.50), 0.7, {"omni_range": 3.2}),
+            ("Corner_Lamp__tulsa_slideshow", "OmniLight3D", I.format(5.4, 1.6, -8.4), c(1.0, 0.82, 0.56), 0.6, {"omni_range": 4.0}),
+            ("Moon__tulsa_patio", "DirectionalLight3D", "Transform3D(0, -0.423, 0.906, 0, 0.906, 0.423, -1, 0, 0, 30, 10, -4)",
+             c(0.62, 0.68, 0.90), 0.5),
+            ("Fill_Night__tulsa_patio", "DirectionalLight3D", B_FILL.format(15, 6, -4), c(0.40, 0.44, 0.60), 0.06),
+            ("House_Spill__tulsa_patio", "OmniLight3D", I.format(6.4, 1.8, -4.5), c(1.0, 0.82, 0.56), 1.0, {"omni_range": 6.0}),
+            ("Moon_Disc_Light__tulsa_patio", "OmniLight3D", I.format(142.0, 19.0, -5.0), c(0.92, 0.94, 1.0), 6.0, {"omni_range": 14.0}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "candlelight", "noir", "silent_film_18"],
+    },
+    {
+        # VOL 2's DEAN HOUSE 1994 (build_dean_house_1994.py): the rented house
+        # up the Alsea, March, before dawn. The bedroom on the window's grey
+        # alone; the basement on a desk lamp (the CRT stays off) and the
+        # window well's first light, the hill and the Hagstrom place lit by
+        # a grey dawn.
+        "out_path": os.path.join(ROOT, "dean_house_1994.tscn"),
+        "uid": "uid://dean_house_1994_v2",
+        "root_node": "DeanHouse1994",
+        "glb": "res://assets/3d/locales/dean_house_1994.glb",
+        "env": {"bg": (0.08, 0.10, 0.14, 1), "amb": (0.50, 0.54, 0.62, 1),
+                "amb_e": 0.16, "fog": (0.30, 0.32, 0.36, 1), "fog_e": 0.3,
+                "fog_d": 0.006, "sat": 0.84, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.90, 0.82, 0.66, 1), "bg": (0.06, 0.06, 0.07, 1),
+                   "neon_edge": (0.66, 0.66, 0.70, 1), "neon_lo": (0.22, 0.22, 0.24, 1),
+                   "neon_hi": (0.06, 0.06, 0.07, 1), "lim_tint": (0.56, 0.60, 0.66, 1)},
+        "lights": [
+            ("Fill__dean_bedroom_1994", "DirectionalLight3D", B_FILL.format(2, 2, -3), c(0.56, 0.60, 0.72), 0.03),
+            ("Window_Predawn__dean_bedroom_1994", "OmniLight3D", I.format(1.8, 1.6, -4.6), c(0.56, 0.62, 0.80), 0.5, {"omni_range": 3.5}),
+            ("Dawn_Outside__dean_basement_1994", "DirectionalLight3D", B_SUN_FROM_S.format(2, 10, 0), c(0.70, 0.74, 0.80), 0.35),
+            ("Desk_Lamp__dean_basement_1994", "OmniLight3D", I.format(1.05, -1.5, -4.41), c(1.0, 0.86, 0.62), 0.9, {"omni_range": 3.0}),
+            ("Well_First_Light__dean_basement_1994", "OmniLight3D", I.format(1.6, -0.4, -4.5), c(0.70, 0.74, 0.82), 0.6, {"omni_range": 4.0}),
+            ("Furnace_Pilot__dean_basement_1994", "OmniLight3D", I.format(3.0, -2.2, -2.8), c(1.0, 0.56, 0.24), 0.15, {"omni_range": 1.0}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 2's FARMHOUSE (build_small_wood_farmhouse.py): night, the moon
+        # behind cloud. The living room on the small TV and one lamp; the
+        # porch on the window's light from inside; the kitchen window on the
+        # workshop's light across the yard.
+        "out_path": os.path.join(ROOT, "small_wood_farmhouse.tscn"),
+        "uid": "uid://small_wood_farmhouse_v2",
+        "root_node": "SmallWoodFarmhouse",
+        "glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
+        "env": {"bg": (0.03, 0.04, 0.06, 1), "amb": (0.46, 0.48, 0.58, 1),
+                "amb_e": 0.14, "fog": (0.06, 0.07, 0.09, 1), "fog_e": 0.2,
+                "fog_d": 0.004, "sat": 0.86, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.92, 0.82, 0.64, 1), "bg": (0.05, 0.05, 0.06, 1),
+                   "neon_edge": (0.70, 0.64, 0.54, 1), "neon_lo": (0.24, 0.22, 0.20, 1),
+                   "neon_hi": (0.05, 0.05, 0.06, 1), "lim_tint": (0.60, 0.58, 0.54, 1)},
+        "lights": [
+            ("Fill__farm_living_night", "DirectionalLight3D", B_FILL.format(-4, 2, -5), c(0.50, 0.54, 0.66), 0.04),
+            ("TV_Glow__farm_living_night", "OmniLight3D", I.format(-4.4, 0.8, -9.1), c(0.62, 0.70, 0.96), 0.8, {"omni_range": 4.5}),
+            ("Living_Lamp__farm_living_night", "OmniLight3D", I.format(-7.5, 1.2, -5.7), c(1.0, 0.82, 0.56), 1.0, {"omni_range": 5.0}),
+            ("Moon_Cloud__farm_porch_night", "DirectionalLight3D", B_SUN_FROM_S.format(-4, 10, 6), c(0.46, 0.50, 0.66), 0.16),
+            ("Window_From_Inside__farm_porch_night", "OmniLight3D", I.format(-5.0, 1.4, -0.8), c(0.80, 0.80, 0.90), 1.4, {"omni_range": 4.0}),
+            ("Door_Spill__farm_porch_night", "OmniLight3D", I.format(-1.2, 1.6, -0.4), c(1.0, 0.84, 0.60), 0.8, {"omni_range": 4.0}),
+            ("Fill__farm_kitchen_window", "DirectionalLight3D", B_FILL.format(3, 2, -7), c(0.50, 0.54, 0.66), 0.04),
+            ("Workshop_Light__farm_kitchen_window", "OmniLight3D", I.format(22.5, 1.5, -6.0), c(1.0, 0.84, 0.56), 2.0, {"omni_range": 8.0}),
+            ("Kitchen_Low__farm_kitchen_window", "OmniLight3D", I.format(3.0, 2.2, -7.0), c(1.0, 0.86, 0.66), 0.5, {"omni_range": 4.0}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 2's SMALL WOOD TOWN (build_small_wood_town.py): the radio studio
+        # (December 1992) on its warm practical, the red on-air lamp and the
+        # control room's glow; the video store (February 2013) on its tubes
+        # and the grey coast day through the front.
+        "out_path": os.path.join(ROOT, "small_wood_town.tscn"),
+        "uid": "uid://small_wood_town_v2",
+        "root_node": "SmallWoodTown",
+        "glb": "res://assets/3d/locales/small_wood_town.glb",
+        "env": {"bg": (0.30, 0.32, 0.34, 1), "amb": (0.66, 0.66, 0.64, 1),
+                "amb_e": 0.30, "fog": (0.40, 0.42, 0.44, 1), "fog_e": 0.2,
+                "fog_d": 0.002, "sat": 0.90, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.92, 0.84, 0.68, 1), "bg": (0.07, 0.07, 0.08, 1),
+                   "neon_edge": (0.70, 0.66, 0.58, 1), "neon_lo": (0.26, 0.24, 0.22, 1),
+                   "neon_hi": (0.07, 0.07, 0.08, 1), "lim_tint": (0.62, 0.60, 0.56, 1)},
+        "lights": [
+            ("Fill__radio_studio", "DirectionalLight3D", B_FILL.format(2, 2, -2), c(0.70, 0.66, 0.60), 0.05),
+            ("Studio_Practical__radio_studio", "OmniLight3D", I.format(2.5, 2.2, -2.0), c(1.0, 0.84, 0.62), 1.2, {"omni_range": 5.0}),
+            ("On_Air__radio_studio", "OmniLight3D", I.format(2.5, 2.2, -3.8), c(1.0, 0.24, 0.18), 0.5, {"omni_range": 2.0}),
+            ("Control_Room__radio_studio", "OmniLight3D", I.format(2.5, 2.0, -5.6), c(0.80, 0.86, 0.96), 0.8, {"omni_range": 4.0}),
+            ("Daylight_Front__video_store_counter", "DirectionalLight3D", B_SUN_FROM_S.format(44, 6, 4), c(0.76, 0.80, 0.84), 0.45),
+            *[("Tube_{}__video_store_counter".format(k), "OmniLight3D", I.format(44.0, 2.7, -(2.0 + k * 3.0)), c(0.92, 0.96, 0.94), 1.0,
+               {"omni_range": 6.0}) for k in range(3)],
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "noir", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 4's SISTER CARRIE CITY (build_carrie_city.py): Charlie's flat by
+        # night (his reading lamp; the floor lamp and the street's glow) and
+        # by day; the after party on the bar's amber, a pink lamp and an
+        # orange wash; the sister's house by day, outside and in.
+        "out_path": os.path.join(ROOT, "carrie_city.tscn"),
+        "uid": "uid://carrie_city_v4",
+        "root_node": "CarrieCity",
+        "glb": "res://assets/3d/locales/carrie_city.glb",
+        "env": {"bg": (0.05, 0.06, 0.09, 1), "amb": (0.56, 0.56, 0.66, 1),
+                "amb_e": 0.20, "fog": (0.10, 0.10, 0.14, 1), "fog_e": 0.2,
+                "fog_d": 0.003, "sat": 0.92, "glow_i": 0.8, "glow_b": 0.12},
+        "shader": {"warm": (0.94, 0.84, 0.66, 1), "bg": (0.06, 0.06, 0.08, 1),
+                   "neon_edge": (0.76, 0.62, 0.66, 1), "neon_lo": (0.26, 0.22, 0.24, 1),
+                   "neon_hi": (0.06, 0.06, 0.08, 1), "lim_tint": (0.66, 0.56, 0.60, 1)},
+        "lights": [
+            ("Fill" + CF_N, "DirectionalLight3D", B_FILL.format(4, 2, -4), c(0.56, 0.58, 0.70), 0.04),
+            ("Reading_Lamp__charlie_bedroom_night", "OmniLight3D", I.format(0.34, 1.0, -7.3), c(1.0, 0.84, 0.60), 1.2, {"omni_range": 4.0}),
+            ("City_Glow_Bed__charlie_bedroom_night", "OmniLight3D", I.format(2.0, 1.6, -0.4), c(0.60, 0.66, 0.90), 0.3, {"omni_range": 3.0}),
+            ("Floor_Lamp__charlie_living_night", "OmniLight3D", I.format(9.5, 1.3, -7.5), c(1.0, 0.82, 0.56), 1.3, {"omni_range": 6.0}),
+            ("Low_Fill_Living__charlie_living_night", "OmniLight3D", I.format(7.0, 2.4, -5.0), c(0.90, 0.80, 0.66), 0.4, {"omni_range": 5.0}),
+            ("City_Glow_Living__charlie_living_night", "OmniLight3D", I.format(7.6, 1.6, -0.4), c(0.60, 0.66, 0.90), 0.4, {"omni_range": 4.0}),
+            ("Sun" + CF_D, "DirectionalLight3D", B_SUN_FROM_S.format(5, 10, 6), c(1.0, 0.96, 0.88), 0.9),
+            ("Fill_Day" + CF_D, "DirectionalLight3D", B_FILL.format(5, 6, -4), c(0.80, 0.84, 0.90), 0.35),
+            ("Window_Day_Bed__charlie_apartment_day", "OmniLight3D", I.format(2.0, 1.6, -0.5), c(1.0, 0.98, 0.94), 1.0, {"omni_range": 4.5}),
+            ("Window_Day_Living" + CF_D, "OmniLight3D", I.format(7.6, 1.6, -0.5), c(1.0, 0.98, 0.94), 1.2, {"omni_range": 5.0}),
+            ("Fill" + PARTY, "DirectionalLight3D", B_FILL.format(49, 3, -7), c(0.60, 0.50, 0.56), 0.05),
+            ("Bar_Amber" + PARTY, "OmniLight3D", I.format(50.0, 2.6, -12.4), c(1.0, 0.70, 0.40), 1.4, {"omni_range": 7.0}),
+            ("Pink_Lamp" + PARTY, "OmniLight3D", I.format(41.0, 1.6, -12.6), c(1.0, 0.56, 0.74), 0.6, {"omni_range": 4.0}),
+            ("Orange_Wash" + PARTY, "OmniLight3D", I.format(48.4, 1.6, -4.6), c(1.0, 0.64, 0.34), 1.2, {"omni_range": 6.0}),
+            ("Room_Warm__afterparty_room", "OmniLight3D", I.format(48.0, 3.6, -7.0), c(1.0, 0.82, 0.64), 1.4, {"omni_range": 13.0}),
+            ("Sun" + SIS, "DirectionalLight3D", B_SUN_FROM_S.format(86, 10, 6), c(1.0, 0.96, 0.86), 1.1),
+            ("Fill_Sky" + SIS, "DirectionalLight3D", B_FILL.format(86, 6, -4), c(0.76, 0.82, 0.90), 0.40),
+            ("Window_In__sister_house_inside", "OmniLight3D", I.format(89.6, 1.8, -2.6), c(1.0, 0.98, 0.92), 1.0, {"omni_range": 5.0}),
+            ("Door_In__sister_house_inside", "OmniLight3D", I.format(85.0, 1.8, -3.2), c(1.0, 0.98, 0.92), 0.8, {"omni_range": 4.0}),
+            ("Ceiling_Bulb__sister_house_inside", "OmniLight3D", I.format(85.0, 2.6, -6.0), c(1.0, 0.90, 0.72), 0.6, {"omni_range": 4.0}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 4's STORY ROOMS (build_vol4_story_rooms.py): the honeydew garage
+        # on its tubes and a descending car's headlights; the dead store on
+        # the high sun through its front; the mirror room on one hard side
+        # lamp (the other side black); Aaron's room at evening (and the blue
+        # of the waking dream); Steven's room by morning; the Dean house on
+        # one reading lamp; Shanghai on the city below.
+        "out_path": os.path.join(ROOT, "vol4_story_rooms.tscn"),
+        "uid": "uid://vol4_story_rooms_v4",
+        "root_node": "Vol4StoryRooms",
+        "glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+        "env": {"bg": (0.04, 0.05, 0.07, 1), "amb": (0.54, 0.56, 0.62, 1),
+                "amb_e": 0.18, "fog": (0.08, 0.09, 0.11, 1), "fog_e": 0.2,
+                "fog_d": 0.003, "sat": 0.90, "glow_i": 0.8, "glow_b": 0.12},
+        "shader": {"warm": (0.92, 0.86, 0.70, 1), "bg": (0.06, 0.06, 0.07, 1),
+                   "neon_edge": (0.70, 0.72, 0.66, 1), "neon_lo": (0.24, 0.24, 0.22, 1),
+                   "neon_hi": (0.06, 0.06, 0.07, 1), "lim_tint": (0.62, 0.66, 0.60, 1)},
+        "lights": [
+            ("Fill__garage_level", "DirectionalLight3D", B_FILL.format(20, 2, -12), c(0.70, 0.80, 0.70), 0.06),
+            *[("Tube_{}_{}__garage_level".format(i, j), "OmniLight3D", I.format(4.0 + i * 8.0, 2.35, -(4.0 + j * 8.0)), c(0.86, 1.0, 0.88), 1.6,
+               {"omni_range": 11.0}) for i in (0, 2, 4) for j in (0, 2)],
+            ("Headlights_Descending__garage_level", "SpotLight3D", "Transform3D(-1, 0, 0, 0, 0.95, 0.3, 0, 0.3, -0.95, 44, 3.2, -19)",
+             c(1.0, 0.96, 0.86), 3.0, {"spot_range": 14.0, "spot_angle": 25.0}),
+            ("Sun_High__dead_store", "DirectionalLight3D", B_SUN_FROM_S.format(135, 20, 10), c(1.0, 0.96, 0.86), 1.0),
+            ("Fill_Sky__dead_store", "DirectionalLight3D", B_FILL.format(135, 8, -6), c(0.76, 0.80, 0.86), 0.40),
+            ("Bounce_Floor__dead_store", "OmniLight3D", I.format(130.0, 2.5, -4.0), c(1.0, 0.94, 0.84), 0.8, {"omni_range": 12.0}),
+            ("Bounce_Back__dead_store", "OmniLight3D", I.format(140.0, 3.0, -10.0), c(0.96, 0.92, 0.84), 0.5, {"omni_range": 10.0}),
+            ("Side_Lamp_Hard__mirror_room", "OmniLight3D", I.format(260.95, 1.65, -3.0), c(1.0, 0.86, 0.62), 1.4, {"omni_range": 3.6}),
+            ("Fill__mirror_room", "DirectionalLight3D", B_FILL.format(262, 2, -2), c(0.50, 0.52, 0.60), 0.03),
+            ("Evening_Lamp__aaron_bedroom", "OmniLight3D", I.format(302.2, 2.3, -1.9), c(1.0, 0.86, 0.64), 0.9, {"omni_range": 5.0}),
+            ("Fill__aaron_bedroom", "DirectionalLight3D", B_FILL.format(302, 2, -2), c(0.70, 0.70, 0.76), 0.06),
+            ("Dream_Blue__aaron_bedroom_blue", "OmniLight3D", I.format(302.2, 2.2, -1.9), c(0.40, 0.52, 1.0), 1.6, {"omni_range": 6.0}),
+            ("Fill_Blue__aaron_bedroom_blue", "DirectionalLight3D", B_FILL.format(302, 2, -2), c(0.40, 0.50, 0.90), 0.10),
+            ("Morning_Window__steven_room", "OmniLight3D", I.format(341.8, 1.6, -3.0), c(0.92, 0.94, 1.0), 1.2, {"omni_range": 5.0}),
+            ("Fill__steven_room", "DirectionalLight3D", B_FILL.format(342, 3, -2), c(0.80, 0.82, 0.86), 0.30),
+            ("Reading_Lamp__dean_house_late", "OmniLight3D", I.format(423.25, 1.15, -4.1), c(1.0, 0.84, 0.60), 1.4, {"omni_range": 4.5}),
+            ("Fill__dean_house_late", "DirectionalLight3D", B_FILL.format(424, 2, -3), c(0.50, 0.52, 0.62), 0.03),
+            ("City_Below__shanghai_window_night", "OmniLight3D", I.format(704.0, -20.0, -9.0), c(1.0, 0.84, 0.62), 1.5, {"omni_range": 40.0}),
+            ("City_Key_S__shanghai_window_night", "DirectionalLight3D", B_SUN_FROM_S.format(704, 10, 0), c(1.0, 0.84, 0.62), 0.45),
+            ("City_Key_W__shanghai_window_night", "DirectionalLight3D", "Transform3D(0, 0.423, -0.906, 0, 0.906, 0.423, 1, 0, 0, 690, 10, -3)",
+             c(1.0, 0.84, 0.62), 0.45),
+            *[("City_Glow_{}__shanghai_window_night".format(k), "OmniLight3D", I.format(704.0 + 70.0 * math.cos(k * 1.5708), -36.0,
+               -(3.0 + 70.0 * math.sin(k * 1.5708))), c(1.0, 0.86, 0.66), 2.0, {"omni_range": 60.0}) for k in range(4)],
+            ("Floor_Lamp__shanghai_window_night", "OmniLight3D", I.format(707.4, 1.2, -0.6), c(1.0, 0.84, 0.60), 0.6, {"omni_range": 4.0}),
+            ("Fill__shanghai_window_night", "DirectionalLight3D", B_FILL.format(704, 2, -3), c(0.50, 0.52, 0.66), 0.05),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
     },
 ]
 

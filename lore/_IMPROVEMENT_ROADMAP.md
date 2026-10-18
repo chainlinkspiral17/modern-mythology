@@ -3834,6 +3834,124 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-18 · pass 121: THE COAST, NICK'S HOUSE, THE LAKE HOUSE, TULSA, SMALL WOOD, VOL 4'S CITY (draft 1).** The user:
+"No, that can be saved for later, keep going with backgrounds."
+- **sea_cave** (vol 2, ch9): Julie's cave, 18 m deep, the spout and its sinkhole at the back. Three
+  views from one cave: dawn from the spout looking out at the white-blue mouth (flotsam), the
+  sinkhole at low tide with the shells and husks at its lip (art class), the sea running in over
+  the floor with the body gone (the truck). Charles's ground by the riverbed is a separate area
+  (x 200): flat sand with a real hole for the dig, the red Mercedes in it, the dunes rolling up
+  beyond, the bungalow small in the distance.
+- **oregon_lighthouse** (vol 2): the lighthouse an hour and a half from Small Wood, December night.
+  It is not the bayou lighthouse. The hollow stone column, the wooden floors with light between
+  the boards, the lantern, the barbed gate and the brick walkway, the generator shed, the sea below.
+  Two views: from the column's foot looking up, and the tower from the trail past the gate.
+- **nick_house** (vol 3, "uncle nick"): Nick's grandmother's house.
+  - The front on Halloween night, unlit, with the rusting mini-bike, the neighbour's fence with its
+    holes and lit houses on either side.
+  - One garage dressed two ways: Mark's old workshop on Halloween (the grease-bonded counter, the
+    costume box, the broken lightning ball with the hat), and the print shop years later (the
+    press Nick built, T-shirts on the line, the comic pages, the ink brush, the albums).
+  - Nick's room: drawings on every wall, posters hung from the ceiling, comics on the floor, the
+    closet half packed, and the child-sized drafting table (its own view for the after-Halloween
+    scene).
+  - The old note "the printing press" on the Halloween garage was wrong. The press is years later.
+- **lake_house** (vol 3, "acceptable losses"): Terry's house on the unnamed lake (the old stand-in
+  was the vol 6 boat ramp at Lake Palestine). Six views:
+  - the front with the barbecue smoking and the screen door, the boathouse out back;
+  - the dock's polished wood out over the lake (sailboats, speedboats, the seams of light,
+    balloons over the far shore);
+  - sunrise from the kitchen table, through the window to the dock;
+  - Chris's room on arrival (the cot by the window, the TV and tapes in the corner, the Rangers
+    posters, the magazines) and that night with the light on (the card game in the corner);
+  - the bathroom before dawn. `vol3_family_bathroom_night` plays here now. Its only scene is
+    subtitled "The lake house · before dawn".
+- **tulsa_house** (vol 3, "safari"): Marty and Kathy's in the mid-eighties. The slide show (the
+  projector's beam as a spot, the pull-down screen with the slide, the bar's wine and ports,
+  Marty's three Minoltas), and the patio later on (the sawdust playground, the fort with the play
+  kitchen, the moon between tall skinny trees). Nothing in it is later than the mid-eighties.
+- **dean_house_1994** (vol 2, chapter vii): the rented house up the Alsea, March 1994, before dawn.
+  - The bedroom over the furnace: the bed with its sheets thrown, the register in the floor, the
+    rain on the window.
+  - The basement: the desk under the window well, with the graph paper (one road, buildings
+    propped on nothing, the spiral, "SCUMM" under it, "slow sticks" across the top underlined
+    twice), the beige computer and its CRT left off, floppies, the corded phone, a shelf of game
+    boxes, the furnace and the water heater.
+  - Through the well, the rain, the pasture climbing a hill to the Hagstrom place.
+  - Built apart from small_wood_ranch. Whether this is the narrator's grandmother's house is the
+    author's call.
+- **small_wood_farmhouse** (vol 2): the two-storey farmhouse at night.
+  - The renters' living room (points of impact): two picture windows black over the valley, the
+    small TV, the afghan, the stair and banister.
+  - The porch (loose pages): the spit cup, the bottle, the cats, the window lit with the recliner
+    inside, the pick-up.
+  - A spare kitchen-window view: past the fruit trees to the workshop light.
+  - The service porch with its two doors and the garage port within twenty feet.
+  - The stem's old count said 1 scene; it plays in 2.
+- **small_wood_town** (vol 2): two rooms.
+  - The radio studio of the town's annual radio drama, live on the air, December 1992: mics on boom
+    arms, the librarian's script, headphones, the on-air lamp, the board through the glass. No
+    station name or call letters (the text has none).
+  - Chuck's video store, February 2013, still renting VHS: the counter with the stock behind it
+    and MELODY pulled, two aisles of tapes, hand-lettered shelf cards, the grey coast through the
+    front.
+- **carrie_city** (vol 4, Sister Carrie): one unnamed city, nothing later than the scenes' PDA.
+  - Charlie's flat: the bedroom (the bed, the reading lamp, the book) and, through its door, the
+    living room (the couch too small for two, the blanket, the chair across). Night, day, and the
+    morning after.
+  - The after party: a loft room with the tire swing on its rope from a beam, the bar with its
+    back-bar, the shot glass, two stools pulled close.
+  - The sister's house: low rent, in bad shape, the yard in a sorry state, the neighbours either
+    side; inside, the cramped main room with toys and the laundry, the dryer through a door.
+  - cc_5's last line, "It is morning now, the blanket is still on the couch, but Carrie is gone.",
+    played on the night picture. A bg node now switches to day before it (by_scene, the living
+    room by day).
+- **vol4_story_rooms** (vol 4): seven single rooms, set far apart.
+  - paper cuts' honeydew garage: tubes on concrete, a down-ramp with a car's headlights coming.
+  - map of the city's dead clothing store: the glass counter, naked mannequins, slumped banners,
+    the dead escalator to the mezzanine, the street in a high sun.
+  - cracked and broken's mirror: our materials can't reflect, so the mirror is an opening onto
+    the same room built mirrored behind it. It shows "the world behind her", lit by one hard side
+    lamp.
+  - heavy breathing's Aaron's room at thirteen (toys still out, a grey console, magazines), with
+    a second preset for the waking dream's blue.
+  - the wasted sentiment's Steven's room, slept twisted on a small couch. Whether this is the Chau
+    house is the author's call.
+  - daddy's Dean house late at night (the reading chair, the dark doorway) and the one-room
+    apartment in Shanghai, high over a lit city.
+  - The Deans' home note said "(Caracas)". The text names no city, so the note no longer does.
+- **The VN camera's far plane is 200 m** (`scenes/vn/Background3D.tscn`). The lake's sky cards,
+  sun and balloons and the farmhouse's ridges stood 300–900 m out and were clipped, so those
+  views showed the bare environment colour. Everything in these sets now stands inside 200 m.
+  - A sweep of every preset found 33 older locales with some far band (mostly the shared `Far*_E2`
+    rings) wholly beyond 200 m of some camera. That's for a later pass, after checking whether the
+    rings are meant as fallbacks.
+- **Text fixes** (the user's standing "fix the contradictions"), all in vol 2 ch9:
+  - The beach at dawn is "the sun still behind the hills" (it said "under the ocean"; the Oregon
+    coast faces west).
+  - The sheet comes from "a suitcase in the truck bed" (it said "the trunk"), and Julie says "I
+    left him in that truck alone." (it said "car"). The chapter's vehicle is a truck.
+- **The geometry recorder now reads `rolling_heights`.** It had returned a stub, so every
+  heightfield built from it was missing from the gates, and the riverbed read as "96% sky".
+- Gates clean on all ten builders. Draw calls: sea_cave 102, oregon_lighthouse 68, nick_house 82,
+  lake_house 140, tulsa_house 74, dean_house_1994 96, small_wood_farmhouse 70, small_wood_town 62,
+  carrie_city 88, vol4_story_rooms 138. Shanghai's city was 750 until its towers and lit windows
+  were named `_Stock_` and joined. Story audit at 312.
+
+DRAFT 2 targets:
+- The lighthouse: the bed and breakfast and its garden; the family's flashlight beams as spots.
+- Nick's house: the living room seen through Nick's door (the TV's glow), the kitchen of the
+  grilled cheese, Mark's empty room.
+- The lake house: the boathouse's inside and the ski boat; the hall; the drive's car.
+- Tulsa: the slide as a real image; the beam's dust as a volumetric pass.
+- The riverbed's sky, which is grey under the fog.
+- Dean's house: the ground floor's other rooms; the house from outside; the river behind it.
+- The farmhouse: the upstairs (the girls' room, the master bedroom with its two hall doors).
+- The `Far*_E2` rings beyond 200 m in 33 older locales: bring them in, or confirm they're meant.
+- The after party's contrails as an effect; Paradise Lost and its bathroom; the dead store's roof
+  and its broken pink sky; the garage's upper level and the car on the ramp.
+- Next builds: the vol 1 houses (faust3_houses, city_night_street) and the vol 3 odds.
+
 **2026-10-18 · pass 120: THE EDITING SUITE, THE APPLE PEDDLER, THE PARSONAGE, THE BUS (draft 1);
 1945 PICTURES TOLD THEIR YEAR.** The user: "Continue", then "1945 doesn't have modern computers."
 - **editing_suite**: the four's suite at Aud's, behind the grill wall. It has the monitor wall (what

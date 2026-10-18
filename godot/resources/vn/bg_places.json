@@ -395,17 +395,20 @@
    "scenes": 1
   },
   "vol2_dean_basement_1994": {
-   "fit": "standin",
-   "to": "3d:henderson_garage",
+   "fit": "exact",
+   "to": "3d:dean_basement_1994",
    "build": "dean_house_1994",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the basement at the window well: the graph paper (SCUMM, slow sticks), the monitor off, first light on the Hagstrom place",
+   "built": "2026-10-18 draft 1"
   },
   "vol2_dean_bedroom_1994": {
-   "fit": "standin",
-   "to": "3d:ben_bedroom",
+   "fit": "exact",
+   "to": "3d:dean_bedroom_1994",
    "build": "dean_house_1994",
-   "note": "D.N. Dean's room",
-   "scenes": 2
+   "note": "N. Dean's bedroom, March 1994, 3:50 a.m.: over the furnace, the rain on the window",
+   "scenes": 2,
+   "built": "2026-10-18 draft 1"
   },
   "vol2_diner_grill_dawn": {
    "fit": "reuse",
@@ -432,9 +435,15 @@
    "scenes": 1
   },
   "vol2_farmhouse_night": {
-   "fit": "standin",
-   "to": "3d:caldwell_porch_night",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:farm_living_night",
+   "scenes": 2,
+   "build": "small_wood_farmhouse",
+   "note": "the farmhouse at night: the living room at the picture windows (points of impact); the porch (loose pages)",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol2_ch12x_loose_pages": "3d:farm_porch_night"
+   }
   },
   "vol2_football_field_night": {
    "fit": "reuse",
@@ -494,11 +503,12 @@
    "scenes": 1
   },
   "vol2_lighthouse_night": {
-   "fit": "standin",
-   "to": "3d:beach_night",
-   "build": "lighthouse",
-   "note": "bayou_lighthouse.tscn exists (gauntlet) — add a VN preset",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:lighthouse_base_up",
+   "build": "oregon_lighthouse",
+   "note": "the lighthouse 1.5 hours from Small Wood, December night: from the column's foot, looking up (not the bayou lighthouse)",
+   "scenes": 1,
+   "built": "2026-10-18 draft 1"
   },
   "vol2_little_switzerland": {
    "fit": "exact",
@@ -537,10 +547,12 @@
    "scenes": 2
   },
   "vol2_radio_studio": {
-   "fit": "standin",
-   "to": "3d:caldwell_radio_room_night",
-   "note": "bayou/wgur shack locales exist without presets: give one a preset",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:radio_studio",
+   "note": "the town's annual radio drama, read live on the air (December 1992); no station name in the text",
+   "scenes": 1,
+   "build": "small_wood_town",
+   "built": "2026-10-18 draft 1"
   },
   "vol2_rain_windshield_night": {
    "fit": "reuse",
@@ -562,9 +574,12 @@
    "scenes": 1
   },
   "vol2_riverbed_dunes": {
-   "fit": "standin",
-   "to": "3d:grunion_beach",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:riverbed_sand",
+   "scenes": 1,
+   "build": "sea_cave",
+   "note": "Charles's ground by the riverbed (the text never says dunes)",
+   "built": "2026-10-18 draft 1"
   },
   "vol2_road_running": {
    "fit": "exact",
@@ -645,11 +660,16 @@
    "scenes": 2
   },
   "vol2_sea_cave": {
-   "fit": "standin",
-   "to": "3d:grunion_beach",
+   "fit": "exact",
+   "to": "3d:cave_dawn",
    "build": "sea_cave",
-   "note": "three scenes",
-   "scenes": 3
+   "note": "Julie's cave: dawn (flotsam), low tide (art class), the tide coming in (truck)",
+   "scenes": 3,
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol2_ch9_art_class": "3d:cave_low_tide",
+    "vol2_ch9_truck": "3d:cave_tide_in"
+   }
   },
   "vol2_sea_wall_bookstore": {
    "fit": "reuse",
@@ -696,11 +716,12 @@
    "scenes": 1
   },
   "vol2_video_store_counter": {
-   "fit": "standin",
-   "to": "3d:cosmic_comics_interior",
-   "build": "video_store",
-   "note": "Small Wood's video store, Chuck's counter",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:video_store_counter",
+   "build": "small_wood_town",
+   "note": "Small Wood's video store, February 2013: the counter, MELODY from behind it, the shelves",
+   "scenes": 1,
+   "built": "2026-10-18 draft 1"
   },
   "vol2_white_room": {
    "fit": "2d",
@@ -894,14 +915,20 @@
    "built": "2026-10-17 draft 1"
   },
   "vol3_chris_bedroom_night": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:chris_room_night",
+   "scenes": 1,
+   "build": "lake_house",
+   "note": "Chris's room that night, the light left on, the card game in the corner",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_chris_bedroom_trophies": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom_day",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:chris_room_day",
+   "scenes": 1,
+   "build": "lake_house",
+   "note": "Chris's room at the lake house on arrival: clean and sterile",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_city_street_friday": {
    "fit": "reuse",
@@ -1002,11 +1029,11 @@
   },
   "vol3_family_bathroom_night": {
    "fit": "exact",
-   "to": "3d:andy_house_bath_night",
-   "build": "link_house",
+   "to": "3d:lake_bath_night",
+   "build": "lake_house",
    "scenes": 1,
-   "note": "the bathroom before dawn, the vanity light",
-   "built": "2026-10-17 draft 1"
+   "note": "the lake-house bathroom before dawn ('The lake house · before dawn'); 'family' in the stem is historical",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_family_kitchen_evening": {
    "fit": "exact",
@@ -1052,9 +1079,12 @@
    "scenes": 1
   },
   "vol3_grandma_house_night": {
-   "fit": "standin",
-   "to": "3d:grandmother_kitchen_morning",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:nick_house_front",
+   "scenes": 1,
+   "build": "nick_house",
+   "note": "Nick's grandmother's house, Halloween night: unlit from the outside, the mini-bike, the neighbour's fence",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_hollywood_street_1945": {
    "fit": "exact",
@@ -1119,19 +1149,28 @@
    "scenes": 1
   },
   "vol3_lake_dock_dawn": {
-   "fit": "reuse",
-   "to": "3d:lake_palestine_dock",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:lake_dock_dawn",
+   "scenes": 1,
+   "build": "lake_house",
+   "note": "sunrise from the kitchen table: Terry fishing off the dock outside the window",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_lake_dock_day": {
-   "fit": "reuse",
-   "to": "3d:lake_palestine_dock",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:lake_dock_day",
+   "scenes": 1,
+   "build": "lake_house",
+   "note": "the dock's polished wood, the lake with its boats and balloons",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_lake_house_day": {
-   "fit": "reuse",
-   "to": "3d:lake_palestine",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:lake_house_day",
+   "scenes": 1,
+   "build": "lake_house",
+   "note": "Terry's big home on the lake on arrival: the barbecue, the screen door, the boathouse out back (not the vol 6 boat ramp)",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_lax_terminal_night": {
    "fit": "exact",
@@ -1164,16 +1203,23 @@
    "scenes": 1
   },
   "vol3_nick_bedroom_drawings": {
-   "fit": "standin",
-   "to": "3d:jesse_bedroom",
-   "note": "uncle Nick's drawings",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:nick_room",
+   "note": "Nick's room: the walls lined with designs; the drafting table for the after-Halloween scene",
+   "scenes": 2,
+   "build": "nick_house",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol3_ch12_uncle_nick_b": "3d:nick_drafting"
+   }
   },
   "vol3_nick_garage_workshop": {
-   "fit": "standin",
-   "to": "3d:nate_garage",
-   "note": "the printing press",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:nick_garage_halloween",
+   "note": "Mark's old workshop, Halloween night, before any press (the press is years later: vol3_silkscreen_garage)",
+   "scenes": 1,
+   "build": "nick_house",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_oil_field_dusk": {
    "fit": "2d",
@@ -1307,9 +1353,12 @@
    "scenes": 1
   },
   "vol3_silkscreen_garage": {
-   "fit": "standin",
-   "to": "3d:nate_garage",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:nick_print_shop",
+   "scenes": 1,
+   "build": "nick_house",
+   "note": "the same garage years later: the printing press Nick built, comics and T-shirts",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_sleep_lab": {
    "fit": "exact",
@@ -1353,15 +1402,20 @@
    "scenes": 1
   },
   "vol3_tulsa_backyard_night": {
-   "fit": "standin",
-   "to": "3d:kowalski_backyard",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:tulsa_patio",
+   "scenes": 1,
+   "build": "tulsa_house",
+   "note": "the patio later on, the fall: the sawdust playground, the fort, the moon between the trees",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_tulsa_living_room_slideshow": {
-   "fit": "standin",
-   "to": "3d:kowalski_kitchen",
-   "note": "Marty's slideshow",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:tulsa_slideshow",
+   "note": "Marty's slide show, Tulsa, mid-eighties: the projector, the pull-down screen, the bar",
+   "scenes": 1,
+   "build": "tulsa_house",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_utah_highway_day": {
    "fit": "reuse",
@@ -1384,9 +1438,15 @@
    "scenes": 1
   },
   "vol4_after_party_night": {
-   "fit": "standin",
-   "to": "3d:new_orleans_apartment",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:afterparty_room",
+   "scenes": 2,
+   "build": "carrie_city",
+   "note": "the after party: the tire swing, the bar; cc_5's two stools",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol4_cc_5": "3d:afterparty_stools"
+   }
   },
   "vol4_airplane_cabin": {
    "fit": "reuse",
@@ -1433,9 +1493,12 @@
    "scenes": 1
   },
   "vol4_bathroom_mirror": {
-   "fit": "standin",
-   "to": "3d:nexcorp_fueling_restroom",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:mirror_room",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "note": "cracked and broken: the mirror and the world behind her (the text never says bathroom)",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_beach_daycare": {
    "fit": "2d",
@@ -1518,15 +1581,26 @@
    "built": "2026-10-17 draft 1"
   },
   "vol4_charlie_apartment_day": {
-   "fit": "standin",
-   "to": "3d:new_orleans_apartment",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:charlie_apartment_day",
+   "scenes": 2,
+   "build": "carrie_city",
+   "note": "Charlie's flat by day; cc_5's morning is the couch with the blanket left on it",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol4_cc_5": "3d:charlie_living_day"
+   }
   },
   "vol4_charlie_apartment_night": {
-   "fit": "standin",
-   "to": "3d:new_orleans_apartment",
-   "note": "Sister Carrie: Charlie Drouet",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:charlie_bedroom_night",
+   "note": "Sister Carrie: Charlie's bedroom at night; the couch and the chair for cc_5",
+   "scenes": 2,
+   "build": "carrie_city",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol4_cc_5": "3d:charlie_living_night"
+   }
   },
   "vol4_chess_apartment_morning": {
    "fit": "reuse",
@@ -1585,10 +1659,12 @@
    "scenes": 1
   },
   "vol4_dead_department_store": {
-   "fit": "standin",
-   "to": "3d:centro_grocery_aisle",
-   "note": "a dead store",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:dead_store",
+   "note": "map of the city: the dead clothing store (mannequins, banners, the counter, the escalator)",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_dead_park": {
    "fit": "reuse",
@@ -1596,10 +1672,12 @@
    "scenes": 1
   },
   "vol4_dean_home_night": {
-   "fit": "standin",
-   "to": "3d:montreal_apartment",
-   "note": "the Deans' home (Caracas)",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:dean_house_late",
+   "note": "the Deans' home, late night: the reading chair (the text names no city)",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_dean_office_night": {
    "fit": "exact",
@@ -1659,9 +1737,12 @@
    "scenes": 1
   },
   "vol4_heavy_breathing_bedroom": {
-   "fit": "standin",
-   "to": "3d:sam_bedroom",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:aaron_bedroom",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "note": "heavy breathing: Aaron's room at thirteen (aaron_bedroom_blue is the waking dream's light)",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_ivy_wall_door": {
    "fit": "2d",
@@ -1736,9 +1817,12 @@
    "scenes": 1
   },
   "vol4_parking_garage": {
-   "fit": "standin",
-   "to": "3d:new_auburn_lot",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:garage_level",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "note": "paper cuts: the honeydew garage, the fluorescent tubes, the car descending",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_retirement_kitchen": {
    "fit": "reuse",
@@ -1758,9 +1842,12 @@
    "scenes": 1
   },
   "vol4_shanghai_apartment": {
-   "fit": "standin",
-   "to": "3d:montreal_apartment",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:shanghai_window_night",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "note": "daddy: Dean's one-room apartment in Shanghai, the city lights below",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_sister_carrie_notes": {
    "fit": "2d",
@@ -1769,14 +1856,20 @@
    "scenes": 1
   },
   "vol4_sister_house_ext_day": {
-   "fit": "standin",
-   "to": "3d:meadowlark_circle",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:sister_house_yard",
+   "scenes": 1,
+   "build": "carrie_city",
+   "note": "the sister's house: low rent, bad shape, the yard in a sorry state",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_sister_house_int_day": {
-   "fit": "standin",
-   "to": "3d:kowalski_kitchen",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:sister_house_inside",
+   "scenes": 1,
+   "build": "carrie_city",
+   "note": "inside the sister's house: cramped, the laundry and the dryer",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_squirrel_road": {
    "fit": "reuse",
@@ -1801,9 +1894,12 @@
    "scenes": 1
   },
   "vol4_wasted_sentiment_bedroom": {
-   "fit": "standin",
-   "to": "3d:maya_bedroom",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:steven_room",
+   "scenes": 1,
+   "build": "vol4_story_rooms",
+   "note": "the wasted sentiment: Steven's room, slept twisted on the small couch (whether it is the Chau house is the author's)",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_what_sort_of_car_dawn": {
    "fit": "reuse",

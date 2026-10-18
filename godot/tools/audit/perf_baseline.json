@@ -22,6 +22,11 @@
   "prims": 90280,
   "objects": 320
  },
+ "carrie_city": {
+  "draw": 88,
+  "prims": 33588,
+  "objects": 258
+ },
  "centro_grocery_aisle": {
   "draw": 214
  },
@@ -34,6 +39,11 @@
   "draw": 100,
   "prims": 24684,
   "objects": 270
+ },
+ "dean_house_1994": {
+  "draw": 96,
+  "prims": 17300,
+  "objects": 266
  },
  "dean_offices": {
   "draw": 116,
@@ -63,6 +73,11 @@
  "kwik_stop": {
   "draw": 276
  },
+ "lake_house": {
+  "draw": 140,
+  "prims": 24244,
+  "objects": 310
+ },
  "lena_apartment": {
   "draw": 156
  },
@@ -81,6 +96,16 @@
  },
  "nexcorp_fueling_station": {
   "draw": 174
+ },
+ "nick_house": {
+  "draw": 82,
+  "prims": 22640,
+  "objects": 252
+ },
+ "oregon_lighthouse": {
+  "draw": 68,
+  "prims": 7620,
+  "objects": 238
  },
  "parsonage_1945": {
   "draw": 78,
@@ -101,10 +126,20 @@
  "salty_tome_interior": {
   "draw": 402
  },
+ "sea_cave": {
+  "draw": 102,
+  "prims": 29626,
+  "objects": 272
+ },
  "sleep_lab": {
   "draw": 348,
   "prims": 31240,
   "objects": 518
+ },
+ "small_wood_farmhouse": {
+  "draw": 70,
+  "prims": 24928,
+  "objects": 240
  },
  "small_wood_high": {
   "draw": 236,
@@ -115,6 +150,21 @@
   "draw": 102,
   "prims": 16776,
   "objects": 272
+ },
+ "small_wood_town": {
+  "draw": 62,
+  "prims": 54196,
+  "objects": 232
+ },
+ "tulsa_house": {
+  "draw": 74,
+  "prims": 24688,
+  "objects": 244
+ },
+ "vol4_story_rooms": {
+  "draw": 138,
+  "prims": 51908,
+  "objects": 308
  },
  "writers_desk": {
   "draw": 108,

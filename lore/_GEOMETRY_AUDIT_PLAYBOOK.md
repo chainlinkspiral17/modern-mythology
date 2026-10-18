@@ -158,6 +158,20 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-18 · a helper that returns DATA must be recorded, or what it feeds vanishes
+
+- `geometry.rolling_heights` returns a height grid. The recorder's stub returned a `_StubVal`,
+  `make_heightfield`'s recorder failed on it, and the riverbed's whole sand plain was missing
+  from every gate. vantage_obstruction read the view as "EMPTY: 96% of the frame sees only
+  fill/sky" while the render showed sand to the horizon. `_rec_rolling_heights` now hands back a
+  grid spanning the same envelope (base ± amp).
+- When a gate's verdict contradicts the render, print the recorded boxes near the camera
+  (`boxes_for(locale)` after `install_stubs()`) before moving the camera. A short box list
+  means a stub ate something.
+- A heightfield's recorded box is its full envelope, so props set INTO sand (the dig, the car
+  in it) clip it. Give the dig a real hole: flat sand boxes round it, and dunes only where
+  nothing stands (build_sea_cave's riverbed).
+
 ### 2026-10-13 · scope the suite to what changed
 
 - **An hour of gates for a prompt edit.** run_all_audits.sh records every

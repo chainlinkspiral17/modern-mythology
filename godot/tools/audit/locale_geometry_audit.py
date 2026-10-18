@@ -279,6 +279,15 @@ def install_stubs():
         BOXES.append((str(name), (cx, cy, cz), (ex, ey, ez)))
         return _obj_stub(name)
 
+    def _rec_rolling_heights(rows, cols, amp, seed=0, base=0.0, bumps=3, *a, **k):
+        # geometry.rolling_heights is pure data: hand the recorder a grid
+        # spanning the same envelope (base +/- amp) so the heightfield it
+        # feeds is measured instead of read as a stub (2026-10-18: the
+        # riverbed sand read as 96% sky to the vantage gate)
+        g = [[float(base)] * int(cols) for _ in range(int(rows))]
+        g[0][0], g[-1][-1] = float(base) + float(amp), float(base) - float(amp)
+        return g
+
     def _rec_heightfield(name, origin, cell, heights, color=None, skirt=0.3, *a, **k):
         rows, cols = len(heights), len(heights[0])
         zs = [float(h) for row in heights for h in row]
@@ -302,6 +311,7 @@ def install_stubs():
         # point at (0.5, 0.5, 0.5) — invisible to every gate (2026-09-22)
         "catenary": _real_catenary,
         "make_heightfield": _rec_heightfield,
+        "rolling_heights": _rec_rolling_heights,
     }
 
     class _Any(types.ModuleType):

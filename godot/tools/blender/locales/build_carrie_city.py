@@ -1,0 +1,283 @@
+"""carrie_city — vol 4's Sister Carrie pieces: Charlie's flat, the after
+party, the sister's house (draft 1, 2026-10-18).
+
+The user: "go ahead and start working on backgrounds for vol 1-4 as needed."
+One unnamed city (the adaptation never names it). Undated: the scenes carry
+a PDA, a phone in a car, a newspaper, a Wal-Mart vest and a $6.50 wage, so
+nothing later than that (no smartphones, no flat screens on walls).
+  Charlie's apartment: "Charlie is lying in bed, a book over his chest.";
+   "Charlie wakes up in bed and walks through the apartment."; "There's not
+   room enough for us both on the couch."; "He puts a blanket on her.";
+   "Charlie sits in a chair across from her."; "It is morning now, the
+   blanket is still on the couch, but Carrie is gone." He has "art to make".
+                                         → x 0..10: the bedroom and the living
+                                           room through its door
+  the after party, five minutes' walk away: "A woman swings on a tire";
+   "Charlie follows it to the bar, where it lands in a shot glass."; "They
+   sit together on two stools so close together." The pink and orange
+   contrails are an effect, not fixtures.
+                                         → x 40..58: one loft room
+  the sister's house: "pretty low rent, in bad shape, maybe two bedrooms,
+   tight and cramped, the yard in a sorry state"; inside, the couple "go
+   about their business"; "throw your own goddamn clothes in the goddamn
+   dryer"                                → x 80..92, the yard and the room
+
+Blender: x east, y north, z up; Godot (x, z, -y). Each area keeps its city
+or street inside 200 m (the VN camera's far plane).
+
+DRAFT 2 targets: the flat's kitchen; Paradise Lost (the club) and its
+bathroom as their own area; the sister's street with its neighbours;
+the two children's room; Deck framing.
+"""
+import os, sys, math
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe, make_gable,
+                             join_stock, export_glb)
+from _props.structure import make_floor, make_wall, make_wall_with_openings
+from _props.furniture import make_bed, make_chair, make_table, make_lamp
+
+T = 0.16
+FLAT = {"wall": (0.82, 0.80, 0.74, 1.0), "baseboard": (0.40, 0.36, 0.30, 1.0)}
+LOFT = {"wall": (0.56, 0.36, 0.30, 1.0), "baseboard": (0.30, 0.26, 0.24, 1.0)}
+WORN = {"wall": (0.74, 0.70, 0.58, 1.0), "baseboard": (0.40, 0.34, 0.26, 1.0)}
+TRIM = (0.88, 0.86, 0.80, 1.0)
+CN, CD = "__charlie_living_night", "__charlie_living_day"
+
+
+def window_frame(name, axis, along, at, cz, w, h, depth=T):
+    for s in (-1, 1):
+        if axis == 'X':
+            make_box(f"{name}_Frame_Jamb_{s:+d}", (along + s * (w / 2.0 - 0.03), at, cz), (0.06, depth + 0.02, h), TRIM)
+        else:
+            make_box(f"{name}_Frame_Jamb_{s:+d}", (at, along + s * (w / 2.0 - 0.03), cz), (depth + 0.02, 0.06, h), TRIM)
+    for zz in (cz - h / 2.0 + 0.03, cz + h / 2.0 - 0.03):
+        if axis == 'X':
+            make_box(f"{name}_Frame_Rail_{zz:.2f}", (along, at, zz), (w - 0.12, depth + 0.02, 0.06), TRIM)
+        else:
+            make_box(f"{name}_Frame_Rail_{zz:.2f}", (at, along, zz), (depth + 0.02, w - 0.12, 0.06), TRIM)
+
+
+def build_flat():
+    """x 0..10, y 0..8: the bedroom x 0..4, the living room x 4..10; the
+    street's facades across from the S windows."""
+    H = 2.7
+    make_floor("Flat_Floor", (5.0, 4.0, 0.0), size_x=10.0, size_y=8.0,
+               palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.48, 0.36, 0.24, 1.0)})
+    make_box("Flat_Ceil", (5.0, 4.0, H + 0.04), (10.4, 8.4, 0.08), (0.90, 0.90, 0.88, 1.0))
+    make_wall_with_openings("Flat_Wall_S", (5.0, 0.0, 0), length=10.0 + T, height=H, thickness=T, axis='X', palette=FLAT,
+                            baseboard_face_sign=+1, openings=[(2.0, 1.45, 1.2, 1.4), (6.6, 1.45, 1.4, 1.5), (8.6, 1.45, 1.4, 1.5)])
+    make_wall("Flat_Wall_N", (5.0, 8.0, 0), length=10.0 + T, height=H, thickness=T, axis='X', palette=FLAT, baseboard_face_sign=-1)
+    make_wall("Flat_Wall_W", (0.0, 4.0, 0), length=8.0 - T, height=H, thickness=T, axis='Y', palette=FLAT, baseboard_face_sign=+1)
+    make_wall_with_openings("Flat_Wall_E", (10.0, 4.0, 0), length=8.0 - T, height=H, thickness=T, axis='Y', palette=FLAT,
+                            baseboard_face_sign=-1, openings=[(6.6, 1.0, 0.9, 2.0)])
+    make_wall_with_openings("Flat_Wall_Bedroom_E", (4.0, 4.0, 0), length=8.0 - T, height=H, thickness=0.12, axis='Y', palette=FLAT,
+                            baseboard_face_sign=+1, openings=[(5.6, 1.0, 0.86, 2.0)])
+    make_box("Bedroom_Door_Open", (4.0 - 0.06 - 0.42, 5.6 + 0.43, 1.0), (0.80, 0.04, 2.0), (0.70, 0.62, 0.50, 1.0))
+    make_box("Flat_Front_Door", (10.0, 6.6, 1.0), (0.04, 0.88, 2.0), (0.46, 0.36, 0.28, 1.0))
+    for nm, al, w, h in (("Bed_Window", 2.0, 1.2, 1.4), ("Living_Window_A", 6.6, 1.4, 1.5), ("Living_Window_B", 8.6, 1.4, 1.5)):
+        window_frame(nm, 'X', al, 0.0, 1.45, w, h)
+    # the bedroom: the bed, the reading lamp, a book, the dresser, clothes
+    make_bed("Charlie_Bed", 1.6, 7.92 - 1.0, head="+Y", w=1.4, d=2.0, made=False, blanket_col=(0.40, 0.42, 0.36, 1.0))
+    make_box("Nightstand", (0.08 + 0.26, 7.3, 0.30), (0.44, 0.40, 0.60), (0.44, 0.34, 0.24, 1.0))
+    make_lamp("Reading_Lamp", 0.34, 7.3, base_z=0.60, h=0.50)
+    make_box("Book_On_Nightstand", (0.40, 7.15, 0.62), (0.16, 0.22, 0.04), (0.50, 0.20, 0.18, 1.0))
+    make_box("Dresser", (3.92 - 0.06 - 0.25, 2.0, 0.48), (0.50, 1.10, 0.96), (0.44, 0.34, 0.24, 1.0))
+    make_box("Dresser_Clothes_Pile", (3.92 - 0.06 - 0.25, 1.8, 1.00), (0.40, 0.40, 0.08), (0.26, 0.30, 0.40, 1.0))
+    make_box("Clothes_On_Floor", (2.8, 3.6, 0.03), (0.60, 0.40, 0.06), (0.30, 0.30, 0.34, 1.0))
+    make_box("Bedroom_Rug", (1.8, 3.6, 0.004), (1.6, 1.2, 0.008), (0.50, 0.38, 0.30, 1.0))
+    # the living room: the small couch, the chair across, the low table;
+    # canvases leaning (he has art to make); the blanket on the couch
+    make_box("Couch_Base", (6.2, 6.8, 0.22), (1.6, 0.86, 0.44), (0.40, 0.44, 0.50, 1.0))
+    make_box("Couch_Back", (6.2, 7.16, 0.64), (1.6, 0.16, 0.42), (0.40, 0.44, 0.50, 1.0))
+    for s in (-1, 1):
+        make_box(f"Couch_Arm_{s:+d}", (6.2 + s * 0.74, 6.8, 0.52), (0.12, 0.86, 0.18), (0.40, 0.44, 0.50, 1.0))
+    make_rot_box("Couch_Blanket" + CN + CD, (6.1, 6.7, 0.46), (1.30, 0.80, 0.04), (0.70, 0.56, 0.36, 1.0), yaw=0.08)
+    make_chair("Living_Chair", 6.2, 4.7, yaw=0.0, wood=(0.40, 0.30, 0.22, 1.0), seat_col=(0.56, 0.40, 0.30, 1.0))
+    make_box("Low_Table", (6.2, 5.8, 0.20), (0.90, 0.50, 0.40), (0.44, 0.34, 0.24, 1.0))
+    make_box("Newspaper_On_Table", (6.0, 5.8, 0.405), (0.36, 0.28, 0.01), (0.86, 0.84, 0.78, 1.0))
+    for k in range(3):
+        ch = 0.96 - k * 0.12
+        make_rot_box(f"Canvas_Leaning_{k}", (9.92 - 0.02 - ch / 2.0 * math.sin(0.12) - k * 0.05, 2.0 + k * 0.10, ch / 2.0 * math.cos(0.12) + 0.002),
+                     (0.03, 0.80 - k * 0.10, ch), ((0.92, 0.90, 0.86, 1.0), (0.80, 0.70, 0.56, 1.0), (0.94, 0.94, 0.92, 1.0))[k], pitch=0.12)
+    make_lamp("Living_Floor_Lamp", 9.5, 7.5, base_z=0.0, h=1.50)
+    make_box("Living_Shelf", (5.0, 7.92 - 0.20, 0.90), (1.6, 0.30, 1.80), (0.44, 0.34, 0.24, 1.0))
+    for k in range(10):
+        make_box(f"Living_Shelf_Book_Stock_{k}", (4.4 + k * 0.13, 7.92 - 0.22, 0.30 + (k % 3) * 0.55), (0.04, 0.22, 0.26),
+                 ((0.50, 0.20, 0.18, 1.0), (0.20, 0.30, 0.46, 1.0), (0.80, 0.76, 0.66, 1.0))[k % 3])
+    # the city across the street (inside 200 m), lit windows per hour
+    for k in range(5):
+        make_box(f"Across_Facade_{k}", (-6.0 + k * 6.0, -18.0, 7.0), (5.6, 1.0, 14.0 + (k % 3) * 4.0),
+                 ((0.46, 0.40, 0.36, 1.0), (0.40, 0.42, 0.44, 1.0))[k % 2])
+        for j in range(6):
+            make_box(f"Across_Window_Glow_{k}_{j}" + CN, (-7.6 + k * 6.0 + (j % 3) * 1.6, -17.48, 3.0 + (j // 3) * 3.2),
+                     (0.9, 0.04, 1.2), ((1.0, 0.82, 0.52, 1.0), (0.12, 0.12, 0.14, 1.0))[(j + k) % 2])
+    make_box("Street_Below_Asphalt", (5.0, -10.0, -6.0), (60.0, 14.0, 0.2), (0.24, 0.24, 0.26, 1.0))
+    make_box("Sky_Night_S" + CN + "__charlie_bedroom_night", (5.0, -120.0, 40.0), (300.0, 0.2, 140.0), (0.04, 0.05, 0.08, 1.0))
+    make_box("Sky_Day_S" + CD + "__charlie_apartment_day", (5.0, -120.0, 40.0), (300.0, 0.2, 140.0), (0.70, 0.76, 0.82, 1.0))
+
+
+def build_party():
+    """x 40..58, y 0..14: one big loft room, the bar on the N wall, the tire
+    on its rope from a beam, old sofas, the floor open between."""
+    H = 4.2
+    x0, x1, y0, y1 = 40.0, 58.0, 0.0, 14.0
+    make_floor("Loft_Floor", (49.0, 7.0, 0.0), size_x=18.0, size_y=14.0,
+               palette={"vinyl": (0.40, 0.30, 0.22, 1.0), "seam": (0.34, 0.26, 0.18, 1.0)})
+    make_box("Loft_Ceil", (49.0, 7.0, H + 0.04), (18.4, 14.4, 0.08), (0.30, 0.28, 0.28, 1.0))
+    for k in range(5):
+        make_box(f"Loft_Beam_{k}", (41.8 + k * 3.6, 7.0, H - 0.22), (0.30, 14.0, 0.40), (0.36, 0.26, 0.18, 1.0))
+    make_wall_with_openings("Loft_Wall_S", (49.0, y0, 0), length=18.0 + T, height=H, thickness=T, axis='X', palette=LOFT,
+                            baseboard_face_sign=+1, openings=[(44.0, 2.2, 2.2, 2.4), (50.0, 2.2, 2.2, 2.4), (56.0, 1.1, 1.0, 2.2)])
+    make_wall("Loft_Wall_N", (49.0, y1, 0), length=18.0 + T, height=H, thickness=T, axis='X', palette=LOFT, baseboard_face_sign=-1)
+    make_wall("Loft_Wall_W", (x0, 7.0, 0), length=14.0 - T, height=H, thickness=T, axis='Y', palette=LOFT, baseboard_face_sign=+1)
+    make_wall("Loft_Wall_E", (x1, 7.0, 0), length=14.0 - T, height=H, thickness=T, axis='Y', palette=LOFT, baseboard_face_sign=-1)
+    for nm, al in (("Loft_Window_A", 44.0), ("Loft_Window_B", 50.0)):
+        window_frame(nm, 'X', al, y0, 2.2, 2.2, 2.4)
+    make_box("Loft_Door_Shut", (56.0, y0, 1.1), (0.96, 0.05, 2.2), (0.30, 0.26, 0.24, 1.0))
+    # the bar along the N wall: counter, back-bar, bottles, the shot glass
+    make_box("Bar_Counter", (50.0, y1 - 0.08 - 1.4, 0.55), (8.0, 0.60, 1.10), (0.24, 0.18, 0.14, 1.0))
+    make_box("Bar_Counter_Top", (50.0, y1 - 0.08 - 1.4, 1.12), (8.2, 0.70, 0.04), (0.14, 0.12, 0.10, 1.0))
+    make_box("Bar_Foot_Rail_Mounted", (50.0, y1 - 0.08 - 1.4 - 0.32, 0.18), (7.8, 0.04, 0.04), (0.70, 0.60, 0.36, 1.0))
+    for k in range(4):
+        make_cyl(f"Bar_Foot_Rail_Post_{k}", (46.8 + k * 2.1, y1 - 0.08 - 1.4 - 0.32, 0.08), 0.015, 0.16, (0.70, 0.60, 0.36, 1.0), segments=6)
+    for lvl in range(3):
+        make_box(f"Back_Bar_Shelf_{lvl}", (50.0, y1 - 0.08 - 0.16, 1.30 + lvl * 0.40), (7.6, 0.30, 0.03), (0.24, 0.18, 0.14, 1.0))
+        for k in range(24):
+            make_lathe(f"Back_Bar_Bottle_{lvl}_{k}", (46.4 + k * 0.31, y1 - 0.08 - 0.16, 1.315 + lvl * 0.40),
+                       [(0.0, 0.0), (0.04, 0.0), (0.04, 0.20), (0.014, 0.26), (0.014, 0.32), (0.0, 0.32)],
+                       ((0.30, 0.40, 0.30, 1.0), (0.50, 0.30, 0.14, 1.0), (0.80, 0.80, 0.84, 1.0), (0.60, 0.20, 0.30, 1.0))[(k + lvl) % 4],
+                       segments=8)
+    make_lathe("Shot_Glass_Pink", (49.6, y1 - 0.08 - 1.4 - 0.10, 1.14), [(0.0, 0.0), (0.024, 0.0), (0.03, 0.06), (0.0, 0.06)],
+               (0.96, 0.50, 0.66, 1.0), segments=10)
+    for k in range(6):
+        make_lathe(f"Shot_Glass_{k}", (46.8 + k * 0.9, y1 - 0.08 - 1.4 + 0.12, 1.14), [(0.0, 0.0), (0.024, 0.0), (0.03, 0.06), (0.0, 0.06)],
+                   (0.80, 0.84, 0.86, 1.0), segments=10)
+    # the stools: two pulled close together, the rest along the bar
+    for k, x in enumerate((46.4, 47.6, 49.1, 49.55, 51.2, 52.6)):
+        sy = y1 - 0.08 - 1.4 - 0.72
+        make_cyl(f"Bar_Stool_Seat_{k}", (x, sy, 0.76), 0.18, 0.06, (0.50, 0.14, 0.14, 1.0), segments=14)
+        make_cyl(f"Bar_Stool_Post_{k}", (x, sy, 0.37), 0.03, 0.72, (0.60, 0.60, 0.62, 1.0), segments=8)
+        make_cyl(f"Bar_Stool_Foot_{k}", (x, sy, 0.01), 0.20, 0.02, (0.60, 0.60, 0.62, 1.0), segments=12)
+    # the tire swing from the middle beam, its rope
+    tx, ty = 49.0, 6.0
+    beam_z = H - 0.42
+    make_box("Tire_Swing_Rope", (tx + 0.0, ty, (beam_z + 1.30) / 2.0), (0.03, 0.03, beam_z - 1.30), (0.70, 0.62, 0.46, 1.0))
+    make_lathe("Tire_Swing_Tire", (tx, ty, 0.90), [(0.22, 0.0), (0.40, 0.0), (0.44, 0.10), (0.44, 0.24), (0.40, 0.34), (0.22, 0.34),
+                                                    (0.20, 0.17)], (0.10, 0.10, 0.10, 1.0), segments=18, loop=True)
+    for s in (-1, 1):
+        make_rot_box(f"Tire_Swing_Strap_{s:+d}", (tx + s * 0.16, ty, 1.12), (0.02, 0.02, 0.40), (0.70, 0.62, 0.46, 1.0), pitch=s * 0.35)
+    make_box("Tire_Swing_Strap_Knot", (tx, ty, 1.30), (0.46, 0.04, 0.05), (0.70, 0.62, 0.46, 1.0))
+    # old sofas round the edges, a low table of bottles and ashtrays
+    for k, (x, y, yaw) in enumerate(((41.0, 6.0, -math.pi / 2.0), (57.0, 7.0, math.pi / 2.0))):
+        make_box(f"Loft_Sofa_{k}_Base", (x, y, 0.22), (0.90, 2.2, 0.44), (0.30, 0.24, 0.40, 1.0))
+        make_box(f"Loft_Sofa_{k}_Back", (x + (-0.37 if k == 0 else 0.37), y, 0.66), (0.16, 2.2, 0.46), (0.30, 0.24, 0.40, 1.0))
+    make_box("Loft_Low_Table", (42.6, 6.0, 0.20), (0.70, 1.20, 0.40), (0.30, 0.24, 0.20, 1.0))
+    make_cyl("Ashtray", (42.6, 5.7, 0.415), 0.08, 0.03, (0.50, 0.50, 0.52, 1.0), segments=12)
+    for k in range(3):
+        make_lathe(f"Party_Bottle_{k}", (42.5 + k * 0.1, 6.2 + k * 0.12, 0.40), [(0.0, 0.0), (0.035, 0.0), (0.035, 0.18), (0.012, 0.24),
+                                                                         (0.0, 0.24)], (0.30, 0.40, 0.24, 1.0), segments=8)
+    make_box("Speaker_Stack", (57.2, 12.2, 0.60), (0.60, 0.60, 1.20), (0.10, 0.10, 0.10, 1.0))
+    make_box("Party_Lamp_Pink_Glow", (41.0, 12.6, 1.6), (0.30, 0.30, 0.40), (0.96, 0.50, 0.66, 1.0))
+    make_box("Party_Lamp_Stand", (41.0, 12.6, 0.70), (0.06, 0.06, 1.40), (0.20, 0.20, 0.20, 1.0))
+    # outside the tall windows: the city at night
+    for k in range(4):
+        make_box(f"Loft_Across_Facade_{k}", (42.0 + k * 6.0, -16.0, 9.0), (5.6, 1.0, 18.0), (0.20, 0.20, 0.24, 1.0))
+        for j in range(4):
+            make_box(f"Loft_Across_Window_Glow_{k}_{j}", (40.6 + k * 6.0 + (j % 2) * 2.4, -15.48, 4.0 + (j // 2) * 3.4), (1.0, 0.04, 1.4),
+                     ((1.0, 0.80, 0.50, 1.0), (0.14, 0.14, 0.16, 1.0))[(j + k) % 2])
+
+
+def build_sister_house():
+    """x 80..92, y 0..8: a small worn house set back from the street, its
+    yard; inside, the cramped main room and the laundry through a door."""
+    H = 2.4
+    hx0, hx1, hy0, hy1 = 82.0, 92.0, 2.0, 9.0
+    make_floor("Sister_Floor", ((hx0 + hx1) / 2.0, (hy0 + hy1) / 2.0, 0.30), size_x=hx1 - hx0, size_y=hy1 - hy0,
+               palette={"vinyl": (0.56, 0.50, 0.40, 1.0), "seam": (0.48, 0.42, 0.34, 1.0)})
+    make_box("Sister_Crawlspace_Skirt", ((hx0 + hx1) / 2.0, (hy0 + hy1) / 2.0, 0.14), (hx1 - hx0, hy1 - hy0, 0.28), (0.40, 0.38, 0.34, 1.0))
+    z0 = 0.30
+    make_box("Sister_Ceil", ((hx0 + hx1) / 2.0, (hy0 + hy1) / 2.0, z0 + H + 0.04), (hx1 - hx0 + 0.4, hy1 - hy0 + 0.4, 0.08), (0.84, 0.82, 0.76, 1.0))
+    # the walls (boxes, so they stand on the raised floor)
+    def wbox(name, cx, cy, sx, sy, z_lo=z0, z_hi=z0 + H, col=(0.74, 0.70, 0.58, 1.0)):
+        make_box(name, (cx, cy, (z_lo + z_hi) / 2.0), (sx, sy, z_hi - z_lo), col)
+    ext = (0.70, 0.66, 0.56, 1.0)
+    # S wall: the door at x 85 and a window at x 89
+    wbox("Sister_Wall_S_A", 83.25, hy0, 2.5 + T, T, col=ext)
+    wbox("Sister_Wall_S_B", 87.0, hy0, 3.1, T, col=ext)
+    wbox("Sister_Wall_S_C", 91.2, hy0, 1.6 + T, T, col=ext)
+    wbox("Sister_Wall_S_Door_Head", 85.0, hy0, 1.0, T, z_lo=z0 + 2.05, col=ext)
+    wbox("Sister_Wall_S_Win_Below", 89.6, hy0, 1.2, T, z_hi=z0 + 0.9, col=ext)
+    wbox("Sister_Wall_S_Win_Above", 89.6, hy0, 1.2, T, z_lo=z0 + 2.0, col=ext)
+    wbox("Sister_Wall_N", (hx0 + hx1) / 2.0, hy1, hx1 - hx0 + T, T, col=ext)
+    wbox("Sister_Wall_W", hx0, (hy0 + hy1) / 2.0, T, hy1 - hy0 - T, col=ext)
+    wbox("Sister_Wall_E", hx1, (hy0 + hy1) / 2.0, T, hy1 - hy0 - T, col=ext)
+    # the partition to the laundry/kitchen (x 88..92, y 5.5..9), its door
+    wbox("Sister_Partition_W_A", 88.0, 6.1, 0.10, 1.2)
+    wbox("Sister_Partition_W_B", 88.0, 8.35, 0.10, 1.3)
+    wbox("Sister_Partition_W_Head", 88.0, 7.25, 0.10, 0.9, z_lo=z0 + 2.0)
+    wbox("Sister_Partition_S", 90.0, 5.5, 4.0, 0.10)
+    window_frame("Sister_Window", 'X', 89.6, hy0, z0 + 1.45, 1.2, 1.1, depth=T)
+    make_box("Sister_Front_Door_Open", (85.0 - 0.46, hy0 + 0.10 + 0.42, z0 + 1.0), (0.04, 0.84, 2.0), (0.56, 0.46, 0.36, 1.0))
+    make_gable("Sister_Roof", ((hx0 + hx1) / 2.0, (hy0 + hy1) / 2.0, z0 + H + 0.08 + 0.9), (hx1 - hx0 + 0.8, hy1 - hy0 + 0.8, 1.8),
+               (0.30, 0.28, 0.26, 1.0), ridge_axis='X')
+    make_box("Sister_Gutter_Sag", (87.0, hy0 - 0.42, z0 + H + 0.06), (10.4, 0.10, 0.08), (0.50, 0.50, 0.48, 1.0))
+    # the front step, the worn walk, the patchy yard, the chain-link front
+    make_box("Sister_Step", (85.0, hy0 - 0.45, 0.14), (1.2, 0.70, 0.28), (0.56, 0.54, 0.50, 1.0))
+    make_box("Sister_Walk", (85.0, -3.0, 0.004), (1.0, 9.4, 0.008), (0.56, 0.54, 0.50, 1.0))
+    make_box("Sister_Yard_Ground", (86.0, -1.0, -0.06), (40.0, 22.0, 0.12), (0.46, 0.44, 0.30, 1.0))
+    for k in range(9):
+        make_box(f"Yard_Bare_Patch_{k}", (81.0 + k * 1.3, -2.0 + (k % 3) * 1.4, 0.003), (0.9 + (k % 2) * 0.5, 0.7, 0.006),
+                 (0.50, 0.42, 0.32, 1.0))
+    make_box("Yard_Toy_Trike_Body", (88.6, -0.6, 0.22), (0.50, 0.20, 0.10), (0.80, 0.20, 0.18, 1.0))
+    for s in (-1, 1):
+        make_cyl(f"Yard_Toy_Trike_Wheel_{s:+d}", (88.6 + s * 0.22, -0.6, 0.11), 0.11, 0.04, (0.12, 0.12, 0.12, 1.0), axis='Y', segments=10)
+    make_box("Yard_Old_Tire", (82.6, -0.8, 0.10), (0.60, 0.60, 0.20), (0.10, 0.10, 0.10, 1.0))
+    for k in range(10):
+        if k == 4:
+            continue                # the gate's gap
+        make_box(f"Front_Fence_Post_{k}", (80.6 + k * 1.1, -7.0, 0.50), (0.05, 0.05, 1.0), (0.56, 0.56, 0.58, 1.0))
+    for zz in (0.95,):
+        make_box(f"Front_Fence_Top_Rail_W", (82.25, -7.0, zz), (3.3, 0.03, 0.03), (0.56, 0.56, 0.58, 1.0))
+        make_box(f"Front_Fence_Top_Rail_E", (88.85, -7.0, zz), (5.5, 0.03, 0.03), (0.56, 0.56, 0.58, 1.0))
+    make_box("Street_Asphalt", (86.0, -12.0, -0.02), (60.0, 7.0, 0.04), (0.30, 0.30, 0.32, 1.0))
+    # the neighbours either side, the same kind of house
+    for k, x in enumerate((72.0, 100.0)):
+        make_box(f"Neighbor_House_{k}", (x, 5.0, 1.4), (8.0, 7.0, 2.8), ((0.66, 0.70, 0.66, 1.0), (0.74, 0.66, 0.56, 1.0))[k])
+        make_gable(f"Neighbor_Roof_{k}", (x, 5.0, 2.8 + 0.9), (8.6, 7.6, 1.8), (0.30, 0.28, 0.26, 1.0), ridge_axis='X')
+    # inside: the cramped main room (couch, TV on a stand, toys, a laundry
+    # basket), the dryer through the laundry door
+    make_box("Sister_Couch_Base", (84.0, 7.8, z0 + 0.22), (2.0, 0.86, 0.44), (0.52, 0.40, 0.32, 1.0))
+    make_box("Sister_Couch_Back", (84.0, 8.16, z0 + 0.64), (2.0, 0.16, 0.42), (0.52, 0.40, 0.32, 1.0))
+    make_box("Sister_TV_Stand", (82.5, 4.4, z0 + 0.30), (0.50, 0.90, 0.60), (0.40, 0.32, 0.24, 1.0))
+    make_chamfer_box("Sister_TV", (82.5, 4.4, z0 + 0.82), (0.42, 0.50, 0.44), (0.16, 0.16, 0.16, 1.0), chamfer=0.03)
+    make_box("Laundry_Basket", (86.6, 6.6, z0 + 0.18), (0.56, 0.40, 0.36), (0.86, 0.86, 0.84, 1.0))
+    make_box("Laundry_Basket_Clothes", (86.6, 6.6, z0 + 0.40), (0.50, 0.34, 0.10), (0.40, 0.46, 0.60, 1.0))
+    for k in range(5):
+        make_box(f"Floor_Toy_{k}", (84.4 + k * 0.4, 5.2 + (k % 2) * 0.5, z0 + 0.06), (0.14, 0.14, 0.12),
+                 ((0.90, 0.30, 0.20, 1.0), (0.30, 0.50, 0.90, 1.0), (0.96, 0.84, 0.30, 1.0))[k % 3])
+    make_box("Sister_Rug_Worn", (84.6, 5.6, z0 + 0.004), (2.2, 1.6, 0.008), (0.50, 0.40, 0.34, 1.0))
+    make_box("Dryer", (91.5, 8.4, z0 + 0.44), (0.66, 0.66, 0.88), (0.90, 0.90, 0.88, 1.0))
+    make_box("Washer", (90.8, 8.4, z0 + 0.44), (0.66, 0.66, 0.88), (0.90, 0.90, 0.88, 1.0))
+    make_box("Kitchen_Counter_Sister", (90.0, 5.6 + 0.32, z0 + 0.45), (2.8, 0.60, 0.90), (0.66, 0.60, 0.48, 1.0))
+    make_box("Kitchen_Counter_Sister_Top", (90.0, 5.6 + 0.32, z0 + 0.92), (2.84, 0.62, 0.04), (0.82, 0.78, 0.70, 1.0))
+    make_box("Dish_Pile", (89.4, 5.92, z0 + 1.00), (0.40, 0.30, 0.12), (0.86, 0.86, 0.84, 1.0))
+
+
+def main():
+    clear_scene()
+    build_flat()
+    build_party()
+    build_sister_house()
+    try:
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                        "../../../assets/3d/locales/carrie_city.glb"))
+    print(f"\n[build_carrie_city] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()
