@@ -580,21 +580,69 @@ async function loadVoiceMapFromRepo() {
     return;
   }
   try {
-    const r = await fetch('/api/voice_map');
+    const r = await fetch('/api/voice_map', { cache: 'no-store' });
     const j = await r.json();
     const saved = j.ids || {};
-    let fromRepo = 0, fromBrowser = 0;
-    Object.entries(saved).forEach(([k, v]) => { if (!voiceMap[k]) { voiceMap[k] = v; fromRepo++; } });
-    Object.entries(voiceMap).forEach(([k, v]) => { if (v && !saved[k]) fromBrowser++; });
+    // (2026-10-18) the REPO wins: it holds the cast recovered from the
+    // ElevenLabs history and every ID set here since. A different ID this
+    // browser held is kept in a file (browser_rescue/) and listed below.
+    const superseded = {};
+    let fromBrowser = 0;
+    Object.entries(voiceMap).forEach(([k, v]) => {
+      v = (v || '').trim();
+      if (!v) return;
+      if (!saved[k]) fromBrowser++;
+      else if (saved[k] !== v) superseded[k] = { browser: v, repo: saved[k] };
+    });
+    Object.entries(saved).forEach(([k, v]) => { voiceMap[k] = v; });
+    if (j.map && typeof j.map.characters === 'object') {
+      applyVoiceMeta(j.map);
+      if (scene) reloadLines();
+      buildVoiceMap();
+    }
     document.querySelectorAll('#voiceMap input').forEach(inp => {
       const c = inp.previousElementSibling.textContent;
       if (voiceMap[c]) inp.value = voiceMap[c];
     });
-    setSaveStatus(`Voice IDs loaded from godot/tools/voice_map.json: ${Object.keys(saved).length} cast.`, 'good');
-    if (fromBrowser) saveVoiceMap();      // anything only this browser had goes to the repo now
+    const nSup = Object.keys(superseded).length;
+    setSaveStatus(`Cast loaded from godot/tools/voice_map.json: ${Object.keys(saved).length} voice IDs, ` +
+                  `${Object.keys(voiceMeta.aliases).length} aliases.` +
+                  (nSup ? ` ${nSup} ID(s) this browser held differ — the repo's are used; the browser's are kept in ` +
+                          `godot/tools/browser_rescue/voice_studio_superseded.json: ` +
+                          Object.entries(superseded).map(([k, o]) => `${k} ${o.browser}`).join(', ') : ''),
+                  nSup ? 'warn' : 'good');
+    if (fromBrowser || nSup) {
+      // anything only this browser had goes to the repo; superseded IDs to a file
+      const ids = {};
+      Object.entries(voiceMap).forEach(([k, v]) => { if (v && v.trim() && !saved[k]) ids[k] = v.trim(); });
+      await fetch('/api/voice_map', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({ ids, superseded, source: 'voice studio (browser-only IDs)' }) });
+    }
+    try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
   } catch (err) {
     setSaveStatus('Could not read the repo\'s voice IDs: ' + err.message, 'bad');
   }
+}
+// The map's rules — aliases, walk-on groups, per-scene aliases and the cast
+// list (a cast character with no ID is an error, not a silent narrator
+// line) — the same structure elevenlabs_render.py reads.
+function applyVoiceMeta(vm) {
+  const aliases = {};
+  Object.entries(vm._walkons || {}).forEach(([group, names]) => {
+    if (Array.isArray(names)) names.forEach(n => { aliases[charKey(n)] = group; });
+  });
+  Object.entries(vm.aliases || {}).forEach(([src, dst]) => {
+    if (typeof dst === 'string' && !src.startsWith('_comment')) aliases[charKey(src)] = charKey(dst);
+  });
+  const sceneAliases = {};
+  Object.entries(vm.scene_aliases || {}).forEach(([sid, m]) => {
+    if (m && typeof m === 'object') {
+      sceneAliases[sid] = {};
+      Object.entries(m).forEach(([a, b]) => { sceneAliases[sid][charKey(a)] = charKey(b); });
+    }
+  });
+  voiceMeta = { aliases, scene_aliases: sceneAliases, known: Object.keys(vm.characters || {}).map(charKey) };
+  saveVoiceMeta();
 }
 function saveVoiceMeta() {
   try { localStorage.setItem('mm_voice_meta', JSON.stringify(voiceMeta)); } catch (e) {}
@@ -620,23 +668,8 @@ $('voiceMapFile').addEventListener('change', async (e) => {
       const id = ((entry && entry.voice_id) || '').trim();
       if (id) { voiceMap[charKey(k)] = id; ids++; }
     });
-    const aliases = {};
-    Object.entries(vm._walkons || {}).forEach(([group, names]) => {
-      if (Array.isArray(names)) names.forEach(n => { aliases[charKey(n)] = group; });
-    });
-    Object.entries(vm.aliases || {}).forEach(([src, dst]) => {
-      if (typeof dst === 'string' && !src.startsWith('_comment')) aliases[charKey(src)] = charKey(dst);
-    });
-    const sceneAliases = {};
-    Object.entries(vm.scene_aliases || {}).forEach(([sid, m]) => {
-      if (m && typeof m === 'object') {
-        sceneAliases[sid] = {};
-        Object.entries(m).forEach(([a, b]) => { sceneAliases[sid][charKey(a)] = charKey(b); });
-      }
-    });
-    voiceMeta = { aliases, scene_aliases: sceneAliases,
-                  known: Object.keys(vm.characters).map(charKey) };
-    saveVoiceMeta();
+    applyVoiceMeta(vm);
+    const aliases = voiceMeta.aliases;
     saveVoiceMap();
     $('voiceMapStatus').textContent =
       `Imported ${file.name}: ${ids} voice_id${ids === 1 ? '' : 's'}, ` +
@@ -682,7 +715,7 @@ function elevenWidget(listIdx) {
       const blob = await renderEleven(lines[listIdx]);
       lines[listIdx].audioBlob = blob;
       lines[listIdx].audioUrl = null;
-      lines[listIdx].status = `generated (${(blob.size/1024).toFixed(1)} KB)`;
+      lines[listIdx].status = `generated as ${lines[listIdx].voiceKey || '?'} (${(blob.size/1024).toFixed(1)} KB)`;
       lines[listIdx].statusClass = 'good';
     } catch (err) {
       lines[listIdx].status = 'Failed: ' + err.message;
@@ -719,6 +752,9 @@ async function renderEleven(line) {
   }
   const hit = chain.find(k => (voiceMap[k] || '').trim());
   const voiceId = hit ? voiceMap[hit].trim() : '';
+  // a named speaker voiced by the narrator is a stand-in: say so on the line
+  const standIn = hit && hit.startsWith('_narrator') && line.kind !== 'narrate' && (line.rawChar || '').trim();
+  line.voiceKey = standIn ? `${hit} — NARRATOR STAND-IN: "${line.rawChar}" has no voice yet` : (hit || '');
   if (!voiceId) throw new Error(`no voice_id for "${line.charKey}"`);
   const model = $('elevenModel').value;
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`;
@@ -753,7 +789,7 @@ async function batchGenerate(startListIdx) {
       const blob = await renderEleven(lines[i]);
       lines[i].audioBlob = blob;
       lines[i].audioUrl = null;
-      lines[i].status = `generated (${(blob.size/1024).toFixed(1)} KB)`;
+      lines[i].status = `generated as ${lines[i].voiceKey || "?"} (${(blob.size/1024).toFixed(1)} KB)`;
       lines[i].statusClass = 'good';
     } catch (err) {
       lines[i].status = 'Failed: ' + err.message;

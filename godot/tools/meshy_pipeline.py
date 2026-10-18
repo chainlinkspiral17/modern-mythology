@@ -2988,8 +2988,14 @@ def make_handler(runner, roster_path):
                 return self._json({"recovered": list_recovered()})
             if p == "/api/voice_map":
                 # the voice studio's IDs, from the repo's files (voice_ids.py)
+                # (2026-10-18) plus the whole map: the studio applies its aliases,
+                # walk-ons and scene aliases on every open (they were browser-only)
                 import voice_ids
-                return self._json({"ids": voice_ids.load_ids()})
+                try:
+                    vmap = json.loads(voice_ids.MAP_PATH.read_text(encoding="utf-8"))
+                except (OSError, ValueError):
+                    vmap = {}
+                return self._json({"ids": voice_ids.load_ids(), "map": vmap})
             if p == "/api/scenes":
                 return self._json({"scenes": list_scene_frames()})
             if p == "/api/audio":
@@ -3093,6 +3099,18 @@ def make_handler(runner, roster_path):
                 try:
                     req = json.loads(self._body().decode("utf-8") or "{}")
                     import voice_ids
+                    sup = req.get("superseded") or {}
+                    if sup:
+                        # browser IDs the repo's replaced: kept in a file, never dropped
+                        d = TOOLS / "browser_rescue"
+                        d.mkdir(exist_ok=True)
+                        f = d / "voice_studio_superseded.json"
+                        try:
+                            old = json.loads(f.read_text(encoding="utf-8"))
+                        except (OSError, ValueError):
+                            old = {}
+                        old[now_iso()] = sup
+                        f.write_text(json.dumps(old, indent=2) + "\n", encoding="utf-8")
                     res = voice_ids.save_ids(req.get("ids") or {}, str(req.get("source") or "voice studio"))
                     res["ids"] = voice_ids.load_ids()
                     return self._json(res)
