@@ -177,6 +177,17 @@ def line_index():
     return idx
 
 
+def spoken(it):
+    """(voice_id, voice_name, text) for every voice in a history item. (2026-10-18:
+    eleven_v3 items keep the voice and words in "dialogue", not at the top
+    level — the first recovery read only the top level and matched nothing.)"""
+    if it.get("voice_id") and it.get("text"):
+        yield it["voice_id"], it.get("voice_name") or "", it["text"]
+    for d in it.get("dialogue") or []:
+        if d.get("voice_id") and d.get("text"):
+            yield d["voice_id"], d.get("voice_name") or "", d["text"]
+
+
 def loose(idx, t):
     """A line edited since it was voiced, or voiced in part: the history text
     inside a line, or a line inside it (24+ characters, one speaker only)."""
@@ -280,10 +291,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--apply", action="store_true", help="write the recovered IDs (gaps only)")
     ap.add_argument("--pack", action="store_true", help="gather recordings + voice lists for a voice match")
+    ap.add_argument("--history-file", help="read a saved history (voice_recovery/history.json), no API call")
     args = ap.parse_args()
-    key = api_key()
+    key = "" if args.history_file else api_key()
     try:
-        _get(HISTORY + "?page_size=1", key)
+        if not args.history_file:
+            _get(HISTORY + "?page_size=1", key)
     except RuntimeError as ex:
         if KEY_FILE.exists():
             KEY_FILE.unlink()                    # a key that failed is not kept
@@ -298,19 +311,19 @@ def main():
     names = {}
     unmatched = collections.Counter()
     n_items = 0
-    for it in history(key):
+    items = (json.loads(Path(args.history_file).read_text(encoding="utf-8")) if args.history_file
+             else history(key))
+    for it in items:
         n_items += 1
-        vid = it.get("voice_id")
-        if not vid:
-            continue
-        names[vid] = it.get("voice_name") or names.get(vid, "")
-        t = norm(it.get("text", ""))
-        keys = idx.get(t) or loose(idx, t)
-        if not keys:
-            unmatched[vid] += 1
-            continue
-        for k in keys:
-            per_key[k][vid] += 1
+        for vid, vname, text in spoken(it):
+            names[vid] = vname or names.get(vid, "")
+            t = norm(text)
+            keys = idx.get(t) or loose(idx, t)
+            if not keys:
+                unmatched[vid] += 1
+                continue
+            for k in keys:
+                per_key[k][vid] += 1
     winners = {}
     n_matched = sum(sum(c.values()) for c in per_key.values())
     print(f"history: {n_items} items read, {n_matched} matched a scene line")

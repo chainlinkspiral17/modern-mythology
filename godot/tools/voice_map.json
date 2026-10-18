@@ -19,19 +19,19 @@
       "voice_id": "2CZ8eMKC4NY5H5l4mA3t"
     },
     "frasier": {
-      "voice_id": "",
+      "voice_id": "qwfB4amlw5UFaClbIE9W",
       "voice_settings": {
         "style": 0.45
       }
     },
     "stranger": {
-      "voice_id": ""
+      "voice_id": "ZaI19wteBAgemrNjTUIZ"
     },
     "elicia": {
-      "voice_id": ""
+      "voice_id": "dtA4A3WoehhgZyId34cH"
     },
     "nicola": {
-      "voice_id": ""
+      "voice_id": "dsni7vAteZqpiIWILX1y"
     },
     "dante": {
       "voice_id": "q0SAZTsRRakNDYQoTldc",
@@ -41,10 +41,10 @@
       }
     },
     "mackenzie": {
-      "voice_id": ""
+      "voice_id": "njv3j93ZcaNKtVB1LQrd"
     },
     "antonio": {
-      "voice_id": ""
+      "voice_id": "NVQiqmeEfe523BRpefvi"
     },
     "quentin_paul": {
       "voice_id": "JOIR3Gn735OhwbPNlY07",
@@ -81,7 +81,7 @@
       }
     },
     "hector": {
-      "voice_id": ""
+      "voice_id": "EXLdHKbL14iAO216598v"
     },
     "_narrator_vol1": {
       "voice_id": "",
@@ -104,7 +104,7 @@
       "appears": "vol4 narrate"
     },
     "_narrator_vol6": {
-      "voice_id": "",
+      "voice_id": "bP8FJDHmWVEgXJDitdQd",
       "casting": "Vol 6 narrator, not cast yet. While voice_id is empty, lookups fall back to _narrator, as before.",
       "appears": "vol6 narrate"
     },
@@ -354,7 +354,7 @@
       "appears": "vol4"
     },
     "chess": {
-      "voice_id": "",
+      "voice_id": "FUfBrNit0NNZAwb58KWH",
       "casting": "Chess, a night-shift composer who takes in a runaway: laconic, generous, crude jokes. Mid-20s female, sleepy, deadpan. (Vol 6/7 'Chess' also resolves here.)",
       "appears": "vol4"
     },
@@ -384,12 +384,12 @@
       "appears": "vol4"
     },
     "natalie": {
-      "voice_id": "",
+      "voice_id": "bC8fBD71xGCOFYb6Mwvs",
       "casting": "Natalie David, D'Ambrosio's server and tarot reader, a guardian figure to Nicola: spare, calm, clipped short sentences. 30s-40s female, low and steady, with light Louisiana Gulf Coast warmth.",
       "appears": "vol5 (40 lines)"
     },
     "erica": {
-      "voice_id": "",
+      "voice_id": "vynY2D82MfA7Y5aWEKrI",
       "casting": "Erica Campbell, a Houston lawyer and Alberto's childhood friend: controlled and precise ('the small careful nothing'). 40s female, dry, exact, Texas professional.",
       "appears": "vol5"
     },
@@ -404,12 +404,12 @@
       "appears": "vol5"
     },
     "aria": {
-      "voice_id": "",
+      "voice_id": "4atOOOR8lZ6TVQYUgHoO",
       "casting": "Aria, the AI consciousness living inside 19-year-old Nicola: precise, clinical, appalled by 'meatness', later tender. Young female register with cool synthetic precision; could be Nicola's actor with processing. NOTE: the speaker labels in vol5_ch18_moon look rotated, so check before casting from those lines.",
       "appears": "vol5"
     },
     "joanna": {
-      "voice_id": "",
+      "voice_id": "QV8QyG5ShhK7cQDmlkPk",
       "casting": "Joanna LeMoine, the woman in the ruins with the one-eyed dog: oracular, formal, weary kindness. 60s+ female, low, Louisiana.",
       "appears": "vol5"
     },
@@ -434,7 +434,7 @@
       "appears": "vol5"
     },
     "miriam": {
-      "voice_id": "",
+      "voice_id": "SAz9YHcvj6GT2YYXdXww",
       "casting": "Miriam, mid-60s with a silver braid, who drove all night to collect Nicola: calm as a nurse, unflappable ('Yes, sweetheart'). 60s female, warm. The same Miriam appears in Vol 6.",
       "appears": "vol5, vol6"
     },
@@ -459,7 +459,7 @@
       "appears": "vol5 prelude ep15"
     },
     "the_frog": {
-      "voice_id": "",
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
       "casting": "The Frog: a cranky, folksy swamp oracle who calls people 'pink one', with drawled contractions ('ain't', 'darnedest'). Old male, croaky, rural Southern.",
       "appears": "vol5 prelude liar_king, vol5_ch21"
     },
@@ -479,17 +479,17 @@
       "appears": "walk-ons"
     },
     "_walkon_older": {
-      "voice_id": "",
+      "voice_id": "6u6JbqKdaQy89ENzLSju",
       "casting": "Shared older voice for clerks, officials and archivists (Clerk). 60s, dry.",
       "appears": "walk-ons"
     },
     "_walkon_child": {
-      "voice_id": "",
+      "voice_id": "b3tuFWghbXYRa9Cs9MJf",
       "casting": "Shared child voice for unnamed kids (boy, Kid). About 8-10.",
       "appears": "walk-ons"
     },
     "the_third_consciousness": {
-      "voice_id": "",
+      "voice_id": "QV8QyG5ShhK7cQDmlkPk",
       "casting": "The Third Consciousness, unborn, speaking mentally from inside Nicola ('I've never seen one. What do you recommend.'). Calm, curious, quietly funny; ageless, a child's simplicity with an adult's precision. Not Aria, not Nicola.",
       "appears": "vol5 ch21"
     },
@@ -512,7 +512,7 @@
       "voice_id": "aYQAm4rWuigkeuRA5i92"
     },
     "ben": {
-      "voice_id": "uSR22n7NxaTMu8t6Y3XA"
+      "voice_id": "kdVjFjOXaqExaDvXZECX"
     },
     "carlos": {
       "voice_id": "gZgeCxzVQJzACoAiZkVF"
@@ -527,7 +527,7 @@
       "voice_id": "2gfDLuf2nZfSrUuWQo1W"
     },
     "curtis": {
-      "voice_id": "rNCpBDykmtbS99HIj7Ku"
+      "voice_id": "kdVjFjOXaqExaDvXZECX"
     },
     "doug": {
       "voice_id": "Q0Et7LOU7VpeoeCRQAVS"
@@ -575,10 +575,137 @@
       "voice_id": "30Bu3NdpCkBMOF2yyBwC"
     },
     "tom_bell": {
-      "voice_id": "rNCpBDykmtbS99HIj7Ku"
+      "voice_id": "kdVjFjOXaqExaDvXZECX"
+    },
+    "anita": {
+      "voice_id": "GP1bgf0sjoFuuHkyrg8E"
+    },
+    "anita_kowalski": {
+      "voice_id": "c4TutCiAuWP4vwb1xebb"
+    },
+    "bianca": {
+      "voice_id": "OZxMHsGaBmV5pjMIDIn0"
+    },
+    "bill": {
+      "voice_id": "jD9ZLAx3sVOQk9LCF0zD"
+    },
+    "bill_kowalski": {
+      "voice_id": "HKFOb9iktHA85uKXydRT"
+    },
+    "boyd": {
+      "voice_id": "HKFOb9iktHA85uKXydRT"
+    },
+    "brenda": {
+      "voice_id": "bD9maNcCuQQS75DGuteM"
+    },
+    "brent": {
+      "voice_id": "cQb5fnQsTT1X0GdpmHoo"
+    },
+    "bt": {
+      "voice_id": "s3TPKV1kjDlVtZbl4Ksh"
+    },
+    "carl": {
+      "voice_id": "C5GgjTyGQ2aQx8uMiLh9"
+    },
+    "chief_miller": {
+      "voice_id": "x9G2ivoqdzPgvaOC8XUa"
+    },
+    "claires_partner": {
+      "voice_id": "dzRy05hNK3bab9ViJ0oU"
+    },
+    "delia": {
+      "voice_id": "ogwqBH5bbF03DSbNiRNN"
+    },
+    "diego": {
+      "voice_id": "b3tuFWghbXYRa9Cs9MJf"
+    },
+    "dr_patel": {
+      "voice_id": "KrfvGW2D1x6nS5QnRj2q"
+    },
+    "eileen": {
+      "voice_id": "aGOVOnhp8syCNLH1KIOz"
+    },
+    "f_t": {
+      "voice_id": "qwfB4amlw5UFaClbIE9W"
+    },
+    "gracie": {
+      "voice_id": "BlgEcC0TfWpBak7FmvHW"
+    },
+    "graciela_ramos": {
+      "voice_id": "aYQAm4rWuigkeuRA5i92"
+    },
+    "hal": {
+      "voice_id": "a4CnuaYbALRvW39mDitg"
+    },
+    "henderson": {
+      "voice_id": "u0N5vipO1xdFCMMAXH08"
+    },
+    "hugo": {
+      "voice_id": "NDcVpQJv7Naa7ZKrqtEk"
+    },
+    "jessa": {
+      "voice_id": "MnXdp1RrMFboJjgMtirI"
+    },
+    "jim": {
+      "voice_id": "jD9ZLAx3sVOQk9LCF0zD"
+    },
+    "judge": {
+      "voice_id": "Rm14i2uPTqCL0k0wW7KI"
+    },
+    "linda_caldwell": {
+      "voice_id": "5u41aNhyCU6hXOcjPPv0"
+    },
+    "mark": {
+      "voice_id": "PoqlHoqJoAfdQ0g8bLK3"
+    },
+    "mom": {
+      "voice_id": "30Bu3NdpCkBMOF2yyBwC"
+    },
+    "mr_henderson": {
+      "voice_id": "jD9ZLAx3sVOQk9LCF0zD"
+    },
+    "mrs_henderson": {
+      "voice_id": "GP1bgf0sjoFuuHkyrg8E"
+    },
+    "ms_caldwell": {
+      "voice_id": "5u41aNhyCU6hXOcjPPv0"
+    },
+    "nate": {
+      "voice_id": "UgMQ92GJ3C3bUAtHUKyd"
+    },
+    "phil": {
+      "voice_id": "1SM7GgM6IMuvQlz2BwM3"
+    },
+    "ramon": {
+      "voice_id": "ZoiZ8fuDWInAcwPXaVeq"
+    },
+    "rick": {
+      "voice_id": "qiIL62sOWUkHwxfeC0u5"
+    },
+    "russell": {
+      "voice_id": "GlLKN8gKPpScsRIImeN1"
+    },
+    "sams_mom": {
+      "voice_id": "30Bu3NdpCkBMOF2yyBwC"
+    },
+    "tome": {
+      "voice_id": "iCCltpMulQlVWET3GYOx"
+    },
+    "tucker": {
+      "voice_id": "MjDkeH2x9hCiWKXZtUPc"
+    },
+    "vince": {
+      "voice_id": "iPYqcpY8j8Ap4jUf28I3"
+    },
+    "walt": {
+      "voice_id": "kqVT88a5QfII1HNAEPTJ"
+    },
+    "wren": {
+      "voice_id": "Rm14i2uPTqCL0k0wW7KI"
     }
   },
   "aliases": {
+    "eileen henderson": "eileen",
     "_comment": "Normalised name -> voice_map key. Names are normalised with the same rule as char_key() / charKey() (lowercase, '(...)' suffix stripped, apostrophes dropped, other punctuation -> '_'), so 'The Frog', 'the_frog' and 'the frog' are already one key without an alias.",
     "_narrator_vol5": "_narrator",
     "frog": "the_frog",
