@@ -1,0 +1,1352 @@
+[
+ {
+  "key": "_narrator",
+  "scene": "vol5_ch2_priestess",
+  "node": 41,
+  "file": "samples/_narrator/vol5_ch2_priestess_041.mp3"
+ },
+ {
+  "key": "_narrator",
+  "scene": "vol5_ch14_temperance",
+  "node": 105,
+  "file": "samples/_narrator/vol5_ch14_temperance_105.mp3"
+ },
+ {
+  "key": "_narrator",
+  "scene": "vol5_ch18_moon",
+  "node": 6,
+  "file": "samples/_narrator/vol5_ch18_moon_006.ogg"
+ },
+ {
+  "key": "_narrator_vol6",
+  "scene": "vol6_ch6_safehouse",
+  "node": 5,
+  "file": "samples/_narrator_vol6/vol6_ch6_safehouse_005.mp3"
+ },
+ {
+  "key": "_narrator_vol6",
+  "scene": "vol6_ch0_prelude",
+  "node": 37,
+  "file": "samples/_narrator_vol6/vol6_ch0_prelude_037.mp3"
+ },
+ {
+  "key": "_narrator_vol6",
+  "scene": "vol6_ch2_coda",
+  "node": 6,
+  "file": "samples/_narrator_vol6/vol6_ch2_coda_006.mp3"
+ },
+ {
+  "key": "_walkon_child",
+  "scene": "vol6_ch14_substation_nine",
+  "node": 18,
+  "file": "samples/_walkon_child/vol6_ch14_substation_nine_018.mp3"
+ },
+ {
+  "key": "_walkon_child",
+  "scene": "vol5_ch6_lovers",
+  "node": 77,
+  "file": "samples/_walkon_child/vol5_ch6_lovers_077.mp3"
+ },
+ {
+  "key": "_walkon_female",
+  "scene": "vol5_ch11_justice",
+  "node": 106,
+  "file": "samples/_walkon_female/vol5_ch11_justice_106.mp3"
+ },
+ {
+  "key": "_walkon_male",
+  "scene": "vol5_ch11_justice",
+  "node": 102,
+  "file": "samples/_walkon_male/vol5_ch11_justice_102.mp3"
+ },
+ {
+  "key": "_walkon_older",
+  "scene": "vol6_ch8_courthouse",
+  "node": 66,
+  "file": "samples/_walkon_older/vol6_ch8_courthouse_066.mp3"
+ },
+ {
+  "key": "abuela",
+  "scene": "vol6_ch18_letter",
+  "node": 63,
+  "file": "samples/abuela/vol6_ch18_letter_063.mp3"
+ },
+ {
+  "key": "abuela",
+  "scene": "vol6_ch16_dawn",
+  "node": 140,
+  "file": "samples/abuela/vol6_ch16_dawn_140.ogg"
+ },
+ {
+  "key": "abuela",
+  "scene": "vol6_ch18_stockroom",
+  "node": 236,
+  "file": "samples/abuela/vol6_ch18_stockroom_236.mp3"
+ },
+ {
+  "key": "alberto",
+  "scene": "vol5_ch10_wheel",
+  "node": 111,
+  "file": "samples/alberto/vol5_ch10_wheel_111.mp3"
+ },
+ {
+  "key": "anita",
+  "scene": "vol6_ch17_table",
+  "node": 172,
+  "file": "samples/anita/vol6_ch17_table_172.mp3"
+ },
+ {
+  "key": "anita",
+  "scene": "vol6_ch8_kowalski_kitchen",
+  "node": 25,
+  "file": "samples/anita/vol6_ch8_kowalski_kitchen_025.mp3"
+ },
+ {
+  "key": "anita",
+  "scene": "vol6_ch8_hospital_318",
+  "node": 32,
+  "file": "samples/anita/vol6_ch8_hospital_318_032.mp3"
+ },
+ {
+  "key": "anita_kowalski",
+  "scene": "vol6_ch7_hospital",
+  "node": 64,
+  "file": "samples/anita_kowalski/vol6_ch7_hospital_064.mp3"
+ },
+ {
+  "key": "antonio",
+  "scene": "vol5_ch15_devil",
+  "node": 120,
+  "file": "samples/antonio/vol5_ch15_devil_120.mp3"
+ },
+ {
+  "key": "antonio",
+  "scene": "vol5_ch20_judgement",
+  "node": 141,
+  "file": "samples/antonio/vol5_ch20_judgement_141.ogg"
+ },
+ {
+  "key": "antonio",
+  "scene": "vol5_ch5_hierophant",
+  "node": 72,
+  "file": "samples/antonio/vol5_ch5_hierophant_072.mp3"
+ },
+ {
+  "key": "anya",
+  "scene": "vol5_ch2_priestess_b",
+  "node": 27,
+  "file": "samples/anya/vol5_ch2_priestess_b_027.mp3"
+ },
+ {
+  "key": "anya",
+  "scene": "vol5_ch2_priestess_b",
+  "node": 28,
+  "file": "samples/anya/vol5_ch2_priestess_b_028.mp3"
+ },
+ {
+  "key": "aria",
+  "scene": "vol5_ch3_empress",
+  "node": 90,
+  "file": "samples/aria/vol5_ch3_empress_090.mp3"
+ },
+ {
+  "key": "aria",
+  "scene": "vol5_ch20_judgement",
+  "node": 80,
+  "file": "samples/aria/vol5_ch20_judgement_080.mp3"
+ },
+ {
+  "key": "aria",
+  "scene": "vol5_ch18_moon",
+  "node": 61,
+  "file": "samples/aria/vol5_ch18_moon_061.mp3"
+ },
+ {
+  "key": "ben",
+  "scene": "vol6_ch2_dumpster",
+  "node": 23,
+  "file": "samples/ben/vol6_ch2_dumpster_023.ogg"
+ },
+ {
+  "key": "ben",
+  "scene": "vol6_ch7_hospital",
+  "node": 30,
+  "file": "samples/ben/vol6_ch7_hospital_030.mp3"
+ },
+ {
+  "key": "ben",
+  "scene": "vol6_ch4_pit_stop",
+  "node": 23,
+  "file": "samples/ben/vol6_ch4_pit_stop_023.mp3"
+ },
+ {
+  "key": "bianca",
+  "scene": "vol6_ch22_bianca",
+  "node": 62,
+  "file": "samples/bianca/vol6_ch22_bianca_062.mp3"
+ },
+ {
+  "key": "bianca",
+  "scene": "vol6_ch17_table",
+  "node": 237,
+  "file": "samples/bianca/vol6_ch17_table_237.mp3"
+ },
+ {
+  "key": "bianca",
+  "scene": "vol6_ch11_kitchen",
+  "node": 154,
+  "file": "samples/bianca/vol6_ch11_kitchen_154.ogg"
+ },
+ {
+  "key": "bill",
+  "scene": "vol6_ch19_chains",
+  "node": 144,
+  "file": "samples/bill/vol6_ch19_chains_144.mp3"
+ },
+ {
+  "key": "bill",
+  "scene": "vol6_ch13_home",
+  "node": 27,
+  "file": "samples/bill/vol6_ch13_home_027.mp3"
+ },
+ {
+  "key": "bill",
+  "scene": "vol6_ch19_depthchart",
+  "node": 58,
+  "file": "samples/bill/vol6_ch19_depthchart_058.mp3"
+ },
+ {
+  "key": "bill_kowalski",
+  "scene": "vol6_ch8_kowalski_kitchen",
+  "node": 31,
+  "file": "samples/bill_kowalski/vol6_ch8_kowalski_kitchen_031.mp3"
+ },
+ {
+  "key": "bill_kowalski",
+  "scene": "vol6_ch8_kowalski_kitchen",
+  "node": 17,
+  "file": "samples/bill_kowalski/vol6_ch8_kowalski_kitchen_017.mp3"
+ },
+ {
+  "key": "bill_kowalski",
+  "scene": "vol6_ch8_kowalski_kitchen",
+  "node": 33,
+  "file": "samples/bill_kowalski/vol6_ch8_kowalski_kitchen_033.mp3"
+ },
+ {
+  "key": "boyd",
+  "scene": "vol6_ch9_room",
+  "node": 141,
+  "file": "samples/boyd/vol6_ch9_room_141.ogg"
+ },
+ {
+  "key": "brenda",
+  "scene": "vol6_ch6_pit_stop",
+  "node": 14,
+  "file": "samples/brenda/vol6_ch6_pit_stop_014.mp3"
+ },
+ {
+  "key": "brenda",
+  "scene": "vol6_ch6_pit_stop",
+  "node": 18,
+  "file": "samples/brenda/vol6_ch6_pit_stop_018.mp3"
+ },
+ {
+  "key": "brenda",
+  "scene": "vol6_ch6_pit_stop",
+  "node": 16,
+  "file": "samples/brenda/vol6_ch6_pit_stop_016.mp3"
+ },
+ {
+  "key": "brent",
+  "scene": "vol6_ch13_two_a_days",
+  "node": 151,
+  "file": "samples/brent/vol6_ch13_two_a_days_151.mp3"
+ },
+ {
+  "key": "bt",
+  "scene": "vol6_ch16_el_rancho",
+  "node": 106,
+  "file": "samples/bt/vol6_ch16_el_rancho_106.mp3"
+ },
+ {
+  "key": "bt",
+  "scene": "vol6_ch16_dawn",
+  "node": 102,
+  "file": "samples/bt/vol6_ch16_dawn_102.mp3"
+ },
+ {
+  "key": "bt",
+  "scene": "vol6_ch10_night_shift",
+  "node": 132,
+  "file": "samples/bt/vol6_ch10_night_shift_132.mp3"
+ },
+ {
+  "key": "carl",
+  "scene": "vol6_ch22_foxhole",
+  "node": 70,
+  "file": "samples/carl/vol6_ch22_foxhole_070.mp3"
+ },
+ {
+  "key": "carl",
+  "scene": "vol6_ch14_substation_nine",
+  "node": 130,
+  "file": "samples/carl/vol6_ch14_substation_nine_130.mp3"
+ },
+ {
+  "key": "carl",
+  "scene": "vol6_ch20_bridge",
+  "node": 47,
+  "file": "samples/carl/vol6_ch20_bridge_047.mp3"
+ },
+ {
+  "key": "carlos",
+  "scene": "vol6_ch22_bianca",
+  "node": 47,
+  "file": "samples/carlos/vol6_ch22_bianca_047.mp3"
+ },
+ {
+  "key": "chess",
+  "scene": "vol6_ch20_bridge",
+  "node": 147,
+  "file": "samples/chess/vol6_ch20_bridge_147.mp3"
+ },
+ {
+  "key": "chief_miller",
+  "scene": "vol6_ch8_lake_palestine",
+  "node": 43,
+  "file": "samples/chief_miller/vol6_ch8_lake_palestine_043.ogg"
+ },
+ {
+  "key": "chief_miller",
+  "scene": "vol6_ch4_miller_office",
+  "node": 14,
+  "file": "samples/chief_miller/vol6_ch4_miller_office_014.mp3"
+ },
+ {
+  "key": "chief_miller",
+  "scene": "vol6_ch0_prelude",
+  "node": 108,
+  "file": "samples/chief_miller/vol6_ch0_prelude_108.ogg"
+ },
+ {
+  "key": "claire",
+  "scene": "vol6_ch6_tome",
+  "node": 17,
+  "file": "samples/claire/vol6_ch6_tome_017.ogg"
+ },
+ {
+  "key": "claire",
+  "scene": "vol6_ch4_storm",
+  "node": 34,
+  "file": "samples/claire/vol6_ch4_storm_034.mp3"
+ },
+ {
+  "key": "claire",
+  "scene": "vol6_ch6_interstate",
+  "node": 51,
+  "file": "samples/claire/vol6_ch6_interstate_051.mp3"
+ },
+ {
+  "key": "claires_partner",
+  "scene": "vol6_ch4_storm",
+  "node": 30,
+  "file": "samples/claires_partner/vol6_ch4_storm_030.mp3"
+ },
+ {
+  "key": "coach_dale",
+  "scene": "vol6_ch19_depthchart",
+  "node": 196,
+  "file": "samples/coach_dale/vol6_ch19_depthchart_196.mp3"
+ },
+ {
+  "key": "coach_k",
+  "scene": "vol6_ch19_chains",
+  "node": 91,
+  "file": "samples/coach_k/vol6_ch19_chains_091.mp3"
+ },
+ {
+  "key": "coach_k",
+  "scene": "vol6_ch13_two_a_days",
+  "node": 91,
+  "file": "samples/coach_k/vol6_ch13_two_a_days_091.mp3"
+ },
+ {
+  "key": "coach_k",
+  "scene": "vol6_ch19_depthchart",
+  "node": 25,
+  "file": "samples/coach_k/vol6_ch19_depthchart_025.mp3"
+ },
+ {
+  "key": "curtis",
+  "scene": "vol6_ch12_cosmic",
+  "node": 191,
+  "file": "samples/curtis/vol6_ch12_cosmic_191.mp3"
+ },
+ {
+  "key": "dante",
+  "scene": "vol5_ch4_emperor",
+  "node": 58,
+  "file": "samples/dante/vol5_ch4_emperor_058.mp3"
+ },
+ {
+  "key": "dean",
+  "scene": "vol6_ch8_courthouse",
+  "node": 64,
+  "file": "samples/dean/vol6_ch8_courthouse_064.mp3"
+ },
+ {
+  "key": "dean",
+  "scene": "vol5_ch3_empress",
+  "node": 100,
+  "file": "samples/dean/vol5_ch3_empress_100.mp3"
+ },
+ {
+  "key": "delia",
+  "scene": "vol6_ch12_cosmic",
+  "node": 73,
+  "file": "samples/delia/vol6_ch12_cosmic_073.mp3"
+ },
+ {
+  "key": "diego",
+  "scene": "vol6_ch10_home",
+  "node": 29,
+  "file": "samples/diego/vol6_ch10_home_029.ogg"
+ },
+ {
+  "key": "diego",
+  "scene": "vol6_ch16_dawn",
+  "node": 138,
+  "file": "samples/diego/vol6_ch16_dawn_138.mp3"
+ },
+ {
+  "key": "diego",
+  "scene": "vol6_ch16_el_rancho",
+  "node": 277,
+  "file": "samples/diego/vol6_ch16_el_rancho_277.mp3"
+ },
+ {
+  "key": "doug",
+  "scene": "vol6_ch10_night_shift",
+  "node": 273,
+  "file": "samples/doug/vol6_ch10_night_shift_273.ogg"
+ },
+ {
+  "key": "doug",
+  "scene": "vol6_ch18_stockroom",
+  "node": 194,
+  "file": "samples/doug/vol6_ch18_stockroom_194.mp3"
+ },
+ {
+  "key": "doug",
+  "scene": "vol6_ch16_el_rancho",
+  "node": 71,
+  "file": "samples/doug/vol6_ch16_el_rancho_071.mp3"
+ },
+ {
+  "key": "doyle",
+  "scene": "vol6_ch6_fueling_station",
+  "node": 20,
+  "file": "samples/doyle/vol6_ch6_fueling_station_020.ogg"
+ },
+ {
+  "key": "doyle",
+  "scene": "vol6_ch6_boyd",
+  "node": 33,
+  "file": "samples/doyle/vol6_ch6_boyd_033.mp3"
+ },
+ {
+  "key": "doyle",
+  "scene": "vol6_ch6_interstate",
+  "node": 67,
+  "file": "samples/doyle/vol6_ch6_interstate_067.mp3"
+ },
+ {
+  "key": "dr_patel",
+  "scene": "vol6_ch6_safehouse",
+  "node": 10,
+  "file": "samples/dr_patel/vol6_ch6_safehouse_010.mp3"
+ },
+ {
+  "key": "dr_patel",
+  "scene": "vol6_ch6_safehouse",
+  "node": 19,
+  "file": "samples/dr_patel/vol6_ch6_safehouse_019.mp3"
+ },
+ {
+  "key": "dr_patel",
+  "scene": "vol6_ch6_safehouse",
+  "node": 17,
+  "file": "samples/dr_patel/vol6_ch6_safehouse_017.mp3"
+ },
+ {
+  "key": "eileen",
+  "scene": "vol6_ch17_table",
+  "node": 139,
+  "file": "samples/eileen/vol6_ch17_table_139.mp3"
+ },
+ {
+  "key": "eileen",
+  "scene": "vol6_ch7_pit_stop",
+  "node": 94,
+  "file": "samples/eileen/vol6_ch7_pit_stop_094.mp3"
+ },
+ {
+  "key": "eileen",
+  "scene": "vol6_ch5_garage",
+  "node": 98,
+  "file": "samples/eileen/vol6_ch5_garage_098.mp3"
+ },
+ {
+  "key": "eileen_henderson",
+  "scene": "vol6_ch6_jesse_bedroom",
+  "node": 26,
+  "file": "samples/eileen_henderson/vol6_ch6_jesse_bedroom_026.mp3"
+ },
+ {
+  "key": "elicia",
+  "scene": "vol5_ch16_tower",
+  "node": 135,
+  "file": "samples/elicia/vol5_ch16_tower_135.mp3"
+ },
+ {
+  "key": "elicia",
+  "scene": "vol5_ch19_sun",
+  "node": 28,
+  "file": "samples/elicia/vol5_ch19_sun_028.ogg"
+ },
+ {
+  "key": "elicia",
+  "scene": "vol5_ch2_priestess_b",
+  "node": 36,
+  "file": "samples/elicia/vol5_ch2_priestess_b_036.mp3"
+ },
+ {
+  "key": "em",
+  "scene": "vol6_ch14_substation_nine",
+  "node": 110,
+  "file": "samples/em/vol6_ch14_substation_nine_110.ogg"
+ },
+ {
+  "key": "em",
+  "scene": "vol6_ch22_foxhole",
+  "node": 75,
+  "file": "samples/em/vol6_ch22_foxhole_075.mp3"
+ },
+ {
+  "key": "em",
+  "scene": "vol6_ch20_bridge",
+  "node": 71,
+  "file": "samples/em/vol6_ch20_bridge_071.mp3"
+ },
+ {
+  "key": "erica",
+  "scene": "vol5_ch10_wheel",
+  "node": 107,
+  "file": "samples/erica/vol5_ch10_wheel_107.ogg"
+ },
+ {
+  "key": "erica",
+  "scene": "vol5_ch11_justice",
+  "node": 73,
+  "file": "samples/erica/vol5_ch11_justice_073.mp3"
+ },
+ {
+  "key": "erica",
+  "scene": "vol5_ch20_judgement",
+  "node": 51,
+  "file": "samples/erica/vol5_ch20_judgement_051.mp3"
+ },
+ {
+  "key": "f_t",
+  "scene": "vol6_ch6_maya_bedroom",
+  "node": 11,
+  "file": "samples/f_t/vol6_ch6_maya_bedroom_011.ogg"
+ },
+ {
+  "key": "f_t",
+  "scene": "vol6_ch1_maya_bedroom",
+  "node": 9,
+  "file": "samples/f_t/vol6_ch1_maya_bedroom_009.ogg"
+ },
+ {
+  "key": "f_t",
+  "scene": "vol6_ch2_maya_bedroom",
+  "node": 17,
+  "file": "samples/f_t/vol6_ch2_maya_bedroom_017.mp3"
+ },
+ {
+  "key": "frasier",
+  "scene": "vol6_ch6_interstate",
+  "node": 17,
+  "file": "samples/frasier/vol6_ch6_interstate_017.mp3"
+ },
+ {
+  "key": "frasier",
+  "scene": "vol6_ch4_speak_spell",
+  "node": 29,
+  "file": "samples/frasier/vol6_ch4_speak_spell_029.mp3"
+ },
+ {
+  "key": "frasier",
+  "scene": "vol5_ch0_frasier",
+  "node": 22,
+  "file": "samples/frasier/vol5_ch0_frasier_022.mp3"
+ },
+ {
+  "key": "gloria",
+  "scene": "vol5_ch5_hierophant",
+  "node": 55,
+  "file": "samples/gloria/vol5_ch5_hierophant_055.mp3"
+ },
+ {
+  "key": "gloria",
+  "scene": "vol5_ch5_hierophant",
+  "node": 52,
+  "file": "samples/gloria/vol5_ch5_hierophant_052.mp3"
+ },
+ {
+  "key": "gracie",
+  "scene": "vol6_ch8_hospital_318",
+  "node": 27,
+  "file": "samples/gracie/vol6_ch8_hospital_318_027.ogg"
+ },
+ {
+  "key": "gracie",
+  "scene": "vol6_ch8_kowalski_kitchen",
+  "node": 20,
+  "file": "samples/gracie/vol6_ch8_kowalski_kitchen_020.mp3"
+ },
+ {
+  "key": "gracie",
+  "scene": "vol6_ch19_chains",
+  "node": 113,
+  "file": "samples/gracie/vol6_ch19_chains_113.mp3"
+ },
+ {
+  "key": "graciela",
+  "scene": "vol6_ch10_home",
+  "node": 35,
+  "file": "samples/graciela/vol6_ch10_home_035.mp3"
+ },
+ {
+  "key": "graciela",
+  "scene": "vol6_ch1_graciela",
+  "node": 14,
+  "file": "samples/graciela/vol6_ch1_graciela_014.ogg"
+ },
+ {
+  "key": "graciela",
+  "scene": "vol6_ch0_prelude",
+  "node": 42,
+  "file": "samples/graciela/vol6_ch0_prelude_042.mp3"
+ },
+ {
+  "key": "graciela_ramos",
+  "scene": "vol6_ch7_safehouse",
+  "node": 18,
+  "file": "samples/graciela_ramos/vol6_ch7_safehouse_018.ogg"
+ },
+ {
+  "key": "graciela_ramos",
+  "scene": "vol6_ch2_kwik_stop",
+  "node": 36,
+  "file": "samples/graciela_ramos/vol6_ch2_kwik_stop_036.mp3"
+ },
+ {
+  "key": "grandmother",
+  "scene": "vol6_ch2_maya_bedroom",
+  "node": 38,
+  "file": "samples/grandmother/vol6_ch2_maya_bedroom_038.mp3"
+ },
+ {
+  "key": "hal",
+  "scene": "vol6_ch21_cosmic",
+  "node": 123,
+  "file": "samples/hal/vol6_ch21_cosmic_123.mp3"
+ },
+ {
+  "key": "hal",
+  "scene": "vol6_ch6_pit_stop",
+  "node": 9,
+  "file": "samples/hal/vol6_ch6_pit_stop_009.mp3"
+ },
+ {
+  "key": "hal",
+  "scene": "vol6_ch2_bindery",
+  "node": 25,
+  "file": "samples/hal/vol6_ch2_bindery_025.mp3"
+ },
+ {
+  "key": "hector",
+  "scene": "vol5_ch5_hierophant",
+  "node": 54,
+  "file": "samples/hector/vol5_ch5_hierophant_054.mp3"
+ },
+ {
+  "key": "henderson",
+  "scene": "vol6_ch0_prelude",
+  "node": 91,
+  "file": "samples/henderson/vol6_ch0_prelude_091.mp3"
+ },
+ {
+  "key": "henderson",
+  "scene": "vol6_ch1_gas_and_go",
+  "node": 26,
+  "file": "samples/henderson/vol6_ch1_gas_and_go_026.ogg"
+ },
+ {
+  "key": "hugo",
+  "scene": "vol6_ch16_el_rancho",
+  "node": 162,
+  "file": "samples/hugo/vol6_ch16_el_rancho_162.mp3"
+ },
+ {
+  "key": "jen",
+  "scene": "vol6_ch1_shift_change",
+  "node": 13,
+  "file": "samples/jen/vol6_ch1_shift_change_013.ogg"
+ },
+ {
+  "key": "jen",
+  "scene": "vol6_ch15_kwik_stop",
+  "node": 302,
+  "file": "samples/jen/vol6_ch15_kwik_stop_302.ogg"
+ },
+ {
+  "key": "jen",
+  "scene": "vol6_ch6_kwik_stop_open",
+  "node": 16,
+  "file": "samples/jen/vol6_ch6_kwik_stop_open_016.mp3"
+ },
+ {
+  "key": "jessa",
+  "scene": "vol6_ch10_night_shift",
+  "node": 110,
+  "file": "samples/jessa/vol6_ch10_night_shift_110.mp3"
+ },
+ {
+  "key": "jesse",
+  "scene": "vol6_ch2_dumpster",
+  "node": 15,
+  "file": "samples/jesse/vol6_ch2_dumpster_015.ogg"
+ },
+ {
+  "key": "jesse",
+  "scene": "vol6_ch20_bridge",
+  "node": 181,
+  "file": "samples/jesse/vol6_ch20_bridge_181.mp3"
+ },
+ {
+  "key": "jesse",
+  "scene": "vol6_ch5_truck",
+  "node": 42,
+  "file": "samples/jesse/vol6_ch5_truck_042.ogg"
+ },
+ {
+  "key": "jim",
+  "scene": "vol6_ch20_prints",
+  "node": 67,
+  "file": "samples/jim/vol6_ch20_prints_067.mp3"
+ },
+ {
+  "key": "jim",
+  "scene": "vol6_ch22_foxhole",
+  "node": 222,
+  "file": "samples/jim/vol6_ch22_foxhole_222.mp3"
+ },
+ {
+  "key": "jimmy",
+  "scene": "vol5_ch7_chariot",
+  "node": 101,
+  "file": "samples/jimmy/vol5_ch7_chariot_101.mp3"
+ },
+ {
+  "key": "jimmy",
+  "scene": "vol5_ch20_judgement",
+  "node": 210,
+  "file": "samples/jimmy/vol5_ch20_judgement_210.ogg"
+ },
+ {
+  "key": "jimmy",
+  "scene": "vol5_ch15_devil",
+  "node": 125,
+  "file": "samples/jimmy/vol5_ch15_devil_125.mp3"
+ },
+ {
+  "key": "joanna",
+  "scene": "vol5_ch17_star",
+  "node": 93,
+  "file": "samples/joanna/vol5_ch17_star_093.mp3"
+ },
+ {
+  "key": "joanna",
+  "scene": "vol5_ch9_hermit",
+  "node": 87,
+  "file": "samples/joanna/vol5_ch9_hermit_087.mp3"
+ },
+ {
+  "key": "joanna",
+  "scene": "vol5_ch17_star",
+  "node": 91,
+  "file": "samples/joanna/vol5_ch17_star_091.mp3"
+ },
+ {
+  "key": "john",
+  "scene": "vol5_ch0_booth6",
+  "node": 14,
+  "file": "samples/john/vol5_ch0_booth6_014.mp3"
+ },
+ {
+  "key": "john",
+  "scene": "vol5_ch0_frasier",
+  "node": 18,
+  "file": "samples/john/vol5_ch0_frasier_018.mp3"
+ },
+ {
+  "key": "john",
+  "scene": "vol5_ch0_closing",
+  "node": 19,
+  "file": "samples/john/vol5_ch0_closing_019.mp3"
+ },
+ {
+  "key": "jordan",
+  "scene": "vol5_ch20_judgement",
+  "node": 50,
+  "file": "samples/jordan/vol5_ch20_judgement_050.mp3"
+ },
+ {
+  "key": "jordan",
+  "scene": "vol5_ch20_judgement",
+  "node": 52,
+  "file": "samples/jordan/vol5_ch20_judgement_052.mp3"
+ },
+ {
+  "key": "judge",
+  "scene": "vol6_ch8_courthouse",
+  "node": 119,
+  "file": "samples/judge/vol6_ch8_courthouse_119.ogg"
+ },
+ {
+  "key": "linda",
+  "scene": "vol6_ch12_porch",
+  "node": 36,
+  "file": "samples/linda/vol6_ch12_porch_036.mp3"
+ },
+ {
+  "key": "linda",
+  "scene": "vol6_ch21_porch",
+  "node": 41,
+  "file": "samples/linda/vol6_ch21_porch_041.mp3"
+ },
+ {
+  "key": "linda",
+  "scene": "vol6_ch19_chains",
+  "node": 183,
+  "file": "samples/linda/vol6_ch19_chains_183.mp3"
+ },
+ {
+  "key": "linda_caldwell",
+  "scene": "vol6_ch8_hospital_318",
+  "node": 48,
+  "file": "samples/linda_caldwell/vol6_ch8_hospital_318_048.ogg"
+ },
+ {
+  "key": "lucy",
+  "scene": "vol6_ch15_kwik_stop",
+  "node": 142,
+  "file": "samples/lucy/vol6_ch15_kwik_stop_142.ogg"
+ },
+ {
+  "key": "m",
+  "scene": "vol6_ch3_circle_k",
+  "node": 55,
+  "file": "samples/m/vol6_ch3_circle_k_055.mp3"
+ },
+ {
+  "key": "mackenzie",
+  "scene": "vol5_ch6_lovers",
+  "node": 29,
+  "file": "samples/mackenzie/vol5_ch6_lovers_029.mp3"
+ },
+ {
+  "key": "mackenzie",
+  "scene": "vol5_ch2_priestess_b",
+  "node": 51,
+  "file": "samples/mackenzie/vol5_ch2_priestess_b_051.mp3"
+ },
+ {
+  "key": "marcus",
+  "scene": "vol6_ch19_depthchart",
+  "node": 98,
+  "file": "samples/marcus/vol6_ch19_depthchart_098.mp3"
+ },
+ {
+  "key": "marcus",
+  "scene": "vol5_ch11_justice",
+  "node": 55,
+  "file": "samples/marcus/vol5_ch11_justice_055.mp3"
+ },
+ {
+  "key": "marisol",
+  "scene": "vol6_ch10_night_shift",
+  "node": 16,
+  "file": "samples/marisol/vol6_ch10_night_shift_016.mp3"
+ },
+ {
+  "key": "marisol",
+  "scene": "vol6_ch18_stockroom",
+  "node": 193,
+  "file": "samples/marisol/vol6_ch18_stockroom_193.mp3"
+ },
+ {
+  "key": "marisol",
+  "scene": "vol6_ch16_dawn",
+  "node": 54,
+  "file": "samples/marisol/vol6_ch16_dawn_054.mp3"
+ },
+ {
+  "key": "mark",
+  "scene": "vol6_ch15_kwik_stop",
+  "node": 250,
+  "file": "samples/mark/vol6_ch15_kwik_stop_250.ogg"
+ },
+ {
+  "key": "maya",
+  "scene": "vol6_ch21_cosmic",
+  "node": 118,
+  "file": "samples/maya/vol6_ch21_cosmic_118.mp3"
+ },
+ {
+  "key": "maya",
+  "scene": "vol6_ch7_hospital",
+  "node": 25,
+  "file": "samples/maya/vol6_ch7_hospital_025.mp3"
+ },
+ {
+  "key": "maya",
+  "scene": "vol6_ch3_back_room",
+  "node": 80,
+  "file": "samples/maya/vol6_ch3_back_room_080.mp3"
+ },
+ {
+  "key": "miriam",
+  "scene": "vol6_ch8_courthouse",
+  "node": 144,
+  "file": "samples/miriam/vol6_ch8_courthouse_144.ogg"
+ },
+ {
+  "key": "miriam",
+  "scene": "vol5_ch18_moon",
+  "node": 109,
+  "file": "samples/miriam/vol5_ch18_moon_109.ogg"
+ },
+ {
+  "key": "miriam",
+  "scene": "vol5_ch21_world",
+  "node": 130,
+  "file": "samples/miriam/vol5_ch21_world_130.mp3"
+ },
+ {
+  "key": "mom",
+  "scene": "vol6_ch6_kwik_stop_text",
+  "node": 10,
+  "file": "samples/mom/vol6_ch6_kwik_stop_text_010.mp3"
+ },
+ {
+  "key": "mom",
+  "scene": "vol6_ch6_kwik_stop_text",
+  "node": 7,
+  "file": "samples/mom/vol6_ch6_kwik_stop_text_007.mp3"
+ },
+ {
+  "key": "mom",
+  "scene": "vol6_ch6_kwik_stop_text",
+  "node": 12,
+  "file": "samples/mom/vol6_ch6_kwik_stop_text_012.mp3"
+ },
+ {
+  "key": "mr_henderson",
+  "scene": "vol6_ch7_henderson_kitchen",
+  "node": 72,
+  "file": "samples/mr_henderson/vol6_ch7_henderson_kitchen_072.mp3"
+ },
+ {
+  "key": "mrs_henderson",
+  "scene": "vol6_ch3_jesse_bedroom",
+  "node": 55,
+  "file": "samples/mrs_henderson/vol6_ch3_jesse_bedroom_055.mp3"
+ },
+ {
+  "key": "mrs_henderson",
+  "scene": "vol6_ch3_jesse_bedroom",
+  "node": 53,
+  "file": "samples/mrs_henderson/vol6_ch3_jesse_bedroom_053.mp3"
+ },
+ {
+  "key": "mrs_henderson",
+  "scene": "vol6_ch3_jesse_bedroom",
+  "node": 49,
+  "file": "samples/mrs_henderson/vol6_ch3_jesse_bedroom_049.mp3"
+ },
+ {
+  "key": "mrs_miller",
+  "scene": "vol6_ch5_meadowlark",
+  "node": 18,
+  "file": "samples/mrs_miller/vol6_ch5_meadowlark_018.ogg"
+ },
+ {
+  "key": "mrs_miller",
+  "scene": "vol6_ch4_kitchen",
+  "node": 73,
+  "file": "samples/mrs_miller/vol6_ch4_kitchen_073.ogg"
+ },
+ {
+  "key": "ms_caldwell",
+  "scene": "vol6_ch4_maya_floor",
+  "node": 47,
+  "file": "samples/ms_caldwell/vol6_ch4_maya_floor_047.mp3"
+ },
+ {
+  "key": "ms_caldwell",
+  "scene": "vol6_ch5_radio",
+  "node": 40,
+  "file": "samples/ms_caldwell/vol6_ch5_radio_040.mp3"
+ },
+ {
+  "key": "natalie",
+  "scene": "vol5_ch18_moon",
+  "node": 116,
+  "file": "samples/natalie/vol5_ch18_moon_116.mp3"
+ },
+ {
+  "key": "natalie",
+  "scene": "vol5_ch20_judgement",
+  "node": 220,
+  "file": "samples/natalie/vol5_ch20_judgement_220.mp3"
+ },
+ {
+  "key": "natalie",
+  "scene": "vol5_ch12_hanged",
+  "node": 106,
+  "file": "samples/natalie/vol5_ch12_hanged_106.mp3"
+ },
+ {
+  "key": "nate",
+  "scene": "vol6_ch14_substation_nine",
+  "node": 129,
+  "file": "samples/nate/vol6_ch14_substation_nine_129.mp3"
+ },
+ {
+  "key": "nate",
+  "scene": "vol6_ch22_foxhole",
+  "node": 159,
+  "file": "samples/nate/vol6_ch22_foxhole_159.mp3"
+ },
+ {
+  "key": "nate",
+  "scene": "vol6_ch5_garage",
+  "node": 119,
+  "file": "samples/nate/vol6_ch5_garage_119.mp3"
+ },
+ {
+  "key": "nicola",
+  "scene": "vol5_ch3_empress",
+  "node": 73,
+  "file": "samples/nicola/vol5_ch3_empress_073.mp3"
+ },
+ {
+  "key": "nicola",
+  "scene": "vol5_ch12_hanged",
+  "node": 96,
+  "file": "samples/nicola/vol5_ch12_hanged_096.mp3"
+ },
+ {
+  "key": "nicola",
+  "scene": "vol5_ch20_judgement",
+  "node": 239,
+  "file": "samples/nicola/vol5_ch20_judgement_239.mp3"
+ },
+ {
+  "key": "pete",
+  "scene": "vol6_ch13_two_a_days",
+  "node": 107,
+  "file": "samples/pete/vol6_ch13_two_a_days_107.mp3"
+ },
+ {
+  "key": "phil",
+  "scene": "vol6_ch21_cosmic",
+  "node": 30,
+  "file": "samples/phil/vol6_ch21_cosmic_030.mp3"
+ },
+ {
+  "key": "phil",
+  "scene": "vol6_ch21_cosmic",
+  "node": 28,
+  "file": "samples/phil/vol6_ch21_cosmic_028.mp3"
+ },
+ {
+  "key": "phil",
+  "scene": "vol6_ch21_cosmic",
+  "node": 32,
+  "file": "samples/phil/vol6_ch21_cosmic_032.mp3"
+ },
+ {
+  "key": "philip",
+  "scene": "vol5_ch6_lovers",
+  "node": 34,
+  "file": "samples/philip/vol5_ch6_lovers_034.mp3"
+ },
+ {
+  "key": "quentin_paul",
+  "scene": "vol5_ch5_hierophant",
+  "node": 68,
+  "file": "samples/quentin_paul/vol5_ch5_hierophant_068.mp3"
+ },
+ {
+  "key": "quentin_paul",
+  "scene": "vol5_ch15_devil",
+  "node": 97,
+  "file": "samples/quentin_paul/vol5_ch15_devil_097.mp3"
+ },
+ {
+  "key": "ramirez",
+  "scene": "vol6_ch6_miller_truck",
+  "node": 22,
+  "file": "samples/ramirez/vol6_ch6_miller_truck_022.mp3"
+ },
+ {
+  "key": "ramirez",
+  "scene": "vol6_ch8_courthouse",
+  "node": 97,
+  "file": "samples/ramirez/vol6_ch8_courthouse_097.mp3"
+ },
+ {
+  "key": "ramirez",
+  "scene": "vol6_ch4_kwik_stop",
+  "node": 35,
+  "file": "samples/ramirez/vol6_ch4_kwik_stop_035.mp3"
+ },
+ {
+  "key": "ramon",
+  "scene": "vol6_ch20_bridge",
+  "node": 167,
+  "file": "samples/ramon/vol6_ch20_bridge_167.mp3"
+ },
+ {
+  "key": "reporter",
+  "scene": "vol6_ch2_cosmic",
+  "node": 18,
+  "file": "samples/reporter/vol6_ch2_cosmic_018.mp3"
+ },
+ {
+  "key": "reporter",
+  "scene": "vol6_ch2_cosmic",
+  "node": 16,
+  "file": "samples/reporter/vol6_ch2_cosmic_016.mp3"
+ },
+ {
+  "key": "rick",
+  "scene": "vol6_ch2_cosmic",
+  "node": 54,
+  "file": "samples/rick/vol6_ch2_cosmic_054.ogg"
+ },
+ {
+  "key": "rick",
+  "scene": "vol6_ch21_cosmic",
+  "node": 152,
+  "file": "samples/rick/vol6_ch21_cosmic_152.mp3"
+ },
+ {
+  "key": "rick",
+  "scene": "vol6_ch4_speak_spell",
+  "node": 88,
+  "file": "samples/rick/vol6_ch4_speak_spell_088.ogg"
+ },
+ {
+  "key": "russell",
+  "scene": "vol6_ch18_stockroom",
+  "node": 37,
+  "file": "samples/russell/vol6_ch18_stockroom_037.mp3"
+ },
+ {
+  "key": "russell",
+  "scene": "vol6_ch10_night_shift",
+  "node": 124,
+  "file": "samples/russell/vol6_ch10_night_shift_124.mp3"
+ },
+ {
+  "key": "sam",
+  "scene": "vol6_ch8_courthouse",
+  "node": 108,
+  "file": "samples/sam/vol6_ch8_courthouse_108.ogg"
+ },
+ {
+  "key": "sam",
+  "scene": "vol6_ch2_kwik_stop",
+  "node": 40,
+  "file": "samples/sam/vol6_ch2_kwik_stop_040.mp3"
+ },
+ {
+  "key": "sam",
+  "scene": "vol6_ch9_safehouse",
+  "node": 41,
+  "file": "samples/sam/vol6_ch9_safehouse_041.mp3"
+ },
+ {
+  "key": "sammy",
+  "scene": "vol5_ch4_emperor",
+  "node": 75,
+  "file": "samples/sammy/vol5_ch4_emperor_075.mp3"
+ },
+ {
+  "key": "sams_mom",
+  "scene": "vol6_ch6_miller_kitchen",
+  "node": 29,
+  "file": "samples/sams_mom/vol6_ch6_miller_kitchen_029.mp3"
+ },
+ {
+  "key": "sams_mother",
+  "scene": "vol6_ch8_courthouse",
+  "node": 95,
+  "file": "samples/sams_mother/vol6_ch8_courthouse_095.mp3"
+ },
+ {
+  "key": "stranger",
+  "scene": "vol6_ch1_stranger",
+  "node": 15,
+  "file": "samples/stranger/vol6_ch1_stranger_015.mp3"
+ },
+ {
+  "key": "stranger",
+  "scene": "vol5_ch21_world",
+  "node": 35,
+  "file": "samples/stranger/vol5_ch21_world_035.mp3"
+ },
+ {
+  "key": "stranger",
+  "scene": "vol5_ch0_booth6",
+  "node": 24,
+  "file": "samples/stranger/vol5_ch0_booth6_024.mp3"
+ },
+ {
+  "key": "sunburn_man",
+  "scene": "vol6_ch2_kwik_stop",
+  "node": 19,
+  "file": "samples/sunburn_man/vol6_ch2_kwik_stop_019.mp3"
+ },
+ {
+  "key": "sunburn_man",
+  "scene": "vol6_ch2_kwik_stop",
+  "node": 21,
+  "file": "samples/sunburn_man/vol6_ch2_kwik_stop_021.mp3"
+ },
+ {
+  "key": "sunburn_man",
+  "scene": "vol6_ch2_kwik_stop",
+  "node": 23,
+  "file": "samples/sunburn_man/vol6_ch2_kwik_stop_023.mp3"
+ },
+ {
+  "key": "the_child",
+  "scene": "vol5_ch21_world",
+  "node": 107,
+  "file": "samples/the_child/vol5_ch21_world_107.mp3"
+ },
+ {
+  "key": "the_child",
+  "scene": "vol5_ch21_world",
+  "node": 23,
+  "file": "samples/the_child/vol5_ch21_world_023.mp3"
+ },
+ {
+  "key": "the_demon",
+  "scene": "vol5_ch1_magician",
+  "node": 93,
+  "file": "samples/the_demon/vol5_ch1_magician_093.mp3"
+ },
+ {
+  "key": "the_frog",
+  "scene": "vol5_ch21_world",
+  "node": 108,
+  "file": "samples/the_frog/vol5_ch21_world_108.mp3"
+ },
+ {
+  "key": "the_third_consciousness",
+  "scene": "vol5_ch21_world",
+  "node": 134,
+  "file": "samples/the_third_consciousness/vol5_ch21_world_134.mp3"
+ },
+ {
+  "key": "the_third_consciousness",
+  "scene": "vol5_ch21_world",
+  "node": 131,
+  "file": "samples/the_third_consciousness/vol5_ch21_world_131.mp3"
+ },
+ {
+  "key": "tom_bell",
+  "scene": "vol6_ch21_cosmic",
+  "node": 95,
+  "file": "samples/tom_bell/vol6_ch21_cosmic_095.mp3"
+ },
+ {
+  "key": "tome",
+  "scene": "vol6_ch6_tome",
+  "node": 16,
+  "file": "samples/tome/vol6_ch6_tome_016.mp3"
+ },
+ {
+  "key": "tome",
+  "scene": "vol6_ch6_tome",
+  "node": 20,
+  "file": "samples/tome/vol6_ch6_tome_020.mp3"
+ },
+ {
+  "key": "tucker",
+  "scene": "vol6_ch13_two_a_days",
+  "node": 76,
+  "file": "samples/tucker/vol6_ch13_two_a_days_076.mp3"
+ },
+ {
+  "key": "tucker",
+  "scene": "vol6_ch19_depthchart",
+  "node": 109,
+  "file": "samples/tucker/vol6_ch19_depthchart_109.mp3"
+ },
+ {
+  "key": "vince",
+  "scene": "vol6_ch6_fueling_station",
+  "node": 19,
+  "file": "samples/vince/vol6_ch6_fueling_station_019.mp3"
+ },
+ {
+  "key": "vince",
+  "scene": "vol6_ch6_fueling_station",
+  "node": 25,
+  "file": "samples/vince/vol6_ch6_fueling_station_025.mp3"
+ },
+ {
+  "key": "vince",
+  "scene": "vol6_ch6_fueling_station",
+  "node": 15,
+  "file": "samples/vince/vol6_ch6_fueling_station_015.mp3"
+ },
+ {
+  "key": "walt",
+  "scene": "vol6_ch14_substation_nine",
+  "node": 70,
+  "file": "samples/walt/vol6_ch14_substation_nine_070.mp3"
+ },
+ {
+  "key": "wren",
+  "scene": "vol6_ch12_cosmic",
+  "node": 149,
+  "file": "samples/wren/vol6_ch12_cosmic_149.ogg"
+ },
+ {
+  "key": "wren",
+  "scene": "vol6_ch12_porch",
+  "node": 15,
+  "file": "samples/wren/vol6_ch12_porch_015.mp3"
+ }
+]
