@@ -299,6 +299,10 @@ code re-created the folder there). Now:
   suite (full and scoped). They must stay at zero.
 - Hero Studio refuses SAVE when its code changed on disk since it started
   — after a pull the user restarts it (`bash godot/tools/hero_studio.sh`).
+  The SAVE button names the refusal's real reason (2026-10-18: it read
+  "SHARED DRIVE" for every refusal, the restart one included).
+  `python3 godot/tools/drive_doctor.py` says where a SAVE would go and why
+  (`--fix` stops stale Studios and repoints `gdrive` at My Drive).
 - Say a Drive fix is in effect only once it is pushed AND the user has
   pulled and restarted; until then tell them not to press SAVE.
 

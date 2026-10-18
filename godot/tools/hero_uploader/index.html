@@ -791,9 +791,15 @@ function renderGit(st) {
   const n = st.unsaved.length, up = st.unpushed, dp = d.pending || 0;
   b.disabled = false;
   if (d.blocked) {
+    // (2026-10-18) the label says WHY: it used to read "SHARED DRIVE" for every
+    // refusal, the restart-after-a-pull one included. Nothing uploads either way.
+    const why = String(d.blocked);
     b.className = 'save small dirty';
-    b.textContent = 'DRIVE IS THE SHARED DRIVE · fix first';
-    b.title = d.blocked;
+    b.textContent = /changed on disk/.test(why) ? 'RESTART HERO STUDIO · code changed'
+      : /shared drive|team_drive|One Model Nation/i.test(why) ? 'DRIVE IS THE SHARED DRIVE · fix first'
+      : 'DRIVE BLOCKED · see log';
+    b.title = why + '\n\nCheck from a terminal: python3 godot/tools/drive_doctor.py';
+    if (renderGit._why !== why) { renderGit._why = why; log('err', why + ' — check: python3 godot/tools/drive_doctor.py'); }
     return;
   }
   if (dp && !d.configured) {
