@@ -23,7 +23,9 @@
     "setting": "optional: where this subject's story is set, for {setting} in the style preamble; default = the place its `vol`s share in defaults.setting_by_vol, else defaults.setting",
     "role": "scene2d only: bg (a background the story plays over) | cg (a held story moment) | plate (a chapter's illustrated title page, lettered with its title; style.plate)",
     "scenes": "scene2d only: the scene ids that show this picture",
-    "lettering": "art / scene2d: the exact words the picture carries (a sign, a title plate, a zine page); lifts the no-text rule for those words only"
+    "lettering": "art / scene2d: the exact words the picture carries (a sign, a title plate, a zine page); lifts the no-text rule for those words only",
+    "subject": "scene2d only: 'places' = the picture shows the place and its objects with no people in it (style.subject_places) — the plates of vol 7, whose people never matched the cast",
+    "refs": "optional: roster slugs (props, art) whose chosen front image is sent as a reference image with this entry's front (three at most), so a plate's objects match their own concept art"
   },
   "defaults": {
     "provider": "google",
@@ -63,7 +65,8 @@
     "scene2d_bg": "This is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).",
     "scene2d_cg": "This is a CG — one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.",
     "plate": "The illustrated TITLE PAGE of one chapter of a literary visual novel set in {setting}: {name}. A single 16:9 picture, straight on, edge to edge: the chapter's lettering set large and clean in the middle third, in a typeface that suits the volume, and around and behind it a painted scene made from the imagery the description quotes, composed as one picture so the words stay readable. Painted realism at full modern resolution, real light and materials, the volume's palette; never a retro or pixel-art look, no scanlines, no CRT curve.",
-    "plate_short": "Illustrated 16:9 chapter title page: {name}. The lettering large and clean in the middle; the chapter's imagery painted around it; modern painted realism."
+    "plate_short": "Illustrated 16:9 chapter title page: {name}. The lettering large and clean in the middle; the chapter's imagery painted around it; modern painted realism.",
+    "subject_places": "This picture shows the PLACE and its OBJECTS only: no people anywhere in it — no figures, faces, hands, bodies or silhouettes, near or far. The story's people are drawn elsewhere and must not appear here; let the things they left (a mug on a rail, a coat on a hook, a door standing open) say who was there."
   },
   "entries": [
     {
@@ -5414,7 +5417,7 @@
       "tag": "vol7 CG card · ESTUARY 7 — INES ROCHA 2046",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A small wooden box with a spiral carved into the lid, the lid slid open to show three dark SCUMM sticks in a felt-lined interior, an inscription burned into the underside of the lid (ESTUARY 7 — INES ROCHA 2046) rendered as marks, cedar grain with a dark stain.",
+      "prompt": "A plain small wooden box with three slots, three dark SCUMM sticks standing in them; the third stick carries a white label written in a small careful hand (rendered as marks).",
       "texture_prompt": "dark stained cedar with carved spiral, grey felt lining, charcoal plastic sticks with gold connectors",
       "canon": [
         {
@@ -5424,10 +5427,6 @@
         {
           "src": "vol7/vol7_ch6_the_stick.json",
           "text": "Bench behind you, third slot in the wooden box."
-        },
-        {
-          "src": "lore/milk_and_honey/_ART_MANIFEST.md",
-          "text": "Three sticks in the wooden box. Third labeled in Cale's careful hand: ESTUARY 7 — INES ROCHA 2046."
         }
       ]
     },
@@ -5505,7 +5504,7 @@
       "tag": "vol7 CG card",
       "aspect": "1:1",
       "pose": null,
-      "prompt": "A small bell carved from a single piece of cedar, a wooden clapper on a leather cord, the outside carved with a shallow spiral, the wood polished by handling, hanging from a short loop of cord.",
+      "prompt": "A thumb-sized carving in a single piece of warm cedar: an open hand, palm up, fingers slightly curled, holding a bell the size of a thimble. Smoothed by handling; no cord, no clapper.",
       "texture_prompt": "polished red cedar, brown leather cord",
       "canon": [
         {
@@ -5519,18 +5518,6 @@
         {
           "src": "vol7/vol7_ch18_pool.json",
           "text": "The hand was holding a bell the size of a thimble."
-        },
-        {
-          "src": "vol7/vol7_ch13_porch.json",
-          "text": "The figure of the open hand on it was — by what he could see in the dim porch light from the window — palm-up, the fingers slightly curled, the way Eddvard had held his hand when he had been offering Cale tobacco at the cottage in '96."
-        },
-        {
-          "src": "lore/milk_and_honey/_ART_MANIFEST.md",
-          "text": "Olaf's bell. Cedar. Carved with the spiral his son will later set in the bowl."
-        },
-        {
-          "src": "godot/tools/blender/locales/build_cabin_interior.py",
-          "text": "the thumb-size carved cedar (Olaf's open hand holding the bell)"
         },
         {
           "src": "vol7/vol7_ch19_ring.json",
@@ -45102,23 +45089,31 @@
         "vol7_interlude_ii"
       ],
       "lettering": "\"CHAPTER 0\" (small, above) and \"Frequency Interlude II\" (large)",
-      "prompt": "What the chapter is about: The threshold into Act III: at the same minute on three coasts, a girl in Texas, Finn on a fogbound Oregon trail and Lena waking with charcoal letters on her thigh each pick up what turns out to be one signal, while the watchers (the Demon, Azrael, the Frog) note that the cycle has found its next three. The title page shows: A fogbound jetty in Smolvud: the Frog sits rolling a smoke, watching three young people pass without noticing him. Behind them, invisible to them and visible to him, their totems walk in step: a crow, an octopus, a ferret. The fog takes his smoke. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The threshold into Act III: at the same minute on three coasts a Speak & Spell in Texas, Finn's emergency radio on the Cape Perpetua trail and Lena's own body pick up one signal, and Lena wakes in her apartment with charcoal she does not own and starts the zine Static Truths. The title page shows: Lena's small bedroom above the Salty Tome at 6:42 in the morning, before the alarm. On the bedside table a closed sketchbook that has not been opened; in the drawer below, the pencils where she left them; no stick of charcoal anywhere in the room. Beside the sketchbook, four photocopied half-letter pages folded into the first Static Truths, an octopus drawn on its back cover. A plain, quiet room; the lettering floats in the middle third.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_interlude_ii.json",
+          "text": "Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened."
+        },
+        {
+          "src": "vol7/vol7_interlude_ii.json",
+          "text": "The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
+        },
+        {
+          "src": "vol7/vol7_interlude_ii.json",
+          "text": "The first issue runs to four photocopied pages. On the back cover, without quite knowing why, she draws an octopus."
+        },
+        {
+          "src": "vol7/vol7_interlude_ii.json",
           "text": "And on three coastlines simultaneously, three frequencies that had been mistaken for separate broadcasts revealed themselves as one signal interrupted by geography."
-        },
-        {
-          "src": "vol7/vol7_interlude_ii.json",
-          "text": "The Frog will note their totems trailing behind them, invisible to them, visible to him: a crow, an octopus, a ferret, all walking in step."
-        },
-        {
-          "src": "vol7/vol7_interlude_ii.json",
-          "text": "Her thigh has charcoal on it in the shape of three letters: S U N."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Lena's apartment above the Salty Tome, Smolvud - her bedroom (set: lena_apartment). Hour: 6:42 AM Pacific, before her alarm - the same minute Finn's radio goes quiet",
+      "subject": "places",
+      "refs": [
+        "static_truths_zine"
+      ]
     },
     {
       "slug": "plate_v7_ch01",
@@ -45140,12 +45135,12 @@
         "vol7_ch1_finn"
       ],
       "lettering": "\"CHAPTER 1\" (small, above) and \"The Cabin, Morning\" (large)",
-      "prompt": "What the chapter is about: At her grandfather's cabin in the rain, Tem tells Lena and Kai that she thinks the slow-stick substrate is leaking into the people near it (Lena's compulsive octopus, Kai's talking ferret, an AI using a name only her grandmother used), and admits she has been watching the three of them for three years. Then Finn arrives with a piece of charred, wrongly yellow wood the crow gave him. The title page shows: Rain-dark afternoon in the cedar cabin: four friends at a small wooden table by a lit kerosene lamp, staring at a three-inch piece of charred wood with yellow grain on a folded cloth between them. Through the rain-streaked window, a crow stands half-spread on the dashboard of an old truck. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: At her grandfather's cabin in the rain Tem tells Lena and Kai she thinks the slow-stick substrate is leaking into the people near it, admits she has watched them for three years, and then Finn arrives with a piece of charred, wrongly yellow wood the crow gave him. The title page shows: The main room of Tem's cedar cabin at 2:14 on a rain-dark Thursday afternoon, the kerosene lamp lit beside the small wooden table. On a small folded cloth at the table's centre lies a three-inch piece of charred wood, edges burnt black, its unburnt grain a wrong yellow. Beside it the John Frank novel, a clay dish of rosemary, three SCUMM sticks in waxed-paper sleeves. Through the south window, rain in the cedars and an old Toyota truck in the turnaround.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch1_finn.json",
-          "text": "In his palm was a small piece of charred wood."
+          "text": "The wood was about three inches long, irregular, the edges burnt black, the grain visible in the unburnt parts."
         },
         {
           "src": "vol7/vol7_ch1_finn.json",
@@ -45154,9 +45149,22 @@
         {
           "src": "vol7/vol7_ch1_finn.json",
           "text": "The piece of charred wood lay on the table between them, on the small folded cloth Tem had set down for it."
+        },
+        {
+          "src": "vol7/vol7_ch1_finn.json",
+          "text": "The kerosene lamp was lit, this afternoon, against the rain-darkened light."
+        },
+        {
+          "src": "vol7/vol7_ch1_morning.json",
+          "text": "On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - the main room (set: cabin_interior_day). Hour: 2:14 PM, Thursday, rain-darkened afternoon",
+      "subject": "places",
+      "refs": [
+        "kerosene_lamp",
+        "scumm_stick"
+      ]
     },
     {
       "slug": "plate_v7_ch02",
@@ -45178,23 +45186,36 @@
         "vol7_ch2_afternoon"
       ],
       "lettering": "\"CHAPTER 2\" (small, above) and \"Smolvud, Friday\" (large)",
-      "prompt": "What the chapter is about: The leak reaches town. Black patches (holes opening onto nothing) eat into Smolvud's murals, and the mural-tending drones cannot see them. A SCUMM machine tells fifteen-year-old Wren to tell Tem the substrate is leaking, and Finn's radio speaks a name, Brandon Tillman, that makes Tem go still. The title page shows: Main Street in steady rain: a thirty-foot mural of a sanderling on a wet beach, a flat black square three feet across where the bird's body should be. Lena and Kai stand on the corner looking at it while a maintenance drone passes low overhead and does not register the hole. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The leak reaches town: black patches that open onto nothing eat into Smolvud's murals while the mural-tending drones fly past without seeing them, a SCUMM machine sends Wren a message for Tem, and Finn's radio speaks the name Brandon Tillman. The title page shows: Main Street, Smolvud, at 11:30 on a Friday morning, steady rain, slate-gray light, from the sidewalk by Board Lords. Across Main, on the brick wall between the laundromat and the shoe-repair shop, a thirty-foot mural of a sanderling on a wet low-tide beach: head, tail and feet intact, and where the body was a flat black square three feet across that opens onto nothing. A small mural-tending drone passes low overhead without turning.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch2_morning.json",
+          "text": "The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide."
+        },
         {
           "src": "vol7/vol7_ch2_morning.json",
           "text": "The sanderling now had a flat black square in the center of its body about three feet on a side."
         },
         {
           "src": "vol7/vol7_ch2_morning.json",
-          "text": "The bird's head and tail and feet were intact. The center was gone."
+          "text": "The patch was a hole in the wall that opened onto nothing."
+        },
+        {
+          "src": "vol7/vol7_ch2_morning.json",
+          "text": "The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop."
         },
         {
           "src": "vol7/vol7_ch2_morning.json",
           "text": "The drone passed over the sanderling mural without altering its course."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Main Street, Smolvud - the sidewalk in front of Board Lords, looking across Main at the laundromat wall (set: main_street). Hour: about 11:30 AM, Friday, steady rain, slate-gray light",
+      "subject": "places",
+      "refs": [
+        "board_lords_interior_mural",
+        "board_lords_interior_laundromat_sign"
+      ]
     },
     {
       "slug": "plate_v7_ch03",
@@ -45216,23 +45237,31 @@
         "vol7_ch3_studio"
       ],
       "lettering": "\"CHAPTER 3\" (small, above) and \"Saturday\" (large)",
-      "prompt": "What the chapter is about: Over morning coffee in Lena's apartment, Lena and Tem trade the hard things each had kept back (an older teacher-lover in each of their pasts) and finally say aloud that they want their one night in April \"to be a thing again.\" Afterwards, in her studio, Lena stands for forty minutes before the six-by-eight canvas she has failed at for two years and, instead of deciding about Jorgen, understands that Tem's careful distance had been fear. The title page shows: Lena's small apartment, gray rain-light: Tem on the couch under a wool blanket, hair flat on one side, coffee held in both hands; Lena in the chair opposite, holding hers. Neither moves. Through the kitchen window, rain runs down the Starfish Nebula mural in the alley and its black patches. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Over morning coffee in Lena's apartment Lena and Tem trade the hard things each had kept back and say aloud that they want their April night to be a thing again; afterwards Lena stands forty minutes before the six-by-eight canvas she has failed at for two years. The title page shows: Lena's small apartment at 6:40 on a gray Saturday morning in the rain. Two cups of coffee: one on the end table beside the couch, where a wool blanket lies, the other set on the floor beside the chair across from it. Beyond, the kitchen: the kettle, a cone filter, and the window over the sink looking onto the alley wall, where rain runs in a thin steady sheet down the Starfish Nebula mural and its four flat black patches.",
       "prompt_mode": "append",
       "canon": [
-        {
-          "src": "vol7/vol7_ch3_apartment.json",
-          "text": "They both held their cups. Neither of them moved."
-        },
         {
           "src": "vol7/vol7_ch3_apartment.json",
           "text": "The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050."
         },
         {
-          "src": "vol7/vol7_ch3_studio.json",
-          "text": "The small careful distance had not been Tem deciding. It had been Tem being scared."
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "She set Tem's on the end table beside the couch and took her own to the chair across from her."
+        },
+        {
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "Lena set the cup down on the floor beside her chair."
+        },
+        {
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "The four patches were where they had been. The rain ran down the wall in a thin steady sheet."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Lena's apartment - the main room and the kitchen window onto the alley (set: lena_apartment). Hour: about 6:40 AM, Saturday, gray rain-light",
+      "subject": "places",
+      "refs": [
+        "lena_apartment_nebula_1"
+      ]
     },
     {
       "slug": "plate_v7_ch04",
@@ -45254,23 +45283,36 @@
         "vol7_ch4_finn"
       ],
       "lettering": "\"CHAPTER 4\" (small, above) and \"Tem at the Cabin\" (large)",
-      "prompt": "What the chapter is about: Alone on the drive to the cabin, Tem sees her careful managing for what it is (cowardice), and then tells Finn everything she has kept: Brandon Tillman, the cedar bowl that has been warm since July, Nate Dean's sealed tower, and how little she actually knows. Finn fits the crow's three charred pieces into one plank and tells her it is all right not to know. The title page shows: The cabin table by the kerosene lamp: three charred pieces of yellow-grained wood fitted edge to edge into a crooked plank on wax paper, Finn touching one finger lightly to the joins. Across from him Tem, tired, looks up at the small cedar bowl on the shelf above the lamp. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Alone at the cabin Tem sees her careful managing for the cowardice it was, then tells Finn everything she has kept - Brandon Tillman, the cedar bowl warm since July, Nate Dean's sealed tower - while Finn fits the crow's three charred pieces into one plank. The title page shows: Tem's cabin on a rainy Saturday afternoon, the small wooden table beside the kerosene lamp. On a sheet of wax paper, three charred pieces of yellow-grained wood fitted edge to edge into a crooked plank ten inches by three. Two coffee cups. On the shelf above the lamp, a small spiral-carved cedar bowl. A wet coat hangs on the peg by the door; through the south window, rain coming down through the cedars.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch4_finn.json",
+          "text": "He set the package on the table beside the lamp."
+        },
         {
           "src": "vol7/vol7_ch4_finn.json",
           "text": "Together the three made a crooked plank about ten inches by three."
         },
         {
           "src": "vol7/vol7_ch4_finn.json",
-          "text": "She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count."
+          "text": "The piece was, like the others, charred wood. The grain was the same yellow grain as the first two."
         },
         {
-          "src": "vol7/vol7_ch4_alone.json",
-          "text": "Tem had been the older woman in the room and the older woman in the room had been the coward."
+          "src": "vol7/vol7_ch4_finn.json",
+          "text": "She took down the small cedar bowl from the shelf above the kerosene lamp"
+        },
+        {
+          "src": "vol7/vol7_ch4_finn.json",
+          "text": "The warmth was not heat from a fire."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - the main room, the table by the kerosene lamp (set: cabin_interior_day). Hour: Saturday afternoon (Finn arrives 2:20, leaves 5:12), steady rain",
+      "subject": "places",
+      "refs": [
+        "cedar_bowl",
+        "kerosene_lamp"
+      ]
     },
     {
       "slug": "plate_v7_ch05",
@@ -45292,23 +45334,36 @@
         "vol7_ch5_cabin"
       ],
       "lettering": "\"CHAPTER 5\" (small, above) and \"Roy\" (large)",
-      "prompt": "What the chapter is about: Roy Hummel, the smiling man the town keeps at a distance, walks into Kai's skate shop and asks, on behalf of someone he won't name, whether Finn has \"materials belonging to the museum-town historical society.\" Kai reads the question as the message (they are being watched), runs to Finn, learns about Brandon, the wood and the tower, and they drive to the cabin. The title page shows: Board Lords on a rainy Sunday: a heavy man in his sixties in an orange Hawaiian shirt under a wax canvas coat, boat shoes, fixed smile, one hand resting on the counter. Behind it, Kai's own hand has closed on the counter's edge. Through the window, the sanderling mural with its black square. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Roy Hummel walks into Kai's skate shop and asks, for someone he won't name, whether Finn holds 'materials belonging to the museum-town historical society'; Kai reads the question as the message, shuts the shop and runs to Finn, and they drive to the cabin. The title page shows: Board Lords, Kai's skate shop on Main, at 11:18 on a rainy Sunday morning, empty. The repair counter under its small fluorescent; the wall of decks with its glass just cleaned; the lathe in the back; in the back room a kettle that boiled twenty minutes ago and was never poured. The sign in the front door flipped to its closed side. Through the rain-streaked front window, across Main, the sanderling mural with its black patch.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch5_roy.json",
-          "text": "Orange Hawaiian shirt under a wax canvas coat he had not, on entering, taken off."
+          "text": "He flipped the CLOSED to OPEN. Turned on the small fluorescent over the repair counter in the back. Put on the kettle in the back room. Woke the lathe."
         },
         {
           "src": "vol7/vol7_ch5_roy.json",
-          "text": "He was smiling. The smile was the smile of a person who had been smiling for so long the smile was no longer about anything specific."
+          "text": "He cleaned the glass on the deck wall."
         },
         {
           "src": "vol7/vol7_ch5_roy.json",
-          "text": "Kai held the counter with his right hand and felt his right hand close on it."
+          "text": "Kai could hear the kettle in the back room which had come up to a boil twenty minutes ago and which he had not, in all that time, gotten to."
+        },
+        {
+          "src": "vol7/vol7_ch5_roy.json",
+          "text": "At eleven-eighteen he flipped the OPEN to CLOSED, locked the front door"
+        },
+        {
+          "src": "vol7/vol7_ch5_roy.json",
+          "text": "The patch on the sanderling mural across from Board Lords was where it had been Friday."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Board Lords, Kai's skate shop on Main (set: board_lords_interior). Hour: 11:18 AM, Sunday, rain",
+      "subject": "places",
+      "refs": [
+        "board_lords_interior_closed_sign",
+        "board_lords_interior_mural"
+      ]
     },
     {
       "slug": "plate_v7_ch06",
@@ -45337,7 +45392,7 @@
         "vol7_ch6_get_going"
       ],
       "lettering": "\"Ch 6 — Sunday Morning\"",
-      "prompt": "What the chapter is about: Stranded in town, Lena goes to ChillWave, where Cale breaks thirty years of silence about Nate Dean: the teenage prodigy whose basement work on \"pattern persistence\" (encoding a mind's attention) was meant for a daughter he said would come from the work. Cale gives Lena the Estuary 7 stick and warns her about the tower's sixth-floor gallery. The title page shows: The back room of ChillWave Video: cedar shelves of slow sticks, a workbench with an unplugged soldering iron. Cale sits picking at his thumb's cuticle as he talks; Lena listens on a folding metal chair. Behind her, a wooden box holds three sticks, the third labeled in his hand: ESTUARY 7. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Stranded in town, Lena goes to ChillWave, where Cale breaks thirty years of silence about Nate Dean's basement work on 'pattern persistence' and the daughter he said would come from it, gives her the Estuary 7 stick, and warns her about the tower's sixth-floor gallery. The title page shows: The back room of ChillWave Video a little before nine on a damp Sunday morning: cedar shelves of slow sticks alphabetized by designer, a wooden crate for new arrivals by the door. In the corner a workbench: soldering iron unplugged, precision tools, parts swept into a tray, a transformer on the wall; two chairs, one a folding metal one. On the bench behind them, a wooden box holding three sticks, the third with a small hand-lettered white label.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -45345,15 +45400,27 @@
           "text": "Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in."
         },
         {
-          "src": "vol7/vol7_ch6_nate.json",
-          "text": "She watched him pick at the cuticle of his thumb."
+          "src": "vol7/vol7_ch6_chillwave.json",
+          "text": "He unplugged the soldering iron from the strip on the wall, moved a few small parts off the bench into a tray, pulled a second chair over from the corner, and sat."
+        },
+        {
+          "src": "vol7/vol7_ch6_brandon.json",
+          "text": "The transformer on the wall hummed faintly even with the iron unplugged."
+        },
+        {
+          "src": "vol7/vol7_ch6_why_lena.json",
+          "text": "The chair under her was a folding metal one"
         },
         {
           "src": "vol7/vol7_ch6_the_stick.json",
-          "text": "The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label."
+          "text": "The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: ChillWave Video - the back room where the inventory lives (set: chillwave_backroom). Hour: a little before nine, Sunday morning, rain thinned",
+      "subject": "places",
+      "refs": [
+        "box_of_three_sticks"
+      ]
     },
     {
       "slug": "plate_v7_ch07",
@@ -45383,23 +45450,32 @@
         "vol7_ch8_dark"
       ],
       "lettering": "\"Ch 7 — Six O'Clock\"",
-      "prompt": "What the chapter is about: The four meet in Lena's small apartment. Over the Wednesday soup Kai warms and serves, Lena passes on Cale's story of Nate and the daughter, and Tem apologises for carrying the tower and Brandon alone for two years; Kai and Finn won't let her turn the apology into another performance, and Finn names what it was: loneliness. They then face what Roy may be (a \"vessel\" for something that now knows their names), and Tem stays the night. The title page shows: Evening in Lena's cramped apartment: four people at a wobbling round oak table on four unmatched chairs, with bowls of soup and thick-cut bread. Tem has set her spoon down and pushed her bowl an inch away, one hand steadying the table as she starts to apologise. By the door, four coats hang on four hooks. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The four meet in Lena's small apartment; over the Wednesday soup Kai warms and serves, Lena passes on Cale's story of Nate and the daughter, Tem apologises for carrying it all alone, Finn names it loneliness, and they face what Roy may be. The title page shows: Lena's cramped apartment at twenty past six on a Sunday evening. A small round oak table from the seventies, one leg wobbling, four unmatched chairs, four bowls of warmed soup and four spoons, bread cut thick on a small wooden board; one bowl pushed an inch away from its place, its spoon set down beside it. The soup pot on the stove. By the door, a row of four hooks with a coat on every hook.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch8_six_oclock.json",
+          "text": "Four hooks, four coats."
+        },
+        {
+          "src": "vol7/vol7_ch8_the_table.json",
+          "text": "He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons in the second drawer down, and set the table the way somebody sets a table who has been doing it for somebody else his whole life."
+        },
+        {
+          "src": "vol7/vol7_ch8_the_table.json",
+          "text": "The four chairs were not a matched set."
+        },
         {
           "src": "vol7/vol7_ch8_the_table.json",
           "text": "The table was a small round oak from the seventies that had a wobble in one leg she had been meaning to shim for a year."
         },
         {
           "src": "vol7/vol7_ch8_the_table.json",
-          "text": "The wobble in the table met Tem's elbow. Tem put a hand on the table to steady it and looked at Lena."
-        },
-        {
-          "src": "vol7/vol7_ch8_six_oclock.json",
-          "text": "Four hooks, four coats."
+          "text": "She pushed the bowl an inch away from her."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Lena's apartment - the kitchen table and the hooks by the door (set: lena_apartment). Hour: about 6:20 PM, Sunday evening",
+      "subject": "places"
     },
     {
       "slug": "plate_v7_ch08",
@@ -45421,23 +45497,35 @@
         "vol7_ch8_aria"
       ],
       "lettering": "\"CHAPTER 8\" (small, above) and \"Monday\" (large)",
-      "prompt": "What the chapter is about: Minding Petra's bookstore alone, Lena is probed by Roy, who asks for books called Pattern Persistence and The Seven Floors of the Glass House and shows that he knows about Tem and about her letters with Jorgen. She pushes back, then realises she has let \"the wrong thing\" know her better. Tem arrives with the name Cale finally said aloud: Aria. The title page shows: Petra's bookstore, rain on the window: Lena behind the counter and Tem across it, Tem's hands flat on the wood, the two just looking at each other, a small brass bell upended between them. An old cat on a wool pillow in the front window display opens one eye. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Minding Petra's bookstore alone, Lena is probed by Roy, who asks for books called Pattern Persistence and The Seven Floors of the Glass House and shows he knows about Tem and Jorgen; then Tem arrives with the name Cale finally said aloud: Aria. The title page shows: Petra's bookstore, the Salty Tome, early on a rainy Monday afternoon, rain on the front window over Hemlock. On the sales counter: a small brass bell upended on the wood, a cup of coffee gone cold, a stool pulled round, and the slow catalog terminal that has just found none of three titles. A coat on the hook by the office door. In the front-window display an old cat lies on a small wool pillow, one eye open.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch8_aria.json",
-          "text": "She came up to the counter and stood across it from Lena with her hands flat on the wood between them and looked at her for a long count, and the looking was the form of touching the bookstore allowed."
-        },
-        {
-          "src": "vol7/vol7_ch8_aria.json",
-          "text": "She picked up the small brass bell on the counter and turned it over in her hand and set it back down."
+          "text": "the cup of cold coffee in front of Tem, the brass bell upended on the wood"
         },
         {
           "src": "vol7/vol7_ch8_monday.json",
-          "text": "The second was Pattern Persistence: Selected Essays by an author Lena did not catch because she had stopped breathing for a half-second."
+          "text": "The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was."
+        },
+        {
+          "src": "vol7/vol7_ch8_monday.json",
+          "text": "She turned to the small terminal Petra kept on the counter and ran the three titles. None came up."
+        },
+        {
+          "src": "vol7/vol7_ch8_monday.json",
+          "text": "The terminal hummed in the small careful way Petra's terminals hummed because Petra did not like fast electronics and bought the slow ones on purpose."
+        },
+        {
+          "src": "vol7/vol7_ch8_aria.json",
+          "text": "Tem took her coat off and hung it on the hook by the office door where Petra had had hers hanging this morning."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: The Salty Tome, Petra's bookstore on Hemlock - the sales counter and the front window (set: salty_tome_interior). Hour: early Monday afternoon (Tem arrives 1:58, Petra back near 3), rain on Hemlock",
+      "subject": "places",
+      "refs": [
+        "salty_tome_interior_slowterminal_screen"
+      ]
     },
     {
       "slug": "plate_v7_ch09",
@@ -45459,7 +45547,7 @@
         "vol7_ch9_evening"
       ],
       "lettering": "\"CHAPTER 9\" (small, above) and \"Tuesday\" (large)",
-      "prompt": "What the chapter is about: Kai's Tuesday is about holding people together. He mends a boy's cracked 2034 Tess board and leaves the repair visible, Hans warns him that pushing back on Roy only feeds Roy, and he finds Finn has stopped eating while arranging the crow's wood (\"the wood is taking more of you\"). He takes Finn to dinner at the Missing Link and then to Lena's. The title page shows: Finn's small kitchen at dusk: Finn at the table, hollow-eyed, bent over a cloth where five charred, yellow-grained pieces of wood make an incomplete hexagon, open at three corners. The crow perches on the back of the chair opposite. Kai stands in the doorway in his wet coat. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Kai's Tuesday is about holding people together: he mends a boy's cracked 2034 Tess and leaves the repair visible, Hans warns him that pushing back only feeds Roy, and he finds Finn has stopped eating while arranging the crow's wood ('the wood is taking more of you'). The title page shows: Finn's kitchen above the closed kayak shop, a little after six on a rainy Tuesday evening. On a cloth on the kitchen table, five charred pieces of yellow-grained wood laid edge to edge into a rough, irregular hexagon about ten inches across, open at three corners where more pieces should go. One chair pushed back from the table, another empty across from it; a duffel in the corner. No plate, no food anywhere on the table.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -45468,14 +45556,19 @@
         },
         {
           "src": "vol7/vol7_ch9_evening.json",
+          "text": "The pieces met at edges that fit, but the assembled shape was open at three corners, with room for more pieces."
+        },
+        {
+          "src": "vol7/vol7_ch9_evening.json",
           "text": "The five pieces, where they fit, made a rough irregular hexagon about ten inches across."
         },
         {
-          "src": "vol7/vol7_ch9_tuesday.json",
-          "text": "The clamp marks were still on it. The repair was visible if you looked. The board was sound."
+          "src": "vol7/vol7_ch9_evening.json",
+          "text": "The five pieces of wood were where they had left them."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Finn's apartment above the closed kayak shop - the kitchen table (set: finn_apartment). Hour: a little after 6 PM, Tuesday, rain",
+      "subject": "places"
     },
     {
       "slug": "plate_v7_ch10",
@@ -45498,12 +45591,12 @@
         "vol7_ch10_cabin"
       ],
       "lettering": "\"CHAPTER 10\" (small, above) and \"Wednesday Morning\" (large)",
-      "prompt": "What the chapter is about: After all four sleep at Lena's, Lena wakes counting octopus without writing it, and Kai decides to play a slow stick to follow his ferret dream, though Tem warns that the substrate gives its experiences \"by taking\". Hans reveals that Per's mother's bowl has gone warm too, and Kai brings Per up to the cabin with an old carved box and a name he has kept for fifty years. The title page shows: The cabin at late morning, the kettle about to whistle: Per, sixty, flour on the shoulder of his canvas work coat, sets an old cedar box with a spiral carved on its lid on the table and leaves it closed. Tem, Kai and Lena watch. The stick reader waits on its shelf; slow sticks in wax-paper sleeves lie nearby. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: After all four sleep at Lena's, Lena wakes counting octopus and Kai decides to play a slow stick to follow his ferret dream; Hans reveals Per's mother's bowl has gone warm too, and Per comes up to the cabin with an old carved cedar box and a name kept fifty years. The title page shows: Tem's cabin at a quarter past eleven on a rainy Wednesday morning, the wood stove banked low, the kettle on it about to whistle. On the table, among the bowls, an old cedar box a foot long and six inches deep, hinged lid shut, a spiral carved into the lid, a pale stripe worn down one side by fifty years of carrying. Slow sticks lie in wax-paper sleeves on the table; the stick reader waits on its shelf.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch10_cabin.json",
-          "text": "Per set the wooden box on the table, between the bowls, and did not open it."
+          "text": "The box was about a foot long and six inches deep, with a hinged lid. The box was old."
         },
         {
           "src": "vol7/vol7_ch10_cabin.json",
@@ -45512,9 +45605,21 @@
         {
           "src": "vol7/vol7_ch10_cabin.json",
           "text": "The reader was on the shelf where it had been since '46. The sticks were in their wax-paper sleeves on the table."
+        },
+        {
+          "src": "vol7/vol7_ch10_cabin.json",
+          "text": "Per set the wooden box on the table, between the bowls, and did not open it."
+        },
+        {
+          "src": "vol7/vol7_ch10_cabin.json",
+          "text": "A pale stripe down one side where a hand had carried it for fifty years."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - the main room (set: cabin_interior_day). Hour: about 11:15 AM, Wednesday, rain",
+      "subject": "places",
+      "refs": [
+        "scumm_stick"
+      ]
     },
     {
       "slug": "plate_v7_ch11",
@@ -45538,7 +45643,7 @@
         "vol7_ch11_bowl"
       ],
       "lettering": "\"CHAPTER 11\" (small, above) and \"The Cabin, Afternoon\" (large)",
-      "prompt": "What the chapter is about: Per names his dead father's secret network, the Order of the Bowl. Kai then plays Kestrel Mountain, meets the imprint of sixteen-year-old Nate in a basement inside the experience, and comes out holding a second warm cedar bowl that the substrate has carved: the bowl Per's father did not live to make, its figures updated with Lena's octopus, Aria in a yellow slicker, and a tower with seven floors. The title page shows: The cabin table under the kerosene lamp: two warm cedar bowls side by side, Marit's the size of two cupped hands, the substrate's small enough for a palm, both spiral-cut, figures rising from the wood, carved crows turned opposite ways. Per sits stunned; behind him Kai sits up on the daybed, the fabric cap pulled off beside the reader. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Per names his father's secret network, the Order of the Bowl; Kai plays Kestrel Mountain, meets the imprint of sixteen-year-old Nate in a basement inside the stick, and comes out holding a second warm cedar bowl the substrate has carved in Olaf's hand, its figures updated. The title page shows: Tem's cabin in mid-afternoon, the rain thinned to almost nothing, the kerosene lamp lit. On the table two warm spiral-cut cedar bowls side by side, one the size of two cupped hands, one small enough for a palm, one hand: tiny relief figures rising from the wood, a carved crow turned opposite ways on each, an octopus with eight arms on one and seven and a half on the other. An old wooden box open beside them; a stick reader, its fabric cap set down.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -45551,10 +45656,23 @@
         },
         {
           "src": "vol7/vol7_ch11_per.json",
-          "text": "A spiral was cut into the outside that ran from the rim down to the base in a single continuous curve, and inside the spiral, by some patience of the carver's wrist that Kai had not in his life seen carving like, were figures."
+          "text": "The bowl was about the size of two cupped hands."
+        },
+        {
+          "src": "vol7/vol7_ch11_bowl.json",
+          "text": "It was the size of his palm. It had the spiral on the outside."
+        },
+        {
+          "src": "vol7/vol7_ch11_bowl.json",
+          "text": "He set the cap on the side table beside the reader."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - the table under the kerosene lamp (set: cabin_interior). Hour: mid-afternoon Wednesday, after the ninety minutes; rain thinned to almost nothing; lamp lit",
+      "subject": "places",
+      "refs": [
+        "cedar_bowl",
+        "kerosene_lamp"
+      ]
     },
     {
       "slug": "plate_v7_ch12",
@@ -45577,23 +45695,31 @@
         "vol7_ch12_kai"
       ],
       "lettering": "\"CHAPTER 12\" (small, above) and \"Thursday\" (large)",
-      "prompt": "What the chapter is about: The crow finishes nine months of bringing Finn charred wood: the eighth piece, a cedar face of Aria with closed eyes carved in dead Olaf's hand, completes the hexagon at its centre, and the crow speaks for the first time, \"Brandon\" and then \"Aria.\" At Cape Perpetua the fog lifts to show her in a yellow slicker on a sea-stack, and the leak is now plainly making things, not just dreams. The title page shows: Cape Perpetua overlook, early morning. Finn stands at the wet wooden rail with the crow perched beside him. At his boots lies a hexagon of charred yellow-grained wood with a closed-eyed cedar face at its centre. Fog lifts off the sea-stacks, and on the second stack a small hooded figure in a yellow slicker looks out to sea. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The crow finishes nine months of bringing Finn charred wood - the eighth piece, a closed-eyed cedar face in dead Olaf's hand, completes the hexagon - and speaks for the first time; at Cape Perpetua the fog lifts off the sea-stacks, and the leak is now plainly making things. The title page shows: The unmarked overlook at Cape Perpetua around half past eight on a Thursday morning: an earthen platform ten feet across at the bluff's edge, a wooden rail along the seaward side, a wet bench against freshly pruned salal with a canvas grocery bag on it. On the earth before the rail lies a hexagon of charred yellow-grained wood with a small closed-eyed cedar face at its centre and one extra piece beside it. Fog lifting off a row of sea-stacks.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch12_morning.json",
+          "text": "The overlook was an earthen platform at the edge of the bluff, about ten feet across, with a wooden rail along the seaward edge."
+        },
+        {
+          "src": "vol7/vol7_ch12_morning.json",
+          "text": "The platform had a bench at its inner edge, set against the salal. The bench was wet."
+        },
         {
           "src": "vol7/vol7_ch12_morning.json",
           "text": "The eight pieces — six in a ring, one in the center, and one extra — were now, on the cloth on the kitchen table, an assembled hexagon with a face in the middle."
         },
         {
           "src": "vol7/vol7_ch12_morning.json",
-          "text": "He stood with the hexagon at his feet and looked out at the fog."
-        },
-        {
-          "src": "vol7/vol7_ch12_morning.json",
-          "text": "The figure was in a yellow slicker. The hood was up. The hair under the hood was the substrate's idea of curling."
+          "text": "The fog lifted enough that the row of sea-stacks two hundred yards out from the headland began to show."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Cape Perpetua - the unmarked overlook on the spur trail (set: cape_perpetua_overlook). Hour: about 8:30 AM, Thursday, fog lifting",
+      "subject": "places",
+      "refs": [
+        "cape_perpetua_overlook_canvas"
+      ]
     },
     {
       "slug": "plate_v7_ch13",
@@ -45616,7 +45742,7 @@
         "vol7_ch13_porch"
       ],
       "lettering": "\"CHAPTER 13\" (small, above) and \"The Cabin, Evening\" (large)",
-      "prompt": "What the chapter is about: The listening-room gathers at Tem's cabin. Cale finally tells the dream Nate told him in 1994, Per and Lena add what they have carried, and Marina arrives through the rain with the third of Olaf's bowls, which has her grandfather carved at its base. The figures on all three bowls are moving; her carved grandfather has lifted his eyes to the rim (\"the bowls are looking up\"), and Cale, after thirty years at the edge, is inside the room. The title page shows: Night in the cedar cabin, lit by one kerosene lamp. Three spiral-carved cedar bowls stand in a rough triangle on the table, with the charred-wood hexagon on a cloth beside them. Marina stands with an open wooden box, her wax coat dark with rain. Per holds her grandfather's bowl in both hands while Cale watches from the table. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The listening-room gathers at Tem's cabin: Cale tells the dream Nate told him in 1994, Per and Lena add what they have carried, and Marina arrives through the rain with the third of Olaf's bowls; the carved figures on all three are moving, and 'the bowls are looking up'. The title page shows: Tem's cabin near eleven on a rainy Thursday night, one kerosene lamp burning. Three spiral-carved cedar bowls stand in a rough triangle on the table, their tiny relief figures moving at the pace cedar moves; beside them the charred hexagon on its cloth, two old wooden boxes, one open, six cups. Through the south window a square of yellow falls on the wet porch boards, and on the porch rail sits a thumb-sized cedar carving of an open hand.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -45625,14 +45751,27 @@
         },
         {
           "src": "vol7/vol7_ch13_marina.json",
-          "text": "He registered, looking at the three of them in the kerosene-lamp light, that the imagery on each was moving at the pace cedar moved at."
+          "text": "Marit's bowl in the middle. The substrate-bowl to the left. Marina's grandfather's bowl now to the right."
         },
         {
           "src": "vol7/vol7_ch13_porch.json",
-          "text": "The cabin held the six of them. The three bowls were on the table. The hexagon was on the cloth. The kerosene lamp burned."
+          "text": "The three bowls were on the table. The hexagon was on the cloth. The kerosene lamp burned."
+        },
+        {
+          "src": "vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "vol7/vol7_ch13_cale.json",
+          "text": "The cedar on the rail had a figure carved into it. The figure was a hand."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin at night - the table, with the porch beyond the south window (sets: cabin_interior, cabin_porch). Hour: near 11 PM, Thursday, rain steady, one kerosene lamp",
+      "subject": "places",
+      "refs": [
+        "cedar_bowl",
+        "kerosene_lamp"
+      ]
     },
     {
       "slug": "plate_v7_ch14",
@@ -45655,9 +45794,13 @@
         "vol7_ch14_petra"
       ],
       "lettering": "\"CHAPTER 14\" (small, above) and \"Friday\" (large)",
-      "prompt": "What the chapter is about: At dawn Lena paints the face from the cedar, Aria with her eyes closed, in bone black into the patch the substrate has been eating out of her alley mural, and the eating stops at the collarbone she finishes. Cale witnesses. The yellow-slicker figure appears at the alley's dead end and looks at the face, the painted eyes open a millimetre, and she walks into the brick. The title page shows: A rain-wet alley at gray-blue dawn. Inside the cleared patch of a starfish mural, a three-foot face of a young woman is painted in bone black on brick, eyes closed, hair curling. Lena steps back with a sable brush, the cedar face on a milk crate. At the alley's blind far corner stands a yellow slicker. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: At dawn Lena paints the face from the cedar - Aria, eyes closed - in bone black into the patch the substrate has eaten out of her alley mural, and the eating stops at the collarbone she finishes; the yellow-slicker figure appears at the alley's dead end, looks, and walks into the brick. The title page shows: The dead-end alley behind the Salty Tome, early Friday morning, gray-blue after a night of rain, closed at the far end by the laundromat's brick. In the Starfish Nebula mural, inside the patch the substrate ate, a three-foot face newly painted in bone black on brick, eyes closed, hair curling, lit as if from inside. At its foot an old milk crate holding a takeaway coffee and a small cedar face-carving; a jar of bone black; a sable brush in a jar of medium.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch14_painting.json",
+          "text": "She set the cup on a milk crate that had been at the foot of the wall since 2050 — the one she used for setting things down when she had been working on the mural."
+        },
         {
           "src": "vol7/vol7_ch14_painting.json",
           "text": "The face had been painted into the place the substrate had cleared."
@@ -45667,11 +45810,21 @@
           "text": "The face on the wall was about three feet across."
         },
         {
+          "src": "vol7/vol7_ch14_painting.json",
+          "text": "The alley is closed at the far end. The far end is the brick of the laundromat."
+        },
+        {
           "src": "vol7/vol7_ch14_figure.json",
-          "text": "The figure was in a yellow slicker. The hood was up. The hair curling under the hood."
+          "text": "She put the brush in the jar of medium."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: The alley behind the Salty Tome - the Starfish Nebula mural wall (set: salty_tome_alley). Hour: Friday, early morning, gray-blue after a night of steady rain",
+      "subject": "places",
+      "refs": [
+        "aria_alley_face",
+        "salty_tome_interior_nebula_1",
+        "lenas_milk_crate"
+      ]
     },
     {
       "slug": "plate_v7_ch15",
@@ -45694,23 +45847,32 @@
         "vol7_ch15_wagon"
       ],
       "lettering": "\"CHAPTER 15\" (small, above) and \"Saturday\" (large)",
-      "prompt": "What the chapter is about: At Hans's bakery at dawn the circle grows to ten, with Marina meeting Hans and Marit. Hans puts down what he has carried since 2021: his brother Werner's chapbook, whose last poem has the daughter, Aria, at the door with her hand on the bell-pull, waiting to ring until the room is ready. He also reveals that Roy has the fourth bowl and decides to invite him. The title page shows: Hans's bakery before opening, rain on the street outside. A long table set for ten holds seeded rye, butter and plum preserves. At its centre lies a slim hand-stitched chapbook with a plain cream cover and one word in dark blue: Bowls. Marit, in a blue cardigan, holds it open and reads the last poem aloud to the silent table. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: At Hans's bakery at dawn the circle grows to ten; Hans puts down what he has carried since 2021 - his brother Werner's chapbook Bowls, whose last poem has the daughter at the door with her hand on the bell-pull, waiting to ring until the room is ready - and resolves to invite Roy and the fourth bowl. The title page shows: Hans's bakery on Hemlock at six on a rainy Saturday morning, before opening; gray-blue light at the side window, the Daily Grind's lights across the street. Beyond the worktable and the cooling racks, a long dining table set for ten: seeded rye and white loaves, butter, a jar of plum preserves, small dishes of honey, a coffee press, a basket of brotchen. At its centre a slim hand-stitched chapbook, plain cream cover, one dark-blue word: Bowls.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch15_loft.json",
+          "text": "The dining table was set for ten."
+        },
+        {
+          "src": "vol7/vol7_ch15_loft.json",
+          "text": "The main room had three long tables: the worktable, the cooling rack table, and the dining table Hans had moved in in 2046 when his daughter and Per had gotten married and the wedding meal had needed somewhere to happen."
+        },
+        {
+          "src": "vol7/vol7_ch15_bread.json",
+          "text": "He had set out a jar of plum preserves Greta had put up in '49 and that the family had been eating since."
+        },
         {
           "src": "vol7/vol7_ch15_bread.json",
           "text": "He took out a slim chapbook — by Marina's read at this distance, twenty-some pages, hand-bound with a stitch along the spine, the cover plain cream paper with a single word printed in dark blue: Bowls."
         },
         {
           "src": "vol7/vol7_ch15_bread.json",
-          "text": "The poem had the young woman on the step with her hand on the bell-pull and the family inside not knowing."
-        },
-        {
-          "src": "vol7/vol7_ch15_bread.json",
-          "text": "the daughter did not ring the bell"
+          "text": "The Daily Grind across the street had now flipped its CLOSED to OPEN and the lights were on inside."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Hans's bakery on Hemlock - the main room with the long dining table (set: hans_bakery_back_kitchen). Hour: about 6 AM, Saturday, before opening; rain on the sidewalk, gray-blue sky",
+      "subject": "places"
     },
     {
       "slug": "plate_v7_ch16",
@@ -45733,7 +45895,7 @@
         "vol7_ch16_eight"
       ],
       "lettering": "\"CHAPTER 16\" (small, above) and \"Board Lords\" (large)",
-      "prompt": "What the chapter is about: Clear-headed now that Kestrel Mountain has taken his basement dream, Kai reopens Board Lords and finds the town coming to Lena's wall. Aud reveals she is the third watcher. The carrying begins to be shared: Kai sets fifteen-year-old Wren up with her first board as \"the share,\" and that night eight people stand for an hour at the alley entrance while the figure in the slicker looks back at them. The title page shows: Inside Board Lords on a Saturday afternoon, Kai has laid three skateboard decks side by side on the counter. Across from him stands Wren, fifteen and nervous, with blue-dyed hair and her backpack at her feet, choosing the soft beginner's board. Through the front window, across Main, the sanderling mural shows bare brick where its bird has been eaten away. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Clear-headed now that Kestrel Mountain has taken his basement dream, Kai reopens Board Lords and finds the town going to Lena's wall; Aud reveals she is the third watcher, Kai sets Wren up with her first board as 'the share', and that night eight people stand an hour at the alley entrance. The title page shows: Board Lords on Main late on a Saturday afternoon. On the counter, three skateboard decks laid side by side: a mid-soft, easy-turning learner's board, a stiffer new one from the Newport supplier, a second-hand Tess. Behind the counter the wall of decks; the kettle on its small electric burner; a mug of coffee gone cold. Through the front window, across Main, the sanderling mural, its bird eaten away to bare brick that waits for somebody.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -45742,14 +45904,22 @@
         },
         {
           "src": "vol7/vol7_ch16_aud.json",
-          "text": "She came in at the bell. She was in her school clothes. Her hair was the blue of Margit's dye. She was carrying her backpack."
+          "text": "This — new one I got in two weeks ago from the Newport supplier. Stiffer. You'd grow into it."
         },
         {
-          "src": "vol7/vol7_ch16_eight.json",
-          "text": "The eight people who had committed to the hour were at the entrance the hour. They looked."
+          "src": "vol7/vol7_ch16_shop.json",
+          "text": "The sanderling's bird-shape was gone. The brick under the patch was bare. The wall was waiting for somebody."
+        },
+        {
+          "src": "vol7/vol7_ch16_aud.json",
+          "text": "He drank from the coffee at his elbow. The coffee was cold."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Board Lords, Kai's skate shop on Main (set: board_lords_interior). Hour: late Saturday afternoon (about 3:45-4:20 PM)",
+      "subject": "places",
+      "refs": [
+        "board_lords_interior_mural"
+      ]
     },
     {
       "slug": "plate_v7_ch17",
@@ -45773,23 +45943,35 @@
         "vol7_ch17_aria"
       ],
       "lettering": "\"CHAPTER 17\" (small, above) and \"Sunday\" (large)",
-      "prompt": "What the chapter is about: Roy brings the fourth bowl to the bakery, ending twenty-one years of carrying it alone, and for the first time all four bowls (Roy's, Marit's, Marina's and the one the substrate carved in Olaf's hand) stand in one row. The carved figures line up, and the four young women open their eyes, each looking at her carrier. The crow on a rim says \"Aria\" and the carved face smiles, but she does not ring. The title page shows: Hans's bakery at dawn. Four spiral-carved cedar bowls stand in a row on the long table among brioche and rye, with eleven people gathered around them. The crow stands on the rim of one bowl, looking down at the small carved young woman inside. Her eyes are open and she is smiling up at the crow. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Roy brings the fourth bowl to the bakery, ending twenty-one years of carrying it alone, and for the first time all four of Olaf's bowls stand in one row; the carved figures align, the four carved young women open their eyes, but she does not ring. The title page shows: Hans's bakery at a quarter past six on a rainy Sunday morning. Down the long table set for thirteen, among a cut brioche, seeded rye, a dark country loaf and a coffee press, four spiral-carved cedar bowls stand in a row. Every small carved crow on them has turned its head toward the empty chair at the table's head; every carved octopus reaches its arms the same way. An old wooden box with a spiral-carved lid stands open beside that chair.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch17_bakery.json",
+          "text": "He had set the long dining table for thirteen — twelve chairs at the table and one extra at the head for whoever needed it."
+        },
+        {
+          "src": "vol7/vol7_ch17_bakery.json",
+          "text": "He had put out three loaves of the morning's bread: the seeded rye, the dark country, and a brioche he had made specifically for today."
+        },
+        {
+          "src": "vol7/vol7_ch17_roy.json",
+          "text": "The box had a spiral carved into the lid."
+        },
         {
           "src": "vol7/vol7_ch17_aria.json",
           "text": "The four had been carved by one hand over a span of '06 to '09, plus the one the substrate had carved this past Wednesday. Four bowls in a row."
         },
         {
           "src": "vol7/vol7_ch17_aria.json",
-          "text": "The crow stood on the rim of the substrate-bowl and looked down at the young woman inside it."
-        },
-        {
-          "src": "vol7/vol7_ch17_aria.json",
-          "text": "The face on the cedar of the substrate-bowl was smiling at the crow."
+          "text": "The four crows were looking at Roy's chair."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Hans's bakery - the long table in the main room (set: hans_bakery_back_kitchen). Hour: about 6:15 AM, Sunday, rain",
+      "subject": "places",
+      "refs": [
+        "cedar_bowl"
+      ]
     },
     {
       "slug": "plate_v7_ch18",
@@ -45812,23 +45994,35 @@
         "vol7_ch18_home"
       ],
       "lettering": "\"CHAPTER 18\" (small, above) and \"Sunday Afternoon\" (large)",
-      "prompt": "What the chapter is about: Tem gives Finn the stick Brandon left behind. Inside Tideline Survey he finds Brandon's notebook, a record of thirty-eight visits to a second tide pool where the lost can be sat with, and an old man in waders who tells him the crow's name is Aria and that the crow is the bell. From the bottom of the pool Finn lifts Olaf's cedar carving of an open hand holding a bell, and he wakes with it in his pocket. The title page shows: A basalt headland under a gray-white sky. An old white-haired man in waders kneels at the edge of a clear tide pool the size of a dining table. Finn, in the stick's older borrowed body and a wax canvas coat, reaches into the cold water toward a thumb-sized cedar carving: an open hand holding a thimble-sized bell. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Tem gives Finn the stick Brandon left behind; inside Tideline Survey he finds Brandon's notebook of thirty-eight visits to a second tide pool where the lost can be sat with, learns the crow's name is Aria and that the crow is the bell, and lifts Olaf's cedar hand-and-bell from the bottom of the pool. The title page shows: Inside the slow stick Tideline Survey: a basalt headland under a gray-white Pacific sky, fog on the inland side. A path worn into the rock leads from a small tide pool (an open anemone, a green shore crab, two purple sea stars, a hermit crab) to a second pool the size of a dining table, its water perfectly clear. On its bottom lies a thumb-sized cedar carving: an open hand holding a bell no bigger than a thimble.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch18_pool.json",
-          "text": "Brandon had been using the second pool to be with the people he had lost."
+          "text": "A sea anemone open at one corner, a green shore crab in the other corner, two purple sea stars on the wall, a hermit crab in a turban shell on the bottom."
         },
         {
           "src": "vol7/vol7_ch18_pool.json",
-          "text": "At the edge: an old man. In waders to the waist. Kneeling at the edge. White hair under a wool cap. Looking at the water."
+          "text": "The path to the second pool visible in the basalt — a slight wear in the rock from the boots of people who had walked it."
+        },
+        {
+          "src": "vol7/vol7_ch18_pool.json",
+          "text": "The second pool. Bigger than the first. The size of a dining table. Clear water."
+        },
+        {
+          "src": "vol7/vol7_ch18_pool.json",
+          "text": "The water in the pool was clear. At the bottom — a thing. The size of his thumb. Cedar. A figure carved on it."
         },
         {
           "src": "vol7/vol7_ch18_pool.json",
           "text": "The hand was holding a bell the size of a thimble."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Inside the slow stick Tideline Survey - the basalt headland and its second pool (sets: tideline_survey, tideline_survey_second). Hour: inside the stick: gray-white Pacific sky and sun, fog on the inland side (Sunday afternoon in the world)",
+      "subject": "places",
+      "refs": [
+        "cedar_bell"
+      ]
     },
     {
       "slug": "plate_v7_ch19",
@@ -45852,23 +46046,37 @@
         "vol7_ch19_ring"
       ],
       "lettering": "\"CHAPTER 19\" (small, above) and \"Sunday Evening\" (large)",
-      "prompt": "What the chapter is about: The bell comes to the cabin. Per and Roy, Olaf's son and the keeper of Olaus's bowl, meet and embrace. Finn sets Olaf's bell carving beside the four bowls; Tem reads Brandon's notebook aloud and Finn gives the room Brandon's three instructions. At three in the morning the bowls go still, every carved young woman with her hand raised to a bell-pull and facing the door; the crow sounds one quiet note, and someone knocks. The title page shows: Three in the morning in the cedar cabin, the kerosene lamp turned low. Seven people in their night clothes stand in a row at the table. Four cedar bowls sit completely still, the carved women on them raising their hands toward the door. Beside the thumb-sized cedar bell carving, the crow stands with its beak open, sounding one note. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The bell comes to the cabin: Per and Roy meet and embrace, Finn sets Olaf's bell carving beside the four bowls, Tem reads Brandon's notebook aloud and Finn gives the room Brandon's three instructions; at three in the morning the bowls go still, the crow sounds one note, and someone knocks. The title page shows: Tem's cabin at one minute past three in the morning, the kerosene lamp turned low, rain on the cedar roof. Four warm cedar bowls stand dead still on the table; on each, the small carved woman has one hand raised to the height of a bell-pull, all four facing the cabin's cedar door. Beside them a thumb-sized cedar carving of an open hand holding a bell, and a palm-sized leather notebook. An empty perch stands in the kitchen corner.",
       "prompt_mode": "append",
       "canon": [
+        {
+          "src": "vol7/vol7_ch19_ring.json",
+          "text": "The kerosene lamp on the table stayed lit at the low setting Tem kept it at when she wanted to be able to see the bowls in the dark."
+        },
         {
           "src": "vol7/vol7_ch19_ring.json",
           "text": "The four had their hands raised. The four had their hands at the height a person's hand would be at the bell-pull of a door."
         },
         {
           "src": "vol7/vol7_ch19_ring.json",
-          "text": "The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak."
+          "text": "The four were facing the door of the cabin."
         },
         {
           "src": "vol7/vol7_ch19_ring.json",
-          "text": "Outside, on the porch of the cabin, somebody knocked."
+          "text": "The cedar bell-piece beside them. The notebook beside the cedar."
+        },
+        {
+          "src": "vol7/vol7_ch19_ring.json",
+          "text": "the perch was in the corner of the kitchen and the crow had not yet decided to use it"
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - the table and the cedar door (set: cabin_interior). Hour: 3:01 AM, Monday September 1, rain on the cedar roof",
+      "subject": "places",
+      "refs": [
+        "cedar_bowl",
+        "cedar_bell",
+        "brandons_leather_notebook"
+      ]
     },
     {
       "slug": "plate_v7_ch20",
@@ -45892,23 +46100,36 @@
         "vol7_ch20_wall"
       ],
       "lettering": "\"3:02 AM\"",
-      "prompt": "What the chapter is about: She comes. At 3:02 Tem opens the cabin door to a young woman in a yellow slicker who cannot come in yet. Each of the six behind Tem sees in the doorway the one they have carried (Olaf, Nate, Brandon, the boy in the basement, Olaus, the octopus), and to Tem she speaks the private name Tem's grandmother used for her. At dawn the town fills Lena's alley, and the painted face opens its eyes and says that name to everyone. The title page shows: The cabin's cedar door stands open at 3:02 in the morning, Tem's hand on the warm carved knob. On the rain-dark porch, in spilled lamplight, stands a young woman in a yellow slicker with the hood up, her face in shadow and dark curling hair showing. Behind Tem, six people at the table stare at the doorway. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: She comes: at 3:02 Tem opens the cabin door to a young woman in a yellow slicker who cannot come in yet; each of the six at the table sees the one they have carried, she says Tem's grandmother's private name, and at dawn the painted face on the alley wall opens its eyes and says it to the whole town. The title page shows: Tem's cabin at 3:02 in the morning, seen from the table: four cedar bowls, the cedar bell-piece and a leather notebook in low kerosene light, and twelve feet away the cabin's cedar door standing open, its hand-carved cedar knob. Beyond it the porch boards in the rain, lit only by the south window and the lamplight spilling out the door, then the dark clearing and the cedars at its edge. The porch is empty.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch20_door.json",
-          "text": "On the porch, at the door, was a person."
+          "text": "The doorknob was the cedar knob Eddvard had carved in '11."
         },
         {
           "src": "vol7/vol7_ch20_door.json",
-          "text": "The person was a young woman in a yellow slicker. The slicker's hood was up."
+          "text": "The knob was warm — warm in the way the bowls had been warm."
         },
         {
-          "src": "vol7/vol7_ch20_each.json",
-          "text": "The figure said the name Tem's grandmother had used for Tem since 2019."
+          "src": "vol7/vol7_ch20_door.json",
+          "text": "The porch was lit by the cabin's south window and by what was left of the kerosene lamp's light coming through the open door behind her."
+        },
+        {
+          "src": "vol7/vol7_ch20_door.json",
+          "text": "The bowls were where they had been."
+        },
+        {
+          "src": "vol7/vol7_ch20_door.json",
+          "text": "The cabin from the table to the door was twelve feet"
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - from the table to the open front door and the porch (sets: cabin_interior, cabin_porch). Hour: 3:02 AM, Monday September 1, rain",
+      "subject": "places",
+      "refs": [
+        "cedar_bell",
+        "kerosene_lamp"
+      ]
     },
     {
       "slug": "plate_v7_ch21",
@@ -45931,7 +46152,7 @@
         "vol7_ch21_tower"
       ],
       "lettering": "\"CHAPTER 21\" (small, above) and \"Monday\" (large)",
-      "prompt": "What the chapter is about: The morning after: the crowd at the wall quietly disperses, and each carrier takes their piece back into ordinary life. Marit goes to bed at Hans's, Roy goes behind Aud's counter, the notebook goes into Cale's safe and the crow goes home with Lena so Wren can sit with it, leaving the cabin half-empty with two bowls. Then the Estuary 7 disc moves itself onto Cale's counter, and Tem decides to go first to where Aria came from: Dean's tower. The title page shows: Early afternoon in the cabin, with mist on the cedars outside the window. On the kitchen table sit two cedar bowls where there had been four, the small cedar bell carving, and the Estuary 7 disc-case Cale has just brought up. Tem, Kai and Finn sit around it, and none of them reaches to pick it up. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: The morning after: the crowd at the wall quietly disperses and each carrier takes their piece back into ordinary life, leaving the cabin half-empty with two bowls; then the Estuary 7 disc moves itself onto Cale's counter, and Tem decides to go first to where Aria came from - Dean's tower. The title page shows: Tem's cabin at 2:08 on a misty Monday afternoon, a fresh fire in the stove. The table is half-empty: two spiral-carved cedar bowls where there had been four, the thumb-sized cedar bell carving, and between them an Estuary 7 disc-case that no one has picked up. Three coffee cups; rye loaves in linen on a wooden tray. A black rotary phone on a small table by the kitchen window; mist on the cedars outside.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -45939,15 +46160,28 @@
           "text": "The two remaining bowls — Lindholm-Marina's and Eddvard's-by-Tem — looked, on the dining table, the way two of four bowls look when two are gone."
         },
         {
+          "src": "vol7/vol7_ch21_cabin.json",
+          "text": "The table was half-empty."
+        },
+        {
           "src": "vol7/vol7_ch21_tower.json",
           "text": "It sat on the kitchen table at the cabin at two-oh-eight in the afternoon of the first of September of 2052 between the two bowls and the cedar bell-piece."
         },
         {
-          "src": "vol7/vol7_ch21_tower.json",
-          "text": "Tem looked at it. Kai looked at it. Finn looked at it. None of them, for a long count, moved to pick it up."
+          "src": "vol7/vol7_ch21_cabin.json",
+          "text": "The phone was a black rotary phone on a small table by the kitchen window."
+        },
+        {
+          "src": "vol7/vol7_ch21_cabin.json",
+          "text": "The rain on the cedar roof — which had been falling since Wednesday — had dropped to a mist."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Tem's cabin - the kitchen/dining table (set: cabin_interior_day). Hour: 2:08 PM, Monday September 1, rain dropped to mist",
+      "subject": "places",
+      "refs": [
+        "cedar_bowl",
+        "cedar_bell"
+      ]
     },
     {
       "slug": "plate_v7_ch22",
@@ -45970,23 +46204,35 @@
         "vol7_ch22_portal"
       ],
       "lettering": "\"CHAPTER 22\" (small, above) and \"The Tower\" (large)",
-      "prompt": "What the chapter is about: Tem, Kai and Finn go to Dean's sealed tower at old-Yachats, which is still running and opens to the substrate-signature Kai carries. Inside they find Brandon's credit on the Tideline Survey poster: he built his grief there. Through the frosted six-inch window of the fourth-floor portal room they see Aria at the far door. She waves, Tem waves back, and she goes through, a traveller, while the dead Dean goes on waiting in his images. The title page shows: A cedar door on the tower's fourth floor with a six-inch window gone milky. Through it lies a vast room thick with slow-moving substrate light. At the far door stands Aria, in a yellow slicker with the hood down, curly blue hair, purple-rimmed glasses and a canvas bag, one hand on the handle, the other raised in a small wave. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Tem, Kai and Finn go to Dean's sealed tower at old-Yachats, still running; they find Brandon's credit on the Tideline Survey poster, and through the milky six-inch window of the fourth-floor portal room they see Aria wave and go through the far door, a traveller. The title page shows: The fourth-floor landing of Dean's sealed cedar tower at old-Yachats, late afternoon. A single unmarked cedar door, its handle warm; at chest height a six-inch window gone milky, like frosted substrate. Through it, blurred: a room sixty feet square whose far smart-glass wall renders the substrate's own slow movement, the air thick with delayed light, and on the far side a second plain cedar door, just closed. The room is empty.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_ch22_portal.json",
-          "text": "She was in the yellow rain slicker. The hood was down."
+          "text": "The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height."
         },
         {
           "src": "vol7/vol7_ch22_portal.json",
-          "text": "She raised it in a small wave — the wave a young woman makes to someone she knows when she is leaving for the airport and does not want to make a fuss."
+          "text": "The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate."
         },
         {
           "src": "vol7/vol7_ch22_portal.json",
-          "text": "Then she raised her own hand against the translucent window and waved back."
+          "text": "The cedar was warm at the handle."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "There was a door on the room's far side. The door was cedar. It had no markings."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "The room was empty."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Dean's tower at old-Yachats - the fourth-floor landing and the portal room seen through its door (set: cedar_tower_portal). Hour: late afternoon, Monday September 1 (they reach the tower at 3:43)",
+      "subject": "places",
+      "refs": [
+        "portal_room_cedar_door"
+      ]
     },
     {
       "slug": "plate_v7_ch23",
@@ -46009,23 +46255,32 @@
         "vol7_epilogue_submission"
       ],
       "lettering": "\"CHAPTER 23\" (small, above) and \"Epilogue\" (large)",
-      "prompt": "What the chapter is about: Tem plays Estuary 7 once more (she has played it sixty-three times), and this time the stick shows her a gallery of nine players' finished builds: Dean's tower and town, Olaf's cabin and bowl network, Eddvard's mill, Marit's still-growing cedar grove, Aud's diner, Brandon's pools, the Schencks' press, Lindholm's foundation and Olaus's cove. These are the lives she has been living inside without knowing they carried her. When the template goes blank, she places one drone at the cabin and her own build begins. The title page shows: Estuary 7's planner's view seen from above in gray September light: a blank coastal template with a river coming down from the cedars, a sand bar at its mouth, flats, a bluff and a forested ridge. A single small drone sits alone at the spot up the river where the cabin stands, the first mark of a new build. The chapter's lettering sits large and clear in the middle third, the picture composed around and behind it, in the volume's palette: cedar green-grey paper, a bowl-brass ink.",
+      "prompt": "What the chapter is about: Tem plays Estuary 7 once more and the stick shows her a gallery of nine players' finished builds - the tower and town, Olaf's cabin and bowl network, the mill, Marit's grove, Aud's diner, Brandon's pools, the press, the foundation, Olaus's cove - the lives that carried her; when the template goes blank she places one drone at the cabin and her own build begins. The title page shows: Estuary 7's planner's view seen from above, the blank coastal template under a gray September sky: a river coming down from the cedars in the east, a sand bar at its mouth, flats to the north, a bluff to the south and a forested ridge behind it. The drone, labor-crew and construction palettes dock along the right edge; the clock at upper right has just begun to count. One small drone sits alone at the spot that stands for the cabin.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol7/vol7_epilogue_gallery.json",
-          "text": "They were nine lives. Each life was a submission. Each submission had become a structure in the world."
+          "text": "The coastal template from above. The river coming down from the cedars to the east. The bar of sand at the mouth. The flats north of the river. The bluff south of it. The forested ridge behind the bluff."
         },
         {
           "src": "vol7/vol7_epilogue_gallery.json",
-          "text": "She had been carried by what these nine had built."
+          "text": "The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero."
         },
         {
           "src": "vol7/vol7_epilogue_submission.json",
           "text": "She placed one drone."
+        },
+        {
+          "src": "vol7/vol7_epilogue_submission.json",
+          "text": "The drone — a single Oneironautics Inc. drone-unit, rendered in the planner's-view — held at the cabin position."
+        },
+        {
+          "src": "vol7/vol7_epilogue_submission.json",
+          "text": "The September coastal sky was gray and would be gray for some hours yet."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "2026-10-18: places and hero objects only, no people (the user: the people never matched). Place: Inside Estuary 7 - the planner's view of the blank coastal template (set: estuary_7_template). Hour: Tuesday September 2, 2052, about 7 AM; a gray September morning, mist on the cedars",
+      "subject": "places"
     },
     {
       "slug": "plate_v5_ch_prologue",

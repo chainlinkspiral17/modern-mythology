@@ -463,6 +463,11 @@ GIT_SAVE_PATHS = [
     "godot/resources/scenes",
     "godot/resources/music_catalog.json",
     "godot/tools/voice_import_state.json",
+    # the cast's ElevenLabs voice IDs (2026-10-18: they lived only in the
+    # studio's localStorage and were lost when the port changed)
+    "godot/tools/voice_map.json",
+    "godot/tools/voice_ids_backup.json",
+    "godot/tools/browser_rescue",        # what voice_rescue.py brought back from a browser
     "godot/tools/voice_import_report.md",
     "godot/tools/audio_sent.json",
     # big files live on Google Drive, not in git (2026-09-30, the user:
@@ -2075,14 +2080,15 @@ def build_prompt(roster, entry, view="front", provider=None):
         style = styled(roster, entry, style)
         suffix = art_suffix(roster, entry)
         view_txt = _view_text(roster, view)
-        fixed = len(style) + len(_role_text(roster, entry)) + len(suffix) + len(view_txt) + 7
+        fixed = len(style) + len(_role_text(roster, entry)) + len(_subject_text(roster, entry)) + len(suffix) + len(view_txt) + 8
         size_txt = art_size_text(entry) if entry["kind"] == "art" else ""
         fixed += len(size_txt) + 1
         desc = description_for(roster, entry, budget=max(200, RUNWAY_PROMPT_BUDGET - fixed))
-        parts = [desc, size_txt, style, _role_text(roster, entry), suffix, view_txt]
+        parts = [desc, size_txt, style, _role_text(roster, entry), _subject_text(roster, entry), suffix, view_txt]
         return "\n".join(p for p in parts if p)[:RUNWAY_PROMPT_BUDGET]
     style = roster["style"].get(style_key, "")
-    parts = [description_for(roster, entry), styled(roster, entry, style), _role_text(roster, entry)]
+    parts = [description_for(roster, entry), styled(roster, entry, style), _role_text(roster, entry),
+             _subject_text(roster, entry), _refs_text(roster, entry)]
     if entry["kind"] == "art":
         parts.insert(1, art_size_text(entry))
     suffix = art_suffix(roster, entry)
@@ -2090,6 +2096,38 @@ def build_prompt(roster, entry, view="front", provider=None):
         parts.append(suffix)
     parts.append(_view_text(roster, view))
     return "\n".join(p for p in parts if p)
+
+
+def _subject_text(roster, entry):
+    """`subject: places` (2026-10-18: vol 7's plates kept drawing people the
+    text only half describes, so they never matched the cast): the picture
+    is the place and its objects, with no people in it."""
+    if entry.get("subject") != "places":
+        return ""
+    return roster["style"].get("subject_places", "").strip()
+
+
+def ref_entries(roster, entry):
+    """The roster entries named in `refs` whose chosen front image exists:
+    [(entry, path)]. A plate hands the image model the props' own concept
+    art so the cedar bowl on the title page is the cedar bowl."""
+    by_slug = {e["slug"]: e for e in roster["entries"]}
+    out = []
+    for slug in entry.get("refs") or []:
+        e = by_slug.get(slug)
+        p = chosen_view_path(e, "front") if e else None
+        if p:
+            out.append((e, p))
+    return out
+
+
+def _refs_text(roster, entry):
+    got = ref_entries(roster, entry)[:3]
+    if not got:
+        return ""
+    names = "; ".join(f"image {k + 1}: {e['name']}" for k, (e, _) in enumerate(got))
+    return ("The reference images are the story's own objects (" + names + "). Where they appear in the picture, "
+            "draw them to match the references exactly: the same shape, material, colour and wear.")
 
 
 def _role_text(roster, entry):
@@ -2620,16 +2658,19 @@ def stage_image(roster, entry, opts, log=print):
     api_key = get_api_key(provider)
     gen = google_generate if provider == "google" else runway_generate
 
-    # front
+    # front (with the `refs` entries' chosen fronts as reference images)
+    front_refs = [str(p) for _, p in ref_entries(roster, entry)][:3]     # Runway takes three at most
+    if front_refs:
+        log(f"    refs: {', '.join(e['slug'] for e, _ in ref_entries(roster, entry))}")
     if provider == "google":
-        blobs = gen(front_prompt, aspect, model, api_key, count=count, log=log)
+        blobs = gen(front_prompt, aspect, model, api_key, refs=front_refs, count=count, log=log)
     elif provider == "openai":
-        blobs = openai_generate(front_prompt, aspect, model, api_key, count=count, quality=quality, log=log)
+        blobs = openai_generate(front_prompt, aspect, model, api_key, refs=front_refs, count=count, quality=quality, log=log)
     else:
         blobs = []
         for _ in range(count):
-            blobs += gen(front_prompt, aspect, model, api_key, seed=opts.get("seed"),
-                         ratio=opts.get("ratio"), log=log)
+            blobs += gen(front_prompt, aspect, model, api_key, refs=[(p, f"ref{k + 1}") for k, p in enumerate(front_refs)],
+                         seed=opts.get("seed"), ratio=opts.get("ratio"), log=log)
     for blob, mime in blobs:
         p = save_image(blob, mime, next_candidate_path(entry, "front", provider, model))
         saved.append(p)
@@ -2945,6 +2986,10 @@ def make_handler(runner, roster_path):
             p = urllib.parse.urlparse(self.path).path
             if p == "/api/recovered":
                 return self._json({"recovered": list_recovered()})
+            if p == "/api/voice_map":
+                # the voice studio's IDs, from the repo's files (voice_ids.py)
+                import voice_ids
+                return self._json({"ids": voice_ids.load_ids()})
             if p == "/api/scenes":
                 return self._json({"scenes": list_scene_frames()})
             if p == "/api/audio":
@@ -3042,6 +3087,17 @@ def make_handler(runner, roster_path):
                 print("Hero Studio: quit requested — stopping.", flush=True)
                 threading.Thread(target=lambda: (time.sleep(0.3), os._exit(0)), daemon=True).start()
                 return
+            if p == "/api/voice_map":
+                # (2026-10-18) every voice ID the studio sets is written to
+                # voice_map.json + voice_ids_backup.json at once; SAVE pushes them
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                    import voice_ids
+                    res = voice_ids.save_ids(req.get("ids") or {}, str(req.get("source") or "voice studio"))
+                    res["ids"] = voice_ids.load_ids()
+                    return self._json(res)
+                except Exception as ex:  # noqa: BLE001
+                    return self._json({"error": str(ex)}, 400)
             roster = load_roster(roster_path)
             by_slug = {e["slug"]: e for e in roster["entries"]}
             if p in ("/api/scenes/paint", "/api/scenes/save"):

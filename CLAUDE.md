@@ -228,6 +228,32 @@ recurring complaint. The rules:
    members (music player, mood label) have had time to spawn,
    then waiting for them to spawn — they must NOT pop up.
 
+## The user's work is saved to FILES, never only in a browser (hard rule, 2026-10-18)
+
+The user: "all my voice IDs in the voice studio are gone ... when I ask to
+save relevant data, I mean this. This is another priority fumbled." The voice
+studio kept the cast's voice IDs only in localStorage, which a browser files
+under the page's address and port; Hero Studio's move from :8765 to :8877
+(2026-10-13) opened the page at a new address, empty.
+
+- Anything the user makes or enters in a tool (voice IDs, patches, banks,
+  presets, picks, authored state) is written to a file in the repo — through
+  Hero Studio's server (its SAVE pushes it) — or to the Drive through
+  `drive_guard`. localStorage may hold UI conveniences and a working copy,
+  never the only copy.
+- A page opened as a bare file (file://) cannot save to disk: it must say so
+  on screen.
+- Before changing a tool's address, port or storage key, carry the stored
+  data across first.
+- The voice IDs: `godot/tools/voice_ids.py` (voice_map.json +
+  voice_ids_backup.json); recovery: `voice_rescue.py` (reads the old
+  address's storage, also FORGE patches, the DX7 bank and the other tools'
+  work, into `godot/tools/browser_rescue/`) and `voice_recover.py` (rebuilds
+  from the ElevenLabs history).
+- Still browser-only and next to fix: FORGE user presets, the DX7 bank,
+  Runway presets and queue, Resolve actions, the FM-1 checkout, the
+  planned-community studio, the DAW inbox, the Meshy queue.
+
 ## Verify GDScript with BOTH checkers (hard rule)
 
 `gdparse <file>` checks GRAMMAR only. Godot **also** runs type

@@ -170,6 +170,7 @@
         <input type="file" id="voiceMapFile" accept=".json,application/json">
       </label>
       <p id="voiceMapStatus" class="status">Load <code>godot/tools/voice_map.json</code> to share one cast with <code>elevenlabs_render.py</code> (voice_ids, aliases, walk-ons, per-volume narrators).</p>
+      <p id="voiceSaveStatus" class="status">Voice IDs: checking where they are saved…</p>
       <label>Voice IDs (one per character)</label>
       <div class="voice-map-grid" id="voiceMap"></div>
       <details>
@@ -540,8 +541,60 @@ function buildVoiceMap() {
   loadVoiceMap();
 }
 
+// (2026-10-18) The voice IDs are saved in the REPO, not only in this
+// browser: localStorage belongs to one address and port, and when Hero
+// Studio moved from :8765 to :8877 the page opened empty. Served by Hero
+// Studio (http://127.0.0.1:8877/voice_studio.html) every change is written
+// to godot/tools/voice_map.json + voice_ids_backup.json at once (and
+// Hero Studio's SAVE pushes them); opened as a bare file it cannot save
+// to disk, and says so.
+const SERVED = location.protocol === 'http:' || location.protocol === 'https:';
+let _serverSaveTimer = null;
+function setSaveStatus(msg, cls) {
+  const el = $('voiceSaveStatus');
+  if (el) { el.textContent = msg; el.className = 'status ' + (cls || ''); }
+}
 function saveVoiceMap() {
   try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
+  if (!SERVED) return;
+  clearTimeout(_serverSaveTimer);
+  _serverSaveTimer = setTimeout(async () => {
+    const ids = {};
+    Object.entries(voiceMap).forEach(([k, v]) => { if (v && v.trim()) ids[k] = v.trim(); });
+    try {
+      const r = await fetch('/api/voice_map', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({ ids, source: 'voice studio' }) });
+      const j = await r.json();
+      if (!r.ok || j.error) throw new Error(j.error || r.status);
+      setSaveStatus(`Voice IDs saved to godot/tools/voice_map.json (${Object.keys(j.ids || {}).length} cast). ` +
+                    `Press SAVE in Hero Studio to push them.`, 'good');
+    } catch (err) {
+      setSaveStatus('Voice IDs NOT saved to the repo: ' + err.message + ' — is Hero Studio running?', 'bad');
+    }
+  }, 600);
+}
+async function loadVoiceMapFromRepo() {
+  if (!SERVED) {
+    setSaveStatus('Opened as a file: voice IDs live only in this browser and can be lost. ' +
+                  'Open it from Hero Studio instead: http://127.0.0.1:8877/voice_studio.html', 'bad');
+    return;
+  }
+  try {
+    const r = await fetch('/api/voice_map');
+    const j = await r.json();
+    const saved = j.ids || {};
+    let fromRepo = 0, fromBrowser = 0;
+    Object.entries(saved).forEach(([k, v]) => { if (!voiceMap[k]) { voiceMap[k] = v; fromRepo++; } });
+    Object.entries(voiceMap).forEach(([k, v]) => { if (v && !saved[k]) fromBrowser++; });
+    document.querySelectorAll('#voiceMap input').forEach(inp => {
+      const c = inp.previousElementSibling.textContent;
+      if (voiceMap[c]) inp.value = voiceMap[c];
+    });
+    setSaveStatus(`Voice IDs loaded from godot/tools/voice_map.json: ${Object.keys(saved).length} cast.`, 'good');
+    if (fromBrowser) saveVoiceMap();      // anything only this browser had goes to the repo now
+  } catch (err) {
+    setSaveStatus('Could not read the repo\'s voice IDs: ' + err.message, 'bad');
+  }
 }
 function saveVoiceMeta() {
   try { localStorage.setItem('mm_voice_meta', JSON.stringify(voiceMeta)); } catch (e) {}
@@ -770,9 +823,11 @@ function extForBlob(blob) {
   return 'ogg';
 }
 
-// Restore voice map + imported aliases from localStorage on page load
+// Restore voice map + imported aliases on page load: this browser's copy,
+// then the repo's (which the page also writes back to)
 loadVoiceMeta();
 loadVoiceMap();
+loadVoiceMapFromRepo();
 </script>
 </body>
 </html>

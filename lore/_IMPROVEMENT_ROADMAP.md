@@ -3834,6 +3834,43 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-18 · pass 124: VOL 7'S PLATES SHOW PLACES; THE VOICE IDS ARE SAVED TO FILES.**
+- **Vol 7's plates show places and hero objects.** The user: "the problem with the hero plates for
+  land of milk and honey is they are almost all focusing on people you give vague descriptions to
+  so they don't match. maybe focus on the places and the hero props and objects instead."
+  - All 24 `plate_v7_*` entries were rewritten from the chapters' text by a brief agent. Each has
+    one place at the chapter's hour, 2–5 hero objects, and 115 verbatim place and object quotes
+    (all checked).
+  - A new `subject: places` adds `style.subject_places`: no people, faces, hands or silhouettes.
+    Absence is shown through the things people left behind.
+  - A new `refs` field sends up to three props' chosen concept images with a plate, so the cedar
+    bowl on a title page is the cedar bowl.
+  - `cedar_bell` now matches the text: a thumb-sized cedar hand holding a thimble-sized bell.
+    `box_of_three_sticks` dropped details the text doesn't have. Both lost quotes that came from
+    notes or builder files.
+  - **Draft 2:** the roster still carries 286 quotes whose source isn't story text (game JSON,
+    `lore/_VOL5_WIKI.md`, tool pages, lore notes). The wiki ones break CANON = THE TEXT. Other
+    volumes' plates may want `subject: places` too.
+- **The voice IDs live in the repo now** (the user: "all my voice IDs in the voice studio are
+  gone ... when I ask to save relevant data, I mean this").
+  - The studio kept them only in localStorage. That is filed under the page's address, and Hero
+    Studio's move from :8765 to :8877 (2026-10-13) opened the page empty.
+  - `voice_ids.py` writes them to `voice_map.json` (keeping its layout) and
+    `voice_ids_backup.json`.
+  - Hero Studio serves `GET`/`POST /api/voice_map`. Its SAVE now pushes both files and
+    `browser_rescue/`.
+  - The studio loads IDs from the repo when it opens, writes every change back at once, and warns
+    when opened as a bare file.
+  - Recovery:
+    - `voice_rescue.py` serves a page at the old address that reads what the browser stored there
+      (the voice IDs, plus FORGE patches, the DX7 bank, Runway, Resolve, the FM-1 checkout, the
+      planned-community studio, the DAW inbox and the Meshy queue).
+    - `voice_recover.py` rebuilds character → voice from the ElevenLabs history by matching each
+      generated line's text to its scene line.
+  - New hard rule in CLAUDE.md: the user's work is saved to files, never only in a browser.
+  - **Next:** those other tools still keep their work only in the browser. Give each a Hero
+    Studio save.
+
 **2026-10-18 · pass 123: THE AUTHOR'S RULINGS ON THE SETS.** The user: "Steven Chau lives at the
 Chau house, yes. Jacob's kid can be a toddler, fix any discrepancy, Dean's house can be the same
 layout, just dressed different. There is the idea of two overlapping houses in the dreams. The
