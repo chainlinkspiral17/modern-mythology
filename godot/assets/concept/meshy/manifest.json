@@ -21506,5 +21506,128 @@
       "godot/assets/concept/meshy/lucy/lucy_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/lucy/lucy_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-18T18:10:08+00:00",
+    "stage": "mesh",
+    "slug": "lucy",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15032-19a8-7133-be11-ba6eb1bb7d87",
+    "inputs": [
+      "godot/assets/concept/meshy/lucy/front.png",
+      "godot/assets/concept/meshy/lucy/side.png",
+      "godot/assets/concept/meshy/lucy/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/lucy.glb",
+    "file_size_kb": 49920.8
+  },
+  {
+    "at": "2026-10-18T18:12:59+00:00",
+    "stage": "image",
+    "slug": "mark",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Mark like this: The driver \u2014 a kid in his early twenties Sam recognizes as one of Bobby's regulars \u2014 backs the truck up to the Peugeot. He gets out. He shakes Mark's hand. Additional direction: Mark, early 20s, a tow-truck driver and one of Bobby's regulars. Wiry, sunburned, a patchy beard, a trucker cap. A grease-marked grey work shirt with the sleeves cut off, jeans, tan work boots, leather gloves tucked in a back pocket.\nFull-body concept render of Mark, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/mark/mark_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mark/mark_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mark/mark_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-18T18:17:46+00:00",
+    "stage": "mesh",
+    "slug": "mark",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15039-0c83-7328-bc32-58e183e4372d",
+    "inputs": [
+      "godot/assets/concept/meshy/mark/front.png",
+      "godot/assets/concept/meshy/mark/side.png",
+      "godot/assets/concept/meshy/mark/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/mark.glb",
+    "file_size_kb": 51410.7
+  },
+  {
+    "at": "2026-10-18T18:18:46+00:00",
+    "stage": "image",
+    "slug": "jen",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jen like this: She reads the day-old paper Jen has folded there. she has decided she wants Jen to see her with her hair up and her eyes clear and her back straight Additional direction: Jen, 40s, who runs the Pit Stop counter. Solid, sleeves pushed up, auburn hair in a ponytail through a Pit Stop cap, a pen behind one ear. A red Pit Stop polo, black jeans, black non-slip shoes, a folded newspaper in one hand.\nFull-body concept render of Jen, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jen/jen_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jen/jen_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jen/jen_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-18T18:23:32+00:00",
+    "stage": "mesh",
+    "slug": "jen",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a1503d-cdbf-7750-bb7c-6d0ca47c254e",
+    "inputs": [
+      "godot/assets/concept/meshy/jen/front.png",
+      "godot/assets/concept/meshy/jen/side.png",
+      "godot/assets/concept/meshy/jen/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/jen.glb",
+    "file_size_kb": 54122.2
   }
 ]
