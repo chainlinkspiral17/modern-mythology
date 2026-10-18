@@ -200,12 +200,12 @@
   "category": "professional",
   "description": "A warm, cultured Southern-American male voice. Warm and hospitable in tone rather than showy, closer to a favorite uncle telling stories on a screened porch than a stage performer.",
   "labels": {
-   "gender": "male",
    "age": "middle_aged",
    "use_case": "narrative_story",
    "accent": "us southern",
+   "language": "en",
    "descriptive": "wise",
-   "language": "en"
+   "gender": "male"
   },
   "preview_url": "https://storage.googleapis.com/eleven-public-prod/database/workspace/f483065e0cfb4b418c81552cf56cde1f/voices/hJDl8L16w70KDPOqZnML/VXAerT4u9RI5gokdp9Ld.mp3"
  },
@@ -260,12 +260,12 @@
   "category": "professional",
   "description": " Fun Energetic Radio and Podcast host. Ideal for Commercials or any recordings with an upbeat attitude.",
   "labels": {
-   "descriptive": "casual",
    "age": "young",
-   "gender": "male",
    "use_case": "advertisement",
+   "accent": "american",
    "language": "en",
-   "accent": "american"
+   "descriptive": "casual",
+   "gender": "male"
   },
   "preview_url": "https://storage.googleapis.com/eleven-public-prod/database/workspace/89ae3edb17064b4f91c1ae8609b5572f/voices/Q0Et7LOU7VpeoeCRQAVS/8b6573b8-1f6c-4819-8a4c-7a3b03e5c814.mp3"
  },
@@ -1185,9 +1185,9 @@
   "category": "professional",
   "description": "A dark, brooding character voice, perfect for video games.",
   "labels": {
-   "use case": "video games",
+   "description": "evil",
    "accent": "American",
-   "description": "evil"
+   "use case": "video games"
   },
   "preview_url": "https://storage.googleapis.com/eleven-public-prod/P6pUmq42X5NZv0RV97gQ0XrmuXL2/voices/Hjzqw9NR0xFMYU9Us0DL/7a8d2cd8-3f6f-4f04-827c-32c73a76d7b0.mp3"
  },
