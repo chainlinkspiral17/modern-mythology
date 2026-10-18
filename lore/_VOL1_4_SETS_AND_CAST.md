@@ -44,10 +44,10 @@ perf baseline (`perf_gate.py --update <room>`).
 | 10 | **copy_shop** | 5 | the copier at night (vol 2), the melds' copier at 4 a.m., vol 4's office after hours (paper cuts) | **draft 1 built 2026-10-17** — `build_copy_shop.py`, presets `copy_shop_floor`, `_wastebasket` (by_scene, apple_peddler), `_copier`, `office_after_hours` (its own picture, `vol4_office_after_hours`); 100 draw calls |
 | 11 | **sleep_lab** | 5 | Jane's sleep study, the four-screen room | **draft 1 built 2026-10-17** — `build_sleep_lab.py`, presets `sleep_lab_entry`, `_desk`, `_night`, `four_screens_wide`, `_show`, `_beam`; 348 draw calls |
 | 12 | **pasadena_1945** | 5 | Pasadena street (clear; the meld's rain), the park, a Hollywood street, the 1945 clinic | **draft 1 built 2026-10-17** — `build_pasadena_1945.py`, presets `street_day`, `street_rain` (by_scene, meld_seam_2_3), `park_chess`, `hollywood_shoot`, `clinic_1945`; 134 draw calls |
-| 13 | editing_suite | 4 | the Fool's editing suite (vol 1), the meld suites (vols 2–3) | standin: Cedar Tower studio |
-| 14 | apple_peddler (vol 2) | 4 | the diner: grill at dawn, at night | standin: Pit Stop |
-| 15 | parsonage_1945 | 4 | the Parsonage: Ron's room night/dawn/day, the hallway | standin: the cabin |
-| 16 | bus_station (vol 4) | 4 | the station by day, on the bus | standin |
+| 13 | **editing_suite** | 4 | the four's suite at Aud's (vol 1; the vol 2 and vol 4 melds), vol 3 ch4's night edit station | **draft 1 built 2026-10-18** — `build_editing_suite.py`, presets `suite_wide`, `suite_tide`, `suite_4am` (by_scene, meld_kaleidoscope_c), `edit_station`; 64 draw calls |
+| 14 | **apple_peddler** (vol 2) | 4 | the Apple Peddler of d.dean's story (booth, line); ch8's unnamed local diner and ch5's evening diner as reuses; the meld's dawn block plays the existing Missing Link | **draft 1 built 2026-10-18** — `build_apple_peddler.py`, presets `apple_peddler_booth`, `_grill`, `_night`; 88 draw calls. Timeline Knot 12 (Aud's Missing Link in vol 2) is the author's |
+| 15 | **parsonage_1945** | 4 | Ron's room upstairs at dawn / day / night (two views), the hall | **draft 1 built 2026-10-18** — `build_parsonage_1945.py`, presets `ron_dawn`, `ron_day`, `ron_night_floor`, `ron_night_bed` (by_scene, ch19), `parsonage_hall`; 78 draw calls |
+| 16 | **bus_station** (vol 4) | 4 | under the bus overhang (Ext. · Day), on the bus (two views) | **draft 1 built 2026-10-18** — `build_bus_station.py`, presets `bus_station`, `bus_two_shot`, `bus_aisle` (by_scene, cc_2); 80 draw calls |
 | 17 | sea_cave (vol 2) | 3 | | standin: Grunion beach |
 | 18 | city_night_street, faust3_houses, lighthouse | 1–3 each | | lighthouse: `bayou_lighthouse.tscn` exists — give it a VN preset |
 

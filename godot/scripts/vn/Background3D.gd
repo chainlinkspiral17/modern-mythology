@@ -3406,6 +3406,147 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.90, 0.92, 0.88, 1), "ambient_energy": 0.50, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
+	"suite_wide": {
+		"scene": "res://scenes/locales/editing_suite.tscn",
+		"requires_glb": "res://assets/3d/locales/editing_suite.glb",
+		# vol 1: the frozen frame on the monitors, the console, the couch, the window with nothing out of it
+		"camera_origin": Vector3(2.2, 1.65, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(35.0), 0.0),
+		"fov": 72.0,
+		"env": {"ambient_color": Color(0.70, 0.66, 0.60, 1), "ambient_energy": 0.42, "fog_color": Color(0.10, 0.10, 0.12, 1)},
+		"suppress_input": true,
+	},
+	"suite_tide": {
+		"scene": "res://scenes/locales/editing_suite.tscn",
+		"requires_glb": "res://assets/3d/locales/editing_suite.glb",
+		# vol 2's meld: four chairs on casters, the monitors full of water
+		"camera_origin": Vector3(0.0, 1.35, -3.0),
+		"camera_rotation": Vector3(0.05, deg_to_rad(0.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.50, 0.56, 0.62, 1), "ambient_energy": 0.18, "fog_color": Color(0.06, 0.07, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"suite_4am": {
+		"scene": "res://scenes/locales/editing_suite.tscn",
+		"requires_glb": "res://assets/3d/locales/editing_suite.glb",
+		# vol 4's meld at 4 a.m.: coffee rings on everything, the deck, the monitors
+		"camera_origin": Vector3(-1.0, 1.7, -2.6),
+		"camera_rotation": Vector3(-0.18, deg_to_rad(-15.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"edit_station": {
+		"scene": "res://scenes/locales/editing_suite.tscn",
+		"requires_glb": "res://assets/3d/locales/editing_suite.glb",
+		# vol 3 ch4: one desk at night, the edit software, the tape on the monitor
+		"camera_origin": Vector3(42.0, 1.55, -0.9),
+		"camera_rotation": Vector3(-0.15, deg_to_rad(0.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.40, 0.42, 0.56, 1), "ambient_energy": 0.12, "fog_color": Color(0.04, 0.04, 0.06, 1)},
+		"suppress_input": true,
+	},
+	"apple_peddler_booth": {
+		"scene": "res://scenes/locales/apple_peddler.tscn",
+		"requires_glb": "res://assets/3d/locales/apple_peddler.glb",
+		# the Apple Peddler: Bernard's booth under the rain on the glass, the counter, the pie
+		"camera_origin": Vector3(-3.2, 1.45, -3.6),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(135.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"apple_peddler_grill": {
+		"scene": "res://scenes/locales/apple_peddler.tscn",
+		"requires_glb": "res://assets/3d/locales/apple_peddler.glb",
+		# the line: the flat-top grill and the fryer under the hood, the pass
+		"camera_origin": Vector3(3.7, 1.6, -6.6),
+		"camera_rotation": Vector3(-0.20, deg_to_rad(-5.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"apple_peddler_night": {
+		"scene": "res://scenes/locales/apple_peddler.tscn",
+		"requires_glb": "res://assets/3d/locales/apple_peddler.glb",
+		# an evening diner: from the door across the booths and the counter
+		"camera_origin": Vector3(4.6, 1.6, -0.9),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(60.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"bus_station": {
+		"scene": "res://scenes/locales/bus_station.tscn",
+		"requires_glb": "res://assets/3d/locales/bus_station.glb",
+		# "CAROLINE walks up to the bus overhang." - under the canopy, the doors at left, the street at right
+		"camera_origin": Vector3(-6.0, 1.6, 3.8),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-80.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"bus_two_shot": {
+		"scene": "res://scenes/locales/bus_station.tscn",
+		"requires_glb": "res://assets/3d/locales/bus_station.glb",
+		# "They both sit on the bus." - square on to the seat pair, the city in the window
+		"camera_origin": Vector3(60.75, 1.25, -4.95),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"bus_aisle": {
+		"scene": "res://scenes/locales/bus_station.tscn",
+		"requires_glb": "res://assets/3d/locales/bus_station.glb",
+		# up the aisle: the seat pair, the rear doors, the stops
+		"camera_origin": Vector3(61.3, 1.6, -9.3),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(180.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"ron_dawn": {
+		"scene": "res://scenes/locales/parsonage_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/parsonage_1945.glb",
+		# Ron alone at first light: the window, the empty street, the streetlamp still burning
+		"camera_origin": Vector3(-1.6, 1.5, -3.8),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-147.0), 0.0),
+		"fov": 68.0,
+		"env": {"ambient_color": Color(0.40, 0.44, 0.60, 1), "ambient_energy": 0.14, "fog_color": Color(0.08, 0.08, 0.12, 1)},
+		"suppress_input": true,
+	},
+	"ron_day": {
+		"scene": "res://scenes/locales/parsonage_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/parsonage_1945.glb",
+		# Betty on the bed behind him: the desk, the books on the floor, the door with its gap
+		"camera_origin": Vector3(2.0, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.16, deg_to_rad(45.0), 0.0),
+		"fov": 70.0,
+		"env": {"ambient_color": Color(0.86, 0.84, 0.78, 1), "ambient_energy": 0.45, "fog_color": Color(0.70, 0.70, 0.68, 1)},
+		"suppress_input": true,
+	},
+	"ron_night_floor": {
+		"scene": "res://scenes/locales/parsonage_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/parsonage_1945.glb",
+		# "the one patch of floor not drowned in books" - low, Ron at the typewriter in the lamplight
+		"camera_origin": Vector3(0.2, 0.65, -1.6),
+		"camera_rotation": Vector3(0.06, deg_to_rad(73.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"ron_night_bed": {
+		"scene": "res://scenes/locales/parsonage_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/parsonage_1945.glb",
+		# "He clears a spot on the bed for me" - Ron half turned away, the window open
+		"camera_origin": Vector3(1.7, 1.15, -2.4),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(115.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"parsonage_hall": {
+		"scene": "res://scenes/locales/parsonage_1945.tscn",
+		"requires_glb": "res://assets/3d/locales/parsonage_1945.glb",
+		# the hall where Jack holds his meeting: the doors, the stair head, the sconces
+		"camera_origin": Vector3(-5.2, 1.6, -6.5),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-90.0), 0.0),
+		"fov": 68.0,
+		"env": {"ambient_color": Color(0.80, 0.70, 0.58, 1), "ambient_energy": 0.30, "fog_color": Color(0.20, 0.18, 0.14, 1)},
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

@@ -3834,6 +3834,54 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-18 · pass 120: THE EDITING SUITE, THE APPLE PEDDLER, THE PARSONAGE, THE BUS (draft 1);
+1945 PICTURES TOLD THEIR YEAR.** The user: "Continue", then "1945 doesn't have modern computers."
+- **editing_suite**: the four's suite at Aud's, behind the grill wall. It has the monitor wall (what
+  plays on it differs per view: the frozen frame, the tide, the bakery and the minivans), the
+  console, four chairs on casters, the couch with its arm, the window "nothing out of it", the
+  door with its gap, the popcorn (vol 1) and the 4 a.m. coffee (vol 4). Vol 3 ch4's night edit
+  station is a separate small room.
+- **apple_peddler**: d.dean's 24-hour diner next to the Greyhound depot: the booths under the
+  rainy glass, the cigarette and periodicals machines, the tide tables by the door, the
+  counter, the pie case, and the line under its hood.
+  - The brief found only one of three stems is the Apple Peddler. Ch8's unnamed local diner and
+    ch5's evening diner borrow it as reuses.
+  - meld_seam_1_2's dawn block names the Missing Link, so it now plays the existing
+    missing_link_interior (it had shown the vol 6 Pit Stop stand-in).
+  - **Timeline Knot 12** (new): Aud's Missing Link in vol 2's melds vs the spine's 2031. Flagged,
+    not fixed; the author's call.
+- **parsonage_1945**: Ron's room upstairs, books in drifts with the one clear patch, the iron bed,
+  the big black typewriter, the lamp, the window on the street (a sky card per view; the sash
+  raised only in ch19), the door's gap, and the wide hall with the stair head.
+- **bus_station**: the city station's overhang, and a city bus with its seats in pairs, the rear
+  doors, and the city standing outside its frames (no glass).
+- **Text fixes** (the user's standing "fix the contradictions"):
+  - meld_seam_1_2's suite is "A room with one window, nothing out of it." (it said "without
+    windows"; vol 1 puts the Artist at its window).
+  - Ch19's "His room is how it always is." (it said "how Betty said", a first visit after
+    starship_melody's night there).
+  - The bus station's slug is "Ext. · Day" (Caroline smokes under the overhang).
+  - The roster quotes and the e6/e8 expansion sources follow; all 1,490 roster quotes are
+    verbatim.
+- **1945 has no modern computers** (the user): the 1945 pictures and plates inherited vol 3's
+  default setting, "Texas and Southern California", with no period. Eight now carry "1945
+  Pasadena, California: the period itself, nothing later (no computers, monitors, screens,
+  phones or plastic)": the Mojave, Ron's typewriter page, the dawn street, the packed hall, and
+  plates ch02, ch12, ch13, ch19.
+  - The meld's time pod and stalk machine, the starship story's pictures and the copy-shop pulp
+    page keep theirs. They aren't 1945 Pasadena.
+  - Every 1945 scene in the game plays a period set; none has a computer.
+- Gates clean on all four builders. Draw calls 64 / 88 / 80 / 78. Story audit at 312.
+- Lesson: `make_wall` / `make_wall_with_openings` build from z 0 and ignore the anchor's z. An
+  upstairs room is built at z 0 with the street a storey below it (in the 3D playbook).
+
+DRAFT 2 targets:
+- The grill wall with the diner behind it; the frozen frame as an image.
+- The bus window's city in motion.
+- The house's exterior and downstairs.
+- Rendering the 1945 plates again (their prompts changed).
+- Next builds: sea_cave (3) and the rest of the queue.
+
 **2026-10-17 · pass 119: THE COPY SHOP AND 1945 PASADENA (draft 1).**
 - **copy_shop** (`build_copy_shop.py`):
   - Vol 2's "small ugly copy shop" on the graveyard shift: two rows of tubes with every third one

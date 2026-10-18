@@ -174,7 +174,7 @@ He pushes the button.
 
 Ron catches me on the stairs after supper and asks if I've got an hour. He asks like he already knows.
 
-His room is how Betty said. Books on the floor in drifts, dust in the lamplight, nowhere to stand. He clears a spot on the bed for me with his forearm and sits at the desk half turned away.
+His room is how it always is. Books on the floor in drifts, dust in the lamplight, nowhere to stand. He clears a spot on the bed for me with his forearm and sits at the desk half turned away.
 
 The typewriter is black and big as an engine block. He rolls in a fresh sheet and squares it and waits.
 

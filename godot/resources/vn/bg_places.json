@@ -97,11 +97,12 @@
    "scenes": 1
   },
   "vol1_editing_suite": {
-   "fit": "standin",
-   "to": "3d:cedar_tower_studio",
+   "fit": "exact",
+   "to": "3d:suite_wide",
    "build": "editing_suite",
-   "note": "the Fool's editing suite (prelude, trailer, Act Three)",
-   "scenes": 1
+   "note": "the four's suite at Aud's: the frozen frame, the console, the couch, the window",
+   "scenes": 1,
+   "built": "2026-10-18 draft 1"
   },
   "vol1_faust_apartment_day": {
    "fit": "exact",
@@ -241,10 +242,12 @@
    "scenes": 1
   },
   "vol2_apple_peddler_diner": {
-   "fit": "standin",
-   "to": "3d:pit_stop_interior",
+   "fit": "exact",
+   "to": "3d:apple_peddler_booth",
    "build": "apple_peddler",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the Apple Peddler: off the main drag, next to the Greyhound depot, open 24 hours",
+   "built": "2026-10-18 draft 1"
   },
   "vol2_ark_hillside": {
    "fit": "2d",
@@ -405,17 +408,23 @@
    "scenes": 2
   },
   "vol2_diner_grill_dawn": {
-   "fit": "standin",
-   "to": "3d:pit_stop_interior",
+   "fit": "reuse",
+   "to": "3d:apple_peddler_grill",
    "build": "apple_peddler",
-   "note": "the Apple Peddler",
-   "scenes": 2
+   "note": "ch8's unnamed local diner plays the Apple Peddler's line (a reuse); the meld's block is the Missing Link",
+   "scenes": 2,
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "meld_seam_1_2": "3d:missing_link_interior"
+   }
   },
   "vol2_diner_night": {
-   "fit": "standin",
-   "to": "3d:pit_stop_interior",
+   "fit": "reuse",
+   "to": "3d:apple_peddler_night",
    "build": "apple_peddler",
-   "scenes": 1
+   "scenes": 1,
+   "note": "an unnamed diner one evening (ch5): the Apple Peddler's room plays it (a reuse)",
+   "built": "2026-10-18 draft 1"
   },
   "vol2_dive_bar_bridge": {
    "fit": "reuse",
@@ -504,10 +513,12 @@
    "built": "2026-10-16 draft 1"
   },
   "vol2_meld_editing_suite_tideflats": {
-   "fit": "standin",
-   "to": "3d:cedar_tower_studio",
+   "fit": "exact",
+   "to": "3d:suite_tide",
    "build": "editing_suite",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the four's suite: four chairs on casters, the monitors full of the tide",
+   "built": "2026-10-18 draft 1"
   },
   "vol2_minivan_night_coast": {
    "fit": "reuse",
@@ -971,10 +982,15 @@
    "scenes": 1
   },
   "vol3_editing_suite_night": {
-   "fit": "standin",
-   "to": "3d:cedar_tower_studio",
+   "fit": "exact",
+   "to": "3d:edit_station",
    "build": "editing_suite",
-   "scenes": 2
+   "scenes": 2,
+   "note": "vol 3 ch4: the night edit station (the AVID is the program); the meld at Aud's plays the suite",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "meld_kaleidoscope_c": "3d:suite_4am"
+   }
   },
   "vol3_family_bathroom_day": {
    "fit": "exact",
@@ -1175,29 +1191,39 @@
    "scenes": 2
   },
   "vol3_parsonage_hallway": {
-   "fit": "standin",
-   "to": "3d:cabin_interior",
+   "fit": "exact",
+   "to": "3d:parsonage_hall",
    "build": "parsonage_1945",
-   "scenes": 1
+   "scenes": 1,
+   "note": "the upstairs hall, wide enough for Jack's meeting",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_parsonage_ron_room_dawn": {
-   "fit": "standin",
-   "to": "3d:cabin_interior_day",
+   "fit": "exact",
+   "to": "3d:ron_dawn",
    "build": "parsonage_1945",
-   "scenes": 1
+   "scenes": 1,
+   "note": "Ron's room upstairs at first light",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_parsonage_ron_room_day": {
-   "fit": "standin",
-   "to": "3d:cabin_interior_day",
+   "fit": "exact",
+   "to": "3d:ron_day",
    "build": "parsonage_1945",
-   "scenes": 1
+   "scenes": 1,
+   "note": "Ron's room: the books in drifts, the bed, the desk",
+   "built": "2026-10-18 draft 1"
   },
   "vol3_parsonage_ron_room_night": {
-   "fit": "standin",
-   "to": "3d:cabin_interior",
+   "fit": "exact",
+   "to": "3d:ron_night_floor",
    "build": "parsonage_1945",
-   "note": "the Parsonage, Pasadena 1945: Ron's room",
-   "scenes": 1
+   "note": "Ron's room at night on its lamp; ch19 from the bed, the window open",
+   "scenes": 2,
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol3_ch19_ron_takes_notes": "3d:ron_night_bed"
+   }
   },
   "vol3_pasadena_park_1945": {
    "fit": "exact",
@@ -1465,16 +1491,23 @@
    "scenes": 1
   },
   "vol4_bus_interior_day": {
-   "fit": "standin",
-   "to": "3d:vehicle_cab_rear",
+   "fit": "exact",
+   "to": "3d:bus_two_shot",
    "build": "bus_station",
-   "scenes": 2
+   "scenes": 2,
+   "note": "the seat pair, the city in the window; cc_2's stops from up the aisle",
+   "built": "2026-10-18 draft 1",
+   "by_scene": {
+    "vol4_cc_2": "3d:bus_aisle"
+   }
   },
   "vol4_bus_station_day": {
-   "fit": "standin",
-   "to": "3d:county_line_station",
+   "fit": "exact",
+   "to": "3d:bus_station",
    "build": "bus_station",
-   "scenes": 2
+   "scenes": 2,
+   "note": "under the bus overhang, the city by day",
+   "built": "2026-10-18 draft 1"
   },
   "vol4_caltech_basement": {
    "fit": "exact",

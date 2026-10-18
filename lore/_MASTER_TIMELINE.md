@@ -321,6 +321,21 @@ shifted resolution**; the author decides.
    ratified Dean b. 1978 ("Dean is 35 in 2013") and the
    ch22_floors portrait line now reads thirty-five. Merged with
    the line's full tail restored.]
+12. **Aud's Missing Link in vol 2** — the spine has Aud build the
+   Missing Link in 2031 and run it from 2046 (vol 7). Vol 2 puts
+   her there in the narrator's Small Wood years: meld_seam_1_2's
+   dawn block ("the Missing Link", Aud, the wall behind the grill;
+   its sub "Small Wood · Aud's"), vol2_ch7_scumm_c's game screen
+   ("dream journal · 1994"), and the E3 expansion note ("since
+   1989"). The seam's lines come from
+   `lore/source_2010/expansions/e8_meld_kaleidoscope.md`, marked
+   as a Claude draft for the author's review. Possible reading:
+   the meld seams are where the volumes bleed into each other, so
+   the 2031 diner shows up in the 1994 dawn on purpose. Nothing
+   is changed on either side. [RESERVED — the author's call;
+   flagged 2026-10-18 by the apple_peddler set brief. The set
+   work plays the seam's block on the existing missing_link
+   interior and leaves vol 2's own "local diner" unnamed.]
 
 ---
 

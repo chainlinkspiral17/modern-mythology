@@ -40,6 +40,7 @@ CHAU = "__chau_hall_noon__chau_entry_morning__chau_living__chau_bath__chau_game_
 AMANDA = "__amanda_hot_tub__amanda_fort__amanda_fort_close"
 SHOP = "__copy_shop_floor__copy_shop_wastebasket__copy_shop_copier"
 P45 = "__street_day__park_chess__hollywood_shoot"
+SUITE = "__suite_wide__suite_tide__suite_4am"
 NIGHT_BED = ("andy_house_bedroom_night", "andy_house_bedroom_lamp")
 
 CONFIGS = [
@@ -474,6 +475,115 @@ CONFIGS = [
         ],
         "mood_strata": ["raw", "memory_warm", "lithograph", "silent_film_18",
                         "noir", "candlelight"],
+    },
+    {
+        # THE EDITING SUITE (build_editing_suite.py): the four's suite at
+        # Aud's on its screens, per view (the frozen frame; the tide; the
+        # 4 a.m. coffee); vol 3's night edit station (x 40..44) on its lamp.
+        "out_path": os.path.join(ROOT, "editing_suite.tscn"),
+        "uid": "uid://editing_suite_v1",
+        "root_node": "EditingSuite",
+        "glb": "res://assets/3d/locales/editing_suite.glb",
+        "env": {"bg": (0.03, 0.03, 0.04, 1), "amb": (0.50, 0.52, 0.60, 1),
+                "amb_e": 0.30, "fog": (0.10, 0.10, 0.12, 1), "fog_e": 0.2,
+                "fog_d": 0.003, "sat": 0.92, "glow_i": 0.75, "glow_b": 0.12},
+        "shader": {"warm": (0.90, 0.84, 0.70, 1), "bg": (0.06, 0.06, 0.08, 1),
+                   "neon_edge": (0.64, 0.68, 0.78, 1), "neon_lo": (0.22, 0.22, 0.26, 1),
+                   "neon_hi": (0.06, 0.06, 0.08, 1), "lim_tint": (0.58, 0.62, 0.72, 1)},
+        "lights": [
+            ("Key_Suite" + SUITE, "DirectionalLight3D", B_KEY_FROM_N.format(0, 4, -4), c(0.80, 0.82, 0.90), 0.07),
+            ("Fill_Suite" + SUITE, "DirectionalLight3D", B_FILL.format(0, 3, -3), c(0.70, 0.72, 0.80), 0.05),
+            ("Back" + SUITE, "DirectionalLight3D", B_BACK.format(0, 3, 0), c(0.60, 0.62, 0.70), 0.04),
+            ("Monitor_Glow__suite_wide", "OmniLight3D", I.format(0.0, 1.8, -5.8), c(1.0, 0.86, 0.66), 1.4, {"omni_range": 5.5}),
+            ("Monitor_Glow__suite_tide", "OmniLight3D", I.format(0.0, 1.6, -5.8), c(0.74, 0.82, 0.88), 1.6, {"omni_range": 6.0}),
+            ("Monitor_Glow__suite_4am", "OmniLight3D", I.format(0.0, 1.6, -5.8), c(0.86, 0.80, 0.70), 1.2, {"omni_range": 5.0}),
+            ("Suite_Overhead__suite_wide", "OmniLight3D", I.format(0.0, 2.6, -3.0), c(1.0, 0.90, 0.74), 2.0, {"omni_range": 8.0}),
+            ("Suite_Overhead_Dim__suite_4am", "OmniLight3D", I.format(0.0, 2.6, -3.0), c(1.0, 0.90, 0.74), 0.6, {"omni_range": 6.0}),
+            ("Suite_Window_Grey__suite_wide", "OmniLight3D", I.format(-3.4, 1.6, -3.6), c(0.80, 0.82, 0.84), 0.5, {"omni_range": 3.5}),
+            ("Key_Edit__edit_station", "DirectionalLight3D", B_KEY_FROM_N.format(42, 3, -2), c(0.60, 0.64, 0.80), 0.06),
+            ("Lamp_Edit__edit_station", "OmniLight3D", I.format(42.8, 1.15, -3.0), c(1.0, 0.84, 0.58), 1.1, {"omni_range": 3.5}),
+            ("Edit_CRT_Glow__edit_station", "OmniLight3D", I.format(41.7, 1.0, -2.9), c(0.50, 0.62, 1.0), 0.7, {"omni_range": 2.2}),
+        ],
+        "mood_strata": ["raw", "noir", "memory_warm", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 2's APPLE PEDDLER (build_apple_peddler.py): the diner on its
+        # tubes against the rain, the pie case, the line under its hood.
+        "out_path": os.path.join(ROOT, "apple_peddler.tscn"),
+        "uid": "uid://apple_peddler_v2",
+        "root_node": "ApplePeddler",
+        "glb": "res://assets/3d/locales/apple_peddler.glb",
+        "env": {"bg": (0.03, 0.04, 0.06, 1), "amb": (0.74, 0.72, 0.66, 1),
+                "amb_e": 0.40, "fog": (0.18, 0.20, 0.24, 1), "fog_e": 0.3,
+                "fog_d": 0.004, "sat": 0.92, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.96, 0.86, 0.66, 1), "bg": (0.07, 0.08, 0.10, 1),
+                   "neon_edge": (0.78, 0.66, 0.50, 1), "neon_lo": (0.28, 0.24, 0.20, 1),
+                   "neon_hi": (0.07, 0.08, 0.10, 1), "lim_tint": (0.72, 0.62, 0.48, 1)},
+        "lights": [
+            ("Key_Diner", "DirectionalLight3D", B_KEY_FROM_N.format(0, 4, -5), c(0.84, 0.86, 0.90), 0.10),
+            ("Fill_Diner", "DirectionalLight3D", B_FILL.format(0, 3, -4), c(0.80, 0.76, 0.70), 0.08),
+            ("Back", "DirectionalLight3D", B_BACK.format(0, 3, 0), c(0.60, 0.64, 0.72), 0.06),
+            *[("AP_Fluor_{}".format(k), "OmniLight3D", I.format(-4.5 + k * 4.5, 2.9, -4.0), c(0.96, 0.98, 0.92), 1.2,
+               {"omni_range": 6.0}) for k in range(3)],
+            ("Pie_Case_Glow", "OmniLight3D", I.format(-3.2, 1.3, -5.3), c(1.0, 0.92, 0.70), 0.5, {"omni_range": 1.8}),
+            ("Line_Light", "OmniLight3D", I.format(4.3, 2.0, -8.0), c(1.0, 0.92, 0.80), 1.2, {"omni_range": 4.0}),
+            ("Depot_Canopy_Glow", "OmniLight3D", I.format(14.0, 3.0, 1.0), c(0.86, 0.90, 1.0), 1.0, {"omni_range": 8.0}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "noir", "lithograph", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 4's BUS STATION (build_bus_station.py): the city by day, the
+        # overhang's shade; the bus (x 60..62.6) lit through its windows.
+        "out_path": os.path.join(ROOT, "bus_station.tscn"),
+        "uid": "uid://bus_station_v4",
+        "root_node": "BusStation",
+        "glb": "res://assets/3d/locales/bus_station.glb",
+        "env": {"bg": (0.66, 0.76, 0.88, 1), "amb": (0.86, 0.86, 0.84, 1),
+                "amb_e": 0.65, "fog": (0.82, 0.84, 0.86, 1), "fog_e": 0.4,
+                "fog_d": 0.002, "sat": 0.92, "glow_i": 0.6, "glow_b": 0.14},
+        "shader": {"warm": (0.94, 0.88, 0.74, 1), "bg": (0.10, 0.10, 0.11, 1),
+                   "neon_edge": (0.74, 0.70, 0.60, 1), "neon_lo": (0.28, 0.27, 0.25, 1),
+                   "neon_hi": (0.10, 0.10, 0.11, 1), "lim_tint": (0.70, 0.66, 0.58, 1)},
+        "lights": [
+            ("Key_Sun", "DirectionalLight3D", B_SUN_FROM_S.format(0, 20, 10), c(1.0, 0.95, 0.84), 1.4),
+            ("Fill_Sky", "DirectionalLight3D", B_FILL.format(0, 10, -10), c(0.74, 0.82, 0.96), 0.40),
+            ("Back", "DirectionalLight3D", B_BACK.format(0, 10, 0), c(0.92, 0.90, 0.84), 0.30),
+            *[("Bus_Window_Day_{}_{}".format(s, k), "OmniLight3D", I.format(61.3 + s * 1.05, 1.7, -(2.0 + k * 3.4)),
+               c(0.94, 0.96, 1.0), 0.8, {"omni_range": 3.2}) for s in (-1, 1) for k in range(3)],
+            ("Bus_Ceiling_Light", "OmniLight3D", I.format(61.3, 2.5, -5.5), c(0.96, 0.96, 0.92), 0.6, {"omni_range": 6.0}),
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "noir", "candlelight", "silent_film_18"],
+    },
+    {
+        # VOL 3's 1945 HOUSE (build_parsonage_1945.py): Ron's room upstairs
+        # at first light (the streetlamp still burning), by day, and at night
+        # on his lamp; the hall on its sconces. The window's sky is a card
+        # per view.
+        "out_path": os.path.join(ROOT, "parsonage_1945.tscn"),
+        "uid": "uid://parsonage_1945_v3",
+        "root_node": "Parsonage1945",
+        "glb": "res://assets/3d/locales/parsonage_1945.glb",
+        "env": {"bg": (0.04, 0.05, 0.08, 1), "amb": (0.70, 0.66, 0.60, 1),
+                "amb_e": 0.32, "fog": (0.14, 0.14, 0.16, 1), "fog_e": 0.2,
+                "fog_d": 0.002, "sat": 0.90, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.94, 0.84, 0.64, 1), "bg": (0.07, 0.07, 0.08, 1),
+                   "neon_edge": (0.76, 0.64, 0.46, 1), "neon_lo": (0.28, 0.24, 0.18, 1),
+                   "neon_hi": (0.07, 0.07, 0.08, 1), "lim_tint": (0.70, 0.60, 0.44, 1)},
+        "lights": [
+            ("Key_House", "DirectionalLight3D", B_KEY_FROM_N.format(0, 4, -4), c(0.76, 0.76, 0.84), 0.07),
+            ("Fill_House", "DirectionalLight3D", B_FILL.format(0, 3, -3), c(0.74, 0.70, 0.64), 0.05),
+            ("Back", "DirectionalLight3D", B_BACK.format(0, 3, 0), c(0.60, 0.60, 0.68), 0.04),
+            ("Streetlamp__ron_dawn", "OmniLight3D", I.format(-8.2, 0.8, 4.6), c(1.0, 0.86, 0.56), 2.0, {"omni_range": 7.0}),
+            ("Window_First_Light__ron_dawn", "OmniLight3D", I.format(0.9, 1.6, -0.4), c(0.86, 0.84, 0.90), 0.7, {"omni_range": 4.0}),
+            ("Sun_Day__ron_day", "DirectionalLight3D", B_SUN_FROM_S.format(0, 8, 6), c(1.0, 0.94, 0.82), 0.9),
+            ("Window_Day__ron_day", "OmniLight3D", I.format(0.9, 1.6, -0.4), c(1.0, 0.98, 0.92), 1.6, {"omni_range": 5.5}),
+            ("Lamp_Desk__ron_night_floor__ron_night_bed", "OmniLight3D", I.format(-2.24, 1.2, -2.77), c(1.0, 0.82, 0.54), 1.4,
+             {"omni_range": 4.6}),
+            ("Window_Night_Open__ron_night_bed", "OmniLight3D", I.format(0.9, 1.6, -0.3), c(0.56, 0.62, 0.86), 0.4, {"omni_range": 2.6}),
+            *[("Hall_Sconce_{}__parsonage_hall".format(k), "OmniLight3D", I.format(-4.5 + k * 3.5, 2.0, -8.0), c(1.0, 0.84, 0.58), 1.1,
+               {"omni_range": 4.5}) for k in range(3)],
+        ],
+        "mood_strata": ["raw", "memory_warm", "lithograph", "silent_film_18", "noir", "candlelight"],
     },
 ]
 

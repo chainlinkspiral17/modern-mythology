@@ -37933,12 +37933,12 @@
       "scenes": [
         "meld_seam_1_2"
       ],
-      "prompt": "A windowless editing suite: four chairs on casters drawn up to an editing deck nobody touches, facing a bank of monitors, every screen full of the same tide flats, the tide all the way out, the flats shining wet under a sky that hasn't decided on morning. Across the screens somebody's small town plays back and plays back: a heron lifting off a sea wall, a cannery, a water tower with fog going through it. Dark room, cool screen-light.",
+      "prompt": "An editing suite with one window and nothing out of it: four chairs on casters drawn up to an editing deck nobody touches, facing a bank of monitors, every screen full of the same tide flats, the tide all the way out, the flats shining wet under a sky that hasn't decided on morning. Across the screens somebody's small town plays back and plays back: a heron lifting off a sea wall, a cannery, a water tower with fog going through it. Dark room, cool screen-light.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol2/meld_seam_1_2.json",
-          "text": "A room without windows. Four chairs on casters. A bank of monitors, and every one of them full of water."
+          "text": "A room with one window, nothing out of it. Four chairs on casters. A bank of monitors, and every one of them full of water."
         },
         {
           "src": "vol2/meld_seam_1_2.json",
@@ -39042,7 +39042,8 @@
           "text": "I bury a newspaper, a novel, and a toy soldier by a fence."
         }
       ],
-      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it. LOW CONFIDENCE: the text gives little to see."
+      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it. LOW CONFIDENCE: the text gives little to see.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "vol3_home_plate_collision",
@@ -39355,10 +39356,11 @@
         },
         {
           "src": "vol3/vol3_ch19_ron_takes_notes.json",
-          "text": "His room is how Betty said. Books on the floor in drifts, dust in the lamplight, nowhere to stand."
+          "text": "His room is how it always is. Books on the floor in drifts, dust in the lamplight, nowhere to stand."
         }
       ],
-      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it."
+      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "vol3_ruined_city_night",
@@ -39536,7 +39538,8 @@
           "text": "He was waiting for something to happen, a new day to echo out like all before."
         }
       ],
-      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it."
+      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "vol3_tall_stranger",
@@ -39572,7 +39575,8 @@
           "text": "He wore a suit with no tie and his shoes were huge and falling apart on his feet."
         }
       ],
-      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it."
+      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "vol3_melody_insignia",
@@ -42909,7 +42913,8 @@
           "text": "The kid said he never wrote that part, he never finished much of anything back then, and lay back on the floor among the books with his big shoes still on and was asleep before Ron could ask what back then meant to a boy his age."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "plate_v3_ch03",
@@ -43297,7 +43302,8 @@
           "text": "Bare cement, bare walls, a single bulb burning overhead."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "plate_v3_ch13",
@@ -43334,7 +43340,8 @@
           "text": "Could I save my father from death."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "plate_v3_ch14",
@@ -43548,7 +43555,7 @@
       "canon": [
         {
           "src": "vol3/vol3_ch19_ron_takes_notes.json",
-          "text": "His room is how Betty said. Books on the floor in drifts, dust in the lamplight, nowhere to stand."
+          "text": "His room is how it always is. Books on the floor in drifts, dust in the lamplight, nowhere to stand."
         },
         {
           "src": "vol3/vol3_ch19_ron_takes_notes.json",
@@ -43559,7 +43566,8 @@
           "text": "I tell him no. I tell him take it. Somebody ought to."
         }
       ],
-      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling."
+      "notes": "PLATE (2026-10-17): the chapter's title page, from a full reading of the chapter (the user: 'the chapter plates need the text for the chapters as well as imagery from that chapter', 'double-check the generation descriptions versus the chapter contents'). `prompt` says what the chapter is about and the one image that stands for it; `canon` is the chapter's own sentences behind that image. Check the generated lettering's spelling.",
+      "setting": "1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic)"
     },
     {
       "slug": "plate_v3_ch20",

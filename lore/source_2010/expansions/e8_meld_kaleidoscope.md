@@ -14,7 +14,7 @@
 **— on cue —**  
 *INT. EDITING SUITE · Small Wood · low tide*
 
-A room without windows. Four chairs on casters. A bank of monitors, and every one of them full of water.
+A room with one window, nothing out of it. Four chairs on casters. A bank of monitors, and every one of them full of water.
 
 Not water. Tide flats. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning.
 

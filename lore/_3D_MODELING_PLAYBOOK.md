@@ -412,6 +412,10 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   furniture_grammar ignores `_Stock_` meshes as merchandise, so a bag on a `_Stock_` seat
   "floats". Join per-preset groups and furniture with a builder-local `join_named(prefix, name)`
   instead (build_caltech_dabney, build_airport_cabin).
+- **The wall helpers build from z 0.** `make_wall` and `make_wall_with_openings` take an
+  anchor but ignore its z, while `make_floor` honours it. An upstairs room (the Parsonage)
+  built at z 3.4 got its floor upstairs and its walls on the street. Build the storey at z 0
+  and put the street and the house below it at negative z.
 - **Chain link is its wires.** Our materials are opaque, so a backstop or dugout front built
   as a panel reads as a wall and hides the field behind it. Build the frame, then a few
   horizontal and vertical wires, and join them into one mesh (build_little_league).
