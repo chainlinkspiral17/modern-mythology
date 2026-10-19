@@ -23717,5 +23717,355 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/vol3_earth_man/front.png",
     "output": "godot/assets/cg/vol3_earth_man.jpg"
+  },
+  {
+    "at": "2026-10-19T18:32:53+00:00",
+    "stage": "image",
+    "slug": "vol3_oil_field_dusk",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes oil field dusk like this: He asks them where the old wells are And they nod and point to the sick thing hidden just out of sight He takes his sunglasses off and squints at the horizon Additional direction: The last of the old oil country at dusk: worn-out wells on flat land running to the horizon, idle pumps and rusted pipe, the ground scraped and tired, the low sun burning down hard enough to make a man take his sunglasses off and squint. At the edge, one of the towns that still holds on, a few lights coming up. Somewhere just out of sight, the sick thing the locals point to.\nA single full-screen still for a literary visual novel set in Texas and Southern California: oil field dusk. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_oil_field_dusk/vol3_oil_field_dusk_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:33:15+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_oil_field_dusk",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_oil_field_dusk/front.png",
+    "output": "godot/assets/backgrounds/vol3_oil_field_dusk.jpg"
+  },
+  {
+    "at": "2026-10-19T18:33:29+00:00",
+    "stage": "image",
+    "slug": "vol3_last_oil_man_sunset",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the last oil man can ride off into the sunset like this: This is the stuff of legend held in his palm. Contour lines glow green across the little screen, like weather over a buried country. Why not, the last oil man can ride off into the sunset Additional direction: Steve, the last oil man, at sunset with the last of the scratch: sunglasses off, squinting into a huge low sun, a sample of raw crude held in his palm like the stuff of legend. Behind him the last old well. A handheld screen at his side glows with green contour lines, like weather over a buried country. The end of an industry, played as a lone figure riding off.\nA single full-screen still for a literary visual novel set in Texas and Southern California: the last oil man can ride off into the sunset. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_last_oil_man_sunset/vol3_last_oil_man_sunset_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:33:46+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_last_oil_man_sunset",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_last_oil_man_sunset/front.png",
+    "output": "godot/assets/cg/vol3_last_oil_man_sunset.jpg"
+  },
+  {
+    "at": "2026-10-19T18:34:01+00:00",
+    "stage": "image",
+    "slug": "vol3_pulp_helipad_dawn",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes pulp helipad dawn (pulp) like this: Outside the great machines have stopped. On the roof below a machine sits with its long blades drooping and its lights gone dark, and two of the figures in green sit on its runner in the cold sharing a cigarette, passing it back and forth. It is morning. Only morning. Additional direction: Seen from a high hospital window at dawn: on the roof below, a helicopter sits with its long blades drooping and its lights gone dark. Two figures in green scrubs sit on its runner in the cold, passing a cigarette back and forth. The pink is draining out of the sky; it is morning, only morning. Beyond, the city's rooftops and the quiet of machines that have stopped.\nA single full-screen still for a literary visual novel set in Texas and Southern California: pulp helipad dawn (pulp). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pulp_helipad_dawn/vol3_pulp_helipad_dawn_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:34:32+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pulp_helipad_dawn",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pulp_helipad_dawn/front.png",
+    "output": "godot/assets/backgrounds/vol3_pulp_helipad_dawn.jpg"
+  },
+  {
+    "at": "2026-10-19T18:34:50+00:00",
+    "stage": "image",
+    "slug": "vol3_pulp_pod_street_dawn",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes pulp pod street dawn (pulp) like this: The egg is where he left it under the fallen street sign, a street sign is all it is, knocked down in some storm with its cables still hanging. Dew on the hull. A bird has been at it. Additional direction: An ordinary city street at first light, after everything. A street sign lies where some storm knocked it down, its cables still hanging. Beneath it sits the time pod, a riveted metal egg with a round glass porthole, dew beaded on its hull, bird marks on it. Nothing is burning. Pale morning sky, wet pavement, the night's ruin turned out to be only a street.\nA single full-screen still for a literary visual novel set in Texas and Southern California: pulp pod street dawn (pulp). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pulp_pod_street_dawn/vol3_pulp_pod_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:35:12+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pulp_pod_street_dawn",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pulp_pod_street_dawn/front.png",
+    "output": "godot/assets/backgrounds/vol3_pulp_pod_street_dawn.jpg"
+  },
+  {
+    "at": "2026-10-19T18:35:31+00:00",
+    "stage": "image",
+    "slug": "vol3_ron_typewriter_page",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ron's page like this: The typewriter is black and big as an engine block. The page is blank except for the title at the top, centered, underlined twice. His room is how it always is. Books on the floor in drifts, dust in the lamplight, nowhere to stand. Additional direction: Close on the page in Ron's typewriter, late at night in 1945: a big black machine like an engine block, a fresh sheet with a carbon behind it, lines typed fast in loud bursts with typos left in, the title centered at the top and underlined twice. Lamplight, dust hanging in it, books in drifts beyond the desk. Keep the title and the lines too soft to read.\nA single full-screen still for a literary visual novel set in 1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic): Ron's page. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_ron_typewriter_page/vol3_ron_typewriter_page_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:36:06+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_ron_typewriter_page",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_ron_typewriter_page/front.png",
+    "output": "godot/assets/cg/vol3_ron_typewriter_page.jpg"
+  },
+  {
+    "at": "2026-10-19T18:36:23+00:00",
+    "stage": "image",
+    "slug": "vol3_ruined_city_night",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes ruined city night (pulp) like this: The sky was falling and it came down in pieces. The building behind him existed as stubbled foundation, brick and steel charred black and white with smoke and ash. Children sat round small fires, warmed themselves and kept a considerable distance from the odd man. Additional direction: A ruined future city at night: a fallen street sign slumped over the pavement, thick cables hanging from it at odd angles. Behind it a building is down to its stubbled foundations, brick and steel charred black and white with smoke and ash. The air is thick with smoke and dust, lit from above by passing machines. Ragged children huddle around small fires in the shadows, keeping their distance.\nA single full-screen still for a literary visual novel set in Texas and Southern California: ruined city night (pulp). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_ruined_city_night/vol3_ruined_city_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:36:37+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_ruined_city_night",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_ruined_city_night/front.png",
+    "output": "godot/assets/backgrounds/vol3_ruined_city_night.jpg"
+  },
+  {
+    "at": "2026-10-19T18:36:51+00:00",
+    "stage": "image",
+    "slug": "vol3_machines_overhead",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A machine among machines. like this: Overhead the dust glows, lit from above by something that moves. The machines drifted above covered in tiny lights like little eyes, oscillating and surveying the ground, kicking up dervishes and fogging the night with dust and light. Jack did as the children did, and kept absolutely still. Additional direction: Night in the ruin, looking up: great machines drift overhead, covered in tiny lights like little eyes, sweeping the ground and kicking up dust devils, fogging the dark with dust and light. Below, a young scientist in nice clean clothes and a kempt haircut crouches motionless under a fallen street sign, mimicking the ragged children frozen in the shadows at a careful distance. Wind and static stand his hair on end.\nA single full-screen still for a literary visual novel set in Texas and Southern California: A machine among machines.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_machines_overhead/vol3_machines_overhead_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:37:04+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_machines_overhead",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_machines_overhead/front.png",
+    "output": "godot/assets/cg/vol3_machines_overhead.jpg"
+  },
+  {
+    "at": "2026-10-19T18:37:20+00:00",
+    "stage": "image",
+    "slug": "vol3_pink_light",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The pink light. like this: The lights stop above where he cowers a siren sounds, light changes color to a dirty hue of pink, encircles him. He is alone again, completely alone in the pink light. Additional direction: The lights stop directly above him and turn a dirty pink, a column of it closing around the boy from Pasadena. He is lifted off the ground, arms drifting up and away, feet kicking, spinning with no footing, debris floating and tumbling around him in the beam. At the edges the dark ruin still waits, the end of the world going on outside. Silence in the light.\nA single full-screen still for a literary visual novel set in Texas and Southern California: The pink light.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pink_light/vol3_pink_light_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:37:27+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pink_light",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pink_light/front.png",
+    "output": "godot/assets/cg/vol3_pink_light.jpg"
+  },
+  {
+    "at": "2026-10-19T18:37:44+00:00",
+    "stage": "image",
+    "slug": "vol3_pink_light_void",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes pink light void (abstract) like this: He opens his eyes and can't close them back up again. The stars flicker in the darkness, an exotic planet in nearby orbit passes by. He goes to the source of all the light, shadow darkness ebbs at the periphery, the end of the world just outside, perhaps going on business as usual. Additional direction: An abstract field: deep black space with a glow of dirty pink welling at its center and fading out toward the edges, where faint stars flicker. Specks of dust and debris hang weightless in the light. Nothing to stand on, no horizon. It works both as the place the pink light carries Jack into and as the black void where the starship Melody's story begins.\nA single full-screen still for a literary visual novel set in Texas and Southern California: pink light void (abstract). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pink_light_void/vol3_pink_light_void_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:39:41+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pink_light_void",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pink_light_void/front.png",
+    "output": "godot/assets/backgrounds/vol3_pink_light_void.jpg"
+  },
+  {
+    "at": "2026-10-19T18:39:59+00:00",
+    "stage": "image",
+    "slug": "vol3_pasadena_street_dawn",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes His empty street. like this: He looked out on his empty street, always empty at this hour. A streetlamp still burns at the corner though the sky has begun to pale. He was waiting for something to happen, a new day to echo out like all before. Additional direction: Pasadena, 1945, at dawn, seen from Ron's upstairs window: an empty residential street, always empty at this hour. A single streetlamp still burns at the corner though the sky has begun to pale. Quiet front yards, citrus trees, parked cars, nobody about. The window frame and a curtain's edge hint at the room behind, a man waiting for a new day to echo out like all before.\nA single full-screen still for a literary visual novel set in 1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic): His empty street.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pasadena_street_dawn/vol3_pasadena_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:40:09+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pasadena_street_dawn",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pasadena_street_dawn/front.png",
+    "output": "godot/assets/cg/vol3_pasadena_street_dawn.jpg"
+  },
+  {
+    "at": "2026-10-19T18:40:26+00:00",
+    "stage": "image",
+    "slug": "vol3_tall_stranger",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The tall man, the time-traveler., like this: Jack had with him the tall man, the time-traveler he'd found in the bowels of Caltech. He had a silly lumberjack half-beard which cut his head from the neck. He wore a suit with no tie and his shoes were huge and falling apart on his feet. Additional direction: 1945, a hallway packed with bohemians: physicists, writers, actors, addicts, gathered around Jack. Beside him stands the time-traveler he found asleep on the floor of a Caltech basement: a big young man, heavy-set, with a silly lumberjack half-beard, a suit with no tie, huge shoes falling apart. Big blue green gray eyes, dazed and tired, looking at everything like a tourist without a map.\nA single full-screen still for a literary visual novel set in 1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic): The tall man, the time-traveler.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_tall_stranger/vol3_tall_stranger_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:40:37+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_tall_stranger",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_tall_stranger/front.png",
+    "output": "godot/assets/cg/vol3_tall_stranger.jpg"
+  },
+  {
+    "at": "2026-10-19T18:40:53+00:00",
+    "stage": "image",
+    "slug": "vol3_melody_insignia",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a clef over an icy-blue eye like this: A closer view reveals ship. Resting in silent slumber is the MELODY, a dimly lit spacecraft. Painted on the side is a gold and blue clef-note resting over an icy-blue eye. Additional direction: Close on the hull of the MELODY, a dimly lit, junky freighter in the black of space: painted on its side, a gold and blue clef-note resting over an icy-blue eye. Weathered paint over plating, faint running lights, cold mist of vapor drifting past. The insignia is a painted emblem on a ship, from a story told aloud and typed as fast as it came.\nA single full-screen still for a literary visual novel set in Texas and Southern California: a clef over an icy-blue eye. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_melody_insignia/vol3_melody_insignia_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:41:03+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_melody_insignia",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_melody_insignia/front.png",
+    "output": "godot/assets/cg/vol3_melody_insignia.jpg"
+  },
+  {
+    "at": "2026-10-19T18:41:22+00:00",
+    "stage": "image",
+    "slug": "vol3_melody_nucleus",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the organic hive like this: An organic hive, built on three dimensions, a web of information and efficiency. Jellyfish like robots attach and detach themselves to the walls, massive fleas grab shrimp-sized robots out of the air and ingest them. The sack of the jellyfish has the surface area of a football field as it bears over them. Additional direction: The Nucleus: an organic hive built in three dimensions, a vast web of information and efficiency, the brain of a machine society. Jellyfish-like robots attach and detach from its walls; massive flea-like machines snatch shrimp-sized robots out of the air. Two robots, one compact and gruff, one incredibly tall, with black nano-musculature and multifaceted eyes, guard the glass coffin between them and look up as a jellyfish the size of a football field bears down over them.\nA single full-screen still for a literary visual novel set in Texas and Southern California: the organic hive. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_melody_nucleus/vol3_melody_nucleus_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:41:31+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_melody_nucleus",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_melody_nucleus/front.png",
+    "output": "godot/assets/cg/vol3_melody_nucleus.jpg"
+  },
+  {
+    "at": "2026-10-19T18:41:46+00:00",
+    "stage": "image",
+    "slug": "vol3_safari_slide",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Open air school bus, top shaved off, bars in place of windows., like this: Slide after slide revealed fuzziness and clarity both. Background foreground, something compelling just out of focus, that lone woman in her sun hat, her light drapery blouse, the children clutching car bars like nickelodeon convicts, the incredible hulk about to break free. Additional direction: A 1975 safari slide, projected large on a pull-down screen in faded Kodak color: an open-air school bus converted to a safari vehicle, its top shaved off, bars in place of windows, like a cage on wheels on the savannah. Inside, a lone woman in a sun hat and light drapery blouse, and children clutching the bars like convicts, faces lost under the hat brim and in the blur, no one recognisable. Part of the frame sharp, something compelling just out of focus, dust turning in the projector beam.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Open air school bus, top shaved off, bars in place of windows.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_safari_slide/vol3_safari_slide_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:41:57+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_safari_slide",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_safari_slide/front.png",
+    "output": "godot/assets/cg/vol3_safari_slide.jpg"
   }
 ]
