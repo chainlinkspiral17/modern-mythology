@@ -178,6 +178,7 @@
       </label>
       <p id="voiceMapStatus" class="status">Load <code>godot/tools/voice_map.json</code> to share one cast with <code>elevenlabs_render.py</code> (voice_ids, aliases, walk-ons, per-volume narrators).</p>
       <p id="voiceSaveStatus" class="status">Voice IDs: checking where they are saved…</p>
+      <button id="saveFolderBtn" class="primary" style="display:none">SAVE FOLDER: choose modern-mythology/godot/tools (once)</button>
       <label>Voice IDs (one per character)</label>
       <div class="voice-map-grid" id="voiceMap"></div>
       <details>
@@ -580,7 +581,7 @@ function buildVoiceMap() {
     inp.type = 'text';
     inp.placeholder = 'voice_id';
     inp.value = voiceMap[c] || '';
-    inp.addEventListener('input', () => { voiceMap[c] = inp.value.trim(); noteEdit(c); saveVoiceMap(); });
+    inp.addEventListener('input', () => { voiceMap[c] = inp.value.trim(); noteEdit(c); saveVoiceMap(true); });
     wrap.appendChild(lbl);
     wrap.appendChild(inp);
   });
@@ -612,38 +613,168 @@ function setSaveStatus(msg, cls) {
 function _edits() { try { return JSON.parse(localStorage.getItem('mm_voice_edits') || '{}'); } catch (e) { return {}; } }
 function _setEdits(e) { try { localStorage.setItem('mm_voice_edits', JSON.stringify(e)); } catch (x) {} }
 function noteEdit(k) { const e = _edits(); e[k] = Date.now(); _setEdits(e); }
-function saveVoiceMap() {
+function saveVoiceMap(fromGesture) {
   try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
+  if (fromGesture && !SERVED) { pushVoiceMap(true); return; }   // a keystroke may grant the folder at once
   clearTimeout(_serverSaveTimer);
-  _serverSaveTimer = setTimeout(pushVoiceMap, 600);
+  _serverSaveTimer = setTimeout(() => pushVoiceMap(false), 600);
 }
-async function pushVoiceMap() {
+// SAVING WITHOUT ANY SERVER (2026-10-19, the user: "I am not inputting voice
+// IDs into HERO STUDIO … I'm using the VOICE STUDIO. I have been very clear").
+// Opened as a file, the studio writes the voice map ITSELF: Chrome/Edge let
+// a file page write into a folder the user picks once (the File System
+// Access API). The folder (godot/tools) is remembered in this browser
+// (IndexedDB); on a later visit one click allows it again — or Chrome's
+// "Allow on every visit" makes even that unnecessary. Each change rewrites
+// voice_map.json (the IDs, everything else kept), voice_ids_backup.json and
+// voice_map.js — the same three files voice_ids.py writes. Served by Hero
+// Studio it saves there instead; a file page also uses a running Hero
+// Studio when no folder is chosen yet.
+const VOICE_ID_RE = /^[A-Za-z0-9]{12,40}$/;
+let _toolsDir = null;
+function _idb() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open('mm_voice_studio', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('h');
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function _idbGet(k) {
+  const db = await _idb();
+  return new Promise(res => { const q = db.transaction('h').objectStore('h').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(null); });
+}
+async function _idbPut(k, v) {
+  const db = await _idb();
+  return new Promise(res => { const t = db.transaction('h', 'readwrite'); t.objectStore('h').put(v, k); t.oncomplete = () => res(); t.onerror = () => res(); });
+}
+async function _findTools(dir) {
+  // accept godot/tools itself, or the repo / godot folder above it
+  const has = async (d, name, kind) => { try { return kind === 'dir' ? await d.getDirectoryHandle(name) : await d.getFileHandle(name); } catch (e) { return null; } };
+  if (await has(dir, 'voice_map.json', 'file')) return dir;
+  const g = await has(dir, 'godot', 'dir');
+  const t = await has(g || dir, 'tools', 'dir');
+  if (t && await has(t, 'voice_map.json', 'file')) return t;
+  return null;
+}
+async function chooseSaveFolder() {
+  if (!window.showDirectoryPicker) {
+    setSaveStatus('This browser cannot write files from a page. Use Chrome or Edge.', 'bad');
+    return;
+  }
+  try {
+    const picked = await window.showDirectoryPicker({ id: 'mm_tools', mode: 'readwrite' });
+    const tools = await _findTools(picked);
+    if (!tools) { setSaveStatus('That folder has no voice_map.json — choose modern-mythology/godot/tools.', 'bad'); return; }
+    _toolsDir = tools;
+    await _idbPut('tools_dir', tools);
+    pushVoiceMap();
+  } catch (e) {
+    if (e && e.name !== 'AbortError') setSaveStatus('Could not use that folder: ' + e.message, 'bad');
+  }
+}
+async function _dirReady(ask) {
+  if (!_toolsDir) {
+    try { _toolsDir = await _idbGet('tools_dir'); } catch (e) { _toolsDir = null; }
+  }
+  if (!_toolsDir) return false;
+  let st = 'prompt';
+  try { st = await _toolsDir.queryPermission({ mode: 'readwrite' }); } catch (e) {}
+  if (st === 'granted') return true;
+  if (!ask) return false;
+  try { st = await _toolsDir.requestPermission({ mode: 'readwrite' }); } catch (e) { return false; }
+  return st === 'granted';
+}
+async function _readText(dir, name) {
+  try { return await (await (await dir.getFileHandle(name)).getFile()).text(); } catch (e) { return null; }
+}
+async function _writeText(dir, name, text) {
+  const w = await (await dir.getFileHandle(name, { create: true })).createWritable();
+  await w.write(text);
+  await w.close();
+}
+async function _writeVoiceFiles(dir, ids) {
+  const raw = await _readText(dir, 'voice_map.json');
+  if (raw === null) throw new Error('voice_map.json is not in the chosen folder');
+  const m = JSON.parse(raw);
+  const chars = m.characters || (m.characters = {});
+  const skipped = [];
+  let changed = false;
+  for (const [k, v] of Object.entries(ids)) {
+    if (!VOICE_ID_RE.test(v)) { skipped.push(k); continue; }
+    const e = (chars[k] && typeof chars[k] === 'object') ? chars[k] : (chars[k] = {});
+    if (e.voice_id !== v) { e.voice_id = v; changed = true; }
+  }
+  if (changed) await _writeText(dir, 'voice_map.json', JSON.stringify(m, null, 2) + '\n');
+  const all = {};
+  Object.entries(chars).forEach(([k, e]) => { const id = ((e && e.voice_id) || '').trim(); if (id) all[k] = id; });
+  const sorted = {};
+  Object.keys(all).sort().forEach(k => { sorted[k] = all[k]; });
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  await _writeText(dir, 'voice_ids_backup.json', JSON.stringify({
+    _comment: "voice_ids.py keeps this: the cast's ElevenLabs voice IDs, a flat copy of voice_map.json's voice_id fields. Do not hand-edit.",
+    updated: `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`,
+    source: 'voice studio (saved from the page)', ids: sorted }, null, 2) + '\n');
+  await _writeText(dir, 'voice_map.js',
+    '// GENERATED by godot/tools/voice_ids.py from voice_map.json + voice_ids_backup.json.\n' +
+    '// Do not edit: the voice studio loads it when opened as a file.\n' +
+    'window.MM_VOICE_MAP = ' + JSON.stringify(m, null, 1) + ';\n');
+  return { ids: all, skipped };
+}
+async function pushVoiceMap(fromGesture) {
   clearTimeout(_retryTimer);
   const ids = {};
   Object.entries(voiceMap).forEach(([k, v]) => { if (v && String(v).trim()) ids[k] = String(v).trim(); });
+  let j = null, where = '';
   try {
-    const r = await fetch(SAVE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({ ids, source: SERVED ? 'voice studio' : 'voice studio (opened as a file)' }) });
-    const j = await r.json();
-    if (!r.ok || j.error) throw new Error(j.error || ('HTTP ' + r.status));
-    const saved = j.ids || {};
-    const edits = _edits();
-    for (const k of Object.keys(edits)) {
-      if (saved[k] && saved[k] === String(voiceMap[k] || '').trim()) delete edits[k];   // the repo holds it now
+    if (!SERVED && await _dirReady(!!fromGesture)) {
+      j = await _writeVoiceFiles(_toolsDir, ids);
+      where = 'godot/tools/voice_map.json';
+    } else {
+      const r = await fetch(SAVE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ ids, source: SERVED ? 'voice studio' : 'voice studio (opened as a file)' }) });
+      j = await r.json();
+      if (!r.ok || j.error) throw new Error(j.error || ('HTTP ' + r.status));
+      where = 'godot/tools/voice_map.json';
     }
-    _setEdits(edits);
-    const bad = (j.skipped || []).length;
-    setSaveStatus(`Saved: ${Object.keys(saved).length} voice IDs in godot/tools/voice_map.json. ` +
-                  `Press SAVE in Hero Studio to push them to GitHub.` +
-                  (bad ? ` ${bad} box(es) hold something that is not a voice ID and were not saved: ${j.skipped.join(', ')}.` : ''),
-                  bad ? 'warn' : 'good');
   } catch (err) {
-    setSaveStatus('NOT SAVED to the repo: Hero Studio is not running (start it: bash godot/tools/hero_studio.sh). ' +
-                  'Your voice IDs are kept in this browser and are saved the moment it is up — retrying every 8 s.', 'bad');
-    _retryTimer = setTimeout(pushVoiceMap, 8000);
+    j = null;
   }
+  const btn = $('saveFolderBtn');
+  if (!j) {
+    const known = !SERVED && (_toolsDir || await _idbGet('tools_dir').catch(() => null));
+    if (btn) {
+      btn.style.display = SERVED ? 'none' : '';
+      btn.textContent = known ? 'ALLOW SAVING (one click)' : 'SAVE FOLDER: choose modern-mythology/godot/tools (once)';
+    }
+    setSaveStatus(known
+      ? 'NOT SAVED YET: click ALLOW SAVING once so the studio can write the voice map (Chrome asks again each visit unless you pick "Allow on every visit").'
+      : 'NOT SAVED YET: click SAVE FOLDER and choose modern-mythology/godot/tools — once. From then on every voice ID is saved to the voice map the moment you type it.',
+      'bad');
+    _retryTimer = setTimeout(() => pushVoiceMap(false), 8000);
+    return;
+  }
+  if (btn) btn.style.display = 'none';
+  const saved = j.ids || {};
+  const edits = _edits();
+  for (const k of Object.keys(edits)) {
+    if (saved[k] && saved[k] === String(voiceMap[k] || '').trim()) delete edits[k];   // on disk now
+  }
+  _setEdits(edits);
+  const bad = (j.skipped || []).length;
+  setSaveStatus(`Saved: ${Object.keys(saved).length} voice IDs in ${where}.` +
+                (bad ? ` ${bad} box(es) hold something that is not a voice ID and were not saved: ${j.skipped.join(', ')}.` : ''),
+                bad ? 'warn' : 'good');
 }
 async function loadVoiceMapFromRepo() {
+  const btn = $('saveFolderBtn');
+  if (btn && !btn._wired) {
+    btn._wired = true;
+    btn.addEventListener('click', async () => {
+      if (await _dirReady(true)) pushVoiceMap(false); else chooseSaveFolder();
+    });
+  }
   let repo = null, full = null;
   if (SERVED) {
     try {
@@ -693,7 +824,7 @@ async function loadVoiceMapFromRepo() {
                   (browserOnly || editsKept ? `; ${browserOnly + editsKept} from this browser are being saved to it…` : '.'),
                   'good');
   }
-  if (browserOnly || editsKept || !repo) pushVoiceMap();
+  if (browserOnly || editsKept || !repo || !SERVED) pushVoiceMap(false);
 }
 // The map's rules — aliases, walk-on groups, per-scene aliases and the cast
 // list (a cast character with no ID is an error, not a silent narrator

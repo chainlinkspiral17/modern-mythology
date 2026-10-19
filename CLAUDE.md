@@ -241,15 +241,19 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
   Hero Studio's server (its SAVE pushes it) — or to the Drive through
   `drive_guard`. localStorage may hold UI conveniences and a working copy,
   never the only copy.
-- The tools are opened as FILES from the tools home page (2026-10-19, the
-  user: "I've added dozens of voices. There really needs to be a better way
-  of doing this. I've asked you for this"). A file page saves THROUGH Hero
-  Studio: it sends to http://127.0.0.1:8877 (`/api/voice_map`,
-  `/api/tool_state` accept origin "null" from this machine). When Hero
-  Studio is not running the page says NOT SAVED in red and keeps retrying.
-  An ID or value the user types wins over the repo's copy until the repo
-  confirms it (the voice studio's `mm_voice_edits`) — a reload must never
-  put an old value back over the user's edit.
+- The tools are opened as FILES from the tools home page, and the user
+  works in the VOICE STUDIO itself — never ask them to enter or save
+  anything through Hero Studio (2026-10-19: "I am not inputting voice IDs
+  into HERO STUDIO for the fourth time. I'm using the VOICE STUDIO. I have
+  been very clear, and am being ignored."). The voice studio writes the
+  voice map ITSELF: the user picks the save folder (godot/tools) once with
+  the SAVE FOLDER button (File System Access API; the folder is remembered
+  in IndexedDB, one click re-allows it on a later visit), and every ID they
+  type is written at once to voice_map.json + voice_ids_backup.json +
+  voice_map.js — the same files and format voice_ids.py writes. A typed ID
+  wins over the repo's copy until it is on disk (`mm_voice_edits`); a
+  reload must never put an old value back over the user's edit. (Served by
+  a running Hero Studio it also saves there, silently, as a fallback.)
 - Before changing a tool's address, port or storage key, carry the stored
   data across first.
 - The voice IDs: `godot/tools/voice_ids.py` (voice_map.json +
