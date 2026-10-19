@@ -42,6 +42,29 @@ extends RefCounted
 ##   Portrait3D maps each size to its own field of view.
 ##
 ## A writer's [portrait:…] directive on the line wins over all of it.
+##
+## DISTANCE (draft 2 · 2026-10-19). The user: "the portraits always being
+## in extreme close-up is too intimate for most shots and moments, there
+## needs to be a natural conversational distance. Intimate or internal
+## monologue or thinking moments when the character is alone are
+## appropriate, conversationally, they need to be more torso up type
+## shots." On screen the cut-out slot runs past the bottom of the window
+## and the dialogue band covers its lower half, so the mcu read as a head
+## filling the frame (PortraitCastSheet, 2026-10-19). Two registers now:
+##
+##   CONVERSATION — a spoken line, and narration over two or more people:
+##   torso-up ("wide" on screen: head and shoulders over the band, the
+##   torso under it). A charged line pushes in ONE step ("medium"), the
+##   punch to the chest-up ("mcu"); nothing automatic goes closer.
+##   Listeners hold the torso-up frame: two people at talking distance.
+##
+##   INTIMATE — a thought, and narration over one person alone: the old
+##   close grammar (bust at rest, close-up for feeling, extreme close-up
+##   for the turn).
+##
+## Moving between the registers cuts straight to the new size: the
+## breathe-out-one-step rule is for a voice holding its pitch, not for a
+## change of register.
 
 const SIZES := ["wide", "medium", "mcu", "cu", "ecu"]
 
@@ -88,32 +111,57 @@ static func intensity(mood: String, text: String) -> int:
 ## character also spoke the previous line), speaker_size (for a
 ## listener), override ({size, angle} from a [portrait:] directive).
 ## Returns {size, angle, why}.
+## Which register a line plays in: "intimate" for a thought, or for
+## narration over one person alone; "conversation" otherwise. kind is the
+## line's node type (say | think | narrate); present is how many people
+## are on screen.
+static func register(kind: String, present: int) -> String:
+	if kind == "think":
+		return "intimate"
+	if kind == "narrate" and present <= 1:
+		return "intimate"
+	return "conversation"
+
+
 static func choose(ctx: Dictionary) -> Dictionary:
 	var role: String = String(ctx.get("role", "speaker"))
 	var mood: String = String(ctx.get("mood", "neutral"))
 	var glb: String = String(ctx.get("glb", ""))
 	var ov: Dictionary = ctx.get("override", {})
+	var reg: String = String(ctx.get("register", "conversation"))
 	if not ov.is_empty() and role == "speaker":
-		return {"size": String(ov.get("size", "mcu")), "angle": String(ov.get("angle", "eye")), "why": "directive"}
-	# The floor is the medium close-up: wider frames show the generated
-	# models' A-pose arms (the Deck screenshot, 2026-10-01). Wide and
-	# medium stay available to a writer's [portrait:] directive.
+		var base: String = "mcu" if reg == "intimate" else "wide"
+		return {"size": String(ov.get("size", base)), "angle": String(ov.get("angle", "eye")), "why": "directive", "register": reg}
 	if role == "narration":
-		return {"size": "mcu", "angle": "eye", "why": "narration rests on the bust"}
+		if reg == "intimate":
+			return {"size": "mcu", "angle": "eye", "why": "alone with the narration: the bust", "register": reg}
+		return {"size": "wide", "angle": "eye", "why": "narration over the room: talking distance", "register": reg}
 	if role == "listener":
-		var si: int = size_index(String(ctx.get("speaker_size", "mcu")))
-		var li: int = clampi(si - 1, size_index("mcu"), size_index("cu"))
-		return {"size": SIZES[li], "angle": "eye", "why": "reaction, a size wider than the speaker"}
+		if reg == "intimate":
+			# someone else is thinking: the room stays at talking distance
+			return {"size": "wide", "angle": "eye", "why": "present while another thinks", "register": reg}
+		var si: int = size_index(String(ctx.get("speaker_size", "wide")))
+		var li: int = clampi(si - 1, size_index("wide"), size_index("medium"))
+		return {"size": SIZES[li], "angle": "eye", "why": "listening at talking distance", "register": reg}
 	# the speaker
 	var score: int = intensity(mood, String(ctx.get("text", "")))
-	var want: int = size_index("mcu")
-	if score >= 3:
-		want = size_index("ecu")
-	elif score >= 1:
-		want = size_index("cu")
+	var want: int
+	if reg == "intimate":
+		want = size_index("mcu")
+		if score >= 3:
+			want = size_index("ecu")
+		elif score >= 1:
+			want = size_index("cu")
+	else:
+		want = size_index("wide")
+		if score >= 3:
+			want = size_index("mcu")
+		elif score >= 1:
+			want = size_index("medium")
 	var prev: int = size_index(String(ctx.get("prev_size", "")))
-	var why: String = "dialogue single"
-	if bool(ctx.get("same_speaker", false)) and prev >= 0:
+	var why: String = "intimate single" if reg == "intimate" else "dialogue at talking distance"
+	var same_register: bool = String(ctx.get("prev_register", reg)) == reg
+	if bool(ctx.get("same_speaker", false)) and prev >= 0 and same_register:
 		var prev_score: int = int(ctx.get("prev_score", 0))
 		if want < prev:
 			want = prev - 1             # breathe out one step a line
@@ -134,7 +182,7 @@ static func choose(ctx: Dictionary) -> Dictionary:
 		angle = "high"
 	elif AUTHORITY.has(glb) and (mood == "neutral" or mood == "angry"):
 		angle = "low"
-	return {"size": SIZES[want], "angle": angle, "why": why, "score": score}
+	return {"size": SIZES[want], "angle": angle, "why": why, "score": score, "register": reg}
 
 
 ## "[portrait:cu]", "[portrait:ecu low]", "[portrait:medium dutch]".

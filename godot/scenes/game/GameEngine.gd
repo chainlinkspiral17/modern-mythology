@@ -909,7 +909,7 @@ func _do_narrate(n: Dictionary) -> void:
 	AudioMgr.duck()
 	_chars.call("activate_speaker", "")
 	_push_scene_light()
-	_chars.call("direct_line", "", text, "")
+	_chars.call("direct_line", "", text, "", "narrate")
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -929,7 +929,7 @@ func _do_say(n: Dictionary) -> void:
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
-	_chars.call("direct_line", char_name.to_lower(), text, expr)
+	_chars.call("direct_line", char_name.to_lower(), text, expr, "say")
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -946,7 +946,7 @@ func _do_think(n: Dictionary) -> void:
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
-	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr)
+	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr, "think")
 	_dlg.visible = true
 	_dlg.call("show_think", char_name, _s(n, "text"))
 	AudioMgr.play_voice(_s(n, "voice"))

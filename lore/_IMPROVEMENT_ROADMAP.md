@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-19 · pass 125: TALKING DISTANCE (portrait direction draft 2); THE VOICE IDS RECOVERED.**
+- **Portraits at talking distance.** The user: "the portraits always being in extreme close-up is
+  too intimate for most shots and moments, there needs to be a natural conversational distance.
+  Intimate or internal monologue or thinking moments when the character is alone are appropriate,
+  conversationally, they need to be more torso up type shots." Rendered (PortraitCastSheet): the
+  cut-out slot (900 px) overhangs the 720 px window and the dialogue band covers its lower half,
+  so the dialogue default "mcu" showed a ~300 px head, and charged lines pushed to cu / ecu.
+  PortraitDirector now has two REGISTERS (`register(kind, present)`): CONVERSATION (a spoken line;
+  narration over two or more) rests torso-up ("wide" on screen), a charged line pushes ONE step
+  ("medium"), the punch to "mcu", nothing closer automatically; listeners hold torso-up.
+  INTIMATE (a thought; narration over one person alone) keeps the close grammar (mcu → cu → ecu).
+  A register change cuts straight; `[portrait:…]` still wins. GameEngine passes the line's kind to
+  CharLayer.direct_line. 2D portraits are fixed images (face + torso) and unchanged.
+  **Draft 3 targets:** Deck-verify across the cast at "wide" (the A-pose arms the 2026-10-01 floor
+  avoided — Alberto/Antonio read fine); a spoken line with only ONE person on screen (talking to
+  the unseen POV) may want "medium" rather than torso-up; a listener's reaction push on a hard
+  line; the 2D portrait path has no register (crop the face PNGs wider for conversation).
+- **Voice IDs recovered exactly.** The ElevenLabs history kept every generated line, with the voice
+  and the words inside each item's `dialogue` list (the first recovery read the top level and
+  matched nothing). 8,049 of 8,771 lines match a scene line; counting lines one character alone
+  speaks, each gets the voice of its latest use: 96 characters back in voice_map.json (vol 6:
+  8,268 of 8,308 lines). Ben was recast Blake → Burt on 2026-09-23. The voice studio, opened as a
+  file from the tools home page, loads the cast from `voice_map.js` (voice_ids.py writes it on
+  every save); served by Hero Studio it loads the map and the repo's IDs win. Still uncast in
+  vol 6: Eileen Kazantzakis, Coach Guidry, Number 47, the Vinton kids (narrator stand-ins, now
+  labelled so on the line). Report: godot/tools/voice_recovery/RECOVERED.md.
+
 **2026-10-18 · pass 124: VOL 7'S PLATES SHOW PLACES; THE VOICE IDS ARE SAVED TO FILES.**
 - **Vol 7's plates show places and hero objects.** The user: "the problem with the hero plates for
   land of milk and honey is they are almost all focusing on people you give vague descriptions to

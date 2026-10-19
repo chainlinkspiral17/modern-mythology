@@ -1148,9 +1148,17 @@ func set_portrait_override(arg: String) -> void:
 
 
 ## GameEngine calls this on every narrate / say / think line, after
-## update_expression and activate_speaker.
-func direct_line(char_name: String, text: String, expr: String) -> void:
+## update_expression and activate_speaker. kind is the line's node type:
+## a spoken line plays at talking distance, a thought (or narration over
+## one person alone) close — PortraitDirector.register().
+func direct_line(char_name: String, text: String, expr: String, kind: String = "say") -> void:
 	var speaker: String = char_key(char_name) if char_name != "" else ""
+	var present: int = 0
+	for pos_p: String in _slots:
+		var slot_p = _slots[pos_p]
+		if slot_p != null and is_instance_valid(slot_p["node"]) and not (slot_p["node"] as Control).has_meta("fading"):
+			present += 1
+	var reg: String = PortraitDirector.register(kind, present)
 	var entries: Array = []
 	for pos: String in _slots:
 		var slot = _slots[pos]
@@ -1163,7 +1171,7 @@ func direct_line(char_name: String, text: String, expr: String) -> void:
 		if p3d == null or not is_instance_valid(p3d) or not p3d.has_method("set_shot"):
 			continue
 		entries.append({"key": char_key(str(slot["name"])), "p3d": p3d})
-	var speaker_size: String = "mcu"
+	var speaker_size: String = "mcu" if reg == "intimate" else "wide"
 	# the speaker first, so listeners can size off them
 	for e_v: Variant in entries:
 		var e: Dictionary = e_v
@@ -1177,6 +1185,7 @@ func direct_line(char_name: String, text: String, expr: String) -> void:
 			"role": "speaker", "mood": mood if mood != "" else expr, "text": text,
 			"glb": glb_path.get_file().get_basename(),
 			"prev_size": String(mem.get("size", "")), "prev_score": int(mem.get("score", 0)),
+			"prev_register": String(mem.get("register", reg)), "register": reg,
 			"same_speaker": speaker == _last_speaker_key, "override": _portrait_override,
 		})
 		speaker_size = String(pick["size"])
@@ -1186,14 +1195,14 @@ func direct_line(char_name: String, text: String, expr: String) -> void:
 		if not _scene_light.is_empty():
 			p3d.call("set_scene_light", _scene_light)
 		p3d.call("set_shot", speaker_size, String(pick["angle"]), take)
-		_shot_memory[speaker] = {"size": speaker_size, "score": int(pick.get("score", 0))}
+		_shot_memory[speaker] = {"size": speaker_size, "score": int(pick.get("score", 0)), "register": reg}
 	for e_v: Variant in entries:
 		var e: Dictionary = e_v
 		var k: String = String(e["key"])
 		if speaker != "" and k == speaker:
 			continue
 		var role: String = "narration" if speaker == "" else "listener"
-		var pick2: Dictionary = PortraitDirector.choose({"role": role, "speaker_size": speaker_size})
+		var pick2: Dictionary = PortraitDirector.choose({"role": role, "speaker_size": speaker_size, "register": reg})
 		var p3d2: Node = e["p3d"]
 		if not _scene_light.is_empty():
 			p3d2.call("set_scene_light", _scene_light)
