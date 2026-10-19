@@ -16,18 +16,21 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]He considers the question, briefly, the way a person considers whether they have left the stove on."
+   "text": "[mood:night]He considers the question, briefly, the way a person considers whether they have left the stove on.",
+   "voice": "assets/audio/voice/vol1_link_q_cold/002.mp3"
   },
   {
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "\"I don't take temperature the way you do. Mine's set, and I haven't had the time yet to learn how to feel weather. I'll get there. Everyone does. It's the second-hardest thing about coming through.\""
+   "text": "\"I don't take temperature the way you do. Mine's set, and I haven't had the time yet to learn how to feel weather. I'll get there. Everyone does. It's the second-hardest thing about coming through.\"",
+   "voice": "assets/audio/voice/vol1_link_q_cold/003.mp3"
   },
   {
    "t": "think",
    "char": null,
-   "text": "You do not ask what the hardest is. He looks like a person who would, if asked, tell you, and you do not want him to."
+   "text": "You do not ask what the hardest is. He looks like a person who would, if asked, tell you, and you do not want him to.",
+   "voice": "assets/audio/voice/vol1_link_q_cold/004.mp3"
   },
   {
    "t": "jump",

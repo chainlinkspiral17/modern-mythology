@@ -21,11 +21,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]INT. FAUST'S BEDROOM — NIGHT"
+   "text": "[mood:night]INT. FAUST'S BEDROOM — NIGHT",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust wakes at four a.m. with the sound of an alarm."
+   "text": "Faust wakes at four a.m. with the sound of an alarm.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/004.mp3"
   },
   {
    "t": "show",
@@ -37,31 +39,37 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[beat:still]If it is 4am, then I am awake."
+   "text": "[beat:still]If it is 4am, then I am awake.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "He pulls a tug of water to drink and gets up out of bed."
+   "text": "He pulls a tug of water to drink and gets up out of bed.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/007.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]Before this waking I had lucid dreamt a dream in which I'd had riches — as a captain of industry, movie star debonair. How peculiar."
+   "text": "[shot:closeup person]Before this waking I had lucid dreamt a dream in which I'd had riches — as a captain of industry, movie star debonair. How peculiar.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert mirror]Faust looks in the mirror at his early-morning haggard."
+   "text": "[shot:insert mirror]Faust looks in the mirror at his early-morning haggard.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/009.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "At least it wasn't one in which my teeth all fall out and death is imminent. Maybe tomorrow."
+   "text": "At least it wasn't one in which my teeth all fall out and death is imminent. Maybe tomorrow.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "He opens the mirror to get his vitamins. He takes one with a tug of water."
+   "text": "He opens the mirror to get his vitamins. He takes one with a tug of water.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/011.mp3"
   },
   {
    "t": "interlude",
@@ -71,33 +79,39 @@
   },
   {
    "t": "narrate",
-   "text": "IMAGES: Faust clubbing with two young girls. The Robocop music video montage of Detroit thumps in the background."
+   "text": "IMAGES: Faust clubbing with two young girls. The Robocop music video montage of Detroit thumps in the background.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/013.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "These modern draughts, my learned trade — I down you with OCP and OTC. Yeah, you know me: your legal and commercial medicinal liaison."
+   "text": "These modern draughts, my learned trade — I down you with OCP and OTC. Yeah, you know me: your legal and commercial medicinal liaison.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "Cut back. Faust puts on his medical blue uniform and white jacket and heads to work."
+   "text": "Cut back. Faust puts on his medical blue uniform and white jacket and heads to work.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/015.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Not so heavily medicated just yet, still feeling the effects of last night — though an education away from exactly who I need to be."
+   "text": "Not so heavily medicated just yet, still feeling the effects of last night — though an education away from exactly who I need to be.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust bicycles to work."
+   "text": "Faust bicycles to work.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/017.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Regret not loving enough, not living enough — outside my head."
+   "text": "Regret not loving enough, not living enough — outside my head.",
+   "voice": "assets/audio/voice/vol1_ch2_act_one/018.mp3"
   },
   {
    "t": "jump",

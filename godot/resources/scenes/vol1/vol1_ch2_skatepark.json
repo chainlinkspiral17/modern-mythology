@@ -29,11 +29,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]EXT. THE SKATEPARK — DAY"
+      "text": "[mood:day_bright]EXT. THE SKATEPARK — DAY",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "Faust is with his friends Wagner and Jacob, waiting to push off into the pool. Faust talks to each in turn."
+      "text": "Faust is with his friends Wagner and Jacob, waiting to push off into the pool. Faust talks to each in turn.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/006.mp3"
     },
     {
       "t": "show",
@@ -57,73 +59,85 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "[shot:closeup person]Fun just to imagine how the world could be."
+      "text": "[shot:closeup person]Fun just to imagine how the world could be.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/010.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Different future points — the smallest thing."
+      "text": "Different future points — the smallest thing.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/011.mp3"
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Could change the big picture completely."
+      "text": "Could change the big picture completely.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/012.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Pebbles on the water's surface."
+      "text": "Pebbles on the water's surface.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/013.mp3"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I feel old just coming out here."
+      "text": "I feel old just coming out here.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/014.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]Not so bad. Giving me hope for the future."
+      "text": "[shot:closeup person_b]Not so bad. Giving me hope for the future.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/015.mp3"
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Plz watch me epic fail plz."
+      "text": "Plz watch me epic fail plz.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/016.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "You're getting better, bro."
+      "text": "You're getting better, bro.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/017.mp3"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I need to finally try this."
+      "text": "I need to finally try this.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/018.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Start off easy, Faust."
+      "text": "Start off easy, Faust.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/019.mp3"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "[shot:closeup person]Break tailbone later."
+      "text": "[shot:closeup person]Break tailbone later.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/020.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Earn mad skills through trial and error."
+      "text": "Earn mad skills through trial and error.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/021.mp3"
     },
     {
       "t": "bg",
@@ -149,7 +163,8 @@
     },
     {
       "t": "narrate",
-      "text": "INT. WAGNER'S HOME — DAY. Wagner puts up his skateboard, goes to the record player, and starts some metal."
+      "text": "INT. WAGNER'S HOME — DAY. Wagner puts up his skateboard, goes to the record player, and starts some metal.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/027.mp3"
     },
     {
       "t": "show",
@@ -167,47 +182,55 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "[shot:closeup person]This here is the shit."
+      "text": "[shot:closeup person]This here is the shit.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/030.mp3"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "What is this I'm hearing?"
+      "text": "What is this I'm hearing?",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/031.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Burzum. Norwegian Black Metal."
+      "text": "Burzum. Norwegian Black Metal.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/032.mp3"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Euronymous and Varg Vikernes."
+      "text": "Euronymous and Varg Vikernes.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/033.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Metal-sad — those folk so wrapped up in the story, can't see past what they are creating."
+      "text": "Metal-sad — those folk so wrapped up in the story, can't see past what they are creating.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/034.mp3"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]We need to get a good crew. Take the longboat out tonight. Prowl uncertain waters."
+      "text": "[shot:closeup person_b]We need to get a good crew. Take the longboat out tonight. Prowl uncertain waters.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/035.mp3"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Then let us away — to Judgement Day."
+      "text": "Then let us away — to Judgement Day.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "They make haste to their ride of choice — JD, a beat-up piece of shit."
+      "text": "They make haste to their ride of choice — JD, a beat-up piece of shit.",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/037.mp3"
     },
     {
       "t": "flag",
@@ -216,7 +239,8 @@
     },
     {
       "t": "narrate",
-      "text": "— End of Act One, Part I —"
+      "text": "— End of Act One, Part I —",
+      "voice": "assets/audio/voice/vol1_ch2_skatepark/039.mp3"
     },
     {
       "t": "jump",

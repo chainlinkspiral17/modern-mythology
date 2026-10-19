@@ -18,18 +18,21 @@
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "[beat:chill][mood:night]\"I'm not exactly named yet. It's being kept for me. Somewhere I haven't been. By someone who will, when she meets me, decide it on the spot and not be wrong.\""
+   "text": "[beat:chill][mood:night]\"I'm not exactly named yet. It's being kept for me. Somewhere I haven't been. By someone who will, when she meets me, decide it on the spot and not be wrong.\"",
+   "voice": "assets/audio/voice/vol1_link_q_name/002.mp3"
   },
   {
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "\"You can call me whatever you want, for the duration of the rain. It will not stick.\""
+   "text": "\"You can call me whatever you want, for the duration of the rain. It will not stick.\"",
+   "voice": "assets/audio/voice/vol1_link_q_name/003.mp3"
   },
   {
    "t": "think",
    "char": null,
-   "text": "You decide, in the privacy of your head, on a name. He does not flinch. He also does not confirm."
+   "text": "You decide, in the privacy of your head, on a name. He does not flinch. He also does not confirm.",
+   "voice": "assets/audio/voice/vol1_link_q_name/004.mp3"
   },
   {
    "t": "jump",

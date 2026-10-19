@@ -7,169 +7,198 @@
   "nodes": [
     {
       "t": "narrate",
-      "text": "PRELUDE IN THE EDITING SUITE"
+      "text": "PRELUDE IN THE EDITING SUITE",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/000.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "You two who have been here since the beginning — why even start if all we dare dream to do is break-even in this marginal marketplace?"
+      "text": "You two who have been here since the beginning — why even start if all we dare dream to do is break-even in this marginal marketplace?",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/001.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "What do you mean start? Where in time are you looking?"
+      "text": "What do you mean start? Where in time are you looking?",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/002.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "From you, the writer, they expect something they have always known but never witnessed — brought forth from your inner eye and rendered by myself and others to tickle their wicked fantasy."
+      "text": "From you, the writer, they expect something they have always known but never witnessed — brought forth from your inner eye and rendered by myself and others to tickle their wicked fantasy.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/003.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor."
+      "text": "We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/004.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Games to explore from all sides and angles in astonishment. Doing shit on the regular and finding humor in it all."
+      "text": "Games to explore from all sides and angles in astonishment. Doing shit on the regular and finding humor in it all.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/005.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "They expect the finest things rendered explicit — and I count myself among them. (nerding out) The Trilogies on repeat."
+      "text": "They expect the finest things rendered explicit — and I count myself among them. (nerding out) The Trilogies on repeat.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/006.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "My nerdcore is in truth scrapwork — an old faded fallen-to-love quilt for but the latest of stories, descend from the greatest of stories, a pantheon of classics writ into collected skin bound together illustrated man."
+      "text": "My nerdcore is in truth scrapwork — an old faded fallen-to-love quilt for but the latest of stories, descend from the greatest of stories, a pantheon of classics writ into collected skin bound together illustrated man.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/007.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "You may bang at those doors to get but a glimpse other side — all swell and good — but know there are other worlds than these."
+      "text": "You may bang at those doors to get but a glimpse other side — all swell and good — but know there are other worlds than these.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/008.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "To find an audience for this Frankenstein thing beyond mad."
+      "text": "To find an audience for this Frankenstein thing beyond mad.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/009.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "When we started was it not fear of fame that kept us running towards failure."
+      "text": "When we started was it not fear of fame that kept us running towards failure.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/010.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "The crowds we might attract might utterly destroy us if not compromise everything we’re working towards."
+      "text": "The crowds we might attract might utterly destroy us if not compromise everything we’re working towards.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "The three sigh."
+      "text": "The three sigh.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/012.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Can’t we just sit here and think a minute."
+      "text": "Can’t we just sit here and think a minute.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/013.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "It is in silence mind races and eye truly sees."
+      "text": "It is in silence mind races and eye truly sees.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/014.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "And all I feel is love for friends and family."
+      "text": "And all I feel is love for friends and family.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Enter the FOOL, a disheveled and insane merry prankster."
+      "text": "Enter the FOOL, a disheveled and insane merry prankster.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/016.mp3"
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power."
+      "text": "All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/017.mp3"
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "Make something awesome, understandable, and good — simply good — that transcends all expectation. So permission to go nuts, absolutely batshit crazy, as long as you’re having a good time we’re having a good time."
+      "text": "Make something awesome, understandable, and good — simply good — that transcends all expectation. So permission to go nuts, absolutely batshit crazy, as long as you’re having a good time we’re having a good time.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/018.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Give this thing a shot in the arm — can’t feel the pulse here — amp up the soundtrack, swell their emotions, dim the lights just so, cue flashy credit sequence, lull ’em in for the ride to come."
+      "text": "Give this thing a shot in the arm — can’t feel the pulse here — amp up the soundtrack, swell their emotions, dim the lights just so, cue flashy credit sequence, lull ’em in for the ride to come.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/019.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Keep things simple. Don’t think for a minute half-way smart patrons won’t notice how much of a hack you truly are."
+      "text": "Keep things simple. Don’t think for a minute half-way smart patrons won’t notice how much of a hack you truly are.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/020.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Hey now — I just use the tools that are given. Sometimes it works, sometimes it’s absolute shite — at least I’m delivering that beautiful dream. So don’t forget what you write is only seen and heard because of my scheme."
+      "text": "Hey now — I just use the tools that are given. Sometimes it works, sometimes it’s absolute shite — at least I’m delivering that beautiful dream. So don’t forget what you write is only seen and heard because of my scheme.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/021.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "You cheapen and whore our premature baby to any who’d press up gainst glass to see."
+      "text": "You cheapen and whore our premature baby to any who’d press up gainst glass to see.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/022.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "A fitting if crude analogy — but unlike you I am proud to call my child perfectly imperfect. All we need really."
+      "text": "A fitting if crude analogy — but unlike you I am proud to call my child perfectly imperfect. All we need really.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/023.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Don’t forget — this is collaboration, plain and simple, sum of the whole not of the part. You three but a small fraction wrapped up in your own short-sighted drama."
+      "text": "Don’t forget — this is collaboration, plain and simple, sum of the whole not of the part. You three but a small fraction wrapped up in your own short-sighted drama.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/024.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Agreed. So now we begin?"
+      "text": "Agreed. So now we begin?",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/025.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "hear hear."
+      "text": "hear hear.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/026.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Finally."
+      "text": "Finally.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "The director shrugs and starts the film."
+      "text": "The director shrugs and starts the film.",
+      "voice": "assets/audio/voice/vol1_prelude_editing_suite/028.mp3"
     },
     {
       "t": "jump",

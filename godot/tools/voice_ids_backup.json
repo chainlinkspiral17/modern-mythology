@@ -1,11 +1,12 @@
 {
   "_comment": "voice_ids.py keeps this: the cast's ElevenLabs voice IDs, a flat copy of voice_map.json's voice_id fields. Do not hand-edit.",
-  "updated": "2026-10-19 08:49:53",
+  "updated": "2026-10-19 09:07:48",
   "source": "voice studio (saved from the page)",
   "ids": {
     "_narrator": "t7JYIPCZ9tqGj3BqKOaA",
     "_narrator_vol1": "qFjcP4hHD9WIdODvuJOJ",
     "_narrator_vol2": "hIru3zkEJ3dBYHTbMy2V",
+    "_narrator_vol3": "Myb1gsDenT3mlMlj7vib",
     "_narrator_vol6": "bP8FJDHmWVEgXJDitdQd",
     "_narrator_vol7": "3Lc42uxjlCcqlwNunOkf",
     "_walkon_child": "b3tuFWghbXYRa9Cs9MJf",
@@ -14,6 +15,7 @@
     "abuela": "aYQAm4rWuigkeuRA5i92",
     "air": "fA4eSDsx5xNZ1RV7zEu5",
     "alberto": "iHlehG75dGoTFETT7zgs",
+    "andy": "vh1xOwPrBYsoo22SZueX",
     "anita": "GP1bgf0sjoFuuHkyrg8E",
     "anita_kowalski": "c4TutCiAuWP4vwb1xebb",
     "antonio": "NVQiqmeEfe523BRpefvi",

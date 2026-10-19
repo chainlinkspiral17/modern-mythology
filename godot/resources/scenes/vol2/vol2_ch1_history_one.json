@@ -21,111 +21,138 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:memory_warm]This will not be a typical bit of biography."
+   "text": "[mood:memory_warm]This will not be a typical bit of biography.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "At this moment in time I am twenty-six years old — far more potential than actual. I was just recently told this by my mother. That I am stunted developmentally. Not as much an adult as I should be."
+   "text": "At this moment in time I am twenty-six years old — far more potential than actual. I was just recently told this by my mother. That I am stunted developmentally. Not as much an adult as I should be.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "That I regressed for many years by staying in Small Wood when I should have been moving forward."
+   "text": "That I regressed for many years by staying in Small Wood when I should have been moving forward.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "This latest retreat was my second stint in Small Wood. The first was years before."
+   "text": "This latest retreat was my second stint in Small Wood. The first was years before.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "My family moved to Small Wood the summer after my sophomore year — spent overseas in Caracas, Venezuela. My dad was out of work, and we fell back to regroup in the states on my grandmother's unused piece of country property."
+   "text": "My family moved to Small Wood the summer after my sophomore year — spent overseas in Caracas, Venezuela. My dad was out of work, and we fell back to regroup in the states on my grandmother's unused piece of country property.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "If I was being more accurate — my father was enjoying the retirement he would not naturally receive."
+   "text": "If I was being more accurate — my father was enjoying the retirement he would not naturally receive.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still]Part of me thinks this place is where his ending began."
+   "text": "[beat:still]Part of me thinks this place is where his ending began.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "I found it to be a beautiful but fallen-upon-disrepair ranch house."
+   "text": "I found it to be a beautiful but fallen-upon-disrepair ranch house.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert sign]It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose."
+   "text": "[shot:insert sign]It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland."
+   "text": "The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "Surrounding the property were cow pastures, bordered on one edge by a river. The other — primal woods descend down to touch the valley."
+   "text": "Surrounding the property were cow pastures, bordered on one edge by a river. The other — primal woods descend down to touch the valley.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "It was a quiet place. Neighbors were distant and never encountered with any real frequency. Cows got loose. The river flooded. Trees split and fell across the road. These were typical of the intrusions upon day-to-day life."
+   "text": "It was a quiet place. Neighbors were distant and never encountered with any real frequency. Cows got loose. The river flooded. Trees split and fell across the road. These were typical of the intrusions upon day-to-day life.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "I had spent holidays in the house years before. I was familiar — but it was not my home. It was my grandmother's. It had a comfortable, lonesome feel."
+   "text": "I had spent holidays in the house years before. I was familiar — but it was not my home. It was my grandmother's. It had a comfortable, lonesome feel.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "But I was a teenager — coming from a very large, alien metropole, moving to a small, isolated house within a proportionately small, isolated community that gnawed at me. I was not at heart a spoiled bright-lights big-city boy."
+   "text": "But I was a teenager — coming from a very large, alien metropole, moving to a small, isolated house within a proportionately small, isolated community that gnawed at me. I was not at heart a spoiled bright-lights big-city boy.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "I did not complain about the sudden and drastic change to life, and the pace of life. Yet I was always self-aware, and out of place."
+   "text": "I did not complain about the sudden and drastic change to life, and the pace of life. Yet I was always self-aware, and out of place.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "I lacked the skills my father and sister had to tend the land and raise livestock in limited quantities."
+   "text": "I lacked the skills my father and sister had to tend the land and raise livestock in limited quantities.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "I helped out where I could that summer — pulling weeds, feeding grass to the beasts, unpacking and moving into the place proper — but I was not an easy fit with the new accommodations."
+   "text": "I helped out where I could that summer — pulling weeds, feeding grass to the beasts, unpacking and moving into the place proper — but I was not an easy fit with the new accommodations.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "Nature and the earth to me were something easy and docile. Not wild and bursting at the seams of reality and basic human existence. I was used to orderly human constructs of society — not encroaching and persistent attacks upon my flesh and character."
+   "text": "Nature and the earth to me were something easy and docile. Not wild and bursting at the seams of reality and basic human existence. I was used to orderly human constructs of society — not encroaching and persistent attacks upon my flesh and character.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "I knew the longer I was here, the longer it would get into me. At first, I was frightened of this feeling. Then it became like a second primal skin, or suit, I could dress up in."
+   "text": "I knew the longer I was here, the longer it would get into me. At first, I was frightened of this feeling. Then it became like a second primal skin, or suit, I could dress up in.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention."
+   "text": "I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "I had brought friends to vacation with me here in my youth, and those memories lingered around the place with an almost empty solace."
+   "text": "I had brought friends to vacation with me here in my youth, and those memories lingered around the place with an almost empty solace.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]I was a true teenager. Halfway between innocence and aged. The world had wizened me beyond my years. My family always a wonderful blessing to have as moral poles in my life."
+   "text": "[shot:establish]I was a true teenager. Halfway between innocence and aged. The world had wizened me beyond my years. My family always a wonderful blessing to have as moral poles in my life.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "My parents were smart, if not brilliant, in ways I'd never understand. Both so very warm, and wise, and open to my development as a human being — and my sister's as well."
+   "text": "My parents were smart, if not brilliant, in ways I'd never understand. Both so very warm, and wise, and open to my development as a human being — and my sister's as well.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "My father, on his trips into town, started rumors about a promising young athlete from Venezuela. And before long I was signed up for the local high school football team. I had no experience playing the game. None at all."
+   "text": "My father, on his trips into town, started rumors about a promising young athlete from Venezuela. And before long I was signed up for the local high school football team. I had no experience playing the game. None at all.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "My dad made a name for himself in his youth, owing much of his collegiate opportunity to the sport. I was expected to follow in his footsteps — at least in theory, if not actual ability."
+   "text": "My dad made a name for himself in his youth, owing much of his collegiate opportunity to the sport. I was expected to follow in his footsteps — at least in theory, if not actual ability.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "To appeal to my intellect and curiosity, my father hailed high school football as a cultural experience. He assured me — in a mocking tone — that I would get to know and appreciate the locals. Their customs and beliefs."
+   "text": "To appeal to my intellect and curiosity, my father hailed high school football as a cultural experience. He assured me — in a mocking tone — that I would get to know and appreciate the locals. Their customs and beliefs.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/028.mp3"
   },
   {
    "t": "narrate",
-   "text": "Whenever he was playful, I always felt the sharpest pangs of joyful fear."
+   "text": "Whenever he was playful, I always felt the sharpest pangs of joyful fear.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/029.mp3"
   },
   {
    "t": "bg",
@@ -133,43 +160,53 @@
   },
   {
    "t": "narrate",
-   "text": "So in preparation for joining the team, I began running along the road — up and down the property — to get myself in shape and make a better case for why this strange, tall, halfway-foreign boy should earn a spot on an already established dynasty."
+   "text": "So in preparation for joining the team, I began running along the road — up and down the property — to get myself in shape and make a better case for why this strange, tall, halfway-foreign boy should earn a spot on an already established dynasty.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/031.mp3"
   },
   {
    "t": "narrate",
-   "text": "I had routinely generalized that the people of Small Wood were nothing if not unaccepting and distrusting of outsiders. Which turned out to be not far from the truth."
+   "text": "I had routinely generalized that the people of Small Wood were nothing if not unaccepting and distrusting of outsiders. Which turned out to be not far from the truth.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "That element is always going to be there, as it is human nature. Some towns scream to be seen by the greater cast of the public's eye. Others retreat — and you have to wonder why."
+   "text": "That element is always going to be there, as it is human nature. Some towns scream to be seen by the greater cast of the public's eye. Others retreat — and you have to wonder why.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "Nothing against small towns. But with so few people, the degrees of personality are so sharply honed, and individual lifetimes so distinct, that it becomes its own parallel reality."
+   "text": "Nothing against small towns. But with so few people, the degrees of personality are so sharply honed, and individual lifetimes so distinct, that it becomes its own parallel reality.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "For me, the fear of the small town was nestled firmly in my reading. H.P. Lovecraft. Stephen King. Edgar Allan Poe — all finely honed the small-town paranoia in me. My literary, thematic, cultural bias."
+   "text": "For me, the fear of the small town was nestled firmly in my reading. H.P. Lovecraft. Stephen King. Edgar Allan Poe — all finely honed the small-town paranoia in me. My literary, thematic, cultural bias.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "For the first few days of preparing to join the football squad —"
+   "text": "For the first few days of preparing to join the football squad —",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "I was sweating, and seeing the sights around me as landmarks I had to pass on the way to better shape."
+   "text": "I was sweating, and seeing the sights around me as landmarks I had to pass on the way to better shape.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "Breathing in and out commenced with a more regular rhythm. Pounding my feet to the ground, paced to the beat of my racing heart."
+   "text": "Breathing in and out commenced with a more regular rhythm. Pounding my feet to the ground, paced to the beat of my racing heart.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "After several stretches of growing boredom and familiarity with my route, I branched off — to scale the terrain, to stimulate my own sense of adventure."
+   "text": "After several stretches of growing boredom and familiarity with my route, I branched off — to scale the terrain, to stimulate my own sense of adventure.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert house]Knotted paths leading both up and down the road, twisting alongside cricks, emerging upon tool shed areas, out-of-the-way pole barns, and the remains of fallen-in houses. Debris of lives lost in transition. Abandoned and forgotten."
+   "text": "[shot:insert house]Knotted paths leading both up and down the road, twisting alongside cricks, emerging upon tool shed areas, out-of-the-way pole barns, and the remains of fallen-in houses. Debris of lives lost in transition. Abandoned and forgotten.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/040.mp3"
   },
   {
    "t": "bg",
@@ -183,11 +220,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish~]The first time I saw the crumpled barn, I thought it part of the hill. Foliage consuming much of the exterior — more negative space than positive. I pushed my way in and found remnants in corners, hidden in shadows."
+   "text": "[shot:establish~]The first time I saw the crumpled barn, I thought it part of the hill. Foliage consuming much of the exterior — more negative space than positive. I pushed my way in and found remnants in corners, hidden in shadows.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "The sunlight poking through, bleached, crumbled the flesh in places."
+   "text": "The sunlight poking through, bleached, crumbled the flesh in places.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/044.mp3"
   },
   {
    "t": "bg",
@@ -195,39 +234,48 @@
   },
   {
    "t": "narrate",
-   "text": "A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken."
+   "text": "A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "The buttons and levers that controlled the nickelodeon automaton still worked — herking and jerking the sneering puppet performer this way and that."
+   "text": "The buttons and levers that controlled the nickelodeon automaton still worked — herking and jerking the sneering puppet performer this way and that.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "His name in red paint: Jiggles the Juggler."
+   "text": "His name in red paint: Jiggles the Juggler.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "His head came to rest against his shoulder after the exhausting performance. His smile and jeering eyes set upon a something across the way."
+   "text": "His head came to rest against his shoulder after the exhausting performance. His smile and jeering eyes set upon a something across the way.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "Half hanging from the wall as audience before him — a carved wooden sign."
+   "text": "Half hanging from the wall as audience before him — a carved wooden sign.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "A beautiful woman sat on a rock, naked from the waist up. Her dark hair covered just enough of her chest, falling down below her waist."
+   "text": "A beautiful woman sat on a rock, naked from the waist up. Her dark hair covered just enough of her chest, falling down below her waist.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "The rest of her figure was the product of an artist's imagination — a long bluefish tail that hugged the rock, heavy surf crashed up behind her."
+   "text": "The rest of her figure was the product of an artist's imagination — a long bluefish tail that hugged the rock, heavy surf crashed up behind her.",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "In old script was writ —"
+   "text": "In old script was writ —",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/053.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:chill]Come Visit Today. A Twisted Beauty and a Beast. Only at The Cliffside Circus Attraction —"
+   "text": "[beat:chill]Come Visit Today. A Twisted Beauty and a Beast. Only at The Cliffside Circus Attraction —",
+   "voice": "assets/audio/voice/vol2_ch1_history_one/054.mp3"
   },
   {
    "t": "flag",

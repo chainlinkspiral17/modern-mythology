@@ -11,39 +11,48 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]The railing is bolted into a slab of basalt at the edge of the lot, where the asphalt stops with no fanfare and the bluff begins."
+   "text": "[mood:lithograph]The railing is bolted into a slab of basalt at the edge of the lot, where the asphalt stops with no fanfare and the bluff begins.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/001.mp3"
   },
   {
    "t": "narrate",
-   "text": "Briar Falls drop in two stages, then a third you cannot see."
+   "text": "Briar Falls drop in two stages, then a third you cannot see.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/002.mp3"
   },
   {
    "t": "narrate",
-   "text": "The first stage is the long shallow one — the water spreading and slowing along a tilted shelf, white at the lip, then the second stage takes the volume and concentrates it and the water remembers what it is and lets go."
+   "text": "The first stage is the long shallow one — the water spreading and slowing along a tilted shelf, white at the lip, then the second stage takes the volume and concentrates it and the water remembers what it is and lets go.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind."
+   "text": "The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "The mist coming up the column is warmer than the air at the railing. You feel it on the underside of your forearms."
+   "text": "The mist coming up the column is warmer than the air at the railing. You feel it on the underside of your forearms.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tied to the railing, with three half-hitches and a finish that means whoever tied it tied a lot of knots in their life: a faded piece of red ribbon and, attached to the ribbon by a brass loop, a key."
+   "text": "Tied to the railing, with three half-hitches and a finish that means whoever tied it tied a lot of knots in their life: a faded piece of red ribbon and, attached to the ribbon by a brass loop, a key.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brass-color, but stamped on the side, in the kind of stamp that only counts: 707. It is not for any lock that is here."
+   "text": "Brass-color, but stamped on the side, in the kind of stamp that only counts: 707. It is not for any lock that is here.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "You consider untying the ribbon. You do not. It is not your knot."
+   "text": "You consider untying the ribbon. You do not. It is not your knot.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "Below the railing, on the wet shelf above the second stage, a single feather. Long and grey, with a white tip. Not a sanderling. Larger. Not a hawk either. You decide, against your better judgement, to forget you saw the feather."
+   "text": "Below the railing, on the wet shelf above the second stage, a single feather. Long and grey, with a white tip. Not a sanderling. Larger. Not a hawk either. You decide, against your better judgement, to forget you saw the feather.",
+   "voice": "assets/audio/voice/vol2_bf_overlook/009.mp3"
   },
   {
    "t": "jump",

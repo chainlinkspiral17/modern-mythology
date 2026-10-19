@@ -9,17 +9,20 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[mood:dream_blur]Immortal animal spirit dancing on cave wall — I cannot grasp but merely perceive some primal truth into this quest, inserted dis-honestly."
+   "text": "[mood:dream_blur]Immortal animal spirit dancing on cave wall — I cannot grasp but merely perceive some primal truth into this quest, inserted dis-honestly.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/000.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust stands up and inspects himself in the mirror."
+   "text": "Faust stands up and inspects himself in the mirror.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/001.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "My world of possibility expands with each new breath. They give this drug to shut-ins — agoraphfolk struggling with writer's block."
+   "text": "My world of possibility expands with each new breath. They give this drug to shut-ins — agoraphfolk struggling with writer's block.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/002.mp3"
   },
   {
    "t": "say",
@@ -27,7 +30,8 @@
    "expr": "neutral",
    "when_flag": "faust_dose",
    "is": 3,
-   "text": "Three was the right number. The mirror agrees — a little too readily."
+   "text": "Three was the right number. The mirror agrees — a little too readily.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/003.mp3"
   },
 {
    "t": "say",
@@ -35,21 +39,25 @@
    "expr": "neutral",
    "when_flag": "faust_dose",
    "is": 2,
-   "text": "Two. The one I put back is still in the bottle, and I can feel it there, waiting its turn."
+   "text": "Two. The one I put back is still in the bottle, and I can feel it there, waiting its turn.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust looks at his phone."
+   "text": "Faust looks at his phone.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/005.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Time to make some work. Dime-this corporate skrill. All the tech-pharm nerds — holla at me, please."
+   "text": "Time to make some work. Dime-this corporate skrill. All the tech-pharm nerds — holla at me, please.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust exits the office, emerges into the drugstore proper, looks out at the slow medicated trickle of society."
+   "text": "Faust exits the office, emerges into the drugstore proper, looks out at the slow medicated trickle of society.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/007.mp3"
   },
   {
    "t": "bg",
@@ -59,7 +67,8 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[mood:studio]From my whitewalled fortress of solitude I emerge and bask upon my kingdom — of cheap fluorescents and impulse buys. For I rule it well."
+   "text": "[mood:studio]From my whitewalled fortress of solitude I emerge and bask upon my kingdom — of cheap fluorescents and impulse buys. For I rule it well.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/009.mp3"
   },
   {
    "t": "hide",
@@ -73,7 +82,8 @@
   },
   {
    "t": "narrate",
-   "text": "Deborah is helping a customer at the front table. Faust saunters up."
+   "text": "Deborah is helping a customer at the front table. Faust saunters up.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/012.mp3"
   },
   {
    "t": "show",
@@ -85,25 +95,29 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]Everything going great today."
+   "text": "[shot:closeup person]Everything going great today.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/014.mp3"
   },
   {
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "Bit early to tell."
+   "text": "Bit early to tell.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/015.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Some days I feel like an IV drip."
+   "text": "Some days I feel like an IV drip.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/016.mp3"
   },
   {
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "Pretty much sums up my view of purgatory."
+   "text": "Pretty much sums up my view of purgatory.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/017.mp3"
   },
   {
    "t": "hide",
@@ -117,17 +131,20 @@
   },
   {
    "t": "narrate",
-   "text": "A customer interrupts — a happy old woman."
+   "text": "A customer interrupts — a happy old woman.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/020.mp3"
   },
   {
    "t": "say",
    "char": "Old Woman",
    "expr": "warm",
-   "text": "[shot:closeup person_b]When most the ones my age learn how to be happy, they've already lost so much time. So enjoy it. Be young and happy forever."
+   "text": "[shot:closeup person_b]When most the ones my age learn how to be happy, they've already lost so much time. So enjoy it. Be young and happy forever.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust checks the bottle and hands it over to her."
+   "text": "Faust checks the bottle and hands it over to her.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/022.mp3"
   },
   {
    "t": "show",
@@ -139,25 +156,29 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Another happy customer served."
+   "text": "Another happy customer served.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/024.mp3"
   },
   {
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "Another one who sees the light oncoming."
+   "text": "Another one who sees the light oncoming.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/025.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]I feel like Charon ferrying."
+   "text": "[shot:closeup person]I feel like Charon ferrying.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/026.mp3"
   },
   {
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "Aptly put."
+   "text": "Aptly put.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/027.mp3"
   },
   {
    "t": "hide",
@@ -171,63 +192,74 @@
   },
   {
    "t": "narrate",
-   "text": "Faust's other assistant, Eric, enters."
+   "text": "Faust's other assistant, Eric, enters.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/030.mp3"
   },
   {
    "t": "say",
    "char": "Eric",
    "expr": "neutral",
-   "text": "Yo yo ma in the hizzouse."
+   "text": "Yo yo ma in the hizzouse.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/031.mp3"
   },
   {
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]What he got in that grill?"
+   "text": "[shot:closeup person_b]What he got in that grill?",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/032.mp3"
   },
   {
    "t": "say",
    "char": "Eric",
    "expr": "neutral",
-   "text": "Just a bridge and two f-holes."
+   "text": "Just a bridge and two f-holes.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/033.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "MC R-I-B is back!"
+   "text": "MC R-I-B is back!",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust and Eric palm-shake. Eric puts down lunch."
+   "text": "Faust and Eric palm-shake. Eric puts down lunch.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/035.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I smell me some Vietnamese."
+   "text": "I smell me some Vietnamese.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "Deborah is already digging into hers."
+   "text": "Deborah is already digging into hers.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/037.mp3"
   },
   {
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "So good. Give it over."
+   "text": "So good. Give it over.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/038.mp3"
   },
   {
    "t": "say",
    "char": "Eric",
    "expr": "neutral",
-   "text": "[shot:closeup person]Six eggrolls between the three of us."
+   "text": "[shot:closeup person]Six eggrolls between the three of us.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/039.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Hint: lunch is on me — because I want three."
+   "text": "Hint: lunch is on me — because I want three.",
+   "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/040.mp3"
   },
   {
    "t": "jump",

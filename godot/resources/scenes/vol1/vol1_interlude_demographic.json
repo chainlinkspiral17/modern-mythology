@@ -7,93 +7,112 @@
   "nodes": [
     {
       "t": "narrate",
-      "text": "interlude 1 — target demographic"
+      "text": "interlude 1 — target demographic",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/000.mp3"
     },
     {
       "t": "narrate",
-      "text": "MONTAGE OF IMAGES, INTERNET MEME-ISH:"
+      "text": "MONTAGE OF IMAGES, INTERNET MEME-ISH:",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/001.mp3"
     },
     {
       "t": "narrate",
-      "text": "I am the target they want to reach — their demographic if you will. Disconnected age, so easy it would be to unionize our like-minded culturally significant dopplegangers."
+      "text": "I am the target they want to reach — their demographic if you will. Disconnected age, so easy it would be to unionize our like-minded culturally significant dopplegangers.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/002.mp3"
     },
     {
       "t": "narrate",
-      "text": "In others we trust."
+      "text": "In others we trust.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "Our individual hopes and fears rest with the many who — just like us, nothing like us — divide our selves along so many lines where does one allegiance begin another entwined frayed end."
+      "text": "Our individual hopes and fears rest with the many who — just like us, nothing like us — divide our selves along so many lines where does one allegiance begin another entwined frayed end.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/004.mp3"
     },
     {
       "t": "narrate",
-      "text": "How strong our convictions, we pardon bare comfort passion forfeit in due processed manufactured winter closed for. Church bells rage on the hour glorious to earhold several blocks away."
+      "text": "How strong our convictions, we pardon bare comfort passion forfeit in due processed manufactured winter closed for. Church bells rage on the hour glorious to earhold several blocks away.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "INFOGRAPHIC: Taste in music defined as follows — a mix of genres, an arrow through personal experience running parallel but never intersecting the dissemination of good times along an all right quotidian."
+      "text": "INFOGRAPHIC: Taste in music defined as follows — a mix of genres, an arrow through personal experience running parallel but never intersecting the dissemination of good times along an all right quotidian.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "OR: Today is Sunday. I worship the Sun, or at least pause in place to firmly address with a hand and a squint the Sun I give a smile and word to, as it is a good Sun."
+      "text": "OR: Today is Sunday. I worship the Sun, or at least pause in place to firmly address with a hand and a squint the Sun I give a smile and word to, as it is a good Sun.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "AS: I worship many a thing. The state of mind I’ve occupied since earliest memory is of worship — abject — live in praise of it all."
+      "text": "AS: I worship many a thing. The state of mind I’ve occupied since earliest memory is of worship — abject — live in praise of it all.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "PICTURE AND TEXT — my first memory: two-dimensional car driving up a storybook hill with sunshining bright behind."
+      "text": "PICTURE AND TEXT — my first memory: two-dimensional car driving up a storybook hill with sunshining bright behind.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "CRUDE ANIMATION AND VOICE OF CHILD: An old woman asked a young me what is it when I held a ladybug up to the sky. I replied everything. She tried to correct me."
+      "text": "CRUDE ANIMATION AND VOICE OF CHILD: An old woman asked a young me what is it when I held a ladybug up to the sky. I replied everything. She tried to correct me.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/010.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "I smile on the world always hope that is enough to get me to the next."
+      "text": "I smile on the world always hope that is enough to get me to the next.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/011.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "I write to begin something — the act itself brings about dimension. Every line carries certain candid suspense."
+      "text": "I write to begin something — the act itself brings about dimension. Every line carries certain candid suspense.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/012.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "I want to tell you all about the fictional world to come. If I’m too eager to begin, forgive me — I’m just excited is all."
+      "text": "I want to tell you all about the fictional world to come. If I’m too eager to begin, forgive me — I’m just excited is all.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "DISCLAIMER: within this filmed textual experience — a pseudo-documented journey deemed worthy of your attention. Pick and choose to believe what you will. You are both the audience and not."
+      "text": "DISCLAIMER: within this filmed textual experience — a pseudo-documented journey deemed worthy of your attention. Pick and choose to believe what you will. You are both the audience and not.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/014.mp3"
     },
     {
       "t": "say",
       "char": "Voice Over",
       "expr": "neutral",
-      "text": "(weak) I try to be heard so please hear me. Ba— my voice is getting through."
+      "text": "(weak) I try to be heard so please hear me. Ba— my voice is getting through.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/015.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "There were many paths before. I selfishly wanted to be — do everything."
+      "text": "There were many paths before. I selfishly wanted to be — do everything.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/016.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Parents indulged the dreamer and here I am enacting great schemes."
+      "text": "Parents indulged the dreamer and here I am enacting great schemes.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/017.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "I always wanted to write. Never wanted to be a Writer."
+      "text": "I always wanted to write. Never wanted to be a Writer.",
+      "voice": "assets/audio/voice/vol1_interlude_demographic/018.mp3"
     },
     {
       "t": "jump",

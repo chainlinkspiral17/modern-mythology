@@ -17,67 +17,83 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]The grunion is a fish. A small, silvery fish that crawls ashore to reproduce. It is in almost every way unimportant — save for the fact that Small Wood holds an annual grunion festival. A celebration dedicated to the peculiar lifecycle of the odd fish."
+      "text": "[mood:night]The grunion is a fish. A small, silvery fish that crawls ashore to reproduce. It is in almost every way unimportant — save for the fact that Small Wood holds an annual grunion festival. A celebration dedicated to the peculiar lifecycle of the odd fish.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/002.mp3"
     },
     {
       "t": "narrate",
-      "text": "Local artisans and tourist shops promote the sale of special grunion bags, to make an extra buck or two off those who hold an opinion the event has actual importance or significance — all those who hope to sack a fish driven defenseless by its basest instinct to mate."
+      "text": "Local artisans and tourist shops promote the sale of special grunion bags, to make an extra buck or two off those who hold an opinion the event has actual importance or significance — all those who hope to sack a fish driven defenseless by its basest instinct to mate.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]It happened on a Sunday. I was kissed by a girl who had a boyfriend, and the kiss was not innocent, and if there was fault for it happening, it was my own."
+      "text": "[beat:still]It happened on a Sunday. I was kissed by a girl who had a boyfriend, and the kiss was not innocent, and if there was fault for it happening, it was my own.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/004.mp3"
     },
     {
       "t": "narrate",
-      "text": "I pushed her away and held her at arm's length and her smile, her heat, turned to cold sad anger as I watched her breathe in and out."
+      "text": "I pushed her away and held her at arm's length and her smile, her heat, turned to cold sad anger as I watched her breathe in and out.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "It all started earlier in the day. There was a beach cleanup my family was a part of. We scoured the coast for whatever nugget of refuse we could find."
+      "text": "It all started earlier in the day. There was a beach cleanup my family was a part of. We scoured the coast for whatever nugget of refuse we could find.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "The problem of beach litter wasn't much of a problem, so the whole ordeal turned into a competition to see who could fill the inside of a whole trash bag — and even then, everyone joined together to work in teams."
+      "text": "The problem of beach litter wasn't much of a problem, so the whole ordeal turned into a competition to see who could fill the inside of a whole trash bag — and even then, everyone joined together to work in teams.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "The beach cleanup was a community event in preparation for the Grunion Festival — whereupon carnival equipment and food vendors were turned loose, high school beauty pageants held, middling prizes raffled off."
+      "text": "The beach cleanup was a community event in preparation for the Grunion Festival — whereupon carnival equipment and food vendors were turned loose, high school beauty pageants held, middling prizes raffled off.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "Many of us found it somewhat shortsighted that we were putting all our effort into making the town look good before the whole ordeal, instead of after."
+      "text": "Many of us found it somewhat shortsighted that we were putting all our effort into making the town look good before the whole ordeal, instead of after.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "As it was, the festival put the whole town in a heightened sense of activity, and tempers ran short all the way down that one main street running from the Pacific coast inland."
+      "text": "As it was, the festival put the whole town in a heightened sense of activity, and tempers ran short all the way down that one main street running from the Pacific coast inland.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "The town cop was being a bigger dick than usual to admittedly dick teenagers, and the four beauty pageant queens were in a cutthroat competition to build floats, bolster support, and be highly visible."
+      "text": "The town cop was being a bigger dick than usual to admittedly dick teenagers, and the four beauty pageant queens were in a cutthroat competition to build floats, bolster support, and be highly visible.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Since it was down to the wire, all four girls were volunteering their last few hours helping with the beach cleanup — each going at it with their own brand of chipper fascism."
+      "text": "Since it was down to the wire, all four girls were volunteering their last few hours helping with the beach cleanup — each going at it with their own brand of chipper fascism.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "It was here I met Katrina. The youngest of the competing queens. Beautiful, feisty, and sometimes a chore. She liked most every person she dealt with and abstained from the gossipmongering that was so common in her clique."
+      "text": "It was here I met Katrina. The youngest of the competing queens. Beautiful, feisty, and sometimes a chore. She liked most every person she dealt with and abstained from the gossipmongering that was so common in her clique.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "She approached me during the cleanup, and wanted to know who I was and what my situation entailed. I knew right off she wasn't hitting on me — more of a determined curiosity. She engaged my younger sister as well — asking her just as many questions."
+      "text": "She approached me during the cleanup, and wanted to know who I was and what my situation entailed. I knew right off she wasn't hitting on me — more of a determined curiosity. She engaged my younger sister as well — asking her just as many questions.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "Katrina was the only daughter of Russian immigrants in the early seventies, born on these shores, instilled with a certain anxiety and worldlook that was at odds with the rest of the local community."
+      "text": "Katrina was the only daughter of Russian immigrants in the early seventies, born on these shores, instilled with a certain anxiety and worldlook that was at odds with the rest of the local community.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Perhaps this common thread was the root of a friendship. Perhaps it was just that she was smart, friendly, and I gained much entertainment by working her into a frenzy."
+      "text": "Perhaps this common thread was the root of a friendship. Perhaps it was just that she was smart, friendly, and I gained much entertainment by working her into a frenzy.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "Just to clear this up — Kate was not the girl who kissed me. That was Kate's friend, Shannon. Who I had met a few weeks back."
+      "text": "Just to clear this up — Kate was not the girl who kissed me. That was Kate's friend, Shannon. Who I had met a few weeks back.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/017.mp3"
     },
     {
       "t": "bg",
@@ -85,83 +101,103 @@
     },
     {
       "t": "narrate",
-      "text": "My parents wanted a night together so they dropped my sister and I off at Small Wood Rec Center — a small, deteriorating one-room building on the main drag of town."
+      "text": "My parents wanted a night together so they dropped my sister and I off at Small Wood Rec Center — a small, deteriorating one-room building on the main drag of town.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Unfortunately, that night was a dance instead of the usual casual come-as-you-are games of foosball, pool, and scattered cartridges popped into an old Nintendo system."
+      "text": "Unfortunately, that night was a dance instead of the usual casual come-as-you-are games of foosball, pool, and scattered cartridges popped into an old Nintendo system.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "A portly kid was the deejay and there were eight kids making an effort to shuffle in place uncomfortably, not counting my sister and I. We were standing at the entrance horrified, refusing to budge another step."
+      "text": "A portly kid was the deejay and there were eight kids making an effort to shuffle in place uncomfortably, not counting my sister and I. We were standing at the entrance horrified, refusing to budge another step.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "A backwards glance confirmed that our ride had left for good."
+      "text": "A backwards glance confirmed that our ride had left for good.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "Janess and I made for the back, where we arranged fold-up chairs in sitting positions and looked around for out-dated but readily available reading material."
+      "text": "Janess and I made for the back, where we arranged fold-up chairs in sitting positions and looked around for out-dated but readily available reading material.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "We could stonewall it together if we were careful — block out the horrible spectacle playing itself out."
+      "text": "We could stonewall it together if we were careful — block out the horrible spectacle playing itself out.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "The deejay sensed our combined resigned unease and came over to us, introduced himself while the music played itself in the background."
+      "text": "The deejay sensed our combined resigned unease and came over to us, introduced himself while the music played itself in the background.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "His name was Arthur Finch. And his aspirations, in no particular order, were actor, artist, and musician."
+      "text": "His name was Arthur Finch. And his aspirations, in no particular order, were actor, artist, and musician.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was popular in the sense that everyone liked the guy. Not necessarily was he the most handsome, talented, charming person our age — but he possessed a good mix of qualities and had a confident awareness. Most notably, a calm in the face of failure."
+      "text": "He was popular in the sense that everyone liked the guy. Not necessarily was he the most handsome, talented, charming person our age — but he possessed a good mix of qualities and had a confident awareness. Most notably, a calm in the face of failure.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was outgoing and energetic. Very good at observing when people needed a solid word to pull them out of their own heads."
+      "text": "He was outgoing and energetic. Very good at observing when people needed a solid word to pull them out of their own heads.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "We never became fast friends but always respected and kept a charitable distance from each other. We were alike in many ways — so the desire to stand apart was quite strong."
+      "text": "We never became fast friends but always respected and kept a charitable distance from each other. We were alike in many ways — so the desire to stand apart was quite strong.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rose was a senior above me, so there was a natural falling out of touch after the school year was over. And he disappeared and never came back."
+      "text": "Rose was a senior above me, so there was a natural falling out of touch after the school year was over. And he disappeared and never came back.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rose came up to inform me he'd kill the dance soon due to the poor turn out, and instead open up the middle school gym to get a pick-up basketball game going."
+      "text": "Rose came up to inform me he'd kill the dance soon due to the poor turn out, and instead open up the middle school gym to get a pick-up basketball game going.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Before that happened, a girl I hadn't paid much attention to came up and asked me to dance."
+      "text": "Before that happened, a girl I hadn't paid much attention to came up and asked me to dance.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "I shrugged a confused sort of agreement and we walked out hand in hand sideways to the obvious dead zone of couples shuffling around in place ever so suggestively to the time of the beat."
+      "text": "I shrugged a confused sort of agreement and we walked out hand in hand sideways to the obvious dead zone of couples shuffling around in place ever so suggestively to the time of the beat.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had a big grin on her face and kept her head rested on my chest for most of the dance."
+      "text": "She had a big grin on her face and kept her head rested on my chest for most of the dance.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "I wasn't really clued into the whole dating scene, and wasn't making any serious attempts at much of anything. If rumors that I was gay existed — which they probably did — I couldn't care less."
+      "text": "I wasn't really clued into the whole dating scene, and wasn't making any serious attempts at much of anything. If rumors that I was gay existed — which they probably did — I couldn't care less.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "My heart was actually getting nostalgic and pining for an older romance overseas, which was pesky and impossible, but still — that's where my head was."
+      "text": "My heart was actually getting nostalgic and pining for an older romance overseas, which was pesky and impossible, but still — that's where my head was.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "The major qualities I found attractive in a woman, outside of beauty, still eluded me in Small Wood, and I was craving something approaching serious intellect quite diligently. Shannon was not what I was looking for in the slightest. But we danced."
+      "text": "The major qualities I found attractive in a woman, outside of beauty, still eluded me in Small Wood, and I was craving something approaching serious intellect quite diligently. Shannon was not what I was looking for in the slightest. But we danced.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Arthur Finch killed the thing dead. And we all shuffled off to a ballgame."
+      "text": "Arthur Finch killed the thing dead. And we all shuffled off to a ballgame.",
+      "voice": "assets/audio/voice/vol2_ch2_interlude_two/038.mp3"
     },
     {
       "t": "interlude",

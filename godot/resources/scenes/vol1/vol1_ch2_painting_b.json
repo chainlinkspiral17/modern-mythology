@@ -13,7 +13,8 @@
    "t": "say",
    "char": "Fire",
    "expr": "neutral",
-   "text": "[mood:day_bright]Such a dork. Relax and enjoy the moment. Take a deep breath and breathe — because you, Sir, summoned frickin' elementals. Without a monstrous manual, no less."
+   "text": "[mood:day_bright]Such a dork. Relax and enjoy the moment. Take a deep breath and breathe — because you, Sir, summoned frickin' elementals. Without a monstrous manual, no less.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/001.mp3"
   },
   {
    "t": "say",
@@ -21,7 +22,8 @@
    "expr": "neutral",
    "when_flag": "faust_elem_favored",
    "is": "fire",
-   "text": "You leaned in. I felt it. Don't pretend you didn't."
+   "text": "You leaned in. I felt it. Don't pretend you didn't.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/002.mp3"
   },
 {
    "t": "say",
@@ -29,7 +31,8 @@
    "expr": "neutral",
    "when_flag": "faust_elem_favored",
    "is": "water",
-   "text": "He held steady. I'll give him that — he held steady while you shouted."
+   "text": "He held steady. I'll give him that — he held steady while you shouted.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/003.mp3"
   },
 {
    "t": "say",
@@ -37,55 +40,64 @@
    "expr": "neutral",
    "when_flag": "faust_elem_favored",
    "is": "air",
-   "text": "You took Air's warning. Fine. Air is always warning somebody."
+   "text": "You took Air's warning. Fine. Air is always warning somebody.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/004.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "You have to admit — that is worth some mad real-life XP right there. This tinnitus in my ear is like a ding. Methinks I've leveled up."
+   "text": "You have to admit — that is worth some mad real-life XP right there. This tinnitus in my ear is like a ding. Methinks I've leveled up.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/005.mp3"
   },
   {
    "t": "say",
    "char": "Water",
    "expr": "neutral",
-   "text": "So just roll with it, brother. You're posting good stats. Keep an eye on the endgame. Move the balls down field. And remember to use all the players — (who are players who are players)."
+   "text": "So just roll with it, brother. You're posting good stats. Keep an eye on the endgame. Move the balls down field. And remember to use all the players — (who are players who are players).",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/006.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "It's cool. I get it. But you have to realize certain things about me. Firstly — my life is a work in progress. Second — I've got much to do yet."
+   "text": "It's cool. I get it. But you have to realize certain things about me. Firstly — my life is a work in progress. Second — I've got much to do yet.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/007.mp3"
   },
   {
    "t": "say",
    "char": "Fire",
    "expr": "neutral",
-   "text": "[beat:still]You are flesh. You are decay."
+   "text": "[beat:still]You are flesh. You are decay.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/008.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Everything is broken down, made new."
+   "text": "Everything is broken down, made new.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/009.mp3"
   },
   {
    "t": "say",
    "char": "Water",
    "expr": "neutral",
-   "text": "Everything is born. Everything dies."
+   "text": "Everything is born. Everything dies.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/010.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]I welcome what's next."
+   "text": "[shot:closeup person]I welcome what's next.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/011.mp3"
   },
   {
    "t": "say",
    "char": "Air",
    "expr": "neutral",
-   "text": "Alas — our sitting hour is up. You must pee, and break concentration."
+   "text": "Alas — our sitting hour is up. You must pee, and break concentration.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/012.mp3"
   },
   {
    "t": "hide",
@@ -107,13 +119,15 @@
   },
   {
    "t": "narrate",
-   "text": "Faust stands up and looks away from the painting."
+   "text": "Faust stands up and looks away from the painting.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/017.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Bladder is bursting. (as he pees) Oh — what a wonderful tea party."
+   "text": "Bladder is bursting. (as he pees) Oh — what a wonderful tea party.",
+   "voice": "assets/audio/voice/vol1_ch2_painting_b/018.mp3"
   },
   {
    "t": "jump",

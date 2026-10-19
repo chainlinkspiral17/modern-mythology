@@ -17,39 +17,48 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:smoky_bar]The Cliffside Circus looked more like a bordello or gaming parlor than an actual circus."
+   "text": "[mood:smoky_bar]The Cliffside Circus looked more like a bordello or gaming parlor than an actual circus.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/002.mp3"
   },
   {
    "t": "narrate",
-   "text": "The main building was true enough built up along the edge of a cliff — overlooking jagged rock outcroppings, beaten raw by the harsh surf beneath. Smaller satellite lodgings and showrooms were built up in a semi-circle. An interrupted wagon train."
+   "text": "The main building was true enough built up along the edge of a cliff — overlooking jagged rock outcroppings, beaten raw by the harsh surf beneath. Smaller satellite lodgings and showrooms were built up in a semi-circle. An interrupted wagon train.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eric Jarvis had an only child whose name was David. Since the age of fifteen, he was known as a hard-drinking, hard-hitting man. He was eventually killed at the age of thirty-three for allegedly raping a prominent mill owner's daughter."
+   "text": "Eric Jarvis had an only child whose name was David. Since the age of fifteen, he was known as a hard-drinking, hard-hitting man. He was eventually killed at the age of thirty-three for allegedly raping a prominent mill owner's daughter.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "David grew up on the road. A brutal life for any child of that era — leaving his siblings dead and buried across the landscape of his youth."
+   "text": "David grew up on the road. A brutal life for any child of that era — leaving his siblings dead and buried across the landscape of his youth.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "At his father's insistence, David had relations with many of the retinue retained at the circus. He often said he loved the face of Delores in more ways than one — but by all accounts he truly did care for the misshapen girl."
+   "text": "At his father's insistence, David had relations with many of the retinue retained at the circus. He often said he loved the face of Delores in more ways than one — but by all accounts he truly did care for the misshapen girl.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "He was often seen nursing a bottle, standing watch over her like a protective older brother — intimidating the rowdies who'd climb over the rail, wade into the pool, try and grab a feel."
+   "text": "He was often seen nursing a bottle, standing watch over her like a protective older brother — intimidating the rowdies who'd climb over the rail, wade into the pool, try and grab a feel.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "David's uncle, and Eric's brother, Jeff — was the primary attraction at the Cliffside Circus. A very talented and renowned clown and vaudevillian performer."
+   "text": "David's uncle, and Eric's brother, Jeff — was the primary attraction at the Cliffside Circus. A very talented and renowned clown and vaudevillian performer.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "He was a bitter misogynist — though his disdain for life was spread pretty evenly out across all ethnicities, religious convictions, and sexual hang-ups. He was a foul and funny individual, and according to rumors, a very successful chicken hawk."
+   "text": "He was a bitter misogynist — though his disdain for life was spread pretty evenly out across all ethnicities, religious convictions, and sexual hang-ups. He was a foul and funny individual, and according to rumors, a very successful chicken hawk.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "There were no surviving women in the Jarvis household, so Jeff took it upon himself to hold the dwindling family together."
+   "text": "There were no surviving women in the Jarvis household, so Jeff took it upon himself to hold the dwindling family together.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/010.mp3"
   },
   {
    "t": "bg",
@@ -63,59 +72,73 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:ice]In the cold spring of 1902, an ice storm hit the coast hard. It was an unusual sight — to see frost in the sand, trees glazed in clear. It lasted close to a week and culminated with hundred-mile-an-hour winds, and a torrential wash of misery."
+   "text": "[mood:ice]In the cold spring of 1902, an ice storm hit the coast hard. It was an unusual sight — to see frost in the sand, trees glazed in clear. It lasted close to a week and culminated with hundred-mile-an-hour winds, and a torrential wash of misery.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "Water came down off the mountains in wicked gushes — uprooting trees and tearing through homes. The Cliffside Circus had the unfortunate position of being situated at a washout point on the coast."
+   "text": "Water came down off the mountains in wicked gushes — uprooting trees and tearing through homes. The Cliffside Circus had the unfortunate position of being situated at a washout point on the coast.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "The staff and workers worked in freezing conditions to salvage as much as they could, as fast as they could, before all was swept into sea."
+   "text": "The staff and workers worked in freezing conditions to salvage as much as they could, as fast as they could, before all was swept into sea.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:chill]Delores was forgotten about until the end. They heard her [wave amp=7 freq=3]screaming[/wave] as her tropical island enclosure was being slowly carried away."
+   "text": "[beat:chill]Delores was forgotten about until the end. They heard her [wave amp=7 freq=3]screaming[/wave] as her tropical island enclosure was being slowly carried away.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "The shelf was sloughing off completely — weakened beyond the point of no return. She called out for help, but the ground was an unstable, sinking mess."
+   "text": "The shelf was sloughing off completely — weakened beyond the point of no return. She called out for help, but the ground was an unstable, sinking mess.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "Invisible cracks in the earth filled with water, and a misplaced foot would at best sprain an ankle, at worst disappear you completely in quicksand."
+   "text": "Invisible cracks in the earth filled with water, and a misplaced foot would at best sprain an ankle, at worst disappear you completely in quicksand.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "A split tree had gashed David's arm — and while he was being tended to, he implored his father to go after the trapped girl. Eric got a team of able-bodied young men tethered by ropes and inched towards the stranded, perilous mermaid exhibit."
+   "text": "A split tree had gashed David's arm — and while he was being tended to, he implored his father to go after the trapped girl. Eric got a team of able-bodied young men tethered by ropes and inched towards the stranded, perilous mermaid exhibit.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "Reports differ about the exact timing of the collapse. But it was at this point that much of cliff gave away — and twenty feet of rock slid into the surf, taking several buildings down the side and leaving the remainder straddled on the very edge."
+   "text": "Reports differ about the exact timing of the collapse. But it was at this point that much of cliff gave away — and twenty feet of rock slid into the surf, taking several buildings down the side and leaving the remainder straddled on the very edge.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "When the team got into the home, it was already at an angle — mud pouring into it, out a window. Delores was seen holding herself above the cold thick shock of it all — grasping for dear life to the tropical tree."
+   "text": "When the team got into the home, it was already at an angle — mud pouring into it, out a window. Delores was seen holding herself above the cold thick shock of it all — grasping for dear life to the tropical tree.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "She was screaming ever more desperately — but knew that to release hold would be to be swept out the back to her certain death."
+   "text": "She was screaming ever more desperately — but knew that to release hold would be to be swept out the back to her certain death.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:hit]Eric did his absolute best to save her life — but the timing was just not good enough. The rest of the shelf gave way and the house crumbled into the ocean — taking Delores Wiebe, Eric Jarvis, and two other men into the sea."
+   "text": "[beat:hit]Eric did his absolute best to save her life — but the timing was just not good enough. The rest of the shelf gave way and the house crumbled into the ocean — taking Delores Wiebe, Eric Jarvis, and two other men into the sea.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the hours that followed, another team led by Jeff ventured to the rocky bottoms and recovered all the bodies — save for Delores."
+   "text": "In the hours that followed, another team led by Jeff ventured to the rocky bottoms and recovered all the bodies — save for Delores.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "Whether or not Jeff refused to waste time to salvage the corpse of Delores, or it was never actually found — remains an unresolved sticking point."
+   "text": "Whether or not Jeff refused to waste time to salvage the corpse of Delores, or it was never actually found — remains an unresolved sticking point.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "Yet the story of Delores does not end there. As she was a tragic figure in life, she remained — if not became — an even more tragic figure in death."
+   "text": "Yet the story of Delores does not end there. As she was a tragic figure in life, she remained — if not became — an even more tragic figure in death.",
+   "voice": "assets/audio/voice/vol2_ch2_cliffside/026.mp3"
   },
   {
    "t": "flag",

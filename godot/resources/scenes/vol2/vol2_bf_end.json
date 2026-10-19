@@ -11,31 +11,38 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in."
+   "text": "[mood:lithograph]You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in.",
+   "voice": "assets/audio/voice/vol2_bf_end/001.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Walkman goes into the pocket of the sweatshirt. The Diet Pepsi is half gone and the father is going to finish it in the next mile."
+   "text": "The Walkman goes into the pocket of the sweatshirt. The Diet Pepsi is half gone and the father is going to finish it in the next mile.",
+   "voice": "assets/audio/voice/vol2_bf_end/002.mp3"
   },
   {
    "t": "narrate",
-   "text": "The teenage brother is already in the back row of the van, headphones still in, head against the window glass. The tween sister climbs into the middle row, the folded brochure in her fist. She will not unfold it for years."
+   "text": "The teenage brother is already in the back row of the van, headphones still in, head against the window glass. The tween sister climbs into the middle row, the folded brochure in her fist. She will not unfold it for years.",
+   "voice": "assets/audio/voice/vol2_bf_end/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "The dog has come back from the trailhead. It waits at the open door, looks once at the box behind it, and gets in. It settles between the two rows of seats and does not look out the window."
+   "text": "The dog has come back from the trailhead. It waits at the open door, looks once at the box behind it, and gets in. It settles between the two rows of seats and does not look out the window.",
+   "voice": "assets/audio/voice/vol2_bf_end/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "The side door slides shut. The minivan starts. The faux wood trim catches the afternoon in the particular way faux wood trim does, which is briefly."
+   "text": "The side door slides shut. The minivan starts. The faux wood trim catches the afternoon in the particular way faux wood trim does, which is briefly.",
+   "voice": "assets/audio/voice/vol2_bf_end/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "They pull out of the lot. You watch the rear plate until the curve takes it."
+   "text": "They pull out of the lot. You watch the rear plate until the curve takes it.",
+   "voice": "assets/audio/voice/vol2_bf_end/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "The rest stop is quiet again. The mist from the third stage of the falls comes up the column in the windless air. The 707 key is still tied to the railing. The paperback is still face-down on the middle table. The dog is gone."
+   "text": "The rest stop is quiet again. The mist from the third stage of the falls comes up the column in the windless air. The 707 key is still tied to the railing. The paperback is still face-down on the middle table. The dog is gone.",
+   "voice": "assets/audio/voice/vol2_bf_end/007.mp3"
   },
   {
    "t": "flag",

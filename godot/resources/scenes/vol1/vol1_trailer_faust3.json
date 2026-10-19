@@ -7,71 +7,83 @@
   "nodes": [
     {
       "t": "narrate",
-      "text": "A TRAILER FOR A COMING ATTRACTION:"
+      "text": "A TRAILER FOR A COMING ATTRACTION:",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/000.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Reading Goethe’s Faust in the tub, smoking judiciously the last of my reefer, peeling back foiled squares of holiday fudge — I realize I must concoct mine own interpretation."
+      "text": "Reading Goethe’s Faust in the tub, smoking judiciously the last of my reefer, peeling back foiled squares of holiday fudge — I realize I must concoct mine own interpretation.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/001.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "I will write a post-modern screenplay full of playful update, cultural significance — it will do what all good sequel reboots do."
+      "text": "I will write a post-modern screenplay full of playful update, cultural significance — it will do what all good sequel reboots do.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/002.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Here be the Internet as player, the spy cam as eye of fate, the indie emo wiccan soothsayer post-industrialized world we live in."
+      "text": "Here be the Internet as player, the spy cam as eye of fate, the indie emo wiccan soothsayer post-industrialized world we live in.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/003.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "I will rename Mephistopheles — Dickens Dean. And Satan — Antagonist."
+      "text": "I will rename Mephistopheles — Dickens Dean. And Satan — Antagonist.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/004.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Cast myself and friends as in-player parts and summon post-production magic."
+      "text": "Cast myself and friends as in-player parts and summon post-production magic.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "CUE TITLE TEXT: FAUST 3"
+      "text": "CUE TITLE TEXT: FAUST 3",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/006.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Keep the name. It is universal. Timeless."
+      "text": "Keep the name. It is universal. Timeless.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/007.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Shoot the intimate on iphone and digital cameras, and as the world expands make significant beauty in HD."
+      "text": "Shoot the intimate on iphone and digital cameras, and as the world expands make significant beauty in HD.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/008.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "It hurts to think this play has already started and I just now realize it must be completed."
+      "text": "It hurts to think this play has already started and I just now realize it must be completed.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/009.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "I could never be Goethe — can just be me and let he himself shine through."
+      "text": "I could never be Goethe — can just be me and let he himself shine through.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/010.mp3"
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "Faust I could play myself — as did he."
+      "text": "Faust I could play myself — as did he.",
+      "voice": "assets/audio/voice/vol1_trailer_faust3/011.mp3"
     },
     {
       "t": "jump",

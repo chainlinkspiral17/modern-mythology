@@ -11,281 +11,329 @@
     },
     {
       "t": "narrate",
-      "text": "Introduction."
+      "text": "Introduction.",
+      "voice": "assets/audio/voice/vol1_introduction/001.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "(nervously) A moment ago I was debating whether or not to begin and here I am starting something I should never finish."
+      "text": "(nervously) A moment ago I was debating whether or not to begin and here I am starting something I should never finish.",
+      "voice": "assets/audio/voice/vol1_introduction/002.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "(comfortable) There comes a time in life when pieces click in place good and bad chambers of existence line up just so showing both the way"
+      "text": "(comfortable) There comes a time in life when pieces click in place good and bad chambers of existence line up just so showing both the way",
+      "voice": "assets/audio/voice/vol1_introduction/003.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "and every single misstep ever taken specifically on purpose pressed in prehistoric mud so long gone yet still to come for ancestor gawkers to stumble cross centuries later and find mute satisfaction"
+      "text": "and every single misstep ever taken specifically on purpose pressed in prehistoric mud so long gone yet still to come for ancestor gawkers to stumble cross centuries later and find mute satisfaction",
+      "voice": "assets/audio/voice/vol1_introduction/004.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(sitting with a book) The days gone by dry up crackle and flake."
+      "text": "(sitting with a book) The days gone by dry up crackle and flake.",
+      "voice": "assets/audio/voice/vol1_introduction/005.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "(obsessive) I scrub my kitchen learning textures of surface — peel back what used to be. A late-life thirst for me; finally recognized mine own contribution to grime and soil accumulates just under sight."
+      "text": "(obsessive) I scrub my kitchen learning textures of surface — peel back what used to be. A late-life thirst for me; finally recognized mine own contribution to grime and soil accumulates just under sight.",
+      "voice": "assets/audio/voice/vol1_introduction/006.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(drunk sick and hugging the toilet) I was put here for reasons perhaps to leave prints etch an owned existence into this second-hand tapestry."
+      "text": "(drunk sick and hugging the toilet) I was put here for reasons perhaps to leave prints etch an owned existence into this second-hand tapestry.",
+      "voice": "assets/audio/voice/vol1_introduction/007.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Maybe I have a reason to—"
+      "text": "Maybe I have a reason to—",
+      "voice": "assets/audio/voice/vol1_introduction/008.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "To?"
+      "text": "To?",
+      "voice": "assets/audio/voice/vol1_introduction/009.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "—To be."
+      "text": "—To be.",
+      "voice": "assets/audio/voice/vol1_introduction/010.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "(playing video games) Sin accounted for washed up from having borrowed so much against a name that means little — much last living male branch — should fashion a wand from that."
+      "text": "(playing video games) Sin accounted for washed up from having borrowed so much against a name that means little — much last living male branch — should fashion a wand from that.",
+      "voice": "assets/audio/voice/vol1_introduction/011.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(dressing in a waiter’s uniform) I hold Link in highest esteem worn with certain pride, to pay back and then some (father’s) hand—somely."
+      "text": "(dressing in a waiter’s uniform) I hold Link in highest esteem worn with certain pride, to pay back and then some (father’s) hand—somely.",
+      "voice": "assets/audio/voice/vol1_introduction/012.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "(in a cafe with friends drinking chai) But what I know about myself is an utter fiction fabricated by myself and others to make this new reality come to pass."
+      "text": "(in a cafe with friends drinking chai) But what I know about myself is an utter fiction fabricated by myself and others to make this new reality come to pass.",
+      "voice": "assets/audio/voice/vol1_introduction/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Cut to: The Players celebrating, wrapping up their success."
+      "text": "Cut to: The Players celebrating, wrapping up their success.",
+      "voice": "assets/audio/voice/vol1_introduction/014.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "(toasting them) A conspiracy of beautiful dreamers yet a conspiracy no less."
+      "text": "(toasting them) A conspiracy of beautiful dreamers yet a conspiracy no less.",
+      "voice": "assets/audio/voice/vol1_introduction/015.mp3"
     },
     {
       "t": "say",
       "char": "A Player",
       "expr": "neutral",
-      "text": "At least we’re upfront."
+      "text": "At least we’re upfront.",
+      "voice": "assets/audio/voice/vol1_introduction/016.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(making tamales, with flashes to:) I work towards the good if such a term gives any meaning —true— to you certainly me"
+      "text": "(making tamales, with flashes to:) I work towards the good if such a term gives any meaning —true— to you certainly me",
+      "voice": "assets/audio/voice/vol1_introduction/017.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "but my good a construct of culture a childhood of cartoons video games movies comic books sports nature library books travel friendships rivalries all with fierce science-fiction clarity."
+      "text": "but my good a construct of culture a childhood of cartoons video games movies comic books sports nature library books travel friendships rivalries all with fierce science-fiction clarity.",
+      "voice": "assets/audio/voice/vol1_introduction/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "Images of various cultural stepping-stones and highlights. George Lucas, Jim Henson, et all."
+      "text": "Images of various cultural stepping-stones and highlights. George Lucas, Jim Henson, et all.",
+      "voice": "assets/audio/voice/vol1_introduction/019.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "(waiting in line for a movie) A beautiful mythology built just for me — hired hands and artisans giving upon dreams to birth collective dreams within dreams."
+      "text": "(waiting in line for a movie) A beautiful mythology built just for me — hired hands and artisans giving upon dreams to birth collective dreams within dreams.",
+      "voice": "assets/audio/voice/vol1_introduction/020.mp3"
     },
     {
       "t": "say",
       "char": "DD",
       "expr": "neutral",
-      "text": "(standing in line) All so very meta."
+      "text": "(standing in line) All so very meta.",
+      "voice": "assets/audio/voice/vol1_introduction/021.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(writing a letter) To all: Sorry for my protracted childhood and adolescence still doing my best to make up for it."
+      "text": "(writing a letter) To all: Sorry for my protracted childhood and adolescence still doing my best to make up for it.",
+      "voice": "assets/audio/voice/vol1_introduction/022.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Teachers taught me well enough. I loved them most like second parents."
+      "text": "Teachers taught me well enough. I loved them most like second parents.",
+      "voice": "assets/audio/voice/vol1_introduction/023.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "I always hurt my tutors by never being good enough for failing when they had so much invested in me at just that crucial moment."
+      "text": "I always hurt my tutors by never being good enough for failing when they had so much invested in me at just that crucial moment.",
+      "voice": "assets/audio/voice/vol1_introduction/024.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "I saw our futures I choked to them I apologize — all that on me."
+      "text": "I saw our futures I choked to them I apologize — all that on me.",
+      "voice": "assets/audio/voice/vol1_introduction/025.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "They gave so much and hoped I could give back so little."
+      "text": "They gave so much and hoped I could give back so little.",
+      "voice": "assets/audio/voice/vol1_introduction/026.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Things taught to me by them left-handed unusual very tall big feet bright and kind."
+      "text": "Things taught to me by them left-handed unusual very tall big feet bright and kind.",
+      "voice": "assets/audio/voice/vol1_introduction/027.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "This is unusual."
+      "text": "This is unusual.",
+      "voice": "assets/audio/voice/vol1_introduction/028.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Everything about me looking back seemed unusual."
+      "text": "Everything about me looking back seemed unusual.",
+      "voice": "assets/audio/voice/vol1_introduction/029.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "In both the majority and minority of who I was and who I was."
+      "text": "In both the majority and minority of who I was and who I was.",
+      "voice": "assets/audio/voice/vol1_introduction/030.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "I don’t know what I’ve become — just know that I am."
+      "text": "I don’t know what I’ve become — just know that I am.",
+      "voice": "assets/audio/voice/vol1_introduction/031.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "I am a nerd that needs looking after. I have lovely friends and family. I try to repay their love."
+      "text": "I am a nerd that needs looking after. I have lovely friends and family. I try to repay their love.",
+      "voice": "assets/audio/voice/vol1_introduction/032.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "But I slip in small ways I gaze off into far corners of things lose myself at the world inside my head"
+      "text": "But I slip in small ways I gaze off into far corners of things lose myself at the world inside my head",
+      "voice": "assets/audio/voice/vol1_introduction/033.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "I fear how I function when left like this."
+      "text": "I fear how I function when left like this.",
+      "voice": "assets/audio/voice/vol1_introduction/034.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "My father just like me in such different ways."
+      "text": "My father just like me in such different ways.",
+      "voice": "assets/audio/voice/vol1_introduction/035.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "The hardest thing about losing him was becoming him."
+      "text": "The hardest thing about losing him was becoming him.",
+      "voice": "assets/audio/voice/vol1_introduction/036.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "Self-doubt would have crippled me — instead ordered chaos electric statics and storm booted this operating system this great battle whir clicking inside me accelerates something crushing something"
+      "text": "Self-doubt would have crippled me — instead ordered chaos electric statics and storm booted this operating system this great battle whir clicking inside me accelerates something crushing something",
+      "voice": "assets/audio/voice/vol1_introduction/037.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "so damned high I lose myself in art find beauty in friendship family found eternal connection in everyday existence."
+      "text": "so damned high I lose myself in art find beauty in friendship family found eternal connection in everyday existence.",
+      "voice": "assets/audio/voice/vol1_introduction/038.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Can’t unsee what’s seen — not to bemoan I try to step up and carry that weight."
+      "text": "Can’t unsee what’s seen — not to bemoan I try to step up and carry that weight.",
+      "voice": "assets/audio/voice/vol1_introduction/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "TEXT: Every day you gift yourself so please thank the stars and the moon and the sun —I— thank you sun and moon and stars."
+      "text": "TEXT: Every day you gift yourself so please thank the stars and the moon and the sun —I— thank you sun and moon and stars.",
+      "voice": "assets/audio/voice/vol1_introduction/040.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "My thanks trickles down rests here on books examined eyestraining existential dread untold delights library books by the armful — transparent clear skinned shrink-wrapped from future tense — tomes of forgotten lore — history repeating itself within fictional allegory —"
+      "text": "My thanks trickles down rests here on books examined eyestraining existential dread untold delights library books by the armful — transparent clear skinned shrink-wrapped from future tense — tomes of forgotten lore — history repeating itself within fictional allegory —",
+      "voice": "assets/audio/voice/vol1_introduction/041.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "arts and crafts; horrors and hobbies — all books look the same (though good design, hardly lost on me) judging by the cover — fresh new bleached through razor blade pages slick enough — slit and scar an impressionable age."
+      "text": "arts and crafts; horrors and hobbies — all books look the same (though good design, hardly lost on me) judging by the cover — fresh new bleached through razor blade pages slick enough — slit and scar an impressionable age.",
+      "voice": "assets/audio/voice/vol1_introduction/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "INSERT — the good kind of hurt: a synesthetic compound of bacon cinnamon buns, sedated cavity-filling smell and taste of drilled tooth, little-league grand slam compounded by Super Mario Bros. 3 tanooki suit four in the am escapades."
+      "text": "INSERT — the good kind of hurt: a synesthetic compound of bacon cinnamon buns, sedated cavity-filling smell and taste of drilled tooth, little-league grand slam compounded by Super Mario Bros. 3 tanooki suit four in the am escapades.",
+      "voice": "assets/audio/voice/vol1_introduction/043.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "When we create starting from scratch the mind pauses as if to contemplate its own worthwhile capacity and determine whether or not it is eager for the task."
+      "text": "When we create starting from scratch the mind pauses as if to contemplate its own worthwhile capacity and determine whether or not it is eager for the task.",
+      "voice": "assets/audio/voice/vol1_introduction/044.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "As it has been with everything come before it will hold true for everything to come."
+      "text": "As it has been with everything come before it will hold true for everything to come.",
+      "voice": "assets/audio/voice/vol1_introduction/045.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Writing — like any and all creation — is of the present, yet my mind tends to reside not with myself but with my audience in many a hypothetical future tense or deep in the past communing with ancient and long dead voice of genius I see fit to cozy up to —"
+      "text": "Writing — like any and all creation — is of the present, yet my mind tends to reside not with myself but with my audience in many a hypothetical future tense or deep in the past communing with ancient and long dead voice of genius I see fit to cozy up to —",
+      "voice": "assets/audio/voice/vol1_introduction/046.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "a child auditioning for parental approval, content I am to put words to paper or whatever medium exists to transmit naked thoughts into naked flesh — suppose I stand before you bereft of all but the barest sense of self and purpose."
+      "text": "a child auditioning for parental approval, content I am to put words to paper or whatever medium exists to transmit naked thoughts into naked flesh — suppose I stand before you bereft of all but the barest sense of self and purpose.",
+      "voice": "assets/audio/voice/vol1_introduction/047.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "We start from scratch — clothe ourselves in the fabric of history dyed intrinsic with familial blood — stain and sweat of both dignity and shame."
+      "text": "We start from scratch — clothe ourselves in the fabric of history dyed intrinsic with familial blood — stain and sweat of both dignity and shame.",
+      "voice": "assets/audio/voice/vol1_introduction/048.mp3"
     },
     {
       "t": "jump",

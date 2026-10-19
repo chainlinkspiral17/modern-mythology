@@ -16,24 +16,28 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]He looks down at his cuffs, like the question reminded him of something he had been meaning to check."
+   "text": "[mood:night]He looks down at his cuffs, like the question reminded him of something he had been meaning to check.",
+   "voice": "assets/audio/voice/vol1_link_q_coat/002.mp3"
   },
   {
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "\"Same as what's in you, mostly. Just newer. It hasn't learned yet how to be quiet about it.\""
+   "text": "\"Same as what's in you, mostly. Just newer. It hasn't learned yet how to be quiet about it.\"",
+   "voice": "assets/audio/voice/vol1_link_q_coat/003.mp3"
   },
   {
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "\"Yours did, once. You probably remember the year. People said you were a bright kid. They meant it the regular way. Then they stopped meaning it the regular way, and you noticed, and you put it away.\""
+   "text": "\"Yours did, once. You probably remember the year. People said you were a bright kid. They meant it the regular way. Then they stopped meaning it the regular way, and you noticed, and you put it away.\"",
+   "voice": "assets/audio/voice/vol1_link_q_coat/004.mp3"
   },
   {
    "t": "think",
    "char": null,
-   "text": "You are not sure what year he means. You are not sure he is wrong about it."
+   "text": "You are not sure what year he means. You are not sure he is wrong about it.",
+   "voice": "assets/audio/voice/vol1_link_q_coat/005.mp3"
   },
   {
    "t": "jump",

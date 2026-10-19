@@ -94,7 +94,7 @@
       "appears": "vol2 narrate"
     },
     "_narrator_vol3": {
-      "voice_id": "",
+      "voice_id": "Myb1gsDenT3mlMlj7vib",
       "casting": "Earthman: a 1950s pulp-radio announcer cadence for the Jack Perkins chapters, and plain, tired 2003 Andy (late-20s American male) for the rest. One actor who can switch, or split per scene later with scene_aliases.",
       "appears": "vol3 narrate"
     },
@@ -294,7 +294,7 @@
       "appears": "vol2"
     },
     "andy": {
-      "voice_id": "",
+      "voice_id": "vh1xOwPrBYsoo22SZueX",
       "casting": "Andy (2003): an American who grew up on the move (Tulsa, London, Texas, Venezuela, Oregon, Louisiana). Late-20s male, tired and terse, flat delivery and short sentences. Caracas-era Spanish comes natively.",
       "appears": "vol3 (48 lines)"
     },

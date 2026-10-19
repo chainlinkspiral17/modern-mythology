@@ -11,47 +11,58 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]The building is brick painted brown, then painted brown again. Two doors. One stick figure with a triangle skirt; one without. Between them, a vending machine with the row of selection buttons taped over except for B-4."
+   "text": "[mood:lithograph]The building is brick painted brown, then painted brown again. Two doors. One stick figure with a triangle skirt; one without. Between them, a vending machine with the row of selection buttons taped over except for B-4.",
+   "voice": "assets/audio/voice/vol2_bf_building/001.mp3"
   },
   {
    "t": "narrate",
-   "text": "A handwritten sign on the tape reads: B-4 ONLY. NO REFUNDS. SORRY."
+   "text": "A handwritten sign on the tape reads: B-4 ONLY. NO REFUNDS. SORRY.",
+   "voice": "assets/audio/voice/vol2_bf_building/002.mp3"
   },
   {
    "t": "narrate",
-   "text": "A pay phone bracketed to the wall outside. The receiver dangles by the cord. The coin-return slot has been pried at by something with a flathead."
+   "text": "A pay phone bracketed to the wall outside. The receiver dangles by the cord. The coin-return slot has been pried at by something with a flathead.",
+   "voice": "assets/audio/voice/vol2_bf_building/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "Above it, a small sticker for COLLECT CALLS DIAL 0-700 and a faded one for 1-800-COLLECT that has Carrot Top on it."
+   "text": "Above it, a small sticker for COLLECT CALLS DIAL 0-700 and a faded one for 1-800-COLLECT that has Carrot Top on it.",
+   "voice": "assets/audio/voice/vol2_bf_building/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "A brochure rack just inside the alcove. The plastic slots are the kind that always sag at one end. The brochures, top to bottom:"
+   "text": "A brochure rack just inside the alcove. The plastic slots are the kind that always sag at one end. The brochures, top to bottom:",
+   "voice": "assets/audio/voice/vol2_bf_building/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "COVERED BRIDGES OF YAMHILL COUNTY — three creased, two fresh."
+   "text": "COVERED BRIDGES OF YAMHILL COUNTY — three creased, two fresh.",
+   "voice": "assets/audio/voice/vol2_bf_building/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "SMOLVUD: THE TOWN AT THE EDGE OF THE WOOD — green ink on cream stock, illustrated with a hand-drawn sanderling. The address on the back has been corrected in pen."
+   "text": "SMOLVUD: THE TOWN AT THE EDGE OF THE WOOD — green ink on cream stock, illustrated with a hand-drawn sanderling. The address on the back has been corrected in pen.",
+   "voice": "assets/audio/voice/vol2_bf_building/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "THE MISSING LINK — eat, drink, wait. A diner you have not been to. The hand-printed map on the back shows a bus depot apron and a single dotted line that does not end. Underneath, in different ink: Shillelagh stops daily. Hours of operation: Yes."
+   "text": "THE MISSING LINK — eat, drink, wait. A diner you have not been to. The hand-printed map on the back shows a bus depot apron and a single dotted line that does not end. Underneath, in different ink: Shillelagh stops daily. Hours of operation: Yes.",
+   "voice": "assets/audio/voice/vol2_bf_building/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "A flyer, taped to the inside of the alcove, no border, just a photocopied face: HAVE YOU SEEN THIS MAN. Underneath, a young man in a trench coat at what appears to be a bus depot bench."
+   "text": "A flyer, taped to the inside of the alcove, no border, just a photocopied face: HAVE YOU SEEN THIS MAN. Underneath, a young man in a trench coat at what appears to be a bus depot bench.",
+   "voice": "assets/audio/voice/vol2_bf_building/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "The flyer says CONTACT NATE D. and a phone number. The flyer says LAST SEEN: rain. The date is illegible."
+   "text": "The flyer says CONTACT NATE D. and a phone number. The flyer says LAST SEEN: rain. The date is illegible.",
+   "voice": "assets/audio/voice/vol2_bf_building/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]You stand in the alcove a moment longer. The pay phone does not ring. You were not expecting it to."
+   "text": "[shot:insert phone]You stand in the alcove a moment longer. The pay phone does not ring. You were not expecting it to.",
+   "voice": "assets/audio/voice/vol2_bf_building/011.mp3"
   },
   {
    "t": "jump",

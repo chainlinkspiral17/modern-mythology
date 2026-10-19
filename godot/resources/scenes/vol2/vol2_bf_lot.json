@@ -11,31 +11,38 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]You watch them the way you watch people at rest stops, which is briefly and without engagement. They are not interesting and they are not uninteresting. They are themselves."
+   "text": "[mood:lithograph]You watch them the way you watch people at rest stops, which is briefly and without engagement. They are not interesting and they are not uninteresting. They are themselves.",
+   "voice": "assets/audio/voice/vol2_bf_lot/001.mp3"
   },
   {
    "t": "narrate",
-   "text": "The father is at the back of the van with the hatch open, looking into a cooler the way a man looks into a cooler he packed three hours ago and is now reconsidering. He pulls out a Capri Sun and a Diet Pepsi. He leaves the cooler open."
+   "text": "The father is at the back of the van with the hatch open, looking into a cooler the way a man looks into a cooler he packed three hours ago and is now reconsidering. He pulls out a Capri Sun and a Diet Pepsi. He leaves the cooler open.",
+   "voice": "assets/audio/voice/vol2_bf_lot/002.mp3"
   },
   {
    "t": "narrate",
-   "text": "The mother is on the bench beside the building, smoking. You did not see her light the cigarette. The Walkman in her lap is playing something with strings; you can hear the high end leak out of the cheap foam ear pads when she leans forward to ash."
+   "text": "The mother is on the bench beside the building, smoking. You did not see her light the cigarette. The Walkman in her lap is playing something with strings; you can hear the high end leak out of the cheap foam ear pads when she leans forward to ash.",
+   "voice": "assets/audio/voice/vol2_bf_lot/003.mp3"
   },
   {
    "t": "narrate",
-   "text": "The teenage brother is walking the perimeter of the lot at the deliberate pace of someone whose headphones have replaced the world. He stops at the picnic shelter. He looks at the paperback. He does not turn it over. He keeps walking."
+   "text": "The teenage brother is walking the perimeter of the lot at the deliberate pace of someone whose headphones have replaced the world. He stops at the picnic shelter. He looks at the paperback. He does not turn it over. He keeps walking.",
+   "voice": "assets/audio/voice/vol2_bf_lot/004.mp3"
   },
   {
    "t": "narrate",
-   "text": "The tween sister is at the brochure rack. She takes one of everything. She always takes one of everything."
+   "text": "The tween sister is at the brochure rack. She takes one of everything. She always takes one of everything.",
+   "voice": "assets/audio/voice/vol2_bf_lot/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is folding the Missing Link brochure into a small careful square, the way you fold something you are going to put in a sock drawer and find seven years later and not throw out."
+   "text": "She is folding the Missing Link brochure into a small careful square, the way you fold something you are going to put in a sock drawer and find seven years later and not throw out.",
+   "voice": "assets/audio/voice/vol2_bf_lot/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "The dog is not with any of them. The dog is at the edge of the lot, where the asphalt stops, looking at the trailhead box."
+   "text": "The dog is not with any of them. The dog is at the edge of the lot, where the asphalt stops, looking at the trailhead box.",
+   "voice": "assets/audio/voice/vol2_bf_lot/007.mp3"
   },
   {
    "t": "jump",

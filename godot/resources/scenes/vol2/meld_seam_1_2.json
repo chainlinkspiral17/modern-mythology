@@ -33,21 +33,25 @@
     },
     {
       "t": "narrate",
-      "text": "A room with one window, nothing out of it. Four chairs on casters. A bank of monitors, and every one of them full of water."
+      "text": "A room with one window, nothing out of it. Four chairs on casters. A bank of monitors, and every one of them full of water.",
+      "voice": "assets/audio/voice/meld_seam_1_2/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "Not water. Tide flats. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning."
+      "text": "Not water. Tide flats. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning.",
+      "voice": "assets/audio/voice/meld_seam_1_2/007.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Roll it again."
+      "text": "Roll it again.",
+      "voice": "assets/audio/voice/meld_seam_1_2/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "A heron lifts off a sea wall. A cannery. A water tower with the fog going through it. Somebody's small town, played back and played back."
+      "text": "A heron lifts off a sea wall. A cannery. A water tower with the fog going through it. Somebody's small town, played back and played back.",
+      "voice": "assets/audio/voice/meld_seam_1_2/009.mp3"
     },
     {
       "t": "cg",
@@ -58,29 +62,34 @@
       "t": "say",
       "char": "The Writer",
       "expr": "worried",
-      "text": "A moment ago I was debating whether or not to begin and here I am starting something I should never finish."
+      "text": "A moment ago I was debating whether or not to begin and here I am starting something I should never finish.",
+      "voice": "assets/audio/voice/meld_seam_1_2/011.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Where are we looking."
+      "text": "Where are we looking.",
+      "voice": "assets/audio/voice/meld_seam_1_2/012.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Somebody's hometown."
+      "text": "Somebody's hometown.",
+      "voice": "assets/audio/voice/meld_seam_1_2/013.mp3"
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "There comes a time in life when pieces click in place good and bad chambers of existence line up just so."
+      "text": "There comes a time in life when pieces click in place good and bad chambers of existence line up just so.",
+      "voice": "assets/audio/voice/meld_seam_1_2/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nobody touches the deck. On the monitors the tide keeps going out."
+      "text": "Nobody touches the deck. On the monitors the tide keeps going out.",
+      "voice": "assets/audio/voice/meld_seam_1_2/015.mp3"
     },
     {
       "t": "bg",
@@ -98,71 +107,84 @@
     },
     {
       "t": "narrate",
-      "text": "I'm not sure which piece goes first. Some mornings I got to the Missing Link before Aud had the bread out, and through the wall behind the grill it sounded like a room full of people arguing about how to start something."
+      "text": "I'm not sure which piece goes first. Some mornings I got to the Missing Link before Aud had the bread out, and through the wall behind the grill it sounded like a room full of people arguing about how to start something.",
+      "voice": "assets/audio/voice/meld_seam_1_2/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "The light in there was the yellow of the inside of a pie. The tide tables by the door had bricked together in the damp. Nobody ever bought one."
+      "text": "The light in there was the yellow of the inside of a pie. The tide tables by the door had bricked together in the damp. Nobody ever bought one.",
+      "voice": "assets/audio/voice/meld_seam_1_2/020.mp3"
     },
     {
       "t": "say",
       "char": "Aud",
       "expr": "warm",
-      "text": "They've been at it since I unlocked. Coffee?"
+      "text": "They've been at it since I unlocked. Coffee?",
+      "voice": "assets/audio/voice/meld_seam_1_2/021.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Give this thing a shot in the arm\ncan't feel the pulse here"
+      "text": "Give this thing a shot in the arm\ncan't feel the pulse here",
+      "voice": "assets/audio/voice/meld_seam_1_2/022.mp3"
     },
     {
       "t": "say",
       "char": "Aud",
       "expr": "amused",
-      "text": "It's early, is all."
+      "text": "It's early, is all.",
+      "voice": "assets/audio/voice/meld_seam_1_2/023.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "I am a nerd that needs looking after. I have lovely friends and family."
+      "text": "I am a nerd that needs looking after. I have lovely friends and family.",
+      "voice": "assets/audio/voice/meld_seam_1_2/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "Aud poured. She never asked if you wanted more, she filled it to where it shook at the rim and didn't spill."
+      "text": "Aud poured. She never asked if you wanted more, she filled it to where it shook at the rim and didn't spill.",
+      "voice": "assets/audio/voice/meld_seam_1_2/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Down the counter somebody had left a notebook, wide-ruled, half started, the kind I used to buy in packs of three."
+      "text": "Down the counter somebody had left a notebook, wide-ruled, half started, the kind I used to buy in packs of three.",
+      "voice": "assets/audio/voice/meld_seam_1_2/026.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Can't we just sit here and think a minute."
+      "text": "Can't we just sit here and think a minute.",
+      "voice": "assets/audio/voice/meld_seam_1_2/027.mp3"
     },
     {
       "t": "say",
       "char": "Aud",
       "expr": "warm",
-      "text": "Nobody's rushing the bread."
+      "text": "Nobody's rushing the bread.",
+      "voice": "assets/audio/voice/meld_seam_1_2/028.mp3"
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "hear hear."
+      "text": "hear hear.",
+      "voice": "assets/audio/voice/meld_seam_1_2/029.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "finally."
+      "text": "finally.",
+      "voice": "assets/audio/voice/meld_seam_1_2/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Aud shrugged and started another pot."
+      "text": "Aud shrugged and started another pot.",
+      "voice": "assets/audio/voice/meld_seam_1_2/031.mp3"
     },
     {
       "t": "bg",
@@ -170,7 +192,8 @@
     },
     {
       "t": "narrate",
-      "text": "Out past the gravel lot a minivan door slid shut, that long clunk they all made back then, and the morning came on the way it does there, gray for a long time and then all at once."
+      "text": "Out past the gravel lot a minivan door slid shut, that long clunk they all made back then, and the morning came on the way it does there, gray for a long time and then all at once.",
+      "voice": "assets/audio/voice/meld_seam_1_2/033.mp3"
     },
     {
       "t": "flag",

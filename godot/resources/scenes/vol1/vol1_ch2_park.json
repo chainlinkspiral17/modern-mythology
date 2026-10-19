@@ -29,11 +29,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]EXT. THE PARK — DAY"
+   "text": "[mood:day_bright]EXT. THE PARK — DAY",
+   "voice": "assets/audio/voice/vol1_ch2_park/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "Faust is jogging with his friend, Jacob."
+   "text": "Faust is jogging with his friend, Jacob.",
+   "voice": "assets/audio/voice/vol1_ch2_park/006.mp3"
   },
   {
    "t": "show",
@@ -51,73 +53,85 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]What have you been reading, my friend?"
+   "text": "[shot:closeup person]What have you been reading, my friend?",
+   "voice": "assets/audio/voice/vol1_ch2_park/009.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Oh, let's see — Ratifying Nations of the Comprehensive Nuclear Test Ban Treaty."
+   "text": "Oh, let's see — Ratifying Nations of the Comprehensive Nuclear Test Ban Treaty.",
+   "voice": "assets/audio/voice/vol1_ch2_park/010.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I just started reading — funnily enough — the book whose title character I was named after."
+   "text": "I just started reading — funnily enough — the book whose title character I was named after.",
+   "voice": "assets/audio/voice/vol1_ch2_park/011.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "So how is it as a translation? Hear us yanks can't quite get it right."
+   "text": "So how is it as a translation? Hear us yanks can't quite get it right.",
+   "voice": "assets/audio/voice/vol1_ch2_park/012.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Not too shabby. Taking my time with it. Have this funny feeling life is getting weirder."
+   "text": "Not too shabby. Taking my time with it. Have this funny feeling life is getting weirder.",
+   "voice": "assets/audio/voice/vol1_ch2_park/013.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]Lay off the recreational, man — you're wigging me out a bit. Here."
+   "text": "[shot:closeup person_b]Lay off the recreational, man — you're wigging me out a bit. Here.",
+   "voice": "assets/audio/voice/vol1_ch2_park/014.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "No big deal. Well — it is a big deal. Found some fun stuff out about my grandparents."
+   "text": "No big deal. Well — it is a big deal. Found some fun stuff out about my grandparents.",
+   "voice": "assets/audio/voice/vol1_ch2_park/015.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "People are always finding out cool stuff about grandparents. Grandparents are awesome for all the shit they lived through."
+   "text": "People are always finding out cool stuff about grandparents. Grandparents are awesome for all the shit they lived through.",
+   "voice": "assets/audio/voice/vol1_ch2_park/016.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Well said. But my relations, while awesome, ran to the kooky occult side of things. Dabbled in sex magick and the like."
+   "text": "Well said. But my relations, while awesome, ran to the kooky occult side of things. Dabbled in sex magick and the like.",
+   "voice": "assets/audio/voice/vol1_ch2_park/017.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Go on."
+   "text": "Go on.",
+   "voice": "assets/audio/voice/vol1_ch2_park/018.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]I'm not sure if my grand-dad was Jack Parsons or L. Ron Hubbard."
+   "text": "[shot:closeup person]I'm not sure if my grand-dad was Jack Parsons or L. Ron Hubbard.",
+   "voice": "assets/audio/voice/vol1_ch2_park/019.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "I know of Monsieur Xenu — but not of this Parsons dude."
+   "text": "I know of Monsieur Xenu — but not of this Parsons dude.",
+   "voice": "assets/audio/voice/vol1_ch2_park/020.mp3"
   },
   {
    "t": "choice",
@@ -154,49 +168,57 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[mood:memory_warm]Lafayette — as I'll call L. Ron — always wanted to be a sailor boy. Dreamed big dreams. And boy, how he schemed."
+   "text": "[mood:memory_warm]Lafayette — as I'll call L. Ron — always wanted to be a sailor boy. Dreamed big dreams. And boy, how he schemed.",
+   "voice": "assets/audio/voice/vol1_ch2_park/026.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Loved his genre books, his science fictions, cowboys, jungles, outer space creatures."
+   "text": "Loved his genre books, his science fictions, cowboys, jungles, outer space creatures.",
+   "voice": "assets/audio/voice/vol1_ch2_park/027.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Lived a wonderful life — if only in his own head. Submarine commander and deep-cover (yet decorated) secret agent."
+   "text": "Lived a wonderful life — if only in his own head. Submarine commander and deep-cover (yet decorated) secret agent.",
+   "voice": "assets/audio/voice/vol1_ch2_park/028.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]Medical discharge. Drifting about Los Angeles in with New Age, better-living, better-looking people — drawn to his larger-than-life escapades."
+   "text": "[shot:closeup person]Medical discharge. Drifting about Los Angeles in with New Age, better-living, better-looking people — drawn to his larger-than-life escapades.",
+   "voice": "assets/audio/voice/vol1_ch2_park/029.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "They were not all entirely stupid. Jack Parsons was perhaps brilliant — a non-academic rocket scientist, founding father, wicked eccentric."
+   "text": "They were not all entirely stupid. Jack Parsons was perhaps brilliant — a non-academic rocket scientist, founding father, wicked eccentric.",
+   "voice": "assets/audio/voice/vol1_ch2_park/030.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "His tastes ran to the occult. His lofty Pasadena mansion — home to many like-minded explorers, also traversing the edge of existence."
+   "text": "His tastes ran to the occult. His lofty Pasadena mansion — home to many like-minded explorers, also traversing the edge of existence.",
+   "voice": "assets/audio/voice/vol1_ch2_park/031.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Lafayette and Parsons were best friends, worst enemies — each seeking the same thing from their own extreme, gazing into the abyss of their reflection."
+   "text": "Lafayette and Parsons were best friends, worst enemies — each seeking the same thing from their own extreme, gazing into the abyss of their reflection.",
+   "voice": "assets/audio/voice/vol1_ch2_park/032.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[beat:still]They shared a woman. Her name was Betty. She was my grandmother. And here I am, five decades later."
+   "text": "[beat:still]They shared a woman. Her name was Betty. She was my grandmother. And here I am, five decades later.",
+   "voice": "assets/audio/voice/vol1_ch2_park/033.mp3"
   },
   {
    "t": "bg",
@@ -216,31 +238,36 @@
   },
   {
    "t": "narrate",
-   "text": "Cut back to the jogging."
+   "text": "Cut back to the jogging.",
+   "voice": "assets/audio/voice/vol1_ch2_park/037.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "[mood:day_bright]I'll have to read up on that."
+   "text": "[mood:day_bright]I'll have to read up on that.",
+   "voice": "assets/audio/voice/vol1_ch2_park/038.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "[shot:closeup person]Me too. There's more cool shit to it."
+   "text": "[shot:closeup person]Me too. There's more cool shit to it.",
+   "voice": "assets/audio/voice/vol1_ch2_park/039.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Funky family skeletons do that chicken dance."
+   "text": "Funky family skeletons do that chicken dance.",
+   "voice": "assets/audio/voice/vol1_ch2_park/040.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Tell me about it."
+   "text": "Tell me about it.",
+   "voice": "assets/audio/voice/vol1_ch2_park/041.mp3"
   },
   {
    "t": "bg",
@@ -254,19 +281,22 @@
   },
   {
    "t": "narrate",
-   "text": "INT. JACOB'S APARTMENT — DAY. Jacob and Faust playing video games."
+   "text": "INT. JACOB'S APARTMENT — DAY. Jacob and Faust playing video games.",
+   "voice": "assets/audio/voice/vol1_ch2_park/044.mp3"
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "So what's been new with you?"
+   "text": "So what's been new with you?",
+   "voice": "assets/audio/voice/vol1_ch2_park/045.mp3"
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Working on cool video games. Smorking. Getting laid regular. Playing some bass. Top Gear torrented for later this evening."
+   "text": "Working on cool video games. Smorking. Getting laid regular. Playing some bass. Top Gear torrented for later this evening.",
+   "voice": "assets/audio/voice/vol1_ch2_park/046.mp3"
   },
   {
    "t": "jump",
