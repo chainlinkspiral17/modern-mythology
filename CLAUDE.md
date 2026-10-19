@@ -253,9 +253,16 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
   address's storage, also FORGE patches, the DX7 bank and the other tools'
   work, into `godot/tools/browser_rescue/`) and `voice_recover.py` (rebuilds
   from the ElevenLabs history).
-- Still browser-only and next to fix: FORGE user presets, the DX7 bank,
-  Runway presets and queue, Resolve actions, the FM-1 checkout, the
-  planned-community studio, the DAW inbox, the Meshy queue.
+- The tools' work (FORGE user presets, the DX7 bank, Runway presets and
+  queue, Resolve actions, the FM-1 checkout, the planned-community studio,
+  the Meshy queue) is mirrored to `godot/tools/tool_state/<key>.json` by
+  `tool_store.js` (included FIRST in each page's <head> with its keys):
+  served by Hero Studio every save writes the file (SAVE commits it); the
+  repo's copy loads first, newer wins; opened as a file it still loads
+  (`tool_state/<key>.js`) and a notice says changes stay in the browser.
+  A new tool that keeps user work adds its key to tool_store.js's page tag
+  and to TOOL_STATE_KEYS in meshy_pipeline.py. (The DAW inbox is a
+  transient hand-off, not stored work.)
 
 ## Verify GDScript with BOTH checkers (hard rule)
 
