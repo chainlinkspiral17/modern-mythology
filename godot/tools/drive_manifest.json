@@ -110,6 +110,11 @@
    "md5": "eb4a279a7dd2e1e0ce30bddb701d4f20",
    "size": 49146868
   },
+  "godot/assets/3d/characters/heroes/_full/the_artist.glb": {
+   "at": "2026-10-19T17:25:28+00:00",
+   "md5": "2f90176ef6672c4320f3d9dc6166ed51",
+   "size": 52532968
+  },
   "godot/assets/3d/characters/heroes/_full/the_director.glb": {
    "at": "2026-10-19T17:11:40+00:00",
    "md5": "312e5b2ce793e1f4b5249b991c1a8706",
@@ -2570,10 +2575,55 @@
    "md5": "f088f014e60a882757590d8ba42bbc15",
    "size": 66352
   },
+  "godot/assets/3d/characters/heroes/the_artist.glb": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "c1cda8642c3ac4befad115b3ab307c2f",
+   "size": 5112560
+  },
+  "godot/assets/3d/characters/heroes/the_artist_Image_0.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "18b37aae53b95515bb8da0fc6bb5c11e",
+   "size": 497659
+  },
+  "godot/assets/3d/characters/heroes/the_artist_Image_1.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "d16fc3983d673a951f562ce9d44382b9",
+   "size": 64061
+  },
+  "godot/assets/3d/characters/heroes/the_artist_Image_2.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "1c763ac988ac1a942046bea7e362070a",
+   "size": 145647
+  },
+  "godot/assets/3d/characters/heroes/the_artist_Image_3.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/the_director.glb": {
    "at": "2026-10-19T17:11:30+00:00",
    "md5": "0ea212ef95563d409ca8fb0d727f0509",
    "size": 4756932
+  },
+  "godot/assets/3d/characters/heroes/the_director_Image_0.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "08038910abd3df1e5381ea4759b46560",
+   "size": 310858
+  },
+  "godot/assets/3d/characters/heroes/the_director_Image_1.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "9849f44dd772a55271283135094f4e8c",
+   "size": 63409
+  },
+  "godot/assets/3d/characters/heroes/the_director_Image_2.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "a504b37e8d233d59e64fb472e2fcc3fc",
+   "size": 112226
+  },
+  "godot/assets/3d/characters/heroes/the_director_Image_3.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "3eeb9b2f2637358803e1adb562e60f11",
+   "size": 17031
   },
   "godot/assets/3d/characters/heroes/the_frog.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -2629,6 +2679,26 @@
    "at": "2026-10-19T17:04:04+00:00",
    "md5": "a79fd44a9b5f2db95199eb59e80f046f",
    "size": 5390224
+  },
+  "godot/assets/3d/characters/heroes/the_writer_Image_0.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "d3c33a7e83b840ba82eb5058788a4518",
+   "size": 469265
+  },
+  "godot/assets/3d/characters/heroes/the_writer_Image_1.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "94a5dcee20f5ade7445f9ba6d231cdec",
+   "size": 67496
+  },
+  "godot/assets/3d/characters/heroes/the_writer_Image_2.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "ebf039408a3936a594e016b5c6ee87a5",
+   "size": 143746
+  },
+  "godot/assets/3d/characters/heroes/the_writer_Image_3.jpg": {
+   "at": "2026-10-19T17:25:18+00:00",
+   "md5": "7c2bfe99465d50c9b240d1dbd1af6275",
+   "size": 17043
   },
   "godot/assets/3d/characters/heroes/thomas_henderson.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -75695,15 +75765,40 @@
    "md5": "40878b9e03bef3f040b3a6c6313cdb30",
    "size": 1954165
   },
+  "godot/assets/concept/meshy/the_artist/back.png": {
+   "at": "2026-10-19T17:25:36+00:00",
+   "md5": "e3ead30839507e4136e1ba1f9817cb44",
+   "size": 2112579
+  },
   "godot/assets/concept/meshy/the_artist/front.png": {
    "at": "2026-10-19T17:11:48+00:00",
    "md5": "83c6d8210733da2efada3c5efc42512b",
    "size": 2114585
   },
+  "godot/assets/concept/meshy/the_artist/meshy_thumb.png": {
+   "at": "2026-10-19T17:25:36+00:00",
+   "md5": "c6bfc0f492a4d3506cf9d6a9f0942e66",
+   "size": 96751
+  },
+  "godot/assets/concept/meshy/the_artist/side.png": {
+   "at": "2026-10-19T17:25:36+00:00",
+   "md5": "d2e4064c5185a4ad93ca746efb4490ed",
+   "size": 1987403
+  },
+  "godot/assets/concept/meshy/the_artist/the_artist_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:25:36+00:00",
+   "md5": "e3ead30839507e4136e1ba1f9817cb44",
+   "size": 2112579
+  },
   "godot/assets/concept/meshy/the_artist/the_artist_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T17:11:48+00:00",
    "md5": "83c6d8210733da2efada3c5efc42512b",
    "size": 2114585
+  },
+  "godot/assets/concept/meshy/the_artist/the_artist_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:25:36+00:00",
+   "md5": "d2e4064c5185a4ad93ca746efb4490ed",
+   "size": 1987403
   },
   "godot/assets/concept/meshy/the_birdwatcher/back.png": {
    "at": "2026-10-18T17:28:51+00:00",
@@ -75814,6 +75909,16 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "01e25ee43afc785ec3dfefaa6640112f",
    "size": 112656
+  },
+  "godot/assets/concept/meshy/the_human_being/front.png": {
+   "at": "2026-10-19T17:25:44+00:00",
+   "md5": "ff08f6d1b262f0f432673ee158a4300e",
+   "size": 1976437
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:25:44+00:00",
+   "md5": "ff08f6d1b262f0f432673ee158a4300e",
+   "size": 1976437
   },
   "godot/assets/concept/meshy/the_polaroid/back.png": {
    "at": "2026-10-18T17:28:59+00:00",
