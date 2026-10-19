@@ -21650,5 +21650,80 @@
       "godot/assets/concept/meshy/hugo/hugo_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/hugo/hugo_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-18T18:31:20+00:00",
+    "stage": "mesh",
+    "slug": "hugo",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15045-867c-752e-a182-793021634632",
+    "inputs": [
+      "godot/assets/concept/meshy/hugo/front.png",
+      "godot/assets/concept/meshy/hugo/side.png",
+      "godot/assets/concept/meshy/hugo/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/hugo.glb",
+    "file_size_kb": 46607.5
+  },
+  {
+    "at": "2026-10-18T18:32:27+00:00",
+    "stage": "image",
+    "slug": "boyd",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Boyd like this: Boyd \u2014 late thirties, smaller than Vince, with the specific tense look of a man who has been holding in a small pressure of distress But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are \u2014 are cameras. Additional direction: Boyd, late 30s, Vince's man, smaller than Vince and tense with a held-in distress. Close-cut hair, a narrow face, eyes that are \u2014 on the second look \u2014 cameras. A black windbreaker zipped to the chest, dark jeans, black boots, a phone held like a tool.\nFull-body concept render of Boyd, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/boyd/boyd_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/boyd/boyd_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/boyd/boyd_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-18T18:37:37+00:00",
+    "stage": "mesh",
+    "slug": "boyd",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a1504b-599b-7430-b176-1356b7ddf505",
+    "inputs": [
+      "godot/assets/concept/meshy/boyd/front.png",
+      "godot/assets/concept/meshy/boyd/side.png",
+      "godot/assets/concept/meshy/boyd/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/boyd.glb",
+    "file_size_kb": 38115.1
   }
 ]
