@@ -23192,5 +23192,530 @@
     "outputs": [
       "godot/assets/concept/meshy/vol2_lighthouse_beam/vol2_lighthouse_beam_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T18:17:23+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_lighthouse_beam",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_lighthouse_beam/front.png",
+    "output": "godot/assets/cg/vol2_lighthouse_beam.jpg"
+  },
+  {
+    "at": "2026-10-19T18:17:39+00:00",
+    "stage": "image",
+    "slug": "vol2_dean_journal",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A name written on the outside, nothing else within., like this: It was a curious thing because it had a name written on the outside, but nothing else to go on within. Right there on the cover, it had once belonged to \"D. Dean\", whose hand-writing was far superior to my own. Additional direction: A secondhand journal from a bag of saved paperbacks at a small bookstore: a name, D. Dean, handwritten on the cover in a hand far finer than the narrator's, and inside, nothing, blank pages open to the light. Held close, about to be written in. Quiet, intimate, a little eerie: a name that will become a ghost.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: A name written on the outside, nothing else within.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: D. Dean. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_dean_journal/vol2_dean_journal_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:17:47+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_dean_journal",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_dean_journal/front.png",
+    "output": "godot/assets/cg/vol2_dean_journal.jpg"
+  },
+  {
+    "at": "2026-10-19T18:18:03+00:00",
+    "stage": "image",
+    "slug": "vol2_heron_feather",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A feather from the blue heron. like this: At the end of the first meeting, I was given a feather from the blue heron. I was told to place it in a book of great importance, to hide away from sight and age and never lose. I heard voices coming from the store room which upon entering is not so much a store room as a very well furnished lounge and study area. Additional direction: The end of the first Egretta meeting in the Blue Heron bookstore's back room, a well-furnished lounge and study, tea poured, books everywhere, the back wall mostly windows on a dark, cold, wet Thursday night. A long grey-blue heron feather, given to the new member, is laid into the pages of an open book to be hidden from sight and age and never lost. Warm lamplight, conspiratorial, gently teasing.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: A feather from the blue heron.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_heron_feather/vol2_heron_feather_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:18:12+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_heron_feather",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_heron_feather/front.png",
+    "output": "godot/assets/cg/vol2_heron_feather.jpg"
+  },
+  {
+    "at": "2026-10-19T18:18:28+00:00",
+    "stage": "image",
+    "slug": "vol2_buried_mercedes",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A 1969 Mercedes-Benz. Red, convertible top., like this: Charles never expected to find a whole vehicle buried in the sand. It was near a riverbed off the way of the roads and beaches. Plates were not recovered with it and there were no serial numbers to speak of. Charles excavated the machine by himself over the course of a week he'd rented a bungalow nearby. Additional direction: Near a riverbed off the roads and beaches of the Oregon coast: a 1969 Mercedes-Benz, red with a convertible top, half dug out of the sand, no plates. Charles, going grey and ripe around the middle, has been excavating it by hand all week; his old Radio Shack-era metal detector lies on the sand beside the shovel. Coastal light, wind-rippled sand, a find that should not exist.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: A 1969 Mercedes-Benz. Red, convertible top.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_buried_mercedes/vol2_buried_mercedes_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:18:38+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_buried_mercedes",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_buried_mercedes/front.png",
+    "output": "godot/assets/cg/vol2_buried_mercedes.jpg"
+  },
+  {
+    "at": "2026-10-19T18:18:53+00:00",
+    "stage": "image",
+    "slug": "vol2_ark_hillside",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the ark on the hill: painted until a build is planned like this: The wooden dreadnaught was empty of animals, fallen to ruin, sitting unused and hollow on the side of a hill. Animal cages were many and empty, the scale of the project staggering in how wasteful. He couldn't afford raw lumber so he began by felling small trees by himself, alone and away from the house. Additional direction: A wooden ark on the side of a hill above Small Wood: a vast hand-built dreadnaught, its timbers felled from small trees by one man alone, now fallen to ruin, empty and hollow. Around it, many empty animal cages; nearby, the old builder's small shack workshop. Handpainted signs off the road point the way. Vandalised, weathered, staggering in scale and waste, it should feel like a religious experience.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the ark on the hill: painted until a build is planned. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_ark_hillside/vol2_ark_hillside_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:19:04+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_ark_hillside",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_ark_hillside/front.png",
+    "output": "godot/assets/backgrounds/vol2_ark_hillside.jpg"
+  },
+  {
+    "at": "2026-10-19T18:19:21+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_hemlock_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes in-fiction graphic adventure screen (ch vii) \u2014 modern art, not era cosplay, like this: The sky is three blues stacked like paint chips at the hardware store. Woodgrain down the sides, that brown-on-tan like a rec room wall, the long sliding door. They're parked nose to tail all down Hemlock and up past the Elk Lodge, more than the town has people. Red, theater-curtain red, set into the side of the hill. Additional direction: An in-fiction dream-game screen, painted with modern craft, not pixel cosplay: Small Wood's Hemlock street flattened side-on, the sky three blues stacked like paint chips. Identical woodgrain minivans nose to tail, engines running, headlights on in daylight, sliding doors open, no drivers. Hans in the bakery window lifting a loaf, flour puffing. A boy in a too-big coat in the street under a white crosshair pointer; a red theater-curtain door in the hill at the street's end. Black verb strip beneath.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: in-fiction graphic adventure screen (ch vii) \u2014 modern art, not era cosplay. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: WALK TO    PICK UP    USE      OPEN     LOOK AT / TALK TO    PUSH       PULL     GIVE     CLOSE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_hemlock_vga/vol2_scumm_hemlock_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:19:34+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_hemlock_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_hemlock_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_hemlock_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:19:52+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_theater_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 theater (game screen) like this: Folding chairs going back into the dark and somebody in every chair, drawn from behind, heads and shoulders a shade lighter than the dark. Painted moon on a wire. Behind me a backdrop of the town I just left, in house paint, the bakery a brown square, the minivans brown bricks. In my hand there's a script thick as a phone book. Additional direction: The dream game's theater, painted modern, side-on: a stage that is grange hall, auditorium and every Christmas pageant at once. A painted moon on a wire; behind the small figure on stage, a house-paint backdrop of the town, the bakery a brown square, the minivans brown bricks, a script thick as a phone book in hand. Folding chairs recede into the dark, somebody in every one, drawn from behind, heads and shoulders a shade lighter than the dark. Black verb strip beneath.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 theater (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: WALK TO    PICK UP    USE      OPEN     LOOK AT / TALK TO    PUSH       PULL     GIVE     CLOSE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_theater_vga/vol2_scumm_theater_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:20:01+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_theater_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_theater_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_theater_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:20:19+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_tideflats_crab_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 tideflats crab (game screen) like this: The tide is all the way out, farther than it ever goes, the flats shining like a cookie sheet, and out on the flats is the crab. Its shell is a map. Hemlock, the river, the Little Switzerland road, our house a white dot up the Alsea. It turned one eye toward the boy on the beach, an eye on a stalk as tall as the water tower, and the eye was the pointer. Additional direction: The dream game's beach, painted modern: the tide out farther than it ever goes, flats shining like a cookie sheet. On them walks a Dungeness crab bigger than the cannery, red-brown, its shell a map of the town: Hemlock, the river, the Little Switzerland road, a white dot up the Alsea. One leg raised; one eye on a stalk tall as the water tower turned toward a small boy on the beach. Rooftops, water tower, cannery behind, the world still filling in, band by band.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 tideflats crab (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: WALK TO    PICK UP    USE      OPEN     LOOK AT / TALK TO    PUSH       PULL     GIVE     CLOSE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_tideflats_crab_vga/vol2_scumm_tideflats_crab_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:20:33+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_tideflats_crab_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_tideflats_crab_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_tideflats_crab_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:20:50+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_missing_link_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 missing link (game screen) like this: Missing Link is right where it's supposed to be and the light inside is the yellow of the inside of a pie. Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain. She's pouring coffee into a cup that's already full and it goes over the rim, down the counter, onto the floor, out the door, and it doesn't stop, the way the river behind our house doesn't stop. Additional direction: The dream game's Missing Link diner, painted modern: inside, the light is the yellow of the inside of a pie. Aud behind the counter, sleeves rolled, glasses on the chain, the only figure rendered in rich full color, pouring coffee into a cup already full, so it runs over the rim, down the counter, onto the floor and out the door in an endless dark stream. The rest of the room flatter, limited-palette.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 missing link (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: WALK TO    PICK UP    USE      OPEN     LOOK AT / TALK TO    PUSH       PULL     GIVE     CLOSE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_missing_link_vga/vol2_scumm_missing_link_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:21:05+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_missing_link_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_missing_link_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_missing_link_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:21:21+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_inventory_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 inventory (game screen) like this: Things in the inventory I never picked up: It's for a kid five or six. Mud on the hem. The stick is the other weird one. Size of a pack of gum. Plastic. Warm. Additional direction: The dream game's inventory panel, painted modern, objects never picked up laid out as items: a key with no teeth, a jar with its lid loose, a heron feather, a derby crab with a 0 painted on its back, a warm unlabelled grey plastic stick the size of a pack of gum, and a small yellow child's raincoat, mud on the hem, the only true brown on the screen. Black verb strip beneath.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 inventory (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: INVENTORY: a key with no teeth / a jar with the lid loose / a heron feather / a derby crab, number 0 / a stick, plastic, no label / a raincoat, yellow, small. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_inventory_vga/vol2_scumm_inventory_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:21:40+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_inventory_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 inventory (game screen) like this: Things in the inventory I never picked up: It's for a kid five or six. Mud on the hem. The stick is the other weird one. Size of a pack of gum. Plastic. Warm. Additional direction: The dream game's inventory panel, painted modern, objects never picked up laid out as items: a key with no teeth, a jar with its lid loose, a heron feather, a derby crab with a 0 painted on its back, a warm unlabelled grey plastic stick the size of a pack of gum, and a small yellow child's raincoat, mud on the hem, the only true brown on the screen. Black verb strip beneath.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 inventory (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: INVENTORY: a key with no teeth / a jar with the lid loose / a heron feather / a derby crab, number 0 / a stick, plastic, no label / a raincoat, yellow, small. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_inventory_vga/vol2_scumm_inventory_vga_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:21:59+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_spiral_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 spiral (game screen) like this: In the middle of everything is a hole. Round. Turning. Blue to violet to theater red to black to blue, around and down. The coffee goes in. On the lip of the hole there's a root-cellar door in the ground. Cut into the wood like the initials on the bleachers: Additional direction: The middle of the dream town, painted modern: every street bends the same way toward a round, turning hole, colors cycling blue to violet to theater red to black and down. Coffee runs in the gutter, black and shining, into it; the rain's three straight lines bend at the bottom. Out on the flats the giant map-backed crab walks toward it. On the hole's lip, a wooden root-cellar door carved like bleacher initials. The verb strip has a new, brighter word.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 spiral (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: D.D. / verb strip: WALK TO    PICK UP    USE      OPEN     LOOK AT / TALK TO    PUSH       PULL     GIVE     CLOSE     MAKE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_spiral_vga/vol2_scumm_spiral_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:22:06+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_spiral_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_spiral_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_spiral_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:22:12+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_inventory_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_inventory_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_inventory_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:22:30+00:00",
+    "stage": "image",
+    "slug": "vol2_scumm_save_screen_vga",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dream-journal adventure \u2014 save screen (game screen) like this: I put the pointer on it and before I could click, black. A save box. Ten slots. Nine full, names in handwriting I couldn't read, the way you can't read in dreams, the letters won't hold still. The tenth one empty, cursor blinking. Additional direction: The dream game cut to black, painted modern: a single save box of ten slots. Nine are filled with names in handwriting that won't hold still, unreadable the way letters are in dreams; the tenth is empty, a cursor blinking where the game's name should go. Stillness, held breath: like standing at the bottom of the stairs holding somebody's coat.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the dream-journal adventure \u2014 save screen (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: SAVE GAME / Name your game: _. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_scumm_save_screen_vga/vol2_scumm_save_screen_vga_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:22:39+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_scumm_save_screen_vga",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_scumm_save_screen_vga/front.png",
+    "output": "godot/assets/backgrounds/vol2_scumm_save_screen_vga.jpg"
+  },
+  {
+    "at": "2026-10-19T18:22:55+00:00",
+    "stage": "image",
+    "slug": "vol3_meld_rain_loading",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Pasadena, loading, like this: The picture came in bands, top to bottom. A street in the rain. Streetcar wire. A movie marquee. Orange trees. Pasadena, the box said, 1945. Additional direction: A 1994 home-computer game screen filling the frame, painted at full modern resolution: a picture of Pasadena, 1945, arriving in horizontal bands from the top down. The finished upper bands show a street in the rain, streetcar wire strung overhead, a lit movie marquee, wet orange trees; below them the lower bands are still dark, not yet loaded. Late night, the only light the screen itself, the rain on the street glossy and out of season.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Pasadena, loading. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_meld_rain_loading/vol3_meld_rain_loading_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:23:16+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_meld_rain_loading",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_meld_rain_loading/front.png",
+    "output": "godot/assets/cg/vol3_meld_rain_loading.jpg"
+  },
+  {
+    "at": "2026-10-19T18:23:32+00:00",
+    "stage": "image",
+    "slug": "vol3_meld_time_pod_interior",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes meld time pod interior (pulp: the time pod) like this: Inside the pod it was quiet the way the inside of an egg is quiet. One seat, one button, the instruments breathing their green lights. Rivets around the rim. Thick glass. Additional direction: Inside the time pod, the egg: a close, rounded cabin of riveted metal, quiet the way the inside of an egg is quiet. One seat, one button, banks of instruments breathing small green lights in the dark. A round porthole of thick glass ringed with rivets, fogged at the edges. Seams of rivets run down the curved walls to the floor. No window view to speak of; the time between times outside is only darkness.\nA single full-screen still for a literary visual novel set in Texas and Southern California: meld time pod interior (pulp: the time pod). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_meld_time_pod_interior/vol3_meld_time_pod_interior_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:23:45+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_meld_time_pod_interior",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_meld_time_pod_interior/front.png",
+    "output": "godot/assets/backgrounds/vol3_meld_time_pod_interior.jpg"
+  },
+  {
+    "at": "2026-10-19T18:24:00+00:00",
+    "stage": "image",
+    "slug": "vol3_meld_feather_pod_floor",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a feather from the blue heron like this: On the floor of the pod, against the riveted seam, lay a feather. Blue-grey, long as a hand. He waited. The pod waited with him. Additional direction: Close on the floor of the time pod: a single blue-grey heron feather, long as a hand, lying against a riveted seam of the metal hull. The only light is the green glow of the instruments breathing above, catching the feather's vanes. A young man's fingers reach in at the frame's edge to pick it up, as if it were a thing sent from very far away.\nA single full-screen still for a literary visual novel set in Texas and Southern California: a feather from the blue heron. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_meld_feather_pod_floor/vol3_meld_feather_pod_floor_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:29:31+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_meld_feather_pod_floor",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_meld_feather_pod_floor/front.png",
+    "output": "godot/assets/cg/vol3_meld_feather_pod_floor.jpg"
+  },
+  {
+    "at": "2026-10-19T18:29:47+00:00",
+    "stage": "image",
+    "slug": "vol3_meld_eyestalk_beam",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the projector, the eye, the stalk, like this: Then a beam came down out of the dark at a slant, from very high up, from a machine on a long jointed stalk, covered in tiny lights like little eyes. It swiveled the way an eye on a stalk swivels. It was looking at him looking at it. Additional direction: A beam comes down out of the dark at a slant from very high up, from a machine on a long jointed stalk studded with tiny lights like little eyes. The stalk bends the way an eye on a stalk swivels, its beam hovering over a small figure below, deciding what he is. The beam also reads as a projector's throw in a dark theatre: dust turning in the shaft, a pale wall beyond. He looks up into it, eyes open.\nA single full-screen still for a literary visual novel set in Texas and Southern California: the projector, the eye, the stalk. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_meld_eyestalk_beam/vol3_meld_eyestalk_beam_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:29:58+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_meld_eyestalk_beam",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_meld_eyestalk_beam/front.png",
+    "output": "godot/assets/cg/vol3_meld_eyestalk_beam.jpg"
+  },
+  {
+    "at": "2026-10-19T18:30:14+00:00",
+    "stage": "image",
+    "slug": "vol3_mojave_desert_1945",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Mojave in 1945: painted like this: The experiment. With the boys in the desert. We drive out one afternoon. There is a box empty of explosives they've gone through. I bury a newspaper, a novel, and a toy soldier by a fence. Additional direction: The Mojave on a clear afternoon in 1945, where the boys drive out to test their rockets. Open scrub desert under a hard, bright sky, a dry arroyo cutting across, a long fence running off toward the horizon, a car pulled off on the dirt. By a fence post sits a wooden crate already emptied of its explosives, the earth beside it freshly dug and patted down where something has just been buried, to be found again years later.\nA single full-screen still for a literary visual novel set in 1945 Pasadena, California: the period itself, nothing later (no computers, monitors, screens, phones or plastic): the Mojave in 1945: painted. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_mojave_desert_1945/vol3_mojave_desert_1945_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:30:23+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_mojave_desert_1945",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_mojave_desert_1945/front.png",
+    "output": "godot/assets/backgrounds/vol3_mojave_desert_1945.jpg"
+  },
+  {
+    "at": "2026-10-19T18:30:41+00:00",
+    "stage": "image",
+    "slug": "vol3_home_plate_collision",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ball hit glove. Chris hit catcher. like this: So fast. The moment you have to watch. The train wreck moment. Collision. Ball hit glove. Chris hit catcher. So hard. They fell across the ground, still sliding with Chris's shared momentum. Additional direction: The final game of a youth-league baseball season, at home plate: the train-wreck moment. The ball smacks into the masked catcher's glove at the same instant Chris, the fastest runner on the field, slams into him; both bodies tip into a slide across the dirt in a burst of dust, the umpire already starting to throw his thumb back. Behind them a crowded fence and stands, parents and teammates roaring.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Ball hit glove. Chris hit catcher.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_home_plate_collision/vol3_home_plate_collision_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:30:49+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_home_plate_collision",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_home_plate_collision/front.png",
+    "output": "godot/assets/cg/vol3_home_plate_collision.jpg"
+  },
+  {
+    "at": "2026-10-19T18:31:06+00:00",
+    "stage": "image",
+    "slug": "vol3_pulp_duck_window",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes ducks on the glass like this: One whole wall is a window and through the window is a lake in autumn, flat copper water, reeds gone rust, wild ducks lifting off and settling, lifting off and settling, never all of them up at once. It takes him a long minute to see the window hangs from the ceiling on a steel arm and the lake is inside it, playing for anybody or nobody. Additional direction: A large, low-lit room at the end of the corridor where one whole wall seems to be a window onto a lake in autumn: flat copper water, reeds gone rust, wild ducks lifting off and settling, never all up at once. Only slowly does it show itself as a screen hanging from the ceiling on a steel arm, the lake playing inside it for anybody or nobody. Below it, in shadow, the edge of a hospital bed.\nA single full-screen still for a literary visual novel set in Texas and Southern California: ducks on the glass. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pulp_duck_window/vol3_pulp_duck_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:31:21+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pulp_duck_window",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pulp_duck_window/front.png",
+    "output": "godot/assets/cg/vol3_pulp_duck_window.jpg"
+  },
+  {
+    "at": "2026-10-19T18:31:38+00:00",
+    "stage": "image",
+    "slug": "vol3_brick_wall_halloween_night",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes brick wall halloween night like this: We were walking to an exclusive neighborhood along a well-lit highway. A red brick wall kept us out along the perimeter. First they threw a bottle at us from their car. Additional direction: Halloween night years ago: a sidewalk along a well-lit highway, a long red brick wall running beside it, keeping passers-by out of an exclusive neighborhood beyond. Sodium streetlight on the brick, traffic glare on the road, a broken bottle on the concrete where it was thrown from a passing car. Far down the walk, a small herd of kids in cartoon costumes with candy bags.\nA single full-screen still for a literary visual novel set in Texas and Southern California: brick wall halloween night. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_brick_wall_halloween_night/vol3_brick_wall_halloween_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:31:50+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_brick_wall_halloween_night",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_brick_wall_halloween_night/front.png",
+    "output": "godot/assets/backgrounds/vol3_brick_wall_halloween_night.jpg"
+  },
+  {
+    "at": "2026-10-19T18:32:05+00:00",
+    "stage": "image",
+    "slug": "vol3_earth_man",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes He is earth man. like this: He was my globe-trotting academic athlete sci-fi super-hero. He is earth man. I watch my father die and his voice flows into me. Additional direction: The father as the son finally sees him: earth man. A kind, rational, globe-trotting academic athlete painted like a sci-fi hero, a geologist striding across his earth, at home on rock and open ground, strata rising behind him, every living thing that came before him in his wake. Heroic but quiet, a memory made mythic after the bedside. Seen from behind or in silhouette against the strata: a real man, never a recognisable face.\nA single full-screen still for a literary visual novel set in Texas and Southern California: He is earth man.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_earth_man/vol3_earth_man_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:32:18+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_earth_man",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_earth_man/front.png",
+    "output": "godot/assets/cg/vol3_earth_man.jpg"
   }
 ]
