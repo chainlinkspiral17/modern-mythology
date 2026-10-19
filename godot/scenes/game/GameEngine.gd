@@ -525,6 +525,7 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		_director.set("scene_key", scene_id)
 	_node_idx   = start_at
 	_scene_data = SceneDataDB.get_scene(scene_id)
+	_build_scene_cast()
 	if _scene_data.is_empty():
 		push_error("GameEngine: scene not found: " + scene_id)
 		game_ended.emit()
@@ -924,7 +925,10 @@ func _do_narrate(n: Dictionary) -> void:
 	_log.append({"role": "narrate", "text": text})
 	AudioMgr.set_sfx_pan(0.0)
 	AudioMgr.duck()
-	_chars.call("activate_speaker", "")
+	var subject: String = _narration_subject(text)
+	if subject != "":
+		_ensure_portrait(subject, "neutral")
+	_chars.call("activate_speaker", subject.to_lower())
 	_push_scene_light()
 	_chars.call("direct_line", "", text, "", "narrate")
 	_dlg.visible = true
@@ -2401,6 +2405,67 @@ func _present_chapter_card(scene: Dictionary) -> void:
 	# already revealed when the card fades itself out.
 	if _veil != null and is_instance_valid(_veil):
 		_veil.color.a = 0.0
+
+
+# ── The narration's subject (2026-10-19) ─────────────────────────
+# The user, in the Lovers ("The drip — drip — drip … was Philip Roberts's
+# metronome", with Mackenzie on screen): "why is mackenzie … all through
+# the beginning of this scene when it's about the house, and when the
+# narrator mentions Philip being there, it's still Mackenzie … the
+# director needs to start working." A narration line that BEGINS with a
+# character of this scene doing something ("Philip set the wrench down",
+# "Mackenzie drifted into the kitchen") puts that
+# character on screen (when a slot is free) and in focus. Only characters
+# who SPEAK in this scene count — narration about someone absent ("Elicia
+# Duchane. Their brilliant …") summons nobody — and the name must be
+# followed by a lower-case word (a verb), not a possessive.
+var _scene_cast: Dictionary = {}      # lower-case name → char as written
+var _directive_rx: RegEx = RegEx.create_from_string("\\[[^\\]]*\\]")
+
+
+func _build_scene_cast() -> void:
+	_scene_cast.clear()
+	for nv: Variant in _scene_data.get("nodes", []):
+		var nd: Dictionary = nv
+		var t: String = String(nd.get("t", ""))
+		if t != "say" and t != "think":
+			continue
+		var raw: String = String(nd.get("char", "")).strip_edges()
+		if raw == "" or raw.contains(",") or raw.contains("&"):
+			continue
+		var full: String = raw.replace("_", " ").to_lower()
+		if full.length() >= 3:
+			_scene_cast[full] = raw
+
+
+func _narration_subject(text: String) -> String:
+	if _scene_cast.is_empty():
+		return ""
+	var plain: String = _directive_rx.sub(text, "", true).strip_edges()
+	var low: String = plain.to_lower()
+	var best: String = ""
+	for name_v: Variant in _scene_cast.keys():
+		var nm: String = String(name_v)
+		if nm.length() <= best.length() or not low.begins_with(nm):
+			continue
+		# the name, then a lower-case word: the subject of a verb ("Philip set",
+		# "Ben goes"). A possessive ("Coach Guidry's kid kicker misses") is
+		# about someone else and does not count.
+		var rest: String = plain.substr(nm.length())
+		var ok: bool = false
+		if rest.length() >= 2 and rest[0] == " ":
+			var c: String = rest[1]
+			ok = c == c.to_lower() and c != c.to_upper()
+		if ok:
+			best = nm
+	if best == "":
+		return ""
+	var raw: String = String(_scene_cast[best])
+	if not bool(_chars.call("has_character", raw)):
+		var slots: Dictionary = _chars.get("_slots")
+		if slots.get("center") != null and slots.get("right") != null and slots.get("left") != null:
+			return ""                 # a full stage is not rearranged for a narration line
+	return raw
 
 
 # ── Auto-portrait fallback ──────────────────────────────────────

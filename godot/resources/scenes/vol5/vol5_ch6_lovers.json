@@ -29,9 +29,9 @@
     },
     {
       "t": "show",
-      "char": "mackenzie",
+      "char": "philip",
       "expr": "neutral",
-      "pos": "center"
+      "pos": "right"
     },
     {
       "t": "narrate",

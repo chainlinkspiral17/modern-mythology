@@ -3834,6 +3834,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-19 · pass 126: THE READING SCREEN FROM THE DECK (eye lines, chapter openings, settings, auto-play, the top bar, the director follows the narration).**
+- **Eye lines** (Deck: John and the Stranger, crowns off the top): every shot size is now eye-anchored
+  (Portrait3D.FACE_FRAMES covers wide + medium); eyes ~30 % down the screen at talking distance,
+  every crown in frame (PortraitCastSheet, 7 heroes).
+- **Chapter openings:** after the title plate, the interlude screens before the first line (the
+  "Chapter II — The High Priestess" text card) are skipped; later interludes still play.
+- **Title plates / CGs** fit the screen whole (EXPAND_IGNORE_SIZE: a plate bigger than the canvas had
+  grown past the right and bottom edges).
+- **Settings:** a padded card 24 px inside the screen; window sizes fit the display's usable area
+  (too big → maximised).
+- **AUTO-PLAY** (Settings): AUTO in every scene, voice plays out, choices picked (first not yet taken
+  at that menu, else the last), CGs held 4 s. **TOP BAR** (Settings AUTO / ALWAYS): shown on a change
+  of chapter / skill / items and at the top edge.
+- **The director follows the narration.** The user (the Lovers, Mackenzie on screen through the
+  faucet and the house): "the director needs to start working." The Lovers now opens on Philip; and
+  a narration line that begins with a character of the scene as the subject of a verb ("Philip set
+  the wrench down") brings them on (a free slot) and into focus — only characters who speak in the
+  scene (1,996 such lines across the game; the Lovers: 19, all right).
+  **Draft N+1 targets:** the 101 "early shows" (a `show` six-plus lines before that character speaks
+  or is named — tools: the scratch early_show audit; many are deliberate establishing shots, so
+  read each); empty the stage for pure place narration (the house, the room) when nobody acts;
+  Deck-verify auto-play across a vol 6 chapter with its choices and CGs.
+
 **2026-10-19 · pass 125: TALKING DISTANCE (portrait direction draft 2); THE VOICE IDS RECOVERED.**
 - **Portraits at talking distance.** The user: "the portraits always being in extreme close-up is
   too intimate for most shots and moments, there needs to be a natural conversational distance.
