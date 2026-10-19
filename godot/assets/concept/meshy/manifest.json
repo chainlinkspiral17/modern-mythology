@@ -22577,5 +22577,32 @@
       "godot/assets/concept/meshy/fire_elemental/fire_elemental_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/fire_elemental/fire_elemental_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T17:52:48+00:00",
+    "stage": "mesh",
+    "slug": "fire_elemental",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15547-3e76-729a-824d-c76e73b47a0d",
+    "inputs": [
+      "godot/assets/concept/meshy/fire_elemental/front.png",
+      "godot/assets/concept/meshy/fire_elemental/side.png",
+      "godot/assets/concept/meshy/fire_elemental/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/fire_elemental.glb",
+    "file_size_kb": 73629.0
   }
 ]
