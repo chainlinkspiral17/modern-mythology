@@ -158,6 +158,24 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-19 · the recorder's boxes are HALF-extents — and a tool that forgot shipped 710 half-size pictures
+
+**What happened:** `hero_art_candidates.py` (10-13) read `P.A.BOXES`'
+third field as the box's size. It is the half-extent (locale_geometry_audit
+halves on record). Every art `apply` row it drafted laid its picture at half
+width and half height over its stand-in, and the stand-in was hidden: the
+diner's BBS screen 0.14 x 0.11 m over a 0.28 x 0.22 face. 534 entries, 710
+rows, most of them installed on the Deck. Two subagents writing new entries
+caught it by measuring the builders' make_box calls.
+
+**Rule:** anything that reads `BOXES` names the field `half` and doubles it
+before it leaves the tool; a new tool's first check is one known box measured
+against its make_box call. Detection thresholds tuned on half-extents may stay
+(the candidate tool's do, with a comment); every SIZE handed on is full.
+`fix_art_sizes` (pass 129) measured every row against its hidden stand-in and
+doubled only the rows at 0.4–0.6 of it on both axes; the 68 that fit neither
+pattern are in `godot/qa/art_size_check_2026-10-19.json`.
+
 ### 2026-10-18 · the marker pass judges a shot by the geometry its own view loads
 
 - wagner_home's draft 3 added a front door standing open only in `wagner_house_steps`. The

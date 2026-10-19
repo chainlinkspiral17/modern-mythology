@@ -3835,6 +3835,48 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-19 · pass 129: THE 2D ART AUDIT (vols 1-4 pictures) AND THE PLAN FOR MORE ART IN THE SETS; the riverboat's card.**
+The user: "2D assets generated for vol 1-4, audit and plan for more 2D art for 3D background
+scenes and inserts. As well as any other vol 5-7 3d background improvements."
+- **What exists.** Hero Studio's scene2d roster: 106 vol 1-4 backgrounds/CGs generated (every one),
+  97 installed on the Deck; the 2026-10-19 installs (87) are NOT in git — the Deck's two SAVEs since
+  committed only the manifest. Every vol 1-4 bg/cg now resolves (339 to a 3D set via bg_places, 73 in
+  the repo, 97 Deck-only). Vol 5's 23 episode preludes name 29 backgrounds + 2 CGs that exist
+  nowhere, in no roster.
+- **Quality (all 106 looked at, against their canon lines):** 79 keep; 18 show a named character
+  drawn from text alone (a stranger's face — Joan, Faust, Charlie, Aud…) → `refs` set to the cast's
+  hero entries, regenerate; 9 miss the text → `REDO (2026-10-19 audit)` in notes, the missed detail
+  first in the prompt (the deep end's pool "so big the far wall is out of sight", the lighthouse
+  seen from inside, Ron's blank page, two men at the fort, "Justin J. Lowe" in the neon, the CRT
+  adventure's monitor and verbs, the second-generation xerox, the blue sand, the empty room).
+  meshy_pipeline: refs that are people now ask for THAT person (face, age, build, hair, clothes).
+- **In the sets (HeroArt):** vols 5-7 have art in 79 of 94 sets; 35 vol 1-4 sets had none.
+  **+101 art entries for 22 of them** (written from the builders and the scenes, canon verbatim):
+  the writer's desk clippings and DICKENS DEAN card, Dabney's "The Birth of God" mural and the
+  arcade's high scores (ASS at three), the sleep lab's posters and questionnaire, the editing suite's
+  frozen frame / tide flats / bakery window, the Apple Peddler's six-dish menu, MELODY's tape… Views
+  that belong to one preset carry it in the slug (`…__suite_tide`): the quad is `HeroArt_<slug>` and
+  Background3D's `__preset` strip runs after HeroArt.apply. Flat-subject inserts (letters, notebooks,
+  photos, cards, screens) with no picture: **+29 entries** from their cue lines (Joanna's "I am
+  ready." / "J. LeMoine", Erica's "Denied", Rick's list, the 1974 Polaroid, "for whoever is ready"…).
+  Vols 1-4 stage no `[shot:insert]` at all: their close views are the CG pictures.
+- **THE HALF-SIZE BUG.** hero_art_candidates.py read the recorder's HALF-extents as sizes: every
+  art row it made (10-13) laid its picture at half width and half height over its stand-in (the BBS
+  screen 0.14 x 0.11 over a 0.28 x 0.22 face). Fixed in the tool (detection still on half-extents,
+  every reported size full); in the roster, the 710 rows measured at exactly half their stand-in
+  were doubled (tags too); 68 rows that fit neither pattern are in `godot/qa/art_size_check_2026-10-19.json` for a
+  look (one axis half, or a stand-in wider than the picture). Pictures already generated keep their
+  aspect; they fill their surfaces after the pull.
+- **The riverboat (vol 5):** the card insert reads "Mr. D. Dean. / Consulting." (Label3D, the card
+  turned to the lens, the marker at 0.38 m / 18°); the wife's photograph is on the wall opposite the
+  desk only (ch4), the art entry moved there.
+  **Next (the riverboat's own pass):** the helm's leaded window looks onto the upper deck's slab —
+  the dining room is under a full floor; open a well south of the helm (brass rail, the dining room
+  double-height under it), shrink the window to the text's "small leaded window".
+- **Draft N+1 targets:** the vol 1-4 set art (the art-less sets, most-played first); the vol 5
+  preludes' 31 pictures (roster entries, or bg_places to the sets that are those places); HeroArt
+  `yaw` for stand-ins at an angle (two inserts skipped); install the vols 1-5 chapter endpapers.
+
 **2026-10-19 · pass 128: THE CHALKED WALL (draft 3) — the verses themselves, by moonlight and flashlight.**
 Next on the vol 5 sheet after the wreck: `graustark_chalk_wall` (5 uses), near-black at night, murky at
 dusk; the "verses" were word-stroke dashes; the floor a hard checker of loose plates; Judgement's

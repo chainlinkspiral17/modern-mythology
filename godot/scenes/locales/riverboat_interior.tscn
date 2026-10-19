@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://riverboat_interior_empress"]
+[gd_scene load_steps=26 format=3 uid="uid://riverboat_interior_empress"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/riverboat_interior.glb" id="1_boat_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="17_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="18_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/Literata-Variable.ttf" id="19_cardface"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
 radius = 0.30
@@ -530,7 +531,43 @@ metadata/fov = 44.0
 ; is glass since LocaleGlass); closeup dante with the
 ; father's clock behind him (it faced a bulkhead port); the bourbon closer.
 ; insert: the calling card on the helm desk, square to the corner
+; (2026-10-19) THE CARD'S TWO LINES — "He read the name three times. He read the
+; line below it twice. He turned the card over. The back was blank." (ch4) ·
+; "The card — Mr. D. Dean. Consulting. — was still on his desk, square to the
+; corner" (ch20). Flat on Helm_CallingCard_Body (blender 0.85, -1.88, top
+; 5.912), reading along the card's long side for the card insert, which
+; looks east at it; it was a dark dash.
+[node name="Helm_CallingCard_Lettering_Name" type="Label3D" parent="."]
+position = Vector3(0.8720, 5.9125, 1.8800)
+rotation = Vector3(-1.5708, -1.5708, 0)
+pixel_size = 0.0001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.12, 0.10, 0.08, 1)
+outline_size = 0
+text = "Mr. D. Dean."
+font = ExtResource("19_cardface")
+font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 0
+
+[node name="Helm_CallingCard_Lettering_Line" type="Label3D" parent="."]
+position = Vector3(0.8560, 5.9125, 1.8800)
+rotation = Vector3(-1.5708, -1.5708, 0)
+pixel_size = 0.0001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.12, 0.10, 0.08, 1)
+outline_size = 0
+text = "Consulting."
+font = ExtResource("19_cardface")
+font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 0
+
+; (2026-10-19) closer and tighter: from 0.73 m at 42 deg the card was a fifth of
+; the frame and its two lines unreadable; 0.38 m west of it, looking down-east
 [node name="shot_insert_card" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.25, 1.9)
-rotation = Vector3(-0.4794, -1.5400, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.550, 6.150, 1.880)
+rotation = Vector3(-0.6700, -1.5708, 0.0)
+metadata/fov = 18.0
