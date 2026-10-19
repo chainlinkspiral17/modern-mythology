@@ -40,6 +40,11 @@
    "md5": "17f575ca403a7a71a29e34d7b0cfe37c",
    "size": 53502052
   },
+  "godot/assets/3d/characters/heroes/_full/carlos.glb": {
+   "at": "2026-10-19T16:55:44+00:00",
+   "md5": "aad8888c9b682f8d4c3a1f7f75af5cee",
+   "size": 54847124
+  },
   "godot/assets/3d/characters/heroes/_full/chess.glb": {
    "at": "2026-10-19T14:52:39+00:00",
    "md5": "5738b5e0d4c56e2ca54417c26bf89419",
@@ -539,6 +544,11 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "e2653c2bb48d84ba5610609879a3d1fd",
    "size": 67660
+  },
+  "godot/assets/3d/characters/heroes/carlos.glb": {
+   "at": "2026-10-19T16:55:31+00:00",
+   "md5": "b77ed1ac781610101f46cd83ccad9bfa",
+   "size": 5102788
   },
   "godot/assets/3d/characters/heroes/chess.glb": {
    "at": "2026-10-19T14:52:24+00:00",
@@ -66490,15 +66500,40 @@
    "md5": "8bdd895669a73937b0f6b9aa4af81a3f",
    "size": 71793
   },
+  "godot/assets/concept/meshy/carlos/back.png": {
+   "at": "2026-10-19T16:55:52+00:00",
+   "md5": "f85bfff5b220474854f9456af5684449",
+   "size": 2078848
+  },
+  "godot/assets/concept/meshy/carlos/carlos_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:55:52+00:00",
+   "md5": "f85bfff5b220474854f9456af5684449",
+   "size": 2078848
+  },
   "godot/assets/concept/meshy/carlos/carlos_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T16:39:53+00:00",
    "md5": "8dda773e821d34f0199209f45bb30185",
    "size": 2147276
   },
+  "godot/assets/concept/meshy/carlos/carlos_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:55:52+00:00",
+   "md5": "2f1f0ffb399debe07bda6441e5f8a356",
+   "size": 2017187
+  },
   "godot/assets/concept/meshy/carlos/front.png": {
    "at": "2026-10-19T16:39:53+00:00",
    "md5": "8dda773e821d34f0199209f45bb30185",
    "size": 2147276
+  },
+  "godot/assets/concept/meshy/carlos/meshy_thumb.png": {
+   "at": "2026-10-19T16:55:52+00:00",
+   "md5": "4f6ced3cf3c3259a02cc6186381e1896",
+   "size": 83484
+  },
+  "godot/assets/concept/meshy/carlos/side.png": {
+   "at": "2026-10-19T16:55:52+00:00",
+   "md5": "2f1f0ffb399debe07bda6441e5f8a356",
+   "size": 2017187
   },
   "godot/assets/concept/meshy/cassette_archive/back.png": {
    "at": "2026-10-18T17:12:42+00:00",
@@ -75674,6 +75709,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "0ba34be2e17e65a42cd9944116ca4d34",
    "size": 71156
+  },
+  "godot/assets/concept/meshy/tom_bell/back.png": {
+   "at": "2026-10-19T16:56:00+00:00",
+   "md5": "9e6b0d53eacfdfa0d5c4cf31a91213aa",
+   "size": 2049971
+  },
+  "godot/assets/concept/meshy/tom_bell/front.png": {
+   "at": "2026-10-19T16:56:00+00:00",
+   "md5": "d54e5edf718714bb3bd886739c9933a6",
+   "size": 2072749
+  },
+  "godot/assets/concept/meshy/tom_bell/side.png": {
+   "at": "2026-10-19T16:56:00+00:00",
+   "md5": "8785d642a4c341660e8c4351f3d836ed",
+   "size": 1910593
+  },
+  "godot/assets/concept/meshy/tom_bell/tom_bell_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:56:00+00:00",
+   "md5": "9e6b0d53eacfdfa0d5c4cf31a91213aa",
+   "size": 2049971
+  },
+  "godot/assets/concept/meshy/tom_bell/tom_bell_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:56:00+00:00",
+   "md5": "d54e5edf718714bb3bd886739c9933a6",
+   "size": 2072749
+  },
+  "godot/assets/concept/meshy/tom_bell/tom_bell_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:56:00+00:00",
+   "md5": "8785d642a4c341660e8c4351f3d836ed",
+   "size": 1910593
   },
   "godot/assets/concept/meshy/tucker/back.png": {
    "at": "2026-10-19T14:53:36+00:00",
