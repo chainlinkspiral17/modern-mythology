@@ -86,12 +86,12 @@ window.MM_VOICE_MAP = {
    "voice_id": "EXLdHKbL14iAO216598v"
   },
   "_narrator_vol1": {
-   "voice_id": "",
+   "voice_id": "qFjcP4hHD9WIdODvuJOJ",
    "casting": "Faust 3 screenplay action-line reader: night-city Americana, present-tense, dry and unhurried with a little noir; never performs the dialogue. Adult, either gender.",
    "appears": "vol1 narrate"
   },
   "_narrator_vol2": {
-   "voice_id": "",
+   "voice_id": "hIru3zkEJ3dBYHTbMy2V",
    "casting": "Small Wood notebook narrator: D.N. Dean's young first-person voice on the Oregon coast. Late-teens/early-20s American male, plain, confessional, small-town dry. His family came up from Caracas, so Spanish place names are said natively.",
    "appears": "vol2 narrate"
   },
@@ -111,7 +111,7 @@ window.MM_VOICE_MAP = {
    "appears": "vol6 narrate"
   },
   "_narrator_vol7": {
-   "voice_id": "",
+   "voice_id": "3Lc42uxjlCcqlwNunOkf",
    "casting": "Vol 7 narrator, not cast yet. While voice_id is empty, lookups fall back to _narrator, as before.",
    "appears": "vol7 narrate"
   },
@@ -126,22 +126,22 @@ window.MM_VOICE_MAP = {
    "appears": "multi-speaker lines, e.g. 'Faust, Jacob, Wagner'"
   },
   "faust": {
-   "voice_id": "",
+   "voice_id": "uKGPYP2uuyRQv8SeFre0",
    "casting": "John Faust, the Faust 3 lead and a painter: late-20s/early-30s American male, quick and wry, deadpan one-liners that tip into big earnest romantic declarations. Warm, unpolished baritone.",
    "appears": "vol1, meld (299 lines)"
   },
   "dickens_dean": {
-   "voice_id": "",
+   "voice_id": "a4CnuaYbALRvW39mDitg",
    "casting": "Dickens Dean, 'traveller from another realm' and Faust's courtly antagonist (also in the Vol 4 Esther story): urbane, slightly archaic, given to grand speeches with gentle menace and real warmth. Ageless 30s-40s male, polished mid-Atlantic. Kept separate from `dean` (Mr. D. Dean / adult Nate, Vol 5/7). The two could share one voice at different ages; Andy decides.",
    "appears": "vol1, vol4 (191 lines)"
   },
   "jacob": {
-   "voice_id": "",
+   "voice_id": "Myb1gsDenT3mlMlj7vib",
    "casting": "Faust's friend and a young dad: laid-back, dry, near-stoner deadpan that breaks into sudden sincerity ('I can say just how much I love you man'). 30ish American male, mid-low register.",
    "appears": "vol1, meld (158 lines)"
   },
   "wagner": {
-   "voice_id": "",
+   "voice_id": "Mtmp3KhFIjYpWYRycDe3",
    "casting": "Faust's steady friend with a partner at home: measured, orders ginger beer, gives instructions over the radio and delivers the hard truths ('You're a bad dad'). 30s male, calm, grounded, slightly formal.",
    "appears": "vol1, meld (122 lines)"
   },
@@ -151,37 +151,37 @@ window.MM_VOICE_MAP = {
    "appears": "vol1 (58 lines + the dream 'Woman')"
   },
   "the_writer": {
-   "voice_id": "",
+   "voice_id": "IRHApOXLvnW57QJPQH2P",
    "casting": "Author facet #1, the Writer: nervous and bookish, long lyrical run-on sentences, closes his notebook on a punchline. 30s male, soft and quick. The four facets could be one actor in four modes.",
    "appears": "vol1, vol4, meld"
   },
   "the_director": {
-   "voice_id": "",
+   "voice_id": "8Ln42OXYupYsag45MAUy",
    "casting": "Author facet #2, the Director: theatrical pronouncements over a self-doubting core, flashes of anger. 40s male, resonant, commanding.",
    "appears": "vol1, vol4, meld"
   },
   "the_artist": {
-   "voice_id": "",
+   "voice_id": "cdnpdcqt2HW1XtKv2f3V",
    "casting": "Author facet #3, the Artist: comfortable, obsessive, dreamy stream of consciousness ('There comes a time in life when pieces click in place'). 30s, airy; either gender.",
    "appears": "vol1, vol4, meld"
   },
   "the_human_being": {
-   "voice_id": "",
+   "voice_id": "eZXLfI8FZPOx5lbsJaTw",
    "casting": "Author facet #4, the Human Being: the plain, wounded, confessional one ('The hardest thing about losing him was becoming him'). 30s-40s male, quiet, unadorned, tender.",
    "appears": "vol1, vol4, meld"
   },
   "air": {
-   "voice_id": "",
+   "voice_id": "fA4eSDsx5xNZ1RV7zEu5",
    "casting": "Air, the elemental who comes off Jacob's shirt (female): bookish, wry, light ('Finally. One of you reads'). Breathy upper register, quick.",
    "appears": "vol1, meld"
   },
   "fire": {
-   "voice_id": "",
+   "voice_id": "GkP5h0UAcZQ2i4aDPipF",
    "casting": "Fire, the elemental who comes off Wagner's shirt (female): punky, impatient, teasing ('We know, dork'). Bright, crackly, young.",
    "appears": "vol1, meld"
   },
   "water": {
-   "voice_id": "",
+   "voice_id": "gYGXjks6FzTWwNQ6X7hC",
    "casting": "Water, the elemental who comes off Faust's shirt: slow, cool, easygoing, often lowercase calm ('we're home. this is home'). Low and fluid; gender open, leaning female to match Air and Fire.",
    "appears": "vol1, meld"
   },
@@ -191,12 +191,12 @@ window.MM_VOICE_MAP = {
    "appears": "vol1"
   },
   "deborah": {
-   "voice_id": "",
+   "voice_id": "itMkRQx56fOF4CJe1D0C",
    "casting": "Deborah at the drugstore counter and on the radio: bored, kind, lowercase deadpan ('you know already. you're stalling'). 30s-40s female, dry, flat affect.",
    "appears": "vol1"
   },
   "the_fool": {
-   "voice_id": "",
+   "voice_id": "y0s2ExEMuum3muUnA6Zd",
    "casting": "The Fool in the editing suite and trailer: excitable, scattered, childlike wisdom ('Completed's not finished'). Older male, breathless and quick.",
    "appears": "vol1"
   },
@@ -221,12 +221,12 @@ window.MM_VOICE_MAP = {
    "appears": "vol1"
   },
   "old_woman": {
-   "voice_id": "",
+   "voice_id": "H1GhCI6GEKiSXZcwmUkc",
    "casting": "Old woman at the pharmacy counter: gently brisk ('be young and happy forever'). 70s+ female, thin and warm.",
    "appears": "vol1"
   },
   "eric": {
-   "voice_id": "",
+   "voice_id": "4e32WqNVWRquDa1OcRYZ",
    "casting": "Eric, a buddy on the street and at the river turn: goofy hype ('yo yo ma in the hizzouse'). 20s-30s male, playful and quick.",
    "appears": "vol1"
   },
@@ -256,7 +256,7 @@ window.MM_VOICE_MAP = {
    "appears": "vol1"
   },
   "aud": {
-   "voice_id": "",
+   "voice_id": "rhS7yjXTU4uIlRxXhNW7",
    "casting": "Aud, the diner waitress at the seams ('Coffee, hon?'), who knows more than she says and looks past the camera. 50s female, weathered small-town warmth, slightly gravelly. Also resolves Vol 7's 'aud' (58 lines).",
    "appears": "vol2, meld, vol7"
   },
@@ -266,7 +266,7 @@ window.MM_VOICE_MAP = {
    "appears": "vol2"
   },
   "david_jarvis": {
-   "voice_id": "",
+   "voice_id": "Myb1gsDenT3mlMlj7vib",
    "casting": "David Jarvis, speaking 'after his own death' in a period newspaper account: 19th-century plainspoken testimony, haunted. 30s male, old-fashioned diction, low and steady.",
    "appears": "vol2"
   },
@@ -704,6 +704,21 @@ window.MM_VOICE_MAP = {
   },
   "wren": {
    "voice_id": "Rm14i2uPTqCL0k0wW7KI"
+  },
+  "eileen_kazantzakis": {
+   "voice_id": "0lyV68Aacjmcsjj9LO1q"
+  },
+  "tem": {
+   "voice_id": "4tRn1lSkEn13EVTuqb0g"
+  },
+  "lena": {
+   "voice_id": "G4Wh6MqJNTzYtuAeMqv5"
+  },
+  "kai": {
+   "voice_id": "XTdzBt8oIEvodkwhxeA0"
+  },
+  "finn": {
+   "voice_id": "cdnpdcqt2HW1XtKv2f3V"
   }
  },
  "aliases": {
