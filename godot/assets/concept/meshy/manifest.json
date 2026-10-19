@@ -24067,5 +24067,1360 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/vol3_safari_slide/front.png",
     "output": "godot/assets/cg/vol3_safari_slide.jpg"
+  },
+  {
+    "at": "2026-10-19T18:42:12+00:00",
+    "stage": "image",
+    "slug": "vol3_play_fort_night",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The wooden fort, one long weekend's work., like this: The moon is there between tall skinny trees. They relax against the wooden fort Marty built for the children one long weekend Kathy took off without telling him. Inside is a play kitchen for his daughter, the faux sink thick with red dirt and twig. Additional direction: A Tulsa backyard late on a crisp fall night: the wooden play fort Marty built in one long weekend, its little play kitchen inside with a toy sink full of red dirt and twigs. The moon hangs between tall skinny trees over the children's sawdust playground. Two drunk men slump against the fort with near-empty bottles, winded from play-boxing, their younger hangers-on standing at the side.\nA single full-screen still for a literary visual novel set in Texas and Southern California: The wooden fort, one long weekend's work.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_play_fort_night/vol3_play_fort_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:42:21+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_play_fort_night",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_play_fort_night/front.png",
+    "output": "godot/assets/cg/vol3_play_fort_night.jpg"
+  },
+  {
+    "at": "2026-10-19T18:42:38+00:00",
+    "stage": "image",
+    "slug": "vol3_four_screens",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Cinema on four screens, all at once., like this: I saw an island of leather executive swivel chairs, maybe eighty in total. It is cinema on four screens, all at once. The edges of the flanking two screens bleed over. Additional direction: A dark back room, larger than expected, its four white walls taller than normal, each one alive with a different projected moving image, the edges of the flanking screens bleeding into one another. In the middle, an island of about eighty leather executive swivel chairs bolted to the floor, the audience rocking and spinning in them like tops, faces lit by four sources at once.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Cinema on four screens, all at once.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_four_screens/vol3_four_screens_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:42:47+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_four_screens",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_four_screens/front.png",
+    "output": "godot/assets/cg/vol3_four_screens.jpg"
+  },
+  {
+    "at": "2026-10-19T18:43:09+00:00",
+    "stage": "image",
+    "slug": "vol3_desert_van",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A van at the edge of the screen. like this: A helicopter shot through graphic desert landscape. A van is always at the edge of the screen, moving closer as the shot spins and orients itself. The van is dust-covered, a relic from the sixties, seventies, hard to place. Additional direction: A film image: a helicopter shot banking through a graphic desert landscape, the camera spinning and orienting, and always at the edge of the frame a dust-covered van, a relic of the sixties or seventies, hard to place, a patchwork of all vans, moving closer. Hard sun, long shadow, an empty road. It is one wall of the four-screen projection.\nA single full-screen still for a literary visual novel set in Texas and Southern California: A van at the edge of the screen.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_desert_van/vol3_desert_van_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:43:22+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_desert_van",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_desert_van/front.png",
+    "output": "godot/assets/cg/vol3_desert_van.jpg"
+  },
+  {
+    "at": "2026-10-19T18:43:40+00:00",
+    "stage": "image",
+    "slug": "vol3_pigeon_plaza",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The winged squatters refusing to budge. like this: We had pizza dinner and bought disposable cameras which we emptied, pow pow pow, in a pigeon occupied park plaza. The winged squatters refusing to budge, unafraid of us, we'd run at them and they'd stare us down, the whole flock would just flutter and bustle in place, watching as we were the ones who trembled. The whole flock lifts an inch off the stones and settles again where it was. Additional direction: A city park plaza in Portland on a Friday, early evening: a big pigeon flock owns the paving stones and won't budge. Three young people rush at the birds with disposable cameras raised: a big bearded guy in flannel, a bleached-blond guy, and a young woman with dreadlocks dyed every fruit-cereal color. The whole flock lifts an inch off the stones, flutters in place, and stares them down.\nA single full-screen still for a literary visual novel set in Texas and Southern California: The winged squatters refusing to budge.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pigeon_plaza/vol3_pigeon_plaza_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:44:06+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pigeon_plaza",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pigeon_plaza/front.png",
+    "output": "godot/assets/cg/vol3_pigeon_plaza.jpg"
+  },
+  {
+    "at": "2026-10-19T18:44:18+00:00",
+    "stage": "image",
+    "slug": "vol3_neon_sign",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A name being born out of darkness. like this: The video opens with a custom-made eighteenth birthday present neon sign being born out of darkness, his name flickering and glowing, He cut a tape together with some personal highlights of his short life in front of the camera. Additional direction: The opening frame of a young man's video reel: out of total darkness a custom neon sign flickers on, a name written in cursive blue tube, glowing and stuttering into life. It was an eighteenth birthday present. Black surround, the blue light blooming off the glass tubing and its mounting. Keep the letters a cursive blur rather than a legible name.\nA single full-screen still for a literary visual novel set in Texas and Southern California: A name being born out of darkness.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_neon_sign/vol3_neon_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:44:31+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_neon_sign",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_neon_sign/front.png",
+    "output": "godot/assets/cg/vol3_neon_sign.jpg"
+  },
+  {
+    "at": "2026-10-19T18:44:46+00:00",
+    "stage": "image",
+    "slug": "vol3_coast_road",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Deep forest and valley, sunlight dotting through., like this: The roads ever twisting revealing deep forest and valley. Sunlight dotting through the thickness of it all. I drove with the window down and the radio blaring, it crackling in and out of reception. Additional direction: Driving to the Oregon coast near Small Wood, through the driver's open window: the road twists down through deep forest and valley, tall trees closing overhead, sunlight dotting through the thickness of it all onto the asphalt. Beautiful that time of year, the light bright in the canopy, the car radio crackling in and out of reception. The road keeps turning out of sight ahead.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Deep forest and valley, sunlight dotting through.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_coast_road/vol3_coast_road_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:44:56+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_coast_road",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_coast_road/front.png",
+    "output": "godot/assets/cg/vol3_coast_road.jpg"
+  },
+  {
+    "at": "2026-10-19T18:45:20+00:00",
+    "stage": "image",
+    "slug": "vol3_pulp_ward_rows",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Earthman pulp \u2014 painted in its own register like this: The light is there and it does not stop, long white tubes laid end to end down a ceiling running on farther than any ceiling has a right to run, buzzing, flickering at the edges, and Jack Perkins lies under it on a narrow cot railed in steel and can't look away, can't blink, can't do much of anything. Instead it is clean, cleaner than any lab he was ever allowed into, cleaner than his mother's kitchen Sunday morning, and it smells of rubbing alcohol and of something under the alcohol the alcohol is meant to cover up. The corridor goes on, turns, goes on, doors all the way down, every door shut, every door numbered, a little window of wired glass in each and behind every window the same white light, the same green lines, the same sleepers. Additional direction: The inside of the machine, seen by someone from 1945: a ward of long white fluorescent tubes laid end to end down a ceiling that runs farther than any ceiling should, buzzing and flickering at the edges. Beneath them, a long row of narrow steel-railed cots, each tethered to the wall by bundles of cable and clear hose leading to black glass boxes with green lines. Clean, cold, smelling of rubbing alcohol.\nA single full-screen still for a literary visual novel set in Texas and Southern California: the Earthman pulp \u2014 painted in its own register. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pulp_ward_rows/vol3_pulp_ward_rows_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:45:45+00:00",
+    "stage": "image",
+    "slug": "vol3_coast_road",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Deep forest and valley, sunlight dotting through., like this: The roads ever twisting revealing deep forest and valley. Sunlight dotting through the thickness of it all. I drove with the window down and the radio blaring, it crackling in and out of reception. Additional direction: Driving to the Oregon coast near Small Wood, through the driver's open window: Correct US driver side and road conditions. the road twists down through deep forest and valley, tall trees closing overhead, sunlight dotting through the thickness of it all onto the asphalt. Beautiful that time of year, the light bright in the canopy, the car radio crackling in and out of reception. The road keeps turning out of sight ahead.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Deep forest and valley, sunlight dotting through.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_coast_road/vol3_coast_road_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:45:49+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pulp_ward_rows",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pulp_ward_rows/front.png",
+    "output": "godot/assets/backgrounds/vol3_pulp_ward_rows.jpg"
+  },
+  {
+    "at": "2026-10-19T18:46:36+00:00",
+    "stage": "image",
+    "slug": "vol3_coast_road",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Deep forest and valley, sunlight dotting through., like this: Driver on the left side of the car, driving on the right side of the road. Simple US driving conditions. The roads ever twisting revealing deep forest and valley.\n\nSunlight dotting through the thickness of it all.\n\nI drove with the window down and the radio blaring, it crackling in and out of reception. Additional direction: Driving to the Oregon coast near Small Wood, through the driver's open window: the road twists down through deep forest and valley, tall trees closing overhead, sunlight dotting through the thickness of it all onto the asphalt. Beautiful that time of year, the light bright in the canopy, the car radio crackling in and out of reception. The road keeps turning out of sight ahead.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Deep forest and valley, sunlight dotting through.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_coast_road/vol3_coast_road_front_openai_gpt-image-2.5-sunburst_03.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:47:12+00:00",
+    "stage": "image",
+    "slug": "vol3_pulp_ward_sleepers",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the rows like this: The hoses run red and yellow and clear. The cables run to black glass boxes where a green line jumps and falls, jumps and falls, drawn across and wiped away and drawn again, every box keeping its own time, every box chirping, tiny lights blinking all over them like little eyes. It is covered head to heel in a suit the color of pond scum, a paper muzzle over its mouth and nose, its hands sheathed in a second skin so thin he can see the knuckles through it. Additional direction: From a cot, head turned the inch it will go, eyes smeared with ointment so the lights halo: a long row of sleepers on narrow railed cots, laid out like specimens in a museum drawer. Hoses run red, yellow and clear; cables run to black glass boxes where a green line jumps and falls, tiny lights blinking like little eyes. Down the row walks a figure in pond-scum green, paper mask, thin gloves.\nA single full-screen still for a literary visual novel set in Texas and Southern California: the rows. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pulp_ward_sleepers/vol3_pulp_ward_sleepers_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:47:51+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pulp_ward_sleepers",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pulp_ward_sleepers/front.png",
+    "output": "godot/assets/cg/vol3_pulp_ward_sleepers.jpg"
+  },
+  {
+    "at": "2026-10-19T18:48:15+00:00",
+    "stage": "image",
+    "slug": "vol3_what_lies_beyond_box",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes WHAT LIES BEYOND, in a regal cloudy blue script., like this: A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script. This is an old, brand new never been opened game. She kept the game in the back of her closet for a long time, not wanting to even think of the dent it made to her bank account while staving off impending financial doom, nor the shame of not being able to negotiate its return. Additional direction: A sealed, never-opened early-nineties PC game box, out of the back of a Dallas closet at last: its title, WHAT LIES BEYOND, in a regal cloudy blue script across the front. Factory shrink-wrap, unworn corners, one of maybe a hundred copies left in the world. It sits in a young woman's hands, a dim bedroom and an open closet behind her, the thing she paid almost five hundred dollars for and could not bring herself to open.\nA single full-screen still for a literary visual novel set in Texas and Southern California: WHAT LIES BEYOND, in a regal cloudy blue script.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: WHAT LIES BEYOND. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_what_lies_beyond_box/vol3_what_lies_beyond_box_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:48:32+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_what_lies_beyond_box",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_what_lies_beyond_box/front.png",
+    "output": "godot/assets/cg/vol3_what_lies_beyond_box.jpg"
+  },
+  {
+    "at": "2026-10-19T18:48:49+00:00",
+    "stage": "image",
+    "slug": "vol3_iris_binder",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes IRIS like this: Between the Wittgenstein and the Powers a white binder, no label on the spine. The cover sheet says IRIS and nothing else. Three in the morning and wide awake under the curtain glow, he reaches for the bookshelf between the two beds instead. Additional direction: Three in the morning in a sleep lab in the basement's basement, lit only by the glow through a curtain between two beds. A plain white binder with no label on its spine, just pulled from the bookshelf between the beds, is held open by a big man lying in bed, not allowed to get up. Its cover sheet says IRIS and nothing else: design notes and a cast list for a game, the kind he writes and never finishes.\nA single full-screen still for a literary visual novel set in Texas and Southern California: IRIS. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: IRIS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_iris_binder/vol3_iris_binder_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:49:08+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_iris_binder",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_iris_binder/front.png",
+    "output": "godot/assets/cg/vol3_iris_binder.jpg"
+  },
+  {
+    "at": "2026-10-19T18:49:26+00:00",
+    "stage": "image",
+    "slug": "vol3_couch_carving",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes cut into the leather like this: Under his hand the leather is cut all over, initials and dates and house jokes gone gray in the grooves, a phone number for a good time, somebody's girlfriend's name scratched out so hard it goes through to the stuffing. Andy goes back down to the game room with his hardcover notebook and sinks into the black leather, the refrigerators humming, some screen left on its title loop, and he writes because he told himself he would, a page a day minimum, more if the place gives it up. Additional direction: Close on the arm of a black leather couch in a college basement game room, afternoon: the leather cut all over, initials, dates, house jokes gone gray in the grooves, a phone number, one name scratched out so hard it goes through to the stuffing. A big hand rests on it beside a hardcover notebook. Behind, a wall of screens with a title loop left running.\nA single full-screen still for a literary visual novel set in Texas and Southern California: cut into the leather. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_couch_carving/vol3_couch_carving_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:49:38+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_couch_carving",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_couch_carving/front.png",
+    "output": "godot/assets/cg/vol3_couch_carving.jpg"
+  },
+  {
+    "at": "2026-10-19T18:49:57+00:00",
+    "stage": "image",
+    "slug": "vol3_crt_monitor_newsgroup",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes an insert: the Usenet post like this: Aaron nods and returns his gaze to the computer screen, transfixed with levels of murky Internet correspondence deception unfolding. Aaron never really falling asleep, spent all night on Steven's computer, flaming a videogame maker for their substandard product. His game represents the pinnacle of 'machine intelligence.' Additional direction: An insert: a late-nineties computer monitor in a suburban house, filling the frame, showing a plain-text Usenet reply in a newsreader window, its subject line Re: Smart Clarification and a block of header lines over the body text. Saturday noon daylight falls across the desk and keyboard, and a hunched figure's shoulder is at the edge, up all night typing. Paint it as a real object, no scanline effects.\nA single full-screen still for a literary visual novel set in Texas and Southern California: an insert: the Usenet post. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: Re: Smart Clarification. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_crt_monitor_newsgroup/vol3_crt_monitor_newsgroup_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:50:14+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_crt_monitor_newsgroup",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_crt_monitor_newsgroup/front.png",
+    "output": "godot/assets/backgrounds/vol3_crt_monitor_newsgroup.jpg"
+  },
+  {
+    "at": "2026-10-19T18:50:31+00:00",
+    "stage": "image",
+    "slug": "vol3_gurney_driveway",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Flashing lights in the driveway. like this: The thing that gets their attention are the flashing lights then the sounds, whooping. An ambulance pulled up out front, they see the homeless man strapped to a gurney, young EMTs pushing, pulling, hoisting and bored looking, their thoughts lateral elsewhere. Two police cars are off to the side, empty inside. Additional direction: A suburban Sunday afternoon, flashing lights in the driveway: an ambulance pulled up out front, young bored-looking EMTs hoisting a gurney with a homeless man strapped to it. Two police cars sit off to the side, empty. The garage door stands open on the mother's car. Seen from inside the car just pulling up to the curb, over the shoulders of the two young friends staring out through the windshield.\nA single full-screen still for a literary visual novel set in Texas and Southern California: Flashing lights in the driveway.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_gurney_driveway/vol3_gurney_driveway_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:50:41+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_gurney_driveway",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_gurney_driveway/front.png",
+    "output": "godot/assets/cg/vol3_gurney_driveway.jpg"
+  },
+  {
+    "at": "2026-10-19T18:50:57+00:00",
+    "stage": "image",
+    "slug": "vol3_pulp_catwalk_city",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the lit city like this: It is night. The city goes on to the edge of seeing in every direction and all of it is lit. Far below on a road something moves in a long bright chain, red lights going one way, white lights coming back the other, never stopping. Nothing is burning. Additional direction: From a glass bridge slung between two towers at night, a hand on the rail: the city runs to the edge of seeing and all of it is lit. Towers of lit windows, roads poured full of light, a long chain of red lights going one way and white coming back. Thousands of streetlamps laid over the land like a quilt; helicopters blinking red and white set down on rooftops. Steam from a vent. Nothing is burning.\nA single full-screen still for a literary visual novel set in Texas and Southern California: the lit city. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_pulp_catwalk_city/vol3_pulp_catwalk_city_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:51:12+00:00",
+    "stage": "scene2d",
+    "slug": "vol3_pulp_catwalk_city",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol3_pulp_catwalk_city/front.png",
+    "output": "godot/assets/cg/vol3_pulp_catwalk_city.jpg"
+  },
+  {
+    "at": "2026-10-19T18:51:27+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_kaleidoscope_tube",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the tube, the lamp, the desk, like this: The lamp is on. It's late, or it's early. A kaleidoscope rolls out from under the zine. The cheap cardboard kind, ducks printed on the paper, worn white at both ends. The desk lamp has a round brass shade. Additional direction: Close on a cluttered writing desk under a lamp with a round brass shade, at the hour that could be late or early. A cheap cardboard kaleidoscope has just rolled out from under a photocopied zine: a paper tube printed with little ducks, the paper worn white at both ends, a few coloured bits visible in its end glass. Warm lamplight pools on the paper; the rest of the room falls away into dark.\nA single full-screen still for a literary visual novel set in small-town America: the tube, the lamp, the desk. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_kaleidoscope_tube/vol4_meld_kaleidoscope_tube_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:51:43+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_kaleidoscope_tube",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_kaleidoscope_tube/front.png",
+    "output": "godot/assets/cg/vol4_meld_kaleidoscope_tube.jpg"
+  },
+  {
+    "at": "2026-10-19T18:52:02+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_lens_mandala",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes meld lens mandala (abstract) like this: He puts it to his eye and points it at the lamp. a heron lifting off the sea wall a minivan door sliding shut Tiny little moments hidden out of sight, reflecting back a world of infinite possibility. Additional direction: The view down a kaleidoscope pointed at a desk lamp: a radial mandala of mirrored, faceted shards around a hot point of lamplight. Each shard holds a tiny moment, repeated around the wheel: a heron lifting off a sea wall, a minivan door sliding shut, neon over a night city, ducks on a hospital television, a photocopied zine page with words struck through. Jewel colours, mirror seams, everything reflecting everything else.\nA single full-screen still for a literary visual novel set in small-town America: meld lens mandala (abstract). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_lens_mandala/vol4_meld_lens_mandala_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:52:11+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_lens_mandala",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_lens_mandala/front.png",
+    "output": "godot/assets/backgrounds/vol4_meld_lens_mandala.jpg"
+  },
+  {
+    "at": "2026-10-19T18:52:26+00:00",
+    "stage": "image",
+    "slug": "vol4_xerox_sky",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes xerox sky (a xeroxed sky) like this: the sky so high, the riddle of the blanket, the oscillating eye and the cloud behind. weep, FOR THE FUTURE struck through distribute at your own peril Additional direction: A sky run through a copy-shop machine and copied again: a high, wide sky with a cloud behind, broken into coarse halftone dots and toner grain, greys sliding to black at the edges where the copies wore thin, the paper's white showing through as the only light. A grand sky reduced to a photocopied zine page, beautiful in its generation loss.\nA single full-screen still for a literary visual novel set in small-town America: xerox sky (a xeroxed sky). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_xerox_sky/vol4_xerox_sky_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:52:35+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_xerox_sky",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_xerox_sky/front.png",
+    "output": "godot/assets/backgrounds/vol4_xerox_sky.jpg"
+  },
+  {
+    "at": "2026-10-19T18:52:49+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_facet_tower",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the water tower, wet, like this: He paints from a notebook, a pencil sketch of a town he has never been to. One road down to the water. A cannery. A water tower. The water tower goes in first, four legs and a tank and a pointed hat. The paint is still wet. Additional direction: Faust's canvas on an easel on his apartment balcony by day, the paint still wet. Painted from a pencil sketch in an open notebook of a town he has never seen: one road running down to the water, a cannery, and a water tower, four legs, a tank and a pointed hat, put in first and standing over everything. The wet colour glistens; a joint smoulders near the palette.\nA single full-screen still for a literary visual novel set in small-town America: the water tower, wet. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_facet_tower/vol4_meld_facet_tower_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:52:58+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_facet_tower",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_facet_tower/front.png",
+    "output": "godot/assets/cg/vol4_meld_facet_tower.jpg"
+  },
+  {
+    "at": "2026-10-19T18:53:15+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_facet_suite_coffee",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes coffee, the deck, the monitors, like this: Four in the morning in the editing suite. Four chairs. Coffee rings on everything. She pours anyway, into a cup that's already full, and it goes over and runs along the cables. On the monitors, a bakery window. Additional direction: Four in the morning in Aud's editing suite. Aud, sleeves rolled, glasses on a chain, pours from a coffee pot into a cup that is already full; the coffee spills over the rim and runs along the cables across the editing deck. Coffee rings on every surface, four chairs, and above it the monitors glowing: a bakery window where a baker lifts a loaf off a tray, and minivan doors sliding on a street.\nA single full-screen still for a literary visual novel set in small-town America: coffee, the deck, the monitors. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_facet_suite_coffee/vol4_meld_facet_suite_coffee_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:53:25+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_facet_suite_coffee",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_facet_suite_coffee/front.png",
+    "output": "godot/assets/cg/vol4_meld_facet_suite_coffee.jpg"
+  },
+  {
+    "at": "2026-10-19T18:53:42+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_facet_xerox_pulp",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes halftone, second generation, like this: The sky was falling and it came down in pieces. Grainier now. Jack Perkins crouched under a fallen street sign, thick cables held at odd angles. In the copy the cables look like the rules on a zine page, and the street sign could be a masthead. On the copy they're just more dots. Additional direction: A photocopy of a photocopy of the first page of a pulp story, warm off the copier: a second-generation halftone gone grainy. In the illustration Jack Perkins crouches under a fallen street sign amid thick cables hung at odd angles, and in the copy the cables read like the rules of a zine layout, the sign like a masthead. Machines drift overhead, their tiny lights degraded into more dots.\nA single full-screen still for a literary visual novel set in small-town America: halftone, second generation. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: The sky was falling and it came down in pieces.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_facet_xerox_pulp/vol4_meld_facet_xerox_pulp_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:53:51+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_facet_xerox_pulp",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_facet_xerox_pulp/front.png",
+    "output": "godot/assets/cg/vol4_meld_facet_xerox_pulp.jpg"
+  },
+  {
+    "at": "2026-10-19T18:54:07+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_facet_porthole",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the lamp, the porthole, like this: Rivets around the rim. Thick glass. Through the glass, a room on a top floor. It is large for what it is, looks real nice and new and clean. The glass fogs with his breath. Additional direction: The round brass desk lamp become a porthole: rivets around the rim, thick glass, seen from inside a sealed time pod. Through the glass, a room on a hospital's top floor, large for what it is, new and clean, a television hung at an odd angle playing ducks on a pond. A man's hand rests flat on the inside of the glass, his breath fogging it at the edges.\nA single full-screen still for a literary visual novel set in small-town America: the lamp, the porthole. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_facet_porthole/vol4_meld_facet_porthole_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:54:20+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_facet_porthole",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_facet_porthole/front.png",
+    "output": "godot/assets/cg/vol4_meld_facet_porthole.jpg"
+  },
+  {
+    "at": "2026-10-19T18:54:37+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_facet_derby_zero",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes number 0 like this: Crab derby off the pier. Numbers painted on the shells, a chalk line across the boards, everybody leaning over it. The winner comes over the chalk sideways, slow. Its number is zero. Additional direction: A crab derby on the Small Wood pier in August. Crabs with numbers painted on their shells scuttle across the weathered boards toward a chalk line while a crowd leans over it, laughing. The winner comes over the chalk sideways and slow, and the number painted on its shell is 0. Low angle at crab level, the onlookers looming above against the sky.\nA single full-screen still for a literary visual novel set in small-town America: number 0. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: 0. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_facet_derby_zero/vol4_meld_facet_derby_zero_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:54:49+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_facet_derby_zero",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_facet_derby_zero/front.png",
+    "output": "godot/assets/cg/vol4_meld_facet_derby_zero.jpg"
+  },
+  {
+    "at": "2026-10-19T18:55:03+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_one_image",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes low tide, four in the morning, like this: Low tide. The flats all the way out, shining. Out on the flats, a desk, its legs down in the wet sand. A notebook, wide-ruled, open, a heron feather keeping the place. Additional direction: Four in the morning at low tide, the flats running all the way out and shining. Out on the wet sand stands a desk, its legs sunk in. On it a lamp, still on, a cup of coffee full to the rim, and a wide-ruled notebook lying open with a heron feather keeping the place. The chair is pushed back as if someone just got up. Dark all around; wind off the water.\nA single full-screen still for a literary visual novel set in small-town America: low tide, four in the morning. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_one_image/vol4_meld_one_image_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:55:17+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_one_image",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_one_image/front.png",
+    "output": "godot/assets/cg/vol4_meld_one_image.jpg"
+  },
+  {
+    "at": "2026-10-19T18:55:31+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_copier_pink_bar",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the scan bar, pink, like this: four in the morning at the copy shop. the light goes back and forth under the lid, a dirty pink, and the pages come out warm. issue six. i keep pulling pages off the tray and reading them like somebody else wrote them. Additional direction: A copy shop at four in the morning. Under the photocopier's lid the scanning light goes back and forth, a dirty pink bar leaking out at the seams into the dim shop, while warm pages of the zine's sixth issue stack up in the output tray, waiting to be pulled off and read like somebody else wrote them.\nA single full-screen still for a literary visual novel set in small-town America: the scan bar, pink. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_copier_pink_bar/vol4_meld_copier_pink_bar_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:55:41+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_copier_pink_bar",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_copier_pink_bar/front.png",
+    "output": "godot/assets/cg/vol4_meld_copier_pink_bar.jpg"
+  },
+  {
+    "at": "2026-10-19T18:55:56+00:00",
+    "stage": "image",
+    "slug": "vol4_meld_drawer_relics",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a newspaper, a novel, a toy soldier, like this: home. the desk drawer sticks, then gives. in there, for no good reason, a newspaper, a novel, and a toy soldier. letters to myself, my unborn family. Additional direction: A sticking desk drawer pulled open at night under lamplight. Inside, for no good reason: a folded newspaper, a paperback novel and a small toy soldier, lying among bundled letters the writer has addressed to himself and to his unborn family. Close, intimate, the drawer's wooden edges framing the things like a reliquary.\nA single full-screen still for a literary visual novel set in small-town America: a newspaper, a novel, a toy soldier. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_meld_drawer_relics/vol4_meld_drawer_relics_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:56:06+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_meld_drawer_relics",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_meld_drawer_relics/front.png",
+    "output": "godot/assets/cg/vol4_meld_drawer_relics.jpg"
+  },
+  {
+    "at": "2026-10-19T18:56:22+00:00",
+    "stage": "image",
+    "slug": "vol4_board_string",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes DICKENS DEAN. like this: He ties it off on the zine page first, since it's farthest out. At the left edge it ends on an index card in his own block capitals, notes for the next thing. Under it, smaller: glass tower on the pacific. wants children. Additional direction: A corkboard over a desk after midnight, lit by the desk lamp. A red string, tied off on a photocopied zine page at the far right, runs left and down to a newspaper headline, left again to a printed blog post, and ends at the left edge, pulled tight, on an index card in hand-printed block capitals: DICKENS DEAN. Under it, smaller handwriting. The ball of red string lies on the desk.\nA single full-screen still for a literary visual novel set in small-town America: DICKENS DEAN.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: DICKENS DEAN. / glass tower on the pacific. wants children.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_board_string/vol4_board_string_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:56:32+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_board_string",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_board_string/front.png",
+    "output": "godot/assets/cg/vol4_board_string.jpg"
+  },
+  {
+    "at": "2026-10-19T18:56:49+00:00",
+    "stage": "image",
+    "slug": "vol4_route_card",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes RUTA 77 like this: A cardboard sign off a windshield. RUTA 77 in house paint. Chaca\u00edto. Sabana Grande. Plaza Venezuela. Petare. The bottom stop painted over so many times the cardboard has a crust. He runs it down off the board and down the wall to a strip of old cork under the light switch, where a few things have been pinned so long the pins have rusted. Additional direction: A cardboard route sign off a jitney's windshield, held up under a desk lamp before it is pinned: RUTA 77 brushed in house paint, the stops listed below. The bottom stop has been painted over so many times the cardboard has a crust. Behind it, a strip of old cork under a light switch: a tea-coloured Caracas crime-page clipping, a parade photo shot off a television, a flattened lollipop wrapper, all on rusted pins.\nA single full-screen still for a literary visual novel set in small-town America: RUTA 77. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: RUTA 77 / Chaca\u00edto / Sabana Grande / Plaza Venezuela / Petare. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_route_card/vol4_route_card_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:57:15+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_route_card",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_route_card/front.png",
+    "output": "godot/assets/cg/vol4_route_card.jpg"
+  },
+  {
+    "at": "2026-10-19T18:57:36+00:00",
+    "stage": "image",
+    "slug": "vol4_various_locales",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes various locales (montage) like this: We all just want her out of our heads. We can't get her out. She sits at the top of our thoughts, sometimes a casual obsession, more often, a horrible beautiful daydream. Additional direction: A title-sequence montage of overlapping panes, interior and exterior, day and night: a bus station overhang, a bus window throwing the city across glass, a night club of peculiar light and form, an after party, a sister's house, a big-box parking lot. In pane after pane one young woman recurs at a distance, never quite in focus, the way she sits at the top of everyone's thoughts.\nA single full-screen still for a literary visual novel set in small-town America: various locales (montage). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_various_locales/vol4_various_locales_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:58:02+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_various_locales",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_various_locales/front.png",
+    "output": "godot/assets/backgrounds/vol4_various_locales.jpg"
+  },
+  {
+    "at": "2026-10-19T18:58:21+00:00",
+    "stage": "image",
+    "slug": "vol4_cc_glitter_mask",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes All Smiles like this: A cut-out of Carrie's head is worn like a mask over ALL SMILES' face. Glitter is stuck to it in fact. Color pools and breaks over the floor like something spilled. Additional direction: In an abstract nightclub of peculiar light and form, a dancing girl called All Smiles has just kissed Charlie, and he pulls back to look: over her face she wears a flat paper cut-out of Carrie's head like a mask, glitter stuck to it, Carrie's eyes looking out. Flat 2D against the solid 3D of the club; colour pooling and breaking over the floor; bodies blurring all around.\nA single full-screen still for a literary visual novel set in small-town America: All Smiles. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_cc_glitter_mask/vol4_cc_glitter_mask_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:58:32+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_cc_glitter_mask",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_cc_glitter_mask/front.png",
+    "output": "godot/assets/cg/vol4_cc_glitter_mask.jpg"
+  },
+  {
+    "at": "2026-10-19T18:58:46+00:00",
+    "stage": "image",
+    "slug": "vol4_cc_hair_storm",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Time passes. like this: Time passes. He's fallen asleep. His hair wildly fluctuates, though he stays still. It's like a force of nature is messing up his hair despite him staying stationary. The blanket rises and falls. The room holds very still. Additional direction: Charlie's apartment, deep night. Carrie sleeps on the couch under the blanket he put on her. Across from her, Charlie has fallen asleep sitting up in a chair, perfectly still, but his hair is whipped wild as if by a gale that touches nothing else in the room. The blanket rises and falls; the room otherwise holds very still.\nA single full-screen still for a literary visual novel set in small-town America: Time passes.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_cc_hair_storm/vol4_cc_hair_storm_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:58:58+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_cc_hair_storm",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_cc_hair_storm/front.png",
+    "output": "godot/assets/cg/vol4_cc_hair_storm.jpg"
+  },
+  {
+    "at": "2026-10-19T18:59:19+00:00",
+    "stage": "image",
+    "slug": "vol4_sister_carrie_notes",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes sister carrie notes (an insert) like this: first chapter, subtitled, a waif amid forces. Working with framing, incidental detail, and visual evocation, ie lighting, staging, blocking. Additional direction: An insert: a filmmaker's working notes for an adaptation of Sister Carrie, laid flat. Typed passages copied out of the novel's first chapter, with handwritten margin notes about framing, lighting, staging and blocking, underlines and arrows. One chapter subtitle is legible; the rest of the dense text stays soft and unreadable.\nA single full-screen still for a literary visual novel set in small-town America: sister carrie notes (an insert). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: a waif amid forces. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_sister_carrie_notes/vol4_sister_carrie_notes_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:59:30+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_sister_carrie_notes",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_sister_carrie_notes/front.png",
+    "output": "godot/assets/backgrounds/vol4_sister_carrie_notes.jpg"
+  },
+  {
+    "at": "2026-10-19T18:59:45+00:00",
+    "stage": "image",
+    "slug": "vol4_esther_neighborhood",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Esther's simulated neighbourhood like this: They created her world around her, straining up against her young intelligence. Esther liked to ride her bike and explore the urban neighborhood in which she resided. Streetlight catches in them and will not settle on a color. Additional direction: The simulated urban neighbourhood where Esther grew up: a street of houses and storefronts under streetlights, too neat, every detail lovely and a little too perfect, background people going about their business with an odd evenness. A young woman's bicycle at the kerb. It is a world built around one person, straining at its edges against her intelligence.\nA single full-screen still for a literary visual novel set in small-town America: Esther's simulated neighbourhood. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_esther_neighborhood/vol4_esther_neighborhood_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:59:53+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_esther_neighborhood",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_esther_neighborhood/front.png",
+    "output": "godot/assets/backgrounds/vol4_esther_neighborhood.jpg"
+  },
+  {
+    "at": "2026-10-19T19:00:09+00:00",
+    "stage": "image",
+    "slug": "vol4_aria_childhood",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes aria childhood like this: She likes being small and finding odd corners to hide away in. She enjoys car rides and rainy days and getting her hair cut. Her mom is happy but a bit distant and forces Aria to go to dancing lessons and take piano. Everyone in her world seems to be looking at her like she's an angel. Additional direction: A girl's childhood at the seat of power, seen from her own small height: an odd corner of a large, comfortable house where she can hide away, rain on the windows, a piano she is made to practise and dance shoes she has no interest in yet, and grown-ups glimpsed in the doorway looking at her as if she were an angel. Lovely, provided for, and quietly watched.\nA single full-screen still for a literary visual novel set in small-town America: aria childhood. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_aria_childhood/vol4_aria_childhood_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:00:18+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_aria_childhood",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_aria_childhood/front.png",
+    "output": "godot/assets/backgrounds/vol4_aria_childhood.jpg"
+  },
+  {
+    "at": "2026-10-19T19:00:35+00:00",
+    "stage": "image",
+    "slug": "vol4_komodo_dawn_slate",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Komodo Dawn \u00b7 L.A. Steve & Oneironautics like this: Elevator pitch: a midnight-movie fever dream of a cable Original film. The year is 1982. The oil is offshore. The name of the film is Komodo Dawn. The leezards are the stars of this picture. Additional direction: Lifted out of an open desk drawer, a film slate for a midnight-movie screenplay that was never shot: a clapperboard with its striped clapper raised, the face lettered KOMODO DAWN and, smaller, L.A. Steve & Oneironautics. Under it in the drawer, the typed pitch pages, curling at the corners. Scuffed and real under lamplight, a cable-movie fever dream about komodo dragons and an offshore oil rig, held in two hands' worth of wood and paint.\nA single full-screen still for a literary visual novel set in small-town America: Komodo Dawn \u00b7 L.A. Steve & Oneironautics. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: KOMODO DAWN / L.A. Steve & Oneironautics. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_komodo_dawn_slate/vol4_komodo_dawn_slate_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:00:46+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_komodo_dawn_slate",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_komodo_dawn_slate/front.png",
+    "output": "godot/assets/cg/vol4_komodo_dawn_slate.jpg"
+  },
+  {
+    "at": "2026-10-19T19:01:21+00:00",
+    "stage": "image",
+    "slug": "vol4_komodo_dawn_slate",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Komodo Dawn \u00b7 L.A. Steve & Oneironautics like this: Elevator pitch: a midnight-movie fever dream of a cable Original film. The year is 1982. The oil is offshore. The name of the film is Komodo Dawn. The leezards are the stars of this picture. Additional direction: Lifted out of an open desk drawer, a poster for a midnight-movie screenplay that was never shot:  KOMODO DAWN and, smaller, L.A. Steve & Oneironautics. Under it in the drawer, the typed pitch pages, curling at the corners. Scuffed and real under lamplight, a cable-movie fever dream about komodo dragons and an offshore oil rig, held in two hands' worth of wood and paint.\nA single full-screen still for a literary visual novel set in small-town America: Komodo Dawn \u00b7 L.A. Steve & Oneironautics. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: KOMODO DAWN / L.A. Steve & Oneironautics. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_komodo_dawn_slate/vol4_komodo_dawn_slate_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:01:30+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_komodo_dawn_slate",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_komodo_dawn_slate/front.png",
+    "output": "godot/assets/cg/vol4_komodo_dawn_slate.jpg"
+  },
+  {
+    "at": "2026-10-19T19:01:45+00:00",
+    "stage": "image",
+    "slug": "vol4_oneironautics_prospectus",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Oneironautics is dedicated to the art\u2026 like this: ONEIRONAUTICS INC. \u00b7 SMALL WOOD, OREGON Oneironautics is dedicated to the exploration of innovation and art in video games. Additional direction: A company prospectus from 2010, a printed page taken out of a desk drawer: the letterhead ONEIRONAUTICS INC., SMALL WOOD, OREGON, over an earnest mission statement about art in video games and paragraphs pitching the games to come. Clean, small-studio, hopeful; the body text soft, the letterhead crisp.\nA single full-screen still for a literary visual novel set in small-town America: Oneironautics is dedicated to the art\u2026. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: ONEIRONAUTICS INC. / SMALL WOOD, OREGON. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_oneironautics_prospectus/vol4_oneironautics_prospectus_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:01:53+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_oneironautics_prospectus",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_oneironautics_prospectus/front.png",
+    "output": "godot/assets/cg/vol4_oneironautics_prospectus.jpg"
+  },
+  {
+    "at": "2026-10-19T19:02:09+00:00",
+    "stage": "image",
+    "slug": "vol4_monitor_wall",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes monitor wall like this: There are people who look at me, look into me, like you do. Are they test subjects, because they all have numbers, moreso numbers than they have names. I cannot pry into their minds but I can see into their present and that only sometimes allows peaks into the past and the future. Additional direction: A machine's way of seeing: a wall of screens, each holding one person in their present moment, tagged with numbers more readily than names. Faces look in, as if looking into the viewer; some call out, wanting something. Between the screens run streams of images and associations, flickers of a past and a future that make no pattern. Cold light, endless watching, nothing that can answer back.\nA single full-screen still for a literary visual novel set in small-town America: monitor wall. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_monitor_wall/vol4_monitor_wall_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:02:17+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_monitor_wall",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_monitor_wall/front.png",
+    "output": "godot/assets/backgrounds/vol4_monitor_wall.jpg"
+  },
+  {
+    "at": "2026-10-19T19:02:30+00:00",
+    "stage": "image",
+    "slug": "vol4_cold_water",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes cold water like this: It could be cold waters, it could be the greatest thing ever. But you gotta take that first step. So seldom do we ever take that plunge. Additional direction: The edge before the plunge, seen from where you stand: a drop to deep, cold water, dark and still below, the surface taking a thin grey light. Nobody in it yet. Everything held in one breath, the first step not taken, what waits under the surface unreadable. It could be cold water. It could be the greatest thing ever.\nA single full-screen still for a literary visual novel set in small-town America: cold water. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_cold_water/vol4_cold_water_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:02:55+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_cold_water",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_cold_water/front.png",
+    "output": "godot/assets/backgrounds/vol4_cold_water.jpg"
+  },
+  {
+    "at": "2026-10-19T19:03:11+00:00",
+    "stage": "image",
+    "slug": "vol4_looking_forward_bath",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes looking forward bath like this: She had a list, a winecooler her parents wouldn't notice missing, three kinds of scented bubble bath, bath beads, and scented oils, a book about sex only not really because she found it in the school library, and her cellular phone which was flashing blue and pink, pulsing out near the antennae. She painted her nails, and played with her eyelashes. Additional direction: A teenage girl's bathroom on her one night a week, everything laid out: a bath running, three kinds of scented bubble bath, bath beads and oils on the rim, a stolen wine cooler, a library book, nail polish, and an early cellular phone flashing blue and pink near its antenna. Soft creamy pinks and a blue current of light; anticipation in the steam.\nA single full-screen still for a literary visual novel set in small-town America: looking forward bath. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_looking_forward_bath/vol4_looking_forward_bath_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:03:21+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_looking_forward_bath",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_looking_forward_bath/front.png",
+    "output": "godot/assets/backgrounds/vol4_looking_forward_bath.jpg"
+  },
+  {
+    "at": "2026-10-19T19:03:36+00:00",
+    "stage": "image",
+    "slug": "vol4_ourobouros_mirror",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes ourobouros mirror like this: Steven put gel in his dark hair and stared at himself in the mirror, remembered when he pissed himself, shit himself, when he'd wake up in the middle of the night rank with shit, wet with stick. He worked so hard to never get back to where he was. Additional direction: A plain bathroom mirror at home. A thirteen-year-old boy with dark hair stands at the sink working gel through it, a jar open on the counter, staring hard at his own reflection. A boy who used to be in gifted classes, getting better slowly, the face in the glass holding more than a face: everything he works so hard never to go back to.\nA single full-screen still for a literary visual novel set in small-town America: ourobouros mirror. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_ourobouros_mirror/vol4_ourobouros_mirror_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:03:45+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_ourobouros_mirror",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_ourobouros_mirror/front.png",
+    "output": "godot/assets/backgrounds/vol4_ourobouros_mirror.jpg"
+  },
+  {
+    "at": "2026-10-19T19:03:59+00:00",
+    "stage": "image",
+    "slug": "vol4_blue_sand_beach",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes blue sand beach (surreal) like this: There is a beach I visit where the waves crash thick white and the sand is blue. When the sun hits the horizon you've never seen anything like it. The kelp ropes around my ankles and black green crabs pump across the surface sideways. Additional direction: A secret beach of blue volcanic sand where thick white waves crash in, the sun touching the horizon in a sky like nothing else. Kelp ropes in the shallows, black-green crabs pumping sideways across the wet surface. Empty of people; the locals avoid it. Strange, saturated, a daydream of escape from an office desk.\nA single full-screen still for a literary visual novel set in small-town America: blue sand beach (surreal). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_blue_sand_beach/vol4_blue_sand_beach_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:04:08+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_blue_sand_beach",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_blue_sand_beach/front.png",
+    "output": "godot/assets/backgrounds/vol4_blue_sand_beach.jpg"
+  },
+  {
+    "at": "2026-10-19T19:04:23+00:00",
+    "stage": "image",
+    "slug": "vol4_letters",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes letters (an insert) like this: this life is a series of letters strung together one after another. Some go undelivered, others change lives and there are those that exist on their own as a story to learn from and grow by. A concentrated bit of the self, opened, ingested and considered. Additional direction: Letters strung together one after another across a table, a life's worth: handwritten pages in ink, one freshly opened and lying on top, envelopes torn, some sealed and never delivered, overlapping one another. Lamplight on the paper; the handwriting soft and unreadable, only the shape of ink on the page. A concentrated bit of the self, opened, ingested, considered.\nA single full-screen still for a literary visual novel set in small-town America: letters (an insert). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_letters/vol4_letters_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:04:32+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_letters",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_letters/front.png",
+    "output": "godot/assets/backgrounds/vol4_letters.jpg"
+  },
+  {
+    "at": "2026-10-19T19:04:47+00:00",
+    "stage": "image",
+    "slug": "vol4_crt_adventure",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes crt adventure (game screen) like this: Sixteen colors on a curved monitor, a verb list along the bottom of the screen. The presentation was that of a stage, with the fourth wall cut away. The overall tone will be aesthetically beautiful and frightening. Additional direction: A graphic-adventure game screen, painted rather than pixelled: a dream-state Small Wood shown as a stage with the fourth wall cut away, beautiful and frightening, rendered in a limited flat palette of sixteen colours on a curved monitor, with a list of verbs along the bottom of the screen. Collage of line art and painted shapes; a small player character on the stage.\nA single full-screen still for a literary visual novel set in small-town America: crt adventure (game screen). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_crt_adventure/vol4_crt_adventure_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:04:57+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_crt_adventure",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_crt_adventure/front.png",
+    "output": "godot/assets/backgrounds/vol4_crt_adventure.jpg"
+  },
+  {
+    "at": "2026-10-19T19:05:13+00:00",
+    "stage": "image",
+    "slug": "vol4_museum_case",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes museum case like this: A boy whose name is Adam comes to look upon me and read the inscription in front of the window. The museum guards sit in the wings, the attendants tell my history and the progress made to my surface restoration. I tower above them, ten feet above them. Additional direction: A museum exhibit: behind a window sits a hulking ten-foot machine-golem, metal bones and girders, translucent yellow skin, camera eyes, its surface part-restored. An inscription plaque stands in front of the glass. A small boy reads it while his father holds him back, tears in his eyes; guards sit in the wings. The machine sits very still.\nA single full-screen still for a literary visual novel set in small-town America: museum case. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_museum_case/vol4_museum_case_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:05:21+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_museum_case",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_museum_case/front.png",
+    "output": "godot/assets/backgrounds/vol4_museum_case.jpg"
+  },
+  {
+    "at": "2026-10-19T19:05:38+00:00",
+    "stage": "image",
+    "slug": "vol4_arcade_cabinet",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes arcade cabinet (an insert) like this: Eyes never quite averted From dim-lit glass holding it all in. Scores are tallied cities left flaming, Dames in passing, wasted initials. Drunken fingers fumble over drunken quarters Additional direction: A two-player sit-down arcade cabinet, a table with dim-lit glass, at last quarters. On the screen under the glass a missile-defence game: silos, cities left flaming, a high-score table of initials. Quarters stacked on the glass edge, a drink nearby, pinball tables blinking in the background, carnival noises. Painted, modern, not pixel-art cosplay.\nA single full-screen still for a literary visual novel set in small-town America: arcade cabinet (an insert). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_arcade_cabinet/vol4_arcade_cabinet_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:05:47+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_arcade_cabinet",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_arcade_cabinet/front.png",
+    "output": "godot/assets/backgrounds/vol4_arcade_cabinet.jpg"
+  },
+  {
+    "at": "2026-10-19T19:06:06+00:00",
+    "stage": "image",
+    "slug": "vol4_beach_daycare",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes four coloured variants: a painted series like this: The old woman running the place was prone to hot flashes and kept the air conditioning circulating frigid inside the crumbling Victorian beach home. An oscillating fan shook steadily overhead, papers tacked to the wall rustled. He saw the beach just outside, swimsuits jogging along, sitting down to bathe, venturing out into the cold calm. Additional direction: Inside a crumbling Victorian beach house used as a day care in southern California, morning. The nap room: waxed wood floor, sleeping mats, papers tacked to the wall, an oscillating fan overhead, Grandma Tulsa's rocking chair with a basket of cross-stitch, and big windows onto a sunny beach with bathers going into the cold calm. Air-conditioned chill against the heat outside. The first of a four-colour series.\nA single full-screen still for a literary visual novel set in small-town America: four coloured variants: a painted series. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_beach_daycare/vol4_beach_daycare_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:06:14+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_beach_daycare",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_beach_daycare/front.png",
+    "output": "godot/assets/backgrounds/vol4_beach_daycare.jpg"
+  },
+  {
+    "at": "2026-10-19T19:06:34+00:00",
+    "stage": "image",
+    "slug": "vol4_beach_daycare_red",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes beach daycare red like this: The light from the windows seemed to bleed out dead. A reddish hue settled into the shadows. A storm of sand blew in, orange and yellow, a dervish of grit and salt. The impression he left was a handprint of blood. Additional direction: The same day-care nap room, gone wrong. The window light has bled out dead and a reddish hue settles into the shadows; children sleep on their mats. The door stands open on blown sand, orange and yellow grit and salt across the floor, a gull's beak and claws dropped on the door mat. On the window, a handprint of blood.\nA single full-screen still for a literary visual novel set in small-town America: beach daycare red. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_beach_daycare_red/vol4_beach_daycare_red_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:06:43+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_beach_daycare_red",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_beach_daycare_red/front.png",
+    "output": "godot/assets/backgrounds/vol4_beach_daycare_red.jpg"
+  },
+  {
+    "at": "2026-10-19T19:07:01+00:00",
+    "stage": "image",
+    "slug": "vol4_beach_daycare_kitchen",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes beach daycare kitchen like this: Alex sat up next to the window looking out at Maine who had gone outside to guard his paints and brushes. Maine showed Tulsa how to paint over the windows. Yellow lines like paste squished down the picture window frames, soon the whole ocean view was obscured by the dirty off color. Additional direction: The beach house kitchen. At the window sits a plate of strawberry shortcake under air-light whipped cream that never seems to diminish. Through the glass, out on the porch, Maine in a baseball cap and coveralls shows Tulsa, white hair full and younger now, how to paint over the windows: yellow lines like paste squishing down the picture-window frames from the top until the ocean view is obscured by the dirty off colour.\nA single full-screen still for a literary visual novel set in small-town America: beach daycare kitchen. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_beach_daycare_kitchen/vol4_beach_daycare_kitchen_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:07:09+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_beach_daycare_kitchen",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_beach_daycare_kitchen/front.png",
+    "output": "godot/assets/backgrounds/vol4_beach_daycare_kitchen.jpg"
+  },
+  {
+    "at": "2026-10-19T19:07:25+00:00",
+    "stage": "image",
+    "slug": "vol4_beach_daycare_yellow",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes beach daycare yellow like this: A boy, skin and bone clear like a jellyfish, colorful tendrils for hair sat bobbing gently in Tulsa's chair. Light from the yellow windows pressed through him, cast a dazzle of color upon the floor and wall. Additional direction: The nap room with every window painted over yellow, light pressing through in a jaundiced glow; children still asleep on their mats. In the old woman's rocking chair sits a boy with clear jellyfish skin and colourful tendrils for hair, reading a picture book, light passing through him to cast a dazzle of colour on floor and wall. On the wall, a painting of a fisherman and his boy at the docks.\nA single full-screen still for a literary visual novel set in small-town America: beach daycare yellow. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_beach_daycare_yellow/vol4_beach_daycare_yellow_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:07:34+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_beach_daycare_yellow",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_beach_daycare_yellow/front.png",
+    "output": "godot/assets/backgrounds/vol4_beach_daycare_yellow.jpg"
+  },
+  {
+    "at": "2026-10-19T19:07:51+00:00",
+    "stage": "image",
+    "slug": "vol4_vacant_lot_dusk",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes video tests \u2014 the vacant lot and the stump like this: A young woman is accompanied by her imaginary friend, strolling through a vacant lot. The Imaginary Friend is a cloud of colorful images and strange particle effects. They stop near a stump, the young woman sits and takes a picture of her friend. The I.F. suddenly snaps into focus, a strange neon outline of a person. Additional direction: A video-test take: a vacant lot of weeds and bare ground with a lone tree stump. A young woman sits on the stump with a camera raised, photographing her imaginary friend, a drifting cloud of colourful images and strange particles that is just snapping into a neon outline of a person. Everyday ground, one impossible companion.\nA single full-screen still for a literary visual novel set in small-town America: video tests \u2014 the vacant lot and the stump. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_vacant_lot_dusk/vol4_vacant_lot_dusk_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:07:59+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_vacant_lot_dusk",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_vacant_lot_dusk/front.png",
+    "output": "godot/assets/backgrounds/vol4_vacant_lot_dusk.jpg"
+  },
+  {
+    "at": "2026-10-19T19:08:15+00:00",
+    "stage": "image",
+    "slug": "vol4_graffiti_alley",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes video tests \u2014 graffiti writing itself on the alley wall like this: The Young Woman is walking through an alleyway, graffiti being written on the walls all ghostly behind her. She follows the art as it sweeps past her, gets to one end of the wall, and then comes back, a different color painting on top of the rest. The paint keeps coming, color laid over color, until the wall is mostly black and still wet. Additional direction: An alleyway with a long wall where graffiti is writing itself, ghostly, sweeping from one end of the wall to the other and back, each pass a different colour laid over the last. A young woman stands turned toward it, taking it in. The paint is wet and layered toward black.\nA single full-screen still for a literary visual novel set in small-town America: video tests \u2014 graffiti writing itself on the alley wall. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_graffiti_alley/vol4_graffiti_alley_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:08:23+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_graffiti_alley",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_graffiti_alley/front.png",
+    "output": "godot/assets/backgrounds/vol4_graffiti_alley.jpg"
+  },
+  {
+    "at": "2026-10-19T19:08:39+00:00",
+    "stage": "image",
+    "slug": "vol4_ivy_wall_door",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes video tests \u2014 the ivy wall, the metal door, the star key, like this: The young woman is walking along a red-bricked wall covered in ivy. It reaches all around her, high into the sky. She pulls out a key and inserts it into a metal door. Additional direction: A red-brick wall smothered in ivy, rising very high into the sky and running on along a path, the leaves reaching all around. Set into the brick, a plain metal door, the only way through. A young woman walks along beneath it, small against the green, a key in her pocket.\nA single full-screen still for a literary visual novel set in small-town America: video tests \u2014 the ivy wall, the metal door, the star key. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_ivy_wall_door/vol4_ivy_wall_door_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T19:09:24+00:00",
+    "stage": "scene2d",
+    "slug": "vol4_ivy_wall_door",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol4_ivy_wall_door/front.png",
+    "output": "godot/assets/backgrounds/vol4_ivy_wall_door.jpg"
+  },
+  {
+    "at": "2026-10-19T19:10:25+00:00",
+    "stage": "image",
+    "slug": "star_key",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the star key like this: She pulls out a key and inserts it into a metal door. Additional direction: An old iron key with a five-pointed star for its bow, a long shaft, simple teeth; dark with age, the star's points rubbed bright.\nSingle-object concept render of the star key, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/star_key/star_key_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/star_key/star_key_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/star_key/star_key_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
