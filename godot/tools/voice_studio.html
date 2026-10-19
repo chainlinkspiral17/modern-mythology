@@ -173,12 +173,12 @@
           <option value="creative">Creative — most expressive, drifts most</option>
         </select>
       </label>
-      <label>Import voice_map.json
-        <input type="file" id="voiceMapFile" accept=".json,application/json">
-      </label>
-      <p id="voiceMapStatus" class="status">Load <code>godot/tools/voice_map.json</code> to share one cast with <code>elevenlabs_render.py</code> (voice_ids, aliases, walk-ons, per-volume narrators).</p>
+      <!-- (2026-10-19) the old "Import voice_map.json" picker sat beside the save
+           button and was picked instead of it; the cast loads by itself now -->
+      <input type="file" id="voiceMapFile" accept=".json,application/json" hidden>
+      <p id="voiceMapStatus" class="status" hidden></p>
       <p id="voiceSaveStatus" class="status">Voice IDs: checking where they are saved…</p>
-      <button id="saveFolderBtn" class="primary" style="display:none">SAVE FOLDER: choose modern-mythology/godot/tools (once)</button>
+      <button id="saveFolderBtn" class="primary" style="display:none">CHOOSE SAVE FOLDER</button>
       <label>Voice IDs (one per character)</label>
       <div class="voice-map-grid" id="voiceMap"></div>
       <details>
@@ -667,8 +667,8 @@ async function chooseSaveFolder() {
     const tools = await _findTools(picked);
     if (!tools) { setSaveStatus('That folder has no voice_map.json — choose modern-mythology/godot/tools.', 'bad'); return; }
     _toolsDir = tools;
-    await _idbPut('tools_dir', tools);
-    pushVoiceMap();
+    try { await _idbPut('tools_dir', tools); } catch (e) {}   // remembered for next time when the browser allows
+    pushVoiceMap(true);
   } catch (e) {
     if (e && e.name !== 'AbortError') setSaveStatus('Could not use that folder: ' + e.message, 'bad');
   }
@@ -722,6 +722,34 @@ async function _writeVoiceFiles(dir, ids) {
     'window.MM_VOICE_MAP = ' + JSON.stringify(m, null, 1) + ';\n');
   return { ids: all, skipped };
 }
+// While the studio cannot save, a banner across the top of the page carries
+// the one thing to do: a big CHOOSE SAVE FOLDER button.
+function _saveBanner(show) {
+  let b = document.getElementById('saveBanner');
+  if (!show) { if (b) b.remove(); return; }
+  if (!b) {
+    b = document.createElement('div');
+    b.id = 'saveBanner';
+    b.style.cssText = 'position:sticky;top:0;z-index:9999;display:flex;gap:14px;align-items:center;flex-wrap:wrap;' +
+      'padding:12px 16px;background:#5a1d1d;color:#ffe3e3;font:15px/1.4 system-ui,sans-serif;border-bottom:2px solid #c44';
+    const t = document.createElement('span');
+    t.id = 'saveBannerText';
+    const go = document.createElement('button');
+    go.textContent = 'CHOOSE SAVE FOLDER';
+    go.style.cssText = 'font:bold 15px system-ui,sans-serif;padding:8px 16px;cursor:pointer;background:#ffd36b;color:#2a1a00;border:0;border-radius:4px';
+    go.addEventListener('click', async () => { if (await _dirReady(true)) pushVoiceMap(false); else chooseSaveFolder(); });
+    b.appendChild(go);
+    b.appendChild(t);
+    document.body.prepend(b);
+  }
+  _idbGet('tools_dir').catch(() => null).then(known => {
+    const t = document.getElementById('saveBannerText');
+    if (t) t.textContent = known
+      ? 'Voice IDs are NOT being saved: click the button once to let the studio write to godot/tools again.'
+      : 'Voice IDs are NOT being saved yet: click the button and choose the folder modern-mythology/godot/tools. Once — after that every ID you type is saved.';
+  });
+}
+
 async function pushVoiceMap(fromGesture) {
   clearTimeout(_retryTimer);
   const ids = {};
@@ -742,15 +770,16 @@ async function pushVoiceMap(fromGesture) {
     j = null;
   }
   const btn = $('saveFolderBtn');
+  _saveBanner(!j && !SERVED);
   if (!j) {
     const known = !SERVED && (_toolsDir || await _idbGet('tools_dir').catch(() => null));
     if (btn) {
       btn.style.display = SERVED ? 'none' : '';
-      btn.textContent = known ? 'ALLOW SAVING (one click)' : 'SAVE FOLDER: choose modern-mythology/godot/tools (once)';
+      btn.textContent = known ? 'ALLOW SAVING (one click)' : 'CHOOSE SAVE FOLDER';
     }
     setSaveStatus(known
       ? 'NOT SAVED YET: click ALLOW SAVING once so the studio can write the voice map (Chrome asks again each visit unless you pick "Allow on every visit").'
-      : 'NOT SAVED YET: click SAVE FOLDER and choose modern-mythology/godot/tools — once. From then on every voice ID is saved to the voice map the moment you type it.',
+      : 'NOT SAVED YET: click CHOOSE SAVE FOLDER (top of the page) and pick the folder modern-mythology/godot/tools — once.',
       'bad');
     _retryTimer = setTimeout(() => pushVoiceMap(false), 8000);
     return;
