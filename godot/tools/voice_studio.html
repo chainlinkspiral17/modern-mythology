@@ -580,116 +580,120 @@ function buildVoiceMap() {
     inp.type = 'text';
     inp.placeholder = 'voice_id';
     inp.value = voiceMap[c] || '';
-    inp.addEventListener('input', () => { voiceMap[c] = inp.value.trim(); saveVoiceMap(); });
+    inp.addEventListener('input', () => { voiceMap[c] = inp.value.trim(); noteEdit(c); saveVoiceMap(); });
     wrap.appendChild(lbl);
     wrap.appendChild(inp);
   });
   loadVoiceMap();
 }
 
-// (2026-10-18) The voice IDs are saved in the REPO, not only in this
-// browser: localStorage belongs to one address and port, and when Hero
-// Studio moved from :8765 to :8877 the page opened empty. Served by Hero
-// Studio (http://127.0.0.1:8877/voice_studio.html) every change is written
-// to godot/tools/voice_map.json + voice_ids_backup.json at once (and
-// Hero Studio's SAVE pushes them); opened as a bare file it cannot save
-// to disk, and says so.
+// THE VOICE IDS LIVE IN THE REPO (2026-10-18; rebuilt 2026-10-19 — the user:
+// "I've added dozens of voices. There really needs to be a better way of
+// doing this. I've asked you for this"). The studio is opened as a FILE from
+// the tools home page, and a file page cannot write to disk: until now every
+// ID typed there stayed in this browser, and a reload even put the repo's old
+// ID back over one the user had changed. Now, served or opened as a file:
+//   * every change is sent to Hero Studio (http://127.0.0.1:8877), which
+//     writes godot/tools/voice_map.json + voice_ids_backup.json at once;
+//     Hero Studio's SAVE pushes them;
+//   * Hero Studio not running → the status says so in red, the IDs stay in
+//     this browser, and the studio keeps trying until it is up;
+//   * an ID typed here is an EDIT (timestamped in mm_voice_edits) and wins
+//     over the repo's copy until the repo confirms it; an ID only this
+//     browser holds goes to the repo on open.
 const SERVED = location.protocol === 'http:' || location.protocol === 'https:';
+const SAVE_URL = SERVED ? '/api/voice_map' : 'http://127.0.0.1:8877/api/voice_map';
 let _serverSaveTimer = null;
+let _retryTimer = null;
 function setSaveStatus(msg, cls) {
   const el = $('voiceSaveStatus');
   if (el) { el.textContent = msg; el.className = 'status ' + (cls || ''); }
 }
+function _edits() { try { return JSON.parse(localStorage.getItem('mm_voice_edits') || '{}'); } catch (e) { return {}; } }
+function _setEdits(e) { try { localStorage.setItem('mm_voice_edits', JSON.stringify(e)); } catch (x) {} }
+function noteEdit(k) { const e = _edits(); e[k] = Date.now(); _setEdits(e); }
 function saveVoiceMap() {
   try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
-  if (!SERVED) return;
   clearTimeout(_serverSaveTimer);
-  _serverSaveTimer = setTimeout(async () => {
-    const ids = {};
-    Object.entries(voiceMap).forEach(([k, v]) => { if (v && v.trim()) ids[k] = v.trim(); });
-    try {
-      const r = await fetch('/api/voice_map', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-                                                body: JSON.stringify({ ids, source: 'voice studio' }) });
-      const j = await r.json();
-      if (!r.ok || j.error) throw new Error(j.error || r.status);
-      setSaveStatus(`Voice IDs saved to godot/tools/voice_map.json (${Object.keys(j.ids || {}).length} cast). ` +
-                    `Press SAVE in Hero Studio to push them.`, 'good');
-    } catch (err) {
-      setSaveStatus('Voice IDs NOT saved to the repo: ' + err.message + ' — is Hero Studio running?', 'bad');
+  _serverSaveTimer = setTimeout(pushVoiceMap, 600);
+}
+async function pushVoiceMap() {
+  clearTimeout(_retryTimer);
+  const ids = {};
+  Object.entries(voiceMap).forEach(([k, v]) => { if (v && String(v).trim()) ids[k] = String(v).trim(); });
+  try {
+    const r = await fetch(SAVE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({ ids, source: SERVED ? 'voice studio' : 'voice studio (opened as a file)' }) });
+    const j = await r.json();
+    if (!r.ok || j.error) throw new Error(j.error || ('HTTP ' + r.status));
+    const saved = j.ids || {};
+    const edits = _edits();
+    for (const k of Object.keys(edits)) {
+      if (saved[k] && saved[k] === String(voiceMap[k] || '').trim()) delete edits[k];   // the repo holds it now
     }
-  }, 600);
+    _setEdits(edits);
+    const bad = (j.skipped || []).length;
+    setSaveStatus(`Saved: ${Object.keys(saved).length} voice IDs in godot/tools/voice_map.json. ` +
+                  `Press SAVE in Hero Studio to push them to GitHub.` +
+                  (bad ? ` ${bad} box(es) hold something that is not a voice ID and were not saved: ${j.skipped.join(', ')}.` : ''),
+                  bad ? 'warn' : 'good');
+  } catch (err) {
+    setSaveStatus('NOT SAVED to the repo: Hero Studio is not running (start it: bash godot/tools/hero_studio.sh). ' +
+                  'Your voice IDs are kept in this browser and are saved the moment it is up — retrying every 8 s.', 'bad');
+    _retryTimer = setTimeout(pushVoiceMap, 8000);
+  }
 }
 async function loadVoiceMapFromRepo() {
-  if (!SERVED) {
-    // (2026-10-18) opened as a file (the tools home page): the repo's cast
-    // comes in through voice_map.js, which voice_ids.py writes on every save
-    const vm = window.MM_VOICE_MAP;
-    if (!vm || typeof vm.characters !== 'object') {
-      setSaveStatus('Opened as a file and voice_map.js is missing: pull the repo. ' +
-                    'IDs you type here live only in this browser.', 'bad');
-      return;
+  let repo = null, full = null;
+  if (SERVED) {
+    try {
+      const j = await (await fetch('/api/voice_map', { cache: 'no-store' })).json();
+      repo = j.ids || {};
+      full = j.map || null;
+    } catch (err) {
+      setSaveStatus('Could not read the repo\'s voice IDs: ' + err.message, 'bad');
     }
-    let n = 0;
-    Object.entries(vm.characters).forEach(([k, e]) => {
-      const id = ((e && e.voice_id) || '').trim();
-      if (id) { voiceMap[charKey(k)] = id; n++; }
+  } else {
+    // opened as a file: the repo's cast comes in through voice_map.js
+    // (voice_ids.py writes it on every save)
+    const vm = window.MM_VOICE_MAP;
+    if (vm && typeof vm.characters === 'object') {
+      repo = {};
+      Object.entries(vm.characters).forEach(([k, e]) => {
+        const id = ((e && e.voice_id) || '').trim();
+        if (id) repo[charKey(k)] = id;
+      });
+      full = vm;
+    } else {
+      setSaveStatus('voice_map.js is missing (pull the repo). Voice IDs typed here are still sent to Hero Studio.', 'warn');
+    }
+  }
+  const edits = _edits();
+  let browserOnly = 0, editsKept = 0;
+  if (repo) {
+    // the repo's copy, except where this browser holds an edit the repo has not confirmed
+    Object.entries(repo).forEach(([k, v]) => {
+      if (edits[k] && (voiceMap[k] || '').trim() && voiceMap[k].trim() !== v) editsKept++;
+      else voiceMap[k] = v;
     });
-    applyVoiceMeta(vm);
+    Object.entries(voiceMap).forEach(([k, v]) => { if (v && String(v).trim() && !repo[k]) browserOnly++; });
+  }
+  if (full && typeof full.characters === 'object') {
+    applyVoiceMeta(full);
     if (scene) reloadLines();
     buildVoiceMap();
-    document.querySelectorAll('#voiceMap input').forEach(inp => {
-      const c = inp.previousElementSibling.textContent;
-      if (voiceMap[c]) inp.value = voiceMap[c];
-    });
-    try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
-    setSaveStatus(`Cast loaded: ${n} voice IDs from the repo (voice_map.js). Opened as a file, so an ID you ` +
-                  `change here is kept only in this browser; to save changes to the repo, open the studio from ` +
-                  `Hero Studio (http://127.0.0.1:8877/voice_studio.html).`, 'good');
-    return;
   }
-  try {
-    const r = await fetch('/api/voice_map', { cache: 'no-store' });
-    const j = await r.json();
-    const saved = j.ids || {};
-    // (2026-10-18) the REPO wins: it holds the cast recovered from the
-    // ElevenLabs history and every ID set here since. A different ID this
-    // browser held is kept in a file (browser_rescue/) and listed below.
-    const superseded = {};
-    let fromBrowser = 0;
-    Object.entries(voiceMap).forEach(([k, v]) => {
-      v = (v || '').trim();
-      if (!v) return;
-      if (!saved[k]) fromBrowser++;
-      else if (saved[k] !== v) superseded[k] = { browser: v, repo: saved[k] };
-    });
-    Object.entries(saved).forEach(([k, v]) => { voiceMap[k] = v; });
-    if (j.map && typeof j.map.characters === 'object') {
-      applyVoiceMeta(j.map);
-      if (scene) reloadLines();
-      buildVoiceMap();
-    }
-    document.querySelectorAll('#voiceMap input').forEach(inp => {
-      const c = inp.previousElementSibling.textContent;
-      if (voiceMap[c]) inp.value = voiceMap[c];
-    });
-    const nSup = Object.keys(superseded).length;
-    setSaveStatus(`Cast loaded from godot/tools/voice_map.json: ${Object.keys(saved).length} voice IDs, ` +
-                  `${Object.keys(voiceMeta.aliases).length} aliases.` +
-                  (nSup ? ` ${nSup} ID(s) this browser held differ — the repo's are used; the browser's are kept in ` +
-                          `godot/tools/browser_rescue/voice_studio_superseded.json: ` +
-                          Object.entries(superseded).map(([k, o]) => `${k} ${o.browser}`).join(', ') : ''),
-                  nSup ? 'warn' : 'good');
-    if (fromBrowser || nSup) {
-      // anything only this browser had goes to the repo; superseded IDs to a file
-      const ids = {};
-      Object.entries(voiceMap).forEach(([k, v]) => { if (v && v.trim() && !saved[k]) ids[k] = v.trim(); });
-      await fetch('/api/voice_map', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({ ids, superseded, source: 'voice studio (browser-only IDs)' }) });
-    }
-    try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
-  } catch (err) {
-    setSaveStatus('Could not read the repo\'s voice IDs: ' + err.message, 'bad');
+  document.querySelectorAll('#voiceMap input').forEach(inp => {
+    const c = inp.previousElementSibling.textContent;
+    if (voiceMap[c]) inp.value = voiceMap[c];
+  });
+  try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
+  if (repo) {
+    setSaveStatus(`Cast loaded: ${Object.keys(repo).length} voice IDs from the repo` +
+                  (browserOnly || editsKept ? `; ${browserOnly + editsKept} from this browser are being saved to it…` : '.'),
+                  'good');
   }
+  if (browserOnly || editsKept || !repo) pushVoiceMap();
 }
 // The map's rules — aliases, walk-on groups, per-scene aliases and the cast
 // list (a cast character with no ID is an error, not a silent narrator

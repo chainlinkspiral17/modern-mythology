@@ -2999,7 +2999,32 @@ def make_handler(runner, roster_path):
             # The page is edited often; never let the browser serve a stale copy.
             self.send_header("Cache-Control", "no-store, must-revalidate")
             self.send_header("Pragma", "no-cache")
+            # (2026-10-19, the user: "I've added dozens of voices. There really
+            # needs to be a better way of doing this.") The tools are opened as
+            # FILES from the tools home page; a file page's origin is "null".
+            # It may save the user's work here — the voice IDs and the tools'
+            # state only, from this machine only.
+            if self._file_page_save_route():
+                self.send_header("Access-Control-Allow-Origin", "null")
+                self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+                self.send_header("Access-Control-Allow-Headers", "Content-Type")
+                self.send_header("Access-Control-Allow-Private-Network", "true")
             super().end_headers()
+
+        def _file_page_save_route(self):
+            path = urllib.parse.urlparse(self.path).path
+            return (path in ("/api/voice_map", "/api/tool_state")
+                    and self.headers.get("Origin") == "null"
+                    and self.client_address[0] in ("127.0.0.1", "::1"))
+
+        def do_OPTIONS(self):
+            if not self._file_page_save_route():
+                self.send_response(403)
+                self.end_headers()
+                return
+            self.send_response(204)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
 
         def log_message(self, fmt, *args):
             if self.path.startswith("/api/jobs") or self.path.startswith("/api/roster"):

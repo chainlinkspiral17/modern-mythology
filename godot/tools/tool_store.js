@@ -13,11 +13,12 @@
 //     localStorage before the tool reads it, when it is newer than the
 //     browser's own (or the browser has none);
 //   * every localStorage.setItem on those keys is timestamped and — when the
-//     page is served by Hero Studio — written to the repo's copy at once
+//     page is served or opened as a file — written to the repo's copy at once
 //     (POST /api/tool_state; Hero Studio's SAVE commits it);
 //   * opened as a bare file (file://) the repo's copy still loads (through
-//     tool_state/<key>.js, a script a file page may load), but nothing can
-//     be written to disk: a small notice says so.
+//     tool_state/<key>.js, a script a file page may load) and saves go to
+//     Hero Studio at 127.0.0.1:8877; when it is not running a red notice
+//     says so and the store keeps trying.
 // The browser's copy that a newer repo copy replaced is kept under
 // "<key>__replaced" so nothing is silently lost.
 (function () {
@@ -51,32 +52,42 @@
   // file page: apply after the state scripts above have run (served: below, now)
   if (!SERVED) document.write('<script>window.ToolStore && window.ToolStore._apply()<\/script>');
 
+  // (2026-10-19, the user: "There really needs to be a better way of doing
+  // this.") A page opened as a FILE saves too: it sends to Hero Studio at
+  // 127.0.0.1:8877, which accepts the tools' state from file pages. Hero
+  // Studio not running → a red notice, and it keeps trying until it is up.
+  const SAVE_URL = SERVED ? '/api/tool_state' : 'http://127.0.0.1:8877/api/tool_state';
   const pending = {};
   let timer = null;
   function push() {
     timer = null;
     const batch = Object.assign({}, pending);
-    for (const k in pending) delete pending[k];
     for (const k in batch) {
-      fetch('/api/tool_state', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-                                 body: JSON.stringify({ key: k, value: batch[k].value, saved_at: batch[k].saved_at }) })
-        .then(r => r.json()).then(j => { if (j && j.error) notice('NOT saved to the repo: ' + j.error, true); })
-        .catch(() => notice('NOT saved to the repo: is Hero Studio running?', true));
+      fetch(SAVE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ key: k, value: batch[k].value, saved_at: batch[k].saved_at }) })
+        .then(r => r.json()).then(j => {
+          if (j && j.error) { notice('NOT saved to the repo: ' + j.error, true); return; }
+          if (pending[k] && pending[k].saved_at === batch[k].saved_at) delete pending[k];
+          if (!Object.keys(pending).length) notice('Saved to the repo (godot/tools/tool_state/). Press SAVE in Hero Studio to push.', false, true);
+        })
+        .catch(() => {
+          notice('NOT SAVED to the repo: Hero Studio is not running (start it: bash godot/tools/hero_studio.sh). ' +
+                 'Your work is kept in this browser and saved the moment it is up — retrying.', true);
+          clearTimeout(timer); timer = setTimeout(push, 8000);
+        });
     }
   }
 
-  // 2. timestamp every write of our keys; served → write the repo's copy too
+  // 2. timestamp every write of our keys and write the repo's copy too
   Storage.prototype.setItem = function (k, v) {
     realSet.call(this, k, v);
     if (this !== localStorage || !keys.includes(k)) return;
     const m = meta(); m[k] = Date.now(); setMeta(m);
-    if (SERVED) {
-      pending[k] = { value: String(v), saved_at: m[k] };
-      clearTimeout(timer); timer = setTimeout(push, 500);
-    }
+    pending[k] = { value: String(v), saved_at: m[k] };
+    clearTimeout(timer); timer = setTimeout(push, 500);
   };
 
-  function notice(text, bad) {
+  function notice(text, bad, fade) {
     const show = () => {
       let el = document.getElementById('toolStoreNotice');
       if (!el) {
@@ -95,6 +106,8 @@
       el.style.background = bad ? '#5a1d1d' : '#2b2a22';
       el.style.color = bad ? '#ffd9d9' : '#e8e0c8';
       el.firstChild.textContent = text;
+      clearTimeout(el._fade);
+      if (fade) el._fade = setTimeout(() => el.remove(), 4000);
     };
     if (document.body) show(); else document.addEventListener('DOMContentLoaded', show);
   }
@@ -117,19 +130,15 @@
           m[k] = repo.saved_at;
         } else if (local !== null && (!repo || localAt === 0 || localAt > (repo.saved_at || 0))) {
           if (localAt === 0) { m[k] = Date.now(); }
-          if (SERVED) { pending[k] = { value: local, saved_at: localAt || Date.now() }; clearTimeout(timer); timer = setTimeout(push, 500); }
-          else unsaved.push(k);
+          pending[k] = { value: local, saved_at: localAt || Date.now() };
+          clearTimeout(timer); timer = setTimeout(push, 500);
+          unsaved.push(k);
         }
       }
       setMeta(m);
       let shut = false;
       try { shut = sessionStorage.getItem('toolStoreNoticeShut') === '1'; } catch (e) {}
-      if (!SERVED && !shut) {
-        notice('Opened as a file: changes here are kept in this browser only' +
-               (unsaved.length ? ' (not yet in the repo: ' + unsaved.join(', ') + ')' : '') +
-               '. To save them to the repo, open this page from Hero Studio: http://127.0.0.1:8877/' +
-               location.pathname.split('/').pop(), unsaved.length > 0);
-      }
+      if (unsaved.length && !shut) notice('Saving to the repo: ' + unsaved.join(', ') + ' …', false);
     },
   };
   if (SERVED) window.ToolStore._apply();

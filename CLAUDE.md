@@ -241,8 +241,15 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
   Hero Studio's server (its SAVE pushes it) — or to the Drive through
   `drive_guard`. localStorage may hold UI conveniences and a working copy,
   never the only copy.
-- A page opened as a bare file (file://) cannot save to disk: it must say so
-  on screen.
+- The tools are opened as FILES from the tools home page (2026-10-19, the
+  user: "I've added dozens of voices. There really needs to be a better way
+  of doing this. I've asked you for this"). A file page saves THROUGH Hero
+  Studio: it sends to http://127.0.0.1:8877 (`/api/voice_map`,
+  `/api/tool_state` accept origin "null" from this machine). When Hero
+  Studio is not running the page says NOT SAVED in red and keeps retrying.
+  An ID or value the user types wins over the repo's copy until the repo
+  confirms it (the voice studio's `mm_voice_edits`) — a reload must never
+  put an old value back over the user's edit.
 - Before changing a tool's address, port or storage key, carry the stored
   data across first.
 - The voice IDs: `godot/tools/voice_ids.py` (voice_map.json +
@@ -257,9 +264,9 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
   queue, Resolve actions, the FM-1 checkout, the planned-community studio,
   the Meshy queue) is mirrored to `godot/tools/tool_state/<key>.json` by
   `tool_store.js` (included FIRST in each page's <head> with its keys):
-  served by Hero Studio every save writes the file (SAVE commits it); the
-  repo's copy loads first, newer wins; opened as a file it still loads
-  (`tool_state/<key>.js`) and a notice says changes stay in the browser.
+  every save writes the file through Hero Studio, served or opened as a
+  file (SAVE commits it); the repo's copy loads first, newer wins (a file
+  page loads it through `tool_state/<key>.js`).
   A new tool that keeps user work adds its key to tool_store.js's page tag
   and to TOOL_STATE_KEYS in meshy_pipeline.py. (The DAW inbox is a
   transient hand-off, not stored work.)
