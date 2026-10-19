@@ -110,6 +110,11 @@
    "md5": "eb4a279a7dd2e1e0ce30bddb701d4f20",
    "size": 49146868
   },
+  "godot/assets/3d/characters/heroes/_full/the_director.glb": {
+   "at": "2026-10-19T17:11:40+00:00",
+   "md5": "312e5b2ce793e1f4b5249b991c1a8706",
+   "size": 47775628
+  },
   "godot/assets/3d/characters/heroes/_full/the_writer.glb": {
    "at": "2026-10-19T17:04:23+00:00",
    "md5": "f60bf1c3ff55022e5cb1e8db4caf00d6",
@@ -2564,6 +2569,11 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "f088f014e60a882757590d8ba42bbc15",
    "size": 66352
+  },
+  "godot/assets/3d/characters/heroes/the_director.glb": {
+   "at": "2026-10-19T17:11:30+00:00",
+   "md5": "0ea212ef95563d409ca8fb0d727f0509",
+   "size": 4756932
   },
   "godot/assets/3d/characters/heroes/the_frog.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -75685,6 +75695,16 @@
    "md5": "40878b9e03bef3f040b3a6c6313cdb30",
    "size": 1954165
   },
+  "godot/assets/concept/meshy/the_artist/front.png": {
+   "at": "2026-10-19T17:11:48+00:00",
+   "md5": "83c6d8210733da2efada3c5efc42512b",
+   "size": 2114585
+  },
+  "godot/assets/concept/meshy/the_artist/the_artist_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:11:48+00:00",
+   "md5": "83c6d8210733da2efada3c5efc42512b",
+   "size": 2114585
+  },
   "godot/assets/concept/meshy/the_birdwatcher/back.png": {
    "at": "2026-10-18T17:28:51+00:00",
    "md5": "573561078fbf4abcd107b9c5812e2d59",
@@ -75739,6 +75759,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "136d82db2cdf14bbea290bfd45e1909f",
    "size": 101627
+  },
+  "godot/assets/concept/meshy/the_director/back.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "14c02e8677f81c853ed8f4d4835101a7",
+   "size": 1946137
+  },
+  "godot/assets/concept/meshy/the_director/front.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "5d389f2233577c56e19f3ee1e83be7bb",
+   "size": 1981932
+  },
+  "godot/assets/concept/meshy/the_director/meshy_thumb.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "ffe25b3542203a876b106932f63eb337",
+   "size": 82803
+  },
+  "godot/assets/concept/meshy/the_director/side.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "e65682c3dbadb6fe9cff99a73f3b63fb",
+   "size": 1918907
+  },
+  "godot/assets/concept/meshy/the_director/the_director_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "14c02e8677f81c853ed8f4d4835101a7",
+   "size": 1946137
+  },
+  "godot/assets/concept/meshy/the_director/the_director_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "5d389f2233577c56e19f3ee1e83be7bb",
+   "size": 1981932
+  },
+  "godot/assets/concept/meshy/the_director/the_director_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:11:58+00:00",
+   "md5": "e65682c3dbadb6fe9cff99a73f3b63fb",
+   "size": 1918907
   },
   "godot/assets/concept/meshy/the_drifter/front.png": {
    "at": "2026-10-01T01:23:48+00:00",

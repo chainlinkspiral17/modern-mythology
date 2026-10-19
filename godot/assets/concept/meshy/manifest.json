@@ -22328,5 +22328,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/the_director.glb",
     "file_size_kb": 46655.9
+  },
+  {
+    "at": "2026-10-19T17:11:55+00:00",
+    "stage": "image",
+    "slug": "the_artist",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Artist like this: THE ARTIST is at the window, looking out at nothing in particular. (comfortable, paint under the nails) Things taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE ARTIST: comfortable, dreamy, a little obsessive, gazing off at nothing in particular. A paint-flecked denim work shirt open over a white undershirt, old canvas work trousers, house slippers, paint under the fingernails. A game controller held loosely in one hand.\nFull-body concept render of The Artist, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_artist/the_artist_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_artist/the_artist_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_artist/the_artist_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
