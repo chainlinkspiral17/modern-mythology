@@ -119,10 +119,23 @@ const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
 # top 42 %: the eyes at ~0.20 of the frame and the frame wide enough that
 # the chin (≈ 12 cm under the eyes) clears the band — cu chin at ~0.41,
 # ecu at the band's edge with the mouth clear (brow to mouth: Leone).
+#
+# EYE LINES (2026-10-19, the user, Deck screenshots of John and the
+# Stranger: "still bad eyelines all near the top of the screen"). The
+# talking-distance sizes were still placed as fractions of the figure's
+# height: the eyes landed 13-22 % down the screen with ~4 cm over the
+# crown, and the active speaker's 1.05 scale (about the slot's centre)
+# and the top bar took the crown off the screen. EVERY size is now
+# eye-anchored. eye_at is a fraction of the 900 px slot; the window shows
+# its top 720 px, so screen = eye_at / 0.8: the torso-up sizes put the
+# eyes ~30 % down the screen (near the upper third, the crown well clear
+# of the top), the close sizes keep their faces over the dialogue band.
 const FACE_FRAMES := {
-	"mcu": {"h": 0.80, "eye_at": 0.20, "cap": 0.14},   # chest-up; the face high, the chest under the box
-	"cu":  {"h": 0.56, "eye_at": 0.22, "cap": 0.03},   # the head fills the clean frame
-	"ecu": {"h": 0.36, "eye_at": 0.20, "cap": 0.0},    # brow to mouth; the crown and chin leave
+	"wide":   {"h": 1.22, "eye_at": 0.24, "cap": 0.30},   # torso-up: talking distance; eyes ~30 % down the screen
+	"medium": {"h": 0.90, "eye_at": 0.24, "cap": 0.25},   # waist-up; eyes ~30 %
+	"mcu": {"h": 0.80, "eye_at": 0.225, "cap": 0.14},     # chest-up; eyes ~28 %, the chest under the box
+	"cu":  {"h": 0.56, "eye_at": 0.22, "cap": 0.03},      # the head fills the clean frame
+	"ecu": {"h": 0.36, "eye_at": 0.20, "cap": 0.0},       # brow to mouth; the crown and chin leave
 }
 const EYES_OVER_NECK: float = 0.10     # the sheet-43 median, for a model not in the table
 # Where the eye line sat in each hero's sheet-43 ecu frame (fraction
@@ -146,7 +159,7 @@ const SHEET43_ECU_EYE := {
 	"skip_donnelly": 0.48, "tanya_horne": 0.22, "the_frog": 0.50, "thomas_henderson": 0.65,
 	"vince_kane": 0.73, "wagner": 0.58,
 }
-const AIM := {"mcu": 0.6, "cu": 1.0, "ecu": 1.0}
+const AIM := {"wide": 0.4, "medium": 0.5, "mcu": 0.6, "cu": 1.0, "ecu": 1.0}
 var _neck_y: float = -1.0                    # measured; < 0 = not found, fall back to fractions
 var _head_xz: Vector2 = Vector2.ZERO         # the head's centre off the figure's axis (x, z)
 var _eyes_measured: float = -1.0             # from the texture (_measure_eyes); < 0 = not read
