@@ -110,6 +110,16 @@
    "md5": "eb4a279a7dd2e1e0ce30bddb701d4f20",
    "size": 49146868
   },
+  "godot/assets/3d/characters/heroes/_full/the_writer.glb": {
+   "at": "2026-10-19T17:04:23+00:00",
+   "md5": "f60bf1c3ff55022e5cb1e8db4caf00d6",
+   "size": 55571044
+  },
+  "godot/assets/3d/characters/heroes/_full/tom_bell.glb": {
+   "at": "2026-10-19T17:04:23+00:00",
+   "md5": "d3c5a9a52f2f38cc2d669979db6a6a6c",
+   "size": 48973280
+  },
   "godot/assets/3d/characters/heroes/_full/tucker.glb": {
    "at": "2026-10-19T14:52:39+00:00",
    "md5": "1b4f4e8192098a12154a072169296412",
@@ -549,6 +559,26 @@
    "at": "2026-10-19T16:55:31+00:00",
    "md5": "b77ed1ac781610101f46cd83ccad9bfa",
    "size": 5102788
+  },
+  "godot/assets/3d/characters/heroes/carlos_Image_0.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "512905384bc0711307926556f03d4970",
+   "size": 469915
+  },
+  "godot/assets/3d/characters/heroes/carlos_Image_1.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "de521cae18339ed45b23dc82834320c4",
+   "size": 70106
+  },
+  "godot/assets/3d/characters/heroes/carlos_Image_2.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "1bfe02d3b44e7c3151177e7bd59961cf",
+   "size": 156433
+  },
+  "godot/assets/3d/characters/heroes/carlos_Image_3.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
   },
   "godot/assets/3d/characters/heroes/chess.glb": {
    "at": "2026-10-19T14:52:24+00:00",
@@ -1660,6 +1690,26 @@
    "md5": "97094c93364765614655b9a62d707931",
    "size": 6471960
   },
+  "godot/assets/3d/characters/heroes/judge_halverson_Image_0.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "3c7ec52bbe97a809cfd5d616aa865b5e",
+   "size": 260987
+  },
+  "godot/assets/3d/characters/heroes/judge_halverson_Image_1.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "e78efb2c7ac6a71638d36f0d728865ee",
+   "size": 46449
+  },
+  "godot/assets/3d/characters/heroes/judge_halverson_Image_2.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "db7b5408f11a04ca20f1277d78459e88",
+   "size": 107966
+  },
+  "godot/assets/3d/characters/heroes/judge_halverson_Image_3.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "a25da1603367327b47fe07c958d864dc",
+   "size": 17097
+  },
   "godot/assets/3d/characters/heroes/kai.glb": {
    "at": "2026-10-11T17:55:33+00:00",
    "md5": "e613321a8cce76464756649595e83422",
@@ -2565,6 +2615,11 @@
    "md5": "ae15a43964f4dda66799ad2348263e16",
    "size": 72204
   },
+  "godot/assets/3d/characters/heroes/the_writer.glb": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "a79fd44a9b5f2db95199eb59e80f046f",
+   "size": 5390224
+  },
   "godot/assets/3d/characters/heroes/thomas_henderson.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "750d2ea2688862e2c704d2a6af5781a8",
@@ -2589,6 +2644,31 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "4f9695fc884aa19e9d330fe04ceb9929",
    "size": 72080
+  },
+  "godot/assets/3d/characters/heroes/tom_bell.glb": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "6aa74e8243946efaa69618726bee1607",
+   "size": 5095660
+  },
+  "godot/assets/3d/characters/heroes/tom_bell_Image_0.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "65773b1d6732bf3f1cfc4702d6c9247e",
+   "size": 529424
+  },
+  "godot/assets/3d/characters/heroes/tom_bell_Image_1.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "a469520d7b70de1e507dbfda8c6ddf8c",
+   "size": 67200
+  },
+  "godot/assets/3d/characters/heroes/tom_bell_Image_2.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "6db78e6c5f723cfef42ac48d2aa39e56",
+   "size": 165282
+  },
+  "godot/assets/3d/characters/heroes/tom_bell_Image_3.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
   },
   "godot/assets/3d/characters/heroes/tucker.glb": {
    "at": "2026-10-19T14:52:24+00:00",
@@ -2669,6 +2749,26 @@
    "at": "2026-10-19T16:39:29+00:00",
    "md5": "c2c48427254e6c4f04a9ce9726b63192",
    "size": 4840516
+  },
+  "godot/assets/3d/characters/heroes/walt_Image_0.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "7b9cf35aad2308fd559560f317b405ea",
+   "size": 357658
+  },
+  "godot/assets/3d/characters/heroes/walt_Image_1.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "5b09c8eeac7e17373c6994c08c0cecb5",
+   "size": 60483
+  },
+  "godot/assets/3d/characters/heroes/walt_Image_2.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "dc552745fb73a41ff463f85d665aac05",
+   "size": 131137
+  },
+  "godot/assets/3d/characters/heroes/walt_Image_3.jpg": {
+   "at": "2026-10-19T17:04:04+00:00",
+   "md5": "35b5a8b6d94d2219ed4ade63ca3a1be2",
+   "size": 38342
   },
   "godot/assets/3d/characters/heroes/wren.glb": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -75700,6 +75800,41 @@
    "md5": "395840911e136f403852f947b0946989",
    "size": 81286
   },
+  "godot/assets/concept/meshy/the_writer/back.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "0d971e1299e930750b6f5f9df4e7c752",
+   "size": 2156077
+  },
+  "godot/assets/concept/meshy/the_writer/front.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "3854946c9b6c2ec024bbccb3f741c687",
+   "size": 2213471
+  },
+  "godot/assets/concept/meshy/the_writer/meshy_thumb.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "a07fc80f7f9e36a943110829a6a67866",
+   "size": 83937
+  },
+  "godot/assets/concept/meshy/the_writer/side.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "da4b593b1f03b26b78f3b7726743f4aa",
+   "size": 2037024
+  },
+  "godot/assets/concept/meshy/the_writer/the_writer_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "0d971e1299e930750b6f5f9df4e7c752",
+   "size": 2156077
+  },
+  "godot/assets/concept/meshy/the_writer/the_writer_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "3854946c9b6c2ec024bbccb3f741c687",
+   "size": 2213471
+  },
+  "godot/assets/concept/meshy/the_writer/the_writer_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:04:36+00:00",
+   "md5": "da4b593b1f03b26b78f3b7726743f4aa",
+   "size": 2037024
+  },
   "godot/assets/concept/meshy/thomas_henderson/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "0ba34be2e17e65a42cd9944116ca4d34",
@@ -75719,6 +75854,11 @@
    "at": "2026-10-19T16:56:00+00:00",
    "md5": "d54e5edf718714bb3bd886739c9933a6",
    "size": 2072749
+  },
+  "godot/assets/concept/meshy/tom_bell/meshy_thumb.png": {
+   "at": "2026-10-19T17:04:42+00:00",
+   "md5": "bc60292cbc7c4f0d226bc1cbae3fc3a4",
+   "size": 82010
   },
   "godot/assets/concept/meshy/tom_bell/side.png": {
    "at": "2026-10-19T16:56:00+00:00",

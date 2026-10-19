@@ -22280,5 +22280,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/the_writer.glb",
     "file_size_kb": 54268.6
+  },
+  {
+    "at": "2026-10-19T17:04:34+00:00",
+    "stage": "image",
+    "slug": "the_director",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Director like this: THE DIRECTOR is at the console. The director shrugs and starts the film. Things taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE DIRECTOR: theatrical and commanding over a self-doubting core, chin up, one hand raised mid-pronouncement. All black: a black crew-neck sweater with the sleeves shoved up, black jeans, black boots, a headset hanging round his neck and a director's viewfinder on a cord; a smartphone in his back pocket.\nFull-body concept render of The Director, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_director/the_director_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_director/the_director_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_director/the_director_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
