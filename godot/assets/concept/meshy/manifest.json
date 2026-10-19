@@ -22301,5 +22301,32 @@
       "godot/assets/concept/meshy/the_director/the_director_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/the_director/the_director_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T17:09:41+00:00",
+    "stage": "mesh",
+    "slug": "the_director",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a1551f-62e6-721d-a46e-6203f1e4872b",
+    "inputs": [
+      "godot/assets/concept/meshy/the_director/front.png",
+      "godot/assets/concept/meshy/the_director/side.png",
+      "godot/assets/concept/meshy/the_director/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/the_director.glb",
+    "file_size_kb": 46655.9
   }
 ]
