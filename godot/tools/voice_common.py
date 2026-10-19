@@ -92,6 +92,32 @@ def speakable_text(text):
     return t if re.search(r"[A-Za-z0-9]", words) else ""
 
 
+# ONE VOICE PER CHARACTER (2026-10-19, the user: "voices generated with the
+# tool now aren't consistent, there's a new voice for each generation of the
+# same character"). The voice studio sent ElevenLabs only the text and the
+# model — no voice settings, no seed — and eleven_v3 is its least steady
+# model (most of the cast are library professional voices, which v3 renders
+# loosely). Every request now carries the character's settings and a seed
+# fixed per character, and on v3 the stability is one of v3's three modes:
+# CONSISTENCY "robust" (the steadiest; the default), "natural", "creative".
+# voice_studio.html requestSettings() / voiceSeed() mirror this.
+V3_STABILITY = {"creative": 0.0, "natural": 0.5, "robust": 1.0}
+
+
+def voice_seed(key):
+    """A seed fixed per voice key (CRC-32 of the key: 0 .. 4294967295)."""
+    import zlib
+    return zlib.crc32((key or "").encode("utf-8")) & 0xFFFFFFFF
+
+
+def request_settings(model_id, settings, consistency="robust"):
+    """The voice_settings to send. v3 takes stability as a mode only."""
+    s = dict(settings or {})
+    if (model_id or "").startswith("eleven_v3"):
+        return {"stability": V3_STABILITY.get(consistency, 1.0)}
+    return s
+
+
 def split_speakers(name):
     """'Faust, Jacob, Wagner' -> ['Faust', 'Jacob', 'Wagner'].  One name -> [name]."""
     s = (name or "").strip()

@@ -110,14 +110,17 @@ def voice_lookup(vmap, char, kind="say", scene_id=None, aliases=None, vol=None):
     return key, voice_id, settings
 
 
-def synth_line(api_key, model_id, voice_id, settings, text):
+def synth_line(api_key, model_id, voice_id, settings, text, seed=None):
     """Call ElevenLabs TTS. Returns raw PCM bytes."""
     url = f"{ELEVEN_BASE}/{voice_id}?output_format={OUTPUT_FORMAT}"
-    body = json.dumps({
+    req_body = {
         "text": text,
         "model_id": model_id,
         "voice_settings": settings,
-    }).encode("utf-8")
+    }
+    if seed is not None:
+        req_body["seed"] = int(seed)
+    body = json.dumps(req_body).encode("utf-8")
     req = urllib.request.Request(url, data=body, method="POST", headers={
         "Accept": "audio/pcm",
         "Content-Type": "application/json",
@@ -209,6 +212,8 @@ def main():
                          "would be rendered with its resolved voice key, marking "
                          "keys that still have no voice_id.")
     ap.add_argument("--model", help="Override model_id from voice_map.json.")
+    ap.add_argument("--consistency", choices=sorted(vc.V3_STABILITY), default="robust",
+                    help="eleven_v3 stability mode (robust = the steadiest voice; the default)")
     ap.add_argument("--limit", type=int,
                     help="Stop after this many successful renders (useful for "
                          "a small test batch).")
@@ -274,7 +279,9 @@ def main():
                     total["skipped"] += 1
                     print(f"  [nothing to speak] {tag}  {preview!r}")
                     continue
-                pcm = synth_line(api_key, model_id, voice_id, settings, spoken)
+                pcm = synth_line(api_key, model_id, voice_id,
+                                 vc.request_settings(model_id, settings, args.consistency), spoken,
+                                 seed=vc.voice_seed(key))
                 pcm_to_ogg(pcm, out_path)
                 total["rendered"] += 1
             except Exception as e:

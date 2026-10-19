@@ -166,6 +166,13 @@
           <option value="eleven_turbo_v2_5">eleven_turbo_v2_5 (fast/cheap)</option>
         </select>
       </label>
+      <label>Voice consistency (eleven_v3)
+        <select id="elevenConsistency">
+          <option value="robust">Robust — the same voice every take</option>
+          <option value="natural">Natural — more expressive, can drift</option>
+          <option value="creative">Creative — most expressive, drifts most</option>
+        </select>
+      </label>
       <label>Import voice_map.json
         <input type="file" id="voiceMapFile" accept=".json,application/json">
       </label>
@@ -273,6 +280,28 @@ function speakableText(text) {
   t = t.replace(/\[(\s+[^\]]*?\s*|[^\]]*\s[^\]]*\s[^\]]*\s[^\]]*)\]/g, (m, g) => ' ' + g.trim() + ' ');
   t = t.replace(/[ \t]+/g, ' ').trim();
   return /[A-Za-z0-9]/.test(t.replace(/\[[^\]]*\]/g, '')) ? t : '';
+}
+
+// ONE VOICE PER CHARACTER — MUST match request_settings() / voice_seed() in
+// voice_common.py (2026-10-19, the user: "there's a new voice for each
+// generation of the same character"). Each request carries the character's
+// voice_map settings and a seed fixed per character; on eleven_v3 the
+// stability is one of its three modes (Robust, the default, is the steadiest).
+const V3_STABILITY = { creative: 0.0, natural: 0.5, robust: 1.0 };
+function voiceSeed(key) {
+  let c = 0xFFFFFFFF;
+  const b = new TextEncoder().encode(key || '');
+  for (let i = 0; i < b.length; i++) {
+    c ^= b[i];
+    for (let k = 0; k < 8; k++) c = (c >>> 1) ^ (0xEDB88320 & -(c & 1));
+  }
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}
+function requestSettings(model, settings, consistency) {
+  if ((model || '').startsWith('eleven_v3')) {
+    return { stability: (consistency in V3_STABILITY) ? V3_STABILITY[consistency] : 1.0 };
+  }
+  return Object.assign({}, settings || {});
 }
 
 function splitSpeakers(name) {
@@ -680,7 +709,12 @@ function applyVoiceMeta(vm) {
       Object.entries(m).forEach(([a, b]) => { sceneAliases[sid][charKey(a)] = charKey(b); });
     }
   });
-  voiceMeta = { aliases, scene_aliases: sceneAliases, known: Object.keys(vm.characters || {}).map(charKey) };
+  const settings = {};
+  Object.entries(vm.characters || {}).forEach(([k, e]) => {
+    if (e && e.voice_settings) settings[charKey(k)] = e.voice_settings;
+  });
+  voiceMeta = { aliases, scene_aliases: sceneAliases, known: Object.keys(vm.characters || {}).map(charKey),
+                defaults: vm.default_voice_settings || {}, settings };
   saveVoiceMeta();
 }
 function saveVoiceMeta() {
@@ -816,6 +850,10 @@ async function renderEleven(line) {
     body: JSON.stringify({
       text: spoken,
       model_id: model,
+      voice_settings: requestSettings(model,
+        Object.assign({}, voiceMeta.defaults || {}, (voiceMeta.settings || {})[hit] || {}),
+        $('elevenConsistency').value),
+      seed: voiceSeed(hit),
     }),
   });
   if (!resp.ok) {
@@ -918,12 +956,16 @@ function loadElevenKey() {
   if (!k) { try { k = (localStorage.getItem('mm_eleven_key') || '').trim(); } catch (e) {} }
   if (k) $('elevenKey').value = k;
   try { const m = localStorage.getItem('mm_eleven_model'); if (m) $('elevenModel').value = m; } catch (e) {}
+  try { const c = localStorage.getItem('mm_eleven_consistency'); if (c) $('elevenConsistency').value = c; } catch (e) {}
 }
 $('elevenKey').addEventListener('input', () => {
   try { localStorage.setItem('mm_eleven_key', $('elevenKey').value.trim()); } catch (e) {}
 });
 $('elevenModel').addEventListener('change', () => {
   try { localStorage.setItem('mm_eleven_model', $('elevenModel').value); } catch (e) {}
+});
+$('elevenConsistency').addEventListener('change', () => {
+  try { localStorage.setItem('mm_eleven_consistency', $('elevenConsistency').value); } catch (e) {}
 });
 
 // Restore voice map + imported aliases on page load: this browser's copy,
