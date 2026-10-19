@@ -22604,5 +22604,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/fire_elemental.glb",
     "file_size_kb": 73629.0
+  },
+  {
+    "at": "2026-10-19T17:53:59+00:00",
+    "stage": "image",
+    "slug": "water_elemental",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Water (the elemental) like this: Faust's is Water, and she's looking right up at him off his own chest. Off to the left, painted water. Additional direction: Water, the elemental on Faust's own t-shirt \u2014 slow, cool, easygoing. A tall young woman painted in glazes of blue-green: translucent sea-glass skin, long dark wet hair to the waist, calm half-lidded eyes looking straight out, a long column gown that is moving water, beaded with drops and running at the hem into a small pool round her bare feet.\nFull-body concept render of Water (the elemental), a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/water_elemental/water_elemental_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/water_elemental/water_elemental_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/water_elemental/water_elemental_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T17:58:52+00:00",
+    "stage": "mesh",
+    "slug": "water_elemental",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a1554c-988d-75d7-80c6-5748a0cce0c6",
+    "inputs": [
+      "godot/assets/concept/meshy/water_elemental/front.png",
+      "godot/assets/concept/meshy/water_elemental/side.png",
+      "godot/assets/concept/meshy/water_elemental/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/water_elemental.glb",
+    "file_size_kb": 81970.4
   }
 ]
