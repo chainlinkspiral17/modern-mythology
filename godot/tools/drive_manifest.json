@@ -65,6 +65,11 @@
    "md5": "575c359308e6b2cd2ec585b64ab83446",
    "size": 49115768
   },
+  "godot/assets/3d/characters/heroes/_full/hal.glb": {
+   "at": "2026-10-19T16:13:16+00:00",
+   "md5": "0fe859b1cd5f300126a77f96f8077794",
+   "size": 51452744
+  },
   "godot/assets/3d/characters/heroes/_full/hugo.glb": {
    "at": "2026-10-19T01:46:30+00:00",
    "md5": "e1350ce39583b4a59d85c3275d759cfb",
@@ -405,6 +410,26 @@
    "md5": "cc00019dacacf580221ea62298e1091b",
    "size": 5348208
   },
+  "godot/assets/3d/characters/heroes/brent_Image_0.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "d4bdfe469601272beb798ffa411da9fc",
+   "size": 599741
+  },
+  "godot/assets/3d/characters/heroes/brent_Image_1.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "29063ea7968ef134ae7e81365257346d",
+   "size": 75292
+  },
+  "godot/assets/3d/characters/heroes/brent_Image_2.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "7a520a6f29aab56e2a8425228d57f834",
+   "size": 215546
+  },
+  "godot/assets/3d/characters/heroes/brent_Image_3.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "ed81177fcc3ce4d74c2cf63323cb2775",
+   "size": 17150
+  },
   "godot/assets/3d/characters/heroes/bt.glb": {
    "at": "2026-10-11T20:22:59+00:00",
    "md5": "5b8fffe3e5997af772ec22d9cd3fd00a",
@@ -510,10 +535,50 @@
    "md5": "48b1fbc20e51986bb0b98c1ed0f4f69a",
    "size": 5485544
   },
+  "godot/assets/3d/characters/heroes/chess_Image_0.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "105c60020098cd62fe9b29eb70f8ade6",
+   "size": 414645
+  },
+  "godot/assets/3d/characters/heroes/chess_Image_1.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "6b0823eed81abbfab9459ca8f76fe1a3",
+   "size": 63822
+  },
+  "godot/assets/3d/characters/heroes/chess_Image_2.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "8c22f6d6e628d711ef74aa677923d1bf",
+   "size": 131996
+  },
+  "godot/assets/3d/characters/heroes/chess_Image_3.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "64d941a9ff1ff3dd56367fcd514800ce",
+   "size": 17035
+  },
   "godot/assets/3d/characters/heroes/chess_vol4.glb": {
    "at": "2026-10-19T14:52:24+00:00",
    "md5": "116a9f934911d7c7bdfb306ed310046f",
    "size": 8315760
+  },
+  "godot/assets/3d/characters/heroes/chess_vol4_Image_0.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "00c9cea32fc33249d9e67cc64dac9972",
+   "size": 334338
+  },
+  "godot/assets/3d/characters/heroes/chess_vol4_Image_1.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "1b2163b4717201fb76be9cf8dc8b3343",
+   "size": 63912
+  },
+  "godot/assets/3d/characters/heroes/chess_vol4_Image_2.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "8770739e914809f6df182a744ef4a5e8",
+   "size": 116828
+  },
+  "godot/assets/3d/characters/heroes/chess_vol4_Image_3.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "551ef2013890c325d08aa3814635093c",
+   "size": 17035
   },
   "godot/assets/3d/characters/heroes/chief_miller.glb": {
    "at": "2026-10-11T16:25:49+00:00",
@@ -1214,6 +1279,31 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "44ddbacd108156f7923893f3d6b1021d",
    "size": 75476
+  },
+  "godot/assets/3d/characters/heroes/hal.glb": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "16eb7b656bb044838d7af3ff259055a2",
+   "size": 5264300
+  },
+  "godot/assets/3d/characters/heroes/hal_Image_0.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "d50e0ead9c55cce6dc188c78b291ec0f",
+   "size": 657274
+  },
+  "godot/assets/3d/characters/heroes/hal_Image_1.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "e85665ffe93017baae0946be08a2dc7b",
+   "size": 72253
+  },
+  "godot/assets/3d/characters/heroes/hal_Image_2.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "98c32aef244885e960dd10607e3d3679",
+   "size": 207991
+  },
+  "godot/assets/3d/characters/heroes/hal_Image_3.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
   },
   "godot/assets/3d/characters/heroes/hans.glb": {
    "at": "2026-10-11T18:35:35+00:00",
@@ -2479,6 +2569,26 @@
    "at": "2026-10-19T14:52:24+00:00",
    "md5": "b147d69e9d21a5b51e9e4b669cbd4dca",
    "size": 5644172
+  },
+  "godot/assets/3d/characters/heroes/tucker_Image_0.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "768b2ca69c550f662849b6b8047cb48f",
+   "size": 644497
+  },
+  "godot/assets/3d/characters/heroes/tucker_Image_1.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "2a9b989918bdb838b8f0c70d181023aa",
+   "size": 89978
+  },
+  "godot/assets/3d/characters/heroes/tucker_Image_2.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "b82b93760db5ed0ad59ce9ae4ae72f53",
+   "size": 226227
+  },
+  "godot/assets/3d/characters/heroes/tucker_Image_3.jpg": {
+   "at": "2026-10-19T16:13:07+00:00",
+   "md5": "084c86f46988d5fc1d254d3ebc52aa80",
+   "size": 17129
   },
   "godot/assets/3d/characters/heroes/vince_kane.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -5274,6 +5384,3071 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "223faa2b58b0e7ae1bea72edfc66e257",
    "size": 3318502
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/006.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "3c804ae70cb707d86dd13a246671d2ba",
+   "size": 172660
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/007.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "c0e38bfd41855759fd3adc9a83704414",
+   "size": 152180
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/008.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "b0ef1a2a8aa6c44d9bc1badff478fc75",
+   "size": 11327
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/009.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "5c128e1c03b66877c750c7c8cd6d1cbc",
+   "size": 200663
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/011.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "de8c39b3afaecc6c27a5ab735f4559d1",
+   "size": 111220
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/012.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "999d7835d438b682f50bc3400e3b7703",
+   "size": 71514
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/013.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "091ee42067c87fe1e904f547cafc31d6",
+   "size": 20105
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/014.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "1ce97f4567ed152e575a44815cebc278",
+   "size": 90740
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/015.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "8737526daabccd26599a5b454d97a1aa",
+   "size": 75275
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/019.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "2c9629b4e57e6ec6ec511c6865513032",
+   "size": 209858
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/020.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "03b7ceef91a386e816799f2265188dad",
+   "size": 155941
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/021.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "f4421ce07aa3882923aee07f00b86492",
+   "size": 53541
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/022.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "cfe3af681fbe4d027d966d3ab1f12a54",
+   "size": 47272
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/023.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "bb3ffb0c4fcbb6a565b5b9d5a6a67588",
+   "size": 24284
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/024.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "cf6b1f07a1a438c0fe405b586be67528",
+   "size": 82798
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/025.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "29cdd9dcb633f110ffb6325a58fc2d93",
+   "size": 139223
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/026.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "0808ac3a3eb38ff2972aac9849f963db",
+   "size": 113727
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/027.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "924edc003bf6d41ebb8cdf5dae8a1979",
+   "size": 33061
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/028.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "d12f278a132eb3be38d3bb2a89466b04",
+   "size": 26792
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/029.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "c43940fab20e9083d08126563c8749ba",
+   "size": 28046
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/030.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "3c3bbe4481f9254c3443d4507f24bd97",
+   "size": 54795
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/031.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "8b520783aa93a80845d39921af2ac654",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/meld_seam_1_2/033.mp3": {
+   "at": "2026-10-19T16:13:37+00:00",
+   "md5": "be9d7463444271d3dbf7f00361838594",
+   "size": 205678
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/003.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "48ee317343e950e527505da3bcfe26d4",
+   "size": 48526
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/004.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "06ca4ae00c1ef3057a3f3db302d3cc27",
+   "size": 49780
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/006.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "9d2edbe2987fb7959d551c2508b6dfe8",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/007.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "aec6a3422329895fbb352b639a0d0b9f",
+   "size": 48526
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/008.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "2584e1e204be6cba4ae81f597de38d9d",
+   "size": 154687
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/009.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "01833b84d8e921f7bbb363a49c381260",
+   "size": 46018
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/010.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "346ad8d6861aab5c77140e68168b2b93",
+   "size": 118743
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/011.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "92ecd3532a8e0c09c090204288d37fc6",
+   "size": 67752
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/013.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "5484f5fa53ae1000a430138f4610ff7e",
+   "size": 135461
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/014.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "dde8d74fe9c7d8a69946b50919d2755b",
+   "size": 172660
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/015.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "4cd2d246c21f0144ab444678bff8ffc6",
+   "size": 98263
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/016.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "467686e8c81fb231649d0d48a4382eff",
+   "size": 125430
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/017.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "daaf2eaedbed6e218f27dafd2995cd89",
+   "size": 40585
+  },
+  "godot/assets/audio/voice/vol1_ch2_act_one/018.mp3": {
+   "at": "2026-10-19T16:13:49+00:00",
+   "md5": "0e0ca176d084fea328e65019d10fb86b",
+   "size": 66498
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/005.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "d882145fedf4379157503e7c4cb2bc76",
+   "size": 46018
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/006.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "e0578b36271a886230f90c1a150bd39e",
+   "size": 26792
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/008.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "90384a768a44dccd588b82e4bf84a2ec",
+   "size": 125430
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/009.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "202b1c1f0ba1d77bb07fd67a3a0f624a",
+   "size": 23030
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/010.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "0b3792998edd8eaa4e526fdcb72945de",
+   "size": 129192
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/011.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "1ccb92fb630794d57df204df7130568d",
+   "size": 104950
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/012.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "9582129d0471b4592d0635611f63f561",
+   "size": 125430
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/013.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "7719c2d1685729e6d4c7a2e97eb0452a",
+   "size": 129192
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/014.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "bcfebefc35c58e8290bb0e452c832ccb",
+   "size": 48526
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/015.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "c35759f67bb71faa0ab4e774f4e05920",
+   "size": 75275
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/016.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "754ccb640a0a249ceeff17238cc91e45",
+   "size": 75275
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/021.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "ccac943f97c5f1efcc668537992ac7b7",
+   "size": 84470
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/022.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "d0e03762cd67c59e7ef03cc136473788",
+   "size": 106204
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/023.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "14f7a7c8dfc0f50da05ffc39224fb4d0",
+   "size": 140477
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/024.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "0637d7e9cdf4937dbb87fba1806e2dfa",
+   "size": 144238
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/025.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "1704bd860e2d1518415a7f939b1d6fcf",
+   "size": 127938
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/026.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "3fe955d553c690b2bf263b8a035757b2",
+   "size": 116235
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/027.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "a9ec716eedc9d5afa89b36601e300099",
+   "size": 23030
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/028.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "16bd352474c46f4259da06db7fe94f11",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/029.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "9efc3eafd075b96c0c3e4e5d9fcc6aaf",
+   "size": 46018
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/030.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "437a9596840d3dac84c6c77db51e7048",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/031.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "225fafe442ddc1657084dca09d695614",
+   "size": 43510
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/032.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "2eaeba07ad80fb16d6a0adfe015dcdd1",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/033.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "21c6c35cf9490c95130f085bc6257d65",
+   "size": 36823
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/034.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "005ae13db63e353f99cea0ada2e3b480",
+   "size": 28046
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/035.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "0026d310ac345768159b05d512ef0f18",
+   "size": 17597
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/036.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "0c47ec78a42e727e15dd7b7333409ee1",
+   "size": 20105
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting/037.mp3": {
+   "at": "2026-10-19T16:17:39+00:00",
+   "md5": "1c90d280f29193883d97ffbd160f1aaa",
+   "size": 142985
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/001.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "b4fe0bee835c0e19e5fad5dedfeb98c3",
+   "size": 203171
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/002.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "23014ebc995fc923177203d63452467d",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/003.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "c4699f54b37694bc998e76e8a78c784d",
+   "size": 71514
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/004.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "b57a09110de203e406f100408efcdb7e",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/005.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "2da3fe5cd2f6a86bd88ce337af3a1837",
+   "size": 149672
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/006.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "34b29bbd185b2ce4d458dbd74192c42c",
+   "size": 182691
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/007.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "79254f266a08a503636f6c388184bf90",
+   "size": 153434
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/008.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "2d30a7a7242386fab414dd868c39a01b",
+   "size": 39331
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/009.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "094a965357b0ee5ff06043ba41186bac",
+   "size": 49780
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/010.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "3f258bdd98d1b743b7c5704930ec47e1",
+   "size": 49780
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/011.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "92580523340b3faa6e9404a98f771945",
+   "size": 54795
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/012.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "c806ac7813949545dfed80ca02b300e3",
+   "size": 79037
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/017.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "3d0f67fc770565e54147afc59116faee",
+   "size": 43510
+  },
+  "godot/assets/audio/voice/vol1_ch2_painting_b/018.mp3": {
+   "at": "2026-10-19T16:17:51+00:00",
+   "md5": "eb0ca478229253b5e0d19d35669c149d",
+   "size": 79037
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/005.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "095dc68a4f7c15133d00d9890cdeda62",
+   "size": 36823
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/006.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "fcaee57f6ddeb370abe5d8d228a2b35b",
+   "size": 38077
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/009.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "37ed83b549190ee680e83faf39f1b80e",
+   "size": 24284
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/010.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "e2564f9a517716bdfff1334b5a46de5d",
+   "size": 84470
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/011.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "a86e83e76121d8cc07ad234884dc58e8",
+   "size": 77783
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/012.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "64271dd6fdbd1f6dd1657d77bc1375ce",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/013.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "272b6b96fb16bab5ec2d2c7b32072c51",
+   "size": 91994
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/014.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "fac6614bdbe266561c9f8dfdaa2e54d6",
+   "size": 72767
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/015.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "5b236bf10cd0b6907f493109590540c9",
+   "size": 103278
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/016.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "f5766039c0a32787b147cd35b07cf91e",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/017.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "51dfd1dafc2af320fb7a8c5c81116324",
+   "size": 132954
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/018.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "15ce0db5eff887d451d79598a8581883",
+   "size": 8820
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/019.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "8e8493db46a3e56a053524bd3f6044db",
+   "size": 59811
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/020.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "0222ad2a3d0f525216aa1b772f71b0ca",
+   "size": 56049
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/026.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "0c2d31cea51c58d9de21b18ea825d245",
+   "size": 135461
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/027.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "4e47c9a2fcf0fb72b4d211e489d3f1ec",
+   "size": 90740
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/028.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "99fa70a6deaa545dc0c3a7f8c5909666",
+   "size": 148418
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/029.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "cfb60b5c72f25f4606699fab0e14ea82",
+   "size": 145910
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/030.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "eeee9c5dfba66187d97c1cf9b4b3ca81",
+   "size": 152180
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/031.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "bc945c5e0774e0a06d6c263ea895fea9",
+   "size": 144238
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/032.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "958270ada4f791c0499895bd6c5b10af",
+   "size": 153434
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/033.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "bdf208fd9fa5737b7bc5958b89380229",
+   "size": 150926
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/037.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "55d0cdb99428a8060f402ffd008d1f01",
+   "size": 21358
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/038.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "0b82ee943cb1aa103dd86079fee5f9a1",
+   "size": 23030
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/039.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "d087aa41a0ced1e7655d0558e4987ae5",
+   "size": 48526
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/040.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "8f137ebb3244a67236564db0849d1013",
+   "size": 43510
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/041.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "88d4042899b18951b7316b8c0ec8da43",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/044.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "69c5cd5be7f764d1f4615ccbdd882422",
+   "size": 90740
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/045.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "d52cd24d84a578819f3b91412f47e8a2",
+   "size": 20105
+  },
+  "godot/assets/audio/voice/vol1_ch2_park/046.mp3": {
+   "at": "2026-10-19T16:18:27+00:00",
+   "md5": "eeb7964cc13161f92d812635b8211ae2",
+   "size": 144238
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/000.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "cb4541d3d1a7368cf06ee79e5ebbf4f5",
+   "size": 164718
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/001.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "6c0154ff6a014c0727216860936c1db4",
+   "size": 40585
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/002.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "d6241bf1774cae9b21df66ff6b1fd871",
+   "size": 152180
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/003.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "56df09d494e494e085c6cb86ad430104",
+   "size": 77783
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/004.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "323b97b8a2f426029d8a9f571fc64044",
+   "size": 85724
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/005.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "216846c9f9d3a036de56253834235474",
+   "size": 23030
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/006.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "3be293be132bb700a9f57016987ac9e4",
+   "size": 106204
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/007.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "2838626e99cf9a96bf953ad37a674bcd",
+   "size": 121251
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/009.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "6470caf98c8cde4c2bcac9280a55e716",
+   "size": 186870
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/012.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "e2480e0882f5db581958c5a42674cec3",
+   "size": 65244
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/014.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "e196a3b2c9933401455b687b030730e1",
+   "size": 24284
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/015.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "e99a6cd5e60770e5e9ef8009aa064b63",
+   "size": 25538
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/016.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "3c015b9ca161299238898b3fb8692e54",
+   "size": 34315
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/017.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "01a96267b71085c81dd262346eb91665",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/020.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "4e2882c69715ede4697c73e007ff7381",
+   "size": 47272
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/021.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "7740cf2b24344affe8b9762ab4503c62",
+   "size": 162211
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/022.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "0cf2bbcb94be202074ca1acb885b3d25",
+   "size": 40585
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/024.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "9f7790436dfc446c5dea7b71fdd0913c",
+   "size": 29300
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/025.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "1a9b936f63d9d17fcc906970856ae901",
+   "size": 39331
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/026.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "954469bcc14c4464581de26ffee00c38",
+   "size": 29300
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/027.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "18a949a54957dfa9095211f5fc12877b",
+   "size": 17597
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/030.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "3a613bb5c58716bb36c2695a9f80c026",
+   "size": 49780
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/031.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "1f52132af00b937a2ce8e4714ccc196e",
+   "size": 39331
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/032.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "e4073a901fac3476c716cdfd4f4d3368",
+   "size": 26792
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/033.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "8cbe40652c60946fcf717c0d7174dfac",
+   "size": 29300
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/034.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "6e0ea7967cdf15e30db9ad2912f8e74e",
+   "size": 38077
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/035.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "22501bf703aab21711c8b42b8a11b35c",
+   "size": 52287
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/036.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "bf0a0465b20749f7558f43a232439fbe",
+   "size": 38077
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/037.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "e2041848c848ab4e8422c917df638580",
+   "size": 36823
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/038.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "d8f171332a8e2980d0ec7b06170272d6",
+   "size": 29300
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/039.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "3656b8f2ac86239a6c6b90273dce05a6",
+   "size": 33061
+  },
+  "godot/assets/audio/voice/vol1_ch2_pharmacy_mirror/040.mp3": {
+   "at": "2026-10-19T16:18:49+00:00",
+   "md5": "8769a1986439605d46ea1485005c416a",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/005.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "0289295120faa59b2e76a8b8407abd1e",
+   "size": 49780
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/006.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "a4ed071afc5693367a63e36603a82bdc",
+   "size": 112474
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/010.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "740a443e89e74f6c59d6d7f257d12863",
+   "size": 34315
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/011.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "a7eb4e686550ce47d4affc6e259d97a2",
+   "size": 47272
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/012.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "1f9f619cac60d489ebe69002cb988159",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/013.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "8b0015356d7a9e4ad0580a7b3c57b726",
+   "size": 28046
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/014.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "1280c8a17088f121c216b9d3b34c12e7",
+   "size": 26792
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/015.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "dd97aff72b8e4df1c8de439478df6c90",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/016.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "093d17319a0786f00e83229e946463b4",
+   "size": 44764
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/017.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "aaf2df3db3505e0062621a5d40f5ccf4",
+   "size": 24284
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/018.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "a466f9803bca5f212dc04b081800df7d",
+   "size": 24284
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/019.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "27f4cc0cefc9b0a44392ace62fcfafaa",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/020.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "6f8409816b27feac4008bd683ae67a34",
+   "size": 21358
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/021.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "2a6a6e4061ce420867f20470e2609278",
+   "size": 43510
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/027.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "9dcd11204e48d7ccdf9361cdcd93b24d",
+   "size": 131700
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/030.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "ce7fe50b50d662f97956970676ea1086",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/031.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "e33516b0462e4cd2fc6fa5294ecb872c",
+   "size": 23030
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/032.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "9fd2b22950219a5abe600961773b9931",
+   "size": 40585
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/033.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "6db233e4e9a1ee89dd280600c1fcc23d",
+   "size": 31807
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/034.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "de768c5e5b2661d50bbf831aed0ede45",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/035.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "3c8d6ea56c0b381636821b88b45ee2bd",
+   "size": 113727
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/036.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "7b99720a1a4653fce44589a0c1f0159e",
+   "size": 54795
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/037.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "fdbfaa8d74cb5f0d0bdf009b176e1c30",
+   "size": 81545
+  },
+  "godot/assets/audio/voice/vol1_ch2_skatepark/039.mp3": {
+   "at": "2026-10-19T16:19:06+00:00",
+   "md5": "c9c03ce91fc150c4958546ee7fde79e9",
+   "size": 39331
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/000.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "3591296091af5b693bc4e36d4fb62593",
+   "size": 48526
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/001.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "dbdc8bc442f91e3655f2faf46f9d54b8",
+   "size": 43510
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/002.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "675fc3aef6822bf7cfc7cb2eba95d61b",
+   "size": 194394
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/003.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "8529ab33b2ee30ee0956fc4deb123bc8",
+   "size": 33061
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/004.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "3708f795a5e45e7b07e7ba58f62765ba",
+   "size": 253326
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/005.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "4bd9a360b853b80ad16c1221e6451c2f",
+   "size": 255834
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/006.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "b9876a8d6f9f08384cd0e849a74dafa2",
+   "size": 227830
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/007.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "e4bb1fbf819c1186c2e9b42c5241cc6d",
+   "size": 226158
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/008.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "04631647af522be11e5e8b1c0b7233b2",
+   "size": 158449
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/009.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "4a147eb629462305eb1e6aad79eb1403",
+   "size": 136715
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/010.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "e1dc4ed12b4d53c5660038dd879b910a",
+   "size": 149672
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/011.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "283603dfad3da9e27304d17cb16c7f14",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/012.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "d41caeadfd937ac9e1f3141a941beee3",
+   "size": 140477
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/013.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "8379859afb87f18b7849c52f391775ba",
+   "size": 130446
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/014.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "eba2abf950b080504fa58274a5b61ddb",
+   "size": 218635
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/015.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "5a2774026d0adc407951c38681eb0992",
+   "size": 91994
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/016.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "4f18f4397b50886e83927cb478c18672",
+   "size": 114981
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/017.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "8624d8cd8f7f813fc4e91b79df6b0f0c",
+   "size": 69006
+  },
+  "godot/assets/audio/voice/vol1_interlude_demographic/018.mp3": {
+   "at": "2026-10-19T16:19:22+00:00",
+   "md5": "04d7956c0f2b7af2a04be7c26d0fab7a",
+   "size": 56049
+  },
+  "godot/assets/audio/voice/vol1_introduction/001.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "3d17cd093751cfc4069d87093502b693",
+   "size": 18851
+  },
+  "godot/assets/audio/voice/vol1_introduction/002.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "b538a17b4703ac2285e78f62b2eacc9b",
+   "size": 98263
+  },
+  "godot/assets/audio/voice/vol1_introduction/003.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "f3672a0dfe5b96bc68f14ac03ab74969",
+   "size": 139223
+  },
+  "godot/assets/audio/voice/vol1_introduction/004.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "9af131c3a876154d1d07ff95139c22ce",
+   "size": 200663
+  },
+  "godot/assets/audio/voice/vol1_introduction/005.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "85f3c2e4057527ad3d84c79817b213cf",
+   "size": 65244
+  },
+  "godot/assets/audio/voice/vol1_introduction/006.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "5a6eb38d00bc497943033a88ddccc183",
+   "size": 198155
+  },
+  "godot/assets/audio/voice/vol1_introduction/007.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "154e8e0cdcb5f776c23095b28897494c",
+   "size": 131700
+  },
+  "godot/assets/audio/voice/vol1_introduction/008.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "e1d12f6684f260406dbdee3262e66e96",
+   "size": 25538
+  },
+  "godot/assets/audio/voice/vol1_introduction/009.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "03b4e1aa29ed80d9436c75cdf9cb0f3c",
+   "size": 20105
+  },
+  "godot/assets/audio/voice/vol1_introduction/010.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "556b12f4d1fbc39ff4515b1cd89b6131",
+   "size": 23030
+  },
+  "godot/assets/audio/voice/vol1_introduction/011.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "7a916b630b13095a16f1206d6688900d",
+   "size": 132954
+  },
+  "godot/assets/audio/voice/vol1_introduction/012.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "868813f8209e821a047c2e159ec8bc15",
+   "size": 155941
+  },
+  "godot/assets/audio/voice/vol1_introduction/013.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "9378ef49d5f33f47df573433e2f9b398",
+   "size": 178929
+  },
+  "godot/assets/audio/voice/vol1_introduction/014.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "d2a1c07c7445e5a136d2fbd7021b58a1",
+   "size": 69006
+  },
+  "godot/assets/audio/voice/vol1_introduction/015.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "46fb942b8e2d1e253db82028937fcc57",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_introduction/016.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "a7a8930fbf2a00c7e9525653ae0cd2c3",
+   "size": 18851
+  },
+  "godot/assets/audio/voice/vol1_introduction/017.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "def1706412cde59a5e6a605159e48925",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol1_introduction/018.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "5475c4b63759ab69b0aff6acb7a89f6a",
+   "size": 278821
+  },
+  "godot/assets/audio/voice/vol1_introduction/019.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "c242f7aa6ce9cd8cf97c74ba4c37824a",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol1_introduction/020.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "d5f54f61697b25eeb8c8543198e856cc",
+   "size": 186870
+  },
+  "godot/assets/audio/voice/vol1_introduction/021.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "7dcbc18bbfc7a30bf01630a4781a2ac2",
+   "size": 52287
+  },
+  "godot/assets/audio/voice/vol1_introduction/022.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "efeb0ade45c65a675a73c734dbcfbce7",
+   "size": 104950
+  },
+  "godot/assets/audio/voice/vol1_introduction/023.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "5857ed702ea646343a75e11b30accd28",
+   "size": 74021
+  },
+  "godot/assets/audio/voice/vol1_introduction/024.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "1bc438ce93c5aa345e686ac78a7d1aab",
+   "size": 113727
+  },
+  "godot/assets/audio/voice/vol1_introduction/025.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "4d84ade2174d97c35e9342806a27006e",
+   "size": 106204
+  },
+  "godot/assets/audio/voice/vol1_introduction/026.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "6e23b28e4cdc79351bfb3d87766b59c3",
+   "size": 62318
+  },
+  "godot/assets/audio/voice/vol1_introduction/027.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "ef0f777c4283ff96cacbb40bb3cc46cf",
+   "size": 116235
+  },
+  "godot/assets/audio/voice/vol1_introduction/028.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "fbab94f02e72848748ca8cf6baf191b0",
+   "size": 20105
+  },
+  "godot/assets/audio/voice/vol1_introduction/029.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "1215689fff57108bdd78e1f1e741b8b4",
+   "size": 49780
+  },
+  "godot/assets/audio/voice/vol1_introduction/030.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "b06f773313ca7c9c8e022e17f34bb0d1",
+   "size": 86978
+  },
+  "godot/assets/audio/voice/vol1_introduction/031.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "1c646c3ff8b2a78628a09dc5b9382d75",
+   "size": 57303
+  },
+  "godot/assets/audio/voice/vol1_introduction/032.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "23e954272615b79b4ffc1ed89a98ecfa",
+   "size": 136715
+  },
+  "godot/assets/audio/voice/vol1_introduction/033.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "37440dc37fb91639959c6dbdc0cfbf35",
+   "size": 91994
+  },
+  "godot/assets/audio/voice/vol1_introduction/034.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "171b069c5c5869147223c1f508b6434e",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/vol1_introduction/035.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "dfc7ab209827199804d1c0011cdc34ac",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_introduction/036.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "65d76b55d8e7945ddd9a4fe4798405da",
+   "size": 52287
+  },
+  "godot/assets/audio/voice/vol1_introduction/037.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "5938c3849555c7fa63d83026619091e0",
+   "size": 191886
+  },
+  "godot/assets/audio/voice/vol1_introduction/038.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "c2b08a5f285a98af84234b1bcb0c46b5",
+   "size": 129192
+  },
+  "godot/assets/audio/voice/vol1_introduction/039.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "b6a234ee7910cb69d2d5725933d47ea7",
+   "size": 102025
+  },
+  "godot/assets/audio/voice/vol1_introduction/040.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "868723743c2038c937ef6fa52e33e287",
+   "size": 173914
+  },
+  "godot/assets/audio/voice/vol1_introduction/041.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "4359e707b58675f945d3c993850d7fba",
+   "size": 435138
+  },
+  "godot/assets/audio/voice/vol1_introduction/042.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "bc1047cd19f2fd023f6de2fb6cd87ac9",
+   "size": 293032
+  },
+  "godot/assets/audio/voice/vol1_introduction/043.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "708d2007ea89beef5a888de8bf181de6",
+   "size": 282583
+  },
+  "godot/assets/audio/voice/vol1_introduction/044.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "da40234e5337331c6085561d71556765",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol1_introduction/045.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "52d74864d3f2718fcd352b5bc248945f",
+   "size": 75275
+  },
+  "godot/assets/audio/voice/vol1_introduction/046.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "62ef3d981b802180cbac090bc7606dd2",
+   "size": 316020
+  },
+  "godot/assets/audio/voice/vol1_introduction/047.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "91d770bbac1fbfeb275555cf5f336f49",
+   "size": 313512
+  },
+  "godot/assets/audio/voice/vol1_introduction/048.mp3": {
+   "at": "2026-10-19T16:19:50+00:00",
+   "md5": "4a7ab592d852a5863ac3a7aca56be1ca",
+   "size": 141731
+  },
+  "godot/assets/audio/voice/vol1_link_booth/001.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "856c1c37e3ae8b527304b492b007f615",
+   "size": 162211
+  },
+  "godot/assets/audio/voice/vol1_link_booth/002.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "4f46e7c7309ba276822c761204aeb0cb",
+   "size": 208604
+  },
+  "godot/assets/audio/voice/vol1_link_booth/003.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "7baf54659090bad429351f3824a83878",
+   "size": 232846
+  },
+  "godot/assets/audio/voice/vol1_link_booth/004.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "762892735263ae1ad48c4b89264eef59",
+   "size": 259595
+  },
+  "godot/assets/audio/voice/vol1_link_booth/005.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "2b66fbfe8293b966346ac21fc4715d26",
+   "size": 278821
+  },
+  "godot/assets/audio/voice/vol1_link_booth/006.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "e589a4f63011e7e7fcf7d38ce010b4ce",
+   "size": 167644
+  },
+  "godot/assets/audio/voice/vol1_link_booth/007.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "3ee2fd2ec0c33d7bb2675d968ad479c2",
+   "size": 212366
+  },
+  "godot/assets/audio/voice/vol1_link_booth/008.mp3": {
+   "at": "2026-10-19T16:19:59+00:00",
+   "md5": "56ceff749bbd063c2a055d3270063443",
+   "size": 195647
+  },
+  "godot/assets/audio/voice/vol1_link_counter/001.mp3": {
+   "at": "2026-10-19T16:20:09+00:00",
+   "md5": "9b8ee3f26d6c9286cf86c422ded25cde",
+   "size": 245385
+  },
+  "godot/assets/audio/voice/vol1_link_counter/002.mp3": {
+   "at": "2026-10-19T16:20:09+00:00",
+   "md5": "6e80712d4c8709957b8bf01f491f127a",
+   "size": 132954
+  },
+  "godot/assets/audio/voice/vol1_link_counter/003.mp3": {
+   "at": "2026-10-19T16:20:09+00:00",
+   "md5": "92ee7a27020b42392b1a2ca87695f378",
+   "size": 176421
+  },
+  "godot/assets/audio/voice/vol1_link_counter/004.mp3": {
+   "at": "2026-10-19T16:20:09+00:00",
+   "md5": "49ac739613c44eba90601706f9a9b95c",
+   "size": 130446
+  },
+  "godot/assets/audio/voice/vol1_link_counter/005.mp3": {
+   "at": "2026-10-19T16:20:09+00:00",
+   "md5": "b6ac7e67ed79ee38ce13b4e3115d536e",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/001.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "25bf5cebae4410a3e01d259b31b483ad",
+   "size": 257087
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/002.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "70de66296849a4bf2a4f9459a694ec8c",
+   "size": 134207
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/003.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "7a727787142c081ee91cf5e8419fa961",
+   "size": 154687
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/004.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "8182005ae8d94fb963c700783dacbce5",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/005.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "2d904a59692a64df102801889f5332da",
+   "size": 235354
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/006.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "6511cebda4faf4b820dbeff742bf4ca8",
+   "size": 186870
+  },
+  "godot/assets/audio/voice/vol1_link_jukebox/007.mp3": {
+   "at": "2026-10-19T16:20:19+00:00",
+   "md5": "328b6add9ce77b92671115b9eee13777",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol1_link_menu/001.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "8825d0e9a0d14436f71b6a6e109b3e59",
+   "size": 135461
+  },
+  "godot/assets/audio/voice/vol1_link_menu/002.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "dcd7bf760d3c89516c41aeca2036b027",
+   "size": 157195
+  },
+  "godot/assets/audio/voice/vol1_link_menu/003.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "957fb16ef3b8692b4e5cd2c75bb59abd",
+   "size": 194394
+  },
+  "godot/assets/audio/voice/vol1_link_menu/004.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "4cfbdb79d66eb5cf557ca5c604af7c8c",
+   "size": 171406
+  },
+  "godot/assets/audio/voice/vol1_link_menu/005.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "7a61d14720072f6401ccfa00bfcadf41",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol1_link_menu/006.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "8f179607729ba51fc35b7cd69bbe113e",
+   "size": 178929
+  },
+  "godot/assets/audio/voice/vol1_link_menu/007.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "cbf4630dc36cccd66176761af7f686b7",
+   "size": 181437
+  },
+  "godot/assets/audio/voice/vol1_link_menu/008.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "1d1d3d2dc38a3b7d04776440e151dae0",
+   "size": 172660
+  },
+  "godot/assets/audio/voice/vol1_link_menu/009.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "4d618eb44e7c451640aa5bff3a8f9d75",
+   "size": 199409
+  },
+  "godot/assets/audio/voice/vol1_link_menu/010.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "4d5820ae6dee46f5e78e996b6f3dd319",
+   "size": 144238
+  },
+  "godot/assets/audio/voice/vol1_link_menu/011.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "77064c3c495d0f34345b9beb25ccea44",
+   "size": 222397
+  },
+  "godot/assets/audio/voice/vol1_link_menu/012.mp3": {
+   "at": "2026-10-19T16:20:32+00:00",
+   "md5": "1d384c5df5186772906a15b60e3bccb1",
+   "size": 162211
+  },
+  "godot/assets/audio/voice/vol1_link_q_coat/002.mp3": {
+   "at": "2026-10-19T16:20:49+00:00",
+   "md5": "b9a09c43407ed4fff81ed24fe898879b",
+   "size": 76529
+  },
+  "godot/assets/audio/voice/vol1_link_q_coat/003.mp3": {
+   "at": "2026-10-19T16:20:49+00:00",
+   "md5": "4c31f2424fbe33517cc7a5bbd182307b",
+   "size": 122505
+  },
+  "godot/assets/audio/voice/vol1_link_q_coat/004.mp3": {
+   "at": "2026-10-19T16:20:49+00:00",
+   "md5": "3a1ce7b0bff241e9ee41fbcfbf9ced2b",
+   "size": 257087
+  },
+  "godot/assets/audio/voice/vol1_link_q_coat/005.mp3": {
+   "at": "2026-10-19T16:20:49+00:00",
+   "md5": "5c757f1d492ebb39d918bc2354ed9071",
+   "size": 81545
+  },
+  "godot/assets/audio/voice/vol1_link_q_cold/002.mp3": {
+   "at": "2026-10-19T16:21:03+00:00",
+   "md5": "77413ce66307a13fafe43f8cb0ca5177",
+   "size": 86978
+  },
+  "godot/assets/audio/voice/vol1_link_q_cold/003.mp3": {
+   "at": "2026-10-19T16:21:03+00:00",
+   "md5": "0caf9ca587eccefa15065c4c9bfd0c72",
+   "size": 235354
+  },
+  "godot/assets/audio/voice/vol1_link_q_cold/004.mp3": {
+   "at": "2026-10-19T16:21:03+00:00",
+   "md5": "8782ce0436b5ade532b9725ae8cc04b8",
+   "size": 139223
+  },
+  "godot/assets/audio/voice/vol1_link_q_name/002.mp3": {
+   "at": "2026-10-19T16:21:24+00:00",
+   "md5": "d15383ff254adc80b5ae5b9d60de6884",
+   "size": 252072
+  },
+  "godot/assets/audio/voice/vol1_link_q_name/003.mp3": {
+   "at": "2026-10-19T16:21:24+00:00",
+   "md5": "8153cd7ed3edc1ae090c53beb4c6109d",
+   "size": 99517
+  },
+  "godot/assets/audio/voice/vol1_link_q_name/004.mp3": {
+   "at": "2026-10-19T16:21:24+00:00",
+   "md5": "cf171f972c63d88b78c8e2b51a200f3d",
+   "size": 140477
+  },
+  "godot/assets/audio/voice/vol1_link_q_where/002.mp3": {
+   "at": "2026-10-19T16:21:31+00:00",
+   "md5": "38332daf11981005ef6f0636a5f11a99",
+   "size": 170152
+  },
+  "godot/assets/audio/voice/vol1_link_q_where/003.mp3": {
+   "at": "2026-10-19T16:21:31+00:00",
+   "md5": "a2d99e78771ab495a87ad9af8879ea89",
+   "size": 231592
+  },
+  "godot/assets/audio/voice/vol1_link_q_where/004.mp3": {
+   "at": "2026-10-19T16:21:31+00:00",
+   "md5": "d4b045765359a67f470b888eff78d6f6",
+   "size": 125430
+  },
+  "godot/assets/audio/voice/vol1_link_window/001.mp3": {
+   "at": "2026-10-19T16:21:40+00:00",
+   "md5": "5644b4fbdda7856213802b1a6a0c52a4",
+   "size": 223651
+  },
+  "godot/assets/audio/voice/vol1_link_window/002.mp3": {
+   "at": "2026-10-19T16:21:40+00:00",
+   "md5": "a434706d680426d9fbbf4ddbc9d34fcb",
+   "size": 230338
+  },
+  "godot/assets/audio/voice/vol1_link_window/003.mp3": {
+   "at": "2026-10-19T16:21:40+00:00",
+   "md5": "4a84e4a3c80a5c68639769a8aa7db4ab",
+   "size": 208604
+  },
+  "godot/assets/audio/voice/vol1_link_window/004.mp3": {
+   "at": "2026-10-19T16:21:40+00:00",
+   "md5": "72106421a2c961494124ff1101aadc8e",
+   "size": 147164
+  },
+  "godot/assets/audio/voice/vol1_missing_link/003.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "283c05fe099a04a09718dba3d2c3ae4d",
+   "size": 142985
+  },
+  "godot/assets/audio/voice/vol1_missing_link/004.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "d2d12ef5f3d10976772f625757c3da04",
+   "size": 181437
+  },
+  "godot/assets/audio/voice/vol1_missing_link/005.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "3fde30d421e9ae71e0e424a67e2a563b",
+   "size": 277567
+  },
+  "godot/assets/audio/voice/vol1_missing_link/006.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "c3fab101c1eae246fbd155a6b8c3d928",
+   "size": 82798
+  },
+  "godot/assets/audio/voice/vol1_missing_link/008.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "f6548f44b821dc7c044560d0d368c3f6",
+   "size": 170152
+  },
+  "godot/assets/audio/voice/vol1_missing_link/009.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "5884502f667375aaac14ab0df4c3656a",
+   "size": 200663
+  },
+  "godot/assets/audio/voice/vol1_missing_link/010.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "bb93666c0c6029933e5e51e57593d043",
+   "size": 97009
+  },
+  "godot/assets/audio/voice/vol1_missing_link/011.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "54fbbc45b39d0f6e8b64e80768c1ce2d",
+   "size": 28046
+  },
+  "godot/assets/audio/voice/vol1_missing_link/014.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "a05a0db2d683f2867552d11e19ee5e9b",
+   "size": 299301
+  },
+  "godot/assets/audio/voice/vol1_missing_link/015.mp3": {
+   "at": "2026-10-19T16:22:20+00:00",
+   "md5": "701643c5efa78086f641f95878a4f4de",
+   "size": 157195
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/000.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "2aded978f6c7aac3b626fb6c898af1d0",
+   "size": 29300
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/001.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "fa277450c805eae714f57c5a399c801d",
+   "size": 129192
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/002.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "839322e9735c06119697ab53f7c03738",
+   "size": 81545
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/003.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "525d7ddca1ec5a9503bfb0682d5844dd",
+   "size": 177675
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/004.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "c9584f658941aeaab7c04198649769e6",
+   "size": 273806
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/005.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "bf5bc134ca3bcee70addc6239c2b23de",
+   "size": 123758
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/006.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "96a3a20531d83a7453bdd74fa44d5475",
+   "size": 123758
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/007.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "0ab7676b011c7d373d52ab196e95f621",
+   "size": 250818
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/008.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "6c376acde4a64495f576645b8643ee47",
+   "size": 167644
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/009.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "310722764d47881ea7343bc5ca915f18",
+   "size": 54795
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/010.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "805443afcd1ee985e7284863d2e2c09b",
+   "size": 81545
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/011.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "007319698046aa343afb43f2f65683ac",
+   "size": 94501
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/012.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "1b60044f04f5b6d0377c3d433aff67b7",
+   "size": 17597
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/013.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "ca9b35ac39369fd995a1a5825918b965",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/014.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "7a3abc8d5710ce87d862b4842859f8bb",
+   "size": 63990
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/015.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "203284773fd3e4417fd7220d5ad9626d",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/016.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "aeda629d52aa0445e4724ead8a5f0581",
+   "size": 66498
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/017.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "c9efe5a4faf0b41845abbe8d2cd95651",
+   "size": 200663
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/018.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "aeecdb2da26817f2636f474b89a5762b",
+   "size": 263357
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/019.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "4a10bdfbe1e55b14d4b6a6c224775904",
+   "size": 213620
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/020.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "f709f7e46ebeed16536e778bdd82ac2c",
+   "size": 108712
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/021.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "be7ccb7a296312c9a247ad52303483b6",
+   "size": 224905
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/022.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "9fab826820f277b92964e5a9b4106510",
+   "size": 79037
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/023.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "4999a5bdbec24e22e22ac823c9f659f7",
+   "size": 131700
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/024.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "d2d07cdd2ac1611d76363cd3baaf0d89",
+   "size": 223651
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/025.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "aced44becf74f23c015e03fe3f2873e9",
+   "size": 41838
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/026.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "28a63eb9da6fcd5f1eadc443ef077486",
+   "size": 26792
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/027.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "c7a92d29984fe8aa13e7f556442ee295",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_prelude_editing_suite/028.mp3": {
+   "at": "2026-10-19T16:22:41+00:00",
+   "md5": "6929f04f972bc35c76a9e5e30b470dc5",
+   "size": 35569
+  },
+  "godot/assets/audio/voice/vol1_title/001.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "3a9624b352fd0b73efb816927115dc8e",
+   "size": 18851
+  },
+  "godot/assets/audio/voice/vol1_title/002.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "cfbb7094980ca849b1b8e00b7be8a999",
+   "size": 30554
+  },
+  "godot/assets/audio/voice/vol1_title/003.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "27086d6b0412f466e942e5e8c7008903",
+   "size": 372444
+  },
+  "godot/assets/audio/voice/vol1_title/004.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "ae76a5e0c8c710d15ced8b5e876a0eeb",
+   "size": 312258
+  },
+  "godot/assets/audio/voice/vol1_title/005.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "47798afbb3889d9b8676de37eec534d6",
+   "size": 253326
+  },
+  "godot/assets/audio/voice/vol1_title/006.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "5b45fc34f6e0cd50e3939996d2558aad",
+   "size": 216127
+  },
+  "godot/assets/audio/voice/vol1_title/007.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "0ba08059acb741682d88f14421891c79",
+   "size": 221143
+  },
+  "godot/assets/audio/voice/vol1_title/008.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "73ef4ac3dd39ede1ceb3d71665da3182",
+   "size": 36823
+  },
+  "godot/assets/audio/voice/vol1_title/009.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "57f02fa512deab25b8ff5e96e597280d",
+   "size": 100771
+  },
+  "godot/assets/audio/voice/vol1_title/010.mp3": {
+   "at": "2026-10-19T16:22:51+00:00",
+   "md5": "baf6f97af074ec965d796d45cb029eed",
+   "size": 28046
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/000.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "24c6dea9ef5a2d0b4ade928fde56f723",
+   "size": 38077
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/001.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "d6bd1387e982979bbca9c31cbc96c4a1",
+   "size": 203171
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/002.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "1a44c4e8682f25309ca455434e210926",
+   "size": 144238
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/003.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "7758b73c2357084262ac0d825d647509",
+   "size": 140477
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/004.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "05ba752748bf41d91c445ffd1f4d55bd",
+   "size": 118743
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/005.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "2146d9cccbef8927d59f7b4eb1e7bfc8",
+   "size": 77783
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/006.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "87a2a33efc0ec01308602b3637d61d6e",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/007.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "060d7caa75cc0a5f1cd2ce5bb8627945",
+   "size": 98263
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/008.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "fc934ff50978d0784b0b3568def14265",
+   "size": 98263
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/009.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "6666dd53967b046a8b0e399b5846ced9",
+   "size": 91994
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/010.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "4eb3a0aed17d826a3a6a30b21cd16d15",
+   "size": 99517
+  },
+  "godot/assets/audio/voice/vol1_trailer_faust3/011.mp3": {
+   "at": "2026-10-19T16:23:02+00:00",
+   "md5": "c96482750cd626056e63358e9dbb4b3a",
+   "size": 46018
+  },
+  "godot/assets/audio/voice/vol2_bf_building/001.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "08e19b457f59381bbd8dcca37081efdd",
+   "size": 294286
+  },
+  "godot/assets/audio/voice/vol2_bf_building/002.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "dabd659846b074d9531249eaf15db238",
+   "size": 116235
+  },
+  "godot/assets/audio/voice/vol2_bf_building/003.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "0afe1681b4a5b4cf2f3a2c566d6d0104",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol2_bf_building/004.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "ef675222e5c2fdb11bd3cbb87e16e29f",
+   "size": 166390
+  },
+  "godot/assets/audio/voice/vol2_bf_building/005.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "82a79c6b667e5e873e0871da13360349",
+   "size": 153434
+  },
+  "godot/assets/audio/voice/vol2_bf_building/006.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "e71385696660948ab71b896781617e2d",
+   "size": 89486
+  },
+  "godot/assets/audio/voice/vol2_bf_building/007.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "7715798b2a94177af769d121b2148a38",
+   "size": 183945
+  },
+  "godot/assets/audio/voice/vol2_bf_building/008.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "8914bd8d6d3711b7016bf13200cdd7d1",
+   "size": 369518
+  },
+  "godot/assets/audio/voice/vol2_bf_building/009.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "0dbf2e13cc7a30b4ec218f0e13b4fff5",
+   "size": 239115
+  },
+  "godot/assets/audio/voice/vol2_bf_building/010.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "aea3fb70c2f1838d7eb8ce3f65f53253",
+   "size": 203171
+  },
+  "godot/assets/audio/voice/vol2_bf_building/011.mp3": {
+   "at": "2026-10-19T16:23:13+00:00",
+   "md5": "68661b9cae7359a1cf42a5c503a6fca1",
+   "size": 125430
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/001.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "3564219a593124c238b15d79be0ff838",
+   "size": 180183
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/002.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "1e2b7c2c453f0565b9fdeac6de9c23c0",
+   "size": 270044
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/003.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "64c73366caaca148572fabcc443b83e9",
+   "size": 312258
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/004.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "7fb41d3d8f32651ef89abd8c2e90b41e",
+   "size": 148418
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/005.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "0e8f5633bb552caf676d5f135334312f",
+   "size": 193140
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/006.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "98e80b590d1afdc60ca320256f175966",
+   "size": 260849
+  },
+  "godot/assets/audio/voice/vol2_bf_dog/007.mp3": {
+   "at": "2026-10-19T16:23:33+00:00",
+   "md5": "dcb58f0aacde7dfd3232bdf873cce57a",
+   "size": 107458
+  },
+  "godot/assets/audio/voice/vol2_bf_end/001.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "9cefbe85e602d9d41a2e4986dfd78bd6",
+   "size": 180183
+  },
+  "godot/assets/audio/voice/vol2_bf_end/002.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "20a359f14212dcef806aeed40ef65b91",
+   "size": 122505
+  },
+  "godot/assets/audio/voice/vol2_bf_end/003.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "768fcc6737b7017a53b9d64d81790ef9",
+   "size": 239115
+  },
+  "godot/assets/audio/voice/vol2_bf_end/004.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "633faf0841cf13fa5c0539d7abcdf909",
+   "size": 219889
+  },
+  "godot/assets/audio/voice/vol2_bf_end/005.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "a3728e14360b9988c2560567c13e163b",
+   "size": 199409
+  },
+  "godot/assets/audio/voice/vol2_bf_end/006.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "278b9d3975350cc8846a0ff080b7a9d6",
+   "size": 80291
+  },
+  "godot/assets/audio/voice/vol2_bf_end/007.mp3": {
+   "at": "2026-10-19T16:23:43+00:00",
+   "md5": "d5b16d26f656cf70560a278966e713be",
+   "size": 281329
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/001.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "48dc4f9f0d19b1ea5cbbb5c79c8e6884",
+   "size": 203171
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/002.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "3ab30d2553015e4860fefbd3cea1feb0",
+   "size": 230338
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/003.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "e097d12c8c24ff24e69f3d78a7de83c6",
+   "size": 260849
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/004.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "e726208a1941d1543ced5b0cdfd716a1",
+   "size": 248310
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/005.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "50378bf3a428ed6539df9e140dc0f39c",
+   "size": 125430
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/006.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "9d00905a77e3c028b44aa0ed7db64619",
+   "size": 185198
+  },
+  "godot/assets/audio/voice/vol2_bf_lot/007.mp3": {
+   "at": "2026-10-19T16:23:54+00:00",
+   "md5": "fbb5ee70f33e4707df472e1bf6ef82c9",
+   "size": 147164
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/001.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "105dd334c19db3c39e41f319e93b0330",
+   "size": 136715
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/002.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "f4322ede85e7cfd5db3821fa34f87983",
+   "size": 72767
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/003.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "ab93b20cbbc3212d12f0f841a47d81a7",
+   "size": 249564
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/004.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "840ba2b749be0edaed5fdf5093cabc54",
+   "size": 230338
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/005.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "11067f733052fc1095df43584172d777",
+   "size": 119997
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/006.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "44e2fa74b14d8b4a474827f58644b5e3",
+   "size": 224905
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/007.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "513450762d888f28be403f70d2ab903b",
+   "size": 178929
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/008.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "3a195ff10ba71841122b53be5d02521a",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol2_bf_overlook/009.mp3": {
+   "at": "2026-10-19T16:24:03+00:00",
+   "md5": "7a8324d8af565caeb63f13d90133a365",
+   "size": 318527
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/001.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "ce27dbbcc0e02f6d5dbd9bb4c53c01ea",
+   "size": 267118
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/002.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "80d6b57229cb3fb3e4ad1df6b9e2ab9c",
+   "size": 72767
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/003.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "3e758369b0420bedc23e800d9dfdd131",
+   "size": 293032
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/004.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "5d9d241acdaebfeecf1cd581217dc37a",
+   "size": 180183
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/005.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "245334c8282688da16773bf729c99f64",
+   "size": 255834
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/006.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "6b66146dd895d290bab226d42ee884c9",
+   "size": 300555
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/007.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "f24765295ef57daf6b41260e4524d8c6",
+   "size": 246638
+  },
+  "godot/assets/audio/voice/vol2_bf_picnic/008.mp3": {
+   "at": "2026-10-19T16:24:13+00:00",
+   "md5": "e94cf08c9e9be40f1eb28e73c189b843",
+   "size": 139223
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/001.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "90eb80268fd669b98b0f52f27f1e8799",
+   "size": 300555
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/002.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "edbe8cf527a47980c6fd0518dc91893f",
+   "size": 16343
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/003.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "ab585a3b9ae54e419eda2fbffc17f079",
+   "size": 190632
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/004.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "cb5d4b04c1c44cc93e823d4328f9859b",
+   "size": 214874
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/005.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "d08308c645fe1f9ef5a5143731abc01c",
+   "size": 194394
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/006.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "6f752c5402a099cc5f63e9d9045a48cc",
+   "size": 118743
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/007.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "1da94fb5137e7831e3365e431f1c1547",
+   "size": 277567
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/008.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "a691ef7231989f0ca885fd6e2470a7c8",
+   "size": 175167
+  },
+  "godot/assets/audio/voice/vol2_bf_trail/009.mp3": {
+   "at": "2026-10-19T16:24:23+00:00",
+   "md5": "7c468b69c080d54b343a59bc60f4cb66",
+   "size": 333992
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/003.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "3bb4c5efd20cb9c3f0c0f9f49a06121d",
+   "size": 257087
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/004.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "888e985d2bd25b98d4fe57ea0fc992fe",
+   "size": 121251
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/005.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "e9af5cfa2f2e49bd09236fc86c946691",
+   "size": 235354
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/006.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "682cf5c15b5e4faa76abba855b3351ee",
+   "size": 221143
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/007.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "7ef51855f8c6d2f8a33ac46f1a11569f",
+   "size": 166390
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/008.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "3d0711b569a82c64641c8b7aa29dea96",
+   "size": 163465
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/009.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "ee0d377dc0a8890129de0de576f5d7db",
+   "size": 190632
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/010.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "e898341ba9366b1b456351e740a2ec23",
+   "size": 116235
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/011.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "e2ba5416de6750db4c6801d0c0b3ae11",
+   "size": 171406
+  },
+  "godot/assets/audio/voice/vol2_briar_falls_interlude/012.mp3": {
+   "at": "2026-10-19T16:24:32+00:00",
+   "md5": "c402dd606d6c001bb7b721df3ceab18c",
+   "size": 240369
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/003.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "c5a34401730f61c34f1e75efb8c19152",
+   "size": 44764
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/004.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "5d9073b5cadaafebc0212b76decbe277",
+   "size": 236607
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/005.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "b8725080cda699719f820d309208df24",
+   "size": 84470
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/006.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "3f0772577d6d55b0287f859a40b5d8bf",
+   "size": 108712
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/007.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "2a9afdbe99ab408f44199058d25b2ad9",
+   "size": 234100
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/008.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "4dbe7b051fc928b9b501ab6e813cf8a2",
+   "size": 106204
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/009.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "1acbef815b5dcbdd26940f0ce7c5bf99",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/010.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "191f7328f72db4fb5f4d8fb260b09536",
+   "size": 65244
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/011.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "5b180221be85b48e7be7c26244a7b27a",
+   "size": 114981
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/012.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "ce1141e275da8027672fce4fad4db3f1",
+   "size": 177675
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/013.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "2cfc8197d868df7b9bb030374f83460b",
+   "size": 163465
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/014.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "de945418295168d4dae60cb53ccd3655",
+   "size": 273806
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/015.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "aae355162eebb5465e987c4dd4df0ea4",
+   "size": 176421
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/016.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "c7f678c564f8f3734922a04ac4eb2ffa",
+   "size": 282583
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/017.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "1022c935597b513739da9d57acf121ed",
+   "size": 141731
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/018.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "f80b4755f08c71e138832e01cf740b98",
+   "size": 107458
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/019.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "8f066bc1839c781105d156a38c69eb0a",
+   "size": 175167
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/020.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "31114f111cd25e601b27dcf221b40dff",
+   "size": 300555
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/021.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "89880f9d38f4e1e2bacbe555e3f75068",
+   "size": 196901
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/022.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "ba3011baaee1f6e790e35af65ceab79e",
+   "size": 172660
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/023.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "be86a1ea64138610d1ae0f1947e6ec8b",
+   "size": 127938
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/024.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "1e5d813466f05bf2977a46f427ecbbdd",
+   "size": 219889
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/025.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "23ea19b08234e76db74c45fe9a8fac1d",
+   "size": 232846
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/026.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "2db19a2fd83541f5be1e36cd101483a1",
+   "size": 252072
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/027.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "bcc066311639d6613e4460e0dcc5ada7",
+   "size": 211112
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/028.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "7080daef4cb480f391b6202972fd1e2f",
+   "size": 263357
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/029.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "f9a143f53760360d8c0c1cfe74c48bdf",
+   "size": 111220
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/031.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "8eda20f91dbbb2413e4b57047d0a441f",
+   "size": 252072
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/032.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "3e0402b41060245772fe1af7e8b8b467",
+   "size": 180183
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/033.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "de25431b2023e53d403fa031ac02fac5",
+   "size": 229084
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/034.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "fad8fb6a6bc6dfe1ca948f559123179b",
+   "size": 195647
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/035.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "4bf2262b6653d8d945dbfcc9d83ccf1c",
+   "size": 295540
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/036.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "767af07927d42aa51a836a90df05c483",
+   "size": 67752
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/037.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "eadb029d540e71ac6339c28e406e7f4d",
+   "size": 93247
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/038.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "c562411bd674fc05c0d7e0b9dab4c614",
+   "size": 141731
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/039.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "cb72e08df9f9bfca3614395c8ca00adc",
+   "size": 171406
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/040.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "3d0ed065b2c7d31dc79bba1fbc398c22",
+   "size": 321035
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/043.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "465021c42836049c6d66cae45f1beb05",
+   "size": 270044
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/044.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "0d2fb32ab4bba39e2d183a88436c8509",
+   "size": 77783
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/046.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "09dac237374f16035b558db31b41d54a",
+   "size": 172660
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/047.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "d4d939ea02eada78c308a0e58d926c91",
+   "size": 127938
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/048.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "7bf305048cc2a29834f13643c69cb157",
+   "size": 59811
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/049.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "3141b12bb9059ff60b2967e7fad52e30",
+   "size": 154687
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/050.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "ba1fc3a7199f167f2d4e6b6f893c328c",
+   "size": 79037
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/051.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "f94e54c36e218a8701761876402d9fd0",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/052.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "5f2c9586f6cd339986677b8cf6743025",
+   "size": 166390
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/053.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "1775e99978952c97d5b522c8a8321556",
+   "size": 29300
+  },
+  "godot/assets/audio/voice/vol2_ch1_history_one/054.mp3": {
+   "at": "2026-10-19T16:25:02+00:00",
+   "md5": "d18e51d0f8ba2fb4e169783036d6d9d4",
+   "size": 173914
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/002.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "028effabd0f5e0e69b7f0d91abd11a97",
+   "size": 91994
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/003.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "79fb74d6d99bd18ad8c1699bcc54ba5f",
+   "size": 264611
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/004.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "d3e563fcbc5a74c7de147ea3aba91fa8",
+   "size": 267118
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/005.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "e43ff6911851e20bba1b74ca5de29a0a",
+   "size": 152180
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/006.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "333ea28ab842ecfd645e3d6fe8f78b65",
+   "size": 255834
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/007.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "41c22060c3c927899915dfe1c53c66d2",
+   "size": 186870
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/008.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "d8d46069d7d237a42dd4f39fabe26896",
+   "size": 166390
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/009.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "a6fa578855862199a13dbfd1f23afb9c",
+   "size": 268790
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/010.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "dc9ce0f6f09ed7471e6c2cbc5eb2bf6d",
+   "size": 113727
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/013.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "9342374a41f128fd56f8d2f628447395",
+   "size": 308078
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/014.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "9be5807fa172b47695affbc4994304a8",
+   "size": 196901
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/015.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "7ac493a5ae7277edf94f455551fa11ea",
+   "size": 147164
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/016.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "8b5f8b84a390503f43de16c89f18671c",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/017.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "6bfed4bbdfc397c9cbc44b1ac5ae144f",
+   "size": 177675
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/018.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "426cd6d89212b30bbdb1a30c0816e261",
+   "size": 180183
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/019.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "244463c945cfff79af8a9c6e26abb088",
+   "size": 264611
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/020.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "39677e9cd235223afad9c62000445b14",
+   "size": 240369
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/021.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "ba01134bd3a1ed512ae6ae7aafeccc76",
+   "size": 236607
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/022.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "968f53db4250d273885532517ac0585a",
+   "size": 116235
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/023.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "bdf0c938938a8f0d2976775883576b4c",
+   "size": 304317
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/024.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "bdfba071428c6415b7fe5685dc08add4",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/025.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "fe2a48f27803c8a5cd23cc5abd6057b9",
+   "size": 163465
+  },
+  "godot/assets/audio/voice/vol2_ch2_cliffside/026.mp3": {
+   "at": "2026-10-19T16:25:20+00:00",
+   "md5": "96d5d4bc09a21e3ac82d0b90f45ea557",
+   "size": 182691
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/002.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "74a29ac181d3353de3e0504154186fde",
+   "size": 81545
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/003.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "19c9bc025dba1118ca8f73730e3e182b",
+   "size": 155941
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/004.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "096f877dbca903dee7465cc5b67ad3f0",
+   "size": 183945
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/005.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "b847402a340551dd0cdc4342532a23c7",
+   "size": 332738
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/006.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "e10e69ae31ebf73e264645ad4a0657b5",
+   "size": 244131
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/007.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "d434310864971e675ff7352a7685027a",
+   "size": 262103
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/008.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "4de217b5d1f1fa6e19f2e0923764d61a",
+   "size": 177675
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/009.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "25042a5b7b9f65de08d6553b5cb40845",
+   "size": 107458
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/010.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "528016baa3e668037d4b7508f790a5b2",
+   "size": 177675
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/011.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "ec3a4abc0e6e4ec3b7f929b2a95df65c",
+   "size": 157195
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/012.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "dd8d3247a1abb592bd4990e330c07569",
+   "size": 28046
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/013.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "d0c4365caeab525396929e6a5b6349c1",
+   "size": 248310
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/014.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "54345700c20e69388ec3167036557267",
+   "size": 216127
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/015.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "77e1d900a16b34d6eb3475f6f9860606",
+   "size": 106204
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/016.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "0150d587a88327877817cb9132854052",
+   "size": 221143
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/017.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "79acbd859dd21c5f055916d6ee4fad16",
+   "size": 70260
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/018.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "66bf2b87c2f8ad3fb49819e8a6d253b5",
+   "size": 219889
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/019.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "e4b8ff173a84ff55ceb1457dba09d382",
+   "size": 70260
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/020.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "abbef9498176f22b14b5c1a6fc14266a",
+   "size": 173914
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/021.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "6688bd7295726af958850e2651f6dff7",
+   "size": 84470
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/022.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "0c0f33622647461a85ee16bf1e9b3537",
+   "size": 137969
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/023.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "899067eb778f05463e8510155231db48",
+   "size": 259595
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/024.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "91992623a43a078a09da846e870f2020",
+   "size": 51034
+  },
+  "godot/assets/audio/voice/vol2_ch2_disappearance/025.mp3": {
+   "at": "2026-10-19T16:25:44+00:00",
+   "md5": "31805a83a70298664ef3ebcbcc5ade59",
+   "size": 20105
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/002.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "91aae4a8525e035d71240aa8de42fbac",
+   "size": 119997
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/003.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "f9e64ea73fa2b054e6df8429f5e3abf9",
+   "size": 244131
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/004.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "996b7ef8dcbe8f90912918c01735b46f",
+   "size": 249564
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/005.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "adbf4b0841e2fcf3da5ca071e9921db9",
+   "size": 276314
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/008.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "f376e5699f4f4d18912a8314e2aa4bd1",
+   "size": 218635
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/009.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "4d8c7bb30a1674b221e27ea69f1c108b",
+   "size": 126684
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/010.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "dcf7db02c14f26f9731139c445eece76",
+   "size": 97009
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/011.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "6be2350934f28807febd7c498db4a524",
+   "size": 217381
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/012.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "00b6db1b48d9753657e02c741a50c378",
+   "size": 199409
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/013.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "f119373d70ed8879ee508cee1ee29d0c",
+   "size": 147164
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/014.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "4f8e326c5057239b977e54f4e898dd38",
+   "size": 162211
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/015.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "13524ccf7e963b0d56435400a9f121ed",
+   "size": 168898
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/016.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "68378875db91d1cab9b2c7064fb41842",
+   "size": 163465
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/017.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "05d7c936f01b66f0be328d9e58609dad",
+   "size": 93247
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/018.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "ff886a2788811c632aca0dffbedd3e3b",
+   "size": 147164
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/019.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "57557c8258dfaf1f4a28f58544b840af",
+   "size": 154687
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/020.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "df271d9305a0f7a601b1de23abd445e6",
+   "size": 141731
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/021.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "f6aafa16870b48f308b1b0abf4dce523",
+   "size": 196901
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/022.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "afada35715c8b8d3155020b642946a19",
+   "size": 205678
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/023.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "b35d611f83fd039a3a8a817a6be4d655",
+   "size": 150926
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/024.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "582c53a19737b6992d11914aab81cbfe",
+   "size": 154687
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/025.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "82a44b9c6494bd923a5b80de36bd4f04",
+   "size": 298047
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/026.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "e5b278acef7d1e031367f66508f3860c",
+   "size": 262103
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/027.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "ccce9b96b48999630aa9cd10fb5876a1",
+   "size": 77783
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/028.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "10411e6853c2e97e63a9e9fe79ae81f8",
+   "size": 217381
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/029.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "35d4d254a4152a610c21ca59abb1300f",
+   "size": 142985
+  },
+  "godot/assets/audio/voice/vol2_ch2_ghost/030.mp3": {
+   "at": "2026-10-19T16:26:04+00:00",
+   "md5": "50499855f2f647315b0da25db27e75fe",
+   "size": 235354
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/002.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "8e6c2071582b9d01df4ef854a7a63146",
+   "size": 183945
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/003.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "0c1884b94f235578d6a86bd9a34978ae",
+   "size": 229084
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/004.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "0689b1a47e7cd53e610cb0067562762e",
+   "size": 219889
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/005.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "c7adc03246427f5dc7cfd70a562bfc23",
+   "size": 177675
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/007.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "c7ce83c95f139a5a3fb59dffc50735bd",
+   "size": 232846
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/008.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "7f8973a09248c3dce9d7c44d72d86a9f",
+   "size": 132954
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/009.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "bfdb037a92b1ebc71eee5be26221c1f0",
+   "size": 263357
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/010.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "680728a520e5a8893492c4b571a7f98f",
+   "size": 108712
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/011.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "fd185316316ba1de7ea2e5185d3ec5e6",
+   "size": 180183
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/012.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "1f23e0cf2d660ba51c7b24986e85716c",
+   "size": 308078
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/013.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "3ae8b19a69e93c44106d8b09776a99e4",
+   "size": 235354
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/015.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "8a16401fdbae7180090137a02d238568",
+   "size": 164718
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/016.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "c5d91d482a78e0d227b96bb41288e10f",
+   "size": 163465
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/017.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "00ae704ae6d88c9dbfa739945700ab7c",
+   "size": 149672
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/018.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "4a118393b6fa30a99bbeaf323a68b327",
+   "size": 182691
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/019.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "8124228eff1400a8c730c591971634f6",
+   "size": 313512
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_one/020.mp3": {
+   "at": "2026-10-19T16:26:19+00:00",
+   "md5": "988eb3a95ec48a4cd782f06d77c94bd2",
+   "size": 296794
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/002.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "bd254f12716846c4bdf33aa326e66d96",
+   "size": 100771
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/003.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "275c2041513c00dc6008abacbd347c72",
+   "size": 162211
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/004.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "cb06113e78ff3f83d482e37ff57dd6d7",
+   "size": 188124
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/005.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "bbb71357c54d44ccd6046d3a469d5734",
+   "size": 153434
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/006.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "e38dce53af31d42d060f10ab672e63d0",
+   "size": 250818
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/007.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "ab708fbbbdf731c67c3a97180b5d5498",
+   "size": 185198
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/008.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "8544b9cbd13eab62dba9131df9aebef8",
+   "size": 246638
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/009.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "0d82d793c7c339f8653d88a6d0f161f9",
+   "size": 160957
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/010.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "afbe32e06ffd31864edff01855398685",
+   "size": 108712
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/011.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "5e3341a0bc64d76d763991dccd9a5c6d",
+   "size": 82798
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/012.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "884dea478efe0271cbca2820e499b734",
+   "size": 182691
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/013.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "c0bdfbc02eeb70be92e09b8f99330c6c",
+   "size": 287598
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/014.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "05958e158222fefce1f2add3d3a39a28",
+   "size": 194394
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/015.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "b8cb6dad4488fb3ef60ff9e944af9201",
+   "size": 224905
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/016.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "3b995314e9a235c7db12626aee8d39b7",
+   "size": 127938
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/017.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "cc6938ee613443ff43a662cd085ccdc2",
+   "size": 213620
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/018.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "2d7602681b48a59eefbe20c40c79bfd1",
+   "size": 163465
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/019.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "ad82514eb729cb60b49bd34b6be7abeb",
+   "size": 281329
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/020.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "3c36c5ea9c531b2b164c15826fa28cba",
+   "size": 227830
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/021.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "22819ae33a3612ee1c9bfbf7da718263",
+   "size": 211112
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/022.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "395a3f968e83e77fab8f180de74118ac",
+   "size": 76529
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/023.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "24ae0f94bcb5dcdb4b9ea44f434a2147",
+   "size": 149672
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/024.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "30f317bec472618b1aa4dd3bc45a3cc9",
+   "size": 224905
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/025.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "209a5302404842227face2dc5c4046e6",
+   "size": 90740
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/026.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "5554612f6534052864330e74f9a97b45",
+   "size": 272552
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/027.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "1e62ba7d41430923def2415977f26128",
+   "size": 109966
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/028.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "89930a41705f1a60ee74d20ead009b40",
+   "size": 227830
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_three/029.mp3": {
+   "at": "2026-10-19T16:26:40+00:00",
+   "md5": "f0304e051a9229a8105bdaf5a940e742",
+   "size": 102025
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/002.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "a72dc800220a6efda3b937e7c6b30cbe",
+   "size": 323543
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/003.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "e62a057f626e8cbaf742ea634bc4954e",
+   "size": 273806
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/004.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "7d5802ce90a79f3bd5407dc425cf4aa1",
+   "size": 199409
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/005.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "2af30d4707a1468a43042613501facd3",
+   "size": 170152
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/006.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "82f916d5e7c5311f24bc4c71e5acaef7",
+   "size": 142985
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/007.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "093654122e78c61bde5d1fff80ef8219",
+   "size": 201917
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/008.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "ddef93e0e2988c0b33c0d37784f48ae6",
+   "size": 198155
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/009.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "2b2f0ca5b488c70ccb5f4e746d9e4c19",
+   "size": 147164
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/010.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "1bc91880c1b72ff65735d4f18ca07a60",
+   "size": 170152
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/011.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "79cbafc14d50447c399b4b4e944a3462",
+   "size": 203171
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/012.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "29c772b4eac2df5fbf9688519bbd2212",
+   "size": 155941
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/013.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "353656f7ef4a20ed2edf85bbfd0ccd16",
+   "size": 252072
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/014.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "d890d90b24d3ba726f9c12ee7ce4726e",
+   "size": 277567
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/015.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "660c30cd71c1b8dc195f1373a70c9afa",
+   "size": 191886
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/016.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "35ff2ba5e07e6f21edd1efebd444ac9d",
+   "size": 182691
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/017.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "52d2ba4db3a12cdc7a5425d6195433c2",
+   "size": 142985
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/019.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "ada5e7dd1a9158a40c9af6b88eace622",
+   "size": 158449
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/020.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "501a80afac1a6cfc180b60407641a241",
+   "size": 178929
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/021.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "c561433f276662ddd92635a4f613990c",
+   "size": 219889
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/022.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "49e9290c2530d94c51ed742d15a07138",
+   "size": 57303
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/023.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "7bdce3e0692d13edc32a7d0f802b11c0",
+   "size": 153434
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/024.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "6f62cd038208e3c053deef5ce521edde",
+   "size": 91994
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/025.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "b0fb9096f3eaf2febcd71b387de99cb8",
+   "size": 127938
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/026.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "4dcdfd4ec02ce3848d07f8cafa05cca1",
+   "size": 158449
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/027.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "26c93ab3fc6e41b6dde799fd686d7f95",
+   "size": 293032
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/028.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "432b99ff39841ca8875c63ff4840fecb",
+   "size": 114981
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/029.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "9b407fe66b730dfe267c95939046ef4e",
+   "size": 194394
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/030.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "000bc5c0a2a861ef06cb150b75fa6c3d",
+   "size": 159703
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/031.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "5ff4adb5f996ea892ad05f71e73f6810",
+   "size": 142985
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/032.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "941a964318f029e375e7ea379c239ea6",
+   "size": 81545
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/033.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "a2ccdb0978d8d5375c94bddb20886abe",
+   "size": 176421
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/034.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "7264095502addbe304b1367ffeabc7e6",
+   "size": 71514
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/035.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "34613e26f8c1deaa864d42beef5b6cad",
+   "size": 198155
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/036.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "560e6961b10ade0fddbb5681dd7b7b02",
+   "size": 168898
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/037.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "a5dd3eb243c70479d4d47dfb8934f674",
+   "size": 290524
+  },
+  "godot/assets/audio/voice/vol2_ch2_interlude_two/038.mp3": {
+   "at": "2026-10-19T16:27:16+00:00",
+   "md5": "8f72cb84e0635ec5b24e0c37b4106901",
+   "size": 90740
   },
   "godot/assets/audio/voice/vol5_ch0_booth6/001.mp3": {
    "at": "2026-10-01T19:41:05+00:00",
@@ -65940,15 +69115,40 @@
    "md5": "1d81ef8c26e80bc0b3665cd3a48c03ea",
    "size": 2572825
   },
+  "godot/assets/concept/meshy/hal/back.png": {
+   "at": "2026-10-19T16:27:22+00:00",
+   "md5": "452f5a87bd87b16efcebf6e646b84df2",
+   "size": 2199980
+  },
   "godot/assets/concept/meshy/hal/front.png": {
    "at": "2026-10-19T14:53:26+00:00",
    "md5": "5000b5355c3d76f0522eca24d2bc058d",
    "size": 1878125
   },
+  "godot/assets/concept/meshy/hal/hal_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:27:22+00:00",
+   "md5": "452f5a87bd87b16efcebf6e646b84df2",
+   "size": 2199980
+  },
   "godot/assets/concept/meshy/hal/hal_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T14:53:26+00:00",
    "md5": "5000b5355c3d76f0522eca24d2bc058d",
    "size": 1878125
+  },
+  "godot/assets/concept/meshy/hal/hal_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:27:22+00:00",
+   "md5": "abf0ea11ca58ed9841cb791105b857f3",
+   "size": 2019702
+  },
+  "godot/assets/concept/meshy/hal/meshy_thumb.png": {
+   "at": "2026-10-19T16:27:22+00:00",
+   "md5": "ce4bd1080af8d9fe15343fb9e4b2aa17",
+   "size": 98867
+  },
+  "godot/assets/concept/meshy/hal/side.png": {
+   "at": "2026-10-19T16:27:22+00:00",
+   "md5": "abf0ea11ca58ed9841cb791105b857f3",
+   "size": 2019702
   },
   "godot/assets/concept/meshy/hans/back.png": {
    "at": "2026-10-11T18:35:49+00:00",
@@ -72574,6 +75774,36 @@
    "at": "2026-10-14T03:30:08+00:00",
    "md5": "223faa2b58b0e7ae1bea72edfc66e257",
    "size": 3318502
+  },
+  "godot/assets/concept/meshy/walt/back.png": {
+   "at": "2026-10-19T16:27:31+00:00",
+   "md5": "a746b8bbfb8bdb7840e568910a3501fd",
+   "size": 1973420
+  },
+  "godot/assets/concept/meshy/walt/front.png": {
+   "at": "2026-10-19T16:27:31+00:00",
+   "md5": "770f3f0c31a2d944ef5e61b3538ed2e6",
+   "size": 2016012
+  },
+  "godot/assets/concept/meshy/walt/side.png": {
+   "at": "2026-10-19T16:27:31+00:00",
+   "md5": "d3e51c61da33647304c725762f945f2d",
+   "size": 1916980
+  },
+  "godot/assets/concept/meshy/walt/walt_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:27:31+00:00",
+   "md5": "a746b8bbfb8bdb7840e568910a3501fd",
+   "size": 1973420
+  },
+  "godot/assets/concept/meshy/walt/walt_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:27:31+00:00",
+   "md5": "770f3f0c31a2d944ef5e61b3538ed2e6",
+   "size": 2016012
+  },
+  "godot/assets/concept/meshy/walt/walt_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:27:31+00:00",
+   "md5": "d3e51c61da33647304c725762f945f2d",
+   "size": 1916980
   },
   "godot/assets/concept/meshy/water_glass_table_17/back.png": {
    "at": "2026-10-18T17:29:13+00:00",

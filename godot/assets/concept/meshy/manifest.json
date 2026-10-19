@@ -22061,5 +22061,32 @@
     },
     "output": "godot/assets/3d/characters/heroes/hal.glb",
     "file_size_kb": 50246.8
+  },
+  {
+    "at": "2026-10-19T16:21:17+00:00",
+    "stage": "mesh",
+    "slug": "walt",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a154f4-8bb6-7514-a0d4-82fa86132ecf",
+    "inputs": [
+      "godot/assets/concept/meshy/walt/front.png",
+      "godot/assets/concept/meshy/walt/side.png",
+      "godot/assets/concept/meshy/walt/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/walt.glb",
+    "file_size_kb": 41159.1
   }
 ]

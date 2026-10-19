@@ -299,12 +299,12 @@
       "appears": "vol3 (48 lines)"
     },
     "ron": {
-      "voice_id": "",
+      "voice_id": "hIru3zkEJ3dBYHTbMy2V",
       "casting": "Ron, the big novelist housemate who needs 'a second set of eyes': an interviewer's patience and probing questions. 30s male, soft-spoken, deliberate.",
       "appears": "vol3"
     },
     "betty": {
-      "voice_id": "",
+      "voice_id": "itMkRQx56fOF4CJe1D0C",
       "casting": "Betty, Jack's girl who 'belonged to everybody': teasing, warm, easily spooked. 20s female, bright, with a little 1950s pulp flavor.",
       "appears": "vol3"
     },
@@ -717,6 +717,18 @@
     },
     "finn": {
       "voice_id": "cdnpdcqt2HW1XtKv2f3V"
+    },
+    "core": {
+      "voice_id": "NFFZBoF6tNodi008z7VH"
+    },
+    "verse": {
+      "voice_id": "NFFZBoF6tNodi008z7VH"
+    },
+    "jules": {
+      "voice_id": "HXOwtW4XU7Ne6iOiDHTl"
+    },
+    "melody": {
+      "voice_id": "TOXPlnYC7z5SQSV2Zgc5"
     }
   },
   "aliases": {
