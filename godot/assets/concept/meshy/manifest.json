@@ -21725,5 +21725,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/boyd.glb",
     "file_size_kb": 38115.1
+  },
+  {
+    "at": "2026-10-19T01:45:34+00:00",
+    "stage": "image",
+    "slug": "eileen_kazantzakis",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Eileen Kazantzakis (Coach K's wife) like this: She is sixty-two. She had the bypass in March. She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray. She climbs the bleacher steps slowly. Additional direction: Eileen Kazantzakis, 62, Coach K's wife, at a Saturday high-school football scrimmage in East Texas months after heart bypass surgery: slow and careful, private, quietly glad to be there. Gray hair under a faded baseball cap from 1996, jeans, a white short-sleeved blouse, comfortable flat shoes; a small thermos in one hand and a paper fan in the other.\nFull-body concept render of Eileen Kazantzakis (Coach K's wife), a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/eileen_kazantzakis/eileen_kazantzakis_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/eileen_kazantzakis/eileen_kazantzakis_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/eileen_kazantzakis/eileen_kazantzakis_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
