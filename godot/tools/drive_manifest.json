@@ -75,6 +75,11 @@
    "md5": "575c359308e6b2cd2ec585b64ab83446",
    "size": 49115768
   },
+  "godot/assets/3d/characters/heroes/_full/fire_elemental.glb": {
+   "at": "2026-10-19T17:53:34+00:00",
+   "md5": "62a7dcafecad63d51f343c4b96bac0da",
+   "size": 75396104
+  },
   "godot/assets/3d/characters/heroes/_full/hal.glb": {
    "at": "2026-10-19T16:13:16+00:00",
    "md5": "0fe859b1cd5f300126a77f96f8077794",
@@ -1224,6 +1229,11 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "3146a114b3fbaf61476dad7b208d14ce",
    "size": 66799
+  },
+  "godot/assets/3d/characters/heroes/fire_elemental.glb": {
+   "at": "2026-10-19T17:53:24+00:00",
+   "md5": "75d2b3ed96bcaa1fcfe9eb94d5af6448",
+   "size": 8379992
   },
   "godot/assets/3d/characters/heroes/frasier_temple.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -68685,15 +68695,40 @@
    "md5": "710ae78dae87275478e2f947d679039d",
    "size": 2537036
   },
+  "godot/assets/concept/meshy/fire_elemental/back.png": {
+   "at": "2026-10-19T17:53:40+00:00",
+   "md5": "af59530f2f901a31ab7feee49c3921d2",
+   "size": 2015220
+  },
+  "godot/assets/concept/meshy/fire_elemental/fire_elemental_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:53:40+00:00",
+   "md5": "af59530f2f901a31ab7feee49c3921d2",
+   "size": 2015220
+  },
   "godot/assets/concept/meshy/fire_elemental/fire_elemental_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T17:48:22+00:00",
    "md5": "c82a7c3b0e7247a8beeb72b97176fef8",
    "size": 2093266
   },
+  "godot/assets/concept/meshy/fire_elemental/fire_elemental_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:53:40+00:00",
+   "md5": "00d2783fca9cfe4af0d9b49646e59466",
+   "size": 1928055
+  },
   "godot/assets/concept/meshy/fire_elemental/front.png": {
    "at": "2026-10-19T17:48:22+00:00",
    "md5": "c82a7c3b0e7247a8beeb72b97176fef8",
    "size": 2093266
+  },
+  "godot/assets/concept/meshy/fire_elemental/meshy_thumb.png": {
+   "at": "2026-10-19T17:53:40+00:00",
+   "md5": "669dc8ce4dea2bf601d936cfb110c851",
+   "size": 94311
+  },
+  "godot/assets/concept/meshy/fire_elemental/side.png": {
+   "at": "2026-10-19T17:53:40+00:00",
+   "md5": "00d2783fca9cfe4af0d9b49646e59466",
+   "size": 1928055
   },
   "godot/assets/concept/meshy/fool_bindle/back.png": {
    "at": "2026-10-18T17:13:13+00:00",
@@ -76389,6 +76424,16 @@
    "at": "2026-10-19T16:27:31+00:00",
    "md5": "d3e51c61da33647304c725762f945f2d",
    "size": 1916980
+  },
+  "godot/assets/concept/meshy/water_elemental/front.png": {
+   "at": "2026-10-19T17:53:48+00:00",
+   "md5": "a7509da3616e944a32ff20c5faa8f4ce",
+   "size": 1743128
+  },
+  "godot/assets/concept/meshy/water_elemental/water_elemental_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:53:48+00:00",
+   "md5": "a7509da3616e944a32ff20c5faa8f4ce",
+   "size": 1743128
   },
   "godot/assets/concept/meshy/water_glass_table_17/back.png": {
    "at": "2026-10-18T17:29:13+00:00",
