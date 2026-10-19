@@ -22700,5 +22700,22 @@
     },
     "output": "godot/assets/3d/characters/heroes/bernard.glb",
     "file_size_kb": 57760.0
+  },
+  {
+    "at": "2026-10-19T18:07:06+00:00",
+    "stage": "image",
+    "slug": "vol1_hall_of_ratifications",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes hall of ratifications (dream architecture) like this: It's a hangar the size of a sky. Under them are long tables piled with ledgers, and the ledgers stretch off further than anyone can see. At the tables sit clerks with eyeshades and no faces, signing. Additional direction: A dream hangar the size of a sky. From the rafters, on wires like a museum, hang aircraft for every remembered year: biplanes, a silver Clipper, bombers with names painted on their noses, a crop duster, a passenger jet frozen mid-bank, and one small unpainted single-prop. Beneath them, long tables piled with ledgers run off past seeing, and faceless clerks in eyeshades sit signing, pens scratching everywhere like rain on a tin roof. Timeless, archival light.\nA single full-screen still for a literary visual novel set in an American city: hall of ratifications (dream architecture). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol1_hall_of_ratifications/vol1_hall_of_ratifications_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

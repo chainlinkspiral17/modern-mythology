@@ -35,6 +35,11 @@
    "md5": "b37f9106d7ad833e007db842cc031ab3",
    "size": 94263816
   },
+  "godot/assets/3d/characters/heroes/_full/bernard.glb": {
+   "at": "2026-10-19T18:07:05+00:00",
+   "md5": "550c1ccda3aeb990c89b0573da299750",
+   "size": 59146192
+  },
   "godot/assets/3d/characters/heroes/_full/boyd.glb": {
    "at": "2026-10-19T01:46:30+00:00",
    "md5": "91d4a7de5eb68511281169c124f1f0a7",
@@ -389,6 +394,11 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "299e22fedee232ff510578ee4f5f48e6",
    "size": 68902
+  },
+  "godot/assets/3d/characters/heroes/bernard.glb": {
+   "at": "2026-10-19T18:06:54+00:00",
+   "md5": "0dff640e762e49a90aef3e2dd89e74d0",
+   "size": 5527060
   },
   "godot/assets/3d/characters/heroes/bianca_miller.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -65885,15 +65895,40 @@
    "md5": "0925df308aba03301d76814b35a1e95e",
    "size": 1940742
   },
+  "godot/assets/concept/meshy/bernard/back.png": {
+   "at": "2026-10-19T18:07:12+00:00",
+   "md5": "feb58e92c5788fdbc365c007ef8dbbcb",
+   "size": 2063673
+  },
+  "godot/assets/concept/meshy/bernard/bernard_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T18:07:12+00:00",
+   "md5": "feb58e92c5788fdbc365c007ef8dbbcb",
+   "size": 2063673
+  },
   "godot/assets/concept/meshy/bernard/bernard_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T17:59:57+00:00",
    "md5": "d06233e46748fe2370e2aa67b34d3955",
    "size": 2167543
   },
+  "godot/assets/concept/meshy/bernard/bernard_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T18:07:12+00:00",
+   "md5": "7818c322a14823eef7964825c2df3736",
+   "size": 2052312
+  },
   "godot/assets/concept/meshy/bernard/front.png": {
    "at": "2026-10-19T17:59:57+00:00",
    "md5": "d06233e46748fe2370e2aa67b34d3955",
    "size": 2167543
+  },
+  "godot/assets/concept/meshy/bernard/meshy_thumb.png": {
+   "at": "2026-10-19T18:07:12+00:00",
+   "md5": "3d7cf67433744fd21d753662f168422a",
+   "size": 93445
+  },
+  "godot/assets/concept/meshy/bernard/side.png": {
+   "at": "2026-10-19T18:07:12+00:00",
+   "md5": "7818c322a14823eef7964825c2df3736",
+   "size": 2052312
   },
   "godot/assets/concept/meshy/bianca_miller/bianca_miller_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
