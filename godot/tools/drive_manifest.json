@@ -30,6 +30,11 @@
    "md5": "aa7420a88d47865c865c6f3728531778",
    "size": 458752
   },
+  "godot/assets/3d/characters/heroes/_full/air_elemental.glb": {
+   "at": "2026-10-19T17:47:57+00:00",
+   "md5": "b37f9106d7ad833e007db842cc031ab3",
+   "size": 94263816
+  },
   "godot/assets/3d/characters/heroes/_full/boyd.glb": {
    "at": "2026-10-19T01:46:30+00:00",
    "md5": "91d4a7de5eb68511281169c124f1f0a7",
@@ -144,6 +149,11 @@
    "at": "2026-10-19T16:39:39+00:00",
    "md5": "d8c5b497b8ae619997e3418663c25dcc",
    "size": 42146896
+  },
+  "godot/assets/3d/characters/heroes/air_elemental.glb": {
+   "at": "2026-10-19T17:47:47+00:00",
+   "md5": "b37f9106d7ad833e007db842cc031ab3",
+   "size": 94263816
   },
   "godot/assets/3d/characters/heroes/alberto.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -65425,6 +65435,41 @@
    "md5": "0226f13712fe2993c1c93ccbccf7a7dc",
    "size": 2011194
   },
+  "godot/assets/concept/meshy/air_elemental/air_elemental_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "bf7cbd81235e25e055bdcc12add5bf22",
+   "size": 2084070
+  },
+  "godot/assets/concept/meshy/air_elemental/air_elemental_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "a242de69b41a0075e0dbcf32c135f930",
+   "size": 2048832
+  },
+  "godot/assets/concept/meshy/air_elemental/air_elemental_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "7c98f14cc051c0fa6dc1a39db6eef6ec",
+   "size": 1986926
+  },
+  "godot/assets/concept/meshy/air_elemental/back.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "bf7cbd81235e25e055bdcc12add5bf22",
+   "size": 2084070
+  },
+  "godot/assets/concept/meshy/air_elemental/front.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "a242de69b41a0075e0dbcf32c135f930",
+   "size": 2048832
+  },
+  "godot/assets/concept/meshy/air_elemental/meshy_thumb.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "d95099b0aa2e8d6d80c76df9e4f60edd",
+   "size": 144506
+  },
+  "godot/assets/concept/meshy/air_elemental/side.png": {
+   "at": "2026-10-19T17:48:14+00:00",
+   "md5": "7c98f14cc051c0fa6dc1a39db6eef6ec",
+   "size": 1986926
+  },
   "godot/assets/concept/meshy/alberto/alberto_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "adfe0667bbf5665dea50bece1342677c",
@@ -68639,6 +68684,16 @@
    "at": "2026-10-14T03:32:49+00:00",
    "md5": "710ae78dae87275478e2f947d679039d",
    "size": 2537036
+  },
+  "godot/assets/concept/meshy/fire_elemental/fire_elemental_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:48:22+00:00",
+   "md5": "c82a7c3b0e7247a8beeb72b97176fef8",
+   "size": 2093266
+  },
+  "godot/assets/concept/meshy/fire_elemental/front.png": {
+   "at": "2026-10-19T17:48:22+00:00",
+   "md5": "c82a7c3b0e7247a8beeb72b97176fef8",
+   "size": 2093266
   },
   "godot/assets/concept/meshy/fool_bindle/back.png": {
    "at": "2026-10-18T17:13:13+00:00",

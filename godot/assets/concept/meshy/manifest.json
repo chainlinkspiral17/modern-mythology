@@ -22556,5 +22556,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/air_elemental.glb",
     "file_size_kb": 92054.5
+  },
+  {
+    "at": "2026-10-19T17:48:05+00:00",
+    "stage": "image",
+    "slug": "fire_elemental",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Fire (the elemental) like this: Wagner's is Fire, curled up and grinning. Wagner's shirt-Fire peels off his chest and sits on the coping, swinging her legs, giving off heat. Off to the right, painted fire. Additional direction: Fire, the elemental who peels off Wagner's t-shirt \u2014 punky, impatient, teasing. A lean young woman painted in thick impasto: warm amber-orange skin with palette-knife texture, short spiky hair that turns to flame at the tips, a sleeveless wrap dress of layered flame-coloured paint running crimson to yellow, bare feet, a thin heat shimmer and curls of steam off her shoulders. Arms folded, a crooked grin.\nFull-body concept render of Fire (the elemental), a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/fire_elemental/fire_elemental_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/fire_elemental/fire_elemental_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/fire_elemental/fire_elemental_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
