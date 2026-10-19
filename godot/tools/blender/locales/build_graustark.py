@@ -5803,7 +5803,10 @@ def build_minstral_wreck_2026_10():
              (1.36, 0.05, 0.50), (0.36, 0.26, 0.18, 1.0), roll=t_ - math.pi / 2.0)
     _mc("Minstral_Wheel_Shaft", (42.45, -124.0, wc_z), 0.18, 1.62, (0.24, 0.18, 0.14, 1.0), axis='X', segments=10)
     # the slough's water (z -2.5, the riverfront river's level; ends at its S edge)
-    _mb("Minstral_Slough_Water", (48.7, -120.25, -2.51), (16.6, 40.5, 0.02), (0.12, 0.18, 0.22, 1.0))
+    # (2026-10-19) seen low, water mirrors the sky: a light honey-sky sheen,
+    # brighter than the dark mud bank, so the slough reads as water (dark
+    # green, then murky green, both read as more mud in the morning light)
+    _mb("Minstral_Slough_Water", (48.7, -120.25, -2.51), (16.6, 40.5, 0.02), (0.42, 0.48, 0.44, 1.0))
     # (the bank's wet mud is the terrain's own colour — graustark_color
     # gives the carved slopes the tidal/bed strata; a separate mud mesh
     # follows the slope, and its bounding box swallows the Child.)
@@ -5825,6 +5828,94 @@ def build_minstral_wreck_2026_10():
     # cypress lining the far bank (and one on the near bank, south)
     for ti, (tx, ty) in enumerate(((60.5, -134.0), (61.5, -124.5), (60.0, -114.0), (62.0, -104.5), (29.5, -141.0))):
         _emit_cypress(f"Minstral_Cypress_{ti}", tx, ty, terrain_surface_z(tx, ty))
+
+
+def build_minstral_morning_2026_10_19():
+    """THE WRECK'S MORNING, draft 3 (2026-10-19, the vol 5 contact sheet:
+    graustark_wreck, 5 uses, read as a small box on a flat grey plain).
+    The World chapter opens here: "Sunlight — thick and syrupy yellow,
+    like old honey — drips through the cypress trees lining the riverbank
+    … wildflowers bein' brave enough to push up through busted pavement."
+    The camera stands on the slough's south slope looking NW, and the
+    grey 'ground' was the slough's water plane; the cypress lined the FAR
+    bank, out of shot.
+
+    Now: cypress lining the NEAR bank — a trunk with long moss at the
+    frame's left edge, one behind the stern, one standing in the shallows
+    right (its trunk down to the bed); the water reads as water —
+    duckweed rafts, lighter ripple lines, the hull's dark reflection;
+    the west bank's busted riverside walk with wildflowers in its cracks.
+    The honey light is the preset's own (graustark.tscn
+    Sun_Honey__graustark_wreck + the preset env).
+
+    Draft N+1: dappled light through the canopy on the hull (a projector
+    or a sun-cookie the pipeline lacks — a Deck look first); the Frog on
+    the paddlebox in the World frames; the Tilt-A-Whirl framework the
+    prose passes (no ride kit yet)."""
+    from _props.geometry import (make_box as _mb, make_cyl as _mc, make_rot_box as _mrb,
+                                 make_taper_cyl as _mtc)
+    moss = (0.56, 0.60, 0.50, 1.0)
+    trunk = (0.36, 0.30, 0.24, 1.0)
+    # The riverfront's south-horizon port strip (South_PortGround, y −164..−136,
+    # top −2.2) ran into the Minstral's slough and lay 30 cm OVER its water:
+    # the wreck view's whole foreground was that grey slab. In Graustark it
+    # stops at y −142, south of the camera; the riverfront keeps its own.
+    import bpy
+    pg = bpy.data.objects.get("South_PortGround")
+    if pg is not None:
+        bpy.data.objects.remove(pg, do_unlink=True)
+        _mb("South_PortGround", (10.0, -153.0, -2.40), (160.0, 22.0, 0.40), (0.24, 0.24, 0.24, 1.0))
+    # cypress on the near bank + one in the shallows (trunk base, x, y)
+    trees = (("Near_Left", 39.3, -137.3, terrain_surface_z(39.3, -137.3)),
+             ("Behind_Stern", 30.8, -127.0, terrain_surface_z(30.8, -127.0)),
+             ("Shallows_Right", 47.2, -128.2, -1.0))
+    for nm, tx, ty, tz in trees:
+        _emit_cypress(f"Minstral_Morning_Cypress_{nm}", tx, ty, tz)
+        if nm == "Shallows_Right":
+            # the trunk goes on down through the water to the bed, flaring
+            bed = terrain_surface_z(tx, ty)
+            _mtc(f"Minstral_Morning_Cypress_{nm}_Buttress", (tx, ty, (bed + tz) / 2.0 + 0.1),
+                 0.62, 0.36, (tz - bed) + 0.2, trunk, segments=8)
+            for k in range(4):
+                a = k * math.pi / 2.0 + 0.4
+                kx, ky = tx + 1.1 * math.cos(a), ty + 1.1 * math.sin(a)
+                hh = -2.5 + 0.30 + 0.15 * _h01(k, 7) - bed
+                _mtc(f"Minstral_Morning_Knee_{nm}_{k}", (kx, ky, bed + hh / 2.0), 0.10, 0.03, hh, trunk, segments=6)
+        # Spanish moss hanging in strands from under the canopy
+        for k in range(6):
+            a = k * 1.05 + 0.3
+            r = 1.4 + 1.2 * _h01(k, 3)
+            ln = 1.1 + 1.3 * _h01(k, 5)
+            mz = tz + 5.5 + 0.1
+            _mtc(f"Minstral_Morning_Moss_{nm}_{k}", (tx + r * math.cos(a), ty + r * math.sin(a), mz - ln / 2.0),
+                 0.10, 0.02, ln, moss, segments=5)
+    # the water reads as water: duckweed rafts, ripple lines, the hull's reflection
+    wz = -2.495
+    for k, (dx_, dy_, rr) in enumerate(((44.2, -135.6, 0.9), (46.8, -135.2, 0.6), (43.1, -133.9, 0.5),
+                                        (48.9, -135.2, 0.7), (45.6, -131.4, 0.45), (50.6, -134.6, 0.55))):
+        _mc(f"Minstral_Morning_Duckweed_{k}", (dx_, dy_, wz + 0.004), rr, 0.006, (0.28, 0.40, 0.16, 1.0), segments=10)
+    for k, (rx, ry, ln, yaw) in enumerate(((45.0, -135.3, 3.2, 0.2), (47.6, -134.9, 2.6, -0.1),
+                                           (44.4, -134.2, 2.2, 0.15), (49.2, -132.8, 2.8, 0.05))):
+        _mrb(f"Minstral_Morning_Ripple_{k}", (rx, ry, wz + 0.002), (ln, 0.05, 0.004),
+             (0.64, 0.62, 0.50, 1.0), yaw=yaw)
+    _mb("Minstral_Morning_Hull_Reflection", (42.7, -121.0, wz + 0.001), (2.2, 17.0, 0.004), (0.20, 0.26, 0.20, 1.0))
+    for k, (tx, ty, rr) in enumerate(((47.2, -126.0, 1.6), (49.5, -114.0, 1.2))):     # the cypress mirrored
+        _mc(f"Minstral_Morning_Tree_Reflection_{k}", (tx, ty, wz + 0.0012), rr, 0.004, (0.26, 0.32, 0.20, 1.0), segments=10)
+    # the west bank's busted riverside walk, wildflowers in its cracks
+    slabs = ((35.2, -139.6, 0.10, 0.04), (36.6, -137.9, -0.06, 0.07), (34.4, -137.4, 0.05, -0.08),
+             (36.0, -135.8, -0.12, 0.02), (34.9, -141.4, 0.03, 0.05))
+    for k, (sx, sy, rl, pt) in enumerate(slabs):
+        gz = terrain_surface_z(sx, sy)
+        _mrb(f"Minstral_Morning_Pavement_{k}", (sx, sy, gz + 0.06), (1.25, 1.05, 0.10),
+             (0.62, 0.60, 0.55, 1.0), yaw=0.3 * k, roll=rl, pitch=pt)
+    flowers = ((0.95, 0.80, 0.25, 1.0), (0.62, 0.42, 0.76, 1.0), (0.96, 0.95, 0.90, 1.0), (0.92, 0.52, 0.30, 1.0))
+    for k in range(18):
+        fx = 34.0 + 3.2 * _h01(k, 11)
+        fy = -142.0 + 7.0 * _h01(k, 13)
+        gz = terrain_surface_z(fx, fy)
+        hh = 0.22 + 0.25 * _h01(k, 17)
+        _mc(f"Minstral_Morning_Stem_{k}", (fx, fy, gz + hh / 2.0), 0.008, hh, (0.36, 0.48, 0.24, 1.0), segments=4)
+        _mc(f"Minstral_Morning_Flower_{k}", (fx, fy, gz + hh + 0.02), 0.045, 0.04, flowers[k % 4], segments=6)
 
 
 def _sedan_2026_10(prefix, cx, cy, col, length=4.7, facing_west=True):
@@ -6143,6 +6234,7 @@ def main():
     build_haberdashery_2026_10()
     build_shotgun_house_2026_10()
     build_minstral_wreck_2026_10()
+    build_minstral_morning_2026_10_19()
     build_st_jude_sunday_2026_10()
     build_armory_park_2026_10()
     build_cathedral_yard_2026_10()

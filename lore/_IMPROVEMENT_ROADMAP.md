@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-19 · pass 127: THE VOL 5 CONTACT SHEET AGAIN — the night drive, the wreck's morning.**
+All 33 vol 5 backgrounds rebuilt and rendered (the Arc 0 loop). Weakest frames, in order:
+`miriam_subaru_night` (near-black), `graustark_wreck` (5 uses; a small box on a flat grey plain),
+`graustark_chalk_wall` (5; too dark), `riverboat_interior` and `graustark_shotgun_interior` (bare).
+- **The night drive** reads through the car's own lights: two headlights down the road, a dash glow,
+  the moon at 0.5 — the front headrests silhouetted against the road (night preset only).
+- **The wreck's morning (draft 3, `build_minstral_morning_2026_10_19`)**, the World chapter's
+  "Sunlight — thick and syrupy yellow, like old honey — drips through the cypress trees lining the
+  riverbank": a low honey sun from the ESE for this view (`Sun_Honey__graustark_wreck`, shadows to
+  60 m) and a warm sky/ambient; cypress lining the NEAR bank (a trunk with long moss at the frame's
+  left edge, one behind the stern, one standing in the shallows right with knees); the slough reads
+  as water — a pale green sky sheen with duckweed, ripple lines, the hull's and the trees' dark
+  reflections (dark green and murky green both read as more mud); the west bank's busted riverside
+  walk with wildflowers. In Graustark the riverfront's south-horizon port strip (`South_PortGround`)
+  now stops at y −142 (it lay over the slough's south end).
+  **Draft 4 targets:** dappled light through the canopy on the hull; the Frog on the paddlebox in the
+  World frames; the Tilt-A-Whirl framework the prose passes; the wildflower bank is out of frame — a
+  second World setup down the west bank; the geometry audit's recorder does not see a bpy removal
+  (South_PortGround), so decor near its old edge is kept north of y −136.
+- **Next on the sheet:** `graustark_chalk_wall` (5 uses, too dark), `riverboat_interior`,
+  `graustark_shotgun_interior`. Deck must REBUILD graustark.
+
 **2026-10-19 · pass 126: THE READING SCREEN FROM THE DECK (eye lines, chapter openings, settings, auto-play, the top bar, the director follows the narration).**
 - **Eye lines** (Deck: John and the Stranger, crowns off the top): every shot size is now eye-anchored
   (Portrait3D.FACE_FRAMES covers wide + medium); eyes ~30 % down the screen at talking distance,

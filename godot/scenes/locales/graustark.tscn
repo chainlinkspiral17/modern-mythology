@@ -188,6 +188,19 @@ light_energy = 0.45
 shadow_enabled = false
 metadata/daylight = true
 
+; (2026-10-19, the vol 5 contact sheet) THE WRECK'S MORNING — "Sunlight —
+; thick and syrupy yellow, like old honey — drips through the cypress trees
+; lining the riverbank" (ch21 World): a low sun from the east-south-east,
+; behind the camera's right, warm on the hull's starboard side. The wreck
+; view only (suffixed).
+[node name="Sun_Honey__graustark_wreck" type="DirectionalLight3D" parent="."]
+position = Vector3(60, 12, 150)
+rotation = Vector3(-0.36, 1.249, 0)
+light_color = Color(1.0, 0.80, 0.48, 1)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 60.0
+
 [node name="Back_PrairieSky" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)
 light_color = Color(0.62, 0.74, 0.86, 1)

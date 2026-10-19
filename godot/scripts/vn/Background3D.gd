@@ -401,9 +401,11 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.041, 0.275, 0.0),
 		"fov": 60.0,
 		# (pass 62) ch20/ch21 mornings on the dusk sky added to Graustark
-		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
-			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
-			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		# (2026-10-19) the World's "old honey" morning: a warm low sky and a
+		# honey ambient (the preset's own sun: Sun_Honey__graustark_wreck)
+		"env": {"sky_top": Color(0.46, 0.58, 0.78, 1), "sky_horizon": Color(0.98, 0.84, 0.60, 1),
+			"ground_horizon": Color(0.52, 0.46, 0.32, 1), "ground_bottom": Color(0.20, 0.19, 0.14, 1),
+			"ambient_color": Color(0.90, 0.78, 0.58, 1), "ambient_energy": 0.80, "fog_color": Color(0.92, 0.80, 0.58, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
