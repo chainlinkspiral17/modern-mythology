@@ -170,6 +170,26 @@
    "md5": "b37f9106d7ad833e007db842cc031ab3",
    "size": 94263816
   },
+  "godot/assets/3d/characters/heroes/air_elemental_0.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "f5dbc28f1bc070643ee30c13781262a2",
+   "size": 12248208
+  },
+  "godot/assets/3d/characters/heroes/air_elemental_1.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "7ddb788fcaabecbcf0be073a4fa6a6ea",
+   "size": 2095450
+  },
+  "godot/assets/3d/characters/heroes/air_elemental_2.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "615a2c15d391224b1a35f4e80d407826",
+   "size": 8310824
+  },
+  "godot/assets/3d/characters/heroes/air_elemental_3.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "123792869634baa62bf162ba90692d49",
+   "size": 141831
+  },
   "godot/assets/3d/characters/heroes/alberto.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "8e4871d528072c64a68e1cdaf77c41d6",
@@ -399,6 +419,26 @@
    "at": "2026-10-19T18:06:54+00:00",
    "md5": "0dff640e762e49a90aef3e2dd89e74d0",
    "size": 5527060
+  },
+  "godot/assets/3d/characters/heroes/bernard_Image_0.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "6c94c9d06f0fe7322e94cffd637fc7f7",
+   "size": 477028
+  },
+  "godot/assets/3d/characters/heroes/bernard_Image_1.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "eb76d13893d23904ea1f68548bf2ca45",
+   "size": 59904
+  },
+  "godot/assets/3d/characters/heroes/bernard_Image_2.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "8f12bd4fd8222c40a15a45b7cf561841",
+   "size": 138121
+  },
+  "godot/assets/3d/characters/heroes/bernard_Image_3.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "fa4bf10bb688f400768fda82a6c79fbd",
+   "size": 17055
   },
   "godot/assets/3d/characters/heroes/bianca_miller.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -1249,6 +1289,26 @@
    "at": "2026-10-19T17:53:24+00:00",
    "md5": "75d2b3ed96bcaa1fcfe9eb94d5af6448",
    "size": 8379992
+  },
+  "godot/assets/3d/characters/heroes/fire_elemental_Image_0.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "b8c032e745235babc49fe4776c908ecd",
+   "size": 666457
+  },
+  "godot/assets/3d/characters/heroes/fire_elemental_Image_1.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "f1f63eadae2bbe53ccfea75e1bdbb0d0",
+   "size": 101241
+  },
+  "godot/assets/3d/characters/heroes/fire_elemental_Image_2.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "0c058849cfc266c25f23654c34f3af0a",
+   "size": 209451
+  },
+  "godot/assets/3d/characters/heroes/fire_elemental_Image_3.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "5bb6f0284a04ff0c500c53071183e835",
+   "size": 81720
   },
   "godot/assets/3d/characters/heroes/frasier_temple.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -2695,6 +2755,26 @@
    "md5": "9a841b6b127cfad72a960c9fff5ee75b",
    "size": 5086156
   },
+  "godot/assets/3d/characters/heroes/the_human_being_Image_0.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "5298232920f9f225dfa6c6a308971eba",
+   "size": 396554
+  },
+  "godot/assets/3d/characters/heroes/the_human_being_Image_1.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "6cc056e1ee8f6e89ff350aea51fae1e4",
+   "size": 81569
+  },
+  "godot/assets/3d/characters/heroes/the_human_being_Image_2.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "bb60265ba83651b62d45214a50a5bfeb",
+   "size": 160143
+  },
+  "godot/assets/3d/characters/heroes/the_human_being_Image_3.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "3a58413cf393ce739d345c245d6fc07c",
+   "size": 38356
+  },
   "godot/assets/3d/characters/heroes/the_stranger.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "03265a8561ab1c1486f6a1c265660305",
@@ -2899,6 +2979,26 @@
    "at": "2026-10-19T17:59:38+00:00",
    "md5": "32c8fdf4e149872505bf2a8fd61bd86d",
    "size": 9118580
+  },
+  "godot/assets/3d/characters/heroes/water_elemental_Image_0.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "d46d5f552f482648f6578eaa5c2da5f8",
+   "size": 683969
+  },
+  "godot/assets/3d/characters/heroes/water_elemental_Image_1.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "abe977b598ff2d5943a5beb97f46e232",
+   "size": 98935
+  },
+  "godot/assets/3d/characters/heroes/water_elemental_Image_2.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "b63d2d3471b43582d5ea630ac211c1af",
+   "size": 233974
+  },
+  "godot/assets/3d/characters/heroes/water_elemental_Image_3.jpg": {
+   "at": "2026-10-19T19:11:13+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
   },
   "godot/assets/3d/characters/heroes/wren.glb": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -75840,6 +75940,36 @@
    "md5": "709f825e4373b5b9c4d70cc87688973d",
    "size": 1922376
   },
+  "godot/assets/concept/meshy/star_key/back.png": {
+   "at": "2026-10-19T19:11:23+00:00",
+   "md5": "533bb6dce88a05347c7169a62a356c4b",
+   "size": 1147795
+  },
+  "godot/assets/concept/meshy/star_key/front.png": {
+   "at": "2026-10-19T19:11:23+00:00",
+   "md5": "c4ddc86a80a99d17c40c51e947a902e5",
+   "size": 1019660
+  },
+  "godot/assets/concept/meshy/star_key/side.png": {
+   "at": "2026-10-19T19:11:23+00:00",
+   "md5": "4e0e512a56584092fcce136f3a5713e7",
+   "size": 1044009
+  },
+  "godot/assets/concept/meshy/star_key/star_key_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:23+00:00",
+   "md5": "533bb6dce88a05347c7169a62a356c4b",
+   "size": 1147795
+  },
+  "godot/assets/concept/meshy/star_key/star_key_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:23+00:00",
+   "md5": "c4ddc86a80a99d17c40c51e947a902e5",
+   "size": 1019660
+  },
+  "godot/assets/concept/meshy/star_key/star_key_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:23+00:00",
+   "md5": "4e0e512a56584092fcce136f3a5713e7",
+   "size": 1044009
+  },
   "godot/assets/concept/meshy/steamboat_model/back.png": {
    "at": "2026-10-11T21:20:04+00:00",
    "md5": "5c33e45a404e6c5e0a6b464cdf31e381",
@@ -76690,6 +76820,56 @@
    "md5": "c6dc7472638f3a7a0bfd9a71de87f36b",
    "size": 1993499
   },
+  "godot/assets/concept/meshy/vol3_coast_road/front.png": {
+   "at": "2026-10-19T19:11:32+00:00",
+   "md5": "341318bfc367216922e33da9c80dfbba",
+   "size": 2323074
+  },
+  "godot/assets/concept/meshy/vol3_coast_road/vol3_coast_road_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:32+00:00",
+   "md5": "474664f59bf2d055ce8583c4ee1bd2e4",
+   "size": 2318775
+  },
+  "godot/assets/concept/meshy/vol3_coast_road/vol3_coast_road_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-19T19:11:32+00:00",
+   "md5": "4941d4d225e44092549f6b0b89b42ba4",
+   "size": 2501125
+  },
+  "godot/assets/concept/meshy/vol3_coast_road/vol3_coast_road_front_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-19T19:11:32+00:00",
+   "md5": "341318bfc367216922e33da9c80dfbba",
+   "size": 2323074
+  },
+  "godot/assets/concept/meshy/vol3_couch_carving/front.png": {
+   "at": "2026-10-19T19:11:39+00:00",
+   "md5": "8b8022084c77e7c88d65a7f25327d049",
+   "size": 1949344
+  },
+  "godot/assets/concept/meshy/vol3_couch_carving/vol3_couch_carving_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:39+00:00",
+   "md5": "8b8022084c77e7c88d65a7f25327d049",
+   "size": 1949344
+  },
+  "godot/assets/concept/meshy/vol3_crt_monitor_newsgroup/front.png": {
+   "at": "2026-10-19T19:11:50+00:00",
+   "md5": "1f5277bfb62ab941bb204349959341ed",
+   "size": 1636858
+  },
+  "godot/assets/concept/meshy/vol3_crt_monitor_newsgroup/vol3_crt_monitor_newsgroup_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:50+00:00",
+   "md5": "1f5277bfb62ab941bb204349959341ed",
+   "size": 1636858
+  },
+  "godot/assets/concept/meshy/vol3_desert_van/front.png": {
+   "at": "2026-10-19T19:11:58+00:00",
+   "md5": "8dee7c7685df36923a050dae2fa26510",
+   "size": 2617461
+  },
+  "godot/assets/concept/meshy/vol3_desert_van/vol3_desert_van_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:11:58+00:00",
+   "md5": "8dee7c7685df36923a050dae2fa26510",
+   "size": 2617461
+  },
   "godot/assets/concept/meshy/vol3_earth_man/front.png": {
    "at": "2026-10-19T18:38:15+00:00",
    "md5": "1f76d7f59d3684655af3e4b90d20643d",
@@ -76700,6 +76880,26 @@
    "md5": "1f76d7f59d3684655af3e4b90d20643d",
    "size": 2319133
   },
+  "godot/assets/concept/meshy/vol3_four_screens/front.png": {
+   "at": "2026-10-19T19:12:07+00:00",
+   "md5": "6d78cedcc54aed48775d4c1a95101bfe",
+   "size": 2047535
+  },
+  "godot/assets/concept/meshy/vol3_four_screens/vol3_four_screens_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:07+00:00",
+   "md5": "6d78cedcc54aed48775d4c1a95101bfe",
+   "size": 2047535
+  },
+  "godot/assets/concept/meshy/vol3_gurney_driveway/front.png": {
+   "at": "2026-10-19T19:12:16+00:00",
+   "md5": "a04455816a82ba2cfe620a0718908f3d",
+   "size": 1692429
+  },
+  "godot/assets/concept/meshy/vol3_gurney_driveway/vol3_gurney_driveway_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:16+00:00",
+   "md5": "a04455816a82ba2cfe620a0718908f3d",
+   "size": 1692429
+  },
   "godot/assets/concept/meshy/vol3_home_plate_collision/front.png": {
    "at": "2026-10-19T18:38:48+00:00",
    "md5": "fd2e8b7e4cdd7460607605378ef64b19",
@@ -76709,6 +76909,36 @@
    "at": "2026-10-19T18:38:48+00:00",
    "md5": "fd2e8b7e4cdd7460607605378ef64b19",
    "size": 2221375
+  },
+  "godot/assets/concept/meshy/vol3_iris_binder/front.png": {
+   "at": "2026-10-19T19:12:23+00:00",
+   "md5": "c949684622d7397d0268837aeb8a73a6",
+   "size": 1458694
+  },
+  "godot/assets/concept/meshy/vol3_iris_binder/vol3_iris_binder_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:23+00:00",
+   "md5": "c949684622d7397d0268837aeb8a73a6",
+   "size": 1458694
+  },
+  "godot/assets/concept/meshy/vol3_last_oil_man_sunset/front.png": {
+   "at": "2026-10-19T19:12:31+00:00",
+   "md5": "ad79584c98fd95527c59c39f104201c0",
+   "size": 1764397
+  },
+  "godot/assets/concept/meshy/vol3_last_oil_man_sunset/vol3_last_oil_man_sunset_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:31+00:00",
+   "md5": "ad79584c98fd95527c59c39f104201c0",
+   "size": 1764397
+  },
+  "godot/assets/concept/meshy/vol3_machines_overhead/front.png": {
+   "at": "2026-10-19T19:12:40+00:00",
+   "md5": "91999c53b114b5cb0f466a30a2ddb8d3",
+   "size": 1702565
+  },
+  "godot/assets/concept/meshy/vol3_machines_overhead/vol3_machines_overhead_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:40+00:00",
+   "md5": "91999c53b114b5cb0f466a30a2ddb8d3",
+   "size": 1702565
   },
   "godot/assets/concept/meshy/vol3_meld_eyestalk_beam/front.png": {
    "at": "2026-10-19T18:38:56+00:00",
@@ -76750,6 +76980,26 @@
    "md5": "1c986dec7b94749cb45be055c46fda41",
    "size": 1712572
   },
+  "godot/assets/concept/meshy/vol3_melody_insignia/front.png": {
+   "at": "2026-10-19T19:12:49+00:00",
+   "md5": "ea4f347bf1508115dff4c7ca18f9e46e",
+   "size": 2153801
+  },
+  "godot/assets/concept/meshy/vol3_melody_insignia/vol3_melody_insignia_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:49+00:00",
+   "md5": "ea4f347bf1508115dff4c7ca18f9e46e",
+   "size": 2153801
+  },
+  "godot/assets/concept/meshy/vol3_melody_nucleus/front.png": {
+   "at": "2026-10-19T19:12:57+00:00",
+   "md5": "3b52284a4fe8290990dd99e8beeaeab8",
+   "size": 2333833
+  },
+  "godot/assets/concept/meshy/vol3_melody_nucleus/vol3_melody_nucleus_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:12:57+00:00",
+   "md5": "3b52284a4fe8290990dd99e8beeaeab8",
+   "size": 2333833
+  },
   "godot/assets/concept/meshy/vol3_mojave_desert_1945/front.png": {
    "at": "2026-10-19T18:40:43+00:00",
    "md5": "1ee1d3ba48f6da48512684729dd27ed8",
@@ -76759,6 +77009,16 @@
    "at": "2026-10-19T18:40:43+00:00",
    "md5": "1ee1d3ba48f6da48512684729dd27ed8",
    "size": 2856168
+  },
+  "godot/assets/concept/meshy/vol3_neon_sign/front.png": {
+   "at": "2026-10-19T19:13:06+00:00",
+   "md5": "f02d44b4bde45b03ee690e9e61e5a18a",
+   "size": 1492700
+  },
+  "godot/assets/concept/meshy/vol3_neon_sign/vol3_neon_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:13:06+00:00",
+   "md5": "f02d44b4bde45b03ee690e9e61e5a18a",
+   "size": 1492700
   },
   "godot/assets/concept/meshy/vol3_oil_field_dusk/front.png": {
    "at": "2026-10-19T18:41:55+00:00",
@@ -76770,6 +77030,66 @@
    "md5": "e88891bfaf953c577dff44f39cfabc33",
    "size": 1986318
   },
+  "godot/assets/concept/meshy/vol3_pasadena_street_dawn/front.png": {
+   "at": "2026-10-19T19:13:13+00:00",
+   "md5": "6177490411e9a3b65ec498d567d426d0",
+   "size": 1944904
+  },
+  "godot/assets/concept/meshy/vol3_pasadena_street_dawn/vol3_pasadena_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:13:13+00:00",
+   "md5": "6177490411e9a3b65ec498d567d426d0",
+   "size": 1944904
+  },
+  "godot/assets/concept/meshy/vol3_pigeon_plaza/front.png": {
+   "at": "2026-10-19T19:13:22+00:00",
+   "md5": "794e1f57c5a8d3c9fe750a7bc097ba49",
+   "size": 2430052
+  },
+  "godot/assets/concept/meshy/vol3_pigeon_plaza/vol3_pigeon_plaza_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:13:22+00:00",
+   "md5": "794e1f57c5a8d3c9fe750a7bc097ba49",
+   "size": 2430052
+  },
+  "godot/assets/concept/meshy/vol3_pink_light/front.png": {
+   "at": "2026-10-19T19:13:30+00:00",
+   "md5": "7ad5b8298ff4bd3509679a3619fa025f",
+   "size": 1750777
+  },
+  "godot/assets/concept/meshy/vol3_pink_light/vol3_pink_light_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:13:30+00:00",
+   "md5": "7ad5b8298ff4bd3509679a3619fa025f",
+   "size": 1750777
+  },
+  "godot/assets/concept/meshy/vol3_pink_light_void/front.png": {
+   "at": "2026-10-19T19:13:53+00:00",
+   "md5": "09f896cb93602784410cf8f9298fe266",
+   "size": 1772666
+  },
+  "godot/assets/concept/meshy/vol3_pink_light_void/vol3_pink_light_void_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:13:53+00:00",
+   "md5": "09f896cb93602784410cf8f9298fe266",
+   "size": 1772666
+  },
+  "godot/assets/concept/meshy/vol3_play_fort_night/front.png": {
+   "at": "2026-10-19T19:14:01+00:00",
+   "md5": "2000b18c0f11ca9e83cc8915f0fd68fc",
+   "size": 1933777
+  },
+  "godot/assets/concept/meshy/vol3_play_fort_night/vol3_play_fort_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:14:01+00:00",
+   "md5": "2000b18c0f11ca9e83cc8915f0fd68fc",
+   "size": 1933777
+  },
+  "godot/assets/concept/meshy/vol3_pulp_catwalk_city/front.png": {
+   "at": "2026-10-19T19:14:09+00:00",
+   "md5": "741a78b6af9a69c44f78b4e2358b78a9",
+   "size": 2379179
+  },
+  "godot/assets/concept/meshy/vol3_pulp_catwalk_city/vol3_pulp_catwalk_city_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:14:09+00:00",
+   "md5": "741a78b6af9a69c44f78b4e2358b78a9",
+   "size": 2379179
+  },
   "godot/assets/concept/meshy/vol3_pulp_duck_window/front.png": {
    "at": "2026-10-19T18:42:03+00:00",
    "md5": "a20f92a49fc8007a72c50240a2a57264",
@@ -76780,6 +77100,441 @@
    "md5": "a20f92a49fc8007a72c50240a2a57264",
    "size": 1636247
   },
+  "godot/assets/concept/meshy/vol3_pulp_helipad_dawn/front.png": {
+   "at": "2026-10-19T19:14:46+00:00",
+   "md5": "ebb38c66241538011e949d4ba219c26b",
+   "size": 1739957
+  },
+  "godot/assets/concept/meshy/vol3_pulp_helipad_dawn/vol3_pulp_helipad_dawn_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:14:46+00:00",
+   "md5": "ebb38c66241538011e949d4ba219c26b",
+   "size": 1739957
+  },
+  "godot/assets/concept/meshy/vol3_pulp_pod_street_dawn/front.png": {
+   "at": "2026-10-19T19:14:54+00:00",
+   "md5": "1037c8f2955bea772859e3cd7f03eb9c",
+   "size": 2259217
+  },
+  "godot/assets/concept/meshy/vol3_pulp_pod_street_dawn/vol3_pulp_pod_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:14:54+00:00",
+   "md5": "1037c8f2955bea772859e3cd7f03eb9c",
+   "size": 2259217
+  },
+  "godot/assets/concept/meshy/vol3_pulp_ward_rows/front.png": {
+   "at": "2026-10-19T19:15:02+00:00",
+   "md5": "785303d58eabb768ea79d144254760f9",
+   "size": 1936074
+  },
+  "godot/assets/concept/meshy/vol3_pulp_ward_rows/vol3_pulp_ward_rows_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:02+00:00",
+   "md5": "785303d58eabb768ea79d144254760f9",
+   "size": 1936074
+  },
+  "godot/assets/concept/meshy/vol3_pulp_ward_sleepers/front.png": {
+   "at": "2026-10-19T19:15:12+00:00",
+   "md5": "509111df893b896e6c8e4d5766062a49",
+   "size": 1673193
+  },
+  "godot/assets/concept/meshy/vol3_pulp_ward_sleepers/vol3_pulp_ward_sleepers_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:12+00:00",
+   "md5": "509111df893b896e6c8e4d5766062a49",
+   "size": 1673193
+  },
+  "godot/assets/concept/meshy/vol3_ron_typewriter_page/front.png": {
+   "at": "2026-10-19T19:15:21+00:00",
+   "md5": "b117bd83f6002e0c95d972c51c3bf0ff",
+   "size": 1715943
+  },
+  "godot/assets/concept/meshy/vol3_ron_typewriter_page/vol3_ron_typewriter_page_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:21+00:00",
+   "md5": "b117bd83f6002e0c95d972c51c3bf0ff",
+   "size": 1715943
+  },
+  "godot/assets/concept/meshy/vol3_ruined_city_night/front.png": {
+   "at": "2026-10-19T19:15:30+00:00",
+   "md5": "eb2ea12c2f6707218a4df8eec36c2614",
+   "size": 2146712
+  },
+  "godot/assets/concept/meshy/vol3_ruined_city_night/vol3_ruined_city_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:30+00:00",
+   "md5": "eb2ea12c2f6707218a4df8eec36c2614",
+   "size": 2146712
+  },
+  "godot/assets/concept/meshy/vol3_safari_slide/front.png": {
+   "at": "2026-10-19T19:15:38+00:00",
+   "md5": "587b000d3099b9c2a84291d062c17792",
+   "size": 2081873
+  },
+  "godot/assets/concept/meshy/vol3_safari_slide/vol3_safari_slide_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:38+00:00",
+   "md5": "587b000d3099b9c2a84291d062c17792",
+   "size": 2081873
+  },
+  "godot/assets/concept/meshy/vol3_tall_stranger/front.png": {
+   "at": "2026-10-19T19:15:46+00:00",
+   "md5": "228e869b109817960768ed03a3839f4e",
+   "size": 1981739
+  },
+  "godot/assets/concept/meshy/vol3_tall_stranger/vol3_tall_stranger_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:46+00:00",
+   "md5": "228e869b109817960768ed03a3839f4e",
+   "size": 1981739
+  },
+  "godot/assets/concept/meshy/vol3_what_lies_beyond_box/front.png": {
+   "at": "2026-10-19T19:15:53+00:00",
+   "md5": "ecb8f33dc8e050086d5696515605f447",
+   "size": 1713251
+  },
+  "godot/assets/concept/meshy/vol3_what_lies_beyond_box/vol3_what_lies_beyond_box_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:15:53+00:00",
+   "md5": "ecb8f33dc8e050086d5696515605f447",
+   "size": 1713251
+  },
+  "godot/assets/concept/meshy/vol4_arcade_cabinet/front.png": {
+   "at": "2026-10-19T19:16:01+00:00",
+   "md5": "8c7a439111874c66e9d042eb12ab20e1",
+   "size": 1771355
+  },
+  "godot/assets/concept/meshy/vol4_arcade_cabinet/vol4_arcade_cabinet_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:16:01+00:00",
+   "md5": "8c7a439111874c66e9d042eb12ab20e1",
+   "size": 1771355
+  },
+  "godot/assets/concept/meshy/vol4_aria_childhood/front.png": {
+   "at": "2026-10-19T19:16:30+00:00",
+   "md5": "d18588ed5e2bf4a2c9e2d4c11d9e878d",
+   "size": 1909246
+  },
+  "godot/assets/concept/meshy/vol4_aria_childhood/vol4_aria_childhood_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:16:30+00:00",
+   "md5": "d18588ed5e2bf4a2c9e2d4c11d9e878d",
+   "size": 1909246
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare/front.png": {
+   "at": "2026-10-19T19:16:37+00:00",
+   "md5": "614022be96ddb33f565c1418605bcac6",
+   "size": 2151159
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare/vol4_beach_daycare_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:16:37+00:00",
+   "md5": "614022be96ddb33f565c1418605bcac6",
+   "size": 2151159
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare_kitchen/front.png": {
+   "at": "2026-10-19T19:16:45+00:00",
+   "md5": "57a6207354e800e11d1ec58b38dc8fb3",
+   "size": 1806720
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare_kitchen/vol4_beach_daycare_kitchen_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:16:45+00:00",
+   "md5": "57a6207354e800e11d1ec58b38dc8fb3",
+   "size": 1806720
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare_red/front.png": {
+   "at": "2026-10-19T19:16:53+00:00",
+   "md5": "aac17dc33c9ec523af2050e923047631",
+   "size": 1812408
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare_red/vol4_beach_daycare_red_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:16:53+00:00",
+   "md5": "aac17dc33c9ec523af2050e923047631",
+   "size": 1812408
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare_yellow/front.png": {
+   "at": "2026-10-19T19:17:01+00:00",
+   "md5": "f19744fa4f74dd177e802b2bfa442f24",
+   "size": 1856120
+  },
+  "godot/assets/concept/meshy/vol4_beach_daycare_yellow/vol4_beach_daycare_yellow_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:17:01+00:00",
+   "md5": "f19744fa4f74dd177e802b2bfa442f24",
+   "size": 1856120
+  },
+  "godot/assets/concept/meshy/vol4_blue_sand_beach/front.png": {
+   "at": "2026-10-19T19:17:08+00:00",
+   "md5": "f24afebc23a35f56c9f2976abfa7ea05",
+   "size": 2501246
+  },
+  "godot/assets/concept/meshy/vol4_blue_sand_beach/vol4_blue_sand_beach_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:17:08+00:00",
+   "md5": "f24afebc23a35f56c9f2976abfa7ea05",
+   "size": 2501246
+  },
+  "godot/assets/concept/meshy/vol4_board_string/front.png": {
+   "at": "2026-10-19T19:17:17+00:00",
+   "md5": "4453bc065f7e276cc7c4fadb8e995b5d",
+   "size": 1728133
+  },
+  "godot/assets/concept/meshy/vol4_board_string/vol4_board_string_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:17:17+00:00",
+   "md5": "4453bc065f7e276cc7c4fadb8e995b5d",
+   "size": 1728133
+  },
+  "godot/assets/concept/meshy/vol4_cc_glitter_mask/front.png": {
+   "at": "2026-10-19T19:17:24+00:00",
+   "md5": "b3207381f9542d89c8b23dfbeb795b9d",
+   "size": 1708758
+  },
+  "godot/assets/concept/meshy/vol4_cc_glitter_mask/vol4_cc_glitter_mask_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:17:24+00:00",
+   "md5": "b3207381f9542d89c8b23dfbeb795b9d",
+   "size": 1708758
+  },
+  "godot/assets/concept/meshy/vol4_cc_hair_storm/front.png": {
+   "at": "2026-10-19T19:17:39+00:00",
+   "md5": "600d30f2a18719818631b23791ff8801",
+   "size": 1549608
+  },
+  "godot/assets/concept/meshy/vol4_cc_hair_storm/vol4_cc_hair_storm_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:17:39+00:00",
+   "md5": "600d30f2a18719818631b23791ff8801",
+   "size": 1549608
+  },
+  "godot/assets/concept/meshy/vol4_cold_water/front.png": {
+   "at": "2026-10-19T19:17:51+00:00",
+   "md5": "e7550413eda92a1628397725f071e45e",
+   "size": 1825674
+  },
+  "godot/assets/concept/meshy/vol4_cold_water/vol4_cold_water_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:17:51+00:00",
+   "md5": "e7550413eda92a1628397725f071e45e",
+   "size": 1825674
+  },
+  "godot/assets/concept/meshy/vol4_crt_adventure/front.png": {
+   "at": "2026-10-19T19:18:04+00:00",
+   "md5": "64b67cf106d94791278720f876a8f86d",
+   "size": 2086035
+  },
+  "godot/assets/concept/meshy/vol4_crt_adventure/vol4_crt_adventure_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:18:04+00:00",
+   "md5": "64b67cf106d94791278720f876a8f86d",
+   "size": 2086035
+  },
+  "godot/assets/concept/meshy/vol4_esther_neighborhood/front.png": {
+   "at": "2026-10-19T19:18:14+00:00",
+   "md5": "1e82457f904044b34f5686c9711ce9f1",
+   "size": 2342346
+  },
+  "godot/assets/concept/meshy/vol4_esther_neighborhood/vol4_esther_neighborhood_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:18:14+00:00",
+   "md5": "1e82457f904044b34f5686c9711ce9f1",
+   "size": 2342346
+  },
+  "godot/assets/concept/meshy/vol4_graffiti_alley/front.png": {
+   "at": "2026-10-19T19:18:30+00:00",
+   "md5": "5934b4aa0753524bee9bc3959e1c69a6",
+   "size": 2259643
+  },
+  "godot/assets/concept/meshy/vol4_graffiti_alley/vol4_graffiti_alley_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:18:30+00:00",
+   "md5": "5934b4aa0753524bee9bc3959e1c69a6",
+   "size": 2259643
+  },
+  "godot/assets/concept/meshy/vol4_ivy_wall_door/front.png": {
+   "at": "2026-10-19T19:18:37+00:00",
+   "md5": "f19b6e5e2010a93ffefab2bb667aec69",
+   "size": 2969675
+  },
+  "godot/assets/concept/meshy/vol4_ivy_wall_door/vol4_ivy_wall_door_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:18:37+00:00",
+   "md5": "f19b6e5e2010a93ffefab2bb667aec69",
+   "size": 2969675
+  },
+  "godot/assets/concept/meshy/vol4_komodo_dawn_slate/front.png": {
+   "at": "2026-10-19T19:18:46+00:00",
+   "md5": "111647b8eb459f42750e073a29bedd9d",
+   "size": 1938647
+  },
+  "godot/assets/concept/meshy/vol4_komodo_dawn_slate/vol4_komodo_dawn_slate_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:18:46+00:00",
+   "md5": "094fe68cebce63ddbc8dcb338f39783d",
+   "size": 1790337
+  },
+  "godot/assets/concept/meshy/vol4_komodo_dawn_slate/vol4_komodo_dawn_slate_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-19T19:18:46+00:00",
+   "md5": "111647b8eb459f42750e073a29bedd9d",
+   "size": 1938647
+  },
+  "godot/assets/concept/meshy/vol4_letters/front.png": {
+   "at": "2026-10-19T19:18:54+00:00",
+   "md5": "92d5f3df5c9cc600e7b48b62b151d5eb",
+   "size": 1725363
+  },
+  "godot/assets/concept/meshy/vol4_letters/vol4_letters_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:18:54+00:00",
+   "md5": "92d5f3df5c9cc600e7b48b62b151d5eb",
+   "size": 1725363
+  },
+  "godot/assets/concept/meshy/vol4_looking_forward_bath/front.png": {
+   "at": "2026-10-19T19:19:03+00:00",
+   "md5": "b6e4ab5a4131182c0a2d07d16dd328e4",
+   "size": 1692993
+  },
+  "godot/assets/concept/meshy/vol4_looking_forward_bath/vol4_looking_forward_bath_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:19:03+00:00",
+   "md5": "b6e4ab5a4131182c0a2d07d16dd328e4",
+   "size": 1692993
+  },
+  "godot/assets/concept/meshy/vol4_meld_copier_pink_bar/front.png": {
+   "at": "2026-10-19T19:19:12+00:00",
+   "md5": "bd40e0b97cc666ddb0e701343361dd11",
+   "size": 1469399
+  },
+  "godot/assets/concept/meshy/vol4_meld_copier_pink_bar/vol4_meld_copier_pink_bar_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:19:12+00:00",
+   "md5": "bd40e0b97cc666ddb0e701343361dd11",
+   "size": 1469399
+  },
+  "godot/assets/concept/meshy/vol4_meld_drawer_relics/front.png": {
+   "at": "2026-10-19T19:19:24+00:00",
+   "md5": "9bc52ea8fcc19f269df133a1c8c81f5a",
+   "size": 1705312
+  },
+  "godot/assets/concept/meshy/vol4_meld_drawer_relics/vol4_meld_drawer_relics_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:19:24+00:00",
+   "md5": "9bc52ea8fcc19f269df133a1c8c81f5a",
+   "size": 1705312
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_derby_zero/front.png": {
+   "at": "2026-10-19T19:19:33+00:00",
+   "md5": "0458a157283ffddcdbc5e44f16408f10",
+   "size": 2060265
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_derby_zero/vol4_meld_facet_derby_zero_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:19:33+00:00",
+   "md5": "0458a157283ffddcdbc5e44f16408f10",
+   "size": 2060265
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_porthole/front.png": {
+   "at": "2026-10-19T19:19:41+00:00",
+   "md5": "9899e74b5f16535d75f2f40b02826bd6",
+   "size": 1730092
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_porthole/vol4_meld_facet_porthole_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:19:41+00:00",
+   "md5": "9899e74b5f16535d75f2f40b02826bd6",
+   "size": 1730092
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_suite_coffee/front.png": {
+   "at": "2026-10-19T19:19:49+00:00",
+   "md5": "8e0ff533941a559d3266635620fc2211",
+   "size": 1806221
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_suite_coffee/vol4_meld_facet_suite_coffee_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:19:49+00:00",
+   "md5": "8e0ff533941a559d3266635620fc2211",
+   "size": 1806221
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_tower/front.png": {
+   "at": "2026-10-19T19:20:01+00:00",
+   "md5": "5c57665d0cc6ce66309ceffcbf1ff6ac",
+   "size": 1928097
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_tower/vol4_meld_facet_tower_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:20:01+00:00",
+   "md5": "5c57665d0cc6ce66309ceffcbf1ff6ac",
+   "size": 1928097
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_xerox_pulp/front.png": {
+   "at": "2026-10-19T19:20:14+00:00",
+   "md5": "de61c7f7ad2f6311091b04b520a1a721",
+   "size": 3466849
+  },
+  "godot/assets/concept/meshy/vol4_meld_facet_xerox_pulp/vol4_meld_facet_xerox_pulp_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:20:14+00:00",
+   "md5": "de61c7f7ad2f6311091b04b520a1a721",
+   "size": 3466849
+  },
+  "godot/assets/concept/meshy/vol4_meld_kaleidoscope_tube/front.png": {
+   "at": "2026-10-19T19:20:24+00:00",
+   "md5": "e58f48d47184adf63011245c9e45c7f7",
+   "size": 1645573
+  },
+  "godot/assets/concept/meshy/vol4_meld_kaleidoscope_tube/vol4_meld_kaleidoscope_tube_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:20:24+00:00",
+   "md5": "e58f48d47184adf63011245c9e45c7f7",
+   "size": 1645573
+  },
+  "godot/assets/concept/meshy/vol4_meld_lens_mandala/front.png": {
+   "at": "2026-10-19T19:20:33+00:00",
+   "md5": "6c08f6624d6f050bf95b00143cbb98bb",
+   "size": 2193394
+  },
+  "godot/assets/concept/meshy/vol4_meld_lens_mandala/vol4_meld_lens_mandala_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:20:33+00:00",
+   "md5": "6c08f6624d6f050bf95b00143cbb98bb",
+   "size": 2193394
+  },
+  "godot/assets/concept/meshy/vol4_meld_one_image/front.png": {
+   "at": "2026-10-19T19:20:41+00:00",
+   "md5": "0259b5aac2905879c965cbd008a1d4af",
+   "size": 1975452
+  },
+  "godot/assets/concept/meshy/vol4_meld_one_image/vol4_meld_one_image_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:20:41+00:00",
+   "md5": "0259b5aac2905879c965cbd008a1d4af",
+   "size": 1975452
+  },
+  "godot/assets/concept/meshy/vol4_monitor_wall/front.png": {
+   "at": "2026-10-19T19:20:59+00:00",
+   "md5": "f6aa6cf12256f84d799ec9398b185e34",
+   "size": 1799326
+  },
+  "godot/assets/concept/meshy/vol4_monitor_wall/vol4_monitor_wall_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:20:59+00:00",
+   "md5": "f6aa6cf12256f84d799ec9398b185e34",
+   "size": 1799326
+  },
+  "godot/assets/concept/meshy/vol4_museum_case/front.png": {
+   "at": "2026-10-19T19:21:10+00:00",
+   "md5": "15bfa0725f8ab2024b0d13427811b9fc",
+   "size": 1795582
+  },
+  "godot/assets/concept/meshy/vol4_museum_case/vol4_museum_case_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:21:10+00:00",
+   "md5": "15bfa0725f8ab2024b0d13427811b9fc",
+   "size": 1795582
+  },
+  "godot/assets/concept/meshy/vol4_oneironautics_prospectus/front.png": {
+   "at": "2026-10-19T19:21:17+00:00",
+   "md5": "a0b4678650b5a5a2e26fd6796ab09d77",
+   "size": 1750459
+  },
+  "godot/assets/concept/meshy/vol4_oneironautics_prospectus/vol4_oneironautics_prospectus_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:21:17+00:00",
+   "md5": "a0b4678650b5a5a2e26fd6796ab09d77",
+   "size": 1750459
+  },
+  "godot/assets/concept/meshy/vol4_ourobouros_mirror/front.png": {
+   "at": "2026-10-19T19:21:26+00:00",
+   "md5": "ae55dde0a1b8c5e4df9e1572f1dfbced",
+   "size": 1625379
+  },
+  "godot/assets/concept/meshy/vol4_ourobouros_mirror/vol4_ourobouros_mirror_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:21:26+00:00",
+   "md5": "ae55dde0a1b8c5e4df9e1572f1dfbced",
+   "size": 1625379
+  },
+  "godot/assets/concept/meshy/vol4_route_card/front.png": {
+   "at": "2026-10-19T19:21:49+00:00",
+   "md5": "cddfed138f6936412f3fe98a222ba4ab",
+   "size": 2255109
+  },
+  "godot/assets/concept/meshy/vol4_route_card/vol4_route_card_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:21:49+00:00",
+   "md5": "cddfed138f6936412f3fe98a222ba4ab",
+   "size": 2255109
+  },
+  "godot/assets/concept/meshy/vol4_sister_carrie_notes/front.png": {
+   "at": "2026-10-19T19:21:58+00:00",
+   "md5": "0d4d9e81a3d9b24785e381c98e3fe6cf",
+   "size": 1909139
+  },
+  "godot/assets/concept/meshy/vol4_sister_carrie_notes/vol4_sister_carrie_notes_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:21:58+00:00",
+   "md5": "0d4d9e81a3d9b24785e381c98e3fe6cf",
+   "size": 1909139
+  },
   "godot/assets/concept/meshy/vol4_star_key_door/front.png": {
    "at": "2026-10-18T17:29:05+00:00",
    "md5": "ff31d6e189d99ea40d902f5a149aab5f",
@@ -76789,6 +77544,36 @@
    "at": "2026-10-18T17:29:05+00:00",
    "md5": "ff31d6e189d99ea40d902f5a149aab5f",
    "size": 2254119
+  },
+  "godot/assets/concept/meshy/vol4_vacant_lot_dusk/front.png": {
+   "at": "2026-10-19T19:22:08+00:00",
+   "md5": "ff63ffa02ef04baaddadc95c52077384",
+   "size": 2397121
+  },
+  "godot/assets/concept/meshy/vol4_vacant_lot_dusk/vol4_vacant_lot_dusk_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:22:08+00:00",
+   "md5": "ff63ffa02ef04baaddadc95c52077384",
+   "size": 2397121
+  },
+  "godot/assets/concept/meshy/vol4_various_locales/front.png": {
+   "at": "2026-10-19T19:22:17+00:00",
+   "md5": "3cbbe678aaee48b65ebe2b0dfea1031a",
+   "size": 1699051
+  },
+  "godot/assets/concept/meshy/vol4_various_locales/vol4_various_locales_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:22:17+00:00",
+   "md5": "3cbbe678aaee48b65ebe2b0dfea1031a",
+   "size": 1699051
+  },
+  "godot/assets/concept/meshy/vol4_xerox_sky/front.png": {
+   "at": "2026-10-19T19:22:27+00:00",
+   "md5": "68b0f1c1e4f8a888c5d328bf882bc464",
+   "size": 3431683
+  },
+  "godot/assets/concept/meshy/vol4_xerox_sky/vol4_xerox_sky_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T19:22:27+00:00",
+   "md5": "68b0f1c1e4f8a888c5d328bf882bc464",
+   "size": 3431683
   },
   "godot/assets/concept/meshy/wagner/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
