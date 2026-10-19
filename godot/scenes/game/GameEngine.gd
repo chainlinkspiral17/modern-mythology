@@ -498,6 +498,7 @@ func _open_music() -> void:
 # ── Scene loading & node dispatch ─────────────────────────────────────────────
 
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
+	_plate_opened = false
 	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
 	_apply_trip_cue("reset")
 	_apply_register_cue("reset")
@@ -903,6 +904,7 @@ func _directed_seen(n: Dictionary, kind: String) -> Dictionary:
 
 
 func _do_narrate(n: Dictionary) -> void:
+	_plate_opened = false
 	var text: String = _s(n, "text")
 	_log.append({"role": "narrate", "text": text})
 	AudioMgr.set_sfx_pan(0.0)
@@ -918,6 +920,7 @@ func _do_narrate(n: Dictionary) -> void:
 
 
 func _do_say(n: Dictionary) -> void:
+	_plate_opened = false
 	var char_name: String = _s(n, "char")
 	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
@@ -938,6 +941,7 @@ func _do_say(n: Dictionary) -> void:
 
 
 func _do_think(n: Dictionary) -> void:
+	_plate_opened = false
 	var char_name: String = _s(n, "char")
 	var expr: String      = _s(n, "expr", "neutral")
 	_ensure_portrait(char_name, expr)
@@ -973,6 +977,7 @@ func _char_pan(char_name: String) -> float:
 
 
 func _do_choice(n: Dictionary) -> void:
+	_plate_opened = false
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
@@ -1522,7 +1527,19 @@ func _do_jump(n: Dictionary) -> void:
 		_end_scene()
 
 
+# (2026-10-19, the user, over "Chapter II — The High Priestess / Exit
+# Through the Gift Shop": "these screens are unnecessary with the title
+# plates.") When the chapter's title plate opened the scene, the interlude
+# screens before its first line repeat it; they are skipped. Interludes
+# later in a scene — and at the head of a scene the plate did not open —
+# still play.
+var _plate_opened: bool = false
+
+
 func _do_interlude(n: Dictionary) -> void:
+	if _plate_opened:
+		_run_next()
+		return
 	_dlg.visible = false
 	AudioMgr.unduck()
 	_interlude.visible = true
@@ -2300,6 +2317,7 @@ func _fade_veil_out(dur: float) -> void:
 
 func _present_chapter_card(scene: Dictionary) -> void:
 	_transition_lock = true
+	_plate_opened = true
 	if _chapter_card != null and is_instance_valid(_chapter_card):
 		_chapter_card.queue_free()
 	_chapter_card = CHAPTER_CARD_SCRIPT.new()
