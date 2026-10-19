@@ -22013,5 +22013,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/chess_vol4.glb",
     "file_size_kb": 77560.7
+  },
+  {
+    "at": "2026-10-19T14:52:37+00:00",
+    "stage": "image",
+    "slug": "hal",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Hal like this: A man behind the counter \u2014 sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese \u2014 looks up. Hal will call Thursday morning. He always does on the weeks I'm out. Additional direction: Hal, 60s, the owner of The Bindery, a narrow bookshop on Live Oak Street in New Auburn. Big, soft, a full white beard, glasses on a cord. A loud Hawaiian shirt open over a black t-shirt, cargo shorts, sandals, a hardcover held open in one hand.\nFull-body concept render of Hal, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/hal/hal_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hal/hal_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hal/hal_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

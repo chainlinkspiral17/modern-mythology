@@ -35,6 +35,21 @@
    "md5": "91d4a7de5eb68511281169c124f1f0a7",
    "size": 39029884
   },
+  "godot/assets/3d/characters/heroes/_full/brent.glb": {
+   "at": "2026-10-19T14:52:39+00:00",
+   "md5": "17f575ca403a7a71a29e34d7b0cfe37c",
+   "size": 53502052
+  },
+  "godot/assets/3d/characters/heroes/_full/chess.glb": {
+   "at": "2026-10-19T14:52:39+00:00",
+   "md5": "5738b5e0d4c56e2ca54417c26bf89419",
+   "size": 57570580
+  },
+  "godot/assets/3d/characters/heroes/_full/chess_vol4.glb": {
+   "at": "2026-10-19T14:52:39+00:00",
+   "md5": "4ab54e3d643d3ddf0d2e2b67fc6694c7",
+   "size": 79422140
+  },
   "godot/assets/3d/characters/heroes/_full/diego_ramos.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "822d35bb1e1b8a7546f0892ef4d7e107",
@@ -44,6 +59,11 @@
    "at": "2026-10-19T02:44:41+00:00",
    "md5": "6afefbe0c807f910dbcaeec44039e7ad",
    "size": 43669616
+  },
+  "godot/assets/3d/characters/heroes/_full/eileen_kazantzakis.glb": {
+   "at": "2026-10-19T14:52:39+00:00",
+   "md5": "575c359308e6b2cd2ec585b64ab83446",
+   "size": 49115768
   },
   "godot/assets/3d/characters/heroes/_full/hugo.glb": {
    "at": "2026-10-19T01:46:30+00:00",
@@ -74,6 +94,11 @@
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "eb4a279a7dd2e1e0ce30bddb701d4f20",
    "size": 49146868
+  },
+  "godot/assets/3d/characters/heroes/_full/tucker.glb": {
+   "at": "2026-10-19T14:52:39+00:00",
+   "md5": "1b4f4e8192098a12154a072169296412",
+   "size": 61082228
   },
   "godot/assets/3d/characters/heroes/alberto.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -375,6 +400,11 @@
    "md5": "75c1030c9f01521d8a40aeff505bc0ac",
    "size": 17025
   },
+  "godot/assets/3d/characters/heroes/brent.glb": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "cc00019dacacf580221ea62298e1091b",
+   "size": 5348208
+  },
   "godot/assets/3d/characters/heroes/bt.glb": {
    "at": "2026-10-11T20:22:59+00:00",
    "md5": "5b8fffe3e5997af772ec22d9cd3fd00a",
@@ -474,6 +504,16 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "e2653c2bb48d84ba5610609879a3d1fd",
    "size": 67660
+  },
+  "godot/assets/3d/characters/heroes/chess.glb": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "48b1fbc20e51986bb0b98c1ed0f4f69a",
+   "size": 5485544
+  },
+  "godot/assets/3d/characters/heroes/chess_vol4.glb": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "116a9f934911d7c7bdfb306ed310046f",
+   "size": 8315760
   },
   "godot/assets/3d/characters/heroes/chief_miller.glb": {
    "at": "2026-10-11T16:25:49+00:00",
@@ -825,6 +865,26 @@
    "md5": "82481b2d0f014a16208b4e922e355eb1",
    "size": 4690056
   },
+  "godot/assets/3d/characters/heroes/doyle_Image_0.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "1f623bc327a26e9b162543e3905e782e",
+   "size": 387411
+  },
+  "godot/assets/3d/characters/heroes/doyle_Image_1.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "0e9bca7856547557bf660ffd5aedf86f",
+   "size": 56669
+  },
+  "godot/assets/3d/characters/heroes/doyle_Image_2.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "d2e25b883ad87b836a324fe598aae574",
+   "size": 125938
+  },
+  "godot/assets/3d/characters/heroes/doyle_Image_3.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "03c13807ed3d4efb8b09e1501518bd8b",
+   "size": 17027
+  },
   "godot/assets/3d/characters/heroes/eileen_henderson.glb": {
    "at": "2026-10-11T20:02:39+00:00",
    "md5": "3f3078b680ba87082339bfb684b871b6",
@@ -849,6 +909,31 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "d14225552d5b141c45251d431c0ee6fd",
    "size": 70319
+  },
+  "godot/assets/3d/characters/heroes/eileen_kazantzakis.glb": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "fd5d11987c4f3a55c94ed5dd758619e2",
+   "size": 5160436
+  },
+  "godot/assets/3d/characters/heroes/eileen_kazantzakis_Image_0.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "72f65e13b417016ade4d5626a3acdbf7",
+   "size": 477221
+  },
+  "godot/assets/3d/characters/heroes/eileen_kazantzakis_Image_1.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "401d8a0f9494b53190ac7240c0158e4b",
+   "size": 74168
+  },
+  "godot/assets/3d/characters/heroes/eileen_kazantzakis_Image_2.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "0afce414925024b5bcc6a54b6a7c0c4a",
+   "size": 155765
+  },
+  "godot/assets/3d/characters/heroes/eileen_kazantzakis_Image_3.jpg": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "38b0cb31d871769255a1fa0ef3ba18c3",
+   "size": 85986
   },
   "godot/assets/3d/characters/heroes/elicia_temple.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -2389,6 +2474,11 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "4f9695fc884aa19e9d330fe04ceb9929",
    "size": 72080
+  },
+  "godot/assets/3d/characters/heroes/tucker.glb": {
+   "at": "2026-10-19T14:52:24+00:00",
+   "md5": "b147d69e9d21a5b51e9e4b669cbd4dca",
+   "size": 5644172
   },
   "godot/assets/3d/characters/heroes/vince_kane.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -62635,6 +62725,41 @@
    "md5": "6168e607701a7ff7befb744847c0cff1",
    "size": 1253051
   },
+  "godot/assets/concept/meshy/brent/back.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "5b74d021466077639e8fca0abe6d0363",
+   "size": 2072850
+  },
+  "godot/assets/concept/meshy/brent/brent_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "5b74d021466077639e8fca0abe6d0363",
+   "size": 2072850
+  },
+  "godot/assets/concept/meshy/brent/brent_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "654bc2236e8fb913bd7c2c6597df76dc",
+   "size": 2135291
+  },
+  "godot/assets/concept/meshy/brent/brent_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "8e742238efd312039cbb0714a05cea66",
+   "size": 1968543
+  },
+  "godot/assets/concept/meshy/brent/front.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "654bc2236e8fb913bd7c2c6597df76dc",
+   "size": 2135291
+  },
+  "godot/assets/concept/meshy/brent/meshy_thumb.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "1083acf2c3f3f00f5ca49074598bc8bd",
+   "size": 95068
+  },
+  "godot/assets/concept/meshy/brent/side.png": {
+   "at": "2026-10-19T14:52:51+00:00",
+   "md5": "8e742238efd312039cbb0714a05cea66",
+   "size": 1968543
+  },
   "godot/assets/concept/meshy/briar_falls_bldg_plaque_1/briar_falls_bldg_plaque_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:28:42+00:00",
    "md5": "2c8ddc92ba5fc641353ec1c024ab6c21",
@@ -63479,6 +63604,76 @@
    "at": "2026-10-14T02:36:43+00:00",
    "md5": "f4f0b7815f95a2d93fbbf86eca55e622",
    "size": 2609587
+  },
+  "godot/assets/concept/meshy/chess/back.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "99e9c085a496b522f5075c1dd755b169",
+   "size": 2054559
+  },
+  "godot/assets/concept/meshy/chess/chess_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "99e9c085a496b522f5075c1dd755b169",
+   "size": 2054559
+  },
+  "godot/assets/concept/meshy/chess/chess_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "30d8062575668201d23fad3866dd644e",
+   "size": 2085702
+  },
+  "godot/assets/concept/meshy/chess/chess_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "0369118c7f81449634d2f71bd0425c87",
+   "size": 1965451
+  },
+  "godot/assets/concept/meshy/chess/front.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "30d8062575668201d23fad3866dd644e",
+   "size": 2085702
+  },
+  "godot/assets/concept/meshy/chess/meshy_thumb.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "8dcbf089052215fac6f6b7b88c2db383",
+   "size": 81428
+  },
+  "godot/assets/concept/meshy/chess/side.png": {
+   "at": "2026-10-19T14:53:01+00:00",
+   "md5": "0369118c7f81449634d2f71bd0425c87",
+   "size": 1965451
+  },
+  "godot/assets/concept/meshy/chess_vol4/back.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "e0f860a4217b942017cf056be64a1d5e",
+   "size": 1979651
+  },
+  "godot/assets/concept/meshy/chess_vol4/chess_vol4_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "e0f860a4217b942017cf056be64a1d5e",
+   "size": 1979651
+  },
+  "godot/assets/concept/meshy/chess_vol4/chess_vol4_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "f3be8efe6f8cb9344647a497efb39027",
+   "size": 2083633
+  },
+  "godot/assets/concept/meshy/chess_vol4/chess_vol4_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "7abb4904fd0b7cd04923487d661c54f7",
+   "size": 1887271
+  },
+  "godot/assets/concept/meshy/chess_vol4/front.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "f3be8efe6f8cb9344647a497efb39027",
+   "size": 2083633
+  },
+  "godot/assets/concept/meshy/chess_vol4/meshy_thumb.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "1e20400e59870b93291ea5db579cea96",
+   "size": 82589
+  },
+  "godot/assets/concept/meshy/chess_vol4/side.png": {
+   "at": "2026-10-19T14:53:12+00:00",
+   "md5": "7abb4904fd0b7cd04923487d661c54f7",
+   "size": 1887271
   },
   "godot/assets/concept/meshy/chief_miller/back.png": {
    "at": "2026-10-11T16:26:19+00:00",
@@ -64665,6 +64860,11 @@
    "md5": "5cee8c2be605f62c8732bb7ca6057ce2",
    "size": 2015306
   },
+  "godot/assets/concept/meshy/eileen_kazantzakis/meshy_thumb.png": {
+   "at": "2026-10-19T14:53:17+00:00",
+   "md5": "c02cbb86a299ce589b2912addb52b927",
+   "size": 72254
+  },
   "godot/assets/concept/meshy/eileen_kazantzakis/side.png": {
    "at": "2026-10-19T01:46:47+00:00",
    "md5": "ef95f62ee79ea230cc4977194ddd8de8",
@@ -65739,6 +65939,16 @@
    "at": "2026-10-14T02:57:52+00:00",
    "md5": "1d81ef8c26e80bc0b3665cd3a48c03ea",
    "size": 2572825
+  },
+  "godot/assets/concept/meshy/hal/front.png": {
+   "at": "2026-10-19T14:53:26+00:00",
+   "md5": "5000b5355c3d76f0522eca24d2bc058d",
+   "size": 1878125
+  },
+  "godot/assets/concept/meshy/hal/hal_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:26+00:00",
+   "md5": "5000b5355c3d76f0522eca24d2bc058d",
+   "size": 1878125
   },
   "godot/assets/concept/meshy/hans/back.png": {
    "at": "2026-10-11T18:35:49+00:00",
@@ -72199,6 +72409,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "0ba34be2e17e65a42cd9944116ca4d34",
    "size": 71156
+  },
+  "godot/assets/concept/meshy/tucker/back.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "1a88b33db46f12c25bdd40d5670e5f7f",
+   "size": 2095280
+  },
+  "godot/assets/concept/meshy/tucker/front.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "97c1dc275e980d37ba040ef46f9a582c",
+   "size": 2183234
+  },
+  "godot/assets/concept/meshy/tucker/meshy_thumb.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "124f76af039fa840fa80a7c71a904ee4",
+   "size": 86136
+  },
+  "godot/assets/concept/meshy/tucker/side.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "e1eb8b8896a21e0f1dfb276b22d26d0f",
+   "size": 1944977
+  },
+  "godot/assets/concept/meshy/tucker/tucker_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "1a88b33db46f12c25bdd40d5670e5f7f",
+   "size": 2095280
+  },
+  "godot/assets/concept/meshy/tucker/tucker_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "97c1dc275e980d37ba040ef46f9a582c",
+   "size": 2183234
+  },
+  "godot/assets/concept/meshy/tucker/tucker_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T14:53:36+00:00",
+   "md5": "e1eb8b8896a21e0f1dfb276b22d26d0f",
+   "size": 1944977
   },
   "godot/assets/concept/meshy/vehicle_cab_altima_map/front.png": {
    "at": "2026-10-14T03:29:03+00:00",
