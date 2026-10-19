@@ -3852,10 +3852,13 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   a narration line that begins with a character of the scene as the subject of a verb ("Philip set
   the wrench down") brings them on (a free slot) and into focus — only characters who speak in the
   scene (1,996 such lines across the game; the Lovers: 19, all right).
-  **Draft N+1 targets:** the 101 "early shows" (a `show` six-plus lines before that character speaks
-  or is named — tools: the scratch early_show audit; many are deliberate establishing shots, so
-  read each); empty the stage for pure place narration (the house, the room) when nobody acts;
-  Deck-verify auto-play across a vol 6 chapter with its choices and CGs.
+  **Early shows HELD (same day):** a `show` is held until the character's first line or mention
+  when the narration in between follows someone outside the exchange, or runs 10+ lines with
+  nobody speaking (a speaker in the gap may be talking TO them: Per to Lena stays). Over all 968
+  shows: 11 held, read one by one — the Devil (Antonio stood through Jimmy waking), the
+  Hierophant (Paul now arrives at "Mr. Quentin Paul."), Judgement's overture, the courthouse.
+  **Draft N+1 targets:** a stage for the narration's POV when no `show` names one (the Devil's
+  Jimmy); Deck-verify auto-play across a vol 6 chapter with its choices and CGs.
 
 **2026-10-19 · pass 125: TALKING DISTANCE (portrait direction draft 2); THE VOICE IDS RECOVERED.**
 - **Portraits at talking distance.** The user: "the portraits always being in extreme close-up is

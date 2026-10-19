@@ -514,6 +514,7 @@ func _open_music() -> void:
 
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_plate_opened = false
+	_held_shows.clear()
 	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
 	_apply_trip_cue("reset")
 	_apply_register_cue("reset")
@@ -799,6 +800,11 @@ func _run_next() -> void:
 
 
 func _dispatch(n: Dictionary) -> void:
+	if _held_shows.has(_node_idx - 1):
+		var held: Dictionary = _held_shows[_node_idx - 1]
+		_held_shows.erase(_node_idx - 1)
+		if not bool(_chars.call("has_character", _s(held, "char"))):
+			_show_now(held)
 	if _music != null:
 		_music.on_node(_node_idx - 1, n)
 	# Conditional nodes · cross-chapter callbacks.  A node carrying
@@ -1164,7 +1170,97 @@ func _resolve_check(opt: Dictionary) -> void:
 	_run_next()
 
 
+# ── Early shows held (2026-10-19, the director) ───────────────────
+# 101 `show` nodes across the game put a character on screen six or more
+# lines before they speak or are named — Mackenzie standing through the
+# Lovers' opening while the narration was about the house and Philip. A
+# show is HELD when its character neither speaks nor is named for
+# SHOW_HOLD_LINES lines and somebody else speaks or acts in between (or the
+# gap reaches SHOW_HOLD_FAR): it plays at their first line or mention.
+# The look-ahead stops at a choice or a jump (control flow is never
+# guessed); a character never found again shows as written; a resume's
+# fast-forward shows as written.
+const SHOW_HOLD_LINES := 6
+const SHOW_HOLD_FAR := 10
+var _held_shows: Dictionary = {}      # node index → the held show node
+
+
+func _show_hold_until(n: Dictionary) -> int:
+	var key: String = String(_chars.call("char_key", _s(n, "char")))
+	if key == "" or _replaying:
+		return -1
+	var names: Array[String] = []
+	var raw0: String = _s(n, "char").replace("_", " ").to_lower().strip_edges()
+	if raw0.length() >= 3:
+		names.append(raw0)
+	for nm_v: Variant in _scene_cast.keys():
+		if String(_chars.call("char_key", String(_scene_cast[nm_v]))) == key and not names.has(String(nm_v)):
+			names.append(String(nm_v))
+	var nodes: Array = _scene_data.get("nodes", [])
+	var lines: int = 0
+	var speakers: Dictionary = {}      # who speaks in the gap: may be talking TO the held character
+	var subjects: Dictionary = {}      # who the narration follows in the gap
+	for j in range(_node_idx, nodes.size()):
+		if not (nodes[j] is Dictionary):
+			continue
+		var y: Dictionary = nodes[j]
+		var t: String = _s(y, "t")
+		if t == "choice" or t == "jump" or t == "goto":
+			return -1
+		if t == "show" and String(_chars.call("char_key", _s(y, "char"))) == key:
+			return -1
+		if t != "say" and t != "think" and t != "narrate":
+			continue
+		lines += 1
+		if t != "narrate":
+			var sk: String = String(_chars.call("char_key", _s(y, "char")))
+			if sk == key:
+				return j if _show_hold_worth(lines, speakers, subjects, key) else -1
+			speakers[sk] = true
+			continue
+		var low: String = _directive_rx.sub(_s(y, "text"), "", true).to_lower()
+		for nm: String in names:
+			var at: int = low.find(nm)
+			while at >= 0:
+				var before_ok: bool = at == 0 or not _is_word_char(low[at - 1])
+				var after_i: int = at + nm.length()
+				var after_ok: bool = after_i >= low.length() or not _is_word_char(low[after_i])
+				if before_ok and after_ok:
+					return j if _show_hold_worth(lines, speakers, subjects, key) else -1
+				at = low.find(nm, at + 1)
+		var subj: String = _narration_subject(_s(y, "text"))
+		if subj != "":
+			subjects[String(_chars.call("char_key", subj))] = true
+	return -1
+
+
+## Hold a show only when the narration follows someone OUTSIDE the exchange
+## (Philip at the faucet while Mackenzie stood there) or runs SHOW_HOLD_FAR
+## lines with nobody speaking. A speaker in the gap may be talking to the
+## held character (Per to Lena for a hundred lines: she stays).
+func _show_hold_worth(lines: int, speakers: Dictionary, subjects: Dictionary, key: String) -> bool:
+	var gap: int = lines - 1
+	if gap < SHOW_HOLD_LINES:
+		return false
+	for sk: Variant in subjects.keys():
+		if String(sk) != key and not speakers.has(sk):
+			return true
+	return speakers.is_empty() and gap >= SHOW_HOLD_FAR
+
+
+func _is_word_char(c: String) -> bool:
+	return c != c.to_upper() or c != c.to_lower() or (c >= "0" and c <= "9") or c == "_"
+
+
 func _do_show(n: Dictionary) -> void:
+	var hold: int = _show_hold_until(n)
+	if hold >= 0:
+		_held_shows[hold] = n
+		return
+	_show_now(n)
+
+
+func _show_now(n: Dictionary) -> void:
 	var char_name: String = n.get("char", "")
 	# a special-occasion 2D image for this character (2D is otherwise retired)
 	var sp2d: String = String(n.get("portrait_2d", ""))
@@ -2426,11 +2522,13 @@ var _directive_rx: RegEx = RegEx.create_from_string("\\[[^\\]]*\\]")
 func _build_scene_cast() -> void:
 	_scene_cast.clear()
 	for nv: Variant in _scene_data.get("nodes", []):
+		if not (nv is Dictionary):
+			continue
 		var nd: Dictionary = nv
-		var t: String = String(nd.get("t", ""))
+		var t: String = _s(nd, "t")
 		if t != "say" and t != "think":
 			continue
-		var raw: String = String(nd.get("char", "")).strip_edges()
+		var raw: String = _s(nd, "char").strip_edges()
 		if raw == "" or raw.contains(",") or raw.contains("&"):
 			continue
 		var full: String = raw.replace("_", " ").to_lower()
