@@ -155,6 +155,11 @@
    "md5": "d8c5b497b8ae619997e3418663c25dcc",
    "size": 42146896
   },
+  "godot/assets/3d/characters/heroes/_full/water_elemental.glb": {
+   "at": "2026-10-19T17:59:49+00:00",
+   "md5": "32fb9c28242dc75e2f27e26835a3019b",
+   "size": 83937648
+  },
   "godot/assets/3d/characters/heroes/air_elemental.glb": {
    "at": "2026-10-19T17:47:47+00:00",
    "md5": "b37f9106d7ad833e007db842cc031ab3",
@@ -2879,6 +2884,11 @@
    "at": "2026-10-19T17:04:04+00:00",
    "md5": "35b5a8b6d94d2219ed4ade63ca3a1be2",
    "size": 38342
+  },
+  "godot/assets/3d/characters/heroes/water_elemental.glb": {
+   "at": "2026-10-19T17:59:38+00:00",
+   "md5": "32c8fdf4e149872505bf2a8fd61bd86d",
+   "size": 9118580
   },
   "godot/assets/3d/characters/heroes/wren.glb": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -65875,6 +65885,16 @@
    "md5": "0925df308aba03301d76814b35a1e95e",
    "size": 1940742
   },
+  "godot/assets/concept/meshy/bernard/bernard_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:59:57+00:00",
+   "md5": "d06233e46748fe2370e2aa67b34d3955",
+   "size": 2167543
+  },
+  "godot/assets/concept/meshy/bernard/front.png": {
+   "at": "2026-10-19T17:59:57+00:00",
+   "md5": "d06233e46748fe2370e2aa67b34d3955",
+   "size": 2167543
+  },
   "godot/assets/concept/meshy/bianca_miller/bianca_miller_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "a79cca1bc6c415c7323a67b512afff48",
@@ -76425,15 +76445,40 @@
    "md5": "d3e51c61da33647304c725762f945f2d",
    "size": 1916980
   },
+  "godot/assets/concept/meshy/water_elemental/back.png": {
+   "at": "2026-10-19T18:00:06+00:00",
+   "md5": "8b3b4dc1eaacdcef2a2905cfdb538eed",
+   "size": 2006358
+  },
   "godot/assets/concept/meshy/water_elemental/front.png": {
    "at": "2026-10-19T17:53:48+00:00",
    "md5": "a7509da3616e944a32ff20c5faa8f4ce",
    "size": 1743128
   },
+  "godot/assets/concept/meshy/water_elemental/meshy_thumb.png": {
+   "at": "2026-10-19T18:00:06+00:00",
+   "md5": "b588db3aee02a4da91d4c13a1edcd63f",
+   "size": 106513
+  },
+  "godot/assets/concept/meshy/water_elemental/side.png": {
+   "at": "2026-10-19T18:00:06+00:00",
+   "md5": "bf3b64408c0cb81228b9e6a60ca7643f",
+   "size": 1966997
+  },
+  "godot/assets/concept/meshy/water_elemental/water_elemental_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T18:00:06+00:00",
+   "md5": "8b3b4dc1eaacdcef2a2905cfdb538eed",
+   "size": 2006358
+  },
   "godot/assets/concept/meshy/water_elemental/water_elemental_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T17:53:48+00:00",
    "md5": "a7509da3616e944a32ff20c5faa8f4ce",
    "size": 1743128
+  },
+  "godot/assets/concept/meshy/water_elemental/water_elemental_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T18:00:06+00:00",
+   "md5": "bf3b64408c0cb81228b9e6a60ca7643f",
+   "size": 1966997
   },
   "godot/assets/concept/meshy/water_glass_table_17/back.png": {
    "at": "2026-10-18T17:29:13+00:00",

@@ -22652,5 +22652,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/water_elemental.glb",
     "file_size_kb": 81970.4
+  },
+  {
+    "at": "2026-10-19T18:00:02+00:00",
+    "stage": "image",
+    "slug": "bernard",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bernard ('Saint') like this: A young man in a body that never fit proper. He sags with twenty extra pounds, facial hair grows in erratic patches. His bottom lip is split with a white scar. His name Bernard, nickname Saint. Additional direction: Bernard, called the Saint, early 30s, a Small Wood drifter and small-time dealer with scary friends, met over coffee at the Apple Peddler diner on the Oregon coast. A young man in a body that never fit: soft and sagging with twenty extra pounds, facial hair growing in uneven patches, a white scar splitting his bottom lip, lank dark-blond hair. A worn brown canvas work jacket over a faded flannel shirt, dirty jeans, scuffed work boots, a cigarette dangling between two fingers.\nFull-body concept render of Bernard ('Saint'), a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bernard/bernard_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bernard/bernard_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bernard/bernard_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
