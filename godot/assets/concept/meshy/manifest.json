@@ -21794,5 +21794,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/doyle.glb",
     "file_size_kb": 42646.1
+  },
+  {
+    "at": "2026-10-19T02:48:01+00:00",
+    "stage": "mesh",
+    "slug": "eileen_kazantzakis",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a1520a-1898-77a6-b56c-630989dbab0b",
+    "inputs": [
+      "godot/assets/concept/meshy/eileen_kazantzakis/front.png",
+      "godot/assets/concept/meshy/eileen_kazantzakis/side.png",
+      "godot/assets/concept/meshy/eileen_kazantzakis/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/eileen_kazantzakis.glb",
+    "file_size_kb": 47964.6
+  },
+  {
+    "at": "2026-10-19T02:50:39+00:00",
+    "stage": "image",
+    "slug": "tucker",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Tucker like this: Tucker, this morning, is keeping pace with Marcus by the back stretch, in the way a kid's body finally turns the corner on a thing it had been refusing to turn the corner on. Marcus is in shorts and a t-shirt. Tucker is in jeans. Additional direction: Tucker, 16, a high-school football player whose body has just turned a corner. Tall, gangly, big feet, brown hair flattened by a helmet, ears red from the sun. A practice jersey over shoulder pads, football pants, cleats, a helmet swinging from one hand.\nFull-body concept render of Tucker, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/tucker/tucker_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tucker/tucker_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tucker/tucker_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
