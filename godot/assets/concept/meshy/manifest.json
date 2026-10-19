@@ -22136,5 +22136,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/judge_halverson.glb",
     "file_size_kb": 50919.7
+  },
+  {
+    "at": "2026-10-19T16:39:51+00:00",
+    "stage": "image",
+    "slug": "carlos",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Carlos like this: the way her brother has been recording his voicemail since 2014: Hey. You've reached Carlos. Leave a message. I'll get back to you. Carlos calls at nine seventeen. Additional direction: Carlos, early 40s, Bianca's brother, mostly a voice on the phone. Lean, dark hair going grey at the sides, a tired easy smile. A grey hoodie over a white t-shirt, jeans, sneakers, a phone to his ear.\nFull-body concept render of Carlos, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/carlos/carlos_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/carlos/carlos_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/carlos/carlos_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

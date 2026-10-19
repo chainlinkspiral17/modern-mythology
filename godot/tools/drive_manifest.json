@@ -80,6 +80,11 @@
    "md5": "668a0ba1c10c392bda219e016cd6d667",
    "size": 55421088
   },
+  "godot/assets/3d/characters/heroes/_full/judge_halverson.glb": {
+   "at": "2026-10-19T16:39:39+00:00",
+   "md5": "b0e2b0a4ab40824648a42ecbab04d588",
+   "size": 52141800
+  },
   "godot/assets/3d/characters/heroes/_full/lucy.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "0966d00c230adc428d382145a5234943",
@@ -104,6 +109,11 @@
    "at": "2026-10-19T14:52:39+00:00",
    "md5": "1b4f4e8192098a12154a072169296412",
    "size": 61082228
+  },
+  "godot/assets/3d/characters/heroes/_full/walt.glb": {
+   "at": "2026-10-19T16:39:39+00:00",
+   "md5": "d8c5b497b8ae619997e3418663c25dcc",
+   "size": 42146896
   },
   "godot/assets/3d/characters/heroes/alberto.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -1635,6 +1645,11 @@
    "md5": "c3befe4afea4b83953afed7254eb5275",
    "size": 2852012
   },
+  "godot/assets/3d/characters/heroes/judge_halverson.glb": {
+   "at": "2026-10-19T16:39:29+00:00",
+   "md5": "97094c93364765614655b9a62d707931",
+   "size": 6471960
+  },
   "godot/assets/3d/characters/heroes/kai.glb": {
    "at": "2026-10-11T17:55:33+00:00",
    "md5": "e613321a8cce76464756649595e83422",
@@ -2639,6 +2654,11 @@
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "bc410fc85113b5d8c89c219ee4f4ad2e",
    "size": 67210
+  },
+  "godot/assets/3d/characters/heroes/walt.glb": {
+   "at": "2026-10-19T16:39:29+00:00",
+   "md5": "c2c48427254e6c4f04a9ce9726b63192",
+   "size": 4840516
   },
   "godot/assets/3d/characters/heroes/wren.glb": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -66470,6 +66490,16 @@
    "md5": "8bdd895669a73937b0f6b9aa4af81a3f",
    "size": 71793
   },
+  "godot/assets/concept/meshy/carlos/carlos_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:39:53+00:00",
+   "md5": "8dda773e821d34f0199209f45bb30185",
+   "size": 2147276
+  },
+  "godot/assets/concept/meshy/carlos/front.png": {
+   "at": "2026-10-19T16:39:53+00:00",
+   "md5": "8dda773e821d34f0199209f45bb30185",
+   "size": 2147276
+  },
   "godot/assets/concept/meshy/cassette_archive/back.png": {
    "at": "2026-10-18T17:12:42+00:00",
    "md5": "6c0c696e1690bb5d2c0d67a52d346c9f",
@@ -69664,6 +69694,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c295a835e50676569c1f608f003ac694",
    "size": 58123
+  },
+  "godot/assets/concept/meshy/judge_halverson/back.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "f9826fa029c2496757b07dc9a75b0c9e",
+   "size": 1874168
+  },
+  "godot/assets/concept/meshy/judge_halverson/front.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "d15febfcb638d43fc9be4e7be25a8412",
+   "size": 1888155
+  },
+  "godot/assets/concept/meshy/judge_halverson/judge_halverson_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "f9826fa029c2496757b07dc9a75b0c9e",
+   "size": 1874168
+  },
+  "godot/assets/concept/meshy/judge_halverson/judge_halverson_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "d15febfcb638d43fc9be4e7be25a8412",
+   "size": 1888155
+  },
+  "godot/assets/concept/meshy/judge_halverson/judge_halverson_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "6f0ae05efb358b6d0415b571eecd660b",
+   "size": 1851169
+  },
+  "godot/assets/concept/meshy/judge_halverson/meshy_thumb.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "1bd84d1e624b171b6ad5ef42e5e7bb9c",
+   "size": 61845
+  },
+  "godot/assets/concept/meshy/judge_halverson/side.png": {
+   "at": "2026-10-19T16:40:05+00:00",
+   "md5": "6f0ae05efb358b6d0415b571eecd660b",
+   "size": 1851169
   },
   "godot/assets/concept/meshy/kai/back.png": {
    "at": "2026-10-11T17:55:46+00:00",
@@ -75784,6 +75849,11 @@
    "at": "2026-10-19T16:27:31+00:00",
    "md5": "770f3f0c31a2d944ef5e61b3538ed2e6",
    "size": 2016012
+  },
+  "godot/assets/concept/meshy/walt/meshy_thumb.png": {
+   "at": "2026-10-19T16:40:11+00:00",
+   "md5": "25d4a6126083c2e8ab1b58a7dc0604a3",
+   "size": 67597
   },
   "godot/assets/concept/meshy/walt/side.png": {
    "at": "2026-10-19T16:27:31+00:00",
