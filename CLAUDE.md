@@ -256,6 +256,15 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
   a running Hero Studio it also saves there, silently, as a fallback.)
 - Before changing a tool's address, port or storage key, carry the stored
   data across first.
+- NEVER tell the user to `git stash`, `git reset`, `git checkout -- .` or
+  `git clean` to get a pull through (2026-10-19: a stash Claude gave them
+  to land a voice-studio update set aside the audio director's approvals,
+  briefs, catalog and score — "Once again, audio director is missing all
+  my work. Again."). The tools write the user's work into TRACKED files.
+  When a pull is blocked, commit their work first (`git add -A && git
+  commit -m "work on the Deck"` then pull), and only `git checkout --
+  godot/project.godot`, the one file Godot rewrites on every open.
+  `godot/tools/restore_stash.py` puts a stash's files back safely.
 - The voice IDs: `godot/tools/voice_ids.py` (voice_map.json +
   voice_ids_backup.json); recovery, exact first: `browser_storage_scan.py`
   (reads every browser profile's localStorage FILES on disk, Chromium
