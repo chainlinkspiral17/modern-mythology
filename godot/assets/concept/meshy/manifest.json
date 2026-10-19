@@ -22717,5 +22717,480 @@
     "outputs": [
       "godot/assets/concept/meshy/vol1_hall_of_ratifications/vol1_hall_of_ratifications_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T18:07:19+00:00",
+    "stage": "scene2d",
+    "slug": "vol1_hall_of_ratifications",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol1_hall_of_ratifications/front.png",
+    "output": "godot/assets/backgrounds/vol1_hall_of_ratifications.jpg"
+  },
+  {
+    "at": "2026-10-19T18:07:34+00:00",
+    "stage": "image",
+    "slug": "vol1_above_the_record",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes above the record (abstract) like this: It's laid out like a board game seen from above, a map with the paint still wet, little lit-up places where things happened, and he can zoom in on any of them by looking. The sky darkens a little. Below him one of the little lit places brightens: an old city, a square, a stake and smoke. Additional direction: History seen from a small plane's cockpit height: the whole record laid out below like a board game viewed from above, a map with the paint still wet, scattered with little lit-up places where things happened, each a tiny diorama. The sky above is darkening a little. Far below, one lit place is brightening: an old city square with a stake and a rising thread of smoke. Painterly, vast, quietly ominous rather than pretty.\nA single full-screen still for a literary visual novel set in an American city: above the record (abstract). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol1_above_the_record/vol1_above_the_record_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:07:44+00:00",
+    "stage": "scene2d",
+    "slug": "vol1_above_the_record",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol1_above_the_record/front.png",
+    "output": "godot/assets/backgrounds/vol1_above_the_record.jpg"
+  },
+  {
+    "at": "2026-10-19T18:08:03+00:00",
+    "stage": "image",
+    "slug": "vol1_deep_end_pool",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the deep end: an empty pool, the corpse-painted boy \u2014 a painted plate, like this: It slopes and curves downward and turns into concrete, smooth and pale, an empty swimming pool so big the far wall is out of sight, painted at the bottom with a faded blue that used to be water. The coping is lined with kids sitting in a row with their boards across their knees, waiting to drop in. Further down the coping there's a different crowd: boys in corpse paint, black and white, leather and spikes, sitting around a record player that plays the riff backward. Additional direction: The drugstore's MUSIC aisle sloping and curving down into an empty swimming pool so big its far wall is out of sight: smooth pale concrete, the bottom painted a faded blue that used to be water. Along the coping sit dead kids in a row, boards across their knees, untroubled, waiting to drop in. Further down the coping, boys in black-and-white corpse paint, leather and spikes, hunch around a record player, arguing low. Dreamlike, lonely, one held note in the air.\nA single full-screen still for a literary visual novel set in an American city: the deep end: an empty pool, the corpse-painted boy \u2014 a painted plate. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol1_deep_end_pool/vol1_deep_end_pool_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:08:11+00:00",
+    "stage": "scene2d",
+    "slug": "vol1_deep_end_pool",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol1_deep_end_pool/front.png",
+    "output": "godot/assets/backgrounds/vol1_deep_end_pool.jpg"
+  },
+  {
+    "at": "2026-10-19T18:08:30+00:00",
+    "stage": "image",
+    "slug": "vol1_battle_painting",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Joan Charging Off Into Battle \u2014 the painting itself like this: It's chaos in oil paint, thick impasto, strange foes with too many limbs, banners, smoke done in drybrush. In the middle of it Joan is fighting with the dagger. Her back is to him, and on it are his brushstrokes, coarse-bristle lines down the spine, warm, strong, fierce. Additional direction: Inside Faust's painting Joan Charging Off Into Battle, still being fought: chaos in thick oil impasto, strange foes with too many limbs, banners, smoke laid in with drybrush, felled foes crumbling into loose pigment. At the centre Joan fights with her dagger, beaten and raw but moving and winning, her back to us; down her spine run his coarse-bristle brushstrokes, warm, strong, fierce. Turpentine-gold light, wet paint, visible canvas weave.\nA single full-screen still for a literary visual novel set in an American city: Joan Charging Off Into Battle \u2014 the painting itself. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol1_battle_painting/vol1_battle_painting_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:08:39+00:00",
+    "stage": "scene2d",
+    "slug": "vol1_battle_painting",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol1_battle_painting/front.png",
+    "output": "godot/assets/backgrounds/vol1_battle_painting.jpg"
+  },
+  {
+    "at": "2026-10-19T18:09:27+00:00",
+    "stage": "image",
+    "slug": "vol1_joan_dagger",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Joan's dagger like this: Joan sits next to him on the couch. She pulls out a dagger. It is one of his, leaned against the wall where the window light falls. Faust keeps his hand on the blade, looking Joan in the eyes. Additional direction: Daytime in Faust's home. On the couch, his book set aside, Joan sits close and holds out her dagger; Faust lays his fingers on the blade, which feels to him like warm skin, and keeps his hand there, looking her in the eyes as she leans in. Behind them one of his paintings leans against the wall where the window light falls. The blade simple, catching that light; the moment close, charged, quiet.\nA single full-screen still for a literary visual novel set in an American city: Joan's dagger. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol1_joan_dagger/vol1_joan_dagger_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:09:35+00:00",
+    "stage": "scene2d",
+    "slug": "vol1_joan_dagger",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol1_joan_dagger/front.png",
+    "output": "godot/assets/cg/vol1_joan_dagger.jpg"
+  },
+  {
+    "at": "2026-10-19T18:09:51+00:00",
+    "stage": "image",
+    "slug": "vol2_meld_monitors_tideflats",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes four monitors, one tide, like this: A room with one window, nothing out of it. Four chairs on casters. A bank of monitors, and every one of them full of water. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning. Nobody touches the deck. On the monitors the tide keeps going out. Additional direction: An editing suite with one window and nothing out of it: four chairs on casters drawn up to an editing deck nobody touches, facing a bank of monitors, every screen full of the same tide flats, the tide all the way out, the flats shining wet under a sky that hasn't decided on morning. Across the screens somebody's small town plays back and plays back: a heron lifting off a sea wall, a cannery, a water tower with fog going through it. Dark room, cool screen-light.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: four monitors, one tide. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_meld_monitors_tideflats/vol2_meld_monitors_tideflats_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:09:59+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_meld_monitors_tideflats",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_meld_monitors_tideflats/front.png",
+    "output": "godot/assets/cg/vol2_meld_monitors_tideflats.jpg"
+  },
+  {
+    "at": "2026-10-19T18:10:16+00:00",
+    "stage": "image",
+    "slug": "vol2_model_workbench",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes model workbench (an insert) like this: Two hours ago, I was painting scale model miniatures of Mexican War battalions. I dipped a single-hair brush carefully into metallic resin number four because I needed to add a worn quality to the Ranger's cannons. Becca was listening to Credence on vinyl and dancing in front of the plants she laid out under the front windows for sunlight. Additional direction: An insert, home, afternoon: a hobby workbench with scale-model miniatures of Mexican War battalions, a single-hair brush dipped in a pot of metallic resin number four, the tiny Ranger cannons getting their worn finish. Behind, out of focus, a record turning on the player (Creedence on vinyl) and plants laid out under the front windows in sunlight, where his wife was dancing. A telephone within reach, about to ring with the call from his son.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: model workbench (an insert). Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_model_workbench/vol2_model_workbench_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:10:24+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_model_workbench",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_model_workbench/front.png",
+    "output": "godot/assets/backgrounds/vol2_model_workbench.jpg"
+  },
+  {
+    "at": "2026-10-19T18:10:40+00:00",
+    "stage": "image",
+    "slug": "vol2_chainsaw_ghost_town",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes chainsaw ghost town like this: There was a tourist trap called Dry Gulch, whereupon one man created a whole ghost town and populated it with life sized chainsaw carved wooden statues. It was as if he took that chainsaw and carved a facsimile of Small Wood, a gross and deranged echo of itself, given to rot and mold. a boy takes a photograph of a carved wooden log in the effigy of a boy taking a photograph of him. Additional direction: Dry Gulch, a roadside tourist trap under an overcast sky: one man's whole fake ghost town of false fronts populated with life-sized chainsaw-carved wooden statues, a gross, deranged echo of Small Wood going to rot and mold, the wood greyed, split and furred green. Among the effigies, one carved boy raising a camera, as if photographing whoever photographs him. Damp, flat light, uncanny stillness.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: chainsaw ghost town. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_chainsaw_ghost_town/vol2_chainsaw_ghost_town_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:10:52+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_chainsaw_ghost_town",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_chainsaw_ghost_town/front.png",
+    "output": "godot/assets/backgrounds/vol2_chainsaw_ghost_town.jpg"
+  },
+  {
+    "at": "2026-10-19T18:11:05+00:00",
+    "stage": "image",
+    "slug": "vol2_glass_mansion_bay",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes glass mansion bay like this: Dickens Dean now lives in a big glass mansion up the hill overlooking the bay. He said I had to see the pool before the sun went, the light comes in off the bay this time of day and does things to the water. The ghosts are piling up and Dickens Dean is sitting a top looking out at the future. Additional direction: Dickens Dean's big glass mansion up the hill, looking out over the bay and the small town of Small Wood below: walls of glass, digital art walls glowing inside, an indoor pool catching the light that comes in off the bay late in the day. A house that never leaves, sitting on top of the town like a protector, looking out at the future. Late afternoon toward sunset, bay light on glass, the road winding down the hill.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: glass mansion bay. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_glass_mansion_bay/vol2_glass_mansion_bay_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:11:14+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_glass_mansion_bay",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_glass_mansion_bay/front.png",
+    "output": "godot/assets/backgrounds/vol2_glass_mansion_bay.jpg"
+  },
+  {
+    "at": "2026-10-19T18:11:31+00:00",
+    "stage": "image",
+    "slug": "vol2_the_room",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The room. like this: Inside was my bedroom from grandmother's ranch house exactly as I remembered it. The light coming in from the window, the angle of the sun, it was all perfect. Even my paperbacks, magazines, clothes, all identical. Then the blinds started up, those wood plank blinds my grandmother hung, knocking at the frame though there wasn't any wind I could feel. Additional direction: Seen from the threshold of a white door in Dickens Dean's glass-house hallway: inside, impossibly, the narrator's teenage bedroom from his grandmother's ranch house, exactly as remembered. Afternoon sun through the window at just the right angle, wood plank blinds, his paperbacks, magazines and clothes all identical, the nightstand, the window that opens onto the roof. Perfect, ordinary, real to the touch. Dean beside him, smiling, saying nothing.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: The room.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_the_room/vol2_the_room_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:11:42+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_the_room",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_the_room/front.png",
+    "output": "godot/assets/cg/vol2_the_room.jpg"
+  },
+  {
+    "at": "2026-10-19T18:11:59+00:00",
+    "stage": "image",
+    "slug": "vol2_room_roof_dusk",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes from the roof: the field down to the road, the second house, like this: From the roof the field ran down to the road the way it always had, the second house off to the left with its windows gone. Where the woods should have gone up dark there was a hill lit top to bottom, little lights stacked on little lights like the barrios from our apartment in Caracas, and somewhere down in it a car honked twice. Additional direction: Late in the day, the sun going, from the ranch-house roof outside the bedroom window: the field running down to the road as it always had, the second house off to the left with its windows gone. Past the road it is wrong: where the woods should rise dark, a hill lit top to bottom, little lights stacked on little lights like the barrios of Caracas seen from an apartment, a car somewhere down in it. Two worlds stitched at the road line.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: from the roof: the field down to the road, the second house. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_room_roof_dusk/vol2_room_roof_dusk_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:12:07+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_room_roof_dusk",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_room_roof_dusk/front.png",
+    "output": "godot/assets/backgrounds/vol2_room_roof_dusk.jpg"
+  },
+  {
+    "at": "2026-10-19T18:12:27+00:00",
+    "stage": "image",
+    "slug": "vol2_microcosmographer_clipping",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Microcosmographer like this: The Microcosmographer Portions of this article first appeared in the pages of Film Fantastic Quarterly, Cinemagic, and Shrunk! I was showed into a workroom, ill lit and crammed with miniature precision instruments and half-finished works in progress. Additional direction: An in-fiction artefact, painted modern: a magazine article clipped out and pinned above a run of student comic strips in the Small Wood Senior High newspaper room. Across its top the headline The Microcosmographer; beneath it a short italic credit line and dense columns of type, a writer's account of visiting an old miniature-model maker in a fogged coastal hangar. Soft newsprint, one pushpin, the strips' edges just below. Quiet, archival.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: The Microcosmographer. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: The Microcosmographer. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_microcosmographer_clipping/vol2_microcosmographer_clipping_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:12:36+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_microcosmographer_clipping",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_microcosmographer_clipping/front.png",
+    "output": "godot/assets/cg/vol2_microcosmographer_clipping.jpg"
+  },
+  {
+    "at": "2026-10-19T18:12:54+00:00",
+    "stage": "image",
+    "slug": "vol2_small_wood_scrapbook",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the scrapbook: an insert like this: A page off a steno pad, written front and back. I couldn't tell you the year. Last in the back pocket, something I typed up a good while later on the backs of crab derby flyers, the only paper in the rental. Clipped to the last flyer, the bingo card, half daubed. Additional direction: An insert: the narrator's Small Wood scrapbook open under a lamp at night, its back pocket spilling loose pages: a steno-pad page written front and back, typed pages, the first three pages of a screenplay, a cut-out newspaper masthead, a comic drawn on notebook paper of a boy at the tide line, a yellowed newspaper clipping, crab derby flyers typed on the back, and a bingo card, half daubed, clipped to the last one. Paper, ink, age; the residue of a town.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the scrapbook: an insert. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_small_wood_scrapbook/vol2_small_wood_scrapbook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:13:03+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_small_wood_scrapbook",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_small_wood_scrapbook/front.png",
+    "output": "godot/assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+  },
+  {
+    "at": "2026-10-19T18:13:18+00:00",
+    "stage": "image",
+    "slug": "vol2_glass_apartment_ext_day",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the House of Glass promo \u2014 the building like this: An apartment building, modern and stylish, but not very big. Attractive people in the foreground talk, point, and walk inside. It quickly becomes apparent this is a piece of marketing. TEXT and Voice Over: What is the House of Glass? Additional direction: A frame from the opening of the House of Glass screenplay: a slick marketing video. Daylight, an apartment building, modern and stylish but not very big; in the foreground, attractive people talk, point, and walk inside, glossy as an advertisement. On-screen promo title text poses the question. Bright, airbrushed, too perfect, a promotional sheen with something faintly wrong under it.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the House of Glass promo \u2014 the building. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: What is the House of Glass?. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_glass_apartment_ext_day/vol2_glass_apartment_ext_day_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:13:29+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_glass_apartment_ext_day",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_glass_apartment_ext_day/front.png",
+    "output": "godot/assets/backgrounds/vol2_glass_apartment_ext_day.jpg"
+  },
+  {
+    "at": "2026-10-19T18:13:41+00:00",
+    "stage": "image",
+    "slug": "vol2_white_room",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the House of Glass promo \u2014 a generic white room like this: A generic white room. The House of Glass is your new home. There are ten cameras in every room. Anyone can watch you, and you can watch anyone else. Additional direction: The House of Glass promo, interior: a generic white room, bright, bare and seamless, lit like a commercial set, where actors take turns at the camera to pitch the building. Ten cameras in every room: small lenses watch from the corners and along the ceiling line. Nothing else to see, and that is the point; clinical, airless, faintly sinister, a space made to be watched.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the House of Glass promo \u2014 a generic white room. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_white_room/vol2_white_room_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:13:49+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_white_room",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_white_room/front.png",
+    "output": "godot/assets/backgrounds/vol2_white_room.jpg"
+  },
+  {
+    "at": "2026-10-19T18:14:05+00:00",
+    "stage": "image",
+    "slug": "vol2_glass_apartment_monitors",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the House of Glass \u2014 camera views, an empty hallway, like this: Shooting through camera views. Situated high and low, they capture movement and sound. Men and women, mostly young, still in their prime are brushing their teeth, reading the newspaper, watching television. We push through a hallway of an apartment building, doors line each side, staggered. Empty. Additional direction: Night in the House of Glass, seen through its surveillance: a wall of camera views set high and low, dozens of residents, mostly young, brushing their teeth, reading the newspaper, watching television. The central, largest view pushes down an apartment hallway, doors staggered along both sides, completely empty. Cold monitor glow, voyeuristic, quietly dreadful.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the House of Glass \u2014 camera views, an empty hallway. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_glass_apartment_monitors/vol2_glass_apartment_monitors_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:14:14+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_glass_apartment_monitors",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_glass_apartment_monitors/front.png",
+    "output": "godot/assets/backgrounds/vol2_glass_apartment_monitors.jpg"
+  },
+  {
+    "at": "2026-10-19T18:14:32+00:00",
+    "stage": "image",
+    "slug": "vol2_home_game_lights",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The first home game. The crowd was electric. like this: The Friday night of our first home game was raucous. The crowd was electric, the turnout left the minority of town still at home, and the game began beautifully. The stadium lights hung over the field in a white haze, the bleachers stamping and steaming in the cold. Additional direction: Small Wood's first home game, Friday night: stadium lights hanging over the field in a white haze, the bleachers packed with most of the town, stamping and steaming in the cold, the crowd electric. Seen from the field, helmets and jerseys in the glare, breath visible, the game going beautifully. The last bright moment before the news of the hit and run arrives.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: The first home game. The crowd was electric.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_home_game_lights/vol2_home_game_lights_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:14:41+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_home_game_lights",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_home_game_lights/front.png",
+    "output": "godot/assets/cg/vol2_home_game_lights.jpg"
+  },
+  {
+    "at": "2026-10-19T18:14:56+00:00",
+    "stage": "image",
+    "slug": "vol2_rip_scoreboard",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes R.I.P. on the scoreboard. like this: I just remember the final touchdown, the final ticking away of the clock, our victory assured. When it was all over, they flashed R.I.P. on the scoreboard and people filed out and away into the night. where I went straight home to take a shower, sit in silence and stare out the window at the coming storm. Additional direction: The same night, after the final whistle: the clock run down to zero and the scoreboard flashing R.I.P. in its bulbs over a hushed field, for the two girls killed in the hit and run. A victory nobody celebrates. Below, people file out of the bleachers and away into the dark; heavy clouds of a coming storm build beyond the lights.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: R.I.P. on the scoreboard.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nLettering on it reads exactly: R.I.P.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_rip_scoreboard/vol2_rip_scoreboard_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:15:04+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_rip_scoreboard",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_rip_scoreboard/front.png",
+    "output": "godot/assets/cg/vol2_rip_scoreboard.jpg"
+  },
+  {
+    "at": "2026-10-19T18:15:22+00:00",
+    "stage": "image",
+    "slug": "vol2_bed_breakfast_christmas",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes bed breakfast christmas like this: A large Christmas tree was seen inside through the large front windows. The edges of everything were festooned in white lights, most of which simulated tall candles, dripping fake plastic wax. It was dark, and we could not see the actual structure itself, but a lighthouse beacon burnt out across the night, its glass eye catching mine until I stopped staring. Additional direction: A restored coastal bed and breakfast on a December night, its sign reading The Cozier Cottage. A large Christmas tree glows through the big front windows; every edge is festooned with white lights, most shaped like tall candles dripping fake plastic wax. Around it, manicured garden rows with something in bloom despite the winter cold; woods dark across the road. Beyond, unseen in the dark, a lighthouse beacon sweeps across the night.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: bed breakfast christmas. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nLettering on it reads exactly: The Cozier Cottage. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_bed_breakfast_christmas/vol2_bed_breakfast_christmas_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T18:15:29+00:00",
+    "stage": "scene2d",
+    "slug": "vol2_bed_breakfast_christmas",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol2_bed_breakfast_christmas/front.png",
+    "output": "godot/assets/backgrounds/vol2_bed_breakfast_christmas.jpg"
+  },
+  {
+    "at": "2026-10-19T18:15:45+00:00",
+    "stage": "image",
+    "slug": "vol2_lighthouse_beam",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes A beacon, this fortress of solitude., like this: Rooted to that spot we were, looking up in darkness, the stone masonry surrounding, the light twinkling up above shot out of floorboard and crevasse. It was a beacon, this fortress of solitude. Slim and narrow, damp and noisy, a full time job and a home of sorts, this lighthouse was nothing if not an exaggeration of duty and human commitment. Additional direction: At the lighthouse's foot at night, inside the high padlocked barbed gate on the bricked foundation walkway, looking straight up: damp stone masonry close all around, the slim, narrow column rising into darkness, the light up above twinkling, shot out of floorboard and crevasse. Two-handed flashlight beams, clouds of breath vapor in the cold, wind whistling in the cracks, surf pounding close. Beautiful, unnatural, lonely: a fortress of solitude at Christmas.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: A beacon, this fortress of solitude.. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol2_lighthouse_beam/vol2_lighthouse_beam_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
