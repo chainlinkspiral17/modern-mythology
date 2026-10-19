@@ -3835,6 +3835,45 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-19 · pass 128: THE CHALKED WALL (draft 3) — the verses themselves, by moonlight and flashlight.**
+Next on the vol 5 sheet after the wreck: `graustark_chalk_wall` (5 uses), near-black at night, murky at
+dusk; the "verses" were word-stroke dashes; the floor a hard checker of loose plates; Judgement's
+two dawn uses (`dawn_warm`) sat under the preset's night sky.
+- **The writing is the text.** The Hermit's three verses (ch9, chalk) and the Star's four (ch17,
+  charcoal) word for word as lit Label3Ds on the wall's west face (Caveat / Reenie Beanie, SIL OFL,
+  `resources/fonts/`). The charcoal is there only from the Star's night on: `Verse_Star_*` are
+  suffixed to the twins, and `_strip_other_preset_lights` now strips Label3Ds too. The chalk insert
+  reads "And the bird brings me the past / In small bright pieces." The receipt chip sits just
+  right of the verses, as in the text.
+- **Light.** The Hermit: a moon key from the WSW raking the verse face, and Joanna's flashlight
+  (now lying on her block, aimed at the verses) as the warm practical. **The Star**
+  (`graustark_chalk_wall_star`, new twin): the moon alone, fuller — "the pale moonlit surface".
+  **Judgement** (`graustark_chalk_wall_morning`, new twin): dawn sky and ambient, a low sun
+  from the ENE behind the wall, the west sky's fill on the verses.
+- **Floor:** a worn checker flush on a mortar bed, plaster dust, chalk dust at the wall's foot.
+  The wall carries a film of rubbed chalk under the Hermit's verses (`Chalk_Haze_Wall`), in the
+  wall's own grey: the audits cannot see Label3Ds, so the chalk insert's subject has to be
+  geometry. A shade paler read as a pale rectangle once the post had posterised it.
+- **Story audit (not this pass):** `vn_story_audit` fails on 285 missing media files (153 beds,
+  83 backgrounds, 49 CGs) referenced by vol 1 and the vol 5 preludes — pictures and beds that
+  are not in the repo. It stops the full suite before the doorway, light, dry-run, overlap and
+  vantage gates, which were run separately for this pass. Needs its own pass: bring the files in
+  from the Deck / Drive or map the stems to sets (`bg_places.json`).
+  The overlap gate also reports `small_wood_road` at 6 clips over its baseline of 0
+  (`Ditch_Field_E` × two creek rocks and four fir trunks) — neither builder nor kit changed since
+  September; a pass on its own. Further on, `music_coverage_audit` fails on 139 problems (vol 1–2
+  scenes no catalog entry names, since the 10-16 vol 1–4 merge) and `audio_reference_audit` on
+  the same 285 missing media. Every other gate after them passes (placement, buried decor, tscn
+  syntax, wrong room, vantage + marker obstruction 0).
+- Perf: a SHADOWED flashlight spot took Graustark from 1,254 to **14,316** draw calls; every
+  light here is unshadowed (back to 1,254).
+  **Draft 4 targets:** the Star's "moon-shard impaled in the sky" (no moon in any Graustark sky);
+  the wall's own surface (one flat grey: plaster patches, a stain bloom); the flashlight pool's hard,
+  banded edge; chalk-on-pale contrast in the moonlit twin; the cat's shadow on the wall (needs a
+  baked decal, not a shadowed spot); a second setup down the wall with the I-beam overhead.
+- **Next on the sheet:** `riverboat_interior`, `graustark_shotgun_interior`. Deck must REBUILD
+  graustark.
+
 **2026-10-19 · pass 127: THE VOL 5 CONTACT SHEET AGAIN — the night drive, the wreck's morning.**
 All 33 vol 5 backgrounds rebuilt and rendered (the Arc 0 loop). Weakest frames, in order:
 `miriam_subaru_night` (near-black), `graustark_wreck` (5 uses; a small box on a flat grey plain),

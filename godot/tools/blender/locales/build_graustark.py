@@ -5247,27 +5247,6 @@ def build_sinkhole_bowl_2026_10():
     _mb("Sinkhole_Sign_Band", (sx_, sy_ - 0.0675, 1.43), (0.62, 0.005, 0.12), (0.72, 0.18, 0.14, 1.0))
 
 
-def _verse_lines(prefix, y_left, z_top, n_lines, width, col, seed, x_face=43.85):
-    """Lines of handwritten words on the chalked wall's west face: each
-    word a short stroke, read left → right (the viewer faces +x, so
-    left is +y). The verses were two pale rectangles until 2026-10-04."""
-    from _props.geometry import make_box as _mb
-    for li in range(n_lines):
-        z = z_top - li * 0.085
-        line_w = width * (0.55 + 0.45 * _h01(seed, li))
-        if li == n_lines - 1:
-            line_w *= 0.6
-        yy, wi = y_left, 0
-        while True:
-            wl = 0.04 + 0.16 * _h01(seed + 7, li * 13 + wi)
-            if (y_left - yy) + wl > line_w:
-                break
-            _mb(f"{prefix}_L{li}_W{wi}", (x_face - 0.004, yy - wl / 2.0, z),
-                (0.006, wl, 0.022 + 0.008 * _h01(seed + 3, wi)), col)
-            yy -= wl + 0.035
-            wi += 1
-
-
 def build_haberdashery_2026_10():
     """THE HABERDASHERY (2026-10-04) — "a relatively smooth section of
     wall inside the gutted shell of what might have been a haberdashery
@@ -5284,13 +5263,30 @@ def build_haberdashery_2026_10():
     chalk. Joanna's place — the concrete block she sits on — carries her
     satchel, flashlight, chalk nubs, charcoal, the stolen lipstick.
 
-    Draft N+1: the cat and Rumpus (no creature kit for them yet); chalk
-    dust on the floor at the wall foot as a pale smear; the shop sign."""
+    DRAFT 3 (2026-10-19, the vol 5 contact sheet: "too dark", 5 uses).
+    The writing is the verses themselves (Label3Ds in graustark.tscn, word
+    for word: the Hermit's three in chalk, the Star's four in charcoal from
+    the Star's night on); the floor is a worn checker laid flush on a mortar
+    bed with plaster dust drifted over it and the chalk dust at the wall's
+    foot; the flashlight on the block is aimed at the verses — the practical
+    the Hermit's frame is lit by, with a moon key raking the wall (the
+    Star: the moon alone; Judgement's morning: a twin preset at dawn).
+    Draft 4 targets: the Star's "moon-shard impaled in the sky" (no moon in
+    any Graustark sky yet); the wall's own surface (smooth plaster patches
+    on the concrete, a stain bloom — it is one flat grey); the shop sign;
+    a second setup down the wall's length so the charcoal and the chalk
+    can be framed together with the I-beam overhead."""
     from _props.geometry import make_box as _mb, make_cyl as _mc, make_rot_box as _mrb
     brick = (0.48, 0.36, 0.29, 1.0)
     brick_dk = (0.40, 0.30, 0.24, 1.0)
-    tile_a, tile_b = (0.62, 0.60, 0.55, 1.0), (0.34, 0.29, 0.25, 1.0)
+    # (2026-10-19, contact sheet) the checker read as a game board: a
+    # 0.62 / 0.34 pair of loose 2 cm plates over the dirt, every gap a
+    # black void the post's edge pass outlined. Now a worn, dusty pair a
+    # step apart, laid flush on the shop's mortar bed — a lost tile shows
+    # mortar, not a hole.
+    tile_a, tile_b = (0.54, 0.52, 0.47, 1.0), (0.41, 0.36, 0.32, 1.0)
     FT = 0.02                                   # tile top
+    _mb("Haberdash_Subfloor", (40.225, -374.05, 0.006), (7.25, 7.80, 0.012), (0.37, 0.35, 0.32, 1.0))
     # ── the checker floor, tiles missing ──
     skip_fp = [(40.25, 40.75, -375.25, -374.75)]     # the I-beam's south pier
     for i in range(12):
@@ -5302,8 +5298,24 @@ def build_haberdashery_2026_10():
             gone = _h01(i * 3 + 1, j * 7 + 2)
             if gone < (0.40 if i < 2 else 0.16):
                 continue
-            _mb(f"Haberdash_Tile_{i}_{j}", (x0 + 0.3, y0 + 0.3, FT / 2.0), (0.59, 0.59, FT),
+            _mb(f"Haberdash_Tile_{i}_{j}", (x0 + 0.3, y0 + 0.3, FT - 0.004), (0.592, 0.592, 0.008),
                 tile_a if (i + j) % 2 == 0 else tile_b)
+    # plaster dust drifted over the tiles, and the chalk dust at the wall's
+    # foot under the verses (she "sucked chalk dust from her fingertip")
+    dust = (0.58, 0.56, 0.52, 1.0)
+    for di, (dx_, dy_, w_, d_) in enumerate(((37.9, -376.6, 1.5, 0.9), (39.4, -371.3, 1.2, 1.1),
+                                             (42.9, -372.6, 1.4, 0.8), (38.6, -374.2, 0.8, 0.6))):
+        _mb(f"Haberdash_Dust_{di}", (dx_, dy_, FT + 0.0015), (w_, d_, 0.003), dust)
+    _mb("Haberdash_Dust_Wall_Foot", (43.62, -374.55, FT + 0.0015), (0.42, 2.2, 0.003), (0.74, 0.73, 0.70, 1.0))
+    # the film of rubbed chalk on the wall where she writes — the chalk
+    # insert's subject for the audits, which cannot see the Label3D verses.
+    # The wall's own grey: a shade paler read as a pale rectangle behind
+    # the writing (the draft-1 look) once the post had posterised it.
+    _mb("Chalk_Haze_Wall", (43.8485, -374.50, 1.65), (0.003, 1.80, 1.80), (0.55, 0.54, 0.52, 1.0))
+    for pi_, (px, py, ps) in enumerate(((43.55, -373.2, 0.10), (43.30, -375.9, 0.14), (43.70, -376.6, 0.08),
+                                        (43.45, -371.8, 0.12))):
+        _mrb(f"Haberdash_Plaster_Chip_{pi_}", (px, py, FT + ps * 0.15), (ps, ps * 0.7, ps * 0.3),
+             (0.60, 0.59, 0.56, 1.0), yaw=px * 1.7)
     # ── north wall: broken low where the beam crosses, tall at the corner ──
     for wi_, (xa, xb, h) in enumerate(((36.9, 39.2, 0.90), (39.2, 41.6, 1.25), (41.6, 43.85, 3.10))):
         _mb(f"Haberdash_Wall_N_{wi_}", ((xa + xb) / 2.0, -369.9, h / 2.0), (xb - xa, 0.30, h),
@@ -5343,7 +5355,14 @@ def build_haberdashery_2026_10():
     # ── Joanna's place: the block, and what her pockets yield ──
     bt = FT + 0.45                                    # Sitting_Block top
     _mb("Joanna_Satchel", (41.40, -375.89, FT + 0.125), (0.32, 0.12, 0.25), (0.34, 0.33, 0.24, 1.0))
-    _mc("Joanna_Flashlight", (41.18, -376.40, bt + 0.02), 0.02, 0.17, (0.22, 0.22, 0.24, 1.0), axis='Y', segments=8)
+    # The flashlight lies on the block aimed at the verses ("by the failing
+    # light of the flashlight") — the practical behind the Hermit's
+    # Flashlight_Beam spot (graustark.tscn): yaw 30° north of east, its
+    # lens propped a few degrees up on a chalk nub.
+    _mrb("Joanna_Flashlight", (41.28, -376.17, bt + 0.024), (0.17, 0.04, 0.04), (0.22, 0.22, 0.24, 1.0),
+         yaw=math.radians(30.0), pitch=math.radians(-6.0))
+    _mrb("Joanna_Flashlight_Lens", (41.358, -376.125, bt + 0.033), (0.006, 0.042, 0.042), (0.96, 0.88, 0.66, 1.0),
+         yaw=math.radians(30.0), pitch=math.radians(-6.0))
     for ci_, (ox, oy) in enumerate(((0.10, -0.12), (0.18, -0.05), (0.24, -0.16))):
         _mb(f"Joanna_Chalk_Nub_{ci_}", (41.40 + ox, -376.30 + oy, bt + 0.006), (0.012, 0.032, 0.012),
             (0.88, 0.87, 0.82, 1.0))
@@ -5356,20 +5375,11 @@ def build_haberdashery_2026_10():
     from _props.creatures import make_dog as _dog, make_cat as _cat
     _dog("Rumpus_Wall", 42.35, -376.40, FT, heading='-Y', pose='lying', one_eyed=True)
     _cat("Joanna_Cat", 43.35, -375.00, FT, heading='-X', pose='sitting')
-    # ── THE WRITING (left = north). Charcoal: the Star's verses ──
-    char = (0.08, 0.08, 0.08, 1.0)
-    chalk = (0.88, 0.87, 0.82, 1.0)
-    faint = (0.66, 0.65, 0.61, 1.0)
-    _verse_lines("Charcoal_Verse_A", -370.60, 2.35, 8, 1.50, char, 11)
-    _verse_lines("Charcoal_Verse_B", -370.60, 1.55, 6, 1.40, char, 23)
-    _verse_lines("Charcoal_Verse_C", -372.35, 1.15, 5, 1.20, char, 37)
-    # chalk: the Hermit's two downloaded verses and her own third
-    _verse_lines("Chalk_Verse_1", -373.90, 2.35, 6, 1.15, chalk, 41)
-    _verse_lines("Chalk_Verse_2", -373.90, 1.80, 5, 1.15, chalk, 53)
-    _verse_lines("Chalk_Verse_3", -373.90, 1.30, 4, 1.10, chalk, 67)
-    # older chalk, washed by rain
-    _verse_lines("Chalk_Old_1", -375.80, 2.20, 5, 1.40, faint, 71)
-    _verse_lines("Chalk_Old_2", -376.20, 1.35, 4, 1.30, faint, 83)
+    # ── THE WRITING (2026-10-19) is the verses themselves now: Label3Ds in
+    # graustark.tscn (Verse_Hermit_* in chalk, Verse_Star_* in charcoal,
+    # the Star's only from that night on), lit by the moon and her
+    # flashlight. The word-stroke dashes they replace read as Morse code
+    # at every distance and smeared in the post; no geometry stands in.
 
 
 def _wall_run(prefix, axis, fixed, a0, a1, z0, z1, thick, openings, col):

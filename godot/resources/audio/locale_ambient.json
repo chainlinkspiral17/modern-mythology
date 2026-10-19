@@ -713,6 +713,14 @@
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.82
     },
+    "graustark_chalk_wall_star": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.82
+    },
+    "graustark_chalk_wall_morning": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.82
+    },
     "graustark_post_office": {
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.82

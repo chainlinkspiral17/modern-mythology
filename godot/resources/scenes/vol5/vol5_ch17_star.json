@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:graustark_chalk_wall"
+      "src": "3d:graustark_chalk_wall_star"
     },
     {
       "t": "hide",

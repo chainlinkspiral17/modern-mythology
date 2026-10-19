@@ -151,6 +151,27 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-19 · on a big region set, a shadowed spot is the most expensive light there is
+
+**Context:** Joanna's chalked wall in Graustark (vol 5 contact sheet). A
+flashlight lying on her block, aimed at the verses, with shadows on so the
+cat would throw a shadow on the wall.
+
+**What happened:** `perf_gate graustark` went from 1,254 draw calls to
+**14,316** (cap 2,000). Turning that one light's shadow off brought it back
+to 1,254 exactly. The shadowed directional sun (pass 127) had cost ~1,700;
+the spot cost ~13,000 — PerfProbe loads every preset's lights at once, and
+a spot's shadow pass draws the region's casters again.
+
+**Rule:** on Graustark-scale sets (a ~1 km region in one scene) every light
+is unshadowed; a shadow the frame needs is geometry (a dark decal on the
+wall or floor), not a shadow map. Run `perf_gate` the moment a light gets
+`shadow_enabled = true`.
+
+**Also:** a practical can be MADE: the flashlight already sat on the
+block in the prose ("by the failing light of the flashlight"); turning
+the prop to aim at the subject gave the frame its key with a visible source.
+
 ### 2026-10-13 · read a light's direction back before trusting its comment
 
 - **The portrait rig's fill and rim were never where their comments

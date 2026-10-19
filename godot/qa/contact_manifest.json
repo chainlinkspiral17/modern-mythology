@@ -201,6 +201,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_closeup_eileen",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_miller",
      "type": "closeup"
     },
@@ -214,6 +218,10 @@
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sam",
      "type": "closeup"
     },
     {
@@ -471,11 +479,27 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_finn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem",
      "type": "closeup"
     },
     {
@@ -550,187 +574,6 @@
    "scene_missing": false
   },
   {
-   "id": "cabin_porch",
-   "scene": "res://scenes/locales/cabin_interior.tscn",
-   "vol": 7,
-   "uses": 13,
-   "moods": [
-    "dusk",
-    "candlelight_low"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b__cabin_porch",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c__cabin_porch",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_cale__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_finn__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_kai__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_lena__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_marina__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_per__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_roy__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_tem__cabin_porch",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bowl",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_bowls",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cap",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cedar__cabin_porch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_charred_wood",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_chest",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cigarette__cabin_porch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_coffee__cabin_porch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow__cabin_porch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cup",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_desk",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_disc",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_disc_case",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_door__cabin_porch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_doorknob",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_eggs",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_face",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hand",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hands",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_headset",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hexagon",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_notebook",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_package",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_player",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_stick",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_table",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck__cabin_porch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_wagon",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_window",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "cosmic_comics_back_office",
    "scene": "res://scenes/locales/cosmic_comics_interior.tscn",
    "vol": 6,
@@ -749,11 +592,23 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_curtis",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_maya__cosmic_comics_back_office",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person__cosmic_comics_back_office",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b__cosmic_comics_back_office",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_rick__cosmic_comics_back_office",
      "type": "closeup"
     },
     {
@@ -854,11 +709,23 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_curtis",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_maya",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_rick",
      "type": "closeup"
     },
     {
@@ -1226,6 +1093,14 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_bt",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_diego",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1346,6 +1221,187 @@
    "scene_missing": false
   },
   {
+   "id": "cabin_porch",
+   "scene": "res://scenes/locales/cabin_interior.tscn",
+   "vol": 7,
+   "uses": 8,
+   "moods": [
+    "dusk",
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__cabin_porch",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c__cabin_porch",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_cale__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_finn__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_per__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cap",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chest",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cigarette__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_coffee__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cup",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc_case",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doorknob",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_eggs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_face",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_headset",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_package",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_player",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "chillwave_backroom",
    "scene": "res://scenes/locales/chillwave_interior.tscn",
    "vol": 7,
@@ -1360,7 +1416,15 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_cale__chillwave_backroom",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_counter",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena__chillwave_backroom",
      "type": "closeup"
     },
     {
@@ -1373,6 +1437,10 @@
     },
     {
      "name": "shot_closeup_stickbox",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem__chillwave_backroom",
      "type": "closeup"
     },
     {
@@ -1498,6 +1566,22 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_anita",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_ben",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_bill",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_gracie",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1556,6 +1640,10 @@
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sam",
      "type": "closeup"
     },
     {
@@ -1733,6 +1821,14 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_linda",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_maya",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1798,11 +1894,35 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_aud",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_hans",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marit",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem",
      "type": "closeup"
     },
     {
@@ -1887,6 +2007,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_closeup_maya",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1951,6 +2075,10 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_abuela",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1988,11 +2116,27 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_finn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem",
      "type": "closeup"
     },
     {
@@ -2339,6 +2483,26 @@
      "type": "insert"
     },
     {
+     "name": "shot_insert_boots",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_clock",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_curtains",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_drawer",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_duffel",
      "type": "insert"
     },
@@ -2347,11 +2511,27 @@
      "type": "insert"
     },
     {
+     "name": "shot_insert_fan",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_glass",
      "type": "insert"
     },
     {
+     "name": "shot_insert_lamp",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_laptop",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_pen",
      "type": "insert"
     },
     {
@@ -2491,119 +2671,6 @@
     {
      "name": "shot_insert_paint_table",
      "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "graustark_chalk_wall",
-   "scene": "res://scenes/locales/graustark.tscn",
-   "vol": 5,
-   "uses": 5,
-   "moods": [
-    "dusk",
-    "night"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_child",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_frog",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_joanna",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b__graustark_chalk_wall",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_beam",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_candle",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_chalk",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cottage",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_doohickey",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_gate",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_herbs",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_letter",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_notebook",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_paddlebox",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_receipt",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_rubble",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sinkhole",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_smoke_ring",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_steamship",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_wall",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_wreck",
-     "type": "insert"
-    },
-    {
-     "name": "shot_wide_house",
-     "type": "wide"
-    },
-    {
-     "name": "shot_wide_sinkhole",
-     "type": "wide"
-    },
-    {
-     "name": "shot_wide_threshold",
-     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -2844,6 +2911,186 @@
    "scene_missing": false
   },
   {
+   "id": "cabin_porch_day",
+   "scene": "res://scenes/locales/cabin_interior.tscn",
+   "vol": 7,
+   "uses": 4,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__cabin_porch_day",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c__cabin_porch_day",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_cale__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_finn__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_per__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem__cabin_porch_day",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cap",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar__cabin_porch_day",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chest",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cigarette__cabin_porch_day",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_coffee__cabin_porch_day",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow__cabin_porch_day",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cup",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc_case",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door__cabin_porch_day",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doorknob",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_eggs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_face",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_headset",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_package",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_player",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck__cabin_porch_day",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "cabin_road_truck",
    "scene": "res://scenes/locales/cabin_road.tscn",
    "vol": 7,
@@ -2963,6 +3210,26 @@
      "type": "insert"
     },
     {
+     "name": "shot_insert_boots",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_clock",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_curtains",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_drawer",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_duffel",
      "type": "insert"
     },
@@ -2971,11 +3238,27 @@
      "type": "insert"
     },
     {
+     "name": "shot_insert_fan",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_glass",
      "type": "insert"
     },
     {
+     "name": "shot_insert_lamp",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_laptop",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_pen",
      "type": "insert"
     },
     {
@@ -3838,6 +4121,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_closeup_maya",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -4020,7 +4307,15 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_ben__pit_stop_kitchen",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_booth",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_jesse__pit_stop_kitchen",
      "type": "closeup"
     },
     {
@@ -5265,6 +5560,226 @@
     {
      "name": "shot_insert_setlist",
      "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "graustark_chalk_wall",
+   "scene": "res://scenes/locales/graustark.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    "dusk"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__graustark_chalk_wall",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_beam",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_candle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chalk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cottage",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doohickey",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_gate",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_herbs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_paddlebox",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_receipt",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_rubble",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sinkhole",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_smoke_ring",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_steamship",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wreck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "graustark_chalk_wall_morning",
+   "scene": "res://scenes/locales/graustark.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_beam",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_candle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chalk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cottage",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doohickey",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_gate",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_herbs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_paddlebox",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_receipt",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_rubble",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sinkhole",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_smoke_ring",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_steamship",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wreck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -6792,6 +7307,186 @@
    "scene_missing": false
   },
   {
+   "id": "cabin_porch_dawn",
+   "scene": "res://scenes/locales/cabin_interior.tscn",
+   "vol": 7,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__cabin_porch_dawn",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c__cabin_porch_dawn",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_cale__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_finn__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_per__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem__cabin_porch_dawn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cap",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar__cabin_porch_dawn",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chest",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cigarette__cabin_porch_dawn",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_coffee__cabin_porch_dawn",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow__cabin_porch_dawn",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cup",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc_case",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door__cabin_porch_dawn",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doorknob",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_eggs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_face",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_headset",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_package",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_player",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck__cabin_porch_dawn",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "cafe_olimpico",
    "scene": "res://scenes/locales/cafe_olimpico.tscn",
    "vol": 5,
@@ -6846,6 +7541,14 @@
     },
     {
      "name": "shot_closeup_gracie__caldwell_yard_afternoon",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_linda",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_maya",
      "type": "closeup"
     },
     {
@@ -7709,6 +8412,114 @@
    "scene_missing": false
   },
   {
+   "id": "graustark_chalk_wall_star",
+   "scene": "res://scenes/locales/graustark.tscn",
+   "vol": 5,
+   "uses": 1,
+   "moods": [
+    "night"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_beam",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_candle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chalk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cottage",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doohickey",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_gate",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_herbs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_paddlebox",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_receipt",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_rubble",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sinkhole",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_smoke_ring",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_steamship",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wreck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "graustark_cottage",
    "scene": "res://scenes/locales/graustark.tscn",
    "vol": 5,
@@ -8014,7 +8825,23 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_aud",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_finn__hans_bakery_back_door",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_hans",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marit",
      "type": "closeup"
     },
     {
@@ -8023,6 +8850,10 @@
     },
     {
      "name": "shot_closeup_person_b__hans_bakery_back_door",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy",
      "type": "closeup"
     },
     {
@@ -8629,6 +9460,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_closeup_eileen",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_miller",
      "type": "closeup"
     },
@@ -8642,6 +9477,10 @@
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sam",
      "type": "closeup"
     },
     {
@@ -8694,6 +9533,58 @@
     },
     {
      "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "miller_master_bedroom_night",
+   "scene": "res://scenes/locales/miller_office.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_bianca__miller_master_bedroom_night",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bills",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_book__miller_master_bedroom_night",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cabinet",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_laptop",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
      "type": "insert"
     },
     {
@@ -9373,6 +10264,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_closeup_eileen__pit_stop_back_booth",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_passthrough",
      "type": "closeup"
     },
@@ -9799,34 +10694,6 @@
     },
     {
      "name": "shot_insert_utility",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "small_wood_cemetery",
-   "scene": "res://scenes/locales/small_wood_cemetery.tscn",
-   "vol": 2,
-   "uses": 1,
-   "moods": [
-    "dawn_warm"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_casket",
      "type": "insert"
     }
    ],
@@ -10277,5 +11144,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2307
+ "frames": 2515
 }
