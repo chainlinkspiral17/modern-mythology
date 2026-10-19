@@ -54,7 +54,13 @@ func _build() -> void:
 
 	_plate = TextureRect.new()
 	_plate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_plate.stretch_mode = TextureRect.STRETCH_SCALE
+	# (2026-10-19, the user: "title pages are getting cut off and not scaled
+	# to the resolution") Without EXPAND_IGNORE_SIZE a TextureRect's minimum
+	# size is its texture's pixel size: a painted plate bigger than the
+	# 1280×720 canvas grew past the right and bottom edges and lost its
+	# lettering. The plate now fits the screen whole, centred.
+	_plate.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_plate.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_plate.visible = false
 	add_child(_plate)

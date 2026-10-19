@@ -37,6 +37,9 @@ func _build() -> void:
 
 	_img = TextureRect.new()
 	_img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	# a picture larger than the canvas must not grow the rect past the
+	# screen (ChapterCard, 2026-10-19: the same bug cut the title plates)
+	_img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_img.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_img.offset_bottom = -56
 	add_child(_img)
