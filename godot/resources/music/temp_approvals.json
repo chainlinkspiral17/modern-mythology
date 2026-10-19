@@ -475,6 +475,135 @@
      "notes": ""
     }
    ]
+  },
+  "vol7_cabin_woodstove": {
+   "approved": {
+    "take": "20261016-175712-s977732595-cover",
+    "seed": 977732595,
+    "mood": {
+     "style": "folk",
+     "form": "song",
+     "mode": "minor",
+     "key": 2,
+     "bpm": 97,
+     "density": 0.25,
+     "seed": 977732595,
+     "composer": 2,
+     "textures": [
+      "amb_fire"
+     ],
+     "fx": "fx_reverse_swell",
+     "hit": "fx_wood_knock",
+     "vocab": {
+      "groove": [
+       0,
+       2
+      ],
+      "bass": [
+       "root_half",
+       "two_beat"
+      ],
+      "chords": [
+       "strum",
+       "boomchick"
+      ],
+      "pad": [
+       "sus",
+       "swell"
+      ],
+      "lead": "answer",
+      "perc": "shaker16",
+      "fills": [
+       "snare16",
+       "flam"
+      ],
+      "ext": [
+       "triad",
+       "triad"
+      ],
+      "hr": [
+       1,
+       1
+      ],
+      "arrange": {
+       "counter": null,
+       "arp": null,
+       "perc": null,
+       "double": null
+      }
+     }
+    },
+    "request": {
+     "remix": {
+      "recipe": "cover",
+      "from": {
+       "kind": "file",
+       "id": "import:grails_black_tar_prophecies_vols_4_5_6_05_up_all_night",
+       "title": "Grails - Black Tar Prophecies Vols. 4, 5, & 6 - 05 Up All Night",
+       "path": "assets/audio/imports/grails_black_tar_prophecies_vols_4_5_6_05_up_all_night.flac",
+       "imported": true,
+       "rights": "unlicensed"
+      },
+      "tape": "worn_cassette"
+     }
+    },
+    "instruments": {
+     "drums": "kit:folk",
+     "bass": "forge:bass_fretless",
+     "chords": "forge:gtr_banjo",
+     "lead": "forge:gtr_banjo",
+     "pad": "forge:pad_organ_swell",
+     "texture": "forge:amb_fire",
+     "fx": "forge:fx_reverse_swell",
+     "hit": "forge:fx_wood_knock"
+    },
+    "date": "2026-10-17T01:28:43.131Z",
+    "by": "user",
+    "notes": "",
+    "lufs": -15.7,
+    "true_peak": -1.75,
+    "seconds": 438.464,
+    "bars": 176,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol7_cabin_woodstove.temp.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/drums.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/bass.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/chords.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/lead.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/pad.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/texture.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems/fx.ogg",
+     "assets/audio/bgm/vol7_cabin_woodstove.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 33996250,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    },
+    "third_party": {
+     "kind": "cover",
+     "source": "Grails - Black Tar Prophecies Vols. 4, 5, & 6 - 05 Up All Night",
+     "file": "assets/audio/imports/grails_black_tar_prophecies_vols_4_5_6_05_up_all_night.flac",
+     "rights": "temp-only",
+     "note": "a sketch from imported audio — strip (godot/tools/music_release_check.py --strip) or license before release"
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261016-175712-s977732595-cover",
+     "seed": 977732595,
+     "moved_aside": [
+      "assets/audio/bgm/vol7_cabin_woodstove.wav → assets/audio/replaced/vol7_cabin_woodstove.20261017-012653.wav"
+     ],
+     "date": "2026-10-17T01:28:43.131Z",
+     "by": "user",
+     "notes": ""
+    }
+   ]
   }
  }
 }
