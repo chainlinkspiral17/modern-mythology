@@ -22205,5 +22205,80 @@
       "godot/assets/concept/meshy/tom_bell/tom_bell_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/tom_bell/tom_bell_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T16:57:24+00:00",
+    "stage": "mesh",
+    "slug": "tom_bell",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15515-8e09-77f0-9961-2a3a27966434",
+    "inputs": [
+      "godot/assets/concept/meshy/tom_bell/front.png",
+      "godot/assets/concept/meshy/tom_bell/side.png",
+      "godot/assets/concept/meshy/tom_bell/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/tom_bell.glb",
+    "file_size_kb": 47825.5
+  },
+  {
+    "at": "2026-10-19T16:58:18+00:00",
+    "stage": "image",
+    "slug": "the_writer",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Writer like this: THE WRITER sits on the arm of the couch with a notebook. (nervously, capping a pen) Things taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE WRITER: nervous and bookish, shoulders up, reading glasses pushed up into his hair. A rumpled grey cardigan over a faded t-shirt, dark jeans, worn sneakers. A wide-ruled notebook in one hand and a capped pen in the other.\nFull-body concept render of The Writer, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_writer/the_writer_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_writer/the_writer_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_writer/the_writer_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T17:02:57+00:00",
+    "stage": "mesh",
+    "slug": "the_writer",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15519-9af4-72c7-a467-63fac8cbeaf4",
+    "inputs": [
+      "godot/assets/concept/meshy/the_writer/front.png",
+      "godot/assets/concept/meshy/the_writer/side.png",
+      "godot/assets/concept/meshy/the_writer/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/the_writer.glb",
+    "file_size_kb": 54268.6
   }
 ]
