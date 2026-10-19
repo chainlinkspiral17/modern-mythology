@@ -269,7 +269,12 @@ def main():
 
             try:
                 print(f"  → {tag}  {preview!r}", flush=True)
-                pcm = synth_line(api_key, model_id, voice_id, settings, text)
+                spoken = vc.speakable_text(text)
+                if not spoken:
+                    total["skipped"] += 1
+                    print(f"  [nothing to speak] {tag}  {preview!r}")
+                    continue
+                pcm = synth_line(api_key, model_id, voice_id, settings, spoken)
                 pcm_to_ogg(pcm, out_path)
                 total["rendered"] += 1
             except Exception as e:

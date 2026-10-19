@@ -64,6 +64,34 @@ def char_key(name):
     return (lead + s) if s else NARRATOR
 
 
+# The words a line SPEAKS (2026-10-18, the user, Interlude II in the voice
+# studio: "Input at position 0 has empty text"). Scene text carries the
+# game's directives ([shot:…], [mood:…], [beat:…], [trip:…]), the dialogue
+# box's text effects ([wave …]…[/wave]) and in-world captions written in
+# brackets ("[ FINN — Cape Perpetua trail, 6:42 AM ]"); ElevenLabs reads
+# every [ … ] as a performance tag and drops it, so a caption line arrived
+# empty and the directives were sent to the voice. Directives and effects
+# go; a caption keeps its words; "[—]" (a name left blank) is a pause; a
+# short performance tag ("[sighs]") stays. voice_studio.html
+# speakableText() mirrors this — keep the two in sync.
+_DIRECTIVE = re.compile(r"\[[a-z_]+:[^\]]*\]")
+_EFFECT = re.compile(r"\[/?(?:wave|shake|fade|tornado|rainbow|pulse|ghost|b|i|u|s|color|font_size|center|right|"
+                     r"outline_color|outline_size|bgcolor|fgcolor)\b[^\]]*\]", re.I)
+_BLANK = re.compile(r"\[\s*[—–-]+\s*\]")
+_CAPTION = re.compile(r"\[(\s+[^\]]*?\s*|[^\]]*\s[^\]]*\s[^\]]*\s[^\]]*)\]")
+
+
+def speakable_text(text):
+    """The line as a voice should read it ("" when nothing is left to say)."""
+    t = _DIRECTIVE.sub(" ", text or "")
+    t = _EFFECT.sub("", t)
+    t = _BLANK.sub(" — ", t)
+    t = _CAPTION.sub(lambda m: " " + m.group(1).strip() + " ", t)
+    t = re.sub(r"[ \t]+", " ", t).strip()
+    words = re.sub(r"\[[^\]]*\]", "", t)
+    return t if re.search(r"[A-Za-z0-9]", words) else ""
+
+
 def split_speakers(name):
     """'Faust, Jacob, Wagner' -> ['Faust', 'Jacob', 'Wagner'].  One name -> [name]."""
     s = (name or "").strip()

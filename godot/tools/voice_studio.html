@@ -259,6 +259,21 @@ function charKey(name) {
   return s ? lead + s : '_narrator';
 }
 
+// The words a line SPEAKS — MUST match speakable_text() in voice_common.py:
+// the game's directives ([shot:…], [mood:…], [beat:…], [trip:…]) and the
+// dialogue box's text effects ([wave …]…[/wave]) go; an in-world caption in
+// brackets ("[ FINN — Cape Perpetua trail ]") keeps its words (ElevenLabs
+// drops anything in [ ], which emptied Interlude II's caption lines); "[—]"
+// is a pause; a short performance tag ("[sighs]") stays.
+function speakableText(text) {
+  let t = (text || '').replace(/\[[a-z_]+:[^\]]*\]/g, ' ');
+  t = t.replace(/\[\/?(?:wave|shake|fade|tornado|rainbow|pulse|ghost|b|i|u|s|color|font_size|center|right|outline_color|outline_size|bgcolor|fgcolor)\b[^\]]*\]/gi, '');
+  t = t.replace(/\[\s*[—–-]+\s*\]/g, ' — ');
+  t = t.replace(/\[(\s+[^\]]*?\s*|[^\]]*\s[^\]]*\s[^\]]*\s[^\]]*)\]/g, (m, g) => ' ' + g.trim() + ' ');
+  t = t.replace(/[ \t]+/g, ' ').trim();
+  return /[A-Za-z0-9]/.test(t.replace(/\[[^\]]*\]/g, '')) ? t : '';
+}
+
 function splitSpeakers(name) {
   let s = (name || '').trim();
   while (/\s*\([^()]*\)\s*$/.test(s)) s = s.replace(/\s*\([^()]*\)\s*$/, '');
@@ -786,6 +801,8 @@ async function renderEleven(line) {
   const standIn = hit && hit.startsWith('_narrator') && line.kind !== 'narrate' && (line.rawChar || '').trim();
   line.voiceKey = standIn ? `${hit} — NARRATOR STAND-IN: "${line.rawChar}" has no voice yet` : (hit || '');
   if (!voiceId) throw new Error(`no voice_id for "${line.charKey}"`);
+  const spoken = speakableText(line.text);
+  if (!spoken) throw new Error('nothing to speak (the line is only directions or effects)');
   const model = $('elevenModel').value;
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`;
   const resp = await fetch(url, {
@@ -796,7 +813,7 @@ async function renderEleven(line) {
       'xi-api-key': key,
     },
     body: JSON.stringify({
-      text: line.text,
+      text: spoken,
       model_id: model,
     }),
   });
