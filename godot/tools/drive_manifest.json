@@ -120,6 +120,11 @@
    "md5": "312e5b2ce793e1f4b5249b991c1a8706",
    "size": 47775628
   },
+  "godot/assets/3d/characters/heroes/_full/the_human_being.glb": {
+   "at": "2026-10-19T17:36:50+00:00",
+   "md5": "2e13640228fb24e238a2637a711de50d",
+   "size": 45869724
+  },
   "godot/assets/3d/characters/heroes/_full/the_writer.glb": {
    "at": "2026-10-19T17:04:23+00:00",
    "md5": "f60bf1c3ff55022e5cb1e8db4caf00d6",
@@ -2649,6 +2654,11 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "ac2d1055318844da2fa97239fa969c83",
    "size": 77595
+  },
+  "godot/assets/3d/characters/heroes/the_human_being.glb": {
+   "at": "2026-10-19T17:36:43+00:00",
+   "md5": "9a841b6b127cfad72a960c9fff5ee75b",
+   "size": 5086156
   },
   "godot/assets/3d/characters/heroes/the_stranger.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -75910,15 +75920,100 @@
    "md5": "01e25ee43afc785ec3dfefaa6640112f",
    "size": 112656
   },
+  "godot/assets/concept/meshy/the_human_being/back.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "638675dc112e3c552350702399f2550d",
+   "size": 1927086
+  },
   "godot/assets/concept/meshy/the_human_being/front.png": {
-   "at": "2026-10-19T17:25:44+00:00",
-   "md5": "ff08f6d1b262f0f432673ee158a4300e",
-   "size": 1976437
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "c563de675aabd361236574e52e11ce8a",
+   "size": 2049951
+  },
+  "godot/assets/concept/meshy/the_human_being/meshy_thumb.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "304b13cf80838353e90a7d820e9ca816",
+   "size": 75443
+  },
+  "godot/assets/concept/meshy/the_human_being/side.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "a237abb6d3ae5b6c6e29dc48d9e3c063",
+   "size": 1879986
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "a7ee0d3d0d6702cea4e575e8546c79c3",
+   "size": 1920459
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "018b572746c46abdf18c3ace04fac198",
+   "size": 1929741
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "249e0fcbb546305d7f1952cb09989588",
+   "size": 1906088
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_04.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "a7a1369bacfee07c94f4a025fa0d27cc",
+   "size": 1904424
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_05.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "638675dc112e3c552350702399f2550d",
+   "size": 1927086
   },
   "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T17:25:44+00:00",
    "md5": "ff08f6d1b262f0f432673ee158a4300e",
    "size": 1976437
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "2dca8d61e4f481582b5d56bfa1324bab",
+   "size": 2028641
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "c1a6b71f03267a821c13676ab27727c3",
+   "size": 2074677
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_04.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "f0960a3d2103d19f20cf9ee2581f5e7a",
+   "size": 1946864
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_05.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "c563de675aabd361236574e52e11ce8a",
+   "size": 2049951
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "0c78b8ba4da40fbcb2e979e115354a16",
+   "size": 1892566
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "5fbc60a895c9baae3ceced75f3b38117",
+   "size": 1920181
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "4b0801d08bf146eaa880e0ebb4bd87ea",
+   "size": 1907836
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_04.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "026cf406b24f0455aea6b8b045c8fd89",
+   "size": 1889014
+  },
+  "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_05.png": {
+   "at": "2026-10-19T17:37:08+00:00",
+   "md5": "a237abb6d3ae5b6c6e29dc48d9e3c063",
+   "size": 1879986
   },
   "godot/assets/concept/meshy/the_polaroid/back.png": {
    "at": "2026-10-18T17:28:59+00:00",
