@@ -198,8 +198,9 @@ position = Vector3(60, 12, 150)
 rotation = Vector3(-0.36, 1.249, 0)
 light_color = Color(1.0, 0.80, 0.48, 1)
 light_energy = 1.25
-shadow_enabled = true
-directional_shadow_max_distance = 60.0
+; no shadows: a shadowed sun put Graustark over its 2,000 draw-call cap
+; (perf_gate 2,964; sun shadows were trimmed for the Deck in Perf draft 2)
+shadow_enabled = false
 
 [node name="Back_PrairieSky" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)

@@ -3843,14 +3843,15 @@ All 33 vol 5 backgrounds rebuilt and rendered (the Arc 0 loop). Weakest frames, 
   the moon at 0.5 — the front headrests silhouetted against the road (night preset only).
 - **The wreck's morning (draft 3, `build_minstral_morning_2026_10_19`)**, the World chapter's
   "Sunlight — thick and syrupy yellow, like old honey — drips through the cypress trees lining the
-  riverbank": a low honey sun from the ESE for this view (`Sun_Honey__graustark_wreck`, shadows to
-  60 m) and a warm sky/ambient; cypress lining the NEAR bank (a trunk with long moss at the frame's
+  riverbank": a low honey sun from the ESE for this view (`Sun_Honey__graustark_wreck`, unshadowed —
+  a shadowed sun took Graustark to 2,964 draw calls, over its 2,000 cap) and a warm sky/ambient; cypress lining the NEAR bank (a trunk with long moss at the frame's
   left edge, one behind the stern, one standing in the shallows right with knees); the slough reads
   as water — a pale green sky sheen with duckweed, ripple lines, the hull's and the trees' dark
   reflections (dark green and murky green both read as more mud); the west bank's busted riverside
   walk with wildflowers. In Graustark the riverfront's south-horizon port strip (`South_PortGround`)
   now stops at y −142 (it lay over the slough's south end).
-  **Draft 4 targets:** dappled light through the canopy on the hull; the Frog on the paddlebox in the
+  **Draft 4 targets:** the long cypress shadows across the bank (they made the frame, but cost ~1,700
+  draw calls: a baked shadow decal on the slope, not a shadowed sun); dappled light on the hull; the Frog on the paddlebox in the
   World frames; the Tilt-A-Whirl framework the prose passes; the wildflower bank is out of frame — a
   second World setup down the west bank; the geometry audit's recorder does not see a bpy removal
   (South_PortGround), so decor near its old edge is kept north of y −136.
