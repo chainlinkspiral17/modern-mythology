@@ -3169,7 +3169,8 @@ on the patched roof for the Hermit/World lines (one bird for now);
 "Minstral's Green" lettering on the paddlebox (Label3D); the post
 office on Elm (Judgement's Joanna beat plays at the wall); the doll
 stays gone. (Correction 2026-10-05: the riverboat preset IS the helm —
-Dante's office upstairs — so the montage's Dante cut is right.) NEXT IN VOL 5: the Hierophant (ch 5) plays "Outside St.
+Dante's office upstairs — so the montage's Dante cut is right.) (Superseded 2026-10-05: the Hierophant's St. Jude's and
+armory park were built the same day — see "THE HIEROPHANT AT HOME" above.) NEXT IN VOL 5 (as written then): the Hierophant (ch 5) plays "Outside St.
 Jude's Acadian Church" on the Lovers' ROADSIDE chapel and "the park
 near the Old Armory ... the abandoned bandstand" on the riverfront —
 the district has St. Jude's, the bandstand and the armory, but as
