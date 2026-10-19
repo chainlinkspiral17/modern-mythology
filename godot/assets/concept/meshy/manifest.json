@@ -22034,5 +22034,32 @@
       "godot/assets/concept/meshy/hal/hal_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/hal/hal_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T14:56:45+00:00",
+    "stage": "mesh",
+    "slug": "hal",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a154a6-a39e-7020-b3f0-4d370ad08e10",
+    "inputs": [
+      "godot/assets/concept/meshy/hal/front.png",
+      "godot/assets/concept/meshy/hal/side.png",
+      "godot/assets/concept/meshy/hal/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/hal.glb",
+    "file_size_kb": 50246.8
   }
 ]
