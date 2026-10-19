@@ -819,6 +819,26 @@ function elevenWidget(listIdx) {
   return wrap;
 }
 
+const _voiceInfo = {};               // voice_id → {name, category} | {error}
+async function checkVoice(key, voiceId, who) {
+  if (!(voiceId in _voiceInfo)) {
+    let info;
+    try {
+      const r = await fetch('https://api.elevenlabs.io/v1/voices/' + encodeURIComponent(voiceId),
+                            { headers: { 'xi-api-key': key, 'Accept': 'application/json' } });
+      if (r.ok) { const j = await r.json(); info = { name: j.name || '?', category: j.category || '' }; }
+      else info = { error: `HTTP ${r.status}` };
+    } catch (e) { info = { error: e.message }; }
+    _voiceInfo[voiceId] = info;
+  }
+  const info = _voiceInfo[voiceId];
+  if (info.error) {
+    throw new Error(`"${who}" is set to ${voiceId}, which is not a voice in this ElevenLabs account ` +
+                    `(${info.error}). Paste a real voice ID into its box in the voice map.`);
+  }
+  return info;
+}
+
 async function renderEleven(line) {
   const key = $('elevenKey').value.trim();
   if (!key) throw new Error('API key missing');
@@ -836,6 +856,12 @@ async function renderEleven(line) {
   const standIn = hit && hit.startsWith('_narrator') && line.kind !== 'narrate' && (line.rawChar || '').trim();
   line.voiceKey = standIn ? `${hit} — NARRATOR STAND-IN: "${line.rawChar}" has no voice yet` : (hit || '');
   if (!voiceId) throw new Error(`no voice_id for "${line.charKey}"`);
+  // (2026-10-19, the user: "narrator vol 2 is still a completely different
+  // voice each time, man, woman, nationality, it's completely random") Every
+  // ID is checked against the account before it is used: a value that is not
+  // a voice there stops here with its name, instead of being generated.
+  const v = await checkVoice(key, voiceId, hit);
+  line.voiceKey += ` · ${v.name}${v.category ? ' (' + v.category + ')' : ''}`;
   const spoken = speakableText(line.text);
   if (!spoken) throw new Error('nothing to speak (the line is only directions or effects)');
   const model = $('elevenModel').value;
