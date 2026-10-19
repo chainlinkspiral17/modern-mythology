@@ -199,12 +199,19 @@ func _set_fullscreen() -> void:
 
 
 func _resize_window(w: int, h: int) -> void:
-	var screen_size: Vector2i = DisplayServer.screen_get_size()
-	var clamped_w: int = mini(w, screen_size.x)
-	var clamped_h: int = mini(h, screen_size.y)
+	# (2026-10-19) Fit the screen's USABLE area (the taskbar and the window's
+	# title bar take some of it): a 1080p window on a smaller display ran past
+	# its bottom and right. Too big to fit → maximised; else centred inside it.
+	var screen: int = DisplayServer.window_get_current_screen()
+	var usable: Rect2i = DisplayServer.screen_get_usable_rect(screen)
+	var deco: Vector2i = DisplayServer.window_get_size_with_decorations() - DisplayServer.window_get_size()
+	var room: Vector2i = usable.size - deco
+	if w > room.x or h > room.y:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		return
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	DisplayServer.window_set_size(Vector2i(clamped_w, clamped_h))
-	DisplayServer.window_set_position((screen_size - Vector2i(clamped_w, clamped_h)) / 2)
+	DisplayServer.window_set_size(Vector2i(w, h))
+	DisplayServer.window_set_position(usable.position + (usable.size - Vector2i(w, h) - deco) / 2)
 
 
 func _load() -> void:

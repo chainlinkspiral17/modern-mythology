@@ -24,12 +24,17 @@ func _rebuild() -> void:
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(backdrop)
 
+	# (2026-10-19, the user: "settings menu is busted") The card was exactly
+	# the canvas's height (touching top and bottom) and its column's
+	# offsets did nothing inside the ScrollContainer, so every row ran flush
+	# against the left edge and under the scrollbar. The card now sits 24 px
+	# inside the screen and the rows inside a MarginContainer.
 	var card := Panel.new()
 	card.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	card.offset_left   = -310
-	card.offset_right  = 310
-	card.offset_top    = -360
-	card.offset_bottom = 360
+	card.offset_left   = -340
+	card.offset_right  = 340
+	card.offset_top    = -336
+	card.offset_bottom = 336
 	var st := StyleBoxFlat.new()
 	st.bg_color     = C_BG
 	st.border_color = C_BORDER
@@ -47,12 +52,18 @@ func _rebuild() -> void:
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	card.add_child(scroll)
 
+	var pad := MarginContainer.new()
+	pad.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	pad.add_theme_constant_override("margin_left", 32)
+	pad.add_theme_constant_override("margin_right", 40)     # room for the scrollbar
+	pad.add_theme_constant_override("margin_top", 4)
+	pad.add_theme_constant_override("margin_bottom", 4)
+	scroll.add_child(pad)
+
 	var vbox := VBoxContainer.new()
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vbox.offset_left   = 32
-	vbox.offset_right  = -32
 	vbox.add_theme_constant_override("separation", 14)
-	scroll.add_child(vbox)
+	pad.add_child(vbox)
 
 	# Top padding
 	var top_pad := Control.new()
