@@ -109,11 +109,14 @@
         const repo = window.MM_TOOL_STATE[k];
         const local = localStorage.getItem(k);
         const localAt = m[k] || 0;
-        if (repo && repo.saved_at && (local === null || repo.saved_at > localAt)) {
+        // a browser copy from before tool_store (no timestamp) is the user's own
+        // work: it is never replaced, only pushed (served) or flagged (file)
+        if (repo && repo.saved_at && (local === null || (localAt > 0 && repo.saved_at > localAt))) {
           if (local !== null && local !== repo.value) realSet.call(localStorage, k + '__replaced', local);
           realSet.call(localStorage, k, repo.value);
           m[k] = repo.saved_at;
-        } else if (local !== null && (!repo || localAt > (repo.saved_at || 0))) {
+        } else if (local !== null && (!repo || localAt === 0 || localAt > (repo.saved_at || 0))) {
+          if (localAt === 0) { m[k] = Date.now(); }
           if (SERVED) { pending[k] = { value: local, saved_at: localAt || Date.now() }; clearTimeout(timer); timer = setTimeout(push, 500); }
           else unsaved.push(k);
         }
