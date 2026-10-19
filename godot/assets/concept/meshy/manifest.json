@@ -22397,5 +22397,116 @@
       "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T17:27:17+00:00",
+    "stage": "image",
+    "slug": "the_human_being",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Human Being like this: (dressing in a waiter\u2019s uniform) Cleaned up, hair done nicely, formal, no vest, classy tie.\n\nTHE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil.\n\nThings taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE HUMAN BEING: plain, wounded, tender, the quiet one. A waiter's uniform \u2014 white shirt with the sleeves rolled, an unbuttoned black vest, a black bistro apron, black trousers, black work shoes. A square of holiday fudge in crinkled gold foil in one hand.\nFull-body concept render of The Human Being, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T17:28:29+00:00",
+    "stage": "image",
+    "slug": "the_human_being",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Human Being like this: (dressing in a waiter\u2019s uniform) Cleaned up, hair done nicely, formal, no vest, classy tie.\n\nTHE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil.\n\nThings taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE HUMAN BEING: plain, wounded, tender, the quiet one. A waiter's uniform \u2014 white shirt with the sleeves rolled, a black bistro apron, black trousers, black work shoes. A square of holiday fudge in crinkled gold foil in one hand.\nFull-body concept render of The Human Being, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_03.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T17:29:22+00:00",
+    "stage": "image",
+    "slug": "the_human_being",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Human Being like this: (dressing in a waiter\u2019s uniform) Cleaned up, hair slicked back, facial hair groomed and orderly, very formal, no vest, classy tie.\n\nTHE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil.\n\nThings taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE HUMAN BEING: plain, wounded, tender, the quiet one. A waiter's uniform \u2014 white shirt with the sleeves rolled, a black bistro apron, black trousers, black work shoes. A square of holiday fudge in crinkled gold foil in one hand.\nFull-body concept render of The Human Being, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_04.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_04.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_04.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T17:30:26+00:00",
+    "stage": "image",
+    "slug": "the_human_being",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Human Being like this: (dressing in a waiter\u2019s uniform) Cleaned up, hair slicked back, facial hair groomed and orderly, very formal, no vest, classy business tie red and stylized.\n\nTHE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil.\n\nThings taught to me by them left-handed unusual very tall big feet bright and kind. Additional direction: One man, four facets: the author in 2010, early 30s \u2014 very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE HUMAN BEING: plain, wounded, tender, the quiet one. A waiter's uniform \u2014 white shirt with the sleeves rolled, a black bistro apron, black trousers, black work shoes. A square of holiday fudge in crinkled gold foil in one hand.\nFull-body concept render of The Human Being, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_human_being/the_human_being_front_openai_gpt-image-2.5-sunburst_05.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_side_openai_gpt-image-2.5-sunburst_05.png",
+      "godot/assets/concept/meshy/the_human_being/the_human_being_back_openai_gpt-image-2.5-sunburst_05.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T17:33:59+00:00",
+    "stage": "mesh",
+    "slug": "the_human_being",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15537-0908-72f9-988e-98e9bd8368ab",
+    "inputs": [
+      "godot/assets/concept/meshy/the_human_being/front.png",
+      "godot/assets/concept/meshy/the_human_being/side.png",
+      "godot/assets/concept/meshy/the_human_being/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/the_human_being.glb",
+    "file_size_kb": 44794.7
   }
 ]
