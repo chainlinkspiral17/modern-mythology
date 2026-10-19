@@ -220,6 +220,7 @@
 <!-- JSZip for the drop-in export -->
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="voice_map.js"></script>
+<script src=".elevenlabs_key.js"></script>
 <script>
 'use strict';
 
@@ -906,11 +907,31 @@ function extForBlob(blob) {
   return 'ogg';
 }
 
+// THE KEY (2026-10-19, the user: "I reloaded and it didn't keep the key.
+// seriously, I need these stored locally"). The box was never saved. It
+// now loads from godot/tools/.elevenlabs_key.js (a file on this machine,
+// gitignored, written by `python3 godot/tools/voice_key.py`), else from
+// this browser, where a key typed in is kept at once. The model choice is
+// remembered too.
+function loadElevenKey() {
+  let k = (window.MM_ELEVEN_KEY || '').trim();
+  if (!k) { try { k = (localStorage.getItem('mm_eleven_key') || '').trim(); } catch (e) {} }
+  if (k) $('elevenKey').value = k;
+  try { const m = localStorage.getItem('mm_eleven_model'); if (m) $('elevenModel').value = m; } catch (e) {}
+}
+$('elevenKey').addEventListener('input', () => {
+  try { localStorage.setItem('mm_eleven_key', $('elevenKey').value.trim()); } catch (e) {}
+});
+$('elevenModel').addEventListener('change', () => {
+  try { localStorage.setItem('mm_eleven_model', $('elevenModel').value); } catch (e) {}
+});
+
 // Restore voice map + imported aliases on page load: this browser's copy,
 // then the repo's (which the page also writes back to)
 loadVoiceMeta();
 loadVoiceMap();
 loadVoiceMapFromRepo();
+loadElevenKey();
 </script>
 </body>
 </html>
