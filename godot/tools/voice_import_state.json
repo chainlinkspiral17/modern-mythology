@@ -448,6 +448,14 @@
    "wired": 0,
    "zip": "voice_dropin_vol5_ch9_hermit (1).zip"
   },
+  "6612cb008934974f1583f69afee1b040": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol7_interlude_ii",
+   "skipped": 0,
+   "wired": 38,
+   "zip": "voice_dropin_vol7_interlude_ii.zip"
+  },
   "66a085b44bd2d1ec56d9f99def1e0f93": {
    "at": "2026-10-01",
    "kept": 22,
@@ -520,6 +528,14 @@
    "wired": 0,
    "zip": "voice_dropin_vol5_ch10_wheel.zip"
   },
+  "77ed5d9ab3466047214ef6679a3ec648": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol6_ch22_sunday",
+   "skipped": 0,
+   "wired": 28,
+   "zip": "voice_dropin_vol6_ch22_sunday.zip"
+  },
   "7a2162381d31a04a9bb3e367e7343be0": {
    "at": "2026-10-01",
    "kept": 53,
@@ -535,6 +551,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch12_porch.zip"
+  },
+  "7c638cf84fd5c2d5b29c205bdb55d447": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol6_ch23_sleep",
+   "skipped": 0,
+   "wired": 122,
+   "zip": "voice_dropin_vol6_ch23_sleep.zip"
   },
   "7ed7e2b8b1981898c6dc1915b666aaeb": {
    "at": "2026-10-01",
@@ -575,6 +599,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol5_ch5_hierophant.zip"
+  },
+  "8538ae8354361161a05d5bb4a6a5a6c3": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol7_interlude_ii",
+   "skipped": 0,
+   "wired": 44,
+   "zip": "voice_dropin_vol7_interlude_ii (1).zip"
   },
   "8702d10ce28a8b2f7a3944b210ed99f7": {
    "at": "2026-10-01",
@@ -688,6 +720,14 @@
    "wired": 0,
    "zip": "voice_dropin_vol6_ch17_porch.zip"
   },
+  "a0530c2b23690e9a95a5342084a293c2": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol6_ch22_vinton",
+   "skipped": 0,
+   "wired": 202,
+   "zip": "voice_dropin_vol6_ch22_vinton.zip"
+  },
   "a2bc861ecf9f1b2019827b9c7252261c": {
    "at": "2026-10-01",
    "kept": 18,
@@ -735,6 +775,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol5_ch2_priestess (1).zip"
+  },
+  "b24c56c64e84bf6d7838e40112209145": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol7_ch1_finn",
+   "skipped": 0,
+   "wired": 50,
+   "zip": "voice_dropin_vol7_ch1_finn.zip"
   },
   "b645df8e176947636893e32c1277da3e": {
    "at": "2026-10-01",
@@ -960,6 +1008,22 @@
    "wired": 0,
    "zip": "voice_dropin_vol6_ch15_kwik_stop.zip"
   },
+  "efc5f17637b0b5e22fdc84662e9908c9": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol6_ch22_inventory",
+   "skipped": 0,
+   "wired": 288,
+   "zip": "voice_dropin_vol6_ch22_inventory (1).zip"
+  },
+  "f2d97375343f6ff972f56ad3a84d89fc": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol6_ch23_sunday",
+   "skipped": 0,
+   "wired": 169,
+   "zip": "voice_dropin_vol6_ch23_sunday.zip"
+  },
   "f374d11b592c2f63c1021f159f6a5885": {
    "at": "2026-10-01",
    "kept": 37,
@@ -991,6 +1055,14 @@
    "skipped": 1,
    "wired": 0,
    "zip": "voice_dropin_vol5_ch6_lovers.zip"
+  },
+  "f88bb0b09a81f8a26989020053217e05": {
+   "at": "2026-10-19",
+   "kept": 0,
+   "scene": "vol7_ch1_morning",
+   "skipped": 0,
+   "wired": 285,
+   "zip": "voice_dropin_vol7_ch1_morning.zip"
   }
  }
 }

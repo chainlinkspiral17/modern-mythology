@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical]Across town at the same hour, the Henderson kitchen is — by Eileen's afternoon arrangement — the kitchen of three people having Sunday dinner."
+      "text": "[mood:kitchen_practical]Across town at the same hour, the Henderson kitchen is — by Eileen's afternoon arrangement — the kitchen of three people having Sunday dinner.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/005.mp3"
     },
     {
       "t": "show",
@@ -51,187 +52,220 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his."
+      "text": "[shot:insert table]Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/009.mp3"
     },
     {
      "t": "narrate",
      "when_flag": "ch20_kettle_on",
-     "text": "The kettle is on the clean burner where Jesse left it Thursday night. Nobody has moved it. Nobody has said anything about it. It is, Jesse notices, full."
+     "text": "The kettle is on the clean burner where Jesse left it Thursday night. Nobody has moved it. Nobody has said anything about it. It is, Jesse notices, full.",
+     "voice": "assets/audio/voice/vol6_ch23_sleep/010.mp3"
     },
 {
      "t": "narrate",
      "when_not_flag": "ch20_kettle_on",
-     "text": "The kettle is where it always is, cold, on the burner nobody uses."
+     "text": "The kettle is where it always is, cold, on the burner nobody uses.",
+     "voice": "assets/audio/voice/vol6_ch23_sleep/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pot_roast]Eileen has made a pot roast."
+      "text": "[shot:insert pot_roast]Eileen has made a pot roast.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pot roast is — Jesse registers, halfway through his second helping — the pot roast Eileen has been making on Sunday nights since he was three. She has not made it since April. She had made it tonight without announcement."
+      "text": "The pot roast is — Jesse registers, halfway through his second helping — the pot roast Eileen has been making on Sunday nights since he was three. She has not made it since April. She had made it tonight without announcement.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/013.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Mom. The pot roast.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/014.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/015.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "I — I have not had this pot roast since April.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/016.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/017.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "Eileen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/018.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I made it because I felt like making it. I felt like making it because today is Sunday and tomorrow is school and the boy is starting his last year of being a boy in this house, and the pot roast is the pot roast.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jim]Jim, after a beat, smiles — the slow Jim-smile."
+      "text": "[shot:closeup jim]Jim, after a beat, smiles — the slow Jim-smile.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/020.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/021.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Eat.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "They eat."
+      "text": "They eat.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/023.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "We're going to look at the piano on Wednesday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/024.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "[shot:closeup person_b]What piano.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/025.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "Your mother and I drove out to the piano store in New Auburn this morning while you were sleeping. We looked at three uprights. There's a Yamaha that your mother liked. We're going back Wednesday to make a decision.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/026.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "You're buying a piano.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/027.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "We are buying a piano.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/028.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/029.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/030.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Where is it going to go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/031.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "The dining room. The dining room is going to be the piano room. We don't dine in the dining room. We dine here. The dining room has been, for fourteen years, the room where the small table that holds the lamp lives.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/032.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "The small table can move. The dining room is going to be the piano room.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/033.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "I am, by Wednesday afternoon, going to spend more money on a piano than I have ever spent on any single object that is not a vehicle.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/034.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Yes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/035.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "[shot:closeup person]And I am going to be glad about it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/036.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jesse]Jesse, at the table, looks at his parents."
+      "text": "[shot:closeup jesse]Jesse, at the table, looks at his parents.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/038.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Mom. I'm — I'm really glad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/039.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/040.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "Eat your pot roast, son. We have ice cream for after.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/041.mp3"
     },
     {
       "t": "hide",
@@ -257,39 +291,48 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:insert notebook]At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023."
+      "text": "[mood:night][shot:insert notebook]At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "He writes in the second notebook a single line: the next song is the one about my mother and the piano."
+      "text": "He writes in the second notebook a single line: the next song is the one about my mother and the piano.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "He underlines it."
+      "text": "He underlines it.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "He closes the notebook."
+      "text": "He closes the notebook.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turns out the light."
+      "text": "He turns out the light.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets in bed."
+      "text": "He gets in bed.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cicadas, through the window, are loud."
+      "text": "The cicadas, through the window, are loud.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "Through the wall he can hear his parents in the living room — the small low murmur of a conversation he cannot quite make out, the small specific Sunday-night conversation of two people who have been married twenty-eight years and who are, this evening, planning a piano."
+      "text": "Through the wall he can hear his parents in the living room — the small low murmur of a conversation he cannot quite make out, the small specific Sunday-night conversation of two people who have been married twenty-eight years and who are, this evening, planning a piano.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He sleeps."
+      "text": "[shot:establish]He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/055.mp3"
     },
     {
       "t": "hide",
@@ -319,15 +362,18 @@
     },
     {
       "t": "narrate",
-      "text": "Ben gets home at five forty-one."
+      "text": "Ben gets home at five forty-one.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off."
+      "text": "[shot:establish]He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
+      "text": "She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/063.mp3"
     },
     {
       "t": "show",
@@ -339,117 +385,137 @@
       "t": "say",
       "char": "Bill",
       "text": "So. School tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/065.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/066.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "[shot:closeup person]Sixth grade.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/067.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "[shot:closeup person]Senior year.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/068.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/069.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "Football?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/070.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Practice every afternoon. Game Friday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/071.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "We'll be there.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/072.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person_b]I switched two shifts this week. I will be at every game this season. I have already done the schedule with Helen. The schedule is set.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/073.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/074.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/075.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Thanks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/076.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I am not missing my son's senior season, Benjamin. The schedule is set. Don't make a thing about it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/077.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup gracie]Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks."
+      "text": "[shot:closeup gracie]Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/079.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "Dad. Are you going to come too.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/080.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "I am at every game. You know that, Gracie.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/081.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "I know. I just wanted to ask.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/082.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "Asked and answered.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "Gracie eats her rice."
+      "text": "Gracie eats her rice.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/084.mp3"
     },
     {
       "t": "hide",
@@ -475,31 +541,38 @@
     },
     {
       "t": "narrate",
-      "text": "After dinner Ben goes upstairs. He packs his backpack for the morning. He sets the alarm for six. He gets in bed at nine forty-eight."
+      "text": "After dinner Ben goes upstairs. He packs his backpack for the morning. He sets the alarm for six. He gets in bed at nine forty-eight.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cat]Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet."
+      "text": "[shot:insert cat]Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "The room is dark."
+      "text": "The room is dark.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cicadas are loud."
+      "text": "The cicadas are loud.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tomorrow Ben is at school at seven-thirty for early bird. Tomorrow Ben is in homeroom at eight. Tomorrow Ben is at football practice at three-thirty. Tomorrow is the first day of his senior year. Tomorrow is the day after the day before."
+      "text": "Tomorrow Ben is at school at seven-thirty for early bird. Tomorrow Ben is in homeroom at eight. Tomorrow Ben is at football practice at three-thirty. Tomorrow is the first day of his senior year. Tomorrow is the day after the day before.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, just before sleep: the right foot is the right foot."
+      "text": "He thinks, just before sleep: the right foot is the right foot.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sleeps."
+      "text": "He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/096.mp3"
     },
     {
       "t": "hide",
@@ -517,31 +590,38 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago."
+      "text": "[shot:closeup maya]In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
+      "text": "The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "She lays the supplies out on the desk in the order she will pack them in the morning."
+      "text": "She lays the supplies out on the desk in the order she will pack them in the morning.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "She gets in bed at ten oh-five."
+      "text": "She gets in bed at ten oh-five.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cat that is half-Kowalski is, this evening, at the Kowalskis'. Maya is alone in her room. The fan is on. The cicadas are loud."
+      "text": "The cat that is half-Kowalski is, this evening, at the Kowalskis'. Maya is alone in her room. The fan is on. The cicadas are loud.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, just before sleep: Rick will say yes."
+      "text": "She thinks, just before sleep: Rick will say yes.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sleeps."
+      "text": "She sleeps.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/106.mp3"
     },
     {
       "t": "hide",
@@ -559,35 +639,43 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]Diego, in his room, is at the desk again at ten forty-five."
+      "text": "[shot:closeup diego]Diego, in his room, is at the desk again at ten forty-five.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert laptop]He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in."
+      "text": "[shot:insert laptop]He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before."
+      "text": "He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "He closes the laptop."
+      "text": "He closes the laptop.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bed]He gets in bed."
+      "text": "[shot:insert bed]He gets in bed.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert curtains]The blackout curtains are doing what they do."
+      "text": "[shot:insert curtains]The blackout curtains are doing what they do.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, before sleep: the math is going slow on purpose."
+      "text": "He thinks, before sleep: the math is going slow on purpose.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sleeps."
+      "text": "He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/117.mp3"
     },
     {
       "t": "hide",
@@ -599,19 +687,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]Bianca is in her bed at eleven-oh-two."
+      "text": "[shot:closeup bianca]Bianca is in her bed at eleven-oh-two.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert book]The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine."
+      "text": "[shot:insert book]The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, before sleep: Sammy is going to UT-Austin. I am going to be at the kitchen window tomorrow morning. The sitting is what I do."
+      "text": "She thinks, before sleep: Sammy is going to UT-Austin. I am going to be at the kitchen window tomorrow morning. The sitting is what I do.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sleeps."
+      "text": "She sleeps.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/123.mp3"
     },
     {
       "t": "bg",
@@ -619,23 +711,28 @@
     },
     {
       "t": "narrate",
-      "text": "The cul-de-sacs of the town, in the small Sunday-night way the cul-de-sacs of towns in mid-August do this, hold."
+      "text": "The cul-de-sacs of the town, in the small Sunday-night way the cul-de-sacs of towns in mid-August do this, hold.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window."
+      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
+      "text": "He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dog has been gone since 2018."
+      "text": "The dog has been gone since 2018.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "Don sits at the window anyway."
+      "text": "Don sits at the window anyway.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/129.mp3"
     },
     {
       "t": "bg",
@@ -655,23 +752,27 @@
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Henderson living room light goes off at eleven-eighteen. Eileen and Jim climb the stairs together."
+      "text": "In a different cul-de-sac, the Henderson living room light goes off at eleven-eighteen. Eileen and Jim climb the stairs together.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/133.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Wednesday. Yamaha.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/134.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
       "text": "[shot:closeup person]Yamaha.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "They go to bed."
+      "text": "They go to bed.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/136.mp3"
     },
     {
       "t": "hide",
@@ -687,87 +788,108 @@
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Caldwell porch light is off. Linda is asleep. Maya is asleep."
+      "text": "In a different cul-de-sac, the Caldwell porch light is off. Linda is asleep. Maya is asleep.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/140.mp3"
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Kowalski house is dark. Ben is asleep. Gracie is asleep. Bill and Anita are in their bed. Anita, who had been awake at her four-AM-equivalent which is her Sunday-night ten-PM, is asleep by ten-thirty. Bill, beside her, is asleep."
+      "text": "In a different cul-de-sac, the Kowalski house is dark. Ben is asleep. Gracie is asleep. Bill and Anita are in their bed. Anita, who had been awake at her four-AM-equivalent which is her Sunday-night ten-PM, is asleep by ten-thirty. Bill, beside her, is asleep.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up."
+      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
+      "text": "She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks her water."
+      "text": "She drinks her water.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/144.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looks at the car."
+      "text": "She looks at the car.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: that car will, by next August, be in Austin most of the time."
+      "text": "She thinks: that car will, by next August, be in Austin most of the time.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/146.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: the car will be home for Thanksgiving and Christmas and spring break and the summer, but the car will, by next August, be a car that lives in Austin."
+      "text": "She thinks: the car will be home for Thanksgiving and Christmas and spring break and the summer, but the car will, by next August, be a car that lives in Austin.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/147.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts down the glass."
+      "text": "She puts down the glass.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/148.mp3"
     },
     {
       "t": "narrate",
-      "text": "She turns out the kitchen light."
+      "text": "She turns out the kitchen light.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/149.mp3"
     },
     {
       "t": "narrate",
-      "text": "She climbs the stairs."
+      "text": "She climbs the stairs.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/150.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sleeps."
+      "text": "She sleeps.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/151.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed."
+      "text": "[shot:establish]In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/152.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is asleep."
+      "text": "She is asleep.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/153.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The town holds."
+      "text": "[shot:establish~]The town holds.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/154.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]The summer is, by midnight, over."
+      "text": "[beat:still]The summer is, by midnight, over.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/155.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Monday is tomorrow."
+      "text": "The Monday is tomorrow.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/156.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Monday is the first day of school."
+      "text": "The Monday is the first day of school.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/157.mp3"
     },
     {
       "t": "narrate",
-      "text": "The first day of school is the day the year starts."
+      "text": "The first day of school is the day the year starts.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/158.mp3"
     },
     {
       "t": "narrate",
-      "text": "The year starts."
+      "text": "The year starts.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/159.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sleep."
+      "text": "Sleep.",
+      "voice": "assets/audio/voice/vol6_ch23_sleep/160.mp3"
     },
     {
       "t": "end"

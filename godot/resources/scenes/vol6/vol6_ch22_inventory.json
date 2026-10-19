@@ -29,27 +29,33 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2]The inventory has been at the precision phase since two."
+   "text": "[trip:1.2]The inventory has been at the precision phase since two.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:kitchen_practical][shot:insert scanner]By six eighteen Diego is in canned soup, on his fourth pass, with Russell at the head of the aisle reading codes off the master sheet in the half-voice Russell uses for inventory nights —"
+   "text": "[mood:kitchen_practical][shot:insert scanner]By six eighteen Diego is in canned soup, on his fourth pass, with Russell at the head of the aisle reading codes off the master sheet in the half-voice Russell uses for inventory nights —",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "not whispering, exactly, but pitched under the fluorescents — and Diego at the shelf with the chain-issued scanner, beeping the codes back. The scanner beeps. Diego moves one can to the left. Beep. One can. Beep. One can."
+   "text": "not whispering, exactly, but pitched under the fluorescents — and Diego at the shelf with the chain-issued scanner, beeping the codes back. The scanner beeps. Diego moves one can to the left. Beep. One can. Beep. One can.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "The aisle smells like aisle. It has smelled like aisle since midnight. Cardboard, the rubber on the wheels of the pallet jack Marisol left at the head of the aisle three hours ago and forgot, the cold metal of the shelf brackets,"
+   "text": "The aisle smells like aisle. It has smelled like aisle since midnight. Cardboard, the rubber on the wheels of the pallet jack Marisol left at the head of the aisle three hours ago and forgot, the cold metal of the shelf brackets,",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "and a faint sweet thing that is somebody's dented can of cream of mushroom leaking under the off-brand shelf at row 4F that Diego clocked at four AM and has not, since four AM, found the time to deal with."
+   "text": "and a faint sweet thing that is somebody's dented can of cream of mushroom leaking under the off-brand shelf at row 4F that Diego clocked at four AM and has not, since four AM, found the time to deal with.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "He will deal with it after eight. He has decided this. The decision is one of about nine he has been making since one AM about things he will deal with after eight."
+   "text": "He will deal with it after eight. He has decided this. The decision is one of about nine he has been making since one AM about things he will deal with after eight.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/010.mp3"
   },
   {
    "t": "show",
@@ -61,237 +67,292 @@
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person]Vegetable beef. Three SKUs. Family size, regular, low sodium.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/012.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Family size, four facings, three deep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/013.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person]Right.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/014.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Regular, six facings, three deep, two stragglers on top.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/015.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Stragglers count.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/016.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/017.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Just saying.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/018.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "The beep."
+   "text": "The beep.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup russell]Russell is fifty-six. Russell is from a town outside Beaumont that Diego does not remember the name of."
+   "text": "[shot:closeup russell]Russell is fifty-six. Russell is from a town outside Beaumont that Diego does not remember the name of.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991."
+   "text": "Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell does inventory the way Russell does inventory. Diego, at the shelf, has, in five weeks, come to find Russell's calling rhythm calming the way a metronome is calming. The work is in the rhythm. The rhythm is in Russell."
+   "text": "Russell does inventory the way Russell does inventory. Diego, at the shelf, has, in five weeks, come to find Russell's calling rhythm calming the way a metronome is calming. The work is in the rhythm. The rhythm is in Russell.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "Two aisles over, Marisol is doing pasta. Marisol has been doing pasta since four thirty and Marisol has, in the last hour, said three things audible to canned soup, all of them to the room at large."
+   "text": "Two aisles over, Marisol is doing pasta. Marisol has been doing pasta since four thirty and Marisol has, in the last hour, said three things audible to canned soup, all of them to the room at large.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Friday-into-Saturday thing the supermarket invented to ruin people."
+   "text": "The Friday-into-Saturday thing the supermarket invented to ruin people.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "Day side better not touch frozen. I will know. I will go in there with a flashlight at eight."
+   "text": "Day side better not touch frozen. I will know. I will go in there with a flashlight at eight.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "Whoever ate the last of the coffee at three is on my list."
+   "text": "Whoever ate the last of the coffee at three is on my list.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol is forty-eight. Marisol is the team's loud one — not because she runs her mouth, but because when she chooses to speak she does it at a volume the room has to absorb."
+   "text": "Marisol is forty-eight. Marisol is the team's loud one — not because she runs her mouth, but because when she chooses to speak she does it at a volume the room has to absorb.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/028.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert five]She is also the kindest of the five of them and Diego has known this since his second week, when she had walked him to his car at five AM in the rain on a night he had told nobody he was nervous about walking to."
+   "text": "[shot:insert five]She is also the kindest of the five of them and Diego has known this since his second week, when she had walked him to his car at five AM in the rain on a night he had told nobody he was nervous about walking to.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/029.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jessa is at the back office. Jessa has been at the back office since five thirty. The reconciliation is what the last two hours of inventory are about."
+   "text": "Jessa is at the back office. Jessa has been at the back office since five thirty. The reconciliation is what the last two hours of inventory are about.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/030.mp3"
   },
   {
    "t": "narrate",
-   "text": "The day-side three are at frozen and produce, where Jessa put them because frozen and produce are where the day-side three can cost the team the least amount of cleanup on Monday."
+   "text": "The day-side three are at frozen and produce, where Jessa put them because frozen and produce are where the day-side three can cost the team the least amount of cleanup on Monday.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/031.mp3"
   },
   {
    "t": "narrate",
-   "text": "Carl from day side has already mis-stacked, by Marisol's count, eleven cases on cereal — Marisol counted them when she walked past at five —"
+   "text": "Carl from day side has already mis-stacked, by Marisol's count, eleven cases on cereal — Marisol counted them when she walked past at five —",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "and this is going to be a Monday-morning conversation between Jessa and Don the day-side manager that has, by Diego's understanding of the long arc, happened before and will happen again. Jessa runs the night. Don runs the day."
+   "text": "and this is going to be a Monday-morning conversation between Jessa and Don the day-side manager that has, by Diego's understanding of the long arc, happened before and will happen again. Jessa runs the night. Don runs the day.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jessa has been losing the argument about Carl in a slow careful way for four months. Diego is sixteen and has not been here long enough to know how it ends."
+   "text": "Jessa has been losing the argument about Carl in a slow careful way for four months. Diego is sixteen and has not been here long enough to know how it ends.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT is on cereal. BT has been on cereal six and a half hours. Jessa put him there at midnight because cereal was where BT had been comfortable all summer and because the first hour of inventory was not the hour to move a new guy."
+   "text": "BT is on cereal. BT has been on cereal six and a half hours. Jessa put him there at midnight because cereal was where BT had been comfortable all summer and because the first hour of inventory was not the hour to move a new guy.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego had clocked Jessa doing it and had not been told she was doing it. He clocks a lot. He doesn't say."
+   "text": "Diego had clocked Jessa doing it and had not been told she was doing it. He clocks a lot. He doesn't say.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert five]At five fifty he had passed the head of cereal aisle. BT had looked up. BT had nodded. Diego had nodded. Nothing else. They have not spoken since the taqueria run Tuesday morning."
+   "text": "[shot:insert five]At five fifty he had passed the head of cereal aisle. BT had looked up. BT had nodded. Diego had nodded. Nothing else. They have not spoken since the taqueria run Tuesday morning.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug is in dairy. Doug is doing dairy alone because Doug can."
+   "text": "Doug is in dairy. Doug is doing dairy alone because Doug can.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug came to Centro in 2019 and has done dairy alone on every inventory since 2020 and is, by everyone's reckoning including his own, the fastest cooler counter in the chain north of San Antonio. Doug is forty-three."
+   "text": "Doug came to Centro in 2019 and has done dairy alone on every inventory since 2020 and is, by everyone's reckoning including his own, the fastest cooler counter in the chain north of San Antonio. Doug is forty-three.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug reads, between aisles, in the break room, on his lunch, in the parking lot before clocking in — the kind of reading Diego had not, before this summer, thought a grown man stocking dairy did."
+   "text": "Doug reads, between aisles, in the break room, on his lunch, in the parking lot before clocking in — the kind of reading Diego had not, before this summer, thought a grown man stocking dairy did.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug is, this week, in The Brothers Karamazov. Doug had been in Book Six at midnight. Doug, by Diego's accidental sighting at the four AM break, was nineteen pages into Book Seven. Father Zosima is dead."
+   "text": "Doug is, this week, in The Brothers Karamazov. Doug had been in Book Six at midnight. Doug, by Diego's accidental sighting at the four AM break, was nineteen pages into Book Seven. Father Zosima is dead.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego knows about Father Zosima because Diego, in the third week of the summer, had asked Doug what he was reading and Doug had told him and Diego had checked the book out of the Harmony Creek branch library on the following Saturday and is now, in his own time, two hundred pages in."
+   "text": "Diego knows about Father Zosima because Diego, in the third week of the summer, had asked Doug what he was reading and Doug had told him and Diego had checked the book out of the Harmony Creek branch library on the following Saturday and is now, in his own time, two hundred pages in.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug has not, this week, mentioned that Diego is reading the book."
+   "text": "Doug has not, this week, mentioned that Diego is reading the book.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego has not, this week, mentioned that he is reading the book."
+   "text": "Diego has not, this week, mentioned that he is reading the book.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "This is, Diego has come to understand, how Doug runs friendships."
+   "text": "This is, Diego has come to understand, how Doug runs friendships.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/045.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Diego scans the next can."
+   "text": "[shot:establish]Diego scans the next can.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "The scanner beeps."
+   "text": "The scanner beeps.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert scanner]The scanner has been beeping like this since two AM and the beep, which had been a sound at hour one, is now mostly inside his ear."
+   "text": "[shot:insert scanner]The scanner has been beeping like this since two AM and the beep, which had been a sound at hour one, is now mostly inside his ear.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "His right wrist is starting to hurt the way it has hurt at hour six of every inventory of the summer. He shifts the scanner to the left hand. The left hand is also tired but is, by his count, four hours less tired."
+   "text": "His right wrist is starting to hurt the way it has hurt at hour six of every inventory of the summer. He shifts the scanner to the left hand. The left hand is also tired but is, by his count, four hours less tired.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "He moves to the next can."
+   "text": "He moves to the next can.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup diego]He thinks about his grandmother. She will be up at six thirty. She will be making eggs. She is making eggs whether he is home for them or not — the eggs are about her, not him, but he wants them. He thinks about his bed."
+   "text": "[shot:closeup diego]He thinks about his grandmother. She will be up at six thirty. She will be making eggs. She is making eggs whether he is home for them or not — the eggs are about her, not him, but he wants them. He thinks about his bed.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks about whether the AC in his room is going to be turned up too high because his grandmother turned it down at midnight thinking he was already asleep,"
+   "text": "He thinks about whether the AC in his room is going to be turned up too high because his grandmother turned it down at midnight thinking he was already asleep,",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "and how he is going to be too hot for the first fifteen minutes of sleep until he gets up to fix it, and how that fifteen minutes is going to feel like an hour. He thinks about the letter."
+   "text": "and how he is going to be too hot for the first fifteen minutes of sleep until he gets up to fix it, and how that fifteen minutes is going to feel like an hour. He thinks about the letter.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/053.mp3"
   },
   {
    "t": "narrate",
-   "text": "He has been thinking about the letter all night, off and on, between cans. The letter is the second letter."
+   "text": "He has been thinking about the letter all night, off and on, between cans. The letter is the second letter.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/054.mp3"
   },
   {
    "t": "narrate",
-   "text": "The first letter went out in July, which was the first month he had had an address for his father in seven years, and the address had come through his aunt in Monterrey who had got it from a cousin of his father's who had got it from somebody else."
+   "text": "The first letter went out in July, which was the first month he had had an address for his father in seven years, and the address had come through his aunt in Monterrey who had got it from a cousin of his father's who had got it from somebody else.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/055.mp3"
   },
   {
    "t": "narrate",
-   "text": "The first letter had been short. He had not, in the first letter, said anything that required a reply. He had said he had finished tenth grade. He had said he was working at a grocery store for the summer."
+   "text": "The first letter had been short. He had not, in the first letter, said anything that required a reply. He had said he had finished tenth grade. He had said he was working at a grocery store for the summer.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had asked, at the end, how the weather was."
+   "text": "He had asked, at the end, how the weather was.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "His father had not replied."
+   "text": "His father had not replied.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/058.mp3"
   },
   {
    "t": "narrate",
-   "text": "The second letter is going out Wednesday. The second letter will also not require a reply. The second letter will say he is reading a Russian novel that one of his coworkers recommended and that he is finding it slow but good."
+   "text": "The second letter is going out Wednesday. The second letter will also not require a reply. The second letter will say he is reading a Russian novel that one of his coworkers recommended and that he is finding it slow but good.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/059.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_b]He will mention his grandmother's tomatoes. He will not, in the second letter, ask anything either."
+   "text": "[shot:establish_b]He will mention his grandmother's tomatoes. He will not, in the second letter, ask anything either.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/060.mp3"
   },
   {
    "t": "narrate",
-   "text": "The third letter is going to ask. The third letter will go in October."
+   "text": "The third letter is going to ask. The third letter will go in October.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/061.mp3"
   },
   {
    "t": "narrate",
-   "text": "He has been planning this for two months. He has not told anyone — not his grandmother, not Marisol who would understand, not BT who is the only person at the store close to his age. He is going to do it slow."
+   "text": "He has been planning this for two months. He has not told anyone — not his grandmother, not Marisol who would understand, not BT who is the only person at the store close to his age. He is going to do it slow.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/062.mp3"
   },
   {
    "t": "narrate",
-   "text": "He is going to give his father, who is somewhere in Nuevo León doing something Diego does not know how to find out about, three chances to read a letter from his son before Diego asks the son's question."
+   "text": "He is going to give his father, who is somewhere in Nuevo León doing something Diego does not know how to find out about, three chances to read a letter from his son before Diego asks the son's question.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "The scanner beeps. He moves to the next can."
+   "text": "The scanner beeps. He moves to the next can.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "The slow math is the slow math on purpose. Diego is not, this year, in a hurry to learn what his father is going to do."
+   "text": "The slow math is the slow math on purpose. Diego is not, this year, in a hurry to learn what his father is going to do.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup bt]At six forty-two BT comes around the end of the aisle."
+   "text": "[shot:closeup bt]At six forty-two BT comes around the end of the aisle.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/066.mp3"
   },
   {
    "t": "show",
@@ -301,325 +362,388 @@
   },
   {
    "t": "narrate",
-   "text": "He is in the gray cereal-aisle uniform polo and jeans and the boots he wears every shift."
+   "text": "He is in the gray cereal-aisle uniform polo and jeans and the boots he wears every shift.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/068.mp3"
   },
   {
    "t": "narrate",
-   "text": "His left forearm is dusty with what is either oat-cereal residue or the bran flake stuff Centro carries the big bag of, and which Diego registers because his eye has been trained, since week one, to read what aisle somebody has been in by what they are wearing."
+   "text": "His left forearm is dusty with what is either oat-cereal residue or the bran flake stuff Centro carries the big bag of, and which Diego registers because his eye has been trained, since week one, to read what aisle somebody has been in by what they are wearing.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/069.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Russell.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/070.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell looks up from the clipboard."
+   "text": "Russell looks up from the clipboard.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/071.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Cereal's done.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/072.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person]The whole aisle.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/073.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Whole aisle. Manifest matches. One over on the off-brand corn flakes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/074.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "How over.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/075.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "One box. The tall house brand. I went back to the receiving log from Tuesday. Tuesday delivery was one over on the manifest. The receiving guy miscounted. I wrote it on the discrepancy sheet.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/076.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell, the clipboard, looks at BT for a beat."
+   "text": "Russell, the clipboard, looks at BT for a beat.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/077.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person]You went back to the receiving log.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/078.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/079.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "At six in the morning.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/080.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "It bothered me.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/081.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "You wrote the cause on the sheet.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/082.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert clipboard]Russell taps his pen on the clipboard twice. Then he writes something next to cereal — BT."
+   "text": "[shot:insert clipboard]Russell taps his pen on the clipboard twice. Then he writes something next to cereal — BT.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/084.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Good. Help Diego on canned soup. He's at four. Nine more aisles.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/085.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT comes down the aisle. Diego, at the shelf, watches him come."
+   "text": "BT comes down the aisle. Diego, at the shelf, watches him come.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/087.mp3"
   },
   {
    "t": "narrate",
-   "text": "It is the first thing BT has done that is something Russell will tell Jessa about — not now, not before the inventory's done, but tomorrow, when she asks him over coffee how the night went."
+   "text": "It is the first thing BT has done that is something Russell will tell Jessa about — not now, not before the inventory's done, but tomorrow, when she asks him over coffee how the night went.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/088.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell will say the new kid went back to the receiving log and Jessa will not, externally, react, but she will register the sentence. Diego knows this because he has watched Russell tell Jessa things like this about him."
+   "text": "Russell will say the new kid went back to the receiving log and Jessa will not, externally, react, but she will register the sentence. Diego knows this because he has watched Russell tell Jessa things like this about him.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/089.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT stops at the shelf next to Diego. He holds his hand out for the scanner."
+   "text": "BT stops at the shelf next to Diego. He holds his hand out for the scanner.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/090.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "You scan. I'll call. Saves us bending twice.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/091.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Thanks.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/092.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert scanner]Diego gives him the scanner. They start."
+   "text": "[shot:insert scanner]Diego gives him the scanner. They start.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/093.mp3"
   },
   {
    "t": "narrate",
-   "text": "The way it works is Diego, with the master sheet on his hip, reads off the SKU and the facing count. BT pulls the unit on the shelf, scans it, confirms the read, slides it back. The two of them step right, one step, in unison."
+   "text": "The way it works is Diego, with the master sheet on his hip, reads off the SKU and the facing count. BT pulls the unit on the shelf, scans it, confirms the read, slides it back. The two of them step right, one step, in unison.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "The aisle is fluorescent-bright the way grocery aisles get at six AM under inventory lights. Diego's wrist hurts. BT's shoulders are up around his ears and have been there for six and a half hours."
+   "text": "The aisle is fluorescent-bright the way grocery aisles get at six AM under inventory lights. Diego's wrist hurts. BT's shoulders are up around his ears and have been there for six and a half hours.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/095.mp3"
   },
   {
    "t": "narrate",
-   "text": "For ten minutes neither of them talks beyond the work."
+   "text": "For ten minutes neither of them talks beyond the work.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/096.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Beep. Step. Beep. Step."
+   "text": "[shot:establish]Beep. Step. Beep. Step.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/097.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Doug talk to you tonight?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/098.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego looks at him."
+   "text": "Diego looks at him.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/099.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "He passed me at three thirty going to break.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/100.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "He say anything?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/101.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]He said cans. That was it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/102.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Cans.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/103.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/104.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT thinks about this for the next two cans."
+   "text": "BT thinks about this for the next two cans.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/105.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "He talked to me at the four AM. In the break room.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/106.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Yeah?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/107.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "He said you're going to make it. That was the whole thing.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup diego~]Diego, looking at the next SKU on the sheet, feels his eyes get a little hot for no reason he can identify and is glad his face is turned to the clipboard."
+   "text": "[shot:closeup diego~]Diego, looking at the next SKU on the sheet, feels his eyes get a little hot for no reason he can identify and is glad his face is turned to the clipboard.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/109.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Doug's like that.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/110.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/111.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "He says things small.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/112.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/113.mp3"
   },
   {
    "t": "narrate",
-   "text": "A beat."
+   "text": "A beat.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/114.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "That was a — that meant something to me. Just saying.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/115.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/116.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/117.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They work."
+   "text": "[shot:establish]They work.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/118.mp3"
   },
   {
    "t": "narrate",
-   "text": "For the next thirty minutes neither of them speaks."
+   "text": "For the next thirty minutes neither of them speaks.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/119.mp3"
   },
   {
    "t": "narrate",
-   "text": "They do not talk about the taqueria."
+   "text": "They do not talk about the taqueria.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/120.mp3"
   },
   {
    "t": "narrate",
-   "text": "They do not talk about the song that had been on the radio in BT's car when they had pulled into the lay-by Tuesday morning, which had been an old norteño accordion song neither of them had known the name of and which BT had let play through."
+   "text": "They do not talk about the song that had been on the radio in BT's car when they had pulled into the lay-by Tuesday morning, which had been an old norteño accordion song neither of them had known the name of and which BT had let play through.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/121.mp3"
   },
   {
    "t": "narrate",
-   "text": "They do not talk about New Orleans, which Diego has heard about in pieces from Marisol and once from Russell and never from BT and which sits in the air around BT the way humidity sits in the air around August Texas."
+   "text": "They do not talk about New Orleans, which Diego has heard about in pieces from Marisol and once from Russell and never from BT and which sits in the air around BT the way humidity sits in the air around August Texas.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/122.mp3"
   },
   {
    "t": "narrate",
-   "text": "They do not talk about the cop story."
+   "text": "They do not talk about the cop story.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/123.mp3"
   },
   {
    "t": "narrate",
-   "text": "They scan. They step. They scan. They step."
+   "text": "They scan. They step. They scan. They step.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/124.mp3"
   },
   {
    "t": "narrate",
-   "text": "At seven twenty-eight canned soup is done."
+   "text": "At seven twenty-eight canned soup is done.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/125.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person]Good. Canned vegetables. Same routine. Forty minutes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/126.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/127.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/128.mp3"
   },
   {
    "t": "narrate",
-   "text": "They move."
+   "text": "They move.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/129.mp3"
   },
   {
    "t": "narrate",
-   "text": "At seven fifty-eight the inventory is done."
+   "text": "At seven fifty-eight the inventory is done.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/130.mp3"
   },
   {
    "t": "bg",
@@ -653,15 +777,18 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The team is in the break room. Jessa is in the back office finishing reconciliation. Marisol is at the table with her thermos."
+   "text": "[shot:establish]The team is in the break room. Jessa is in the back office finishing reconciliation. Marisol is at the table with her thermos.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/137.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell is at the table with the day's Express-News he brought from home at midnight, on page A6, the Metro section. Doug is at the chair against the wall with the book."
+   "text": "Russell is at the table with the day's Express-News he brought from home at midnight, on page A6, the Metro section. Doug is at the chair against the wall with the book.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/138.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug is, by Diego's accidental sighting, on page 412."
+   "text": "Doug is, by Diego's accidental sighting, on page 412.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/139.mp3"
   },
   {
    "t": "show",
@@ -671,65 +798,77 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup bt]BT is at the doorway. He has his keys in his hand. He has not, since coming off the floor, sat."
+   "text": "[shot:closeup bt]BT is at the doorway. He has his keys in his hand. He has not, since coming off the floor, sat.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/141.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Y'all. I'm going to head. I appreciate the night. The team — y'all carried me. I want you to know I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/142.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol, at the table, lifts her thermos two inches in his direction."
+   "text": "Marisol, at the table, lifts her thermos two inches in his direction.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/143.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "Get sleep, hon.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/144.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/145.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug looks up. Doug nods. Doug looks back down."
+   "text": "Doug looks up. Doug nods. Doug looks back down.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/146.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT looks at Diego."
+   "text": "BT looks at Diego.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/147.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/148.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/149.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Thanks for the canned soup.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/150.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/151.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT goes."
+   "text": "BT goes.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/152.mp3"
   },
   {
    "t": "hide",
@@ -743,267 +882,315 @@
   },
   {
    "t": "narrate",
-   "text": "The team listens to BT's footsteps cross the break-room corridor, hit the dock, push the dock door open, fade."
+   "text": "The team listens to BT's footsteps cross the break-room corridor, hit the dock, push the dock door open, fade.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/155.mp3"
   },
   {
    "t": "narrate",
-   "text": "The dock door, at eight oh-one, closes."
+   "text": "The dock door, at eight oh-one, closes.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/156.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team, in the break room, is for a beat very quiet."
+   "text": "The team, in the break room, is for a beat very quiet.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/157.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "[beat:still][shot:closeup doug]He told me last week.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/158.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol, at the table with her thermos, looks up."
+   "text": "Marisol, at the table with her thermos, looks up.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/159.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "Told you what.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/160.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "About New Orleans. He told me last Thursday on his lunch break. He was straight with me.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/161.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell sets the Express-News down on the table."
+   "text": "Russell sets the Express-News down on the table.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/162.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person_b]Straight how.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/163.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "He told me what happened in 2022. He told me what his partner did. He told me what the kid's name was. He told me the dispatcher's name.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/164.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "He told me what the official write-up said and what the part of the write-up that didn't get written said. He told me what he saw when he was thirty feet away looking through the open driver's-side window.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/165.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "He told me what he did the next morning and what he did the morning after that. He told me what his wife said when he told her on Sunday. He told me she left in October. He told me he came down here in February.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/166.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "He told me he has been working cereal at this store since June because cereal at this store at midnight is the only room he can stand to be in.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/167.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol, at the table, has stopped lifting her thermos."
+   "text": "Marisol, at the table, has stopped lifting her thermos.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/168.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "[shot:closeup person]Doug.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/169.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/170.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "[shot:closeup person]Why did you not tell us.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/171.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "He asked me not to.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/172.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "He asked you not to.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/173.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/174.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup marisol]Marisol does not, for a long count, respond."
+   "text": "[shot:closeup marisol]Marisol does not, for a long count, respond.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/175.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Was it true.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/176.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/177.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "How do you know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/178.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "I called Eric in Slidell on Friday morning. Eric was the partner. Eric talked. The story BT told me checks. The dispatcher's name checks. The kid's name checks. The off-the-record version is what BT said it was.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/179.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "[shot:closeup person_b]The on-the-record version is what the official write-up says. BT did not, in 2022, do the thing the team has, all summer, been assuming he did.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/180.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol puts her thermos down."
+   "text": "Marisol puts her thermos down.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/181.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "Doug.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/182.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "[shot:closeup person_b]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/183.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "You called Slidell.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/184.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "I called Slidell.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/185.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "On a Friday morning.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/186.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/187.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "[shot:closeup person]To verify the story of a man we have been holding at arm's length for six weeks.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/188.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/189.mp3"
   },
   {
    "t": "narrate",
-   "text": "A long pause."
+   "text": "A long pause.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/190.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Doug.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/191.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/192.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "[shot:closeup person_b]Why are you telling us now and not in June.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/193.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert paperback]Doug closes the Karamazov. He sets it on the floor beside his chair."
+   "text": "[shot:insert paperback]Doug closes the Karamazov. He sets it on the floor beside his chair.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/194.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Because Diego ate a burrito with him Tuesday morning and the team was, by Wednesday, talking about whether Diego should have.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/195.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Because Diego is sixteen and is the youngest one of us and the team has, this week, started leaning on him to decide whether BT belongs. That is not Diego's job. Diego is here for the summer.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/196.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Diego is going to senior year in three weeks. Diego does not need to be the one who carries the team's social weight about a man who has done nothing wrong since he got here.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/197.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "So this morning, after BT walked out of here, I figured I would carry it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/198.mp3"
   },
   {
    "t": "narrate",
-   "text": "The room is quiet."
+   "text": "The room is quiet.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/199.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup diego]Diego, at the table with his coffee, does not look up."
+   "text": "[shot:closeup diego]Diego, at the table with his coffee, does not look up.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/200.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "Yeah, Doug.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/201.mp3"
   },
   {
    "t": "say",
    "char": "Russell",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/202.mp3"
   },
   {
    "t": "show",
@@ -1013,57 +1200,69 @@
   },
   {
    "t": "narrate",
-   "text": "Jessa comes in at eight oh-six. She does not, on entering, ask what is happening. Jessa is fifty-two and has been running this night team for nine years and can read a break room. She crosses to the coffee pot."
+   "text": "Jessa comes in at eight oh-six. She does not, on entering, ask what is happening. Jessa is fifty-two and has been running this night team for nine years and can read a break room. She crosses to the coffee pot.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/204.mp3"
   },
   {
    "t": "narrate",
-   "text": "She refills her cup. She takes one sip. She sets the cup down."
+   "text": "She refills her cup. She takes one sip. She sets the cup down.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/205.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "[shot:closeup person]Manifest's clean. We came in three cans over and two cans under. Net one over. Discrepancy sheet matches. We are done at eight thirty. Drive safe. Sleep good.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/206.mp3"
   },
   {
    "t": "narrate",
-   "text": "She looks at Diego."
+   "text": "She looks at Diego.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/207.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/208.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks up."
+   "text": "He looks up.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/209.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "Stay a minute.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/210.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She leaves."
+   "text": "[shot:establish]She leaves.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/211.mp3"
   },
   {
    "t": "narrate",
-   "text": "The break room releases."
+   "text": "The break room releases.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/212.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol packs her thermos. Russell folds the Express-News. Doug picks the Karamazov up off the floor and puts it in his jacket pocket. Each of them, on the way past Diego, does one small thing."
+   "text": "Marisol packs her thermos. Russell folds the Express-News. Doug picks the Karamazov up off the floor and puts it in his jacket pocket. Each of them, on the way past Diego, does one small thing.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/213.mp3"
   },
   {
    "t": "narrate",
-   "text": "Marisol puts her hand briefly on the back of his head — the only time all summer she has touched him — and goes."
+   "text": "Marisol puts her hand briefly on the back of his head — the only time all summer she has touched him — and goes.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/214.mp3"
   },
   {
    "t": "narrate",
-   "text": "Russell, without speaking, sets the folded newspaper on the table in front of Diego and says finish that crossword on the third page, kid and goes. Doug stops at the doorway, turns, looks at Diego, says nothing, and goes."
+   "text": "Russell, without speaking, sets the folded newspaper on the table in front of Diego and says finish that crossword on the third page, kid and goes. Doug stops at the doorway, turns, looks at Diego, says nothing, and goes.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/215.mp3"
   },
   {
    "t": "hide",
@@ -1079,11 +1278,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert coffee]Diego, at the table, drinks his coffee."
+   "text": "[shot:insert coffee]Diego, at the table, drinks his coffee.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/219.mp3"
   },
   {
    "t": "narrate",
-   "text": "The break room is empty."
+   "text": "The break room is empty.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/220.mp3"
   },
   {
    "t": "show",
@@ -1093,145 +1294,171 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup jessa]Jessa comes back at eight twelve. She sits in the chair across from him."
+   "text": "[shot:closeup jessa]Jessa comes back at eight twelve. She sits in the chair across from him.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/222.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/223.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/224.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "I have been wanting to ask you something for two weeks. I have not asked because the timing has not been right. The timing is right now. Are you going to be working here this fall.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/225.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks at her."
+   "text": "He looks at her.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/226.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "I don't know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/227.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "You don't have to know yet.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/228.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/229.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "School is three weeks. If you want to stay through fall — fifteen hours a week, Friday nights and Saturday days, the schedule that lets you still be a senior — I want you to. The team wants you to.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/230.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "I am asking you because if I don't ask you, you will assume I assumed you were leaving. And I am not, this morning, going to assume.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/231.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He nods."
+   "text": "[shot:establish]He nods.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/232.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Can I tell you in a week.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/233.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/234.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "All right.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/235.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/236.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/237.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "You did good with BT this summer.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/238.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks at her."
+   "text": "He looks at her.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/239.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "I didn't do anything.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/240.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "You ate a burrito with him. The team had decided not to and you went anyway. The team had decided not to because the team had assumed something that wasn't true. You went without knowing it wasn't true.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/241.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "You went because you decided to. That is what you did. The deciding was the thing. Don't tell yourself you didn't do anything.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/242.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not, for a count, respond."
+   "text": "He does not, for a count, respond.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/243.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah, Jessa.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/244.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gets up."
+   "text": "She gets up.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/245.mp3"
   },
   {
    "t": "say",
    "char": "Jessa",
    "text": "Sleep good. Tonight is Friday night. Friday night is the regular shift. I'll see you at ten.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/246.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She goes."
+   "text": "[shot:establish]She goes.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/247.mp3"
   },
   {
    "t": "hide",
@@ -1239,15 +1466,18 @@
   },
   {
    "t": "narrate",
-   "text": "He sits with the Express-News in front of him for a count."
+   "text": "He sits with the Express-News in front of him for a count.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/249.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert coffee]He picks up his coffee. He drinks the last of it. He puts the cup down."
+   "text": "[shot:insert coffee]He picks up his coffee. He drinks the last of it. He puts the cup down.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/250.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets up. He puts his jacket on. He takes the Express-News under his arm. He walks out through the dock and gets in his truck."
+   "text": "He gets up. He puts his jacket on. He takes the Express-News under his arm. He walks out through the dock and gets in his truck.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/251.mp3"
   },
   {
    "t": "bg",
@@ -1255,35 +1485,43 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:morning_bright]The drive home is twenty-two minutes."
+   "text": "[mood:morning_bright]The drive home is twenty-two minutes.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/253.mp3"
   },
   {
    "t": "narrate",
-   "text": "He drives with the radio off. He has not, this morning, decided what music he wants in the truck."
+   "text": "He drives with the radio off. He has not, this morning, decided what music he wants in the truck.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/254.mp3"
   },
   {
    "t": "narrate",
-   "text": "The morning sun through the windshield is the morning sun in mid-August in south Texas, which is to say it is the sun a man who is sixteen and has been working a graveyard shift since June has been trying not to be hit too directly by all summer."
+   "text": "The morning sun through the windshield is the morning sun in mid-August in south Texas, which is to say it is the sun a man who is sixteen and has been working a graveyard shift since June has been trying not to be hit too directly by all summer.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/255.mp3"
   },
   {
    "t": "narrate",
-   "text": "He pulls the visor down. The visor cuts about a third of it."
+   "text": "He pulls the visor down. The visor cuts about a third of it.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/256.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup diego~]He thinks about his father."
+   "text": "[shot:closeup diego~]He thinks about his father.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/257.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks about him without naming the thinking. The thinking is the thing his interior has been doing on the drives home for some weeks, and he has, over the past two weeks, stopped pretending it isn't the thinking."
+   "text": "He thinks about him without naming the thinking. The thinking is the thing his interior has been doing on the drives home for some weeks, and he has, over the past two weeks, stopped pretending it isn't the thinking.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/258.mp3"
   },
   {
    "t": "narrate",
-   "text": "His father is in San Luis Potosí. His father has been there since 2017. The second letter is going Wednesday. The third letter is going in October."
+   "text": "His father is in San Luis Potosí. His father has been there since 2017. The second letter is going Wednesday. The third letter is going in October.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/259.mp3"
   },
   {
    "t": "narrate",
-   "text": "He drives."
+   "text": "He drives.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/260.mp3"
   },
   {
    "t": "bg",
@@ -1297,197 +1535,236 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup abuela]His grandmother is at the kitchen window when he pulls in. She has been at the kitchen window every morning since June. She has her coffee."
+   "text": "[shot:closeup abuela]His grandmother is at the kitchen window when he pulls in. She has been at the kitchen window every morning since June. She has her coffee.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/263.mp3"
   },
   {
    "t": "narrate",
-   "text": "She has the radio on the windowsill — the kitchen radio, just a radio — playing the morning Spanish-language news from San Antonio."
+   "text": "She has the radio on the windowsill — the kitchen radio, just a radio — playing the morning Spanish-language news from San Antonio.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/264.mp3"
   },
   {
    "t": "narrate",
-   "text": "She meets him at the porch. She kisses his temple."
+   "text": "She meets him at the porch. She kisses his temple.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/265.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "Mijo. Eggs.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/266.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Eggs.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/267.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He sits at the kitchen table."
+   "text": "[shot:establish]He sits at the kitchen table.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/268.mp3"
   },
   {
    "t": "narrate",
-   "text": "She makes the eggs. She brings them on the plate she has been bringing him eggs on since he was four. The plate is yellow with a small chip at the rim."
+   "text": "She makes the eggs. She brings them on the plate she has been bringing him eggs on since he was four. The plate is yellow with a small chip at the rim.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/269.mp3"
   },
   {
    "t": "narrate",
-   "text": "The eggs are scrambled with a little butter and a small amount of the salt she keeps in the small wooden box on the windowsill."
+   "text": "The eggs are scrambled with a little butter and a small amount of the salt she keeps in the small wooden box on the windowsill.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/270.mp3"
   },
   {
    "t": "narrate",
-   "text": "She sits, today, across from him at the table. Saturday after a Friday-night inventory is, this summer, a sitting morning. The other mornings she stands at the counter while he eats. Saturdays she sits. The decision was hers."
+   "text": "She sits, today, across from him at the table. Saturday after a Friday-night inventory is, this summer, a sitting morning. The other mornings she stands at the counter while he eats. Saturdays she sits. The decision was hers.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/271.mp3"
   },
   {
    "t": "narrate",
-   "text": "She made it the first Saturday and has held to it."
+   "text": "She made it the first Saturday and has held to it.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/272.mp3"
   },
   {
    "t": "narrate",
-   "text": "She watches him eat the first bite."
+   "text": "She watches him eat the first bite.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/273.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "El nuevo del equipo. Se fue a casa.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/274.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego looks up."
+   "text": "Diego looks up.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/275.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "Por tu cara. Llegaste solo.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/276.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Sí, abuela. Se fue a casa.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/277.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "El inventario.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/278.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "El inventario fue el inventario. Terminó a las ocho.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/279.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "¿El equipo tomó bien la salida del nuevo?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/280.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks for a beat."
+   "text": "He thinks for a beat.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/281.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "El equipo lo tomó. Doug nos dijo esta mañana que el nuevo había estado diciendo la verdad sobre lo que le pasó antes de llegar aquí. El equipo no había creído. Doug sí. Doug había guardado la verdad todo el verano y eligió esta mañana contárnosla.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/282.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is quiet a long count."
+   "text": "She is quiet a long count.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/283.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "[shot:closeup person_b]¿Y tú?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/284.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yo no había decidido. Fui con él a la taquería el martes por la mañana. El ir fue un sí que podía dar sin haber decidido. Fui porque tenía hambre y porque la taquería es buena.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/285.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "El ir resultó ser — según lo que dijo Doug — la única amabilidad que el nuevo recibió del equipo en todo el verano.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/286.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "Mijo.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/287.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Sí, abuela.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/288.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "El sí que puedes dar sin tener que decidir es a veces el único sí que estás, en tu posición, en posición de dar. Y el sí que menos cuesta a veces es el que más importa. Tienes dieciséis años.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/289.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "Estás al comienzo del largo arreglo de dar pequeños síes a las personas con las que resultas estar en habitaciones por tiempos limitados. El arreglo es el tipo de vida que, con muchos años, se convierte en una vida.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/290.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "Estoy orgullosa de ti. Quiero que lo sepas.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/291.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Gracias, abuela.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/292.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, on this Saturday, put her hand on the back of his head."
+   "text": "She does not, on this Saturday, put her hand on the back of his head.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/293.mp3"
   },
   {
    "t": "narrate",
-   "text": "She had done it on the first Saturday and on the second Saturday and had decided, on the third Saturday, that it had become a ritual and that rituals between grandmothers and grandsons can begin to mean less when they are repeated too cleanly."
+   "text": "She had done it on the first Saturday and on the second Saturday and had decided, on the third Saturday, that it had become a ritual and that rituals between grandmothers and grandsons can begin to mean less when they are repeated too cleanly.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/294.mp3"
   },
   {
    "t": "narrate",
-   "text": "She had stopped. She had, since the third Saturday, been working out a different small physical thing she does at the table on Saturdays. She had not, by today, settled on it."
+   "text": "She had stopped. She had, since the third Saturday, been working out a different small physical thing she does at the table on Saturdays. She had not, by today, settled on it.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/295.mp3"
   },
   {
    "t": "narrate",
-   "text": "This morning she settles on it."
+   "text": "This morning she settles on it.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/296.mp3"
   },
   {
    "t": "narrate",
-   "text": "She picks up his right hand from the table. She holds it in both of hers for about four seconds. She sets it down."
+   "text": "She picks up his right hand from the table. She holds it in both of hers for about four seconds. She sets it down.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/297.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "[shot:closeup person_b]Eat. Sleep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/298.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats the eggs."
+   "text": "He eats the eggs.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/299.mp3"
   },
   {
    "t": "narrate",
-   "text": "He goes upstairs."
+   "text": "He goes upstairs.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/300.mp3"
   },
   {
    "t": "narrate",
-   "text": "He showers in the small upstairs bathroom that is, since June, his."
+   "text": "He showers in the small upstairs bathroom that is, since June, his.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/301.mp3"
   },
   {
    "t": "bg",
@@ -1499,47 +1776,58 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert curtains]He pulls the blackout curtains in his bedroom — the ones his mother had driven up from San Antonio in mid-July to help him install on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade."
+   "text": "[shot:insert curtains]He pulls the blackout curtains in his bedroom — the ones his mother had driven up from San Antonio in mid-July to help him install on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/304.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bed]He gets into bed in his shorts and a t-shirt."
+   "text": "[shot:insert bed]He gets into bed in his shorts and a t-shirt.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/305.mp3"
   },
   {
    "t": "narrate",
-   "text": "The room, behind the curtains, is dark."
+   "text": "The room, behind the curtains, is dark.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/306.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sleeps at nine-something."
+   "text": "He sleeps at nine-something.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/307.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not dream of the dock."
+   "text": "He does not dream of the dock.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/308.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still]He dreams of the kitchen."
+   "text": "[beat:still]He dreams of the kitchen.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/309.mp3"
   },
   {
    "t": "narrate",
-   "text": "He dreams of his grandmother at the table picking up his right hand."
+   "text": "He dreams of his grandmother at the table picking up his right hand.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/310.mp3"
   },
   {
    "t": "narrate",
-   "text": "He dreams of his father picking up his right hand at the table in San Luis Potosí, with the same gesture, in the same kitchen, with the same morning light coming through a window his grandmother's kitchen does not have but which the dream gives them anyway."
+   "text": "He dreams of his father picking up his right hand at the table in San Luis Potosí, with the same gesture, in the same kitchen, with the same morning light coming through a window his grandmother's kitchen does not have but which the dream gives them anyway.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/311.mp3"
   },
   {
    "t": "narrate",
-   "text": "He wakes at three forty-two."
+   "text": "He wakes at three forty-two.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/312.mp3"
   },
   {
    "t": "narrate",
-   "text": "He lies in the dark a long time."
+   "text": "He lies in the dark a long time.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/313.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not, this afternoon, get back to sleep."
+   "text": "He does not, this afternoon, get back to sleep.",
+   "voice": "assets/audio/voice/vol6_ch22_inventory/314.mp3"
   },
   {
    "t": "jump",

@@ -29,19 +29,23 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright][shot:insert bus]The Vinton bus pulls into the lot at four oh-three."
+   "text": "[mood:day_bright][shot:insert bus]The Vinton bus pulls into the lot at four oh-three.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben is at the field gate in pads. He has been at the field gate in pads since three forty-five, which is when Coach K told the team to be at the field gate in pads."
+   "text": "Ben is at the field gate in pads. He has been at the field gate in pads since three forty-five, which is when Coach K told the team to be at the field gate in pads.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K had said three forty-five in the locker room at three twenty-two and the team had — to a man, including the kids who, on practice days, drifted in late — been at the field gate at three forty-five."
+   "text": "Coach K had said three forty-five in the locker room at three twenty-two and the team had — to a man, including the kids who, on practice days, drifted in late — been at the field gate at three forty-five.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "Saturday is not practice. Saturday is the day Coach K does not have to ask twice."
+   "text": "Saturday is not practice. Saturday is the day Coach K does not have to ask twice.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/008.mp3"
   },
   {
    "t": "show",
@@ -51,23 +55,28 @@
   },
   {
    "t": "narrate",
-   "text": "Ben's helmet is in his right hand. His mouthguard is in his left. The pads are the pads he has been in for three weeks. They are starting to smell like pads."
+   "text": "Ben's helmet is in his right hand. His mouthguard is in his left. The pads are the pads he has been in for three weeks. They are starting to smell like pads.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "The bus says VINTON HIGH SCHOOL on the side in painted block letters."
+   "text": "The bus says VINTON HIGH SCHOOL on the side in painted block letters.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Vinton kids start coming off at four oh-three. They are, by their bulk through the bus door, about the same size as the Texas team. Their pads are a different color."
+   "text": "The Vinton kids start coming off at four oh-three. They are, by their bulk through the bus door, about the same size as the Texas team. Their pads are a different color.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker."
+   "text": "Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The last one off the bus is the coach."
+   "text": "[shot:establish]The last one off the bus is the coach.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/014.mp3"
   },
   {
    "t": "show",
@@ -77,71 +86,84 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup guidry]Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red."
+   "text": "[shot:closeup guidry]Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
+   "text": "He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "A kid in the lot — a sophomore by his size — shouts:"
+   "text": "A kid in the lot — a sophomore by his size — shouts:",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/018.mp3"
   },
   {
    "t": "say",
    "char": "Vinton Sophomore",
    "text": "GUIDRY!",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/019.mp3"
   },
   {
    "t": "say",
    "char": "Coach Guidry",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/020.mp3"
   },
   {
    "t": "say",
    "char": "Vinton Sophomore",
    "text": "[shot:closeup person]Where do we drop the gear.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/021.mp3"
   },
   {
    "t": "say",
    "char": "Coach Guidry",
    "text": "[shot:closeup person]Visiting bench. Move it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "A senior:"
+   "text": "A senior:",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/023.mp3"
   },
   {
    "t": "say",
    "char": "Vinton Senior",
    "text": "GUIDRY!",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/024.mp3"
   },
   {
    "t": "say",
    "char": "Coach Guidry",
    "text": "What.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/025.mp3"
   },
   {
    "t": "say",
    "char": "Vinton Senior",
    "text": "Bus driver says he's leaving the bus open if we want.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/026.mp3"
   },
   {
    "t": "say",
    "char": "Coach Guidry",
    "text": "[shot:closeup person]Tell the bus driver he's a good man.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben watches."
+   "text": "Ben watches.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/028.mp3"
   },
   {
    "t": "hide",
@@ -159,11 +181,13 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder."
+   "text": "Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sees Coach K do the thing Coach K does, which is to nod once and listen."
+   "text": "He sees Coach K do the thing Coach K does, which is to nod once and listen.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/033.mp3"
   },
   {
    "t": "hide",
@@ -171,51 +195,63 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup eileen]Eileen, at four oh-six, is in the parking lot."
+   "text": "[shot:closeup eileen]Eileen, at four oh-six, is in the parking lot.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is sixty-two. She had the bypass in March. The doctor on Monday had said probably okay on the phone — the operating phrase as of this week, upgraded from we'll see in September."
+   "text": "She is sixty-two. She had the bypass in March. The doctor on Monday had said probably okay on the phone — the operating phrase as of this week, upgraded from we'll see in September.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen had carried the upgrade home and had not, between Monday and Thursday, told anyone. Thursday night she had told her husband at the kitchen table over the lemon-water he has been making her every morning since April."
+   "text": "Eileen had carried the upgrade home and had not, between Monday and Thursday, told anyone. Thursday night she had told her husband at the kitchen table over the lemon-water he has been making her every morning since April.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "Her husband had set down the Express-News and looked at her and not said anything for a count and then said, Eileen. The game's Saturday. You want to come. And she had said, yes. And her husband had said, good."
+   "text": "Her husband had set down the Express-News and looked at her and not said anything for a count and then said, Eileen. The game's Saturday. You want to come. And she had said, yes. And her husband had said, good.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "I'll set up the folding chair in the third row Saturday morning. And that had been that."
+   "text": "I'll set up the folding chair in the third row Saturday morning. And that had been that.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "The folding chair is, this afternoon, in the third row of the home bleachers. Her husband had set it up at one PM, between his school visit and the locker room walk-through."
+   "text": "The folding chair is, this afternoon, in the third row of the home bleachers. Her husband had set it up at one PM, between his school visit and the locker room walk-through.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gets out of the car."
+   "text": "She gets out of the car.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Texas afternoon, in mid-August, is one hundred and one."
+   "text": "The Texas afternoon, in mid-August, is one hundred and one.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "She has, in a canvas bag over her shoulder: the thermos of lemon-water, the paper fan with the rooster on it she had bought in Mexico in 1989,"
+   "text": "She has, in a canvas bag over her shoulder: the thermos of lemon-water, the paper fan with the rooster on it she had bought in Mexico in 1989,",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours."
+   "text": "[shot:insert phone]a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "She walks slowly across the lot. There is no one to be in a hurry for. The folding chair is going to be in the third row whether she gets to it at four-twelve or four-fifteen."
+   "text": "She walks slowly across the lot. There is no one to be in a hurry for. The folding chair is going to be in the third row whether she gets to it at four-twelve or four-fifteen.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/045.mp3"
   },
   {
    "t": "narrate",
-   "text": "She reaches the gate at four-eleven."
+   "text": "She reaches the gate at four-eleven.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/046.mp3"
   },
   {
    "t": "show",
@@ -225,51 +261,63 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben]Ben sees her come in."
+   "text": "[shot:closeup ben]Ben sees her come in.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sees her because he has, in three weeks of practice, been quietly trying to figure out which woman in the stands is Coach K's wife. He has known her name is Eileen since Wednesday at dinner when his father had mentioned it."
+   "text": "He sees her because he has, in three weeks of practice, been quietly trying to figure out which woman in the stands is Coach K's wife. He has known her name is Eileen since Wednesday at dinner when his father had mentioned it.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "He has known she had been sick."
+   "text": "He has known she had been sick.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "He has known, from the way Coach K had said Eileen in the parking lot on a Tuesday and from the way Coach K had not, in three weeks, mentioned her again, that she was the thing Coach K had been carrying through the summer that nobody on the team was supposed to be aware of."
+   "text": "He has known, from the way Coach K had said Eileen in the parking lot on a Tuesday and from the way Coach K had not, in three weeks, mentioned her again, that she was the thing Coach K had been carrying through the summer that nobody on the team was supposed to be aware of.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "Today she is at the gate."
+   "text": "Today she is at the gate.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray."
+   "text": "She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/053.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is moving the way a woman who had open-heart surgery five months ago moves, which is slowly and deliberately and on a route she has, at the car, already chosen."
+   "text": "She is moving the way a woman who had open-heart surgery five months ago moves, which is slowly and deliberately and on a route she has, at the car, already chosen.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/054.mp3"
   },
   {
    "t": "narrate",
-   "text": "She passes Ben at the gate."
+   "text": "She passes Ben at the gate.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/055.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not look at him."
+   "text": "She does not look at him.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She does not know who he is. She has no reason to. Ben is one of forty boys in helmets."
+   "text": "[shot:establish]She does not know who he is. She has no reason to. Ben is one of forty boys in helmets.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert folding_chair]She climbs the bleacher steps slowly. The folding chair is the only folding chair in the third row. She lowers herself into it. She sets the thermos on the bench at her right. She puts the fan in her lap."
+   "text": "[shot:insert folding_chair]She climbs the bleacher steps slowly. The folding chair is the only folding chair in the third row. She lowers herself into it. She sets the thermos on the bench at her right. She puts the fan in her lap.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/058.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben watches."
+   "text": "Ben watches.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/059.mp3"
   },
   {
    "t": "show",
@@ -279,63 +327,78 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, on the sideline, has not yet turned around to see her."
+   "text": "Coach K, on the sideline, has not yet turned around to see her.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/061.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K is, by Coach K's professional instinct, not going to turn around to see her until halftime, because turning around now would be the thing that would interfere with the work."
+   "text": "Coach K is, by Coach K's professional instinct, not going to turn around to see her until halftime, because turning around now would be the thing that would interfere with the work.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/062.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen, in the third row, knows this."
+   "text": "Eileen, in the third row, knows this.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "She drinks from the thermos."
+   "text": "She drinks from the thermos.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "She fans herself with the rooster."
+   "text": "She fans herself with the rooster.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "The walk-through is at four-thirty."
+   "text": "The walk-through is at four-thirty.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bleachers]The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter."
+   "text": "[shot:insert bleachers]The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/067.mp3"
   },
   {
    "t": "narrate",
-   "text": "The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991."
+   "text": "The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/068.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben is on the offensive line. He has been on the offensive line in pads since the first day of camp three weeks ago. Today, by an announcement Coach K made in the locker room at three twenty-eight, he is also TE-1."
+   "text": "Ben is on the offensive line. He has been on the offensive line in pads since the first day of camp three weeks ago. Today, by an announcement Coach K made in the locker room at three twenty-eight, he is also TE-1.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/069.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tight end one. The starting tight end on Saturday."
+   "text": "Tight end one. The starting tight end on Saturday.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/070.mp3"
   },
   {
    "t": "narrate",
-   "text": "The position he had not, three weeks ago, been on Coach K's depth chart for, and that he is in now because of a conversation he had with Coach K in the parking lot on a Tuesday morning two weeks back when Coach K had asked him why he had said the thing he had said in the locker room about Pete,"
+   "text": "The position he had not, three weeks ago, been on Coach K's depth chart for, and that he is in now because of a conversation he had with Coach K in the parking lot on a Tuesday morning two weeks back when Coach K had asked him why he had said the thing he had said in the locker room about Pete,",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/071.mp3"
   },
   {
    "t": "narrate",
-   "text": "and Ben had said because it was the thing, and Coach K had said yeah, and Coach K had walked away, and the next Monday Ben had been at TE-1 in practice."
+   "text": "and Ben had said because it was the thing, and Coach K had said yeah, and Coach K had walked away, and the next Monday Ben had been at TE-1 in practice.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "Three weeks of football. TE-1 on the depth chart on the Saturday his coach's wife is in the third row."
+   "text": "Three weeks of football. TE-1 on the depth chart on the Saturday his coach's wife is in the third row.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/073.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben~]He breathes."
+   "text": "[shot:closeup ben~]He breathes.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/074.mp3"
   },
   {
    "t": "narrate",
-   "text": "He puts his helmet on."
+   "text": "He puts his helmet on.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/075.mp3"
   },
   {
    "t": "bg",
@@ -355,19 +418,23 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk][shot:establish]The game starts at six."
+   "text": "[mood:dusk][shot:establish]The game starts at six.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/080.mp3"
   },
   {
    "t": "narrate",
-   "text": "Texas wins the toss. Brent, the senior quarterback, takes the offense out for the first series. The first three plays are vanilla — handoff, handoff, slant. Vinton's defense reads the slant. Brent throws it anyway. The slant is incomplete. Punt."
+   "text": "Texas wins the toss. Brent, the senior quarterback, takes the offense out for the first series. The first three plays are vanilla — handoff, handoff, slant. Vinton's defense reads the slant. Brent throws it anyway. The slant is incomplete. Punt.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/081.mp3"
   },
   {
    "t": "narrate",
-   "text": "Vinton has the ball for two series. They go three-and-out the first time, twelve plays the second time, and score on a counter from the seven that catches the Texas linebackers leaning."
+   "text": "Vinton has the ball for two series. They go three-and-out the first time, twelve plays the second time, and score on a counter from the seven that catches the Texas linebackers leaning.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach Guidry's kid kicker misses the PAT. 0-7. The home crowd is quiet. The visiting bench is loud."
+   "text": "Coach Guidry's kid kicker misses the PAT. 0-7. The home crowd is quiet. The visiting bench is loud.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/083.mp3"
   },
   {
    "t": "show",
@@ -377,7 +444,8 @@
   },
   {
    "t": "narrate",
-   "text": "In the third row Eileen drinks her lemon-water."
+   "text": "In the third row Eileen drinks her lemon-water.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/085.mp3"
   },
   {
    "t": "hide",
@@ -391,41 +459,48 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bleachers]Coach K, at the bench during the change of quarters, says to Brent:"
+   "text": "[shot:insert bleachers]Coach K, at the bench during the change of quarters, says to Brent:",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/088.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "We're gonna run the wrinkle.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/089.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "Now?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/090.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Next series. Tell the line. Tell Ben.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/091.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "Coach. You sure.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/092.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]Tell the line.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/093.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brent goes to the offensive huddle on the sideline. He tells the line. He tells Ben."
+   "text": "Brent goes to the offensive huddle on the sideline. He tells the line. He tells Ben.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/094.mp3"
   },
   {
    "t": "show",
@@ -435,63 +510,78 @@
   },
   {
    "t": "narrate",
-   "text": "The wrinkle is a play they have been practicing for six days and have not run in front of an opponent. The play is a play-action bootleg with Ben — at TE-1 — leaking out of the protection on the back side."
+   "text": "The wrinkle is a play they have been practicing for six days and have not run in front of an opponent. The play is a play-action bootleg with Ben — at TE-1 — leaking out of the protection on the back side.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/096.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben has practiced the leak twelve times. Six of the twelve had been clean. The other six had been late or had been so early Vinton would have read it from snap."
+   "text": "Ben has practiced the leak twelve times. Six of the twelve had been clean. The other six had been late or had been so early Vinton would have read it from snap.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/097.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does not, in the huddle, say anything."
+   "text": "Ben does not, in the huddle, say anything.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/098.mp3"
   },
   {
    "t": "narrate",
-   "text": "The huddle breaks."
+   "text": "The huddle breaks.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "The line sets."
+   "text": "The line sets.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/100.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brent calls the cadence."
+   "text": "Brent calls the cadence.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/101.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert ball]The ball snaps."
+   "text": "[shot:insert ball]The ball snaps.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/102.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brent fakes the handoff to Omar. Brent rolls right. Ben — on the back side, on the left — chips the defensive end one count, releases, and runs the drag."
+   "text": "Brent fakes the handoff to Omar. Brent rolls right. Ben — on the back side, on the left — chips the defensive end one count, releases, and runs the drag.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/103.mp3"
   },
   {
    "t": "narrate",
-   "text": "He is open."
+   "text": "He is open.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/104.mp3"
   },
   {
    "t": "narrate",
-   "text": "He is so open he does not, for a half second, believe he is open."
+   "text": "He is so open he does not, for a half second, believe he is open.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/105.mp3"
   },
   {
    "t": "narrate",
-   "text": "He turns his head."
+   "text": "He turns his head.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/106.mp3"
   },
   {
    "t": "narrate",
-   "text": "The ball is in the air."
+   "text": "The ball is in the air.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/107.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:lift][shot:establish]He catches it."
+   "text": "[beat:lift][shot:establish]He catches it.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "He runs four steps and Number 47 hits him at the sideline and he goes down."
+   "text": "He runs four steps and Number 47 hits him at the sideline and he goes down.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/109.mp3"
   },
   {
    "t": "narrate",
-   "text": "Twenty-two yards."
+   "text": "Twenty-two yards.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/110.mp3"
   },
   {
    "t": "show",
@@ -501,15 +591,18 @@
   },
   {
    "t": "narrate",
-   "text": "The home crowd does the cheer Texas high school crowds do for yeah, that's the wrinkle, that worked. It is not the biggest cheer of the night. It is not the cheer that wins the game. It is not, in any meaningful way, the most important play of the scrimmage."
+   "text": "The home crowd does the cheer Texas high school crowds do for yeah, that's the wrinkle, that worked. It is not the biggest cheer of the night. It is not the cheer that wins the game. It is not, in any meaningful way, the most important play of the scrimmage.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/112.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup eileen]Eileen, in the third row, sees the play."
+   "text": "[shot:closeup eileen]Eileen, in the third row, sees the play.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/113.mp3"
   },
   {
    "t": "narrate",
-   "text": "She sees Coach K, on the sideline, not move."
+   "text": "She sees Coach K, on the sideline, not move.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/114.mp3"
   },
   {
    "t": "show",
@@ -519,31 +612,38 @@
   },
   {
    "t": "narrate",
-   "text": "She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up."
+   "text": "She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/116.mp3"
   },
   {
    "t": "narrate",
-   "text": "She sees the kid in the TE-1 jersey jog back to the huddle."
+   "text": "She sees the kid in the TE-1 jersey jog back to the huddle.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/117.mp3"
   },
   {
    "t": "narrate",
-   "text": "She watches the drive."
+   "text": "She watches the drive.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/118.mp3"
   },
   {
    "t": "narrate",
-   "text": "The drive ends six plays later in a touchdown — Omar, the senior halfback, over the right side behind Tucker and Ben."
+   "text": "The drive ends six plays later in a touchdown — Omar, the senior halfback, over the right side behind Tucker and Ben.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/119.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben's block on Number 47 on the touchdown play is the cleanest block he has thrown in three weeks."
+   "text": "Ben's block on Number 47 on the touchdown play is the cleanest block he has thrown in three weeks.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/120.mp3"
   },
   {
    "t": "narrate",
-   "text": "Wesley kicks the extra point."
+   "text": "Wesley kicks the extra point.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/121.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]7-7."
+   "text": "[shot:establish]7-7.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/122.mp3"
   },
   {
    "t": "hide",
@@ -555,11 +655,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Halftime is at six fifty-six."
+   "text": "[shot:establish]Halftime is at six fifty-six.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/125.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Texas team goes to the locker room. The Vinton team goes to the visiting locker room. Coach K does not, during the walk to the home locker room, turn his head toward the third row."
+   "text": "The Texas team goes to the locker room. The Vinton team goes to the visiting locker room. Coach K does not, during the walk to the home locker room, turn his head toward the third row.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/126.mp3"
   },
   {
    "t": "show",
@@ -575,7 +677,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup coach_k]He turns his head at the bottom of the bleacher stairs. He looks up. Eileen looks down. He does not smile. He nods once. She nods once back. He goes into the locker room."
+   "text": "[shot:closeup coach_k]He turns his head at the bottom of the bleacher stairs. He looks up. Eileen looks down. He does not smile. He nods once. She nods once back. He goes into the locker room.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/129.mp3"
   },
   {
    "t": "hide",
@@ -583,27 +686,33 @@
   },
   {
    "t": "narrate",
-   "text": "She drinks her lemon-water."
+   "text": "She drinks her lemon-water.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/131.mp3"
   },
   {
    "t": "narrate",
-   "text": "The bypass had been March 4. By March 14 she had been home from the hospital. By April 1 she had been able to walk to the mailbox without resting. By June 1 she had been able to drive to the H-E-B by herself."
+   "text": "The bypass had been March 4. By March 14 she had been home from the hospital. By April 1 she had been able to walk to the mailbox without resting. By June 1 she had been able to drive to the H-E-B by herself.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/132.mp3"
   },
   {
    "t": "narrate",
-   "text": "By July she had been doing the cardiac-rehab class on Fridays at the hospital in New Auburn, which had not been her idea — the surgeon had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around."
+   "text": "By July she had been doing the cardiac-rehab class on Fridays at the hospital in New Auburn, which had not been her idea — the surgeon had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/133.mp3"
   },
   {
    "t": "narrate",
-   "text": "She watches the field empty."
+   "text": "She watches the field empty.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/134.mp3"
   },
   {
    "t": "narrate",
-   "text": "She has, in the canvas bag, half a sandwich her husband had made her at noon. She does not eat it."
+   "text": "She has, in the canvas bag, half a sandwich her husband had made her at noon. She does not eat it.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/135.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, in the fifteen minutes of halftime, move."
+   "text": "She does not, in the fifteen minutes of halftime, move.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/136.mp3"
   },
   {
    "t": "show",
@@ -613,227 +722,270 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup linda]Linda Guidry comes up the bleacher steps at seven oh-four."
+   "text": "[shot:closeup linda]Linda Guidry comes up the bleacher steps at seven oh-four.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/138.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda is sixty-something, short, wearing a Vinton Athletics polo and what look like her husband's sunglasses. She has, in her hand, a paper cup of stadium lemonade. She climbs to the third row. She stops at Eileen's chair."
+   "text": "Linda is sixty-something, short, wearing a Vinton Athletics polo and what look like her husband's sunglasses. She has, in her hand, a paper cup of stadium lemonade. She climbs to the third row. She stops at Eileen's chair.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/139.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "You Coach K's wife.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/140.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "Yes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/141.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "I'm Linda. Guidry's wife.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/142.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person_b]Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/143.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "My husband told me, on the drive up from Vinton, that there was going to be a woman at the home bleachers tonight who was going to be Coach K's wife.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/144.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "He said Linda, I have known Coach K for ten years and I have not, in those ten years, met his wife. Tonight I have a feeling. I asked him what he meant by feeling.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/145.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "He said Coach K's been sending me emails this week with a different rhythm than usual. I asked him what the rhythm was.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/146.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen waits."
+   "text": "Eileen waits.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/147.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[beat:lift]He said the rhythm of a man whose wife is going to be okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/148.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup eileen~]Eileen, in the folding chair, is for a beat very still."
+   "text": "[shot:closeup eileen~]Eileen, in the folding chair, is for a beat very still.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/149.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/150.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "I had the bypass in oh-two. I know the rhythm.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/151.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/152.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda lowers herself onto the bleacher bench next to Eileen's chair. She does not, in lowering herself, ask permission. She drinks her lemonade."
+   "text": "Linda lowers herself onto the bleacher bench next to Eileen's chair. She does not, in lowering herself, ask permission. She drinks her lemonade.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/153.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person]How long since.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/154.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "March fourth.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/155.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "What was the operating phrase Monday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/156.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "Probably okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/157.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Probably okay's the good one. Probably okay means they're not, this year, going back in. Probably okay means you should book the Christmas flight.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/158.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person_b]My husband told me yesterday afternoon he wanted to book the Christmas flight.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/159.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "My husband told me the same thing in oh-two. We went to Colorado. The flight was the only thing that mattered all year. Take it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/160.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen does not, for a long count, respond."
+   "text": "Eileen does not, for a long count, respond.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/161.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "Linda.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/162.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/163.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person]This is the first time I have been at a game since February.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/164.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person]I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/165.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "I am not, right this minute, going to be able to keep my face entirely steady.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/166.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "That's all right, sweetheart. Drink your water. We're going to watch the second half together. Your husband and mine are going to be on opposite sidelines yelling at fifteen-year-olds and we are going to be in the third row and you are going to be all right.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/167.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen drinks her lemon-water."
+   "text": "Eileen drinks her lemon-water.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/168.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda Guidry, after a beat, puts her hand briefly on Eileen's hand on the armrest of the folding chair. Once. Light. Then her hand is gone."
+   "text": "Linda Guidry, after a beat, puts her hand briefly on Eileen's hand on the armrest of the folding chair. Once. Light. Then her hand is gone.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/169.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Welcome back, sweetheart.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/170.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person_b]Thank you, Linda.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/171.mp3"
   },
   {
    "t": "narrate",
-   "text": "The voice is not quite the voice she had had a minute ago."
+   "text": "The voice is not quite the voice she had had a minute ago.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/172.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:night][shot:establish]The second half is the second half."
+   "text": "[mood:night][shot:establish]The second half is the second half.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/173.mp3"
   },
   {
    "t": "narrate",
-   "text": "Texas scores on the opening drive — a long pass on third-and-eight that Marcus, the slot, catches at the Vinton sixteen."
+   "text": "Texas scores on the opening drive — a long pass on third-and-eight that Marcus, the slot, catches at the Vinton sixteen.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/174.mp3"
   },
   {
    "t": "narrate",
-   "text": "Three plays later Brent finds Ben in the flat on a quick out and Ben gets six yards before going out of bounds. Omar in for the touchdown. 14-7."
+   "text": "Three plays later Brent finds Ben in the flat on a quick out and Ben gets six yards before going out of bounds. Omar in for the touchdown. 14-7.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/175.mp3"
   },
   {
    "t": "narrate",
-   "text": "Vinton answers with two field goals."
+   "text": "Vinton answers with two field goals.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/176.mp3"
   },
   {
    "t": "narrate",
-   "text": "By the fourth quarter Texas is up 21-13 and the Vinton kids are playing harder, not less hard, in the small way teams that are losing and tired do when they have decided not to lose any worse."
+   "text": "By the fourth quarter Texas is up 21-13 and the Vinton kids are playing harder, not less hard, in the small way teams that are losing and tired do when they have decided not to lose any worse.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/177.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben, at TE-1, blocks. The slip-screen they had been saving — Coach K calls it on the second-to-last drive with three minutes left — gains forty-two yards on the back of a missed assignment by the Vinton corner. Texas runs the clock. 21-13 final."
+   "text": "Ben, at TE-1, blocks. The slip-screen they had been saving — Coach K calls it on the second-to-last drive with three minutes left — gains forty-two yards on the back of a missed assignment by the Vinton corner. Texas runs the clock. 21-13 final.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/178.mp3"
   },
   {
    "t": "narrate",
-   "text": "The home crowd is loud at the buzzer."
+   "text": "The home crowd is loud at the buzzer.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/179.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen, in the third row, with Linda on the bench beside her, has not, in the second half, looked at the clock."
+   "text": "Eileen, in the third row, with Linda on the bench beside her, has not, in the second half, looked at the clock.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/180.mp3"
   },
   {
    "t": "show",
@@ -849,19 +1001,23 @@
   },
   {
    "t": "narrate",
-   "text": "At the buzzer the teams meet at midfield."
+   "text": "At the buzzer the teams meet at midfield.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/183.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert folding_chair]Coach K and Coach Guidry shake hands."
+   "text": "[shot:insert folding_chair]Coach K and Coach Guidry shake hands.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/184.mp3"
   },
   {
    "t": "narrate",
-   "text": "The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear."
+   "text": "The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/185.mp3"
   },
   {
    "t": "narrate",
-   "text": "Guidry laughs. Coach K does not."
+   "text": "Guidry laughs. Coach K does not.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/186.mp3"
   },
   {
    "t": "hide",
@@ -873,67 +1029,79 @@
   },
   {
    "t": "narrate",
-   "text": "The teams shake hands down the line. Ben is the third Texas player in the line. Number 47 — the Vinton outside linebacker who had hit him on the wrinkle play — finds him."
+   "text": "The teams shake hands down the line. Ben is the third Texas player in the line. Number 47 — the Vinton outside linebacker who had hit him on the wrinkle play — finds him.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/189.mp3"
   },
   {
    "t": "say",
    "char": "Number 47",
    "text": "You're a senior.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/190.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person_b]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/191.mp3"
   },
   {
    "t": "say",
    "char": "Number 47",
    "text": "You been playing your whole life.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/192.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "First season.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/193.mp3"
   },
   {
    "t": "say",
    "char": "Number 47",
    "text": "Bullshit.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/194.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Swear.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/195.mp3"
   },
   {
    "t": "narrate",
-   "text": "Number 47 laughs."
+   "text": "Number 47 laughs.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/196.mp3"
   },
   {
    "t": "say",
    "char": "Number 47",
    "text": "[shot:closeup person]Man. Good luck this year.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/197.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "You too.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/198.mp3"
   },
   {
    "t": "narrate",
-   "text": "They shake."
+   "text": "They shake.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/199.mp3"
   },
   {
    "t": "narrate",
-   "text": "The line moves on."
+   "text": "The line moves on.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/200.mp3"
   },
   {
    "t": "bg",
@@ -941,19 +1109,23 @@
   },
   {
    "t": "narrate",
-   "text": "El Rancho is open until midnight."
+   "text": "El Rancho is open until midnight.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/202.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner."
+   "text": "Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/203.mp3"
   },
   {
    "t": "narrate",
-   "text": "Hugo at the window has been told to expect them. Hugo at the window has gotten his mother in early to handle the rush."
+   "text": "Hugo at the window has been told to expect them. Hugo at the window has gotten his mother in early to handle the rush.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/204.mp3"
   },
   {
    "t": "narrate",
-   "text": "Hugo at the window is, by ten oh-eight, running orders through faster than he has ever run orders through on a Saturday night."
+   "text": "Hugo at the window is, by ten oh-eight, running orders through faster than he has ever run orders through on a Saturday night.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/205.mp3"
   },
   {
    "t": "show",
@@ -975,149 +1147,179 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Coach K and Eileen are in the booth across from Coach Guidry and Linda Guidry."
+   "text": "[shot:establish]Coach K and Eileen are in the booth across from Coach Guidry and Linda Guidry.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/209.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K is eating a flauta. Linda Guidry is on her second margarita. Eileen has a horchata."
+   "text": "Coach K is eating a flauta. Linda Guidry is on her second margarita. Eileen has a horchata.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/210.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Tomorrow you sleep until nine and your husband makes you coffee.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/211.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/212.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "And Christmas, Colorado.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/213.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/214.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "And next Saturday you do this again.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/215.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "I think so.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/216.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "You don't have to think so. The hard one was tonight. Next week is the easy one. The week after that you stop counting.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/217.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "All right, Linda.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/218.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person_b]I'm bossy. I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/219.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "It's all right.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/220.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda Guidry drinks."
+   "text": "Linda Guidry drinks.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/221.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K, across the booth, is eating his flauta and listening."
+   "text": "Coach K, across the booth, is eating his flauta and listening.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/222.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sets the flauta down."
+   "text": "He sets the flauta down.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/223.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup coach_k]He looks at Eileen."
+   "text": "[shot:closeup coach_k]He looks at Eileen.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/224.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen looks at him."
+   "text": "Eileen looks at him.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/225.mp3"
   },
   {
    "t": "narrate",
-   "text": "The two of them, across the table at the taqueria in mid-August in Texas at ten forty-two PM after their first game-day in five months together, look at each other without performing anything."
+   "text": "The two of them, across the table at the taqueria in mid-August in Texas at ten forty-two PM after their first game-day in five months together, look at each other without performing anything.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/226.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "How was it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/227.mp3"
   },
   {
    "t": "say",
    "char": "Eileen Kazantzakis",
    "text": "It was — it was the game.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/228.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K, after a beat, smiles."
+   "text": "Coach K, after a beat, smiles.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/229.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]...",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/230.mp3"
   },
   {
    "t": "narrate",
-   "text": "The smile is the slow smile of a man who has been checking himself for five months. He is, in this booth, at this hour, allowing himself to not check."
+   "text": "The smile is the slow smile of a man who has been checking himself for five months. He is, in this booth, at this hour, allowing himself to not check.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/231.mp3"
   },
   {
    "t": "narrate",
-   "text": "The smile is the longest smile she has gotten from him since March."
+   "text": "The smile is the longest smile she has gotten from him since March.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/232.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup eileen]She holds it."
+   "text": "[shot:closeup eileen]She holds it.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/233.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda Guidry, on her side of the booth, is watching them. She does not, this once, say anything."
+   "text": "Linda Guidry, on her side of the booth, is watching them. She does not, this once, say anything.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/234.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach Guidry, beside her, takes a bite of his flauta."
+   "text": "Coach Guidry, beside her, takes a bite of his flauta.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/235.mp3"
   },
   {
    "t": "narrate",
-   "text": "The taqueria, around them, is loud. Hugo's mother is yelling something at the back. The Vinton kids in the corner are eating. Faulk, the Vinton quarterback, is laughing at something Domingue has just said."
+   "text": "The taqueria, around them, is loud. Hugo's mother is yelling something at the back. The Vinton kids in the corner are eating. Faulk, the Vinton quarterback, is laughing at something Domingue has just said.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/236.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen drinks her horchata."
+   "text": "Eileen drinks her horchata.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/237.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, for the rest of the meal, let go of her husband's eyes."
+   "text": "She does not, for the rest of the meal, let go of her husband's eyes.",
+   "voice": "assets/audio/voice/vol6_ch22_vinton/238.mp3"
   },
   {
    "t": "jump",

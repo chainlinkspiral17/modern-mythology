@@ -21746,5 +21746,53 @@
       "godot/assets/concept/meshy/eileen_kazantzakis/eileen_kazantzakis_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/eileen_kazantzakis/eileen_kazantzakis_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-19T02:30:44+00:00",
+    "stage": "image",
+    "slug": "doyle",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Doyle like this: Doyle holds up the NAPD courtesy badge \u2014 a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM Additional direction: Doyle, 40s, plain-clothes with a borrowed NAPD courtesy badge. Medium build, a grey buzz cut, a face built for not being remembered. An untucked dark-blue button-down over a white t-shirt, chinos, brown boots, the small leather badge wallet held open in one hand.\nFull-body concept render of Doyle, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/doyle/doyle_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/doyle/doyle_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/doyle/doyle_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-19T02:42:09+00:00",
+    "stage": "mesh",
+    "slug": "doyle",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a15201-4ebf-77f7-b30c-398ac4fe2d1c",
+    "inputs": [
+      "godot/assets/concept/meshy/doyle/front.png",
+      "godot/assets/concept/meshy/doyle/side.png",
+      "godot/assets/concept/meshy/doyle/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/doyle.glb",
+    "file_size_kb": 42646.1
   }
 ]

@@ -33,23 +33,28 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:liminal_interior][ INTERCEPTED — frequency drift, source: a modified Speak & Spell in the back room of Cosmic Comics, Harmony Creek Estates, TX ]"
+   "text": "[trip:1.2][mood:liminal_interior][ INTERCEPTED — frequency drift, source: a modified Speak & Spell in the back room of Cosmic Comics, Harmony Creek Estates, TX ]",
+   "voice": "assets/audio/voice/vol7_interlude_ii/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert speak_and_spell~]The Speak & Spell, which has not been the same since the night it sang Old MacDonald in the voice of early Einstürzende Neubauten attempting Cumbia, transmits without being asked:"
+   "text": "[shot:insert speak_and_spell~]The Speak & Spell, which has not been the same since the night it sang Old MacDonald in the voice of early Einstürzende Neubauten attempting Cumbia, transmits without being asked:",
+   "voice": "assets/audio/voice/vol7_interlude_ii/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "T-R-I-U-M-V-I-R-A-T-E. Triumvirate. Correct. Try again. T-R-I-U-M-V-I-R-A-T-E. Triumvirate. Correct. Try again."
+   "text": "T-R-I-U-M-V-I-R-A-T-E. Triumvirate. Correct. Try again. T-R-I-U-M-V-I-R-A-T-E. Triumvirate. Correct. Try again.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya hears it from the kitchen. She does not turn it off. She writes the word in her notebook, then writes it three times more, then crosses out the first three. She circles the fourth. Underneath, in pencil, very small: who else."
+   "text": "Maya hears it from the kitchen. She does not turn it off. She writes the word in her notebook, then writes it three times more, then crosses out the first three. She circles the fourth. Underneath, in pencil, very small: who else.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "She has never been to Oregon."
+   "text": "She has never been to Oregon.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/010.mp3"
   },
   {
    "t": "bg",
@@ -57,31 +62,38 @@
   },
   {
    "t": "narrate",
-   "text": "[ FINN — Cape Perpetua trail, 6:42 AM, fog bank approaching ]"
+   "text": "[ FINN — Cape Perpetua trail, 6:42 AM, fog bank approaching ]",
+   "voice": "assets/audio/voice/vol7_interlude_ii/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking."
+   "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice — young, dry, somewhere south — say help me find them."
+   "text": "The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice — young, dry, somewhere south — say help me find them.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "He stops walking. The fog reaches him. The radio resumes its standard hiss."
+   "text": "He stops walking. The fog reaches him. The radio resumes its standard hiss.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]He marks the GPS coordinate on his phone. He does not know why. He does not know the girl."
+   "text": "[shot:insert phone]He marks the GPS coordinate on his phone. He does not know why. He does not know the girl.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "He will find out, in November, that her name was Maya, and that the message was meant for him, and that the route she sent him on goes through a cannery he has been avoiding his whole life."
+   "text": "He will find out, in November, that her name was Maya, and that the message was meant for him, and that the route she sent him on goes through a cannery he has been avoiding his whole life.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert crow]The crow lands on the fence post beside him. The crow has been waiting."
+   "text": "[shot:insert crow]The crow lands on the fence post beside him. The crow has been waiting.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/018.mp3"
   },
   {
    "t": "bg",
@@ -89,27 +101,33 @@
   },
   {
    "t": "narrate",
-   "text": "[ INTERCEPTED — node TX-LA-01, telemetry update, source: Frasier Temple's eldest Demon, now transmitting from a jury-rigged speaker in the warehouse cathedral, dawn ]"
+   "text": "[ INTERCEPTED — node TX-LA-01, telemetry update, source: Frasier Temple's eldest Demon, now transmitting from a jury-rigged speaker in the warehouse cathedral, dawn ]",
+   "voice": "assets/audio/voice/vol7_interlude_ii/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "Update: signal anomaly previously logged as adjacent vector now confirmed bilateral. Pacific spillover detected. Frequency: integrated. Frequency: corrupted. Frequency: same frequency. Repeat: same frequency. Do not confuse this with reassurance."
+   "text": "Update: signal anomaly previously logged as adjacent vector now confirmed bilateral. Pacific spillover detected. Frequency: integrated. Frequency: corrupted. Frequency: same frequency. Repeat: same frequency. Do not confuse this with reassurance.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "Note: shadow-code architecture in Pacific Northwest sector resembles known D. Dean signature, modified. Suggest the architect has been busy. Suggest the architect was always going to be busy."
+   "text": "Note: shadow-code architecture in Pacific Northwest sector resembles known D. Dean signature, modified. Suggest the architect has been busy. Suggest the architect was always going to be busy.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "Note: a young woman in Smolvud, Oregon, this morning woke with charcoal under her fingernails. She has never used charcoal. The charcoal is from a wall in Graustark, TX, that she has never seen. The charcoal is also somehow newer than she is."
+   "text": "Note: a young woman in Smolvud, Oregon, this morning woke with charcoal under her fingernails. She has never used charcoal. The charcoal is from a wall in Graustark, TX, that she has never seen. The charcoal is also somehow newer than she is.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "Recommend: continue observation. Recommend: prepare for guests."
+   "text": "Recommend: continue observation. Recommend: prepare for guests.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Demon does its not-quite-sigh again. The Demon has, since the Static Opera, developed something dangerously close to compassion."
+   "text": "The Demon does its not-quite-sigh again. The Demon has, since the Static Opera, developed something dangerously close to compassion.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/025.mp3"
   },
   {
    "t": "bg",
@@ -117,7 +135,8 @@
   },
   {
    "t": "narrate",
-   "text": "[ LENA — apartment above The Salty Tome, Smolvud, OR — 6:42 AM Pacific, the same minute Finn's radio goes quiet ]"
+   "text": "[ LENA — apartment above The Salty Tome, Smolvud, OR — 6:42 AM Pacific, the same minute Finn's radio goes quiet ]",
+   "voice": "assets/audio/voice/vol7_interlude_ii/027.mp3"
   },
   {
    "t": "cg",
@@ -126,55 +145,68 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.4] [shot:insert charcoal~]She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened."
+   "text": "[trip:1.4] [shot:insert charcoal~]She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/029.mp3"
   },
   {
    "t": "narrate",
-   "text": "The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
+   "text": "The pencils are in the drawer, also where she left them. There is no charcoal in the apartment.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/030.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks, calmly, not mine."
+   "text": "She thinks, calmly, not mine.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/031.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:chill]She thinks, less calmly, whose."
+   "text": "[beat:chill]She thinks, less calmly, whose.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gets up. She makes coffee. She does not wash her thigh for an hour. She wants to see if it changes."
+   "text": "She gets up. She makes coffee. She does not wash her thigh for an hour. She wants to see if it changes.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "It does not change. It also does not wash off, eventually, for three days."
+   "text": "It does not change. It also does not wash off, eventually, for three days.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "By the time it does, she has started the zine. She calls it Static Truths. The first issue runs to four photocopied pages. On the back cover, without quite knowing why, she draws an octopus."
+   "text": "By the time it does, she has started the zine. She calls it Static Truths. The first issue runs to four photocopied pages. On the back cover, without quite knowing why, she draws an octopus.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "[ AZRAEL — Angel of Transitions, log entry for the same morning ]"
+   "text": "[ AZRAEL — Angel of Transitions, log entry for the same morning ]",
+   "voice": "assets/audio/voice/vol7_interlude_ii/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "And on three coastlines simultaneously, three frequencies that had been mistaken for separate broadcasts revealed themselves as one signal interrupted by geography."
+   "text": "And on three coastlines simultaneously, three frequencies that had been mistaken for separate broadcasts revealed themselves as one signal interrupted by geography.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]I note for the record: the same crow."
+   "text": "[shot:establish]I note for the record: the same crow.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]I note for the record: the same charcoal."
+   "text": "[shot:establish]I note for the record: the same charcoal.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "I note for the record: the same hum, picked up by a different ear."
+   "text": "I note for the record: the same hum, picked up by a different ear.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "The wheel does not turn faster. The wheel is the same wheel. There is only the one wheel."
+   "text": "The wheel does not turn faster. The wheel is the same wheel. There is only the one wheel.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/041.mp3"
   },
   {
    "t": "bg",
@@ -182,51 +214,63 @@
   },
   {
    "t": "narrate",
-   "text": "[ AT A JETTY, SMOLVUD, OREGON — fog ]"
+   "text": "[ AT A JETTY, SMOLVUD, OREGON — fog ]",
+   "voice": "assets/audio/voice/vol7_interlude_ii/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:arcana_cool][shot:closeup frog]The Frog has been here for an hour. The Frog will be here for another four. The Frog is not, technically, fishing. The Frog is waiting."
+   "text": "[mood:arcana_cool][shot:closeup frog]The Frog has been here for an hour. The Frog will be here for another four. The Frog is not, technically, fishing. The Frog is waiting.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "Around four in the afternoon, three young people will pass this jetty without noticing him. The Frog will note them. The Frog will note their totems trailing behind them, invisible to them, visible to him: a crow, an octopus, a ferret, all walking in step."
+   "text": "Around four in the afternoon, three young people will pass this jetty without noticing him. The Frog will note them. The Frog will note their totems trailing behind them, invisible to them, visible to him: a crow, an octopus, a ferret, all walking in step.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/045.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Frog will roll a fresh smoke. The Frog will say, to nobody in particular, in a voice like rocks in a tumble dryer:"
+   "text": "The Frog will roll a fresh smoke. The Frog will say, to nobody in particular, in a voice like rocks in a tumble dryer:",
+   "voice": "assets/audio/voice/vol7_interlude_ii/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "Right on schedule, pink ones. Right on schedule."
+   "text": "Right on schedule, pink ones. Right on schedule.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "The fog will accept the smoke. The fog will not give it back."
+   "text": "The fog will accept the smoke. The fog will not give it back.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cycle, breathing, takes its next step."
+   "text": "The cycle, breathing, takes its next step.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]ACT III"
+   "text": "[shot:establish]ACT III",
+   "voice": "assets/audio/voice/vol7_interlude_ii/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "LAND OF MILK & HONEY"
+   "text": "LAND OF MILK & HONEY",
+   "voice": "assets/audio/voice/vol7_interlude_ii/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "Smolvud, Oregon"
+   "text": "Smolvud, Oregon",
+   "voice": "assets/audio/voice/vol7_interlude_ii/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "Twenty-two chapters and an epilogue. The fog finally has a frequency."
+   "text": "Twenty-two chapters and an epilogue. The fog finally has a frequency.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/053.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sticky, complicated, and usually curdled."
+   "text": "Sticky, complicated, and usually curdled.",
+   "voice": "assets/audio/voice/vol7_interlude_ii/054.mp3"
   },
   {
    "t": "jump",
