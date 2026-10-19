@@ -180,6 +180,16 @@ func _rebuild() -> void:
 			Settings.auto_advance_ms = aa_values[idx] if idx >= 0 else 0
 	))
 
+	vbox.add_child(_row_label("AUTO-PLAY  ·  reads each chapter through and picks the choices"))
+	vbox.add_child(_button_row(["OFF", "ON"], "ON" if Settings.auto_play else "OFF",
+		func(v: String) -> void: Settings.auto_play = v == "ON"
+	))
+
+	vbox.add_child(_row_label("TOP BAR  ·  auto: shows on an update or at the top edge"))
+	vbox.add_child(_button_row(["AUTO", "ALWAYS"], Settings.hud_bar.to_upper(),
+		func(v: String) -> void: Settings.hud_bar = v.to_lower()
+	))
+
 	# Bottom padding
 	var bot_pad := Control.new()
 	bot_pad.custom_minimum_size.y = 24

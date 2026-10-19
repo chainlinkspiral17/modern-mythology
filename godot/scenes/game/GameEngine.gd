@@ -75,6 +75,21 @@ var _backlog_overlay: Control = null
 var _auto_mode: bool = false
 var _auto_read_t: float = 0.0
 var _auto_chip: Label = null
+# AUTO-PLAY (2026-10-19, the user: "an auto-read/play setting that just
+# automatically plays a chapter and picks options as needed"). With
+# Settings.auto_play on, AUTO is on in every scene (the A key still turns
+# it off for this session); a voiced line plays out before the page turns;
+# at a choice it waits AUTO_CHOICE_S and picks the first option it has not
+# taken at that menu yet (hub menus loop back: once every option has been
+# taken it picks the last, usually the way out); a picture (CG) is held
+# AUTO_CG_S and dismissed.
+const AUTO_CHOICE_S := 2.5
+const AUTO_CG_S := 4.0
+var _auto_user_off: bool = false
+var _auto_wait_t: float = 0.0
+var _choice_key: String = ""
+var _choice_opts: Array = []
+var _auto_taken: Dictionary = {}     # "scene#node" → [option text taken]
 # idle cursor · the pointer fades after a few still seconds so it
 # never sits in a held frame
 var _cursor_idle_t: float = 0.0
@@ -1013,6 +1028,9 @@ func _do_choice(n: Dictionary) -> void:
 		_run_next()
 		return
 	_choices.visible = true
+	_choice_key = "%s#%d" % [_scene_id, _node_idx]
+	_choice_opts = opts
+	_auto_wait_t = 0.0
 	_choices.call("present", n.get("prompt", ""), opts,
 		func(idx: int) -> void:
 			_choices.visible = false
@@ -1611,8 +1629,27 @@ func _can_timed_advance() -> bool:
 	return get_tree().get_first_node_in_group("vn_input_blocker") == null
 
 
+## AUTO-PLAY at a choice: the first option not yet taken at this menu,
+## else the last (the way out of a hub that loops back).
+func _auto_pick_choice() -> void:
+	if _choice_opts.is_empty():
+		return
+	var taken: Array = _auto_taken.get(_choice_key, [])
+	var idx: int = _choice_opts.size() - 1
+	for i in _choice_opts.size():
+		var t: String = String((_choice_opts[i] as Dictionary).get("text", ""))
+		if not taken.has(t):
+			idx = i
+			break
+	taken.append(String((_choice_opts[idx] as Dictionary).get("text", "")))
+	_auto_taken[_choice_key] = taken
+	_choices.call("_on_chosen", idx)
+
+
 func _toggle_auto_mode() -> void:
 	_auto_mode = not _auto_mode
+	if Settings.auto_play:
+		_auto_user_off = not _auto_mode
 	_auto_read_t = 0.0
 	if _auto_chip == null:
 		_auto_chip = Label.new()
@@ -1642,15 +1679,36 @@ func _tick_reading_comfort(delta: float) -> void:
 			and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE \
 			and get_tree().get_first_node_in_group("vn_input_blocker") == null:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if Settings.auto_play and not _auto_mode and not _auto_user_off and not _transition_lock:
+		_toggle_auto_mode()
 	# hands-free page turn: a beat after the typewriter rests,
 	# scaled to how much was just read
 	if not _auto_mode or _transition_lock or _photo_on \
-			or _backlog_overlay != null or _choices.visible \
-			or _interlude.visible \
+			or _backlog_overlay != null or _interlude.visible \
 			or get_tree().get_first_node_in_group("vn_input_blocker") != null:
 		_auto_read_t = 0.0
+		_auto_wait_t = 0.0
 		return
+	if _choices.visible:
+		_auto_read_t = 0.0
+		_auto_wait_t += delta
+		if _auto_wait_t >= AUTO_CHOICE_S:
+			_auto_wait_t = 0.0
+			_auto_pick_choice()
+		return
+	if _cg != null and _cg.visible:
+		_auto_wait_t += delta
+		if _auto_wait_t >= AUTO_CG_S:
+			_auto_wait_t = 0.0
+			_cg.call("_dismiss")
+		return
+	_auto_wait_t = 0.0
 	if _dlg == null or not _dlg.visible or bool(_dlg.call("is_typing")):
+		_auto_read_t = 0.0
+		return
+	# a voiced line plays out before the page turns — unless the next page
+	# is the same passage's unvoiced continuation (the recording spans it)
+	if AudioMgr.is_voice_playing() and not _next_is_voiceless_text():
 		_auto_read_t = 0.0
 		return
 	_auto_read_t += delta

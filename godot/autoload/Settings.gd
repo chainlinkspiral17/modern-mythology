@@ -26,6 +26,8 @@ var _trip_lines:     float  = 1.0    # THE TRIP mix · aura on the lines
 var _trip_colour:    float  = 1.0    # THE TRIP mix · hue drift + wash in the flats
 var _trip_beat:      float  = 1.0    # THE TRIP mix · how much the beat shows
 var _trip_trails:    float  = 1.0    # THE TRIP mix · the feedback buffer (Minter light trails)
+var _auto_play:      bool   = false  # AUTO-PLAY: every chapter reads itself, choices picked
+var _hud_bar:        String = "auto" # TOP BAR: "auto" (shows on an update / at the top edge) | "always"
 
 
 var txt_scale: float:
@@ -81,6 +83,28 @@ var auto_advance_ms: int:
 	set(val):
 		_auto_advance_ms = val
 		settings_changed.emit("auto_advance_ms", val)
+		_save()
+
+# AUTO-PLAY (2026-10-19, the user: "there needs to be an auto-read/play
+# setting that just automatically plays a chapter and picks options as
+# needed"). On: every scene starts in AUTO (the A key's hands-free mode),
+# voiced lines finish before the page turns, choices are picked.
+var auto_play: bool:
+	get: return _auto_play
+	set(val):
+		_auto_play = val
+		settings_changed.emit("auto_play", val)
+		_save()
+
+# TOP BAR (2026-10-19, the user: "the top bar shouldn't be there unless it
+# shows an update or it's turned on"). "auto": hidden, it shows for a few
+# seconds when a skill, an item or the chapter changes, and while the
+# pointer is at the top edge; "always": on.
+var hud_bar: String:
+	get: return _hud_bar
+	set(val):
+		_hud_bar = val
+		settings_changed.emit("hud_bar", val)
 		_save()
 
 var window_mode: String:
@@ -250,6 +274,8 @@ func _load() -> void:
 	_trip_colour     = clampf(float(cfg.get_value("settings", "trip_colour", 1.0)), 0.0, 1.0)
 	_trip_beat       = clampf(float(cfg.get_value("settings", "trip_beat", 1.0)), 0.0, 1.0)
 	_trip_trails     = clampf(float(cfg.get_value("settings", "trip_trails", 1.0)), 0.0, 1.0)
+	_auto_play       = bool(cfg.get_value("settings",  "auto_play",      false))
+	_hud_bar         = str(cfg.get_value("settings",   "hud_bar",        "auto"))
 	_apply_window_mode(_window_mode)
 
 
@@ -273,4 +299,6 @@ func _save() -> void:
 	cfg.set_value("settings", "trip_colour",     _trip_colour)
 	cfg.set_value("settings", "trip_beat",       _trip_beat)
 	cfg.set_value("settings", "trip_trails",     _trip_trails)
+	cfg.set_value("settings", "auto_play",       _auto_play)
+	cfg.set_value("settings", "hud_bar",         _hud_bar)
 	cfg.save(SAVE_PATH)

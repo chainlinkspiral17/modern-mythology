@@ -20,8 +20,48 @@ var _chapter_text: String = ""
 var _items_lbl: Label = null
 var _items_text: String = ""
 
+# SHOWN ON AN UPDATE (2026-10-19, the user: "the top bar shouldn't be there
+# unless it shows an update or it's turned on"). With Settings.hud_bar
+# "auto" the bar rests invisible; a change of chapter, skill or items shows
+# it for PEEK_S, and so does the pointer moving at the top edge (MENU stays
+# in reach). "always" keeps it on. Fades through modulate, so GameEngine's
+# own hide-the-UI toggles (visible) still rule over it.
+const PEEK_S := 4.0
+const EDGE_PAD := 16.0
+var _peek_left: float = 0.0
+var _mouse_seen_t: float = 99.0
+var _last_skills: Dictionary = {}
+
+
+func _ready() -> void:
+	modulate.a = 1.0 if _always() else 0.0
+
+
+func _always() -> bool:
+	return Settings.hud_bar == "always"
+
+
+## Show the bar for a few seconds (an update the reader should see).
+func peek() -> void:
+	_peek_left = PEEK_S
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		_mouse_seen_t = 0.0
+
+
+func _process(delta: float) -> void:
+	_peek_left = maxf(0.0, _peek_left - delta)
+	_mouse_seen_t += delta
+	var at_edge: bool = _mouse_seen_t < 2.5 \
+			and get_viewport().get_mouse_position().y <= size.y + EDGE_PAD
+	var want: float = 1.0 if (_always() or _peek_left > 0.0 or at_edge) else 0.0
+	modulate.a = move_toward(modulate.a, want, delta * 4.0)
+
 
 func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = null) -> void:
+	_last_skills = skills.duplicate()
 	for ch in get_children():
 		ch.queue_free()
 	_dot_rects = {}
@@ -33,6 +73,8 @@ func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = nu
 ## where they are in the book. Survives setup() rebuilds (skin swaps
 ## re-apply the cached text).
 func set_chapter(text: String) -> void:
+	if text != _chapter_text and text != "":
+		peek()
 	_chapter_text = text
 	if _chapter_lbl != null and is_instance_valid(_chapter_lbl):
 		_chapter_lbl.text = text
@@ -47,13 +89,21 @@ func update_items(items: Array[String]) -> void:
 	var parts: Array[String] = []
 	for it in items:
 		parts.append(it.to_upper())
+	var was: String = _items_text
 	_items_text = ("· " + " · ".join(parts)) if not parts.is_empty() else ""
+	if _items_text != was:
+		peek()
 	if _items_lbl != null and is_instance_valid(_items_lbl):
 		_items_lbl.text = _items_text
 		_items_lbl.visible = _items_text != ""
 
 
 func update_skills(skills: Dictionary) -> void:
+	for sk2 in SKILL_NAMES:
+		if int(skills.get(sk2, 0)) != int(_last_skills.get(sk2, 0)):
+			peek()
+			break
+	_last_skills = skills.duplicate()
 	for sk in SKILL_NAMES:
 		if not _dot_rects.has(sk):
 			continue
