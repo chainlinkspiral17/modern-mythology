@@ -26,7 +26,15 @@ Room: 5.0 x 5.6 m, ceiling 2.7 — a real mid-2000s one-room apartment (BUILD
 BIG: the desk, a bed, books and a door, with room to walk between them).
 Blender axes: x east, y north, z up; Godot (x, z, -y).
 
-DRAFT 2 targets: the four folding church-basement chairs of "curtain call"
+DRAFT 2 (2026-10-20, the Deck: "interiors need more windows" / "still in
+the too boxy phase"): a corner room — a second, narrow N window west of the
+board and an E window on the side street (make_view "side"), each with the
+kit's new trim (casing, stool, apron) and the big two curtained; the
+rectangle broken by an old chimney breast on the W wall (fireplace bricked
+up, a mantel); a two-panel door; the bed kit's soft mattress, stuffed
+pillows and draped blanket. The sill papers sit on the stool.
+
+DRAFT 3 targets: the four folding church-basement chairs of "curtain call"
 (they "weren't here before": needs a per-preset prop switch like the lights'
 `__<preset>`); the copier counter of the meld seams as its own set
 (copy_shop); the RUTA 77 car at the curb for the dawn preset; HeroArt
@@ -38,10 +46,10 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_soft_box, export_glb
 from _props.views import make_view
 from _props.structure import (make_floor, make_wall, make_ceiling, make_crown_molding,
-                              make_window, make_wall_with_openings)
+                              make_window, make_wall_with_openings, make_curtains)
 from _props.furniture import make_bed, make_chair
 from _props.decor import make_faded_poster
 from _props.safety import make_smoke_detector
@@ -56,6 +64,9 @@ CORK = (0.66, 0.50, 0.32, 1.0); CORK_PALE = (0.86, 0.74, 0.54, 1.0)
 RED_STRING = (0.70, 0.14, 0.12, 1.0)
 MANILA = (0.86, 0.74, 0.48, 1.0)
 WIN_X, WIN_W, WIN_H, WIN_Z = 1.25, 1.30, 1.35, 1.55     # the N window
+WIN2_X, WIN2_W = -1.85, 0.55                            # (draft 2) the narrow N window, west of the board
+WINE_Y, WINE_W = 4.35, 1.10                             # (draft 2) the E window, the side street
+CURTAIN = (0.56, 0.46, 0.34, 1.0)                       # an old mustard-brown pair, sun-faded
 DESK_X, DESK_Y = -0.55, ROOM_D - 0.42                   # desk centre, against Wall_N
 DESK_W, DESK_D, DESK_H = 1.55, 0.72, 0.75
 
@@ -63,12 +74,16 @@ DESK_W, DESK_D, DESK_H = 1.55, 0.72, 0.75
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    # (draft 2, the Deck: "interiors need more windows") a corner room: the
+    # E wall opens on the side street too
+    make_wall_with_openings("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
+                            palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(WINE_Y, WIN_Z, WINE_W, WIN_H)])
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL, axis='X',
                             palette=PAL_WALL, baseboard_face_sign=-1,
-                            openings=[(WIN_X, WIN_Z, WIN_W, WIN_H)])
+                            openings=[(WIN_X, WIN_Z, WIN_W, WIN_H), (WIN2_X, WIN_Z, WIN2_W, WIN_H)])
     # S wall with the door east of centre
     door_x = 1.45
     make_wall("Wall_S_W", ((-ROOM_W / 2.0 - 0.2 + door_x - 0.50) / 2.0, 0.0, 0), length=(door_x - 0.50) + ROOM_W / 2.0 + 0.2,
@@ -78,6 +93,8 @@ def build_shell():
     make_box("Wall_S_AboveDoor", (door_x, 0.0, (2.08 + CEIL) / 2.0), (1.0, 0.20, CEIL - 2.08), PAL_WALL["wall"])
     make_box("Door", (door_x, 0.06, 1.03), (0.86, 0.045, 2.04), WOOD_DARK)
     make_cyl("Door_Knob", (door_x - 0.34, 0.10, 0.98), 0.028, 0.05, (0.66, 0.56, 0.30, 1.0), axis='Y', segments=10)
+    for k, (pz, ph) in enumerate(((0.52, 0.66), (1.48, 0.86))):       # (draft 2) a two-panel door, not a slab
+        make_soft_box(f"Door_Panel_{k}", (door_x, 0.086, pz), (0.62, 0.012, ph), (0.28, 0.19, 0.12, 1.0), round=0.12)
     for side in (-1, 1):
         make_box(f"Door_Casing_{'W' if side < 0 else 'E'}", (door_x + side * 0.48, 0.11, 1.05), (0.06, 0.02, 2.10), (0.70, 0.66, 0.58, 1.0))
     make_box("Door_Casing_Head", (door_x, 0.11, 2.12), (1.02, 0.02, 0.07), (0.70, 0.66, 0.58, 1.0))
@@ -90,6 +107,23 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL,
                            palette={"wood": (0.70, 0.66, 0.58, 1.0)})
     make_window("Window_N", (WIN_X, ROOM_D - 0.10, WIN_Z), width=WIN_W, height=WIN_H, see_through=True)
+    make_window("Window_N2", (WIN2_X, ROOM_D - 0.10, WIN_Z), width=WIN2_W, height=WIN_H, see_through=True, cross_mullion=False)
+    make_window("Window_E", (ROOM_W / 2.0 - 0.10, WINE_Y, WIN_Z), width=WINE_W, height=WIN_H, axis='Y', room_dir=-1,
+                see_through=True)
+    make_curtains("Curtain_N", (WIN_X, ROOM_D - 0.10, WIN_Z), width=WIN_W, height=WIN_H, color=CURTAIN)
+    make_curtains("Curtain_E", (ROOM_W / 2.0 - 0.10, WINE_Y, WIN_Z), width=WINE_W, height=WIN_H, axis='Y', room_dir=-1,
+                  color=CURTAIN)
+    # the room is not a box: an old chimney breast stands out of the W wall,
+    # its fireplace bricked up long ago, a mantel shelf across it
+    cbx0, cbx1, cby0, cby1 = -ROOM_W / 2.0 + 0.10, -ROOM_W / 2.0 + 0.50, 3.90, 5.10
+    make_box("ChimneyBreast", ((cbx0 + cbx1) / 2.0, (cby0 + cby1) / 2.0, CEIL / 2.0), (cbx1 - cbx0, cby1 - cby0, CEIL), PAL_WALL["wall"])
+    make_box("ChimneyBreast_Base", (cbx1 + 0.006, (cby0 + cby1) / 2.0, 0.06), (0.012, cby1 - cby0, 0.12), PAL_WALL["baseboard"])
+    make_box("Fireplace_Bricked", (cbx1 + 0.004, (cby0 + cby1) / 2.0, 0.42), (0.008, 0.62, 0.70), (0.52, 0.34, 0.26, 1.0))
+    make_box("Fireplace_Surround", (cbx1 + 0.012, (cby0 + cby1) / 2.0, 0.42), (0.024, 0.86, 0.86), (0.84, 0.82, 0.76, 1.0))
+    make_soft_box("Mantel_Shelf", (cbx1 + 0.08, (cby0 + cby1) / 2.0, 0.88), (0.18, 1.10, 0.05), (0.84, 0.82, 0.76, 1.0), round=0.15)
+    make_box("Mantel_Book_0", (cbx1 + 0.08, 4.25, 0.99), (0.15, 0.04, 0.17), (0.44, 0.20, 0.16, 1.0))
+    make_box("Mantel_Book_1", (cbx1 + 0.08, 4.30, 0.985), (0.15, 0.035, 0.16), (0.24, 0.30, 0.40, 1.0))
+    make_cyl("Mantel_Candle", (cbx1 + 0.08, 4.85, 0.96), 0.025, 0.11, (0.90, 0.86, 0.72, 1.0), segments=10)
     # a radiator under the window, the sill a ledge of paper
     rx, ry = WIN_X, ROOM_D - 0.22
     for k in range(9):
@@ -97,7 +131,8 @@ def build_shell():
     make_box("Radiator_Rail", (rx, ry, 0.16), (0.90, 0.10, 0.04), (0.60, 0.58, 0.52, 1.0))
     for k, fx in enumerate((-0.40, 0.40)):                # its feet
         make_box(f"Radiator_Foot_{k}", (rx + fx, ry, 0.07), (0.06, 0.12, 0.14), (0.60, 0.58, 0.52, 1.0))
-    make_box("Sill_Papers", (WIN_X + 0.30, ROOM_D - 0.16, WIN_Z - WIN_H / 2.0 + 0.03), (0.30, 0.22, 0.05), P.PAPER_AGED)
+    # ON the window's stool now (draft 2: it hung in the frame, 5 cm over nothing)
+    make_box("Sill_Papers", (WIN_X + 0.30, ROOM_D - 0.18, WIN_Z - WIN_H / 2.0 - 0.05 + 0.025), (0.30, 0.13, 0.05), P.PAPER_AGED)
 
 
 def build_desk():
@@ -212,12 +247,12 @@ def build_bed_and_books():
                     make_box(f"Shelf_{s}_Book_{b}_{i}", (sx - 0.02, sy - 0.38 + i * 0.085, z + 0.01 + h / 2.0),
                              (0.20, 0.06, h), col)
     # boxes of zines and a crate of records under the window side
-    for k in range(3):
+    for k in range(2):                       # (draft 2) two high: the E window's stool is above them
         make_box(f"Archive_Box_{k}", (ROOM_W / 2.0 - 0.30, 4.30 + (k % 2) * 0.05, 0.16 + k * 0.30), (0.34, 0.44, 0.30),
                  (0.70, 0.60, 0.42, 1.0))
     make_box("Rug", (-0.30, 2.60, 0.004), (2.20, 1.60, 0.008), (0.34, 0.24, 0.20, 1.0))
-    for k in range(2):
-        make_faded_poster(f"Poster_W_{k}", (-ROOM_W / 2.0 + 0.1035, 3.40 + k * 1.10, 1.65), into_room=+1)
+    make_faded_poster("Poster_W_0", (-ROOM_W / 2.0 + 0.1035, 3.20, 1.65), into_room=+1)
+    make_faded_poster("Poster_W_1", (-ROOM_W / 2.0 + 0.5035, 4.50, 1.65), into_room=+1)    # on the chimney breast
 
 
 def build_infra():
@@ -245,6 +280,7 @@ def main():
     build_infra()
     # through the window: the street (curtain call's car at the curb is draft 2)
     make_view("View_N", "N", ROOM_D, 0.0, kind="front", ground_z=-3.2, seed=11)   # a second-floor room over a residential street
+    make_view("View_E", "E", ROOM_W / 2.0, WINE_Y, kind="side", ground_z=-3.2, seed=4)   # (draft 2) the side street
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                         "../../../assets/3d/locales/writers_desk.glb"))
     print(f"\n[build_writers_desk] exporting to {out}")

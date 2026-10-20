@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+
+### 2026-10-20 · "too boxy" is shape, not bevel; a window is its trim
+
+**Context:** the Deck, after many draft-1 sets: "still in the too boxy phase" / "interiors need
+more windows, as do exteriors". The kit already chamfered every prop-sized box — by ~2% of its
+smallest side, a few millimetres the post erases.
+
+**Rules:**
+- Round what is soft by a SHARE of itself: `make_soft_box(round=…, puff=…)` for mattresses,
+  pillows, cushions, upholstery, drapes. A bevel never reads as softness.
+- A window is not a frame in a flat wall: casing, a stool that stands out, an apron
+  (`make_window` trim, default on), and often curtains (`make_curtains`). Shopfronts, booth
+  windows and anything carrying its own trim pass `trim=False` — run the overlap gate after.
+- Break the room's rectangle with something the building would have (a chimney breast, a bay,
+  a soffit, a beam) before adding props.
+- Count windows: `window_count_audit.py` ranks sets by lines per window; a played room with
+  one window or none is next in the queue.
 ### 2026-10-18 · extending a hand-tuned set, and the last stand-ins (pass 122)
 
 - **A set's .tscn may be hand-tuned past its generator.** wagner_home.tscn was rewritten by

@@ -223,7 +223,7 @@ def build_posters():
 def build_window():
     # Front display window on the SW south-wall segment.
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Win_S", (-3.0, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True)
+    make_window("Win_S", (-3.0, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True, trim=False)   # a shopfront: the riser stands in it
     # Window display: a low riser with two statues + a hero poster behind
     make_box("WinRiser", (-3.0, 0.35, 0.55), (2.0, 0.50, 0.50), COL_WOOD)
     for si in range(2):
@@ -524,7 +524,7 @@ def build_back_office_2026_10():
 def build_window_east_2026_10():
     """The east display window (draft 5): the glass, a riser with the
     month's graphic novels on stands, the PULL LIST card taped up."""
-    make_window("Win_SE", (3.0, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True)
+    make_window("Win_SE", (3.0, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True, trim=False)
     make_box("WinRiser_E", (3.0, 0.35, 0.40), (2.0, 0.50, 0.80), COL_WOOD)
     for bi in range(4):
         bx = 2.25 + bi * 0.50

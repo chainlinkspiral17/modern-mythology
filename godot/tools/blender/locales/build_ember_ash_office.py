@@ -164,7 +164,7 @@ def build_corner_across_window():
     # Window on the east wall, mid-height
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("CornerAcross", (ROOM_W/2.0 - 0.10, 2.4, 1.40),
-                width=1.20, height=1.20, axis='Y')
+                width=1.20, height=1.20, axis='Y', trim=False)   # its own wood trim below; the radiator stands under it
     # Frame trim (warmer wood)
     # the trim on the wall face too (2026-09-23: inside the wall)
     make_box("CornerAcross_FrameTop", (ROOM_W/2.0 - 0.12, 2.4, 2.06),

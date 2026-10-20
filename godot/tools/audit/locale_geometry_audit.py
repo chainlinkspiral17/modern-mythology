@@ -298,8 +298,16 @@ def install_stubs():
                       ((cols - 1) * cell / 2.0, (rows - 1) * cell / 2.0, (hi - lo + skirt) / 2.0)))
         return _obj_stub(name)
 
+    def _rec_soft_box(name, center, size, color=None, yaw=0.0, *a, **k):
+        # (2026-10-20) a superellipsoid: its rotated box, the top and bottom
+        # swollen by `puff`
+        sz = list(size)
+        sz[2] = abs(float(sz[2])) * (1.0 + float(k.get("puff", 0.0)))
+        return _rec_rot_box(name, center, sz, color, yaw=yaw)
+
     _RECORDERS = {
         "make_box": _make_box, "make_cyl": _make_cyl,
+        "make_soft_box": _rec_soft_box,
         "make_chamfer_box": _rec_prism, "make_wedge": _rec_prism,
         "make_gable": _rec_prism, "make_taper_cyl": _rec_taper,
         "make_dome": _rec_round, "make_blob": _rec_blob,

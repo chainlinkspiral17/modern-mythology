@@ -79,12 +79,31 @@ def build_hall():
                             height=HALL_H, axis='X', palette=BLOCK, baseboard_face_sign=-1,
                             openings=[(-10.0, 1.15, 2.2, 2.3), (8.0, 1.05, 1.0, 2.1)])
     # south wall: a door into each room, the lab's at its west end
+    # (draft 2) borrowed light: a band of high windows over the lockers into
+    # each classroom (whose own outside wall is a band of windows), two per
+    # room either side of its clock, clear of its door
+    borrowed = [(rc + d, 2.575, 1.6, 0.55) for rc in ((CLASS[0] + CLASS[1]) / 2.0, (ART[0] + ART[1]) / 2.0,
+                                                    (LAB[0] + LAB[1]) / 2.0) for d in (-1.6, 1.6)]
     make_wall_with_openings("Hall_Wall_S", ((HALL_X0 + HALL_X1) / 2.0, HALL_Y0, 0), length=HALL_X1 - HALL_X0,
                             height=HALL_H, axis='X', palette=BLOCK, baseboard_face_sign=+1,
-                            openings=[door_at(-12.5), door_at(-2.5), door_at(7.5)])
-    for nm, x in (("Hall_Wall_W", HALL_X0), ("Hall_Wall_E", HALL_X1)):
-        make_wall(nm, (x, (HALL_Y0 + HALL_Y1) / 2.0, 0), length=HALL_Y1 - HALL_Y0 + 0.2, height=HALL_H, axis='Y',
-                  palette=BLOCK, baseboard_face_sign=+1 if x < 0 else -1)
+                            openings=[door_at(-12.5), door_at(-2.5), door_at(7.5)] + borrowed)
+    for k, (bx, bz, bw, bh) in enumerate(borrowed):
+        make_window(f"Hall_Borrowed_{k}", (bx, HALL_Y0 + 0.10, bz), width=bw, height=bh, room_dir=+1,
+                    see_through=True, cross_mullion=False, trim=False)
+    # (draft 2) light at both ends of the hall: the W end is a pair of glazed
+    # exit doors under a transom, the E end a tall window over the stair landing
+    hy = (HALL_Y0 + HALL_Y1) / 2.0
+    make_wall_with_openings("Hall_Wall_W", (HALL_X0, hy, 0), length=HALL_Y1 - HALL_Y0 + 0.2, height=HALL_H, axis='Y',
+                            palette=BLOCK, baseboard_face_sign=+1, openings=[(hy, 1.40, 2.0, 2.80)])
+    for k, dy in enumerate((-0.5, 0.5)):
+        make_window(f"Hall_ExitDoor_{k}", (HALL_X0 + 0.10, hy + dy, 1.05), width=0.92, height=2.06, axis='Y', room_dir=+1,
+                    see_through=True, cross_mullion=False, trim=False)
+        make_box(f"Hall_ExitDoor_{k}_PushBar", (HALL_X0 + 0.19, hy + dy, 1.00), (0.05, 0.86, 0.06), STEEL)   # end to end, into the stiles
+    make_window("Hall_ExitTransom", (HALL_X0 + 0.10, hy, 2.45), width=1.90, height=0.62, axis='Y', room_dir=+1,
+                see_through=True, cross_mullion=False, trim=False)
+    make_wall_with_openings("Hall_Wall_E", (HALL_X1, hy, 0), length=HALL_Y1 - HALL_Y0 + 0.2, height=HALL_H, axis='Y',
+                            palette=BLOCK, baseboard_face_sign=-1, openings=[(hy, 1.95, 1.8, 1.6)])
+    make_window("Hall_StairWindow", (HALL_X1 - 0.10, hy, 1.95), width=1.8, height=1.6, axis='Y', room_dir=-1, see_through=True)
     # wall face to wall face: past the N wall it ran into the gym's upper wall
     make_ceiling("Hall_Ceil", ((HALL_X0 + HALL_X1) / 2.0, (HALL_Y0 + HALL_Y1) / 2.0, HALL_H),
                  size_x=HALL_X1 - HALL_X0 - 0.2, size_y=HALL_Y1 - HALL_Y0 - 0.2)
@@ -228,7 +247,10 @@ def south_room(prefix, x0, x1, door_c, palette=WALL):
     make_floor(f"{prefix}_Floor", (cx, cy, 0.0), size_x=w, size_y=d, palette=VINYL)
     make_wall(f"{prefix}_Wall_W", (x0, cy, 0), length=d, height=ROOM_H, axis='Y', palette=palette, baseboard_face_sign=+1)
     make_wall(f"{prefix}_Wall_E", (x1, cy, 0), length=d, height=ROOM_H, axis='Y', palette=palette, baseboard_face_sign=-1)
-    wins = [(cx - w / 3.0, 1.75, 2.0, 1.6), (cx, 1.75, 2.0, 1.6), (cx + w / 3.0, 1.75, 2.0, 1.6)]
+    # (draft 2, 2026-10-20, the Deck: "interiors need more windows") a school's
+    # outside wall is a BAND of tall windows, not three holes: four 2.1 m bays
+    # on 2.4 m centres, sill at ~0.75 m, head at ~2.65 m
+    wins = [(cx + (k - 1.5) * 2.4, 1.70, 2.1, 1.9) for k in range(4)]
     make_wall_with_openings(f"{prefix}_Wall_S", (cx, ROOM_Y0, 0), length=w + 0.2, height=ROOM_H, axis='X',
                             palette=palette, baseboard_face_sign=+1, openings=wins)
     for k, (wx, wz, ww, wh) in enumerate(wins):
@@ -329,6 +351,8 @@ def main():
     # the grounds beyond the south windows, the lot beyond the gym's clerestory
     make_view("View_S", "S", ROOM_Y0, 1.0, kind="front", ground_z=0.0, span=48.0, seed=5)
     make_view("View_N", "N", GYM_Y1, -10.0, kind="back", ground_z=0.0, span=40.0, seed=9)
+    make_view("View_W", "W", HALL_X0, (HALL_Y0 + HALL_Y1) / 2.0, kind="side", ground_z=0.0, span=20.0, seed=3)    # (draft 2)
+    make_view("View_E", "E", HALL_X1, (HALL_Y0 + HALL_Y1) / 2.0, kind="side", ground_z=0.0, span=20.0, seed=6)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                         "../../../assets/3d/locales/small_wood_high.glb"))
     print(f"\n[build_small_wood_high] exporting to {out}")

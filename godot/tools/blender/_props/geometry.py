@@ -495,6 +495,58 @@ def make_blob(name, center, radius, base_color, noise=0.22, seed=0,
                           base_color)
 
 
+def make_soft_box(name, center, size, base_color, yaw=0.0, *, round=0.3, puff=0.0,
+                  rings=10, segments=16):
+    """A box with ROUNDED edges and corners (a superellipsoid), 2026-10-20.
+
+    The Deck: "still in the too boxy phase". A chamfer cuts an edge by a
+    few millimetres, which the post erases; a soft box rounds it by a share
+    of the box itself. round 0.08 = a crisp box with eased edges (a
+    cabinet, a monitor); 0.3 = a mattress, a cushion, an upholstered arm;
+    0.6 = a pillow, a beanbag, a loaf; 1.0 = an ellipsoid. puff swells the
+    middle of the top and bottom faces (a stuffed pillow, a duvet) by that
+    share of the height. Recorded by the audits as its rotated box."""
+    e = max(0.06, min(1.0, float(round)))
+    cx, cy, cz = center
+    hx, hy, hz = abs(size[0]) / 2.0, abs(size[1]) / 2.0, abs(size[2]) / 2.0
+    cyw, syw = math.cos(yaw), math.sin(yaw)
+
+    def f(w):
+        c = math.cos(w)
+        return math.copysign(abs(c) ** e, c)
+
+    def g(w):
+        s = math.sin(w)
+        return math.copysign(abs(s) ** e, s)
+
+    def place(x, y, z):
+        if puff:
+            k = max(0.0, 1.0 - (x / hx) ** 2) * max(0.0, 1.0 - (y / hy) ** 2)
+            z = z * (1.0 + puff * k)
+        return (cx + x * cyw - y * syw, cy + x * syw + y * cyw, cz + z)
+
+    verts = [place(0.0, 0.0, -hz)]                     # bottom pole
+    for i in range(1, rings):
+        v = -math.pi / 2.0 + math.pi * i / rings
+        for j in range(segments):
+            u = -math.pi + 2.0 * math.pi * j / segments
+            verts.append(place(hx * f(v) * f(u), hy * f(v) * g(u), hz * g(v)))
+    verts.append(place(0.0, 0.0, hz))                 # top pole
+    top = len(verts) - 1
+    faces = []
+    for j in range(segments):                          # bottom fan
+        faces.append([0, 1 + (j + 1) % segments, 1 + j])
+    for i in range(rings - 2):
+        a, b = 1 + i * segments, 1 + (i + 1) * segments
+        for j in range(segments):
+            j2 = (j + 1) % segments
+            faces.append([a + j, a + j2, b + j2, b + j])
+    last = 1 + (rings - 2) * segments
+    for j in range(segments):                          # top fan
+        faces.append([last + j, last + (j + 1) % segments, top])
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
+
+
 # ════════════════════════════════════════════════════════════════
 # DETAIL DRAFT 1 primitives (2026-09-05, user: "3d scenes are still
 # feeling real primitive. basic cubes and rectangles when the objects

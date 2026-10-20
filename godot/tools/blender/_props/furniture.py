@@ -15,7 +15,7 @@ each piece as one assembly.
     make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame", ...)
 """
 import math
-from .geometry import make_box, make_cyl, make_chamfer_box, make_lathe, make_rot_box, make_tube
+from .geometry import make_box, make_cyl, make_chamfer_box, make_lathe, make_rot_box, make_tube, make_soft_box
 
 WOOD = (0.50, 0.40, 0.28, 1.0)
 WOOD_DK = (0.40, 0.31, 0.22, 1.0)
@@ -206,7 +206,9 @@ def make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame",
         headboard = False
 
     # ── mattress ON the deck, a sheet skin ON the mattress
-    make_chamfer_box(f"{prefix}_Mattress", P(0.0, 0.0, deck + mat_h / 2.0), S(mat_w, mat_d, mat_h), mattress_col, chamfer=0.03)
+    # (2026-10-20, "too boxy") the mattress, pillows and blanket are soft
+    # boxes: rounded by a share of themselves, the pillows stuffed
+    make_soft_box(f"{prefix}_Mattress", P(0.0, 0.0, deck + mat_h / 2.0), S(mat_w, mat_d, mat_h), mattress_col, round=0.16)
     top = deck + mat_h
     make_box(f"{prefix}_Sheet", P(0.0, 0.0, top + 0.005), S(mat_w - 0.02, mat_d - 0.02, 0.01), sheet_col)
     top += 0.01
@@ -220,19 +222,26 @@ def make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame",
             span = mat_w / 2.0 - pw / 2.0 - 0.04
             us = [(-1 + 2 * i / (pillows - 1)) * span for i in range(pillows)]
         for pi, u in enumerate(us):
-            make_chamfer_box(f"{prefix}_Pillow_{pi}", P(u, hd - 0.07 - pd / 2.0 - 0.06, top + ph / 2.0), S(pw, pd, ph), pillow_col,
-                             chamfer=0.03, yaw=yaw + (0.06 if pi % 2 else -0.05))
+            make_soft_box(f"{prefix}_Pillow_{pi}", P(u, hd - 0.07 - pd / 2.0 - 0.06, top + ph / 2.0), (pw, pd, ph * 0.8), pillow_col,
+                          yaw=yaw + (0.06 if pi % 2 else -0.05), round=0.45, puff=0.25)
 
     # ── blanket: made = folded from the foot to 60 %, a rolled edge; else heaped
     if made:
         bl_len = mat_d * 0.60
-        make_chamfer_box(f"{prefix}_Blanket", P(0.0, -hd + 0.07 + bl_len / 2.0 + 0.02, top + 0.02), S(mat_w + 0.08, bl_len, 0.04), blanket_col, chamfer=0.012)
+        make_soft_box(f"{prefix}_Blanket", P(0.0, -hd + 0.07 + bl_len / 2.0 + 0.02, top + 0.02), S(mat_w + 0.08, bl_len, 0.04), blanket_col,
+                      round=0.35, puff=0.4)
         make_cyl(f"{prefix}_Blanket_Roll", P(0.0, -hd + 0.07 + bl_len + 0.05, top + 0.06), 0.035, mat_w + 0.06, blanket_col, axis=ax_across, segments=8)
+        # the blanket hangs over both sides of the mattress (it stops short of
+        # the foot, so nothing hangs there)
+        for sgn in (-1, 1):
+            make_soft_box(f"{prefix}_Blanket_Drop_{sgn:+d}", P(sgn * (mat_w / 2.0 + 0.045), -hd + 0.07 + bl_len / 2.0 + 0.02, top - mat_h * 0.42),
+                          S(0.03, bl_len, mat_h * 0.95), blanket_col, round=0.4)
     elif style == "hospital":
         # a flat institutional blanket, tucked, over the lower two thirds
         make_box(f"{prefix}_Blanket", P(0.0, -hd + 0.10 + mat_d * 0.33, top + 0.015), S(mat_w + 0.02, mat_d * 0.66, 0.03), blanket_col)
     else:
-        make_chamfer_box(f"{prefix}_Blanket_Heap", P(0.10, -hd + 0.45, top + 0.07), S(mat_w * 0.8, 0.62, 0.14), blanket_col, chamfer=0.04, yaw=yaw + 0.12)
+        make_soft_box(f"{prefix}_Blanket_Heap", P(0.10, -hd + 0.45, top + 0.07), (mat_w * 0.8, 0.62, 0.14) if not along_x else (0.62, mat_w * 0.8, 0.14),
+                      blanket_col, yaw=0.12, round=0.6, puff=0.3)
 
     # ── headboard against the head end
     if headboard and style in ("frame", "platform", "captain"):

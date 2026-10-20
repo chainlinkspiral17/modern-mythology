@@ -188,7 +188,7 @@ def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,
 
 def make_window(prefix, anchor, *, width=2.60, height=1.50,
                 cross_mullion=True, palette=None, axis='X', room_dir=-1,
-                see_through=False):
+                see_through=False, trim=True):
     """Mullioned multi-pane glass window.
 
     axis='X' (default): the window lies in a NORTH or SOUTH wall and
@@ -219,7 +219,14 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
     not have them (the 3D modelling playbook's picture-window rule).
     Since 2026-10-02 scripts/LocaleGlass.gd turns any vertex alpha below
     0.98 into real transparency at load (P.GLASS is 0.25), so a tinted
-    pane beside a see_through frame now reads as glass."""
+    pane beside a see_through frame now reads as glass.
+
+    trim (2026-10-20, the Deck: "still in the too boxy phase" /
+    "interiors need more windows"): the room side of a real window —
+    flat casing boards round the opening, a stool (the sill board) that
+    stands out into the room and the apron under it, a meeting rail where
+    the sashes cross. Without them a window was a frame laid flush in a
+    flat wall. trim=False for a window in a shopfront or a vehicle."""
     palette = palette or {}
     glass = palette.get("glass", P.GLASS)
     frame = palette.get("frame", P.METAL_STEEL)
@@ -265,6 +272,65 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
             make_box(f"{prefix}_MullV_{vm:+.2f}",
                      _at(vm, 0.04, 0.0),
                      _sz(0.05, 0.06, height), frame)
+    if trim:
+        casing = palette.get("casing", (0.84, 0.82, 0.76, 1.0))
+        cw, ct = 0.085, 0.022                          # casing board width, thickness
+        edge = width / 2.0 + 0.09                      # the frame's outer edge
+        for sgn in (-1, +1):
+            make_box(f"{prefix}_Casing_{sgn:+d}", _at(sgn * (edge + cw / 2.0), ct / 2.0, 0.0 + 0.0),
+                     _sz(cw, ct, height + 0.10 + cw), casing)
+        make_box(f"{prefix}_Casing_Head", _at(0.0, ct / 2.0 + 0.003, height / 2.0 + 0.05 + cw / 2.0 + 0.01),
+                 _sz(2.0 * (edge + cw) + 0.04, ct + 0.006, cw + 0.03), casing)
+        stool_z = -height / 2.0 - 0.05 - 0.016
+        make_box(f"{prefix}_Stool", _at(0.0, 0.075, stool_z),
+                 _sz(2.0 * (edge + cw) + 0.06, 0.15, 0.032), casing)
+        make_box(f"{prefix}_Apron", _at(0.0, ct / 2.0, stool_z - 0.016 - 0.045),
+                 _sz(2.0 * edge + 0.02, ct, 0.09), casing)
+
+
+def make_curtains(prefix, anchor, *, width, height, axis='X', room_dir=-1,
+                  color=(0.62, 0.54, 0.42, 1.0), open_frac=0.30, drop=0.20, rod_col=(0.30, 0.26, 0.20, 1.0)):
+    """Curtains drawn back to both sides of a window (2026-10-20, the Deck:
+    "too boxy"). Same anchor convention as make_window: the window's
+    centre on the wall face, `room_dir` the room's side. A rod with
+    finials over the casing, and two panels gathered into folds — a run of
+    soft vertical bulges alternately proud and tucked — each panel covering
+    `open_frac` of the opening's width, hanging `drop` below the sill;
+    tie-backs gather them at two-thirds of the way down."""
+    from .geometry import make_cyl, make_soft_box
+    cx, cy, cz = anchor
+    along_y = str(axis).upper() == 'Y'
+
+    def at(off, inset, dz):
+        if along_y:
+            return (cx + room_dir * inset, cy + off, cz + dz)
+        return (cx + off, cy + room_dir * inset, cz + dz)
+
+    def sz(span, thick, tall):
+        return (thick, span, tall) if along_y else (span, thick, tall)
+
+    rod_z = height / 2.0 + 0.20
+    rod_len = width + 0.70
+    make_cyl(f"{prefix}_Rod", at(0.0, 0.10, rod_z), 0.014, rod_len, rod_col, axis=('Y' if along_y else 'X'), segments=8)
+    for sgn in (-1, +1):
+        make_cyl(f"{prefix}_Finial_{sgn:+d}", at(sgn * (rod_len / 2.0 + 0.02), 0.10, rod_z), 0.03, 0.05, rod_col,
+                 axis=('Y' if along_y else 'X'), segments=8)
+        make_box(f"{prefix}_Bracket_{sgn:+d}", at(sgn * (rod_len / 2.0 - 0.08), 0.05, rod_z), sz(0.02, 0.10, 0.03), rod_col)
+    panel_w = max(0.28, width * open_frac)
+    top, bot = rod_z - 0.02, -height / 2.0 - drop
+    tall = top - bot
+    n = max(3, int(panel_w / 0.075))
+    fw = panel_w / n
+    shade = (color[0] * 0.80, color[1] * 0.80, color[2] * 0.80, 1.0)
+    for sgn in (-1, +1):
+        inner = width / 2.0 + 0.20 - panel_w        # the panel's inner edge, from the centre
+        for k in range(n):
+            off = sgn * (inner + fw * (k + 0.5))
+            proud = 0.13 if k % 2 == 0 else 0.10
+            make_soft_box(f"{prefix}_Panel_{sgn:+d}_Fold_{k}", at(off, proud, (top + bot) / 2.0),
+                          sz(fw * 1.15, 0.05, tall), color if k % 2 == 0 else shade, round=0.5)
+        make_cyl(f"{prefix}_TieBack_{sgn:+d}", at(sgn * (inner + panel_w / 2.0), 0.155, bot + tall * 0.34), 0.012,
+                 panel_w * 0.9, (color[0] * 0.6, color[1] * 0.6, color[2] * 0.6, 1.0), axis=('Y' if along_y else 'X'), segments=6)
 
 
 def make_door_hinges(prefix, *, edge_x, edge_y, edge_z_centers,

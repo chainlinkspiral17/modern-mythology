@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-20 · pass 131: MORE WINDOWS, LESS BOX (the kit + the writer's desk + Small Wood High).**
+The user: "keep going, improving backgrounds and getting them up in quality" · "interiors need more
+windows, as do exteriors" · "still in the too boxy phase".
+- **The kit (every set on its next build):** `make_soft_box` — a superellipsoid box, edges rounded by a
+  share of itself (0.08 a cabinet … 0.6 a pillow), `puff` stuffs it; registered with the audit
+  recorder. `make_window(trim=True)` now builds the room side of a real window: casing boards, a
+  stool standing out into the room, the apron, the meeting rail (trim=False for shopfronts, booth
+  windows, anything with its own trim; three sets opted out after the overlap gate caught a riser, a
+  booth back and a tall radiator). `make_curtains`: a rod with finials and brackets, two panels of
+  soft folds drawn back, tie-backs. The bed kit: a soft mattress, stuffed pillows, the made blanket
+  hanging over both sides.
+- **The window queue:** `tools/audit/window_count_audit.py` counts window units per set and ranks by
+  lines per window — **50 of 137 played sets have 0-1 windows** (Houston office 242 lines / 0, the
+  Foxhole 196 / 0, Club Sharp 168 / 0, the sleep lab 108 / 0, the Miller back porch, the Henderson
+  garage…). It is the window pass's order.
+- **The writer's desk, draft 2:** a corner room — a second, narrow street window west of the board and
+  an E window on the side street (make_view "side"), curtains on the big two, an old chimney breast
+  with a bricked fireplace and a mantel breaking the rectangle, a two-panel door, the soft bed.
+- **Small Wood High, draft 2:** each classroom's outside wall is a band of four tall windows (was three
+  holes); the hall has light at both ends (glazed exit doors under a transom W, a stair window E) and
+  borrowed-light windows over the lockers into each room.
+- Gates: overlap (3 opt-outs, then 0 new), support 0 across 154 sets, buried decor 0, window backing 0,
+  placement 0, dry run 161/161; writers_desk 114 draw calls, small_wood_high 226.
+  **Draft N+1 targets:** the hall camera sees none of its new windows (it stands at the W end beyond
+  the classrooms) — a mid-hall setup; the window queue, most-played first; exteriors: facades in the
+  kit's `make_view` houses and the town builders get more and deeper windows (reveals, sills, lit
+  panes at night); soft boxes for the remaining upholstery (sofas, booths, car seats).
+
 **2026-10-20 · pass 130: THE DINER'S FANS AND BOOTH LAMPS (from a Deck screenshot).**
 The user, on the prologue's establishing shot: "what's going on the top left in this picture of the
 diner with the fan?" Both ceiling fans: four 78 cm planks (2.1 m across), a 3-ring "sphere" globe
