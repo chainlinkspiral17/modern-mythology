@@ -1409,9 +1409,21 @@ func _do_bg(n: Dictionary) -> void:
 	# camera; the resulting ViewportTexture replaces the static PNG.
 	if src.begins_with("3d:"):
 		var preset_id: String = src.substr(3)
-		_apply_bg_3d(preset_id)
-		print("[GameEngine] BG  3d:%s  via SubViewport" % preset_id)
-		return
+		if _apply_bg_3d(preset_id):
+			print("[GameEngine] BG  3d:%s  via SubViewport" % preset_id)
+			return
+		# (2026-10-20, the Deck: vol 3's Pasadena played on a blank screen)
+		# the set's model isn't built here. A scene that named a picture
+		# (a bg_places stem) shows that picture when it exists; otherwise
+		# the screen is honest about it — the old line said "Keeping PNG
+		# bg" when there was none.
+		var raw: String = _s(n, "src")
+		if raw == src or raw == "" or not ResourceLoader.exists("res://" + raw):
+			_bg.texture = null
+			print("[GameEngine] BG  3d:%s  NOT BUILT — no picture to stand in" % preset_id)
+			return
+		print("[GameEngine] BG  3d:%s  not built — showing %s" % [preset_id, raw])
+		src = raw
 	# Static / PNG paths beyond this point — clear any prior 3D
 	# viewport so we don't keep rendering a heavy world off-screen.
 	_clear_bg_3d()
@@ -1464,7 +1476,7 @@ func _do_bg(n: Dictionary) -> void:
 
 
 # ── 3D-scene background pipeline ─────────────────────────────────
-func _apply_bg_3d(preset_id: String) -> void:
+func _apply_bg_3d(preset_id: String) -> bool:
 	if _bg_3d_node == null or not is_instance_valid(_bg_3d_node):
 		_bg_3d_node = BACKGROUND_3D_SCENE.instantiate()
 		# Insert ABOVE the bg TextureRect but BELOW the dust-motes /
@@ -1513,9 +1525,9 @@ func _apply_bg_3d(preset_id: String) -> void:
 	var spec: Dictionary = presets.get(preset_id, {})
 	var req_glb: String = spec.get("requires_glb", "")
 	if req_glb != "" and not FileAccess.file_exists(req_glb):
-		push_warning("[GameEngine] 3D bg '%s' needs %s — build it with `cd godot/tools/blender && ./run_cathedral.sh build_<name>.py`. Keeping PNG bg." % [preset_id, req_glb])
+		push_warning("[GameEngine] 3D bg '%s' needs %s — build it with `cd godot/tools/blender && ./run_cathedral.sh build_<name>.py`." % [preset_id, req_glb])
 		_bg_3d_node.visible = false
-		return
+		return false
 	# Clear the PNG bg so we're definitely showing the 3D viewport
 	_bg.texture = null
 	_bg_3d_node.visible = true
@@ -1551,7 +1563,7 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg_3d_node.call("queue_load", preset_id)
 	else:
 		_bg_3d_node.call_deferred("load_location", preset_id)
-
+	return true
 
 func _clear_bg_3d() -> void:
 	# Leaving the locale: crossfade the ambient bed back out and let

@@ -3848,7 +3848,13 @@ bar pendants' 8-sided cans; any other `make_sphere_low(rings=2|3)` shade in the 
 - **"Game froze here, vol 3"** (meld_seam_2_3, the CG `vol3_meld_rain_loading`, drawn half-loaded on
   purpose under the caption "Pasadena, loading"): the scene plays through headless — the CG dismisses
   on one advance, the pod background, the interlude and the lines after it follow. Not reproduced
-  here; the picture itself is one of the Deck-only installs. Waiting on the Deck's godot.log.
+  here. The Deck's log: the scene opened on `3d:street_rain` with `pasadena_1945.glb` NOT BUILT on
+  the Deck — the engine said "Keeping PNG bg" and printed "via SubViewport" when it had neither (a
+  bg_places stem has no picture), so the scene played on a blank screen. Replayed here with the real
+  CG, with and without the model, pressing and on auto-play: no hang. GameEngine now returns whether
+  the 3D bg came up; if not, it shows the scene's own picture when one exists and says "NOT BUILT"
+  when none does. The Deck needs the vol 1-4 set models built (72 sets; a build-the-missing loop).
+  The freeze itself is still unexplained: the log has no error after the scene start.
 
 **2026-10-19 · pass 129: THE 2D ART AUDIT (vols 1-4 pictures) AND THE PLAN FOR MORE ART IN THE SETS; the riverboat's card.**
 The user: "2D assets generated for vol 1-4, audit and plan for more 2D art for 3D background
