@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-20 · pass 130: THE DINER'S FANS AND BOOTH LAMPS (from a Deck screenshot).**
+The user, on the prologue's establishing shot: "what's going on the top left in this picture of the
+diner with the fan?" Both ceiling fans: four 78 cm planks (2.1 m across), a 3-ring "sphere" globe
+44 cm wide that rendered as a two-cone diamond, chunky brass blocks the post painted orange — near
+the lens, a lantern tangled in boards. Now a 54-inch fan: turned bronze drum on a downrod, five walnut
+blades pitched 12° on slim antique-brass irons, a switch cup and pull chain (hung clear of the glass),
+a 25 cm frosted schoolhouse globe. The booth lamps had the same defect (make_sphere_low rings=2 = a
+diamond): `_enamel_pendant` turns a shallow enamel cone with a pale liner and the bulb in its mouth.
+Diner 1,254 draw calls (baseline 1,248). **Draft N+1:** the fan globes as practicals at night; the
+bar pendants' 8-sided cans; any other `make_sphere_low(rings=2|3)` shade in the builders (grep it).
+- **"Game froze here, vol 3"** (meld_seam_2_3, the CG `vol3_meld_rain_loading`, drawn half-loaded on
+  purpose under the caption "Pasadena, loading"): the scene plays through headless — the CG dismisses
+  on one advance, the pod background, the interlude and the lines after it follow. Not reproduced
+  here; the picture itself is one of the Deck-only installs. Waiting on the Deck's godot.log.
+
 **2026-10-19 · pass 129: THE 2D ART AUDIT (vols 1-4 pictures) AND THE PLAN FOR MORE ART IN THE SETS; the riverboat's card.**
 The user: "2D assets generated for vol 1-4, audit and plan for more 2D art for 3D background
 scenes and inserts. As well as any other vol 5-7 3d background improvements."

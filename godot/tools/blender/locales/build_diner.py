@@ -637,12 +637,8 @@ def _build_booth_table(prefix, cx, cy, axis_along):
     make_cyl(f"{prefix}_lamp_canopy",
              (cx, cy, wire_top_z - 0.02), 0.07, 0.04,
              COL_BRASS, segments=8, axis='Z')
-    make_sphere_low(f"{prefix}_lamp_shade",
-                    (cx, cy, lamp_z), 0.18,
-                    (0.86, 0.62, 0.32, 1.0), rings=2, segments=8)
-    make_sphere_low(f"{prefix}_lamp_bulb",
-                    (cx, cy, lamp_z - 0.16), 0.05,
-                    (0.96, 0.92, 0.74, 1.0), rings=2, segments=6)
+    _enamel_pendant(f"{prefix}_lamp", (cx, cy, lamp_z), 0.18, (0.86, 0.62, 0.32, 1.0),
+                    (0.96, 0.92, 0.74, 1.0), shade="shade", bulb="bulb", liner="liner")
     # Table-number plaque on the table surface (corner, away from the diners)
     if axis_along == 'X':
         plaque_off = (TABLE_LEN / 2 - 0.10, -TABLE_DEPTH / 2 + 0.10, 0.0)
@@ -1653,12 +1649,8 @@ def build_alcove_booths():
                  (table_cx, by, (lamp_z + wire_top_z) / 2.0),
                  0.012, wire_top_z - lamp_z,
                  COL_PAYPHONE_DARK, segments=4, axis='Z')
-        make_sphere_low(f"{prefix}_Lamp_Shade",
-                        (table_cx, by, lamp_z), 0.20,
-                        (0.86, 0.62, 0.32, 1.0), rings=2, segments=10)
-        make_sphere_low(f"{prefix}_Lamp_Bulb",
-                        (table_cx, by, lamp_z - 0.18), 0.05,
-                        (0.98, 0.92, 0.74, 1.0), rings=2, segments=6)
+        _enamel_pendant(f"{prefix}_Lamp", (table_cx, by, lamp_z), 0.20, (0.86, 0.62, 0.32, 1.0),
+                        (0.98, 0.92, 0.74, 1.0))
 
         # ── Small brass table-number plaque ──
         make_box(f"{prefix}_Table_Number",
@@ -1779,6 +1771,23 @@ def make_cyl(name, center, radius, height, color, segments=8, axis='Z'):
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     return obj
+
+
+def _enamel_pendant(prefix, center, radius, color, bulb_color, shade="Shade", bulb="Bulb", liner="Liner"):
+    """An enamel pendant shade, turned (2026-10-20). The booth lamps were
+    make_sphere_low(rings=2) — a two-cone DIAMOND — and read as orange
+    diamonds hanging over every table. Now a shallow cone with a rolled lip,
+    a pale enamel liner under it and the bulb in its mouth."""
+    from _props.geometry import make_lathe as _lathe
+    cx, cy, cz = center
+    r = radius
+    _lathe(f"{prefix}_{shade}", center,
+           [(0.0, -0.30 * r), (0.93 * r, -0.50 * r), (0.85 * r, -0.36 * r), (0.55 * r, 0.10 * r),
+            (0.25 * r, 0.45 * r), (0.12 * r, 0.56 * r), (0.0, 0.58 * r)], color, segments=16)
+    _lathe(f"{prefix}_{liner}", center,
+           [(0.0, -0.32 * r), (0.85 * r, -0.48 * r), (0.85 * r, -0.47 * r), (0.0, -0.31 * r)],
+           (0.95, 0.92, 0.84, 1.0), segments=16)
+    make_sphere_low(f"{prefix}_{bulb}", (cx, cy, cz - 0.45 * r), 0.24 * r, bulb_color, rings=4, segments=8)
 
 
 def make_sphere_low(name, center, radius, color, rings=3, segments=8):
@@ -3784,98 +3793,71 @@ def build_floor_checkerboard():
 
 
 def build_ceiling_fans():
-    """Two slow industrial ceiling fans — cylinder motor housing,
-    downrod from ceiling, 4 angled blades, glass light globe.
-    Previous version was boxy; user flagged "rectangular ceiling
-    fans" — this rebuild uses cylinders / spheres for the parts that
-    read as round in real fans."""
-    fan_z = D_H - 0.30           # motor housing center height
+    """Two slow ceiling fans with light kits (draft 3, 2026-10-20).
+
+    The Deck (vol 5 prologue, the diner's establishing shot): "what's going
+    on the top left in this picture of the diner with the fan?" Draft 2's
+    fan was 2.1 m across (four 78 cm planks), its light globe a 3-ring
+    'sphere' 44 cm wide that rendered as a two-cone diamond, and its brass
+    bits chunky blocks that the post painted orange: near the lens it read
+    as a lantern tangled in boards. Now a real 54-inch diner fan: a turned
+    motor drum on a downrod, five dark walnut blades pitched 12 degrees on
+    slim antique-brass irons (1.37 m across), a switch cup with its pull
+    chain, and a small frosted schoolhouse globe (25 cm). Names stay
+    Fan_<N|S>_*; every part touches the one above it (canopy on the
+    ceiling, rod into the drum, irons into the drum and under the blades,
+    cup under the drum, globe under the cup).
+    Draft N+1: a practical in the globe for the night moods; the blades'
+    slight droop."""
+    from _props.geometry import make_lathe as _lathe, make_rot_box as _rbox
+    import math as _m
+    BRASS_OLD = (0.52, 0.40, 0.22, 1.0)        # antique brass, darker than the rail
+    BRONZE = (0.26, 0.21, 0.16, 1.0)           # oil-rubbed motor drum
+    WALNUT = (0.34, 0.22, 0.14, 1.0)
+    MILK_GLASS = (0.95, 0.93, 0.86, 1.0)
+    fan_z = D_H - 0.42                          # motor drum centre (2.98)
     for label, (fx, fy) in [
         ("N", (-3.0, 0.5)),
         ("S", (+3.0, 0.5)),
     ]:
-        # Ceiling-mount canopy (flat disc against ceiling)
-        make_cyl(f"Fan_{label}_Canopy",
-                 (fx, fy, D_H - 0.04),
-                 0.12, 0.06, COL_FAN_HOUSING, segments=12, axis='Z')
-        # Downrod (slim cylinder dropping from canopy to motor)
-        downrod_top = D_H   # the canopy sits on the ceiling (2026-09-22: 8 cm short)
-        downrod_bot = fan_z + 0.08
-        make_cyl(f"Fan_{label}_Downrod",
-                 (fx, fy, (downrod_top + downrod_bot) / 2),
-                 0.022, downrod_top - downrod_bot,
-                 COL_FAN_HOUSING, segments=6, axis='Z')
-        # Motor housing (cylinder — the round drum that real fans have)
-        make_cyl(f"Fan_{label}_Housing",
-                 (fx, fy, fan_z),
-                 0.22, 0.22, COL_FAN_HOUSING, segments=14, axis='Z')
-        # Cap top + bottom plates (slightly larger discs)
-        make_cyl(f"Fan_{label}_Housing_Top",
-                 (fx, fy, fan_z + 0.115),
-                 0.24, 0.02,
-                 (0.42, 0.36, 0.30, 1.0), segments=14, axis='Z')
-        make_cyl(f"Fan_{label}_Housing_Btm",
-                 (fx, fy, fan_z - 0.115),
-                 0.24, 0.02,
-                 (0.42, 0.36, 0.30, 1.0), segments=14, axis='Z')
-        # 4 blades radiating from the motor — long, slim, slightly
-        # darker on the leading edge (suggests pitch)
-        import math as _m
-        for b in range(4):
-            ang = b * (_m.pi / 2)     # 0°, 90°, 180°, 270°
+        # canopy against the ceiling, downrod into the drum's top
+        _lathe(f"Fan_{label}_Canopy", (fx, fy, D_H - 0.07),
+               [(0.03, 0.0), (0.09, 0.02), (0.10, 0.06), (0.10, 0.07)], BRONZE, segments=14)
+        drum_top = fan_z + 0.08
+        make_cyl(f"Fan_{label}_Downrod", (fx, fy, (D_H - 0.07 + drum_top) / 2.0),
+                 0.016, (D_H - 0.07) - drum_top + 0.02, BRONZE, segments=8, axis='Z')
+        # the motor drum: a turned, bellied housing
+        _lathe(f"Fan_{label}_Housing", (fx, fy, fan_z),
+               [(0.05, -0.085), (0.12, -0.075), (0.15, -0.03), (0.155, 0.0),
+                (0.15, 0.03), (0.12, 0.07), (0.05, 0.085)], BRONZE, segments=18)
+        _lathe(f"Fan_{label}_Housing_Band", (fx, fy, fan_z),
+               [(0.157, -0.012), (0.160, 0.0), (0.157, 0.012)], BRASS_OLD, segments=18)
+        # five blades on their irons, pitched 12 degrees
+        for b in range(5):
+            ang = b * (2.0 * _m.pi / 5.0) + 0.3
             ux, uy = _m.cos(ang), _m.sin(ang)
-            blade_len = 0.78
-            blade_w   = 0.20
-            blade_h   = 0.020
-            # blade center is ~0.30 away from the motor along the
-            # radial direction (so inner edge of blade meets the
-            # housing); blade slightly tilted is faked by sitting
-            # 1.5 cm below the housing midline
-            bx = fx + (0.27 + blade_len / 2) * ux   # onto the arm (2026-09-22: 3 cm short)
-            by = fy + (0.27 + blade_len / 2) * uy
-            bz = fan_z - 0.02
-            # Choose box size based on blade orientation
-            if abs(ux) > abs(uy):
-                bw_x, bw_y = blade_len, blade_w
-            else:
-                bw_x, bw_y = blade_w, blade_len
-            make_box(f"Fan_{label}_Blade_{b}",
-                     (bx, by, bz),
-                     (bw_x, bw_y, blade_h), COL_FAN_BLADE)
-            # Leading edge trim (slightly darker thin strip on one
-            # side of the blade — suggests blade pitch / shadow)
-            edge_off_x = -uy * (blade_w / 2 - 0.012)
-            edge_off_y = +ux * (blade_w / 2 - 0.012)
-            edge_size_x = blade_len if abs(ux) > abs(uy) else 0.018
-            edge_size_y = 0.018 if abs(ux) > abs(uy) else blade_len
-            make_box(f"Fan_{label}_BladeEdge_{b}",
-                     (bx + edge_off_x, by + edge_off_y, bz + 0.005),
-                     (edge_size_x, edge_size_y, 0.006),
-                     (0.42, 0.36, 0.30, 1.0))
-            # Brass blade arm bracket (between housing and blade)
-            arm_x = fx + 0.245 * ux   # into the housing's rim (r 0.22)
-            arm_y = fy + 0.245 * uy
-            make_box(f"Fan_{label}_BladeArm_{b}",
-                     (arm_x, arm_y, fan_z - 0.06),
-                     (0.04 if abs(ux) > abs(uy) else 0.06,
-                      0.04 if abs(uy) > abs(ux) else 0.06,
-                      0.10), COL_BRASS)
-        # Pull-chain (thin dangling cord with small ball at the end)
-        make_cyl(f"Fan_{label}_PullChain",
-                 (fx + 0.05, fy + 0.02, fan_z - 0.32),
-                 0.005, 0.30, (0.40, 0.32, 0.18, 1.0),
-                 segments=4, axis='Z')
-        make_sphere_low(f"Fan_{label}_PullChain_Ball",
-                        (fx + 0.08, fy + 0.04, fan_z - 0.48),
-                        0.025, COL_BRASS, rings=2, segments=4)
-        # Light fixture below the fan — brass cup + sphere globe
-        make_cyl(f"Fan_{label}_GlobeMount",
-                 (fx, fy, fan_z - 0.19),    # from the housing's bottom plate (2026-09-22)
-                 0.10, 0.13, COL_BRASS, segments=8, axis='Z')
-        make_sphere_low(f"Fan_{label}_Globe",
-                        (fx, fy, fan_z - 0.46),
-                        0.22, (0.96, 0.92, 0.78, 1.0),
-                        rings=3, segments=10)
+            # the iron: from inside the drum's rim out under the blade root
+            ir = 0.19
+            _rbox(f"Fan_{label}_BladeArm_{b}", (fx + ir * ux, fy + ir * uy, fan_z - 0.045),
+                  (0.13, 0.03, 0.012), BRASS_OLD, yaw=ang)
+            # the blade, resting on the iron's outer half
+            br = 0.22 + 0.25
+            _rbox(f"Fan_{label}_Blade_{b}", (fx + br * ux, fy + br * uy, fan_z - 0.033),
+                  (0.50, 0.13, 0.012), WALNUT, yaw=ang, roll=_m.radians(12.0))
+        # switch cup under the drum; the pull chain hangs from the drum's
+        # underside just outside the globe (12 cm radius), not through it
+        _lathe(f"Fan_{label}_SwitchCup", (fx, fy, fan_z - 0.085),
+               [(0.03, -0.07), (0.07, -0.06), (0.08, -0.03), (0.07, 0.0)], BRASS_OLD, segments=14)
+        make_cyl(f"Fan_{label}_PullChain", (fx + 0.128, fy, fan_z - 0.21), 0.004, 0.30,
+                 (0.40, 0.32, 0.18, 1.0), segments=4, axis='Z')
+        make_sphere_low(f"Fan_{label}_PullChain_Ball", (fx + 0.128, fy, fan_z - 0.37),
+                        0.015, BRASS_OLD, rings=4, segments=8)
+        # the fitter and the schoolhouse globe
+        gz = fan_z - 0.155
+        make_cyl(f"Fan_{label}_GlobeMount", (fx, fy, gz - 0.015), 0.055, 0.03, BRASS_OLD, segments=12, axis='Z')
+        _lathe(f"Fan_{label}_Globe", (fx, fy, gz - 0.03),
+               [(0.0, -0.20), (0.05, -0.195), (0.095, -0.16), (0.12, -0.11),
+                (0.115, -0.06), (0.08, -0.02), (0.05, 0.0)], MILK_GLASS, segments=16)
 
 
 def build_counter_accessories():
