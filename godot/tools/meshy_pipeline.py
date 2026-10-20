@@ -2163,6 +2163,13 @@ def _refs_text(roster, entry):
     if not got:
         return ""
     names = "; ".join(f"image {k + 1}: {e['name']}" for k, (e, _) in enumerate(got))
+    # (2026-10-19) a CG's refs are mostly the CAST: the vol 1-4 CGs were made
+    # from text alone and every face was a stranger's (Joan, Faust, Charlie…)
+    if any(e.get("kind") in ("hero", "demon") for e, _ in got):
+        return ("The reference images are the story's own people and things (" + names + "). Every person in the "
+                "picture who is one of them is THAT person: the same face, age, build, skin, hair and, unless the "
+                "text says otherwise, clothes. Draw them as the scene needs them (pose, angle, light), never as a "
+                "copy of the reference's pose; anyone else in the picture is someone new.")
     return ("The reference images are the story's own objects (" + names + "). Where they appear in the picture, "
             "draw them to match the references exactly: the same shape, material, colour and wear.")
 

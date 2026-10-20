@@ -154,6 +154,12 @@ def scan():
             sys.stdout = old
             devnull.close()
         groups = defaultdict(list)       # (cat, key, root) → pieces
+        # (2026-10-19) P.A.BOXES rows are (name, centre, HALF-extents). The
+        # detection thresholds below were tuned on those half-extents and stay
+        # so (a "thin" piece is <= 0.10 half = 20 cm); every SIZE this report
+        # hands on is full (surfaces() and the row's size/dims): from 10-13 to
+        # 10-19 they went out halved, and 534 art entries laid their pictures
+        # at half width and half height over their stand-ins.
         for bx in P.A.BOXES:
             name, c, sz = bx[0], bx[1], bx[2]
             if re.match(r"(View|Thru|Out|Beyond|Yard|Lot|Hemlock|Street|Across|Forest|Far)_|.*_View_", name):
@@ -234,11 +240,11 @@ def scan():
                 own = [w for w in words(rt) if len(w) > 3 and w not in (key, "wall", "board", "left", "right")]
                 best = min(hits_txt, key=lambda t: (-sum(1 for w in own if w in t), len(t)))
                 quote = best.strip()[:220]
-            total_area = sum(sorted(t[2])[1] * sorted(t[2])[2] for t in inst)
+            total_area = sum(4.0 * sorted(t[2])[1] * sorted(t[2])[2] for t in inst)
             rows.append({"cat": cat, "locale": loc, "family": rt, "key": key, "count": len(inst), "area": round(total_area, 3),
                          "pieces": sorted({n for n, _, _ in inst})[:6],
-                         "size": [round(dims[2], 2), round(dims[1], 2)], "thin_axis": "xyz"[list(sz).index(dims[0])],
-                         "dims": [round(v, 3) for v in sz],
+                         "size": [round(2 * dims[2], 2), round(2 * dims[1], 2)], "thin_axis": "xyz"[list(sz).index(dims[0])],
+                         "dims": [round(2 * v, 3) for v in sz],
                          "surfaces": surfs,
                          "center": [round(v, 2) for v in c], "lines": len(loc_lines), "mentions": ment, "quote": quote,
                          "covered": any(l == loc and (rt.rstrip("*").rstrip("_").startswith(h) or h.startswith(rt.rstrip("*").rstrip("_"))) for (l, h) in covered),
@@ -313,7 +319,7 @@ def surfaces(inst, gap=0.05, plane=0.06):
     boxes = []
     for name, c, sz in inst:
         ax = list(sz).index(min(sz))
-        boxes.append((ax, [c[k] - sz[k] / 2 for k in range(3)], [c[k] + sz[k] / 2 for k in range(3)]))
+        boxes.append((ax, [c[k] - sz[k] for k in range(3)], [c[k] + sz[k] for k in range(3)]))   # sz: half-extents
     for i in range(n):
         for j in range(i + 1, n):
             ai, lo_i, hi_i = boxes[i]

@@ -1136,14 +1136,9 @@ def build_helm():
     make_cyl("Helm_DeskLamp_Shade",
              (dk_x - 0.60, dk_y - 0.30, cz + 1.16),
              0.10, 0.14, (0.92, 0.78, 0.46, 1.0), segments=10)
-    # Wife's photograph — in a brass frame on the desk
-    make_box("Helm_DeskPhoto_Frame_retired",
-             (dk_x + 0.60, dk_y - 0.30, cz + 0.86),
-             (0.18, 0.02, 0.22), COL_BRASS)
-    make_box("Helm_WifePhoto",
-             (dk_x + 0.60, dk_y - 0.31, cz + 0.86),
-             (0.14, 0.001, 0.18),
-             (0.72, 0.68, 0.58, 1.0))
+    # (2026-10-19) No photograph on the desk: "the photograph of his wife on
+    # the wall opposite the desk" (ch4) — build_emperor_props hangs it. The
+    # desk copy stood in the card insert's line of sight.
     # The brass clock from Dante's father's office — on the wall
     make_cyl("Helm_FathersClock",
              (0.0, +2.95, cz + 1.80),
@@ -1946,8 +1941,10 @@ def build_emperor_props():
     # The office door at the helm's south partition
     make_box("Helm_Office_Door", (2.2, -2.95, 6.10), (0.86, 0.06, 1.98), (0.34, 0.24, 0.16, 1.0))
     make_cyl("Helm_Office_Knob", (2.52, -2.90, 6.05), 0.03, 0.04, brass, axis='Y', segments=8)
-    # The photograph on the wall OPPOSITE the desk (north partition)
-    make_box("Helm_WifePhoto_Wall_Frame", (0.95, 2.94, 6.80), (0.40, 0.02, 0.50), (0.30, 0.22, 0.14, 1.0))
+    # The photograph on the wall OPPOSITE the desk (north partition). The
+    # frame is Helm_WallFrame_* (2026-10-19) so the hero art's hide rule for
+    # Helm_WifePhoto_Wall leaves it standing.
+    make_box("Helm_WallFrame_WifePhoto", (0.95, 2.94, 6.80), (0.40, 0.02, 0.50), (0.30, 0.22, 0.14, 1.0))
     make_box("Helm_WifePhoto_Wall", (0.95, 2.93, 6.80), (0.32, 0.015, 0.42), (0.72, 0.68, 0.58, 1.0))
 
 
@@ -2056,7 +2053,11 @@ def build_emperor_dressing():
              (0.003, 0.10, 0.020),
              (0.74, 0.62, 0.32, 1.0))
 
-    # ── Paul's calling card on the desk, square to the corner ──
+    # ── The calling card on the desk, square to the corner ──
+    # (2026-10-19: it is Dean's — "The card — Mr. D. Dean. Consulting."
+    # (ch20); the comment said Paul's. Its two lines are a Label3D in
+    # riverboat_interior.tscn, Helm_CallingCard_Lettering; the card's long
+    # side now runs N-S so the card insert, looking east, reads it.)
     # The helm desk is roughly at (0.0, -2.0, cz+0.74). "Square to
     # the corner" means aligned with the SE corner of the desk top.
     # build_helm's desk: (0.0, -1.5), top 2.00 x 1.00, top face cz + 0.81
@@ -2071,18 +2072,8 @@ def build_emperor_dressing():
     # Card body — cream cardstock, dead-square to the corner
     make_box("Helm_CallingCard_Body",
              (card_x, card_y, desk_top_z + 0.001),
-             (0.10, 0.06, 0.002),
+             (0.06, 0.10, 0.002),
              (0.94, 0.90, 0.84, 1.0))
-    # Engraved name — a thin dark line
-    make_box("Helm_CallingCard_Name",
-             (card_x, card_y, desk_top_z + 0.0025),
-             (0.06, 0.014, 0.0005),
-             (0.20, 0.18, 0.14, 1.0))
-    # Small decorative border
-    make_box("Helm_CallingCard_Border",
-             (card_x, card_y, desk_top_z + 0.0022),
-             (0.085, 0.045, 0.0003),
-             (0.62, 0.52, 0.32, 1.0))
 
     # ── SIDE DOOR · interior door in the east wall, south end ──
     # The east partition is at +3.5. A narrow door cut into it at

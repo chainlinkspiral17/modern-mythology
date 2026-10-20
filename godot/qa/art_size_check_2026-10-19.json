@@ -1,0 +1,753 @@
+{
+ "_comment": "2026-10-19: art apply rows whose size is neither half nor equal to the stand-in they hide (measured from the builder at full size). The 710 rows at exactly half were doubled; these want a look: one axis half, or a stand-in larger than the picture (a calendar on its board, a sign on its backing).",
+ "rows": [
+  {
+   "slug": "lena_apartment_nebula_1",
+   "row_size": [
+    2.15,
+    1.43
+   ],
+   "stand_in_size": [
+    3.6,
+    2.2
+   ]
+  },
+  {
+   "slug": "salty_tome_interior_nebula_1",
+   "row_size": [
+    6.05,
+    1.56
+   ],
+   "stand_in_size": [
+    7.3,
+    2.6
+   ]
+  },
+  {
+   "slug": "cosmic_comics_interior_bin_comic",
+   "row_size": [
+    0.2,
+    0.1
+   ],
+   "stand_in_size": [
+    1.36,
+    0.2
+   ]
+  },
+  {
+   "slug": "cosmic_comics_interior_bin_comic",
+   "row_size": [
+    0.2,
+    0.1
+   ],
+   "stand_in_size": [
+    1.36,
+    0.2
+   ]
+  },
+  {
+   "slug": "cosmic_comics_interior_bin_comic",
+   "row_size": [
+    0.2,
+    0.1
+   ],
+   "stand_in_size": [
+    1.42,
+    0.2
+   ]
+  },
+  {
+   "slug": "board_lords_interior_mural",
+   "row_size": [
+    0.57,
+    0.51
+   ],
+   "stand_in_size": [
+    1.815,
+    1.18
+   ]
+  },
+  {
+   "slug": "kwik_stop_soccer_sign",
+   "row_size": [
+    0.3,
+    0.07
+   ],
+   "stand_in_size": [
+    0.6,
+    0.36
+   ]
+  },
+  {
+   "slug": "graustark_devil",
+   "row_size": [
+    0.95,
+    1.62
+   ],
+   "stand_in_size": [
+    1.4,
+    3.24
+   ]
+  },
+  {
+   "slug": "graustark_devil",
+   "row_size": [
+    0.95,
+    1.62
+   ],
+   "stand_in_size": [
+    1.4,
+    3.24
+   ]
+  },
+  {
+   "slug": "centro_grocery_aisle_produce_sign",
+   "row_size": [
+    2.0,
+    0.35
+   ],
+   "stand_in_size": [
+    4.0,
+    2.35
+   ]
+  },
+  {
+   "slug": "centro_grocery_aisle_service_desk_sign",
+   "row_size": [
+    1.2,
+    0.25
+   ],
+   "stand_in_size": [
+    2.4,
+    2.35
+   ]
+  },
+  {
+   "slug": "pit_stop_interior_print",
+   "row_size": [
+    0.17,
+    0.17
+   ],
+   "stand_in_size": [
+    0.27,
+    0.29
+   ]
+  },
+  {
+   "slug": "kowalski_kitchen_tv_1",
+   "row_size": [
+    0.57,
+    0.33
+   ],
+   "stand_in_size": [
+    1.3,
+    1.19
+   ]
+  },
+  {
+   "slug": "houston_office_marcus_monitor",
+   "row_size": [
+    0.28,
+    0.17
+   ],
+   "stand_in_size": [
+    0.56,
+    0.47
+   ]
+  },
+  {
+   "slug": "new_orleans_bar_exit_sign",
+   "row_size": [
+    0.08,
+    0.19
+   ],
+   "stand_in_size": [
+    0.11,
+    0.38
+   ]
+  },
+  {
+   "slug": "cedar_tower_ephoto",
+   "row_size": [
+    0.17,
+    0.13
+   ],
+   "stand_in_size": [
+    0.42,
+    0.34
+   ]
+  },
+  {
+   "slug": "cedar_tower_ephoto",
+   "row_size": [
+    0.17,
+    0.13
+   ],
+   "stand_in_size": [
+    0.42,
+    0.34
+   ]
+  },
+  {
+   "slug": "cedar_tower_ephoto",
+   "row_size": [
+    0.17,
+    0.13
+   ],
+   "stand_in_size": [
+    0.42,
+    0.34
+   ]
+  },
+  {
+   "slug": "cedar_tower_ephoto",
+   "row_size": [
+    0.17,
+    0.13
+   ],
+   "stand_in_size": [
+    0.42,
+    0.34
+   ]
+  },
+  {
+   "slug": "cedar_tower_ephoto",
+   "row_size": [
+    0.17,
+    0.13
+   ],
+   "stand_in_size": [
+    0.42,
+    0.34
+   ]
+  },
+  {
+   "slug": "new_orleans_apartment_tv_1",
+   "row_size": [
+    0.42,
+    0.28
+   ],
+   "stand_in_size": [
+    0.9,
+    1.195
+   ]
+  },
+  {
+   "slug": "daily_grind_interior_menu_1",
+   "row_size": [
+    2.4,
+    0.46
+   ],
+   "stand_in_size": [
+    3.8,
+    1.0
+   ]
+  },
+  {
+   "slug": "missing_link_interior_kitchendoor_1",
+   "row_size": [
+    0.57,
+    1.12
+   ],
+   "stand_in_size": [
+    0.94,
+    2.03
+   ]
+  },
+  {
+   "slug": "missing_link_interior_linksign",
+   "row_size": [
+    0.46,
+    0.23
+   ],
+   "stand_in_size": [
+    0.92,
+    0.36
+   ]
+  },
+  {
+   "slug": "elicia_apartment_dead_monitor_1",
+   "row_size": [
+    0.28,
+    0.17
+   ],
+   "stand_in_size": [
+    0.56,
+    0.465
+   ]
+  },
+  {
+   "slug": "elicia_apartment_dead_monitor_2",
+   "row_size": [
+    0.28,
+    0.17
+   ],
+   "stand_in_size": [
+    0.56,
+    0.465
+   ]
+  },
+  {
+   "slug": "new_auburn_road_unit_2",
+   "row_size": [
+    0.61,
+    0.35
+   ],
+   "stand_in_size": [
+    0.905,
+    0.585
+   ]
+  },
+  {
+   "slug": "montreal_apartment_poster_1",
+   "row_size": [
+    0.3,
+    0.55
+   ],
+   "stand_in_size": [
+    0.6,
+    0.9
+   ]
+  },
+  {
+   "slug": "montreal_apartment_poster_2",
+   "row_size": [
+    0.28,
+    0.51
+   ],
+   "stand_in_size": [
+    0.56,
+    0.84
+   ]
+  },
+  {
+   "slug": "nexcorp_gas_go_aisle_sign",
+   "row_size": [
+    2.5,
+    0.13
+   ],
+   "stand_in_size": [
+    5.0,
+    0.83
+   ]
+  },
+  {
+   "slug": "missing_link_exterior_sign_2",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.54,
+    0.7
+   ]
+  },
+  {
+   "slug": "county_line_station_parish_sign",
+   "row_size": [
+    1.3,
+    0.5
+   ],
+   "stand_in_size": [
+    2.6,
+    3.2
+   ]
+  },
+  {
+   "slug": "lena_studio_canvas_1",
+   "row_size": [
+    1.98,
+    1.34
+   ],
+   "stand_in_size": [
+    2.44,
+    1.83
+   ]
+  },
+  {
+   "slug": "crumpled_barn_sign_1",
+   "row_size": [
+    0.57,
+    0.3
+   ],
+   "stand_in_size": [
+    0.845,
+    0.6
+   ]
+  },
+  {
+   "slug": "crumpled_barn_sign_3",
+   "row_size": [
+    0.12,
+    0.23
+   ],
+   "stand_in_size": [
+    0.19,
+    0.43
+   ]
+  },
+  {
+   "slug": "darkroom_sink_print",
+   "row_size": [
+    0.29,
+    0.09
+   ],
+   "stand_in_size": [
+    0.36,
+    0.18
+   ]
+  },
+  {
+   "slug": "kwik_stop_banner_1",
+   "row_size": [
+    2.4,
+    0.26
+   ],
+   "stand_in_size": [
+    4.8,
+    0.42
+   ]
+  },
+  {
+   "slug": "kwik_stop_calendar",
+   "row_size": [
+    0.2,
+    0.33
+   ],
+   "stand_in_size": [
+    0.4,
+    0.5
+   ]
+  },
+  {
+   "slug": "kwik_stop_poster_1",
+   "row_size": [
+    0.3,
+    0.5
+   ],
+   "stand_in_size": [
+    0.6,
+    0.8
+   ]
+  },
+  {
+   "slug": "centro_grocery_aisle_calendar",
+   "row_size": [
+    0.2,
+    0.33
+   ],
+   "stand_in_size": [
+    0.4,
+    0.5
+   ]
+  },
+  {
+   "slug": "new_orleans_office_site_calendar",
+   "row_size": [
+    0.2,
+    0.36
+   ],
+   "stand_in_size": [
+    0.4,
+    0.5
+   ]
+  },
+  {
+   "slug": "hospital_room_wait_tv",
+   "row_size": [
+    0.45,
+    0.27
+   ],
+   "stand_in_size": [
+    1.8,
+    0.54
+   ]
+  },
+  {
+   "slug": "daily_grind_interior_painting_2",
+   "row_size": [
+    0.51,
+    0.53
+   ],
+   "stand_in_size": [
+    0.97,
+    0.8
+   ]
+  },
+  {
+   "slug": "daily_grind_interior_painting_3",
+   "row_size": [
+    0.58,
+    0.44
+   ],
+   "stand_in_size": [
+    1.07,
+    0.7
+   ]
+  },
+  {
+   "slug": "faust_apartment_floor_canvas_1",
+   "row_size": [
+    0.45,
+    0.28
+   ],
+   "stand_in_size": [
+    0.7,
+    0.56
+   ]
+  },
+  {
+   "slug": "faust_apartment_floor_canvas_2",
+   "row_size": [
+    0.32,
+    0.2
+   ],
+   "stand_in_size": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "slug": "miriam_subaru_county_sign",
+   "row_size": [
+    1.0,
+    0.45
+   ],
+   "stand_in_size": [
+    2.0,
+    2.5
+   ]
+  },
+  {
+   "slug": "smolvud_jetty_jetty_sign",
+   "row_size": [
+    0.35,
+    0.23
+   ],
+   "stand_in_size": [
+    0.7,
+    1.85
+   ]
+  },
+  {
+   "slug": "small_wood_road_county_sign",
+   "row_size": [
+    0.6,
+    0.25
+   ],
+   "stand_in_size": [
+    1.2,
+    2.85
+   ]
+  },
+  {
+   "slug": "nexcorp_gas_go_hiring_poster",
+   "row_size": [
+    0.23,
+    0.41
+   ],
+   "stand_in_size": [
+    0.46,
+    0.62
+   ]
+  },
+  {
+   "slug": "pharmacy_aisle_sign",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.3,
+    0.95
+   ]
+  },
+  {
+   "slug": "pharmacy_aisle_sign",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.3,
+    0.95
+   ]
+  },
+  {
+   "slug": "pharmacy_aisle_sign",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.3,
+    0.95
+   ]
+  },
+  {
+   "slug": "pharmacy_aisle_sign",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.3,
+    0.95
+   ]
+  },
+  {
+   "slug": "pharmacy_aisle_sign",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.3,
+    0.95
+   ]
+  },
+  {
+   "slug": "pharmacy_aisle_sign",
+   "row_size": [
+    0.65,
+    0.2
+   ],
+   "stand_in_size": [
+    1.3,
+    0.95
+   ]
+  },
+  {
+   "slug": "pharmacy_flu_sign",
+   "row_size": [
+    0.3,
+    0.54
+   ],
+   "stand_in_size": [
+    0.6,
+    0.9
+   ]
+  },
+  {
+   "slug": "pharmacy_office_corkboard",
+   "row_size": [
+    0.66,
+    0.3
+   ],
+   "stand_in_size": [
+    0.9,
+    0.6
+   ]
+  },
+  {
+   "slug": "pharmacy_photo",
+   "row_size": [
+    0.45,
+    0.15
+   ],
+   "stand_in_size": [
+    0.9,
+    1.4
+   ]
+  },
+  {
+   "slug": "pharmacy_rx_monitor_1",
+   "row_size": [
+    0.26,
+    0.16
+   ],
+   "stand_in_size": [
+    0.52,
+    0.46
+   ]
+  },
+  {
+   "slug": "pharmacy_rx_monitor_2",
+   "row_size": [
+    0.26,
+    0.16
+   ],
+   "stand_in_size": [
+    0.52,
+    0.46
+   ]
+  },
+  {
+   "slug": "pharmacy_rx_sign_1",
+   "row_size": [
+    0.55,
+    0.15
+   ],
+   "stand_in_size": [
+    1.1,
+    0.43
+   ]
+  },
+  {
+   "slug": "pharmacy_rx_sign_2",
+   "row_size": [
+    0.55,
+    0.15
+   ],
+   "stand_in_size": [
+    1.1,
+    0.43
+   ]
+  },
+  {
+   "slug": "pharmacy_rx_sign_3",
+   "row_size": [
+    0.55,
+    0.15
+   ],
+   "stand_in_size": [
+    1.1,
+    0.43
+   ]
+  },
+  {
+   "slug": "pit_stop_office_office_corkboard",
+   "row_size": [
+    0.68,
+    0.38
+   ],
+   "stand_in_size": [
+    1.0,
+    0.6
+   ]
+  },
+  {
+   "slug": "smolvud_coop_corkboard_1",
+   "row_size": [
+    0.55,
+    0.49
+   ],
+   "stand_in_size": [
+    1.1,
+    0.8
+   ]
+  },
+  {
+   "slug": "smolvud_coop_register_tablet",
+   "row_size": [
+    0.13,
+    0.09
+   ],
+   "stand_in_size": [
+    0.26,
+    0.27
+   ]
+  },
+  {
+   "slug": "graciela_bedroom_photo_1",
+   "row_size": [
+    0.18,
+    0.14
+   ],
+   "stand_in_size": [
+    0.26,
+    0.22
+   ]
+  }
+ ]
+}

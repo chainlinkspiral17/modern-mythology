@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://graustark_ruins"]
+[gd_scene load_steps=28 format=3 uid="uid://graustark_ruins"]
 
 ; Graustark ruins (vol5 cameos + Lovers ch6). Full debug feature
 ; parity per _VOL5_LOCALES_MANIFEST.md — PostProcess + MoodCycler
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/Caveat-Variable.ttf" id="17_chalkhand"]
+[ext_resource type="FontFile" path="res://resources/fonts/ReenieBeanie-Regular.ttf" id="18_charcoalhand"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -610,6 +612,160 @@ metadata/fov = 34.0
 position = Vector3(42.600, 1.200, 375.600)
 rotation = Vector3(-0.4376, 2.0989, 0.0)
 metadata/fov = 40.0
+
+; ── THE CHALKED WALL (2026-10-19, the vol 5 contact sheet): the verses
+; themselves, word for word from the chapters, on the wall's west face
+; (blender x 43.85; left = north). They were word-stroke dashes in the GLB.
+; Lit (shaded): the moon and the flashlight show them, the dark keeps them.
+; The Hermit's three in chalk (ch9: two "downloaded", the third "her own");
+; the Star's four in charcoal, which exist only from the Star's night on —
+; suffixed to the Star twin and the Judgement morning.
+; Hands: Caveat (chalk) and Reenie Beanie (charcoal), both SIL OFL 1.1.
+[node name="Verse_Hermit_1" type="Label3D" parent="."]
+position = Vector3(43.843, 2.480, 373.700)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.93, 0.92, 0.87, 0.95)
+outline_size = 0
+text = "The map is not the territory.\nThe territory eats the map.\nLines blur — walls breathe — the sinkhole sighs.\nMemory, a creepypasta told by ghosts\nTo ghosts."
+font = ExtResource("17_chalkhand")
+font_size = 88
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Verse_Hermit_2" type="Label3D" parent="."]
+position = Vector3(43.843, 1.900, 373.700)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.93, 0.92, 0.87, 0.95)
+outline_size = 0
+text = "Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one."
+font = ExtResource("17_chalkhand")
+font_size = 88
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Verse_Hermit_3" type="Label3D" parent="."]
+position = Vector3(43.843, 1.380, 373.700)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.93, 0.92, 0.87, 0.95)
+outline_size = 0
+text = "And the bird brings me the past\nIn small bright pieces.\nAnd I am being asked, in language\nI am only beginning to learn,\nTo read."
+font = ExtResource("17_chalkhand")
+font_size = 88
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Verse_Star_1__graustark_chalk_wall_star__graustark_chalk_wall_morning" type="Label3D" parent="."]
+position = Vector3(43.843, 2.620, 370.350)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.07, 0.07, 0.07, 0.95)
+outline_size = 0
+text = "They see through me now,\nGlass skin on bone frame.\nWords like incisions,\nBleeding truths I cannot name.\nThe ruin breathes — the Star burns cold,\nA pretty lie, beautifully told?\nNo. Only this:\nThe flaw, the fracture, the abyss."
+font = ExtResource("18_charcoalhand")
+font_size = 100
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Verse_Star_2__graustark_chalk_wall_star__graustark_chalk_wall_morning" type="Label3D" parent="."]
+position = Vector3(43.843, 2.500, 371.550)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.07, 0.07, 0.07, 0.95)
+outline_size = 0
+text = "Madness is just clarity\nWithout the comfort\nOf illusion."
+font = ExtResource("18_charcoalhand")
+font_size = 100
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Verse_Star_3__graustark_chalk_wall_star__graustark_chalk_wall_morning" type="Label3D" parent="."]
+position = Vector3(43.843, 1.520, 370.350)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.07, 0.07, 0.07, 0.95)
+outline_size = 0
+text = "I did not lose Douglas. I sent him.\nI did not lose myself. I have been spent.\nI am the page on which the older\nsystem writes its drafts.\nI do not own the writing.\nI have been writing it anyway."
+font = ExtResource("18_charcoalhand")
+font_size = 100
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Verse_Star_4__graustark_chalk_wall_star__graustark_chalk_wall_morning" type="Label3D" parent="."]
+position = Vector3(43.843, 2.000, 371.950)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.07, 0.07, 0.07, 0.95)
+outline_size = 0
+text = "And the bird flew southeast.\nAnd the wall held the name.\nAnd the post office, in the morning,\nwill receive the only letter\nI have ever truly written.\nI am ready.\nCome and find me."
+font = ExtResource("18_charcoalhand")
+font_size = 100
+horizontal_alignment = 0
+vertical_alignment = 0
+
+; THE WALL'S LIGHT. The Hermit (dusk into night): a moon key from the
+; west-south-west, behind the camera, raking the verse face — "the pale
+; moonlit surface" (ch17) — and Joanna's flashlight lying on her block,
+; aimed up at the verses ("by the failing light of the flashlight", ch9):
+; the warm pool the writing sits in. The Star: the moon alone, fuller.
+; Judgement's morning: a low dawn sun from the east-north-east behind the
+; wall (its broken top and the I-beam catch it) and the west sky's cool
+; fill on the verses. All unshadowed: a shadowed flashlight (the cat's
+; shadow on the wall) took Graustark to 14,316 draw calls, cap 2,000.
+[node name="Moon_Key__graustark_chalk_wall" type="DirectionalLight3D" parent="."]
+position = Vector3(30, 12, 368)
+rotation = Vector3(-0.5236, -1.2235, 0)
+light_color = Color(0.66, 0.74, 0.95, 1)
+light_energy = 0.55
+shadow_enabled = false
+
+[node name="Moon_Key__graustark_chalk_wall_star" type="DirectionalLight3D" parent="."]
+position = Vector3(30, 12, 368)
+rotation = Vector3(-0.5236, -1.2235, 0)
+light_color = Color(0.70, 0.77, 0.96, 1)
+light_energy = 1.0
+shadow_enabled = false
+
+; blender lens (41.375, -376.115, 0.505), aimed 30 deg north of east, 6 up
+[node name="Flashlight_Beam__graustark_chalk_wall" type="SpotLight3D" parent="."]
+position = Vector3(41.375, 0.505, 376.115)
+rotation = Vector3(0.105, -1.047, 0)
+light_color = Color(1.0, 0.80, 0.55, 1)
+light_energy = 3.0
+shadow_enabled = false
+spot_range = 6.0
+spot_angle = 26.0
+spot_attenuation = 1.0
+
+[node name="Sun_Dawn__graustark_chalk_wall_morning" type="DirectionalLight3D" parent="."]
+position = Vector3(56, 10, 370)
+rotation = Vector3(-0.2095, 1.885, 0)
+light_color = Color(1.0, 0.76, 0.50, 1)
+light_energy = 1.2
+shadow_enabled = false
+
+[node name="Fill_WestSky__graustark_chalk_wall_morning" type="DirectionalLight3D" parent="."]
+position = Vector3(30, 10, 372)
+rotation = Vector3(-0.6109, -1.5708, 0)
+light_color = Color(0.78, 0.82, 0.92, 1)
+light_energy = 0.40
+shadow_enabled = false
 
 ; ── the Hierophant (2026-10-05): St. Jude's on a Sunday, the park by the Old Armory
 [node name="shot_closeup_paul__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]

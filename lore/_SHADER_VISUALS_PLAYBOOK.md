@@ -152,6 +152,19 @@ Reserve `cursive_type.py` for STYLIZED text where exact legibility
 isn't the goal (a fragmented mark, a glow pattern, decorative
 swoosh underline).
 
+**Writing ON a surface (chalk, charcoal, graffiti) is the other case
+(2026-10-19, Joanna's wall):** `shaded = true`, single-sided,
+`alpha_cut = 1` (discard), no outline — so the writing takes the
+set's light and goes dark with the wall, instead of glowing like a
+sign. Use the prose's own words, in a hand font (Caveat for chalk,
+Reenie Beanie for charcoal, both OFL in `resources/fonts/`). Place it
+in the .tscn: `rotation` turns its +Z to the wall's outward normal;
+`horizontal_alignment = 0`, `vertical_alignment = 0` anchor the
+block's top-left at `position`. Writing that appears later in the
+story is suffixed to the presets it belongs to (`Name__preset…`);
+Background3D strips Label3Ds like lights and meshes. At an
+establishing distance it reads as handwriting, and an insert can read it.
+
 ### Edge-detection thresholds for matching a reference
 
 When tuning a mood toward a concept-art reference:

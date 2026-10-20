@@ -345,10 +345,42 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(35.20, 1.75, 370.40),
 		"camera_rotation": Vector3(-0.021, -2.023, 0.0),
 		"fov": 56.0,
-		# (pass 62) ch17 Star / ch9 Hermit at night and dusk on the dusk sky added to Graustark
+		# (pass 62) ch9 Hermit at dusk and night on the dusk sky added to Graustark.
+		# (2026-10-19) Lit now: the moon key and Joanna's flashlight
+		# (graustark.tscn) — it rendered near-black. The Star's night and
+		# Judgement's morning are the twins below.
 		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	# (2026-10-19) THE SAME WALL on the Star's night (ch17): "The charcoal
+	# leaving stark black lines against the pale moonlit surface." The moon
+	# alone, fuller; the Star's four charcoal verses are on the wall from
+	# here on (Verse_Star_*, suffixed).
+	"graustark_chalk_wall_star": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		"camera_origin": Vector3(35.20, 1.75, 370.40),
+		"camera_rotation": Vector3(-0.021, -2.023, 0.0),
+		"fov": 56.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.18, 0.18, 0.26, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.38, 0.40, 0.54, 1), "ambient_energy": 0.42, "fog_color": Color(0.12, 0.12, 0.17, 1)},
+		"suppress_input": true,
+	},
+	# (2026-10-19) THE SAME WALL the morning after (ch20 Judgement, dawn_warm):
+	# "the small clean clarity she had earned on the wall last night". A low
+	# dawn sun behind the wall, the west sky's fill on the verses.
+	"graustark_chalk_wall_morning": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		"camera_origin": Vector3(35.20, 1.75, 370.40),
+		"camera_rotation": Vector3(-0.021, -2.023, 0.0),
+		"fov": 56.0,
+		"env": {"sky_top": Color(0.46, 0.58, 0.78, 1), "sky_horizon": Color(0.98, 0.84, 0.60, 1),
+			"ground_horizon": Color(0.50, 0.44, 0.36, 1), "ground_bottom": Color(0.22, 0.20, 0.17, 1),
+			"ambient_color": Color(0.86, 0.78, 0.68, 1), "ambient_energy": 0.80, "fog_color": Color(0.90, 0.80, 0.66, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
@@ -4983,6 +5015,9 @@ func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
 	# folds a stripped mesh into a batch.
 	var nodes: Array[Node] = root.find_children("*", "Light3D", true, false)
 	nodes.append_array(root.find_children("*", "MeshInstance3D", true, false))
+	# (2026-10-19) and writing: the Star's charcoal verses on Joanna's wall
+	# are not there yet in the Hermit (Verse_Star_*__<preset>…)
+	nodes.append_array(root.find_children("*", "Label3D", true, false))
 	for n in nodes:
 		var nm: String = String(n.name)
 		if nm.find("__") < 0:
