@@ -84,6 +84,30 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-21 · "cramped and poorly arranged" is usually the ARRANGEMENT, and the prose has it
+
+**Context:** the Deck: "Certain interiors look poorly arranged and cramped."
+`room_crowding_audit.py` named Natalie's apartment the tightest well-played
+room. Its four drafts had each polished the props in place.
+
+**Rules:**
+- Measure before re-planning. Run `room_crowding_audit.py`: under ~0.55 walk,
+  or a pinch between two pieces that people use together, is a re-plan.
+- Read the prose for RELATIONS before moving anything ("between the futon and
+  the record player", "the cards on the table in front of her", "the record
+  player in the corner"). The draft had every named thing and none of those
+  relations: the reading table stood behind the futon, and an invented coffee
+  table sat 11 cm in front of it.
+- A room doing three rooms' jobs (living, kitchen, a bed behind a partition)
+  gets the rooms: add a wing through a doorway. Don't shave the furniture.
+  The doorway also gives the establish a second depth plane: the lit bedroom
+  beyond.
+- Re-author the markers' POSITIONS, zero their rotations, run
+  `marker_reaim.py` then `marker_aim_audit.py`. Close-ups that face a person,
+  not a prop, are aimed by hand.
+- Move each practical light with its fixture in the .tscn, and re-run
+  `doorway_audit` (a plant blocked the new bathroom door).
+
 ### 2026-10-09 · the wrong THING: a misread noun, a vehicle, a side of the field
 
 Three more "the set is not what the prose says" cases. Each had survived

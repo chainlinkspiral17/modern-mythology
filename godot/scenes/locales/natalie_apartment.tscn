@@ -201,14 +201,15 @@ shadow_enabled = false
 
 ; moved onto its fixture by orphan_practical_audit (2026-09-18): the light stood at a template position no lamp occupied
 [node name="Scarf_Lamp_Shade_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, 1.150, 0.900, -0.550)
+transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, 3.100, 0.900, -3.840)
 light_color = Color(1.00, 0.78, 0.46, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
 
+; the nightstand lamp, in the bedroom through the E doorway (draft 5, 2026-10-21)
 [node name="Practical_Bedside" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 1.10, -4.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98, 1.10, -4.93)
 light_color = Color(1.00, 0.78, 0.52, 1)
 light_energy = 1.0
 shadow_enabled = false
@@ -216,7 +217,7 @@ omni_range = 4.0
 
 ; the candle she lit at midnight, burning low on the rug (draft 4, Moon)
 [node name="Rug_Candle_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-0.120, 0.160, -2.500)
+position = Vector3(1.480, 0.160, -2.150)
 light_color = Color(1.00, 0.70, 0.40, 1)
 light_energy = 0.45
 shadow_enabled = false
@@ -358,39 +359,39 @@ position = Vector3(-0.6, 1.55, -4.6)
 rotation = Vector3(-0.21417, 2.84736, 0)
 metadata/fov = 54.0
 
-; closeup: Natalie on the sofa
+; closeup: Natalie on the futon (draft 5: the futon on the E wall, the lens on the rug)
 [node name="shot_closeup_natalie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.600, 1.450, -4.200)
-rotation = Vector3(-0.1110, -2.4917, 0.0)
+position = Vector3(0.900, 1.350, -2.200)
+rotation = Vector3(-0.1700, -1.6140, 0.0)
 metadata/fov = 36.0
 
-; closeup: Nicola at the bed's edge
+; closeup: Nicola on the futon ("Nicola had slept, immediately, on the futon")
 [node name="shot_closeup_nicola" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.600, 1.450, -1.900)
-rotation = Vector3(-0.0371, 1.4219, 0.0)
+position = Vector3(0.900, 1.300, -3.000)
+rotation = Vector3(-0.1400, -1.5950, 0.0)
 metadata/fov = 36.0
 
 ; insert: the turntable on its stand
 [node name="shot_insert_record_player" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.2, 1, -1.1)
-rotation = Vector3(-0.275643, 0.785398, 0)
+position = Vector3(-2.250, 1.050, -1.750)
+rotation = Vector3(-0.3449, 2.1938, 0.0)
 metadata/fov = 40.0
 
-; insert: the card laid down by the reading rug
+; insert: the Hanged Man on the windowsill
 ; RE-AIMED 2026-10-02 (the Deck: "camera and director attention not where
 ; they should be"): each insert at its object from the prose, the close-ups
 ; with the room behind the speaker, not a wall at arm's length
 [node name="shot_insert_card" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.600, 1.000, -2.250)
-rotation = Vector3(-0.8214, -0.0000, 0.0)
+position = Vector3(-2.550, 1.150, -2.000)
+rotation = Vector3(-0.6175, 1.3167, 0.0)
 metadata/fov = 40.0
 
 ; insert: the worn deck, shuffled (vol5)
-; (2026-09-19: the deck moved north with the rug, to blender (-1.4, 2.35);
-; the lens looks east-north-east at it from the rug's west edge)
+; (draft 5, 2026-10-21: the rug runs west from the futon now; the deck lies
+; on its west half, blender (0.2, 2.0), the lens low off its SW corner)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.400, 0.720, -1.780)
-rotation = Vector3(-0.8573, -0.0000, 0.0)
+position = Vector3(-0.550, 0.750, -1.550)
+rotation = Vector3(-0.6765, -1.0343, 0.0)
 metadata/fov = 40.0
 
 ; insert: her phone on the kitchen counter, ringing (vol5)
@@ -407,6 +408,6 @@ metadata/fov = 42.0
 
 ; insert: the desk, the dream journal open after three years (vol5)
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.750, 1.100, -1.350)
-rotation = Vector3(-0.3341, -2.2695, 0.0)
+position = Vector3(2.750, 1.200, -1.550)
+rotation = Vector3(-0.4647, 2.3884, 0.0)
 metadata/fov = 42.0

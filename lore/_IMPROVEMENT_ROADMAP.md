@@ -3835,6 +3835,46 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 136: CRAMPED ROOMS, MEASURED; NATALIE'S APARTMENT RE-PLANNED FROM THE PROSE.**
+The Deck: "Certain interiors look poorly arranged and cramped."
+- **`tools/audit/room_crowding_audit.py`** (a report). For every set with a floor at grade it
+  measures:
+  - **filled:** the share of the floor taken by anything in a body's height band (0.12–1.2 m).
+  - **walk:** the share a person can move through. That is the free floor shrunk by a body's
+    half-width (0.28 m), every piece a person can stand in, grown back.
+  - **pinches:** pairs of floor pieces 0.10–0.55 m apart.
+
+  It ranks rooms by lines played × crowding.
+  - Top of the list: cabin_interior (2151 lines, 0.67 walk, 12 pinches), kwik_stop, roberts_kitchen
+    (34 pinches), faust_apartment (24), pit_stop_interior, cosmic_comics_interior, lena_apartment,
+    salty_tome_interior.
+  - Worst of the well-played: natalie_apartment, 44% filled, 0.48 walk.
+- **Natalie's apartment, draft 5.** The prose fixes the arrangement:
+  - "the worn patch of rug between the futon and the record player"
+  - "the cards on the table in front of her"
+  - "the record player in the corner"
+  - "the bathroom door", "the spare corner", "her desk"
+
+  The build had the futon facing the front wall with a coffee table 11 cm off its slats, the reading
+  table behind it, and the fridge by the front door. Now:
+  - The futon is on the E wall facing the window, with the low table in front of it.
+  - The rug runs west to the turntable in the SW corner.
+  - The fridge is in the kitchen run, the bookshelf on the S wall, the spare corner NE.
+  - The bed nook left the room: an east wing holds the bedroom (bed, nightstand lamp, the closet, a
+    curtained back window) through an open doorway, beside the shut bathroom door.
+  - The lights moved with their fixtures. The markers were re-authored and re-aimed; aim audit 0.
+  - Result: floor 44 → 66 m², filled 0.44 → 0.35, walk 0.48 → 0.59. The remaining pinches are the
+    reading table in reach of the futon and the side table at its arm.
+- **Gates:** overlap 0, support 0, buried decor 0, window backing 0, doorway BLOCKED 0 (the plant
+  moved off the bathroom door), vantage 0 blind, obstruction 0, orphan practicals 0, shot markers 0
+  blind, tscn syntax 0. Perf: natalie_apartment 214 draw calls.
+- **Deck must REBUILD** natalie_apartment.
+- **Draft N+1 targets:**
+  - The re-plan queue by the audit: cabin_interior (check the porch pinches against the prose
+    first), lena_apartment (the couch hard by the plant and the bedroom door), roberts_kitchen,
+    faust_apartment, salty_tome_interior, cosmic_comics_interior.
+  - Natalie: a bedroom preset and the crib-corner variant.
+
 **2026-10-21 · pass 135: THE SOFAS STOP BEING CRATES.**
 Twenty-five builders lay a sofa by hand as three or four chamfered slabs (a base, a back, two arms),
 which reads as a crate at any distance.

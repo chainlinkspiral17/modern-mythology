@@ -466,15 +466,15 @@ const CAMERA_PRESETS := {
 	"natalie_apartment": {
 		"scene": "res://scenes/locales/natalie_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/natalie_apartment.glb",
-		# Hanged Man / Moon. Room 7×5.5 (godot x∈[-3.5,3.5], z∈[0,-5.5],
-		# ceil 2.6). Teal sofa in the S-centre living area (blender
-		# -0.3,1.2 → godot -0.3,-1.2), tall afternoon window on the W
-		# wall (x=-3.5), bookshelf E wall, bed nook NE (godot 2.2,-4.5),
-		# kitchenette NW. Camera in the SW corner (by the window/door)
-		# looking ENE across the whole apartment: sofa in the near
-		# foreground, bookshelf + bed nook receding to the far NE, the
-		# W window backlighting the frame. One wide that reads the whole
-		# geography where "John and Natalie made the choice."
+		# Hanged Man / Moon. Living room 7×5.5 (godot x∈[-3.5,3.5],
+		# z∈[0,-5.5], ceil 2.6) + an east wing (bedroom, bathroom) to x 7.3.
+		# Draft 5 (2026-10-21): the futon on the E wall facing the W window,
+		# the low reading table in front of it on the rug, the rug running
+		# west to the record player in the SW corner; kitchenette NW with the
+		# fridge, the spare corner NE, the bedroom doorway and the shut
+		# bathroom door in the E wall, the desk under the SE window. Camera
+		# in the SW corner looking ENE: the rug and the futon facing the
+		# lens, the bedroom's lamp through the doorway beyond.
 		"camera_origin": Vector3(-2.6, 1.62, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
 		"fov": 62.0,
@@ -489,15 +489,15 @@ const CAMERA_PRESETS := {
 		# three daylight directionals are suffixed to natalie_apartment; this
 		# preset brings a moon through the W window and a dark env; the lamps
 		# and the candle serve both.
-		# Hanged Man / Moon. Room 7×5.5 (godot x∈[-3.5,3.5], z∈[0,-5.5],
-		# ceil 2.6). Teal sofa in the S-centre living area (blender
-		# -0.3,1.2 → godot -0.3,-1.2), tall afternoon window on the W
-		# wall (x=-3.5), bookshelf E wall, bed nook NE (godot 2.2,-4.5),
-		# kitchenette NW. Camera in the SW corner (by the window/door)
-		# looking ENE across the whole apartment: sofa in the near
-		# foreground, bookshelf + bed nook receding to the far NE, the
-		# W window backlighting the frame. One wide that reads the whole
-		# geography where "John and Natalie made the choice."
+		# Hanged Man / Moon. Living room 7×5.5 (godot x∈[-3.5,3.5],
+		# z∈[0,-5.5], ceil 2.6) + an east wing (bedroom, bathroom) to x 7.3.
+		# Draft 5 (2026-10-21): the futon on the E wall facing the W window,
+		# the low reading table in front of it on the rug, the rug running
+		# west to the record player in the SW corner; kitchenette NW with the
+		# fridge, the spare corner NE, the bedroom doorway and the shut
+		# bathroom door in the E wall, the desk under the SE window. Camera
+		# in the SW corner looking ENE: the rug and the futon facing the
+		# lens, the bedroom's lamp through the doorway beyond.
 		"camera_origin": Vector3(-2.6, 1.62, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
 		"fov": 62.0,
