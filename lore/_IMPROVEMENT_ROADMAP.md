@@ -3835,6 +3835,44 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 137: RE-PLAN BY REGION (`plan.zoned`); THE ROBERTS HOUSE GROWS.**
+- **`_props/plan.py: zoned(regions)`.** Inside the block, every part whose plan centre falls in a
+  region moves by that region's (dx, dy). It moves what was built:
+  - in Blender, the new objects, by their bounding-box centres
+  - under the audit recorder, the boxes recorded in the block, so every gate measures the room
+    Blender exports
+  - kit pieces too
+
+  A room authored over many passes, its zones scattered through a dozen functions, can now be
+  re-planned in a few lines. Build the shell outside the block at the new size, and hand the block
+  the old ROOM_W / ROOM_D. `shifted` now also moves `make_sofa` and `make_soft_box`.
+- **room_crowding_audit:** a pinch is now measured between OBJECTS (touching parts of one family).
+  It used to measure between name tokens, so every Outlet_* in a room was one box spanning it. Wall
+  fittings are skipped.
+- **The Roberts house** (vol 5, 145 lines). The kitchen, foyer, living room and dining room shared one
+  8 × 6 m box:
+  - the island's stools stood at the foyer's coat rack
+  - the sofa and TV were in a 2.5 m corner
+  - the dining table stood against the hutch
+  - 18 pinches, 0.52 walk
+
+  Now 11 × 7.2: the living room 1.5 m W, the dining room 1.5 m E, the kitchen run 1.2 m N (its
+  corners out with the side zones), the island 0.6 m N; the foyer and both partitions stay. The S
+  walls and their windows are sized from ROOM_W. The lamps moved with their zones; the markers moved
+  with their subjects and are re-aimed. Result: walk 0.67, 8 pinches (sofa to coffee table and the
+  like). From the foyer the establish sees the island, the counter run, the sink window and the
+  fridge, where the island had filled the lens.
+- **Gates:** overlap 0, support 0 (the gate caught four partition photos that crossed a region line;
+  the regions were tightened), buried decor 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0, orphan practicals 0, marker aim 0, shot markers 0 blind, dry run 161/161. Perf:
+  roberts_kitchen 90 draw calls.
+- **Deck must REBUILD** roberts_kitchen.
+- **Draft N+1 targets:**
+  - Roberts: the living room and the dining room have no preset of their own. Add them (the Anya tape
+    on the CRT plays in the living room); the dining wainscot ends short of the partition; a rug and
+    lamp for the bigger living room.
+  - Re-plan queue: new_orleans_office, new_orleans_apartment, montreal_apartment, faust_apartment.
+
 **2026-10-21 · pass 136: CRAMPED ROOMS, MEASURED; NATALIE'S APARTMENT RE-PLANNED FROM THE PROSE.**
 The Deck: "Certain interiors look poorly arranged and cramped."
 - **`tools/audit/room_crowding_audit.py`** (a report). For every set with a floor at grade it

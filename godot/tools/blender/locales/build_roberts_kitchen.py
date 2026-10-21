@@ -75,6 +75,27 @@ COL_TV_SCREEN      = (0.06, 0.10, 0.14, 1.0)
 ROOM_W = 8.0
 ROOM_D = 6.0
 CEIL_Z = 2.60
+# DRAFT N (2026-10-21, the Deck: "Certain interiors look poorly arranged and
+# cramped"). The house's kitchen, foyer, living room and dining room shared
+# one 8 x 6 m box: the island's stools stood at the foyer's coat rack, the
+# sofa and the TV in a 2.5 m corner, the dining table against the hutch
+# (room_crowding_audit: 18 pinches, 0.52 walkable). The house is 11 x 7.2
+# now and every zone moves out from the middle with plan.zoned: the living
+# room 1.5 m west, the dining room 1.5 m east, the kitchen's north run
+# 1.2 m north (its corners out with the side zones), the island 0.6 m
+# north; the foyer and the two partitions stay. The builders below were
+# authored against the 8 x 6 box and still read ROOM_W / ROOM_D as that
+# (main() hands them the old constants inside the zoned block); only the
+# shell is built at the new size.
+ROOM_W_NEW, ROOM_D_NEW = 11.0, 7.2
+ZONES = [
+    (-99.0, 4.60, -3.00, 99.0, -1.50, 1.20),    # the kitchen run's W corner (the plant)
+    (3.00, 4.60, 99.0, 99.0, 1.50, 1.20),       # its E corner (the trash)
+    (-99.0, 4.60, 99.0, 99.0, 0.00, 1.20),      # the kitchen run: counters, sink, stove, fridge, the yard past the window
+    (-99.0, -0.60, -1.60, 4.60, -1.50, 0.00),   # the living room (W of the partition at x -1.45)
+    (1.45, -0.60, 99.0, 4.60, 1.50, 0.00),      # the dining room (E of the partition at x 1.2 and the photos on its face)
+    (-1.15, 1.60, 1.10, 4.60, 0.00, 0.60),      # the island and its stools (clear of the W partition's frames)
+]
 
 
 from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
@@ -97,14 +118,15 @@ def build_shell():
               length=ROOM_W + 0.4, height=CEIL_Z, axis='X',
               palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1,
               openings=[(-2.0, 1.98, 1.30, 0.84)])
-    make_wall_with_openings("Wall_S_W", (-2.55, 0.0, 0),   # to the header's edge (2026-09-22: 40 cm short)
-              length=2.90, height=CEIL_Z, axis='X',
+    sl = ROOM_W / 2.0 - 1.10                     # each S wall: the corner to the header's edge
+    make_wall_with_openings("Wall_S_W", (-(1.10 + sl / 2.0), 0.0, 0),   # to the header's edge (2026-09-22: 40 cm short)
+              length=sl, height=CEIL_Z, axis='X',
               palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1,
-              openings=[(-2.8, 1.58, 1.40, 1.00)])
-    make_wall_with_openings("Wall_S_E", (+2.55, 0.0, 0),
-              length=2.90, height=CEIL_Z, axis='X',
+              openings=[(-4.3, 1.58, 1.40, 1.00)])   # the living room's window (moved W with it)
+    make_wall_with_openings("Wall_S_E", (+(1.10 + sl / 2.0), 0.0, 0),
+              length=sl, height=CEIL_Z, axis='X',
               palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1,
-              openings=[(2.0, 1.40, 1.40, 1.20)])
+              openings=[(3.5, 1.40, 1.40, 1.20)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (2.20, 0.20, 0.60), PAL_DOMESTIC_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL_Z),
@@ -127,7 +149,7 @@ def build_shell():
                            palette={"wood": COL_WOOD_TRIM})
     # Front window — east of door
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_SE", (+2.00, 0.10, 1.40),
+    make_window("Window_SE", (+3.50, 0.10, 1.40),
                 width=1.40, height=1.20, room_dir=+1)
     # Back-yard window (east wall, faces sage curtains)
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
@@ -920,24 +942,30 @@ def build_house_rooms_2026_10():
 
 
 def main():
+    global ROOM_W, ROOM_D
+    from _props.plan import zoned
     clear_scene()
+    ROOM_W, ROOM_D = ROOM_W_NEW, ROOM_D_NEW
     build_shell()
-    build_kitchen_island()
-    build_north_appliances()
-    build_kitchen_table_chairs()
-    build_living_room_tv_corner()
-    build_decor()
-    build_ceiling_infra()
+    ROOM_W, ROOM_D = 8.0, 6.0                    # what the zones were authored against
     out_path = os.path.normpath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/roberts_kitchen.glb"))
+    with zoned(ZONES):
+        build_kitchen_island()
+        build_north_appliances()
+        build_kitchen_table_chairs()
+        build_living_room_tv_corner()
+        build_decor()
+        build_ceiling_infra()
+        build_hero_props()
+        build_detail_pass_2026_08()
+        build_kitchen_bones_2026_10()
+        build_front_door_porch_2026_10()
+        build_proof_of_life_2026_10()
+        build_house_rooms_2026_10()
+    ROOM_W, ROOM_D = ROOM_W_NEW, ROOM_D_NEW
     print(f"\n[build_roberts_kitchen] exporting to {out_path}")
-    build_hero_props()
-    build_detail_pass_2026_08()
-    build_kitchen_bones_2026_10()
-    build_front_door_porch_2026_10()
-    build_proof_of_life_2026_10()
-    build_house_rooms_2026_10()
     export_glb(out_path)
 
 

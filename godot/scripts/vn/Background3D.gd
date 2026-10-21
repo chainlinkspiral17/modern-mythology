@@ -457,6 +457,10 @@ const CAMERA_PRESETS := {
 		# island, the dish rack and the open cabinet behind, the loom in
 		# the west corner, the east window at the frame's right. The
 		# 09-03 vantage from the SE corner put all of it out of frame.
+		# (2026-10-21) THE HOUSE GREW: 11×7.2 (godot x∈[-5.5,5.5], z∈[0,-7.2]),
+		# re-planned by zones (plan.zoned) — the living room 1.5 m W, the
+		# dining room 1.5 m E, the kitchen run 1.2 m N, the island 0.6 m N;
+		# the foyer and this vantage stay. The island no longer fills the lens.
 		"camera_origin": Vector3(0.55, 1.62, -0.85),
 		"camera_rotation": Vector3(-0.07, 0.12, 0.0),
 		"fov": 64.0,

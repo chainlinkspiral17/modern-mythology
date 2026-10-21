@@ -83,3 +83,73 @@ def shifted(g, dx, dy, extra=(), extra_paths=(), prefix="", dz=0.0, **consts):
         g.update(saved_g)
         for mod, n, f in saved_m:
             setattr(mod, n, f)
+
+
+@contextlib.contextmanager
+def zoned(regions):
+    """RE-PLAN BY REGION (2026-10-21, the Deck: "Certain interiors look poorly
+    arranged and cramped"). `shifted` moves one group rigidly, which needs
+    the group built in its own block; a room authored over many passes has
+    each zone's things spread through a dozen functions. Inside
+
+        with zoned([(x0, y0, x1, y1, dx, dy), ...]):
+            build_everything_but_the_shell()
+
+    every part whose PLAN CENTRE falls in a region (first match wins; x0 <=
+    x < x1, y0 <= y < y1) moves by that region's (dx, dy) — kit pieces and
+    all, because it moves what was BUILT, not the calls: in Blender the new
+    objects (by their world bounding-box centre), under the audit recorder
+    the boxes recorded inside the block (so every gate measures exactly the
+    room Blender exports). Build the shell (floor, walls, ceiling) outside
+    the block, sized to the new room. Parts outside every region stay put."""
+    def delta(cx, cy):
+        for (x0, y0, x1, y1, dx, dy) in regions:
+            if x0 <= cx < x1 and y0 <= cy < y1:
+                return dx, dy
+        return 0.0, 0.0
+
+    import sys
+    bpy = sys.modules.get("bpy")
+    real = bpy is not None and getattr(bpy, "app", None) is not None
+    rec = None
+    if not real:
+        for m in list(sys.modules.values()):
+            if getattr(m, "BOXES", None) is not None and hasattr(m, "install_stubs"):
+                rec = m
+                break
+    spheres = None
+    if not real:
+        for m in list(sys.modules.values()):
+            if isinstance(getattr(m, "SPHERES", None), dict) and hasattr(m, "record_builder"):
+                spheres = m.SPHERES
+                break
+    if real:
+        before = set(o.name for o in bpy.data.objects)
+    n0 = len(rec.BOXES) if rec else 0
+    s0 = set(spheres) if spheres is not None else set()
+    try:
+        yield
+    finally:
+        if real:
+            from mathutils import Vector
+            for o in bpy.data.objects:
+                if o.name in before or o.parent is not None:
+                    continue
+                cs = [o.matrix_world @ Vector(c) for c in o.bound_box]
+                dx, dy = delta(sum(c.x for c in cs) / 8.0, sum(c.y for c in cs) / 8.0)
+                if dx or dy:
+                    o.location.x += dx
+                    o.location.y += dy
+        elif rec is not None:
+            moved = {}
+            for i in range(n0, len(rec.BOXES)):
+                n, c, h = rec.BOXES[i]
+                dx, dy = delta(c[0], c[1])
+                if dx or dy:
+                    rec.BOXES[i] = (n, (c[0] + dx, c[1] + dy, c[2]), h)
+                    moved[n] = (dx, dy)
+            if spheres is not None:
+                for n in set(spheres) - s0:
+                    if n in moved:
+                        (cc, r), (dx, dy) = spheres[n], moved[n]
+                        spheres[n] = ((cc[0] + dx, cc[1] + dy, cc[2]), r)

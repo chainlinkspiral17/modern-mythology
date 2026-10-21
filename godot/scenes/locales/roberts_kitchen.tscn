@@ -188,7 +188,7 @@ light_energy = 0.3
 shadow_enabled = false
 
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -4.1)
 light_color = Color(0.98, 0.94, 0.82, 1)
 light_energy = 1.0
 shadow_enabled = false
@@ -196,7 +196,7 @@ omni_range = 4.5
 
 ; Cool back-yard spill through the E window (blender 3.96,3.5,1.55)
 [node name="Practical_WindowE" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.55, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 1.55, -3.5)
 light_color = Color(0.72, 0.82, 0.94, 1)
 light_energy = 0.9
 shadow_enabled = false
@@ -206,7 +206,7 @@ omni_range = 3.5
 ; Every practical is tied to a fixture in the GLB (lighting playbook).
 ; CRT glow — the set is in the LIVING ROOM now, on its east wall, facing west
 [node name="Practical_CRT" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 0.85, -2.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.85, -2.65)
 light_color = Color(0.66, 0.80, 0.92, 1)
 light_energy = 0.45
 shadow_enabled = false
@@ -214,7 +214,7 @@ omni_range = 2.0
 
 ; the floor lamp by the sofa (blender -1.62, 0.50, shade 1.68)
 [node name="Practical_FloorLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62, 1.55, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12, 1.55, -0.5)
 light_color = Color(1.0, 0.86, 0.62, 1)
 light_energy = 1.1
 shadow_enabled = false
@@ -222,7 +222,7 @@ omni_range = 3.6
 
 ; the side lamp by the armchair (blender -2.05, 3.17, 0.90)
 [node name="Practical_SideLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05, 0.92, -3.17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55, 0.92, -3.17)
 light_color = Color(1.0, 0.84, 0.58, 1)
 light_energy = 0.6
 shadow_enabled = false
@@ -230,7 +230,7 @@ omni_range = 2.4
 
 ; the pendant over the dining table (blender 2.55, 1.95, bulb 1.80)
 [node name="Practical_DiningPendant" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 1.72, -1.95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 1.72, -1.95)
 light_color = Color(1.0, 0.82, 0.56, 1)
 light_energy = 1.2
 shadow_enabled = false
@@ -369,29 +369,29 @@ script = ExtResource("14_dbgm")
 ; front door south centre (0,0); east window (4.16,3.5,1.55).
 
 [node name="cast_sink" type="Marker3D" parent="." groups=["vn_cast"]]
-position = Vector3(-2.0, 0, -4.9)
+position = Vector3(-2.0, 0, -6.1)
 rotation = Vector3(0, 3.1416, 0)
 
 [node name="cast_doorframe" type="Marker3D" parent="." groups=["vn_cast"]]
 position = Vector3(0, 0, -0.5)
 
 [node name="shot_insert_faucet" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.0, 1.35, -4.3)
+position = Vector3(-2.0, 1.35, -5.5)
 rotation = Vector3(-0.25, 0, 0)
 metadata/fov = 30.0
 
 [node name="shot_closeup_philip" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.000, 1.768, -3.268)
+position = Vector3(-2.000, 1.768, -4.468)
 rotation = Vector3(-0.2618, 0.0000, 0.0)
 metadata/fov = 34.0
 
 [node name="shot_closeup_mackenzie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.2, 1.4, -2.6)
+position = Vector3(1.2, 1.4, -3.2)
 rotation = Vector3(-0.175, -2.273, 0)
 metadata/fov = 34.0
 
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.2, 1.5, -3.5)
+position = Vector3(4.7, 1.5, -3.5)
 rotation = Vector3(-0.5901, -2.2083, 0.0)
 metadata/fov = 32.0
 
@@ -403,7 +403,7 @@ rotation = Vector3(-0.12, 3.1416, 0)
 metadata/fov = 42.0
 
 [node name="shot_closeup_boy" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.8, 1.2, -0.6)
+position = Vector3(5.3, 1.2, -0.6)
 rotation = Vector3(-0.125, 0.965, 0)
 metadata/fov = 36.0
 

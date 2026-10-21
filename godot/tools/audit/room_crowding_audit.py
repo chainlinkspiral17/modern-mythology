@@ -157,22 +157,39 @@ def measure(boxes):
     walk = _dilate(core, r) & free
     fa = float(floor.sum())
     # pinches: pairs of floor pieces (grouped by assembly token) 0.10-0.55 apart
-    groups = {}
+    # one OBJECT per cluster of touching parts of the same family (first
+    # name token): every Outlet_* in a room is not one outlet spanning it
+    # (2026-10-21: the first version grouped by token alone). Wall fittings
+    # are not furniture.
+    fit = re.compile(r"(outlet|switch|thermostat|vent|plate|hinge|knob|handle|pull|hook|baseboard|trim|casing)", re.I)
+    objs = []                      # [token, x0, y0, x1, y1]
     for n, c, h in pieces:
+        if fit.search(n):
+            continue
         k = n.split("_")[0]
-        g = groups.setdefault(k, [c[0] - h[0], c[1] - h[1], c[0] + h[0], c[1] + h[1]])
-        g[0] = min(g[0], c[0] - h[0]); g[1] = min(g[1], c[1] - h[1])
-        g[2] = max(g[2], c[0] + h[0]); g[3] = max(g[3], c[1] + h[1])
-    keys = [k for k, g in groups.items() if (g[2] - g[0]) * (g[3] - g[1]) >= 0.04]
+        b = [k, c[0] - h[0], c[1] - h[1], c[0] + h[0], c[1] + h[1]]
+        merged = True
+        while merged:
+            merged = False
+            for o in objs:
+                if o[0] == k and o[1] - 0.02 <= b[3] and b[1] - 0.02 <= o[3] and o[2] - 0.02 <= b[4] and b[2] - 0.02 <= o[4]:
+                    b = [k, min(o[1], b[1]), min(o[2], b[2]), max(o[3], b[3]), max(o[4], b[4])]
+                    objs.remove(o)
+                    merged = True
+                    break
+        objs.append(b)
+    objs = [o for o in objs if (o[3] - o[1]) * (o[4] - o[2]) >= 0.04]
     pinches = []
-    for i in range(len(keys)):
-        for j in range(i + 1, len(keys)):
-            a, b = groups[keys[i]], groups[keys[j]]
-            gx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
-            gy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
+    for i in range(len(objs)):
+        for j in range(i + 1, len(objs)):
+            a, b = objs[i], objs[j]
+            if a[0] == b[0]:
+                continue           # a set's own pieces (two chairs of a table) stand close on purpose
+            gx = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
+            gy = max(0.0, max(a[2], b[2]) - min(a[4], b[4]))
             gap = (gx * gx + gy * gy) ** 0.5
             if PINCH[0] <= gap <= PINCH[1]:
-                pinches.append((round(gap, 2), keys[i], keys[j]))
+                pinches.append((round(gap, 2), a[0], b[0]))
     return {"floor": round(fa * CELL * CELL, 1),
             "filled": round(float((obst & floor).sum()) / fa, 3),
             "walk": round(float(walk.sum()) / fa, 3),

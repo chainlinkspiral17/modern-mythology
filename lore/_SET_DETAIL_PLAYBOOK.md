@@ -84,6 +84,28 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-21 · re-plan by region: `plan.zoned`
+
+**Context:** the Roberts house's four zones shared one 8 × 6 m box, and each
+zone's things were spread through a dozen builder functions written over
+many passes.
+
+**Rules:**
+- Draw the plan before moving anything. A top-down render of the recorded
+  boxes, with walls dark and furniture labelled, shows the zones and the
+  partitions in a minute.
+- Grow the box, then move each zone OUT from the fixed middle with
+  `plan.zoned` (first match wins). Keep the foyer and the partitions fixed;
+  give each side its own region. Build the shell outside the block at the
+  new size, and hand the block the OLD ROOM_W / ROOM_D, or the
+  `ROOM_D + 0.12` pieces move twice.
+- Draw region lines in free floor, never along a partition. Wall-hung
+  frames sit 5–10 cm off their partition, and a line between them strands
+  them. `support_audit` catches it.
+- Lamps move by their fixture's zone. Shot markers move by their SUBJECT's
+  zone, not their own. A lens in the living room filming the sink follows
+  the sink.
+
 ### 2026-10-21 · "cramped and poorly arranged" is usually the ARRANGEMENT, and the prose has it
 
 **Context:** the Deck: "Certain interiors look poorly arranged and cramped."
