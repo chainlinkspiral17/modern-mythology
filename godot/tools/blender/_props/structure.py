@@ -92,7 +92,7 @@ def make_frame_ring(prefix, center, size, color, *, bar=0.06, depth=0.10):
 
 
 def make_wall_with_openings(prefix, anchor, *, length, openings, height=3.0, thickness=0.20,
-                            axis='Y', palette=None, baseboard_face_sign=-1):
+                            axis='Y', palette=None, baseboard_face_sign=-1, base_z=0.0):
     """make_wall with HOLES in it (2026-10-03). `openings` is a list of
     (centre_along, z_centre, width, opening_height) — centre_along is the
     opening's centre on the wall's axis (x for an X wall, y for a Y wall).
@@ -100,7 +100,11 @@ def make_wall_with_openings(prefix, anchor, *, length, openings, height=3.0, thi
     baseboard) and a lintel over each. A window built with make_window on
     a wall that is not cut is a pane on a wall: nothing beyond it can be
     seen (every window in every apartment was that until Montreal's
-    drainpipe insert looked straight into Wall_N)."""
+    drainpipe insert looked straight into Wall_N).
+
+    base_z (2026-10-21): the floor the wall stands on, for rooms stacked
+    above z 0 (the Cedar Tower's floors at 5, 10, 15); the openings'
+    z_centre is measured from it."""
     palette = palette or {}
     wall_col = palette.get("wall", P.WALL_CREAM)
     base_col = palette.get("baseboard", P.WALL_BASEBOARD)
@@ -110,15 +114,15 @@ def make_wall_with_openings(prefix, anchor, *, length, openings, height=3.0, thi
     def seg(name, a0, a1, z0, z1, base):
         if a1 - a0 <= 0.005 or z1 - z0 <= 0.005:
             return
-        mid, ln, zc, h = (a0 + a1) / 2.0, a1 - a0, (z0 + z1) / 2.0, z1 - z0
+        mid, ln, zc, h = (a0 + a1) / 2.0, a1 - a0, base_z + (z0 + z1) / 2.0, z1 - z0
         if axis == 'Y':
             make_box(name, (cx, mid, zc), (thickness, ln, h), wall_col)
             if base and z0 < 0.01:
-                make_box(f"{name}_Base", (cx + baseboard_face_sign * (thickness / 2.0 + 0.006), mid, 0.08), (0.012, ln, 0.16), base_col)
+                make_box(f"{name}_Base", (cx + baseboard_face_sign * (thickness / 2.0 + 0.006), mid, base_z + 0.08), (0.012, ln, 0.16), base_col)
         else:
             make_box(name, (mid, cy, zc), (ln, thickness, h), wall_col)
             if base and z0 < 0.01:
-                make_box(f"{name}_Base", (mid, cy + baseboard_face_sign * (thickness / 2.0 + 0.006), 0.08), (ln, 0.012, 0.16), base_col)
+                make_box(f"{name}_Base", (mid, cy + baseboard_face_sign * (thickness / 2.0 + 0.006), base_z + 0.08), (ln, 0.012, 0.16), base_col)
     cursor = along0
     for i, (oc, oz, ow, oh) in enumerate(cuts):
         a0, a1 = oc - ow / 2.0, oc + ow / 2.0

@@ -26,12 +26,21 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
+from _props.structure import make_floor, make_wall, make_ceiling, make_wall_with_openings, make_window
+from _props.views import make_view
 
 # ── Single-bay garage footprint ──
 ROOM_W = 5.6      # x ∈ [-2.8, 2.8]
 ROOM_D = 5.8      # y ∈ [0, 5.8]  (open door at y=0)
 CEIL = 2.7
+
+# THE WINDOWS (2026-10-21, the Deck: "interiors need more windows" / "still
+# in the too boxy phase"). A Harmony Creek tract garage: a side window to
+# the side yard over the milk crate (E wall), and a small one in the back
+# wall over the mower, onto the back fence. Plain aluminium, no casing — a
+# garage is unfinished. (along, z, w, h) per make_wall_with_openings.
+WIN_E = (4.45, 1.55, 1.10, 0.90)
+WIN_N = (-1.75, 1.60, 0.95, 0.80)
 
 COL_WALL = (0.62, 0.60, 0.55, 1.0)      # unpainted drywall grey-tan
 COL_BASE = (0.40, 0.38, 0.34, 1.0)
@@ -71,11 +80,21 @@ def build_shell():
     # One faint oil stain — the floor is otherwise swept (ch5 canon).
     make_box("Floor_OilStain", (0.9, 4.2, 0.005), (0.7, 0.9, 0.004), COL_STAIN)
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
-                  axis='Y', palette=pal, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+              axis='Y', palette=pal, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
+                            openings=[WIN_E], height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4,
+                            openings=[WIN_N], height=CEIL, axis='X', palette=pal, baseboard_face_sign=-1)
+    alu = {"frame": (0.70, 0.71, 0.72, 1.0)}
+    make_window("Win_E", (ROOM_W / 2.0 - 0.10, WIN_E[0], WIN_E[1]), width=WIN_E[2] - 0.12, height=WIN_E[3] - 0.10,
+                axis='Y', room_dir=-1, palette=alu, trim=False)
+    make_window("Win_N", (WIN_N[0], ROOM_D - 0.10, WIN_N[1]), width=WIN_N[2] - 0.12, height=WIN_N[3] - 0.10,
+                axis='X', room_dir=-1, palette=alu, trim=False)
+    # what the windows see: the side yard's fence and the neighbour's
+    # wall; the back yard and the houses over the back fence
+    make_view("View_E", "E", ROOM_W / 2.0 + 0.10, 3.0, kind="side", ground_z=0.0, seed=4)
+    make_view("View_N", "N", ROOM_D + 0.10, 0.0, kind="back", ground_z=0.0, seed=7)
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
     # South header above the door opening

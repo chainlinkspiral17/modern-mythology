@@ -32,6 +32,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.structure import make_wall_with_openings, make_window, make_curtains
 
 CEDAR = (0.58, 0.42, 0.28, 1.0)          # polished cedar
 CEDAR_PANEL = (0.52, 0.38, 0.25, 1.0)
@@ -46,28 +47,79 @@ POSTER_TINTS = [(0.36, 0.50, 0.58, 1.0), (0.62, 0.48, 0.30, 1.0), (0.34, 0.46, 0
 FRAME = (0.24, 0.18, 0.13, 1.0)
 GRAVEL = (0.52, 0.48, 0.42, 1.0)
 SITKA = (0.12, 0.22, 0.16, 1.0)
+WIN_PAL = {"frame": (0.36, 0.26, 0.17, 1.0), "casing": (0.62, 0.46, 0.31, 1.0)}
+
+# THE WINDOWS (2026-10-21). Canon: "Smart-glass on the upper six floors"
+# (the outside renders the setting onto itself; from inside it is glass),
+# and "Dean alone at the studio's south window looking at the ocean". The
+# ground floor is cedar paneling with windows cut in it. Windows face N
+# and W only: the exterior set (x 45) stands to the east of these rooms in
+# the same GLB, and an east window would look at the tower from inside it.
+LOBBY_WIN_W = [(2.6, 1.95, 1.50, 2.30), (5.3, 1.95, 1.50, 2.30)]
+LOBBY_WIN_N = [(-3.4, 1.95, 1.40, 2.30), (3.6, 2.10, 1.40, 2.00)]
+STUDIO_WIN_N = [(-4.2, 2.48, 2.40, 0.62), (-1.4, 2.48, 2.40, 0.62), (1.4, 2.48, 2.40, 0.62), (4.2, 2.48, 2.40, 0.62)]
+STUDIO_WIN_S = [(-2.2 - (-3.5), 1.45, 2.10, 1.90)]   # along the S_W wall piece (centre -3.5)
+QUARTERS_WIN_N = [(-2.6, 1.50, 1.70, 1.45), (0.0, 1.50, 1.70, 1.45), (2.6, 1.50, 1.70, 1.45)]
 
 
-def _room(prefix, z0, w, d, ceil):
-    """Cedar-paneled floor plate: floor, walls (S door gap), ceiling."""
+def _room(prefix, z0, w, d, ceil, openings=None):
+    """Cedar-paneled floor plate: floor, walls (S door gap), ceiling.
+    `openings` (2026-10-21, the Deck: "interiors need more windows" /
+    "still in the too boxy phase"): {"N"|"W"|"S_W": [(along, z, w, h)]}
+    cuts those walls for windows (z from the floor)."""
+    openings = openings or {}
+    pal = {"wall": CEDAR_PANEL, "baseboard": CEDAR_DK}
     make_box(f"{prefix}_Floor", (0.0, d/2.0, z0 + 0.02), (w + 0.4, d + 0.4, 0.06), CEDAR)
-    for nm, x in ((f"{prefix}_Wall_W", -w/2.0), (f"{prefix}_Wall_E", w/2.0)):
-        make_box(nm, (x, d/2.0, z0 + ceil/2.0), (0.20, d + 0.4, ceil), CEDAR_PANEL)
-    make_box(f"{prefix}_Wall_N", (0.0, d, z0 + ceil/2.0), (w + 0.4, 0.20, ceil), CEDAR_PANEL)
-    for nm, cx, ww in ((f"{prefix}_Wall_S_W", -(w/4.0 + 0.5), w/2.0 - 1.0),
-                       (f"{prefix}_Wall_S_E", +(w/4.0 + 0.5), w/2.0 - 1.0)):
-        make_box(nm, (cx, 0.0, z0 + ceil/2.0), (ww, 0.20, ceil), CEDAR_PANEL)
+    for side, nm, x in (("W", f"{prefix}_Wall_W", -w/2.0), ("E", f"{prefix}_Wall_E", w/2.0)):
+        if side in openings:
+            make_wall_with_openings(nm, (x, d/2.0, z0), length=d + 0.4, openings=openings[side],
+                                    height=ceil, axis='Y', palette=pal,
+                                    baseboard_face_sign=(1 if side == "W" else -1), base_z=z0)
+        else:
+            make_box(nm, (x, d/2.0, z0 + ceil/2.0), (0.20, d + 0.4, ceil), CEDAR_PANEL)
+    if "N" in openings:
+        make_wall_with_openings(f"{prefix}_Wall_N", (0.0, d, z0), length=w + 0.4, openings=openings["N"],
+                                height=ceil, axis='X', palette=pal, baseboard_face_sign=-1, base_z=z0)
+    else:
+        make_box(f"{prefix}_Wall_N", (0.0, d, z0 + ceil/2.0), (w + 0.4, 0.20, ceil), CEDAR_PANEL)
+    for side, nm, cx, ww in (("S_W", f"{prefix}_Wall_S_W", -(w/4.0 + 0.5), w/2.0 - 1.0),
+                             ("S_E", f"{prefix}_Wall_S_E", +(w/4.0 + 0.5), w/2.0 - 1.0)):
+        if side in openings:
+            make_wall_with_openings(nm, (cx, 0.0, z0), length=ww, openings=openings[side],
+                                    height=ceil, axis='X', palette=pal, baseboard_face_sign=1, base_z=z0)
+        else:
+            make_box(nm, (cx, 0.0, z0 + ceil/2.0), (ww, 0.20, ceil), CEDAR_PANEL)
     make_box(f"{prefix}_Wall_S_Header", (0.0, 0.0, z0 + ceil - 0.30), (2.0, 0.20, 0.60), CEDAR_PANEL)
     make_box(f"{prefix}_Ceil", (0.0, d/2.0, z0 + ceil), (w + 0.4, d + 0.4, 0.06), CEDAR_DK)
-    # Panel seams: vertical cedar batten rhythm on the N wall
+    # Panel seams: vertical cedar batten rhythm on the N wall (not
+    # across a window)
     for i in range(int(w // 1.0)):
         bx = -w/2.0 + 0.6 + i * 1.0
+        if any(abs(bx - oc) < ow / 2.0 + 0.20 for oc, _, ow, _ in openings.get("N", ())):
+            continue
         make_box(f"{prefix}_Batten_{i}", (bx, d - 0.11, z0 + ceil/2.0), (0.05, 0.02, ceil - 0.2), CEDAR_DK)
+
+
+def _windows(prefix, z0, wall, line, cuts, *, trim=True, curtains=None):
+    """A cedar-framed window in each cut made by _room. wall 'N' | 'W' |
+    'S'; line = the wall's room-side face (y for N/S, x for W)."""
+    along_y = wall == "W"
+    room_dir = {"N": -1, "S": +1, "W": +1}[wall]
+    for k, (oc, oz, ow, oh) in enumerate(cuts):
+        anchor = (line, oc, z0 + oz) if along_y else (oc, line, z0 + oz)
+        make_window(f"{prefix}_{k}", anchor, width=ow - 0.20, height=oh - 0.10,
+                    axis=('Y' if along_y else 'X'), room_dir=room_dir, palette=WIN_PAL, trim=trim)
+        if curtains:
+            make_curtains(f"{prefix}_{k}_Curtain", anchor, width=ow - 0.20, height=oh - 0.10,
+                          axis=('Y' if along_y else 'X'), room_dir=room_dir, color=curtains,
+                          rod_col=BRASS)
 
 
 def build_lobby():
     z0 = 0.0; W, D, C = 10.0, 8.0, 3.66   # twelve-foot ceiling
-    _room("Lobby", z0, W, D, C)
+    _room("Lobby", z0, W, D, C, openings={"W": LOBBY_WIN_W, "N": LOBBY_WIN_N})
+    _windows("Lobby_Win_W", z0, "W", -W/2.0 + 0.10, LOBBY_WIN_W)
+    _windows("Lobby_Win_N", z0, "N", D - 0.10, LOBBY_WIN_N)
     # Double doors, S center (open from the inside — no panel)
     for sgn in (-1, 1):
         make_box(f"Lobby_Door_{sgn:+d}", (sgn * 0.5, 0.06, z0 + 1.25), (0.95, 0.06, 2.50), CEDAR_DK)
@@ -95,7 +147,11 @@ def build_lobby():
 
 def build_studio():
     z0 = 5.0; W, D, C = 12.0, 9.0, 3.0
-    _room("Studio", z0, W, D, C)
+    _room("Studio", z0, W, D, C, openings={"N": STUDIO_WIN_N, "S_W": STUDIO_WIN_S})
+    # the glass band over the racks (no stool: the racks stand under it)
+    _windows("Studio_Win_N", z0, "N", D - 0.10, STUDIO_WIN_N, trim=False)
+    # the canon south window, in the poster run
+    _windows("Studio_Win_S", z0, "S", 0.10, [(-2.2, 1.45, 2.10, 1.90)])
     # Server racks along the N wall, green indicator lights
     for ri in range(5):
         rx = -4.6 + ri * 2.3
@@ -117,7 +173,8 @@ def build_studio():
     # THE POSTER ARCHIVE: floor-to-ceiling framed slowstick posters,
     # S + W walls
     idx = 0
-    for wall, coords in (("S", [(x, 0.13) for x in (-5.2, -4.0, -2.8, -1.6, 1.6, 2.8, 4.0, 5.2)]),
+    # (2026-10-21: -2.8 and -1.6 gave way to the south window)
+    for wall, coords in (("S", [(x, 0.13) for x in (-5.2, -4.0, 1.6, 2.8, 4.0, 5.2)]),
                          ("W", [(-5.87, y) for y in (1.2, 2.4, 3.6, 4.8, 6.0, 7.2)])):
         for (px, py) in coords:
             for row, pz in enumerate((z0 + 0.85, z0 + 2.05)):
@@ -144,7 +201,8 @@ def build_studio():
 
 def build_quarters():
     z0 = 10.0; W, D, C = 12.0, 8.0, 2.9
-    _room("Quarters", z0, W, D, C)
+    _room("Quarters", z0, W, D, C, openings={"N": QUARTERS_WIN_N})
+    _windows("Quarters_Win_N", z0, "N", D - 0.10, QUARTERS_WIN_N, curtains=(0.56, 0.50, 0.40, 1.0))
     # Bunks along the W wall — three doubles
     for bi, by in enumerate((1.6, 3.8, 6.0)):
         make_box(f"Bunk_{bi}_Frame", (-5.1, by, z0 + 0.85), (1.1, 2.0, 1.70), CEDAR_DK)
@@ -379,26 +437,38 @@ def build_exterior():
     garden."""
     X = 45.0
     make_box("Ext_Gravel", (X, -4.0, 0.0), (30.0, 38.0, 0.06), GRAVEL)   # the clearing runs south under the establish (2026-09-30)
-    # The tower: 8×8 footprint, seven floors
+    # The tower: SEVENTY FEET ON A SIDE (canon: "seventy feet on a side at
+    # the ground floor. Square. Seven stories." 2026-10-21: it stood 8 m
+    # square — a column, a third of the book's building), seven floors
+    TY, TS = 18.0, 21.3
     for f in range(7):
         fz = f * 3.7
         # "Tower_Cedar", not "Tower_Band" (2026-09-30): the vantage audit
         # reads any "band" as a far horizon band, so the tower's floors
         # were invisible to it and the establish read EMPTY
-        make_box(f"Tower_Cedar_{f}", (X, 12.0, fz + 1.1), (8.0, 8.0, 2.2), CEDAR_PANEL)
+        make_box(f"Tower_Cedar_{f}", (X, TY, fz + 1.1), (TS, TS, 2.2), CEDAR_PANEL)
         glass_col = (0.34, 0.55, 0.40, 0.9) if f == 6 else GLASS
-        make_box(f"Tower_Glass_{f}", (X, 12.0, fz + 2.95), (8.15, 8.15, 1.5), glass_col)   # band to band (2026-09-22: 20 cm of air under each floor)
-    make_box("Tower_Cap", (X, 12.0, 7 * 3.7 + 0.2), (8.4, 8.4, 0.4), CEDAR_DK)
+        make_box(f"Tower_Glass_{f}", (X, TY, fz + 2.95), (TS + 0.15, TS + 0.15, 1.5), glass_col)   # band to band (2026-09-22: 20 cm of air under each floor)
+        # mullions: the smart glass is PANES, a seam every 3 m round the
+        # four faces (the seaward + inland faces render the setting; the
+        # seams are what gives the rendering away up close)
+        for k in range(1, 7):
+            u = -TS / 2.0 + k * TS / 7.0
+            for nm, c, sz in (("S", (X + u, TY - TS / 2.0 - 0.10, fz + 2.95), (0.10, 0.06, 1.5)),
+                              ("W", (X - TS / 2.0 - 0.10, TY + u, fz + 2.95), (0.06, 0.10, 1.5)),
+                              ("E", (X + TS / 2.0 + 0.10, TY + u, fz + 2.95), (0.06, 0.10, 1.5))):
+                make_box(f"Tower_Mullion_{f}_{nm}{k}", c, sz, CEDAR_DK)
+    make_box("Tower_Cap", (X, TY, 7 * 3.7 + 0.2), (TS + 0.4, TS + 0.4, 0.4), CEDAR_DK)
     # Garden silhouettes behind the seventh floor's glass
-    for gi, gx in enumerate((-2.4, -0.6, 1.2, 2.8)):
-        make_box(f"Garden_Green_{gi}", (X + gx, 7.90, 6 * 3.7 + 2.8), (1.0, 0.10, 0.9 + 0.2 * (gi % 2)),
+    for gi, gx in enumerate((-7.5, -4.2, -1.0, 2.4, 5.6, 8.4)):
+        make_box(f"Garden_Green_{gi}", (X + gx, TY - (TS + 0.15) / 2.0 - 0.025, 6 * 3.7 + 2.8), (1.6, 0.10, 0.9 + 0.2 * (gi % 2)),
                  (0.28, 0.48, 0.30, 1.0))
     # Double doors at the base, S face
     for sgn in (-1, 1):
         # 2.1 m, inside the ground floor's 2.2 m cedar band (2026-09-30: at
         # 2.5 m their tops ran into the glass band above, so the doorway
         # gate could not read the tower as their wall)
-        make_box(f"Tower_Door_{sgn:+d}", (X + sgn * 0.5, 7.94, 1.05), (0.95, 0.06, 2.10), CEDAR_DK)
+        make_box(f"Tower_Door_{sgn:+d}", (X + sgn * 0.5, TY - TS / 2.0 - 0.06, 1.05), (0.95, 0.06, 2.10), CEDAR_DK)
     # The wagon in the clearing
     wx, wy = X - 6.0, 2.5
     make_box("Wagon_Body", (wx, wy, 0.95), (1.95, 4.4, 1.15), (0.36, 0.40, 0.38, 1.0))
@@ -410,7 +480,7 @@ def build_exterior():
     # The Sitka ring around the clearing
     for i in range(10):
         tx = X - 13.0 + (i * 41) % 27
-        ty = -3.0 if i % 2 == 0 else 20.0 + (i % 3) * 2.0
+        ty = -3.0 if i % 2 == 0 else 33.0 + (i % 3) * 2.5   # behind the 21 m tower (2026-10-21)
         h = 9.0 + (i * 3) % 4
         # 2026-08-04: crowns were BOXES. Real spruce silhouettes.
         from _props.trees import make_conifer
@@ -432,14 +502,14 @@ def build_drone_dock_2026_08():
     from _props.drones import make_drone_dock, make_drone
     X = 45.0
     # Rack on the clearing's north edge, beside the tower's base.
-    make_drone_dock("DroneDock", X - 11.5, 7.0, 0.06, n=3,
+    make_drone_dock("DroneDock", X - 14.0, 5.0, 0.06, n=3,   # clear of the 21 m tower (2026-10-21)
                     occupied=(True, False, True))
     # The late unit on approach — low over the gravel, arm stowed,
     # nose toward the empty cradle.
     make_drone("Drone_Inbound", X - 6.4, 1.2, 3.9)
     # A second working the tower's fourth-floor glass band (they
     # repair the buildings they belong to).
-    make_drone("Drone_Glazier", X + 5.2, 7.6, 12.4, arm_down=True,
+    make_drone("Drone_Glazier", X + 5.2, 6.3, 12.4, arm_down=True,
                yaw_flip=True)
 
 
@@ -517,7 +587,7 @@ def build_hero_props_2026_09():
 
     THE CREDIT ("Kai pointed at the Tideline Survey poster's
     lower-right corner. The credit read:") — a credit line on the
-    lower-right of the studio's Poster_S_9. Photograph (Dean's
+    lower-right of the studio's S poster at x 1.6 (lower row). Photograph (Dean's
     portrait), estuary_7, the portal door and window exist —
     markers only."""
     # ON the poster's face, printed pale (2026-09-24: at y 0.105 it sat inside
@@ -551,15 +621,41 @@ def build_horizon_2026_08():
     # GROUND under everything out past the last band (2026-08-09,
     # user: "no ground on any of the roads — a flat expanse of
     # nothing"). Locale-colored so exteriors stop sharing a void.
-    make_box("Ground_Far", (0.0, 0.0, -0.03), (1080.0, 1080.0, 0.02),
+    # The ground stops at the bluff's edge west of the floors (2026-10-21):
+    # the tower is "on top of the bluff" with the ocean seaward, and the
+    # new west windows look out at it — so the land runs to x -34, a rock
+    # face drops 24 m, and the September ocean runs to the horizon.
+    BLUFF_X, SEA_Z = -34.0, -24.0
+    make_box("Ground_Far", ((BLUFF_X + 540.0) / 2.0, 0.0, -0.03), (540.0 - BLUFF_X, 1080.0, 0.02),
              (0.20, 0.24, 0.16, 1.0))
+    make_box("Bluff_Face", (BLUFF_X - 0.6, 0.0, SEA_Z / 2.0 - 0.02), (1.2, 1080.0, -SEA_Z), (0.34, 0.31, 0.27, 1.0))
+    for k, (by, bw) in enumerate(((-30.0, 9.0), (-8.0, 6.0), (14.0, 11.0), (38.0, 7.0))):
+        # spurs of the bluff stepping out into the surf, so the edge is not
+        # a ruled line
+        make_box(f"Bluff_Spur_{k}", (BLUFF_X - 2.4 - (k % 2) * 1.2, by, SEA_Z / 2.0 - 1.5 - (k % 2) * 2.0),
+                 (3.6 + (k % 2) * 2.4, bw, -SEA_Z - 3.0 - (k % 2) * 4.0), (0.30, 0.28, 0.25, 1.0))
+    make_box("Sea", (BLUFF_X - 500.0, 0.0, SEA_Z), (1000.0, 1080.0, 0.04), (0.30, 0.40, 0.46, 1.0))
+    make_box("Sea_Surf", (BLUFF_X - 6.0, 0.0, SEA_Z + 0.03), (5.0, 1080.0, 0.02), (0.74, 0.78, 0.78, 1.0))
     from _props.detail import make_far_bands
-    make_far_bands("FarTown", (0.30, 0.28, 0.27),
-                   [(60.0, 70.0, 7.0, 0.90), (130.0, 110.0, 8.5, 0.72)],
-                   profile="roofline")
-    make_far_bands("FarWood", (0.16, 0.24, 0.15),
-                   [(250.0, 200.0, 12.0, 0.56), (460.0, 330.0, 15.0, 0.42)],
-                   profile="treeline")
+    # the horizon bands stop at the bluff's edge: N and S bands run from
+    # x -33.9 east, the E bands as before; nothing hangs over the sea
+    for nm, col, bands, prof in (("FarTown", (0.30, 0.28, 0.27), [(60.0, 70.0, 7.0, 0.90), (130.0, 110.0, 8.5, 0.72)], "roofline"),
+                                 ("FarWood", (0.16, 0.24, 0.15), [(250.0, 200.0, 12.0, 0.56), (460.0, 330.0, 15.0, 0.42)], "treeline")):
+        make_far_bands(nm, col, bands, profile=prof, sides="E")
+        for k, (dist, half, h, shade) in enumerate(bands):
+            half_ns = (half - BLUFF_X - 0.1) / 2.0
+            make_far_bands(f"{nm}_NS{k}", col, [(dist, half_ns, h, shade)], profile=prof, sides="NS",
+                           cx=BLUFF_X + 0.1 + half_ns)
+    # The cedars round the tower's own floors, seen from the new N and W
+    # windows ("the inland face showing the cedars"): tall Sitka and
+    # cedar between the floors and the bluff's edge, and a stand north.
+    from _props.trees import make_conifer
+    for i, (tx, ty, th) in enumerate(((-15.0, -4.0, 24.0), (-21.0, 6.5, 30.0), (-17.5, 15.0, 27.0),
+                                      (-26.0, 21.0, 22.0), (-13.5, 27.0, 31.0), (-6.0, 32.0, 26.0),
+                                      (3.5, 35.0, 29.0), (10.5, 30.0, 24.0), (15.0, 38.0, 30.0),
+                                      (-24.0, -14.0, 26.0))):
+        make_conifer(f"Bluff_Cedar_{i}", tx, ty, th, SITKA if i % 2 else (0.14, 0.24, 0.17, 1.0),
+                     (0.30, 0.24, 0.18, 1.0), skirt=0.22)
 
 
 if __name__ == "__main__":

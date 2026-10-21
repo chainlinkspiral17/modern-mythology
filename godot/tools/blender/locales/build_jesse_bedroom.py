@@ -20,6 +20,7 @@ from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_
 from _props.furniture import make_bed
 
 ROOM_W = 4.8; ROOM_D = 5.1; CEIL = 2.6
+WIN_W = (3.0, 1.50, 1.10, 1.10)   # (along y, z, w, h) — the west window's cut
 # Plum-charcoal walls, amber accent — dark and warm, a practice-space vibe.
 PAL_WALL = {"wall": (0.34, 0.29, 0.33, 1.0), "baseboard": (0.20, 0.16, 0.18, 1.0)}
 COL_FLOOR = (0.34, 0.28, 0.24, 1.0); COL_CARPET = (0.40, 0.36, 0.38, 1.0); COL_SEAM = (0.20, 0.16, 0.14, 1.0); COL_WOOD = (0.40, 0.30, 0.20, 1.0)
@@ -30,9 +31,14 @@ COL_BLANKET = (0.52, 0.30, 0.28, 1.0)    # warm rust futon blanket
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_CARPET, "seam": COL_CARPET})   # wall-to-wall carpet, no seams (2026-10-08: "puts the phone face-down on the carpet")
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
+    # the W wall gets a window over the bed's foot (2026-10-21, the Deck:
+    # "interiors need more windows"): the side yard and the neighbour's
+    # roof. The N window stays THE window the prose opens ("Through the
+    # open window, the cicadas are loud").
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                            palette=PAL_WALL, baseboard_face_sign=+1, openings=[WIN_W])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+              palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.50, 1.20, 1.00)])   # cut 2026-10-07: the window was a pane on a solid wall
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
@@ -81,12 +87,17 @@ def build_posters():
     # Band posters along the west wall
     for pi in range(3):
         px = -ROOM_W/2.0+0.05
-        py = 0.9 + pi*1.4
+        py = (0.9, 1.75, 4.35)[pi]   # either side of the west window (2026-10-21)
         make_faded_poster(f"Poster_Band_{pi}", (px + 0.0535, py, 1.55), into_room=+1, kind="band")   # show bills (2026-10-08)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00, see_through=True)
+    make_window("Window_W", (-ROOM_W/2.0 + 0.10, WIN_W[0], WIN_W[1]), width=WIN_W[2] - 0.10, height=WIN_W[3] - 0.10,
+                axis='Y', room_dir=+1, see_through=True)
+    from _props.structure import make_curtains
+    make_curtains("Window_W_Curtain", (-ROOM_W/2.0 + 0.10, WIN_W[0], WIN_W[1]), width=WIN_W[2] - 0.10,
+                  height=WIN_W[3] - 0.10, axis='Y', room_dir=+1, color=(0.30, 0.22, 0.26, 1.0), open_frac=0.26)
 
 def build_ceiling_infra():
     # Teen bedroom: one warm ceiling fixture; the bedside lamp is
@@ -206,6 +217,7 @@ def main():
     build_ceiling_infra()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_N", "N", ROOM_D, 0.0, kind="back", ground_z=-2.9, seed=2)   # upstairs at the Hendersons' on Magnolia
+    make_view("View_W", "W", -ROOM_W/2.0, WIN_W[0], kind="side", ground_z=-2.9, seed=5)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/jesse_bedroom.glb"))
     build_door_infill_bedroom_door_2026_09()
