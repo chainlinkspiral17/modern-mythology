@@ -29,12 +29,12 @@ mortar as a lathe-free grid; the balcony's scroll ironwork; the
 transom over the door; the fridge (there is none); Deck: the preset
 from the SE + establish_b.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings, make_window
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
@@ -47,13 +47,25 @@ COL_BRICK = (0.62, 0.42, 0.34, 1.0); COL_BRICK_SEAM = (0.32, 0.22, 0.18, 1.0)
 COL_WROUGHT = (0.16, 0.14, 0.14, 1.0); COL_SHUTTER = (0.42, 0.52, 0.36, 1.0)
 COL_BED_WOOD = (0.32, 0.20, 0.14, 1.0); COL_LINEN = (0.92, 0.86, 0.78, 1.0)
 ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 3.40
+# DRAFT 4 (2026-10-21, the Deck: "Certain interiors look poorly arranged and
+# cramped"). The four-poster stood free in the middle of the one room, its
+# head posts at the kitchenette counter, between the rented sofa and
+# everything else ("He swung his legs off the sofa ... He stumbled toward
+# the kitchenette"). The bed goes into its own room: an east wing through a
+# doorway in the brick wall, with the armoire (whose doors had faced the
+# wall). The main room is the sofa facing the TV, the kitchenette, the
+# door and the tall windows — Jacob and Faust's video-game room in vol 1.
+WING_X1, WING_Y0 = 7.30, 1.80      # the bedroom wing: x 3.5..7.3, y 1.8..6.0
+BED_DOOR_Y = 3.35                   # its doorway in the E brick wall
 
 from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # East wall is brick
-    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette={"wall": COL_BRICK, "baseboard": COL_BRICK_SEAM}, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                            palette={"wall": COL_BRICK, "baseboard": COL_BRICK_SEAM}, baseboard_face_sign=-1,
+                            openings=[(BED_DOOR_Y, 1.05, 0.90, 2.10)])
     for r in range(int(CEIL*4)):
         make_box(f"Wall_E_Brick_{r}", (+ROOM_W/2.0-0.04 - 0.0631, ROOM_D/2.0, r*0.25+0.12), (0.005, ROOM_D, 0.012), COL_BRICK_SEAM)
     make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
@@ -94,12 +106,36 @@ def build_shuttered_windows():
         make_tube(f"Balcony_{sgn:+d}_Mid", [(sx - 0.65, -0.88, 0.62), (sx + 0.65, -0.88, 0.62)], 0.014, COL_WROUGHT, segments=6)
 
 
+def build_bedroom_wing():
+    """DRAFT 4 (2026-10-21): the bedroom, east through the brick wall —
+    the floor, its walls and ceiling, the doorway's casing and its leaf
+    swung open, a window onto the neighbour's brick three floors up."""
+    x0, x1, y0, y1 = ROOM_W / 2.0, WING_X1, WING_Y0, ROOM_D
+    make_floor("Wing_Floor", ((x0 + 0.2 + x1 + 0.2) / 2.0, (y0 - 0.2 + y1 + 0.2) / 2.0, 0.0),
+               size_x=x1 - x0, size_y=y1 - y0 + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    make_wall_with_openings("Wing_Wall_E", (x1, (y0 + y1) / 2.0, 0), length=y1 - y0 + 0.4, height=CEIL, axis='Y',
+                            palette=PAL, baseboard_face_sign=-1, openings=[(4.40, 1.55, 1.00, 1.70)])
+    for nm, y_, sg in (("Wing_Wall_N", y1, -1), ("Wing_Wall_S", y0, +1)):
+        make_wall(nm, ((x0 + 0.1 + x1 + 0.1) / 2.0, y_, 0), length=x1 - x0, height=CEIL, axis='X',
+                  palette=PAL, baseboard_face_sign=sg)
+    make_ceiling("Wing_Ceil", ((x0 + 0.2 + x1 + 0.2) / 2.0, (y0 - 0.2 + y1 + 0.2) / 2.0, CEIL),
+                 size_x=x1 - x0, size_y=y1 - y0 + 0.4, palette={"tile": COL_LINEN}, with_grid=False)
+    trim = (0.30, 0.22, 0.16, 1.0)
+    for nm, y_ in (("Bed_Door_Casing_S", BED_DOOR_Y - 0.495), ("Bed_Door_Casing_N", BED_DOOR_Y + 0.495)):
+        make_box(nm, (x0 - 0.11, y_, 1.08), (0.02, 0.09, 2.16), trim)
+    make_box("Bed_Door_Casing_Head", (x0 - 0.11, BED_DOOR_Y, 2.145), (0.02, 1.08, 0.09), trim)
+    make_box("Bed_Door_Leaf", (x0 + 0.10 + 0.44, BED_DOOR_Y - 0.43, 1.06), (0.86, 0.04, 2.08), (0.46, 0.34, 0.24, 1.0))
+    make_window("Bed_Window_E", (x1 - 0.10, 4.40, 1.55), width=0.90, height=1.60, axis='Y', room_dir=-1, see_through=True)
+    for sg in (-1, 1):
+        make_box(f"Bed_Window_E_Shutter_{sg:+d}", (x1 - 0.13, 4.40 + sg * 0.70, 1.55), (0.03, 0.42, 1.62), (0.30, 0.38, 0.32, 1.0))
+    make_box("Out_E_Brick", (x1 + 2.2, 4.0, 1.0), (0.40, 10.0, 9.0), COL_BRICK)
+    make_box("Out_E_Brick_LitWin", (x1 + 1.99, 4.9, 1.9), (0.02, 0.80, 1.10), (0.92, 0.78, 0.50, 1.0))
+
+
 def build_bed():
-    # 2026-08-09: was (0.0, 4.80) — the bed's head stood INSIDE the
-    # kitchenette and its posts inside the counter. East of it now.
-    bx, by = 0.9, 4.10          # the four-poster stands free of the walls by design: the kitchenette
-                                # owns the N wall's centre, the armoire and bass amp its east end (2026-09-10)
-                                # (draft 3: 4.10 — at 4.30 the head posts stood in the kitchenette)
+    # draft 4 (2026-10-21): in the bedroom wing, its head on the wing's N
+    # wall — it had stood free mid-room, its head posts at the kitchenette
+    bx, by = 5.35, 4.90
     # Four-poster bed — the shared bed under the posts (2026-09-07)
     make_bed("Bed", bx, by, head="+Y", w=1.80, d=2.00, style="platform",
              frame_col=COL_BED_WOOD, mattress_col=COL_LINEN, sheet_col=COL_LINEN,
@@ -121,15 +157,38 @@ def build_bed():
     make_box("Bed_Canopy_Sheer", (bx, by + 1.00, 1.60), (1.90, 0.04, 0.90), (0.96, 0.92, 0.84, 0.55))   # (draft 3: at the head rail, not across the bed's middle)
 
 def build_armoire():
-    # Wardrobe west wall
-    # 2026-08-09: was (-2.80, 3.0) — inside the rented sofa. East
-    # wall now, between the TV stand and the bed corner.
-    ax, ay = 3.15, 3.55   # its back on the E wall's face (2026-09-25: 35 cm off it)
-    make_box("Armoire_Body", (ax, ay, 1.20), (0.50, 1.40, 2.40), COL_BED_WOOD)
-    make_box("Armoire_Door_L", (ax+0.21, ay-0.34, 1.20), (0.04, 0.66, 2.30), (0.42, 0.30, 0.20, 1.0))
-    make_box("Armoire_Door_R", (ax+0.21, ay+0.34, 1.20), (0.04, 0.66, 2.30), (0.42, 0.30, 0.20, 1.0))
-    make_cyl("Armoire_KnobL", (ax+0.24, ay-0.06, 1.20), 0.025, 0.04, (0.86, 0.62, 0.28, 1.0), axis='X')
-    make_cyl("Armoire_KnobR", (ax+0.24, ay+0.06, 1.20), 0.025, 0.04, (0.86, 0.62, 0.28, 1.0), axis='X')
+    # draft 4 (2026-10-21): in the bedroom, its back on the wing's S wall,
+    # its doors to the room (on the E wall its doors had faced the brick)
+    ax, ay = 6.35, WING_Y0 + 0.10 + 0.25
+    make_box("Armoire_Body", (ax, ay, 1.20), (1.40, 0.50, 2.40), COL_BED_WOOD)
+    make_box("Armoire_Door_L", (ax-0.34, ay+0.27, 1.20), (0.66, 0.04, 2.30), (0.42, 0.30, 0.20, 1.0))
+    make_box("Armoire_Door_R", (ax+0.34, ay+0.27, 1.20), (0.66, 0.04, 2.30), (0.42, 0.30, 0.20, 1.0))
+    make_cyl("Armoire_KnobL", (ax-0.06, ay+0.30, 1.20), 0.025, 0.04, (0.86, 0.62, 0.28, 1.0), axis='Y')
+    make_cyl("Armoire_KnobR", (ax+0.06, ay+0.30, 1.20), 0.025, 0.04, (0.86, 0.62, 0.28, 1.0), axis='Y')
+
+def build_front_room_draft4():
+    """DRAFT 4 (2026-10-21): with the bed in its own room the front room
+    had a bare middle. It is a front room: the coffee table in front of
+    the rented sofa (Jimmy's bottles and the pizza stay on the floor —
+    "The floor felt sticky. Everything felt sticky."), a two-top with two
+    chairs by the kitchenette where a man eats standing up, a floor lamp
+    at the sofa's end."""
+    from _props.furniture import make_table, make_chair, make_lamp
+    wood = (0.40, 0.28, 0.18, 1.0)
+    make_table("CoffeeTable", -0.90, 2.30, w=1.00, d=0.50, h=0.42, wood=wood)
+    make_table("Kitchen_TwoTop", -1.95, 4.75, w=0.75, d=0.75, h=0.75, wood=wood)
+    make_chair("Kitchen_Chair_S", -1.95, 4.12, yaw=0.0, wood=wood)
+    make_chair("Kitchen_Chair_W", -2.58, 4.75, yaw=-math.pi / 2.0, wood=wood)
+    make_lamp("Floor_Lamp", -2.75, 3.80, base_z=0.0, h=1.55, shade_col=(0.86, 0.76, 0.56, 1.0), body_col=(0.20, 0.18, 0.16, 1.0))
+    # upper cabinets over the kitchenette (the plaster over it was bare),
+    # one door hanging open on its hinge — nobody has closed it in a week
+    cab = (0.50, 0.40, 0.30, 1.0)
+    make_box("Kitchenette_Upper_Cabs", (-0.30, ROOM_D - 0.26, 1.90), (1.80, 0.32, 0.70), cab)
+    make_box("Kitchenette_Upper_Door_W", (-0.75, ROOM_D - 0.43, 1.90), (0.86, 0.02, 0.66), (0.56, 0.45, 0.34, 1.0))
+    a_ = 0.35
+    make_rot_box("Kitchenette_Upper_Door_Ajar", (0.60 - 0.43 * math.cos(a_), ROOM_D - 0.43 - 0.43 * math.sin(a_), 1.90),
+                 (0.86, 0.02, 0.66), (0.56, 0.45, 0.34, 1.0), yaw=a_)
+
 
 def build_decor():
     make_wall_clock("Clock", (-3.400, 2.0, 2.10), frozen_hour=6, frozen_min=23, facing='+X')
@@ -277,7 +336,7 @@ def build_draft3_2026_09():
     wear = (COL_FLOOR[0] * 0.86, COL_FLOOR[1] * 0.86, COL_FLOOR[2] * 0.86, 1.0)
     cord = (0.16, 0.16, 0.18, 1.0)
     make_box("Wear_Crash_Dent", (-2.32, 1.95, 0.6015), (0.50, 0.50, 0.003), (0.40, 0.34, 0.28, 1.0))
-    make_traffic_wear("Wear_Sofa_Bed", [(-1.6, 3.6), (-1.6, 4.9), (-0.6, 4.9)], width=0.55, tint=wear)
+    make_traffic_wear("Wear_Sofa_Bed", [(-1.6, 3.4), (1.0, 3.35), (3.2, 3.35)], width=0.55, tint=wear)   # sofa to the bedroom door (draft 4)
     for ri, (rx, ry) in enumerate(((-0.35, 5.70), (0.55, 5.72), (0.22, 5.42))):
         make_cyl(f"Wear_Ring_{ri}", (rx, ry, 0.966), 0.045, 0.002, (0.42, 0.34, 0.24, 1.0), segments=10)
     make_cyl("Wear_Ash", (0.35, 5.50, 0.9665), 0.12, 0.002, (0.52, 0.50, 0.48, 1.0), segments=12)
@@ -357,7 +416,7 @@ def build_dumpster_fire_2026_10():
 
 
 def main():
-    clear_scene(); build_shell(); build_shuttered_windows(); build_bed(); build_armoire(); build_decor(); build_ceiling_infra()
+    clear_scene(); build_shell(); build_shuttered_windows(); build_bedroom_wing(); build_bed(); build_front_room_draft4(); build_armoire(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()

@@ -3866,12 +3866,27 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   the regions were tightened), buried decor 0, window backing 0, doorway 0, vantage 0 blind,
   obstruction 0, orphan practicals 0, marker aim 0, shot markers 0 blind, dry run 161/161. Perf:
   roberts_kitchen 90 draw calls.
-- **Deck must REBUILD** roberts_kitchen.
+- **The New Orleans apartment, draft 4** (vol 5 Devil; vol 1 Jacob's apartment; 168 lines). The
+  four-poster stood free in the middle of the one room, its head posts at the kitchenette counter,
+  between "the rented sofa he had crashed on" and everything else. Changes:
+  - The bed has its own room: an east wing through a doorway in the brick wall, with the armoire
+    (its doors had faced the wall) and a shuttered window onto the neighbour's brick.
+  - The front room is the sofa facing the TV, a coffee table, a kitchen two-top with two chairs, a
+    floor lamp, and upper cabinets over the kitchenette (one door left open).
+  - The bottles and the pizza stay on the floor ("The floor felt sticky").
+  - Result: walk 0.61; perf ok; every gate 0.
+- **The New Orleans office stays cramped.** It is canon: "the cramped office above his
+  still-unfinished restaurant", "The office was twelve feet by ten. He could pace it in eight
+  strides." Draft 4 already rebuilt it at canon scale from a set four times too big. The crowding
+  audit is a queue, not a verdict: read the prose first.
+- **Deck must REBUILD** roberts_kitchen, new_orleans_apartment.
 - **Draft N+1 targets:**
+  - New Orleans: a bedroom preset; the transom over the door; the balcony's scroll ironwork.
   - Roberts: the living room and the dining room have no preset of their own. Add them (the Anya tape
     on the CRT plays in the living room); the dining wainscot ends short of the partition; a rug and
     lamp for the bigger living room.
-  - Re-plan queue: new_orleans_office, new_orleans_apartment, montreal_apartment, faust_apartment.
+  - Re-plan queue: montreal_apartment, faust_apartment, cabin_interior (check the prose first),
+    lena_apartment.
 
 **2026-10-21 · pass 136: CRAMPED ROOMS, MEASURED; NATALIE'S APARTMENT RE-PLANNED FROM THE PROSE.**
 The Deck: "Certain interiors look poorly arranged and cramped."
