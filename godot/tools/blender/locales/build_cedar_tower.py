@@ -437,7 +437,7 @@ def build_exterior():
     floors of cedar band + glass band, the seventh running the
     garden."""
     X = 45.0
-    make_box("Ext_Gravel", (X, -4.0, 0.0), (30.0, 38.0, 0.06), GRAVEL)   # the clearing runs south under the establish (2026-09-30)
+    make_box("Ext_Gravel", (X, -9.0, 0.0), (30.0, 48.0, 0.06), GRAVEL)   # the clearing runs south under the establish (2026-09-30; to y -33 for the 37 m lens, 2026-10-21)
     # The tower: SEVENTY FEET ON A SIDE (canon: "seventy feet on a side at
     # the ground floor. Square. Seven stories." 2026-10-21: it stood 8 m
     # square — a column, a third of the book's building), seven floors
@@ -487,6 +487,11 @@ def build_exterior():
         from _props.trees import make_conifer
         make_conifer(f"Ext_Sitka_{i}", tx, ty, h, SITKA,
                      (0.30, 0.24, 0.18, 1.0))
+    # The clearing's west edge: a stand of tall Sitka on the line from the
+    # establish to the interior floors (x 0, stacked to z 18), which
+    # otherwise read as brown slabs over the frame's left (2026-10-21)
+    for i, (tx, ty, th) in enumerate(((27.0, -7.0, 30.0), (23.5, -0.5, 33.0), (25.0, 3.0, 28.0), (20.5, 9.0, 31.0))):
+        make_conifer(f"Ext_Sitka_West_{i}", tx, ty, th, SITKA, (0.30, 0.24, 0.18, 1.0), skirt=0.26)
     # (Sky wall deleted 2026-08-04 — it stood between the camera
     # and the new far bands, occluding the horizon it faked.
     # The sky is the .tscn environment's job.)

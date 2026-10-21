@@ -3835,6 +3835,44 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 133: THE CEDAR TOWER GETS ITS GLASS AND ITS SIZE; the garage and Jesse's room get windows.**
+- **Cedar Tower** (vol 7 ch22, 226 lines, 1 window → 13). Canon: "Smart-glass on the upper six
+  floors" and "Dean alone at the studio's south window looking at the ocean."
+  - Lobby: two tall windows on the W wall over the bench and two on the N wall flanking the portrait.
+  - Studio: a glass band over the racks, and the south window in the poster run (two poster columns
+    gave way).
+  - Quarters: three curtained N windows behind the table for twelve.
+  - Windows face N and W only, because the exterior set stands east in the same GLB.
+  - Outside the floors: the land ends at a bluff (x −34), a rock face drops 24 m, and the sea runs to
+    the horizon. Ten tall cedars stand N and W. The horizon bands stop at the bluff.
+- **The exterior tower is seventy feet on a side** ("seventy feet on a side at the ground floor.
+  Square. Seven stories."). It had been an 8 m column, and now has pane seams.
+  - The gravel runs south under the lens, the north Sitka ring sits behind the tower, and the dock and
+    the glazier drone are moved clear of it.
+  - The east horizon bands are measured from the exterior. They had stood 13 m off the lens as a dark
+    wall down the right of the frame.
+  - The lens backs off to 37 m so the tower is whole. A Sitka stand on the left hides the interior
+    floors' slabs.
+- **Henderson garage** (186 lines, 0 → 2): an aluminium side window over the milk crate onto the side
+  yard and the neighbour's house, and a back window over the mower onto the back fence. Neither has
+  casing; a garage is unfinished.
+- **Jesse's bedroom** (128 lines, 1 → 2): a curtained west window onto the side yard, with the band
+  posters either side of it. The N window stays the one the prose opens ("Through the open window,
+  the cicadas are loud").
+- **The kit:** `make_wall_with_openings(base_z=…)` cuts walls in rooms stacked above z 0.
+- **Gates:** overlap 0, support 0, buried decor 0, window backing 0, phantom 0. Perf: cedar_tower 178
+  draw calls, henderson_garage 226, jesse_bedroom 232.
+- **Deck must REBUILD** cedar_tower, henderson_garage, jesse_bedroom.
+- **Draft N+1 targets:**
+  - Cedar Tower floors to the 21 m plate. The lobby is 10 × 8 inside a seventy-foot building; enlarge
+    each floor and restage the props and presets.
+  - The studio's canon south window needs a vn_shot to be seen; the preset looks NW.
+  - The exterior's right half is empty sky: the inland ridge, and the ocean side at frame left.
+  - Garage: an insert setup that shows the side window. The driveway lens can't see it.
+  - Next window queue by lines: hospital_room (288 / 2), small_wood_ranch (canon "my window"; keep
+    one, add the door's light), then the window_count list.
+  - A soft-box sofa kit for the 25 builders that hand-build sofas.
+
 **2026-10-21 · pass 132: THE HOUSES ACROSS THE STREET; LENA'S BACK WINDOWS; the window count reads glass.**
 - **The view kit's house** (seen through the windows of the 28 rooms that call make_view): a pitched
   roof with eaves and fascia, a chimney through the back slope, a full row of windows (trim, sill,

@@ -4680,7 +4680,7 @@ const CAMERA_PRESETS := {
 		# (2026-10-21: the tower is seventy feet on a side now — canon —
 		# so the lens backs off to 37 m and pitches less to keep it whole)
 		"camera_origin": Vector3(47.0, 1.70, 30.0),
-		"camera_rotation": Vector3(0.10, 0.066, 0.0),
+		"camera_rotation": Vector3(0.10, -0.02, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
