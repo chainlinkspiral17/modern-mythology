@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 139: MONTREAL'S DOOR CLEARS.**
+- **The Montreal apartment** (vol 5 Temperance, 124 lines): the sofa's back stood 0.63 m inside the
+  front door's opening, so you came in face to face with it.
+  - One `plan.zoned` region moves the sofa group 0.45 m north into the room: the rug, the sofa and
+    the laundry on it, the coffee table and its books and mug. The coffee table also moves 15 cm east,
+    clear of the desk's task chair.
+  - The desk stays on the W wall facing the torn pages pinned there, the window at his right ("he
+    found himself staring out the window at the alleyway").
+  - The sofa is the kit sofa now (rolled arms, three seats, the winter throw over its arm); the
+    notebook ziggurat on its W cushion sits on the new cushion's top.
+  - Gates: overlap 0, support 0, doorway 0, buried decor 0, vantage 0 blind, obstruction 0, marker aim
+    0, shot markers 0 blind, practicals 0; perf ok.
+- **Deck must REBUILD** montreal_apartment.
+- **Draft N+1 targets:**
+  - The shops by traffic: salty_tome_interior (942 lines, walk 0.58) and cosmic_comics_interior
+    (703, 0.54). Run walkway_audit with their fixtures before re-planning.
+  - Lena's kitchen as its own room.
+
 **2026-10-21 · pass 138: FAUST'S COUCH; THE CROWDING AUDIT SEES CHAIRS.**
 - **room_crowding_audit counted no chairs.** It skipped parts by substring, so "hair" (a Wear_Hair
   strand) matched every chair and armchair, and "pool" every pool table. It now skips by name token.

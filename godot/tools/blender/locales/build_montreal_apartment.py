@@ -64,18 +64,14 @@ def build_living():
     # Sofa facing north toward the snow-lit window (base + back + arms +
     # cushions + legs + a tossed winter throw).
     sx, sy = -0.70, 1.15
-    make_box("Sofa_Base", (sx, sy, 0.30), (1.70, 0.85, 0.18), COL_SOFA)
-    make_box("Sofa_Back", (sx, sy-0.42, 0.62), (1.70, 0.18, 0.52), COL_SOFA)
-    for ax in (-0.85, 0.85):
-        make_box(f"Sofa_Arm_{'L' if ax<0 else 'R'}", (sx+ax, sy, 0.44), (0.18, 0.85, 0.34), COL_SOFA)
-    for ci in range(3):
-        make_box(f"Sofa_SeatCushion_{ci}", (sx-0.55+ci*0.55, sy+0.06, 0.42), (0.50, 0.70, 0.14), (0.52, 0.42, 0.48, 1.0))
-        make_box(f"Sofa_BackCushion_{ci}", (sx-0.55+ci*0.55, sy-0.34, 0.66), (0.48, 0.14, 0.40), (0.52, 0.42, 0.48, 1.0))
-    for i, (lx, ly) in enumerate([(-0.78,-0.38),(0.78,-0.38),(-0.78,0.38),(0.78,0.38)]):
-        make_box(f"Sofa_Leg_{i}", (sx+lx, sy+ly, 0.12), (0.06, 0.06, 0.24), COL_WOOD)
-    make_box("Sofa_Throw", (sx+0.5, sy+0.10, 0.50), (0.60, 0.66, 0.10), COL_THROW)
+    # (2026-10-21, "too boxy") the kit sofa — soft frame, rolled arms, three
+    # stuffed seats, the winter throw over its arm (it was slabs)
+    from _props.furniture import make_sofa
+    make_sofa("Sofa", sx, sy, back="-Y", w=2.00, d=0.85, seats=3, color=COL_SOFA,
+              cushion_col=(0.52, 0.42, 0.48, 1.0), leg_col=COL_WOOD, arm="roll", seat_h=0.46,
+              throw=COL_THROW)
     # Coffee table north of the sofa, on the rug
-    tx, ty = -0.70, 2.45
+    tx, ty = -0.55, 2.45   # (2026-10-21: 15 cm east, clear of the desk's task chair once the group moved north)
     make_box("Coffee_Top", (tx, ty, 0.42), (1.10, 0.60, 0.05), COL_WOOD)
     for i, (lx, ly) in enumerate([(-0.50,-0.24),(0.50,-0.24),(-0.50,0.24),(0.50,0.24)]):
         make_box(f"Coffee_Leg_{i}", (tx+lx, ty+ly, 0.21), (0.05, 0.05, 0.42), COL_WOOD)
@@ -357,7 +353,7 @@ def build_archive_of_selves_2026_10():
     ziggurat("Zig_Coffee", -1.05, 2.60, 0.445, 3)
     ziggurat("Zig_Bistro", 1.22, 3.72, 0.765, 3)
     ziggurat("Zig_DeskFloor", -2.72, 2.70, 0.0, 6)
-    ziggurat("Zig_Sofa", -1.22, 1.22, 0.49, 2)   # the west cushion (the throw lies on the east one)
+    ziggurat("Zig_Sofa", -1.22, 1.22, 0.465, 2)   # the west cushion (the throw lies on the east one); on the kit sofa's cushion top (2026-10-21)
     ziggurat("Zig_ChairFloor", -2.78, 1.72, 0.0, 4)
     ziggurat("Zig_Radiator", 0.52, 4.80, 0.84, 2)
     # ── the desk: the lamp, the pen cup, the notebook open mid-line
@@ -413,13 +409,24 @@ def build_archive_of_selves_2026_10():
     make_box("Boot_Tray", (1.34, 0.38, 0.006), (0.40, 0.36, 0.012), (0.30, 0.30, 0.32, 1.0))
 
 
+# (2026-10-21, the Deck: "poorly arranged and cramped") the sofa's back stood
+# 0.63 m inside the front door's opening — you came in face to face with it.
+# The sofa group (the rug, the sofa and what lies on it, the coffee table and
+# what stands on it) moves 0.45 m north into the room; the desk, its task
+# chair and the armchair stay. plan.zoned moves every part built in the region.
+LIVING_ZONE = [(-1.70, 0.60, 0.40, 2.85, 0.0, 0.45)]
+
+
 def main():
-    clear_scene(); build_shell(); build_living(); build_dining_nook(); build_floor_lamp(); build_kitchenette(); build_radiator_under_window(); build_decor(); build_ceiling_infra()
-    build_hero_props()
-    build_detail_pass_2026_08()
-    build_use_states_d4()
-    build_hero_props_2026_09()
-    build_archive_of_selves_2026_10()
+    from _props.plan import zoned
+    clear_scene(); build_shell()
+    with zoned(LIVING_ZONE):
+        build_living(); build_dining_nook(); build_floor_lamp(); build_kitchenette(); build_radiator_under_window(); build_decor(); build_ceiling_infra()
+        build_hero_props()
+        build_detail_pass_2026_08()
+        build_use_states_d4()
+        build_hero_props_2026_09()
+        build_archive_of_selves_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/montreal_apartment.glb"))
     print(f"\n[build_montreal_apartment] exporting to {out}")
     export_glb(out)
