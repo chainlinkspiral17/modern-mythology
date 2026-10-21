@@ -1737,7 +1737,7 @@ const CAMERA_PRESETS := {
 		# steer's head on the W side, BT's Altima "in the spot under the
 		# steer's head" (the segment played on the dining room). Camera in
 		# the side lot by the pole light, looking at the car and the wall.
-		"camera_origin": Vector3(-12.00, 1.65, -0.20),
+		"camera_origin": Vector3(-13.50, 1.65, -0.20),   # (2026-10-21: the W wall moved 1.5 m west with the 10 x 9 dining room)
 		"camera_rotation": Vector3(-0.023, -1.212, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
@@ -1745,13 +1745,15 @@ const CAMERA_PRESETS := {
 	"el_rancho_taqueria": {
 		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
 		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",
-		# Taquería 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8). Register
-		# counter + chip warmer NE (godot 1.75,-4.5) under a backlit menu
-		# board, salsa station NW, three café tables mid-room, magenta neon
-		# sign on the E wall, festoon lights overhead. Camera SW just inside
-		# the door looking NE past the tables to the register + menu board.
-		"camera_origin": Vector3(-2.8, 2.0, -0.9),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-51.6), 0.0),
+		# Taquería, draft 3 (2026-10-21): 10×9 (godot x∈[-5,5], z∈[0,-9],
+		# ceil 2.8). The long booth across the back wall with its facing
+		# bench, the two six-tops in the SW corner, two-tops on the E wall
+		# under the magenta neon, the register + chip warmer back right under
+		# the menu board, the drive-thru window behind it, the salsa station
+		# by the door. Camera SW just inside the door looking NE across the
+		# room: the six-tops near left, the booth at the back, the register.
+		"camera_origin": Vector3(-4.4, 1.9, -0.6),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(-44.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},

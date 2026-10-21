@@ -189,14 +189,14 @@ shadow_enabled = false
 
 ; Warm overhead pools over the dining floor (festoon/pendant practicals)
 [node name="Practical_Overhead_W" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 2.6, -2.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0, 2.6, -3.5)
 light_color = Color(1.0, 0.86, 0.6, 1)
 light_energy = 1.7
 omni_range = 4.2
 shadow_enabled = false
 
 [node name="Practical_Overhead_E" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 2.6, -2.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 2.6, -3.9)
 light_color = Color(1.0, 0.86, 0.6, 1)
 light_energy = 1.7
 omni_range = 4.2
@@ -204,15 +204,15 @@ shadow_enabled = false
 
 ; Warm pool over the register counter / chip warmer
 [node name="Practical_Counter" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2.6, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.6, -7.5)
 light_color = Color(1.0, 0.82, 0.54, 1)
 light_energy = 1.5
 omni_range = 3.6
 shadow_enabled = false
 
-; Magenta accent from the east-wall neon sign (blender 3.4,3.0,2.0)
+; Magenta accent from the east-wall neon sign (blender 4.9,4.5,2.0; draft 3, the 10 x 9 room)
 [node name="Practical_Neon" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 2.0, -3.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 2.0, -4.5)
 light_color = Color(0.96, 0.32, 0.68, 1)
 light_energy = 1.3
 omni_range = 3.0
@@ -220,7 +220,7 @@ shadow_enabled = false
 
 ; the lot's pole light over the side lot (sodium)
 [node name="Lot_Pole_Lamp_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-11.410, 5.600, -7.500)
+position = Vector3(-12.910, 5.600, -7.500)
 light_color = Color(1.00, 0.78, 0.46, 1)
 light_energy = 2.2
 shadow_enabled = false
@@ -348,64 +348,65 @@ script = ExtResource("14_dbgm")
 
 ; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
 [node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.404, 1.424, -2.468)
-rotation = Vector3(-0.1522, -0.8575, 0.0)
+position = Vector3(1.200, 1.420, -4.600)
+rotation = Vector3(-0.1210, -0.4376, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_register_machine" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.524, 1.490, -3.524)
-rotation = Vector3(-0.2618, -1.0472, 0.0)
+position = Vector3(1.900, 1.500, -6.200)
+rotation = Vector3(-0.2390, -0.4990, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_sauce" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.991, 1.383, -3.796)
-rotation = Vector3(-0.2618, -0.7854, 0.0)
+position = Vector3(2.800, 1.380, -6.500)
+rotation = Vector3(-0.2003, -0.5679, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_speaker" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.650, 1.496, -2.244)
-rotation = Vector3(-0.1697, -0.7730, 0.0)
+position = Vector3(5.600, 1.500, -5.000)
+rotation = Vector3(-0.1779, -0.3823, 0.0)
 metadata/fov = 35.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; the room's closeup frame (draft 3, 2026-10-21): across the long booth at the back,
+; from the bench side to the wall seat ("Coach K and Eileen are in the booth across
+; from Coach Guidry and Linda Guidry")
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.409, 1.612, -1.804)
-rotation = Vector3(-0.2618, -0.7854, 0.0)
+position = Vector3(-2.800, 1.450, -6.400)
+rotation = Vector3(-0.1200, 0.0000, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.503, 1.612, -3.716)
-rotation = Vector3(-0.2618, 2.3562, 0.0)
+position = Vector3(-2.800, 1.500, -8.450)
+rotation = Vector3(-0.1500, 3.1416, 0.0)
 metadata/fov = 45.0
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="Festoon_Bulb_0_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-3.100, 2.600, -1.920)
+position = Vector3(-4.600, 2.600, -2.880)
 light_color = Color(0.940, 0.840, 0.660, 1)
 light_energy = 1.20
 shadow_enabled = false
 omni_range = 5.20
 
 [node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.720, -1.800)
+position = Vector3(0.000, 2.720, -2.700)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.35
 
 [node name="Festoon_Bulb_1_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-3.100, 2.600, -3.960)
+position = Vector3(-4.600, 2.600, -5.940)
 light_color = Color(0.940, 0.840, 0.660, 1)
 light_energy = 1.20
 shadow_enabled = false
 omni_range = 5.20
 
 [node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.720, -4.200)
+position = Vector3(0.000, 2.720, -6.300)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
@@ -414,19 +415,19 @@ omni_range = 4.35
 ; ── vn_shot · el_rancho_drive_thru (2026-10-10): outside, in the car (vol6 ch16) ──
 ; closeup: BT at the wheel, through the driver's window, the yellow wall and the steer behind
 [node name="shot_closeup_person__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-7.960, 1.750, -7.400)
+position = Vector3(-9.460, 1.750, -7.400)
 rotation = Vector3(-0.1002, -2.7279, 0.0)
 metadata/fov = 44.0
 
 ; reverse: Diego in the passenger seat, the lot and the pole light behind
 [node name="shot_closeup_person_b__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-7.960, 1.750, 1.400)
+position = Vector3(-9.460, 1.750, 1.400)
 rotation = Vector3(-0.1002, -0.4137, 0.0)
 metadata/fov = 44.0
 
 ; closeup: Diego (the same frame, named for the cue)
 [node name="shot_closeup_diego__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-7.960, 1.750, 1.400)
+position = Vector3(-9.460, 1.750, 1.400)
 rotation = Vector3(-0.1002, -0.4137, 0.0)
 metadata/fov = 44.0
 

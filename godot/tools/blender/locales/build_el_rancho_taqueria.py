@@ -19,7 +19,20 @@ from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, m
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 from _props.objects import make_bottle
 
-ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 2.8
+# DRAFT 3 (2026-10-21, the Deck: "Certain interiors look poorly arranged and
+# cramped"; room_crowding_audit: 43% of the floor filled, under half of it
+# walkable). 7 x 6 m held a long booth with loose chairs, two six-tops whose
+# facing chairs stood 20 cm apart, the register, the salsa station and the
+# drive-thru — and the prose seats a team in it ("The Vinton team — twenty
+# kids — pulls in"; "Coach Guidry has the long booth at the back"; "The
+# drive-thru is at the back"; "Coach K and Eileen are in the booth across
+# from Coach Guidry"). The room is 10 x 9 now: the long booth across the
+# BACK wall with a bench facing it across the table, the kids' two six-tops
+# in the SW corner, two-tops along the E wall under the neon, the register
+# back right with an open lane to it from the door, the salsa station by
+# the door, the drive-thru window at the back behind the counter.
+ROOM_W = 10.0; ROOM_D = 9.0; CEIL = 2.8
+DT_Y = ROOM_D - 1.15     # the drive-thru window's centre on the E wall
 PAL_WALL = {"wall":(0.96,0.84,0.62,1.0),"baseboard":(0.62,0.42,0.22,1.0)}
 COL_FLOOR = (0.62,0.46,0.30,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.18,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
@@ -36,7 +49,7 @@ def build_shell():
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
     make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(4.850, 1.450, 0.600, 1.040)])
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(DT_Y, 1.450, 0.600, 1.040)])
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
@@ -87,7 +100,7 @@ def build_menu_board():
                      (0.80, 0.005, 0.05), row_cols[row])
 
 def build_salsa_station():
-    sx, sy = -ROOM_W/2.0+0.8, ROOM_D-1.2
+    sx, sy = 3.00, 0.55   # against the S wall east of the door (draft 3; it stood where the long booth goes)
     make_box("Salsa_Table", (sx, sy, 0.45), (1.10, 0.62, 0.06), COL_WOOD)
     for k,(ox,oy) in enumerate([(-0.46,-0.24),(0.46,-0.24),(-0.46,0.24),(0.46,0.24)]):
         make_box(f"Salsa_Leg_{k}", (sx+ox, sy+oy, 0.21), (0.05,0.05,0.42), COL_WOOD)   # to the floor (2026-09-24: 3 cm short)
@@ -116,26 +129,27 @@ def _make_table(prefix, cx, cy):
             make_box(f"{prefix}_Ch{ci}_Leg_{k}", (chx+lx, chy+ly, 0.22), (0.04,0.04,0.42), P.METAL_BLACK)
 
 def build_tables():
-    # LONG BOOTH down the W wall — vinyl bench + long table + loose
-    # chairs on the room side (seats a crowd, not a couple).
-    bx = -ROOM_W/2.0 + 0.50
-    make_box("LongBooth_Seat", (bx, 2.4, 0.44), (0.46, 3.4, 0.10), COL_ACCENT)
-    make_box("LongBooth_Back", (bx-0.20, 2.4, 0.80), (0.10, 3.4, 0.85), COL_ACCENT)
-    make_box("LongBooth_Base", (bx, 2.4, 0.20), (0.44, 3.35, 0.38), (0.40, 0.22, 0.12, 1.0))
-    make_box("LongBooth_Table", (bx+0.62, 2.4, 0.74), (0.72, 3.2, 0.05), COL_WOOD)
-    for li,(lyo) in enumerate([-1.35, 0.0, 1.35]):
-        make_box(f"LongBooth_TLeg_{li}", (bx+0.62, 2.4+lyo, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)
-    for ci,cyo in enumerate([-1.1, -0.35, 0.35, 1.1]):
-        make_box(f"LongBooth_Ch{ci}_Seat", (bx+1.35, 2.4+cyo, 0.45), (0.38, 0.38, 0.05), COL_ACCENT)
-        # legs (2026-09-08)
-        for lx_ in (-1, 1):
-            for ly_ in (-1, 1):
-                make_box(f"LongBooth_Ch{ci}_Leg_{lx_:+d}_{ly_:+d}",
-                         (bx+1.35 + lx_ * 0.15, 2.4+cyo + ly_ * 0.15, 0.22),
-                         (0.035, 0.035, 0.44), P.METAL_BLACK)
-        make_box(f"LongBooth_Ch{ci}_Back", (bx+1.52, 2.4+cyo, 0.68), (0.04, 0.38, 0.44), COL_ACCENT)
-    # Two square SIX-TOPS mid-floor.
-    for ti,(tx,ty) in enumerate([(0.5, 1.35), (0.5, 3.05)]):
+    """Draft 3: the LONG BOOTH across the back wall — the vinyl bench on
+    the wall, the long table, and a bench with its own back facing it, so
+    a party sits across from each other ("Coach K, across the booth"); the
+    two SIX-TOPS in the SW corner (the Vinton kids "in the corner"); two
+    café two-tops along the E wall under the neon. The middle of the room
+    is the lane from the door to the register."""
+    # ── the long booth, back wall, W of the register's queue
+    bL, bR = -ROOM_W/2.0 + 0.25, -0.90
+    bc, blen = (bL + bR) / 2.0, bR - bL
+    wy = ROOM_D - 0.10                   # the N wall's face
+    make_box("LongBooth_Back", (bc, wy - 0.05, 0.80), (blen, 0.10, 0.85), COL_ACCENT)
+    make_box("LongBooth_Seat", (bc, wy - 0.33, 0.44), (blen, 0.46, 0.10), COL_ACCENT)
+    make_box("LongBooth_Base", (bc, wy - 0.33, 0.20), (blen - 0.05, 0.44, 0.38), (0.40, 0.22, 0.12, 1.0))
+    make_box("LongBooth_Table", (bc, wy - 0.94, 0.74), (blen - 0.20, 0.70, 0.05), COL_WOOD)
+    for li, lxo in enumerate((-1.45, 0.0, 1.45)):
+        make_box(f"LongBooth_TLeg_{li}", (bc + lxo, wy - 0.94, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)
+    make_box("LongBooth_Bench_Seat", (bc, wy - 1.56, 0.44), (blen - 0.20, 0.46, 0.10), COL_ACCENT)
+    make_box("LongBooth_Bench_Base", (bc, wy - 1.56, 0.20), (blen - 0.25, 0.44, 0.38), (0.40, 0.22, 0.12, 1.0))
+    make_box("LongBooth_Bench_Back", (bc, wy - 1.84, 0.80), (blen - 0.20, 0.10, 0.85), COL_ACCENT)
+    # ── the two six-tops, SW corner
+    for ti,(tx,ty) in enumerate([(-3.0, 2.2), (-3.0, 4.8)]):
         make_box(f"SixTop_{ti}_Top", (tx, ty, 0.74), (1.60, 0.90, 0.05), COL_WOOD)
         for li2,(lxo,lyo) in enumerate([(-0.70,-0.38),(0.70,-0.38),(-0.70,0.38),(0.70,0.38)]):
             make_box(f"SixTop_{ti}_Leg_{li2}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)
@@ -158,6 +172,9 @@ def build_tables():
         # Sauce caddy + napkins on each six-top.
         make_box(f"SixTop_{ti}_Caddy", (tx, ty+0.15, 0.80), (0.16, 0.12, 0.10), (0.72, 0.20, 0.14, 1.0))
         make_box(f"SixTop_{ti}_Napkins", (tx-0.20, ty-0.10, 0.79), (0.13, 0.06, 0.10), P.METAL_STEEL)
+    # ── two café two-tops along the E wall, under the neon
+    for k, ty in enumerate((2.70, 5.10)):
+        _make_table(f"TwoTop_{k}", ROOM_W/2.0 - 1.15, ty)
 
 
 def build_drive_thru_2026_08():
@@ -166,21 +183,21 @@ def build_drive_thru_2026_08():
     order everyone yells through the window instead)."""
     wx = ROOM_W/2.0 - 0.10
     # X-thin window (E wall — hand-built; make_window is Y-axis only).
-    make_frame_ring("DriveThru_Frame", (wx, 4.6, 1.45), (0.08, 1.30, 1.20), (0.55, 0.55, 0.58, 1.0))
-    make_box("DriveThru_Glass", (wx+0.01, 4.85, 1.45), (0.03, 0.60, 1.04), (0.62, 0.72, 0.76, 0.6))
-    make_box("DriveThru_Slide", (wx+0.02, 4.30, 1.45), (0.03, 0.55, 1.04), (0.58, 0.68, 0.72, 0.7))
-    make_box("DriveThru_Sill", (wx-0.10, 4.6, 0.86), (0.30, 1.40, 0.05), (0.66, 0.62, 0.56, 1.0))
+    make_frame_ring("DriveThru_Frame", (wx, DT_Y - 0.25, 1.45), (0.08, 1.30, 1.20), (0.55, 0.55, 0.58, 1.0))
+    make_box("DriveThru_Glass", (wx+0.01, DT_Y, 1.45), (0.03, 0.60, 1.04), (0.62, 0.72, 0.76, 0.6))
+    make_box("DriveThru_Slide", (wx+0.02, DT_Y - 0.55, 1.45), (0.03, 0.55, 1.04), (0.58, 0.68, 0.72, 0.7))
+    make_box("DriveThru_Sill", (wx-0.10, DT_Y - 0.25, 0.86), (0.30, 1.40, 0.05), (0.66, 0.62, 0.56, 1.0))
     # Interior headset hook + ticket spike at the window.
-    make_cyl("DriveThru_Headset_Hook", (wx+0.13, 5.15, 1.65), 0.02, 0.06, P.METAL_STEEL, axis='X', segments=6)   # on the wall's inner face (2026-09-22: it was outside the wall)
-    make_cyl("DriveThru_Ticket_Spike", (wx-0.16, 4.25, 0.92), 0.006, 0.12, P.METAL_STEEL)
+    make_cyl("DriveThru_Headset_Hook", (wx+0.13, DT_Y + 0.30, 1.65), 0.02, 0.06, P.METAL_STEEL, axis='X', segments=6)   # on the wall's inner face (2026-09-22: it was outside the wall)
+    make_cyl("DriveThru_Ticket_Spike", (wx-0.16, DT_Y - 0.60, 0.92), 0.006, 0.12, P.METAL_STEEL)
     # Outside: the speaker box on a post + the taped sign.
-    make_cyl("Speaker_Post", (ROOM_W/2.0+1.2, 3.2, 0.60), 0.04, 1.20, P.METAL_BLACK)
-    make_box("Speaker_Box", (ROOM_W/2.0+1.2, 3.2, 1.35), (0.34, 0.24, 0.44), (0.30, 0.30, 0.32, 1.0))
-    make_box("Speaker_Grille", (ROOM_W/2.0+1.06, 3.2, 1.40), (0.02, 0.16, 0.20), (0.16, 0.16, 0.18, 1.0))
-    make_box("Speaker_Broke_Sign", (ROOM_W/2.0+1.04, 3.2, 1.12), (0.015, 0.20, 0.14), (0.94, 0.92, 0.84, 1.0))
-    make_box("Speaker_Sign_Tape", (ROOM_W/2.0+1.03, 3.2, 1.20), (0.012, 0.10, 0.02), (0.75, 0.72, 0.60, 1.0))
+    make_cyl("Speaker_Post", (ROOM_W/2.0+1.2, DT_Y - 1.65, 0.60), 0.04, 1.20, P.METAL_BLACK)
+    make_box("Speaker_Box", (ROOM_W/2.0+1.2, DT_Y - 1.65, 1.35), (0.34, 0.24, 0.44), (0.30, 0.30, 0.32, 1.0))
+    make_box("Speaker_Grille", (ROOM_W/2.0+1.06, DT_Y - 1.65, 1.40), (0.02, 0.16, 0.20), (0.16, 0.16, 0.18, 1.0))
+    make_box("Speaker_Broke_Sign", (ROOM_W/2.0+1.04, DT_Y - 1.65, 1.12), (0.015, 0.20, 0.14), (0.94, 0.92, 0.84, 1.0))
+    make_box("Speaker_Sign_Tape", (ROOM_W/2.0+1.03, DT_Y - 1.65, 1.20), (0.012, 0.10, 0.02), (0.75, 0.72, 0.60, 1.0))
     # Asphalt lane strip under the window.
-    make_box("DriveThru_Lane", (ROOM_W/2.0+1.5, 4.2, -0.02), (2.6, 5.5, 0.04), (0.30, 0.30, 0.32, 1.0))
+    make_box("DriveThru_Lane", (ROOM_W/2.0+1.5, DT_Y - 0.65, -0.02), (2.6, 5.5, 0.04), (0.30, 0.30, 0.32, 1.0))
 
 def build_neon_sign():
     sx = ROOM_W/2.0-0.145; sy = ROOM_D/2.0; sz = 2.0   # the neon off the wall's face (2026-10-09: inside the wall)
@@ -234,7 +251,7 @@ def build_exterior_2026_10():
     for i, (x0, x1) in enumerate(((-ROOM_W / 2.0 - 0.12, -1.0), (1.0, ROOM_W / 2.0 + 0.12))):
         make_box(f"Facade_Skin_S_{i}", ((x0 + x1) / 2.0, -0.11, H / 2.0), (x1 - x0, 0.02, H), yel)
     make_box("Facade_Skin_S_Head", (0.0, -0.11, (2.2 + H) / 2.0), (2.0, 0.02, H - 2.2), yel)
-    for i, (y0, y1, z0, z1) in enumerate(((-0.22, 4.55, 0.0, H), (5.15, ROOM_D + 0.22, 0.0, H), (4.55, 5.15, 0.0, 0.93), (4.55, 5.15, 1.97, H))):
+    for i, (y0, y1, z0, z1) in enumerate(((-0.22, DT_Y - 0.30, 0.0, H), (DT_Y + 0.30, ROOM_D + 0.22, 0.0, H), (DT_Y - 0.30, DT_Y + 0.30, 0.0, 0.93), (DT_Y - 0.30, DT_Y + 0.30, 1.97, H))):
         make_box(f"Facade_Skin_E_{i}", (ox, (y0 + y1) / 2.0, (z0 + z1) / 2.0), (0.02, y1 - y0, z1 - z0), yel)
     make_box("Roof_Slab", (0.0, ROOM_D / 2.0, CEIL + 0.18), (ROOM_W + 0.40, ROOM_D + 0.40, 0.16), (0.40, 0.38, 0.36, 1.0))
     make_box("Parapet_Cap_S", (0.0, -0.13, H + 0.03), (ROOM_W + 0.48, 0.06, 0.06), (0.86, 0.84, 0.80, 1.0))
@@ -279,7 +296,7 @@ def main():
     build_ceiling_infra()
     build_exterior_2026_10()
     # what is outside the window (2026-10-07, _props/views.py)
-    make_view("View_E", "E", ROOM_W/2.0, 4.85, kind="street", ground_z=0.0, seed=29)   # the drive-thru lane, the road past it
+    make_view("View_E", "E", ROOM_W/2.0, DT_Y, kind="street", ground_z=0.0, seed=29)   # the drive-thru lane, the road past it
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/el_rancho_taqueria.glb"))
     print(f"\n[build_el_rancho_taqueria] exporting to {out}")

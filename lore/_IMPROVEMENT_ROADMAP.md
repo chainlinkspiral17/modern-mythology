@@ -3865,14 +3865,37 @@ The Deck: "Certain interiors look poorly arranged and cramped."
   - The lights moved with their fixtures. The markers were re-authored and re-aimed; aim audit 0.
   - Result: floor 44 → 66 m², filled 0.44 → 0.35, walk 0.48 → 0.59. The remaining pinches are the
     reading table in reach of the futon and the side table at its arm.
+- **El Rancho, draft 3** (the next worst: 43% filled, 0.47 walk). In 7 × 6 m it held a long booth
+  with loose chairs, two six-tops whose facing chairs stood 20 cm apart, the register, the salsa
+  station and the drive-thru. The prose puts a team in it: "The Vinton team — twenty kids — pulls
+  in", "Coach Guidry has the long booth at the back", "The drive-thru is at the back", "Coach K and
+  Eileen are in the booth across from Coach Guidry".
+  - The room is 10 × 9 m now.
+  - The long booth runs across the BACK wall, with a backed bench facing it across the table.
+  - The kids' two six-tops are in the SW corner, two-tops along the E wall under the neon.
+  - The register is back right, with an open lane to it from the door.
+  - The salsa station is by the door, and the drive-thru window at the back behind the counter (one
+    `DT_Y` places the window, the facade cut, the speaker, the lane and the view).
+  - Result: filled 0.29, walk 0.68, 0 pinches.
+  - The lights moved with their fixtures. The inserts were re-aimed, and the close-up pair now films
+    across the booth.
+  - The drive-thru preset and its markers moved 1.5 m west with the W wall; the frame holds.
 - **Gates:** overlap 0, support 0, buried decor 0, window backing 0, doorway BLOCKED 0 (the plant
-  moved off the bathroom door), vantage 0 blind, obstruction 0, orphan practicals 0, shot markers 0
-  blind, tscn syntax 0. Perf: natalie_apartment 214 draw calls.
-- **Deck must REBUILD** natalie_apartment.
+  moved off Natalie's bathroom door), vantage 0 blind, obstruction 0, orphan practicals 0, marker aim
+  0 misaims, shot markers 0 blind, tscn syntax 0. Perf: natalie_apartment 214 draw calls,
+  el_rancho_taqueria 154.
+- **Deck must REBUILD** natalie_apartment, el_rancho_taqueria.
 - **Draft N+1 targets:**
-  - The re-plan queue by the audit: cabin_interior (check the porch pinches against the prose
-    first), lena_apartment (the couch hard by the plant and the bedroom door), roberts_kitchen,
-    faust_apartment, salty_tome_interior, cosmic_comics_interior.
+  - The re-plan queue by the audit and the contact sheet:
+    - roberts_kitchen (34 pinches; the establish sits in a doorway with the island in its face)
+    - new_orleans_office (14 m²: desk, chair and cabinet in a closet)
+    - new_orleans_apartment (a four-poster in the living room)
+    - montreal_apartment
+    - faust_apartment (bed, easel and desk in one room)
+    - cabin_interior (check the porch pinches against the prose first)
+    - lena_apartment
+  - El Rancho: the big room wants a busier night (the Vinton kids' trays and cups, Hugo's mother at
+    the back).
   - Natalie: a bedroom preset and the crib-corner variant.
 
 **2026-10-21 · pass 135: THE SOFAS STOP BEING CRATES.**
