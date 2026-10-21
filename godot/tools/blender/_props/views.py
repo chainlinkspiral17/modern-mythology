@@ -24,7 +24,7 @@
 # ground_z   where the ground is relative to the room's floor (an upstairs
 #            room: about -2.9)
 # ════════════════════════════════════════════════════════════════
-from .geometry import make_box, make_cyl, make_blob, make_taper_cyl
+from .geometry import make_box, make_cyl, make_blob, make_taper_cyl, make_gable
 
 GRASS = (0.38, 0.50, 0.28, 1.0)
 CONCRETE = (0.62, 0.60, 0.56, 1.0)
@@ -60,16 +60,50 @@ def _box(F, name, u, v, z, su, sv, sz, col):
 
 
 def _house(F, pre, u, v, w, d, h, col, door=True, porch_light=False, facing_room=True):
+    """The house across the street / over the fence (draft 2, 2026-10-20).
+
+    The Deck: "interiors need more windows, as do exteriors" / "still in the
+    too boxy phase". Draft 1 was a box under a flat slab with two dark
+    windows — seen through the windows of 28 rooms. Now a pitched roof with
+    its eaves out past the walls and a chimney through it, a full row of
+    windows (trim, sill, a muntin cross; shutters on some houses; a warm
+    pane here and there, a lamp or a curtain behind it), a little porch roof
+    on two posts over the door. Same names (…_Wall, _Roof, _Window_k…)."""
+    import zlib
+    rnd = zlib.crc32(pre.encode()) & 0xffff
     _box(F, f"{pre}_Wall", u, v + d / 2.0, (h - 0.12) / 2.0, w, d, h + 0.12, col)
-    _box(F, f"{pre}_Roof", u, v + d / 2.0, h + 0.40, w + 0.8, d + 0.8, 0.80, ROOF)
-    _box(F, f"{pre}_Roof_Ridge", u, v + d / 2.0, h + 0.95, w - 1.0, 0.5, 0.30, (0.30, 0.27, 0.24, 1.0))
+    rh = 1.9
+    make_gable(f"{pre}_Roof", F.p(u, v + d / 2.0, h + rh / 2.0), F.sz(w + 0.9, d + 0.9, rh), ROOF,
+               ridge_axis=('X' if F.side in ('N', 'S') else 'Y'))
+    _box(F, f"{pre}_Roof_Fascia", u, v - 0.43, h - 0.02, w + 0.9, 0.06, 0.16, (0.90, 0.88, 0.82, 1.0))
+    # the chimney through the back slope
+    _box(F, f"{pre}_Chimney", u + w / 2.0 - 1.4, v + d * 0.70, h + rh * 0.55, 0.70, 0.60, rh * 1.3, (0.52, 0.34, 0.28, 1.0))
     face = v - 0.02
-    for k, du in enumerate((-w / 4.0, w / 4.0 + 0.6)):
-        _box(F, f"{pre}_Window_{k}", u + du, face, 1.55, 1.40, 0.04, 1.10, (0.30, 0.34, 0.38, 1.0))
-        _box(F, f"{pre}_Window_{k}_Trim", u + du, face - 0.01, 0.95, 1.56, 0.04, 0.10, (0.92, 0.90, 0.84, 1.0))
+    trim = (0.92, 0.90, 0.84, 1.0)
+    door_u = u + 0.4
+    slots = [u - w / 2.0 + 1.3 + k * 2.1 for k in range(int((w - 2.0) / 2.1) + 1)]
+    slots = [su for su in slots if not door or abs(su - door_u) > 1.25]
+    shutters = (rnd % 3) == 0
+    shutter_col = ((0.20, 0.30, 0.26, 1.0), (0.30, 0.18, 0.16, 1.0), (0.18, 0.22, 0.32, 1.0))[rnd % 3]
+    for k, su in enumerate(slots):
+        warm = ((rnd >> k) & 3) == 0
+        pane = (0.72, 0.60, 0.42, 1.0) if warm else (0.28, 0.32, 0.36, 1.0)
+        _box(F, f"{pre}_Window_{k}_Trim", su, face - 0.005, 1.55, 1.40, 0.05, 1.30, trim)
+        _box(F, f"{pre}_Window_{k}", su, face - 0.03, 1.55, 1.20, 0.04, 1.10, pane)
+        _box(F, f"{pre}_Window_{k}_MuntinV", su, face - 0.055, 1.55, 0.04, 0.01, 1.10, trim)
+        _box(F, f"{pre}_Window_{k}_MuntinH", su, face - 0.055, 1.55, 1.20, 0.01, 0.04, trim)
+        _box(F, f"{pre}_Window_{k}_Sill", su, face - 0.07, 0.88, 1.56, 0.12, 0.06, trim)
+        if shutters:
+            for sg in (-1, 1):
+                _box(F, f"{pre}_Window_{k}_Shutter_{sg:+d}", su + sg * 0.92, face - 0.03, 1.55, 0.40, 0.04, 1.30, shutter_col)
     if door:
-        _box(F, f"{pre}_Door", u + 0.4, face, 1.05, 0.95, 0.04, 2.10, (0.42, 0.30, 0.22, 1.0))
-        _box(F, f"{pre}_Stoop", u + 0.4, v - 0.60, 0.07, 1.6, 1.2, 0.14, CONCRETE)
+        _box(F, f"{pre}_Door", door_u, face - 0.01, 1.05, 0.95, 0.04, 2.10, (0.42, 0.30, 0.22, 1.0))
+        _box(F, f"{pre}_Door_Trim", door_u, face, 1.10, 1.15, 0.03, 2.25, trim)
+        _box(F, f"{pre}_Stoop", door_u, v - 0.60, 0.07, 1.6, 1.2, 0.14, CONCRETE)
+        # a little porch roof on two posts over the stoop
+        _box(F, f"{pre}_Porch_Roof", door_u, v - 0.62, 2.48, 1.9, 1.30, 0.10, ROOF)
+        for sg in (-1, 1):
+            make_cyl(f"{pre}_Porch_Post_{sg:+d}", F.p(door_u + sg * 0.80, v - 1.12, 1.29), 0.05, 2.30, trim, segments=8)
     if porch_light:
         _box(F, f"{pre}_Porch_Light_Bracket", u + 1.05, face - 0.02, 2.22, 0.06, 0.04, 0.06, (0.20, 0.20, 0.22, 1.0))
         make_cyl(f"{pre}_Porch_Light", F.p(u + 1.05, face - 0.06, 2.10), 0.06, 0.12, (0.98, 0.86, 0.56, 1.0), segments=8)

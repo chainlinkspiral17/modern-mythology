@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 132: THE HOUSES ACROSS THE STREET; LENA'S BACK WINDOWS; the window count reads glass.**
+- **The view kit's house** (seen through the windows of the 28 rooms that call make_view): a pitched
+  roof with eaves and fascia, a chimney through the back slope, a full row of windows (trim, sill,
+  muntin cross; shutters on some houses; a warm pane here and there), a porch roof on two posts over
+  the door. It was a box under a flat slab with two dark windows.
+- **Lena's apartment** (vol 7, 948 lines): the couch nook's back wall — the blank wall seen through the
+  cased opening from the door — is a pair of curtained windows on the back of the block (make_view
+  "back", one floor up). The text's "the front window" and the kitchen window stay as they are.
+- **window_count_audit** now counts a curtain wall's large thin GLASS panes (the Houston office's two
+  glass walls read as "0 windows"): 29 played sets have 0-1, and several are right to (the sleep lab:
+  "the basement's basement: no windows, no outside"; Club Sharp; the Foxhole, a black box; the
+  stockroom; the cell). Next by lines: the hospital room, the cedar tower, the Henderson garage,
+  Jesse's bedroom, the Small Wood ranch.
+- Gates: overlap 0 new (small_wood_road's 6 stand), support 0, buried decor 0, dry run 161/161;
+  lena_apartment 226 draw calls (baseline 156).
+
 **2026-10-20 · pass 131: MORE WINDOWS, LESS BOX (the kit + the writer's desk + Small Wood High).**
 The user: "keep going, improving backgrounds and getting them up in quality" · "interiors need more
 windows, as do exteriors" · "still in the too boxy phase".

@@ -54,12 +54,13 @@ from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_chamfer_box,
                              make_tube, make_rot_box, export_glb)
 from _props.views import make_view
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings, make_curtains
 from _props.decor import make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
 from _props.plan import shifted
 
 ROOM_W = 7.0; ROOM_D = 6.6; CEIL = 2.6
+NOOK_WIN_X = (0.75, 2.35)                 # (2026-10-21) the couch nook's back windows
 # THE BIGGER ROOM (2026-10-09, the overnight run; CLAUDE.md rule 5): it was
 # 5 x 5 m — 25 m2 for a kitchen, a table for four, a couch nook, a window
 # chair, an easel and a bedroom — the table jammed against the counter,
@@ -91,7 +92,15 @@ def build_shell():
     # (2026-10-07) Wall_W out of the loop: its window is cut
     make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.30, 1.50, 1.10, 1.10)])
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    # (2026-10-21, the Deck: "interiors need more windows" / "too boxy") the
+    # couch nook's back wall — the blank wall seen through the cased opening
+    # from the door — opens on the back of the block: a pair of windows
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL,
+                            baseboard_face_sign=-1, openings=[(NOOK_WIN_X[0], 1.50, 0.95, 1.30), (NOOK_WIN_X[1], 1.50, 0.95, 1.30)])
+    for k, wx in enumerate(NOOK_WIN_X):
+        make_window(f"Nook_Window_{k}", (wx, ROOM_D - 0.10, 1.50), width=0.95, height=1.30, see_through=True)
+        make_curtains(f"Nook_Curtain_{k}", (wx, ROOM_D - 0.10, 1.50), width=0.95, height=1.30,
+                      color=(0.82, 0.78, 0.66, 1.0), open_frac=0.32, drop=0.12)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.00, 1.42, 1.00, 1.20)])   # (2026-10-09: +0.25, clear of the fridge) cut 2026-10-07: its window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
@@ -731,6 +740,7 @@ def main():
     build_draft4_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_S", "S", 0.0, 2.00, kind="street", ground_z=-3.2, seed=11)   # Hemlock, one floor down
+    make_view("View_N", "N", ROOM_D, 1.55, kind="back", ground_z=-3.2, seed=6)       # (2026-10-21) the back of the block
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")

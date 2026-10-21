@@ -61,10 +61,23 @@ def lines_by_locale():
     return out
 
 
+GLASS_RE = re.compile(r"(^|_)(glass|glazed|glazing)(_|$|\d)", re.I)
+
+
 def count(boxes):
+    """Kit windows (one per FrameT) + drawn ones: window-named parts, and
+    large thin GLASS panes (a curtain wall's Glass_N_3 is a window; a
+    nightstand's drinking Glass is not: thin <= 6 cm, both faces >= 35 cm).
+    BOXES sizes are half-extents."""
     kit = {n[:-len("_FrameT")] for n, _, _ in boxes if n.endswith("_FrameT")}
-    loose = [(n, c) for n, c, _ in boxes
-             if WIN_RE.search(n) and not SKIP_RE.search(n) and not any(n.startswith(k) for k in kit)]
+
+    def pane(h):
+        d = sorted(2.0 * v for v in h)
+        return d[0] <= 0.06 and d[1] >= 0.35
+
+    loose = [(n, c) for n, c, h in boxes
+             if (WIN_RE.search(n) or (GLASS_RE.search(n) and pane(h)))
+             and not SKIP_RE.search(n) and not any(n.startswith(k) for k in kit)]
     clusters = []
     for n, c in loose:
         for cl in clusters:
