@@ -151,9 +151,9 @@ def build_shell():
     make_box("Entry_Door_Casing_Head", (dx, YS + 0.01, 2.135), (DOOR_S[2] + 0.14, 0.02, 0.07), COL_BASE)
     make_light_switch("Switch_Entry", (a1 + 0.22, 0.0), axis='X', face_sign=+1, z=1.20)
     # Rug in the middle of the room, the path worn to the bed
-    make_box("Rug", (-0.6, 3.5, 0.008), (2.9, 2.1, 0.012), COL_RUG)
+    make_box("Rug", (-0.15, 3.5, 0.008), (2.9, 2.1, 0.012), COL_RUG)   # under the couch and its table (2026-10-21)
     for nm, y in (("S", 2.50), ("N", 4.50)):
-        make_box(f"Rug_Edge_{nm}", (-0.6, y, 0.016), (2.9, 0.10, 0.006), COL_RUG_EDGE)
+        make_box(f"Rug_Edge_{nm}", (-0.15, y, 0.016), (2.9, 0.10, 0.006), COL_RUG_EDGE)
     make_traffic_wear("Floor_Wear", [(-0.45, 0.45), (-0.9, 2.0), (-1.6, 4.0), (-1.95, 5.2)], width=0.6)
 
 
@@ -413,17 +413,22 @@ def build_bookcase_reading():
                 _book_row(f"Case_{zi}_{bi}", xf - 0.01, ya, (ya + yb) / 2.0 - 0.02, z, zi * 4 + bi)
                 continue
             _book_row(f"Case_{zi}_{bi}", xf - 0.01, ya, yb, z, zi * 4 + bi)
-    # the reading chair, facing the room and the E window
-    ax, ay = -2.42, 3.10
-    make_box("Armchair_Base", (ax, ay, 0.20), (0.82, 0.82, 0.32), COL_UPHOL)
-    for li, (ox, oy) in enumerate(((-0.36, -0.36), (0.36, -0.36), (-0.36, 0.36), (0.36, 0.36))):
-        make_box(f"Armchair_Foot_{li}", (ax + ox, ay + oy, 0.02), (0.05, 0.05, 0.04), COL_WOOD)
-    make_box("Armchair_Cushion", (ax + 0.08, ay, 0.42), (0.64, 0.54, 0.12), (0.40, 0.44, 0.33, 1.0))
-    make_box("Armchair_Back", (ax - 0.32, ay, 0.70), (0.18, 0.82, 0.68), COL_UPHOL)
-    for nm, oy in (("S", -0.34), ("N", 0.34)):
-        make_box(f"Armchair_Arm_{nm}", (ax + 0.09, ay + oy, 0.48), (0.64, 0.14, 0.24), COL_UPHOL)
-    make_box("Armchair_Throw", (ax - 0.32, ay + 0.12, 1.045), (0.20, 0.50, 0.03), (0.70, 0.62, 0.40, 1.0))
-    make_box("Armchair_Book", (ax + 0.10, ay + 0.34, 0.615), (0.16, 0.12, 0.03), SPINES[3])
+    # THE COUCH (2026-10-21, the Deck: "poorly arranged"; canon: "Faust comes
+    # home and flops down on the couch, grabbing a book to read" · "Joan sits
+    # next to him on the couch"). Drafts 1-3 had a one-seat reading chair
+    # here: the couch, facing the room and the E window, the moss velvet
+    # kept, the throw over its arm and the book on the seat; a low table in
+    # front of it. It stands free on the rug in the middle of the studio, its
+    # back to the bed and the bookcase — the living half of the room facing
+    # the easel and the window light, the sleeping half behind it (against
+    # the W wall it stood 16 cm off the bed's foot and the kitchen corner).
+    from _props.furniture import make_sofa
+    cx_, cy_, rug_top = -0.25, 3.55, 0.014
+    make_sofa("Couch", cx_, cy_, back="-X", w=1.95, d=0.88, seats=2, color=COL_UPHOL,
+              cushion_col=(0.40, 0.44, 0.33, 1.0), leg_col=COL_WOOD, arm="roll", throw=(0.70, 0.62, 0.40, 1.0),
+              z0=rug_top)
+    make_box("Couch_Book", (cx_ + 0.12, cy_ + 0.35, 0.455 + rug_top), (0.16, 0.12, 0.03), SPINES[3])
+    make_table("Couch_Table", 0.85, cy_, w=0.55, d=1.10, h=0.42, wood=COL_WOOD, z0=rug_top)
     # floor lamp south of the chair
     lx, ly = -2.98, 2.42
     make_lathe("FloorLamp_Base", (lx, ly, 0.0), [(0.0, 0.0), (0.15, 0.0), (0.14, 0.03), (0.02, 0.05), (0.0, 0.05)], (0.20, 0.18, 0.16, 1.0), segments=12)
@@ -432,9 +437,9 @@ def build_bookcase_reading():
     make_cyl("FloorLamp_Bulb", (lx, ly, 1.48), 0.03, 0.06, COL_LAMP, segments=8)
     make_tube("FloorLamp_Cord", [(lx, ly + 0.08, 0.02), (XW + 0.02, ly + 0.4, 0.02), (XW + 0.02, ly + 0.4, 0.30)], 0.005, (0.12, 0.12, 0.12, 1.0), segments=4)
     make_wall_outlet("Outlet_Reading", (-ROOM_W / 2.0, ly + 0.40), axis='Y', face_sign=+1)
-    # a little side table N of the chair: mug, ashtray-less (he drinks water)
-    make_lathe("Side_Table", (ax + 0.10, ay + 0.74, 0.0), [(0.16, 0.0), (0.03, 0.02), (0.025, 0.50), (0.20, 0.52), (0.20, 0.55), (0.0, 0.55)], COL_WOOD, segments=14)
-    make_mug("Side_Table_Mug", ax + 0.16, ay + 0.70, 0.55, (0.86, 0.84, 0.78, 1.0))
+    # his water on the low table (it was a side table by the chair; the couch
+    # takes its place)
+    make_mug("Side_Table_Mug", 0.72, 3.30, 0.42 + 0.014, (0.86, 0.84, 0.78, 1.0))
 
 
 def build_bed():

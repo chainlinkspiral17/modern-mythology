@@ -4324,8 +4324,10 @@ const CAMERA_PRESETS := {
 		# Same set, the 4am vantage — mid-room looking NW at the bed
 		# corner: red blanket, the canvas over the headboard, the
 		# nightstand lamp + alarm; bookcase and reading chair frame-left.
-		"camera_origin": Vector3(0.70, 1.50, -2.70),
-		"camera_rotation": Vector3(-0.145, deg_to_rad(47.7), 0.0),
+		# (2026-10-21: the couch stands mid-studio now — the lens steps east of
+		# its low table so the couch's back is a foreground edge, not the frame)
+		"camera_origin": Vector3(1.60, 1.50, -2.40),
+		"camera_rotation": Vector3(-0.145, deg_to_rad(56.3), 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},

@@ -49,10 +49,22 @@ BODY_R = 0.28        # m · half a person's shoulder width
 BAND = (0.12, 1.20)  # m above the floor · the body's height band
 FLOOR_RE = re.compile(r"(^|_)(floor|slab|deck|carpet|vinyl|linoleum|tile_?floor)($|_)", re.I)
 NOT_FLOOR_RE = re.compile(r"(floor_?(lamp|plant|safe|tom|board|vent|drain|stain|mat)|seam|joint|grid|crack|stain|wear|rug|runner|mat\b)", re.I)
-SKIP_RE = re.compile(r"(rug|runner|mat$|_mat_|wear|stain|threshold|cord|cable|shadow|glow|light_pool|pool|decal|"
-                     r"seam|grid|joint|crack|sheen|scuff|spill|puddle|dust|chalk|hair|paper|sheet_\d|tape|"
-                     r"view_|thru_|ground|lawn|street|walk_|sidewalk|curb|far|band|sky|backdrop|"
-                     r"air_|shimmer|beam_light|god_?ray|fog|steam|smoke|mist)", re.I)
+# what a body walks over or through, matched by NAME TOKEN (2026-10-21: as
+# substrings, "hair" (a Wear_Hair strand) matched every chAIR and armcHAIR,
+# "pool" every Pool_Table — every chair in every room was invisible here)
+SKIP_TOKENS = {"rug", "rugs", "runner", "mat", "wear", "stain", "stains", "threshold", "cord", "cords", "cable",
+               "cables", "shadow", "glow", "decal", "seam", "seams", "grid", "joint", "joints", "crack", "sheen",
+               "scuff", "spill", "puddle", "dust", "chalk", "hair", "paper", "papers", "tape", "view", "thru",
+               "ground", "lawn", "street", "sidewalk", "curb", "far", "sky", "backdrop", "shimmer", "fog",
+               "steam", "smoke", "mist", "patch", "worn", "path", "pool"}
+SKIP_RE = re.compile(r"(light_pool|beam_light|god_?ray|^air_|_air_)", re.I)
+
+
+def _skip(n):
+    toks = {re.sub(r"\d+$", "", t.lower()) for t in n.split("_")}
+    return bool(toks & SKIP_TOKENS) or bool(SKIP_RE.search(n))
+
+
 PINCH = (0.10, 0.55)
 
 
@@ -138,7 +150,7 @@ def measure(boxes):
     obst = np.zeros((H, W), bool)
     pieces = []
     for n, c, h in boxes:
-        if SKIP_RE.search(n) or FLOOR_RE.search(n) and not NOT_FLOOR_RE.search(n):
+        if _skip(n) or FLOOR_RE.search(n) and not NOT_FLOOR_RE.search(n):
             continue
         lo, hi = c[2] - h[2] - ftop, c[2] + h[2] - ftop
         if hi < BAND[0] or lo > BAND[1] or 2 * h[2] < 0.03:

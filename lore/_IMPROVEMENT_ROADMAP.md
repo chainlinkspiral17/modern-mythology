@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 138: FAUST'S COUCH; THE CROWDING AUDIT SEES CHAIRS.**
+- **room_crowding_audit counted no chairs.** It skipped parts by substring, so "hair" (a Wear_Hair
+  strand) matched every chair and armchair, and "pool" every pool table. It now skips by name token.
+  The ranking with chairs counted: cabin_interior (2151 lines, walk 0.61, 17 pinches), kwik_stop,
+  salty_tome_interior, cosmic_comics_interior, lena_apartment (948, walk 0.55), board_lords_interior,
+  faust_apartment.
+- **Faust's apartment** (vol 1, 313 lines). The prose has a couch ("Faust comes home and flops down
+  on the couch, grabbing a book to read" · "Joan sits next to him on the couch"); the set had a
+  one-seat reading chair. Now:
+  - the kit couch (moss velvet, rolled arms, the throw over its arm, the book on the seat) stands
+    free on the rug in the middle of the studio
+  - its back is to the bed and the bookcase, so the living half faces the easel and the window
+    light and the sleeping half is behind it
+  - a low table in front holds his water
+  - Against the W wall it stood 16 cm off the bed's foot.
+  - The bedroom preset steps east of the low table: the couch's cushions are the foreground layer,
+    the bed and dresser lit beyond.
+  - Gates: overlap 0, support 0, doorway 0, vantage 0 blind, obstruction 0, marker aim 0, shot
+    markers 0 blind; perf ok.
+- **Deck must REBUILD** faust_apartment.
+- **Draft N+1 targets:**
+  - Lena (948 lines): the next re-plan; walk 0.55 with the chairs counted.
+  - The cabin (2151): read the prose's room geography first; 17 pinches.
+
 **2026-10-21 · pass 137: RE-PLAN BY REGION (`plan.zoned`); THE ROBERTS HOUSE GROWS.**
 - **`_props/plan.py: zoned(regions)`.** Inside the block, every part whose plan centre falls in a
   region moves by that region's (dx, dy). It moves what was built:
