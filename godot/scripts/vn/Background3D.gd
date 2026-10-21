@@ -4677,8 +4677,10 @@ const CAMERA_PRESETS := {
 		# arc of the Sitka ring frames the left, the wagon mid-left
 		# (2026-09-30: at 18 m and pitched 17° up the frame was the
 		# tower's middle floors and five spruce 3 m off the lens).
-		"camera_origin": Vector3(47.0, 1.70, 18.0),
-		"camera_rotation": Vector3(0.17, 0.066, 0.0),
+		# (2026-10-21: the tower is seventy feet on a side now — canon —
+		# so the lens backs off to 37 m and pitches less to keep it whole)
+		"camera_origin": Vector3(47.0, 1.70, 30.0),
+		"camera_rotation": Vector3(0.10, 0.066, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},

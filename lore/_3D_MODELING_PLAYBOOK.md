@@ -399,6 +399,28 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-21 · a window is only as good as what it looks at (pass 133)
+
+**Context:** the window pass reached the Cedar Tower, whose four floors stack in one GLB with
+the exterior set 45 m east of them.
+
+**Rules:**
+- Before cutting a window, ask what is OUTSIDE it in this GLB. An east window in the tower's
+  floors would have framed the exterior model of the same tower. Face windows away from other
+  sets, and build the view (`make_view`, or bespoke ground, trees, a bluff and the sea).
+- A window you want seen through is `see_through=True`. Two tinted glass layers over a bright
+  sky render as a flat cream pane; the frame, mullions and glints alone read as glass.
+- Horizon bands (`make_far_bands`) are measured from `cx, cy`. A GLB holding two sets needs
+  them centred on the set each side serves: the tower's east band sat 13 m off the exterior
+  lens because it was measured from the floors at x 0.
+- Ground that ends (a bluff, a shore) has to end for the bands too: run N/S bands only over
+  the land, so nothing hangs over the sea.
+- Re-check the canon's numbers on every pass. "Seventy feet on a side" had been an 8 m
+  column for months.
+- Replacing to the end of a file with `s[s.index(x):]` also drops its `if __name__ ==
+  "__main__": main()`. The builder then exits silently with no GLB. Check that the build log
+  says "exporting".
+
 
 ### 2026-10-20 · "too boxy" is shape, not bevel; a window is its trim
 

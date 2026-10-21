@@ -108,7 +108,8 @@ def _windows(prefix, z0, wall, line, cuts, *, trim=True, curtains=None):
     for k, (oc, oz, ow, oh) in enumerate(cuts):
         anchor = (line, oc, z0 + oz) if along_y else (oc, line, z0 + oz)
         make_window(f"{prefix}_{k}", anchor, width=ow - 0.20, height=oh - 0.10,
-                    axis=('Y' if along_y else 'X'), room_dir=room_dir, palette=WIN_PAL, trim=trim)
+                    axis=('Y' if along_y else 'X'), room_dir=room_dir, palette=WIN_PAL, trim=trim,
+                    see_through=True)   # the cedars and the sea, not a cream pane
         if curtains:
             make_curtains(f"{prefix}_{k}_Curtain", anchor, width=ow - 0.20, height=oh - 0.10,
                           axis=('Y' if along_y else 'X'), room_dir=room_dir, color=curtains,
@@ -641,7 +642,10 @@ def build_horizon_2026_08():
     # x -33.9 east, the E bands as before; nothing hangs over the sea
     for nm, col, bands, prof in (("FarTown", (0.30, 0.28, 0.27), [(60.0, 70.0, 7.0, 0.90), (130.0, 110.0, 8.5, 0.72)], "roofline"),
                                  ("FarWood", (0.16, 0.24, 0.15), [(250.0, 200.0, 12.0, 0.56), (460.0, 330.0, 15.0, 0.42)], "treeline")):
-        make_far_bands(nm, col, bands, profile=prof, sides="E")
+        # the E bands are measured from the exterior set (x 45), not from the
+        # floors: at x 60 the first one stood 13 m off the establish's lens,
+        # a dark wall down the frame's right side (2026-10-21)
+        make_far_bands(nm, col, bands, profile=prof, sides="E", cx=45.0)
         for k, (dist, half, h, shade) in enumerate(bands):
             half_ns = (half - BLUFF_X - 0.1) / 2.0
             make_far_bands(f"{nm}_NS{k}", col, [(dist, half_ns, h, shade)], profile=prof, sides="NS",
