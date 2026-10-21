@@ -248,3 +248,75 @@ def make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame",
         hb_h = 0.70 if style != "captain" else 0.60
         make_box(f"{prefix}_Headboard", P(0.0, hd + 0.03, deck + hb_h / 2.0 - 0.06), S(w + 0.04, 0.06, hb_h), frame_col)
     return top
+
+
+def make_sofa(prefix, x, y, back="+Y", w=1.90, d=0.88, seats=2, color=(0.46, 0.40, 0.34, 1.0),
+              cushion_col=None, leg_col=WOOD_DK, arm="roll", seat_h=0.44, back_h=0.84,
+              pillows=(), throw=None, z0=0.0):
+    """An upholstered sofa (2026-10-21, the Deck: "still in the too boxy
+    phase"). Twenty-five builders laid a sofa as three chamfered slabs — a
+    base, a back, two arms — which reads as a crate at any distance. This
+    one is soft boxes all through: the frame, the arms (rolled or track),
+    a seat cushion per seat stuffed proud of the frame, a back cushion per
+    seat leaning on the back, turned feet under the corners; `pillows` is
+    a list of colours for throw pillows tucked into the corners, `throw` a
+    colour for a blanket folded over one arm.
+
+    Same local frame as make_bed: u across the sofa, v toward the BACK;
+    `back` names the side the backrest is on ("+Y" = the sofa faces -Y).
+    (x, y) is the centre of the footprint. Returns the seat's top z."""
+    yaw = {"+Y": 0.0, "-Y": math.pi, "+X": -math.pi / 2.0, "-X": math.pi / 2.0}[back]
+    c, s = math.cos(yaw), math.sin(yaw)
+    along_x = abs(s) > 0.5
+
+    def P(u, v, z):
+        return (x + u * c - v * s, y + u * s + v * c, z0 + z)
+
+    def S(a, b, h):
+        return (b, a, h) if along_x else (a, b, h)
+
+    cushion_col = cushion_col or tuple(min(1.0, k * 1.06) for k in color[:3]) + (1.0,)
+    dark = (color[0] * 0.86, color[1] * 0.86, color[2] * 0.86, 1.0)
+    hw, hd = w / 2.0, d / 2.0
+    leg_h, cush_h = 0.10, 0.15
+    arm_w = 0.20 if arm == "roll" else 0.16
+    arm_h = seat_h + 0.20
+    back_t = 0.18
+    base_top = seat_h - cush_h
+    inner = w - 2.0 * arm_w
+    # turned feet under the four corners
+    for li, (u, v) in enumerate(((-hw + 0.07, -hd + 0.07), (hw - 0.07, -hd + 0.07), (-hw + 0.07, hd - 0.07), (hw - 0.07, hd - 0.07))):
+        make_lathe(f"{prefix}_Foot_{li}", P(u, v, 0.0), [(0.022, 0.0), (0.028, 0.03), (0.034, 0.07), (0.030, leg_h)], leg_col, segments=8)
+    # the frame between the arms, and the arms
+    make_soft_box(f"{prefix}_Frame", P(0.0, 0.0, (leg_h + base_top) / 2.0), S(inner, d, base_top - leg_h), dark, yaw=0.0, round=0.12)
+    for sg in (-1, 1):
+        u = sg * (hw - arm_w / 2.0)
+        if arm == "roll":
+            make_soft_box(f"{prefix}_Arm_{sg:+d}", P(u, 0.0, (leg_h + arm_h - 0.06) / 2.0), S(arm_w - 0.02, d, arm_h - 0.06 - leg_h), color, round=0.22)
+            make_soft_box(f"{prefix}_ArmRoll_{sg:+d}", P(u + sg * 0.01, -0.01, arm_h - 0.06), S(arm_w + 0.02, d - 0.02, 0.13), color, round=0.7)
+        else:
+            make_soft_box(f"{prefix}_Arm_{sg:+d}", P(u, 0.0, (leg_h + arm_h) / 2.0), S(arm_w, d, arm_h - leg_h), color, round=0.18)
+    # the back between the arms, from the frame's top
+    make_soft_box(f"{prefix}_Back", P(0.0, hd - back_t / 2.0, (base_top + back_h) / 2.0), S(inner, back_t, back_h - base_top), color, round=0.22)
+    # seat cushions on the frame, back cushions on the seat cushions
+    cw = inner / seats
+    sd = d - back_t
+    bc_t, bc_h = 0.16, back_h - seat_h - 0.04
+    for k in range(seats):
+        u = -inner / 2.0 + cw * (k + 0.5)
+        make_soft_box(f"{prefix}_SeatCushion_{k}", P(u, -hd + sd / 2.0, base_top + cush_h / 2.0), S(cw - 0.012, sd, cush_h), cushion_col,
+                      round=0.32, puff=0.12)
+        make_soft_box(f"{prefix}_BackCushion_{k}", P(u, hd - back_t - bc_t / 2.0, seat_h + bc_h / 2.0), S(cw - 0.02, bc_t, bc_h), cushion_col,
+                      round=0.42, puff=0.10)
+    # throw pillows in the corners, leaning on the back cushions
+    for k, pc in enumerate(pillows[:2]):
+        sg = -1 if k == 0 else 1
+        make_soft_box(f"{prefix}_Pillow_{k}", P(sg * (inner / 2.0 - 0.22), hd - back_t - bc_t - 0.07, seat_h + 0.20), (0.40, 0.13, 0.38), pc,
+                      yaw=yaw + sg * 0.18, round=0.55, puff=0.30)
+    if throw:
+        # folded over the +u arm: across its top and down its outside
+        u = hw - arm_w / 2.0
+        top = arm_h + (0.005 if arm == "roll" else 0.0)      # the arm's crown
+        make_soft_box(f"{prefix}_Throw_Top", P(u, -0.05, top + 0.015), S(arm_w + 0.04, 0.46, 0.03), throw, round=0.4)
+        make_soft_box(f"{prefix}_Throw_Drop", P(hw + 0.016, -0.05, top - 0.20), S(0.03, 0.46, 0.42), throw, round=0.4)
+    return seat_h

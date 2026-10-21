@@ -49,7 +49,7 @@ y=3.05; front room center/east. glTF export remaps to Godot
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.furniture import make_chair, make_lamp, make_bed
+from _props.furniture import make_chair, make_lamp, make_bed, make_sofa
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_chamfer_box,
                              make_tube, make_rot_box, export_glb)
@@ -262,21 +262,14 @@ def build_front_room():
         # end at 0.17, clear of the bedroom door's swing (x to 0.08) and
         # its east end 3 cm off the shelf (2026-09-25: at 0.70 it reached -0.25)
         sx, sy = 1.12, 3.60
-        # draft 4 (2026-09-17): upholstery has soft edges and rolled arms;
-        # the couch stands on four short turned feet
-        couch = (0.44, 0.40, 0.34, 1.0)
-        couch_dk = (0.40, 0.36, 0.30, 1.0)
-        for fi, (fx, fy) in enumerate(((sx - 0.90, sy - 0.38), (sx + 0.90, sy - 0.38), (sx - 0.90, sy + 0.38), (sx + 0.90, sy + 0.38))):
-            make_lathe(f"Couch_Foot_{fi}", (fx, fy, 0.0), [(0.03, 0.0), (0.035, 0.03), (0.025, 0.06), (0.03, 0.09)], COL_WOOD, segments=8)
-        make_chamfer_box("Couch_Base", (sx, sy, 0.26), (1.90, 0.85, 0.32), couch, chamfer=0.03)
-        make_chamfer_box("Couch_Back", (sx, sy+0.36, 0.62), (1.90, 0.18, 0.60), couch_dk, chamfer=0.04)
-        for ax in (sx-0.88, sx+0.88):
-            make_chamfer_box(f"Couch_Arm_{ax:.1f}", (ax, sy, 0.48), (0.16, 0.85, 0.42), couch_dk, chamfer=0.03)
-            make_cyl(f"Couch_ArmRoll_{ax:.1f}", (ax, sy - 0.04, 0.66), 0.075, 0.70, couch_dk, axis='Y', segments=10)
-        for pi, px in enumerate((sx-0.45, sx+0.45)):
-            make_chamfer_box(f"Couch_Cushion_{pi}", (px, sy-0.05, 0.46), (0.80, 0.66, 0.14), (0.48, 0.44, 0.38, 1.0), chamfer=0.03)
+        # draft 5 (2026-10-21, the Deck: "still in the too boxy phase"): the
+        # kit sofa — soft frame, rolled arms, two stuffed seat cushions and
+        # two back cushions on turned feet (draft 4 was chamfered slabs)
+        make_sofa("Couch", sx, sy + 0.01, back="+Y", w=1.92, d=0.88, seats=2,
+                  color=(0.40, 0.36, 0.30, 1.0), cushion_col=(0.48, 0.44, 0.38, 1.0), leg_col=COL_WOOD,
+                  arm="roll", seat_h=0.46, back_h=0.86)
         # The wool blanket, folded over the back
-        make_chamfer_box("Wool_Blanket", (sx-0.30, sy+0.36, 0.945), (0.70, 0.24, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)
+        make_chamfer_box("Wool_Blanket", (sx-0.30, sy+0.36, 0.89), (0.70, 0.24, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)
     with shifted(globals(), 0.25, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the front window
         # The chair by the window + the small wooden side table (the
         # Estuary 7 beat happens on this table)

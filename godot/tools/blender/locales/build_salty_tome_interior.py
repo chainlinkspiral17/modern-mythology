@@ -288,11 +288,12 @@ def build_back_annex_2026_08():
     for pi2 in range(3):
         make_box(f"Office_Papers_{pi2}", (3.0-pi2*0.05, 8.32, 0.765+pi2*0.008), (0.22, 0.28, 0.008),
                  (0.90, 0.88, 0.82, 1.0))
-    make_box("Office_Couch_Base", (2.9, 6.85, 0.17), (1.70, 0.70, 0.34), (0.40, 0.30, 0.26, 1.0))   # on the floor (2026-09-22: 9 cm up)
-    make_box("Office_Couch_Back", (2.9, 7.16, 0.60), (1.70, 0.16, 0.55), (0.40, 0.30, 0.26, 1.0))
-    for ci2, cxo in enumerate([-0.55, 0.0, 0.55]):
-        make_box(f"Office_Couch_Cushion_{ci2}", (2.9+cxo, 6.80, 0.39), (0.52, 0.60, 0.10),
-                 (0.46, 0.35, 0.30, 1.0))
+    # the office couch — the kit sofa (2026-10-21, "still in the too boxy
+    # phase"; it was three boxes): three seats, track arms, turned feet
+    from _props.furniture import make_sofa
+    make_sofa("Office_Couch", 2.9, 6.87, back="+Y", w=1.74, d=0.74, seats=3,
+              color=(0.40, 0.30, 0.26, 1.0), cushion_col=(0.46, 0.35, 0.30, 1.0), arm="track",
+              seat_h=0.44, back_h=0.86)
     # KITCHENETTE along the annex W + N walls.
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
     make_box("Kitch_Counter", (-3.55, 6.960, 0.45), (0.60, 1.8, 0.90), COL_WOOD)

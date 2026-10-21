@@ -65,7 +65,7 @@ if _BLENDER_TOOLS not in sys.path:
     sys.path.insert(0, _BLENDER_TOOLS)
 
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_blob, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_blob, make_rot_box, make_soft_box, export_glb
 from _props.furniture import make_table, make_chair, make_lamp
 from _props.structure import (make_wall_with_openings, 
     make_floor, make_wall, make_ceiling, make_window,
@@ -192,8 +192,10 @@ def build_living_room():
     make_chamfer_box("Sofa_Base", (sx, sy, 0.14), (1.80, 0.80, 0.28), COL_BED_FRAME, chamfer=0.01)
     for si in range(5):
         make_box(f"Futon_Front_Slat_{si}", (sx - 0.72 + si * 0.36, sy - 0.405, 0.14), (0.26, 0.012, 0.20), COL_WOOD_TRIM)
-    make_chamfer_box("Futon_Seat_Cushion", (sx, sy - 0.04, 0.355), (1.72, 0.70, 0.17), COL_COUCH_TEAL, chamfer=0.05)
-    make_chamfer_box("Sofa_Back", (sx, sy + 0.30, 0.74), (1.72, 0.18, 0.62), COL_COUCH_TEAL, chamfer=0.05)
+    # (2026-10-21, "still in the too boxy phase") the futon mattress is a
+    # soft fold — rounded by a share of itself, stuffed — not two slabs
+    make_soft_box("Futon_Seat_Cushion", (sx, sy - 0.04, 0.355), (1.72, 0.70, 0.17), COL_COUCH_TEAL, round=0.30, puff=0.12)
+    make_soft_box("Sofa_Back", (sx, sy + 0.30, 0.74), (1.72, 0.18, 0.62), COL_COUCH_TEAL, round=0.30, puff=0.06)
     for ti, tz in enumerate((0.58, 0.88)):
         make_box(f"Futon_Back_Rail_{ti}", (sx, sy + 0.40, tz), (1.72, 0.03, 0.06), COL_BED_FRAME)
     for ci, cx in enumerate((-0.43, 0.43)):
@@ -203,7 +205,8 @@ def build_living_room():
         make_box(f"Futon_Arm_Cap_{cs:+d}", (sx + cs * 0.94, sy, 0.725), (0.18, 0.84, 0.02), COL_WOOD_TRIM)
     # Throw pillows (rose accent)
     for pi, px in enumerate([-0.50, +0.30, +0.70]):
-        make_chamfer_box(f"Sofa_Pillow_{pi}", (sx + px, sy + 0.10, 0.53), (0.30, 0.20, 0.18), COL_ACCENT_ROSE, chamfer=0.03)   # on the cushions
+        make_soft_box(f"Sofa_Pillow_{pi}", (sx + px, sy + 0.10, 0.53), (0.30, 0.20, 0.18), COL_ACCENT_ROSE, yaw=(-0.12, 0.08, -0.05)[pi],
+                      round=0.55, puff=0.25)   # on the cushions
     # Coffee table (draft 3: the kit table, turned legs and an apron)
     make_table("CoffeeTable", sx + 0.15, sy - 0.80, w=1.20, d=0.60, h=0.40, wood=COL_WOOD_TRIM)   # out of the front door's swing (2026-09-24, the user: "doorways obstructed")
     # Mug + book on coffee table

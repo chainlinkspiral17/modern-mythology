@@ -22,8 +22,8 @@ import contextlib
 
 _CENTER = ("make_box", "make_cyl", "make_lathe", "make_chamfer_box", "make_rot_box", "make_taper_cyl",
            "make_prism", "make_blob", "make_wall", "make_window", "make_frame_ring", "make_floor_plant",
-           "make_faded_poster", "make_smoke_detector", "make_calendar")
-_XY = ("make_chair", "make_table", "make_bed", "make_stool", "make_bench", "make_lamp")
+           "make_faded_poster", "make_smoke_detector", "make_calendar", "make_soft_box")
+_XY = ("make_chair", "make_table", "make_bed", "make_stool", "make_bench", "make_lamp", "make_sofa")
 _PATH = ("make_tube",)
 
 

@@ -38,7 +38,7 @@ under the under-cabinet light alone.
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.furniture import make_table, make_chair
+from _props.furniture import make_table, make_chair, make_sofa
 from _props import palette as P
 from _props.geometry import make_blob   # module-level: plan.shifted moves it (2026-10-09)
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
@@ -305,12 +305,12 @@ def build_family_room():
     # the couch facing S (draft 5: the room turned so the TV can stand on a
     # wall — it was a stand in the middle of the floor)
     cx_, cy_ = -3.0, 4.33
-    make_chamfer_box("Couch_Base", (cx_, cy_, 0.19), (2.00, 0.85, 0.38), (0.44, 0.38, 0.30, 1.0))
-    make_chamfer_box("Couch_Back", (cx_, cy_ + 0.37, 0.62), (2.00, 0.18, 0.58), (0.40, 0.34, 0.27, 1.0))
-    for nm, ox in (("W", -1.06), ("E", 1.06)):
-        make_chamfer_box(f"Couch_Arm_{nm}", (cx_ + ox, cy_, 0.30), (0.14, 0.85, 0.60), (0.40, 0.34, 0.27, 1.0))
-    for k, ox in enumerate((-0.50, 0.50)):
-        make_chamfer_box(f"Couch_Cushion_{k}", (cx_ + ox, cy_ - 0.07, 0.46), (0.96, 0.70, 0.14), (0.48, 0.42, 0.34, 1.0))
+    # (2026-10-21, "still in the too boxy phase") the kit sofa: soft frame,
+    # track arms, two stuffed seat cushions and back cushions; the seat at
+    # the old cushions' top so Daisy and her spot still lie on it
+    make_sofa("Couch", cx_, cy_ + 0.02, back="+Y", w=2.26, d=0.88, seats=2,
+              color=(0.40, 0.34, 0.27, 1.0), cushion_col=(0.48, 0.42, 0.34, 1.0), leg_col=(0.30, 0.24, 0.18, 1.0),
+              arm="track", seat_h=0.53, back_h=0.91)
     make_box("Couch_Throw", (cx_ + 0.80, cy_ + 0.30, 0.93), (0.40, 0.22, 0.04), (0.62, 0.30, 0.26, 1.0))
     # Daisy's spot on the W cushion, her hair on it, DAISY on it, head up at the door
     make_chamfer_box("Wear_Daisy_Spot", (cx_ - 0.50, cy_ - 0.07, 0.535), (0.55, 0.50, 0.02), (0.42, 0.36, 0.30, 1.0), chamfer=0.008)

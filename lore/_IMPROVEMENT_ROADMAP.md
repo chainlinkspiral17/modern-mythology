@@ -3835,6 +3835,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 135: THE SOFAS STOP BEING CRATES.**
+Twenty-five builders lay a sofa by hand as three or four chamfered slabs (a base, a back, two arms),
+which reads as a crate at any distance.
+- **The kit: `make_sofa`** (furniture.py), same local frame as make_bed (`back` names the backrest's
+  side). It is soft boxes throughout:
+  - a frame between the arms, rolled or track arms, and a back
+  - a stuffed seat cushion and a back cushion per seat
+  - turned feet under the corners
+  - optional throw pillows in the corners, and a throw folded over one arm
+  - It returns the seat's top.
+  - `plan.shifted` now moves `make_sofa` (x-y) and `make_soft_box` (centre-first) like the other kit
+    pieces.
+- **Converted, most-played first:**
+  - **Lena's couch** (948 lines): rolled arms, two seats, the wool blanket still folded over the back.
+  - **The Salty Tome office couch** (942): three seats, track arms.
+  - **The Kowalski family-room couch** (296): track arms. The seat stays at the old cushions' top, so
+    Daisy and her spot still lie on it.
+  - **Natalie's futon** (296; canon "the futon", so it stays a futon): the mattress is a soft fold and
+    the rose pillows are stuffed and turned.
+- **Gates:** overlap 0, support 0, buried decor 0, dry run 161/161. Perf: lena_apartment 226 draw
+  calls, kowalski_kitchen 100, natalie_apartment 120, salty_tome_interior 402 (baseline 402).
+- **Deck must REBUILD** lena_apartment, salty_tome_interior, kowalski_kitchen, natalie_apartment.
+- **Draft N+1 targets:**
+  - The next sofas by lines: houston_office (242), caltech_dabney (210), dean_offices (184),
+    new_orleans_apartment (168), daily_grind_interior (157), elicia_apartment (150),
+    roberts_kitchen (145), montreal_apartment (124).
+  - Armchairs: Lena's window chair is the same slab build. Add a `make_armchair` (one seat of the
+    sofa) and convert it.
+  - Booths and car seats: the soft box, next.
+
 **2026-10-21 · pass 134: THE WEIGHT ROOM'S HOPPERS, THE OFFICE BLINDS, THE SHED SASH.**
 Next in the window queue: three vol 6 interiors with no windows. Each one's text was checked first;
 none mentions a window. Windows were not added where the text rules them out: the cell, the
