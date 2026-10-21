@@ -201,15 +201,18 @@ def build_kitchen():
         make_tube("Coffee_Grinder_Crank", [(-2.18, 2.28, 1.11), (-2.18, 2.28, 1.14), (-2.12, 2.28, 1.14), (-2.12, 2.28, 1.17)], 0.005, COL_STEEL, segments=5)
         make_lathe("Coffee_Cone", (-2.02, 2.28, 0.925), [(0.025, 0.0), (0.03, 0.005), (0.062, 0.085), (0.064, 0.09), (0.0, 0.09)],
                    (0.86, 0.82, 0.74, 1.0), segments=10)
-    with shifted(globals(), 1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the SE corner, clear of the front window
-        # Fridge, E wall near the S corner ("four eggs in the carton on
-        # the second shelf") — a door seam, a chamfered pull, one photo
-        # under a magnet
-        make_chamfer_box("Fridge", (2.15, 0.55, 0.90), (0.66, 0.66, 1.80), (0.88, 0.86, 0.82, 1.0), chamfer=0.012)
-        make_box("Fridge_Door_Seam", (1.815, 0.55, 1.20), (0.004, 0.62, 0.006), (0.66, 0.64, 0.60, 1.0))
-        make_chamfer_box("Fridge_Handle", (1.80, 0.30, 1.10), (0.03, 0.04, 0.60), COL_STEEL, chamfer=0.008)
-        make_box("Fridge_Photo", (1.815, 0.62, 1.52), (0.003, 0.10, 0.075), (0.72, 0.66, 0.58, 1.0))
-        make_cyl("Fridge_Magnet", (1.812, 0.62, 1.565), 0.012, 0.004, (0.20, 0.32, 0.30, 1.0), axis='X', segments=8)
+    # Fridge ("four eggs in the carton on the second shelf") — a door seam,
+    # a chamfered pull, one photo under a magnet. (2026-10-21, the Deck:
+    # "poorly arranged": it stood in the FRONT ROOM's SE corner beside the
+    # front window, across the apartment from the kitchen; now at the N end
+    # of the kitchen run, its door to the kitchen, between the counter and
+    # the bedroom partition.)
+    fx, fy = -ROOM_W/2.0 + 0.11 + 0.33, 2.80
+    make_chamfer_box("Fridge", (fx, fy, 0.90), (0.66, 0.66, 1.80), (0.88, 0.86, 0.82, 1.0), chamfer=0.012)
+    make_box("Fridge_Door_Seam", (fx + 0.335, fy, 1.20), (0.004, 0.62, 0.006), (0.66, 0.64, 0.60, 1.0))
+    make_chamfer_box("Fridge_Handle", (fx + 0.35, fy + 0.25, 1.10), (0.03, 0.04, 0.60), COL_STEEL, chamfer=0.008)
+    make_box("Fridge_Photo", (fx + 0.335, fy - 0.10, 1.52), (0.003, 0.10, 0.075), (0.72, 0.66, 0.58, 1.0))
+    make_cyl("Fridge_Magnet", (fx + 0.338, fy - 0.10, 1.565), 0.012, 0.004, (0.20, 0.32, 0.30, 1.0), axis='X', segments=8)
     with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # at the sink
         # Braided rag rug in front of the sink
         make_cyl("Sink_Rug", (-1.85, 1.35, 0.010), 0.42, 0.006, COL_ACCENT, segments=14)
@@ -389,7 +392,10 @@ def build_canvas_2026_08():
     where a working painter stacks it — on the floor beside the
     easel, not in a tidy box.
     """
-    with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # in the W window's light, with the kitchen
+    # (2026-10-21) the easel moves to the front room's SE corner, in the
+    # front window's light where the fridge stood (beside "the radiator pipe
+    # in the corner"); at the kitchen's N end it crowded the counter
+    with shifted(globals(), 4.5, -0.85, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the front window's light
         pine = (0.68, 0.56, 0.38, 1.0)
         pine_dk = (0.52, 0.42, 0.28, 1.0)
         gesso = (0.90, 0.88, 0.82, 1.0)
@@ -438,11 +444,12 @@ def build_canvas_2026_08():
                      0.012, 0.02, (0.30, 0.30, 0.32, 1.0), segments=6, axis='Y')
         # A finished board leaning face-in against the wall — the ones
         # she is not looking at today.
-        make_box("Canvas_Stack_A", (ex - 0.40, ey + 0.05, 0.42),
-                 (0.52, 0.030, 0.68), pine_dk)
-        make_box("Canvas_Stack_B", (ex - 0.44, ey + 0.02, 0.38),
-                 (0.44, 0.026, 0.60), gesso)
 
+
+    # the finished boards lean face-in against the S wall by the easel, on
+    # the floor (2026-10-21: they leaned on the old corner's wall)
+    make_box("Canvas_Stack_A", (2.95, 0.125, 0.34), (0.52, 0.030, 0.68), (0.52, 0.42, 0.28, 1.0))
+    make_box("Canvas_Stack_B", (2.92, 0.155, 0.30), (0.44, 0.026, 0.60), (0.90, 0.88, 0.82, 1.0))
 
 def build_starfish_nebula_2026_08():
     """THE STARFISH NEBULA AND THE FOUR PATCHES (--props, 2026-08).
@@ -520,6 +527,7 @@ def build_wear_personality_2026_08():
             make_cyl("Wear_ConeRing_%d" % ri, (rx, ry, 0.928), rr, 0.003, coffee, segments=8)
         _det.make_scuff_band("Wear_Counter_Drip", (-1.86, 1.05), 0.5, axis='Y',
                         height=0.14, band_z=0.62, tint=(0.30, 0.22, 0.14, 1.0))
+    with shifted(globals(), 4.5, -0.85, ROOM_W=OLD_W, ROOM_D=OLD_D):   # with the easel (2026-10-21)
         # ── THE ARTIST'S FLOOR · around the easel (-1.72, 2.35) ──
         # Paint lands where work happens: a constellation of small
         # hard-edged drips in HER palette (the nebula's colors — she
@@ -533,10 +541,10 @@ def build_wear_personality_2026_08():
             make_cyl("Wear_PaintDrip_%d" % di, (dx, dy, 0.007), dr, 0.004, col, segments=6)
         _det.make_floor_stain("Wear_SolventBloom", (-1.80, 2.75), radius=0.14,
                          tint=(0.38, 0.35, 0.30, 1.0), segments=9)
-        # Charcoal smudge on the west wall at hand height, where she
-        # steadies herself leaning in to the board.
-        make_box("Wear_CharcoalSmudge", (-2.394, 2.15, 1.32), (0.012, 0.16, 0.10),   # on the wall face (2026-09-23: inside it)
-                 (0.24, 0.23, 0.22, 1.0))
+    # Charcoal smudge on the wall at hand height, where she steadies herself
+    # leaning in to the board (the E wall now, by the easel)
+    make_box("Wear_CharcoalSmudge", (ROOM_W/2.0 - 0.106, 1.30, 1.32), (0.012, 0.16, 0.10),
+             (0.24, 0.23, 0.22, 1.0))
     # ── SIXTY-ONE DEGREES ──────────────────────────────────────
     # The thermostat reads what it reads; the draft towel at the
     # door base is how a cold apartment answers its own door.
@@ -703,9 +711,9 @@ def build_draft4_2026_09():
     # ── the fairy lights' cord down the N wall's east end ──
     make_wall_outlet("Outlet_E_3", (ROOM_W / 2.0, 6.20), axis='Y', face_sign=-1, z=0.30, aged=True)
     make_cord_run("Cord_3", (3.02, ROOM_D - 0.10, 2.05), (ROOM_W / 2.0 - 0.13, 6.20, 0.30), sag=0.0)
-    # ── the fridge, plugged in behind its own north flank ──
-    make_wall_outlet("Outlet_E_4", (ROOM_W / 2.0, 0.98), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_4", (3.40, 0.89, 0.12), (ROOM_W / 2.0 - 0.13, 0.98, 0.30), sag=0.0)
+    # ── the fridge, plugged in behind its own north flank (the kitchen's N end) ──
+    make_wall_outlet("Outlet_W_4", (-ROOM_W / 2.0, 3.30), axis='Y', face_sign=1, z=0.30, aged=True)
+    make_cord_run("Cord_4", (-ROOM_W / 2.0 + 0.30, 3.14, 0.12), (-ROOM_W / 2.0 + 0.13, 3.30, 0.30), sag=0.0)
     # ── one over the counter with nothing in it (the grinder is a hand grinder) ──
     make_wall_outlet("Outlet_W_1", (-ROOM_W / 2.0, 2.05), axis='Y', face_sign=1, z=1.10, aged=True)
     # ── BEDROOM WEAR · her side of the bed ──

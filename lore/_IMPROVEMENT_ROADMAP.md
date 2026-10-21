@@ -3854,9 +3854,24 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     the bed and dresser lit beyond.
   - Gates: overlap 0, support 0, doorway 0, vantage 0 blind, obstruction 0, marker aim 0, shot
     markers 0 blind; perf ok.
-- **Deck must REBUILD** faust_apartment.
+- **Lena's apartment** (vol 7, 948 lines): the kitchen's things back in the kitchen.
+  - The fridge ("four eggs in the carton on the second shelf") stood in the FRONT ROOM's SE corner
+    beside the front window, across the apartment from the counter. It now stands at the N end of the
+    kitchen run, its door to the kitchen, plugged in behind its N flank.
+  - The easel (`[shot:insert canvas]`) had crowded the counter's end. It takes the fridge's corner in
+    the front window's light, beside "the radiator pipe in the corner", with its paint drips, the
+    charcoal smudge and the finished boards leaning on the S wall. Its inserts are re-aimed.
+  - The kitchen reads as a kitchen from the door: the counter under the mural window, the fridge, the
+    oak table.
+  - The re-aim tool's threshold is stricter than the aim audit's: it re-aimed Lena's close-up at her
+    phone (the only part named "Lena"). Re-aim a scene's NEW markers, not the whole scene.
+- **The cabin** (2151 lines) was read and left alone. Its pinches are the stove group: two armchairs,
+  the side table and the wood basket clustered at the stove, as the prose has them. It is at draft 15.
+- **Deck must REBUILD** faust_apartment, lena_apartment.
 - **Draft N+1 targets:**
-  - Lena (948 lines): the next re-plan; walk 0.55 with the chairs counted.
+  - Lena: the kitchen as its own room ("She came into the kitchen and stopped at the doorway"), a
+    cased opening between it and the front room; a front-room preset that sees the easel and the
+    window chair.
   - The cabin (2151): read the prose's room geography first; 17 pinches.
 
 **2026-10-21 · pass 137: RE-PLAN BY REGION (`plan.zoned`); THE ROBERTS HOUSE GROWS.**
