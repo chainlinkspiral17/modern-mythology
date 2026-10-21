@@ -3847,10 +3847,17 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     notebook ziggurat on its W cushion sits on the new cushion's top.
   - Gates: overlap 0, support 0, doorway 0, buried decor 0, vantage 0 blind, obstruction 0, marker aim
     0, shot markers 0 blind, practicals 0; perf ok.
-- **Deck must REBUILD** montreal_apartment.
+- **The Salty Tome** (vols 2 and 7, 942 lines) was not cramped. It was the reverse: one gondola, and a
+  band of bare boards between it and the N shelves, a used bookshop with nothing to browse in its
+  middle. Added:
+  - a display table there, books face-up in staggered stacks with two stood on wire easels
+  - past the counter's N end, a slanted rack of literary journals (vol 2's "large section of literary
+    journals sent in from all over the world")
+  - By the entry lane the rack had stood 1.5 m off the establish's lens; moved.
+  - Perf 414 draw calls (baseline 402).
+- **Deck must REBUILD** montreal_apartment, salty_tome_interior.
 - **Draft N+1 targets:**
-  - The shops by traffic: salty_tome_interior (942 lines, walk 0.58) and cosmic_comics_interior
-    (703, 0.54). Run walkway_audit with their fixtures before re-planning.
+  - cosmic_comics_interior (703, walk 0.54): run walkway_audit with its fixtures first.
   - Lena's kitchen as its own room.
 
 **2026-10-21 · pass 138: FAUST'S COUCH; THE CROWDING AUDIT SEES CHAIRS.**

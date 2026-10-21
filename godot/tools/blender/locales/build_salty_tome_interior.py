@@ -13,7 +13,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_tube, make_lathe, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, make_lathe, make_rot_box, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -721,6 +721,49 @@ def build_alley_2026_10():
     make_view("View_W", "W", -5.6, 10.5, kind="street", seed=5)
 
 
+def build_browsing_floor_2026_10():
+    """THE BROWSING FLOOR (2026-10-21, the Deck: "poorly arranged"). The shop
+    floor held one gondola and a band of bare boards between it and the N
+    shelves — a used bookshop with nothing to browse in its middle. A
+    display table there, books face-up in staggered stacks with a few stood
+    open on easels (the ones Petra is pushing this week), and by the entry
+    lane a rack of the literary journals — the store's "large section of
+    literary journals sent in from all over the world". Aisles stay >= 0.8 m."""
+    import random as _r
+    rnd = _r.Random(41)
+    tx, ty = -0.40, 4.45
+    make_box("Display_Table_Top", (tx, ty, 0.76), (1.70, 0.90, 0.05), COL_WOOD)
+    make_box("Display_Table_Apron", (tx, ty, 0.69), (1.60, 0.80, 0.09), COL_WOOD_DK)
+    for li, (lx, ly) in enumerate(((-0.78, -0.38), (0.78, -0.38), (-0.78, 0.38), (0.78, 0.38))):
+        make_box(f"Display_Table_Leg_{li}", (tx + lx, ty + ly, 0.3225), (0.06, 0.06, 0.645), COL_WOOD_DK)
+    k = 0
+    for gx in (-0.55, -0.18, 0.19, 0.56):
+        for gy in (-0.20, 0.20):
+            n = rnd.choice((1, 2, 3, 4))
+            z = 0.785
+            for j in range(n):
+                hgt = rnd.choice((0.025, 0.03, 0.04))
+                make_box(f"Display_Book_{k}_{j}", (tx + gx + rnd.uniform(-0.02, 0.02), ty + gy + rnd.uniform(-0.02, 0.02), z + hgt / 2.0),
+                         (0.17, 0.24, hgt), BOOK_SPINES[(k * 3 + j) % len(BOOK_SPINES)])
+                z += hgt
+            k += 1
+    for ei, ex in enumerate((-0.70, 0.30)):   # two stood up on little wire easels
+        make_box(f"Display_Easel_Book_{ei}", (tx + ex, ty + 0.36, 0.91), (0.17, 0.03, 0.24), BOOK_SPINES[(ei * 5 + 2) % len(BOOK_SPINES)])
+        make_box(f"Display_Easel_Book_{ei}_Stand", (tx + ex, ty + 0.40, 0.84), (0.10, 0.06, 0.12), COL_BLACK)
+    # the journals rack: a slanted three-tier magazine stand past the
+    # counter's N end, facing the shop (by the entry lane it stood in the
+    # establish's foreground, 1.5 m off the lens)
+    rx, ry = 1.50, 4.55
+    for sx in (-0.50, 0.50):
+        make_box(f"Journal_Rack_Side_{sx:+.1f}", (rx + sx, ry, 0.65), (0.04, 0.40, 1.30), COL_WOOD_DK)
+    for ti, tz in enumerate((0.35, 0.75, 1.15)):
+        make_box(f"Journal_Rack_Shelf_{ti}", (rx, ry, tz), (0.96, 0.36, 0.03), COL_WOOD)
+        make_box(f"Journal_Rack_Lip_{ti}", (rx, ry - 0.17, tz + 0.04), (0.96, 0.02, 0.06), COL_WOOD)
+        for mi in range(4):
+            make_rot_box(f"Journal_{ti}_{mi}", (rx - 0.33 + mi * 0.22, ry + 0.02, tz + 0.15), (0.20, 0.012, 0.27),
+                         BOOK_SPINES[(ti * 4 + mi + 1) % len(BOOK_SPINES)], pitch=-0.25)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -729,6 +772,7 @@ def main():
     build_sales_counter()
     build_reading_nook()
     build_globe_and_catalog()
+    build_browsing_floor_2026_10()
     build_ceiling_and_sign()
     build_decor()
     build_back_annex_2026_08()
