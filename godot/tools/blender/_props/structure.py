@@ -337,6 +337,46 @@ def make_curtains(prefix, anchor, *, width, height, axis='X', room_dir=-1,
                  panel_w * 0.9, (color[0] * 0.6, color[1] * 0.6, color[2] * 0.6, 1.0), axis=('Y' if along_y else 'X'), segments=6)
 
 
+def make_blinds(prefix, anchor, *, width, height, axis='X', room_dir=-1,
+                color=(0.86, 0.84, 0.78, 1.0), raised_frac=0.35, pitch=0.065):
+    """Venetian blinds inside a window's casing (2026-10-21): an office's,
+    a motel's, a back room's. Same anchor convention as make_window. A
+    head rail across the top, the stack of slats drawn up `raised_frac`
+    of the way, then open slats down to the sill — each a thin board
+    proud of the glass with daylight between — the bottom rail, and the
+    pull cord down one side."""
+    from .geometry import make_cyl
+    cx, cy, cz = anchor
+    along_y = str(axis).upper() == 'Y'
+
+    def at(off, inset, dz):
+        if along_y:
+            return (cx + room_dir * inset, cy + off, cz + dz)
+        return (cx + off, cy + room_dir * inset, cz + dz)
+
+    def sz(span, thick, tall):
+        return (thick, span, tall) if along_y else (span, thick, tall)
+
+    rail = (color[0] * 0.92, color[1] * 0.92, color[2] * 0.92, 1.0)
+    w = width - 0.02
+    top = height / 2.0 - 0.02
+    make_box(f"{prefix}_HeadRail", at(0.0, 0.10, top - 0.025), sz(w, 0.05, 0.05), rail)
+    stack = max(0.06, height * raised_frac * 0.18)          # raised slats pack tight
+    make_box(f"{prefix}_Stack", at(0.0, 0.10, top - 0.05 - stack / 2.0), sz(w, 0.045, stack), color)
+    z = top - 0.05 - stack - pitch
+    bottom = -height / 2.0 + 0.04 + height * raised_frac * 0.6
+    k = 0
+    while z > bottom:
+        make_box(f"{prefix}_Slat_{k}", at(0.0, 0.10, z), sz(w, 0.045, 0.006), color)
+        z -= pitch
+        k += 1
+    make_box(f"{prefix}_BottomRail", at(0.0, 0.10, z + pitch * 0.5), sz(w, 0.05, 0.022), rail)
+    cord_top, cord_bot = top - 0.05, z - 0.25
+    make_cyl(f"{prefix}_Cord", at(w / 2.0 - 0.05, 0.13, (cord_top + cord_bot) / 2.0), 0.003, cord_top - cord_bot,
+             rail, segments=4)
+    make_cyl(f"{prefix}_Cord_Tassel", at(w / 2.0 - 0.05, 0.13, cord_bot - 0.02), 0.009, 0.04, rail, segments=6)
+
+
 def make_door_hinges(prefix, *, edge_x, edge_y, edge_z_centers,
                      axis='Y', palette=None):
     """3+ cylindrical hinge barrels along a door edge.

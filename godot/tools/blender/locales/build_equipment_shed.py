@@ -20,7 +20,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
+from _props.structure import make_floor, make_wall, make_ceiling, make_wall_with_openings, make_window
 
 ROOM_W = 4.8      # x ∈ [-2.4, 2.4]
 ROOM_D = 5.4      # y ∈ [0, 5.4]
@@ -52,9 +52,25 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
                size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
-                  axis='Y', palette=pal, baseboard_face_sign=bb)
+    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+              axis='Y', palette=pal, baseboard_face_sign=+1)
+    # One four-light shed sash high in the E wall, between two studs
+    # (2026-10-21, the Deck: "interiors need more windows"): the second
+    # source of the dusk the open doors let in, and something past the
+    # gear — the fence line and a field light.
+    WIN_E = (2.70, 1.85, 0.90, 0.62)
+    make_wall_with_openings("Wall_E", (ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+                            axis='Y', palette=pal, baseboard_face_sign=-1, openings=[WIN_E])
+    make_window("Window_E", (ROOM_W / 2.0 - 0.10, WIN_E[0], WIN_E[1]), width=WIN_E[2] - 0.12, height=WIN_E[3] - 0.10,
+                axis='Y', room_dir=-1, see_through=True, trim=False, palette={"frame": COL_DOOR})
+    ox = ROOM_W / 2.0 + 0.10
+    make_box("East_Grass", (ox + 9.0, 7.15, -0.02), (18.0, 15.1, 0.04), COL_FIELD)   # north of the door apron (no coplanar overlap with Field)
+    for k in range(9):
+        make_cyl(f"East_Fence_Post_{k}", (ox + 5.0, -6.0 + k * 2.6, 0.9), 0.03, 1.8, COL_STEEL, segments=6)
+    make_cyl("East_Fence_Rail", (ox + 5.0, 4.4, 1.8), 0.02, 20.8, COL_STEEL, axis='Y', segments=6)
+    make_box("East_Fence_Mesh", (ox + 5.0, 4.4, 0.92), (0.01, 20.8, 1.7), (0.56, 0.58, 0.60, 0.35))
+    make_cyl("East_FieldLight_Pole", (ox + 9.5, 5.5, 7.0), 0.12, 14.0, COL_STEEL_DK, segments=8)
+    make_box("East_FieldLight_Bank", (ox + 9.4, 5.5, 14.2), (0.30, 2.0, 0.9), COL_STEEL_DK)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=-1)
     # Stud lines on the plywood (shed, not drywall)

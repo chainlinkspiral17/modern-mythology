@@ -18,11 +18,19 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
+from _props.structure import make_floor, make_wall, make_ceiling, make_wall_with_openings, make_window
 
 ROOM_W = 7.5      # x ∈ [-3.75, 3.75]
 ROOM_D = 6.5      # y ∈ [0, 6.5]
 CEIL = 2.5        # low basement ceiling
+
+# THE HOPPER WINDOWS (2026-10-21, the Deck: "interiors need more windows" /
+# "still in the too boxy phase"). It is a basement ("The weight room is in
+# the basement of the gym building"), so its windows are the basement's: a
+# row of low wide hoppers up under the ceiling in the N wall, each at the
+# bottom of a galvanized window well, the lawn at their head. (x, z, w, h)
+HOPPERS = [(-2.85, 2.18, 0.95, 0.40), (-0.45, 2.18, 1.10, 0.40), (2.95, 2.18, 0.95, 0.40)]
+GRADE = 2.50      # the lawn outside, just over the hoppers' heads
 
 COL_WALL = (0.55, 0.55, 0.50, 1.0)      # painted block
 COL_BASE = (0.38, 0.38, 0.34, 1.0)
@@ -50,8 +58,8 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
         make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
                   axis='Y', palette=pal, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
+                            axis='X', palette=pal, baseboard_face_sign=-1, openings=HOPPERS)
     # South wall split around the stairwell opening (east side)
     make_wall("Wall_S_W", (-1.5, 0.0, 0), length=ROOM_W - 3.0, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=+1)
@@ -66,6 +74,51 @@ def build_shell():
     # Exposed ceiling pipe run (basement)
     make_cyl("Pipe", (-1.2, ROOM_D / 2.0, CEIL - 0.12), 0.07, ROOM_D, COL_FIXTURE,
              segments=8, axis='Y')
+
+
+def build_hoppers():
+    """The three hoppers, their wells, and the lawn at grade above the
+    basement — what the weight room sees of August: a strip of daylight,
+    grass blades at eye level with the glass, the sky."""
+    steel = {"frame": (0.40, 0.42, 0.44, 1.0)}
+    galv = (0.62, 0.63, 0.62, 1.0)
+    grass = (0.30, 0.42, 0.22, 1.0)
+    gravel = (0.50, 0.48, 0.44, 1.0)
+    face = ROOM_D + 0.10              # the N wall's outer face
+    well_d = 0.80
+    for k, (cx, cz, w, h) in enumerate(HOPPERS):
+        make_window(f"Hopper_{k}", (cx, ROOM_D - 0.10, cz), width=w - 0.10, height=h - 0.08,
+                    axis='X', room_dir=-1, palette=steel, trim=False)
+        ww = w + 0.50
+        z0, z1 = cz - h / 2.0 - 0.25, GRADE + 0.06
+        make_box(f"Well_{k}_Back", (cx, face + well_d + 0.02, (z0 + z1) / 2.0), (ww + 0.04, 0.04, z1 - z0), galv)
+        for sg in (-1, 1):
+            make_box(f"Well_{k}_Side_{sg:+d}", (cx + sg * (ww / 2.0), face + well_d / 2.0, (z0 + z1) / 2.0),
+                     (0.04, well_d, z1 - z0), galv)
+        make_box(f"Well_{k}_Gravel", (cx, face + well_d / 2.0, z0 + 0.03), (ww - 0.04, well_d - 0.02, 0.06), gravel)
+    # the lawn at grade: one sheet behind the wells, strips between them
+    make_box("Lawn_Grade", (0.0, face + well_d + 0.04 + 12.0, GRADE - 0.03), (30.0, 24.0, 0.06), grass)
+    edges = [-15.0]
+    for cx, _, w, _ in sorted(HOPPERS):
+        edges += [cx - (w + 0.50) / 2.0 - 0.02, cx + (w + 0.50) / 2.0 + 0.02]
+    edges.append(15.0)
+    for k in range(0, len(edges), 2):
+        a, b = edges[k], edges[k + 1]
+        make_box(f"Lawn_Grade_Strip_{k // 2}", ((a + b) / 2.0, face + well_d / 2.0 + 0.02, GRADE - 0.03),
+                 (b - a, well_d + 0.04, 0.06), grass)
+    # a few things at grade: the shrubs along the gym's foundation, and
+    # the practice field's fence line beyond
+    from _props.geometry import make_lathe
+    for k, sx in enumerate((-1.8, 1.6, 4.6)):   # make_shrub's lathe, stood at grade
+        r, hh = 0.55, 0.9
+        make_lathe(f"Grade_Shrub_{k}", (sx, face + 1.6, GRADE),
+                   [(0.0, 0.0), (r * 0.55, hh * 0.08), (r, hh * 0.42), (r * 0.82, hh * 0.78), (r * 0.35, hh * 0.96), (0.0, hh)],
+                   (0.26, 0.40, 0.24, 1.0), segments=8)
+    for k, fx in enumerate(range(-12, 13, 3)):
+        make_cyl(f"Field_Fence_Post_{k}", (float(fx), face + 9.0, GRADE + 0.9), 0.03, 1.8, (0.56, 0.58, 0.60, 1.0), segments=6)
+    for k, fz in enumerate((0.15, 1.75)):
+        make_cyl(f"Field_Fence_Rail_{k}", (0.0, face + 9.0, GRADE + fz), 0.02, 24.0, (0.56, 0.58, 0.60, 1.0), axis='X', segments=6)
+    make_box("Field_Fence_Mesh", (0.0, face + 9.0, GRADE + 0.95), (24.0, 0.01, 1.6), (0.56, 0.58, 0.60, 0.35))
 
 
 def build_squat_rack():
@@ -233,6 +286,7 @@ def build_fluorescents():
 def main():
     clear_scene()
     build_shell()
+    build_hoppers()
     build_squat_rack()
     build_benches()
     build_dumbbells_and_plates()

@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-21 · pass 134: THE WEIGHT ROOM'S HOPPERS, THE OFFICE BLINDS, THE SHED SASH.**
+Next in the window queue: three vol 6 interiors with no windows. Each one's text was checked first;
+none mentions a window. Windows were not added where the text rules them out: the cell, the
+stockroom, the darkroom, the accretion corridor (its wire-glass door lights are already built).
+- **Gym weight room** (47 lines, 0 → 3). "The weight room is in the basement of the gym building,"
+  so its windows are a basement's: three low wide hoppers up under the ceiling in the N wall. Each
+  sits at the bottom of a galvanized window well with gravel in it, and the lawn is at grade just
+  over their heads. Outside: shrubs along the foundation and the practice field's fence line.
+- **Pit Stop back office** (32 lines, 0 → 1): a window in the W wall between the floor safe and the
+  pegboard, blinds half up, onto the side lot and the road (make_view "street").
+- **Equipment shed** (88 lines, 0 → 1): a four-light sash high in the E wall between two studs. Past
+  it: grass, the field's chain-link fence line, a field light on its pole.
+- **The kit:** `make_blinds` hangs venetian blinds over a make_window opening (same anchor
+  convention): a head rail, the raised stack, open slats with daylight between them, a bottom rail,
+  the pull cord and its tassel.
+- **Gates:** overlap 0, support 0, buried decor 0, window backing 0. Perf: gym_weight_room 84 draw
+  calls, pit_stop_office 86, equipment_shed 66.
+- **Deck must REBUILD** gym_weight_room, pit_stop_office, equipment_shed.
+- **Draft N+1 targets:**
+  - The shed's door camera can't see its new sash. The shed also reads dark red: relight it to dusk
+    through two openings.
+  - The weight room's lens sees one hopper; widen it, or add a setup down the bench line.
+  - Blinds for the motel rooms, the clinic and the other offices that have bare windows.
+  - Then the rest of the queue: coach_k_bedroom (23 / 1), tulsa_house (67 / 1), small_wood_ranch.
+
 **2026-10-21 · pass 133: THE CEDAR TOWER GETS ITS GLASS AND ITS SIZE; the garage and Jesse's room get windows.**
 - **Cedar Tower** (vol 7 ch22, 226 lines, 1 window → 13). Canon: "Smart-glass on the upper six
   floors" and "Dean alone at the studio's south window looking at the ocean."

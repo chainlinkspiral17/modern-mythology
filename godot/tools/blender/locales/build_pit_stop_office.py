@@ -11,7 +11,8 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings, make_blinds
+from _props.views import make_view
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -19,6 +20,10 @@ from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, m
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 
 ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
+# The office window (2026-10-21, the Deck: "interiors need more windows"):
+# one window in the W wall between the floor safe and the pegboard, onto
+# the side lot and the road, the blinds half up. (along y, z, w, h)
+WIN_W = (2.10, 1.55, 0.90, 1.00)
 PAL_WALL = {"wall":(0.78,0.70,0.58,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
 COL_FLOOR = (0.62,0.52,0.42,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.20,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
@@ -26,8 +31,14 @@ COL_ACCENT = (0.78,0.42,0.22,1.0)
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                            palette=PAL_WALL, baseboard_face_sign=+1, openings=[WIN_W])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
+    wa = (-ROOM_W/2.0 + 0.10, WIN_W[0], WIN_W[1])
+    make_window("Window_W", wa, width=WIN_W[2] - 0.10, height=WIN_W[3] - 0.10, axis='Y', room_dir=+1, see_through=True)
+    make_blinds("Window_W_Blinds", wa, width=WIN_W[2] - 0.10, height=WIN_W[3] - 0.10, axis='Y', room_dir=+1,
+                color=(0.84, 0.82, 0.74, 1.0), raised_frac=0.40)
+    make_view("View_W", "W", -ROOM_W/2.0, WIN_W[0], kind="street", ground_z=0.0, seed=3)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
