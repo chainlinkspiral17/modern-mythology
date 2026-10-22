@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-22 · pass 142: THE ONEIRONAUTICS OFFICE IS A STUDIO, NOT A HALL.**
+- Sweep of the next tier by lines (houston_office, dabney, onei_office, sam_bedroom, diego_bedroom,
+  hospice_room, bianca_kitchen, sleep_lab, pharmacy, club_sharp, riverboat). One set read badly:
+  **dean_offices / THE OFFICE** (vol 1 ch6, 184 lines): a 14 x 9 m hall with three desks against
+  the back wall and nothing else, and all three desk chairs turned with their backs to the work.
+  - "The cover you'll use is game design": a playtest table mid-room (prototype board, card decks,
+    dice, index cards, a laptop, seven chairs), a whiteboard with a level drawn on it, pinboards of
+    sketches over the desks, a shelf of boxed games by the back door.
+  - Windows: two W windows with blinds onto the side yard and the neighbour's house, a clerestory
+    band over the desks onto the back fence and trees; the street glass and the door glass were
+    opaque (alpha 1.0) and are now glass.
+  - A lounge on the E side (kit sofa, armchair, low table, rug, print, plant); the coffee counter
+    moved up the E wall under cabinets; a coat stand by the street door; 3 x 3 troffers.
+  - Desk chairs face the desks; a pedestal, lamp and mug at each.
+  - tscn: W window day light, clerestory day light, lounge overhead.
+  - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+    obstruction 0; perf 122 draw calls (baseline 116).
+- Judged fine as they stand: houston_office, sam_bedroom, hospice_room, bianca_kitchen_morning,
+  pharmacy, sleep_lab_desk. **diego_bedroom** is bare on purpose ("the only decoration in the room
+  besides a periodic table ... and a calendar"); not dressed.
+- DRAFT N+1: a lounge preset for the Office; the back room; desk cords; dabney game room and couch
+  read dark (relight pass); riverboat_interior is dim and boxy (next sweep target); club_sharp is
+  mostly black outside the dance floor.
+- Deck must REBUILD dean_offices.
+
 **2026-10-22 · pass 141: BOARD LORDS' WALL OF DECKS IN THE FRAME.**
 - **Board Lords** (vol 7, 644 lines). The establish still stood where it had for the board-game shop
   this set used to be: the SW corner looking NE, with "the wall of decks" (`[shot:insert decks]`, "He

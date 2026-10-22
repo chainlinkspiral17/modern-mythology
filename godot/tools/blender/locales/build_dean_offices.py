@@ -30,8 +30,20 @@ probably shouldn't see") shut, its light under it. Nothing behind it.
 
 Blender: x east, y north, z up; Godot (x, z, -y).
 
-DRAFT 2 targets: the Office's back room and the coffee machine's corner
-(the brief's V3 reverse is a preset, its dressing is thin); the lobby's haze
+DRAFT 2 (2026-10-22, pass 142 — the contact sheet read it as a hall with
+three desks in it): THE OFFICE dressed as what the cover says it is, a small
+game studio. Daylight on three sides (two W windows with blinds onto the
+side yard and the neighbour, a clerestory band over the desks, the street
+glass made glass, alpha 0.25); the chairs turned to face their desks (draft
+1 sat all three backs to the work); a pedestal, a lamp, a mug and a pinboard
+of sketches at each desk; a playtest table mid-room (prototype board, card
+decks, dice, index cards, a laptop) with seven chairs; the whiteboard
+between the W windows; a lounge on the E side (sofa, armchair, low table,
+rug, print, plant); the coffee counter moved up the E wall under two
+cabinets; a shelf of boxed games by the back door; a coat stand by the
+street door; troffers as a 3 x 3 grid.
+DRAFT 3 targets: a lounge preset (no camera sees the sofa); the back room
+behind the N door; cords from the desks to the outlets; the lobby's haze
 as a real fog pass, not ambient; the club office as a room of
 build_club_sharp.py so the door shows the real floor and Joan's cage; the
 glass house as one set with vol4_glass_tower (the monitors there are the
@@ -43,15 +55,17 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_tube,
                              join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings
-from _props.furniture import make_chair, make_lamp
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds
+from _props.furniture import make_chair, make_lamp, make_table, make_sofa
+from _props.objects import make_mug
+from _props.decor import make_faded_poster, make_floor_plant
 from _props.views import make_view
 from _props.detail import make_wall_outlet, make_light_switch
 
 WHITE = (0.90, 0.90, 0.88, 1.0); OFFWHITE = (0.84, 0.84, 0.80, 1.0)
 DESK = (0.70, 0.62, 0.50, 1.0); DESK_LEG = (0.30, 0.30, 0.32, 1.0)
 FLAT = (0.10, 0.10, 0.11, 1.0)
-GLASS = (0.56, 0.66, 0.72, 1.0)
+GLASS = (0.56, 0.66, 0.72, 0.25)
 CLUB_WALL = (0.30, 0.24, 0.32, 1.0); NEON_PINK = (0.98, 0.30, 0.66, 1.0); NEON_CYAN = (0.30, 0.90, 0.98, 1.0)
 WOOD = (0.52, 0.38, 0.26, 1.0); WOOD_DARK = (0.34, 0.24, 0.16, 1.0)
 
@@ -91,6 +105,8 @@ def desk(prefix, x, y, w=1.40, d=0.72, col=DESK):
 # ── THE OFFICE ────────────────────────────────────────────────────────
 OX0, OX1, OD, OH = -7.0, 7.0, 9.0, 3.0
 DOOR_X = -4.5
+OFF_DESK_X = (-3.5, 0.0, 3.5)
+OFF_WIN_W = (2.3, 6.7)
 
 
 def build_office():
@@ -98,10 +114,24 @@ def build_office():
                palette={"vinyl": (0.62, 0.60, 0.56, 1.0), "seam": (0.54, 0.52, 0.48, 1.0)})
     make_box("Off_Ceil", (0.0, OD / 2.0, OH + 0.04), (OX1 - OX0 + 0.4, OD + 0.4, 0.08), (0.92, 0.92, 0.90, 1.0))
     pal = {"wall": OFFWHITE, "baseboard": (0.40, 0.40, 0.42, 1.0)}
-    make_wall("Off_Wall_W", (OX0, OD / 2.0, 0), length=OD + 0.4, height=OH, thickness=0.2, axis='Y', palette=pal, baseboard_face_sign=+1)
+    # draft 2: daylight on three sides — two tall windows in the W wall
+    # onto the side yard and the neighbour's house, a clerestory band over
+    # the three desks (the back fence and the trees above it)
+    make_wall_with_openings("Off_Wall_W", (OX0, OD / 2.0, 0), length=OD + 0.4, height=OH, thickness=0.2, axis='Y', palette=pal,
+                            baseboard_face_sign=+1, openings=[(y, 1.50, 1.60, 1.60) for y in OFF_WIN_W])
+    for k, y in enumerate(OFF_WIN_W):
+        wa = (OX0 + 0.10, y, 1.50)
+        make_window(f"Off_Window_W_{k}", wa, width=1.50, height=1.50, axis='Y', room_dir=+1, see_through=True)
+        make_blinds(f"Off_Window_W_{k}_Blinds", wa, width=1.50, height=1.50, axis='Y', room_dir=+1,
+                    color=(0.88, 0.88, 0.84, 1.0), raised_frac=0.55 if k else 0.30)
+    make_view("Off_Yard_W", "W", OX0 - 0.10, OD / 2.0, kind="side", ground_z=0.0, span=OD, seed=5)
     make_wall("Off_Wall_E", (OX1, OD / 2.0, 0), length=OD + 0.4, height=OH, thickness=0.2, axis='Y', palette=pal, baseboard_face_sign=-1)
     make_wall_with_openings("Off_Wall_N", (0.0, OD, 0), length=OX1 - OX0 + 0.4, height=OH, thickness=0.2, axis='X', palette=pal,
-                            baseboard_face_sign=-1, openings=[(6.0, 1.0, 0.90, 2.0)])
+                            baseboard_face_sign=-1, openings=[(6.0, 1.0, 0.90, 2.0)] + [(x, 2.38, 2.50, 0.66) for x in OFF_DESK_X])
+    for k, x in enumerate(OFF_DESK_X):
+        make_window(f"Off_Clerestory_{k}", (x, OD - 0.10, 2.38), width=2.40, height=0.56, axis='X', room_dir=-1,
+                    see_through=True, trim=False, cross_mullion=False)
+    make_view("Off_Back_N", "N", OD + 0.10, 0.0, kind="back", ground_z=0.0, span=OX1 - OX0 + 0.4, seed=2)
     make_box("Off_Door_Back", (6.0, OD, 1.0), (0.86, 0.05, 2.0), (0.62, 0.58, 0.52, 1.0))
     # the front: a low wall, glass above it, the street door
     make_wall_with_openings("Off_Wall_S", (0.0, 0.0, 0), length=OX1 - OX0 + 0.4, height=OH, thickness=0.2, axis='X', palette=pal,
@@ -113,29 +143,142 @@ def build_office():
     make_box("Off_Door_Glass", (DOOR_X, 0.0, 1.25), (0.70, 0.06, 1.40), GLASS)
     make_box("Off_Door_Lock", (DOOR_X + 0.38, -0.04, 1.0), (0.04, 0.03, 0.08), (0.74, 0.70, 0.56, 1.0))
     make_box("Off_Door_Lock_In", (DOOR_X + 0.38, 0.04, 1.0), (0.04, 0.03, 0.08), (0.74, 0.70, 0.56, 1.0))
-    for k in range(3):
-        make_box(f"Off_Ceil_Panel_{k}", (-4.0 + k * 4.0, 4.5, OH - 0.01), (1.2, 1.2, 0.02), (0.98, 0.98, 0.94, 1.0))
-    # the three desks side by side along the back wall, the daylight from
-    # the glass behind whoever sits there; a chair, a monitor and a pair of
-    # goggles at each; the business card on Jacob's (the centre)
+    # the ceiling: a grid of lay-in troffers, not three panels
+    for j, y in enumerate((2.2, 4.5, 6.8)):
+        for k, x in enumerate((-4.0, 0.0, 4.0)):
+            make_box(f"Off_Ceil_Panel_{j}{k}", (x, y, OH - 0.012), (0.62, 1.22, 0.024), (0.70, 0.70, 0.70, 1.0))
+            make_box(f"Off_Ceil_Panel_{j}{k}_Lens", (x, y, OH - 0.026), (0.56, 1.16, 0.006), (0.99, 0.99, 0.95, 1.0))
+    # the three desks side by side along the back wall under the clerestory;
+    # a chair, a monitor and a pair of goggles at each; the business card on
+    # Jacob's (the centre). Draft 2: the chairs face the desks (draft 1 sat
+    # them back to the work), a drawer pedestal, a desk lamp and a pinboard
+    # of game sketches over each — the cover is game design
     dy = OD - 0.10 - 0.36
-    for k, (nm, x) in enumerate((("Faust", -3.5), ("Jacob", 0.0), ("Wagner", 3.5))):
+    sketch = ((0.86, 0.80, 0.56, 1.0), (0.70, 0.84, 0.92, 1.0), (0.96, 0.96, 0.92, 1.0), (0.92, 0.70, 0.66, 1.0), (0.76, 0.88, 0.70, 1.0))
+    for k, (nm, x) in enumerate(zip(("Faust", "Jacob", "Wagner"), OFF_DESK_X)):
         desk(f"Desk_{nm}", x, dy)
         flat_monitor(f"Desk_{nm}_Monitor", x + 0.25, dy + 0.18, 0.75, face="-Y", w=0.48)
         make_box(f"Desk_{nm}_Keyboard", (x + 0.20, dy - 0.14, 0.759), (0.44, 0.15, 0.018), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Desk_{nm}_Mouse", (x + 0.52, dy - 0.12, 0.759), (0.06, 0.10, 0.02), (0.22, 0.22, 0.24, 1.0))
         goggles(f"Goggles_{nm}", x - 0.40, dy - 0.08, 0.75, yaw=0.2 * (k - 1))
-        make_chair(f"Desk_{nm}_Chair", x, dy - 0.80, yaw=math.pi, wood=(0.24, 0.24, 0.26, 1.0), seat_col=(0.18, 0.18, 0.20, 1.0))
+        make_chair(f"Desk_{nm}_Chair", x + 0.05 * (k - 1), dy - 0.64, yaw=0.12 * (1 - k), wood=(0.24, 0.24, 0.26, 1.0),
+                   seat_col=(0.18, 0.18, 0.20, 1.0))
+        make_box(f"Desk_{nm}_Pedestal", (x + 0.42, dy + 0.02, 0.31), (0.40, 0.56, 0.62), (0.56, 0.56, 0.56, 1.0))
+        for d in range(3):
+            make_box(f"Desk_{nm}_Pedestal_Pull_{d}", (x + 0.42, dy - 0.265, 0.56 - d * 0.20), (0.14, 0.012, 0.016), (0.30, 0.30, 0.32, 1.0))
+        make_lamp(f"Desk_{nm}_Lamp", x - 0.58, dy + 0.22, base_z=0.75, h=0.40, shade_col=(0.22, 0.22, 0.24, 1.0), body_col=(0.30, 0.30, 0.32, 1.0))
+        make_box(f"Desk_{nm}_Pinboard", (x - 0.15, OD - 0.115, 1.50), (1.10, 0.02, 0.62), (0.62, 0.50, 0.36, 1.0))
+        make_box(f"Desk_{nm}_Pinboard_Frame", (x - 0.15, OD - 0.108, 1.50), (1.14, 0.012, 0.66), (0.40, 0.40, 0.42, 1.0))
+        for c in range(5):
+            u = -0.38 + c * 0.19 + 0.02 * ((c * 7 + k) % 3 - 1)
+            v = 0.12 if c % 2 else -0.10
+            make_box(f"Desk_{nm}_Sketch_{c}", (x - 0.15 + u, OD - 0.127, 1.50 + v), (0.15, 0.004, 0.20 - 0.04 * (c % 2)), sketch[(c + k) % 5])
+        make_mug(f"Desk_{nm}_Mug", x - 0.15, dy + 0.12, 0.75, ((0.84, 0.24, 0.20, 1.0), (0.92, 0.92, 0.90, 1.0), (0.24, 0.36, 0.60, 1.0))[k])
     make_box("Business_Card", (-0.30, dy - 0.26, 0.751), (0.09, 0.05, 0.002), (0.97, 0.97, 0.95, 1.0))
     make_box("Business_Card_Line", (-0.30, dy - 0.26, 0.7522), (0.06, 0.008, 0.0005), (0.16, 0.18, 0.30, 1.0))
+    # the playtest table mid-room: the cover's work laid out — a prototype
+    # board, card decks, dice, a laptop, index cards; six chairs and two ends
+    tx, ty = -1.8, 4.5
+    make_table("Play_Table", tx, ty, w=2.40, d=1.10, wood=(0.30, 0.30, 0.32, 1.0), top_col=(0.86, 0.84, 0.78, 1.0))
+    for i, x in enumerate((tx - 0.80, tx, tx + 0.80)):
+        make_chair(f"Play_Chair_S{i}", x, ty - 0.86, yaw=0.0, wood=(0.24, 0.24, 0.26, 1.0), seat_col=(0.30, 0.44, 0.56, 1.0))
+        make_chair(f"Play_Chair_N{i}", x + 0.06 * (i - 1), ty + 0.88, yaw=math.pi + 0.08 * (i - 1), wood=(0.24, 0.24, 0.26, 1.0),
+                   seat_col=(0.30, 0.44, 0.56, 1.0))
+    make_chair("Play_Chair_W", tx - 1.56, ty, yaw=-math.pi / 2.0, wood=(0.24, 0.24, 0.26, 1.0), seat_col=(0.30, 0.44, 0.56, 1.0))
+    make_box("Play_Board", (tx - 0.10, ty + 0.05, 0.7575), (0.56, 0.56, 0.008), (0.20, 0.36, 0.30, 1.0))
+    for i in range(4):
+        for j in range(4):
+            if (i + j) % 2:
+                make_box(f"Play_Board_Tile_{i}{j}", (tx - 0.31 + i * 0.14, ty - 0.16 + j * 0.14, 0.7625), (0.12, 0.12, 0.002),
+                         (0.86, 0.76, 0.46, 1.0))
+    for i, (px, py, col) in enumerate(((tx - 0.20, ty + 0.14, (0.84, 0.24, 0.20, 1.0)), (tx + 0.04, ty - 0.06, (0.24, 0.40, 0.70, 1.0)),
+                                       (tx - 0.02, ty + 0.20, (0.92, 0.80, 0.24, 1.0)))):
+        make_cyl(f"Play_Piece_{i}", (px, py, 0.785), 0.022, 0.044, col, segments=8)
+    for i, (px, py) in enumerate(((tx + 0.52, ty + 0.20), (tx + 0.62, ty - 0.18), (tx - 0.70, ty - 0.10))):
+        for h in range(3):
+            make_box(f"Play_Deck_{i}_{h}", (px + 0.003 * h, py, 0.757 + h * 0.008), (0.09, 0.13, 0.008),
+                     ((0.80, 0.30, 0.26, 1.0), (0.30, 0.40, 0.66, 1.0), (0.94, 0.92, 0.86, 1.0))[i])
+    for i, (px, py) in enumerate(((tx + 0.30, ty - 0.30), (tx + 0.36, ty - 0.24))):
+        make_box(f"Play_Die_{i}", (px, py, 0.7655), (0.022, 0.022, 0.022), (0.96, 0.96, 0.94, 1.0))
+    for i in range(6):
+        make_rot_box(f"Play_Index_Card_{i}", (tx - 0.95 + 0.11 * (i % 3), ty + 0.30 - 0.14 * (i // 3), 0.7545),
+                     (0.13, 0.08, 0.002), (0.97, 0.96, 0.90, 1.0), yaw=0.18 * (i - 2.5))
+    make_rot_box("Play_Laptop_Base", (tx + 0.80, ty - 0.10, 0.763), (0.34, 0.24, 0.016), (0.62, 0.62, 0.64, 1.0), yaw=-0.25)
+    make_rot_box("Play_Laptop_Lid", (tx + 0.80 + 0.03, ty - 0.10 + 0.115, 0.88), (0.34, 0.012, 0.23), (0.62, 0.62, 0.64, 1.0),
+                 yaw=-0.25, roll=-0.22)
+    make_mug("Play_Mug", tx + 0.25, ty + 0.36, 0.75, (0.92, 0.92, 0.90, 1.0))
+    # the whiteboard between the W windows: a level drawn out in boxes and arrows
+    make_box("Whiteboard", (OX0 + 0.12, OD / 2.0, 1.55), (0.02, 2.00, 1.10), (0.96, 0.96, 0.95, 1.0))
+    make_box("Whiteboard_Frame", (OX0 + 0.11, OD / 2.0, 1.55), (0.02, 2.06, 1.16), (0.66, 0.66, 0.68, 1.0))
+    make_box("Whiteboard_Tray", (OX0 + 0.16, OD / 2.0, 0.98), (0.06, 1.60, 0.02), (0.66, 0.66, 0.68, 1.0))
+    for i, (v, z, sv, sz, col) in enumerate(((-0.62, 1.80, 0.42, 0.26, (0.20, 0.30, 0.60, 1.0)), (-0.05, 1.72, 0.36, 0.30, (0.20, 0.30, 0.60, 1.0)),
+                                             (0.55, 1.84, 0.44, 0.20, (0.70, 0.20, 0.20, 1.0)), (-0.30, 1.30, 0.70, 0.010, (0.20, 0.20, 0.22, 1.0)),
+                                             (0.40, 1.34, 0.50, 0.010, (0.20, 0.20, 0.22, 1.0)), (0.10, 1.22, 0.012, 0.36, (0.20, 0.50, 0.30, 1.0)))):
+        make_box(f"Whiteboard_Mark_{i}", (OX0 + 0.132, OD / 2.0 + v, z), (0.002, sv, sz), col)
+    for i, v in enumerate((-0.30, -0.20, 0.10)):
+        make_box(f"Whiteboard_Marker_{i}", (OX0 + 0.16, OD / 2.0 + v, 1.0), (0.02, 0.11, 0.02), ((0.20, 0.30, 0.60, 1.0), (0.70, 0.20, 0.20, 1.0), (0.10, 0.10, 0.10, 1.0))[i])
+    # the lounge by the front glass on the E side: a sofa against the wall,
+    # a low table, a rug, an armchair turned toward them, a print above
+    make_box("Lounge_Rug", (5.05, 2.35, 0.006), (3.10, 2.70, 0.012), (0.42, 0.46, 0.52, 1.0))
+    make_sofa("Lounge_Sofa", OX1 - 0.10 - 0.46, 2.35, back="+X", w=2.10, d=0.88, seats=3, color=(0.30, 0.34, 0.40, 1.0),
+              cushion_col=(0.34, 0.38, 0.44, 1.0), leg_col=(0.20, 0.20, 0.22, 1.0), arm="track",
+              pillows=((0.86, 0.66, 0.30, 1.0), (0.84, 0.82, 0.76, 1.0)), z0=0.012)
+    make_table("Lounge_Table", 5.05, 2.35, w=0.62, d=1.10, h=0.40, wood=(0.24, 0.24, 0.26, 1.0), top_col=(0.62, 0.48, 0.34, 1.0), z0=0.012)
+    for h in range(3):
+        make_box(f"Lounge_Magazine_{h}", (5.0 + 0.01 * h, 2.10, 0.415 + h * 0.006), (0.21, 0.28, 0.006),
+                 ((0.80, 0.30, 0.26, 1.0), (0.24, 0.40, 0.66, 1.0), (0.94, 0.86, 0.40, 1.0))[h])
+    make_sofa("Lounge_Armchair", 4.05, 1.25, back="-X", w=0.92, d=0.84, seats=1, color=(0.66, 0.46, 0.30, 1.0),
+              leg_col=(0.20, 0.20, 0.22, 1.0), arm="track", z0=0.012)
+    make_faded_poster("Lounge_Print", (OX1 - 0.10, 2.35, 1.70), axis='Y', into_room=-1, kind="movie")
+    make_floor_plant("Lounge_Plant", (OX1 - 0.45, 4.40, 0.0), kind="monstera")
     # the coffee: a counter on the E wall with the machine and the cups
-    make_box("Coffee_Counter", (OX1 - 0.10 - 0.30, 2.6, 0.45), (0.60, 1.60, 0.90), (0.56, 0.56, 0.56, 1.0))
-    make_box("Coffee_Counter_Top", (OX1 - 0.10 - 0.31, 2.6, 0.915), (0.62, 1.64, 0.03), (0.30, 0.30, 0.32, 1.0))
-    make_box("Coffee_Machine", (OX1 - 0.10 - 0.25, 2.3, 1.10), (0.30, 0.26, 0.34), (0.14, 0.14, 0.16, 1.0))
-    make_cyl("Coffee_Pot", (OX1 - 0.10 - 0.36, 2.3, 0.99), 0.07, 0.12, (0.30, 0.20, 0.14, 1.0), segments=12)
+    cy = 6.0
+    make_box("Coffee_Counter", (OX1 - 0.10 - 0.30, cy, 0.45), (0.60, 1.60, 0.90), (0.56, 0.56, 0.56, 1.0))
+    make_box("Coffee_Counter_Top", (OX1 - 0.10 - 0.31, cy, 0.915), (0.62, 1.64, 0.03), (0.30, 0.30, 0.32, 1.0))
+    make_box("Coffee_Machine", (OX1 - 0.10 - 0.25, cy - 0.3, 1.10), (0.30, 0.26, 0.34), (0.14, 0.14, 0.16, 1.0))
+    make_cyl("Coffee_Pot", (OX1 - 0.10 - 0.36, cy - 0.3, 0.99), 0.07, 0.12, (0.30, 0.20, 0.14, 1.0), segments=12)
     for k in range(3):
-        make_cyl(f"Coffee_Mug_{k}", (OX1 - 0.10 - 0.30, 2.8 + k * 0.12, 0.98), 0.04, 0.10, (0.92, 0.92, 0.90, 1.0), segments=10)
+        make_cyl(f"Coffee_Mug_{k}", (OX1 - 0.10 - 0.30, cy + 0.2 + k * 0.12, 0.98), 0.04, 0.10, (0.92, 0.92, 0.90, 1.0), segments=10)
+    for k in range(2):
+        make_box(f"Coffee_Cabinet_{k}", (OX1 - 0.10 - 0.17, cy - 0.4 + k * 0.8, 1.95), (0.34, 0.78, 0.70), (0.84, 0.84, 0.82, 1.0))
+    # the game shelf by the back door: boxed games, rulebooks, a few binders
+    sx, sy = OX1 - 0.10 - 0.18, 7.80
+    make_box("Game_Shelf_Back", (OX1 - 0.115, sy, 0.95), (0.03, 1.20, 1.90), (0.80, 0.78, 0.72, 1.0))
+    for s in (-1, 1):
+        make_box(f"Game_Shelf_Side_{s:+d}", (sx, sy + s * 0.59, 0.95), (0.36, 0.02, 1.90), (0.80, 0.78, 0.72, 1.0))
+    box_cols = ((0.80, 0.30, 0.26, 1.0), (0.24, 0.40, 0.66, 1.0), (0.94, 0.80, 0.30, 1.0), (0.30, 0.56, 0.36, 1.0), (0.46, 0.30, 0.56, 1.0),
+                (0.90, 0.56, 0.24, 1.0), (0.20, 0.20, 0.22, 1.0))
+    for r, z in enumerate((0.04, 0.50, 0.96, 1.42, 1.88)):
+        make_box(f"Game_Shelf_Board_{r}", (sx, sy, z), (0.34, 1.16, 0.02), (0.80, 0.78, 0.72, 1.0))
+        if r == 4:
+            continue
+        v = sy - 0.54
+        i = 0
+        while True:
+            t = (0.06, 0.09, 0.05, 0.12, 0.07)[(i + r) % 5]
+            h = (0.30, 0.36, 0.26, 0.40, 0.28)[(i * 3 + r) % 5]
+            if v + t > sy + 0.54:
+                break
+            if r == 1 and i in (3, 4):            # a few boxes lying flat
+                make_box(f"Game_Box_{r}_{i}", (sx, v + 0.16, z + 0.01 + 0.03 + 0.06 * (i - 3)), (0.30, 0.30, 0.06), box_cols[(i + r) % 7])
+                v += 0.34
+                i += 2
+                continue
+            make_box(f"Game_Box_{r}_{i}", (sx + 0.01, v + t / 2.0, z + 0.01 + h / 2.0), (0.30, t, h), box_cols[(i * 2 + r) % 7])
+            v += t + 0.005
+            i += 1
+    # the door corner: a coat stand and a plant; a plant in the NW corner
+    make_cyl("Coat_Stand_Pole", (OX0 + 0.45, 0.50, 0.90), 0.02, 1.80, (0.24, 0.24, 0.26, 1.0), segments=8)
+    make_cyl("Coat_Stand_Foot", (OX0 + 0.45, 0.50, 0.02), 0.20, 0.04, (0.24, 0.24, 0.26, 1.0), segments=12)
+    for k in range(4):
+        a = k * math.pi / 2.0 + 0.4
+        make_rot_box(f"Coat_Stand_Hook_{k}", (OX0 + 0.45 + 0.08 * math.cos(a), 0.50 + 0.08 * math.sin(a), 1.72), (0.16, 0.015, 0.015),
+                     (0.24, 0.24, 0.26, 1.0), yaw=a, roll=0.5)
+    make_rot_box("Coat_Stand_Jacket", (OX0 + 0.52, 0.47, 1.36), (0.26, 0.14, 0.62), (0.44, 0.30, 0.20, 1.0), yaw=0.3)
+    make_floor_plant("Off_Plant_NW", (OX0 + 0.45, OD - 0.50, 0.0), kind="ficus")
     make_light_switch("Off_Switch", (DOOR_X + 0.75, 0.0), axis='X', face_sign=1)
     make_wall_outlet("Off_Outlet_Desks", (0.0, OD), axis='X', face_sign=-1)
+    make_wall_outlet("Off_Outlet_Lounge", (OX1, 3.70), axis='Y', face_sign=-1)
     # the quiet street outside
     make_view("Off_Street_S", "S", -0.10, 0.0, kind="front", ground_z=0.0, seed=7)
 
