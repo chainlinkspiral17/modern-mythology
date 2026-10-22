@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-22 · pass 143: DANTE'S WINDOW OVERLOOKS THE DINING ROOM.**
+- **riverboat_interior** (vol 5 ch4 Emperor + ch20, 113 lines, all in the helm). "He stood near the
+  helm and surveyed the dining room from the upper deck, through the small leaded window": the window
+  looked onto the upper deck's solid planking, because the main ceiling and the upper deck were one
+  slab across the whole hull.
+  - The light well (ATRIUM): the dining room rises two storeys south of the helm. The main ceiling
+    and the upper deck are cut x −3.6..1.9, y −6.6..−3.1, with a cased beam round the cut and an
+    iron balustrade with a brass cap on the upper deck. The bar partition is carried up as the
+    well's E side, and the S chandelier hangs on a long drop from the upper ceiling.
+  - The helm's south wall: closed under the sill and over the head (the cut left a 60 cm slot
+    there, straight down). The helm is panelled: a chair rail and raised panels on four walls.
+  - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+    obstruction 0, dry run ok; perf 318 draw calls (cap 2000).
+- DRAFT N+1: the office stair still passes through the upper slab (its own hole, a landing, a door
+  in the helm's S wall); the gauntlet's UpperFloor collision box spans the well; an
+  `[shot:insert window]` setup from the glass looking down; the bare upper deck S of the well; the
+  helm reads dark (relight once the panelling is seen on the Deck).
+- Deck must REBUILD riverboat_interior.
+
 **2026-10-22 · pass 142: THE ONEIRONAUTICS OFFICE IS A STUDIO, NOT A HALL.**
 - Sweep of the next tier by lines (houston_office, dabney, onei_office, sam_bedroom, diego_bedroom,
   hospice_room, bianca_kitchen, sleep_lab, pharmacy, club_sharp, riverboat). One set read badly:

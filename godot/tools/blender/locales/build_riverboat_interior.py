@@ -41,6 +41,21 @@ resources/games/locations/riverboat_interior.json):
     STAFF EXIT        back of lower deck, the walkway
     GANGWAY           plank from boat to dock, public way
 
+PASS 143 (2026-10-22): THE LIGHT WELL. "He stood near the helm and
+surveyed the dining room from the upper deck, through the small leaded
+window" (vol5 ch4) — the window looked onto the upper deck's solid
+planking. The dining room now rises two storeys south of the helm
+(ATRIUM): the main ceiling and the upper deck cut, a cased beam round the
+cut, an iron balustrade with a brass cap on the upper deck, the bar
+partition carried up as the well's east side, the S chandelier on a long
+drop from the upper ceiling. The helm's south wall is closed under and
+over the window, and the helm is panelled (chair rail + raised panels).
+NEXT: the office stair still passes through the upper slab (cut it its own
+hole, give it a landing and a door in the helm's south wall); the
+gauntlet's UpperFloor collision box still spans the well; a preset for
+"[shot:insert window]" from the glass looking down; the upper deck south
+of the well is bare planking (stacked banquet chairs, the spare linen).
+
 COORDINATE FRAME (Blender → Godot):
     +X east  → +X
     +Y north → -Z
@@ -266,6 +281,23 @@ HULL_Y_S = -12.0
 HULL_Y_N = +12.0
 # the main deck's stairwell (x0, x1, y0, y1) over MD_StairsDown's treads
 STAIR_HOLE = (-5.1, -3.9, -9.66, -7.20)
+# the light well (x0, x1, y0, y1) cut through the main ceiling and the upper
+# deck south of the helm (2026-10-22, pass 143): the architect's leaded
+# window "overlooking the dining room" looked onto a solid deck slab — the
+# helm saw a plank floor. Now the dining room rises two storeys there, the
+# chandelier hangs from the upper ceiling, the iron stair drops through it.
+ATRIUM = (-3.6, 1.9, -6.6, -3.10)   # E edge: the bar partition (x 2.0) runs up to the upper ceiling
+
+
+def _slab_with_hole(name, z_center, thick, color, hole):
+    """A deck-wide slab (the hull's 12 x 24) with a rectangular hole."""
+    hx0, hx1, hy0, hy1 = hole
+    for nm, (x0, x1, y0, y1) in (("S", (HULL_X_W, HULL_X_E, HULL_Y_S, hy0)),
+                                 ("N", (HULL_X_W, HULL_X_E, hy1, HULL_Y_N)),
+                                 ("W", (HULL_X_W, hx0, hy0, hy1)),
+                                 ("E", (hx1, HULL_X_E, hy0, hy1))):
+        make_box(f"{name}_{nm}" if nm != "N" else name, ((x0 + x1) / 2.0, (y0 + y1) / 2.0, z_center),
+                 (x1 - x0, y1 - y0, thick), color)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -305,7 +337,9 @@ def build_hull_and_decks():
         ("MainFloor",  MAIN_FLOOR_Z,   COL_DECK_PLANK),
         ("UpperFloor", UPPER_FLOOR_Z,  COL_DECK_PLANK_LT),
     ]:
-        if label != "MainFloor":
+        if label == "UpperFloor":
+            _slab_with_hole(f"Hull_{label}", zf - 0.05, 0.10, color, ATRIUM)
+        elif label != "MainFloor":
             make_box(f"Hull_{label}",
                      (0.0, 0.0, zf - 0.05),
                      (12.0, 24.0, 0.10), color)
@@ -325,6 +359,11 @@ def build_hull_and_decks():
         # Plank seams (running E-W)
         for i in range(-5, 6):
             y = i * 2.0
+            if label == "UpperFloor" and ATRIUM[2] < y < ATRIUM[3]:
+                for k, (x0, x1) in enumerate(((HULL_X_W, ATRIUM[0]), (ATRIUM[1], HULL_X_E))):
+                    make_box(f"Hull_{label}_Seam_{i}_{k}", ((x0 + x1) / 2.0, y, zf + 0.0006),
+                             (x1 - x0, 0.01, 0.001), (0.20, 0.14, 0.08, 1.0))
+                continue
             if label == "MainFloor" and STAIR_HOLE[2] < y < STAIR_HOLE[3]:
                 # split round the stairwell
                 for k, (x0, x1) in enumerate(((HULL_X_W, STAIR_HOLE[0]), (STAIR_HOLE[1], HULL_X_E))):
@@ -344,12 +383,18 @@ def build_hull_and_decks():
         ("MainCeil",  MAIN_CEIL_Z),
         ("UpperCeil", UPPER_CEIL_Z),
     ]:
-        make_box(f"Hull_{label}",
-                 (0.0, 0.0, zc + 0.05),
-                 (12.0, 24.0, 0.10), COL_CEILING)
+        if label == "MainCeil":
+            _slab_with_hole(f"Hull_{label}", zc + 0.05, 0.10, COL_CEILING, ATRIUM)
+        else:
+            make_box(f"Hull_{label}",
+                     (0.0, 0.0, zc + 0.05),
+                     (12.0, 24.0, 0.10), COL_CEILING)
         # Tin stamp pattern (subtle raised tiles)
         for i in range(-2, 3):
             for j in range(-5, 6):
+                if label == "MainCeil" and (i * 1.6 + 0.7 > ATRIUM[0] and i * 1.6 - 0.7 < ATRIUM[1]
+                                            and j * 1.6 + 0.7 > ATRIUM[2] and j * 1.6 - 0.7 < ATRIUM[3]):
+                    continue
                 # UNDER the ceiling's face (2026-09-24: at zc + 0.02 all 165
                 # tiles sat inside the 10 cm slab — the tin never showed)
                 make_box(f"Hull_{label}_Tile_{i}_{j}",
@@ -597,9 +642,15 @@ def build_main_dining():
                  0.16, 0.40, COL_BRASS)
         # the rod to the ceiling + the ring the crystals hang from
         # (2026-09-22: core 30 cm under the ceiling, crystals 20 cm off it)
-        make_cyl(f"MD_Chandelier_{j}_Rod",
-                 (cx, cy_pos, MAIN_CEIL_Z - 0.15),
-                 0.02, 0.30, COL_BRASS, segments=6)
+        if ATRIUM[2] < cy_pos < ATRIUM[3]:     # in the light well: a long drop from the upper ceiling
+            make_cyl(f"MD_Chandelier_{j}_Rod",
+                     (cx, cy_pos, (MAIN_CEIL_Z - 0.30 + UPPER_CEIL_Z) / 2.0),
+                     0.014, UPPER_CEIL_Z - MAIN_CEIL_Z + 0.30, COL_BRASS, segments=6)
+            make_cyl(f"MD_Chandelier_{j}_Canopy", (cx, cy_pos, UPPER_CEIL_Z - 0.03), 0.10, 0.06, COL_BRASS, segments=10)
+        else:
+            make_cyl(f"MD_Chandelier_{j}_Rod",
+                     (cx, cy_pos, MAIN_CEIL_Z - 0.15),
+                     0.02, 0.30, COL_BRASS, segments=6)
         make_cyl(f"MD_Chandelier_{j}_Ring",
                  (cx, cy_pos, MAIN_CEIL_Z - 0.56),
                  0.39, 0.02, COL_BRASS, segments=12)
@@ -1260,6 +1311,79 @@ def build_office_staircase():
                      (cx + sgn * 0.53, by_pos,
                       cz - i * 0.26 + b_h / 2.0 - 0.10),
                      0.012, b_h, COL_BLACK)
+
+
+# ════════════════════════════════════════════════════════════════
+# THE LIGHT WELL + THE HELM'S PANELLING (2026-10-22, pass 143)
+# ════════════════════════════════════════════════════════════════
+def build_light_well():
+    """The well's edges (a cased beam under the cut, an iron balustrade
+    with a brass cap round the three open sides on the upper deck), the
+    helm's south wall closed under and over the leaded window (the cut
+    left a 60 cm slot under its sill straight down to the dining room),
+    and the helm panelled: a chair rail and raised panels below it on all
+    four walls (the walls were one dark plane each)."""
+    cz = UPPER_FLOOR_Z
+    x0, x1, y0, y1 = ATRIUM
+    beam = (0.34, 0.24, 0.15, 1.0)
+    iron = (0.16, 0.15, 0.15, 1.0)
+    cap = (0.74, 0.58, 0.28, 1.0)
+    # the cased beam round the cut, under the deck
+    for nm, y in (("S", y0 - 0.08), ("N", y1 + 0.08)):
+        make_box(f"Well_Beam_{nm}", ((x0 - 0.16 + x1) / 2.0, y, MAIN_CEIL_Z - 0.13), (x1 - x0 + 0.16, 0.16, 0.26), beam)
+    make_box("Well_Beam_W", (x0 - 0.08, (y0 + y1) / 2.0, MAIN_CEIL_Z - 0.13), (0.16, y1 - y0, 0.26), beam)
+    # the E side is the bar partition carried up to the upper ceiling
+    make_box("Well_Wall_E", (x1 + 0.10, (y0 + y1) / 2.0, (MAIN_CEIL_Z + 0.05 + UPPER_CEIL_Z) / 2.0),
+             (0.20, y1 - y0, UPPER_CEIL_Z - MAIN_CEIL_Z - 0.05), COL_WALL_DARK)
+    make_box("Well_Wall_E_Cornice", (x1 - 0.03, (y0 + y1) / 2.0, UPPER_CEIL_Z - 0.10), (0.06, y1 - y0, 0.12), beam)
+    # the balustrade on the upper deck: S and W sides (N is the helm wall, E the partition)
+    runs = (("S", (x0, y0 - 0.05), (x1, y0 - 0.05)), ("W", (x0 - 0.05, y0), (x0 - 0.05, y1)))
+    for nm, (ax, ay), (bx, by) in runs:
+        L = math.hypot(bx - ax, by - ay)
+        along_x = abs(bx - ax) > 0.01
+        n = max(2, int(round(L / 0.12)))
+        for k in range(n + 1):
+            t = k / n
+            px, py = ax + (bx - ax) * t, ay + (by - ay) * t
+            if k % 8 == 0 or k == n:
+                make_box(f"Well_Rail_{nm}_Post_{k}", (px, py, cz + 0.50), (0.07, 0.07, 1.00), iron)
+            else:
+                make_cyl(f"Well_Rail_{nm}_Baluster_{k}", (px, py, cz + 0.47), 0.010, 0.86, iron, segments=6)
+        mx, my = (ax + bx) / 2.0, (ay + by) / 2.0
+        make_box(f"Well_Rail_{nm}_Shoe", (mx, my, cz + 0.03), ((L + 0.07) if along_x else 0.06, 0.06 if along_x else (L + 0.07), 0.06), iron)
+        make_box(f"Well_Rail_{nm}_Cap", (mx, my, cz + 1.02), ((L + 0.09) if along_x else 0.08, 0.08 if along_x else (L + 0.09), 0.04), cap)
+    # the helm's south wall closed under the sill and over the head
+    make_box("Helm_SouthPart_Sill", (0.0, -3.0, (cz + cz + 0.59) / 2.0), (2.90, 0.10, 0.59), COL_WALL_DARK)
+    make_box("Helm_SouthPart_Head", (0.0, -3.0, (cz + 2.21 + UPPER_CEIL_Z) / 2.0), (2.90, 0.10, UPPER_CEIL_Z - cz - 2.21), COL_WALL_DARK)
+    # the panelling: chair rail at 0.92, raised panels under it
+    rail = (0.44, 0.30, 0.18, 1.0)
+    panel = (0.36, 0.25, 0.16, 1.0)
+    walls = (  # name, axis, fixed coordinate (the face), into-room sign, start, end, skips
+        ("W", 'Y', -3.45, +1, -2.95, 2.95, ()),
+        ("E", 'Y', +3.45, -1, -2.95, 2.95, ((-2.88, -1.92),)),
+        ("N", 'X', +2.95, -1, -3.45, 3.45, ()),
+        ("S", 'X', -2.95, +1, -3.45, 3.45, ((-1.50, 1.50), (1.72, 2.68))),
+    )
+    for nm, ax, f, d, a, b, skips in walls:
+        segs, cur = [], a
+        for s0, s1 in skips:
+            segs.append((cur, s0)); cur = s1
+        segs.append((cur, b))
+        for si, (u0, u1) in enumerate(segs):
+            L = u1 - u0
+            if L < 0.2:
+                continue
+            uc = (u0 + u1) / 2.0
+            def P(u, off):
+                return (f + d * off, u, None) if ax == 'Y' else (u, f + d * off, None)
+            def B(name, u, off, z, su, st, sz, col):
+                px, py, _ = P(u, off)
+                make_box(name, (px, py, z), (st, su, sz) if ax == 'Y' else (su, st, sz), col)
+            B(f"Helm_Wainscot_{nm}{si}_Rail", uc, 0.02, cz + 0.92, L, 0.04, 0.07, rail)
+            n = max(1, int(round(L / 0.70)))
+            w = L / n
+            for k in range(n):
+                B(f"Helm_Wainscot_{nm}{si}_Panel_{k}", u0 + w * (k + 0.5), 0.008, cz + 0.50, w - 0.14, 0.016, 0.56, panel)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1961,6 +2085,7 @@ def main():
     build_private_dining()
     build_helm()
     build_office_staircase()
+    build_light_well()
     build_lower_deck_partitions()
     build_back_corridor()
     build_catering_office()
