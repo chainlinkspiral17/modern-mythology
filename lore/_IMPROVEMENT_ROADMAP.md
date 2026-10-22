@@ -3857,7 +3857,19 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - The other high-traffic rooms looked at this pass read well and were left: the Centro break room,
   Finn's apartment, the Henderson kitchen, the New Orleans bar, the Foxhole (dark as a club is), the
   cabin, Hans's back kitchen, the Miller kitchen, the writer's desk.
-- **Deck must REBUILD** board_lords_interior, chillwave_interior.
+- **The 1945 parsonage, Ron's room** (vol 3, 139 lines). Both sashes of the window were solid cream
+  boxes the size of the opening, so the window was a lit white panel. The dawn street the camera note
+  promises ("always empty at this hour", "A streetlamp still burns at the corner") was built but never
+  seen.
+  - Each sash is now a frame of rails and stiles round clear glass, with a muntin.
+  - Every part keeps its view suffix, so the lower sash still rises in the ch19 night view only.
+  - The bare plaster gets a picture rail round the room, a dark old print over the bed and a small
+    photograph by the door, hung on wires.
+  - All five views render; gates 0; perf ok.
+- Seen and left this pass (they read well): the Café Olímpico, the Centro stockroom, the Daily Grind,
+  Elicia's apartment, the hospital room, Maya's bedroom, the Miller back porch, the Missing Link, the
+  New Auburn courtroom.
+- **Deck must REBUILD** board_lords_interior, chillwave_interior, parsonage_1945.
 
 **2026-10-22 · pass 140: LENA'S KITCHEN GETS ITS DOORWAY.**
 - **Lena's apartment** (948 lines). The prose has "She came into the kitchen and stopped at the

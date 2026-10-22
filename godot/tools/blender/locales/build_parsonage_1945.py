@@ -70,12 +70,24 @@ def build_house():
     # the window: frame, the two sashes; the lower sash raised in ch19 only
     make_box("Window_Frame_Head", (WIN_X, 0.0, WIN_Z + WIN_H / 2.0 + 0.04), (WIN_W + 0.16, 0.24, 0.08), (0.92, 0.90, 0.84, 1.0))
     make_box("Window_Sill", (WIN_X, 0.06, WIN_Z - WIN_H / 2.0 - 0.03), (WIN_W + 0.20, 0.30, 0.05), (0.92, 0.90, 0.84, 1.0))
-    make_box("Window_Upper_Sash", (WIN_X, 0.04, WIN_Z + WIN_H / 4.0), (WIN_W, 0.04, WIN_H / 2.0), (0.92, 0.90, 0.84, 1.0))
-    make_box("Window_Upper_Bar", (WIN_X, 0.04, WIN_Z + WIN_H / 4.0), (0.03, 0.05, WIN_H / 2.0 - 0.06), (0.92, 0.90, 0.84, 1.0))
-    make_box("Window_Lower_Sash__ron_dawn__ron_day__ron_night_floor", (WIN_X, -0.01, WIN_Z - WIN_H / 4.0), (WIN_W, 0.04, WIN_H / 2.0),
-             (0.92, 0.90, 0.84, 1.0))
-    make_box("Window_Lower_Sash_Raised__ron_night_bed", (WIN_X, -0.01, WIN_Z + WIN_H / 4.0), (WIN_W, 0.04, WIN_H / 2.0),
-             (0.92, 0.90, 0.84, 1.0))
+    # (2026-10-22) the sashes as SASHES — a frame of rails and stiles round
+    # clear glass, a muntin down the middle. Both were solid cream boxes the
+    # size of the opening: the window read as a lit white panel and the dawn
+    # street below it ("always empty at this hour", "A streetlamp still
+    # burns at the corner") was never seen. Each part keeps its view suffix:
+    # the lower sash rises in ch19 only.
+    cream = (0.92, 0.90, 0.84, 1.0)
+    def _sash(name, y, zc, suffix=""):
+        hw, hh, b = WIN_W / 2.0, WIN_H / 4.0, 0.05
+        make_box(f"{name}_RailT{suffix}", (WIN_X, y, zc + hh - b / 2.0), (WIN_W, 0.04, b), cream)
+        make_box(f"{name}_RailB{suffix}", (WIN_X, y, zc - hh + b / 2.0), (WIN_W, 0.04, b), cream)
+        for sg in (-1, 1):
+            make_box(f"{name}_Stile_{sg:+d}{suffix}", (WIN_X + sg * (hw - b / 2.0), y, zc), (b, 0.04, WIN_H / 2.0 - 2 * b), cream)
+        make_box(f"{name}_Muntin{suffix}", (WIN_X, y, zc), (0.03, 0.03, WIN_H / 2.0 - 2 * b), cream)
+        make_box(f"{name}_Glass{suffix}", (WIN_X, y, zc), (WIN_W - 2 * b, 0.006, WIN_H / 2.0 - 2 * b), (0.78, 0.84, 0.88, 0.22))
+    _sash("Window_Upper_Sash", 0.04, WIN_Z + WIN_H / 4.0)
+    _sash("Window_Lower_Sash", -0.01, WIN_Z - WIN_H / 4.0, "__ron_dawn__ron_day__ron_night_floor")
+    _sash("Window_Lower_Sash_Raised", -0.01, WIN_Z + WIN_H / 4.0, "__ron_night_bed")
     make_box("Window_Shade", (WIN_X, 0.12, WIN_Z + WIN_H / 2.0 - 0.10), (WIN_W, 0.02, 0.16), (0.90, 0.86, 0.70, 1.0))
     # the hall north of the room: wide, the stair head at its E end
     hy0, hy1 = D + 0.10, D + 3.70
@@ -154,6 +166,29 @@ def build_room():
     make_box("Door_Ron", (-1.6, D, F + 1.0), (0.84, 0.05, 2.0), (0.50, 0.36, 0.24, 1.0))
     make_cyl("Door_Ron_Knob", (-1.26, D - 0.045, F + 0.98), 0.026, 0.04, (0.70, 0.62, 0.40, 1.0), axis='Y', segments=10)
     make_box("Ceiling_Fixture", (0.0, 2.3, F + H - 0.05), (0.30, 0.30, 0.10), (0.94, 0.90, 0.78, 1.0))
+    # (2026-10-22) the plaster was bare: a 1940s house's picture rail round
+    # the room and two pictures hung from it on wires — a dark old print over
+    # the bed, a small framed photograph by the door
+    rail_z = F + H - 0.42
+    for nm, c, sz in (("Picture_Rail_W", (X0 + 0.11, D / 2.0, rail_z), (0.02, D - 0.2, 0.04)),
+                      ("Picture_Rail_E", (X1 - 0.11, D / 2.0, rail_z), (0.02, D - 0.2, 0.04)),
+                      ("Picture_Rail_N", (0.0, D - 0.11, rail_z), (X1 - X0 - 0.2, 0.02, 0.04))):
+        make_box(nm, c, sz, OAK_DARK)
+    for nm, (cx, cy), (w, h), facing, pic in (("Print_Bed", (X1 - 0.115, 2.6), (0.70, 0.52), "-X", (0.36, 0.34, 0.26, 1.0)),
+                                              ("Photo_Door", (-0.55, D - 0.115), (0.26, 0.32), "-Y", (0.62, 0.58, 0.50, 1.0))):
+        z = F + 1.75
+        if facing == "-X":
+            make_box(f"{nm}_Frame", (cx, cy, z), (0.025, w, h), OAK_DARK)
+            make_box(f"{nm}_Pic", (cx - 0.014, cy, z), (0.004, w - 0.10, h - 0.10), pic)
+            for sg in (-1, 1):
+                make_rot_box(f"{nm}_Wire_{sg:+d}", (cx + 0.004, cy + sg * w * 0.22, (z + h / 2.0 + rail_z) / 2.0), (0.004, 0.004, rail_z - z - h / 2.0 + 0.02),
+                             (0.30, 0.28, 0.24, 1.0), roll=sg * 0.25)
+        else:
+            make_box(f"{nm}_Frame", (cx, cy, z), (w, 0.025, h), OAK_DARK)
+            make_box(f"{nm}_Pic", (cx, cy - 0.014, z), (w - 0.08, 0.004, h - 0.08), pic)
+            for sg in (-1, 1):
+                make_rot_box(f"{nm}_Wire_{sg:+d}", (cx + sg * w * 0.22, cy + 0.004, (z + h / 2.0 + rail_z) / 2.0), (0.004, 0.004, rail_z - z - h / 2.0 + 0.02),
+                             (0.30, 0.28, 0.24, 1.0), pitch=sg * 0.25)
 
 
 def build_street():
