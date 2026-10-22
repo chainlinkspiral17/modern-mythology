@@ -3846,7 +3846,18 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     not a shop).
   - Gates: overlap 0, support 0, vantage 0 blind, obstruction 0, marker aim 0, shot markers 0 blind;
     perf ok.
-- **Deck must REBUILD** board_lords_interior.
+- **ChillWave Video** (vol 7, 268 lines). The partition between the shop and the back room was the
+  establish's bare back wall. The prose: "Cedar shelves alphabetized by designer", "the cedar shelves
+  Cale had built himself in 2046". Changes:
+  - Two cedar units on its shop face: the long run E of the counter up to the back-room doorway, and
+    a short one behind the counter on the staff side.
+  - Sticks face-out, and the brass designer tabs stepping along the shelf edges.
+  - The island is 30 cm shorter, so the aisle to the new shelves is 1 m.
+  - Gates 0; perf ok.
+- The other high-traffic rooms looked at this pass read well and were left: the Centro break room,
+  Finn's apartment, the Henderson kitchen, the New Orleans bar, the Foxhole (dark as a club is), the
+  cabin, Hans's back kitchen, the Miller kitchen, the writer's desk.
+- **Deck must REBUILD** board_lords_interior, chillwave_interior.
 
 **2026-10-22 · pass 140: LENA'S KITCHEN GETS ITS DOORWAY.**
 - **Lena's apartment** (948 lines). The prose has "She came into the kitchen and stopped at the

@@ -102,7 +102,7 @@ def build_island_2026_10():
     """The front room's empty middle (2026-10-09): a double-sided cedar
     island of sticks face-out, between the counter and the E wall unit,
     with the week's new-arrivals card on its end."""
-    ix, iy0, iy1 = 1.35, 1.35, 3.35
+    ix, iy0, iy1 = 1.35, 1.35, 3.05   # (2026-10-22: 30 cm shorter — a 1 m aisle to the partition shelves)
     make_box("Island_Base", (ix, (iy0 + iy1) / 2.0, 0.06), (0.62, iy1 - iy0, 0.12), (0.30, 0.22, 0.16, 1.0))
     make_box("Island_Spine", (ix, (iy0 + iy1) / 2.0, 0.70), (0.04, iy1 - iy0, 1.16), COL_CEDAR_DK)
     for e in (-1, 1):
@@ -111,10 +111,31 @@ def build_island_2026_10():
         for zi in range(3):
             sz = 0.40 + zi * 0.36
             make_box(f"Island_Shelf_{side}_{zi}", (ix + sgn * 0.15, (iy0 + iy1) / 2.0, sz), (0.26, iy1 - iy0 - 0.06, 0.03), COL_CEDAR)
-            for ci in range(6):
+            for ci in range(5):
                 make_rot_box(f"Island_Stick_{side}_{zi}_{ci}", (ix + sgn * 0.12, iy0 + 0.22 + ci * 0.31, sz + 0.095),
                              (0.04, 0.12, 0.16), STICK_TINTS[(zi + ci + (side == "E")) % len(STICK_TINTS)], roll=sgn * 0.20)
     make_box("Island_NewArrivals_Card", (ix, iy0 - 0.005, 1.10), (0.30, 0.004, 0.16), (0.94, 0.90, 0.80, 1.0))
+
+
+def build_partition_shelves_2026_10():
+    """THE SHOP'S BACK WALL (2026-10-22, the Deck: "poorly arranged"). The
+    partition between the shop and the back room was the establish's bare
+    wall. Canon: "Cedar shelves alphabetized by designer" · "the cedar
+    shelves Cale had built himself in 2046". Two cedar units on its shop
+    face — the long run east of the counter up to the back-room doorway, a
+    short one behind the counter on the staff side — sticks face-out, the
+    brass designer tabs stepping along the shelf edges."""
+    face = PART_Y - 0.10
+    for tag, x0, x1 in (("E", -0.55, 1.30), ("Staff", -3.25, -1.70)):
+        _cedar_unit_x(f"PartShelf_{tag}", face, x0, x1, 2.30)
+        n = int((x1 - x0 - 0.20) / 0.30)
+        for zi in range(4):
+            sz = 0.45 + zi * 0.48
+            make_box(f"PartShelf_{tag}_{zi}", ((x0 + x1) / 2.0, face - 0.19, sz), (x1 - x0 - 0.06, 0.34, 0.04), COL_CEDAR)
+            for ci in range(n):
+                make_box(f"PartStick_{tag}_{zi}_{ci}", (x0 + 0.22 + ci * 0.30, face - 0.19, sz + 0.10),
+                         (0.10, 0.16, 0.16), STICK_TINTS[(zi * 3 + ci + (tag == "Staff")) % len(STICK_TINTS)])
+            make_box(f"PartTab_{tag}_{zi}", (x0 + 0.12 + (zi % 3) * 0.55, face - 0.37, sz + 0.02), (0.08, 0.02, 0.06), COL_BRASS)
 
 
 def build_storefront():
@@ -380,6 +401,7 @@ def main():
     build_storefront()
     build_counter_front()
     build_island_2026_10()
+    build_partition_shelves_2026_10()
     build_back_inventory()
     build_workbench()
     build_ceiling_infra()
