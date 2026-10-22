@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-22 · pass 141: BOARD LORDS' WALL OF DECKS IN THE FRAME.**
+- **Board Lords** (vol 7, 644 lines). The establish still stood where it had for the board-game shop
+  this set used to be: the SW corner looking NE, with "the wall of decks" (`[shot:insert decks]`, "He
+  went to the wall of decks. He pulled three down") behind the lens. The frame was bare N and E walls
+  and an empty floor.
+  - It now looks NW from the SE by the wheel bin: the deck wall behind its glass, the front window and
+    the bench, the counter, the T-shirt rounder as the foreground layer.
+  - The wall itself is restocked shoulder to shoulder, 13 a row (it was 7, 62 cm apart: a gallery,
+    not a shop).
+  - Gates: overlap 0, support 0, vantage 0 blind, obstruction 0, marker aim 0, shot markers 0 blind;
+    perf ok.
+- **Deck must REBUILD** board_lords_interior.
+
 **2026-10-22 · pass 140: LENA'S KITCHEN GETS ITS DOORWAY.**
 - **Lena's apartment** (948 lines). The prose has "She came into the kitchen and stopped at the
   doorway", "they moved back to the front room", and Lena coming out of the bedroom into the kitchen.

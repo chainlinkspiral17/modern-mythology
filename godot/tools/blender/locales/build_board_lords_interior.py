@@ -118,14 +118,16 @@ def build_deck_wall():
     """The glass-fronted DECK WALL along the west side — the thing
     Kai cleans the glass on."""
     make_box("DeckWall_Back", (-4.44, 3.8, 1.30), (0.06, 4.4, 2.30), (0.30, 0.26, 0.22, 1.0))
+    # (2026-10-22: 13 a row, shoulder to shoulder — at 7 a row, 62 cm apart,
+    # the wall read as a sparse gallery, not a shop's wall of decks)
     for r in range(2):
-        for c in range(7):
-            dy = 1.85 + c * 0.62
+        for c in range(13):
+            dy = 1.82 + c * 0.33
             dz = 0.85 + r * 1.05
-            tint = DECK_TINTS[(r * 7 + c) % len(DECK_TINTS)]
+            tint = DECK_TINTS[(r * 5 + c * 3) % len(DECK_TINTS)]
             make_chamfer_box(f"Deck_{r}_{c}", (-4.36, dy, dz), (0.05, 0.22, 0.82), tint, chamfer=0.03)
             make_box(f"Deck_{r}_{c}_Stripe", (-4.33, dy, dz + 0.15), (0.04, 0.18, 0.10),
-                     DECK_TINTS[(r * 7 + c + 3) % len(DECK_TINTS)])
+                     DECK_TINTS[(r * 5 + c * 3 + 2) % len(DECK_TINTS)])
     # The glass front Kai cleans — its frame on two end posts, the glass
     # itself as two glints (2026-09-24: a 4.3 x 2.2 m "glass" slab — this
     # pipeline has no alpha, so it rendered as a lavender wall over every

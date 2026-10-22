@@ -2323,14 +2323,16 @@ const CAMERA_PRESETS := {
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
-		# Board-game shop 9×7 (godot x∈[-4.5,4.5], z∈[0,-7], ceil 2.8,
-		# purple walls). Register counter NE (godot 2.25,-5.5) with a dice
-		# display case beside it, two double-sided game gondolas centre
-		# (z=-2.45,-4.55, 5m wide), open-play demo table W (godot -2.25,
-		# -3.5). Camera SW just inside the door looking NE down the gondolas
-		# to the register counter; demo table at frame left.
-		"camera_origin": Vector3(-3.5, 2.0, -1.0),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-52.0), 0.0),
+		# Board Lords, Kai's skate shop (vol 7) 9×7.6 (godot x∈[-4.5,4.5],
+		# z∈[0,-7.6], ceil 2.8). "The wall of decks" behind its glass on the
+		# W wall, the board rack mid-floor, the repair bench and lathe on the
+		# N wall, the counter NE with the back office behind it, the bench
+		# under the front window SW. (2026-10-22: the lens was in the SW
+		# corner looking NE — from the board-game shop this set used to be —
+		# with the deck wall behind it; now from the SE by the wheel bin
+		# looking NW: the deck wall, the rack, the repair bench, the counter.)
+		"camera_origin": Vector3(3.4, 1.70, -0.9),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(50.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
