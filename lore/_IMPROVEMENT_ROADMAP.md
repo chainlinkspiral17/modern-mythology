@@ -3855,9 +3855,19 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     journals sent in from all over the world")
   - By the entry lane the rack had stood 1.5 m off the establish's lens; moved.
   - Perf 414 draw calls (baseline 402).
-- **Deck must REBUILD** montreal_apartment, salty_tome_interior.
+- **Cosmic Comics** (vol 6, 703 lines):
+  - The three back-issue bin rows stood with 0.75 m and 0.9 m aisles between them (single file,
+    sideways past a customer). They are re-spaced to 1.1 m. One ROWS constant feeds the rows, their
+    lips and talkers, and the kick scuffs.
+  - The back row is shortened to clear the glass case.
+  - The New Arrivals table stood in the door's own lane; it moved E of the lane, between the statue
+    tower and the first row, and is the establish's foreground layer now.
+  - The worn floor paths, which ran through a bin row, go round the rows' ends.
+  - Gates 0; perf 78 draw calls.
+- **Deck must REBUILD** montreal_apartment, salty_tome_interior, cosmic_comics_interior.
 - **Draft N+1 targets:**
-  - cosmic_comics_interior (703, walk 0.54): run walkway_audit with its fixtures first.
+  - Cosmic Comics: CLAUDE.md asks 1.4 m between store fixtures. Two rows plus wall bins would get
+    there, or a deeper shop.
   - Lena's kitchen as its own room.
 
 **2026-10-21 · pass 138: FAUST'S COUCH; THE CROWDING AUDIT SEES CHAIRS.**

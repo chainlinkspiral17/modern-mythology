@@ -60,6 +60,12 @@ def make_mini_statue(prefix, anchor, *, h=0.34, body_col=None, accent_col=None):
     make_box(f"{prefix}_Cape", (cx, cy+0.06, bz+0.04+h*0.60), (0.14, 0.03, h*0.50), body_col)
 
 ROOM_W = 10.0; ROOM_D = 8.0; CEIL = 2.8
+# THE BIN ROWS (y, length, centre x). 2026-10-21, the Deck: "poorly arranged
+# and cramped": the three rows stood at y 2.75 / 4.0 / 5.4 with 0.75 m and
+# 0.9 m aisles between them — single file, sideways past a customer — and the
+# New Arrivals table stood in the door's own lane. 1.1 m aisles now; the back
+# row is shorter so it clears the glass case.
+ROWS = ((2.55, 5.0, 0.0), (4.15, 5.0, 0.0), (5.72, 2.6, -1.5))
 PAL_WALL = {"wall": (0.42, 0.32, 0.46, 1.0), "baseboard": (0.18, 0.12, 0.20, 1.0)}
 COL_FLOOR = (0.32, 0.28, 0.32, 1.0); COL_SEAM = (0.18, 0.16, 0.20, 1.0); COL_WOOD = (0.42, 0.30, 0.52, 1.0)
 COL_ACCENT = (0.78, 0.42, 0.86, 1.0)
@@ -89,11 +95,9 @@ def build_shell():
 
 def build_bins():
     # Three long spine-out back-issue bin rows down the floor.
-    for ji, ay in enumerate([2.75, 4.0, 5.4]):
+    for ji, (ay, row_w, row_x) in enumerate(ROWS):
         # Row 2 stops short of the register counter's footprint
         # (x 1.3-3.7 at y 6.0-7.0) — it used to run under it.
-        row_w = 5.0 if ji < 2 else 3.6
-        row_x = 0.0 if ji < 2 else -0.7
         make_box(f"Bin_{ji}_Base", (row_x, ay, 0.30), (row_w, 0.50, 0.60), (0.30, 0.22, 0.14, 1.0))
         make_box(f"Bin_{ji}_Label", (row_x, ay-0.26, 0.50), (row_w - 0.4, 0.02, 0.12), (0.86, 0.72, 0.32, 1.0))
         for di in range(11):
@@ -345,9 +349,12 @@ def build_hero_props():
     for ti in range(3):
         make_box(f"Indie_Talker_{ti}", (-3.85 + ti * 0.25, 2.28, 1.30), (0.16, 0.02, 0.10),
                  (0.94, 0.90, 0.78, 1.0))
-    make_table("NewArrivals", 0.0, 2.0, w=1.40, d=0.80, h=0.43, wood=wood, top_col=wood)   # draft 4: the kit table (turned legs, apron, H-stretcher)
+    # (2026-10-21: E of the entry lane, between the statue tower and the
+    # first row — it stood in the door's own lane)
+    nax, nay = 3.10, 1.85
+    make_table("NewArrivals", nax, nay, w=1.40, d=0.80, h=0.43, wood=wood, top_col=wood)   # draft 4: the kit table (turned legs, apron, H-stretcher)
     for ci in range(6):
-        make_box(f"NewArrivals_Comic_{ci}", (-0.55 + (ci % 3) * 0.55, 1.82 + (ci // 3) * 0.38, 0.445),
+        make_box(f"NewArrivals_Comic_{ci}", (nax - 0.55 + (ci % 3) * 0.55, nay - 0.18 + (ci // 3) * 0.38, 0.445),
                  (0.30, 0.42, 0.01), [(0.74, 0.30, 0.30, 1.0), (0.30, 0.44, 0.62, 1.0),
                                       (0.86, 0.72, 0.28, 1.0)][ci % 3])
 
@@ -410,12 +417,13 @@ def build_draft4_2026_09():
     tile_dk = (0.18, 0.15, 0.21, 1.0)
     wood_dk = (0.32, 0.22, 0.14, 1.0)
     # ── WEAR ──
-    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.6), (0.0, 1.6), (-0.4, 2.3), (-1.2, 3.4)], width=0.55, tint=tile_dk)
-    make_traffic_wear("Wear_Path_B", [(-1.2, 3.4), (0.6, 4.7), (1.8, 5.6), (2.4, 5.95)], width=0.50, tint=tile_dk)
-    make_traffic_wear("Wear_Path_C", [(-1.2, 3.4), (-2.6, 3.8), (-3.2, 4.0)], width=0.36, tint=tile_dk)
+    # the worn lines round the rows' ends (2026-10-21: they ran through a row)
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.6), (-0.8, 1.8), (-2.8, 2.0), (-2.85, 3.35)], width=0.55, tint=tile_dk)
+    make_traffic_wear("Wear_Path_B", [(-2.85, 3.35), (0.0, 3.35), (2.85, 3.35), (2.9, 4.95)], width=0.50, tint=tile_dk)
+    make_traffic_wear("Wear_Path_C", [(-2.85, 3.35), (-2.95, 4.95)], width=0.36, tint=tile_dk)
     make_box("Wear_Elbow_Strip", (ROOM_W/4.0 - 0.2, ROOM_D - 1.5 - 0.50, 0.952), (1.40, 0.06, 0.004), (0.24, 0.18, 0.26, 1.0))
     make_floor_stain("Wear_Ring_Behind", (3.30, 5.55), radius=0.26, tint=tile_dk, segments=10)
-    for ji, (ay, row_w, row_x) in enumerate(((2.75, 5.0, 0.0), (4.0, 5.0, 0.0), (5.4, 3.6, -0.7))):
+    for ji, (ay, row_w, row_x) in enumerate(ROWS):
         make_scuff_band(f"Wear_Kick_Row_{ji}", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
     make_box("Wear_Push_Plate", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
     for ti, (tx, tz) in enumerate(((-4.0, 2.10), (-2.1, 2.05), (-3.9, 0.95))):
@@ -483,7 +491,7 @@ def build_draft5_2026_10():
     # Curtis's thermos, under the register on the staff side
     make_lathe("Thermos", (3.20, 6.85, 0.0), [(0.045, 0.0), (0.045, 0.24), (0.035, 0.27), (0.035, 0.31), (0.0, 0.31)], (0.24, 0.36, 0.30, 1.0), segments=12)
     # ── the bins' lips and Tuesday's shelf-talkers ──
-    for ji, (ay, row_w, row_x) in enumerate(((2.75, 5.0, 0.0), (4.0, 5.0, 0.0), (5.4, 3.6, -0.7))):
+    for ji, (ay, row_w, row_x) in enumerate(ROWS):
         for e, nm in ((-1, "F"), (1, "B")):
             make_box(f"Bin_{ji}_Lip_{nm}", (row_x, ay + e * 0.24, 0.65), (row_w, 0.02, 0.10), (0.34, 0.25, 0.16, 1.0))
         for ti in range(3):
