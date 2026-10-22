@@ -3835,6 +3835,27 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-22 · pass 140: LENA'S KITCHEN GETS ITS DOORWAY.**
+- **Lena's apartment** (948 lines). The prose has "She came into the kitchen and stopped at the
+  doorway", "they moved back to the front room", and Lena coming out of the bedroom into the kitchen.
+  Kitchen and front room were one floor. Now:
+  - The kitchen's E side is a cased opening at x -0.10, running from a pier by the front door's W
+    jamb to the bedroom partition: two casings, the header beam across, baseboards on the pier.
+  - The partition W of the nook's opening runs on to it, so the kitchen no longer opens into the nook.
+  - The bedroom door is on the kitchen side, so the doorway is where Tem stops.
+- **The opening is sized by the cameras.** A full stub wall to the N put the centre lines of
+  establish_b (from the nook) and establish_c (from the kitchen) on solid wall. A 1 m stub to the S
+  blanked the left third of the main establish and hid the mural window. Both were cut back. Rule:
+  before closing a room off, cast every preset's and every marker's centre ray across the new wall
+  line.
+- **Gates:** overlap 0, support 0, doorway 0, vantage 0 blind, obstruction 0, marker aim 0, shot
+  markers 0 blind; perf ok.
+- **Deck must REBUILD** lena_apartment.
+- **Draft N+1 targets:**
+  - Lena: a front-room preset (the easel in the window light, the window chair, the side table), once
+    a scene's cue wants it.
+  - Cosmic Comics at 1.4 m aisles.
+
 **2026-10-21 · pass 139: MONTREAL'S DOOR CLEARS.**
 - **The Montreal apartment** (vol 5 Temperance, 124 lines): the sofa's back stood 0.63 m inside the
   front door's opening, so you came in face to face with it.

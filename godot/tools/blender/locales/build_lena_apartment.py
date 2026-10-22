@@ -131,7 +131,10 @@ def build_shell():
               height=CEIL, axis='X', palette=PAL_WALL)
     make_box("Bedroom_Part_E", (-0.725, PY, CEIL/2.0), (0.25, 0.16, CEIL), PAL_WALL["wall"])
     make_box("Bedroom_Part_Header", (-1.30, PY, CEIL-0.25), (0.90, 0.16, 0.50), PAL_WALL["wall"])
-    ox0, ox1 = -0.60, ROOM_W/2.0 - 0.25
+    # (2026-10-21) the partition west of the nook's opening runs on to the
+    # kitchen's new E wall, so the kitchen does not open into the nook
+    make_box("Bedroom_Part_E2", (-0.32, PY, (CEIL-0.5)/2.0), (0.56, 0.16, CEIL-0.5), PAL_WALL["wall"])
+    ox0, ox1 = -0.04, ROOM_W/2.0 - 0.25
     make_box("Bedroom_Part_Header_E", ((ox0 + ox1) / 2.0, PY, CEIL-0.25), (ox1 - ox0, 0.16, 0.50), PAL_WALL["wall"])
     make_box("Bedroom_Part_Post_E", (ROOM_W/2.0 - 0.125, PY, (CEIL-0.5)/2.0), (0.25, 0.16, CEIL-0.5), PAL_WALL["wall"])
     make_box("Bedroom_Part_Casing_W", (ox0, PY, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
@@ -143,6 +146,27 @@ def build_shell():
     make_wall("Bedroom_Wall_E", (-0.725, (PY + 0.08 + ROOM_D - 0.10) / 2.0, 0), length=ROOM_D - 0.10 - PY - 0.08,
               height=CEIL, axis='Y', palette=PAL_WALL)
     make_box("Bedroom_Door", (-1.30, PY - 0.03, 1.02), (0.86, 0.04, 2.04), COL_WOOD)
+    # THE KITCHEN'S OWN WALL (2026-10-21, the Deck: "poorly arranged"; canon:
+    # "She came into the kitchen and stopped at the doorway" · "they moved
+    # back to the front room"). Kitchen and front room were one floor; a
+    # partition at x -0.10 now runs from the S wall (by the front door's W
+    # jamb) to the bedroom partition, with a wide CASED DOORWAY in its middle
+    # — the doorway Tem stops at, coming from the bedroom — through which the
+    # front room still sees the table, the counter and the mural window.
+    # (no N stub: the two establishes, from the nook and from the kitchen,
+    # look through the doorway's N end; the bedroom partition is its N jamb)
+    # (and the S stub is a pier: at 1.0 m wide it blanked the left third of
+    # the establish and hid the mural window — the opening is the room's
+    # edge: a pier, two casings, the header across)
+    KX, KD0, KD1 = -0.10, 0.52, PY - 0.08    # the wall's line; the doorway's S and N edges
+    make_box("Kitchen_Wall_S", (KX, (0.10 + KD0) / 2.0, CEIL/2.0), (0.12, KD0 - 0.10, CEIL), PAL_WALL["wall"])
+    make_box("Kitchen_Wall_Header", (KX, (KD0 + KD1) / 2.0, (2.12 + CEIL) / 2.0), (0.12, KD1 - KD0, CEIL - 2.12), PAL_WALL["wall"])
+    for nm, y_ in (("Kitchen_Door_Casing_S", KD0 + 0.02), ("Kitchen_Door_Casing_N", KD1 - 0.02)):
+        make_box(nm, (KX, y_, 1.06), (0.16, 0.04, 2.12), COL_WOOD)
+    make_box("Kitchen_Door_Casing_Top", (KX, (KD0 + KD1) / 2.0, 2.14), (0.16, KD1 - KD0, 0.04), COL_WOOD)
+    for nm, y0_, y1_ in (("Kitchen_Wall_S_Base", 0.10, KD0),):
+        for sg in (-1, 1):
+            make_box(f"{nm}_{sg:+d}", (KX + sg * 0.066, (y0_ + y1_) / 2.0, 0.08), (0.012, y1_ - y0_, 0.16), PAL_WALL["baseboard"])
     with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # over the couch nook
         # The three ceiling water stains ("proof her upstairs neighbor's
         # bathtub leaked... painting them over would be a lie")
