@@ -3856,6 +3856,10 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     a scene's cue wants it.
   - (done in the same pass: Cosmic Comics' bin rows at y 2.40 / 4.30 / 6.20, 1.4 m aisles, CLAUDE.md's
     store minimum; New Arrivals 13 cm S clear of the first row; gates 0, perf ok.)
+  - The Tulsa house (vol 3, 67 lines): two windows in the panelled W wall, the drapes drawn nearly
+    shut for the slide show, the boards stopping at their casings; the side yard past them (privet,
+    the neighbour's fence). The slideshow lens faces the N screen, so they read from other angles and
+    the markers. Gates 0; perf ok.
   - The crowding queue's remainder reads fine on its plans: the Pit Stop's dining floor, the Ramos /
     grandmother kitchen (open centre), the Kwik Stop (walkway gate 0). Next pass returns to windows
     and depth in the most-played sets.

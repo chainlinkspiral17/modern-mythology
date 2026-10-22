@@ -31,7 +31,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe,
                              join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_curtains
 from _props.furniture import make_chair, make_table
 
 H, T = 3.0, 0.20
@@ -51,12 +51,35 @@ def build_room():
     make_wall("Wall_N", (0.0, 9.0, 0), length=12.4, height=H, thickness=T, axis='X', palette=PAL, baseboard_face_sign=-1)
     make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=12.4, height=H, thickness=T, axis='X', palette=PAL,
                             baseboard_face_sign=+1, openings=[(-2.0, 1.15, 2.2, 2.3)])
-    make_wall("Wall_W", (-6.0, 4.5, 0), length=9.0, height=H, thickness=T, axis='Y', palette=PAL, baseboard_face_sign=+1)
+    # (2026-10-22, the Deck: "interiors need more windows") two windows in the
+    # panelled W wall, their drapes drawn nearly shut for the show — a
+    # sliver of the night yard between the panels
+    WIN_W = [(2.4, 1.45, 1.60, 1.30), (6.6, 1.45, 1.60, 1.30)]
+    make_wall_with_openings("Wall_W", (-6.0, 4.5, 0), length=9.0, height=H, thickness=T, axis='Y', palette=PAL,
+                            baseboard_face_sign=+1, openings=WIN_W)
+    for k, (wy, wz, ww, wh) in enumerate(WIN_W):
+        anchor = (-6.0 + T / 2.0, wy, wz)
+        make_window(f"Win_W_{k}", anchor, width=ww - 0.12, height=wh - 0.10, axis='Y', room_dir=+1, see_through=True,
+                    palette={"frame": (0.30, 0.24, 0.18, 1.0), "casing": PANEL_SEAM})
+        make_curtains(f"Win_W_{k}_Drape", anchor, width=ww - 0.12, height=wh - 0.10, axis='Y', room_dir=+1,
+                      color=(0.60, 0.46, 0.28, 1.0), open_frac=0.46, drop=0.25, rod_col=BRASS)
+    # the side yard past them: a privet hedge and the neighbour's fence
+    make_box("W_Yard_Lawn", (-9.0, 4.5, -0.02), (6.0, 14.0, 0.04), (0.18, 0.24, 0.14, 1.0))
+    make_box("W_Yard_Fence", (-11.6, 4.5, 0.9), (0.06, 14.0, 1.8), (0.34, 0.28, 0.22, 1.0))
+    for k in range(6):
+        make_blob(f"W_Yard_Privet_{k}", (-10.6, 0.5 + k * 1.6, 0.74), 0.85, (0.16, 0.24, 0.14, 1.0), noise=0.25, seed=30 + k, squash=0.9)
     make_wall_with_openings("Wall_E", (6.0, 4.5, 0), length=9.0, height=H, thickness=T, axis='Y', palette=PAL,
                             baseboard_face_sign=-1, openings=[(4.5, 1.1, 3.0, 2.2)])
     # wood panelling, board on board, on the W and S walls
     for k in range(12):
-        make_box(f"Panel_W_{k}", (-5.9 + 0.01, 0.4 + k * 0.72, 1.2), (0.02, 0.70, 2.4), (PANEL, PANEL_SEAM)[k % 2])
+        py_ = 0.4 + k * 0.72
+        col = (PANEL, PANEL_SEAM)[k % 2]
+        if any(abs(py_ - wy) < ww / 2.0 + 0.35 for wy, _, ww, _ in WIN_W):
+            # under and over the window: the boards stop at its casing
+            make_box(f"Panel_W_{k}_Lo", (-5.9 + 0.01, py_, 0.335), (0.02, 0.70, 0.67), col)
+            make_box(f"Panel_W_{k}_Hi", (-5.9 + 0.01, py_, 2.29), (0.02, 0.70, 0.22), col)
+            continue
+        make_box(f"Panel_W_{k}", (-5.9 + 0.01, py_, 1.2), (0.02, 0.70, 2.4), col)
     for k in range(15):
         x = -5.5 + k * 0.76
         if -3.1 < x < -0.9:
