@@ -3854,7 +3854,11 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - **Draft N+1 targets:**
   - Lena: a front-room preset (the easel in the window light, the window chair, the side table), once
     a scene's cue wants it.
-  - Cosmic Comics at 1.4 m aisles.
+  - (done in the same pass: Cosmic Comics' bin rows at y 2.40 / 4.30 / 6.20, 1.4 m aisles, CLAUDE.md's
+    store minimum; New Arrivals 13 cm S clear of the first row; gates 0, perf ok.)
+  - The crowding queue's remainder reads fine on its plans: the Pit Stop's dining floor, the Ramos /
+    grandmother kitchen (open centre), the Kwik Stop (walkway gate 0). Next pass returns to windows
+    and depth in the most-played sets.
 
 **2026-10-21 · pass 139: MONTREAL'S DOOR CLEARS.**
 - **The Montreal apartment** (vol 5 Temperance, 124 lines): the sofa's back stood 0.63 m inside the

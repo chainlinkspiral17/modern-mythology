@@ -63,9 +63,10 @@ ROOM_W = 10.0; ROOM_D = 8.0; CEIL = 2.8
 # THE BIN ROWS (y, length, centre x). 2026-10-21, the Deck: "poorly arranged
 # and cramped": the three rows stood at y 2.75 / 4.0 / 5.4 with 0.75 m and
 # 0.9 m aisles between them — single file, sideways past a customer — and the
-# New Arrivals table stood in the door's own lane. 1.1 m aisles now; the back
-# row is shorter so it clears the glass case.
-ROWS = ((2.55, 5.0, 0.0), (4.15, 5.0, 0.0), (5.72, 2.6, -1.5))
+# New Arrivals table stood in the door's own lane. 1.4 m aisles now (CLAUDE.md:
+# "1.4 m+ between store fixtures"); the back row is shorter so it clears the
+# glass case.
+ROWS = ((2.40, 5.0, 0.0), (4.30, 5.0, 0.0), (6.20, 2.6, -1.5))
 PAL_WALL = {"wall": (0.42, 0.32, 0.46, 1.0), "baseboard": (0.18, 0.12, 0.20, 1.0)}
 COL_FLOOR = (0.32, 0.28, 0.32, 1.0); COL_SEAM = (0.18, 0.16, 0.20, 1.0); COL_WOOD = (0.42, 0.30, 0.52, 1.0)
 COL_ACCENT = (0.78, 0.42, 0.86, 1.0)
@@ -351,7 +352,7 @@ def build_hero_props():
                  (0.94, 0.90, 0.78, 1.0))
     # (2026-10-21: E of the entry lane, between the statue tower and the
     # first row — it stood in the door's own lane)
-    nax, nay = 3.10, 1.85
+    nax, nay = 3.10, 1.72
     make_table("NewArrivals", nax, nay, w=1.40, d=0.80, h=0.43, wood=wood, top_col=wood)   # draft 4: the kit table (turned legs, apron, H-stretcher)
     for ci in range(6):
         make_box(f"NewArrivals_Comic_{ci}", (nax - 0.55 + (ci % 3) * 0.55, nay - 0.18 + (ci // 3) * 0.38, 0.445),
@@ -420,7 +421,7 @@ def build_draft4_2026_09():
     # the worn lines round the rows' ends (2026-10-21: they ran through a row)
     make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.6), (-0.8, 1.8), (-2.8, 2.0), (-2.85, 3.35)], width=0.55, tint=tile_dk)
     make_traffic_wear("Wear_Path_B", [(-2.85, 3.35), (0.0, 3.35), (2.85, 3.35), (2.9, 4.95)], width=0.50, tint=tile_dk)
-    make_traffic_wear("Wear_Path_C", [(-2.85, 3.35), (-2.95, 4.95)], width=0.36, tint=tile_dk)
+    make_traffic_wear("Wear_Path_C", [(-2.85, 3.35), (-2.95, 5.25)], width=0.36, tint=tile_dk)
     make_box("Wear_Elbow_Strip", (ROOM_W/4.0 - 0.2, ROOM_D - 1.5 - 0.50, 0.952), (1.40, 0.06, 0.004), (0.24, 0.18, 0.26, 1.0))
     make_floor_stain("Wear_Ring_Behind", (3.30, 5.55), radius=0.26, tint=tile_dk, segments=10)
     for ji, (ay, row_w, row_x) in enumerate(ROWS):
