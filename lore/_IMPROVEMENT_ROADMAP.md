@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 148: THE LINK HOUSE'S GROUND FLOOR, AS THE USER LAID IT OUT.**
+- The user: "The downstairs is a mudroom, kitchen dining area, bathroom with a large raised sunken tub,
+  living room with stairs going up." Pass 147's den, laundry and study (Claude's guess) are gone.
+  Behind the hall now:
+  - **The bathroom (W):** a 2.5 x 1.3 m tub sunk into a raised tiled deck (0.52 m) along the N wall
+    under the window, two steps up, rolled towels, a candle, a fern; a double vanity with its
+    mirror and light bar; the toilet by the door; frosted windows.
+  - **The mudroom (E):** the back door out to the yard, a bench with cubbies, hooks and coats, boots
+    under it, the washer and dryer, a basket, the mat.
+- A fix carried over from pass 147: the upstairs hall's photographs, its two switches and the
+  outlet by Andy's bed had stayed on the ground floor (an edit removed the wrong copy). They are in
+  the lifted wing now.
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0; perf 382.
+- OPEN QUESTION for the user: the bathroom scenes ("My dad puts his ear to the bathroom door";
+  "I'm in the bathroom ... the middle of the night") are still set in the upstairs shower room. If
+  they mean the downstairs tub bathroom, the two bath presets move down.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 147: THE LINK HOUSE IS TWO STOREYS.**
 - The user (2026-10-23): "Dickens Dean/Link house is two storey". Asked which set: the vol 3 Link
   family house (link_house). Asked what goes upstairs: "Three bedrooms and a small restroom/shower".

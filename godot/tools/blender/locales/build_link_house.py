@@ -3,9 +3,12 @@
 DRAFT 2 — TWO STOREYS. The user (2026-10-23): "Dickens Dean/Link house is
 two storey", upstairs "Three bedrooms and a small restroom/shower". Draft 1's
 "single-storey brick ranch" was invented here, not the text's. Now:
-  ground  the living room (two storeys tall, W of LIV_X1, under the
-          balcony), the kitchen and dining, the hall; behind the hall the
-          den, the laundry with a half bath, the study (doors shut)
+  ground  (the user, 2026-10-23: "The downstairs is a mudroom, kitchen
+          dining area, bathroom with a large raised sunken tub, living room
+          with stairs going up") the living room (two storeys tall, W of
+          LIV_X1, under the balcony), the kitchen and dining, the hall;
+          behind the hall the bathroom with the big tub sunk in a raised
+          tiled deck (W of BATHG_E) and the mudroom with the back door (E)
   stair   from just inside the front door north up the living room's E
           side to the upstairs hall, balustrades both sides
   upstairs (FL2) the bedroom wing lifted whole by plan.zoned (UP_WING):
@@ -69,7 +72,8 @@ from _props.views import make_view
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
 from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_pendant, make_sofa
 from _props.plan import zoned
-from _props.decor import make_faded_poster
+from _props.decor import make_faded_poster, make_floor_plant
+from _props.geometry import make_rot_box
 from _props.safety import make_smoke_detector
 from _props.detail import (make_traffic_wear, make_threshold, make_wall_outlet, make_light_switch,
                            make_thermostat, make_wall_tint_band)
@@ -104,6 +108,7 @@ SOFA = (0.46, 0.36, 0.28, 1.0); SOFA_CUSH = (0.52, 0.41, 0.32, 1.0)
 ENAMEL = (0.95, 0.95, 0.93, 1.0); CHROME = (0.78, 0.79, 0.80, 1.0)
 BLACK = (0.08, 0.08, 0.09, 1.0)
 DOOR_H = 2.05
+BATHG_E = 0.0                      # the downstairs bathroom (W) and the mudroom (E) behind the hall
 
 
 def _stack(name, line, axis, openings, pal):
@@ -173,14 +178,13 @@ def build_shell():
     """The two-storey box and the ground floor. The bedroom wing upstairs is
     build_upper_wing (lifted by plan.zoned); the stair, the balcony and the
     parents' room are build_stair_and_upstairs."""
-    # ground floors: carpet in the living room and hall, vinyl in the kitchen; the
-    # rooms behind the hall (den, laundry, study) on the ground floor now
+    # ground floors: carpet in the living room and hall, vinyl in the kitchen; behind
+    # the hall the bathroom with the big tub (tile) and the mudroom (vinyl)
     make_floor("Floor_Living", (-3.40, 2.75, 0.0), size_x=6.2, size_y=5.5, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
     make_floor("Floor_Kitchen", (3.10, 2.75, 0.0), size_x=6.8, size_y=5.5, palette={"vinyl": VINYL, "seam": VINYL_SEAM})
     make_floor("Floor_Hall", (0.0, 6.10, 0.0), size_x=13.4, size_y=1.2, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
-    make_floor("Floor_Den", (-3.85, 8.60, 0.0), size_x=5.3, size_y=3.8, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
-    make_floor("Floor_Laundry", (0.20, 8.60, 0.0), size_x=2.8, size_y=3.8, palette={"vinyl": VINYL, "seam": VINYL_SEAM})
-    make_floor("Floor_Study", (4.05, 8.60, 0.0), size_x=4.9, size_y=3.8, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
+    make_floor("Floor_Bath_G", ((X0 + BATHG_E) / 2.0, 8.60, 0.0), size_x=BATHG_E - X0, size_y=3.8, palette={"vinyl": TILE, "seam": TILE_SEAM})
+    make_floor("Floor_Mud", ((BATHG_E + X1) / 2.0, 8.60, 0.0), size_x=X1 - BATHG_E, size_y=3.8, palette={"vinyl": VINYL, "seam": VINYL_SEAM})
     # the ground ceiling is the underside of the upstairs floor, cut where the
     # living room goes up two storeys and where the stair goes through
     ceil = (0.94, 0.93, 0.89, 1.0)
@@ -196,25 +200,23 @@ def build_shell():
     wall_x("Wall_S", Y0, X0 - 0.1, X1 + 0.1, face=+1, h=CEIL2,
            openings=[(-4.2, 1.45, 2.0, 1.40), (-4.2, FL2 + 1.20, 2.0, 1.20), (-1.0, DOOR_H / 2.0, 0.95, DOOR_H),
                      (4.2, 1.50, 1.60, 1.20), (3.0, FL2 + 1.45, 1.60, 1.30)])
-    # Wall_N: the den, laundry and study windows below; bed 2, the shower room
+    # Wall_N: the tub's window and the bathroom's small one, the mudroom's below; bed 2, the shower room
     # and Andy's room above (their windows are build_upper_wing's)
     wall_x("Wall_N", Y1, X0 - 0.1, X1 + 0.1, face=-1, h=CEIL2,
            openings=[(-4.0, 1.45, 1.40, 1.30), (-0.30, 1.85, 0.70, 0.55), (4.0, 1.45, 1.40, 1.30),
                      (-4.0, FL2 + 1.45, 1.40, 1.30), (-0.30, FL2 + 1.85, 0.70, 0.55), (4.0, FL2 + 1.45, 1.40, 1.30)])
     wall_y("Wall_W", X0, Y0, Y1, face=+1, h=CEIL2, openings=[(2.8, FL2 + 1.10, 1.60, 1.20), (8.6, 1.45, 1.40, 1.30)])
     wall_y("Wall_E", X1, Y0, Y1, face=-1, h=CEIL2, openings=[(2.2, 1.45, 1.60, 1.30), (2.2, FL2 + 1.45, 1.60, 1.30),
-                                                             (8.6, 1.45, 1.40, 1.30)])
+                                                             (8.6, DOOR_H / 2.0, 0.95, DOOR_H)])   # the mudroom's back door
     # the ground hall: the living room's wide cased opening and the kitchen's
-    # door on its S wall; the den's, the laundry's and the study's on its N wall
+    # door on its S wall; the bathroom's door and the mudroom's wide opening on its N wall
     wall_x("Wall_Hall_S", HALL_S, X0, X1, face=-1, openings=[(-3.0, 1.05, 1.60, 2.10), (0.50, DOOR_H / 2.0, 0.95, DOOR_H)])
-    wall_x("Wall_Hall_N_G", HALL_N, X0, X1, face=-1, openings=[(-4.0, DOOR_H / 2.0, 0.86, DOOR_H),
-                                                                      (0.20, DOOR_H / 2.0, 0.81, DOOR_H),
-                                                                      (3.20, DOOR_H / 2.0, 0.86, DOOR_H)])
-    wall_y("Wall_Laundry_W", BATH_W, HALL_N, Y1, face=+1)
-    wall_y("Wall_Laundry_E", BATH_E, HALL_N, Y1, face=-1)
+    wall_x("Wall_Hall_N_G", HALL_N, X0, X1, face=-1, openings=[(-2.4, DOOR_H / 2.0, 0.86, DOOR_H),
+                                                                      (2.6, DOOR_H / 2.0, 1.20, DOOR_H)])
+    wall_y("Wall_Bath_G_E", BATHG_E, HALL_N, Y1, face=+1, pal=PAL_BATH)
     for nm, x, y, w, ax in (("Case_Front", -1.0, Y0, 0.95, 'X'), ("Case_Living", -3.0, HALL_S, 1.60, 'X'),
-                            ("Case_Kitchen", 0.50, HALL_S, 0.95, 'X'), ("Case_Den", -4.0, HALL_N, 0.86, 'X'),
-                            ("Case_Laundry", 0.20, HALL_N, 0.81, 'X'), ("Case_Study", 3.20, HALL_N, 0.86, 'X')):
+                            ("Case_Kitchen", 0.50, HALL_S, 0.95, 'X'), ("Case_Bath_G", -2.4, HALL_N, 0.86, 'X'),
+                            ("Case_Mud", 2.6, HALL_N, 1.20, 'X'), ("Case_Back_Door", X1, 8.6, 0.95, 'Y')):
         door_casing(nm, x, y, w, ax)
 
     # windows: front windows see the street, back windows the yard
@@ -225,24 +227,26 @@ def build_shell():
     make_window("Win_Dining", (X1 - 0.10, 2.2, 1.45), width=1.60, height=1.30, axis='Y', see_through=True)
     make_window("Win_Parents_S", (3.0, Y0 + 0.10, FL2 + 1.45), width=1.60, height=1.30, see_through=True, room_dir=+1)
     make_window("Win_Parents_E", (X1 - 0.10, 2.2, FL2 + 1.45), width=1.60, height=1.30, axis='Y', see_through=True)
-    make_window("Win_Den", (-4.0, Y1 - 0.10, 1.45), width=1.40, height=1.30, see_through=True)
-    make_window("Win_Den_W", (X0 + 0.10, 8.6, 1.45), width=1.40, height=1.30, axis='Y', see_through=True, room_dir=+1)
-    make_window("Win_Laundry", (-0.30, Y1 - 0.10, 1.85), width=0.70, height=0.55, cross_mullion=False,
-                palette={"glass": (0.86, 0.90, 0.90, 0.85), "warm": (0.92, 0.92, 0.88, 0.9)})
-    make_window("Win_Study", (4.0, Y1 - 0.10, 1.45), width=1.40, height=1.30, see_through=True)
-    make_window("Win_Study_E", (X1 - 0.10, 8.6, 1.45), width=1.40, height=1.30, axis='Y', see_through=True)
+    frost = {"glass": (0.86, 0.90, 0.90, 0.85), "warm": (0.92, 0.92, 0.88, 0.9)}
+    make_window("Win_Tub", (-4.0, Y1 - 0.10, 1.45), width=1.40, height=1.30, palette=frost)
+    make_window("Win_Bath_G_W", (X0 + 0.10, 8.6, 1.45), width=1.40, height=1.30, axis='Y', room_dir=+1, palette=frost)
+    make_window("Win_Bath_G_Small", (-0.30, Y1 - 0.10, 1.85), width=0.70, height=0.55, cross_mullion=False, palette=frost)
+    make_window("Win_Mud", (4.0, Y1 - 0.10, 1.45), width=1.40, height=1.30, see_through=True)
     # blinds half down in the front windows (a Texas house keeps the sun out)
     for nm, x, y, w, z_top, drop, sgn in (("Blind_Living", -4.2, Y0 + 0.17, 2.0, 2.15, 0.55, +1),
                                           ("Blind_Kitchen", 4.2, Y0 + 0.17, 1.6, 2.10, 0.35, +1)):
         make_box(f"{nm}_Rail", (x, y, z_top), (w + 0.06, 0.05, 0.05), DOOR_WHITE)
         for k in range(int(drop / 0.05)):
             make_box(f"{nm}_Slat_{k}", (x, y, z_top - 0.05 - k * 0.05), (w, 0.03, 0.006), (0.94, 0.93, 0.89, 1.0))
-    # doors: the front door shut; the ground rooms behind the hall shut
+    # doors: the front door shut, the downstairs bathroom's shut, the back door
+    # out of the mudroom shut with a lite in it
     make_box("Door_Front", (-1.0, Y0 + 0.03, DOOR_H / 2.0), (0.92, 0.045, DOOR_H - 0.02), (0.36, 0.20, 0.14, 1.0))
     make_cyl("Door_Front_Knob", (-0.66, Y0 + 0.0825, 0.98), 0.03, 0.06, (0.70, 0.58, 0.30, 1.0), axis='Y', segments=10)
-    for nm, x, w in (("Den", -4.0, 0.84), ("Laundry", 0.20, 0.79), ("Study", 3.20, 0.84)):
-        make_box(f"Door_{nm}", (x, HALL_N - 0.02, DOOR_H / 2.0), (w, 0.04, DOOR_H - 0.02), DOOR_WHITE)
-        make_cyl(f"Door_{nm}_Knob", (x + w / 2.0 - 0.10, HALL_N - 0.065, 0.98), 0.028, 0.05, CHROME, axis='Y', segments=10)
+    make_box("Door_Bath_G", (-2.4, HALL_N - 0.02, DOOR_H / 2.0), (0.84, 0.04, DOOR_H - 0.02), DOOR_WHITE)
+    make_cyl("Door_Bath_G_Knob", (-2.08, HALL_N - 0.065, 0.98), 0.028, 0.05, CHROME, axis='Y', segments=10)
+    make_box("Door_Back", (X1 - 0.03, 8.6, DOOR_H / 2.0), (0.045, 0.92, DOOR_H - 0.02), (0.36, 0.42, 0.40, 1.0))
+    make_box("Door_Back_Lite", (X1 - 0.03, 8.6, 1.50), (0.05, 0.56, 0.60), (0.80, 0.86, 0.90, 0.30))
+    make_cyl("Door_Back_Knob", (X1 - 0.085, 8.6 - 0.36, 0.98), 0.03, 0.06, CHROME, axis='X', segments=10)
 
 
 def build_upper_wing():
@@ -284,6 +288,15 @@ def build_upper_wing():
     make_rot_box("Door_Bath", (hx + dx * dw / 2.0, hy + dy * dw / 2.0, DOOR_H / 2.0),
                  (dw, 0.04, DOOR_H - 0.02), DOOR_WHITE, yaw=math.atan2(dy, dx))
     make_box("Door_Bedroom", (2.80, HALL_N + 0.10 + 0.43, DOOR_H / 2.0), (0.04, 0.84, DOOR_H - 0.02), DOOR_WHITE)
+    # the upstairs hall's photographs on its N wall, the switches, the outlet by Andy's bed
+    for k, x in enumerate((-2.2, -1.4, 1.4, 2.3)):
+        make_box(f"Hall_Photo_{k}", (x, HALL_N - T / 2.0 - 0.012, 1.55 + (k % 2) * 0.12), (0.30, 0.02, 0.38), (0.24, 0.18, 0.14, 1.0))
+        make_box(f"Hall_Photo_{k}_Print", (x, HALL_N - T / 2.0 - 0.024, 1.55 + (k % 2) * 0.12), (0.24, 0.004, 0.30),
+                 ((0.70, 0.62, 0.50, 1.0) if k % 2 else (0.56, 0.62, 0.66, 1.0)))
+    make_light_switch("Switch_Bath", (0.80, HALL_N), axis='X', face_sign=-1)
+    make_light_switch("Switch_Bedroom", (2.65, HALL_N), axis='X', face_sign=-1)
+    make_wall_outlet("Outlet_Bed", (X1, 9.00), axis='Y', face_sign=-1)
+    make_threshold("Threshold_Bath", (0.20, HALL_N), width=0.8, axis='X')
     # the upstairs hall's photographs, on its N wall
 
 
@@ -348,21 +361,76 @@ def build_stair_and_upstairs():
 
 
 def build_ground_back_rooms():
-    """The rooms behind the ground hall, under the bedroom wing: the den (a
-    couch and the shelves), the laundry with a half bath, the study. Shut
-    doors; enough that the yard windows are not voids."""
-    make_sofa("Den_Couch", -3.9, Y1 - 0.10 - 0.48 - 0.30, back="+Y", w=2.0, d=0.88, seats=2, color=(0.40, 0.42, 0.38, 1.0))
-    make_box("Den_Shelf", (-6.10, 8.40, 0.95), (0.40, 1.40, 1.90), OAK)
-    make_box("Laundry_Washer", (BATH_E - T / 2.0 - 0.33, 7.40, 0.45), (0.64, 0.66, 0.90), ENAMEL)
-    make_box("Laundry_Dryer", (BATH_E - T / 2.0 - 0.33, 8.10, 0.45), (0.64, 0.66, 0.90), ENAMEL)
-    make_box("Laundry_Toilet_Tank", (BATH_W + T / 2.0 + 0.11, 9.60, 0.62), (0.20, 0.44, 0.38), ENAMEL)
-    make_lathe("Laundry_Toilet_Bowl", (BATH_W + T / 2.0 + 0.48, 9.60, 0.0), [(0.13, 0.0), (0.10, 0.08), (0.12, 0.25), (0.19, 0.40), (0.0, 0.40)],
+    """Behind the ground hall (the user, 2026-10-23: "The downstairs is a
+    mudroom, kitchen dining area, bathroom with a large raised sunken tub,
+    living room with stairs going up"): the bathroom W, its big tub sunk
+    into a raised tiled deck under the N window, two steps up to it, the
+    vanity, the toilet; the mudroom E, the back door out to the yard, the
+    bench and cubbies and hooks, boots, the washer and dryer."""
+    xi0, xi1 = X0 + T / 2.0, BATHG_E - T / 2.0
+    yi0, yi1 = HALL_N + T / 2.0, Y1 - T / 2.0
+    tile, grout = (0.86, 0.82, 0.74, 1.0), (0.72, 0.68, 0.60, 1.0)
+    # the raised deck along the N wall, the tub sunk in it
+    dx0, dx1, dy0, dh = xi0, xi0 + 3.90, yi1 - 2.10, 0.52
+    make_box("Tub_Deck_Front", ((dx0 + dx1) / 2.0, dy0 + 0.05, dh / 2.0), (dx1 - dx0, 0.10, dh), tile)
+    make_box("Tub_Deck_End", (dx1 - 0.05, (dy0 + yi1) / 2.0, dh / 2.0), (0.10, yi1 - dy0, dh), tile)
+    tx0, tx1, ty0, ty1 = dx0 + 0.95, dx1 - 0.45, dy0 + 0.45, yi1 - 0.35      # the tub's rim, 2.5 x 1.3
+    for nm, (a0, a1, b0, b1) in (("W", (dx0, tx0, dy0 + 0.10, yi1)), ("E", (tx1, dx1 - 0.10, dy0 + 0.10, yi1)),
+                                 ("S", (tx0, tx1, dy0 + 0.10, ty0)), ("N", (tx0, tx1, ty1, yi1))):
+        make_box(f"Tub_Deck_Top_{nm}", ((a0 + a1) / 2.0, (b0 + b1) / 2.0, dh - 0.03), (a1 - a0, b1 - b0, 0.06), tile)
+        make_box(f"Tub_Deck_Body_{nm}", ((a0 + a1) / 2.0, (b0 + b1) / 2.0, (dh - 0.06) / 2.0), (a1 - a0, b1 - b0, dh - 0.06), grout)
+    # the tub: its basin sunk 0.42 into the deck, a rounded rim, the water
+    make_box("Tub_Basin", ((tx0 + tx1) / 2.0, (ty0 + ty1) / 2.0, dh - 0.40), (tx1 - tx0, ty1 - ty0, 0.04), ENAMEL)
+    for nm, (cx, cy, sx, sy) in (("S", ((tx0 + tx1) / 2.0, ty0 + 0.02, tx1 - tx0, 0.04)), ("N", ((tx0 + tx1) / 2.0, ty1 - 0.02, tx1 - tx0, 0.04)),
+                                 ("W", (tx0 + 0.02, (ty0 + ty1) / 2.0, 0.04, ty1 - ty0)), ("E", (tx1 - 0.02, (ty0 + ty1) / 2.0, 0.04, ty1 - ty0))):
+        make_box(f"Tub_Side_{nm}", (cx, cy, dh - 0.20), (sx, sy, 0.40), ENAMEL)
+        make_box(f"Tub_Rim_{nm}", (cx, cy, dh + 0.008), (sx + 0.06 * (sx < 0.1), sy + 0.06 * (sy < 0.1), 0.016), ENAMEL)
+    make_box("Tub_Water", ((tx0 + tx1) / 2.0, (ty0 + ty1) / 2.0, dh - 0.16), (tx1 - tx0 - 0.08, ty1 - ty0 - 0.08, 0.01), (0.62, 0.78, 0.82, 0.45))
+    make_cyl("Tub_Spout", ((tx0 + tx1) / 2.0, ty1 + 0.08, dh + 0.12), 0.025, 0.16, CHROME, axis='Y', segments=8)
+    make_cyl("Tub_Spout_Neck", ((tx0 + tx1) / 2.0, ty1 + 0.15, dh + 0.07), 0.022, 0.14, CHROME, segments=8)
+    for k, dxk in enumerate((-0.18, 0.18)):
+        make_cyl(f"Tub_Tap_{k}", ((tx0 + tx1) / 2.0 + dxk, ty1 + 0.10, dh + 0.04), 0.03, 0.06, CHROME, segments=8)
+    # two steps up onto the deck, in front of it
+    for k, (h, d) in enumerate(((dh * 2.0 / 3.0, 0.30), (dh / 3.0, 0.60))):
+        make_box(f"Tub_Step_{k}", ((tx0 + tx1) / 2.0, dy0 - d / 2.0, h / 2.0), (1.40, d, h), tile)
+    # the things on the deck: towels rolled, a candle, a plant in the corner
+    for k in range(3):
+        make_cyl(f"Tub_Towel_{k}", (dx0 + 0.35, dy0 + 0.50 + k * 0.20, dh + 0.08), 0.08, 0.36, (0.92, 0.90, 0.84, 1.0), axis='X', segments=10)
+    make_cyl("Tub_Candle", (tx1 + 0.22, dy0 + 0.40, dh + 0.06), 0.05, 0.12, (0.96, 0.94, 0.86, 1.0), segments=10)
+    make_floor_plant("Tub_Plant", (dx1 - 0.30, yi1 - 0.30, dh), kind="fern")
+    # the vanity on the E wall (a double sink), its mirror and light; the toilet by the door
+    vx = xi1 - 0.29
+    make_box("Vanity_G_Cab", (vx, 8.10, 0.40), (0.56, 1.60, 0.80), OAK)
+    make_box("Vanity_G_Top", (vx - 0.01, 8.10, 0.82), (0.60, 1.64, 0.04), (0.92, 0.90, 0.86, 1.0))
+    for k, y in enumerate((7.72, 8.48)):
+        make_box(f"Vanity_G_Basin_{k}", (vx - 0.02, y, 0.835), (0.36, 0.44, 0.012), (0.82, 0.82, 0.80, 1.0))
+        make_cyl(f"Vanity_G_Faucet_{k}", (xi1 - 0.07, y, 0.90), 0.02, 0.14, CHROME, segments=8)
+    make_box("Vanity_G_Mirror", (xi1 - 0.008, 8.10, 1.45), (0.012, 1.50, 0.86), (0.78, 0.84, 0.86, 1.0))
+    make_box("Vanity_G_LightBar", (xi1 - 0.05, 8.10, 1.98), (0.08, 1.20, 0.08), CHROME)
+    make_box("Toilet_G_Tank", (xi0 + 0.11, yi0 + 0.55, 0.62), (0.20, 0.44, 0.38), ENAMEL)
+    make_lathe("Toilet_G_Bowl", (xi0 + 0.48, yi0 + 0.55, 0.0), [(0.13, 0.0), (0.10, 0.08), (0.12, 0.25), (0.19, 0.40), (0.0, 0.40)],
                ENAMEL, segments=12)
-    make_box("Study_Desk", (4.0, Y1 - 0.10 - 0.33, 0.74), (1.40, 0.62, 0.04), OAK_DARK)
-    for sd in (-1, 1):
-        make_box(f"Study_Desk_Side_{sd:+d}", (4.0 + sd * 0.68, Y1 - 0.10 - 0.33, 0.36), (0.04, 0.60, 0.72), OAK_DARK)
-    make_chair("Study_Chair", 4.0, Y1 - 0.10 - 0.98, yaw=0.0, wood=OAK_DARK)
-    make_box("Study_Files", (X1 - 0.10 - 0.25, 7.40, 0.66), (0.48, 0.60, 1.32), (0.56, 0.56, 0.54, 1.0))
+    make_box("Bath_G_Rug", (-2.6, yi0 + 0.95, 0.006), (1.0, 0.60, 0.012), (0.46, 0.58, 0.62, 1.0))
+    # the mudroom: the bench and cubbies on its W wall, the hooks over them,
+    # boots under; the washer and dryer on the N wall; the mat at the back door
+    mx = BATHG_E + T / 2.0
+    make_box("Mud_Bench", (mx + 0.22, 8.60, 0.45), (0.44, 2.20, 0.05), OAK)
+    make_box("Mud_Bench_Base", (mx + 0.22, 8.60, 0.21), (0.42, 2.16, 0.42), (0.88, 0.86, 0.80, 1.0))
+    make_box("Mud_Backboard", (mx + 0.012, 8.60, 1.35), (0.024, 2.20, 0.90), (0.90, 0.88, 0.82, 1.0))
+    make_box("Mud_Cubby_Shelf", (mx + 0.17, 8.60, 2.02), (0.34, 2.20, 0.03), (0.90, 0.88, 0.82, 1.0))
+    for k in range(5):
+        y = 7.70 + k * 0.45
+        make_box(f"Mud_Hook_{k}", (mx + 0.07, y, 1.62), (0.10, 0.03, 0.03), (0.30, 0.30, 0.32, 1.0))
+        if k in (0, 2, 3):
+            make_rot_box(f"Mud_Coat_{k}", (mx + 0.12, y, 1.31), (0.16, 0.36, 0.62), ((0.30, 0.34, 0.44, 1.0), (0.52, 0.30, 0.20, 1.0),
+                         (0.26, 0.40, 0.30, 1.0), (0.40, 0.40, 0.42, 1.0), (0.60, 0.50, 0.30, 1.0))[k], yaw=0.0)
+    for k in range(4):
+        make_box(f"Mud_Boot_{k}", (mx + 0.62, 7.75 + k * 0.30, 0.13), (0.28, 0.11, 0.26), ((0.30, 0.22, 0.14, 1.0), (0.16, 0.16, 0.18, 1.0))[k % 2])
+    for k, x in enumerate((2.10, 2.80)):
+        make_box(f"Mud_{('Washer', 'Dryer')[k]}", (x, yi1 - 0.34, 0.45), (0.66, 0.64, 0.90), ENAMEL)
+        make_cyl(f"Mud_{('Washer', 'Dryer')[k]}_Door", (x, yi1 - 0.665, 0.48), 0.20, 0.02, (0.70, 0.74, 0.76, 1.0), axis='Y', segments=14)
+    make_box("Mud_Laundry_Basket", (3.55, yi1 - 0.40, 0.20), (0.50, 0.36, 0.40), (0.80, 0.72, 0.56, 1.0))
+    make_box("Mud_Door_Mat", (X1 - 0.10 - 0.45, 8.6, 0.006), (0.60, 0.90, 0.012), (0.36, 0.30, 0.24, 1.0))
 
 
 def build_living():
@@ -578,20 +646,12 @@ def build_bed2():
 
 def build_hall_and_infra():
     make_box("Hall_Runner", (0.0, 6.10, 0.006), (9.00, 0.80, 0.012), (0.40, 0.30, 0.26, 1.0))
-    for k, x in enumerate((-2.2, -1.4, 1.4, 2.3)):
-        make_box(f"Hall_Photo_{k}", (x, HALL_N - T / 2.0 - 0.012, 1.55 + (k % 2) * 0.12), (0.30, 0.02, 0.38), (0.24, 0.18, 0.14, 1.0))
-        make_box(f"Hall_Photo_{k}_Print", (x, HALL_N - T / 2.0 - 0.024, 1.55 + (k % 2) * 0.12), (0.24, 0.004, 0.30),
-                 ((0.70, 0.62, 0.50, 1.0) if k % 2 else (0.56, 0.62, 0.66, 1.0)))
     make_cyl("Hall_Light", (0.0, 6.10, CEIL - 0.05), 0.16, 0.08, (0.96, 0.94, 0.86, 1.0), segments=12)
     make_smoke_detector("Smoke_Hall", (-1.8, 6.10, CEIL))
     make_thermostat("Thermostat", (-1.6, HALL_S), axis='X', face_sign=1)
-    make_light_switch("Switch_Bath", (0.80, HALL_N), axis='X', face_sign=-1)
-    make_light_switch("Switch_Bedroom", (2.65, HALL_N), axis='X', face_sign=-1)
     make_light_switch("Switch_Front", (-0.30, Y0), axis='X', face_sign=1)
     make_wall_outlet("Outlet_TV", (X0, 3.60), axis='Y', face_sign=1)
-    make_wall_outlet("Outlet_Bed", (X1, 9.00), axis='Y', face_sign=-1)
     make_wall_outlet("Outlet_Kitchen", (1.10, HALL_S), axis='X', face_sign=-1)
-    make_threshold("Threshold_Bath", (0.20, HALL_N), width=0.8, axis='X')
     wear = (CARPET[0] * 0.88, CARPET[1] * 0.88, CARPET[2] * 0.88, 1.0)
     make_traffic_wear("Wear_Front_To_Hall", [(-1.0, 0.4), (-2.2, 3.0), (-3.0, 5.6)], width=0.7, tint=wear)
     make_traffic_wear("Wear_Hall", [(-3.0, 6.1), (3.2, 6.1)], width=0.6, tint=wear)
