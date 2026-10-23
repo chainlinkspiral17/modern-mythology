@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 153: THE LINK HOUSE'S PORCH PLANTED; A STORAGE ROOM OPEN.**
+- **The porch:** a ceiling fan over the rockers; two ferns in hanging baskets between the posts;
+  flower beds along its front (shrubs, pink, yellow and purple flowers, an edging).
+- **The first storage room:** its door stands open on shelves of paint cans and boxes, the push
+  mower, rakes and a shovel in the corner, and a bulb on a cord. Fixed: it had no W wall; its
+  door was blocked by the freezer, which moved to the carport's S end. Both rooms are in the
+  house's white siding now.
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0; perf 1,192.
+- DRAFT N+1: the kitchen and mudroom dressed for use; a mailbox and a gate on the drive; a night
+  exterior; the runtime merge of the trim (perf).
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 152: THE LINK HOUSE'S WINDOW TRIM AND SHUTTERS; THE PORCH AT DUSK.**
 - **Outside trim:** casings round every window and door, sills under the windows, louvred green
   shutters on the front windows (both storeys).

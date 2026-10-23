@@ -47,8 +47,13 @@ curtains); andy_house_stair from the landing.
 DRAFT 6 (pass 152): casings round every window and door outside, sills
 under the windows, louvred shutters on the front; andy_house_porch_dusk
 (the porch light lit); andy_house_stair from the stair's foot.
-DRAFT 7 targets: the porch's ceiling fan and its hanging fern; the
-garden beds along the porch; the storage rooms' insides; (older:) siding and trim on the house's outside faces (they carry
+DRAFT 7 (pass 153): the porch's ceiling fan and two hanging ferns; the
+flower beds along the porch's front (shrubs, flowers, an edging); the first
+storage room's door open on its shelves of paint and boxes, the push mower,
+the rakes and the shovel, a bulb (it had no W wall: fixed); the storage
+rooms in the house's white siding; the freezer by the carport's S end.
+DRAFT 8 targets: the kitchen and mudroom dressed for use; the yard's
+mailbox and the drive's gate; a night exterior; (older:) siding and trim on the house's outside faces (they carry
 the interior paint); the upstairs windows' shutters; a porch light that
 lights at night; a dusk preset from the porch; the storage rooms' insides;
 the house from outside (the second storey's roofline);
@@ -106,10 +111,10 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_window, m
 from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_pendant, make_sofa
 from _props.plan import zoned
 from _props.decor import make_faded_poster, make_floor_plant
-from _props.trees import make_broadleaf
+from _props.trees import make_broadleaf, make_shrub, make_fern
 from _props.vehicles import make_car
 from _props.detail import make_far_bands
-from _props.geometry import make_rot_box, make_heightfield, make_gable
+from _props.geometry import make_rot_box, make_heightfield, make_gable, make_blob
 from _props.safety import make_smoke_detector
 from _props.detail import (make_traffic_wear, make_threshold, make_wall_outlet, make_light_switch,
                            make_thermostat, make_wall_tint_band)
@@ -618,7 +623,7 @@ def build_living():
     make_cyl("Fan_Rod", (-3.90, 2.80, (CEIL - 0.30 + CEIL2) / 2.0), 0.015, CEIL2 - CEIL + 0.30, (0.60, 0.50, 0.30, 1.0), segments=6)   # the downrod from the two-storey ceiling
     make_cyl("Fan_Hub", (-3.90, 2.80, CEIL - 0.34), 0.11, 0.12, (0.60, 0.50, 0.30, 1.0), segments=12)
     import math
-    from _props.geometry import make_rot_box, make_heightfield, make_gable
+    from _props.geometry import make_rot_box, make_heightfield, make_gable, make_blob
     for k in range(5):
         a = k * 2 * math.pi / 5
         make_rot_box(f"Fan_Blade_{k}", (-3.90 + math.cos(a) * 0.42, 2.80 + math.sin(a) * 0.42, CEIL - 0.36),
@@ -908,6 +913,40 @@ def build_grounds():
                          yaw=0.15 * (1 - 2 * k))
     make_table("Porch_Table", -4.4, py0 + 1.05, w=0.50, d=0.50, h=0.50, wood=(0.40, 0.30, 0.22, 1.0))
     make_cyl("Porch_Tea_Glass", (-4.35, py0 + 1.00, 0.555), 0.035, 0.11, (0.70, 0.56, 0.32, 0.6), segments=10)
+    # pass 153: the porch's ceiling fan over the rockers, two ferns in hanging
+    # baskets between the posts, the flower beds along its front
+    def roof_under(y):                        # the porch roof's underside at y
+        t = (y - (py0 + PORCH_D / 2.0 - 0.20)) / (PORCH_D + 0.60)
+        return (rz0 + rz1) / 2.0 + 0.06 + t * (rz0 - rz1) * (PORCH_D + 0.60) / (PORCH_D + 0.40) - 0.06
+    fx, fy = -4.40, py0 + 1.40
+    fz = roof_under(fy)
+    make_cyl("Porch_Fan_Rod", (fx, fy, fz - 0.14), 0.014, 0.30, (0.30, 0.28, 0.26, 1.0), segments=6)
+    make_cyl("Porch_Fan_Hub", (fx, fy, fz - 0.32), 0.10, 0.10, (0.30, 0.28, 0.26, 1.0), segments=12)
+    for k in range(5):
+        a_ = k * 2 * math.pi / 5 + 0.3
+        make_rot_box(f"Porch_Fan_Blade_{k}", (fx + math.cos(a_) * 0.40, fy + math.sin(a_) * 0.40, fz - 0.34), (0.58, 0.13, 0.012),
+                     (0.46, 0.36, 0.26, 1.0), yaw=a_)
+    for k, x in enumerate(((posts[0] + posts[1]) / 2.0, (posts[3] + posts[4]) / 2.0)):
+        y = py0 + 0.12
+        make_box(f"Porch_Basket_{k}_Chain", (x, y, rz1 - 0.14 - 0.25), (0.008, 0.008, 0.50), (0.30, 0.30, 0.32, 1.0))
+        make_lathe(f"Porch_Basket_{k}", (x, y, rz1 - 0.14 - 0.70), [(0.0, 0.0), (0.12, 0.02), (0.17, 0.12), (0.18, 0.20), (0.0, 0.20)],
+                   (0.42, 0.32, 0.22, 1.0), segments=10)
+        make_fern(f"Porch_Basket_{k}_Fern", x, y, h=0.45, fronds=9, col=(0.28, 0.48, 0.26, 1.0), z0=rz1 - 0.14 - 0.52)
+    for k, (x0b, x1b) in enumerate(((PORCH_X0 + 0.10, step_x - 0.85), (step_x + 0.85, PORCH_X1 - 0.10))):
+        cy_ = py0 - 0.45
+        make_box(f"Porch_Bed_{k}", ((x0b + x1b) / 2.0, cy_, GZ + 0.04), (x1b - x0b, 0.80, 0.08), (0.30, 0.22, 0.16, 1.0))
+        make_box(f"Porch_Bed_{k}_Edge", ((x0b + x1b) / 2.0, cy_ - 0.42, GZ + 0.05), (x1b - x0b, 0.05, 0.10), (0.62, 0.58, 0.52, 1.0))
+        n = max(2, int((x1b - x0b) / 0.9))
+        with zoned([(-999.0, -999.0, 999.0, 999.0, 0.0, 0.0, GZ + 0.08)]):
+            for i in range(n):
+                x = x0b + (i + 0.5) * (x1b - x0b) / n
+                if i % 2 == 0:
+                    make_shrub(f"Porch_Bed_{k}_Shrub_{i}", x, cy_ + 0.05, h=0.70, r=0.34, col=(0.24, 0.40, 0.22, 1.0))
+                else:
+                    for j in range(3):
+                        make_blob(f"Porch_Bed_{k}_Flower_{i}_{j}", (x - 0.16 + j * 0.16, cy_ - 0.10 + (j % 2) * 0.12, 0.16), 0.09,
+                                  ((0.86, 0.36, 0.48, 1.0), (0.94, 0.80, 0.30, 1.0), (0.66, 0.40, 0.80, 1.0))[(i + j) % 3], noise=0.25,
+                                  seed=k * 31 + i * 7 + j)
     make_box("Porch_Light", (-1.85, Y0 - T / 2.0 - 0.09, 2.00), (0.14, 0.12, 0.24), (0.98, 0.90, 0.66, 1.0))
     # the path from the steps to the pasture gate; the yard's fence along the pasture
     make_box("Path_Front", (step_x, (py0 - 1.0 - 9.0) / 2.0, GZ + 0.012), (1.10, (py0 - 1.0) - (-9.0), 0.024), GRAVEL)
@@ -941,20 +980,51 @@ def build_grounds():
         cx = (x0 + x1) / 2.0
         z0 = GZ + 0.07
         h = croof - 0.24 - z0
-        make_box(f"Storage_{k}_Wall_N", (cx, ST_Y1 - 0.06, z0 + h / 2.0), (x1 - x0, 0.12, h), SIDING)
+        make_box(f"Storage_{k}_Wall_N", (cx, ST_Y1 - 0.06, z0 + h / 2.0), (x1 - x0, 0.12, h), SIDING_HOUSE)
         for sd, x in (("W", x0 + 0.06), ("E", x1 - 0.06)):
-            if k == 0 and sd == "W":
-                continue                     # the first leans on the house's wall
-            make_box(f"Storage_{k}_Wall_{sd}", (x, (CP_Y1 + ST_Y1) / 2.0, z0 + h / 2.0), (0.12, ST_Y1 - CP_Y1, h), SIDING)
+            if k == 1 and sd == "W":
+                continue                     # the two share the first's E wall (pass 153: the first had no W wall at all)
+            make_box(f"Storage_{k}_Wall_{sd}", (x, (CP_Y1 + ST_Y1) / 2.0, z0 + h / 2.0), (0.12, ST_Y1 - CP_Y1, h), SIDING_HOUSE)
         dw = 0.90
         for sd, (a, b) in (("L", (x0, cx - dw / 2.0)), ("R", (cx + dw / 2.0, x1))):
-            make_box(f"Storage_{k}_Front_{sd}", ((a + b) / 2.0, CP_Y1 + 0.06, z0 + h / 2.0), (b - a, 0.12, h), SIDING)
-        make_box(f"Storage_{k}_Front_Head", (cx, CP_Y1 + 0.06, z0 + 2.05 + (h - 2.05) / 2.0), (dw, 0.12, h - 2.05), SIDING)
-        make_box(f"Storage_{k}_Door", (cx, CP_Y1 + 0.03, z0 + 1.02), (dw - 0.04, 0.05, 2.03), ((0.40, 0.46, 0.44, 1.0), (0.56, 0.36, 0.26, 1.0))[k])
-        make_cyl(f"Storage_{k}_Knob", (cx + dw / 2.0 - 0.12, CP_Y1 - 0.01, z0 + 0.98), 0.028, 0.05, CHROME, axis='Y', segments=8)
+            make_box(f"Storage_{k}_Front_{sd}", ((a + b) / 2.0, CP_Y1 + 0.06, z0 + h / 2.0), (b - a, 0.12, h), SIDING_HOUSE)
+        make_box(f"Storage_{k}_Front_Head", (cx, CP_Y1 + 0.06, z0 + 2.05 + (h - 2.05) / 2.0), (dw, 0.12, h - 2.05), SIDING_HOUSE)
+        dcol = ((0.40, 0.46, 0.44, 1.0), (0.56, 0.36, 0.26, 1.0))[k]
+        if k == 0:                           # the first stands open, swung out against the carport side
+            make_box(f"Storage_{k}_Door", (cx - dw / 2.0 + 0.04, CP_Y1 - 0.43, z0 + 1.02), (0.05, 0.86, 2.03), dcol)
+        else:
+            make_box(f"Storage_{k}_Door", (cx, CP_Y1 + 0.03, z0 + 1.02), (dw - 0.04, 0.05, 2.03), dcol)
+            make_cyl(f"Storage_{k}_Knob", (cx + dw / 2.0 - 0.12, CP_Y1 - 0.01, z0 + 0.98), 0.028, 0.05, CHROME, axis='Y', segments=8)
+            make_box(f"Storage_{k}_Hasp", (cx + dw / 2.0 - 0.06, CP_Y1 - 0.01, z0 + 1.30), (0.04, 0.02, 0.14), (0.40, 0.40, 0.42, 1.0))
+    # inside the open one: shelves on its back wall with paint cans and boxes,
+    # the push mower, the rakes and the shovel leaning in the corner, a bulb
+    sx0, sx1 = CP_X0 + 0.12, smid - 0.06
+    zf = GZ + 0.07
+    for b in range(4):
+        make_box(f"Storage_Shelf_{b}", ((sx0 + sx1) / 2.0, ST_Y1 - 0.12 - 0.22, zf + 0.30 + b * 0.48), (sx1 - sx0 - 0.04, 0.44, 0.03), (0.60, 0.50, 0.36, 1.0))
+        for i in range(7 - b):
+            x = sx0 + 0.30 + i * 0.40
+            if i % 2:
+                make_cyl(f"Storage_Paint_{b}_{i}", (x, ST_Y1 - 0.34, zf + 0.30 + b * 0.48 + 0.11), 0.09, 0.19,
+                         ((0.86, 0.84, 0.80, 1.0), (0.36, 0.52, 0.66, 1.0), (0.70, 0.30, 0.24, 1.0))[(b + i) % 3], segments=10)
+            else:
+                make_box(f"Storage_Box_{b}_{i}", (x, ST_Y1 - 0.34, zf + 0.30 + b * 0.48 + 0.14), (0.34, 0.34, 0.25), (0.70, 0.58, 0.40, 1.0))
+    for e in (sx0 + 0.04, sx1 - 0.04):
+        make_box(f"Storage_Shelf_Post_{e:.1f}", (e, ST_Y1 - 0.34, zf + 0.95), (0.04, 0.44, 1.90), (0.50, 0.42, 0.30, 1.0))
+    mx, my = sx0 + 0.70, CP_Y1 + 1.30
+    make_box("Mower_Deck", (mx, my, zf + 0.20), (0.50, 0.56, 0.18), (0.70, 0.18, 0.14, 1.0))
+    make_box("Mower_Engine", (mx, my, zf + 0.38), (0.26, 0.26, 0.20), (0.20, 0.20, 0.22, 1.0))
+    for i, (u, v) in enumerate(((-0.24, -0.24), (0.24, -0.24), (-0.24, 0.24), (0.24, 0.24))):
+        make_cyl(f"Mower_Wheel_{i}", (mx + u * 1.05, my + v, zf + 0.10), 0.10, 0.05, (0.12, 0.12, 0.12, 1.0), axis='X', segments=10)
+    make_tube("Mower_Handle", [(mx - 0.20, my + 0.26, zf + 0.30), (mx - 0.20, my + 0.80, zf + 1.00), (mx + 0.20, my + 0.80, zf + 1.00),
+                               (mx + 0.20, my + 0.26, zf + 0.30)], 0.014, (0.30, 0.30, 0.32, 1.0), segments=6)
+    for i, (dx_, col) in enumerate(((0.0, (0.50, 0.40, 0.28, 1.0)), (0.16, (0.50, 0.40, 0.28, 1.0)), (0.32, (0.46, 0.36, 0.24, 1.0)))):
+        make_rot_box(f"Storage_Tool_{i}", (sx1 - 0.25 - dx_, CP_Y1 + 0.55, zf + 0.78), (0.03, 0.03, 1.55), col, roll=0.18)
+    make_cyl("Storage_Bulb", ((sx0 + sx1) / 2.0, (CP_Y1 + ST_Y1) / 2.0, croof - 0.34), 0.05, 0.10, (0.98, 0.94, 0.80, 1.0), segments=8)
+    make_box("Storage_Bulb_Cord", ((sx0 + sx1) / 2.0, (CP_Y1 + ST_Y1) / 2.0, croof - 0.145), (0.01, 0.01, 0.29), (0.20, 0.20, 0.20, 1.0))
     # what lives under it: the pickup, a deep freezer by the back door, a bicycle, cans
     make_car("Carport_Truck", (CP_X0 + CP_X1) / 2.0 + 0.6, 6.4, 5.2, (0.56, 0.20, 0.16, 1.0), pickup=True, along="Y", z0=GZ + 0.07)
-    make_box("Carport_Freezer", (CP_X0 + 0.40, 10.30, GZ + 0.07 + 0.45), (0.70, 1.10, 0.90), ENAMEL)
+    make_box("Carport_Freezer", (CP_X0 + 0.40, 4.60, GZ + 0.07 + 0.45), (0.70, 1.10, 0.90), ENAMEL)
     for k in range(3):
         make_cyl(f"Carport_Can_{k}", (CP_X1 - 0.60 - k * 0.32, CP_Y1 - 0.40, GZ + 0.07 + 0.18), 0.12, 0.36,
                  ((0.70, 0.18, 0.14, 1.0), (0.30, 0.42, 0.30, 1.0), (0.24, 0.24, 0.26, 1.0))[k], segments=10)
