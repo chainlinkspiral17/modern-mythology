@@ -3714,6 +3714,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.4, 1.6, -12.6),
 		"camera_rotation": Vector3(-0.32, deg_to_rad(0.0), 0.0),
 		"fov": 64.0,
+		"env": {"ambient_color": Color(0.52, 0.58, 0.62, 1), "ambient_energy": 0.60},
 		"suppress_input": true,
 	},
 	"cave_tide_in": {
@@ -3742,16 +3743,23 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.4, 1.0, 0.6),
 		"camera_rotation": Vector3(1.05, deg_to_rad(0.0), 0.0),
 		"fov": 72.0,
+		"env": {"ambient_color": Color(0.62, 0.58, 0.52, 1), "ambient_energy": 0.30},
 		"suppress_input": true,
 	},
 	"lighthouse_gate": {
 		"scene": "res://scenes/locales/oregon_lighthouse.tscn",
 		"requires_glb": "res://assets/3d/locales/oregon_lighthouse.glb",
-		# the high barbed gate on the trail, the brick walkway, the tower lost in the dark above
-		"camera_origin": Vector3(0.6, 1.5, 22.0),
-		"camera_rotation": Vector3(0.40, deg_to_rad(0.0), 0.0),
-		"fov": 70.0,
-		"env": {"ambient_color": Color(0.40, 0.46, 0.62, 1), "ambient_energy": 0.45, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		# the high barbed gate on the trail, the brick walkway, the tower lost in the dark above.
+		# 2026-10-23: the gate (z 8.6) sat in the bottom sliver under a 23-degree
+		# tilt; now 8.4 m back with the posts in the lower third and the beacon at
+		# the top edge; a clouded night sky so the column silhouettes.
+		"camera_origin": Vector3(0.6, 1.55, 17.0),
+		"camera_rotation": Vector3(0.32, deg_to_rad(0.0), 0.0),
+		"fov": 80.0,
+		"env": {"sky_top": Color(0.03, 0.04, 0.07, 1), "sky_horizon": Color(0.13, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.09, 0.12, 1), "ground_bottom": Color(0.03, 0.03, 0.05, 1),
+			"ambient_color": Color(0.40, 0.46, 0.62, 1), "ambient_energy": 0.45,
+			"fog_color": Color(0.06, 0.07, 0.10, 1), "fog_sky": 0.15},
 		"suppress_input": true,
 	},
 	"nick_house_front": {
@@ -3903,6 +3911,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-0.8, 1.5, -1.2),
 		"camera_rotation": Vector3(-0.04, deg_to_rad(40.0), 0.0),
 		"fov": 66.0,
+		"env": {"ambient_color": Color(0.44, 0.46, 0.58, 1), "ambient_energy": 0.30, "fog_color": Color(0.05, 0.05, 0.07, 1)},
 		"suppress_input": true,
 	},
 	"farm_porch_night": {
@@ -3912,6 +3921,11 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.5, 1.5, 6.0),
 		"camera_rotation": Vector3(-0.06, deg_to_rad(45.0), 0.0),
 		"fov": 64.0,
+		# "the moon hidden behind clouds": a clouded night sky, not a black slab (2026-10-23)
+		"env": {"sky_top": Color(0.04, 0.05, 0.08, 1), "sky_horizon": Color(0.16, 0.17, 0.22, 1),
+			"ground_horizon": Color(0.07, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.42, 0.46, 0.60, 1), "ambient_energy": 0.48,
+			"fog_color": Color(0.07, 0.08, 0.11, 1), "fog_sky": 0.12},
 		"suppress_input": true,
 	},
 	"farm_kitchen_window": {

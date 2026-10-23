@@ -48,10 +48,15 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_dom
 from _props.detail import make_far_bands
 from _props.creatures import make_crow
 
-BASALT = (0.20, 0.20, 0.22, 1.0)
-BASALT_LT = (0.26, 0.26, 0.27, 1.0)
-BASALT_WET = (0.14, 0.15, 0.17, 1.0)
-WEAR = (0.31, 0.31, 0.32, 1.0)
+# 2026-10-23: lifted a third — at 0.20 the shelf read as asphalt under the
+# pale overcast sky; basalt in flat coast light is a mid grey
+BASALT = (0.29, 0.29, 0.31, 1.0)
+BASALT_LT = (0.35, 0.35, 0.36, 1.0)
+BASALT_WET = (0.19, 0.20, 0.23, 1.0)
+BASALT_DK = (0.24, 0.25, 0.27, 1.0)
+BARNACLE = (0.56, 0.56, 0.54, 1.0)
+ALGAE = (0.30, 0.40, 0.26, 1.0)
+WEAR = (0.41, 0.41, 0.42, 1.0)
 SEA = (0.30, 0.38, 0.42, 1.0)
 SEA_FOAM = (0.80, 0.84, 0.84, 1.0)
 POOL_WATER = (0.40, 0.56, 0.60, 0.45)
@@ -77,8 +82,10 @@ def build_sea_and_shelf():
                 continue
             x0, x1 = XS[c], XS[c + 1]
             y0, y1 = YS[r], YS[r + 1]
+            # the seaward row is wet at every high tide: darker (2026-10-23)
+            col = BASALT_DK if r == 0 else (BASALT if (r + c) % 2 else BASALT_LT)
             make_box(f"Basalt_Cell_{r}_{c}", ((x0 + x1) / 2.0, (y0 + y1) / 2.0, Z_TOP / 2.0),
-                     (x1 - x0, y1 - y0, Z_TOP), BASALT if (r + c) % 2 else BASALT_LT)
+                     (x1 - x0, y1 - y0, Z_TOP), col)
     # the shelf's seaward faces are wet and darker: skins on the S, E, W faces
     make_box("Shelf_Face_S", (0.0, -15.02, 0.55), (40.0, 0.04, 1.10), BASALT_WET)
     make_box("Shelf_Face_E", (20.02, 0.0, 0.55), (0.04, 30.0, 1.10), BASALT_WET)
@@ -100,6 +107,30 @@ def build_sea_and_shelf():
     # cracks in the basalt
     for i, (x, y, w, d) in enumerate(((-6.0, 2.0, 5.0, 0.05), (3.0, -8.0, 0.05, 6.0), (13.0, -2.0, 4.0, 0.05), (-12.0, -6.0, 0.05, 5.0))):
         make_box(f"Basalt_Crack_{i}", (x, y, Z_TOP + 0.001), (w, d, 0.002), BASALT_WET)
+
+
+def build_shelf_breakup():
+    """D2 (2026-10-23, the sw161 sheet): the shelf read as one flat
+    slab. Low knobs of basalt, wet hollows holding a skin of water,
+    barnacle crust toward the sea — all kept off the path, the pools,
+    the stakes and the camera's sit-spot."""
+    knobs = ((-14.0, -9.0, 1.1, 71), (-9.5, 3.5, 0.9, 72), (-15.5, 11.0, 1.3, 73), (-6.0, 12.5, 0.8, 74),
+             (-6.5, -10.0, 1.0, 75), (13.5, -7.5, 1.2, 76), (16.5, 10.5, 0.9, 77), (3.0, 12.0, 1.1, 78),
+             (-11.0, -1.5, 0.7, 79), (14.5, 2.0, 0.8, 80))
+    for i, (x, y, r, s) in enumerate(knobs):
+        # seated: a blob's half-height is radius x squash; sunk 3 cm into the shelf
+        make_blob(f"Basalt_Knob_{i}", (x, y, Z_TOP + r * 0.22 - 0.03), r, (BASALT_LT, BASALT)[i % 2],
+                  noise=0.30, seed=s, squash=0.22)
+    for i, (x, y, w, d) in enumerate(((-12.5, 7.0, 1.6, 1.0), (-4.5, 9.5, 1.2, 0.8), (11.0, -4.0, 1.8, 1.1),
+                                      (6.5, 11.5, 1.0, 1.4), (-16.0, -3.0, 1.3, 0.9))):
+        make_box(f"Wet_Hollow_{i}", (x, y, Z_TOP + 0.002), (w, d, 0.004), BASALT_WET)
+        make_box(f"Wet_Hollow_{i}_Water", (x, y, Z_TOP + 0.006), (w * 0.6, d * 0.6, 0.004), POOL_WATER)
+    for i, (x, y) in enumerate(((-7.5, -12.0), (0.5, -11.5), (8.5, -12.2), (17.0, -8.5), (-18.0, -9.5), (18.5, 7.5))):
+        make_box(f"Barnacle_Crust_{i}", (x, y, Z_TOP + 0.004), (1.4, 0.9, 0.008), BARNACLE)
+    # green algae where the rock stays damp: around the hollows and the pools' low sides
+    for i, (x, y, w, d) in enumerate(((-13.5, 5.6, 1.8, 0.7), (10.0, -5.6, 1.4, 0.8), (-4.8, -6.2, 1.6, 0.9),
+                                      (12.4, 3.4, 1.0, 1.2), (-17.2, -1.4, 1.2, 0.8), (5.2, 9.9, 1.3, 0.7))):
+        make_box(f"Algae_Patch_{i}", (x, y, Z_TOP + 0.0025), (w, d, 0.005), ALGAE)
 
 
 def build_pool(prefix, r, c, floor_z, water_z):
@@ -138,7 +169,7 @@ def build_first_pool():
         make_blob(f"Pool_Pebble_{i}", (cx - 0.5 + i * 0.35, cy + 0.2 - (i % 2) * 0.5, fz + 0.026), 0.04,
                   (0.34, 0.34, 0.32, 1.0), noise=0.2, seed=30 + i, squash=0.7)
     # Finn's seat on the basalt at the south edge, the notebook and pencil beside it
-    make_box("Finn_Sit_Wear", (cx - 0.3, YS[1] - 0.45, Z_TOP + 0.0035), (0.70, 0.50, 0.001), (0.34, 0.34, 0.35, 1.0))
+    make_box("Finn_Sit_Wear", (cx - 0.3, YS[1] - 0.45, Z_TOP + 0.0035), (0.70, 0.50, 0.001), (0.43, 0.43, 0.44, 1.0))
     make_box("Notebook", (cx + 0.75, YS[1] - 0.55, Z_TOP + 0.006), (0.10, 0.14, 0.012), (0.36, 0.26, 0.18, 1.0))
     make_box("Notebook_Page", (cx + 0.75, YS[1] - 0.55, Z_TOP + 0.013), (0.09, 0.13, 0.002), (0.94, 0.92, 0.86, 1.0))
     make_box("Notebook_Handwriting", (cx + 0.75, YS[1] - 0.545, Z_TOP + 0.0145), (0.06, 0.09, 0.001), (0.36, 0.34, 0.40, 1.0))
@@ -157,8 +188,8 @@ def build_second_pool():
                   (0.32, 0.33, 0.31, 1.0), noise=0.2, seed=40 + i, squash=0.7)
     # where the old man has knelt since 2023: two knee hollows worn into the west rim
     for ki, dy in enumerate((-0.18, 0.18)):
-        make_box(f"Waders_Knee_Wear_{ki}", (XS[3] - 0.35, cy + dy, Z_TOP + 0.0035), (0.30, 0.22, 0.001), (0.36, 0.36, 0.37, 1.0))
-    make_box("Second_Pool_Sit_Wear", (XS[3] - 1.1, cy, Z_TOP + 0.0035), (0.60, 0.80, 0.001), (0.33, 0.33, 0.34, 1.0))
+        make_box(f"Waders_Knee_Wear_{ki}", (XS[3] - 0.35, cy + dy, Z_TOP + 0.0035), (0.30, 0.22, 0.001), (0.44, 0.44, 0.45, 1.0))
+    make_box("Second_Pool_Sit_Wear", (XS[3] - 1.1, cy, Z_TOP + 0.0035), (0.60, 0.80, 0.001), (0.43, 0.43, 0.44, 1.0))
 
 
 def build_path_and_survey():
@@ -184,8 +215,13 @@ def build_fog_and_horizon():
     # 4-6 m and its bottom is never seen.
     bank = ((-30.0, 28.0, 9.0, 51), (-19.0, 31.0, 10.5, 52), (-7.0, 27.5, 9.5, 53), (5.0, 30.0, 11.0, 54),
             (16.0, 27.0, 9.0, 55), (27.0, 31.0, 10.0, 56), (-12.0, 38.0, 12.0, 57), (12.0, 39.0, 12.5, 58))
+    # 2026-10-23: at noise 0.18 the post-process outlined every facet and the
+    # bank read as a row of glass buildings; smoother blobs, and two flat
+    # haze sheets in front of them so the bank reads as weather, not objects.
     for i, (x, y, r, s) in enumerate(bank):
-        make_blob(f"Fog_Bank_{i}", (x, y, r * 0.55 * 0.35), r, FOG, noise=0.18, seed=s, squash=0.55)
+        make_blob(f"Fog_Bank_{i}", (x, y, r * 0.55 * 0.35), r, FOG, noise=0.07, seed=s, squash=0.55)
+    for i, (y, h, a) in enumerate(((23.0, 5.0, 0.40), (32.0, 8.0, 0.50))):
+        make_box(f"Fog_Haze_Sheet_{i}", (0.0, y, h / 2.0), (90.0, 0.4, h), (0.82, 0.84, 0.85, a))
     make_far_bands("FarRidge", (0.30, 0.34, 0.32),
                    [(60.0, 90.0, 9.0, 0.80), (120.0, 150.0, 12.0, 0.62), (240.0, 260.0, 16.0, 0.48)],
                    sides="N", cx=0.0, cy=10.0, profile="ridge")
@@ -196,6 +232,7 @@ def build_fog_and_horizon():
 def main():
     clear_scene()
     build_sea_and_shelf()
+    build_shelf_breakup()
     build_first_pool()
     build_second_pool()
     build_path_and_survey()

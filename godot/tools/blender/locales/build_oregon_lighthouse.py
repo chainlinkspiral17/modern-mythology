@@ -95,11 +95,22 @@ def build_grounds():
     for k in range(10):
         make_box(f"Walkway_Seam_{k}", (0.0, -R_OUT - 0.4 - k * 0.6, 0.082), (1.6, 0.02, 0.004), (0.36, 0.20, 0.16, 1.0))
     gy = -R_OUT - 6.2
+    POST = (0.30, 0.30, 0.32, 1.0)
+    MESH = (0.46, 0.48, 0.50, 0.30)       # chain-link: a see-through skin, not a wall (2026-10-23)
+    WIRE = (0.50, 0.50, 0.52, 1.0)
     for s in (-1, 1):
-        make_cyl(f"Gate_Post_{s:+d}", (s * 1.1, gy, 1.40), 0.06, 2.80, (0.30, 0.30, 0.32, 1.0), segments=8)
-        make_box(f"Fence_{s:+d}", (s * 7.1, gy, 1.20), (12.0, 0.04, 2.40), (0.36, 0.38, 0.38, 1.0))
-        make_box(f"Fence_Barbed_{s:+d}", (s * 7.1, gy, 2.55), (12.0, 0.03, 0.03), (0.50, 0.50, 0.52, 1.0))
-    make_rot_box("Gate_Leaf_Open", (1.1 + 0.05, gy - 1.0, 1.2), (0.04, 2.0, 2.2), (0.36, 0.38, 0.38, 1.0), yaw=0.0)
+        make_cyl(f"Gate_Post_{s:+d}", (s * 1.1, gy, 1.40), 0.06, 2.80, POST, segments=8)
+        # "barbed gate, padlocked and rising high": line posts every 2.4 m, a
+        # top rail, the mesh between, three barbed strands over the rail
+        make_box(f"Fence_Mesh_{s:+d}", (s * 7.1, gy, 1.19), (12.0, 0.02, 2.36), MESH)
+        make_box(f"Fence_Rail_Top_{s:+d}", (s * 7.1, gy, 2.39), (12.0, 0.04, 0.04), POST)
+        for k in range(5):
+            make_cyl(f"Fence_Post_{s:+d}_{k}", (s * (3.5 + k * 2.4), gy, 1.20), 0.04, 2.40, POST, segments=8)
+        for k in range(3):
+            make_box(f"Fence_Barbed_{s:+d}_{k}", (s * 7.1, gy, 2.50 + k * 0.14), (12.0, 0.02, 0.02), WIRE)
+    make_rot_box("Gate_Leaf_Open", (1.1 + 0.05, gy - 1.0, 1.2), (0.04, 2.0, 2.2), MESH, yaw=0.0)
+    for nm, z in (("Top", 2.32), ("Bot", 0.08)):
+        make_box(f"Gate_Leaf_Rail_{nm}", (1.15, gy - 1.0, z), (0.04, 2.0, 0.04), POST)
     make_box("Gate_Padlock", (1.15, gy - 1.95, 1.1), (0.06, 0.04, 0.08), (0.70, 0.62, 0.36, 1.0))
     make_box("Trail", (0.0, gy - 12.0, 0.01), (1.4, 24.0, 0.02), (0.44, 0.38, 0.30, 1.0))
     for k in range(12):

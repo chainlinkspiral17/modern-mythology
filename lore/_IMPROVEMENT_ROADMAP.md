@@ -3835,6 +3835,47 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 161: THE SWEEP'S NEXT TIER — THE FARMHOUSE NIGHTS, THE LIGHTHOUSE GATE, THE TIDELINE SHELF.**
+- Eighteen presets across eleven sets rendered (bus station, Missing Link's exterior, the farmhouse,
+  the sea cave, Miller's office and bedroom, the lighthouse, the Hendersons' porch, Little
+  Switzerland, the bar exterior, the rec center, Tideline Survey). Read fine: bus_station, bus_aisle,
+  cave_dawn, farm_kitchen_window, miller_office, miller_master_bedroom_night,
+  missing_link_exterior, shuttle_bench, small_wood_rec_center, little_switzerland,
+  bar_exterior_night (neon + warm window), henderson_porch_front ("mostly dark. The kitchen
+  light is on" — reads as written).
+- **The farmhouse's two nights** (small_wood_farmhouse) rendered near-black: no preset env, a
+  0.04 fill, and two black sky slabs at ±186 m. Both nights now carry an env (farm_living_night:
+  ambient 0.30 + dark fog; farm_porch_night: a clouded night-sky gradient, ambient 0.48,
+  fog_sky 0.12); the fill is 0.10, the lamp 1.2 / range 7, the TV 1.1, the cloud-moon 0.45; the
+  sky slabs are gone (the env draws the sky). The living room reads (windows black over the
+  valley, the lamp, the small TV); the porch reads with its chair, cup, bottle and the lit door.
+- **The lighthouse gate** (oregon_lighthouse / lighthouse_gate) framed the tower from a 23°
+  up-tilt with the gate in the bottom sliver, and the fence was two solid 12 m slabs. The
+  fence is now chain-link that reads as mesh: see-through skin (alpha 0.30) on line posts every
+  2.4 m with a top rail, three barbed strands over, the gate leaf the same skin with rails. The
+  camera sits 8.4 m from the gate (z 17, pitch 0.32, fov 80): posts and wire in the lower
+  third, the column up to the beacon at the top edge, a clouded night sky behind. Two
+  flashlight omnis near the lens ("clouds of vapor lit by our beams"). lighthouse_base_up and
+  cave_low_tide got ambient envs (0.30 warm / 0.60 grey) so their rock reads.
+- **Tideline Survey** read as a pool cut in asphalt: basalt at 0.20 under a pale sky, one flat
+  slab, a fog bank of faceted white blobs. The basalt palette lifted a third (0.29/0.35 mid
+  greys; wear patches lighter than their surround, not darker); the seaward row darker (wet);
+  D2 breakup: ten low basalt knobs, five wet hollows with water skins, six barnacle crusts,
+  six algae patches; the fog blobs smoothed (noise 0.07) with two flat haze sheets in front;
+  key 1.1 / sky fill 0.4 for a little modelling. perf baseline recorded (106).
+- Gates: prop_overlap 0 (one knob moved off a boulder), support, buried_decor, window_backing,
+  doorway, preset_vantage, vantage_obstruction, orphan_practical, blender_dryrun, tscn_syntax
+  all clean; perf 70 / 68 / 106 / 102.
+- **Draft N+1 targets:** farm_porch_night — the pick-up in frame (it sits behind-left of the
+  camera), the cats as more than blobs, the valley's far lights; farm_living_night — the stair
+  and banister as a lit edge (it is a black mass at frame right); lighthouse_gate — Trav's
+  keys at the padlock, the bricked walkway's edge wall, the generator shed's exhaust glow,
+  "vapor" as a particle breath; tideline_survey — the fog bank still reads as a wall (try
+  three staggered sheets at falling alpha instead of blobs), the shelf's cells still read as
+  tiles at their seams (break the grid with a second crack set), the horizon's gray-white
+  needs the sea lighter near it; bar_exterior_night — the street beyond the window (a
+  parked car, a far lamp); the next sweep tier.
+
 **2026-10-23 · pass 160: THE SWEEP'S NEXT TIER — CLUB STREET'S NIGHT, CHARLIE'S FLAT, THE SISTER'S ROOM, AARON'S WINDOW.**
 - Twenty presets across thirteen sets rebuilt and rendered (Pasadena 1945's park, shoot and clinic;
   Carrie City's flat, afterparty and the sister's house; vol 4's garage, dead store, mirror room

@@ -151,6 +151,26 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-23 · a night preset with no env is a black frame, however many practicals it has
+
+**Context:** The sweep's sw161 tier (pass 161). The farmhouse's two nights,
+the lighthouse gate and base, the sea cave at low tide all rendered
+near-black on the sheet — and each of them had its practicals (a lamp, a TV
+glow, flashlights, a beacon at 4.0).
+
+**What happened:** The scene envs carry ambient 0.14–0.16 and a fog colour
+of 0.06, and the night presets had no `"env"` of their own. Practicals
+light their own pool and nothing else; the post stack then darkens the
+rest. A sky slab of (0.03, 0.04, 0.06) behind it all read as a hole.
+
+**Rule:** every night preset carries an `"env"` — ambient 0.30–0.50 in the
+night's colour, a fog colour a step above the scene's, and for an exterior
+the sky keys (`sky_top` / `sky_horizon`) so the roofline silhouettes; the
+sky is drawn by the env, never by a slab. Judge a night on the sheet, not
+on its light count: the pass-160 club street had four sodium lamps and
+rendered black for the same reason.
+
+
 ### 2026-10-19 · on a big region set, a shadowed spot is the most expensive light there is
 
 **Context:** Joanna's chalked wall in Graustark (vol 5 contact sheet). A

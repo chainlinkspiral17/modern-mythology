@@ -176,6 +176,11 @@
   "prims": 5900,
   "objects": 288
  },
+ "tideline_survey": {
+  "draw": 106,
+  "prims": 9404,
+  "objects": 276
+ },
  "tulsa_house": {
   "draw": 74,
   "prims": 24688,

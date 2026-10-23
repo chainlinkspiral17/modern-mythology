@@ -202,8 +202,9 @@ def build_porch_and_yard():
         make_box(f"Far_Ridge_Band_{k}", (-100.0 - k * 22.0, 0.0, -10.0 + k * 5.0), (0.2, 360.0, 20.0 + k * 6.0),
                  ((0.06, 0.07, 0.08, 1.0), (0.05, 0.06, 0.07, 1.0))[k % 2])
     make_box("Far_Cloud_Band_Moonlit", (-178.0, 0.0, 46.0), (0.2, 360.0, 22.0), (0.16, 0.18, 0.22, 1.0))
-    make_box("Sky_Night_W", (-186.0, 5.0, 40.0), (0.2, 400.0, 200.0), (0.03, 0.04, 0.06, 1.0))
-    make_box("Sky_Night_S", (0.0, -186.0, 40.0), (400.0, 0.2, 200.0), (0.03, 0.04, 0.06, 1.0))
+    # 2026-10-23: the two black sky slabs are gone — the preset env draws the
+    # clouded night sky (Background3D._apply_preset_env), and a slab's end read
+    # as a hard edge over the porch roof.
 
 
 def main():
