@@ -18,7 +18,21 @@ two storey", upstairs "Three bedrooms and a small restroom/shower". Draft 1's
 The exterior walls run CEIL2 tall; stacked windows are one cut with a band
 of wall between (_stack). The presets in the wing and their lights went up
 2.9 m.
-DRAFT 3 targets: the house from outside (the second storey's roofline);
+DRAFT 3 (2026-10-23, the user: "There is a large covered carport that
+leads to the mudroom and with two connected outdoor rooms for storage, and
+a front porch that overlooks a large pasture field leading to the river"):
+build_grounds. The house up on its foundation (GZ); the front porch across
+the living room and the door, its shed roof, rail and steps; the path to
+the pasture gate; the pasture falling 5 m to the river (a heightfield bowl
+so the porch sees the water), the far bank's trees; the carport E at the
+mudroom's back door (stoop, steps), the two storage rooms at its N end
+under the same roof, the pickup, the gravel drive out east; the clothesline
+and the oak out back; the gable roof. Presets andy_house_porch /
+andy_house_front / andy_house_carport (day).
+DRAFT 4 targets: siding and trim on the house's outside faces (they carry
+the interior paint); the upstairs windows' shutters; a porch light that
+lights at night; a dusk preset from the porch; the storage rooms' insides;
+the house from outside (the second storey's roofline);
 the parents' room and the second bedroom dressed (doors shut in every
 view); the den, laundry and study beyond a minimum; a setup down the stair
 from the balcony; the living room's high windows' light at day.
@@ -67,13 +81,16 @@ props (the magazine only in the Uncle Nick scenes); Deck-verified framing.
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, export_glb, join_stock
 from _props.views import make_view
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
 from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_pendant, make_sofa
 from _props.plan import zoned
 from _props.decor import make_faded_poster, make_floor_plant
-from _props.geometry import make_rot_box
+from _props.trees import make_broadleaf
+from _props.vehicles import make_car
+from _props.detail import make_far_bands
+from _props.geometry import make_rot_box, make_heightfield, make_gable
 from _props.safety import make_smoke_detector
 from _props.detail import (make_traffic_wear, make_threshold, make_wall_outlet, make_light_switch,
                            make_thermostat, make_wall_tint_band)
@@ -284,7 +301,7 @@ def build_upper_wing():
     a = math.radians(95.0)
     hx, hy, dw = 0.20 + 0.405, HALL_N + 0.12, 0.79
     dx, dy = -math.cos(a), math.sin(a)
-    from _props.geometry import make_rot_box
+    from _props.geometry import make_rot_box, make_heightfield, make_gable
     make_rot_box("Door_Bath", (hx + dx * dw / 2.0, hy + dy * dw / 2.0, DOOR_H / 2.0),
                  (dw, 0.04, DOOR_H - 0.02), DOOR_WHITE, yaw=math.atan2(dy, dx))
     make_box("Door_Bedroom", (2.80, HALL_N + 0.10 + 0.43, DOOR_H / 2.0), (0.04, 0.84, DOOR_H - 0.02), DOOR_WHITE)
@@ -309,8 +326,8 @@ def build_stair_and_upstairs():
     for k in range(N_RISE - 1):
         y0 = STAIR_Y0 + k * RUN
         zt = (k + 1) * RISE
-        make_box(f"Stair_Step_{k}", (xc, y0 + RUN / 2.0, zt / 2.0), (w, RUN, zt), (0.50, 0.38, 0.24, 1.0))
-        make_box(f"Stair_Tread_{k}", (xc, y0 + RUN / 2.0 - 0.01, zt + 0.008), (w + 0.04, RUN + 0.02, 0.016), CARPET)
+        make_box(f"Stair_Stock_Step_{k}", (xc, y0 + RUN / 2.0, zt / 2.0), (w, RUN, zt), (0.50, 0.38, 0.24, 1.0))
+        make_box(f"Stair_Stock_Tread_{k}", (xc, y0 + RUN / 2.0 - 0.01, zt + 0.008), (w + 0.04, RUN + 0.02, 0.016), CARPET)
     # balustrades both sides, a newel at the foot, the rail climbing with the stair
     def rail_z(y):
         t = min(1.0, max(0.0, (y - STAIR_Y0) / (STAIR_Y1 - STAIR_Y0)))
@@ -323,7 +340,7 @@ def build_stair_and_upstairs():
                 y = STAIR_Y0 + k * RUN + 0.07 + m * 0.13
                 zt = (k + 1) * RISE
                 top = rail_z(y)
-                make_box(f"Stair_Baluster_{sd}_{k}_{m}", (x, y, (zt + top) / 2.0), (0.025, 0.025, top - zt), DOOR_WHITE)
+                make_box(f"Stair_Stock_Bal_{sd}_{k}_{m}", (x, y, (zt + top) / 2.0), (0.025, 0.025, top - zt), DOOR_WHITE)
     # the upstairs: the hall's carpet (over the ground hall and along the
     # balcony), the landing at the stair's head, the parents' room's floor
     make_floor("Floor_Up_Hall", (0.0, (5.40 + HALL_N) / 2.0, FL2), size_x=X1 - X0, size_y=HALL_N - 5.40, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
@@ -343,13 +360,13 @@ def build_stair_and_upstairs():
             if k in (0, n):
                 make_box(f"{nm}_Post_{k}", (px, py, FL2 + 0.48), (0.08, 0.08, 0.96), DOOR_WHITE)
             else:
-                make_box(f"{nm}_Baluster_{k}", (px, py, FL2 + 0.46), (0.025, 0.025, 0.92), DOOR_WHITE)
+                make_box(f"{nm}_Stock_Bal_{k}", (px, py, FL2 + 0.46), (0.025, 0.025, 0.92), DOOR_WHITE)
         along_x = abs(bx - ax) > 0.01
         make_box(f"{nm}_Rail", ((ax + bx) / 2.0, (ay + b2) / 2.0, FL2 + 0.94), ((L + 0.08) if along_x else 0.07, 0.07 if along_x else (L + 0.08), 0.05), OAK_DARK)
     # the parents' room: its W wall over the stair's E side, its N wall on the
     # upstairs hall with the door, the bed, a dresser, the lamp
     wall_y("Wall_Parents_W", PAR_X0, Y0, 5.50, face=-1, h=CEIL, z0=FL2)
-    wall_x("Wall_Parents_N", 5.50, PAR_X0, X1, face=+1, h=CEIL, z0=FL2, openings=[(2.4, FL2 + DOOR_H / 2.0, 0.86, DOOR_H)])
+    wall_x("Wall_Parents_N", 5.50, PAR_X0, X1, face=+1, h=CEIL, z0=FL2, openings=[(2.4, DOOR_H / 2.0, 0.86, DOOR_H)])   # z from the wall's base (FL2)
     make_box("Door_Parents", (2.4, 5.50 + 0.02, FL2 + DOOR_H / 2.0), (0.84, 0.04, DOOR_H - 0.02), DOOR_WHITE)
     make_bed("Parents_Bed", PAR_X0 + 0.10 + 1.05, 2.6, head="-X", w=1.60, d=2.05, blanket_col=(0.66, 0.58, 0.50, 1.0), z0=FL2)
     make_box("Parents_Dresser", (X1 - 0.10 - 0.25, 4.30, FL2 + 0.45), (0.50, 1.40, 0.90), OAK)
@@ -491,7 +508,7 @@ def build_living():
     make_cyl("Fan_Rod", (-3.90, 2.80, (CEIL - 0.30 + CEIL2) / 2.0), 0.015, CEIL2 - CEIL + 0.30, (0.60, 0.50, 0.30, 1.0), segments=6)   # the downrod from the two-storey ceiling
     make_cyl("Fan_Hub", (-3.90, 2.80, CEIL - 0.34), 0.11, 0.12, (0.60, 0.50, 0.30, 1.0), segments=12)
     import math
-    from _props.geometry import make_rot_box
+    from _props.geometry import make_rot_box, make_heightfield, make_gable
     for k in range(5):
         a = k * 2 * math.pi / 5
         make_rot_box(f"Fan_Blade_{k}", (-3.90 + math.cos(a) * 0.42, 2.80 + math.sin(a) * 0.42, CEIL - 0.36),
@@ -660,6 +677,197 @@ def build_hall_and_infra():
                         tint=(pw[0] * 0.92, pw[1] * 0.92, pw[2] * 0.90, 1.0))
 
 
+# ── THE GROUNDS (draft 3, 2026-10-23) ────────────────────────────────────
+# The user: "There is a large covered carport that leads to the mudroom and
+# with two connected outdoor rooms for storage, and a front porch that
+# overlooks a large pasture field leading to the river." The house sits up
+# on its foundation (GZ below the floor); the front porch and its steps
+# face S over the yard and the fence to the pasture, the pasture runs down
+# to the river, the far bank's trees beyond. The carport is on the E side
+# at the mudroom's back door, the two storage rooms at its N end under the
+# same roof, the gravel drive out east. Draft 1-2 had make_view's suburban
+# street out front and lawns behind.
+GZ = -0.45                         # the ground, below the house floor
+CP_X0, CP_X1, CP_Y0, CP_Y1 = X1 + 0.10, X1 + 6.80, 3.40, 11.00   # the carport's slab
+ST_Y1 = 14.40                      # the storage rooms run N of the carport to here
+PORCH_X0, PORCH_X1, PORCH_D = X0 - 0.10, 3.60, 2.80
+RIVER_Y0, RIVER_Y1 = -94.0, -70.0
+RIVER_DROP = 5.0                   # the pasture falls this far from the yard fence to the river
+GRASS = (0.36, 0.46, 0.26, 1.0); PASTURE = (0.56, 0.58, 0.34, 1.0); DIRT = (0.44, 0.36, 0.26, 1.0)
+GRAVEL = (0.62, 0.58, 0.52, 1.0); CONCRETE = (0.66, 0.64, 0.60, 1.0); WATER = (0.48, 0.60, 0.68, 1.0)
+SIDING = (0.82, 0.78, 0.68, 1.0); ROOF = (0.36, 0.34, 0.32, 1.0); TRIM = (0.92, 0.90, 0.84, 1.0)
+PORCH_WOOD = (0.56, 0.44, 0.32, 1.0)
+
+
+def _fence_x(prefix, y, x0, x1, gap=None, h=1.2, every=3.0):
+    """A pasture fence along X: cedar posts, three wires."""
+    n = int(round((x1 - x0) / every))
+    for k in range(n + 1):
+        x = x0 + k * (x1 - x0) / n
+        if gap and gap[0] < x < gap[1]:
+            continue
+        make_box(f"{prefix}_Stock_Post_{k}", (x, y, GZ + h / 2.0 - 0.10), (0.10, 0.10, h + 0.20), (0.46, 0.40, 0.32, 1.0))
+    runs = [(x0, x1)] if not gap else [(x0, gap[0]), (gap[1], x1)]
+    for r, (a, b) in enumerate(runs):
+        for w, z in enumerate((0.45, 0.78, 1.10)):
+            make_box(f"{prefix}_Stock_Wire_{r}_{w}", ((a + b) / 2.0, y, GZ + z), (b - a, 0.008, 0.008), (0.40, 0.40, 0.42, 1.0))
+
+
+def build_grounds():
+    # the ground in tiles that do not overlap (coplanar tiles shimmer): the
+    # yard round the house, the pasture to the S, the river bank, the water,
+    # the far bank
+    for nm, (x0, x1, y0, y1, col, top) in {
+            "Yard": (-140.0, 140.0, -9.0, 90.0, GRASS, GZ),
+            "Bank_Near": (-140.0, 140.0, RIVER_Y1, RIVER_Y1 + 1.0, DIRT, GZ - RIVER_DROP - 0.10),
+            "River": (-140.0, 140.0, RIVER_Y0, RIVER_Y1, WATER, GZ - RIVER_DROP - 0.25),
+            "Bank_Far": (-140.0, 140.0, RIVER_Y0 - 1.0, RIVER_Y0, DIRT, GZ - RIVER_DROP - 0.10),
+            "Far_Bank": (-140.0, 140.0, -170.0, RIVER_Y0 - 1.0, GRASS, GZ - RIVER_DROP)}.items():
+        make_box(f"Ground_{nm}", ((x0 + x1) / 2.0, (y0 + y1) / 2.0, top - 0.30), (x1 - x0, y1 - y0, 0.60), col)
+    # the pasture falls away from the fence to the river (a flat field hid the
+    # water from the porch): a heightfield, RIVER_DROP over its 60 m, with a
+    # long low roll in it
+    import math
+    cell, cols, rows = 4.0, 71, 16
+    y_o = RIVER_Y1 + 1.0
+    hts = []
+    for r in range(rows):
+        y = y_o + r * cell
+        t = max(0.0, min(1.0, (-9.0 - y) / (-9.0 - y_o)))
+        row = []
+        for c in range(cols):
+            x = -140.0 + c * cell
+            row.append(-RIVER_DROP * t ** 0.75 + 0.25 * t * (1.0 - t) * 4.0 * math.sin(x / 17.0) * math.sin(y / 11.0))   # a bowl, so the porch sees down to the water
+        hts.append(row)
+    make_heightfield("Ground_Pasture", (-140.0, y_o, GZ), cell, hts, PASTURE, skirt=0.6)
+    # the foundation under the walls, the house up on it
+    for nm, (cx, cy, sx, sy) in {"S": (0.0, Y0, X1 - X0 + 0.44, 0.24), "N": (0.0, Y1, X1 - X0 + 0.44, 0.24),
+                                 "W": (X0, (Y0 + Y1) / 2.0, 0.24, Y1 - Y0), "E": (X1, (Y0 + Y1) / 2.0, 0.24, Y1 - Y0)}.items():
+        make_box(f"Foundation_{nm}", (cx, cy, GZ / 2.0 - 0.02), (sx, sy, -GZ + 0.04), (0.60, 0.56, 0.50, 1.0))
+
+    # THE FRONT PORCH: the deck at the floor's height, its skirt to the
+    # ground, the shed roof on posts, the rail, the steps down to the path
+    px, pw = (PORCH_X0 + PORCH_X1) / 2.0, PORCH_X1 - PORCH_X0
+    py0 = Y0 - T / 2.0 - PORCH_D
+    make_box("Porch_Deck", (px, py0 + PORCH_D / 2.0, -0.04), (pw, PORCH_D, 0.08), PORCH_WOOD)
+    for k in range(int(pw / 0.14)):
+        make_box(f"Porch_Stock_Seam_{k}", (PORCH_X0 + 0.14 * (k + 1), py0 + PORCH_D / 2.0, 0.0006), (0.006, PORCH_D, 0.001), (0.44, 0.34, 0.24, 1.0))
+    make_box("Porch_Skirt_S", (px, py0 + 0.03, (GZ - 0.08) / 2.0), (pw, 0.06, -GZ - 0.08 + 0.02), TRIM)
+    for sd, x in (("W", PORCH_X0 + 0.03), ("E", PORCH_X1 - 0.03)):
+        make_box(f"Porch_Skirt_{sd}", (x, py0 + PORCH_D / 2.0, (GZ - 0.08) / 2.0), (0.06, PORCH_D, -GZ - 0.08 + 0.02), TRIM)
+    rz0, rz1 = 2.86, 2.50                  # the roof: from the wall down to the front beam
+    import math
+    pitch = math.atan2(rz0 - rz1, PORCH_D + 0.40)
+    make_rot_box("Porch_Roof", (px, py0 + PORCH_D / 2.0 - 0.20, (rz0 + rz1) / 2.0 + 0.06), (pw + 0.40, PORCH_D + 0.60, 0.10), ROOF,
+                 roll=pitch)              # higher at the wall (roll: about X, z rises with y)
+    make_box("Porch_Beam", (px, py0 + 0.12, rz1 - 0.04), (pw, 0.16, 0.20), TRIM)
+    make_box("Porch_Ledger", (px, Y0 - T / 2.0 - 0.05, rz0 - 0.06), (pw, 0.10, 0.16), TRIM)
+    step_x = -1.0
+    posts = [PORCH_X0 + 0.15, -4.4, step_x - 0.70, step_x + 0.70, PORCH_X1 - 0.15]
+    for k, x in enumerate(posts):
+        make_box(f"Porch_Post_{k}", (x, py0 + 0.12, (rz1 - 0.14) / 2.0), (0.14, 0.14, rz1 - 0.14), TRIM)
+    # the rail between the posts, open at the steps
+    for k in range(len(posts) - 1):
+        a, b = posts[k] + 0.07, posts[k + 1] - 0.07
+        if a < step_x < b:
+            continue
+        for z, nm in ((0.92, "Top"), (0.12, "Bottom")):
+            make_box(f"Porch_Stock_Rail_{k}_{nm}", ((a + b) / 2.0, py0 + 0.12, z), (b - a, 0.06, 0.05), TRIM)
+        n = int((b - a) / 0.16)
+        for m in range(1, n):
+            make_box(f"Porch_Stock_Bal_{k}_{m}", (a + m * (b - a) / n, py0 + 0.12, 0.52), (0.035, 0.035, 0.76), TRIM)
+    for k in range(3):                     # three steps down to the path
+        top = -(k + 1) * (-GZ / 3.0) + 0.0
+        make_box(f"Porch_Step_{k}", (step_x, py0 - 0.15 - k * 0.30, (top + GZ) / 2.0), (1.30, 0.30, top - GZ + 0.001), PORCH_WOOD)
+    # on the porch: two rockers and a little table looking out at the pasture, the porch light
+    for k, x in enumerate((-5.4, -3.4)):
+        make_chair(f"Porch_Rocker_{k}", x, py0 + 0.95, yaw=math.pi + 0.15 * (1 - 2 * k), wood=(0.40, 0.30, 0.22, 1.0))
+        for s in (-1, 1):
+            make_rot_box(f"Porch_Rocker_{k}_Runner_{s:+d}", (x + s * 0.18, py0 + 0.95, 0.015), (0.04, 0.62, 0.03), (0.40, 0.30, 0.22, 1.0),
+                         yaw=0.15 * (1 - 2 * k))
+    make_table("Porch_Table", -4.4, py0 + 1.05, w=0.50, d=0.50, h=0.50, wood=(0.40, 0.30, 0.22, 1.0))
+    make_cyl("Porch_Tea_Glass", (-4.35, py0 + 1.00, 0.555), 0.035, 0.11, (0.70, 0.56, 0.32, 0.6), segments=10)
+    make_box("Porch_Light", (-1.65, Y0 - T / 2.0 - 0.06, 2.00), (0.14, 0.12, 0.24), (0.98, 0.90, 0.66, 1.0))
+    # the path from the steps to the pasture gate; the yard's fence along the pasture
+    make_box("Path_Front", (step_x, (py0 - 1.0 - 9.0) / 2.0, GZ + 0.012), (1.10, (py0 - 1.0) - (-9.0), 0.024), GRAVEL)
+    _fence_x("Pasture_Fence", -9.0, -60.0, 60.0, gap=(step_x - 1.8, step_x + 1.8))
+    for s in (-1, 1):
+        make_box(f"Pasture_Gate_Post_{s:+d}", (step_x + s * 1.8, -9.0, GZ + 0.70), (0.16, 0.16, 1.60), (0.46, 0.40, 0.32, 1.0))
+    gx0, ga = step_x - 1.72, 0.5                 # the gate, swung half open: rails and stiles
+    gc, gs = math.cos(ga), math.sin(ga)
+    for k, z in enumerate((0.25, 0.65, 1.05)):
+        make_rot_box(f"Pasture_Gate_Rail_{k}", (gx0 + 0.85 * gc, -9.0 - 0.85 * gs, GZ + z), (1.70, 0.05, 0.08), (0.66, 0.64, 0.60, 1.0), yaw=-ga)
+    for k, u in enumerate((0.04, 1.66)):
+        make_rot_box(f"Pasture_Gate_Stile_{k}", (gx0 + u * gc, -9.0 - u * gs, GZ + 0.65), (0.06, 0.05, 0.90), (0.66, 0.64, 0.60, 1.0), yaw=-ga)
+
+    # THE CARPORT: a slab at the mudroom's back door, a low roof from the
+    # house wall to a row of posts, the two storage rooms at its N end
+    make_box("Carport_Slab", ((CP_X0 + CP_X1) / 2.0, (CP_Y0 + ST_Y1) / 2.0, GZ - 0.03 + 0.04), (CP_X1 - CP_X0, ST_Y1 - CP_Y0, 0.10), CONCRETE)
+    croof = 2.70
+    make_box("Carport_Roof", ((CP_X0 + 0.10 + CP_X1 + 0.40) / 2.0, (CP_Y0 + ST_Y1) / 2.0, croof + 0.06), (CP_X1 + 0.30 - CP_X0, ST_Y1 - CP_Y0 + 0.6, 0.12), ROOF)
+    make_box("Carport_Fascia_E", (CP_X1 + 0.25, (CP_Y0 + ST_Y1) / 2.0, croof - 0.05), (0.06, ST_Y1 - CP_Y0 + 0.6, 0.24), TRIM)
+    make_box("Carport_Fascia_S", ((CP_X0 + CP_X1 + 0.3) / 2.0, CP_Y0 - 0.30, croof - 0.05), (CP_X1 - CP_X0 + 0.5, 0.06, 0.24), TRIM)
+    make_box("Carport_Ledger", (CP_X0 + 0.05, (CP_Y0 + ST_Y1) / 2.0, croof - 0.10), (0.10, ST_Y1 - CP_Y0, 0.20), TRIM)
+    make_box("Carport_Beam", (CP_X1 - 0.10, (CP_Y0 + ST_Y1) / 2.0, croof - 0.12), (0.18, ST_Y1 - CP_Y0, 0.24), TRIM)
+    for k, y in enumerate((CP_Y0 + 0.10, CP_Y0 + 2.6, CP_Y0 + 5.1, CP_Y1)):
+        make_box(f"Carport_Post_{k}", (CP_X1 - 0.10, y, (GZ + 0.07 + croof - 0.24) / 2.0), (0.16, 0.16, croof - 0.24 - GZ - 0.07), TRIM)
+    # the stoop and two steps down from the back door
+    make_box("Back_Stoop", (CP_X0 + 0.45, 8.6, (GZ + 0.07) / 2.0 - 0.0), (0.90, 1.30, -GZ - 0.07), CONCRETE)
+    make_box("Back_Step", (CP_X0 + 1.05, 8.6, (GZ + 0.07 + GZ / 2.0) / 2.0), (0.30, 1.10, GZ / 2.0 - GZ - 0.07), CONCRETE)
+    # the two storage rooms, side by side under the roof, their doors to the carport
+    smid = (CP_X0 + CP_X1) / 2.0
+    for k, (x0, x1) in enumerate(((CP_X0, smid), (smid, CP_X1 - 0.20))):
+        cx = (x0 + x1) / 2.0
+        z0 = GZ + 0.07
+        h = croof - 0.24 - z0
+        make_box(f"Storage_{k}_Wall_N", (cx, ST_Y1 - 0.06, z0 + h / 2.0), (x1 - x0, 0.12, h), SIDING)
+        for sd, x in (("W", x0 + 0.06), ("E", x1 - 0.06)):
+            if k == 0 and sd == "W":
+                continue                     # the first leans on the house's wall
+            make_box(f"Storage_{k}_Wall_{sd}", (x, (CP_Y1 + ST_Y1) / 2.0, z0 + h / 2.0), (0.12, ST_Y1 - CP_Y1, h), SIDING)
+        dw = 0.90
+        for sd, (a, b) in (("L", (x0, cx - dw / 2.0)), ("R", (cx + dw / 2.0, x1))):
+            make_box(f"Storage_{k}_Front_{sd}", ((a + b) / 2.0, CP_Y1 + 0.06, z0 + h / 2.0), (b - a, 0.12, h), SIDING)
+        make_box(f"Storage_{k}_Front_Head", (cx, CP_Y1 + 0.06, z0 + 2.05 + (h - 2.05) / 2.0), (dw, 0.12, h - 2.05), SIDING)
+        make_box(f"Storage_{k}_Door", (cx, CP_Y1 + 0.03, z0 + 1.02), (dw - 0.04, 0.05, 2.03), ((0.40, 0.46, 0.44, 1.0), (0.56, 0.36, 0.26, 1.0))[k])
+        make_cyl(f"Storage_{k}_Knob", (cx + dw / 2.0 - 0.12, CP_Y1 - 0.01, z0 + 0.98), 0.028, 0.05, CHROME, axis='Y', segments=8)
+    # what lives under it: the pickup, a deep freezer by the back door, a bicycle, cans
+    make_car("Carport_Truck", (CP_X0 + CP_X1) / 2.0 + 0.6, 6.4, 5.2, (0.56, 0.20, 0.16, 1.0), pickup=True, along="Y", z0=GZ + 0.07)
+    make_box("Carport_Freezer", (CP_X0 + 0.40, 10.30, GZ + 0.07 + 0.45), (0.70, 1.10, 0.90), ENAMEL)
+    for k in range(3):
+        make_cyl(f"Carport_Can_{k}", (CP_X1 - 0.60 - k * 0.32, CP_Y1 - 0.40, GZ + 0.07 + 0.18), 0.12, 0.36,
+                 ((0.70, 0.18, 0.14, 1.0), (0.30, 0.42, 0.30, 1.0), (0.24, 0.24, 0.26, 1.0))[k], segments=10)
+    # the gravel drive out east from the carport
+    make_box("Drive_Gravel", ((CP_X1 + 70.0) / 2.0, (CP_Y0 + CP_Y1) / 2.0, GZ + 0.015), (70.0 - CP_X1, 4.6, 0.03), GRAVEL)
+    # the back yard: a clothesline, the old oak
+    for s, x in enumerate((-4.5, 1.5)):
+        make_box(f"Clothesline_Post_{s}", (x, Y1 + 6.0, GZ + 1.0), (0.08, 0.08, 2.0), (0.62, 0.62, 0.64, 1.0))
+        make_box(f"Clothesline_Bar_{s}", (x, Y1 + 6.0, GZ + 1.95), (0.08, 1.00, 0.05), (0.62, 0.62, 0.64, 1.0))
+    for w in (-0.4, 0.0, 0.4):
+        make_box(f"Clothesline_Line_{w:+.1f}", (-1.5, Y1 + 6.0 + w, GZ + 1.96), (6.0, 0.006, 0.006), (0.86, 0.86, 0.84, 1.0))
+    # trees: the oak out back, a pair over the drive, pecans along the pasture
+    # fence, the woods on the river's far bank (lowered to the ground)
+    with zoned([(-999.0, -999.0, 999.0, 999.0, 0.0, 0.0, GZ)]):
+        make_broadleaf("Oak_Back", 6.0, Y1 + 11.0, 9.0, (0.30, 0.42, 0.22, 1.0), (0.36, 0.28, 0.20, 1.0))
+        make_broadleaf("Tree_Drive_0", 22.0, 14.0, 8.0, (0.32, 0.44, 0.24, 1.0), (0.36, 0.28, 0.20, 1.0))
+        make_broadleaf("Tree_Drive_1", 34.0, -1.0, 7.0, (0.30, 0.42, 0.22, 1.0), (0.36, 0.28, 0.20, 1.0))
+        make_broadleaf("Tree_Yard_W", -12.0, 3.0, 8.5, (0.32, 0.44, 0.24, 1.0), (0.36, 0.28, 0.20, 1.0))
+        for k, x in enumerate((-46.0, -27.0, 24.0, 41.0)):
+            make_broadleaf(f"Pecan_{k}", x, -10.5, 10.0 + (k % 2) * 2.0, (0.34, 0.44, 0.24, 1.0), (0.38, 0.30, 0.22, 1.0))
+        make_far_bands("Woods_N", (0.30, 0.40, 0.26, 1.0), [(70.0, 120.0, 12.0, 0.90)], sides="N", cx=0.0, cy=5.0)
+        make_far_bands("Woods_EW", (0.30, 0.40, 0.26, 1.0), [(100.0, 76.0, 13.0, 0.88)], sides="EW", cx=0.0, cy=30.0)   # N of the pasture fence (the pasture falls away S of it)
+    with zoned([(-999.0, -999.0, 999.0, 999.0, 0.0, 0.0, GZ - RIVER_DROP)]):      # the far bank, down by the river
+        for k in range(12):
+            x = -110.0 + k * 20.0 + (k % 3) * 4.0
+            make_broadleaf(f"River_Tree_{k}", x, RIVER_Y0 - 4.0 - (k % 2) * 3.0, 12.0 + (k % 4) * 1.5,
+                           (0.26, 0.38, 0.22, 1.0), (0.34, 0.28, 0.22, 1.0))
+        make_far_bands("Woods", (0.30, 0.40, 0.26, 1.0), [(110.0, 160.0, 14.0, 0.92), (150.0, 200.0, 20.0, 0.80)], sides="S", cx=0.0, cy=0.0)
+    # the house's roof: a gable over the two storeys, the ridge E-W, eaves out
+    make_gable("House_Roof", (0.0, (Y0 + Y1) / 2.0, CEIL2 + 0.10 + 1.10), (X1 - X0 + 0.80, Y1 - Y0 + 0.90, 2.20), ROOF, ridge_axis='X')
+    for nm, y in (("S", Y0 - 0.45), ("N", Y1 + 0.45)):
+        make_box(f"House_Fascia_{nm}", (0.0, y, CEIL2 + 0.06), (X1 - X0 + 0.80, 0.05, 0.20), TRIM)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -673,10 +881,11 @@ def main():
         build_bedroom()
         build_bed2()
     build_hall_and_infra()
-    # through the front windows the street; through the back ones the yard
-    make_view("View_S", "S", Y0, 0.0, kind="front", ground_z=0.0, seed=3)
-    make_view("View_N", "N", Y1, 0.0, kind="back", ground_z=0.0, seed=5)
-    make_view("View_E", "E", X1, 2.2, kind="back", ground_z=0.0, seed=8)
+    build_grounds()
+    try:
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                         "../../../assets/3d/locales/link_house.glb"))
     print(f"\n[build_link_house] exporting to {out}")

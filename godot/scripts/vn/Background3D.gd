@@ -2816,6 +2816,42 @@ const CAMERA_PRESETS := {
 	# the second bedroom W, the parents' room over the kitchen. The base scene is
 	# night on the lamps; the day presets lift the environment and add
 	# their window light by name (`__<preset>` in link_house.tscn).
+	"andy_house_porch": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# the front porch (the user, 2026-10-23): the rockers, the rail, the large pasture down to the river
+		"camera_origin": Vector3(-1.9, 1.45, 0.5),
+		"camera_rotation": Vector3(-0.11, deg_to_rad(165.0), 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.46, 0.62, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.50, 0.46, 1), "ground_bottom": Color(0.24, 0.22, 0.20, 1),
+			"ambient_color": Color(0.86, 0.88, 0.90, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.82, 0.86, 1)},
+		"suppress_input": true,
+	},
+	"andy_house_front": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# the house from the path by the pasture gate: two storeys, the porch across the front
+		"camera_origin": Vector3(2.5, 1.15, 16.0),
+		"camera_rotation": Vector3(0.06, deg_to_rad(7.0), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.46, 0.62, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.50, 0.46, 1), "ground_bottom": Color(0.24, 0.22, 0.20, 1),
+			"ambient_color": Color(0.86, 0.88, 0.90, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.82, 0.86, 1)},
+		"suppress_input": true,
+	},
+	"andy_house_carport": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# the large covered carport from the drive: the truck, the back door to the mudroom, the two storage rooms
+		"camera_origin": Vector3(22.0, 1.15, -6.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(78.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.46, 0.62, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.50, 0.46, 1), "ground_bottom": Color(0.24, 0.22, 0.20, 1),
+			"ambient_color": Color(0.86, 0.88, 0.90, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.82, 0.86, 1)},
+		"suppress_input": true,
+	},
 	"andy_house_kitchen": {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",

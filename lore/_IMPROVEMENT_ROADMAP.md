@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 149: THE LINK HOUSE'S GROUNDS — CARPORT, STORAGE ROOMS, PORCH, PASTURE, RIVER.**
+- The user: "There is a large covered carport that leads to the mudroom and with two connected outdoor
+  rooms for storage, and a front porch that overlooks a large pasture field leading to the river."
+  The suburban street views (make_view) are gone; build_grounds replaces them:
+  - **The house:** up on its foundation (ground 0.45 m below the floor), with a gable roof.
+  - **The front porch:** across the living room and front door, with a shed roof on posts, a rail,
+    three steps, two rockers and a table. The path runs to the pasture gate.
+  - **The pasture and river:** the pasture falls 5 m to the river. It is a heightfield bowl, so the
+    porch sees the water; the first flat field hid it. The river is 24 m wide, with trees on the far
+    bank and woods beyond.
+  - **The carport:** large and covered, on the E side at the mudroom's back door (stoop, steps). The
+    two storage rooms are side by side at its N end under the same roof. A pickup, a deep freezer,
+    cans, and a gravel drive out east.
+  - **Out back:** a clothesline and an oak.
+  - New day presets: andy_house_porch, andy_house_front, andy_house_carport, with a sun light.
+  - Fixed: the porch roof sloped sideways (pitch, not roll); the parents' door opening sat a storey
+    too high (pass 147).
+  - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+    obstruction 0; perf 1,346 (worst view, the exterior; cap 2,000; baseline updated).
+- DRAFT N+1: siding and trim on the outside faces (they carry the interior paint); a dusk porch
+  setup with the porch light lit; the storage rooms' insides; the exterior views' draw calls (the
+  far trees).
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 148: THE LINK HOUSE'S GROUND FLOOR, AS THE USER LAID IT OUT.**
 - The user: "The downstairs is a mudroom, kitchen dining area, bathroom with a large raised sunken tub,
   living room with stairs going up." Pass 147's den, laundry and study (Claude's guess) are gone.
