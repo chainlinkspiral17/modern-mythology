@@ -195,9 +195,9 @@ omni_range = 8.0
 [node name="Screen_Bounce__dabney_game_room__dabney_couch__dabney_couch_carving" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.0, 1.3, -6.0)
 light_color = Color(0.56, 0.62, 0.92, 1)
-light_energy = 0.8
+light_energy = 1.4
 shadow_enabled = false
-omni_range = 4.8
+omni_range = 6.0
 
 [node name="Fridge_Glow__dabney_game_room__dabney_couch__dabney_couch_carving" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.9, 1.3, -3.0)
@@ -205,6 +205,20 @@ light_color = Color(0.86, 0.92, 1.0, 1)
 light_energy = 0.9
 shadow_enabled = false
 omni_range = 3.6
+
+[node name="Screen_Spill_Couch__dabney_couch_carving" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 1.0, -4.9)
+light_color = Color(0.62, 0.68, 0.96, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 2.2
+
+[node name="Hopper_Day__dabney_game_room__dabney_couch__dabney_couch_carving" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.3, 2.3, -3.3)
+light_color = Color(0.94, 0.92, 0.84, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 5.5
 
 [node name="Arcade_Glow__dabney_game_room__dabney_couch__dabney_couch_carving" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.4, 1.3, -2.7)

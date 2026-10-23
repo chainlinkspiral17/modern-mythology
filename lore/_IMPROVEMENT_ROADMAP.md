@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-22 · pass 144: DABNEY'S GAME ROOM, SOFT COUCHES AND A STRIP OF AFTERNOON.**
+- **caltech_dabney / the game room** (vol 3 ch6 + vol 4, 210 lines). The "black leather couches"
+  were four leather slabs each, and the basement had no window.
+  - The U of couches is the kit sofa (soft frame, track arms, seat and back cushions). The cuts
+    now sit on the back cushions' faces, in a paler grey.
+  - Three hoppers high in the E wall over the fridges, each in a galvanized well, the lawn at their
+    heads ("Afternoon, nobody up yet"), with a Hopper_Day light.
+  - Ambient 0.32 → 0.42 on the three presets; the screen bounce 0.8 → 1.4.
+  - dabney_couch_carving moved in front of the couch: it stood behind the back and saw the cuts
+    edge-on.
+  - Gates: overlap 0, support 0, vantage 0 blind, obstruction 0, dry run ok; perf 150 (baseline 150).
+- DRAFT N+1: the cuts still barely read (a text decal or a pale scar band); a setup that sees the
+  hoppers; the fluorescents as a switched practical for night.
+- Deck must REBUILD caltech_dabney.
+
 **2026-10-22 · pass 143: DANTE'S WINDOW OVERLOOKS THE DINING ROOM.**
 - **riverboat_interior** (vol 5 ch4 Emperor + ch20, 113 lines, all in the helm). "He stood near the
   helm and surveyed the dining room from the upper deck, through the small leaded window": the window

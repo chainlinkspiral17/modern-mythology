@@ -3031,7 +3031,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(66.0, 1.65, -2.0),
 		"camera_rotation": Vector3(-0.12, deg_to_rad(-12.0), 0.0),
 		"fov": 70.0,
-		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.32, "fog_color": Color(0.06, 0.06, 0.09, 1)},
+		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.42, "fog_color": Color(0.06, 0.06, 0.09, 1)},
 		"suppress_input": true,
 	},
 	"dabney_couch": {
@@ -3041,17 +3041,19 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(64.6, 1.05, -3.9),
 		"camera_rotation": Vector3(0.02, deg_to_rad(-15.0), 0.0),
 		"fov": 66.0,
-		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.32, "fog_color": Color(0.06, 0.06, 0.09, 1)},
+		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.42, "fog_color": Color(0.06, 0.06, 0.09, 1)},
 		"suppress_input": true,
 	},
 	"dabney_couch_carving": {
 		"scene": "res://scenes/locales/caltech_dabney.tscn",
 		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
-		# vol 4's poem: low and side-on along the carved couch, the sprite murals beyond
-		"camera_origin": Vector3(68.6, 0.8, -3.2),
-		"camera_rotation": Vector3(0.0, deg_to_rad(75.0), 0.0),
+		# vol 4's poem: close and low in front of the carved couch, across its
+		# back cushions (pass 144: the old setup stood behind its back and saw
+		# the cuts edge-on)
+		"camera_origin": Vector3(66.2, 0.95, -5.0),
+		"camera_rotation": Vector3(-0.21, deg_to_rad(142.0), 0.0),
 		"fov": 64.0,
-		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.32, "fog_color": Color(0.06, 0.06, 0.09, 1)},
+		"env": {"ambient_color": Color(0.34, 0.36, 0.50, 1), "ambient_energy": 0.42, "fog_color": Color(0.06, 0.06, 0.09, 1)},
 		"suppress_input": true,
 	},
 	"spencer_room": {

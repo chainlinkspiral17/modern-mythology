@@ -37,6 +37,16 @@ THE TUNNELS (x 100..103.2, running north) — 2003: graffiti on everything,
   Chinese lanterns. 1945: the same corridor bare under fluorescent tubes.
   Off it, the bare room: "Not very big at all", cement, one door, one bulb.
 
+PASS 144 (2026-10-22): the game room's couches are the kit sofa (soft
+frame, track arms, a seat and a back cushion per seat), the carving on the
+back cushions' faces, lighter; three basement hoppers high in the E wall
+over the fridges, each in a galvanized well, the lawn at their heads
+("Afternoon, nobody up yet"); the carving setup moved in front of the
+couch (it stood behind it and saw the cuts edge-on).
+NEXT: the cuts still barely read at the Deck's size (a text decal, or a
+pale scar band); a setup that sees the hoppers; the fluorescents as a
+switched practical for the night scenes.
+
 Blender: x east, y north, z up; Godot (x, z, -y).
 
 KNOTS (flagged in the brief, not fixed): ch2 has Jack alone find Andy in
@@ -56,8 +66,8 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_rot_box, make_blob,
                              make_tube, make_prism, make_taper_cyl, catenary, join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings
-from _props.furniture import make_bed, make_chair
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window
+from _props.furniture import make_bed, make_chair, make_sofa
 from _props.safety import make_fluorescent_tube_fixture
 from _props.detail import make_wall_outlet
 
@@ -75,7 +85,7 @@ PAVER = (0.70, 0.66, 0.58, 1.0); PAVER_SEAM = (0.56, 0.52, 0.46, 1.0)
 GLASS_DARK = (0.16, 0.20, 0.24, 1.0)
 DIRT = (0.40, 0.32, 0.24, 1.0)
 PALM_TRUNK = (0.56, 0.48, 0.38, 1.0); FROND = (0.30, 0.46, 0.22, 1.0); FROND_DEAD = (0.56, 0.44, 0.26, 1.0)
-LEATHER = (0.17, 0.16, 0.17, 1.0); LEATHER_CUT = (0.40, 0.40, 0.40, 1.0)   # black leather, lifted so it reads by screen light
+LEATHER = (0.17, 0.16, 0.17, 1.0); LEATHER_CUT = (0.58, 0.56, 0.52, 1.0)   # black leather, lifted so it reads by screen light
 CARPET = (0.30, 0.24, 0.26, 1.0)
 BEIGE = (0.80, 0.76, 0.66, 1.0)
 CEMENT = (0.58, 0.57, 0.54, 1.0)
@@ -305,34 +315,66 @@ def build_side_yard():
 
 # ── the game room (basement) ──────────────────────────────────────────
 GX0, GX1, GY0, GY1, GH = 60.0, 72.0, 0.0, 10.0, 2.8
+# the basement's hoppers (pass 144): a strip of afternoon up under the
+# ceiling over the fridges, each at the foot of a galvanized well, the
+# lawn at their heads ("Afternoon, nobody up yet")
+GAME_HOPPER_Y = (1.40, 3.30, 5.20)
+GAME_HOPPER_Z = 2.42
+GAME_GRADE = 2.70
+
+
+def build_game_hoppers():
+    steel = {"frame": (0.40, 0.42, 0.44, 1.0)}
+    galv = (0.62, 0.63, 0.62, 1.0)
+    grass = (0.32, 0.44, 0.22, 1.0)
+    face = GX1 + 0.10
+    well_d = 0.80
+    ww = 1.50
+    z0, z1 = GAME_HOPPER_Z - 0.20 - 0.25, GAME_GRADE + 0.06
+    for k, y in enumerate(GAME_HOPPER_Y):
+        make_window(f"Game_Hopper_{k}", (GX1 - 0.10, y, GAME_HOPPER_Z), width=0.90, height=0.32, axis='Y', room_dir=-1,
+                    palette=steel, trim=False)
+        make_box(f"Game_Well_{k}_Back", (face + well_d + 0.02, y, (z0 + z1) / 2.0), (0.04, ww + 0.04, z1 - z0), galv)
+        for sg in (-1, 1):
+            make_box(f"Game_Well_{k}_Side_{sg:+d}", (face + well_d / 2.0, y + sg * ww / 2.0, (z0 + z1) / 2.0), (well_d, 0.04, z1 - z0), galv)
+        make_box(f"Game_Well_{k}_Gravel", (face + well_d / 2.0, y, z0 + 0.03), (well_d - 0.02, ww - 0.04, 0.06), (0.50, 0.48, 0.44, 1.0))
+    make_box("Game_Lawn_Grade", (face + well_d + 0.04 + 3.0, (GY0 + GY1) / 2.0, GAME_GRADE - 0.03), (6.0, GY1 - GY0 + 6.0, 0.06), grass)
+    edges = [GY0 - 3.0]
+    for y in GAME_HOPPER_Y:
+        edges += [y - ww / 2.0 - 0.02, y + ww / 2.0 + 0.02]
+    edges.append(GY1 + 3.0)
+    for k in range(0, len(edges), 2):
+        a, b = edges[k], edges[k + 1]
+        make_box(f"Game_Lawn_Grade_Strip_{k // 2}", (face + well_d / 2.0 + 0.02, (a + b) / 2.0, GAME_GRADE - 0.03),
+                 (well_d + 0.04, b - a, 0.06), grass)
+    for k, y in enumerate((2.35, 4.25, 7.6)):
+        make_blob(f"Game_Grade_Shrub_{k}", (face + 1.5, y, GAME_GRADE + 0.30), 0.50, (0.26, 0.40, 0.24, 1.0), noise=0.25, seed=k + 60)
 
 
 def couch(prefix, cx, cy, length, face, carved=False):
-    """A black leather couch; `face` is the direction its sitters look."""
+    """A black leather couch; `face` is the direction its sitters look.
+    (2026-10-22, pass 144: the kit sofa — soft frame, track arms, a seat
+    and a back cushion per seat — not four leather slabs.)"""
     yaw = {"+Y": 0.0, "-Y": math.pi, "+X": -math.pi / 2.0, "-X": math.pi / 2.0}[face]
     c, s = math.cos(yaw), math.sin(yaw)
 
     def at(u, v):       # u along the couch, v toward its front
         return (cx + u * c - v * s, cy + u * s + v * c)
-    make_rot_box(f"{prefix}_Base", (*at(0.0, 0.0), 0.20), (length, 0.92, 0.40), LEATHER, yaw=yaw)
-    make_rot_box(f"{prefix}_Back", (*at(0.0, -0.36), 0.66), (length, 0.22, 0.56), LEATHER, yaw=yaw)
-    for e in (-1, 1):
-        make_rot_box(f"{prefix}_Arm_{e:+d}", (*at(e * (length / 2.0 - 0.11), 0.0), 0.52), (0.22, 0.92, 0.26), LEATHER, yaw=yaw)
-    n = max(2, int(length / 0.75))
-    w = (length - 0.44) / n
-    for k in range(n):
-        u = -length / 2.0 + 0.22 + w * (k + 0.5)
-        make_rot_box(f"{prefix}_Cush_{k}", (*at(u, 0.06), 0.47), (w - 0.02, 0.66, 0.14), (0.20, 0.19, 0.20, 1.0), yaw=yaw)
+    back = {"+Y": "-Y", "-Y": "+Y", "+X": "-X", "-X": "+X"}[face]
+    make_sofa(prefix, cx, cy, back=back, w=length, d=0.92, seats=max(2, int(length / 0.85)), color=LEATHER,
+              cushion_col=(0.20, 0.19, 0.20, 1.0), leg_col=(0.08, 0.08, 0.08, 1.0), arm="track", seat_h=0.44, back_h=0.86)
     if carved:
-        # the cuts gone grey in their grooves: initials, dates, jokes, a name
-        # scratched through to the stuffing (vol 4: "GAY FOR C3PO")
+        # the cuts gone grey in their grooves on the back cushions' faces:
+        # initials, dates, jokes, a name scratched through to the stuffing
+        # (vol 4: "GAY FOR C3PO")
+        v = -0.168
         for k in range(9):
             u = -length / 2.0 + 0.40 + k * (length - 0.8) / 8.0
-            make_rot_box(f"{prefix}_Cut_{k}", (*at(u, -0.24), 0.70 + (k % 3) * 0.09), (0.16 + (k % 2) * 0.10, 0.004, 0.012),
+            make_rot_box(f"{prefix}_Cut_{k}", (*at(u, v), 0.58 + (k % 3) * 0.08), (0.16 + (k % 2) * 0.10, 0.004, 0.018),
                          LEATHER_CUT, yaw=yaw)
-        make_rot_box(f"{prefix}_Cut_Stuffing", (*at(length * 0.18, -0.24), 0.60), (0.22, 0.004, 0.035), (0.86, 0.82, 0.70, 1.0),
+        make_rot_box(f"{prefix}_Cut_Stuffing", (*at(length * 0.18, v), 0.54), (0.22, 0.004, 0.035), (0.86, 0.82, 0.70, 1.0),
                      yaw=yaw)
-        make_rot_box(f"{prefix}_Cut_C3PO", (*at(-length * 0.20, -0.24), 0.82), (0.40, 0.004, 0.022), (0.40, 0.40, 0.40, 1.0), yaw=yaw)
+        make_rot_box(f"{prefix}_Cut_C3PO", (*at(-length * 0.20, v), 0.74), (0.40, 0.004, 0.026), (0.66, 0.64, 0.60, 1.0), yaw=yaw)
 
 
 def tv(prefix, x, y, z, w, kind, glow):
@@ -353,7 +395,9 @@ def build_game_room():
     make_box("Game_Ceil", (cx, cy, GH + 0.04), (GX1 - GX0 + 0.4, GY1 - GY0 + 0.4, 0.08), (0.56, 0.54, 0.50, 1.0))
     pal = {"wall": (0.66, 0.64, 0.60, 1.0), "baseboard": (0.24, 0.22, 0.22, 1.0)}
     make_wall("Game_Wall_N", (cx, GY1, 0), length=GX1 - GX0 + 0.4, height=GH, thickness=0.2, axis='X', palette=pal, baseboard_face_sign=-1)
-    make_wall("Game_Wall_E", (GX1, cy, 0), length=GY1 - GY0 + 0.4, height=GH, thickness=0.2, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Game_Wall_E", (GX1, cy, 0), length=GY1 - GY0 + 0.4, height=GH, thickness=0.2, axis='Y', palette=pal,
+                            baseboard_face_sign=-1, openings=[(y, GAME_HOPPER_Z, 1.00, 0.40) for y in GAME_HOPPER_Y])
+    build_game_hoppers()
     make_wall_with_openings("Game_Wall_S", (cx, GY0, 0), length=GX1 - GX0 + 0.4, height=GH, thickness=0.2, axis='X', palette=pal,
                             baseboard_face_sign=+1, openings=[(GX0 + 1.4, 1.0, 0.90, 2.0)])
     make_wall("Game_Wall_W", (GX0, cy, 0), length=GY1 - GY0 + 0.4, height=GH, thickness=0.2, axis='Y', palette=pal, baseboard_face_sign=+1)
@@ -414,8 +458,8 @@ def build_game_room():
     couch("Couch_Right", GX1 - 3.10, 6.20, 2.6, "-X")
     for k, (x, y, yaw) in enumerate(((cx - 1.0, 6.4, 0.4), (cx + 0.8, 7.0, -0.9), (cx + 0.2, 5.6, 2.1))):
         make_rot_box(f"Controller_{k}", (x, y, 0.016), (0.15, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0), yaw=yaw)
-    make_rot_box("Controller_Couch", (cx - 1.1, 3.90, 0.555), (0.15, 0.10, 0.03), (0.30, 0.30, 0.34, 1.0), yaw=0.3)
-    make_box("Andy_Notebook", (cx + 0.6, 3.92, 0.555), (0.18, 0.24, 0.03), (0.16, 0.20, 0.30, 1.0))
+    make_rot_box("Controller_Couch", (cx - 1.1, 3.90, 0.455), (0.15, 0.10, 0.03), (0.30, 0.30, 0.34, 1.0), yaw=0.3)
+    make_box("Andy_Notebook", (cx + 0.6, 3.92, 0.455), (0.18, 0.24, 0.03), (0.16, 0.20, 0.30, 1.0))
     # the refrigerators down the E wall: big, industrial, glass doors, drinks
     fx = GX1 - 0.10 - 0.40
     for k in range(5):
