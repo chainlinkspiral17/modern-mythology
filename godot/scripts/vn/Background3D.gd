@@ -3312,7 +3312,7 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/chau_house.glb",
 		# Sunday morning from the entry: the counter, the kitchen mess, the TV looping in the living room
 		"camera_origin": Vector3(-2.0, 1.6, -0.7),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(30.0), 0.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(30.0), 0.0),
 		"fov": 68.0,
 		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
 		"suppress_input": true,
@@ -3322,7 +3322,7 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/chau_house.glb",
 		# "Mrs. Chau on the couch" - the living room from the kitchen side, the seats round her
 		"camera_origin": Vector3(-3.6, 1.6, -3.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(-46.0), 0.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(-46.0), 0.0),
 		"fov": 66.0,
 		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
 		"suppress_input": true,

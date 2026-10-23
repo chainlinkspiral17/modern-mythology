@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 146: THE CHAU HOUSE IS A LUXURY HOME — TALL CEILINGS, WIDE TALL WINDOWS.**
+- The user (2026-10-23): "Chau house has tall ceilings and wide tall windows, it's a luxury home."
+  Canon (Andy's word); draft 1 had read "eight hundred thousand dollar home" as an ordinary 2.9 m
+  tract house. Changes:
+  - The ceiling is 3.9 m (H).
+  - Windows sill at about 0.45 m and stand 2.3–2.8 m tall. The living room's front window is 4.4 m
+    wide, the two N living-room windows 2.6 and 2.2 m, the kitchen's 2.6 m, the bedrooms' and the
+    game room's 2.0–2.2 m.
+  - The front door is 2.5 m with a glass transom.
+  - Steven's blinds are the kit blinds, sized to the new window.
+  - Crown molding round the great room; a pendant over the entry.
+  - chau_entry_morning and chau_living levelled (pitch +0.02) so the height reads.
+  - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+    obstruction 0; perf 126.
+- DRAFT N+1: the luxury finish beyond scale. Stone or wide-plank floor in place of the tract tile,
+  art on the tall walls (still "sparsely furnished"), statement lighting over the living room, a
+  stair or second storey if the text gives one. Steven's armchair is still box slabs (the twisted
+  blanket sits on it). Amanda's half is unchecked.
+- Deck must REBUILD chau_house.
+
 **2026-10-23 · pass 145: THE CHAU HOUSE'S WINDOWS ARE GLASS, WITH A STREET BEHIND THEM.**
 - A sweep of every builder's glass colours for alpha 1.0, after passes 142/143. Most are deliberate:
   night glass seen from outside, car glass, the lit kitchen window, the diner's tinted panes. One

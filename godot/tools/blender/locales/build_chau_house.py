@@ -32,6 +32,13 @@ AMANDA'S (x 40..56) — "the two boys at a friend's house, her name Amanda":
   playing behind them on a large television. A large floor fan drones and
   kicks a sheet into the air, tented in place by a tall floor lamp."
 
+PASS 146 (2026-10-23) — the user: "Chau house has tall ceilings and wide
+tall windows, it's a luxury home." H 2.9 -> 3.9; every outside window
+widened and taken down to a 0.45 m sill (the living room's front one 4.4 m
+wide, 2.8 m tall); the front door 2.5 m under a glass transom; Steven's
+blinds the kit's; crown molding round the great room, a pendant in the
+entry.
+
 Blender: x east, y north, z up; Godot (x, z, -y).
 
 Vol 4's "the wasted sentiment" is Steven's room too (the user, 2026-10-18:
@@ -48,12 +55,12 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe,
                              make_taper_cyl, join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding
 from _props.views import make_view
-from _props.furniture import make_bed, make_chair, make_lamp, make_sofa
+from _props.furniture import make_bed, make_chair, make_lamp, make_sofa, make_pendant
 from _props.detail import make_wall_outlet, make_light_switch
 
-X0, X1, D, H, T = -10.0, 12.0, 14.0, 2.9, 0.20
+X0, X1, D, H, T = -10.0, 12.0, 14.0, 3.9, 0.20   # pass 146 (the user: "tall ceilings and wide tall windows, it's a luxury home"): was 2.9
 WALL = (0.90, 0.88, 0.84, 1.0); BASE = (0.70, 0.68, 0.64, 1.0)
 PAL = {"wall": WALL, "baseboard": BASE}
 OAK_FLOOR = (0.66, 0.52, 0.36, 1.0); OAK_SEAM = (0.56, 0.44, 0.30, 1.0)
@@ -97,17 +104,19 @@ def build_shell():
     make_box("Chau_Ceil", (cx, cy, H + 0.04), (X1 - X0 + 0.4, D + 0.4, 0.08), (0.94, 0.94, 0.92, 1.0))
     # outside walls: the front door on the S, windows round
     make_wall_with_openings("Chau_Wall_S", (cx, 0.0, 0), length=X1 - X0 + 0.4, height=H, thickness=T, axis='X', palette=PAL,
-                            baseboard_face_sign=+1, openings=[(-2.0, 1.05, 1.0, 2.1), (-7.0, 1.5, 2.0, 1.3), (2.5, 1.5, 2.4, 1.4)])
-    make_box("Front_Door", (-2.0, 0.0, 1.05), (0.98, 0.06, 2.08), (0.40, 0.30, 0.22, 1.0))
-    window("Win_Kitchen_S", 'X', 0.0, -7.0, w=2.0, sign=1)
-    window("Win_Living_S", 'X', 0.0, 2.5, w=2.4, h=1.4, sign=1)
+                            baseboard_face_sign=+1, openings=[(-2.0, 1.50, 1.1, 3.0), (-7.0, 1.95, 2.6, 2.3), (2.4, 1.85, 4.4, 2.8)])
+    make_box("Front_Door", (-2.0, 0.0, 1.25), (1.08, 0.06, 2.48), (0.40, 0.30, 0.22, 1.0))
+    make_box("Front_Door_Lite", (-2.0, 0.0, 2.77), (1.10, 0.03, 0.46), DAYGLASS)   # the transom over the tall door
+    make_box("Front_Door_Lite_Bar", (-2.0, 0.0, 2.52), (1.10, 0.20, 0.04), (0.30, 0.30, 0.32, 1.0))
+    window("Win_Kitchen_S", 'X', 0.0, -7.0, z=1.95, w=2.6, h=2.3, sign=1)
+    window("Win_Living_S", 'X', 0.0, 2.4, z=1.85, w=4.4, h=2.8, sign=1)
     make_wall_with_openings("Chau_Wall_N", (cx, D, 0), length=X1 - X0 + 0.4, height=H, thickness=T, axis='X', palette=PAL,
-                            baseboard_face_sign=-1, openings=[(-2.1, 1.5, 2.0, 1.4), (4.0, 1.5, 1.6, 1.3)])
-    window("Win_Living_N1", 'X', D, -2.1, w=2.0, h=1.4, sign=-1)
-    window("Win_Living_N2", 'X', D, 4.0, sign=-1)
+                            baseboard_face_sign=-1, openings=[(-2.3, 1.85, 2.6, 2.8), (4.5, 1.85, 2.2, 2.8)])
+    window("Win_Living_N1", 'X', D, -2.3, z=1.85, w=2.6, h=2.8, sign=-1)
+    window("Win_Living_N2", 'X', D, 4.5, z=1.85, w=2.2, h=2.8, sign=-1)
     make_wall_with_openings("Chau_Wall_W", (X0, cy, 0), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL,
-                            baseboard_face_sign=+1, openings=[(10.0, 1.5, 1.6, 1.3)])
-    window("Win_Game_W", 'Y', X0, 10.0, w=1.6, sign=1)
+                            baseboard_face_sign=+1, openings=[(8.6, 1.75, 2.0, 2.4)])
+    window("Win_Game_W", 'Y', X0, 8.6, z=1.75, w=2.0, h=2.4, sign=1)
     # what the windows see: the street out front, the back yard, the side
     # yards and the neighbours close (a new development, lots shoulder to
     # shoulder)
@@ -116,15 +125,13 @@ def build_shell():
     make_view("Chau_View_E", "E", X1 + T / 2.0, cy, kind="side", ground_z=0.0, span=D + 0.4, seed=5)
     make_view("Chau_View_W", "W", X0 - T / 2.0, cy, kind="side", ground_z=0.0, span=D + 0.4, seed=6)
     make_wall_with_openings("Chau_Wall_E", (X1, cy, 0), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL,
-                            baseboard_face_sign=-1, openings=[(6.0, 1.5, 1.4, 1.3), (11.2, 1.5, 1.4, 1.3)])
-    window("Win_Steven_E", 'Y', X1, 6.0, w=1.4, sign=-1)
-    window("Win_Mom_E", 'Y', X1, 11.2, w=1.4, sign=-1)
-    # Steven's blinds: the slats over his window
-    for k in range(16):
-        make_box(f"Blind_Steven_{k}", (X1 - 0.13, 6.0, 2.12 - k * 0.08), (0.006, 1.40, 0.05), (0.94, 0.94, 0.92, 1.0))
-    make_box("Blind_Steven_Head", (X1 - 0.125, 6.0, 2.20), (0.05, 1.46, 0.05), (0.94, 0.94, 0.92, 1.0))
-    for s in (-1, 1):             # the ladder cords the slats hang on
-        make_box(f"Blind_Steven_Cord_{s:+d}", (X1 - 0.13, 6.0 + s * 0.45, 1.53), (0.008, 0.008, 1.30), (0.94, 0.94, 0.92, 1.0))
+                            baseboard_face_sign=-1, openings=[(6.0, 1.70, 2.2, 2.4), (11.4, 1.70, 2.2, 2.4)])
+    window("Win_Steven_E", 'Y', X1, 6.0, z=1.70, w=2.2, h=2.4, sign=-1)
+    window("Win_Mom_E", 'Y', X1, 11.4, z=1.70, w=2.2, h=2.4, sign=-1)
+    # Steven's blinds ("Light comes in through window blinds"), drawn most of
+    # the way down the tall window
+    make_blinds("Blind_Steven", (X1 - T / 2.0, 6.0, 1.70), width=2.10, height=2.32, axis='Y', room_dir=-1,
+                color=(0.94, 0.94, 0.92, 1.0), raised_frac=0.15)
     # inside walls: the game room (W, its door to the living room), the hall
     # (E) and its rooms off it
     make_wall_with_openings("Wall_Game_E", (-4.0, 10.0, 0), length=8.0, height=H, thickness=0.14, axis='Y', palette=PAL,
@@ -175,6 +182,21 @@ def build_entry_kitchen():
     for k in range(4):
         make_chair(f"Kitchen_Stool_{k}", -4.25, 2.0 + k * 0.65, yaw=-math.pi / 2.0, wood=(0.30, 0.30, 0.32, 1.0),
                    seat_col=(0.30, 0.30, 0.32, 1.0), seat_h=0.66, w=0.36)
+
+
+def build_great_room_trim():
+    """The luxury home's finish (pass 146): crown molding round the great
+    room (entry, kitchen, living) at the 3.9 m ceiling, and a pendant over
+    the entry."""
+    pal = {"wood": (0.96, 0.95, 0.92, 1.0)}
+    wx0, wx1 = X0 + T / 2.0, HALL_X0 - 0.07
+    make_crown_molding("Crown_S", wall_x=(wx0 + wx1) / 2.0, wall_y=T / 2.0, length=wx1 - wx0, axis='X', ceil_z=H, palette=pal)
+    make_crown_molding("Crown_N", wall_x=(-4.0 + 0.07 + wx1) / 2.0, wall_y=D - T / 2.0, length=wx1 - (-4.0 + 0.07), axis='X',
+                       ceil_z=H, palette=pal)
+    make_crown_molding("Crown_W", wall_x=wx0, wall_y=(T / 2.0 + 6.0 - 0.07) / 2.0, length=6.0 - 0.07 - T / 2.0, axis='Y', ceil_z=H,
+                       palette=pal)
+    make_crown_molding("Crown_E", wall_x=wx1, wall_y=D / 2.0, length=D - T, axis='Y', ceil_z=H, palette=pal)
+    make_pendant("Entry_Pendant", -2.0, 1.6, bulb_z=2.95, ceil_z=H, shade_col=(0.86, 0.84, 0.78, 1.0), shade_r=0.26)
 
 
 def build_living():
@@ -395,6 +417,7 @@ def main():
     clear_scene()
     build_shell()
     build_entry_kitchen()
+    build_great_room_trim()
     build_living()
     build_hall_rooms()
     build_game_room()
