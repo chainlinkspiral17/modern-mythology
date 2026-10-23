@@ -3835,6 +3835,27 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 154: THE LINK HOUSE IN USE; THE DRIVE'S GATE; THE HOUSE AT NIGHT.**
+- **The kitchen in use:** a dish rack by the sink, a towel over the oven door, a fruit bowl,
+  canisters, a cutting board and knife, a paper-towel roll, magnets, a calendar and a child's
+  drawing on the fridge, a trash can, a rug at the sink.
+- **The mudroom in use:** detergent and dryer sheets on the dryer, a shelf of jars over the
+  machines, a broom and dustpan, the dog's bowls and mat by the door, keys on a hook, a backpack
+  on the bench, a cap, an umbrella stand.
+- **The drive:** a pipe gate at the road end, open; the mailbox on its post.
+- **andy_house_front_night:** the house from the gate at night — the porch light, the living room
+  and master windows lit, the carport dark, a blue moon key.
+- **PERF, the open question answered:** the trim was never it. The probe lights every preset's
+  lamps at once, and a shadowed DirectionalLight about triples a view: with the moon shadowed the
+  room hit 3,054; with it off, 1,374; with the day sun's shadow off as well, 462. The moon now
+  casts no shadow; the day sun keeps its (the porch's depth). The dusk and night porch lamps are
+  one node. Baseline 1,374.
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0.
+- DRAFT N+1: the living room's night dressing (popcorn, the afghan pulled up); Andy's room's
+  clutter by the text; a real decision on the day sun's shadow once the Deck's frame time is seen.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 153: THE LINK HOUSE'S PORCH PLANTED; A STORAGE ROOM OPEN.**
 - **The porch:** a ceiling fan over the rockers; two ferns in hanging baskets between the posts;
   flower beds along its front (shrubs, pink, yellow and purple flowers, an edging).

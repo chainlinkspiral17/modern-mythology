@@ -2874,6 +2874,18 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.52, 0.48, 0.62, 1), "ambient_energy": 0.55, "fog_color": Color(0.56, 0.44, 0.44, 1)},
 		"suppress_input": true,
 	},
+	"andy_house_front_night": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# the house from the pasture gate at night (pass 154): the porch light, the windows lit, the carport dark, the moon over the roof
+		"camera_origin": Vector3(2.5, 1.15, 16.0),
+		"camera_rotation": Vector3(0.06, deg_to_rad(7.0), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.12, 1), "sky_horizon": Color(0.14, 0.16, 0.26, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.40, 0.56, 1), "ambient_energy": 0.30, "fog_color": Color(0.10, 0.11, 0.16, 1)},
+		"suppress_input": true,
+	},
 	"andy_house_kitchen": {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",

@@ -52,8 +52,19 @@ flower beds along the porch's front (shrubs, flowers, an edging); the first
 storage room's door open on its shelves of paint and boxes, the push mower,
 the rakes and the shovel, a bulb (it had no W wall: fixed); the storage
 rooms in the house's white siding; the freezer by the carport's S end.
-DRAFT 8 targets: the kitchen and mudroom dressed for use; the yard's
-mailbox and the drive's gate; a night exterior; (older:) siding and trim on the house's outside faces (they carry
+DRAFT 8 (pass 154): the kitchen in use (the dish rack, a towel on the
+oven door, the fruit bowl, canisters, the cutting board, paper towels, the
+fridge's magnets, calendar and a drawing, the trash can, a rug); the
+mudroom in use (detergent, a shelf of jars, the broom and dustpan, the dog
+bowls, keys on a hook, a backpack on the bench, a cap, the umbrella stand);
+the drive's pipe gate open at the road and the mailbox; andy_house_front_night.
+PERF: a shadowed DirectionalLight is the draw-call lever here, not the
+mesh count — the probe counts every preset's lights at once, and each
+shadowed sun about triples the view (moon shadowed: 3,054; off: 1,374; the
+day sun off too: 462). The moon casts no shadow; the day sun keeps its.
+DRAFT 9 targets: the living room's night dressing (the TV marathon's
+glow on the couch is the base scene; a bowl of popcorn, the afghan
+pulled up); Andy's room's clutter by the text; (older:) siding and trim on the house's outside faces (they carry
 the interior paint); the upstairs windows' shutters; a porch light that
 lights at night; a dusk preset from the porch; the storage rooms' insides;
 the house from outside (the second storey's roofline);
@@ -112,6 +123,7 @@ from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_p
 from _props.plan import zoned
 from _props.decor import make_faded_poster, make_floor_plant
 from _props.trees import make_broadleaf, make_shrub, make_fern
+from _props.objects import make_mug, make_bowl
 from _props.vehicles import make_car
 from _props.detail import make_far_bands
 from _props.geometry import make_rot_box, make_heightfield, make_gable, make_blob
@@ -563,6 +575,29 @@ def build_ground_back_rooms():
         make_cyl(f"Mud_{('Washer', 'Dryer')[k]}_Door", (x, yi1 - 0.665, 0.48), 0.20, 0.02, (0.70, 0.74, 0.76, 1.0), axis='Y', segments=14)
     make_box("Mud_Laundry_Basket", (3.55, yi1 - 0.40, 0.20), (0.50, 0.36, 0.40), (0.80, 0.72, 0.56, 1.0))
     make_box("Mud_Door_Mat", (X1 - 0.10 - 0.45, 8.6, 0.006), (0.60, 0.90, 0.012), (0.36, 0.30, 0.24, 1.0))
+    # pass 154, the mudroom in use: a detergent jug and a box on the dryer, a
+    # shelf of jars over the machines, a broom and dustpan in the corner, a
+    # dog bowl and its mat by the door, keys on a hook, a school backpack on
+    # the bench, a cap on a hook, an umbrella stand
+    make_box("Mud_Detergent", (2.72, yi1 - 0.34, 0.90 + 0.15), (0.16, 0.12, 0.30), (0.30, 0.46, 0.76, 1.0))
+    make_box("Mud_Dryer_Sheets", (2.95, yi1 - 0.30, 0.90 + 0.07), (0.22, 0.10, 0.14), (0.86, 0.60, 0.26, 1.0))
+    make_box("Mud_Shelf_Over", (2.45, yi1 - 0.14, 1.70), (1.40, 0.28, 0.03), OAK)
+    for s_ in (-1, 1):
+        make_box(f"Mud_Shelf_Bracket_{s_:+d}", (2.45 + s_ * 0.55, yi1 - 0.12, 1.58), (0.03, 0.22, 0.22), OAK_DARK)
+    for k in range(4):
+        make_cyl(f"Mud_Jar_{k}", (1.95 + k * 0.32, yi1 - 0.14, 1.715 + 0.09), 0.06, 0.18, ((0.86, 0.80, 0.56, 0.8), (0.70, 0.74, 0.76, 0.6))[k % 2], segments=10)
+    make_rot_box("Mud_Broom_Handle", (X1 - T / 2.0 - 0.14, yi1 - 0.14, 0.78), (0.025, 0.025, 1.40), (0.76, 0.62, 0.40, 1.0), roll=0.12)
+    make_box("Mud_Broom_Head", (X1 - T / 2.0 - 0.14, yi1 - 0.22, 0.10), (0.26, 0.06, 0.20), (0.82, 0.70, 0.40, 1.0))
+    make_box("Mud_Dustpan", (X1 - T / 2.0 - 0.40, yi1 - 0.16, 0.02), (0.26, 0.24, 0.04), (0.20, 0.22, 0.26, 1.0))
+    make_box("Mud_Dog_Mat", (X1 - 0.10 - 0.40, 7.40, 0.006), (0.56, 0.40, 0.012), (0.30, 0.34, 0.40, 1.0))
+    make_bowl("Mud_Dog_Bowl", X1 - 0.10 - 0.52, 7.40, 0.012, (0.70, 0.72, 0.74, 1.0), r=0.09, h=0.06)
+    make_bowl("Mud_Dog_Water", X1 - 0.10 - 0.28, 7.40, 0.012, (0.70, 0.72, 0.74, 1.0), r=0.09, h=0.06)
+    make_box("Mud_Key_Hook", (X1 - T / 2.0 - 0.015, 9.20, 1.45), (0.03, 0.12, 0.04), (0.40, 0.40, 0.42, 1.0))
+    make_box("Mud_Keys", (X1 - T / 2.0 - 0.03, 9.22, 1.38), (0.02, 0.05, 0.10), (0.78, 0.70, 0.40, 1.0))
+    make_chamfer_box("Mud_Backpack", (mx + 0.22, 9.30, 0.45 + 0.17), (0.30, 0.38, 0.34), (0.30, 0.40, 0.60, 1.0), chamfer=0.05)
+    make_chamfer_box("Mud_Cap", (mx + 0.12, 8.15, 1.62), (0.14, 0.22, 0.10), (0.60, 0.24, 0.20, 1.0), chamfer=0.03)
+    make_cyl("Mud_Umbrella_Stand", (X1 - 0.10 - 0.95, 9.70, 0.25), 0.11, 0.50, (0.34, 0.28, 0.22, 1.0), segments=10)
+    make_rot_box("Mud_Umbrella", (X1 - 0.10 - 0.95, 9.70, 0.55), (0.04, 0.04, 0.90), (0.20, 0.20, 0.24, 1.0), roll=0.14)
 
 
 def build_living():
@@ -647,6 +682,33 @@ def build_kitchen():
     make_box("Kit_Toaster", (1.55, yb - 0.28, 1.08), (0.28, 0.18, 0.20), CHROME)
     make_box("Kit_Coffee", (4.95, yb - 0.24, 1.15), (0.22, 0.26, 0.34), BLACK)
     make_box("Kit_Mail", (2.60, yb - 0.40, 0.99), (0.26, 0.20, 0.02), (0.92, 0.90, 0.84, 1.0))
+    # pass 154, the kitchen in use: dishes in the rack by the sink, a dish
+    # towel over the oven door, a fruit bowl, canisters, a cutting board with
+    # the knife, a paper-towel roll, the fridge's magnets and the school
+    # calendar, a trash can at the run's end, a rug at the sink
+    make_box("Kit_Rack", (2.72, yb - 0.30, 0.99 + 0.02), (0.40, 0.32, 0.04), (0.86, 0.86, 0.88, 1.0))
+    for k in range(5):
+        make_box(f"Kit_Rack_Plate_{k}", (2.56 + k * 0.08, yb - 0.30, 1.01 + 0.11), (0.012, 0.22, 0.22), (0.94, 0.94, 0.92, 1.0))
+    make_mug("Kit_Rack_Mug", 2.90, yb - 0.22, 1.01, (0.30, 0.42, 0.60, 1.0))
+    make_box("Kit_Towel", (3.33, yb - 0.70, 0.62), (0.34, 0.02, 0.40), (0.72, 0.30, 0.26, 1.0))
+    make_bowl("Kit_Fruit", 3.95, yb - 0.30, 0.99, (0.84, 0.80, 0.72, 1.0), r=0.14, h=0.07)
+    for k, (dx_, dy_, col) in enumerate(((-0.05, 0.0, (0.80, 0.24, 0.20, 1.0)), (0.06, 0.04, (0.94, 0.80, 0.30, 1.0)), (0.0, -0.06, (0.40, 0.66, 0.30, 1.0)))):
+        make_blob(f"Kit_Fruit_{k}", (3.95 + dx_, yb - 0.30 + dy_, 1.10), 0.045, col, noise=0.12, seed=k + 3)
+    for k in range(3):
+        make_cyl(f"Kit_Canister_{k}", (1.88 + k * 0.16, yb - 0.16, 0.99 + 0.10 - k * 0.015), 0.065, 0.20 - k * 0.03, (0.88, 0.86, 0.80, 1.0), segments=10)
+        make_cyl(f"Kit_Canister_{k}_Lid", (1.88 + k * 0.16, yb - 0.16, 0.99 + 0.20 - k * 0.03 + 0.01), 0.068, 0.02, (0.44, 0.34, 0.24, 1.0), segments=10)
+    make_box("Kit_Board", (4.30, yb - 0.34, 0.99 + 0.01), (0.36, 0.26, 0.02), (0.70, 0.56, 0.36, 1.0))
+    make_rot_box("Kit_Knife", (4.34, yb - 0.30, 0.99 + 0.025), (0.22, 0.03, 0.006), (0.80, 0.80, 0.82, 1.0), yaw=0.4)
+    make_cyl("Kit_Paper_Towel_Base", (1.50, yb - 0.40, 0.99 + 0.01), 0.09, 0.02, CHROME, segments=12)
+    make_cyl("Kit_Paper_Towel_Post", (1.50, yb - 0.40, 0.99 + 0.17), 0.012, 0.32, CHROME, segments=6)
+    make_cyl("Kit_Paper_Towel", (1.50, yb - 0.40, 0.99 + 0.02 + 0.13), 0.07, 0.26, (0.96, 0.96, 0.94, 1.0), segments=12)
+    for k, (dy_, dz_, col) in enumerate(((-0.20, 1.30, (0.86, 0.30, 0.26, 1.0)), (0.10, 1.42, (0.30, 0.50, 0.80, 1.0)), (-0.05, 1.10, (0.94, 0.84, 0.30, 1.0)),
+                                         (0.22, 1.18, (0.36, 0.66, 0.36, 1.0)))):
+        make_box(f"Kit_Fridge_Magnet_{k}", (5.75 + dy_, yb - 0.74 - 0.012, dz_), (0.05, 0.012, 0.05), col)
+    make_box("Kit_Fridge_Calendar", (5.75 - 0.08, yb - 0.74 - 0.012, 1.26), (0.22, 0.006, 0.28), (0.96, 0.96, 0.94, 1.0))
+    make_box("Kit_Fridge_Drawing", (5.75 + 0.22, yb - 0.74 - 0.012, 0.92), (0.20, 0.006, 0.26), (0.94, 0.92, 0.80, 1.0))
+    make_cyl("Kit_Trash", (6.15, 4.40, 0.32), 0.18, 0.64, (0.86, 0.86, 0.84, 1.0), segments=12)
+    make_box("Kit_Sink_Rug", (2.10, yb - 1.00, 0.006), (1.00, 0.60, 0.012), (0.46, 0.40, 0.34, 1.0))
     # the dining table: father and son across it, the magazine between them
     tx, ty = 4.10, 2.20
     make_table("Dining", tx, ty, w=1.50, d=0.90, h=0.75, wood=OAK)
@@ -1030,6 +1092,18 @@ def build_grounds():
                  ((0.70, 0.18, 0.14, 1.0), (0.30, 0.42, 0.30, 1.0), (0.24, 0.24, 0.26, 1.0))[k], segments=10)
     # the gravel drive out east from the carport
     make_box("Drive_Gravel", ((CP_X1 + 70.0) / 2.0, (CP_Y0 + CP_Y1) / 2.0, GZ + 0.015), (70.0 - CP_X1, 4.6, 0.03), GRAVEL)
+    # pass 154: the drive's gate at the road end (a pipe gate on posts, open),
+    # the mailbox on its post beside it, a cattle guard would be more than
+    # the text gives
+    gx, gy = 62.0, (CP_Y0 + CP_Y1) / 2.0
+    for s_ in (-1, 1):
+        make_cyl(f"Drive_Gate_Post_{s_:+d}", (gx, gy + s_ * 2.6, GZ + 0.75), 0.08, 1.70, (0.36, 0.36, 0.38, 1.0), segments=8)
+    for k, z in enumerate((0.35, 0.70, 1.05, 1.40)):
+        make_rot_box(f"Drive_Gate_Rail_{k}", (gx - 1.65, gy - 2.6 + 1.65, GZ + z), (0.05, 4.60, 0.05), (0.60, 0.60, 0.62, 1.0), yaw=-0.78)
+    make_rot_box("Drive_Gate_Stile", (gx - 3.25, gy - 2.6 + 3.25, GZ + 0.88), (0.06, 0.06, 1.20), (0.60, 0.60, 0.62, 1.0))
+    make_cyl("Mailbox_Post", (gx + 1.2, gy + 3.4, GZ + 0.55), 0.05, 1.10, (0.46, 0.40, 0.32, 1.0), segments=6)
+    make_box("Mailbox", (gx + 1.2, gy + 3.4, GZ + 1.20), (0.50, 0.22, 0.24), (0.20, 0.22, 0.26, 1.0))
+    make_box("Mailbox_Flag", (gx + 1.45, gy + 3.28, GZ + 1.28), (0.03, 0.02, 0.14), (0.80, 0.20, 0.16, 1.0))
     # the back yard: a clothesline, the old oak
     for s, x in enumerate((-4.5, 1.5)):
         make_box(f"Clothesline_Post_{s}", (x, Y1 + 6.0, GZ + 1.0), (0.08, 0.08, 2.0), (0.62, 0.62, 0.64, 1.0))

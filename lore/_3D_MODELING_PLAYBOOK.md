@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-23 · the draw-call lever is the shadowed sun, not the mesh count (pass 154)
+
+- **What happened:** the Link house's exterior climbed from 398 to 1,346 draw calls across the
+  grounds passes, and two sessions chased the mesh count (join_stock on the trim, the balusters,
+  the fence) without moving it. Adding a night preset with a shadowed moon sent it to 3,054.
+  Turning the moon's shadow off: 1,374. Turning the day sun's shadow off as well: 462.
+- **Why:** perf_gate's probe instantiates the .tscn with EVERY preset's lights on at once, and
+  each shadowed DirectionalLight re-draws the view per shadow split. A second shadowed sun is a
+  second whole scene. Mesh merging (StaticMerge at load) already holds the mesh side.
+- **Rule:** one shadowed sun per locale at most, and never a shadowed moon or a shadowed
+  per-preset key beside it. When a room's count jumps, check `shadow_enabled` on its
+  DirectionalLights before touching geometry. A preset-suffixed lamp that two presets share is
+  one node with both suffixes.
+
 ### 2026-10-22 · an interior window needs the volume the prose puts behind it (pass 143)
 
 - **What happened:** the riverboat helm's leaded window is the vol 5 Emperor chapter's view: "surveyed
