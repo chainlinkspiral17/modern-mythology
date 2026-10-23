@@ -48,8 +48,9 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe,
                              make_taper_cyl, join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings
-from _props.furniture import make_bed, make_chair, make_lamp
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window
+from _props.views import make_view
+from _props.furniture import make_bed, make_chair, make_lamp, make_sofa
 from _props.detail import make_wall_outlet, make_light_switch
 
 X0, X1, D, H, T = -10.0, 12.0, 14.0, 2.9, 0.20
@@ -60,7 +61,7 @@ TILE = (0.86, 0.84, 0.80, 1.0); TILE_SEAM = (0.74, 0.72, 0.68, 1.0)
 DOOR = (0.92, 0.90, 0.86, 1.0)
 LEATHER = (0.36, 0.24, 0.18, 1.0); SOFA = (0.80, 0.78, 0.72, 1.0)
 FLAT = (0.08, 0.08, 0.09, 1.0)
-DAYGLASS = (0.86, 0.90, 0.94, 1.0)
+DAYGLASS = (0.80, 0.86, 0.90, 0.25)
 HALL_X0, HALL_X1 = 6.0, 7.6
 
 
@@ -75,13 +76,19 @@ def door_leaf(name, x, y, along, w=0.86):
 
 
 def window(name, along, line, c, z=1.5, w=1.6, h=1.3, sign=1):
-    """A day window: frame, the bright pane (our panes are opaque)."""
+    """A day window in an outside wall (pass 145, 2026-10-23): the kit
+    window's frame, sill and casing with a tinted pane (LocaleGlass makes
+    it glass) and the yard behind it. Draft 1's pane was an opaque white
+    sheet ("our panes are opaque" — true before 2026-10-02), so the new
+    house's windows were eight lit panels with nothing outside them."""
+    face = line + sign * T / 2.0
     if along == 'X':
-        make_box(name + "_Pane", (c, line + sign * 0.02, z), (w, 0.02, h), DAYGLASS)
-        make_box(name + "_Sill", (c, line + sign * 0.12, z - h / 2.0 - 0.02), (w + 0.12, 0.16, 0.04), WALL)
+        a = (c, face, z)
+        make_box(name + "_Pane", (c, line, z), (w, 0.02, h), DAYGLASS)
     else:
-        make_box(name + "_Pane", (line + sign * 0.02, c, z), (0.02, w, h), DAYGLASS)
-        make_box(name + "_Sill", (line + sign * 0.12, c, z - h / 2.0 - 0.02), (0.16, w + 0.12, 0.04), WALL)
+        a = (face, c, z)
+        make_box(name + "_Pane", (line, c, z), (0.02, w, h), DAYGLASS)
+    make_window(name, a, width=w - 0.10, height=h - 0.08, axis=along, room_dir=sign, see_through=True)
 
 
 def build_shell():
@@ -95,10 +102,19 @@ def build_shell():
     window("Win_Kitchen_S", 'X', 0.0, -7.0, w=2.0, sign=1)
     window("Win_Living_S", 'X', 0.0, 2.5, w=2.4, h=1.4, sign=1)
     make_wall_with_openings("Chau_Wall_N", (cx, D, 0), length=X1 - X0 + 0.4, height=H, thickness=T, axis='X', palette=PAL,
-                            baseboard_face_sign=-1, openings=[(-1.5, 1.5, 2.4, 1.4), (4.0, 1.5, 1.6, 1.3)])
-    window("Win_Living_N1", 'X', D, -1.5, w=2.4, h=1.4, sign=-1)
+                            baseboard_face_sign=-1, openings=[(-2.1, 1.5, 2.0, 1.4), (4.0, 1.5, 1.6, 1.3)])
+    window("Win_Living_N1", 'X', D, -2.1, w=2.0, h=1.4, sign=-1)
     window("Win_Living_N2", 'X', D, 4.0, sign=-1)
-    make_wall("Chau_Wall_W", (X0, cy, 0), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL, baseboard_face_sign=+1)
+    make_wall_with_openings("Chau_Wall_W", (X0, cy, 0), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL,
+                            baseboard_face_sign=+1, openings=[(10.0, 1.5, 1.6, 1.3)])
+    window("Win_Game_W", 'Y', X0, 10.0, w=1.6, sign=1)
+    # what the windows see: the street out front, the back yard, the side
+    # yards and the neighbours close (a new development, lots shoulder to
+    # shoulder)
+    make_view("Chau_View_S", "S", -T / 2.0, cx, kind="front", ground_z=0.0, span=X1 - X0 + 2.0, seed=3)
+    make_view("Chau_View_N", "N", D + T / 2.0, cx, kind="back", ground_z=0.0, span=X1 - X0 + 0.4, seed=4)
+    make_view("Chau_View_E", "E", X1 + T / 2.0, cy, kind="side", ground_z=0.0, span=D + 0.4, seed=5)
+    make_view("Chau_View_W", "W", X0 - T / 2.0, cy, kind="side", ground_z=0.0, span=D + 0.4, seed=6)
     make_wall_with_openings("Chau_Wall_E", (X1, cy, 0), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL,
                             baseboard_face_sign=-1, openings=[(6.0, 1.5, 1.4, 1.3), (11.2, 1.5, 1.4, 1.3)])
     window("Win_Steven_E", 'Y', X1, 6.0, w=1.4, sign=-1)
@@ -174,16 +190,12 @@ def build_living():
     make_box("Living_Rug", (tx, 8.6, 0.006), (4.6, 3.4, 0.012), (0.60, 0.56, 0.50, 1.0))
     # the couch (Mrs. Chau's) facing the TV, armchairs and chairs round
     cx, cy = tx, 7.4
-    make_box("Couch_Base", (cx, cy, 0.22), (2.40, 0.92, 0.44), SOFA)
-    make_box("Couch_Back", (cx, cy - 0.36, 0.68), (2.40, 0.20, 0.56), SOFA)
-    for s in (-1, 1):
-        make_box(f"Couch_Arm_{s:+d}", (cx + s * 1.11, cy, 0.56), (0.18, 0.92, 0.26), SOFA)
-    for k in range(3):
-        make_box(f"Couch_Cush_{k}", (cx - 0.70 + k * 0.70, cy + 0.06, 0.49), (0.66, 0.66, 0.12), (0.84, 0.82, 0.76, 1.0))
+    make_sofa("Couch", cx, cy, back="-Y", w=2.40, d=0.92, seats=3, color=SOFA, cushion_col=(0.84, 0.82, 0.76, 1.0),
+              leg_col=(0.30, 0.24, 0.18, 1.0), arm="track", pillows=((0.62, 0.30, 0.28, 1.0), (0.86, 0.84, 0.78, 1.0)))
     make_box("Coffee_Table", (cx, 9.0, 0.22), (1.4, 0.7, 0.44), (0.40, 0.30, 0.22, 1.0))
-    for k, (x, y, yaw) in enumerate(((cx - 2.3, 8.6, -math.pi / 2.0 + 0.3), (cx + 2.3, 8.6, math.pi / 2.0 - 0.3))):
-        make_box(f"Armchair_{k}_Base", (x, y, 0.22), (0.86, 0.86, 0.44), LEATHER)
-        make_rot_box(f"Armchair_{k}_Back", (x + (-0.36 if k == 0 else 0.36), y, 0.66), (0.16, 0.86, 0.50), LEATHER, yaw=0.0)
+    for k, (x, y) in enumerate(((cx - 2.3, 8.6), (cx + 2.3, 8.6))):
+        make_sofa(f"Armchair_{k}", x, y, back=("-X", "+X")[k], w=0.92, d=0.88, seats=1, color=LEATHER, arm="roll",
+                  leg_col=(0.24, 0.18, 0.14, 1.0))
     for k, x in enumerate((cx - 1.4, cx + 1.4)):
         make_chair(f"Living_Chair_{k}", x, 10.4, yaw=math.pi, wood=(0.40, 0.30, 0.22, 1.0), seat_col=(0.60, 0.54, 0.46, 1.0))
     make_lamp("Lamp_Living", cx + 2.6, 6.6, base_z=0.0, h=1.50)

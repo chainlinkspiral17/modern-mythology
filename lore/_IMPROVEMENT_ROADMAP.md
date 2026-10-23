@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 145: THE CHAU HOUSE'S WINDOWS ARE GLASS, WITH A STREET BEHIND THEM.**
+- A sweep of every builder's glass colours for alpha 1.0, after passes 142/143. Most are deliberate:
+  night glass seen from outside, car glass, the lit kitchen window, the diner's tinted panes. One
+  was a fault: **chau_house** (vol 3/4, 71 lines). Its eight "day windows" were opaque white
+  panels ("our panes are opaque", true before LocaleGlass in 2026-10-02) with nothing behind them.
+  - window() is now the kit window (frame, stool, casing) over a 0.25-alpha pane.
+  - The new development is round it: the street out front, the back yard, a neighbour close on
+    each side.
+  - A W window in the game room.
+  - The N living-room window moved off the surround tower it clipped.
+  - Mrs. Chau's couch and the two armchairs are the kit sofa.
+  - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+    obstruction 0; perf 126 draw calls (baseline 98).
+- DRAFT N+1: Amanda's half of the GLB (same check); the living room is canon-sparse but its walls
+  are bare (one framed piece, the new-house kind); the bath has no window (a frosted one?).
+- Deck must REBUILD chau_house.
+
 **2026-10-22 · pass 144: DABNEY'S GAME ROOM, SOFT COUCHES AND A STRIP OF AFTERNOON.**
 - **caltech_dabney / the game room** (vol 3 ch6 + vol 4, 210 lines). The "black leather couches"
   were four leather slabs each, and the basement had no window.
