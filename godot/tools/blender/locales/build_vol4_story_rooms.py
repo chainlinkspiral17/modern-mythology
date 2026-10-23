@@ -249,7 +249,15 @@ def build_boys_rooms():
         frame(f"{tag}_Window", 'X', x0 + w / 2.0, d, 1.45, 1.1, 1.1)
         make_box(f"{tag}_Door_Open", (x0 + 0.7 + 0.40, 0.09 + 0.42, 1.0), (0.04, 0.80, 2.0), (0.70, 0.62, 0.50, 1.0))
         make_box(f"{tag}_Window_Sky", (x0 + w / 2.0, d + 0.40, 1.45), (1.6, 0.04, 1.6),
-                 (0.10, 0.12, 0.18, 1.0))   # Aaron's evening
+                 (0.26, 0.26, 0.40, 1.0))   # Aaron's evening (pass 160: dusk, not a black panel)
+        make_box(f"{tag}_Window_Neighbor_Roof", (x0 + w / 2.0 + 0.3, d + 0.38, 1.05), (1.0, 0.02, 0.60), (0.16, 0.14, 0.14, 1.0))
+        make_box(f"{tag}_Window_Neighbor_Light", (x0 + w / 2.0 + 0.5, d + 0.36, 1.10), (0.22, 0.01, 0.18), (0.96, 0.82, 0.50, 1.0))
+        make_box(f"{tag}_Window_Pane", (x0 + w / 2.0, d, 1.45), (1.1, 0.02, 1.1), (0.78, 0.84, 0.88, 0.25))
+        make_box(f"{tag}_Curtain_L", (x0 + w / 2.0 - 0.62, d - 0.14, 1.45), (0.22, 0.06, 1.30), (0.56, 0.50, 0.40, 1.0))
+        make_box(f"{tag}_Curtain_R", (x0 + w / 2.0 + 0.62, d - 0.14, 1.45), (0.22, 0.06, 1.30), (0.56, 0.50, 0.40, 1.0))
+        make_cyl(f"{tag}_Curtain_Rod", (x0 + w / 2.0, d - 0.14, 2.10), 0.015, 1.60, (0.30, 0.26, 0.20, 1.0), axis='X', segments=6)
+        for e in (-1, 1):                      # the rod's brackets to the wall
+            make_box(f"{tag}_Curtain_Bracket_{e:+d}", (x0 + w / 2.0 + e * 0.76, d - 0.12, 2.10), (0.03, 0.06, 0.03), (0.30, 0.26, 0.20, 1.0))
     # Aaron: the bed, the toys still out, the small grey console, the
     # magazines and comics, a shelf of toys
     ax = 300.0

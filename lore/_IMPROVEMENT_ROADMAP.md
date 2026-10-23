@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 160: THE SWEEP'S NEXT TIER — CLUB STREET'S NIGHT, CHARLIE'S FLAT, THE SISTER'S ROOM, AARON'S WINDOW.**
+- Twenty presets across thirteen sets rebuilt and rendered (Pasadena 1945's park, shoot and clinic;
+  Carrie City's flat, afterparty and the sister's house; vol 4's garage, dead store, mirror room
+  and Aaron's room; Highway 101; Club Street; the New Orleans room; Cape Perpetua; Miriam's Subaru;
+  the NexCorp Gas & Go; the Caldwell radio room; the Foxhole dressing room; the Bindery; the
+  Cliffside Circus). Fixed:
+  - **club_street** (vol 1, 54 lines): the three night presets rendered near-black — four sodium
+    lamps in the scene but no env, so the loader's night ambient never came. They carry a night
+    env now (sky, ambient 0.55, fog) and the sidewalk, the curb, the parked sedan and the far
+    side's signs read; the lamps' halos are the glow's.
+  - **carrie_city** (vol 4, 67 lines): Charlie's living room was a slab couch and a chair in a bare
+    box. The kit sofa, a rug under the low table, two of his own prints on the N wall, a plant by
+    the window, a crate of records, a mug. The sister's "tight and cramped" main room: the kit
+    sofa with a throw, a lamp on a crate, curtains, a framed photo, folded laundry, the remote.
+  - **vol4_story_rooms / Aaron's room** (58 lines): the window was a black panel. A dusk outside
+    it (a neighbour's roof, one lit window), a glass pane, curtains on a rod; the evening lamp
+    1.5; a dusk env.
+  - **bindery** (vol 6, 42 lines): "[mood:day_bright]" rendered dim; the sun through the
+    storefront is 1.25 and the preset carries a warmer, brighter ambient.
+- Judged fine: park_chess, hollywood_shoot, clinic_1945 (a bare exam room by nature),
+  afterparty_room (dark by design), dead_store, mirror_room, highway_101, new_orleans_room,
+  cape_perpetua_overlook, miriam_subaru, nexcorp_gas_go, caldwell_radio_room_night,
+  foxhole_dressing_room, cliffside_circus, sister_house_yard.
+- Gates: overlap 0, support 0, doorway 0, vantage 0 blind, obstruction 0, orphan practicals 0,
+  tscn 0; perf carrie 88, vol4 132, club_street 110, bindery 60 (recorded).
+- A trap met twice now: a builder that imports a kit name INSIDE a function. Imports go at the
+  top (pass 155's lesson; the carrie_city edit was written to the top this time).
+- DRAFT N+1: the Bindery brighter still (the walnut cases eat the light); Club Street's lamp
+  pools on the sidewalk as practicals with range; the sister's partition wall bare.
+- Deck must REBUILD carrie_city, vol4_story_rooms.
+
 **2026-10-23 · pass 159: THE SWEEP BELOW 100 LINES — THE SMOLVUD DOCKS AT EVENING; NICK'S HOUSE.**
 - After pass 158 the big exteriors were re-rendered (Graustark's six, the riverfront's two, the
   diner porch, Highway 9, Main Street, the county line): each reads under its own sky; no sky

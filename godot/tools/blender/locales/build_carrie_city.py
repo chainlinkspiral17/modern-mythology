@@ -35,7 +35,9 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe, make_gable,
                              join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
-from _props.furniture import make_bed, make_chair, make_table, make_lamp
+from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_sofa
+from _props.decor import make_floor_plant
+from _props.objects import make_mug
 
 T = 0.16
 FLAT = {"wall": (0.82, 0.80, 0.74, 1.0), "baseboard": (0.40, 0.36, 0.30, 1.0)}
@@ -88,11 +90,22 @@ def build_flat():
     make_box("Bedroom_Rug", (1.8, 3.6, 0.004), (1.6, 1.2, 0.008), (0.50, 0.38, 0.30, 1.0))
     # the living room: the small couch, the chair across, the low table;
     # canvases leaning (he has art to make); the blanket on the couch
-    make_box("Couch_Base", (6.2, 6.8, 0.22), (1.6, 0.86, 0.44), (0.40, 0.44, 0.50, 1.0))
-    make_box("Couch_Back", (6.2, 7.16, 0.64), (1.6, 0.16, 0.42), (0.40, 0.44, 0.50, 1.0))
-    for s in (-1, 1):
-        make_box(f"Couch_Arm_{s:+d}", (6.2 + s * 0.74, 6.8, 0.52), (0.12, 0.86, 0.18), (0.40, 0.44, 0.50, 1.0))
-    make_rot_box("Couch_Blanket" + CN + CD, (6.1, 6.7, 0.46), (1.30, 0.80, 0.04), (0.70, 0.56, 0.36, 1.0), yaw=0.08)
+    make_sofa("Couch", 6.2, 6.8, back="+Y", w=1.6, d=0.86, seats=2, color=(0.40, 0.44, 0.50, 1.0), arm="track",
+              leg_col=(0.30, 0.24, 0.18, 1.0))                                  # pass 160: the kit sofa (it was three slabs)
+    make_rot_box("Couch_Blanket" + CN + CD, (6.1, 6.7, 0.455), (1.30, 0.80, 0.04), (0.70, 0.56, 0.36, 1.0), yaw=0.08)
+    # pass 160: the living room was a couch and a chair in a bare box — a rug
+    # under the table, two of his own prints on the N wall, a plant by the
+    # window, a crate of records, a mug on the table
+    make_box("Living_Rug", (6.2, 5.9, 0.004), (2.6, 2.2, 0.008), (0.46, 0.40, 0.36, 1.0))
+    for k, (x, col) in enumerate(((7.4, (0.80, 0.52, 0.36, 1.0)), (8.6, (0.30, 0.40, 0.56, 1.0)))):
+        make_box(f"Living_Print_{k}_Frame", (x, 7.92 - 0.016, 1.65), (0.70, 0.02, 0.90), (0.20, 0.18, 0.16, 1.0))
+        make_box(f"Living_Print_{k}", (x, 7.92 - 0.028, 1.65), (0.62, 0.004, 0.82), col)
+        make_box(f"Living_Print_{k}_Mark", (x - 0.1, 7.92 - 0.032, 1.55 + k * 0.2), (0.28, 0.002, 0.10), (0.92, 0.90, 0.84, 1.0))
+    make_floor_plant("Living_Plant", (9.4, 0.5, 0.0), kind="snake")
+    make_box("Record_Crate", (4.4, 0.6, 0.18), (0.40, 0.36, 0.36), (0.50, 0.40, 0.28, 1.0))
+    for k in range(9):
+        make_box(f"Record_Crate_Sleeve_{k}", (4.4, 0.45 + k * 0.03, 0.36), (0.32, 0.012, 0.32), ((0.86, 0.30, 0.24, 1.0), (0.20, 0.24, 0.30, 1.0), (0.92, 0.88, 0.70, 1.0))[k % 3])
+    make_mug("Living_Mug", 6.4, 5.95, 0.40, (0.30, 0.44, 0.56, 1.0))
     make_chair("Living_Chair", 6.2, 4.7, yaw=0.0, wood=(0.40, 0.30, 0.22, 1.0), seat_col=(0.56, 0.40, 0.30, 1.0))
     make_box("Low_Table", (6.2, 5.8, 0.20), (0.90, 0.50, 0.40), (0.44, 0.34, 0.24, 1.0))
     make_box("Newspaper_On_Table", (6.0, 5.8, 0.405), (0.36, 0.28, 0.01), (0.86, 0.84, 0.78, 1.0))
@@ -247,8 +260,22 @@ def build_sister_house():
         make_gable(f"Neighbor_Roof_{k}", (x, 5.0, 2.8 + 0.9), (8.6, 7.6, 1.8), (0.30, 0.28, 0.26, 1.0), ridge_axis='X')
     # inside: the cramped main room (couch, TV on a stand, toys, a laundry
     # basket), the dryer through the laundry door
-    make_box("Sister_Couch_Base", (84.0, 7.8, z0 + 0.22), (2.0, 0.86, 0.44), (0.52, 0.40, 0.32, 1.0))
-    make_box("Sister_Couch_Back", (84.0, 8.16, z0 + 0.64), (2.0, 0.16, 0.42), (0.52, 0.40, 0.32, 1.0))
+    make_sofa("Sister_Couch", 84.0, 7.8, back="+Y", w=2.0, d=0.86, seats=2, color=(0.52, 0.40, 0.32, 1.0),
+              cushion_col=(0.58, 0.46, 0.36, 1.0), arm="roll", leg_col=(0.30, 0.24, 0.18, 1.0), z0=z0,
+              throw=(0.40, 0.46, 0.60, 1.0))                                    # pass 160: the kit sofa, a throw over its arm
+    # pass 160: a lamp on a crate, curtains at the window, a frame on the wall,
+    # a pile of folded laundry on the couch's arm end, the TV's remote
+    make_box("Sister_Lamp_Crate", (82.4, 7.6, z0 + 0.22), (0.40, 0.40, 0.44), (0.50, 0.40, 0.28, 1.0))
+    make_lamp("Sister_Lamp", 82.4, 7.6, base_z=z0 + 0.44, h=0.50)
+    for e in (-1, 1):
+        make_box(f"Sister_Curtain_{e:+d}", (89.6 + e * 0.68, hy0 + 0.16, z0 + 1.45), (0.24, 0.06, 1.30), (0.62, 0.52, 0.42, 1.0))
+    make_cyl("Sister_Curtain_Rod", (89.6, hy0 + 0.16, z0 + 2.10), 0.015, 1.70, (0.30, 0.26, 0.20, 1.0), axis='X', segments=6)
+    for e in (-1, 1):                          # the rod's brackets to the wall
+        make_box(f"Sister_Curtain_Bracket_{e:+d}", (89.6 + e * 0.82, hy0 + 0.12, z0 + 2.10), (0.03, 0.10, 0.03), (0.30, 0.26, 0.20, 1.0))
+    make_box("Sister_Frame", (85.6, hy1 - 0.016, z0 + 1.60), (0.44, 0.02, 0.34), (0.24, 0.20, 0.16, 1.0))
+    make_box("Sister_Frame_Photo", (85.6, hy1 - 0.028, z0 + 1.60), (0.36, 0.004, 0.26), (0.72, 0.66, 0.56, 1.0))
+    make_box("Sister_Laundry_Fold", (84.9, 7.8, z0 + 0.52), (0.30, 0.26, 0.14), (0.86, 0.84, 0.80, 1.0))
+    make_box("Sister_Remote", (83.6, 5.6, z0 + 0.012), (0.05, 0.16, 0.02), (0.14, 0.14, 0.16, 1.0))
     make_box("Sister_TV_Stand", (82.5, 4.4, z0 + 0.30), (0.50, 0.90, 0.60), (0.40, 0.32, 0.24, 1.0))
     make_chamfer_box("Sister_TV", (82.5, 4.4, z0 + 0.82), (0.42, 0.50, 0.44), (0.16, 0.16, 0.16, 1.0), chamfer=0.03)
     make_box("Laundry_Basket", (86.6, 6.6, z0 + 0.18), (0.56, 0.40, 0.36), (0.86, 0.86, 0.84, 1.0))

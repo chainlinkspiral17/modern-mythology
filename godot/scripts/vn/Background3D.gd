@@ -1049,6 +1049,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.85, 1.6, -1.1),
 		"camera_rotation": Vector3(-0.044, 0.206, 0.0),
 		"fov": 58.0,
+		"env": {"ambient_color": Color(0.84, 0.80, 0.72, 1), "ambient_energy": 1.05, "fog_color": Color(0.70, 0.64, 0.54, 1)},
 		"suppress_input": true,
 	},
 	"centro_stockroom": {
@@ -4051,6 +4052,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(300.6, 1.4, -1.0),
 		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
 		"fov": 66.0,
+		"env": {"sky_top": Color(0.10, 0.12, 0.24, 1), "sky_horizon": Color(0.40, 0.30, 0.34, 1), "ground_horizon": Color(0.12, 0.10, 0.10, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1), "ambient_color": Color(0.72, 0.68, 0.70, 1), "ambient_energy": 0.50, "fog_color": Color(0.22, 0.20, 0.24, 1)},
 		"suppress_input": true,
 	},
 	"aaron_bedroom_blue": {
@@ -4126,6 +4128,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.2, 1.6, -1.0),
 		"camera_rotation": Vector3(0.0, deg_to_rad(-150.0), 0.0),
 		"fov": 66.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1), "ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1), "ambient_color": Color(0.58, 0.58, 0.74, 1), "ambient_energy": 0.55, "fog_color": Color(0.12, 0.11, 0.15, 1)},
 		"suppress_input": true,
 	},
 	"club_street_curb": {
@@ -4135,6 +4138,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.0, 1.6, 8.5),
 		"camera_rotation": Vector3(0.0, deg_to_rad(-20.0), 0.0),
 		"fov": 64.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1), "ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1), "ambient_color": Color(0.58, 0.58, 0.74, 1), "ambient_energy": 0.55, "fog_color": Color(0.12, 0.11, 0.15, 1)},
 		"suppress_input": true,
 	},
 	"club_street_neon_wide": {
@@ -4144,6 +4148,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(9.0, 8.0, 60.0),
 		"camera_rotation": Vector3(-0.10, deg_to_rad(0.0), 0.0),
 		"fov": 46.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1), "ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1), "ambient_color": Color(0.58, 0.58, 0.74, 1), "ambient_energy": 0.55, "fog_color": Color(0.12, 0.11, 0.15, 1)},
 		"suppress_input": true,
 	},
 	"club_street_dawn": {

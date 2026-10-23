@@ -12,6 +12,11 @@
  "ben_bedroom": {
   "draw": 92
  },
+ "bindery": {
+  "draw": 60,
+  "prims": 109072,
+  "objects": 230
+ },
  "bus_station": {
   "draw": 80,
   "prims": 19652,
