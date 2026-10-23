@@ -1763,6 +1763,22 @@ const CAMERA_PRESETS := {
 	},
 	# ── VOL 7 — Cape Perpetua, the unmarked overlook (re-homed off
 	# cabin_road 2026-09-01; vol7_ch12_morning) ───────────────────────
+	"smolvud_docks_evening": {
+		"scene": "res://scenes/locales/smolvud_jetty.tscn",
+		"requires_glb": "res://assets/3d/locales/smolvud_jetty.glb",
+		# (2026-10-23, pass 159) vol 2's "The pier" / "The docks" (ch10 Frank, Salmon) and the crab
+		# derby: "We rocked back and forth on a bench, sitting and watching the rest of the boats come
+		# in for the evening, hearing the bells and whistles and moans of the harbor ... We sat and
+		# watched the sun go down." From the shore path's bench, west over the channel to the harbor's
+		# floats and boats, one boat coming in, the sun low over the sea. The fog jetty stays vol 7's.
+		# On the harbor float itself ("cleaning the deck of my daddy's boat"), from its root by the
+		# bench and the crab pots, north along it: the boats either side, the one coming in ahead.
+		"camera_origin": Vector3(-48.9, 1.70, -4.6),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(14.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.26, 0.30, 0.52, 1), "sky_horizon": Color(0.98, 0.66, 0.40, 1), "ground_horizon": Color(0.30, 0.28, 0.30, 1), "ground_bottom": Color(0.12, 0.12, 0.14, 1), "ambient_color": Color(0.70, 0.60, 0.62, 1), "ambient_energy": 0.60, "fog_color": Color(0.82, 0.60, 0.46, 1), "fog_sky": 0.15},
+		"suppress_input": true,
+	},
 	"smolvud_jetty": {
 		"scene": "res://scenes/locales/smolvud_jetty.tscn",
 		"requires_glb": "res://assets/3d/locales/smolvud_jetty.glb",
@@ -3744,6 +3760,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-2.0, 1.6, 12.0),
 		"camera_rotation": Vector3(0.04, deg_to_rad(0.0), 0.0),
 		"fov": 62.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.14, 0.14, 0.20, 1), "ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1), "ambient_color": Color(0.50, 0.54, 0.70, 1), "ambient_energy": 0.42, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
 	},
 	"nick_garage_halloween": {
@@ -5127,8 +5144,12 @@ func _apply_preset_env(root: Node, spec: Dictionary) -> void:
 	# on, and Godot's fog_sky_affect defaults to 1.0: the sky is painted
 	# entirely in the fog colour, so no authored sky_top / sky_horizon ever
 	# showed — a red test sky lit the ground red and still drew grey-blue.
-	# 0.35 keeps the haze and lets the sky through; "fog_sky" overrides.
-	env.fog_sky_affect = float(ov.get("fog_sky", 0.35))
+	# 0.35 keeps the haze and lets the sky through; "fog_sky" overrides. A
+	# scene that set its own value below that (the asylum's 0.0) keeps it.
+	if ov.has("fog_sky"):
+		env.fog_sky_affect = float(ov["fog_sky"])
+	else:
+		env.fog_sky_affect = minf(env.fog_sky_affect, 0.35)
 	we.environment = env
 
 

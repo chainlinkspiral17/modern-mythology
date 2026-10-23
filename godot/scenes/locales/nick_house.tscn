@@ -157,13 +157,13 @@ environment = SubResource("Env_Locale")
 [node name="Key_Moon__nick_house_front" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 10, 10)
 light_color = Color(0.5, 0.56, 0.8, 1)
-light_energy = 0.22
+light_energy = 0.55
 shadow_enabled = false
 
 [node name="Fill_Night__nick_house_front" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 6, 8)
 light_color = Color(0.4, 0.44, 0.6, 1)
-light_energy = 0.06
+light_energy = 0.16
 shadow_enabled = false
 
 [node name="Streetlamp__nick_house_front" type="OmniLight3D" parent="."]

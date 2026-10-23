@@ -166,6 +166,11 @@
   "prims": 54196,
   "objects": 232
  },
+ "smolvud_jetty": {
+  "draw": 118,
+  "prims": 5900,
+  "objects": 288
+ },
  "tulsa_house": {
   "draw": 74,
   "prims": 24688,

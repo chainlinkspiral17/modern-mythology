@@ -179,6 +179,19 @@ shadow_enabled = false
 metadata/daylight = true
 
 ; the navigation light at the tip, burning in the fog
+[node name="Sun_Evening__smolvud_docks_evening" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.907, 0.1274, -0.402, 0, 0.9533, 0.302, 0.422, 0.2739, -0.864, 0, 12, 0)
+light_color = Color(1.0, 0.70, 0.44, 1)
+light_energy = 0.9
+shadow_enabled = false
+
+[node name="Boat_Deck_Light_Evening__smolvud_docks_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.0, 2.4, -8.5)
+light_color = Color(1.0, 0.86, 0.60, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 7.0
+
 [node name="Nav_Light_Lamp_Practical" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.20, -83.00)
 light_color = Color(0.40, 1.0, 0.56, 1)

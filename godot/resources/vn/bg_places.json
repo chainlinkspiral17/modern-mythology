@@ -495,7 +495,8 @@
   },
   "vol2_harbor_dusk": {
    "fit": "reuse",
-   "to": "3d:smolvud_jetty",
+   "to": "3d:smolvud_docks_evening",
+   "note": "the docks at evening: the bench, the boats coming in, the sun going down (pass 159)",
    "scenes": 1
   },
   "vol2_ice_storm": {
@@ -551,7 +552,8 @@
   },
   "vol2_pier_crabbing": {
    "fit": "reuse",
-   "to": "3d:smolvud_jetty",
+   "to": "3d:smolvud_docks_evening",
+   "note": "the pier: the harbor from the shore path (pass 159; the fog frame is vol 7's)",
    "scenes": 2
   },
   "vol2_radio_studio": {

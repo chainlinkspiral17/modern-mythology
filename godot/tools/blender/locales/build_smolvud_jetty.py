@@ -30,7 +30,13 @@ the jetty runs out along +Y from the root at y=-6. Sea level z=0, the
 land at z=1.8, the jetty crest at z=3.1. glTF export remaps to Godot
 (x, z, -y).
 
-Draft 2 targets: the three young people's way past at the jetty root
+Draft 2 (2026-10-23, pass 159): the set also plays vol 2's "The pier" and
+"The docks" (Frank; Salmon: the bench, the boats coming in for the evening,
+the sun going down) and the crab derby, which had the vol 7 fog frame. A
+second preset, smolvud_docks_evening, sits on the shore path's bench and
+looks west over the channel to the harbor; one boat comes in up the
+channel with its wake.
+Draft 3 targets: the three young people's way past at the jetty root
 (the path's wet sheen, footprints in the sand); the gulls; the Frog's
 smoke as a NONSOLID wisp; the tide line on the rocks.
 """
@@ -204,6 +210,38 @@ def build_harbor_and_town():
         make_box(f"Boat_{k}_Hull", (bx, by, 0.45), (8.0, 2.6, 1.30), col)
         make_box(f"Boat_{k}_Cabin", (bx - 1.0, by, 1.65), (2.6, 2.0, 1.10), (0.88, 0.88, 0.84, 1.0))
         make_cyl(f"Boat_{k}_Mast", (bx + 1.2, by, 1.10 + 1.9), 0.08, 3.8, COL_DARK, segments=6)   # stepped on the deck
+        if k == 0:                                   # the deck lamp on the nearest boat's cabin (the evening preset's practical)
+            make_box("Boat_0_Deck_Lamp", (bx, by, 2.26), (0.16, 0.16, 0.12), (0.96, 0.92, 0.70, 1.0))
+    # pass 159: one boat coming in up the channel for the evening (vol 2's
+    # docks: "watching the rest of the boats come in"), its wake behind it
+    bx, by, yaw = -22.0, 30.0, math.radians(-150.0)
+    c, s_ = math.cos(yaw), math.sin(yaw)
+    make_rot_box("Boat_In_Hull", (bx, by, 0.45), (8.0, 2.6, 1.30), (0.30, 0.40, 0.52, 1.0), yaw=yaw)
+    make_rot_box("Boat_In_Cabin", (bx - 1.0 * c, by - 1.0 * s_, 1.65), (2.6, 2.0, 1.10), (0.88, 0.88, 0.84, 1.0), yaw=yaw)
+    make_cyl("Boat_In_Mast", (bx + 1.2 * c, by + 1.2 * s_, 3.0), 0.08, 3.8, COL_DARK, segments=6)
+    make_box("Boat_In_Light", (bx - 1.0 * c, by - 1.0 * s_, 2.26), (0.14, 0.14, 0.12), (0.96, 0.92, 0.70, 1.0))
+    for j in range(4):
+        d = 5.0 + j * 4.0
+        make_rot_box(f"Boat_In_Wake_{j}", (bx - d * c, by - d * s_, 0.02), (3.0, 1.2 + j * 1.0, 0.02), COL_FOAM, yaw=yaw)
+    # the float's root — past the beach's sand slab, which the float runs into
+    # (pass 159): the bench they rock on, a stack of crab pots,
+    # cleats along the float's edge, a coil of line, a bollard on the shore end
+    fz = 0.30
+    make_box("Float_Bench_Seat", (hx + 0.75, 5.6, fz + 0.45), (0.42, 1.60, 0.05), (0.50, 0.40, 0.30, 1.0))
+    make_box("Float_Bench_Back", (hx + 0.97, 5.6, fz + 0.75), (0.05, 1.60, 0.36), (0.50, 0.40, 0.30, 1.0))
+    for e in (-1, 1):
+        make_box(f"Float_Bench_Leg_{e:+d}", (hx + 0.80, 5.6 + e * 0.70, fz + 0.21), (0.40, 0.06, 0.42), COL_DARK)
+        make_box(f"Float_Bench_Back_Post_{e:+d}", (hx + 0.97, 5.6 + e * 0.70, fz + 0.66), (0.05, 0.06, 0.48), COL_DARK)
+    for k in range(5):
+        px, py, pz = hx + 0.5 - (k % 2) * 0.06, 9.0 + (k if k < 4 else 0) * 0.9, fz + 0.30 + (k // 4) * 0.60
+        make_box(f"Crab_Pot_{k}", (px, py, pz), (0.80, 0.80, 0.60), (0.36, 0.30, 0.22, 1.0))
+        make_box(f"Crab_Pot_{k}_Mesh", (px, py, pz + 0.005), (0.72, 0.72, 0.58), (0.44, 0.40, 0.30, 0.55))
+        make_cyl(f"Crab_Pot_{k}_Float", (px + 0.30, py + 0.30, pz + 0.36), 0.08, 0.14, (0.90, 0.46, 0.14, 1.0), segments=8)
+    for k in range(6):
+        for e in (-1, 1):
+            make_box(f"Float_Cleat_{k}_{e:+d}", (hx + e * 0.85, 13.2 + k * 4.2, fz + 0.05), (0.26, 0.10, 0.10), (0.40, 0.40, 0.42, 1.0))
+    make_cyl("Float_Line_Coil", (hx - 0.6, 11.4, fz + 0.04), 0.26, 0.08, (0.82, 0.78, 0.60, 1.0), segments=12)
+    make_cyl("Float_Bollard", (hx - 0.9, 10.2, fz + 0.30), 0.14, 0.60, COL_DARK, segments=10)
     make_box("Far_Shore_Headland", (-170.0, 40.0, 4.0), (80.0, 140.0, 12.0), (0.34, 0.38, 0.30, 1.0))
     # Smolvud low on its rise behind the shore, going grey in the fog
     placed = 0

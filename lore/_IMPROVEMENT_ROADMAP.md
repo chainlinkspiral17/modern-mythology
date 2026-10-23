@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 159: THE SWEEP BELOW 100 LINES — THE SMOLVUD DOCKS AT EVENING; NICK'S HOUSE.**
+- After pass 158 the big exteriors were re-rendered (Graustark's six, the riverfront's two, the
+  diner porch, Highway 9, Main Street, the county line): each reads under its own sky; no sky
+  keys needed. Refinement: the loader now clamps `fog_sky_affect` to 0.35 only when a scene left
+  it at the default; a scene that set 0.0 (the asylum, the bayou lighthouse) keeps its own.
+- Twelve more sets rebuilt and rendered (june_closet, safehouse_bedroom, smolvud_jetty,
+  houston_design_studio, wagner_porch_morning, copy_shop_floor, nick_house_front, street_day,
+  charlie_bedroom_night, apple_peddler_booth, school_newspaper, garage_level). Two fixed:
+  - **smolvud_jetty** (77 lines). One preset — vol 7's fog jetty — served every scene on the set,
+    including vol 2's "The pier" and "The docks" ("We rocked back and forth on a bench, sitting and
+    watching the rest of the boats come in for the evening ... We sat and watched the sun go
+    down") and the crab derby. A second preset, **smolvud_docks_evening**, stands on the harbor
+    float by its root — the bench, a stack of crab pots, the bollard and a coil of line, cleats
+    down the float — looking north along it: the pilings, the moored boats with a deck lamp lit,
+    one boat coming in up the channel with its wake, the town across the water, a low sun to the
+    north-west. `bg_places.json`: vol2_harbor_dusk and vol2_pier_crabbing point at it; the fog
+    frame stays vol 7's.
+  - **nick_house_front** (69 lines): near-black. "His grandma's house was unlit from the
+    outside" holds — the house's own windows stay dark — but the moon key went 0.22 → 0.55, the
+    fill 0.06 → 0.16, and the preset carries a night env, so the house, the mini-bike and the
+    neighbours' lit windows read.
+- Judged fine: June's closet, the safehouse bedroom, the Houston design studio, Wagner's porch,
+  the copy shop, Pasadena's street, Charlie's bedroom, the Apple Peddler booth, the school
+  newspaper room, the garage level.
+- Gates: smolvud_jetty overlap 0, support 0, obstruction 0, vantage 0 blind, orphan practicals 0;
+  perf 118 (baseline recorded), nick_house 82.
+- DRAFT N+1: the docks preset wants gulls and a day variant for the pier-crabbing scenes; the fog
+  jetty's Frog smoke as a wisp; the next tier (pasadena_1945's other presets, carrie_city's
+  sister house, apple_peddler, county_line_station, highway_101, club_street).
+- Deck must REBUILD smolvud_jetty.
+
 **2026-10-23 · pass 158: THE SKY WAS THE FOG — EVERY PRESET'S SKY SHOWS FOR THE FIRST TIME.**
 - Chasing the ballfield's "grey wall" sky through the loader, with a red test sky: the red lit the
   ground and still drew grey-blue, with the post stack hidden too. Two faults, both in
