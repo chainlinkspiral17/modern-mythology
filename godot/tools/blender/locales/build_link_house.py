@@ -257,14 +257,14 @@ def _clad(name, axis, line, a0, a1, openings, sg, shutters=False):
     for k, (c, zc, w, h) in enumerate(openings):
         lo, hi = zc - h / 2.0, zc + h / 2.0
         door = lo < 0.05
-        B(f"{name}_Trim_{k}_Head", c, 0.037, hi + 0.06, w + 0.24, 0.03, 0.12, TRIM)
+        B(f"{name}_Stock_Trim_{k}_Head", c, 0.037, hi + 0.06, w + 0.24, 0.03, 0.12, TRIM)
         for e in (-1, 1):
-            B(f"{name}_Trim_{k}_Side_{e:+d}", c + e * (w / 2.0 + 0.05), 0.037, (max(lo, 0.0) + hi) / 2.0, 0.10, 0.03, hi - max(lo, 0.0), TRIM)
+            B(f"{name}_Stock_Trim_{k}_Side_{e:+d}", c + e * (w / 2.0 + 0.05), 0.037, (max(lo, 0.0) + hi) / 2.0, 0.10, 0.03, hi - max(lo, 0.0), TRIM)
         if not door:
-            B(f"{name}_Trim_{k}_Sill", c, 0.052, lo - 0.03, w + 0.30, 0.06, 0.06, TRIM)
+            B(f"{name}_Stock_Trim_{k}_Sill", c, 0.052, lo - 0.03, w + 0.30, 0.06, 0.06, TRIM)
             if shutters:
                 for e in (-1, 1):
-                    B(f"{name}_Shutter_{k}_{e:+d}", c + e * (w / 2.0 + 0.10 + 0.24), 0.037, zc, 0.44, 0.03, h, SHUTTER)
+                    B(f"{name}_Stock_Shutter_{k}_{e:+d}", c + e * (w / 2.0 + 0.10 + 0.24), 0.037, zc, 0.44, 0.03, h, SHUTTER)
                     for r in range(int(h / 0.16)):
                         B(f"{name}_Stock_Louver_{k}_{e:+d}_{r}", c + e * (w / 2.0 + 0.10 + 0.24), 0.056, lo + 0.10 + r * 0.16, 0.36, 0.008, 0.03,
                           SHUTTER_DK)

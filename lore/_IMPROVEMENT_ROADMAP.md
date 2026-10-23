@@ -3843,9 +3843,11 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - **andy_house_stair:** reframed from the stair's foot, up the wall to the landing and the balcony,
   with the two-storey living room behind. Pass 151's from the landing read as a hall.
 - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
-  obstruction 0; perf within the cap.
+  obstruction 0; perf 1,188 draw calls (cap 2,000; baseline updated). The trim adds about 400
+  calls; the runtime StaticMerge sets the count, so naming the parts _Stock_ for join_stock did
+  not lower it.
 - DRAFT N+1: garden beds along the porch, a porch fan and hanging plants, the storage rooms'
-  insides.
+  insides; find what keeps the trim from merging at runtime.
 - Deck must REBUILD link_house.
 
 **2026-10-23 · pass 151: THE LINK HOUSE IN SIDING; THE UPSTAIRS ROOMS FURNISHED.**
