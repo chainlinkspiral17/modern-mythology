@@ -101,12 +101,16 @@ def zoned(regions):
     objects (by their world bounding-box centre), under the audit recorder
     the boxes recorded inside the block (so every gate measures exactly the
     room Blender exports). Build the shell (floor, walls, ceiling) outside
-    the block, sized to the new room. Parts outside every region stay put."""
+    the block, sized to the new room. Parts outside every region stay put.
+
+    A region may carry a seventh value, dz (2026-10-23, the user: the Link
+    house "is two storey"): the wing it holds is lifted a storey whole."""
     def delta(cx, cy):
-        for (x0, y0, x1, y1, dx, dy) in regions:
+        for r in regions:
+            x0, y0, x1, y1, dx, dy = r[:6]
             if x0 <= cx < x1 and y0 <= cy < y1:
-                return dx, dy
-        return 0.0, 0.0
+                return dx, dy, (r[6] if len(r) > 6 else 0.0)
+        return 0.0, 0.0, 0.0
 
     import sys
     bpy = sys.modules.get("bpy")
@@ -136,20 +140,21 @@ def zoned(regions):
                 if o.name in before or o.parent is not None:
                     continue
                 cs = [o.matrix_world @ Vector(c) for c in o.bound_box]
-                dx, dy = delta(sum(c.x for c in cs) / 8.0, sum(c.y for c in cs) / 8.0)
-                if dx or dy:
+                dx, dy, dz = delta(sum(c.x for c in cs) / 8.0, sum(c.y for c in cs) / 8.0)
+                if dx or dy or dz:
                     o.location.x += dx
                     o.location.y += dy
+                    o.location.z += dz
         elif rec is not None:
             moved = {}
             for i in range(n0, len(rec.BOXES)):
                 n, c, h = rec.BOXES[i]
-                dx, dy = delta(c[0], c[1])
-                if dx or dy:
-                    rec.BOXES[i] = (n, (c[0] + dx, c[1] + dy, c[2]), h)
-                    moved[n] = (dx, dy)
+                dx, dy, dz = delta(c[0], c[1])
+                if dx or dy or dz:
+                    rec.BOXES[i] = (n, (c[0] + dx, c[1] + dy, c[2] + dz), h)
+                    moved[n] = (dx, dy, dz)
             if spheres is not None:
                 for n in set(spheres) - s0:
                     if n in moved:
-                        (cc, r), (dx, dy) = spheres[n], moved[n]
-                        spheres[n] = ((cc[0] + dx, cc[1] + dy, cc[2]), r)
+                        (cc, r), (dx, dy, dz) = spheres[n], moved[n]
+                        spheres[n] = ((cc[0] + dx, cc[1] + dy, cc[2] + dz), r)

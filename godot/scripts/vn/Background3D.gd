@@ -2809,9 +2809,11 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	# THE LINK HOUSE (2026-10-17, build_link_house.py; draft 1): vol 3's
-	# family ranch house in Texas — the living room and kitchen across the
-	# front (godot z 0..-5.5), the hall, then the bathroom (x -1.2..1.6) and
-	# Andy's room (x 1.6..6.5) at the back (z -6.7..-10.5). The base scene is
+	# family house in Texas, TWO STOREYS (draft 2, 2026-10-23, the user) — the
+	# living room (two storeys tall) and kitchen across the front (godot z
+	# 0..-5.5), the hall; UPSTAIRS (floor at godot y 2.9) the shower room (x
+	# -1.2..1.6) and Andy's room (x 1.6..6.5) at the back (z -6.7..-10.5),
+	# the second bedroom W, the parents' room over the kitchen. The base scene is
 	# night on the lamps; the day presets lift the environment and add
 	# their window light by name (`__<preset>` in link_house.tscn).
 	"andy_house_kitchen": {
@@ -2839,7 +2841,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# "My dad puts his ear to the bathroom door." — day, the frosted window lit
-		"camera_origin": Vector3(0.0, 1.55, -6.95),
+		"camera_origin": Vector3(0.0, 4.45, -6.95),
 		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
 		"fov": 76.0,
 		"env": {"sky_top": Color(0.52, 0.66, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
@@ -2851,7 +2853,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# "It's the middle of the night or early in the morning." — the vanity bar only
-		"camera_origin": Vector3(0.0, 1.55, -6.95),
+		"camera_origin": Vector3(0.0, 4.45, -6.95),
 		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
 		"fov": 76.0,
 		"suppress_input": true,
@@ -2860,7 +2862,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# Andy's room by day, from the door: the bed, the desk under the window
-		"camera_origin": Vector3(3.4, 1.55, -7.05),
+		"camera_origin": Vector3(3.4, 4.45, -7.05),
 		"camera_rotation": Vector3(-0.10, deg_to_rad(-36.7), 0.0),
 		"fov": 66.0,
 		"env": {"sky_top": Color(0.52, 0.66, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
@@ -2872,7 +2874,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# "By that evening, I was back home quiet and moody."
-		"camera_origin": Vector3(3.4, 1.55, -7.05),
+		"camera_origin": Vector3(3.4, 4.45, -7.05),
 		"camera_rotation": Vector3(-0.10, deg_to_rad(-36.7), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
@@ -2881,7 +2883,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# "I rummage through my bedroom for a book" / "Men get quiet when they need help."
-		"camera_origin": Vector3(4.2, 1.25, -8.0),
+		"camera_origin": Vector3(4.2, 4.15, -8.0),
 		"camera_rotation": Vector3(-0.18, deg_to_rad(-53.6), 0.0),
 		"fov": 55.0,
 		"suppress_input": true,

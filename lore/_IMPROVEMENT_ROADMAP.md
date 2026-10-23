@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 147: THE LINK HOUSE IS TWO STOREYS.**
+- The user (2026-10-23): "Dickens Dean/Link house is two storey". Asked which set: the vol 3 Link
+  family house (link_house). Asked what goes upstairs: "Three bedrooms and a small restroom/shower".
+  Draft 1's "single-storey brick ranch" was Claude's invention.
+  - Upstairs (floor at 2.9 m): the bedroom wing lifted whole by plan.zoned, which takes a seventh
+    value dz now. That is Andy's room, the second bedroom and the shower room (the tub is now a
+    shower stall). The parents' room (the third bedroom) sits over the kitchen.
+  - The stair runs from just inside the front door up the living room's E side. The living room is
+    two storeys tall under a balcony on the upstairs hall, with high windows S and W; the fan hangs
+    on a long downrod.
+  - The ground floor behind the hall: den, laundry with a half bath, study.
+  - Exterior walls run 5.5 m; stacked windows are one cut with a band of wall between them.
+  - The five wing presets and their lights went up 2.9 m; an upstairs hall light was added.
+  - Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+    obstruction 0; perf 398 (baseline updated from 266). The other plan.zoned rooms are still clean.
+- DRAFT N+1: the house from outside (the second storey's roofline); dress the parents' room and the
+  second bedroom; a setup down the stair from the balcony; day light through the living room's high
+  windows.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 146: THE CHAU HOUSE IS A LUXURY HOME — TALL CEILINGS, WIDE TALL WINDOWS.**
 - The user (2026-10-23): "Chau house has tall ceilings and wide tall windows, it's a luxury home."
   Canon (Andy's word); draft 1 had read "eight hundred thousand dollar home" as an ordinary 2.9 m

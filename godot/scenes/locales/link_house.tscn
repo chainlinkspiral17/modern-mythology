@@ -207,36 +207,43 @@ light_energy = 0.7
 shadow_enabled = false
 omni_range = 4.0
 
+[node name="Practical_Hall_Up" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.3, -6.05)
+light_color = Color(1.0, 0.86, 0.66, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 5.0
+
 [node name="Practical_Vanity" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.95, -8.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 4.85, -8.35)
 light_color = Color(1.0, 0.94, 0.82, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 3.6
 
 [node name="Lamp_Bed__andy_house_bedroom_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.0, -9.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 3.90, -9.4)
 light_color = Color(1.0, 0.82, 0.54, 1)
 light_energy = 1.2
 shadow_enabled = false
 omni_range = 3.8
 
 [node name="Lamp_Bed__andy_house_bedroom_lamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.0, -9.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 3.90, -9.4)
 light_color = Color(1.0, 0.82, 0.54, 1)
 light_energy = 1.2
 shadow_enabled = false
 omni_range = 3.8
 
 [node name="Lamp_Desk__andy_house_bedroom_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48, 1.06, -10.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48, 3.96, -10.1)
 light_color = Color(0.96, 0.92, 0.8, 1)
 light_energy = 0.6
 shadow_enabled = false
 omni_range = 2.6
 
 [node name="Lamp_Desk__andy_house_bedroom_lamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48, 1.06, -10.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48, 3.96, -10.1)
 light_color = Color(0.96, 0.92, 0.8, 1)
 light_energy = 0.6
 shadow_enabled = false
@@ -249,14 +256,14 @@ light_energy = 0.75
 shadow_enabled = false
 
 [node name="Window_N__andy_house_bedroom" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 1.6, -9.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 4.50, -9.9)
 light_color = Color(0.92, 0.94, 1.0, 1)
 light_energy = 1.6
 shadow_enabled = false
 omni_range = 5.5
 
 [node name="Window_N__andy_house_bath" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.8, -10.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 4.70, -10.0)
 light_color = Color(0.96, 0.96, 0.98, 1)
 light_energy = 2.2
 shadow_enabled = false
