@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 162: THE SWEEP'S NEXT TIER — THE CRUMPLED BARN IS PART OF THE HILL.**
+- Fifteen presets across thirteen sets rebuilt and rendered (Ramos kitchen, Louisiana road, Coach
+  K's and Ben's bedrooms, the Smolvud coop, Lena's studio, Dean's 1994 house, the skatepark, Kai's
+  apartment, the crumpled barn, the cemetery, the darkroom, the Gallatin water tower). Twelve read
+  as they stood (the Ramos kitchen, the coop, Lena's studio, Kai's room, the water tower and the
+  darkroom are strong; the cemetery, skatepark, Louisiana road, Ben's and Coach K's rooms and
+  Dean's basement read).
+- **The crumpled barn** (vol 2 ch1, draft 3) stood as a grey stepped slab in an empty field and
+  its interior was one grey wash. "I thought it part of the hill. Foliage consuming much of the
+  exterior": a heightfield hill rises behind the footprint (y 21–49, 7 m crest) with the hedge
+  on it; two 3 m bramble masses climb the gable, mounds crowd its ends, brambles bury the fallen
+  roof planes and creep under the fence rails (three weed clumps and three siding boards went
+  under them or moved out). "The sunlight poking through, bleached": the overcast key is two
+  shadowed suns, one per view — south-east high for the field, north high for the bay through a
+  rafter remnant (a ridge beam against the peak's back face, three rafters hung off it) that
+  stripes the cabinet and the sign. Debris in the bay ("remnants in corners": a broken crate and
+  lid, a rope coil, bottles, a bucket on its side on the plank patch). Envs: the field a hazy
+  bright sky (ambient 0.6), the bay darker (0.4) so the stripes read; the interior camera 3.4 m
+  off the gable's inner face at fov 88 with the pair in frame.
+- **Dean's 1994 bedroom** ("Woke up at 3:50") rendered black: a predawn blue env (ambient 0.30)
+  and the fill 0.03 → 0.08; the bed, the thrown sheets and the grey window read.
+- Gates: prop_overlap 0 (the rafter remnant first clipped its shingle strips and floated — the
+  strips are gone and the rafters hang off the beam; the hedge's front row sat 0.27 m into the
+  field — re-seated), support 0, buried_decor, window_backing, doorway, preset_vantage,
+  vantage_obstruction, orphan_practical, blender_dryrun, tscn_syntax clean; perf 192 (baseline
+  recorded) / 100.
+- **Draft N+1 targets:** crumpled_barn — the carved sign is too small to read as a mermaid at
+  this distance (make it 1.4 x 1.0 and bring the pair 0.6 m closer), the gable's boards as real
+  lap courses in grey, the hay door's swung leaf, the cabinet's buttons and levers as a brass
+  row, the bramble as a vine kit with leaves, a crow on the peak, ruts to the gate gap; coach_k —
+  Eileen's side as a shape under the blanket; louisiana_road — rain on the windshield (the
+  chapter is "streams of rain running down the window"); the next sweep tier (harmony_terrain
+  and county_line_station were re-rendered in pass 159; below them the sets are single-digit
+  lines: small_wood_town's two rooms, the post office, Miller's garage, Graciela's room, Sapo
+  Falls, the Caldwell kitchen at night).
+
 **2026-10-23 · pass 161: THE SWEEP'S NEXT TIER — THE FARMHOUSE NIGHTS, THE LIGHTHOUSE GATE, THE TIDELINE SHELF.**
 - Eighteen presets across eleven sets rendered (bus station, Missing Link's exterior, the farmhouse,
   the sea cave, Miller's office and bedroom, the lighthouse, the Hendersons' porch, Little

@@ -3893,6 +3893,8 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.3, 1.35, -0.5),
 		"camera_rotation": Vector3(-0.06, deg_to_rad(30.0), 0.0),
 		"fov": 64.0,
+		# (2026-10-23) 3:50 am: a predawn blue in the room, not black
+		"env": {"ambient_color": Color(0.40, 0.44, 0.56, 1), "ambient_energy": 0.30, "fog_color": Color(0.05, 0.06, 0.08, 1)},
 		"suppress_input": true,
 	},
 	"dean_basement_1994": {
@@ -4700,6 +4702,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(8.0, 1.70, -1.5),
 		"camera_rotation": Vector3(-0.07, deg_to_rad(41.8), 0.0),
 		"fov": 62.0,
+		# (2026-10-23) "bleached": a hazy bright day, not flat overcast
+		"env": {"sky_top": Color(0.52, 0.64, 0.80, 1), "sky_horizon": Color(0.86, 0.87, 0.86, 1),
+			"ground_horizon": Color(0.56, 0.56, 0.46, 1), "ground_bottom": Color(0.30, 0.30, 0.24, 1),
+			"ambient_color": Color(0.80, 0.82, 0.80, 1), "ambient_energy": 0.60, "fog_sky": 0.20},
 		"suppress_input": true,
 	},
 	"crumpled_barn_int": {
@@ -4711,9 +4717,13 @@ const CAMERA_PRESETS := {
 		# by side on the gable's inner face; the fallen roof plane
 		# fills the low foreground; a daylight shaft falls across
 		# them. Camera atop the collapse looking S at the pair.
-		"camera_origin": Vector3(-0.4, 1.35, -11.4),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
-		"fov": 62.0,
+		# 2026-10-23: 2.8 m from the gable's inner face so the pair fills the
+		# frame; the bay darker than the field (ambient 0.35) so the sun's
+		# stripes through the rafter remnant read as "sunlight poking through".
+		"camera_origin": Vector3(-0.25, 1.50, -11.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 88.0,
+		"env": {"ambient_color": Color(0.60, 0.62, 0.60, 1), "ambient_energy": 0.40, "fog_color": Color(0.30, 0.31, 0.30, 1)},
 		"suppress_input": true,
 	},
 	# ── Vols 5-7 · hero-prop pass (2026-08-03) ───────────────────

@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Fill__dean_bedroom_1994" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 2, 2, -3)
 light_color = Color(0.56, 0.6, 0.72, 1)
-light_energy = 0.03
+light_energy = 0.08
 shadow_enabled = false
 
 [node name="Window_Predawn__dean_bedroom_1994" type="OmniLight3D" parent="."]

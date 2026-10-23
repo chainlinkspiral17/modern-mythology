@@ -22,11 +22,25 @@ Vantages wired in Background3D.CAMERA_PRESETS:
   mermaid — "Come Visit Today. A Twisted Beauty and a Beast. Only
   at The Cliffside Circus Attraction." The hero props of the whole
   Delores thread.
+
+DRAFT 3 (2026-10-23, the sw162 sheet): the barn stood as a grey stepped
+slab in an empty field and the interior was one grey wash. Now: "I
+thought it part of the hill" — a hill rises behind the footprint and the
+hedge sits on it; "Foliage consuming much of the exterior" — bramble
+mounds climb the gable, bury the fallen planes and crowd the doorway;
+"The sunlight poking through, bleached" — a shadowed sun through a
+remnant of rafters and shingle strips over the surviving bay, striping
+the cabinet and the sign; debris in the bay's corners ("remnants in
+corners, hidden in shadow"); the interior camera closer to the pair.
+Draft 4 targets: the gable's board lap as real courses (make_lap_siding
+in grey), the hay door's swung leaf, the cabinet's levers and buttons as
+a row of brass, the bramble as a vine kit with leaves, a crow on the
+peak, the field's ruts to the gate gap.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_heightfield, export_glb
 
 COL_FIELD = (0.54, 0.50, 0.32, 1.0)      # dry pasture (2026-09-30: was 0.42 grey-olive — the barn, field and sky were one value)
 COL_DIRT = (0.40, 0.34, 0.26, 1.0)
@@ -92,7 +106,8 @@ def build_collapse():
     # through Rubble_1 at knee height)
     make_box("Beam_Fallen", (-1.0, 11.95, 0.11), (0.22, 2.5, 0.22), COL_FRAME)
     # Scattered siding boards in the yard
-    boards = [(-3.5, 6.8, 0.0), (-1.2, 6.2, 0.4), (1.8, 6.9, -0.2), (3.2, 7.6, 0.3)]
+    # (2026-10-23: three of the four were under the bramble; they lie out in the yard now)
+    boards = [(-3.5, 4.6, 0.0), (-1.2, 6.2, 0.4), (-8.4, 5.2, -0.2), (7.6, 6.0, 0.3)]
     for i, (bx, by, rot_hint) in enumerate(boards):
         make_box(f"Board_{i}", (bx, by, 0.06), (1.9 + 0.4 * (i % 2), 0.26, 0.06),
                  COL_BARN_DK)
@@ -111,8 +126,8 @@ def build_yard():
     make_box("Trough", (4.6, 5.4, 0.30), (1.6, 0.7, 0.60), COL_TROUGH,
              open_faces={"+Z"})
     # Weeds: clumps through the yard, taller at the walls
-    clumps = [(-4.8, 5.0), (-2.0, 4.4), (0.8, 5.6), (3.6, 4.2), (-3.4, 7.6),
-              (1.6, 7.9), (-5.6, 9.0), (5.0, 8.8), (0.0, 3.2), (-7.5, 6.0)]
+    clumps = [(-4.8, 5.0), (-2.0, 4.4), (3.6, 4.2),
+              (-5.6, 9.0), (5.0, 8.8), (0.0, 3.2), (-7.5, 6.0)]   # (three clumps under the bramble now, 2026-10-23)
     for ci, (cx, cy) in enumerate(clumps):
         for b in range(4):
             bx = cx + 0.14 * ((b * 5 + ci * 3) % 5 - 2)
@@ -183,6 +198,76 @@ def build_interior():
     # through the roof is the scene's Interior_Shaft OmniLight.)
 
 
+COL_BRAMBLE = (0.22, 0.30, 0.16, 1.0)
+COL_BRAMBLE_LT = (0.30, 0.38, 0.20, 1.0)
+COL_HILL = (0.36, 0.42, 0.24, 1.0)
+
+
+def build_foliage():
+    """"Foliage consuming much of the exterior — more negative space
+    than positive": bramble mounds against the gable face, over the
+    fallen roof planes, in the doorway's jambs and along the fence."""
+    # against the gable's outer face (y < 8.2), seated on the field
+    # (each mound's y + r stays under 8.2 — the gable's face; the two past the
+    # gable's ends sit clear of the rubble and the weed clumps)
+    mounds = ((-0.6, 7.5, 0.5, 15), (-5.8, 7.4, 0.9, 16), (5.4, 7.6, 0.9, 17))
+    for i, (x, y, r, sd) in enumerate(mounds):
+        make_blob(f"Bramble_{i}", (x, y, r * 0.7 - 0.03), r, (COL_BRAMBLE, COL_BRAMBLE_LT)[i % 2],
+                  noise=0.30, seed=40 + sd, squash=0.7)
+    # climbing the gable: two tall mounds, seated, reaching the hay door
+    for i, (x, r, sd) in enumerate(((-3.1, 1.5, 21), (2.1, 1.5, 22))):
+        make_blob(f"Bramble_Climb_{i}", (x, 8.2 - r - 0.05, r - 0.03), r, COL_BRAMBLE, noise=0.26, seed=40 + sd, squash=1.0)
+    # over the fallen planes: the collapse is going back to the hill
+    for i, (x, y, z, r, sd) in enumerate(((-3.6, 12.0, 0.9, 1.3, 31), (-3.2, 14.2, 0.9, 0.8, 32), (2.8, 13.6, 1.3, 1.2, 33),
+                                          (2.4, 11.9, 1.3, 0.7, 34), (5.2, 9.9, 0.0, 0.9, 35))):
+        make_blob(f"Bramble_Roof_{i}", (x, y, z + r * 0.55), r, (COL_BRAMBLE_LT, COL_BRAMBLE)[i % 2],
+                  noise=0.32, seed=40 + sd, squash=0.55)
+    # the fence line is going under too (low, under the rails)
+    for i, x in enumerate((-7.6, -4.4, 4.6, 7.4)):
+        make_blob(f"Bramble_Fence_{i}", (x, 3.5, 0.23), 0.5, COL_BRAMBLE_LT, noise=0.3, seed=60 + i, squash=0.5)
+
+
+def build_roof_remnant():
+    """What is left of the roof over the surviving bay (y 8.6..12):
+    four rafters off the gable's top and three strips of shingle still
+    on them, gaps between — the sun comes through the gaps."""
+    # (within the peak's width, x -1.7..0.7, so from the field they are
+    # behind the gable top and not a slab hung in the sky)
+    # a ridge beam against the peak's back face (y 8.55); the rafters hang
+    # off it (their high end at y 8.70, z 5.08) and slope down to the fallen
+    # half (roll about X: a negative roll drops the +y end)
+    make_box("Ridge_Beam", (-0.6, 8.63, 5.12), (2.0, 0.16, 0.16), COL_FRAME)
+    for i, x in enumerate((-1.5, -0.7, 0.1)):
+        make_rot_box(f"Rafter_{i}", (x, 10.34, 4.35), (0.12, 3.6, 0.16), COL_FRAME, roll=-0.42)
+
+
+def build_debris():
+    """"remnants in corners, hidden in shadow": the bay's floor dirt,
+    a broken crate, a coil of rope, bottles, a bucket on its side."""
+    make_box("Crate_Broken", (2.1, 10.9, 0.26), (0.5, 0.5, 0.44), (0.40, 0.32, 0.22, 1.0))
+    make_rot_box("Crate_Lid", (2.5, 11.3, 0.06), (0.5, 0.5, 0.03), (0.40, 0.32, 0.22, 1.0), yaw=0.5)
+    make_cyl("Rope_Coil", (-2.7, 10.9, 0.05), 0.22, 0.10, (0.50, 0.42, 0.30, 1.0), segments=12)
+    for i, (x, y) in enumerate(((-2.3, 11.6), (-2.1, 11.5), (2.3, 9.4))):
+        make_cyl(f"Bottle_{i}", (x, y, 0.13), 0.035, 0.26, (0.28, 0.36, 0.30, 1.0), segments=8)
+    make_cyl("Bucket_Side", (-2.4, 9.3, 0.20), 0.14, 0.30, (0.34, 0.32, 0.30, 1.0), segments=10, axis='Y')   # on the plank patch
+
+
+def build_hill():
+    """"I thought it part of the hill": the ground rises behind the
+    footprint to a rounded crest the hedge sits on."""
+    rows = []
+    for j in range(8):          # y 21 (the field's edge) .. 49 at 4 m
+        y = 21.0 + j * 4.0
+        t = (y - 21.0) / 28.0
+        row = []
+        for i in range(17):     # x -32 .. 32 at 4 m
+            x = -32.0 + i * 4.0
+            h = 7.0 * (t ** 1.4) * (1.0 - 0.25 * (x / 32.0) ** 2) + 0.6 * ((i * 7 + j * 3) % 5) / 5.0
+            row.append(round(h, 2))
+        rows.append(row)
+    make_heightfield("Hill", (-32.0, 21.0, 0.0), 4.0, rows, COL_HILL, skirt=0.3)
+
+
 def build_backdrop():
     # 2026-08-04 · this was a hedgerow and then a 104m-wide "Sky"
     # slab standing 11m past it with NOTHING behind it — the
@@ -197,7 +282,9 @@ def build_backdrop():
             r = 1.7 + 0.25 * ((i + k) % 3)
             # seated on the field by its squashed half-height (a blob's
             # half-height is radius x squash), 2 cm in
-            make_blob(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, 17.8 + 0.3 * (k - 0.5), 0.025 + r * 0.85 - 0.02),
+            # the back row is on the hill now (2026-10-23): ground ~0.5-0.9 m up at y 26
+            hy = (18.5, 26.0)[k]
+            make_blob(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, hy, (0.025 - 0.02, 0.60 - 0.25)[k] + r * 0.85),
                       r, COL_TREE, noise=0.26, seed=70 + i * 2 + k, squash=0.85)
     # GROUND out past the last windbreak (2026-08-09 ground wave):
     # wheat-stubble section, not a void.
@@ -226,6 +313,10 @@ def main():
     build_collapse()
     build_interior()
     build_yard()
+    build_foliage()
+    build_roof_remnant()
+    build_debris()
+    build_hill()
     build_backdrop()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/crumpled_barn.glb"))
