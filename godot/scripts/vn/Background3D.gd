@@ -2856,10 +2856,22 @@ const CAMERA_PRESETS := {
 	"andy_house_stair": {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
-		# from the landing at the top of the stair (pass 151): down the stair along the wall, the living room two storeys below, the balcony rail
-		"camera_origin": Vector3(-6.0, 4.45, -4.9),
-		"camera_rotation": Vector3(-0.42, deg_to_rad(-100.0), 0.0),
-		"fov": 70.0,
+		# from the foot of the stair (pass 152; pass 151's from the landing read as a hall): up the stair along the wall to the landing, the balcony over it
+		"camera_origin": Vector3(-0.7, 1.45, -3.7),
+		"camera_rotation": Vector3(0.24, deg_to_rad(80.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"andy_house_porch_dusk": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# the porch at dusk (pass 152): the porch light on, the pasture going blue, the last light over the river's trees
+		"camera_origin": Vector3(-1.9, 1.45, 0.5),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(165.0), 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.20, 0.22, 0.40, 1), "sky_horizon": Color(0.92, 0.56, 0.36, 1),
+			"ground_horizon": Color(0.30, 0.24, 0.24, 1), "ground_bottom": Color(0.10, 0.09, 0.10, 1),
+			"ambient_color": Color(0.52, 0.48, 0.62, 1), "ambient_energy": 0.55, "fog_color": Color(0.56, 0.44, 0.44, 1)},
 		"suppress_input": true,
 	},
 	"andy_house_kitchen": {

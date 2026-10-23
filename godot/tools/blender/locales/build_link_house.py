@@ -44,8 +44,11 @@ floor), corner boards; the master furnished (the second nightstand and
 lamp, a rug, a cedar chest, an armchair and floor lamp by the window,
 curtains); the second bedroom (nightstand, lamp, rug, desk and chair,
 curtains); andy_house_stair from the landing.
-DRAFT 6 targets: window casings and sills outside; shutters; a porch
-light that lights at dusk; (older:) siding and trim on the house's outside faces (they carry
+DRAFT 6 (pass 152): casings round every window and door outside, sills
+under the windows, louvred shutters on the front; andy_house_porch_dusk
+(the porch light lit); andy_house_stair from the stair's foot.
+DRAFT 7 targets: the porch's ceiling fan and its hanging fern; the
+garden beds along the porch; the storage rooms' insides; (older:) siding and trim on the house's outside faces (they carry
 the interior paint); the upstairs windows' shutters; a porch light that
 lights at night; a dusk preset from the porch; the storage rooms' insides;
 the house from outside (the second storey's roofline);
@@ -151,6 +154,7 @@ ENAMEL = (0.95, 0.95, 0.93, 1.0); CHROME = (0.78, 0.79, 0.80, 1.0)
 BLACK = (0.08, 0.08, 0.09, 1.0)
 DOOR_H = 2.05
 SIDING_HOUSE = (0.90, 0.89, 0.85, 1.0)
+SHUTTER = (0.22, 0.32, 0.28, 1.0); SHUTTER_DK = (0.16, 0.24, 0.20, 1.0)
 BATHG_E = 0.0                      # the downstairs bathroom (W) and the mudroom (E) behind the hall
 
 
@@ -217,7 +221,7 @@ def door_casing(name, x, y, w, axis='X'):
                 make_box(f"{name}_Leg_{side:+d}_{s:+d}", (x + off, y + s * (w / 2.0 + 0.035), h / 2.0), (0.016, 0.07, h), DOOR_WHITE)
 
 
-def _clad(name, axis, line, a0, a1, openings, sg):
+def _clad(name, axis, line, a0, a1, openings, sg, shutters=False):
     """The outside skin of an exterior wall: siding 2 cm thick over its outer
     face with the same openings (stacked ones merged, as the wall is), its
     lap lines broken at the windows and doors, a belt board at the upstairs
@@ -245,6 +249,25 @@ def _clad(name, axis, line, a0, a1, openings, sg):
                 j += 1
             cur = max(cur, c1)
         z += 0.22
+    # the openings' outside trim: casings round every window and door, a
+    # sill under each window; shutters on the front (pass 152)
+    def B(nm, u, off, z, su, st, sz, col):
+        make_box(nm, (u, line + sg * off, z) if axis == 'X' else (line + sg * off, u, z),
+                 (su, st, sz) if axis == 'X' else (st, su, sz), col)
+    for k, (c, zc, w, h) in enumerate(openings):
+        lo, hi = zc - h / 2.0, zc + h / 2.0
+        door = lo < 0.05
+        B(f"{name}_Trim_{k}_Head", c, 0.037, hi + 0.06, w + 0.24, 0.03, 0.12, TRIM)
+        for e in (-1, 1):
+            B(f"{name}_Trim_{k}_Side_{e:+d}", c + e * (w / 2.0 + 0.05), 0.037, (max(lo, 0.0) + hi) / 2.0, 0.10, 0.03, hi - max(lo, 0.0), TRIM)
+        if not door:
+            B(f"{name}_Trim_{k}_Sill", c, 0.052, lo - 0.03, w + 0.30, 0.06, 0.06, TRIM)
+            if shutters:
+                for e in (-1, 1):
+                    B(f"{name}_Shutter_{k}_{e:+d}", c + e * (w / 2.0 + 0.10 + 0.24), 0.037, zc, 0.44, 0.03, h, SHUTTER)
+                    for r in range(int(h / 0.16)):
+                        B(f"{name}_Stock_Louver_{k}_{e:+d}_{r}", c + e * (w / 2.0 + 0.10 + 0.24), 0.056, lo + 0.10 + r * 0.16, 0.36, 0.008, 0.03,
+                          SHUTTER_DK)
     belt = (a1 - a0, 0.03, 0.20) if axis == 'X' else (0.03, a1 - a0, 0.20)
     make_box(f"{name}_Belt", (((a0 + a1) / 2.0, line + sg * 0.026, FL2 - 0.05) if axis == 'X' else (line + sg * 0.026, (a0 + a1) / 2.0, FL2 - 0.05)), belt, TRIM)
 
@@ -291,7 +314,7 @@ def build_shell():
                                           ("N", 'X', Y1 + T / 2.0, X0 - T / 2.0, X1 + T / 2.0, ext_n, +1),
                                           ("W", 'Y', X0 - T / 2.0, Y0 - T / 2.0, Y1 + T / 2.0, ext_w, -1),
                                           ("E", 'Y', X1 + T / 2.0, Y0 - T / 2.0, Y1 + T / 2.0, ext_e, +1)):
-        _clad(f"Siding_{nm}", ax, line + sg * 0.011, a0 - 0.022, a1 + 0.022, ops, sg)
+        _clad(f"Siding_{nm}", ax, line + sg * 0.011, a0 - 0.022, a1 + 0.022, ops, sg, shutters=(nm == "S"))
     for k, (cx, cy) in enumerate(((X0, Y0), (X1, Y0), (X0, Y1), (X1, Y1))):
         make_box(f"Corner_Board_{k}", (cx + (0.06 if cx > 0 else -0.06) * 2.2, cy + (0.06 if cy > 0 else -0.06) * 2.2, CEIL2 / 2.0),
                  (0.12, 0.12, CEIL2), TRIM)
@@ -885,7 +908,7 @@ def build_grounds():
                          yaw=0.15 * (1 - 2 * k))
     make_table("Porch_Table", -4.4, py0 + 1.05, w=0.50, d=0.50, h=0.50, wood=(0.40, 0.30, 0.22, 1.0))
     make_cyl("Porch_Tea_Glass", (-4.35, py0 + 1.00, 0.555), 0.035, 0.11, (0.70, 0.56, 0.32, 0.6), segments=10)
-    make_box("Porch_Light", (-1.65, Y0 - T / 2.0 - 0.09, 2.00), (0.14, 0.12, 0.24), (0.98, 0.90, 0.66, 1.0))
+    make_box("Porch_Light", (-1.85, Y0 - T / 2.0 - 0.09, 2.00), (0.14, 0.12, 0.24), (0.98, 0.90, 0.66, 1.0))
     # the path from the steps to the pasture gate; the yard's fence along the pasture
     make_box("Path_Front", (step_x, (py0 - 1.0 - 9.0) / 2.0, GZ + 0.012), (1.10, (py0 - 1.0) - (-9.0), 0.024), GRAVEL)
     _fence_x("Pasture_Fence", -9.0, -60.0, 60.0, gap=(step_x - 1.8, step_x + 1.8))

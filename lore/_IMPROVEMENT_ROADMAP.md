@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 152: THE LINK HOUSE'S WINDOW TRIM AND SHUTTERS; THE PORCH AT DUSK.**
+- **Outside trim:** casings round every window and door, sills under the windows, louvred green
+  shutters on the front windows (both storeys).
+- **andy_house_porch_dusk:** the porch light lit (a practical at the fixture), a low warm sun, a
+  dusk sky.
+- **andy_house_stair:** reframed from the stair's foot, up the wall to the landing and the balcony,
+  with the two-storey living room behind. Pass 151's from the landing read as a hall.
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0; perf within the cap.
+- DRAFT N+1: garden beds along the porch, a porch fan and hanging plants, the storage rooms'
+  insides.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 151: THE LINK HOUSE IN SIDING; THE UPSTAIRS ROOMS FURNISHED.**
 - The draft N+1 list from pass 150:
   - **Siding:** white lap siding over the exterior walls (they showed the rooms' paint). `_clad`
