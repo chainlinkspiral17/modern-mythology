@@ -399,6 +399,22 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-22 · an interior window needs the volume the prose puts behind it (pass 143)
+
+- **What happened:** the riverboat helm's leaded window is the vol 5 Emperor chapter's view: "surveyed
+  the dining room from the upper deck, through the small leaded window". The builder's own comment said
+  "the dining room shows through". It did not, because the main ceiling and the upper deck were one slab
+  across the whole hull, so the window looked onto planking at its own level. Pass 142 found a related
+  fault in the Oneironautics office: the street glass was alpha 1.0, so the whole front was an opaque
+  blue panel.
+- **Rule:** when a window looks INTO another room rather than outside, cut the volume it overlooks: a
+  light well through every slab between, edged (a cased beam under the cut, a balustrade on the upper
+  side), and the walls round it carried up. Then render a test frame through the glass before trusting
+  any comment about what shows through. When reading an old builder, grep its glass colours for alpha
+  1.0.
+- **Also:** check chairs' yaw against what they serve. `make_chair`'s sitter faces (−sin yaw, cos yaw);
+  all three office desk chairs had yaw π and sat with their backs to the work from draft 1.
+
 ### 2026-10-21 · a window is only as good as what it looks at (pass 133)
 
 **Context:** the window pass reached the Cedar Tower, whose four floors stack in one GLB with
