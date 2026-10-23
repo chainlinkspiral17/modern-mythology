@@ -128,7 +128,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, export_glb, join_stock
 from _props.views import make_view
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings, make_curtains
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings, make_curtains, make_lap_siding
 from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_pendant, make_sofa
 from _props.plan import zoned
 from _props.decor import make_faded_poster, make_floor_plant
@@ -249,54 +249,11 @@ def door_casing(name, x, y, w, axis='X'):
 
 
 def _clad(name, axis, line, a0, a1, openings, sg, shutters=False):
-    """The outside skin of an exterior wall: siding 2 cm thick over its outer
-    face with the same openings (stacked ones merged, as the wall is), its
-    lap lines broken at the windows and doors, a belt board at the upstairs
-    floor."""
-    pal = {"wall": SIDING_HOUSE, "baseboard": TRIM}
-    ops = _stack(name, line, axis, list(openings), pal, t=0.022)
-    anchor = ((a0 + a1) / 2.0, line, 0) if axis == 'X' else (line, (a0 + a1) / 2.0, 0)
-    make_wall_with_openings(name, anchor, length=a1 - a0, height=CEIL2, thickness=0.022, axis=axis, palette=pal,
-                            baseboard_face_sign=sg, openings=ops)
-    lap = (0.74, 0.74, 0.70, 1.0)
-    face = line + sg * 0.014
-    j = 0
-    z = 0.30
-    while z < CEIL2 - 0.10:
-        if abs(z - (FL2 - 0.05)) < 0.16:      # the belt board's band
-            z += 0.22
-            continue
-        cuts = sorted((o[0] - o[2] / 2.0 - 0.02, o[0] + o[2] / 2.0 + 0.02) for o in openings
-                      if o[1] - o[3] / 2.0 - 0.03 < z < o[1] + o[3] / 2.0 + 0.03)
-        cur = a0
-        for c0, c1 in cuts + [(a1, a1)]:
-            if c0 - cur > 0.05:
-                m, ln = (cur + c0) / 2.0, c0 - cur
-                make_box(f"{name}_Stock_Lap_{j}", (m, face, z) if axis == 'X' else (face, m, z), (ln, 0.006, 0.014) if axis == 'X' else (0.006, ln, 0.014), lap)
-                j += 1
-            cur = max(cur, c1)
-        z += 0.22
-    # the openings' outside trim: casings round every window and door, a
-    # sill under each window; shutters on the front (pass 152)
-    def B(nm, u, off, z, su, st, sz, col):
-        make_box(nm, (u, line + sg * off, z) if axis == 'X' else (line + sg * off, u, z),
-                 (su, st, sz) if axis == 'X' else (st, su, sz), col)
-    for k, (c, zc, w, h) in enumerate(openings):
-        lo, hi = zc - h / 2.0, zc + h / 2.0
-        door = lo < 0.05
-        B(f"{name}_Stock_Trim_{k}_Head", c, 0.037, hi + 0.06, w + 0.24, 0.03, 0.12, TRIM)
-        for e in (-1, 1):
-            B(f"{name}_Stock_Trim_{k}_Side_{e:+d}", c + e * (w / 2.0 + 0.05), 0.037, (max(lo, 0.0) + hi) / 2.0, 0.10, 0.03, hi - max(lo, 0.0), TRIM)
-        if not door:
-            B(f"{name}_Stock_Trim_{k}_Sill", c, 0.052, lo - 0.03, w + 0.30, 0.06, 0.06, TRIM)
-            if shutters:
-                for e in (-1, 1):
-                    B(f"{name}_Stock_Shutter_{k}_{e:+d}", c + e * (w / 2.0 + 0.10 + 0.24), 0.037, zc, 0.44, 0.03, h, SHUTTER)
-                    for r in range(int(h / 0.16)):
-                        B(f"{name}_Stock_Louver_{k}_{e:+d}_{r}", c + e * (w / 2.0 + 0.10 + 0.24), 0.056, lo + 0.10 + r * 0.16, 0.36, 0.008, 0.03,
-                          SHUTTER_DK)
-    belt = (a1 - a0, 0.03, 0.20) if axis == 'X' else (0.03, a1 - a0, 0.20)
-    make_box(f"{name}_Belt", (((a0 + a1) / 2.0, line + sg * 0.026, FL2 - 0.05) if axis == 'X' else (line + sg * 0.026, (a0 + a1) / 2.0, FL2 - 0.05)), belt, TRIM)
+    """The outside skin (pass 156: the kit's make_lap_siding, which this
+    was the first draft of). `line` is the siding's inner face; `sg` the
+    outward sign."""
+    make_lap_siding(name, axis, line, a0, a1, openings, -sg, height=CEIL2, color=SIDING_HOUSE, lap_col=(0.74, 0.74, 0.70, 1.0),
+                    trim_col=TRIM, belts=(FL2 - 0.05,), shutters=shutters, shutter_col=SHUTTER)
 
 
 def build_shell():

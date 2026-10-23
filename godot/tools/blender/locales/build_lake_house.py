@@ -28,7 +28,13 @@ The sun rises over the lake, so the lake lies EAST of the house.
 Blender: x east, y north, z up; Godot (x, z, -y). House x -10..10,
 y -8..8; the shore at x 22; the dock runs east from (22, -4).
 
-DRAFT 2 targets: the boathouse's inside and the ski boat; Terry at the
+DRAFT 2 (2026-10-23, pass 156): the sweep sheet read it as a bare beige
+box with a grey slab behind it. The windows are the kit's (frame, stool,
+casing, glass) in place of empty frames; white lap siding with casings
+and sills on all four faces, shutters on the front, corner boards; the
+per-hour sky PLANES are gone (their ends showed as the slab) and each
+preset carries its sky in its env.
+DRAFT 3 targets: the boathouse's inside and the ski boat; Terry at the
 dock's end as a silhouette pass (people are the VN's sprites, so only if
 the director asks); the hall and the parents' door; the drive's car.
 """
@@ -37,14 +43,14 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe, make_gable,
                              join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_lap_siding
 from _props.furniture import make_bed, make_chair, make_table, make_lamp
 from _props.trees import make_broadleaf
 
 H, T = 2.7, 0.20
 WALL = (0.90, 0.88, 0.82, 1.0); BASE = (0.60, 0.56, 0.50, 1.0)
 PAL = {"wall": WALL, "baseboard": BASE}
-EXT = (0.78, 0.74, 0.64, 1.0); ROOF = (0.34, 0.30, 0.28, 1.0)
+EXT = (0.78, 0.74, 0.64, 1.0); ROOF = (0.34, 0.30, 0.28, 1.0); EXT_SIDING = (0.88, 0.87, 0.80, 1.0)
 OAK = (0.62, 0.48, 0.32, 1.0); DOCK = (0.64, 0.48, 0.30, 1.0)
 LAWN = (0.36, 0.46, 0.24, 1.0); WATER = (0.30, 0.36, 0.32, 1.0)
 DOOR = (0.86, 0.84, 0.80, 1.0); TRIM = (0.94, 0.94, 0.92, 1.0)
@@ -57,7 +63,8 @@ WL = -0.40                                  # the lake's surface below the lawn
 
 
 def frame_window(name, wall_axis, along, at, cz, w, h, depth=T):
-    """A white frame in an opening (no glass: our materials are opaque)."""
+    """A white frame in an opening — the sliding door's. (Draft 2: the
+    windows are the kit's make_window; this stays for the slider.)"""
     for s in (-1, 1):
         if wall_axis == 'X':
             make_box(f"{name}_Frame_Jamb_{s:+d}", (along + s * (w / 2.0 - 0.03), at, cz), (0.06, depth + 0.02, h), TRIM)
@@ -84,10 +91,29 @@ def build_shell():
                             baseboard_face_sign=+1, openings=[(-2.0, 1.95, 0.6, 0.5)])
     make_wall_with_openings("Wall_E", (10.0, 0.0, 0), length=16.0, height=H, thickness=T, axis='Y', palette=PAL,
                             baseboard_face_sign=-1, openings=[(-2.5, 1.05, 2.4, 2.1), (3.0, 1.45, 2.0, 1.3)])
+    # draft 2 (pass 156): real windows — the kit's frame, stool and casing
+    # and a glass pane (draft 1's were empty white frames)
     for nm, ax, al, at, cz, w, h in (("Win_Kitchen_S", 'X', 5.0, -8.0, 1.45, 1.8, 1.3), ("Win_SW", 'X', -8.0, -8.0, 1.45, 1.4, 1.3),
                                      ("Win_Chris", 'X', -6.5, 8.0, 1.45, 1.6, 1.3), ("Win_Kitchen_N", 'X', 6.0, 8.0, 1.55, 1.6, 1.0),
                                      ("Win_Bath", 'Y', -2.0, -10.0, 1.95, 0.6, 0.5), ("Win_Table", 'Y', 3.0, 10.0, 1.45, 2.0, 1.3)):
-        frame_window(nm, ax, al, at, cz, w, h)
+        rd = -1 if at > 0 else 1
+        anchor = (al, at + rd * 0.10, cz) if ax == 'X' else (at + rd * 0.10, al, cz)
+        make_window(nm, anchor, width=w - 0.10, height=h - 0.08, axis=ax, room_dir=rd, see_through=True,
+                    cross_mullion=(nm != "Win_Bath"), palette={"frame": TRIM})
+        pane = (w, 0.02, h) if ax == 'X' else (0.02, w, h)
+        make_box(nm + "_Pane", (al, at, cz) if ax == 'X' else (at, al, cz), pane, (0.80, 0.86, 0.90, 0.25))
+    # the outside: white lap siding on all four faces, corner boards
+    for nm, ax, line, a0, a1, ops, rs in (("S", 'X', -8.0 - T / 2.0, -10.0 - T / 2.0, 10.0 + T / 2.0,
+                                           [(-2.0, 1.05, 0.96, 2.1), (5.0, 1.45, 1.8, 1.3), (-8.0, 1.45, 1.4, 1.3)], +1),
+                                          ("N", 'X', 8.0 + T / 2.0, -10.0 - T / 2.0, 10.0 + T / 2.0,
+                                           [(-6.5, 1.45, 1.6, 1.3), (6.0, 1.55, 1.6, 1.0)], -1),
+                                          ("W", 'Y', -10.0 - T / 2.0, -8.0 - T / 2.0, 8.0 + T / 2.0, [(-2.0, 1.95, 0.6, 0.5)], +1),
+                                          ("E", 'Y', 10.0 + T / 2.0, -8.0 - T / 2.0, 8.0 + T / 2.0,
+                                           [(-2.5, 1.05, 2.4, 2.1), (3.0, 1.45, 2.0, 1.3)], -1)):
+        make_lap_siding(f"Siding_{nm}", ax, line, a0 - 0.022, a1 + 0.022, ops, rs, height=H, color=EXT_SIDING,
+                        trim_col=TRIM, shutters=(nm == "S"))
+    for k, (cx, cy) in enumerate(((-10.0, -8.0), (10.0, -8.0), (-10.0, 8.0), (10.0, 8.0))):
+        make_box(f"Corner_Board_{k}", (cx + (0.132 if cx > 0 else -0.132), cy + (0.132 if cy > 0 else -0.132), H / 2.0), (0.12, 0.12, H), TRIM)
     make_box("Win_Table_Mullion", (10.0, 3.0, 1.45), (T + 0.02, 0.05, 1.2), TRIM)
     # the sliding glass door: its frame, the fixed half, the open half
     frame_window("Slider", 'Y', -2.5, 10.0, 1.05, 2.4, 2.1)
@@ -126,7 +152,6 @@ def build_shell():
         make_box(f"Screen_Door_Frame_Rail_{zz:.2f}", (sx, sy, zz), (0.04, 0.76, 0.06), TRIM)
     for k in range(8):
         make_box(f"Screen_Door_Mesh_Wire_{k}", (sx, sy, 0.16 + k * 0.24), (0.01, 0.76, 0.006), (0.40, 0.42, 0.42, 1.0))
-    # the outside: lap siding on the S face only where the eye goes
     make_box("Front_Step_Slab", (-2.0, -9.0, 0.06), (2.4, 1.6, 0.12), (0.62, 0.60, 0.56, 1.0))
 
 
@@ -334,12 +359,9 @@ def build_lake():
                                      (20.0, 30.0, (0.30, 0.50, 0.86, 1.0)), (90.0, 55.0, (0.80, 0.30, 0.60, 1.0)))):
         make_blob(f"Far_Balloon_{k}" + OUT, (SHORE + 140.0, y * 0.3, z * 0.3), 3.6, col, noise=0.0, seed=k, squash=1.15)
         make_box(f"Far_Balloon_{k}_Basket" + OUT, (SHORE + 140.0, y * 0.3, z * 0.3 - 5.0), (0.9, 0.9, 0.8), (0.50, 0.38, 0.24, 1.0))
-    # the sky per hour: day, dawn (the sun just up), night
-    for tag, col in ((DAY, (0.62, 0.76, 0.92, 1.0)), (DAWN, (0.94, 0.72, 0.56, 1.0)), (NIGHT, (0.03, 0.04, 0.08, 1.0))):
-        make_box("Sky_E" + tag, (SHORE + 168.0, 0.0, 60.0), (0.2, 500.0, 200.0), col)
-        make_box("Sky_N" + tag, (0.0, 180.0, 60.0), (500.0, 0.2, 200.0), col)
-        make_box("Sky_S" + tag, (0.0, -180.0, 60.0), (500.0, 0.2, 200.0), col)
-        make_box("Sky_W" + tag, (-180.0, 0.0, 60.0), (0.2, 500.0, 200.0), col)
+    # (draft 2: the four sky PLANES per hour are gone — 200 m walls whose ends
+    # showed as a grey slab behind the house; the presets' env carries the
+    # sky now. The dawn sun's disc stays.)
     make_blob("Sky_Sun_Disc_Glow" + DAWN, (SHORE + 164.0, -26.0, 6.5), 5.0, (1.0, 0.86, 0.60, 1.0), noise=0.0, seed=9, squash=1.0)
 
 

@@ -3783,6 +3783,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-11.0, 1.6, 17.0),
 		"camera_rotation": Vector3(0.04, deg_to_rad(-50.0), 0.0),
 		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.86, 1), "sky_horizon": Color(0.80, 0.86, 0.92, 1), "ground_horizon": Color(0.46, 0.50, 0.40, 1), "ground_bottom": Color(0.22, 0.24, 0.18, 1), "ambient_color": Color(0.84, 0.88, 0.92, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.84, 0.90, 1)},
 		"suppress_input": true,
 	},
 	"lake_dock_day": {
@@ -3792,6 +3793,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(22.4, 1.7, 4.0),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(-90.0), 0.0),
 		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.86, 1), "sky_horizon": Color(0.80, 0.86, 0.92, 1), "ground_horizon": Color(0.46, 0.50, 0.40, 1), "ground_bottom": Color(0.22, 0.24, 0.18, 1), "ambient_color": Color(0.84, 0.88, 0.92, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.84, 0.90, 1)},
 		"suppress_input": true,
 	},
 	"lake_dock_dawn": {
@@ -3801,7 +3803,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(7.4, 1.2, -3.2),
 		"camera_rotation": Vector3(-0.02, deg_to_rad(-100.0), 0.0),
 		"fov": 64.0,
-		"env": {"ambient_color": Color(0.92, 0.72, 0.62, 1), "ambient_energy": 0.40, "fog_color": Color(0.90, 0.74, 0.64, 1)},
+		"env": {"sky_top": Color(0.30, 0.34, 0.56, 1), "sky_horizon": Color(0.96, 0.66, 0.42, 1), "ground_horizon": Color(0.40, 0.32, 0.30, 1), "ground_bottom": Color(0.14, 0.12, 0.12, 1), "ambient_color": Color(0.92, 0.72, 0.62, 1), "ambient_energy": 0.40, "fog_color": Color(0.90, 0.74, 0.64, 1)},
 		"suppress_input": true,
 	},
 	"chris_room_day": {
@@ -3811,6 +3813,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-3.2, 1.6, -2.5),
 		"camera_rotation": Vector3(-0.08, deg_to_rad(30.0), 0.0),
 		"fov": 66.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.86, 1), "sky_horizon": Color(0.80, 0.86, 0.92, 1), "ground_horizon": Color(0.46, 0.50, 0.40, 1), "ground_bottom": Color(0.22, 0.24, 0.18, 1), "ambient_color": Color(0.84, 0.86, 0.88, 1), "ambient_energy": 0.80, "fog_color": Color(0.78, 0.80, 0.82, 1)},
 		"suppress_input": true,
 	},
 	"chris_room_night": {
@@ -3820,7 +3823,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-6.4, 0.95, -5.0),
 		"camera_rotation": Vector3(-0.25, deg_to_rad(45.0), 0.0),
 		"fov": 62.0,
-		"env": {"ambient_color": Color(0.40, 0.44, 0.58, 1), "ambient_energy": 0.14, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		"env": {"sky_top": Color(0.03, 0.04, 0.09, 1), "sky_horizon": Color(0.10, 0.12, 0.20, 1), "ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1), "ambient_color": Color(0.40, 0.44, 0.58, 1), "ambient_energy": 0.14, "fog_color": Color(0.06, 0.07, 0.10, 1)},
 		"suppress_input": true,
 	},
 	"lake_bath_night": {
@@ -3830,7 +3833,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-7.0, 1.6, 0.3),
 		"camera_rotation": Vector3(-0.20, deg_to_rad(160.0), 0.0),
 		"fov": 66.0,
-		"env": {"ambient_color": Color(0.40, 0.44, 0.58, 1), "ambient_energy": 0.14, "fog_color": Color(0.06, 0.07, 0.10, 1)},
+		"env": {"sky_top": Color(0.03, 0.04, 0.09, 1), "sky_horizon": Color(0.10, 0.12, 0.20, 1), "ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1), "ambient_color": Color(0.40, 0.44, 0.58, 1), "ambient_energy": 0.14, "fog_color": Color(0.06, 0.07, 0.10, 1)},
 		"suppress_input": true,
 	},
 	"tulsa_slideshow": {

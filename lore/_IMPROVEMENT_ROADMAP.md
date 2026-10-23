@@ -3835,6 +3835,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 156: THE LAKE HOUSE IS A HOUSE; LAP SIDING IS KIT.**
+- The sweep's next tier rendered (caldwell_porch_night, nightmare_cell, nexcorp_fueling_station,
+  school_field_evening, meadowlark_circle, accretion_basement, sleep_lab_entry, lake_house_day,
+  grunion_beach, cabin_road, centro_grocery_aisle). Three had no GLB here (nightmare_cell,
+  accretion_basement, grunion_beach); built. One read badly: **lake_house** (vol 3 ch11, 108
+  lines) — a bare beige box, empty window frames, and a grey slab behind it.
+  - **The slab** was one of the builder's four per-hour sky PLANES (200 m walls) showing its end.
+    They are gone; each of the six lake presets carries its sky in its env now.
+  - **The windows** are the kit's (frame, stool, casing, glass pane), not empty white frames.
+  - **Siding:** white lap siding with casings and sills on all four faces, shutters on the front,
+    corner boards.
+  - A caveat found on the way: the sweep sheet renders the GLBs already in the repo, which can
+    predate their builders (the lake house's had no roof). Rebuild before judging a set.
+- **`make_lap_siding` is in `_props/structure.py`** (the Link house's `_clad` of pass 151, made
+  general: height, belts, shutters, colours) and both houses use it.
+- Gates: lake_house overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0; link_house unchanged on its gates; perf lake 134, link 1,512 (the kit's trim
+  pieces; cap 2,000; baselines updated). Also: the fill light on Andy's shelves (pass 155's N+1).
+- Judged fine on the sheet: caldwell_porch_night, centro_grocery_aisle, meadowlark_circle,
+  nexcorp_fueling_station, cabin_road, sleep_lab_entry, chris_room_*. nightmare_cell is a black
+  box by canon. school_field_evening is bare at dusk (a field).
+- DRAFT N+1 (lake house): the boathouse's inside and the ski boat; the drive's car; the deck's
+  chairs; the kitchen table's breakfast at dawn.
+- Deck must REBUILD lake_house, link_house (and nightmare_cell, accretion_basement, grunion_beach
+  if their GLBs are missing there too).
+
 **2026-10-23 · pass 155: THE LINK HOUSE'S SCENES DRESSED BY THE TEXT.**
 - **The living room:** the sofa is the kit sofa (it was four slabs). The night of Nick's stitches
   (ch12: "fourteen stitches on the inside of his cheek ... Nick was asleep on the couch"), in the

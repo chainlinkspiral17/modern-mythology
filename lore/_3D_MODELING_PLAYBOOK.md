@@ -399,6 +399,18 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-23 · a sweep sheet shows the repo's GLB, not the builder; and sky planes are walls (pass 156)
+
+- **What happened:** the lake house looked like a roofless box with a grey slab behind it. The
+  roof was in the builder; the GLB in the repo predated it. The slab was the end of one of four
+  200 m "sky" planes the first draft built per hour.
+- **Rules:** (1) before judging a set from a contact sheet, rebuild its GLB — `batch.sh` takes the
+  builders as its second argument, and the repo's GLB may be a draft old. (2) Never build sky as
+  geometry: a plane has an end, and the camera finds it. The preset's `env` (sky_top, sky_horizon,
+  ground_*) is the sky; `make_far_bands` and real trees are the horizon.
+- **Kit:** lap siding is `make_lap_siding` in `_props/structure.py` (openings, casings, sills,
+  belts, shutters). Don't write another one in a builder.
+
 ### 2026-10-23 · the draw-call lever is the shadowed sun, not the mesh count (pass 154)
 
 - **What happened:** the Link house's exterior climbed from 398 to 1,346 draw calls across the

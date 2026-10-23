@@ -422,3 +422,82 @@ def make_case_shell(prefix, center, size, color, *, open_face='-Y', wall=0.02):
         make_box(f"{prefix}_Side_L", (cx, cy - hy + w / 2.0, cz), (sx, w, ih), color)
         make_box(f"{prefix}_Side_R", (cx, cy + hy - w / 2.0, cz), (sx, w, ih), color)
         make_box(f"{prefix}_Back", (cx + s * (hx - w / 2.0), cy, cz), (w, sy - 2.0 * w, ih), color)
+
+def make_lap_siding(prefix, axis, line, a0, a1, openings, room_sign, *, height, color=(0.90, 0.89, 0.85, 1.0),
+                    lap_col=None, trim_col=(0.92, 0.90, 0.84, 1.0), belts=(), shutters=False,
+                    shutter_col=(0.22, 0.32, 0.28, 1.0), t=0.022, pitch=0.22):
+    """The outside skin of an exterior wall (2026-10-23, the Link house, then
+    the lake house): lap siding `t` thick on the wall's OUTER face with the
+    same openings, the lap lines broken at the windows and doors, casings
+    round every opening, a sill under each window, a belt board at each z
+    in `belts` (a second storey's floor), louvred shutters beside the
+    windows when `shutters`. Stacked openings at one place (two storeys)
+    merge into one cut with a band of siding between.
+
+    axis 'X': the wall runs along x at y = line; 'Y': along y at x = line.
+    a0..a1 is the run; `room_sign` is the side the ROOM is on along the
+    wall's normal (+1 / -1), so the skin stands on the other side.
+    `openings` as make_wall_with_openings takes them: (centre_along,
+    z_centre, width, height), z from the ground the wall stands on."""
+    sg = -room_sign
+    lap_col = lap_col or tuple(c * 0.82 for c in color[:3]) + (1.0,)
+    pal = {"wall": color, "baseboard": trim_col}
+
+    def at(u, off, z):
+        return (u, line + sg * off, z) if axis == 'X' else (line + sg * off, u, z)
+
+    def sz(su, st, s_z):
+        return (su, st, s_z) if axis == 'X' else (st, su, s_z)
+    # stacked openings → one cut, a band of siding between
+    ops, done = [], set()
+    for i, o in enumerate(openings):
+        if i in done:
+            continue
+        mate = next((j for j in range(i + 1, len(openings)) if j not in done
+                     and abs(openings[j][0] - o[0]) < 1e-6 and abs(openings[j][2] - o[2]) < 1e-6), None)
+        if mate is None:
+            ops.append(o)
+            continue
+        done.add(mate)
+        lo, hi = sorted((o, openings[mate]), key=lambda q: q[1])
+        b0, b1 = lo[1] + lo[3] / 2.0, hi[1] - hi[3] / 2.0
+        z0, z1 = lo[1] - lo[3] / 2.0, hi[1] + hi[3] / 2.0
+        ops.append((o[0], (z0 + z1) / 2.0, o[2], z1 - z0))
+        make_box(f"{prefix}_Band_{i}", at(o[0], t / 2.0, (b0 + b1) / 2.0), sz(o[2], t, b1 - b0), color)
+    anchor = at((a0 + a1) / 2.0, t / 2.0, 0)
+    make_wall_with_openings(prefix, anchor, length=a1 - a0, height=height, thickness=t, axis=axis, palette=pal,
+                            baseboard_face_sign=sg, openings=ops)
+    face = t + 0.004
+    j, z = 0, 0.30
+    while z < height - 0.10:
+        if any(abs(z - bz) < 0.16 for bz in belts):
+            z += pitch
+            continue
+        cuts = sorted((o[0] - o[2] / 2.0 - 0.02, o[0] + o[2] / 2.0 + 0.02) for o in openings
+                      if o[1] - o[3] / 2.0 - 0.03 < z < o[1] + o[3] / 2.0 + 0.03)
+        cur = a0
+        for c0, c1 in cuts + [(a1, a1)]:
+            if c0 - cur > 0.05:
+                make_box(f"{prefix}_Stock_Lap_{j}", at((cur + c0) / 2.0, face, z), sz(c0 - cur, 0.006, 0.014), lap_col)
+                j += 1
+            cur = max(cur, c1)
+        z += pitch
+    for k, (c, zc, w, h) in enumerate(openings):
+        lo, hi = zc - h / 2.0, zc + h / 2.0
+        door = lo < 0.05
+        make_box(f"{prefix}_Stock_Trim_{k}_Head", at(c, t + 0.015, hi + 0.06), sz(w + 0.24, 0.03, 0.12), trim_col)
+        for e in (-1, 1):
+            make_box(f"{prefix}_Stock_Trim_{k}_Side_{e:+d}", at(c + e * (w / 2.0 + 0.05), t + 0.015, (max(lo, 0.0) + hi) / 2.0),
+                     sz(0.10, 0.03, hi - max(lo, 0.0)), trim_col)
+        if door:
+            continue
+        make_box(f"{prefix}_Stock_Trim_{k}_Sill", at(c, t + 0.03, lo - 0.03), sz(w + 0.30, 0.06, 0.06), trim_col)
+        if shutters:
+            for e in (-1, 1):
+                u = c + e * (w / 2.0 + 0.10 + 0.24)
+                make_box(f"{prefix}_Stock_Shutter_{k}_{e:+d}", at(u, t + 0.015, zc), sz(0.44, 0.03, h), shutter_col)
+                dark = tuple(v * 0.75 for v in shutter_col[:3]) + (1.0,)
+                for r in range(int(h / 0.16)):
+                    make_box(f"{prefix}_Stock_Louver_{k}_{e:+d}_{r}", at(u, t + 0.034, lo + 0.10 + r * 0.16), sz(0.36, 0.008, 0.03), dark)
+    for b, bz in enumerate(belts):
+        make_box(f"{prefix}_Belt_{b}", at((a0 + a1) / 2.0, t + 0.004, bz), sz(a1 - a0, 0.03, 0.20), trim_col)
