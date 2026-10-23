@@ -33,7 +33,9 @@ North of it the gym (x -24..4, y 3.2..21.2, 7.5 m high) and the locker room
 (x -4..6) and the computer lab (x 6..16), each 9 m deep (y -9..0), 3.0 high,
 windows in the S wall onto the grounds.
 
-DRAFT 2 targets: the hearing's banner and flags; the gym's folding partition;
+DRAFT 2 (pass 157): the gym's N wall dressed — championship pennants,
+the record board, the wrestling mats rolled in the NW corner ("The air smells of wood polish and talcum powder. Wrestling season.").
+DRAFT 3 targets: the hearing's flags; the gym's folding partition;
 the art room's student work on the walls (HeroArt); the lab's sign as a
 HeroArt picture with the slogan; bleacher wear and scuffed court paint; the
 "workshop style" circle of desks as its own preset; Deck-verified framing.
@@ -210,6 +212,22 @@ def build_gym():
                        wood=(0.30, 0.30, 0.32, 1.0), seat_col=(0.40, 0.40, 0.42, 1.0))
     make_box("Hearing_Banner", (cx, GYM_Y1 - 0.12, 4.4), (8.0, 0.02, 1.0), (0.18, 0.36, 0.56, 1.0))
     make_box("Hearing_Banner_Text", (cx, GYM_Y1 - 0.135, 4.4), (6.6, 0.004, 0.40), (0.94, 0.90, 0.76, 1.0))
+    # pass 157: the N wall was bare under the clerestory — the school's
+    # championship pennants in a row, the record board, and "Wrestling season":
+    # the mats rolled and stacked in the NW corner, a few flat along the wall
+    for k in range(9):
+        x = cx - 10.0 + k * 2.5
+        if abs(x - cx) < 4.2:
+            continue                                   # the banner's span
+        col = ((0.18, 0.36, 0.56, 1.0), (0.86, 0.80, 0.60, 1.0))[k % 2]
+        make_box(f"Pennant_{k}", (x, GYM_Y1 - 0.12, 4.6), (0.90, 0.02, 1.20), col)
+        make_box(f"Pennant_{k}_Text", (x, GYM_Y1 - 0.135, 4.75), (0.60, 0.004, 0.14), ((0.94, 0.92, 0.86, 1.0), (0.18, 0.36, 0.56, 1.0))[k % 2])
+        make_box(f"Pennant_{k}_Year", (x, GYM_Y1 - 0.135, 4.30), (0.40, 0.004, 0.10), ((0.94, 0.92, 0.86, 1.0), (0.18, 0.36, 0.56, 1.0))[k % 2])
+    make_box("Record_Board", (GYM_X1 - 0.12, cy + 4.0, 3.2), (0.06, 2.4, 1.6), (0.16, 0.26, 0.40, 1.0))
+    for r in range(6):
+        make_box(f"Record_Board_Line_{r}", (GYM_X1 - 0.16, cy + 4.0, 3.8 - r * 0.22), (0.004, 2.0, 0.08), (0.92, 0.90, 0.80, 1.0))
+    for k in range(3):
+        make_cyl(f"Wrestling_Mat_Roll_{k}", (GYM_X0 + 2.3, GYM_Y1 - 0.75 - k * 0.95, 0.45), 0.45, 3.6, (0.70, 0.22, 0.20, 1.0), axis='X', segments=12)
     make_box("Scoreboard", (GYM_X0 + 0.15, cy, 4.8), (0.12, 3.2, 1.4), (0.10, 0.10, 0.12, 1.0))
     make_box("Scoreboard_Face", (GYM_X0 + 0.22, cy, 4.8), (0.004, 2.8, 1.0), (0.80, 0.24, 0.14, 1.0))
 

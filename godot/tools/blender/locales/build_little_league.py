@@ -27,7 +27,10 @@ Blender: x east, y north, z up; Godot (x, z, -y). Home plate at the origin;
 the third-base line runs west (-x), the first-base line north (+y), 60 ft
 (18.3 m) between bases, the mound 46 ft out; the fence 61 m round.
 
-DRAFT 2 targets: the infield's grass and its dirt arc (the skin is one
+DRAFT 2 (pass 157): the dugout setup moved onto the bench (it stood in the
+mouth and saw a beige slab); the presets carry a sky in their env (the flat
+default read as a grey wall through the post); a far treeline.
+DRAFT 3 targets: the infield's grass and its dirt arc (the skin is one
 square now), the outfield fence's signs and the foul poles, a scoreboard
 only if the text wants one (it does not), the visitors' bleachers, the
 spray bottle and Terry's clipboard as hand props at the dugout, the heat
@@ -40,6 +43,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
                              make_lathe, join_stock, export_glb)
 from _props.vehicles import make_car
 from _props.trees import make_broadleaf
+from _props.detail import make_far_bands
 
 try:
     import bpy
@@ -224,6 +228,10 @@ def build_crowd_side():
         make_car(f"Lot_Car_{k}", -14.0 + k * 4.0 + 2.0, -30.0, 4.4, cols[k % 5], pickup=(k % 3 == 0), along="Y")
     for k, (x, y) in enumerate(((-26.0, -24.0), (22.0, -26.0), (-30.0, 6.0))):
         make_broadleaf(f"Tree_{k}", x, y, 7.0, (0.30, 0.42, 0.22, 1.0), (0.34, 0.26, 0.20, 1.0))
+    # pass 157: the ground ended at the grass disc's edge against a bare sky;
+    # a far treeline round the field (the lot's road side open)
+    make_far_bands("Treeline", (0.30, 0.40, 0.24, 1.0), [(110.0, 150.0, 9.0, 0.92), (160.0, 220.0, 12.0, 0.78)], sides="NEW",
+                   cx=-10.0, cy=10.0)
 
 
 def build_visitors():

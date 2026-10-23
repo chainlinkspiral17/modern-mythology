@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 157: THE SWEEP'S NEXT TIER — KESTREL'S GLASS BLOCK, THE GYM'S WALL, THE DUGOUT.**
+- Twelve more sets rebuilt and rendered (small_wood_high, new_auburn_road, little_league,
+  lake_palestine, small_wood_road, bungalow, nate_garage, editing_suite, kowalski_backyard,
+  kestrel_mountain, airport_cabin, briar_falls). Three fixed:
+  - **kestrel_mountain** (vol 7, 93 lines): a translucent 59 x 30 x 14 m box ("Cloud_Cap") hung
+    in the sky over the path like a glass block. It is cloud blobs now, clear of the mountain mass.
+  - **small_wood_high / the gym** (230 lines): the builder already had bleachers, hoops and court
+    paint, but the hearing's camera looks at a bare N wall. Championship pennants in a row, the
+    record board, and the wrestling mats rolled in the NW corner ("The air smells of wood polish and
+    talcum powder. Wrestling season.").
+  - **little_league / the dugout** (127 lines): the setup stood in the dugout's mouth and saw a
+    beige slab under a grey "wall". The wall was the sky: the six ballfield presets carried no env,
+    so the scene's flat default went through the post stack as a banded grey plane. They carry a
+    Texas August sky now; the dugout setup sits on the bench at its W end looking along it (gloves,
+    helmets, the bat rack, the field through the fence); a far treeline closes the horizon.
+- Judged fine: briar_falls_rest_stop, bungalow_interior, cypress_motel, kowalski_front_yard,
+  lax_gate, nate_garage, small_wood_road, suite_wide, lake_palestine (flat but true to the text).
+- Gates: all three overlap 0, support 0, doorway 0, vantage 0 blind, obstruction 0; perf 142 /
+  226 / 90 (baselines recorded).
+- DRAFT N+1: kestrel's switchbacks; the gym's folding partition; the ballfield's infield grass
+  arc and the visitors' bleachers; a check of every exterior preset for a missing env sky (the
+  same grey-wall read).
+- Deck must REBUILD kestrel_mountain, small_wood_high, little_league.
+
 **2026-10-23 · pass 156: THE LAKE HOUSE IS A HOUSE; LAP SIDING IS KIT.**
 - The sweep's next tier rendered (caldwell_porch_night, nightmare_cell, nexcorp_fueling_station,
   school_field_evening, meadowlark_circle, accretion_basement, sleep_lab_entry, lake_house_day,

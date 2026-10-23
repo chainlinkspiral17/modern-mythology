@@ -75,6 +75,11 @@
  "hospital_room": {
   "draw": 100
  },
+ "kestrel_mountain": {
+  "draw": 142,
+  "prims": 7748,
+  "objects": 312
+ },
  "kwik_stop": {
   "draw": 276
  },
@@ -92,9 +97,9 @@
   "objects": 1682
  },
  "little_league": {
-  "draw": 74,
-  "prims": 33180,
-  "objects": 244
+  "draw": 90,
+  "prims": 22636,
+  "objects": 260
  },
  "missing_link_interior": {
   "draw": 90
@@ -147,9 +152,9 @@
   "objects": 240
  },
  "small_wood_high": {
-  "draw": 236,
-  "prims": 128644,
-  "objects": 406
+  "draw": 226,
+  "prims": 145124,
+  "objects": 396
  },
  "small_wood_ranch": {
   "draw": 102,

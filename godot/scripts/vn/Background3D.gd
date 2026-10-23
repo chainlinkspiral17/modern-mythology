@@ -3318,10 +3318,11 @@ const CAMERA_PRESETS := {
 	"ballfield_dugout": {
 		"scene": "res://scenes/locales/little_league.tscn",
 		"requires_glb": "res://assets/3d/locales/little_league.glb",
-		# "I was sitting next to Dad and a kid named Cody." - the bench, the field past the dugout front
-		"camera_origin": Vector3(-9.0, 1.15, 7.7),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(0.0), 0.0),
+		# "I was sitting next to Dad and a kid named Cody." - seated on the bench at its W end (pass 157), looking along it: the gloves and helmets, the bat rack, the mouth and the field through the fence
+		"camera_origin": Vector3(-13.2, 1.05, 8.0),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-58.0), 0.0),
 		"fov": 68.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"ballfield_third_base": {
@@ -3331,6 +3332,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-18.0, 1.3, -0.6),
 		"camera_rotation": Vector3(-0.03, deg_to_rad(-90.0), 0.0),
 		"fov": 64.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"ballfield_mound": {
@@ -3340,6 +3342,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.2, 1.3, -18.8),
 		"camera_rotation": Vector3(-0.04, deg_to_rad(145.0), 0.0),
 		"fov": 60.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"ballfield_first_base": {
@@ -3349,6 +3352,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.0, 0.9, -20.5),
 		"camera_rotation": Vector3(-0.02, deg_to_rad(150.0), 0.0),
 		"fov": 62.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"ballfield_home_plate": {
@@ -3358,6 +3362,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-17.5, 1.2, -17.5),
 		"camera_rotation": Vector3(-0.04, deg_to_rad(-135.0), 0.0),
 		"fov": 60.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"ballfield_stand": {
@@ -3367,6 +3372,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(15.8, 1.45, 10.8),
 		"camera_rotation": Vector3(-0.10, deg_to_rad(141.0), 0.0),
 		"fov": 62.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"chau_hall_noon": {

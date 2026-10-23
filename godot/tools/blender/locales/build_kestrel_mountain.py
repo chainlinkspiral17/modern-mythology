@@ -39,7 +39,8 @@ the plank and the bowl on it, the third-station bench, the hedge with
 red berries at the bend, the cloud over the top, the square with its
 paving, the three-basin fountain with twenty-two rim figures, the
 alpine buildings around the square, lamp posts, far ridges.
-Draft 2 targets: switchbacks instead of a straight climb, scree and
+Draft 2 (pass 157): the cloud's cap is blobs, not a translucent box.
+Draft 3 targets: switchbacks instead of a straight climb, scree and
 rubble on the path edges, the corridor behind the hedge as its own
 locale (nodes 41-128, the basement and the boy at the desk), the
 Major Arcana figures as distinct silhouettes.
@@ -175,7 +176,11 @@ def build_cloud():
     for i, (x, y, r, s) in enumerate(((-6.0, 82.0, 6.0, 101), (4.0, 84.0, 6.5, 102), (14.0, 82.0, 6.0, 103),
                                       (0.0, 92.0, 7.0, 104), (10.0, 94.0, 6.5, 105), (-10.0, 92.0, 6.0, 106))):
         make_blob(f"Cloud_{i}", (x, y, 14.0 + r * 0.2), r, CLOUD, noise=0.16, seed=s, squash=0.5)
-    make_box("Cloud_Cap", (10.5, 100.0, 22.0), (59.0, 30.0, 14.0), (0.84, 0.85, 0.86, 0.5))
+    # (pass 157: the "cap" was a 59 x 30 x 14 m translucent BOX at z 22 — from
+    # the path's foot it hung in the sky as a glass block. A cloud is blobs.)
+    for i, (x, y, r, s) in enumerate(((-10.0, 116.0, 8.0, 111), (6.0, 114.0, 9.0, 112), (24.0, 116.0, 8.0, 113),
+                                      (-2.0, 130.0, 8.5, 114), (16.0, 130.0, 8.0, 115))):
+        make_blob(f"Cloud_Cap_{i}", (x, y, 17.0 + r * 0.35), r, CLOUD, noise=0.14, seed=s, squash=0.45)
 
 
 def build_square():
