@@ -2853,6 +2853,15 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.86, 0.88, 0.90, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.82, 0.86, 1)},
 		"suppress_input": true,
 	},
+	"andy_house_stair": {
+		"scene": "res://scenes/locales/link_house.tscn",
+		"requires_glb": "res://assets/3d/locales/link_house.glb",
+		# from the landing at the top of the stair (pass 151): down the stair along the wall, the living room two storeys below, the balcony rail
+		"camera_origin": Vector3(-6.0, 4.45, -4.9),
+		"camera_rotation": Vector3(-0.42, deg_to_rad(-100.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
 	"andy_house_kitchen": {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",

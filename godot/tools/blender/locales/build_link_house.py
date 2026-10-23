@@ -38,7 +38,14 @@ living room two storeys tall to the master's wall. Upstairs the bathroom
 is at the hall's W end, its door at the stair's head; the second bedroom
 in the middle; Andy's room E (unchanged); the master over the kitchen. The
 bath presets and lights moved with the bathroom (UB_DX).
-DRAFT 5 targets: siding and trim on the house's outside faces (they carry
+DRAFT 5 (pass 151): white lap siding over the exterior walls (_clad: the
+same openings, lap lines broken at them, a belt board at the upstairs
+floor), corner boards; the master furnished (the second nightstand and
+lamp, a rug, a cedar chest, an armchair and floor lamp by the window,
+curtains); the second bedroom (nightstand, lamp, rug, desk and chair,
+curtains); andy_house_stair from the landing.
+DRAFT 6 targets: window casings and sills outside; shutters; a porch
+light that lights at dusk; (older:) siding and trim on the house's outside faces (they carry
 the interior paint); the upstairs windows' shutters; a porch light that
 lights at night; a dusk preset from the porch; the storage rooms' insides;
 the house from outside (the second storey's roofline);
@@ -87,12 +94,12 @@ clutter (school photos down the hall, the fridge door, a laundry basket);
 the backyard beyond the N windows as more than make_view's lawn; per-preset
 props (the magazine only in the Uncle Nick scenes); Deck-verified framing.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, export_glb, join_stock
 from _props.views import make_view
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings, make_curtains
 from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_pendant, make_sofa
 from _props.plan import zoned
 from _props.decor import make_faded_poster, make_floor_plant
@@ -143,10 +150,11 @@ SOFA = (0.46, 0.36, 0.28, 1.0); SOFA_CUSH = (0.52, 0.41, 0.32, 1.0)
 ENAMEL = (0.95, 0.95, 0.93, 1.0); CHROME = (0.78, 0.79, 0.80, 1.0)
 BLACK = (0.08, 0.08, 0.09, 1.0)
 DOOR_H = 2.05
+SIDING_HOUSE = (0.90, 0.89, 0.85, 1.0)
 BATHG_E = 0.0                      # the downstairs bathroom (W) and the mudroom (E) behind the hall
 
 
-def _stack(name, line, axis, openings, pal):
+def _stack(name, line, axis, openings, pal, t=T):
     """Two windows one over the other (the two storeys) are ONE cut in the
     wall with a band of wall between them: make_wall_with_openings cuts
     along the wall only, so stacked openings at the same place are merged
@@ -166,7 +174,7 @@ def _stack(name, line, axis, openings, pal):
         z0, z1 = lo[1] - lo[3] / 2.0, hi[1] + hi[3] / 2.0
         out.append((o[0], (z0 + z1) / 2.0, o[2], z1 - z0))
         c = (o[0], line) if axis == 'X' else (line, o[0])
-        make_box(f"{name}_Band_{i}", (c[0], c[1], (b0 + b1) / 2.0), (o[2], T, b1 - b0) if axis == 'X' else (T, o[2], b1 - b0),
+        make_box(f"{name}_Band_{i}", (c[0], c[1], (b0 + b1) / 2.0), (o[2], t, b1 - b0) if axis == 'X' else (t, o[2], b1 - b0),
                  pal["wall"])
     return out
 
@@ -209,6 +217,38 @@ def door_casing(name, x, y, w, axis='X'):
                 make_box(f"{name}_Leg_{side:+d}_{s:+d}", (x + off, y + s * (w / 2.0 + 0.035), h / 2.0), (0.016, 0.07, h), DOOR_WHITE)
 
 
+def _clad(name, axis, line, a0, a1, openings, sg):
+    """The outside skin of an exterior wall: siding 2 cm thick over its outer
+    face with the same openings (stacked ones merged, as the wall is), its
+    lap lines broken at the windows and doors, a belt board at the upstairs
+    floor."""
+    pal = {"wall": SIDING_HOUSE, "baseboard": TRIM}
+    ops = _stack(name, line, axis, list(openings), pal, t=0.022)
+    anchor = ((a0 + a1) / 2.0, line, 0) if axis == 'X' else (line, (a0 + a1) / 2.0, 0)
+    make_wall_with_openings(name, anchor, length=a1 - a0, height=CEIL2, thickness=0.022, axis=axis, palette=pal,
+                            baseboard_face_sign=sg, openings=ops)
+    lap = (0.74, 0.74, 0.70, 1.0)
+    face = line + sg * 0.014
+    j = 0
+    z = 0.30
+    while z < CEIL2 - 0.10:
+        if abs(z - (FL2 - 0.05)) < 0.16:      # the belt board's band
+            z += 0.22
+            continue
+        cuts = sorted((o[0] - o[2] / 2.0 - 0.02, o[0] + o[2] / 2.0 + 0.02) for o in openings
+                      if o[1] - o[3] / 2.0 - 0.03 < z < o[1] + o[3] / 2.0 + 0.03)
+        cur = a0
+        for c0, c1 in cuts + [(a1, a1)]:
+            if c0 - cur > 0.05:
+                m, ln = (cur + c0) / 2.0, c0 - cur
+                make_box(f"{name}_Stock_Lap_{j}", (m, face, z) if axis == 'X' else (face, m, z), (ln, 0.006, 0.014) if axis == 'X' else (0.006, ln, 0.014), lap)
+                j += 1
+            cur = max(cur, c1)
+        z += 0.22
+    belt = (a1 - a0, 0.03, 0.20) if axis == 'X' else (0.03, a1 - a0, 0.20)
+    make_box(f"{name}_Belt", (((a0 + a1) / 2.0, line + sg * 0.026, FL2 - 0.05) if axis == 'X' else (line + sg * 0.026, (a0 + a1) / 2.0, FL2 - 0.05)), belt, TRIM)
+
+
 def build_shell():
     """The two-storey box and the ground floor. The bedroom wing upstairs is
     build_upper_wing (lifted by plan.zoned); the stair, the balcony and the
@@ -232,18 +272,29 @@ def build_shell():
     # the exterior, two storeys tall: Wall_S has the living window and its
     # high window over it (the living room is two storeys), the front door,
     # the kitchen window and the parents' window over it
-    wall_x("Wall_S", Y0, X0 - 0.1, X1 + 0.1, face=+1, h=CEIL2,
-           openings=[(-4.2, 1.45, 2.0, 1.40), (-4.2, FL2 + 1.20, 2.0, 1.20), (-1.0, DOOR_H / 2.0, 0.95, DOOR_H),
-                     (4.2, 1.50, 1.60, 1.20), (3.0, FL2 + 1.45, 1.60, 1.30)])
+    ext_s = [(-4.2, 1.45, 2.0, 1.40), (-4.2, FL2 + 1.20, 2.0, 1.20), (-1.0, DOOR_H / 2.0, 0.95, DOOR_H),
+             (4.2, 1.50, 1.60, 1.20), (3.0, FL2 + 1.45, 1.60, 1.30)]
+    wall_x("Wall_S", Y0, X0 - 0.1, X1 + 0.1, face=+1, h=CEIL2, openings=ext_s)
     # Wall_N: the tub's window and the bathroom's small one, the mudroom's below; bed 2, the shower room
     # and Andy's room above (their windows are build_upper_wing's)
-    wall_x("Wall_N", Y1, X0 - 0.1, X1 + 0.1, face=-1, h=CEIL2,
-           openings=[(-4.0, 1.45, 1.40, 1.30), (-0.30, 1.85, 0.70, 0.55), (4.0, 1.45, 1.40, 1.30),
-                     ((UB_X1 + B2_X1) / 2.0, FL2 + 1.45, 1.40, 1.30), ((UB_X0 + UB_X1) / 2.0 - 0.50, FL2 + 1.85, 0.70, 0.55),
-                     (4.0, FL2 + 1.45, 1.40, 1.30)])
-    wall_y("Wall_W", X0, Y0, Y1, face=+1, h=CEIL2, openings=[(2.8, FL2 + 1.10, 1.60, 1.20), (8.6, 1.45, 1.40, 1.30)])
-    wall_y("Wall_E", X1, Y0, Y1, face=-1, h=CEIL2, openings=[(2.2, 1.45, 1.60, 1.30), (2.2, FL2 + 1.45, 1.60, 1.30),
-                                                             (8.6, DOOR_H / 2.0, 0.95, DOOR_H)])   # the mudroom's back door
+    ext_n = [(-4.0, 1.45, 1.40, 1.30), (-0.30, 1.85, 0.70, 0.55), (4.0, 1.45, 1.40, 1.30),
+             ((UB_X1 + B2_X1) / 2.0, FL2 + 1.45, 1.40, 1.30), ((UB_X0 + UB_X1) / 2.0 - 0.50, FL2 + 1.85, 0.70, 0.55),
+             (4.0, FL2 + 1.45, 1.40, 1.30)]
+    wall_x("Wall_N", Y1, X0 - 0.1, X1 + 0.1, face=-1, h=CEIL2, openings=ext_n)
+    ext_w = [(2.8, FL2 + 1.10, 1.60, 1.20), (8.6, 1.45, 1.40, 1.30)]
+    wall_y("Wall_W", X0, Y0, Y1, face=+1, h=CEIL2, openings=ext_w)
+    ext_e = [(2.2, 1.45, 1.60, 1.30), (2.2, FL2 + 1.45, 1.60, 1.30), (8.6, DOOR_H / 2.0, 0.95, DOOR_H)]   # the mudroom's back door
+    wall_y("Wall_E", X1, Y0, Y1, face=-1, h=CEIL2, openings=ext_e)
+    # the outside: white lap siding over the exterior walls (they showed the
+    # rooms' paint), corner boards, a belt board between the storeys
+    for nm, ax, line, a0, a1, ops, sg in (("S", 'X', Y0 - T / 2.0, X0 - T / 2.0, X1 + T / 2.0, ext_s, -1),
+                                          ("N", 'X', Y1 + T / 2.0, X0 - T / 2.0, X1 + T / 2.0, ext_n, +1),
+                                          ("W", 'Y', X0 - T / 2.0, Y0 - T / 2.0, Y1 + T / 2.0, ext_w, -1),
+                                          ("E", 'Y', X1 + T / 2.0, Y0 - T / 2.0, Y1 + T / 2.0, ext_e, +1)):
+        _clad(f"Siding_{nm}", ax, line + sg * 0.011, a0 - 0.022, a1 + 0.022, ops, sg)
+    for k, (cx, cy) in enumerate(((X0, Y0), (X1, Y0), (X0, Y1), (X1, Y1))):
+        make_box(f"Corner_Board_{k}", (cx + (0.06 if cx > 0 else -0.06) * 2.2, cy + (0.06 if cy > 0 else -0.06) * 2.2, CEIL2 / 2.0),
+                 (0.12, 0.12, CEIL2), TRIM)
     # the ground hall: the living room's wide cased opening and the kitchen's
     # door on its S wall; the bathroom's door and the mudroom's wide opening on its N wall
     wall_x("Wall_Hall_S", HALL_S, X0, X1, face=-1, openings=[(-0.95, 1.05, 0.95, 2.10), (0.50 + 0.25, DOOR_H / 2.0, 0.80, DOOR_H)])
@@ -397,6 +448,17 @@ def build_stair_and_upstairs():
     make_box("Parents_Dresser", (X1 - 0.10 - 0.25, 4.30, FL2 + 0.45), (0.50, 1.40, 0.90), OAK)
     make_box("Parents_Nightstand", (PAR_X0 + 0.10 + 0.24, 4.00, FL2 + 0.30), (0.44, 0.44, 0.60), OAK)
     make_lamp("Lamp_Parents", PAR_X0 + 0.10 + 0.24, 4.00, base_z=FL2 + 0.60, h=0.52)
+    # draft 5: the large master furnished — the other nightstand and lamp,
+    # a rug under the bed, a cedar chest at its foot, an armchair and a
+    # floor lamp by the front window, curtains on both windows
+    make_box("Parents_Nightstand_S", (PAR_X0 + 0.10 + 0.24, 1.20, FL2 + 0.30), (0.44, 0.44, 0.60), OAK)
+    make_lamp("Lamp_Parents_S", PAR_X0 + 0.10 + 0.24, 1.20, base_z=FL2 + 0.60, h=0.52)
+    make_box("Parents_Rug", (PAR_X0 + 1.30, 2.6, FL2 + 0.006), (2.60, 2.40, 0.012), (0.56, 0.42, 0.36, 1.0))
+    make_box("Parents_Chest", (PAR_X0 + 0.10 + 2.10 + 0.30, 2.6, FL2 + 0.24), (0.46, 1.10, 0.48), (0.52, 0.32, 0.20, 1.0))
+    make_sofa("Parents_Armchair", 4.60, 0.95, back="-Y", w=0.92, d=0.86, seats=1, color=(0.62, 0.56, 0.44, 1.0), arm="roll", z0=FL2)
+    make_lamp("Lamp_Parents_Floor", 5.40, 0.70, base_z=FL2, h=1.50)
+    make_curtains("Parents_Curtains_S", (3.0, Y0 + 0.10, FL2 + 1.45), width=1.60, height=1.30, axis='X', room_dir=+1, color=(0.76, 0.70, 0.60, 1.0))
+    make_curtains("Parents_Curtains_E", (X1 - 0.10, 2.2, FL2 + 1.45), width=1.60, height=1.30, axis='Y', room_dir=-1, color=(0.76, 0.70, 0.60, 1.0))
     # the upstairs hall: its light, the smoke detector
     make_cyl("Hall_Up_Light", (0.0, 6.05, CEIL2 - 0.05), 0.16, 0.08, (0.96, 0.94, 0.86, 1.0), segments=12)
     make_smoke_detector("Smoke_Hall_Up", (-1.8, 6.05, CEIL2))
@@ -684,6 +746,17 @@ def build_bed2():
     from the yard is not a void (its interior is draft 2)."""
     make_bed("Bed2", -3.90 + B2_DX, 9.20, head="+Y", w=1.50, d=2.00, blanket_col=(0.56, 0.48, 0.40, 1.0))
     make_box("Bed2_Dresser", (-6.10 + B2_DX, 8.00, 0.45), (0.48, 1.10, 0.90), OAK)
+    # draft 5: a nightstand and lamp, a rug, a desk and chair under the
+    # window's E side, curtains
+    b2c = (UB_X1 + B2_X1) / 2.0
+    make_box("Bed2_Nightstand", (-3.90 + B2_DX + 1.05, Y1 - T / 2.0 - 0.25, 0.30), (0.42, 0.42, 0.60), OAK)
+    make_lamp("Lamp_Bed2", -3.90 + B2_DX + 1.05, Y1 - T / 2.0 - 0.25, base_z=0.60, h=0.50)
+    make_box("Bed2_Rug", (-3.90 + B2_DX, 7.90, 0.006), (1.80, 1.20, 0.012), (0.44, 0.50, 0.56, 1.0))
+    make_box("Bed2_Desk", (B2_X1 - T / 2.0 - 0.32, 8.20, 0.74), (0.60, 1.10, 0.04), OAK_DARK)
+    for s in (-1, 1):
+        make_box(f"Bed2_Desk_Side_{s:+d}", (B2_X1 - T / 2.0 - 0.32, 8.20 + s * 0.53, 0.36), (0.58, 0.04, 0.72), OAK_DARK)
+    make_chair("Bed2_Desk_Chair", B2_X1 - T / 2.0 - 0.95, 8.20, yaw=-math.pi / 2.0, wood=OAK_DARK)
+    make_curtains("Bed2_Curtains", (b2c, Y1 - 0.10, 1.45), width=1.40, height=1.30, axis='X', room_dir=-1, color=(0.66, 0.60, 0.70, 1.0))
 
 
 def build_hall_and_infra():
@@ -786,7 +859,7 @@ def build_grounds():
     make_rot_box("Porch_Roof", (px, py0 + PORCH_D / 2.0 - 0.20, (rz0 + rz1) / 2.0 + 0.06), (pw + 0.40, PORCH_D + 0.60, 0.10), ROOF,
                  roll=pitch)              # higher at the wall (roll: about X, z rises with y)
     make_box("Porch_Beam", (px, py0 + 0.12, rz1 - 0.04), (pw, 0.16, 0.20), TRIM)
-    make_box("Porch_Ledger", (px, Y0 - T / 2.0 - 0.05, rz0 - 0.06), (pw, 0.10, 0.16), TRIM)
+    make_box("Porch_Ledger", (px, Y0 - T / 2.0 - 0.08, rz0 - 0.06), (pw, 0.10, 0.16), TRIM)
     step_x = -1.0
     posts = [PORCH_X0 + 0.15, -4.4, step_x - 0.70, step_x + 0.70, PORCH_X1 - 0.15]
     for k, x in enumerate(posts):
@@ -812,7 +885,7 @@ def build_grounds():
                          yaw=0.15 * (1 - 2 * k))
     make_table("Porch_Table", -4.4, py0 + 1.05, w=0.50, d=0.50, h=0.50, wood=(0.40, 0.30, 0.22, 1.0))
     make_cyl("Porch_Tea_Glass", (-4.35, py0 + 1.00, 0.555), 0.035, 0.11, (0.70, 0.56, 0.32, 0.6), segments=10)
-    make_box("Porch_Light", (-1.65, Y0 - T / 2.0 - 0.06, 2.00), (0.14, 0.12, 0.24), (0.98, 0.90, 0.66, 1.0))
+    make_box("Porch_Light", (-1.65, Y0 - T / 2.0 - 0.09, 2.00), (0.14, 0.12, 0.24), (0.98, 0.90, 0.66, 1.0))
     # the path from the steps to the pasture gate; the yard's fence along the pasture
     make_box("Path_Front", (step_x, (py0 - 1.0 - 9.0) / 2.0, GZ + 0.012), (1.10, (py0 - 1.0) - (-9.0), 0.024), GRAVEL)
     _fence_x("Pasture_Fence", -9.0, -60.0, 60.0, gap=(step_x - 1.8, step_x + 1.8))
@@ -831,8 +904,8 @@ def build_grounds():
     croof = 2.70
     make_box("Carport_Roof", ((CP_X0 + 0.10 + CP_X1 + 0.40) / 2.0, (CP_Y0 + ST_Y1) / 2.0, croof + 0.06), (CP_X1 + 0.30 - CP_X0, ST_Y1 - CP_Y0 + 0.6, 0.12), ROOF)
     make_box("Carport_Fascia_E", (CP_X1 + 0.25, (CP_Y0 + ST_Y1) / 2.0, croof - 0.05), (0.06, ST_Y1 - CP_Y0 + 0.6, 0.24), TRIM)
-    make_box("Carport_Fascia_S", ((CP_X0 + CP_X1 + 0.3) / 2.0, CP_Y0 - 0.30, croof - 0.05), (CP_X1 - CP_X0 + 0.5, 0.06, 0.24), TRIM)
-    make_box("Carport_Ledger", (CP_X0 + 0.05, (CP_Y0 + ST_Y1) / 2.0, croof - 0.10), (0.10, ST_Y1 - CP_Y0, 0.20), TRIM)
+    make_box("Carport_Fascia_S", ((CP_X0 + 0.04 + CP_X1 + 0.40) / 2.0, CP_Y0 - 0.30, croof - 0.05), (CP_X1 + 0.36 - CP_X0, 0.06, 0.24), TRIM)
+    make_box("Carport_Ledger", (CP_X0 + 0.08, (CP_Y0 + ST_Y1) / 2.0, croof - 0.10), (0.10, ST_Y1 - CP_Y0, 0.20), TRIM)
     make_box("Carport_Beam", (CP_X1 - 0.10, (CP_Y0 + ST_Y1) / 2.0, croof - 0.12), (0.18, ST_Y1 - CP_Y0, 0.24), TRIM)
     for k, y in enumerate((CP_Y0 + 0.10, CP_Y0 + 2.6, CP_Y0 + 5.1, CP_Y1)):
         make_box(f"Carport_Post_{k}", (CP_X1 - 0.10, y, (GZ + 0.07 + croof - 0.24) / 2.0), (0.16, 0.16, croof - 0.24 - GZ - 0.07), TRIM)

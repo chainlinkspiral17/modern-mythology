@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 151: THE LINK HOUSE IN SIDING; THE UPSTAIRS ROOMS FURNISHED.**
+- The draft N+1 list from pass 150:
+  - **Siding:** white lap siding over the exterior walls (they showed the rooms' paint). `_clad`
+    builds a 2 cm skin with the wall's openings and lap lines broken at the windows and doors,
+    plus a belt board at the upstairs floor and corner boards.
+  - **The master:** the second nightstand and lamp, a rug, a cedar chest at the bed's foot, an
+    armchair and a floor lamp by the front window, curtains on both windows.
+  - **The second bedroom:** a nightstand and lamp, a rug, a desk and chair, curtains.
+  - **New preset:** andy_house_stair, from the landing down the stair.
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0; perf 798 (baseline 750).
+- DRAFT N+1: window casings and sills outside, shutters; the porch light lit at dusk (a dusk porch
+  setup); the stair setup without the fan's blades in the frame.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 150: THE LINK HOUSE'S STAIR ALONG THE WALL; THE BATH AT THE STAIR'S HEAD.**
 - The user: "Stairs run along the wall, not extend out into the room. Bathroom at top near the
   stairway two rooms on one side a large master on the other."
