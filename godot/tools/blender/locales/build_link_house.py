@@ -9,8 +9,8 @@ two storey", upstairs "Three bedrooms and a small restroom/shower". Draft 1's
           LIV_X1, under the balcony), the kitchen and dining, the hall;
           behind the hall the bathroom with the big tub sunk in a raised
           tiled deck (W of BATHG_E) and the mudroom with the back door (E)
-  stair   from just inside the front door north up the living room's E
-          side to the upstairs hall, balustrades both sides
+  stair   (draft 4) along the living room's N wall, climbing W to the
+          landing in the NW corner
   upstairs (FL2) the bedroom wing lifted whole by plan.zoned (UP_WING):
           Andy's room, the second bedroom, the shower room (draft 1's tub
           is a shower stall); the parents' room over the kitchen (the third
@@ -29,7 +29,16 @@ mudroom's back door (stoop, steps), the two storage rooms at its N end
 under the same roof, the pickup, the gravel drive out east; the clothesline
 and the oak out back; the gable roof. Presets andy_house_porch /
 andy_house_front / andy_house_carport (day).
-DRAFT 4 targets: siding and trim on the house's outside faces (they carry
+DRAFT 4 (2026-10-23, the user: "Stairs run along the wall, not extend out
+into the room. Bathroom at top near the stairway two rooms on one side a
+large master on the other"): the stair hugs the living room's N wall (the
+hall wall), its foot by the hall opening (moved E to x -0.95), climbing W
+to a landing in the NW corner, the bookcase in the nook under it; the
+living room two storeys tall to the master's wall. Upstairs the bathroom
+is at the hall's W end, its door at the stair's head; the second bedroom
+in the middle; Andy's room E (unchanged); the master over the kitchen. The
+bath presets and lights moved with the bathroom (UB_DX).
+DRAFT 5 targets: siding and trim on the house's outside faces (they carry
 the interior paint); the upstairs windows' shutters; a porch light that
 lights at night; a dusk preset from the porch; the storage rooms' insides;
 the house from outside (the second storey's roofline);
@@ -106,12 +115,21 @@ T = 0.20                           # wall thickness
 # storey" — upstairs "three bedrooms and a small restroom/shower")
 FL2 = 2.90                         # the upstairs floor
 CEIL2 = FL2 + CEIL                 # the upstairs ceiling, and the living room's
-LIV_X1 = -1.5                      # the living room rises two storeys W of here
+LIV_X1 = -0.40                     # the living room rises two storeys W of here (to the master's wall)
 PAR_X0 = -0.3                      # the parents' room over the kitchen, E of here
-STAIR_X0, STAIR_X1 = -1.45, -0.45  # the stair: from the front door north to the upstairs hall
-STAIR_Y0, RUN, N_RISE = 1.25, 0.27, 16
+# the stair runs ALONG THE WALL (draft 4, the user: "Stairs run along the wall,
+# not extend out into the room"): against the living room's N wall (the hall
+# wall), its foot by the hall opening, climbing W to a landing in the NW corner
+STAIR_Y0, STAIR_Y1 = HALL_S - T / 2.0 - 1.00, HALL_S - T / 2.0     # its width, off the wall
+STAIR_FOOT, RUN, N_RISE = -1.60, 0.27, 16                          # the first riser's x; it climbs W
 RISE = FL2 / N_RISE
-STAIR_Y1 = STAIR_Y0 + (N_RISE - 1) * RUN
+STAIR_TOP = STAIR_FOOT - (N_RISE - 1) * RUN                        # the last riser's x, the landing W of it
+# upstairs on the N side: the bathroom at the stair's head (W), the second
+# bedroom, Andy's room (E); the master across the hall over the kitchen
+UB_X0, UB_X1 = X0, -3.70
+B2_X1 = BATH_E                     # the second bedroom runs from UB_X1 to Andy's W wall
+UB_DX = (UB_X0 + UB_X1) / 2.0 - (BATH_W + BATH_E) / 2.0   # the bath's fixtures, moved from draft 2's place
+B2_DX = 2.80                        # the second bedroom's furniture, moved E with it
 UP_WING = [(X0 - 1.0, 6.55, X1 + 1.0, Y1 + 1.0, 0.0, 0.0, FL2)]   # plan.zoned: the bedroom wing, lifted a storey
 
 PAL_WALL = {"wall": (0.86, 0.80, 0.68, 1.0), "baseboard": (0.92, 0.90, 0.84, 1.0)}   # builder beige, white trim
@@ -206,7 +224,7 @@ def build_shell():
     # living room goes up two storeys and where the stair goes through
     ceil = (0.94, 0.93, 0.89, 1.0)
     for nm, (x0, y0, x1, y1) in (("Kitchen", (PAR_X0 - T / 2.0, Y0, X1 + 0.1, 5.40)), ("Back", (X0 - 0.1, 5.40, X1 + 0.1, Y1 + 0.1)),
-                                 ("Landing", (LIV_X1, STAIR_Y1, PAR_X0 - T / 2.0, 5.40))):
+                                 ("Landing", (X0 + T / 2.0, STAIR_Y0, STAIR_TOP, STAIR_Y1))):
         make_box(f"Slab_{nm}", ((x0 + x1) / 2.0, (y0 + y1) / 2.0, CEIL + 0.095), (x1 - x0, y1 - y0, 0.19), ceil)
     make_ceiling("Ceil", (0.0, (Y0 + Y1) / 2.0, CEIL2), size_x=X1 - X0 + 0.4, size_y=Y1 - Y0 + 0.4,
                  with_grid=False, with_stains=False, palette={"tile": (0.94, 0.93, 0.89, 1.0)})
@@ -221,18 +239,19 @@ def build_shell():
     # and Andy's room above (their windows are build_upper_wing's)
     wall_x("Wall_N", Y1, X0 - 0.1, X1 + 0.1, face=-1, h=CEIL2,
            openings=[(-4.0, 1.45, 1.40, 1.30), (-0.30, 1.85, 0.70, 0.55), (4.0, 1.45, 1.40, 1.30),
-                     (-4.0, FL2 + 1.45, 1.40, 1.30), (-0.30, FL2 + 1.85, 0.70, 0.55), (4.0, FL2 + 1.45, 1.40, 1.30)])
+                     ((UB_X1 + B2_X1) / 2.0, FL2 + 1.45, 1.40, 1.30), ((UB_X0 + UB_X1) / 2.0 - 0.50, FL2 + 1.85, 0.70, 0.55),
+                     (4.0, FL2 + 1.45, 1.40, 1.30)])
     wall_y("Wall_W", X0, Y0, Y1, face=+1, h=CEIL2, openings=[(2.8, FL2 + 1.10, 1.60, 1.20), (8.6, 1.45, 1.40, 1.30)])
     wall_y("Wall_E", X1, Y0, Y1, face=-1, h=CEIL2, openings=[(2.2, 1.45, 1.60, 1.30), (2.2, FL2 + 1.45, 1.60, 1.30),
                                                              (8.6, DOOR_H / 2.0, 0.95, DOOR_H)])   # the mudroom's back door
     # the ground hall: the living room's wide cased opening and the kitchen's
     # door on its S wall; the bathroom's door and the mudroom's wide opening on its N wall
-    wall_x("Wall_Hall_S", HALL_S, X0, X1, face=-1, openings=[(-3.0, 1.05, 1.60, 2.10), (0.50, DOOR_H / 2.0, 0.95, DOOR_H)])
+    wall_x("Wall_Hall_S", HALL_S, X0, X1, face=-1, openings=[(-0.95, 1.05, 0.95, 2.10), (0.50 + 0.25, DOOR_H / 2.0, 0.80, DOOR_H)])
     wall_x("Wall_Hall_N_G", HALL_N, X0, X1, face=-1, openings=[(-2.4, DOOR_H / 2.0, 0.86, DOOR_H),
                                                                       (2.6, DOOR_H / 2.0, 1.20, DOOR_H)])
     wall_y("Wall_Bath_G_E", BATHG_E, HALL_N, Y1, face=+1, pal=PAL_BATH)
-    for nm, x, y, w, ax in (("Case_Front", -1.0, Y0, 0.95, 'X'), ("Case_Living", -3.0, HALL_S, 1.60, 'X'),
-                            ("Case_Kitchen", 0.50, HALL_S, 0.95, 'X'), ("Case_Bath_G", -2.4, HALL_N, 0.86, 'X'),
+    for nm, x, y, w, ax in (("Case_Front", -1.0, Y0, 0.95, 'X'), ("Case_Living", -0.95, HALL_S, 0.95, 'X'),
+                            ("Case_Kitchen", 0.75, HALL_S, 0.80, 'X'), ("Case_Bath_G", -2.4, HALL_N, 0.86, 'X'),
                             ("Case_Mud", 2.6, HALL_N, 1.20, 'X'), ("Case_Back_Door", X1, 8.6, 0.95, 'Y')):
         door_casing(nm, x, y, w, ax)
 
@@ -268,90 +287,96 @@ def build_shell():
 
 def build_upper_wing():
     """The bedroom wing upstairs, authored at ground level and lifted FL2 by
-    plan.zoned (main): the upstairs hall's N wall and its three doors, the
-    shower room's walls, the floors, the N windows and Andy's blinds. (Draft
-    1 had this wing on the ground floor of a single-storey ranch.)"""
-    make_floor("Floor_Bed2", (-3.85, 8.60, 0.0), size_x=5.3, size_y=3.8, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
-    make_floor("Floor_Bath", (0.20, 8.60, 0.0), size_x=2.8, size_y=3.8, palette={"vinyl": TILE, "seam": TILE_SEAM})
+    plan.zoned (main). Draft 4 (the user: "Bathroom at top near the
+    stairway two rooms on one side a large master on the other"): the
+    bathroom at the hall's W end by the stair's head, the second bedroom in
+    the middle, Andy's room E; the master is build_stair_and_upstairs'."""
+    b2c = (UB_X1 + B2_X1) / 2.0
+    ubc = (UB_X0 + UB_X1) / 2.0
+    make_floor("Floor_Bath", (ubc, 8.60, 0.0), size_x=UB_X1 - UB_X0, size_y=3.8, palette={"vinyl": TILE, "seam": TILE_SEAM})
+    make_floor("Floor_Bed2", (b2c, 8.60, 0.0), size_x=B2_X1 - UB_X1, size_y=3.8, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
     make_floor("Floor_Bedroom", (4.05, 8.60, 0.0), size_x=4.9, size_y=3.8, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
-    wall_x("Wall_Hall_N", HALL_N, X0, X1, face=-1, openings=[(-4.0, DOOR_H / 2.0, 0.86, DOOR_H),
-                                                                    (0.20, DOOR_H / 2.0, 0.81, DOOR_H),
-                                                                    (3.20, DOOR_H / 2.0, 0.86, DOOR_H)])
-    wall_y("Wall_Bath_W", BATH_W, HALL_N, Y1, face=+1, pal=PAL_BATH)
-    wall_y("Wall_Bath_E", BATH_E, HALL_N, Y1, face=-1, pal=PAL_BATH)
-    for nm, x, y, w, ax in (("Case_Bed2", -4.0, HALL_N, 0.86, 'X'), ("Case_Bath", 0.20, HALL_N, 0.81, 'X'),
-                            ("Case_Bedroom", 3.20, HALL_N, 0.86, 'X')):
-        door_casing(nm, x, y, w, ax)
-    make_window("Win_Bed2", (-4.0, Y1 - 0.10, 1.45), width=1.40, height=1.30, see_through=True)
+    DB, D2, DA = ubc, b2c - 0.40, 3.20          # the three doors on the hall
+    wall_x("Wall_Hall_N", HALL_N, X0, X1, face=-1, openings=[(DB, DOOR_H / 2.0, 0.81, DOOR_H), (D2, DOOR_H / 2.0, 0.86, DOOR_H),
+                                                                    (DA, DOOR_H / 2.0, 0.86, DOOR_H)])
+    wall_y("Wall_Bath_E", UB_X1, HALL_N, Y1, face=-1, pal=PAL_BATH)
+    wall_y("Wall_Bed2_E", B2_X1, HALL_N, Y1, face=-1)
+    for nm, x, w in (("Case_Bath", DB, 0.81), ("Case_Bed2", D2, 0.86), ("Case_Bedroom", DA, 0.86)):
+        door_casing(nm, x, HALL_N, w, 'X')
+    make_window("Win_Bed2", (b2c, Y1 - 0.10, 1.45), width=1.40, height=1.30, see_through=True)
     make_window("Win_Bedroom", (4.0, Y1 - 0.10, 1.45), width=1.40, height=1.30, see_through=True)
-    make_window("Win_Bath", (-0.30, Y1 - 0.10, 1.85), width=0.70, height=0.55, cross_mullion=False,
+    make_window("Win_Bath", (ubc - 0.50, Y1 - 0.10, 1.85), width=0.70, height=0.55, cross_mullion=False,
                 palette={"glass": (0.86, 0.90, 0.90, 0.85), "warm": (0.92, 0.92, 0.88, 0.9)})
     nm, x, y, w, z_top, drop = "Blind_Bedroom", 4.0, Y1 - 0.17, 1.4, 2.10, 0.50
     make_box(f"{nm}_Rail", (x, y, z_top), (w + 0.06, 0.05, 0.05), DOOR_WHITE)
     for k in range(int(drop / 0.05)):
         make_box(f"{nm}_Slat_{k}", (x, y, z_top - 0.05 - k * 0.05), (w, 0.03, 0.006), (0.94, 0.93, 0.89, 1.0))
-    # doors: the second bedroom's shut, the shower room's half open (into the
+    # doors: the second bedroom's shut, the bathroom's half open (into the
     # room, hinge on its E jamb), Andy's open against its W wall
-    make_box("Door_Bed2", (-4.0, HALL_N + 0.02, DOOR_H / 2.0), (0.84, 0.04, DOOR_H - 0.02), DOOR_WHITE)
-    make_cyl("Door_Bed2_Knob", (-3.68, HALL_N - 0.025, 0.98), 0.028, 0.05, CHROME, axis='Y', segments=10)
+    make_box("Door_Bed2", (D2, HALL_N + 0.02, DOOR_H / 2.0), (0.84, 0.04, DOOR_H - 0.02), DOOR_WHITE)
+    make_cyl("Door_Bed2_Knob", (D2 + 0.32, HALL_N - 0.025, 0.98), 0.028, 0.05, CHROME, axis='Y', segments=10)
     # the bath door swung 95 degrees into the bathroom on its E-jamb hinge,
     # flat to the room's east side, so the doorway (and the camera in it)
     # sees the toilet, the shower and the vanity
     import math
     a = math.radians(95.0)
-    hx, hy, dw = 0.20 + 0.405, HALL_N + 0.12, 0.79
+    hx, hy, dw = DB + 0.405, HALL_N + 0.12, 0.79
     dx, dy = -math.cos(a), math.sin(a)
-    from _props.geometry import make_rot_box, make_heightfield, make_gable
     make_rot_box("Door_Bath", (hx + dx * dw / 2.0, hy + dy * dw / 2.0, DOOR_H / 2.0),
                  (dw, 0.04, DOOR_H - 0.02), DOOR_WHITE, yaw=math.atan2(dy, dx))
-    make_box("Door_Bedroom", (2.80, HALL_N + 0.10 + 0.43, DOOR_H / 2.0), (0.04, 0.84, DOOR_H - 0.02), DOOR_WHITE)
+    make_box("Door_Bedroom", (DA - 0.40, HALL_N + 0.10 + 0.43, DOOR_H / 2.0), (0.04, 0.84, DOOR_H - 0.02), DOOR_WHITE)
     # the upstairs hall's photographs on its N wall, the switches, the outlet by Andy's bed
-    for k, x in enumerate((-2.2, -1.4, 1.4, 2.3)):
+    for k, x in enumerate((-3.10, -2.35, 0.55, 1.30)):
         make_box(f"Hall_Photo_{k}", (x, HALL_N - T / 2.0 - 0.012, 1.55 + (k % 2) * 0.12), (0.30, 0.02, 0.38), (0.24, 0.18, 0.14, 1.0))
         make_box(f"Hall_Photo_{k}_Print", (x, HALL_N - T / 2.0 - 0.024, 1.55 + (k % 2) * 0.12), (0.24, 0.004, 0.30),
                  ((0.70, 0.62, 0.50, 1.0) if k % 2 else (0.56, 0.62, 0.66, 1.0)))
-    make_light_switch("Switch_Bath", (0.80, HALL_N), axis='X', face_sign=-1)
+    make_light_switch("Switch_Bath", (DB + 0.60, HALL_N), axis='X', face_sign=-1)
     make_light_switch("Switch_Bedroom", (2.65, HALL_N), axis='X', face_sign=-1)
     make_wall_outlet("Outlet_Bed", (X1, 9.00), axis='Y', face_sign=-1)
-    make_threshold("Threshold_Bath", (0.20, HALL_N), width=0.8, axis='X')
-    # the upstairs hall's photographs, on its N wall
+    make_threshold("Threshold_Bath", (DB, HALL_N), width=0.8, axis='X')
 
 
 def build_stair_and_upstairs():
-    """The stair from the front door up the living room's E side, the
-    balcony over the living room, the upstairs hall, and the parents' room
-    over the kitchen (the third bedroom; its door shut)."""
+    """The stair along the living room's N wall, its foot by the hall
+    opening, climbing W to the landing in the NW corner at the upstairs
+    hall's W end (the bathroom's door); the balcony over the living room;
+    the master over the kitchen (its door shut)."""
     from _props.geometry import make_tube
-    xc, w = (STAIR_X0 + STAIR_X1) / 2.0, STAIR_X1 - STAIR_X0
+    yc, w = (STAIR_Y0 + STAIR_Y1) / 2.0, STAIR_Y1 - STAIR_Y0
     for k in range(N_RISE - 1):
-        y0 = STAIR_Y0 + k * RUN
+        x1 = STAIR_FOOT - k * RUN          # this tread's E edge (its riser)
         zt = (k + 1) * RISE
-        make_box(f"Stair_Stock_Step_{k}", (xc, y0 + RUN / 2.0, zt / 2.0), (w, RUN, zt), (0.50, 0.38, 0.24, 1.0))
-        make_box(f"Stair_Stock_Tread_{k}", (xc, y0 + RUN / 2.0 - 0.01, zt + 0.008), (w + 0.04, RUN + 0.02, 0.016), CARPET)
-    # balustrades both sides, a newel at the foot, the rail climbing with the stair
-    def rail_z(y):
-        t = min(1.0, max(0.0, (y - STAIR_Y0) / (STAIR_Y1 - STAIR_Y0)))
+        make_box(f"Stair_Stock_Step_{k}", (x1 - RUN / 2.0, yc, zt / 2.0), (RUN, w, zt), (0.50, 0.38, 0.24, 1.0))
+        make_box(f"Stair_Stock_Tread_{k}", (x1 - RUN / 2.0 + 0.01, yc, zt + 0.008), (RUN + 0.02, w, 0.016), CARPET)
+    # the stringer on the room side, the balustrade over it, a newel at the
+    # foot, the handrail on the wall
+    by = STAIR_Y0 - 0.03
+
+    def rail_z(x):
+        t = min(1.0, max(0.0, (STAIR_FOOT - x) / (STAIR_FOOT - STAIR_TOP)))
         return RISE + 0.90 + t * (FL2 - RISE)
-    for sd, x in (("W", STAIR_X0 - 0.03), ("E", STAIR_X1 + 0.03)):
-        make_box(f"Stair_Newel_{sd}", (x, STAIR_Y0 + 0.05, 0.55), (0.09, 0.09, 1.10), DOOR_WHITE)
-        make_tube(f"Stair_Rail_{sd}", [(x, STAIR_Y0 + 0.05, 1.08), (x, STAIR_Y1, FL2 + 0.90)], 0.028, OAK_DARK, segments=8)
-        for k in range(N_RISE - 1):
-            for m in range(2):
-                y = STAIR_Y0 + k * RUN + 0.07 + m * 0.13
-                zt = (k + 1) * RISE
-                top = rail_z(y)
-                make_box(f"Stair_Stock_Bal_{sd}_{k}_{m}", (x, y, (zt + top) / 2.0), (0.025, 0.025, top - zt), DOOR_WHITE)
-    # the upstairs: the hall's carpet (over the ground hall and along the
-    # balcony), the landing at the stair's head, the parents' room's floor
+    make_box("Stair_Newel", (STAIR_FOOT + 0.05, by, 0.55), (0.09, 0.09, 1.10), DOOR_WHITE)
+    make_tube("Stair_Rail", [(STAIR_FOOT + 0.05, by, 1.08), (STAIR_TOP, by, FL2 + 0.90)], 0.028, OAK_DARK, segments=8)
+    make_tube("Stair_Wall_Rail", [(STAIR_FOOT, STAIR_Y1 - 0.06, RISE + 0.86), (STAIR_TOP, STAIR_Y1 - 0.06, FL2 + 0.86)], 0.022, OAK_DARK, segments=8)
+    for k in range(N_RISE - 1):
+        for m in range(2):
+            x = STAIR_FOOT - k * RUN - 0.07 - m * 0.13
+            zt = (k + 1) * RISE
+            top = rail_z(x)
+            make_box(f"Stair_Stock_Bal_{k}_{m}", (x, by, (zt + top) / 2.0), (0.025, 0.025, top - zt), DOOR_WHITE)
+    # under the landing, the bookcase in its nook
+    # the upstairs: the hall's carpet, the landing, the master's floor
     make_floor("Floor_Up_Hall", (0.0, (5.40 + HALL_N) / 2.0, FL2), size_x=X1 - X0, size_y=HALL_N - 5.40, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
-    make_floor("Floor_Up_Landing", ((LIV_X1 + PAR_X0 - T / 2.0) / 2.0, (STAIR_Y1 + 5.40) / 2.0, FL2), size_x=PAR_X0 - T / 2.0 - LIV_X1, size_y=5.40 - STAIR_Y1,
+    make_floor("Floor_Up_Landing", ((X0 + T / 2.0 + STAIR_TOP) / 2.0, yc, FL2), size_x=STAIR_TOP - X0 - T / 2.0, size_y=w,
                palette={"vinyl": CARPET, "seam": CARPET_SEAM})
     make_floor("Floor_Parents", ((PAR_X0 + X1) / 2.0, 5.40 / 2.0, FL2), size_x=X1 - PAR_X0, size_y=5.40, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
-    # the balcony's edge over the living room: a fascia and a balustrade
-    by = 5.40
-    make_box("Balcony_Fascia", ((X0 + LIV_X1) / 2.0, by - 0.012, CEIL + 0.14), (LIV_X1 - X0 - 0.2, 0.024, 0.40), DOOR_WHITE)
-    make_box("Stairwell_Fascia_E", (PAR_X0 - T / 2.0 - 0.012, STAIR_Y1 / 2.0, CEIL + 0.14), (0.024, STAIR_Y1, 0.40), DOOR_WHITE)
-    for nm, (ax, ay), (bx, b2) in (("Balcony", (X0 + 0.12, by + 0.05), (LIV_X1, by + 0.05)),):
+    # the balcony's edge over the living room: fascias and the balustrade,
+    # from the landing to the master's wall; the landing's own rail
+    make_box("Balcony_Fascia", ((STAIR_TOP + LIV_X1) / 2.0, 5.40 - 0.012, CEIL + 0.14), (LIV_X1 - STAIR_TOP, 0.024, 0.40), DOOR_WHITE)
+    make_box("Landing_Fascia", ((X0 + T / 2.0 + STAIR_TOP) / 2.0, STAIR_Y0 - 0.012, CEIL + 0.14), (STAIR_TOP - X0 - T / 2.0, 0.024, 0.40), DOOR_WHITE)
+    make_box("Stairwell_Fascia_E", (PAR_X0 - T / 2.0 - 0.012, 5.40 / 2.0, CEIL + 0.14), (0.024, 5.40, 0.40), DOOR_WHITE)
+    for nm, (ax, ay), (bx, b2) in (("Balcony", (STAIR_TOP + 0.04, 5.40 + 0.05), (LIV_X1 - 0.05, 5.40 + 0.05)),
+                                   ("Landing", (X0 + T / 2.0 + 0.05, STAIR_Y0 + 0.05), (STAIR_TOP, STAIR_Y0 + 0.05))):
         L = abs(bx - ax) + abs(b2 - ay)
         n = max(2, int(L / 0.13))
         for k in range(n + 1):
@@ -363,7 +388,7 @@ def build_stair_and_upstairs():
                 make_box(f"{nm}_Stock_Bal_{k}", (px, py, FL2 + 0.46), (0.025, 0.025, 0.92), DOOR_WHITE)
         along_x = abs(bx - ax) > 0.01
         make_box(f"{nm}_Rail", ((ax + bx) / 2.0, (ay + b2) / 2.0, FL2 + 0.94), ((L + 0.08) if along_x else 0.07, 0.07 if along_x else (L + 0.08), 0.05), OAK_DARK)
-    # the parents' room: its W wall over the stair's E side, its N wall on the
+    # the master: its W wall over the living room's E edge, its N wall on the
     # upstairs hall with the door, the bed, a dresser, the lamp
     wall_y("Wall_Parents_W", PAR_X0, Y0, 5.50, face=-1, h=CEIL, z0=FL2)
     wall_x("Wall_Parents_N", 5.50, PAR_X0, X1, face=+1, h=CEIL, z0=FL2, openings=[(2.4, DOOR_H / 2.0, 0.86, DOOR_H)])   # z from the wall's base (FL2)
@@ -480,30 +505,30 @@ def build_living():
     make_table("CoffeeTable", -4.70, 2.80, w=0.60, d=1.10, h=0.42, wood=OAK)
     make_box("CoffeeTable_Remote", (-4.62, 2.60, 0.435), (0.05, 0.18, 0.02), BLACK)
     make_cyl("CoffeeTable_Mug", (-4.80, 3.05, 0.47), 0.04, 0.09, (0.82, 0.78, 0.70, 1.0), segments=10)
-    rx, ry = -5.20, 4.75
-    make_box("Recliner_Base", (rx, ry, 0.24), (0.80, 0.80, 0.28), (0.36, 0.30, 0.26, 1.0))
-    make_box("Recliner_Back", (rx, ry + 0.33, 0.70), (0.80, 0.22, 0.70), (0.36, 0.30, 0.26, 1.0))
+    rx, ry = -5.00, 0.95                       # the recliner by the front window, turned to the room (draft 4: the stair took its corner)
+    make_box("Recliner_Base", (rx, ry, 0.17), (0.80, 0.80, 0.34), (0.36, 0.30, 0.26, 1.0))
+    make_box("Recliner_Back", (rx, ry - 0.33, 0.70), (0.80, 0.22, 0.70), (0.36, 0.30, 0.26, 1.0))
     for s in (-1, 1):
         make_box(f"Recliner_Arm_{s:+d}", (rx + s * 0.36, ry, 0.48), (0.16, 0.80, 0.30), (0.36, 0.30, 0.26, 1.0))
-    make_box("Recliner_Cush", (rx, ry - 0.05, 0.42), (0.52, 0.62, 0.10), (0.40, 0.34, 0.30, 1.0))
-    make_box("EndTable", (-3.30, 4.25, 0.29), (0.50, 0.50, 0.58), OAK)
-    make_lamp("Lamp_Living", -3.30, 4.25, base_z=0.58, h=0.62)
-    # a bookcase against the hall wall, family photos on top
-    bx = -5.70
-    make_box("Bookcase_Back", (bx, HALL_S - 0.115, 0.95), (1.00, 0.02, 1.90), OAK_DARK)
+    make_box("Recliner_Cush", (rx, ry + 0.05, 0.42), (0.52, 0.62, 0.10), (0.40, 0.34, 0.30, 1.0))
+    make_box("EndTable", (-3.30, 4.13, 0.29), (0.46, 0.46, 0.58), OAK)
+    make_lamp("Lamp_Living", -3.30, 4.13, base_z=0.58, h=0.62)
+    # the bookcase in the nook under the stair's landing, on the W wall, family photos on top
+    bx, byc = X0 + T / 2.0, (STAIR_Y0 + STAIR_Y1) / 2.0
+    make_box("Bookcase_Back", (bx + 0.015, byc, 0.95), (0.02, 1.00, 1.90), OAK_DARK)
     for s in (-1, 1):
-        make_box(f"Bookcase_Side_{s:+d}", (bx + s * 0.49, HALL_S - 0.26, 0.95), (0.02, 0.28, 1.90), OAK)
+        make_box(f"Bookcase_Side_{s:+d}", (bx + 0.16, byc + s * 0.49, 0.95), (0.28, 0.02, 1.90), OAK)
     for b in range(5):
         z = 0.05 + b * 0.45
-        make_box(f"Bookcase_Board_{b}", (bx, HALL_S - 0.26, z), (0.96, 0.28, 0.02), OAK)
+        make_box(f"Bookcase_Board_{b}", (bx + 0.16, byc, z), (0.28, 0.96, 0.02), OAK)
         if b < 4:
             for i in range(10 - b):
                 h = 0.20 + ((i * 5 + b) % 4) * 0.03
-                make_box(f"Bookcase_Book_{b}_{i}", (bx - 0.42 + i * 0.085, HALL_S - 0.28, z + 0.01 + h / 2.0),
-                         (0.06, 0.20, h), ((0.30 + 0.07 * (i % 4)), 0.22 + 0.05 * (b % 3), 0.18, 1.0))
+                make_box(f"Bookcase_Book_{b}_{i}", (bx + 0.14, byc - 0.42 + i * 0.085, z + 0.01 + h / 2.0),
+                         (0.20, 0.06, h), ((0.30 + 0.07 * (i % 4)), 0.22 + 0.05 * (b % 3), 0.18, 1.0))
     for k in range(3):
-        make_box(f"Bookcase_Frame_{k}", (bx - 0.30 + k * 0.30, HALL_S - 0.30, 1.97), (0.18, 0.02, 0.22), (0.20, 0.16, 0.12, 1.0))
-    make_box("Bookcase_Top", (bx, HALL_S - 0.26, 1.905), (1.00, 0.30, 0.02), OAK)
+        make_box(f"Bookcase_Frame_{k}", (bx + 0.18, byc - 0.30 + k * 0.30, 1.97), (0.02, 0.18, 0.22), (0.20, 0.16, 0.12, 1.0))
+    make_box("Bookcase_Top", (bx + 0.16, byc, 1.905), (0.30, 1.00, 0.02), OAK)
     # the ceiling fan over the sofa
     make_cyl("Fan_Rod", (-3.90, 2.80, (CEIL - 0.30 + CEIL2) / 2.0), 0.015, CEIL2 - CEIL + 0.30, (0.60, 0.50, 0.30, 1.0), segments=6)   # the downrod from the two-storey ceiling
     make_cyl("Fan_Hub", (-3.90, 2.80, CEIL - 0.34), 0.11, 0.12, (0.60, 0.50, 0.30, 1.0), segments=12)
@@ -569,7 +594,7 @@ def _shower(x0, x1, y0, y1):
 def build_bath():
     """The shower in the NW corner under the frosted window, the toilet on the W wall, the
     vanity and its light bar on the E wall."""
-    xi0, xi1 = BATH_W + T / 2.0, BATH_E - T / 2.0
+    xi0, xi1 = UB_X0 + T / 2.0, UB_X1 - T / 2.0     # draft 4: at the stair's head
     yn = Y1 - T / 2.0
     _shower(xi0, xi0 + 0.95, yn - 0.95, yn)
     # the tile wainscot round the other walls
@@ -598,8 +623,8 @@ def build_bath():
                    (0.98, 0.96, 0.86, 1.0), segments=8)
     make_box("Towel_Bar", (xi1 - 0.015, 9.30, 1.15), (0.03, 0.60, 0.02), CHROME)
     make_box("Towel", (xi1 - 0.035, 9.30, 0.92), (0.03, 0.50, 0.46), (0.42, 0.56, 0.62, 1.0))
-    make_box("Bath_Mat", (0.10, 9.20, 0.006), (0.50, 0.80, 0.012), (0.46, 0.58, 0.62, 1.0))
-    make_cyl("Bath_Ceiling_Fan", (0.20, 8.00, CEIL - 0.03), 0.16, 0.05, (0.94, 0.94, 0.92, 1.0), segments=10)
+    make_box("Bath_Mat", (0.10 + UB_DX, 9.20, 0.006), (0.50, 0.80, 0.012), (0.46, 0.58, 0.62, 1.0))
+    make_cyl("Bath_Ceiling_Fan", (0.20 + UB_DX, 8.00, CEIL - 0.03), 0.16, 0.05, (0.94, 0.94, 0.92, 1.0), segments=10)
 
 
 def build_bedroom():
@@ -657,8 +682,8 @@ def build_bedroom():
 def build_bed2():
     """The second bedroom behind its shut door: enough that the window
     from the yard is not a void (its interior is draft 2)."""
-    make_bed("Bed2", -3.90, 9.20, head="+Y", w=1.50, d=2.00, blanket_col=(0.56, 0.48, 0.40, 1.0))
-    make_box("Bed2_Dresser", (-6.10, 8.00, 0.45), (0.48, 1.10, 0.90), OAK)
+    make_bed("Bed2", -3.90 + B2_DX, 9.20, head="+Y", w=1.50, d=2.00, blanket_col=(0.56, 0.48, 0.40, 1.0))
+    make_box("Bed2_Dresser", (-6.10 + B2_DX, 8.00, 0.45), (0.48, 1.10, 0.90), OAK)
 
 
 def build_hall_and_infra():
@@ -668,9 +693,9 @@ def build_hall_and_infra():
     make_thermostat("Thermostat", (-1.6, HALL_S), axis='X', face_sign=1)
     make_light_switch("Switch_Front", (-0.30, Y0), axis='X', face_sign=1)
     make_wall_outlet("Outlet_TV", (X0, 3.60), axis='Y', face_sign=1)
-    make_wall_outlet("Outlet_Kitchen", (1.10, HALL_S), axis='X', face_sign=-1)
+    make_wall_outlet("Outlet_Kitchen", (1.50, HALL_S), axis='X', face_sign=-1)
     wear = (CARPET[0] * 0.88, CARPET[1] * 0.88, CARPET[2] * 0.88, 1.0)
-    make_traffic_wear("Wear_Front_To_Hall", [(-1.0, 0.4), (-2.2, 3.0), (-3.0, 5.6)], width=0.7, tint=wear)
+    make_traffic_wear("Wear_Front_To_Hall", [(-1.0, 0.4), (-1.0, 5.6)], width=0.7, tint=wear)
     make_traffic_wear("Wear_Hall", [(-3.0, 6.1), (3.2, 6.1)], width=0.6, tint=wear)
     pw = PAL_WALL["wall"]
     make_wall_tint_band("Band_Living_W", (X0 + 0.105, 2.75, 0.0), length=5.0, axis='Y', band_z=CEIL2 - 0.16,

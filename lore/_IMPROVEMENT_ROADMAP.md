@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 150: THE LINK HOUSE'S STAIR ALONG THE WALL; THE BATH AT THE STAIR'S HEAD.**
+- The user: "Stairs run along the wall, not extend out into the room. Bathroom at top near the
+  stairway two rooms on one side a large master on the other."
+  - **The stair:** pass 147 stood it free in the room. It now hugs the living room's N wall (the
+    hall wall). Its foot is by the hall opening, moved E to x −0.95. It climbs W to a landing in
+    the NW corner, with the bookcase in the nook under it. Balustrade on the room side, a
+    handrail on the wall.
+  - **The living room:** two storeys tall all the way to the master's wall; the recliner moved to
+    the front window.
+  - **Upstairs:** the bathroom at the hall's W end, its door at the stair's head. The second
+    bedroom in the middle and Andy's room E, both on the N side; the large master across the hall
+    over the kitchen.
+  - The two bath presets and the vanity and window lights moved with the bathroom (−5.3 m).
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0. Perf 750: the exterior's repeated parts now join (`_Stock_`), down from 1,346;
+  baseline updated.
+- DRAFT N+1: a setup down the stair from the landing; the second bedroom and the master dressed
+  (doors shut in every view); siding outside.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 149: THE LINK HOUSE'S GROUNDS — CARPORT, STORAGE ROOMS, PORCH, PASTURE, RIVER.**
 - The user: "There is a large covered carport that leads to the mudroom and with two connected outdoor
   rooms for storage, and a front porch that overlooks a large pasture field leading to the river."

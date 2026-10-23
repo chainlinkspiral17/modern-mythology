@@ -2810,10 +2810,11 @@ const CAMERA_PRESETS := {
 	},
 	# THE LINK HOUSE (2026-10-17, build_link_house.py; draft 1): vol 3's
 	# family house in Texas, TWO STOREYS (draft 2, 2026-10-23, the user) — the
-	# living room (two storeys tall) and kitchen across the front (godot z
-	# 0..-5.5), the hall; UPSTAIRS (floor at godot y 2.9) the shower room (x
-	# -1.2..1.6) and Andy's room (x 1.6..6.5) at the back (z -6.7..-10.5),
-	# the second bedroom W, the parents' room over the kitchen. The base scene is
+	# living room (two storeys tall, the stair along its N wall) and kitchen
+	# across the front (godot z 0..-5.5), the hall; UPSTAIRS (floor at godot
+	# y 2.9) the bathroom at the stair's head (x -6.5..-3.7), the second
+	# bedroom, Andy's room (x 1.6..6.5) at the back (z -6.7..-10.5); the
+	# master over the kitchen. The base scene is
 	# night on the lamps; the day presets lift the environment and add
 	# their window light by name (`__<preset>` in link_house.tscn).
 	"andy_house_porch": {
@@ -2877,7 +2878,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# "My dad puts his ear to the bathroom door." — day, the frosted window lit
-		"camera_origin": Vector3(0.0, 4.45, -6.95),
+		"camera_origin": Vector3(-5.30, 4.45, -6.95),
 		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
 		"fov": 76.0,
 		"env": {"sky_top": Color(0.52, 0.66, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
@@ -2889,7 +2890,7 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# "It's the middle of the night or early in the morning." — the vanity bar only
-		"camera_origin": Vector3(0.0, 4.45, -6.95),
+		"camera_origin": Vector3(-5.30, 4.45, -6.95),
 		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
 		"fov": 76.0,
 		"suppress_input": true,
