@@ -2952,10 +2952,10 @@ const CAMERA_PRESETS := {
 	"andy_house_bedroom_lamp": {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
-		# "I rummage through my bedroom for a book" / "Men get quiet when they need help."
-		"camera_origin": Vector3(4.2, 4.15, -8.0),
-		"camera_rotation": Vector3(-0.18, deg_to_rad(-53.6), 0.0),
-		"fov": 55.0,
+		# "I rummage through my bedroom for a book" / "Men get quiet when they need help." — pass 155: from the bed by the lamp, across the room to the shelves and the books pulled out onto the floor
+		"camera_origin": Vector3(5.5, 4.20, -8.9),
+		"camera_rotation": Vector3(-0.16, deg_to_rad(88.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	# THE SMALL WOOD RANCH (2026-10-17, build_small_wood_ranch.py; draft 1):

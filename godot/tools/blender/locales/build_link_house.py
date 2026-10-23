@@ -62,9 +62,19 @@ PERF: a shadowed DirectionalLight is the draw-call lever here, not the
 mesh count — the probe counts every preset's lights at once, and each
 shadowed sun about triples the view (moon shadowed: 3,054; off: 1,374; the
 day sun off too: 462). The moon casts no shadow; the day sun keeps its.
-DRAFT 9 targets: the living room's night dressing (the TV marathon's
-glow on the couch is the base scene; a bowl of popcorn, the afghan
-pulled up); Andy's room's clutter by the text; (older:) siding and trim on the house's outside faces (they carry
+DRAFT 9 (pass 155): the living room's sofa is the kit sofa; the night of
+Nick's stitches (ch12) in the living-room scene only — his sneakers by the
+couch, the water glass, the pharmacy bottle and the discharge sheet on the
+coffee table; Andy's rummage for the book (ch13) in the lamp scene only —
+books pulled out onto the floor, open and face down, a stack toppled at
+the bed's foot, the bottom drawer out with a shirt over it; the lamp setup
+reframed from the bed toward the shelves (it faced the bed).
+LESSON: a `from _props.geometry import …` INSIDE a function makes the name
+local to the whole function; a use above it raises UnboundLocalError, and
+the audit recorder swallows the raise — the gates then measure a
+half-built room (34 clips from the unlifted wing). Import at the top.
+DRAFT 10 targets: fill on the shelves in the lamp scene; the kitchen's
+night (the Uncle Nick table scene's hour); (older:) siding and trim on the house's outside faces (they carry
 the interior paint); the upstairs windows' shutters; a porch light that
 lights at night; a dusk preset from the porch; the storage rooms' insides;
 the house from outside (the second storey's roofline);
@@ -614,17 +624,24 @@ def build_living():
         make_box(f"Tapes_{k}", (X0 + 0.34, 3.30 + k * 0.03, 0.59), (0.19, 0.025, 0.10), (0.16 + k * 0.05, 0.12, 0.12, 1.0))
     # the sofa, facing west to the TV (its back to the kitchen)
     sx, sy, sl = -3.30, 2.80, 2.20
-    make_box("Sofa_Base", (sx, sy, 0.17), (0.92, sl, 0.34), SOFA)         # down to the carpet
-    make_box("Sofa_Back", (sx + 0.37, sy, 0.62), (0.20, sl, 0.60), SOFA)
-    for s in (-1, 1):
-        make_box(f"Sofa_Arm_{s:+d}", (sx, sy + s * (sl / 2.0 - 0.10), 0.44), (0.90, 0.20, 0.42), SOFA)
-    for k, cy in enumerate((sy - 0.62, sy, sy + 0.62)):
-        make_box(f"Sofa_SeatCush_{k}", (sx - 0.06, cy, 0.41), (0.66, 0.60, 0.14), SOFA_CUSH)
-        make_box(f"Sofa_BackCush_{k}", (sx + 0.20, cy, 0.66), (0.20, 0.58, 0.40), SOFA_CUSH)
+    make_sofa("Sofa", sx, sy, back="+X", w=sl, d=0.92, seats=3, color=SOFA, cushion_col=SOFA_CUSH, arm="roll",
+              leg_col=OAK_DARK)                                  # pass 155: the kit sofa (it was four slabs)
     # Nick asleep here: a pillow at the south arm and a crocheted afghan half off
-    make_chamfer_box("Sofa_Pillow", (sx - 0.08, sy - 0.80, 0.53), (0.42, 0.32, 0.12), (0.92, 0.90, 0.84, 1.0), chamfer=0.04)
-    make_box("Sofa_Afghan", (sx - 0.12, sy + 0.10, 0.495), (0.70, 1.40, 0.03), (0.66, 0.30, 0.22, 1.0))
-    make_box("Sofa_Afghan_Hang", (sx - 0.465, sy + 0.10, 0.295), (0.03, 1.20, 0.40), (0.66, 0.30, 0.22, 1.0))
+    make_chamfer_box("Sofa_Pillow", (sx - 0.08, sy - 0.80, 0.50), (0.42, 0.32, 0.12), (0.92, 0.90, 0.84, 1.0), chamfer=0.04)
+    make_box("Sofa_Afghan", (sx - 0.12, sy + 0.10, 0.455), (0.70, 1.40, 0.03), (0.66, 0.30, 0.22, 1.0))
+    make_box("Sofa_Afghan_Hang", (sx - 0.465, sy + 0.10, 0.255), (0.03, 1.20, 0.40), (0.66, 0.30, 0.22, 1.0))
+    # the night of the stitches (ch12: "fourteen stitches on the inside of
+    # his cheek ... brought him back to our house later that evening. Nick was
+    # asleep on the couch"): his sneakers kicked off by the couch, the glass
+    # of water and the pharmacy bottle from Children's Medical on the coffee
+    # table, the discharge sheet — only in the living-room night scene
+    for k, (dy_, yaw_) in enumerate(((-0.30, 0.3), (-0.02, -0.5))):
+        make_rot_box(f"Nick_Sneaker_{k}__andy_house_living", (sx - 0.70, sy - 0.95 + dy_, 0.05), (0.28, 0.11, 0.10), (0.86, 0.86, 0.84, 1.0), yaw=yaw_)
+        make_rot_box(f"Nick_Sneaker_{k}_Sole__andy_house_living", (sx - 0.70, sy - 0.95 + dy_, 0.012), (0.29, 0.12, 0.024), (0.30, 0.30, 0.32, 1.0), yaw=yaw_)
+    make_cyl("Nick_Water_Glass__andy_house_living", (-4.55, 3.15, 0.481), 0.035, 0.12, (0.78, 0.84, 0.88, 0.45), segments=10)
+    make_cyl("Nick_Pill_Bottle__andy_house_living", (-4.72, 3.18, 0.456), 0.02, 0.07, (0.90, 0.58, 0.26, 0.8), segments=8)
+    make_cyl("Nick_Pill_Bottle_Cap__andy_house_living", (-4.72, 3.18, 0.4985), 0.021, 0.015, (0.96, 0.96, 0.94, 1.0), segments=8)
+    make_rot_box("Nick_Discharge_Sheet__andy_house_living", (-4.85, 2.70, 0.4225), (0.21, 0.28, 0.004), (0.96, 0.96, 0.94, 1.0), yaw=0.2)
     # the coffee table, a rug, the recliner, an end table with the lamp
     make_box("Rug_Living", (-4.70, 2.80, 0.006), (2.40, 2.00, 0.012), (0.48, 0.36, 0.30, 1.0))
     make_table("CoffeeTable", -4.70, 2.80, w=0.60, d=1.10, h=0.42, wood=OAK)
@@ -658,7 +675,6 @@ def build_living():
     make_cyl("Fan_Rod", (-3.90, 2.80, (CEIL - 0.30 + CEIL2) / 2.0), 0.015, CEIL2 - CEIL + 0.30, (0.60, 0.50, 0.30, 1.0), segments=6)   # the downrod from the two-storey ceiling
     make_cyl("Fan_Hub", (-3.90, 2.80, CEIL - 0.34), 0.11, 0.12, (0.60, 0.50, 0.30, 1.0), segments=12)
     import math
-    from _props.geometry import make_rot_box, make_heightfield, make_gable, make_blob
     for k in range(5):
         a = k * 2 * math.pi / 5
         make_rot_box(f"Fan_Blade_{k}", (-3.90 + math.cos(a) * 0.42, 2.80 + math.sin(a) * 0.42, CEIL - 0.36),
@@ -816,6 +832,25 @@ def build_bedroom():
                              (0.20, 0.065, h), (0.26 + 0.08 * ((i + s) % 4), 0.20 + 0.06 * (b % 3), 0.20 + 0.05 * (i % 2), 1.0))
         make_box(f"Shelf_{s}_Top", (bx, by, 1.905), (0.28, 0.88, 0.02), OAK)
     make_box("Shelf_Flat_Books", (bx + 0.02, 8.77, 1.94), (0.22, 0.30, 0.06), (0.52, 0.30, 0.20, 1.0))
+    # pass 155, "I rummage through my bedroom for a book, drunk and stupid ...
+    # It's so stupid, here it is": books pulled out onto the floor in front
+    # of the shelves, open and face down, a stack toppled on the bed's foot,
+    # the bottom drawer pulled out — only in the lamp scene
+    L = "__andy_house_bedroom_lamp"
+    for k, (x, y, yaw_, open_) in enumerate(((bx + 0.55, 8.20, 0.4, True), (bx + 0.80, 8.55, -0.9, False), (bx + 0.48, 8.95, 1.2, False),
+                                             (bx + 0.95, 8.05, 2.4, True), (bx + 0.62, 9.30, -0.3, False))):
+        col = (0.26 + 0.08 * (k % 4), 0.20 + 0.06 * (k % 3), 0.20 + 0.05 * (k % 2), 1.0)
+        if open_:
+            for e in (-1, 1):
+                make_rot_box(f"Rummage_Book_{k}_Leaf_{e:+d}" + L, (x + e * 0.11 * math.cos(yaw_), y + e * 0.11 * math.sin(yaw_), 0.015),
+                             (0.20, 0.14, 0.03), (0.94, 0.92, 0.86, 1.0), yaw=yaw_, roll=e * 0.18)
+        else:
+            make_rot_box(f"Rummage_Book_{k}" + L, (x, y, 0.015 + 0.015 * (k % 2)), (0.21, 0.15, 0.03 + 0.01 * (k % 2)), col, yaw=yaw_)
+    for k in range(3):
+        make_rot_box(f"Rummage_Stack_{k}" + L, (4.60 + k * 0.02, 7.20 + k * 0.03, 0.0175 + k * 0.035), (0.22, 0.16, 0.035),
+                     (0.30 + 0.1 * k, 0.24, 0.20, 1.0), yaw=0.15 * k)
+    make_box("Dresser_Drawer_Out" + L, (2.45, yi1 - 0.25 - 0.44, 0.18), (0.80, 0.40, 0.20), (0.62, 0.48, 0.30, 1.0))
+    make_rot_box("Rummage_Shirt" + L, (2.45, yi1 - 0.25 - 0.62, 0.30), (0.30, 0.28, 0.06), (0.36, 0.44, 0.56, 1.0), yaw=0.5)
     # the closet on the S wall: two bifold pairs
     cx = 5.20
     for k in range(4):

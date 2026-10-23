@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 155: THE LINK HOUSE'S SCENES DRESSED BY THE TEXT.**
+- **The living room:** the sofa is the kit sofa (it was four slabs). The night of Nick's stitches
+  (ch12: "fourteen stitches on the inside of his cheek ... Nick was asleep on the couch"), in the
+  living-room scene only: his sneakers kicked off by the couch, the water glass, the pharmacy
+  bottle and the discharge sheet on the coffee table. (Not popcorn: the text has none.)
+- **Andy's room:** "I rummage through my bedroom for a book, drunk and stupid ... here it is"
+  (ch13), in the lamp scene only: books pulled out onto the floor in front of the shelves, open and
+  face down, a stack toppled at the bed's foot, the bottom drawer out with a shirt over it. The
+  lamp setup is reframed from the bed toward the shelves; it faced the bed and saw none of it.
+- **A trap found:** a `from _props.geometry import make_rot_box` inside build_living made the name
+  local to the whole function; the new code above it raised, the audit recorder swallowed the
+  raise, and the gates measured a half-built room (34 clips: the bedroom wing unlifted onto the
+  downstairs bath). The import is at the top now. Noted in the builder's docstring.
+- Gates: overlap 0, support 0, buried 0, window backing 0, doorway 0, vantage 0 blind,
+  obstruction 0; perf 1,374.
+- DRAFT N+1: fill on the shelves in the lamp scene; the kitchen at the table scene's hour.
+- Deck must REBUILD link_house.
+
 **2026-10-23 · pass 154: THE LINK HOUSE IN USE; THE DRIVE'S GATE; THE HOUSE AT NIGHT.**
 - **The kitchen in use:** a dish rack by the sink, a towel over the oven door, a fruit bowl,
   canisters, a cutting board and knife, a paper-towel roll, magnets, a calendar and a child's
