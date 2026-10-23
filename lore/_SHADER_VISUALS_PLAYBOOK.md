@@ -241,6 +241,21 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-23 · the sky is painted in the fog colour unless fog_sky_affect says otherwise (pass 158)
+
+- **What happened:** every exterior's sky had read as a grey-blue wall since the 3D backgrounds
+  began. Authored `sky_top` / `sky_horizon` keys changed nothing. A red test sky lit the ground
+  red and still drew grey-blue, post stack on or off.
+- **Why:** Godot's `Environment.fog_sky_affect` defaults to 1.0, and every locale env has fog on:
+  the sky is replaced by the fog colour at infinite depth. Separately, `_apply_preset_env` only
+  applied sky keys where the scene already had a ProceduralSkyMaterial — 64 scenes use a flat
+  `background_mode = 1` colour and got nothing.
+- **Rules:** (1) fog and sky are two different colours: set `fog_sky_affect` well under 1 (the
+  loader's default is 0.35; `"fog_sky"` in a preset's env overrides). (2) When a sky key does
+  nothing, test with an absurd colour before touching geometry — the ground's reflected tint tells
+  you whether the env took. (3) `MM_NO_POST=1` renders a preset without its PostProcess stack.
+
+
 ### 2026-10-17 · a volume's look is a list of tables, and vols 1–4 were missing from all of them
 
 The user: "vol 1-4 visual novel UIs need to be brought up to 5-7 standard."

@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-23 · pass 158: THE SKY WAS THE FOG — EVERY PRESET'S SKY SHOWS FOR THE FIRST TIME.**
+- Chasing the ballfield's "grey wall" sky through the loader, with a red test sky: the red lit the
+  ground and still drew grey-blue, with the post stack hidden too. Two faults, both in
+  `_apply_preset_env` (Background3D.gd):
+  1. **A preset's sky keys only ever applied where the scene already carried a
+     ProceduralSkyMaterial.** 64 locale scenes draw a flat background colour (`background_mode =
+     1`), so for them `sky_top` etc. were silently ignored. The loader now runs for every preset,
+     turns a flat colour into a gradient sky of its own tone, and applies the keys on top.
+  2. **Every locale env has fog on, and Godot's `fog_sky_affect` defaults to 1.0: the sky is
+     painted entirely in the fog colour.** The grey-blue every exterior has shown since the
+     3D backgrounds began was the fog colour, never the sky. `fog_sky_affect` is 0.35 now (the
+     haze stays, the sky comes through); a preset's env may set `"fog_sky"` to override.
+- Also: `MM_NO_POST=1` hides a locale's PostProcess stack for an A/B (PresetShot / PerfProbe).
+- Checked on twelve presets across day, dusk, dawn and night, exteriors and an interior: the lake
+  dock and Meadowlark Circle are blue, the Small Wood road at dusk is warm, the night presets are
+  still night, Chris's room is unchanged. No regression seen; the Deck should look at a few.
+- DRAFT N+1: presets whose fog colour was tuned to BE the sky may now want their sky keys set
+  (riverfront, graustark); a `fog_sky` of 0 for interiors that want the old haze through windows.
+- Deck: pull only (a script change, no rebuild).
+
 **2026-10-23 · pass 157: THE SWEEP'S NEXT TIER — KESTREL'S GLASS BLOCK, THE GYM'S WALL, THE DUGOUT.**
 - Twelve more sets rebuilt and rendered (small_wood_high, new_auburn_road, little_league,
   lake_palestine, small_wood_road, bungalow, nate_garage, editing_suite, kowalski_backyard,

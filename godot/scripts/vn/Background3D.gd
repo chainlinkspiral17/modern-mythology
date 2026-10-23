@@ -5039,6 +5039,12 @@ func load_location(preset_id: String) -> bool:
 	if spec.get("suppress_input", false):
 		_suppress_interactive_nodes(_location_instance)
 	_anchor.add_child(_location_instance)
+	# (2026-10-23) MM_NO_POST=1 hides the locale's PostProcess stack — an
+	# A/B for the sky and lighting under the paint (PresetShot, PerfProbe).
+	if OS.get_environment("MM_NO_POST") == "1":
+		var pp_dbg: Node = _location_instance.get_node_or_null("PostProcess")
+		if pp_dbg is CanvasLayer:
+			(pp_dbg as CanvasLayer).visible = false
 	# Position our SubViewport's own Camera3D + make it the current
 	# camera for the World3D. The location's own Camera3D node (if
 	# any) is overridden because make_current() pushes onto the
@@ -5068,9 +5074,16 @@ func load_location(preset_id: String) -> bool:
 # preset without a second scene (moods are a post-process look and never
 # touched the sky: the morning window showed the night).
 func _apply_preset_env(root: Node, spec: Dictionary) -> void:
-	if not spec.has("env"):
-		return
-	var ov: Dictionary = spec["env"]
+	# (2026-10-23, pass 158) Runs for EVERY preset now, env or not: 64
+	# locale scenes draw their background as a flat colour (background_mode
+	# 1), and a flat colour behind an exterior goes through the post stack
+	# as a banded grey WALL (the ballfield's dugout, the lake house). The
+	# flat colour becomes a gradient sky of its own tone, and a preset's sky
+	# keys — which only ever applied where the scene already carried a
+	# ProceduralSkyMaterial — apply on top of it.
+	var ov: Dictionary = {}
+	if spec.has("env"):
+		ov = spec["env"]
 	var found: Array[Node] = root.find_children("*", "WorldEnvironment", true, false)
 	if found.is_empty():
 		return
@@ -5078,9 +5091,19 @@ func _apply_preset_env(root: Node, spec: Dictionary) -> void:
 	if we == null or we.environment == null:
 		return
 	var env: Environment = we.environment.duplicate() as Environment
+	var mat: ProceduralSkyMaterial = null
 	if env.sky != null and env.sky.sky_material is ProceduralSkyMaterial:
-		var sky: Sky = env.sky.duplicate() as Sky
-		var mat: ProceduralSkyMaterial = (env.sky.sky_material as ProceduralSkyMaterial).duplicate() as ProceduralSkyMaterial
+		mat = (env.sky.sky_material as ProceduralSkyMaterial).duplicate() as ProceduralSkyMaterial
+	elif env.background_mode == Environment.BG_COLOR:
+		var c: Color = env.background_color
+		mat = ProceduralSkyMaterial.new()
+		mat.sky_horizon_color = c
+		mat.sky_top_color = Color(c.r * 0.62, c.g * 0.74, minf(1.0, c.b * 0.96), 1.0)
+		mat.ground_horizon_color = c.darkened(0.35)
+		mat.ground_bottom_color = c.darkened(0.70)
+		mat.sun_angle_max = 0.0
+		env.background_mode = Environment.BG_SKY
+	if mat != null:
 		if ov.has("sky_top"):
 			mat.sky_top_color = ov["sky_top"]
 		if ov.has("sky_horizon"):
@@ -5089,6 +5112,9 @@ func _apply_preset_env(root: Node, spec: Dictionary) -> void:
 			mat.ground_horizon_color = ov["ground_horizon"]
 		if ov.has("ground_bottom"):
 			mat.ground_bottom_color = ov["ground_bottom"]
+		var sky: Sky = Sky.new()
+		if env.sky != null:
+			sky = env.sky.duplicate() as Sky
 		sky.sky_material = mat
 		env.sky = sky
 	if ov.has("ambient_color"):
@@ -5097,6 +5123,12 @@ func _apply_preset_env(root: Node, spec: Dictionary) -> void:
 		env.ambient_light_energy = float(ov["ambient_energy"])
 	if ov.has("fog_color"):
 		env.fog_light_color = ov["fog_color"]
+	# (2026-10-23, pass 158) THE SKY WAS THE FOG. Every locale env has fog
+	# on, and Godot's fog_sky_affect defaults to 1.0: the sky is painted
+	# entirely in the fog colour, so no authored sky_top / sky_horizon ever
+	# showed — a red test sky lit the ground red and still drew grey-blue.
+	# 0.35 keeps the haze and lets the sky through; "fog_sky" overrides.
+	env.fog_sky_affect = float(ov.get("fog_sky", 0.35))
 	we.environment = env
 
 
