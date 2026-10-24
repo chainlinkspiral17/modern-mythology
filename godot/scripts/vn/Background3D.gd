@@ -3415,10 +3415,12 @@ const CAMERA_PRESETS := {
 	"chau_living": {
 		"scene": "res://scenes/locales/chau_house.tscn",
 		"requires_glb": "res://assets/3d/locales/chau_house.glb",
-		# "Mrs. Chau on the couch" - the living room from the kitchen side, the seats round her
-		"camera_origin": Vector3(-3.6, 1.6, -3.0),
-		"camera_rotation": Vector3(0.02, deg_to_rad(-46.0), 0.0),
-		"fov": 66.0,
+		# "Mrs. Chau on the couch" - the living room from the hall end, the seats
+		# round her, the fireplace behind (pass 165: turned from the kitchen side,
+		# which looked away from the pass-164 hearth)
+		"camera_origin": Vector3(5.3, 1.6, -6.4),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(75.0), 0.0),
+		"fov": 68.0,
 		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
 		"suppress_input": true,
 	},

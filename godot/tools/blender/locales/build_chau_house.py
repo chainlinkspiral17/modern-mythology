@@ -57,6 +57,15 @@ walls; an entry mirror over a console; Steven's armchair as a real chair,
 a bookcase of games, a rug and a poster; a soaking tub and a tile wainscot
 in the bath. "Six month old eight hundred thousand dollar home."
 
+PASS 165 (2026-10-24) — DRAFT 4. The kitchen's luxury: white shaker
+cabinet bodies under the dark stone, upper cabinets on the W wall, a range
+with a hood and chimney in the W run, three pendants over the island, a
+fruit bowl. The game room's wet bar: a counter in front of the liquor
+cabinet with two stools, two sconces flanking the TV. Amanda's deck:
+string lights on poles and across to the house, two deck chairs and a
+table with cups, planters at the fence corners, a porch light by the glass
+door. chau_living turned to hold the couch and the fireplace in one frame.
+
 DRAFT 2 targets: Chris's room and Mrs. Chau's room past their doors, the
 garage ("the open garage door"), the sheet's breathing as a per-frame
 wobble (it is still), the steam as a fog pass, the kitchen's mess as more
@@ -70,7 +79,8 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding, make_curtains
 from _props.views import make_view
 from _props.furniture import make_bed, make_chair, make_lamp, make_sofa, make_pendant, make_table
-from _props.detail import make_wall_outlet, make_light_switch
+from _props.detail import make_wall_outlet, make_light_switch, make_cord_run
+from _props.decor import make_floor_plant
 
 X0, X1, D, H, T = -10.0, 12.0, 14.0, 3.9, 0.20   # pass 146 (the user: "tall ceilings and wide tall windows, it's a luxury home"): was 2.9
 WALL = (0.90, 0.88, 0.84, 1.0); BASE = (0.70, 0.68, 0.64, 1.0)
@@ -183,10 +193,11 @@ def build_entry_kitchen():
     # the kitchen: counters on the W wall and the S wall, the island whose
     # end is "a counter" by the entry, the fridge, the mess
     make_box("Kitchen_Floor_Tile", (-7.0, 3.0, 0.008), (6.0, 6.0, 0.016), TILE)
-    make_box("Kitchen_Counter_W", (X0 + 0.10 + 0.32, 2.65, 0.45), (0.64, 4.7, 0.90), (0.72, 0.66, 0.56, 1.0))
+    SHAKER = (0.92, 0.91, 0.88, 1.0)   # pass 165: white shaker bodies under the dark stone
+    make_box("Kitchen_Counter_W", (X0 + 0.10 + 0.32, 2.65, 0.45), (0.64, 4.7, 0.90), SHAKER)
     make_box("Kitchen_Counter_W_Top", (X0 + 0.10 + 0.33, 2.65, 0.92), (0.66, 4.7, 0.04), (0.30, 0.28, 0.28, 1.0))
     make_box("Kitchen_Fridge", (X0 + 0.10 + 0.40, 5.6, 0.92), (0.78, 0.86, 1.84), (0.80, 0.80, 0.80, 1.0))
-    make_box("Kitchen_Island", (-5.0, 3.0, 0.45), (1.0, 2.8, 0.90), (0.72, 0.66, 0.56, 1.0))
+    make_box("Kitchen_Island", (-5.0, 3.0, 0.45), (1.0, 2.8, 0.90), SHAKER)
     make_box("Kitchen_Island_Top", (-5.0, 3.0, 0.92), (1.1, 2.9, 0.04), (0.30, 0.28, 0.28, 1.0))
     make_box("Purse_Spot", (-4.70, 1.85, 0.97), (0.30, 0.12, 0.06), (0.86, 0.84, 0.80, 1.0))   # a mat on the island's end
     for k in range(3):
@@ -337,7 +348,6 @@ def build_game_room():
     # the liquor cabinet on the W wall, open, bottles out on its top
     lx = X0 + 0.10 + 0.25
     make_box("Liquor_Cabinet", (lx, 11.5, 0.70), (0.50, 1.40, 1.40), (0.30, 0.18, 0.12, 1.0))
-    make_box("Liquor_Cabinet_Door_Open", (lx + 0.55, 11.5 + 0.715, 0.75), (0.60, 0.03, 1.10), (0.30, 0.18, 0.12, 1.0))
     for k in range(6):
         make_cyl(f"Liquor_Bottle_{k}", (lx, 11.25 + k * 0.17, 1.52), 0.04, 0.24 + (k % 3) * 0.04,
                  ((0.50, 0.30, 0.12, 1.0), (0.80, 0.80, 0.76, 1.0), (0.20, 0.36, 0.20, 1.0))[k % 3], segments=8)
@@ -460,6 +470,90 @@ def build_luxury_finish():
     make_box("Bath_Wainscot_S", (9.78, 0.11, 0.60), (4.22, 0.02, 1.20), (0.78, 0.80, 0.82, 1.0))
 
 
+def build_kitchen_luxury():
+    """Pass 165: the kitchen as the house's price says — upper cabinets,
+    a range under a hood, pendants over the island, stone everywhere."""
+    wx = X0 + 0.10                      # the W wall's inner face
+    SHAKER = (0.92, 0.91, 0.88, 1.0); SEAM = (0.78, 0.77, 0.74, 1.0); STEEL = (0.74, 0.75, 0.77, 1.0)
+    # upper cabinets either side of the hood bay (y 2.45..3.55)
+    for k, (yc, ln) in enumerate(((1.375, 2.15), (4.275, 1.45))):
+        make_box(f"Kitchen_Upper_{k}", (wx + 0.17, yc, 2.0), (0.34, ln, 0.90), SHAKER)
+        n = max(1, int(round(ln / 0.45)))
+        for j in range(1, n):
+            make_box(f"_Stock_Upper_Seam_{k}_{j}", (wx + 0.345, yc - ln / 2.0 + j * ln / n, 2.0), (0.004, 0.008, 0.86), SEAM)
+        for j in range(n):
+            make_box(f"_Stock_Upper_Pull_{k}_{j}", (wx + 0.36, yc - ln / 2.0 + (j + 0.5) * ln / n, 1.70), (0.02, 0.10, 0.012), STEEL)
+    # the lower run's door seams and pulls (the counter body is one box)
+    for j in range(1, 10):
+        make_box(f"_Stock_Lower_Seam_{j}", (wx + 0.645, 0.30 + j * 0.47, 0.45), (0.004, 0.008, 0.86), SEAM)
+    # the range in the W run at y 3.0: a steel front proud of the body, the
+    # cooktop on the stone, four burners, the hood and its chimney above
+    make_box("Range_Front", (wx + 0.655, 3.0, 0.45), (0.03, 0.76, 0.86), STEEL)
+    make_box("Range_Handle", (wx + 0.69, 3.0, 0.78), (0.02, 0.60, 0.02), STEEL)
+    make_box("Range_Cooktop", (wx + 0.33, 3.0, 0.95), (0.60, 0.76, 0.02), (0.10, 0.10, 0.11, 1.0))
+    for i, (dx, dy) in enumerate(((-0.14, -0.2), (0.14, -0.2), (-0.14, 0.2), (0.14, 0.2))):
+        make_cyl(f"Range_Burner_{i}", (wx + 0.33 + dx, 3.0 + dy, 0.965), 0.09, 0.01, (0.20, 0.20, 0.22, 1.0), segments=12)
+    make_box("Range_Hood", (wx + 0.25, 3.0, 1.90), (0.50, 0.90, 0.40), STEEL)
+    make_box("Range_Hood_Chimney", (wx + 0.15, 3.0, (2.10 + H) / 2.0), (0.30, 0.40, H - 2.10), STEEL)
+    # three pendants over the island, a bowl of fruit between the mess
+    for i, y in enumerate((2.0, 3.0, 4.0)):
+        make_pendant(f"Island_Pendant_{i}", -5.0, y, bulb_z=2.05, ceil_z=H, shade_col=(0.16, 0.16, 0.18, 1.0), shade_r=0.14)
+    make_cyl("Fruit_Bowl", (-5.0, 3.95, 0.965), 0.15, 0.05, (0.26, 0.26, 0.28, 1.0), segments=14)
+    for i, (dx, dy, col) in enumerate(((-0.05, 0.0, (0.86, 0.30, 0.20, 1.0)), (0.05, 0.04, (0.90, 0.70, 0.20, 1.0)), (0.0, -0.06, (0.40, 0.66, 0.26, 1.0)))):
+        make_blob(f"Fruit_{i}", (-5.0 + dx, 3.95 + dy, 1.03), 0.04, col, noise=0.05, seed=80 + i, squash=0.9)
+
+
+def build_game_bar():
+    """Pass 165: a wet bar in front of the liquor cabinet (the open door is
+    gone — the cabinet stands behind the counter), two stools, two sconces
+    flanking the TV."""
+    lx = X0 + 0.10 + 0.25
+    make_box("Bar_Counter", (lx + 0.55, 11.5, 0.525), (0.60, 1.80, 1.05), (0.26, 0.18, 0.12, 1.0))
+    make_box("Bar_Counter_Top", (lx + 0.56, 11.5, 1.07), (0.66, 1.86, 0.04), (0.14, 0.14, 0.15, 1.0))
+    make_box("Bar_Foot_Rail", (lx + 0.90, 11.5, 0.22), (0.03, 1.60, 0.03), (0.70, 0.62, 0.40, 1.0))
+    for i, y in enumerate((10.8, 12.2)):     # the rail's brackets back to the counter
+        make_box(f"Bar_Foot_Rail_Bracket_{i}", (lx + 0.875, y, 0.22), (0.06, 0.02, 0.02), (0.70, 0.62, 0.40, 1.0))
+    for i, y in enumerate((11.0, 12.0)):
+        make_chair(f"Bar_Stool_{i}", lx + 1.30, y, yaw=-math.pi / 2.0, wood=(0.20, 0.18, 0.16, 1.0), seat_col=LEATHER, seat_h=0.72, w=0.36)
+    for i, (dx, col) in enumerate(((-0.5, (0.86, 0.84, 0.80, 1.0)), (0.3, (0.40, 0.24, 0.10, 1.0)))):
+        make_cyl(f"Bar_Glass_{i}", (lx + 0.55 + dx * 0.3, 11.5 + dx, 1.13), 0.035, 0.09, col, segments=10)
+    for i, x in enumerate((-8.2, -5.8)):
+        make_box(f"Game_Sconce_{i}", (x, 6.0 + 0.07 + 0.05, 2.20), (0.14, 0.10, 0.32), (0.78, 0.70, 0.46, 1.0))
+        make_box(f"Game_Sconce_{i}_Shade", (x, 6.0 + 0.07 + 0.09, 2.36), (0.20, 0.14, 0.16), (0.94, 0.90, 0.78, 1.0))
+
+
+def build_amanda_deck():
+    """Pass 165: Amanda's deck dressed for the Saturday night — string
+    lights, chairs, a table, planters, the porch light by the door."""
+    CORD = (0.16, 0.14, 0.12, 1.0); BULB = (1.0, 0.90, 0.62, 1.0)
+    for i, x in enumerate((47.5, 55.6)):
+        make_cyl(f"Am_Light_Pole_{i}", (x, 7.9, 1.10), 0.03, 2.20, (0.30, 0.26, 0.22, 1.0), segments=8)
+    def string(name, a, b, sag, n):
+        make_cord_run(name, a, b, sag=sag, radius=0.008, color=CORD)
+        for k in range(1, n):
+            t = k / float(n)
+            x = a[0] + (b[0] - a[0]) * t; y = a[1] + (b[1] - a[1]) * t
+            mz = min(a[2], b[2]) - sag
+            z = (a[2] + (mz - a[2]) * (t / 0.5)) if t <= 0.5 else (mz + (b[2] - mz) * ((t - 0.5) / 0.5))
+            make_blob(f"{name}_Bulb_{k}", (x, y, z - 0.045), 0.035, BULB, noise=0.0, seed=k, squash=1.1)
+    string("Am_String_N", (47.5, 7.9, 2.20), (55.6, 7.9, 2.20), 0.35, 12)
+    string("Am_String_X", (47.1, 0.6, 2.40), (55.6, 7.9, 2.20), 0.40, 12)
+    # two deck chairs toward the tub, a table with cups between them
+    make_chair("Am_Deck_Chair_0", 53.9, 1.6, yaw=math.pi * 0.75, wood=(0.56, 0.46, 0.34, 1.0), seat_h=0.40, w=0.50)
+    make_chair("Am_Deck_Chair_1", 53.9, 5.6, yaw=math.pi * 0.25, wood=(0.56, 0.46, 0.34, 1.0), seat_h=0.40, w=0.50)
+    make_table("Am_Deck_Table", 54.4, 3.6, w=0.60, d=0.60, h=0.50, wood=(0.56, 0.46, 0.34, 1.0))
+    for i, (dx, dy) in enumerate(((-0.12, 0.10), (0.14, -0.08))):
+        make_cyl(f"Am_Deck_Cup_{i}", (54.4 + dx, 3.6 + dy, 0.555), 0.04, 0.11, (0.86, 0.22, 0.20, 1.0), segments=10)
+    make_floor_plant("Am_Planter_0", (55.4, 7.5, 0.01), kind="ficus")
+    make_floor_plant("Am_Planter_1", (55.4, -1.1, 0.01), kind="snake")
+    make_floor_plant("Am_Planter_2", (47.6, -1.1, 0.01), kind="fern")
+    # the porch light by the glass door (the door opening is y 2.3..4.1)
+    make_box("Am_Porch_Light", (AX1 + 0.10 + 0.06, 4.45, 2.15), (0.12, 0.14, 0.26), (0.20, 0.20, 0.22, 1.0))
+    make_box("Am_Porch_Light_Glass", (AX1 + 0.10 + 0.07, 4.45, 2.13), (0.10, 0.10, 0.18), (1.0, 0.90, 0.66, 1.0))
+    # a step down from the door to the deck
+    make_box("Am_Door_Step", (AX1 + 0.10 + 0.25, 3.2, 0.04), (0.50, 1.90, 0.08), (0.46, 0.36, 0.26, 1.0))
+
+
 # ── AMANDA'S (x 40..56) ───────────────────────────────────────────────
 AX0, AX1, AD, AH = 40.0, 47.0, 6.4, 2.6
 
@@ -536,7 +630,10 @@ def main():
     build_hall_rooms()
     build_game_room()
     build_luxury_finish()
+    build_kitchen_luxury()
+    build_game_bar()
     build_amanda()
+    build_amanda_deck()
     try:
         join_stock()
     except Exception as _e:

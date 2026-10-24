@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 165: THE CHAU HOUSE, DRAFT 4 — THE KITCHEN, THE BAR, AMANDA'S DECK, THE HEARTH IN FRAME.**
+- Straight down pass 164's N+1 list:
+  - **chau_living** turned: it stood on the kitchen side looking away from the new fireplace. Now
+    from the hall end (x 5.3, yaw 75°): the couch and its seats centre, the hearth behind, the
+    island pendants and the hood beyond — one frame says the house.
+  - **the kitchen** — white shaker cabinet bodies under the dark stone, upper cabinets on the W
+    wall with seams and pulls, a range in the W run (steel front, cooktop, four burners) under a
+    hood and chimney to the 3.9 m ceiling, three dark pendants over the island, a fruit bowl.
+  - **the game room** — a wet bar in front of the liquor cabinet (the open door is gone; the
+    cabinet stands behind the counter), two leather stools, two glasses out, a foot rail on
+    brackets, two sconces flanking the TV; a sconce omni left on for the passed-out morning.
+  - **Amanda's deck** — string lights on two poles along the N fence and a run across to the
+    house over the tub (bulbs on the sag), two deck chairs and a table with cups, three planters
+    at the fence corners, a porch light by the glass door, a step down; a string-light omni.
+- Gates: prop_overlap 0, support 0 (the bar's foot rail floated until it got brackets),
+  buried_decor, window_backing, doorway, preset_vantage, vantage_obstruction, orphan_practical,
+  blender_dryrun, furniture_grammar, tscn_syntax clean; perf 148 (baseline updated).
+- **Draft N+1 targets:** the great room's walls still flat (a two-tone line at 1.1 m or a
+  wainscot; the crown as a two-step profile); the entry's ceiling (a second pendant row down
+  the hall, the hall's own art); Amanda's house exterior as seen from the deck (siding, the
+  glass door's frame, a window with a lit room behind); the fort's sheet as a soft surface
+  (soft boxes, not planes); Chris's and Mrs. Chau's rooms past their doors; the garage with
+  the Corolla ("the open garage door"); a dusk/evening set of envs for the Saturday scenes.
+
 **2026-10-24 · pass 164: THE CHAU HOUSE IS AN EIGHT-HUNDRED-THOUSAND-DOLLAR HOUSE.**
 - The first open N+1 item after the sweep's circuit: the user's canon note (pass 146, "tall
   ceilings and wide tall windows, it's a luxury home") had been met with height and glass only.
