@@ -474,14 +474,14 @@ rotation = Vector3(-0.55, 0, 0)
 metadata/fov = 40.0
 
 [node name="shot_closeup_elicia" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.7, 1.65, -0.5)
-rotation = Vector3(0, -0.1, 0)
-metadata/fov = 36.0
+position = Vector3(1.350, 1.550, -0.600)
+rotation = Vector3(-0.0937, 0.8709, 0.0)
+metadata/fov = 42.0
 
 [node name="shot_insert_mirror_shard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.7, 1.66, -2.1)
-rotation = Vector3(0, -1.5708, 0)
-metadata/fov = 24.0
+position = Vector3(0.600, 1.900, -2.100)
+rotation = Vector3(-0.4273, -1.4365, 0.0)
+metadata/fov = 30.0
 
 [node name="shot_insert_script_page" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.2, 1.2, -1.35)

@@ -3835,6 +3835,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 175: VOL 5 BY MONTAGE, THE REST — eleven rooms, eighty-four markers.**
+- The diner (20, incl. the Empress room's overrides), the bungalow (9), the riverboat (4), the
+  Roberts kitchen (9), the New Orleans office (6), bar (6) and room (5), the hospice (4),
+  Montreal (8), Elicia's apartment (7), Café Olimpico (6): every marker rendered under its
+  chapter's preset and read. Seventy-nine as authored — the diner's clock, register and
+  jukebox, the Roberts kitchen's door with the car beyond, the bar's chalk tally and back-bar
+  bottles, the hospice rose, Montreal's dust in the window, Elicia's eviction notice, the
+  café's croissant counter.
+- **Five re-aimed:** the bungalow's `closeup elicia` (a bare wall at arm's length → the living
+  room's boxes and the studio doorway, beside the preset's own camera; two tries stood in a
+  window and a door fill) and `insert mirror_shard` (a blank pane → the shard on its shelf from
+  above); the riverboat's `closeup dante` (turned to the office's south wall and the clock);
+  the New Orleans office's `establish_b` (a bird's-eye straight down at the desk → a standing
+  wide from the far corner; the first try stood in a wall pier); Montreal's `insert drainpipe`
+  (a grey wall with a line → the pipe oblique with its graffiti, 1.2 m off).
+- Gates: obstruction --markers and aim clean for every re-aimed room, wrong_room 0, tscn
+  syntax clean. The montage caught all five; the audits caught the three bad re-aims.
+- Vol 5's rooms are now all montage-checked (passes 174–175: 14 rooms, ~130 markers, 10
+  frames re-aimed, 2 night practicals added).
+- **Draft N+1 (directing):** vols 6–7 by the same montage (the Smolvud rooms, Centro, the
+  Caldwell and Miller houses, the Ramos kitchen, the Daily Grind, the Salty Tome); then the
+  closeup-by-cast pass for the long dialogues.
+
 **2026-10-24 · pass 174: VOL 5 BY MONTAGE — HOUSTON, NATALIE'S NIGHT, GRAUSTARK.**
 - The user's standing verdict on vol 5 ("camera and director attention not where they should
   be") after the audits came back clean: judge by the montage. Every marker of a vol 5 room

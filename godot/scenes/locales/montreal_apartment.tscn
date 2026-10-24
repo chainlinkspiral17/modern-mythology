@@ -359,9 +359,9 @@ metadata/fov = 42.0
 ; RE-AIMED 2026-10-03: from inside at the window, THROUGH the glass at the pipe
 ; across the alley (the lens stood in the alley against the pipe)
 [node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350, 1.450, -4.550)
-rotation = Vector3(-0.0517, -0.3709, 0.0)   ; in the alley, looking back up the pipe (2026-09-25: it looked at the pipe through the window glass, which is opaque here)
-metadata/fov = 30.0
+position = Vector3(0.600, 1.300, -6.300)
+rotation = Vector3(0.0000, -0.7141, 0.0)
+metadata/fov = 36.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)

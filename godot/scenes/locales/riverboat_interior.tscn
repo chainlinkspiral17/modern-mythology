@@ -511,9 +511,9 @@ position = Vector3(0, 5.10, 0.6)
 rotation = Vector3(0, 3.1416, 0)
 
 [node name="shot_closeup_dante" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.500, 6.620, 0.300)
-rotation = Vector3(0.0481, 0.2121, 0.0)
-metadata/fov = 36.0
+position = Vector3(-0.800, 6.650, 1.200)
+rotation = Vector3(-0.0915, -0.2895, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.300, 6.600, -1.250)
