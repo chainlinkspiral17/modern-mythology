@@ -66,6 +66,14 @@ string lights on poles and across to the house, two deck chairs and a
 table with cups, planters at the fence corners, a porch light by the glass
 door. chau_living turned to hold the couch and the fireplace in one frame.
 
+PASS 166 (2026-10-24) — AMANDA'S HALF, DRAFT 3. The couches are the kit's
+sofas pushed seat to seat; the sheet falls past their backs to the floor in
+two skirts with billowed hems on the fan's side; the lamp inside the tent
+is bright enough to glow through it. From the deck the house is a house:
+lap siding on its E wall, the glass door's frame and panels, a lit window
+(the fort room's TV-blue behind it), frieze, soffit, fascia and a shallow
+roof; bigger bulbs on the strings.
+
 DRAFT 2 targets: Chris's room and Mrs. Chau's room past their doors, the
 garage ("the open garage door"), the sheet's breathing as a per-frame
 wobble (it is still), the steam as a fog pass, the kitchen's mess as more
@@ -76,7 +84,8 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe,
                              make_taper_cyl, join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding, make_curtains
+from _props.structure import (make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding, make_curtains,
+                              make_lap_siding)
 from _props.views import make_view
 from _props.furniture import make_bed, make_chair, make_lamp, make_sofa, make_pendant, make_table
 from _props.detail import make_wall_outlet, make_light_switch, make_cord_run
@@ -535,9 +544,9 @@ def build_amanda_deck():
             x = a[0] + (b[0] - a[0]) * t; y = a[1] + (b[1] - a[1]) * t
             mz = min(a[2], b[2]) - sag
             z = (a[2] + (mz - a[2]) * (t / 0.5)) if t <= 0.5 else (mz + (b[2] - mz) * ((t - 0.5) / 0.5))
-            make_blob(f"{name}_Bulb_{k}", (x, y, z - 0.045), 0.035, BULB, noise=0.0, seed=k, squash=1.1)
-    string("Am_String_N", (47.5, 7.9, 2.20), (55.6, 7.9, 2.20), 0.35, 12)
-    string("Am_String_X", (47.1, 0.6, 2.40), (55.6, 7.9, 2.20), 0.40, 12)
+            make_blob(f"{name}_Bulb_{k}", (x, y, z - 0.055), 0.05, BULB, noise=0.0, seed=k, squash=1.1)
+    string("Am_String_N", (47.5, 7.9, 2.20), (55.6, 7.9, 2.20), 0.35, 16)
+    string("Am_String_X", (47.13, 0.6, 2.40), (55.6, 7.9, 2.20), 0.40, 16)
     # two deck chairs toward the tub, a table with cups between them
     make_chair("Am_Deck_Chair_0", 53.9, 1.6, yaw=math.pi * 0.75, wood=(0.56, 0.46, 0.34, 1.0), seat_h=0.40, w=0.50)
     make_chair("Am_Deck_Chair_1", 53.9, 5.6, yaw=math.pi * 0.25, wood=(0.56, 0.46, 0.34, 1.0), seat_h=0.40, w=0.50)
@@ -548,10 +557,10 @@ def build_amanda_deck():
     make_floor_plant("Am_Planter_1", (55.4, -1.1, 0.01), kind="snake")
     make_floor_plant("Am_Planter_2", (47.6, -1.1, 0.01), kind="fern")
     # the porch light by the glass door (the door opening is y 2.3..4.1)
-    make_box("Am_Porch_Light", (AX1 + 0.10 + 0.06, 4.45, 2.15), (0.12, 0.14, 0.26), (0.20, 0.20, 0.22, 1.0))
-    make_box("Am_Porch_Light_Glass", (AX1 + 0.10 + 0.07, 4.45, 2.13), (0.10, 0.10, 0.18), (1.0, 0.90, 0.66, 1.0))
-    # a step down from the door to the deck
-    make_box("Am_Door_Step", (AX1 + 0.10 + 0.25, 3.2, 0.04), (0.50, 1.90, 0.08), (0.46, 0.36, 0.26, 1.0))
+    make_box("Am_Porch_Light", (AX1 + 0.20, 4.45, 2.15), (0.12, 0.14, 0.26), (0.20, 0.20, 0.22, 1.0))
+    make_box("Am_Porch_Light_Glass", (AX1 + 0.21, 4.45, 2.13), (0.10, 0.10, 0.18), (1.0, 0.90, 0.66, 1.0))
+    # a step down from the door to the deck (off the siding's skin)
+    make_box("Am_Door_Step", (AX1 + 0.38, 3.2, 0.04), (0.50, 1.90, 0.08), (0.46, 0.36, 0.26, 1.0))
 
 
 # ── AMANDA'S (x 40..56) ───────────────────────────────────────────────
@@ -567,22 +576,38 @@ def build_amanda():
     make_wall("Am_Wall_W", (AX0, cy, 0), length=AD + 0.4, height=AH, thickness=T, axis='Y', palette=apal, baseboard_face_sign=+1)
     make_wall("Am_Wall_N", (cx, AD, 0), length=AX1 - AX0 + 0.4, height=AH, thickness=T, axis='X', palette=apal, baseboard_face_sign=-1)
     make_wall("Am_Wall_S", (cx, 0.0, 0), length=AX1 - AX0 + 0.4, height=AH, thickness=T, axis='X', palette=apal, baseboard_face_sign=+1)
+    AM_OPS = [(3.2, 1.05, 1.8, 2.1), (5.4, 1.5, 1.2, 1.2)]   # the glass door, and (pass 166) a window N of it
     make_wall_with_openings("Am_Wall_E", (AX1, cy, 0), length=AD + 0.4, height=AH, thickness=T, axis='Y', palette=apal,
-                            baseboard_face_sign=-1, openings=[(3.2, 1.05, 1.8, 2.1)])
+                            baseboard_face_sign=-1, openings=AM_OPS)
+    make_window("Am_Window_E", (AX1 - T / 2.0, 5.4, 1.5), width=1.2, height=1.2, axis='Y', room_dir=-1,
+                palette={"frame": (0.90, 0.88, 0.82, 1.0)})
+    # the glass door: two sliding panels in a dark frame
+    for sgn in (-1, 1):
+        make_box(f"Am_Door_Jamb_{sgn:+d}", (AX1, 3.2 + sgn * 0.875, 1.05), (0.06, 0.05, 2.10), (0.22, 0.22, 0.24, 1.0))
+    make_box("Am_Door_Head", (AX1, 3.2, 2.075), (0.06, 1.80, 0.05), (0.22, 0.22, 0.24, 1.0))
+    make_box("Am_Door_Mullion", (AX1, 3.2, 1.025), (0.05, 0.04, 2.05), (0.22, 0.22, 0.24, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"Am_Door_Glass_{sgn:+d}", (AX1, 3.2 + sgn * 0.4375, 1.025), (0.02, 0.835, 2.05), (0.70, 0.80, 0.86, 0.35))
+    make_box("Am_Door_Handle", (AX1 + 0.04, 3.2 - 0.035, 1.00), (0.03, 0.03, 0.24), (0.60, 0.60, 0.62, 1.0))   # on the mullion
+    # the house from the deck (pass 166): siding, frieze, soffit, fascia, roof
+    make_lap_siding("Am_Siding_E", 'Y', AX1, -0.2, AD + 0.2, AM_OPS, -1, height=AH, color=(0.64, 0.60, 0.52, 1.0),
+                    trim_col=(0.90, 0.88, 0.82, 1.0))
+    make_box("Am_Frieze", (AX1 + 0.15, cy, AH + 0.12), (0.10, AD + 0.8, 0.24), (0.90, 0.88, 0.82, 1.0))
+    make_box("Am_Soffit", (AX1 + 0.45, cy, AH + 0.12), (0.50, AD + 0.8, 0.24), (0.86, 0.84, 0.78, 1.0))
+    make_box("Am_Fascia", (AX1 + 0.72, cy, AH + 0.15), (0.04, AD + 0.8, 0.30), (0.90, 0.88, 0.82, 1.0))
+    make_rot_box("Am_Roof", (AX1 - 3.1, cy, 3.60), (8.0, AD + 0.8, 0.12), (0.30, 0.28, 0.26, 1.0), pitch=0.176)
     # the large television on the W wall, music videos on it
     make_box("Am_TV", (AX0 + 0.15, 3.2, 1.20), (0.50, 1.10, 0.90), FLAT)          # a big rear-projection-deep set
     make_box("Am_TV_Screen", (AX0 + 0.402, 3.2, 1.25), (0.004, 0.96, 0.72), (0.46, 0.40, 0.84, 1.0))
     make_box("Am_TV_Stand", (AX0 + 0.35, 3.2, 0.37), (0.70, 1.30, 0.74), (0.20, 0.18, 0.16, 1.0))
     # the two couches pushed together seat to seat into one bed
-    for k, (y, face) in enumerate(((2.35, 1), (4.05, -1))):
-        make_box(f"Am_Couch_{k}_Base", (43.6, y, 0.22), (2.20, 0.90, 0.44), (0.40, 0.30, 0.44, 1.0))
-        make_box(f"Am_Couch_{k}_Back", (43.6, y - face * 0.36, 0.66), (2.20, 0.18, 0.52), (0.40, 0.30, 0.44, 1.0))
-        for s in (-1, 1):
-            make_box(f"Am_Couch_{k}_Arm_{s:+d}", (43.6 + s * 1.01, y, 0.56), (0.18, 0.90, 0.24), (0.40, 0.30, 0.44, 1.0))
-        make_box(f"Am_Couch_{k}_Cush", (43.6, y + face * 0.06, 0.48), (1.82, 0.70, 0.08), (0.46, 0.36, 0.50, 1.0))
-    # towels and blankets on the bed of them
+    # (pass 166: the kit's sofas, seat to seat, backs out)
+    for k, (y, back) in enumerate(((2.35, "-Y"), (4.05, "+Y"))):
+        make_sofa(f"Am_Couch_{k}", 43.6, y, back=back, w=2.20, d=0.90, seats=3, color=(0.40, 0.30, 0.44, 1.0),
+                  cushion_col=(0.46, 0.36, 0.50, 1.0), leg_col=(0.20, 0.16, 0.14, 1.0), arm="roll")
+    # towels and blankets on the bed of them (on the cushions, seat_h 0.44)
     for k in range(5):
-        make_chamfer_box(f"Am_Blanket_{k}", (43.0 + k * 0.32, 3.1 + (k % 2) * 0.26, 0.56), (0.70, 0.90, 0.07),
+        make_chamfer_box(f"Am_Blanket_{k}", (43.0 + k * 0.32, 3.1 + (k % 2) * 0.26, 0.475), (0.70, 0.90, 0.07),
                          ((0.94, 0.94, 0.92, 1.0), (0.30, 0.44, 0.66, 1.0), (0.86, 0.60, 0.50, 1.0))[k % 3], chamfer=0.02)
     # the tall floor lamp, the sheet tented over it, the floor fan blowing
     lx, ly = 43.6, 3.2
@@ -596,7 +621,13 @@ def build_amanda():
     for s in (-1, 1):
         make_rot_box(f"Am_Sheet_Side_{s:+d}", (lx + 0.3, ly + s * 0.55, 1.20), (2.30, 1.30, 0.02), (0.90, 0.90, 0.94, 1.0),
                      roll=s * 0.95, pitch=-0.30)
-    make_blob("Am_Sheet_Billow", (lx - 0.6, ly - 1.30, 0.55), 0.30, (0.90, 0.90, 0.94, 1.0), noise=0.1, seed=4, squash=0.4)
+    # (pass 166) the sheet falls past the couch backs to the floor: two
+    # skirts, the fan's side billowed at the hem — "enclosed and safe"
+    for sgn, tag in ((-1, "S"), (1, "N")):
+        make_rot_box(f"Am_Sheet_Skirt_{tag}", (lx + 0.1, ly + sgn * 1.36, 0.46), (2.0, 0.02, 0.92), (0.90, 0.90, 0.94, 1.0), roll=-sgn * 0.10)
+    for i, (x, r) in enumerate(((lx - 0.5, 0.30), (lx + 0.4, 0.26))):
+        make_blob(f"Am_Sheet_Hem_{i}", (x, ly - 1.50, r * 0.6 - 0.02), r, (0.90, 0.90, 0.94, 1.0), noise=0.12, seed=40 + i, squash=0.6)
+    make_blob("Am_Sheet_Billow", (lx - 0.85, ly - 1.75, 0.10), 0.30, (0.90, 0.90, 0.94, 1.0), noise=0.1, seed=4, squash=0.4)   # the hem on the floor
     fx, fy = lx - 1.6, 1.0
     make_cyl("Am_Fan_Base", (fx, fy, 0.03), 0.22, 0.06, (0.80, 0.80, 0.80, 1.0), segments=12)
     make_cyl("Am_Fan_Pole", (fx, fy, 0.55), 0.025, 1.00, (0.80, 0.80, 0.80, 1.0), segments=8)

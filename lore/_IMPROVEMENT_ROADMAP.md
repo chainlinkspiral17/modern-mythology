@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 166: AMANDA'S HALF, DRAFT 3 — THE FORT ENCLOSES; THE HOUSE IS A HOUSE FROM THE DECK.**
+- The three Amanda presets had been draft 1 since 2026-10-17: box couches, a sheet that was a
+  hard-edged pyramid of planes stopping at the couch backs, a grey slab for the house wall.
+  - **the fort** — the two couches are the kit's sofas pushed seat to seat, backs out; the sheet
+    falls past the backs to the floor in two near-vertical skirts, with two billowed hems and
+    the fan-side billow on the floor ("kicks a sheet into the air ... enclosed and safe"); the
+    blankets re-seated on the cushions; the lamp inside the tent 0.5 → 1.3 so the sheet glows
+    warm against the TV's blue.
+  - **the house from the deck** — lap siding on the E wall (make_lap_siding), a glass door with
+    jambs, head, mullion, two translucent panels and a handle, a new 1.2 m window N of the door
+    (the fort room's TV-blue behind it), frieze, soffit, fascia and a shallow roof; the porch
+    light and the step moved off the siding's skin; the string bulbs bigger and sixteen a run.
+- Gates: prop_overlap 0, support 0 (the door handle floated off the translucent glass — the
+  audits do not see alpha panes as shells, so it sits on the mullion; the billow seated),
+  buried_decor, window_backing, doorway, preset_vantage, vantage_obstruction, orphan_practical,
+  blender_dryrun, furniture_grammar, tscn_syntax clean; perf 148.
+- **Draft N+1 targets:** the sheet's breathing ("lifts and falls with the fan, slow as
+  breathing") as a per-frame wobble on its planes; the hot-tub camera turned a little toward
+  the house so the lit window and the door spill are in frame (it stands beside the wall); the
+  night sky over the deck (stars through the string lights — a starscape env); the Chau half's
+  own list (walls, the hall's ceiling, Chris's and Mrs. Chau's rooms, the garage, dusk envs).
+
 **2026-10-24 · pass 165: THE CHAU HOUSE, DRAFT 4 — THE KITCHEN, THE BAR, AMANDA'S DECK, THE HEARTH IN FRAME.**
 - Straight down pass 164's N+1 list:
   - **chau_living** turned: it stood on the kitchen side looking away from the new fireplace. Now

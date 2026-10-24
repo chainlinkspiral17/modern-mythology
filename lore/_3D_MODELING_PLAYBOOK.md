@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-24 · a translucent pane is not a shell: fix a handle to the frame, not the glass
+
+**Context:** Amanda's glass door (pass 166). A handle 2.5 cm off a
+translucent sliding panel (alpha 0.35) came back from `support_audit` as
+floating with "nearest shell 0.73 m".
+
+**What happened:** the audits' shell set skips alpha geometry (it skips
+water, glass and mist on purpose, so a bottle in a pool or a frame around a
+pane is not "inside" them). A handle, a sticker, a sign on glass therefore
+has nothing to stand on in the audit's eyes.
+
+**Rule:** anything mounted on glass is mounted on the glass's FRAME in the
+build — the mullion, a jamb, the sash bar — touching it; the pane is set
+dressing behind. The same holds for the pool-water skins (a bottle on a
+hot-tub rim sits on the rim, not the water).
+
+
 ### 2026-10-24 · "luxury" is finish, not volume — and the kit floor's seam grid reads as tile
 
 **Context:** The Chau house (vol 3). The user's note "tall ceilings and wide
