@@ -93,13 +93,13 @@
       "t": "say",
       "char": "Sister",
       "expr": "angry",
-      "text": "How hard is it to throw your own goddamn clothes in the goddamn dryer."
+      "text": "[shot:insert dryer]How hard is it to throw your own goddamn clothes in the goddamn dryer."
     },
     {
       "t": "say",
       "char": "Brother-in-law",
       "expr": "angry",
-      "text": "I asked you. You said you'd do it. Now I don't have clean socks."
+      "text": "[shot:establish]I asked you. You said you'd do it. Now I don't have clean socks."
     },
     {
       "t": "bg",

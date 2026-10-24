@@ -217,13 +217,13 @@
     },
     {
       "t": "narrate",
-      "text": "Charlie is getting dressed and ready for the day."
+      "text": "[shot:insert dresser]Charlie is getting dressed and ready for the day."
     },
     {
       "t": "say",
       "char": "Charlie",
       "expr": "neutral",
-      "text": "I have a date with some girl named Andrea today. One of her friends hooked us up at this club called Paradise Lost."
+      "text": "[shot:establish]I have a date with some girl named Andrea today. One of her friends hooked us up at this club called Paradise Lost."
     },
     {
       "t": "flag",

@@ -219,11 +219,11 @@
     },
     {
       "t": "narrate",
-      "text": "Mark left behind the mini-bike. It sat outside the house, unused and rusting. He often told us about the flying car he would build when he had the money."
+      "text": "[shot:insert minibike]Mark left behind the mini-bike. It sat outside the house, unused and rusting. He often told us about the flying car he would build when he had the money."
     },
     {
       "t": "narrate",
-      "text": "Even to a ten year old, it sounded like a stupid idea. But Mark had a way of making things seem real. That was his gift."
+      "text": "[shot:establish]Even to a ten year old, it sounded like a stupid idea. But Mark had a way of making things seem real. That was his gift."
     },
     {
       "t": "narrate",
@@ -262,12 +262,24 @@
       "src": "assets/backgrounds/vol3_nick_bedroom_drawings.jpg"
     },
     {
+      "t": "bg",
+      "src": "3d:nick_living_night"
+    },
+    {
       "t": "narrate",
       "text": "Nick's grandma was asleep on the recliner, the television mute but alive with a shopping channel. Nick went into the bathroom to assess the damage and take off his make-up. I went into his room which seemed empty without his brother Neal taking up space."
     },
     {
+      "t": "bg",
+      "src": "3d:nick_drafting"
+    },
+    {
       "t": "narrate",
       "text": "The walls were lined with designs and visions yet unrealized. On his child-sized drafting table a sketch of his costume was broken down. Liquid latex and make-up tubes sat next to his models and sculptures."
+    },
+    {
+      "t": "bg",
+      "src": "3d:nick_room"
     },
     {
       "t": "narrate",

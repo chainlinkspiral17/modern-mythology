@@ -153,13 +153,13 @@
     },
     {
       "t": "narrate",
-      "text": "Faust ties the shirt by its sleeves to the rearview of Judgement Day, which is parked at the curb where nobody parked it. It hangs there like fuzzy dice."
+      "text": "[shot:insert judgement_day]Faust ties the shirt by its sleeves to the rearview of Judgement Day, which is parked at the curb where nobody parked it. It hangs there like fuzzy dice."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "Now your lifelines. Each of you press play. What you hear is yours. If you get lost, it's what you swim toward."
+      "text": "[shot:establish]Now your lifelines. Each of you press play. What you hear is yours. If you get lost, it's what you swim toward."
     },
     {
       "t": "narrate",

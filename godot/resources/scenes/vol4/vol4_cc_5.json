@@ -48,6 +48,10 @@
       "text": "Carrie is aglow. She's an absolute beauty. Charlie is gently touching her back."
     },
     {
+      "t": "bg",
+      "src": "3d:afterparty_stools"
+    },
+    {
       "t": "narrate",
       "text": "They sit together on two stools so close together."
     },
@@ -179,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "Charlie pulls back and stands up. She settles into the couch. He puts a blanket on her."
+      "text": "[shot:insert blanket]Charlie pulls back and stands up. She settles into the couch. He puts a blanket on her."
     },
     {
       "t": "say",
@@ -195,7 +199,7 @@
       "t": "say",
       "char": "Charlie",
       "expr": "sad",
-      "text": "I'm just standing here and watching her sleep. I think I'll continue doing this. I should probably talk about something, to fill the void of me just staring and remembering her touch, her taste."
+      "text": "[shot:establish]I'm just standing here and watching her sleep. I think I'll continue doing this. I should probably talk about something, to fill the void of me just staring and remembering her touch, her taste."
     },
     {
       "t": "say",
@@ -222,11 +226,11 @@
     },
     {
       "t": "narrate",
-      "text": "The blanket rises and falls. The room holds very still."
+      "text": "[beat:still][shot:insert blanket~]The blanket rises and falls. The room holds very still."
     },
     {
       "t": "narrate",
-      "text": "Time passes. He's fallen asleep. His hair wildly fluctuates, though he stays still."
+      "text": "[shot:establish]Time passes. He's fallen asleep. His hair wildly fluctuates, though he stays still."
     },
     {
       "t": "cg",
@@ -243,7 +247,7 @@
     },
     {
       "t": "narrate",
-      "text": "It is morning now, the blanket is still on the couch, but Carrie is gone."
+      "text": "[shot:insert blanket]It is morning now, the blanket is still on the couch, but Carrie is gone."
     },
     {
       "t": "hide",

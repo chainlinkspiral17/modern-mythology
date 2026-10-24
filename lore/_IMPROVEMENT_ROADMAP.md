@@ -3835,6 +3835,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 171: DIRECTING CARRIE CITY, CLUB STREET AND NICK'S HOUSE.**
+- Three sets improved in the drafting program (passes 157–160) whose chapters still held one
+  wide each; none had a `vn_shot` marker.
+- **Carrie City (vol 4):** `insert dresser` as Charlie gets dressed; `insert blanket` when he
+  puts it on her, a `[beat:still]` drift on "The blanket rises and falls. The room holds very
+  still", and the blanket again at "It is morning now, the blanket is still on the couch, but
+  Carrie is gone" (the marker reads in both the night and the day living presets); a cut to
+  the stools preset for "They sit together on two stools so close together"; `insert dryer`
+  for the sister's "throw your own goddamn clothes in the goddamn dryer".
+- **Club Street (vol 1):** `insert jd` — Judgement Day at the curb — for the shirt tied to its
+  rearview (ch9) and the cat hair on the front seat at dawn (ch16); the shirt itself hangs
+  inside the cab behind glass, so the car is the frame.
+- **Nick's house (vol 3 ch12):** `insert minibike` for "It sat outside the house, unused and
+  rusting"; a NEW preset `nick_living_night` (the house had no camera in grandma's living room)
+  with the set's blue glow for "asleep on the recliner, the television mute but alive with a
+  shopping channel", then cuts to the drafting table for the costume sketch and to Nick's room
+  for the comics on the floor; `recliner` and `tv` inserts authored for the room.
+- Gates and the marker montage: see the commit; the sheet judged before the audits.
+- **Draft N+1 (directing):** the bindery (vol 6 ch2 already carries eight cues) and the docks
+  (vol 2 ch10) need their cue lines checked against the re-set cameras of passes 159–160; then
+  the montage check of every room's September closeup pair against its current preset; then
+  vol 5's rooms by chapter order (the user's standing verdict on vol 5 direction).
+
 **2026-10-24 · pass 170: DIRECTING THE VOL 2 ROOMS OF THE SWEEP — THE BARN, THE FARMHOUSE NIGHTS, THE LIGHTHOUSE; THE LINK HOUSE'S FACES.**
 - **The crumpled barn** had its inserts (cab, jiggles, sign, lean) since the September marker
   pass but ch1 cued only the sign's last line: the cabinet line, "His name in red paint:

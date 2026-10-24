@@ -86,9 +86,9 @@ def build_street():
         make_box(f"Streetlight_{k}_Head_Glow", (5.7, y + 3.0, 5.66), (0.50, 0.26, 0.12), (1.0, 0.80, 0.50, 1.0))
     # Judgement Day at the curb: the beat-up maroon sedan; the frame shirt on
     # its rearview in the ch9 view; the cat hair is the sprite-scale detail
-    make_car("JD", 5.15, -4.0, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
-    make_box("JD_Primer_Patch", (5.15 - 0.885, -3.4, 0.62), (0.006, 0.80, 0.30), (0.56, 0.56, 0.54, 1.0))
-    make_box("JD_Rearview_Hang", (5.15, -3.0, 1.32), (0.20, 0.04, 0.06), (0.10, 0.10, 0.10, 1.0))
+    make_car("Judgement_Day", 5.15, -4.0, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
+    make_box("Judgement_Day_Primer_Patch", (5.15 - 0.885, -3.4, 0.62), (0.006, 0.80, 0.30), (0.56, 0.56, 0.54, 1.0))
+    make_box("Judgement_Day_Rearview_Hang", (5.15, -3.0, 1.32), (0.20, 0.04, 0.06), (0.10, 0.10, 0.10, 1.0))
     # other cars parked along the far curb
     for k, (y, col) in enumerate(((-20.0, (0.30, 0.32, 0.36, 1.0)), (14.0, (0.70, 0.70, 0.68, 1.0)), (36.0, (0.20, 0.26, 0.34, 1.0)))):
         make_car(f"Parked_Far_{k}", 12.85, y, 4.6, col, along="Y")

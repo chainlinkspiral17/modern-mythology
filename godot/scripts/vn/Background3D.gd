@@ -3795,6 +3795,17 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	"nick_living_night": {
+		"scene": "res://scenes/locales/nick_house.tscn",
+		"requires_glb": "res://assets/3d/locales/nick_house.glb",
+		# (pass 171, directing ch12) "Nick's grandma was asleep on the recliner, the television mute
+		# but alive with a shopping channel": the living room from the hall, the recliner, the set's glow
+		"camera_origin": Vector3(-1.6, 1.5, -4.6),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(145.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.40, 0.42, 0.56, 1), "ambient_energy": 0.30, "fog_color": Color(0.05, 0.05, 0.08, 1)},
+		"suppress_input": true,
+	},
 	"nick_room": {
 		"scene": "res://scenes/locales/nick_house.tscn",
 		"requires_glb": "res://assets/3d/locales/nick_house.glb",
