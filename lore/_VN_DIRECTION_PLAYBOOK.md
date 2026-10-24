@@ -323,6 +323,32 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-24 · a set that got its finish gets its cuts — the directing program follows the drafting program
+
+- **The user: "Start directing the visual novel to match the improved
+  locations."** The drafting program had carried the Chau house to draft
+  4 (pass 164–166) while its two chapters still played three held wides
+  off 2D keys. The direction is the second half of every set pass.
+- **The room's new things need a camera before they need a cue.** Mrs.
+  Chau's room existed since draft 1 (a bed, a dresser, a mirror) but no
+  preset stood in it; "pulls at her bangs in the mirror" had nowhere to
+  cut. A new preset is cheap (ten lines in Background3D); author it from
+  the chapter's line, then the insert.
+- **Name the geometry for the cue.** `marker_aim_audit` finds a marker's
+  subject by name: `shot_insert_computer` was a MISAIM with the CRT's
+  parts called Steven_CRT_*. The fix is in the builder (Steven_Computer_
+  Screen), not a looser cue — the prose says computer.
+- **Aim by two points.** `pitch = atan2(dy, hypot(dx, dz))`,
+  `yaw = atan2(-dx, -dz)` from a camera point 0.6–1.0 m off the object to
+  a target on it; the hand-guessed rotations of the first three markers
+  happened to pass, the fourth (the mirror, re-aimed to take in the
+  dresser top) was computed. Render the marker montage (TripPaintTest
+  --preset X --marker shot_x) and look before trusting the numbers.
+- **One insert, then come back.** An insert holds until the next cue, so
+  the line after it carries `[shot:establish]` unless the next line is
+  a `bg` cut.
+
+
 ### 2026-10-14 · a local variable hid a new static; Godot caught it, the linters did not
 
 - `HeroArt.apply()` counts with a local `var placed: int`; a new

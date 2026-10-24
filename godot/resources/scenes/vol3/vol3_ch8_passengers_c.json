@@ -159,16 +159,24 @@
       "text": "Chris surveys the disarray of the house. The mess left in the kitchen, the main living room television on, the looping intro to a movie playing static, not quite. He goes into Steven's room, finds the computer on, sits down and looks at the history of the browser, retraces the steps backwards in time, reading carefully."
     },
     {
-      "t": "narrate",
-      "text": "Mrs. Chau goes into her room and deposits her suitcase, pulls at her bangs in the mirror. Her tiny dog runs up to her begging for food barking sharply. Her mother-in-law, come to visit from Taiwan tried to abandon the dog blamed the dog for running away."
+      "t": "bg",
+      "src": "3d:chau_mom_room"
     },
     {
       "t": "narrate",
-      "text": "She hoped the old woman would die before the dog and suffer in limbo long before the price on her soul was paid in full."
+      "text": "[shot:insert mirror]Mrs. Chau goes into her room and deposits her suitcase, pulls at her bangs in the mirror. Her tiny dog runs up to her begging for food barking sharply. Her mother-in-law, come to visit from Taiwan tried to abandon the dog blamed the dog for running away."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]She hoped the old woman would die before the dog and suffer in limbo long before the price on her soul was paid in full."
     },
     {
       "t": "narrate",
       "text": "Mrs. Chau picks her up in her arms and holds her to her chin."
+    },
+    {
+      "t": "bg",
+      "src": "3d:chau_hall_noon"
     },
     {
       "t": "narrate",

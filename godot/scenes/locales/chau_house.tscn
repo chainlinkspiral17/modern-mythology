@@ -420,3 +420,22 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── shots (pass 168, directing vol 3 ch8) ──────────────────────────────
+; insert: the candy dish on the hall table — "Seasonal candy, this looks like Valentine's Day"
+[node name="shot_insert_candy_dish" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 1.35, -1.0)
+rotation = Vector3(-0.585, 0.98, 0.0)
+metadata/fov = 35.0
+
+; insert: Steven's CRT, the newsgroup on it — "transfixed with levels of murky Internet correspondence"
+[node name="shot_insert_computer" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 1.3, -4.4)
+rotation = Vector3(-0.255, 1.412, 0.0)
+metadata/fov = 35.0
+
+; insert: the dresser mirror in Mrs. Chau's room — "pulls at her bangs in the mirror"
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 1.55, -11.45)
+rotation = Vector3(-0.328, 1.084, 0.0)
+metadata/fov = 42.0

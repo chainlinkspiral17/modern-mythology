@@ -61,15 +61,19 @@
     },
     {
       "t": "narrate",
-      "text": "Steven stumbles through the house, yawning, tugging at boxers. He grabs candy from a candy dish, throws it in the back of his mouth. Seasonal candy, this looks like Valentine's Day, old and left out, forgotten about, unloved, he eats without thinking, grazing."
+      "text": "[shot:insert candy_dish]Steven stumbles through the house, yawning, tugging at boxers. He grabs candy from a candy dish, throws it in the back of his mouth. Seasonal candy, this looks like Valentine's Day, old and left out, forgotten about, unloved, he eats without thinking, grazing."
     },
     {
       "t": "narrate",
-      "text": "He is in front of the bathroom door, it is closed."
+      "text": "[shot:establish]He is in front of the bathroom door, it is closed."
     },
     {
       "t": "narrate",
       "text": "It is locked when he tries to open it. He calls out, Aaron, Aaron. Nothing."
+    },
+    {
+      "t": "bg",
+      "src": "3d:chau_steven_desk"
     },
     {
       "t": "narrate",
@@ -89,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aaron nods and returns his gaze to the computer screen, transfixed with levels of murky Internet correspondence deception unfolding."
+      "text": "[shot:insert computer~]Aaron nods and returns his gaze to the computer screen, transfixed with levels of murky Internet correspondence deception unfolding."
     },
     {
       "t": "bg",

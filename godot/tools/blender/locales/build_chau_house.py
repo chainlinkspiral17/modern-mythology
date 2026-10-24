@@ -309,7 +309,7 @@ def build_hall_rooms():
     for s in (-1, 1):
         make_box(f"Steven_Desk_Leg_{s:+d}", (dx, dy + s * 0.66, 0.36), (0.68, 0.04, 0.72), (0.24, 0.24, 0.26, 1.0))
     make_chamfer_box("Steven_CRT", (dx - 0.08, dy + 0.10, 0.97), (0.40, 0.40, 0.42), (0.80, 0.76, 0.66, 1.0), chamfer=0.03)
-    make_box("Steven_CRT_Screen", (dx + 0.125, dy + 0.10, 0.98), (0.004, 0.32, 0.26), (0.40, 0.56, 0.76, 1.0))
+    make_box("Steven_Computer_Screen", (dx + 0.125, dy + 0.10, 0.98), (0.004, 0.32, 0.26), (0.40, 0.56, 0.76, 1.0))
     make_box("Steven_Tower", (dx - 0.05, dy + 0.62, 0.98), (0.44, 0.18, 0.44), (0.80, 0.76, 0.66, 1.0))
     make_box("Steven_Keyboard", (dx + 0.22, dy + 0.10, 0.76), (0.16, 0.44, 0.025), (0.80, 0.76, 0.66, 1.0))
     make_chair("Steven_Chair", dx + 0.66, dy + 0.05, yaw=math.pi / 2.0, wood=(0.24, 0.24, 0.26, 1.0))
@@ -327,7 +327,26 @@ def build_hall_rooms():
     # Mrs. Chau's room (y 9..14): the bed, the dresser and its mirror
     make_bed("Mom_Bed", X1 - 0.10 - 1.1, 12.4, head="+X", w=1.60, d=2.1, blanket_col=(0.80, 0.74, 0.66, 1.0))
     make_box("Mom_Dresser", (HALL_X1 + 0.07 + 0.26, 12.0, 0.42), (0.50, 1.20, 0.84), (0.52, 0.40, 0.30, 1.0))
-    make_box("Mom_Dresser_Mirror", (HALL_X1 + 0.08, 12.0, 1.40), (0.03, 0.80, 0.90), (0.72, 0.78, 0.82, 1.0))
+    # (pass 168: the mirror in a frame, its bevel line, the dresser top dressed — the
+    # chapter's insert "pulls at her bangs in the mirror" is cut to it)
+    make_box("Mom_Mirror_Frame", (HALL_X1 + 0.085, 12.0, 1.40), (0.03, 0.92, 1.02), (0.46, 0.34, 0.24, 1.0))
+    make_box("Mom_Dresser_Mirror", (HALL_X1 + 0.105, 12.0, 1.40), (0.01, 0.80, 0.90), (0.72, 0.78, 0.82, 1.0))
+    make_box("Mom_Mirror_Bevel", (HALL_X1 + 0.111, 12.0, 1.40), (0.002, 0.74, 0.84), (0.78, 0.84, 0.88, 1.0))
+    for k in range(3):
+        make_box(f"_Stock_Mom_Drawer_Seam_{k}", (HALL_X1 + 0.07 + 0.505, 12.0, 0.21 + k * 0.21), (0.004, 1.10, 0.008), (0.40, 0.30, 0.22, 1.0))
+        make_box(f"_Stock_Mom_Drawer_Pull_{k}", (HALL_X1 + 0.07 + 0.52, 12.0, 0.31 + k * 0.21), (0.02, 0.12, 0.012), (0.70, 0.62, 0.40, 1.0))
+    make_cyl("Mom_Perfume", (HALL_X1 + 0.07 + 0.30, 11.55, 0.90), 0.03, 0.12, (0.80, 0.60, 0.70, 0.7), segments=10)
+    make_box("Mom_Hairbrush", (HALL_X1 + 0.07 + 0.26, 12.35, 0.855), (0.20, 0.06, 0.03), (0.30, 0.22, 0.18, 1.0))
+    make_box("Mom_Photo_Frame", (HALL_X1 + 0.07 + 0.16, 11.75, 0.93), (0.02, 0.14, 0.18), (0.70, 0.62, 0.40, 1.0))
+    make_box("Mom_Jewelry_Box", (HALL_X1 + 0.07 + 0.34, 12.30, 0.89), (0.14, 0.10, 0.10), (0.36, 0.26, 0.22, 1.0))
+    # her room, furnished: a nightstand and lamp, a rug, drapes on the E window, the
+    # suitcase just set down inside the door (the scene's state)
+    make_box("Mom_Nightstand", (X1 - 0.10 - 0.25, 10.9, 0.30), (0.50, 0.50, 0.60), (0.52, 0.40, 0.30, 1.0))
+    make_lamp("Mom_Lamp", X1 - 0.10 - 0.25, 10.9, base_z=0.60, h=0.50)
+    make_box("Mom_Rug", (9.9, 11.6, 0.006), (2.4, 1.8, 0.012), (0.56, 0.50, 0.46, 1.0))
+    make_curtains("Mom_Drapes", (X1 - T / 2.0, 11.4, 1.70), width=2.2, height=2.4, axis='Y', room_dir=-1, color=(0.62, 0.58, 0.52, 1.0))
+    make_chamfer_box("Mom_Suitcase", (8.3, 10.0, 0.20), (0.62, 0.26, 0.40), (0.26, 0.22, 0.30, 1.0), chamfer=0.03)
+    make_box("Mom_Suitcase_Handle", (8.3, 10.0, 0.43), (0.16, 0.03, 0.06), (0.14, 0.14, 0.14, 1.0))
 
 
 def build_game_room():

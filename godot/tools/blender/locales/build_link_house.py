@@ -959,20 +959,37 @@ def build_grounds():
     for k in range(3):                     # three steps down to the path
         top = -(k + 1) * (-GZ / 3.0) + 0.0
         make_box(f"Porch_Step_{k}", (step_x, py0 - 0.15 - k * 0.30, (top + GZ) / 2.0), (1.30, 0.30, top - GZ + 0.001), PORCH_WOOD)
-    # on the porch: two rockers and a little table looking out at the pasture, the porch light
-    for k, x in enumerate((-5.4, -3.4)):
+    # on the porch (pass 168, the user: "The porch should have a porch swing"):
+    # the swing hung from the porch ceiling at the W end, where the porch
+    # camera looks; the two rockers and their table moved to the E end
+    def roof_under(y):                        # the porch roof's underside at y
+        t = (y - (py0 + PORCH_D / 2.0 - 0.20)) / (PORCH_D + 0.60)
+        return (rz0 + rz1) / 2.0 + 0.06 + t * (rz0 - rz1) * (PORCH_D + 0.60) / (PORCH_D + 0.40) - 0.06
+    sx, sy = -5.0, py0 + 1.40
+    SWING = (0.42, 0.32, 0.22, 1.0); CHAIN = (0.36, 0.36, 0.38, 1.0)
+    make_box("Porch_Swing_Seat", (sx, sy, 0.50), (1.60, 0.56, 0.05), SWING)
+    for k in range(4):
+        make_box(f"Porch_Swing_Stock_Slat_{k}", (sx, sy - 0.20 + k * 0.13, 0.5255), (1.56, 0.012, 0.001), (0.30, 0.22, 0.16, 1.0))
+    make_rot_box("Porch_Swing_Back", (sx, sy - 0.30, 0.78), (1.60, 0.04, 0.52), SWING, roll=0.18)
+    for k in range(5):
+        make_rot_box(f"Porch_Swing_Stock_Back_Slat_{k}", (sx - 0.60 + k * 0.30, sy - 0.33, 0.78), (0.06, 0.012, 0.50), (0.30, 0.22, 0.16, 1.0), roll=0.18)
+    for s in (-1, 1):
+        make_box(f"Porch_Swing_Arm_{s:+d}", (sx + s * 0.77, sy + 0.02, 0.76), (0.06, 0.52, 0.05), SWING)
+        make_box(f"Porch_Swing_Arm_Post_{s:+d}", (sx + s * 0.77, sy + 0.24, 0.63), (0.05, 0.05, 0.22), SWING)
+        for yy in (sy - 0.20, sy + 0.24):
+            top = roof_under(yy)
+            make_box(f"Porch_Swing_Chain_{s:+d}_{yy:.2f}", (sx + s * 0.77, yy, (0.785 + top) / 2.0), (0.012, 0.012, top - 0.785), CHAIN)
+    make_chamfer_box("Porch_Swing_Cushion", (sx + 0.30, sy + 0.02, 0.56), (0.42, 0.42, 0.07), (0.62, 0.40, 0.34, 1.0), chamfer=0.02)
+    for k, x in enumerate((0.9, 2.9)):
         make_chair(f"Porch_Rocker_{k}", x, py0 + 0.95, yaw=math.pi + 0.15 * (1 - 2 * k), wood=(0.40, 0.30, 0.22, 1.0))
         for s in (-1, 1):
             make_rot_box(f"Porch_Rocker_{k}_Runner_{s:+d}", (x + s * 0.18, py0 + 0.95, 0.015), (0.04, 0.62, 0.03), (0.40, 0.30, 0.22, 1.0),
                          yaw=0.15 * (1 - 2 * k))
-    make_table("Porch_Table", -4.4, py0 + 1.05, w=0.50, d=0.50, h=0.50, wood=(0.40, 0.30, 0.22, 1.0))
-    make_cyl("Porch_Tea_Glass", (-4.35, py0 + 1.00, 0.555), 0.035, 0.11, (0.70, 0.56, 0.32, 0.6), segments=10)
+    make_table("Porch_Table", 1.9, py0 + 1.05, w=0.50, d=0.50, h=0.50, wood=(0.40, 0.30, 0.22, 1.0))
+    make_cyl("Porch_Tea_Glass", (1.95, py0 + 1.00, 0.555), 0.035, 0.11, (0.70, 0.56, 0.32, 0.6), segments=10)
     # pass 153: the porch's ceiling fan over the rockers, two ferns in hanging
     # baskets between the posts, the flower beds along its front
-    def roof_under(y):                        # the porch roof's underside at y
-        t = (y - (py0 + PORCH_D / 2.0 - 0.20)) / (PORCH_D + 0.60)
-        return (rz0 + rz1) / 2.0 + 0.06 + t * (rz0 - rz1) * (PORCH_D + 0.60) / (PORCH_D + 0.40) - 0.06
-    fx, fy = -4.40, py0 + 1.40
+    fx, fy = 1.90, py0 + 1.40          # over the rockers at the E end (pass 168)
     fz = roof_under(fy)
     make_cyl("Porch_Fan_Rod", (fx, fy, fz - 0.14), 0.014, 0.30, (0.30, 0.28, 0.26, 1.0), segments=6)
     make_cyl("Porch_Fan_Hub", (fx, fy, fz - 0.32), 0.10, 0.10, (0.30, 0.28, 0.26, 1.0), segments=12)

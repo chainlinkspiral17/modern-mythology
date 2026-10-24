@@ -2837,10 +2837,12 @@ const CAMERA_PRESETS := {
 	"andy_house_porch": {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
-		# the front porch (the user, 2026-10-23): the rockers, the rail, the large pasture down to the river
-		"camera_origin": Vector3(-1.9, 1.45, 0.5),
-		"camera_rotation": Vector3(-0.11, deg_to_rad(165.0), 0.0),
-		"fov": 66.0,
+		# the front porch (the user, 2026-10-23): the swing (the user, 2026-10-24: "The porch
+		# should have a porch swing"), the rail, the large pasture down to the river. Pass 168:
+		# from the E end looking W along the porch so the swing and the pasture share the frame.
+		"camera_origin": Vector3(-0.6, 1.45, 1.35),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.0), 0.0),
+		"fov": 70.0,
 		"env": {"sky_top": Color(0.46, 0.62, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.90, 1),
 			"ground_horizon": Color(0.52, 0.50, 0.46, 1), "ground_bottom": Color(0.24, 0.22, 0.20, 1),
 			"ambient_color": Color(0.86, 0.88, 0.90, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.82, 0.86, 1)},
@@ -2883,9 +2885,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/link_house.tscn",
 		"requires_glb": "res://assets/3d/locales/link_house.glb",
 		# the porch at dusk (pass 152): the porch light on, the pasture going blue, the last light over the river's trees
-		"camera_origin": Vector3(-1.9, 1.45, 0.5),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(165.0), 0.0),
-		"fov": 66.0,
+		# (pass 168: the same setup as the day porch — the swing in frame)
+		"camera_origin": Vector3(-0.6, 1.45, 1.35),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.0), 0.0),
+		"fov": 70.0,
 		"env": {"sky_top": Color(0.20, 0.22, 0.40, 1), "sky_horizon": Color(0.92, 0.56, 0.36, 1),
 			"ground_horizon": Color(0.30, 0.24, 0.24, 1), "ground_bottom": Color(0.10, 0.09, 0.10, 1),
 			"ambient_color": Color(0.52, 0.48, 0.62, 1), "ambient_energy": 0.55, "fog_color": Color(0.56, 0.44, 0.44, 1)},
@@ -4080,6 +4083,29 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(300.6, 1.4, -1.0),
 		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
 		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"chau_steven_desk": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# (pass 168, directing vol 3 ch8) "there is Aaron hunched by the computer, typing, not
+		# looking up" / "He goes into Steven's room, finds the computer on, sits down": the desk
+		# by the door from inside the room, the CRT lit, the hall beyond the open door
+		"camera_origin": Vector3(10.6, 1.50, -7.4),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(138.0), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
+		"suppress_input": true,
+	},
+	"chau_mom_room": {
+		"scene": "res://scenes/locales/chau_house.tscn",
+		"requires_glb": "res://assets/3d/locales/chau_house.glb",
+		# (pass 168) "Mrs. Chau goes into her room and deposits her suitcase, pulls at her bangs
+		# in the mirror": her room from the bed's side, the dresser and its mirror on the hall wall
+		"camera_origin": Vector3(11.4, 1.50, -9.6),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(55.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
 		"suppress_input": true,
 	},
 	"chau_steven_room": {
