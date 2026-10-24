@@ -187,7 +187,7 @@ from _props.structure import make_frame_ring   # (2026-10-07: the frame boards â
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
     # (draft 10) a window in the W wall NORTH of Olaf's shop (the shop abuts y 0.4..6.1)
     make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(7.10, 1.55, 1.00, 1.00)])

@@ -59,7 +59,7 @@ def build_house():
     make_box("House_Mass_Below", (-1.35, 5.0, (G - 0.12) / 2.0), (11.3, 12.0, -G - 0.12), (0.84, 0.80, 0.70, 1.0))
     make_box("House_Mass_Below_E", (6.475, 5.0, (G - 0.12) / 2.0), (1.05, 12.0, -G - 0.12), (0.84, 0.80, 0.70, 1.0))
     make_floor("Ron_Floor", (0.0, D / 2.0, F), size_x=X1 - X0 + 0.4, size_y=D + 0.4,
-               palette={"vinyl": (0.52, 0.38, 0.26, 1.0), "seam": (0.42, 0.30, 0.20, 1.0)})
+               palette={"vinyl": (0.52, 0.38, 0.26, 1.0), "seam": (0.42, 0.30, 0.20, 1.0)}, style="plank")
     make_box("Ron_Ceil", (0.0, D / 2.0, F + H + 0.04), (X1 - X0 + 0.4, D + 0.4, 0.08), (0.88, 0.84, 0.76, 1.0))
     make_wall("Ron_Wall_W", (X0, D / 2.0, F), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL, baseboard_face_sign=+1)
     make_wall("Ron_Wall_E", (X1, D / 2.0, F), length=D + 0.4, height=H, thickness=T, axis='Y', palette=PAL, baseboard_face_sign=-1)
@@ -92,7 +92,7 @@ def build_house():
     # the hall north of the room: wide, the stair head at its E end
     hy0, hy1 = D + 0.10, D + 3.70
     hcy = (hy0 + hy1) / 2.0
-    make_floor("Hall_Floor", (0.0, hcy, F), size_x=12.0, size_y=hy1 - hy0, palette={"vinyl": (0.50, 0.36, 0.24, 1.0), "seam": (0.40, 0.28, 0.20, 1.0)})
+    make_floor("Hall_Floor", (0.0, hcy, F), size_x=12.0, size_y=hy1 - hy0, palette={"vinyl": (0.50, 0.36, 0.24, 1.0), "seam": (0.40, 0.28, 0.20, 1.0)}, style="plank")
     make_box("Hall_Ceil", (0.0, hcy, F + H + 0.04), (12.0, hy1 - hy0, 0.08), (0.88, 0.84, 0.76, 1.0))
     make_wall_with_openings("Hall_Wall_N", (0.0, hy1, F), length=12.0, height=H, thickness=T, axis='X', palette=PAL,
                             baseboard_face_sign=-1, openings=[(-3.6, F + 1.0, 0.86, 2.0), (0.4, F + 1.0, 0.86, 2.0)])

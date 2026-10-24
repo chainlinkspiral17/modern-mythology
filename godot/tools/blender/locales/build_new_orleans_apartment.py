@@ -61,7 +61,7 @@ BED_DOOR_Y = 3.35                   # its doorway in the E brick wall
 from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     # East wall is brick
     make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                             palette={"wall": COL_BRICK, "baseboard": COL_BRICK_SEAM}, baseboard_face_sign=-1,
@@ -112,7 +112,7 @@ def build_bedroom_wing():
     swung open, a window onto the neighbour's brick three floors up."""
     x0, x1, y0, y1 = ROOM_W / 2.0, WING_X1, WING_Y0, ROOM_D
     make_floor("Wing_Floor", ((x0 + 0.2 + x1 + 0.2) / 2.0, (y0 - 0.2 + y1 + 0.2) / 2.0, 0.0),
-               size_x=x1 - x0, size_y=y1 - y0 + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               size_x=x1 - x0, size_y=y1 - y0 + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     make_wall_with_openings("Wing_Wall_E", (x1, (y0 + y1) / 2.0, 0), length=y1 - y0 + 0.4, height=CEIL, axis='Y',
                             palette=PAL, baseboard_face_sign=-1, openings=[(4.40, 1.55, 1.00, 1.70)])
     for nm, y_, sg in (("Wing_Wall_N", y1, -1), ("Wing_Wall_S", y0, +1)):
@@ -245,7 +245,7 @@ def build_hero_props():
     make_box("TV_Stand", (3.125, 2.2, 0.34), (0.55, 0.90, 0.62), (0.36, 0.28, 0.20, 1.0))   # on the E wall's face (2026-09-25: 33 cm off it)
     make_box("Game_Console", (2.9550, 1.85, 0.686), (0.20, 0.28, 0.07), (0.22, 0.22, 0.26, 1.0))   # (draft 3: in front of the TV, not under it)
     for wi in range(2):
-        make_box(f"Controller_Cord_{wi}", (2.5 - wi * 0.4, 2.0 + wi * 0.2, 0.02), (0.5, 0.02, 0.01), (0.14, 0.14, 0.16, 1.0))
+        make_box(f"Controller_Cord_{wi}", (2.5 - wi * 0.4, 2.0 + wi * 0.2, 0.005), (0.5, 0.02, 0.01), (0.14, 0.14, 0.16, 1.0))
     # (draft 3: the bass as a bass — body, neck, headstock, four strings —
     # north of the armoire it used to run into; the amp beyond it)
     make_chamfer_box("Bass_Body", (2.65, 4.55, 0.55), (0.14, 0.36, 0.50), (0.52, 0.22, 0.16, 1.0), chamfer=0.03)

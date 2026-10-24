@@ -30,7 +30,7 @@ from _props.structure import make_frame_ring   # (2026-10-07: the frame boards â
 
 def build_cylindrical_shell():
     make_floor("Floor", (0.0, 0.0, 0.0), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4,
-               palette={"vinyl": COL_FLOOR_PLANK, "seam": COL_FLOOR_SEAM})
+               palette={"vinyl": COL_FLOOR_PLANK, "seam": COL_FLOOR_SEAM}, style="plank")
     # Curved wall â€” approximate cylinder with 16 short wall segments
     SEGS = 16
     for si in range(SEGS):

@@ -79,7 +79,7 @@ DOOR_W_Y, DOOR_E_Y = 0.75, 2.35
 # ── the room ───────────────────────────────────────────────────────
 def build_shell():
     make_floor("Floor", (0.0, D / 2.0, 0.0), size_x=W + 0.4, size_y=D + 0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=W + 0.4, height=CEIL, axis='X', palette=PAL,
                             baseboard_face_sign=+1,
                             openings=[(AC_X, 1.30, 0.78, 0.98), (LEAD_X, 1.45, 0.62, 0.76)])

@@ -69,7 +69,7 @@ COL_GLASS = (0.62, 0.72, 0.78, 0.6)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
-               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
     make_wall_with_openings("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=pal,
                             baseboard_face_sign=+1, openings=[(3.3, 1.55, 1.10, 1.10)])   # cut 2026-10-07: the window was a pane on a solid wall

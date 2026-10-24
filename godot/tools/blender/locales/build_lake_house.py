@@ -79,7 +79,7 @@ def frame_window(name, wall_axis, along, at, cz, w, h, depth=T):
 
 def build_shell():
     make_floor("House_Floor", (0.0, 0.0, 0.0), size_x=20.0, size_y=16.0,
-               palette={"vinyl": (0.66, 0.52, 0.36, 1.0), "seam": (0.58, 0.46, 0.32, 1.0)})
+               palette={"vinyl": (0.66, 0.52, 0.36, 1.0), "seam": (0.58, 0.46, 0.32, 1.0)}, style="plank")
     make_box("House_Ceil", (0.0, 0.0, H + 0.04), (20.4, 16.4, 0.08), (0.94, 0.94, 0.92, 1.0))
     make_gable("House_Roof", (0.0, 0.0, H + 0.08 + 1.30), (21.6, 17.6, 2.60), ROOF, ridge_axis='X')
     # exterior walls and their openings (along = absolute x or y)

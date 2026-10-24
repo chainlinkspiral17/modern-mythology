@@ -3835,6 +3835,71 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 168: THE PORCH SWING; THE DIRECTING PROGRAM OPENS ON THE CHAU HOUSE.**
+- The user, mid-pass: *"The porch should have a porch swing. Keep going. Start directing the
+  visual novel to match the improved locations."*
+- **The Link house porch** (vol 3): a slatted swing on four chains from the porch ceiling at the
+  W end — seat, slatted back, arms, a cushion; the two rockers, their table and the ceiling fan
+  moved to the E end. The porch presets (day and dusk) re-set at the top of the steps looking W
+  along the porch, so the swing hangs ahead with the pasture through the rail.
+- **DIRECTING THE VN — a standing program (task #20).** For each improved set, walk its
+  chapters and wire the cuts the way the model chapters are cut: a `bg` node where the prose
+  changes rooms, `[shot:insert x]` on the line that names an object (one marker per object,
+  aimed camera → target by `aim()`, never a hand rotation), `[shot:establish]` to come back, a
+  new preset for a room the text enters that had no camera. First room: **vol 3 ch8, the Chau
+  house.** passengers_b: `insert candy_dish` on the candy line, `establish` at the bathroom
+  door, a cut to the new `chau_steven_desk` preset when Aaron answers from the computer,
+  `insert computer~` on "returns his gaze to the computer screen". passengers_c: a cut to the
+  new `chau_mom_room` preset with `insert mirror` on "pulls at her bangs in the mirror",
+  `establish` on her next line, a cut to the hall for "They walk together through the house".
+  Markers: `shot_insert_candy_dish`, `shot_insert_computer` (the CRT's screen renamed
+  Steven_Computer_Screen so the aim audit finds the cue's subject), `shot_insert_mirror`. Mrs.
+  Chau's room dressed for its first camera (a framed mirror with a bevel line, the dresser top
+  — perfume, brush, a photo, a jewelry box — drawer seams and pulls, a nightstand and lamp, a
+  rug, drapes, the suitcase just set down inside the door).
+- Gates: marker_aim 0 misaims, vantage_obstruction --markers 0, shot_marker 0 blind cues,
+  wrong_room 0, narrated_object: one uncued "computer" line (it is the room cut itself);
+  prop_overlap 0, support 0 (a fourth drawer pull stood over the dresser top), blender_dryrun,
+  tscn_syntax clean. The marker montage read: the dish fills its frame, the CRT with the
+  keyboard, the mirror with the dresser top.
+- **Draft N+1 targets (directing):** the Link house chapters next (vol 3: the porch, the sunken
+  tub, the stairs, the carport — inserts for the tub, the porch swing, the mailbox), then the
+  crumpled barn (insert the marionette, the sign), the farmhouse nights (the cup, the bottle,
+  the TV), Tideline Survey (the notebook, the cedar figure), the lighthouse gate (the padlock,
+  the beacon). Run `narrated_object_audit <locale>` before and after each. The Chau half-wide
+  for Steven waking (which bed? the text leaves it) stays uncut.
+
+**2026-10-24 · pass 167: EVERY WOOD FLOOR IN THE GAME IS PLANKS (the Chau lesson, project-wide).**
+- Pass 164 found that `make_floor`'s 1 m seam grid reads as large tile at room scale. A survey
+  of the 136 `make_floor` calls found 53 with a wood-brown palette — every house, apartment,
+  office and shop floor in vols 1–7 that was meant to be hardwood read as terracotta.
+- **Kit:** `make_floor(..., style="plank", plank_w=0.16, plank_axis=None)` — board seams every
+  0.16 m across the run, two staggered end seams per board row, no cross grid; boards run along
+  the pad's longer side unless told. The default `style="grid"` is unchanged (sheet vinyl, VCT,
+  big tile stay as they were).
+- **Switched (37 floors, 33 sets):** bayou_lighthouse, bindery, board_lords_interior,
+  cabin_interior, caldwell_porch_night, carrie_city (flat + loft), chillwave_interior,
+  daily_grind_interior, dean_offices (Mon), ember_ash_office, faust_apartment, finn_apartment,
+  foxhole_stage, frog_knows_best, graciela_bedroom, lake_house, miller_back_porch,
+  miller_office, montreal_apartment, natalie_apartment (+ wing), new_orleans_apartment (+
+  wing), new_orleans_office, new_orleans_room, parsonage_1945 (Ron + hall), safehouse_bedroom,
+  salty_tome_interior, simon_apartment, small_wood_farmhouse, small_wood_high (the gym's maple
+  strips), smolvud_coop, vol4_story_rooms (Dean's home), wagner_home, writers_desk. Left on
+  the grid on purpose: kitchens (henderson, kowalski, caldwell, hans), linoleum (roberts),
+  carpet (tulsa, jesse, chau's Amanda room), parquet (courthouse), the beige offices
+  (cosmic back office, kai, pit stop office, caldwell radio), tile and vinyl everywhere else.
+- All 33 rebuilt and 27 rendered on one sheet: every floor reads as boards; the gym's strips
+  run the court's length; the coop, Finn's, Natalie's, the safehouse and Montreal gain the most.
+- Gates over all 33: prop_overlap 0, blender_dryrun 0, buried_decor 0 (carrie_city's
+  Sister_Frame and its photo had sat inside the N wall's thickness since pass 160 — on the room
+  face now), support 0 (new_orleans_apartment's floor cord had rested on a 1 m seam that moved
+  — it lies on the slab now); perf gate run on every room.
+- **Draft N+1 targets:** the remaining grid floors judged one by one (some beige "vinyl" is
+  a bedroom carpet that wants a `style="carpet"` — no seams, a pile colour band at the walls);
+  `style="tile"` with a settable tile size for the real tile rooms (bath 0.3 m, kitchen 0.45 m,
+  commercial 0.6 m) so the 1 m grid stops standing in for them; a parquet style for the
+  courthouse; a `plank_w` per period (1945 narrow strip 0.07, 2050 wide plank 0.2).
+
 **2026-10-24 · pass 166: AMANDA'S HALF, DRAFT 3 — THE FORT ENCLOSES; THE HOUSE IS A HOUSE FROM THE DECK.**
 - The three Amanda presets had been draft 1 since 2026-10-17: box couches, a sheet that was a
   hard-edged pyramid of planes stopping at the couch backs, a grey slab for the house wall.

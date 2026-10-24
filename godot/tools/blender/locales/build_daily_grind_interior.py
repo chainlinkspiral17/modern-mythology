@@ -105,7 +105,7 @@ COL_COPPER = (0.72, 0.42, 0.24, 1.0)
 # ═══════════════════════════════════════════════════════════ the shell
 def build_shell():
     make_floor("Floor", (0.0, (Y0 + Y1) / 2.0, 0.0), size_x=X1 - X0 + 0.4, size_y=Y1 - Y0 + 0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     make_box("Hall_Floor", ((X0 + HALL_X1) / 2.0, (Y1 + HALL_Y1) / 2.0, -0.05), (HALL_X1 - X0 + 0.2, HALL_Y1 - Y1 + 0.2, 0.10),
              (0.50, 0.50, 0.48, 1.0))
     # W wall (the cross street): two big windows; it runs on past the cafe as the hall's W wall

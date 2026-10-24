@@ -46,7 +46,7 @@ PRODUCE = [(0.86, 0.28, 0.20, 1.0), (0.92, 0.62, 0.20, 1.0), (0.40, 0.62, 0.26, 
 
 
 def build_shell():
-    make_floor("Floor", (0.0, D / 2.0, 0.0), size_x=W + 0.4, size_y=D + 0.4, palette={"vinyl": (0.62, 0.48, 0.32, 1.0), "seam": (0.46, 0.34, 0.22, 1.0)})
+    make_floor("Floor", (0.0, D / 2.0, 0.0), size_x=W + 0.4, size_y=D + 0.4, palette={"vinyl": (0.62, 0.48, 0.32, 1.0), "seam": (0.46, 0.34, 0.22, 1.0)}, style="plank")
     make_wall("Wall_W", (XW, D / 2.0, 0), length=D + 0.4, height=H, axis='Y', palette=PAL, baseboard_face_sign=+1)
     make_wall("Wall_E", (XE, D / 2.0, 0), length=D + 0.4, height=H, axis='Y', palette=PAL, baseboard_face_sign=-1)
     make_wall_with_openings("Wall_N", (0.0, YN, 0), length=W + 0.4, height=H, axis='X', palette=PAL, baseboard_face_sign=-1,

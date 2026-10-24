@@ -65,7 +65,7 @@ def build_flat():
     street's facades across from the S windows."""
     H = 2.7
     make_floor("Flat_Floor", (5.0, 4.0, 0.0), size_x=10.0, size_y=8.0,
-               palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.48, 0.36, 0.24, 1.0)})
+               palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.48, 0.36, 0.24, 1.0)}, style="plank")
     make_box("Flat_Ceil", (5.0, 4.0, H + 0.04), (10.4, 8.4, 0.08), (0.90, 0.90, 0.88, 1.0))
     make_wall_with_openings("Flat_Wall_S", (5.0, 0.0, 0), length=10.0 + T, height=H, thickness=T, axis='X', palette=FLAT,
                             baseboard_face_sign=+1, openings=[(2.0, 1.45, 1.2, 1.4), (6.6, 1.45, 1.4, 1.5), (8.6, 1.45, 1.4, 1.5)])
@@ -136,7 +136,7 @@ def build_party():
     H = 4.2
     x0, x1, y0, y1 = 40.0, 58.0, 0.0, 14.0
     make_floor("Loft_Floor", (49.0, 7.0, 0.0), size_x=18.0, size_y=14.0,
-               palette={"vinyl": (0.40, 0.30, 0.22, 1.0), "seam": (0.34, 0.26, 0.18, 1.0)})
+               palette={"vinyl": (0.40, 0.30, 0.22, 1.0), "seam": (0.34, 0.26, 0.18, 1.0)}, style="plank")
     make_box("Loft_Ceil", (49.0, 7.0, H + 0.04), (18.4, 14.4, 0.08), (0.30, 0.28, 0.28, 1.0))
     for k in range(5):
         make_box(f"Loft_Beam_{k}", (41.8 + k * 3.6, 7.0, H - 0.22), (0.30, 14.0, 0.40), (0.36, 0.26, 0.18, 1.0))
@@ -272,8 +272,9 @@ def build_sister_house():
     make_cyl("Sister_Curtain_Rod", (89.6, hy0 + 0.16, z0 + 2.10), 0.015, 1.70, (0.30, 0.26, 0.20, 1.0), axis='X', segments=6)
     for e in (-1, 1):                          # the rod's brackets to the wall
         make_box(f"Sister_Curtain_Bracket_{e:+d}", (89.6 + e * 0.82, hy0 + 0.12, z0 + 2.10), (0.03, 0.10, 0.03), (0.30, 0.26, 0.20, 1.0))
-    make_box("Sister_Frame", (85.6, hy1 - 0.016, z0 + 1.60), (0.44, 0.02, 0.34), (0.24, 0.20, 0.16, 1.0))
-    make_box("Sister_Frame_Photo", (85.6, hy1 - 0.028, z0 + 1.60), (0.36, 0.004, 0.26), (0.72, 0.66, 0.56, 1.0))
+    # (pass 167: both sat inside the wall's thickness — on its room face now)
+    make_box("Sister_Frame", (85.6, hy1 - T / 2.0 - 0.012, z0 + 1.60), (0.44, 0.02, 0.34), (0.24, 0.20, 0.16, 1.0))
+    make_box("Sister_Frame_Photo", (85.6, hy1 - T / 2.0 - 0.024, z0 + 1.60), (0.36, 0.004, 0.26), (0.72, 0.66, 0.56, 1.0))
     make_box("Sister_Laundry_Fold", (84.9, 7.8, z0 + 0.52), (0.30, 0.26, 0.14), (0.86, 0.84, 0.80, 1.0))
     make_box("Sister_Remote", (83.6, 5.6, z0 + 0.012), (0.05, 0.16, 0.02), (0.14, 0.14, 0.16, 1.0))
     make_box("Sister_TV_Stand", (82.5, 4.4, z0 + 0.30), (0.50, 0.90, 0.60), (0.40, 0.32, 0.24, 1.0))

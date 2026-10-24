@@ -61,7 +61,7 @@ def frame(name, axis, along, at, cz, w, h):
 
 def build_house():
     make_floor("Ground_Floor", (-1.0, 5.0, 0.0), size_x=14.0, size_y=10.0,
-               palette={"vinyl": (0.46, 0.34, 0.22, 1.0), "seam": (0.38, 0.28, 0.18, 1.0)})
+               palette={"vinyl": (0.46, 0.34, 0.22, 1.0), "seam": (0.38, 0.28, 0.18, 1.0)}, style="plank")
     # the ceiling and the floor above are cut round the stair's hole
     # (x -1.2..-0.1, y 6.0..9.5)
     cc = (0.84, 0.82, 0.76, 1.0)

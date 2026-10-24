@@ -9,18 +9,38 @@
   "prims": 14292,
   "objects": 258
  },
+ "bayou_lighthouse": {
+  "draw": 64,
+  "prims": 13188,
+  "objects": 234
+ },
  "ben_bedroom": {
   "draw": 92
  },
  "bindery": {
   "draw": 60,
-  "prims": 109072,
+  "prims": 110656,
   "objects": 230
+ },
+ "board_lords_interior": {
+  "draw": 86,
+  "prims": 29064,
+  "objects": 256
  },
  "bus_station": {
   "draw": 80,
   "prims": 19652,
   "objects": 250
+ },
+ "cabin_interior": {
+  "draw": 8660,
+  "prims": 340664,
+  "objects": 6310
+ },
+ "caldwell_porch_night": {
+  "draw": 312,
+  "prims": 104208,
+  "objects": 482
  },
  "caltech_dabney": {
   "draw": 150,
@@ -29,7 +49,7 @@
  },
  "carrie_city": {
   "draw": 88,
-  "prims": 33588,
+  "prims": 58100,
   "objects": 258
  },
  "centro_grocery_aisle": {
@@ -39,6 +59,11 @@
   "draw": 148,
   "prims": 137664,
   "objects": 318
+ },
+ "chillwave_interior": {
+  "draw": 64,
+  "prims": 33544,
+  "objects": 234
  },
  "club_street": {
   "draw": 110,
@@ -55,15 +80,20 @@
   "prims": 58072,
   "objects": 326
  },
+ "daily_grind_interior": {
+  "draw": 474,
+  "prims": 275672,
+  "objects": 644
+ },
  "dean_house_1994": {
   "draw": 100,
   "prims": 17668,
   "objects": 270
  },
  "dean_offices": {
-  "draw": 116,
-  "prims": 61408,
-  "objects": 286
+  "draw": 122,
+  "prims": 108360,
+  "objects": 292
  },
  "diner": {
   "draw": 1248
@@ -73,8 +103,35 @@
   "prims": 12952,
   "objects": 234
  },
+ "ember_ash_office": {
+  "draw": 100,
+  "prims": 17820,
+  "objects": 270
+ },
  "faust_apartment": {
-  "draw": 4033
+  "draw": 4216,
+  "prims": 154396,
+  "objects": 3910
+ },
+ "finn_apartment": {
+  "draw": 148,
+  "prims": 100832,
+  "objects": 318
+ },
+ "foxhole_stage": {
+  "draw": 56,
+  "prims": 11764,
+  "objects": 226
+ },
+ "frog_knows_best": {
+  "draw": 56,
+  "prims": 20292,
+  "objects": 226
+ },
+ "graciela_bedroom": {
+  "draw": 66,
+  "prims": 17636,
+  "objects": 236
  },
  "graustark": {
   "draw": 1254
@@ -95,7 +152,7 @@
  },
  "lake_house": {
   "draw": 134,
-  "prims": 36332,
+  "prims": 42788,
   "objects": 304
  },
  "lena_apartment": {
@@ -111,8 +168,43 @@
   "prims": 22636,
   "objects": 260
  },
+ "miller_back_porch": {
+  "draw": 152,
+  "prims": 66474,
+  "objects": 322
+ },
+ "miller_office": {
+  "draw": 104,
+  "prims": 27100,
+  "objects": 274
+ },
  "missing_link_interior": {
   "draw": 90
+ },
+ "montreal_apartment": {
+  "draw": 56,
+  "prims": 44228,
+  "objects": 226
+ },
+ "natalie_apartment": {
+  "draw": 214,
+  "prims": 131452,
+  "objects": 384
+ },
+ "new_orleans_apartment": {
+  "draw": 74,
+  "prims": 27788,
+  "objects": 244
+ },
+ "new_orleans_office": {
+  "draw": 108,
+  "prims": 18048,
+  "objects": 278
+ },
+ "new_orleans_room": {
+  "draw": 160,
+  "prims": 35336,
+  "objects": 330
  },
  "nexcorp_fueling_station": {
   "draw": 174
@@ -128,9 +220,9 @@
   "objects": 238
  },
  "parsonage_1945": {
-  "draw": 78,
-  "prims": 13400,
-  "objects": 248
+  "draw": 76,
+  "prims": 16552,
+  "objects": 246
  },
  "pasadena_1945": {
   "draw": 134,
@@ -143,8 +235,15 @@
  "riverfront": {
   "draw": 471
  },
+ "safehouse_bedroom": {
+  "draw": 102,
+  "prims": 22528,
+  "objects": 272
+ },
  "salty_tome_interior": {
-  "draw": 402
+  "draw": 290,
+  "prims": 151840,
+  "objects": 460
  },
  "sapo_falls": {
   "draw": 112,
@@ -156,19 +255,24 @@
   "prims": 29626,
   "objects": 272
  },
+ "simon_apartment": {
+  "draw": 54,
+  "prims": 14360,
+  "objects": 224
+ },
  "sleep_lab": {
   "draw": 348,
   "prims": 31240,
   "objects": 518
  },
  "small_wood_farmhouse": {
-  "draw": 70,
-  "prims": 24928,
-  "objects": 240
+  "draw": 68,
+  "prims": 28672,
+  "objects": 238
  },
  "small_wood_high": {
   "draw": 226,
-  "prims": 145124,
+  "prims": 151964,
   "objects": 396
  },
  "small_wood_ranch": {
@@ -180,6 +284,11 @@
   "draw": 62,
   "prims": 54196,
   "objects": 232
+ },
+ "smolvud_coop": {
+  "draw": 72,
+  "prims": 43940,
+  "objects": 242
  },
  "smolvud_jetty": {
   "draw": 118,
@@ -203,17 +312,17 @@
  },
  "vol4_story_rooms": {
   "draw": 132,
-  "prims": 48268,
+  "prims": 56404,
   "objects": 302
  },
  "wagner_home": {
-  "draw": 116,
-  "prims": 53396,
-  "objects": 286
+  "draw": 122,
+  "prims": 63876,
+  "objects": 292
  },
  "writers_desk": {
-  "draw": 108,
-  "prims": 23976,
-  "objects": 278
+  "draw": 126,
+  "prims": 47088,
+  "objects": 296
  }
 }

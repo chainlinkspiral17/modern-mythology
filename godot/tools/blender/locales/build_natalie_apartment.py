@@ -157,7 +157,7 @@ def FS(a, b, h):
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
                size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-               palette={"vinyl": COL_FLOOR_OAK, "seam": COL_FLOOR_OAK_SM})
+               palette={"vinyl": COL_FLOOR_OAK, "seam": COL_FLOOR_OAK_SM}, style="plank")
     # (2026-10-03: the walls behind the windows are CUT — they were solid)
     make_wall_with_openings("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0),
               length=ROOM_D + 0.4, height=CEIL_Z, axis='Y',
@@ -313,7 +313,7 @@ def build_east_wing():
     x0, x1 = ROOM_W / 2.0, WING_X1
     pal_oak = {"vinyl": COL_FLOOR_OAK, "seam": COL_FLOOR_OAK_SM}
     make_floor("Wing_Floor", ((x0 + 0.2 + x1 + 0.2) / 2.0, ROOM_D / 2.0, 0.0),
-               size_x=x1 - x0, size_y=ROOM_D + 0.4, palette=pal_oak)
+               size_x=x1 - x0, size_y=ROOM_D + 0.4, palette=pal_oak, style="plank")
     make_wall("Wing_Wall_E", (x1, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL_Z, axis='Y',
               palette=PAL_APT_WALL, baseboard_face_sign=-1)
     nx = (x0 + 0.2 + x1 + 0.1) / 2.0

@@ -56,7 +56,7 @@ WHITE = (0.94, 0.93, 0.89, 1.0); STEEL = (0.72, 0.74, 0.76, 1.0)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-               palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.36, 0.26, 0.16, 1.0)})
+               palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.36, 0.26, 0.16, 1.0)}, style="plank")
     make_wall("Wall_W", (XW, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
     make_wall_with_openings("Wall_E", (XE, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL,
                             baseboard_face_sign=-1, openings=[(WIN_E_Y, 1.45, 0.80, 1.10)])

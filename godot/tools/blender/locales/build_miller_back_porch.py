@@ -47,7 +47,7 @@ COL_GRASS_DRY = (0.58, 0.54, 0.32, 1.0)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     # House wall (north) stays solid — it's the side of the house
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)

@@ -73,7 +73,7 @@ DESK_W, DESK_D, DESK_H = 1.55, 0.72, 0.75
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
               palette=PAL_WALL, baseboard_face_sign=+1)
     # (draft 2, the Deck: "interiors need more windows") a corner room: the

@@ -9,14 +9,44 @@ from . import palette as P
 from .geometry import make_box, make_cyl
 
 
-def make_floor(prefix, anchor, *, size_x, size_y, palette=None):
-    """Rectangular floor pad with N-S plank seams + E-W tile seams."""
+def make_floor(prefix, anchor, *, size_x, size_y, palette=None, style="grid", plank_w=0.16, plank_axis=None):
+    """Rectangular floor pad. style "grid" (the default): N-S plank seams
+    + E-W tile seams every 1 m — sheet vinyl, VCT, big tile. style "plank"
+    (2026-10-24, pass 167 — the Chau house lesson: at room scale the 1 m
+    grid reads as large tile, so every wood floor in the project read as
+    terracotta): board seams every `plank_w` across the run, two staggered
+    end seams per board row, no cross grid. Boards run along `plank_axis`
+    ('X' / 'Y'), by default along the pad's longer side."""
     palette = palette or {}
     vinyl = palette.get("vinyl", P.FLOOR_VINYL)
     seam = palette.get("seam", P.FLOOR_SEAM)
     cx, cy, base_z = anchor
     make_box(f"{prefix}_Slab", (cx, cy, base_z - 0.05),
              (size_x, size_y, 0.10), vinyl)
+    if style == "plank":
+        # (the seams carry the _Stock_ marker: export_glb's join_stock folds
+        # them into one mesh per floor — ~100 boxes a floor cost the cabin
+        # 9,500 draw calls under its shadowed lights as separate meshes)
+        along_x = (plank_axis or ('X' if size_x >= size_y else 'Y')).upper() == 'X'
+        across, run = (size_y, size_x) if along_x else (size_x, size_y)
+        c_lo = (cy - size_y / 2.0) if along_x else (cx - size_x / 2.0)
+        r_lo = (cx - size_x / 2.0) if along_x else (cy - size_y / 2.0)
+        n = int(across / plank_w)
+        for i in range(1, n):
+            v = c_lo + i * plank_w
+            if along_x:
+                make_box(f"{prefix}_Stock_SeamP_{i}", (cx, v, base_z + 0.005), (size_x, 0.012, 0.001), seam)
+            else:
+                make_box(f"{prefix}_Stock_SeamP_{i}", (v, cy, base_z + 0.005), (0.012, size_y, 0.001), seam)
+            if run > 2.2:
+                for j in range(2):
+                    u = r_lo + 0.9 + ((i * 0.7 + j * run / 2.0) % (run - 1.8))
+                    vm = v - plank_w / 2.0
+                    if along_x:
+                        make_box(f"{prefix}_Stock_SeamE_{i}_{j}", (u, vm, base_z + 0.005), (0.012, plank_w - 0.012, 0.001), seam)
+                    else:
+                        make_box(f"{prefix}_Stock_SeamE_{i}_{j}", (vm, u, base_z + 0.005), (plank_w - 0.012, 0.012, 0.001), seam)
+        return
     # N-S plank seams
     n_x = int(size_x)
     for i in range(-n_x // 2, n_x // 2 + 1):

@@ -288,7 +288,7 @@ def build_dean_house():
     x0, x1, y0, y1 = 420.0, 428.0, 0.0, 7.0
     pal = {"wall": (0.62, 0.54, 0.44, 1.0), "baseboard": (0.34, 0.26, 0.20, 1.0)}
     make_floor("DeanHome_Floor", (424.0, 3.5, 0.0), size_x=8.0, size_y=7.0,
-               palette={"vinyl": (0.40, 0.28, 0.20, 1.0), "seam": (0.34, 0.24, 0.16, 1.0)})
+               palette={"vinyl": (0.40, 0.28, 0.20, 1.0), "seam": (0.34, 0.24, 0.16, 1.0)}, style="plank")
     make_box("DeanHome_Ceil", (424.0, 3.5, H + 0.04), (8.4, 7.4, 0.08), (0.86, 0.84, 0.78, 1.0))
     make_wall_with_openings("DeanHome_Wall_S", (424.0, y0, 0), length=8.0 + T, height=H, thickness=T, axis='X', palette=pal,
                             baseboard_face_sign=+1, openings=[(426.6, 1.1, 1.2, 2.2)])

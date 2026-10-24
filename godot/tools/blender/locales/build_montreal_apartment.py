@@ -22,7 +22,7 @@ COL_RADIATOR = (0.86, 0.80, 0.72, 1.0); COL_BOOK_SPINES = [(0.62, 0.32, 0.30, 1.
 ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.80
 
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     for nm, x, ax, bb in [("Wall_W", -ROOM_W/2.0, 'Y', +1), ("Wall_E", +ROOM_W/2.0, 'Y', -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis=ax, palette=PAL, baseboard_face_sign=bb)
     # the north wall CUT around the window (x -1.1..1.1, z 0.6..2.6) — it was

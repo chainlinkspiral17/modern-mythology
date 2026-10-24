@@ -150,7 +150,7 @@ def build_hall():
 def build_gym():
     cx, cy = (GYM_X0 + GYM_X1) / 2.0, (HALL_Y1 + GYM_Y1) / 2.0
     w, d = GYM_X1 - GYM_X0, GYM_Y1 - HALL_Y1
-    make_floor("Gym_Floor", (cx, cy, 0.0), size_x=w, size_y=d, palette=MAPLE)
+    make_floor("Gym_Floor", (cx, cy, 0.0), size_x=w, size_y=d, palette=MAPLE, style="plank")
     for nm, x in (("Gym_Wall_W", GYM_X0), ("Gym_Wall_E", GYM_X1)):
         make_wall(nm, (x, cy, 0), length=d, height=GYM_H, axis='Y', palette=GYM_WALL,
                   baseboard_face_sign=+1 if x < 0 else -1)

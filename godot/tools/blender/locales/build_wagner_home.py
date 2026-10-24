@@ -83,7 +83,7 @@ COL_GLASS = (0.78, 0.84, 0.86, 0.25)
 
 def build_shell():
     make_floor("Floor", (0.0, (Y0 + Y1) / 2.0, 0.0), size_x=X1 - X0 + 0.4, size_y=Y1 - Y0 + 0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
     make_wall("Wall_W", (X0, (Y0 + Y1) / 2.0, 0), length=Y1 - Y0 + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
     make_wall("Wall_E", (X1, (Y0 + KY1) / 2.0, 0), length=KY1 - Y0 + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)

@@ -34,7 +34,7 @@ from _props.structure import make_frame_ring   # (2026-10-07: the frame boards â
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-               palette={"vinyl": COL_FLOOR_HARDWOOD, "seam": COL_FLOOR_SEAM})
+               palette={"vinyl": COL_FLOOR_HARDWOOD, "seam": COL_FLOOR_SEAM}, style="plank")
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL, baseboard_face_sign=bb)

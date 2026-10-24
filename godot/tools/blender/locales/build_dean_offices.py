@@ -408,7 +408,7 @@ RING_C = (104.0, 3.2)
 def build_monitor_room():
     cx = (MX0 + MX1) / 2.0
     make_floor("Mon_Floor", (cx, MD / 2.0, 0.0), size_x=MX1 - MX0 + 0.4, size_y=MD + 0.4,
-               palette={"vinyl": (0.52, 0.38, 0.26, 1.0), "seam": (0.44, 0.32, 0.22, 1.0)})
+               palette={"vinyl": (0.52, 0.38, 0.26, 1.0), "seam": (0.44, 0.32, 0.22, 1.0)}, style="plank")
     make_box("Mon_Ceil", (cx, MD / 2.0, MH + 0.04), (MX1 - MX0 + 0.4, MD + 0.4, 0.08), (0.80, 0.76, 0.70, 1.0))
     pal = {"wall": (0.76, 0.70, 0.62, 1.0), "baseboard": WOOD_DARK}
     make_wall("Mon_Wall_N", (cx, MD, 0), length=MX1 - MX0 + 0.4, height=MH, thickness=0.2, axis='X', palette=pal, baseboard_face_sign=-1)

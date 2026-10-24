@@ -399,6 +399,25 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-24 · a wood floor is `make_floor(..., style="plank")`; the grid is for vinyl and tile
+
+**Context:** Pass 167, after the Chau house (pass 164) showed the kit's
+1 m seam grid reading as terracotta tile. A survey found 53 of the 136
+`make_floor` calls carried a wood-brown palette on that grid: every house,
+apartment and office meant to be hardwood read as tile.
+
+**Rule:** choose the floor's style with its palette. Boards →
+`style="plank"` (seams every 0.16 m, staggered ends, along the long side;
+set `plank_axis` when the room's run is not the pad's long side, e.g. a
+hall). Sheet vinyl, VCT, big tile → the default grid. Carpet → a plain slab
+(no seams; a carpet pass is on the N+1 list). Judge a floor on the sheet
+from eye height: if you can count the squares, it is tile; if you can
+count the boards, it is wood. The two kinds of seam sit at the same
+height (+5 mm), so a prop that rested on a grid seam still rests on a
+plank seam — but a cord or rug laid at +1 cm "to clear the seams" floats
+over a slab; lay floor things ON the slab (z 0.005 for a 1 cm cord).
+
+
 ### 2026-10-24 · a translucent pane is not a shell: fix a handle to the frame, not the glass
 
 **Context:** Amanda's glass door (pass 166). A handle 2.5 cm off a
