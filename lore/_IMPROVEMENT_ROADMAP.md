@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 173: THE REPO-WIDE MARKER CHECK — five frames the later passes had broken.**
+- `vantage_obstruction_audit --markers` over every locale, `marker_aim_audit` and
+  `wrong_room_audit` repo-wide after the drafting program's sixteen passes: 0 misaims, 0
+  wrong-room closeups, **5 obstructed markers** — Linda Caldwell's `insert hands` looking at
+  the bed blanket instead of the shortwave's dial, the taquería's `closeup person` into the
+  long booth's back at 2.5 m, Lena's `closeup person_b` standing outside the studio's W wall
+  (authored before the re-plan), Natalie's `closeup natalie` and `closeup nicola` straight
+  into the futon's back (draft 4 made the sofa a futon with a tall soft back). Each re-aimed
+  by two points per the 2026-10-02 rule: the hands at the dial from along the desk, the
+  taquería's face frame across the room to the register, Lena's inside the room toward the
+  bookshelf, Natalie's from the rug's far corner so the futon sits oblique with the room's
+  depth behind it, Nicola's across the rug to the W window.
+- The rule the pass adds: **a set pass re-runs the marker audits for its locale before it
+  closes** — the obstruction audit over markers is the cheap check that the furniture a pass
+  moved did not walk into a frame authored for the old plan. `run_changed_audits.sh` should
+  carry it (N+1).
+- **Draft N+1 (directing):** vol 5 by chapter order (the user's standing verdict); the
+  wrong-room pass for closeups by CAST — `shot_closeup_<name>` per speaker per preset where
+  a chapter's dialogue is long (the diner, the Chau living room, the Link kitchen).
+
 **2026-10-24 · pass 172: DIRECTING THE DOCKS (vol 2 ch10 Frank / Salmon) + the vol 7 drone line.**
 - The docks-at-evening preset (pass 159) had the jetty's vol 7 markers only; the two vol 2
   chapters on it carried no cue. Three inserts on the float: the crab pots at its root

@@ -361,15 +361,15 @@ metadata/fov = 54.0
 
 ; closeup: Natalie on the futon (draft 5: the futon on the E wall, the lens on the rug)
 [node name="shot_closeup_natalie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.900, 1.350, -2.200)
-rotation = Vector3(-0.1700, -1.6140, 0.0)
-metadata/fov = 36.0
+position = Vector3(-0.900, 1.450, -0.800)
+rotation = Vector3(-0.1285, -1.1471, 0.0)
+metadata/fov = 45.0
 
 ; closeup: Nicola on the futon ("Nicola had slept, immediately, on the futon")
 [node name="shot_closeup_nicola" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.900, 1.300, -3.000)
-rotation = Vector3(-0.1400, -1.5950, 0.0)
-metadata/fov = 36.0
+position = Vector3(2.400, 1.450, -4.600)
+rotation = Vector3(-0.0749, 2.0195, 0.0)
+metadata/fov = 45.0
 
 ; insert: the turntable on its stand
 [node name="shot_insert_record_player" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -372,7 +372,7 @@ metadata/fov = 35.0
 ; from Coach Guidry and Linda Guidry")
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.800, 1.450, -6.400)
-rotation = Vector3(-0.1200, 0.0000, 0.0)
+rotation = Vector3(-0.0826, -1.3481, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
