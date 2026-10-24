@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 163: THE SWEEP'S LAST TIER — UNDER THE BEAT OF THE CASCADING WALL.**
+- The last seven untouched presets rebuilt and rendered (the Caldwell kitchen at night, Graciela's
+  bedroom, the Graustark post office with its cracked line, Miller's garage, the radio studio, the
+  video store counter, Sapo Falls). Six read as they stood — this low tier is strong: the kitchen,
+  Graciela's room, the garage and the video store are near the model-chapter bar for a single
+  view. With this tier every set with a builder has been rendered and judged since pass 157.
+- **Sapo Falls** (vol 2 ch2 interlude, draft 3) only had the postcard: the column seen from the
+  pool. The text puts the dreamer "under the beat of the cascading wall. The opaque film of
+  water in front of me distorted the world outside the cool calm wet of the underneath" — Salto
+  El Sapo's trail runs behind the fall. A cave 4.6 m deep is carved under the face (ceiling,
+  walls, back, a wet ledge, three drips off the ceiling, moss on the walls); the veil segments
+  are translucent (alpha 0.45, the bright cores opaque) so the pool, the gorge and the tepui
+  show through them; a new preset `sapo_falls_behind` stands on the ledge looking out through
+  the film with the cave's dark walls framing it (ambient 0.45 against the bright outside, a
+  veil glow omni). The interlude cuts to it at "Specifically, I was in one of the many smaller
+  Sapo Falls". The first cut (1.2 m deep, fov 72) was one white wash — the veil at the lens.
+  The front view keeps its column, now a bright core inside a translucent sheet.
+- Gates: prop_overlap 0, support 0, buried_decor, window_backing, doorway, preset_vantage,
+  vantage_obstruction (the first cut's camera was obstructed by the veil; clean now),
+  orphan_practical, blender_dryrun, tscn_syntax, inside_out clean; locale_ambient gained a
+  bed for the new preset (the ten NOFILE entries are pre-existing, vol 1–2 beds not yet
+  recorded); perf 112 (baseline recorded).
+- **Draft N+1 targets:** sapo_falls_behind — the mermaid as a dark eel-length under the foam
+  mound ("Her lower half more eel than fish"), the veil as a wavering surface through the mood
+  shader, the ledge's wet sheen, more small falls threading the gorge walls; miller_garage —
+  the Corolla pulling in under the half-raised door at dusk (the chapter's first beat is Sam
+  arriving); video_store_counter — MELODY's box on the counter, Chuck's chair; radio_studio —
+  the ON AIR lamp lit as a practical, the librarian's script pages. **The sweep is through
+  its first full circuit**: next, a second circuit from the top of the under-100-line list
+  judging each set against its N+1 list, or the vol 5 locale program (task #1) by chapter order.
+
 **2026-10-23 · pass 162: THE SWEEP'S NEXT TIER — THE CRUMPLED BARN IS PART OF THE HILL.**
 - Fifteen presets across thirteen sets rebuilt and rendered (Ramos kitchen, Louisiana road, Coach
   K's and Ben's bedrooms, the Smolvud coop, Lena's studio, Dean's 1994 house, the skatepark, Kai's

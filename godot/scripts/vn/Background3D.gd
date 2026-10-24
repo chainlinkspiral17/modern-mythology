@@ -4594,6 +4594,18 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	"sapo_falls_behind": {
+		"scene": "res://scenes/locales/sapo_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/sapo_falls.glb",
+		# (2026-10-23) "under the beat of the cascading wall": on the wet
+		# ledge in the alcove behind the veil (blender y 14.3), looking out
+		# through the translucent fall at the pool, the gorge and the tepui.
+		"camera_origin": Vector3(0.3, 1.50, -17.6),
+		"camera_rotation": Vector3(0.0, deg_to_rad(180.0), 0.0),
+		"fov": 88.0,
+		"env": {"ambient_color": Color(0.50, 0.58, 0.58, 1), "ambient_energy": 0.45, "fog_color": Color(0.40, 0.46, 0.46, 1)},
+		"suppress_input": true,
+	},
 	"little_switzerland": {
 		"scene": "res://scenes/locales/little_switzerland.tscn",
 		"requires_glb": "res://assets/3d/locales/little_switzerland.glb",

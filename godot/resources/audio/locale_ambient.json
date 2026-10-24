@@ -809,6 +809,10 @@
       "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
       "gain": 0.82
     },
+    "sapo_falls_behind": {
+      "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
+      "gain": 0.82
+    },
     "school_newspaper": {
       "bed": "assets/audio/bgm/vol2_ambient.wav",
       "gain": 0.82

@@ -55,6 +55,10 @@
    "voice": "assets/audio/voice/vol2_ch2_interlude_one/009.mp3"
   },
   {
+   "t": "bg",
+   "src": "3d:sapo_falls_behind"
+  },
+  {
    "t": "narrate",
    "text": "Specifically, I was in one of the many smaller Sapo Falls — under the beat of the cascading wall.",
    "voice": "assets/audio/voice/vol2_ch2_interlude_one/010.mp3"

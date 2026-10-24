@@ -146,6 +146,11 @@
  "salty_tome_interior": {
   "draw": 402
  },
+ "sapo_falls": {
+  "draw": 112,
+  "prims": 7732,
+  "objects": 282
+ },
  "sea_cave": {
   "draw": 102,
   "prims": 29626,

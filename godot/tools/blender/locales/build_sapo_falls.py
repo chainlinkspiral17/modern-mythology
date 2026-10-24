@@ -15,9 +15,20 @@ Coordinate frame: Blender Z-up. y=0 is the viewing side (camera);
 +Y runs north up the gorge to the falls face (y≈14). glTF export
 remaps to Godot (x, z, -y).
 
-Vantage wired in Background3D.CAMERA_PRESETS:
+Vantages wired in Background3D.CAMERA_PRESETS:
   sapo_falls — on the rocks at the pool's edge, looking up at the
   column.
+  sapo_falls_behind — DRAFT 3 (2026-10-23): "under the beat of the
+  cascading wall. The opaque film of water in front of me distorted
+  the world outside the cool calm wet of the underneath" — Salto El
+  Sapo's trail runs BEHIND the fall. An alcove is carved under the
+  face (x -2.4..2.4, z 0..4.5, a wet ledge, drips off its ceiling, moss
+  on its back wall); the veil segments are translucent (alpha 0.6, the
+  cores opaque) so the gorge, the pool and the tepui show through them
+  from the ledge. Draft 4 targets: the mermaid's shape in the pool
+  (a dark eel-length under the foam), the veil as a wavering surface
+  (a mood shader), the ledge's wet sheen, more "many smaller falls"
+  threading the gorge walls.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -28,7 +39,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl,
 COL_ROCK = (0.42, 0.42, 0.40, 1.0)
 COL_ROCK_DK = (0.32, 0.32, 0.31, 1.0)
 COL_ROCK_WET = (0.26, 0.27, 0.27, 1.0)
-COL_FALL = (0.88, 0.90, 0.90, 1.0)
+COL_FALL = (0.88, 0.90, 0.90, 0.45)      # translucent since draft 3 — the world shows through from behind
 COL_FALL_CORE = (0.94, 0.96, 0.96, 1.0)
 COL_POOL = (0.20, 0.30, 0.30, 1.0)
 COL_POOL_DK = (0.14, 0.22, 0.23, 1.0)
@@ -56,8 +67,25 @@ def build_gorge():
         for mi in range(3):
             make_box(f"Moss_{side}_{mi}", (sgn * (4.6 + 0.5 * mi), 5.5 + mi * 2.6,
                      1.0 + 0.7 * mi), (0.5, 1.2, 0.8), COL_MOSS)
-    # The falls face: back wall with the rim notch
-    make_box("Face", (0.0, 14.0, 4.5), (9.0, 1.2, 9.0), COL_ROCK_WET)
+    # The falls face: back wall with the rim notch — undercut (draft 3)
+    # by the alcove the dream stands in, behind the veil
+    make_box("Face_Upper", (0.0, 14.0, 6.75), (9.0, 1.2, 4.5), COL_ROCK_WET)
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        make_box(f"Face_Lower_{tag}", (sgn * 3.45, 14.0, 2.25), (2.1, 1.2, 4.5), COL_ROCK_WET)
+    # a cave 4.6 m deep (the first cut was 1.2 m: the camera stood with the
+    # veil at its lens and the frame was one white wash — the dark walls of
+    # the underneath have to frame the bright film)
+    make_box("Alcove_Ceiling", (0.0, 16.6, 4.75), (4.8, 4.0, 0.5), COL_ROCK_WET)
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        make_box(f"Alcove_Wall_{tag}", (sgn * 2.65, 16.6, 2.25), (0.5, 4.0, 4.5), COL_ROCK_DK)
+    make_box("Alcove_Back", (0.0, 18.3, 2.25), (5.8, 0.6, 5.0), COL_ROCK_DK)
+    make_box("Alcove_Ledge", (0.0, 16.0, 0.08), (4.8, 5.0, 0.16), COL_ROCK_WET)
+    for i, (x, z) in enumerate(((-1.6, 1.2), (1.2, 2.6), (0.2, 3.6))):
+        make_box(f"Alcove_Moss_{i}", (x, 17.98, z), (0.7, 0.04, 0.5), COL_MOSS)
+    for i, (y, z) in enumerate(((15.0, 1.0), (16.6, 2.2), (17.4, 3.2))):
+        make_box(f"Alcove_Wall_Moss_{i}", (-2.38, y, z), (0.04, 0.6, 0.4), COL_MOSS)
+    for i, (x, y, h) in enumerate(((-1.3, 13.9, 0.9), (0.4, 14.2, 1.3), (1.7, 13.7, 0.6))):
+        make_cyl(f"Alcove_Drip_{i}", (x, y, 4.5 - h / 2.0), 0.02, h, COL_FALL_CORE, segments=6)
     make_box("Rim_W", (-3.2, 13.9, 9.4), (2.6, 1.4, 1.0), COL_ROCK)
     make_box("Rim_E", (3.2, 13.9, 9.4), (2.6, 1.4, 1.0), COL_ROCK)
 
@@ -112,7 +140,7 @@ def build_pool():
     make_blob("Foam_Mound_E", (1.8, 12.35, 0.22), 1.0, COL_FOAM,
               noise=0.2, seed=13, squash=0.4)
     # Mist: translucent blobs climbing the column base + a low bank
-    make_blob("Mist_Lo", (0.0, 12.5, 1.5), 2.2, COL_MIST,
+    make_blob("Mist_Lo", (0.0, 12.2, 1.5), 2.0, COL_MIST,   # (short of the alcove's ledge camera at y 14.3)
               noise=0.22, seed=21, squash=0.6)
     make_blob("Mist_Hi", (0.4, 12.9, 3.4), 1.5, COL_MIST,
               noise=0.24, seed=22, squash=0.7)
