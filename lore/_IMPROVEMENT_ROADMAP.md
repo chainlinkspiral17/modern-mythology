@@ -3835,6 +3835,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 170: DIRECTING THE VOL 2 ROOMS OF THE SWEEP — THE BARN, THE FARMHOUSE NIGHTS, THE LIGHTHOUSE; THE LINK HOUSE'S FACES.**
+- **The crumpled barn** had its inserts (cab, jiggles, sign, lean) since the September marker
+  pass but ch1 cued only the sign's last line: the cabinet line, "His name in red paint:
+  Jiggles the Juggler" and "a carved wooden sign" are cut to now (the narrated-object report
+  listed the two uncued lines).
+- **The farmhouse** had no marker. Five inserts aimed from the lines: the spit cup and the
+  whiskey by the chair, a cat, Dad's recliner, the small television. loose_pages: `insert cup`
+  on the porch line, a cut INSIDE to the living room with `insert recliner` for "Dad is passed
+  out, inside on his recliner", back to the porch for the page held up to the window.
+  points_of_impact: a cut to the kitchen window for "She looked out the kitchen window", back
+  to the living room with `insert tv` for the barely working television, `establish` as she
+  sits with the blanket.
+- **The lighthouse** had no marker and one held wide (the look-up) for the whole trudge: a cut
+  to the gate for the flashlights, `insert padlock` for "barbed gate, padlocked" (the padlock
+  on the open leaf, Trav's keys), `establish` for Trav's pointing, and the look-up only at
+  "Rooted to that spot we were, looking up in darkness".
+- **The Link house's faces:** `marker_author --closeup` / `--closeup-b --preset <id>` for the
+  four presets the chapters use (kitchen, living, bath, bedroom lamp), so the father/son
+  table talk, the "Son?" exchange through the bathroom door and the bedtime lines get their
+  closeup pair per room (the tool's positional is the locale name; a bare `--help` run with no
+  locale walks every tscn — that was the half-hour hang).
+- Gates: marker_aim 0 misaims over 12 markers, vantage_obstruction --markers 0, shot_marker 0
+  blind cues, narrated_object 0 uncued, wrong_room 0, tscn syntax clean. One scene file
+  (history_one) was re-serialised by json.dump into 600 lines of churn — restored and the
+  three cues re-applied as text edits; cues and bg nodes go in by string replacement only.
+- **Draft N+1 (directing):** Tideline Survey has its cues and markers (the cedar is in the
+  second scene); the next rooms are the ones improved earlier in the drafting program with
+  chapters that still hold one wide — Carrie City's flat and the sister's house (vol 4),
+  Club Street's night, the Bindery, the docks at evening, Nick's house; then a montage check
+  of every room's closeup pair against its preset (the September pairs predate the floors,
+  the fireplaces and the re-aimed cameras).
+
 **2026-10-24 · pass 169: DIRECTING THE LINK HOUSE (vol 3 ch11–13).**
 - The second room of the directing program (task #20). Four chapters play in the Link house
   (ch11 the summer flu behind the bathroom door, ch12 Uncle Nick at the kitchen table and

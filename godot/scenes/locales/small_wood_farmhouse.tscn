@@ -160,6 +160,14 @@ light_color = Color(0.5, 0.54, 0.66, 1)
 light_energy = 0.10
 shadow_enabled = false
 
+; Dad's reading lamp by the recliner (pass 170: the recliner insert was black)
+[node name="Recliner_Lamp__farm_living_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 1.45, -0.4)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 2.2
+shadow_enabled = false
+omni_range = 4.0
+
 [node name="TV_Glow__farm_living_night" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 0.8, -9.1)
 light_color = Color(0.62, 0.7, 0.96, 1)
@@ -333,3 +341,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── shots (pass 170, directing vol 2 loose_pages + points_of_impact) ──────────────────────────
+; insert: the spit cup on the porch boards — "A cold ugly night to spit into a cup on the porch"
+[node name="shot_insert_cup" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.75, 1.0)
+rotation = Vector3(-0.663, 2.246, 0.0)
+metadata/fov = 38.0
+
+; insert: the bottle by the chair — "Chew, whiskey"
+[node name="shot_insert_whiskey" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 0.7, 0.75)
+rotation = Vector3(-0.563, 2.297, 0.0)
+metadata/fov = 36.0
+
+; insert: Dad's recliner — "passed out, inside on his recliner, slumped at a precarious angle"
+[node name="shot_insert_recliner" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 1.25, -2.4)
+rotation = Vector3(-0.421, 2.678, 0.0)
+metadata/fov = 44.0
+
+; insert: the small, barely working television
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 1.0, -8.6)
+rotation = Vector3(-0.184, 0.381, 0.0)
+metadata/fov = 36.0

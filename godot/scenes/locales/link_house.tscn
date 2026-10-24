@@ -471,3 +471,59 @@ metadata/fov = 38.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 3.95, -8.0)
 rotation = Vector3(-0.746, 0.983, 0.0)
 metadata/fov = 40.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__andy_house_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.321, 1.612, -1.514)
+rotation = Vector3(-0.2618, -1.0472, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__andy_house_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.663, 1.612, -2.866)
+rotation = Vector3(-0.2618, 2.0944, 0.0)
+metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__andy_house_living" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.696, 1.612, -1.784)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__andy_house_living" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.784, 1.612, -3.697)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__andy_house_bath" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.300, 4.512, -8.568)
+rotation = Vector3(-0.2618, -0.0000, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__andy_house_bath" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.994, 4.512, -10.271)
+rotation = Vector3(-0.2618, 1.8326, 0.0)
+metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__andy_house_bedroom_lamp" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.846, 4.512, -8.653)
+rotation = Vector3(-0.2618, 1.3090, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__andy_house_bedroom_lamp" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.300, 4.512, -9.003)
+rotation = Vector3(-0.2618, -1.5708, 0.0)
+metadata/fov = 45.0

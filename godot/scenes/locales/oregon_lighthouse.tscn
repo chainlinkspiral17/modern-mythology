@@ -213,6 +213,14 @@ light_energy = 1.6
 shadow_enabled = false
 omni_range = 9.0
 
+; Trav's beam on the padlock while he works the keys (pass 170)
+[node name="Flashlight_Padlock__lighthouse_gate" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.3, 11.0)
+light_color = Color(1.0, 0.94, 0.80, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 3.0
+
 [node name="Flashlight_Gate_2__lighthouse_gate" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.1, 13.6)
 light_color = Color(0.96, 0.90, 0.78, 1)
@@ -339,3 +347,10 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── shots (pass 170, directing vol 2 ch4) ──────────────────────────
+; insert: the padlock on the barbed gate — "Trav produced keys"
+[node name="shot_insert_padlock" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.3, 11.0)
+rotation = Vector3(-0.304, 0.785, 0.0)
+metadata/fov = 34.0

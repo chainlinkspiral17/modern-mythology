@@ -102,6 +102,7 @@ def build_house():
     make_chamfer_box("TV_Small", (-4.4, 9.9 - 0.30, 0.80), (0.46, 0.40, 0.40), (0.20, 0.18, 0.16, 1.0), chamfer=0.03)
     make_box("TV_Screen_Glow", (-4.4, 9.9 - 0.30 - 0.202, 0.80), (0.34, 0.004, 0.26), (0.54, 0.60, 0.76, 1.0))
     make_rot_box("TV_Rabbit_Ears", (-4.36, 9.9 - 0.30, 1.14), (0.02, 0.02, 0.30), (0.70, 0.70, 0.70, 1.0), pitch=0.5)
+    make_lamp("Recliner_Lamp", -5.7, 0.40, base_z=0.0, h=1.45)       # Dad's reading lamp (pass 170)
     make_box("Recliner_Base", (-5.0, 1.0, 0.24), (0.86, 0.90, 0.48), (0.40, 0.30, 0.24, 1.0))
     make_rot_box("Recliner_Back", (-5.0, 0.60, 0.78), (0.86, 0.16, 0.66), (0.40, 0.30, 0.24, 1.0), roll=0.30)
     make_box("Recliner_Footrest", (-5.0, 1.70, 0.34), (0.70, 0.50, 0.10), (0.40, 0.30, 0.24, 1.0))

@@ -152,6 +152,10 @@
       "text": "She pushed the edge of the blankets under and over the tiny forms tight and checked the windows for cracks. The mother and wife closed the door, leaving a sliver of light to cut into the warm space. She walked down the stairs, grabbing an afghan blanket off the banister."
     },
     {
+      "t": "bg",
+      "src": "3d:farm_kitchen_window"
+    },
+    {
       "t": "narrate",
       "text": "She put her cup in the sink of the kitchen and ran it under water. She looked out the kitchen window, past the fruit-bearing trees and saw the light from the workshop."
     },
@@ -173,12 +177,16 @@
       "text": "The workshop light held steady across the dark yard, past the black shapes of the fruit trees."
     },
     {
-      "t": "narrate",
-      "text": "She went into the living room and turned on the small, barely working television. Local reception was spotty, more radio than video. She tuned into public broadcasting, interrupted the middle of a raucous imported British sitcom."
+      "t": "bg",
+      "src": "3d:farm_living_night"
     },
     {
       "t": "narrate",
-      "text": "She sat with the blanket on her lap and slowly drifted off to sleep."
+      "text": "[shot:insert tv]She went into the living room and turned on the small, barely working television. Local reception was spotty, more radio than video. She tuned into public broadcasting, interrupted the middle of a raucous imported British sitcom."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]She sat with the blanket on her lap and slowly drifted off to sleep."
     },
     {
       "t": "narrate",

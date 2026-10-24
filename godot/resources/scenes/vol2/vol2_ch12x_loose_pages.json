@@ -41,11 +41,15 @@
     },
     {
       "t": "narrate",
-      "text": "A cold ugly night to spit into a cup on the porch. Chew, whiskey and hormonal cats circling and screeching."
+      "text": "[shot:insert cup]A cold ugly night to spit into a cup on the porch. Chew, whiskey and hormonal cats circling and screeching."
+    },
+    {
+      "t": "bg",
+      "src": "3d:farm_living_night"
     },
     {
       "t": "narrate",
-      "text": "Dad is passed out, inside on his recliner, slumped at a precarious angle. We made the hard choice between the heating bill and fuel for the pick-up."
+      "text": "[shot:insert recliner]Dad is passed out, inside on his recliner, slumped at a precarious angle. We made the hard choice between the heating bill and fuel for the pick-up."
     },
     {
       "t": "choice",
@@ -61,8 +65,12 @@
       ]
     },
     {
+      "t": "bg",
+      "src": "3d:farm_porch_night"
+    },
+    {
       "t": "narrate",
-      "text": "Held up to the window there's writing pressed through from whatever page used to sit on top of it. Directions, I think. I can make out Alsea and not much else."
+      "text": "[shot:establish]Held up to the window there's writing pressed through from whatever page used to sit on top of it. Directions, I think. I can make out Alsea and not much else."
     },
     {
       "t": "bg",

@@ -234,7 +234,7 @@
   },
   {
    "t": "narrate",
-   "text": "A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken.",
+   "text": "[shot:insert cab]A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken.",
    "voice": "assets/audio/voice/vol2_ch1_history_one/046.mp3"
   },
   {
@@ -244,7 +244,7 @@
   },
   {
    "t": "narrate",
-   "text": "His name in red paint: Jiggles the Juggler.",
+   "text": "[shot:insert jiggles]His name in red paint: Jiggles the Juggler.",
    "voice": "assets/audio/voice/vol2_ch1_history_one/048.mp3"
   },
   {
@@ -254,7 +254,7 @@
   },
   {
    "t": "narrate",
-   "text": "Half hanging from the wall as audience before him — a carved wooden sign.",
+   "text": "[shot:insert sign]Half hanging from the wall as audience before him — a carved wooden sign.",
    "voice": "assets/audio/voice/vol2_ch1_history_one/050.mp3"
   },
   {

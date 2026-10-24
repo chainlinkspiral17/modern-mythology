@@ -100,16 +100,20 @@
       "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:lighthouse_gate"
+    },
+    {
       "t": "narrate",
       "text": "We all carried large flashlights of the two-handed variety. We laughed as we trudged, clouds of vapor lit by our beams. Varieties of flora were singled out and lectured upon, my father gave lessons in coastal geological strata and my sister and I discussed movies we'd like to see in the coming new year."
     },
     {
       "t": "narrate",
-      "text": "The lighthouse was surrounded by barbed gate, padlocked and rising high. Trav produced keys and let us into the bricked foundation walkway."
+      "text": "[shot:insert padlock]The lighthouse was surrounded by barbed gate, padlocked and rising high. Trav produced keys and let us into the bricked foundation walkway."
     },
     {
       "t": "narrate",
-      "text": "He pointed out imaginary people and incidents long since past, snorting out disdain for the teenagers and tourists who'd come up to drink and fool around, oblivious to the high winds and slippery underfoot."
+      "text": "[shot:establish]He pointed out imaginary people and incidents long since past, snorting out disdain for the teenagers and tourists who'd come up to drink and fool around, oblivious to the high winds and slippery underfoot."
     },
     {
       "t": "narrate",
@@ -134,6 +138,10 @@
     {
       "t": "narrate",
       "text": "We were all getting very cold out there but the sound inside was so very unusual. It was a haunted sound, painful and beautiful, shrill and serene. The pounding of the surf was like the sound of blood through the ears, thick and occluded and so close to overwhelming, echoing all around."
+    },
+    {
+      "t": "bg",
+      "src": "3d:lighthouse_base_up"
     },
     {
       "t": "narrate",
