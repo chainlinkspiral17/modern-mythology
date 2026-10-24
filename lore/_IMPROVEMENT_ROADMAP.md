@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 172: DIRECTING THE DOCKS (vol 2 ch10 Frank / Salmon) + the vol 7 drone line.**
+- The docks-at-evening preset (pass 159) had the jetty's vol 7 markers only; the two vol 2
+  chapters on it carried no cue. Three inserts on the float: the crab pots at its root
+  ("helping the tourists catch crabs"), daddy's boat at the finger float ("cleaning the deck
+  of my daddy's boat"), the bench they rock on; Frank's chapter cuts to the pots then back to
+  the wide; Salmon's cuts to the boat, to the bench, back for "I'm pregnant", and drifts on
+  "We sat and watched the sun go down". vol 7 ch2's "the drones were nearly all in" line cuts
+  to the existing drone insert (the narrated-object report found it).
+- The montage caught the first two aims three times: the boat's camera stood in the sand slab
+  at the float's root (the shore slab runs under it — the obstruction audit's "camera INSIDE
+  Shore_Sand_W"), the pots' camera stood on the moored boat's hull with the hull between it
+  and the pots. Both cameras stand on the float now.
+- Gates: marker_aim 0 misaims over 9 markers, vantage_obstruction --markers 0, shot_marker 0
+  blind cues, narrated_object 0, wrong_room 0, tscn syntax clean.
+- **Draft N+1 (directing):** the repo-wide marker audits (obstruction over every tscn's
+  markers, aim, wrong_room) are running as this pass closes — their findings are the next
+  pass; then vol 5 by chapter order.
+
 **2026-10-24 · pass 171: DIRECTING CARRIE CITY, CLUB STREET AND NICK'S HOUSE.**
 - Three sets improved in the drafting program (passes 157–160) whose chapters still held one
   wide each; none had a `vn_shot` marker.

@@ -159,11 +159,11 @@
     },
     {
       "t": "narrate",
-      "text": "We hadn't spoken in three months. Not since Frank went away. She found me on the docks, cleaning the deck of my daddy's boat. I looked up at her and I smiled and invited her down. She slipped a little and I caught her."
+      "text": "[shot:insert boat_0]We hadn't spoken in three months. Not since Frank went away. She found me on the docks, cleaning the deck of my daddy's boat. I looked up at her and I smiled and invited her down. She slipped a little and I caught her."
     },
     {
       "t": "narrate",
-      "text": "We rocked back and forth on a bench, sitting and watching the rest of the boats come in for the evening, hearing the bells and whistles and moans of the harbor."
+      "text": "[shot:insert float_bench]We rocked back and forth on a bench, sitting and watching the rest of the boats come in for the evening, hearing the bells and whistles and moans of the harbor."
     },
     {
       "t": "choice",
@@ -180,7 +180,7 @@
     },
     {
       "t": "narrate",
-      "text": "I'm pregnant. She said. I just nodded and hugged her close. I'm going to keep the baby because it is my baby. Frank's not going to know. I nodded and watched her face. She was calm and warm to the touch. Her hair was tied down but strands hovered in the wind above her head. Marry me. She said. I love you. She said."
+      "text": "[shot:establish]I'm pregnant. She said. I just nodded and hugged her close. I'm going to keep the baby because it is my baby. Frank's not going to know. I nodded and watched her face. She was calm and warm to the touch. Her hair was tied down but strands hovered in the wind above her head. Marry me. She said. I love you. She said."
     },
     {
       "t": "narrate",
@@ -188,7 +188,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marry me. I said. I will. She said. We sat and watched the sun go down. Beneath us the salmon made their way to the river."
+      "text": "[shot:establish~]Marry me. I said. I will. She said. We sat and watched the sun go down. Beneath us the salmon made their way to the river."
     },
     {
       "t": "flag",
