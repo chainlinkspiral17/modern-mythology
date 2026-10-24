@@ -43,6 +43,17 @@ python3 godot/tools/audit/perf_gate.py --changed "$BASE" || { echo "EXIT 1"; exi
 HEAVY="$(echo "$CHANGED" | grep -Ev "$LIGHT" || true)"
 if [ -n "${FULL:-}" ] || [ -n "$HEAVY" ]; then
     [ -n "$HEAVY" ] && { echo "full suite — these can move the world:"; echo "$HEAVY" | head -20 | sed 's/^/   /'; }
+    # (2026-10-24, pass 173) a pass that moved a locale's geometry or cameras
+    # re-checks that locale's shot markers before the long suite: five frames
+    # authored for old plans had walked into furniture unnoticed.
+    LOCS="$(echo "$CHANGED" | grep -Eo 'godot/(scenes/locales/|tools/blender/locales/build_)[a-z0-9_]+\.(tscn|py)$' | sed -E 's#.*/(build_)?([a-z0-9_]+)\.(tscn|py)$#\2#' | sort -u | tr '\n' ' ')"
+    if [ -n "$LOCS" ]; then
+        echo "shot markers of the changed locale(s): $LOCS"
+        python3 godot/tools/audit/marker_aim_audit.py $LOCS 2>/dev/null | tail -1
+        python3 godot/tools/audit/marker_aim_audit.py $LOCS >/dev/null 2>&1 || { echo "   FAIL marker_aim_audit $LOCS"; exit 1; }
+        python3 godot/tools/audit/vantage_obstruction_audit.py --markers $LOCS 2>/dev/null | tail -1
+        python3 godot/tools/audit/vantage_obstruction_audit.py --markers $LOCS >/dev/null 2>&1 || { echo "   FAIL vantage_obstruction_audit --markers $LOCS"; exit 1; }
+    fi
     bash godot/tools/audit/run_all_audits.sh
     exit $?
 fi

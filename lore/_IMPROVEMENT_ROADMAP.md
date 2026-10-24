@@ -3835,6 +3835,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 174: VOL 5 BY MONTAGE — HOUSTON, NATALIE'S NIGHT, GRAUSTARK.**
+- The user's standing verdict on vol 5 ("camera and director attention not where they should
+  be") after the audits came back clean: judge by the montage. Every marker of a vol 5 room
+  rendered as its chapter sees it (`TripPaintTest --preset X --marker shot_x`), tiled, read.
+- **Houston office** (ch10 Wheel, ch11 Justice, ch20): seven frames, all read — Erica's face
+  frame against the window wall and the desk, the contract on the blotter, the monitors, the
+  phone, the framed photograph, the wide.
+- **Natalie's apartment at night** (ch12 Hanged, ch18 Moon — 62 cues between them): the two
+  face frames and the second wide read; the FOUR INSERTS WERE BLACK — the card marker stood at
+  the W window 4.5 m from the low table, the deck's and desk's frames were unlit, the door
+  insert was a black leaf at arm's length. The night preset's practicals (the scarf lamp, the
+  bedside, the rug candle at 0.45) never reached the low table or the door. Now: the card
+  insert 1.1 m off the low table where the chapter lays the cards, a night-only candle omni
+  over the table, the door insert oblique with its knob and casing under a night-only entry
+  light (she opens it to Nicola at 3 a.m.). The card and the door read; the deck on the rug
+  reads.
+- **Scoped audits**: `run_changed_audits.sh` now runs `marker_aim_audit` and
+  `vantage_obstruction_audit --markers` for the changed locales before the long suite (the
+  full suite already carried both repo-wide; the scoped path did not).
+- **Graustark** (33 markers, the vol 5 hero set): 32 read as authored — the chalk verses,
+  the candle, the Frog's smoke ring, the herbs, the letter and notebook, the paddlebox and the
+  steamship, the cottage and its gate, the sinkhole wides, the child, the crow under the beam.
+  One did not: Paul's face frame at St. Jude's lunch faced a blank church wall. It is the
+  reverse of Maya's now — across the fellowship table toward her side (the first re-aim by
+  guess stood inside a tower pier and landed in another area; the audits caught both).
+- **Draft N+1 (directing):** the same montage for vol 5's other rooms by chapter order —
+  the diner (ch0 ×4), the bungalow (ch2), D'Ambrosio's formal room (ch3–4), the riverboat
+  (ch4), the Roberts kitchen (ch6), the New Orleans office/bar/room (ch7–8), the hospice
+  (ch13), Montreal (ch14), Elicia's (ch16), the café (ch19); then vols 6–7.
+
 **2026-10-24 · pass 173: THE REPO-WIDE MARKER CHECK — five frames the later passes had broken.**
 - `vantage_obstruction_audit --markers` over every locale, `marker_aim_audit` and
   `wrong_room_audit` repo-wide after the drafting program's sixteen passes: 0 misaims, 0

@@ -323,6 +323,28 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-24 · the audits pass a black frame — a night room's inserts need the night's practicals
+
+- **Context:** pass 174, vol 5 by montage. Natalie's night (ch12 Hanged,
+  ch18 Moon, 62 cues) had passed every marker audit: aim, obstruction,
+  wrong-room. Rendered, its four inserts were black — the card, the deck,
+  the desk, the door — because the night preset's practicals (the scarf
+  lamp, the bedside, a 0.45 rug candle) never reached the low table or
+  the front door, and the card marker stood at the window 4.5 m from the
+  table it cued.
+- **Rule:** a marker is finished when it has been RENDERED under the
+  preset its chapter loads (`TripPaintTest --preset <night preset>
+  --marker shot_x`), not when the audits pass; the audits see geometry,
+  not light. A night preset carries a practical for every insert its
+  chapters cue (suffixed `__<night preset>` so the day stays as lit),
+  and an insert's camera sits 0.6–1.0 m from the object the cue names —
+  the card where the cards are laid, not across the room.
+- **Montage per room, not per pass.** Houston's seven and Graustark's
+  thirty-three read as authored; Natalie's four did not. The failures
+  cluster by room and by hour, so render a whole room's markers at once
+  and read the sheet before trusting any of them.
+
+
 ### 2026-10-24 · a set that got its finish gets its cuts — the directing program follows the drafting program
 
 - **The user: "Start directing the visual novel to match the improved
