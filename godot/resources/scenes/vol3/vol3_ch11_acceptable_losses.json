@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "My dad puts his ear to the bathroom door. I hear him breathing outside. I look down at my shoes, my untied laces, \"Dad, go away,\" I say."
+      "text": "[shot:insert door_bath]My dad puts his ear to the bathroom door. I hear him breathing outside. I look down at my shoes, my untied laces, \"Dad, go away,\" I say."
     },
     {
       "t": "narrate",
@@ -114,7 +114,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"Dad, don't worry, I won't make us late.\" After a moment, I hear him walk away. I put my head down, prop it up on my thighs, cradle it in my palms."
+      "text": "[shot:establish]\"Dad, don't worry, I won't make us late.\" After a moment, I hear him walk away. I put my head down, prop it up on my thighs, cradle it in my palms."
     },
     {
       "t": "narrate",

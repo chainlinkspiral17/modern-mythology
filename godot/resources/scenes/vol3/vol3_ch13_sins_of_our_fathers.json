@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "I rummage through my bedroom for a book, drunk and stupid. I stop looking, Smith turns and asks what is it. I shrug and say, I just know the girl I'm going to marry."
+      "text": "[shot:insert rummage_book]I rummage through my bedroom for a book, drunk and stupid. I stop looking, Smith turns and asks what is it. I shrug and say, I just know the girl I'm going to marry."
     },
     {
       "t": "narrate",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "We are married, why we do this, I don't know. Because it's a moment we fight for, tooth and nail. Children are coming, beautiful children."
+      "text": "[shot:establish]We are married, why we do this, I don't know. Because it's a moment we fight for, tooth and nail. Children are coming, beautiful children."
     },
     {
       "t": "narrate",

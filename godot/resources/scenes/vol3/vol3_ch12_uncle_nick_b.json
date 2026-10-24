@@ -81,11 +81,11 @@
     },
     {
       "t": "narrate",
-      "text": "And then she turned off the light."
+      "text": "[shot:insert lamp_bed]And then she turned off the light."
     },
     {
       "t": "narrate",
-      "text": "And then she went to sleep."
+      "text": "[shot:establish]And then she went to sleep."
     },
     {
       "t": "narrate",
@@ -315,7 +315,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tony is looking at me, across from the table. The magazine sits between us. We are way too quiet. My wife would see something wrong with this. I don't know what to do. This is a big deal, this is a scary place to be. I love my kid, I talk to him and like to think I treat him right."
+      "text": "[shot:insert magazine]Tony is looking at me, across from the table. The magazine sits between us. We are way too quiet. My wife would see something wrong with this. I don't know what to do. This is a big deal, this is a scary place to be. I love my kid, I talk to him and like to think I treat him right."
     },
     {
       "t": "narrate",
@@ -323,7 +323,7 @@
     },
     {
       "t": "narrate",
-      "text": "My kid sees my smile and we both share a big grin. I love this. This perfectly pathetic moment is the kind of shit I live for."
+      "text": "[shot:establish]My kid sees my smile and we both share a big grin. I love this. This perfectly pathetic moment is the kind of shit I live for."
     },
     {
       "t": "narrate",

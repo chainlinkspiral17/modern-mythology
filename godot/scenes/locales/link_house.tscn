@@ -440,3 +440,34 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── shots (pass 169, directing vol 3 ch11-13) ──────────────────────────
+; insert: the bathroom door from the toilet — "My dad puts his ear to the bathroom door"
+[node name="shot_insert_door_bath" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 3.95, -8.0)
+rotation = Vector3(-0.106, -2.662, 0.0)
+metadata/fov = 40.0
+
+; insert: the Playboy on the dining table — "The magazine sits between us"
+[node name="shot_insert_magazine" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55, 1.25, -1.65)
+rotation = Vector3(-0.549, -0.847, 0.0)
+metadata/fov = 36.0
+
+; insert: the living room TV — "the television showing a scary movie marathon"
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.15, -2.35)
+rotation = Vector3(-0.244, 1.107, 0.0)
+metadata/fov = 38.0
+
+; insert: the bedside lamp — "And then she turned off the light"
+[node name="shot_insert_lamp_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45, 4.25, -8.85)
+rotation = Vector3(-0.406, -0.869, 0.0)
+metadata/fov = 38.0
+
+; insert: the books pulled out onto the floor — "I rummage through my bedroom for a book"
+[node name="shot_insert_rummage_book" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 3.95, -8.0)
+rotation = Vector3(-0.746, 0.983, 0.0)
+metadata/fov = 40.0

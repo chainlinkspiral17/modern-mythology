@@ -376,12 +376,12 @@ def build_upper_wing():
     # the bath door swung 95 degrees into the bathroom on its E-jamb hinge,
     # flat to the room's east side, so the doorway (and the camera in it)
     # sees the toilet, the shower and the vanity
-    import math
-    a = math.radians(95.0)
-    hx, hy, dw = DB + 0.405, HALL_N + 0.12, 0.79
-    dx, dy = -math.cos(a), math.sin(a)
-    make_rot_box("Door_Bath", (hx + dx * dw / 2.0, hy + dy * dw / 2.0, DOOR_H / 2.0),
-                 (dw, 0.04, DOOR_H - 0.02), DOOR_WHITE, yaw=math.atan2(dy, dx))
+    # (pass 169, directing ch11: "My dad puts his ear to the bathroom door" — the
+    # door is SHUT, the narrator locked in; the bath presets' camera stands
+    # inside it, so the shut leaf costs the fixtures nothing)
+    make_box("Door_Bath", (DB, HALL_N + 0.02, DOOR_H / 2.0), (0.84, 0.04, DOOR_H - 0.02), DOOR_WHITE)
+    make_cyl("Door_Bath_Knob", (DB - 0.32, HALL_N + 0.065, 0.98), 0.028, 0.05, CHROME, axis='Y', segments=10)
+    make_box("Door_Bath_Lock", (DB - 0.32, HALL_N + 0.062, 1.06), (0.03, 0.04, 0.012), CHROME)
     make_box("Door_Bedroom", (DA - 0.40, HALL_N + 0.10 + 0.43, DOOR_H / 2.0), (0.04, 0.84, DOOR_H - 0.02), DOOR_WHITE)
     # the upstairs hall's photographs on its N wall, the switches, the outlet by Andy's bed
     for k, x in enumerate((-3.10, -2.35, 0.55, 1.30)):

@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 169: DIRECTING THE LINK HOUSE (vol 3 ch11–13).**
+- The second room of the directing program (task #20). Four chapters play in the Link house
+  (ch11 the summer flu behind the bathroom door, ch12 Uncle Nick at the kitchen table and
+  Nick asleep on the couch, ch12b the bedside lamp and the magazine between father and son,
+  ch13 the rummage for a book) through four 2D keys that bg_places already remaps to the
+  house's presets. The house had no `vn_shot` marker at all: every cue there was silent.
+- **Five inserts**, each aimed camera → target from the chapter's line: `door_bath` (the
+  shut door from the toilet — the swung-open leaf of pass 149 is a shut leaf with a knob and
+  lock now, since the narrator is locked in and the bath presets' camera stands inside it),
+  `magazine` (the Playboy on the dining table), `tv` (the scary-movie glow), `lamp_bed`,
+  `rummage_book` (the books pulled onto the floor under the shelves). Twelve cues wired across
+  the four chapters, each insert followed by `[shot:establish]` on the line that leaves the
+  object. The marker montage read on the first render for four; the door was re-aimed once
+  the leaf was shut.
+- Gates: marker_aim 0 misaims, vantage_obstruction (presets and --markers) 0, shot_marker 0
+  blind cues, narrated_object 0 uncued, wrong_room 0, prop_overlap 0, doorway clean, tscn
+  syntax clean.
+- **Draft N+1 (directing):** closeup pairs per preset for this house (`marker_author
+  --closeup --preset <id>` — the run walked every locale when given the locale name; it
+  wants the .tscn path), so the father/son dialogue at the table and the "Son?" exchange at
+  the bathroom door get their faces; the crumpled barn (the marionette, the sign), the
+  farmhouse nights (the cup, the bottle, the TV), Tideline Survey (the notebook, the cedar
+  figure), the lighthouse gate (the padlock, the beacon).
+
 **2026-10-24 · pass 168: THE PORCH SWING; THE DIRECTING PROGRAM OPENS ON THE CHAU HOUSE.**
 - The user, mid-pass: *"The porch should have a porch swing. Keep going. Start directing the
   visual novel to match the improved locations."*

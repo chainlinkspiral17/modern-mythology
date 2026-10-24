@@ -61,11 +61,11 @@
     },
     {
       "t": "narrate",
-      "text": "So she bought him a subscription to Playboy and the first issue came in the mail yesterday. The kid looked at me as he held it in his hands. That black shrink-wrapped magazine with his name printed on the outside."
+      "text": "[shot:insert magazine]So she bought him a subscription to Playboy and the first issue came in the mail yesterday. The kid looked at me as he held it in his hands. That black shrink-wrapped magazine with his name printed on the outside."
     },
     {
       "t": "narrate",
-      "text": "I didn't know until he showed it to me."
+      "text": "[shot:establish]I didn't know until he showed it to me."
     },
     {
       "t": "narrate",
@@ -304,7 +304,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nick was asleep on the couch when she came to me, the television showing a scary movie marathon. \"Nick's grandma wants him to come with us. When we move.\""
+      "text": "[shot:insert tv~]Nick was asleep on the couch when she came to me, the television showing a scary movie marathon. \"Nick's grandma wants him to come with us. When we move.\""
     },
     {
       "t": "narrate",
@@ -320,7 +320,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mom winced and pulled my shoulder into a hug. I forget what she said. It was probably something important but whatever the reason, I can't remember."
+      "text": "[shot:establish]Mom winced and pulled my shoulder into a hug. I forget what she said. It was probably something important but whatever the reason, I can't remember."
     },
     {
       "t": "narrate",
