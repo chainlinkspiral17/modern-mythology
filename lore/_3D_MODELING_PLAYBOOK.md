@@ -399,6 +399,29 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-24 · "luxury" is finish, not volume — and the kit floor's seam grid reads as tile
+
+**Context:** The Chau house (vol 3). The user's note "tall ceilings and wide
+tall windows, it's a luxury home" was met in pass 146 with H 3.9 and big
+glass. The pass-164 sheet showed a warehouse: a 22 x 14 m box, one couch, a
+flat ceiling, flat walls, an orange floor.
+
+**What happened:** `make_floor` lays plank seams every 1 m and tile seams
+every 1 m — a 1 m grid, which at room scale reads as large tile, and under
+warm light the oak palette read as terracotta. Volume without finish reads
+as an empty commercial space, not an expensive house.
+
+**Rule:** a luxury or new-build interior needs, in this order: a floor
+pattern at the right scale (planks at 0.16 m with staggered ends, laid as
+`_Stock_` seams over a plain slab — not the kit's 1 m grid), the ceiling
+articulated (beams, coffers, recessed cans, a chandelier over the one
+table), window treatment (drapes — `make_curtains` — not bare casings), a
+hearth or one architectural focal piece, and art on every long wall. Only
+then does the furniture count. Judge it on the sheet from the room's longest
+sightline; a sofa alone in the frame means the finish is missing, not that
+the room needs more furniture.
+
+
 ### 2026-10-23 · a sweep sheet shows the repo's GLB, not the builder; and sky planes are walls (pass 156)
 
 - **What happened:** the lake house looked like a roofless box with a grey slab behind it. The

@@ -45,6 +45,18 @@ Vol 4's "the wasted sentiment" is Steven's room too (the user, 2026-10-18:
 "Steven Chau lives at the Chau house, yes"): the armchair he fell asleep
 twisted in, `chau_steven_room`.
 
+PASS 164 (2026-10-24) — THE LUXURY FINISH. The pass-146 shell rendered as
+a bare box: a 22 x 14 great room with one couch, a 1 m seam grid that read
+as tile, flat walls, a flat ceiling. Now: wide-plank white oak (seams at
+0.16 m with staggered ends) under the great room, hall and bedrooms;
+coffered beams and recessed cans over the living room; a stone fireplace
+with a mantel and chimney breast on the living room's W wall; a six-chair
+dining table under a chandelier at the tall front window; drapes on the
+living room's N windows and the front one; large canvases on the N and E
+walls; an entry mirror over a console; Steven's armchair as a real chair,
+a bookcase of games, a rug and a poster; a soaking tub and a tile wainscot
+in the bath. "Six month old eight hundred thousand dollar home."
+
 DRAFT 2 targets: Chris's room and Mrs. Chau's room past their doors, the
 garage ("the open garage door"), the sheet's breathing as a per-frame
 wobble (it is still), the steam as a fog pass, the kitchen's mess as more
@@ -55,15 +67,18 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe,
                              make_taper_cyl, join_stock, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding, make_curtains
 from _props.views import make_view
-from _props.furniture import make_bed, make_chair, make_lamp, make_sofa, make_pendant
+from _props.furniture import make_bed, make_chair, make_lamp, make_sofa, make_pendant, make_table
 from _props.detail import make_wall_outlet, make_light_switch
 
 X0, X1, D, H, T = -10.0, 12.0, 14.0, 3.9, 0.20   # pass 146 (the user: "tall ceilings and wide tall windows, it's a luxury home"): was 2.9
 WALL = (0.90, 0.88, 0.84, 1.0); BASE = (0.70, 0.68, 0.64, 1.0)
 PAL = {"wall": WALL, "baseboard": BASE}
-OAK_FLOOR = (0.66, 0.52, 0.36, 1.0); OAK_SEAM = (0.56, 0.44, 0.30, 1.0)
+OAK_FLOOR = (0.64, 0.55, 0.43, 1.0); OAK_SEAM = (0.52, 0.44, 0.34, 1.0)   # pass 164: white oak, cooler than the orange it rendered
+STONE = (0.58, 0.56, 0.52, 1.0); STONE_LT = (0.68, 0.66, 0.62, 1.0)
+DRAPE = (0.46, 0.50, 0.56, 1.0)
+PAINT = (0.92, 0.91, 0.88, 1.0)
 TILE = (0.86, 0.84, 0.80, 1.0); TILE_SEAM = (0.74, 0.72, 0.68, 1.0)
 DOOR = (0.92, 0.90, 0.86, 1.0)
 LEATHER = (0.36, 0.24, 0.18, 1.0); SOFA = (0.80, 0.78, 0.72, 1.0)
@@ -100,7 +115,9 @@ def window(name, along, line, c, z=1.5, w=1.6, h=1.3, sign=1):
 
 def build_shell():
     cx, cy = (X0 + X1) / 2.0, D / 2.0
-    make_floor("Chau_Floor", (cx, cy, 0.0), size_x=X1 - X0 + 0.4, size_y=D + 0.4, palette={"vinyl": OAK_FLOOR, "seam": OAK_SEAM})
+    # (pass 164: the kit floor's 1 m seam grid read as tile — a plain slab, the
+    # planks laid over it by build_luxury_finish)
+    make_box("Chau_Floor_Slab", (cx, cy, -0.05), (X1 - X0 + 0.4, D + 0.4, 0.10), OAK_FLOOR)
     make_box("Chau_Ceil", (cx, cy, H + 0.04), (X1 - X0 + 0.4, D + 0.4, 0.08), (0.94, 0.94, 0.92, 1.0))
     # outside walls: the front door on the S, windows round
     make_wall_with_openings("Chau_Wall_S", (cx, 0.0, 0), length=X1 - X0 + 0.4, height=H, thickness=T, axis='X', palette=PAL,
@@ -260,7 +277,7 @@ def build_hall_rooms():
     make_box("Shower_Head_Arm", (X1 - 0.18, 3.6 - 0.07 - 0.55, 1.95), (0.16, 0.025, 0.025), (0.74, 0.74, 0.76, 1.0))
     make_cyl("Shower_Head", (X1 - 0.27, 3.6 - 0.07 - 0.55, 1.93), 0.06, 0.03, (0.74, 0.74, 0.76, 1.0), segments=10)
     for k in range(4):
-        make_chamfer_box(f"Towel_Pile_{k}", (9.0 + (k % 2) * 0.14, 0.8 + k * 0.08, 0.04 + k * 0.06), (0.56, 0.40, 0.07),
+        make_chamfer_box(f"Towel_Pile_{k}", (10.9 + (k % 2) * 0.14, 1.0 + k * 0.08, 0.04 + k * 0.06), (0.56, 0.40, 0.07),
                          ((0.94, 0.94, 0.92, 1.0), (0.70, 0.80, 0.86, 1.0))[k % 2], chamfer=0.02)
     make_box("Toilet_Bowl", (8.2, 3.6 - 0.07 - 0.36, 0.20), (0.38, 0.50, 0.40), (0.96, 0.96, 0.96, 1.0))
     make_box("Toilet_Tank", (8.2, 3.6 - 0.07 - 0.10, 0.58), (0.44, 0.20, 0.36), (0.96, 0.96, 0.96, 1.0))
@@ -282,12 +299,11 @@ def build_hall_rooms():
     # asleep like he did, twisted in a tight spot" — a small armchair in the
     # SE corner by the blinds, the blanket twisted in it that morning
     ax, ay = X1 - 0.07 - 0.45, 3.6 + 0.07 + 0.45
-    make_box("Steven_Armchair_Base", (ax, ay, 0.22), (0.80, 0.80, 0.44), (0.30, 0.34, 0.40, 1.0))
-    make_box("Steven_Armchair_Back", (ax + 0.33, ay, 0.70), (0.14, 0.80, 0.56), (0.30, 0.34, 0.40, 1.0))
-    for s in (-1, 1):
-        make_box(f"Steven_Armchair_Arm_{s:+d}", (ax - 0.06, ay + s * 0.34, 0.54), (0.68, 0.12, 0.20), (0.30, 0.34, 0.40, 1.0))
+    # (pass 164: three boxes → the kit's armchair, its back to the E wall)
+    make_sofa("Steven_Armchair", ax, ay, back="+X", w=0.88, d=0.86, seats=1, color=(0.30, 0.34, 0.40, 1.0),
+              cushion_col=(0.36, 0.40, 0.46, 1.0), leg_col=(0.24, 0.20, 0.16, 1.0), arm="track", seat_h=0.42)
     make_rot_box("Steven_Blanket_Twisted__chau_steven_room", (ax - 0.05, ay, 0.47), (0.56, 0.60, 0.06), (0.60, 0.30, 0.28, 1.0), yaw=0.5)
-    make_box("Steven_Controller_On_Arm__chau_steven_room", (ax - 0.10, ay + 0.34, 0.655), (0.14, 0.06, 0.03), (0.14, 0.14, 0.16, 1.0))
+    make_box("Steven_Controller_On_Arm__chau_steven_room", (ax - 0.05, ay + 0.05, 0.515), (0.14, 0.06, 0.03), (0.14, 0.14, 0.16, 1.0))   # on the blanket (pass 164)
     # Mrs. Chau's room (y 9..14): the bed, the dresser and its mirror
     make_bed("Mom_Bed", X1 - 0.10 - 1.1, 12.4, head="+X", w=1.60, d=2.1, blanket_col=(0.80, 0.74, 0.66, 1.0))
     make_box("Mom_Dresser", (HALL_X1 + 0.07 + 0.26, 12.0, 0.42), (0.50, 1.20, 0.84), (0.52, 0.40, 0.30, 1.0))
@@ -344,6 +360,104 @@ def build_game_room():
         a = k * 0.70
         make_rot_box(f"Fern_Frond_{k}", (X0 + 0.45 + math.cos(a) * 0.22, 6.45 + math.sin(a) * 0.22, 0.72), (0.06, 0.16, 0.60),
                      (0.26, 0.48, 0.22, 1.0), yaw=a, roll=0.5)
+
+
+def build_luxury_finish():
+    """Pass 164: what makes the shell an eight-hundred-thousand-dollar
+    house — floors, ceiling, fireplace, dining, drapes, art, the bath's
+    tub. Every piece is placed clear of what the text put here."""
+    # wide-plank white oak: long seams every 0.16 m (planks run E-W), end
+    # seams staggered. Laid where there is no tile or carpet: the entry and
+    # hall side (y 0..3.6, x -4..7.6), the middle band (y 3.6..6, x -4..12),
+    # the living room, Steven's and Mrs. Chau's rooms (y 6..14, x -4..12).
+    bands = ((0.0, 3.6, -4.0, 7.6), (3.6, 6.0, -4.0, 12.0), (6.0, 14.0, -4.0, 12.0))
+    k = 0
+    for (y0, y1, x0, x1) in bands:
+        n = int((y1 - y0) / 0.16)
+        for i in range(n):
+            y = y0 + 0.08 + i * 0.16
+            make_box(f"_Stock_Plank_Seam_{k}", ((x0 + x1) / 2.0, y, 0.0025), (x1 - x0, 0.012, 0.001), OAK_SEAM)
+            # two end seams per row, staggered by row
+            for j in range(2):
+                ex = x0 + 1.1 + ((i * 0.7 + j * 2.9) % (x1 - x0 - 2.2))
+                make_box(f"_Stock_Plank_End_{k}_{j}", (ex, y - 0.08, 0.0025), (0.012, 0.15, 0.001), OAK_SEAM)
+            k += 1
+    # the living room ceiling: three coffered beams E-W, recessed cans between
+    for i, y in enumerate((8.0, 10.0, 12.0)):
+        make_box(f"Ceiling_Beam_{i}", (1.1, y, H - 0.14), (9.3, 0.24, 0.28), PAINT)   # x -3.55..5.75: short of the chimney breast and the E crown
+    for i, (x, y) in enumerate(((-1.5, 9.0), (1.0, 9.0), (3.5, 9.0), (-1.5, 11.0), (1.0, 11.0), (3.5, 11.0), (-2.0, 3.6), (0.0, 4.8))):
+        make_cyl(f"Recessed_Can_{i}", (x, y, H - 0.004), 0.07, 0.008, (0.98, 0.96, 0.90, 1.0), segments=12)
+    # the fireplace on the living room's W wall (the game-room wall, face x -3.93)
+    fx, fy = -3.93, 12.0
+    make_box("Fireplace_Surround", (fx + 0.15, fy, 0.70), (0.30, 2.0, 1.40), STONE)
+    make_box("Fireplace_Firebox", (fx + 0.305, fy, 0.55), (0.02, 0.90, 0.80), (0.08, 0.07, 0.07, 1.0))
+    make_box("Fireplace_Mantel", (fx + 0.18, fy, 1.44), (0.36, 2.2, 0.08), STONE_LT)
+    make_box("Fireplace_Breast", (fx + 0.13, fy, (1.48 + H) / 2.0), (0.26, 2.0, H - 1.48), STONE_LT)
+    make_box("Fireplace_Hearth", (fx + 0.60, fy, 0.02), (0.60, 2.2, 0.04), STONE)   # x -3.63..-3.03, in front of the surround
+    for i, (dy, h, r, col) in enumerate(((-0.6, 0.26, 0.04, (0.30, 0.34, 0.30, 1.0)), (0.0, 0.18, 0.05, (0.86, 0.82, 0.74, 1.0)),
+                                         (0.55, 0.32, 0.05, (0.60, 0.36, 0.26, 1.0)))):
+        make_cyl(f"Mantel_Object_{i}", (fx + 0.31, fy + dy, 1.48 + h / 2.0), r, h, col, segments=10)   # on the mantel's front half, clear of the breast
+    # the dining set at the tall front window: six chairs, a chandelier
+    tx, ty = 2.4, 2.6
+    make_table("Dining_Table", tx, ty, w=2.2, d=1.0, h=0.76, wood=(0.34, 0.26, 0.20, 1.0))
+    for i, x in enumerate((tx - 0.7, tx, tx + 0.7)):
+        make_chair(f"Dining_Chair_S_{i}", x, ty - 0.80, yaw=0.0, wood=(0.34, 0.26, 0.20, 1.0), seat_col=(0.72, 0.70, 0.64, 1.0))
+        make_chair(f"Dining_Chair_N_{i}", x, ty + 0.80, yaw=math.pi, wood=(0.34, 0.26, 0.20, 1.0), seat_col=(0.72, 0.70, 0.64, 1.0))
+    make_pendant("Dining_Chandelier", tx, ty, bulb_z=2.45, ceil_z=H, shade_col=(0.92, 0.90, 0.84, 1.0), shade_r=0.34)
+    make_cyl("Dining_Bowl", (tx, ty, 0.78), 0.16, 0.05, (0.92, 0.92, 0.90, 1.0), segments=14)
+    # drapes: the living room's two N windows and the big front window
+    make_curtains("Drape_N1", (-2.3, D - T / 2.0, 1.85), width=2.6, height=2.8, axis='X', room_dir=-1, color=DRAPE)
+    make_curtains("Drape_N2", (4.5, D - T / 2.0, 1.85), width=2.2, height=2.8, axis='X', room_dir=-1, color=DRAPE)
+    make_curtains("Drape_Front", (2.4, T / 2.0, 1.85), width=4.4, height=2.8, axis='X', room_dir=+1, color=DRAPE)
+    # art: two tall canvases over the surround towers on the N wall, one long
+    # one on the E (hall) wall, abstract colour fields in dark frames
+    def canvas(prefix, center, size, along, fields):
+        cx_, cy_, cz_ = center
+        w, h = size
+        if along == 'X':
+            make_box(f"{prefix}_Frame", (cx_, cy_, cz_), (w + 0.08, 0.04, h + 0.08), (0.14, 0.12, 0.11, 1.0))
+            make_box(f"{prefix}_Canvas", (cx_, cy_ - 0.025, cz_), (w, 0.01, h), (0.90, 0.88, 0.84, 1.0))
+            for i, (fx_, fz_, fw_, fh_, col) in enumerate(fields):
+                make_box(f"{prefix}_Field_{i}", (cx_ + fx_, cy_ - 0.032, cz_ + fz_), (fw_, 0.004, fh_), col)
+        else:
+            make_box(f"{prefix}_Frame", (cx_, cy_, cz_), (0.04, w + 0.08, h + 0.08), (0.14, 0.12, 0.11, 1.0))
+            make_box(f"{prefix}_Canvas", (cx_ - 0.025, cy_, cz_), (0.01, w, h), (0.90, 0.88, 0.84, 1.0))
+            for i, (fx_, fz_, fw_, fh_, col) in enumerate(fields):
+                make_box(f"{prefix}_Field_{i}", (cx_ - 0.032, cy_ + fx_, cz_ + fz_), (0.004, fw_, fh_), col)
+    canvas("Art_N_W", (-0.3, D - T / 2.0 - 0.02, 2.5), (0.8, 1.3), 'X',
+           ((0.0, 0.25, 0.7, 0.5, (0.20, 0.28, 0.44, 1.0)), (-0.1, -0.3, 0.5, 0.4, (0.70, 0.42, 0.26, 1.0))))
+    canvas("Art_N_E", (2.6, D - T / 2.0 - 0.02, 2.5), (0.9, 1.3), 'X',
+           ((0.0, 0.1, 0.7, 0.9, (0.26, 0.30, 0.28, 1.0)), (0.15, -0.4, 0.3, 0.2, (0.86, 0.78, 0.40, 1.0))))
+    canvas("Art_E", (HALL_X0 - 0.07 - 0.02, 10.5, 2.1), (2.0, 1.2), 'Y',
+           ((0.0, 0.0, 1.8, 0.5, (0.60, 0.62, 0.66, 1.0)), (-0.5, 0.0, 0.5, 1.0, (0.24, 0.20, 0.18, 1.0))))
+    # the entry: a mirror over a console between the door and the window
+    make_table("Entry_Console", -0.6, T / 2.0 + 0.20, w=1.0, d=0.34, h=0.82, wood=(0.26, 0.20, 0.16, 1.0))
+    make_box("Entry_Mirror_Frame", (-0.6, T / 2.0 + 0.02, 1.80), (0.84, 0.04, 1.30), (0.70, 0.62, 0.40, 1.0))
+    make_box("Entry_Mirror", (-0.6, T / 2.0 + 0.045, 1.80), (0.74, 0.01, 1.20), (0.72, 0.78, 0.82, 1.0))
+    make_lathe("Entry_Vase", (-0.6, T / 2.0 + 0.20, 0.818), [(0.0, 0.0), (0.07, 0.0), (0.09, 0.14), (0.04, 0.26), (0.05, 0.30), (0.0, 0.30)],
+               (0.30, 0.34, 0.40, 1.0), segments=12)
+    # Steven's room: a rug, a bookcase of games on the N wall, a poster by the door
+    make_box("Steven_Rug", (8.8, 6.9, 0.006), (1.4, 1.2, 0.012), (0.34, 0.30, 0.40, 1.0))
+    bcx, bcy = 9.2, 9.0 - 0.07 - 0.17
+    dark = (0.26, 0.26, 0.28, 1.0)
+    make_box("Steven_Bookcase_Back", (bcx, bcy + 0.155, 0.90), (0.90, 0.03, 1.80), dark)
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        make_box(f"Steven_Bookcase_Side_{tag}", (bcx + sgn * 0.435, bcy, 0.90), (0.03, 0.34, 1.80), dark)
+    make_box("Steven_Bookcase_Top", (bcx, bcy, 1.785), (0.90, 0.34, 0.03), dark)
+    for i in range(4):
+        make_box(f"Steven_Shelf_{i}", (bcx, bcy, 0.40 + i * 0.44), (0.84, 0.31, 0.02), dark)
+        for j in range(5):
+            make_box(f"_Stock_Game_Box_{i}_{j}", (bcx - 0.34 + j * 0.17, bcy - 0.06, 0.41 + i * 0.44 + 0.10),
+                     (0.14, 0.10, 0.20), ((0.20, 0.30, 0.60, 1.0), (0.70, 0.20, 0.20, 1.0), (0.90, 0.86, 0.70, 1.0))[(i + j) % 3])
+    make_box("Steven_Poster", (HALL_X1 + 0.07 + 0.012, 8.0, 1.80), (0.02, 0.60, 0.85), (0.16, 0.18, 0.26, 1.0))
+    make_box("Steven_Poster_Art", (HALL_X1 + 0.07 + 0.024, 8.0, 1.85), (0.004, 0.44, 0.50), (0.80, 0.50, 0.26, 1.0))
+    # the bath: a soaking tub along the S wall, a tile wainscot on the W and S
+    tbx, tby = 9.25, 0.58
+    make_chamfer_box("Bath_Tub", (tbx, tby, 0.29), (1.70, 0.82, 0.58), (0.96, 0.96, 0.95, 1.0), chamfer=0.06)
+    make_box("Bath_Tub_Water", (tbx, tby, 0.57), (1.46, 0.60, 0.02), (0.80, 0.86, 0.88, 1.0))
+    make_cyl("Bath_Tub_Faucet", (tbx + 0.70, tby, 0.72), 0.02, 0.28, (0.74, 0.74, 0.76, 1.0), segments=8)
+    make_box("Bath_Wainscot_W", (HALL_X1 + 0.07 + 0.015, 1.8, 0.60), (0.02, 3.4, 1.20), (0.78, 0.80, 0.82, 1.0))
+    make_box("Bath_Wainscot_S", (9.78, 0.11, 0.60), (4.22, 0.02, 1.20), (0.78, 0.80, 0.82, 1.0))
 
 
 # ── AMANDA'S (x 40..56) ───────────────────────────────────────────────
@@ -421,6 +535,7 @@ def main():
     build_living()
     build_hall_rooms()
     build_game_room()
+    build_luxury_finish()
     build_amanda()
     try:
         join_stock()

@@ -3835,6 +3835,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 164: THE CHAU HOUSE IS AN EIGHT-HUNDRED-THOUSAND-DOLLAR HOUSE.**
+- The first open N+1 item after the sweep's circuit: the user's canon note (pass 146, "tall
+  ceilings and wide tall windows, it's a luxury home") had been met with height and glass only.
+  The sheet showed a 22 x 14 m box: one couch adrift in the great room, the kit floor's 1 m seam
+  grid reading as orange tile, flat walls, a flat ceiling, a bare bath. Draft 3, the luxury finish:
+  - **floors** — wide-plank white oak (a plain slab, seams every 0.16 m with staggered ends,
+    laid over the great room, hall and bedrooms; the kitchen and bath keep their tile), the
+    palette cooled from the orange it rendered;
+  - **ceiling** — three coffered beams over the living room, eight recessed cans;
+  - **fireplace** — a stone surround, mantel with three objects, chimney breast to the ceiling and
+    a hearth on the living room's W wall;
+  - **dining** — a six-chair table under a chandelier at the tall front window, a bowl on it;
+  - **drapes** — on both living-room N windows and the front window (make_curtains);
+  - **art** — two tall canvases over the surround towers, a long one on the hall wall, an entry
+    mirror over a console with a vase;
+  - **Steven's room** — the three-box armchair is the kit's chair (the controller now sits on the
+    twisted blanket), a rug, a hollow bookcase of game boxes, a poster by his door;
+  - **the bath** — a soaking tub along the S wall (the towel pile moved beside the vanity), a
+    tile wainscot on the W and S walls.
+  A chandelier omni for the three daytime great-room presets.
+- Gates: prop_overlap 0 (the mantel objects first stood half inside the chimney breast),
+  support 0 (the vase, and the controller once its arm was gone), buried_decor, window_backing,
+  doorway, preset_vantage, vantage_obstruction, orphan_practical, blender_dryrun,
+  furniture_grammar, tscn_syntax clean; perf within cap.
+- **Draft N+1 targets:** chau_living — the camera should see the fireplace (it looks away from the
+  W wall; add a preset from the hall end looking W, or turn this one); the great room's walls
+  still flat — a wainscot or a two-tone paint line at 1.1 m, and the crown as a two-step profile;
+  the kitchen's luxury (a range hood, a pot rack, stone counters, a pendant row over the island);
+  chau_game_room — a proper bar with stools behind the liquor cabinet, a sconce pair; Amanda's
+  half untouched since draft 1 (the hot tub's deck, a fence, string lights); Chris's and Mrs.
+  Chau's rooms past their doors; the garage.
+
 **2026-10-24 · pass 163: THE SWEEP'S LAST TIER — UNDER THE BEAT OF THE CASCADING WALL.**
 - The last seven untouched presets rebuilt and rendered (the Caldwell kitchen at night, Graciela's
   bedroom, the Graustark post office with its cracked line, Miller's garage, the radio studio, the

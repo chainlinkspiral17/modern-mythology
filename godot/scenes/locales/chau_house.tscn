@@ -207,6 +207,14 @@ light_energy = 0.6
 shadow_enabled = false
 omni_range = 4.0
 
+; the dining chandelier at the tall front window (pass 164)
+[node name="Dining_Chandelier__chau_hall_noon__chau_entry_morning__chau_living" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 2.4, -2.6)
+light_color = Color(1.0, 0.92, 0.78, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 5.5
+
 [node name="Living_TV_Glow__chau_hall_noon__chau_entry_morning" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 1.45, -13.5)
 light_color = Color(0.6, 0.7, 1.0, 1)
