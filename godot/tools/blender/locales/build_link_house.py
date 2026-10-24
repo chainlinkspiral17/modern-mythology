@@ -970,16 +970,18 @@ def build_grounds():
     make_box("Porch_Swing_Seat", (sx, sy, 0.50), (1.60, 0.56, 0.05), SWING)
     for k in range(4):
         make_box(f"Porch_Swing_Stock_Slat_{k}", (sx, sy - 0.20 + k * 0.13, 0.5255), (1.56, 0.012, 0.001), (0.30, 0.22, 0.16, 1.0))
-    make_rot_box("Porch_Swing_Back", (sx, sy - 0.30, 0.78), (1.60, 0.04, 0.52), SWING, roll=0.18)
+    # (the user, 2026-10-24: "Porch swing facing the wrong way" — it faces the
+    # pasture now: the back on the house side (+y), the arm posts at the front)
+    make_rot_box("Porch_Swing_Back", (sx, sy + 0.30, 0.78), (1.60, 0.04, 0.52), SWING, roll=-0.18)
     for k in range(5):
-        make_rot_box(f"Porch_Swing_Stock_Back_Slat_{k}", (sx - 0.60 + k * 0.30, sy - 0.33, 0.78), (0.06, 0.012, 0.50), (0.30, 0.22, 0.16, 1.0), roll=0.18)
+        make_rot_box(f"Porch_Swing_Stock_Back_Slat_{k}", (sx - 0.60 + k * 0.30, sy + 0.33, 0.78), (0.06, 0.012, 0.50), (0.30, 0.22, 0.16, 1.0), roll=-0.18)
     for s in (-1, 1):
-        make_box(f"Porch_Swing_Arm_{s:+d}", (sx + s * 0.77, sy + 0.02, 0.76), (0.06, 0.52, 0.05), SWING)
-        make_box(f"Porch_Swing_Arm_Post_{s:+d}", (sx + s * 0.77, sy + 0.24, 0.63), (0.05, 0.05, 0.22), SWING)
-        for yy in (sy - 0.20, sy + 0.24):
+        make_box(f"Porch_Swing_Arm_{s:+d}", (sx + s * 0.77, sy - 0.02, 0.76), (0.06, 0.52, 0.05), SWING)
+        make_box(f"Porch_Swing_Arm_Post_{s:+d}", (sx + s * 0.77, sy - 0.24, 0.63), (0.05, 0.05, 0.22), SWING)
+        for yy in (sy + 0.20, sy - 0.24):
             top = roof_under(yy)
             make_box(f"Porch_Swing_Chain_{s:+d}_{yy:.2f}", (sx + s * 0.77, yy, (0.785 + top) / 2.0), (0.012, 0.012, top - 0.785), CHAIN)
-    make_chamfer_box("Porch_Swing_Cushion", (sx + 0.30, sy + 0.02, 0.56), (0.42, 0.42, 0.07), (0.62, 0.40, 0.34, 1.0), chamfer=0.02)
+    make_chamfer_box("Porch_Swing_Cushion", (sx + 0.30, sy - 0.02, 0.56), (0.42, 0.42, 0.07), (0.62, 0.40, 0.34, 1.0), chamfer=0.02)
     for k, x in enumerate((0.9, 2.9)):
         make_chair(f"Porch_Rocker_{k}", x, py0 + 0.95, yaw=math.pi + 0.15 * (1 - 2 * k), wood=(0.40, 0.30, 0.22, 1.0))
         for s in (-1, 1):
