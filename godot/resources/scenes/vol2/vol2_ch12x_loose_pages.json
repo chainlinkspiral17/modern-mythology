@@ -56,11 +56,11 @@
       "opts": [
         {
           "text": "turn the page over",
-          "goto": 12
+          "goto": 14
         },
         {
           "text": "hold it up to the light first",
-          "goto": 11
+          "goto": 13
         }
       ]
     },

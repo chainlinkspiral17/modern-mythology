@@ -216,11 +216,11 @@
       "opts": [
         {
           "text": "stay up with him",
-          "goto": 39
+          "goto": 40
         },
         {
           "text": "let the night go",
-          "goto": 40
+          "goto": 41
         }
       ]
     },

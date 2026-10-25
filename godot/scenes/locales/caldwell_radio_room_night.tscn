@@ -362,6 +362,6 @@ metadata/fov = 52.0
 
 ; insert (2026-10-10, ch2 Maya's bedroom): "Her grandmother's hand on hers" — the edge of the bed, in the dark
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.450, 1.300, -0.550)
-rotation = Vector3(-0.2722, -1.0517, 0.0)
-metadata/fov = 38.0
+position = Vector3(0.250, 1.300, -2.300)
+rotation = Vector3(-0.5853, -0.7509, 0.0)
+metadata/fov = 42.0

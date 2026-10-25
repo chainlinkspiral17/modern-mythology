@@ -92,7 +92,8 @@ def audit(loc, boxes):
         return out
     fc, fh = room
     inside = [(n, c, h) for n, c, h in boxes if abs(c[0] - fc[0]) < fh[0] + 0.3 and abs(c[1] - fc[1]) < fh[1] + 0.3]
-    walls = [(n, c, h) for n, c, h in inside if WALL.search(n) and h[2] > 0.8 and min(h[0], h[1]) < 0.3 and "Base" not in n]
+    walls = [(n, c, h) for n, c, h in inside if WALL.search(n) and (h[2] > 0.8 or "Spandrel" in n)   # the wall under a window counts (2026-10-25)
+             and min(h[0], h[1]) < 0.3 and "Base" not in n]
     # group multi-part pieces by their stem
     pieces = {}
     for n, c, h in inside:

@@ -330,9 +330,9 @@ shadow_enabled = false
 omni_range = 3.5
 
 [node name="shot_insert_paperback" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.900, 0.950, -4.300)
-rotation = Vector3(-0.7101, -0.6528, 0.0)
-metadata/fov = 42.0
+position = Vector3(3.250, 0.550, -4.650)
+rotation = Vector3(-0.5352, 0.9505, 0.0)
+metadata/fov = 36.0
 
 [node name="shot_insert_horchata" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.250, 1.250, -2.100)

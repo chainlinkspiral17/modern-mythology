@@ -344,7 +344,8 @@ The user: "audit taking over an hour for simple fixes." Before a commit run
 bash godot/tools/audit/run_changed_audits.sh
 ```
 
-It reads what changed against `origin/claude/3d-locales-clean` (plus the
+It reads what changed against `origin/claude/mythology-game-fiction-ji1t2g` (the
+working branch; was `3d-locales-clean`, 78 rooms stale by 2026-10-25) (plus the
 working tree). Tools, the Hero Studio roster, portrait / hero-art runtime,
 Drive scripts and docs get their own checks in seconds (py compile, JSON,
 gdparse + gdinfer_check, `bash -n`, .tscn syntax, the roster loader).

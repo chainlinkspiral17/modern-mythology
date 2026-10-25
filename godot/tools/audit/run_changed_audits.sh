@@ -14,12 +14,14 @@
 #     Background3D / the director, audio, the audits themselves) → runs the
 #     full run_all_audits.sh, unchanged.
 #
-#   bash godot/tools/audit/run_changed_audits.sh            # vs origin/claude/3d-locales-clean
+#   bash godot/tools/audit/run_changed_audits.sh            # vs origin/claude/mythology-game-fiction-ji1t2g
+#   (2026-10-25: was origin/claude/3d-locales-clean — 78 rooms behind the unified branch,
+#    so the perf gate probed the whole world for a two-builder pass)
 #   bash godot/tools/audit/run_changed_audits.sh <base>     # vs another ref
 #   FULL=1 bash godot/tools/audit/run_changed_audits.sh     # always the whole suite
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/../../.."
-BASE="${1:-origin/claude/3d-locales-clean}"
+BASE="${1:-origin/claude/mythology-game-fiction-ji1t2g}"
 
 # Files no audit in run_all_audits.sh reads to judge the world's geometry,
 # cameras, story wiring or audio: tools, the portrait + hero-art runtime,

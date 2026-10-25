@@ -951,11 +951,14 @@ def main():
     out_path = os.path.normpath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/roberts_kitchen.glb"))
+    # the TV corner stands against the foyer partition, which stays put: build
+    # it OUTSIDE the zones (2026-10-25 — its cabinet's centre at x -1.62 fell
+    # 2 cm inside the living-room region and rode 1.5 m west off its wall)
+    build_living_room_tv_corner()
     with zoned(ZONES):
         build_kitchen_island()
         build_north_appliances()
         build_kitchen_table_chairs()
-        build_living_room_tv_corner()
         build_decor()
         build_ceiling_infra()
         build_hero_props()

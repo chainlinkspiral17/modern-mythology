@@ -290,11 +290,11 @@
       "opts": [
         {
           "text": "look at the drawings on the walls",
-          "goto": 67
+          "goto": 70
         },
         {
           "text": "wait for Nick",
-          "goto": 68
+          "goto": 71
         }
       ]
     },

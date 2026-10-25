@@ -171,7 +171,9 @@ def build_front():
         _lane_light(f"Checkout_{k}_Lane_Light", cx + 0.40, CHECK_Y - 1.45, k + 1)   # at the lane's entry, off the counter
     # THE FIVE on lane 1's belt; DIEGO'S BACKPACK in the cubby behind lane 1
     cx = CHECK_XS[0]
-    make_box("Five_Dollar_Bill", (cx - 0.05, CHECK_Y - 0.40, 0.90 + 0.032 + 0.0008), (0.156, 0.066, 0.0015), (0.62, 0.68, 0.56, 1.0))
+    # on the belt's ribs (2026-10-24: it sat at 0.933, 3 cm INSIDE the 0.96 top
+    # make_counter returns — the insert montage showed a bare belt)
+    make_box("Five_Dollar_Bill", (cx - 0.05, CHECK_Y - 0.40, top_z + 0.0305 + 0.0018), (0.156, 0.066, 0.0015), (0.62, 0.68, 0.56, 1.0))
     make_chamfer_box("Register_Cubby", (cx + 0.63, CHECK_Y + 0.30, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
     make_chamfer_box("Register_Cubby_Backpack", (cx + 0.63, CHECK_Y + 0.10, 1.11), (0.30, 0.32, 0.42), (0.30, 0.36, 0.30, 1.0))
     # the customer service desk, east wall front
@@ -320,7 +322,8 @@ def build_aisles():
         for e in (-1, 1):
             make_cyl(f"Fluor_Strip_{k}_Wire_{e:+d}", (lx, (G_Y0 + G_Y1) / 2.0 + e * 3.8, (STRIP_Z + 0.04 + CEIL) / 2.0), 0.005,
                      CEIL - STRIP_Z - 0.04, STEEL, segments=4)
-    for k, (x, y, ln) in enumerate(((-8.0, 3.2, 10.0), (6.6, 5.4, 9.0), (-6.0, 19.0, 14.0), (8.5, 18.6, 10.0), (-11.0, 13.5, 6.0))):
+    for k, (x, y, ln) in enumerate(((-8.0, 3.2, 10.0), (6.6, 5.4, 9.0), (-6.0, 19.0, 14.0), (8.5, 18.6, 10.0), (-11.0, 13.5, 6.0),
+                                    (3.4, 3.0, 6.0))):   # over lanes 1–2 (2026-10-25: the five's insert sat in a dark pocket)
         make_box(f"Fluor_Run_{k}", (x, y, STRIP_Z), (ln, 0.16, 0.08), (0.94, 0.94, 0.90, 1.0))
         make_box(f"Fluor_Run_{k}_Lens", (x, y, STRIP_Z - 0.045), (ln - 0.1, 0.12, 0.01), (0.99, 0.98, 0.92, 1.0))
         for e in (-1, 1):

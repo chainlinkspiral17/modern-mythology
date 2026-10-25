@@ -3835,6 +3835,91 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-24 · pass 176: VOLS 6–7 BY MONTAGE, FIRST TEN ROOMS — ninety-five markers.**
+- The Smolvud jetty (9) and co-op (5), Centro's aisle (15), break room (9) and stockroom /
+  dock (5), the Caldwell porch night + yard afternoon (20), radio room (5) and kitchen (7),
+  the Ramos kitchen (7), the Daily Grind (13): every marker rendered under its chapter's
+  preset (`TripPaintTest --preset X --vol N --marker shot_x`), tiled per room, read. The
+  audits (aim, obstruction --markers) were already clean on all ten rooms; the montage still
+  found five.
+- **Five re-aimed, two practicals, one buried prop:** the aisle's `insert five` (a dark
+  belt-end with two lane-light bases → the five-dollar bill on lane 1's belt from 0.8 m above,
+  fov 34 — and the re-render was STILL a bare belt: the bill sat at z 0.933, 3 cm inside the
+  0.96 counter top `make_counter` returns; now on the belt's ribs at `top_z + 0.032`, and a
+  sixth fluorescent run hangs over lanes 1–2 with its `Fluor_Run_5_Practical` — the orphan
+  gate refused a bare light without a fixture, rightly) and
+  `insert thermometer` (a cooler door from 2 m, the thermometer a sliver → Russell's
+  thermometer on the propped door's inner face from 0.6 m); the break room's `insert
+  paperback` (Doug's chair legs hid the Karamazov → from the chair's east side, low, the book
+  on the floor with the thermos); the porch's `insert phone` (a BLACK slab on a black rail at
+  night — right subject, no light → the builder gives the phone a lit screen, the scene a
+  `Phone_Glow__caldwell_porch_night` omni, the frame tightens to 0.55 m); the radio room's
+  `insert hands` (aimed at the radio desk; ch2's cue is "her grandmother's hand on her hand"
+  in the dark ON THE BED → the quilt from the bed's foot, matching the audit's own note).
+- Read as authored (worth knowing): the jetty's `insert drone` is the empty sky the prose
+  names; the dock's `insert smear` is the rust bands over the cedar line; the yard's `insert
+  photo` is Anita's phone on the table (the picture being taken — the nearest a propless
+  scene can get); the Daily Grind's inserts sit in the dusk preset's shadow but read.
+- Gates: aim + obstruction --markers clean on the five rooms touched, tscn syntax 258/0,
+  wrong_room 0/1743, blender dry-run clean. Two builders changed → **Deck rebuilds
+  centro_grocery_aisle and caldwell_porch_night**.
+- **The scoped suite's base was stale:** `run_changed_audits.sh` and `perf_gate.py` still
+  diffed against `origin/claude/3d-locales-clean`, 78 rooms behind the unified branch, so the
+  perf gate set out to probe the whole world (a Godot run per room) for a two-builder pass.
+  Both now default to `origin/claude/mythology-game-fiction-ji1t2g`; CLAUDE.md says so. With
+  the right base the scoped run measured four rooms (porch 312 = baseline, aisle 218 vs 214,
+  all under cap) and the full suite behind it fails only at `vn_story_audit` (192 problems,
+  all the untracked vol 1 mp3s and the vol 5 prelude's 2D plates — the standing failure
+  recorded under the comic pass; nothing here adds one); every gate after it was run on its
+  own. One of them had a standing failure too: `doorway_audit` called the newspaper room's
+  door BLOCKED by `Win_E_0_Stool` — the window kit's stool board (pass 131's trim, 3 cm thick,
+  on the wall plane at 0.93 m) landing in the door's 0.9 m side zone. The audit now exempts a
+  window kit's stool the way it exempts its sill; repo-wide BLOCKED 0 / ADRIFT 0. And
+  `light_direction_audit` had the Link house's `Sun_Low__andy_house_porch_dusk` (pass 152)
+  LEVEL — a dusk sun aimed dead horizontal; it now dips 8.5° (dir.y −0.15), 340 lights 0
+  mis-aimed. And `prop_overlap_audit` had small_wood_road at 6 clips over a baseline of 0
+  (draft 40's ditch field): four fir trunks and two crick rocks seated in `Ditch_Field_E`, a
+  heightfield the audit's ground vocabulary did not know — "_field" now counts as ground for
+  the proud-of-the-ground rule, and a crick rock joins the stones-set-into-a-bed rule; 0
+  clips. And `furniture_grammar_audit` had six POKEs at the Link house: the drive and pasture
+  gates' STILES through their rails — a gate's joinery, not a break; "stile" (and mullion,
+  muntin) join the audit's thin-member vocabulary beside post and pole; POKE 0. Its OUTSIDE
+  rule also called the New Orleans apartment's `Out_E_Brick_LitWin` (the lit window on the
+  neighbour's brick across the alley, pass 137) a prop off the floor — "litwin" / a `_Win`
+  suffix now read as exterior like "window". All five were standing at the branch head; the
+  gates had not been run to the end since the comic pass. Still standing and NOT touched
+  here (content, not geometry): `vn_story_audit` (192), `music_coverage_audit` (139, the
+  same count the comic pass recorded) and `audio_reference_audit` (285 missing music files,
+  276 then) — the suite was run past each by hand. Past those, `placement_audit` had two
+  real ones in the Roberts kitchen from pass 137's re-plan: the TV cabinet's centre (x −1.62)
+  fell 2 cm inside the living-room zone (x < −1.60) and rode 1.5 m west while the foyer
+  partition it stood against stayed — the TV corner is now built OUTSIDE the zones; and the
+  sideboard under the front window had "no wall" because the audit only counted wall pieces
+  taller than 1.6 m — a window's spandrel now counts. OFF_WALL 0; **Deck rebuilds
+  roberts_kitchen** too (three builders this pass).
+- **A REAL REGRESSION OF MY OWN, caught at the end of the suite:** `vn_target_audit` found
+  seven choice branches landing at or before their choice — in exactly the chapters passes
+  170–171 directed. A `bg` node inserted before a choice shifts every node after it by one,
+  and `opts[].goto` is an INDEX: the gotos stayed, the nodes moved. Fixed by aligning each
+  touched chapter against its pre-pass text (19 files; ten gotos in five of them — loose
+  pages, points of impact, the lighthouse, Uncle Nick, Carrie City 5) and moving each goto to
+  its node's new index, as text edits; 300 targets, 0 problems. The directing passes had run
+  only the marker gates; the chapter-JSON rule (any `resources/scenes` change → the full
+  suite) would have caught it the same day. VN playbook lesson added.
+- Last of the suite: `locale_ambient_audit` had 12 NOHUM — presets a chapter uses with no
+  bed, nine of them this session's new presets (the Chau hall / mom's room / Steven's desk,
+  the farmhouse's three nights, the lighthouse gate and base, Nick's three rooms) plus
+  afterparty_stools; each now has a bed by the rebuild tool's own rule (the volume floor,
+  the rest-stop wind for the lighthouse and the farm porch). NOHUM 0; the NOFILEs are the
+  standing untracked wavs. `phantom_surface` 0. The suite is now green END TO END except the
+  three content gates (vn_story 192 · music_coverage 139 · audio_reference 285 · page_length
+  265) that were red before this session.
+- **Draft N+1 (directing):** the rest of vols 6–7 by montage — the Miller house (kitchen 23,
+  back porch 14, office 13, garage 6), the Salty Tome (32, three presets), Lena's apartment
+  (25, day + night), Cosmic Comics (35, two presets), then the cabin (95 — its own pass);
+  then the closeup-by-cast pass for the long dialogues (Centro's break room has 27 generic
+  face cues, the porch 26).
+
 **2026-10-24 · pass 175: VOL 5 BY MONTAGE, THE REST — eleven rooms, eighty-four markers.**
 - The diner (20, incl. the Empress room's overrides), the bungalow (9), the riverboat (4), the
   Roberts kitchen (9), the New Orleans office (6), bar (6) and room (5), the hospice (4),

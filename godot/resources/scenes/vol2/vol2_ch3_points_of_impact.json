@@ -164,11 +164,11 @@
       "opts": [
         {
           "text": "Watch the workshop light.",
-          "goto": 35
+          "goto": 36
         },
         {
           "text": "Turn from the window.",
-          "goto": 36
+          "goto": 38
         }
       ]
     },

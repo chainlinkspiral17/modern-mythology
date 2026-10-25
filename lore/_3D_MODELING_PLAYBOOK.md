@@ -399,6 +399,25 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-25 · a hero prop dressed from a guessed height is inside the fixture; use the return value (pass 176)
+
+**Context:** The Centro aisle's `insert five` cue (five chapters) rendered
+a bare checkout belt. The audits were clean — aim found the bill by name,
+obstruction saw nothing in the lens. The bill was placed at
+`0.90 + 0.032` (the counter's nominal height plus the belt) while
+`make_counter` returns a top of `base + height + 0.06` = 0.96: the bill
+sat 3 cm inside the counter top, under the belt. The overlap gate's
+resting allowance hid it, as it hid the 22 builders of 2026-09-23.
+
+**Rule:** a prop set on a kit fixture takes its z from the fixture's
+RETURN VALUE (`top_z = make_counter(...)`, `make_table` top at `h`), never
+from the height argument. When a montage shows the fixture's surface
+where the prop should be and both audits pass, read the GLB's bounds for
+the prop (`accessors[...].min/max`) before touching the camera: a
+re-aim cannot find a buried object. The cure for "it's dark" is also to
+check the object is there first; only then a practical.
+
+
 ### 2026-10-24 · a wood floor is `make_floor(..., style="plank")`; the grid is for vinyl and tile
 
 **Context:** Pass 167, after the Chau house (pass 164) showed the kit's

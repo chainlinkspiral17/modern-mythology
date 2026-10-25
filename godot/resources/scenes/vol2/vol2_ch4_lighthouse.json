@@ -173,11 +173,11 @@
       "opts": [
         {
           "text": "Listen to the lighthouse a little longer.",
-          "goto": 39
+          "goto": 41
         },
         {
           "text": "Open Dean.",
-          "goto": 40
+          "goto": 42
         }
       ]
     },

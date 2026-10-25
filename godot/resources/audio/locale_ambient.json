@@ -453,6 +453,18 @@
       "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 0.72
     },
+    "nick_drafting": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
+    "nick_living_night": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
+    "nick_room": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
     "nightmare_cell": {
       "bed": "assets/audio/bgm/vol6_corporate_hum.wav",
       "gain": 0.82
@@ -625,6 +637,10 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },
+    "afterparty_stools": {
+      "bed": "assets/audio/bgm/vol4_ambient.wav",
+      "gain": 0.82
+    },
     "bar_exterior_night": {
       "bed": "assets/audio/bgm/vol1_drive_night.wav",
       "gain": 0.82
@@ -685,6 +701,18 @@
       "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.82
     },
+    "chau_hall_noon": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
+    "chau_mom_room": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
+    "chau_steven_desk": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
     "chillwave_backroom": {
       "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.82
@@ -699,6 +727,18 @@
     },
     "crumpled_barn_int": {
       "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "farm_kitchen_window": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "farm_living_night": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "farm_porch_night": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
       "gain": 0.82
     },
     "faust_apartment_day": {
@@ -743,6 +783,14 @@
     },
     "hospital_waiting": {
       "bed": "assets/audio/bgm/vol6_ambient.wav",
+      "gain": 0.82
+    },
+    "lighthouse_base_up": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
+      "gain": 0.82
+    },
+    "lighthouse_gate": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
       "gain": 0.82
     },
     "little_switzerland": {

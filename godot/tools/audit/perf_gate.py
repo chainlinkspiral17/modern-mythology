@@ -93,7 +93,7 @@ def main():
     update = "--update" in args
     args = [a for a in args if a != "--update"]
     if args[:1] == ["--changed"]:
-        rooms = changed_rooms(args[1] if len(args) > 1 else "origin/claude/3d-locales-clean")
+        rooms = changed_rooms(args[1] if len(args) > 1 else "origin/claude/mythology-game-fiction-ji1t2g")
     else:
         rooms = args
     if not rooms:

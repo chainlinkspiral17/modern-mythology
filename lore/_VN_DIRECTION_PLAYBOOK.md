@@ -323,6 +323,27 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-25 · a `bg` cut inserted before a choice moves every goto after it (pass 176)
+
+**Context:** The directing passes (170–171) added `{"t":"bg","src":"3d:…"}`
+nodes to nineteen chapters so a room cuts to the preset the prose is in.
+A choice's `opts[].goto` is a NODE INDEX. Each insert shifted every later
+node by one and the gotos stayed: seven branches in five chapters landed
+at or before their own choice (the choice re-opened forever), and the rest
+of the gotos after an insert landed one line early without any audit
+noticing. `vn_target_audit` caught the seven — at the END of the full
+suite, which the directing passes had never run; they ran the marker gates
+only.
+
+**Rule:** inserting ANY node into a chapter is a story edit, not a camera
+edit. After it: (1) remap every `goto` / `check.pass` / `check.fail` at or
+after the insertion point by +1 per inserted node (align the old and new
+node lists and move each target to its node's new index — as text edits,
+never a json.dump); (2) run `vn_target_audit.py` and `wrong_room_audit.py`
+before the commit. `run_changed_audits.sh` already sends any
+`resources/scenes` change to the full suite; let it. Cue text added inside
+an existing line (`[shot:insert x]`) moves nothing and needs none of this.
+
 ### 2026-10-24 · the audits pass a black frame — a night room's inserts need the night's practicals
 
 - **Context:** pass 174, vol 5 by montage. Natalie's night (ch12 Hanged,

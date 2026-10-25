@@ -456,6 +456,7 @@ def overlaps(boxes):
                         ((n2, c2, h2), (n1, c1, h1))):
                     la = na.lower()
                     if ("ground" in la or la.endswith("land") or
+                            "_field" in la or la.startswith("field_") or      # a ditch field is terrain (2026-10-25)
                             "terrain" in la or "road" in la or
                             "asphalt" in la or "sidewalk" in la or
                             "path" in la or "deck" in la or
@@ -596,8 +597,8 @@ def overlaps(boxes):
             # lawn sprinkler head is flush in its lawn (2026-09-24 — named
             # narrowly: a "stone" alone could be a wall or a headstone, and
             # a ceiling sprinkler is still judged against its ceiling).
-            if any(t in l1 or t in l2 for t in ("creek_stone", "river_stone", "stepping_stone", "steppingstone")) and \
-                    any(g in l1 or g in l2 for g in ("floor", "ground", "bank", "bed", "dirt", "grass", "lawn")):
+            if any(t in l1 or t in l2 for t in ("creek_stone", "river_stone", "stepping_stone", "steppingstone", "crick_rock")) and \
+                    any(g in l1 or g in l2 for g in ("floor", "ground", "bank", "bed", "dirt", "grass", "lawn", "field")):
                 continue
             if ("sprinkler" in l1 and "lawn" in l2) or ("sprinkler" in l2 and "lawn" in l1):
                 continue
