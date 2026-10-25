@@ -144,7 +144,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone~]At seven oh-three the phone in the kitchen rings. It is the landline. The landline never rings.",
+      "text": "[shot:insert landline]At seven oh-three the phone in the kitchen rings. It is the landline. The landline never rings.",
       "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/025.ogg"
     },
     {

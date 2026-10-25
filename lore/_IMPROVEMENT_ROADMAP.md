@@ -3835,6 +3835,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-25 · pass 177: THE MILLER HOUSE BY MONTAGE — kitchen, back porch, office, garage (51 markers).**
+- Every marker rendered under its chapter's preset (the kitchen's day preset, the porch's
+  morning, Bianca's office, the garage) and read. Both geometry gates were clean on all
+  four rooms before the montage.
+- **Kitchen (23):** three re-aimed. `insert phone` stood at a blank wall beside the beige
+  wall phone, side-on, while four of its five cues are the CELL on the counter by Mike's
+  mug (the text, the buzz at 07:33, "she picks up her phone from the counter") → the cell
+  from 0.75 m over the counter's edge. The fifth cue is ch6's landline ("the landline never
+  rings") → its own `[shot:insert landline]` and a `shot_insert_landline` on the wall phone,
+  square-on at 0.65 m (a cue text edit only — no node inserted, no goto moved). `insert
+  photographs` ("he looks at the photographs") read as a faint rectangle on the island →
+  the fan of three from the stool side at 0.8 m. The `insert sedan` frame is the kitchen
+  window and the street with no car in it, which is the prose (the sedan is "half a mile
+  away" at the Kwik Stop) — kept.
+- **Back porch (14):** one re-aimed. `insert door` (the doorbell, "the door closes") stood
+  0.8 m from the house door and framed a flat brown panel with a light switch → a three-
+  quarter view from 2.8 m: the door in its wall, the window beside it, the floor (a first
+  try at 1.5 m square-on was still a panel; the knob is 3 cm and never reads — draft N+1
+  gives the door a kick plate and a lit window pane). The bowls, the cigarette in its ashtray with the truck
+  beyond, the cordless by the mug, the myrtle, the porch light, the wicker chair all read.
+- **Office (8) and garage (6):** one re-aimed. The office's `insert phone` ("the phone on the
+  desk buzzes. He turns it over" — ch4, Chief Miller's preset) looked at the shelving
+  cabinet and a lit notebook → the face-down phone on the desk from the chair side, 0.8 m.
+  Bianca's desk, bills, laptop, cabinet and window read; the garage's freezer, bench, tool
+  chest and water heater read (its inserts are uncued; the two closeups are the cues).
+- Gates: aim + obstruction --markers clean on all four rooms after the re-aims; the ch6 cue
+  rename is text only (shot_marker 0 blind, vn_target 300/0 unchanged). No builder changed.
+- **Draft N+1 (directing):** the Salty Tome (32 markers, three presets), Lena's apartment
+  (25, day + night), Cosmic Comics (35, two presets), then the cabin (95); then the
+  closeup-by-cast pass — the Miller kitchen alone carries 49 generic face cues and nine
+  named ones (Bianca 8, Miller 9, Sam 7, Eileen 4) that all land on the same two frames.
+
 **2026-10-24 · pass 176: VOLS 6–7 BY MONTAGE, FIRST TEN ROOMS — ninety-five markers.**
 - The Smolvud jetty (9) and co-op (5), Centro's aisle (15), break room (9) and stockroom /
   dock (5), the Caldwell porch night + yard afternoon (20), radio room (5) and kitchen (7),
