@@ -56069,9 +56069,9 @@
         "kowalski_kitchen_window_view"
       ],
       "tag": "window · kowalski_kitchen · 1.50 x 1.10 m · 294 lines play here, 2 mention it",
-      "aspect": "3:4",
+      "aspect": "4:3",
       "pose": null,
-      "prompt": "Exterior only. The view out of a suburban kitchen window onto a Texas backyard: a patchy St. Augustine lawn, a flower bed gone over to weeds along a wooden privacy fence, a coiled garden hose, a neighbour's roofline and a live oak beyond the fence, hot late-afternoon light. Portrait 3:4.",
+      "prompt": "Exterior only. The view out of a suburban kitchen window onto a Texas backyard: a patchy St. Augustine lawn, a flower bed gone over to weeds along a wooden privacy fence, a coiled garden hose, a neighbour's roofline and a live oak beyond the fence, hot late-afternoon light. Landscape 4:3.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -56116,9 +56116,9 @@
         "roberts_kitchen_window_view"
       ],
       "tag": "window · roberts_kitchen · 1.70 x 1.10 m · 144 lines play here, 5 mention it",
-      "aspect": "2:3",
+      "aspect": "3:2",
       "pose": null,
-      "prompt": "Exterior only. The view out of a small kitchen window onto a backyard vegetable garden at about six in the morning: a bed of newly sprouted tomato seedlings in tidy rows, a few staked, a small brown bird on the bed's wooden edge, a weathered fence of salvaged lumber, early soft sunlight and dew. Tall 2:3.",
+      "prompt": "Exterior only. The view out of a small kitchen window onto a backyard vegetable garden at about six in the morning: a bed of newly sprouted tomato seedlings in tidy rows, a few staked, a small brown bird on the bed's wooden edge, a weathered fence of salvaged lumber, early soft sunlight and dew. Landscape 3:2.",
       "prompt_mode": "append",
       "canon": [
         {
