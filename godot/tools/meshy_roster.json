@@ -54926,6 +54926,955 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "vol5_prelude_whispers_channel",
+      "kind": "scene2d",
+      "name": "a laptop left open on a dark channel page",
+      "file": "backgrounds/vol5_prelude_whispers_channel.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_whispers_channel"
+      ],
+      "tag": "vol5 · BG · Whispers · a laptop left open on a dark channel page",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_channel",
+        "vol5_prelude_arcana_whispers"
+      ],
+      "prompt": "A laptop left open on a table in a dark room, its screen the only light: a dark-themed video channel page, one row of small thumbnails, each the dim colour of a room with the lights off. Night, nobody there, the glow falling on the tabletop.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_channel.json",
+          "text": "Somewhere a laptop has been left open."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_channel.json",
+          "text": "A channel page, dark theme, a row of thumbnails the color of rooms with the lights off."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep01_umbra",
+      "kind": "scene2d",
+      "name": "a late night of smoke and scotch, five friends' living room",
+      "file": "backgrounds/vol5_prelude_ep01_umbra.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep01_umbra"
+      ],
+      "tag": "vol5 · BG · Whispers ep 01 · a late night of smoke and scotch, five friends' living room",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep01_umbra"
+      ],
+      "prompt": "A cramped shared apartment living room very late at night, after the talking: a low table of scotch glasses and a bottle, an overflowing ashtray, a haze of smoke under one lamp, mismatched chairs and a sagging couch pulled around the table for five, game boxes and books stacked on the floor. Warm lamplight, deep shadows, the city dark in the window.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep01_umbra.json",
+          "text": "If I had to pinpoint the exact germ, the single speck of information where the whole crazy enterprise stemmed from, it'd be a casual remark Martin made over a very late round of smoke and scotch."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep02_in_flux",
+      "kind": "scene2d",
+      "name": "a seventh-grade English classroom on a Thursday",
+      "file": "backgrounds/vol5_prelude_ep02_in_flux.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep02_in_flux"
+      ],
+      "tag": "vol5 · BG · Whispers ep 02 · a seventh-grade English classroom on a Thursday",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep02_in_flux"
+      ],
+      "prompt": "An empty seventh-grade English classroom in a Texas middle school, late in the school year: rows of desks, purple carpet speckled white, walls crowded with motivational and test-prep posters and a sticker board of paper insects, a cheap painted raven statue on a high shelf looking down, a rubber duck hanging from the ceiling like a mobile with paper words dangling off it, a Curious George wall clock, a framed teaching degree hung prominently, a computer station in the corner, the flag. Fluorescent morning light, no one in the room yet.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep02_in_flux.json",
+          "text": "The Curious George clock ticktocks unnoticed."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep02_in_flux.json",
+          "text": "Statue of a raven, painted cheaply, looks down from above."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep02_in_flux.json",
+          "text": "It smells like freshly cleaned, industrially cleaned, tightly woven carpet. Purple speckled white in places."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "Texas"
+    },
+    {
+      "slug": "vol5_prelude_ep04_iris_title",
+      "kind": "scene2d",
+      "name": "Iris's morning flight over desert and mountain to the tree of life",
+      "file": "backgrounds/vol5_prelude_ep04_iris_title.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep04_iris_title"
+      ],
+      "tag": "vol5 · BG · Whispers ep 04 · Iris's morning flight over desert and mountain to the tree of life",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep04_iris_title"
+      ],
+      "prompt": "A dreamlike dawn seen from high above: desert running to mountains under long thin wisps of cirrus that rise like smoking spires, a stream threading to a river that sinks into the earth, and at the centre an immense ancient tree whose roots reach down through visible layers of rock strata, its crown lit gold by the rising sun. Vast, quiet, morning cold.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep04_iris_title.json",
+          "text": "Shapes like spires, rising, pluming smoke."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep04_iris_title.json",
+          "text": "I soar over deserts and mountains."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep04_iris_title.json",
+          "text": "The tree of life is older than any of its animals or animal minds."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep05_iris",
+      "kind": "scene2d",
+      "name": "Iris's silverstream trailer at the world's end, 1964",
+      "file": "backgrounds/vol5_prelude_ep05_iris.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep05_iris"
+      ],
+      "tag": "vol5 · BG · Whispers ep 05 · Iris's silverstream trailer at the world's end, 1964",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep05_iris"
+      ],
+      "prompt": "Inside an old silver aluminium trailer in the Arizona desert, 1964, at evening: a cramped kitchen and bedroom nook, canvases and wrapped artworks stacked and sheltered along the walls, a shelf with tins of cat food, an orange cat on the sill. Through the window, a faint white contrail arcs up into the dusk sky. Amber evening light through the blinds.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep05_iris.json",
+          "text": "Out the window of her silverstream trailer, Iris sees the world end and decides to go on about her day anyway."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep05_iris.json",
+          "text": "The arc being traced in the evening sky is faint but no less dramatic."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "Arizona in 1964"
+    },
+    {
+      "slug": "vol5_prelude_ep06_old_woman",
+      "kind": "scene2d",
+      "name": "the trailer camp and the museum at sundown, 1964",
+      "file": "backgrounds/vol5_prelude_ep06_old_woman.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep06_old_woman"
+      ],
+      "tag": "vol5 · BG · Whispers ep 06 · the trailer camp and the museum at sundown, 1964",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep06_old_woman"
+      ],
+      "prompt": "A scatter of trailers in the Arizona desert at sundown, 1964: wind chimes, a hammer and mud bricks left by one trailer's half-built fortification, an easel tipped on another trailer's roof, a path leading up to a homemade museum building of mixed good and shabby workmanship. Above it all a long pale contrail braids up into the darkening sky. Hot wind, long shadows.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep06_old_woman.json",
+          "text": "She watches the missile arc heavenward, long braid contrail of pale silk billowing, and she laughs with pained utter disbelief."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep06_old_woman.json",
+          "text": "Her trailer isn't far from the others, but it is the furthest out, save for Trini's which is past hers even further."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep06_old_woman.json",
+          "text": "She looks at its exterior, the fine work that Devin has put in, the areas where shabbily cut corners."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "Arizona in 1964"
+    },
+    {
+      "slug": "vol5_prelude_ep07_backyard_dogs",
+      "kind": "scene2d",
+      "name": "Clinton's suburban porch, a fine afternoon",
+      "file": "backgrounds/vol5_prelude_ep07_backyard_dogs.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep07_backyard_dogs"
+      ],
+      "tag": "vol5 · BG · Whispers ep 07 · Clinton's suburban porch, a fine afternoon",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep07_backyard_dogs"
+      ],
+      "prompt": "A tidy suburban front porch on a fine late afternoon: two chairs, a cooler of canned beer between them, a neat lawn and the quiet street beyond, a neighbour's yard where a party has just wound down. Golden light, long shade, no one in sight.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep07_backyard_dogs.json",
+          "text": "CLINTON, a precise and well-groomed suburban idler, takes a beer from the cooler and sits down on his porch."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep07_airport_hotel",
+      "kind": "scene2d",
+      "name": "an airport hotel's check-in desk",
+      "file": "backgrounds/vol5_prelude_ep07_airport_hotel.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep07_airport_hotel"
+      ],
+      "tag": "vol5 · BG · Whispers ep 07 · an airport hotel's check-in desk",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep07_backyard_dogs"
+      ],
+      "prompt": "The check-in desk of an anonymous airport hotel at night: a long counter, a lobby of carpet and potted plants, glass doors onto a shuttle stop, a plane's lights crossing the dark sky outside. Fluorescent and lamp light, empty.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep07_backyard_dogs.json",
+          "text": "Clinton checks in, slinging a bag over his shoulder."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep08_autumn_crop",
+      "kind": "scene2d",
+      "name": "Bernie's public-housing living room in the fall",
+      "file": "backgrounds/vol5_prelude_ep08_autumn_crop.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep08_autumn_crop"
+      ],
+      "tag": "vol5 · BG · Whispers ep 08 · Bernie's public-housing living room in the fall",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep08_autumn_crop"
+      ],
+      "prompt": "A small public-housing living room in autumn: houseplants everywhere, kept like pets, minimal textured fabric collages on the walls, a half-started quilt folded on a chair, a decade-old desktop computer on a little desk, a library book face down. Soft fall daylight.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep08_autumn_crop.json",
+          "text": "Bernie kept plants as pets, made her own minimal collage textured fabric artworks and dressed exclusively in sweat clothes."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep08_autumn_crop.json",
+          "text": "Beatrice met Bernadette through the library board, and would often go over to her public housing unit to help clean up the small living space, or fiddle with her decade plus personal computer to keep it just barely relevant."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep10_sound_of_silence",
+      "kind": "scene2d",
+      "name": "the studio apartment with the blinds open to the rain",
+      "file": "backgrounds/vol5_prelude_ep10_sound_of_silence.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep10_sound_of_silence"
+      ],
+      "tag": "vol5 · BG · Whispers ep 10 · the studio apartment with the blinds open to the rain",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep10_sound_of_silence"
+      ],
+      "prompt": "A cramped studio apartment on a rainy day, the blinds pulled open, rain running down the window pane: a split bag of cereal scattered across the floor, crayons and drawings beside it, a glowing screen, a small mirror from a purse on the carpet. Grey light, a sense of a place nobody leaves.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep10_sound_of_silence.json",
+          "text": "A bag of cheerios split on the floor."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep10_sound_of_silence.json",
+          "text": "When it rains, they open up the blinds, watch him watch it fall across the pane."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep11_writ_fer_rain",
+      "kind": "scene2d",
+      "name": "rain held on a surface, a drop at the point of falling",
+      "file": "backgrounds/vol5_prelude_ep11_writ_fer_rain.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep11_writ_fer_rain"
+      ],
+      "tag": "vol5 · BG · Whispers ep 11 · rain held on a surface, a drop at the point of falling",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep11_writ_fer_rain"
+      ],
+      "prompt": "A close study of rain: water beading and slicking across a cold surface, one drop held at the point of falling, surface tension catching grey light, the world beyond soft and out of focus. Quiet, tactile, cold.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep11_writ_fer_rain.json",
+          "text": "Hold that thought hover that drop"
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep11_writ_fer_rain.json",
+          "text": "Cold fluid motion cutting surface tension"
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep12_pour_1",
+      "kind": "scene2d",
+      "name": "a warm agate stone in lamplight",
+      "file": "backgrounds/vol5_prelude_ep12_pour_1.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep12_pour_1"
+      ],
+      "tag": "vol5 · BG · Whispers ep 12 · a warm agate stone in lamplight",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep12_pour_1"
+      ],
+      "prompt": "A banded agate stone resting in a pool of warm lamplight on a dark table at night, its layers glowing amber and smoke, an intimate dark room around it, a curtain moving. Tender, still.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep12_pour_1.json",
+          "text": "agate rock about eight stone."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep12_pour_1.json",
+          "text": "warm to the touch."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep13_paper_cuts",
+      "kind": "scene2d",
+      "name": "Aria's bedroom at night, the light left on",
+      "file": "backgrounds/vol5_prelude_ep13_paper_cuts.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep13_paper_cuts"
+      ],
+      "tag": "vol5 · BG · Whispers ep 13 · Aria's bedroom at night, the light left on",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep13_paper_cuts"
+      ],
+      "prompt": "A young woman's bedroom late at night: an unmade bed, a lamp left on full, a television glowing cool blue at the foot of the bed, a camera and printed snapshots on the nightstand, and near the ceiling a small radiant orb of warm light hanging in the air. Dreamy, intimate.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep13_paper_cuts.json",
+          "text": "She sleeps with her light on, the bright full on her face, it reminds her of summer falling asleep on the back lawn, the sun writing itself into her."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep13_paper_cuts.json",
+          "text": "He is radiant, this orb of light."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep14_milk_and_honey",
+      "kind": "scene2d",
+      "name": "the all-night convenience store under its flare",
+      "file": "backgrounds/vol5_prelude_ep14_milk_and_honey.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep14_milk_and_honey"
+      ],
+      "tag": "vol5 · BG · Whispers ep 14 · the all-night convenience store under its flare",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep14_milk_and_honey"
+      ],
+      "prompt": "A 24-hour convenience store and gas station at night, fluorescent-lit from every angle inside and out, overbright light hazing the blacktop, a few cars parked at odd angles, a curb with a bucket of window-washing fluid, and beyond the lot a methane flare torch burning against the dark. Lonely, humming, eternal.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep14_milk_and_honey.json",
+          "text": "The convenience store was fluorescent lit from all angles, inside and out."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep14_milk_and_honey.json",
+          "text": "It was eternal, methane torch burning, a twenty-four-seven eye sore attended and serviced by mis-matched pairs of fairly greasy individuals."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep14_milk_and_honey.json",
+          "text": "Haze of blacktop reflected heat in the day, haze of overbright overhead light at night."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep15_lynchs_peak",
+      "kind": "scene2d",
+      "name": "Lynch's Peak, Oregon",
+      "file": "backgrounds/vol5_prelude_ep15_lynchs_peak.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep15_lynchs_peak"
+      ],
+      "tag": "vol5 · BG · Whispers ep 15 · Lynch's Peak, Oregon",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep15_lynchs_peak"
+      ],
+      "prompt": "A small mountain town in Oregon at dusk, Lynch's Peak: a main street of old wooden storefronts and a small police station under a dark forested peak, wet pavement, a church steeple, low cloud on the ridge. Quiet, a little uncanny, as if the place had been dreamed into being.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep15_lynchs_peak.json",
+          "text": "Imagine them falling from paradise and landing in 'Lynch's Peak', Oregon."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "Oregon"
+    },
+    {
+      "slug": "vol5_prelude_ep17_one_hundred_places",
+      "kind": "scene2d",
+      "name": "an empty lot where we can dream together at last",
+      "file": "backgrounds/vol5_prelude_ep17_one_hundred_places.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep17_one_hundred_places"
+      ],
+      "tag": "vol5 · BG · Whispers ep 17 · an empty lot where we can dream together at last",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep17_one_hundred_places"
+      ],
+      "prompt": "An empty lot at night under a wide sky of stars: a single found chair standing in the weeds, and at the far edge a red barn with broken doors hanging open. Still, wistful, a place to dream in.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep17_one_hundred_places.json",
+          "text": "9 an empty lot where we can dream together at last"
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep17_one_hundred_places.json",
+          "text": "2 found chair"
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep17_one_hundred_places.json",
+          "text": "5 the red barn with broken doors"
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep18_sigsbees_deep",
+      "kind": "scene2d",
+      "name": "the city in miniature at Sigsbee's Deep",
+      "file": "backgrounds/vol5_prelude_ep18_sigsbees_deep.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep18_sigsbees_deep"
+      ],
+      "tag": "vol5 · BG · Whispers ep 18 · the city in miniature at Sigsbee's Deep",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep18_sigsbees_deep"
+      ],
+      "prompt": "The back room of a small, struggling diner given over to a vast micro-sculpture: a whole Gulf Coast city in miniature spread across tables and spilling beyond them, tiny streets, bridges, a casino strip across a river, thousands of hand-made buildings under warm work lamps, glue and tools on a side bench. Evening, the obsession of a lifetime.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep18_sigsbees_deep.json",
+          "text": "The city in miniature at Sigsbee’s Deep."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep18_sigsbees_deep.json",
+          "text": "Graustark in tiny relief is an oddity curio-tourists have delighted in for years, as its scope has grown beyond even the conventional limits of reality."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes."
+    },
+    {
+      "slug": "vol5_prelude_ep19_ravensway",
+      "kind": "scene2d",
+      "name": "Ravensway after the quantum revolution",
+      "file": "backgrounds/vol5_prelude_ep19_ravensway.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep19_ravensway"
+      ],
+      "tag": "vol5 · BG · Whispers ep 19 · Ravensway after the quantum revolution",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep19_ravensway"
+      ],
+      "prompt": "A small town gone strange after the breakdown of coherent reality, at sunset: a broken bridge ending over a slow river, a water tower casting shade over loose damp earth, a gallery with fogged-up windows, everything in the wrong light, nostalgic and faintly fearful.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep19_ravensway.json",
+          "text": "Every day at sunset he goes and sits on the edge of the broken bridge."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep19_ravensway.json",
+          "text": "Go spend a moment in the shade under the water tower"
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep20_sisters_wyrd",
+      "kind": "scene2d",
+      "name": "the east hill shear in the wind, the Padre's pack train",
+      "file": "backgrounds/vol5_prelude_ep20_sisters_wyrd.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep20_sisters_wyrd"
+      ],
+      "tag": "vol5 · BG · Whispers ep 20 · the east hill shear in the wind, the Padre's pack train",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep20_sisters_wyrd"
+      ],
+      "prompt": "A steep windswept hillside trail under a hard grey sky, wind tearing down the slope, a small string of laden pack mules stamping and huddled against it, a blanket torn loose and flying. Wild, cold, on the road toward the plains.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep20_sisters_wyrd.json",
+          "text": "Wind came fast down the east hill shear, something of a howl also eager to rip the wrap from fingers, the blanket from back."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep20_sisters_wyrd.json",
+          "text": "The pack animals huffed displeasure with detached quizzical instinct, hoof stomping in multiples their remainder agitation."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep21_field_guide",
+      "kind": "scene2d",
+      "name": "a field guide left on a park bench in the rain",
+      "file": "backgrounds/vol5_prelude_ep21_field_guide.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep21_field_guide"
+      ],
+      "tag": "vol5 · BG · Whispers ep 21 · a field guide left on a park bench in the rain",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep21_field_guide"
+      ],
+      "prompt": "A park bench at night in the rain, under a single lamp: a book left lying open on it, its glossy plastic pages glowing and slick with rainwater, light shifting across them as if animated. Puddles, wet leaves, no one in the park.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep21_field_guide.json",
+          "text": "A field guide written by a student, left on a park bench."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep21_field_guide.json",
+          "text": "Plasteek pages, slick and glowy with rain, animated menus and transitions unspooling in an endless loop."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep22_hanged_man",
+      "kind": "scene2d",
+      "name": "a one-bedroom corner after a hard breakup",
+      "file": "backgrounds/vol5_prelude_ep22_hanged_man.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep22_hanged_man"
+      ],
+      "tag": "vol5 · BG · Whispers ep 22 · a one-bedroom corner after a hard breakup",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep22_hanged_man"
+      ],
+      "prompt": "The corner of a neglected one-bedroom apartment: a bowl of two-week-old fruit speckled with green mould, worn t-shirts in piles in the corners, plastic wrappers and empty containers scattered about, a chair in the corner with headphones on it. Dim, stale, curtains half drawn.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep22_hanged_man.json",
+          "text": "Wither and waste away, two week old fruit in a bowl speckled inside and out with this avocado-colored mold."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_ep22_hanged_man.json",
+          "text": "Here he is in the corner of a one bedroom, headphones on, blocked out, locked in, comfortable and sad, and so very lost."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_ep23_waking",
+      "kind": "scene2d",
+      "name": "a bedroom at waking, the family gone with the dream",
+      "file": "backgrounds/vol5_prelude_ep23_waking.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_ep23_waking"
+      ],
+      "tag": "vol5 · BG · Whispers ep 23 · a bedroom at waking, the family gone with the dream",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_ep23_visitation"
+      ],
+      "prompt": "A quiet bedroom in the first grey light of morning, one side of the bed empty and smooth, the sheets on the other side tangled, a window of pale dawn. Stillness, absence.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_ep23_visitation.json",
+          "text": "I wake up having spent the day with my family. My love and children, lost to me upon waking."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_low_bar",
+      "kind": "scene2d",
+      "name": "the shadiest bar in the most expensive part of Graustark",
+      "file": "backgrounds/vol5_prelude_low_bar.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_low_bar"
+      ],
+      "tag": "vol5 · BG · Whispers · the shadiest bar in the most expensive part of Graustark",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_john_bar"
+      ],
+      "prompt": "A very dark, very expensive bar: deep leather booths and seats, the lights as low as they can go, smoke clinging in the air, glasses catching a little amber light, a long bar of bottles receding into shadow. After work, crowded but unseen.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_john_bar.json",
+          "text": "They go to the shadiest bar in the most expensive part of town."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_john_bar.json",
+          "text": "The drinks are, would you believe it, overpriced, the seats are leather, and the lights are as low as they can possibly go."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes."
+    },
+    {
+      "slug": "vol5_prelude_steamship_gallery",
+      "kind": "scene2d",
+      "name": "the tiered portrait gallery of the major arcana",
+      "file": "backgrounds/vol5_prelude_steamship_gallery.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_steamship_gallery"
+      ],
+      "tag": "vol5 · BG · Whispers · the tiered portrait gallery of the major arcana",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_john_shift",
+        "vol5_prelude_arcana_liar_king"
+      ],
+      "prompt": "A dim, tiered portrait gallery like the decks of an old steamship: rows of framed portraits hung at many levels, dark and shadowy, faintly shimmering, and at the centre a crystal ball on a stand lit from within, a single sheet of paper glowing above it. Hushed, haunted.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The child goes to the crystal ball, when it lights up, the portraits sitting idly in the gallery, shimmer with activity, but remain dim and shadowy."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The gallery is divided into different tiers. Portraits hang at various levels."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_restaurant_floor",
+      "kind": "scene2d",
+      "name": "the dining floor of an old-school Sicilian restaurant",
+      "file": "backgrounds/vol5_prelude_restaurant_floor.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_restaurant_floor"
+      ],
+      "tag": "vol5 · BG · Whispers · the dining floor of an old-school Sicilian restaurant",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_john_shift"
+      ],
+      "prompt": "The dining floor of an expensive old-school Sicilian restaurant at night: white tablecloths, wine glasses, low warm light, swinging kitchen doors on worn hinges at the back, and through the front windows a crowd of well-dressed people waiting outside to get in.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_john_shift.json",
+          "text": "The meals come made by hand, as the generations did it."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_john_shift.json",
+          "text": "Look at all the pretty people outside fighting to be where you are sitting."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_waiter_pen",
+      "kind": "scene2d",
+      "name": "the waiter pen behind the dining room",
+      "file": "backgrounds/vol5_prelude_waiter_pen.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_waiter_pen"
+      ],
+      "tag": "vol5 · BG · Whispers · the waiter pen behind the dining room",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_john_shift"
+      ],
+      "prompt": "The narrow waiter station behind a restaurant dining room: two point-of-sale touch screens glowing on a counter, stacks of menus and folded napkins, a coffee station, a doorway out to the warm dining floor and swinging doors to the kitchen. Cramped, harried, bright screens.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_john_shift.json",
+          "text": "Back in the waiter pen, he is straight to the machine, fingers flying fine on their own until she smacks into him."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_river_shallows",
+      "kind": "scene2d",
+      "name": "the river's edge at golden hour, the mudflat and the jetty",
+      "file": "backgrounds/vol5_prelude_river_shallows.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_river_shallows"
+      ],
+      "tag": "vol5 · BG · Whispers · the river's edge at golden hour, the mudflat and the jetty",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_liar_king"
+      ],
+      "prompt": "A river's edge at golden hour: shallow water over silt, small waves, a mudflat where oystercatchers, whimbrel and snipe nest, a weathered wooden jetty in the distance, the low sun burning gold across broken water. Wild, humid, magical.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Agile child hands feel through bottom silt, grubby face so near reflected, tiny body fighting small splashing waves at the river’s edge."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The frog throws his cigarette into the mudflat, claps in long slow succession, the slapping disturbance dispersing nesting oystercatchers, whimbrel and snipe."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_minstrals_green_hull",
+      "kind": "scene2d",
+      "name": "the sunken hull of the steamship Minstral's Green",
+      "file": "backgrounds/vol5_prelude_minstrals_green_hull.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_minstrals_green_hull"
+      ],
+      "tag": "vol5 · BG · Whispers · the sunken hull of the steamship Minstral's Green",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_liar_king"
+      ],
+      "prompt": "The sunken wreck of a once-proud riverboat steamship, its green paint peeling, listing in the shallows of a river swamp at sunset, paddlewheel half under water, open holes into its dark guts. Reeds, still water, an old wonder gone to ruin.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The child does not go home straight away, instead circles and lingers round the sunken corpse of the once proud “Minstral’s Green” steamship, first time since going in and exploring the guts several times in years past, but never wearing father’s doohickey, as he calls it."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
+    },
+    {
+      "slug": "vol5_prelude_steamship_interior",
+      "kind": "scene2d",
+      "name": "inside the haunted steamship, relit in farcast light",
+      "file": "backgrounds/vol5_prelude_steamship_interior.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_steamship_interior"
+      ],
+      "tag": "vol5 · BG · Whispers · inside the haunted steamship, relit in farcast light",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "bg",
+      "scenes": [
+        "vol5_prelude_arcana_liar_king"
+      ],
+      "prompt": "Inside the haunted wreck of a riverboat steamship that was once a park attraction: a grand decaying saloon of carved wood and tarnished brass, water on the tilted floor, and a strange far-cast light relighting the way through, catching dust and the shapes of old fittings. Ghostly, beautiful, a mother's favourite place.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Father said this was Mother’s favorite place in the park."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Frog extends his hand and the two walk into the haunted steamship, their way relit in farcast light."
+        }
+      ],
+      "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
+      "setting": "America"
     }
   ]
 }
