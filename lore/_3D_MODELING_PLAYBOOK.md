@@ -399,6 +399,27 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · a HeroProp's stand-in root is `../Interior`, and its spot comes from the built GLB (pass 182)
+
+**Context:** The first wave of HeroProp placements (33 in 13 sets: the
+comic-shop figures, sixteen crows, Petra's cat, the Speak & Spells, the
+Caldwell shortwave). The one HeroProp placed before it, the cathedral's
+steamboat, had `stand_in_root = NodePath("Interior")`. A locale scene
+instances its GLB as a SIBLING named `Interior`, so that path resolved to
+nothing and the box steamboat never hid: it would have stood inside the
+model the day the model arrived.
+
+**Rule:** a HeroProp in a locale scene points `stand_in_root` at
+`NodePath("../Interior")` and names its stand-ins by prefix in
+`hide_prefixes`. Take its position, size and facing from the built GLB's
+stand-in bounds (`glbscan.nodes`), not the builder's arguments and not
+`hero_art_candidates`' rows (they ignore `plan.zoned` shifts). Test it in
+the engine with a stand-in GLB copied under the prop's file name: the
+model loads, fits, and the parts hide. Delete the copy afterwards. The
+same goes for a window-view picture's `apply` row: measure the pane in the
+GLB, and write one picture per pane shape, because HeroArt crops a
+picture to its middle band rather than stretch it.
+
 ### 2026-10-25 · a hero prop dressed from a guessed height is inside the fixture; use the return value (pass 176)
 
 **Context:** The Centro aisle's `insert five` cue (five chapters) rendered

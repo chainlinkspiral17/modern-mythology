@@ -95,7 +95,7 @@ MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wal
                      r"pipe|vent|duct|hood|cabinet|cab_|upper|hang|rail|awning|banner|flag|bulb|chain|hook|mirror|calendar|"
                      r"crown|molding|beam|joist|truss|roof|eave|gutter|antenna|pole|mast|neon|bracket|sconce|smoke|hvac|"
                      r"drone|bird|crow|moss|leaf|branch|limb|canopy|cloud|fog|haze|sky|far|band|horizon|water|swell|foam|"
-                     r"spray|stream|arc|balloon|kite|tarp|screen|monitor|tv|speaker|cam|ring|halo|glow|beam)", re.I)
+                     r"spray|stream|_drip_\d|arc|balloon|kite|tarp|screen|monitor|tv|speaker|cam|ring|halo|glow|beam)", re.I)
 WALLISH = re.compile(r"(^|_)(wall|partition|part_|hull|shell|facade)", re.I)
 ROADISH = re.compile(r"(road|asphalt|street|lane|highway|hwy|drive$|_drive_|blvd|avenue)", re.I)
 # Places a car is SUPPOSED to stand: lots, aprons, driveways, garages,

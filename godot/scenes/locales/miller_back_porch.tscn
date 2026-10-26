@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://miller_back_porch_vol6"]
+[gd_scene load_steps=27 format=3 uid="uid://miller_back_porch_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/miller_back_porch.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -427,3 +428,14 @@ metadata/fov = 44.0
 position = Vector3(-0.300, 1.050, -1.450)
 rotation = Vector3(-0.6474, -0.6030, 0.0)
 metadata/fov = 38.0
+
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Crow" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, -1.150, 1.030, -0.029)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.697
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Crow_")

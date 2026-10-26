@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://caldwell_radio_room_night_locale"]
+[gd_scene load_steps=27 format=3 uid="uid://caldwell_radio_room_night_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/caldwell_radio_room_night.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -365,3 +366,14 @@ metadata/fov = 52.0
 position = Vector3(0.250, 1.300, -2.300)
 rotation = Vector3(-0.5853, -0.7509, 0.0)
 metadata/fov = 42.0
+
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Shortwave_Radio" type="Node3D" parent="."]
+position = Vector3(1.948, 0.740, -1.400)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/shortwave_radio.glb"
+size_m = 0.420
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Radio_Transceiver", "Radio_Dial")

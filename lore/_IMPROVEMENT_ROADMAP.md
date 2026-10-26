@@ -3835,6 +3835,57 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 182: PICTURES AND MODELS WHERE THE 3D FALLS SHORT — planned, placed, ready to generate.**
+- The survey (two user questions: where 2D plates and hero props help across the seven
+  volumes; "Go ahead"). Generation runs on the Deck through Hero Studio (no provider keys
+  here, by design), so this pass does everything up to the generate button: roster entries
+  written from the text, and placements so each picture or model shows the moment it is
+  installed.
+- **The Whispers prelude (vol 5): 29 scene pictures.** 602 lines across 25 chapters played
+  over a blank screen — 29 places named background pictures nobody made, with no set to
+  stand in. Each is now a `scene2d` entry written from a full reading of its scene (canon =
+  the scene's own sentences, verified verbatim by the script; prompt = what the picture
+  shows; `setting` per place — Arizona 1964, Oregon, Texas, else "America", Graustark on
+  the Gulf Coast default; no lettering). The pipeline installs each at the path the
+  chapter already names.
+- **Hero props over the box stand-ins: 33 placements in 13 sets.** No set placed a single
+  HeroProp before this. New roster props: six comic-shop figures (SPARSE — the text never
+  describes them; original characters only, no real heroes or logos), the crow, Petra's
+  cat (coat colour SPARSE). Placed: the 14 Cosmic Comics figures (statue tower turned to
+  face the shop, Key Issues shelf, window display facing the street), 16 crows across 11
+  sets (the kit's 23-part box crow; facing carried from the builder), the
+  cat on the Tome kitchenette cushion, both Speak & Spells, the Caldwell shortwave. Each
+  node's spot and size are read from the built GLB's stand-in bounds. Verified in the
+  engine with a stand-in GLB under the crow's name: the model loads, fits (scale 0.368),
+  and both cabin crows' 23 parts hide.
+- **A latent bug found doing it:** the cathedral's steamboat node (the only HeroProp ever
+  placed) pointed `stand_in_root` at `Interior` relative to itself, so it never hid its
+  stand-in; `../Interior` hides all 8 parts (tested both ways).
+- **Window views: 9 pictures for 7 busy rooms whose glass looked onto nothing** (the Kowalski
+  kitchen 294 lines, the Daily Grind front and side 155, the Missing Link's four booth
+  windows 154, the Roberts kitchen 144, Sam's bedroom 133, the hospice room 131, John Frank's
+  Montreal flat 123). Each is an `art` WINDOW entry with the text's own sentences as canon
+  (the cul-de-sac, Main in slate-grey rain, the pumps and the bench through rain-glazed
+  glass — the young man left out, he is cast — the tomato seedlings, the pre-dawn lot in
+  Simons, the Montreal alley's moss and cat) and `apply` rows measured from the built GLB
+  (the candidates tool halves sizes, and the Roberts kitchen moved in its re-plan). Where
+  one picture serves several panes (the Daily Grind's 5.4 / 2.6 / 1.4 m front panes) the
+  prompt asks for a wide picture whose middle stands alone, since HeroArt crops to the
+  middle band rather than stretch. Skipped for want of text: Faust's flat, Diego's room
+  (blackout curtains), the safehouse.
+- **Draft 183 targets:** generate on the Deck (prelude scene2d, the 8 props, the 9 views)
+  and montage each set with its installed picture or model — the views need a contact
+  sheet at each room's frames to check crop and light (a bright day plate behind a night
+  preset reads wrong: the diner and hospice views are night/pre-dawn on purpose; check the
+  Daily Grind's morning chapter against its afternoon rain); the comic shop's 15 customers
+  and the Tome alley crowd as a background-people job; the frog's stand-in.
+- Not placed (reasons): the cabin's and Hans's cedar bowls carry story detail the kit
+  built on purpose (Marit's bowl, the face inlay) — a generic bowl would lose it; the
+  named vehicles have no named stand-ins (34 sets use the generic kit car), and a
+  wholesale car swap would override colours the text gives; the ceramic frog has no
+  stand-in yet; background people (the Tome alley's thirty-five at the wall, the comic
+  shop's fifteen customers) are a separate, larger job.
+
 **2026-10-27 · pass 181: CLOSEUP BY CAST — the speaker's own face frame.**
 - The generic face pair (`[shot:closeup person]` / `person_b`) cut to two fixed frames
   whoever spoke: 1,067 such cues on say lines across the game, 497 of them spoken by a

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://board_lords_interior_locale"]
+[gd_scene load_steps=27 format=3 uid="uid://board_lords_interior_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/board_lords_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -503,3 +504,13 @@ position = Vector3(3.150, 1.550, -7.400)
 rotation = Vector3(-0.5740, -3.0119, 0.0)
 metadata/fov = 58.0
 
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Crow" type="Node3D" parent="."]
+position = Vector3(4.300, 1.699, 3.179)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.697
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Crow_")

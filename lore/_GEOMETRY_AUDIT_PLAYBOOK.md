@@ -158,6 +158,20 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-27 · a drip hangs from rock that isn't its assembly
+
+**What happened:** The full suite ended red on one FLOAT: Sapo Falls'
+`Alcove_Drip_0`, a water thread hanging from the falls face (Face_Upper's
+underside at z 4.5, which is the drip's top). The grammar's HANGING rule
+credits only a SIBLING above, so a drip from another assembly read as
+floating over the mist below. Its two neighbours passed only by touching
+other water parts.
+
+**Rule:** water that hangs (drips, like streams and spray) is mounted by
+name. `_drip_\d` joined MOUNTED. It is exact, so a coffee dripper or a
+drip tray still has to stand on something. Don't move geometry to
+satisfy a gate when the gate's grammar is what's missing.
+
 ### 2026-10-19 · the recorder's boxes are HALF-extents — and a tool that forgot shipped 710 half-size pictures
 
 **What happened:** `hero_art_candidates.py` (10-13) read `P.A.BOXES`'

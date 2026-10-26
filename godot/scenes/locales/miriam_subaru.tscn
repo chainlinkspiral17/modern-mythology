@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://miriam_subaru_vol5"]
+[gd_scene load_steps=28 format=3 uid="uid://miriam_subaru_vol5"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/miriam_subaru.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -16,6 +16,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
 [ext_resource type="Script" path="res://scripts/RoadScroller.gd" id="17_road"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -413,3 +414,31 @@ position = Vector3(-0.100, 1.260, 0.400)
 rotation = Vector3(-1.0078, -2.7033, 0.0)
 metadata/fov = 40.0
 
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Signal_Crow" type="Node3D" parent="."]
+position = Vector3(0.600, 5.810, -252.071)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.697
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Signal_Crow_")
+
+[node name="HP_Car_Roof_Crow" type="Node3D" parent="."]
+position = Vector3(0.180, 1.645, 0.629)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.698
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Car_Roof_Crow_")
+
+[node name="HP_Parked_Subaru_Crow" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 12.050, 1.669, -261.329)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.697
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Parked_Subaru_Crow_")

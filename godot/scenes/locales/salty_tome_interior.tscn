@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://salty_tome_interior_locale"]
+[gd_scene load_steps=27 format=3 uid="uid://salty_tome_interior_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/salty_tome_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -569,3 +570,22 @@ position = Vector3(2.000, 1.300, -7.600)
 rotation = Vector3(-0.5502, -0.4636, 0.0)
 metadata/fov = 38.0
 
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Alley_Crow" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 2.000, 1.280, -10.379)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.698
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Alley_Crow_")
+
+[node name="HP_Petras_Cat" type="Node3D" parent="."]
+position = Vector3(-0.477, 0.495, -6.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/petras_cat.glb"
+size_m = 0.345
+length_axis = "x"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Cat_Loaf", "Cat_Ear")

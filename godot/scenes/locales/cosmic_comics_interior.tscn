@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cosmic_comics_interior_vol6"]
+[gd_scene load_steps=27 format=3 uid="uid://cosmic_comics_interior_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/cosmic_comics_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -589,3 +590,148 @@ metadata/fov = 45.0
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Figure_Shelf_0" type="Node3D" parent="."]
+position = Vector3(-3.482, 1.045, -7.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_1.glb"
+size_m = 0.407
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Statue_0_")
+
+[node name="HP_Figure_Shelf_1" type="Node3D" parent="."]
+position = Vector3(-2.883, 1.045, -7.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_2.glb"
+size_m = 0.407
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Statue_1_")
+
+[node name="HP_Figure_Shelf_2" type="Node3D" parent="."]
+position = Vector3(-2.283, 1.045, -7.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_3.glb"
+size_m = 0.407
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Statue_2_")
+
+[node name="HP_Figure_Shelf_3" type="Node3D" parent="."]
+position = Vector3(-1.683, 1.045, -7.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_4.glb"
+size_m = 0.407
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Statue_3_")
+
+[node name="HP_Figure_Shelf_4" type="Node3D" parent="."]
+position = Vector3(-1.083, 1.045, -7.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_5.glb"
+size_m = 0.407
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Statue_4_")
+
+[node name="HP_Figure_Shelf_5" type="Node3D" parent="."]
+position = Vector3(-0.482, 1.045, -7.700)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_6.glb"
+size_m = 0.407
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Statue_5_")
+
+[node name="HP_Figure_Tower_0_0" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.348, 0.660, -1.050)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_4.glb"
+size_m = 0.387
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Tower_Statue_0_0_")
+
+[node name="HP_Figure_Tower_0_1" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.787, 0.660, -1.050)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_5.glb"
+size_m = 0.387
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Tower_Statue_0_1_")
+
+[node name="HP_Figure_Tower_1_0" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.348, 1.090, -1.050)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_6.glb"
+size_m = 0.387
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Tower_Statue_1_0_")
+
+[node name="HP_Figure_Tower_1_1" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.787, 1.090, -1.050)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_1.glb"
+size_m = 0.387
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Tower_Statue_1_1_")
+
+[node name="HP_Figure_Tower_2_0" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.348, 1.520, -1.050)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_2.glb"
+size_m = 0.387
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Tower_Statue_2_0_")
+
+[node name="HP_Figure_Tower_2_1" type="Node3D" parent="."]
+transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.787, 1.520, -1.050)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_3.glb"
+size_m = 0.387
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Tower_Statue_2_1_")
+
+[node name="HP_Figure_Window_0" type="Node3D" parent="."]
+position = Vector3(-3.482, 0.800, -0.350)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_2.glb"
+size_m = 0.468
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("WinStatue_0_")
+
+[node name="HP_Figure_Window_1" type="Node3D" parent="."]
+position = Vector3(-2.482, 0.800, -0.350)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/comic_figure_3.glb"
+size_m = 0.468
+upright = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("WinStatue_1_")
+
+[node name="HP_SpeakSpell_Register" type="Node3D" parent="."]
+position = Vector3(3.200, 0.000, -6.400)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/speak_and_spell.glb"
+size_m = 0.250
+length_axis = "x"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("SpeakSpell_Body", "SpeakSpell_Keys", "SpeakSpell_Display", "SpeakSpell_Grille", "SpeakSpell_Crack")
+
+[node name="HP_SpeakSpell_BackOffice" type="Node3D" parent="."]
+position = Vector3(2.148, 1.638, -9.000)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/speak_and_spell.glb"
+size_m = 0.265
+length_axis = "x"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("BO_SpeakSpell_Body", "BO_SpeakSpell_Keys", "BO_SpeakSpell_Grille", "BO_SpeakSpell_Crack")

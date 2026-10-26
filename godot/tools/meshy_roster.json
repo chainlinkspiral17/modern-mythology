@@ -55875,6 +55875,705 @@
       ],
       "notes": "PICTURE (2026-10-27): the Whispers prelude played these lines over a blank screen (no picture, no set). Described from a full reading of the scene that shows it; Whispers is Andy's Drive writing only, so the picture draws what the text gives and nothing it does not. No lettering: signs, posters and pages read as shapes.",
       "setting": "America"
+    },
+    {
+      "slug": "comic_figure_1",
+      "kind": "prop",
+      "name": "a caped hero statue mid-leap",
+      "file": "comic_figure_1.glb",
+      "vol": [
+        3,
+        6,
+        7
+      ],
+      "keys": [
+        "comic_figure_1"
+      ],
+      "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A painted resin collectible statue on a round black base, about 35 cm tall: an original caped hero mid-leap, one fist forward, cape swept back, a deep blue suit with a red cape and a plain chest emblem shape. Glossy paint, crisp sculpt.",
+      "canon": [],
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+    },
+    {
+      "slug": "comic_figure_2",
+      "kind": "prop",
+      "name": "an armoured heroine statue",
+      "file": "comic_figure_2.glb",
+      "vol": [
+        3,
+        6,
+        7
+      ],
+      "keys": [
+        "comic_figure_2"
+      ],
+      "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A painted resin collectible statue on a round black base: an original armoured heroine standing guard with a round shield and short sword, bronze and teal armour plates, a plumed helm. Glossy paint, crisp sculpt.",
+      "canon": [],
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+    },
+    {
+      "slug": "comic_figure_3",
+      "kind": "prop",
+      "name": "a masked vigilante statue crouched on a gargoyle",
+      "file": "comic_figure_3.glb",
+      "vol": [
+        3,
+        6,
+        7
+      ],
+      "keys": [
+        "comic_figure_3"
+      ],
+      "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A painted resin collectible statue on a black base sculpted as a rooftop gargoyle: an original masked vigilante crouching on it in a long dark coat and wide-brimmed hat, scarf trailing. Glossy paint, crisp sculpt.",
+      "canon": [],
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+    },
+    {
+      "slug": "comic_figure_4",
+      "kind": "prop",
+      "name": "a cosmic hero statue on a meteor",
+      "file": "comic_figure_4.glb",
+      "vol": [
+        3,
+        6,
+        7
+      ],
+      "keys": [
+        "comic_figure_4"
+      ],
+      "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A painted resin collectible statue on a base sculpted as a glowing meteor: an original cosmic hero in a silver and violet suit, arms raised, a starfield pattern across the chest. Glossy paint, crisp sculpt.",
+      "canon": [],
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+    },
+    {
+      "slug": "comic_figure_5",
+      "kind": "prop",
+      "name": "a robot sidekick figure",
+      "file": "comic_figure_5.glb",
+      "vol": [
+        3,
+        6,
+        7
+      ],
+      "keys": [
+        "comic_figure_5"
+      ],
+      "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A painted vinyl collectible figure on a round base: an original boxy retro-styled robot sidekick with a dome head, round glowing eyes, accordion arms, cream and orange paint. Glossy, toy-like.",
+      "canon": [],
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+    },
+    {
+      "slug": "comic_figure_6",
+      "kind": "prop",
+      "name": "a monster villain statue",
+      "file": "comic_figure_6.glb",
+      "vol": [
+        3,
+        6,
+        7
+      ],
+      "keys": [
+        "comic_figure_6"
+      ],
+      "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A painted resin collectible statue on a craggy base: an original hulking swamp-monster villain, green-grey hide, claws raised, moss and roots trailing from the shoulders. Glossy paint, crisp sculpt.",
+      "canon": [],
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+    },
+    {
+      "slug": "crow",
+      "kind": "prop",
+      "name": "the crow",
+      "file": "crow.glb",
+      "vol": [
+        5,
+        7
+      ],
+      "keys": [
+        "crow"
+      ],
+      "tag": "vol5 · vol7 · the crow (the I-beam crow; Finn's crow) — one model, sixteen perches across eleven sets",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A real American crow, perched, wings folded, glossy black feathers with a faint blue sheen, heavy black beak, standing on its own feet as if on a rail; side three-quarter view.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch12_morning.json",
+          "text": "The crow's eye was the yellow-and-black he had been looking at across the bedroom for nine months."
+        },
+        {
+          "src": "vol7/vol7_ch12_morning.json",
+          "text": "The crow turned its head sideways and tapped the back of the chair once with its beak."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "The crow's eyes were the small bright black they had always been."
+        }
+      ],
+      "notes": "PROP (2026-10-27): replaces the kit's box crow (make_crow) on sixteen perches. Perched pose, feet under it; the HeroProp fits its length to the stand-in's (0.46 m, 0.35 on Finn's dashboard)."
+    },
+    {
+      "slug": "petras_cat",
+      "kind": "prop",
+      "name": "Petra's old cat, curled on her wool pillow",
+      "file": "petras_cat.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "petras_cat"
+      ],
+      "tag": "vol7 · the Salty Tome · Petra's cat, too old to be called by her name",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "An old house cat lying curled in a loaf on a small wool pillow, eyes closed, paws tucked, a little thin with age.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch14_petra.json",
+          "text": "In the kitchenette at the back of the bookstore the cat — Petra's cat, who was old enough that her name had stopped being used — was on her wool pillow on the chair beside the radiator."
+        },
+        {
+          "src": "vol7/vol7_ch14_petra.json",
+          "text": "The cat opened one eye when the four of them came in."
+        }
+      ],
+      "notes": "PROP (2026-10-27). SPARSE on colour: the text never gives her coat — proposed plain; edit before spending credits. Replaces the box loaf on the kitchenette chair's cushion."
+    },
+    {
+      "slug": "kowalski_kitchen_window_view",
+      "kind": "art",
+      "name": "the Kowalskis' backyard from the kitchen window",
+      "file": "kowalski_kitchen_window_view.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "kowalski_kitchen_window_view"
+      ],
+      "tag": "window · kowalski_kitchen · 1.50 x 1.10 m · 294 lines play here, 2 mention it",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "Exterior only. The view out of a suburban kitchen window onto a Texas backyard: a patchy St. Augustine lawn, a flower bed gone over to weeds along a wooden privacy fence, a coiled garden hose, a neighbour's roofline and a live oak beyond the fence, hot late-afternoon light. Portrait 3:4.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch19_chains.json",
+          "text": "gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 294,
+      "score_mentions": 2,
+      "apply": [
+        {
+          "locale": "kowalski_kitchen",
+          "label": "Window_E_Glass",
+          "center": [
+            4.858,
+            3.8,
+            1.55
+          ],
+          "size": [
+            1.5,
+            1.1
+          ],
+          "facing": "-x",
+          "hide": [
+            "Window_E_Glass"
+          ]
+        }
+      ],
+      "setting": "a Texas suburb"
+    },
+    {
+      "slug": "roberts_kitchen_window_view",
+      "kind": "art",
+      "name": "the Roberts' garden from the kitchen window",
+      "file": "roberts_kitchen_window_view.png",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "roberts_kitchen_window_view"
+      ],
+      "tag": "window · roberts_kitchen · 1.70 x 1.10 m · 144 lines play here, 5 mention it",
+      "aspect": "2:3",
+      "pose": null,
+      "prompt": "Exterior only. The view out of a small kitchen window onto a backyard vegetable garden at about six in the morning: a bed of newly sprouted tomato seedlings in tidy rows, a few staked, a small brown bird on the bed's wooden edge, a weathered fence of salvaged lumber, early soft sunlight and dew. Tall 2:3.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "A slow, maddeningly patient counterpoint to the frantic chirping of some unidentifiable bird just outside the window, probably plotting the demise of Mackenzie's newly sprouted tomato seedlings."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 144,
+      "score_mentions": 5,
+      "apply": [
+        {
+          "locale": "roberts_kitchen",
+          "label": "Window_E_Glass",
+          "center": [
+            5.358,
+            3.5,
+            1.55
+          ],
+          "size": [
+            1.7,
+            1.1
+          ],
+          "facing": "-x",
+          "hide": [
+            "Window_E_Glass"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "daily_grind_front_window_view",
+      "kind": "art",
+      "name": "Main Street through the Daily Grind's front windows",
+      "file": "daily_grind_front_window_view.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "daily_grind_front_window_view"
+      ],
+      "tag": "window · daily_grind_interior · 5.40 x 2.40 m · 155 lines play here, 2 mention it",
+      "aspect": "21:9",
+      "pose": null,
+      "prompt": "Exterior only. Looking out of a café's front window across Main Street in a small damp Oregon coast town: wet two-lane pavement, a row of old two-storey shop fronts across the street in weathered cedar shingle and painted clapboard, a few windows glowing, small dripping awnings, steady rain, slate-grey late-afternoon light. No readable signs, no people in focus. Very wide 21:9, the middle third composed to stand on its own.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch2_morning.json",
+          "text": "She drank it standing at the bar looking through the front window at the slate-gray light over Main."
+        },
+        {
+          "src": "vol7/vol7_ch2_afternoon.json",
+          "text": "Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 155,
+      "score_mentions": 2,
+      "apply": [
+        {
+          "locale": "daily_grind_interior",
+          "label": "Win_S_0_Glass",
+          "center": [
+            -3.1,
+            0.02,
+            1.7
+          ],
+          "size": [
+            5.4,
+            2.4
+          ],
+          "facing": "+y",
+          "hide": [
+            "Win_S_0_Glass"
+          ]
+        },
+        {
+          "locale": "daily_grind_interior",
+          "label": "Win_S_1_Glass",
+          "center": [
+            1.3,
+            0.02,
+            1.7
+          ],
+          "size": [
+            2.6,
+            2.4
+          ],
+          "facing": "+y",
+          "hide": [
+            "Win_S_1_Glass"
+          ]
+        },
+        {
+          "locale": "daily_grind_interior",
+          "label": "Win_S_2_Glass",
+          "center": [
+            5.0,
+            0.02,
+            1.7
+          ],
+          "size": [
+            1.4,
+            2.4
+          ],
+          "facing": "+y",
+          "hide": [
+            "Win_S_2_Glass"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "daily_grind_side_window_view",
+      "kind": "art",
+      "name": "the side street through the Daily Grind's west windows",
+      "file": "daily_grind_side_window_view.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "daily_grind_side_window_view"
+      ],
+      "tag": "window · daily_grind_interior · 4.00 x 2.40 m · 155 lines play here, 2 mention it",
+      "aspect": "16:9",
+      "pose": null,
+      "prompt": "Exterior only. Looking out of a café's side window onto a narrow side street in a small Oregon coast town: the wet cedar-shingled side wall of the next building, a parked older car beaded with rain, a downspout running, salal and a young spruce at the corner, steady rain, slate-grey light. No readable signs. Wide 16:9, the middle square composed to stand on its own.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch2_afternoon.json",
+          "text": "Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 155,
+      "score_mentions": 2,
+      "apply": [
+        {
+          "locale": "daily_grind_interior",
+          "label": "Win_W_0_Glass",
+          "center": [
+            -5.98,
+            2.4,
+            1.7
+          ],
+          "size": [
+            4.0,
+            2.4
+          ],
+          "facing": "+x",
+          "hide": [
+            "Win_W_0_Glass"
+          ]
+        },
+        {
+          "locale": "daily_grind_interior",
+          "label": "Win_W_1_Glass",
+          "center": [
+            -5.98,
+            6.4,
+            1.7
+          ],
+          "size": [
+            2.4,
+            2.4
+          ],
+          "facing": "+x",
+          "hide": [
+            "Win_W_1_Glass"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "missing_link_window_view_pumps",
+      "kind": "art",
+      "name": "the pumps and the bench through the diner's rain-glazed window",
+      "file": "missing_link_window_view_pumps.png",
+      "vol": [
+        1,
+        7
+      ],
+      "keys": [
+        "missing_link_window_view_pumps"
+      ],
+      "tag": "window · missing_link_interior · 1.28 x 1.13 m · 154 lines play here, 3 mention it",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "Exterior only, seen through a diner window glazed with rain on the outside: a wet asphalt apron, two old gas pumps under a lit awning, a wooden bench beside them, no one on it, the night beyond. Raindrops and streaks on the glass soften everything. Square.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol1/vol1_link_window.json",
+          "text": "The glass is glazed with rain on the outside and breath on the inside."
+        },
+        {
+          "src": "vol1/vol1_link_window.json",
+          "text": "Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 154,
+      "score_mentions": 3,
+      "apply": [
+        {
+          "locale": "missing_link_interior",
+          "label": "Window_0_Glass",
+          "center": [
+            -3.9,
+            -0.0,
+            1.575
+          ],
+          "size": [
+            1.28,
+            1.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "Window_0_Glass"
+          ]
+        },
+        {
+          "locale": "missing_link_interior",
+          "label": "Window_2_Glass",
+          "center": [
+            -0.1,
+            -0.0,
+            1.575
+          ],
+          "size": [
+            1.28,
+            1.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "Window_2_Glass"
+          ]
+        }
+      ],
+      "setting": "a roadside diner and filling station"
+    },
+    {
+      "slug": "missing_link_window_view_road",
+      "kind": "art",
+      "name": "the awning's edge and the road through the diner's rain-glazed window",
+      "file": "missing_link_window_view_road.png",
+      "vol": [
+        1,
+        7
+      ],
+      "keys": [
+        "missing_link_window_view_road"
+      ],
+      "tag": "window · missing_link_interior · 1.28 x 1.13 m · 154 lines play here, 3 mention it",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "Exterior only, seen through a diner window glazed with rain on the outside: the edge of a lit gas-station awning dripping, the wet asphalt apron running out to a dark two-lane road, a single far streetlight, rain streaking the glass. Square.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol1/vol1_link_window.json",
+          "text": "The glass is glazed with rain on the outside and breath on the inside."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 154,
+      "score_mentions": 3,
+      "apply": [
+        {
+          "locale": "missing_link_interior",
+          "label": "Window_1_Glass",
+          "center": [
+            -2.0,
+            -0.0,
+            1.575
+          ],
+          "size": [
+            1.28,
+            1.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "Window_1_Glass"
+          ]
+        },
+        {
+          "locale": "missing_link_interior",
+          "label": "Window_3_Glass",
+          "center": [
+            1.8,
+            -0.0,
+            1.575
+          ],
+          "size": [
+            1.28,
+            1.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "Window_3_Glass"
+          ]
+        }
+      ],
+      "setting": "a roadside diner and filling station"
+    },
+    {
+      "slug": "sam_bedroom_window_view",
+      "kind": "art",
+      "name": "the cul-de-sac from Sam's bedroom window",
+      "file": "sam_bedroom_window_view.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "sam_bedroom_window_view"
+      ],
+      "tag": "window · sam_bedroom · 1.16 x 0.96 m · 133 lines play here, 7 mention it",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "Exterior only. Looking down from an upstairs bedroom window onto a new-build Texas suburban cul-de-sac: green lawns, two-storey brick-and-siding houses curving round the circle, a mailbox across the street with a small corporate logo plate (no readable letters), sprinkler heads in the grass, late-afternoon gold light. 4:3.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch1_bedroom.json",
+          "text": "She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 133,
+      "score_mentions": 7,
+      "apply": [
+        {
+          "locale": "sam_bedroom",
+          "label": "Window_Glass",
+          "center": [
+            0.0,
+            5.6,
+            1.5
+          ],
+          "size": [
+            1.16,
+            0.96
+          ],
+          "facing": "-y",
+          "hide": [
+            "Window_Glass"
+          ]
+        }
+      ],
+      "setting": "a Texas suburb"
+    },
+    {
+      "slug": "hospice_room_window_view",
+      "kind": "art",
+      "name": "the parking lot below the hospice window before dawn",
+      "file": "hospice_room_window_view.png",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "hospice_room_window_view"
+      ],
+      "tag": "window · hospice_room · 1.80 x 1.40 m · 131 lines play here, 12 mention it",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "Exterior only. Looking down from a hospice room's upper-floor window at a small parking lot before dawn: wet asphalt shining under orange sodium lamps, a few parked cars, a line of live oaks hung with moss, the low roofs of a small Louisiana city beyond, deep blue pre-dawn sky. Quiet. 4:3.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "Outside the window, somewhere in the parking lot below, a car door closed softly."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "Outside, the city of Simons, Louisiana, kept its quiet pre-dawn."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 131,
+      "score_mentions": 12,
+      "apply": [
+        {
+          "locale": "hospice_room",
+          "label": "Window_N_Glass",
+          "center": [
+            1.5,
+            5.523,
+            1.7
+          ],
+          "size": [
+            1.8,
+            1.4
+          ],
+          "facing": "-y",
+          "hide": [
+            "Window_N_Glass"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "montreal_apartment_window_view",
+      "kind": "art",
+      "name": "the alley below John Frank's Montreal window",
+      "file": "montreal_apartment_window_view.png",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "montreal_apartment_window_view"
+      ],
+      "tag": "window · montreal_apartment · 2.00 x 1.80 m · 123 lines play here, 3 mention it",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "Exterior only. Looking down from an apartment window into a Montreal back alley in late-morning sun: overflowing blue recycling bins, iron fire escapes and outside stairs, an opposite old brick wall with a persistent patch of green moss, a stray cat crossing. Near-square.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "Mostly, though, he found himself staring out the window at the alleyway tapestry: overflowing recycling bins, a surprisingly persistent patch of moss on the opposite brick wall, the occasional stray cat navigating the urban topography with admirable stealth."
+        }
+      ],
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "art_cat": "WINDOW",
+      "score_lines": 123,
+      "score_mentions": 3,
+      "apply": [
+        {
+          "locale": "montreal_apartment",
+          "label": "Window_N_Glass",
+          "center": [
+            0.0,
+            4.858,
+            1.6
+          ],
+          "size": [
+            2,
+            1.8
+          ],
+          "facing": "-y",
+          "hide": [
+            "Window_N_Glass"
+          ]
+        }
+      ],
+      "setting": "Montreal"
     }
   ]
 }

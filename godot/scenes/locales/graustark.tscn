@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://graustark_ruins"]
+[gd_scene load_steps=29 format=3 uid="uid://graustark_ruins"]
 
 ; Graustark ruins (vol5 cameos + Lovers ch6). Full debug feature
 ; parity per _VOL5_LOCALES_MANIFEST.md — PostProcess + MoodCycler
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
 [ext_resource type="FontFile" path="res://resources/fonts/Caveat-Variable.ttf" id="17_chalkhand"]
 [ext_resource type="FontFile" path="res://resources/fonts/ReenieBeanie-Regular.ttf" id="18_charcoalhand"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="hp_hero_prop"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -783,3 +784,31 @@ position = Vector3(229.150, 4.250, 343.600)
 rotation = Vector3(-0.5526, 2.8879, 0.0)
 metadata/fov = 28.0
 
+; HERO PROPS (2026-10-27) — Hero Studio models over the box stand-ins, fitted at runtime by HeroProp;
+; a missing GLB (no drive-pull) leaves the stand-in exactly as built.
+[node name="HP_Star_Crow" type="Node3D" parent="."]
+position = Vector3(40.500, 2.750, 369.929)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.698
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Star_Crow_")
+
+[node name="HP_Roof_Crow" type="Node3D" parent="."]
+position = Vector3(52.500, 5.180, 383.179)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.698
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Roof_Crow_")
+
+[node name="HP_Bandstand_Crow" type="Node3D" parent="."]
+position = Vector3(240.864, 4.530, 325.929)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.698
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Bandstand_Crow_")

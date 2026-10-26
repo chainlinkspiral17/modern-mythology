@@ -383,7 +383,7 @@ script = ExtResource("20_hero_prop")
 glb_path = "res://assets/3d/props/steamboat_model.glb"
 size_m = 0.9
 length_axis = "z"
-stand_in_root = NodePath("Interior")
+stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Magician_Steamboat_Hull", "Magician_Steamboat_Trim", "Magician_Steamboat_Deck", "Magician_Steamboat_Saloon", "Magician_Steamboat_Hurricane", "Magician_Steamboat_Pilot", "Magician_Steamboat_Stack", "Magician_Steamboat_Wheel")
 
 
