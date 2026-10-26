@@ -416,15 +416,15 @@ metadata/fov = 42.0
 
 ; insert: her phone — Tem picks up on the fifth ring (vol7)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 1.45, -7.75)
-rotation = Vector3(-0.6642, -0.6435, 0.0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.950, 1.300, -7.700)
+rotation = Vector3(-0.5148, 0.7854, 0.0)
+metadata/fov = 36.0
 
 ; insert: the bell over the door, a long count (vol7)
 [node name="shot_insert_bell" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.7, -1.0)
-rotation = Vector3(0.7059, 3.0817, 0.0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.300, 1.550, -1.150)
+rotation = Vector3(0.4316, 2.8296, 0.0)
+metadata/fov = 34.0
 
 ; insert: the small brass bell on the counter, turned over (vol7)
 [node name="shot_insert_brass_bell" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -440,9 +440,9 @@ metadata/fov = 42.0
 
 ; insert: her hand on the wall over the patch; the bricks under it
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.775, 2.275, -9.327)
-rotation = Vector3(-0.6413, -1.8537, 0.0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300, 1.550, -9.550)
+rotation = Vector3(0.1677, 0.2132, 0.0)
+metadata/fov = 58.0
 
 ; insert: the milk crate at the foot of the wall
 [node name="shot_insert_crate" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -378,9 +378,9 @@ metadata/fov = 42.0
 
 ; insert: the eighth piece on the cloth's far corner (ch12_lena)
 [node name="shot_insert_eighth_piece" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.050, 1.150, -1.900)
-rotation = Vector3(-0.7693, 0.5698, 0.0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.600, 1.080, -1.600)
+rotation = Vector3(-0.5454, 0.8372, 0.0)
+metadata/fov = 30.0
 
 ; insert: the sheet of paper, "Jorgen" at the top (ch6)
 [node name="shot_insert_paper" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -408,9 +408,9 @@ metadata/fov = 42.0
 
 ; insert: Kai cutting bread on the small wooden board (ch7)
 [node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.550, 1.350, -1.650)
-rotation = Vector3(-0.5404, 0.9427, 0.0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.700, 1.320, -1.660)
+rotation = Vector3(-0.4691, 0.8288, 0.0)
+metadata/fov = 36.0
 
 ; insert: the bowl pushed an inch away from her (ch8 the_table)
 [node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -437,9 +437,9 @@ script = ExtResource("14_dbgm")
 
 ; insert: the charcoal — S U N — left on the duvet where her thigh was (vol7 interlude ii)
 [node name="shot_insert_charcoal" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.200, 1.150, -4.550)
-rotation = Vector3(-0.3436, 1.1071, 0)
-metadata/fov = 42.0
+position = Vector3(-2.300, 1.400, -4.720)
+rotation = Vector3(-1.0479, 0.6683, 0.0)
+metadata/fov = 30.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -475,6 +475,13 @@ shadow_enabled = false
 omni_range = 3.60
 
 ; The laundromat's sodium through the kitchen window over the sink: blender (-2.30, 1.30, 1.50) → godot (-2.30, 1.50, -1.30).
+[node name="Kitchen_Dome_Practical__lena_apartment_night" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 2.400, -2.000)
+light_color = Color(0.98, 0.84, 0.62, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 3.60
+
 [node name="Kitchen_Window_Practical__lena_apartment" type="OmniLight3D" parent="."]
 position = Vector3(-3.300, 1.500, -1.300)
 light_color = Color(1.000, 0.620, 0.260, 1)

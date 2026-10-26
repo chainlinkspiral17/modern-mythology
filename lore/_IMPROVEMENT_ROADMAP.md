@@ -3835,6 +3835,47 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-26 · pass 178: THE SALTY TOME AND LENA'S APARTMENT BY MONTAGE (57 markers, five presets).**
+- The Salty Tome's 32 markers rendered under the alley preset (ten chapters' worth) and
+  again under the interior's; Lena's 25 under the day preset and again under the night's
+  (pass 174's lesson: a night room's inserts go black). Both geometry gates were clean
+  before the montage.
+- **Salty Tome: three re-aimed, one prop built.** `insert bell` (ch8: "she looked at the
+  bell over the door for a long count"; "the bell rang at eleven-fifty-eight") looked up at
+  the header and the ceiling — the shop HAD no bell over its door, only the brass one on the
+  counter → a brass shop bell on a spring arm off the header's inside face (the support
+  gate wanted the bracket INTO the header on every axis, not merely touching its face;
+  three tries), the marker on it from 1.2 m with the doorway's daylight below. `insert
+  phone` ("she picked up her phone and called Tem") framed the desk lamp's arm with the
+  phone behind it → from the desk's east side. `insert wall` (eight cues: "stood beside her
+  at the wall", "the crowd at the wall", "the brick wall of the laundromat") was a blank
+  corner with a downspout → the mural wall from 2.3 m inside the alley, the face centred,
+  fov 58 — the frame the chapter means when it says the wall (the first re-aim stood 3.4 m
+  back, which put the camera INSIDE the annex behind the shop; the obstruction gate passed
+  it and the render was a blank yellow wall — the montage caught it).
+- Read as authored: the face (twelve cues) and the hand, the crow, the bowls, the crate
+  still life (brush, coffee, notebook — `insert cedar`'s "the cedar in the alley light" is
+  the eighth piece in her hand and lands on the crate too; nothing to point at), the
+  counter bell, the kitchenette, the office's phone under its own preset.
+- **Lena's apartment, day: two re-aimed, one buried prop.** `insert charcoal` (interlude ii:
+  "her thigh has charcoal on it in the shape of three letters" — the letters are drawn on
+  the bedding where her thigh was) framed the whole bed from the doorway, the letters a
+  smudge. Two re-aims showed NOTHING: the three letters and the smudge sat at z 0.5915 and
+  the blanket's top is 0.60 — 8 mm under the blanket since the bed was redressed (the same
+  class as pass 176's five-dollar bill: both audits pass, the montage shows the surface).
+  Now on the blanket at 0.6015, framed steeply from 0.9 m — three dark marks on the red. `insert eighth_piece` ("she held it in her palm")
+  stood directly over the 7 cm cedar piece and looked past it at the floor cushions → from
+  0.5 m, 0.3 m up. The bowl, bread, canvas, easel, hexagon, letter, mural, nightstand,
+  paper, patch, phone, stick and window all read.
+- **Lena's apartment, night: one practical, one re-aim.** The night preset lit the room
+  from the floor lamp alone, so ch7's "Lena cut more bread" (four cues) was a black counter
+  and "her phone on the side table" a black table → the kitchen gets a ceiling dome over
+  its counter run (builder; authored inside the run's `shifted(-1.0)` frame — the first
+  placement sat outside the `with` and broke the builder, and the bread marker aimed 1 m
+  east of the loaf for the same reason: the kit frame's shift is invisible in the call's
+  numbers, read the GLB bounds) and a `Kitchen_Dome_Practical__lena_apartment_night` under
+  it; the bread from 0.6 m. **Deck rebuilds salty_tome_interior and lena_apartment.**
+
 **2026-10-25 · pass 177: THE MILLER HOUSE BY MONTAGE — kitchen, back porch, office, garage (51 markers).**
 - Every marker rendered under its chapter's preset (the kitchen's day preset, the porch's
   morning, Bianca's office, the garage) and read. Both geometry gates were clean on all

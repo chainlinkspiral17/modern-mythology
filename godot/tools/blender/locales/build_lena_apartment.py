@@ -182,6 +182,12 @@ def build_kitchen():
         # The window over the sink → the alley + the Starfish Nebula mural
         # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
         make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
+        # the kitchen's ceiling dome over the counter run (2026-10-26: the night
+        # preset lit the room from the floor lamp alone; "Lena cut more bread" at
+        # past nine was a black counter) — authored in the run's shifted frame
+        make_cyl("Kitchen_Ceiling_Dome_Base", (-2.10, 2.00, CEIL - 0.010), 0.14, 0.03, (0.72, 0.70, 0.66, 1.0), segments=16)
+        make_lathe("Kitchen_Ceiling_Dome", (-2.10, 2.00, CEIL - 0.125), [(0.0, 0.0), (0.12, 0.0), (0.135, 0.05), (0.12, 0.09), (0.0, 0.105)],
+                   (0.94, 0.92, 0.86, 1.0), segments=16)
         # Counter run (2026-09-23: the whole run — counter, sink, stove,
         # kettle, grinder — stood 10 cm inside the W wall; shifted out 0.10)
         make_box("Counter_Body", (-2.10, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
@@ -340,8 +346,9 @@ def build_bedroom():
         # shape of three letters: S U N ... There is no charcoal in the
         # apartment." The residue it left on the duvet where she slept.
         for ci, (dx, w) in enumerate(((-0.16, 0.06), (0.0, 0.05), (0.16, 0.06))):
-            make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.5915), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
-        make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.5911), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
+            # on the blanket's top (0.60): they sat 8 mm under it (2026-10-26)
+            make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.6015), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
+        make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.6011), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
         make_chamfer_box("Nightstand", (bx+0.95, by+0.7, 0.30), (0.42, 0.42, 0.60), COL_WOOD, chamfer=0.01)
         make_box("Nightstand_Drawer_Seam", (bx+0.95, by+0.7-0.212, 0.44), (0.34, 0.004, 0.006), (0.34, 0.24, 0.16, 1.0))
         make_lathe("Nightstand_Pull", (bx+0.95, by+0.7-0.215, 0.36), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)],

@@ -156,7 +156,9 @@
   "objects": 304
  },
  "lena_apartment": {
-  "draw": 156
+  "draw": 226,
+  "prims": 142244,
+  "objects": 396
  },
  "link_house": {
   "draw": 1512,

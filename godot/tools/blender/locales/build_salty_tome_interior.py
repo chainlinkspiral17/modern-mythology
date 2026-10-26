@@ -107,6 +107,13 @@ def build_shell():
     make_wall_with_openings("Wall_S_W", (-2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.5, 1.55, 2.40, 1.30)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_wall("Wall_S_E", (+2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    # THE BELL OVER THE DOOR (2026-10-26 — "she looked at the bell over the
+    # door for a long count"; "the bell rang at eleven-fifty-eight"): a brass
+    # shop bell on a spring arm off the header's inside face
+    make_box("DoorBell_Bracket", (0.0, 0.15, CEIL-0.58), (0.03, 0.12, 0.03), COL_BRASS)   # into the header (its face AND its underside)
+    make_cyl("DoorBell_Spring", (0.0, 0.22, CEIL-0.64), 0.012, 0.12, COL_BRASS, segments=8)
+    make_lathe("DoorBell", (0.0, 0.22, CEIL-0.765), [(0.0, 0.0), (0.045, 0.0), (0.038, 0.045), (0.014, 0.07), (0.0, 0.07)], COL_BRASS, segments=12)
+    make_cyl("DoorBell_Clapper", (0.0, 0.22, CEIL-0.775), 0.006, 0.03, COL_BRASS, segments=6)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
                                     ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
