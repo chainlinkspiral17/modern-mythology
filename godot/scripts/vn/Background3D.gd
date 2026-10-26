@@ -4377,6 +4377,33 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	# (2026-10-27, pass 184) the rest of its morning, one preset per state:
+	# "He pops the hood" (the hood up, the steam) · 11:08 the tow truck
+	# backed up to it · 11:28 "the Peugeot is on the truck"
+	"kwik_stop_hood": {
+		"scene": "res://scenes/locales/kwik_stop.tscn",
+		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"kwik_stop_tow": {
+		"scene": "res://scenes/locales/kwik_stop.tscn",
+		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"kwik_stop_towed": {
+		"scene": "res://scenes/locales/kwik_stop.tscn",
+		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	# ── Vols 1-2 · 3D migration (2026-08-03) ─────────────────────
 	# "Visual novel backgrounds are 3d scenes." The legacy 2D JPEG
 	# refs migrated onto locales; these presets are the new sets.
@@ -5114,6 +5141,11 @@ func load_location(preset_id: String) -> bool:
 		_unload_for_missing(preset_id, String(spec.get("scene", "")))
 		return false
 	_location_instance = ps.instantiate()
+	# (2026-10-27) the preset's own parts first: what belongs to another
+	# preset leaves before the glass and hero-art passes touch it (freeing
+	# a steam puff whose glass material had never drawn tripped the GL
+	# renderer's "material is null" four times a load)
+	_strip_other_preset_lights(_location_instance, preset_id)
 	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
 	# real transparency — before this every pane was an opaque slab.
 	GlassPass.apply(_location_instance)
@@ -5136,7 +5168,6 @@ func load_location(preset_id: String) -> bool:
 		var pp: Node = _location_instance.get_node_or_null("PostProcess")
 		if pp != null:
 			pp.set("default_style_pack", String(spec["style_pack"]))
-	_strip_other_preset_lights(_location_instance, preset_id)
 	_apply_preset_env(_location_instance, spec)
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.
 	# Once added, every script in the locale's _ready cascade caches
@@ -5252,30 +5283,41 @@ func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
 	# "the room" (ranch_bedroom_day) it is gone: "where my clock radio used
 	# to sit". Runs before the set enters the tree, so StaticMerge never
 	# folds a stripped mesh into a batch.
-	var nodes: Array[Node] = root.find_children("*", "Light3D", true, false)
-	nodes.append_array(root.find_children("*", "MeshInstance3D", true, false))
 	# (2026-10-19) and writing: the Star's charcoal verses on Joanna's wall
 	# are not there yet in the Hermit (Verse_Star_*__<preset>…)
-	nodes.append_array(root.find_children("*", "Label3D", true, false))
-	# (2026-10-27) and a hero prop that stands in for such a part: the red
-	# Peugeot's model (HP_Peugeot__kwik_stop_peugeot) leaves with its stand-in
-	for hp: Node in root.find_children("HP_*", "Node3D", true, false):
-		if hp.get_script() != null and String(hp.get_script().resource_path).ends_with("HeroProp.gd"):
-			nodes.append(hp)
-	for n in nodes:
-		var nm: String = String(n.name)
-		if nm.find("__") < 0:
+	# (2026-10-27) and any tagged node: a hero prop that stands in for such a
+	# part (HP_Peugeot__…), and a GROUP — the builder parents a whole car
+	# under an empty named `PeugeotCar__kwik_stop_peugeot__kwik_stop_hood…`
+	# (tags on every part overran Blender's 63-character names). Markers are
+	# skipped: their `__<preset>` names an override, not an owner. Deepest
+	# first, so no node is freed under a parent already gone.
+	var doomed: Array[Node] = []
+	for n: Node in root.find_children("*__*", "Node3D", true, false):
+		if n is Marker3D:
 			continue
 		# only suffixes that NAME a preset mark a node (a fixture's own
 		# `Prac_PorchScreen_W__2` is a numbered copy, not an area)
 		var owners: Array[String] = []
-		for part: String in nm.split("__").slice(1):
+		for part: String in String(n.name).split("__").slice(1):
 			if CAMERA_PRESETS.has(part):
 				owners.append(part)
 		if owners.is_empty() or preset_id in owners:
 			continue
-		n.get_parent().remove_child(n)
-		n.free()
+		doomed.append(n)
+	doomed.sort_custom(func(x: Node, y: Node) -> bool: return _depth(x) > _depth(y))
+	for n: Node in doomed:
+		if is_instance_valid(n) and n.get_parent() != null:
+			n.get_parent().remove_child(n)
+			n.free()
+
+
+static func _depth(n: Node) -> int:
+	var d: int = 0
+	var p: Node = n.get_parent()
+	while p != null:
+		d += 1
+		p = p.get_parent()
+	return d
 
 
 ## The locale's mood stack quiets its signal artifacts under the paint

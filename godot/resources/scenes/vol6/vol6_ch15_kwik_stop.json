@@ -224,8 +224,12 @@
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/041.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:kwik_stop_hood"
+    },
+    {
       "t": "narrate",
-      "text": "He is in a t-shirt that is the color t-shirts become when they have been worn three days in a row. He goes to the front of the car. He pops the hood.",
+      "text": "[shot:insert lot]He is in a t-shirt that is the color t-shirts become when they have been worn three days in a row. He goes to the front of the car. He pops the hood.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/042.ogg"
     },
     {
@@ -245,7 +249,7 @@
     },
     {
       "t": "narrate",
-      "text": "The hood, after a few seconds, has a small steady plume of steam coming out of it.",
+      "text": "[shot:insert window]The hood, after a few seconds, has a small steady plume of steam coming out of it.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/046.mp3"
     },
     {
@@ -1533,8 +1537,12 @@
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/265.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:kwik_stop_tow"
+    },
+    {
       "t": "narrate",
-      "text": "The driver — a kid in his early twenties Sam recognizes as one of Bobby's regulars — backs the truck up to the Peugeot. He gets out. He shakes Mark's hand. He looks at the car.",
+      "text": "[shot:insert lot]The driver — a kid in his early twenties Sam recognizes as one of Bobby's regulars — backs the truck up to the Peugeot. He gets out. He shakes Mark's hand. He looks at the car.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/266.ogg"
     },
     {
@@ -1543,8 +1551,12 @@
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/267.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:kwik_stop_towed"
+    },
+    {
       "t": "narrate",
-      "text": "By eleven twenty-eight the Peugeot is on the truck.",
+      "text": "[shot:insert lot]By eleven twenty-eight the Peugeot is on the truck.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/268.mp3"
     },
     {

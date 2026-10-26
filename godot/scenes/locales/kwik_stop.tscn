@@ -494,9 +494,32 @@ position = Vector3(5.450, 1.620, -2.600)
 rotation = Vector3(-0.0377, 2.4130, 0.0)
 metadata/fov = 24.0
 
-; HERO PROP (2026-10-27): the red Peugeot, only in the ch15 preset (the node's
-; suffix drops it, with its stand-in, everywhere else)
-[node name="HP_Peugeot__kwik_stop_peugeot" type="Node3D" parent="."]
+; insert (tow): the rollback backed up to the Peugeot's nose, wider (ch15, 11:08);
+; the clerk aisle's south end, so truck and car both clear the door pier and
+; the ATM's overhead sign
+[node name="shot_insert_lot__kwik_stop_tow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.750, 1.620, -1.200)
+rotation = Vector3(-0.0460, 2.2408, 0.0)
+metadata/fov = 30.0
+
+; insert (towed): "By eleven twenty-eight the Peugeot is on the truck"
+[node name="shot_insert_lot__kwik_stop_towed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.750, 1.620, -1.200)
+rotation = Vector3(-0.0275, 2.1661, 0.0)
+metadata/fov = 28.0
+
+; insert (hood): from the window tables, seated, under the lottery decal — the car
+; out in its corner with its hood up (ch15 "Lucy goes to the table by the window")
+[node name="shot_insert_window__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.950, 1.180, -2.600)
+rotation = Vector3(-0.0097, 2.7576, 0.0)
+metadata/fov = 36.0
+
+; HERO PROPS (2026-10-27): the red Peugeot's morning, one per state (each node's
+; suffix drops it, with its stand-in group, in every other preset): the car on the
+; ground with its hood shut (arrival, the tow backing up), with its hood up
+; (its own model), the rollback, and the car on the rollback's deck
+[node name="HP_Peugeot__kwik_stop_peugeot__kwik_stop_tow" type="Node3D" parent="."]
 position = Vector3(-9.900, 0.000, 14.600)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/peugeot_505.glb"
@@ -504,6 +527,33 @@ size_m = 4.580
 length_axis = "z"
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Car_Peugeot_")
+
+[node name="HP_PeugeotHood__kwik_stop_hood" type="Node3D" parent="."]
+position = Vector3(-9.900, 0.000, 14.600)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/peugeot_505_hood_up.glb"
+size_m = 4.580
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Car_Peugeot_")
+
+[node name="HP_TowTruck__kwik_stop_tow__kwik_stop_towed" type="Node3D" parent="."]
+position = Vector3(-9.900, 0.000, 7.655)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/bobbys_tow_truck.glb"
+size_m = 8.750
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("TowTruck_")
+
+[node name="HP_PeugeotTowed__kwik_stop_towed" type="Node3D" parent="."]
+position = Vector3(-9.900, 1.620, 9.810)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/peugeot_505.glb"
+size_m = 4.580
+length_axis = "z"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Car_PeugeotTowed_")
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)

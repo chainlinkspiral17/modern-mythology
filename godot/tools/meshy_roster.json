@@ -5332,6 +5332,96 @@
       "notes": "PROP (2026-10-27, user: \"The Peugeot needs a model\"): replaces the kit-car stand-in Car_Peugeot_* in the Kwik Stop lot's far corner, only in the kwik_stop_peugeot preset (ch15, from the car's arrival to the tow). The HeroProp lays its length along the lot (z) at 4.58 m, a 505's real length. The text gives red, faded in patches, small, European, 1986 505 Turbo; the body style (sedan) is the 505 Turbo's US form — the text does not say. Hood closed: ch15 pops it (\"He pops the hood\", steam) — a hood-up state is a later pass."
     },
     {
+      "slug": "peugeot_505_hood_up",
+      "kind": "prop",
+      "name": "the red Peugeot, hood up",
+      "file": "peugeot_505_hood_up.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "peugeot_505_hood_up"
+      ],
+      "tag": "vol6 ch15 · the same car with its hood propped open, steaming — the Kwik Stop lot from \"He pops the hood\" to the tow",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "The same 1986 Peugeot 505 Turbo sedan in forty-year-old red paint faded in uneven pinkish patches, its hood propped wide open on its rod, the engine bay dark and visible, a dead engine after a breakdown. Parked, seen from the front three-quarter. No people. No badges or lettering legible. (The steam is built in the set, not the model.)",
+      "texture_prompt": "faded forty-year-old red paint with uneven sun-faded patches, black rubber bumpers and trim, clear glass, silver alloy wheels, black tyres, a dark oily engine bay",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "He goes to the front of the car. He pops the hood."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The two of them, at the engine, do the thing two people do at an engine that has just failed."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The hood, after a few seconds, has a small steady plume of steam coming out of it."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "If it's the head gasket — and it's the head gasket"
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The car is small."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The car is European."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "red, in the way of a car that has been red for forty years and that has,"
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "in the past five years, started to fade in the small uneven patches a forty-year-old red paint job fades in when the car has lived its life mostly outdoors."
+        }
+      ],
+      "notes": "PROP (2026-10-27, pass 184): the hood-up state of peugeot_505 (kwik_stop_hood preset, ch15 'He pops the hood' to the tow). Generate from the same concept as peugeot_505 so the two read as one car; the set adds the steam. Replaces the kit car + its Car_Peugeot_HoodUp_* overlay through HP_PeugeotHood__kwik_stop_hood."
+    },
+    {
+      "slug": "bobbys_tow_truck",
+      "kind": "prop",
+      "name": "Bobby's tow truck",
+      "file": "bobbys_tow_truck.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "bobbys_tow_truck"
+      ],
+      "tag": "vol6 ch15 · the tow from Bobby's in New Auburn — backed up to the Peugeot at 11:08, gone with it by 11:28",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A flatbed rollback tow truck: a white medium-duty cab, an amber light bar on the roof, a long flat steel deck behind the cab with a winch at its front and a headboard, the deck tilted level. Small-town working truck, a little road grime. Empty deck. No company lettering legible.",
+      "texture_prompt": "white painted cab, dark grey steel deck, amber light bar, black tyres, road grime",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes"
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "At eleven oh-eight the tow truck pulls into the lot."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "backs the truck up to the Peugeot."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "By eleven twenty-eight the Peugeot is on the truck."
+        }
+      ],
+      "notes": "PROP (2026-10-27, pass 184): SPARSE — the text says a tow truck that backs up to the car, hooks it up and carries it ('on the truck'): a rollback/flatbed is the reading, not stated. Colour and make are not in the text. Replaces the kit TowTruck_* (kwik_stop_tow, kwik_stop_towed) through HP_TowTruck__kwik_stop_tow__kwik_stop_towed; the HeroProp fits it to 8.75 m (cab + deck overhang)."
+    },
+    {
       "slug": "iv_pole",
       "kind": "prop",
       "name": "The IV pole",

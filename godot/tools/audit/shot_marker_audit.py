@@ -101,6 +101,9 @@ NOT_PROPS = {
 # re-aimed onto a fridge door 0.5 m away; a "photograph" onto a door
 # frame. Any hit whose name carries one of these words is dropped.
 EXCLUDE = {
+    # (2026-10-27) the lot frame looks for the car in its corner, not the
+    # copy on the tow truck's deck (Car_PeugeotTowed_*)
+    "lot": ["towed"],
     "door": ["fridge", "cabinet", "cab", "oven", "microwave", "dishwasher", "stall", "car", "truck", "van", "locker", "safe"],
     "window": ["car", "truck", "van", "cab"],
     "photograph": ["door", "window"],

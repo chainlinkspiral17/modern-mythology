@@ -1258,7 +1258,7 @@ def build_wet_floor_cone():
              (0.30, 0.30, 0.04), COL_RUBBER_MAT)
 
 
-def _kit_car(prefix, cx, cy, length, col, pickup=False, along="Y"):
+def _kit_car(prefix, cx, cy, length, col, pickup=False, along="Y", z0=0.0, light_bar=False):
     """The shared kit car (_props.vehicles.make_car), nose toward +axis.
     Under the audits' recorder the kit import resolves the same way
     make_box's does."""
@@ -1268,7 +1268,7 @@ def _kit_car(prefix, cx, cy, length, col, pickup=False, along="Y"):
         if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
             _sys.path.insert(0, _c)
     from _props.vehicles import make_car
-    make_car(prefix, cx, cy, length, col, pickup=pickup, along=along)
+    make_car(prefix, cx, cy, length, col, pickup=pickup, along=along, z0=z0, light_bar=light_bar)
 
 
 def build_exterior_through_windows():
@@ -1291,8 +1291,9 @@ def build_exterior_through_windows():
     # The lot runs x -13 .. 14, wider than the store (x -6 .. 6).
     # DRAFT 3 TARGETS: curbs on the lot's edges, wheel stops in the
     # stalls, oil stains and patched asphalt (D2 surface breakup), the
-    # Peugeot's hood up and steaming (ch15 "He pops the hood"), the tow
-    # truck (11:08-11:28), and the Gas & Go past massing.
+    # towed Peugeot's tie-down chains, a drifting steam particle in
+    # place of the static puffs, and the Gas & Go past massing. (The
+    # hood and the tow went in with pass 184: build_red_peugeot.)
     make_box("Asphalt", (0.5, -9.4, -0.04),
              (27.0, 18.8, 0.04), COL_ASPHALT)
     make_box("Walk_Paint", (0.0, -0.8, -0.016),
@@ -1979,7 +1980,10 @@ def build_trashbag_at_stockroom():
 def build_propane_cage_outside():
     # Propane-tank exchange cage outside the south door, visible
     # through the windows. Canon gas-station prop.
-    cx, cy = -4.00, -1.10
+    # (2026-10-27) at the building's corner, behind the west pier: in front
+    # of the west window it stood across the window seats' view of the lot
+    # (the Peugeot's corner, ch15)
+    cx, cy = -5.35, -1.10
     # Cage frame
     make_box("PropaneCage_Frame", (cx, cy, 0.70),
              (1.20, 0.80, 1.40), COL_METAL_STEEL)
@@ -3079,9 +3083,116 @@ def build_hero_props_2026_09():
                  (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
 
 
-PEUGEOT_PRESET = "kwik_stop_peugeot"
 COL_PEUGEOT_RED = (0.66, 0.15, 0.13, 1.0)
 COL_PEUGEOT_FADE = (0.80, 0.42, 0.38, 1.0)
+COL_TOW_WHITE = (0.86, 0.86, 0.84, 1.0)
+# THE PEUGEOT'S MORNING (vol6 ch15), one preset per state. A group's parts
+# hang under an empty named `<Group>__<preset>[__<preset>…]`; Background3D
+# drops a tagged node (and so its whole group) for every preset it does
+# not name. (Tags on the parts themselves overran Blender's 63-character
+# names once a part belonged to three presets.)
+PEUGEOT_GROUPS = (      # first match wins: the hood's parts before the car's
+    ("PeugeotHood__kwik_stop_hood", ("Car_Peugeot_HoodUp_", "Peugeot_Steam_")),
+    ("PeugeotCar__kwik_stop_peugeot__kwik_stop_hood__kwik_stop_tow", ("Car_Peugeot_",)),
+    ("TowTruck__kwik_stop_tow__kwik_stop_towed", ("TowTruck_",)),
+    ("PeugeotTowed__kwik_stop_towed", ("Car_PeugeotTowed_",)),
+)
+PEUGEOT_XY = (-9.90, -14.60)       # the far corner, nose to the store
+PEUGEOT_L = 4.58                   # a 505's length
+TOW_L = 7.20                       # the rollback: cab + a 5.1 m deck
+TOW_DECK_TOP = 1.62
+
+
+def _peugeot_fades(prefix, cx, cy, z0):
+    nose, tail = cy + PEUGEOT_L / 2.0, cy - PEUGEOT_L / 2.0
+    # hood (0.92 .. 0.96 m up the kit profile), roof (1.46), trunk lid (~1.00)
+    for fi, (fx, fy, fz, fw, fl) in enumerate((
+            (cx + 0.30, nose - 0.55, 0.943, 0.55, 0.40),
+            (cx - 0.35, nose - 0.85, 0.955, 0.40, 0.30),
+            (cx + 0.10, cy + 0.05, 1.462, 0.70, 0.55),
+            (cx - 0.40, tail + 0.40, 1.010, 0.45, 0.30))):
+        make_box(f"{prefix}_Fade_{fi}", (fx, fy, z0 + fz), (fw, fl, 0.004), COL_PEUGEOT_FADE)
+
+
+def build_red_peugeot():
+    """THE RED PEUGEOT (vol6 ch15). "The car is small. The car is European.
+    The car is ... red, in the way of a car that has been red for forty
+    years and that has, in the past five years, started to fade in the
+    small uneven patches a forty-year-old red paint job fades in";
+    "Eighty-six Peugeot. 505 Turbo." Real size, the kit car in the
+    southwest corner, nose to the store; the faded patches are plates.
+
+    Its morning, one preset per state (the chapter switches at the line):
+      kwik_stop_peugeot  9:47 "The red car pulls into the lot" — the car
+      kwik_stop_hood     "He pops the hood" — the hood up on its rod, the
+                         engine bay, "a small steady plume of steam"
+      kwik_stop_tow      11:08 "the tow truck pulls into the lot ... backs
+                         the truck up to the Peugeot" — a rollback, its deck
+                         at the car's nose
+      kwik_stop_towed    "By eleven twenty-eight the Peugeot is on the
+                         truck" — the car on the deck, nose to the cab
+    and kwik_stop_interior again at "watch the Peugeot disappear up
+    Gallatin". The hero models replace the kit cars through the HP_*
+    nodes in kwik_stop.tscn (the hood-up state has its own model)."""
+    cx, cy = PEUGEOT_XY
+    nose = cy + PEUGEOT_L / 2.0
+    _kit_car("Car_Peugeot", cx, cy, PEUGEOT_L, COL_PEUGEOT_RED)
+    _peugeot_fades("Car_Peugeot", cx, cy, 0.0)
+    # ── the hood up (kwik_stop_hood): hinged at the cowl, its front lifted
+    #    55 degrees on a prop rod; the bay dark beneath it
+    hinge_y, hinge_z, hood_l, ang = nose - 1.10, 0.975, 1.02, math.radians(55.0)
+    make_box("Car_Peugeot_HoodUp_Bay", (cx, nose - 0.62, 0.966), (1.50, 0.92, 0.006), (0.08, 0.08, 0.09, 1.0))
+    make_box("Car_Peugeot_HoodUp_Block", (cx, nose - 0.70, 0.99), (0.60, 0.42, 0.04), (0.30, 0.30, 0.31, 1.0))
+    import _props.geometry as _G
+    _G.make_rot_box("Car_Peugeot_HoodUp_Panel",
+                    (cx, hinge_y + math.cos(ang) * hood_l / 2.0, hinge_z + math.sin(ang) * hood_l / 2.0),
+                    (1.56, hood_l, 0.03), COL_PEUGEOT_RED, roll=ang)
+    rod_y = nose - 0.62
+    rod_top = hinge_z + math.tan(ang) * (rod_y - hinge_y)
+    make_cyl("Car_Peugeot_HoodUp_Rod", (cx + 0.62, rod_y, (0.969 + rod_top) / 2.0), 0.008,
+             rod_top - 0.969, COL_METAL_STEEL, segments=5)
+    # the steam: soft translucent puffs rising out of the gap and drifting
+    for si, (dz, r, dx) in enumerate(((0.18, 0.20, 0.00), (0.45, 0.28, 0.06),
+                                     (0.82, 0.36, 0.14), (1.25, 0.44, 0.24))):
+        _G.make_blob(f"Peugeot_Steam_{si}", (cx + dx, nose - 0.30, 1.02 + dz), r,
+                     (0.93, 0.94, 0.95, 0.34 - si * 0.05), noise=0.25, seed=si + 3)
+    # ── the rollback (kwik_stop_tow, kwik_stop_towed): backed up from the
+    #    drive aisle, its deck's end at the car's nose
+    deck_rear = nose + 0.28
+    ty = deck_rear + 5.00                   # the deck runs u -5.0 .. 0.1 of the truck
+    _kit_car("TowTruck", cx, ty, TOW_L, COL_TOW_WHITE, pickup=True, light_bar=True)
+    t_nose = ty + TOW_L / 2.0
+    deck_u0, deck_u1 = ty - 5.00, t_nose - 3.50
+    make_box("TowTruck_Deck", (cx, (deck_u0 + deck_u1) / 2.0, TOW_DECK_TOP - 0.06),
+             (2.30, deck_u1 - deck_u0, 0.12), (0.30, 0.30, 0.32, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"TowTruck_Deck_Rail_{'L' if sgn > 0 else 'R'}",
+                 (cx + sgn * 1.12, (deck_u0 + deck_u1) / 2.0, TOW_DECK_TOP + 0.04),
+                 (0.06, deck_u1 - deck_u0, 0.08), (0.86, 0.66, 0.16, 1.0))
+    make_box("TowTruck_Winch", (cx, deck_u1 - 0.25, TOW_DECK_TOP + 0.20), (0.70, 0.40, 0.40),
+             (0.20, 0.20, 0.22, 1.0))
+    make_box("TowTruck_Headboard", (cx, deck_u1 - 0.03, TOW_DECK_TOP + 0.45), (2.20, 0.06, 0.90),
+             (0.30, 0.30, 0.32, 1.0))
+    # ── the car on the deck (kwik_stop_towed), winched on nose first
+    # its nose short of the winch (deck_u1 - 0.45), its tail at the deck's end
+    tcy = deck_u0 + 2.22
+    _kit_car("Car_PeugeotTowed", cx, tcy, PEUGEOT_L, COL_PEUGEOT_RED, z0=TOW_DECK_TOP)
+    _peugeot_fades("Car_PeugeotTowed", cx, tcy, TOW_DECK_TOP)
+    _group_tagged(PEUGEOT_GROUPS)
+
+
+def _group_tagged(groups):
+    """Parent each group's parts under its tagged empty (Blender only; the
+    audits' recorder has no scene, and records the parts as they are)."""
+    try:
+        for empty_name, prefixes in groups:
+            empty = bpy.data.objects.new(empty_name, None)
+            bpy.context.scene.collection.objects.link(empty)
+            for obj in list(bpy.data.objects):
+                if obj is not empty and obj.parent is None and obj.name.startswith(prefixes):
+                    obj.parent = empty
+    except Exception:
+        pass
 
 
 def build_forecourt_world():
@@ -3128,39 +3239,6 @@ def build_forecourt_world():
         th = 6.0 + (ti * 37 % 5) * 1.1
         make_box(f"Scrub_Treeline_{ti}", (tx, -96.0 - (ti % 3) * 4.0, th / 2.0 - 0.08),
                  (19.0, 6.0, th), (0.20, 0.27, 0.18, 1.0))
-
-
-def build_red_peugeot():
-    """THE RED PEUGEOT (vol6 ch15). "The car is small. The car is European.
-    The car is ... red, in the way of a car that has been red for forty
-    years and that has, in the past five years, started to fade in the
-    small uneven patches a forty-year-old red paint job fades in";
-    "Eighty-six Peugeot. 505 Turbo." It "stops in the lot's far corner
-    instead of pulling up to a pump" at 9:47 and is on the tow truck by
-    11:28. Real size (a 505 is 4.58 m), the kit car in the southwest
-    corner, nose to the store. The faded patches are plates on the hood,
-    roof and trunk lid.
-
-    It exists only in the ch15 preset: every part is renamed
-    `<name>__kwik_stop_peugeot`, and Background3D drops it for every other
-    preset (the clock radio's convention). The hero model replaces it
-    through HP_Peugeot__kwik_stop_peugeot in kwik_stop.tscn."""
-    cx, cy, L = -9.90, -14.60, 4.58
-    _kit_car("Car_Peugeot", cx, cy, L, COL_PEUGEOT_RED)
-    nose, tail = cy + L / 2.0, cy - L / 2.0
-    # hood (0.92 .. 0.96 m up the profile), roof (1.46), trunk lid (~1.00)
-    for fi, (fx, fy, fz, fw, fl) in enumerate((
-            (cx + 0.30, nose - 0.55, 0.943, 0.55, 0.40),
-            (cx - 0.35, nose - 0.85, 0.955, 0.40, 0.30),
-            (cx + 0.10, cy + 0.05, 1.462, 0.70, 0.55),
-            (cx - 0.40, tail + 0.40, 1.010, 0.45, 0.30))):
-        make_box(f"Car_Peugeot_Fade_{fi}", (fx, fy, fz), (fw, fl, 0.004), COL_PEUGEOT_FADE)
-    try:
-        for obj in list(bpy.data.objects):
-            if obj.name.startswith("Car_Peugeot_") and "__" not in obj.name:
-                obj.name = obj.name + "__" + PEUGEOT_PRESET
-    except Exception:
-        pass      # the audits' recorder: no scene to rename in
 
 
 def main():

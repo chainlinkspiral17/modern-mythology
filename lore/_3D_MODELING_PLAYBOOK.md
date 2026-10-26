@@ -399,6 +399,22 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · state by state: tag the GROUP, not the parts (pass 184)
+
+**Context:** The Peugeot's morning is four states (arrival, hood up,
+tow truck backed up, car on the deck). The car on the ground belongs to
+three of them. `Car_Peugeot_Door_Handle_L_0__kwik_stop_peugeot__kwik_stop_hood__kwik_stop_tow`
+is past Blender's 63-character object names, and a silently truncated
+tag strips the part in the wrong preset.
+
+**Rule:** parent a state's parts under an empty named
+`<Group>__<preset>[__<preset>…]` (`_group_tagged` in build_kwik_stop.py;
+first matching prefix wins, so list the narrow group first). Lay the
+states out so no two groups occupy the same space. The audits' recorder
+sees every group at once, and a hood overlay inside the car body's box
+reads as a clip unless it shares the car's assembly name
+(`Car_Peugeot_HoodUp_*`). Strip before any pass that builds materials.
+
 ### 2026-10-27 · a story vehicle needs a lot at real scale, and only its own scene (pass 183)
 
 **Context:** "The Peugeot needs a model." The Kwik Stop's forecourt had

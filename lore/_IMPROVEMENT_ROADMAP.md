@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 184: THE PEUGEOT'S MORNING — the hood, the steam, the tow, the empty corner.**
+- Draft 2 of pass 183's car: ch15's beats, one preset each, switched at the line:
+  `kwik_stop_peugeot` (9:47, arrival) → `kwik_stop_hood` ("He pops the hood": the hood up
+  on its rod over a dark bay, "a small steady plume of steam", translucent puffs) →
+  `kwik_stop_tow` (the rollback "backs the truck up to the Peugeot", its deck at the car's
+  nose) → `kwik_stop_towed` ("By eleven twenty-eight the Peugeot is on the truck": the car on
+  the deck, nose to the winch) → `kwik_stop_interior` at "watch the Peugeot disappear up
+  Gallatin". Music and the bed follow the interior.
+- **Grouped by tag:** each state's parts hang under an empty named
+  `<Group>__<preset>[__<preset>…]`. Part-level tags overran Blender's 63-character names
+  once the car belonged to three presets. Background3D's strip now takes any tagged
+  non-marker Node3D (groups, HeroProps), deepest first. It runs before the glass and
+  hero-art passes: freeing a steam puff whose glass material had never drawn raised GL
+  "material is null" four times a load.
+- **Models:** `peugeot_505_hood_up` (the same car, hood open; the set adds the steam),
+  `bobbys_tow_truck` (SPARSE: the text gives a tow truck that backs up, hooks the car and
+  carries it — a rollback is the reading). HP nodes per state.
+- **Frames:** the counter frame per state. The tow states stand at the clerk aisle's south
+  end, where truck and car clear the door pier and the ATM sign. Lines 268/271 cut to it. A
+  seated window-table frame for the hood state (`shot_insert_window__kwik_stop_hood`, lines
+  126/148/47) looks under the lottery decal. The propane cage moved from in front of the
+  west window to the building's corner: it stood across that view.
+- Audits: `lot` resolves to the corner car (`EXCLUDE` keeps the copy on the deck out).
+- **Draft 185 targets:** the counter frame for the hood still has the raised hood behind
+  the red poster row (the window-seat frame carries the steam line) — a third counter
+  stance or a lower decal row; the steam is static (a drifting particle puff would sell
+  "steady plume"); the towed car's tie-down chains; Mark and Lucy are portraits, not
+  figures, at the car (lines 43–47 show the empty car).
+
 **2026-10-27 · pass 183: THE RED PEUGEOT — a model, a lot to park it in, and only for its morning.**
 - User: "The Peugeot needs a model." Vol 6 ch15's red car — "Eighty-six Peugeot. 505
   Turbo", red "faded in the small uneven patches", "stops in the lot's far corner instead
