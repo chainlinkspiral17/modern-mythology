@@ -186,6 +186,23 @@ context keeps running into a fake sink, and the meters still move.
 
 ## Recent lessons
 
+### 2026-10-27 — a `.wav` src falls back to its temp too
+
+**Context:** Twelve locale ambient beds (`locale_ambient.json`) name a
+`.wav` — `vol2_ambient.wav`, `vol1_ambient.wav`, `vol2_graveyard_solo.wav`
+— and every `.wav` under `assets/audio/` is gitignored with the
+recordings, while the take that exists in the repo is `<base>.temp.ogg`.
+`_load_audio` guarded its fallbacks with `ext0 != "wav"`, which skipped the
+`.wav` step (right: the src IS the `.wav`) and the temp step with it
+(wrong). Those rooms played silence on any machine without the recording.
+
+**Rule:** the lookup order is src → `<base>.wav` → `<base>.temp.ogg` for
+EVERY src; a `.wav` src skips only the second step. To test a fallback on
+a machine that once had the file, set aside its `.import` and its
+`.godot/imported/<name>.wav-*` cache first — `ResourceLoader.exists()`
+answers from the import cache, and the test passes without touching the
+fallback. `locale_ambient_audit` counts a bed covered by the same order.
+
 ### 2026-10-10 — the recording suite (first pass)
 
 - `AK.lib.put({id: undefined, …})` overwrote the generated id and

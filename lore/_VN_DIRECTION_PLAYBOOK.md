@@ -323,6 +323,29 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-27 · a generic face cue on a speaker's line belongs on the speaker's own frame (pass 181)
+
+**Context:** The scripts cue faces two ways: a NAMED closeup (`[shot:closeup
+tem]`) and the generic pair (`[shot:closeup person]` / `person_b`) that
+alternates for shot / reverse-shot. The generic pair resolves to two fixed
+frames whoever speaks, so in a four-hander (Lena's apartment: Lena, Tem,
+Finn, Kai) every speaker sat in front of the same two backdrops — while
+the room already had a frame authored at each of their seats. Survey: 1,067
+generic face cues on SAY lines, 497 of them by a speaker who has a named
+frame in that room.
+
+**Rule:** the director takes the speaker of a `say` line (GameEngine hands
+`char` over before the line's directives) and cuts a generic person /
+person_b cue to `shot_closeup_<speaker>` when the room has it IN THE SAME
+AREA: the `__<preset>` override, or the plain marker only when the preset
+also uses the plain pair (a preset that overrides its pair — the cabin's
+porch, the Tome's alley — lives in a second area, and the plain named
+frames stand in the first). Names normalise ("Mr. Henderson" →
+`mr_henderson`). Narration and unnamed speakers keep the pair. The fix is
+one rule in code, not 497 cue edits, and new chapters get it for free;
+`wrong_room_audit` resolves the same way. Before routing hundreds of cues
+to frames that were authored for a handful, montage those frames.
+
 ### 2026-10-25 · a `bg` cut inserted before a choice moves every goto after it (pass 176)
 
 **Context:** The directing passes (170–171) added `{"t":"bg","src":"3d:…"}`

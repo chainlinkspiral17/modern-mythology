@@ -98,6 +98,21 @@ def resolve(mk, name, preset):
     return None
 
 
+def cast_frame(mk, speaker, preset):
+    """The speaker's own face frame for a generic person/person_b cue on a
+    line they SAY (VnDirector + Background3D.find_cast_closeup, 2026-10-27):
+    the preset's override, else the plain marker when this preset also uses
+    the plain pair. None → the generic resolution stands."""
+    ch = re.sub(r"_+", "_", re.sub(r"[^a-z0-9]", "_", speaker.lower())).strip("_")
+    if not ch:
+        return None
+    if "shot_closeup_%s__%s" % (ch, preset) in mk:
+        return "shot_closeup_%s__%s" % (ch, preset)
+    if "shot_closeup_person__" + preset in mk:
+        return None
+    return "shot_closeup_" + ch if "shot_closeup_" + ch in mk else None
+
+
 def main():
     show_all = "--all" in sys.argv
     pre = presets()
@@ -119,7 +134,11 @@ def main():
             mk = markers(tscn)
             for who in CUE.findall(str(n.get("text") or "")):
                 cue = who.strip().split()[0]
-                name = resolve(mk, "shot_closeup_" + cue, pid)
+                name = None
+                if cue in ("person", "person_b") and n.get("t") == "say":
+                    name = cast_frame(mk, str(n.get("char") or ""), pid)
+                if name is None:
+                    name = resolve(mk, "shot_closeup_" + cue, pid)
                 if name is None:
                     continue           # blind — shot_marker_audit's job
                 checked += 1

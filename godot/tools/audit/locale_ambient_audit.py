@@ -61,7 +61,10 @@ def main():
         if not bed:
             problems.append(("NOHUM", preset, vol, "no entry — this room plays the Music Player at full"))
             continue
-        if not os.path.exists(os.path.join(GODOT, bed)):
+        # AudioMgr._load_audio's order: the bed → <base>.wav → <base>.temp.ogg
+        # (a temp take plays until the real recording lands; 2026-10-27)
+        base = os.path.splitext(os.path.join(GODOT, bed))[0]
+        if not any(os.path.exists(x) for x in (os.path.join(GODOT, bed), base + ".wav", base + ".temp.ogg")):
             problems.append(("NOFILE", preset, vol, bed))
             continue
         m = VOL_RX.search("/" + bed)

@@ -3835,6 +3835,46 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 181: CLOSEUP BY CAST — the speaker's own face frame.**
+- The generic face pair (`[shot:closeup person]` / `person_b`) cut to two fixed frames
+  whoever spoke: 1,067 such cues on say lines across the game, 497 of them spoken by a
+  character who already has a named frame in that room (the cabin 77 + 71, Lena's
+  apartment 45 + 32, the Miller kitchen 34, Hans's back kitchen 35, the Kowalski kitchen 22,
+  the Caldwell porch 22 …). The director now takes the line's speaker (GameEngine hands
+  `char` over before the directives) and cuts to `shot_closeup_<speaker>` when the room
+  has it in the preset's own area (`Background3D.find_cast_closeup`: the `__<preset>`
+  override, or the plain marker only when the preset uses the plain pair). Verified in
+  the engine headless on six cases — Tem in Lena's room and on the cabin porch, Lena in
+  the Tome's alley (keeps the alley pair), "Mr. Henderson" (name normalised), narration and
+  an unnamed speaker (keep the pair). `wrong_room_audit` resolves the same way: 1,743 cues,
+  0 in another area. One rule in code, no chapter text touched.
+- **The frames now carrying those cues, by montage.** The rooms passes 174–180 had read
+  were already checked; the other 34 named frames (136 cues) were rendered under their
+  presets. Four were weak: Ben's in the Kowalski kitchen (now 12 cues) faced a bare door,
+  Chess's at the Foxhole (5) looked into the dark stage corner, Jesse's in the Pit Stop
+  kitchen (1) a blank panel — all three turned from the same spot onto the room (the
+  kitchen and the living room beyond; the back bar and its neon; the line). Finn's in the
+  Board Lords office (4) is the office's own generic frame, a wall and a lamp; its re-aim
+  failed both gates (the aim audit ties Finn's frame to Finn's truck outside) and was
+  reverted. Henderson's Jim and Mr. Henderson share one frame.
+- **The world hum played silence in twelve rooms.** `locale_ambient_audit` NOFILE 12 (10 at
+  the comic pass; two were pass 176's farmhouse beds on the volume-2 floor): each bed names
+  a `.wav` that is gitignored with every recording, and `AudioMgr._load_audio` skipped the
+  `<base>.temp.ogg` fallback whenever the requested file was itself a `.wav` (it skipped
+  the `.wav` step and the temp step together). A `.wav` src now skips only the `.wav` step.
+  Proven headless with the bed's import cache set aside (a fresh clone's state): the new
+  loader returns `vol2_briar_falls_night.temp.ogg`, the old one null. The audit follows the
+  loader's order (bed → `.wav` → `.temp.ogg`): 208 presets, 0 problems.
+- Gates: aim + obstruction --markers clean on every touched room, wrong_room 0/1,743,
+  shot_marker clean, tscn syntax 0, the suite clean past the standing content gates
+  (vn_story · music_coverage · audio_reference · page_length). No builder changed.
+- **Draft N+1 (directing):** the named frames that are the generic frame in disguise (Finn
+  in the Board Lords office; any `shot_closeup_<x>` sharing its transform with the pair) —
+  give each a seat of its own; the Board Lords shop floor (33 generic cues, Kai 16, and no
+  frame for him there); the accretion basement, the missing link, the Miller back porch and
+  Bianca's kitchen (13–20 cues each, two speakers, no named frames) — two-handers that want
+  a frame per speaker; whether the cabin's oil lamps glow by day.
+
 **2026-10-26 · pass 180: THE CABIN BY MONTAGE (95 markers, four presets; 136 frames).**
 - The list builder walks override-only markers now (pass 179's gap): 41 base markers under
   the night interior and again under the day, 54 porch overrides under cabin_porch, _day

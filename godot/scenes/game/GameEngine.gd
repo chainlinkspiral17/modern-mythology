@@ -667,6 +667,7 @@ func _fast_forward_to(target: int) -> void:
 			"bgm":         _do_bgm(n2)
 	if _director != null:
 		if last_shot != "":
+			_director.call("set_line_speaker", "")
 			_director.call("apply_shot", last_shot)
 		if last_mood != "":
 			_director.call("apply_mood", last_mood)
@@ -883,6 +884,9 @@ func _directed(n: Dictionary) -> Dictionary:
 	var text: String = _s(n, "text")
 	if text == "" or not text.begins_with("["):
 		return n
+	if _director != null:
+		# the speaker's own face frame for a generic closeup (VnDirector)
+		_director.call("set_line_speaker", _s(n, "char") if _s(n, "t") == "say" else "")
 	var stripped := text
 	while true:
 		var m := _direct_rx.search(stripped)

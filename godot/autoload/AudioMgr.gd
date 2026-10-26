@@ -1333,10 +1333,15 @@ func _load_audio(src: String) -> AudioStream:
 		# field_ingest.py); temp tracks as <basename>.temp.ogg (the DAW /
 		# AUDIO DIRECTOR). Real audio first: the .wav, then the temp.
 		var ext0 := src.get_extension().to_lower()
-		if ext0 != "wav" and not src.ends_with(".temp.ogg"):
-			var wav_src := src.get_basename() + ".wav"
-			if _exists(wav_src):
-				return _load_audio(wav_src)
+		if not src.ends_with(".temp.ogg"):
+			# a .wav src skips only the .wav step (it IS the .wav) — it still
+			# falls back to its temp (2026-10-27: twelve locale ambient beds
+			# name a .wav whose take exists only as <base>.temp.ogg, and
+			# played silence)
+			if ext0 != "wav":
+				var wav_src := src.get_basename() + ".wav"
+				if _exists(wav_src):
+					return _load_audio(wav_src)
 			var temp_src := src.get_basename() + ".temp.ogg"
 			if _exists(temp_src) and not _third_party_blocked(src.get_basename()):
 				return _load_audio(temp_src)

@@ -567,6 +567,6 @@ metadata/fov = 42.0
 ; closeup: Jesse through the kitchen's swinging door, from inside the kitchen
 [node name="shot_closeup_jesse__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.200, 1.600, -7.600)
-rotation = Vector3(-0.0523, -2.3192, 0.0)
+rotation = Vector3(-0.0906, 0.9576, 0.0)
 metadata/fov = 42.0
 

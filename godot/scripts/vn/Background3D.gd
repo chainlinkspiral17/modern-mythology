@@ -5396,6 +5396,31 @@ func find_shot_marker(marker_name: String) -> Node3D:
 	return _location_instance.find_child(marker_name, true, false) as Node3D
 
 
+# THE SPEAKER'S OWN FACE FRAME (2026-10-27). A generic `[shot:closeup
+# person]` on a line someone SAYS cuts to that speaker's named closeup
+# when this room has one in the SAME AREA as the loaded preset: the
+# `__<preset>` override, or the plain marker when this preset also uses
+# the plain generic pair (a preset that overrides its pair lives in a
+# second area of the geometry — the cabin's porch, the Tome's alley —
+# and the plain named frames stand in the first). Null → the caller
+# keeps the generic frame. 497 of the 1,067 generic face cues across
+# the game sit on a line whose speaker already has a frame in the room.
+func find_cast_closeup(char_id: String) -> Node3D:
+	if not has_locale_loaded() or char_id == "":
+		return null
+	var base_name: String = "shot_closeup_" + char_id
+	if _loaded_preset != "":
+		var local: Node3D = _location_instance.find_child(
+			base_name + "__" + _loaded_preset, true, false) as Node3D
+		if local != null:
+			return local
+		var pair_local: Node3D = _location_instance.find_child(
+			"shot_closeup_person__" + _loaded_preset, true, false) as Node3D
+		if pair_local != null:
+			return null
+	return _location_instance.find_child(base_name, true, false) as Node3D
+
+
 # Every authored vn_shot marker in the CURRENT locale whose name
 # starts with shot_<type>_ — the pool a missing-marker cue can
 # borrow from (see VnDirector's substitute path). Sorted so the

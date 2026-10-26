@@ -433,6 +433,6 @@ metadata/fov = 42.0
 ; closeup: Ben at the garage door ("at the door he pauses"), from the kitchen
 [node name="shot_closeup_ben" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.550, 1.600, -1.750)
-rotation = Vector3(-0.0291, -2.5213, 0.0)
+rotation = Vector3(-0.0880, 0.8478, 0.0)
 metadata/fov = 42.0
 

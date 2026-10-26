@@ -71,6 +71,11 @@ var _drift_floor: float = 50.0
 # load_location hasn't run yet — park it and retry a few frames.
 var _pending_shot: String = ""
 var _pending_frames: int = 0
+# Who says the line being directed (GameEngine sets it before the line's
+# directives; "" for narration). A generic face cue on a speaker's line
+# cuts to the speaker's own frame when the room has one (2026-10-27).
+var _line_speaker: String = ""
+var _pending_speaker: String = ""
 const PENDING_MAX_FRAMES := 60
 
 # [stage:] and [mood:] race the deferred locale load the same way —
@@ -263,8 +268,22 @@ func _rotation_marker() -> Node3D:
 	return variants[idx]
 
 
+func set_line_speaker(char_id: String) -> void:
+	# "Mr. Henderson" → mr_henderson, "chief miller" → chief_miller
+	var raw: String = char_id.strip_edges().to_lower()
+	var out: String = ""
+	for i in raw.length():
+		var c: String = raw[i]
+		if (c >= "a" and c <= "z") or (c >= "0" and c <= "9"):
+			out += c
+		elif out != "" and not out.ends_with("_"):
+			out += "_"
+	_line_speaker = out.trim_suffix("_")
+
+
 func apply_shot(spec: String) -> void:
 	_pending_shot = spec.strip_edges()
+	_pending_speaker = _line_speaker
 	_pending_frames = 0
 	_try_apply_shot()
 
@@ -296,6 +315,17 @@ func _try_apply_shot() -> void:
 	_pending_shot = ""
 
 	var marker: Node3D = null
+	# The generic face pair on a line someone says: the speaker's own frame
+	# first, when this room has one in this preset's area.
+	if shot_type == "closeup" and (shot_id == "person" or shot_id == "person_b") \
+			and _pending_speaker != "" and _bg3d.has_method("find_cast_closeup"):
+		var own: Node3D = _bg3d.call("find_cast_closeup", _pending_speaker) as Node3D
+		if own != null:
+			_set_letterbox(true)
+			_cut_to_marker(own, shot_type, drift)
+			print("[VnDirector] CUT closeup → %s (the speaker's frame, for %s)%s"
+				% [own.name, marker_name, " ~drift" if drift else ""])
+			return
 	if _bg3d.has_method("find_shot_marker"):
 		marker = _bg3d.find_shot_marker(marker_name)
 
