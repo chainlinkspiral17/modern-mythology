@@ -3856,6 +3856,13 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   the map beside its red circle.
 - Gates: aim + obstruction --markers clean, doorway / grammar / placement / backing /
   buried clean, perf 78 draw calls. **Deck rebuilds cosmic_comics_interior** (the keys).
+- **The Deck, same day: "figures sticking out through top of glass."** The statue tower's
+  glass ran 0.60..1.80 and its top tier sat at 1.54 with 0.39 m figures: heads 15 cm
+  through the top. The glass runs to 2.00 under a wood cap now, the tiers 0.43 apart
+  (0.64 / 1.07 / 1.50), every head 9 cm under the shelf or the cap above it. No gate had
+  seen it: a figure through a translucent box is not a clip the overlap audit counts (the
+  pane rule), and the vantage fan looks through glass. The montage had shown it in the
+  curtis closeup and I read it as "the display case". Rebuild the shop again.
 - **Draft N+1 (directing):** the cabin (95 markers, four presets) on its own pass; then the
   closeup-by-cast pass for the long dialogues. The montage list builder must walk override-
   only markers too (fixed in the next pass's list).

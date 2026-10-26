@@ -153,8 +153,12 @@ def build_statue_tower():
     # Freestanding glass statue tower near the entrance — three tiers.
     tx, ty = 1.55, 1.05   # east of the front door's swing (x to 0.95) — 2026-09-25: centred on the door it stood in its swing, and north of that it hit the new-arrivals table
     make_chamfer_box("Tower_Base", (tx, ty, 0.30), (0.90, 0.90, 0.60), COL_WOOD)
-    make_box("Tower_Glass", (tx, ty, 1.20), (0.86, 0.86, 1.20), (0.70, 0.80, 0.92, 0.30))
-    for tier, tz in enumerate([0.66, 1.10, 1.54]):
+    # the glass runs 0.60..2.00 and the tiers sit 0.43 apart: a 0.34 figure stands
+    # 0.39 from its shelf (the top tier's heads broke through the old 1.80 top —
+    # the Deck, 2026-10-26: "figures sticking out through top of glass")
+    make_box("Tower_Glass", (tx, ty, 1.30), (0.86, 0.86, 1.40), (0.70, 0.80, 0.92, 0.30))
+    make_box("Tower_Cap", (tx, ty, 2.015), (0.90, 0.90, 0.03), COL_WOOD)
+    for tier, tz in enumerate([0.64, 1.07, 1.50]):
         make_box(f"Tower_Shelf_{tier}", (tx, ty, tz), (0.84, 0.84, 0.03), (0.72, 0.74, 0.80, 1.0))
         for si in range(2):
             sx = tx - 0.22 + si * 0.44
