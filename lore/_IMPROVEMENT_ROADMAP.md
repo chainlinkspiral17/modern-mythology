@@ -3835,6 +3835,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-26 · pass 180: THE CABIN BY MONTAGE (95 markers, four presets; 136 frames).**
+- The list builder walks override-only markers now (pass 179's gap): 41 base markers under
+  the night interior and again under the day, 54 porch overrides under cabin_porch, _day
+  and _dawn. Both geometry gates clean beforehand (95 markers cast, 0 obstructed).
+- **Night interior (41): one re-aim.** `insert coffee` (ch4 "she drank her coffee", ch19 "he
+  drank from the coffee", ch11's pour) was a 3.5 m wide of the table from the counter → the
+  ceramic cup from 0.75 m with the eggs and the hexagon beyond. Three tries: the builder
+  places the cup at y 3.30 inside a shifted table frame and the GLB has it at z −4.30, a
+  metre from where the call's numbers say (the kit-frame lesson of pass 178 again — read
+  the GLB bounds before aiming); the aim audit's "coffee" subject is the PORCH mug, the
+  cup's 3 mm coffee disc being too small for it, so the audit passed the first wrong aim
+  and failed the second right one until the cup filled the frame. The bowls (23 cues between `bowl` and
+  `bowls`), the table (6), the door, the cup, the stove's charred wood (the red door), the
+  cedar chest, the crow in the window, the eggs, the hexagon, the package, the headset, the
+  player on its shelf all read at night.
+- **Porch (54 frames, three presets): no re-aims; the day was half as bright as any other
+  daylight exterior** (frame mean 51 against the Miller porch's 100 and the Caldwell yard's
+  87; the night porch 24, the dawn 32). The porch is roofed and its chapters are rainy, so
+  it should be the dimmest of the day exteriors, not dusk: `Porch_Sun__cabin_porch_day`
+  0.95 → 1.60, its sky fill 0.35 → 0.75, the preset's ambient 0.95 → 1.25 and a paler fog
+  → 60. Still a grey day under a roof; the next pass asks whether the porch's unsuffixed
+  oil-lamp practicals should glow by day at all (they do — "the lamp was lit against the
+  rain" is ch11, not every day). The crow on the rail, the mug on the rail with the truck
+  beyond, the lit door all read; `insert cedar` (the chest) and `insert cigarette` (the
+  truck's hood) are the weak two — one cue each.
+
 **2026-10-26 · pass 179: COSMIC COMICS BY MONTAGE (35 markers, shop + back office).**
 - Every marker rendered under both presets and read. Both geometry gates clean beforehand.
 - **One prop built, one re-aim:** `insert keys` (ch12 "the keys are heavy in a way Maya had

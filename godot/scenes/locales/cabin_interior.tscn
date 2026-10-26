@@ -487,8 +487,9 @@ rotation = Vector3(-0.60, -0.30, 0.0)
 
 ; [shot:insert coffee] (3x) — the stove-side table where the pot sits
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.492, 1.611, -6.212)
-rotation = Vector3(-0.2618, 2.3562, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.050, 1.250, -3.850)
+rotation = Vector3(-0.5400, 0.8071, 0.0)
+metadata/fov = 34.0
 
 ; [shot:insert door] (4x) — the south door + its iron latch
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -917,7 +918,7 @@ metadata/fov = 45.0
 [node name="Porch_Sun__cabin_porch_day" type="DirectionalLight3D" parent="."]
 rotation = Vector3(-0.5410, 1.0300, 0)
 light_color = Color(1.0, 0.92, 0.80, 1)
-light_energy = 0.95
+light_energy = 1.60
 shadow_enabled = true
 shadow_bias = 0.06
 shadow_normal_bias = 1.5
@@ -928,7 +929,7 @@ metadata/daylight = true
 [node name="Porch_SkyFill__cabin_porch_day" type="DirectionalLight3D" parent="."]
 rotation = Vector3(-0.9500, 0.4000, 0)
 light_color = Color(0.62, 0.70, 0.82, 1)
-light_energy = 0.35
+light_energy = 0.75
 shadow_enabled = false
 metadata/daylight = true
 
