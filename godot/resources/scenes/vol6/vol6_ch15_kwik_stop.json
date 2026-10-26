@@ -195,8 +195,12 @@
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/036.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:kwik_stop_peugeot"
+    },
+    {
       "t": "narrate",
-      "text": "[shot:establish]The red car pulls into the lot at nine forty-seven.",
+      "text": "[shot:insert lot]The red car pulls into the lot at nine forty-seven.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/037.mp3"
     },
     {
@@ -1549,8 +1553,12 @@
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/269.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:kwik_stop_interior"
+    },
+    {
       "t": "narrate",
-      "text": "Mark and Lucy stand in the lot for a minute and watch the Peugeot disappear up Gallatin.",
+      "text": "[shot:insert lot]Mark and Lucy stand in the lot for a minute and watch the Peugeot disappear up Gallatin.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/270.mp3"
     },
     {

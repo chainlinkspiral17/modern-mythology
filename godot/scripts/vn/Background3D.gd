@@ -4366,6 +4366,17 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	# (2026-10-27) THE RED PEUGEOT in the lot — the same store, the same
+	# vantage, with the car in the far corner (vol6 ch15, 9:47 until the
+	# tow at 11:28). Parts named `…__kwik_stop_peugeot` exist only here.
+	"kwik_stop_peugeot": {
+		"scene": "res://scenes/locales/kwik_stop.tscn",
+		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	# ── Vols 1-2 · 3D migration (2026-08-03) ─────────────────────
 	# "Visual novel backgrounds are 3d scenes." The legacy 2D JPEG
 	# refs migrated onto locales; these presets are the new sets.
@@ -5246,6 +5257,11 @@ func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
 	# (2026-10-19) and writing: the Star's charcoal verses on Joanna's wall
 	# are not there yet in the Hermit (Verse_Star_*__<preset>…)
 	nodes.append_array(root.find_children("*", "Label3D", true, false))
+	# (2026-10-27) and a hero prop that stands in for such a part: the red
+	# Peugeot's model (HP_Peugeot__kwik_stop_peugeot) leaves with its stand-in
+	for hp: Node in root.find_children("HP_*", "Node3D", true, false):
+		if hp.get_script() != null and String(hp.get_script().resource_path).ends_with("HeroProp.gd"):
+			nodes.append(hp)
 	for n in nodes:
 		var nm: String = String(n.name)
 		if nm.find("__") < 0:

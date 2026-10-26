@@ -73,7 +73,7 @@ COL_CEILING_TILE    = (0.94, 0.92, 0.84, 1.0)
 COL_CEILING_GRID    = (0.58, 0.54, 0.46, 1.0)
 COL_CEILING_STAIN   = (0.72, 0.62, 0.42, 1.0)
 COL_GLASS           = (0.78, 0.84, 0.86, 0.45)
-COL_GLASS_WARM      = (0.96, 0.84, 0.62, 0.35)   # sunset-through-window (2026-10-07: 0.70 → 0.35, the walls are cut and the lot is meant to be SEEN)
+COL_GLASS_WARM      = (0.88, 0.90, 0.88, 0.30)   # the storefront glass (2026-10-07: 0.70 → 0.35, the walls are cut and the lot is meant to be SEEN; 2026-10-27: clear daylight glass, not the sunset amber — every cut is by day since pass 63, and the amber turned the red Peugeot brown)
 COL_METAL_STEEL     = (0.66, 0.68, 0.70, 1.0)
 COL_METAL_BLACK     = (0.18, 0.16, 0.14, 1.0)
 COL_BRAND_NAVY      = (0.18, 0.32, 0.50, 1.0)    # Harmony Creek Estates banner
@@ -1258,95 +1258,106 @@ def build_wet_floor_cone():
              (0.30, 0.30, 0.04), COL_RUBBER_MAT)
 
 
+def _kit_car(prefix, cx, cy, length, col, pickup=False, along="Y"):
+    """The shared kit car (_props.vehicles.make_car), nose toward +axis.
+    Under the audits' recorder the kit import resolves the same way
+    make_box's does."""
+    import sys as _sys, os as _os
+    _bt = _os.path.dirname(_os.path.abspath(__file__))
+    for _c in (_bt, _os.path.dirname(_bt)):
+        if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+            _sys.path.insert(0, _c)
+    from _props.vehicles import make_car
+    make_car(prefix, cx, cy, length, col, pickup=pickup, along=along)
+
+
 def build_exterior_through_windows():
-    # World outside the south windows. Builds at Blender Y∈[-3, -0.4]
-    # (south of building) so it reads through the windows. Pump
-    # canopy spans both windows; two pumps below it; one parked car
-    # silhouette; streetlamp at the southwest corner.
-    # ── Asphalt apron (visible through bottom of windows) ───────
-    make_box("Asphalt", (0.0, -2.0, -0.04),
-             (16.0, 4.0, 0.04), COL_ASPHALT)
-    # Parking lines (3 stripes)
-    for ps in (-1, 0, +1):
+    # World outside the south windows — the FORECOURT at real scale
+    # (2026-10-27, draft 2). Draft 1 was a 4 m apron: the pumps stood
+    # 2.5 m from the glass, the parked sedan was a 1.8 m box and the
+    # pickup 2.3 m, so the window looked onto a toy lot and the red
+    # Peugeot (ch15: "stops in the lot's far corner instead of pulling
+    # up to a pump") had nowhere to stand. Now a real one:
+    #   y 0 .. -1.6     the walk along the storefront (bollards, racks,
+    #                   the propane cage, the ice chest)
+    #   y -1.6 .. -7.1  nose-in stalls, 2.8 m wide (none at the door)
+    #   y -7.1 .. -9.5  the drive aisle
+    #   y -9.5 .. -17.5 the canopy: two islands, a pump each
+    #   y -18.8         the lot's edge; Linden runs along the south,
+    #                   Gallatin up the west side ("disappear up
+    #                   Gallatin"), the Gas & Go across the intersection
+    #                   (ch15: "Rory ... at the Gas & Go across the
+    #                   intersection") — build_forecourt_world().
+    # The lot runs x -13 .. 14, wider than the store (x -6 .. 6).
+    # DRAFT 3 TARGETS: curbs on the lot's edges, wheel stops in the
+    # stalls, oil stains and patched asphalt (D2 surface breakup), the
+    # Peugeot's hood up and steaming (ch15 "He pops the hood"), the tow
+    # truck (11:08-11:28), and the Gas & Go past massing.
+    make_box("Asphalt", (0.5, -9.4, -0.04),
+             (27.0, 18.8, 0.04), COL_ASPHALT)
+    make_box("Walk_Paint", (0.0, -0.8, -0.016),
+             (13.0, 1.6, 0.004), (0.62, 0.60, 0.56, 1.0))
+    # Stall stripes, 5 m long; the door's bay (x -1.4 .. 1.4) is kept clear
+    for ps in (-4, -3, -2, -1, 1, 2, 3, 4):
         make_box(f"ParkLine_{ps:+d}",
-                 (ps * 2.8, -1.6, -0.018),
-                 (0.06, 1.60, 0.004), (0.84, 0.78, 0.20, 1.0))
-    # ── Canopy ───────────────────────────────────────────────────
-    canopy_y, canopy_z = -2.20, 3.40
+                 (ps * 2.8, -4.4, -0.016),
+                 (0.10, 5.00, 0.004), (0.84, 0.78, 0.20, 1.0))
+    # ── Canopy: 14 x 8 m deck, 4.6 m clear ──────────────────────
+    canopy_y, canopy_z = -13.5, 4.90
     make_box("Canopy_Top", (0.0, canopy_y, canopy_z),
-             (10.0, 4.40, 0.20), COL_CANOPY)
-    make_box("Canopy_Skirt", (0.0, canopy_y - 2.10, canopy_z - 0.05),
-             (10.0, 0.10, 0.40), COL_CANOPY_TRIM)
+             (14.0, 8.0, 0.60), COL_CANOPY)
+    # fascia bands hang below the deck's edges
+    make_box("Canopy_Skirt", (0.0, canopy_y - 3.94, 4.30),
+             (14.0, 0.12, 0.60), COL_CANOPY_TRIM)
+    make_box("Canopy_Skirt_N", (0.0, canopy_y + 3.94, 4.30),
+             (14.0, 0.12, 0.60), COL_CANOPY_TRIM)
+    for sgn in (-1, 1):
+        make_box(f"Canopy_Skirt_{'E' if sgn > 0 else 'W'}", (sgn * 6.94, canopy_y, 4.30),
+                 (0.12, 7.76, 0.60), COL_CANOPY_TRIM)
+    # the band faces the store (the side the windows see)
     make_box("Canopy_Skirt_Branding",
-             (0.0, canopy_y - 2.11 - 0.0431, canopy_z + 0.05),
-             (3.20, 0.005, 0.18), COL_PAPER)
-    # Canopy support columns (2)
-    for sgn, sx in [(-1, -3.6), (+1, +3.6)]:
-        make_box(f"Canopy_Col_{sgn:+d}",
-                 (sx, canopy_y, canopy_z / 2.0),
-                 (0.30, 0.30, canopy_z), COL_CANOPY_TRIM)
-    # ── Two gas pumps under canopy ──────────────────────────────
-    for sgn, px in [(-1, -2.20), (+1, +2.20)]:
-        # Pump base / body
-        make_box(f"Pump_{sgn:+d}_Base", (px, canopy_y, 0.30),
+             (0.0, canopy_y + 4.0 + 0.0025, 4.30),
+             (3.20, 0.005, 0.36), COL_PAPER)
+    # ── Two pump islands, a pump each, the columns on the islands ─
+    for sgn, px in [(-1, -3.50), (+1, +3.50)]:
+        make_box(f"Island_{sgn:+d}", (px, canopy_y, 0.075),
+                 (1.20, 6.40, 0.15), (0.70, 0.68, 0.62, 1.0))
+        for ci, cy in enumerate((canopy_y + 2.5, canopy_y - 2.5)):
+            make_box(f"Canopy_Col_{sgn:+d}_{ci}",
+                     (px, cy, (0.15 + 4.60) / 2.0),
+                     (0.36, 0.36, 4.60 - 0.15), COL_CANOPY_TRIM)
+        z0 = 0.15     # the island's top
+        make_box(f"Pump_{sgn:+d}_Base", (px, canopy_y, z0 + 0.30),
                  (0.50, 0.60, 0.60), COL_PUMP_BODY)
-        # Pump screen + buttons
-        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.26 - 0.0131, 1.20),   # on the body's face
+        # the display faces the store (north)
+        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y + 0.26 + 0.0131, z0 + 1.20),
                  (0.40, 0.005, 0.50), COL_PUMP_FACE)
         # Pump body between base and head (2026-09-09: the head hung
         # 1 m above the base with only the display between them)
-        make_box(f"Pump_{sgn:+d}_Body", (px, canopy_y, 1.11),
+        make_box(f"Pump_{sgn:+d}_Body", (px, canopy_y, z0 + 1.11),
                  (0.44, 0.54, 1.02), COL_PUMP_BODY)
-        # Pump head (handle housing)
-        make_box(f"Pump_{sgn:+d}_Head", (px, canopy_y, 1.80),
+        make_box(f"Pump_{sgn:+d}_Head", (px, canopy_y, z0 + 1.80),
                  (0.50, 0.60, 0.36), COL_PUMP_BODY)
-        # Pump hose nozzle
         make_box(f"Pump_{sgn:+d}_Nozzle",
-                 (px + 0.18, canopy_y - 0.20, 1.20),
+                 (px + 0.18, canopy_y + 0.20, z0 + 1.20),
                  (0.10, 0.04, 0.30), COL_METAL_BLACK)
-        # Price-display LEDs (three digits)
         for d_i in range(3):
             make_box(f"Pump_{sgn:+d}_LED_{d_i}",
-                     (px - 0.15 + d_i * 0.15, canopy_y - 0.265 - 0.0081, 1.40),   # on the display's face
+                     (px - 0.15 + d_i * 0.15, canopy_y + 0.265 + 0.0081, z0 + 1.40),   # on the display's face
                      (0.10, 0.005, 0.14), (0.94, 0.18, 0.08, 1.0))
-    # ── Parked sedan silhouette beside the right pump ───────────
-    car_x, car_y = +3.20, -1.40
-    make_box("Car_Body", (car_x, car_y, 0.55),
-             (1.80, 1.00, 0.50), COL_CAR_BODY)
-    make_box("Car_Roof", (car_x, car_y, 1.10),
-             (1.30, 0.94, 0.40), COL_CAR_BODY)
-    make_box("Car_WindowFront", (car_x + 0.65, car_y, 1.10),
-             (0.04, 0.86, 0.40), COL_CAR_WINDOW)
-    make_box("Car_WindowRear",  (car_x - 0.65, car_y, 1.10),
-             (0.04, 0.86, 0.40), COL_CAR_WINDOW)
-    for ws in (-1, +1):
-        make_box(f"Car_WindowSide_{ws:+d}",
-                 (car_x, car_y + ws * 0.48, 1.10),
-                 (1.16, 0.005, 0.40), COL_CAR_WINDOW)
-    # Wheel arches (4)
-    for wx, wy in [(car_x - 0.60, car_y - 0.48),
-                   (car_x + 0.60, car_y - 0.48),
-                   (car_x - 0.60, car_y + 0.48),
-                   (car_x + 0.60, car_y + 0.48)]:
-        make_cyl(f"Car_Wheel_{wx:+.1f}_{wy:+.1f}",
-                 (wx, wy, 0.26), 0.26, 0.20, COL_METAL_BLACK, axis='Y')   # on the asphalt
-    # Headlights
-    for ws in (-1, +1):
-        make_box(f"Car_Headlight_{ws:+d}",
-                 (car_x + 0.9025, car_y + ws * 0.32, 0.55),   # on the nose
-                 (0.005, 0.18, 0.14), COL_STREETLAMP_LIT)
-    # ── Streetlamp at southwest corner ──────────────────────────
-    lp_x, lp_y = -5.40, -2.80
-    make_box("Streetlamp_Base", (lp_x, lp_y, 0.20),
-             (0.20, 0.20, 0.40), COL_STREETLAMP)
-    make_box("Streetlamp_Pole", (lp_x, lp_y, 2.40),
-             (0.10, 0.10, 4.40), COL_STREETLAMP)
-    # Arm
-    make_box("Streetlamp_Arm", (lp_x + 0.60, lp_y, 4.60),
-             (1.40, 0.08, 0.10), COL_STREETLAMP)
-    # Lamp head (sodium-warm)
-    make_box("Streetlamp_Head", (lp_x + 1.30, lp_y, 4.50),
-             (0.50, 0.20, 0.20), COL_STREETLAMP_LIT)
+    # ── A sedan at the east pump (the kit car, real size) ────────
+    _kit_car("Car", 5.25, canopy_y, 4.70, COL_CAR_BODY)
+    # ── Lot light on the west edge ──────────────────────────────
+    lp_x, lp_y = -12.60, -7.00
+    make_box("Streetlamp_Base", (lp_x, lp_y, 0.30),
+             (0.40, 0.40, 0.60), (0.62, 0.60, 0.56, 1.0))
+    make_box("Streetlamp_Pole", (lp_x, lp_y, 0.60 + 3.40),
+             (0.14, 0.14, 6.80), COL_STREETLAMP)
+    make_box("Streetlamp_Arm", (lp_x + 0.80, lp_y, 7.30),
+             (1.74, 0.10, 0.12), COL_STREETLAMP)
+    make_box("Streetlamp_Head", (lp_x + 1.60, lp_y, 7.18),
+             (0.70, 0.36, 0.12), COL_STREETLAMP_LIT)
+
     # (2026-09-23: the cardboard end-cap pyramid is gone — it was built
     # on the SAME spot as the aisle's end-cap shelving (EndCap_-1), its
     # boxes through the shelves and uprights, its bottom tier hanging
@@ -1993,44 +2004,15 @@ def build_propane_cage_outside():
 
 
 def build_pickup_truck_outside():
-    # A second vehicle silhouette beside the left canopy column —
-    # a small pickup truck. Adds depth to the parking-lot scene
-    # visible through the south windows. Position chosen to NOT
-    # overlap the existing sedan (which is on the right side).
-    tx, ty = -3.05, -2.30
-    # Cab
-    make_box("Truck_Cab", (tx, ty, 0.80),
-             (1.20, 1.00, 0.70), COL_TRUCK_BODY)
-    make_box("Truck_Roof", (tx, ty, 1.30),
-             (1.06, 0.94, 0.30), COL_TRUCK_BODY)
-    # Windows
-    make_box("Truck_WindowFront", (tx + 0.55, ty, 1.20),
-             (0.04, 0.84, 0.30), COL_CAR_WINDOW)
-    for ws in (-1, +1):
-        make_box(f"Truck_WindowSide_{ws:+d}",
-                 (tx, ty + ws * 0.48, 1.20),
-                 (1.00, 0.005, 0.30), COL_CAR_WINDOW)
-    # Bed (open box rearward of cab)
-    make_box("Truck_Bed", (tx - 1.10, ty, 0.72),
-             (1.10, 0.96, 0.50), COL_TRUCK_BED)
-    make_box("Truck_BedFloor", (tx - 1.10, ty, 0.42),
-             (1.20, 1.00, 0.04), COL_TRUCK_BODY)
-    # Wheels
-    for wx, wy in [(tx - 0.50, ty - 0.48), (tx + 0.50, ty - 0.48),
-                   (tx - 1.40, ty - 0.48), (tx - 0.50, ty + 0.48),
-                   (tx + 0.50, ty + 0.48), (tx - 1.40, ty + 0.48)]:
-        make_cyl(f"Truck_Wheel_{wx:+.1f}_{wy:+.1f}",
-                 (wx, wy, 0.24), 0.24, 0.20, COL_METAL_BLACK, axis='Y')   # on the asphalt
-    # Headlights
-    for ws in (-1, +1):
-        make_box(f"Truck_Headlight_{ws:+d}",
-                 (tx + 0.6025, ty + ws * 0.32, 0.80),
-                 (0.005, 0.16, 0.12), COL_STREETLAMP_LIT)
+    # A pickup nose-in in the east stall row (2026-10-27: was a 2.3 m
+    # box truck beside the canopy column; now the kit pickup at 5.3 m).
+    _kit_car("Truck", 7.00, -4.45, 5.30, COL_TRUCK_BODY, pickup=True)
 
 
 def build_squeegee_bucket():
-    # Squeegee + bucket beside the right pump — gas-station prop.
-    px, py = +2.20, -2.80
+    # Squeegee + bucket at the east island's north tip (2026-10-27:
+    # the islands moved out with the real-scale canopy).
+    px, py = +2.95, -9.95
     make_cyl("Squeegee_Bucket", (px + 0.550, py, 0.20), 0.18, 0.40, COL_METAL_STEEL)
     # Water-blue inside
     make_cyl("Squeegee_Water", (px + 0.550, py, 0.32), 0.16, 0.10, COL_ICE_BLUE)
@@ -2048,7 +2030,9 @@ def build_squeegee_bucket():
 def build_ice_chest_outside():
     # Chest-style ICE cooler beside the south door (Visi-Cool style),
     # visible through the window. Outdoor merchandising.
-    cx, cy = +0.85, -0.90
+    # (2026-10-27) under the east window: it stood across the door's
+    # right leaf
+    cx, cy = +3.50, -0.90
     make_box("IceChest_Body", (cx, cy, 0.40),
              (1.20, 0.80, 0.80), COL_ICE_BLUE)
     make_box("IceChest_Lid", (cx, cy, 0.82),
@@ -2829,25 +2813,28 @@ def build_outside_hose_reel():
 def build_propane_pole_sign():
     # Tall outdoor pole sign with the convenience-store branding
     # at the southwest corner — visible through the south window.
-    px, py = -5.80, -3.20
-    pole_z = 2.50
+    # (2026-10-27) at the lot's corner on Linden and Gallatin, real
+    # height (the sign was at 4.9 m on a 5 m pole over a 4 m apron)
+    px, py = -11.60, -17.90
+    pole_z = 3.25
     # Pole
     make_cyl("Pole_Body", (px, py, pole_z),
-             0.10, 5.00, COL_METAL_STEEL)
+             0.12, 6.50, COL_METAL_STEEL)
     # Top sign panel (KWIK STOP red)
-    make_box("Pole_Sign_BG", (px, py, pole_z + 2.40),
+    make_box("Pole_Sign_BG", (px, py, pole_z + 2.85),
              (1.40, 0.10, 0.80), COL_BRAND_RED)
-    # White letter band
-    make_box("Pole_Sign_Letters", (px - 0.06, py, pole_z + 2.40),
-             (0.005, 1.20, 0.30), COL_PAPER)
-    # Gas-price LED panel below
-    make_box("Pole_PriceBG", (px, py, pole_z + 1.60),
+    # White letter band and the price digits on both faces, the street's
+    # and the lot's (2026-10-27: they were planes turned across the sign,
+    # standing out through it, the three digits on one spot)
+    make_box("Pole_PriceBG", (px, py, pole_z + 2.05),
              (1.20, 0.10, 0.50), COL_METAL_BLACK)
-    # Three red-LED digit blocks (price)
-    for di in range(3):
-        make_box(f"Pole_PriceDigit_{di}",
-                 (px - 0.05, py, pole_z + 1.60),
-                 (0.005, 0.30, 0.20), (0.96, 0.18, 0.10, 1.0))
+    for fi, fs in enumerate((-1, 1)):
+        make_box(f"Pole_Sign_Letters_{fi}", (px, py + fs * 0.0525, pole_z + 2.85),
+                 (1.20, 0.005, 0.30), COL_PAPER)
+        for di in range(3):
+            make_box(f"Pole_PriceDigit_{fi}_{di}",
+                     (px - 0.36 + di * 0.36, py + fs * 0.0525, pole_z + 2.05),
+                     (0.26, 0.005, 0.30), (0.96, 0.18, 0.10, 1.0))
 
 
 def build_register_cord_loop():
@@ -3077,18 +3064,103 @@ def build_hero_props_2026_09():
              (0.86, 0.24, 0.20, 1.0), segments=6)
     make_box("Folded_Paper", (-3.78, 1.12, 0.766), (0.200, 0.140, 0.008),
              (0.86, 0.84, 0.78, 1.0))
-    # ── THE NEXCORP VAN · Linden strip past the forecourt ──
-    make_box("Street_Linden", (2.0, -7.2, -0.03), (8.0, 3.0, 0.05),
-             (0.30, 0.30, 0.31, 1.0))
-    make_box("NexCorp_Van_Body", (2.9, -7.2, 1.02), (4.60, 1.90, 1.50), white)
-    make_box("NexCorp_Van_Windows", (2.9, -6.235, 1.35), (1.40, 0.030, 0.50),
+    # ── THE NEXCORP VAN · at the north curb of Linden, past the lot
+    #    (2026-10-27: Linden is the real street now, build_forecourt_world;
+    #    the van keeps its place relative to its insert marker)
+    vy = -21.43
+    make_box("NexCorp_Van_Body", (2.9, vy, 1.02), (4.60, 1.90, 1.50), white)
+    make_box("NexCorp_Van_Windows", (2.9, vy + 0.965, 1.35), (1.40, 0.030, 0.50),
              (0.28, 0.32, 0.38, 1.0))
-    make_box("NexCorp_Van_Stripe", (2.9, -6.235, 0.85), (3.80, 0.030, 0.25),
+    make_box("NexCorp_Van_Stripe", (2.9, vy + 0.965, 0.85), (3.80, 0.030, 0.25),
              (0.20, 0.45, 0.48, 1.0))
-    for wi, (wx2, wy2) in enumerate(((1.6, -6.375), (4.2, -6.375),
-                                     (1.6, -8.025), (4.2, -8.025))):
+    for wi, (wx2, wy2) in enumerate(((1.6, vy + 0.825), (4.2, vy + 0.825),
+                                     (1.6, vy - 0.825), (4.2, vy - 0.825))):
         make_cyl(f"NexCorp_Van_Wheel_{wi}", (wx2, wy2, 0.35), 0.35, 0.25,
                  (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+
+
+PEUGEOT_PRESET = "kwik_stop_peugeot"
+COL_PEUGEOT_RED = (0.66, 0.15, 0.13, 1.0)
+COL_PEUGEOT_FADE = (0.80, 0.42, 0.38, 1.0)
+
+
+def build_forecourt_world():
+    """The streets and the ground past the lot (2026-10-27) — the edge of
+    the set. The windows look onto 18 m of lot now; past it was void.
+    From the text: cars leave the lot onto Linden (ch3: "just before she
+    turns onto Linden"), the tow takes the Peugeot "up Gallatin", and the
+    Gas & Go is "across the intersection" (ch15). The lot's southwest
+    corner is the corner of the two."""
+    concrete = (0.62, 0.60, 0.56, 1.0)
+    road = (0.24, 0.24, 0.25, 1.0)
+    line_y = (0.86, 0.72, 0.22, 1.0)
+    # one field under everything, below the paving (no slab shares its
+    # height band with another)
+    make_box("Ground_Field", (0.0, -40.0, -0.10), (300.0, 240.0, 0.04),
+             (0.50, 0.48, 0.32, 1.0))
+    # Linden, east-west along the lot's south edge; its north walk
+    make_box("Walk_Linden", (32.75, -19.55, -0.035), (94.5, 1.5, 0.05), concrete)
+    make_box("Street_Linden", (0.0, -24.3, -0.035), (160.0, 8.0, 0.05), road)
+    for li, lx in enumerate(x for x in range(-60, 61, 6) if not -25 <= x <= -12):
+        make_box(f"Linden_Line_{li}", (float(lx), -24.3, -0.008),
+                 (3.0, 0.12, 0.004), line_y)
+    # Gallatin, north-south up the west side; its east walk
+    make_box("Walk_Gallatin", (-13.75, 10.6, -0.035), (1.5, 58.8, 0.05), concrete)
+    make_box("Street_Gallatin_N", (-18.5, 9.85, -0.035), (8.0, 60.3, 0.05), road)
+    make_box("Street_Gallatin_S", (-18.5, -54.15, -0.035), (8.0, 51.7, 0.05), road)
+    for side, (y0, y1) in (("N", (-17, 39)), ("S", (-77, -31))):
+        for li, ly in enumerate(range(y0, y1, 6)):
+            make_box(f"Gallatin_Line_{side}_{li}", (-18.5, float(ly), -0.008),
+                     (0.12, 3.0, 0.004), line_y)
+    # The Gas & Go across the intersection (the NexCorp fueling station):
+    # massing only — a store, a canopy on four columns
+    white = (0.86, 0.86, 0.84, 1.0)
+    teal = (0.20, 0.45, 0.48, 1.0)
+    make_box("GasGo_Store", (-38.0, -44.0, 2.25), (16.0, 10.0, 4.50), white)
+    make_box("GasGo_Band", (-38.0, -38.98, 3.70), (16.0, 0.04, 0.70), teal)
+    make_box("GasGo_Canopy", (-36.0, -33.5, 4.90), (12.0, 6.0, 0.60), white)
+    make_box("GasGo_Canopy_Band", (-36.0, -30.48, 4.75), (12.0, 0.04, 0.40), teal)
+    for ci, (gx, gy) in enumerate(((-41.0, -31.5), (-31.0, -31.5), (-41.0, -35.5), (-31.0, -35.5))):
+        make_box(f"GasGo_Col_{ci}", (gx, gy, 2.30), (0.36, 0.36, 4.60), white)
+    # the cedar scrub beyond: a broken line of dark crowns, not one wall
+    for ti in range(16):
+        tx = -150.0 + ti * 20.0
+        th = 6.0 + (ti * 37 % 5) * 1.1
+        make_box(f"Scrub_Treeline_{ti}", (tx, -96.0 - (ti % 3) * 4.0, th / 2.0 - 0.08),
+                 (19.0, 6.0, th), (0.20, 0.27, 0.18, 1.0))
+
+
+def build_red_peugeot():
+    """THE RED PEUGEOT (vol6 ch15). "The car is small. The car is European.
+    The car is ... red, in the way of a car that has been red for forty
+    years and that has, in the past five years, started to fade in the
+    small uneven patches a forty-year-old red paint job fades in";
+    "Eighty-six Peugeot. 505 Turbo." It "stops in the lot's far corner
+    instead of pulling up to a pump" at 9:47 and is on the tow truck by
+    11:28. Real size (a 505 is 4.58 m), the kit car in the southwest
+    corner, nose to the store. The faded patches are plates on the hood,
+    roof and trunk lid.
+
+    It exists only in the ch15 preset: every part is renamed
+    `<name>__kwik_stop_peugeot`, and Background3D drops it for every other
+    preset (the clock radio's convention). The hero model replaces it
+    through HP_Peugeot__kwik_stop_peugeot in kwik_stop.tscn."""
+    cx, cy, L = -9.90, -14.60, 4.58
+    _kit_car("Car_Peugeot", cx, cy, L, COL_PEUGEOT_RED)
+    nose, tail = cy + L / 2.0, cy - L / 2.0
+    # hood (0.92 .. 0.96 m up the profile), roof (1.46), trunk lid (~1.00)
+    for fi, (fx, fy, fz, fw, fl) in enumerate((
+            (cx + 0.30, nose - 0.55, 0.943, 0.55, 0.40),
+            (cx - 0.35, nose - 0.85, 0.955, 0.40, 0.30),
+            (cx + 0.10, cy + 0.05, 1.462, 0.70, 0.55),
+            (cx - 0.40, tail + 0.40, 1.010, 0.45, 0.30))):
+        make_box(f"Car_Peugeot_Fade_{fi}", (fx, fy, fz), (fw, fl, 0.004), COL_PEUGEOT_FADE)
+    try:
+        for obj in list(bpy.data.objects):
+            if obj.name.startswith("Car_Peugeot_") and "__" not in obj.name:
+                obj.name = obj.name + "__" + PEUGEOT_PRESET
+    except Exception:
+        pass      # the audits' recorder: no scene to rename in
 
 
 def main():
@@ -3110,6 +3182,8 @@ def main():
     build_polish_pass_5()
     build_hero_props_2026_08()
     build_hero_props_2026_09()
+    build_forecourt_world()
+    build_red_peugeot()
     export_glb()
 
 

@@ -5287,6 +5287,51 @@
       ]
     },
     {
+      "slug": "peugeot_505",
+      "kind": "prop",
+      "name": "the red Peugeot",
+      "file": "peugeot_505.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "peugeot_505"
+      ],
+      "tag": "vol6 ch15 'The Red Peugeot' · Mark's father's 1986 505 Turbo · the Kwik Stop lot, 9:47 to the tow at 11:28",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A 1986 Peugeot 505 Turbo four-door sedan, the boxy late-eighties European saloon: long flat hood, upright glasshouse, square headlamps, black rubber bumpers and trim, Turbo-model alloy wheels. Forty-year-old red paint faded in small uneven pinkish patches on the hood, roof and trunk lid where the sun has had it; a little road dust; otherwise kept up. Hood closed, parked, seen from the front three-quarter. No badges or lettering legible.",
+      "texture_prompt": "faded forty-year-old red paint with uneven sun-faded patches, black rubber bumpers and trim, clear glass, silver alloy wheels, black tyres",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The car is small."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The car is European."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "red, in the way of a car that has been red for forty years and that has,"
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "in the past five years, started to fade in the small uneven patches a forty-year-old red paint job fades in when the car has lived its life mostly outdoors."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "Eighty-six Peugeot. 505 Turbo. Was my dad's. He gave it to me when I moved out west in 2014. It — it's been a project. He kept it up till he died. I've been keeping it up since."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "He whistles, in the way mechanics whistle at cars they have not seen the like of in some time."
+        }
+      ],
+      "notes": "PROP (2026-10-27, user: \"The Peugeot needs a model\"): replaces the kit-car stand-in Car_Peugeot_* in the Kwik Stop lot's far corner, only in the kwik_stop_peugeot preset (ch15, from the car's arrival to the tow). The HeroProp lays its length along the lot (z) at 4.58 m, a 505's real length. The text gives red, faded in patches, small, European, 1986 505 Turbo; the body style (sedan) is the 505 Turbo's US form — the text does not say. Hood closed: ch15 pops it (\"He pops the hood\", steam) — a hood-up state is a later pass."
+    },
+    {
       "slug": "iv_pole",
       "kind": "prop",
       "name": "The IV pole",

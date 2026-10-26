@@ -3835,6 +3835,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 183: THE RED PEUGEOT — a model, a lot to park it in, and only for its morning.**
+- User: "The Peugeot needs a model." Vol 6 ch15's red car — "Eighty-six Peugeot. 505
+  Turbo", red "faded in the small uneven patches", "stops in the lot's far corner instead
+  of pulling up to a pump" at 9:47, on the tow truck by 11:28 — was nowhere in the set.
+- **The roster:** `peugeot_505` (prop), with the text's own sentences as canon. Body style
+  (sedan) is the 505 Turbo's US form; the text does not say. Hood closed.
+- **The lot it needed (Kwik Stop forecourt, draft 2):** the forecourt was toy-scale — pumps 2.5 m
+  from the glass, a 1.8 m "sedan", a 2.3 m pickup, the whole lot 4 m deep — so a real
+  4.58 m car had nowhere the windows could see it. Rebuilt at real size: the walk, nose-in
+  stalls (5.5 m), the drive aisle, a 14 x 8 m canopy over two islands 10–17 m out, a 7 m
+  lot light; the kit cars (sedan at the pump, pickup nose-in). Past the lot, from the
+  text: Linden along the south, Gallatin up the west ("disappear up Gallatin"), the Gas &
+  Go across the intersection, a field and a broken cedar-scrub treeline (the window used
+  to end at a 4 m slab). The ice chest left the door's leaf; the pole sign's letter band
+  and price digits, planes turned across the sign, now lie on its faces. The storefront
+  glass lost its sunset amber (every cut is by day since pass 63; it turned the red
+  car brown).
+- **Only for its morning:** a twin preset, `kwik_stop_peugeot`. The car is the kit car
+  renamed `Car_Peugeot_*__kwik_stop_peugeot` after it builds, so Background3D drops it for
+  every other preset (the clock radio's convention). The convention now carries
+  HeroProps too: `HP_Peugeot__kwik_stop_peugeot` leaves with its stand-in. Ch15 switches
+  to the twin at "The red car pulls into the lot" and back at "watch the Peugeot
+  disappear up Gallatin" (the same GLB, so the cast stays up). Music and the ambient bed
+  follow `kwik_stop_interior`.
+- **The frame:** `shot_insert_lot`, Sam at the counter's south end through the east pane
+  and its decal rows, 24°, on both lines ("Sam, at the counter, looks up …"). Verified in
+  the engine with a stand-in model under the prop's name: it loads, fits (4.58 m), hides
+  the 52 kit parts in the twin preset; in the plain preset neither car is there.
+- **Draft 184 targets:** the hood up and the steam (ch15 lines 42–46, a third preset or a
+  state); the tow truck (11:08–11:28) as a vehicle in the lot; the window tables' insert
+  sees the car only behind the poster grid — a lower or second window-seat frame;
+  `music_direction.py suggest` has 137 stale `locales_auto` rows to regenerate (separate
+  job); the forecourt has no lot-edge curbs, no wheel stops, no oil stains; the Gas & Go
+  is massing only.
+
 **2026-10-27 · pass 182: PICTURES AND MODELS WHERE THE 3D FALLS SHORT — planned, placed, ready to generate.**
 - The survey (two user questions: where 2D plates and hero props help across the seven
   volumes; "Go ahead"). Generation runs on the Deck through Hero Studio (no provider keys

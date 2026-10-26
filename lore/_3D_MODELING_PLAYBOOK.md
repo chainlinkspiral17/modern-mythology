@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · a story vehicle needs a lot at real scale, and only its own scene (pass 183)
+
+**Context:** "The Peugeot needs a model." The Kwik Stop's forecourt had
+been built to fill the window, not to hold a car: pumps 2.5 m out, a
+1.8 m sedan, a 2.3 m pickup. A real 4.58 m 505 had nowhere the windows
+could see it. The car also exists for two hours of one chapter.
+
+**Rule:** before placing a real-size vehicle, measure what is outside
+the glass. A forecourt, a lot or a street is built at the size such a
+place really is: stalls 5.5 x 2.8 m, a canopy 4.6 m clear, the street
+past it, a field and a treeline past that. A vehicle that belongs to
+one stretch of one chapter is the kit car renamed `<part>__<preset>` after
+it builds (Blender rename, guarded for the audits' recorder). Its
+HeroProp is named `HP_<Name>__<preset>`, and Background3D strips both for
+every other preset. The chapter switches presets at the line that
+brings the car and the line that takes it away.
+
 ### 2026-10-27 · a HeroProp's stand-in root is `../Interior`, and its spot comes from the built GLB (pass 182)
 
 **Context:** The first wave of HeroProp placements (33 in 13 sets: the

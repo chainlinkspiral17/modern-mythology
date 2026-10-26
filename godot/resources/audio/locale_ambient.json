@@ -93,6 +93,10 @@
       "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
     },
+    "kwik_stop_peugeot": {
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
+      "gain": 0.82
+    },
     "nexcorp_fueling_station": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.82

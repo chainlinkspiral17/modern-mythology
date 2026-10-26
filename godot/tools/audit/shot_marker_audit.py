@@ -137,6 +137,9 @@ SYNONYMS = {
     "charred_wood": ["char", "burn", "ember", "ash"],
     "coffee": ["coffee", "pot", "mug", "carafe", "percolator"],
     "truck": ["truck", "pickup", "van"],
+    # (2026-10-27) the Kwik Stop lot from the counter: the red Peugeot's
+    # corner (after the tow the same frame holds the empty corner)
+    "lot": ["car_peugeot"],
     "crow": ["crow", "bird", "corvid"],
     "notebook": ["notebook", "note", "journal", "ledger"],
     "window": ["window", "win_", "sash", "pane"],

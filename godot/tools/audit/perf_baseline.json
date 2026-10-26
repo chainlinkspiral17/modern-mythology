@@ -148,7 +148,9 @@
   "objects": 312
  },
  "kwik_stop": {
-  "draw": 276
+  "draw": 624,
+  "prims": 502084,
+  "objects": 1404
  },
  "lake_house": {
   "draw": 134,
