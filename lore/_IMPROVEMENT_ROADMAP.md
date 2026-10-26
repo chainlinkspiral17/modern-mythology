@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-26 · pass 179: COSMIC COMICS BY MONTAGE (35 markers, shop + back office).**
+- Every marker rendered under both presets and read. Both geometry gates clean beforehand.
+- **One prop built, one re-aim:** `insert keys` (ch12 "the keys are heavy in a way Maya had
+  not, at sixteen, expected keys to be heavy"; ch21 "the keys, this morning, are not heavy")
+  framed the KEY ISSUES wall rack — the aim audit had matched the bagged key comics by name,
+  and there were no shop keys in the set → a ring and three keys on the counter by the
+  register, the marker on them from 0.8 m.
+- The shop's frames read: the display case, the Key Issues wall, the new-release racks, the
+  counter and till, the Speak & Spell on its shelf under the register (red, grille dark —
+  the shop's cues), the landline (a beige base and handset on the counter), the one-way
+  mirror as a flat pane, the figure tower. The back office's own nine inserts (coffee,
+  corkboard, envelope, map, mirror, note, notebook, polaroid, safe) exist ONLY as
+  per-preset overrides (`__cosmic_comics_back_office`) and the montage list builder walked
+  base names only — rendered in a second batch. Seven read (corkboard, envelope, map,
+  mirror, note, notebook, safe); two re-aimed: `insert coffee` (ch3 "Sam drinks some of
+  her coffee") looked at the filing cabinets from 2 m with the desk mug behind the camera,
+  and `insert polaroid` (the coda's 1974 print) looked down at the chair with the Polaroid
+  1.4 m past it — both now from 0.6 m over the desk: the mug by the papers, the print on
+  the map beside its red circle.
+- Gates: aim + obstruction --markers clean, doorway / grammar / placement / backing /
+  buried clean, perf 78 draw calls. **Deck rebuilds cosmic_comics_interior** (the keys).
+- **Draft N+1 (directing):** the cabin (95 markers, four presets) on its own pass; then the
+  closeup-by-cast pass for the long dialogues. The montage list builder must walk override-
+  only markers too (fixed in the next pass's list).
+
 **2026-10-26 · pass 178: THE SALTY TOME AND LENA'S APARTMENT BY MONTAGE (57 markers, five presets).**
 - The Salty Tome's 32 markers rendered under the alley preset (ten chapters' worth) and
   again under the interior's; Lena's 25 under the day preset and again under the night's

@@ -227,8 +227,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.197, 1.248, -6.917)
 rotation = Vector3(-0.2618, -2.6180, 0.0)
 
 [node name="shot_insert_keys" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42, 2.10, -6.95)
-rotation = Vector3(0.0, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.450, 1.420, -5.450)
+rotation = Vector3(-0.5041, 0.3430, 0.0)
+metadata/fov = 32.0
 
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.000, 2.189, -2.646)
@@ -453,8 +454,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69, 1.36, -10.83)
 rotation = Vector3(0.0, 0.0, 0.0)
 
 [node name="shot_insert_coffee__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51, 1.36, -10.59)
-rotation = Vector3(-0.4644, -0.9133, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.550, 1.150, -11.950)
+rotation = Vector3(-0.5002, -0.6747, 0.0)
+metadata/fov = 34.0
 
 [node name="shot_insert_mirror__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.100, 1.780, -9.200)
@@ -512,9 +514,9 @@ metadata/fov = 42.0
 
 ; insert: the 1974 Polaroid of Thomas in front of the Graustark storefront
 [node name="shot_insert_polaroid__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1.2, -10.8)
-rotation = Vector3(-0.8421, 0.2387, 0.0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.450, 1.120, -11.850)
+rotation = Vector3(-0.7243, 0.3617, 0.0)
+metadata/fov = 28.0
 
 ; insert: F.T.'s note folded back into its envelope, bound for the fireproof box
 [node name="shot_insert_envelope__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]

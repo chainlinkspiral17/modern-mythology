@@ -180,6 +180,14 @@ def build_register_counter():
     make_counter_bullnose("Register", (cx-0.55, cy, top_z), length=2.40,
                           palette={"top": (0.18, 0.12, 0.20, 1.0)})
     make_register("RegisterMachine", (cx+0.30, cy-0.30, top_z))
+    # THE SHOP KEYS on the counter by the register (2026-10-26: "the keys are
+    # heavy in a way Maya had not, at sixteen, expected keys to be heavy" —
+    # the cue had been matching the Key Issues wall rack by name)
+    make_lathe("Shop_Keys_Ring", (cx-0.30, cy-0.35, top_z), [(0.017, 0.0), (0.024, 0.0), (0.024, 0.004), (0.017, 0.004)],
+               (0.62, 0.60, 0.58, 1.0), segments=14)
+    for ki, (ang, col) in enumerate(((0.35, (0.70, 0.66, 0.42, 1.0)), (0.05, (0.62, 0.60, 0.58, 1.0)), (-0.30, (0.56, 0.54, 0.52, 1.0)))):
+        make_rot_box(f"Shop_Keys_Key_{ki}", (cx-0.30 + 0.045*math.cos(ang), cy-0.35 + 0.045*math.sin(ang), top_z + 0.0015 + ki*0.001),
+                     (0.058, 0.018, 0.002), col, yaw=ang)
     # The GRAIL BOOK — a single high-grade slab under a glass dome, lit.
     gx, gy = cx-0.7, cy
     make_box("Grail_Slab", (gx, gy, top_z+0.14), (0.20, 0.30, 0.03), (0.86, 0.42, 0.30, 1.0))
