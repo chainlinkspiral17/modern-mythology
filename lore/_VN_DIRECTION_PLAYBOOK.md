@@ -323,6 +323,17 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-27 · text never crosses a face; a phone stands where no one does (pass 201)
+
+**Context:** once the eyes moved to mid-screen, the 44 % reading box ran its text across chins. The column also leaned toward the speaker, onto them. Diego's thread stood on Maya's portrait, and the message printed twice.
+
+**Rule:**
+- The box starts below the chin line (~31 % of the screen).
+- The text column takes the side without a portrait, centred when there is none or both.
+- Anything else standing on screen (the phone) claims its side the same way.
+- A text message reads in the phone only; never repeat it in the box.
+- Check a layout change on a VnLineShot replay of a line with a portrait AND a phone, not on an empty frame.
+
 ### 2026-10-27 · an insert is a glance; close-ups move with the vantage (pass 190)
 
 **Context:** "that insert never leaves the scene once it is shown." A replay

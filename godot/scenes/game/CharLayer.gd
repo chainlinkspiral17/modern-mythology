@@ -701,6 +701,20 @@ func slot_of(char_name: String) -> String:
 			return pos
 	return ""
 
+## (2026-10-27) the slots with a portrait standing in them — DialogueBox keeps
+## its text off to the other side ("text over portraits is wrong")
+func occupied_slots() -> Array[String]:
+	var out: Array[String] = []
+	for pos: String in _slots:
+		var slot: Variant = _slots[pos]
+		if slot == null:
+			continue
+		var node: Control = (slot as Dictionary).get("node") as Control
+		if node != null and is_instance_valid(node) and node.visible:
+			out.append(pos)
+	return out
+
+
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
 var _t:     float      = 0.0

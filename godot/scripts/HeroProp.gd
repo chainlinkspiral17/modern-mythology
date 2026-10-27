@@ -27,7 +27,10 @@ extends Node3D
 @export_file("*.glb") var glb_path: String = ""
 @export var size_m: float = 0.9            # the longest extent, in metres
 @export var length_axis: String = "x"      # "x" or "z": where the longest extent lies
-@export var upright: bool = false          # true: the longest extent is the height
+@export var upright: bool = false          # true: size_m is the height (the model stands as built, Y up)
+## (2026-10-27) the widest a standing prop may be across its footprint, metres
+## (0: no cap) — a collectible with a spread cape on a 0.84 m shelf of two
+@export var fit_w: float = 0.0
 @export var lay_down: bool = false         # true: a model standing on end is laid along length_axis (a book, a rolled rug); a Meshy model is drawn upright and never is (2026-10-27)
 @export var stand_in_root: NodePath        # the locale GLB instance holding the procedural stand-in
 @export var hide_prefixes: PackedStringArray = PackedStringArray()
@@ -78,10 +81,11 @@ func _fit(root: Node3D) -> void:
 		longest = 2
 	# Orient: the longest extent goes where the prop wants it.
 	if upright:
-		if longest == 2:
-			root.rotation = Vector3(-PI / 2.0, 0.0, 0.0)     # Z-up → Y-up
-		elif longest == 0:
-			root.rotation = Vector3(0.0, 0.0, PI / 2.0)      # X-up → Y-up
+		# (2026-10-27, the Deck: "figures still poking out through glass case")
+		# every GLB is Y-up, and a figure wider than it is tall (a cape, a
+		# leap, a broad base) was tipped onto its side so its WIDTH stood as
+		# the height — then scaled to the shelf. Upright means as built.
+		pass
 	else:
 		var want: int = 2 if length_axis.to_lower() == "z" else 0
 		if longest == 1 and lay_down:
@@ -103,6 +107,10 @@ func _fit(root: Node3D) -> void:
 	if current < 0.001:
 		current = maxf(ext.x, maxf(ext.y, ext.z))
 	var s: float = size_m / current
+	if fit_w > 0.0:
+		var across: float = maxf(ext.x, ext.z)
+		if across * s > fit_w:
+			s = fit_w / across
 	root.scale = Vector3(s, s, s)
 	var lo: Vector3 = box.position
 	var hi: Vector3 = box.position + box.size

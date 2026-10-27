@@ -55,6 +55,13 @@ const CURSOR_CHAR := "▼"
 # column shifts toward them so the words sit under whoever is talking.
 # "" / "center" both centre the column (narration, unknown speaker).
 var _col_slot: String = "center"
+## (2026-10-27) a side something else holds that CharLayer doesn't know of —
+## the phone thread — so the column stays clear of it too
+var _extra_occupied: String = ""
+
+
+func set_extra_occupied(side: String) -> void:
+	_extra_occupied = side
 
 # Body font, cached so _fit_body_size can re-apply a smaller size for
 # long passages (auto-fit) without re-reading the skin each time.
@@ -215,22 +222,43 @@ func _anchor_to(slot: String) -> void:
 	# — and leans gently toward the speaker's portrait slot, never past
 	# the pads. On a narrow viewport the cap never bites and there is no
 	# room to lean, so the column simply fills the box.
-	const COL_BIAS := 110.0
+	# (2026-10-27, the Deck: "text over portraits is wrong ... keep it off to
+	# the side for each speaker/narration") the column no longer leans toward
+	# the speaker: when a portrait stands on one side, the text takes the
+	# OTHER side (~58 % of the width); with none, or both, it is centred.
 	var vp_w: float = 1280.0
 	var vpr := get_viewport_rect()
 	if vpr.size.x > 1.0:
 		vp_w = vpr.size.x
 	var usable: float = maxf(vp_w - left_pad - right_pad, 1.0)
-	var slack: float = maxf(usable - READ_MAX_COL, 0.0)
-	var shift: float = 0.0
-	match slot:
-		"left":
-			shift = -COL_BIAS
-		"right":
-			shift = COL_BIAS
-	shift = clampf(shift, -slack * 0.5, slack * 0.5)
-	var target_l: float = left_pad + slack * 0.5 + shift
-	var target_r: float = -(right_pad + slack * 0.5 - shift)
+	var occ: Array = []
+	var char_layer: Node = _get_char_layer()
+	if char_layer != null and char_layer.has_method("occupied_slots"):
+		occ = char_layer.call("occupied_slots")
+	if _extra_occupied != "" and not occ.has(_extra_occupied):
+		occ = occ.duplicate()
+		occ.append(_extra_occupied)
+	var side: String = ""
+	if occ.has("right") and not occ.has("left"):
+		side = "left"
+	elif occ.has("left") and not occ.has("right"):
+		side = "right"
+	elif occ.is_empty():
+		side = ""
+	elif slot == "right" and not occ.has("left"):
+		side = "left"
+	elif slot == "left" and not occ.has("right"):
+		side = "right"
+	var col_w: float = minf(READ_MAX_COL, usable * (0.58 if side != "" else 1.0))
+	var spare: float = maxf(usable - col_w, 0.0)
+	var target_l: float = left_pad + spare * 0.5
+	var target_r: float = -(right_pad + spare * 0.5)
+	if side == "left":
+		target_l = left_pad
+		target_r = -(right_pad + spare)
+	elif side == "right":
+		target_l = left_pad + spare
+		target_r = -right_pad
 	var tw := create_tween().set_parallel(true)
 	tw.tween_property(_body, "offset_left", target_l, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -276,7 +304,7 @@ const READ_BODY_PX := 28
 const READ_LEADING := 0.18        # extra line separation (Literata already carries ~1.44 em of line height)
 const READ_MAX_COL := 980.0       # the measure: ~75 characters of Literata at 28 px
 const READ_SPK_PX  := 21
-const READ_BAND_RISE := 56.0      # how far above the box the band begins its fade
+const READ_BAND_RISE := 36.0      # how far above the box the band begins its fade
 
 var _band: TextureRect = null
 
@@ -307,7 +335,9 @@ func _build_standard() -> void:
 	var vpr := get_viewport_rect()
 	if vpr.size.y > 1.0:
 		vp_h = vpr.size.y
-	_std_box_h = clampf(vp_h * 0.44, 300.0, 460.0)
+	# (2026-10-27, the Deck: "text over portraits is wrong. bring text lower")
+	# the eyes sit ~44 % down now, so the box starts below the chin: ~31 %
+	_std_box_h = clampf(vp_h * 0.31, 230.0, 340.0)
 	offset_top = -_std_box_h
 	offset_bottom = 0.0
 	custom_minimum_size.y = _std_box_h
@@ -398,7 +428,9 @@ func _size_reading_box(inner_top: float, inner_bot: float) -> void:
 	var vpr := get_viewport_rect()
 	if vpr.size.y > 1.0:
 		vp_h = vpr.size.y
-	_std_box_h = clampf(vp_h * 0.44, 300.0, 460.0)
+	# (2026-10-27, the Deck: "text over portraits is wrong. bring text lower")
+	# the eyes sit ~44 % down now, so the box starts below the chin: ~31 %
+	_std_box_h = clampf(vp_h * 0.31, 230.0, 340.0)
 	offset_top = -_std_box_h
 	offset_bottom = 0.0
 	custom_minimum_size.y = _std_box_h

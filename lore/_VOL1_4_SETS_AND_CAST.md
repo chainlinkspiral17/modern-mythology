@@ -76,11 +76,11 @@ A sweep on 2026-10-27 found 36 vol 1–4 uses of sets built for vols 5–7 (`bg_
 | 1 | vol2 ch2/ch3 football | vol 6 Texas stadium | Small Wood's field | **built 2026-10-27** — `small_wood_field` |
 | 2 | vol1 exteriors (the park, the river) | vol 5 Graustark riverfront | 2010s Houston, weird | **built 2026-10-27** — `houston_bayou`: `houston_park_day` (Buffalo Bayou), `jd_river`, `jd_river_turn` (the dream river). The interiors stay (Andy: "Houston and New Orleans interiors can be similar"). Judgement Day's driving-day cab (vehicle_cab) still to look at |
 | 2 | vol3 ch6 arcadeum (Honolulu high-rise lobby, game store) | 2052 cedar tower, 2026 Cosmic Comics | Honolulu, early 2000s | to plan |
-| 2 | vol2 ch6 mayhune (summer backyard party) | vol 6 Texas Kowalski backyard | a late-90s Oregon backyard | to plan |
+| 2 | vol2 ch6 mayhune (summer backyard party) | vol 6 Texas Kowalski backyard | a late-90s Oregon backyard | **built 2026-10-27** — `small_wood_backyard` (draft 1): the table, the sprinkler and slip and slide, the balloon husks in the tall grass, the rabbit hutches, the firs over the fence. Her room after (the scene's second picture) still maps to the narrator's bedroom: to fix |
 | 2 | vol2 bookstores (The Cat's Pause, the Blue Heron) | vol 7 Salty Tome (2052) | the 1990s bookstores | to plan |
 | 2 | vol3 ch8 passengers' 3 a.m. stop | vol 6 NexCorp (2026 brand) | an unbranded early-2000s station | **done 2026-10-27** — era preset `gas_station_2003_night` on the same station: the brand pictures skip it (`not_presets`), the 2026 van, cars, badge and morning sun leave it (`strip`), night lights of its own |
 | 2 | vol4 cc_3's "grungy bathroom" (an AFTER PARTY's, not a gas station's) | vol 6 NexCorp restroom | a house-party bathroom | to plan |
-| 3 | vol2 docks, Hwy 101 (Small Wood 1997) | vol 7 Smolvud jetty, Hwy 101 (2052) | the same places in their 1997 state (era presets) | to plan |
+| 3 | vol2 docks, Hwy 101 (Small Wood 1997); vol3's coast road | vol 7 Smolvud jetty, Hwy 101 (2052) | the same places in their own years | **done 2026-10-27** — era presets: `coast_highway_day` (no Tem's truck, no chain or marker on a turn not yet bypassed, a clear day); `smolvud_docks_evening` strips the Frog's things |
 | 3 | vol3 ch4 city street; vol4 apartments | vol 7 main street, Finn's 2052 apartment | era-right streets and rooms | to plan |
 | ok | MD Anderson hospital, Dean's tower, dream cells, Cape Perpetua | — | — | kept |
 

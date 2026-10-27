@@ -1674,6 +1674,20 @@ const CAMERA_PRESETS := {
 	# 6's 2026 Texas field. Small Wood's own (Andy: green and white; a running
 	# track round the field; the home stand covered under an elevated slanted
 	# roof): the stand east past the track, the wooden poles, the firs.
+	# ── VOL 2 — "mayhune": her fifteenth birthday (build_small_wood_backyard.py, 2026-10-27) ──
+	# It played on vol 6's 2026 Texas backyard. "a large table out in the
+	# backyard. It was summer"; "a sprinkler, on a slip and slide"; "broken water
+	# balloons ... in the tall grass"; "a fog horn off in the distance, birds
+	# overhead". From the lawn by the slip and slide, back across the yard to
+	# the table and the house, the firs over the fence behind the lens.
+	"small_wood_backyard_party": {
+		"scene": "res://scenes/locales/small_wood_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_backyard.glb",
+		"camera_origin": Vector3(6.5, 1.6, -14.5),
+		"camera_rotation": Vector3(-0.06, 2.17, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"small_wood_field_night": {
 		"scene": "res://scenes/locales/small_wood_field.tscn",
 		"far": 600.0,   # the ridges behind the firs
@@ -1990,6 +2004,8 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.04, deg_to_rad(14.0), 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.26, 0.30, 0.52, 1), "sky_horizon": Color(0.98, 0.66, 0.40, 1), "ground_horizon": Color(0.30, 0.28, 0.30, 1), "ground_bottom": Color(0.12, 0.12, 0.14, 1), "ambient_color": Color(0.70, 0.60, 0.62, 1), "ambient_energy": 0.60, "fog_color": Color(0.82, 0.60, 0.46, 1), "fog_sky": 0.15},
+		# (2026-10-27) Small Wood in 1997 (Smolvud is its 2050s, Andy): the Frog's things are vol 7's
+		"strip": ["Frog_"],
 		"suppress_input": true,
 	},
 	"smolvud_jetty": {
@@ -2523,6 +2539,26 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.8, 1.15, -12.0),
 		"camera_rotation": Vector3(0.0, 0.0, 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	# (2026-10-27) THE SAME ROAD IN ITS OWN YEARS: vol 2's late-1990s rides
+	# (Salmon's "road trip up to Depot Bay for the day"; Triptych's "Sunlight on
+	# the cheeks, the sky a cobalt blue ... cruising around in vehicles with
+	# windows down") and vol 3's drive to the coast ("Sunlight dotting through
+	# the thickness of it all"). The 2052 road's things leave: Tem's truck, the
+	# chain and the marker of a turn not yet bypassed; the dusk lights too.
+	"coast_highway_day": {
+		"scene": "res://scenes/locales/highway_101.tscn",
+		"requires_glb": "res://assets/3d/locales/highway_101.glb",
+		"far": 1500.0,
+		"camera_origin": Vector3(1.8, 1.2, -12.0),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 64.0,
+		"strip": ["Tem_Truck", "Truck_Headlights", "Sun", "Night_Sky_Fill", "Chain", "Road_Marker"],
+		"env": {"sky_top": Color(0.16, 0.34, 0.78, 1), "sky_horizon": Color(0.70, 0.82, 0.92, 1),
+			"ground_horizon": Color(0.36, 0.40, 0.34, 1), "ground_bottom": Color(0.14, 0.16, 0.14, 1),
+			"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.90, "fog_color": Color(0.76, 0.84, 0.90, 1),
+			"fog_density": 0.0012},
 		"suppress_input": true,
 	},
 	"highway_101_turn": {

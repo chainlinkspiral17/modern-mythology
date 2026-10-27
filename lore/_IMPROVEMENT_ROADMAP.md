@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 201: THE READING SCREEN'S BASICS — text off the faces, the phone beside the reader, stale sets named.**
+- **The text** ("text over portraits is wrong. bring text lower or keep it off to the side"):
+  - The reading box is ~31 % of the screen (was 44 %), so its text starts below the chin. The eyes sit ~44 % down since pass 188.
+  - The column no longer leans toward the speaker. When a portrait stands on one side, the text takes the other ~58 %; it is centred when there is none or both. This holds for narration too.
+- **The phone** ("BASIC VISUAL NOVEL FUMBLES. Text from Diego on top portrait"):
+  - The thread stands on the side the reader's portrait does not, scaled to end above the band. The column counts it as taken.
+  - A text message is no longer repeated in the dialogue box: it reads in the phone, still goes to the backlog, and one press moves on.
+- **The case figures** ("figures still poking out through glass case"):
+  - HeroProp's `upright` tipped a figure wider than tall (a cape, a leap) onto its side and stood its width up as the height. Every GLB is Y-up; upright now means as built.
+  - A new `fit_w` caps the footprint (0.38 m a figure in the tower's 0.84 m case, at 0.36 m tall).
+- **Stale sets:**
+  - The back office's floating pictures over a void, and the figures through a glass top fixed on 10-26, both say the Deck's cosmic_comics_interior GLB predates its builder.
+  - `stale_sets.py` lists the GLBs older than their builder's last commit (and the commits of the builders it imports).
+  - `rebuild_all_locales.sh --stale` rebuilds exactly those.
+
+**2026-10-27 · pass 200: HER FIFTEENTH BIRTHDAY in Small Wood.**
+- **Before:** vol 2's "mayhune" played on vol 6's 2026 Texas backyard.
+- **New set `small_wood_backyard`** (draft 1, late-90s Oregon): the back of a 1970s house with its deck, slider and grill, and "a large table out in the backyard" with cake, cherry soda and presents. Also:
+  - "a sprinkler, on a slip and slide";
+  - "the bright husks of broken water balloons ... in the tall grass";
+  - her old rabbit hutches along the silvered cedar fence;
+  - Douglas fir over it.
+- **Pictures:** two inserts (the cake, the hutches); the gates at 0.
+- **Draft N+1:**
+  - her room for the scene's second picture (it maps to the narrator's bedroom);
+  - kids with poses in the sprinkler.
+
+**2026-10-27 · pass 199: SMALL WOOD'S OWN YEARS on Smolvud's sets.**
+- Smolvud is the 2050s Small Wood (Andy), so vol 2's 1997 coast is vol 7's places in their own years.
+- **`coast_highway_day`:** the coast road on a clear day, for:
+  - Salmon's trip "up to Depot Bay for the day";
+  - Triptych's "sky a cobalt blue";
+  - vol 3's drive to the coast, "Sunlight dotting through the thickness of it all".
+  Tem's 2052 truck, the dusk lights, and the chain and marker of a turn that won't be bypassed for decades all leave it.
+- **The docks:** vol 2's pier and docks drop the Frog's things.
+
 **2026-10-27 · pass 198: ANOTHER YEAR AT THE SAME PLACE — era presets.**
 - **The problem:** vol 3 ch8's 3 a.m. stop played on vol 6's 2026 NexCorp morning, with the brand, the unmarked van and the story's cars.
 - **The engine (two small tools):**
