@@ -59305,6 +59305,21 @@
           ],
           "facing": "-y",
           "hide": []
+        },
+        {
+          "locale": "cedar_tower",
+          "label": "cedar_tower_studio_north_a",
+          "center": [
+            1.4,
+            8.93,
+            7.48
+          ],
+          "size": [
+            2.28,
+            0.58
+          ],
+          "facing": "-y",
+          "hide": []
         }
       ]
     },
@@ -59333,6 +59348,21 @@
           "label": "cedar_tower_studio_north_b",
           "center": [
             -1.4,
+            8.93,
+            7.48
+          ],
+          "size": [
+            2.28,
+            0.58
+          ],
+          "facing": "-y",
+          "hide": []
+        },
+        {
+          "locale": "cedar_tower",
+          "label": "cedar_tower_studio_north_b",
+          "center": [
+            4.2,
             8.93,
             7.48
           ],
