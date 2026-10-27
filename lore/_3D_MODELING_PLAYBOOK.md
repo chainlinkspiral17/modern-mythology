@@ -399,6 +399,15 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · a picture laid in a set has a back (pass 190)
+
+**Context:** the circus's carved sign read mirrored from behind. HeroArt's
+quads were double-sided, so the picture showed through.
+
+**Rule:** a HeroArt quad is one-sided (cull back). Its back is a plain panel
+in the picture's darkened average colour. Use `two_sided: true` only for
+something truly seen from both sides, like a hanging banner.
+
 ### 2026-10-27 · a decimate that cannot cut is not a slim — check the result against the budget (pass 187)
 
 **Context:** The riverboat installed at 12.4 MB, ~24x its budget, after slim

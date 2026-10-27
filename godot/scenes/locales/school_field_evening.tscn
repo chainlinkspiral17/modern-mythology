@@ -505,3 +505,33 @@ light_color = Color(0.940, 0.840, 0.660, 1)
 light_energy = 1.60
 shadow_enabled = false
 omni_range = 5.00
+
+; (2026-10-27) the school_field_day closeups, placed by hand: marker_author's ring
+; search put them on the home walk 1.4 m from the lens, a down-marker pole
+; through the face and the stand's rail behind. A coach talks ON the field:
+; A on the home sideline looking across to the visitors' stands, B a few
+; metres out looking back at the home stands and the press box.
+[node name="shot_closeup_person__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(21.500, 1.620, -45.000)
+rotation = Vector3(-0.0400, 1.2427, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(19.500, 1.620, -47.000)
+rotation = Vector3(-0.0300, -1.8989, 0.0)
+metadata/fov = 45.0
+
+; (2026-10-27) the school_field_evening closeups, placed by hand: marker_author's ring
+; search put them on the home walk 1.4 m from the lens, a down-marker pole
+; through the face and the stand's rail behind. A coach talks ON the field:
+; A on the home sideline looking across to the visitors' stands, B a few
+; metres out looking back at the home stands and the press box.
+[node name="shot_closeup_person__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(21.500, 1.620, -45.000)
+rotation = Vector3(-0.0400, 1.2427, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(19.500, 1.620, -47.000)
+rotation = Vector3(-0.0300, -1.8989, 0.0)
+metadata/fov = 45.0

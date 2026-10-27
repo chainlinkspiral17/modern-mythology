@@ -9,7 +9,8 @@ extends Node
 ##     --shots vol6_ch12_cosmic:70,vol5_ch6_lovers:12 --out /abs/dir [--wait 90] [--next 0]
 ##
 ## Writes <out>/<scene>__<node>.png (and __<node>+<k>.png for --next k: the
-## lines after it, advanced as a reader would). Not HUD; quits when done.
+## lines after it, advanced as a reader would — auto-play is switched off).
+## Not HUD; quits when done.
 
 const ENGINE := preload("res://scenes/game/GameEngine.tscn")
 var _args: Dictionary = {}
@@ -24,6 +25,8 @@ func _ready() -> void:
 
 
 func _run() -> void:
+	# a reader's pace: auto-play off, so the frame is the asked-for line
+	Settings.set("auto_play", false)
 	var out: String = String(_args.get("out", "/tmp/vnshot"))
 	DirAccess.make_dir_recursive_absolute(out)
 	var wait: int = int(String(_args.get("wait", "90")))
@@ -46,9 +49,9 @@ func _run() -> void:
 		get_viewport().get_texture().get_image().save_png("%s/%s__%d.png" % [out, scene_id, node_i])
 		print("[VnLineShot] %s:%d" % [scene_id, node_i])
 		for k in nxt:
-			Input.action_press("ui_accept")
+			eng.call("_advance")
 			await get_tree().process_frame
-			Input.action_release("ui_accept")
+			eng.call("_advance")      # the first press finishes the typing, the second turns the line
 			for i in wait:
 				await get_tree().process_frame
 			await RenderingServer.frame_post_draw

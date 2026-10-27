@@ -1811,7 +1811,7 @@ def model_texture_settings(glb, kind, log=print):
     return wrote
 
 
-def slim_glb(path, kind, log=print, force=False, fresh=False):
+def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
     """Cut one installed model to SLIM_BUDGET[kind] (kind: a budget class,
     budget_class(entry); a bare kind still works); the original goes to
     _full/. fresh: `path` was just downloaded — it IS the new original and
@@ -1843,7 +1843,7 @@ def slim_glb(path, kind, log=print, force=False, fresh=False):
     tmp = path.with_suffix(".slim.glb")
     cmd = blender + ["-b", "--python", str(SLIM_SCRIPT), "--", str(full), str(tmp),
                      "--tris", str(budget["tris"]), "--tex", str(budget["tex"]),
-                     "--tex-small", str(budget["tex_small"])]
+                     "--tex-small", str(budget["tex_small"])] + (["--lock", "0"] if free_seams else [])
     log(f"    slim · {path.name}: {tris} triangles, {side}px maps → Blender …")
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=1200)
@@ -1901,7 +1901,7 @@ def cmd_slim(args):
         if not out.exists():
             continue
         b0 = out.stat().st_size
-        res = slim_glb(out, kind, force=args.force)
+        res = slim_glb(out, kind, force=args.force or args.free_seams, free_seams=args.free_seams)
         model_texture_settings(out, kind)
         if res.get("skipped"):
             skipped += 1
@@ -2179,16 +2179,39 @@ def art_size_text(entry):
             f"that size); the image's edges are the object's edges.")
 
 
-def art_suffix(roster, entry):
-    """The roster's closing line ("No text, no captions …"). A sign, a menu, a
-    calendar is lettering: an art entry's `lettering` says exactly what it
-    reads, and the no-text rule gives way to it."""
-    suffix = roster["style"].get("suffix", "").strip()
-    lettering = (entry.get("lettering") or "").strip() if entry["kind"] in ("art", "scene2d") else ""
+def art_suffix(roster, entry, short=False):
+    """The roster's closing line, and the words in the picture.
+
+    (2026-10-27, the user: "getting upset with the 'no words legible' in
+    prompts, that flies against what I asked for. I want a rich, detailed
+    meta-text" — "Same with the brief one word or sentence or brief line of
+    text on a full page, that's boring and not convincing.") Words that
+    belong in the world are written out in full: `lettering` is the headline,
+    spelled exactly; `text_body` is everything else on the surface, verbatim
+    (the chapter's own words where it quotes the thing); without a body the
+    model fills the surface the way a real one is filled. Only a character
+    render (hero, demon) keeps the no-text line. `short`: Runway's 1000-char
+    prompt — the body is cut at a line or sentence near 380 chars."""
+    style = roster["style"]
+    if entry["kind"] in ("hero", "demon"):
+        return (style.get("suffix_hero") or style.get("suffix", "")).strip()
+    suffix = style.get("suffix", "").strip()
+    lettering = (entry.get("lettering") or "").strip()
+    body = (entry.get("text_body") or "").strip()
+    plate = entry["kind"] == "scene2d" and entry.get("role") == "plate"
+    if short and len(body) > 380:
+        cut = max(body.rfind("\n", 0, 380), body.rfind(". ", 0, 380))
+        body = body[:cut + 1 if cut > 120 else 380].rstrip() + " …"
+    out = []
     if lettering:
-        return (f"Lettering on it reads exactly: {lettering}. Spell it exactly so; no other words. "
-                "No watermark, no border.")
-    return suffix
+        out.append(f"The main lettering reads exactly: {lettering}. Spell it exactly so.")
+    if body:
+        out.append("The rest of the writing on it, in full, readable, spelled exactly: " + body)
+    elif lettering and not plate:
+        out.append("Around it, everything a real one carries is written too — fine print, dates, prices, "
+                   "addresses, notes, page furniture — in real, readable English that fits it.")
+    out.append(suffix)
+    return " ".join(x for x in out if x)
 
 
 def build_prompt(roster, entry, view="front", provider=None):
@@ -2201,13 +2224,15 @@ def build_prompt(roster, entry, view="front", provider=None):
     if provider == "runway":
         style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
         style = styled(roster, entry, style)
-        suffix = art_suffix(roster, entry)
+        suffix = art_suffix(roster, entry, short=True)
         view_txt = _view_text(roster, view)
         fixed = len(style) + len(_role_text(roster, entry)) + len(_subject_text(roster, entry)) + len(suffix) + len(view_txt) + 8
         size_txt = art_size_text(entry) if entry["kind"] == "art" else ""
         fixed += len(size_txt) + 1
         desc = description_for(roster, entry, budget=max(200, RUNWAY_PROMPT_BUDGET - fixed))
-        parts = [desc, size_txt, style, _role_text(roster, entry), _subject_text(roster, entry), suffix, view_txt]
+        # the words ride ahead of the generic style: when the cap cuts, it cuts the style, not
+        # what the picture must say (2026-10-27)
+        parts = [desc, size_txt, suffix, style, _role_text(roster, entry), _subject_text(roster, entry), view_txt]
         return "\n".join(p for p in parts if p)[:RUNWAY_PROMPT_BUDGET]
     style = roster["style"].get(style_key, "")
     parts = [description_for(roster, entry), styled(roster, entry, style), _role_text(roster, entry),
@@ -3844,6 +3869,8 @@ def main():
     p = sub.add_parser("slim", help="cut installed hero / demon / prop models to the game budget (Blender; originals kept in _full/)")
     p.add_argument("slugs", nargs="*", help="only these (default: every model over budget)")
     p.add_argument("--force", action="store_true", help="re-slim from the _full/ original even when in budget")
+    p.add_argument("--free-seams", action="store_true",
+                   help="re-cut from the _full/ original with the UV seams free (no locked pass): for a model the locked cut distorted")
     sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
     sub.add_parser("budget", help="what the models cost: per budget class, disk + video memory (measured / estimated), the heaviest sets")
 

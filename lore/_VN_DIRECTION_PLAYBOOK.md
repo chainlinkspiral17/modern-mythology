@@ -323,6 +323,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-27 · an insert is a glance; close-ups move with the vantage (pass 190)
+
+**Context:** "that insert never leaves the scene once it is shown." A replay
+of vol6 ch12 (`VnLineShot`) showed `[panel:off]` working. The camera was the
+problem: the Speak & Spell insert held for eight lines, through the drawer,
+the lights and the deposit slip. Separately, moving the football field's
+preset camera to the home sideline left its close-up pair 54 m away, back by
+the old south-gate vantage. That was 38 cues cutting across the stadium.
+
+**Rule:** an insert holds its own line plus two (`INSERT_HOLD`). It holds
+longer only while lines name its subject or an open panel shows the same
+thing; then the director returns to the room's wide. When a preset's camera
+moves, author `shot_closeup_person[_b]__<preset>` at the new conversation
+spot and RENDER them. `marker_author --closeup` satisfies the audit, but its
+first picks had a down-marker pole through the face and a railing behind it.
+
 ### 2026-10-27 · a voice by phone is not a person in the room; the eyes sit at the centre
 
 **Context:** Deck screenshots: Diego standing in the Kwik Stop because his

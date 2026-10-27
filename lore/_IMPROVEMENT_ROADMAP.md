@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 190: DOWN THE DECK'S LIST — the stadium, the insert that stayed, mirrored signs, words in the pictures.**
+- **The stadium** ("football field and stadium is still nonsense … illogical"):
+  - **Before:** the lens stood behind the south goalpost, looking down 110 m of field into haze, the people specks.
+  - **Now:** it stands on the walk in front of the HOME stands at the home 40, at eye height, looking across the bench and midfield to the visitors' stands, lights on both sides.
+  - Per-preset fog: 0.0012 by day, 0.0020 at dusk (it was 0.0045).
+  - New close-up pairs for both hours are placed by hand on the field (A: home sideline facing the visitors' side; B: facing back at the home stands and press box), and rendered.
+  - wrong_room had jumped to 38 cues landing in another area; it is back to 0.
+- **The insert that never left:** an insert is a glance. It holds its line plus two, or longer while lines name it or a panel shows it, then the room comes back. Verified by replaying vol6 ch12: the Speak & Spell insert gives way at "She closes the notebook."
+- **Mirrored signs:** HeroArt quads are one-sided now, with a plain dark back.
+- **Sightlines:** the centre slot no longer sits 20 px higher than the sides.
+- **Full rebuild:** `godot/tools/blender/rebuild_all_locales.sh` rebuilds every set (or the named ones) and re-imports.
+- **Sam:** `meshy_pipeline.py slim <slug> --free-seams` re-slims without the seam lock, for comparison.
+- **The caped statue** (the generator refused it as IP): `comic_figure_1` is now an original cloaked sky pilot on a crag.
+- **Words in pictures** (the user: "I want a rich, detailed meta-text"; one line on a full page is "boring and not convincing"):
+  - Only character renders are text-free.
+  - `lettering` is the headline; new `text_body` is everything else on the surface, verbatim.
+  - Runway prompts put the words ahead of the generic style.
+  - A four-way pass over 326 entries (bans removed, page bodies written from the chapters' own words) lands next.
+- **Draft N+1:**
+  - the Lovers' direction and sightlines;
+  - vol 1–4 montage passes, starting with the circus and the stadium's ch13/19/22 lines;
+  - a panel shown across a save-resume (the fast-forward does not re-show it);
+  - the 326-entry text pass reviewed and applied.
+
 **2026-10-27 · pass 189: THE READER — the slowstick console gets a hero model.**
 - User: "the slowstick console doesn't have a hero model and needs one." In the text it is
   THE READER ("The stick goes in the reader. The cap goes on your head."), with its CAP ("a

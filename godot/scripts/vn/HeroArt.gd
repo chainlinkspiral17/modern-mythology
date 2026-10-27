@@ -185,7 +185,12 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	mat.roughness = 1.0
 	mat.metallic = 0.0
 	mat.metallic_specular = 0.12
-	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+	# (2026-10-27, the Deck: a carved sign read "yadoT tisiV emoC") a picture
+	# is one-sided: seen from behind it showed its art MIRRORED — the back of
+	# a sign, a poster, a window view. The back is a plain board (below); a
+	# row may still ask for "two_sided": true.
+	var two_sided: bool = bool(row.get("two_sided", false))
+	mat.cull_mode = BaseMaterial3D.CULL_DISABLED if two_sided else BaseMaterial3D.CULL_BACK
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	# (2026-10-14) a screen or a neon sign makes its own light — painted
 	# like a poster it went dead in every night room. `glow` (roster row) is
@@ -241,7 +246,39 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 			basis = Basis(Vector3.RIGHT, -PI / 2.0)
 			normal = Vector3(0, 1, 0)
 	mi.transform = Transform3D(basis, pos + normal * LIFT)
+	if not two_sided:
+		# the back: the picture's own average colour, darkened — the bare
+		# board or paper behind it, not a black hole and not the art reversed
+		var back := MeshInstance3D.new()
+		var bq := QuadMesh.new()
+		bq.size = mesh.size
+		var bm := StandardMaterial3D.new()
+		bm.albedo_color = _back_colour(tex)
+		bm.roughness = 1.0
+		bm.cull_mode = BaseMaterial3D.CULL_BACK
+		bq.material = bm
+		back.mesh = bq
+		back.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		back.transform = Transform3D(Basis(Vector3.UP, PI), Vector3(0, 0, -0.001))
+		mi.add_child(back)
 	return mi
+
+
+static func _back_colour(tex: Texture2D) -> Color:
+	var c := Color(0.32, 0.27, 0.22)
+	var img: Image = tex.get_image() if tex != null else null
+	if img != null and not img.is_empty():
+		var small: Image = img.duplicate() as Image
+		if small.is_compressed():
+			small.decompress()
+		# a bilinear shrink to one pixel samples the centre; average a 16 x 16
+		small.resize(16, 16, Image.INTERPOLATE_BILINEAR)
+		var acc := Color(0, 0, 0)
+		for yy in 16:
+			for xx in 16:
+				acc += small.get_pixel(xx, yy)
+		c = Color(acc.r / 256.0, acc.g / 256.0, acc.b / 256.0)
+	return Color(c.r * 0.55, c.g * 0.55, c.b * 0.55, 1.0)
 
 
 ## Hide the stand-in under one picture. (2026-10-13) A room can hold

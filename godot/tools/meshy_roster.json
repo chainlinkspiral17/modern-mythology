@@ -124,7 +124,8 @@
     "hero": "Full-body concept render of {name}, a character from a literary visual novel set in {setting}. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.",
     "demon": "Full-body concept render of {name}, an uncanny figure from a literary visual novel about thin places in {setting}. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.",
     "prop": "Single-object concept render of {name}, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).",
-    "suffix": "No text, no captions, no labels, no watermark, no border.",
+    "suffix": "No captions or labels about the picture, no watermark, no border. Words that belong in the world — signs, papers, pages, screens, spines, labels, packaging — are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "suffix_hero": "No text, no captions, no labels, no watermark, no border.",
     "view_side": "Same subject, identical design, colours, clothing and details as the reference image, now seen from the left side in strict profile (90 degrees), same pose, same plain light-grey background, whole subject in frame.",
     "view_back": "Same subject, identical design, colours, clothing and details as the reference image, now seen directly from behind (180 degrees), same pose, same plain light-grey background, whole subject in frame.",
     "hero_short": "Full-body concept render of {name}: relaxed A-pose, facing camera, feet visible, whole body in frame, plain flat light-grey seamless background, even soft light, no cast shadow, one subject, semi-realistic painterly style, clean silhouette.",
@@ -7338,18 +7339,30 @@
       "keys": [
         "mark"
       ],
-      "tag": "vol6 ch15 · one of Bobby's regulars · the kid who backs the truck up to the Peugeot",
+      "tag": "vol6 ch15 · from Oakland · the Peugeot was his father's · Lucy's partner",
       "aspect": "3:4",
       "pose": "a-pose",
       "texture_prompt": "grey sleeveless work shirt, jeans, tan work boots, trucker cap, patchy beard",
-      "prompt": "Mark, early 20s, a tow-truck driver and one of Bobby's regulars. Wiry, sunburned, a patchy beard, a trucker cap. A grease-marked grey work shirt with the sleeves cut off, jeans, tan work boots, leather gloves tucked in a back pocket.",
+      "prompt": "Mark, late twenties to early thirties, Lucy's partner, three days into a drive from Oakland to Atlanta in his late father's 1986 Peugeot. Tall and thin, several days unshaven, tired. A faded t-shirt from a small Oakland craft brewery, worn three days running, the brewery's name in a small clean sans-serif (not legible), jeans, worn sneakers. No hat.",
       "canon": [
         {
           "src": "vol6/vol6_ch15_kwik_stop.json",
-          "text": "The driver — a kid in his early twenties Sam recognizes as one of Bobby's regulars — backs the truck up to the Peugeot. He gets out. He shakes Mark's hand."
+          "text": "He is in a t-shirt that is the color t-shirts become when they have been worn three days in a row."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "He is tall. He is thin. He has not shaved in some days."
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "His t-shirt is, up close, the t-shirt of a brewery in Oakland that Sam has not heard of"
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "a man in his late twenties or early thirties"
         }
       ],
-      "notes": "SPARSE — the scene names the driver's age; Mark may be the Peugeot's owner instead. Check ch15 before spending credits.",
+      "notes": "(2026-10-27) CORRECTED: this entry described the TOW DRIVER (\"a kid in his early twenties … one of Bobby's regulars\"), and the model made from it showed a trucker-capped kid as Mark. Mark is the Peugeot's owner, from Oakland. REGENERATE mark.glb from this entry. The driver is unnamed and never speaks; he needs no model.",
       "prompt_mode": "append"
     },
     {
@@ -56225,7 +56238,7 @@
     {
       "slug": "comic_figure_1",
       "kind": "prop",
-      "name": "a caped hero statue mid-leap",
+      "name": "a cloaked sky-pilot statue on a crag",
       "file": "comic_figure_1.glb",
       "tier": "small",
       "vol": [
@@ -56239,10 +56252,10 @@
       "tag": "vol3 · vol6 · vol7 · Cosmic Comics · a collectible on the statue tower / Key Issues shelf / window",
       "aspect": "3:4",
       "pose": null,
-      "prompt": "A painted resin collectible statue on a round black base, about 35 cm tall: an original caped hero mid-leap, one fist forward, cape swept back, a deep blue suit with a red cape and a plain chest emblem shape. Glossy paint, crisp sculpt.",
+      "prompt": "A painted resin collectible statue on a round black base, about 35 cm tall: an original pulp-adventure sky pilot standing on a rocky crag, one boot up on a higher rock, a long burnt-orange cloak streaming behind in the wind, a charcoal-grey flight suit with brass buckles and a brown leather harness, aviator goggles pushed up on short dark hair, one hand shading the eyes, looking out at a horizon. Plain chest, no emblem, no logo, no lettering. Glossy paint, crisp sculpt.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
-      "texture_prompt": "glossy painted resin: deep blue suit, red cape, plain chest emblem, gloss black base"
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses. (2026-10-27) The user: \"caped hero statue won't generate IP restrictions\" — the first proposal (blue suit, red cape, fist forward mid-leap, chest emblem) read as a famous comic hero and the generator refused it. Redrawn as an original cloaked sky pilot on a crag: no superhero wording, no blue-and-red, no flying pose, no emblem.",
+      "texture_prompt": "glossy painted resin: burnt-orange cloak, charcoal flight suit, brass buckles, brown leather harness, grey rock crag, gloss black base"
     },
     {
       "slug": "comic_figure_2",

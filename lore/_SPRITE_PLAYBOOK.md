@@ -103,6 +103,27 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-10-27 · words in the world are written out in full (pass 190)
+
+**Context:** the user: "getting upset with the 'no words legible' in prompts,
+that flies against what I asked for. I want a rich, detailed meta-text", and
+"the brief one word or sentence … on a full page, that's boring and not
+convincing." The roster closed every prompt with "No text", and `lettering`
+added "no other words". 110 prompts banned or blurred their own writing.
+
+**Rule:** only a character render (hero, demon) is text-free. Anything else
+that carries writing carries ALL of it:
+- `lettering` is the headline, spelled exactly.
+- `text_body` is the rest, verbatim, and the chapter's own words wherever it
+  quotes the thing.
+- Without a body, the model is told to fill the surface the way a real one
+  is filled.
+
+Never write "illegible", "no readable text" or "suggestion of writing". A ban
+is right only for something truly blank, or something the text says can't be
+read. On Runway's 1,000-character cap, the words ride ahead of the generic
+style.
+
 ### 2026-09-11 · the tint table exists twice, and the baker had six of thirty-one
 
 - **CharLayer.gd's EXPR_TINTS is the source; raster_substrate.py's

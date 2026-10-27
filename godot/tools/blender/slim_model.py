@@ -32,7 +32,7 @@ import bpy
 
 def _args():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
-    opts = {"tris": 120000, "tex": 2048, "tex_small": 1024, "quality": 88}
+    opts = {"tris": 120000, "tex": 2048, "tex_small": 1024, "quality": 88, "lock": 1}
     pos = []
     i = 0
     while i < len(argv):
@@ -123,7 +123,9 @@ def main():
         # line names the models to look over for dark specks at UV seams.
         originals = {ob.name: ob.data.copy() for ob in meshes}
         dg = bpy.context.evaluated_depsgraph_get()
-        for factor in (1000.0, 0.0):
+        # --lock 0 (`meshy_pipeline.py slim --free-seams`): straight to the free
+        # cut — to compare a model the locked cut may have distorted
+        for factor in ((1000.0, 0.0) if o["lock"] else (0.0,)):
             ratio = o["tris"] / float(tris_in)
             for ob in meshes:
                 old = ob.data

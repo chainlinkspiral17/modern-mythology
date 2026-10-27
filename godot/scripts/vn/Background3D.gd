@@ -1598,6 +1598,7 @@ const CAMERA_PRESETS := {
 	"school_field_evening": {
 		"scene": "res://scenes/locales/school_field_evening.tscn",
 		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
+		"env": {"fog_density": 0.0020},   # (2026-10-27) the scene's 0.0045 greyed the far stands at dusk
 		# OUTDOOR: the true-scale gridiron (x sideline-to-sideline, +-24.4;
 		# y downfield, south end line 0 -> north 109.7; godot (x, z, -y)).
 		# Draft 5 (2026-10-09): the HOME stands and press box are EAST,
@@ -1605,9 +1606,16 @@ const CAMERA_PRESETS := {
 		# visitors' stand west; the lot and the field gate south. Camera
 		# just past the south end line by the gate, looking downfield NW:
 		# striped turf and both goalposts, the home stands frame-right.
-		"camera_origin": Vector3(6.0, 2.8, 3.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
-		"fov": 62.0,
+		# (2026-10-27, the Deck: "football field and stadium is still nonsense
+		# … illogical") the lens stood behind the south goalpost looking down
+		# the long axis: 110 m of field going grey into the haze, the people a
+		# speck. It stands now where a person at the game stands — the walk
+		# in front of the HOME stands at the home 40, eye height — looking
+		# across the bench and the practice at midfield to the visitors'
+		# stands, the lights both sides.
+		"camera_origin": Vector3(29.4, 2.0, -46.0),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(71.2), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"school_field_day": {
@@ -1624,12 +1632,20 @@ const CAMERA_PRESETS := {
 		# forty (ch19), the six PM walk-through "is light" (ch19), Vinton's bus (ch22)
 		# played under the floods.
 		# The authored rig is suffixed to school_field_evening; this twin has its own lights and env.
-		"camera_origin": Vector3(6.0, 2.8, 3.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
-		"fov": 62.0,
+		# (2026-10-27, the Deck: "football field and stadium is still nonsense
+		# … illogical") the lens stood behind the south goalpost looking down
+		# the long axis: 110 m of field going grey into the haze, the people a
+		# speck. It stands now where a person at the game stands — the walk
+		# in front of the HOME stands at the home 40, eye height — looking
+		# across the bench and the practice at midfield to the visitors'
+		# stands, the lights both sides.
+		"camera_origin": Vector3(29.4, 2.0, -46.0),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(71.2), 0.0),
+		"fov": 60.0,
 		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
 			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
-			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1),
+			"fog_density": 0.0012},   # (2026-10-27) the scene's 0.0045 greyed the turf across 110 m
 		"suppress_input": true,
 	},
 	"ramos_kitchen_morning": {
@@ -5262,6 +5278,8 @@ func _apply_preset_env(root: Node, spec: Dictionary) -> void:
 		env.ambient_light_energy = float(ov["ambient_energy"])
 	if ov.has("fog_color"):
 		env.fog_light_color = ov["fog_color"]
+	if ov.has("fog_density"):
+		env.fog_density = float(ov["fog_density"])
 	# (2026-10-23, pass 158) THE SKY WAS THE FOG. Every locale env has fog
 	# on, and Godot's fog_sky_affect defaults to 1.0: the sky is painted
 	# entirely in the fog colour, so no authored sky_top / sky_horizon ever

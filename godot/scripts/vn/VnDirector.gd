@@ -64,6 +64,18 @@ var _bar_bottom: ColorRect = null
 var _panel_card: Control = null
 var _overlay_parent: Control = null
 
+# AN INSERT IS A GLANCE (2026-10-27, the Deck: "that insert never leaves
+# the scene once it is shown"). A [shot:insert X] held until the author's
+# next cue — ch12's Speak & Spell stayed the whole picture through closing
+# the notebook, the drawer, the lights and the deposit slip. It now holds
+# its own line and INSERT_HOLD - 1 more, longer while the lines keep naming
+# it or an open panel shows the same thing (the notebook while its list is
+# read), then the room comes back (consider_line).
+const INSERT_HOLD := 3
+var _insert_left: int = 0
+var _insert_words: PackedStringArray = PackedStringArray()
+var _panel_words: PackedStringArray = PackedStringArray()
+
 var _drifting: bool = false
 var _drift_floor: float = 50.0
 
@@ -127,6 +139,8 @@ func on_locale_changed() -> void:
 	_face_side.clear()
 	_set_letterbox(false)
 	_dismiss_panel()
+	_panel_words = PackedStringArray()
+	_insert_left = 0
 	# a new room: its pictures are new to the eye
 	_art_used.clear()
 	_art_return = {}
@@ -313,6 +327,8 @@ func _try_apply_shot() -> void:
 			_pending_shot = ""
 		return
 	_pending_shot = ""
+	_insert_left = INSERT_HOLD if shot_type == "insert" else 0
+	_insert_words = _line_words(shot_id.replace("_", " ")) if shot_type == "insert" else PackedStringArray()
 
 	var marker: Node3D = null
 	# The generic face pair on a line someone says: the speaker's own frame
@@ -522,7 +538,9 @@ func apply_panel(id: String) -> void:
 	id = id.strip_edges().to_lower()
 	if id == "off" or id == "":
 		_dismiss_panel()
+		_panel_words = PackedStringArray()
 		return
+	_panel_words = _line_words(id.replace("_", " "))
 	_dismiss_panel()
 	# (2026-10-27, the Deck: "are we still using these old temp inserts and
 	# not the new generated art from the hero tool?") a panel whose subject
@@ -782,6 +800,8 @@ static func _line_words(text: String) -> PackedStringArray:
 ## Every text line passes here before it shows (GameEngine). `cued`: the
 ## line carried its own [shot:] (the author's frame wins).
 func consider_line(text: String, kind: String, cued: bool) -> void:
+	if _insert_left > 0 and not cued:
+		_hold_or_leave_insert(text)
 	if not _art_return.is_empty():
 		if not cued:
 			_restore_frame(_art_return)
@@ -821,6 +841,28 @@ func consider_line(text: String, kind: String, cued: bool) -> void:
 		print("[VnDirector] NOTICE → %s (the line names it)" % best["slug"])
 	else:
 		_art_return = {}
+
+
+## One more line on an insert: kept while the line names its subject or an
+## open panel shows it, else counted down; at zero the room's wide returns.
+func _hold_or_leave_insert(text: String) -> void:
+	var named: bool = false
+	for w: String in _line_words(text):
+		if w in _insert_words:
+			named = true
+			break
+	if not named:
+		for w: String in _panel_words:
+			if w in _insert_words:
+				named = true
+				break
+	if named:
+		_insert_left = INSERT_HOLD
+		return
+	_insert_left -= 1
+	if _insert_left <= 0:
+		apply_shot("establish")
+		print("[VnDirector] the insert has had its look → the room")
 
 
 ## The room's close-up pieces, nearest the current camera first.

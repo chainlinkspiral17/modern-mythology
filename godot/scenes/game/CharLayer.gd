@@ -312,7 +312,7 @@ const CUTOUT_MODE := true
 # people at 3/4 facing inward reads naturally shoulder-to-shoulder.
 const POSITIONS := {
 	"left":   Vector2(-70, 0),
-	"center": Vector2(250, -20),
+	"center": Vector2(250, 0),     # (2026-10-27) was -20: the middle of a three-shot sat 20 px over the others' eye line
 	"right":  Vector2(570, 0),
 }
 const SPRITE_W    := 780.0
