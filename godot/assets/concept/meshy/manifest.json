@@ -31186,5 +31186,470 @@
       "godot/assets/concept/meshy/miriam_2025/miriam_2025_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/miriam_2025/miriam_2025_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T16:07:21+00:00",
+    "stage": "image",
+    "slug": "the_critic",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Critic like this: He's at the threshold. Black coat. Won't step over until you do. The critic, holding a thin notebook, smiling the wrong amount. A black town car at the bay door. The driver waits. His thin notebook is open. He's writing without looking at the page. He's at the JUDGEMENT platform, taking notes. The notes are already past-tense. He's at the JUDGEMENT platform, looking at the blank stage. He's on his phone at the bay door. His notes are already a post.\nFull-body concept render of The Critic, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_critic/the_critic_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_critic/the_critic_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_critic/the_critic_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:08:20+00:00",
+    "stage": "image",
+    "slug": "the_superfan",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Superfan like this: She's at the bay, holding a small box-set she made for Elicia, hands trembling slightly. She locks the bike to the iron strut. Carefully. \"Hi, Frasier \u2014 hi. I \u2014 hi.\" She does not blink. She sits very still beside you. She is not looking at Elicia. She is looking at the floor. Her hands are steady now. She breathes out. She's mouthing what Elicia is about to say. Then Elicia says it. The superfan is one beat ahead. Then two. Then three. She mouths the line a half-second before Elicia says it. Nobody knows whether to be charmed or alarmed. A bicycle bell from outside. Closer. she came alone\nFull-body concept render of The Superfan, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_superfan/the_superfan_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_superfan/the_superfan_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_superfan/the_superfan_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:10:14+00:00",
+    "stage": "image",
+    "slug": "drunk_uncle",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Drunk Uncle like this: Drunk uncle, three beers in already, beaming. He's banging the door, doesn't realize it slides. A laugh you can hear through the bay door. He accepts the beer he is already holding. He toasts you with it. He's leaning on the steamboat model with his elbow. He doesn't notice. He's telling Mackenzie about the war. Not actually Elicia's uncle. The kind of person who has been somebody's uncle long enough that everyone refers to him that way. DRUNK UNCLE (loud, gruff, will not be greeted)\nFull-body concept render of Drunk Uncle, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/drunk_uncle/drunk_uncle_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/drunk_uncle/drunk_uncle_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/drunk_uncle/drunk_uncle_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:11:09+00:00",
+    "stage": "image",
+    "slug": "mackenzie_remote",
+    "kind": "demon",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Mackenzie (over the BBS) like this: MACKENZIE \u2014 never appears in person; only as a chat window on the BBS terminal (her name + a blinking cursor). Cursor blink. A name he knows but hasn't seen in years. [mackenzie@graustark] hey are you there Tight on the phosphor-green CRT at HERMIT. The screen is brighter than the rest of the room. A blinking cursor in the chat window. No human face \u2014 but a feeling that someone is sitting on the other side of the line, waiting. Mid-thirties, denim jacket over a band tee, glasses caught between her teeth. Phone receiver pressed to her ear, eyes closed against the booth wall \u2014 the conversation is the only thing in the world for the next four minutes. MACKENZIE: mid-30s, denim jacket over band tee, glasses caught between her teeth or pushed up into the hair. Hands that know how to weave but have not, in fourteen months, picked up a thread. Mackenzie at the bay, jacket damp, glasses fogging. Mackenzie offered a wry smile. Leaned against the doorframe. Her quiet grace always seemed most potent when she was observing life's small persistent absurdities\nFull-body concept render of Mackenzie (over the BBS), an uncanny figure from a literary visual novel about thin places in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/mackenzie_remote/mackenzie_remote_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mackenzie_remote/mackenzie_remote_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mackenzie_remote/mackenzie_remote_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:12:04+00:00",
+    "stage": "image",
+    "slug": "jo",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Jo, at the graveyard, 30s. Weatherproof: a dark hooded parka, jeans, muddy boots, a bunch of wildflowers wrapped in newspaper. Short dark hair, plain face, red-rimmed eyes.\nFull-body concept render of Jo, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jo/jo_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jo/jo_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jo/jo_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:12:55+00:00",
+    "stage": "image",
+    "slug": "aud_1994",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Aud (1994, the Missing Link in Small Wood), like this: Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain. Aud comes in with a pot of coffee, sleeves rolled, glasses on the chain, like it's any other morning. They've been at it since I unlocked. Coffee? Additional direction: Aud in 1994, in her early forties, behind the counter of the Missing Link diner in Small Wood on the Oregon coast at 5:40 in the morning. The same long gaunt frame and the same watchful face she has at seventy-three, thirty years younger: dark-blonde hair going early grey, pinned up off the neck, a few loose strands. A faded blue chambray work shirt with the sleeves rolled to the elbow, a short white waitress apron tied at the waist, straight-leg jeans, brown leather work boots; reading glasses hanging on a beaded chain at her chest; a glass coffee pot in one hand. Weathered small-town warmth, says little, misses nothing.\nFull-body concept render of Aud (1994, the Missing Link in Small Wood), a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/aud_1994/aud_1994_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/aud_1994/aud_1994_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/aud_1994/aud_1994_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:13:49+00:00",
+    "stage": "image",
+    "slug": "daigles_matchbook",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes DAIGLE'S 1987 matchbook like this: Unopened matchbook (DAIGLE'S 1987) From the year the place opened. Lou puts a few out on the bar every Tuesday and they don't get taken.\nSingle-object concept render of DAIGLE'S 1987 matchbook, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/daigles_matchbook/daigles_matchbook_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/daigles_matchbook/daigles_matchbook_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/daigles_matchbook/daigles_matchbook_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:14:36+00:00",
+    "stage": "image",
+    "slug": "esterbrook_pen",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Grandfather's Esterbrook pen like this: Fountain pen. Black. The one he signed the original 1949 lease with. Has been in the punch-card drawer the entire time.\nSingle-object concept render of Grandfather's Esterbrook pen, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/esterbrook_pen/esterbrook_pen_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/esterbrook_pen/esterbrook_pen_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/esterbrook_pen/esterbrook_pen_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:15:42+00:00",
+    "stage": "image",
+    "slug": "chart_1932",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The 1932 river chart like this: The original survey of this channel. The cypress piles under the lighthouse are marked here as they were the year they went in. Three search piles at the lighthouse: the writing desk (logs, pens, charts), the bunk (the keeper's small things), the spiral stair (brass polish, wick shears, the small things kept on the climb).\nSingle-object concept render of The 1932 river chart, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe rest of the writing on it, in full, readable, spelled exactly: U.S. COAST AND GEODETIC SURVEY\nLOUISIANA\nBAYOU CHANNEL\nAND APPROACHES TO THE BAYOU LIGHT STATION\nFrom a survey made in 1932\nSoundings in feet at mean low water \u00b7 Heights in feet above mean high water\nScale 1:10,000\nLIGHT STATION \u2014 on cypress piles driven 1932 \u00b7 N.W. PILE \u00b7 N.E. PILE \u00b7 S.W. PILE \u00b7 S.E. PILE \u00b7 CENTER PILE\nLight F.W. 90 ft. \u00b7 visible 11 miles\nPlace names along the water: BAYOU CHANNEL \u00b7 SOUTH PASS \u00b7 SHELL BANK \u00b7 OLD OYSTER REEF \u00b7 CYPRESS SWAMP \u00b7 MARSH \u00b7 TO DULAC \u2192\nSoundings across the channel: 3 4 6 7 9 11 12 12 11 9 7 5 3 \u00b7 2 2 3 4 6 8\nLegend: + rock awash \u00b7 \u25cb pile \u00b7 \u2693 anchorage \u00b7 ~~ marsh \u00b7 ---- 6-foot curve\nCompass rose: N \u00b7 E \u00b7 S \u00b7 W \u00b7 Var. 6\u00b030' E (1932)\nPrinted in the margin: Corrected to date of issue. Not to be used for navigation after the next edition.\nIn faded ink, by hand: silts below the south piles every winter \u2014 clears by spring\ngood water here at half tide\nshoal \u2014 mark it in the log\npiles sound \u2014 checked\nIn pencil at the corner: keep with the logs \u2014 do not throw out No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/chart_1932/chart_1932_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/chart_1932/chart_1932_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/chart_1932/chart_1932_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:16:56+00:00",
+    "stage": "image",
+    "slug": "mirror_shard",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The mirror shard like this: She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight \u2014 found near the sinkhole's edge during her first week of pre-production. The mirror shard, on the table, caught the failing light and threw it back in twelve different directions \u2014 none of which led out of the room. She picked up the mirror shard again. Looked into the fractal Elicias. Found near the sinkhole's edge during your first week of pre-production. Picked up because it caught the light just so. Thrown out twice. Returned twice Mirror shard found near the sinkhole's edge three years ago refuses disposal; fractal reflection of *\"twelve Elicias, none whole.\"* the mirror shard on the third shelf Picked up because it had caught the light just so.\nSingle-object concept render of The mirror shard, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/mirror_shard/mirror_shard_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mirror_shard/mirror_shard_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mirror_shard/mirror_shard_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:17:49+00:00",
+    "stage": "image",
+    "slug": "mothers_teacup",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Mother's teacup like this: The teacup. Picked up and put down three times this week. You have not, today, packed it. The handle has a hairline crack from when she dropped it in '02. A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing. Mother's teacup unpacked but dusty. The kettle is on the counter beside the teacup.\nSingle-object concept render of Mother's teacup, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/mothers_teacup/mothers_teacup_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mothers_teacup/mothers_teacup_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mothers_teacup/mothers_teacup_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:18:38+00:00",
+    "stage": "image",
+    "slug": "lapel_pin",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The lapel pin like this: At the rally he is, for a change, in shirt-sleeves with the lapel pin on a plain blazer over his arm. The lapel pin \u2014 Paul and the aide's shared signal. A brass pin from the bottom-left corner of someone else's Fool. You wear it. The deck notices.\nSingle-object concept render of The lapel pin, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lapel_pin/lapel_pin_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/lapel_pin/lapel_pin_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/lapel_pin/lapel_pin_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:19:36+00:00",
+    "stage": "image",
+    "slug": "jackpot_polaroid_2019",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The 2019 jackpot Polaroid like this: Pinned to the bulletin board behind the slot bank. The previous owner's wife and a man with a $42,000 ticket. The wife is in red. The man is in tears. The board is faded except where the Polaroid covers it.\nSingle-object concept render of The 2019 jackpot Polaroid, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/jackpot_polaroid_2019/jackpot_polaroid_2019_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jackpot_polaroid_2019/jackpot_polaroid_2019_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jackpot_polaroid_2019/jackpot_polaroid_2019_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:20:31+00:00",
+    "stage": "image",
+    "slug": "house_marker_1924",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The 1924 house marker like this: Brass token from the building's bank era \u2014 Le Roulant was the Crescent Trust before the war. Worn smooth on the eagle side. You found it the day you bought in.\nSingle-object concept render of The 1924 house marker, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/house_marker_1924/house_marker_1924_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/house_marker_1924/house_marker_1924_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/house_marker_1924/house_marker_1924_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:21:30+00:00",
+    "stage": "image",
+    "slug": "fishing_lures",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The red and yellow lures like this: A red lure (Mepps #2) On the third row. The lure Em rated, in the log, in '99 as the lure for the bayou at first light. Has not moved from the third row since spring. On the fourth row. The shop's biggest seller in March. The kids buy them for redfish. Three search piles at Frog Knows Best: the retail counter (till, fish food, log), the nightcrawler chest cooler (live bait), the W pegboard (lures, hooks).\nSingle-object concept render of The red and yellow lures, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/fishing_lures/fishing_lures_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/fishing_lures/fishing_lures_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/fishing_lures/fishing_lures_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:21:45+00:00",
+    "stage": "image",
+    "slug": "desert_route_station_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a sun-bleached 1980s pole sign for a lone gas station on a back road in southern Utah's red desert, early 2000s: a backlit plastic face, cream with a faded red band, big red block capitals and changeable black letters on a price strip below. Sand-scoured, a crack across one corner, a bird's nest on the frame, the red gone pink in the sun. Landscape, evenly lit.\nSIZE: the real object is 3.00 m wide by 1.60 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the pole sign of the gas station off the main drag, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: RED BUTTE GAS. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: ICE \u00b7 CIGARETTES \u00b7 COLD POP \u00b7 CURIOS\nLAST GAS FOR 62 MILES\nREGULAR 1.39\u2079 \u00b7 PLUS 1.49\u2079 \u00b7 SUPER 1.59\u2079 No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/desert_route_station_sign/desert_route_station_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:36:34+00:00",
+    "stage": "art",
+    "slug": "desert_route_station_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/desert_route_station_sign/front.png",
+    "output": "godot/assets/art/hero/desert_route_station_sign.png"
+  },
+  {
+    "at": "2026-10-27T16:36:51+00:00",
+    "stage": "image",
+    "slug": "desert_route_store_band",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a hand-painted sign band over the door of a one-room cinderblock store at a desert gas station in Utah, early 2000s: cream paint gone chalky, brick-red hand-lettered capitals, a smaller line of goods beneath. Sand-blasted, the paint lifting at the edges, a rust stain under a nail. Very long landscape, evenly lit.\nSIZE: the real object is 6.00 m wide by 50 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 19% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the painted sign band over the one-room store, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: RED BUTTE TRADING POST. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: Turquoise \u00b7 Petrified Wood \u00b7 Postcards \u00b7 Live Bait \u00b7 Open 7 Days No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/desert_route_store_band/desert_route_store_band_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:37:04+00:00",
+    "stage": "image",
+    "slug": "desert_route_ice_chest",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of the printed band on an outdoor ice merchandiser chest at a desert gas station, early 2000s: white enamel with a bright blue band, white frosty block letters and small print, a sticker of a penguin. Dust in the seams, a dent, condensation streaks. Long landscape, evenly lit.\nSIZE: the real object is 1.50 m wide by 32 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 50% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the band on the outdoor ice chest, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: ICE. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: PARTY ICE \u00b7 7 LB BAG 99\u00a2 \u00b7 BLOCK ICE $1.49 \u00b7 PAY INSIDE No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/desert_route_ice_chest/desert_route_ice_chest_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:37:20+00:00",
+    "stage": "image",
+    "slug": "desert_route_motel_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a 1960s roadside motel sign still in use on a pole in the Utah desert at dusk, early 2000s: a teal-painted steel box with a starburst, big neon-tube script lettering in pink and a white panel of plain capitals listing the amenities. Faded paint, a few dead neon segments, rust weeping from the screws. Landscape, evenly lit.\nSIZE: the real object is 4.40 m wide by 2.20 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the motel's pole sign by the road, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: DESERT ROSE MOTEL. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: Color TV \u00b7 Pool \u00b7 Refrigerated Air\nWeekly Rates \u00b7 AAA No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/desert_route_motel_sign/desert_route_motel_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:37:35+00:00",
+    "stage": "image",
+    "slug": "desert_route_motel_vacancy",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of the small neon VACANCY panel hung under a roadside motel sign in the Utah desert, early 2000s: red neon tube capitals on a black steel panel, glowing; the NO beside it dark. Dusty glass, a little rust. Long landscape, evenly lit.\nSIZE: the real object is 2.80 m wide by 60 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 50% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the VACANCY panel under the motel sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: VACANCY. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: NO (unlit) No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/desert_route_motel_vacancy/desert_route_motel_vacancy_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:37:49+00:00",
+    "stage": "image",
+    "slug": "desert_route_office_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a small painted sign over the plate window of a desert motel's office, early 2000s: teal board, white capitals, a smaller line below. Faded, a little bowed. Long landscape, evenly lit.\nSIZE: the real object is 4.00 m wide by 40 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 23% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the OFFICE sign over the motel office window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: OFFICE. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: Ring Bell After 10 PM \u00b7 Check-Out 11 AM No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/desert_route_office_sign/desert_route_office_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:37:49+00:00",
+    "stage": "art",
+    "slug": "desert_route_store_band",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/desert_route_store_band/front.png",
+    "output": "godot/assets/art/hero/desert_route_store_band.png"
+  },
+  {
+    "at": "2026-10-27T16:37:49+00:00",
+    "stage": "art",
+    "slug": "desert_route_ice_chest",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/desert_route_ice_chest/front.png",
+    "output": "godot/assets/art/hero/desert_route_ice_chest.png"
+  },
+  {
+    "at": "2026-10-27T16:37:55+00:00",
+    "stage": "art",
+    "slug": "desert_route_office_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/desert_route_office_sign/front.png",
+    "output": "godot/assets/art/hero/desert_route_office_sign.png"
+  },
+  {
+    "at": "2026-10-27T16:38:01+00:00",
+    "stage": "art",
+    "slug": "desert_route_motel_vacancy",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/desert_route_motel_vacancy/front.png",
+    "output": "godot/assets/art/hero/desert_route_motel_vacancy.png"
+  },
+  {
+    "at": "2026-10-27T16:38:06+00:00",
+    "stage": "art",
+    "slug": "desert_route_motel_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/desert_route_motel_sign/front.png",
+    "output": "godot/assets/art/hero/desert_route_motel_sign.png"
   }
 ]
