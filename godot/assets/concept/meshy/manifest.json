@@ -28074,5 +28074,113 @@
     "outputs": [
       "godot/assets/concept/meshy/panel_vol6_transport_order/panel_vol6_transport_order_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T05:10:32+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_transport_order",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_transport_order/front.png",
+    "output": "godot/assets/cg/panel_vol6_transport_order.jpg"
+  },
+  {
+    "at": "2026-10-27T05:10:47+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_speak_and_spell",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Speak & Spell glowing red like this: It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED \u2014 a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town. The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again. A pause. Then: T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again. Another pause. F. T. says hello. Maya. Hello. Please listen. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. This word is your word. You are becoming a part of it. Three of you in this town. Three more elsewhere. Do not be afraid. You are not the only one. Additional direction: A vintage red Speak & Spell learning toy on a shelf in a dark back office, its speaker grille glowing a faint unnatural red, its little display lit. Uncanny, quiet. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the Speak & Spell glowing red. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_speak_and_spell/panel_vol6_speak_and_spell_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:10:57+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_speak_and_spell",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_speak_and_spell/front.png",
+    "output": "godot/assets/cg/panel_vol6_speak_and_spell.jpg"
+  },
+  {
+    "at": "2026-10-27T05:11:15+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_bill_note",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the note on the bill like this: The red light lies. I am sorry. I will come back when I can. Her face still does not move. She reads the note three more times. Then she folds the bill back along the existing creases. She puts it in her purse. She puts the purse on the bench beside her. Additional direction: A folded dollar bill opened flat in two hands, a short handwritten note on it in pen, the words not legible; the creases sharp, a diner counter behind. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the note on the bill. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_bill_note/panel_vol6_bill_note_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:11:23+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_bill_note",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_bill_note/front.png",
+    "output": "godot/assets/cg/panel_vol6_bill_note.jpg"
+  },
+  {
+    "at": "2026-10-27T05:11:44+00:00",
+    "stage": "image",
+    "slug": "small_wood_town_radio_script",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the librarian's radio-drama script at each mic like this: Before departing to the bed and breakfast and the Feast of Lights, I was talked into playing a part of the town's annual radio drama rendition of some sappy holiday pap our school librarian had written and poured every last bit of herself into. Additional direction: A typed script page lying flat, seen straight down and filling the frame: a 1992 radio-play page typed on a typewriter, character names in capitals at the left margin and their lines beside them, a holly sprig doodled in green ink in the top corner, a few lines underlined in pencil, a coffee ring, a staple at the top left. The typed words are too small and soft to read. Plain white bond, slightly curled. Evenly lit.\nSIZE: the real object is 21 cm wide by 28 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the librarian's radio-drama script at each mic, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_town_radio_script/small_wood_town_radio_script_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:11:51+00:00",
+    "stage": "art",
+    "slug": "small_wood_town_radio_script",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_town_radio_script/front.png",
+    "output": "godot/assets/art/hero/small_wood_town_radio_script.png"
+  },
+  {
+    "at": "2026-10-27T05:12:09+00:00",
+    "stage": "image",
+    "slug": "small_wood_town_melody_tape",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "2:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the MELODY tape on Chuck's counter like this: The owner of the video store tried to get me to rent MELODY, a film shot nearby back in the nineties. Looks very J-Horror, only predating that particular cinema movement by five or so years. Chuck pulled the tape out from behind the counter. Additional direction: The front cover of a 1990s VHS rental clamshell lying flat, seen straight down and filling the frame: a grainy, cold blue-grey photograph of a figure with long wet black hair standing at the tide line in fog, face turned away, a grey sea behind, the title MELODY in thin white letters near the top. Low-budget regional horror, very J-horror in mood. The plastic sleeve scuffed and clouded, a faded rental sticker with no readable text, worn corners. Evenly lit.\nSIZE: the real object is 10 cm wide by 16 cm tall \u2014 a portrait picture, aspect 2:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the MELODY tape on Chuck's counter, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: MELODY. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_town_melody_tape/small_wood_town_melody_tape_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:12:16+00:00",
+    "stage": "art",
+    "slug": "small_wood_town_melody_tape",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_town_melody_tape/front.png",
+    "output": "godot/assets/art/hero/small_wood_town_melody_tape.png"
   }
 ]

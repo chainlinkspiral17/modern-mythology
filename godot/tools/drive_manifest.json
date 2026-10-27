@@ -75680,6 +75680,26 @@
    "md5": "41ee4633192199e2fba8425478ed6cd9",
    "size": 1786767
   },
+  "godot/assets/concept/meshy/panel_vol6_corkboard_sheet/front.png": {
+   "at": "2026-10-27T05:10:52+00:00",
+   "md5": "c3be87ffe7f64d1da2f432bec24e5e4e",
+   "size": 2676858
+  },
+  "godot/assets/concept/meshy/panel_vol6_corkboard_sheet/panel_vol6_corkboard_sheet_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:10:52+00:00",
+   "md5": "c3be87ffe7f64d1da2f432bec24e5e4e",
+   "size": 2676858
+  },
+  "godot/assets/concept/meshy/panel_vol6_diego_letter/front.png": {
+   "at": "2026-10-27T05:11:03+00:00",
+   "md5": "bc97f1a93b1b67cbcf6d19288a276eef",
+   "size": 1938687
+  },
+  "godot/assets/concept/meshy/panel_vol6_diego_letter/panel_vol6_diego_letter_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:11:03+00:00",
+   "md5": "bc97f1a93b1b67cbcf6d19288a276eef",
+   "size": 1938687
+  },
   "godot/assets/concept/meshy/panel_vol6_first_print/front.png": {
    "at": "2026-10-27T04:30:17+00:00",
    "md5": "711dd371066691ceaf39f94671c02179",
@@ -75689,6 +75709,36 @@
    "at": "2026-10-27T04:30:17+00:00",
    "md5": "711dd371066691ceaf39f94671c02179",
    "size": 1989250
+  },
+  "godot/assets/concept/meshy/panel_vol6_foxhole_flyer/front.png": {
+   "at": "2026-10-27T05:11:16+00:00",
+   "md5": "162e13913320f942bf9180302c300460",
+   "size": 2659385
+  },
+  "godot/assets/concept/meshy/panel_vol6_foxhole_flyer/panel_vol6_foxhole_flyer_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:11:16+00:00",
+   "md5": "162e13913320f942bf9180302c300460",
+   "size": 2659385
+  },
+  "godot/assets/concept/meshy/panel_vol6_rick_notebook/front.png": {
+   "at": "2026-10-27T05:11:29+00:00",
+   "md5": "b46667f1fe862d092a9f50c74d0ecb42",
+   "size": 2329055
+  },
+  "godot/assets/concept/meshy/panel_vol6_rick_notebook/panel_vol6_rick_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:11:29+00:00",
+   "md5": "b46667f1fe862d092a9f50c74d0ecb42",
+   "size": 2329055
+  },
+  "godot/assets/concept/meshy/panel_vol6_transport_order/front.png": {
+   "at": "2026-10-27T05:11:37+00:00",
+   "md5": "4b5d64a42ff3eb4426a1edc9e755561c",
+   "size": 1683216
+  },
+  "godot/assets/concept/meshy/panel_vol6_transport_order/panel_vol6_transport_order_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:11:37+00:00",
+   "md5": "4b5d64a42ff3eb4426a1edc9e755561c",
+   "size": 1683216
   },
   "godot/assets/concept/meshy/panel_vol6_water_tower/front.png": {
    "at": "2026-10-27T04:35:47+00:00",
@@ -75700,6 +75750,46 @@
    "md5": "08807a930332cb9f9422acd2b30125f8",
    "size": 2586048
   },
+  "godot/assets/concept/meshy/panel_vol7_bus_schedule/front.png": {
+   "at": "2026-10-27T05:11:44+00:00",
+   "md5": "8e71bd6f8c1941e15547dd635f669dbe",
+   "size": 2453233
+  },
+  "godot/assets/concept/meshy/panel_vol7_bus_schedule/panel_vol7_bus_schedule_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:11:44+00:00",
+   "md5": "8e71bd6f8c1941e15547dd635f669dbe",
+   "size": 2453233
+  },
+  "godot/assets/concept/meshy/panel_vol7_daughter_photo/front.png": {
+   "at": "2026-10-27T05:11:58+00:00",
+   "md5": "e9a7863c2a5596b69c216731a98c9615",
+   "size": 2032035
+  },
+  "godot/assets/concept/meshy/panel_vol7_daughter_photo/panel_vol7_daughter_photo_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:11:58+00:00",
+   "md5": "e9a7863c2a5596b69c216731a98c9615",
+   "size": 2032035
+  },
+  "godot/assets/concept/meshy/panel_vol7_estuary7_label/front.png": {
+   "at": "2026-10-27T05:12:07+00:00",
+   "md5": "4d4b4b0fa53605bdf2802457e74d4d7c",
+   "size": 2316822
+  },
+  "godot/assets/concept/meshy/panel_vol7_estuary7_label/panel_vol7_estuary7_label_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:12:07+00:00",
+   "md5": "4d4b4b0fa53605bdf2802457e74d4d7c",
+   "size": 2316822
+  },
+  "godot/assets/concept/meshy/panel_vol7_freq_log/front.png": {
+   "at": "2026-10-27T05:12:19+00:00",
+   "md5": "9a579efd831c3d533184ae2e19602efa",
+   "size": 2099336
+  },
+  "godot/assets/concept/meshy/panel_vol7_freq_log/panel_vol7_freq_log_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:12:19+00:00",
+   "md5": "9a579efd831c3d533184ae2e19602efa",
+   "size": 2099336
+  },
   "godot/assets/concept/meshy/panel_vol7_three_instructions/front.png": {
    "at": "2026-10-27T05:04:22+00:00",
    "md5": "86173fb87f56ab0608539733efb2cdff",
@@ -75709,6 +75799,16 @@
    "at": "2026-10-27T05:04:22+00:00",
    "md5": "86173fb87f56ab0608539733efb2cdff",
    "size": 2416193
+  },
+  "godot/assets/concept/meshy/panel_vol7_tower_patch_note/front.png": {
+   "at": "2026-10-27T05:12:27+00:00",
+   "md5": "b50d3a4b855ccccffdd3768d058c196c",
+   "size": 2283473
+  },
+  "godot/assets/concept/meshy/panel_vol7_tower_patch_note/panel_vol7_tower_patch_note_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:12:27+00:00",
+   "md5": "b50d3a4b855ccccffdd3768d058c196c",
+   "size": 2283473
   },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
