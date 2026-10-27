@@ -26440,5 +26440,22 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/vol5_prelude_ep02_in_flux/front.png",
     "output": "godot/assets/backgrounds/vol5_prelude_ep02_in_flux.jpg"
+  },
+  {
+    "at": "2026-10-27T04:18:39+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep04_iris_title",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Iris's morning flight over desert and mountain to the tree of life like this: Shapes like spires, rising, pluming smoke. I soar over deserts and mountains. The tree of life is older than any of its animals or animal minds. Additional direction: A dreamlike dawn seen from high above: desert running to mountains under long thin wisps of cirrus that rise like smoking spires, a stream threading to a river that sinks into the earth, and at the centre an immense ancient tree whose roots reach down through visible layers of rock strata, its crown lit gold by the rising sun. Vast, quiet, morning cold.\nA single full-screen still for a literary visual novel set in America: Iris's morning flight over desert and mountain to the tree of life. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep04_iris_title/vol5_prelude_ep04_iris_title_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
