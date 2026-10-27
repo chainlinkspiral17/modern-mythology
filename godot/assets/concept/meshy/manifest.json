@@ -27907,5 +27907,172 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/panel_vol7_freq_log/front.png",
     "output": "godot/assets/cg/panel_vol7_freq_log.jpg"
+  },
+  {
+    "at": "2026-10-27T05:04:51+00:00",
+    "stage": "image",
+    "slug": "panel_vol7_tower_patch_note",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the tower patch note like this: She did not, when she was done, look at any of them. The four of them sat at the table. Additional direction: A folded printed note with a short handwritten patch note on it, lying on a kitchen table between four mugs; overcast coastal light; not legible. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the tower patch note. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol7_tower_patch_note/panel_vol7_tower_patch_note_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:05:03+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol7_tower_patch_note",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol7_tower_patch_note/front.png",
+    "output": "godot/assets/cg/panel_vol7_tower_patch_note.jpg"
+  },
+  {
+    "at": "2026-10-27T05:05:19+00:00",
+    "stage": "image",
+    "slug": "panel_vol7_daughter_photo",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the daughter's photograph like this: When she was done she sat with her hands flat on her knees. Finn, on the couch, who had not yet spoken, said: \"The crow.\" Additional direction: An old printed photograph of a young girl, held in two hands in a small living room, soft window light; the face slightly worn by handling. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the daughter's photograph. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol7_daughter_photo/panel_vol7_daughter_photo_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:05:29+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol7_daughter_photo",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol7_daughter_photo/front.png",
+    "output": "godot/assets/cg/panel_vol7_daughter_photo.jpg"
+  },
+  {
+    "at": "2026-10-27T05:05:46+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_rick_notebook",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Rick's spiral notebook like this: Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know. She has, since Sunday afternoon, read the list four times. She reads it again. Kid: Additional direction: An open spiral notebook on a cluttered comic-shop back-office desk, a page of handwritten notes in a list, the handwriting suggested, not legible. Desk lamp light. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: Rick's spiral notebook. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_rick_notebook/panel_vol6_rick_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:06:00+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_rick_notebook",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_rick_notebook/front.png",
+    "output": "godot/assets/cg/panel_vol6_rick_notebook.jpg"
+  },
+  {
+    "at": "2026-10-27T05:06:14+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_foxhole_flyer",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Foxhole flyer like this: The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors \u2014 black ink on a paper that is, today, a faded mustard yellow. The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated. Beneath the title: SATURDAY 8/22 \u2014 DOORS 8 PM // 21+ // CASH BAR \u2014 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) \u2014 11 PM: DJ CHESS (SAN ANTONIO). Jesse looks at the flyer for a long minute. Additional direction: A photocopied half-letter gig flyer, two colors, black ink on colored paper, hand-drawn block lettering, pinned to a corkboard among others; the words not legible. Close. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the Foxhole flyer. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_foxhole_flyer/panel_vol6_foxhole_flyer_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:08:01+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_foxhole_flyer",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_foxhole_flyer/front.png",
+    "output": "godot/assets/cg/panel_vol6_foxhole_flyer.jpg"
+  },
+  {
+    "at": "2026-10-27T05:08:17+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_corkboard_sheet",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the depth chart on the corkboard like this: He reaches the corkboard. He reads the sheet. The sheet is, in its standard format, twenty-two starters listed by position with the backups in parentheses below. His name is at TE-1. In parentheses below his name: (LeBlanc). Which is Diaz, whose first name is Marcus but who goes by his surname because the team already has a Marcus. Additional direction: A typed depth-chart sheet pinned to a high-school locker-room corkboard, columns of names by position, not legible; fluorescent light, the cork and pins sharp. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the depth chart on the corkboard. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_corkboard_sheet/panel_vol6_corkboard_sheet_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:08:29+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_corkboard_sheet",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_corkboard_sheet/front.png",
+    "output": "godot/assets/cg/panel_vol6_corkboard_sheet.jpg"
+  },
+  {
+    "at": "2026-10-27T05:08:45+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_diego_letter",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Diego's letter to his father like this: Pap\u00e1. I am writing again like I said I would. Tomorrow is the first day of school. I am a senior. The summer was \u2014 the summer was a thing. I am okay. I have been thinking about you. I have been wondering how the work is. I have been wondering whether the avocados came in well this season \u2014 I remember you used to write to me about the avocados when I was small, and I have been thinking about those letters this summer. Additional direction: A handwritten letter on lined paper, begun with a single word and a line, lying on a bedroom desk at night under a lamp; the handwriting suggested, not legible. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: Diego's letter to his father. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_diego_letter/panel_vol6_diego_letter_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:08:56+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_diego_letter",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_diego_letter/front.png",
+    "output": "godot/assets/cg/panel_vol6_diego_letter.jpg"
+  },
+  {
+    "at": "2026-10-27T05:10:19+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_transport_order",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the transport order on the phone like this: The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight. He reads it twice. He does not reply. He sets the phone face-down. Additional direction: A phone face-up on an office desk at night, a terse message on its screen, the text not legible; the desk dark around it. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the transport order on the phone. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_transport_order/panel_vol6_transport_order_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
