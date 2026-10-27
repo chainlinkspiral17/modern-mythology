@@ -25464,5 +25464,149 @@
       "godot/assets/concept/meshy/peugeot_505/peugeot_505_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/peugeot_505/peugeot_505_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T02:27:18+00:00",
+    "stage": "mesh",
+    "slug": "peugeot_505",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17b2d-6ab8-7324-b3fd-eaced7fbf76b",
+    "inputs": [
+      "godot/assets/concept/meshy/peugeot_505/front.png",
+      "godot/assets/concept/meshy/peugeot_505/side.png",
+      "godot/assets/concept/meshy/peugeot_505/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 15000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/peugeot_505.glb",
+    "file_size_kb": 4469.9
+  },
+  {
+    "at": "2026-10-27T02:28:38+00:00",
+    "stage": "image",
+    "slug": "peugeot_505_hood_up",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the red Peugeot, hood up, like this: He goes to the front of the car. He pops the hood. The two of them, at the engine, do the thing two people do at an engine that has just failed. The hood, after a few seconds, has a small steady plume of steam coming out of it. If it's the head gasket \u2014 and it's the head gasket The car is small. The car is European. red, in the way of a car that has been red for forty years and that has, in the past five years, started to fade in the small uneven patches a forty-year-old red paint job fades in when the car has lived its life mostly outdoors. Additional direction: The same 1986 Peugeot 505 Turbo sedan in forty-year-old red paint faded in uneven pinkish patches, its hood propped wide open on its rod, the engine bay dark and visible, a dead engine after a breakdown. Parked, seen from the front three-quarter. No people. No badges or lettering legible. (The steam is built in the set, not the model.)\nSingle-object concept render of the red Peugeot, hood up, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:29:33+00:00",
+    "stage": "image",
+    "slug": "crow",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the crow like this: The crow's eye was the yellow-and-black he had been looking at across the bedroom for nine months. The crow turned its head sideways and tapped the back of the chair once with its beak. The crow's eyes were the small bright black they had always been. Additional direction: A real American crow, perched, wings folded, glossy black feathers with a faint blue sheen, heavy black beak, standing on its own feet as if on a rail; side three-quarter view.\nSingle-object concept render of the crow, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/crow/crow_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/crow/crow_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/crow/crow_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:31:21+00:00",
+    "stage": "mesh",
+    "slug": "crow",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17b31-2211-70d3-b7e9-f6b0bb323632",
+    "inputs": [
+      "godot/assets/concept/meshy/crow/front.png",
+      "godot/assets/concept/meshy/crow/side.png",
+      "godot/assets/concept/meshy/crow/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/crow.glb",
+    "file_size_kb": 4164.3
+  },
+  {
+    "at": "2026-10-27T02:33:25+00:00",
+    "stage": "image",
+    "slug": "comic_figure_3",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "A painted resin collectible statue on a black base sculpted as a rooftop gargoyle: an original masked vigilante crouching on it in a long dark coat and wide-brimmed hat, scarf trailing. Glossy paint, crisp sculpt.\nSingle-object concept render of a masked vigilante statue crouched on a gargoyle, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/comic_figure_3/comic_figure_3_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_3/comic_figure_3_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_3/comic_figure_3_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:35:22+00:00",
+    "stage": "mesh",
+    "slug": "comic_figure_3",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17b34-a225-76a7-afd3-cd0dd2b17144",
+    "inputs": [
+      "godot/assets/concept/meshy/comic_figure_3/front.png",
+      "godot/assets/concept/meshy/comic_figure_3/side.png",
+      "godot/assets/concept/meshy/comic_figure_3/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 4000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/comic_figure_3.glb",
+    "file_size_kb": 4135.6
   }
 ]

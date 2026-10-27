@@ -1,9 +1,19 @@
 {
  "files": {
-  "godot/assets/3d/characters/demons/the_demon.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
+  "godot/assets/3d/characters/demons/_full/the_demon.glb": {
+   "at": "2026-10-27T02:27:57+00:00",
    "md5": "f40b3ccb9ceda00845a3320a4e922646",
    "size": 52867836
+  },
+  "godot/assets/3d/characters/demons/_full/the_drifter.glb": {
+   "at": "2026-10-27T02:27:57+00:00",
+   "md5": "aa7420a88d47865c865c6f3728531778",
+   "size": 458752
+  },
+  "godot/assets/3d/characters/demons/the_demon.glb": {
+   "at": "2026-10-27T02:27:48+00:00",
+   "md5": "9ac803662dbde9062462dc8fa222933a",
+   "size": 4845496
   },
   "godot/assets/3d/characters/demons/the_demon_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -25,6 +35,26 @@
    "md5": "a0e7389569d07f37d8800f8fd4bd64b7",
    "size": 81386
   },
+  "godot/assets/3d/characters/demons/the_demon_Image_0.jpg": {
+   "at": "2026-10-27T02:27:48+00:00",
+   "md5": "9d521836ef9529455ba03eab54189ef3",
+   "size": 245146
+  },
+  "godot/assets/3d/characters/demons/the_demon_Image_1.jpg": {
+   "at": "2026-10-27T02:27:48+00:00",
+   "md5": "334cf8300cc3dbcdb9f8ccd18d665912",
+   "size": 32518
+  },
+  "godot/assets/3d/characters/demons/the_demon_Image_2.jpg": {
+   "at": "2026-10-27T02:27:48+00:00",
+   "md5": "3edbc1154cac35a69c9bf29c60981229",
+   "size": 89400
+  },
+  "godot/assets/3d/characters/demons/the_demon_Image_3.jpg": {
+   "at": "2026-10-27T02:27:48+00:00",
+   "md5": "094d4eb0b500dc42c268a3f4b91ac411",
+   "size": 17375
+  },
   "godot/assets/3d/characters/demons/the_drifter.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "aa7420a88d47865c865c6f3728531778",
@@ -35,10 +65,65 @@
    "md5": "b37f9106d7ad833e007db842cc031ab3",
    "size": 94263816
   },
+  "godot/assets/3d/characters/heroes/_full/alberto.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "8e4871d528072c64a68e1cdaf77c41d6",
+   "size": 33103540
+  },
+  "godot/assets/3d/characters/heroes/_full/alice_newsom.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "df1ad2b82f5589c2246c6d742415d5d1",
+   "size": 45206716
+  },
+  "godot/assets/3d/characters/heroes/_full/anita_kowalski.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "7cb8e8fa634b58d50ce18e72795ace09",
+   "size": 51759116
+  },
+  "godot/assets/3d/characters/heroes/_full/anita_kowalski_scrubs.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "de7a2bbb089723cf3807206470790780",
+   "size": 43170424
+  },
+  "godot/assets/3d/characters/heroes/_full/anna_logue.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "c6805d678501fb6e2fe6e14e7ad6d682",
+   "size": 46236876
+  },
+  "godot/assets/3d/characters/heroes/_full/antonio.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "c92bed1774ba5129f6955de26a8c93dd",
+   "size": 47314124
+  },
+  "godot/assets/3d/characters/heroes/_full/aria_third.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "49e750aaa868276b8b76aff942332493",
+   "size": 67924096
+  },
+  "godot/assets/3d/characters/heroes/_full/aud.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "e7fd3754ff6be3d99708767c07e00297",
+   "size": 43045840
+  },
+  "godot/assets/3d/characters/heroes/_full/ben_kowalski.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "fbae045c6b6ca658d8e568e0c2170c9b",
+   "size": 38620068
+  },
   "godot/assets/3d/characters/heroes/_full/bernard.glb": {
    "at": "2026-10-19T18:07:05+00:00",
    "md5": "550c1ccda3aeb990c89b0573da299750",
    "size": 59146192
+  },
+  "godot/assets/3d/characters/heroes/_full/bianca_miller.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "8cfad2aa079b55d00c71da1bd2b1bb92",
+   "size": 44170256
+  },
+  "godot/assets/3d/characters/heroes/_full/bill_kowalski.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "ed9bcec5905b1152f43cb58d656d849c",
+   "size": 37026636
   },
   "godot/assets/3d/characters/heroes/_full/boyd.glb": {
    "at": "2026-10-19T01:46:30+00:00",
@@ -49,6 +134,26 @@
    "at": "2026-10-19T14:52:39+00:00",
    "md5": "17f575ca403a7a71a29e34d7b0cfe37c",
    "size": 53502052
+  },
+  "godot/assets/3d/characters/heroes/_full/bt.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "5b8fffe3e5997af772ec22d9cd3fd00a",
+   "size": 41066152
+  },
+  "godot/assets/3d/characters/heroes/_full/cale.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "e5417a65c6245c64583175b653f8529c",
+   "size": 49122952
+  },
+  "godot/assets/3d/characters/heroes/_full/carl_drummer.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "779b2ee69311c23cd1d611503536ccc6",
+   "size": 45739108
+  },
+  "godot/assets/3d/characters/heroes/_full/carl_reno.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "3b6942590b7e66e0e8576fe28764ae1f",
+   "size": 36798284
   },
   "godot/assets/3d/characters/heroes/_full/carlos.glb": {
    "at": "2026-10-19T16:55:44+00:00",
@@ -65,65 +170,390 @@
    "md5": "4ab54e3d643d3ddf0d2e2b67fc6694c7",
    "size": 79422140
   },
+  "godot/assets/3d/characters/heroes/_full/chief_miller.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "d74819f2e966106fd83bb7b2243b845e",
+   "size": 47592640
+  },
+  "godot/assets/3d/characters/heroes/_full/claire_moyer.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "df4a10eea8465e66677671cf176f8c61",
+   "size": 53863432
+  },
+  "godot/assets/3d/characters/heroes/_full/coach_dale.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "8c00755fbb4008a40812eb0a6eccbcc7",
+   "size": 44013588
+  },
+  "godot/assets/3d/characters/heroes/_full/coach_guidry.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "fb022fb107c7f0b0d4b992cb40f70dcd",
+   "size": 50948296
+  },
+  "godot/assets/3d/characters/heroes/_full/coach_k.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "0946df41d10638c15d94a325cda3ade3",
+   "size": 40623668
+  },
+  "godot/assets/3d/characters/heroes/_full/coach_k_home.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "bf8388ede3f258105d5610984495daa3",
+   "size": 42933240
+  },
+  "godot/assets/3d/characters/heroes/_full/curtis.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "586c434c49f4df772d33666b56e518d5",
+   "size": 40882696
+  },
+  "godot/assets/3d/characters/heroes/_full/dante_dambrosio.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "5ba49715eb65123436f87fabc740d81b",
+   "size": 43510028
+  },
+  "godot/assets/3d/characters/heroes/_full/david_jarvis.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "69bef50a29a6dbff5aa9aeecda336d32",
+   "size": 41765048
+  },
+  "godot/assets/3d/characters/heroes/_full/dickens_dean.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "84a000a4b6d7a666ddf5c0b0d752f1f4",
+   "size": 32378640
+  },
   "godot/assets/3d/characters/heroes/_full/diego_ramos.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "822d35bb1e1b8a7546f0892ef4d7e107",
    "size": 52511216
+  },
+  "godot/assets/3d/characters/heroes/_full/doug.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "25248ebbbedd039eefba2b0e5e88a944",
+   "size": 55393436
+  },
+  "godot/assets/3d/characters/heroes/_full/douglas_forte.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "560a9493ba6524564bef5508dfd581df",
+   "size": 42203504
   },
   "godot/assets/3d/characters/heroes/_full/doyle.glb": {
    "at": "2026-10-19T02:44:41+00:00",
    "md5": "6afefbe0c807f910dbcaeec44039e7ad",
    "size": 43669616
   },
+  "godot/assets/3d/characters/heroes/_full/eileen_henderson.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "3f3078b680ba87082339bfb684b871b6",
+   "size": 53038080
+  },
   "godot/assets/3d/characters/heroes/_full/eileen_kazantzakis.glb": {
    "at": "2026-10-19T14:52:39+00:00",
    "md5": "575c359308e6b2cd2ec585b64ab83446",
    "size": 49115768
+  },
+  "godot/assets/3d/characters/heroes/_full/elicia_temple.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "03bf2ef488bbe8be456a73939ab7fae1",
+   "size": 56006176
+  },
+  "godot/assets/3d/characters/heroes/_full/em_keys.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "14f82824cdfb1c5355a15b65d0427af5",
+   "size": 106243392
+  },
+  "godot/assets/3d/characters/heroes/_full/erica_campbell.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "d775f6ef85d1438c3cb15952f8907c6f",
+   "size": 32523656
+  },
+  "godot/assets/3d/characters/heroes/_full/father_amato.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "258e56300cf3ee16a91d256dbbca40e1",
+   "size": 36737360
+  },
+  "godot/assets/3d/characters/heroes/_full/faust.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "f027a1e21c02333bb0e1ac777a8c0f49",
+   "size": 39050804
+  },
+  "godot/assets/3d/characters/heroes/_full/finn.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "917f0f8466a3b8b0819874b48097265e",
+   "size": 59013192
   },
   "godot/assets/3d/characters/heroes/_full/fire_elemental.glb": {
    "at": "2026-10-19T17:53:34+00:00",
    "md5": "62a7dcafecad63d51f343c4b96bac0da",
    "size": 75396104
   },
+  "godot/assets/3d/characters/heroes/_full/frasier_temple.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "ca887edc74bafc8dd58180a7d8ec32dc",
+   "size": 48983384
+  },
+  "godot/assets/3d/characters/heroes/_full/gloria_reyes.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "d117c86ee0961e3c8a00166d183707d2",
+   "size": 49291808
+  },
+  "godot/assets/3d/characters/heroes/_full/gracie_kowalski.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "4c2e27a5d4a780d36a7c045831de3d5f",
+   "size": 56090164
+  },
+  "godot/assets/3d/characters/heroes/_full/graciela_ramos.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "80521aab28fad2bb164a1fccaccda12e",
+   "size": 44895308
+  },
+  "godot/assets/3d/characters/heroes/_full/greta.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "4bf0ae991e5ec0befc1af4156ed3cb61",
+   "size": 51304820
+  },
   "godot/assets/3d/characters/heroes/_full/hal.glb": {
    "at": "2026-10-19T16:13:16+00:00",
    "md5": "0fe859b1cd5f300126a77f96f8077794",
    "size": 51452744
+  },
+  "godot/assets/3d/characters/heroes/_full/hans.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "ddf667a8a77b56fe4cc690723610babe",
+   "size": 47556688
+  },
+  "godot/assets/3d/characters/heroes/_full/hector.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "04bfef99b58539ea2bfb8560547deaec",
+   "size": 49004860
   },
   "godot/assets/3d/characters/heroes/_full/hugo.glb": {
    "at": "2026-10-19T01:46:30+00:00",
    "md5": "e1350ce39583b4a59d85c3275d759cfb",
    "size": 47726056
   },
+  "godot/assets/3d/characters/heroes/_full/jacob.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "7902b6e65f261c48d014b3b7516e79bf",
+   "size": 52089560
+  },
+  "godot/assets/3d/characters/heroes/_full/jameson.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "9228f513342fc715fd3379303a5e6fc7",
+   "size": 61049560
+  },
   "godot/assets/3d/characters/heroes/_full/jen.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "668a0ba1c10c392bda219e016cd6d667",
    "size": 55421088
+  },
+  "godot/assets/3d/characters/heroes/_full/jessa.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "8161199f8da96005e56016fbedc5b44e",
+   "size": 39049100
+  },
+  "godot/assets/3d/characters/heroes/_full/jesse_henderson.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "fb75ce63956b265f98660f2c98823e87",
+   "size": 52386496
+  },
+  "godot/assets/3d/characters/heroes/_full/jim_henderson.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "b1e0719949a21444717058a6cf27a87c",
+   "size": 36655876
+  },
+  "godot/assets/3d/characters/heroes/_full/jimmy_daigle.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "20c10e962249347860a6e2e0e438c987",
+   "size": 50785116
+  },
+  "godot/assets/3d/characters/heroes/_full/joan.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "84059446b1914b6e14a9829154292c73",
+   "size": 55945564
+  },
+  "godot/assets/3d/characters/heroes/_full/joanna_lemoine.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "f756cb9ebb17109371f159f599c8421b",
+   "size": 78800584
+  },
+  "godot/assets/3d/characters/heroes/_full/john_frank.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "eb99ba39d6e32552ff9cc877989c113d",
+   "size": 36723944
   },
   "godot/assets/3d/characters/heroes/_full/judge_halverson.glb": {
    "at": "2026-10-19T16:39:39+00:00",
    "md5": "b0e2b0a4ab40824648a42ecbab04d588",
    "size": 52141800
   },
+  "godot/assets/3d/characters/heroes/_full/kai.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "e613321a8cce76464756649595e83422",
+   "size": 61049056
+  },
+  "godot/assets/3d/characters/heroes/_full/lena_vargas.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "fcd2aec3d43396b117cfb1e99be19aa0",
+   "size": 63379996
+  },
+  "godot/assets/3d/characters/heroes/_full/linda_caldwell.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "94396791f2a0a830a0ac4e0533189cf8",
+   "size": 48271104
+  },
   "godot/assets/3d/characters/heroes/_full/lucy.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "0966d00c230adc428d382145a5234943",
    "size": 51118936
+  },
+  "godot/assets/3d/characters/heroes/_full/mackenzie_roberts.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "62a1ecc34953a10bcf94f0ef93c8c4c3",
+   "size": 44206116
+  },
+  "godot/assets/3d/characters/heroes/_full/margaret_coop.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "f0067f63c3e86fa7cb504a8ec69974ce",
+   "size": 59592356
+  },
+  "godot/assets/3d/characters/heroes/_full/marina.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "fae0668517d3aec7a0773d22fe0442e9",
+   "size": 59975896
   },
   "godot/assets/3d/characters/heroes/_full/marisol.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "63a218bfa1dd6bf5dd2470763a8d8ddb",
    "size": 51570808
   },
+  "godot/assets/3d/characters/heroes/_full/marit.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "0d472ea6c486e81f061fabe309c72e24",
+   "size": 39510960
+  },
   "godot/assets/3d/characters/heroes/_full/mark.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "f097b8078a499a8c5eabf981d8509dd3",
    "size": 52644576
   },
+  "godot/assets/3d/characters/heroes/_full/mateo.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "a3691117abd969e86fc3d0eeb7ecceff",
+   "size": 58718412
+  },
+  "godot/assets/3d/characters/heroes/_full/maya_daigle.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "205e019387e2eea804a9fb95535091d9",
+   "size": 57915332
+  },
+  "godot/assets/3d/characters/heroes/_full/maya_daigle_age7.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "8042abee9e767f191ead06ffe9ccb2d2",
+   "size": 86234016
+  },
+  "godot/assets/3d/characters/heroes/_full/miriam.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "6acfaa9347113e8f11a4a7fe3b210846",
+   "size": 45883732
+  },
+  "godot/assets/3d/characters/heroes/_full/mrs_gable.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "ad257525f6a5d2da85382600608be4a9",
+   "size": 59848568
+  },
+  "godot/assets/3d/characters/heroes/_full/natalie_david.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "db3edf9fdb3a972f7623c15685cbdc6f",
+   "size": 49817252
+  },
+  "godot/assets/3d/characters/heroes/_full/nate_bassist.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "496d9c806cfae5b9a2312158ebb1eb58",
+   "size": 60975900
+  },
+  "godot/assets/3d/characters/heroes/_full/nicola.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "1f5a67b6f9aef1480812a7d16e3e48d0",
+   "size": 42853164
+  },
+  "godot/assets/3d/characters/heroes/_full/per.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "1bd950a4f75206ca71db3a7ee2db2281",
+   "size": 54702408
+  },
+  "godot/assets/3d/characters/heroes/_full/petra.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "bb378ba9636989634b6ecb67a272fe75",
+   "size": 65793688
+  },
+  "godot/assets/3d/characters/heroes/_full/philip_roberts.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "25e99c18e3c732dbc0352f221ae9db42",
+   "size": 48262056
+  },
+  "godot/assets/3d/characters/heroes/_full/quentin_paul.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "6ebf989fb0f7ea793a055c130e940692",
+   "size": 36677372
+  },
+  "godot/assets/3d/characters/heroes/_full/ramirez.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "bdf9df3b6878bf019e3197e4fad89ad1",
+   "size": 38024716
+  },
+  "godot/assets/3d/characters/heroes/_full/rick_cosmic.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "45a1dc55bd7816e18e52bba245e6fc7f",
+   "size": 49036028
+  },
+  "godot/assets/3d/characters/heroes/_full/roy.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "e91c809bb00e2e34d60473ce8c6c3293",
+   "size": 67363200
+  },
   "godot/assets/3d/characters/heroes/_full/russell.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "eb4a279a7dd2e1e0ce30bddb701d4f20",
    "size": 49146868
+  },
+  "godot/assets/3d/characters/heroes/_full/sal_carratura.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "c8c292ccc0a8865b858544a8c073e51b",
+   "size": 43606532
+  },
+  "godot/assets/3d/characters/heroes/_full/sam_miller.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "7867ad27b87148a21aad2f639e000e93",
+   "size": 63506904
+  },
+  "godot/assets/3d/characters/heroes/_full/sam_miller_apron.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "7f704705d35233026c37967ada9457aa",
+   "size": 44761448
+  },
+  "godot/assets/3d/characters/heroes/_full/sammy.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "07b49397fb44ce65630b60efcfedd270",
+   "size": 36246012
+  },
+  "godot/assets/3d/characters/heroes/_full/skip_donnelly.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "11489da29cdb1f088e521f64ecb8113d",
+   "size": 34283472
+  },
+  "godot/assets/3d/characters/heroes/_full/soren.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "97723f15bd0da9b86c2296e34fac9a2a",
+   "size": 71835256
+  },
+  "godot/assets/3d/characters/heroes/_full/tanya_horne.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "be62bab48825268674d8b11bd849e4d7",
+   "size": 35472472
+  },
+  "godot/assets/3d/characters/heroes/_full/tem.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "1a2b3af57d772ec3d191ed3b9e0bd17d",
+   "size": 58269736
   },
   "godot/assets/3d/characters/heroes/_full/the_artist.glb": {
    "at": "2026-10-19T17:25:28+00:00",
@@ -135,15 +565,30 @@
    "md5": "312e5b2ce793e1f4b5249b991c1a8706",
    "size": 47775628
   },
+  "godot/assets/3d/characters/heroes/_full/the_frog.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "8b6928ab85d8ed0a1d7868b5480a9add",
+   "size": 58240624
+  },
   "godot/assets/3d/characters/heroes/_full/the_human_being.glb": {
    "at": "2026-10-19T17:36:50+00:00",
    "md5": "2e13640228fb24e238a2637a711de50d",
    "size": 45869724
   },
+  "godot/assets/3d/characters/heroes/_full/the_stranger.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "03265a8561ab1c1486f6a1c265660305",
+   "size": 49651000
+  },
   "godot/assets/3d/characters/heroes/_full/the_writer.glb": {
    "at": "2026-10-19T17:04:23+00:00",
    "md5": "f60bf1c3ff55022e5cb1e8db4caf00d6",
    "size": 55571044
+  },
+  "godot/assets/3d/characters/heroes/_full/thomas_henderson.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "750d2ea2688862e2c704d2a6af5781a8",
+   "size": 34433980
   },
   "godot/assets/3d/characters/heroes/_full/tom_bell.glb": {
    "at": "2026-10-19T17:04:23+00:00",
@@ -155,6 +600,16 @@
    "md5": "1b4f4e8192098a12154a072169296412",
    "size": 61082228
   },
+  "godot/assets/3d/characters/heroes/_full/vince_kane.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "af29c3689979282596be930f9a45403f",
+   "size": 40884656
+  },
+  "godot/assets/3d/characters/heroes/_full/wagner.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "f7d28875887c73f8852b19daf22ef9aa",
+   "size": 50673960
+  },
   "godot/assets/3d/characters/heroes/_full/walt.glb": {
    "at": "2026-10-19T16:39:39+00:00",
    "md5": "d8c5b497b8ae619997e3418663c25dcc",
@@ -165,10 +620,20 @@
    "md5": "32fb9c28242dc75e2f27e26835a3019b",
    "size": 83937648
   },
+  "godot/assets/3d/characters/heroes/_full/wren.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "65b8e490eb07dfde3f983f011d444e5b",
+   "size": 76036692
+  },
+  "godot/assets/3d/characters/heroes/_full/wren_vol6.glb": {
+   "at": "2026-10-27T02:34:51+00:00",
+   "md5": "da719770a8060f38c4ded90f38578c60",
+   "size": 88725060
+  },
   "godot/assets/3d/characters/heroes/air_elemental.glb": {
-   "at": "2026-10-19T17:47:47+00:00",
-   "md5": "b37f9106d7ad833e007db842cc031ab3",
-   "size": 94263816
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e251ac8b7094a8f062b1dec173ac9662",
+   "size": 9087332
   },
   "godot/assets/3d/characters/heroes/air_elemental_0.jpg": {
    "at": "2026-10-19T19:11:13+00:00",
@@ -190,10 +655,30 @@
    "md5": "123792869634baa62bf162ba90692d49",
    "size": 141831
   },
+  "godot/assets/3d/characters/heroes/air_elemental_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9c9b2a4416094c72709d5e7069c0ee59",
+   "size": 520663
+  },
+  "godot/assets/3d/characters/heroes/air_elemental_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3853000b70f16feb7c4e2c98fd58c6b5",
+   "size": 79725
+  },
+  "godot/assets/3d/characters/heroes/air_elemental_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2de62325abce98fb29662a2db29da891",
+   "size": 150050
+  },
+  "godot/assets/3d/characters/heroes/air_elemental_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6657ae8aa5341b83d9e0c86ca72624de",
+   "size": 19292
+  },
   "godot/assets/3d/characters/heroes/alberto.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "8e4871d528072c64a68e1cdaf77c41d6",
-   "size": 33103540
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "dbdb064c05b9ea77a88d91347cd1b0de",
+   "size": 4394420
   },
   "godot/assets/3d/characters/heroes/alberto_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -215,10 +700,30 @@
    "md5": "90bb67646534b8010435fb0742af2ca7",
    "size": 66380
   },
+  "godot/assets/3d/characters/heroes/alberto_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c1d8bd69e7955fae765bec95590313c3",
+   "size": 296749
+  },
+  "godot/assets/3d/characters/heroes/alberto_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "dc3bd30a89c43244c3898dce5ea823be",
+   "size": 42870
+  },
+  "godot/assets/3d/characters/heroes/alberto_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6add64012678877ae311884dc4f6eef3",
+   "size": 102633
+  },
+  "godot/assets/3d/characters/heroes/alberto_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7b870fe727bb32861f312e1f10357b30",
+   "size": 17027
+  },
   "godot/assets/3d/characters/heroes/alice_newsom.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "df1ad2b82f5589c2246c6d742415d5d1",
-   "size": 45206716
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "69958b8f29cfea1e8f2242f434132f27",
+   "size": 4984244
   },
   "godot/assets/3d/characters/heroes/alice_newsom_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -240,10 +745,30 @@
    "md5": "6ce611b34dd4bd0045a1dba1669cb7af",
    "size": 66351
   },
+  "godot/assets/3d/characters/heroes/alice_newsom_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d209c126a11c407d51090da574383183",
+   "size": 496985
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "82826391c73782c66c01b0e9d8d015e2",
+   "size": 72019
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b20c112dec73dadc82b674a504d94756",
+   "size": 158374
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "332620fdfa80e852f894b0d66b275968",
+   "size": 17027
+  },
   "godot/assets/3d/characters/heroes/anita_kowalski.glb": {
-   "at": "2026-10-11T20:31:26+00:00",
-   "md5": "7cb8e8fa634b58d50ce18e72795ace09",
-   "size": 51759116
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "36eaed110ce29233caa713702b069ed4",
+   "size": 5226624
   },
   "godot/assets/3d/characters/heroes/anita_kowalski_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -265,10 +790,30 @@
    "md5": "07b30ea45a7dbb3849ece387696bff35",
    "size": 67020
   },
+  "godot/assets/3d/characters/heroes/anita_kowalski_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "bc07de9af5276a96f4c317eb798aa00b",
+   "size": 484811
+  },
+  "godot/assets/3d/characters/heroes/anita_kowalski_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "86ce2ca1371d18e9b4689dcfb55f7d26",
+   "size": 60458
+  },
+  "godot/assets/3d/characters/heroes/anita_kowalski_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7a499285142c5b91129f1f07b5b6a025",
+   "size": 152311
+  },
+  "godot/assets/3d/characters/heroes/anita_kowalski_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d69b855a492e9863cd0da47d442acc50",
+   "size": 17047
+  },
   "godot/assets/3d/characters/heroes/anita_kowalski_scrubs.glb": {
-   "at": "2026-10-11T20:35:19+00:00",
-   "md5": "de7a2bbb089723cf3807206470790780",
-   "size": 43170424
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9e5420ff8ae599794c2fe31783a34f16",
+   "size": 4915156
   },
   "godot/assets/3d/characters/heroes/anita_kowalski_scrubs_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -290,10 +835,30 @@
    "md5": "840f4f3b486b9c9826495bf7cafa4bdc",
    "size": 66626
   },
+  "godot/assets/3d/characters/heroes/anita_kowalski_scrubs_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "44f8b85a7d74cbe0cb12c86278702332",
+   "size": 336068
+  },
+  "godot/assets/3d/characters/heroes/anita_kowalski_scrubs_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "46d797f9a0ee3fdbd73766ec91623fca",
+   "size": 56276
+  },
+  "godot/assets/3d/characters/heroes/anita_kowalski_scrubs_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3aa7af96a89ee5a1585cfe089f22cd02",
+   "size": 118453
+  },
+  "godot/assets/3d/characters/heroes/anita_kowalski_scrubs_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5fa859792d51c4be7d5cd310934d3124",
+   "size": 17035
+  },
   "godot/assets/3d/characters/heroes/anna_logue.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "c6805d678501fb6e2fe6e14e7ad6d682",
-   "size": 46236876
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a87e77c2740d3b43686ae0f3364f0047",
+   "size": 5048320
   },
   "godot/assets/3d/characters/heroes/anna_logue_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -315,10 +880,30 @@
    "md5": "2bf22fde517ac0cefff18f03e13a13c9",
    "size": 70685
   },
+  "godot/assets/3d/characters/heroes/anna_logue_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1f7e34e35e51c8cc3024980b9155b034",
+   "size": 492890
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f8c398a29d4a7bb111132a76fdf3e77a",
+   "size": 82588
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "502ba7148144c87dd1a4adf9c0403a8c",
+   "size": 163536
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f1415f2ad616231ac8fc3454bd7c7585",
+   "size": 17118
+  },
   "godot/assets/3d/characters/heroes/antonio.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "c92bed1774ba5129f6955de26a8c93dd",
-   "size": 47314124
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "00bd057f53fbb716b25c014718c29601",
+   "size": 5223804
   },
   "godot/assets/3d/characters/heroes/antonio_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -340,10 +925,30 @@
    "md5": "d846bc0ce3a3a750f2d3fde6e332a249",
    "size": 66667
   },
+  "godot/assets/3d/characters/heroes/antonio_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d72c041f3d1e386b1fc7cd82abd6f60d",
+   "size": 512358
+  },
+  "godot/assets/3d/characters/heroes/antonio_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "781ed179f3a1fb345992b1a8f14e6390",
+   "size": 84171
+  },
+  "godot/assets/3d/characters/heroes/antonio_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d666c0c94303ba258af2b312c868e514",
+   "size": 178376
+  },
+  "godot/assets/3d/characters/heroes/antonio_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "22fec41558fc0bdae2c14133080f192d",
+   "size": 17032
+  },
   "godot/assets/3d/characters/heroes/aria_third.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "49e750aaa868276b8b76aff942332493",
-   "size": 67924096
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "23c86dc1509f10f2e97591e39478e6b3",
+   "size": 7304092
   },
   "godot/assets/3d/characters/heroes/aria_third_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -365,10 +970,30 @@
    "md5": "a881b36e1d9fb311295a572a5addd2f2",
    "size": 66180
   },
+  "godot/assets/3d/characters/heroes/aria_third_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "78ef63ca2cdea708c16dae92aef0727a",
+   "size": 611768
+  },
+  "godot/assets/3d/characters/heroes/aria_third_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "088ec47d4886de8a2738096c6c9fe402",
+   "size": 101127
+  },
+  "godot/assets/3d/characters/heroes/aria_third_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "83b54df047518e2579dacdea7852c164",
+   "size": 180268
+  },
+  "godot/assets/3d/characters/heroes/aria_third_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/aud.glb": {
-   "at": "2026-10-11T19:24:12+00:00",
-   "md5": "e7fd3754ff6be3d99708767c07e00297",
-   "size": 43045840
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "760e03d2bd7bae8b56d9fddaabee0a8f",
+   "size": 4937444
   },
   "godot/assets/3d/characters/heroes/aud_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -390,10 +1015,30 @@
    "md5": "a7f65484595c1477f6abac7338964396",
    "size": 81542
   },
+  "godot/assets/3d/characters/heroes/aud_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1fc787e03f3c428479aa0324d9e5aa4b",
+   "size": 394611
+  },
+  "godot/assets/3d/characters/heroes/aud_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2280b8593a951125789302579fa860d7",
+   "size": 61730
+  },
+  "godot/assets/3d/characters/heroes/aud_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "90c8b0953db7d375f9d0ace83f580fd0",
+   "size": 134237
+  },
+  "godot/assets/3d/characters/heroes/aud_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1d44b6ec087c7eb3dd6b150e565d37ec",
+   "size": 17233
+  },
   "godot/assets/3d/characters/heroes/ben_kowalski.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "fbae045c6b6ca658d8e568e0c2170c9b",
-   "size": 38620068
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a2492e0b1cb0027d591d17dcefb6c7de",
+   "size": 4765672
   },
   "godot/assets/3d/characters/heroes/ben_kowalski_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -414,6 +1059,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "299e22fedee232ff510578ee4f5f48e6",
    "size": 68902
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75a5a9206556b3f3556d56f1055e3472",
+   "size": 501184
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b46bfb011740f139efdc09f099478650",
+   "size": 78385
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6491214d7186e097026451a5e267b17c",
+   "size": 186860
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "15d500a27de937a81da85ca6e90aa278",
+   "size": 17043
   },
   "godot/assets/3d/characters/heroes/bernard.glb": {
    "at": "2026-10-19T18:06:54+00:00",
@@ -441,9 +1106,9 @@
    "size": 17055
   },
   "godot/assets/3d/characters/heroes/bianca_miller.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "8cfad2aa079b55d00c71da1bd2b1bb92",
-   "size": 44170256
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "bce744adef182b26a4a7507ac715ec88",
+   "size": 5049348
   },
   "godot/assets/3d/characters/heroes/bianca_miller_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -465,10 +1130,30 @@
    "md5": "f52ba972f9a1050d9b136ac64d8e876c",
    "size": 66622
   },
+  "godot/assets/3d/characters/heroes/bianca_miller_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9bc924dd401b77ccd83a22ce03efaca4",
+   "size": 404094
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4f38baa453d47ac18bf152d4b02cd778",
+   "size": 74783
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "39baecbf00ec9f8ed98b9442be560af7",
+   "size": 124512
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "13a0c386a27e9b60535cdf59b66c19ac",
+   "size": 17033
+  },
   "godot/assets/3d/characters/heroes/bill_kowalski.glb": {
-   "at": "2026-10-11T20:42:09+00:00",
-   "md5": "ed9bcec5905b1152f43cb58d656d849c",
-   "size": 37026636
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b987f8d144f54c42b87f2fbf0c43f52f",
+   "size": 4526892
   },
   "godot/assets/3d/characters/heroes/bill_kowalski_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -489,6 +1174,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "8c9b5d8c0092c5e0c00d1b3b2893f7c2",
    "size": 66197
+  },
+  "godot/assets/3d/characters/heroes/bill_kowalski_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e9ff4db8d423f9a76c60034f174f7efa",
+   "size": 347177
+  },
+  "godot/assets/3d/characters/heroes/bill_kowalski_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7f899e8b093d8e33b333e73c9ced17e6",
+   "size": 64589
+  },
+  "godot/assets/3d/characters/heroes/bill_kowalski_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "15f01c6f32178c13832ba398c85fe9fb",
+   "size": 115253
+  },
+  "godot/assets/3d/characters/heroes/bill_kowalski_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
   },
   "godot/assets/3d/characters/heroes/boyd.glb": {
    "at": "2026-10-19T01:46:15+00:00",
@@ -541,9 +1246,9 @@
    "size": 17150
   },
   "godot/assets/3d/characters/heroes/bt.glb": {
-   "at": "2026-10-11T20:22:59+00:00",
-   "md5": "5b8fffe3e5997af772ec22d9cd3fd00a",
-   "size": 41066152
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b73e59e97a8d876e7dddb32ee2858468",
+   "size": 4698700
   },
   "godot/assets/3d/characters/heroes/bt_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -565,10 +1270,30 @@
    "md5": "f3a2d5099bca0fb3384c88daea352a2a",
    "size": 69593
   },
+  "godot/assets/3d/characters/heroes/bt_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f2812c2c2775eeffd3e74ef7d35fb775",
+   "size": 407375
+  },
+  "godot/assets/3d/characters/heroes/bt_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e04ef044aac47ccd5b418b04525dda1d",
+   "size": 58103
+  },
+  "godot/assets/3d/characters/heroes/bt_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "caa6ff36ae41a1467d0d691bfdf946ff",
+   "size": 125514
+  },
+  "godot/assets/3d/characters/heroes/bt_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2de932b242a495e27c509a25053e2d6c",
+   "size": 17124
+  },
   "godot/assets/3d/characters/heroes/cale.glb": {
-   "at": "2026-10-11T18:21:46+00:00",
-   "md5": "e5417a65c6245c64583175b653f8529c",
-   "size": 49122952
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f6f9450fb9a390ea8d16881648e5417a",
+   "size": 4816012
   },
   "godot/assets/3d/characters/heroes/cale_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -590,10 +1315,30 @@
    "md5": "06a67e1ae17babbcdc0a0af0744e1ab0",
    "size": 884699
   },
+  "godot/assets/3d/characters/heroes/cale_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0f6026b53ce1796021a5d97dee35d860",
+   "size": 474001
+  },
+  "godot/assets/3d/characters/heroes/cale_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cc6b7f86a0a05a21c35f767bb8e8ce60",
+   "size": 49103
+  },
+  "godot/assets/3d/characters/heroes/cale_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "68bc31a343b03d1258977037b00ded66",
+   "size": 129448
+  },
+  "godot/assets/3d/characters/heroes/cale_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "86dcdc8a915e3faf67bc9aeafe2ada1f",
+   "size": 46245
+  },
   "godot/assets/3d/characters/heroes/carl_drummer.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "779b2ee69311c23cd1d611503536ccc6",
-   "size": 45739108
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d70fb96b346ed8f7f4837fdbe009127a",
+   "size": 4981876
   },
   "godot/assets/3d/characters/heroes/carl_drummer_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -615,10 +1360,30 @@
    "md5": "05011546da3e499bedcf37adedebcb07",
    "size": 67698
   },
+  "godot/assets/3d/characters/heroes/carl_drummer_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ad87fbe6323ff640b23b32c8fe33e6a8",
+   "size": 462333
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b614ed162344d0b81b0a7d66367627ca",
+   "size": 65733
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "59eec2950bff5fbd98006dcff83723cc",
+   "size": 155502
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fe1e2ee66521e7f4753d015e36a90f4e",
+   "size": 17027
+  },
   "godot/assets/3d/characters/heroes/carl_reno.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "3b6942590b7e66e0e8576fe28764ae1f",
-   "size": 36798284
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ad1e54bc1dd74eed5c17f4bf88d38538",
+   "size": 4698416
   },
   "godot/assets/3d/characters/heroes/carl_reno_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -639,6 +1404,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "e2653c2bb48d84ba5610609879a3d1fd",
    "size": 67660
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "be2e8c403f448893ffefc8d9587c8239",
+   "size": 369448
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "27e8b0e3b0054288bbfa4d1c096faa02",
+   "size": 71042
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0bb79b857884e3af84d649104e2f1189",
+   "size": 134372
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "53fd5835f3b4eb6dce72bcdb48613b3b",
+   "size": 17036
   },
   "godot/assets/3d/characters/heroes/carlos.glb": {
    "at": "2026-10-19T16:55:31+00:00",
@@ -716,9 +1501,9 @@
    "size": 17035
   },
   "godot/assets/3d/characters/heroes/chief_miller.glb": {
-   "at": "2026-10-11T16:25:49+00:00",
-   "md5": "d74819f2e966106fd83bb7b2243b845e",
-   "size": 47592640
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "023c74d2d3238768dc803afff39dd90a",
+   "size": 4889656
   },
   "godot/assets/3d/characters/heroes/chief_miller_0.jpg": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -740,10 +1525,30 @@
    "md5": "ce16d61b76c2a3bd754ddfdc5eeec382",
    "size": 66684
   },
+  "godot/assets/3d/characters/heroes/chief_miller_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4ee20d1aa7c67e24aa52d908aa188976",
+   "size": 284852
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1e0968cec1e47abaae6f1384c8df4fc9",
+   "size": 79619
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5cab5ed6368d6a79e80303e9510773db",
+   "size": 112545
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "65d6080761432500e58f07224eaf4a09",
+   "size": 17026
+  },
   "godot/assets/3d/characters/heroes/claire_moyer.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "df4a10eea8465e66677671cf176f8c61",
-   "size": 53863432
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "103bded907422a2587f42e17b1ef6639",
+   "size": 5290836
   },
   "godot/assets/3d/characters/heroes/claire_moyer_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -765,10 +1570,30 @@
    "md5": "b21f52241dd868dbf5ad88ba0287f191",
    "size": 67828
   },
+  "godot/assets/3d/characters/heroes/claire_moyer_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5e55c246ccc8da717ddadb3167258197",
+   "size": 451709
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "04e906157b838f1f5224709cf2603117",
+   "size": 70370
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "53b667cc37c0ceb947afa8c7c2669a2a",
+   "size": 138106
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4ef439dd7f8417be52f5b62dbc101ee3",
+   "size": 17051
+  },
   "godot/assets/3d/characters/heroes/coach_dale.glb": {
-   "at": "2026-10-11T21:02:17+00:00",
-   "md5": "8c00755fbb4008a40812eb0a6eccbcc7",
-   "size": 44013588
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "785d9cb5ce351d82144ae442a06a1433",
+   "size": 4826500
   },
   "godot/assets/3d/characters/heroes/coach_dale_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -790,10 +1615,30 @@
    "md5": "24f46bf8359311ea7d351063bc83421f",
    "size": 157355
   },
+  "godot/assets/3d/characters/heroes/coach_dale_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "363ff52e0f5f365290f71f35c573808a",
+   "size": 448759
+  },
+  "godot/assets/3d/characters/heroes/coach_dale_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b6e7532a9b862a6b4fae4ea25dfcfb5e",
+   "size": 73734
+  },
+  "godot/assets/3d/characters/heroes/coach_dale_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "669f8eaa16ec67302f262560bf63aa71",
+   "size": 156012
+  },
+  "godot/assets/3d/characters/heroes/coach_dale_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1b6230aa38bc28041879534f59bbfe88",
+   "size": 20568
+  },
   "godot/assets/3d/characters/heroes/coach_guidry.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "fb022fb107c7f0b0d4b992cb40f70dcd",
-   "size": 50948296
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3b460800401b752eea4e89e6c939160a",
+   "size": 5377204
   },
   "godot/assets/3d/characters/heroes/coach_guidry_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -815,10 +1660,30 @@
    "md5": "aae857e7f0c456d4c7d8be423ca3c86a",
    "size": 67016
   },
+  "godot/assets/3d/characters/heroes/coach_guidry_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fccf2fff94a8f31ffafaf38044d9cb85",
+   "size": 440446
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7fa65d956faa5f2a3e34d5c069af1c55",
+   "size": 69466
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f5734963dcca9e382dfabfaa1ec05f1f",
+   "size": 144113
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c08ccbd559d6a840b8d2e3642ad0413e",
+   "size": 17030
+  },
   "godot/assets/3d/characters/heroes/coach_k.glb": {
-   "at": "2026-10-11T20:11:27+00:00",
-   "md5": "0946df41d10638c15d94a325cda3ade3",
-   "size": 40623668
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7ee38a11f1741338e276c0b727483f4c",
+   "size": 4864324
   },
   "godot/assets/3d/characters/heroes/coach_k_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -840,10 +1705,30 @@
    "md5": "609cdc781225483b0b86c4cf57b9b466",
    "size": 88705
   },
+  "godot/assets/3d/characters/heroes/coach_k_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a462d91a4fe56761ba35c1af547ec103",
+   "size": 438384
+  },
+  "godot/assets/3d/characters/heroes/coach_k_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9b1f7f5df06476c8804bc37c51333020",
+   "size": 62658
+  },
+  "godot/assets/3d/characters/heroes/coach_k_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0cb5108629a1012e2e82c53ac25963c8",
+   "size": 165658
+  },
+  "godot/assets/3d/characters/heroes/coach_k_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "56f238d0228763ad53f24d94b2d91abb",
+   "size": 17371
+  },
   "godot/assets/3d/characters/heroes/coach_k_home.glb": {
-   "at": "2026-10-11T20:15:18+00:00",
-   "md5": "bf8388ede3f258105d5610984495daa3",
-   "size": 42933240
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8343dc8f70a768bc553455ff94be9721",
+   "size": 5336940
   },
   "godot/assets/3d/characters/heroes/coach_k_home_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -865,10 +1750,30 @@
    "md5": "b290e98b9cfbaac8e9372a03a73b11cc",
    "size": 71286
   },
+  "godot/assets/3d/characters/heroes/coach_k_home_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "04bc07e67ad2577726f3faf435fbd594",
+   "size": 698556
+  },
+  "godot/assets/3d/characters/heroes/coach_k_home_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7bba307481be853041bb9501e38a672e",
+   "size": 86610
+  },
+  "godot/assets/3d/characters/heroes/coach_k_home_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "66b0a0126a945f202c12ef80536fa61c",
+   "size": 253808
+  },
+  "godot/assets/3d/characters/heroes/coach_k_home_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "609e5cc476a5d1f312fd60c99acc7a95",
+   "size": 17074
+  },
   "godot/assets/3d/characters/heroes/curtis.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "586c434c49f4df772d33666b56e518d5",
-   "size": 40882696
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "693155a5a263a5fcdb7583e23b6e41e5",
+   "size": 5033164
   },
   "godot/assets/3d/characters/heroes/curtis_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -890,10 +1795,30 @@
    "md5": "0608d6415dfb966e0bbc0def13aaf338",
    "size": 72758
   },
+  "godot/assets/3d/characters/heroes/curtis_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "29d439131da64eef2c6156cc480791ec",
+   "size": 606098
+  },
+  "godot/assets/3d/characters/heroes/curtis_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c020d610827dc392daed8356104b7666",
+   "size": 59797
+  },
+  "godot/assets/3d/characters/heroes/curtis_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5b12ba390d3eb017a2c369be3e739f8f",
+   "size": 226369
+  },
+  "godot/assets/3d/characters/heroes/curtis_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8957850176d1ca071b9989cbe3409f0a",
+   "size": 17153
+  },
   "godot/assets/3d/characters/heroes/dante_dambrosio.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "5ba49715eb65123436f87fabc740d81b",
-   "size": 43510028
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "697c7651381de7977f22f3c8f2b56b44",
+   "size": 4851588
   },
   "godot/assets/3d/characters/heroes/dante_dambrosio_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -915,10 +1840,30 @@
    "md5": "edbf429d92b902e19bdd70af7afc4ae6",
    "size": 70664
   },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2b5989d3bbd1b527b823e3dcd66877a9",
+   "size": 453856
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b5794e59189bb11be8719a96040a6475",
+   "size": 77725
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "76124d034f866bdca2f1187231bfbbe5",
+   "size": 150848
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8b01a3dfbec99840cf76ddb99b4623de",
+   "size": 17066
+  },
   "godot/assets/3d/characters/heroes/david_jarvis.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "69bef50a29a6dbff5aa9aeecda336d32",
-   "size": 41765048
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c3df9d0c15a412738dd1ff259f4042fe",
+   "size": 4758120
   },
   "godot/assets/3d/characters/heroes/david_jarvis_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -940,10 +1885,30 @@
    "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
    "size": 66165
   },
+  "godot/assets/3d/characters/heroes/david_jarvis_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "df3ad7dacda153edb51e01390e1c3180",
+   "size": 336574
+  },
+  "godot/assets/3d/characters/heroes/david_jarvis_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "df64042db622f031f47c3e9beb6b470c",
+   "size": 61403
+  },
+  "godot/assets/3d/characters/heroes/david_jarvis_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cd3b7f48f6aaab9577884ea08e1568df",
+   "size": 108942
+  },
+  "godot/assets/3d/characters/heroes/david_jarvis_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/dickens_dean.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "84a000a4b6d7a666ddf5c0b0d752f1f4",
-   "size": 32378640
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cdfeb412269ad86206842408179cd22d",
+   "size": 4349800
   },
   "godot/assets/3d/characters/heroes/dickens_dean_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -964,6 +1929,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
    "size": 66165
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "69725d73af22a122e6f68f2d4119b56c",
+   "size": 293390
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "69ce6f5a1cd8a67c6e36f57fed8bc051",
+   "size": 44423
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1921285f0c20d23dd68d0a41568feb41",
+   "size": 107896
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
   },
   "godot/assets/3d/characters/heroes/diego_ramos.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -1011,9 +1996,9 @@
    "size": 17048
   },
   "godot/assets/3d/characters/heroes/doug.glb": {
-   "at": "2026-10-11T21:25:27+00:00",
-   "md5": "25248ebbbedd039eefba2b0e5e88a944",
-   "size": 55393436
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9687de27c49de738442a6b9d5ca0e49c",
+   "size": 5250344
   },
   "godot/assets/3d/characters/heroes/doug_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1035,10 +2020,30 @@
    "md5": "f4c86efda8362c0d89e18d525ea33260",
    "size": 70584
   },
+  "godot/assets/3d/characters/heroes/doug_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fbb3dbcb8168a3a8807547f3476ba9a4",
+   "size": 423847
+  },
+  "godot/assets/3d/characters/heroes/doug_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ffdcf0cc61c8968ef3fd2ce813161af2",
+   "size": 67663
+  },
+  "godot/assets/3d/characters/heroes/doug_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6b93ab6eaac9b570f8ee85ffa2cf0cab",
+   "size": 126211
+  },
+  "godot/assets/3d/characters/heroes/doug_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b6598093b3f2e7986f20aa432f8f15e7",
+   "size": 17106
+  },
   "godot/assets/3d/characters/heroes/douglas_forte.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "560a9493ba6524564bef5508dfd581df",
-   "size": 42203504
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8da53ecf803aeed2be9799f8d5fbc7f5",
+   "size": 4678852
   },
   "godot/assets/3d/characters/heroes/douglas_forte_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1059,6 +2064,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "518f192f645565bd565b61277b4c128f",
    "size": 69848
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "523166793a6ccd5113a0132038784c49",
+   "size": 354210
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "74196e60405dc0edb298a5a9e46f63ba",
+   "size": 49043
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0e04cce3947e16a56b38c654a42991cd",
+   "size": 109419
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "84c32e0856c238ba07f3f03949174c31",
+   "size": 17094
   },
   "godot/assets/3d/characters/heroes/doyle.glb": {
    "at": "2026-10-19T02:44:31+00:00",
@@ -1086,9 +2111,9 @@
    "size": 17027
   },
   "godot/assets/3d/characters/heroes/eileen_henderson.glb": {
-   "at": "2026-10-11T20:02:39+00:00",
-   "md5": "3f3078b680ba87082339bfb684b871b6",
-   "size": 53038080
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2bcd9557115886e5baba7bc423765d29",
+   "size": 5385252
   },
   "godot/assets/3d/characters/heroes/eileen_henderson_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1109,6 +2134,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "d14225552d5b141c45251d431c0ee6fd",
    "size": 70319
+  },
+  "godot/assets/3d/characters/heroes/eileen_henderson_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2603e371bbbeea49e2e6091c64983622",
+   "size": 481129
+  },
+  "godot/assets/3d/characters/heroes/eileen_henderson_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4b5988457d49d846f88c21ea67c4aab6",
+   "size": 72791
+  },
+  "godot/assets/3d/characters/heroes/eileen_henderson_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fcdbb9b06e9924c69eaf1e06322a6e50",
+   "size": 157293
+  },
+  "godot/assets/3d/characters/heroes/eileen_henderson_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "59965f035bfc328a73716f8c91cc5400",
+   "size": 17137
   },
   "godot/assets/3d/characters/heroes/eileen_kazantzakis.glb": {
    "at": "2026-10-19T14:52:24+00:00",
@@ -1136,9 +2181,9 @@
    "size": 85986
   },
   "godot/assets/3d/characters/heroes/elicia_temple.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "03bf2ef488bbe8be456a73939ab7fae1",
-   "size": 56006176
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "40092a8ecf586d244d33f64de3ed3ddf",
+   "size": 5672348
   },
   "godot/assets/3d/characters/heroes/elicia_temple_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1160,10 +2205,30 @@
    "md5": "43b8aed82a78c9c43eec2cb69869167f",
    "size": 66263
   },
+  "godot/assets/3d/characters/heroes/elicia_temple_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "78012dd32912185c863e6019d53f320d",
+   "size": 450871
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4fcd47bf140a873932d052140102a21a",
+   "size": 71245
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2162990ad3a6413c8e7135bdeb0c3785",
+   "size": 143984
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "09faff127820a0b614d65ee654adb527",
+   "size": 17031
+  },
   "godot/assets/3d/characters/heroes/em_keys.glb": {
-   "at": "2026-10-11T16:46:47+00:00",
-   "md5": "14f82824cdfb1c5355a15b65d0427af5",
-   "size": 106243392
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cb2835f17ea854382b27cd1dce3bedf0",
+   "size": 16107080
   },
   "godot/assets/3d/characters/heroes/em_keys_0.jpg": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -1185,10 +2250,30 @@
    "md5": "bdec60d33e9f455dfd45c162038482f9",
    "size": 66326
   },
+  "godot/assets/3d/characters/heroes/em_keys_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "51aa81f253d829cb31bb78953ee94262",
+   "size": 601131
+  },
+  "godot/assets/3d/characters/heroes/em_keys_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0ad5203d4f17a135cb0012d15648357c",
+   "size": 86454
+  },
+  "godot/assets/3d/characters/heroes/em_keys_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d3a7da622e7f8c249eba11854d665bb5",
+   "size": 208406
+  },
+  "godot/assets/3d/characters/heroes/em_keys_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5ce1b6feef62c4dd45125e1fe71c3e63",
+   "size": 17028
+  },
   "godot/assets/3d/characters/heroes/erica_campbell.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "d775f6ef85d1438c3cb15952f8907c6f",
-   "size": 32523656
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "10cb84b4e6bbcf5564d8ea256d6ec871",
+   "size": 4480500
   },
   "godot/assets/3d/characters/heroes/erica_campbell_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1210,10 +2295,30 @@
    "md5": "5312e8b762183162774825b3c17f47d7",
    "size": 66555
   },
+  "godot/assets/3d/characters/heroes/erica_campbell_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5864333d8faadfb640c595bc0a1a1be9",
+   "size": 292864
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ce1587bf9935597797fd7d1916d20b3c",
+   "size": 67648
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f62cbc3172032c02ca2871274c6a71ad",
+   "size": 109952
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f573c59680b08031984b5fce432c0c9b",
+   "size": 17026
+  },
   "godot/assets/3d/characters/heroes/father_amato.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "258e56300cf3ee16a91d256dbbca40e1",
-   "size": 36737360
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d55bc6dbd5e5bc5c2f49e87ad7273d16",
+   "size": 4594796
   },
   "godot/assets/3d/characters/heroes/father_amato_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1235,10 +2340,30 @@
    "md5": "01bc73861cc169db9c765148bd63ae19",
    "size": 72332
   },
+  "godot/assets/3d/characters/heroes/father_amato_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c0a857a8d2ab8aff584479c8c11bf69a",
+   "size": 309553
+  },
+  "godot/assets/3d/characters/heroes/father_amato_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4c056b52ca30f2e68998c546f8b8c191",
+   "size": 57686
+  },
+  "godot/assets/3d/characters/heroes/father_amato_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9c7219a605eeefb7edc1fa21669c2c9b",
+   "size": 111128
+  },
+  "godot/assets/3d/characters/heroes/father_amato_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "bfa291a23b458bb8dac7afd0267225af",
+   "size": 17112
+  },
   "godot/assets/3d/characters/heroes/faust.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "f027a1e21c02333bb0e1ac777a8c0f49",
-   "size": 39050804
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "34be8f569a9f00379d3c09792e8938d7",
+   "size": 4934392
   },
   "godot/assets/3d/characters/heroes/faust_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -1260,10 +2385,30 @@
    "md5": "0dcd30fd1060178555350d5abc9c2890",
    "size": 67899
   },
+  "godot/assets/3d/characters/heroes/faust_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e8def359a299634b2283e6b8926e1d52",
+   "size": 440762
+  },
+  "godot/assets/3d/characters/heroes/faust_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fcd6047e1e8c784db1f0acfe086090d5",
+   "size": 87661
+  },
+  "godot/assets/3d/characters/heroes/faust_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b643a7cd42c4faac5acd680e46889b9a",
+   "size": 164103
+  },
+  "godot/assets/3d/characters/heroes/faust_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d8b500b955e7a3a47fcf92bc96de80f1",
+   "size": 17036
+  },
   "godot/assets/3d/characters/heroes/finn.glb": {
-   "at": "2026-10-11T18:11:42+00:00",
-   "md5": "917f0f8466a3b8b0819874b48097265e",
-   "size": 59013192
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "861b5b517a1457250202383c3043b1ad",
+   "size": 5382500
   },
   "godot/assets/3d/characters/heroes/finn_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1284,6 +2429,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "3146a114b3fbaf61476dad7b208d14ce",
    "size": 66799
+  },
+  "godot/assets/3d/characters/heroes/finn_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9d417d506d1f4a679e7a59040c47bb0e",
+   "size": 477418
+  },
+  "godot/assets/3d/characters/heroes/finn_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "201407260ab4da148c9e333e811704bc",
+   "size": 76125
+  },
+  "godot/assets/3d/characters/heroes/finn_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a325dafcb15fbe7be56a91dc7b99cef7",
+   "size": 125299
+  },
+  "godot/assets/3d/characters/heroes/finn_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6ee7b304903f7578a8bc2f7fa7fbdfd3",
+   "size": 17030
   },
   "godot/assets/3d/characters/heroes/fire_elemental.glb": {
    "at": "2026-10-19T17:53:24+00:00",
@@ -1311,9 +2476,9 @@
    "size": 81720
   },
   "godot/assets/3d/characters/heroes/frasier_temple.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "ca887edc74bafc8dd58180a7d8ec32dc",
-   "size": 48983384
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1d31d7f7778511bcc637b6a7266430d6",
+   "size": 5167828
   },
   "godot/assets/3d/characters/heroes/frasier_temple_0.jpg": {
    "at": "2026-10-01T05:59:49+00:00",
@@ -1335,15 +2500,35 @@
    "md5": "ab6f6770d84c98ba5989c9d8b5399957",
    "size": 67954
   },
+  "godot/assets/3d/characters/heroes/frasier_temple_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4432814f94b10e7020a358da4a99b60b",
+   "size": 382446
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e1ff8c37cd587bcab2471aa709539937",
+   "size": 67839
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e9124981218bbaab18e22a14e476b8e8",
+   "size": 120189
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "162787745c2257801dcbc8ebc8238463",
+   "size": 17034
+  },
   "godot/assets/3d/characters/heroes/frasier_temple_gnm.glb": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "49945b3e566b10c03f77f32b14fd33b7",
    "size": 3095244
   },
   "godot/assets/3d/characters/heroes/gloria_reyes.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "d117c86ee0961e3c8a00166d183707d2",
-   "size": 49291808
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a1421ff9acd8f0ccb5ec7883291f444c",
+   "size": 5263256
   },
   "godot/assets/3d/characters/heroes/gloria_reyes_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1365,10 +2550,30 @@
    "md5": "c048a9f343d60a853483381ba0d60f9e",
    "size": 358555
   },
+  "godot/assets/3d/characters/heroes/gloria_reyes_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "56e8b8bef0b8ff3584d48fa3c7c833a2",
+   "size": 506253
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "aed5457ca96c8a3d392fdd243b6443a7",
+   "size": 90059
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b9fefefcc9f837ad9f2c4a5597a127f4",
+   "size": 169943
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3d52675f64d8693a471ff9bd9e734298",
+   "size": 25386
+  },
   "godot/assets/3d/characters/heroes/gracie_kowalski.glb": {
-   "at": "2026-10-11T20:46:34+00:00",
-   "md5": "4c2e27a5d4a780d36a7c045831de3d5f",
-   "size": 56090164
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0f7b2cbea44b324debc43219cb8986f4",
+   "size": 5406852
   },
   "godot/assets/3d/characters/heroes/gracie_kowalski_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1390,10 +2595,30 @@
    "md5": "0ca71d7dce08dce9f14e2b9335149cc1",
    "size": 71398
   },
+  "godot/assets/3d/characters/heroes/gracie_kowalski_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7a295c96ba94ac4f5a6ed83ddf90805a",
+   "size": 497777
+  },
+  "godot/assets/3d/characters/heroes/gracie_kowalski_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ca2cdac9501804c755b19e741bdc6af5",
+   "size": 74825
+  },
+  "godot/assets/3d/characters/heroes/gracie_kowalski_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0e27f1d9847f357697a7c84dfd303dc8",
+   "size": 152540
+  },
+  "godot/assets/3d/characters/heroes/gracie_kowalski_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "585aed2a9ccd243320eef2d438d81ce3",
+   "size": 17104
+  },
   "godot/assets/3d/characters/heroes/graciela_ramos.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "80521aab28fad2bb164a1fccaccda12e",
-   "size": 44895308
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b67836a874a6ca721dcd40ed9ea2bddb",
+   "size": 5214684
   },
   "godot/assets/3d/characters/heroes/graciela_ramos_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1415,10 +2640,30 @@
    "md5": "ec6df2f98636a2cf0397cd9873930348",
    "size": 67574
   },
+  "godot/assets/3d/characters/heroes/graciela_ramos_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0c026d77c60b76a7adddd2b07252a4b6",
+   "size": 532683
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1c8e3aa8702efa710fdc05562d369b15",
+   "size": 66913
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "54e742dfb1fc7aacd57941126c42617f",
+   "size": 165539
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "96693cef7c59306c71a8c111659535b1",
+   "size": 17072
+  },
   "godot/assets/3d/characters/heroes/greta.glb": {
-   "at": "2026-10-11T18:42:29+00:00",
-   "md5": "4bf0ae991e5ec0befc1af4156ed3cb61",
-   "size": 51304820
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f7ad67979d693cf662e40ff1fced66b0",
+   "size": 5351888
   },
   "godot/assets/3d/characters/heroes/greta_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1439,6 +2684,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "44ddbacd108156f7923893f3d6b1021d",
    "size": 75476
+  },
+  "godot/assets/3d/characters/heroes/greta_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "163c27021af18d8f2c361c7bba9a28d5",
+   "size": 586882
+  },
+  "godot/assets/3d/characters/heroes/greta_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "85fdf6537fca1471a0789f7ea24d6831",
+   "size": 75157
+  },
+  "godot/assets/3d/characters/heroes/greta_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d38d0d506c3608374d8743e58066793f",
+   "size": 205630
+  },
+  "godot/assets/3d/characters/heroes/greta_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3572704b2628587fe9010f62f95710ff",
+   "size": 17139
   },
   "godot/assets/3d/characters/heroes/hal.glb": {
    "at": "2026-10-19T16:13:07+00:00",
@@ -1466,9 +2731,9 @@
    "size": 17025
   },
   "godot/assets/3d/characters/heroes/hans.glb": {
-   "at": "2026-10-11T18:35:35+00:00",
-   "md5": "ddf667a8a77b56fe4cc690723610babe",
-   "size": 47556688
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "509bffed56ee1ca6efc30f5a081ec76d",
+   "size": 4930540
   },
   "godot/assets/3d/characters/heroes/hans_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1490,10 +2755,30 @@
    "md5": "18eff45cd6e1ddd70b6c26b3417c0dc3",
    "size": 435273
   },
+  "godot/assets/3d/characters/heroes/hans_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "54b27168029fd5178317920c3b6fc4ce",
+   "size": 479520
+  },
+  "godot/assets/3d/characters/heroes/hans_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5b56cdc0dcb4d249265cbd7eecaa8196",
+   "size": 78499
+  },
+  "godot/assets/3d/characters/heroes/hans_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6a78a13d9b20ba01d2e671c6cc51f84a",
+   "size": 148040
+  },
+  "godot/assets/3d/characters/heroes/hans_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "45d8f9bcdbad9153788405d460fa6557",
+   "size": 32743
+  },
   "godot/assets/3d/characters/heroes/hector.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "04bfef99b58539ea2bfb8560547deaec",
-   "size": 49004860
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "94840d12ac9e3fa1bfd4458a5bf9283b",
+   "size": 5416580
   },
   "godot/assets/3d/characters/heroes/hector_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1514,6 +2799,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "ced17811ecc0ee0f914a769d15a6c895",
    "size": 67490
+  },
+  "godot/assets/3d/characters/heroes/hector_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3c4e07b9bb9f0f738bb68a9178d1ba06",
+   "size": 747924
+  },
+  "godot/assets/3d/characters/heroes/hector_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8750310a44e2349069a73f1f0a96d1a9",
+   "size": 77780
+  },
+  "godot/assets/3d/characters/heroes/hector_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "40731a765276fe5feaa9520e33661477",
+   "size": 286211
+  },
+  "godot/assets/3d/characters/heroes/hector_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7d2d18af44b00b3eb4b9c91d59dfff4c",
+   "size": 17054
   },
   "godot/assets/3d/characters/heroes/hugo.glb": {
    "at": "2026-10-19T01:46:15+00:00",
@@ -1541,9 +2846,9 @@
    "size": 55388
   },
   "godot/assets/3d/characters/heroes/jacob.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "7902b6e65f261c48d014b3b7516e79bf",
-   "size": 52089560
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4079a1bc269888ca95646438f1ac0040",
+   "size": 5360584
   },
   "godot/assets/3d/characters/heroes/jacob_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -1565,10 +2870,30 @@
    "md5": "8f57246b55b6d28611aadc3c981657fa",
    "size": 75040
   },
+  "godot/assets/3d/characters/heroes/jacob_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "22ef87a4607bf33fb8c00552850f5f96",
+   "size": 545055
+  },
+  "godot/assets/3d/characters/heroes/jacob_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f5a502329b8244de0147355b4c04b17a",
+   "size": 59764
+  },
+  "godot/assets/3d/characters/heroes/jacob_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5e76b32cc8a4d7b1ce61ab12f0cf7e62",
+   "size": 173771
+  },
+  "godot/assets/3d/characters/heroes/jacob_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d7a3307d04949bcf18c27b6b4c0c1ad7",
+   "size": 17061
+  },
   "godot/assets/3d/characters/heroes/jameson.glb": {
-   "at": "2026-10-11T19:30:48+00:00",
-   "md5": "9228f513342fc715fd3379303a5e6fc7",
-   "size": 61049560
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f2eaf2438c5ac8d9a2c5e309bbffdd0d",
+   "size": 5561788
   },
   "godot/assets/3d/characters/heroes/jameson_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1589,6 +2914,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "93bdd74e40e70a58689b502bc85ed302",
    "size": 67724
+  },
+  "godot/assets/3d/characters/heroes/jameson_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "42d196ceab4e6fc8f3490e235ef7a4ef",
+   "size": 492019
+  },
+  "godot/assets/3d/characters/heroes/jameson_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a6e3ce16d711f264df82b0bc2a016d44",
+   "size": 82979
+  },
+  "godot/assets/3d/characters/heroes/jameson_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a0158c6467bb385b64ac6ba12a988b27",
+   "size": 145258
+  },
+  "godot/assets/3d/characters/heroes/jameson_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b20840ef5ad90f1ad3694416c8f8c553",
+   "size": 17081
   },
   "godot/assets/3d/characters/heroes/jen.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -1616,9 +2961,9 @@
    "size": 18224
   },
   "godot/assets/3d/characters/heroes/jessa.glb": {
-   "at": "2026-10-11T21:31:59+00:00",
-   "md5": "8161199f8da96005e56016fbedc5b44e",
-   "size": 39049100
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ed250eff159b656085bfdb8d4ffcf704",
+   "size": 4736024
   },
   "godot/assets/3d/characters/heroes/jessa_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1640,10 +2985,30 @@
    "md5": "17e7c0f3bcd7ff1f63edc79c2d01cb63",
    "size": 73885
   },
+  "godot/assets/3d/characters/heroes/jessa_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "632a6842baddc7322db8804e01b46905",
+   "size": 311921
+  },
+  "godot/assets/3d/characters/heroes/jessa_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "238e8de8e7f1413f61fd8b3fa173670d",
+   "size": 62808
+  },
+  "godot/assets/3d/characters/heroes/jessa_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "bfebc10b59a54feb83968998f95fec33",
+   "size": 114579
+  },
+  "godot/assets/3d/characters/heroes/jessa_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d134a84424bd0935a0982f36d145912a",
+   "size": 17110
+  },
   "godot/assets/3d/characters/heroes/jesse_henderson.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "fb75ce63956b265f98660f2c98823e87",
-   "size": 52386496
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "bc52938346fa1c8bcaec100ee214169e",
+   "size": 5482952
   },
   "godot/assets/3d/characters/heroes/jesse_henderson_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1665,10 +3030,30 @@
    "md5": "b41c97ce511a2c9db21f815a4dd267fd",
    "size": 84280
   },
+  "godot/assets/3d/characters/heroes/jesse_henderson_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1fbffba1ac04228c74d843801d640876",
+   "size": 563318
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c9104e6a7810e62459c723883b71efa0",
+   "size": 87411
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "644088aa6c6b54bc4fa3cba988cae2e1",
+   "size": 189611
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a8e012b53bb01f9249a0a8168ef7e4f2",
+   "size": 17335
+  },
   "godot/assets/3d/characters/heroes/jim_henderson.glb": {
-   "at": "2026-10-11T20:51:36+00:00",
-   "md5": "b1e0719949a21444717058a6cf27a87c",
-   "size": 36655876
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ab28c1add5c4ab4fb0e880e646985eb1",
+   "size": 4616972
   },
   "godot/assets/3d/characters/heroes/jim_henderson_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1690,10 +3075,30 @@
    "md5": "8872bca972888e8860a79d52d06560dc",
    "size": 985282
   },
+  "godot/assets/3d/characters/heroes/jim_henderson_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "335a1927dfae13c6910f2ac8d4dc4887",
+   "size": 379108
+  },
+  "godot/assets/3d/characters/heroes/jim_henderson_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e79823bbee61a33fe6e20ff31dbb6fd2",
+   "size": 68706
+  },
+  "godot/assets/3d/characters/heroes/jim_henderson_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c63049e7090eb4cf1381b21ef7a3b1cd",
+   "size": 138691
+  },
+  "godot/assets/3d/characters/heroes/jim_henderson_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "118965457f92e4a97db5f358505128c3",
+   "size": 81514
+  },
   "godot/assets/3d/characters/heroes/jimmy_daigle.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "20c10e962249347860a6e2e0e438c987",
-   "size": 50785116
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4c268e53450d2fcbe1c74b91b62b8ddc",
+   "size": 5100136
   },
   "godot/assets/3d/characters/heroes/jimmy_daigle_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1715,10 +3120,30 @@
    "md5": "2ff4a2276d3a47ad88d2a912cd17a52a",
    "size": 85906
   },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b780e89d3536ccdba793a3885d195b8c",
+   "size": 458843
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cd737cee7086617d90881debbb7c2605",
+   "size": 80659
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "94f1fef3861d28ece831d27c2c24667a",
+   "size": 125674
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "da73aedac40ef8f1ed5a6bf4428b32c9",
+   "size": 17300
+  },
   "godot/assets/3d/characters/heroes/joan.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "84059446b1914b6e14a9829154292c73",
-   "size": 55945564
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fe5fcbbcf06ce05bba5e6b296bb7c624",
+   "size": 5705096
   },
   "godot/assets/3d/characters/heroes/joan_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -1740,10 +3165,30 @@
    "md5": "d7dc751eefb79b7ea05448a47f4bbbbd",
    "size": 66880
   },
+  "godot/assets/3d/characters/heroes/joan_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "213632a997d4e74e847b50040ffa1012",
+   "size": 508961
+  },
+  "godot/assets/3d/characters/heroes/joan_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a8a482a4909caaabbfb8b9f9eac5feef",
+   "size": 81534
+  },
+  "godot/assets/3d/characters/heroes/joan_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d56d0e5bf14c64f4c12f4e506c567855",
+   "size": 185189
+  },
+  "godot/assets/3d/characters/heroes/joan_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "31a6ea4b6e4ee50f2e4f77659adfe3f0",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/joanna_lemoine.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "f756cb9ebb17109371f159f599c8421b",
-   "size": 78800584
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8de3b566c6ecb3933cfe58ec9335a78b",
+   "size": 8213968
   },
   "godot/assets/3d/characters/heroes/joanna_lemoine_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1765,10 +3210,30 @@
    "md5": "1728499b849239647e1c5d30cd29a1aa",
    "size": 75269
   },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "73b45d6f085c756bd234697cc860096a",
+   "size": 325685
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "08caaf53261ee509e4a712160aa7dac2",
+   "size": 72747
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b896002b0fd6bb87aa7332a2e864131d",
+   "size": 102643
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2fba6ff013dca6738544ca976a29b624",
+   "size": 17604
+  },
   "godot/assets/3d/characters/heroes/john_frank.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "eb99ba39d6e32552ff9cc877989c113d",
-   "size": 36723944
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1b2912ac48cb54b34189f52b1cdf458e",
+   "size": 4864888
   },
   "godot/assets/3d/characters/heroes/john_frank_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1789,6 +3254,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "63641530a1ecbf5756c52024a08ac1dd",
    "size": 623445
+  },
+  "godot/assets/3d/characters/heroes/john_frank_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "dfa5b42668b9d958f76538cdd677af53",
+   "size": 380848
+  },
+  "godot/assets/3d/characters/heroes/john_frank_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c707f93402242292fb6ad858cb3a1dd8",
+   "size": 60444
+  },
+  "godot/assets/3d/characters/heroes/john_frank_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fa38671d167b1610a95a728101f0403d",
+   "size": 163077
+  },
+  "godot/assets/3d/characters/heroes/john_frank_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9dab25a48e427b48a7b68effac546eae",
+   "size": 47628
   },
   "godot/assets/3d/characters/heroes/john_frank_gnm.glb": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1821,9 +3306,9 @@
    "size": 17097
   },
   "godot/assets/3d/characters/heroes/kai.glb": {
-   "at": "2026-10-11T17:55:33+00:00",
-   "md5": "e613321a8cce76464756649595e83422",
-   "size": 61049056
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7f0c154df42d07ba903ff2537a161d93",
+   "size": 5629760
   },
   "godot/assets/3d/characters/heroes/kai_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1845,10 +3330,30 @@
    "md5": "fe819551ba8dcdf32cf4361f7f4fc62a",
    "size": 66635
   },
+  "godot/assets/3d/characters/heroes/kai_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "df61c0323135840d074ca225a223329e",
+   "size": 409635
+  },
+  "godot/assets/3d/characters/heroes/kai_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7951a0329af3ed69801b9146d8f21ad2",
+   "size": 66543
+  },
+  "godot/assets/3d/characters/heroes/kai_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e0d39339a8ec67a038b7ea0198a9e9af",
+   "size": 136587
+  },
+  "godot/assets/3d/characters/heroes/kai_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b995473aa21ba171401110346b317f67",
+   "size": 17028
+  },
   "godot/assets/3d/characters/heroes/lena_vargas.glb": {
-   "at": "2026-10-11T17:04:16+00:00",
-   "md5": "fcd2aec3d43396b117cfb1e99be19aa0",
-   "size": 63379996
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e61dfc468887e901fb0103edec386a63",
+   "size": 6174568
   },
   "godot/assets/3d/characters/heroes/lena_vargas_0.jpg": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -1870,10 +3375,30 @@
    "md5": "1e4fec7c70e7d0a0341f853be67077cd",
    "size": 67222
   },
+  "godot/assets/3d/characters/heroes/lena_vargas_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "33516d9a478ecb62c2992a51bc564d5a",
+   "size": 456739
+  },
+  "godot/assets/3d/characters/heroes/lena_vargas_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "59a74310febcff71d55944079ecbb86f",
+   "size": 98280
+  },
+  "godot/assets/3d/characters/heroes/lena_vargas_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1a691c912ce76f61c4624ed8d011b571",
+   "size": 138045
+  },
+  "godot/assets/3d/characters/heroes/lena_vargas_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "31dd015ca28e016742dca770aba289d5",
+   "size": 17044
+  },
   "godot/assets/3d/characters/heroes/linda_caldwell.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "94396791f2a0a830a0ac4e0533189cf8",
-   "size": 48271104
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "704987b729d0c36db147d2c2e0cbed40",
+   "size": 5037076
   },
   "godot/assets/3d/characters/heroes/linda_caldwell_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1894,6 +3419,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "a09aa62a06344d53fc6eb336daf3c865",
    "size": 66927
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7078f2ad7040b7280a69c637e8905bfd",
+   "size": 548890
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c874eb99fbe28aa692e75f6339d0634b",
+   "size": 72199
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5a3a7e0d6fa1c0f81ce13dd471f74555",
+   "size": 168080
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "90866987045eec7fa43ff03890eb36a4",
+   "size": 17031
   },
   "godot/assets/3d/characters/heroes/lucy.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -1921,9 +3466,9 @@
    "size": 25333
   },
   "godot/assets/3d/characters/heroes/mackenzie_roberts.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "62a1ecc34953a10bcf94f0ef93c8c4c3",
-   "size": 44206116
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "859eca45fb1ef4cb96a913a48277708e",
+   "size": 4880960
   },
   "godot/assets/3d/characters/heroes/mackenzie_roberts_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1945,10 +3490,30 @@
    "md5": "566465483d543a75d205601f7feb0110",
    "size": 67550
   },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "54eaf660eebec969ad7f84101caf51be",
+   "size": 470544
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f5a6d26fc9961ceb83cefdc45ff01520",
+   "size": 61129
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "356ebfd0da5348166a4b3493181270e2",
+   "size": 133165
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ef43cb4d3f12fbffa271a2666db2dc2f",
+   "size": 17056
+  },
   "godot/assets/3d/characters/heroes/margaret_coop.glb": {
-   "at": "2026-10-11T19:41:51+00:00",
-   "md5": "f0067f63c3e86fa7cb504a8ec69974ce",
-   "size": 59592356
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c1117dd8a22512ec1a85bcd3dce40e9e",
+   "size": 5482348
   },
   "godot/assets/3d/characters/heroes/margaret_coop_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1970,10 +3535,30 @@
    "md5": "bf95435396fb076b499927685078045f",
    "size": 76306
   },
+  "godot/assets/3d/characters/heroes/margaret_coop_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7651683d6c14825ed0bc37a7c0d6a0ef",
+   "size": 443583
+  },
+  "godot/assets/3d/characters/heroes/margaret_coop_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fc2d24e124663c6e566657c0e038fb21",
+   "size": 65932
+  },
+  "godot/assets/3d/characters/heroes/margaret_coop_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7ca30bffad1d9444cc28c3e95b0c7ad4",
+   "size": 133300
+  },
+  "godot/assets/3d/characters/heroes/margaret_coop_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e09a91327c5dca3875b2b1f050e76844",
+   "size": 17203
+  },
   "godot/assets/3d/characters/heroes/marina.glb": {
-   "at": "2026-10-11T19:08:16+00:00",
-   "md5": "fae0668517d3aec7a0773d22fe0442e9",
-   "size": 59975896
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c72e92740edec1bd9495b33c5c4bc10f",
+   "size": 5519780
   },
   "godot/assets/3d/characters/heroes/marina_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -1994,6 +3579,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "d17ae0c4286ad17c2f4bde258d03375c",
    "size": 79490
+  },
+  "godot/assets/3d/characters/heroes/marina_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1d734d668e4d4c6c222c5d45e951b82e",
+   "size": 416085
+  },
+  "godot/assets/3d/characters/heroes/marina_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d69b0b8ab54a4056c9a23a266586f837",
+   "size": 66897
+  },
+  "godot/assets/3d/characters/heroes/marina_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4613ffc3ef54b01c9ae7625e05557e3f",
+   "size": 116923
+  },
+  "godot/assets/3d/characters/heroes/marina_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0dc27fd7434fccce86ee9ec6104b6382",
+   "size": 17215
   },
   "godot/assets/3d/characters/heroes/marisol.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -2021,9 +3626,9 @@
    "size": 17042
   },
   "godot/assets/3d/characters/heroes/marit.glb": {
-   "at": "2026-10-11T18:53:14+00:00",
-   "md5": "0d472ea6c486e81f061fabe309c72e24",
-   "size": 39510960
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ce9b3beb5ef8b7d1d7050b1f0b282aba",
+   "size": 4627220
   },
   "godot/assets/3d/characters/heroes/marit_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2044,6 +3649,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "6ee32b3ddfd01535c6d9b8c3d6e9c62a",
    "size": 185013
+  },
+  "godot/assets/3d/characters/heroes/marit_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0fca797485bcd91216fcb8e552621754",
+   "size": 381769
+  },
+  "godot/assets/3d/characters/heroes/marit_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c18aee4596ad149711ee53c44817bd68",
+   "size": 49971
+  },
+  "godot/assets/3d/characters/heroes/marit_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c69302e4eb737bce657776428a7d7f67",
+   "size": 127815
+  },
+  "godot/assets/3d/characters/heroes/marit_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "22b9117a18c4032fb266f2ebbd783ac0",
+   "size": 24657
   },
   "godot/assets/3d/characters/heroes/mark.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -2071,9 +3696,9 @@
    "size": 17028
   },
   "godot/assets/3d/characters/heroes/mateo.glb": {
-   "at": "2026-10-11T19:37:20+00:00",
-   "md5": "a3691117abd969e86fc3d0eeb7ecceff",
-   "size": 58718412
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "171471021cb370907e59d1cd9f7538e3",
+   "size": 5551408
   },
   "godot/assets/3d/characters/heroes/mateo_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2095,10 +3720,30 @@
    "md5": "fba13dba722d385040ad24075bbf84a7",
    "size": 76377
   },
+  "godot/assets/3d/characters/heroes/mateo_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8bf2c8f3cd0c8d29769a2584466549c6",
+   "size": 455620
+  },
+  "godot/assets/3d/characters/heroes/mateo_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e2dfbb39679f9bc1499d09ccc3a6705b",
+   "size": 89091
+  },
+  "godot/assets/3d/characters/heroes/mateo_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0f498334ecf361034b5a9c3c5dba3183",
+   "size": 162282
+  },
+  "godot/assets/3d/characters/heroes/mateo_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "27d31bafbedf6342028315994621634e",
+   "size": 17085
+  },
   "godot/assets/3d/characters/heroes/maya_daigle.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "205e019387e2eea804a9fb95535091d9",
-   "size": 57915332
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "42bb7661632d528fee1b39632525af52",
+   "size": 5756692
   },
   "godot/assets/3d/characters/heroes/maya_daigle_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2120,10 +3765,30 @@
    "md5": "75210763c3b660cf80627c8f31d35999",
    "size": 66188
   },
+  "godot/assets/3d/characters/heroes/maya_daigle_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "07163b2bcde5bd7a0a0e5788a3a4ba7a",
+   "size": 490697
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "901fba94e5407a2f316d60bd85657805",
+   "size": 75751
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5845fdf4d53b47b06168afff3a5be314",
+   "size": 167998
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/maya_daigle_age7.glb": {
-   "at": "2026-10-11T21:10:14+00:00",
-   "md5": "8042abee9e767f191ead06ffe9ccb2d2",
-   "size": 86234016
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d28d6b5e7fb74f36abdf9d13c0e01b18",
+   "size": 10401364
   },
   "godot/assets/3d/characters/heroes/maya_daigle_age7_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2145,10 +3810,30 @@
    "md5": "6983641eddb98b8ce16c14a2bd44cc81",
    "size": 66912
   },
+  "godot/assets/3d/characters/heroes/maya_daigle_age7_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5fb670243d9728eb47e97a663d2eeabb",
+   "size": 469978
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_age7_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8ae9ec9cab71af0ab9e74a996c384e8f",
+   "size": 83405
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_age7_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9836b9cf5466f8be2c137301090ab7a5",
+   "size": 174387
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_age7_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1ea8307c988ba93c23427e7b14cec9c4",
+   "size": 17036
+  },
   "godot/assets/3d/characters/heroes/miriam.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "6acfaa9347113e8f11a4a7fe3b210846",
-   "size": 45883732
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8158c2da5d811f76f4c29557ae556412",
+   "size": 4924276
   },
   "godot/assets/3d/characters/heroes/miriam_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2170,10 +3855,30 @@
    "md5": "dda0b75377d03d8d7709a773dcf2011d",
    "size": 67325
   },
+  "godot/assets/3d/characters/heroes/miriam_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "da9924379c15afc1c8376a18c002965c",
+   "size": 371933
+  },
+  "godot/assets/3d/characters/heroes/miriam_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "79f99d550ff16661db08ace3a2737534",
+   "size": 55794
+  },
+  "godot/assets/3d/characters/heroes/miriam_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6edee1ef7bb307c3a673a60e63e5c288",
+   "size": 129210
+  },
+  "godot/assets/3d/characters/heroes/miriam_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f1d4e9124761b1d70ddba1875d0eda7f",
+   "size": 17026
+  },
   "godot/assets/3d/characters/heroes/mrs_gable.glb": {
-   "at": "2026-10-11T17:44:05+00:00",
-   "md5": "ad257525f6a5d2da85382600608be4a9",
-   "size": 59848568
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b49fd4a698c6421ad2497c140d1a122f",
+   "size": 5694404
   },
   "godot/assets/3d/characters/heroes/mrs_gable_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2195,10 +3900,30 @@
    "md5": "76743e20760f89a569fafdbca342a5a7",
    "size": 66993
   },
+  "godot/assets/3d/characters/heroes/mrs_gable_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6081be764abe70740d2faad907a002bb",
+   "size": 544605
+  },
+  "godot/assets/3d/characters/heroes/mrs_gable_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a2e6a56ed2f60637c86df45537fffb75",
+   "size": 84638
+  },
+  "godot/assets/3d/characters/heroes/mrs_gable_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "035417c078b712b60ae429c5a265a668",
+   "size": 172700
+  },
+  "godot/assets/3d/characters/heroes/mrs_gable_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0350e019a3413af1ea45cd5453787dd7",
+   "size": 17033
+  },
   "godot/assets/3d/characters/heroes/natalie_david.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "db3edf9fdb3a972f7623c15685cbdc6f",
-   "size": 49817252
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d013dab6caf0b5ad689102f323deb987",
+   "size": 5167644
   },
   "godot/assets/3d/characters/heroes/natalie_david_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2220,10 +3945,30 @@
    "md5": "489726f71f4161e38a35156822db7ff6",
    "size": 67993
   },
+  "godot/assets/3d/characters/heroes/natalie_david_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8eec57940688b5000c580aa59742e2b0",
+   "size": 451012
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "55532be07c5bbcf3a657a7a4b407fadc",
+   "size": 72462
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c87db9ce43b61d6a1a0bf4c9e80997ac",
+   "size": 156526
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1f137c13217cc0fba7d97b209b5a53a8",
+   "size": 17057
+  },
   "godot/assets/3d/characters/heroes/nate_bassist.glb": {
-   "at": "2026-10-11T16:32:14+00:00",
-   "md5": "496d9c806cfae5b9a2312158ebb1eb58",
-   "size": 60975900
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "571df16d102940c78d5bc1995e8d2f96",
+   "size": 5917208
   },
   "godot/assets/3d/characters/heroes/nate_bassist_0.jpg": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -2245,10 +3990,30 @@
    "md5": "f634998803d3b0196b1d4a6d19de51f9",
    "size": 68638
   },
+  "godot/assets/3d/characters/heroes/nate_bassist_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6b6d18fbd8536a620802d2167d7ae974",
+   "size": 548346
+  },
+  "godot/assets/3d/characters/heroes/nate_bassist_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9b15a0845562a9af4d6d0f646b534d0e",
+   "size": 65649
+  },
+  "godot/assets/3d/characters/heroes/nate_bassist_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "961cb10e79e89df38c15bbbd83bb83dd",
+   "size": 171555
+  },
+  "godot/assets/3d/characters/heroes/nate_bassist_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d85785028f76430983474a023135e43b",
+   "size": 17099
+  },
   "godot/assets/3d/characters/heroes/nicola.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "1f5a67b6f9aef1480812a7d16e3e48d0",
-   "size": 42853164
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4a59bbdf683e9e14b965c066ae6fb2df",
+   "size": 5174116
   },
   "godot/assets/3d/characters/heroes/nicola_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2270,10 +4035,30 @@
    "md5": "af04b943f6a53ca8808a4f5000a71c81",
    "size": 72060
   },
+  "godot/assets/3d/characters/heroes/nicola_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a181fd604e76b78125005b61b91bf94d",
+   "size": 457427
+  },
+  "godot/assets/3d/characters/heroes/nicola_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "27a40eccf15003d65b558c6e307b715c",
+   "size": 72552
+  },
+  "godot/assets/3d/characters/heroes/nicola_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "db693056f92b0616521f682183fb8cae",
+   "size": 175631
+  },
+  "godot/assets/3d/characters/heroes/nicola_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a72dc0823c42a7c55c406db2ec79b98f",
+   "size": 17087
+  },
   "godot/assets/3d/characters/heroes/per.glb": {
-   "at": "2026-10-11T17:59:42+00:00",
-   "md5": "1bd950a4f75206ca71db3a7ee2db2281",
-   "size": 54702408
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a2b8dced098b415f3e0dc4e392b82d1a",
+   "size": 5088624
   },
   "godot/assets/3d/characters/heroes/per_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2295,10 +4080,30 @@
    "md5": "43f33052a5866650bfede6dc3bb28b47",
    "size": 70605
   },
+  "godot/assets/3d/characters/heroes/per_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "040f48afc8522276d9a97149fde8a447",
+   "size": 399177
+  },
+  "godot/assets/3d/characters/heroes/per_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1ec111a13380669dc2471095013b7922",
+   "size": 70908
+  },
+  "godot/assets/3d/characters/heroes/per_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "42010adafb4d25d2842baea26e6cece0",
+   "size": 115838
+  },
+  "godot/assets/3d/characters/heroes/per_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1c5b9563e5ac1901b9fd1ddca4d164f2",
+   "size": 17074
+  },
   "godot/assets/3d/characters/heroes/petra.glb": {
-   "at": "2026-10-11T17:49:19+00:00",
-   "md5": "bb378ba9636989634b6ecb67a272fe75",
-   "size": 65793688
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3163383d2d60d4b09b6f89ae7b88e86b",
+   "size": 5979640
   },
   "godot/assets/3d/characters/heroes/petra_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2320,10 +4125,30 @@
    "md5": "0bd22ec0458d6804a3c6158c02b16800",
    "size": 74722
   },
+  "godot/assets/3d/characters/heroes/petra_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c9e8294334d8e789db926001dc294028",
+   "size": 536776
+  },
+  "godot/assets/3d/characters/heroes/petra_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e9b9ed9be11852554cd6432218383292",
+   "size": 62815
+  },
+  "godot/assets/3d/characters/heroes/petra_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6437bf71ea9cfa389adb70de753f4e30",
+   "size": 165918
+  },
+  "godot/assets/3d/characters/heroes/petra_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "293459dcd107e898783cbf13a8220460",
+   "size": 17172
+  },
   "godot/assets/3d/characters/heroes/philip_roberts.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "25e99c18e3c732dbc0352f221ae9db42",
-   "size": 48262056
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "991ef8e2e46e5409a380a4dadb1d9b74",
+   "size": 4871096
   },
   "godot/assets/3d/characters/heroes/philip_roberts_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2345,10 +4170,30 @@
    "md5": "6d35200814f8b72cb884f01e417f9e88",
    "size": 71968
   },
+  "godot/assets/3d/characters/heroes/philip_roberts_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3ea53c7947b348d69cc2ff28216c514b",
+   "size": 464610
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "380db30cdc95b3daa76003a9973f7f48",
+   "size": 64575
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "88f00933fbb1c5aa3cbd72afc90b493f",
+   "size": 137754
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "991ce8a6d198559731c1ddc37ebc47f2",
+   "size": 17092
+  },
   "godot/assets/3d/characters/heroes/quentin_paul.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "6ebf989fb0f7ea793a055c130e940692",
-   "size": 36677372
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "420c6d365866b455dee2808c70635312",
+   "size": 4507216
   },
   "godot/assets/3d/characters/heroes/quentin_paul_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2370,10 +4215,30 @@
    "md5": "c96643926d7a0fb2ef7b0ddca36aa614",
    "size": 71409
   },
+  "godot/assets/3d/characters/heroes/quentin_paul_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fe4196ce262c7fa1f69a721661bf58fa",
+   "size": 382453
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "365dac7f408da6bf06d2ea90d086e3a9",
+   "size": 49467
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7ad5328b6ef7ddd241a27d142a367033",
+   "size": 122080
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "5fd84fa61cfb75e8301893bc4b9f862d",
+   "size": 17063
+  },
   "godot/assets/3d/characters/heroes/ramirez.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "bdf9df3b6878bf019e3197e4fad89ad1",
-   "size": 38024716
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1c362e923f5c03f7c1ad0913a516b075",
+   "size": 4658464
   },
   "godot/assets/3d/characters/heroes/ramirez_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2395,10 +4260,30 @@
    "md5": "c5bbad1bb6b5858a6abae035b0dd3b72",
    "size": 67015
   },
+  "godot/assets/3d/characters/heroes/ramirez_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e6536830bbf15983dfa60833cde972c2",
+   "size": 383756
+  },
+  "godot/assets/3d/characters/heroes/ramirez_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ca08f2ea5a0ca57788a335f7bd9a51b2",
+   "size": 73293
+  },
+  "godot/assets/3d/characters/heroes/ramirez_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "30af5aa1e25315eeed6be7d2bf51e28d",
+   "size": 146124
+  },
+  "godot/assets/3d/characters/heroes/ramirez_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/rick_cosmic.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "45a1dc55bd7816e18e52bba245e6fc7f",
-   "size": 49036028
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6cc9e74c6d1dca841bea7417137a9d02",
+   "size": 4966308
   },
   "godot/assets/3d/characters/heroes/rick_cosmic_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -2420,10 +4305,30 @@
    "md5": "a70413a5578008bdca07a805c7c40c03",
    "size": 72643
   },
+  "godot/assets/3d/characters/heroes/rick_cosmic_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "29132f3e7f7bd71de348537d88fcdd4c",
+   "size": 489565
+  },
+  "godot/assets/3d/characters/heroes/rick_cosmic_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "4547dfc7a3fd98415f8ed0f5ad3bd777",
+   "size": 55635
+  },
+  "godot/assets/3d/characters/heroes/rick_cosmic_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "e195e088abc83b250d8433266d2eb213",
+   "size": 152515
+  },
+  "godot/assets/3d/characters/heroes/rick_cosmic_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "23ad0394f6941fd2821a813abb04b09f",
+   "size": 17066
+  },
   "godot/assets/3d/characters/heroes/roy.glb": {
-   "at": "2026-10-11T19:18:21+00:00",
-   "md5": "e91c809bb00e2e34d60473ce8c6c3293",
-   "size": 67363200
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "baebae807ad8750e05084fe293e2b2a7",
+   "size": 6436296
   },
   "godot/assets/3d/characters/heroes/roy_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2444,6 +4349,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "4b1b3f61a08d7aac0192ff9d48f05e91",
    "size": 283239
+  },
+  "godot/assets/3d/characters/heroes/roy_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1e01cbca2fabf822da19712cd7e9786d",
+   "size": 555778
+  },
+  "godot/assets/3d/characters/heroes/roy_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b1dc25b2cd06486d1a3be829b6b50dc6",
+   "size": 104761
+  },
+  "godot/assets/3d/characters/heroes/roy_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c8410d80b06c4cace7b0e56c357b7c30",
+   "size": 182603
+  },
+  "godot/assets/3d/characters/heroes/roy_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "97df88e061abd313f177d0cd1af93e21",
+   "size": 21557
   },
   "godot/assets/3d/characters/heroes/russell.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -2471,9 +4396,9 @@
    "size": 17249
   },
   "godot/assets/3d/characters/heroes/sal_carratura.glb": {
-   "at": "2026-10-11T18:04:51+00:00",
-   "md5": "c8c292ccc0a8865b858544a8c073e51b",
-   "size": 43606532
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9ec872355aca3c1151d708f1b1decacc",
+   "size": 4793436
   },
   "godot/assets/3d/characters/heroes/sal_carratura_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2495,10 +4420,30 @@
    "md5": "e6bcd1547cda4653bb6fb0877a2bdf21",
    "size": 479347
   },
+  "godot/assets/3d/characters/heroes/sal_carratura_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "90786b704f5d129963b84a651078442b",
+   "size": 429219
+  },
+  "godot/assets/3d/characters/heroes/sal_carratura_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0f732fbd27565b33f4549afdcf416776",
+   "size": 77985
+  },
+  "godot/assets/3d/characters/heroes/sal_carratura_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "771b9615cfa6d6cdff315366cae94e37",
+   "size": 145628
+  },
+  "godot/assets/3d/characters/heroes/sal_carratura_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d9c6ee927d6618519cc8e01ce8e6e2eb",
+   "size": 45986
+  },
   "godot/assets/3d/characters/heroes/sam_miller.glb": {
-   "at": "2026-10-11T16:25:49+00:00",
-   "md5": "7867ad27b87148a21aad2f639e000e93",
-   "size": 63506904
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9c210c40cf2c94dceaa0212f0bf076c6",
+   "size": 6167708
   },
   "godot/assets/3d/characters/heroes/sam_miller_0.jpg": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -2520,10 +4465,30 @@
    "md5": "a3136c862448f7c0307851dc589c2e4d",
    "size": 67140
   },
+  "godot/assets/3d/characters/heroes/sam_miller_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6435a9160762e8694d99ed004ad4f883",
+   "size": 680733
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "3a4d40a90b35e37f3896bc2050b452a2",
+   "size": 63793
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "64951b410d1283414c73fc86ce0ef217",
+   "size": 242274
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "70675eae0ff0da7b1e239171417f25dc",
+   "size": 17063
+  },
   "godot/assets/3d/characters/heroes/sam_miller_apron.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "7f704705d35233026c37967ada9457aa",
-   "size": 44761448
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "90bd72237c9f932d088a223486ab64bc",
+   "size": 5003184
   },
   "godot/assets/3d/characters/heroes/sam_miller_apron_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -2545,15 +4510,35 @@
    "md5": "65def1b38dcf25aefaaa6c2a2b204c10",
    "size": 67013
   },
+  "godot/assets/3d/characters/heroes/sam_miller_apron_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d68f65f016110158d2ff217dc90d8a1c",
+   "size": 482542
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_apron_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2176406a8435595ab81db9bc3e87c213",
+   "size": 71563
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_apron_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "46d09bfd86bd209d7d8d54a40e8f0e14",
+   "size": 151127
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_apron_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7ba216741ebd62f330955da63d0b04a4",
+   "size": 17026
+  },
   "godot/assets/3d/characters/heroes/sam_miller_gnm.glb": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "4a5691793ba8886bf108262c923b5fe0",
    "size": 3015576
   },
   "godot/assets/3d/characters/heroes/sammy.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "07b49397fb44ce65630b60efcfedd270",
-   "size": 36246012
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1f7a404c1d80f121a9d41e1a5a88722f",
+   "size": 4641440
   },
   "godot/assets/3d/characters/heroes/sammy_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2575,10 +4560,30 @@
    "md5": "3ff7f8a4208b4ff18918cbe9437dac9b",
    "size": 67726
   },
+  "godot/assets/3d/characters/heroes/sammy_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b860415d42f828b61d5ee819f28224ca",
+   "size": 342687
+  },
+  "godot/assets/3d/characters/heroes/sammy_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ab41bdd2e121274c1d6539577b07e5c3",
+   "size": 79249
+  },
+  "godot/assets/3d/characters/heroes/sammy_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "af765c63fbf2da4b5f2b410c7dfaeb59",
+   "size": 132801
+  },
+  "godot/assets/3d/characters/heroes/sammy_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "6f31506e4fa24955f92ff2bd51875b38",
+   "size": 17044
+  },
   "godot/assets/3d/characters/heroes/skip_donnelly.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "11489da29cdb1f088e521f64ecb8113d",
-   "size": 34283472
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "2f5c1ffc5afc941fe95ad0f0e67e3e8e",
+   "size": 4561276
   },
   "godot/assets/3d/characters/heroes/skip_donnelly_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2600,10 +4605,30 @@
    "md5": "f5dc0e806bb479c87083d72a3c30c423",
    "size": 153018
   },
+  "godot/assets/3d/characters/heroes/skip_donnelly_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "033abca4b8e36ab8c8ac8d6de69cf4b4",
+   "size": 391220
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "fbfb685dc87274fdb130f2d2a603cc66",
+   "size": 54989
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1e204b1fc24040b9fad3df7f5ef8c9fc",
+   "size": 138320
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c6b67dc48459a15747a4f928f1db7a9c",
+   "size": 18099
+  },
   "godot/assets/3d/characters/heroes/soren.glb": {
-   "at": "2026-10-11T19:53:40+00:00",
-   "md5": "97723f15bd0da9b86c2296e34fac9a2a",
-   "size": 71835256
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d127c4022887bd21d13648816f4d403c",
+   "size": 7752740
   },
   "godot/assets/3d/characters/heroes/soren_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2625,10 +4650,30 @@
    "md5": "06314cac7b0c816afeff82114feadd80",
    "size": 66574
   },
+  "godot/assets/3d/characters/heroes/soren_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9d990dfd59c89814109aa56c8003bbfe",
+   "size": 403384
+  },
+  "godot/assets/3d/characters/heroes/soren_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "94079d5858705ff8243ab11f8761e558",
+   "size": 89275
+  },
+  "godot/assets/3d/characters/heroes/soren_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b39e0a79aa7e817260ff126d097422b5",
+   "size": 136159
+  },
+  "godot/assets/3d/characters/heroes/soren_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "92a3000284a8a7a4dde69d2b00da9bdc",
+   "size": 17033
+  },
   "godot/assets/3d/characters/heroes/tanya_horne.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "be62bab48825268674d8b11bd849e4d7",
-   "size": 35472472
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f5de5d17f0eefc786dbe7211018c1eb1",
+   "size": 4550824
   },
   "godot/assets/3d/characters/heroes/tanya_horne_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2650,10 +4695,30 @@
    "md5": "689275b05d9401abe334d8cf61ddecaf",
    "size": 66582
   },
+  "godot/assets/3d/characters/heroes/tanya_horne_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "22367454f0d7bf02e8d3023f6f4633eb",
+   "size": 374146
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "afe50cd929b32eff7df656e1b91e317e",
+   "size": 60624
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "613badb44a8b3552d92a9b3ba8e9f2f3",
+   "size": 118674
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "40008f2d065e172bf1c748840aa1553b",
+   "size": 17026
+  },
   "godot/assets/3d/characters/heroes/tem.glb": {
-   "at": "2026-10-11T17:37:51+00:00",
-   "md5": "1a2b3af57d772ec3d191ed3b9e0bd17d",
-   "size": 58269736
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f2d5d3e7c1f0f452114314b8945814df",
+   "size": 5826296
   },
   "godot/assets/3d/characters/heroes/tem_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -2674,6 +4739,26 @@
    "at": "2026-10-12T14:25:47+00:00",
    "md5": "f088f014e60a882757590d8ba42bbc15",
    "size": 66352
+  },
+  "godot/assets/3d/characters/heroes/tem_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "c98fbcb77ddbfa596a939b41b954ed32",
+   "size": 555538
+  },
+  "godot/assets/3d/characters/heroes/tem_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "757ae308caee449d144d747076fdbc2f",
+   "size": 57932
+  },
+  "godot/assets/3d/characters/heroes/tem_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "21874c14a139305d4781dd0c1a4f5888",
+   "size": 171002
+  },
+  "godot/assets/3d/characters/heroes/tem_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1a92b86e2aaa26dc4d8d7d259b289e8a",
+   "size": 17027
   },
   "godot/assets/3d/characters/heroes/the_artist.glb": {
    "at": "2026-10-19T17:25:18+00:00",
@@ -2726,9 +4811,9 @@
    "size": 17031
   },
   "godot/assets/3d/characters/heroes/the_frog.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "8b6928ab85d8ed0a1d7868b5480a9add",
-   "size": 58240624
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a538fd6fdd13404aa0810e4454bab691",
+   "size": 5196772
   },
   "godot/assets/3d/characters/heroes/the_frog_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2749,6 +4834,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "ac2d1055318844da2fa97239fa969c83",
    "size": 77595
+  },
+  "godot/assets/3d/characters/heroes/the_frog_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "d00fe66b6c7fe962bbbb9296dd9b5755",
+   "size": 442174
+  },
+  "godot/assets/3d/characters/heroes/the_frog_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "8dc4dcfd723c4f8bc425b6e55c409f08",
+   "size": 64834
+  },
+  "godot/assets/3d/characters/heroes/the_frog_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "28c8d3d42a0dee0e2f46dfc849b6473d",
+   "size": 131776
+  },
+  "godot/assets/3d/characters/heroes/the_frog_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "37467ebc1e6312dde0ab87fad07e9239",
+   "size": 17127
   },
   "godot/assets/3d/characters/heroes/the_human_being.glb": {
    "at": "2026-10-19T17:36:43+00:00",
@@ -2776,9 +4881,9 @@
    "size": 38356
   },
   "godot/assets/3d/characters/heroes/the_stranger.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "03265a8561ab1c1486f6a1c265660305",
-   "size": 49651000
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7230eb503c154fd0810b8caf300cf18a",
+   "size": 5262860
   },
   "godot/assets/3d/characters/heroes/the_stranger_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2799,6 +4904,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "ae15a43964f4dda66799ad2348263e16",
    "size": 72204
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "144d73cc7d05a5c5f8d7a659ed88a698",
+   "size": 369414
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a261d39d630802e8b4d358fe7b8e1001",
+   "size": 59458
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ac6d87798c544a7e0ee4913c575f9b5c",
+   "size": 111466
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a62e89c6774b0d657852cfd846d49a64",
+   "size": 17080
   },
   "godot/assets/3d/characters/heroes/the_writer.glb": {
    "at": "2026-10-19T17:04:04+00:00",
@@ -2826,9 +4951,9 @@
    "size": 17043
   },
   "godot/assets/3d/characters/heroes/thomas_henderson.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "750d2ea2688862e2c704d2a6af5781a8",
-   "size": 34433980
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "25d2af9cadaabd1b13e47f8af8511101",
+   "size": 4561444
   },
   "godot/assets/3d/characters/heroes/thomas_henderson_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2849,6 +4974,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "4f9695fc884aa19e9d330fe04ceb9929",
    "size": 72080
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "648cc7f3a6e64e778c1cb8f36a574769",
+   "size": 327491
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "ce931719c443068101bfe91fc07c1684",
+   "size": 54202
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "380446afcf918766efcd4c2063831888",
+   "size": 121823
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "104490edb35f083e7c9482145d86c6aa",
+   "size": 17102
   },
   "godot/assets/3d/characters/heroes/tom_bell.glb": {
    "at": "2026-10-19T17:04:04+00:00",
@@ -2901,9 +5046,9 @@
    "size": 17129
   },
   "godot/assets/3d/characters/heroes/vince_kane.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "af29c3689979282596be930f9a45403f",
-   "size": 40884656
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "08b2636185ad51922e55274a88f2ab91",
+   "size": 4509656
   },
   "godot/assets/3d/characters/heroes/vince_kane_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2925,10 +5070,30 @@
    "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
    "size": 66165
   },
+  "godot/assets/3d/characters/heroes/vince_kane_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f5e7e40953a61daccbab8a35132e342d",
+   "size": 289829
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b7f7e55cb95b9afe519c2f636fd9fe91",
+   "size": 55713
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f55686febfe53bdec85e8d43a34a6d8d",
+   "size": 100466
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "75c1030c9f01521d8a40aeff505bc0ac",
+   "size": 17025
+  },
   "godot/assets/3d/characters/heroes/wagner.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "f7d28875887c73f8852b19daf22ef9aa",
-   "size": 50673960
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "b8333f82b0df6f962a59dafd34108807",
+   "size": 4947328
   },
   "godot/assets/3d/characters/heroes/wagner_0.jpg": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -2949,6 +5114,26 @@
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "bc410fc85113b5d8c89c219ee4f4ad2e",
    "size": 67210
+  },
+  "godot/assets/3d/characters/heroes/wagner_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cb4cd8f347541cdcb41ffd0674a9e00b",
+   "size": 421598
+  },
+  "godot/assets/3d/characters/heroes/wagner_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "aa08437f8c0a6e63bb778cc3b15abd50",
+   "size": 63283
+  },
+  "godot/assets/3d/characters/heroes/wagner_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a79ae6153eb89a60f0cbc71ada907ffb",
+   "size": 129704
+  },
+  "godot/assets/3d/characters/heroes/wagner_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "315d22842a742525532a80da744713d6",
+   "size": 17034
   },
   "godot/assets/3d/characters/heroes/walt.glb": {
    "at": "2026-10-19T16:39:29+00:00",
@@ -3001,9 +5186,9 @@
    "size": 17025
   },
   "godot/assets/3d/characters/heroes/wren.glb": {
-   "at": "2026-10-11T17:33:38+00:00",
-   "md5": "65b8e490eb07dfde3f983f011d444e5b",
-   "size": 76036692
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "9467a5169876628a68ac90b9d73453e7",
+   "size": 8511176
   },
   "godot/assets/3d/characters/heroes/wren_0.jpg": {
    "at": "2026-10-12T14:25:47+00:00",
@@ -3025,10 +5210,30 @@
    "md5": "2a07df75fa6557f64877fadb08789b88",
    "size": 67584
   },
+  "godot/assets/3d/characters/heroes/wren_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "a55beeb94b9822c56fda28a0b7eab996",
+   "size": 588441
+  },
+  "godot/assets/3d/characters/heroes/wren_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "1ce3237cd876fe93c0f708d9efbf0d8c",
+   "size": 87907
+  },
+  "godot/assets/3d/characters/heroes/wren_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "0d0ffc4f949c1dca67e031e36dd98c50",
+   "size": 201287
+  },
+  "godot/assets/3d/characters/heroes/wren_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "47cb1fc296884574db7f6c28c05f0227",
+   "size": 17042
+  },
   "godot/assets/3d/characters/heroes/wren_vol6.glb": {
-   "at": "2026-10-11T16:57:07+00:00",
-   "md5": "da719770a8060f38c4ded90f38578c60",
-   "size": 88725060
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "acb28ab5aae13e0d4ca4b4f9d14d75d1",
+   "size": 9713708
   },
   "godot/assets/3d/characters/heroes/wren_vol6_0.jpg": {
    "at": "2026-10-11T17:33:38+00:00",
@@ -3050,10 +5255,45 @@
    "md5": "7af787d1fbbacc22eb2bb26ed704f3c5",
    "size": 67404
   },
-  "godot/assets/3d/props/steamboat_model.glb": {
-   "at": "2026-10-11T21:19:54+00:00",
+  "godot/assets/3d/characters/heroes/wren_vol6_Image_0.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "072305796649c32e8f83eda67b9cd535",
+   "size": 419285
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_Image_1.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "cf2a4125a43a663b7486a1fdf0916cbe",
+   "size": 82642
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_Image_2.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "f27e9aed961fb1c85626ce67bbab073b",
+   "size": 131072
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_Image_3.jpg": {
+   "at": "2026-10-27T02:33:21+00:00",
+   "md5": "7f3f72bfb597bd48429447397f72a8d0",
+   "size": 17059
+  },
+  "godot/assets/3d/props/_full/peugeot_505.glb": {
+   "at": "2026-10-27T02:35:29+00:00",
+   "md5": "dd1df0a649155ae9cde66592660af121",
+   "size": 4577224
+  },
+  "godot/assets/3d/props/_full/steamboat_model.glb": {
+   "at": "2026-10-27T02:35:29+00:00",
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
    "size": 106709020
+  },
+  "godot/assets/3d/props/peugeot_505.glb": {
+   "at": "2026-10-27T02:35:20+00:00",
+   "md5": "b6ccb0de346efebcc72e7126381f1a0b",
+   "size": 1069824
+  },
+  "godot/assets/3d/props/steamboat_model.glb": {
+   "at": "2026-10-27T02:35:20+00:00",
+   "md5": "5593a2ddacf19a5caa63c7da26093ce8",
+   "size": 12362028
   },
   "godot/assets/3d/props/steamboat_model_0.jpg": {
    "at": "2026-10-12T14:25:55+00:00",
@@ -3074,6 +5314,26 @@
    "at": "2026-10-12T14:25:55+00:00",
    "md5": "b1f9b25c2857174cc4e543b6318b82f6",
    "size": 128067
+  },
+  "godot/assets/3d/props/steamboat_model_Image_0.jpg": {
+   "at": "2026-10-27T02:35:20+00:00",
+   "md5": "624ed63619eb87fa666a020119b70031",
+   "size": 264134
+  },
+  "godot/assets/3d/props/steamboat_model_Image_1.jpg": {
+   "at": "2026-10-27T02:35:20+00:00",
+   "md5": "f52794af1865dee141c8ce5ff7e8f0c3",
+   "size": 48155
+  },
+  "godot/assets/3d/props/steamboat_model_Image_2.jpg": {
+   "at": "2026-10-27T02:35:20+00:00",
+   "md5": "0618970ae24a6d62cc3618a487e88bf9",
+   "size": 62452
+  },
+  "godot/assets/3d/props/steamboat_model_Image_3.jpg": {
+   "at": "2026-10-27T02:35:20+00:00",
+   "md5": "a634b8fa50f240b253fd5bac802a06cc",
+   "size": 4757
   },
   "godot/assets/3d/props/workbench_props.glb": {
    "at": "2026-10-11T16:25:59+00:00",
@@ -65620,6 +67880,36 @@
    "md5": "02bb53b051a9fcb0403fbc88c9b5b429",
    "size": 81240
   },
+  "godot/assets/concept/meshy/andy/andy_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:35:38+00:00",
+   "md5": "0181d725195bffa9537f5d8dcbcbf9fb",
+   "size": 2008179
+  },
+  "godot/assets/concept/meshy/andy/andy_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:35:38+00:00",
+   "md5": "02370819f68b3712ce35666bf2277aa3",
+   "size": 1944819
+  },
+  "godot/assets/concept/meshy/andy/andy_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:35:38+00:00",
+   "md5": "61f5b61bfc2a6ae8fe8545fe0b569d99",
+   "size": 1884008
+  },
+  "godot/assets/concept/meshy/andy/back.png": {
+   "at": "2026-10-27T02:35:38+00:00",
+   "md5": "0181d725195bffa9537f5d8dcbcbf9fb",
+   "size": 2008179
+  },
+  "godot/assets/concept/meshy/andy/front.png": {
+   "at": "2026-10-27T02:35:38+00:00",
+   "md5": "02370819f68b3712ce35666bf2277aa3",
+   "size": 1944819
+  },
+  "godot/assets/concept/meshy/andy/side.png": {
+   "at": "2026-10-27T02:35:38+00:00",
+   "md5": "61f5b61bfc2a6ae8fe8545fe0b569d99",
+   "size": 1884008
+  },
   "godot/assets/concept/meshy/anita_kowalski/anita_kowalski_back_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-11T20:31:36+00:00",
    "md5": "2b4758d696454a8832cf7abfff02cfda",
@@ -72484,6 +74774,41 @@
    "at": "2026-10-11T17:49:30+00:00",
    "md5": "c027b3e8ab4ef7ebcd35bd6e56e1c342",
    "size": 1952500
+  },
+  "godot/assets/concept/meshy/peugeot_505/back.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "55c98a7a217fd59ec5cd0882558bd48d",
+   "size": 2286172
+  },
+  "godot/assets/concept/meshy/peugeot_505/front.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "8514afc371c2c2b07e529b236558430c",
+   "size": 2193631
+  },
+  "godot/assets/concept/meshy/peugeot_505/meshy_thumb.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "63e38deb8093a7ec5abe717ae60975b7",
+   "size": 89021
+  },
+  "godot/assets/concept/meshy/peugeot_505/peugeot_505_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "55c98a7a217fd59ec5cd0882558bd48d",
+   "size": 2286172
+  },
+  "godot/assets/concept/meshy/peugeot_505/peugeot_505_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "8514afc371c2c2b07e529b236558430c",
+   "size": 2193631
+  },
+  "godot/assets/concept/meshy/peugeot_505/peugeot_505_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "2c70794263d2a346e35cf7f9e3f9d402",
+   "size": 2066042
+  },
+  "godot/assets/concept/meshy/peugeot_505/side.png": {
+   "at": "2026-10-27T02:35:46+00:00",
+   "md5": "2c70794263d2a346e35cf7f9e3f9d402",
+   "size": 2066042
   },
   "godot/assets/concept/meshy/pharmacy_aisle_sign/front.png": {
    "at": "2026-10-14T03:17:33+00:00",
