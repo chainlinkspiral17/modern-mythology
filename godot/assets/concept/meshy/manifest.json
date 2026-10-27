@@ -25633,5 +25633,22 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard/front.png",
     "output": "godot/assets/art/hero/caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard.png"
+  },
+  {
+    "at": "2026-10-27T02:38:01+00:00",
+    "stage": "image",
+    "slug": "bindery_plain_envelope",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the envelope that falls out of Labyrinths (plain, nothing written on the outside), like this: An envelope falls out. Plain. Sealed. Nothing written on the outside. The envelope, against her ribs, is warm from her body. The folder contains the contents of the envelope Maya delivered on Monday. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: the address side of a plain white business envelope, completely blank \u2014 no name, no address, no stamp, no printing, nothing written on it at all. Ordinary 2020s office-supply wove paper, bright white going faintly ivory, soft corners, a slight curve from being carried inside a jacket against the ribs, one faint crease across the middle, the shadow of the folded contents just visible through the paper. Keep the envelope's long edges at the top and bottom of the frame, the blank face centred.\nSIZE: the real object is 22 cm wide by 11 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the envelope that falls out of Labyrinths (plain, nothing written on the outside), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bindery_plain_envelope/bindery_plain_envelope_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
