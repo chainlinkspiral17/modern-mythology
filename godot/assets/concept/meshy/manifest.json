@@ -28290,5 +28290,53 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/maya_bedroom_dock_photograph/front.png",
     "output": "godot/assets/art/hero/maya_bedroom_dock_photograph.png"
+  },
+  {
+    "at": "2026-10-27T05:19:33+00:00",
+    "stage": "mesh",
+    "slug": "peugeot_505_hood_up",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17bc8-eec1-77c1-9c07-3910c926e638",
+    "inputs": [
+      "godot/assets/concept/meshy/peugeot_505_hood_up/front.png",
+      "godot/assets/concept/meshy/peugeot_505_hood_up/side.png",
+      "godot/assets/concept/meshy/peugeot_505_hood_up/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 15000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/peugeot_505_hood_up.glb",
+    "file_size_kb": 13069.2
+  },
+  {
+    "at": "2026-10-27T05:26:51+00:00",
+    "stage": "image",
+    "slug": "bobbys_tow_truck",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bobby's tow truck like this: Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes At eleven oh-eight the tow truck pulls into the lot. backs the truck up to the Peugeot. By eleven twenty-eight the Peugeot is on the truck. Additional direction: A flatbed rollback tow truck: a white medium-duty cab, an amber light bar on the roof, a long flat steel deck behind the cab with a winch at its front and a headboard, the deck tilted level. Small-town working truck, a little road grime. Empty deck. No company lettering legible.\nSingle-object concept render of Bobby's tow truck, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
