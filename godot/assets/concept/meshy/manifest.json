@@ -26832,5 +26832,263 @@
     "outputs": [
       "godot/assets/concept/meshy/vol5_prelude_ep20_sisters_wyrd/vol5_prelude_ep20_sisters_wyrd_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:25:30+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep20_sisters_wyrd",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep20_sisters_wyrd/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep20_sisters_wyrd.jpg"
+  },
+  {
+    "at": "2026-10-27T04:25:51+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep21_field_guide",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a field guide left on a park bench in the rain like this: A field guide written by a student, left on a park bench. Plasteek pages, slick and glowy with rain, animated menus and transitions unspooling in an endless loop. Additional direction: A park bench at night in the rain, under a single lamp: a book left lying open on it, its glossy plastic pages glowing and slick with rainwater, light shifting across them as if animated. Puddles, wet leaves, no one in the park.\nA single full-screen still for a literary visual novel set in America: a field guide left on a park bench in the rain. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep21_field_guide/vol5_prelude_ep21_field_guide_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:25:59+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep21_field_guide",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep21_field_guide/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep21_field_guide.jpg"
+  },
+  {
+    "at": "2026-10-27T04:26:15+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep22_hanged_man",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a one-bedroom corner after a hard breakup like this: Wither and waste away, two week old fruit in a bowl speckled inside and out with this avocado-colored mold. Here he is in the corner of a one bedroom, headphones on, blocked out, locked in, comfortable and sad, and so very lost. Additional direction: The corner of a neglected one-bedroom apartment: a bowl of two-week-old fruit speckled with green mould, worn t-shirts in piles in the corners, plastic wrappers and empty containers scattered about, a chair in the corner with headphones on it. Dim, stale, curtains half drawn.\nA single full-screen still for a literary visual novel set in America: a one-bedroom corner after a hard breakup. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep22_hanged_man/vol5_prelude_ep22_hanged_man_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:26:24+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep22_hanged_man",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep22_hanged_man/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep22_hanged_man.jpg"
+  },
+  {
+    "at": "2026-10-27T04:26:37+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep23_waking",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a bedroom at waking, the family gone with the dream, like this: I wake up having spent the day with my family. My love and children, lost to me upon waking. Additional direction: A quiet bedroom in the first grey light of morning, one side of the bed empty and smooth, the sheets on the other side tangled, a window of pale dawn. Stillness, absence.\nA single full-screen still for a literary visual novel set in America: a bedroom at waking, the family gone with the dream. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep23_waking/vol5_prelude_ep23_waking_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:26:46+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep23_waking",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep23_waking/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep23_waking.jpg"
+  },
+  {
+    "at": "2026-10-27T04:27:01+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_low_bar",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the shadiest bar in the most expensive part of Graustark like this: They go to the shadiest bar in the most expensive part of town. The drinks are, would you believe it, overpriced, the seats are leather, and the lights are as low as they can possibly go. Additional direction: A very dark, very expensive bar: deep leather booths and seats, the lights as low as they can go, smoke clinging in the air, glasses catching a little amber light, a long bar of bottles receding into shadow. After work, crowded but unseen.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the shadiest bar in the most expensive part of Graustark. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_low_bar/vol5_prelude_low_bar_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:27:11+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_low_bar",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_low_bar/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_low_bar.jpg"
+  },
+  {
+    "at": "2026-10-27T04:27:26+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_steamship_gallery",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the tiered portrait gallery of the major arcana like this: The child goes to the crystal ball, when it lights up, the portraits sitting idly in the gallery, shimmer with activity, but remain dim and shadowy. The gallery is divided into different tiers. Portraits hang at various levels. Additional direction: A dim, tiered portrait gallery like the decks of an old steamship: rows of framed portraits hung at many levels, dark and shadowy, faintly shimmering, and at the centre a crystal ball on a stand lit from within, a single sheet of paper glowing above it. Hushed, haunted.\nA single full-screen still for a literary visual novel set in America: the tiered portrait gallery of the major arcana. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_steamship_gallery/vol5_prelude_steamship_gallery_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:27:37+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_steamship_gallery",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_steamship_gallery/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_steamship_gallery.jpg"
+  },
+  {
+    "at": "2026-10-27T04:27:53+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_restaurant_floor",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the dining floor of an old-school Sicilian restaurant like this: The meals come made by hand, as the generations did it. Look at all the pretty people outside fighting to be where you are sitting. Additional direction: The dining floor of an expensive old-school Sicilian restaurant at night: white tablecloths, wine glasses, low warm light, swinging kitchen doors on worn hinges at the back, and through the front windows a crowd of well-dressed people waiting outside to get in.\nA single full-screen still for a literary visual novel set in America: the dining floor of an old-school Sicilian restaurant. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_restaurant_floor/vol5_prelude_restaurant_floor_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:28:01+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_restaurant_floor",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_restaurant_floor/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_restaurant_floor.jpg"
+  },
+  {
+    "at": "2026-10-27T04:28:14+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_waiter_pen",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the waiter pen behind the dining room like this: Back in the waiter pen, he is straight to the machine, fingers flying fine on their own until she smacks into him. Additional direction: The narrow waiter station behind a restaurant dining room: two point-of-sale touch screens glowing on a counter, stacks of menus and folded napkins, a coffee station, a doorway out to the warm dining floor and swinging doors to the kitchen. Cramped, harried, bright screens.\nA single full-screen still for a literary visual novel set in America: the waiter pen behind the dining room. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_waiter_pen/vol5_prelude_waiter_pen_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:28:24+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_waiter_pen",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_waiter_pen/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_waiter_pen.jpg"
+  },
+  {
+    "at": "2026-10-27T04:28:39+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_river_shallows",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the river's edge at golden hour, the mudflat and the jetty, like this: Agile child hands feel through bottom silt, grubby face so near reflected, tiny body fighting small splashing waves at the river\u2019s edge. The frog throws his cigarette into the mudflat, claps in long slow succession, the slapping disturbance dispersing nesting oystercatchers, whimbrel and snipe. Additional direction: A river's edge at golden hour: shallow water over silt, small waves, a mudflat where oystercatchers, whimbrel and snipe nest, a weathered wooden jetty in the distance, the low sun burning gold across broken water. Wild, humid, magical.\nA single full-screen still for a literary visual novel set in America: the river's edge at golden hour, the mudflat and the jetty. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_river_shallows/vol5_prelude_river_shallows_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:28:48+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_river_shallows",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_river_shallows/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_river_shallows.jpg"
+  },
+  {
+    "at": "2026-10-27T04:29:05+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_minstrals_green_hull",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the sunken hull of the steamship Minstral's Green like this: The child does not go home straight away, instead circles and lingers round the sunken corpse of the once proud \u201cMinstral\u2019s Green\u201d steamship, first time since going in and exploring the guts several times in years past, but never wearing father\u2019s doohickey, as he calls it. Additional direction: The sunken wreck of a once-proud riverboat steamship, its green paint peeling, listing in the shallows of a river swamp at sunset, paddlewheel half under water, open holes into its dark guts. Reeds, still water, an old wonder gone to ruin.\nA single full-screen still for a literary visual novel set in America: the sunken hull of the steamship Minstral's Green. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_minstrals_green_hull/vol5_prelude_minstrals_green_hull_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:29:12+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_minstrals_green_hull",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_minstrals_green_hull/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_minstrals_green_hull.jpg"
+  },
+  {
+    "at": "2026-10-27T04:29:29+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_steamship_interior",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes inside the haunted steamship, relit in farcast light, like this: Father said this was Mother\u2019s favorite place in the park. Frog extends his hand and the two walk into the haunted steamship, their way relit in farcast light. Additional direction: Inside the haunted wreck of a riverboat steamship that was once a park attraction: a grand decaying saloon of carved wood and tarnished brass, water on the tilted floor, and a strange far-cast light relighting the way through, catching dust and the shapes of old fittings. Ghostly, beautiful, a mother's favourite place.\nA single full-screen still for a literary visual novel set in America: inside the haunted steamship, relit in farcast light. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_steamship_interior/vol5_prelude_steamship_interior_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:29:37+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_steamship_interior",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_steamship_interior/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_steamship_interior.jpg"
   }
 ]
