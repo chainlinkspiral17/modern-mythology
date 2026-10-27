@@ -27257,5 +27257,63 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/airport_cabin_night_window__plane_night/front.png",
     "output": "godot/assets/art/hero/airport_cabin_night_window__plane_night.png"
+  },
+  {
+    "at": "2026-10-27T04:33:15+00:00",
+    "stage": "image",
+    "slug": "vol3_rooms_pizza_steamed_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the party room's steamed window, rain on the pane, like this: The chill of the rain on the pane of glass feels great, a tingle goes down my spine and then my back. sixteen teenage boys with their families celebrating loudly humidity steaming windows Additional direction: A storefront window pane at night seen from inside, straight-on and filling the frame: the glass fogged white-grey with condensation from a hot crowded room, finger-wide streams of rain running down the outside in crooked lines, beads gathering and dropping. Through the fog only blurred shapes of a wet strip-mall parking lot at night: the amber smear of a sodium lot light, the dark hump of a parked car, red tail-light glints doubled in standing water on the asphalt. Around 1990. Soft, low-contrast, evenly lit by the room's fluorescents behind the viewer; no lettering.\nSIZE: the real object is 1.68 m wide by 50 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 69% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the party room's steamed window, rain on the pane, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_rooms_pizza_steamed_window/vol3_rooms_pizza_steamed_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:33:22+00:00",
+    "stage": "art",
+    "slug": "vol3_rooms_pizza_steamed_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/vol3_rooms_pizza_steamed_window/front.png",
+    "output": "godot/assets/art/hero/vol3_rooms_pizza_steamed_window.png"
+  },
+  {
+    "at": "2026-10-27T04:33:28+00:00",
+    "stage": "art",
+    "slug": "vol3_rooms_coast_sea_sky",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/vol3_rooms_coast_sea_sky/front.png",
+    "output": "godot/assets/art/hero/vol3_rooms_coast_sea_sky.png"
+  },
+  {
+    "at": "2026-10-27T04:33:47+00:00",
+    "stage": "image",
+    "slug": "chau_house_living_windows_backyard",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The view out of a big new suburban house's back window by day, straight-on and filling the frame: a raw new backyard six months old, fresh sod still showing its seams, a few staked saplings, a tall new cedar privacy fence, and over it the second storey and roofline of the neighbour's equally new two-storey brick house; a pale sky. Late 1990s, flat even daylight, sparse and empty, no people, no lettering.\nSIZE: the real object is 2.40 m wide by 1.40 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the backyard through the Chau living room's windows, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/chau_house_living_windows_backyard/chau_house_living_windows_backyard_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:33:53+00:00",
+    "stage": "art",
+    "slug": "chau_house_living_windows_backyard",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/chau_house_living_windows_backyard/front.png",
+    "output": "godot/assets/art/hero/chau_house_living_windows_backyard.png"
   }
 ]
