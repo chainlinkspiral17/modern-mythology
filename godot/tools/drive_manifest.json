@@ -5365,6 +5365,11 @@
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
    "size": 106709020
   },
+  "godot/assets/3d/props/_full/stick_reader.glb": {
+   "at": "2026-10-27T14:18:56+00:00",
+   "md5": "a72bcf6200bd56170042ef219294999a",
+   "size": 2366016
+  },
   "godot/assets/3d/props/bobbys_tow_truck.glb": {
    "at": "2026-10-27T05:43:18+00:00",
    "md5": "49bb07cd45b56f2441f044b592e2757c",
@@ -5394,6 +5399,11 @@
    "at": "2026-10-27T05:48:02+00:00",
    "md5": "cdafed5fc446ff2781366b27a2ef23ce",
    "size": 488260
+  },
+  "godot/assets/3d/props/comic_figure_1_Image_0.jpg": {
+   "at": "2026-10-27T14:18:51+00:00",
+   "md5": "fa60e7c6632eb739a5487c9d7b0bcf54",
+   "size": 182971
   },
   "godot/assets/3d/props/comic_figure_2.glb": {
    "at": "2026-10-27T04:44:03+00:00",
@@ -5544,6 +5554,16 @@
    "at": "2026-10-27T02:35:20+00:00",
    "md5": "a634b8fa50f240b253fd5bac802a06cc",
    "size": 4757
+  },
+  "godot/assets/3d/props/stick_reader.glb": {
+   "at": "2026-10-27T14:18:51+00:00",
+   "md5": "0f519ac0f0b038f7c92169e412c794d3",
+   "size": 347948
+  },
+  "godot/assets/3d/props/stick_reader_Image_0.jpg": {
+   "at": "2026-10-27T14:18:51+00:00",
+   "md5": "039dde94022d71b134a6e14b788b16cb",
+   "size": 86220
   },
   "godot/assets/3d/props/workbench_props.glb": {
    "at": "2026-10-11T16:25:59+00:00",
