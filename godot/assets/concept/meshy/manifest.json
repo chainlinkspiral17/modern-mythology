@@ -26207,5 +26207,155 @@
     "outputs": [
       "godot/assets/concept/meshy/maya_bedroom_manila_envelope/maya_bedroom_manila_envelope_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:12:28+00:00",
+    "stage": "art",
+    "slug": "diner_folded_note",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/diner_folded_note/front.png",
+    "output": "godot/assets/art/hero/diner_folded_note.png"
+  },
+  {
+    "at": "2026-10-27T04:12:43+00:00",
+    "stage": "art",
+    "slug": "maya_bedroom_manila_envelope",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/maya_bedroom_manila_envelope/front.png",
+    "output": "godot/assets/art/hero/maya_bedroom_manila_envelope.png"
+  },
+  {
+    "at": "2026-10-27T04:13:03+00:00",
+    "stage": "image",
+    "slug": "maya_bedroom_dock_photograph",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "2:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the photograph from the envelope: a dock at dusk, two men, the charcoal suit, like this: Maya opens the envelope. Inside is one photograph. Black and white. Eight-by-ten. The paper has the particular weight of mid-seventies gelatin silver printing, which Maya has learned to recognize from the framed prints her grandfather had left around this house. The photograph shows a dock at dusk. Two men. One with his back to the camera, thin, wearing a raincoat, handing a wooden crate down from the rail of a small boat. The other man receiving the crate, facing the camera at a three-quarters angle, a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene \u2014 a charcoal suit at a dock at dusk in Graustark in 1978. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a black-and-white darkroom print with a thin white border, mid-seventies gelatin silver paper with its weight and slight sheen. The photograph shows a dock at dusk in a Gulf Coast river town, 1978. Two men. One with his back to the camera, thin, in a raincoat, handing a wooden crate down from the rail of a small boat. The other receiving the crate, facing the camera at a three-quarters angle \u2014 a clean-shaven man of maybe forty in a charcoal suit that does not fit the scene at all. Low dusk light, deep shadows, fine grain, the river dark behind. The print slightly curled, a faint silvering at the edges.\nSIZE: the real object is 11 cm wide by 16 cm tall \u2014 a portrait picture, aspect 2:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the photograph from the envelope: a dock at dusk, two men, the charcoal suit, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/maya_bedroom_dock_photograph/maya_bedroom_dock_photograph_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:13:23+00:00",
+    "stage": "image",
+    "slug": "panel_vol5_folded_napkin",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes John's folded napkin from booth six like this: John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook. He did this without thinking and forgot about it almost immediately and did not, for the next several months, understand why he had done it. Additional direction: A cheap white paper diner napkin folded four times into a small shape that is not quite anything, lying on a dark diner table under warm light. Close, still-life. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: John's folded napkin from booth six. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol5_folded_napkin/panel_vol5_folded_napkin_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:14:18+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol5_folded_napkin",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol5_folded_napkin/front.png",
+    "output": "godot/assets/cg/panel_vol5_folded_napkin.jpg"
+  },
+  {
+    "at": "2026-10-27T04:14:32+00:00",
+    "stage": "image",
+    "slug": "panel_vol5_q_paul",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Q. PAUL on the phone screen like this: The screen, when it came on, was not Antonio. The screen said Q. PAUL. Of course it did. Q. PAUL was calling because Q. PAUL was always calling. Q. PAUL had been calling Antonio for weeks. Q. PAUL, today, was calling Jimmy. The escalation was the message. The escalation said I am beginning to deal with the operator and not the principal. The principal is, in some sense, no longer the principal. Additional direction: A phone screen lighting up with an incoming call from a caller named only by initial, the phone face-up on a dark surface, the screen's glow on the room. The name not legible. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: Q. PAUL on the phone screen. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol5_q_paul/panel_vol5_q_paul_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:14:57+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol5_q_paul",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol5_q_paul/front.png",
+    "output": "godot/assets/cg/panel_vol5_q_paul.jpg"
+  },
+  {
+    "at": "2026-10-27T04:15:13+00:00",
+    "stage": "image",
+    "slug": "panel_vol5_record_player",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the record player that clicked on like this: At five oh-seven, the record player in the corner \u2014 which had not, since she and Nicola had stopped using it around one AM, been on \u2014 clicked. Natalie turned her head. The tonearm had lifted itself. This was not, in a strict physical sense, possible. The tonearm had not been set to automatic return. Additional direction: An old record player in the corner of a dark room at five in the morning, its tonearm lifted by itself above a record, a thin line of light from the window. Quiet, uncanny. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the record player that clicked on. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol5_record_player/panel_vol5_record_player_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:15:26+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol5_record_player",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol5_record_player/front.png",
+    "output": "godot/assets/cg/panel_vol5_record_player.jpg"
+  },
+  {
+    "at": "2026-10-27T04:15:47+00:00",
+    "stage": "image",
+    "slug": "panel_vol5_model_city",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Frasier's Graustark in miniature like this: The kingdom covered the floor. Graustark, rendered in miniature. Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted \u2014 but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay. Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map. Additional direction: A sprawling miniature city covering a studio floor: a cyberpunk favela of salvaged circuit boards, wire, bottle caps and scrap, tiny lit windows, a river of foil; seen from just above, the floor's boards at its edges. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: Frasier's Graustark in miniature. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol5_model_city/panel_vol5_model_city_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:15:56+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol5_model_city",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol5_model_city/front.png",
+    "output": "godot/assets/cg/panel_vol5_model_city.jpg"
+  },
+  {
+    "at": "2026-10-27T04:16:15+00:00",
+    "stage": "image",
+    "slug": "panel_vol5_packing_boxes",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the half-packed living room like this: Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room \u2014 half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin: Thrift-store tarot decks sticky with spilled wine. Camera lenses like detached insect eyes. Hard drives humming with the ghosts of projects past, present, and perpetually pending. A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing. Graustark. Just another backdrop. Wasn't it? Additional direction: Cardboard boxes gaping open along a warped hardwood living-room floor, half-filled: thrift-store tarot decks, camera lenses, hard drives, a teacup set apart; afternoon light. Still-life of a move. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the half-packed living room. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol5_packing_boxes/panel_vol5_packing_boxes_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
