@@ -399,6 +399,22 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · make a prop light; don't cut it light afterwards (pass 185)
+
+**Context:** Every Meshy model was asked for the same way (standard, 4k, PBR),
+and slim cut it afterwards to one budget per kind. A 7 cm figure cost the
+same as a car, the Drive kept ~40 MB originals of each, and the multi-image
+route sent no polycount at all (Meshy 6/7 return the full-precision mesh).
+
+**Rule:** a model's budget is decided before generation, by its CLASS
+(`meshy_roster.json` → `budgets`; a prop's `tier` small / medium / large, by
+the size it stands at and how close the camera gets). Ask Meshy for the
+class: smart-topology with `target_polycount` for one image, and
+`should_remesh` + triangle topology + `target_polycount` for front, side and
+back. Don't ask for PBR on a prop HeroProp will matte. Video memory is paid
+per LOADED set, each model once however often it is placed, so judge a set's
+props together (`meshy_pipeline.py budget`) against one character's ~13 MB.
+
 ### 2026-10-27 · state by state: tag the GROUP, not the parts (pass 184)
 
 **Context:** The Peugeot's morning is four states (arrival, hood up,

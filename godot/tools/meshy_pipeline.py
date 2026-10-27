@@ -1431,6 +1431,8 @@ def load_roster(path=ROSTER_PATH):
             e["aspect"] = art_aspect(w, h)
         e.setdefault("aspect", {"prop": "1:1", "art": "4:3", "scene2d": "16:9"}.get(e["kind"], "3:4"))
         e.setdefault("pose", None if e["kind"] in ("prop", "art", "scene2d") else "a-pose")
+        if e["kind"] == "prop" and e.get("tier") not in (None,) + PROP_TIERS:
+            sys.exit(f"roster entry {e['slug']}: tier must be one of {PROP_TIERS}")
         e.setdefault("texture_prompt", "")
         e.setdefault("tag", "")
         e.setdefault("canon", [])
@@ -1567,8 +1569,8 @@ def cmd_art_optimize(args):
         n += 1
     maps = 0
     for e in roster["entries"]:
-        if e.get("kind") in SLIM_BUDGET and entry_out_path(e).exists():
-            maps += model_texture_settings(entry_out_path(e), e["kind"], log=(lambda *a: None))
+        if budget_class(e) and entry_out_path(e).exists():
+            maps += model_texture_settings(entry_out_path(e), budget_class(e), log=(lambda *a: None))
     if maps:
         print(f"{maps} model texture(s) set to VRAM-compressed and capped (heroes, demons, props)")
     print(f"{n} installed picture(s): {src_bytes / 1e6:.1f} MB of originals → about "
@@ -1587,11 +1589,82 @@ def cmd_art_optimize(args):
 # (tools/blender/slim_model.py) to a budget; the untouched original stays in
 # <kind dir>/_full/ (on the Drive, gitignored, .gdignore'd so Godot neither
 # imports nor ships it). `meshy_pipeline.py slim` does the ones on disk.
-SLIM_BUDGET = {
-    "hero": {"tris": 120000, "tex": 2048, "tex_small": 1024},
-    "demon": {"tris": 120000, "tex": 2048, "tex_small": 1024},
-    "prop": {"tris": 40000, "tex": 1024, "tex_small": 512},
+# (2026-10-27) MODEL BUDGETS — the roster's `budgets` is the one source (the
+# page reads it too): a CLASS per entry, hero / demon by kind, a prop by its
+# `tier`. `meshy` is what Meshy is asked for, `slim` what is installed. The
+# table below is the fallback when the roster has none; "prop" stays as the
+# medium class for anything that still names the kind.
+BUDGETS_FALLBACK = {
+    "hero": {"meshy": {"model_type": "standard", "texture_resolution": "4k", "pbr": True},
+             "slim": {"tris": 120000, "tex": 2048, "tex_small": 1024}},
+    "demon": {"meshy": {"model_type": "standard", "texture_resolution": "4k", "pbr": True},
+              "slim": {"tris": 120000, "tex": 2048, "tex_small": 1024}},
+    "prop_small": {"meshy": {"model_type": "smart-topology", "polycount": 4000, "texture_resolution": "2k", "pbr": False},
+                   "slim": {"tris": 4000, "tex": 1024, "tex_small": 512}},
+    "prop_medium": {"meshy": {"model_type": "smart-topology", "polycount": 10000, "texture_resolution": "2k", "pbr": False},
+                    "slim": {"tris": 10000, "tex": 1024, "tex_small": 512}},
+    "prop_large": {"meshy": {"model_type": "smart-topology", "polycount": 15000, "texture_resolution": "2k", "pbr": True},
+                   "slim": {"tris": 15000, "tex": 1024, "tex_small": 512}},
 }
+PROP_TIERS = ("small", "medium", "large")
+
+
+def _load_budgets(path=None):
+    try:
+        b = json.loads(Path(path or ROSTER_PATH).read_text()).get("budgets") or {}
+    except (OSError, ValueError):
+        b = {}
+    out = {k: dict(v) for k, v in BUDGETS_FALLBACK.items()}
+    for k, v in b.items():
+        if isinstance(v, dict) and isinstance(v.get("slim"), dict):
+            out[k] = v
+    out.setdefault("prop", out["prop_medium"])
+    return out
+
+
+BUDGETS = _load_budgets()
+SLIM_BUDGET = {k: v["slim"] for k, v in BUDGETS.items()}
+
+
+def budget_class(entry):
+    """hero / demon by kind; a prop by its tier (medium when unset); None for
+    pictures (art, scene2d: no model)."""
+    kind = entry.get("kind")
+    if kind == "prop":
+        t = entry.get("tier") or "medium"
+        return "prop_" + (t if t in PROP_TIERS else "medium")
+    return kind if kind in SLIM_BUDGET else None
+
+
+# What a model costs, by its class — an ESTIMATE until it is installed (then
+# `budget` measures the file). Mirrored in hero_uploader/index.html
+# (budgetEstimate). VRAM: Godot's VRAM-compressed import, S3TC on the Deck —
+# base colour and metallic/roughness DXT1 (0.5 B/px), the normal map BC5
+# (1 B/px), mipmaps +1/3; the mesh ~30 B a triangle (vertices ~0.65 per
+# triangle at 32 B, 16-bit indices). Disk: the slim GLB (JPEG base ~0.25 B/px,
+# PNG normal ~1 B/px, mesh ~25 B a triangle) plus Godot's imported copies
+# (the .ctex maps ~ their VRAM size, the mesh ~ the GLB's). The _full/
+# original is on the Drive only, never shipped: Meshy standard at 4k
+# measured ~40 MB (PerfProbe 2026-10-16); smart-topology at 2k is mostly its maps.
+def budget_estimate(cls):
+    b = BUDGETS.get(cls)
+    if not b:
+        return None
+    sl, me = b["slim"], b.get("meshy", {})
+    pbr = bool(me.get("pbr"))
+    t, ts, tris = sl["tex"], sl["tex_small"], sl["tris"]
+    mip = 4.0 / 3.0
+    vram = t * t * 0.5 * mip + tris * 30
+    glb = t * t * 0.25 + tris * 25
+    if pbr:
+        vram += t * t * 1.0 * mip + ts * ts * 0.5 * mip
+        glb += t * t * 1.0 + ts * ts * 0.25
+    gen = {"2k": 2048, "4k": 4096, "8k": 8192}.get(me.get("texture_resolution", "2k"), 2048)
+    if me.get("model_type") == "standard":
+        full = 40e6
+    else:
+        full = gen * gen * (0.25 + (1.25 if pbr else 0)) + int(me.get("polycount", 10000)) * 25
+    return {"vram": vram, "disk": glb + vram + tris * 25, "glb": glb, "full": full, "maps": 3 if pbr else 1}
 SLIM_SCRIPT = TOOLS / "blender" / "slim_model.py"
 
 
@@ -1671,6 +1744,7 @@ def _glb_json(path):
 
 
 def model_texture_settings(glb, kind, log=print):
+    # `kind` is a budget CLASS (budget_class(entry)); a bare kind still works
     """Write the .import of every texture Godot extracts from `glb`
     (<stem>_<image name or index>.<ext>, beside it): VRAM-compressed,
     mipmapped, capped at the kind's budget, the normal map as a normal map.
@@ -1734,7 +1808,8 @@ def model_texture_settings(glb, kind, log=print):
 
 
 def slim_glb(path, kind, log=print, force=False, fresh=False):
-    """Cut one installed model to SLIM_BUDGET[kind]; the original goes to
+    """Cut one installed model to SLIM_BUDGET[kind] (kind: a budget class,
+    budget_class(entry); a bare kind still works); the original goes to
     _full/. fresh: `path` was just downloaded — it IS the new original and
     replaces any older one in _full/. force: re-slim from _full/ even when
     in budget. Returns a dict (ok, skipped, tris_in/out, bytes_in/out, why)."""
@@ -1812,8 +1887,8 @@ def cmd_slim(args):
     done = skipped = failed = 0
     before = after = 0
     for e in roster["entries"]:
-        kind = e.get("kind")
-        if kind not in SLIM_BUDGET or (sel and e["slug"] not in sel):
+        kind = budget_class(e)
+        if not kind or (sel and e["slug"] not in sel):
             continue
         out = entry_out_path(e)
         if not out.exists():
@@ -2238,7 +2313,7 @@ def assign_recovered(entry, task_id, overwrite=False):
         raise ValueError(f"{entry['slug']} already has {rel(out)} — tick overwrite to replace it")
     out.parent.mkdir(parents=True, exist_ok=True)
     shutil.move(str(src), str(out))
-    slim_glb(out, entry["kind"], fresh=True)
+    slim_glb(out, budget_class(entry), fresh=True)
     thumb = RECOVERED_DIR / f"{task_id}.png"
     cand = None
     if thumb.exists():
@@ -2576,6 +2651,13 @@ def meshy_submit(images, opts, api_key, log=print):
         resource = "multi-image-to-3d"
         body["image_urls"] = [data_uri(p) for p in images[:4]]
         body["remove_lighting"] = opts.get("remove_lighting", True)
+        # (2026-10-27) multi-image has no smart-topology: a low-poly class asks
+        # for a remesh to its polycount instead (meshy-6/7 do not remesh by
+        # default and return the full-precision mesh)
+        if opts.get("model_type") == "smart-topology":
+            body["should_remesh"] = True
+            body["topology"] = "triangle"
+            body["target_polycount"] = int(opts.get("polycount") or 10000)
         if opts.get("ai_model"):
             body["ai_model"] = opts["ai_model"]
     if textured:
@@ -2785,13 +2867,15 @@ def stage_mesh(roster, entry, opts, log=print):
         if not p.exists():
             raise FileNotFoundError(f"image not found: {p}")
 
+    # (2026-10-27) explicit job / flag → the entry's budget class → roster defaults
+    cm = (BUDGETS.get(budget_class(entry) or "", {}) or {}).get("meshy", {})
     mopts = {
         "texture": bool(opts.get("texture", roster["defaults"].get("texture", False))),
-        "pbr": opts.get("pbr", roster["defaults"].get("pbr", True)),
-        "texture_resolution": opts.get("texture_resolution") or roster["defaults"].get("texture_resolution", "4k"),
+        "pbr": opts.get("pbr", cm.get("pbr", roster["defaults"].get("pbr", True))),
+        "texture_resolution": opts.get("texture_resolution") or cm.get("texture_resolution") or roster["defaults"].get("texture_resolution", "4k"),
         "texture_prompt": texture_prompt_for(entry),
-        "model_type": opts.get("model_type") or roster["defaults"].get("model_type", "standard"),
-        "polycount": opts.get("polycount") or roster["defaults"].get("polycount", 10000),
+        "model_type": opts.get("model_type") or cm.get("model_type") or roster["defaults"].get("model_type", "standard"),
+        "polycount": opts.get("polycount") or cm.get("polycount") or roster["defaults"].get("polycount", 10000),
         "ultra": bool(opts.get("ultra", False)),
         "pose": opts.get("pose") or entry.get("pose"),
         "ai_model": opts.get("ai_model") or roster["defaults"].get("meshy_ai_model"),
@@ -2807,6 +2891,8 @@ def stage_mesh(roster, entry, opts, log=print):
 
     resource = "image-to-3d" if len(images) == 1 else "multi-image-to-3d"
     log(f"  mesh · {entry['slug']} · {resource} · {mopts['model_type']}"
+        + (f" {mopts['polycount']} tris" if mopts['model_type'] == "smart-topology" else "")
+        + f" · budget {budget_class(entry)}"
         f" · {'textured ' + mopts['texture_resolution'] if mopts['texture'] else 'draft (untextured)'}"
         + (f" · {mopts['pose']}" if mopts['pose'] else "")
         + f" → {rel(out_path)}")
@@ -2831,7 +2917,7 @@ def stage_mesh(roster, entry, opts, log=print):
     os.replace(tmp, out_path)
     size_kb = out_path.stat().st_size / 1024
     log(f"    installed {rel(out_path)}  ({size_kb:.0f} KB)")
-    slim_glb(out_path, entry["kind"], log=log, fresh=True)
+    slim_glb(out_path, budget_class(entry), log=log, fresh=True)
     thumb = result.get("thumbnail_url")
     if thumb:
         try:
@@ -2875,12 +2961,92 @@ def entry_status(entry):
         "slug": entry["slug"],
         "glb_installed": out.exists(),
         "glb_size_kb": round(out.stat().st_size / 1024, 1) if out.exists() else None,
+        "glb_tris": glb_header_tris(out) if out.exists() and out.suffix == ".glb" else None,
+        "budget_class": budget_class(entry),
         "glb_path": rel(out),
         "chosen": {v: (rel(p) if p else None) for v, p in ((v, chosen_view_path(entry, v)) for v in VIEWS)},
         "candidates": {v: [rel(p) for p in candidates_for(entry, v)] for v in VIEWS},
         "meshy_thumb": rel(d / "meshy_thumb.png") if (d / "meshy_thumb.png").exists() else None,
     }
     return st
+
+
+def glb_header_tris(path):
+    """Triangles in a GLB from its JSON header only (no image bytes read)."""
+    import struct
+    try:
+        with open(path, "rb") as f:
+            head = f.read(20)
+            ln = struct.unpack_from("<I", head, 12)[0]
+            j = json.loads(f.read(ln))
+    except (OSError, ValueError, struct.error):
+        return 0
+    acc = j.get("accessors", [])
+    return sum(acc[pr.get("indices", pr.get("attributes", {}).get("POSITION"))]["count"] // 3
+               for m in j.get("meshes", []) for pr in m.get("primitives", [])
+               if pr.get("indices", pr.get("attributes", {}).get("POSITION")) is not None)
+
+
+def cmd_budget(roster, args):
+    """What the models cost: per class, the generation settings, the installed
+    budget, and disk + video memory — measured where a GLB is installed,
+    estimated where not; then the sets that load the most at once."""
+    mb = lambda b: f"{b / 1e6:6.1f}"
+    rows = {}
+    for e in roster["entries"]:
+        cls = budget_class(e)
+        if not cls:
+            continue
+        r = rows.setdefault(cls, {"n": 0, "inst": 0, "disk": 0.0, "vram": 0.0, "full": 0.0, "measured": 0})
+        est = budget_estimate(cls)
+        r["n"] += 1
+        out = entry_out_path(e)
+        if out.exists():
+            r["inst"] += 1
+            size = out.stat().st_size
+            r["disk"] += size + (est["vram"] if est else 0)
+            r["vram"] += est["vram"] if est else 0
+            r["measured"] += size
+            f = out.parent / "_full" / out.name
+            r["full"] += f.stat().st_size if f.exists() else 0
+        elif est:
+            r["disk"] += est["disk"]
+            r["vram"] += est["vram"]
+            r["full"] += est["full"]
+    print(f"{'class':12} {'n':>4} {'inst':>4}  {'Meshy asked':34} {'installed':24} {'per model':>18}  "
+          f"{'all: disk MB':>12} {'vram MB':>8} {'Drive MB':>9}")
+    tot = [0.0, 0.0, 0.0]
+    for cls in [c for c in BUDGETS if c in rows]:
+        b, r, est = BUDGETS[cls], rows[cls], budget_estimate(cls)
+        me, sl = b.get("meshy", {}), b["slim"]
+        ask = (f"{me.get('model_type', '?')}"
+               + (f" {me.get('polycount')}t" if me.get("model_type") == "smart-topology" else "")
+               + f" {me.get('texture_resolution', '?')}" + (" pbr" if me.get("pbr") else ""))
+        inst = f"{sl['tris']}t {sl['tex']}px {est['maps']} map(s)"
+        per = f"~{est['disk'] / 1e6:.1f} / {est['vram'] / 1e6:.1f} MB"
+        print(f"{cls:12} {r['n']:>4} {r['inst']:>4}  {ask:34} {inst:24} {per:>18}  "
+              f"{mb(r['disk']):>12} {mb(r['vram']):>8} {mb(r['full']):>9}")
+        tot[0] += r["disk"]; tot[1] += r["vram"]; tot[2] += r["full"]
+    print(f"{'total':12} {'':>4} {'':>4}  {'':34} {'':24} {'':>18}  {mb(tot[0]):>12} {mb(tot[1]):>8} {mb(tot[2]):>9}")
+    print("per model = disk (slim GLB + Godot's imported copies) / video memory; measured file sizes where installed, "
+          "estimates otherwise (budget_estimate). Drive = the _full/ originals, never shipped.")
+    # the sets: video memory is paid per LOADED set — each prop model once,
+    # however many times the set places it
+    by_file = {e["file"]: e for e in roster["entries"] if e.get("kind") == "prop"}
+    sets = []
+    for t in sorted((REPO / "scenes").rglob("*.tscn")):
+        files = set(re.findall(r'res://assets/3d/props/([^"]+\.glb)"', t.read_text(errors="ignore")))
+        if not files:
+            continue
+        v = sum((budget_estimate(budget_class(by_file[f])) or {}).get("vram", 0) for f in files if f in by_file)
+        sets.append((v, t.stem, len(files)))
+    if sets:
+        print("\nheaviest sets (prop models, video memory, each model counted once):")
+        for v, name, k in sorted(sets, reverse=True)[:6]:
+            print(f"  {name:32} {k:3} model(s)  ~{v / 1e6:.1f} MB")
+        hero = budget_estimate("hero")
+        print(f"  (a character on screen: ~{hero['vram'] / 1e6:.1f} MB each)")
+    return 0
 
 
 def cmd_list(roster, args):
@@ -3106,6 +3272,7 @@ def make_handler(runner, roster_path):
                               "poses": sorted(MESHY_POSES)},
                 }
                 roster["aspects"] = sorted(GOOGLE_ASPECTS)
+                roster["budget_estimates"] = {c: budget_estimate(c) for c in BUDGETS}
                 roster["repo_root"] = str(REPO.parent)
                 return self._json(roster)
             if p == "/api/jobs":
@@ -3592,6 +3759,7 @@ def main():
     p.add_argument("slugs", nargs="*", help="only these (default: every model over budget)")
     p.add_argument("--force", action="store_true", help="re-slim from the _full/ original even when in budget")
     sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
+    sub.add_parser("budget", help="what the models cost: per budget class, disk + video memory (measured / estimated), the heaviest sets")
 
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
     p.add_argument("--host", default="127.0.0.1")
@@ -3635,6 +3803,8 @@ def main():
     roster = load_roster()
     if args.cmd == "list":
         return cmd_list(roster, args)
+    if args.cmd == "budget":
+        return cmd_budget(roster, args)
     if args.cmd == "pick":
         e = next((e for e in roster["entries"] if e["slug"] == args.slug), None)
         if e is None:

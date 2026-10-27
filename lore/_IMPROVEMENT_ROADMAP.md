@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 185: MODEL BUDGETS — props are made light, not cut light.**
+- User: "Add the hero props to the hero tool with generation prompts and model
+  settings, accounting for both storage space and memory cost. Perhaps props should be
+  lighter load than the character models."
+- Before: every model was ASKED of Meshy the same way (standard full-detail mesh, 4k,
+  PBR) and slim cut it afterwards to one budget per kind; all 89 props shared 40k
+  triangles / 1024 px, a 7 cm comic figure the same as a 4.6 m car.
+- **One source, the roster's `budgets`:** a class per entry — `hero`, `demon`, and
+  `prop_small` / `prop_medium` / `prop_large` by a new per-prop `tier` (66 small, 13
+  medium: furniture, the steamboat, the crow and Petra's cat for their close inserts; 10
+  large: the vehicles). Each class says what Meshy is asked (`smart-topology` at 4k / 10k /
+  15k triangles, 2k, PBR only for vehicles — HeroProp mattes props, so metallic/roughness
+  would be thrown away) and what slim installs (4k / 10k / 15k triangles, 1024 px). The
+  multi-image route had no polycount at all (meshy-6/7 return the full-precision mesh): a
+  low-poly class now asks for `should_remesh` + triangle + `target_polycount`.
+- **Accounting:** `meshy_pipeline.py budget` (per class: asked, installed, per-model disk
+  / video memory, totals measured where installed and estimated where not, the Drive
+  originals; the heaviest sets by prop memory). Estimated per model: character ~24 MB disk /
+  ~13 MB video memory; small prop ~1.3 / 0.8; medium ~1.8 / 1.0; large ~4.8 / 2.7. All
+  89 props ~156 MB disk / ~94 MB if every one were loaded at once; the heaviest set (the
+  Kwik Stop's Peugeot morning) ~8 MB — less than one character.
+- **Hero Studio:** the model settings start from the entry's class and are remembered
+  per class (a hero's 4k no longer leaks onto a prop); a budget line under them (class,
+  asked, installed, estimate, measured once installed, a warning when a job departs from
+  the budget); a tier chip on prop cards; texture choice with or without PBR; the batch
+  command leaves model settings to each entry's class. Texture prompts for the eight
+  props that had none.
+- Found doing it: this checkout's installed John Frank is 626,698 triangles, a 35 MB GLB —
+  never slimmed (slim needs Blender; the Deck has it). Run `meshy_pipeline.py slim` on
+  the Deck.
+- **Draft 186 targets:** measure a generated prop of each tier on the Deck and replace the
+  estimates' constants with real numbers; hero meshes could also be asked of Meshy
+  remeshed (300k) to cut the Drive originals (~40 MB each, 201 entries ≈ 8 GB); a tier
+  editor in the page (today: edit `tier` in the roster); per-set budget gate in the suite
+  (a set's prop memory over N MB fails).
+
 **2026-10-27 · pass 184: THE PEUGEOT'S MORNING — the hood, the steam, the tow, the empty corner.**
 - Draft 2 of pass 183's car: ch15's beats, one preset each, switched at the line:
   `kwik_stop_peugeot` (9:47, arrival) → `kwik_stop_hood` ("He pops the hood": the hood up

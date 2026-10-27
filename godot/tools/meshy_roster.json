@@ -25,7 +25,8 @@
     "scenes": "scene2d only: the scene ids that show this picture",
     "lettering": "art / scene2d: the exact words the picture carries (a sign, a title plate, a zine page); lifts the no-text rule for those words only",
     "subject": "scene2d only: 'places' = the picture shows the place and its objects with no people in it (style.subject_places) — the plates of vol 7, whose people never matched the cast",
-    "refs": "optional: roster slugs (props, art) whose chosen front image is sent as a reference image with this entry's front (three at most), so a plate's objects match their own concept art"
+    "refs": "optional: roster slugs (props, art) whose chosen front image is sent as a reference image with this entry's front (three at most), so a plate's objects match their own concept art",
+    "tier": "PROP only: small | medium | large — its budget class (budgets.prop_<tier>): what Meshy is asked for and what slim installs. By the size it stands at in its set and how close the camera gets; medium when unset."
   },
   "defaults": {
     "provider": "google",
@@ -46,6 +47,77 @@
       "5": "the Gulf Coast of Texas and Louisiana",
       "6": "the Gulf Coast of Texas and Louisiana",
       "7": "a small town on the Oregon coast"
+    }
+  },
+  "budgets": {
+    "_doc": "MODEL BUDGETS (2026-10-27; user: \"accounting for both storage space and memory cost. Perhaps props should be lighter load than the character models\"). One class per entry: hero / demon by kind, a prop by its `tier` (small | medium | large; medium when unset). `meshy` is what is ASKED of Meshy (the page's model settings start here; a job may override): props are generated low-poly (smart-topology with target_polycount for one image; should_remesh + triangle topology + target_polycount for front+side+back) at 2k, characters at full detail and 4k. `slim` is what is INSTALLED: slim_model.py cuts every model to `tris` and its maps to `tex` (base colour, normal) / `tex_small` (the rest), and the texture imports are VRAM-compressed at those caps. Props carry no PBR below large: HeroProp mattes them (metal 0), so metallic/roughness maps would be paid for and thrown away. meshy_pipeline.py budget prints the totals; Hero Studio shows each entry's estimate.",
+    "hero": {
+      "label": "character",
+      "meshy": {
+        "model_type": "standard",
+        "texture_resolution": "4k",
+        "pbr": true
+      },
+      "slim": {
+        "tris": 120000,
+        "tex": 2048,
+        "tex_small": 1024
+      }
+    },
+    "demon": {
+      "label": "character (demon)",
+      "meshy": {
+        "model_type": "standard",
+        "texture_resolution": "4k",
+        "pbr": true
+      },
+      "slim": {
+        "tris": 120000,
+        "tex": 2048,
+        "tex_small": 1024
+      }
+    },
+    "prop_small": {
+      "label": "prop · small (hand-held, under 0.5 m: inserts carry it)",
+      "meshy": {
+        "model_type": "smart-topology",
+        "polycount": 4000,
+        "texture_resolution": "2k",
+        "pbr": false
+      },
+      "slim": {
+        "tris": 4000,
+        "tex": 1024,
+        "tex_small": 512
+      }
+    },
+    "prop_medium": {
+      "label": "prop · medium (furniture, animals in close inserts, 0.5-2.5 m)",
+      "meshy": {
+        "model_type": "smart-topology",
+        "polycount": 10000,
+        "texture_resolution": "2k",
+        "pbr": false
+      },
+      "slim": {
+        "tris": 10000,
+        "tex": 1024,
+        "tex_small": 512
+      }
+    },
+    "prop_large": {
+      "label": "prop · large (vehicles: a normal map carries the panels)",
+      "meshy": {
+        "model_type": "smart-topology",
+        "polycount": 15000,
+        "texture_resolution": "2k",
+        "pbr": true
+      },
+      "slim": {
+        "tris": 15000,
+        "tex": 1024,
+        "tex_small": 512
+      }
     }
   },
   "style": {
@@ -3746,6 +3818,7 @@
       "kind": "prop",
       "name": "John's bindle",
       "file": "fool_bindle.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -3793,6 +3866,7 @@
       "kind": "prop",
       "name": "Frasier's soldering iron",
       "file": "magician_iron.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -3828,6 +3902,7 @@
       "kind": "prop",
       "name": "The steamboat model",
       "file": "steamboat_model.glb",
+      "tier": "medium",
       "vol": [
         5
       ],
@@ -3885,6 +3960,7 @@
       "kind": "prop",
       "name": "RUST_CODE.BBS terminal",
       "file": "bbs_terminal.glb",
+      "tier": "medium",
       "vol": [
         5
       ],
@@ -3932,6 +4008,7 @@
       "kind": "prop",
       "name": "Elicia's cassette archive",
       "file": "cassette_archive.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -3983,6 +4060,7 @@
       "kind": "prop",
       "name": "The Polaroid",
       "file": "the_polaroid.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4027,6 +4105,7 @@
       "kind": "prop",
       "name": "The water glass at Table 17",
       "file": "water_glass_table_17.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4070,6 +4149,7 @@
       "kind": "prop",
       "name": "The cypress beam offcut",
       "file": "cypress_beam.glb",
+      "tier": "medium",
       "vol": [
         5
       ],
@@ -4117,6 +4197,7 @@
       "kind": "prop",
       "name": "The Emperor's brass clock",
       "file": "brass_clock.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4148,6 +4229,7 @@
       "kind": "prop",
       "name": "Dante's appointment book",
       "file": "appointment_book.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4183,6 +4265,7 @@
       "kind": "prop",
       "name": "The bourbon bottle",
       "file": "bourbon_bottle.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4226,6 +4309,7 @@
       "kind": "prop",
       "name": "The Bakelite microphone",
       "file": "bakelite_microphone.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4249,6 +4333,7 @@
       "kind": "prop",
       "name": "The February master tape",
       "file": "master_tape_february.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4272,6 +4357,7 @@
       "kind": "prop",
       "name": "DAIGLE'S 1987 matchbook",
       "file": "daigles_matchbook.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4299,6 +4385,7 @@
       "kind": "prop",
       "name": "Grandfather's Esterbrook pen",
       "file": "esterbrook_pen.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4322,6 +4409,7 @@
       "kind": "prop",
       "name": "The 1932 river chart",
       "file": "chart_1932.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4349,6 +4437,7 @@
       "kind": "prop",
       "name": "The wine-stained tarot deck",
       "file": "tarot_deck_wine_stained.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4384,6 +4473,7 @@
       "kind": "prop",
       "name": "The mirror shard",
       "file": "mirror_shard.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4431,6 +4521,7 @@
       "kind": "prop",
       "name": "Mother's teacup",
       "file": "mothers_teacup.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4466,6 +4557,7 @@
       "kind": "prop",
       "name": "The lapel pin",
       "file": "lapel_pin.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4497,6 +4589,7 @@
       "kind": "prop",
       "name": "The 2019 jackpot Polaroid",
       "file": "jackpot_polaroid_2019.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4520,6 +4613,7 @@
       "kind": "prop",
       "name": "The 1924 house marker",
       "file": "house_marker_1924.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4543,6 +4637,7 @@
       "kind": "prop",
       "name": "The red and yellow lures",
       "file": "fishing_lures.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4578,6 +4673,7 @@
       "kind": "prop",
       "name": "Paul's pause watch",
       "file": "pause_watch.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4605,6 +4701,7 @@
       "kind": "prop",
       "name": "The hundred-dollar bill",
       "file": "hundred_dollar_bill.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4640,6 +4737,7 @@
       "kind": "prop",
       "name": "Paul's long black car",
       "file": "pauls_black_car.glb",
+      "tier": "large",
       "vol": [
         5
       ],
@@ -4683,6 +4781,7 @@
       "kind": "prop",
       "name": "John's folded napkin from booth 6",
       "file": "folded_napkin_booth_6.glb",
+      "tier": "small",
       "vol": [
         5
       ],
@@ -4723,6 +4822,7 @@
       "kind": "prop",
       "name": "Sam's License Plate Notebook",
       "file": "license_plate_notebook.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4750,6 +4850,7 @@
       "kind": "prop",
       "name": "Rick's phone ledger",
       "file": "phone_ledger.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4777,6 +4878,7 @@
       "kind": "prop",
       "name": "Skip's 1999 mixtape",
       "file": "skips_mixtape_1999.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4800,6 +4902,7 @@
       "kind": "prop",
       "name": "Maya's grandfather's inkwell",
       "file": "funeral_parlour_inkwell.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4819,6 +4922,7 @@
       "kind": "prop",
       "name": "Diego's eleven NexCorp badge clips",
       "file": "nexcorp_badge_clips.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4842,6 +4946,7 @@
       "kind": "prop",
       "name": "The ceramic frog",
       "file": "ceramic_frog.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4885,6 +4990,7 @@
       "kind": "prop",
       "name": "The Speak & Spell",
       "file": "speak_and_spell.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4928,6 +5034,7 @@
       "kind": "prop",
       "name": "Linda Caldwell's shortwave radio",
       "file": "shortwave_radio.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -4975,6 +5082,7 @@
       "kind": "prop",
       "name": "The porch wicker chair",
       "file": "porch_wicker_chair.glb",
+      "tier": "medium",
       "vol": [
         6
       ],
@@ -5018,6 +5126,7 @@
       "kind": "prop",
       "name": "The 1976 Penguin Brothers Karamazov",
       "file": "karamazov_paperback.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -5049,6 +5158,7 @@
       "kind": "prop",
       "name": "The 'Substation Nine' lyric sheet",
       "file": "substation_nine_lyric_sheet.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -5081,6 +5191,7 @@
       "kind": "prop",
       "name": "Graciela's rosary",
       "file": "gracielas_rosary.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -5112,6 +5223,7 @@
       "kind": "prop",
       "name": "Maya's zine",
       "file": "mayas_zine.glb",
+      "tier": "small",
       "vol": [
         6
       ],
@@ -5147,6 +5259,7 @@
       "kind": "prop",
       "name": "The white unmarked van",
       "file": "white_van.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5194,6 +5307,7 @@
       "kind": "prop",
       "name": "Sam's Corolla",
       "file": "sams_corolla.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5229,6 +5343,7 @@
       "kind": "prop",
       "name": "Diego's black F-150",
       "file": "diegos_f150.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5264,6 +5379,7 @@
       "kind": "prop",
       "name": "Coach K's white F-250",
       "file": "coach_k_f250.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5291,6 +5407,7 @@
       "kind": "prop",
       "name": "the red Peugeot",
       "file": "peugeot_505.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5336,6 +5453,7 @@
       "kind": "prop",
       "name": "the red Peugeot, hood up",
       "file": "peugeot_505_hood_up.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5389,6 +5507,7 @@
       "kind": "prop",
       "name": "Bobby's tow truck",
       "file": "bobbys_tow_truck.glb",
+      "tier": "large",
       "vol": [
         6
       ],
@@ -5426,6 +5545,7 @@
       "kind": "prop",
       "name": "The IV pole",
       "file": "iv_pole.glb",
+      "tier": "medium",
       "vol": [
         6
       ],
@@ -5445,6 +5565,7 @@
       "kind": "prop",
       "name": "The SCUMM Machine",
       "file": "scumm_machine.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -5496,6 +5617,7 @@
       "kind": "prop",
       "name": "A SCUMM stick",
       "file": "scumm_stick.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5543,6 +5665,7 @@
       "kind": "prop",
       "name": "The box of three sticks",
       "file": "box_of_three_sticks.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5570,6 +5693,7 @@
       "kind": "prop",
       "name": "Olaf's cedar bowl",
       "file": "cedar_bowl.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5630,6 +5754,7 @@
       "kind": "prop",
       "name": "Olaf's cedar bell",
       "file": "cedar_bell.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5665,6 +5790,7 @@
       "kind": "prop",
       "name": "Lena's milk crate",
       "file": "lenas_milk_crate.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5704,6 +5830,7 @@
       "kind": "prop",
       "name": "The Tower's portal-room cedar door",
       "file": "portal_room_cedar_door.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -5748,6 +5875,7 @@
       "kind": "prop",
       "name": "The Static Truths zine",
       "file": "static_truths_zine.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5791,6 +5919,7 @@
       "kind": "prop",
       "name": "Rack 17 (signed 'T.')",
       "file": "rack_17.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -5834,6 +5963,7 @@
       "kind": "prop",
       "name": "Finn's relic kayak",
       "file": "relic_kayak.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -5869,6 +5999,7 @@
       "kind": "prop",
       "name": "The cracked Tess Mariana (2034)",
       "file": "relic_skate_deck.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -5921,6 +6052,7 @@
       "kind": "prop",
       "name": "Wagner's yardstick and hand-crank drill",
       "file": "wagners_yardstick_and_drill.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5952,6 +6084,7 @@
       "kind": "prop",
       "name": "The kerosene lamp",
       "file": "kerosene_lamp.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -5999,6 +6132,7 @@
       "kind": "prop",
       "name": "Tem's wagon",
       "file": "tems_wagon.glb",
+      "tier": "large",
       "vol": [
         7
       ],
@@ -6034,6 +6168,7 @@
       "kind": "prop",
       "name": "Brandon Tillman's leather notebook",
       "file": "brandons_leather_notebook.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -6077,6 +6212,7 @@
       "kind": "prop",
       "name": "The Pendleton blanket",
       "file": "pendleton_blanket.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -6116,6 +6252,7 @@
       "kind": "prop",
       "name": "Finn's UV light and off-band radio",
       "file": "finns_uv_light_and_radio.glb",
+      "tier": "small",
       "vol": [
         7
       ],
@@ -6163,6 +6300,7 @@
       "kind": "prop",
       "name": "Joan's dagger",
       "file": "joan_dagger.glb",
+      "tier": "small",
       "vol": [
         1,
         4
@@ -6201,6 +6339,7 @@
       "kind": "prop",
       "name": "her DJ headphones (one ear-pad cracked)",
       "file": "dj_headphones_cracked.glb",
+      "tier": "small",
       "vol": [
         1
       ],
@@ -6226,6 +6365,7 @@
       "kind": "prop",
       "name": "the black guitar pick",
       "file": "black_guitar_pick.glb",
+      "tier": "small",
       "vol": [
         1
       ],
@@ -6251,6 +6391,7 @@
       "kind": "prop",
       "name": "D. Dean's journal",
       "file": "dean_journal.glb",
+      "tier": "small",
       "vol": [
         2
       ],
@@ -6280,6 +6421,7 @@
       "kind": "prop",
       "name": "a feather from the blue heron",
       "file": "heron_feather.glb",
+      "tier": "small",
       "vol": [
         2,
         3,
@@ -6315,6 +6457,7 @@
       "kind": "prop",
       "name": "the derby crab, number 0",
       "file": "derby_crab_zero.glb",
+      "tier": "small",
       "vol": [
         2,
         4
@@ -6345,6 +6488,7 @@
       "kind": "prop",
       "name": "the key with no teeth",
       "file": "key_no_teeth.glb",
+      "tier": "small",
       "vol": [
         2
       ],
@@ -6370,6 +6514,7 @@
       "kind": "prop",
       "name": "the small yellow raincoat",
       "file": "yellow_raincoat_small.glb",
+      "tier": "small",
       "vol": [
         2
       ],
@@ -6395,6 +6540,7 @@
       "kind": "prop",
       "name": "the 1969 Mercedes-Benz (red convertible)",
       "file": "mercedes_1969.glb",
+      "tier": "large",
       "vol": [
         2
       ],
@@ -6424,6 +6570,7 @@
       "kind": "prop",
       "name": "Ron's typewriter",
       "file": "ron_typewriter.glb",
+      "tier": "small",
       "vol": [
         3
       ],
@@ -6453,6 +6600,7 @@
       "kind": "prop",
       "name": "the IRIS binder",
       "file": "iris_binder.glb",
+      "tier": "small",
       "vol": [
         3
       ],
@@ -6482,6 +6630,7 @@
       "kind": "prop",
       "name": "the toy soldier",
       "file": "toy_soldier.glb",
+      "tier": "small",
       "vol": [
         3,
         4
@@ -6512,6 +6661,7 @@
       "kind": "prop",
       "name": "the ball of red string",
       "file": "red_string_ball.glb",
+      "tier": "small",
       "vol": [
         4
       ],
@@ -6541,6 +6691,7 @@
       "kind": "prop",
       "name": "the cardboard kaleidoscope",
       "file": "cardboard_kaleidoscope.glb",
+      "tier": "small",
       "vol": [
         4
       ],
@@ -6570,6 +6721,7 @@
       "kind": "prop",
       "name": "the star key",
       "file": "star_key.glb",
+      "tier": "small",
       "vol": [
         4
       ],
@@ -6595,6 +6747,7 @@
       "kind": "prop",
       "name": "the copy of Sister Carrie",
       "file": "sister_carrie_book.glb",
+      "tier": "small",
       "vol": [
         4
       ],
@@ -56016,6 +56169,7 @@
       "kind": "prop",
       "name": "a caped hero statue mid-leap",
       "file": "comic_figure_1.glb",
+      "tier": "small",
       "vol": [
         3,
         6,
@@ -56029,13 +56183,15 @@
       "pose": null,
       "prompt": "A painted resin collectible statue on a round black base, about 35 cm tall: an original caped hero mid-leap, one fist forward, cape swept back, a deep blue suit with a red cape and a plain chest emblem shape. Glossy paint, crisp sculpt.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
+      "texture_prompt": "glossy painted resin: deep blue suit, red cape, plain chest emblem, gloss black base"
     },
     {
       "slug": "comic_figure_2",
       "kind": "prop",
       "name": "an armoured heroine statue",
       "file": "comic_figure_2.glb",
+      "tier": "small",
       "vol": [
         3,
         6,
@@ -56049,13 +56205,15 @@
       "pose": null,
       "prompt": "A painted resin collectible statue on a round black base: an original armoured heroine standing guard with a round shield and short sword, bronze and teal armour plates, a plumed helm. Glossy paint, crisp sculpt.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
+      "texture_prompt": "glossy painted resin: bronze and teal armour plates, plumed helm, round shield, gloss black base"
     },
     {
       "slug": "comic_figure_3",
       "kind": "prop",
       "name": "a masked vigilante statue crouched on a gargoyle",
       "file": "comic_figure_3.glb",
+      "tier": "small",
       "vol": [
         3,
         6,
@@ -56069,13 +56227,15 @@
       "pose": null,
       "prompt": "A painted resin collectible statue on a black base sculpted as a rooftop gargoyle: an original masked vigilante crouching on it in a long dark coat and wide-brimmed hat, scarf trailing. Glossy paint, crisp sculpt.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
+      "texture_prompt": "glossy painted resin: dark long coat and wide-brimmed hat, trailing scarf, grey stone gargoyle base"
     },
     {
       "slug": "comic_figure_4",
       "kind": "prop",
       "name": "a cosmic hero statue on a meteor",
       "file": "comic_figure_4.glb",
+      "tier": "small",
       "vol": [
         3,
         6,
@@ -56089,13 +56249,15 @@
       "pose": null,
       "prompt": "A painted resin collectible statue on a base sculpted as a glowing meteor: an original cosmic hero in a silver and violet suit, arms raised, a starfield pattern across the chest. Glossy paint, crisp sculpt.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
+      "texture_prompt": "glossy painted resin: silver and violet suit, starfield pattern on the chest, glowing meteor base"
     },
     {
       "slug": "comic_figure_5",
       "kind": "prop",
       "name": "a robot sidekick figure",
       "file": "comic_figure_5.glb",
+      "tier": "small",
       "vol": [
         3,
         6,
@@ -56109,13 +56271,15 @@
       "pose": null,
       "prompt": "A painted vinyl collectible figure on a round base: an original boxy retro-styled robot sidekick with a dome head, round glowing eyes, accordion arms, cream and orange paint. Glossy, toy-like.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
+      "texture_prompt": "glossy painted vinyl: cream and orange robot, dome head, round glowing eyes"
     },
     {
       "slug": "comic_figure_6",
       "kind": "prop",
       "name": "a monster villain statue",
       "file": "comic_figure_6.glb",
+      "tier": "small",
       "vol": [
         3,
         6,
@@ -56129,13 +56293,15 @@
       "pose": null,
       "prompt": "A painted resin collectible statue on a craggy base: an original hulking swamp-monster villain, green-grey hide, claws raised, moss and roots trailing from the shoulders. Glossy paint, crisp sculpt.",
       "canon": [],
-      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses."
+      "notes": "SPARSE: the text never describes the shop's figures (they are set dressing in Cosmic Comics: the glass statue tower by the door, the Key Issues shelf, the window). The look is proposed — edit before spending credits. ORIGINAL characters only: no real comic-book heroes, logos or likenesses.",
+      "texture_prompt": "glossy painted resin: green-grey hide, moss and roots on the shoulders, craggy base"
     },
     {
       "slug": "crow",
       "kind": "prop",
       "name": "the crow",
       "file": "crow.glb",
+      "tier": "medium",
       "vol": [
         5,
         7
@@ -56162,13 +56328,15 @@
           "text": "The crow's eyes were the small bright black they had always been."
         }
       ],
-      "notes": "PROP (2026-10-27): replaces the kit's box crow (make_crow) on sixteen perches. Perched pose, feet under it; the HeroProp fits its length to the stand-in's (0.46 m, 0.35 on Finn's dashboard)."
+      "notes": "PROP (2026-10-27): replaces the kit's box crow (make_crow) on sixteen perches. Perched pose, feet under it; the HeroProp fits its length to the stand-in's (0.46 m, 0.35 on Finn's dashboard).",
+      "texture_prompt": "glossy black feathers with a faint blue sheen, heavy black beak, dark eye, black feet"
     },
     {
       "slug": "petras_cat",
       "kind": "prop",
       "name": "Petra's old cat, curled on her wool pillow",
       "file": "petras_cat.glb",
+      "tier": "medium",
       "vol": [
         7
       ],
@@ -56190,7 +56358,8 @@
           "text": "The cat opened one eye when the four of them came in."
         }
       ],
-      "notes": "PROP (2026-10-27). SPARSE on colour: the text never gives her coat — proposed plain; edit before spending credits. Replaces the box loaf on the kitchenette chair's cushion."
+      "notes": "PROP (2026-10-27). SPARSE on colour: the text never gives her coat — proposed plain; edit before spending credits. Replaces the box loaf on the kitchenette chair's cushion.",
+      "texture_prompt": "an old house cat's soft fur, a little thin with age; a small wool pillow"
     },
     {
       "slug": "kowalski_kitchen_window_view",

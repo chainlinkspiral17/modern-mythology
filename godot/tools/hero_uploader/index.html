@@ -165,6 +165,10 @@
   .log .ok::before { content: "✓ "; color: var(--green-ok); }
   .log .err::before { content: "✗ "; color: var(--red-bad); }
   .log .info::before { content: "› "; color: var(--fg-dim); }
+  .budget-line { font-size: 11px; color: var(--fg-dim); margin: 6px 0 2px; line-height: 1.5; }
+  .budget-line b { color: var(--fg); font-weight: 600; }
+  .budget-line .warn { color: var(--vinyl); }
+  .kind.tier { opacity: .8; }
 </style>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
@@ -317,7 +321,7 @@
         <div class="row">
           <div><label>mode</label><select id="o-modeltype"><option value="standard">standard (full detail)</option><option value="smart-topology">smart-topology (low-poly)</option></select></div>
           <div><label>polycount (smart only)</label><input id="o-polycount" type="number" min="100" max="15000" step="100" value="10000"></div>
-          <div><label>texture</label><select id="o-texture"><option value="1">textured + PBR</option><option value="0">draft (untextured)</option></select></div>
+          <div><label>texture</label><select id="o-texture"><option value="1">textured + PBR</option><option value="base">textured, base colour only</option><option value="0">draft (untextured)</option></select></div>
           <div><label>texture res</label><select id="o-texres"><option>2k</option><option selected>4k</option><option>8k</option></select></div>
           <div><label>pose</label><select id="o-pose"><option value="">auto</option><option value="a-pose">a-pose</option><option value="t-pose">t-pose</option></select></div>
         </div>
@@ -326,6 +330,7 @@
           <label class="check"><input id="o-ultra" type="checkbox"> ultra detail pass (costs more)</label>
           <label class="check"><input id="o-overwrite-glb" type="checkbox"> overwrite installed GLB</label>
         </div>
+        <div id="mesh-budget" class="budget-line"></div>
         <div class="actions">
           <button id="btn-mesh">Make 3D</button>
           <button id="btn-run" class="secondary">Generate image → Make 3D</button>
@@ -540,7 +545,7 @@ function renderRoster() {
     const lookChip = e.base ? `<span class="kind look" title="a look of ${esc(bySlug[e.base]?.name || e.base)} — ${esc(e.look?.when || '')}">↳ ${esc(e.look?.label || 'look')}</span>` : '';
     const sparse = e.notes && /SPARSE/.test(e.notes) ? `<span class="sparse" title="${esc(e.notes)}">sparse</span>` : '';
     c.innerHTML = `<div class="dots" title="image · GLB"><span class="${img}">●</span><span class="${glb}">●</span></div>
-      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${lookChip}${esc(e.name)}${sparse}${noCanon ? ' <span title="no description of the look in the text — fallback prompt" style="color:var(--vinyl);font-size:10px">no canon</span>' : ''}</div>
+      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${e.kind === 'prop' ? `<span class="kind tier" title="budget tier — ${esc((budgetOf(budgetClass(e)) || {}).label || '')}">${esc(e.tier || 'medium')}</span>` : ''}${lookChip}${esc(e.name)}${sparse}${noCanon ? ' <span title="no description of the look in the text — fallback prompt" style="color:var(--vinyl);font-size:10px">no canon</span>' : ''}</div>
       <div class="meta">${esc(e.file)}${e.tag ? ' · ' + esc(e.tag) : ''}</div></div>`;
     c.addEventListener('click', () => select(e.slug));
     list.appendChild(c);
@@ -561,9 +566,51 @@ function renderRoster() {
 const SETTINGS_KEY = 'heroStudio.settings.v1';
 const GLOBAL_CONTROLS = {            // control id → kind of value
   'o-provider': 'value', 'o-quality': 'value', 'o-count': 'value', 'o-multiview': 'checked',
-  'o-modeltype': 'value', 'o-polycount': 'value', 'o-texture': 'value', 'o-texres': 'value',
   'o-ultra': 'checked', 'o-mesh-multiview': 'checked',
 };
+// (2026-10-27) the model settings are remembered PER BUDGET CLASS (a hero, a
+// small prop, a car), and start from the roster's budgets — a prop is asked
+// for low-poly at 2k, a character at full detail and 4k
+const MESH_CONTROLS = ['o-modeltype', 'o-polycount', 'o-texture', 'o-texres'];
+const PROP_TIERS = ['small', 'medium', 'large'];
+function budgetClass(e) {
+  if (!e) return null;
+  if (e.kind === 'prop') return 'prop_' + (PROP_TIERS.includes(e.tier) ? e.tier : 'medium');
+  return (e.kind === 'hero' || e.kind === 'demon') ? e.kind : null;
+}
+function budgetOf(cls) { return (state.roster?.budgets || {})[cls] || null; }
+// mirror of meshy_pipeline.budget_estimate (offline the server is not there to ask)
+function budgetEstimate(cls) {
+  const server = state.roster?.budget_estimates?.[cls];
+  if (server) return server;
+  const b = budgetOf(cls); if (!b) return null;
+  const sl = b.slim, me = b.meshy || {}, pbr = !!me.pbr, mip = 4 / 3;
+  const t = sl.tex, ts = sl.tex_small, tris = sl.tris;
+  let vram = t * t * 0.5 * mip + tris * 30, glb = t * t * 0.25 + tris * 25;
+  if (pbr) { vram += t * t * mip + ts * ts * 0.5 * mip; glb += t * t + ts * ts * 0.25; }
+  const gen = { '2k': 2048, '4k': 4096, '8k': 8192 }[me.texture_resolution || '2k'] || 2048;
+  const full = me.model_type === 'standard' ? 40e6 : gen * gen * (0.25 + (pbr ? 1.25 : 0)) + (me.polycount || 10000) * 25;
+  return { vram, disk: glb + vram + tris * 25, glb, full, maps: pbr ? 3 : 1 };
+}
+function meshDefaultsFor(cls) {
+  const d = state.roster?.defaults || {}, me = (budgetOf(cls) || {}).meshy || {};
+  const pbr = me.pbr ?? d.pbr ?? true;
+  return {
+    'o-modeltype': me.model_type || d.model_type || 'standard',
+    'o-polycount': me.polycount || d.polycount || 10000,
+    'o-texture': d.texture === false ? '0' : (pbr ? '1' : 'base'),
+    'o-texres': me.texture_resolution || d.texture_resolution || '4k',
+  };
+}
+function restoreMesh(cls) {
+  const mem = (SETTINGS.meshByClass || {})[cls] || {}, def = meshDefaultsFor(cls);
+  for (const id of MESH_CONTROLS) {
+    const el = $(id); if (!el) continue;
+    const v = String(id in mem ? mem[id] : def[id]);
+    if (el.tagName === 'SELECT' && ![...el.options].some(o => o.value === v)) continue;
+    el.value = v;
+  }
+}
 let SETTINGS = loadSettings();
 function loadSettings() {
   try { const v = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}'); return (v && typeof v === 'object') ? v : {}; }
@@ -578,6 +625,10 @@ function remember(id) {
   if (kind) SETTINGS[id] = kind === 'checked' ? el.checked : el.value;
   if (id === 'o-model') { SETTINGS.models = SETTINGS.models || {}; SETTINGS.models[$('o-provider').value] = el.value; }
   if (id === 'o-pose') { const e = entry(); if (e) { SETTINGS.poseByKind = SETTINGS.poseByKind || {}; SETTINGS.poseByKind[e.kind] = el.value; } }
+  if (MESH_CONTROLS.includes(id)) {
+    const cls = budgetClass(entry());
+    if (cls) { SETTINGS.meshByClass = SETTINGS.meshByClass || {}; (SETTINGS.meshByClass[cls] = SETTINGS.meshByClass[cls] || {})[id] = el.value; }
+  }
   storeSettings();
 }
 // put a remembered value back on a control (only if the control can show it)
@@ -625,10 +676,7 @@ function select(slug) {
   const d = state.roster.defaults || {};
   restore('o-provider', d.provider || 'google');
   onProviderChange();
-  restore('o-modeltype', d.model_type || 'standard');
-  restore('o-polycount', d.polycount || 10000);
-  restore('o-texture', d.texture === false ? '0' : '1');
-  restore('o-texres', d.texture_resolution || '4k');
+  restoreMesh(budgetClass(e));
   restore('o-quality', 'medium');
   restore('o-count', 1);
   restore('o-multiview', false);
@@ -637,7 +685,7 @@ function select(slug) {
   restore('o-mesh-multiview', !!(e.status.chosen?.side || e.status.chosen?.back));
   $('drop-dest').textContent = e.file;
   $('git-cmd').style.display = 'none';
-  renderViews(); renderPreview(); refreshFullPrompt(); updateCosts();
+  renderViews(); renderPreview(); refreshFullPrompt(); updateCosts(); renderBudget();
 }
 
 function fillSelect(sel, values, current) {
@@ -693,7 +741,27 @@ function updateCosts() {
     : p === 'openai' ? COST.openai * ($('o-quality').value === 'high' ? 3 : $('o-quality').value === 'low' ? 0.3 : 1)
     : COST.runway;
   $('img-cost').textContent = `~$${(n * unit).toFixed(2)} (rough)`;
-  $('mesh-cost').textContent = `~$${COST[$('o-texture').value === '1' ? 'meshy:textured' : 'meshy:draft'].toFixed(2)} (rough)`;
+  $('mesh-cost').textContent = `~$${COST[$('o-texture').value !== '0' ? 'meshy:textured' : 'meshy:draft'].toFixed(2)} (rough)`;
+}
+
+// (2026-10-27) what this model will cost: its class, what Meshy is asked for,
+// what slim installs, disk + video memory (measured once installed)
+function renderBudget() {
+  const e = entry(), box = $('mesh-budget'); if (!box) return;
+  const cls = budgetClass(e), b = budgetOf(cls), est = budgetEstimate(cls);
+  if (!e || !b || !est || isPicture(e)) { box.innerHTML = ''; return; }
+  const mb = v => (v / 1e6 >= 10 ? Math.round(v / 1e6) : (v / 1e6).toFixed(1));
+  const me = b.meshy || {}, sl = b.slim;
+  const hero = budgetEstimate('hero');
+  const ask = `${me.model_type}${me.model_type === 'smart-topology' ? ' ' + Number(me.polycount).toLocaleString() + ' triangles' : ''} · ${me.texture_resolution}${me.pbr ? ' · PBR' : ' · base colour only'}`;
+  let html = `<b>budget: ${esc(b.label || cls)}</b>${e.kind === 'prop' ? ` <span title="set by tier in meshy_roster.json (small | medium | large)">(tier: ${esc(e.tier || 'medium')})</span>` : ''}<br>`
+    + `asks Meshy: ${esc(ask)} → installs ≤ ${Number(sl.tris).toLocaleString()} triangles, ${sl.tex} px maps (${est.maps}) · `
+    + `~${mb(est.disk)} MB on disk, ~${mb(est.vram)} MB video memory`
+    + (e.kind === 'prop' && hero ? ` <span style="opacity:.7">(a character: ~${mb(hero.disk)} / ~${mb(hero.vram)} MB)</span>` : '');
+  if (e.status?.glb_installed) html += `<br>installed: ${e.status.glb_tris ? Number(e.status.glb_tris).toLocaleString() + ' triangles · ' : ''}${(e.status.glb_size_kb / 1024).toFixed(1)} MB GLB`;
+  const def = meshDefaultsFor(cls), off = MESH_CONTROLS.filter(id => String($(id).value) !== String(def[id]));
+  if (off.length) html += `<br><span class="warn">these settings differ from the budget's (${off.map(id => id.slice(2)).join(', ')}) — slim still cuts the result to the budget</span>`;
+  box.innerHTML = html;
 }
 
 function imgUrl(relPath) {
@@ -937,7 +1005,7 @@ function imageOpts() {
 }
 function meshOpts() {
   const o = {
-    texture: $('o-texture').value === '1', texture_resolution: $('o-texres').value,
+    texture: $('o-texture').value !== '0', pbr: $('o-texture').value === '1', texture_resolution: $('o-texres').value,
     model_type: $('o-modeltype').value, polycount: Number($('o-polycount').value || 10000),
     ultra: $('o-ultra').checked, multiview: $('o-mesh-multiview').checked,
     overwrite: $('o-overwrite-glb').checked, ...promptOverrides(),
@@ -1050,7 +1118,8 @@ function batchCommand() {
   if (o.multiview) flags.push('--multiview');
   if (o.quality) flags.push(`--quality ${o.quality}`);
   flags.push(m.texture ? '--texture' : '--no-texture');
-  if (m.model_type !== 'standard') flags.push(`--model-type ${m.model_type} --polycount ${m.polycount}`);
+  // (2026-10-27) no model type / polycount / texture size: each entry takes its
+  // budget class's (a prop low-poly at 2k, a character full detail at 4k)
   const sel = slugs.length === state.roster.entries.length ? 'all' : slugs.join(' ');
   $('batch-cmd').textContent = `cd ${REPO_DECK} && python3 godot/tools/meshy_pipeline.py run ${sel} ${flags.join(' ')}`;
   $('batch-cmd').style.display = '';
@@ -1060,8 +1129,8 @@ function batchCommand() {
 // Events
 // ════════════════════════════════════════════════════════════════
 function bind() {
-  for (const id of [...Object.keys(GLOBAL_CONTROLS), 'o-model', 'o-pose']) {
-    $(id)?.addEventListener('change', () => { remember(id); updateCosts(); });
+  for (const id of [...Object.keys(GLOBAL_CONTROLS), ...MESH_CONTROLS, 'o-model', 'o-pose']) {
+    $(id)?.addEventListener('change', () => { remember(id); updateCosts(); renderBudget(); });
   }
   $('btn-reset-settings')?.addEventListener('click', resetSettings);
   for (const id of ['f-search', 'f-kind', 'f-vol', 'f-state']) $(id).addEventListener('input', renderRoster);

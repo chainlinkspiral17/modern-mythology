@@ -136,6 +136,26 @@ falls through to the base model.
    chosen views to `multi-image-to-3d`. The GLB is downloaded straight to
    `godot/assets/3d/characters/heroes/<file>` (or `demons/`, `props/`)
    and shows up in the viewer.
+
+   **Budgets (2026-10-27).** Every model has a budget class, in
+   `meshy_roster.json` → `budgets`: `hero` and `demon` by kind, and a prop by its
+   `tier` (`small`, `medium` or `large`). The Meshy settings start from the
+   class, and the page remembers your changes per class. The line under them
+   shows what is asked, what slim installs, and an estimate of disk and video
+   memory, or the measured file once it is installed.
+
+   | class | asked of Meshy | installed (slim) | per model, disk / video memory |
+   |---|---|---|---|
+   | character | standard, 4k, PBR | 120k triangles, 2048 px, 3 maps | ~24 / ~13 MB |
+   | prop · small (hand-held) | smart-topology 4k triangles, 2k, base colour | 4k triangles, 1024 px, 1 map | ~1.3 / ~0.8 MB |
+   | prop · medium (furniture, animals in close shots) | smart-topology 10k, 2k, base colour | 10k triangles, 1024 px, 1 map | ~1.8 / ~1.0 MB |
+   | prop · large (vehicles) | smart-topology 15k, 2k, PBR | 15k triangles, 1024 px, 3 maps | ~4.8 / ~2.7 MB |
+
+   Props below large carry no PBR: HeroProp mattes them (metal 0), so their
+   metallic and roughness maps would be paid for and thrown away. With *use
+   side + back*, a low-poly class asks Meshy to remesh to the same polycount,
+   because multi-image has no smart-topology. `meshy_pipeline.py budget` prints
+   the totals and the sets that load the most at once.
 5. **Install / commit** — you can still drag any `.glb` onto the drop
    zone to install it under the canonical name (from Mixamo, RPM, the
    Meshy web app…). The page prints the git command to paste.
