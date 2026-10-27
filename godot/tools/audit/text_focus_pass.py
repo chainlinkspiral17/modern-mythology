@@ -76,6 +76,10 @@ center centre space miles drop stop rises bend entrance submission titles tokens
 path trail creek stream river beach shore ocean sea tide horizon headland bluff mountain mountains overlook garden
 asphalt sidewalk curb pavement gravel forest woods trees tree cedars spruce field hill hills ridge
 wear shops foundation storage submissions submission cedar
+band break song songs verse chorus dance dream dreams ghosts witness text title titles team groups readings deck
+figure figures flame purifiers twenty five seven eight nine blue black empty worn spare lower rear west east north
+south iced indie novelty interior heat dust well weight yards tips strip grid smear marks sorts dates base backs
+skip fill fills leave gets plays works stage lake
 brow brows forehead eyebrow eyebrows wrist wrists elbow elbows thumb thumbs palm palms jaw chin lap hip hips belly
 """.split())
 # furniture every room has: one cue a chapter, not a refrain
@@ -173,6 +177,10 @@ def cast_words():
 
 
 CARVING = re.compile(r"\b(carv\w*|rim|spiral|figures?|totems?)\b", re.I)
+# a thing is named with an article or an owner before it ("the kettle", "his
+# notebook", "Lena's grinder"): "Sam rings him up" names no rings
+DETERMINER = set("the a an his her their my your our its this that these those some two three four each every".split())
+PRONOUN = set("he she it they i we you".split())
 FUNCTION = set("in on at of and or to with from was were had has is are the a an by for as but that this its it".split())
 
 
@@ -202,6 +210,11 @@ def subject_for(text, geo, cast, marked=()):
         # a material or room word straight before a noun modifies it ("the
         # cedar roof", "wool socks"); before a function word it is the noun
         # ("the cedar in Finn's hand")
+        prev = [t[0].lower() for t in toks[max(0, ti - 3):ti]]
+        if not any(p in DETERMINER or p.endswith("'s") for p in prev):
+            continue
+        if prev and (prev[-1] in PRONOUN or (toks[ti - 1][0][0].isupper() and not prev[-1] in DETERMINER)):
+            continue
         nxt = toks[ti + 1][0].lower() if ti + 1 < len(toks) else ""
         if wl in MODIFIER and nxt and nxt not in FUNCTION and len(nxt) >= 3 and \
                 text.find(w + " " + toks[ti + 1][0]) >= 0:
