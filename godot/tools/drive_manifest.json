@@ -5320,6 +5320,11 @@
    "md5": "87e6a9a5a11def8b42a28bae484daba8",
    "size": 4709340
   },
+  "godot/assets/3d/props/_full/comic_figure_5.glb": {
+   "at": "2026-10-27T04:52:49+00:00",
+   "md5": "ad83901bd00973906ea128d3187c84b5",
+   "size": 4141444
+  },
   "godot/assets/3d/props/_full/crow.glb": {
    "at": "2026-10-27T02:36:14+00:00",
    "md5": "4a5c87ab0c08816617db4fd383773455",
@@ -5359,6 +5364,16 @@
    "at": "2026-10-27T04:47:21+00:00",
    "md5": "e682aa2eda02166abba76afaeedca6f2",
    "size": 559608
+  },
+  "godot/assets/3d/props/comic_figure_4_Image_0.jpg": {
+   "at": "2026-10-27T04:52:44+00:00",
+   "md5": "9b384be2710099818877b3e06183df25",
+   "size": 252135
+  },
+  "godot/assets/3d/props/comic_figure_5.glb": {
+   "at": "2026-10-27T04:52:44+00:00",
+   "md5": "4651548bfb79c432f9a904f504fd6950",
+   "size": 487596
   },
   "godot/assets/3d/props/crow.glb": {
    "at": "2026-10-27T02:36:08+00:00",
@@ -70444,6 +70459,41 @@
    "at": "2026-10-27T04:47:47+00:00",
    "md5": "647c2d792deb0380a9e0c29d6d24fe26",
    "size": 2251534
+  },
+  "godot/assets/concept/meshy/comic_figure_5/back.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "b38cd5d632c4db806bdc9f4cf7e80f44",
+   "size": 2278801
+  },
+  "godot/assets/concept/meshy/comic_figure_5/comic_figure_5_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "b38cd5d632c4db806bdc9f4cf7e80f44",
+   "size": 2278801
+  },
+  "godot/assets/concept/meshy/comic_figure_5/comic_figure_5_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "e6d2778ecd41d3e9b6263535f0ff5876",
+   "size": 2451932
+  },
+  "godot/assets/concept/meshy/comic_figure_5/comic_figure_5_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "39329bd68e7c039f3670ac2f30832681",
+   "size": 2165350
+  },
+  "godot/assets/concept/meshy/comic_figure_5/front.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "e6d2778ecd41d3e9b6263535f0ff5876",
+   "size": 2451932
+  },
+  "godot/assets/concept/meshy/comic_figure_5/meshy_thumb.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "871c8077c344253c2e186fc672d51c38",
+   "size": 143568
+  },
+  "godot/assets/concept/meshy/comic_figure_5/side.png": {
+   "at": "2026-10-27T04:53:02+00:00",
+   "md5": "39329bd68e7c039f3670ac2f30832681",
+   "size": 2165350
   },
   "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/cosmic_comics_interior_back_office_corkboard_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:03:20+00:00",
