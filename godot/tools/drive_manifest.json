@@ -5425,6 +5425,11 @@
    "md5": "0226f13712fe2993c1c93ccbccf7a7dc",
    "size": 2011194
   },
+  "godot/assets/art/hero/airport_cabin_night_window__plane_night.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "41d59912f4fbec66fbb9f161313f2958",
+   "size": 1390310
+  },
   "godot/assets/art/hero/aria_alley_face.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "f74216c6eeebd9a3cde947c9a09513cc",
@@ -5875,6 +5880,11 @@
    "md5": "f4f0b7815f95a2d93fbbf86eca55e622",
    "size": 2609587
   },
+  "godot/assets/art/hero/chau_house_living_windows_backyard.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "df1b81eeaf96326dc3339ecbaae165fe",
+   "size": 2577016
+  },
   "godot/assets/art/hero/chillwave_interior_across_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "ff572a5a474b71bfce9a5e5a3a594f20",
@@ -6245,10 +6255,20 @@
    "md5": "c2d1331ef495759f31652454c22f4bc1",
    "size": 2766222
   },
+  "godot/assets/art/hero/editing_suite_bakery_window__suite_4am.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "7f2184d8e486a51294fe2ee36119e275",
+   "size": 2768883
+  },
   "godot/assets/art/hero/editing_suite_tide_flats__suite_tide.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "79803f39633c3948dd00cb2866f7b477",
    "size": 2476389
+  },
+  "godot/assets/art/hero/editing_suite_window_nothing.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "0139106d73862c7fa34afc4d07819888",
+   "size": 1385748
   },
   "godot/assets/art/hero/el_rancho_taqueria_menuboard.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -8149,6 +8169,21 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "b7e96cd2b6f2385a1cf0a4bfb05eca58",
    "size": 2471616
+  },
+  "godot/assets/art/hero/vol3_rooms_coast_sea_sky.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "1e4577a9e9165772fe5259a067133b0d",
+   "size": 1887296
+  },
+  "godot/assets/art/hero/vol3_rooms_oregon_window_day__oregon_home_day.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "48ea0733a40579747a2bfacdab476ead",
+   "size": 2875071
+  },
+  "godot/assets/art/hero/vol3_rooms_pizza_steamed_window.png": {
+   "at": "2026-10-27T04:34:24+00:00",
+   "md5": "91555b03ede54844032d8fb35b1b8ec0",
+   "size": 3185635
   },
   "godot/assets/art/hero/wagner_home_fridge_flyer.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -68035,6 +68070,16 @@
    "md5": "7c98f14cc051c0fa6dc1a39db6eef6ec",
    "size": 1986926
   },
+  "godot/assets/concept/meshy/airport_cabin_night_window__plane_night/airport_cabin_night_window__plane_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:34:35+00:00",
+   "md5": "41d59912f4fbec66fbb9f161313f2958",
+   "size": 1390310
+  },
+  "godot/assets/concept/meshy/airport_cabin_night_window__plane_night/front.png": {
+   "at": "2026-10-27T04:34:35+00:00",
+   "md5": "41d59912f4fbec66fbb9f161313f2958",
+   "size": 1390310
+  },
   "godot/assets/concept/meshy/alberto/alberto_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "adfe0667bbf5665dea50bece1342677c",
@@ -69780,6 +69825,16 @@
    "md5": "f4f0b7815f95a2d93fbbf86eca55e622",
    "size": 2609587
   },
+  "godot/assets/concept/meshy/chau_house_living_windows_backyard/chau_house_living_windows_backyard_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:34:59+00:00",
+   "md5": "df1b81eeaf96326dc3339ecbaae165fe",
+   "size": 2577016
+  },
+  "godot/assets/concept/meshy/chau_house_living_windows_backyard/front.png": {
+   "at": "2026-10-27T04:34:59+00:00",
+   "md5": "df1b81eeaf96326dc3339ecbaae165fe",
+   "size": 2577016
+  },
   "godot/assets/concept/meshy/chess/back.png": {
    "at": "2026-10-19T14:53:01+00:00",
    "md5": "99e9c085a496b522f5075c1dd755b169",
@@ -71105,6 +71160,16 @@
    "md5": "24ad3d01dbc2e64410250941ad9c5fe6",
    "size": 1864926
   },
+  "godot/assets/concept/meshy/editing_suite_bakery_window__suite_4am/editing_suite_bakery_window__suite_4am_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:35:08+00:00",
+   "md5": "7f2184d8e486a51294fe2ee36119e275",
+   "size": 2768883
+  },
+  "godot/assets/concept/meshy/editing_suite_bakery_window__suite_4am/front.png": {
+   "at": "2026-10-27T04:35:08+00:00",
+   "md5": "7f2184d8e486a51294fe2ee36119e275",
+   "size": 2768883
+  },
   "godot/assets/concept/meshy/editing_suite_tide_flats__suite_tide/editing_suite_tide_flats__suite_tide_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:04:36+00:00",
    "md5": "79803f39633c3948dd00cb2866f7b477",
@@ -71114,6 +71179,16 @@
    "at": "2026-10-27T04:04:36+00:00",
    "md5": "79803f39633c3948dd00cb2866f7b477",
    "size": 2476389
+  },
+  "godot/assets/concept/meshy/editing_suite_window_nothing/editing_suite_window_nothing_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:35:23+00:00",
+   "md5": "0139106d73862c7fa34afc4d07819888",
+   "size": 1385748
+  },
+  "godot/assets/concept/meshy/editing_suite_window_nothing/front.png": {
+   "at": "2026-10-27T04:35:23+00:00",
+   "md5": "0139106d73862c7fa34afc4d07819888",
+   "size": 1385748
   },
   "godot/assets/concept/meshy/eileen_henderson/back.png": {
    "at": "2026-10-11T20:02:49+00:00",
@@ -75274,6 +75349,16 @@
    "at": "2026-10-27T04:30:17+00:00",
    "md5": "711dd371066691ceaf39f94671c02179",
    "size": 1989250
+  },
+  "godot/assets/concept/meshy/panel_vol6_water_tower/front.png": {
+   "at": "2026-10-27T04:35:47+00:00",
+   "md5": "08807a930332cb9f9422acd2b30125f8",
+   "size": 2586048
+  },
+  "godot/assets/concept/meshy/panel_vol6_water_tower/panel_vol6_water_tower_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:35:47+00:00",
+   "md5": "08807a930332cb9f9422acd2b30125f8",
+   "size": 2586048
   },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
@@ -80094,6 +80179,36 @@
    "at": "2026-10-19T19:15:21+00:00",
    "md5": "b117bd83f6002e0c95d972c51c3bf0ff",
    "size": 1715943
+  },
+  "godot/assets/concept/meshy/vol3_rooms_coast_sea_sky/front.png": {
+   "at": "2026-10-27T04:35:57+00:00",
+   "md5": "1e4577a9e9165772fe5259a067133b0d",
+   "size": 1887296
+  },
+  "godot/assets/concept/meshy/vol3_rooms_coast_sea_sky/vol3_rooms_coast_sea_sky_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:35:57+00:00",
+   "md5": "1e4577a9e9165772fe5259a067133b0d",
+   "size": 1887296
+  },
+  "godot/assets/concept/meshy/vol3_rooms_oregon_window_day__oregon_home_day/front.png": {
+   "at": "2026-10-27T04:36:07+00:00",
+   "md5": "48ea0733a40579747a2bfacdab476ead",
+   "size": 2875071
+  },
+  "godot/assets/concept/meshy/vol3_rooms_oregon_window_day__oregon_home_day/vol3_rooms_oregon_window_day__oregon_home_day_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:36:07+00:00",
+   "md5": "48ea0733a40579747a2bfacdab476ead",
+   "size": 2875071
+  },
+  "godot/assets/concept/meshy/vol3_rooms_pizza_steamed_window/front.png": {
+   "at": "2026-10-27T04:36:17+00:00",
+   "md5": "91555b03ede54844032d8fb35b1b8ec0",
+   "size": 3185635
+  },
+  "godot/assets/concept/meshy/vol3_rooms_pizza_steamed_window/vol3_rooms_pizza_steamed_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:36:17+00:00",
+   "md5": "91555b03ede54844032d8fb35b1b8ec0",
+   "size": 3185635
   },
   "godot/assets/concept/meshy/vol3_ruined_city_night/front.png": {
    "at": "2026-10-19T19:15:30+00:00",

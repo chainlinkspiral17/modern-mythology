@@ -27315,5 +27315,80 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/chau_house_living_windows_backyard/front.png",
     "output": "godot/assets/art/hero/chau_house_living_windows_backyard.png"
+  },
+  {
+    "at": "2026-10-27T04:34:12+00:00",
+    "stage": "image",
+    "slug": "chau_house_steven_window_sideyard",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the noon light through Steven's blinds like this: Light comes in through window blinds, the sound of an industrial lawn mower far off. Additional direction: The view out of a bedroom's side window at noon, straight-on and filling the frame: a bright narrow side yard of a new suburban house, a strip of mown lawn, a cedar fence two metres off, the neighbour's pale brick wall and an air-conditioning unit beyond it, harsh white sun on everything so the picture is high-key and slightly blown out, as seen past window blinds. Late 1990s, no people, no lettering, evenly exposed.\nSIZE: the real object is 1.40 m wide by 1.30 m tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the noon light through Steven's blinds, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/chau_house_steven_window_sideyard/chau_house_steven_window_sideyard_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:34:17+00:00",
+    "stage": "art",
+    "slug": "chau_house_steven_window_sideyard",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/chau_house_steven_window_sideyard/front.png",
+    "output": "godot/assets/art/hero/chau_house_steven_window_sideyard.png"
+  },
+  {
+    "at": "2026-10-27T04:34:32+00:00",
+    "stage": "image",
+    "slug": "apple_peddler_front_glass_rain",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Apple Peddler's front glass, the main drag in the rain, like this: There is a point in coming here, besides getting out of the rain. Named the Apple Peddler, right off the main drag through town, next door to the Greyhound Station. Additional direction: A long diner front window at night seen from inside, straight-on and filling the frame, its content composed into a horizontal band through the middle: rain sheeting down the outside of the glass in streams and beads, and through it, blurred, a small coastal town's wet main drag at night: dark asphalt shining with reflected streetlight, a yellow centre line, a parked sedan, low dark storefronts across the street, the cold white light of a bus depot canopy at the right edge. Oregon coast, late twentieth century, dim and cold outside, no readable signs or lettering. Even exposure.\nSIZE: the real object is 8.40 m wide by 1.50 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 42% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the Apple Peddler's front glass, the main drag in the rain, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/apple_peddler_front_glass_rain/apple_peddler_front_glass_rain_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:34:37+00:00",
+    "stage": "art",
+    "slug": "apple_peddler_front_glass_rain",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/apple_peddler_front_glass_rain/front.png",
+    "output": "godot/assets/art/hero/apple_peddler_front_glass_rain.png"
+  },
+  {
+    "at": "2026-10-27T04:34:58+00:00",
+    "stage": "image",
+    "slug": "vol4_story_rooms_aaron_window_dusk",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The view out of a boy's bedroom window at dusk, straight-on and filling the frame: a suburban backyard going dark, a wooden fence, a swing set's silhouette, the neighbours' rooftops and a utility pole with its wires against a deep blue evening sky with the last band of pale light low down, one lit kitchen window across the fences. Late 1980s, quiet, soft and even, no lettering.\nSIZE: the real object is 1.60 m wide by 1.60 m tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the evening past Aaron's bedroom window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol4_story_rooms_aaron_window_dusk/vol4_story_rooms_aaron_window_dusk_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:35:04+00:00",
+    "stage": "art",
+    "slug": "vol4_story_rooms_aaron_window_dusk",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/vol4_story_rooms_aaron_window_dusk/front.png",
+    "output": "godot/assets/art/hero/vol4_story_rooms_aaron_window_dusk.png"
   }
 ]
