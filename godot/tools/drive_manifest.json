@@ -5325,6 +5325,11 @@
    "md5": "ad83901bd00973906ea128d3187c84b5",
    "size": 4141444
   },
+  "godot/assets/3d/props/_full/comic_figure_6.glb": {
+   "at": "2026-10-27T04:59:04+00:00",
+   "md5": "67bebc76d396906166f0153dc0b3e744",
+   "size": 5149952
+  },
   "godot/assets/3d/props/_full/crow.glb": {
    "at": "2026-10-27T02:36:14+00:00",
    "md5": "4a5c87ab0c08816617db4fd383773455",
@@ -5374,6 +5379,11 @@
    "at": "2026-10-27T04:52:44+00:00",
    "md5": "4651548bfb79c432f9a904f504fd6950",
    "size": 487596
+  },
+  "godot/assets/3d/props/comic_figure_6.glb": {
+   "at": "2026-10-27T04:58:59+00:00",
+   "md5": "a243a3bf370b97de57573cc30cce35f4",
+   "size": 553936
   },
   "godot/assets/3d/props/crow.glb": {
    "at": "2026-10-27T02:36:08+00:00",
@@ -70495,6 +70505,41 @@
    "md5": "39329bd68e7c039f3670ac2f30832681",
    "size": 2165350
   },
+  "godot/assets/concept/meshy/comic_figure_6/back.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "1be9cf64285c1886bf3a58bf1baeb322",
+   "size": 2886488
+  },
+  "godot/assets/concept/meshy/comic_figure_6/comic_figure_6_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "1be9cf64285c1886bf3a58bf1baeb322",
+   "size": 2886488
+  },
+  "godot/assets/concept/meshy/comic_figure_6/comic_figure_6_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "77da3d6a9980fa8179c7ec046c47358e",
+   "size": 2940502
+  },
+  "godot/assets/concept/meshy/comic_figure_6/comic_figure_6_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "b9a58fcd320a3f97be87fdba9fdce672",
+   "size": 2650544
+  },
+  "godot/assets/concept/meshy/comic_figure_6/front.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "77da3d6a9980fa8179c7ec046c47358e",
+   "size": 2940502
+  },
+  "godot/assets/concept/meshy/comic_figure_6/meshy_thumb.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "150b3f7f4a15406987abd3b7563d1bcd",
+   "size": 220588
+  },
+  "godot/assets/concept/meshy/comic_figure_6/side.png": {
+   "at": "2026-10-27T04:59:20+00:00",
+   "md5": "b9a58fcd320a3f97be87fdba9fdce672",
+   "size": 2650544
+  },
   "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/cosmic_comics_interior_back_office_corkboard_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:03:20+00:00",
    "md5": "180ef4764372cc26d0e275e8c47fe7e2",
@@ -73404,6 +73449,16 @@
    "at": "2026-10-14T03:02:05+00:00",
    "md5": "f0d644d91e75d407a41cc750ad57414b",
    "size": 3787406
+  },
+  "godot/assets/concept/meshy/kowalski_kitchen_window_view/front.png": {
+   "at": "2026-10-27T04:59:28+00:00",
+   "md5": "d96a160fdf031ea9d50eec0da6279285",
+   "size": 4219214
+  },
+  "godot/assets/concept/meshy/kowalski_kitchen_window_view/kowalski_kitchen_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:59:28+00:00",
+   "md5": "d96a160fdf031ea9d50eec0da6279285",
+   "size": 4219214
   },
   "godot/assets/concept/meshy/kwik_stop_aisle_topsign_1/front.png": {
    "at": "2026-10-14T03:02:12+00:00",
