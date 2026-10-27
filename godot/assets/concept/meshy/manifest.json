@@ -31651,5 +31651,488 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/desert_route_motel_sign/front.png",
     "output": "godot/assets/art/hero/desert_route_motel_sign.png"
+  },
+  {
+    "at": "2026-10-27T17:02:43+00:00",
+    "stage": "image",
+    "slug": "hans_1994",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Hans (1994, the bakery window in Small Wood), like this: Hans in the bakery window. Real Hans wipes his hands on his apron before he shakes yours. Bread for the morning, Dickens. You'll want it later. Hans lifting a loaf off a tray and setting it back, lifting it, setting it back. Additional direction: Hans the baker in 1994, about forty, in the front window of his bakery in Small Wood on the Oregon coast, lifting a loaf off a tray. The same round strong build and big forearms he has at sixty-eight, his hair still thick and brown with no grey, bare-headed (the wool cap Greta knits him comes decades later), flour on his forearms and in his eyebrows. A long white cotton baker's apron dusted with flour, tied over a short-sleeved white work shirt, sleeves pushed higher; grey work trousers; black clogs. A man who wipes his hands on his apron before he shakes yours.\nFull-body concept render of Hans (1994, the bakery window in Small Wood), a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/hans_1994/hans_1994_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hans_1994/hans_1994_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hans_1994/hans_1994_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:03:55+00:00",
+    "stage": "image",
+    "slug": "pause_watch",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Paul's pause watch like this: Wristwatch \u00b7 1962 mechanical The watch your father gave you when you turned twenty. You use it to time the pause before the verb. The pause is seven-tenths of a second when you are at your best; one and one-half when you are not.\nSingle-object concept render of Paul's pause watch, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/pause_watch/pause_watch_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pause_watch/pause_watch_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pause_watch/pause_watch_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:04:53+00:00",
+    "stage": "image",
+    "slug": "hundred_dollar_bill",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The hundred-dollar bill like this: A hundred-dollar bill from Table 14, weighted on top of the folded note. Mr. Dean paid for nothing. a hundred-dollar bill. clean fold. weighing the small folded note. he stands. he smooths his lapels. Leaves the note: 'When you're ready' + a phone number, weighted under a hundred-dollar bill. The small note: when you're ready. A phone number below it. The hundred-dollar bill on top, weighting it to the table.\nSingle-object concept render of The hundred-dollar bill, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe rest of the writing on it, in full, readable, spelled exactly: Front: FEDERAL RESERVE NOTE\nTHE UNITED STATES OF AMERICA\nTHIS NOTE IS LEGAL TENDER FOR ALL DEBTS, PUBLIC AND PRIVATE\n100 (in each corner, the large 100 in copper-to-green colour-shifting ink at lower right)\nONE HUNDRED USA (along the gold quill and inkwell)\nSERIES 2013\nserial number in green: LB 30417762 C (printed twice)\nBack (showing at the fold): IN GOD WE TRUST\nTHE UNITED STATES OF AMERICA\nONE HUNDRED DOLLARS\n100\nUSA 100 (gold, at right) No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/hundred_dollar_bill/hundred_dollar_bill_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hundred_dollar_bill/hundred_dollar_bill_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hundred_dollar_bill/hundred_dollar_bill_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:05:42+00:00",
+    "stage": "image",
+    "slug": "pauls_black_car",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Paul's long black car like this: Then he turned. Sharp. Strode toward a long black car idling by the curb. Moving like he owned the damn sidewalk and maybe the sky too. The Hierophant, by then, was already three blocks away, in the back of the long black car, on his second phone call of the hour the long black car idles wherever it idles. its engine is off when it idles for him. its engine is running when it idles for everybody else. the door closes the way the door of a long black car closes when somebody has paid attention to the door's weight. The driver of the long black car. He has been the driver for nineteen years. He does not look back. the curb outside d'ambrosio's riverboat \u00b7 where the long black car parks\nSingle-object concept render of Paul's long black car, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/pauls_black_car/pauls_black_car_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pauls_black_car/pauls_black_car_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pauls_black_car/pauls_black_car_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:06:28+00:00",
+    "stage": "image",
+    "slug": "folded_napkin_booth_6",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes John's folded napkin from booth 6 like this: He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it. In John's coat pocket, against his ribs, the folded napkin from booth six pressed faintly through the lining. He has, in his coat pocket, the folded napkin from booth six. John folded the napkin from booth six. White, paper, cheap.\nSingle-object concept render of John's folded napkin from booth 6, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/folded_napkin_booth_6/folded_napkin_booth_6_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/folded_napkin_booth_6/folded_napkin_booth_6_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/folded_napkin_booth_6/folded_napkin_booth_6_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:07:23+00:00",
+    "stage": "image",
+    "slug": "license_plate_notebook",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Sam's License Plate Notebook like this: Spiral-bound, college-ruled, 9x6 inches, blue cover. Sam keeps it in the front pocket of her backpack. She started it nineteen months ago. She has filled approximately a third of the pages. April 28 \u00b7 11:52 \u00b7 diego's black f-150 \u00b7 TX plate DGR-1188 \u00b7 driver NOT diego \u00b7 driver wore a hat \u00b7 could not see face \u00b7 shifted into third gear by the corner of ashberry and linden \u00b7 diego never shifts into third gear on our street \u00b7\nSingle-object concept render of Sam's License Plate Notebook, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe rest of the writing on it, in full, readable, spelled exactly: PLATES / CARS \u2014 kwik stop lot\n(microwave clock is 9 min fast. subtract.)\n\n1.  14:47 \u00b7 WHITE SEDAN \u00b7 NO FRONT PLATE \u00b7 texas requires one\n    man, 50s, golf shirt tucked into khaki shorts, sunburn on back of neck\n    looked at ME in the cooler glass, not at the beer\n    bought a tallboy. didn't open it. sat in the car ~40 sec. pulled out\n    rear plate: didn't get it\n\n2.  next day \u00b7 SAME MAN \u00b7 same clothes \u00b7 sunburn not faded\n    pretzels + snickers \u00b7 3-second look in the convex mirror\n    got in the PASSENGER seat this time. still no front plate\n\n3.  sedan back \u00b7 TWO people \u00b7 one wearing a press lanyard\n\n4.  sedan in the lot when I came out \u00b7 woman alone \u00b7 HOUSTON CHRONICLE lanyard \u00b7 tablet\n    pulled out behind me \u00b7 left onto Linden \u00b7 3 cars back \u00b7 5 min\n    did not park at kwik stop. drove past. turned at next intersection\n\nother plates (idled > 10 min):\n    silver camry  TX  LKM-4417   12 min  pump 3, no gas\n    red f-250     TX  BRT-2290   15 min  phone, engine running\n    gray van      TX  JNW-0815   11 min  nobody got out\n    tan altima    TX  HXR-6634   10 min  regular?\n\npatterns are in the boring. No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/license_plate_notebook/license_plate_notebook_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/license_plate_notebook/license_plate_notebook_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/license_plate_notebook/license_plate_notebook_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:08:21+00:00",
+    "stage": "image",
+    "slug": "phone_ledger",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Rick's phone ledger like this: A hardcover ledger, black, the spine taped with electrical tape Rick replaces every two years. Rick keeps the ledger in a small fireproof box bolted to the floor under the back counter of Cosmic Comics. The ledger contains, by Rick's count, approximately one thousand four hundred entries.\nSingle-object concept render of Rick's phone ledger, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe rest of the writing on it, in full, readable, spelled exactly: PHONE NOTES\nDATE      TIME   LEN    WHAT HE SAID                                   WHAT I DID\n5/18     09:12   0:40   She got another one. I thought you'd want to know.   listened.\n5/29     16:05   0:25   She's fine. She's doing what she should be doing. Let her. Don't interfere.   nothing. (hard.)\n6/03     11:47   0:20   She got another one.   listened.\n6/11     08:58   0:35   Close up early today. Lock the back.   closed 2:00. back locked. told Curtis inventory.\n6/19     13:30   0:15   She got another one. I thought you'd want to know.   listened.\n6/24     12:14   1:02   Close up early today. Lock the back. There's a pickup in town with the wrong address.   OPEN sign reversed 12:16. service door checked. M. at lunch till 4.\n6/30     10:20   0:30   She's fine. Let her.   \u2014\n7/08     15:41   0:22   She got another one.   listened.\n\n[margin, older ink] 2002 \u2014 Beaumont. this is where it starts.\n[page number, bottom corner] 1,381 (A note in [square brackets] says where the writing sits; the brackets and the note itself are not written on it.) No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/phone_ledger/phone_ledger_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/phone_ledger/phone_ledger_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/phone_ledger/phone_ledger_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:09:12+00:00",
+    "stage": "image",
+    "slug": "skips_mixtape_1999",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Skip's 1999 mixtape like this: a single Maxell XLII cassette. The case insert is hand-cut from a piece of college-ruled notebook paper. The insert has, in Skip's adolescent handwriting (Skip was nineteen when he made the tape), the title: \"untitled \u00b7 for someone \u00b7 1999.\"\nSingle-object concept render of Skip's 1999 mixtape, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/skips_mixtape_1999/skips_mixtape_1999_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/skips_mixtape_1999/skips_mixtape_1999_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/skips_mixtape_1999/skips_mixtape_1999_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:10:08+00:00",
+    "stage": "image",
+    "slug": "funeral_parlour_inkwell",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "A Victorian brass-and-glass inkwell from a funeral parlour: a square brass base with a hinged lid, a cut-glass well with dried black ink at the bottom, a small engraved plate on the front, a steel dip pen lying beside it.\nSingle-object concept render of Maya's grandfather's inkwell, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/funeral_parlour_inkwell/funeral_parlour_inkwell_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/funeral_parlour_inkwell/funeral_parlour_inkwell_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/funeral_parlour_inkwell/funeral_parlour_inkwell_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:11:07+00:00",
+    "stage": "image",
+    "slug": "nexcorp_badge_clips",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Diego's eleven NexCorp badge clips like this: a small plastic ziplock bag containing eleven NexCorp Residential Solutions employee badge clips. Diego picked them up, one at a time, from the gas station parking lot, from the Kwik Stop's recycling, from the gutters of Linden Boulevard, over the past nine months.\nSingle-object concept render of Diego's eleven NexCorp badge clips, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/nexcorp_badge_clips/nexcorp_badge_clips_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/nexcorp_badge_clips/nexcorp_badge_clips_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/nexcorp_badge_clips/nexcorp_badge_clips_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:11:51+00:00",
+    "stage": "image",
+    "slug": "ceramic_frog",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The ceramic frog like this: one (1) ceramic frog, intact, approximately marble-sized, identical to the one in Sam's junk drawer. a small ceramic frog, intact, marble-sized, identical to Sam's and Diego's. a single small ceramic frog, intact, marble-sized, on the windowsill above his kitchen sink. a tiny ceramic frog glued to the lower-right corner. The frog is intact. three ceramic frogs. they were intact. they were marble-sized. The ceramic frog \u2014 distributed for forty years by the medium. Sam has one. Diego has one. Maya has one. Skip has one. Rick has Dean's grandmother's. Ninety-seven frogs across the deck.\nSingle-object concept render of The ceramic frog, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/ceramic_frog/ceramic_frog_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ceramic_frog/ceramic_frog_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ceramic_frog/ceramic_frog_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:12:49+00:00",
+    "stage": "image",
+    "slug": "shortwave_radio",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Linda Caldwell's shortwave radio like this: The radio was your grandfather's. He had built it himself. She is, at eleven PM on a Thursday in late May, at her shortwave radio. She is not, tonight, listening. She is, tonight, transmitting. She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her Her grandmother keys the Morse: Maya says hi. She releases the key. The radio hums. sit together at the radio for another twenty minutes, not speaking, listening to the soft carrier hiss of 1776 kHz the shortwave radio your grandmother is running on 1776 khz the upstairs shortwave at Linda Caldwell's\nSingle-object concept render of Linda Caldwell's shortwave radio, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/shortwave_radio/shortwave_radio_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/shortwave_radio/shortwave_radio_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/shortwave_radio/shortwave_radio_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:13:42+00:00",
+    "stage": "image",
+    "slug": "porch_wicker_chair",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The porch wicker chair like this: It has, against the back wall, a wicker chair that had been her mother's and that had come down to Texas in the move from Lubbock in 1989 and that has, in the years since, lived in three different houses with her. a small wicker chair from her mother's porch in Lubbock She puts the coffee cup down on the wicker chair's arm. Linda is in the wicker chair from the Caldwell porch, which Maya has wheeled out to the yard. The porch light is on. Linda is in the wicker chair \u2014 the one she has been in every evening this week, at the careful pace of a seventy-one-year-old whose hip is healed but who does not yet take the healed-ness for granted The porch light is on. Linda is in the wicker chair. She has, on the small table beside her, two glasses of iced tea \u2014 the one she has been drinking, and the one she has poured for Maya in advance.\nSingle-object concept render of The porch wicker chair, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/porch_wicker_chair/porch_wicker_chair_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/porch_wicker_chair/porch_wicker_chair_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/porch_wicker_chair/porch_wicker_chair_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:14:38+00:00",
+    "stage": "image",
+    "slug": "karamazov_paperback",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The 1976 Penguin Brothers Karamazov like this: The paperback is from 1976, a Penguin Classic edition of The Brothers Karamazov, with a spine that has been creased and re-creased so many times the title is mostly suggestion. He bought it at a bookstore in Beaumont in 1998. Doug is in his standard break-room position \u2014 the chair against the back wall, thermos at his feet, The Brothers Karamazov open on his lap. Doug picks the Karamazov up off the floor and puts it in his jacket pocket.\nSingle-object concept render of The 1976 Penguin Brothers Karamazov, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/karamazov_paperback/karamazov_paperback_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/karamazov_paperback/karamazov_paperback_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/karamazov_paperback/karamazov_paperback_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:15:31+00:00",
+    "stage": "image",
+    "slug": "substation_nine_lyric_sheet",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The 'Substation Nine' lyric sheet like this: The sheet of paper is the lyric sheet for Substation Nine that Eileen had brought home for him from the band's printed flyer earlier this week. He folds the lyric sheet. He puts it in the breast pocket of his shirt. The lyric sheet for Substation Nine is in the breast pocket of the shirt his father is wearing to sleep in.\nSingle-object concept render of The 'Substation Nine' lyric sheet, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe rest of the writing on it, in full, readable, spelled exactly: SUBURBAN BLIGHT\nSUBSTATION NINE\nwords: Jesse \u00b7 music: Suburban Blight\n\n1.\nThere's a fence out past the feed store\nwith a hum you learn to sleep through\nthirty years of nobody asking\nwhat the humming's for\n\nCHORUS\nSubstation nine, substation nine\nwe drive the long way round it every time\nthe lights stay on, the yards stay green\nand nobody says what it means\n\n2.\nMy father knows the gate code\nmy mother knows the hour\nthe whole town knows the turnoff\nand nobody knows the power\n\nCHORUS\n\nBRIDGE\nhere we are anyway\nwith the thing we have been carrying\nand the room we are carrying it in\nand the people we are carrying it with\nand the small late evening, in mid-august\nwhen the door is open two inches and the light is faint\nand we are in the parking lot\nbut not closer\n\n3.\nCount the trucks at one a.m.\ncount the lights that shouldn't be\nthirty years is a long time\nto look at what you don't see\n\nCHORUS (x2)\n\nSUBURBAN BLIGHT \u00b7 NEW AUBURN'S OWN \u00b7 THE FOXHOLE \u00b7 SATURDAY 8/22 No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/substation_nine_lyric_sheet/substation_nine_lyric_sheet_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/substation_nine_lyric_sheet/substation_nine_lyric_sheet_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/substation_nine_lyric_sheet/substation_nine_lyric_sheet_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:16:25+00:00",
+    "stage": "image",
+    "slug": "gracielas_rosary",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Graciela's rosary like this: is sitting on the edge of her bed in the dark, holding a rosary she is not praying with. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand.\nSingle-object concept render of Graciela's rosary, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/gracielas_rosary/gracielas_rosary_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/gracielas_rosary/gracielas_rosary_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/gracielas_rosary/gracielas_rosary_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:17:29+00:00",
+    "stage": "image",
+    "slug": "mayas_zine",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Maya's zine like this: Quarter-letter size (3.5 x 4.25 inches), eight pages each, photocopied at the Cosmic Comics machine on Sunday mornings before Rick comes in. rendered as a hybrid of text, comix, and small map fragments. Maya works in fineliner pen and grey marker. The byline reads: \"by M.D.\" ZINES \u2014 photocopied, stapled, sold by hand at Cosmic Comics or through the manila envelope at the Kwik Stop. Cosmic Comics' paper stock is the regional signature.\nSingle-object concept render of Maya's zine, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe main lettering reads exactly: NEWS FROM HARMONY CREEK. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: Top copy, cover (cut-and-paste collage letters):\nNEWS FROM HARMONY CREEK\n#14\nTHE SPRINKLERS DO NOT RUN ON MONDAYS\nby M.D.\n(a fineliner drawing of a dry front lawn and a sprinkler head, a small map fragment with GALLATIN AVE and MEADOWLARK CIR. hand-lettered)\npull-quote, typewriter strip pasted at an angle: \"the landscape's narrative of endurance\" \u2014 HOA Residential Conduct Standards\nbottom corner: $1 \u00b7 ask at the back counter, Cosmic Comics\nSecond copy fanned beneath, its cover showing:\nNEWS FROM HARMONY CREEK\n#13\nTHE THERMOMETER AT THE KWIK STOP SAYS 97\nby M.D.\n(a grey-marker drawing of a dial thermometer stuck at 97) No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/mayas_zine/mayas_zine_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mayas_zine/mayas_zine_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mayas_zine/mayas_zine_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:18:27+00:00",
+    "stage": "image",
+    "slug": "white_van",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The white unmarked van like this: At 15:11, a white NexCorp Residential Solutions van enters the lot and parks next to the Louisiana pickup. Two men get out. They are wearing navy polo shirts with the NexCorp logo on the chest, khaki pants, work boots. At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. to be visited at night by a small white panel van. The van arrives between one and three AM. a white unmarked van pulls into the lot of the building that is not on the map. The unmarked van is at pump six. In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes. the unmarked NexCorp van he had flagged on Thursday was not in the lot today.\nSingle-object concept render of The white unmarked van, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/white_van/white_van_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/white_van/white_van_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/white_van/white_van_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:19:21+00:00",
+    "stage": "image",
+    "slug": "sams_corolla",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Sam's Corolla like this: Sam gets out of the Corolla. Sam arrives second. She is in the Corolla. She parks behind Ben's truck. she does not have a car; the Corolla is Sam's He can see, at the curb, his own daughter's Corolla.\nSingle-object concept render of Sam's Corolla, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/sams_corolla/sams_corolla_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sams_corolla/sams_corolla_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sams_corolla/sams_corolla_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:20:19+00:00",
+    "stage": "image",
+    "slug": "diegos_f150",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Diego's black F-150 like this: Diego's 2008 Ford F-150, dark grey, plate DGR-1188, will be found in the abandoned parking lot of the Skyway Drive-In Theater, twelve miles north of Houma off Highway 90, on the Sunday morning following his disappearance. The driver's window is broken from the outside. The cab is otherwise undisturbed. April 28 \u00b7 11:52 \u00b7 diego's black f-150 \u00b7 TX plate DGR-1188 \u00b7 driver NOT diego \u00b7 driver wore a hat \u00b7 could not see face a black F-150 (Diego's) Three: the truck \u2014 his truck, his red pickup, his \u2014 was the only thing he could give them that would not be either his grandmother or himself.\nSingle-object concept render of Diego's black F-150, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/diegos_f150/diegos_f150_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/diegos_f150/diegos_f150_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/diegos_f150/diegos_f150_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:21:24+00:00",
+    "stage": "image",
+    "slug": "coach_k_f250",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Coach K's white F-250 like this: The truck is the white Ford F-250 with the camper shell and the ladder rack and the tape job on the driver's-side mirror Coach K has been meaning to replace since spring. in a black F-150 that is, like Coach K's, immaculate\nSingle-object concept render of Coach K's white F-250, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/coach_k_f250/coach_k_f250_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/coach_k_f250/coach_k_f250_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/coach_k_f250/coach_k_f250_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:22:19+00:00",
+    "stage": "image",
+    "slug": "iv_pole",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "A hospital IV pole on a five-wheel base, chrome telescoping shaft, two hooks at the top holding a clear fluid bag with tubing looped down, a small infusion pump clamped mid-shaft.\nSingle-object concept render of The IV pole, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/iv_pole/iv_pole_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/iv_pole/iv_pole_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/iv_pole/iv_pole_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T17:23:18+00:00",
+    "stage": "image",
+    "slug": "tarot_deck_wine_stained",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The wine-stained tarot deck like this: From a thrift store on the river side. Used as a prop and then, after the prop became a habit, as a deck. The wine stain is from '23. You have not, in two years, gotten the wine out. Thrift-store tarot decks sticky with spilled wine. Tarot Deck \u00b7 sticky with spilled wine the bookshelf \u00b7 thrift-store tarot decks (one sticky with spilled wine) \u00b7 the mirror shard on the third shelf\nSingle-object concept render of The wine-stained tarot deck, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
