@@ -34133,5 +34133,26 @@
       "godot/assets/concept/meshy/inoculation_nurse/inoculation_nurse_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/inoculation_nurse/inoculation_nurse_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T21:21:37+00:00",
+    "stage": "image",
+    "slug": "brother_in_law",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Caroline's brother-in-law like this: Caroline is standing as the SISTER and BROTHER-IN-LAW go about their business, yelling at each other, ignoring her. Additional direction: Caroline's brother-in-law, a tired working man in his late thirties, sour and short-tempered at home: thinning hair, an undershirt and braces, wool work trousers, stocking feet \u2014 no socks, as he keeps saying.\nFull-body concept render of Caroline's brother-in-law, a character from a literary visual novel set in small-town America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/brother_in_law/brother_in_law_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/brother_in_law/brother_in_law_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/brother_in_law/brother_in_law_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
