@@ -26357,5 +26357,88 @@
     "outputs": [
       "godot/assets/concept/meshy/panel_vol5_packing_boxes/panel_vol5_packing_boxes_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:16:48+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol5_packing_boxes",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol5_packing_boxes/front.png",
+    "output": "godot/assets/cg/panel_vol5_packing_boxes.jpg"
+  },
+  {
+    "at": "2026-10-27T04:17:13+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_whispers_channel",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a laptop left open on a dark channel page like this: Somewhere a laptop has been left open. A channel page, dark theme, a row of thumbnails the color of rooms with the lights off. Additional direction: A laptop left open on a table in a dark room, its screen the only light: a dark-themed video channel page, one row of small thumbnails, each the dim colour of a room with the lights off. Night, nobody there, the glow falling on the tabletop.\nA single full-screen still for a literary visual novel set in America: a laptop left open on a dark channel page. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_whispers_channel/vol5_prelude_whispers_channel_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:17:24+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_whispers_channel",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_whispers_channel/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_whispers_channel.jpg"
+  },
+  {
+    "at": "2026-10-27T04:17:42+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep01_umbra",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a late night of smoke and scotch, five friends' living room, like this: If I had to pinpoint the exact germ, the single speck of information where the whole crazy enterprise stemmed from, it'd be a casual remark Martin made over a very late round of smoke and scotch. Additional direction: A cramped shared apartment living room very late at night, after the talking: a low table of scotch glasses and a bottle, an overflowing ashtray, a haze of smoke under one lamp, mismatched chairs and a sagging couch pulled around the table for five, game boxes and books stacked on the floor. Warm lamplight, deep shadows, the city dark in the window.\nA single full-screen still for a literary visual novel set in America: a late night of smoke and scotch, five friends' living room. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep01_umbra/vol5_prelude_ep01_umbra_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:17:50+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep01_umbra",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep01_umbra/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep01_umbra.jpg"
+  },
+  {
+    "at": "2026-10-27T04:18:08+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep02_in_flux",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a seventh-grade English classroom on a Thursday like this: The Curious George clock ticktocks unnoticed. Statue of a raven, painted cheaply, looks down from above. It smells like freshly cleaned, industrially cleaned, tightly woven carpet. Purple speckled white in places. Additional direction: An empty seventh-grade English classroom in a Texas middle school, late in the school year: rows of desks, purple carpet speckled white, walls crowded with motivational and test-prep posters and a sticker board of paper insects, a cheap painted raven statue on a high shelf looking down, a rubber duck hanging from the ceiling like a mobile with paper words dangling off it, a Curious George wall clock, a framed teaching degree hung prominently, a computer station in the corner, the flag. Fluorescent morning light, no one in the room yet.\nA single full-screen still for a literary visual novel set in Texas: a seventh-grade English classroom on a Thursday. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep02_in_flux/vol5_prelude_ep02_in_flux_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:18:22+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep02_in_flux",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep02_in_flux/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep02_in_flux.jpg"
   }
 ]

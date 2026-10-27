@@ -340,6 +340,11 @@
    "md5": "9228f513342fc715fd3379303a5e6fc7",
    "size": 61049560
   },
+  "godot/assets/3d/characters/heroes/_full/janessa.glb": {
+   "at": "2026-10-27T04:16:52+00:00",
+   "md5": "1154ce3ab2fed79300ea64b418bbd3ba",
+   "size": 63842496
+  },
   "godot/assets/3d/characters/heroes/_full/jen.glb": {
    "at": "2026-10-18T18:26:34+00:00",
    "md5": "668a0ba1c10c392bda219e016cd6d667",
@@ -2934,6 +2939,31 @@
    "at": "2026-10-27T02:33:21+00:00",
    "md5": "b20840ef5ad90f1ad3694416c8f8c553",
    "size": 17081
+  },
+  "godot/assets/3d/characters/heroes/janessa.glb": {
+   "at": "2026-10-27T04:16:44+00:00",
+   "md5": "6daa467ea06993d6fe3223c97e37e17b",
+   "size": 5757980
+  },
+  "godot/assets/3d/characters/heroes/janessa_Image_0.jpg": {
+   "at": "2026-10-27T04:16:44+00:00",
+   "md5": "ddb195e656565ff458e391551c84be4e",
+   "size": 553353
+  },
+  "godot/assets/3d/characters/heroes/janessa_Image_1.jpg": {
+   "at": "2026-10-27T04:16:44+00:00",
+   "md5": "01af8f667247f5289911a20e959e5601",
+   "size": 100113
+  },
+  "godot/assets/3d/characters/heroes/janessa_Image_2.jpg": {
+   "at": "2026-10-27T04:16:44+00:00",
+   "md5": "ad55268f13b7dd8601aedada51a08cfc",
+   "size": 173098
+  },
+  "godot/assets/3d/characters/heroes/janessa_Image_3.jpg": {
+   "at": "2026-10-27T04:16:44+00:00",
+   "md5": "6150f1da64d82660ac0f8c4ca7d0b4c1",
+   "size": 17041
   },
   "godot/assets/3d/characters/heroes/jen.glb": {
    "at": "2026-10-18T18:26:23+00:00",
@@ -6160,6 +6190,11 @@
    "md5": "8ea77c802ac32dfdb56516eed3f699df",
    "size": 2853134
   },
+  "godot/assets/art/hero/diner_folded_note.png": {
+   "at": "2026-10-27T04:16:57+00:00",
+   "md5": "c3d48d0bb9b9802f3992a00873fca6ba",
+   "size": 2516772
+  },
   "godot/assets/art/hero/diner_john_notebook.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "bc3fc8fcdc577568d554202b555f65f5",
@@ -7039,6 +7074,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "ad9c253361d5f501bada3ece0c45eaf8",
    "size": 1208589
+  },
+  "godot/assets/art/hero/maya_bedroom_manila_envelope.png": {
+   "at": "2026-10-27T04:16:57+00:00",
+   "md5": "4ba2800c591d7733b5a53d953232f584",
+   "size": 2650226
   },
   "godot/assets/art/hero/maya_bedroom_tapestry_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -72740,6 +72780,11 @@
    "md5": "29bee6b80ee47f3dead539486a4241a2",
    "size": 1955483
   },
+  "godot/assets/concept/meshy/janessa/meshy_thumb.png": {
+   "at": "2026-10-27T04:17:06+00:00",
+   "md5": "c6d626e8223b1dc40e2e88d2ec2d0519",
+   "size": 94897
+  },
   "godot/assets/concept/meshy/janessa/side.png": {
    "at": "2026-10-27T04:06:54+00:00",
    "md5": "29bee6b80ee47f3dead539486a4241a2",
@@ -73895,6 +73940,16 @@
    "md5": "367bb305110892ead8ec30e3ac46dae1",
    "size": 3690153
   },
+  "godot/assets/concept/meshy/maya_bedroom_dock_photograph/front.png": {
+   "at": "2026-10-27T04:17:15+00:00",
+   "md5": "c1cfb41bd08cc2e8e6cc45b80d409b4a",
+   "size": 2872273
+  },
+  "godot/assets/concept/meshy/maya_bedroom_dock_photograph/maya_bedroom_dock_photograph_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:17:15+00:00",
+   "md5": "c1cfb41bd08cc2e8e6cc45b80d409b4a",
+   "size": 2872273
+  },
   "godot/assets/concept/meshy/maya_bedroom_framed_print/front.png": {
    "at": "2026-10-14T03:07:19+00:00",
    "md5": "b26da07670bdab0f3294c21599da1abf",
@@ -73944,6 +73999,16 @@
    "at": "2026-10-14T03:07:33+00:00",
    "md5": "ad9c253361d5f501bada3ece0c45eaf8",
    "size": 1208589
+  },
+  "godot/assets/concept/meshy/maya_bedroom_manila_envelope/front.png": {
+   "at": "2026-10-27T04:17:25+00:00",
+   "md5": "4ba2800c591d7733b5a53d953232f584",
+   "size": 2650226
+  },
+  "godot/assets/concept/meshy/maya_bedroom_manila_envelope/maya_bedroom_manila_envelope_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:17:25+00:00",
+   "md5": "4ba2800c591d7733b5a53d953232f584",
+   "size": 2650226
   },
   "godot/assets/concept/meshy/maya_bedroom_tapestry_1/front.png": {
    "at": "2026-10-14T03:07:41+00:00",
@@ -75149,6 +75214,56 @@
    "at": "2026-10-14T03:17:19+00:00",
    "md5": "e84cbd5a11ecc734f7c72d5b70d7e3e5",
    "size": 2246677
+  },
+  "godot/assets/concept/meshy/panel_vol5_folded_napkin/front.png": {
+   "at": "2026-10-27T04:17:39+00:00",
+   "md5": "9a475767f24500fa410a44c27807ee90",
+   "size": 2212648
+  },
+  "godot/assets/concept/meshy/panel_vol5_folded_napkin/panel_vol5_folded_napkin_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:17:39+00:00",
+   "md5": "9a475767f24500fa410a44c27807ee90",
+   "size": 2212648
+  },
+  "godot/assets/concept/meshy/panel_vol5_model_city/front.png": {
+   "at": "2026-10-27T04:17:51+00:00",
+   "md5": "3f1147337016d5600320646303fced81",
+   "size": 3408596
+  },
+  "godot/assets/concept/meshy/panel_vol5_model_city/panel_vol5_model_city_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:17:51+00:00",
+   "md5": "3f1147337016d5600320646303fced81",
+   "size": 3408596
+  },
+  "godot/assets/concept/meshy/panel_vol5_packing_boxes/front.png": {
+   "at": "2026-10-27T04:18:12+00:00",
+   "md5": "65670151bcde66108b35285421b4fde8",
+   "size": 2696669
+  },
+  "godot/assets/concept/meshy/panel_vol5_packing_boxes/panel_vol5_packing_boxes_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:18:12+00:00",
+   "md5": "65670151bcde66108b35285421b4fde8",
+   "size": 2696669
+  },
+  "godot/assets/concept/meshy/panel_vol5_q_paul/front.png": {
+   "at": "2026-10-27T04:18:21+00:00",
+   "md5": "18cb332185c5e9e6f23b766b638099f9",
+   "size": 1901281
+  },
+  "godot/assets/concept/meshy/panel_vol5_q_paul/panel_vol5_q_paul_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:18:21+00:00",
+   "md5": "18cb332185c5e9e6f23b766b638099f9",
+   "size": 1901281
+  },
+  "godot/assets/concept/meshy/panel_vol5_record_player/front.png": {
+   "at": "2026-10-27T04:18:30+00:00",
+   "md5": "41ee4633192199e2fba8425478ed6cd9",
+   "size": 1786767
+  },
+  "godot/assets/concept/meshy/panel_vol5_record_player/panel_vol5_record_player_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:18:30+00:00",
+   "md5": "41ee4633192199e2fba8425478ed6cd9",
+   "size": 1786767
   },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
