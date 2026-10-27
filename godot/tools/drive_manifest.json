@@ -76390,6 +76390,36 @@
    "md5": "43cf3f385a439a9f73ef3fd3d17fcac1",
    "size": 64073
   },
+  "godot/assets/concept/meshy/dickens_dean_daddy/back.png": {
+   "at": "2026-10-27T16:06:43+00:00",
+   "md5": "bb31304ab02a0bf0892e0c3b214321eb",
+   "size": 1998441
+  },
+  "godot/assets/concept/meshy/dickens_dean_daddy/dickens_dean_daddy_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:06:43+00:00",
+   "md5": "bb31304ab02a0bf0892e0c3b214321eb",
+   "size": 1998441
+  },
+  "godot/assets/concept/meshy/dickens_dean_daddy/dickens_dean_daddy_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:06:43+00:00",
+   "md5": "da638c79a8a54548b14ecfdebd269750",
+   "size": 2046133
+  },
+  "godot/assets/concept/meshy/dickens_dean_daddy/dickens_dean_daddy_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:06:43+00:00",
+   "md5": "840f5006079b4948d5911dd9f0d1096b",
+   "size": 1907048
+  },
+  "godot/assets/concept/meshy/dickens_dean_daddy/front.png": {
+   "at": "2026-10-27T16:06:43+00:00",
+   "md5": "da638c79a8a54548b14ecfdebd269750",
+   "size": 2046133
+  },
+  "godot/assets/concept/meshy/dickens_dean_daddy/side.png": {
+   "at": "2026-10-27T16:06:43+00:00",
+   "md5": "840f5006079b4948d5911dd9f0d1096b",
+   "size": 1907048
+  },
   "godot/assets/concept/meshy/diego_bedroom_laptop_screen/diego_bedroom_laptop_screen_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:43:29+00:00",
    "md5": "fcab17aa27fc8dd7ba71ba2989637fce",
@@ -76964,6 +76994,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "76f163c5e3afe4059dbff63eadef1984",
    "size": 74920
+  },
+  "godot/assets/concept/meshy/elicia_temple_montreal/back.png": {
+   "at": "2026-10-27T16:06:54+00:00",
+   "md5": "8e43ddb791a4b30526328f06ed604617",
+   "size": 2149640
+  },
+  "godot/assets/concept/meshy/elicia_temple_montreal/elicia_temple_montreal_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:06:54+00:00",
+   "md5": "8e43ddb791a4b30526328f06ed604617",
+   "size": 2149640
+  },
+  "godot/assets/concept/meshy/elicia_temple_montreal/elicia_temple_montreal_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:06:54+00:00",
+   "md5": "c60b447a103b8353d0cba947a1871e3d",
+   "size": 2202656
+  },
+  "godot/assets/concept/meshy/elicia_temple_montreal/elicia_temple_montreal_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:06:54+00:00",
+   "md5": "d1ba98bb0101e02d454092b628ea7abe",
+   "size": 2047130
+  },
+  "godot/assets/concept/meshy/elicia_temple_montreal/front.png": {
+   "at": "2026-10-27T16:06:54+00:00",
+   "md5": "c60b447a103b8353d0cba947a1871e3d",
+   "size": 2202656
+  },
+  "godot/assets/concept/meshy/elicia_temple_montreal/side.png": {
+   "at": "2026-10-27T16:06:54+00:00",
+   "md5": "d1ba98bb0101e02d454092b628ea7abe",
+   "size": 2047130
   },
   "godot/assets/concept/meshy/em_keys/back.png": {
    "at": "2026-10-11T16:47:05+00:00",
@@ -80349,6 +80409,36 @@
    "at": "2026-10-14T03:11:21+00:00",
    "md5": "50e4ee4bcfb0bcb694053758b60c1030",
    "size": 2570156
+  },
+  "godot/assets/concept/meshy/nate_kestrel/back.png": {
+   "at": "2026-10-27T16:07:10+00:00",
+   "md5": "a7205e311a3e8861d35a1156a1aef20e",
+   "size": 2047115
+  },
+  "godot/assets/concept/meshy/nate_kestrel/front.png": {
+   "at": "2026-10-27T16:07:10+00:00",
+   "md5": "e986e77db10f36b5a7041e2500ac3786",
+   "size": 2061698
+  },
+  "godot/assets/concept/meshy/nate_kestrel/nate_kestrel_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:07:10+00:00",
+   "md5": "a7205e311a3e8861d35a1156a1aef20e",
+   "size": 2047115
+  },
+  "godot/assets/concept/meshy/nate_kestrel/nate_kestrel_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:07:10+00:00",
+   "md5": "e986e77db10f36b5a7041e2500ac3786",
+   "size": 2061698
+  },
+  "godot/assets/concept/meshy/nate_kestrel/nate_kestrel_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:07:10+00:00",
+   "md5": "8038fad5f9fff25e4ce66fef1168acc6",
+   "size": 1925499
+  },
+  "godot/assets/concept/meshy/nate_kestrel/side.png": {
+   "at": "2026-10-27T16:07:10+00:00",
+   "md5": "8038fad5f9fff25e4ce66fef1168acc6",
+   "size": 1925499
   },
   "godot/assets/concept/meshy/new_auburn_courtroom_bar_1/front.png": {
    "at": "2026-10-14T03:11:28+00:00",
