@@ -276,9 +276,12 @@
    "built": "2026-10-16 draft 1"
   },
   "vol2_backyard_party_summer": {
-   "fit": "reuse",
-   "to": "3d:kowalski_backyard",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:small_wood_backyard_party",
+   "build": "small_wood_backyard",
+   "note": "her fifteenth birthday: the table, the sprinkler and slip and slide, the balloon husks, the hutches (was vol 6's Texas backyard)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol2_barn_interior": {
    "fit": "exact",

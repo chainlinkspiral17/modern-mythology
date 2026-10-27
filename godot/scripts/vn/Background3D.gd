@@ -1674,6 +1674,20 @@ const CAMERA_PRESETS := {
 	# 6's 2026 Texas field. Small Wood's own (Andy: green and white; a running
 	# track round the field; the home stand covered under an elevated slanted
 	# roof): the stand east past the track, the wooden poles, the firs.
+	# ── VOL 2 — "mayhune": her fifteenth birthday (build_small_wood_backyard.py, 2026-10-27) ──
+	# It played on vol 6's 2026 Texas backyard. "a large table out in the
+	# backyard. It was summer"; "a sprinkler, on a slip and slide"; "broken water
+	# balloons ... in the tall grass"; "a fog horn off in the distance, birds
+	# overhead". From the lawn by the slip and slide, back across the yard to
+	# the table and the house, the firs over the fence behind the lens.
+	"small_wood_backyard_party": {
+		"scene": "res://scenes/locales/small_wood_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_backyard.glb",
+		"camera_origin": Vector3(6.5, 1.6, -14.5),
+		"camera_rotation": Vector3(-0.06, 2.17, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"small_wood_field_night": {
 		"scene": "res://scenes/locales/small_wood_field.tscn",
 		"far": 600.0,   # the ridges behind the firs

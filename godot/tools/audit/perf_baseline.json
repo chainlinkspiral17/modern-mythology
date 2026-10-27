@@ -279,6 +279,11 @@
   "prims": 31240,
   "objects": 518
  },
+ "small_wood_backyard": {
+  "draw": 72,
+  "prims": 25284,
+  "objects": 242
+ },
  "small_wood_farmhouse": {
   "draw": 150,
   "prims": 41312,

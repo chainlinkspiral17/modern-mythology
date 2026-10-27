@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 200: HER FIFTEENTH BIRTHDAY in Small Wood.**
+- **Before:** vol 2's "mayhune" played on vol 6's 2026 Texas backyard.
+- **New set `small_wood_backyard`** (draft 1, late-90s Oregon): the back of a 1970s house with its deck, slider and grill, and "a large table out in the backyard" with cake, cherry soda and presents. Also:
+  - "a sprinkler, on a slip and slide";
+  - "the bright husks of broken water balloons ... in the tall grass";
+  - her old rabbit hutches along the silvered cedar fence;
+  - Douglas fir over it.
+- **Pictures:** two inserts (the cake, the hutches); the gates at 0.
+- **Draft N+1:**
+  - her room for the scene's second picture (it maps to the narrator's bedroom);
+  - kids with poses in the sprinkler.
+
 **2026-10-27 · pass 199: SMALL WOOD'S OWN YEARS on Smolvud's sets.**
 - Smolvud is the 2050s Small Wood (Andy), so vol 2's 1997 coast is vol 7's places in their own years.
 - **`coast_highway_day`:** the coast road on a clear day, for:
