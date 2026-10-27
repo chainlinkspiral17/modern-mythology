@@ -72715,6 +72715,36 @@
    "md5": "e47f10f110e900bf6ac307cdb9cc18f6",
    "size": 1978691
   },
+  "godot/assets/concept/meshy/janessa/back.png": {
+   "at": "2026-10-27T04:06:54+00:00",
+   "md5": "55c43763aaa0ffe74e5f24ecf93d462e",
+   "size": 1986405
+  },
+  "godot/assets/concept/meshy/janessa/front.png": {
+   "at": "2026-10-27T04:06:54+00:00",
+   "md5": "7398d05f937595151f749f984a4ddf1e",
+   "size": 2011829
+  },
+  "godot/assets/concept/meshy/janessa/janessa_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:06:54+00:00",
+   "md5": "55c43763aaa0ffe74e5f24ecf93d462e",
+   "size": 1986405
+  },
+  "godot/assets/concept/meshy/janessa/janessa_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:06:54+00:00",
+   "md5": "7398d05f937595151f749f984a4ddf1e",
+   "size": 2011829
+  },
+  "godot/assets/concept/meshy/janessa/janessa_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:06:54+00:00",
+   "md5": "29bee6b80ee47f3dead539486a4241a2",
+   "size": 1955483
+  },
+  "godot/assets/concept/meshy/janessa/side.png": {
+   "at": "2026-10-27T04:06:54+00:00",
+   "md5": "29bee6b80ee47f3dead539486a4241a2",
+   "size": 1955483
+  },
   "godot/assets/concept/meshy/jen/back.png": {
    "at": "2026-10-18T18:27:04+00:00",
    "md5": "3576d64b43e343a30f58a1c78ba2f5a1",
