@@ -122,14 +122,16 @@
   },
   "style": {
     "hero": "Full-body concept render of {name}, a character from a literary visual novel set in {setting}. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.",
-    "demon": "Full-body concept render of {name}, an uncanny figure from a literary visual novel about thin places in {setting}. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.",
+    "demon": "Full-body concept render of {name}, one of the Demons from a literary visual novel set in {setting}: a small, humorous ELECTRONIC IMP — a digital sprite birthed from code and chaos, NOT a human and not a person in a costume. An impish creature about the height of a cat sitting up: an oversized head with a wide, too-knowing grin, big glowing eyes, long pointed ears or horns, spindly limbs, a thin whip of a tail. Its body is made of light and data — glowing phosphor and RGB pixels, scanline static breaking off its edges, and the scavenged electronics it inhabits: chipped RAM sticks like teeth, swollen capacitors, solder, a curl of ribbon cable. Standing facing the camera straight on, whole body in frame with margin, on a plain flat light-grey seamless background, even soft frontal light, one subject only. Bold, readable silhouette; modern painterly rendering at full resolution — never pixel-art or retro game-sprite style; a cool palette with one hot accent.",
+    "demon_human": "Full-body concept render of {name}, an uncanny figure from a literary visual novel about thin places in {setting}. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.",
     "prop": "Single-object concept render of {name}, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).",
     "suffix": "No captions or labels about the picture, no watermark, no border. Words that belong in the world — signs, papers, pages, screens, spines, labels, packaging — are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
     "suffix_hero": "No text, no captions, no labels, no watermark, no border.",
     "view_side": "Same subject, identical design, colours, clothing and details as the reference image, now seen from the left side in strict profile (90 degrees), same pose, same plain light-grey background, whole subject in frame.",
     "view_back": "Same subject, identical design, colours, clothing and details as the reference image, now seen directly from behind (180 degrees), same pose, same plain light-grey background, whole subject in frame.",
     "hero_short": "Full-body concept render of {name}: relaxed A-pose, facing camera, feet visible, whole body in frame, plain flat light-grey seamless background, even soft light, no cast shadow, one subject, semi-realistic painterly style, clean silhouette.",
-    "demon_short": "Full-body concept render of {name}: uncanny figure, relaxed A-pose, facing camera, whole body in frame, plain flat light-grey seamless background, even soft light, one subject, bold exaggerated silhouette, muted palette with one sickly accent, almost human, wrong in one or two ways.",
+    "demon_short": "Full-body concept render of {name}: a small humorous electronic imp, a digital sprite of glowing pixels, scanline static and scavenged circuitry (RAM sticks, capacitors) — not a human. Oversized head, wide grin, glowing eyes, pointed ears, spindly limbs, tail; facing camera, whole body in frame, plain light-grey background, even soft light, modern painterly rendering, not pixel art.",
+    "demon_human_short": "Full-body concept render of {name}: uncanny figure, relaxed A-pose, facing camera, whole body in frame, plain flat light-grey seamless background, even soft light, one subject, bold exaggerated silhouette, muted palette with one sickly accent, almost human, wrong in one or two ways.",
     "prop_short": "Single-object concept render of {name}: the object alone, centered, three-quarter view from slightly above, whole object in frame, plain flat light-grey seamless background, even soft light, no hands, no other objects, clear material read.",
     "art": "A single flat image of {name}, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.",
     "art_short": "Flat straight-on image of {name}, the artwork alone filling the frame edge to edge, no wall, frame, room or perspective, true to its medium.",
@@ -1519,7 +1521,7 @@
     {
       "slug": "the_demon",
       "kind": "demon",
-      "name": "The Demon (the man at the stool)",
+      "name": "The Demon (one of Frasier's imps)",
       "file": "the_demon.glb",
       "vol": [
         5
@@ -1529,48 +1531,38 @@
         "the demon",
         "demon"
       ],
-      "tag": "ch1 · DEVIL station · the only shipped demon",
+      "tag": "vol5 ch0-ch1 · Frasier's phone · the Demons (the imps of vol 6)",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "A lean man of no particular age sitting-height tall, in a black suit two decades out of date, white shirt buttoned to the neck with no tie, hair slicked flat, a smile held a half-second too long. Skin slightly too smooth, eyes slightly too dark, hands too still. The man at the empty bar stool.",
+      "prompt": "One of Frasier's Demons as it shows itself on his phone screen: a small grinning electronic imp made of pulsing phosphor light, RGB pixels and scanline static, its body pieced from scavenged components — chipped RAM sticks for teeth and spine, capacitors swollen like toadstools on its shoulders, a ribbon-cable tail. Wide knowing grin, two glowing eyes, long ears like antennae. Mischievous, a little embarrassed, very sure of itself.",
       "canon": [
         {
-          "src": "tools/gauntlet_studio.html",
-          "text": "Indeterminate age, lean, expensively underdressed. Hair too neat for the hour. A glass of something amber in front of him on the closed bar. Looking just slightly past the viewer's shoulder — the look of someone who already won the conversation. Bar mirror cracked behind him reflecting nothing."
+          "src": "vol5_ch0_frasier#18",
+          "text": "Frasier called them his humorous electronic imps, digital sprites birthed from code and chaos. Harmless was not the word."
         },
         {
-          "src": "tools/gauntlet_studio.html",
-          "text": "THE DEMON (medium + hard scenarios) — lean man, expensively underdressed, hair too neat for the hour. Sits at the DEVIL station's empty bar stool. He doesn't look at you directly. He helps when you don't ask."
+          "src": "vol5_ch1_magician#49",
+          "text": "The Demons fed on data streams the way mold fed on damp. Wifi signals. Stray thoughts caught on the ether. The background radiation of human misery."
         },
         {
-          "src": "tools/gauntlet_studio.html",
-          "text": "The empty bar stool at DEVIL station, but the indent on the seat is wrong — pressed down as if just-occupied. The air above the stool is faintly warped. A glass of amber liquid sits on the floor beside it that wasn't there a minute ago. No visible figure."
+          "src": "vol5_ch1_magician#54",
+          "text": "chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host."
         },
         {
-          "src": "games/magician/visitors.json",
-          "text": "He nods at you without turning his head."
+          "src": "vol5_ch1_magician#102",
+          "text": "watching the Demon-light pulse on the phone screen"
         },
         {
-          "src": "games/magician/visitors.json",
-          "text": "A glass of amber liquid is on the floor beside the stool that wasn't there before."
-        },
-        {
-          "src": "games/magician/visitors.json",
-          "text": "The glass goes cold the moment it leaves your hand. He doesn't drink it."
-        },
-        {
-          "src": "tools/gauntlet_studio.html",
-          "text": "The Demon's empty bar stool is now occupied; the figure on it has Frasier's silhouette."
-        },
-        {
-          "src": "lore/_VOL5_WIKI.md",
-          "text": "The Demon (at the Bar)** — the lean man at the Devil station's empty bar stool."
+          "src": "vol5_ch1_magician#105",
+          "text": "The Demon on his phone chuckled — a sound like dial-up modems drowning in molasses."
         }
-      ]
+      ],
+      "prompt_mode": "append",
+      "notes": " (2026-10-27) The user: \"the demons in the hero tool are all generating humans, not digital imps.\" In the text the Demons are Frasier's \"humorous electronic imps, digital sprites birthed from code and chaos\", living on his phone; the old entry was the TAROT GAUNTLET tool's 'man at the stool' (not canon). REGENERATE the_demon. The look beyond the quotes is proposed."
     },
     {
       "slug": "the_drifter",
-      "kind": "demon",
+      "kind": "hero",
       "name": "The Drifter at the door",
       "file": "the_drifter.glb",
       "vol": [
@@ -1617,11 +1609,12 @@
           "src": "lore/_VOL5_WIKI.md",
           "text": "The Drifter at the Bay** — the threshold figure in the army-surplus jacket."
         }
-      ]
+      ],
+      "notes": " (2026-10-27) moved from kind 'demon' to 'hero': a human visitor in the Magician gauntlet (visitors.json: \"three people who know him stopping by … two strangers\"), not one of the Demons — the demon kind is the imps now. Its model belongs in characters/heroes/."
     },
     {
       "slug": "the_birdwatcher",
-      "kind": "demon",
+      "kind": "hero",
       "name": "The Bird-watcher",
       "file": "the_birdwatcher.glb",
       "vol": [
@@ -1664,11 +1657,12 @@
           "src": "lore/_VOL5_WIKI.md",
           "text": "The Bird-Watcher** — the woman in the windbreaker at the river window."
         }
-      ]
+      ],
+      "notes": " (2026-10-27) moved from kind 'demon' to 'hero': a human visitor in the Magician gauntlet (visitors.json: \"three people who know him stopping by … two strangers\"), not one of the Demons — the demon kind is the imps now. Its model belongs in characters/heroes/."
     },
     {
       "slug": "the_critic",
-      "kind": "demon",
+      "kind": "hero",
       "name": "The Critic",
       "file": "the_critic.glb",
       "vol": [
@@ -1711,11 +1705,12 @@
           "src": "games/magician/gravity_deck_watch_party.json",
           "text": "He's on his phone at the bay door. His notes are already a post."
         }
-      ]
+      ],
+      "notes": " (2026-10-27) moved from kind 'demon' to 'hero': a human visitor in the Magician gauntlet (visitors.json: \"three people who know him stopping by … two strangers\"), not one of the Demons — the demon kind is the imps now. Its model belongs in characters/heroes/."
     },
     {
       "slug": "the_superfan",
-      "kind": "demon",
+      "kind": "hero",
       "name": "The Superfan",
       "file": "the_superfan.glb",
       "vol": [
@@ -1762,11 +1757,12 @@
           "src": "games/magician/visitors.json",
           "text": "she came alone"
         }
-      ]
+      ],
+      "notes": " (2026-10-27) moved from kind 'demon' to 'hero': a human visitor in the Magician gauntlet (visitors.json: \"three people who know him stopping by … two strangers\"), not one of the Demons — the demon kind is the imps now. Its model belongs in characters/heroes/."
     },
     {
       "slug": "the_twins",
-      "kind": "demon",
+      "kind": "hero",
       "name": "The Twins (Quinn & Quill)",
       "file": "the_twins.glb",
       "vol": [
@@ -1814,11 +1810,12 @@
           "src": "games/magician/setup_blow_out_the_candles.json",
           "text": "THE TWINS (a pair of visitors who arrive together and share patience)"
         }
-      ]
+      ],
+      "notes": " (2026-10-27) moved from kind 'demon' to 'hero': a human visitor in the Magician gauntlet (visitors.json: \"three people who know him stopping by … two strangers\"), not one of the Demons — the demon kind is the imps now. Its model belongs in characters/heroes/."
     },
     {
       "slug": "drunk_uncle",
-      "kind": "demon",
+      "kind": "hero",
       "name": "Drunk Uncle",
       "file": "drunk_uncle.glb",
       "vol": [
@@ -1860,7 +1857,8 @@
           "src": "games/magician/setup_blow_out_the_candles.json",
           "text": "DRUNK UNCLE (loud, gruff, will not be greeted)"
         }
-      ]
+      ],
+      "notes": " (2026-10-27) moved from kind 'demon' to 'hero': a human visitor in the Magician gauntlet (visitors.json: \"three people who know him stopping by … two strangers\"), not one of the Demons — the demon kind is the imps now. Its model belongs in characters/heroes/."
     },
     {
       "slug": "mackenzie_remote",
@@ -1914,7 +1912,9 @@
           "src": "vol5/vol5_ch6_lovers.json",
           "text": "Her quiet grace always seemed most potent when she was observing life's small persistent absurdities"
         }
-      ]
+      ],
+      "style": "demon_human",
+      "notes": " (2026-10-27) stays in the demons' folder (the in-game static mode) but keeps the uncanny-PERSON preamble (style demon_human): she is Mackenzie over the BBS, not an imp."
     },
     {
       "slug": "faust",

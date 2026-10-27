@@ -2224,6 +2224,10 @@ def build_prompt(roster, entry, view="front", provider=None):
     style_key = entry["kind"]
     if entry["kind"] == "scene2d" and entry.get("role") == "plate":
         style_key = "plate"          # an endpaper, not a scene: its own preamble
+    # an entry may name its own preamble (2026-10-27: Mackenzie over the BBS is a
+    # glitched PERSON in the demons' folder, not one of the imps)
+    if entry.get("style") and entry["style"] in roster["style"]:
+        style_key = entry["style"]
     if provider == "runway":
         style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
         style = styled(roster, entry, style)

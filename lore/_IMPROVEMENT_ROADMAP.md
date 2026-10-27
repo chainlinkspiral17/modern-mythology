@@ -3835,6 +3835,14 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 194: THE DEMONS ARE IMPS.**
+- The user: "the demons in the hero tool are all generating humans, not digital imps."
+- In the text the Demons are Frasier's "humorous electronic imps, digital sprites birthed from code and chaos", living on his phone ("the Demon-light pulse on the phone screen"; a chuckle "like dial-up modems drowning in molasses"); vol 6's imps are the same software.
+- **The demon kind's preamble** now draws an electronic imp: never a human; pixels, scanline static and scavenged circuitry; a modern painterly render, not pixel art.
+- **`the_demon`:** rebuilt from the vol 5 quotes. The old entry was the gauntlet tool's "man at the stool"; REGENERATE it.
+- **Re-filed as heroes:** the six Magician-gauntlet visitors (drifter, bird-watcher, critic, superfan, twins, drunk uncle) were ordinary people filed as demons; they are kind hero now.
+- **`mackenzie_remote`** stays in the demons' folder (the static mode) under its own uncanny-person preamble (`style: demon_human`). An entry may now name its own preamble.
+
 **2026-10-27 · pass 193: SMALL WOOD'S FIELD, draft 2 — Andy's answers.**
 - Andy: "small wood high is green primary white secondary"; "field has a running track around it"; "Home stand is covered with an elevated slanted roof."
 - **Colours:** green jerseys and helmets, white pants; the stand's white paint and green trim; green and white through the home crowd's coats.
