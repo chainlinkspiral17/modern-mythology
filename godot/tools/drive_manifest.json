@@ -5310,6 +5310,11 @@
    "md5": "0990665c208f0fe836029d8aab0ed3aa",
    "size": 13354312
   },
+  "godot/assets/3d/props/_full/comic_figure_1.glb": {
+   "at": "2026-10-27T05:48:07+00:00",
+   "md5": "fa110bba2a0266809626b2a49375e14b",
+   "size": 4058124
+  },
   "godot/assets/3d/props/_full/comic_figure_2.glb": {
    "at": "2026-10-27T04:44:08+00:00",
    "md5": "b598b394484b1b3e2dda6c7901518426",
@@ -5384,6 +5389,11 @@
    "at": "2026-10-27T05:43:18+00:00",
    "md5": "0e079fa132efc4a28458163cf5daf42f",
    "size": 214832
+  },
+  "godot/assets/3d/props/comic_figure_1.glb": {
+   "at": "2026-10-27T05:48:02+00:00",
+   "md5": "cdafed5fc446ff2781366b27a2ef23ce",
+   "size": 488260
   },
   "godot/assets/3d/props/comic_figure_2.glb": {
    "at": "2026-10-27T04:44:03+00:00",
@@ -70585,15 +70595,40 @@
    "md5": "e185f65d659254db6c0ab4ef93a16ae0",
    "size": 1992187
   },
+  "godot/assets/concept/meshy/comic_figure_1/back.png": {
+   "at": "2026-10-27T05:48:27+00:00",
+   "md5": "1fbc67e290b60232765363e8f493bbd1",
+   "size": 2406065
+  },
+  "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:48:27+00:00",
+   "md5": "1fbc67e290b60232765363e8f493bbd1",
+   "size": 2406065
+  },
   "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T05:45:08+00:00",
    "md5": "907581e7040d98f1a840ad1a49801987",
    "size": 2522819
   },
+  "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:48:27+00:00",
+   "md5": "e6df82fcfe7b6070bc4848e2140f80be",
+   "size": 2429568
+  },
   "godot/assets/concept/meshy/comic_figure_1/front.png": {
    "at": "2026-10-27T05:45:08+00:00",
    "md5": "907581e7040d98f1a840ad1a49801987",
    "size": 2522819
+  },
+  "godot/assets/concept/meshy/comic_figure_1/meshy_thumb.png": {
+   "at": "2026-10-27T05:48:27+00:00",
+   "md5": "7268847f0159d510ea3fce362465bb2c",
+   "size": 137523
+  },
+  "godot/assets/concept/meshy/comic_figure_1/side.png": {
+   "at": "2026-10-27T05:48:27+00:00",
+   "md5": "e6df82fcfe7b6070bc4848e2140f80be",
+   "size": 2429568
   },
   "godot/assets/concept/meshy/comic_figure_2/back.png": {
    "at": "2026-10-27T04:44:40+00:00",

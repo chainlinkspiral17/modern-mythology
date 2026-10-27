@@ -28461,5 +28461,30 @@
     },
     "output": "godot/assets/3d/props/comic_figure_1.glb",
     "file_size_kb": 3963.0
+  },
+  {
+    "at": "2026-10-27T05:48:10+00:00",
+    "stage": "image",
+    "slug": "louisiana_road_far_treeline",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A long low band of Gulf Coast lowland woods at dusk, straight-on and filling the frame, built to tile side to side: a dense wall of bald cypress, water oak and loblolly pine with grey Spanish moss hanging from the near limbs, the tree line's ragged crown running along the top edge, the trunks lost in shadow and low mist at the bottom, everything muted blue-grey with distance under a deep dusk sky. No buildings, no signs, evenly exposed.\nSIZE: the real object is 70.00 m wide by 7.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 23% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the far treelines either side of the two-lane road, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/louisiana_road_far_treeline/louisiana_road_far_treeline_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:48:16+00:00",
+    "stage": "art",
+    "slug": "louisiana_road_far_treeline",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/louisiana_road_far_treeline/front.png",
+    "output": "godot/assets/art/hero/louisiana_road_far_treeline.png"
   }
 ]
