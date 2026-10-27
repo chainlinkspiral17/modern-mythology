@@ -28536,5 +28536,337 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/small_wood_farmhouse_far_ridges/front.png",
     "output": "godot/assets/art/hero/small_wood_farmhouse_far_ridges.png"
+  },
+  {
+    "at": "2026-10-27T05:49:26+00:00",
+    "stage": "image",
+    "slug": "small_wood_farmhouse_tv_sitcom",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the barely working TV on public broadcasting like this: She went into the living room and turned on the small, barely working television. Local reception was spotty, more radio than video. She tuned into public broadcasting, interrupted the middle of a raucous imported British sitcom. Additional direction: Straight-on, full-frame view of a small old television's picture, no bezel: a poorly received public-broadcasting station showing an imported British studio sitcom, a cramped living-room set with floral wallpaper, a man in a cardigan throwing up his arms and a woman in a housecoat at a doorway, the picture swimming in snow and static, rolling faintly, colours washed toward grey-green, ghost doubling from the rabbit ears. No recognisable actors, no captions or lettering. Evenly exposed.\nSIZE: the real object is 34 cm wide by 26 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the barely working TV on public broadcasting, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_farmhouse_tv_sitcom/small_wood_farmhouse_tv_sitcom_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:49:33+00:00",
+    "stage": "art",
+    "slug": "small_wood_farmhouse_tv_sitcom",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_farmhouse_tv_sitcom/front.png",
+    "output": "godot/assets/art/hero/small_wood_farmhouse_tv_sitcom.png"
+  },
+  {
+    "at": "2026-10-27T05:49:49+00:00",
+    "stage": "image",
+    "slug": "club_street_neon_sign_d",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a green neon sign on the far side of the street like this: neon over a city at night The street hums. Every streetlight has a halo and each halo has its own halo. Additional direction: A bar's neon sign, straight-on and filling the frame, its content in a horizontal band through the middle: a four-leaf clover beside a pint glass outlined in tube light, glowing green against a black backing board, the glass tubes bright with soft halo bloom, one short section flickered dim, the mounting clips and transformer box visible. A wordless pictogram sign, no letters or numbers. Around 2010, at night, evenly exposed.\nSIZE: the real object is 6.00 m wide by 90 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 35% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of a green neon sign on the far side of the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_neon_sign_d/club_street_neon_sign_d_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:49:54+00:00",
+    "stage": "art",
+    "slug": "club_street_neon_sign_d",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_neon_sign_d/front.png",
+    "output": "godot/assets/art/hero/club_street_neon_sign_d.png"
+  },
+  {
+    "at": "2026-10-27T05:50:11+00:00",
+    "stage": "image",
+    "slug": "club_street_neon_sign_c",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes an amber neon sign on the far side of the street like this: neon over a city at night The street hums. Every streetlight has a halo and each halo has its own halo. Additional direction: A bar's neon sign, straight-on and filling the frame, its content in a horizontal band through the middle: a five-point star and a long arrow pointing down at a doorway, glowing amber against a black backing board, the glass tubes bright with soft halo bloom, one short section flickered dim, the mounting clips and transformer box visible. A wordless pictogram sign, no letters or numbers. Around 2010, at night, evenly exposed.\nSIZE: the real object is 6.00 m wide by 90 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 35% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of an amber neon sign on the far side of the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_neon_sign_c/club_street_neon_sign_c_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:50:17+00:00",
+    "stage": "art",
+    "slug": "club_street_neon_sign_c",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_neon_sign_c/front.png",
+    "output": "godot/assets/art/hero/club_street_neon_sign_c.png"
+  },
+  {
+    "at": "2026-10-27T05:50:34+00:00",
+    "stage": "image",
+    "slug": "club_street_neon_sign_b",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a cyan neon sign on the far side of the street like this: neon over a city at night The street hums. Every streetlight has a halo and each halo has its own halo. Additional direction: A bar's neon sign, straight-on and filling the frame, its content in a horizontal band through the middle: a stylised musical note and three wavy lines of tube light, glowing cyan against a black backing board, the glass tubes bright with soft halo bloom, one short section flickered dim, the mounting clips and transformer box visible. A wordless pictogram sign, no letters or numbers. Around 2010, at night, evenly exposed.\nSIZE: the real object is 6.00 m wide by 90 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 35% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of a cyan neon sign on the far side of the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_neon_sign_b/club_street_neon_sign_b_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:50:43+00:00",
+    "stage": "art",
+    "slug": "club_street_neon_sign_b",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_neon_sign_b/front.png",
+    "output": "godot/assets/art/hero/club_street_neon_sign_b.png"
+  },
+  {
+    "at": "2026-10-27T05:50:58+00:00",
+    "stage": "image",
+    "slug": "club_street_neon_sign_a",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a hot pink neon sign on the far side of the street like this: neon over a city at night The street hums. Every streetlight has a halo and each halo has its own halo. Additional direction: A bar's neon sign, straight-on and filling the frame, its content in a horizontal band through the middle: a tilted cocktail glass with an olive and two curling swirls of tube light, glowing hot pink against a black backing board, the glass tubes bright with soft halo bloom, one short section flickered dim, the mounting clips and transformer box visible. A wordless pictogram sign, no letters or numbers. Around 2010, at night, evenly exposed.\nSIZE: the real object is 6.00 m wide by 90 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 35% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of a hot pink neon sign on the far side of the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_neon_sign_a/club_street_neon_sign_a_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:51:04+00:00",
+    "stage": "art",
+    "slug": "club_street_neon_sign_a",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_neon_sign_a/front.png",
+    "output": "godot/assets/art/hero/club_street_neon_sign_a.png"
+  },
+  {
+    "at": "2026-10-27T05:51:23+00:00",
+    "stage": "image",
+    "slug": "club_street_dawn_sky__club_street_dawn",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the grey sky about to be morning over the street like this: They walk out together into a street that is just a street, ordinary, gray, about to be morning. Additional direction: A wide pre-dawn city sky, straight-on and filling the frame: flat, even, colourless grey cloud over a city, a little lighter toward the bottom, the low dark silhouette of ordinary rooftops, a couple of distant towers and a water tank along the very bottom edge, a last few lit windows and a sodium streetlight glow fading. Nothing dramatic: an ordinary grey morning about to start. No lettering, evenly exposed.\nSIZE: the real object is 200.00 m wide by 100.00 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the grey sky about to be morning over the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_dawn_sky__club_street_dawn/club_street_dawn_sky__club_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:51:29+00:00",
+    "stage": "art",
+    "slug": "club_street_dawn_sky__club_street_dawn",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_dawn_sky__club_street_dawn/front.png",
+    "output": "godot/assets/art/hero/club_street_dawn_sky__club_street_dawn.png"
+  },
+  {
+    "at": "2026-10-27T05:51:49+00:00",
+    "stage": "image",
+    "slug": "club_street_far_rooftops",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the city's rooftops beyond the far side of the street, night, like this: neon over a city at night Outside, the world is a wash of color and activity. Additional direction: A long band of a city's rooftops at night seen from street level, straight-on and filling the frame, built to tile side to side: water tanks, parapets, rooftop units and a few taller lit office towers behind, scattered lit windows, the glow of neon colour (pink, cyan, amber) washing up from the streets below onto brick, under a dark sky hazed orange-violet by city light. Around 2010. No readable signs, evenly exposed.\nSIZE: the real object is 190.00 m wide by 20.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 25% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the city's rooftops beyond the far side of the street, night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_far_rooftops/club_street_far_rooftops_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:51:57+00:00",
+    "stage": "art",
+    "slug": "club_street_far_rooftops",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_far_rooftops/front.png",
+    "output": "godot/assets/art/hero/club_street_far_rooftops.png"
+  },
+  {
+    "at": "2026-10-27T05:52:11+00:00",
+    "stage": "image",
+    "slug": "club_street_liquor_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A small-city liquor store's box sign, straight-on and filling the frame: the word LIQUOR in tall red block capitals on a backlit white plastic face, a dented aluminium frame, a dead fluorescent tube showing as a dim band, grime and a sticker scar in a corner. Around 2000-2010. Lit from within, evenly exposed.\nSIZE: the real object is 5.00 m wide by 90 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 42% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the liquor store sign next to Club #, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_liquor_sign/club_street_liquor_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:52:22+00:00",
+    "stage": "art",
+    "slug": "club_street_liquor_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_liquor_sign/front.png",
+    "output": "godot/assets/art/hero/club_street_liquor_sign.png"
+  },
+  {
+    "at": "2026-10-27T05:52:39+00:00",
+    "stage": "image",
+    "slug": "club_street_bus_ad__club_street_door__club_street_curb",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the bus's side ad for a product that doesn't exist yet like this: A bus goes by with an ad on the side for a product that doesn't exist yet. Additional direction: A long city-bus side advertisement panel, straight-on and filling the frame, the content composed in a horizontal band through the middle: a sleek glowing object no one has seen before (a seamless pebble of light with a single soft band of colour across it, hovering over a reflective black floor), clean studio light, lots of empty gradient space, glossy vinyl print with a little road grime along the bottom edge. No words, no logo, no readable lettering. Around 2010 at the latest. Evenly lit.\nSIZE: the real object is 5.00 m wide by 80 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 37% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the bus's side ad for a product that doesn't exist yet, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/club_street_bus_ad__club_street_door__club_street_curb/club_street_bus_ad__club_street_door__club_street_curb_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:52:46+00:00",
+    "stage": "art",
+    "slug": "club_street_bus_ad__club_street_door__club_street_curb",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/club_street_bus_ad__club_street_door__club_street_curb/front.png",
+    "output": "godot/assets/art/hero/club_street_bus_ad__club_street_door__club_street_curb.png"
+  },
+  {
+    "at": "2026-10-27T05:53:09+00:00",
+    "stage": "image",
+    "slug": "pasadena_1945_hollywood_far_n",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the far end of the busy 1945 Hollywood street like this: I stroll down to Hollywood. It is a hub of activity. The studios are busy crafting dreams lived in at 24 frames per second. They shoot on the streets, the closed sets are easy to gain access to. Additional direction: The far end of a busy 1945 Hollywood boulevard seen straight-on, filling the frame and built to tile side to side: a row of taller three- and four-storey Art Deco and Spanish Revival commercial buildings, a theatre's vertical blade sign without readable letters, awnings, a streetcar and boxy 1940s sedans small in front, the dry Hollywood Hills under a hazy bright sky. Busy, sunny, evenly exposed. No readable lettering, no real studio or brand names.\nSIZE: the real object is 80.00 m wide by 20.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 58% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the far end of the busy 1945 Hollywood street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/pasadena_1945_hollywood_far_n/pasadena_1945_hollywood_far_n_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:53:17+00:00",
+    "stage": "art",
+    "slug": "pasadena_1945_hollywood_far_n",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/pasadena_1945_hollywood_far_n/front.png",
+    "output": "godot/assets/art/hero/pasadena_1945_hollywood_far_n.png"
+  },
+  {
+    "at": "2026-10-27T05:53:33+00:00",
+    "stage": "image",
+    "slug": "pasadena_1945_marquee",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the movie house marquee on the 1945 street like this: The same movie plays all over town, the same few songs drift from the radio. A movie marquee. Additional direction: The long side face of a 1940s movie-theatre marquee, straight-on and filling the frame, its content in a horizontal band through the middle: a cream backlit milk-glass panel with rows of black changeable letters too small and soft to read, a chrome edge trim, a running border of round incandescent bulbs top and bottom, a little soot and weathering on the enamel. 1945, daylight. No legible words.\nSIZE: the real object is 8.60 m wide by 80 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 22% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the movie house marquee on the 1945 street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/pasadena_1945_marquee/pasadena_1945_marquee_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:54:51+00:00",
+    "stage": "image",
+    "slug": "stick_reader",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the reader and its cap like this: The reader is on the side table. The stick goes in the reader. The cap goes on your head. The cap is a thin band of a fabric that wraps around your forehead. The cap connects to the reader through a cable. The reader is on the timer. The reader on the side table beeping the end-of-stick beep. The reader was on the side table \u2014 the compact one he had bought from Cale in '49 for thirty tokens, at a discount to clear inventory. He set the cap on the side table beside the reader. Additional direction: A compact home stick-reader on a side table: a quiet, well-made modern device about the size of a hardback book lying flat, soft matte housing with worn edges, a slot in one end holding a palm-sized dark stick by its gold connector, a small round timer display glowing faintly. Beside it, joined to it by a thin cable, the cap: a soft fabric headband about an inch wide, loosely coiled. Contemporary hardware of this world, not retro, no visible brand or lettering.\nSingle-object concept render of the reader and its cap, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/stick_reader/stick_reader_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/stick_reader/stick_reader_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/stick_reader/stick_reader_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:56:31+00:00",
+    "stage": "mesh",
+    "slug": "stick_reader",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17bed-1d44-7192-83d6-3fcd660421bf",
+    "inputs": [
+      "godot/assets/concept/meshy/stick_reader/front.png",
+      "godot/assets/concept/meshy/stick_reader/side.png",
+      "godot/assets/concept/meshy/stick_reader/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 4000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/stick_reader.glb",
+    "file_size_kb": 2310.6
+  },
+  {
+    "at": "2026-10-27T05:56:50+00:00",
+    "stage": "image",
+    "slug": "dean_house_1994_graph_paper",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the graph paper: the town like the dream draws it, slow sticks, like this: Graph paper. Drew the town like the dream draws it, one road, buildings propped on nothing, the crab on the flats with the map on its back, the spiral in the middle. Under it I wrote SCUMM, like on the side of the boxes those games come in, because that's what it looked like. Wrote slow sticks across the top of the graph paper and underlined it twice like it was the name of a band. Additional direction: A sheet of blue-grid graph paper seen flat from above, straight-on, filling the frame edge to edge, evenly lit, March 1994: a teenager's pencil drawing of a town the way a 1990s point-and-click adventure game would draw it \u2014 one road, flat-fronted buildings propped on nothing, a water tower, a giant crab out on the tide flats with a street map drawn on its shell, a spiral in the middle; two words across the top in pencil capitals, underlined twice, and one word in block capitals under the drawing. Eraser smudges, a graphite-grey heel-of-hand smear, soft creases, a corner curled by a lamp's warmth.\nSIZE: the real object is 22 cm wide by 28 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the graph paper: the town like the dream draws it, slow sticks, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: slow sticks (top, underlined twice) / SCUMM (under the drawing). Spell it exactly so. Around it, everything a real one carries is written too \u2014 fine print, dates, prices, addresses, notes, page furniture \u2014 in real, readable English that fits it. No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/dean_house_1994_graph_paper/dean_house_1994_graph_paper_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
