@@ -28,6 +28,9 @@ Volume windows:
 | Volume | Window | Anchor |
 |---|---|---|
 | vol 4 and earlier | pre-2012 | the attic's "vol4 names" ('94–'95 deaths are in-BBS archive dates) [REC — see Knot 6] |
+| **vol 1** | **2010s, Houston** | ANDY 2026-10-27: "vol 1 is 2010s Houston but weird and fantastical" |
+| **vol 2** | **late 1990s, Oregon** | ANDY 2026-10-27: "vol 2 needs to capture that Oregon in the late 1990s look" (Small Wood) |
+| **vol 3** | **early 2000s, all over the map** | ANDY 2026-10-27: "vol 3 is all over map, but early 2000s" |
 | **Small Wood volumes** (Driftwood) | ~1997–98 | NEW SOURCE: author-supplied DRIFT WOOD strips (Class of 1998 banner); see `lore/small_wood/_DRIFTWOOD.md` |
 | **vol 5** (Graustark · Pomegranate Hour) | ~2019 | the Sinkhole ≈ seven years before vol 6 (aria_glossary) |
 | **vol 6** (Planned Community) | 2025 – 2026 | digital_subculture's editors write "late summer 2025"; the novel's summer + COMMUNITY PLANNED inset = **summer 2026** (Core rule #0) |
@@ -302,7 +305,12 @@ shifted resolution**; the author decides.
    Oneironautics' sticks, which either makes the machine a
    Dean-adjacent prototype (he was building toward the medium
    then) or moves the arrival later. [RESERVED].
-11a. **Small Wood's geography** — COMMUNITY PLANNED's
+11a. **Small Wood's geography** — RULED IN PART 2026-10-27 (Andy):
+   "smolvud is 2050s small wood, yes." Vol 7's Smolvud IS Small Wood
+   fifty-odd years on, so vol 2's places (the docks, the coast road,
+   the bookstores) are vol 7's places in their 1990s state. Still
+   reserved below: COMMUNITY PLANNED's region and the name-echoes.
+   COMMUNITY PLANNED's
    `small_wood` region was never pinned to a state in canon;
    the author-supplied DRIFT WOOD strips pin a Small Wood on
    the **Oregon coast** (estuary, cannery, crab derby, Class

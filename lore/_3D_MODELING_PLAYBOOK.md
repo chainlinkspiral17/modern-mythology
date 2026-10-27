@@ -399,6 +399,16 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · the lens sees 200 m unless the preset says otherwise (pass 195)
+
+**Context:** the Utah mesas, 500–900 m out, never drew, and the Small Wood
+ridges came out faint. Background3D.tscn's Camera3D has `far = 200`. It was
+the right default for rooms and streets and silently cut every horizon past it.
+
+**Rule:** an open landscape sets `"far"` on its preset: 600 for a field ringed
+by hills, 2000 for desert distance. Leave interiors at the default. When
+distant geometry won't render, check the far plane before the fog or the mesh.
+
 ### 2026-10-27 · a picture laid in a set has a back (pass 190)
 
 **Context:** the circus's carved sign read mirrored from behind. HeroArt's

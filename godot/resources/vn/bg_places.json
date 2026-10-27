@@ -1017,19 +1017,28 @@
    "scenes": 1
   },
   "vol3_desert_gas_station": {
-   "fit": "reuse",
-   "to": "3d:nexcorp_fueling_station",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:desert_gas_station",
+   "build": "desert_route",
+   "note": "the one-room store off the main drag: the pumps, the ice chest, Galaga, the curios (was vol 6 sets)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol3_desert_motel_dusk": {
-   "fit": "reuse",
-   "to": "3d:cypress_motel",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:desert_motel_dusk",
+   "build": "desert_route",
+   "note": "the motel twenty miles down, the office lit (was vol 6 sets)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol3_dust_storm_highway": {
-   "fit": "reuse",
-   "to": "3d:highway9_scar",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:dust_storm_highway",
+   "build": "desert_route",
+   "note": "the red dust storm and the wreck of the two semis (was vol 6 sets)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol3_editing_suite_night": {
    "fit": "exact",
@@ -1228,14 +1237,20 @@
    "scenes": 1
   },
   "vol3_motel_pool_dusk": {
-   "fit": "reuse",
-   "to": "3d:cypress_motel",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:motel_pool_dusk",
+   "build": "desert_route",
+   "note": "the pool's concrete shorelines, red silt on the water (was vol 6 sets)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol3_motel_room_dusk": {
-   "fit": "reuse",
-   "to": "3d:cypress_motel",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:motel_room_dusk",
+   "build": "desert_route",
+   "note": "room No. 4: the single bed, the television (was vol 6 sets)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol3_nick_bedroom_drawings": {
    "fit": "exact",
@@ -1461,9 +1476,12 @@
    "built": "2026-10-18 draft 1"
   },
   "vol3_utah_highway_day": {
-   "fit": "reuse",
-   "to": "3d:highway9_long",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:utah_highway_day",
+   "build": "desert_route",
+   "note": "Kathy's Utah two-lane at noon, the Voyager, a semi (was vol 6 sets)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol3_vacant_gallery_lobby": {
    "fit": "reuse",

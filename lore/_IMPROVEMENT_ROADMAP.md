@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 195: THE ERAS, THE BORROWED SETS, AND KATHY'S UTAH.**
+- **Andy's eras** (now in _MASTER_TIMELINE and _VOL1_4_SETS_AND_CAST):
+  - vol 1 is 2010s Houston, "weird and fantastical";
+  - vol 2 is "Oregon in the late 1990s look";
+  - vol 3 is "all over the map, but early 2000s";
+  - "smolvud is 2050s small wood";
+  - "Houston and New Orleans interiors can be similar".
+- **The sweep:** 36 vol 1–4 uses of sets built for vols 5–7, triaged as WAVE 4 in the sets plan.
+- **First of them, `desert_route`** (draft 1, early 2000s): vol 3 ch7 "v. emulsion" played its Utah desert on vol 6's Texas Gulf highway, NexCorp and the Cypress Motel. Its own set:
+  - the red two-lane to mesas with the Voyager and a semi (`utah_highway_day`);
+  - the red storm with the two jackknifed semis burning (`dust_storm_highway`);
+  - the one-room store off the main drag, with the pumps, the ice chest, Galaga and the curios (`desert_gas_station`);
+  - the motel twenty miles down, its pool with "concrete shorelines" and red silt, and room No. 4 with the single bed and the TV (`desert_motel_dusk`, `motel_pool_dusk`, `motel_room_dusk`);
+  - six proposed sign pictures in the roster;
+  - the gates at 0.
+- **The lens saw 200 m:** Background3D's camera far plane hid every horizon (the mesas, the Small Wood ridges). A preset may now name its own `far`.
+- **A panel open at a save point reopens on resume.**
+- **Draft N+1, from the WAVE 4 table:**
+  - vol 1's Houston exteriors;
+  - vol 3 ch6's Honolulu;
+  - vol 2's backyard and its 1990s bookstores;
+  - an unbranded early-2000s gas station;
+  - the Small Wood docks and the coast road in their 1997 state (the Smolvud sets, era presets).
+
 **2026-10-27 · pass 194: THE DEMONS ARE IMPS.**
 - The user: "the demons in the hero tool are all generating humans, not digital imps."
 - In the text the Demons are Frasier's "humorous electronic imps, digital sprites birthed from code and chaos", living on his phone ("the Demon-light pulse on the phone screen"; a chuckle "like dial-up modems drowning in molasses"); vol 6's imps are the same software.

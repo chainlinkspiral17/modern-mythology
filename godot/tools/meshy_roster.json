@@ -58151,6 +58151,240 @@
       ],
       "lettering": "TICKETS",
       "text_body": "ADULTS $4 · STUDENTS $2 · UNDER 6 FREE · SEASON PASSES AT THE OFFICE"
+    },
+    {
+      "slug": "desert_route_station_sign",
+      "kind": "art",
+      "name": "the pole sign of the gas station off the main drag",
+      "file": "desert_route_station_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "desert_route_station_sign"
+      ],
+      "tag": "sign · desert_route · 3.0 x 1.60 m",
+      "prompt": "Flat straight-on face of a sun-bleached 1980s pole sign for a lone gas station on a back road in southern Utah's red desert, early 2000s: a backlit plastic face, cream with a faded red band, big red block capitals and changeable black letters on a price strip below. Sand-scoured, a crack across one corner, a bird's nest on the frame, the red gone pink in the sun. Landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new desert_route set, vol 3 ch7 \"v. emulsion\"): the text names neither the town nor the motel; the words are invented for a Utah back road in the early 2000s (Andy, 2026-10-27: vol 3 is the early 2000s) and flagged for Andy.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "desert_route",
+          "label": "Station_Sign",
+          "center": [
+            410.0,
+            -6.11,
+            6.4
+          ],
+          "size": [
+            3.0,
+            1.6
+          ],
+          "facing": "-y",
+          "hide": [
+            "Station_Sign"
+          ]
+        }
+      ],
+      "lettering": "RED BUTTE GAS",
+      "text_body": "ICE · CIGARETTES · COLD POP · CURIOS\nLAST GAS FOR 62 MILES\nREGULAR 1.39⁹ · PLUS 1.49⁹ · SUPER 1.59⁹"
+    },
+    {
+      "slug": "desert_route_store_band",
+      "kind": "art",
+      "name": "the painted sign band over the one-room store",
+      "file": "desert_route_store_band.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "desert_route_store_band"
+      ],
+      "tag": "sign · desert_route · 6.0 x 0.50 m",
+      "prompt": "Flat straight-on face of a hand-painted sign band over the door of a one-room cinderblock store at a desert gas station in Utah, early 2000s: cream paint gone chalky, brick-red hand-lettered capitals, a smaller line of goods beneath. Sand-blasted, the paint lifting at the edges, a rust stain under a nail. Very long landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new desert_route set, vol 3 ch7 \"v. emulsion\"): the text names neither the town nor the motel; the words are invented for a Utah back road in the early 2000s (Andy, 2026-10-27: vol 3 is the early 2000s) and flagged for Andy.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "desert_route",
+          "label": "Store_Sign_Band",
+          "center": [
+            400.0,
+            8.84,
+            2.9
+          ],
+          "size": [
+            6.0,
+            0.5
+          ],
+          "facing": "-y",
+          "hide": [
+            "Store_Sign_Band"
+          ]
+        }
+      ],
+      "lettering": "RED BUTTE TRADING POST",
+      "text_body": "Turquoise · Petrified Wood · Postcards · Live Bait · Open 7 Days"
+    },
+    {
+      "slug": "desert_route_ice_chest",
+      "kind": "art",
+      "name": "the band on the outdoor ice chest",
+      "file": "desert_route_ice_chest.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "desert_route_ice_chest"
+      ],
+      "tag": "sign · desert_route · 1.5 x 0.32 m",
+      "prompt": "Flat straight-on face of the printed band on an outdoor ice merchandiser chest at a desert gas station, early 2000s: white enamel with a bright blue band, white frosty block letters and small print, a sticker of a penguin. Dust in the seams, a dent, condensation streaks. Long landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new desert_route set, vol 3 ch7 \"v. emulsion\"): the text names neither the town nor the motel; the words are invented for a Utah back road in the early 2000s (Andy, 2026-10-27: vol 3 is the early 2000s) and flagged for Andy.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "desert_route",
+          "label": "Ice_Chest_Band",
+          "center": [
+            403.6,
+            7.68,
+            0.92
+          ],
+          "size": [
+            1.5,
+            0.32
+          ],
+          "facing": "-y",
+          "hide": [
+            "Ice_Chest_Band"
+          ]
+        }
+      ],
+      "lettering": "ICE",
+      "text_body": "PARTY ICE · 7 LB BAG 99¢ · BLOCK ICE $1.49 · PAY INSIDE"
+    },
+    {
+      "slug": "desert_route_motel_sign",
+      "kind": "art",
+      "name": "the motel's pole sign by the road",
+      "file": "desert_route_motel_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "desert_route_motel_sign"
+      ],
+      "tag": "sign · desert_route · 4.4 x 2.20 m",
+      "prompt": "Flat straight-on face of a 1960s roadside motel sign still in use on a pole in the Utah desert at dusk, early 2000s: a teal-painted steel box with a starburst, big neon-tube script lettering in pink and a white panel of plain capitals listing the amenities. Faded paint, a few dead neon segments, rust weeping from the screws. Landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new desert_route set, vol 3 ch7 \"v. emulsion\"): the text names neither the town nor the motel; the words are invented for a Utah back road in the early 2000s (Andy, 2026-10-27: vol 3 is the early 2000s) and flagged for Andy.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "desert_route",
+          "label": "Motel_Sign",
+          "center": [
+            -374.0,
+            -20.16,
+            7.0
+          ],
+          "size": [
+            4.4,
+            2.2
+          ],
+          "facing": "-y",
+          "hide": [
+            "Motel_Sign"
+          ]
+        }
+      ],
+      "lettering": "DESERT ROSE MOTEL",
+      "text_body": "Color TV · Pool · Refrigerated Air\nWeekly Rates · AAA"
+    },
+    {
+      "slug": "desert_route_motel_vacancy",
+      "kind": "art",
+      "name": "the VACANCY panel under the motel sign",
+      "file": "desert_route_motel_vacancy.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "desert_route_motel_vacancy"
+      ],
+      "tag": "sign · desert_route · 2.8 x 0.60 m",
+      "prompt": "Flat straight-on face of the small neon VACANCY panel hung under a roadside motel sign in the Utah desert, early 2000s: red neon tube capitals on a black steel panel, glowing; the NO beside it dark. Dusty glass, a little rust. Long landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new desert_route set, vol 3 ch7 \"v. emulsion\"): the text names neither the town nor the motel; the words are invented for a Utah back road in the early 2000s (Andy, 2026-10-27: vol 3 is the early 2000s) and flagged for Andy.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "desert_route",
+          "label": "Motel_Sign_Vacancy",
+          "center": [
+            -374.0,
+            -20.13,
+            5.4
+          ],
+          "size": [
+            2.8,
+            0.6
+          ],
+          "facing": "-y",
+          "hide": [
+            "Motel_Sign_Vacancy"
+          ]
+        }
+      ],
+      "lettering": "VACANCY",
+      "text_body": "NO (unlit)"
+    },
+    {
+      "slug": "desert_route_office_sign",
+      "kind": "art",
+      "name": "the OFFICE sign over the motel office window",
+      "file": "desert_route_office_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "desert_route_office_sign"
+      ],
+      "tag": "sign · desert_route · 4.0 x 0.40 m",
+      "prompt": "Flat straight-on face of a small painted sign over the plate window of a desert motel's office, early 2000s: teal board, white capitals, a smaller line below. Faded, a little bowed. Long landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new desert_route set, vol 3 ch7 \"v. emulsion\"): the text names neither the town nor the motel; the words are invented for a Utah back road in the early 2000s (Andy, 2026-10-27: vol 3 is the early 2000s) and flagged for Andy.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "desert_route",
+          "label": "Office_Sign",
+          "center": [
+            -379.0,
+            2.92,
+            2.75
+          ],
+          "size": [
+            4.0,
+            0.4
+          ],
+          "facing": "-y",
+          "hide": [
+            "Office_Sign"
+          ]
+        }
+      ],
+      "lettering": "OFFICE",
+      "text_body": "Ring Bell After 10 PM · Check-Out 11 AM"
     }
   ]
 }

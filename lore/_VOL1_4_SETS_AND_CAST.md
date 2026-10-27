@@ -62,6 +62,28 @@ perf baseline (`perf_gate.py --update <room>`).
 | 18b | **club_street** (vol 1) | 4 | the street outside Club #: out the door (ch8), the curb and JD (ch9), the meld's neon, 4 a.m. (ch16, new stem `vol1_club_street_dawn`) | **draft 1 built 2026-10-18** — `build_club_street.py`, presets `club_street_door`, `club_street_curb`, `club_street_neon_wide`, `club_street_dawn`; 110 draw calls |
 | 18c | **vol3_rooms** (vol 3) | 11 | June's closet, the Oregon home (day, night; also ch4's "back home"), the coast studio and bathroom, the condo demo unit, the Korean barbecue, the pizza party room, the club, the hospital catwalk (two views) | **draft 1 built 2026-10-18** — `build_vol3_rooms.py`, presets `june_closet`, `oregon_home_day`, `_night`, `coast_studio`, `coast_bathroom`, `condo_demo_unit`, `korean_bbq_table`, `pizza_party_window`, `warehouse_floor`, `catwalk_rail_night`, `catwalk_walk` (by_scene, yellow card); 200 draw calls |
 
+## The eras (Andy, 2026-10-27) and WAVE 4: the borrowed sets
+
+- **vol 1** — 2010s Houston, "weird and fantastical".
+- **vol 2** — "Oregon in the late 1990s look" (Small Wood; Smolvud is the 2050s Small Wood).
+- **vol 3** — "all over the map, but early 2000s".
+
+A sweep on 2026-10-27 found 36 vol 1–4 uses of sets built for vols 5–7 (`bg_places` reuse/stand-in rows and direct `3d:` bgs). Ranked by how wrong they read:
+
+| priority | scene(s) | plays on | needs | status |
+|---|---|---|---|---|
+| 1 | vol3 ch7 emulsion / red dust (Utah desert, gas station, motel) | vol 6 Texas hwy 9, NexCorp, Cypress Motel | its own desert road, early 2000s | **built 2026-10-27** — `desert_route` (six presets) |
+| 1 | vol2 ch2/ch3 football | vol 6 Texas stadium | Small Wood's field | **built 2026-10-27** — `small_wood_field` |
+| 2 | vol1 exteriors (the park, the river, Judgement Day's streets) | vol 5 Graustark riverfront | 2010s Houston, weird | to plan — the interiors stay (Andy: "Houston and New Orleans interiors can be similar"; Jacob's apartment keeps new_orleans_apartment) |
+| 2 | vol3 ch6 arcadeum (Honolulu high-rise lobby, game store) | 2052 cedar tower, 2026 Cosmic Comics | Honolulu, early 2000s | to plan |
+| 2 | vol2 ch6 mayhune (summer backyard party) | vol 6 Texas Kowalski backyard | a late-90s Oregon backyard | to plan |
+| 2 | vol2 bookstores (The Cat's Pause, the Blue Heron) | vol 7 Salty Tome (2052) | the 1990s bookstores | to plan |
+| 2 | vol3/vol4 gas stations, restroom (NexCorp) | vol 6 NexCorp (2026 brand) | an unbranded early-2000s station | to plan |
+| 3 | vol2 docks, Hwy 101 (Small Wood 1997) | vol 7 Smolvud jetty, Hwy 101 (2052) | the same places in their 1997 state (era presets) | to plan |
+| 3 | vol3 ch4 city street; vol4 apartments | vol 7 main street, Finn's 2052 apartment | era-right streets and rooms | to plan |
+| ok | MD Anderson hospital, Dean's tower, dream cells, Cape Perpetua | — | — | kept |
+
+
 **Stand-ins carry a cost:** a 1945 Pasadena street played by Main Street is
 the wrong decade. They exist so no scene goes black; they are not the look.
 

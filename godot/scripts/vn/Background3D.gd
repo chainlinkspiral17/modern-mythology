@@ -1656,6 +1656,7 @@ const CAMERA_PRESETS := {
 	# roof): the stand east past the track, the wooden poles, the firs.
 	"small_wood_field_night": {
 		"scene": "res://scenes/locales/small_wood_field.tscn",
+		"far": 600.0,   # the ridges behind the firs
 		"requires_glb": "res://assets/3d/locales/small_wood_field.glb",
 		# points of impact / rewind: "The stadium lights hung over the field in
 		# a white haze, the bleachers stamping and steaming in the cold."; "my
@@ -1674,6 +1675,7 @@ const CAMERA_PRESETS := {
 	},
 	"small_wood_field_dusk": {
 		"scene": "res://scenes/locales/small_wood_field.tscn",
+		"far": 600.0,   # the ridges behind the firs
 		"requires_glb": "res://assets/3d/locales/small_wood_field.glb",
 		# interlude one: two-a-days, "morning and evening sessions of football
 		# practice"; May "Content just to sit around half the day and watch the
@@ -1687,6 +1689,90 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.40, 0.36, 0.28, 1), "ground_bottom": Color(0.14, 0.16, 0.12, 1),
 			"ambient_color": Color(0.86, 0.74, 0.62, 1), "ambient_energy": 0.80, "fog_color": Color(0.82, 0.68, 0.58, 1),
 			"fog_density": 0.0015},
+		"suppress_input": true,
+	},
+	# ── VOL 3 — "v. emulsion": Kathy's Utah run (build_desert_route.py, 2026-10-27) ──
+	# The Deck: "vol 1-4 is still super broken … illogical nonsense" — the
+	# chapter's "blasted Utah desert red" played on vol 6's 2026 Texas Gulf
+	# highway, the corporate NexCorp station and a Louisiana motel. Its own
+	# road, early 2000s (Andy: vol 3's era): three areas 400 m apart (highway x 0, station x +400, motel x -400).
+	"utah_highway_day": {
+		"scene": "res://scenes/locales/desert_route.tscn",
+		"far": 2000.0,   # the mesas on the horizon
+		"requires_glb": "res://assets/3d/locales/desert_route.glb",
+		# "the baby blue Plymouth voyager … through blasted Utah desert red,
+		# summer heat ashimmer undulating black tarmac horizon": from the
+		# shoulder, the Voyager going away up the two-lane, a semi coming on.
+		"camera_origin": Vector3(5.5, 1.5, 40.0),
+		"camera_rotation": Vector3(0.0, 0.06, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"dust_storm_highway": {
+		"scene": "res://scenes/locales/desert_route.tscn",
+		"requires_glb": "res://assets/3d/locales/desert_route.glb",
+		# red dust: "it all turns into this great red smear"; the Voyager on the
+		# shoulder; ahead in the red, "a long burning mass of wreckage".
+		"camera_origin": Vector3(4.0, 1.6, 31.0),
+		"camera_rotation": Vector3(0.02, 0.0, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.52, 0.22, 0.14, 1), "sky_horizon": Color(0.76, 0.36, 0.22, 1),
+			"ground_horizon": Color(0.62, 0.30, 0.20, 1), "ground_bottom": Color(0.30, 0.14, 0.10, 1),
+			"ambient_color": Color(0.86, 0.44, 0.30, 1), "ambient_energy": 0.55, "fog_color": Color(0.70, 0.30, 0.18, 1),
+			"fog_density": 0.022},
+		"suppress_input": true,
+	},
+	"desert_gas_station": {
+		"scene": "res://scenes/locales/desert_route.tscn",
+		"far": 2000.0,   # the mesas on the horizon
+		"requires_glb": "res://assets/3d/locales/desert_route.glb",
+		# "empty places just off the main drag": from the drag past the
+		# pumps and the Voyager to the one-room store, the ice chest out front.
+		"camera_origin": Vector3(403.0, 1.6, 8.0),
+		"camera_rotation": Vector3(0.02, 0.0, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"desert_motel_dusk": {
+		"scene": "res://scenes/locales/desert_route.tscn",
+		"far": 2000.0,   # the mesas on the horizon
+		"requires_glb": "res://assets/3d/locales/desert_route.glb",
+		# "She pulled into a motel some twenty miles down": the lot, the office
+		# lit where the elderly woman watches the television, the rooms beyond.
+		"camera_origin": Vector3(-392.0, 1.6, 18.0),
+		"camera_rotation": Vector3(0.02, -0.496, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.30, 0.30, 0.56, 1), "sky_horizon": Color(0.98, 0.62, 0.40, 1),
+			"ground_horizon": Color(0.56, 0.36, 0.26, 1), "ground_bottom": Color(0.22, 0.14, 0.10, 1),
+			"ambient_color": Color(0.84, 0.66, 0.58, 1), "ambient_energy": 0.60, "fog_color": Color(0.86, 0.58, 0.44, 1),
+			"fog_density": 0.0008},
+		"suppress_input": true,
+	},
+	"motel_pool_dusk": {
+		"scene": "res://scenes/locales/desert_route.tscn",
+		"far": 2000.0,   # the mesas on the horizon
+		"requires_glb": "res://assets/3d/locales/desert_route.glb",
+		# "The kids all found the pool and watched the sky change, the dust pass
+		# over … ran along the concrete shorelines": the deck, across the water
+		# to the rooms.
+		"camera_origin": Vector3(-395.0, 1.6, 2.5),
+		"camera_rotation": Vector3(-0.08, 0.611, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.30, 0.30, 0.56, 1), "sky_horizon": Color(0.98, 0.62, 0.40, 1),
+			"ground_horizon": Color(0.56, 0.36, 0.26, 1), "ground_bottom": Color(0.22, 0.14, 0.10, 1),
+			"ambient_color": Color(0.84, 0.66, 0.58, 1), "ambient_energy": 0.60, "fog_color": Color(0.86, 0.58, 0.44, 1),
+			"fog_density": 0.0008},
+		"suppress_input": true,
+	},
+	"motel_room_dusk": {
+		"scene": "res://scenes/locales/desert_route.tscn",
+		"requires_glb": "res://assets/3d/locales/desert_route.glb",
+		# "Kathy had sat on the single bed in the empty room, the television on":
+		# room No. 4 from inside its door — the bed, the lamp, the bathroom door.
+		"camera_origin": Vector3(-401.625, 1.55, -14.700),
+		"camera_rotation": Vector3(-0.12, 0.491, 0.0),
+		"fov": 66.0,
+		"env": {"ambient_color": Color(0.80, 0.64, 0.54, 1), "ambient_energy": 0.40, "fog_density": 0.0},
 		"suppress_input": true,
 	},
 	"ramos_kitchen_morning": {
@@ -5249,6 +5335,10 @@ func load_location(preset_id: String) -> bool:
 	_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
 	if spec.has("fov"):
 		_camera.fov = float(spec["fov"])
+	# (2026-10-27) the lens sees 200 m (Background3D.tscn) — rooms and streets
+	# need no more, and the depth buffer is finer for it. An open landscape
+	# names its own: vol 3's Utah mesas stand 500-900 m out and never drew.
+	_camera.far = float(spec.get("far", 200.0))
 	_camera.make_current()
 	_start_camera_track(spec)
 	_loaded_preset = preset_id
