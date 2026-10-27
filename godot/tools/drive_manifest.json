@@ -5315,6 +5315,11 @@
    "md5": "91cb3b1ceeb19eecff5eacfa5f62c820",
    "size": 4234876
   },
+  "godot/assets/3d/props/_full/comic_figure_4.glb": {
+   "at": "2026-10-27T04:47:25+00:00",
+   "md5": "87e6a9a5a11def8b42a28bae484daba8",
+   "size": 4709340
+  },
   "godot/assets/3d/props/_full/crow.glb": {
    "at": "2026-10-27T02:36:14+00:00",
    "md5": "4a5c87ab0c08816617db4fd383773455",
@@ -5349,6 +5354,11 @@
    "at": "2026-10-27T02:37:16+00:00",
    "md5": "a2a945c019efe42b965dfc8e0cdbfea9",
    "size": 176305
+  },
+  "godot/assets/3d/props/comic_figure_4.glb": {
+   "at": "2026-10-27T04:47:21+00:00",
+   "md5": "e682aa2eda02166abba76afaeedca6f2",
+   "size": 559608
   },
   "godot/assets/3d/props/crow.glb": {
    "at": "2026-10-27T02:36:08+00:00",
@@ -70400,15 +70410,40 @@
    "md5": "87ca7a0e57e999b4c830ebef42ab27d4",
    "size": 2393712
   },
+  "godot/assets/concept/meshy/comic_figure_4/back.png": {
+   "at": "2026-10-27T04:47:47+00:00",
+   "md5": "17514e0bcdf5e909f5465eb3e2a8b723",
+   "size": 2323644
+  },
+  "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:47:47+00:00",
+   "md5": "17514e0bcdf5e909f5465eb3e2a8b723",
+   "size": 2323644
+  },
   "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:44:51+00:00",
    "md5": "7c929c2fa52f4b28334582959ca0b42b",
    "size": 2387432
   },
+  "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:47:47+00:00",
+   "md5": "647c2d792deb0380a9e0c29d6d24fe26",
+   "size": 2251534
+  },
   "godot/assets/concept/meshy/comic_figure_4/front.png": {
    "at": "2026-10-27T04:44:51+00:00",
    "md5": "7c929c2fa52f4b28334582959ca0b42b",
    "size": 2387432
+  },
+  "godot/assets/concept/meshy/comic_figure_4/meshy_thumb.png": {
+   "at": "2026-10-27T04:47:47+00:00",
+   "md5": "175eb9d7731afc58424d5125059d85b3",
+   "size": 133117
+  },
+  "godot/assets/concept/meshy/comic_figure_4/side.png": {
+   "at": "2026-10-27T04:47:47+00:00",
+   "md5": "647c2d792deb0380a9e0c29d6d24fe26",
+   "size": 2251534
   },
   "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/cosmic_comics_interior_back_office_corkboard_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:03:20+00:00",
