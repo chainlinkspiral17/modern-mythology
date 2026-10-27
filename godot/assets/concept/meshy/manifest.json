@@ -26740,5 +26740,97 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/vol5_prelude_ep15_lynchs_peak/front.png",
     "output": "godot/assets/backgrounds/vol5_prelude_ep15_lynchs_peak.jpg"
+  },
+  {
+    "at": "2026-10-27T04:24:02+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep17_one_hundred_places",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes an empty lot where we can dream together at last like this: 9 an empty lot where we can dream together at last 2 found chair 5 the red barn with broken doors Additional direction: An empty lot at night under a wide sky of stars: a single found chair standing in the weeds, and at the far edge a red barn with broken doors hanging open. Still, wistful, a place to dream in.\nA single full-screen still for a literary visual novel set in America: an empty lot where we can dream together at last. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep17_one_hundred_places/vol5_prelude_ep17_one_hundred_places_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:24:12+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep17_one_hundred_places",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep17_one_hundred_places/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep17_one_hundred_places.jpg"
+  },
+  {
+    "at": "2026-10-27T04:24:29+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep18_sigsbees_deep",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the city in miniature at Sigsbee's Deep like this: The city in miniature at Sigsbee\u2019s Deep. Graustark in tiny relief is an oddity curio-tourists have delighted in for years, as its scope has grown beyond even the conventional limits of reality. Additional direction: The back room of a small, struggling diner given over to a vast micro-sculpture: a whole Gulf Coast city in miniature spread across tables and spilling beyond them, tiny streets, bridges, a casino strip across a river, thousands of hand-made buildings under warm work lamps, glue and tools on a side bench. Evening, the obsession of a lifetime.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the city in miniature at Sigsbee's Deep. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep18_sigsbees_deep/vol5_prelude_ep18_sigsbees_deep_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:24:39+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep18_sigsbees_deep",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep18_sigsbees_deep/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep18_sigsbees_deep.jpg"
+  },
+  {
+    "at": "2026-10-27T04:24:53+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep19_ravensway",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ravensway after the quantum revolution like this: Every day at sunset he goes and sits on the edge of the broken bridge. Go spend a moment in the shade under the water tower Additional direction: A small town gone strange after the breakdown of coherent reality, at sunset: a broken bridge ending over a slow river, a water tower casting shade over loose damp earth, a gallery with fogged-up windows, everything in the wrong light, nostalgic and faintly fearful.\nA single full-screen still for a literary visual novel set in America: Ravensway after the quantum revolution. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep19_ravensway/vol5_prelude_ep19_ravensway_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:25:02+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep19_ravensway",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep19_ravensway/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep19_ravensway.jpg"
+  },
+  {
+    "at": "2026-10-27T04:25:18+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep20_sisters_wyrd",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the east hill shear in the wind, the Padre's pack train, like this: Wind came fast down the east hill shear, something of a howl also eager to rip the wrap from fingers, the blanket from back. The pack animals huffed displeasure with detached quizzical instinct, hoof stomping in multiples their remainder agitation. Additional direction: A steep windswept hillside trail under a hard grey sky, wind tearing down the slope, a small string of laden pack mules stamping and huddled against it, a blanket torn loose and flying. Wild, cold, on the road toward the plains.\nA single full-screen still for a literary visual novel set in America: the east hill shear in the wind, the Padre's pack train. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep20_sisters_wyrd/vol5_prelude_ep20_sisters_wyrd_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
