@@ -1,46 +1,4 @@
-# Voice import — 2026-10-19 16:11 UTC
+# Voice import — 2026-10-27 15:44 UTC
 
-- **voice_dropin_vol1_trailer_faust3.zip** (2026-10-19) — vol1_trailer_faust3: 12 line(s) wired
-- **voice_dropin_vol1_title.zip** (2026-10-19) — vol1_title: 10 line(s) wired
-- **voice_dropin_vol1_prelude_editing_suite.zip** (2026-10-19) — vol1_prelude_editing_suite: 29 line(s) wired
-- **voice_dropin_vol1_missing_link.zip** (2026-10-19) — vol1_missing_link: 10 line(s) wired
-- **voice_dropin_vol1_link_window.zip** (2026-10-19) — vol1_link_window: 4 line(s) wired
-- **voice_dropin_vol1_link_q_where.zip** (2026-10-19) — vol1_link_q_where: 3 line(s) wired
-- **voice_dropin_vol1_link_q_name.zip** (2026-10-19) — vol1_link_q_name: 3 line(s) wired
-- **voice_dropin_vol1_link_q_cold.zip** (2026-10-19) — vol1_link_q_cold: 3 line(s) wired
-- **voice_dropin_vol1_link_q_coat.zip** (2026-10-19) — vol1_link_q_coat: 4 line(s) wired
-- **voice_dropin_vol1_link_menu.zip** (2026-10-19) — vol1_link_menu: 12 line(s) wired
-- **voice_dropin_vol1_link_jukebox.zip** (2026-10-19) — vol1_link_jukebox: 7 line(s) wired
-- **voice_dropin_vol1_link_counter.zip** (2026-10-19) — vol1_link_counter: 5 line(s) wired
-- **voice_dropin_vol1_link_booth.zip** (2026-10-19) — vol1_link_booth: 8 line(s) wired
-- **voice_dropin_vol1_introduction.zip** (2026-10-19) — vol1_introduction: 48 line(s) wired
-- **voice_dropin_vol1_interlude_demographic.zip** (2026-10-19) — vol1_interlude_demographic: 19 line(s) wired
-- **voice_dropin_vol1_ch2_act_one.zip** (2026-10-19) — vol1_ch2_act_one: 14 line(s) wired
-- **voice_dropin_vol1_ch2_painting_b.zip** (2026-10-19) — vol1_ch2_painting_b: 14 line(s) wired
-- **voice_dropin_vol1_ch2_painting.zip** (2026-10-19) — vol1_ch2_painting: 28 line(s) wired
-- **voice_dropin_vol1_ch2_park.zip** (2026-10-19) — vol1_ch2_park: 30 line(s) wired
-- **voice_dropin_vol1_ch2_pharmacy_mirror.zip** (2026-10-19) — vol1_ch2_pharmacy_mirror: 32 line(s) wired
-- **voice_dropin_vol1_ch2_skatepark.zip** (2026-10-19) — vol1_ch2_skatepark: 24 line(s) wired
-- **voice_dropin_meld_seam_1_2.zip** (2026-10-19) — meld_seam_1_2: 23 line(s) wired
-- **voice_dropin_vol2_bf_building.zip** (2026-10-19) — vol2_bf_building: 11 line(s) wired
-- **voice_dropin_vol2_bf_dog.zip** (2026-10-19) — vol2_bf_dog: 7 line(s) wired
-- **voice_dropin_vol2_bf_end.zip** (2026-10-19) — vol2_bf_end: 7 line(s) wired
-- **voice_dropin_vol2_bf_building (1).zip** (2026-10-19) — vol2_bf_building: 11 line(s) wired
-- **voice_dropin_meld_seam_1_2 (1).zip** (2026-10-19) — meld_seam_1_2: 23 line(s) wired
-- **voice_dropin_vol2_bf_end (1).zip** (2026-10-19) — vol2_bf_end: 7 line(s) wired
-- **voice_dropin_vol2_bf_lot.zip** (2026-10-19) — vol2_bf_lot: 7 line(s) wired
-- **voice_dropin_vol2_bf_overlook.zip** (2026-10-19) — vol2_bf_overlook: 9 line(s) wired
-- **voice_dropin_vol2_bf_picnic.zip** (2026-10-19) — vol2_bf_picnic: 8 line(s) wired
-- **voice_dropin_vol2_bf_trail.zip** (2026-10-19) — vol2_bf_trail: 9 line(s) wired
-- **voice_dropin_vol2_briar_falls_interlude.zip** (2026-10-19) — vol2_briar_falls_interlude: 10 line(s) wired
-- **voice_dropin_vol2_ch1_history_one.zip** (2026-10-19) — vol2_ch1_history_one: 48 line(s) wired
-- **voice_dropin_vol2_ch2_cliffside.zip** (2026-10-19) — vol2_ch2_cliffside: 23 line(s) wired
-- **voice_dropin_vol2_ch2_cliffside (1).zip** (2026-10-19) — vol2_ch2_cliffside: 23 line(s) wired
-- **voice_dropin_vol2_ch2_disappearance.zip** (2026-10-19) — vol2_ch2_disappearance: 22 line(s) wired
-- **voice_dropin_vol2_ch2_disappearance (1).zip** (2026-10-19) — vol2_ch2_disappearance: 24 line(s) wired
-- **voice_dropin_vol2_ch2_ghost.zip** (2026-10-19) — vol2_ch2_ghost: 27 line(s) wired
-- **voice_dropin_vol2_ch2_interlude_one.zip** (2026-10-19) — vol2_ch2_interlude_one: 17 line(s) wired
-- **voice_dropin_vol2_ch2_interlude_three.zip** (2026-10-19) — vol2_ch2_interlude_three: 28 line(s) wired
-- **voice_dropin_vol2_ch2_interlude_two.zip** (2026-10-19) — vol2_ch2_interlude_two: 36 line(s) wired
 
-**Totals:** 42 zip(s), 699 line(s) wired (0 close), 0 kept, 0 skipped, 0 zip(s) for scenes no longer in the game.
+**Totals:** 0 zip(s), 0 line(s) wired (0 close), 0 kept, 0 skipped, 0 zip(s) for scenes no longer in the game.

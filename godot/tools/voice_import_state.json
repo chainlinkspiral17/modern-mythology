@@ -232,6 +232,14 @@
    "wired": 0,
    "zip": "voice_dropin_vol5_ch0_model_city.zip"
   },
+  "1f42b84236e5e0ee89306366af41506b": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol3_ch2_starship_melody",
+   "skipped": 0,
+   "wired": 76,
+   "zip": "voice_dropin_vol3_ch2_starship_melody.zip"
+  },
   "1f5dd724374fe1bc60a4e62fe7064677": {
    "at": "2026-10-01",
    "kept": 60,
@@ -263,6 +271,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch3_back_room.zip"
+  },
+  "221a18a8310dada690d4330d4a08dbb5": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol7_ch4_finn",
+   "skipped": 0,
+   "wired": 124,
+   "zip": "voice_dropin_vol7_ch4_finn.zip"
   },
   "26cdd53878f77a7b1a7dbac6667158ec": {
    "at": "2026-10-19",
@@ -368,6 +384,14 @@
    "wired": 8,
    "zip": "voice_dropin_vol1_link_booth.zip"
   },
+  "399dd3cdce2b6ec1f53dd5807f2f0785": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol7_ch3_studio",
+   "skipped": 0,
+   "wired": 54,
+   "zip": "voice_dropin_vol7_ch3_studio.zip"
+  },
   "3a820fa393e59491bd0b1499200985f6": {
    "at": "2026-10-01",
    "kept": 198,
@@ -423,6 +447,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch20_bridge.zip"
+  },
+  "43b86c3742c120a31267db8993501ab1": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "meld_seam_2_3",
+   "skipped": 0,
+   "wired": 14,
+   "zip": "voice_dropin_meld_seam_2_3.zip"
   },
   "45ae21eba815bda25a495ea6946055d3": {
    "at": "2026-10-01",
@@ -519,6 +551,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch12_cosmic.zip"
+  },
+  "5e07ff4e6e2af63b460a78e602e30d72": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol7_ch4_alone",
+   "skipped": 0,
+   "wired": 32,
+   "zip": "voice_dropin_vol7_ch4_alone.zip"
   },
   "5fd9f64df9993fba4d4e355e501d9085": {
    "at": "2026-10-01",
@@ -663,6 +703,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch13_home.zip"
+  },
+  "7b8376108ce7e6610eebc78299a76697": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol3_ch2_dreams_in_the_key_of_godhead",
+   "skipped": 0,
+   "wired": 41,
+   "zip": "voice_dropin_vol3_ch2_dreams_in_the_key_of_godhead.zip"
   },
   "7be017f1f724006eea2ba79fc2979a99": {
    "at": "2026-10-01",
@@ -888,6 +936,14 @@
    "wired": 0,
    "zip": "voice_dropin_vol6_ch1_shift_change.zip"
   },
+  "9af94531b91d37cfc2ba24ae9b47db19": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol7_ch3_apartment",
+   "skipped": 0,
+   "wired": 152,
+   "zip": "voice_dropin_vol7_ch3_apartment.zip"
+  },
   "9b2fe9f33c4238bbb152c3184f6e703b": {
    "at": "2026-10-01",
    "kept": 43,
@@ -911,6 +967,14 @@
    "skipped": 0,
    "wired": 10,
    "zip": "voice_dropin_vol1_title.zip"
+  },
+  "9c4e92e1045ddb29d375c00e6e311cce": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol3_ch2_second_set_of_eyes",
+   "skipped": 0,
+   "wired": 48,
+   "zip": "voice_dropin_vol3_ch2_second_set_of_eyes.zip"
   },
   "9d1fa8dec227ad6d4a81e6daf4602fff": {
    "at": "2026-10-01",
@@ -967,6 +1031,14 @@
    "skipped": 1,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch2_dumpster.zip"
+  },
+  "aa0f75fa45d8a80a0ad1ae7695f6b7dd": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol7_ch2_afternoon",
+   "skipped": 0,
+   "wired": 83,
+   "zip": "voice_dropin_vol7_ch2_afternoon.zip"
   },
   "ac54ce09a9c90d71fc2e4596f62ac617": {
    "at": "2026-10-01",
@@ -1240,6 +1312,14 @@
    "wired": 0,
    "zip": "voice_dropin_vol6_ch1_graciela.zip"
   },
+  "e1a43adea11cd6bec3575bab2e7864f9": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol3_ch1_boy_from_pasadena",
+   "skipped": 0,
+   "wired": 21,
+   "zip": "voice_dropin_vol3_ch1_boy_from_pasadena.zip"
+  },
   "e1c9c637ec00a87ba86f48b44b146c6a": {
    "at": "2026-10-01",
    "kept": 38,
@@ -1319,6 +1399,14 @@
    "skipped": 0,
    "wired": 0,
    "zip": "voice_dropin_vol6_ch15_kwik_stop.zip"
+  },
+  "ef352600277b6c252988b66079ce5e00": {
+   "at": "2026-10-27",
+   "kept": 0,
+   "scene": "vol7_ch2_morning",
+   "skipped": 0,
+   "wired": 189,
+   "zip": "voice_dropin_vol7_ch2_morning.zip"
   },
   "efc5f17637b0b5e22fdc84662e9908c9": {
    "at": "2026-10-19",

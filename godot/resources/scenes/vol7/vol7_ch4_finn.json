@@ -35,7 +35,8 @@
     },
     {
       "text": "[trip:1.2][mood:dusk][shot:closeup finn]Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/006.mp3"
     },
     {
       "char": "tem",
@@ -57,595 +58,709 @@
       "char": "tem",
       "text": "You walked up like you were carrying something.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/010.mp3"
     },
     {
       "char": "finn",
       "text": "The crow brought it this morning. I forgot it was in my coat until I was at the porch.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/011.mp3"
     },
     {
       "text": "He set the duffel down. He set the package on the table beside the lamp. He took off the wet coat and hung it on the peg.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/012.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]Coffee's hot.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/013.mp3"
     },
     {
       "text": "He poured himself a cup at the stove and brought it to the table. He sat across from her and pulled the wool cap off his head and ran a hand through his hair, which was wet from the walk up from the truck.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/014.mp3"
     },
     {
       "char": "finn",
       "text": "How's the route.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/015.mp3"
     },
     {
       "char": "finn",
       "text": "Wet. There's a slide on the Tideway at the third bend. I had to walk the bike around it. The Hatfields sent down a bag of apples. They're in the truck.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/016.mp3"
     },
     {
       "char": "tem",
       "text": "Tideway slide. That's a foundation problem.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/017.mp3"
     },
     {
       "char": "finn",
       "text": "[shot:closeup person_b]They'll be on it tomorrow.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/018.mp3"
     },
     {
       "text": "[shot:insert package]She looked at the package on the table and then back at him.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/019.mp3"
     },
     {
       "char": "tem",
       "text": "I want to talk to you before we open it.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/020.mp3"
     },
     {
       "char": "finn",
       "text": "All right.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/021.mp3"
     },
     {
       "text": "She sat with her cup in her hands for a minute. She had thought about how she was going to say this on the drive up and the way she had thought about saying it now did not feel like the right way. She set the cup down.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/022.mp3"
     },
     {
       "char": "tem",
       "text": "I met a man named Brandon Tillman three times in 2050.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/023.mp3"
     },
     {
       "text": "[shot:closeup finn]Finn's expression did not move.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/024.mp3"
     },
     {
       "char": "finn",
       "text": "The name on the radio yesterday.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/025.mp3"
     },
     {
       "char": "tem",
       "text": "The name on the radio yesterday.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/026.mp3"
     },
     {
       "char": "finn",
       "text": "You knew it when Finn said it.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/027.mp3"
     },
     {
       "char": "tem",
       "text": "You're Finn.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/028.mp3"
     },
     {
       "char": "finn",
       "text": "I knew you knew it.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/029.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]I'm telling you now because I should have said something at the table yesterday. I didn't because I'd been awake too long and because saying it in front of all three of you on five hours' sleep felt wrong. The not-saying was a small dishonesty. I am sorry.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/030.mp3"
     },
     {
       "text": "He turned the cup half a turn in his hands.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/031.mp3"
     },
     {
       "char": "finn",
       "text": "Who was he.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/032.mp3"
     },
     {
       "text": "She told him. Sixty-one when she met him, working at the museum-town museum, lived alone in a small house above the museum, had moved up the coast in 2042.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/033.mp3"
     },
     {
       "text": "She had gone down in March 2050 because Petra had sent her to look at a small bench installation Inga Vestergaard had made for the museum's reading room in 2031. She had sat on the bench.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/034.mp3"
     },
     {
       "text": "A man had come into the reading room and sat in the chair across from her and read a book. After a long time he had said the bench is doing what you think it is doing,",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/035.mp3"
     },
     {
       "text": "and when she had asked what he meant he had said he had been watching her sit on it and that in eight years at the museum he had watched maybe four people sit on the bench in a way the bench had responded to, and she was the fourth.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/036.mp3"
     },
     {
       "char": "finn",
       "text": "[shot:closeup person_b]What had the bench done.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/037.mp3"
     },
     {
       "char": "tem",
       "text": "I didn't know what it had done at the time. I knew I'd been registering something. The bench had felt warm. Wood doesn't feel warm.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/038.mp3"
     },
     {
       "char": "tem",
       "text": "The bench had a small carved spiral on the underside of the seat that I had been running my thumb across without noticing I was doing it.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/039.mp3"
     },
     {
       "char": "finn",
       "text": "Warm like the bowl.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/040.mp3"
     },
     {
       "text": "[shot:closeup tem]She looked at him.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/041.mp3"
     },
     {
       "char": "tem",
       "text": "How do you know about the bowl.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/042.mp3"
     },
     {
       "char": "finn",
       "text": "You're looking at the shelf above the lamp every time you stop talking. You've looked at it three times since I sat down.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/043.mp3"
     },
     {
       "text": "She had not realized she was doing it. She nodded once and tilted her head toward the shelf.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/044.mp3"
     },
     {
       "char": "tem",
       "text": "Get up. Touch it.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/045.mp3"
     },
     {
       "text": "[beat:chill][mood:candlelight_low][shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/046.mp3"
     },
     {
       "char": "finn",
       "text": "How long.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/047.mp3"
     },
     {
       "char": "tem",
       "text": "Since July.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/048.mp3"
     },
     {
       "char": "finn",
       "text": "And you've told no one.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/049.mp3"
     },
     {
       "char": "tem",
       "text": "No.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/050.mp3"
     },
     {
       "char": "finn",
       "text": "[shot:closeup person_b]Tem.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/051.mp3"
     },
     {
       "char": "tem",
       "text": "I know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/052.mp3"
     },
     {
       "text": "He sat back down. He looked at his coffee for a minute. When he looked back up at her his face was not what she had expected. He was not annoyed and he was not concerned in the careful way Lena would have been concerned.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/053.mp3"
     },
     {
       "text": "He was just present. He was looking at her the way he looked at the crow on his fencepost.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/054.mp3"
     },
     {
       "char": "finn",
       "text": "Why didn't you tell Lena.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/055.mp3"
     },
     {
       "text": "There it was. She had known he was going to ask.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/056.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person][beat:still]Because Lena is in love with me.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/057.mp3"
     },
     {
       "text": "[mood:dusk][shot:closeup finn]He did not move. He took the answer in the way he took weather.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/058.mp3"
     },
     {
       "char": "finn",
       "text": "Are you in love with her.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/059.mp3"
     },
     {
       "text": "She thought about it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/060.mp3"
     },
     {
       "char": "tem",
       "text": "I am in something with her. I do not know what to call it. I have known her for eighteen months. We slept together once in April. I think about her every day. I think about you some days. I think about Kai some days. I think about her all of them.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/061.mp3"
     },
     {
       "char": "tem",
       "text": "I am twenty-six and I am not in command of what that is. This morning at her apartment I told her I had wanted it to be a thing again since April and she said she had wanted the same thing. I do not know what we do with that.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/062.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]I am also afraid that what I want from her and what is happening in the town are about to be the same conversation, and I do not want them to be the same conversation, because she deserves the first one without the second one running underneath it.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/063.mp3"
     },
     {
       "text": "He nodded slowly.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/064.mp3"
     },
     {
       "char": "finn",
       "text": "And you didn't tell her about the bowl because the bowl would put the second conversation underneath the first.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/065.mp3"
     },
     {
       "char": "tem",
       "text": "Yes.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/066.mp3"
     },
     {
       "char": "finn",
       "text": "Tem.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/067.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]I know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/068.mp3"
     },
     {
       "text": "He drank from his cup.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/069.mp3"
     },
     {
       "char": "finn",
       "text": "[shot:closeup person_b]You were going to tell her about the bowl eventually.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/070.mp3"
     },
     {
       "char": "tem",
       "text": "I was going to tell all three of you tomorrow at the cabin. I am still going to tell all three of you tomorrow at the cabin.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/071.mp3"
     },
     {
       "char": "tem",
       "text": "I'm telling you this afternoon because you came up alone and the cabin made the room for it and I would rather not do the telling for the first time in front of all three of you. I have done that twice already this week.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/072.mp3"
     },
     {
       "char": "tem",
       "text": "It hasn't gone well.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/073.mp3"
     },
     {
       "char": "finn",
       "text": "It's gone fine.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/074.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]It's gone how it's gone. I want this one to go better.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/075.mp3"
     },
     {
       "char": "finn",
       "text": "All right.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/076.mp3"
     },
     {
       "text": "He looked at the package on the table.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/077.mp3"
     },
     {
       "char": "finn",
       "text": "There's more.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/078.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/079.mp3"
     },
     {
       "text": "She told him about the tower.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/080.mp3"
     },
     {
       "text": "She had, for two years, been thinking that the patches on the murals were leaking from the tower above old-Yachats. She had not gone to the tower. She had not, in two years of thinking about it, walked the access road.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/081.mp3"
     },
     {
       "text": "The man who had lived in the tower was Nate Dean. He had died in 2042. The tower had been sealed since.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/082.mp3"
     },
     {
       "text": "She did not know what was in it. She had been afraid of it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/083.mp3"
     },
     {
       "text": "Brandon Tillman had been investigating Dean — that was, she was fairly sure, why Brandon had moved to the museum-town in 2042, the year Dean died, though Brandon had not said it in those words and she had not asked.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/084.mp3"
     },
     {
       "text": "The wood Brandon had been collecting and that the crow had been bringing to Finn was, she thought, evidence of some kind from the work Brandon had done. She did not know what kind of evidence. She did not know what the wood was supposed to mean.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/085.mp3"
     },
     {
       "text": "She did not know what was leaking from the tower or how to stop it or whether stopping it was the right thing to do or whether there was someone living in the town now who was trying to stop them from stopping it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/086.mp3"
     },
     {
       "text": "She did not know any of it. She had been pretending, badly, to know more than she did because the pretending had been the only way she had figured out to keep going.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/087.mp3"
     },
     {
       "text": "[shot:insert table]Finn listened. When she was done he sat for a while looking at the table between them, not at her.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/088.mp3"
     },
     {
       "char": "finn",
       "text": "Tem.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/089.mp3"
     },
     {
       "char": "tem",
       "text": "Yeah.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/090.mp3"
     },
     {
       "char": "finn",
       "text": "It's all right not to know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/091.mp3"
     },
     {
       "char": "tem",
       "text": "It does not feel all right.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/092.mp3"
     },
     {
       "char": "finn",
       "text": "That's a different thing.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/093.mp3"
     },
     {
       "text": "[shot:closeup tem]She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/094.mp3"
     },
     {
       "text": "She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/095.mp3"
     },
     {
       "char": "tem",
       "text": "Open the package.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/096.mp3"
     },
     {
       "text": "[shot:insert package]He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/097.mp3"
     },
     {
       "text": "He fitted them. The first piece met the second along one edge. The third met the second along the other. Together the three made a crooked plank about ten inches by three.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/098.mp3"
     },
     {
       "text": "She looked at it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/099.mp3"
     },
     {
       "char": "tem",
       "text": "Brandon kept a small wooden box at his house. He showed it to me the second time I went down. The box had pieces in it that looked like these. He had been collecting them for some years. He wouldn't tell me from where.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/100.mp3"
     },
     {
       "char": "tem",
       "text": "He said they were the only things that had survived an event he didn't want to describe. He said he thought they meant something and that he didn't, by 2050, know what. He said he was tired and dying.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/101.mp3"
     },
     {
       "char": "tem",
       "text": "He said he was going to give them to whoever the next person was. He said he was going to figure out who that was before he went.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/102.mp3"
     },
     {
       "char": "finn",
       "text": "And the crow.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/103.mp3"
     },
     {
       "char": "tem",
       "text": "I think the crow has been bringing you the box, piece by piece, for nine months. I think the box is empty by now or close to it. I think when the box is empty the crow will have done what it was set to do.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/104.mp3"
     },
     {
       "text": "[shot:insert charred_wood]Finn looked at the three pieces. He put a finger to the joined edges, very lightly, and took it back.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/105.mp3"
     },
     {
       "char": "finn",
       "text": "I'm not anyone, Tem.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/106.mp3"
     },
     {
       "char": "tem",
       "text": "Neither am I. I'm a girl who reads at a cabin and works at the bookstore on Sundays. You're a guy who delivers organic produce on a bike. The work picks who the work picks. We don't get to choose.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/107.mp3"
     },
     {
       "text": "He nodded once. He wrapped the three pieces back in the wax paper. He put the package in his coat pocket on the peg by the door rather than back on the table.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/108.mp3"
     },
     {
       "text": "When he came back to the table he sat down.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/109.mp3"
     },
     {
       "char": "finn",
       "text": "What are we doing tomorrow.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/110.mp3"
     },
     {
       "char": "tem",
       "text": "All four of us up here. I'll tell Lena and Kai what I've told you. We figure out what we do.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/111.mp3"
     },
     {
       "char": "finn",
       "text": "All right.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/112.mp3"
     },
     {
       "char": "tem",
       "text": "Will you come up early.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/113.mp3"
     },
     {
       "char": "finn",
       "text": "I'll be up by ten. I'll bring breakfast.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/114.mp3"
     },
     {
       "char": "tem",
       "text": "You don't have to bring breakfast.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/115.mp3"
     },
     {
       "char": "finn",
       "text": "I'm bringing breakfast.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch4_finn/116.mp3"
     },
     {
       "text": "She let him.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/117.mp3"
     },
     {
       "text": "He stayed until five. They did not talk much more about the substrate or the tower or the bowl. He told her about the slide on the Tideway and a small repair on his bike he had been trying to figure out.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/118.mp3"
     },
     {
       "text": "She told him she had finished re-reading the John Frank novel on Tuesday. He asked how it had ended this time.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/119.mp3"
     },
     {
       "text": "She said it had ended differently than the first two readings, and he asked her what that meant, and she said she did not know yet and would tell him when she had figured it out. He let her.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/120.mp3"
     },
     {
       "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/121.mp3"
     },
     {
       "text": "The cabin held them at sixty-three by the thermometer. The rain on the roof did not change.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/122.mp3"
     },
     {
       "text": "[shot:establish]He left at five-twelve.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/123.mp3"
     },
     {
       "src": "3d:cabin_porch",
@@ -657,11 +772,13 @@
     },
     {
       "text": "The crow flew off the dashboard as he opened the truck door, made one slow circle of the clearing, and landed on his right shoulder. He got into the truck. The crow stayed on his shoulder.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/126.mp3"
     },
     {
       "text": "He drove down the road, and Tem stood on the porch with her arms folded and watched the truck disappear into the cedars.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/127.mp3"
     },
     {
       "src": "3d:cabin_interior",
@@ -679,31 +796,38 @@
     },
     {
       "text": "[mood:candlelight_low][shot:insert bowl~]She came back inside. She banked the stove. She washed the cups.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/131.mp3"
     },
     {
       "text": "She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/132.mp3"
     },
     {
       "text": "It was warm.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/133.mp3"
     },
     {
       "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had [wave amp=6 freq=2]something inside it[/wave].",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/134.mp3"
     },
     {
       "text": "She did not know what was inside it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/135.mp3"
     },
     {
       "text": "She sat with that.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/136.mp3"
     },
     {
       "text": "After a while she put the bowl back on the shelf. She made a small dinner of eggs and the rest of the bread, ate it at the table, and went to bed at nine-something. The cabin held her. The rain on the roof did not change. She slept.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch4_finn/137.mp3"
     },
     {
       "t": "end"
