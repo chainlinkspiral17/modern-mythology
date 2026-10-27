@@ -26457,5 +26457,80 @@
     "outputs": [
       "godot/assets/concept/meshy/vol5_prelude_ep04_iris_title/vol5_prelude_ep04_iris_title_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:18:49+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep04_iris_title",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep04_iris_title/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep04_iris_title.jpg"
+  },
+  {
+    "at": "2026-10-27T04:19:04+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep05_iris",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Iris's silverstream trailer at the world's end, 1964, like this: Out the window of her silverstream trailer, Iris sees the world end and decides to go on about her day anyway. The arc being traced in the evening sky is faint but no less dramatic. Additional direction: Inside an old silver aluminium trailer in the Arizona desert, 1964, at evening: a cramped kitchen and bedroom nook, canvases and wrapped artworks stacked and sheltered along the walls, a shelf with tins of cat food, an orange cat on the sill. Through the window, a faint white contrail arcs up into the dusk sky. Amber evening light through the blinds.\nA single full-screen still for a literary visual novel set in Arizona in 1964: Iris's silverstream trailer at the world's end, 1964. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep05_iris/vol5_prelude_ep05_iris_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:19:15+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep05_iris",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep05_iris/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep05_iris.jpg"
+  },
+  {
+    "at": "2026-10-27T04:19:30+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep06_old_woman",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the trailer camp and the museum at sundown, 1964, like this: She watches the missile arc heavenward, long braid contrail of pale silk billowing, and she laughs with pained utter disbelief. Her trailer isn't far from the others, but it is the furthest out, save for Trini's which is past hers even further. She looks at its exterior, the fine work that Devin has put in, the areas where shabbily cut corners. Additional direction: A scatter of trailers in the Arizona desert at sundown, 1964: wind chimes, a hammer and mud bricks left by one trailer's half-built fortification, an easel tipped on another trailer's roof, a path leading up to a homemade museum building of mixed good and shabby workmanship. Above it all a long pale contrail braids up into the darkening sky. Hot wind, long shadows.\nA single full-screen still for a literary visual novel set in Arizona in 1964: the trailer camp and the museum at sundown, 1964. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep06_old_woman/vol5_prelude_ep06_old_woman_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:19:39+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep06_old_woman",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep06_old_woman/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep06_old_woman.jpg"
+  },
+  {
+    "at": "2026-10-27T04:19:54+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep07_backyard_dogs",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Clinton's suburban porch, a fine afternoon, like this: CLINTON, a precise and well-groomed suburban idler, takes a beer from the cooler and sits down on his porch. Additional direction: A tidy suburban front porch on a fine late afternoon: two chairs, a cooler of canned beer between them, a neat lawn and the quiet street beyond, a neighbour's yard where a party has just wound down. Golden light, long shade, no one in sight.\nA single full-screen still for a literary visual novel set in America: Clinton's suburban porch, a fine afternoon. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep07_backyard_dogs/vol5_prelude_ep07_backyard_dogs_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
