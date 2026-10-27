@@ -1,6 +1,6 @@
 {
   "_comment": "voice_ids.py keeps this: the cast's ElevenLabs voice IDs, a flat copy of voice_map.json's voice_id fields. Do not hand-edit.",
-  "updated": "2026-10-19 09:25:13",
+  "updated": "2026-10-26 22:35:03",
   "source": "voice studio (saved from the page)",
   "ids": {
     "_narrator": "t7JYIPCZ9tqGj3BqKOaA",
@@ -30,6 +30,7 @@
     "brenda": "bD9maNcCuQQS75DGuteM",
     "brent": "cQb5fnQsTT1X0GdpmHoo",
     "bt": "s3TPKV1kjDlVtZbl4Ksh",
+    "cale": "C9fbwSpEaejywLWx722Z",
     "carl": "C5GgjTyGQ2aQx8uMiLh9",
     "carlos": "gZgeCxzVQJzACoAiZkVF",
     "chess": "FUfBrNit0NNZAwb58KWH",

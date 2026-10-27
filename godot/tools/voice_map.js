@@ -731,6 +731,9 @@ window.MM_VOICE_MAP = {
   },
   "melody": {
    "voice_id": "TOXPlnYC7z5SQSV2Zgc5"
+  },
+  "cale": {
+   "voice_id": "C9fbwSpEaejywLWx722Z"
   }
  },
  "aliases": {

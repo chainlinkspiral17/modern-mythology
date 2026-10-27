@@ -28290,5 +28290,218 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/maya_bedroom_dock_photograph/front.png",
     "output": "godot/assets/art/hero/maya_bedroom_dock_photograph.png"
+  },
+  {
+    "at": "2026-10-27T05:19:33+00:00",
+    "stage": "mesh",
+    "slug": "peugeot_505_hood_up",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17bc8-eec1-77c1-9c07-3910c926e638",
+    "inputs": [
+      "godot/assets/concept/meshy/peugeot_505_hood_up/front.png",
+      "godot/assets/concept/meshy/peugeot_505_hood_up/side.png",
+      "godot/assets/concept/meshy/peugeot_505_hood_up/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 15000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/peugeot_505_hood_up.glb",
+    "file_size_kb": 13069.2
+  },
+  {
+    "at": "2026-10-27T05:26:51+00:00",
+    "stage": "image",
+    "slug": "bobbys_tow_truck",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bobby's tow truck like this: Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes At eleven oh-eight the tow truck pulls into the lot. backs the truck up to the Peugeot. By eleven twenty-eight the Peugeot is on the truck. Additional direction: A flatbed rollback tow truck: a white medium-duty cab, an amber light bar on the roof, a long flat steel deck behind the cab with a winch at its front and a headboard, the deck tilted level. Small-town working truck, a little road grime. Empty deck. No company lettering legible.\nSingle-object concept render of Bobby's tow truck, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:31:18+00:00",
+    "stage": "mesh",
+    "slug": "bobbys_tow_truck",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17bd4-c78f-70b4-bd61-2622ef78237f",
+    "inputs": [
+      "godot/assets/concept/meshy/bobbys_tow_truck/front.png",
+      "godot/assets/concept/meshy/bobbys_tow_truck/side.png",
+      "godot/assets/concept/meshy/bobbys_tow_truck/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 15000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/bobbys_tow_truck.glb",
+    "file_size_kb": 13041.3
+  },
+  {
+    "at": "2026-10-27T05:42:19+00:00",
+    "stage": "image",
+    "slug": "speak_and_spell",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Speak & Spell like this: It is a 1978 original, battered, with a small crack in the lower left corner of the red plastic housing. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED \u2014 a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town. The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. The Speak & Spell is on the shelf above the file cabinet, dim.\nSingle-object concept render of The Speak & Spell, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:44:12+00:00",
+    "stage": "mesh",
+    "slug": "speak_and_spell",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17be1-b43a-77ae-989c-fe50a39aa3ac",
+    "inputs": [
+      "godot/assets/concept/meshy/speak_and_spell/front.png",
+      "godot/assets/concept/meshy/speak_and_spell/side.png",
+      "godot/assets/concept/meshy/speak_and_spell/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 4000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/speak_and_spell.glb",
+    "file_size_kb": 3525.3
+  },
+  {
+    "at": "2026-10-27T05:45:13+00:00",
+    "stage": "image",
+    "slug": "comic_figure_1",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "A painted resin collectible statue on a round black base, about 35 cm tall: an original pulp-adventure sky pilot standing on a rocky crag, one boot up on a higher rock, a long burnt-orange cloak streaming behind in the wind, a charcoal-grey flight suit with brass buckles and a brown leather harness, aviator goggles pushed up on short dark hair, one hand shading the eyes, looking out at a horizon. Plain chest, no emblem, no logo, no lettering. Glossy paint, crisp sculpt.\nSingle-object concept render of a cloaked sky-pilot statue on a crag, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:47:43+00:00",
+    "stage": "mesh",
+    "slug": "comic_figure_1",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17be4-46e9-74fb-814d-2a404e6527fb",
+    "inputs": [
+      "godot/assets/concept/meshy/comic_figure_1/front.png",
+      "godot/assets/concept/meshy/comic_figure_1/side.png",
+      "godot/assets/concept/meshy/comic_figure_1/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 4000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/comic_figure_1.glb",
+    "file_size_kb": 3963.0
+  },
+  {
+    "at": "2026-10-27T05:48:10+00:00",
+    "stage": "image",
+    "slug": "louisiana_road_far_treeline",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A long low band of Gulf Coast lowland woods at dusk, straight-on and filling the frame, built to tile side to side: a dense wall of bald cypress, water oak and loblolly pine with grey Spanish moss hanging from the near limbs, the tree line's ragged crown running along the top edge, the trunks lost in shadow and low mist at the bottom, everything muted blue-grey with distance under a deep dusk sky. No buildings, no signs, evenly exposed.\nSIZE: the real object is 70.00 m wide by 7.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 23% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the far treelines either side of the two-lane road, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/louisiana_road_far_treeline/louisiana_road_far_treeline_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:48:16+00:00",
+    "stage": "art",
+    "slug": "louisiana_road_far_treeline",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/louisiana_road_far_treeline/front.png",
+    "output": "godot/assets/art/hero/louisiana_road_far_treeline.png"
+  },
+  {
+    "at": "2026-10-27T05:48:32+00:00",
+    "stage": "image",
+    "slug": "small_wood_farmhouse_moonlit_cloud",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the cloud over the moon above the valley like this: She felt like a tiny ship at sea, the moon hidden behind clouds and pulled the afghan closer. Additional direction: A long band of night cloud, straight-on and filling the frame, built to tile side to side: a heavy layer of rolling cloud over a valley at night with the moon hidden behind it, its edges and thin patches silvered with cold moonlight, darker billows below, a few faint stars in one small gap. Soft, quiet, evenly exposed, no lettering.\nSIZE: the real object is 360.00 m wide by 22.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 14% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the cloud over the moon above the valley, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/small_wood_farmhouse_moonlit_cloud_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
