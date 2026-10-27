@@ -33419,5 +33419,26 @@
       "godot/assets/concept/meshy/jack_perkins/jack_perkins_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/jack_perkins/jack_perkins_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T20:43:59+00:00",
+    "stage": "image",
+    "slug": "june_okimoto",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes June Okimoto (1991) like this: She hadn't slept since the night before the flight from Dallas to Honolulu, which left at a normal time, and arrived somewhere altogether different, a place her logic could not reconcile as anything but dream. A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script. Additional direction: June Okimoto, early 20s, in 1991: a programmer from Dallas, sleepless and wry, quietly stubborn, interviewing at Koa Works in a Honolulu high-rise (Oneironautics Inc. hires her years later). Slight, Japanese-American, a blunt black bob, tired clever eyes. Her one interview outfit: a boxy navy blazer over a white t-shirt, pleated khaki trousers, scuffed loafers; a shrink-wrapped game box with a cloudy-blue cover under her arm and a carbon-copy receipt in her hand.\nFull-body concept render of June Okimoto (1991), a character from a literary visual novel set in Texas and Southern California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/june_okimoto/june_okimoto_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/june_okimoto/june_okimoto_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/june_okimoto/june_okimoto_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
