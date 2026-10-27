@@ -5407,7 +5407,7 @@
       "kind": "prop",
       "name": "the red Peugeot",
       "file": "peugeot_505.glb",
-      "tier": "large",
+      "tier": "medium",
       "vol": [
         6
       ],

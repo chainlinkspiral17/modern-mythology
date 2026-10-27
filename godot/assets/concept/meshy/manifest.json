@@ -25422,5 +25422,47 @@
       "godot/assets/concept/meshy/star_key/star_key_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/star_key/star_key_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T02:22:08+00:00",
+    "stage": "image",
+    "slug": "andy",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Andy Link (2003) like this: I look like a logger. Andy always tries to get the aisle seat because his legs are long and he likes room to stretch out, instead he's seated at the window, which is good because he mostly turns to cry, looking out at nothing or at his reflection when the satellite lamp overhead is on. Justin drops Andy off at the airport, the small man gives the bigger man a humongous hug that lasts too long and not nearly long enough. Additional direction: Andy Link in 2003, mid-20s \u2014 the author as a character, flying to Houston as his father dies of leukemia, then staying with his sister at Caltech; tired, terse. Very tall (about 6'5\"), heavy at 240 lb, long legs, size-16 feet, left-handed. A scruffy chinstrap half-beard along the jaw, shaggy brown hair, big blue-green-grey eyes, red-rimmed. A worn red-and-black flannel shirt open over a grey t-shirt, brown corduroys, battered oversized skate shoes, a backpack on one shoulder.\nFull-body concept render of Andy Link (2003), a character from a literary visual novel set in Texas and Southern California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/andy/andy_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/andy/andy_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/andy/andy_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:23:54+00:00",
+    "stage": "image",
+    "slug": "peugeot_505",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the red Peugeot like this: The car is small. The car is European. red, in the way of a car that has been red for forty years and that has, in the past five years, started to fade in the small uneven patches a forty-year-old red paint job fades in when the car has lived its life mostly outdoors. Eighty-six Peugeot. 505 Turbo. Was my dad's. He gave it to me when I moved out west in 2014. It \u2014 it's been a project. He kept it up till he died. I've been keeping it up since. He whistles, in the way mechanics whistle at cars they have not seen the like of in some time. Additional direction: A 1986 Peugeot 505 Turbo four-door sedan, the boxy late-eighties European saloon: long flat hood, upright glasshouse, square headlamps, black rubber bumpers and trim, Turbo-model alloy wheels. Forty-year-old red paint faded in small uneven pinkish patches on the hood, roof and trunk lid where the sun has had it; a little road dust; otherwise kept up. Hood closed, parked, seen from the front three-quarter. No badges or lettering legible.\nSingle-object concept render of the red Peugeot, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/peugeot_505/peugeot_505_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/peugeot_505/peugeot_505_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/peugeot_505/peugeot_505_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
