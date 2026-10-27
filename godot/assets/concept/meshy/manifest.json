@@ -25608,5 +25608,30 @@
     },
     "output": "godot/assets/3d/props/comic_figure_3.glb",
     "file_size_kb": 4135.6
+  },
+  {
+    "at": "2026-10-27T02:37:23+00:00",
+    "stage": "image",
+    "slug": "caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Birth of God, the mural on Dabney's W wing, like this: Janessa brings Andy to sit under a mural at Dabney House entitled The Birth of God. It depicts an old man in a striped shirt and overalls. Additional direction: A large painted student mural on the stucco wall of a 1920s Mediterranean-style college house courtyard in Pasadena, as it looked in 2003, seen flat and straight-on, filling the frame edge to edge, evenly lit: an old man with a white beard in a red-and-white striped shirt and blue denim overalls, arms held out, standing a little left of centre on a band of brown earth, a big gold sun upper right, a flat sky-blue ground, the title hand-lettered in a cream band low on the right. House paint on rough stucco after years of Southern California sun: chalky faded blues, hairline cracks following the stucco, a scuffed lower edge where a bench has rubbed.\nSIZE: the real object is 6.00 m wide by 3.80 m tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of The Birth of God, the mural on Dabney's W wing, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: The Birth of God. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard/caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:37:40+00:00",
+    "stage": "art",
+    "slug": "caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard/front.png",
+    "output": "godot/assets/art/hero/caltech_dabney_birth_of_god_mural__dabney_courtyard__dabney_side_yard.png"
   }
 ]
