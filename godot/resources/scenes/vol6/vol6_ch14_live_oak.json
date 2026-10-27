@@ -145,6 +145,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "hey. quick thing. you up?",
       "expr": "neutral",
@@ -157,6 +158,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "yeah. on the porch with grandma. what.",
       "expr": "neutral",
@@ -164,6 +166,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "the back door of the unit i've been tracking is open tonight. like a couple of inches. faint light inside.",
       "expr": "neutral",
@@ -176,6 +179,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "[shot:closeup person]are you near it.",
       "expr": "serious",
@@ -183,6 +187,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "in my car at the corner of the lot.",
       "expr": "neutral",
@@ -190,6 +195,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "jesse.",
       "expr": "serious",
@@ -197,6 +203,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "i'm not getting out.",
       "expr": "neutral",
@@ -204,6 +211,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "are you sure.",
       "expr": "serious",
@@ -314,6 +322,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "home in 10. somebody came out and locked up.",
       "expr": "neutral",
@@ -321,6 +330,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "did he see you.",
       "expr": "serious",
@@ -328,6 +338,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "no. i'm sure.",
       "expr": "neutral",
@@ -335,6 +346,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "[shot:closeup person]ok. text me when you're inside.",
       "expr": "neutral",
@@ -342,6 +354,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Jesse",
       "text": "yeah.",
       "expr": "neutral",
@@ -776,6 +789,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "[shot:closeup person]a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is \u2014 it is the kind of thing you would want to know. \u2014 m.",
       "expr": "serious",

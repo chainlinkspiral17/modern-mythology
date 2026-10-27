@@ -524,11 +524,45 @@ func apply_panel(id: String) -> void:
 		_dismiss_panel()
 		return
 	_dismiss_panel()
+	# (2026-10-27, the Deck: "are we still using these old temp inserts and
+	# not the new generated art from the hero tool?") a panel whose subject
+	# has a hero-tool picture installed in the set (vol6_rick_notebook →
+	# cosmic_comics_interior_rick_notebook.png on the desk) is not drawn: the
+	# [shot:insert …] on the same line shows the real picture in the room.
+	if _hero_art_for_panel(id) != "":
+		return
 	var card := _build_panel_card(id)
 	if card == null:
 		return
 	_panel_card = card
 	_overlay_parent.add_child(card)
+
+
+const HERO_ART_DIR := "res://assets/art/hero/"
+var _hero_art_files: PackedStringArray = PackedStringArray()
+
+
+## The installed hero-art picture standing for panel `id` ("" when none):
+## the id without its volume prefix is the picture's tail
+## (vol6_rick_notebook → *_rick_notebook.png).
+func _hero_art_for_panel(id: String) -> String:
+	var key: String = id
+	var rx := RegEx.create_from_string("^vol\\d+_")
+	key = rx.sub(key, "", false)
+	if key.length() < 4:
+		return ""
+	if _hero_art_files.is_empty():
+		var d: DirAccess = DirAccess.open(HERO_ART_DIR)
+		if d == null:
+			return ""
+		_hero_art_files = d.get_files()
+	for f0: String in _hero_art_files:
+		# an exported build lists the imported copies (x.png.import / .remap)
+		var f: String = f0.trim_suffix(".import").trim_suffix(".remap")
+		var base: String = f.get_basename()
+		if (f.ends_with(".png") or f.ends_with(".jpg")) and (base == key or base.ends_with("_" + key)):
+			return HERO_ART_DIR + f
+	return ""
 
 
 func _dismiss_panel() -> void:
@@ -553,7 +587,20 @@ func _build_panel_card(id: String) -> Control:
 	var path := PANEL_DIR + id + ".json"
 	var hero = HeroImageScript.new()
 	var content: Control = null
-	if FileAccess.file_exists(path) and hero.load_from(path):
+	# (2026-10-27) the hero tool's picture of the panel's thing (roster
+	# scene2d `panel_<id>`, installed at assets/cg/panel_<id>.jpg) replaces
+	# the old pixel document when it is there
+	var pic_path: String = "res://assets/cg/panel_%s.jpg" % id
+	if ResourceLoader.exists(pic_path):
+		var tex: Texture2D = load(pic_path) as Texture2D
+		var pr := TextureRect.new()
+		pr.texture = tex
+		pr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		pr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		var aspect: float = float(tex.get_width()) / maxf(1.0, float(tex.get_height())) if tex != null else 1.33
+		pr.custom_minimum_size = Vector2(minf(560.0, 320.0 * aspect), minf(320.0, 560.0 / maxf(aspect, 0.01)))
+		content = pr
+	elif FileAccess.file_exists(path) and hero.load_from(path):
 		var texr := TextureRect.new()
 		# Integer-ish upscale of the pixel doc. Height cap 300 keeps
 		# the card INSIDE the upper field — the dialogue text zone

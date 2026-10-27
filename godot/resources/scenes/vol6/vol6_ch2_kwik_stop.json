@@ -206,6 +206,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "role": "— text · 13:48 —",
       "expr": "neutral",

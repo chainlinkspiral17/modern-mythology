@@ -56878,6 +56878,754 @@
         }
       ],
       "setting": "Montreal"
+    },
+    {
+      "slug": "panel_vol5_folded_napkin",
+      "kind": "scene2d",
+      "name": "John's folded napkin from booth six",
+      "file": "cg/panel_vol5_folded_napkin.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "panel_vol5_folded_napkin"
+      ],
+      "tag": "vol5 · INSERT (replaces the pixel panel vol5_folded_napkin) · vol5_ch0_booth6",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_ch0_booth6"
+      ],
+      "prompt": "A cheap white paper diner napkin folded four times into a small shape that is not quite anything, lying on a dark diner table under warm light. Close, still-life. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "John folded the napkin from booth six. White, paper, cheap."
+        },
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower."
+        },
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "He tucked it into the back of his notebook."
+        },
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "He did this without thinking and forgot about it almost immediately and did not, for the next several months, understand why he had done it."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol5_folded_napkin.jpg, the director shows it in place of resources/vn/panels/vol5_folded_napkin.json."
+    },
+    {
+      "slug": "panel_vol5_q_paul",
+      "kind": "scene2d",
+      "name": "Q. PAUL on the phone screen",
+      "file": "cg/panel_vol5_q_paul.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "panel_vol5_q_paul"
+      ],
+      "tag": "vol5 · INSERT (replaces the pixel panel vol5_q_paul) · vol5_ch15_devil",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_ch15_devil"
+      ],
+      "prompt": "A phone screen lighting up with an incoming call from a caller named only by initial, the phone face-up on a dark surface, the screen's glow on the room. The name not legible. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "The screen, when it came on, was not Antonio. The screen said Q. PAUL."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "Of course it did."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "Q. PAUL was calling because Q. PAUL was always calling. Q. PAUL had been calling Antonio for weeks. Q. PAUL, today, was calling Jimmy. The escalation was the message."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "The escalation said I am beginning to deal with the operator and not the principal. The principal is, in some sense, no longer the principal."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol5_q_paul.jpg, the director shows it in place of resources/vn/panels/vol5_q_paul.json."
+    },
+    {
+      "slug": "panel_vol5_record_player",
+      "kind": "scene2d",
+      "name": "the record player that clicked on",
+      "file": "cg/panel_vol5_record_player.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "panel_vol5_record_player"
+      ],
+      "tag": "vol5 · INSERT (replaces the pixel panel vol5_record_player) · vol5_ch18_moon",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_ch18_moon"
+      ],
+      "prompt": "An old record player in the corner of a dark room at five in the morning, its tonearm lifted by itself above a record, a thin line of light from the window. Quiet, uncanny. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "At five oh-seven, the record player in the corner — which had not, since she and Nicola had stopped using it around one AM, been on — clicked."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Natalie turned her head."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "The tonearm had lifted itself."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "This was not, in a strict physical sense, possible. The tonearm had not been set to automatic return."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol5_record_player.jpg, the director shows it in place of resources/vn/panels/vol5_record_player.json."
+    },
+    {
+      "slug": "panel_vol5_model_city",
+      "kind": "scene2d",
+      "name": "Frasier's Graustark in miniature",
+      "file": "cg/panel_vol5_model_city.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "panel_vol5_model_city"
+      ],
+      "tag": "vol5 · INSERT (replaces the pixel panel vol5_model_city) · vol5_ch1_magician",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_ch1_magician"
+      ],
+      "prompt": "A sprawling miniature city covering a studio floor: a cyberpunk favela of salvaged circuit boards, wire, bottle caps and scrap, tiny lit windows, a river of foil; seen from just above, the floor's boards at its edges. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "The kingdom covered the floor."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "Graustark, rendered in miniature."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted — but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol5_model_city.jpg, the director shows it in place of resources/vn/panels/vol5_model_city.json."
+    },
+    {
+      "slug": "panel_vol5_packing_boxes",
+      "kind": "scene2d",
+      "name": "the half-packed living room",
+      "file": "cg/panel_vol5_packing_boxes.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "panel_vol5_packing_boxes"
+      ],
+      "tag": "vol5 · INSERT (replaces the pixel panel vol5_packing_boxes) · vol5_ch2_priestess",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_ch2_priestess"
+      ],
+      "prompt": "Cardboard boxes gaping open along a warped hardwood living-room floor, half-filled: thrift-store tarot decks, camera lenses, hard drives, a teacup set apart; afternoon light. Still-life of a move. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:"
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "Thrift-store tarot decks sticky with spilled wine. Camera lenses like detached insect eyes. Hard drives humming with the ghosts of projects past, present, and perpetually pending."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "Graustark. Just another backdrop. Wasn't it?"
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol5_packing_boxes.jpg, the director shows it in place of resources/vn/panels/vol5_packing_boxes.json."
+    },
+    {
+      "slug": "panel_vol6_first_print",
+      "kind": "scene2d",
+      "name": "the first print in the tray",
+      "file": "cg/panel_vol6_first_print.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_first_print"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_first_print) · vol6_ch0_prelude",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch0_prelude"
+      ],
+      "prompt": "A darkroom photograph coming up in the developer tray under red safelight: a white van in the frame and, at the edge, half cut off by the border, a black pickup truck. Wet paper, tongs. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "The image comes up slowly, the way they always do — a grey wash that becomes shapes that becomes a photograph. The NexCorp van is in the frame. Two men in navy polo shirts."
+        },
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "And, at the edge of the frame, half-cut-off by the border, a black pickup truck with Louisiana plates."
+        },
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Huh."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_first_print.jpg, the director shows it in place of resources/vn/panels/vol6_first_print.json."
+    },
+    {
+      "slug": "panel_vol6_water_tower",
+      "kind": "scene2d",
+      "name": "the Harmony Creek water tower",
+      "file": "cg/panel_vol6_water_tower.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_water_tower"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_water_tower) · vol6_ch0_prelude",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch0_prelude"
+      ],
+      "prompt": "A small-town water tower at the end of an avenue at dawn, behind a chain-link fenced lot, a white van parked beside the fence, its painted lettering not legible. Texas suburb, early light. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall."
+        },
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "It was painted in 2019 with the words HARMONY CREEK in blue block letters and a small rendering of a creek that does not resemble the actual creek."
+        },
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. No one gets out. The van has been there since 6:04."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_water_tower.jpg, the director shows it in place of resources/vn/panels/vol6_water_tower.json."
+    },
+    {
+      "slug": "panel_vol6_rick_notebook",
+      "kind": "scene2d",
+      "name": "Rick's spiral notebook",
+      "file": "cg/panel_vol6_rick_notebook.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_rick_notebook"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_rick_notebook) · vol6_ch12_cosmic",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch12_cosmic"
+      ],
+      "prompt": "An open spiral notebook on a cluttered comic-shop back-office desk, a page of handwritten notes in a list, the handwriting suggested, not legible. Desk lamp light. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch12_cosmic.json",
+          "text": "Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know."
+        },
+        {
+          "src": "vol6/vol6_ch12_cosmic.json",
+          "text": "She has, since Sunday afternoon, read the list four times."
+        },
+        {
+          "src": "vol6/vol6_ch12_cosmic.json",
+          "text": "She reads it again."
+        },
+        {
+          "src": "vol6/vol6_ch12_cosmic.json",
+          "text": "Kid:"
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_rick_notebook.jpg, the director shows it in place of resources/vn/panels/vol6_rick_notebook.json."
+    },
+    {
+      "slug": "panel_vol6_foxhole_flyer",
+      "kind": "scene2d",
+      "name": "the Foxhole flyer",
+      "file": "cg/panel_vol6_foxhole_flyer.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_foxhole_flyer"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_foxhole_flyer) · vol6_ch14_substation_nine",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch14_substation_nine"
+      ],
+      "prompt": "A photocopied half-letter gig flyer, two colors, black ink on colored paper, hand-drawn block lettering, pinned to a corkboard among others; the words not legible. Close. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "Beneath the title: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO)."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "Jesse looks at the flyer for a long minute."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_foxhole_flyer.jpg, the director shows it in place of resources/vn/panels/vol6_foxhole_flyer.json."
+    },
+    {
+      "slug": "panel_vol6_corkboard_sheet",
+      "kind": "scene2d",
+      "name": "the depth chart on the corkboard",
+      "file": "cg/panel_vol6_corkboard_sheet.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_corkboard_sheet"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_corkboard_sheet) · vol6_ch19_depthchart",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch19_depthchart"
+      ],
+      "prompt": "A typed depth-chart sheet pinned to a high-school locker-room corkboard, columns of names by position, not legible; fluorescent light, the cork and pins sharp. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "He reaches the corkboard. He reads the sheet."
+        },
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "The sheet is, in its standard format, twenty-two starters listed by position with the backups in parentheses below."
+        },
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "His name is at TE-1."
+        },
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "In parentheses below his name: (LeBlanc). Which is Diaz, whose first name is Marcus but who goes by his surname because the team already has a Marcus."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_corkboard_sheet.jpg, the director shows it in place of resources/vn/panels/vol6_corkboard_sheet.json."
+    },
+    {
+      "slug": "panel_vol6_diego_letter",
+      "kind": "scene2d",
+      "name": "Diego's letter to his father",
+      "file": "cg/panel_vol6_diego_letter.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_diego_letter"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_diego_letter) · vol6_ch23_sunday",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch23_sunday"
+      ],
+      "prompt": "A handwritten letter on lined paper, begun with a single word and a line, lying on a bedroom desk at night under a lamp; the handwriting suggested, not legible. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch23_sunday.json",
+          "text": "Papá."
+        },
+        {
+          "src": "vol6/vol6_ch23_sunday.json",
+          "text": "I am writing again like I said I would. Tomorrow is the first day of school. I am a senior. The summer was — the summer was a thing. I am okay."
+        },
+        {
+          "src": "vol6/vol6_ch23_sunday.json",
+          "text": "I have been thinking about you. I have been wondering how the work is."
+        },
+        {
+          "src": "vol6/vol6_ch23_sunday.json",
+          "text": "I have been wondering whether the avocados came in well this season — I remember you used to write to me about the avocados when I was small, and I have been thinking about those letters this summer."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_diego_letter.jpg, the director shows it in place of resources/vn/panels/vol6_diego_letter.json."
+    },
+    {
+      "slug": "panel_vol6_transport_order",
+      "kind": "scene2d",
+      "name": "the transport order on the phone",
+      "file": "cg/panel_vol6_transport_order.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_transport_order"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_transport_order) · vol6_ch4_miller_office",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch4_miller_office"
+      ],
+      "prompt": "A phone face-up on an office desk at night, a terse message on its screen, the text not legible; the desk dark around it. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch4_miller_office.json",
+          "text": "The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
+        },
+        {
+          "src": "vol6/vol6_ch4_miller_office.json",
+          "text": "He reads it twice. He does not reply. He sets the phone face-down."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_transport_order.jpg, the director shows it in place of resources/vn/panels/vol6_transport_order.json."
+    },
+    {
+      "slug": "panel_vol6_speak_and_spell",
+      "kind": "scene2d",
+      "name": "the Speak & Spell glowing red",
+      "file": "cg/panel_vol6_speak_and_spell.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_speak_and_spell"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_speak_and_spell) · vol6_ch4_speak_spell",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch4_speak_spell"
+      ],
+      "prompt": "A vintage red Speak & Spell learning toy on a shelf in a dark back office, its speaker grille glowing a faint unnatural red, its little display lit. Uncanny, quiet. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch4_speak_spell.json",
+          "text": "It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
+        },
+        {
+          "src": "vol6/vol6_ch4_speak_spell.json",
+          "text": "The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again."
+        },
+        {
+          "src": "vol6/vol6_ch4_speak_spell.json",
+          "text": "A pause. Then: T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again."
+        },
+        {
+          "src": "vol6/vol6_ch4_speak_spell.json",
+          "text": "Another pause. F. T. says hello. Maya. Hello. Please listen. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. This word is your word. You are becoming a part of it. Three of you in this town. Three more elsewhere. Do not be afraid. You are not the only one."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_speak_and_spell.jpg, the director shows it in place of resources/vn/panels/vol6_speak_and_spell.json."
+    },
+    {
+      "slug": "panel_vol6_bill_note",
+      "kind": "scene2d",
+      "name": "the note on the bill",
+      "file": "cg/panel_vol6_bill_note.jpg",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "panel_vol6_bill_note"
+      ],
+      "tag": "vol6 · INSERT (replaces the pixel panel vol6_bill_note) · vol6_ch7_pit_stop",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol6_ch7_pit_stop"
+      ],
+      "prompt": "A folded dollar bill opened flat in two hands, a short handwritten note on it in pen, the words not legible; the creases sharp, a diner counter behind. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch7_pit_stop.json",
+          "text": "The red light lies. I am sorry. I will come back when I can."
+        },
+        {
+          "src": "vol6/vol6_ch7_pit_stop.json",
+          "text": "Her face still does not move."
+        },
+        {
+          "src": "vol6/vol6_ch7_pit_stop.json",
+          "text": "She reads the note three more times. Then she folds the bill back along the existing creases. She puts it in her purse. She puts the purse on the bench beside her."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol6_bill_note.jpg, the director shows it in place of resources/vn/panels/vol6_bill_note.json."
+    },
+    {
+      "slug": "panel_vol7_three_instructions",
+      "kind": "scene2d",
+      "name": "Brandon's three instructions",
+      "file": "cg/panel_vol7_three_instructions.jpg",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "panel_vol7_three_instructions"
+      ],
+      "tag": "vol7 · INSERT (replaces the pixel panel vol7_three_instructions) · vol7_ch19_cedar",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol7_ch19_cedar"
+      ],
+      "prompt": "A small handwritten page of three numbered instructions, the handwriting suggested, not legible, on a cedar table in a cabin, lamplight and a window of wet woods. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch19_cedar.json",
+          "text": "The three instructions."
+        },
+        {
+          "src": "vol7/vol7_ch19_cedar.json",
+          "text": "The old man gave them to me in the experience this afternoon. The instructions are Brandon's. Brandon left them with the old man to give to the person who would come. I am the person. The old man gave me the instructions. I am going to give them to the room."
+        },
+        {
+          "src": "vol7/vol7_ch19_cedar.json",
+          "text": "First. The crow is the bell. The crow is going to ring. Be where you can hear when the crow rings."
+        },
+        {
+          "src": "vol7/vol7_ch19_cedar.json",
+          "text": "Second. The bowls are going to know before we do. The bowls are going to give us a count of seconds before the crow rings. The four bowls in the room are going to go very still. The figures on the bowls are going to stop moving."
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_three_instructions.jpg, the director shows it in place of resources/vn/panels/vol7_three_instructions.json."
+    },
+    {
+      "slug": "panel_vol7_bus_schedule",
+      "kind": "scene2d",
+      "name": "the bus schedule",
+      "file": "cg/panel_vol7_bus_schedule.jpg",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "panel_vol7_bus_schedule"
+      ],
+      "tag": "vol7 · INSERT (replaces the pixel panel vol7_bus_schedule) · vol7_ch6_tem_call",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol7_ch6_tem_call"
+      ],
+      "prompt": "A printed small-town bus schedule card on a cafe table on the Oregon coast, rainy window light; the times not legible. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch6_tem_call.json",
+          "text": "\"Should I call Cale. He has a truck.\""
+        },
+        {
+          "src": "vol7/vol7_ch6_tem_call.json",
+          "text": "\"Don't pull Cale into this yet. Stay in town. We'll come down. The four of us at your place at six.\""
+        },
+        {
+          "src": "vol7/vol7_ch6_tem_call.json",
+          "text": "\"What happened.\""
+        }
+      ],
+      "notes": "SPARSE — the lines around this panel do not describe the thing; the look is proposed. INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_bus_schedule.jpg, the director shows it in place of resources/vn/panels/vol7_bus_schedule.json."
+    },
+    {
+      "slug": "panel_vol7_estuary7_label",
+      "kind": "scene2d",
+      "name": "the Estuary 7 label",
+      "file": "cg/panel_vol7_estuary7_label.jpg",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "panel_vol7_estuary7_label"
+      ],
+      "tag": "vol7 · INSERT (replaces the pixel panel vol7_estuary7_label) · vol7_ch6_the_stick",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol7_ch6_the_stick"
+      ],
+      "prompt": "A small wooden box holding three slim cartridge sticks; the third has a white label hand-written in small careful pen, not legible. Lamp light, close. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch6_the_stick.json",
+          "text": "She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat."
+        },
+        {
+          "src": "vol7/vol7_ch6_the_stick.json",
+          "text": "He stayed in the chair."
+        },
+        {
+          "src": "vol7/vol7_ch6_the_stick.json",
+          "text": "\"One more thing.\""
+        }
+      ],
+      "notes": "INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_estuary7_label.jpg, the director shows it in place of resources/vn/panels/vol7_estuary7_label.json."
+    },
+    {
+      "slug": "panel_vol7_freq_log",
+      "kind": "scene2d",
+      "name": "the frequency log",
+      "file": "cg/panel_vol7_freq_log.jpg",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "panel_vol7_freq_log"
+      ],
+      "tag": "vol7 · INSERT (replaces the pixel panel vol7_freq_log) · vol7_ch8_finn_speaks",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol7_ch8_finn_speaks"
+      ],
+      "prompt": "A handwritten radio frequency log on a clipboard beside a small shortwave radio, columns of numbers suggested, not legible; night, a desk lamp. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch8_finn_speaks.json",
+          "text": "\"I'm not. The Roy thing this morning is going to take me a minute to come down from. I am still hot. I want you to know my saying this is not me being hot. This is me trying to be honest with you the way you are trying to be honest with us.\""
+        },
+        {
+          "src": "vol7/vol7_ch8_finn_speaks.json",
+          "text": "\"Yes.\""
+        }
+      ],
+      "notes": "SPARSE — the lines around this panel do not describe the thing; the look is proposed. INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_freq_log.jpg, the director shows it in place of resources/vn/panels/vol7_freq_log.json."
+    },
+    {
+      "slug": "panel_vol7_tower_patch_note",
+      "kind": "scene2d",
+      "name": "the tower patch note",
+      "file": "cg/panel_vol7_tower_patch_note.jpg",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "panel_vol7_tower_patch_note"
+      ],
+      "tag": "vol7 · INSERT (replaces the pixel panel vol7_tower_patch_note) · vol7_ch8_the_apology",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol7_ch8_the_apology"
+      ],
+      "prompt": "A folded printed note with a short handwritten patch note on it, lying on a kitchen table between four mugs; overcast coastal light; not legible. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch8_the_apology.json",
+          "text": "She did not, when she was done, look at any of them."
+        },
+        {
+          "src": "vol7/vol7_ch8_the_apology.json",
+          "text": "The four of them sat at the table."
+        }
+      ],
+      "notes": "SPARSE — the lines around this panel do not describe the thing; the look is proposed. INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_tower_patch_note.jpg, the director shows it in place of resources/vn/panels/vol7_tower_patch_note.json."
+    },
+    {
+      "slug": "panel_vol7_daughter_photo",
+      "kind": "scene2d",
+      "name": "the daughter's photograph",
+      "file": "cg/panel_vol7_daughter_photo.jpg",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "panel_vol7_daughter_photo"
+      ],
+      "tag": "vol7 · INSERT (replaces the pixel panel vol7_daughter_photo) · vol7_ch8_the_daughter",
+      "aspect": "4:3",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol7_ch8_the_daughter"
+      ],
+      "prompt": "An old printed photograph of a young girl, held in two hands in a small living room, soft window light; the face slightly worn by handling. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch8_the_daughter.json",
+          "text": "When she was done she sat with her hands flat on her knees."
+        },
+        {
+          "src": "vol7/vol7_ch8_the_daughter.json",
+          "text": "Finn, on the couch, who had not yet spoken, said: \"The crow.\""
+        }
+      ],
+      "notes": "SPARSE — the lines around this panel do not describe the thing; the look is proposed. INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_daughter_photo.jpg, the director shows it in place of resources/vn/panels/vol7_daughter_photo.json."
     }
   ]
 }

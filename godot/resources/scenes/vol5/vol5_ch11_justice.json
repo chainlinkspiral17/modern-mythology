@@ -539,6 +539,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "ben",
       "text": "[shot:closeup person]coffee shop vibes later? need to deconstruct the inherent performativity of latte art.",
       "voice": "assets/audio/voice/vol5_ch11_justice/102.mp3"
@@ -561,6 +562,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "anna",
       "text": "brain empty. send artisanal pastry gifs.",
       "voice": "assets/audio/voice/vol5_ch11_justice/106.mp3"

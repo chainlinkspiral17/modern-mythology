@@ -50,6 +50,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Ben",
       "text": "he's safe. tell you in person. truck after your shift.",
       "expr": "neutral",

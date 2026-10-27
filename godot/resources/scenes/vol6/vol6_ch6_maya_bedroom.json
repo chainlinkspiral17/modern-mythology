@@ -55,6 +55,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "F.T.",
       "text": "kid. one more thing. you said something to rick this week. you asked if we could help me, sometime, after this. i wanted to tell you i heard you. i wanted to say thank you for asking. i want to be honest with you. i don't know what 'help' would look like,",
       "expr": "neutral",
@@ -62,6 +63,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "F.T.",
       "text": "[shot:closeup person]for me. i have been in this warehouse for ten years and the warehouse and i have, in some ways, become the same thing. i don't know if i can leave. i don't know if i want to. i don't know if i should. but you asked. nobody has, in some time, asked. it meant something to me. i wanted you to know.",
       "expr": "neutral",
@@ -86,6 +88,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "F.T.",
       "text": "you are a daigle, kid. you are exactly the kind of daigle the good ones are. take your time. so will i.",
       "expr": "neutral",
@@ -93,6 +96,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "F.T.",
       "text": "now. one more thing. real one. there's going to be an issue with one of the adults this weekend. not your group. one of the adults. i can't tell you which one or what kind of issue. i don't actually know yet —",
       "expr": "neutral",
@@ -100,6 +104,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "F.T.",
       "text": "the demons are flagging an anomaly but it isn't resolved. just — be careful with the adults this weekend. look at their faces when you talk to them. trust your read. — f.t.",
       "expr": "neutral",
@@ -119,6 +124,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "F.T.",
       "text": "good kid. go take a nap.",
       "expr": "neutral",

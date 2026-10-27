@@ -826,6 +826,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "hey rick. quick one. the s&s went red today for a customer. one named tom bell, comes in monthly. he picked it up and walked it. i intercepted. he recovered fast. came back after,",
       "expr": "neutral",
@@ -833,6 +834,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "[shot:closeup person]fine. bought three issues. no harm. it stayed dim under the register the rest of the day. note on your desk. see you tomorrow.",
       "expr": "neutral",
@@ -851,6 +853,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Rick",
       "text": "kid. you handled it perfectly. i'll be back at 11 tomorrow. tom bell is fine, he's been a regular for years, no history of anything weird. the s&s does what it does. you read it right. nothing to do tonight. eat dinner. sleep. see you tomorrow.",
       "expr": "neutral",

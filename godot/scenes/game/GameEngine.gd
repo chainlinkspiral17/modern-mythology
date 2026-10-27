@@ -6,6 +6,7 @@ signal game_ended
 const DIALOGUE_SCENE  := preload("res://scenes/game/DialogueBox.tscn")
 const CHOICE_SCENE    := preload("res://scenes/game/ChoiceMenu.tscn")
 const CHAR_SCENE      := preload("res://scenes/game/CharLayer.tscn")
+const PHONE_SCRIPT    := preload("res://scripts/vn/PhoneThread.gd")
 const INTERLUDE_SCENE := preload("res://scenes/game/InterludePanel.tscn")
 const CG_SCENE        := preload("res://scenes/game/CgPanel.tscn")
 const MOVIE_SCRIPT    := preload("res://scenes/menu/IntroMovie.gd")
@@ -123,6 +124,8 @@ var _dlg_scrim:      Control     = null
 const UI_Z := 100
 var _chars:      Control     = null
 var _dlg:        Control     = null
+var _phone:      Control     = null   # (2026-10-27) the phone in the reader's hand: lines "via" text / call
+var _phone_idle: int         = 0      # narration lines since the thread's last message
 var _choices:    Control     = null
 var _interlude:  Control     = null
 var _cg:         Control     = null
@@ -244,6 +247,12 @@ func _build_layers() -> void:
 	# bg composition's internal z (1..9), so those can't escape either.
 	_chars.z_index = UI_Z - 40
 	add_child(_chars)
+	# The phone (2026-10-27): an absent party's lines by text or call show as
+	# the phone, not as the person in the room. Picture content like a
+	# portrait (not HUD), over the portraits and under the dialogue band.
+	_phone = PHONE_SCRIPT.new()
+	_phone.z_index = UI_Z - 30
+	add_child(_phone)
 
 	# Dialogue scrim — gradient panel between chars and dlg so dialogue
 	# text always has a high-contrast surface beneath it regardless of
@@ -515,6 +524,7 @@ func _open_music() -> void:
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_plate_opened = false
 	_held_shows.clear()
+	_phone_close()
 	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
 	_apply_trip_cue("reset")
 	_apply_register_cue("reset")
@@ -929,8 +939,20 @@ func _directed_seen(n: Dictionary, kind: String) -> Dictionary:
 	return d
 
 
+func _phone_close() -> void:
+	if _phone != null and bool(_phone.call("is_showing")):
+		_phone.call("hide_thread")
+	_phone_idle = 0
+
+
 func _do_narrate(n: Dictionary) -> void:
 	_plate_opened = false
+	# the thread stays up through a line or two of narration ("She types
+	# back."), and closes after three
+	if _phone != null and bool(_phone.call("is_showing")):
+		_phone_idle += 1
+		if _phone_idle >= 3:
+			_phone_close()
 	var text: String = _s(n, "text")
 	_log.append({"role": "narrate", "text": text})
 	AudioMgr.set_sfx_pan(0.0)
@@ -954,12 +976,28 @@ func _do_say(n: Dictionary) -> void:
 	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
 	_log.append({"role": "say", "char": char_name, "text": text})
-	_ensure_portrait(char_name, expr)
+	# (2026-10-27, the Deck: "why is diego in this scene?") a line that comes
+	# BY TEXT ("via": "text" — the phone's messages in vols 5-6) is read, not
+	# spoken: the sender is somewhere else and is not put on screen. Diego's
+	# morning texts in ch15 had summoned him into the Kwik Stop, beside Sam and
+	# Mark, for two hundred lines.
+	var via: String = _s(n, "via")
+	if via == "text" or via == "call":
+		# on the phone: the reader (on screen) or the absent party, whose
+		# portrait is the phone itself (the user: "their portrait should look
+		# like a phone image/text message, not in scene with the character")
+		var outgoing: bool = bool(_chars.call("has_character", char_name))
+		_phone.call("push", char_name, _directive_rx.sub(text, "", true).strip_edges(), outgoing, via)
+		_phone_idle = 0
+	else:
+		_ensure_portrait(char_name, expr)
+		_phone_close()
 	_cue_signature(char_name)
 	_chars.call("update_expression", char_name.to_lower(), expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
-	_chars.call("activate_speaker", char_name.to_lower())
+	if via == "" or bool(_chars.call("has_character", char_name)):
+		_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
 	_chars.call("direct_line", char_name.to_lower(), text, expr, "say")
 	_dlg.visible = true
@@ -1396,6 +1434,7 @@ func _place_of(src: String) -> String:
 
 
 func _do_bg(n: Dictionary) -> void:
+	_phone_close()
 	var src: String = resolve_bg(_s(n, "src"), _scene_id)
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:

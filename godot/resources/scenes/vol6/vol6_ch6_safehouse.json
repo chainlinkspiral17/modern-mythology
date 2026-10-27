@@ -133,6 +133,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "yes. [wave amp=5 freq=2]sorry it took so long[/wave].",
       "expr": "neutral",

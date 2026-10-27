@@ -290,6 +290,7 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Maya",
    "text": "ben i heard. te1. yes.",
    "expr": "happy",
@@ -297,12 +298,14 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Ben",
    "text": "who told you.",
    "expr": "neutral"
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Maya",
    "text": "[shot:closeup person_b]gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds.",
    "expr": "happy",
@@ -310,12 +313,14 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Ben",
    "text": "my dad was yelling about the weeds?",
    "expr": "neutral"
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Maya",
    "text": "gracie said he was talking to himself with — and i quote — \"energy.\"",
    "expr": "happy",
@@ -323,6 +328,7 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Ben",
    "text": "lmao.",
    "expr": "neutral"

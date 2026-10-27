@@ -222,6 +222,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "[beat:hit]ben. my grandmother fell down the stairs. she's at the hospital. broken hip. she's going to be okay. i'm at the er with her now. you don't have to come. i just wanted to tell you.",
       "expr": "neutral",
@@ -254,6 +255,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Ben",
       "text": "on my way. don't argue.",
       "expr": "neutral",
@@ -271,6 +273,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Maya",
       "text": "[shot:closeup person]ok. third floor. waiting room. thank you.",
       "expr": "neutral",

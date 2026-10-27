@@ -125,6 +125,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "morning. on my way home from shift. wanted to say hi.",
       "expr": "neutral",
@@ -142,6 +143,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "[shot:closeup sam]morning. drive safe. love you.",
       "expr": "neutral",
@@ -154,6 +156,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "love you. i'll text later.",
       "expr": "neutral",
@@ -1971,6 +1974,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "hey. just woke up. how's your shift.",
       "expr": "neutral",
@@ -1983,6 +1987,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "[shot:closeup sam]ok. couple from oakland broke down in the lot. helped them out. was a thing.",
       "expr": "neutral",
@@ -1990,6 +1995,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "they ok?",
       "expr": "neutral",
@@ -1997,6 +2003,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "i think so. they're at the cypress tonight. bus tomorrow.",
       "expr": "neutral",
@@ -2004,6 +2011,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "you ok?",
       "expr": "neutral",
@@ -2016,6 +2024,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "yeah. i think so. i'll tell you later.",
       "expr": "neutral",
@@ -2023,6 +2032,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Diego",
       "text": "ok. love you.",
       "expr": "neutral",
@@ -2030,6 +2040,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "love you.",
       "expr": "neutral",

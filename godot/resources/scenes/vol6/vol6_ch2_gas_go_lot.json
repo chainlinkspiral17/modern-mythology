@@ -74,6 +74,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "role": "— text · sent yesterday 15:01 —",
       "expr": "neutral",
@@ -92,6 +93,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "role": "— text · 19:54 —",
       "expr": "neutral",
@@ -123,6 +125,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "role": "— text —",
       "expr": "neutral",
@@ -139,6 +142,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "role": "— text —",
       "expr": "neutral",

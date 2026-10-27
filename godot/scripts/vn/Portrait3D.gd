@@ -78,7 +78,7 @@ const SHOT_FRAMES := {
 	"ecu":    {"b": 0.865, "t": 0.995, "fov": 19.0},   # the face; the crown leaves frame
 }
 const YAW_THREE_QUARTER: float = 0.40       # rad (~23°) — the old 3/4 offset (atan 1.15/2.7)
-const ANGLE_ELEVATION := {"eye": 0.0, "low": -0.16, "high": 0.14, "dutch": 0.0}   # rad: camera below / above the frame centre
+const ANGLE_ELEVATION := {"eye": 0.0, "low": -0.16, "high": 0.14, "dutch": 0.0}   # rad: camera below / above the EYE LINE (2026-10-27; was the frame centre)
 const DUTCH_ROLL: float = 0.105             # rad (~6°)
 const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
 # FACE-ANCHORED close shots (sheet 41, 2026-10-01): every model is scaled
@@ -130,12 +130,22 @@ const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
 # its top 720 px, so screen = eye_at / 0.8: the torso-up sizes put the
 # eyes ~30 % down the screen (near the upper third, the crown well clear
 # of the top), the close sizes keep their faces over the dialogue band.
+#
+# EYE LINES, AGAIN (2026-10-27, the user, Deck: "characters and sightlines
+# still too high on the screen, it's not cool" … "sightlines at the center
+# of the screen or just above. it's unnerving."). ~30 % down read as faces
+# crowding the top edge — in a three-shot the crowns met the top bar. The
+# eyes now sit at the centre or just above (screen = eye_at / 0.8: ~44 %
+# for the talking sizes, ~40 % close), and the crown caps are loosened so
+# they never pull the eyes back up (a cap binds when crown + cap <
+# eyes + eye_at x h). Headroom over the crown is the price, and in the
+# close sizes the dialogue now crosses the lower face — the user's call.
 const FACE_FRAMES := {
-	"wide":   {"h": 1.22, "eye_at": 0.24, "cap": 0.30},   # torso-up: talking distance; eyes ~30 % down the screen
-	"medium": {"h": 0.90, "eye_at": 0.24, "cap": 0.25},   # waist-up; eyes ~30 %
-	"mcu": {"h": 0.80, "eye_at": 0.225, "cap": 0.14},     # chest-up; eyes ~28 %, the chest under the box
-	"cu":  {"h": 0.56, "eye_at": 0.22, "cap": 0.03},      # the head fills the clean frame
-	"ecu": {"h": 0.36, "eye_at": 0.20, "cap": 0.0},       # brow to mouth; the crown and chin leave
+	"wide":   {"h": 1.22, "eye_at": 0.35, "cap": 0.60},   # torso-up: talking distance; eyes ~44 % down the screen
+	"medium": {"h": 0.90, "eye_at": 0.35, "cap": 0.55},   # waist-up; eyes ~44 %
+	"mcu": {"h": 0.80, "eye_at": 0.34, "cap": 0.45},      # chest-up; eyes ~42 %
+	"cu":  {"h": 0.56, "eye_at": 0.32, "cap": 0.30},      # the head fills the frame; eyes ~40 %
+	"ecu": {"h": 0.36, "eye_at": 0.30, "cap": 0.20},      # brow to mouth; eyes ~38 %
 }
 const EYES_OVER_NECK: float = 0.10     # the sheet-43 median, for a model not in the table
 # Where the eye line sat in each hero's sheet-43 ecu frame (fraction
@@ -897,7 +907,17 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	var elev: float = float(ANGLE_ELEVATION[angle]) + float(_roll.get("elev", 0.0))
 	var yaw: float = YAW_THREE_QUARTER + float(_roll.get("yaw", 0.0))
 	var dir := Vector3(sin(yaw) * cos(elev), sin(elev), cos(yaw) * cos(elev))
-	_camera.position = target + dir * dist
+	var cam_pos: Vector3 = target + dir * dist
+	# (2026-10-27, the user: "the camera being below their sightlines is
+	# also weird, it should be eye-level, looking them in the face. like
+	# normal human stuff.") The lens sat at the FRAME's centre — under the
+	# eyes, more so once the eyes moved down the frame — and looked up at
+	# every face. Its height now comes from the eye line: "eye" is exactly
+	# eye level, tilted down a touch to the frame's centre; low / high are
+	# measured from the eyes, so looking up at someone is a choice.
+	if _neck_y > 0.0 and FACE_FRAMES.has(size):
+		cam_pos.y = _eyes_y() + (cam_pos.y - target.y)
+	_camera.position = cam_pos
 	_camera.fov = fov
 	_camera.look_at(target, Vector3.UP)
 	if angle == "dutch":

@@ -40,6 +40,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "no apology necessary. take your time. i'm here.",
       "expr": "neutral",

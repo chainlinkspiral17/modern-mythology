@@ -28,6 +28,7 @@ extends Node3D
 @export var size_m: float = 0.9            # the longest extent, in metres
 @export var length_axis: String = "x"      # "x" or "z": where the longest extent lies
 @export var upright: bool = false          # true: the longest extent is the height
+@export var lay_down: bool = false         # true: a model standing on end is laid along length_axis (a book, a rolled rug); a Meshy model is drawn upright and never is (2026-10-27)
 @export var stand_in_root: NodePath        # the locale GLB instance holding the procedural stand-in
 @export var hide_prefixes: PackedStringArray = PackedStringArray()
 @export var matte: bool = true
@@ -83,11 +84,18 @@ func _fit(root: Node3D) -> void:
 			root.rotation = Vector3(0.0, 0.0, PI / 2.0)      # X-up → Y-up
 	else:
 		var want: int = 2 if length_axis.to_lower() == "z" else 0
-		if longest == 1:
+		if longest == 1 and lay_down:
 			# Standing on end: lay it down along the wanted axis.
 			root.rotation = Vector3(0.0, 0.0, -PI / 2.0) if want == 0 else Vector3(PI / 2.0, 0.0, 0.0)
-		elif longest != want:
-			root.rotation = Vector3(0.0, PI / 2.0, 0.0)      # swap X and Z
+		else:
+			# (2026-10-27, the Deck: "sideways crow") a Meshy model comes out
+			# standing as it was drawn, Y up — a perched crow is taller than it
+			# is long, and the old rule laid every such model on its side. It
+			# only turns about Y now: its longest HORIZONTAL extent goes along
+			# length_axis, and that length is what size_m fits.
+			var horiz: int = 2 if ext.z >= ext.x else 0
+			if horiz != want:
+				root.rotation = Vector3(0.0, PI / 2.0, 0.0)      # swap X and Z
 	# Re-measure in the new orientation, then scale and seat.
 	var box: AABB = _measure(root, meshes)
 	ext = box.size

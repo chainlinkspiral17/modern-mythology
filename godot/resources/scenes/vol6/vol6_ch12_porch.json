@@ -64,6 +64,7 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Wren",
    "text": "how was the rest of the day?",
    "expr": "neutral",
@@ -76,6 +77,7 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Maya",
    "text": "[shot:closeup person]good. curtis is okay. truck wednesday confirmed late.",
    "expr": "neutral",
@@ -83,6 +85,7 @@
   },
   {
    "t": "say",
+   "via": "text",
    "char": "Wren",
    "text": "good kid. see you wednesday morning.",
    "expr": "neutral",

@@ -66,6 +66,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Sam",
       "text": "ok mom. love you.",
       "expr": "neutral",
@@ -73,6 +74,7 @@
     },
     {
       "t": "say",
+      "via": "text",
       "char": "Mom",
       "text": "love you, baby.",
       "expr": "neutral",

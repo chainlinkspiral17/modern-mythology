@@ -323,6 +323,19 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-10-27 · a voice by phone is not a person in the room; the eyes sit at the centre
+
+**Context:** Deck screenshots: Diego standing in the Kwik Stop because his
+texts were `say` lines (a say from someone absent auto-spawns them); eyes
+~30 % down the screen with crowns at the top bar; the lens below the eye line
+looking up at every face.
+
+**Rule:** a line that arrives by phone carries `"via": "text"` or `"call"`.
+It shows as the phone (PhoneThread), and the sender is never staged. Faces
+sit with the eyes at the screen's centre or just above, the camera at their
+eye height. Framing caps must never pull the eyes back up. Check a framing
+change on the cast sheet's `_eyes.json`, not by eye.
+
 ### 2026-10-27 · a generic face cue on a speaker's line belongs on the speaker's own frame (pass 181)
 
 **Context:** The scripts cue faces two ways: a NAMED closeup (`[shot:closeup

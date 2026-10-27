@@ -3835,6 +3835,46 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 188: THE DECK'S REPORT — eye lines at the centre, an eye-level lens, the phone, the crow, the inserts.**
+- **Eye lines** ("characters and sightlines still too high … at the center of the screen or
+  just above. it's unnerving"): every shot size is anchored with the eyes ~42-45 % down
+  the screen (was ~28-30 %), the crown caps loosened so they never pull the eyes back up.
+  Measured on the cast sheet: eye 0.22-0.24 of the slot → 0.33-0.37, the same line for
+  every hero. In the close sizes the dialogue now crosses the lower face.
+- **Eye-level camera** ("the camera being below their sightlines is also weird, it should be
+  eye-level, looking them in the face"): the lens's height comes from the eye line, not the
+  frame's centre; "eye" is exactly eye level, tilted a touch down to the frame; low / high are
+  measured from the eyes.
+- **The phone** ("why is diego in this scene?" … "if a character is talking on the phone, their
+  portrait should look like a phone image/text message"): ch15's texts from Diego were plain
+  `say` lines, and a say from someone absent auto-spawned his portrait into the Kwik Stop for
+  two hundred lines. A line `"via": "text"` / `"call"` now shows on a PHONE (PhoneThread.gd):
+  the thread's bubbles — the absent party's on the left, the reader's on the right — or a call
+  screen with the name and its running time; the sender is never put in the room. 83 text
+  lines marked across 17 vol5-6 scenes (all-lowercase lines after a texting cue). Calls are
+  supported, not yet marked.
+- **The crow** ("sideways crow"): HeroProp laid every model whose longest side is its height on
+  its side — a perched crow is taller than long. A Meshy model is drawn upright: it now only
+  turns about Y, its longest horizontal side along length_axis (`lay_down` keeps the old rule
+  for a book or a rug).
+- **The old inserts** ("are we still using these old temp inserts and not the new generated
+  art"): a `[panel:]` whose thing has a hero-tool picture in the set (vol6_rick_notebook →
+  cosmic_comics_interior_rick_notebook) is not drawn; every other panel shows its own
+  generated picture (`assets/cg/panel_<id>.jpg`) when installed — 20 new `scene2d` CG entries,
+  one per panel, written from the panel's own lines (four vol7 ones SPARSE).
+- `tools/VnLineShot.tscn`: GameEngine at a scene:node (the resume fast-forward), captured — for
+  checking a reported frame (draft 1: auto-play is on in it, so it drifts past the target).
+- **Open from the same report — the next rounds:** Sam's model reads smeared/deformed after the
+  10-27 02:33 slim (seams locked; compare with `_full/`); the back office showed open sky on
+  the Deck (renders here — needs the Deck's GLB/log); the notebook insert "never leaves" (the
+  panel code dismisses on `[panel:off]` and on a page turn — reproduce); the `mark` model is
+  the TOW DRIVER's look, not Mark from Oakland; the Lovers' direction. And the user: **"vol 1-4
+  still have minimal direction and background work. focus on those in the next rounds"** — the
+  Cliffside circus signs (the art laid huge across the frame, its lettering MIRRORED: an apply
+  row facing the wrong side, a beige stand-in box over Jarvis's sign), the football field and
+  stadium ("still nonsense … illogical"), every vol1-4 set's direction by montage as vols 5-7
+  had (passes 174-181).
+
 **2026-10-27 · pass 187: MODEL BUDGETS, draft 3 — measured, and the misses caught.**
 - The user made one model of each tier in Hero Studio and saved them (comic_figure_3
   small, crow medium, peugeot_505 — set to medium in the page, no PBR). Measured from
