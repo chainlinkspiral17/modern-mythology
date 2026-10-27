@@ -618,6 +618,9 @@ func _fast_forward_to(target: int) -> void:
 	var last_trip: String = "reset"
 	var last_register: String = "reset"
 	var last_shot: String = ""
+	# (2026-10-27) a page panel open at the save point is open after the resume
+	# too: the last [panel:id] not closed by a [panel:off] or a new bg
+	var last_panel: String = ""
 	var limit: int = mini(target, nodes.size())
 	_replaying = true
 	for i in limit:
@@ -645,6 +648,8 @@ func _fast_forward_to(target: int) -> void:
 			"flag": _do_flag(n)
 			"bg", "substrate", "composition", "bgm":
 				last_env[String(n.get("t", ""))] = i
+				if String(n.get("t", "")) == "bg":
+					last_panel = ""
 			"narrate", "say", "think", "interlude":
 				# Remember only the last mood/shot direction seen.
 				# "interlude" is in this list because its title text
@@ -662,6 +667,7 @@ func _fast_forward_to(target: int) -> void:
 							"shot": last_shot = arg
 							"trip": last_trip = arg
 							"register": last_register = arg
+							"panel": last_panel = "" if arg.to_lower() == "off" else arg
 						text = text.substr(m.get_end(0))
 			_:
 				pass
@@ -681,6 +687,8 @@ func _fast_forward_to(target: int) -> void:
 			_director.call("apply_shot", last_shot)
 		if last_mood != "":
 			_director.call("apply_mood", last_mood)
+		if last_panel != "":
+			_director.call("apply_panel", last_panel)
 	_apply_trip_cue(last_trip)
 	_apply_register_cue(last_register)
 	# Save-file flags win over replayed flag nodes.

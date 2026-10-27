@@ -95,6 +95,11 @@
   "prims": 108360,
   "objects": 292
  },
+ "desert_route": {
+  "draw": 96,
+  "prims": 65060,
+  "objects": 266
+ },
  "diner": {
   "draw": 1248
  },
