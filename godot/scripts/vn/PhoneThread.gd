@@ -33,6 +33,7 @@ var _call_time: Label
 var _call_t: float = 0.0
 var _mode: String = ""              # "" hidden · "text" · "call"
 var _party: String = ""             # the absent party: the thread's title
+var _side: String = "right"         # (2026-10-27) the side the reader's portrait doesn't hold
 
 
 func _ready() -> void:
@@ -125,6 +126,12 @@ func push(speaker: String, text: String, outgoing: bool, via: String) -> void:
 		old.queue_free()
 
 
+func set_side(side: String) -> void:
+	if side != _side:
+		_side = side
+		_place()
+
+
 func hide_thread() -> void:
 	visible = false
 	_mode = ""
@@ -154,15 +161,18 @@ func _reset(party: String, via: String) -> void:
 	_call_time.text = "0:00"
 
 
-# Where the absent party's portrait would stand: right of centre, its
-# middle a little above the screen's, clear of the dialogue band.
+# Where the absent party's portrait would stand: on the side the reader's
+# portrait does NOT hold (set_side), from near the top to above the dialogue
+# band — never over a face, never under the text (2026-10-27, the Deck:
+# "Text from Diego on top portrait").
 func _place() -> void:
 	if _frame == null:
 		return
 	var vs: Vector2 = size
-	var sc: float = clampf(vs.y / 900.0, 0.55, 1.4)
+	var sc: float = clampf(vs.y * 0.58 / PHONE_SIZE.y, 0.45, 1.2)
 	_frame.scale = Vector2(sc, sc)
-	_frame.position = Vector2(vs.x * 0.70 - PHONE_SIZE.x * sc * 0.5, vs.y * 0.40 - PHONE_SIZE.y * sc * 0.5)
+	var cx: float = vs.x * (0.27 if _side == "left" else 0.73)
+	_frame.position = Vector2(cx - PHONE_SIZE.x * sc * 0.5, vs.y * 0.04)
 
 
 func _box(c: Color, radius: int, pad: int, top_only: bool = false) -> StyleBoxFlat:

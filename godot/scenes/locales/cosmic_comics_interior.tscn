@@ -598,6 +598,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_1.glb"
 size_m = 0.407
 upright = true
+fit_w = 0.50
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Statue_0_")
 
@@ -607,6 +608,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_2.glb"
 size_m = 0.407
 upright = true
+fit_w = 0.50
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Statue_1_")
 
@@ -616,6 +618,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_3.glb"
 size_m = 0.407
 upright = true
+fit_w = 0.50
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Statue_2_")
 
@@ -625,6 +628,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_4.glb"
 size_m = 0.407
 upright = true
+fit_w = 0.50
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Statue_3_")
 
@@ -634,6 +638,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_5.glb"
 size_m = 0.407
 upright = true
+fit_w = 0.50
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Statue_4_")
 
@@ -643,6 +648,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_6.glb"
 size_m = 0.407
 upright = true
+fit_w = 0.50
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Statue_5_")
 
@@ -650,8 +656,9 @@ hide_prefixes = PackedStringArray("Statue_5_")
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.348, 0.660, -1.050)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_4.glb"
-size_m = 0.387
+size_m = 0.360
 upright = true
+fit_w = 0.38
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Tower_Statue_0_0_")
 
@@ -659,8 +666,9 @@ hide_prefixes = PackedStringArray("Tower_Statue_0_0_")
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.787, 0.660, -1.050)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_5.glb"
-size_m = 0.387
+size_m = 0.360
 upright = true
+fit_w = 0.38
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Tower_Statue_0_1_")
 
@@ -668,8 +676,9 @@ hide_prefixes = PackedStringArray("Tower_Statue_0_1_")
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.348, 1.090, -1.050)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_6.glb"
-size_m = 0.387
+size_m = 0.360
 upright = true
+fit_w = 0.38
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Tower_Statue_1_0_")
 
@@ -677,8 +686,9 @@ hide_prefixes = PackedStringArray("Tower_Statue_1_0_")
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.787, 1.090, -1.050)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_1.glb"
-size_m = 0.387
+size_m = 0.360
 upright = true
+fit_w = 0.38
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Tower_Statue_1_1_")
 
@@ -686,8 +696,9 @@ hide_prefixes = PackedStringArray("Tower_Statue_1_1_")
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.348, 1.520, -1.050)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_2.glb"
-size_m = 0.387
+size_m = 0.360
 upright = true
+fit_w = 0.38
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Tower_Statue_2_0_")
 
@@ -695,8 +706,9 @@ hide_prefixes = PackedStringArray("Tower_Statue_2_0_")
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 1.787, 1.520, -1.050)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_3.glb"
-size_m = 0.387
+size_m = 0.360
 upright = true
+fit_w = 0.38
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Tower_Statue_2_1_")
 
@@ -706,6 +718,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_2.glb"
 size_m = 0.468
 upright = true
+fit_w = 0.70
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("WinStatue_0_")
 
@@ -715,6 +728,7 @@ script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/comic_figure_3.glb"
 size_m = 0.468
 upright = true
+fit_w = 0.70
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("WinStatue_1_")
 

@@ -10,6 +10,7 @@
 #
 #   cd godot/tools/blender && ./rebuild_all_locales.sh          # all 160-odd sets (an hour or two)
 #   ./rebuild_all_locales.sh cabin kwik_stop cosmic_comics      # only these (names or build_<name>.py)
+#   ./rebuild_all_locales.sh --stale                            # only the sets older than their builders
 #
 # The log of every set is ~/.cache/modern-mythology/rebuild_all.log.
 # ════════════════════════════════════════════════════════════════
@@ -22,6 +23,14 @@ mkdir -p "$(dirname "$LOG")"
 : > "$LOG"
 
 builders=()
+# (2026-10-27) --stale: only the sets whose GLB is older than its builder's last
+# commit (stale_sets.py) — the Deck's "thought this was fixed" was a set never rebuilt
+if [ "${1:-}" = "--stale" ]; then
+  mapfile -t names < <(python3 "$SCRIPT_DIR/stale_sets.py")
+  echo "${#names[@]} stale set(s): ${names[*]}"
+  set -- "${names[@]}"
+  [ "$#" -eq 0 ] && { echo "nothing to rebuild"; exit 0; }
+fi
 if [ "$#" -gt 0 ]; then
   for a in "$@"; do
     b="${a%.py}"; b="${b#build_}"

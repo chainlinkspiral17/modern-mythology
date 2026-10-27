@@ -950,6 +950,8 @@ func _directed_seen(n: Dictionary, kind: String) -> Dictionary:
 func _phone_close() -> void:
 	if _phone != null and bool(_phone.call("is_showing")):
 		_phone.call("hide_thread")
+	if _dlg != null:
+		_dlg.call("set_extra_occupied", "")
 	_phone_idle = 0
 
 
@@ -995,7 +997,14 @@ func _do_say(n: Dictionary) -> void:
 		# portrait is the phone itself (the user: "their portrait should look
 		# like a phone image/text message, not in scene with the character")
 		var outgoing: bool = bool(_chars.call("has_character", char_name))
+		# (2026-10-27, the Deck: "BASIC VISUAL NOVEL FUMBLES. Text from Diego on
+		# top portrait") the phone stands on the side the reader's portrait
+		# does NOT, and the dialogue column treats that side as taken
+		var occ: Array = _chars.call("occupied_slots")
+		var phone_side: String = "left" if (occ.has("right") or occ.has("center")) and not occ.has("left") else "right"
+		_phone.call("set_side", phone_side)
 		_phone.call("push", char_name, _directive_rx.sub(text, "", true).strip_edges(), outgoing, via)
+		_dlg.call("set_extra_occupied", phone_side)
 		_phone_idle = 0
 	else:
 		_ensure_portrait(char_name, expr)
@@ -1010,6 +1019,12 @@ func _do_say(n: Dictionary) -> void:
 	_chars.call("direct_line", char_name.to_lower(), text, expr, "say")
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
+	if via == "text":
+		# (2026-10-27) a text message reads in the phone — the box repeating it
+		# under the thread was a duplicate. The line still goes to the backlog
+		# (show_say logs it), is complete at once, and one press moves on.
+		_dlg.call("finish_typing")
+		_dlg.visible = false
 	AudioMgr.play_voice(_s(n, "voice"))
 	_set_vn_focus(true)
 	_wait()
