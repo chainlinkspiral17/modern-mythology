@@ -5275,6 +5275,16 @@
    "md5": "7f3f72bfb597bd48429447397f72a8d0",
    "size": 17059
   },
+  "godot/assets/3d/props/_full/comic_figure_3.glb": {
+   "at": "2026-10-27T02:36:14+00:00",
+   "md5": "91cb3b1ceeb19eecff5eacfa5f62c820",
+   "size": 4234876
+  },
+  "godot/assets/3d/props/_full/crow.glb": {
+   "at": "2026-10-27T02:36:14+00:00",
+   "md5": "4a5c87ab0c08816617db4fd383773455",
+   "size": 4264264
+  },
   "godot/assets/3d/props/_full/peugeot_505.glb": {
    "at": "2026-10-27T02:35:29+00:00",
    "md5": "dd1df0a649155ae9cde66592660af121",
@@ -5285,10 +5295,25 @@
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
    "size": 106709020
   },
+  "godot/assets/3d/props/comic_figure_3.glb": {
+   "at": "2026-10-27T02:36:08+00:00",
+   "md5": "605f41548f220f1a84001e33c06bb6a9",
+   "size": 501020
+  },
+  "godot/assets/3d/props/crow.glb": {
+   "at": "2026-10-27T02:36:08+00:00",
+   "md5": "e23e1eb786d32527e2ef53230c1fd44b",
+   "size": 775400
+  },
   "godot/assets/3d/props/peugeot_505.glb": {
    "at": "2026-10-27T02:35:20+00:00",
    "md5": "b6ccb0de346efebcc72e7126381f1a0b",
    "size": 1069824
+  },
+  "godot/assets/3d/props/peugeot_505_Image_0.jpg": {
+   "at": "2026-10-27T02:36:08+00:00",
+   "md5": "f20e2fc58df2acccbf16c668c2055c1a",
+   "size": 199304
   },
   "godot/assets/3d/props/steamboat_model.glb": {
    "at": "2026-10-27T02:35:20+00:00",
@@ -69980,6 +70005,41 @@
    "md5": "e185f65d659254db6c0ab4ef93a16ae0",
    "size": 1992187
   },
+  "godot/assets/concept/meshy/comic_figure_3/back.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "ea79276d9d8873e6e0d9381af888b8f4",
+   "size": 2456105
+  },
+  "godot/assets/concept/meshy/comic_figure_3/comic_figure_3_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "ea79276d9d8873e6e0d9381af888b8f4",
+   "size": 2456105
+  },
+  "godot/assets/concept/meshy/comic_figure_3/comic_figure_3_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "f4b77d6eb0f907303a6550c107033a33",
+   "size": 2249080
+  },
+  "godot/assets/concept/meshy/comic_figure_3/comic_figure_3_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "87ca7a0e57e999b4c830ebef42ab27d4",
+   "size": 2393712
+  },
+  "godot/assets/concept/meshy/comic_figure_3/front.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "f4b77d6eb0f907303a6550c107033a33",
+   "size": 2249080
+  },
+  "godot/assets/concept/meshy/comic_figure_3/meshy_thumb.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "81c71971eac9607594ee6fb9777124e2",
+   "size": 123017
+  },
+  "godot/assets/concept/meshy/comic_figure_3/side.png": {
+   "at": "2026-10-27T02:36:26+00:00",
+   "md5": "87ca7a0e57e999b4c830ebef42ab27d4",
+   "size": 2393712
+  },
   "godot/assets/concept/meshy/cosmic_comics_interior_bin_comic/cosmic_comics_interior_bin_comic_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:38:43+00:00",
    "md5": "b84fa2ce88f7a5fa262a0a447114a1e6",
@@ -70084,6 +70144,41 @@
    "at": "2026-10-14T02:39:34+00:00",
    "md5": "6bbc79d8d47ac3400fd27c95cb080861",
    "size": 2839100
+  },
+  "godot/assets/concept/meshy/crow/back.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "754102a0c99c2b3291551703fac4173c",
+   "size": 1303075
+  },
+  "godot/assets/concept/meshy/crow/crow_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "754102a0c99c2b3291551703fac4173c",
+   "size": 1303075
+  },
+  "godot/assets/concept/meshy/crow/crow_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "5a0b63b71e684687fac62bd0d22c7aa6",
+   "size": 1267402
+  },
+  "godot/assets/concept/meshy/crow/crow_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "fcb21a4d147302402880a072ba7f52e3",
+   "size": 1340166
+  },
+  "godot/assets/concept/meshy/crow/front.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "5a0b63b71e684687fac62bd0d22c7aa6",
+   "size": 1267402
+  },
+  "godot/assets/concept/meshy/crow/meshy_thumb.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "3dfdf651e6b8391ef3669c8a6fc18b1b",
+   "size": 99944
+  },
+  "godot/assets/concept/meshy/crow/side.png": {
+   "at": "2026-10-27T02:36:42+00:00",
+   "md5": "fcb21a4d147302402880a072ba7f52e3",
+   "size": 1340166
   },
   "godot/assets/concept/meshy/crumpled_barn_farwindbreak/crumpled_barn_farwindbreak_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:39:41+00:00",
@@ -74809,6 +74904,36 @@
    "at": "2026-10-27T02:35:46+00:00",
    "md5": "2c70794263d2a346e35cf7f9e3f9d402",
    "size": 2066042
+  },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/back.png": {
+   "at": "2026-10-27T02:36:53+00:00",
+   "md5": "d2bf65f4a2a9eab5513b2996a5331a74",
+   "size": 2486202
+  },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/front.png": {
+   "at": "2026-10-27T02:36:53+00:00",
+   "md5": "a65214640fcc44d022e6e9533823038f",
+   "size": 2514686
+  },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:53+00:00",
+   "md5": "d2bf65f4a2a9eab5513b2996a5331a74",
+   "size": 2486202
+  },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:53+00:00",
+   "md5": "a65214640fcc44d022e6e9533823038f",
+   "size": 2514686
+  },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T02:36:53+00:00",
+   "md5": "a7ee277b77e47ed6b17705f2998e169b",
+   "size": 2149928
+  },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/side.png": {
+   "at": "2026-10-27T02:36:53+00:00",
+   "md5": "a7ee277b77e47ed6b17705f2998e169b",
+   "size": 2149928
   },
   "godot/assets/concept/meshy/pharmacy_aisle_sign/front.png": {
    "at": "2026-10-14T03:17:33+00:00",
