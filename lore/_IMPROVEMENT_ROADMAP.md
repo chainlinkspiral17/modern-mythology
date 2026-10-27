@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 186: MODEL BUDGETS, draft 2 — the tier in the page, the sets held to it.**
+- **Tier editor:** a prop's tier is a selector on Hero Studio's budget line; it writes
+  `meshy_roster.json` through the server (`POST /api/roster/tier`, localhost only, props
+  only; the round trip is byte-identical), the Meshy settings follow the new class, SAVE
+  commits it. Offline the page says which line to edit.
+- **`prop_budget_audit.py`, a gate in both suites:** every placed HeroProp has a prop entry
+  (NO_ENTRY), its tier carries the size it is placed at (UNDER_TIER: over 0.6 m needs
+  medium, over 2.5 m large), and a set's prop models together stay under two characters'
+  video memory (OVER_SET, ~25 MB). Today: 15 sets, 39 placements, the heaviest the Kwik
+  Stop ~8 MB, 0 findings; checked to fire on a demoted Peugeot, a missing entry and a
+  tight cap.
+- The install hint after a hand-dropped GLB said `git add <model>` (refused: models are
+  gitignored) and pushed to `main`; it now says slim, then `save` (the Drive + a commit to
+  the current branch).
+- **Draft 187 targets:** measured numbers from the Deck in place of the estimates'
+  constants; the OVER_SET sum counts a set's models across all its presets (the Kwik
+  Stop never loads its three at once) — count per preset; a remeshed request for
+  characters to shrink the Drive originals.
+
 **2026-10-27 · pass 185: MODEL BUDGETS — props are made light, not cut light.**
 - User: "Add the hero props to the hero tool with generation prompts and model
   settings, accounting for both storage space and memory cost. Perhaps props should be

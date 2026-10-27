@@ -473,6 +473,14 @@ if [ "${PHN:-999}" -gt 0 ]; then
     echo "REGRESSION  $PHN unbacked surface claim(s) (ceiling 0)"; exit 1; fi
 echo ""
 
+# ── Prop budgets (2026-10-27) ─────────────────────────────────
+# every placed hero prop has a roster entry, a tier that carries the size
+# it is placed at, and a set's prop models together stay under two
+# characters' video memory. Nonzero fails.
+echo "── prop_budget_audit.py ──"
+python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; exit 1; }
+echo ""
+
 # FLOAT reached 2 on 2026-09-09 (two palmetto trunks on terrain samples)
 # after 1408 → 713 → 353 → 102 → 2 across five class passes. ZERO-
 # REGRESSION CEILING 2: drive it down; never raise it.

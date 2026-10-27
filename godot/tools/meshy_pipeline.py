@@ -2987,6 +2987,36 @@ def glb_header_tris(path):
                if pr.get("indices", pr.get("attributes", {}).get("POSITION")) is not None)
 
 
+def set_prop_tier(slug, tier, path=None):
+    """(2026-10-27) Hero Studio's tier selector: write a prop's budget tier
+    into the roster — the file, never only the page. Returns the entry's new
+    class and estimate."""
+    path = Path(path or ROSTER_PATH)
+    if tier not in PROP_TIERS:
+        raise ValueError(f"tier must be one of {PROP_TIERS}")
+    text = path.read_text(encoding="utf-8")
+    d = json.loads(text)
+    e = next((x for x in d.get("entries", []) if x.get("slug") == slug), None)
+    if e is None:
+        raise ValueError(f"no roster entry {slug!r}")
+    if e.get("kind") != "prop":
+        raise ValueError(f"{slug} is a {e.get('kind')}: only props have a tier")
+    if e.get("tier") != tier:
+        items = list(e.items())
+        if "tier" in e:
+            e["tier"] = tier
+        else:
+            i = [k for k, _ in items].index("file") + 1
+            e.clear()
+            e.update(items[:i] + [("tier", tier)] + items[i:])
+        out = json.dumps(d, indent=2, ensure_ascii=False) + "\n"
+        tmp = path.with_suffix(".json.tmp")
+        tmp.write_text(out, encoding="utf-8")
+        os.replace(tmp, path)
+    cls = budget_class(e)
+    return {"ok": True, "slug": slug, "tier": tier, "budget_class": cls, "estimate": budget_estimate(cls)}
+
+
 def cmd_budget(roster, args):
     """What the models cost: per class, the generation settings, the installed
     budget, and disk + video memory — measured where a GLB is installed,
@@ -3372,6 +3402,15 @@ def make_handler(runner, roster_path):
                     res = voice_ids.save_ids(req.get("ids") or {}, str(req.get("source") or "voice studio"))
                     res["ids"] = voice_ids.load_ids()
                     return self._json(res)
+                except Exception as ex:  # noqa: BLE001
+                    return self._json({"error": str(ex)}, 400)
+            if p == "/api/roster/tier":
+                # (2026-10-27) a prop's budget tier, written to the roster file
+                if self.client_address[0] not in ("127.0.0.1", "::1"):
+                    return self._json({"error": "localhost only"}, 403)
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                    return self._json(set_prop_tier(str(req.get("slug") or ""), str(req.get("tier") or ""), roster_path))
                 except Exception as ex:  # noqa: BLE001
                     return self._json({"error": str(ex)}, 400)
             roster = load_roster(roster_path)

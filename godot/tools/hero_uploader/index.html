@@ -754,7 +754,10 @@ function renderBudget() {
   const me = b.meshy || {}, sl = b.slim;
   const hero = budgetEstimate('hero');
   const ask = `${me.model_type}${me.model_type === 'smart-topology' ? ' ' + Number(me.polycount).toLocaleString() + ' triangles' : ''} · ${me.texture_resolution}${me.pbr ? ' · PBR' : ' · base colour only'}`;
-  let html = `<b>budget: ${esc(b.label || cls)}</b>${e.kind === 'prop' ? ` <span title="set by tier in meshy_roster.json (small | medium | large)">(tier: ${esc(e.tier || 'medium')})</span>` : ''}<br>`
+  const tierPick = e.kind === 'prop'
+    ? ` · tier <select id="o-tier" title="the prop's budget class — written to meshy_roster.json (SAVE commits it)">${PROP_TIERS.map(t => `<option${(e.tier || 'medium') === t ? ' selected' : ''}>${t}</option>`).join('')}</select>`
+    : '';
+  let html = `<b>budget: ${esc(b.label || cls)}</b>${tierPick}<br>`
     + `asks Meshy: ${esc(ask)} → installs ≤ ${Number(sl.tris).toLocaleString()} triangles, ${sl.tex} px maps (${est.maps}) · `
     + `~${mb(est.disk)} MB on disk, ~${mb(est.vram)} MB video memory`
     + (e.kind === 'prop' && hero ? ` <span style="opacity:.7">(a character: ~${mb(hero.disk)} / ~${mb(hero.vram)} MB)</span>` : '');
@@ -762,6 +765,21 @@ function renderBudget() {
   const def = meshDefaultsFor(cls), off = MESH_CONTROLS.filter(id => String($(id).value) !== String(def[id]));
   if (off.length) html += `<br><span class="warn">these settings differ from the budget's (${off.map(id => id.slice(2)).join(', ')}) — slim still cuts the result to the budget</span>`;
   box.innerHTML = html;
+  $('o-tier')?.addEventListener('change', ev => setTier(e, ev.target.value));
+}
+
+// (2026-10-27) the tier is the roster's, so the change goes to the file
+async function setTier(e, tier) {
+  if (!state.connected) {
+    log('err', `Offline: set "tier": "${tier}" on ${e.slug} in godot/tools/meshy_roster.json (or start Hero Studio).`);
+    renderBudget(); return;
+  }
+  try {
+    const r = await api('POST', '/api/roster/tier', { slug: e.slug, tier });
+    e.tier = r.tier;
+    log('ok', `${e.slug}: tier ${r.tier} (${r.budget_class}) written to meshy_roster.json — SAVE commits it.`);
+    restoreMesh(budgetClass(e)); renderRoster(); renderBudget(); updateCosts();
+  } catch (err) { log('err', `Tier not saved: ${err.message}`); renderBudget(); }
 }
 
 function imgUrl(relPath) {
@@ -1106,7 +1124,10 @@ async function installDroppedGlb() {
 
 function showGitCmd(e) {
   const path = `${OUT_DIR[e.kind]}/${e.file}`;
-  $('git-cmd').textContent = `cd ${REPO_DECK} && git add ${path} && git commit -m "${e.slug}: ${e.kind} model via Hero Studio" && git push -u origin main`;
+  // (2026-10-27) models are gitignored and live on the Drive: cut it to its
+  // budget, then SAVE (Drive + commit to the current branch) — the old line
+  // said `git add` (refused: ignored path) and pushed to main
+  $('git-cmd').textContent = `cd ${REPO_DECK} && python3 godot/tools/meshy_pipeline.py slim ${e.slug} && python3 godot/tools/meshy_pipeline.py save   # ${path}`;
   $('git-cmd').style.display = '';
 }
 

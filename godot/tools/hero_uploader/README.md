@@ -155,7 +155,10 @@ falls through to the base model.
    metallic and roughness maps would be paid for and thrown away. With *use
    side + back*, a low-poly class asks Meshy to remesh to the same polycount,
    because multi-image has no smart-topology. `meshy_pipeline.py budget` prints
-   the totals and the sets that load the most at once.
+   the totals and the sets that load the most at once. A prop's tier is a selector on the
+   budget line; it writes the roster (SAVE commits it). `audit/prop_budget_audit.py`
+   holds every set to it: each placed prop has an entry, a tier big enough for its
+   placed size, and the set's props stay under two characters' video memory.
 5. **Install / commit** — you can still drag any `.glb` onto the drop
    zone to install it under the canonical name (from Mixamo, RPM, the
    Meshy web app…). The page prints the git command to paste.
