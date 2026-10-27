@@ -28503,5 +28503,38 @@
     "outputs": [
       "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/small_wood_farmhouse_moonlit_cloud_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T05:48:39+00:00",
+    "stage": "art",
+    "slug": "small_wood_farmhouse_moonlit_cloud",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/front.png",
+    "output": "godot/assets/art/hero/small_wood_farmhouse_moonlit_cloud.png"
+  },
+  {
+    "at": "2026-10-27T05:48:55+00:00",
+    "stage": "image",
+    "slug": "small_wood_farmhouse_far_ridges",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the ridges across the valley at night like this: There were two large picture windows that killed the heating bill, but provided a gorgeous view of the valley. She stood and went to the window but saw only darkness past the light cast from inside. Additional direction: A long band of dark forested Coast Range ridge at night, straight-on and filling the frame, built to tile side to side: dense Douglas fir and hemlock covering a ridge flank, the ragged tops of the trees running along the top edge, nearly black-green with faint blue moonlight on the tree tips, no lights, no roads. Western Oregon, cold and damp, evenly exposed, no lettering.\nSIZE: the real object is 360.00 m wide by 20.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 13% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the ridges across the valley at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_farmhouse_far_ridges/small_wood_farmhouse_far_ridges_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:49:02+00:00",
+    "stage": "art",
+    "slug": "small_wood_farmhouse_far_ridges",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_farmhouse_far_ridges/front.png",
+    "output": "godot/assets/art/hero/small_wood_farmhouse_far_ridges.png"
   }
 ]
