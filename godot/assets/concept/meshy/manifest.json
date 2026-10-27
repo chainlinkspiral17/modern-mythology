@@ -28486,5 +28486,22 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/louisiana_road_far_treeline/front.png",
     "output": "godot/assets/art/hero/louisiana_road_far_treeline.png"
+  },
+  {
+    "at": "2026-10-27T05:48:32+00:00",
+    "stage": "image",
+    "slug": "small_wood_farmhouse_moonlit_cloud",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the cloud over the moon above the valley like this: She felt like a tiny ship at sea, the moon hidden behind clouds and pulled the afghan closer. Additional direction: A long band of night cloud, straight-on and filling the frame, built to tile side to side: a heavy layer of rolling cloud over a valley at night with the moon hidden behind it, its edges and thin patches silvered with cold moonlight, darker billows below, a few faint stars in one small gap. Soft, quiet, evenly exposed, no lettering.\nSIZE: the real object is 360.00 m wide by 22.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 14% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the cloud over the moon above the valley, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/small_wood_farmhouse_moonlit_cloud_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
