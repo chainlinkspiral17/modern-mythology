@@ -1139,3 +1139,15 @@ size_m = 0.697
 length_axis = "z"
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Porch_Crow_")
+
+; HERO PROP (2026-10-27): the reader and its cap on the side table by the
+; stove ("the side table where the stick and the reader sit") — Tem's
+; grandfather's reader, kept at the cabin since 2042
+[node name="HP_Stick_Reader" type="Node3D" parent="."]
+position = Vector3(2.600, 0.560, -7.060)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/stick_reader.glb"
+size_m = 0.260
+length_axis = "x"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray()
