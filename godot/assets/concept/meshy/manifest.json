@@ -28182,5 +28182,22 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/small_wood_town_melody_tape/front.png",
     "output": "godot/assets/art/hero/small_wood_town_melody_tape.png"
+  },
+  {
+    "at": "2026-10-27T05:12:34+00:00",
+    "stage": "image",
+    "slug": "bus_station_bus_stop_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A city bus stop sign, straight-on and filling the frame: a white enamelled metal plate with a blue band across the top, a simple bus pictogram and the words BUS STOP in blue capitals beneath, small route-number tabs left blank, scratches, sticker residue and a little rust at the corners. 2000s. Daylight, evenly lit.\nSIZE: the real object is 60 cm wide by 80 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the bus stop sign at the curb under the overhang, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bus_station_bus_stop_sign/bus_station_bus_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
