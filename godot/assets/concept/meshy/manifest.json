@@ -26565,5 +26565,97 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/vol5_prelude_ep07_airport_hotel/front.png",
     "output": "godot/assets/backgrounds/vol5_prelude_ep07_airport_hotel.jpg"
+  },
+  {
+    "at": "2026-10-27T04:21:02+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep08_autumn_crop",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bernie's public-housing living room in the fall like this: Bernie kept plants as pets, made her own minimal collage textured fabric artworks and dressed exclusively in sweat clothes. Beatrice met Bernadette through the library board, and would often go over to her public housing unit to help clean up the small living space, or fiddle with her decade plus personal computer to keep it just barely relevant. Additional direction: A small public-housing living room in autumn: houseplants everywhere, kept like pets, minimal textured fabric collages on the walls, a half-started quilt folded on a chair, a decade-old desktop computer on a little desk, a library book face down. Soft fall daylight.\nA single full-screen still for a literary visual novel set in America: Bernie's public-housing living room in the fall. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep08_autumn_crop/vol5_prelude_ep08_autumn_crop_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:21:10+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep08_autumn_crop",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep08_autumn_crop/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep08_autumn_crop.jpg"
+  },
+  {
+    "at": "2026-10-27T04:21:26+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep10_sound_of_silence",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the studio apartment with the blinds open to the rain like this: A bag of cheerios split on the floor. When it rains, they open up the blinds, watch him watch it fall across the pane. Additional direction: A cramped studio apartment on a rainy day, the blinds pulled open, rain running down the window pane: a split bag of cereal scattered across the floor, crayons and drawings beside it, a glowing screen, a small mirror from a purse on the carpet. Grey light, a sense of a place nobody leaves.\nA single full-screen still for a literary visual novel set in America: the studio apartment with the blinds open to the rain. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep10_sound_of_silence/vol5_prelude_ep10_sound_of_silence_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:21:43+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep10_sound_of_silence",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep10_sound_of_silence/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep10_sound_of_silence.jpg"
+  },
+  {
+    "at": "2026-10-27T04:21:56+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep11_writ_fer_rain",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes rain held on a surface, a drop at the point of falling, like this: Hold that thought hover that drop Cold fluid motion cutting surface tension Additional direction: A close study of rain: water beading and slicking across a cold surface, one drop held at the point of falling, surface tension catching grey light, the world beyond soft and out of focus. Quiet, tactile, cold.\nA single full-screen still for a literary visual novel set in America: rain held on a surface, a drop at the point of falling. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep11_writ_fer_rain/vol5_prelude_ep11_writ_fer_rain_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:22:11+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep11_writ_fer_rain",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep11_writ_fer_rain/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep11_writ_fer_rain.jpg"
+  },
+  {
+    "at": "2026-10-27T04:22:23+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep12_pour_1",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes a warm agate stone in lamplight like this: agate rock about eight stone. warm to the touch. Additional direction: A banded agate stone resting in a pool of warm lamplight on a dark table at night, its layers glowing amber and smoke, an intimate dark room around it, a curtain moving. Tender, still.\nA single full-screen still for a literary visual novel set in America: a warm agate stone in lamplight. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep12_pour_1/vol5_prelude_ep12_pour_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
