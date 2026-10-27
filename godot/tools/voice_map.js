@@ -733,7 +733,7 @@ window.MM_VOICE_MAP = {
    "voice_id": "TOXPlnYC7z5SQSV2Zgc5"
   },
   "cale": {
-   "voice_id": "5gaEGrWSk4v20HMfIhgC"
+   "voice_id": "C9fbwSpEaejywLWx722Z"
   }
  },
  "aliases": {
