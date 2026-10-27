@@ -21,11 +21,13 @@ Coach K's F-250) — for a 1997 Oregon town. Small Wood gets its own:
    sessions of football practice"; May "Content just to sit around half the
    day and watch the boys practice football"   → small_wood_field_dusk
 
-PROPOSED (the text gives none of it — Andy may correct any of it): the
-covered wooden home grandstand (the Northwest's answer to rain), its press
-box and fascia sign, the creosoted wooden light poles, the team colours
-(forest green and gold at home, white and maroon away), the concession
-shed, the ticket booth, the gravel lot, the church's steeple, the fir wall.
+ANDY (2026-10-27): the school is green primary, white secondary; a running
+track rings the field; the home stand is covered, under an elevated slanted
+roof. PROPOSED (the text gives none of the rest — Andy may correct any of
+it): the stand's wood and its press box and fascia sign, the track's red
+all-weather surface, the creosoted wooden light poles, the visitors' white
+and maroon, the concession shed, the ticket booth, the gravel lot, the
+church's steeple, the fir wall.
 
 The gridiron is vol 6's, true scale (build_school_field_evening's ground,
 lines and goalposts): x sideline to sideline (0 = midfield), y downfield
@@ -33,10 +35,11 @@ lines and goalposts): x sideline to sideline (0 = midfield), y downfield
 EAST, the grandstand behind the home bench; visitors' bleachers west; the
 gate, the lot and the street south; the church across the street.
 
-DRAFT 2 targets: the grandstand's aisle stairs and the tunnel under it;
+DRAFT 3 targets: the grandstand's aisle stairs and the tunnel under it;
 the crowd's postures (stamping, arms up); breath and steam as particles;
-the vigil's candles across the street (rewind's after-game); the track if
-Andy says there is one; Deck framing.
+the vigil's candles across the street (rewind's after-game); the track's
+field events (a long-jump pit, the high-jump apron) if Andy wants them;
+join the firs and lighten the crowd (the GLB is ~16 MB); Deck framing.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -59,17 +62,34 @@ SIDE_X, MID_Y, FIELD_LEN = SF.SIDE_X, SF.MID_Y, SF.FIELD_LEN
 NIGHT = "__small_wood_field_night"
 DUSK = "__small_wood_field_dusk"
 
-# the covered home grandstand, east
-GS_X0 = SIDE_X + 8.0              # the front wall's field face
+# DRAFT 2 (2026-10-27, Andy): "small wood high is green primary white
+# secondary"; "the field has a running track around it"; "Home stand is
+# covered with an elevated slanted roof." A 400 m track rings the field
+# (straights 84.39 m, inner radius 36.5 m, six 1.22 m lanes — the end zones
+# sit inside its curves), so both stands, the poles, the scoreboard, the gate
+# and the lot stand outside it.
+TRACK_R, LANE, LANES = 36.5, 1.22, 6
+TRACK_W = LANE * LANES                          # 7.32
+TRACK_HALF = 84.39 / 2.0
+TRACK_OUT = TRACK_R + TRACK_W                   # 43.82
+TRACK_RED = (0.50, 0.24, 0.18, 1.0)             # all-weather, weathered (proposed)
+RAIL_R = TRACK_OUT + 0.4
+
+# the covered home grandstand, east, past the track and its walk
+GS_X0 = TRACK_OUT + 2.56          # the front wall's field face (46.38)
 GS_LEN = 60.0
 GS_ROWS = 14
 TREAD, RISE, Z0 = 0.80, 0.42, 1.10
 GS_XB = GS_X0 + 0.30 + TREAD * GS_ROWS          # the back wall
-ROOF_F = (GS_X0 - 0.8, 8.0)                     # front edge (x, z)
-ROOF_B = (GS_XB + 0.5, 10.4)                    # back edge
+ROOF_F = (GS_X0 - 0.8, 10.0)                    # front edge (x, z): the roof stands high
+ROOF_B = (GS_XB + 0.5, 12.6)                    # back edge
+VIS_D0 = TRACK_OUT + 1.56 - SIDE_X              # the visitors' bleachers' front, past the track
+FENCE_S, FENCE_N = -36.0, FIELD_LEN + 42.0      # clear of the track's curves (-31.2 / 140.9)
+SCORE_Y = FIELD_LEN + 36.0
+SOUTH = -24.0                                   # the lot, the street, the church moved south past the track
 
 PAINT = (0.84, 0.82, 0.76, 1.0)       # weathered white
-TRIM = (0.16, 0.30, 0.22, 1.0)        # forest green
+TRIM = (0.10, 0.34, 0.19, 1.0)        # the school's green
 ROOF = (0.20, 0.26, 0.24, 1.0)
 SEAT_WOOD = (0.52, 0.40, 0.28, 1.0)
 STEP_WOOD = (0.42, 0.36, 0.30, 1.0)
@@ -86,7 +106,9 @@ COATS = [(0.20, 0.28, 0.44, 1.0), (0.46, 0.14, 0.14, 1.0), (0.18, 0.30, 0.22, 1.
          (0.62, 0.56, 0.44, 1.0), (0.12, 0.12, 0.14, 1.0), (0.54, 0.34, 0.18, 1.0), (0.70, 0.66, 0.20, 1.0),
          (0.36, 0.20, 0.34, 1.0), (0.24, 0.40, 0.50, 1.0)]
 SKIN = [(0.86, 0.70, 0.58, 1.0), (0.74, 0.56, 0.42, 1.0), (0.92, 0.78, 0.66, 1.0), (0.56, 0.40, 0.30, 1.0)]
-HOME_JERSEY, HOME_HELMET = (0.12, 0.30, 0.18, 1.0), (0.80, 0.66, 0.26, 1.0)
+# green primary, white secondary (Andy, 2026-10-27)
+HOME_JERSEY, HOME_HELMET = (0.10, 0.36, 0.20, 1.0), (0.10, 0.34, 0.19, 1.0)
+HOME_COATS = COATS + [(0.10, 0.36, 0.20, 1.0), (0.88, 0.88, 0.86, 1.0), (0.10, 0.36, 0.20, 1.0), (0.12, 0.30, 0.18, 1.0)]
 AWAY_JERSEY, AWAY_HELMET = (0.90, 0.90, 0.88, 1.0), (0.42, 0.10, 0.14, 1.0)
 PANTS = (0.88, 0.86, 0.80, 1.0)
 
@@ -114,13 +136,39 @@ def build_field():
     make_box("Mud_Midfield", (0.0, MID_Y, 0.0045), (12.0, 7.0, 0.004), MUD)
 
 
+def build_track():
+    """The 400 m track round the field (Andy, 2026-10-27): two straights and
+    two curves of six lanes, the lane lines white; the end zones sit inside
+    the curves. Parts named `_Stock_` join to one mesh per kind."""
+    white = (0.90, 0.90, 0.86, 1.0)
+    for sx in (-1, +1):
+        make_box(f"Track_Stock_Straight_{sx:+d}", (sx * (TRACK_R + TRACK_W / 2.0), MID_Y, -0.01), (TRACK_W, 2 * TRACK_HALF, 0.04), TRACK_RED)
+        for i in range(LANES + 1):
+            make_box(f"TrackLine_Stock_S{sx:+d}_{i}", (sx * (TRACK_R + i * LANE), MID_Y, 0.012), (0.05, 2 * TRACK_HALF, 0.01), white)
+    n = 28
+    dth = math.pi / n
+    for tag, cy, th0 in (("N", MID_Y + TRACK_HALF, 0.0), ("S", MID_Y - TRACK_HALF, math.pi)):
+        for k in range(n):
+            th = th0 + (k + 0.5) * dth
+            c, sn = math.cos(th), math.sin(th)
+            rm = TRACK_R + TRACK_W / 2.0
+            make_rot_box(f"Track_Stock_{tag}_{k}", (rm * c, cy + rm * sn, -0.01),
+                         (TRACK_W, 2.0 * TRACK_OUT * math.sin(dth / 2.0) + 0.05, 0.04), TRACK_RED, yaw=th)
+            for i in range(LANES + 1):
+                ri = TRACK_R + i * LANE
+                make_rot_box(f"TrackLine_Stock_{tag}{k}_{i}", (ri * c, cy + ri * sn, 0.012),
+                             (0.05, 2.0 * ri * math.sin(dth / 2.0) + 0.02, 0.01), white, yaw=th)
+    # the start line and the stagger marks on the home straight
+    make_box("TrackLine_Stock_Start", (TRACK_R + TRACK_W / 2.0, MID_Y - TRACK_HALF + 2.0, 0.013), (TRACK_W, 0.06, 0.01), white)
+
+
 def build_grandstand():
     """The covered home grandstand: a concrete front wall on the walk,
     fourteen wooden steps with a bench plank on each, a back wall, end
     walls, a shed roof on a row of posts, the press box on top, the
     school's sign on the fascia."""
     y0, y1 = MID_Y - GS_LEN / 2.0, MID_Y + GS_LEN / 2.0
-    make_box("GS_Walk", ((SIDE_X + 2.0 + GS_X0) / 2.0, MID_Y, 0.02), (GS_X0 - SIDE_X - 2.0, GS_LEN + 20.0, 0.04), CONC)
+    make_box("GS_Walk", ((TRACK_OUT + GS_X0) / 2.0, MID_Y, 0.02), (GS_X0 - TRACK_OUT, GS_LEN + 20.0, 0.04), CONC)
     make_box("GS_FrontWall", (GS_X0 + 0.15, MID_Y, Z0 / 2.0), (0.30, GS_LEN, Z0), CONC)
     for k in range(GS_ROWS):
         xa = GS_X0 + 0.30 + TREAD * k
@@ -152,7 +200,8 @@ def build_grandstand():
     # the under-roof lamps (practicals: the .tscn lights them)
     for i in range(6):
         py = y0 + 5.0 + i * (GS_LEN - 10.0) / 5.0
-        make_cyl(f"GS_Bulb_{i}", (GS_X0 + 4.0, py, 8.32), 0.12, 0.10, LAMP, segments=8)
+        zr = ROOF_F[1] + (GS_X0 + 4.0 - ROOF_F[0]) * rise / run - 0.40
+        make_cyl(f"GS_Bulb_{i}", (GS_X0 + 4.0, py, zr), 0.12, 0.10, LAMP, segments=8)
     # the press box on the roof's back, glass toward the field, its own roof
     pb_x0, pb_x1 = GS_XB - 4.0, GS_XB + 0.3
     pz = ROOF_B[1] - 0.6
@@ -192,10 +241,10 @@ def build_crowd():
         y = MID_Y - GS_LEN / 2.0 + 0.8
         while y < MID_Y + GS_LEN / 2.0 - 0.8:
             if r() < 0.72:
-                _figure("CrowdHome", x + (r() - 0.5) * 0.12, y, z, r, COATS[int(r() * 10) % 10])
+                _figure("CrowdHome", x + (r() - 0.5) * 0.12, y, z, r, HOME_COATS[int(r() * len(HOME_COATS)) % len(HOME_COATS)])
             y += 0.58 + r() * 0.12
     for s in range(8):
-        x = -(SIDE_X + 6.0 + s * 0.8 + 0.63)
+        x = -(SIDE_X + VIS_D0 + s * 0.8 + 0.63)
         z = 0.45 + s * 0.42
         y = MID_Y - 14.0
         while y < MID_Y + 14.0:
@@ -223,7 +272,7 @@ def build_practice():
     watching — May — and her car in the lot. Dusk only."""
     r = _rng(722)
     for i in range(7):
-        _figure("Practice", 6.0 + i * 1.6 + r(), SF.GL_S + 30.0 + r() * 6.0, 0.0, r, HOME_JERSEY, helmet=HOME_HELMET)
+        _figure("Practice", 19.0 + i * 1.4 + r(), SF.GL_S + 30.0 + r() * 6.0, 0.0, r, HOME_JERSEY, helmet=HOME_HELMET)
     _figure("PracticeCoach", SIDE_X - 3.0, SF.GL_S + 36.0, 0.0, r, (0.26, 0.28, 0.32, 1.0))
     _figure("PracticeMay", GS_X0 + 0.30 + TREAD * 3 + 0.35, MID_Y - 6.0, Z0 + RISE * 3 + 0.45, r, (0.70, 0.30, 0.24, 1.0), standing=False)
 
@@ -242,19 +291,23 @@ def build_rail_and_fence():
     """A pipe rail round the field (the crowd stays off it) and the
     chain-link perimeter with its gate and ticket booth south."""
     rail = (0.66, 0.68, 0.70, 1.0)
-    rx = SIDE_X + 5.0
-    ys, yn = -6.0, FIELD_LEN + 6.0
+    # the spectators' rail round the track's outside edge, the oval's own shape
+    pts = []
+    for sgn, cy in ((+1, MID_Y + TRACK_HALF), (-1, MID_Y - TRACK_HALF)):
+        for k in range(15):
+            th = (0.0 if sgn > 0 else math.pi) + k * math.pi / 14.0
+            pts.append((RAIL_R * math.cos(th), cy + RAIL_R * math.sin(th), 1.10))
+    pts.append(pts[0])
+    for k, (px, py, _z) in enumerate(pts[:-1]):
+        make_cyl(f"Rail_Stock_Post_{k}", (px, py, 0.55), 0.035, 1.10, rail, segments=6)
+    for k in range(len(pts) - 1):
+        make_tube(f"Rail_Stock_Top_{k}", [pts[k], pts[k + 1]], 0.03, rail, segments=6)
     for sx in (-1, +1):
-        n = 40
-        for k in range(n + 1):
-            py = ys + k * (yn - ys) / n
-            make_cyl(f"Rail_Post_{'E' if sx > 0 else 'W'}_{k}", (sx * rx, py, 0.55), 0.035, 1.10, rail, segments=6)
-        make_tube(f"Rail_Top_{'E' if sx > 0 else 'W'}", [(sx * rx, ys, 1.10), (sx * rx, yn, 1.10)], 0.03, rail, segments=6)
-    for tag, py in (("S", ys), ("N", yn)):
-        make_tube(f"Rail_Top_{tag}", [(-rx, py, 1.10), (-4.0, py, 1.10)], 0.03, rail, segments=6)
-        make_tube(f"Rail_Top_{tag}_E", [(4.0, py, 1.10), (rx, py, 1.10)], 0.03, rail, segments=6)
+        for k in range(1, 12):
+            py = MID_Y - TRACK_HALF + k * (2 * TRACK_HALF) / 12.0
+            make_cyl(f"Rail_Stock_Post_{'E' if sx > 0 else 'W'}{k}", (sx * RAIL_R, py, 0.55), 0.035, 1.10, rail, segments=6)
     link = (0.44, 0.46, 0.46, 1.0)
-    fx0, fx1, fy0, fy1 = -48.0, GS_XB + 4.0, -16.0, FIELD_LEN + 16.0
+    fx0, fx1, fy0, fy1 = -(SIDE_X + VIS_D0 + 12.5), GS_XB + 4.0, FENCE_S, FENCE_N
     for name, a, b in (("S_W", (fx0, fy0), (12.0, fy0)), ("S_E", (24.0, fy0), (fx1, fy0)), ("N", (fx0, fy1), (fx1, fy1)),
                        ("W", (fx0, fy0), (fx0, fy1)), ("E", (fx1, fy0), (fx1, fy1))):
         L = math.hypot(b[0] - a[0], b[1] - a[1])
@@ -274,8 +327,8 @@ def build_rail_and_fence():
 def build_light_poles():
     """Six creosoted wooden poles, two crossarms of lamps each, aimed at
     the field — the white haze the lights hang in is the night's fog."""
-    hx = SIDE_X + 5.6
-    wx = -(SIDE_X + 6.0 + 8 * 0.8 + 2.2)
+    hx = TRACK_OUT + 1.3              # on the stand's walk, between the track and the stand
+    wx = -(SIDE_X + VIS_D0 + 8 * 0.8 + 2.2)
     for pi, (px, py) in enumerate(((wx, MID_Y - 38.0), (wx, MID_Y), (wx, MID_Y + 38.0),
                                    (hx, MID_Y - 38.0), (hx, MID_Y + 38.0), (hx, MID_Y - 52.0))):
         toward = 1.0 if px < 0 else -1.0
@@ -292,7 +345,7 @@ def build_scoreboard():
     """North, past the end zone, on two posts: HOME, VISITOR, the quarter
     and the clock in bulbs; a sponsor's board beneath. (Rewind: "they
     flashed R.I.P. on the scoreboard" — the CG has that moment.)"""
-    sy = FIELD_LEN + 10.0
+    sy = SCORE_Y                       # past the track's north curve
     for sx in (-3.0, 3.0):
         make_taper_cyl(f"Scoreboard_Post_{sx:+.0f}", (sx, sy + 0.3, 3.6), 0.20, 0.16, 7.2, CREOSOTE, segments=8)
     make_box("Scoreboard_Body", (0.0, sy, 6.6), (7.6, 0.40, 3.4), (0.07, 0.07, 0.08, 1.0))
@@ -322,7 +375,7 @@ def build_lot_and_street():
     """South of the gate: the gravel lot, the town's cars of 1997, the
     street, the church across it (the vigil), and the houses — the hit
     and run was "two blocks from the stadium"."""
-    make_box("Lot_Gravel", (6.0, -30.0, -0.035), (110.0, 26.0, 0.04), GRAVEL)
+    make_box("Lot_Gravel", (6.0, -30.0 + SOUTH, -0.035), (110.0, 26.0, 0.04), GRAVEL)
     cars = ((-30.0, -24.0, (0.46, 0.34, 0.20, 1.0), {"hatch": True}), (-24.0, -24.0, (0.30, 0.34, 0.40, 1.0), {}),
             (-18.0, -24.0, (0.62, 0.62, 0.60, 1.0), {"pickup": True}), (-12.0, -24.0, (0.38, 0.12, 0.12, 1.0), {}),
             (-6.0, -24.0, (0.16, 0.22, 0.18, 1.0), {"pickup": True}), (0.0, -24.0, (0.70, 0.68, 0.60, 1.0), {"hatch": True}),
@@ -331,14 +384,14 @@ def build_lot_and_street():
             (3.0, -36.0, (0.40, 0.42, 0.30, 1.0), {"hatch": True}), (21.0, -36.0, (0.70, 0.70, 0.72, 1.0), {}),
             (39.0, -36.0, (0.30, 0.18, 0.12, 1.0), {"pickup": True}))
     for i, (x, y, col, kw) in enumerate(cars):
-        make_car(f"LotCar_{i}", x, y, 4.7 if not kw.get("pickup") else 5.3, col, along="Y", **kw)
-    make_box("Street", (0.0, -50.0, -0.03), (300.0, 9.0, 0.03), ASPHALT)
-    make_box("Street_Line", (0.0, -50.0, -0.012), (300.0, 0.12, 0.01), (0.86, 0.74, 0.30, 1.0))
+        make_car(f"LotCar_{i}", x, y + SOUTH, 4.7 if not kw.get("pickup") else 5.3, col, along="Y", **kw)
+    make_box("Street", (0.0, -50.0 + SOUTH, -0.03), (300.0, 9.0, 0.03), ASPHALT)
+    make_box("Street_Line", (0.0, -50.0 + SOUTH, -0.012), (300.0, 0.12, 0.01), (0.86, 0.74, 0.30, 1.0))
     for i in range(-6, 7):
-        make_box(f"Streetlight_{i}_Pole", (i * 24.0, -45.0, 3.6), (0.16, 0.16, 7.2), (0.40, 0.40, 0.42, 1.0))
-        make_box(f"Streetlight_{i}_Head", (i * 24.0, -46.0, 7.15), (0.30, 1.8, 0.18), (0.30, 0.30, 0.32, 1.0))
+        make_box(f"Streetlight_{i}_Pole", (i * 24.0, -45.0 + SOUTH, 3.6), (0.16, 0.16, 7.2), (0.40, 0.40, 0.42, 1.0))
+        make_box(f"Streetlight_{i}_Head", (i * 24.0, -46.0 + SOUTH, 7.15), (0.30, 1.8, 0.18), (0.30, 0.30, 0.32, 1.0))
     # the church across the street: white clapboard, a gable roof, the steeple
-    cx, cy = 14.0, -66.0
+    cx, cy = 14.0, -66.0 + SOUTH
     make_box("Church_Nave", (cx, cy - 8.0, 3.2), (11.0, 18.0, 6.4), PAINT)
     rp = math.atan2(3.6, 5.5)
     for sx in (-1, 1):
@@ -354,7 +407,7 @@ def build_lot_and_street():
     r = _rng(42)
     for i, hx in enumerate((-70.0, -52.0, -34.0, -16.0, 36.0, 54.0, 72.0, 90.0)):
         w, d, h = 9.0 + r() * 3.0, 8.0 + r() * 3.0, 3.0 + r() * 2.6
-        hy = -64.0 - d / 2.0
+        hy = -64.0 + SOUTH - d / 2.0
         col = COATS[int(r() * 10) % 10]
         body = (0.5 + col[0] * 0.5, 0.5 + col[1] * 0.5, 0.5 + col[2] * 0.5, 1.0)
         make_box(f"House_{i}", (hx, hy, h / 2.0), (w, d, h), body)
@@ -368,10 +421,10 @@ def build_firs():
     fir, 25-40 m, and the ridges behind them."""
     r = _rng(1998)
     k = 0
-    for (x0, x1, y0, y1, n) in ((-140.0, 140.0, FIELD_LEN + 24.0, FIELD_LEN + 60.0, 46),
-                                (-110.0, -56.0, -10.0, FIELD_LEN + 24.0, 34),
-                                (GS_XB + 10.0, 120.0, -10.0, FIELD_LEN + 24.0, 34),
-                                (-140.0, 140.0, -110.0, -84.0, 30)):
+    for (x0, x1, y0, y1, n) in ((-150.0, 150.0, FENCE_N + 8.0, FENCE_N + 44.0, 46),
+                                (-130.0, -(SIDE_X + VIS_D0 + 20.0), -30.0, FENCE_N + 8.0, 34),
+                                (GS_XB + 10.0, 130.0, -30.0, FENCE_N + 8.0, 34),
+                                (-150.0, 150.0, -134.0, -108.0, 30)):
         for _ in range(n):
             make_conifer(f"Fir_Stock_{k}", x0 + r() * (x1 - x0), y0 + r() * (y1 - y0), 24.0 + r() * 16.0, FIR, FIR_TRUNK, skirt=0.22)
             k += 1
@@ -392,8 +445,9 @@ def _rename(old, new):
 def main():
     clear_scene()
     build_field()
+    build_track()
     build_grandstand()
-    SF._stands("Visit", -1, 8, 15.0, MID_Y)
+    SF._stands("Visit", -1, 8, 15.0, MID_Y, d0=VIS_D0)
     build_benches()
     build_rail_and_fence()
     build_light_poles()

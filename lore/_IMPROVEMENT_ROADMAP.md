@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 193: SMALL WOOD'S FIELD, draft 2 — Andy's answers.**
+- Andy: "small wood high is green primary white secondary"; "field has a running track around it"; "Home stand is covered with an elevated slanted roof."
+- **Colours:** green jerseys and helmets, white pants; the stand's white paint and green trim; green and white through the home crowd's coats.
+- **The track:** 400 m, straights 84.39 m, inner radius 36.5 m, six 1.22 m lanes in red all-weather (the surface is proposed). It rings the field with the end zones inside its curves; the spectators' rail follows its outside edge.
+- **Everything else moved clear of the track:**
+  - the home stand's front to x 46.4, its roof raised (10.0 m at the front, 12.6 m at the back, slanted);
+  - the visitors' bleachers to x -45.4, the poles on the stands' walks;
+  - the scoreboard past the north curve;
+  - the fence, the gate, the lot, the street and the church 24 m south;
+  - the cameras and markers re-placed, the five sign pictures' positions moved with them.
+- **Draft N+1:**
+  - the stand's aisle stairs and tunnel;
+  - the crowd's postures and breath;
+  - the vigil;
+  - field events if Andy wants them;
+  - lighten the 16 MB GLB.
+
 **2026-10-27 · pass 192: SMALL WOOD'S OWN FIELD — vol 2 stops playing in 2026 Texas; the level frames that faced walls.**
 - **The field** (the Deck: "football field and stadium is still nonsense … it's all illogical nonsense"):
   - **Before:** vol 2's football scenes (points of impact and rewind, Friday night; interlude one, two-a-days at dusk) played on vol 6's stadium, a 2026 Texas planned community's field with aluminium stands and Coach K's F-250, for a 1997 Oregon town.

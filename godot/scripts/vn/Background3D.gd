@@ -1651,8 +1651,9 @@ const CAMERA_PRESETS := {
 	# ── VOL 2 — Small Wood High's field (build_small_wood_field.py, 2026-10-27) ──
 	# The Deck: "football field and stadium is still nonsense … it's all
 	# illogical nonsense" — vol 2's 1997 Oregon home games were played on vol
-	# 6's 2026 Texas field. Small Wood's own: the covered wooden home stand
-	# east, the creosoted light poles, the firs on three sides.
+	# 6's 2026 Texas field. Small Wood's own (Andy: green and white; a running
+	# track round the field; the home stand covered under an elevated slanted
+	# roof): the stand east past the track, the wooden poles, the firs.
 	"small_wood_field_night": {
 		"scene": "res://scenes/locales/small_wood_field.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_field.glb",
@@ -1661,8 +1662,10 @@ const CAMERA_PRESETS := {
 		# helmet off while I stood on the sidelines". On the home sideline at
 		# the 45, eye height, looking up a touch at the full home stand under
 		# its roof, the lights' haze above it.
-		"camera_origin": Vector3(21.5, 1.62, -48.9),
-		"camera_rotation": Vector3(0.10, deg_to_rad(-76.0), 0.0),
+		# (draft 2, Andy: the track rings the field, the stand past it) from the
+		# bench's edge of the infield, across the track to the stand.
+		"camera_origin": Vector3(26.5, 1.62, -48.9),
+		"camera_rotation": Vector3(0.08, deg_to_rad(-76.0), 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.20, 0.22, 0.28, 1),
 			"ground_horizon": Color(0.08, 0.10, 0.08, 1), "ground_bottom": Color(0.03, 0.04, 0.03, 1),
@@ -1677,7 +1680,7 @@ const CAMERA_PRESETS := {
 		# boys practice". From the visitors' side across the empty field to the
 		# home stand in the last sun, a few players walking off, May in the
 		# stand, the firs behind.
-		"camera_origin": Vector3(-4.0, 1.62, -42.0),
+		"camera_origin": Vector3(10.0, 1.62, -44.0),
 		"camera_rotation": Vector3(0.05, deg_to_rad(-82.0), 0.0),
 		"fov": 58.0,
 		"env": {"sky_top": Color(0.30, 0.38, 0.62, 1), "sky_horizon": Color(0.96, 0.70, 0.48, 1),

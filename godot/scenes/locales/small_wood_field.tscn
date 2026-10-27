@@ -137,7 +137,7 @@ ambient_light_energy = 0.35
 fog_enabled = true
 fog_light_color = Color(0.60, 0.62, 0.66, 1)
 fog_light_energy = 0.6
-fog_density = 0.006
+fog_density = 0.0045
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.04
@@ -167,133 +167,133 @@ light_energy = 0.18
 shadow_enabled = false
 
 [node name="Flood_0__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.78, 19.6, -16.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.78, 19.6, -16.86)
 light_color = Color(1.0, 0.97, 0.88, 1)
-light_energy = 5.0
+light_energy = 5.5
 shadow_enabled = false
-omni_range = 62.0
+omni_range = 80.0
 
 [node name="Flood_1__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.78, 19.6, -54.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.78, 19.6, -54.86)
 light_color = Color(1.0, 0.97, 0.88, 1)
-light_energy = 5.0
+light_energy = 5.5
 shadow_enabled = false
-omni_range = 62.0
+omni_range = 80.0
 
 [node name="Flood_2__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.78, 19.6, -92.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.78, 19.6, -92.86)
 light_color = Color(1.0, 0.97, 0.88, 1)
-light_energy = 5.0
+light_energy = 5.5
 shadow_enabled = false
-omni_range = 62.0
+omni_range = 80.0
 
 [node name="Flood_3__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.78, 19.6, -16.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.92, 19.6, -16.86)
 light_color = Color(1.0, 0.97, 0.88, 1)
-light_energy = 5.0
+light_energy = 5.5
 shadow_enabled = false
-omni_range = 62.0
+omni_range = 80.0
 
 [node name="Flood_4__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.78, 19.6, -92.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.92, 19.6, -92.86)
 light_color = Color(1.0, 0.97, 0.88, 1)
-light_energy = 5.0
+light_energy = 5.5
 shadow_enabled = false
-omni_range = 62.0
+omni_range = 80.0
 
 [node name="Flood_5__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.78, 19.6, -2.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.92, 19.6, -2.86)
 light_color = Color(1.0, 0.97, 0.88, 1)
-light_energy = 5.0
+light_energy = 5.5
 shadow_enabled = false
-omni_range = 62.0
+omni_range = 80.0
 
 [node name="GS_Underroof_0__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.38, 7.9, -34.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.38, 10.3, -34.86)
 light_color = Color(1.0, 0.86, 0.62, 1)
 light_energy = 1.6
 shadow_enabled = false
 omni_range = 12.0
 
 [node name="GS_Underroof_1__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.38, 7.9, -54.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.38, 10.3, -54.86)
 light_color = Color(1.0, 0.86, 0.62, 1)
 light_energy = 1.6
 shadow_enabled = false
 omni_range = 12.0
 
 [node name="GS_Underroof_2__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.38, 7.9, -74.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.38, 10.3, -74.86)
 light_color = Color(1.0, 0.86, 0.62, 1)
 light_energy = 1.6
 shadow_enabled = false
 omni_range = 12.0
 
 [node name="PressBox_Glow__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 10.9, -54.86)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.68, 13.4, -54.86)
 light_color = Color(1.0, 0.86, 0.6, 1)
 light_energy = 1.0
 shadow_enabled = false
 omni_range = 8.0
 
 [node name="Concession_Window__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.38, 1.6, 5.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.38, 1.6, 5.5)
 light_color = Color(1.0, 0.84, 0.58, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 7.0
 
 [node name="Church_Glow__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0, 3.4, 74.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0, 3.4, 98.0)
 light_color = Color(1.0, 0.8, 0.5, 1)
 light_energy = 1.2
 shadow_enabled = false
 omni_range = 14.0
 
 [node name="Streetlight_0__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
 [node name="Streetlight_1__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
 [node name="Streetlight_2__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
 [node name="Streetlight_3__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
 [node name="Streetlight_4__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
 [node name="Streetlight_5__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
 [node name="Streetlight_6__small_wood_field_night" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.0, 6.8, 46.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.0, 6.8, 70.0)
 light_color = Color(1.0, 0.74, 0.4, 1)
 light_energy = 1.4
 shadow_enabled = false
@@ -431,44 +431,44 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; the sideline, his helmet off: a face against the lit home stand
+; the sideline, his helmet off: a face against the track and the lit home stand
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(22.500, 1.620, -52.000)
+position = Vector3(27.500, 1.620, -52.000)
 rotation = Vector3(0.0000, -1.5708, 0.0)
 metadata/fov = 45.0
 
 ; the reverse: a face against the field, the visitors' side and the lights
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(27.000, 1.620, -50.000)
+position = Vector3(31.500, 1.620, -50.000)
 rotation = Vector3(0.0000, 1.5708, 0.0)
 metadata/fov = 45.0
 
-; from the top of the visitors' side: the field and the full home stand across it
+; from the top of the visitors' side: the field, the track and the full home stand across it
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-36.000, 4.400, -70.864)
-rotation = Vector3(-0.0500, -1.8010, 0.0)
+position = Vector3(-51.600, 4.600, -70.864)
+rotation = Vector3(-0.0400, -1.7244, 0.0)
 metadata/fov = 55.0
 
-; the scoreboard over the north end, from outside the uprights (rewind: R.I.P. — the CG has that moment)
+; the scoreboard past the track's north curve (rewind: R.I.P. — the CG has that moment)
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(7.000, 1.700, -105.728)
-rotation = Vector3(0.2700, 0.4670, 0.0)
+position = Vector3(7.000, 1.700, -131.728)
+rotation = Vector3(0.3000, 0.4636, 0.0)
 metadata/fov = 38.0
 
 ; "The stadium lights hung over the field in a white haze": a visitors'-side bank over the firs
 [node name="shot_insert_lamp_0" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-14.000, 1.600, -30.000)
-rotation = Vector3(0.5893, 2.0687, 0.0)
+position = Vector3(-30.000, 1.600, -32.000)
+rotation = Vector3(0.5839, 2.1460, 0.0)
 metadata/fov = 45.0
 
 ; from the near curb across the street: the church door, the nave, the belfry (the vigil)
 [node name="shot_insert_church" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(15.000, 1.700, 45.500)
-rotation = Vector3(0.3000, 3.0814, 0.0)
+position = Vector3(15.000, 1.700, 69.000)
+rotation = Vector3(0.3000, 3.0831, 0.0)
 metadata/fov = 52.0
 
 ; the concession window on the walk
 [node name="shot_insert_concession" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(33.500, 1.600, 1.500)
+position = Vector3(47.500, 1.600, 1.500)
 rotation = Vector3(-0.0500, 3.1416, 0.0)
 metadata/fov = 40.0
