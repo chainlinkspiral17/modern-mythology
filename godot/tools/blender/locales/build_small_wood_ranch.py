@@ -1,5 +1,12 @@
 """small_wood_ranch — vol 2's family ranch in Small Wood (draft 1, 2026-10-17).
 
+UNIFIED 2026-10-27 (Andy: "the points of impact family lives in the link home
+after they move out" → "Small Wood house, unified"): these rooms now stand IN
+the Link home — build_small_wood_farmhouse.py calls build_bedroom() (upstairs,
+north-west) and build_second_house() (the field south-east) and places them;
+the ranch presets load small_wood_farmhouse.tscn. This file's own main() and
+small_wood_ranch.tscn are retired; dress the rooms here, build the house there.
+
 The user: "go ahead and start working on backgrounds for vol 1-4 as needed."
 The narrator's family's place on the Oregon coast, 1993-94: his bedroom in
 the old ranch house (five scene uses: the window at night, the reading

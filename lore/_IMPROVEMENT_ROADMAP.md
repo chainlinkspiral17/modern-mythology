@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 197: THE LINK HOME — one Small Wood house.**
+- Andy: "the points of impact family lives in the link home after they move out"; asked which house, "Small Wood house, unified".
+- **Before:** the narrator's room (`small_wood_ranch`) and the renters' farmhouse (`small_wood_farmhouse`) were two sets.
+- **Now one house:**
+  - His room (the plank blinds, the clock radio, the reading lamp) stands upstairs, north-west, its window in the north wall over the yard and the firs.
+  - The second house stands in the field south-east.
+  - The renters' living room, kitchen window and porch are the same house four years on.
+  - The five ranch presets load the farmhouse, cameras moved by the rooms' offsets; the ranch lights moved in and are tagged to them.
+- **The method:** the farmhouse builder calls the ranch's room builders and places them with one offset, applied in Blender and to the audits' recorded boxes alike, so the gates see the rooms where they stand. All gates at 0.
+- **Draft N+1:**
+  - the upstairs hall and the stair's landing to the room's door;
+  - the room as the renters' girls' room (points of impact puts the children to bed upstairs);
+  - the house's exterior from the field.
+
 **2026-10-27 · pass 196: VOL 1 GOES OUTSIDE IN HOUSTON.**
 - **The set:** vol 1's park and river played on vol 5's Graustark riverfront. New set `houston_bayou` (2010s, draft 1):
   - **`houston_park_day`:** Buffalo Bayou's trail, live oaks, the white arched footbridge, downtown over the trees (far 2500), a close-up pair for the jog.

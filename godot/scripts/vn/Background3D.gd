@@ -3174,28 +3174,31 @@ const CAMERA_PRESETS := {
 	# vol 2's narrator's room in the family's old ranch house (godot x
 	# -1.9..1.9, z 0..-4.2) and the second house on the property (x 30..34).
 	"ranch_bedroom_night": {
-		"scene": "res://scenes/locales/small_wood_ranch.tscn",
-		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		# (2026-10-27) THE LINK HOME, unified (Andy): the narrator's room is upstairs in the farmhouse
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
 		# "I'd just look out my window at the moon on the night horizon, falling behind the many trees"
-		"camera_origin": Vector3(1.2, 1.5, -0.45),
+		"camera_origin": Vector3(-4.700, 4.143, -6.250),
 		"camera_rotation": Vector3(-0.08, deg_to_rad(29.7), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"ranch_bedroom_lamp": {
-		"scene": "res://scenes/locales/small_wood_ranch.tscn",
-		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		# (2026-10-27) THE LINK HOME, unified (Andy): the narrator's room is upstairs in the farmhouse
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
 		# "The paperback's pages had gone soft at the corners, the house dark and quiet around the lamp."
-		"camera_origin": Vector3(0.3, 1.2, -2.6),
+		"camera_origin": Vector3(-5.600, 3.843, -8.400),
 		"camera_rotation": Vector3(-0.20, deg_to_rad(31.6), 0.0),
 		"fov": 52.0,
 		"suppress_input": true,
 	},
 	"ranch_bedroom_day": {
-		"scene": "res://scenes/locales/small_wood_ranch.tscn",
-		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		# (2026-10-27) THE LINK HOME, unified (Andy): the narrator's room is upstairs in the farmhouse
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
 		# "the room" up the hill, the same afternoon: the plank blinds, the clock radio's nightstand
-		"camera_origin": Vector3(1.2, 1.5, -0.45),
+		"camera_origin": Vector3(-4.700, 4.143, -6.250),
 		"camera_rotation": Vector3(-0.08, deg_to_rad(29.7), 0.0),
 		"fov": 66.0,
 		"env": {"sky_top": Color(0.56, 0.64, 0.74, 1), "sky_horizon": Color(0.84, 0.86, 0.86, 1),
@@ -3204,10 +3207,11 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"ranch_home_day": {
-		"scene": "res://scenes/locales/small_wood_ranch.tscn",
-		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		# (2026-10-27) THE LINK HOME, unified (Andy): the narrator's room is upstairs in the farmhouse
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
 		# vol 3 ch4, "back home" by day: the same room as it is, the clock radio on the nightstand (the house ten miles inland, "on the coast")
-		"camera_origin": Vector3(1.2, 1.5, -0.45),
+		"camera_origin": Vector3(-4.700, 4.143, -6.250),
 		"camera_rotation": Vector3(-0.08, deg_to_rad(29.7), 0.0),
 		"fov": 66.0,
 		"env": {"sky_top": Color(0.56, 0.64, 0.74, 1), "sky_horizon": Color(0.84, 0.86, 0.86, 1),
@@ -3216,10 +3220,11 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"ranch_second_house": {
-		"scene": "res://scenes/locales/small_wood_ranch.tscn",
-		"requires_glb": "res://assets/3d/locales/small_wood_ranch.glb",
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		# (2026-10-27) THE LINK HOME, unified (Andy): the narrator's room is upstairs in the farmhouse
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
 		# "I'd brought in a kerosene lamp to read by ... the walls shone through bare in places, stripped to the board."
-		"camera_origin": Vector3(31.0, 1.5, -0.35),
+		"camera_origin": Vector3(31.000, 1.500, 13.650),
 		"camera_rotation": Vector3(-0.12, deg_to_rad(-16.8), 0.0),
 		"fov": 72.0,
 		"suppress_input": true,

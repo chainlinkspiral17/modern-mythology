@@ -1,5 +1,16 @@
-"""small_wood_farmhouse — vol 2's farmhouse in the country outside Small Wood
-at night (draft 1, 2026-10-18).
+"""small_wood_farmhouse — THE LINK HOME, vol 2's house in the country
+outside Small Wood (draft 1, 2026-10-18; unified 2026-10-27).
+
+UNIFIED (Andy, 2026-10-27): "the points of impact family lives in the link
+home after they move out" — and, asked, "Small Wood house, unified". The
+narrator's room (small_wood_ranch's bedroom: the plank blinds, the clock
+radio, the reading lamp) is upstairs in THIS house, north-west, its window in
+the north wall; the renters' night below is the same house four years on.
+The second house stands in the field south-east of the yard. The ranch
+presets (ranch_bedroom_night / _lamp / _day, ranch_home_day,
+ranch_second_house) now load this set; build_small_wood_ranch.py keeps the
+room's dressing (build_bedroom, build_second_house), placed here by an
+offset applied to the objects in Blender and to the audits' recording alike.
 
 The user: "go ahead and start working on backgrounds for vol 1-4 as needed."
 The grandmother's two-storey house ("the farm house we had occupied", "the
@@ -37,6 +48,12 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_table, make_chair, make_lamp
 from _props.trees import make_broadleaf
+try:
+    import bpy
+except ImportError:
+    bpy = None
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path: sys.path.insert(0, _HERE)
 
 H, T = 2.5, 0.20
 PAL = {"wall": (0.80, 0.76, 0.66, 1.0), "baseboard": (0.40, 0.32, 0.24, 1.0)}
@@ -130,7 +147,10 @@ def build_house():
     make_box("Service_Porch_Roof", (7.5, 2.0, 2.46), (3.4, 4.4, 0.12), ROOF)
     # the upper storey as a shell (its windows dark), the roof over all
     make_box("Upper_Storey_Wall_S", (-1.0, 0.0, H + 0.08 + 1.25), (14.4, 0.20, 2.5), SIDING)
-    make_box("Upper_Storey_Wall_N", (-1.0, 10.0, H + 0.08 + 1.25), (14.4, 0.20, 2.5), SIDING)
+    # (2026-10-27) the narrator's room's own N wall (with its window) stands at
+    # x -7.8..-4.0; the storey's outer wall runs either side of it
+    make_box("Upper_Storey_Wall_N_W", (-8.1, 10.0, H + 0.08 + 1.25), (0.20, 0.20, 2.5), SIDING)
+    make_box("Upper_Storey_Wall_N_E", (1.2, 10.0, H + 0.08 + 1.25), (10.0, 0.20, 2.5), SIDING)
     make_box("Upper_Storey_Wall_W", (-8.1, 5.0, H + 0.08 + 1.25), (0.20, 9.8, 2.5), SIDING)
     make_box("Upper_Storey_Wall_E", (6.1, 5.0, H + 0.08 + 1.25), (0.20, 9.8, 2.5), SIDING)
     uf = (0.46, 0.34, 0.22, 1.0)
@@ -165,7 +185,7 @@ def build_porch_and_yard():
         make_blob(f"Cat_{k}_Head", (x + 0.14, y, zz + s * 0.7), s * 0.55, (0.20, 0.18, 0.16, 1.0), noise=0.1, seed=10 + k, squash=1.0)
     # the yard: grass, the gravel drive, the carport within twenty feet of
     # the service porch, the pick-up
-    make_box("Yard_Ground", (6.0, 0.0, -0.06), (60.0, 60.0, 0.12), GRASS)
+    make_box("Yard_Ground", (12.0, -6.0, -0.06), (96.0, 84.0, 0.12), GRASS)   # out past the second house
     make_box("Drive_Gravel", (11.0, -12.0, 0.005), (4.0, 20.0, 0.01), (0.46, 0.44, 0.40, 1.0))
     for s in (-1, 1):
         for t in (-1, 1):
@@ -208,8 +228,45 @@ def build_porch_and_yard():
     # as a hard edge over the porch roof.
 
 
+# where the ranch's rooms stand in the Link home (blender metres)
+ROOM_AT = (-5.9, 5.8, H + 0.143)       # the narrator's room, upstairs NW (its N wall on the house's)
+SECOND_AT = (0.0, -14.0, 0.0)          # the second house, in the field SE of the yard
+
+
+def _placed(build, at, prefix, drop=()):
+    """Run a ranch room builder, then move what it made to `at` and name it
+    `prefix…` — in Blender, and in the audits' recording (their _props
+    stubs append to locale_geometry_audit.BOXES), so the gates see the room
+    where it stands. Parts whose names start with `drop` (the ranch's painted
+    window backdrops: here the real yard is outside) are removed."""
+    A = sys.modules.get("locale_geometry_audit")
+    mark_boxes = len(A.BOXES) if A is not None else 0
+    real = bpy is not None and not isinstance(getattr(bpy, "data", 0.0), float)
+    before = set(bpy.data.objects.keys()) if real else set()
+    build()
+    dx, dy, dz = at
+    if real:
+        for o in [o for o in bpy.data.objects if o.name not in before]:
+            if o.name.startswith(drop):
+                bpy.data.objects.remove(o, do_unlink=True)
+                continue
+            if o.parent is None:
+                o.location = (o.location[0] + dx, o.location[1] + dy, o.location[2] + dz)
+            o.name = prefix + o.name
+    if A is not None:
+        kept = []
+        for (n, c, h) in A.BOXES[mark_boxes:]:
+            if str(n).startswith(drop):
+                continue
+            kept.append((prefix + str(n), (c[0] + dx, c[1] + dy, c[2] + dz), h))
+        A.BOXES[mark_boxes:] = kept
+
+
 def main():
     clear_scene()
+    import build_small_wood_ranch as RANCH
+    _placed(RANCH.build_bedroom, ROOM_AT, "LR_", drop=("View_N",))
+    _placed(RANCH.build_second_house, SECOND_AT, "LS_", drop=("SH_View_E",))
     build_house()
     build_porch_and_yard()
     try:

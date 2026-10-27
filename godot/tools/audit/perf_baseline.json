@@ -280,9 +280,9 @@
   "objects": 518
  },
  "small_wood_farmhouse": {
-  "draw": 68,
-  "prims": 28672,
-  "objects": 238
+  "draw": 150,
+  "prims": 41312,
+  "objects": 320
  },
  "small_wood_field": {
   "draw": 276,
