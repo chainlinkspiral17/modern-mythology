@@ -27534,5 +27534,53 @@
     },
     "output": "godot/assets/3d/props/comic_figure_5.glb",
     "file_size_kb": 4044.4
+  },
+  {
+    "at": "2026-10-27T04:53:14+00:00",
+    "stage": "image",
+    "slug": "comic_figure_6",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "A painted resin collectible statue on a craggy base: an original hulking swamp-monster villain, green-grey hide, claws raised, moss and roots trailing from the shoulders. Glossy paint, crisp sculpt.\nSingle-object concept render of a monster villain statue, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/comic_figure_6/comic_figure_6_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_6/comic_figure_6_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_6/comic_figure_6_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:57:23+00:00",
+    "stage": "mesh",
+    "slug": "comic_figure_6",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17bb5-bc63-7787-b7f6-04293f5b26db",
+    "inputs": [
+      "godot/assets/concept/meshy/comic_figure_6/front.png",
+      "godot/assets/concept/meshy/comic_figure_6/side.png",
+      "godot/assets/concept/meshy/comic_figure_6/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 4000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/comic_figure_6.glb",
+    "file_size_kb": 5029.2
   }
 ]
