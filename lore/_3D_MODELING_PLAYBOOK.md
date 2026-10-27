@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · a decimate that cannot cut is not a slim — check the result against the budget (pass 187)
+
+**Context:** The riverboat installed at 12.4 MB, ~24x its budget, after slim
+"succeeded". slim locked every UV-seam vertex, and a Meshy model cut into
+thousands of UV islands is mostly seams, so the decimate barely ran (a hero
+asked for 30k gave 55,844). Nothing compared the output with the budget.
+
+**Rule:** after any reduction step, measure the result against its target
+and fall back when it misses: slim locks seams first, then frees them when
+the locked pass misses by more than 10 %, and names the model so a person
+looks it over. Lock weights between 1000 and 1 behave the same; the lock is
+all or nothing. Calibrate size estimates on the first real files: the guesses
+were off ~2x on mesh bytes and ~4x on the Drive originals.
+
 ### 2026-10-27 · make a prop light; don't cut it light afterwards (pass 185)
 
 **Context:** Every Meshy model was asked for the same way (standard, 4k, PBR),

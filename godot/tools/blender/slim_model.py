@@ -14,7 +14,9 @@ heroes/_full/). Steps:
   1. import the GLB;
   2. every mesh over its share of --tris gets a COLLAPSE decimate (UVs and
      the normal map carry the surface detail; the silhouette keeps its
-     shape at ~120k for a full figure);
+     shape at ~120k for a full figure). Texture seams are locked, less and
+     less until the budget fits (2026-10-27: a fully locked seam set let the
+     riverboat through at ~24x its budget);
   3. images: the base colour and the normal map at most --tex px, every
      other map (metal-roughness, emission) at most --tex-small;
   4. export GLB with JPEG images at --quality.
@@ -107,33 +109,53 @@ def main():
     bpy.ops.import_scene.gltf(filepath=src)
     meshes = [ob for ob in bpy.context.scene.objects if ob.type == "MESH"]
     tris_in = sum(_tris(ob) for ob in meshes)
+    passes = []
     if tris_in > o["tris"]:
-        ratio = o["tris"] / float(tris_in)
+        # (2026-10-27) the seam lock gives way when it must: a Meshy model cut
+        # into thousands of tiny UV islands is mostly seam vertices, and with
+        # every one locked the decimate barely runs — the riverboat installed
+        # at 12 MB, ~24x its budget; a test hero asked for 30k came out at 56k.
+        # Pass 1 locks the seams (a face keeps them whenever the budget can
+        # afford it); when that misses the budget by more than 10 %, pass 2
+        # starts again from the ORIGINAL mesh with the seams free and always
+        # lands on the target. (Weights between 1000 and 1 made no difference,
+        # tested: the lock is all or nothing.) "seams_released" in the SLIM
+        # line names the models to look over for dark specks at UV seams.
+        originals = {ob.name: ob.data.copy() for ob in meshes}
         dg = bpy.context.evaluated_depsgraph_get()
+        for factor in (1000.0, 0.0):
+            ratio = o["tris"] / float(tris_in)
+            for ob in meshes:
+                old = ob.data
+                ob.data = originals[ob.name].copy()
+                if old.users == 0:
+                    bpy.data.meshes.remove(old)
+                for vg in list(ob.vertex_groups):
+                    ob.vertex_groups.remove(vg)
+                n_seam = _seam_group(ob) if factor > 0 else 0
+                mod = ob.modifiers.new("Slim", "DECIMATE")
+                mod.decimate_type = "COLLAPSE"
+                mod.ratio = ratio
+                mod.use_collapse_triangulate = True
+                if n_seam:
+                    mod.vertex_group = "SlimSeams"
+                    mod.invert_vertex_group = True
+                    mod.vertex_group_factor = factor
+                dg.update()
+                ev = ob.evaluated_get(dg)
+                new = bpy.data.meshes.new_from_object(ev)
+                old = ob.data
+                ob.modifiers.clear()
+                ob.data = new
+                if old.users == 0:
+                    bpy.data.meshes.remove(old)
+            got = sum(_tris(ob) for ob in meshes)
+            passes.append([factor, got])
+            if got <= o["tris"] * 1.10:
+                break
         for ob in meshes:
-            # Texture seams stay put: a collapse across a UV seam drags one
-            # island's corner into the black gutter beside it — dark specks
-            # on elicia's cheek and jaw at 120k (2026-10-16). Seam vertices
-            # (open edges, and edges whose two faces disagree on the UVs) go
-            # in a group the decimate leaves alone; the inside of each
-            # island takes the cut.
-            n_seam = _seam_group(ob)
-            mod = ob.modifiers.new("Slim", "DECIMATE")
-            mod.decimate_type = "COLLAPSE"
-            mod.ratio = ratio
-            mod.use_collapse_triangulate = True
-            if n_seam:
-                mod.vertex_group = "SlimSeams"
-                mod.invert_vertex_group = True
-                mod.vertex_group_factor = 1000.0
-            dg.update()
-            ev = ob.evaluated_get(dg)
-            new = bpy.data.meshes.new_from_object(ev)
-            old = ob.data
-            ob.modifiers.clear()
-            ob.data = new
-            if old.users == 0:
-                bpy.data.meshes.remove(old)
+            for vg in list(ob.vertex_groups):
+                ob.vertex_groups.remove(vg)
     tris_out = sum(_tris(ob) for ob in meshes)
     roles = _image_roles()
     scaled = []
@@ -153,7 +175,8 @@ def main():
     print("SLIM " + json.dumps({
         "tris_in": tris_in, "tris_out": tris_out,
         "bytes_in": os.path.getsize(src), "bytes_out": os.path.getsize(dst),
-        "images": scaled}), flush=True)
+        "images": scaled, "passes": passes,
+        "seams_released": bool(passes and passes[-1][0] == 0.0)}), flush=True)
 
 
 main()

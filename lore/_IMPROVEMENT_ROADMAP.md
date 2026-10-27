@@ -3835,6 +3835,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 187: MODEL BUDGETS, draft 3 — measured, and the misses caught.**
+- The user made one model of each tier in Hero Studio and saved them (comic_figure_3
+  small, crow medium, peugeot_505 — set to medium in the page, no PBR). Measured from
+  the files on the Drive: 0.50 / 0.78 / 1.07 MB installed (4,127 / 10,000 / 14,091
+  triangles, one 1024 px JPEG each); Meshy originals 4.2-4.6 MB. The asks were
+  honoured; the estimate's constants were not: a prop's mesh is ~60 B a triangle in
+  the GLB (25 assumed), a hero's ~37; JPEG maps ~0.17 B/px at 1024, ~0.09 at 2048; a
+  low-poly 2k original ~4.3 MB, a hero's ~48 MB. `budget_estimate` (and the page's
+  mirror) now carry the measured numbers: hero GLB 5.37 MB est. against a measured
+  median 5.17; small 0.42 / 0.50; medium 0.78 / 0.78.
+- **"The riverboat model prop is still over 100 MB, so some got missed."** Its Meshy
+  original is 106.7 MB (`props/_full/`, the Drive only) and slim left the installed one at
+  12.4 MB — ~24x a medium prop. The cause: slim locked every UV-seam vertex against the
+  decimate (2026-10-16, for specks on elicia's cheek), and a Meshy model cut into
+  thousands of UV islands is mostly seams — the cut barely ran, and slim accepted
+  whatever came out. Tested here: a 120k hero asked for 30k came out at 55,844; the crow
+  asked for 2,500 at 9,716. Now pass 1 locks the seams; when it misses the budget by
+  more than 10 %, pass 2 starts again from the original with them free and lands exactly
+  (30,000 / 2,500 / 10,000). Lock weights between 1000 and 1 made no difference — it is
+  all or nothing. The SLIM line and `slim`'s summary name every model whose seams were
+  released, to look over for specks. `budget` lists every installed model over its
+  class's triangle cap ("OVER BUDGET"); on the Drive's manifest: steamboat_model 12.4 MB,
+  em_keys (hero) 16.1 MB — `slim` re-cuts both from `_full/`.
+- `prop_budget_audit` UNDER_TIER now fails only a SMALL prop placed over 0.6 m; a medium
+  one over 2.5 m is a note (the Peugeot at medium is the user's call, and a good one).
+- Voice: `ModernMythology/incoming/` holds 55 Voice Studio zips; 50 were imported on 10-19,
+  five are new (vol3_ch1_boy_from_pasadena, vol3_ch2_dreams_in_the_key_of_godhead,
+  vol3_ch2_second_set_of_eyes, vol3_ch2_starship_melody, meld_seam_2_3). Dry run here on
+  the two the connector could fetch: 35 lines wired, 0 skipped. The import runs on the
+  Deck (the audio lives there and SAVE puts it on the Drive; importing here would mark the
+  zips done and the Deck would never get the audio).
+- **Draft 188 targets:** look over the seams-released models for specks (the riverboat,
+  em_keys); the hood-up Peugeot's tier to match the plain one if the user wants; measure
+  video memory on the Deck (PerfProbe) in place of the computed figure.
+
 **2026-10-27 · pass 186: MODEL BUDGETS, draft 2 — the tier in the page, the sets held to it.**
 - **Tier editor:** a prop's tier is a selector on Hero Studio's budget line; it writes
   `meshy_roster.json` through the server (`POST /api/roster/tier`, localhost only, props
