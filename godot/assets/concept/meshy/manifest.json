@@ -26657,5 +26657,88 @@
     "outputs": [
       "godot/assets/concept/meshy/vol5_prelude_ep12_pour_1/vol5_prelude_ep12_pour_1_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:22:39+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep12_pour_1",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep12_pour_1/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep12_pour_1.jpg"
+  },
+  {
+    "at": "2026-10-27T04:22:53+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep13_paper_cuts",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Aria's bedroom at night, the light left on, like this: She sleeps with her light on, the bright full on her face, it reminds her of summer falling asleep on the back lawn, the sun writing itself into her. He is radiant, this orb of light. Additional direction: A young woman's bedroom late at night: an unmade bed, a lamp left on full, a television glowing cool blue at the foot of the bed, a camera and printed snapshots on the nightstand, and near the ceiling a small radiant orb of warm light hanging in the air. Dreamy, intimate.\nA single full-screen still for a literary visual novel set in America: Aria's bedroom at night, the light left on. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep13_paper_cuts/vol5_prelude_ep13_paper_cuts_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:23:05+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep13_paper_cuts",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep13_paper_cuts/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep13_paper_cuts.jpg"
+  },
+  {
+    "at": "2026-10-27T04:23:20+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep14_milk_and_honey",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the all-night convenience store under its flare like this: The convenience store was fluorescent lit from all angles, inside and out. It was eternal, methane torch burning, a twenty-four-seven eye sore attended and serviced by mis-matched pairs of fairly greasy individuals. Haze of blacktop reflected heat in the day, haze of overbright overhead light at night. Additional direction: A 24-hour convenience store and gas station at night, fluorescent-lit from every angle inside and out, overbright light hazing the blacktop, a few cars parked at odd angles, a curb with a bucket of window-washing fluid, and beyond the lot a methane flare torch burning against the dark. Lonely, humming, eternal.\nA single full-screen still for a literary visual novel set in America: the all-night convenience store under its flare. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep14_milk_and_honey/vol5_prelude_ep14_milk_and_honey_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:23:27+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep14_milk_and_honey",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep14_milk_and_honey/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep14_milk_and_honey.jpg"
+  },
+  {
+    "at": "2026-10-27T04:23:40+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep15_lynchs_peak",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Lynch's Peak, Oregon, like this: Imagine them falling from paradise and landing in 'Lynch's Peak', Oregon. Additional direction: A small mountain town in Oregon at dusk, Lynch's Peak: a main street of old wooden storefronts and a small police station under a dark forested peak, wet pavement, a church steeple, low cloud on the ridge. Quiet, a little uncanny, as if the place had been dreamed into being.\nA single full-screen still for a literary visual novel set in Oregon: Lynch's Peak, Oregon. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep15_lynchs_peak/vol5_prelude_ep15_lynchs_peak_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:23:48+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep15_lynchs_peak",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep15_lynchs_peak/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep15_lynchs_peak.jpg"
   }
 ]

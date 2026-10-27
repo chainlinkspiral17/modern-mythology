@@ -80560,6 +80560,16 @@
    "md5": "131a9538bfa65c4a1ce69472ed585cc0",
    "size": 2161884
   },
+  "godot/assets/concept/meshy/vol5_prelude_ep07_airport_hotel/front.png": {
+   "at": "2026-10-27T04:22:55+00:00",
+   "md5": "24152caf44db1bb62876814296ed48f8",
+   "size": 2066816
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep07_airport_hotel/vol5_prelude_ep07_airport_hotel_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:22:55+00:00",
+   "md5": "24152caf44db1bb62876814296ed48f8",
+   "size": 2066816
+  },
   "godot/assets/concept/meshy/vol5_prelude_ep07_backyard_dogs/front.png": {
    "at": "2026-10-27T04:20:51+00:00",
    "md5": "b2c6461589a029396b4b48f049572c4d",
@@ -80569,6 +80579,46 @@
    "at": "2026-10-27T04:20:51+00:00",
    "md5": "b2c6461589a029396b4b48f049572c4d",
    "size": 2537544
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep08_autumn_crop/front.png": {
+   "at": "2026-10-27T04:23:12+00:00",
+   "md5": "f56b63a1b1242545ab5658200cc95efc",
+   "size": 2349403
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep08_autumn_crop/vol5_prelude_ep08_autumn_crop_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:23:12+00:00",
+   "md5": "f56b63a1b1242545ab5658200cc95efc",
+   "size": 2349403
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep10_sound_of_silence/front.png": {
+   "at": "2026-10-27T04:23:21+00:00",
+   "md5": "a4affaa64506501606599a8f81ff6195",
+   "size": 1950444
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep10_sound_of_silence/vol5_prelude_ep10_sound_of_silence_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:23:21+00:00",
+   "md5": "a4affaa64506501606599a8f81ff6195",
+   "size": 1950444
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep11_writ_fer_rain/front.png": {
+   "at": "2026-10-27T04:23:30+00:00",
+   "md5": "48f9025f0e3359cb0fd3e6d1be449030",
+   "size": 1665986
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep11_writ_fer_rain/vol5_prelude_ep11_writ_fer_rain_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:23:30+00:00",
+   "md5": "48f9025f0e3359cb0fd3e6d1be449030",
+   "size": 1665986
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep12_pour_1/front.png": {
+   "at": "2026-10-27T04:23:55+00:00",
+   "md5": "0d0328e70235f15d2aa413eb82bfae13",
+   "size": 1516272
+  },
+  "godot/assets/concept/meshy/vol5_prelude_ep12_pour_1/vol5_prelude_ep12_pour_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:23:55+00:00",
+   "md5": "0d0328e70235f15d2aa413eb82bfae13",
+   "size": 1516272
   },
   "godot/assets/concept/meshy/vol5_prelude_whispers_channel/front.png": {
    "at": "2026-10-27T04:19:58+00:00",
