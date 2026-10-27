@@ -7200,6 +7200,11 @@
    "md5": "80128332ddb6296acdccc4470207a6cc",
    "size": 1870462
   },
+  "godot/assets/art/hero/houston_bayou_drugstore_sign.png": {
+   "at": "2026-10-27T19:01:40+00:00",
+   "md5": "c3911cb937750decbe5ecf372d54e8e9",
+   "size": 1378332
+  },
   "godot/assets/art/hero/houston_design_studio_out_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "abf2bb061a60d3af314f7940e2ce0b75",
@@ -74830,15 +74835,35 @@
    "md5": "ceeb9e3ec627ade2d197a1745b1e19d6",
    "size": 1196911
   },
+  "godot/assets/concept/meshy/cedar_bowl/back.png": {
+   "at": "2026-10-27T19:01:46+00:00",
+   "md5": "a85c57d621165fae62d6a4e3e11b4a34",
+   "size": 1508809
+  },
+  "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:01:46+00:00",
+   "md5": "a85c57d621165fae62d6a4e3e11b4a34",
+   "size": 1508809
+  },
   "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T18:56:38+00:00",
    "md5": "d12218bce6a958dbf4a562420e3918d9",
    "size": 1518277
   },
+  "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:01:46+00:00",
+   "md5": "589c435fe9b3ba15668264e7c45bf569",
+   "size": 1420225
+  },
   "godot/assets/concept/meshy/cedar_bowl/front.png": {
    "at": "2026-10-27T18:56:38+00:00",
    "md5": "d12218bce6a958dbf4a562420e3918d9",
    "size": 1518277
+  },
+  "godot/assets/concept/meshy/cedar_bowl/side.png": {
+   "at": "2026-10-27T19:01:46+00:00",
+   "md5": "589c435fe9b3ba15668264e7c45bf569",
+   "size": 1420225
   },
   "godot/assets/concept/meshy/cedar_tower_bowls_book/cedar_tower_bowls_book_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:03:06+00:00",
@@ -78939,6 +78964,16 @@
    "at": "2026-10-27T16:41:56+00:00",
    "md5": "2f240e1cebe085f1df1517e959541f64",
    "size": 1188685
+  },
+  "godot/assets/concept/meshy/houston_bayou_drugstore_sign/front.png": {
+   "at": "2026-10-27T19:01:57+00:00",
+   "md5": "c3911cb937750decbe5ecf372d54e8e9",
+   "size": 1378332
+  },
+  "godot/assets/concept/meshy/houston_bayou_drugstore_sign/houston_bayou_drugstore_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:01:57+00:00",
+   "md5": "c3911cb937750decbe5ecf372d54e8e9",
+   "size": 1378332
   },
   "godot/assets/concept/meshy/houston_design_studio_out_facade/front.png": {
    "at": "2026-10-14T03:00:19+00:00",
