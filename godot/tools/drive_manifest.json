@@ -5385,6 +5385,11 @@
    "md5": "a243a3bf370b97de57573cc30cce35f4",
    "size": 553936
   },
+  "godot/assets/3d/props/comic_figure_6_Image_0.jpg": {
+   "at": "2026-10-27T05:13:58+00:00",
+   "md5": "f1e209fb513870ad4036f1d0286f4d8b",
+   "size": 252931
+  },
   "godot/assets/3d/props/crow.glb": {
    "at": "2026-10-27T02:36:08+00:00",
    "md5": "e23e1eb786d32527e2ef53230c1fd44b",
@@ -5629,6 +5634,11 @@
    "at": "2026-10-27T05:12:48+00:00",
    "md5": "5311858a45e4d28d4adfbb8be9044e9d",
    "size": 3339492
+  },
+  "godot/assets/art/hero/bus_station_terminal_sign.png": {
+   "at": "2026-10-27T05:14:09+00:00",
+   "md5": "41b00f954afee14ac54b23d0e89c60e2",
+   "size": 2032251
   },
   "godot/assets/art/hero/cabin_interior_brandon_notebook.png": {
    "at": "2026-10-27T04:00:41+00:00",
@@ -7149,6 +7159,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "25b23cf86fdcd79fb6bdd2d99af18762",
    "size": 2480273
+  },
+  "godot/assets/art/hero/louisiana_road_stop_sign.png": {
+   "at": "2026-10-27T05:14:09+00:00",
+   "md5": "ef0afd258bc8149e6bf4c0a0c9ebb73f",
+   "size": 1878957
   },
   "godot/assets/art/hero/maya_bedroom_corkboard.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -69175,6 +69190,16 @@
    "md5": "5311858a45e4d28d4adfbb8be9044e9d",
    "size": 3339492
   },
+  "godot/assets/concept/meshy/bus_station_terminal_sign/bus_station_terminal_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:14:22+00:00",
+   "md5": "41b00f954afee14ac54b23d0e89c60e2",
+   "size": 2032251
+  },
+  "godot/assets/concept/meshy/bus_station_terminal_sign/front.png": {
+   "at": "2026-10-27T05:14:22+00:00",
+   "md5": "41b00f954afee14ac54b23d0e89c60e2",
+   "size": 2032251
+  },
   "godot/assets/concept/meshy/cabin_interior_brandon_notebook/cabin_interior_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:00:55+00:00",
    "md5": "c0202e4be16f6f2146d0f50f8d90697b",
@@ -74024,6 +74049,16 @@
    "at": "2026-10-14T03:07:04+00:00",
    "md5": "25b23cf86fdcd79fb6bdd2d99af18762",
    "size": 2480273
+  },
+  "godot/assets/concept/meshy/louisiana_road_stop_sign/front.png": {
+   "at": "2026-10-27T05:14:29+00:00",
+   "md5": "ef0afd258bc8149e6bf4c0a0c9ebb73f",
+   "size": 1878957
+  },
+  "godot/assets/concept/meshy/louisiana_road_stop_sign/louisiana_road_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:14:29+00:00",
+   "md5": "ef0afd258bc8149e6bf4c0a0c9ebb73f",
+   "size": 1878957
   },
   "godot/assets/concept/meshy/lucy/back.png": {
    "at": "2026-10-18T18:27:14+00:00",
