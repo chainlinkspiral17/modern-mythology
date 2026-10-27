@@ -27807,5 +27807,105 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/montreal_apartment_window_view/front.png",
     "output": "godot/assets/art/hero/montreal_apartment_window_view.png"
+  },
+  {
+    "at": "2026-10-27T05:02:36+00:00",
+    "stage": "image",
+    "slug": "panel_vol7_three_instructions",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Brandon's three instructions like this: The three instructions. The old man gave them to me in the experience this afternoon. The instructions are Brandon's. Brandon left them with the old man to give to the person who would come. I am the person. The old man gave me the instructions. I am going to give them to the room. First. The crow is the bell. The crow is going to ring. Be where you can hear when the crow rings. Second. The bowls are going to know before we do. The bowls are going to give us a count of seconds before the crow rings. The four bowls in the room are going to go very still. The figures on the bowls are going to stop moving. Additional direction: A small handwritten page of three numbered instructions, the handwriting suggested, not legible, on a cedar table in a cabin, lamplight and a window of wet woods. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: Brandon's three instructions. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol7_three_instructions/panel_vol7_three_instructions_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:02:47+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol7_three_instructions",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol7_three_instructions/front.png",
+    "output": "godot/assets/cg/panel_vol7_three_instructions.jpg"
+  },
+  {
+    "at": "2026-10-27T05:03:02+00:00",
+    "stage": "image",
+    "slug": "panel_vol7_bus_schedule",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the bus schedule like this: \"Should I call Cale. He has a truck.\" \"Don't pull Cale into this yet. Stay in town. We'll come down. The four of us at your place at six.\" \"What happened.\" Additional direction: A printed small-town bus schedule card on a cafe table on the Oregon coast, rainy window light; the times not legible. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the bus schedule. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol7_bus_schedule/panel_vol7_bus_schedule_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:03:12+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol7_bus_schedule",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol7_bus_schedule/front.png",
+    "output": "godot/assets/cg/panel_vol7_bus_schedule.jpg"
+  },
+  {
+    "at": "2026-10-27T05:03:30+00:00",
+    "stage": "image",
+    "slug": "panel_vol7_estuary7_label",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Estuary 7 label like this: She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat. He stayed in the chair. \"One more thing.\" Additional direction: A small wooden box holding three slim cartridge sticks; the third has a white label hand-written in small careful pen, not legible. Lamp light, close. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the Estuary 7 label. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol7_estuary7_label/panel_vol7_estuary7_label_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:03:42+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol7_estuary7_label",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol7_estuary7_label/front.png",
+    "output": "godot/assets/cg/panel_vol7_estuary7_label.jpg"
+  },
+  {
+    "at": "2026-10-27T05:03:57+00:00",
+    "stage": "image",
+    "slug": "panel_vol7_freq_log",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the frequency log like this: \"I'm not. The Roy thing this morning is going to take me a minute to come down from. I am still hot. I want you to know my saying this is not me being hot. This is me trying to be honest with you the way you are trying to be honest with us.\" \"Yes.\" Additional direction: A handwritten radio frequency log on a clipboard beside a small shortwave radio, columns of numbers suggested, not legible; night, a desk lamp. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in a small town on the Oregon coast: the frequency log. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol7_freq_log/panel_vol7_freq_log_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:04:34+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol7_freq_log",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol7_freq_log/front.png",
+    "output": "godot/assets/cg/panel_vol7_freq_log.jpg"
   }
 ]

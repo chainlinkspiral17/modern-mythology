@@ -6105,6 +6105,11 @@
    "md5": "a18054946e6c3a3bdcc350c93114cdc6",
    "size": 2970833
   },
+  "godot/assets/art/hero/daily_grind_front_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "5911e97fa71df2d7337970e53d626bc0",
+   "size": 2741123
+  },
   "godot/assets/art/hero/daily_grind_interior_bookswap_sign.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "9aeb806f3771522b38611af990b1c729",
@@ -6194,6 +6199,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "59dad5573cd8eee312c72e2b96bf1047",
    "size": 2470911
+  },
+  "godot/assets/art/hero/daily_grind_side_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "351f459848653019a4f7c51389a8e498",
+   "size": 2726757
   },
   "godot/assets/art/hero/darkroom_curtain_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -6820,6 +6830,11 @@
    "md5": "d249ef58ef8cdc628f1b43c2d0d616fc",
    "size": 2551535
   },
+  "godot/assets/art/hero/hospice_room_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "9500e7b5fa078089519b05f152362a61",
+   "size": 2203851
+  },
   "godot/assets/art/hero/hospital_room_tv.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "7a16a692a7bbc283ed8e602bcac220c5",
@@ -6929,6 +6944,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "f0d644d91e75d407a41cc750ad57414b",
    "size": 3787406
+  },
+  "godot/assets/art/hero/kowalski_kitchen_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "d96a160fdf031ea9d50eec0da6279285",
+   "size": 4219214
   },
   "godot/assets/art/hero/kwik_stop_aisle_topsign_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7260,6 +7280,16 @@
    "md5": "6995359835377e2ce2dc01a7f97c6973",
    "size": 2389149
   },
+  "godot/assets/art/hero/missing_link_window_view_pumps.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "32ee5d6b738ab94e34958cd6f229206e",
+   "size": 2620922
+  },
+  "godot/assets/art/hero/missing_link_window_view_road.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "ef0e3f4b5fc78d68a76442a95aa340ba",
+   "size": 2171441
+  },
   "godot/assets/art/hero/montreal_apartment_poster_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "696f32e7b2f969a4c9246bd6ff395293",
@@ -7274,6 +7304,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "6526414d4d6409331d0cea765c5d350b",
    "size": 2190528
+  },
+  "godot/assets/art/hero/montreal_apartment_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "76faad50610264006390f195ab5209f9",
+   "size": 2369754
   },
   "godot/assets/art/hero/natalie_apartment_out_s_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7970,6 +8005,11 @@
    "md5": "e672b05b23e84d1223195291bfb36bde",
    "size": 3854079
   },
+  "godot/assets/art/hero/roberts_kitchen_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "5fce7b24fa8314005b26f3fe2141c059",
+   "size": 2822744
+  },
   "godot/assets/art/hero/safehouse_bedroom_hall_print.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "7ca897ccadcade78c5f52da98651416c",
@@ -8039,6 +8079,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "67af51b4c86b7b26a9c8edd334afddf2",
    "size": 2711650
+  },
+  "godot/assets/art/hero/sam_bedroom_window_view.png": {
+   "at": "2026-10-27T05:02:54+00:00",
+   "md5": "ac3b87c9c3cf22d76e646f54f5952789",
+   "size": 2551622
   },
   "godot/assets/art/hero/sam_photo_diego.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -70800,6 +70845,16 @@
    "md5": "d7c06155c8d82099437dcce3396314c8",
    "size": 1408318
   },
+  "godot/assets/concept/meshy/daily_grind_front_window_view/daily_grind_front_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:03:03+00:00",
+   "md5": "5911e97fa71df2d7337970e53d626bc0",
+   "size": 2741123
+  },
+  "godot/assets/concept/meshy/daily_grind_front_window_view/front.png": {
+   "at": "2026-10-27T05:03:03+00:00",
+   "md5": "5911e97fa71df2d7337970e53d626bc0",
+   "size": 2741123
+  },
   "godot/assets/concept/meshy/daily_grind_interior_bookswap_sign/daily_grind_interior_bookswap_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:40:11+00:00",
    "md5": "9aeb806f3771522b38611af990b1c729",
@@ -70979,6 +71034,16 @@
    "at": "2026-10-14T02:42:19+00:00",
    "md5": "59dad5573cd8eee312c72e2b96bf1047",
    "size": 2470911
+  },
+  "godot/assets/concept/meshy/daily_grind_side_window_view/daily_grind_side_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:03:19+00:00",
+   "md5": "351f459848653019a4f7c51389a8e498",
+   "size": 2726757
+  },
+  "godot/assets/concept/meshy/daily_grind_side_window_view/front.png": {
+   "at": "2026-10-27T05:03:19+00:00",
+   "md5": "351f459848653019a4f7c51389a8e498",
+   "size": 2726757
   },
   "godot/assets/concept/meshy/dante_dambrosio/dante_dambrosio_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -72875,6 +72940,16 @@
    "md5": "d249ef58ef8cdc628f1b43c2d0d616fc",
    "size": 2551535
   },
+  "godot/assets/concept/meshy/hospice_room_window_view/front.png": {
+   "at": "2026-10-27T05:03:31+00:00",
+   "md5": "9500e7b5fa078089519b05f152362a61",
+   "size": 2203851
+  },
+  "godot/assets/concept/meshy/hospice_room_window_view/hospice_room_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:03:31+00:00",
+   "md5": "9500e7b5fa078089519b05f152362a61",
+   "size": 2203851
+  },
   "godot/assets/concept/meshy/hospital_room_tv/front.png": {
    "at": "2026-10-14T02:59:47+00:00",
    "md5": "7a16a692a7bbc283ed8e602bcac220c5",
@@ -74575,6 +74650,26 @@
    "md5": "6995359835377e2ce2dc01a7f97c6973",
    "size": 2389149
   },
+  "godot/assets/concept/meshy/missing_link_window_view_pumps/front.png": {
+   "at": "2026-10-27T05:03:41+00:00",
+   "md5": "32ee5d6b738ab94e34958cd6f229206e",
+   "size": 2620922
+  },
+  "godot/assets/concept/meshy/missing_link_window_view_pumps/missing_link_window_view_pumps_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:03:41+00:00",
+   "md5": "32ee5d6b738ab94e34958cd6f229206e",
+   "size": 2620922
+  },
+  "godot/assets/concept/meshy/missing_link_window_view_road/front.png": {
+   "at": "2026-10-27T05:03:52+00:00",
+   "md5": "ef0e3f4b5fc78d68a76442a95aa340ba",
+   "size": 2171441
+  },
+  "godot/assets/concept/meshy/missing_link_window_view_road/missing_link_window_view_road_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:03:52+00:00",
+   "md5": "ef0e3f4b5fc78d68a76442a95aa340ba",
+   "size": 2171441
+  },
   "godot/assets/concept/meshy/montreal_apartment_poster_1/front.png": {
    "at": "2026-10-14T03:09:51+00:00",
    "md5": "696f32e7b2f969a4c9246bd6ff395293",
@@ -74604,6 +74699,16 @@
    "at": "2026-10-14T03:10:19+00:00",
    "md5": "6526414d4d6409331d0cea765c5d350b",
    "size": 2190528
+  },
+  "godot/assets/concept/meshy/montreal_apartment_window_view/front.png": {
+   "at": "2026-10-27T05:04:12+00:00",
+   "md5": "76faad50610264006390f195ab5209f9",
+   "size": 2369754
+  },
+  "godot/assets/concept/meshy/montreal_apartment_window_view/montreal_apartment_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:04:12+00:00",
+   "md5": "76faad50610264006390f195ab5209f9",
+   "size": 2369754
   },
   "godot/assets/concept/meshy/mrs_gable/back.png": {
    "at": "2026-10-11T17:44:14+00:00",
@@ -75594,6 +75699,16 @@
    "at": "2026-10-27T04:35:47+00:00",
    "md5": "08807a930332cb9f9422acd2b30125f8",
    "size": 2586048
+  },
+  "godot/assets/concept/meshy/panel_vol7_three_instructions/front.png": {
+   "at": "2026-10-27T05:04:22+00:00",
+   "md5": "86173fb87f56ab0608539733efb2cdff",
+   "size": 2416193
+  },
+  "godot/assets/concept/meshy/panel_vol7_three_instructions/panel_vol7_three_instructions_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:04:22+00:00",
+   "md5": "86173fb87f56ab0608539733efb2cdff",
+   "size": 2416193
   },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
@@ -78395,6 +78510,16 @@
    "md5": "e672b05b23e84d1223195291bfb36bde",
    "size": 3854079
   },
+  "godot/assets/concept/meshy/roberts_kitchen_window_view/front.png": {
+   "at": "2026-10-27T05:04:34+00:00",
+   "md5": "5fce7b24fa8314005b26f3fe2141c059",
+   "size": 2822744
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_window_view/roberts_kitchen_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:04:34+00:00",
+   "md5": "5fce7b24fa8314005b26f3fe2141c059",
+   "size": 2822744
+  },
   "godot/assets/concept/meshy/roy/back.png": {
    "at": "2026-10-11T19:18:35+00:00",
    "md5": "a521a5b4f00a249ecb61e61e017847f7",
@@ -78689,6 +78814,16 @@
    "at": "2026-10-14T03:24:17+00:00",
    "md5": "67af51b4c86b7b26a9c8edd334afddf2",
    "size": 2711650
+  },
+  "godot/assets/concept/meshy/sam_bedroom_window_view/front.png": {
+   "at": "2026-10-27T05:04:41+00:00",
+   "md5": "ac3b87c9c3cf22d76e646f54f5952789",
+   "size": 2551622
+  },
+  "godot/assets/concept/meshy/sam_bedroom_window_view/sam_bedroom_window_view_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:04:41+00:00",
+   "md5": "ac3b87c9c3cf22d76e646f54f5952789",
+   "size": 2551622
   },
   "godot/assets/concept/meshy/sam_miller/back.png": {
    "at": "2026-10-11T16:26:29+00:00",
