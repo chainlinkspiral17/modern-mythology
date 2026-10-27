@@ -1640,12 +1640,14 @@ def budget_class(entry):
 # `budget` measures the file). Mirrored in hero_uploader/index.html
 # (budgetEstimate). VRAM: Godot's VRAM-compressed import, S3TC on the Deck —
 # base colour and metallic/roughness DXT1 (0.5 B/px), the normal map BC5
-# (1 B/px), mipmaps +1/3; the mesh ~30 B a triangle (vertices ~0.65 per
-# triangle at 32 B, 16-bit indices). Disk: the slim GLB (JPEG base ~0.25 B/px,
-# PNG normal ~1 B/px, mesh ~25 B a triangle) plus Godot's imported copies
-# (the .ctex maps ~ their VRAM size, the mesh ~ the GLB's). The _full/
-# original is on the Drive only, never shipped: Meshy standard at 4k
-# measured ~40 MB (PerfProbe 2026-10-16); smart-topology at 2k is mostly its maps.
+# (1 B/px), mipmaps +1/3; the mesh ~30 B a triangle.
+# GLB / Drive — MEASURED 2026-10-27 on the first Hero Studio models made at
+# the budgets (comic_figure_3 small 0.50 MB, crow medium 0.78, peugeot_505
+# 1.07; seven slimmed heroes 4.4-5.7 MB, median 5.2): slim's JPEG maps
+# ~0.17 B/px at 1024 px, ~0.09 at 2048; the mesh ~60 B a triangle in a prop
+# (61-79 measured), ~37 in a 120k hero (33-42). Drive originals: a low-poly
+# 2k Meshy prop 4.2-4.6 MB (~1 B per generated texel + ~20 B a triangle); a
+# standard 4k hero median ~48 MB (32-106).
 def budget_estimate(cls):
     b = BUDGETS.get(cls)
     if not b:
@@ -1654,17 +1656,19 @@ def budget_estimate(cls):
     pbr = bool(me.get("pbr"))
     t, ts, tris = sl["tex"], sl["tex_small"], sl["tris"]
     mip = 4.0 / 3.0
+    jpg = lambda side: side * side * (0.17 if side <= 1024 else 0.09)
+    bpt = 60 if tris <= 20000 else 37
     vram = t * t * 0.5 * mip + tris * 30
-    glb = t * t * 0.25 + tris * 25
+    glb = jpg(t) + tris * bpt
     if pbr:
         vram += t * t * 1.0 * mip + ts * ts * 0.5 * mip
-        glb += t * t * 1.0 + ts * ts * 0.25
+        glb += jpg(t) + jpg(ts)
     gen = {"2k": 2048, "4k": 4096, "8k": 8192}.get(me.get("texture_resolution", "2k"), 2048)
     if me.get("model_type") == "standard":
-        full = 40e6
+        full = 48e6
     else:
-        full = gen * gen * (0.25 + (1.25 if pbr else 0)) + int(me.get("polycount", 10000)) * 25
-    return {"vram": vram, "disk": glb + vram + tris * 25, "glb": glb, "full": full, "maps": 3 if pbr else 1}
+        full = gen * gen * (1.0 + (1.5 if pbr else 0)) + int(me.get("polycount", 10000)) * 20
+    return {"vram": vram, "disk": glb + vram + tris * bpt, "glb": glb, "full": full, "maps": 3 if pbr else 1}
 SLIM_SCRIPT = TOOLS / "blender" / "slim_model.py"
 
 
@@ -1854,7 +1858,9 @@ def slim_glb(path, kind, log=print, force=False, fresh=False):
     info = json.loads(line[5:])
     os.replace(tmp, path)
     log(f"    slim · {path.name}: {info['tris_in']} → {info['tris_out']} triangles, "
-        f"{info['bytes_in'] / 1e6:.1f} → {info['bytes_out'] / 1e6:.1f} MB (original in {rel(full)})")
+        f"{info['bytes_in'] / 1e6:.1f} → {info['bytes_out'] / 1e6:.1f} MB (original in {rel(full)})"
+        + (" · seams released to reach the budget — look it over for dark specks at UV seams"
+           if info.get("seams_released") else ""))
     info.update(ok=True, skipped=False)
     _drop_stale_maps(path, log)
     model_texture_settings(path, kind, log=log)
@@ -1886,6 +1892,7 @@ def cmd_slim(args):
     sel = set(args.slugs or [])
     done = skipped = failed = 0
     before = after = 0
+    released = []
     for e in roster["entries"]:
         kind = budget_class(e)
         if not kind or (sel and e["slug"] not in sel):
@@ -1900,6 +1907,8 @@ def cmd_slim(args):
             skipped += 1
         elif res.get("ok"):
             done += 1
+            if res.get("seams_released"):
+                released.append(e["slug"])
             before += b0
             after += out.stat().st_size
         else:
@@ -1908,6 +1917,8 @@ def cmd_slim(args):
             if res.get("why") == "no Blender":
                 break
     print(f"slimmed {done} model(s) ({before / 1e6:.0f} → {after / 1e6:.0f} MB), {skipped} already in budget, {failed} failed")
+    if released:
+        print(f"seams released to reach the budget (look these over for dark specks): {', '.join(released)}")
     if done:
         print("Godot re-imports them the next time the project opens (or: bash godot/tools/reimport_models.sh). "
               "Then SAVE in Hero Studio puts the slim models and the _full/ originals on the Drive.")
@@ -3083,6 +3094,21 @@ def cmd_budget(roster, args):
     print(f"{'total':12} {'':>4} {'':>4}  {'':34} {'':24} {'':>18}  {mb(tot[0]):>12} {mb(tot[1]):>8} {mb(tot[2]):>9}")
     print("per model = disk (slim GLB + Godot's imported copies) / video memory; measured file sizes where installed, "
           "estimates otherwise (budget_estimate). Drive = the _full/ originals, never shipped.")
+    # (2026-10-27) the ones slim missed: installed, over their class's triangle cap
+    over = []
+    for e in roster["entries"]:
+        cls = budget_class(e)
+        out = entry_out_path(e)
+        if not cls or not out.exists():
+            continue
+        tris = glb_header_tris(out)
+        cap = BUDGETS[cls]["slim"]["tris"]
+        if tris > cap * 1.10:
+            over.append((out.stat().st_size, e["slug"], cls, tris, cap))
+    if over:
+        print(f"\nOVER BUDGET — {len(over)} installed model(s); `meshy_pipeline.py slim` cuts them:")
+        for size, slug, cls, tris, cap in sorted(over, reverse=True):
+            print(f"  {slug:28} {cls:12} {tris:>8} triangles (cap {cap})  {size / 1e6:6.1f} MB")
     # the sets: video memory is paid per LOADED set — each prop model once,
     # however many times the set places it
     by_file = {e["file"]: e for e in roster["entries"] if e.get("kind") == "prop"}

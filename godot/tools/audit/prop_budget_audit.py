@@ -8,9 +8,11 @@ give every prop a class by its `tier`; this gate holds the sets to them.
 For every scene that places HeroProps (`glb_path = "res://assets/3d/props/…"`):
   NO_ENTRY   a placed model with no prop entry in meshy_roster.json (nothing
              would ever generate it, and nothing budgets it)
-  UNDER_TIER a prop placed bigger than its tier carries: over 0.6 m needs
-             medium, over 2.5 m large (a small prop's 4k triangles and one
-             1024 px map, stretched over a car)
+  UNDER_TIER a SMALL prop placed over 0.6 m (a hand-held budget — 4k
+             triangles, one 1024 px map — stretched over furniture or a car).
+             A medium prop over 2.5 m is only noted: whether a car needs the
+             large class is the user's call (2026-10-27: the Peugeot was made
+             medium in Hero Studio, no PBR, 1.07 MB — a fine trade)
   OVER_SET   a set whose prop models together would take more video memory
              than SET_CAP (two characters' worth). Each model counts once
              however often the set places it: Godot shares the mesh and maps.
@@ -45,7 +47,7 @@ def need_tier(size):
 def main():
     roster = M.load_roster()
     props = {e["file"]: e for e in roster["entries"] if e["kind"] == "prop"}
-    findings, sets = [], []
+    findings, sets, notes = [], [], []
     for root, _dirs, files in os.walk(os.path.join(GODOT, "scenes")):
         for f in sorted(files):
             if not f.endswith(".tscn"):
@@ -64,15 +66,19 @@ def main():
                     continue
                 tier = e.get("tier") or "medium"
                 want = need_tier(float(size))
-                if TIER_RANK[tier] < TIER_RANK[want]:
+                if tier == "small" and want != "small":
                     findings.append(("UNDER_TIER", rel, f"{node}: {e['slug']} placed at {float(size):.2f} m, "
-                                                        f"tier {tier} (needs {want})"))
+                                                        f"tier small (needs at least medium)"))
+                elif TIER_RANK[tier] < TIER_RANK[want]:
+                    notes.append(f"   note       {rel}  {node}: {e['slug']} {float(size):.2f} m on tier {tier}")
                 models.add(glb)
             total, _n = M.set_prop_vram(text, props)
             sets.append((total, rel, len(models), len(placed)))
             if total > SET_CAP:
                 findings.append(("OVER_SET", rel, f"{len(models)} prop model(s) ~{total / 1e6:.1f} MB video memory "
                                                   f"(cap {SET_CAP / 1e6:.1f} MB, two characters)"))
+    for n in sorted(set(notes)):
+        print(n)
     for cls, rel, msg in findings:
         print(f"   {cls:10} {rel}  {msg}")
     worst = max(sets) if sets else (0, "-", 0, 0)
