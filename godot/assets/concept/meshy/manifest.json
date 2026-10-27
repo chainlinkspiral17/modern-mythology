@@ -28365,5 +28365,26 @@
     },
     "output": "godot/assets/3d/props/bobbys_tow_truck.glb",
     "file_size_kb": 13041.3
+  },
+  {
+    "at": "2026-10-27T05:42:19+00:00",
+    "stage": "image",
+    "slug": "speak_and_spell",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Speak & Spell like this: It is a 1978 original, battered, with a small crack in the lower left corner of the red plastic housing. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED \u2014 a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town. The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. The Speak & Spell is on the shelf above the file cabinet, dim.\nSingle-object concept render of The Speak & Spell, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
