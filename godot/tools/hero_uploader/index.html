@@ -287,6 +287,12 @@
           <div><label>Meshy texture prompt (≤ 600 chars · blank = quotes, else fallback)</label>
             <textarea id="e-texprompt" rows="3"></textarea></div>
         </div>
+        <div class="row" id="e-words-row">
+          <div><label>lettering (the headline, spelled exactly)</label>
+            <textarea id="e-lettering" rows="2"></textarea></div>
+          <div><label>writing on it (everything else on the surface, verbatim — the chapter's own words where it quotes them)</label>
+            <textarea id="e-textbody" rows="6"></textarea></div>
+        </div>
         <label class="check"><input id="o-append" type="checkbox"> also append the fallback prompt after the quotes (extra art direction)</label>
         <details style="margin-top:6px"><summary style="cursor:pointer;color:var(--fg-dim);font-size:11px">full prompt as sent <span id="e-chars"></span></summary>
           <pre id="e-fullprompt"></pre></details>
@@ -667,6 +673,10 @@ function select(slug) {
   $('e-notes').style.display = e.notes ? '' : 'none'; $('e-notes').textContent = e.notes || '';
   $('e-prompt').value = e.prompt || '';
   $('e-texprompt').value = e.texture_prompt || '';
+  // the words in the picture (2026-10-27): a character render has none
+  $('e-words-row').style.display = (e.kind === 'hero' || e.kind === 'demon') ? 'none' : '';
+  $('e-lettering').value = e.lettering || '';
+  $('e-textbody').value = e.text_body || '';
   $('e-canon').value = (e.canon || []).map(q => q.text).join('\n\n');
   $('e-canon').placeholder = 'No description of the look in the text yet — the fallback prompt will be used. Add quotes here (or to canon[] in meshy_roster.json; try: python3 godot/tools/meshy_canon.py ' + e.slug + ').';
   $('e-canon-src').textContent = (e.canon || []).length ? 'sources: ' + [...new Set((e.canon || []).map(q => q.src))].join(' · ') : 'no canon quotes';
@@ -732,6 +742,9 @@ function promptOverrides() {
   const canonRoster = (e?.canon || []).map(q => q.text).join('\n\n').trim();
   if (canonNow !== canonRoster) o.canon_text = canonNow;   // only send when edited
   if ($('e-texprompt').value.trim()) o.texture_prompt = $('e-texprompt').value.trim();
+  // only when edited: blank stays a real choice ("no words")
+  if ($('e-lettering').value.trim() !== (e?.lettering || '').trim()) o.lettering = $('e-lettering').value.trim();
+  if ($('e-textbody').value.trim() !== (e?.text_body || '').trim()) o.text_body = $('e-textbody').value.trim();
   return o;
 }
 
@@ -1171,7 +1184,7 @@ function bind() {
   $('btn-keys-test').addEventListener('click', testKeys);
   $('o-provider').addEventListener('change', onProviderChange);
   for (const id of ['o-model', 'o-count', 'o-multiview', 'o-texture', 'o-quality']) $(id).addEventListener('change', updateCosts);
-  for (const id of ['e-prompt', 'e-canon', 'o-append']) $(id).addEventListener('input', refreshFullPrompt);
+  for (const id of ['e-prompt', 'e-canon', 'o-append', 'e-lettering', 'e-textbody']) $(id).addEventListener('input', refreshFullPrompt);
   $('o-provider').addEventListener('change', refreshFullPrompt);
   $('btn-image').addEventListener('click', () => submitJob('image'));
   $('btn-mesh').addEventListener('click', () => submitJob('mesh'));

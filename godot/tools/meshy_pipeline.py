@@ -2207,6 +2207,9 @@ def art_suffix(roster, entry, short=False):
         out.append(f"The main lettering reads exactly: {lettering}. Spell it exactly so.")
     if body:
         out.append("The rest of the writing on it, in full, readable, spelled exactly: " + body)
+        if "[" in body:
+            out.append("(A note in [square brackets] says where the writing sits; the brackets and the note "
+                       "itself are not written on it.)")
     elif lettering and not plate:
         out.append("Around it, everything a real one carries is written too — fine print, dates, prices, "
                    "addresses, notes, page furniture — in real, readable English that fits it.")
@@ -3229,6 +3232,10 @@ class JobRunner:
                 entry = dict(entry, prompt_mode=job["opts"]["prompt_mode"])
             if job["opts"].get("texture_prompt"):
                 entry = dict(entry, texture_prompt=job["opts"]["texture_prompt"])
+            # the words on it, as edited for this run (2026-10-27)
+            for k in ("lettering", "text_body"):
+                if job["opts"].get(k) is not None:
+                    entry = dict(entry, **{k: str(job["opts"][k]).strip()})
             opts = dict(job["opts"])
             if job["action"] in ("image", "run"):
                 stage_image(roster, entry, opts, log=log)
@@ -3429,6 +3436,9 @@ def make_handler(runner, roster_path):
                 e = dict(e, canon=[{"src": "edited", "text": ct}] if ct else [])
             if overrides.get("prompt_mode"):
                 e = dict(e, prompt_mode=overrides["prompt_mode"])
+            for k in ("lettering", "text_body"):
+                if overrides.get(k) is not None:
+                    e = dict(e, **{k: str(overrides[k]).strip()})
             return self._json({"front": build_prompt(roster, e, "front", provider),
                                "side": build_prompt(roster, e, "side", provider),
                                "back": build_prompt(roster, e, "back", provider),

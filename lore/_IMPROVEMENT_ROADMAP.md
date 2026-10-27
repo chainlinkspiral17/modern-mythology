@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 191: THE WORDS ON THINGS — 326 roster entries get their writing; the Lovers' porch; level face frames.**
+- **The writing.** The user: "I want a rich, detailed meta-text", and one line on a full page is "boring and not convincing". A four-way pass over every page, screen, board, sign and banned prompt (326 entries):
+  - 86 prompts lose their bans ("illegible", "no readable text", …) for a description of the real writing;
+  - 233 entries get a `text_body`: the whole page, verbatim from the chapter wherever it quotes the thing (Rick's list, Diego's letter, Brandon's 38th entry, the weep post, Bianca's bills, the Substation Nine bridge …), filled out with plausible fine print;
+  - 23 letterings fixed (the Missile Command entry's lettering was an instruction, not words).
+  - Kept blank on purpose:
+    - truly blank surfaces;
+    - things the text says can't be read (the dream's letters "won't hold still");
+    - tiling bands, where a readable sign becomes a repeat;
+    - real people's likenesses and marks.
+  - Hero Studio shows and edits `lettering` + `text_body` per run.
+  - 63 vol 6 prompts re-dated 2025 → 2026 (the timeline's summer).
+- **Knots in the TEXT itself, for Andy (nothing changed):**
+  1. Brent Kowalski: the center (ch13) or the senior quarterback (ch22)? He shares the Kowalski surname with Ben. ch19 also reads "(LeBlanc). Which is Diaz".
+  2. Hans's bakery: "on Hemlock" in most of vol 7, "the corner of Main and Pine" in the epilogue.
+  3. Anya: an actress Elicia cast (vol5 ch2b #24), or Elicia herself (ch16 #75)?
+  4. The dance's deejay: "Arthur Finch" then "Rose" (vol2 interlude two #26, #30–31); the flyer said "DJ JAY ROSE".
+- **Lovers:**
+  - The boy's close-up stood in the dining room's corner looking at the kitchen. It now looks from the front hall at his eye height, out through the screen door's grid to the porch and the wagon idling at the curb.
+  - **Face frames are level:** 153 of 449 close-ups were authored 15° down. The director now levels every face frame (pitch -4° to +2°); marker_author authors them level; the obstruction audit judges them as shown.
+- **Draft N+1:**
+  - the Lovers' remaining coverage (Philip's levelled frame is the window over the sink; the front-hall establish for "They stood in the front hallway");
+  - ask Andy what is across the street from the Daily Grind;
+  - review the invented fillers (RINGFALL, GRAUSTARK HARDWARE & FEED, the Late Bloomers).
+
 **2026-10-27 · pass 190: DOWN THE DECK'S LIST — the stadium, the insert that stayed, mirrored signs, words in the pictures.**
 - **The stadium** ("football field and stadium is still nonsense … illogical"):
   - **Before:** the lens stood behind the south goalpost, looking down 110 m of field into haze, the people specks.
