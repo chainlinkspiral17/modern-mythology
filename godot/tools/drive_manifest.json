@@ -5350,6 +5350,11 @@
    "md5": "a9238ced525f1d54f10d5a27eae53977",
    "size": 13382828
   },
+  "godot/assets/3d/props/_full/speak_and_spell.glb": {
+   "at": "2026-10-27T05:44:53+00:00",
+   "md5": "b91200457ab1ac5c7a20f48de20a1367",
+   "size": 3609936
+  },
   "godot/assets/3d/props/_full/steamboat_model.glb": {
    "at": "2026-10-27T02:35:29+00:00",
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
@@ -5474,6 +5479,16 @@
    "at": "2026-10-27T05:43:18+00:00",
    "md5": "2137d5a4c9aa45b01ec7ef2a4d4baa23",
    "size": 237461
+  },
+  "godot/assets/3d/props/speak_and_spell.glb": {
+   "at": "2026-10-27T05:44:49+00:00",
+   "md5": "e63dc8225f1a0a348534b2582120e939",
+   "size": 383088
+  },
+  "godot/assets/3d/props/speak_and_spell_Image_0.jpg": {
+   "at": "2026-10-27T05:44:49+00:00",
+   "md5": "82a2b6d4ce9b9a9221f6c57013085537",
+   "size": 166931
   },
   "godot/assets/3d/props/steamboat_model.glb": {
    "at": "2026-10-27T04:00:30+00:00",
@@ -70570,6 +70585,16 @@
    "md5": "e185f65d659254db6c0ab4ef93a16ae0",
    "size": 1992187
   },
+  "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:45:08+00:00",
+   "md5": "907581e7040d98f1a840ad1a49801987",
+   "size": 2522819
+  },
+  "godot/assets/concept/meshy/comic_figure_1/front.png": {
+   "at": "2026-10-27T05:45:08+00:00",
+   "md5": "907581e7040d98f1a840ad1a49801987",
+   "size": 2522819
+  },
   "godot/assets/concept/meshy/comic_figure_2/back.png": {
    "at": "2026-10-27T04:44:40+00:00",
    "md5": "91ade1129152b1181e5c8910ad1b7599",
@@ -79664,6 +79689,11 @@
    "at": "2026-10-27T05:43:56+00:00",
    "md5": "037a2e4510e6eb17599faf0e68a90e16",
    "size": 1499558
+  },
+  "godot/assets/concept/meshy/speak_and_spell/meshy_thumb.png": {
+   "at": "2026-10-27T05:45:19+00:00",
+   "md5": "352ff0a95efdd86df556932131ad3531",
+   "size": 167068
   },
   "godot/assets/concept/meshy/speak_and_spell/side.png": {
    "at": "2026-10-27T05:43:56+00:00",
