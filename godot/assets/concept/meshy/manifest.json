@@ -28434,5 +28434,32 @@
       "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/comic_figure_1/comic_figure_1_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T05:47:43+00:00",
+    "stage": "mesh",
+    "slug": "comic_figure_1",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17be4-46e9-74fb-814d-2a404e6527fb",
+    "inputs": [
+      "godot/assets/concept/meshy/comic_figure_1/front.png",
+      "godot/assets/concept/meshy/comic_figure_1/side.png",
+      "godot/assets/concept/meshy/comic_figure_1/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": false,
+      "texture_resolution": "2k",
+      "model_type": "smart-topology",
+      "polycount": 4000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/comic_figure_1.glb",
+    "file_size_kb": 3963.0
   }
 ]
