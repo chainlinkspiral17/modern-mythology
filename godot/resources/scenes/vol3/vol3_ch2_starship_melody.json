@@ -45,29 +45,34 @@
     },
     {
       "t": "narrate",
-      "text": "Ron wasn't going to sleep, not tonight, and the kid from the future wasn't either by the look of him, sat cross-legged on the one patch of floor not drowned in books, big as a bear and tired as one. Ron rolled a fresh sheet into the machine with a carbon behind it and squared them up and waited."
+      "text": "Ron wasn't going to sleep, not tonight, and the kid from the future wasn't either by the look of him, sat cross-legged on the one patch of floor not drowned in books, big as a bear and tired as one. Ron rolled a fresh sheet into the machine with a carbon behind it and squared them up and waited.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/008.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "What do they tell stories about, where you come from?"
+      "text": "What do they tell stories about, where you come from?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/009.mp3"
     },
     {
       "t": "say",
       "char": "Andy",
       "expr": "tired",
-      "text": "Spaceships, still. Robots. I wrote one once, about a girl who turns out to be the ship."
+      "text": "Spaceships, still. Robots. I wrote one once, about a girl who turns out to be the ship.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/010.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "warm",
-      "text": "Can you tell it like a picture show?"
+      "text": "Can you tell it like a picture show?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kid shut his eyes to remember it and started in, and Ron typed it as fast as it came, typos and all, the way he typed everything, never going back."
+      "text": "The kid shut his eyes to remember it and started in, and Ron typed it as fast as it came, typos and all, the way he typed everything, never going back.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/012.mp3"
     },
     {
       "t": "bg",
@@ -97,11 +102,13 @@
     },
     {
       "t": "narrate",
-      "text": "The stars flicker in the darkness, an exotic planet in nearby orbit passes by. Suddenly, from the perimeter of space, the blackness caves in."
+      "text": "The stars flicker in the darkness, an exotic planet in nearby orbit passes by. Suddenly, from the perimeter of space, the blackness caves in.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Metal hull doors cut through the endless night and close around a small object. A closer view reveals ship. Resting in silent slumber is the MELODY, a dimly lit spacecraft."
+      "text": "Metal hull doors cut through the endless night and close around a small object. A closer view reveals ship. Resting in silent slumber is the MELODY, a dimly lit spacecraft.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/020.mp3"
     },
     {
       "t": "cg",
@@ -110,7 +117,8 @@
     },
     {
       "t": "narrate",
-      "text": "Painted on the side is a gold and blue clef-note resting over an icy-blue eye."
+      "text": "Painted on the side is a gold and blue clef-note resting over an icy-blue eye.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/022.mp3"
     },
     {
       "t": "interlude",
@@ -120,45 +128,55 @@
     },
     {
       "t": "narrate",
-      "text": "Two massive chrome columns come from nowhere, spinning through the cold mist of residual vapor. They slow their approach and lock into the MELODY, fitting themselves perfectly into two circular indentations on opposite sides of the craft."
+      "text": "Two massive chrome columns come from nowhere, spinning through the cold mist of residual vapor. They slow their approach and lock into the MELODY, fitting themselves perfectly into two circular indentations on opposite sides of the craft.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "Next, two donut shaped wedges come skirting down the cylinders at breakneck speeds, spinning silently. Another perfect fit upon impact."
+      "text": "Next, two donut shaped wedges come skirting down the cylinders at breakneck speeds, spinning silently. Another perfect fit upon impact.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "The inside of the donut connecting with the ship begins to vibrate and a puff of air escapes as the seal is made. Then the face begins to elevate down. Riding the inverse elevator are a pair of robots carrying a large sarcophagus."
+      "text": "The inside of the donut connecting with the ship begins to vibrate and a puff of air escapes as the seal is made. Then the face begins to elevate down. Riding the inverse elevator are a pair of robots carrying a large sarcophagus.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "A glimpse of perfect golden hair shimmies in zero-g, undulating in the weightless environment. A perfectly still, perfectly formed young lady lies within."
+      "text": "A glimpse of perfect golden hair shimmies in zero-g, undulating in the weightless environment. A perfectly still, perfectly formed young lady lies within.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is MELODY, 18, fair and exotic, and from all appearances, dead. Melody wears a form-fitting white body suit."
+      "text": "She is MELODY, 18, fair and exotic, and from all appearances, dead. Melody wears a form-fitting white body suit.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "The men of tin who act as pallbearers are VERSE, a compact gruff navigator, and JULES, the incredibly tall pilot of the MELODY. Together they handle the incredibly complex calculations of interstellar travel."
+      "text": "The men of tin who act as pallbearers are VERSE, a compact gruff navigator, and JULES, the incredibly tall pilot of the MELODY. Together they handle the incredibly complex calculations of interstellar travel.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "The design of the robots is unfamiliar, less simian, more sinister. They appear to have black nano-musculature between the 'bones' that make up their bodies. Heads are complex, eyes multifaceted."
+      "text": "The design of the robots is unfamiliar, less simian, more sinister. They appear to have black nano-musculature between the 'bones' that make up their bodies. Heads are complex, eyes multifaceted.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/030.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "Tin men. Are they hers?"
+      "text": "Tin men. Are they hers?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "They glance at each other as the donut begins to travel back along its intended path toward infinite blackness. Verse glances down at Melody, caressing the glass with a polished finger."
+      "text": "They glance at each other as the donut begins to travel back along its intended path toward infinite blackness. Verse glances down at Melody, caressing the glass with a polished finger.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Verse looks up and sees a massive metal continent approaching on the horizon, their steel tether attaches them to the giant mass. It is hundreds of miles off, but the lights get brighter and brighter as they approach."
+      "text": "Verse looks up and sees a massive metal continent approaching on the horizon, their steel tether attaches them to the giant mass. It is hundreds of miles off, but the lights get brighter and brighter as they approach.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/033.mp3"
     },
     {
       "t": "interlude",
@@ -168,7 +186,8 @@
     },
     {
       "t": "narrate",
-      "text": "But upon the moment of impact, the donut is soon engulfed into a liquid mass of metal, and it appears that this wall is just the surface of the sea they have broken through. As they race away from their point of entry, giant ripples begin to escape outward."
+      "text": "But upon the moment of impact, the donut is soon engulfed into a liquid mass of metal, and it appears that this wall is just the surface of the sea they have broken through. As they race away from their point of entry, giant ripples begin to escape outward.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/035.mp3"
     },
     {
       "t": "interlude",
@@ -178,7 +197,8 @@
     },
     {
       "t": "narrate",
-      "text": "An organic hive, built on three dimensions, a web of information and efficiency. This is the brain of the society Jules and Verse have just entered."
+      "text": "An organic hive, built on three dimensions, a web of information and efficiency. This is the brain of the society Jules and Verse have just entered.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/037.mp3"
     },
     {
       "t": "choice",
@@ -200,11 +220,13 @@
     },
     {
       "t": "narrate",
-      "text": "Jellyfish like robots attach and detach themselves to the walls, massive fleas grab shrimp-sized robots out of the air and ingest them. A surreal and astounding world, even a robot's sensory devices fail to comprehend the complexity."
+      "text": "Jellyfish like robots attach and detach themselves to the walls, massive fleas grab shrimp-sized robots out of the air and ingest them. A surreal and astounding world, even a robot's sensory devices fail to comprehend the complexity.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "A jellyfish creature senses their plight and flits over. As it nears, we get a sense of its enormity. The sack of the jellyfish has the surface area of a football field as it bears over them."
+      "text": "A jellyfish creature senses their plight and flits over. As it nears, we get a sense of its enormity. The sack of the jellyfish has the surface area of a football field as it bears over them.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/041.mp3"
     },
     {
       "t": "interlude",
@@ -214,193 +236,227 @@
     },
     {
       "t": "narrate",
-      "text": "They are brought up into the sack, which looks to be abalone-like from the interior. Opalesque whiteness envelops everything."
+      "text": "They are brought up into the sack, which looks to be abalone-like from the interior. Opalesque whiteness envelops everything.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "It slowly comes to resemble a disembodied head, with six white light eyes, and a giant gaping maw of a mouth. The face in the middle looks evil, and perfectly sentient."
+      "text": "It slowly comes to resemble a disembodied head, with six white light eyes, and a giant gaping maw of a mouth. The face in the middle looks evil, and perfectly sentient.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/044.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "We wish to thank you for delivering the maker."
+      "text": "We wish to thank you for delivering the maker.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/045.mp3"
     },
     {
       "t": "say",
       "char": "Jules",
       "expr": "neutral",
-      "text": "Understandable. From what I understand, your kind doesn't get out very often, does it?"
+      "text": "Understandable. From what I understand, your kind doesn't get out very often, does it?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/046.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "We cannot be everywhere at once but we are growing."
+      "text": "We cannot be everywhere at once but we are growing.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/047.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "amused",
-      "text": "Yeah, Jules and I have noticed."
+      "text": "Yeah, Jules and I have noticed.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/048.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "If trivial communications have ceased, we will be taking it now—"
+      "text": "If trivial communications have ceased, we will be taking it now—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/049.mp3"
     },
     {
       "t": "say",
       "char": "Jules",
       "expr": "angry",
-      "text": "It is a she."
+      "text": "It is a she.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/050.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "neutral",
-      "text": "Female sex, human species. She's a maker, creator—"
+      "text": "Female sex, human species. She's a maker, creator—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/051.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "IT is a creator. There's us, and then there's it—"
+      "text": "IT is a creator. There's us, and then there's it—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/052.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "neutral",
-      "text": "What are we?"
+      "text": "What are we?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/053.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "You are nothing. Antiquities without value, machines without life—"
+      "text": "You are nothing. Antiquities without value, machines without life—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/054.mp3"
     },
     {
       "t": "say",
       "char": "Jules",
       "expr": "angry",
-      "text": "We have life—"
+      "text": "We have life—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/055.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "I sense otherwise. Your make-up is linear and your programming obsolete— How did you find her? We've scoured the cosmos but our sensors turned up nothing—"
+      "text": "I sense otherwise. Your make-up is linear and your programming obsolete— How did you find her? We've scoured the cosmos but our sensors turned up nothing—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/056.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "amused",
-      "text": "Sometimes antiquities are better suited to the task."
+      "text": "Sometimes antiquities are better suited to the task.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/057.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "neutral",
-      "text": "We sense no life activity in the delivery, something we specifically requested."
+      "text": "We sense no life activity in the delivery, something we specifically requested.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/058.mp3"
     },
     {
       "t": "say",
       "char": "Jules",
       "expr": "neutral",
-      "text": "There was an unfortunate complication—"
+      "text": "There was an unfortunate complication—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/059.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "angry",
-      "text": "Alive. It was needed ALIVE."
+      "text": "Alive. It was needed ALIVE.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/060.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "amused",
-      "text": "Picky, picky, picky. Well Jules, give the We what it wants—"
+      "text": "Picky, picky, picky. Well Jules, give the We what it wants—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jules shoves a hand into the coffin, and it begins to light up from the inside. Blinding light."
+      "text": "Jules shoves a hand into the coffin, and it begins to light up from the inside. Blinding light.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "Suddenly, back in the cargo bay, the MELODY lights up, engines begin to come to life, and weapon systems come on-line."
+      "text": "Suddenly, back in the cargo bay, the MELODY lights up, engines begin to come to life, and weapon systems come on-line.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/063.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "neutral",
-      "text": "Melody is one-hundred percent functional. Suspended animation. Technically dead, but the life signs are there and suspended."
+      "text": "Melody is one-hundred percent functional. Suspended animation. Technically dead, but the life signs are there and suspended.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/064.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "amused",
-      "text": "Hey, who's in a hurry? We've got time to kill—"
+      "text": "Hey, who's in a hurry? We've got time to kill—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/065.mp3"
     },
     {
       "t": "say",
       "char": "Jules",
       "expr": "warm",
-      "text": "Don't we, Melody?"
+      "text": "Don't we, Melody?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "Melody's eyes shot open, a wicked smile crosses her lips. She sits up and pushes off of the coffin, flying towards the core."
+      "text": "Melody's eyes shot open, a wicked smile crosses her lips. She sits up and pushes off of the coffin, flying towards the core.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/067.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "surprised",
-      "text": "What is this?"
+      "text": "What is this?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/068.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "amused",
-      "text": "The Pirate Melody, pleased to meet you—"
+      "text": "The Pirate Melody, pleased to meet you—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/069.mp3"
     },
     {
       "t": "say",
       "char": "Core",
       "expr": "surprised",
-      "text": "It LIVES?"
+      "text": "It LIVES?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/070.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "amused",
-      "text": "I'm a she, and yes, I live—"
+      "text": "I'm a she, and yes, I live—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "The core begins to chew on Melody. A sharp, cracking, twisting sound is heard from within. Suddenly, a pure white blade juts out from the top of the core. It cuts a narrow ribbon down the front of the face."
+      "text": "The core begins to chew on Melody. A sharp, cracking, twisting sound is heard from within. Suddenly, a pure white blade juts out from the top of the core. It cuts a narrow ribbon down the front of the face.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "Melody rips the core in half and pulls herself out of the pulpy mess. Her white suit instantly cleans itself, shimmering white."
+      "text": "Melody rips the core in half and pulls herself out of the pulpy mess. Her white suit instantly cleans itself, shimmering white.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/073.mp3"
     },
     {
       "t": "say",
       "char": "Jules",
       "expr": "amused",
-      "text": "You sure know how to make an entrance Melody—"
+      "text": "You sure know how to make an entrance Melody—",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/074.mp3"
     },
     {
       "t": "say",
       "char": "Verse",
       "expr": "amused",
-      "text": "And an exit. I'd give it a ten for creative interpretation. Classic, darling. Stupendous."
+      "text": "And an exit. I'd give it a ten for creative interpretation. Classic, darling. Stupendous.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/075.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "And the ship? You said she was the ship."
+      "text": "And the ship? You said she was the ship.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/076.mp3"
     },
     {
       "t": "interlude",
@@ -410,111 +466,130 @@
     },
     {
       "t": "narrate",
-      "text": "The starship lights up, dramatically. It is different. Completely and utterly. Instead of being a junky freighter, it is a sleek, sophisticated killing machine."
+      "text": "The starship lights up, dramatically. It is different. Completely and utterly. Instead of being a junky freighter, it is a sleek, sophisticated killing machine.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/078.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "angry",
-      "text": "YOU ARE WORTHLESS, YOU ARE NOTHING, YOU ARE A COWARD, AND YOU ARE SCARED."
+      "text": "YOU ARE WORTHLESS, YOU ARE NOTHING, YOU ARE A COWARD, AND YOU ARE SCARED.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/079.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "neutral",
-      "text": "YES, YOU ARE RIGHT. I AM SCARED."
+      "text": "YES, YOU ARE RIGHT. I AM SCARED.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "Melody looks out, from the cockpit. The insignia sits below her, outside. It is an almost exact duplicate of her face. The insignia turns and looks at the sentries. The insignia smiles."
+      "text": "Melody looks out, from the cockpit. The insignia sits below her, outside. It is an almost exact duplicate of her face. The insignia turns and looks at the sentries. The insignia smiles.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/081.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "angry",
-      "text": "I'M SCARED OF MYSELF AND WHAT I MIGHT DO TO YOU, IF YOU CONTINUE TO PROVOKE ME."
+      "text": "I'M SCARED OF MYSELF AND WHAT I MIGHT DO TO YOU, IF YOU CONTINUE TO PROVOKE ME.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/082.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "angry",
-      "text": "TELL ME THE TRUTH."
+      "text": "TELL ME THE TRUTH.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/083.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "neutral",
-      "text": "What were you going to do with me?"
+      "text": "What were you going to do with me?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/084.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "We would have sold you to the highest bidder."
+      "text": "We would have sold you to the highest bidder.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/085.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "neutral",
-      "text": "And just who is the highest bidder?"
+      "text": "And just who is the highest bidder?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/086.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "What is the highest bidder."
+      "text": "What is the highest bidder.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/087.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "surprised",
-      "text": "A machine?"
+      "text": "A machine?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/088.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "It is more than all of us combined."
+      "text": "It is more than all of us combined.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/089.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "neutral",
-      "text": "Where can I find this being?"
+      "text": "Where can I find this being?",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/090.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "The planet Earth."
+      "text": "The planet Earth.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/091.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "sad",
-      "text": "That place doesn't exist anymore."
+      "text": "That place doesn't exist anymore.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/092.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "You are wrong. Something has rebuilt it."
+      "text": "You are wrong. Something has rebuilt it.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/093.mp3"
     },
     {
       "t": "say",
       "char": "Melody",
       "expr": "neutral",
-      "text": "I don't believe you."
+      "text": "I don't believe you.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/094.mp3"
     },
     {
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "Go there. See for yourself. You must go to it. Create as it destroys."
+      "text": "Go there. See for yourself. You must go to it. Create as it destroys.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "Melody disappears in an instant. Ghosted images of her fly about for a few seconds, then dissipate into nothingness."
+      "text": "Melody disappears in an instant. Ghosted images of her fly about for a few seconds, then dissipate into nothingness.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/096.mp3"
     },
     {
       "t": "bg",
@@ -526,7 +601,8 @@
     },
     {
       "t": "narrate",
-      "text": "Ron pulled the page and its carbon out together and laid them face down on the pile. He asked what happens when she gets there. The kid said he never wrote that part, he never finished much of anything back then, and lay back on the floor among the books with his big shoes still on and was asleep before Ron could ask what back then meant to a boy his age."
+      "text": "Ron pulled the page and its carbon out together and laid them face down on the pile. He asked what happens when she gets there. The kid said he never wrote that part, he never finished much of anything back then, and lay back on the floor among the books with his big shoes still on and was asleep before Ron could ask what back then meant to a boy his age.",
+      "voice": "assets/audio/voice/vol3_ch2_starship_melody/099.mp3"
     },
     {
       "t": "flag",

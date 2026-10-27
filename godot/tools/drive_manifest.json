@@ -77095,6 +77095,16 @@
    "md5": "1498c5d9ac3bb6de0b09f936fbfe867d",
    "size": 2656746
   },
+  "godot/assets/concept/meshy/pasadena_1945_street_far_n_rain__street_rain/front.png": {
+   "at": "2026-10-27T15:28:13+00:00",
+   "md5": "77f0fb299a8fd51598556194da40ce3a",
+   "size": 2614522
+  },
+  "godot/assets/concept/meshy/pasadena_1945_street_far_n_rain__street_rain/pasadena_1945_street_far_n_rain__street_rain_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:28:13+00:00",
+   "md5": "77f0fb299a8fd51598556194da40ce3a",
+   "size": 2614522
+  },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
    "md5": "eba19aaa7d162037126998df26871233",
@@ -79880,6 +79890,16 @@
    "md5": "3cd1c0a1a53f1904ed8408b72e590fc7",
    "size": 1966971
   },
+  "godot/assets/concept/meshy/roberts_kitchen_polaroid/front.png": {
+   "at": "2026-10-27T15:28:33+00:00",
+   "md5": "d11d431c0c2481aafa3fc3bbe5f4542d",
+   "size": 2229220
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_polaroid/roberts_kitchen_polaroid_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:28:33+00:00",
+   "md5": "d11d431c0c2481aafa3fc3bbe5f4542d",
+   "size": 2229220
+  },
   "godot/assets/concept/meshy/roberts_kitchen_tv/front.png": {
    "at": "2026-10-14T03:39:11+00:00",
    "md5": "78059a8ae6f7056f9ce82acf8ff91085",
@@ -80004,6 +80024,16 @@
    "at": "2026-10-14T03:22:43+00:00",
    "md5": "7ca897ccadcade78c5f52da98651416c",
    "size": 2906489
+  },
+  "godot/assets/concept/meshy/safehouse_bedroom_kwik_stop_notebook/front.png": {
+   "at": "2026-10-27T15:28:51+00:00",
+   "md5": "33bc3b3c7aafa6818ed538749329769c",
+   "size": 2495215
+  },
+  "godot/assets/concept/meshy/safehouse_bedroom_kwik_stop_notebook/safehouse_bedroom_kwik_stop_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:28:51+00:00",
+   "md5": "33bc3b3c7aafa6818ed538749329769c",
+   "size": 2495215
   },
   "godot/assets/concept/meshy/safehouse_bedroom_window/front.png": {
    "at": "2026-10-14T03:22:49+00:00",
@@ -80194,6 +80224,16 @@
    "at": "2026-10-14T03:24:10+00:00",
    "md5": "ecbd5694ab897635142a8e6d73fd2b4b",
    "size": 2434648
+  },
+  "godot/assets/concept/meshy/sam_bedroom_dream_notebook/front.png": {
+   "at": "2026-10-27T15:29:00+00:00",
+   "md5": "cde7359ee27f1f03f5a98663f0a0ad59",
+   "size": 3012352
+  },
+  "godot/assets/concept/meshy/sam_bedroom_dream_notebook/sam_bedroom_dream_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:29:00+00:00",
+   "md5": "cde7359ee27f1f03f5a98663f0a0ad59",
+   "size": 3012352
   },
   "godot/assets/concept/meshy/sam_bedroom_window/front.png": {
    "at": "2026-10-14T03:24:17+00:00",
@@ -80485,6 +80525,76 @@
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
    "size": 71019
   },
+  "godot/assets/concept/meshy/sleep_lab_four_screens_desert__four_screens_show/front.png": {
+   "at": "2026-10-27T15:29:08+00:00",
+   "md5": "da2e3969059ee7c965022b0112946e75",
+   "size": 2569561
+  },
+  "godot/assets/concept/meshy/sleep_lab_four_screens_desert__four_screens_show/sleep_lab_four_screens_desert__four_screens_show_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:29:08+00:00",
+   "md5": "da2e3969059ee7c965022b0112946e75",
+   "size": 2569561
+  },
+  "godot/assets/concept/meshy/sleep_lab_four_screens_road_signs__four_screens_show/front.png": {
+   "at": "2026-10-27T15:29:23+00:00",
+   "md5": "c0760fefb70f0abdfc3538d158e375c7",
+   "size": 2750133
+  },
+  "godot/assets/concept/meshy/sleep_lab_four_screens_road_signs__four_screens_show/sleep_lab_four_screens_road_signs__four_screens_show_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:29:23+00:00",
+   "md5": "c0760fefb70f0abdfc3538d158e375c7",
+   "size": 2750133
+  },
+  "godot/assets/concept/meshy/sleep_lab_four_screens_van__four_screens_show/front.png": {
+   "at": "2026-10-27T15:29:32+00:00",
+   "md5": "6f4f80285665e26d854e689196cf947d",
+   "size": 2110858
+  },
+  "godot/assets/concept/meshy/sleep_lab_four_screens_van__four_screens_show/sleep_lab_four_screens_van__four_screens_show_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:29:32+00:00",
+   "md5": "6f4f80285665e26d854e689196cf947d",
+   "size": 2110858
+  },
+  "godot/assets/concept/meshy/sleep_lab_poster_altered_states/front.png": {
+   "at": "2026-10-27T15:29:48+00:00",
+   "md5": "3080a6cd26a37a62f4976e5df4243a21",
+   "size": 2335422
+  },
+  "godot/assets/concept/meshy/sleep_lab_poster_altered_states/sleep_lab_poster_altered_states_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:29:48+00:00",
+   "md5": "3080a6cd26a37a62f4976e5df4243a21",
+   "size": 2335422
+  },
+  "godot/assets/concept/meshy/sleep_lab_poster_lost_highway/front.png": {
+   "at": "2026-10-27T15:30:04+00:00",
+   "md5": "c6220e5406065b5e896026a363e36f62",
+   "size": 2138817
+  },
+  "godot/assets/concept/meshy/sleep_lab_poster_lost_highway/sleep_lab_poster_lost_highway_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:30:04+00:00",
+   "md5": "c6220e5406065b5e896026a363e36f62",
+   "size": 2138817
+  },
+  "godot/assets/concept/meshy/sleep_lab_sun_monitor_numbers/front.png": {
+   "at": "2026-10-27T15:30:16+00:00",
+   "md5": "95f4d93d20f03483792a7af7080e2390",
+   "size": 1717622
+  },
+  "godot/assets/concept/meshy/sleep_lab_sun_monitor_numbers/sleep_lab_sun_monitor_numbers_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:30:16+00:00",
+   "md5": "95f4d93d20f03483792a7af7080e2390",
+   "size": 1717622
+  },
+  "godot/assets/concept/meshy/sleep_lab_test_questionnaire/front.png": {
+   "at": "2026-10-27T15:30:24+00:00",
+   "md5": "78194daca6b11ec03a37fa79139d6983",
+   "size": 1987916
+  },
+  "godot/assets/concept/meshy/sleep_lab_test_questionnaire/sleep_lab_test_questionnaire_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:30:24+00:00",
+   "md5": "78194daca6b11ec03a37fa79139d6983",
+   "size": 1987916
+  },
   "godot/assets/concept/meshy/small_wood_farmhouse_far_ridges/front.png": {
    "at": "2026-10-27T14:27:24+00:00",
    "md5": "8f5b6491a0e8efc6802ea8220aebb2d1",
@@ -80564,6 +80674,36 @@
    "at": "2026-10-27T14:28:27+00:00",
    "md5": "a670451086764be7d76e9f245c38d39b",
    "size": 2837192
+  },
+  "godot/assets/concept/meshy/small_wood_high_class_chalkboard/front.png": {
+   "at": "2026-10-27T15:30:32+00:00",
+   "md5": "6d8ca6ee150ceba7d521bc407c5cc3ef",
+   "size": 2471476
+  },
+  "godot/assets/concept/meshy/small_wood_high_class_chalkboard/small_wood_high_class_chalkboard_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:30:32+00:00",
+   "md5": "6d8ca6ee150ceba7d521bc407c5cc3ef",
+   "size": 2471476
+  },
+  "godot/assets/concept/meshy/small_wood_high_hearing_banner/front.png": {
+   "at": "2026-10-27T15:30:44+00:00",
+   "md5": "c160827ff32f197d92cfa75ab2c4a467",
+   "size": 2717739
+  },
+  "godot/assets/concept/meshy/small_wood_high_hearing_banner/small_wood_high_hearing_banner_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:30:44+00:00",
+   "md5": "c160827ff32f197d92cfa75ab2c4a467",
+   "size": 2717739
+  },
+  "godot/assets/concept/meshy/small_wood_high_lab_sign/front.png": {
+   "at": "2026-10-27T15:31:10+00:00",
+   "md5": "505c9d5c8c79f3c21573ad4e384f65b2",
+   "size": 1781537
+  },
+  "godot/assets/concept/meshy/small_wood_high_lab_sign/small_wood_high_lab_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:31:10+00:00",
+   "md5": "505c9d5c8c79f3c21573ad4e384f65b2",
+   "size": 1781537
   },
   "godot/assets/concept/meshy/small_wood_rec_center_bulletin_1/front.png": {
    "at": "2026-10-14T03:26:32+00:00",
@@ -81365,6 +81505,16 @@
    "md5": "0ba34be2e17e65a42cd9944116ca4d34",
    "size": 71156
   },
+  "godot/assets/concept/meshy/tideline_survey_brandon_notebook/front.png": {
+   "at": "2026-10-27T15:31:24+00:00",
+   "md5": "91ae606d712e0ecd19bacc9a577b3fb5",
+   "size": 2826108
+  },
+  "godot/assets/concept/meshy/tideline_survey_brandon_notebook/tideline_survey_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:31:24+00:00",
+   "md5": "91ae606d712e0ecd19bacc9a577b3fb5",
+   "size": 2826108
+  },
   "godot/assets/concept/meshy/tom_bell/back.png": {
    "at": "2026-10-19T16:56:00+00:00",
    "md5": "9e6b0d53eacfdfa0d5c4cf31a91213aa",
@@ -81434,6 +81584,26 @@
    "at": "2026-10-19T14:53:36+00:00",
    "md5": "e1eb8b8896a21e0f1dfb276b22d26d0f",
    "size": 1944977
+  },
+  "godot/assets/concept/meshy/tulsa_house_far_hills_night/front.png": {
+   "at": "2026-10-27T15:31:31+00:00",
+   "md5": "7216567cb76fe8553bf6167527d55621",
+   "size": 2081112
+  },
+  "godot/assets/concept/meshy/tulsa_house_far_hills_night/tulsa_house_far_hills_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:31:31+00:00",
+   "md5": "7216567cb76fe8553bf6167527d55621",
+   "size": 2081112
+  },
+  "godot/assets/concept/meshy/tulsa_house_safari_slide__tulsa_slideshow/front.png": {
+   "at": "2026-10-27T15:31:44+00:00",
+   "md5": "e9a190795059933b0adbd91bc9aa0902",
+   "size": 2610272
+  },
+  "godot/assets/concept/meshy/tulsa_house_safari_slide__tulsa_slideshow/tulsa_house_safari_slide__tulsa_slideshow_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:31:44+00:00",
+   "md5": "e9a190795059933b0adbd91bc9aa0902",
+   "size": 2610272
   },
   "godot/assets/concept/meshy/vehicle_cab_altima_map/front.png": {
    "at": "2026-10-14T03:29:03+00:00",
@@ -82140,6 +82310,16 @@
    "md5": "b117bd83f6002e0c95d972c51c3bf0ff",
    "size": 1715943
   },
+  "godot/assets/concept/meshy/vol3_rooms_catwalk_city_night/front.png": {
+   "at": "2026-10-27T15:31:53+00:00",
+   "md5": "391fad1a3768551ee81dbb96bd4dd7dd",
+   "size": 2400240
+  },
+  "godot/assets/concept/meshy/vol3_rooms_catwalk_city_night/vol3_rooms_catwalk_city_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:31:53+00:00",
+   "md5": "391fad1a3768551ee81dbb96bd4dd7dd",
+   "size": 2400240
+  },
   "godot/assets/concept/meshy/vol3_rooms_coast_sea_sky/front.png": {
    "at": "2026-10-27T04:35:57+00:00",
    "md5": "1e4577a9e9165772fe5259a067133b0d",
@@ -82149,6 +82329,26 @@
    "at": "2026-10-27T04:35:57+00:00",
    "md5": "1e4577a9e9165772fe5259a067133b0d",
    "size": 1887296
+  },
+  "godot/assets/concept/meshy/vol3_rooms_condo_river_sky/front.png": {
+   "at": "2026-10-27T15:32:11+00:00",
+   "md5": "8df24b326832a822efbf8ee731e36066",
+   "size": 2084747
+  },
+  "godot/assets/concept/meshy/vol3_rooms_condo_river_sky/vol3_rooms_condo_river_sky_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:32:11+00:00",
+   "md5": "8df24b326832a822efbf8ee731e36066",
+   "size": 2084747
+  },
+  "godot/assets/concept/meshy/vol3_rooms_oregon_crt_email/front.png": {
+   "at": "2026-10-27T15:32:34+00:00",
+   "md5": "1df759e4ffcef59dd2f901cc83ab27c8",
+   "size": 2319974
+  },
+  "godot/assets/concept/meshy/vol3_rooms_oregon_crt_email/vol3_rooms_oregon_crt_email_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:32:34+00:00",
+   "md5": "1df759e4ffcef59dd2f901cc83ab27c8",
+   "size": 2319974
   },
   "godot/assets/concept/meshy/vol3_rooms_oregon_window_day__oregon_home_day/front.png": {
    "at": "2026-10-27T04:36:07+00:00",

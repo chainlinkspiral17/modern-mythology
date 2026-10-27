@@ -29,11 +29,13 @@
     },
     {
       "text": "[mood:morning_bright]Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/005.mp3"
     },
     {
       "text": "She put on the wool socks, the jeans, a long flannel that had been her uncle's before her aunt's before hers, and crossed the small hall to the main room.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/006.mp3"
     },
     {
       "char": "tem",
@@ -43,7 +45,8 @@
     },
     {
       "text": "[shot:closeup tem]Tem was on the couch under the wool blanket Lena kept folded over the back. She was awake but not sitting up. She lay on her side watching the ceiling.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/008.mp3"
     },
     {
       "char": "lena",
@@ -55,803 +58,946 @@
       "char": "lena",
       "text": "Coffee?",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/010.mp3"
     },
     {
       "text": "A nod against the pillow.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/011.mp3"
     },
     {
       "text": "She went to the kitchen, set the kettle, filled the cone with the dark French Soren had given her on her birthday last year. She poured two cups.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/012.mp3"
     },
     {
       "text": "The smell filled the kitchen, then the main room, in the way that good coffee will when the apartment is small enough.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/013.mp3"
     },
     {
       "text": "She set Tem's on the end table beside the couch and took her own to the chair across from her.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/014.mp3"
     },
     {
       "text": "[shot:closeup tem]Tem sat up, holding the cup in both hands. Her hair was flat on one side. Her eyes were the eyes of a person who had slept eight hours in a bed not her own and woken halfway through the rest she actually needed.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/015.mp3"
     },
     {
       "char": "tem",
       "text": "I should not have slept that long.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/016.mp3"
     },
     {
       "char": "lena",
       "text": "You needed it.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/017.mp3"
     },
     {
       "char": "tem",
       "text": "I know.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/018.mp3"
     },
     {
       "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/019.mp3"
     },
     {
       "text": "She had counted the patches yesterday morning. Three on Friday. Four yesterday. She did not count them this morning.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/020.mp3"
     },
     {
       "char": "tem",
       "text": "I'm sorry I crashed here.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/021.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]Stop.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/022.mp3"
     },
     {
       "char": "tem",
       "text": "I'm not — I am registering that I crashed at your place after a Friday in which the four of us did not know what to do. That's an asymmetry I want to be careful about.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/023.mp3"
     },
     {
       "char": "lena",
       "text": "You don't have to make space for every feeling I might have.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/024.mp3"
     },
     {
       "text": "Tem looked at her over the cup.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/025.mp3"
     },
     {
       "char": "lena",
       "text": "I am a person. I can have a feeling. I can hold it. You don't have to manage it for me.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/026.mp3"
     },
     {
       "text": "[shot:closeup tem]A long beat. Tem set the cup down.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/027.mp3"
     },
     {
       "char": "tem",
       "text": "That's fair.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/028.mp3"
     },
     {
       "char": "lena",
       "text": "I'm sorry. It came out hot.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/029.mp3"
     },
     {
       "char": "tem",
       "text": "It came out the way you meant it. It's fine. I'll try to do that less.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/030.mp3"
     },
     {
       "char": "lena",
       "text": "I'm not asking you to change.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/031.mp3"
     },
     {
       "char": "tem",
       "text": "I know you're not. I'll still try.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/032.mp3"
     },
     {
       "text": "The rain on the roof dropped a notch. Lena drank her coffee. After a minute Tem said, without looking at her:",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/033.mp3"
     },
     {
       "char": "tem",
       "text": "Tell me about the painting.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/034.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]Which one.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/035.mp3"
     },
     {
       "char": "tem",
       "text": "The one you have been failing to make for two years.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/036.mp3"
     },
     {
       "text": "[shot:closeup lena]Lena set her cup down.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/037.mp3"
     },
     {
       "char": "lena",
       "text": "You know about that.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/038.mp3"
     },
     {
       "char": "tem",
       "text": "I know you've been working on something. I know it hasn't come. I know you don't talk about it. I have been waiting to ask. I wanted to ask before I drove up today.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/039.mp3"
     },
     {
       "char": "lena",
       "text": "Why today?",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/040.mp3"
     },
     {
       "char": "tem",
       "text": "Because I think the next few weeks are going to be busy and I don't want to forget you've had a thing you've been failing at, in your studio, every day, while everything else has been happening.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/041.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]The painting is what you've been doing. The patches are not what you've been doing. I don't want the patches to be the thing I ask about.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/042.mp3"
     },
     {
       "text": "Lena turned the cup in her hands.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/043.mp3"
     },
     {
       "char": "lena",
       "text": "It's a big piece. Six by eight. Oil. I started it after Starfish Nebula. I told myself when I finished Starfish that the next thing I made was going to be the thing. The painting that was the painting. I haven't made it.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/044.mp3"
     },
     {
       "char": "lena",
       "text": "I've started it eleven times. I've stripped it back eleven times. The canvas is thick enough now that I could paint a different painting on top of the underpainting and have it be fine. I cannot get past the underpainting.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/045.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person_b]What's it supposed to be about.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/046.mp3"
     },
     {
       "char": "lena",
       "text": "I don't know.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/047.mp3"
     },
     {
       "char": "tem",
       "text": "Lena.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/048.mp3"
     },
     {
       "char": "lena",
       "text": "I'm not being coy. I have a feeling. The feeling started about the alley. About what it means to make a thirty-foot mural on a wall in an alley and have it stay there while I go on making the small painting nobody sees.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/049.mp3"
     },
     {
       "char": "lena",
       "text": "The mural is for everyone. The painting is for me. I started thinking the new piece was going to be about the difference between them. Then I started painting and the painting did not want to be about that.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/050.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person_b]It wanted to be about something else. I tried to paint what it wanted. The trying didn't work. I went back to what I'd thought it was about. That didn't work either. Two years.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/051.mp3"
     },
     {
       "char": "tem",
       "text": "Have you considered making a different painting.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/052.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]I have.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/053.mp3"
     },
     {
       "char": "tem",
       "text": "And.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/054.mp3"
     },
     {
       "char": "lena",
       "text": "I don't want to. I want to make this one. I want to know what it is.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/055.mp3"
     },
     {
       "char": "tem",
       "text": "Have you written to Jorgen.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/056.mp3"
     },
     {
       "text": "Lena looked up.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/057.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person_b]How do you know about Jorgen.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/058.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person_b]Petra. Last winter. Jorgen's gallerist in Portland told her you and he had been corresponding. She mentioned it to me one Sunday. I haven't brought it up since. I've been waiting for you.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/059.mp3"
     },
     {
       "char": "lena",
       "text": "Petra.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/060.mp3"
     },
     {
       "char": "tem",
       "text": "Yes.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/061.mp3"
     },
     {
       "char": "lena",
       "text": "I'm going to have a word with Petra.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/062.mp3"
     },
     {
       "char": "tem",
       "text": "She didn't gossip. She wouldn't. She told me because she thought I was the person who should know.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/063.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]Why you?",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/064.mp3"
     },
     {
       "char": "tem",
       "text": "I don't know, Lena. Probably because she has watched the two of us have coffee on Wednesdays for a year and a half and has drawn her own conclusions. Petra draws her own conclusions about most things. She has drawn most of them right.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/065.mp3"
     },
     {
       "text": "Lena drank.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/066.mp3"
     },
     {
       "char": "lena",
       "text": "I've written to him. He says the room is mine if I want it. He says I'd need to be there by the end of September. He says the workshop needs me for a year.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/067.mp3"
     },
     {
       "char": "lena",
       "text": "He says if I show up for less than a year he'd rather I not show up at all. He says he's in a good window.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/068.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person]What does the good window mean.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/069.mp3"
     },
     {
       "char": "lena",
       "text": "It means he isn't manic. It means his head is clear in the way it needs to be clear for him to take on someone else.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/070.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person_b]What does it mean when the window closes.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/071.mp3"
     },
     {
       "char": "lena",
       "text": "It means he gets bad.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/072.mp3"
     },
     {
       "char": "tem",
       "text": "How bad.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/073.mp3"
     },
     {
       "char": "lena",
       "text": "I don't know all of it. I've heard from Hannah at the Portland gallery. Hannah's known the ex-wife for years. The ex-wife told her he can be frightening when he's manic. Not violent. The word she used was consuming.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/074.mp3"
     },
     {
       "char": "lena",
       "text": "He works for sixteen-hour stretches and he expects whoever's around him to be inside the work with him at his cadence. I would be the person around him. I would have to be inside the work.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/075.mp3"
     },
     {
       "char": "tem",
       "text": "And when the manic ends.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/076.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]He stops working. He doesn't talk to anyone. He doesn't eat enough. The ex-wife said she'd find him in the workshop sitting in front of a finished painting for twelve hours, not eating, not drinking, not seeming to know she was in the room.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/077.mp3"
     },
     {
       "char": "tem",
       "text": "And you're thinking about going.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/078.mp3"
     },
     {
       "char": "lena",
       "text": "Yes.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/079.mp3"
     },
     {
       "char": "tem",
       "text": "Why.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/080.mp3"
     },
     {
       "text": "[shot:closeup lena]Lena thought about it.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/081.mp3"
     },
     {
       "char": "lena",
       "text": "Because the painting isn't coming. Because I've been at the Daily Grind for two and a half years and I'm very good at it and it isn't what I'm doing.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/082.mp3"
     },
     {
       "char": "lena",
       "text": "Because Jorgen is the only painter on this coast whose work I look at and feel that he has seen the thing I've been trying to see. I don't want to make work that looks like his.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/083.mp3"
     },
     {
       "char": "lena",
       "text": "I want to make work that comes from where his comes from. I think I'd learn that from him in a year and not from anyone else, anywhere, including by myself.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/084.mp3"
     },
     {
       "char": "tem",
       "text": "Even with the manic.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/085.mp3"
     },
     {
       "char": "lena",
       "text": "That's the question.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/086.mp3"
     },
     {
       "text": "The kettle on the stove had cooled. Through the kitchen window the rain had picked up in the way rain picks up when the front is reorganizing itself.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/087.mp3"
     },
     {
       "text": "Lena watched Tem look down at the floor and then back up and then down again, and recognized the small thing Tem did with her face when she was about to say something she had been working out for some time.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/088.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person_b]I want to tell you something. I've been with someone like Jorgen before.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/089.mp3"
     },
     {
       "char": "lena",
       "text": "You have.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/090.mp3"
     },
     {
       "char": "tem",
       "text": "Not exactly. Near enough. Before I came back to Smolvud full-time. The year I was twenty. I lived in Eugene and I worked under a printmaker. He was forty-four. I was twenty. Eight months. I learned a lot from him.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/091.mp3"
     },
     {
       "char": "tem",
       "text": "The teaching and the personal and what he wanted from me became three things I could not, at twenty, hold separately. I left. I came home. I have not, since, talked about it.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/092.mp3"
     },
     {
       "char": "tem",
       "text": "I'm telling you because the question you're asking yourself about Jorgen is a question I asked myself about a different person in a different town when I was younger. I want you to know I asked it.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/093.mp3"
     },
     {
       "char": "tem",
       "text": "I want you to know I'm older than you and I have a stake in what you decide and I'm trying to keep my stake out of the deciding.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/094.mp3"
     },
     {
       "text": "Lena sat with that.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/095.mp3"
     },
     {
       "text": "The room had gotten quiet in the specific way rooms get quiet when a thing has been said that the room had been keeping out for a while. Lena could hear the rain on the kitchen window.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/096.mp3"
     },
     {
       "text": "She could hear the small click of the radiator pipe in the corner that ran whether the heat was on or off, in a way the building's super had been promising to fix since 2049.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/097.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]Tem.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/098.mp3"
     },
     {
       "char": "tem",
       "text": "Yeah.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/099.mp3"
     },
     {
       "char": "lena",
       "text": "That's the second hard thing you've told me in eighteen months.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/100.mp3"
     },
     {
       "char": "tem",
       "text": "I know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/101.mp3"
     },
     {
       "char": "lena",
       "text": "Was the first one April.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/102.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person_b]April was the first one.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/103.mp3"
     },
     {
       "char": "lena",
       "text": "This is the second one.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/104.mp3"
     },
     {
       "char": "tem",
       "text": "This is the second one.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/105.mp3"
     },
     {
       "text": "[beat:still][shot:closeup lena~]Lena set the cup down on the floor beside her chair. She put her face in her hands for a second and then took her hands away.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/106.mp3"
     },
     {
       "char": "lena",
       "text": "I had a teacher too. Before I came here. The year I was nineteen. She was a sculptor. She was thirty-six. Ten months. The same — the same shape. I left at twenty. I came here. I have not told anyone. Petra doesn't know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/107.mp3"
     },
     {
       "char": "lena",
       "text": "Hannah doesn't know. Kai and Finn don't know. You're the first.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/108.mp3"
     },
     {
       "text": "Tem did not, for a long beat, do anything with her face. Then she nodded once, slowly, and looked at the floor and looked back up.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/109.mp3"
     },
     {
       "char": "tem",
       "text": "Thank you for telling me.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/110.mp3"
     },
     {
       "char": "lena",
       "text": "I'm telling you because you told me. I want you to know I'm not — I'm not telling you because I think you're like her. I'm telling you because you told me yours and I had mine.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/111.mp3"
     },
     {
       "char": "tem",
       "text": "[shot:closeup person_b]Yes.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/112.mp3"
     },
     {
       "char": "lena",
       "text": "I want to say one thing about April and then I want to never have to say it again.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/113.mp3"
     },
     {
       "char": "tem",
       "text": "All right.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/114.mp3"
     },
     {
       "char": "lena",
       "text": "I have not, since April, thought about anything else. I have thought about you almost every day since you walked me to your door at six in the morning.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/115.mp3"
     },
     {
       "char": "lena",
       "text": "I have not said anything because I did not know if the saying was the right thing or the wrong thing. I am twenty-three and I do not always know. I am telling you now, in this room, that the not-saying has been heavy.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/116.mp3"
     },
     {
       "char": "lena",
       "text": "If you do not want it to be a thing again, that is a thing I can hear. If you do want it to be a thing again, I want to know. I do not want to spend the rest of the year not knowing. That's the only thing I have.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/117.mp3"
     },
     {
       "text": "[mood:studio][shot:closeup tem~]Tem held the cup with both hands and did not look at her for a long count.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/118.mp3"
     },
     {
       "text": "When she did look up her face was not what Lena had expected it to be. It was not opened. It was not closed. It was, more than anything else, scared.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/119.mp3"
     },
     {
       "char": "tem",
       "text": "Lena.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/120.mp3"
     },
     {
       "char": "lena",
       "text": "Yeah.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/121.mp3"
     },
     {
       "char": "tem",
       "text": "I want it to be a thing again. I have wanted it to be a thing again since April.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/122.mp3"
     },
     {
       "char": "tem",
       "text": "I have not said anything because I am older than you and you told me about the teacher last winter at Petra's once, half a sentence, and stopped, and I read the half-sentence and decided I was not going to be the person you had to navigate again.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/123.mp3"
     },
     {
       "char": "tem",
       "text": "I decided this without asking you. I am — I am sorry. I should have asked you.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/124.mp3"
     },
     {
       "char": "lena",
       "text": "[shot:closeup person]Tem.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/125.mp3"
     },
     {
       "char": "tem",
       "text": "Yeah.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/126.mp3"
     },
     {
       "char": "lena",
       "text": "You should have asked me.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/127.mp3"
     },
     {
       "char": "tem",
       "text": "I know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/128.mp3"
     },
     {
       "char": "lena",
       "text": "I'm asking you.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/129.mp3"
     },
     {
       "char": "tem",
       "text": "I know.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/130.mp3"
     },
     {
       "char": "lena",
       "text": "I want it to be a thing again.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/131.mp3"
     },
     {
       "char": "tem",
       "text": "[beat:lift]I want it to be a thing again.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/132.mp3"
     },
     {
       "text": "[mood:morning_bright][shot:establish]They both held their cups. Neither of them moved.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/133.mp3"
     },
     {
       "text": "After a while Tem said, \"I have to drive up to the cabin.\"",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/134.mp3"
     },
     {
       "char": "tem",
       "text": "I have to drive up to the cabin.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/135.mp3"
     },
     {
       "char": "lena",
       "text": "I know.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/136.mp3"
     },
     {
       "char": "tem",
       "text": "Finn's coming up after his route.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/137.mp3"
     },
     {
       "char": "lena",
       "text": "I know.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/138.mp3"
     },
     {
       "char": "tem",
       "text": "I don't know what to do with this in the next three hours.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/139.mp3"
     },
     {
       "char": "lena",
       "text": "Drive up. Be at the cabin. Be with Finn. Come back tomorrow.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/140.mp3"
     },
     {
       "char": "tem",
       "text": "All right.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/141.mp3"
     },
     {
       "char": "lena",
       "text": "Tem.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/142.mp3"
     },
     {
       "char": "tem",
       "text": "Yeah.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/143.mp3"
     },
     {
       "char": "lena",
       "text": "Don't make a plan about this on the drive up.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/144.mp3"
     },
     {
       "char": "tem",
       "text": "I wasn't going to.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/145.mp3"
     },
     {
       "char": "lena",
       "text": "You were going to.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/146.mp3"
     },
     {
       "text": "A breath of a laugh.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/147.mp3"
     },
     {
       "char": "tem",
       "text": "I was going to.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/148.mp3"
     },
     {
       "char": "lena",
       "text": "Don't.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/149.mp3"
     },
     {
       "char": "tem",
       "text": "All right.",
       "expr": "neutral",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/150.mp3"
     },
     {
       "text": "[shot:establish]Tem stood. She folded the wool blanket and put it back over the couch. She washed her cup at the sink. She put on her coat. At the door she did not put a hand on Lena's shoulder. She looked at her for a beat. Lena looked back.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/151.mp3"
     },
     {
       "char": "tem",
       "text": "Tomorrow.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/152.mp3"
     },
     {
       "pos": "right",
@@ -861,7 +1007,8 @@
       "char": "lena",
       "text": "Tomorrow.",
       "expr": "serious",
-      "t": "say"
+      "t": "say",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/154.mp3"
     },
     {
       "pos": "left",
@@ -869,7 +1016,8 @@
     },
     {
       "text": "The door closed. The apartment, after she was gone, was quieter than it had been in any morning Lena could remember.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/156.mp3"
     },
     {
       "char": "lena",
@@ -879,19 +1027,23 @@
     },
     {
       "text": "[shot:insert window]Lena stood in the kitchen for a minute. Then she went to the window and looked at the alley.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/158.mp3"
     },
     {
       "text": "The four patches were where they had been. The rain ran down the wall in a thin steady sheet. The patches did not seem, from this distance, to have changed since yesterday.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/159.mp3"
     },
     {
       "text": "She did not document them.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/160.mp3"
     },
     {
       "text": "She got dressed for the studio.",
-      "t": "narrate"
+      "t": "narrate",
+      "voice": "assets/audio/voice/vol7_ch3_apartment/161.mp3"
     },
     {
       "pos": "center",

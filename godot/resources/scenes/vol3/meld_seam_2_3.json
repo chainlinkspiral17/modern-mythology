@@ -33,15 +33,18 @@
     },
     {
       "t": "narrate",
-      "text": "That spring I played games on the computer most nights, until the floppy drive was the only sound in the house. tk tk tk tk. Loading the next part of somewhere else."
+      "text": "That spring I played games on the computer most nights, until the floppy drive was the only sound in the house. tk tk tk tk. Loading the next part of somewhere else.",
+      "voice": "assets/audio/voice/meld_seam_2_3/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "The picture came in bands, top to bottom. A street in the rain. Streetcar wire. A movie marquee. Orange trees."
+      "text": "The picture came in bands, top to bottom. A street in the rain. Streetcar wire. A movie marquee. Orange trees.",
+      "voice": "assets/audio/voice/meld_seam_2_3/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Pasadena, the box said, 1945. I remember thinking it wasn't supposed to rain there."
+      "text": "Pasadena, the box said, 1945. I remember thinking it wasn't supposed to rain there.",
+      "voice": "assets/audio/voice/meld_seam_2_3/008.mp3"
     },
     {
       "t": "cg",
@@ -50,7 +53,8 @@
     },
     {
       "t": "narrate",
-      "text": "Somewhere down the hill a car horn, two short and one long, and then the dogs started up the way they used to in Caracas."
+      "text": "Somewhere down the hill a car horn, two short and one long, and then the dogs started up the way they used to in Caracas.",
+      "voice": "assets/audio/voice/meld_seam_2_3/010.mp3"
     },
     {
       "t": "bg",
@@ -68,15 +72,18 @@
     },
     {
       "t": "narrate",
-      "text": "Inside the pod it was quiet the way the inside of an egg is quiet. One seat, one button, the instruments breathing their green lights."
+      "text": "Inside the pod it was quiet the way the inside of an egg is quiet. One seat, one button, the instruments breathing their green lights.",
+      "voice": "assets/audio/voice/meld_seam_2_3/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "He built his egg with a team of other young, passionate like-minded scientists, volunteered himself, sealed himself inside one quiet night, dared himself to push a button."
+      "text": "He built his egg with a team of other young, passionate like-minded scientists, volunteered himself, sealed himself inside one quiet night, dared himself to push a button.",
+      "voice": "assets/audio/voice/meld_seam_2_3/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "On the floor of the pod, against the riveted seam, lay a feather. Blue-grey, long as a hand."
+      "text": "On the floor of the pod, against the riveted seam, lay a feather. Blue-grey, long as a hand.",
+      "voice": "assets/audio/voice/meld_seam_2_3/016.mp3"
     },
     {
       "t": "cg",
@@ -85,11 +92,13 @@
     },
     {
       "t": "narrate",
-      "text": "Jack Perkins did not remember packing it. He turned it over in his fingers like a thing sent from very far away and buttoned it into his breast pocket, over his heart."
+      "text": "Jack Perkins did not remember packing it. He turned it over in his fingers like a thing sent from very far away and buttoned it into his breast pocket, over his heart.",
+      "voice": "assets/audio/voice/meld_seam_2_3/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "He waited. The pod waited with him."
+      "text": "He waited. The pod waited with him.",
+      "voice": "assets/audio/voice/meld_seam_2_3/019.mp3"
     },
     {
       "t": "bg",
@@ -101,11 +110,13 @@
     },
     {
       "t": "narrate",
-      "text": "Then a beam came down out of the dark at a slant, from very high up, from a machine on a long jointed stalk, covered in tiny lights like little eyes."
+      "text": "Then a beam came down out of the dark at a slant, from very high up, from a machine on a long jointed stalk, covered in tiny lights like little eyes.",
+      "voice": "assets/audio/voice/meld_seam_2_3/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "It swiveled the way an eye on a stalk swivels. It hovered over him and held there, deciding what he was."
+      "text": "It swiveled the way an eye on a stalk swivels. It hovered over him and held there, deciding what he was.",
+      "voice": "assets/audio/voice/meld_seam_2_3/023.mp3"
     },
     {
       "t": "cg",
@@ -114,15 +125,18 @@
     },
     {
       "t": "narrate",
-      "text": "It was looking at him looking at it."
+      "text": "It was looking at him looking at it.",
+      "voice": "assets/audio/voice/meld_seam_2_3/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "He opened his eyes and could not close them back up again."
+      "text": "He opened his eyes and could not close them back up again.",
+      "voice": "assets/audio/voice/meld_seam_2_3/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "The sky was falling and it came down in pieces."
+      "text": "The sky was falling and it came down in pieces.",
+      "voice": "assets/audio/voice/meld_seam_2_3/027.mp3"
     },
     {
       "t": "flag",

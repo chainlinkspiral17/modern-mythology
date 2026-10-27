@@ -33,35 +33,43 @@
     },
     {
       "t": "narrate",
-      "text": "Ron had started on a new book titled \"The Earthman Chronicles\". It would be his first serious foray into speculative fiction, what the Los Angeles congregation of writing aficionados, hard mathematics and laboratory minded types, as well the silly movie horror and genre buffs had collectively dubbed \"Science Fiction\"."
+      "text": "Ron had started on a new book titled \"The Earthman Chronicles\". It would be his first serious foray into speculative fiction, what the Los Angeles congregation of writing aficionados, hard mathematics and laboratory minded types, as well the silly movie horror and genre buffs had collectively dubbed \"Science Fiction\".",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ron was having trouble getting started. He knew the shape of the story but details for this speculative fiction were hard to come by."
+      "text": "Ron was having trouble getting started. He knew the shape of the story but details for this speculative fiction were hard to come by.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was good at making things up, so it should have been no problem but Ron wanted his words to ring with truth, he wanted his warning, his message to the masses to sound out loud and clear and not fall on confused ears."
+      "text": "He was good at making things up, so it should have been no problem but Ron wanted his words to ring with truth, he wanted his warning, his message to the masses to sound out loud and clear and not fall on confused ears.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "So far the effect was not working. He got his start writing westerns and knew he wanted the speculative bit, the outer space hokum to feel like a high stakes card game out on the range, only much further out, tumbleweeds on alien terra firma."
+      "text": "So far the effect was not working. He got his start writing westerns and knew he wanted the speculative bit, the outer space hokum to feel like a high stakes card game out on the range, only much further out, tumbleweeds on alien terra firma.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wanted the Indians to be spider monsters, killer robots and advanced alien cultures with beautiful women creatures. He knew his hero would be a bit like Jack, a boy genius who grows up and builds a time machine, flings himself fifty years into the future and finds the earth under attack by what exactly."
+      "text": "He wanted the Indians to be spider monsters, killer robots and advanced alien cultures with beautiful women creatures. He knew his hero would be a bit like Jack, a boy genius who grows up and builds a time machine, flings himself fifty years into the future and finds the earth under attack by what exactly.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wanted that wild eyed innocence, genius, shattered and dashed upon the wreckage of so much progress, the folly of man. And there was to be a big twist at the end, this he'd already figured out."
+      "text": "He wanted that wild eyed innocence, genius, shattered and dashed upon the wreckage of so much progress, the folly of man. And there was to be a big twist at the end, this he'd already figured out.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ron heard Betty talking in the hall. She was Jack's girl but she belonged to everybody. Jack had rules for the house and his rules were pretty much long as nobody gets hurt."
+      "text": "Ron heard Betty talking in the hall. She was Jack's girl but she belonged to everybody. Jack had rules for the house and his rules were pretty much long as nobody gets hurt.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ron had Betty the first night he got here and was trying not to think too much into it but that was hard when Betty was thinking too much about it too. She waited outside his door until he got up and let her in."
+      "text": "Ron had Betty the first night he got here and was trying not to think too much into it but that was hard when Betty was thinking too much about it too. She waited outside his door until he got up and let her in.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/013.mp3"
     },
     {
       "t": "choice",
@@ -78,7 +86,8 @@
     },
     {
       "t": "narrate",
-      "text": "Her shadow rests in the gap beneath the door."
+      "text": "Her shadow rests in the gap beneath the door.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/015.mp3"
     },
     {
       "t": "show",
@@ -94,169 +103,198 @@
     },
     {
       "t": "narrate",
-      "text": "How'd you know it was me, she said."
+      "text": "How'd you know it was me, she said.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/018.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "warm",
-      "text": "Beauty changes the mood of the room even when it stands just outside it."
+      "text": "Beauty changes the mood of the room even when it stands just outside it.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/019.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "amused",
-      "text": "You know what to say, don't you Ron?"
+      "text": "You know what to say, don't you Ron?",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/020.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "You want to come in and help me with my novel? I need a second set of eyes."
+      "text": "You want to come in and help me with my novel? I need a second set of eyes.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/021.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "amused",
-      "text": "You really should ask Jack for a bigger room, you've already filled this one up, all these books on the floor, it really is not fit for a body to stand around in, dust everywhere is all."
+      "text": "You really should ask Jack for a bigger room, you've already filled this one up, all these books on the floor, it really is not fit for a body to stand around in, dust everywhere is all.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/022.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "Take a seat on the bed and look over my shoulder while I write."
+      "text": "Take a seat on the bed and look over my shoulder while I write.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/023.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "neutral",
-      "text": "What's this one about?"
+      "text": "What's this one about?",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/024.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "tired",
-      "text": "All manner of incredible out of this world intrigue, really. You and Jack have already inspired me so much, I'm just aching get it out. Jesus woman, I didn't realize how sore I was."
+      "text": "All manner of incredible out of this world intrigue, really. You and Jack have already inspired me so much, I'm just aching get it out. Jesus woman, I didn't realize how sore I was.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/025.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "amused",
-      "text": "You shouldn't hunch over, you look just like a brute when you do."
+      "text": "You shouldn't hunch over, you look just like a brute when you do.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/026.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "Read this here, where my finger is, how does that sound?"
+      "text": "Read this here, where my finger is, how does that sound?",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "She took her time reading out loud,"
+      "text": "She took her time reading out loud,",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/028.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "neutral",
-      "text": "\"Jack first noticed the quality of the air, thick and heavy like the aftermath of a rocket experiment in the desert arroyo, the lingering charnel residue of a science lab caught in chemical fire, the blinding chaos of a wildfire magnesium accident,"
+      "text": "\"Jack first noticed the quality of the air, thick and heavy like the aftermath of a rocket experiment in the desert arroyo, the lingering charnel residue of a science lab caught in chemical fire, the blinding chaos of a wildfire magnesium accident,",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/029.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "neutral",
-      "text": "the after-image of intensity burning the retinas, the blindspots of white and surrounding pools of darkness, the sound and presence of great machines passing above, directly overhead, the gusts of turbulence and electricity in the air standing his hair on end.\""
+      "text": "the after-image of intensity burning the retinas, the blindspots of white and surrounding pools of darkness, the sound and presence of great machines passing above, directly overhead, the gusts of turbulence and electricity in the air standing his hair on end.\"",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "And then she stopped."
+      "text": "And then she stopped.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/031.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "worried",
-      "text": "Jeez, it sounds horrible, is Jack going to be alright?"
+      "text": "Jeez, it sounds horrible, is Jack going to be alright?",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/032.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "It's just a character, Betty."
+      "text": "It's just a character, Betty.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/033.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "worried",
-      "text": "But you're writing about our Jack, right? Jack Parsons?"
+      "text": "But you're writing about our Jack, right? Jack Parsons?",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/034.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "amused",
-      "text": "Mostly, but Jack builds rockets, not time machines. And I don't think you have to worry about him landing on an alien world any time soon, unless he blows himself sky high."
+      "text": "Mostly, but Jack builds rockets, not time machines. And I don't think you have to worry about him landing on an alien world any time soon, unless he blows himself sky high.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/035.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "worried",
-      "text": "It's scary Ron."
+      "text": "It's scary Ron.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/036.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "amused",
-      "text": "It's supposed to be, Betty."
+      "text": "It's supposed to be, Betty.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "She stopped rubbing his shoulders and lay with her back to the bed, her arms crossed behind her head as if a pillow. He turned and put his hand on her stomach, a tiny bit exposed from where the blouse and skirt went their separate ways."
+      "text": "She stopped rubbing his shoulders and lay with her back to the bed, her arms crossed behind her head as if a pillow. He turned and put his hand on her stomach, a tiny bit exposed from where the blouse and skirt went their separate ways.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/038.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "You're practically married to him Betty."
+      "text": "You're practically married to him Betty.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/039.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "neutral",
-      "text": "He's done with marriage and that's all he'll say about that."
+      "text": "He's done with marriage and that's all he'll say about that.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/040.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "neutral",
-      "text": "Well, some of us aren't meant for it, that's just the way the world works."
+      "text": "Well, some of us aren't meant for it, that's just the way the world works.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/041.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "amused",
-      "text": "You two should just marry each other, queer as that'd be. Not that I'm saying."
+      "text": "You two should just marry each other, queer as that'd be. Not that I'm saying.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/042.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "amused",
-      "text": "Know what you mean, no fence taken. Besides, I've got my hand some place awful peculiar right about now."
+      "text": "Know what you mean, no fence taken. Besides, I've got my hand some place awful peculiar right about now.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/043.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "warm",
-      "text": "Jack don't mind none, if you keep at me, he thinks the world of you, really."
+      "text": "Jack don't mind none, if you keep at me, he thinks the world of you, really.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/044.mp3"
     },
     {
       "t": "say",
       "char": "Ron",
       "expr": "warm",
-      "text": "What do you think Betty."
+      "text": "What do you think Betty.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/045.mp3"
     },
     {
       "t": "say",
       "char": "Betty",
       "expr": "warm",
-      "text": "Don't stop, is what I think."
+      "text": "Don't stop, is what I think.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/046.mp3"
     },
     {
       "t": "hide",
@@ -268,43 +306,53 @@
     },
     {
       "t": "narrate",
-      "text": "They both thought of Jack, handsome Jack with his thick eyebrows and devilish mustache, dark hair combed wet to his skull. He had this energy, see. Meeting him was like being in the presence of something sincere, something bigger than big."
+      "text": "They both thought of Jack, handsome Jack with his thick eyebrows and devilish mustache, dark hair combed wet to his skull. He had this energy, see. Meeting him was like being in the presence of something sincere, something bigger than big.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was a trembling thought of the id, a slight and implausible superman to grasp at with focused certainty, but very much real in the ego sense of the word. Ron and Betty believed that Jack believed he could change the world, would in fact, change the world."
+      "text": "He was a trembling thought of the id, a slight and implausible superman to grasp at with focused certainty, but very much real in the ego sense of the word. Ron and Betty believed that Jack believed he could change the world, would in fact, change the world.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "One part because Jack caught the attentions of the most evil man in the world, one Aliester Crowley, Black Magic Monster of Fair Brittania. He was their reason for being here, this was his temple, his cult, his borrowed belief. Another because Jack was a founding father of this strange new thing called rocketry."
+      "text": "One part because Jack caught the attentions of the most evil man in the world, one Aliester Crowley, Black Magic Monster of Fair Brittania. He was their reason for being here, this was his temple, his cult, his borrowed belief. Another because Jack was a founding father of this strange new thing called rocketry.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "It was science and technology and it was the way things were going, the way of the future. And another because Jack was state expert witness making all the headlines in the attempted murder trial of the Los Angeles district attorney. Because the world was a bad place and Jack was determined to do some good."
+      "text": "It was science and technology and it was the way things were going, the way of the future. And another because Jack was state expert witness making all the headlines in the attempted murder trial of the Los Angeles district attorney. Because the world was a bad place and Jack was determined to do some good.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "Because Jack was one of those who somehow fell into the very center of things, charming all around him with his confidence, good looks and open mind. He changed, charged the fabric of reality just by rubbing up against it."
+      "text": "Because Jack was one of those who somehow fell into the very center of things, charming all around him with his confidence, good looks and open mind. He changed, charged the fabric of reality just by rubbing up against it.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "Betty felt in Jack a good soul, perhaps too good. And Ron was everything that Jack was not which is why he encouraged her and she him."
+      "text": "Betty felt in Jack a good soul, perhaps too good. And Ron was everything that Jack was not which is why he encouraged her and she him.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "Despite the shallow depravity and moral greyness of all that occurred at the mansion, Jack remained sunny, smiling and offered up encouragement to all the lost ones who wandered in looking for answers."
+      "text": "Despite the shallow depravity and moral greyness of all that occurred at the mansion, Jack remained sunny, smiling and offered up encouragement to all the lost ones who wandered in looking for answers.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "He believed in layers of reality, believed in the potential of the human being, the anchor of the human soul, the purpose of the shadow stuff, the sheltering sky of the sublime. His disposition was what drew the curious to him and his gentleness kept them close."
+      "text": "He believed in layers of reality, believed in the potential of the human being, the anchor of the human soul, the purpose of the shadow stuff, the sheltering sky of the sublime. His disposition was what drew the curious to him and his gentleness kept them close.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jack was their father figure but he was also their little boy with big ideas, too big for his head. When they were together, Betty and Ron, when they weren't playing at flesh and fluid and when they mostly talked about Jack and got to wondering where he was off to, what he was up to,"
+      "text": "Jack was their father figure but he was also their little boy with big ideas, too big for his head. When they were together, Betty and Ron, when they weren't playing at flesh and fluid and when they mostly talked about Jack and got to wondering where he was off to, what he was up to,",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "who he'd rub up against out there in the city streets and bring back tonight to the table, what new strange human being he'd show off and impress them with, that was the Jack who mattered substantially."
+      "text": "who he'd rub up against out there in the city streets and bring back tonight to the table, what new strange human being he'd show off and impress them with, that was the Jack who mattered substantially.",
+      "voice": "assets/audio/voice/vol3_ch2_second_set_of_eyes/058.mp3"
     },
     {
       "t": "flag",
