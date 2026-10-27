@@ -32516,5 +32516,194 @@
       "godot/assets/concept/meshy/joan_dagger/joan_dagger_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/joan_dagger/joan_dagger_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T19:15:59+00:00",
+    "stage": "image",
+    "slug": "dj_headphones_cracked",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes her DJ headphones (one ear-pad cracked) like this: Dickens sees a pair of DJ headphones with one ear-pad cracked. Additional direction: A pair of heavy over-ear DJ headphones, matte black with a coiled cable; one ear-pad's leather cracked and split, the headband scuffed.\nSingle-object concept render of her DJ headphones (one ear-pad cracked), a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/dj_headphones_cracked/dj_headphones_cracked_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/dj_headphones_cracked/dj_headphones_cracked_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/dj_headphones_cracked/dj_headphones_cracked_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:16:50+00:00",
+    "stage": "image",
+    "slug": "black_guitar_pick",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the black guitar pick like this: Something floats up beside Faust, a guitar pick, black, thin, worn down on one side. Additional direction: A single black celluloid guitar pick, standard teardrop shape, thin, worn down on one side.\nSingle-object concept render of the black guitar pick, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/black_guitar_pick/black_guitar_pick_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/black_guitar_pick/black_guitar_pick_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/black_guitar_pick/black_guitar_pick_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:17:41+00:00",
+    "stage": "image",
+    "slug": "dean_journal",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes D. Dean's journal like this: Also included for me specifically, was a journal. Right there on the cover, it had once belonged to \"D. Dean\", whose hand-writing was far superior to my own. Additional direction: A hardbound blank journal from the early 1990s, dark green cloth cover rubbed pale at the corners, 'D. Dean' handwritten in ink on the cover in a fine hand; the pages inside blank.\nSingle-object concept render of D. Dean's journal, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe main lettering reads exactly: D. Dean. Spell it exactly so. Around it, everything a real one carries is written too \u2014 fine print, dates, prices, addresses, notes, page furniture \u2014 in real, readable English that fits it. No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/dean_journal/dean_journal_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/dean_journal/dean_journal_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/dean_journal/dean_journal_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:18:31+00:00",
+    "stage": "image",
+    "slug": "heron_feather",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes a feather from the blue heron like this: At the end of the first meeting, I was given a feather from the blue heron. On the floor of the pod, against the riveted seam, lay a feather. A notebook, wide-ruled, open, a heron feather keeping the place. Additional direction: A single long great-blue-heron flight feather, about 30 cm: blue-grey vane darkening to slate at the tip, a pale quill.\nSingle-object concept render of a feather from the blue heron, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/heron_feather/heron_feather_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/heron_feather/heron_feather_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/heron_feather/heron_feather_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:19:28+00:00",
+    "stage": "image",
+    "slug": "derby_crab_zero",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the derby crab, number 0, like this: It's a Dungeness, the same red-brown as the ones at the derby with the numbers painted on their backs, except this one's number is the whole town. Crab derby off the pier. Additional direction: A live Dungeness crab, red-brown, with a large white number 0 hand-painted on its back shell for the crab derby.\nSingle-object concept render of the derby crab, number 0, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/derby_crab_zero/derby_crab_zero_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/derby_crab_zero/derby_crab_zero_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/derby_crab_zero/derby_crab_zero_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:20:14+00:00",
+    "stage": "image",
+    "slug": "key_no_teeth",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the key with no teeth like this: > USE key with no teeth WITH Door\nIt fits. Additional direction: An old brass door key whose blade is perfectly smooth \u2014 no teeth at all; a round bow worn bright by thumbs.\nSingle-object concept render of the key with no teeth, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/key_no_teeth/key_no_teeth_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/key_no_teeth/key_no_teeth_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/key_no_teeth/key_no_teeth_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:21:06+00:00",
+    "stage": "image",
+    "slug": "jesse_henderson",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jesse Henderson like this: Jesse was, at twenty, taller than Ben in height but slighter, all knees and elbows, with the kind of hair that had been a choice in 2018 and had, since, become a habit. She is five-three. He is six-one. He is, this Friday at ten-fifteen PM, twenty years old. Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner. He takes the Telecaster out of the trunk. He takes the small amp out of the trunk. He puts the strap of the gig bag over his shoulder and picks up the amp by the handle. He puts his apron on. He was wearing his Pit Stop shirt untucked and a band tee underneath \u2014 Suburban Blight, which was the name of Jesse's own band.\nFull-body concept render of Jesse Henderson, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jesse_henderson/jesse_henderson_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jesse_henderson/jesse_henderson_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jesse_henderson/jesse_henderson_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:22:08+00:00",
+    "stage": "image",
+    "slug": "wagners_yardstick_and_drill",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Wagner's yardstick and hand-crank drill like this: Wagner's relics inside (the shop yardstick, a hand-crank drill) Relics: Wagner's wooden yardstick, the hand-crank drill, and rendered as an open-front display cabinet per the no-glass rule.\nSingle-object concept render of Wagner's yardstick and hand-crank drill, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:23:01+00:00",
+    "stage": "image",
+    "slug": "kerosene_lamp",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The kerosene lamp like this: The kerosene lamp on the table stayed lit at the low setting Tem kept it at when she wanted to be able to see the bowls in the dark. The main room held the wood stove, the small wooden table beside the kerosene lamp, two armchairs, a daybed where Kai had slept. The lamp was not lit; the gray light through the south-facing window was enough. The lamp was lit against the rain-darkened light. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been The kerosene-lamp light didn't reach the corners. The kerosene lamp beside which the small table sits (vol7_ch1_morning \u2014 unlit in the gray morning; lit ch19).\nSingle-object concept render of The kerosene lamp, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
   }
 ]
