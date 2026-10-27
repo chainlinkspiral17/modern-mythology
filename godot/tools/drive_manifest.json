@@ -5365,6 +5365,11 @@
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
    "size": 106709020
   },
+  "godot/assets/3d/props/_full/stick_reader.glb": {
+   "at": "2026-10-27T14:18:56+00:00",
+   "md5": "a72bcf6200bd56170042ef219294999a",
+   "size": 2366016
+  },
   "godot/assets/3d/props/bobbys_tow_truck.glb": {
    "at": "2026-10-27T05:43:18+00:00",
    "md5": "49bb07cd45b56f2441f044b592e2757c",
@@ -5394,6 +5399,11 @@
    "at": "2026-10-27T05:48:02+00:00",
    "md5": "cdafed5fc446ff2781366b27a2ef23ce",
    "size": 488260
+  },
+  "godot/assets/3d/props/comic_figure_1_Image_0.jpg": {
+   "at": "2026-10-27T14:18:51+00:00",
+   "md5": "fa60e7c6632eb739a5487c9d7b0bcf54",
+   "size": 182971
   },
   "godot/assets/3d/props/comic_figure_2.glb": {
    "at": "2026-10-27T04:44:03+00:00",
@@ -5544,6 +5554,16 @@
    "at": "2026-10-27T02:35:20+00:00",
    "md5": "a634b8fa50f240b253fd5bac802a06cc",
    "size": 4757
+  },
+  "godot/assets/3d/props/stick_reader.glb": {
+   "at": "2026-10-27T14:18:51+00:00",
+   "md5": "0f519ac0f0b038f7c92169e412c794d3",
+   "size": 347948
+  },
+  "godot/assets/3d/props/stick_reader_Image_0.jpg": {
+   "at": "2026-10-27T14:18:51+00:00",
+   "md5": "039dde94022d71b134a6e14b788b16cb",
+   "size": 86220
   },
   "godot/assets/3d/props/workbench_props.glb": {
    "at": "2026-10-11T16:25:59+00:00",
@@ -6085,6 +6105,46 @@
    "md5": "100c8e50a9e7a807b313e925ab6b2afa",
    "size": 1037484
   },
+  "godot/assets/art/hero/club_street_bus_ad__club_street_door__club_street_curb.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "84c795ea7de941ea632aa3dccaae8401",
+   "size": 1533177
+  },
+  "godot/assets/art/hero/club_street_dawn_sky__club_street_dawn.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "7793ae86fba2addbe810f2f42c6ffa1c",
+   "size": 1623734
+  },
+  "godot/assets/art/hero/club_street_far_rooftops.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "6c25b7a9b2bf1d01d6e2f429650b9629",
+   "size": 2177570
+  },
+  "godot/assets/art/hero/club_street_liquor_sign.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "eb1286845c6aeab3a9e0cde8eea5f68d",
+   "size": 1945468
+  },
+  "godot/assets/art/hero/club_street_neon_sign_a.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "ede6153df4e9a03ef3d016acc4b2ce7a",
+   "size": 1718948
+  },
+  "godot/assets/art/hero/club_street_neon_sign_b.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "a9142d9670dce82ea93b1f836b978f22",
+   "size": 1770373
+  },
+  "godot/assets/art/hero/club_street_neon_sign_c.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "4db2efbb545e9f2162d10ac4412521aa",
+   "size": 1840174
+  },
+  "godot/assets/art/hero/club_street_neon_sign_d.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "1f92d391ac50a1a40417df12f81c2e25",
+   "size": 1819014
+  },
   "godot/assets/art/hero/coach_k_bedroom_coach_plaque.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "1b56cbba5c26f7a987c10bc7582b4bc4",
@@ -6324,6 +6384,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "fa502ba826b2ddf39db6b43cbff747ce",
    "size": 2409715
+  },
+  "godot/assets/art/hero/dean_house_1994_graph_paper.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "61493a94dfd85dc27ad89ffb169cdba2",
+   "size": 2436499
   },
   "godot/assets/art/hero/diego_bedroom_laptop_screen.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7200,6 +7265,11 @@
    "md5": "4362c1f2082109bf6b103e4d27295075",
    "size": 2211480
   },
+  "godot/assets/art/hero/lake_palestine_ramp_sign.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "e3f88817de8e66a28d8f1877b90348be",
+   "size": 2885310
+  },
   "godot/assets/art/hero/lena_apartment_canvas_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "270143422e39f9082a8d1ad22f9b3b26",
@@ -7845,6 +7915,11 @@
    "md5": "e84cbd5a11ecc734f7c72d5b70d7e3e5",
    "size": 2246677
   },
+  "godot/assets/art/hero/pasadena_1945_hollywood_far_n.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "693c19a430b91860a06da03a78c5ac30",
+   "size": 2689628
+  },
   "godot/assets/art/hero/periodic_table_diego.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "e0116c96667ef887ec33da235f0d34ae",
@@ -8275,10 +8350,45 @@
    "md5": "62dd7996c293aebb3a533aa94152e1f2",
    "size": 2362082
   },
+  "godot/assets/art/hero/small_wood_farmhouse_far_ridges.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "8f5b6491a0e8efc6802ea8220aebb2d1",
+   "size": 1992233
+  },
   "godot/assets/art/hero/small_wood_farmhouse_moonlit_cloud.png": {
    "at": "2026-10-27T05:48:52+00:00",
    "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
    "size": 1568768
+  },
+  "godot/assets/art/hero/small_wood_farmhouse_tv_sitcom.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "1f372ebe715ff39d0c7a27abe3b67855",
+   "size": 3107078
+  },
+  "godot/assets/art/hero/small_wood_field_concession_sign.png": {
+   "at": "2026-10-27T14:26:15+00:00",
+   "md5": "b99ac6d8533f89ddf0c8671757f8b0e1",
+   "size": 1749956
+  },
+  "godot/assets/art/hero/small_wood_field_fascia_sign.png": {
+   "at": "2026-10-27T14:26:15+00:00",
+   "md5": "6dcd1ed305395d46d083da610078b178",
+   "size": 2763060
+  },
+  "godot/assets/art/hero/small_wood_field_scoreboard_face.png": {
+   "at": "2026-10-27T14:26:15+00:00",
+   "md5": "453840f7b756a79d1e2c92af2915df55",
+   "size": 2219316
+  },
+  "godot/assets/art/hero/small_wood_field_scoreboard_sponsor.png": {
+   "at": "2026-10-27T14:26:15+00:00",
+   "md5": "349a7728c14676e841778575c7d0b582",
+   "size": 2496426
+  },
+  "godot/assets/art/hero/small_wood_field_ticket_sign.png": {
+   "at": "2026-10-27T14:26:15+00:00",
+   "md5": "a670451086764be7d76e9f245c38d39b",
+   "size": 2837192
   },
   "godot/assets/art/hero/small_wood_rec_center_bulletin_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -70405,6 +70515,86 @@
    "md5": "100c8e50a9e7a807b313e925ab6b2afa",
    "size": 1037484
   },
+  "godot/assets/concept/meshy/club_street_bus_ad__club_street_door__club_street_curb/club_street_bus_ad__club_street_door__club_street_curb_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:19:36+00:00",
+   "md5": "84c795ea7de941ea632aa3dccaae8401",
+   "size": 1533177
+  },
+  "godot/assets/concept/meshy/club_street_bus_ad__club_street_door__club_street_curb/front.png": {
+   "at": "2026-10-27T14:19:36+00:00",
+   "md5": "84c795ea7de941ea632aa3dccaae8401",
+   "size": 1533177
+  },
+  "godot/assets/concept/meshy/club_street_dawn_sky__club_street_dawn/club_street_dawn_sky__club_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:19:44+00:00",
+   "md5": "7793ae86fba2addbe810f2f42c6ffa1c",
+   "size": 1623734
+  },
+  "godot/assets/concept/meshy/club_street_dawn_sky__club_street_dawn/front.png": {
+   "at": "2026-10-27T14:19:44+00:00",
+   "md5": "7793ae86fba2addbe810f2f42c6ffa1c",
+   "size": 1623734
+  },
+  "godot/assets/concept/meshy/club_street_far_rooftops/club_street_far_rooftops_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:19:55+00:00",
+   "md5": "6c25b7a9b2bf1d01d6e2f429650b9629",
+   "size": 2177570
+  },
+  "godot/assets/concept/meshy/club_street_far_rooftops/front.png": {
+   "at": "2026-10-27T14:19:55+00:00",
+   "md5": "6c25b7a9b2bf1d01d6e2f429650b9629",
+   "size": 2177570
+  },
+  "godot/assets/concept/meshy/club_street_liquor_sign/club_street_liquor_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:20:05+00:00",
+   "md5": "eb1286845c6aeab3a9e0cde8eea5f68d",
+   "size": 1945468
+  },
+  "godot/assets/concept/meshy/club_street_liquor_sign/front.png": {
+   "at": "2026-10-27T14:20:05+00:00",
+   "md5": "eb1286845c6aeab3a9e0cde8eea5f68d",
+   "size": 1945468
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_a/club_street_neon_sign_a_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:20:18+00:00",
+   "md5": "ede6153df4e9a03ef3d016acc4b2ce7a",
+   "size": 1718948
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_a/front.png": {
+   "at": "2026-10-27T14:20:18+00:00",
+   "md5": "ede6153df4e9a03ef3d016acc4b2ce7a",
+   "size": 1718948
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_b/club_street_neon_sign_b_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:20:27+00:00",
+   "md5": "a9142d9670dce82ea93b1f836b978f22",
+   "size": 1770373
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_b/front.png": {
+   "at": "2026-10-27T14:20:27+00:00",
+   "md5": "a9142d9670dce82ea93b1f836b978f22",
+   "size": 1770373
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_c/club_street_neon_sign_c_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:26:19+00:00",
+   "md5": "4db2efbb545e9f2162d10ac4412521aa",
+   "size": 1840174
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_c/front.png": {
+   "at": "2026-10-27T14:26:19+00:00",
+   "md5": "4db2efbb545e9f2162d10ac4412521aa",
+   "size": 1840174
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_d/club_street_neon_sign_d_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:26:28+00:00",
+   "md5": "1f92d391ac50a1a40417df12f81c2e25",
+   "size": 1819014
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_d/front.png": {
+   "at": "2026-10-27T14:26:28+00:00",
+   "md5": "1f92d391ac50a1a40417df12f81c2e25",
+   "size": 1819014
+  },
   "godot/assets/concept/meshy/coach_dale/back.png": {
    "at": "2026-10-11T21:02:30+00:00",
    "md5": "deda4e0d5c385df29c4028c48cdf7659",
@@ -71324,6 +71514,16 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "9a4478f6c83b99efd67f498fa21934d9",
    "size": 77835
+  },
+  "godot/assets/concept/meshy/dean_house_1994_graph_paper/dean_house_1994_graph_paper_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:26:46+00:00",
+   "md5": "61493a94dfd85dc27ad89ffb169cdba2",
+   "size": 2436499
+  },
+  "godot/assets/concept/meshy/dean_house_1994_graph_paper/front.png": {
+   "at": "2026-10-27T14:26:46+00:00",
+   "md5": "61493a94dfd85dc27ad89ffb169cdba2",
+   "size": 2436499
   },
   "godot/assets/concept/meshy/dickens_dean/dickens_dean_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -76080,6 +76280,26 @@
    "md5": "b50d3a4b855ccccffdd3768d058c196c",
    "size": 2283473
   },
+  "godot/assets/concept/meshy/pasadena_1945_hollywood_far_n/front.png": {
+   "at": "2026-10-27T14:26:54+00:00",
+   "md5": "693c19a430b91860a06da03a78c5ac30",
+   "size": 2689628
+  },
+  "godot/assets/concept/meshy/pasadena_1945_hollywood_far_n/pasadena_1945_hollywood_far_n_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:26:54+00:00",
+   "md5": "693c19a430b91860a06da03a78c5ac30",
+   "size": 2689628
+  },
+  "godot/assets/concept/meshy/pasadena_1945_marquee/front.png": {
+   "at": "2026-10-27T14:27:05+00:00",
+   "md5": "376e5f7cd80126b8cd7a620858c8609c",
+   "size": 2183888
+  },
+  "godot/assets/concept/meshy/pasadena_1945_marquee/pasadena_1945_marquee_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:05+00:00",
+   "md5": "376e5f7cd80126b8cd7a620858c8609c",
+   "size": 2183888
+  },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
    "md5": "eba19aaa7d162037126998df26871233",
@@ -79430,6 +79650,36 @@
    "md5": "2929a4dc7282f583c7ef10bca4a1ee56",
    "size": 2234800
   },
+  "godot/assets/concept/meshy/scumm_stick/back.png": {
+   "at": "2026-10-27T14:27:16+00:00",
+   "md5": "50dd06512a368e6c46ceedba4412b718",
+   "size": 1333025
+  },
+  "godot/assets/concept/meshy/scumm_stick/front.png": {
+   "at": "2026-10-27T14:27:16+00:00",
+   "md5": "ec633e7b5964468d5a8e8eb429ca51ee",
+   "size": 1261910
+  },
+  "godot/assets/concept/meshy/scumm_stick/scumm_stick_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:16+00:00",
+   "md5": "50dd06512a368e6c46ceedba4412b718",
+   "size": 1333025
+  },
+  "godot/assets/concept/meshy/scumm_stick/scumm_stick_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:16+00:00",
+   "md5": "ec633e7b5964468d5a8e8eb429ca51ee",
+   "size": 1261910
+  },
+  "godot/assets/concept/meshy/scumm_stick/scumm_stick_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:16+00:00",
+   "md5": "700f1b21c81fe58fedbb65b7022b4c30",
+   "size": 1207656
+  },
+  "godot/assets/concept/meshy/scumm_stick/side.png": {
+   "at": "2026-10-27T14:27:16+00:00",
+   "md5": "700f1b21c81fe58fedbb65b7022b4c30",
+   "size": 1207656
+  },
   "godot/assets/concept/meshy/skip_donnelly/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
@@ -79440,6 +79690,16 @@
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
    "size": 71019
   },
+  "godot/assets/concept/meshy/small_wood_farmhouse_far_ridges/front.png": {
+   "at": "2026-10-27T14:27:24+00:00",
+   "md5": "8f5b6491a0e8efc6802ea8220aebb2d1",
+   "size": 1992233
+  },
+  "godot/assets/concept/meshy/small_wood_farmhouse_far_ridges/small_wood_farmhouse_far_ridges_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:24+00:00",
+   "md5": "8f5b6491a0e8efc6802ea8220aebb2d1",
+   "size": 1992233
+  },
   "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/front.png": {
    "at": "2026-10-27T05:49:18+00:00",
    "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
@@ -79449,6 +79709,66 @@
    "at": "2026-10-27T05:49:18+00:00",
    "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
    "size": 1568768
+  },
+  "godot/assets/concept/meshy/small_wood_farmhouse_tv_sitcom/front.png": {
+   "at": "2026-10-27T14:27:36+00:00",
+   "md5": "1f372ebe715ff39d0c7a27abe3b67855",
+   "size": 3107078
+  },
+  "godot/assets/concept/meshy/small_wood_farmhouse_tv_sitcom/small_wood_farmhouse_tv_sitcom_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:36+00:00",
+   "md5": "1f372ebe715ff39d0c7a27abe3b67855",
+   "size": 3107078
+  },
+  "godot/assets/concept/meshy/small_wood_field_concession_sign/front.png": {
+   "at": "2026-10-27T14:27:47+00:00",
+   "md5": "b99ac6d8533f89ddf0c8671757f8b0e1",
+   "size": 1749956
+  },
+  "godot/assets/concept/meshy/small_wood_field_concession_sign/small_wood_field_concession_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:47+00:00",
+   "md5": "b99ac6d8533f89ddf0c8671757f8b0e1",
+   "size": 1749956
+  },
+  "godot/assets/concept/meshy/small_wood_field_fascia_sign/front.png": {
+   "at": "2026-10-27T14:27:56+00:00",
+   "md5": "6dcd1ed305395d46d083da610078b178",
+   "size": 2763060
+  },
+  "godot/assets/concept/meshy/small_wood_field_fascia_sign/small_wood_field_fascia_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:27:56+00:00",
+   "md5": "6dcd1ed305395d46d083da610078b178",
+   "size": 2763060
+  },
+  "godot/assets/concept/meshy/small_wood_field_scoreboard_face/front.png": {
+   "at": "2026-10-27T14:28:08+00:00",
+   "md5": "453840f7b756a79d1e2c92af2915df55",
+   "size": 2219316
+  },
+  "godot/assets/concept/meshy/small_wood_field_scoreboard_face/small_wood_field_scoreboard_face_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:28:08+00:00",
+   "md5": "453840f7b756a79d1e2c92af2915df55",
+   "size": 2219316
+  },
+  "godot/assets/concept/meshy/small_wood_field_scoreboard_sponsor/front.png": {
+   "at": "2026-10-27T14:28:19+00:00",
+   "md5": "349a7728c14676e841778575c7d0b582",
+   "size": 2496426
+  },
+  "godot/assets/concept/meshy/small_wood_field_scoreboard_sponsor/small_wood_field_scoreboard_sponsor_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:28:19+00:00",
+   "md5": "349a7728c14676e841778575c7d0b582",
+   "size": 2496426
+  },
+  "godot/assets/concept/meshy/small_wood_field_ticket_sign/front.png": {
+   "at": "2026-10-27T14:28:27+00:00",
+   "md5": "a670451086764be7d76e9f245c38d39b",
+   "size": 2837192
+  },
+  "godot/assets/concept/meshy/small_wood_field_ticket_sign/small_wood_field_ticket_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:28:27+00:00",
+   "md5": "a670451086764be7d76e9f245c38d39b",
+   "size": 2837192
   },
   "godot/assets/concept/meshy/small_wood_rec_center_bulletin_1/front.png": {
    "at": "2026-10-14T03:26:32+00:00",
@@ -79844,6 +80164,41 @@
    "at": "2026-10-11T21:20:04+00:00",
    "md5": "25162f875d29f40abbc296ca2b6f23df",
    "size": 1351782
+  },
+  "godot/assets/concept/meshy/stick_reader/back.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "bf19736cf6a9d9880f3c68920781eabf",
+   "size": 2020282
+  },
+  "godot/assets/concept/meshy/stick_reader/front.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "55f322dc6d5ae7e8aae380db2ca58a30",
+   "size": 1780089
+  },
+  "godot/assets/concept/meshy/stick_reader/meshy_thumb.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "ccfc5a9333e9bb92fc4c17bba334c30b",
+   "size": 61317
+  },
+  "godot/assets/concept/meshy/stick_reader/side.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "fafd1c668cfd99b15358905bf30656be",
+   "size": 1751752
+  },
+  "godot/assets/concept/meshy/stick_reader/stick_reader_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "bf19736cf6a9d9880f3c68920781eabf",
+   "size": 2020282
+  },
+  "godot/assets/concept/meshy/stick_reader/stick_reader_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "55f322dc6d5ae7e8aae380db2ca58a30",
+   "size": 1780089
+  },
+  "godot/assets/concept/meshy/stick_reader/stick_reader_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:28:38+00:00",
+   "md5": "fafd1c668cfd99b15358905bf30656be",
+   "size": 1751752
   },
   "godot/assets/concept/meshy/tanya_horne/front.png": {
    "at": "2026-10-01T01:23:48+00:00",

@@ -28876,5 +28876,159 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/dean_house_1994_graph_paper/front.png",
     "output": "godot/assets/art/hero/dean_house_1994_graph_paper.png"
+  },
+  {
+    "at": "2026-10-27T05:58:12+00:00",
+    "stage": "image",
+    "slug": "scumm_stick",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes A SCUMM stick like this: The standard SCUMM stick \u2014 a dark plastic rectangle about the size of his palm, with the gold connector at one end. In its waxed-paper sleeve \u2014 the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old. a SCUMM stick (a small plastic cartridge approximately the size of an old Game Boy game) The sticks have, by physical inspection, no labels. Sal has, over the years, started small hand-written tags on a few of them in marker. On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip. The wax yellowed at the edges. A small label on the front with handwriting Finn did not know.\nSingle-object concept render of A SCUMM stick, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/scumm_stick/scumm_stick_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/scumm_stick/scumm_stick_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/scumm_stick/scumm_stick_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:58:26+00:00",
+    "stage": "art",
+    "slug": "lake_palestine_ramp_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lake_palestine_ramp_sign/front.png",
+    "output": "godot/assets/art/hero/lake_palestine_ramp_sign.png"
+  },
+  {
+    "at": "2026-10-27T14:21:43+00:00",
+    "stage": "image",
+    "slug": "small_wood_field_fascia_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a long painted wooden sign on the green fascia of a covered wooden football grandstand at a small Oregon-coast high school, 1997. Weathered white boards (RGB ~214,209,194) in a forest-green frame (RGB ~41,77,56); big hand-painted forest-green block capitals, a thin gold keyline under them, and a smaller line beneath. Coastal weather on it: chalked paint, a rust run from each bolt, moss at the bottom edge, rain streaks. Long landscape, evenly lit.\nSIZE: the real object is 8.00 m wide by 56 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 16% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the school's sign on Small Wood High's covered grandstand, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: SMALL WOOD HIGH SCHOOL. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: ATHLETIC FIELD \u00b7 SMALL WOOD, OREGON No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_field_fascia_sign/small_wood_field_fascia_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T14:21:51+00:00",
+    "stage": "art",
+    "slug": "small_wood_field_fascia_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_field_fascia_sign/front.png",
+    "output": "godot/assets/art/hero/small_wood_field_fascia_sign.png"
+  },
+  {
+    "at": "2026-10-27T14:22:10+00:00",
+    "stage": "image",
+    "slug": "small_wood_field_scoreboard_face",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a small-town high-school football scoreboard from the 1980s, lit at night on the Oregon coast in 1997: a black steel cabinet with a forest-green top trim; white panel labels; numbers made of round incandescent bulbs, glowing warm amber (RGB ~245,168,61) in a grid, the unlit bulbs dull grey around them; a little rain on the face, the bulbs haloed in the damp air. Landscape, evenly lit, no posts, no sky.\nSIZE: the real object is 7.60 m wide by 3.40 m tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the scoreboard's face at the north end of Small Wood's field, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: HOME \u00b7 VISITOR \u00b7 QTR \u00b7 TIME. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: HOME 14 \u00b7 VISITOR 7 \u00b7 QTR 2 \u00b7 TIME 4:12\nsmaller, under the clock: DOWN 3 \u00b7 TO GO 6 \u00b7 BALL ON 38\na small plate at the bottom right: Daktronics-style maker's plate, \"1984\" No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_field_scoreboard_face/small_wood_field_scoreboard_face_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T14:24:19+00:00",
+    "stage": "art",
+    "slug": "small_wood_field_scoreboard_face",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_field_scoreboard_face/front.png",
+    "output": "godot/assets/art/hero/small_wood_field_scoreboard_face.png"
+  },
+  {
+    "at": "2026-10-27T14:24:36+00:00",
+    "stage": "image",
+    "slug": "small_wood_field_scoreboard_sponsor",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a painted sponsor board under a high-school scoreboard on the Oregon coast, 1997: cream-painted plywood (RGB ~219,214,199) in a forest-green frame, a big maroon-red headline and a row of small local sponsors' names and phone numbers in plain sign-painter's lettering. Rain-streaked, a corner delaminating, a bird's nest on the top edge. Wide landscape, evenly lit.\nSIZE: the real object is 6.40 m wide by 1.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 36% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the booster club's board under Small Wood's scoreboard, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: SMALL WOOD BOOSTER CLUB. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: Thank you to our sponsors\nCoast Range Hardware \u00b7 555-0142   \u00b7   The Driftwood Caf\u00e9 \u00b7 555-0117\nPacific Mutual Insurance \u00b7 555-0190   \u00b7   Grange Hall No. 312 \u2014 Friday Bingo 7 PM\nGO FIGHT WIN No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_field_scoreboard_sponsor/small_wood_field_scoreboard_sponsor_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T14:24:48+00:00",
+    "stage": "art",
+    "slug": "small_wood_field_scoreboard_sponsor",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_field_scoreboard_sponsor/front.png",
+    "output": "godot/assets/art/hero/small_wood_field_scoreboard_sponsor.png"
+  },
+  {
+    "at": "2026-10-27T14:25:06+00:00",
+    "stage": "image",
+    "slug": "small_wood_field_concession_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a hand-painted menu board over the window of a cinderblock concession shed at a small Oregon high-school football field, 1997, a cold Friday night: white-painted plywood in a green frame, black hand-lettered items with prices in a neat column, a red headline. A coffee-cup ring of damp near one corner. Long landscape, evenly lit.\nSIZE: the real object is 3.00 m wide by 40 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 31% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the menu over the concession window at Small Wood's field, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: CONCESSIONS. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: COFFEE 50\u00a2 \u00b7 HOT COCOA 50\u00a2 \u00b7 HOT DOG $1.25 \u00b7 CHILI DOG $1.75 \u00b7 NACHOS $1.50 \u00b7 CANDY BARS 50\u00a2 \u00b7 POP 75\u00a2\nAll proceeds to Small Wood athletics \u2014 run by the Booster Club No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_field_concession_sign/small_wood_field_concession_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T14:25:13+00:00",
+    "stage": "art",
+    "slug": "small_wood_field_concession_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_field_concession_sign/front.png",
+    "output": "godot/assets/art/hero/small_wood_field_concession_sign.png"
+  },
+  {
+    "at": "2026-10-27T14:25:28+00:00",
+    "stage": "image",
+    "slug": "small_wood_field_ticket_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat straight-on face of a small painted sign over the window of a wooden ticket booth at a small-town Oregon high-school football field, 1997: forest-green board, white hand-painted capitals and a line of prices. Rain-darkened wood at the edges. Landscape, evenly lit.\nSIZE: the real object is 1.80 m wide by 36 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 47% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the ticket booth's sign at Small Wood's field gate, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: TICKETS. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: ADULTS $4 \u00b7 STUDENTS $2 \u00b7 UNDER 6 FREE \u00b7 SEASON PASSES AT THE OFFICE No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_field_ticket_sign/small_wood_field_ticket_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T14:25:39+00:00",
+    "stage": "art",
+    "slug": "small_wood_field_ticket_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_field_ticket_sign/front.png",
+    "output": "godot/assets/art/hero/small_wood_field_ticket_sign.png"
   }
 ]
