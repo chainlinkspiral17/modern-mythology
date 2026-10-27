@@ -39,6 +39,8 @@ const DRIFT_MIN_RATIO := 0.86
 
 # Default FOV per shot type when the marker carries no metadata/fov.
 const TYPE_FOV := {"closeup": 45.0, "insert": 35.0}
+const CLOSEUP_PITCH_MIN := -0.07     # rad: a face frame looks level, a touch down at most
+const CLOSEUP_PITCH_MAX := 0.035
 
 # ── Coverage rotation (2026-08-04, "directing the scenes") ──────
 # A locale like louisiana_road appears in 37 scenes through ONE
@@ -481,6 +483,15 @@ func _cut_to_marker(marker: Node3D, shot_type: String, drift: bool) -> void:
 	if cam == null:
 		return
 	cam.global_transform = marker.global_transform
+	if shot_type == "closeup":
+		# EYE LEVEL (2026-10-27, the Deck: "the camera being below their
+		# sightlines is also weird, it should be eye-level, looking them in
+		# the face"): 153 of 449 face frames were authored 15° down at a
+		# seated spot, so the floor climbed the frame behind a level face.
+		# A face frame keeps its place and its yaw and looks level.
+		var e: Vector3 = marker.global_transform.basis.get_euler()
+		e.x = clampf(e.x, CLOSEUP_PITCH_MIN, CLOSEUP_PITCH_MAX)
+		cam.global_transform = Transform3D(Basis.from_euler(e), marker.global_position)
 	var fov := float(TYPE_FOV.get(shot_type, 50.0))
 	if marker.has_meta("fov"):
 		fov = float(marker.get_meta("fov"))

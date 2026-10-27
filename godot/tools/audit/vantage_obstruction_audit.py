@@ -382,6 +382,10 @@ def markers_pass(only, show_all):
             boxes = [b for b in all_boxes if _in_view(b[0], view)] if view in PRESET_IDS else all_boxes
             name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
             n += 1
+            if name.startswith("shot_closeup_"):
+                # judged as the game shows it: VnDirector levels a face frame
+                # (CLOSEUP_PITCH_MIN/MAX, 2026-10-27)
+                rot = (max(-0.07, min(0.035, rot[0])),) + tuple(rot[1:])
             o_b = (pos[0], -pos[2], pos[1])
             fov = fovs.get(name, 42.0)
             inside = inside_any(o_b, boxes)

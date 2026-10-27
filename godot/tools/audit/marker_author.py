@@ -301,6 +301,9 @@ def author_closeup(locale, dry, side="a", preset=None):
         if a_pos is not None and math.hypot(npos[0] - a_pos[0], npos[2] - a_pos[2]) < 1.5:
             continue                  # not the same side as the first frame
         rx, ry = R.aim(npos, tgt)
+        # a face frame looks LEVEL (2026-10-27): aimed at the seated spot it
+        # tipped 15° down and the floor climbed behind every face
+        rx = max(-0.07, min(0.035, rx))
         st = VO.frame_stats(R.to_b(npos), rx, ry, 45.0, boxes)
         # A face frame must SEE THE ROOM: the lake dock's first pair
         # passed the fill verdict (exteriors may be empty) with

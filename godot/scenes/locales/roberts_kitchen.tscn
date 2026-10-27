@@ -402,9 +402,13 @@ position = Vector3(0, 1.50, -1.85)
 rotation = Vector3(-0.12, 3.1416, 0)
 metadata/fov = 42.0
 
+; (2026-10-27) the boy is ON THE PORCH (ch6: "A boy stood on the porch.
+; Maybe eight. Maybe nine."): from the front hall at his eye height, out
+; through the screen door's grid to the porch and the wagon at the curb.
+; It stood in the dining room's east corner, looking at the kitchen.
 [node name="shot_closeup_boy" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(5.3, 1.2, -0.6)
-rotation = Vector3(-0.125, 0.965, 0)
+position = Vector3(0.250, 1.250, -1.100)
+rotation = Vector3(0.0000, 3.1416, 0.0)
 metadata/fov = 36.0
 
 ; insert: the Polaroid, June 2009 in pencil on the border
