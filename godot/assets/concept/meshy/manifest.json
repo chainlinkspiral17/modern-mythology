@@ -26532,5 +26532,38 @@
     "outputs": [
       "godot/assets/concept/meshy/vol5_prelude_ep07_backyard_dogs/vol5_prelude_ep07_backyard_dogs_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:20:14+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep07_backyard_dogs",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep07_backyard_dogs/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep07_backyard_dogs.jpg"
+  },
+  {
+    "at": "2026-10-27T04:20:28+00:00",
+    "stage": "image",
+    "slug": "vol5_prelude_ep07_airport_hotel",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes an airport hotel's check-in desk like this: Clinton checks in, slinging a bag over his shoulder. Additional direction: The check-in desk of an anonymous airport hotel at night: a long counter, a lobby of carpet and potted plants, glass doors onto a shuttle stop, a plane's lights crossing the dark sky outside. Fluorescent and lamp light, empty.\nA single full-screen still for a literary visual novel set in America: an airport hotel's check-in desk. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a BACKGROUND the story plays over: the place itself, an establishing view at eye height, no people in it unless the description puts them there, no one looking at the camera; keep the lower third calm and uncluttered (the dialogue box sits there).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol5_prelude_ep07_airport_hotel/vol5_prelude_ep07_airport_hotel_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:20:45+00:00",
+    "stage": "scene2d",
+    "slug": "vol5_prelude_ep07_airport_hotel",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/vol5_prelude_ep07_airport_hotel/front.png",
+    "output": "godot/assets/backgrounds/vol5_prelude_ep07_airport_hotel.jpg"
   }
 ]
