@@ -32705,5 +32705,47 @@
       "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_side_openai_gpt-image-2.5-sunburst_02.png",
       "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_back_openai_gpt-image-2.5-sunburst_02.png"
     ]
+  },
+  {
+    "at": "2026-10-27T19:36:20+00:00",
+    "stage": "image",
+    "slug": "yellow_raincoat_small",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the small yellow raincoat like this: The raincoat won't describe. Additional direction: A child's yellow rain slicker, small, shiny, with a hood and toggle buttons, a little creased, hanging empty.\nSingle-object concept render of the small yellow raincoat, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/yellow_raincoat_small/yellow_raincoat_small_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/yellow_raincoat_small/yellow_raincoat_small_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/yellow_raincoat_small/yellow_raincoat_small_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:37:16+00:00",
+    "stage": "image",
+    "slug": "mercedes_1969",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the 1969 Mercedes-Benz (red convertible) like this: Charles never expected to find a whole vehicle buried in the sand. A 1969 Mercedes-Benz. Additional direction: A red 1969 Mercedes-Benz convertible two-seater roadster, the soft top up, sand-scoured paint, pitted chrome, no licence plates, sand caked in the wheel arches.\nSingle-object concept render of the 1969 Mercedes-Benz (red convertible), a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
