@@ -27,7 +27,7 @@
    "t": "interlude"
   },
   {
-   "text": "[trip:1.2][mood:night]Cale went out to the porch at ten-fifty. He had not asked himself before he went out. He had registered, sitting at the table after Marina had agreed to stay, that he had not had a cigarette since he had left ChillWave at three.",
+   "text": "[shot:insert table][trip:1.2][mood:night]Cale went out to the porch at ten-fifty. He had not asked himself before he went out. He had registered, sitting at the table after Marina had agreed to stay, that he had not had a cigarette since he had left ChillWave at three.",
    "t": "narrate"
   },
   {
@@ -59,7 +59,7 @@
    "t": "narrate"
   },
   {
-   "text": "He did not, for a count, do anything. The crow on Finn's dashboard was looking at him through the windshield. He saw the crow's eye in the dark and the eye was looking at him. He raised the cigarette in a small acknowledgment. The crow did not move. He smoked.",
+   "text": "[shot:insert cigarette]He did not, for a count, do anything. The crow on Finn's dashboard was looking at him through the windshield. He saw the crow's eye in the dark and the eye was looking at him. He raised the cigarette in a small acknowledgment. The crow did not move. He smoked.",
    "t": "narrate"
   },
   {

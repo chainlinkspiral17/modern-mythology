@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "[trip:1.2][mood:dusk]She had been at the apartment since one. She had made coffee. She had eaten a piece of bread with cheese.",
+      "text": "[shot:insert coffee][trip:1.2][mood:dusk]She had been at the apartment since one. She had made coffee. She had eaten a piece of bread with cheese.",
       "t": "narrate"
     },
     {
@@ -84,7 +84,7 @@
       "t": "show"
     },
     {
-      "text": "She opened the door before they knocked.",
+      "text": "[shot:insert door]She opened the door before they knocked.",
       "t": "narrate"
     },
     {
@@ -114,7 +114,7 @@
       "t": "say"
     },
     {
-      "text": "Tem and Finn took the couch. Kai took the chair by the window.",
+      "text": "[shot:insert couch]Tem and Finn took the couch. Kai took the chair by the window.",
       "t": "narrate"
     },
     {
@@ -144,7 +144,7 @@
       "t": "narrate"
     },
     {
-      "text": "He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting.",
+      "text": "[shot:insert stove]He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting.",
       "t": "narrate"
     },
     {
@@ -322,7 +322,7 @@
       "t": "show"
     },
     {
-      "text": "Kai stopped cutting. He set the knife down on the cutting board.",
+      "text": "[shot:insert knife]Kai stopped cutting. He set the knife down on the cutting board.",
       "t": "narrate"
     },
     {
@@ -432,7 +432,7 @@
       "t": "show"
     },
     {
-      "text": "Tem sat across from Lena. Kai sat on Lena's right. Finn sat on her left. The wobble in the table met Tem's elbow.",
+      "text": "[shot:insert table]Tem sat across from Lena. Kai sat on Lena's right. Finn sat on her left. The wobble in the table met Tem's elbow.",
       "t": "narrate"
     },
     {
@@ -484,7 +484,7 @@
       "t": "hide"
     },
     {
-      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second.",
+      "text": "[shot:insert bowl]They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second.",
       "t": "narrate"
     },
     {
@@ -554,7 +554,7 @@
       "t": "say"
     },
     {
-      "text": "She pushed the bowl an inch away from her.",
+      "text": "[shot:insert bowl]She pushed the bowl an inch away from her.",
       "t": "narrate"
     },
     {

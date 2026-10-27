@@ -61,7 +61,7 @@
       "t": "say"
     },
     {
-      "text": "Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt.",
+      "text": "[shot:insert bowls]Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt.",
       "t": "narrate"
     },
     {
@@ -123,7 +123,7 @@
       "t": "show"
     },
     {
-      "text": "Finn came over. He took the cedar bell-piece out of his coat. He set the cedar on the crate beside the bowls, at the center. Cale came over. He took the notebook out of his coat. He set the notebook on the crate beside the cedar.",
+      "text": "[shot:insert crate]Finn came over. He took the cedar bell-piece out of his coat. He set the cedar on the crate beside the bowls, at the center. Cale came over. He took the notebook out of his coat. He set the notebook on the crate beside the cedar.",
       "t": "narrate"
     },
     {
@@ -187,7 +187,7 @@
       "t": "narrate"
     },
     {
-      "text": "Hans's van came up Hemlock at seven-oh-eight. Hans parked at the entrance behind the trucks. Greta got out of the passenger side. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it — too big for her at the shoulders.",
+      "text": "[shot:insert coat]Hans's van came up Hemlock at seven-oh-eight. Hans parked at the entrance behind the trucks. Greta got out of the passenger side. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it — too big for her at the shoulders.",
       "t": "narrate"
     },
     {
@@ -253,7 +253,7 @@
       "t": "narrate"
     },
     {
-      "text": "She held the bowl. She looked up at the face on the wall. She held the bowl that way for some count.",
+      "text": "[shot:insert bowl]She held the bowl. She looked up at the face on the wall. She held the bowl that way for some count.",
       "t": "narrate"
     },
     {
@@ -312,7 +312,7 @@
       "t": "narrate"
     },
     {
-      "text": "Marina's wagon came up Hemlock at seven twenty-six. She had driven straight from the foundation's hotel at three forty-five with one stop in Salem for coffee. Four and a half hours in three forty-something.",
+      "text": "[shot:insert coffee]Marina's wagon came up Hemlock at seven twenty-six. She had driven straight from the foundation's hotel at three forty-five with one stop in Salem for coffee. Four and a half hours in three forty-something.",
       "t": "narrate"
     },
     {
@@ -530,7 +530,7 @@
       "t": "narrate"
     },
     {
-      "text": "She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again.",
+      "text": "[shot:insert crate]She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again.",
       "t": "narrate"
     },
     {

@@ -33,7 +33,7 @@
    "t": "show"
   },
   {
-   "text": "[mood:morning_bright]Kai opened Board Lords at nine twenty-eight. The shop had been sitting since Wednesday morning at seven twenty, holding the dust, waiting for the bell to ring. The bell rang when he unlocked it.",
+   "text": "[shot:insert ring][mood:morning_bright]Kai opened Board Lords at nine twenty-eight. The shop had been sitting since Wednesday morning at seven twenty, holding the dust, waiting for the bell to ring. The bell rang when he unlocked it.",
    "t": "narrate"
   },
   {
@@ -342,7 +342,7 @@
    "t": "narrate"
   },
   {
-   "text": "A man Kai did not know from a vacation rental who needed bearings. A woman from town — Petra's friend Margaret from the bookstore club — who came in to ask if Kai could fix the wheels on her granddaughter's roller skates.",
+   "text": "[shot:insert bearings]A man Kai did not know from a vacation rental who needed bearings. A woman from town — Petra's friend Margaret from the bookstore club — who came in to ask if Kai could fix the wheels on her granddaughter's roller skates.",
    "t": "narrate"
   },
   {
@@ -354,7 +354,7 @@
    "t": "narrate"
   },
   {
-   "text": "He registered also that he was — by his own reading of his body at the bench — running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him.",
+   "text": "[shot:insert bench]He registered also that he was — by his own reading of his body at the bench — running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him.",
    "t": "narrate"
   },
   {

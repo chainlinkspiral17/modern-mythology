@@ -71,7 +71,7 @@
    "t": "narrate"
   },
   {
-   "text": "The player sat on the shelf in its case.",
+   "text": "[shot:insert case]The player sat on the shelf in its case.",
    "t": "narrate"
   },
   {
@@ -97,7 +97,7 @@
    "t": "hide"
   },
   {
-   "text": "She sat at the kitchen table. Kai was across the table from her. Finn had turned from the window and had come to the table.",
+   "text": "[shot:insert table]She sat at the kitchen table. Kai was across the table from her. Finn had turned from the window and had come to the table.",
    "t": "narrate"
   },
   {

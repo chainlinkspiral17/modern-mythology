@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:morning_bright]Kai woke at five-forty on the floor of Lena's living room. He had not, in three years, slept on the floor of her apartment. The floor was new because the couch had Finn on it and the bed had Lena and Tem.",
+      "text": "[shot:insert couch][mood:morning_bright]Kai woke at five-forty on the floor of Lena's living room. He had not, in three years, slept on the floor of her apartment. The floor was new because the couch had Finn on it and the bed had Lena and Tem.",
       "t": "narrate"
     },
     {
@@ -54,7 +54,7 @@
       "t": "narrate"
     },
     {
-      "text": "Lena had been at the bedroom door for a beat looking back at the three of them and had said: all right, we're going to sleep, knock if you need us.",
+      "text": "[shot:insert door]Lena had been at the bedroom door for a beat looking back at the three of them and had said: all right, we're going to sleep, knock if you need us.",
       "t": "narrate"
     },
     {
@@ -82,7 +82,7 @@
       "t": "narrate"
     },
     {
-      "text": "He sat up. The light at five-forty through the kitchen window made the apartment look like the apartment of a person he did not know. He stood up. He folded the rug back to its place in front of the sink. He folded the blanket.",
+      "text": "[shot:insert sink]He sat up. The light at five-forty through the kitchen window made the apartment look like the apartment of a person he did not know. He stood up. He folded the rug back to its place in front of the sink. He folded the blanket.",
       "t": "narrate"
     },
     {
@@ -176,7 +176,7 @@
       "t": "narrate"
     },
     {
-      "text": "He ground them in the hand grinder Lena kept on the counter — a thing he had never used and had to figure out by holding it briefly before he started — and his hands at the grinder were, this morning, steady in a way they had not been on Tuesday at the bench.",
+      "text": "[shot:insert grinder]He ground them in the hand grinder Lena kept on the counter — a thing he had never used and had to figure out by holding it briefly before he started — and his hands at the grinder were, this morning, steady in a way they had not been on Tuesday at the bench.",
       "t": "narrate"
     },
     {
@@ -222,7 +222,7 @@
       "t": "narrate"
     },
     {
-      "text": "The lamp had not been used since he had been coming over. He set the cup beside the lamp and went back to the kitchen.",
+      "text": "[shot:insert lamp]The lamp had not been used since he had been coming over. He set the cup beside the lamp and went back to the kitchen.",
       "t": "narrate"
     },
     {
@@ -308,7 +308,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai poured himself a cup and sat at the table. Lena moved over from the chair. Finn brought his plate. The three of them ate.",
+      "text": "[shot:insert table]Kai poured himself a cup and sat at the table. Lena moved over from the chair. Finn brought his plate. The three of them ate.",
       "t": "narrate"
     },
     {
@@ -346,7 +346,7 @@
       "t": "say"
     },
     {
-      "text": "She did not turn. She kept her hands on the cone.",
+      "text": "[shot:insert cone]She did not turn. She kept her hands on the cone.",
       "t": "narrate"
     },
     {

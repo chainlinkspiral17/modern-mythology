@@ -74,7 +74,7 @@
       "t": "narrate"
     },
     {
-      "text": "She made the coffee. She drank it standing at the window. She did not think about the patch, which was not the same as not seeing it.",
+      "text": "[shot:insert coffee]She made the coffee. She drank it standing at the window. She did not think about the patch, which was not the same as not seeing it.",
       "t": "narrate"
     },
     {
@@ -92,7 +92,7 @@
       "t": "show"
     },
     {
-      "text": "The bookstore was on the ground floor of the same building. Petra's front door was on Hemlock.",
+      "text": "[shot:insert door]The bookstore was on the ground floor of the same building. Petra's front door was on Hemlock.",
       "t": "narrate"
     },
     {
@@ -120,7 +120,7 @@
       "t": "narrate"
     },
     {
-      "text": "Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home.",
+      "text": "[shot:insert kitchenette]Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home.",
       "t": "narrate"
     },
     {
@@ -132,7 +132,7 @@
       "t": "narrate"
     },
     {
-      "text": "She heard Petra on the phone before she saw her. Petra was in the back office with the door closed, which Petra usually did not have closed at seven in the morning when the only person in the building was Lena.",
+      "text": "[shot:insert phone]She heard Petra on the phone before she saw her. Petra was in the back office with the door closed, which Petra usually did not have closed at seven in the morning when the only person in the building was Lena.",
       "t": "narrate"
     },
     {
@@ -318,7 +318,7 @@
       "t": "narrate"
     },
     {
-      "text": "The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
+      "text": "[shot:insert counters]The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
       "t": "narrate"
     },
     {
@@ -444,7 +444,7 @@
       "t": "say"
     },
     {
-      "text": "She turned to the small terminal Petra kept on the counter and ran the three titles. None came up. She had not expected them to.",
+      "text": "[shot:insert counter]She turned to the small terminal Petra kept on the counter and ran the three titles. None came up. She had not expected them to.",
       "t": "narrate"
     },
     {

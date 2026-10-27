@@ -1153,3 +1153,105 @@ size_m = 0.260
 length_axis = "x"
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray()
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_kettle__cabin_interior_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.737, 1.465, -6.520)
+rotation = Vector3(-0.2618, -0.4092, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_kerosene__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.238, 0.540, -0.713)
+rotation = Vector3(-0.2618, 1.9048, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_kettle__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.737, 1.465, -6.520)
+rotation = Vector3(-0.2618, -0.4092, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_iron__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.710, 1.297, -5.994)
+rotation = Vector3(-1.0039, -0.2963, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coat__cabin_interior_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.165, 1.921, -0.812)
+rotation = Vector3(-0.2618, 2.1466, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_headlights__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.799, 0.843, 2.954)
+rotation = Vector3(-0.3526, -1.8857, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coat__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.165, 1.921, -0.812)
+rotation = Vector3(-0.2618, 2.1466, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_beak__cabin_porch_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.553, 1.364, 2.043)
+rotation = Vector3(-0.2618, 0.3168, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sweater__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.725, 2.501, -4.824)
+rotation = Vector3(-0.0873, 0.4765, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_ladder__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.262, 2.201, -2.480)
+rotation = Vector3(-0.1841, 0.7787, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_beans__cabin_interior_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.133, 1.827, -7.031)
+rotation = Vector3(-0.2618, -0.2905, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_drawer__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.801, 1.225, -4.789)
+rotation = Vector3(-0.2618, 0.4953, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_knob__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.841, 0.950, -5.055)
+rotation = Vector3(-0.3283, 0.6217, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_kerosene__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.894, 0.540, 0.106)
+rotation = Vector3(-0.2618, -0.9857, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_substrate__cabin_interior_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.242, 1.081, -3.017)
+rotation = Vector3(-0.2618, 0.0272, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_substrate__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.242, 1.081, -3.017)
+rotation = Vector3(-0.2618, 0.0272, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_case__cabin_interior_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.610, 1.009, -3.116)
+rotation = Vector3(-0.2618, -0.1391, 0.0)
+metadata/fov = 35.0

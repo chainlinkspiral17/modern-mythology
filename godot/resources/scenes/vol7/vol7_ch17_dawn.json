@@ -81,7 +81,7 @@
       "t": "narrate"
     },
     {
-      "text": "She put on the wool sweater. She put on the jeans. She tied the dreadlocks back with the leather thong.",
+      "text": "[shot:insert sweater]She put on the wool sweater. She put on the jeans. She tied the dreadlocks back with the leather thong.",
       "t": "narrate"
     },
     {
@@ -146,7 +146,7 @@
       "t": "show"
     },
     {
-      "text": "Cale came out of the chair at five-oh-eight and went out to the porch to smoke. Per came out at five-fifteen. Marina came down the loft ladder at five-twenty.",
+      "text": "[shot:insert ladder]Cale came out of the chair at five-oh-eight and went out to the porch to smoke. Per came out at five-fifteen. Marina came down the loft ladder at five-twenty.",
       "t": "narrate"
     },
     {
@@ -164,7 +164,7 @@
       "t": "show"
     },
     {
-      "text": "The crow was on the truck. Finn came back to the table.",
+      "text": "[shot:insert table]The crow was on the truck. Finn came back to the table.",
       "t": "narrate"
     },
     {
@@ -220,7 +220,7 @@
       "t": "narrate"
     },
     {
-      "text": "The three vehicles went down the cabin road in the gray-before-dawn. The rain on the windshields was steady.",
+      "text": "[shot:insert windshields]The three vehicles went down the cabin road in the gray-before-dawn. The rain on the windshields was steady.",
       "t": "narrate"
     },
     {
@@ -263,7 +263,7 @@
       "t": "say"
     },
     {
-      "text": "Cale, behind them, had been quiet. Per, in Cale's truck, had been — by Tem's mirror — sitting between Lena and Finn in the cab and looking at his hands.",
+      "text": "[shot:insert mirror]Cale, behind them, had been quiet. Per, in Cale's truck, had been — by Tem's mirror — sitting between Lena and Finn in the cab and looking at his hands.",
       "t": "narrate"
     },
     {

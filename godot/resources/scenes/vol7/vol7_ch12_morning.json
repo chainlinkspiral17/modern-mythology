@@ -89,7 +89,7 @@
       "t": "narrate"
     },
     {
-      "text": "The kitchen was at fifty-eight. He banked the space heater in the corner. He put the kettle on. He stood at the kitchen window looking down at the alley.",
+      "text": "[shot:insert heater]The kitchen was at fifty-eight. He banked the space heater in the corner. He put the kettle on. He stood at the kitchen window looking down at the alley.",
       "t": "narrate"
     },
     {
@@ -109,7 +109,7 @@
       "t": "narrate"
     },
     {
-      "text": "He went to the duffel. He unzipped it.",
+      "text": "[shot:insert duffel]He went to the duffel. He unzipped it.",
       "t": "narrate"
     },
     {
@@ -153,7 +153,7 @@
       "t": "narrate"
     },
     {
-      "text": "The six smaller pieces wanted to fit together. He laid the six smaller pieces in a ring — a rough hexagon, with each piece making one side. The hexagon had a hole in its center. The hole was the size and shape of the eighth piece.",
+      "text": "[shot:insert hexagon]The six smaller pieces wanted to fit together. He laid the six smaller pieces in a ring — a rough hexagon, with each piece making one side. The hexagon had a hole in its center. The hole was the size and shape of the eighth piece.",
       "t": "narrate"
     },
     {
@@ -173,7 +173,7 @@
       "t": "narrate"
     },
     {
-      "text": "The kettle whistled.",
+      "text": "[shot:insert kettle]The kettle whistled.",
       "t": "narrate"
     },
     {
@@ -193,7 +193,7 @@
       "t": "narrate"
     },
     {
-      "text": "He drank from the coffee. The crow on the back of the chair across the room watched him.",
+      "text": "[shot:insert coffee]He drank from the coffee. The crow on the back of the chair across the room watched him.",
       "t": "narrate"
     },
     {
@@ -283,7 +283,7 @@
       "t": "say"
     },
     {
-      "text": "The crow tapped the back of the chair with its beak. The tap was not the request-tap from earlier. The tap was the tap of a crow trying to communicate a piece of information about a thing the crow was still working out how to say.",
+      "text": "[shot:insert beak]The crow tapped the back of the chair with its beak. The tap was not the request-tap from earlier. The tap was the tap of a crow trying to communicate a piece of information about a thing the crow was still working out how to say.",
       "t": "narrate"
     },
     {
@@ -391,7 +391,7 @@
       "t": "narrate"
     },
     {
-      "text": "She was at the counter going through the morning's invoices when he came in.",
+      "text": "[shot:insert invoices]She was at the counter going through the morning's invoices when he came in.",
       "t": "narrate"
     },
     {
@@ -521,7 +521,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow tapped the cloth once with its beak.",
+      "text": "[shot:insert cloth]The crow tapped the cloth once with its beak.",
       "t": "narrate"
     },
     {
@@ -537,7 +537,7 @@
       "t": "narrate"
     },
     {
-      "text": "He could see Lena through the window as he drove past — she had taken her shift this morning after all. He registered her without slowing. She did not see him drive past. The crow stayed on the dashboard.",
+      "text": "[shot:insert window]He could see Lena through the window as he drove past — she had taken her shift this morning after all. He registered her without slowing. She did not see him drive past. The crow stayed on the dashboard.",
       "t": "narrate"
     },
     {
@@ -591,7 +591,7 @@
       "t": "narrate"
     },
     {
-      "text": "The overlook was an earthen platform at the edge of the bluff, about ten feet across, with a wooden rail along the seaward edge. The platform had a bench at its inner edge, set against the salal. The bench was wet.",
+      "text": "[shot:insert bench]The overlook was an earthen platform at the edge of the bluff, about ten feet across, with a wooden rail along the seaward edge. The platform had a bench at its inner edge, set against the salal. The bench was wet.",
       "t": "narrate"
     },
     {
@@ -675,7 +675,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn did not move. The crow on the rail did not move.",
+      "text": "[shot:insert rail]Finn did not move. The crow on the rail did not move.",
       "t": "narrate"
     },
     {
@@ -755,7 +755,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn got in the truck. The crow got onto the dashboard. Finn drove out of the lot.",
+      "text": "[shot:insert truck]Finn got in the truck. The crow got onto the dashboard. Finn drove out of the lot.",
       "t": "narrate"
     },
     {

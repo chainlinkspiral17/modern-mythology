@@ -101,7 +101,7 @@
    "t": "say"
   },
   {
-   "text": "The crow tapped the chair with its beak.",
+   "text": "[shot:insert beak]The crow tapped the chair with its beak.",
    "t": "narrate"
   },
   {

@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem read from the John Frank novel for an hour at the small wooden table beside the kerosene lamp; Lena, in the second chair, watched the cedars through the south-facing window and let her own thoughts settle into something she could carry; Kai,",
+      "text": "[shot:insert table]Tem read from the John Frank novel for an hour at the small wooden table beside the kerosene lamp; Lena, in the second chair, watched the cedars through the south-facing window and let her own thoughts settle into something she could carry; Kai,",
       "voice": "assets/audio/voice/vol7_ch1_finn/007.mp3"
     },
     {
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem looked at her phone again.",
+      "text": "[shot:insert phone]Tem looked at her phone again.",
       "voice": "assets/audio/voice/vol7_ch1_finn/016.mp3"
     },
     {
@@ -321,7 +321,7 @@
     },
     {
       "t": "narrate",
-      "text": "After a while Lena got up and put the kettle back on.",
+      "text": "[shot:insert kettle]After a while Lena got up and put the kettle back on.",
       "voice": "assets/audio/voice/vol7_ch1_finn/056.mp3"
     },
     {

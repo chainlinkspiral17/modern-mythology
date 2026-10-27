@@ -165,7 +165,7 @@
   },
   {
    "t": "narrate",
-   "text": "She gets up. She makes coffee. She does not wash her thigh for an hour. She wants to see if it changes.",
+   "text": "[shot:insert coffee]She gets up. She makes coffee. She does not wash her thigh for an hour. She wants to see if it changes.",
    "voice": "assets/audio/voice/vol7_interlude_ii/033.mp3"
   },
   {

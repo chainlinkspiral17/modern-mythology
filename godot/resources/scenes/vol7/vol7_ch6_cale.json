@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:day_bright]Cale was not at the counter. The lights were on.",
+      "text": "[shot:insert counter][mood:day_bright]Cale was not at the counter. The lights were on.",
       "t": "narrate"
     },
     {
@@ -678,7 +678,7 @@
       "t": "say"
     },
     {
-      "text": "She got up. At the doorway she paused with her hand on the frame.",
+      "text": "[shot:insert doorway]She got up. At the doorway she paused with her hand on the frame.",
       "t": "narrate"
     },
     {

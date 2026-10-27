@@ -534,3 +534,9 @@ light_color = Color(1.000, 0.450, 0.150, 1)
 light_energy = 0.90
 shadow_enabled = false
 omni_range = 2.60
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_blanket__cabin_interior_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.282, 1.470, -2.999)
+rotation = Vector3(-0.5168, -2.6256, 0.0)
+metadata/fov = 35.0

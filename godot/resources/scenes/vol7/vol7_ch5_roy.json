@@ -38,7 +38,7 @@
       "t": "narrate"
     },
     {
-      "text": "He had not slept well. Three hours, then up, then another two, then up again at six. The first thing he did at six was check the wall across Main from his apartment window.",
+      "text": "[shot:insert window]He had not slept well. Three hours, then up, then another two, then up again at six. The first thing he did at six was check the wall across Main from his apartment window.",
       "t": "narrate"
     },
     {
@@ -70,7 +70,7 @@
       "t": "narrate"
     },
     {
-      "text": "The first hour was nothing. He cleaned the glass on the deck wall. He tightened the trucks on a board a kid had left for a tune-up on Friday. He drank a second cup of coffee at the counter.",
+      "text": "[shot:insert coffee]The first hour was nothing. He cleaned the glass on the deck wall. He tightened the trucks on a board a kid had left for a tune-up on Friday. He drank a second cup of coffee at the counter.",
       "t": "narrate"
     },
     {
@@ -90,7 +90,7 @@
       "t": "narrate"
     },
     {
-      "text": "At the museum once when Kai had gone down to look at the Inga bench with Devon in 2049. Kai had never spoken to him. Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one.",
+      "text": "[shot:insert bench]At the museum once when Kai had gone down to look at the Inga bench with Devon in 2049. Kai had never spoken to him. Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one.",
       "t": "narrate"
     },
     {
@@ -114,7 +114,7 @@
       "t": "show"
     },
     {
-      "text": "Roy crossed the shop floor with the smile. He put a hand on the counter without leaning on it.",
+      "text": "[shot:insert counter]Roy crossed the shop floor with the smile. He put a hand on the counter without leaning on it.",
       "t": "narrate"
     },
     {
@@ -350,7 +350,7 @@
       "t": "say"
     },
     {
-      "text": "He turned. He walked to the door at the same speed he had walked in. The bell rang. He was gone.",
+      "text": "[shot:insert door]He turned. He walked to the door at the same speed he had walked in. The bell rang. He was gone.",
       "t": "narrate"
     },
     {

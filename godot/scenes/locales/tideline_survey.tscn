@@ -346,3 +346,15 @@ metadata/fov = 45.0
 ; (2026-09-23: Kelp_Bulb_0_Practical removed — practical_author read the
 ; kelp float "Bulb" as a light bulb; a seaweed float is not a fixture)
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pool__tideline_survey" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.863, 1.506, 5.622)
+rotation = Vector3(-0.1767, 0.7292, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_page__tideline_survey" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.915, 1.425, 5.468)
+rotation = Vector3(-0.2618, 0.4366, 0.0)
+metadata/fov = 35.0

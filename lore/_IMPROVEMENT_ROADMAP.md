@@ -3835,6 +3835,53 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 203: THE CAMERA GOES WHERE THE SENTENCE LOOKS (vol 7) + vol 7's windows (draft 1 of both).**
+- **The Deck:** "still not seeing images in lots of windows in vol 7 ... shots aren't focusing on what the text is describing."
+- **Direction: `godot/tools/audit/text_focus_pass.py`** (new).
+  - It reads every narrated line and finds the thing the line names that the set has in view (builder part names).
+  - It filters out:
+    - names (capitalised words mid-sentence);
+    - possessives ("Marit's bowl" → the bowl);
+    - material and room modifiers ("the cedar roof", "wool socks");
+    - verbs (-ed / -ing words);
+    - structure, landscape, bodies and weather;
+    - pictures, which the director's NOTICING shot already handles.
+  - In vol 7's carvings ("the hooded coat … at the rim"), the subject is the bowl.
+  - A subject the set already frames wins.
+  - When the set has no marker for the subject, it authors `shot_insert_<word>__<preset>`:
+    - searched outward from the preset camera's side;
+    - in the same room (nothing structural, glass included, between it and the preset camera);
+    - unoccluded, with the frame not empty.
+  - Then it cues `[shot:insert <word>]`.
+  - Spacing rules:
+    - an authored cue is never touched;
+    - at least 3 nodes since the last cue;
+    - the same insert not within 10 nodes;
+    - at most nodes / 5 cues a chapter;
+    - room furniture (table, door, counter …) once a chapter.
+- **Vol 7 result:**
+  - 830 lines name a thing in view.
+  - 250 new cues and 98 new markers across 18 sets.
+  - 531 lines were held by spacing; 49 subjects had no clear lens.
+  - Gates at zero: marker_aim (448 markers), vantage_obstruction `--markers` (18 sets), wrong_room, shot_marker, tscn_syntax.
+  - A 15-line render sample checked by eye: the kettle, the hand grinder, Marit's bowl, the clamp, the lamp, the truck, the bedroom door.
+- **Windows:** 28 window-view art entries (`art_cat` WINDOW), quoted from the scenes where the prose looks out. Sets:
+  - **cabin:** south windows W and E (porch, clearing, the truck, rain through the cedars), kitchen (mist on the cedars), west, both gables, loft;
+  - **Lena's:** front window (the truck from above) and two nook windows;
+  - **Salty Tome:** front window;
+  - **Hans:** side window on Hemlock, front of house;
+  - **Finn:** south window (the town and the tower on the bluff), alley window;
+  - **ChillWave:** two front windows;
+  - **cedar tower:** studio south (Dean's ocean), the clerestory, four lobby windows, three quarters windows;
+  - **Kai's:** the laundromat wall and its patch across Main.
+- Day pictures stay off the exterior and night views (`not_presets`). The windows that already look at mural art across the street were left alone: Lena's kitchen, the Tome's kitchenette, Board Lords' front.
+- **Draft N+1 targets:**
+  1. Run text_focus_pass on vols 5–6, then 1–4.
+  2. Night variants of the window pictures for cabin_interior's and Lena's night views.
+  3. Re-aim the older hand-authored inserts the sample showed framing the wrong thing (Lena's `shot_insert_stove` frames the counter edge, the kettle cropped).
+  4. A subject picker that reads the clause, not the first noun.
+  5. Deck-verify the new cuts in play.
+
 **2026-10-27 · pass 202: THE CROW SITS (draft 2 of the crow).**
 - **The Deck:** "crow seems to just be hanging out or hovering."
 - **Cause:** the 16 crow HeroProps were laid with `length_axis = "z"`, so the model was sized by its beak-to-tail length and seated on its lowest vertex. That vertex was the tail tip, so the feet floated a hand above the rail or roof.

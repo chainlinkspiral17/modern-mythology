@@ -549,3 +549,51 @@ metadata/fov = 42.0
 position = Vector3(0.600, 1.450, -3.250)
 rotation = Vector3(-0.1738, 2.7828, 0.0)
 metadata/fov = 42.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_trays__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.708, 1.372, -0.654)
+rotation = Vector3(-0.2618, 2.0344, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_basket__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.634, 1.052, -2.825)
+rotation = Vector3(-0.2618, 0.9273, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sill__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.622, 1.507, -0.544)
+rotation = Vector3(-0.5236, 2.1234, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_apron__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.671, 1.105, -3.268)
+rotation = Vector3(-0.5236, 1.2375, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_tables__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.619, 2.578, -1.740)
+rotation = Vector3(-0.0873, 1.0825, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.619, 2.578, -1.740)
+rotation = Vector3(-0.0873, 1.0825, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_crows__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.688, 1.099, -3.620)
+rotation = Vector3(-0.2618, 0.7458, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_dish__hans_bakery_back_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.277, 1.210, -3.210)
+rotation = Vector3(-0.5236, 0.9020, 0.0)
+metadata/fov = 35.0

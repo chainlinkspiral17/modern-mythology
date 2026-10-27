@@ -108,7 +108,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/020.mp3"
     },
     {
-      "text": "She turned on the lights. She turned on the espresso machine. She filled the ceramic milk pitchers from the cooler and set them on the bar in the order the morning regulars liked their drinks pulled.",
+      "text": "[shot:insert espresso]She turned on the lights. She turned on the espresso machine. She filled the ceramic milk pitchers from the cooler and set them on the bar in the order the morning regulars liked their drinks pulled.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/021.mp3"
     },
@@ -168,7 +168,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/032.mp3"
     },
     {
-      "text": "Wren was a regular at the Daily Grind on Friday mornings because the bus to the consolidated middle district school stopped two doors down at six forty-five and Wren came in at six-eleven for her hot chocolate and her ten minutes at the corner table.",
+      "text": "[shot:insert chocolate]Wren was a regular at the Daily Grind on Friday mornings because the bus to the consolidated middle district school stopped two doors down at six forty-five and Wren came in at six-eleven for her hot chocolate and her ten minutes at the corner table.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/033.mp3"
     },
@@ -216,7 +216,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/040.mp3"
     },
     {
-      "text": "The marshmallow was a single small one, hand-cut from a slab that Hans the baker on Hemlock made and sold to the Daily Grind for a stack of tokens and a standing arrangement on Tuesday-morning bread.",
+      "text": "[shot:insert marshmallow]The marshmallow was a single small one, hand-cut from a slab that Hans the baker on Hemlock made and sold to the Daily Grind for a stack of tokens and a standing arrangement on Tuesday-morning bread.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/041.mp3"
     },
@@ -566,7 +566,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/097.mp3"
     },
     {
-      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter — a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
+      "text": "[shot:insert counter]Jameson said, Kai. Jameson laid the broken deck on the counter — a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/098.mp3"
     },
@@ -663,7 +663,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/114.mp3"
     },
     {
-      "text": "He walked to the front of the shop and stood at the window looking out at the slate-gray light over Main. A drone passed overhead at eleven-oh-eight, headed north, low over the rooftops, slow. He watched it go.",
+      "text": "[shot:insert window]He walked to the front of the shop and stood at the window looking out at the slate-gray light over Main. A drone passed overhead at eleven-oh-eight, headed north, low over the rooftops, slow. He watched it go.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/115.mp3"
     },
@@ -701,7 +701,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/122.mp3"
     },
     {
-      "text": "[beat:chill]The patch was not a thing painted onto the wall. The patch was a hole in the wall that [wave amp=6 freq=2]opened onto nothing[/wave]. The eye registered it as an absence the wall was holding.",
+      "text": "[shot:insert patch][beat:chill]The patch was not a thing painted onto the wall. The patch was a hole in the wall that [wave amp=6 freq=2]opened onto nothing[/wave]. The eye registered it as an absence the wall was holding.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/123.mp3"
     },
@@ -751,7 +751,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/132.mp3"
     },
     {
-      "text": "He had sat with Tem at the small wooden table beside the kerosene lamp and had drunk three cups of coffee and had talked with her about things that were not the substrate. They had talked about the headland trail.",
+      "text": "[shot:insert table]He had sat with Tem at the small wooden table beside the kerosene lamp and had drunk three cups of coffee and had talked with her about things that were not the substrate. They had talked about the headland trail.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/133.mp3"
     },
@@ -861,7 +861,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/153.mp3"
     },
     {
-      "text": "He sat with the name. He did not know the name. He pulled out his phone and looked up the name. The phone, this far up the road, did not have signal. He put the phone back in his pocket.",
+      "text": "[shot:insert phone]He sat with the name. He did not know the name. He pulled out his phone and looked up the name. The phone, this far up the road, did not have signal. He put the phone back in his pocket.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/154.mp3"
     },
@@ -891,7 +891,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/159.mp3"
     },
     {
-      "text": "The radio, for the rest of the drive, stayed off.",
+      "text": "[shot:insert radio]The radio, for the rest of the drive, stayed off.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/160.mp3"
     },

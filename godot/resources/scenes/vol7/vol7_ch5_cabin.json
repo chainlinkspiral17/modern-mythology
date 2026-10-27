@@ -36,7 +36,7 @@
       "t": "narrate"
     },
     {
-      "text": "The building was three blocks from Board Lords if you cut across the small wood by the path. Kai cut across. He was at Finn's door at eleven-twenty-six.",
+      "text": "[shot:insert door]The building was three blocks from Board Lords if you cut across the small wood by the path. Kai cut across. He was at Finn's door at eleven-twenty-six.",
       "t": "narrate"
     },
     {
@@ -242,7 +242,7 @@
       "t": "say"
     },
     {
-      "text": "Kai looked at his friend across the table.",
+      "text": "[shot:insert table]Kai looked at his friend across the table.",
       "t": "narrate"
     },
     {
