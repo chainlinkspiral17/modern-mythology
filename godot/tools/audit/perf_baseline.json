@@ -274,6 +274,11 @@
   "prims": 28672,
   "objects": 238
  },
+ "small_wood_field": {
+  "draw": 240,
+  "prims": 353564,
+  "objects": 410
+ },
  "small_wood_high": {
   "draw": 226,
   "prims": 151964,

@@ -1648,6 +1648,44 @@ const CAMERA_PRESETS := {
 			"fog_density": 0.0012},   # (2026-10-27) the scene's 0.0045 greyed the turf across 110 m
 		"suppress_input": true,
 	},
+	# ── VOL 2 — Small Wood High's field (build_small_wood_field.py, 2026-10-27) ──
+	# The Deck: "football field and stadium is still nonsense … it's all
+	# illogical nonsense" — vol 2's 1997 Oregon home games were played on vol
+	# 6's 2026 Texas field. Small Wood's own: the covered wooden home stand
+	# east, the creosoted light poles, the firs on three sides.
+	"small_wood_field_night": {
+		"scene": "res://scenes/locales/small_wood_field.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_field.glb",
+		# points of impact / rewind: "The stadium lights hung over the field in
+		# a white haze, the bleachers stamping and steaming in the cold."; "my
+		# helmet off while I stood on the sidelines". On the home sideline at
+		# the 45, eye height, looking up a touch at the full home stand under
+		# its roof, the lights' haze above it.
+		"camera_origin": Vector3(21.5, 1.62, -48.9),
+		"camera_rotation": Vector3(0.10, deg_to_rad(-76.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.20, 0.22, 0.28, 1),
+			"ground_horizon": Color(0.08, 0.10, 0.08, 1), "ground_bottom": Color(0.03, 0.04, 0.03, 1),
+			"ambient_color": Color(0.48, 0.52, 0.64, 1), "ambient_energy": 0.45, "fog_color": Color(0.60, 0.62, 0.66, 1)},
+		"suppress_input": true,
+	},
+	"small_wood_field_dusk": {
+		"scene": "res://scenes/locales/small_wood_field.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_field.glb",
+		# interlude one: two-a-days, "morning and evening sessions of football
+		# practice"; May "Content just to sit around half the day and watch the
+		# boys practice". From the visitors' side across the empty field to the
+		# home stand in the last sun, a few players walking off, May in the
+		# stand, the firs behind.
+		"camera_origin": Vector3(-4.0, 1.62, -42.0),
+		"camera_rotation": Vector3(0.05, deg_to_rad(-82.0), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.30, 0.38, 0.62, 1), "sky_horizon": Color(0.96, 0.70, 0.48, 1),
+			"ground_horizon": Color(0.40, 0.36, 0.28, 1), "ground_bottom": Color(0.14, 0.16, 0.12, 1),
+			"ambient_color": Color(0.86, 0.74, 0.62, 1), "ambient_energy": 0.80, "fog_color": Color(0.82, 0.68, 0.58, 1),
+			"fog_density": 0.0015},
+		"suppress_input": true,
+	},
 	"ramos_kitchen_morning": {
 		"scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/ramos_kitchen_morning.glb",

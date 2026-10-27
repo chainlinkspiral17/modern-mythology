@@ -158,6 +158,17 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-27 · a script that calls the audits must install the stubs first (pass 192)
+
+**Context:** a search for the nearest passing pose of 8 face frames called
+`vantage_obstruction_audit` from Python. It reported that 5 of them already
+passed, while the audit's own command line said they were obstructed. The
+builders had recorded only part of their geometry, so every ray escaped.
+
+**Rule:** before `boxes_for` / `record_builder`, call `P.A.install_stubs()`,
+as `main()` does. When a scripted result disagrees with the CLI, trust the
+CLI and find the missing setup step.
+
 ### 2026-10-27 · a drip hangs from rock that isn't its assembly
 
 **What happened:** The full suite ended red on one FLOAT: Sapo Falls'

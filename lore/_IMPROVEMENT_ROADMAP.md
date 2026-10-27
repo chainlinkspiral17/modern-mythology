@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 192: SMALL WOOD'S OWN FIELD — vol 2 stops playing in 2026 Texas; the level frames that faced walls.**
+- **The field** (the Deck: "football field and stadium is still nonsense … it's all illogical nonsense"):
+  - **Before:** vol 2's football scenes (points of impact and rewind, Friday night; interlude one, two-a-days at dusk) played on vol 6's stadium, a 2026 Texas planned community's field with aluminium stands and Coach K's F-250, for a 1997 Oregon town.
+  - **New set `small_wood_field`** (draft 1): the true-scale gridiron with mud in the middle by the first home game.
+  - **Built from the text:** the lights "in a white haze" (the night's fog), "the bleachers stamping and steaming" (a covered wooden home stand full and standing), the scoreboard, and "church across the street".
+  - **Proposed, for Andy to correct:** the creosoted wooden light poles, the visitors' bleachers, the concession shed, the ticket booth, the gravel lot of 1997 cars, the street, the houses, and Douglas fir on three sides with the ridges behind.
+  - **Presets:** `small_wood_field_night` (on the home sideline at eye height, looking up at the full stand) and `small_wood_field_dusk` (midfield to the stand in the last sun, practice walking off, May in the stand).
+  - **Markers:**
+    - close-ups: a face against the lit stand; the reverse, against the haze;
+    - an establishing view from the visitors' side;
+    - inserts: the scoreboard, a lamp bank, the church, the concession window.
+  - **Pictures:** five entries in the roster, all proposed: the fascia sign, the scoreboard face, the booster club's sponsor board, the concession menu, the ticket sign.
+  - **Numbers:** 240 draw calls; the gates are at 0.
+  - **Wiring:** `bg_places` points both vol 2 field pictures at it, and interlude one's bg is re-pointed.
+- **Level frames:** levelling the 449 face frames left 8 looking into a wall (the chillwave backroom, crumpled barn, darkroom, Elicia, Bianca's bedroom, the Pit Stop walk-in, the Salty Tome alley pair). Each one was turned or stepped (≤ 0.6 m, ≤ 9°) to the nearest pose whose level frame sees the room. The marker pass is at 0.
+- **Draft N+1:**
+  - the crowd's postures and breath;
+  - the vigil's candles across the street (rewind's after-game);
+  - the R.I.P. scoreboard as its own state;
+  - Andy's word on the stand, the colours, the mascot and whether there is a track;
+  - the GLB is 16 MB: join the firs and lighten the crowd.
+
 **2026-10-27 · pass 191: THE WORDS ON THINGS — 326 roster entries get their writing; the Lovers' porch; level face frames.**
 - **The writing.** The user: "I want a rich, detailed meta-text", and one line on a full page is "boring and not convincing". A four-way pass over every page, screen, board, sign and banned prompt (326 entries):
   - 86 prompts lose their bans ("illegible", "no readable text", …) for a description of the real writing;

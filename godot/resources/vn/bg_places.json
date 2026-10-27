@@ -454,14 +454,20 @@
    }
   },
   "vol2_football_field_night": {
-   "fit": "reuse",
-   "to": "3d:school_field_evening",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:small_wood_field_night",
+   "build": "small_wood_field",
+   "note": "Small Wood High's field, Friday night under the lights (points of impact, rewind) — was vol 6's Texas field",
+   "scenes": 2,
+   "built": "2026-10-27 draft 1"
   },
   "vol2_football_practice": {
    "fit": "exact",
-   "to": "3d:school_field_evening",
-   "scenes": 1
+   "to": "3d:small_wood_field_dusk",
+   "build": "small_wood_field",
+   "note": "two-a-days at dusk",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol2_glass_apartment_ext_day": {
    "fit": "2d",

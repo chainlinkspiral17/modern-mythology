@@ -57956,6 +57956,201 @@
         }
       ],
       "notes": "SPARSE — the lines around this panel do not describe the thing; the look is proposed. INSERT (2026-10-27, the Deck: \"are we still using these old temp inserts and not the new generated art from the hero tool?\"): installed at assets/cg/panel_vol7_daughter_photo.jpg, the director shows it in place of resources/vn/panels/vol7_daughter_photo.json."
+    },
+    {
+      "slug": "small_wood_field_fascia_sign",
+      "kind": "art",
+      "name": "the school's sign on Small Wood High's covered grandstand",
+      "file": "small_wood_field_fascia_sign.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "small_wood_field_fascia_sign"
+      ],
+      "tag": "sign · small_wood_field · 8 x 0.56 m",
+      "prompt": "Flat straight-on face of a long painted wooden sign on the green fascia of a covered wooden football grandstand at a small Oregon-coast high school, 1997. Weathered white boards (RGB ~214,209,194) in a forest-green frame (RGB ~41,77,56); big hand-painted forest-green block capitals, a thin gold keyline under them, and a smaller line beneath. Coastal weather on it: chalked paint, a rust run from each bolt, moss at the bottom edge, rain streaks. Long landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new Small Wood field): the text never shows this sign — its words are invented for a 1997 Oregon-coast high-school field and flagged for Andy. Two-a-days and a Friday-night home game; vol2_ch3 points of impact / rewind.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "small_wood_field",
+          "label": "GS_Fascia_Sign",
+          "center": [
+            31.464,
+            54.864,
+            7.75
+          ],
+          "size": [
+            8.0,
+            0.56
+          ],
+          "facing": "-x",
+          "hide": [
+            "GS_Fascia_Sign"
+          ]
+        }
+      ],
+      "lettering": "SMALL WOOD HIGH SCHOOL",
+      "text_body": "ATHLETIC FIELD · SMALL WOOD, OREGON"
+    },
+    {
+      "slug": "small_wood_field_scoreboard_face",
+      "kind": "art",
+      "name": "the scoreboard's face at the north end of Small Wood's field",
+      "file": "small_wood_field_scoreboard_face.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "small_wood_field_scoreboard_face"
+      ],
+      "tag": "scoreboard · small_wood_field · 7.6 x 3.4 m",
+      "prompt": "Flat straight-on face of a small-town high-school football scoreboard from the 1980s, lit at night on the Oregon coast in 1997: a black steel cabinet with a forest-green top trim; white panel labels; numbers made of round incandescent bulbs, glowing warm amber (RGB ~245,168,61) in a grid, the unlit bulbs dull grey around them; a little rain on the face, the bulbs haloed in the damp air. Landscape, evenly lit, no posts, no sky.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new Small Wood field): the text never shows this sign — its words are invented for a 1997 Oregon-coast high-school field and flagged for Andy. Two-a-days and a Friday-night home game; vol2_ch3 points of impact / rewind.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "small_wood_field",
+          "label": "Scoreboard_Face",
+          "center": [
+            0.0,
+            119.523,
+            6.6
+          ],
+          "size": [
+            7.6,
+            3.4
+          ],
+          "facing": "-y",
+          "hide": [
+            "Scoreboard_Face"
+          ]
+        }
+      ],
+      "lettering": "HOME · VISITOR · QTR · TIME",
+      "text_body": "HOME 14 · VISITOR 7 · QTR 2 · TIME 4:12\nsmaller, under the clock: DOWN 3 · TO GO 6 · BALL ON 38\na small plate at the bottom right: Daktronics-style maker's plate, \"1984\""
+    },
+    {
+      "slug": "small_wood_field_scoreboard_sponsor",
+      "kind": "art",
+      "name": "the booster club's board under Small Wood's scoreboard",
+      "file": "small_wood_field_scoreboard_sponsor.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "small_wood_field_scoreboard_sponsor"
+      ],
+      "tag": "sign · small_wood_field · 6.4 x 1.0 m",
+      "prompt": "Flat straight-on face of a painted sponsor board under a high-school scoreboard on the Oregon coast, 1997: cream-painted plywood (RGB ~219,214,199) in a forest-green frame, a big maroon-red headline and a row of small local sponsors' names and phone numbers in plain sign-painter's lettering. Rain-streaked, a corner delaminating, a bird's nest on the top edge. Wide landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new Small Wood field): the text never shows this sign — its words are invented for a 1997 Oregon-coast high-school field and flagged for Andy. Two-a-days and a Friday-night home game; vol2_ch3 points of impact / rewind.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "small_wood_field",
+          "label": "Scoreboard_Sponsor",
+          "center": [
+            0.0,
+            119.628,
+            4.4
+          ],
+          "size": [
+            6.4,
+            1.0
+          ],
+          "facing": "-y",
+          "hide": [
+            "Scoreboard_Sponsor"
+          ]
+        }
+      ],
+      "lettering": "SMALL WOOD BOOSTER CLUB",
+      "text_body": "Thank you to our sponsors\nCoast Range Hardware · 555-0142   ·   The Driftwood Café · 555-0117\nPacific Mutual Insurance · 555-0190   ·   Grange Hall No. 312 — Friday Bingo 7 PM\nGO FIGHT WIN"
+    },
+    {
+      "slug": "small_wood_field_concession_sign",
+      "kind": "art",
+      "name": "the menu over the concession window at Small Wood's field",
+      "file": "small_wood_field_concession_sign.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "small_wood_field_concession_sign"
+      ],
+      "tag": "sign · small_wood_field · 3.0 x 0.4 m",
+      "prompt": "Flat straight-on face of a hand-painted menu board over the window of a cinderblock concession shed at a small Oregon high-school football field, 1997, a cold Friday night: white-painted plywood in a green frame, black hand-lettered items with prices in a neat column, a red headline. A coffee-cup ring of damp near one corner. Long landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new Small Wood field): the text never shows this sign — its words are invented for a 1997 Oregon-coast high-school field and flagged for Andy. Two-a-days and a Friday-night home game; vol2_ch3 points of impact / rewind.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "small_wood_field",
+          "label": "Concession_Sign",
+          "center": [
+            34.384,
+            -6.47,
+            2.3
+          ],
+          "size": [
+            3.0,
+            0.4
+          ],
+          "facing": "+y",
+          "hide": [
+            "Concession_Sign"
+          ]
+        }
+      ],
+      "lettering": "CONCESSIONS",
+      "text_body": "COFFEE 50¢ · HOT COCOA 50¢ · HOT DOG $1.25 · CHILI DOG $1.75 · NACHOS $1.50 · CANDY BARS 50¢ · POP 75¢\nAll proceeds to Small Wood athletics — run by the Booster Club"
+    },
+    {
+      "slug": "small_wood_field_ticket_sign",
+      "kind": "art",
+      "name": "the ticket booth's sign at Small Wood's field gate",
+      "file": "small_wood_field_ticket_sign.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "small_wood_field_ticket_sign"
+      ],
+      "tag": "sign · small_wood_field · 1.8 x 0.36 m",
+      "prompt": "Flat straight-on face of a small painted sign over the window of a wooden ticket booth at a small-town Oregon high-school football field, 1997: forest-green board, white hand-painted capitals and a line of prices. Rain-darkened wood at the edges. Landscape, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "PROPOSED (2026-10-27, the new Small Wood field): the text never shows this sign — its words are invented for a 1997 Oregon-coast high-school field and flagged for Andy. Two-a-days and a Friday-night home game; vol2_ch3 points of impact / rewind.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "small_wood_field",
+          "label": "Ticket_Booth_Sign",
+          "center": [
+            10.2,
+            -18.42,
+            2.25
+          ],
+          "size": [
+            1.8,
+            0.36
+          ],
+          "facing": "-y",
+          "hide": [
+            "Ticket_Booth_Sign"
+          ]
+        }
+      ],
+      "lettering": "TICKETS",
+      "text_body": "ADULTS $4 · STUDENTS $2 · UNDER 6 FREE · SEASON PASSES AT THE OFFICE"
     }
   ]
 }

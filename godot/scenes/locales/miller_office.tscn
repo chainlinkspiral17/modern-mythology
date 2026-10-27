@@ -459,8 +459,8 @@ shadow_enabled = false
 
 ; closeup: Bianca in her bed, from the foot on the lamp side
 [node name="shot_closeup_bianca__miller_master_bedroom_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(27.550, 1.300, -1.350)
-rotation = Vector3(-0.3558, 0.4830, 0.0)
+position = Vector3(27.550, 1.300, -0.950)
+rotation = Vector3(-0.0700, 0.4830, 0.0)
 metadata/fov = 40.0
 
 ; "The book ... is on the nightstand" — the bee-balm novel by the lamp

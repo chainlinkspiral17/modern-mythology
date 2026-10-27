@@ -362,7 +362,7 @@ metadata/fov = 60.0
 ; the milk crate by the walk-in, Jesse's seat (ch4)
 [node name="shot_closeup_walkin" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.500, 1.400, -7.900)
-rotation = Vector3(-0.3657, 2.2356, 0.0)
+rotation = Vector3(-0.0700, 2.0856, 0.0)
 metadata/fov = 50.0
 
 ; The lot pole the D5 pass planted outside the booth windows.
