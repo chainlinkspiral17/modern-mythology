@@ -74835,6 +74835,36 @@
    "md5": "ceeb9e3ec627ade2d197a1745b1e19d6",
    "size": 1196911
   },
+  "godot/assets/concept/meshy/cedar_bell/back.png": {
+   "at": "2026-10-27T19:08:56+00:00",
+   "md5": "6f23699dd32c59cece951a957af2e4eb",
+   "size": 1301861
+  },
+  "godot/assets/concept/meshy/cedar_bell/cedar_bell_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:08:56+00:00",
+   "md5": "6f23699dd32c59cece951a957af2e4eb",
+   "size": 1301861
+  },
+  "godot/assets/concept/meshy/cedar_bell/cedar_bell_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:08:56+00:00",
+   "md5": "3d859a385dd903df2ec2997d2657b4d1",
+   "size": 1226214
+  },
+  "godot/assets/concept/meshy/cedar_bell/cedar_bell_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:08:56+00:00",
+   "md5": "5ff3b88e6709cf8d7e62302c20f0e024",
+   "size": 1296333
+  },
+  "godot/assets/concept/meshy/cedar_bell/front.png": {
+   "at": "2026-10-27T19:08:56+00:00",
+   "md5": "3d859a385dd903df2ec2997d2657b4d1",
+   "size": 1226214
+  },
+  "godot/assets/concept/meshy/cedar_bell/side.png": {
+   "at": "2026-10-27T19:08:56+00:00",
+   "md5": "5ff3b88e6709cf8d7e62302c20f0e024",
+   "size": 1296333
+  },
   "godot/assets/concept/meshy/cedar_bowl/back.png": {
    "at": "2026-10-27T19:01:46+00:00",
    "md5": "a85c57d621165fae62d6a4e3e11b4a34",
@@ -79330,6 +79360,36 @@
    "md5": "89a9e1b61d6d4af42dddcd3761e20607",
    "size": 68793
   },
+  "godot/assets/concept/meshy/jesse_henderson_dinner/back.png": {
+   "at": "2026-10-27T19:09:09+00:00",
+   "md5": "b0c631c204005cae83d51013a8aa6d86",
+   "size": 1929076
+  },
+  "godot/assets/concept/meshy/jesse_henderson_dinner/front.png": {
+   "at": "2026-10-27T19:09:09+00:00",
+   "md5": "ad889b890de340e18103e34290f5e61e",
+   "size": 1906455
+  },
+  "godot/assets/concept/meshy/jesse_henderson_dinner/jesse_henderson_dinner_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:09+00:00",
+   "md5": "b0c631c204005cae83d51013a8aa6d86",
+   "size": 1929076
+  },
+  "godot/assets/concept/meshy/jesse_henderson_dinner/jesse_henderson_dinner_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:09+00:00",
+   "md5": "ad889b890de340e18103e34290f5e61e",
+   "size": 1906455
+  },
+  "godot/assets/concept/meshy/jesse_henderson_dinner/jesse_henderson_dinner_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:09+00:00",
+   "md5": "f744ae512368a9a1376f13d1a7d6c00d",
+   "size": 1859018
+  },
+  "godot/assets/concept/meshy/jesse_henderson_dinner/side.png": {
+   "at": "2026-10-27T19:09:09+00:00",
+   "md5": "f744ae512368a9a1376f13d1a7d6c00d",
+   "size": 1859018
+  },
   "godot/assets/concept/meshy/jim_henderson/back.png": {
    "at": "2026-10-11T20:51:46+00:00",
    "md5": "a62a26de6faa9f06868828d2d3c1a60e",
@@ -80214,6 +80274,36 @@
    "at": "2026-10-11T17:04:26+00:00",
    "md5": "f56b066e38f4e3fd118a3e406f7aea27",
    "size": 1878125
+  },
+  "godot/assets/concept/meshy/lenas_milk_crate/back.png": {
+   "at": "2026-10-27T19:09:20+00:00",
+   "md5": "f16424970bdec6462294dce0f2853eb5",
+   "size": 1661113
+  },
+  "godot/assets/concept/meshy/lenas_milk_crate/front.png": {
+   "at": "2026-10-27T19:09:20+00:00",
+   "md5": "3a02f347cf1856b01a6495fd0e1d2d37",
+   "size": 1666034
+  },
+  "godot/assets/concept/meshy/lenas_milk_crate/lenas_milk_crate_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:20+00:00",
+   "md5": "f16424970bdec6462294dce0f2853eb5",
+   "size": 1661113
+  },
+  "godot/assets/concept/meshy/lenas_milk_crate/lenas_milk_crate_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:20+00:00",
+   "md5": "3a02f347cf1856b01a6495fd0e1d2d37",
+   "size": 1666034
+  },
+  "godot/assets/concept/meshy/lenas_milk_crate/lenas_milk_crate_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:20+00:00",
+   "md5": "4f5e7cd479c7d4becfde3d54a81c593a",
+   "size": 1566935
+  },
+  "godot/assets/concept/meshy/lenas_milk_crate/side.png": {
+   "at": "2026-10-27T19:09:20+00:00",
+   "md5": "4f5e7cd479c7d4becfde3d54a81c593a",
+   "size": 1566935
   },
   "godot/assets/concept/meshy/license_plate_notebook/back.png": {
    "at": "2026-10-27T18:58:11+00:00",
@@ -84435,6 +84525,36 @@
    "md5": "fb7c7c2b2429d006f10661affb7f9a10",
    "size": 1545859
   },
+  "godot/assets/concept/meshy/portal_room_cedar_door/back.png": {
+   "at": "2026-10-27T19:09:30+00:00",
+   "md5": "5d0012f5b701cfbd425272333ce982ae",
+   "size": 1928552
+  },
+  "godot/assets/concept/meshy/portal_room_cedar_door/front.png": {
+   "at": "2026-10-27T19:09:30+00:00",
+   "md5": "4c1964f9fa9fe061950785fd2d515a5c",
+   "size": 1832739
+  },
+  "godot/assets/concept/meshy/portal_room_cedar_door/portal_room_cedar_door_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:30+00:00",
+   "md5": "5d0012f5b701cfbd425272333ce982ae",
+   "size": 1928552
+  },
+  "godot/assets/concept/meshy/portal_room_cedar_door/portal_room_cedar_door_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:30+00:00",
+   "md5": "4c1964f9fa9fe061950785fd2d515a5c",
+   "size": 1832739
+  },
+  "godot/assets/concept/meshy/portal_room_cedar_door/portal_room_cedar_door_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:30+00:00",
+   "md5": "ce8619652d612aaf783633deb32cb97b",
+   "size": 1270796
+  },
+  "godot/assets/concept/meshy/portal_room_cedar_door/side.png": {
+   "at": "2026-10-27T19:09:30+00:00",
+   "md5": "ce8619652d612aaf783633deb32cb97b",
+   "size": 1270796
+  },
   "godot/assets/concept/meshy/quentin_paul/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c24bfd5ad532760497cc18dbaa8803cb",
@@ -84444,6 +84564,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c24bfd5ad532760497cc18dbaa8803cb",
    "size": 69642
+  },
+  "godot/assets/concept/meshy/rack_17/back.png": {
+   "at": "2026-10-27T19:09:41+00:00",
+   "md5": "22fcfe294b5b8dc237a73b3dec595ad7",
+   "size": 2464924
+  },
+  "godot/assets/concept/meshy/rack_17/front.png": {
+   "at": "2026-10-27T19:09:41+00:00",
+   "md5": "2a03d5267766db5f552b7f062dccc261",
+   "size": 2417625
+  },
+  "godot/assets/concept/meshy/rack_17/rack_17_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:41+00:00",
+   "md5": "22fcfe294b5b8dc237a73b3dec595ad7",
+   "size": 2464924
+  },
+  "godot/assets/concept/meshy/rack_17/rack_17_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:41+00:00",
+   "md5": "2a03d5267766db5f552b7f062dccc261",
+   "size": 2417625
+  },
+  "godot/assets/concept/meshy/rack_17/rack_17_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:41+00:00",
+   "md5": "d3c684ca93aaa7a07c95cc922ee3d95e",
+   "size": 2271140
+  },
+  "godot/assets/concept/meshy/rack_17/side.png": {
+   "at": "2026-10-27T19:09:41+00:00",
+   "md5": "d3c684ca93aaa7a07c95cc922ee3d95e",
+   "size": 2271140
   },
   "godot/assets/concept/meshy/ramirez/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -85099,6 +85249,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "aae857e7f0c456d4c7d8be423ca3c86a",
    "size": 67016
+  },
+  "godot/assets/concept/meshy/relic_kayak/back.png": {
+   "at": "2026-10-27T19:09:54+00:00",
+   "md5": "9af960cdee72632b7faa0fd688664109",
+   "size": 1569777
+  },
+  "godot/assets/concept/meshy/relic_kayak/front.png": {
+   "at": "2026-10-27T19:09:54+00:00",
+   "md5": "aed56e7c71f108b7dfe89de2c38b6c0f",
+   "size": 1407328
+  },
+  "godot/assets/concept/meshy/relic_kayak/relic_kayak_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:54+00:00",
+   "md5": "9af960cdee72632b7faa0fd688664109",
+   "size": 1569777
+  },
+  "godot/assets/concept/meshy/relic_kayak/relic_kayak_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:54+00:00",
+   "md5": "aed56e7c71f108b7dfe89de2c38b6c0f",
+   "size": 1407328
+  },
+  "godot/assets/concept/meshy/relic_kayak/relic_kayak_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:09:54+00:00",
+   "md5": "c0ce06697af59b247823ca55d6cbb49b",
+   "size": 1407792
+  },
+  "godot/assets/concept/meshy/relic_kayak/side.png": {
+   "at": "2026-10-27T19:09:54+00:00",
+   "md5": "c0ce06697af59b247823ca55d6cbb49b",
+   "size": 1407792
+  },
+  "godot/assets/concept/meshy/relic_skate_deck/front.png": {
+   "at": "2026-10-27T19:10:03+00:00",
+   "md5": "0b62bb0300c64477c62fd19c9ed7622f",
+   "size": 1716989
+  },
+  "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:10:03+00:00",
+   "md5": "0b62bb0300c64477c62fd19c9ed7622f",
+   "size": 1716989
+  },
+  "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:10:03+00:00",
+   "md5": "f63b9cd7669910796fd13928dd9cafca",
+   "size": 1512701
+  },
+  "godot/assets/concept/meshy/relic_skate_deck/side.png": {
+   "at": "2026-10-27T19:10:03+00:00",
+   "md5": "f63b9cd7669910796fd13928dd9cafca",
+   "size": 1512701
   },
   "godot/assets/concept/meshy/rick_cosmic/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -86689,6 +86889,36 @@
    "at": "2026-10-19T19:11:23+00:00",
    "md5": "4e0e512a56584092fcce136f3a5713e7",
    "size": 1044009
+  },
+  "godot/assets/concept/meshy/static_truths_zine/back.png": {
+   "at": "2026-10-27T19:10:19+00:00",
+   "md5": "7a23b8b8843ba17bd5b3046db7bd513a",
+   "size": 1669678
+  },
+  "godot/assets/concept/meshy/static_truths_zine/front.png": {
+   "at": "2026-10-27T19:10:19+00:00",
+   "md5": "f815e6f033e5ca2855e6e20586953e2f",
+   "size": 1780402
+  },
+  "godot/assets/concept/meshy/static_truths_zine/side.png": {
+   "at": "2026-10-27T19:10:19+00:00",
+   "md5": "3c5dd8d8abd80ae6f2be4b98f2ffd107",
+   "size": 1066664
+  },
+  "godot/assets/concept/meshy/static_truths_zine/static_truths_zine_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:10:19+00:00",
+   "md5": "7a23b8b8843ba17bd5b3046db7bd513a",
+   "size": 1669678
+  },
+  "godot/assets/concept/meshy/static_truths_zine/static_truths_zine_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:10:19+00:00",
+   "md5": "f815e6f033e5ca2855e6e20586953e2f",
+   "size": 1780402
+  },
+  "godot/assets/concept/meshy/static_truths_zine/static_truths_zine_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:10:19+00:00",
+   "md5": "3c5dd8d8abd80ae6f2be4b98f2ffd107",
+   "size": 1066664
   },
   "godot/assets/concept/meshy/steamboat_model/back.png": {
    "at": "2026-10-11T21:20:04+00:00",

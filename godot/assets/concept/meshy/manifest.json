@@ -32348,5 +32348,47 @@
       "godot/assets/concept/meshy/relic_kayak/relic_kayak_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/relic_kayak/relic_kayak_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T19:08:42+00:00",
+    "stage": "image",
+    "slug": "relic_skate_deck",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The cracked Tess Mariana (2034) like this: It had a long crack through the upper deck and a chunk missing from the tail. The Tess Mariana stamp on the underside was the original \u2014 small, hand-cut, on the tail before the missing chunk, with the T.M. 2034 she had stopped putting on the boards in 2036. his first deck hung on the west wall like the relic it is hung on pegs like the relic it is The first deck \u2014 hung horizontal on two wooden pegs Underside art faces the room \u2014 teal field, cream stripe COL_DECK_WOOD = (0.72, 0.58, 0.40, 1.0)   # natural maple deck The board was an old Tess Mariana from 2034.\nSingle-object concept render of The cracked Tess Mariana (2034), a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:09:43+00:00",
+    "stage": "image",
+    "slug": "wagners_yardstick_and_drill",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Wagner's yardstick and hand-crank drill like this: Wagner's relics inside (the shop yardstick, a hand-crank drill) Relics: Wagner's wooden yardstick, the hand-crank drill, and rendered as an open-front display cabinet per the no-glass rule.\nSingle-object concept render of Wagner's yardstick and hand-crank drill, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
