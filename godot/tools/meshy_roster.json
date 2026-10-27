@@ -5661,6 +5661,64 @@
       ]
     },
     {
+      "slug": "stick_reader",
+      "kind": "prop",
+      "name": "the reader and its cap",
+      "file": "stick_reader.glb",
+      "tier": "small",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "stick_reader"
+      ],
+      "tag": "vol7 · the slowstick reader — Tem's grandfather's at the cabin (since 2042), Finn's compact one from Cale ('49) · the stick goes in the reader, the cap goes on your head",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A compact home stick-reader on a side table: a quiet, well-made modern device about the size of a hardback book lying flat, soft matte housing with worn edges, a slot in one end holding a palm-sized dark stick by its gold connector, a small round timer display glowing faintly. Beside it, joined to it by a thin cable, the cap: a soft fabric headband about an inch wide, loosely coiled. Contemporary hardware of this world, not retro, no visible brand or lettering.",
+      "texture_prompt": "soft matte grey-brown housing with worn edges, a faint warm-white timer glow, dark stick with a gold connector, a soft woven fabric band, black cable",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch11_stick.json",
+          "text": "The reader is on the side table."
+        },
+        {
+          "src": "vol7/vol7_ch11_stick.json",
+          "text": "The stick goes in the reader."
+        },
+        {
+          "src": "vol7/vol7_ch11_stick.json",
+          "text": "The cap goes on your head."
+        },
+        {
+          "src": "vol7/vol7_ch11_stick.json",
+          "text": "The cap is a thin band of a fabric that wraps around your forehead."
+        },
+        {
+          "src": "vol7/vol7_ch11_stick.json",
+          "text": "The cap connects to the reader through a cable."
+        },
+        {
+          "src": "vol7/vol7_ch11_stick.json",
+          "text": "The reader is on the timer."
+        },
+        {
+          "src": "vol7/vol7_ch18_home.json",
+          "text": "The reader on the side table beeping the end-of-stick beep."
+        },
+        {
+          "src": "vol7/vol7_ch18_stick.json",
+          "text": "The reader was on the side table — the compact one he had bought from Cale in '49 for thirty tokens, at a discount to clear inventory."
+        },
+        {
+          "src": "vol7/vol7_ch11_bowl.json",
+          "text": "He set the cap on the side table beside the reader."
+        }
+      ],
+      "notes": "SPARSE — the text gives what the reader DOES (a stick slot, a ninety-minute timer, the end-of-stick beep, the cap on a cable) and that Finn's is 'the compact one'; its look is proposed — edit before spending credits. PROP (2026-10-27, user: \"the slowstick console doesn't have a hero model and needs one.\") Placed on Finn's nightstand (replacing the tablet-and-headset stand-in: the text's cap is a fabric band, not a headset) and on the cabin's side table by the stove. The public coin-free cabinet is a different thing: scumm_machine."
+    },
+    {
       "slug": "box_of_three_sticks",
       "kind": "prop",
       "name": "The box of three sticks",

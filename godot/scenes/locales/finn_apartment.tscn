@@ -469,3 +469,14 @@ size_m = 0.698
 length_axis = "z"
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Crow_")
+
+; HERO PROP (2026-10-27): the reader and its cap on the nightstand (the
+; compact one from Cale, '49) — replaces the tablet-and-headset stand-in
+[node name="HP_Stick_Reader" type="Node3D" parent="."]
+position = Vector3(-3.850, 0.560, -6.670)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/stick_reader.glb"
+size_m = 0.300
+length_axis = "x"
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Reader", "Headset_")

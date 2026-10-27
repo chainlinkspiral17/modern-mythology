@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 189: THE READER — the slowstick console gets a hero model.**
+- User: "the slowstick console doesn't have a hero model and needs one." In the text it is
+  THE READER ("The stick goes in the reader. The cap goes on your head."), with its CAP ("a
+  thin band of a fabric that wraps around your forehead … connects to the reader through a
+  cable"), a ninety-minute timer and the end-of-stick beep; Tem's grandfather's at the cabin
+  since 2042, Finn's "compact one" from Cale in '49. Roster prop `stick_reader` (small tier;
+  SPARSE — its look is proposed, the text gives only what it does). Placed on Finn's
+  nightstand (its tablet-and-headset stand-in hidden: the text's cap is a fabric band, not a
+  headset) and on the cabin's side table by the stove, the match tin moved to the front
+  corner to make room (cabin builder). The public coin-free cabinet stays `scumm_machine`.
+- The user (same day): "I don't want you generating stuff on your own. Let me know the images
+  to generate and I will." — a hard rule in CLAUDE.md now: entries and lists, never a
+  generation step.
+
 **2026-10-27 · pass 188: THE DECK'S REPORT — eye lines at the centre, an eye-level lens, the phone, the crow, the inserts.**
 - **Eye lines** ("characters and sightlines still too high … at the center of the screen or
   just above. it's unnerving"): every shot size is anchored with the eyes ~42-45 % down
