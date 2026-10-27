@@ -1691,6 +1691,55 @@ const CAMERA_PRESETS := {
 			"fog_density": 0.0015},
 		"suppress_input": true,
 	},
+	# ── VOL 1 — Houston outside, 2010s, "weird and fantastical" (build_houston_bayou.py, 2026-10-27) ──
+	# Andy: vol 1 is 2010s Houston; the interiors may share with New Orleans,
+	# the outside may not — the park and the river had played on vol 5's
+	# Graustark riverfront. The park on Buffalo Bayou at x 0; the dream river
+	# at x 3000.
+	"houston_park_day": {
+		"scene": "res://scenes/locales/houston_bayou.tscn",
+		"requires_glb": "res://assets/3d/locales/houston_bayou.glb",
+		"far": 2500.0,   # downtown over the trees, 1.2-1.7 km east
+		# ch2: "EXT. THE PARK — DAY"; "Faust is jogging with his friend, Jacob":
+		# on the trail along the bayou, east toward the footbridge and downtown.
+		"camera_origin": Vector3(-30.0, 1.6, 26.0),
+		"camera_rotation": Vector3(0.03, -1.40, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"jd_river": {
+		"scene": "res://scenes/locales/houston_bayou.tscn",
+		"requires_glb": "res://assets/3d/locales/houston_bayou.glb",
+		"far": 700.0,
+		# ch10: "Judgement Day isn't on a road anymore."; "On the shore, things go
+		# by. A strip mall. A Little League diamond with the lights still on.";
+		# the toll gate; "a building sits on the water with every light on" —
+		# over the sedan's roof, up the river.
+		"camera_origin": Vector3(3000.0, 1.9, 5.5),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.06, 0.05, 0.16, 1), "sky_horizon": Color(0.34, 0.24, 0.50, 1),
+			"ground_horizon": Color(0.12, 0.10, 0.20, 1), "ground_bottom": Color(0.04, 0.04, 0.08, 1),
+			"ambient_color": Color(0.56, 0.52, 0.82, 1), "ambient_energy": 0.95, "fog_color": Color(0.30, 0.26, 0.46, 1),
+			"fog_density": 0.002},
+		"suppress_input": true,
+	},
+	"jd_river_turn": {
+		"scene": "res://scenes/locales/houston_bayou.tscn",
+		"requires_glb": "res://assets/3d/locales/houston_bayou.glb",
+		"far": 700.0,
+		# ch15: "Out in the middle of the river it's very quiet. There's no
+		# shore on either side."; far ahead, "Club #, with no line and no sign,
+		# just a door."
+		"camera_origin": Vector3(3000.0, 1.9, 304.5),
+		"camera_rotation": Vector3(-0.04, 3.1416, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.06, 0.05, 0.16, 1), "sky_horizon": Color(0.34, 0.24, 0.50, 1),
+			"ground_horizon": Color(0.12, 0.10, 0.20, 1), "ground_bottom": Color(0.04, 0.04, 0.08, 1),
+			"ambient_color": Color(0.56, 0.52, 0.82, 1), "ambient_energy": 0.95, "fog_color": Color(0.30, 0.26, 0.46, 1),
+			"fog_density": 0.002},
+		"suppress_input": true,
+	},
 	# ── VOL 3 — "v. emulsion": Kathy's Utah run (build_desert_route.py, 2026-10-27) ──
 	# The Deck: "vol 1-4 is still super broken … illogical nonsense" — the
 	# chapter's "blasted Utah desert red" played on vol 6's 2026 Texas Gulf

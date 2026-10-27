@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:riverfront_park"
+   "src": "3d:houston_park_day"
   },
   {
    "t": "hide",
@@ -156,7 +156,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:riverfront_park"
+   "src": "3d:houston_park_day"
   },
   {
    "t": "interlude",
@@ -222,7 +222,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:riverfront_park"
+   "src": "3d:houston_park_day"
   },
   {
    "t": "show",

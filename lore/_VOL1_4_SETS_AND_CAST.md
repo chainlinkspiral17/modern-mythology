@@ -74,7 +74,7 @@ A sweep on 2026-10-27 found 36 vol 1–4 uses of sets built for vols 5–7 (`bg_
 |---|---|---|---|---|
 | 1 | vol3 ch7 emulsion / red dust (Utah desert, gas station, motel) | vol 6 Texas hwy 9, NexCorp, Cypress Motel | its own desert road, early 2000s | **built 2026-10-27** — `desert_route` (six presets) |
 | 1 | vol2 ch2/ch3 football | vol 6 Texas stadium | Small Wood's field | **built 2026-10-27** — `small_wood_field` |
-| 2 | vol1 exteriors (the park, the river, Judgement Day's streets) | vol 5 Graustark riverfront | 2010s Houston, weird | to plan — the interiors stay (Andy: "Houston and New Orleans interiors can be similar"; Jacob's apartment keeps new_orleans_apartment) |
+| 2 | vol1 exteriors (the park, the river) | vol 5 Graustark riverfront | 2010s Houston, weird | **built 2026-10-27** — `houston_bayou`: `houston_park_day` (Buffalo Bayou), `jd_river`, `jd_river_turn` (the dream river). The interiors stay (Andy: "Houston and New Orleans interiors can be similar"). Judgement Day's driving-day cab (vehicle_cab) still to look at |
 | 2 | vol3 ch6 arcadeum (Honolulu high-rise lobby, game store) | 2052 cedar tower, 2026 Cosmic Comics | Honolulu, early 2000s | to plan |
 | 2 | vol2 ch6 mayhune (summer backyard party) | vol 6 Texas Kowalski backyard | a late-90s Oregon backyard | to plan |
 | 2 | vol2 bookstores (The Cat's Pause, the Blue Heron) | vol 7 Salty Tome (2052) | the 1990s bookstores | to plan |

@@ -147,6 +147,11 @@
  "hospital_room": {
   "draw": 100
  },
+ "houston_bayou": {
+  "draw": 196,
+  "prims": 64204,
+  "objects": 366
+ },
  "kestrel_mountain": {
   "draw": 142,
   "prims": 7748,

@@ -31,6 +31,12 @@ DARK = (0.10, 0.10, 0.11, 1.0)
 
 
 def _frame(cx, cy, along):
+    # (2026-10-27) "-Y": along Y with the nose toward -y (vol 1's Judgement Day
+    # heading south on the turn of the river)
+    if along == "-Y":
+        def P(u, v, z): return (cx - v, cy - u, z)
+        def S(l, w, h): return (w, l, h)
+        return P, S, "X", "X"
     if along == "X":
         def P(u, v, z): return (cx + u, cy + v, z)
         def S(l, w, h): return (l, w, h)

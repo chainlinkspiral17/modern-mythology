@@ -58385,6 +58385,50 @@
       ],
       "lettering": "OFFICE",
       "text_body": "Ring Bell After 10 PM · Check-Out 11 AM"
+    },
+    {
+      "slug": "houston_bayou_drugstore_sign",
+      "kind": "art",
+      "name": "the sign over the all-night drugstore on the dream river",
+      "file": "houston_bayou_drugstore_sign.png",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "houston_bayou_drugstore_sign"
+      ],
+      "tag": "sign · houston_bayou · 10 x 0.9 m",
+      "prompt": "Flat straight-on face of a long internally lit box sign over the front of an all-night drugstore that is also a gas station, Houston in the 2010s, seen at night: a glossy red acrylic face glowing from inside, white bold sans-serif capitals, a white strip of smaller service words beneath. A little bug-speckled at the bottom, one fluorescent tube behind it dimmer than the rest. Very long landscape, evenly lit.",
+      "canon": [
+        {
+          "src": "vol1 (The All-Night Drugstore)",
+          "text": "It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-27, the new houston_bayou set) The text calls it the All-Night Drugstore and gives no store name; the wording is proposed — no real chain's name or marks.",
+      "art_cat": "SIGN",
+      "apply": [
+        {
+          "locale": "houston_bayou",
+          "label": "Drugstore_Sign",
+          "center": [
+            3000.0,
+            154.91,
+            4.0
+          ],
+          "size": [
+            10.0,
+            0.9
+          ],
+          "facing": "-y",
+          "hide": [
+            "Drugstore_Sign"
+          ]
+        }
+      ],
+      "lettering": "ALL NIGHT DRUGS",
+      "text_body": "PHARMACY · PHOTO · SUNDRIES · GAS · OPEN 24 HOURS"
     }
   ]
 }

@@ -158,9 +158,12 @@
    "scenes": 1
   },
   "vol1_jd_river": {
-   "fit": "reuse",
-   "to": "3d:riverfront_exterior",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:jd_river",
+   "build": "houston_bayou",
+   "note": "the dream river: the shore things, the toll gate, the drugstore on the water (was vol 5 Graustark riverfront)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol1_missing_link_exterior": {
    "fit": "exact",
@@ -205,10 +208,12 @@
    "scenes": 1
   },
   "vol1_river_turn": {
-   "fit": "reuse",
-   "to": "3d:riverfront_exterior",
-   "note": "Act Three's river turn",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:jd_river_turn",
+   "build": "houston_bayou",
+   "note": "the turn: no shore, Club # far off (was vol 5 Graustark riverfront)",
+   "scenes": 1,
+   "built": "2026-10-27 draft 1"
   },
   "vol1_shuttle_bench": {
    "fit": "exact",

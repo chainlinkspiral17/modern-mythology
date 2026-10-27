@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 196: VOL 1 GOES OUTSIDE IN HOUSTON.**
+- **The set:** vol 1's park and river played on vol 5's Graustark riverfront. New set `houston_bayou` (2010s, draft 1):
+  - **`houston_park_day`:** Buffalo Bayou's trail, live oaks, the white arched footbridge, downtown over the trees (far 2500), a close-up pair for the jog.
+  - **`jd_river`:** the dream river at night. Judgement Day (club_street's maroon sedan) rides low in violet water past the streetlights, the strip mall, the hitchhiker, the Little League diamond with its lights on, to the red-and-white toll arm and the fluorescent-bright water before "The All-Night Drugstore" on its piles, with its pumps on the water, its methane torch on a pole and its wash-fluid bucket.
+  - **`jd_river_turn`:** open water, no shore, Club # one low door far off.
+- **The kit:** `make_car` takes `along="-Y"` (a car heading south).
+- **Pictures:** one proposed sign picture.
+- **Draft N+1:**
+  - the river's reflections and the tanooki leaf;
+  - the drugstore's interior through its glass;
+  - Judgement Day's driving cab (vol1 ch6, still vol 6's vehicle_cab);
+  - the rest of WAVE 4.
+
 **2026-10-27 · pass 195: THE ERAS, THE BORROWED SETS, AND KATHY'S UTAH.**
 - **Andy's eras** (now in _MASTER_TIMELINE and _VOL1_4_SETS_AND_CAST):
   - vol 1 is 2010s Houston, "weird and fantastical";
