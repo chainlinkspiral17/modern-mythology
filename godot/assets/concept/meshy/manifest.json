@@ -32134,5 +32134,26 @@
       "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T18:54:47+00:00",
+    "stage": "image",
+    "slug": "box_of_three_sticks",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The box of three sticks like this: The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. Bench behind you, third slot in the wooden box.\nSingle-object concept render of The box of three sticks, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

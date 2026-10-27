@@ -75090,6 +75090,36 @@
    "md5": "f4f0b7815f95a2d93fbbf86eca55e622",
    "size": 2609587
   },
+  "godot/assets/concept/meshy/ceramic_frog/back.png": {
+   "at": "2026-10-27T18:52:52+00:00",
+   "md5": "ea1eb1c3441bbf2f60e5c1f499f0f16e",
+   "size": 1161354
+  },
+  "godot/assets/concept/meshy/ceramic_frog/ceramic_frog_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:52:52+00:00",
+   "md5": "ea1eb1c3441bbf2f60e5c1f499f0f16e",
+   "size": 1161354
+  },
+  "godot/assets/concept/meshy/ceramic_frog/ceramic_frog_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:52:52+00:00",
+   "md5": "a057f561b10a54b9df50719c4d8c7f93",
+   "size": 969974
+  },
+  "godot/assets/concept/meshy/ceramic_frog/ceramic_frog_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:52:52+00:00",
+   "md5": "6a0fdcccfeca3c657f17365ced6330d0",
+   "size": 1158350
+  },
+  "godot/assets/concept/meshy/ceramic_frog/front.png": {
+   "at": "2026-10-27T18:52:52+00:00",
+   "md5": "a057f561b10a54b9df50719c4d8c7f93",
+   "size": 969974
+  },
+  "godot/assets/concept/meshy/ceramic_frog/side.png": {
+   "at": "2026-10-27T18:52:52+00:00",
+   "md5": "6a0fdcccfeca3c657f17365ced6330d0",
+   "size": 1158350
+  },
   "godot/assets/concept/meshy/chart_1932/back.png": {
    "at": "2026-10-27T16:39:53+00:00",
    "md5": "d9eb8f56195f3dab51b8d7df75a6253c",
@@ -75669,6 +75699,36 @@
    "at": "2026-10-14T02:38:35+00:00",
    "md5": "d92abd448ba2cb3f6bca2b398458b21d",
    "size": 2008837
+  },
+  "godot/assets/concept/meshy/coach_k_f250/back.png": {
+   "at": "2026-10-27T18:53:07+00:00",
+   "md5": "8f6ae18cf0438378a7ec0c6ae0cbc8ca",
+   "size": 2107182
+  },
+  "godot/assets/concept/meshy/coach_k_f250/coach_k_f250_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:53:07+00:00",
+   "md5": "8f6ae18cf0438378a7ec0c6ae0cbc8ca",
+   "size": 2107182
+  },
+  "godot/assets/concept/meshy/coach_k_f250/coach_k_f250_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:53:07+00:00",
+   "md5": "5e08315d584f15d3c757d3d72506d2d7",
+   "size": 2205265
+  },
+  "godot/assets/concept/meshy/coach_k_f250/coach_k_f250_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:53:07+00:00",
+   "md5": "5c5f2e6ba9ad9becde4dc2973f982809",
+   "size": 1974944
+  },
+  "godot/assets/concept/meshy/coach_k_f250/front.png": {
+   "at": "2026-10-27T18:53:07+00:00",
+   "md5": "5e08315d584f15d3c757d3d72506d2d7",
+   "size": 2205265
+  },
+  "godot/assets/concept/meshy/coach_k_f250/side.png": {
+   "at": "2026-10-27T18:53:07+00:00",
+   "md5": "5c5f2e6ba9ad9becde4dc2973f982809",
+   "size": 1974944
   },
   "godot/assets/concept/meshy/coach_k_home/back.png": {
    "at": "2026-10-11T20:15:28+00:00",
@@ -76689,6 +76749,36 @@
    "at": "2026-10-18T18:26:58+00:00",
    "md5": "073e84032fdded835d6fe757e6180f66",
    "size": 1961263
+  },
+  "godot/assets/concept/meshy/diegos_f150/back.png": {
+   "at": "2026-10-27T18:53:18+00:00",
+   "md5": "1e7c07806b0af28eba98437048ba7d92",
+   "size": 2226170
+  },
+  "godot/assets/concept/meshy/diegos_f150/diegos_f150_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:53:18+00:00",
+   "md5": "1e7c07806b0af28eba98437048ba7d92",
+   "size": 2226170
+  },
+  "godot/assets/concept/meshy/diegos_f150/diegos_f150_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:53:18+00:00",
+   "md5": "8124680d53e19001c10132c8deadb1df",
+   "size": 2297609
+  },
+  "godot/assets/concept/meshy/diegos_f150/diegos_f150_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:53:18+00:00",
+   "md5": "0fa3b644f58007d374b02d5725955a49",
+   "size": 2169469
+  },
+  "godot/assets/concept/meshy/diegos_f150/front.png": {
+   "at": "2026-10-27T18:53:18+00:00",
+   "md5": "8124680d53e19001c10132c8deadb1df",
+   "size": 2297609
+  },
+  "godot/assets/concept/meshy/diegos_f150/side.png": {
+   "at": "2026-10-27T18:53:18+00:00",
+   "md5": "0fa3b644f58007d374b02d5725955a49",
+   "size": 2169469
   },
   "godot/assets/concept/meshy/diner_bbs_screen/diner_bbs_screen_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:43:45+00:00",
