@@ -26163,5 +26163,49 @@
       "godot/assets/concept/meshy/janessa/janessa_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/janessa/janessa_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:09:14+00:00",
+    "stage": "mesh",
+    "slug": "janessa",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a17b89-04e8-73bf-908d-6957745dd679",
+    "inputs": [
+      "godot/assets/concept/meshy/janessa/front.png",
+      "godot/assets/concept/meshy/janessa/side.png",
+      "godot/assets/concept/meshy/janessa/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "standard",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/janessa.glb",
+    "file_size_kb": 62346.2
+  },
+  {
+    "at": "2026-10-27T04:09:25+00:00",
+    "stage": "image",
+    "slug": "maya_bedroom_manila_envelope",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the manila envelope under the third board: for whoever is ready like this: In the cavity is a single flat manila envelope, yellowed at the edges, sealed. On the front, in a handwriting Maya has never seen before \u2014 her grandfather's \u2014 is written, in pencil: for whoever is ready. Additional direction: Seen from directly above, evenly lit: the front of a flat sealed manila envelope, long and narrow, yellowed at the edges and browned along the old fold lines, dust in the corners from years under a floorboard. Across the middle, in soft grey pencil, in an unfamiliar man's handwriting, small and careful: \"for whoever is ready\". Nothing else written. Compose the envelope's face and the words across the horizontal middle band of the frame (the picture is cropped to a wide strip).\nSIZE: the real object is 26 cm wide by 11 cm tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the manila envelope under the third board: for whoever is ready, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: for whoever is ready. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/maya_bedroom_manila_envelope/maya_bedroom_manila_envelope_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
