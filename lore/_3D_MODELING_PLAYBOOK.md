@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · another year at the same place is a preset, not a new set (pass 198)
+
+**Context:** vol 3's early-2000s night stop had borrowed vol 6's 2026 NexCorp
+station: right shape, wrong year. It carried the brand's logos, a story's
+van and cars, and a morning sun.
+
+**Rule:** when a scene needs a place that exists in another era, give the
+same set an era preset:
+- `strip` the other year's things by prefix: vehicles, story props, its sun;
+- skip that year's pictures with `not_presets` on their roster rows;
+- add the era's own lights, tagged to the preset.
+
+Build a new set only when the place itself differs.
+
 ### 2026-10-27 · the lens sees 200 m unless the preset says otherwise (pass 195)
 
 **Context:** the Utah mesas, 500–900 m out, never drew, and the Small Wood

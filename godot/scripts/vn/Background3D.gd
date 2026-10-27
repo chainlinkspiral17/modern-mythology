@@ -1569,6 +1569,26 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	# (2026-10-27) VOL 3 "passengers": the same kind of station at 3 a.m. in the
+	# early 2000s — "Their one stop between here and there"; "the small
+	# market, bleached white light, smelling of burnt popcorn"; "gas on eight".
+	# It played on vol 6's NexCorp morning: the brand's pictures skip this view
+	# (not_presets in the roster), and the 2026 van, cars, badge and morning
+	# sun leave it (strip).
+	"gas_station_2003_night": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# by pump eight, across the forecourt to the lit store
+		"camera_origin": Vector3(12.5, 1.6, 18.0),
+		"camera_rotation": Vector3(0.02, 0.607, 0.0),
+		"fov": 62.0,
+		"strip": ["Sun_Morning", "Van_", "Claire_Car", "Tome_Car", "Getaway_Sedan", "Courtesy_Badge", "Ice_Chest_Gatorade", "Cash_Bill"],
+		"env": {"sky_top": Color(0.02, 0.02, 0.05, 1), "sky_horizon": Color(0.14, 0.10, 0.16, 1),
+			"ground_horizon": Color(0.06, 0.05, 0.06, 1), "ground_bottom": Color(0.02, 0.02, 0.02, 1),
+			"ambient_color": Color(0.46, 0.46, 0.56, 1), "ambient_energy": 0.35, "fog_color": Color(0.12, 0.10, 0.14, 1),
+			"fog_density": 0.004},
+		"suppress_input": true,
+	},
 	"nexcorp_van_cargo": {
 		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
@@ -5343,12 +5363,13 @@ func load_location(preset_id: String) -> bool:
 	# a steam puff whose glass material had never drawn tripped the GL
 	# renderer's "material is null" four times a load)
 	_strip_other_preset_lights(_location_instance, preset_id)
+	_strip_prefixes(_location_instance, spec.get("strip", []))
 	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
 	# real transparency — before this every pane was an opaque slab.
 	GlassPass.apply(_location_instance)
 	# HERO ART (2026-10-12): the installed pictures (the alley mural, the
 	# photo in Diego's mirror ...) laid on their surfaces, stand-ins hidden.
-	HeroArtScript.apply(_location_instance, String(spec.get("scene", "")).get_file().get_basename())
+	HeroArtScript.apply(_location_instance, String(spec.get("scene", "")).get_file().get_basename(), preset_id)
 	# PER-PRESET LIGHTS (2026-10-08), the markers' convention carried to
 	# lights: a Light3D named `<name>__<preset_id>` belongs to that preset's
 	# AREA of a shared set and is dropped, before it enters the tree (so the
@@ -5507,6 +5528,30 @@ func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
 		if owners.is_empty() or preset_id in owners:
 			continue
 		doomed.append(n)
+	doomed.sort_custom(func(x: Node, y: Node) -> bool: return _depth(x) > _depth(y))
+	for n: Node in doomed:
+		if is_instance_valid(n) and n.get_parent() != null:
+			n.get_parent().remove_child(n)
+			n.free()
+
+
+## (2026-10-27) A preset's `strip`: node-name prefixes that leave the set for
+## that preset — another era's view of the same place without another year's
+## things (vol 3's 2003 night stop at the station vol 6 dresses for 2026: the
+## van, the cars, the badge). Deepest first, like the tagged strip.
+func _strip_prefixes(root: Node, prefixes_v: Variant) -> void:
+	if typeof(prefixes_v) != TYPE_ARRAY or (prefixes_v as Array).is_empty():
+		return
+	var prefixes: Array = prefixes_v
+	var doomed: Array[Node] = []
+	for n: Node in root.find_children("*", "Node3D", true, false):
+		if n is Marker3D:
+			continue            # lights may go too: another year's sun
+		var nm: String = String(n.name)
+		for pv: Variant in prefixes:
+			if nm.begins_with(String(pv)):
+				doomed.append(n)
+				break
 	doomed.sort_custom(func(x: Node, y: Node) -> bool: return _depth(x) > _depth(y))
 	for n: Node in doomed:
 		if is_instance_valid(n) and n.get_parent() != null:

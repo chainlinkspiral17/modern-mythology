@@ -3835,6 +3835,14 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 198: ANOTHER YEAR AT THE SAME PLACE — era presets.**
+- **The problem:** vol 3 ch8's 3 a.m. stop played on vol 6's 2026 NexCorp morning, with the brand, the unmarked van and the story's cars.
+- **The engine (two small tools):**
+  - A preset's `strip` takes node-name prefixes (lights included) that leave the set for that view. It is another year's view of the same place without that year's things.
+  - A hero-art row's `not_presets` skips the picture in the named views.
+- **The use:** `gas_station_2003_night` is the same station unbranded at night. It has canopy lights, the store's "bleached white light", the department-store signs' colours across the road, and "gas on eight" in the foreground.
+- **A misread caught:** vol 4 cc_3's grungy bathroom is an after party's, not a gas station's; it is back in the WAVE 4 triage.
+
 **2026-10-27 · pass 197: THE LINK HOME — one Small Wood house.**
 - Andy: "the points of impact family lives in the link home after they move out"; asked which house, "Small Wood house, unified".
 - **Before:** the narrator's room (`small_wood_ranch`) and the renters' farmhouse (`small_wood_farmhouse`) were two sets.

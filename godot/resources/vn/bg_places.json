@@ -1106,9 +1106,12 @@
    }
   },
   "vol3_gas_station_night": {
-   "fit": "reuse",
-   "to": "3d:nexcorp_fueling_station",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:gas_station_2003_night",
+   "build": "nexcorp_fueling_station",
+   "note": "the one stop at 3 a.m., early 2000s: the station without vol 6's brand, van and cars",
+   "scenes": 1,
+   "built": "2026-10-27 era preset"
   },
   "vol3_glass_condo_demo_unit": {
    "fit": "exact",

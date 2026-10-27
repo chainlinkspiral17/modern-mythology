@@ -111,7 +111,7 @@ static func placements() -> Array:
 	return live
 
 
-static func apply(root: Node, locale: String) -> int:
+static func apply(root: Node, locale: String, preset_id: String = "") -> int:
 	last_report = {}
 	placed_art = []
 	current_locale = locale
@@ -131,6 +131,12 @@ static func apply(root: Node, locale: String) -> int:
 			last_report[slug] = _why_missing(String(it["stem"]))
 			continue
 		var row: Dictionary = it["row"]
+		# (2026-10-27) a picture that belongs to some views of a set and not
+		# others: `not_presets` skips it there (vol 6's NexCorp logos are not
+		# on the same station in 2003)
+		var skip_v: Variant = row.get("not_presets", [])
+		if preset_id != "" and typeof(skip_v) == TYPE_ARRAY and (skip_v as Array).has(preset_id):
+			continue
 		var quad: MeshInstance3D = _quad(tex, row)
 		quad.name = "HeroArt_" + slug
 		root.add_child(quad)
