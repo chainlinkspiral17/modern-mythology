@@ -26117,5 +26117,30 @@
     "outputs": [
       "godot/assets/concept/meshy/editing_suite_tide_flats__suite_tide/editing_suite_tide_flats__suite_tide_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T02:52:14+00:00",
+    "stage": "art",
+    "slug": "editing_suite_tide_flats__suite_tide",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/editing_suite_tide_flats__suite_tide/front.png",
+    "output": "godot/assets/art/hero/editing_suite_tide_flats__suite_tide.png"
+  },
+  {
+    "at": "2026-10-27T02:52:42+00:00",
+    "stage": "image",
+    "slug": "caltech_dabney_game_room_title_loop",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the game room screen left on its title loop like this: Andy goes back down to the game room with his hardcover notebook and sinks into the black leather, the refrigerators humming, some screen left on its title loop, and he writes because he told himself he would, a page a day minimum, more if the place gives it up. Additional direction: A flat early-2000s LCD television's picture only, no bezel, straight-on, filling the frame edge to edge: a 2003 console video game's title screen in its attract loop \u2014 a chunky metallic emblem with no readable words over a moody rendered landscape at dusk, a small glowing prompt bar blinking near the bottom. Slight motion blur, backlight bloom in the dark corners.\nSIZE: the real object is 81 cm wide by 45 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the game room screen left on its title loop, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/caltech_dabney_game_room_title_loop/caltech_dabney_game_room_title_loop_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
