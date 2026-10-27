@@ -28199,5 +28199,63 @@
     "outputs": [
       "godot/assets/concept/meshy/bus_station_bus_stop_sign/bus_station_bus_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T05:12:40+00:00",
+    "stage": "art",
+    "slug": "bus_station_bus_stop_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/bus_station_bus_stop_sign/front.png",
+    "output": "godot/assets/art/hero/bus_station_bus_stop_sign.png"
+  },
+  {
+    "at": "2026-10-27T05:12:54+00:00",
+    "stage": "image",
+    "slug": "bus_station_terminal_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the bus station's sign over its doors like this: A Bus Station CAROLINE walks up to the bus overhang. Additional direction: A city bus station's fascia sign over glass doors, straight-on and filling the frame: the words BUS STATION in white sans-serif capital letters on a blue enamelled metal panel, a thin aluminium frame, rain streaks and a little pigeon mess along the top edge, a bracket bolt rusting. 2000s, plain municipal, no logo. Daylight, evenly lit.\nSIZE: the real object is 6.00 m wide by 70 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 27% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the bus station's sign over its doors, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bus_station_terminal_sign/bus_station_terminal_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:12:59+00:00",
+    "stage": "art",
+    "slug": "bus_station_terminal_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/bus_station_terminal_sign/front.png",
+    "output": "godot/assets/art/hero/bus_station_terminal_sign.png"
+  },
+  {
+    "at": "2026-10-27T05:13:16+00:00",
+    "stage": "image",
+    "slug": "louisiana_road_stop_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A standard red octagonal stop sign, straight-on and filling the frame: white border and the word STOP in white block letters on reflective red sheeting, sun-faded toward pink at the top, a few small dents, rust weeping from the two bolt holes, a swipe of road grime, the octagon's corners against dark roadside trees at dusk. Evenly lit.\nSIZE: the real object is 50 cm wide by 50 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the roadside stop sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/louisiana_road_stop_sign/louisiana_road_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:13:32+00:00",
+    "stage": "art",
+    "slug": "louisiana_road_stop_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/louisiana_road_stop_sign/front.png",
+    "output": "godot/assets/art/hero/louisiana_road_stop_sign.png"
   }
 ]

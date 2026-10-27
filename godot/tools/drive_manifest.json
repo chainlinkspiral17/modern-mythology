@@ -5625,6 +5625,11 @@
    "md5": "da995715115dfa2c526427b00f68eda9",
    "size": 1776576
   },
+  "godot/assets/art/hero/bus_station_bus_stop_sign.png": {
+   "at": "2026-10-27T05:12:48+00:00",
+   "md5": "5311858a45e4d28d4adfbb8be9044e9d",
+   "size": 3339492
+  },
   "godot/assets/art/hero/cabin_interior_brandon_notebook.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "c0202e4be16f6f2146d0f50f8d90697b",
@@ -8204,6 +8209,16 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "cbfec70671c28a85638e14ddbd84460e",
    "size": 2854373
+  },
+  "godot/assets/art/hero/small_wood_town_melody_tape.png": {
+   "at": "2026-10-27T05:12:48+00:00",
+   "md5": "50bd8ab889db840038156391345de481",
+   "size": 3215313
+  },
+  "godot/assets/art/hero/small_wood_town_radio_script.png": {
+   "at": "2026-10-27T05:12:48+00:00",
+   "md5": "10a11ae29654867a94f98bc7038347c4",
+   "size": 2725641
   },
   "godot/assets/art/hero/smolvud_coop_cooler_header_sign.png": {
    "at": "2026-10-14T05:30:55+00:00",
@@ -69150,6 +69165,16 @@
    "md5": "da995715115dfa2c526427b00f68eda9",
    "size": 1776576
   },
+  "godot/assets/concept/meshy/bus_station_bus_stop_sign/bus_station_bus_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:12:56+00:00",
+   "md5": "5311858a45e4d28d4adfbb8be9044e9d",
+   "size": 3339492
+  },
+  "godot/assets/concept/meshy/bus_station_bus_stop_sign/front.png": {
+   "at": "2026-10-27T05:12:56+00:00",
+   "md5": "5311858a45e4d28d4adfbb8be9044e9d",
+   "size": 3339492
+  },
   "godot/assets/concept/meshy/cabin_interior_brandon_notebook/cabin_interior_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:00:55+00:00",
    "md5": "c0202e4be16f6f2146d0f50f8d90697b",
@@ -75680,6 +75705,16 @@
    "md5": "41ee4633192199e2fba8425478ed6cd9",
    "size": 1786767
   },
+  "godot/assets/concept/meshy/panel_vol6_bill_note/front.png": {
+   "at": "2026-10-27T05:13:07+00:00",
+   "md5": "d79cd0219d4eb271fe1112fefde4db65",
+   "size": 2203502
+  },
+  "godot/assets/concept/meshy/panel_vol6_bill_note/panel_vol6_bill_note_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:13:07+00:00",
+   "md5": "d79cd0219d4eb271fe1112fefde4db65",
+   "size": 2203502
+  },
   "godot/assets/concept/meshy/panel_vol6_corkboard_sheet/front.png": {
    "at": "2026-10-27T05:10:52+00:00",
    "md5": "c3be87ffe7f64d1da2f432bec24e5e4e",
@@ -75729,6 +75764,16 @@
    "at": "2026-10-27T05:11:29+00:00",
    "md5": "b46667f1fe862d092a9f50c74d0ecb42",
    "size": 2329055
+  },
+  "godot/assets/concept/meshy/panel_vol6_speak_and_spell/front.png": {
+   "at": "2026-10-27T05:13:20+00:00",
+   "md5": "14e52243e88fea914113bfc2c3a2a405",
+   "size": 1688472
+  },
+  "godot/assets/concept/meshy/panel_vol6_speak_and_spell/panel_vol6_speak_and_spell_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:13:20+00:00",
+   "md5": "14e52243e88fea914113bfc2c3a2a405",
+   "size": 1688472
   },
   "godot/assets/concept/meshy/panel_vol6_transport_order/front.png": {
    "at": "2026-10-27T05:11:37+00:00",
@@ -79269,6 +79314,26 @@
    "at": "2026-10-14T03:27:39+00:00",
    "md5": "cbfec70671c28a85638e14ddbd84460e",
    "size": 2854373
+  },
+  "godot/assets/concept/meshy/small_wood_town_melody_tape/front.png": {
+   "at": "2026-10-27T05:13:31+00:00",
+   "md5": "50bd8ab889db840038156391345de481",
+   "size": 3215313
+  },
+  "godot/assets/concept/meshy/small_wood_town_melody_tape/small_wood_town_melody_tape_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:13:31+00:00",
+   "md5": "50bd8ab889db840038156391345de481",
+   "size": 3215313
+  },
+  "godot/assets/concept/meshy/small_wood_town_radio_script/front.png": {
+   "at": "2026-10-27T05:13:38+00:00",
+   "md5": "10a11ae29654867a94f98bc7038347c4",
+   "size": 2725641
+  },
+  "godot/assets/concept/meshy/small_wood_town_radio_script/small_wood_town_radio_script_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:13:38+00:00",
+   "md5": "10a11ae29654867a94f98bc7038347c4",
+   "size": 2725641
   },
   "godot/assets/concept/meshy/smolvud_coop_cooler_header_sign/front.png": {
    "at": "2026-10-14T05:32:11+00:00",
