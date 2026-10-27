@@ -465,8 +465,9 @@ metadata/fov = 45.0
 position = Vector3(-1.250, 0.951, -5.821)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.698
-length_axis = "z"
+size_m = 0.34
+upright = true
+seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Crow_")
 

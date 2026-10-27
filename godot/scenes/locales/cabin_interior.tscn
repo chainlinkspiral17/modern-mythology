@@ -1126,8 +1126,9 @@ metadata/fov = 45.0
 position = Vector3(-2.600, 1.059, -8.371)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.698
-length_axis = "z"
+size_m = 0.34
+upright = true
+seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Crow_")
 
@@ -1135,8 +1136,9 @@ hide_prefixes = PackedStringArray("Crow_")
 position = Vector3(-2.800, 0.939, 0.979)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.697
-length_axis = "z"
+size_m = 0.34
+upright = true
+seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Porch_Crow_")
 

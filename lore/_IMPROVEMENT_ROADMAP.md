@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 202: THE CROW SITS (draft 2 of the crow).**
+- **The Deck:** "crow seems to just be hanging out or hovering."
+- **Cause:** the 16 crow HeroProps were laid with `length_axis = "z"`, so the model was sized by its beak-to-tail length and seated on its lowest vertex. That vertex was the tail tip, so the feet floated a hand above the rail or roof.
+- **Fix:**
+  - HeroProp `seat_center` seats a model on the lowest vertex of the middle half of its footprint (the feet), not the whole model's lowest point.
+  - All 16 crows are now `upright` + `seat_center` and sized by height: 0.34 m, or 0.26 m for the one on Finn's truck.
+  - The crows are in 11 sets: bindery, board_lords_interior, cabin_interior, cabin_road, cape_perpetua_overlook, county_line_station, finn_apartment, graustark, miller_back_porch, miriam_subaru and salty_tome_interior.
+  - Checked by a render on the cabin porch rail.
+- **Draft 3 targets:**
+  - A perched pose. The GLB stands; a crow on a rail should crouch.
+  - Turn each crow toward what its scene's text has it watching.
+
 **2026-10-27 · pass 201: THE READING SCREEN'S BASICS — text off the faces, the phone beside the reader, stale sets named.**
 - **The text** ("text over portraits is wrong. bring text lower or keep it off to the side"):
   - The reading box is ~31 % of the screen (was 44 %), so its text starts below the chin. The eyes sit ~44 % down since pass 188.
