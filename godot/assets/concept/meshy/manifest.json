@@ -28876,5 +28876,34 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/dean_house_1994_graph_paper/front.png",
     "output": "godot/assets/art/hero/dean_house_1994_graph_paper.png"
+  },
+  {
+    "at": "2026-10-27T05:58:12+00:00",
+    "stage": "image",
+    "slug": "scumm_stick",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes A SCUMM stick like this: The standard SCUMM stick \u2014 a dark plastic rectangle about the size of his palm, with the gold connector at one end. In its waxed-paper sleeve \u2014 the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old. a SCUMM stick (a small plastic cartridge approximately the size of an old Game Boy game) The sticks have, by physical inspection, no labels. Sal has, over the years, started small hand-written tags on a few of them in marker. On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip. The wax yellowed at the edges. A small label on the front with handwriting Finn did not know.\nSingle-object concept render of A SCUMM stick, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/scumm_stick/scumm_stick_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/scumm_stick/scumm_stick_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/scumm_stick/scumm_stick_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:58:26+00:00",
+    "stage": "art",
+    "slug": "lake_palestine_ramp_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lake_palestine_ramp_sign/front.png",
+    "output": "godot/assets/art/hero/lake_palestine_ramp_sign.png"
   }
 ]
