@@ -284,6 +284,15 @@ under the page's address and port; Hero Studio's move from :8765 to :8877
   and to TOOL_STATE_KEYS in meshy_pipeline.py. (The DAW inbox is a
   transient hand-off, not stored work.)
 
+## The user generates; Claude lists (hard rule, 2026-10-27)
+
+The user: "I don't want you generating stuff on your own. Let me know the
+images to generate and I will." Never run an image / model / voice
+generation step (`meshy_pipeline.py image|mesh|run`, Runway, ElevenLabs …)
+and never put one in a command for the user to paste. Write the roster
+entries, then hand over the LIST of what to generate (slug, what it is, why);
+the user makes them in Hero Studio.
+
 ## Verify GDScript with BOTH checkers (hard rule)
 
 `gdparse <file>` checks GRAMMAR only. Godot **also** runs type
