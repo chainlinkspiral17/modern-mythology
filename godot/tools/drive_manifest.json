@@ -69135,6 +69135,26 @@
    "md5": "a7d6c6237e688a2b3439cf504068933f",
    "size": 2847129
   },
+  "godot/assets/concept/meshy/caldwell_porch_night_anita_phone_photo/caldwell_porch_night_anita_phone_photo_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:02:36+00:00",
+   "md5": "66ff2becefdd4629cb8c6774129c0ea3",
+   "size": 2379992
+  },
+  "godot/assets/concept/meshy/caldwell_porch_night_anita_phone_photo/front.png": {
+   "at": "2026-10-27T04:02:36+00:00",
+   "md5": "66ff2becefdd4629cb8c6774129c0ea3",
+   "size": 2379992
+  },
+  "godot/assets/concept/meshy/caldwell_porch_night_framed_print/caldwell_porch_night_framed_print_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:02:46+00:00",
+   "md5": "a5c394a5e2fcbbb56ee7340ad10de23c",
+   "size": 2913070
+  },
+  "godot/assets/concept/meshy/caldwell_porch_night_framed_print/front.png": {
+   "at": "2026-10-27T04:02:46+00:00",
+   "md5": "a5c394a5e2fcbbb56ee7340ad10de23c",
+   "size": 2913070
+  },
   "godot/assets/concept/meshy/caldwell_porch_night_house_body_facade/caldwell_porch_night_house_body_facade_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:31:22+00:00",
    "md5": "8c3fde134f08257259cd4e82b5e2dc66",
@@ -69305,6 +69325,16 @@
    "md5": "15029def48904c6582bea7acbc0e8238",
    "size": 3523504
   },
+  "godot/assets/concept/meshy/caltech_dabney_game_room_title_loop/caltech_dabney_game_room_title_loop_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:02:54+00:00",
+   "md5": "5dca8a627e324aa8387b9483786adbba",
+   "size": 1634582
+  },
+  "godot/assets/concept/meshy/caltech_dabney_game_room_title_loop/front.png": {
+   "at": "2026-10-27T04:02:54+00:00",
+   "md5": "5dca8a627e324aa8387b9483786adbba",
+   "size": 1634582
+  },
   "godot/assets/concept/meshy/cape_perpetua_overlook_bluff/cape_perpetua_overlook_bluff_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:33:07+00:00",
    "md5": "e820a50190b7b25b81cd06d7806706e5",
@@ -69419,6 +69449,16 @@
    "at": "2026-10-18T17:12:42+00:00",
    "md5": "ceeb9e3ec627ade2d197a1745b1e19d6",
    "size": 1196911
+  },
+  "godot/assets/concept/meshy/cedar_tower_bowls_book/cedar_tower_bowls_book_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:03:06+00:00",
+   "md5": "5a0ebc6ad362158e7a834765a001de88",
+   "size": 4333321
+  },
+  "godot/assets/concept/meshy/cedar_tower_bowls_book/front.png": {
+   "at": "2026-10-27T04:03:06+00:00",
+   "md5": "5a0ebc6ad362158e7a834765a001de88",
+   "size": 4333321
   },
   "godot/assets/concept/meshy/cedar_tower_dean_portrait/cedar_tower_dean_portrait_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:33:28+00:00",
@@ -70180,6 +70220,16 @@
    "md5": "87ca7a0e57e999b4c830ebef42ab27d4",
    "size": 2393712
   },
+  "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/cosmic_comics_interior_back_office_corkboard_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:03:20+00:00",
+   "md5": "180ef4764372cc26d0e275e8c47fe7e2",
+   "size": 3184608
+  },
+  "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/front.png": {
+   "at": "2026-10-27T04:03:20+00:00",
+   "md5": "180ef4764372cc26d0e275e8c47fe7e2",
+   "size": 3184608
+  },
   "godot/assets/concept/meshy/cosmic_comics_interior_bin_comic/cosmic_comics_interior_bin_comic_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:38:43+00:00",
    "md5": "b84fa2ce88f7a5fa262a0a447114a1e6",
@@ -70194,6 +70244,16 @@
    "at": "2026-10-14T02:38:43+00:00",
    "md5": "09d96c2123f33ea67aaa1aea0c7f1525",
    "size": 3006349
+  },
+  "godot/assets/concept/meshy/cosmic_comics_interior_ft_map/cosmic_comics_interior_ft_map_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:03:40+00:00",
+   "md5": "51d3047abc1df181e0dd3a617e9b8d43",
+   "size": 3109140
+  },
+  "godot/assets/concept/meshy/cosmic_comics_interior_ft_map/front.png": {
+   "at": "2026-10-27T04:03:40+00:00",
+   "md5": "51d3047abc1df181e0dd3a617e9b8d43",
+   "size": 3109140
   },
   "godot/assets/concept/meshy/cosmic_comics_interior_key/cosmic_comics_interior_key_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:38:50+00:00",
@@ -70225,6 +70285,16 @@
    "md5": "1919286a965605972cfb36002da41f57",
    "size": 2766900
   },
+  "godot/assets/concept/meshy/cosmic_comics_interior_rick_notebook/cosmic_comics_interior_rick_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:03:51+00:00",
+   "md5": "45917cca5a387056e1a1a77e4ef26cc8",
+   "size": 3318803
+  },
+  "godot/assets/concept/meshy/cosmic_comics_interior_rick_notebook/front.png": {
+   "at": "2026-10-27T04:03:51+00:00",
+   "md5": "45917cca5a387056e1a1a77e4ef26cc8",
+   "size": 3318803
+  },
   "godot/assets/concept/meshy/cosmic_comics_interior_spin2_comic/cosmic_comics_interior_spin2_comic_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:39:12+00:00",
    "md5": "f9ef64f9d6d4649c78f8b507190de466",
@@ -70244,6 +70314,16 @@
    "at": "2026-10-14T02:39:18+00:00",
    "md5": "ad578eaa79f48887a24ef7ee71f1935f",
    "size": 3168633
+  },
+  "godot/assets/concept/meshy/cosmic_comics_interior_thomas_polaroid/cosmic_comics_interior_thomas_polaroid_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:03:58+00:00",
+   "md5": "448cccea6fdbc9231c5ddf836acc83d6",
+   "size": 2117237
+  },
+  "godot/assets/concept/meshy/cosmic_comics_interior_thomas_polaroid/front.png": {
+   "at": "2026-10-27T04:03:58+00:00",
+   "md5": "448cccea6fdbc9231c5ddf836acc83d6",
+   "size": 2117237
   },
   "godot/assets/concept/meshy/cosmic_comics_interior_winposter/cosmic_comics_interior_winposter_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:39:26+00:00",
@@ -70795,6 +70875,26 @@
    "md5": "8ea77c802ac32dfdb56516eed3f699df",
    "size": 2853134
   },
+  "godot/assets/concept/meshy/diner_folded_note/diner_folded_note_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:04:11+00:00",
+   "md5": "c3d48d0bb9b9802f3992a00873fca6ba",
+   "size": 2516772
+  },
+  "godot/assets/concept/meshy/diner_folded_note/front.png": {
+   "at": "2026-10-27T04:04:11+00:00",
+   "md5": "c3d48d0bb9b9802f3992a00873fca6ba",
+   "size": 2516772
+  },
+  "godot/assets/concept/meshy/diner_john_notebook/diner_john_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:04:21+00:00",
+   "md5": "bc3fc8fcdc577568d554202b555f65f5",
+   "size": 3648576
+  },
+  "godot/assets/concept/meshy/diner_john_notebook/front.png": {
+   "at": "2026-10-27T04:04:21+00:00",
+   "md5": "bc3fc8fcdc577568d554202b555f65f5",
+   "size": 3648576
+  },
   "godot/assets/concept/meshy/diner_neonopensign/diner_neonopensign_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:45:02+00:00",
    "md5": "0751093e17bb2d52f615ad9c23be6385",
@@ -70964,6 +71064,16 @@
    "at": "2026-10-19T02:52:10+00:00",
    "md5": "24ad3d01dbc2e64410250941ad9c5fe6",
    "size": 1864926
+  },
+  "godot/assets/concept/meshy/editing_suite_tide_flats__suite_tide/editing_suite_tide_flats__suite_tide_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:04:36+00:00",
+   "md5": "79803f39633c3948dd00cb2866f7b477",
+   "size": 2476389
+  },
+  "godot/assets/concept/meshy/editing_suite_tide_flats__suite_tide/front.png": {
+   "at": "2026-10-27T04:04:36+00:00",
+   "md5": "79803f39633c3948dd00cb2866f7b477",
+   "size": 2476389
   },
   "godot/assets/concept/meshy/eileen_henderson/back.png": {
    "at": "2026-10-11T20:02:49+00:00",
@@ -71344,6 +71454,16 @@
    "at": "2026-10-11T18:11:51+00:00",
    "md5": "950b9d5e335ea77356d22116b5937cd1",
    "size": 1947693
+  },
+  "godot/assets/concept/meshy/finn_apartment_brandon_notebook/finn_apartment_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:04:47+00:00",
+   "md5": "d7a9033bfcf9a89ace0c3cabfcbee243",
+   "size": 4013170
+  },
+  "godot/assets/concept/meshy/finn_apartment_brandon_notebook/front.png": {
+   "at": "2026-10-27T04:04:47+00:00",
+   "md5": "d7a9033bfcf9a89ace0c3cabfcbee243",
+   "size": 4013170
   },
   "godot/assets/concept/meshy/finn_apartment_coat_canvas/finn_apartment_coat_canvas_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:49:20+00:00",
@@ -71820,6 +71940,16 @@
    "md5": "1ec4912e63922ea727abdaaa3e3b3f48",
    "size": 1683094
   },
+  "godot/assets/concept/meshy/graustark_folded_receipt/front.png": {
+   "at": "2026-10-27T04:04:57+00:00",
+   "md5": "4a755054da5a5d073efb35c6078fba71",
+   "size": 3283537
+  },
+  "godot/assets/concept/meshy/graustark_folded_receipt/graustark_folded_receipt_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:04:57+00:00",
+   "md5": "4a755054da5a5d073efb35c6078fba71",
+   "size": 3283537
+  },
   "godot/assets/concept/meshy/graustark_fq_banner_1/front.png": {
    "at": "2026-10-14T02:53:18+00:00",
    "md5": "2d129dd6ea5cdc1a1ceb67aa45633344",
@@ -71969,6 +72099,36 @@
    "at": "2026-10-14T02:56:20+00:00",
    "md5": "03d7ba6ab4a38e1da07f425f6b5aadae",
    "size": 2434481
+  },
+  "godot/assets/concept/meshy/graustark_joanna_letter/front.png": {
+   "at": "2026-10-27T04:05:08+00:00",
+   "md5": "b0fbbe2a0582c2050c4104db8b95f69d",
+   "size": 3286506
+  },
+  "godot/assets/concept/meshy/graustark_joanna_letter/graustark_joanna_letter_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:05:08+00:00",
+   "md5": "b0fbbe2a0582c2050c4104db8b95f69d",
+   "size": 3286506
+  },
+  "godot/assets/concept/meshy/graustark_joanna_notebook/front.png": {
+   "at": "2026-10-27T04:05:18+00:00",
+   "md5": "c5abbe8b53350530e7a7a7c7e1ffa53b",
+   "size": 3107734
+  },
+  "godot/assets/concept/meshy/graustark_joanna_notebook/graustark_joanna_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:05:18+00:00",
+   "md5": "c5abbe8b53350530e7a7a7c7e1ffa53b",
+   "size": 3107734
+  },
+  "godot/assets/concept/meshy/graustark_john_notebook/front.png": {
+   "at": "2026-10-27T04:05:39+00:00",
+   "md5": "1022813e479486e2f7d50c27f5c51a76",
+   "size": 2607902
+  },
+  "godot/assets/concept/meshy/graustark_john_notebook/graustark_john_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:05:39+00:00",
+   "md5": "1022813e479486e2f7d50c27f5c51a76",
+   "size": 2607902
   },
   "godot/assets/concept/meshy/graustark_park_signpanel/front.png": {
    "at": "2026-10-14T02:56:26+00:00",
@@ -72435,6 +72595,16 @@
    "md5": "165c15f5f42bf1c417c40b4b055ff91a",
    "size": 1415155
   },
+  "godot/assets/concept/meshy/houston_office_erica_monitor/front.png": {
+   "at": "2026-10-27T04:05:47+00:00",
+   "md5": "9351d92489ef748390cebb0af6d9c400",
+   "size": 1148936
+  },
+  "godot/assets/concept/meshy/houston_office_erica_monitor/houston_office_erica_monitor_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:05:47+00:00",
+   "md5": "9351d92489ef748390cebb0af6d9c400",
+   "size": 1148936
+  },
   "godot/assets/concept/meshy/houston_office_marcus_monitor/front.png": {
    "at": "2026-10-14T03:00:34+00:00",
    "md5": "64f348313c3d3b70c84bdd22255bc812",
@@ -72614,6 +72784,16 @@
    "at": "2026-10-11T21:32:08+00:00",
    "md5": "044d90297bf0ae4d9db7941675492f9a",
    "size": 1827529
+  },
+  "godot/assets/concept/meshy/jesse_bedroom_bridge_page/front.png": {
+   "at": "2026-10-27T04:05:59+00:00",
+   "md5": "070205a6c3de985a5e9ffc40466c047a",
+   "size": 3166263
+  },
+  "godot/assets/concept/meshy/jesse_bedroom_bridge_page/jesse_bedroom_bridge_page_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:05:59+00:00",
+   "md5": "070205a6c3de985a5e9ffc40466c047a",
+   "size": 3166263
   },
   "godot/assets/concept/meshy/jesse_henderson/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -73234,6 +73414,16 @@
    "at": "2026-10-14T03:06:13+00:00",
    "md5": "3245929ef1cbfe3e7d52260c53e667ec",
    "size": 2437801
+  },
+  "godot/assets/concept/meshy/lena_apartment_jorgen_letter/front.png": {
+   "at": "2026-10-27T04:06:10+00:00",
+   "md5": "e8ee0022e8fcea2ab4b853b3dd79e1e1",
+   "size": 3004191
+  },
+  "godot/assets/concept/meshy/lena_apartment_jorgen_letter/lena_apartment_jorgen_letter_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:06:10+00:00",
+   "md5": "e8ee0022e8fcea2ab4b853b3dd79e1e1",
+   "size": 3004191
   },
   "godot/assets/concept/meshy/lena_apartment_nebula_1/front.png": {
    "at": "2026-10-14T03:06:20+00:00",

@@ -26142,5 +26142,26 @@
     "outputs": [
       "godot/assets/concept/meshy/caltech_dabney_game_room_title_loop/caltech_dabney_game_room_title_loop_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T04:05:15+00:00",
+    "stage": "image",
+    "slug": "janessa",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Janessa Link like this: Janessa carries a bottle of water with her everywhere she goes because she's big on hydration. Her eyes had been fuzzy since her arrival and she hadn't brought any spare contacts and slept in this pair once already. Additional direction: Janessa Link, about 22, Andy's younger sister, a Caltech geology student in 2003 \u2014 a brisk list-maker with gallows humour, packing for a month of fieldwork in Brazil while their father dies. Medium height, sturdy and outdoorsy, straight dark-brown hair in a practical ponytail, sun-browned, slightly bleary eyes. A faded orange t-shirt under a grey fleece vest, khaki field shorts with a rock-hammer loop, hiking sandals; a big water bottle in one hand and a folded checklist in the other.\nFull-body concept render of Janessa Link, a character from a literary visual novel set in Texas and Southern California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/janessa/janessa_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/janessa/janessa_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/janessa/janessa_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
