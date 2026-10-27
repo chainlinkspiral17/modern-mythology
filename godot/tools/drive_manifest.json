@@ -6105,6 +6105,46 @@
    "md5": "100c8e50a9e7a807b313e925ab6b2afa",
    "size": 1037484
   },
+  "godot/assets/art/hero/club_street_bus_ad__club_street_door__club_street_curb.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "84c795ea7de941ea632aa3dccaae8401",
+   "size": 1533177
+  },
+  "godot/assets/art/hero/club_street_dawn_sky__club_street_dawn.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "7793ae86fba2addbe810f2f42c6ffa1c",
+   "size": 1623734
+  },
+  "godot/assets/art/hero/club_street_far_rooftops.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "6c25b7a9b2bf1d01d6e2f429650b9629",
+   "size": 2177570
+  },
+  "godot/assets/art/hero/club_street_liquor_sign.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "eb1286845c6aeab3a9e0cde8eea5f68d",
+   "size": 1945468
+  },
+  "godot/assets/art/hero/club_street_neon_sign_a.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "ede6153df4e9a03ef3d016acc4b2ce7a",
+   "size": 1718948
+  },
+  "godot/assets/art/hero/club_street_neon_sign_b.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "a9142d9670dce82ea93b1f836b978f22",
+   "size": 1770373
+  },
+  "godot/assets/art/hero/club_street_neon_sign_c.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "4db2efbb545e9f2162d10ac4412521aa",
+   "size": 1840174
+  },
+  "godot/assets/art/hero/club_street_neon_sign_d.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "1f92d391ac50a1a40417df12f81c2e25",
+   "size": 1819014
+  },
   "godot/assets/art/hero/coach_k_bedroom_coach_plaque.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "1b56cbba5c26f7a987c10bc7582b4bc4",
@@ -6344,6 +6384,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "fa502ba826b2ddf39db6b43cbff747ce",
    "size": 2409715
+  },
+  "godot/assets/art/hero/dean_house_1994_graph_paper.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "61493a94dfd85dc27ad89ffb169cdba2",
+   "size": 2436499
   },
   "godot/assets/art/hero/diego_bedroom_laptop_screen.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7220,6 +7265,11 @@
    "md5": "4362c1f2082109bf6b103e4d27295075",
    "size": 2211480
   },
+  "godot/assets/art/hero/lake_palestine_ramp_sign.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "e3f88817de8e66a28d8f1877b90348be",
+   "size": 2885310
+  },
   "godot/assets/art/hero/lena_apartment_canvas_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "270143422e39f9082a8d1ad22f9b3b26",
@@ -7865,6 +7915,11 @@
    "md5": "e84cbd5a11ecc734f7c72d5b70d7e3e5",
    "size": 2246677
   },
+  "godot/assets/art/hero/pasadena_1945_hollywood_far_n.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "693c19a430b91860a06da03a78c5ac30",
+   "size": 2689628
+  },
   "godot/assets/art/hero/periodic_table_diego.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "e0116c96667ef887ec33da235f0d34ae",
@@ -8295,10 +8350,20 @@
    "md5": "62dd7996c293aebb3a533aa94152e1f2",
    "size": 2362082
   },
+  "godot/assets/art/hero/small_wood_farmhouse_far_ridges.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "8f5b6491a0e8efc6802ea8220aebb2d1",
+   "size": 1992233
+  },
   "godot/assets/art/hero/small_wood_farmhouse_moonlit_cloud.png": {
    "at": "2026-10-27T05:48:52+00:00",
    "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
    "size": 1568768
+  },
+  "godot/assets/art/hero/small_wood_farmhouse_tv_sitcom.png": {
+   "at": "2026-10-27T14:19:22+00:00",
+   "md5": "1f372ebe715ff39d0c7a27abe3b67855",
+   "size": 3107078
   },
   "godot/assets/art/hero/small_wood_rec_center_bulletin_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -70424,6 +70489,66 @@
    "at": "2026-10-14T02:37:48+00:00",
    "md5": "100c8e50a9e7a807b313e925ab6b2afa",
    "size": 1037484
+  },
+  "godot/assets/concept/meshy/club_street_bus_ad__club_street_door__club_street_curb/club_street_bus_ad__club_street_door__club_street_curb_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:19:36+00:00",
+   "md5": "84c795ea7de941ea632aa3dccaae8401",
+   "size": 1533177
+  },
+  "godot/assets/concept/meshy/club_street_bus_ad__club_street_door__club_street_curb/front.png": {
+   "at": "2026-10-27T14:19:36+00:00",
+   "md5": "84c795ea7de941ea632aa3dccaae8401",
+   "size": 1533177
+  },
+  "godot/assets/concept/meshy/club_street_dawn_sky__club_street_dawn/club_street_dawn_sky__club_street_dawn_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:19:44+00:00",
+   "md5": "7793ae86fba2addbe810f2f42c6ffa1c",
+   "size": 1623734
+  },
+  "godot/assets/concept/meshy/club_street_dawn_sky__club_street_dawn/front.png": {
+   "at": "2026-10-27T14:19:44+00:00",
+   "md5": "7793ae86fba2addbe810f2f42c6ffa1c",
+   "size": 1623734
+  },
+  "godot/assets/concept/meshy/club_street_far_rooftops/club_street_far_rooftops_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:19:55+00:00",
+   "md5": "6c25b7a9b2bf1d01d6e2f429650b9629",
+   "size": 2177570
+  },
+  "godot/assets/concept/meshy/club_street_far_rooftops/front.png": {
+   "at": "2026-10-27T14:19:55+00:00",
+   "md5": "6c25b7a9b2bf1d01d6e2f429650b9629",
+   "size": 2177570
+  },
+  "godot/assets/concept/meshy/club_street_liquor_sign/club_street_liquor_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:20:05+00:00",
+   "md5": "eb1286845c6aeab3a9e0cde8eea5f68d",
+   "size": 1945468
+  },
+  "godot/assets/concept/meshy/club_street_liquor_sign/front.png": {
+   "at": "2026-10-27T14:20:05+00:00",
+   "md5": "eb1286845c6aeab3a9e0cde8eea5f68d",
+   "size": 1945468
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_a/club_street_neon_sign_a_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:20:18+00:00",
+   "md5": "ede6153df4e9a03ef3d016acc4b2ce7a",
+   "size": 1718948
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_a/front.png": {
+   "at": "2026-10-27T14:20:18+00:00",
+   "md5": "ede6153df4e9a03ef3d016acc4b2ce7a",
+   "size": 1718948
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_b/club_street_neon_sign_b_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T14:20:27+00:00",
+   "md5": "a9142d9670dce82ea93b1f836b978f22",
+   "size": 1770373
+  },
+  "godot/assets/concept/meshy/club_street_neon_sign_b/front.png": {
+   "at": "2026-10-27T14:20:27+00:00",
+   "md5": "a9142d9670dce82ea93b1f836b978f22",
+   "size": 1770373
   },
   "godot/assets/concept/meshy/coach_dale/back.png": {
    "at": "2026-10-11T21:02:30+00:00",
