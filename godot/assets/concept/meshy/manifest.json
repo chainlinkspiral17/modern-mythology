@@ -27438,5 +27438,26 @@
     },
     "output": "godot/assets/3d/props/comic_figure_2.glb",
     "file_size_kb": 4137.8
+  },
+  {
+    "at": "2026-10-27T04:44:25+00:00",
+    "stage": "image",
+    "slug": "comic_figure_4",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "A painted resin collectible statue on a base sculpted as a glowing meteor: an original cosmic hero in a silver and violet suit, arms raised, a starfield pattern across the chest. Glossy paint, crisp sculpt.\nSingle-object concept render of a cosmic hero statue on a meteor, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

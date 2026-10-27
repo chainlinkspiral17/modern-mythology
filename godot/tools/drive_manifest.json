@@ -5305,6 +5305,11 @@
    "md5": "7f3f72bfb597bd48429447397f72a8d0",
    "size": 17059
   },
+  "godot/assets/3d/props/_full/comic_figure_2.glb": {
+   "at": "2026-10-27T04:44:08+00:00",
+   "md5": "b598b394484b1b3e2dda6c7901518426",
+   "size": 4237080
+  },
   "godot/assets/3d/props/_full/comic_figure_3.glb": {
    "at": "2026-10-27T02:36:14+00:00",
    "md5": "91cb3b1ceeb19eecff5eacfa5f62c820",
@@ -5324,6 +5329,16 @@
    "at": "2026-10-27T02:35:29+00:00",
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
    "size": 106709020
+  },
+  "godot/assets/3d/props/comic_figure_2.glb": {
+   "at": "2026-10-27T04:44:03+00:00",
+   "md5": "b3aeeb0684cd53312eceae1ba65a23a0",
+   "size": 523708
+  },
+  "godot/assets/3d/props/comic_figure_2_Image_0.jpg": {
+   "at": "2026-10-27T04:44:03+00:00",
+   "md5": "e50c3a1a0c9e294d92ad15021094c826",
+   "size": 211196
   },
   "godot/assets/3d/props/comic_figure_3.glb": {
    "at": "2026-10-27T02:36:08+00:00",
@@ -5429,6 +5444,11 @@
    "at": "2026-10-27T04:34:24+00:00",
    "md5": "41d59912f4fbec66fbb9f161313f2958",
    "size": 1390310
+  },
+  "godot/assets/art/hero/apple_peddler_front_glass_rain.png": {
+   "at": "2026-10-27T04:44:14+00:00",
+   "md5": "8311d4cc4e2a90ae1686be4524a45b5b",
+   "size": 2703583
   },
   "godot/assets/art/hero/aria_alley_face.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -5884,6 +5904,11 @@
    "at": "2026-10-27T04:34:24+00:00",
    "md5": "df1b81eeaf96326dc3339ecbaae165fe",
    "size": 2577016
+  },
+  "godot/assets/art/hero/chau_house_steven_window_sideyard.png": {
+   "at": "2026-10-27T04:44:14+00:00",
+   "md5": "0ec15bcb75cb023dcf913cb3ca5026b8",
+   "size": 1787876
   },
   "godot/assets/art/hero/chillwave_interior_across_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -8184,6 +8209,11 @@
    "at": "2026-10-27T04:34:24+00:00",
    "md5": "91555b03ede54844032d8fb35b1b8ec0",
    "size": 3185635
+  },
+  "godot/assets/art/hero/vol4_story_rooms_aaron_window_dusk.png": {
+   "at": "2026-10-27T04:44:14+00:00",
+   "md5": "ed3cd58df538b8578acd1a1eefa89661",
+   "size": 1559621
   },
   "godot/assets/art/hero/wagner_home_fridge_flyer.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -68220,6 +68250,16 @@
    "md5": "a1d09072c589ff50b36fbd42ee0d6c6b",
    "size": 73246
   },
+  "godot/assets/concept/meshy/apple_peddler_front_glass_rain/apple_peddler_front_glass_rain_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:44:22+00:00",
+   "md5": "8311d4cc4e2a90ae1686be4524a45b5b",
+   "size": 2703583
+  },
+  "godot/assets/concept/meshy/apple_peddler_front_glass_rain/front.png": {
+   "at": "2026-10-27T04:44:22+00:00",
+   "md5": "8311d4cc4e2a90ae1686be4524a45b5b",
+   "size": 2703583
+  },
   "godot/assets/concept/meshy/appointment_book/appointment_book_back_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-18T17:11:40+00:00",
    "md5": "ce13665aeaf3cc5cb5c0d2f6266aa2a4",
@@ -69835,6 +69875,16 @@
    "md5": "df1b81eeaf96326dc3339ecbaae165fe",
    "size": 2577016
   },
+  "godot/assets/concept/meshy/chau_house_steven_window_sideyard/chau_house_steven_window_sideyard_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:44:28+00:00",
+   "md5": "0ec15bcb75cb023dcf913cb3ca5026b8",
+   "size": 1787876
+  },
+  "godot/assets/concept/meshy/chau_house_steven_window_sideyard/front.png": {
+   "at": "2026-10-27T04:44:28+00:00",
+   "md5": "0ec15bcb75cb023dcf913cb3ca5026b8",
+   "size": 1787876
+  },
   "godot/assets/concept/meshy/chess/back.png": {
    "at": "2026-10-19T14:53:01+00:00",
    "md5": "99e9c085a496b522f5075c1dd755b169",
@@ -70280,6 +70330,41 @@
    "md5": "e185f65d659254db6c0ab4ef93a16ae0",
    "size": 1992187
   },
+  "godot/assets/concept/meshy/comic_figure_2/back.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "91ade1129152b1181e5c8910ad1b7599",
+   "size": 2171490
+  },
+  "godot/assets/concept/meshy/comic_figure_2/comic_figure_2_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "91ade1129152b1181e5c8910ad1b7599",
+   "size": 2171490
+  },
+  "godot/assets/concept/meshy/comic_figure_2/comic_figure_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "c47f5b621722c9aeb0a6e0edb242a6d4",
+   "size": 2195829
+  },
+  "godot/assets/concept/meshy/comic_figure_2/comic_figure_2_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "23e2c8204a6806dc0d824869fd4b4e9e",
+   "size": 2113390
+  },
+  "godot/assets/concept/meshy/comic_figure_2/front.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "c47f5b621722c9aeb0a6e0edb242a6d4",
+   "size": 2195829
+  },
+  "godot/assets/concept/meshy/comic_figure_2/meshy_thumb.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "80b11572dd4ea4d70e8594b2c8ebb6f7",
+   "size": 121015
+  },
+  "godot/assets/concept/meshy/comic_figure_2/side.png": {
+   "at": "2026-10-27T04:44:40+00:00",
+   "md5": "23e2c8204a6806dc0d824869fd4b4e9e",
+   "size": 2113390
+  },
   "godot/assets/concept/meshy/comic_figure_3/back.png": {
    "at": "2026-10-27T02:36:26+00:00",
    "md5": "ea79276d9d8873e6e0d9381af888b8f4",
@@ -70314,6 +70399,16 @@
    "at": "2026-10-27T02:36:26+00:00",
    "md5": "87ca7a0e57e999b4c830ebef42ab27d4",
    "size": 2393712
+  },
+  "godot/assets/concept/meshy/comic_figure_4/comic_figure_4_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:44:51+00:00",
+   "md5": "7c929c2fa52f4b28334582959ca0b42b",
+   "size": 2387432
+  },
+  "godot/assets/concept/meshy/comic_figure_4/front.png": {
+   "at": "2026-10-27T04:44:51+00:00",
+   "md5": "7c929c2fa52f4b28334582959ca0b42b",
+   "size": 2387432
   },
   "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/cosmic_comics_interior_back_office_corkboard_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:03:20+00:00",
@@ -80604,6 +80699,16 @@
    "at": "2026-10-18T17:29:05+00:00",
    "md5": "ff31d6e189d99ea40d902f5a149aab5f",
    "size": 2254119
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_aaron_window_dusk/front.png": {
+   "at": "2026-10-27T04:45:06+00:00",
+   "md5": "ed3cd58df538b8578acd1a1eefa89661",
+   "size": 1559621
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_aaron_window_dusk/vol4_story_rooms_aaron_window_dusk_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T04:45:06+00:00",
+   "md5": "ed3cd58df538b8578acd1a1eefa89661",
+   "size": 1559621
   },
   "godot/assets/concept/meshy/vol4_vacant_lot_dusk/front.png": {
    "at": "2026-10-19T19:22:08+00:00",
