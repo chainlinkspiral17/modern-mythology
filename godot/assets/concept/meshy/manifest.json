@@ -27090,5 +27090,172 @@
     "kind": "scene2d",
     "input": "godot/assets/concept/meshy/vol5_prelude_steamship_interior/front.png",
     "output": "godot/assets/backgrounds/vol5_prelude_steamship_interior.jpg"
+  },
+  {
+    "at": "2026-10-27T04:29:53+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_first_print",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the first print in the tray like this: The image comes up slowly, the way they always do \u2014 a grey wash that becomes shapes that becomes a photograph. The NexCorp van is in the frame. Two men in navy polo shirts. And, at the edge of the frame, half-cut-off by the border, a black pickup truck with Louisiana plates. Huh. Additional direction: A darkroom photograph coming up in the developer tray under red safelight: a white van in the frame and, at the edge, half cut off by the border, a black pickup truck. Wet paper, tongs. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the first print in the tray. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_first_print/panel_vol6_first_print_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:30:02+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_first_print",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_first_print/front.png",
+    "output": "godot/assets/cg/panel_vol6_first_print.jpg"
+  },
+  {
+    "at": "2026-10-27T04:30:16+00:00",
+    "stage": "image",
+    "slug": "panel_vol6_water_tower",
+    "kind": "scene2d",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Harmony Creek water tower like this: The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall. It was painted in 2019 with the words HARMONY CREEK in blue block letters and a small rendering of a creek that does not resemble the actual creek. At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. No one gets out. The van has been there since 6:04. Additional direction: A small-town water tower at the end of an avenue at dawn, behind a chain-link fenced lot, a white van parked beside the fence, its painted lettering not legible. Texas suburb, early light. No readable text anywhere in the picture.\nA single full-screen still for a literary visual novel set in the Gulf Coast of Texas and Louisiana: the Harmony Creek water tower. Cinematic 16:9 composition that reads at a glance, painted realism at full modern resolution \u2014 natural light, real materials, depth and atmosphere, the colour of the hour the text names. Show what the description shows and nothing it does not. Never a retro or pixel-art look, never an old game's screen, no scanlines, no CRT curve, no film grain filter.\nThis is a CG \u2014 one held moment of the story, framed like a film still on the subject the description names; figures appear only as the description gives them.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/panel_vol6_water_tower/panel_vol6_water_tower_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:30:24+00:00",
+    "stage": "scene2d",
+    "slug": "panel_vol6_water_tower",
+    "kind": "scene2d",
+    "input": "godot/assets/concept/meshy/panel_vol6_water_tower/front.png",
+    "output": "godot/assets/cg/panel_vol6_water_tower.jpg"
+  },
+  {
+    "at": "2026-10-27T04:31:13+00:00",
+    "stage": "image",
+    "slug": "vol3_rooms_oregon_window_day__oregon_home_day",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The view out of a small rented duplex's window in an Oregon college town by day, straight-on and filling the frame: a patchy side yard under a soft overcast sky, a sagging cedar fence, the back of the neighbouring house's grey clapboard wall and a downspout, a big leafy maple and a stand of Douglas firs behind, everything damp and green. Early 2000s, flat even daylight, muted colour, no people, no lettering.\nSIZE: the real object is 1.80 m wide by 1.60 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view from the Oregon home's windows by day, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_rooms_oregon_window_day__oregon_home_day/vol3_rooms_oregon_window_day__oregon_home_day_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:31:17+00:00",
+    "stage": "art",
+    "slug": "vol3_rooms_oregon_window_day__oregon_home_day",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/vol3_rooms_oregon_window_day__oregon_home_day/front.png",
+    "output": "godot/assets/art/hero/vol3_rooms_oregon_window_day__oregon_home_day.png"
+  },
+  {
+    "at": "2026-10-27T04:31:32+00:00",
+    "stage": "image",
+    "slug": "vol3_rooms_coast_sea_sky",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the coast past the home-studio's windows like this: From there we went to a photographer friend's home-studio overlooking the coast. It was beautiful that time of year. Additional direction: A wide seascape seen from a house on a high bluff on the Oregon coast by day, straight-on and filling the frame: the open Pacific meets the sky in a level horizon about a tenth of the way up from the bottom edge, the sea below it slate blue with long low swells and a few whitecaps; above, a huge soft coastal sky of high marine cloud breaking into blue, a thin bright haze along the horizon. Around 2001-2002, no ships, no lettering, evenly lit natural daylight.\nSIZE: the real object is 400.00 m wide by 140.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 82% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the coast past the home-studio's windows, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/vol3_rooms_coast_sea_sky/vol3_rooms_coast_sea_sky_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:32:08+00:00",
+    "stage": "image",
+    "slug": "editing_suite_bakery_window__suite_4am",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the bakery window on the monitors at 4 a.m. like this: On the monitors, a bakery window. Hans lifting a loaf off a tray and setting it back, lifting it, setting it back. Additional direction: A video monitor's picture only, no bezel, straight-on, filling the frame edge to edge: a small-town bakery's front window seen from the dark street before dawn \u2014 warm yellow light inside, a baker in a white apron lifting a loaf off a sheet tray behind the glass, his face soft and small, racks of bread behind him, the cold blue street reflected faintly in the pane. Video grain, a slight smear on movement.\nSIZE: the real object is 94 cm wide by 64 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the bakery window on the monitors at 4 a.m., an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/editing_suite_bakery_window__suite_4am/editing_suite_bakery_window__suite_4am_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:32:15+00:00",
+    "stage": "art",
+    "slug": "editing_suite_bakery_window__suite_4am",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/editing_suite_bakery_window__suite_4am/front.png",
+    "output": "godot/assets/art/hero/editing_suite_bakery_window__suite_4am.png"
+  },
+  {
+    "at": "2026-10-27T04:32:32+00:00",
+    "stage": "image",
+    "slug": "editing_suite_window_nothing",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the suite's one window, with nothing out of it, like this: A room with one window, nothing out of it. THE ARTIST is at the window, looking out at nothing in particular. Additional direction: What shows through a small window, seen straight-on, filling the frame edge to edge: nothing \u2014 an even, featureless field of soft mid-grey light like dense fog pressed against the glass, neither day nor night, the faintest gradient a little lighter at the top, no horizon, no shapes, a few beads of condensation along the bottom edge.\nSIZE: the real object is 1.20 m wide by 1.20 m tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the suite's one window, with nothing out of it, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/editing_suite_window_nothing/editing_suite_window_nothing_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:32:38+00:00",
+    "stage": "art",
+    "slug": "editing_suite_window_nothing",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/editing_suite_window_nothing/front.png",
+    "output": "godot/assets/art/hero/editing_suite_window_nothing.png"
+  },
+  {
+    "at": "2026-10-27T04:32:57+00:00",
+    "stage": "image",
+    "slug": "airport_cabin_night_window__plane_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Andy's window on the night flight: the dark and a town strung along a highway like this: Below, the dark, and now and then the lights of some town strung thin along a highway, and then the dark again. Andy always tries to get the aisle seat because his legs are long and he likes room to stretch out, instead he's seated at the window, which is good because he mostly turns to cry, looking out at nothing or at his reflection when the satellite lamp overhead is on. Additional direction: The view through an airliner window at night from cruising altitude, seen straight-on, filling the frame edge to edge, the view only with no window frame: near-total black, the faintest deep-blue glow of a horizon near the top, and far below a thin necklace of sodium-orange town lights strung along a highway, then dark again; the ghost of a reading lamp's reflection on the inner pane, fine scratches in the acrylic.\nSIZE: the real object is 24 cm wide by 30 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Andy's window on the night flight: the dark and a town strung along a highway, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/airport_cabin_night_window__plane_night/airport_cabin_night_window__plane_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:33:01+00:00",
+    "stage": "art",
+    "slug": "airport_cabin_night_window__plane_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/airport_cabin_night_window__plane_night/front.png",
+    "output": "godot/assets/art/hero/airport_cabin_night_window__plane_night.png"
   }
 ]
