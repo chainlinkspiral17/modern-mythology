@@ -73965,6 +73965,36 @@
    "md5": "4dfedd14792fe3e64d99c9b0ea6fbc75",
    "size": 1168452
   },
+  "godot/assets/concept/meshy/box_of_three_sticks/back.png": {
+   "at": "2026-10-27T18:56:27+00:00",
+   "md5": "747f6dd9299b6e7943ff428cb7243dda",
+   "size": 1372400
+  },
+  "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:27+00:00",
+   "md5": "747f6dd9299b6e7943ff428cb7243dda",
+   "size": 1372400
+  },
+  "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:27+00:00",
+   "md5": "6a488451dbe8baf12337a4514d9744d0",
+   "size": 1645071
+  },
+  "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:27+00:00",
+   "md5": "b72a98c1814a13920b96f03c06564f38",
+   "size": 1354843
+  },
+  "godot/assets/concept/meshy/box_of_three_sticks/front.png": {
+   "at": "2026-10-27T18:56:27+00:00",
+   "md5": "6a488451dbe8baf12337a4514d9744d0",
+   "size": 1645071
+  },
+  "godot/assets/concept/meshy/box_of_three_sticks/side.png": {
+   "at": "2026-10-27T18:56:27+00:00",
+   "md5": "b72a98c1814a13920b96f03c06564f38",
+   "size": 1354843
+  },
   "godot/assets/concept/meshy/boyd/back.png": {
    "at": "2026-10-19T01:46:39+00:00",
    "md5": "96ff600c613b8d0ad7eb9df4c1e50f37",
@@ -74799,6 +74829,16 @@
    "at": "2026-10-18T17:12:42+00:00",
    "md5": "ceeb9e3ec627ade2d197a1745b1e19d6",
    "size": 1196911
+  },
+  "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:38+00:00",
+   "md5": "d12218bce6a958dbf4a562420e3918d9",
+   "size": 1518277
+  },
+  "godot/assets/concept/meshy/cedar_bowl/front.png": {
+   "at": "2026-10-27T18:56:38+00:00",
+   "md5": "d12218bce6a958dbf4a562420e3918d9",
+   "size": 1518277
   },
   "godot/assets/concept/meshy/cedar_tower_bowls_book/cedar_tower_bowls_book_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:03:06+00:00",
@@ -77695,6 +77735,36 @@
    "md5": "9425180f3f547a2261ebd2f5ee6cc258",
    "size": 1314427
   },
+  "godot/assets/concept/meshy/folded_napkin_booth_6/back.png": {
+   "at": "2026-10-27T18:56:41+00:00",
+   "md5": "ecbe94fbe8b6302620adc3fab810a2f3",
+   "size": 1209809
+  },
+  "godot/assets/concept/meshy/folded_napkin_booth_6/folded_napkin_booth_6_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:41+00:00",
+   "md5": "ecbe94fbe8b6302620adc3fab810a2f3",
+   "size": 1209809
+  },
+  "godot/assets/concept/meshy/folded_napkin_booth_6/folded_napkin_booth_6_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:41+00:00",
+   "md5": "6c75f362ff51b02e5430003da78fcef8",
+   "size": 1060346
+  },
+  "godot/assets/concept/meshy/folded_napkin_booth_6/folded_napkin_booth_6_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:41+00:00",
+   "md5": "632e2c9055ba2302efb85ff085a6e26b",
+   "size": 1111525
+  },
+  "godot/assets/concept/meshy/folded_napkin_booth_6/front.png": {
+   "at": "2026-10-27T18:56:41+00:00",
+   "md5": "6c75f362ff51b02e5430003da78fcef8",
+   "size": 1060346
+  },
+  "godot/assets/concept/meshy/folded_napkin_booth_6/side.png": {
+   "at": "2026-10-27T18:56:41+00:00",
+   "md5": "632e2c9055ba2302efb85ff085a6e26b",
+   "size": 1111525
+  },
   "godot/assets/concept/meshy/fool_bindle/back.png": {
    "at": "2026-10-18T17:13:13+00:00",
    "md5": "ed2b4da0a1bfd2fc7e1fb379a80805fb",
@@ -77819,6 +77889,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "3ae45e2df458a63b8e954cf30100b5cb",
    "size": 79544
+  },
+  "godot/assets/concept/meshy/funeral_parlour_inkwell/back.png": {
+   "at": "2026-10-27T18:56:56+00:00",
+   "md5": "fc3893753a3672017c480d0b294df39c",
+   "size": 1429986
+  },
+  "godot/assets/concept/meshy/funeral_parlour_inkwell/front.png": {
+   "at": "2026-10-27T18:56:56+00:00",
+   "md5": "1e5680a866cabf21e58603bfa0f8caf7",
+   "size": 1336104
+  },
+  "godot/assets/concept/meshy/funeral_parlour_inkwell/funeral_parlour_inkwell_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:56+00:00",
+   "md5": "fc3893753a3672017c480d0b294df39c",
+   "size": 1429986
+  },
+  "godot/assets/concept/meshy/funeral_parlour_inkwell/funeral_parlour_inkwell_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:56+00:00",
+   "md5": "1e5680a866cabf21e58603bfa0f8caf7",
+   "size": 1336104
+  },
+  "godot/assets/concept/meshy/funeral_parlour_inkwell/funeral_parlour_inkwell_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:56:56+00:00",
+   "md5": "6b0dff969e4604b99f930add3abacdd5",
+   "size": 1347584
+  },
+  "godot/assets/concept/meshy/funeral_parlour_inkwell/side.png": {
+   "at": "2026-10-27T18:56:56+00:00",
+   "md5": "6b0dff969e4604b99f930add3abacdd5",
+   "size": 1347584
   },
   "godot/assets/concept/meshy/gallatin_water_tower_fence_screen_1/front.png": {
    "at": "2026-10-14T02:50:10+00:00",
@@ -77974,6 +78074,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "59b7654b16aa9581f63d89b61869462e",
    "size": 80210
+  },
+  "godot/assets/concept/meshy/gracielas_rosary/back.png": {
+   "at": "2026-10-27T18:57:09+00:00",
+   "md5": "09505a829310ac293e2fb6078bda03aa",
+   "size": 1272894
+  },
+  "godot/assets/concept/meshy/gracielas_rosary/front.png": {
+   "at": "2026-10-27T18:57:09+00:00",
+   "md5": "4e8dbc86c76500ae9b1163c68f082d8e",
+   "size": 1192099
+  },
+  "godot/assets/concept/meshy/gracielas_rosary/gracielas_rosary_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:09+00:00",
+   "md5": "09505a829310ac293e2fb6078bda03aa",
+   "size": 1272894
+  },
+  "godot/assets/concept/meshy/gracielas_rosary/gracielas_rosary_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:09+00:00",
+   "md5": "4e8dbc86c76500ae9b1163c68f082d8e",
+   "size": 1192099
+  },
+  "godot/assets/concept/meshy/gracielas_rosary/gracielas_rosary_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:09+00:00",
+   "md5": "257e3b5c265f5b8c1a9262c40b63f6ed",
+   "size": 1199454
+  },
+  "godot/assets/concept/meshy/gracielas_rosary/side.png": {
+   "at": "2026-10-27T18:57:09+00:00",
+   "md5": "257e3b5c265f5b8c1a9262c40b63f6ed",
+   "size": 1199454
   },
   "godot/assets/concept/meshy/graustark_billboard_1/front.png": {
    "at": "2026-10-14T02:51:32+00:00",
@@ -78550,6 +78680,36 @@
    "md5": "f7b7856dd37d336d4a86aee74d5c8e5c",
    "size": 2010784
   },
+  "godot/assets/concept/meshy/hans_1994/back.png": {
+   "at": "2026-10-27T18:57:25+00:00",
+   "md5": "c56e5ee96812076c5f31f08a248cbaa8",
+   "size": 2007409
+  },
+  "godot/assets/concept/meshy/hans_1994/front.png": {
+   "at": "2026-10-27T18:57:25+00:00",
+   "md5": "8d0212a3db589eb0f8a345aaeae6773b",
+   "size": 2031291
+  },
+  "godot/assets/concept/meshy/hans_1994/hans_1994_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:25+00:00",
+   "md5": "c56e5ee96812076c5f31f08a248cbaa8",
+   "size": 2007409
+  },
+  "godot/assets/concept/meshy/hans_1994/hans_1994_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:25+00:00",
+   "md5": "8d0212a3db589eb0f8a345aaeae6773b",
+   "size": 2031291
+  },
+  "godot/assets/concept/meshy/hans_1994/hans_1994_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:25+00:00",
+   "md5": "4904a7b3bade605a04e282f7bbf3e1f7",
+   "size": 1955700
+  },
+  "godot/assets/concept/meshy/hans_1994/side.png": {
+   "at": "2026-10-27T18:57:25+00:00",
+   "md5": "4904a7b3bade605a04e282f7bbf3e1f7",
+   "size": 1955700
+  },
   "godot/assets/concept/meshy/hans_bakery_back_kitchen_canvas/front.png": {
    "at": "2026-10-14T02:58:01+00:00",
    "md5": "5132c7440ce6d016fb5129839ec73deb",
@@ -78874,6 +79034,66 @@
    "at": "2026-10-18T18:28:25+00:00",
    "md5": "550af6aa4f0743edb78cf74aeb9cf09a",
    "size": 1843664
+  },
+  "godot/assets/concept/meshy/hundred_dollar_bill/back.png": {
+   "at": "2026-10-27T18:57:36+00:00",
+   "md5": "88e1c42641b204d2472a1e9af3138d13",
+   "size": 1639887
+  },
+  "godot/assets/concept/meshy/hundred_dollar_bill/front.png": {
+   "at": "2026-10-27T18:57:36+00:00",
+   "md5": "79693aa6fc2edcd020842843b7a70edd",
+   "size": 1635372
+  },
+  "godot/assets/concept/meshy/hundred_dollar_bill/hundred_dollar_bill_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:36+00:00",
+   "md5": "88e1c42641b204d2472a1e9af3138d13",
+   "size": 1639887
+  },
+  "godot/assets/concept/meshy/hundred_dollar_bill/hundred_dollar_bill_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:36+00:00",
+   "md5": "79693aa6fc2edcd020842843b7a70edd",
+   "size": 1635372
+  },
+  "godot/assets/concept/meshy/hundred_dollar_bill/hundred_dollar_bill_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:36+00:00",
+   "md5": "513af5af24ec5a1f1873df18e3f82587",
+   "size": 1159943
+  },
+  "godot/assets/concept/meshy/hundred_dollar_bill/side.png": {
+   "at": "2026-10-27T18:57:36+00:00",
+   "md5": "513af5af24ec5a1f1873df18e3f82587",
+   "size": 1159943
+  },
+  "godot/assets/concept/meshy/iv_pole/back.png": {
+   "at": "2026-10-27T18:57:46+00:00",
+   "md5": "c7d14868b53f846f6db61e22197fd521",
+   "size": 1066518
+  },
+  "godot/assets/concept/meshy/iv_pole/front.png": {
+   "at": "2026-10-27T18:57:46+00:00",
+   "md5": "526ffca9b1e4ac53859166e07bc58d44",
+   "size": 919803
+  },
+  "godot/assets/concept/meshy/iv_pole/iv_pole_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:46+00:00",
+   "md5": "c7d14868b53f846f6db61e22197fd521",
+   "size": 1066518
+  },
+  "godot/assets/concept/meshy/iv_pole/iv_pole_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:46+00:00",
+   "md5": "526ffca9b1e4ac53859166e07bc58d44",
+   "size": 919803
+  },
+  "godot/assets/concept/meshy/iv_pole/iv_pole_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:57:46+00:00",
+   "md5": "f3c4e2641dc644e5527f400f3638ecc1",
+   "size": 1065596
+  },
+  "godot/assets/concept/meshy/iv_pole/side.png": {
+   "at": "2026-10-27T18:57:46+00:00",
+   "md5": "f3c4e2641dc644e5527f400f3638ecc1",
+   "size": 1065596
   },
   "godot/assets/concept/meshy/jackpot_polaroid_2019/back.png": {
    "at": "2026-10-27T16:42:07+00:00",
@@ -79304,6 +79524,36 @@
    "at": "2026-10-11T17:55:46+00:00",
    "md5": "eedde6201f85d7406941b2f52bd8cd70",
    "size": 2020590
+  },
+  "godot/assets/concept/meshy/karamazov_paperback/back.png": {
+   "at": "2026-10-27T18:58:01+00:00",
+   "md5": "1c6453d09e66ee0eee924f15ad760211",
+   "size": 1466492
+  },
+  "godot/assets/concept/meshy/karamazov_paperback/front.png": {
+   "at": "2026-10-27T18:58:01+00:00",
+   "md5": "e936ea4c9e6179c6063301ae2e1c11d5",
+   "size": 1423441
+  },
+  "godot/assets/concept/meshy/karamazov_paperback/karamazov_paperback_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:01+00:00",
+   "md5": "1c6453d09e66ee0eee924f15ad760211",
+   "size": 1466492
+  },
+  "godot/assets/concept/meshy/karamazov_paperback/karamazov_paperback_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:01+00:00",
+   "md5": "e936ea4c9e6179c6063301ae2e1c11d5",
+   "size": 1423441
+  },
+  "godot/assets/concept/meshy/karamazov_paperback/karamazov_paperback_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:01+00:00",
+   "md5": "c377023d375b9b8c0dee12ea8dda3f9a",
+   "size": 1211941
+  },
+  "godot/assets/concept/meshy/karamazov_paperback/side.png": {
+   "at": "2026-10-27T18:58:01+00:00",
+   "md5": "c377023d375b9b8c0dee12ea8dda3f9a",
+   "size": 1211941
   },
   "godot/assets/concept/meshy/kestrel_mountain_mountain/front.png": {
    "at": "2026-10-14T03:00:58+00:00",
@@ -79930,6 +80180,36 @@
    "md5": "f56b066e38f4e3fd118a3e406f7aea27",
    "size": 1878125
   },
+  "godot/assets/concept/meshy/license_plate_notebook/back.png": {
+   "at": "2026-10-27T18:58:11+00:00",
+   "md5": "d49217642883856dd22b9288b314890d",
+   "size": 1585528
+  },
+  "godot/assets/concept/meshy/license_plate_notebook/front.png": {
+   "at": "2026-10-27T18:58:11+00:00",
+   "md5": "f69e12f946238396bf54a6060e632254",
+   "size": 1507790
+  },
+  "godot/assets/concept/meshy/license_plate_notebook/license_plate_notebook_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:11+00:00",
+   "md5": "d49217642883856dd22b9288b314890d",
+   "size": 1585528
+  },
+  "godot/assets/concept/meshy/license_plate_notebook/license_plate_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:11+00:00",
+   "md5": "f69e12f946238396bf54a6060e632254",
+   "size": 1507790
+  },
+  "godot/assets/concept/meshy/license_plate_notebook/license_plate_notebook_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:11+00:00",
+   "md5": "17c24bd71f2730afa68908d4934ac238",
+   "size": 1136198
+  },
+  "godot/assets/concept/meshy/license_plate_notebook/side.png": {
+   "at": "2026-10-27T18:58:11+00:00",
+   "md5": "17c24bd71f2730afa68908d4934ac238",
+   "size": 1136198
+  },
   "godot/assets/concept/meshy/linda_caldwell/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "dfbc4479cbe68a8e507edf9cf6a63782",
@@ -80484,6 +80764,36 @@
    "at": "2026-10-11T21:10:23+00:00",
    "md5": "3a70ab2bd02206b6e895e320416b6888",
    "size": 1925828
+  },
+  "godot/assets/concept/meshy/mayas_zine/back.png": {
+   "at": "2026-10-27T18:58:22+00:00",
+   "md5": "a36af502b010ed422274c4eb3f32b488",
+   "size": 1928374
+  },
+  "godot/assets/concept/meshy/mayas_zine/front.png": {
+   "at": "2026-10-27T18:58:22+00:00",
+   "md5": "ca9b52ecdbd89c04434d1b087f2c051b",
+   "size": 2044729
+  },
+  "godot/assets/concept/meshy/mayas_zine/mayas_zine_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:22+00:00",
+   "md5": "a36af502b010ed422274c4eb3f32b488",
+   "size": 1928374
+  },
+  "godot/assets/concept/meshy/mayas_zine/mayas_zine_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:22+00:00",
+   "md5": "ca9b52ecdbd89c04434d1b087f2c051b",
+   "size": 2044729
+  },
+  "godot/assets/concept/meshy/mayas_zine/mayas_zine_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:22+00:00",
+   "md5": "a3f2425f87653d3133fc22eabf189c90",
+   "size": 1137187
+  },
+  "godot/assets/concept/meshy/mayas_zine/side.png": {
+   "at": "2026-10-27T18:58:22+00:00",
+   "md5": "a3f2425f87653d3133fc22eabf189c90",
+   "size": 1137187
   },
   "godot/assets/concept/meshy/miller_kitchen_diego_notebook/front.png": {
    "at": "2026-10-27T15:25:21+00:00",
@@ -81575,6 +81885,36 @@
    "md5": "805a9e49dc21d1a4dd99f6fe3b2c674e",
    "size": 1778230
   },
+  "godot/assets/concept/meshy/nexcorp_badge_clips/back.png": {
+   "at": "2026-10-27T18:58:34+00:00",
+   "md5": "0be0ee4bdb81a201ad00a70fe600235c",
+   "size": 1678078
+  },
+  "godot/assets/concept/meshy/nexcorp_badge_clips/front.png": {
+   "at": "2026-10-27T18:58:34+00:00",
+   "md5": "f6b024294d2d940e8f573d8edfef0ec3",
+   "size": 1567815
+  },
+  "godot/assets/concept/meshy/nexcorp_badge_clips/nexcorp_badge_clips_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:34+00:00",
+   "md5": "0be0ee4bdb81a201ad00a70fe600235c",
+   "size": 1678078
+  },
+  "godot/assets/concept/meshy/nexcorp_badge_clips/nexcorp_badge_clips_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:34+00:00",
+   "md5": "f6b024294d2d940e8f573d8edfef0ec3",
+   "size": 1567815
+  },
+  "godot/assets/concept/meshy/nexcorp_badge_clips/nexcorp_badge_clips_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:34+00:00",
+   "md5": "7faa367c42b1bf75740eb3f3c81c609d",
+   "size": 1250791
+  },
+  "godot/assets/concept/meshy/nexcorp_badge_clips/side.png": {
+   "at": "2026-10-27T18:58:34+00:00",
+   "md5": "7faa367c42b1bf75740eb3f3c81c609d",
+   "size": 1250791
+  },
   "godot/assets/concept/meshy/nexcorp_fueling_station_canopy_logo/front.png": {
    "at": "2026-10-14T03:14:23+00:00",
    "md5": "92d3cb49eabc6dfb75eb0661295676a6",
@@ -82145,6 +82485,66 @@
    "md5": "77f0fb299a8fd51598556194da40ce3a",
    "size": 2614522
   },
+  "godot/assets/concept/meshy/pauls_black_car/back.png": {
+   "at": "2026-10-27T18:58:46+00:00",
+   "md5": "d10492fd2e2fa668725f6b82d2d1761d",
+   "size": 1938089
+  },
+  "godot/assets/concept/meshy/pauls_black_car/front.png": {
+   "at": "2026-10-27T18:58:46+00:00",
+   "md5": "c67e0feb1c2d08f91ff1f885f95e8927",
+   "size": 1848118
+  },
+  "godot/assets/concept/meshy/pauls_black_car/pauls_black_car_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:46+00:00",
+   "md5": "d10492fd2e2fa668725f6b82d2d1761d",
+   "size": 1938089
+  },
+  "godot/assets/concept/meshy/pauls_black_car/pauls_black_car_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:46+00:00",
+   "md5": "c67e0feb1c2d08f91ff1f885f95e8927",
+   "size": 1848118
+  },
+  "godot/assets/concept/meshy/pauls_black_car/pauls_black_car_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:46+00:00",
+   "md5": "8b8b6fe8afa4e9b4736d9634f1694101",
+   "size": 1909755
+  },
+  "godot/assets/concept/meshy/pauls_black_car/side.png": {
+   "at": "2026-10-27T18:58:46+00:00",
+   "md5": "8b8b6fe8afa4e9b4736d9634f1694101",
+   "size": 1909755
+  },
+  "godot/assets/concept/meshy/pause_watch/back.png": {
+   "at": "2026-10-27T18:58:59+00:00",
+   "md5": "9b0fc6644982d48faa67a486d8ad523c",
+   "size": 1494422
+  },
+  "godot/assets/concept/meshy/pause_watch/front.png": {
+   "at": "2026-10-27T18:58:59+00:00",
+   "md5": "28c1782000d4a66845b251a505b370b3",
+   "size": 1412190
+  },
+  "godot/assets/concept/meshy/pause_watch/pause_watch_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:59+00:00",
+   "md5": "9b0fc6644982d48faa67a486d8ad523c",
+   "size": 1494422
+  },
+  "godot/assets/concept/meshy/pause_watch/pause_watch_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:59+00:00",
+   "md5": "28c1782000d4a66845b251a505b370b3",
+   "size": 1412190
+  },
+  "godot/assets/concept/meshy/pause_watch/pause_watch_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:58:59+00:00",
+   "md5": "7e19a0e8db1a061da72e64fbd7528955",
+   "size": 1268228
+  },
+  "godot/assets/concept/meshy/pause_watch/side.png": {
+   "at": "2026-10-27T18:58:59+00:00",
+   "md5": "7e19a0e8db1a061da72e64fbd7528955",
+   "size": 1268228
+  },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
    "md5": "eba19aaa7d162037126998df26871233",
@@ -82434,6 +82834,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "777a2173d10b19d375d91d5327a850fe",
    "size": 85779
+  },
+  "godot/assets/concept/meshy/phone_ledger/back.png": {
+   "at": "2026-10-27T18:59:11+00:00",
+   "md5": "9f76722cf62a26acfac8df3d9c19b51e",
+   "size": 1672755
+  },
+  "godot/assets/concept/meshy/phone_ledger/front.png": {
+   "at": "2026-10-27T18:59:11+00:00",
+   "md5": "9f4a3f452e911533afcac97e347f9931",
+   "size": 1507891
+  },
+  "godot/assets/concept/meshy/phone_ledger/phone_ledger_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:11+00:00",
+   "md5": "9f76722cf62a26acfac8df3d9c19b51e",
+   "size": 1672755
+  },
+  "godot/assets/concept/meshy/phone_ledger/phone_ledger_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:11+00:00",
+   "md5": "9f4a3f452e911533afcac97e347f9931",
+   "size": 1507891
+  },
+  "godot/assets/concept/meshy/phone_ledger/phone_ledger_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:11+00:00",
+   "md5": "13ed102a53cb03e70bcd6d30c51eabfb",
+   "size": 1072776
+  },
+  "godot/assets/concept/meshy/phone_ledger/side.png": {
+   "at": "2026-10-27T18:59:11+00:00",
+   "md5": "13ed102a53cb03e70bcd6d30c51eabfb",
+   "size": 1072776
   },
   "godot/assets/concept/meshy/pit_stop_interior_menuboard_1/front.png": {
    "at": "2026-10-14T03:19:08+00:00",
@@ -83940,6 +84370,36 @@
    "md5": "9f887b0139140ac9227d50aa29de62be",
    "size": 2464477
   },
+  "godot/assets/concept/meshy/porch_wicker_chair/back.png": {
+   "at": "2026-10-27T18:59:24+00:00",
+   "md5": "b30bd0d2b7c8c2b9778ab2a72e702a02",
+   "size": 1731636
+  },
+  "godot/assets/concept/meshy/porch_wicker_chair/front.png": {
+   "at": "2026-10-27T18:59:24+00:00",
+   "md5": "69d6cdbc38859832b4b9fa76cf570af2",
+   "size": 1697663
+  },
+  "godot/assets/concept/meshy/porch_wicker_chair/porch_wicker_chair_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:24+00:00",
+   "md5": "b30bd0d2b7c8c2b9778ab2a72e702a02",
+   "size": 1731636
+  },
+  "godot/assets/concept/meshy/porch_wicker_chair/porch_wicker_chair_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:24+00:00",
+   "md5": "69d6cdbc38859832b4b9fa76cf570af2",
+   "size": 1697663
+  },
+  "godot/assets/concept/meshy/porch_wicker_chair/porch_wicker_chair_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:24+00:00",
+   "md5": "fb7c7c2b2429d006f10661affb7f9a10",
+   "size": 1545859
+  },
+  "godot/assets/concept/meshy/porch_wicker_chair/side.png": {
+   "at": "2026-10-27T18:59:24+00:00",
+   "md5": "fb7c7c2b2429d006f10661affb7f9a10",
+   "size": 1545859
+  },
   "godot/assets/concept/meshy/quentin_paul/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c24bfd5ad532760497cc18dbaa8803cb",
@@ -85365,6 +85825,36 @@
    "md5": "fa084b0a9137aea427c7b5adff61a51e",
    "size": 67521
   },
+  "godot/assets/concept/meshy/sams_corolla/back.png": {
+   "at": "2026-10-27T18:59:39+00:00",
+   "md5": "2c9ff423893720b0a9f524f254c1f99e",
+   "size": 2161326
+  },
+  "godot/assets/concept/meshy/sams_corolla/front.png": {
+   "at": "2026-10-27T18:59:39+00:00",
+   "md5": "bc1115e16e6e9a5ca5f43d91fb1c6293",
+   "size": 2078122
+  },
+  "godot/assets/concept/meshy/sams_corolla/sams_corolla_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:39+00:00",
+   "md5": "2c9ff423893720b0a9f524f254c1f99e",
+   "size": 2161326
+  },
+  "godot/assets/concept/meshy/sams_corolla/sams_corolla_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:39+00:00",
+   "md5": "bc1115e16e6e9a5ca5f43d91fb1c6293",
+   "size": 2078122
+  },
+  "godot/assets/concept/meshy/sams_corolla/sams_corolla_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T18:59:39+00:00",
+   "md5": "c680650b15500b3786bef53f4d5f4777",
+   "size": 1994179
+  },
+  "godot/assets/concept/meshy/sams_corolla/side.png": {
+   "at": "2026-10-27T18:59:39+00:00",
+   "md5": "c680650b15500b3786bef53f4d5f4777",
+   "size": 1994179
+  },
   "godot/assets/concept/meshy/sapo_falls_tepui_far/front.png": {
    "at": "2026-10-14T03:24:32+00:00",
    "md5": "b2147d7a9b98bf932bebd45511207d06",
@@ -85555,6 +86045,36 @@
    "md5": "700f1b21c81fe58fedbb65b7022b4c30",
    "size": 1207656
   },
+  "godot/assets/concept/meshy/shortwave_radio/back.png": {
+   "at": "2026-10-27T19:00:04+00:00",
+   "md5": "65b8dca5267441cd71a4dbd521b10900",
+   "size": 1549137
+  },
+  "godot/assets/concept/meshy/shortwave_radio/front.png": {
+   "at": "2026-10-27T19:00:04+00:00",
+   "md5": "5a1e4b2317a2bee7102e10604cc31904",
+   "size": 1488502
+  },
+  "godot/assets/concept/meshy/shortwave_radio/shortwave_radio_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:04+00:00",
+   "md5": "65b8dca5267441cd71a4dbd521b10900",
+   "size": 1549137
+  },
+  "godot/assets/concept/meshy/shortwave_radio/shortwave_radio_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:04+00:00",
+   "md5": "5a1e4b2317a2bee7102e10604cc31904",
+   "size": 1488502
+  },
+  "godot/assets/concept/meshy/shortwave_radio/shortwave_radio_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:04+00:00",
+   "md5": "4595f23aadf84b40b7dd7a5c78f04f24",
+   "size": 1486100
+  },
+  "godot/assets/concept/meshy/shortwave_radio/side.png": {
+   "at": "2026-10-27T19:00:04+00:00",
+   "md5": "4595f23aadf84b40b7dd7a5c78f04f24",
+   "size": 1486100
+  },
   "godot/assets/concept/meshy/skip_donnelly/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
@@ -85564,6 +86084,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
    "size": 71019
+  },
+  "godot/assets/concept/meshy/skips_mixtape_1999/back.png": {
+   "at": "2026-10-27T19:00:22+00:00",
+   "md5": "89f601e044f764dc84d9f9b7e7c138e7",
+   "size": 1518289
+  },
+  "godot/assets/concept/meshy/skips_mixtape_1999/front.png": {
+   "at": "2026-10-27T19:00:22+00:00",
+   "md5": "f0615b1d4f3322b603481c75c7c5cb71",
+   "size": 1515814
+  },
+  "godot/assets/concept/meshy/skips_mixtape_1999/side.png": {
+   "at": "2026-10-27T19:00:22+00:00",
+   "md5": "ffb9f516eb1c0cc2082c9f8597caed68",
+   "size": 1097664
+  },
+  "godot/assets/concept/meshy/skips_mixtape_1999/skips_mixtape_1999_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:22+00:00",
+   "md5": "89f601e044f764dc84d9f9b7e7c138e7",
+   "size": 1518289
+  },
+  "godot/assets/concept/meshy/skips_mixtape_1999/skips_mixtape_1999_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:22+00:00",
+   "md5": "f0615b1d4f3322b603481c75c7c5cb71",
+   "size": 1515814
+  },
+  "godot/assets/concept/meshy/skips_mixtape_1999/skips_mixtape_1999_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:22+00:00",
+   "md5": "ffb9f516eb1c0cc2082c9f8597caed68",
+   "size": 1097664
   },
   "godot/assets/concept/meshy/sleep_lab_four_screens_desert__four_screens_show/front.png": {
    "at": "2026-10-27T15:29:08+00:00",
@@ -86175,6 +86725,36 @@
    "md5": "fafd1c668cfd99b15358905bf30656be",
    "size": 1751752
   },
+  "godot/assets/concept/meshy/substation_nine_lyric_sheet/back.png": {
+   "at": "2026-10-27T19:00:34+00:00",
+   "md5": "03f2200d9d044e2e17c00d86f1f92dfa",
+   "size": 1317278
+  },
+  "godot/assets/concept/meshy/substation_nine_lyric_sheet/front.png": {
+   "at": "2026-10-27T19:00:34+00:00",
+   "md5": "9e6ebc22e2efe31dafb1f3fde458b20c",
+   "size": 1424989
+  },
+  "godot/assets/concept/meshy/substation_nine_lyric_sheet/side.png": {
+   "at": "2026-10-27T19:00:34+00:00",
+   "md5": "dbbc0e4b13472eb005a6ad8aded0da03",
+   "size": 1131142
+  },
+  "godot/assets/concept/meshy/substation_nine_lyric_sheet/substation_nine_lyric_sheet_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:34+00:00",
+   "md5": "03f2200d9d044e2e17c00d86f1f92dfa",
+   "size": 1317278
+  },
+  "godot/assets/concept/meshy/substation_nine_lyric_sheet/substation_nine_lyric_sheet_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:34+00:00",
+   "md5": "9e6ebc22e2efe31dafb1f3fde458b20c",
+   "size": 1424989
+  },
+  "godot/assets/concept/meshy/substation_nine_lyric_sheet/substation_nine_lyric_sheet_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:34+00:00",
+   "md5": "dbbc0e4b13472eb005a6ad8aded0da03",
+   "size": 1131142
+  },
   "godot/assets/concept/meshy/tanya_horne/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "5155e7561bc4220fb8617f767ecea7f7",
@@ -86184,6 +86764,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "5155e7561bc4220fb8617f767ecea7f7",
    "size": 58774
+  },
+  "godot/assets/concept/meshy/tarot_deck_wine_stained/back.png": {
+   "at": "2026-10-27T19:00:50+00:00",
+   "md5": "204ba87a32270e2245ec906b368fb30a",
+   "size": 1571369
+  },
+  "godot/assets/concept/meshy/tarot_deck_wine_stained/front.png": {
+   "at": "2026-10-27T19:00:50+00:00",
+   "md5": "7ce284c9d96c959499277755d421ce0c",
+   "size": 1515988
+  },
+  "godot/assets/concept/meshy/tarot_deck_wine_stained/side.png": {
+   "at": "2026-10-27T19:00:50+00:00",
+   "md5": "16a790f2a3691b1454c67a058e176716",
+   "size": 1288318
+  },
+  "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:50+00:00",
+   "md5": "204ba87a32270e2245ec906b368fb30a",
+   "size": 1571369
+  },
+  "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:50+00:00",
+   "md5": "7ce284c9d96c959499277755d421ce0c",
+   "size": 1515988
+  },
+  "godot/assets/concept/meshy/tarot_deck_wine_stained/tarot_deck_wine_stained_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:00:50+00:00",
+   "md5": "16a790f2a3691b1454c67a058e176716",
+   "size": 1288318
   },
   "godot/assets/concept/meshy/tem/back.png": {
    "at": "2026-10-11T17:38:00+00:00",
@@ -88444,6 +89054,36 @@
    "at": "2026-10-18T17:29:13+00:00",
    "md5": "e85f9274d7e46bcc81c40ee898fb36bd",
    "size": 1169118
+  },
+  "godot/assets/concept/meshy/white_van/back.png": {
+   "at": "2026-10-27T19:01:03+00:00",
+   "md5": "1ffd2e4d6629f8ccbbbd90bf9ceefb7a",
+   "size": 2123459
+  },
+  "godot/assets/concept/meshy/white_van/front.png": {
+   "at": "2026-10-27T19:01:03+00:00",
+   "md5": "17e2cf6d36a8d98d80f01a7df9b9650b",
+   "size": 2129749
+  },
+  "godot/assets/concept/meshy/white_van/side.png": {
+   "at": "2026-10-27T19:01:03+00:00",
+   "md5": "b90c84a463af7f82c853751a629b4856",
+   "size": 2053934
+  },
+  "godot/assets/concept/meshy/white_van/white_van_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:01:03+00:00",
+   "md5": "1ffd2e4d6629f8ccbbbd90bf9ceefb7a",
+   "size": 2123459
+  },
+  "godot/assets/concept/meshy/white_van/white_van_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:01:03+00:00",
+   "md5": "17e2cf6d36a8d98d80f01a7df9b9650b",
+   "size": 2129749
+  },
+  "godot/assets/concept/meshy/white_van/white_van_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:01:03+00:00",
+   "md5": "b90c84a463af7f82c853751a629b4856",
+   "size": 2053934
   },
   "godot/assets/concept/meshy/wren/back.png": {
    "at": "2026-10-11T17:33:50+00:00",

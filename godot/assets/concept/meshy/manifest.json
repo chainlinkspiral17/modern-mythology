@@ -32155,5 +32155,51 @@
       "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/box_of_three_sticks/box_of_three_sticks_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T18:56:43+00:00",
+    "stage": "image",
+    "slug": "cedar_bowl",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Olaf's cedar bowl like this: The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep. The bowl was about the size of two cupped hands. The bowl had a spiral on the outside that ran from the rim down to the base in a single continuous curve. by the rhythm of the spiral, by the way the carver had let the spiral end short of the rim by perhaps a quarter inch and had finished the rim with a curve back to the cut There was a crow at the rim. There was an octopus at a quarter of the way around. There was a ferret. There was a young woman in a hooded coat. There was a tower. There were the smaller figures \u2014 wand, star, chariot, hanged man. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The bowl on the plank was the size of his palm, smaller than the bowl Per had set on the cabin table half an hour ago The cedar bowl. Spiral on the outside. The size of two cupped hands. by the angle at which the flame had been pressed into the base The eyes were closed. The mouth was closed.\nSingle-object concept render of Olaf's cedar bowl, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cedar_bowl/cedar_bowl_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T18:56:55+00:00",
+    "stage": "image",
+    "slug": "houston_bayou_drugstore_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the sign over the all-night drugstore on the dream river like this: It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door. Additional direction: Flat straight-on face of a long internally lit box sign over the front of an all-night drugstore that is also a gas station, Houston in the 2010s, seen at night: a glossy red acrylic face glowing from inside, white bold sans-serif capitals, a white strip of smaller service words beneath. A little bug-speckled at the bottom, one fluorescent tube behind it dimmer than the rest. Very long landscape, evenly lit.\nSIZE: the real object is 10.00 m wide by 90 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 21% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the sign over the all-night drugstore on the dream river, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nThe main lettering reads exactly: ALL NIGHT DRUGS. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: PHARMACY \u00b7 PHOTO \u00b7 SUNDRIES \u00b7 GAS \u00b7 OPEN 24 HOURS No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/houston_bayou_drugstore_sign/houston_bayou_drugstore_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T18:57:34+00:00",
+    "stage": "art",
+    "slug": "houston_bayou_drugstore_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/houston_bayou_drugstore_sign/front.png",
+    "output": "godot/assets/art/hero/houston_bayou_drugstore_sign.png"
   }
 ]
