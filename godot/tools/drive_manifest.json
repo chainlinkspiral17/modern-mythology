@@ -82795,6 +82795,56 @@
    "md5": "ed3cd58df538b8578acd1a1eefa89661",
    "size": 1559621
   },
+  "godot/assets/concept/meshy/vol4_story_rooms_child_drawing/front.png": {
+   "at": "2026-10-27T15:32:55+00:00",
+   "md5": "a13f5f91b7f52aebe5b57c9cb4fad11c",
+   "size": 3583805
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_child_drawing/vol4_story_rooms_child_drawing_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:32:55+00:00",
+   "md5": "a13f5f91b7f52aebe5b57c9cb4fad11c",
+   "size": 3583805
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_garage_exit_sign/front.png": {
+   "at": "2026-10-27T15:33:05+00:00",
+   "md5": "7a8ae9e864a6942ba1416b8ac229772a",
+   "size": 2072268
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_garage_exit_sign/vol4_story_rooms_garage_exit_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:33:05+00:00",
+   "md5": "7a8ae9e864a6942ba1416b8ac229772a",
+   "size": 2072268
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_mirror_picture/front.png": {
+   "at": "2026-10-27T15:33:15+00:00",
+   "md5": "ae9f4e007a0b1430732a33ccfcd2b399",
+   "size": 2103907
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_mirror_picture/vol4_story_rooms_mirror_picture_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:33:15+00:00",
+   "md5": "ae9f4e007a0b1430732a33ccfcd2b399",
+   "size": 2103907
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_sale_banners/front.png": {
+   "at": "2026-10-27T15:33:24+00:00",
+   "md5": "5f47dcab28260cdeb7b5808608e13fd4",
+   "size": 3092647
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_sale_banners/vol4_story_rooms_sale_banners_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:33:24+00:00",
+   "md5": "5f47dcab28260cdeb7b5808608e13fd4",
+   "size": 3092647
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_shanghai_city_night/front.png": {
+   "at": "2026-10-27T15:33:44+00:00",
+   "md5": "4726d8ad3f88d671309ff1512a819749",
+   "size": 2429066
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_shanghai_city_night/vol4_story_rooms_shanghai_city_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:33:44+00:00",
+   "md5": "4726d8ad3f88d671309ff1512a819749",
+   "size": 2429066
+  },
   "godot/assets/concept/meshy/vol4_vacant_lot_dusk/front.png": {
    "at": "2026-10-19T19:22:08+00:00",
    "md5": "ff63ffa02ef04baaddadc95c52077384",
@@ -83369,6 +83419,16 @@
    "at": "2026-10-11T16:57:17+00:00",
    "md5": "6e7522958fd77d9d7ea6ad4255bb09dd",
    "size": 1957121
+  },
+  "godot/assets/concept/meshy/writers_desk_clipping_all_over_town/front.png": {
+   "at": "2026-10-27T15:33:56+00:00",
+   "md5": "b643955391bb44f494946df103e9f88d",
+   "size": 4056271
+  },
+  "godot/assets/concept/meshy/writers_desk_clipping_all_over_town/writers_desk_clipping_all_over_town_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T15:33:56+00:00",
+   "md5": "b643955391bb44f494946df103e9f88d",
+   "size": 4056271
   },
   "godot/assets/video/intro.ogv": {
    "at": "2026-10-01T05:59:49+00:00",
