@@ -29884,6 +29884,9 @@
           "facing": "+y",
           "hide": [
             "Canopy_Logo"
+          ],
+          "not_presets": [
+            "gas_station_2003_night"
           ]
         }
       ],
@@ -29930,7 +29933,10 @@
           "hide": [
             "Counter_Register_Screen"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         }
       ],
       "lettering": "NexCorp · STORE 3411 · REG 1\nDIET COKE 20OZ 2.49\nPRETZELS 1.99\nTOTAL $4.85\nCASH  CARD  VOID  LOTTERY  FUEL PREPAY",
@@ -29972,7 +29978,10 @@
           "hide": [
             "Pump_1_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -29990,7 +29999,10 @@
           "hide": [
             "Pump_1_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30008,7 +30020,10 @@
           "hide": [
             "Pump_2_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30026,7 +30041,10 @@
           "hide": [
             "Pump_2_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30044,7 +30062,10 @@
           "hide": [
             "Pump_3_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30062,7 +30083,10 @@
           "hide": [
             "Pump_3_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30080,7 +30104,10 @@
           "hide": [
             "Pump_4_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30098,7 +30125,10 @@
           "hide": [
             "Pump_4_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30116,7 +30146,10 @@
           "hide": [
             "Pump_5_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30134,7 +30167,10 @@
           "hide": [
             "Pump_5_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30152,7 +30188,10 @@
           "hide": [
             "Pump_6_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30170,7 +30209,10 @@
           "hide": [
             "Pump_6_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30188,7 +30230,10 @@
           "hide": [
             "Pump_7_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30206,7 +30251,10 @@
           "hide": [
             "Pump_7_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30224,7 +30272,10 @@
           "hide": [
             "Pump_8_Display_-1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -30242,7 +30293,10 @@
           "hide": [
             "Pump_8_Display_+1"
           ],
-          "glow": 0.9
+          "glow": 0.9,
+          "not_presets": [
+            "gas_station_2003_night"
+          ]
         }
       ],
       "lettering": "TOTAL $ 0.00\nGALLONS 0.000\nPRICE/GAL $2.79⁹\nLIFT NOZZLE · SELECT GRADE",
@@ -30283,6 +30337,9 @@
           "facing": "+y",
           "hide": [
             "Pylon_Sign_Logo"
+          ],
+          "not_presets": [
+            "gas_station_2003_night"
           ]
         }
       ],
@@ -30363,6 +30420,9 @@
           "facing": "-y",
           "hide": [
             "Store_Parapet_Logo"
+          ],
+          "not_presets": [
+            "gas_station_2003_night"
           ]
         }
       ],

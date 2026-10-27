@@ -265,6 +265,79 @@ light_energy = 0.45
 shadow_enabled = false
 omni_range = 2.20
 
+; (2026-10-27) vol 3 "passengers" at 3 a.m.: the canopy's lights, the store's bleached
+
+; white light, the department-store signs' colours across the road
+
+[node name="Night_Fill__gas_station_2003_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 20, 10)
+light_color = Color(0.40, 0.42, 0.56, 1)
+light_energy = 0.12
+shadow_enabled = false
+
+[node name="Canopy_Night_0__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 4.7, 14.0)
+light_color = Color(0.92, 0.96, 1.0, 1)
+light_energy = 2.6
+shadow_enabled = false
+omni_range = 14.0
+
+[node name="Canopy_Night_1__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4.7, 14.0)
+light_color = Color(0.92, 0.96, 1.0, 1)
+light_energy = 2.6
+shadow_enabled = false
+omni_range = 14.0
+
+[node name="Canopy_Night_2__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 4.7, 14.0)
+light_color = Color(0.92, 0.96, 1.0, 1)
+light_energy = 2.6
+shadow_enabled = false
+omni_range = 14.0
+
+[node name="Canopy_Night_3__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 4.7, 14.0)
+light_color = Color(0.92, 0.96, 1.0, 1)
+light_energy = 2.6
+shadow_enabled = false
+omni_range = 14.0
+
+[node name="Store_Spill__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.0, 1.6)
+light_color = Color(0.94, 0.98, 1.0, 1)
+light_energy = 1.8
+shadow_enabled = false
+omni_range = 10.0
+
+[node name="Store_Inside__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.8, -6.0)
+light_color = Color(0.96, 0.98, 1.0, 1)
+light_energy = 2.2
+shadow_enabled = false
+omni_range = 12.0
+
+[node name="Pylon_Glow__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0, 6.6, 29.0)
+light_color = Color(0.90, 0.92, 1.0, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 8.0
+
+[node name="Signs_Across_Red__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0, 5.0, 62.0)
+light_color = Color(1.0, 0.30, 0.26, 1)
+light_energy = 3.0
+shadow_enabled = false
+omni_range = 26.0
+
+[node name="Signs_Across_Teal__gas_station_2003_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 5.0, 60.0)
+light_color = Color(0.30, 0.90, 0.86, 1)
+light_energy = 3.0
+shadow_enabled = false
+omni_range = 26.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
