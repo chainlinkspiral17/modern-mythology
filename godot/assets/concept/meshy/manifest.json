@@ -32390,5 +32390,89 @@
       "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T19:10:36+00:00",
+    "stage": "image",
+    "slug": "kerosene_lamp",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The kerosene lamp like this: The kerosene lamp on the table stayed lit at the low setting Tem kept it at when she wanted to be able to see the bowls in the dark. The main room held the wood stove, the small wooden table beside the kerosene lamp, two armchairs, a daybed where Kai had slept. The lamp was not lit; the gray light through the south-facing window was enough. The lamp was lit against the rain-darkened light. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been The kerosene-lamp light didn't reach the corners. The kerosene lamp beside which the small table sits (vol7_ch1_morning \u2014 unlit in the gray morning; lit ch19).\nSingle-object concept render of The kerosene lamp, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:11:23+00:00",
+    "stage": "image",
+    "slug": "tems_wagon",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Tem's wagon like this: She drove down in the small Toyota wagon that had been her grandfather's, the wagon she had been driving since 2046 when she had inherited it. Tem had been keeping it running through an arrangement with the mechanic in old-Waldport who had also kept her grandfather's wagon running before her. Tem had loaded the four bowls into the wooden box in the back of the wagon. The wagon brushed cedar branches on both sides.\nSingle-object concept render of Tem's wagon, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/tems_wagon/tems_wagon_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tems_wagon/tems_wagon_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tems_wagon/tems_wagon_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:12:11+00:00",
+    "stage": "image",
+    "slug": "brandons_leather_notebook",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Brandon Tillman's leather notebook like this: The notebook was leather-bound, palm-sized. Right outside pocket: a notebook and a pencil. The kind of notebook Brandon would have carried. The handwriting was \u2014 by Finn's read of the careful spacing and the round loops \u2014 Brandon's hand. Finn registered, holding the notebook: the last entry was October 4, 2050. The notebook was in the inside pocket of Cale's coat.\nSingle-object concept render of Brandon Tillman's leather notebook, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/brandons_leather_notebook/brandons_leather_notebook_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/brandons_leather_notebook/brandons_leather_notebook_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/brandons_leather_notebook/brandons_leather_notebook_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:13:07+00:00",
+    "stage": "image",
+    "slug": "pendleton_blanket",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Pendleton blanket like this: The wool blanket was Pendleton, a pattern she had come to associate with the cabin, woven by a mill in Washougal that had closed in 2046 and that the cabin had three blankets from. It was the rain she heard first, before she registered the bed, the cabin, the wool blanket across her legs. The wool blanket pulled up to Tem's collarbone. Per was asleep in the chair by the wood stove with the wool blanket pulled up to his shoulders. the Pendleton wool blanket (Washougal mill, the cabin has three)\nSingle-object concept render of The Pendleton blanket, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
