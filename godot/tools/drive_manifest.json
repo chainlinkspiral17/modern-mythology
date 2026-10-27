@@ -7250,6 +7250,11 @@
    "md5": "25b23cf86fdcd79fb6bdd2d99af18762",
    "size": 2480273
   },
+  "godot/assets/art/hero/louisiana_road_far_treeline.png": {
+   "at": "2026-10-27T05:48:52+00:00",
+   "md5": "7b075a686fd61ae92567fefc4b631589",
+   "size": 2096775
+  },
   "godot/assets/art/hero/louisiana_road_stop_sign.png": {
    "at": "2026-10-27T05:14:09+00:00",
    "md5": "ef0afd258bc8149e6bf4c0a0c9ebb73f",
@@ -8269,6 +8274,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "62dd7996c293aebb3a533aa94152e1f2",
    "size": 2362082
+  },
+  "godot/assets/art/hero/small_wood_farmhouse_moonlit_cloud.png": {
+   "at": "2026-10-27T05:48:52+00:00",
+   "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
+   "size": 1568768
   },
   "godot/assets/art/hero/small_wood_rec_center_bulletin_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -74220,6 +74230,16 @@
    "md5": "25b23cf86fdcd79fb6bdd2d99af18762",
    "size": 2480273
   },
+  "godot/assets/concept/meshy/louisiana_road_far_treeline/front.png": {
+   "at": "2026-10-27T05:49:05+00:00",
+   "md5": "7b075a686fd61ae92567fefc4b631589",
+   "size": 2096775
+  },
+  "godot/assets/concept/meshy/louisiana_road_far_treeline/louisiana_road_far_treeline_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:49:05+00:00",
+   "md5": "7b075a686fd61ae92567fefc4b631589",
+   "size": 2096775
+  },
   "godot/assets/concept/meshy/louisiana_road_stop_sign/front.png": {
    "at": "2026-10-27T05:14:29+00:00",
    "md5": "ef0afd258bc8149e6bf4c0a0c9ebb73f",
@@ -79419,6 +79439,16 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
    "size": 71019
+  },
+  "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/front.png": {
+   "at": "2026-10-27T05:49:18+00:00",
+   "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
+   "size": 1568768
+  },
+  "godot/assets/concept/meshy/small_wood_farmhouse_moonlit_cloud/small_wood_farmhouse_moonlit_cloud_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:49:18+00:00",
+   "md5": "9dc0bcee8afbd4124cd0646e4a7a7b64",
+   "size": 1568768
   },
   "godot/assets/concept/meshy/small_wood_rec_center_bulletin_1/front.png": {
    "at": "2026-10-14T03:26:32+00:00",
