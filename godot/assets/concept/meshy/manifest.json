@@ -25650,5 +25650,472 @@
     "outputs": [
       "godot/assets/concept/meshy/bindery_plain_envelope/bindery_plain_envelope_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T02:40:02+00:00",
+    "stage": "art",
+    "slug": "bindery_plain_envelope",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/bindery_plain_envelope/front.png",
+    "output": "godot/assets/art/hero/bindery_plain_envelope.png"
+  },
+  {
+    "at": "2026-10-27T02:40:25+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_brandon_notebook",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Brandon's notebook, open to the thirty-eighth entry, like this: The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm. He took the notebook out. The first page was in Brandon's careful handwriting. The notebook has Brandon's writing in it. Thirty-eight entries from January to October of 2050. October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a small palm-sized leather-bound notebook lying open flat, the two-page spread with the worn brown leather cover showing as a narrow border around it. Cream lined pages, slightly wavy from salt air, written all over in a careful, even, upright hand in dark pencil and ink. The right-hand page begins a new entry and reads, legibly: \"October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him.\" \u2014 the rest of both pages is the same careful handwriting continuing, small and too fine to read. A ribbon marker across the gutter, soft rubbed corners, a faint water ring. A personal field notebook of the 2050s, kept by hand.\nSIZE: the real object is 26 cm wide by 20 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Brandon's notebook, open to the thirty-eighth entry, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_brandon_notebook/cabin_interior_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:40:34+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_brandon_notebook",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_brandon_notebook/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_brandon_notebook.png"
+  },
+  {
+    "at": "2026-10-27T02:40:53+00:00",
+    "stage": "image",
+    "slug": "caldwell_porch_night_framed_print",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the framed print on the porch side table, one of her grandfather's, like this: The paper has the particular weight of mid-seventies gelatin silver printing, which Maya has learned to recognize from the framed prints her grandfather had left around this house. Additional direction: Straight-on, filling the frame edge to edge, evenly lit: a small black-and-white photographic print, portrait format, mid-1970s gelatin silver paper with a soft warm-grey tone and a slight sheen. The picture: a quiet small-town street at dusk in the 1970s \u2014 a corner storefront with its awning, a parked sedan of the period, telephone wires, the last light low along the brick. Careful, patient composition by an amateur who knew what he was doing; fine grain, deep blacks gone a little brown with age, a thin white paper margin at the edges. The print only, no frame.\nSIZE: the real object is 8 cm wide by 11 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the framed print on the porch side table, one of her grandfather's, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/caldwell_porch_night_framed_print/caldwell_porch_night_framed_print_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:41:50+00:00",
+    "stage": "art",
+    "slug": "caldwell_porch_night_framed_print",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/caldwell_porch_night_framed_print/front.png",
+    "output": "godot/assets/art/hero/caldwell_porch_night_framed_print.png"
+  },
+  {
+    "at": "2026-10-27T02:42:11+00:00",
+    "stage": "image",
+    "slug": "caldwell_porch_night_anita_phone_photo",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the picture on Anita's phone \u2014 Gracie, the third sticker book, Bill and Anita, the cake, like this: The picture, at four eleven, is taken by Maya with Anita's phone. The picture is Gracie in the center, holding the third sticker book up, with Bill at her left and Anita at her right, the cake in front of them on the table. The picture is, by Maya's framing, slightly off-center to the left, which Maya does not notice and which Anita, when she looks at the picture later, decides she likes more than she would have liked the centered version. On the table is the cake \u2014 a sheet cake from the bakery on Magnolia, with white frosting and the words GRACIE \u2014 STICKER QUEEN in pink piping. Gracie is in a sundress. Additional direction: Straight-on view of a 2020s smartphone screen lying face up, filling the frame edge to edge, the screen glowing: a photo-gallery view showing one just-taken snapshot, vertical. In it an eleven-year-old girl in a sundress stands in the centre of a sunny front yard under a pecan tree, holding a finished sticker-and-puzzle activity book up to the camera, beaming; her father at her left and her mother at her right; in front of them on a folding table a white-frosted sheet cake piped in pink with the words GRACIE \u2014 STICKER QUEEN. The framing sits slightly off-centre to the left. Late-August Texas afternoon light, a little overexposed, the casual sharpness of a phone camera. A thin status bar at the top, no other interface clutter.\nSIZE: the real object is 6 cm wide by 13 cm tall, narrower than this 9:16 image, so the game shows only a vertical strip through the middle 85% of the image's width. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the picture on Anita's phone \u2014 Gracie, the third sticker book, Bill and Anita, the cake, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: GRACIE \u2014 STICKER QUEEN. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/caldwell_porch_night_anita_phone_photo/caldwell_porch_night_anita_phone_photo_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:42:20+00:00",
+    "stage": "art",
+    "slug": "caldwell_porch_night_anita_phone_photo",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/caldwell_porch_night_anita_phone_photo/front.png",
+    "output": "godot/assets/art/hero/caldwell_porch_night_anita_phone_photo.png"
+  },
+  {
+    "at": "2026-10-27T02:42:43+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_bowls_book",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bowls and the Listening, open face down where someone left it in '42, like this: A book lay open, face down, on one of the bunks at the south end. Tem walked over and looked, without touching: Bowls and the Listening, Werner Junior 1986, Schenck Press Bern. Open to the middle. Someone had been reading it when they left in '42 and had never come back to close it. The series was called Bowls and the Listening, and the books were in German, and my father had been reading them with the help of a dictionary. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a hardback book lying open FACE DOWN, so what shows is its outside \u2014 the back board on the left, the spine running top to bottom down the middle, the front board on the right. Plain dark cloth binding of a small Swiss private press, 1980s, the cloth faded along the spine and the edges by decades of light, a film of dust, the corners bumped. The spine is lettered in small worn gilt: Bowls and the Listening \u00b7 Werner Junior \u00b7 Schenck Press Bern. The front board carries the title small and centred, the same plain typography; the back board is blank. A book abandoned mid-read for ten years.\nSIZE: the real object is 29 cm wide by 20 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Bowls and the Listening, open face down where someone left it in '42, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Bowls and the Listening \u00b7 Werner Junior \u00b7 Schenck Press Bern. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_bowls_book/cedar_tower_bowls_book_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:43:06+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_bowls_book",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_bowls_book/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_bowls_book.png"
+  },
+  {
+    "at": "2026-10-27T02:43:30+00:00",
+    "stage": "image",
+    "slug": "cosmic_comics_interior_back_office_corkboard",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on, filling the frame edge to edge, evenly lit: a warm tan cork board crowded with the paperwork of a small independent comic shop in the 2020s, all held with mismatched coloured pushpins: printed distributor order sheets with highlighted lines, a hand-ruled staff schedule grid, a few curling invoices, index cards in ballpoint, a faded convention flyer, a business card or two, a sun-bleached comic-cover proof \u2014 pages overlapping, some yellowed, pin holes everywhere from decades of re-pinning. All writing is small, scribbled and illegible; no readable words. A thin dark wood frame edge just visible at the borders.\nSIZE: the real object is 1.40 m wide by 90 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the corkboard of pinned pages over Rick's desk in the back office, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/cosmic_comics_interior_back_office_corkboard_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:43:35+00:00",
+    "stage": "art",
+    "slug": "cosmic_comics_interior_back_office_corkboard",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cosmic_comics_interior_back_office_corkboard/front.png",
+    "output": "godot/assets/art/hero/cosmic_comics_interior_back_office_corkboard.png"
+  },
+  {
+    "at": "2026-10-27T02:43:57+00:00",
+    "stage": "image",
+    "slug": "cosmic_comics_interior_rick_notebook",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Rick's spiral notebook, open to the list he left for Maya, like this: Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know. Rick's spiral notebook is on the desk where it has been since Sunday. The list is on its standard page. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: one lined page of a cheap spiral notebook, the wire holes along the left edge, the page covered top to bottom in an older man's quick, slanted, legible ballpoint handwriting \u2014 a list, each item starting with a dash, written small to fit, the last line a single initial. It reads: \"Kid: / \u2014 Diamond truck Tuesday usually 2pm. Could be late. Could be Wednesday. They'll call. Sign for it. Don't open the boxes till you and Curtis have a minute together. He knows the routine. / \u2014 Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway. / \u2014 Mrs. Delacroix comes in Wednesday for her Archie. New issue is in the back, came in last week. Top of the new-arrivals box, marked. / \u2014 Hal will call Thursday morning. He always does on the weeks I'm out. He just wants to check. Tell him things are fine. He'll believe you. / \u2014 If Curtis asks about the Friday deposit slip, tell him I have it. I do. He'll grumble. Let him grumble. / \u2014 Wren is going to ask for Saturday off. Say yes. The girlfriend's birthday. I'd already told her she could but I forgot to tell you. / \u2014 Speak & Spell does what it does. Let it. Don't mention it to anybody who comes in. If it does something while a customer is in the shop, walk to the back and unplug it. You know which outlet. / \u2014 You've got this, kid. Call me only if it's on fire. Even then, decide if it can wait. / \u2014 R.\" Pale blue rules, a red margin line, the paper slightly grey from a week on a desk, a coffee ring in one corner, the page pressed flat where it has been read many times.\nSIZE: the real object is 16 cm wide by 21 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Rick's spiral notebook, open to the list he left for Maya, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Kid:\n\u2014 Diamond truck Tuesday usually 2pm. Could be late. Could be Wednesday. They'll call. Sign for it. Don't open the boxes till you and Curtis have a minute together. He knows the routine.\n\u2014 Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway.\n\u2014 Mrs. Delacroix comes in Wednesday for her Archie. New issue is in the back, came in last week. Top of the new-arrivals box, marked.\n\u2014 Hal will call Thursday morning. He always does on the weeks I'm out. He just wants to check. Tell him things are fine. He'll believe you.\n\u2014 If Curtis asks about the Friday deposit slip, tell him I have it. I do. He'll grumble. Let him grumble.\n\u2014 Wren is going to ask for Saturday off. Say yes. The girlfriend's birthday. I'd already told her she could but I forgot to tell you.\n\u2014 Speak & Spell does what it does. Let it. Don't mention it to anybody who comes in. If it does something while a customer is in the shop, walk to the back and unplug it. You know which outlet.\n\u2014 You've got this, kid. Call me only if it's on fire. Even then, decide if it can wait.\n\u2014 R.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cosmic_comics_interior_rick_notebook/cosmic_comics_interior_rick_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:44:18+00:00",
+    "stage": "art",
+    "slug": "cosmic_comics_interior_rick_notebook",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cosmic_comics_interior_rick_notebook/front.png",
+    "output": "godot/assets/art/hero/cosmic_comics_interior_rick_notebook.png"
+  },
+  {
+    "at": "2026-10-27T02:44:40+00:00",
+    "stage": "image",
+    "slug": "cosmic_comics_interior_ft_map",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the hand-drawn map of the east side of Harmony Creek Estates, one building circled in red ink, like this: The first is a hand-drawn map of the east side of Harmony Creek Estates, with a single building circled in red ink \u2014 the building not on any map. The map will show the east side of Harmony Creek Estates. On the map, a small inked circle will surround a particular building that is, as F.T. had said, not currently on any map. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a hand-drawn map in black ink on a sheet of plain paper, folded once and flattened \u2014 the east side of a 2020s Texas subdivision: curving residential streets and cul-de-sacs drawn freehand with a ruler-straight arterial along one edge, tiny house footprints, a drainage creek, an area of blank land at the edge with a single isolated building drawn in, and around that one building a small hand-inked circle in red ink. Street labels are tiny and illegible scrawl, no readable words. A crease across the middle from the envelope, slight smudges.\nSIZE: the real object is 20 cm wide by 14 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the hand-drawn map of the east side of Harmony Creek Estates, one building circled in red ink, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cosmic_comics_interior_ft_map/cosmic_comics_interior_ft_map_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:44:55+00:00",
+    "stage": "art",
+    "slug": "cosmic_comics_interior_ft_map",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cosmic_comics_interior_ft_map/front.png",
+    "output": "godot/assets/art/hero/cosmic_comics_interior_ft_map.png"
+  },
+  {
+    "at": "2026-10-27T02:45:14+00:00",
+    "stage": "image",
+    "slug": "cosmic_comics_interior_thomas_polaroid",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the 1974 Polaroid of a young man in a denim jacket, holding a camera, in front of a Graustark storefront, like this: The second is a single Polaroid photograph, dated 1974, of a young man in a denim jacket standing in front of a storefront in what had, at the time, been Graustark. The young man is holding a camera. The young man is smiling. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a single 1970s Polaroid instant print, the whole object \u2014 the white frame with the deeper margin at the bottom, the square picture above it. In the picture: a smiling young man in a denim jacket standing in front of a small-town storefront in 1974, a camera in his hands held at chest height, the shop window and its painted lettering behind him (the lettering soft and unreadable). The colours shifted with age toward amber and teal, the whites cream, a faint fade at the corners, slight sheen. In the bottom margin, small and handwritten in faded pen: 1974.\nSIZE: the real object is 9 cm wide by 11 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the 1974 Polaroid of a young man in a denim jacket, holding a camera, in front of a Graustark storefront, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: 1974. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cosmic_comics_interior_thomas_polaroid/cosmic_comics_interior_thomas_polaroid_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:45:42+00:00",
+    "stage": "art",
+    "slug": "cosmic_comics_interior_thomas_polaroid",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cosmic_comics_interior_thomas_polaroid/front.png",
+    "output": "godot/assets/art/hero/cosmic_comics_interior_thomas_polaroid.png"
+  },
+  {
+    "at": "2026-10-27T02:46:05+00:00",
+    "stage": "image",
+    "slug": "diner_john_notebook",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes John's notebook, open beside the coffee mug at booth six, like this: John looked at his own notebook, open beside the coffee mug. Filled with cryptic observations, overheard snippets, hand-drawn diagrams of Graustark's warped ley lines. Architect of Decay, John had scribbled once, in the margin, next to Frasier's name. He had circled it. He wrote down Architect of Decay and underlined it twice. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a young journalist's notebook lying open flat, both pages crammed with frantic, slanting ballpoint scrawl \u2014 cryptic observations, overheard snippets in quotation marks, arrows, and hand-drawn diagrams of warped ley lines crossing a sketched town grid along a river. In the margin of the right-hand page, beside a name, the words \"Architect of Decay\" written by hand, circled, and underlined twice. Everything else is fast, cramped, illegible handwriting. Cheap ruled paper, a coffee ring, a corner dog-eared, ink smeared by a moving hand.\nSIZE: the real object is 27 cm wide by 19 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of John's notebook, open beside the coffee mug at booth six, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Architect of Decay. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/diner_john_notebook/diner_john_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:46:12+00:00",
+    "stage": "art",
+    "slug": "diner_john_notebook",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/diner_john_notebook/front.png",
+    "output": "godot/assets/art/hero/diner_john_notebook.png"
+  },
+  {
+    "at": "2026-10-27T02:46:29+00:00",
+    "stage": "image",
+    "slug": "diner_folded_note",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the folded paper left on the table beside the hundred like this: He set a single bill on the table \u2014 a hundred \u2014 and a folded piece of paper next to it. The folded paper sat on the table. Nicola picked up the paper. She unfolded it. Inside, in clear, careful handwriting, three words and a phone number. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: a small sheet of good cream writing paper folded in half and lying closed on a white tablecloth's edge, the fold along one long side, the outside blank \u2014 no writing visible on the outside, only the faintest ghost of careful ink handwriting showing through the paper, unreadable. Crisp fold, clean edges, expensive heavy stock, untouched.\nSIZE: the real object is 10 cm wide by 7 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the folded paper left on the table beside the hundred, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/diner_folded_note/diner_folded_note_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:47:01+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_brandon_notebook",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Brandon's notebook from the substrate \u2014 leather-bound, the size of his palm, like this: The notebook was in his pocket. The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm. He was wearing a wax canvas coat. The coat had the smell of saltwater. He patted the pockets. Right outside pocket: a notebook and a pencil. The notebook was leather-bound, palm-sized. The kind of notebook Brandon would have carried. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: the closed front cover of a small leather-bound field notebook \u2014 soft dark brown leather gone lighter and glossy where a hand has held it, scuffed corners, a faint salt tide-mark along one edge, the page block's cream edge showing a millimetre beyond the cover. No title, no lettering, no stamp. A 2050s handmade pocket notebook carried for a year in the right outside pocket of a wax canvas coat.\nSIZE: the real object is 15 cm wide by 20 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Brandon's notebook from the substrate \u2014 leather-bound, the size of his palm, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_brandon_notebook/finn_apartment_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:47:09+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_brandon_notebook",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_brandon_notebook/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_brandon_notebook.png"
+  },
+  {
+    "at": "2026-10-27T02:47:30+00:00",
+    "stage": "image",
+    "slug": "graustark_joanna_letter",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the letter Joanna writes at the door-desk: I am ready. \u2014 J. LeMoine like this: Took out a single piece of paper. She wrote, at the top: the address from the back of the 1987 receipt. She wrote, in the body, three words: I am ready. She signed it, J. LeMoine. Additional direction: Seen from directly above, filling the frame edge to edge, lit warm and even as if by a candle: a single sheet of plain paper lying flat on a weathered wooden door. At the top, a few lines of hand-written address in faded ballpoint, cramped and unreadable. Below, in the body, three words in a steady hand, legible: \"I am ready.\" At the bottom, the signature: \"J. LeMoine\". Nothing else \u2014 wide blank paper around the words. The paper slightly soft and grey with dust, a thumbprint smudge at one corner.\nSIZE: the real object is 21 cm wide by 28 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the letter Joanna writes at the door-desk: I am ready. \u2014 J. LeMoine, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: I am ready. / J. LeMoine. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/graustark_joanna_letter/graustark_joanna_letter_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:47:35+00:00",
+    "stage": "art",
+    "slug": "graustark_joanna_letter",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/graustark_joanna_letter/front.png",
+    "output": "godot/assets/art/hero/graustark_joanna_letter.png"
+  },
+  {
+    "at": "2026-10-27T02:47:57+00:00",
+    "stage": "image",
+    "slug": "graustark_folded_receipt",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "2:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the folded 1987 receipt behind the chip in the wall like this: Behind the chip, embedded in the wall, was a folded piece of paper. Old. Yellowed. The kind of paper that had been folded and tucked into a wall in 1987 by somebody who had thought, at the time, that they were leaving a small private joke for whoever happened to find it during the next renovation. It was a receipt. From Adelphia's Deli, dated August 14, 1987. Additional direction: Straight-on, filling the frame edge to edge, evenly lit: a small square of old cash-register receipt paper folded into quarters, seen tucked flat against crumbling plaster \u2014 yellowed to the colour of weak tea, brittle edges, fold lines soft and grey with grime, a corner frayed. Through the thin paper the faint ghost of purple register print and a little blue ballpoint show in reverse, entirely unreadable. Plaster dust caught in the creases. Old, private, folded away in 1987.\nSIZE: the real object is 6 cm wide by 9 cm tall \u2014 a portrait picture, aspect 2:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the folded 1987 receipt behind the chip in the wall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/graustark_folded_receipt/graustark_folded_receipt_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:48:02+00:00",
+    "stage": "art",
+    "slug": "graustark_folded_receipt",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/graustark_folded_receipt/front.png",
+    "output": "godot/assets/art/hero/graustark_folded_receipt.png"
+  },
+  {
+    "at": "2026-10-27T02:48:23+00:00",
+    "stage": "image",
+    "slug": "graustark_joanna_notebook",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Joanna's notebook, open at the door-desk: Today the bird brought me 1987, like this: She sat at her small desk \u2014 a door laid across two stacks of bricks \u2014 and opened the notebook she had carried with her, and uncapped the pen. She wrote, at the top of a fresh page, the date. She wrote, beneath the date: Today the bird brought me 1987. She wrote, beneath that: Tomorrow I think the bird may bring me whoever sent it. Additional direction: Seen from directly above, filling the frame edge to edge, lit warm and low as if by one candle: a page of a worn notebook. At the top of the fresh page a hand-written date, scrawled and unreadable. Beneath it, legible, in a careful slightly shaky ballpoint hand: \"Today the bird brought me 1987.\" Beneath that: \"Tomorrow I think the bird may bring me whoever sent it.\" The rest of the page blank. Cheap paper softened by damp, a ring of candle wax at the edge, a smudge of chalk dust, the notebook's dark cover just showing at the borders.\nSIZE: the real object is 15 cm wide by 20 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Joanna's notebook, open at the door-desk: Today the bird brought me 1987, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Today the bird brought me 1987. / Tomorrow I think the bird may bring me whoever sent it.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/graustark_joanna_notebook/graustark_joanna_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:48:32+00:00",
+    "stage": "art",
+    "slug": "graustark_joanna_notebook",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/graustark_joanna_notebook/front.png",
+    "output": "godot/assets/art/hero/graustark_joanna_notebook.png"
+  },
+  {
+    "at": "2026-10-27T02:48:52+00:00",
+    "stage": "image",
+    "slug": "graustark_john_notebook",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes John's notebook on the Armory Park bench: Hierophant ... borders on tyranny? like this: The notebook on his lap was open to a clean page. John scribbled in his notebook: Hierophant. Tradition. Institution. Interpretation of Sacred Knowledge. But the rigidity \u2014 borders on tyranny? John underlined the word in his notebook: Tyranny. He underlined it twice more. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit by flat late-day light: a journalist's notebook lying open on a park bench, the left page full of older illegible scrawl, the right page carrying the newest lines in quick slanting ballpoint, legible: \"Hierophant. Tradition. Institution. Interpretation of Sacred Knowledge. But the rigidity \u2014 borders on tyranny?\" \u2014 with the word tyranny underlined three times \u2014 and beneath it: \"Don't approach him. He's the kind of subject you write around. Witness from the periphery. Build the case in negative space. He'll never give you the interview, and even if he did, the interview would be the worst version of the story.\" Ruled paper, a dark cover edge visible around the spread, a little grit from the bench.\nSIZE: the real object is 29 cm wide by 20 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of John's notebook on the Armory Park bench: Hierophant ... borders on tyranny?, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Hierophant. Tradition. Institution. Interpretation of Sacred Knowledge. But the rigidity \u2014 borders on tyranny?\nDon't approach him. He's the kind of subject you write around. Witness from the periphery. Build the case in negative space. He'll never give you the interview, and even if he did, the interview would be the worst version of the story.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/graustark_john_notebook/graustark_john_notebook_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:49:00+00:00",
+    "stage": "art",
+    "slug": "graustark_john_notebook",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/graustark_john_notebook/front.png",
+    "output": "godot/assets/art/hero/graustark_john_notebook.png"
+  },
+  {
+    "at": "2026-10-27T02:49:21+00:00",
+    "stage": "image",
+    "slug": "houston_office_erica_monitor",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Erica's monitor: the email notification \u2014 Denied. like this: Erica Campbell stared at the email notification, the crisp black sans-serif font glowing with indifferent finality on her monitor. Denied. The denied motion sat unresolved on the monitor, awaiting the next morning's reply. Additional direction: Straight-on, filling the frame edge to edge, the screen glowing: a 2010s corporate law-firm desktop, an email client open full screen, a court e-filing notification email selected and open. The header lines and the case caption are small grey-black interface text, unreadable; in the body, set apart and bold in a crisp black sans-serif, the single word \"Denied\". White window, pale grey panes, a column of unread mail at the left (illegible), the cool flat glow of a good office monitor at night.\nSIZE: the real object is 56 cm wide by 30 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Erica's monitor: the email notification \u2014 Denied., an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Denied. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/houston_office_erica_monitor/houston_office_erica_monitor_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:49:26+00:00",
+    "stage": "art",
+    "slug": "houston_office_erica_monitor",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/houston_office_erica_monitor/front.png",
+    "output": "godot/assets/art/hero/houston_office_erica_monitor.png"
+  },
+  {
+    "at": "2026-10-27T02:50:02+00:00",
+    "stage": "image",
+    "slug": "jesse_bedroom_bridge_page",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the small spiral notebook page with the bridge on it like this: He gets out his notebook \u2014 the small spiral one he has been writing lyrics in since 2023 \u2014 and he writes, on a fresh page: bridge \u2014 substation nine \u2014 He looks at what he has written. He underlines the last line. Tonight, in the dark, the bridge is on the small spiral notebook page on Jesse's nightstand, in his own handwriting, in the small kid's-handwriting it has been written in, waiting for tomorrow. The bridge is on the small spiral notebook page Jesse has been carrying in his back pocket since Wednesday, and he has not, since Wednesday, set it to music until this afternoon at four-twelve PM in his bedroom with the unplugged Telecaster in his lap. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit: one lined page of a small spiral notebook, the torn-edge wire holes down the left side, covered in a teenage boy's small, uneven kid's-handwriting in ballpoint, the lines of a song lyric written as one run-on stanza: \"bridge \u2014 substation nine \u2014 here we are anyway \u2014 with the thing we have been carrying, the weight of it \u2014 and the room we are carrying it in \u2014 and the people we are carrying it with \u2014 and the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer \u2014 and the song we wrote about the substation but the bridge is not about the substation \u2014 the bridge is about the parking lot.\" \u2014 the last line underlined. A few words crossed out and rewritten, a chord letter or two pencilled in the margin. The page soft and curved from riding in a back jeans pocket for days, a grey pocket-wear crease across it.\nSIZE: the real object is 15 cm wide by 21 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the small spiral notebook page with the bridge on it, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: bridge \u2014 substation nine \u2014\nhere we are anyway \u2014 with the thing we have been carrying, the weight of it \u2014 and the room we are carrying it in \u2014 and the people we are carrying it with \u2014\nand the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer \u2014 and the song we wrote about the substation but the bridge is not about the substation \u2014 the bridge is about the parking lot.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jesse_bedroom_bridge_page/jesse_bedroom_bridge_page_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:50:08+00:00",
+    "stage": "art",
+    "slug": "jesse_bedroom_bridge_page",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/jesse_bedroom_bridge_page/front.png",
+    "output": "godot/assets/art/hero/jesse_bedroom_bridge_page.png"
+  },
+  {
+    "at": "2026-10-27T02:50:29+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_jorgen_letter",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the sheet with the one word: Jorgen like this: She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down. She drank the coffee, rinsed the cup, slid the sheet with the one word into the kitchen drawer where she kept things she was not yet ready to throw out, made another coffee, ate half a piece of bread with butter, and got back into bed. Additional direction: Seen from directly above, filling the frame edge to edge, evenly lit by early grey morning light: a single sheet of plain writing paper on a kitchen table, almost entirely blank. At the top, in a woman's handwriting in blue-black ink, one word: \"Jorgen\". Nothing else on the page. Beside the word, the faint dry scratches of a pen that would not write. Ordinary 2050s paper, slightly cool and damp-curled at one edge, a pale coffee-cup ring near the bottom.\nSIZE: the real object is 21 cm wide by 28 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the sheet with the one word: Jorgen, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Jorgen. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_jorgen_letter/lena_apartment_jorgen_letter_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T02:50:41+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_jorgen_letter",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_jorgen_letter/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_jorgen_letter.png"
+  },
+  {
+    "at": "2026-10-27T02:51:14+00:00",
+    "stage": "image",
+    "slug": "editing_suite_tide_flats__suite_tide",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the tide flats on every monitor like this: A bank of monitors, and every one of them full of water. Not water. Tide flats. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning. Additional direction: A video monitor's picture only, no bezel, straight-on, filling the frame edge to edge: tide flats on the Oregon coast with the tide all the way out, wet sand and mud shining under a pale, undecided early-morning sky, shallow channels catching the light, a far low line of sea wall and fog. Videotape softness, a faint tracking line, muted silver-grey colour.\nSIZE: the real object is 94 cm wide by 64 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the tide flats on every monitor, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/editing_suite_tide_flats__suite_tide/editing_suite_tide_flats__suite_tide_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
