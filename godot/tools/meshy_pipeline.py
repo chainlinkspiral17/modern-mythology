@@ -3017,6 +3017,29 @@ def set_prop_tier(slug, tier, path=None):
     return {"ok": True, "slug": slug, "tier": tier, "budget_class": cls, "estimate": budget_estimate(cls)}
 
 
+HEROPROP_NODE = re.compile(r'\[node name="([^"]+)"[^\n]*\n(?:(?!\[)[^\n]*\n)*?glb_path = "res://assets/3d/props/([^"]+)"')
+
+
+def set_prop_vram(tscn_text, props_by_file):
+    """A set's prop video memory, the way it loads: each model once, per
+    PRESET (a HeroProp named `HP_<Name>__<preset>…` loads only in those, an
+    untagged one in all); the set's figure is its heaviest preset.
+    Returns (vram bytes, unique models placed). prop_budget_audit and
+    `budget` share it."""
+    models, owners = {}, {}
+    for node, glb in HEROPROP_NODE.findall(tscn_text):
+        e = props_by_file.get(glb)
+        if e is None:
+            continue
+        models[glb] = (budget_estimate(budget_class(e)) or {}).get("vram", 0)
+        tags = {t for t in node.split("__")[1:] if t}
+        owners[glb] = None if (not tags or owners.get(glb, set()) is None) else owners.get(glb, set()) | tags
+    if not models:
+        return 0, 0
+    presets = set().union(*[o for o in owners.values() if o]) or {None}
+    return max(sum(v for g, v in models.items() if owners[g] is None or p in owners[g]) for p in presets), len(models)
+
+
 def cmd_budget(roster, args):
     """What the models cost: per class, the generation settings, the installed
     budget, and disk + video memory — measured where a GLB is installed,
@@ -3065,13 +3088,11 @@ def cmd_budget(roster, args):
     by_file = {e["file"]: e for e in roster["entries"] if e.get("kind") == "prop"}
     sets = []
     for t in sorted((REPO / "scenes").rglob("*.tscn")):
-        files = set(re.findall(r'res://assets/3d/props/([^"]+\.glb)"', t.read_text(errors="ignore")))
-        if not files:
-            continue
-        v = sum((budget_estimate(budget_class(by_file[f])) or {}).get("vram", 0) for f in files if f in by_file)
-        sets.append((v, t.stem, len(files)))
+        v, k = set_prop_vram(t.read_text(errors="ignore"), by_file)
+        if k:
+            sets.append((v, t.stem, k))
     if sets:
-        print("\nheaviest sets (prop models, video memory, each model counted once):")
+        print("\nheaviest sets (prop models, video memory: each model once, the heaviest preset):")
         for v, name, k in sorted(sets, reverse=True)[:6]:
             print(f"  {name:32} {k:3} model(s)  ~{v / 1e6:.1f} MB")
         hero = budget_estimate("hero")

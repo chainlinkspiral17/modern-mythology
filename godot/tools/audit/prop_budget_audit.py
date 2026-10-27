@@ -14,6 +14,10 @@ For every scene that places HeroProps (`glb_path = "res://assets/3d/props/…"`)
   OVER_SET   a set whose prop models together would take more video memory
              than SET_CAP (two characters' worth). Each model counts once
              however often the set places it: Godot shares the mesh and maps.
+             Counted per PRESET (2026-10-27, draft 2): a HeroProp named
+             `HP_<Name>__<preset>…` loads only in those presets, an untagged
+             one in all; the set's figure is its heaviest preset (the Kwik
+             Stop never holds the hood-up car and the plain one at once).
 
 Estimates come from meshy_pipeline.budget_estimate (the same numbers Hero
 Studio shows). Nonzero exit on any finding.
@@ -52,7 +56,7 @@ def main():
             if not placed:
                 continue
             rel = os.path.relpath(path, GODOT)
-            models = {}
+            models = set()
             for node, glb, size in placed:
                 e = props.get(glb)
                 if e is None:
@@ -63,8 +67,8 @@ def main():
                 if TIER_RANK[tier] < TIER_RANK[want]:
                     findings.append(("UNDER_TIER", rel, f"{node}: {e['slug']} placed at {float(size):.2f} m, "
                                                         f"tier {tier} (needs {want})"))
-                models[glb] = M.budget_estimate(M.budget_class(e))["vram"]
-            total = sum(models.values())
+                models.add(glb)
+            total, _n = M.set_prop_vram(text, props)
             sets.append((total, rel, len(models), len(placed)))
             if total > SET_CAP:
                 findings.append(("OVER_SET", rel, f"{len(models)} prop model(s) ~{total / 1e6:.1f} MB video memory "

@@ -3849,10 +3849,12 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - The install hint after a hand-dropped GLB said `git add <model>` (refused: models are
   gitignored) and pushed to `main`; it now says slim, then `save` (the Drive + a commit to
   the current branch).
+- Counted per PRESET (the shared `set_prop_vram`, used by the gate and `budget`): a
+  HeroProp tagged `__<preset>` loads only there, so the Kwik Stop is its heaviest morning
+  state (~5.4 MB, the rollback and the car), not the sum of all four; Cosmic Comics is the
+  heaviest set (~5.7 MB, seven figures' models).
 - **Draft 187 targets:** measured numbers from the Deck in place of the estimates'
-  constants; the OVER_SET sum counts a set's models across all its presets (the Kwik
-  Stop never loads its three at once) — count per preset; a remeshed request for
-  characters to shrink the Drive originals.
+  constants; a remeshed request for characters to shrink the Drive originals.
 
 **2026-10-27 · pass 185: MODEL BUDGETS — props are made light, not cut light.**
 - User: "Add the hero props to the hero tool with generation prompts and model
