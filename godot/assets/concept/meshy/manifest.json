@@ -32201,5 +32201,152 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/houston_bayou_drugstore_sign/front.png",
     "output": "godot/assets/art/hero/houston_bayou_drugstore_sign.png"
+  },
+  {
+    "at": "2026-10-27T19:02:46+00:00",
+    "stage": "image",
+    "slug": "jesse_henderson_dinner",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jesse Henderson (the dinner button-down, ch7), like this: Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner. Additional direction: Jesse Henderson, 20, at a family dinner in the shirt his mother told him to wear: a pale-blue cotton button-down, sleeves rolled once, tucked badly into skinny black jeans, worn boots; the band tee gone for the night. Tall and slight, all knees and elbows, a face he keeps wiping on the sleeve.\nFull-body concept render of Jesse Henderson (the dinner button-down, ch7), a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jesse_henderson_dinner/jesse_henderson_dinner_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jesse_henderson_dinner/jesse_henderson_dinner_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jesse_henderson_dinner/jesse_henderson_dinner_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:03:33+00:00",
+    "stage": "image",
+    "slug": "cedar_bell",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Olaf's cedar bell like this: The cedar with the carved hand holding the bell was on his palm. The cedar was warm. The bell the size of a thimble. The hand open. An open hand holding a bell. The hand was holding a bell the size of a thimble. The cedar bell-piece warm.\nSingle-object concept render of Olaf's cedar bell, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_bell/cedar_bell_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cedar_bell/cedar_bell_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cedar_bell/cedar_bell_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:04:31+00:00",
+    "stage": "image",
+    "slug": "lenas_milk_crate",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Lena's milk crate like this: She set the cup on a milk crate that had been at the foot of the wall since 2050 \u2014 the one she used for setting things down when she had been working on the mural. The bowls and the cedar and the notebook were at the milk crate at the foot of the wall. Marit was seated on the milk crate with her bowl in her lap. The wall. Lena's milk crate at its foot. September 1, six-thirty AM. The milk crate with cedar.\nSingle-object concept render of Lena's milk crate, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lenas_milk_crate/lenas_milk_crate_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/lenas_milk_crate/lenas_milk_crate_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/lenas_milk_crate/lenas_milk_crate_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:05:18+00:00",
+    "stage": "image",
+    "slug": "portal_room_cedar_door",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Tower's portal-room cedar door like this: The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height. The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate. In the years since, the glass had gone translucent \u2014 a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged. The cedar was warm at the handle. The portal-room door. Cedar. Window at chest height, six inches by six. The window had been ordinary glass when the tower was built.\nSingle-object concept render of The Tower's portal-room cedar door, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/portal_room_cedar_door/portal_room_cedar_door_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/portal_room_cedar_door/portal_room_cedar_door_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/portal_room_cedar_door/portal_room_cedar_door_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:06:17+00:00",
+    "stage": "image",
+    "slug": "static_truths_zine",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Static Truths zine like this: Four photocopied pages, half-letter, single-fold. The masthead in Lena's hand-lettered block print, slightly unsteady because Lena is a painter who has been, for almost a year, not painting: STATIC TRUTHS vol. 1, no. 1 \u00b7 summer \u00b7 smolvud, oregon \u00b7 by l.v. Below the masthead, a single hand-drawn image: a coffee cup on a saucer, the saucer set on a small porch table, the porch railing visible in the lower third, the railing's pickets rendered deliberately as the bars of a small cage that the eye reads as a porch first and as a cage second. The drawing is in pencil. she has drawn an octopus on the back cover of the first issue without quite knowing why. A photocopied zine Lena starts the morning she wakes with charcoal on her thigh in the shape of three letters: S U N. Photocopied at the Salty Tome on Petra's back-room copier. Half-letter, single-fold. First issue is fifteen copies; subsequent print runs grow.\nSingle-object concept render of The Static Truths zine, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe main lettering reads exactly: STATIC TRUTHS. Spell it exactly so. The rest of the writing on it, in full, readable, spelled exactly: vol. 1, no. 1 \u00b7 summer \u00b7 smolvud, oregon \u00b7 by l.v.\n\ninside \u2014\n\u00b7 what the static says at 3 a.m.\n\u00b7 a list of things that hum\n\u00b7 the coffee cup, the porch, the railing\n\u00b7 letters to nobody in particular\n\u00b7 notes from a painter who is not, this year, painting\n\nfour pages \u00b7 half-letter \u00b7 free\ntake one. read it. leave it somewhere for somebody else. No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/static_truths_zine/static_truths_zine_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/static_truths_zine/static_truths_zine_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/static_truths_zine/static_truths_zine_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:07:10+00:00",
+    "stage": "image",
+    "slug": "rack_17",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Rack 17 (signed 'T.') like this: RACK 17 \u2014 UNKNOWN \u2014 DO NOT DISCONNECT \u2014 IF YOU DO NOT KNOW WHAT THIS RACK IS DOING PLEASE LEAVE IT ALONE \u2014 T. Each rack bears, on its front, a small printed label affixed at some point in the past. The labels are faded. Inside RACK 17, in the middle slot, is a flat steel chassis with no front markings. The chassis has no LEDs. The chassis has no fan exhaust. The chassis has no power cable visible at the front. The hand on RACK 17's label is Frasier Temple's. The chassis's amber LED Seventeen racks, hot, fan-cooled, drawing 1.4 kW continuously since the bankruptcy. The labels read RECEIVE / SEND / UNKNOWN \u2014 DO NOT DISCONNECT, signed T.\nSingle-object concept render of Rack 17 (signed 'T.'), a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe rest of the writing on it, in full, readable, spelled exactly: [stencilled number plate] 17\n[paper label taped to the side, black marker] RACK 17 \u2014 UNKNOWN \u2014 DO NOT DISCONNECT \u2014 IF YOU DO NOT KNOW WHAT THIS RACK IS DOING PLEASE LEAVE IT ALONE \u2014 T.\n[small faded printed slot numbers down the rail] 01 02 03 04 05 06 07 08 09 10 11 12\n[manufacturer plate, bottom rail] STEEL STORAGE RACK \u00b7 MODEL SR-12 \u00b7 MAX LOAD 40 KG \u00b7 DO NOT STACK (A note in [square brackets] says where the writing sits; the brackets and the note itself are not written on it.) No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/rack_17/rack_17_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/rack_17/rack_17_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/rack_17/rack_17_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:07:57+00:00",
+    "stage": "image",
+    "slug": "relic_kayak",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Finn's relic kayak like this: the relic kayak leaning by the door The relic kayak stood on end beside the shop door COL_KAYAK     = (0.62, 0.30, 0.24, 1.0)   # sun-faded red hull Finn lived in a one-bedroom above the kayak shop on the connective stretch between old-Yachats and old-Waldport. The shop had been closed since 2048 when the owner went back to New Zealand.\nSingle-object concept render of Finn's relic kayak, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/relic_kayak/relic_kayak_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/relic_kayak/relic_kayak_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/relic_kayak/relic_kayak_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
