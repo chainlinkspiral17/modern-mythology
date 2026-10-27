@@ -385,6 +385,11 @@
    "md5": "eb99ba39d6e32552ff9cc877989c113d",
    "size": 36723944
   },
+  "godot/assets/3d/characters/heroes/_full/john_frank_montreal.glb": {
+   "at": "2026-10-27T15:59:56+00:00",
+   "md5": "b4fe96c235e2914d868698bf926f970c",
+   "size": 44712056
+  },
   "godot/assets/3d/characters/heroes/_full/judge_halverson.glb": {
    "at": "2026-10-19T16:39:39+00:00",
    "md5": "b0e2b0a4ab40824648a42ecbab04d588",
@@ -3309,6 +3314,11 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c3befe4afea4b83953afed7254eb5275",
    "size": 2852012
+  },
+  "godot/assets/3d/characters/heroes/john_frank_montreal.glb": {
+   "at": "2026-10-27T15:59:48+00:00",
+   "md5": "fcfc0a5110b79fa1b9e4fa7751d28960",
+   "size": 4957512
   },
   "godot/assets/3d/characters/heroes/judge_halverson.glb": {
    "at": "2026-10-27T04:00:26+00:00",
@@ -78544,6 +78554,46 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c295a835e50676569c1f608f003ac694",
    "size": 58123
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/back.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "74da1f46189b577740b8408ab5dbc8eb",
+   "size": 2074877
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/front.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "a6fbc0b28be5798d6e45bdb55af87f5a",
+   "size": 2154029
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/john_frank_montreal_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "74da1f46189b577740b8408ab5dbc8eb",
+   "size": 2074877
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/john_frank_montreal_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "d110306bc4315b280e37bdec59a2f389",
+   "size": 2182791
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/john_frank_montreal_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "a6fbc0b28be5798d6e45bdb55af87f5a",
+   "size": 2154029
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/john_frank_montreal_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "4b54192e49fb3faf429e33f1c14f0564",
+   "size": 2019117
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/meshy_thumb.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "757533eb858dbdad17d7365cc6e3096d",
+   "size": 75516
+  },
+  "godot/assets/concept/meshy/john_frank_montreal/side.png": {
+   "at": "2026-10-27T16:00:28+00:00",
+   "md5": "4b54192e49fb3faf429e33f1c14f0564",
+   "size": 2019117
   },
   "godot/assets/concept/meshy/judge_halverson/back.png": {
    "at": "2026-10-19T16:40:05+00:00",

@@ -31018,5 +31018,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/john_frank_montreal.glb",
     "file_size_kb": 43664.1
+  },
+  {
+    "at": "2026-10-27T16:00:20+00:00",
+    "stage": "image",
+    "slug": "elicia_temple_montreal",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Elicia Duchane (Montreal, years after), like this: She came in the way she came in everywhere these days \u2014 slower than she used to, more centered, wearing a denim jacket that had been repaired at the cuff and a scarf that was, John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother. The scarf was, in the footage, the only thing Elicia wore that did not change costume. Additional direction: Elicia Duchane in her Montreal years, mid-forties, the documentary maker after the collapse: slower than she used to be, more centered. Still tall, dark hair now worn loose to the shoulder with a few grey strands, no make-up, steady tired eyes. A denim jacket repaired at the cuff over a black knit top, her mother's long patterned wool scarf wound twice at the neck (the one thing that never changes costume), dark jeans, scuffed black ankle boots; a small handheld camera on a wrist strap.\nFull-body concept render of Elicia Duchane (Montreal, years after), a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/elicia_temple_montreal/elicia_temple_montreal_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/elicia_temple_montreal/elicia_temple_montreal_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/elicia_temple_montreal/elicia_temple_montreal_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
