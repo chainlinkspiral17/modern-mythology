@@ -31144,5 +31144,47 @@
       "godot/assets/concept/meshy/nate_kestrel/nate_kestrel_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/nate_kestrel/nate_kestrel_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T16:05:40+00:00",
+    "stage": "image",
+    "slug": "aria_third",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Aria, a digital consciousness rendered as a girl of about ten. Curly bright-blue hair, purple-rimmed round glasses, a yellow rain slicker worn open over a striped shirt, dark leggings, small rubber boots. Slightly luminous at the edges, as if lit from inside; calm, ancient eyes in a child's face.\nFull-body concept render of Aria / The Third, a character from a literary visual novel set in America. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/aria_third/aria_third_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/aria_third/aria_third_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/aria_third/aria_third_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T16:06:31+00:00",
+    "stage": "image",
+    "slug": "miriam_2025",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Miriam (vol6, the courthouse), like this: Miriam, across the aisle, meets Sam's eye. raises one hand off her lap in the universal small gesture of I am here. Additional direction: Miriam in vol6, 70s, Joanna's agent nine years on. The silver hair still cut sharp at the jaw, now white; the long grey wool coat and black turtleneck, black trousers, low black boots; a cane with a silver head instead of the driving gloves. Elegant, dry, unhurried; the crow gone from her shoulder.\nFull-body concept render of Miriam (vol6, the courthouse), a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/miriam_2025/miriam_2025_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/miriam_2025/miriam_2025_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/miriam_2025/miriam_2025_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
