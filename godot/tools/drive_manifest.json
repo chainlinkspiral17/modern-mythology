@@ -5305,6 +5305,11 @@
    "md5": "7f3f72bfb597bd48429447397f72a8d0",
    "size": 17059
   },
+  "godot/assets/3d/props/_full/bobbys_tow_truck.glb": {
+   "at": "2026-10-27T05:43:23+00:00",
+   "md5": "0990665c208f0fe836029d8aab0ed3aa",
+   "size": 13354312
+  },
   "godot/assets/3d/props/_full/comic_figure_2.glb": {
    "at": "2026-10-27T04:44:08+00:00",
    "md5": "b598b394484b1b3e2dda6c7901518426",
@@ -5340,10 +5345,40 @@
    "md5": "dd1df0a649155ae9cde66592660af121",
    "size": 4577224
   },
+  "godot/assets/3d/props/_full/peugeot_505_hood_up.glb": {
+   "at": "2026-10-27T05:43:23+00:00",
+   "md5": "a9238ced525f1d54f10d5a27eae53977",
+   "size": 13382828
+  },
   "godot/assets/3d/props/_full/steamboat_model.glb": {
    "at": "2026-10-27T02:35:29+00:00",
    "md5": "f89529c24fa2db16a5d757771ad22bfb",
    "size": 106709020
+  },
+  "godot/assets/3d/props/bobbys_tow_truck.glb": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "49bb07cd45b56f2441f044b592e2757c",
+   "size": 1446608
+  },
+  "godot/assets/3d/props/bobbys_tow_truck_Image_0.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "353aaf09fee7df17b0be8a90dd9dc042",
+   "size": 208698
+  },
+  "godot/assets/3d/props/bobbys_tow_truck_Image_1.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "3adbfc9aca563a2340d1fb6095a00427",
+   "size": 42260
+  },
+  "godot/assets/3d/props/bobbys_tow_truck_Image_3.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "ce7941b46ce42719473f75cfa651839e",
+   "size": 4739
+  },
+  "godot/assets/3d/props/bobbys_tow_truck_normal.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "0e079fa132efc4a28458163cf5daf42f",
+   "size": 214832
   },
   "godot/assets/3d/props/comic_figure_2.glb": {
    "at": "2026-10-27T04:44:03+00:00",
@@ -5380,6 +5415,11 @@
    "md5": "4651548bfb79c432f9a904f504fd6950",
    "size": 487596
   },
+  "godot/assets/3d/props/comic_figure_5_Image_0.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "91b24e13b584287b34320bff7a314126",
+   "size": 206626
+  },
   "godot/assets/3d/props/comic_figure_6.glb": {
    "at": "2026-10-27T04:58:59+00:00",
    "md5": "a243a3bf370b97de57573cc30cce35f4",
@@ -5409,6 +5449,31 @@
    "at": "2026-10-27T02:36:08+00:00",
    "md5": "f20e2fc58df2acccbf16c668c2055c1a",
    "size": 199304
+  },
+  "godot/assets/3d/props/peugeot_505_hood_up.glb": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "abe87ee0f82bbdc52a761838f5194e16",
+   "size": 1510780
+  },
+  "godot/assets/3d/props/peugeot_505_hood_up_Image_0.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "4c5c1275261e818da1bdf31fb008dcc5",
+   "size": 197657
+  },
+  "godot/assets/3d/props/peugeot_505_hood_up_Image_1.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "7eaba13186bc1a1aba21daa8667501dd",
+   "size": 39798
+  },
+  "godot/assets/3d/props/peugeot_505_hood_up_Image_3.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "93181515359445b7dda64577c4969ff1",
+   "size": 4765
+  },
+  "godot/assets/3d/props/peugeot_505_hood_up_normal.jpg": {
+   "at": "2026-10-27T05:43:18+00:00",
+   "md5": "2137d5a4c9aa45b01ec7ef2a4d4baa23",
+   "size": 237461
   },
   "godot/assets/3d/props/steamboat_model.glb": {
    "at": "2026-10-27T04:00:30+00:00",
@@ -7170,6 +7235,11 @@
    "md5": "367bb305110892ead8ec30e3ac46dae1",
    "size": 3690153
   },
+  "godot/assets/art/hero/maya_bedroom_dock_photograph.png": {
+   "at": "2026-10-27T05:43:32+00:00",
+   "md5": "c1cfb41bd08cc2e8e6cc45b80d409b4a",
+   "size": 2872273
+  },
   "godot/assets/art/hero/maya_bedroom_framed_print.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "b26da07670bdab0f3294c21599da1abf",
@@ -8319,6 +8389,11 @@
    "at": "2026-10-27T04:34:24+00:00",
    "md5": "91555b03ede54844032d8fb35b1b8ec0",
    "size": 3185635
+  },
+  "godot/assets/art/hero/vol4_story_rooms_aaron_tv_game.png": {
+   "at": "2026-10-27T05:43:32+00:00",
+   "md5": "15f1696e98981df0691ee7ab7952475c",
+   "size": 1808010
   },
   "godot/assets/art/hero/vol4_story_rooms_aaron_window_dusk.png": {
    "at": "2026-10-27T04:44:14+00:00",
@@ -68905,6 +68980,41 @@
    "md5": "573d401c9094254a5ed5ce06fef5eae7",
    "size": 2720447
   },
+  "godot/assets/concept/meshy/bobbys_tow_truck/back.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "f6b8740a58eac396105000dd313b9ade",
+   "size": 2324582
+  },
+  "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "f6b8740a58eac396105000dd313b9ade",
+   "size": 2324582
+  },
+  "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "6a5144cc139fa63ae56d0b0c0d528d2d",
+   "size": 1944572
+  },
+  "godot/assets/concept/meshy/bobbys_tow_truck/bobbys_tow_truck_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "3e2732c6685bbf69e660aa48ad26f97c",
+   "size": 1915448
+  },
+  "godot/assets/concept/meshy/bobbys_tow_truck/front.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "6a5144cc139fa63ae56d0b0c0d528d2d",
+   "size": 1944572
+  },
+  "godot/assets/concept/meshy/bobbys_tow_truck/meshy_thumb.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "1ea4b3049ed5e51c693b9cead2c7db2e",
+   "size": 75619
+  },
+  "godot/assets/concept/meshy/bobbys_tow_truck/side.png": {
+   "at": "2026-10-27T05:43:44+00:00",
+   "md5": "3e2732c6685bbf69e660aa48ad26f97c",
+   "size": 1915448
+  },
   "godot/assets/concept/meshy/bourbon_bottle/back.png": {
    "at": "2026-10-18T17:12:27+00:00",
    "md5": "f23b7cc33c471f98bc559d86fff22ce6",
@@ -76015,6 +76125,11 @@
    "md5": "a65214640fcc44d022e6e9533823038f",
    "size": 2514686
   },
+  "godot/assets/concept/meshy/peugeot_505_hood_up/meshy_thumb.png": {
+   "at": "2026-10-27T05:43:49+00:00",
+   "md5": "a72a9478e8e64fe3d5fb23574983a971",
+   "size": 114515
+  },
   "godot/assets/concept/meshy/peugeot_505_hood_up/peugeot_505_hood_up_back_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T02:36:53+00:00",
    "md5": "d2bf65f4a2a9eab5513b2996a5331a74",
@@ -79540,6 +79655,36 @@
    "md5": "709f825e4373b5b9c4d70cc87688973d",
    "size": 1922376
   },
+  "godot/assets/concept/meshy/speak_and_spell/back.png": {
+   "at": "2026-10-27T05:43:56+00:00",
+   "md5": "98811ef6f2751953607cea9ca39c5fb4",
+   "size": 1477232
+  },
+  "godot/assets/concept/meshy/speak_and_spell/front.png": {
+   "at": "2026-10-27T05:43:56+00:00",
+   "md5": "037a2e4510e6eb17599faf0e68a90e16",
+   "size": 1499558
+  },
+  "godot/assets/concept/meshy/speak_and_spell/side.png": {
+   "at": "2026-10-27T05:43:56+00:00",
+   "md5": "458cdd0b33e9dd53b1f7272f0a8eb049",
+   "size": 1146376
+  },
+  "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:43:56+00:00",
+   "md5": "98811ef6f2751953607cea9ca39c5fb4",
+   "size": 1477232
+  },
+  "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:43:56+00:00",
+   "md5": "037a2e4510e6eb17599faf0e68a90e16",
+   "size": 1499558
+  },
+  "godot/assets/concept/meshy/speak_and_spell/speak_and_spell_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:43:56+00:00",
+   "md5": "458cdd0b33e9dd53b1f7272f0a8eb049",
+   "size": 1146376
+  },
   "godot/assets/concept/meshy/star_key/back.png": {
    "at": "2026-10-19T19:11:23+00:00",
    "md5": "533bb6dce88a05347c7169a62a356c4b",
@@ -81174,6 +81319,16 @@
    "at": "2026-10-18T17:29:05+00:00",
    "md5": "ff31d6e189d99ea40d902f5a149aab5f",
    "size": 2254119
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_aaron_tv_game/front.png": {
+   "at": "2026-10-27T05:44:06+00:00",
+   "md5": "15f1696e98981df0691ee7ab7952475c",
+   "size": 1808010
+  },
+  "godot/assets/concept/meshy/vol4_story_rooms_aaron_tv_game/vol4_story_rooms_aaron_tv_game_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T05:44:06+00:00",
+   "md5": "15f1696e98981df0691ee7ab7952475c",
+   "size": 1808010
   },
   "godot/assets/concept/meshy/vol4_story_rooms_aaron_window_dusk/front.png": {
    "at": "2026-10-27T04:45:06+00:00",
