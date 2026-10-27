@@ -32747,5 +32747,677 @@
       "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T19:38:15+00:00",
+    "stage": "image",
+    "slug": "ron_typewriter",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ron's typewriter like this: The typewriter is black and big as an engine block. The typewriter keeps going, burst and pause and bell. Additional direction: A huge black 1940s office typewriter, big as an engine block: glossy black enamel body, round glass-topped keys, a chrome carriage return lever, a typed page curling out of the platen.\nSingle-object concept render of Ron's typewriter, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/ron_typewriter/ron_typewriter_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ron_typewriter/ron_typewriter_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ron_typewriter/ron_typewriter_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:39:03+00:00",
+    "stage": "image",
+    "slug": "iris_binder",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the IRIS binder like this: Between the Wittgenstein and the Powers a white binder, no label on the spine. The cover sheet says IRIS and nothing else. Additional direction: A white three-ring binder with no label on the spine, thick with pages; the cover sheet behind the clear front pocket says IRIS and nothing else.\nSingle-object concept render of the IRIS binder, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nThe main lettering reads exactly: IRIS. Spell it exactly so. Around it, everything a real one carries is written too \u2014 fine print, dates, prices, addresses, notes, page furniture \u2014 in real, readable English that fits it. No captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/iris_binder/iris_binder_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/iris_binder/iris_binder_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/iris_binder/iris_binder_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:39:59+00:00",
+    "stage": "image",
+    "slug": "toy_soldier",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the toy soldier like this: I bury a newspaper, a novel, and a toy soldier by a fence. in there, for no good reason, a newspaper, a novel, and a toy soldier. Additional direction: A small green plastic army man, about 6 cm, standing with a rifle at the ready on his little base; faded by the sun, dirt in the folds.\nSingle-object concept render of the toy soldier, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/toy_soldier/toy_soldier_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/toy_soldier/toy_soldier_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/toy_soldier/toy_soldier_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:40:47+00:00",
+    "stage": "image",
+    "slug": "red_string_ball",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the ball of red string like this: He digs a ball of red string out of the drawer, in with the rubber bands and the dead nine-volts. Every drawer pulled out, the corkboard catching window light, the red string gone brown. Additional direction: A loose ball of red cotton string, partly unwound, the outer turns faded toward brown.\nSingle-object concept render of the ball of red string, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/red_string_ball/red_string_ball_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/red_string_ball/red_string_ball_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/red_string_ball/red_string_ball_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:41:36+00:00",
+    "stage": "image",
+    "slug": "cardboard_kaleidoscope",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the cardboard kaleidoscope like this: A kaleidoscope rolls out from under the zine. The cheap cardboard kind, ducks printed on the paper, worn white at both ends. Additional direction: A cheap cardboard kaleidoscope tube, about 20 cm, its paper wrapping printed with ducks, worn white at both ends; a plastic eyepiece.\nSingle-object concept render of the cardboard kaleidoscope, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cardboard_kaleidoscope/cardboard_kaleidoscope_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cardboard_kaleidoscope/cardboard_kaleidoscope_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cardboard_kaleidoscope/cardboard_kaleidoscope_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:42:31+00:00",
+    "stage": "image",
+    "slug": "sister_carrie_book",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes the copy of Sister Carrie like this: A passage from Sister Carrie near the beginning, most important. Additional direction: A worn paperback copy of the novel Sister Carrie, spine cracked, pages soft and swollen, a pencil underline on an early page.\nSingle-object concept render of the copy of Sister Carrie, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/sister_carrie_book/sister_carrie_book_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sister_carrie_book/sister_carrie_book_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sister_carrie_book/sister_carrie_book_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:43:22+00:00",
+    "stage": "image",
+    "slug": "emily",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Emily, 20s, one of the bar's regulars in Faust's circle. Straight fair hair to the collarbone, a pale cardigan buttoned over a printed dress, flat shoes, a paperback held against her chest.\nFull-body concept render of Emily, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/emily/emily_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/emily/emily_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/emily/emily_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:44:16+00:00",
+    "stage": "image",
+    "slug": "deborah",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Deborah, 40s, in the pharmacy and then the bar of Faust's circle. A grey bob, a camel coat over a navy dress, a leather handbag on a short strap, sensible heels, a prescription bag in one hand.\nFull-body concept render of Deborah, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/deborah/deborah_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/deborah/deborah_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/deborah/deborah_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:45:05+00:00",
+    "stage": "image",
+    "slug": "eric",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Eric, 30s, at the pharmacy in Faust's circle. A short beard, a corduroy jacket over a dark sweater, jeans, boots, a paper bag from the counter.\nFull-body concept render of Eric, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/eric/eric_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/eric/eric_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/eric/eric_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:45:52+00:00",
+    "stage": "image",
+    "slug": "marcus",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Marcus like this: Marcus is in shorts and a t-shirt. Tucker is in jeans. Additional direction: Marcus, late teens, a Gulf-coast high-school athlete: long-legged, fast, dark skin, hair cut close, an easy set to the shoulders. Grey athletic shorts and a white t-shirt, running shoes, a water bottle.\nFull-body concept render of Marcus, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/marcus/marcus_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marcus/marcus_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marcus/marcus_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:46:48+00:00",
+    "stage": "image",
+    "slug": "jordan",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Jordan, 20s, at the Judgement scene. Slight, androgynous, close-cropped hair, a black t-shirt, black jeans, boots, hands in pockets.\nFull-body concept render of Jordan, a character from a literary visual novel set in the Gulf Coast of Texas and Louisiana. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jordan/jordan_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jordan/jordan_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jordan/jordan_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:47:40+00:00",
+    "stage": "image",
+    "slug": "hannes",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Hannes like this: Wren turned to Lena and put her face in Lena's shoulder. Lena held her. Jameson and Hannes looked at each other Additional direction: Hannes, 40s, a coast man beside Jameson at the eight. Weathered, a fair beard going grey, a wool watch cap, a heavy grey fisherman's sweater, canvas trousers, rubber boots.\nFull-body concept render of Hannes, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/hannes/hannes_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hannes/hannes_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/hannes/hannes_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:48:28+00:00",
+    "stage": "image",
+    "slug": "old_man_kestrel",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The old man at the tide pool like this: At the edge: an old man. In waders to the waist. Kneeling at the edge. White hair under a wool cap. Looking at the water. The old man turned. His face: the face of a man maybe seventy-five, weathered, with the kind of eyes that had been looking at water for some decades. Additional direction: An old man of about seventy-five kneeling at the edge of a clear tide pool on a dark basalt headland on the Oregon coast: weathered face, white hair under a dark wool cap, the eyes of a man who has been looking at water for decades. Rubber waders to the waist over a thick wool shirt, sleeves pushed up.\nFull-body concept render of The old man at the tide pool, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/old_man_kestrel/old_man_kestrel_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/old_man_kestrel/old_man_kestrel_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/old_man_kestrel/old_man_kestrel_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:49:22+00:00",
+    "stage": "image",
+    "slug": "olivia",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Olivia like this: A cute secretary is typing at her console. Olivia is behind it, the secretary from the tutorial, in the same cardigan, typing. A cat carrier sits on the counter beside her keyboard with the little door open. Additional direction: Olivia, early 30s, the receptionist from the hazy tutorial lobby who turns up again behind the drugstore counter \u2014 corporate-orientation cheer over a private sadness (her cat is dying). Neat and pleasant, brown hair in a low ponytail, a little tired around the eyes. A soft oatmeal cardigan buttoned over a pale blue blouse, a knee-length navy skirt, flat shoes, a lanyard ID badge. One hand resting on a small grey plastic cat carrier with its wire door open.\nFull-body concept render of Olivia, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/olivia/olivia_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/olivia/olivia_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/olivia/olivia_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:50:18+00:00",
+    "stage": "image",
+    "slug": "aunt_grace",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Aunt Grace like this: Every one must have a hobby. Said Aunt Grace, who set me up \u2014 who sorta got famous in the wild and crazy seventies. A new sample comes up from the queue, an older woman's voice, smoky, warm, from the seventies. Everyone must have a hobby, Johnny. Mine was being a little bit famous. Additional direction: Aunt Grace, late 60s, Faust's aunt, a painter who got a little bit famous in the 1970s and set him up with his easel. Tall and handsome, silver hair swept up and pinned with a pencil, strong dark brows, red lipstick, a smoker's warm creased smile. A loose indigo linen painter's smock over black trousers, a chunky turquoise-and-silver necklace, leather sandals, paint dried on her knuckles. A long sable brush held like a cigarette.\nFull-body concept render of Aunt Grace, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/aunt_grace/aunt_grace_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/aunt_grace/aunt_grace_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/aunt_grace/aunt_grace_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:51:13+00:00",
+    "stage": "image",
+    "slug": "the_fool",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Fool like this: Enter the FOOL, a disheveled and insane merry prankster. THE FOOL bursts in through the door, disheveled, carrying a bucket of popcorn that is mostly empty, wearing a t-shirt with a painted wooden frame on it and nothing inside. Additional direction: The Fool, the disheveled, insane merry prankster who bursts into the editing suite \u2014 excitable, scattered, childlike. Around 60, wiry, wild grey hair and a week of white stubble, bright delighted eyes. A white t-shirt printed with an empty painted wooden picture frame (knots, grain, rings, and nothing inside), a moth-eaten brown cardigan over it, baggy corduroys, untied high-top sneakers. Hugging a striped cardboard popcorn bucket that is mostly empty.\nFull-body concept render of The Fool, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_fool/the_fool_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_fool/the_fool_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_fool/the_fool_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:52:06+00:00",
+    "stage": "image",
+    "slug": "corpse_painted_boy",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Corpse-Painted Boy like this: Further down the coping there's a different crowd: boys in corpse paint, black and white, leather and spikes, sitting around a record player that plays the riff backward. One of them takes off his spiked armband and sets it on the concrete, like he isn't going to need it anymore. Additional direction: A teenage black-metal kid, about 16, one of the dead boys sitting on the coping of the endless empty pool \u2014 quiet and unnervingly sincere. Thin and pale, long straight black hair, his face in black-and-white corpse paint. A black leather jacket over a plain black t-shirt, black jeans, a studded belt, scuffed black combat boots, a spiked leather armband on one wrist. Very still.\nFull-body concept render of Corpse-Painted Boy, a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/corpse_painted_boy/corpse_painted_boy_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/corpse_painted_boy/corpse_painted_boy_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/corpse_painted_boy/corpse_painted_boy_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:52:57+00:00",
+    "stage": "image",
+    "slug": "old_woman_pharmacy",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Old Woman (pharmacy) like this: A customer interrupts \u2014 a happy old woman. An OLD WOMAN, the happy one from the pharmacy counter, comes up to the counter with her prescription bag still stapled shut. Be young and happy forever. Additional direction: An old woman at Faust's pharmacy counter, late 70s, the happy one \u2014 gently brisk. Small and upright, soft white hair set in curls, pink cheeks, bright eyes behind round glasses on a beaded chain. A lilac quilted jacket over a floral blouse, tan slacks, white walking sneakers, a big handbag on her forearm and a white paper prescription bag, still stapled shut, in her hand.\nFull-body concept render of The Old Woman (pharmacy), a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/old_woman_pharmacy/old_woman_pharmacy_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/old_woman_pharmacy/old_woman_pharmacy_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/old_woman_pharmacy/old_woman_pharmacy_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:53:48+00:00",
+    "stage": "image",
+    "slug": "margaret_vol1",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Margaret (vol1) like this: They're trying to set me up with Margaret. Helen pushes Margaret into the seat next to Faust and sits next to Jacob. Additional direction: Margaret, late 20s, the stressed one of the bar trio that Helen and Emily keep trying to set up with Faust \u2014 softer, wry. Straight auburn hair in a low bun coming loose, a tired pretty face, a half-smile. Straight from work: a charcoal blazer over a cream silk blouse, slim black trousers, low black ankle boots, a work tote on her shoulder and a phone in her hand.\nFull-body concept render of Margaret (vol1), a character from a literary visual novel set in an American city. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/margaret_vol1/margaret_vol1_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/margaret_vol1/margaret_vol1_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/margaret_vol1/margaret_vol1_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:54:34+00:00",
+    "stage": "image",
+    "slug": "joe_ku",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Joe K-U like this: Joe KU, the oldest son stands up and walks to the podium. He is dressed the nicest in the room, wearing a three-piece suit. Originally from San Francisco, they own an all-natural Italian Bakery ten miles out of town right on the water. Additional direction: Joe K-U, 17, the eldest of the four K-U kids (San Francisco transplants who run an all-natural Italian bakery ten miles out of town), defending Frank's novel at the school-board hearing \u2014 earnest, a little nervous, building conviction. Slim and sharp, dark hair neatly cut, a serious unsmiling face. The best-dressed person in the room: a fitted charcoal three-piece suit, white shirt, narrow dark tie, polished shoes. A dog-eared paperback of The Spawning Grounds in one hand.\nFull-body concept render of Joe K-U, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/joe_ku/joe_ku_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/joe_ku/joe_ku_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/joe_ku/joe_ku_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:55:26+00:00",
+    "stage": "image",
+    "slug": "becca",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Becca (Rebecca) like this: Becca stands up and makes her way to the podium. She looks radiant. Rebecca, my wife of 22 years is sitting next to me, quiet and angry. Her hair was tied down but strands hovered in the wind above her head. Additional direction: Becca (Rebecca), early 40s, the English teacher at the school-board hearing who cannot teach Frank's novel because she is in it \u2014 measured, her voice catching; the narrator's wife of 22 years. Radiant and composed: shoulder-length chestnut hair pinned back with loose strands lifting, light make-up. A moss-green cardigan over a cream blouse, a long patterned skirt, low brown boots; reading glasses folded in one hand and a few index cards of notes.\nFull-body concept render of Becca (Rebecca), a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/becca/becca_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/becca/becca_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/becca/becca_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:56:16+00:00",
+    "stage": "image",
+    "slug": "pastor_tim",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Pastor Tim like this: He's got brown hair to his shoulders, wears jeans and flannel. Over there on the right is Pastor Tim with wife and children. Additional direction: Pastor Tim, about 50, objecting to Frank's novel at the school-board hearing \u2014 pulpit-righteous, clipped. Brown hair to his shoulders, a trimmed greying beard, an earnest set jaw. Jeans and a red-and-black flannel shirt buttoned to the collar, a brown leather belt, work boots; a Bible with tabbed pages under one arm.\nFull-body concept render of Pastor Tim, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/pastor_tim/pastor_tim_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pastor_tim/pastor_tim_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/pastor_tim/pastor_tim_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:57:11+00:00",
+    "stage": "image",
+    "slug": "charles",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Charles like this: The first person to break off conversation and notice me is Charles, a man going grey and ripe around the middle. He put a book in my lap, a very old leather-bound thing with fine leafing and stitch work. Radio Shack era make and manufacture. Additional direction: Charles, mid-50s, a former teacher who came to Small Wood after his second divorce and talks for hours about the will of the universe \u2014 learned, faintly mystical. Going grey and ripe around the middle, a neat grey beard, kind restless eyes. A rumpled tweed jacket with leather elbow patches over a cream fisherman's sweater, khakis, sand-crusted hiking boots. An old 1980s metal detector in one hand and a very old leather-bound book with gilt edges under his arm.\nFull-body concept render of Charles, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/charles/charles_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/charles/charles_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/charles/charles_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:58:02+00:00",
+    "stage": "image",
+    "slug": "jay_rose",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jay Rose like this: A portly kid was the deejay and there were eight kids making an effort to shuffle in place uncomfortably, not counting my sister and I. The deejay sensed our combined resigned unease and came over to us, introduced himself while the music played itself in the background. Additional direction: Jay Rose, 17, a senior, the deejay at the near-empty Small Wood Rec Center dance (summer 1993) \u2014 outgoing, calm in the face of failure, good at pulling people out of their own heads. Portly and easy in his body, a round friendly face, short dark hair. An oversized open flannel shirt over a plain black t-shirt, baggy khaki shorts, white high-top sneakers, big DJ headphones round his neck and a milk crate of cassettes and CDs on one hip.\nFull-body concept render of Jay Rose, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jay_rose/jay_rose_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jay_rose/jay_rose_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jay_rose/jay_rose_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:58:55+00:00",
+    "stage": "image",
+    "slug": "arthur_finch",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Arthur 'Wood' Finch like this: And it was Arthur Finch who pencilled the one and only comic strip \u2014 DriftWood \u2014 about a teenager named Wood and his yearnings to leave the small town forever. arthur finch was the first of us to disappear. Additional direction: Arthur 'Wood' Finch, 17, who pencils DRIFT WOOD \u2014 the only comic strip in the Small Wood High paper, about a boy named Wood who wants to leave town. Lean and long-limbed, a narrow freckled face, untidy sandy hair falling in his eyes, ink smudged on the side of his drawing hand. A green rain shell over a grey hooded sweatshirt, cuffed jeans, muddy canvas sneakers; a sketchbook under one arm and a mechanical pencil behind his ear.\nFull-body concept render of Arthur 'Wood' Finch, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/arthur_finch/arthur_finch_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/arthur_finch/arthur_finch_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/arthur_finch/arthur_finch_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:59:42+00:00",
+    "stage": "image",
+    "slug": "katrina",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Katrina (Kate) like this: That day she was dressed plainly, very much acting like a tomboy, assertive, adventurous and content with half a sly smile. It was here I met Katrina. The youngest of the competing queens. Beautiful, feisty, and sometimes a chore. It should be noted that Katrina was a photographer for the paper. Additional direction: Katrina (Kate), 16, the youngest of the Grunion Festival beauty queens and a photographer for the school paper, early 1990s Oregon coast; the only daughter of Russian immigrants. Pretty and fair, a strong-browed face with half a sly smile, light-brown hair in a careless ponytail. Dressed plainly, tomboy: an oversized grey hooded sweatshirt, worn jeans, beat-up hiking boots, a 35mm film camera on a strap round her neck.\nFull-body concept render of Katrina (Kate), a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/katrina/katrina_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/katrina/katrina_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/katrina/katrina_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:00:31+00:00",
+    "stage": "image",
+    "slug": "shannon",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Shannon like this: Just to clear this up \u2014 Kate was not the girl who kissed me. That was Kate's friend, Shannon. It was no big secret that Shannon had a thing for me \u2014 but I brushed her aside and all but ignored her. Additional direction: Shannon, 16, Kate's friend and a features writer for the school paper, who asks the new kid to dance at the rec center and later kisses him; early 1990s Oregon coast. Small, round-faced, a big grin and freckles, permed dark-blonde hair held back with a scrunchie. A faded denim jacket over a striped long-sleeve top, high-waisted jeans, white canvas sneakers; a reporter's notebook in her back pocket.\nFull-body concept render of Shannon, a character from a literary visual novel set in a small town on the Oregon coast. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/shannon/shannon_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/shannon/shannon_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/shannon/shannon_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:01:54+00:00",
+    "stage": "image",
+    "slug": "andy_1945",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Andy Link (1945, the time-traveller), like this: He had a silly lumberjack half-beard which cut his head from the neck. He wore a suit with no tie and his shoes were huge and falling apart on his feet. The big kid, quiet almost like an affected simpleton, looked into things with big blue green gray eyes and asked the oddest question upon being introduced acting very much like a tourist without a map. Additional direction: Andy Link as the 1945 Pasadena house sees him: the big kid Jack and Ron found half asleep on the cement floor of Jack's new Caltech office, who says he is from 2003. The same very tall, heavy young man, the same chinstrap half-beard and big blue-green-grey eyes, groggy and belligerent. A crumpled dark charcoal suit, a white shirt open at the collar, no tie; huge black shoes split and falling apart on his feet.\nFull-body concept render of Andy Link (1945, the time-traveller), a character from a literary visual novel set in 1945 Pasadena, California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/andy_1945/andy_1945_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/andy_1945/andy_1945_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/andy_1945/andy_1945_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:02:44+00:00",
+    "stage": "image",
+    "slug": "ron",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ron, a 1945 pulp writer, like this: Must have been some party, says the red haired one. The new kid who showed up, who Jack introduced into the fold, who told everyone he was a time-traveler from the future, he was big, as big as Ron but fatter. You shouldn't hunch over, you look just like a brute when you do. Additional direction: Ron as the novel presents him in 1945: a 34-year-old pulp writer newly moved into his friend Jack's big Pasadena house and starting a book called The Earthman Chronicles; a storyteller who does not yet know he is a liar. Big and heavy-shouldered, hunched like a brute, red hair combed back, a fleshy freckled face, watchful pale eyes. A rumpled white shirt with the sleeves rolled, a loosened tie, high-waisted grey wool trousers on braces, scuffed brown oxfords; a sheaf of typed pages in one hand.\nFull-body concept render of Ron, a 1945 pulp writer, a character from a literary visual novel set in 1945 Pasadena, California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/ron/ron_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ron/ron_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ron/ron_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:03:37+00:00",
+    "stage": "image",
+    "slug": "betty",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Betty like this: She was Jack's girl but she belonged to everybody. Beauty changes the mood of the room even when it stands just outside it. Additional direction: Betty, early 20s, Jack's girl in the 1945 Pasadena house \u2014 teasing, warm, easily spooked; a beauty who changes the mood of a room before she's in it. Dark-blonde hair in soft 1940s rolls, red lipstick, bright amused eyes. A short-sleeved cream blouse tucked into a high-waisted plaid A-line skirt, a pale cardigan over her shoulders, low-heeled brown pumps; a typed page in her hand.\nFull-body concept render of Betty, a character from a literary visual novel set in 1945 Pasadena, California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/betty/betty_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/betty/betty_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/betty/betty_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:04:25+00:00",
+    "stage": "image",
+    "slug": "jack_parsons",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jack, a 1945 rocket engineer, like this: They both thought of Jack, handsome Jack with his thick eyebrows and devilish mustache, dark hair combed wet to his skull. They can get a bit crazy, says the dark haired one. Additional direction: Jack in 1945, about 31: a Caltech rocket scientist and host of the Pasadena house \u2014 'beautiful Jack', sunny and gentle, tent pole of a bohemian crowd. Handsome, thick dark eyebrows, a devilish pencil moustache, dark hair combed wet and flat to his skull. A tweed sport coat over an open-collared white shirt, pleated grey flannel trousers, brown wingtips; a rolled set of rocket drawings under one arm and a hand out to shake.\nFull-body concept render of Jack, a 1945 rocket engineer, a character from a literary visual novel set in 1945 Pasadena, California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jack_parsons/jack_parsons_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jack_parsons/jack_parsons_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jack_parsons/jack_parsons_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:05:14+00:00",
+    "stage": "image",
+    "slug": "jack_perkins",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jack Perkins (the Earthman) like this: He realized he was a complete stranger with his nice clothes, his kempt haircut, his general cleanliness. Jack Perkins stuck out like a shiny quarter in a penny jar. Jack has a photograph of him in his billfold gone soft at the corners. Additional direction: Jack Perkins, hero of Ron's pulp The Earthman Chronicles: a boy genius grown into a young man of about 25 who sealed himself into a time-egg and woke fifty years on in a ruined city. Slight, clean-cut and boyish, a kempt side-parted haircut, a frightened earnest face. Nice clothes that stick out in the ruins: a pressed light-grey suit, white shirt, narrow dark tie, a knitted sleeveless pullover, polished shoes. A soft-cornered photograph of his father held in one hand.\nFull-body concept render of Jack Perkins (the Earthman), a character from a literary visual novel set in Texas and Southern California. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jack_perkins/jack_perkins_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jack_perkins/jack_perkins_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jack_perkins/jack_perkins_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
