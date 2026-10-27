@@ -80,7 +80,7 @@ A sweep on 2026-10-27 found 36 vol 1–4 uses of sets built for vols 5–7 (`bg_
 | 2 | vol2 bookstores (The Cat's Pause, the Blue Heron) | vol 7 Salty Tome (2052) | the 1990s bookstores | to plan |
 | 2 | vol3 ch8 passengers' 3 a.m. stop | vol 6 NexCorp (2026 brand) | an unbranded early-2000s station | **done 2026-10-27** — era preset `gas_station_2003_night` on the same station: the brand pictures skip it (`not_presets`), the 2026 van, cars, badge and morning sun leave it (`strip`), night lights of its own |
 | 2 | vol4 cc_3's "grungy bathroom" (an AFTER PARTY's, not a gas station's) | vol 6 NexCorp restroom | a house-party bathroom | to plan |
-| 3 | vol2 docks, Hwy 101 (Small Wood 1997) | vol 7 Smolvud jetty, Hwy 101 (2052) | the same places in their 1997 state (era presets) | to plan |
+| 3 | vol2 docks, Hwy 101 (Small Wood 1997); vol3's coast road | vol 7 Smolvud jetty, Hwy 101 (2052) | the same places in their own years | **done 2026-10-27** — era presets: `coast_highway_day` (no Tem's truck, no chain or marker on a turn not yet bypassed, a clear day); `smolvud_docks_evening` strips the Frog's things |
 | 3 | vol3 ch4 city street; vol4 apartments | vol 7 main street, Finn's 2052 apartment | era-right streets and rooms | to plan |
 | ok | MD Anderson hospital, Dean's tower, dream cells, Cape Perpetua | — | — | kept |
 

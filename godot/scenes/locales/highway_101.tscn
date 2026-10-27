@@ -199,6 +199,20 @@ light_color = Color(0.56, 0.64, 0.86, 1)
 light_energy = 0.18
 shadow_enabled = false
 
+; (2026-10-27) the coast highway on a clear day (coast_highway_day: vol 2's 1990s rides, vol 3's drive)
+
+[node name="Daylight__coast_highway_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.342, 0.940, 0, -0.940, 0.342, 0, 40, 0)
+light_color = Color(1.0, 0.96, 0.88, 1)
+light_energy = 1.4
+shadow_enabled = false
+
+[node name="Day_Fill__coast_highway_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 20, 0)
+light_color = Color(0.70, 0.80, 0.98, 1)
+light_energy = 0.30
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

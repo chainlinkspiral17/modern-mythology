@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-27 · pass 199: SMALL WOOD'S OWN YEARS on Smolvud's sets.**
+- Smolvud is the 2050s Small Wood (Andy), so vol 2's 1997 coast is vol 7's places in their own years.
+- **`coast_highway_day`:** the coast road on a clear day, for:
+  - Salmon's trip "up to Depot Bay for the day";
+  - Triptych's "sky a cobalt blue";
+  - vol 3's drive to the coast, "Sunlight dotting through the thickness of it all".
+  Tem's 2052 truck, the dusk lights, and the chain and marker of a turn that won't be bypassed for decades all leave it.
+- **The docks:** vol 2's pier and docks drop the Frog's things.
+
 **2026-10-27 · pass 198: ANOTHER YEAR AT THE SAME PLACE — era presets.**
 - **The problem:** vol 3 ch8's 3 a.m. stop played on vol 6's 2026 NexCorp morning, with the brand, the unmarked van and the story's cars.
 - **The engine (two small tools):**

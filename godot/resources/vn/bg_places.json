@@ -377,9 +377,12 @@
    "scenes": 1
   },
   "vol2_coast_highway_day": {
-   "fit": "reuse",
-   "to": "3d:highway_101",
-   "scenes": 2
+   "fit": "exact",
+   "to": "3d:coast_highway_day",
+   "build": "highway_101",
+   "note": "the coast road on a clear 1990s day (era preset: no 2052 truck, chain or marker)",
+   "scenes": 2,
+   "built": "2026-10-27 era preset"
   },
   "vol2_coast_woods_dawn": {
    "fit": "reuse",
@@ -507,7 +510,7 @@
   "vol2_harbor_dusk": {
    "fit": "reuse",
    "to": "3d:smolvud_docks_evening",
-   "note": "the docks at evening: the bench, the boats coming in, the sun going down (pass 159)",
+   "note": "the docks at evening: the bench, the boats coming in, the sun going down (pass 159) · 2026-10-27: Small Wood in 1997 — the Frog's things stripped (Smolvud is the 2050s Small Wood)",
    "scenes": 1
   },
   "vol2_ice_storm": {
@@ -564,7 +567,7 @@
   "vol2_pier_crabbing": {
    "fit": "reuse",
    "to": "3d:smolvud_docks_evening",
-   "note": "the pier: the harbor from the shore path (pass 159; the fog frame is vol 7's)",
+   "note": "the pier: the harbor from the shore path (pass 159; the fog frame is vol 7's) · 2026-10-27: Small Wood in 1997 — the Frog's things stripped (Smolvud is the 2050s Small Wood)",
    "scenes": 2
   },
   "vol2_radio_studio": {
@@ -979,9 +982,12 @@
    "built": "2026-10-18 draft 1"
   },
   "vol3_coast_road_forest": {
-   "fit": "reuse",
-   "to": "3d:highway_101",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:coast_highway_day",
+   "build": "highway_101",
+   "note": "the coast road by day, early 2000s (era preset)",
+   "scenes": 1,
+   "built": "2026-10-27 era preset"
   },
   "vol3_coast_studio_bathroom": {
    "fit": "exact",
