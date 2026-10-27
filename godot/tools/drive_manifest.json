@@ -74035,6 +74035,36 @@
    "md5": "58d130477a4a5fc6a32c5c7cc7991f2e",
    "size": 1883645
   },
+  "godot/assets/concept/meshy/brandons_leather_notebook/back.png": {
+   "at": "2026-10-27T19:13:46+00:00",
+   "md5": "ebb254fb055d0dbc7f6acaf22d877d2d",
+   "size": 1497578
+  },
+  "godot/assets/concept/meshy/brandons_leather_notebook/brandons_leather_notebook_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:13:46+00:00",
+   "md5": "ebb254fb055d0dbc7f6acaf22d877d2d",
+   "size": 1497578
+  },
+  "godot/assets/concept/meshy/brandons_leather_notebook/brandons_leather_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:13:46+00:00",
+   "md5": "f080a0363600b6f94292437955386457",
+   "size": 1457963
+  },
+  "godot/assets/concept/meshy/brandons_leather_notebook/brandons_leather_notebook_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:13:46+00:00",
+   "md5": "e9757094caf039b886df8246996bc93a",
+   "size": 1211890
+  },
+  "godot/assets/concept/meshy/brandons_leather_notebook/front.png": {
+   "at": "2026-10-27T19:13:46+00:00",
+   "md5": "f080a0363600b6f94292437955386457",
+   "size": 1457963
+  },
+  "godot/assets/concept/meshy/brandons_leather_notebook/side.png": {
+   "at": "2026-10-27T19:13:46+00:00",
+   "md5": "e9757094caf039b886df8246996bc93a",
+   "size": 1211890
+  },
   "godot/assets/concept/meshy/brass_clock/back.png": {
    "at": "2026-10-18T17:12:34+00:00",
    "md5": "be1f5c611cbd5a2c071672c73bce1910",
@@ -77725,6 +77755,16 @@
    "md5": "710ae78dae87275478e2f947d679039d",
    "size": 2537036
   },
+  "godot/assets/concept/meshy/finns_uv_light_and_radio/finns_uv_light_and_radio_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:06+00:00",
+   "md5": "98d8bc013fa3a5be0c90c713ff7aba63",
+   "size": 2606292
+  },
+  "godot/assets/concept/meshy/finns_uv_light_and_radio/front.png": {
+   "at": "2026-10-27T19:14:06+00:00",
+   "md5": "98d8bc013fa3a5be0c90c713ff7aba63",
+   "size": 2606292
+  },
   "godot/assets/concept/meshy/fire_elemental/back.png": {
    "at": "2026-10-19T17:53:40+00:00",
    "md5": "af59530f2f901a31ab7feee49c3921d2",
@@ -79649,6 +79689,36 @@
    "at": "2026-10-27T18:58:01+00:00",
    "md5": "c377023d375b9b8c0dee12ea8dda3f9a",
    "size": 1211941
+  },
+  "godot/assets/concept/meshy/kerosene_lamp/back.png": {
+   "at": "2026-10-27T19:14:21+00:00",
+   "md5": "339a1bd73e2e6dbbc64cdbe0f216ce1c",
+   "size": 1366146
+  },
+  "godot/assets/concept/meshy/kerosene_lamp/front.png": {
+   "at": "2026-10-27T19:14:21+00:00",
+   "md5": "9d72bd31d3d5d611068dbd6a75a04304",
+   "size": 1219706
+  },
+  "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:21+00:00",
+   "md5": "339a1bd73e2e6dbbc64cdbe0f216ce1c",
+   "size": 1366146
+  },
+  "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:21+00:00",
+   "md5": "9d72bd31d3d5d611068dbd6a75a04304",
+   "size": 1219706
+  },
+  "godot/assets/concept/meshy/kerosene_lamp/kerosene_lamp_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:21+00:00",
+   "md5": "20aa37ea4a8b317a74f2851f85095ec1",
+   "size": 1270413
+  },
+  "godot/assets/concept/meshy/kerosene_lamp/side.png": {
+   "at": "2026-10-27T19:14:21+00:00",
+   "md5": "20aa37ea4a8b317a74f2851f85095ec1",
+   "size": 1270413
   },
   "godot/assets/concept/meshy/kestrel_mountain_mountain/front.png": {
    "at": "2026-10-14T03:00:58+00:00",
@@ -82670,6 +82740,36 @@
    "md5": "7e19a0e8db1a061da72e64fbd7528955",
    "size": 1268228
   },
+  "godot/assets/concept/meshy/pendleton_blanket/back.png": {
+   "at": "2026-10-27T19:14:37+00:00",
+   "md5": "fcb6dc1f32afab7772a580d9b776b6fa",
+   "size": 1736293
+  },
+  "godot/assets/concept/meshy/pendleton_blanket/front.png": {
+   "at": "2026-10-27T19:14:37+00:00",
+   "md5": "a29dfad311d9a927cd944b277cdaeb70",
+   "size": 1684604
+  },
+  "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:37+00:00",
+   "md5": "fcb6dc1f32afab7772a580d9b776b6fa",
+   "size": 1736293
+  },
+  "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:37+00:00",
+   "md5": "a29dfad311d9a927cd944b277cdaeb70",
+   "size": 1684604
+  },
+  "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:37+00:00",
+   "md5": "90b03b0953ea4418c2519c131d0ab81f",
+   "size": 1557066
+  },
+  "godot/assets/concept/meshy/pendleton_blanket/side.png": {
+   "at": "2026-10-27T19:14:37+00:00",
+   "md5": "90b03b0953ea4418c2519c131d0ab81f",
+   "size": 1557066
+  },
   "godot/assets/concept/meshy/per/back.png": {
    "at": "2026-10-11T17:59:52+00:00",
    "md5": "eba19aaa7d162037126998df26871233",
@@ -85280,10 +85380,20 @@
    "md5": "c0ce06697af59b247823ca55d6cbb49b",
    "size": 1407792
   },
+  "godot/assets/concept/meshy/relic_skate_deck/back.png": {
+   "at": "2026-10-27T19:14:49+00:00",
+   "md5": "23c43e640037f50b7b643fbc2e60882a",
+   "size": 1977491
+  },
   "godot/assets/concept/meshy/relic_skate_deck/front.png": {
    "at": "2026-10-27T19:10:03+00:00",
    "md5": "0b62bb0300c64477c62fd19c9ed7622f",
    "size": 1716989
+  },
+  "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:14:49+00:00",
+   "md5": "23c43e640037f50b7b643fbc2e60882a",
+   "size": 1977491
   },
   "godot/assets/concept/meshy/relic_skate_deck/relic_skate_deck_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T19:10:03+00:00",
@@ -87094,6 +87204,36 @@
    "at": "2026-10-11T17:38:00+00:00",
    "md5": "40878b9e03bef3f040b3a6c6313cdb30",
    "size": 1954165
+  },
+  "godot/assets/concept/meshy/tems_wagon/back.png": {
+   "at": "2026-10-27T19:15:09+00:00",
+   "md5": "89940c1827d6f42a3bf17d753c71cfe3",
+   "size": 1883171
+  },
+  "godot/assets/concept/meshy/tems_wagon/front.png": {
+   "at": "2026-10-27T19:15:09+00:00",
+   "md5": "2d528a8c9e11dc818cd29e910535a665",
+   "size": 1814725
+  },
+  "godot/assets/concept/meshy/tems_wagon/side.png": {
+   "at": "2026-10-27T19:15:09+00:00",
+   "md5": "39a6325fede10373b75b326006a8a750",
+   "size": 1602895
+  },
+  "godot/assets/concept/meshy/tems_wagon/tems_wagon_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:15:09+00:00",
+   "md5": "89940c1827d6f42a3bf17d753c71cfe3",
+   "size": 1883171
+  },
+  "godot/assets/concept/meshy/tems_wagon/tems_wagon_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:15:09+00:00",
+   "md5": "2d528a8c9e11dc818cd29e910535a665",
+   "size": 1814725
+  },
+  "godot/assets/concept/meshy/tems_wagon/tems_wagon_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:15:09+00:00",
+   "md5": "39a6325fede10373b75b326006a8a750",
+   "size": 1602895
   },
   "godot/assets/concept/meshy/the_artist/back.png": {
    "at": "2026-10-19T17:25:36+00:00",
@@ -89219,6 +89359,36 @@
    "at": "2026-10-14T03:30:08+00:00",
    "md5": "223faa2b58b0e7ae1bea72edfc66e257",
    "size": 3318502
+  },
+  "godot/assets/concept/meshy/wagners_yardstick_and_drill/back.png": {
+   "at": "2026-10-27T19:15:21+00:00",
+   "md5": "7a6d6a855110623a729ec2f4c3f29b83",
+   "size": 2260444
+  },
+  "godot/assets/concept/meshy/wagners_yardstick_and_drill/front.png": {
+   "at": "2026-10-27T19:15:21+00:00",
+   "md5": "a73ae41bcb30a9f697f58f807b7d4c03",
+   "size": 2101150
+  },
+  "godot/assets/concept/meshy/wagners_yardstick_and_drill/side.png": {
+   "at": "2026-10-27T19:15:21+00:00",
+   "md5": "e138cd6a2159fd95bba9d790c2e589d3",
+   "size": 2120435
+  },
+  "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:15:21+00:00",
+   "md5": "7a6d6a855110623a729ec2f4c3f29b83",
+   "size": 2260444
+  },
+  "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:15:21+00:00",
+   "md5": "a73ae41bcb30a9f697f58f807b7d4c03",
+   "size": 2101150
+  },
+  "godot/assets/concept/meshy/wagners_yardstick_and_drill/wagners_yardstick_and_drill_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-27T19:15:21+00:00",
+   "md5": "e138cd6a2159fd95bba9d790c2e589d3",
+   "size": 2120435
   },
   "godot/assets/concept/meshy/walt/back.png": {
    "at": "2026-10-19T16:27:31+00:00",

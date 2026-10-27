@@ -32474,5 +32474,47 @@
       "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/pendleton_blanket/pendleton_blanket_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T19:14:12+00:00",
+    "stage": "image",
+    "slug": "finns_uv_light_and_radio",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Finn's UV light and off-band radio like this: The radio Finn carries that holds together on electrical tape, and that has, since June, been picking up a signal that is not on any allocated band The floor cracks are also, under a portable UV light Finn carries, faintly luminescent \u2014 they hold a small amount of charge. Finn's electrical-tape radio and a small handful of bottle caps the crow has been giving him. the radio in the back of the truck \u2014 the shortwave receiver from his grandfather \u2014 turned itself on. The emergency radio in his pack does the patterned-static thing again. Carries the radio that picks up signals not on any allocated band \u00b7 inspects the cannery's pilings at low tide \u00b7 carries a portable UV light THE RADIO TREATMENT: a battery portable on its own small console against the east wall \u2014 bakelite-brown body wrapped in two bands of electrical tape, one taped corner, whip antenna, cream dial face (named Radio_DialFace for scene-side Label3D), two knobs, speaker slats \u2014 with the spiral LOG NOTEBOOK + pencil beside it, the roll of electrical tape, spare batteries, and the portable UV light. Small, worn, held together: canon's rig, not a shack.\nSingle-object concept render of Finn's UV light and off-band radio, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/finns_uv_light_and_radio/finns_uv_light_and_radio_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/finns_uv_light_and_radio/finns_uv_light_and_radio_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/finns_uv_light_and_radio/finns_uv_light_and_radio_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T19:15:00+00:00",
+    "stage": "image",
+    "slug": "joan_dagger",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Joan's dagger like this: She pulls out a dagger. In the middle of it Joan is fighting with the dagger. Faust's Water has the bottom of a dagger, the hilt, the place a hand goes. It's warm, like skin, like the blade. Additional direction: A medieval rondel dagger, about 35 cm: a narrow steel blade with a faint warm sheen along the edge, a round steel guard and pommel, a grip wrapped in dark worn leather; old and well kept, like a relic that is still used.\nSingle-object concept render of Joan's dagger, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/joan_dagger/joan_dagger_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/joan_dagger/joan_dagger_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/joan_dagger/joan_dagger_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]
