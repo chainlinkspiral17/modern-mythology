@@ -27632,5 +27632,180 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/roberts_kitchen_window_view/front.png",
     "output": "godot/assets/art/hero/roberts_kitchen_window_view.png"
+  },
+  {
+    "at": "2026-10-27T04:59:37+00:00",
+    "stage": "image",
+    "slug": "daily_grind_front_window_view",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Main Street through the Daily Grind's front windows like this: She drank it standing at the bar looking through the front window at the slate-gray light over Main. Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast. Additional direction: Exterior only. Looking out of a caf\u00e9's front window across Main Street in a small damp Oregon coast town: wet two-lane pavement, a row of old two-storey shop fronts across the street in weathered cedar shingle and painted clapboard, a few windows glowing, small dripping awnings, steady rain, slate-grey late-afternoon light. No readable signs, no people in focus. Very wide 21:9, the middle third composed to stand on its own.\nSIZE: the real object is 5.40 m wide by 2.40 m tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Main Street through the Daily Grind's front windows, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/daily_grind_front_window_view/daily_grind_front_window_view_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T04:59:43+00:00",
+    "stage": "art",
+    "slug": "daily_grind_front_window_view",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/daily_grind_front_window_view/front.png",
+    "output": "godot/assets/art/hero/daily_grind_front_window_view.png"
+  },
+  {
+    "at": "2026-10-27T04:59:59+00:00",
+    "stage": "image",
+    "slug": "daily_grind_side_window_view",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the side street through the Daily Grind's west windows like this: Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast. Additional direction: Exterior only. Looking out of a caf\u00e9's side window onto a narrow side street in a small Oregon coast town: the wet cedar-shingled side wall of the next building, a parked older car beaded with rain, a downspout running, salal and a young spruce at the corner, steady rain, slate-grey light. No readable signs. Wide 16:9, the middle square composed to stand on its own.\nSIZE: the real object is 4.00 m wide by 2.40 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the side street through the Daily Grind's west windows, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/daily_grind_side_window_view/daily_grind_side_window_view_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:00:05+00:00",
+    "stage": "art",
+    "slug": "daily_grind_side_window_view",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/daily_grind_side_window_view/front.png",
+    "output": "godot/assets/art/hero/daily_grind_side_window_view.png"
+  },
+  {
+    "at": "2026-10-27T05:00:21+00:00",
+    "stage": "image",
+    "slug": "missing_link_window_view_pumps",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the pumps and the bench through the diner's rain-glazed window like this: The glass is glazed with rain on the outside and breath on the inside. Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man. Additional direction: Exterior only, seen through a diner window glazed with rain on the outside: a wet asphalt apron, two old gas pumps under a lit awning, a wooden bench beside them, no one on it, the night beyond. Raindrops and streaks on the glass soften everything. Square.\nSIZE: the real object is 1.28 m wide by 1.13 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the pumps and the bench through the diner's rain-glazed window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/missing_link_window_view_pumps/missing_link_window_view_pumps_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:00:27+00:00",
+    "stage": "art",
+    "slug": "missing_link_window_view_pumps",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/missing_link_window_view_pumps/front.png",
+    "output": "godot/assets/art/hero/missing_link_window_view_pumps.png"
+  },
+  {
+    "at": "2026-10-27T05:00:44+00:00",
+    "stage": "image",
+    "slug": "missing_link_window_view_road",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the awning's edge and the road through the diner's rain-glazed window like this: The glass is glazed with rain on the outside and breath on the inside. Additional direction: Exterior only, seen through a diner window glazed with rain on the outside: the edge of a lit gas-station awning dripping, the wet asphalt apron running out to a dark two-lane road, a single far streetlight, rain streaking the glass. Square.\nSIZE: the real object is 1.28 m wide by 1.13 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the awning's edge and the road through the diner's rain-glazed window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/missing_link_window_view_road/missing_link_window_view_road_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:00:50+00:00",
+    "stage": "art",
+    "slug": "missing_link_window_view_road",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/missing_link_window_view_road/front.png",
+    "output": "godot/assets/art/hero/missing_link_window_view_road.png"
+  },
+  {
+    "at": "2026-10-27T05:01:08+00:00",
+    "stage": "image",
+    "slug": "sam_bedroom_window_view",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the cul-de-sac from Sam's bedroom window like this: She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green. Additional direction: Exterior only. Looking down from an upstairs bedroom window onto a new-build Texas suburban cul-de-sac: green lawns, two-storey brick-and-siding houses curving round the circle, a mailbox across the street with a small corporate logo plate (no readable letters), sprinkler heads in the grass, late-afternoon gold light. 4:3.\nSIZE: the real object is 1.16 m wide by 96 cm tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the cul-de-sac from Sam's bedroom window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/sam_bedroom_window_view/sam_bedroom_window_view_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:01:12+00:00",
+    "stage": "art",
+    "slug": "sam_bedroom_window_view",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/sam_bedroom_window_view/front.png",
+    "output": "godot/assets/art/hero/sam_bedroom_window_view.png"
+  },
+  {
+    "at": "2026-10-27T05:01:30+00:00",
+    "stage": "image",
+    "slug": "hospice_room_window_view",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the parking lot below the hospice window before dawn like this: Outside the window, somewhere in the parking lot below, a car door closed softly. Outside, the city of Simons, Louisiana, kept its quiet pre-dawn. Additional direction: Exterior only. Looking down from a hospice room's upper-floor window at a small parking lot before dawn: wet asphalt shining under orange sodium lamps, a few parked cars, a line of live oaks hung with moss, the low roofs of a small Louisiana city beyond, deep blue pre-dawn sky. Quiet. 4:3.\nSIZE: the real object is 1.80 m wide by 1.40 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the parking lot below the hospice window before dawn, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/hospice_room_window_view/hospice_room_window_view_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:01:35+00:00",
+    "stage": "art",
+    "slug": "hospice_room_window_view",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/hospice_room_window_view/front.png",
+    "output": "godot/assets/art/hero/hospice_room_window_view.png"
+  },
+  {
+    "at": "2026-10-27T05:01:56+00:00",
+    "stage": "image",
+    "slug": "montreal_apartment_window_view",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the alley below John Frank's Montreal window like this: Mostly, though, he found himself staring out the window at the alleyway tapestry: overflowing recycling bins, a surprisingly persistent patch of moss on the opposite brick wall, the occasional stray cat navigating the urban topography with admirable stealth. Additional direction: Exterior only. Looking down from an apartment window into a Montreal back alley in late-morning sun: overflowing blue recycling bins, iron fire escapes and outside stairs, an opposite old brick wall with a persistent patch of green moss, a stray cat crossing. Near-square.\nSIZE: the real object is 2.00 m wide by 1.80 m tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the alley below John Frank's Montreal window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/montreal_apartment_window_view/montreal_apartment_window_view_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-27T05:02:01+00:00",
+    "stage": "art",
+    "slug": "montreal_apartment_window_view",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/montreal_apartment_window_view/front.png",
+    "output": "godot/assets/art/hero/montreal_apartment_window_view.png"
   }
 ]
