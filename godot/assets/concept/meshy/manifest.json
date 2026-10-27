@@ -28868,5 +28868,13 @@
     "outputs": [
       "godot/assets/concept/meshy/dean_house_1994_graph_paper/dean_house_1994_graph_paper_front_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-27T05:57:00+00:00",
+    "stage": "art",
+    "slug": "dean_house_1994_graph_paper",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/dean_house_1994_graph_paper/front.png",
+    "output": "godot/assets/art/hero/dean_house_1994_graph_paper.png"
   }
 ]
