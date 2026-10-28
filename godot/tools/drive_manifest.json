@@ -5825,10 +5825,45 @@
    "md5": "89535acf5c18c4bfc2873a7425a63775",
    "size": 3090801
   },
+  "godot/assets/art/hero/cabin_interior_gable_e.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "2f8406166b5bc70cb68478fa0f5a08e9",
+   "size": 2941511
+  },
+  "godot/assets/art/hero/cabin_interior_gable_w.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "4e864973d7434bef39dd000f207e014f",
+   "size": 3199577
+  },
+  "godot/assets/art/hero/cabin_interior_kitchen_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "861e9dbd07b784d60e7ef762fef0bc06",
+   "size": 3086430
+  },
+  "godot/assets/art/hero/cabin_interior_loft_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "225548e2178cd3b946c04dd5aa2a3fa6",
+   "size": 3471002
+  },
   "godot/assets/art/hero/cabin_interior_north_window.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "f174404219896797b1122cae11bba9f1",
    "size": 2583311
+  },
+  "godot/assets/art/hero/cabin_interior_south_window_e.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "04b3073bbfd185cb6e575e375180f786",
+   "size": 2397448
+  },
+  "godot/assets/art/hero/cabin_interior_south_window_w.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "e9a7870787df47d4b477c961e36c9802",
+   "size": 2767857
+  },
+  "godot/assets/art/hero/cabin_interior_west_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "7c4a1132be49d2ec8af559e95b05d10d",
+   "size": 2479083
   },
   "godot/assets/art/hero/cabin_interior_window.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -6025,6 +6060,56 @@
    "md5": "2dc188fadde74fcdf83c709190f96107",
    "size": 2241884
   },
+  "godot/assets/art/hero/cedar_tower_lobby_north_0.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "2768169b32cb3efbd00521d0d7a1db0d",
+   "size": 3111105
+  },
+  "godot/assets/art/hero/cedar_tower_lobby_north_1.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "a6dc669932608acd54a6cf2e7bac7162",
+   "size": 3366169
+  },
+  "godot/assets/art/hero/cedar_tower_lobby_west_0.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "eb728e6624379a8b1a32572fabe35adf",
+   "size": 2959236
+  },
+  "godot/assets/art/hero/cedar_tower_lobby_west_1.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "1af5e1087c3911bc41c296236237d64d",
+   "size": 2631714
+  },
+  "godot/assets/art/hero/cedar_tower_quarters_north_0.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "baff18edd8d31f9137d7acca71add405",
+   "size": 2508743
+  },
+  "godot/assets/art/hero/cedar_tower_quarters_north_1.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "aad40f6ceb8e320bb40b0bda542def6b",
+   "size": 2388021
+  },
+  "godot/assets/art/hero/cedar_tower_quarters_north_2.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "dbef3824027574d6e37abfc522cb98ad",
+   "size": 2492718
+  },
+  "godot/assets/art/hero/cedar_tower_studio_north_a.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "a1d551f9b0c1a613a9ad417c934b2d92",
+   "size": 2299999
+  },
+  "godot/assets/art/hero/cedar_tower_studio_north_b.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "02eff7f3180a8ca907beb1ea76eb1ebb",
+   "size": 2517513
+  },
+  "godot/assets/art/hero/cedar_tower_studio_south.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "3e22ae116fb605ca4867d4fa2ee36150",
+   "size": 1872456
+  },
   "godot/assets/art/hero/centro_break_room_bulletinboard.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "9905c515bc1c969f96c1a7e362c83825",
@@ -6169,6 +6254,16 @@
    "at": "2026-10-27T04:44:14+00:00",
    "md5": "0ec15bcb75cb023dcf913cb3ca5026b8",
    "size": 1787876
+  },
+  "godot/assets/art/hero/chillwave_front_window_e.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "93fb8561334162ff2c1d4f9aa98f8af6",
+   "size": 2846540
+  },
+  "godot/assets/art/hero/chillwave_front_window_w.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "7549ea60dab8e398472009a5c04ef039",
+   "size": 2648217
   },
   "godot/assets/art/hero/chillwave_interior_across_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -6785,6 +6880,11 @@
    "md5": "bbb662e64f79ac94378d52a45c63d006",
    "size": 2550839
   },
+  "godot/assets/art/hero/finn_apartment_alley_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "136da3b671bd5771460349b5ab187e5c",
+   "size": 2257853
+  },
   "godot/assets/art/hero/finn_apartment_brandon_notebook.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "d7a9033bfcf9a89ace0c3cabfcbee243",
@@ -6804,6 +6904,11 @@
    "at": "2026-10-14T03:30:44+00:00",
    "md5": "710ae78dae87275478e2f947d679039d",
    "size": 2537036
+  },
+  "godot/assets/art/hero/finn_apartment_south_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "b3808388e34629bd6418c1cf80d1c230",
+   "size": 1861992
   },
   "godot/assets/art/hero/foxhole_bar_backbar_neon_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7120,6 +7225,16 @@
    "md5": "ffa495a0f3122fcac887496269738f6f",
    "size": 2102148
   },
+  "godot/assets/art/hero/hans_bakery_front_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "c82ff96e84a3df0de93e248b43c4cb41",
+   "size": 3339765
+  },
+  "godot/assets/art/hero/hans_bakery_side_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "978dd4125477757764e117c84ac32fd6",
+   "size": 2502139
+  },
   "godot/assets/art/hero/henderson_garage_corridor_map.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "d09c7a790f2d8cb3a12b77a9553c37fb",
@@ -7239,6 +7354,11 @@
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "070205a6c3de985a5e9ffc40466c047a",
    "size": 3166263
+  },
+  "godot/assets/art/hero/kai_apartment_north_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "9d7f3f76c41104b1b2b4f37c0cb4a121",
+   "size": 2619135
   },
   "godot/assets/art/hero/kestrel_mountain_mountain.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7480,6 +7600,11 @@
    "md5": "3245929ef1cbfe3e7d52260c53e667ec",
    "size": 2437801
   },
+  "godot/assets/art/hero/lena_apartment_front_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "c8c4cec640e98c5229118144dbb9fe1d",
+   "size": 2634133
+  },
   "godot/assets/art/hero/lena_apartment_jorgen_letter.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "e8ee0022e8fcea2ab4b853b3dd79e1e1",
@@ -7494,6 +7619,16 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "1f97581675ff1a896413302afa1448c1",
    "size": 2590723
+  },
+  "godot/assets/art/hero/lena_apartment_nook_window_0.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "f870e6285828622dcaf50cbcce430d1b",
+   "size": 3506409
+  },
+  "godot/assets/art/hero/lena_apartment_nook_window_1.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "105b9c14f27c5b22752d5437a1f2ea71",
+   "size": 3377215
   },
   "godot/assets/art/hero/lena_studio_canvas_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -8504,6 +8639,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "b59500571b7141781dd7a05b82deadba",
    "size": 2085152
+  },
+  "godot/assets/art/hero/salty_tome_front_window.png": {
+   "at": "2026-10-28T03:01:42+00:00",
+   "md5": "94fbb11a4bbaad7b208a4669a6e8e5e2",
+   "size": 2739587
   },
   "godot/assets/art/hero/salty_tome_interior_alley_muralwall.png": {
    "at": "2026-10-14T05:30:55+00:00",
@@ -72960,6 +73100,36 @@
    "md5": "8d43e93a239934db1c75f6172270fdff",
    "size": 49780
   },
+  "godot/assets/concept/meshy/aaron_cauther/aaron_cauther_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:01:51+00:00",
+   "md5": "ce7fae8a6a68d8664bf77d9dc6c4ec1d",
+   "size": 2070331
+  },
+  "godot/assets/concept/meshy/aaron_cauther/aaron_cauther_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:01:51+00:00",
+   "md5": "e913978f6fcbc96ad614f00b8c8b14b1",
+   "size": 2140863
+  },
+  "godot/assets/concept/meshy/aaron_cauther/aaron_cauther_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:01:51+00:00",
+   "md5": "8d49865e4e28294862fb2e5bb91ea975",
+   "size": 1957521
+  },
+  "godot/assets/concept/meshy/aaron_cauther/back.png": {
+   "at": "2026-10-28T03:01:51+00:00",
+   "md5": "ce7fae8a6a68d8664bf77d9dc6c4ec1d",
+   "size": 2070331
+  },
+  "godot/assets/concept/meshy/aaron_cauther/front.png": {
+   "at": "2026-10-28T03:01:51+00:00",
+   "md5": "e913978f6fcbc96ad614f00b8c8b14b1",
+   "size": 2140863
+  },
+  "godot/assets/concept/meshy/aaron_cauther/side.png": {
+   "at": "2026-10-28T03:01:51+00:00",
+   "md5": "8d49865e4e28294862fb2e5bb91ea975",
+   "size": 1957521
+  },
   "godot/assets/concept/meshy/accretion_basement_bulletin_1/accretion_basement_bulletin_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:25:08+00:00",
    "md5": "0d244a7bccfa9ba47b9c8653157135d4",
@@ -72999,6 +73169,126 @@
    "at": "2026-10-14T02:25:29+00:00",
    "md5": "0226f13712fe2993c1c93ccbccf7a7dc",
    "size": 2011194
+  },
+  "godot/assets/concept/meshy/actor_actor/actor_actor_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:05+00:00",
+   "md5": "ac02452d9b33705842ace6f8cbee7a44",
+   "size": 1836654
+  },
+  "godot/assets/concept/meshy/actor_actor/actor_actor_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:05+00:00",
+   "md5": "dac4bf129768058d97263117ac0bc220",
+   "size": 1965001
+  },
+  "godot/assets/concept/meshy/actor_actor/actor_actor_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:05+00:00",
+   "md5": "9a7c0ade8571c0fecc749f5752b364ba",
+   "size": 1852287
+  },
+  "godot/assets/concept/meshy/actor_actor/back.png": {
+   "at": "2026-10-28T03:02:05+00:00",
+   "md5": "ac02452d9b33705842ace6f8cbee7a44",
+   "size": 1836654
+  },
+  "godot/assets/concept/meshy/actor_actor/front.png": {
+   "at": "2026-10-28T03:02:05+00:00",
+   "md5": "dac4bf129768058d97263117ac0bc220",
+   "size": 1965001
+  },
+  "godot/assets/concept/meshy/actor_actor/side.png": {
+   "at": "2026-10-28T03:02:05+00:00",
+   "md5": "9a7c0ade8571c0fecc749f5752b364ba",
+   "size": 1852287
+  },
+  "godot/assets/concept/meshy/actor_artist/actor_artist_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:14+00:00",
+   "md5": "9c2345e1f1fcce81cd7ceb5eaaa10644",
+   "size": 1944071
+  },
+  "godot/assets/concept/meshy/actor_artist/actor_artist_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:14+00:00",
+   "md5": "2d1552499543711b63ef7090a0e54317",
+   "size": 2021604
+  },
+  "godot/assets/concept/meshy/actor_artist/actor_artist_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:14+00:00",
+   "md5": "ae5fc3568a1ff9db8a9256294fb4d205",
+   "size": 1862590
+  },
+  "godot/assets/concept/meshy/actor_artist/back.png": {
+   "at": "2026-10-28T03:02:14+00:00",
+   "md5": "9c2345e1f1fcce81cd7ceb5eaaa10644",
+   "size": 1944071
+  },
+  "godot/assets/concept/meshy/actor_artist/front.png": {
+   "at": "2026-10-28T03:02:14+00:00",
+   "md5": "2d1552499543711b63ef7090a0e54317",
+   "size": 2021604
+  },
+  "godot/assets/concept/meshy/actor_artist/side.png": {
+   "at": "2026-10-28T03:02:14+00:00",
+   "md5": "ae5fc3568a1ff9db8a9256294fb4d205",
+   "size": 1862590
+  },
+  "godot/assets/concept/meshy/actor_musician/actor_musician_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:25+00:00",
+   "md5": "7262d6f2624b6002708470344ff8dca4",
+   "size": 1848593
+  },
+  "godot/assets/concept/meshy/actor_musician/actor_musician_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:25+00:00",
+   "md5": "58164218c387998d1888bf9d37e21b96",
+   "size": 1934316
+  },
+  "godot/assets/concept/meshy/actor_musician/actor_musician_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:25+00:00",
+   "md5": "ae90c98eb9fc0249b76ccda9702eb0f8",
+   "size": 1837383
+  },
+  "godot/assets/concept/meshy/actor_musician/back.png": {
+   "at": "2026-10-28T03:02:25+00:00",
+   "md5": "7262d6f2624b6002708470344ff8dca4",
+   "size": 1848593
+  },
+  "godot/assets/concept/meshy/actor_musician/front.png": {
+   "at": "2026-10-28T03:02:25+00:00",
+   "md5": "58164218c387998d1888bf9d37e21b96",
+   "size": 1934316
+  },
+  "godot/assets/concept/meshy/actor_musician/side.png": {
+   "at": "2026-10-28T03:02:25+00:00",
+   "md5": "ae90c98eb9fc0249b76ccda9702eb0f8",
+   "size": 1837383
+  },
+  "godot/assets/concept/meshy/actor_writer/actor_writer_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:36+00:00",
+   "md5": "0ccf8ed75807028fb5c74aa1246c9b29",
+   "size": 1969445
+  },
+  "godot/assets/concept/meshy/actor_writer/actor_writer_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:36+00:00",
+   "md5": "736422deb4c5c504fd0c87a46f89b3df",
+   "size": 2016555
+  },
+  "godot/assets/concept/meshy/actor_writer/actor_writer_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:36+00:00",
+   "md5": "498f353d011fb0aac12c336948b5cda8",
+   "size": 1869682
+  },
+  "godot/assets/concept/meshy/actor_writer/back.png": {
+   "at": "2026-10-28T03:02:36+00:00",
+   "md5": "0ccf8ed75807028fb5c74aa1246c9b29",
+   "size": 1969445
+  },
+  "godot/assets/concept/meshy/actor_writer/front.png": {
+   "at": "2026-10-28T03:02:36+00:00",
+   "md5": "736422deb4c5c504fd0c87a46f89b3df",
+   "size": 2016555
+  },
+  "godot/assets/concept/meshy/actor_writer/side.png": {
+   "at": "2026-10-28T03:02:36+00:00",
+   "md5": "498f353d011fb0aac12c336948b5cda8",
+   "size": 1869682
   },
   "godot/assets/concept/meshy/air_elemental/air_elemental_back_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-19T17:48:14+00:00",
@@ -73300,6 +73590,66 @@
    "md5": "1df5f7b8d62b9a59fd6cc39c3ace6be3",
    "size": 1191247
   },
+  "godot/assets/concept/meshy/april/april_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:58+00:00",
+   "md5": "12e1a973b9d7f094370b9ab5420c3922",
+   "size": 2292076
+  },
+  "godot/assets/concept/meshy/april/april_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:58+00:00",
+   "md5": "d04a2671843db79b87ee5adf439d24a1",
+   "size": 2425336
+  },
+  "godot/assets/concept/meshy/april/april_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:02:58+00:00",
+   "md5": "5062c199593a8dcb415c3eeda443eb9b",
+   "size": 2118199
+  },
+  "godot/assets/concept/meshy/april/back.png": {
+   "at": "2026-10-28T03:02:58+00:00",
+   "md5": "12e1a973b9d7f094370b9ab5420c3922",
+   "size": 2292076
+  },
+  "godot/assets/concept/meshy/april/front.png": {
+   "at": "2026-10-28T03:02:58+00:00",
+   "md5": "d04a2671843db79b87ee5adf439d24a1",
+   "size": 2425336
+  },
+  "godot/assets/concept/meshy/april/side.png": {
+   "at": "2026-10-28T03:02:58+00:00",
+   "md5": "5062c199593a8dcb415c3eeda443eb9b",
+   "size": 2118199
+  },
+  "godot/assets/concept/meshy/arcadeum_shopkeeper/arcadeum_shopkeeper_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:08+00:00",
+   "md5": "fdf607b1fb5e93d9e0f56f4d5fd258c1",
+   "size": 2119986
+  },
+  "godot/assets/concept/meshy/arcadeum_shopkeeper/arcadeum_shopkeeper_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:08+00:00",
+   "md5": "7db57720602ab522c425f91bbf4d76c4",
+   "size": 2260883
+  },
+  "godot/assets/concept/meshy/arcadeum_shopkeeper/arcadeum_shopkeeper_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:08+00:00",
+   "md5": "c287cf8609a78e83237d302fa0ac6a09",
+   "size": 2010581
+  },
+  "godot/assets/concept/meshy/arcadeum_shopkeeper/back.png": {
+   "at": "2026-10-28T03:03:08+00:00",
+   "md5": "fdf607b1fb5e93d9e0f56f4d5fd258c1",
+   "size": 2119986
+  },
+  "godot/assets/concept/meshy/arcadeum_shopkeeper/front.png": {
+   "at": "2026-10-28T03:03:08+00:00",
+   "md5": "7db57720602ab522c425f91bbf4d76c4",
+   "size": 2260883
+  },
+  "godot/assets/concept/meshy/arcadeum_shopkeeper/side.png": {
+   "at": "2026-10-28T03:03:08+00:00",
+   "md5": "c287cf8609a78e83237d302fa0ac6a09",
+   "size": 2010581
+  },
   "godot/assets/concept/meshy/aria_alley_face/aria_alley_face_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:25:36+00:00",
    "md5": "d5c194474106993bed0228137fa03516",
@@ -73549,6 +73899,36 @@
    "at": "2026-10-27T20:43:52+00:00",
    "md5": "9cbc2e9910a7235f627b2aa03bf9dbb0",
    "size": 1993800
+  },
+  "godot/assets/concept/meshy/aunt_terry/aunt_terry_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:21+00:00",
+   "md5": "c45a8cf760b29863b2175504d05e36c3",
+   "size": 2099864
+  },
+  "godot/assets/concept/meshy/aunt_terry/aunt_terry_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:21+00:00",
+   "md5": "f56ad6d712b70efaf7c4f8777a809011",
+   "size": 2098092
+  },
+  "godot/assets/concept/meshy/aunt_terry/aunt_terry_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:21+00:00",
+   "md5": "57f6663d8b74f6d1e63e091cb4fdbace",
+   "size": 1947379
+  },
+  "godot/assets/concept/meshy/aunt_terry/back.png": {
+   "at": "2026-10-28T03:03:21+00:00",
+   "md5": "c45a8cf760b29863b2175504d05e36c3",
+   "size": 2099864
+  },
+  "godot/assets/concept/meshy/aunt_terry/front.png": {
+   "at": "2026-10-28T03:03:21+00:00",
+   "md5": "f56ad6d712b70efaf7c4f8777a809011",
+   "size": 2098092
+  },
+  "godot/assets/concept/meshy/aunt_terry/side.png": {
+   "at": "2026-10-28T03:03:21+00:00",
+   "md5": "57f6663d8b74f6d1e63e091cb4fdbace",
+   "size": 1947379
   },
   "godot/assets/concept/meshy/bakelite_microphone/back.png": {
    "at": "2026-10-18T17:11:47+00:00",
@@ -73934,6 +74314,36 @@
    "at": "2026-10-27T02:38:21+00:00",
    "md5": "b9811b7064ab9b4f5cdd5e91670c1214",
    "size": 1832453
+  },
+  "godot/assets/concept/meshy/bingo_dj/back.png": {
+   "at": "2026-10-28T03:03:32+00:00",
+   "md5": "3028535c35b9c134179e2c8c11e99d4b",
+   "size": 1964362
+  },
+  "godot/assets/concept/meshy/bingo_dj/bingo_dj_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:32+00:00",
+   "md5": "3028535c35b9c134179e2c8c11e99d4b",
+   "size": 1964362
+  },
+  "godot/assets/concept/meshy/bingo_dj/bingo_dj_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:32+00:00",
+   "md5": "eadcd45bdd7eb5728b7435975fc619cc",
+   "size": 2048728
+  },
+  "godot/assets/concept/meshy/bingo_dj/bingo_dj_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:32+00:00",
+   "md5": "3fa9b04ac1180f259d4617369ded6126",
+   "size": 1886316
+  },
+  "godot/assets/concept/meshy/bingo_dj/front.png": {
+   "at": "2026-10-28T03:03:32+00:00",
+   "md5": "eadcd45bdd7eb5728b7435975fc619cc",
+   "size": 2048728
+  },
+  "godot/assets/concept/meshy/bingo_dj/side.png": {
+   "at": "2026-10-28T03:03:32+00:00",
+   "md5": "3fa9b04ac1180f259d4617369ded6126",
+   "size": 1886316
   },
   "godot/assets/concept/meshy/black_guitar_pick/back.png": {
    "at": "2026-10-27T19:36:00+00:00",
@@ -74345,6 +74755,36 @@
    "md5": "d2048df2d2711352e433eff85be65bff",
    "size": 2637120
   },
+  "godot/assets/concept/meshy/brother_in_law/back.png": {
+   "at": "2026-10-28T03:03:44+00:00",
+   "md5": "7bf3aee96436c283ea904f9766ddad44",
+   "size": 2093859
+  },
+  "godot/assets/concept/meshy/brother_in_law/brother_in_law_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:44+00:00",
+   "md5": "7bf3aee96436c283ea904f9766ddad44",
+   "size": 2093859
+  },
+  "godot/assets/concept/meshy/brother_in_law/brother_in_law_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:44+00:00",
+   "md5": "71ae214758c5bf7d805f735bd631acf1",
+   "size": 2092860
+  },
+  "godot/assets/concept/meshy/brother_in_law/brother_in_law_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:44+00:00",
+   "md5": "bcfc2bb48084d0e478eaa0c64776c9b8",
+   "size": 1931461
+  },
+  "godot/assets/concept/meshy/brother_in_law/front.png": {
+   "at": "2026-10-28T03:03:44+00:00",
+   "md5": "71ae214758c5bf7d805f735bd631acf1",
+   "size": 2092860
+  },
+  "godot/assets/concept/meshy/brother_in_law/side.png": {
+   "at": "2026-10-28T03:03:44+00:00",
+   "md5": "bcfc2bb48084d0e478eaa0c64776c9b8",
+   "size": 1931461
+  },
   "godot/assets/concept/meshy/bt/back.png": {
    "at": "2026-10-11T20:23:12+00:00",
    "md5": "c1374087e3fff399ac2370e135582480",
@@ -74394,6 +74834,36 @@
    "at": "2026-10-11T20:23:12+00:00",
    "md5": "1c7e6e1f3209024c7f4fa2cee7f74d48",
    "size": 1896919
+  },
+  "godot/assets/concept/meshy/bump_woman/back.png": {
+   "at": "2026-10-28T03:03:55+00:00",
+   "md5": "e1629bdba6b13c188b10ad49f108b048",
+   "size": 2089273
+  },
+  "godot/assets/concept/meshy/bump_woman/bump_woman_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:55+00:00",
+   "md5": "e1629bdba6b13c188b10ad49f108b048",
+   "size": 2089273
+  },
+  "godot/assets/concept/meshy/bump_woman/bump_woman_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:55+00:00",
+   "md5": "038363663be53c4176acfb94f7e39e75",
+   "size": 2154980
+  },
+  "godot/assets/concept/meshy/bump_woman/bump_woman_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:03:55+00:00",
+   "md5": "95b32b3c62e9c6256f12d1791606203c",
+   "size": 2017614
+  },
+  "godot/assets/concept/meshy/bump_woman/front.png": {
+   "at": "2026-10-28T03:03:55+00:00",
+   "md5": "038363663be53c4176acfb94f7e39e75",
+   "size": 2154980
+  },
+  "godot/assets/concept/meshy/bump_woman/side.png": {
+   "at": "2026-10-28T03:03:55+00:00",
+   "md5": "95b32b3c62e9c6256f12d1791606203c",
+   "size": 2017614
   },
   "godot/assets/concept/meshy/bungalow_bedroom_dresser_picture/bungalow_bedroom_dresser_picture_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:29:06+00:00",
@@ -74555,6 +75025,46 @@
    "md5": "89535acf5c18c4bfc2873a7425a63775",
    "size": 3090801
   },
+  "godot/assets/concept/meshy/cabin_interior_gable_e/cabin_interior_gable_e_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:05+00:00",
+   "md5": "2f8406166b5bc70cb68478fa0f5a08e9",
+   "size": 2941511
+  },
+  "godot/assets/concept/meshy/cabin_interior_gable_e/front.png": {
+   "at": "2026-10-28T03:04:05+00:00",
+   "md5": "2f8406166b5bc70cb68478fa0f5a08e9",
+   "size": 2941511
+  },
+  "godot/assets/concept/meshy/cabin_interior_gable_w/cabin_interior_gable_w_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:11+00:00",
+   "md5": "4e864973d7434bef39dd000f207e014f",
+   "size": 3199577
+  },
+  "godot/assets/concept/meshy/cabin_interior_gable_w/front.png": {
+   "at": "2026-10-28T03:04:11+00:00",
+   "md5": "4e864973d7434bef39dd000f207e014f",
+   "size": 3199577
+  },
+  "godot/assets/concept/meshy/cabin_interior_kitchen_window/cabin_interior_kitchen_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:20+00:00",
+   "md5": "861e9dbd07b784d60e7ef762fef0bc06",
+   "size": 3086430
+  },
+  "godot/assets/concept/meshy/cabin_interior_kitchen_window/front.png": {
+   "at": "2026-10-28T03:04:20+00:00",
+   "md5": "861e9dbd07b784d60e7ef762fef0bc06",
+   "size": 3086430
+  },
+  "godot/assets/concept/meshy/cabin_interior_loft_window/cabin_interior_loft_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:30+00:00",
+   "md5": "225548e2178cd3b946c04dd5aa2a3fa6",
+   "size": 3471002
+  },
+  "godot/assets/concept/meshy/cabin_interior_loft_window/front.png": {
+   "at": "2026-10-28T03:04:30+00:00",
+   "md5": "225548e2178cd3b946c04dd5aa2a3fa6",
+   "size": 3471002
+  },
   "godot/assets/concept/meshy/cabin_interior_north_window/cabin_interior_north_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:30:30+00:00",
    "md5": "f174404219896797b1122cae11bba9f1",
@@ -74564,6 +75074,36 @@
    "at": "2026-10-14T02:30:30+00:00",
    "md5": "f174404219896797b1122cae11bba9f1",
    "size": 2583311
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_e/cabin_interior_south_window_e_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:38+00:00",
+   "md5": "04b3073bbfd185cb6e575e375180f786",
+   "size": 2397448
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_e/front.png": {
+   "at": "2026-10-28T03:04:38+00:00",
+   "md5": "04b3073bbfd185cb6e575e375180f786",
+   "size": 2397448
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_w/cabin_interior_south_window_w_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:50+00:00",
+   "md5": "e9a7870787df47d4b477c961e36c9802",
+   "size": 2767857
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_w/front.png": {
+   "at": "2026-10-28T03:04:50+00:00",
+   "md5": "e9a7870787df47d4b477c961e36c9802",
+   "size": 2767857
+  },
+  "godot/assets/concept/meshy/cabin_interior_west_window/cabin_interior_west_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:04:59+00:00",
+   "md5": "7c4a1132be49d2ec8af559e95b05d10d",
+   "size": 2479083
+  },
+  "godot/assets/concept/meshy/cabin_interior_west_window/front.png": {
+   "at": "2026-10-28T03:04:59+00:00",
+   "md5": "7c4a1132be49d2ec8af559e95b05d10d",
+   "size": 2479083
   },
   "godot/assets/concept/meshy/cabin_interior_window/cabin_interior_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:30:37+00:00",
@@ -75045,6 +75585,36 @@
    "md5": "2f1f0ffb399debe07bda6441e5f8a356",
    "size": 2017187
   },
+  "godot/assets/concept/meshy/caroline/back.png": {
+   "at": "2026-10-28T03:05:11+00:00",
+   "md5": "6794a447aca9e0dff49f9cfa728300dc",
+   "size": 2176849
+  },
+  "godot/assets/concept/meshy/caroline/caroline_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:11+00:00",
+   "md5": "6794a447aca9e0dff49f9cfa728300dc",
+   "size": 2176849
+  },
+  "godot/assets/concept/meshy/caroline/caroline_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:11+00:00",
+   "md5": "0536289e08424f5e4d92e15515a31017",
+   "size": 2241998
+  },
+  "godot/assets/concept/meshy/caroline/caroline_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:11+00:00",
+   "md5": "00694de38c37978aa9f09bfca5cfe7d8",
+   "size": 2020688
+  },
+  "godot/assets/concept/meshy/caroline/front.png": {
+   "at": "2026-10-28T03:05:11+00:00",
+   "md5": "0536289e08424f5e4d92e15515a31017",
+   "size": 2241998
+  },
+  "godot/assets/concept/meshy/caroline/side.png": {
+   "at": "2026-10-28T03:05:11+00:00",
+   "md5": "00694de38c37978aa9f09bfca5cfe7d8",
+   "size": 2020688
+  },
   "godot/assets/concept/meshy/cassette_archive/back.png": {
    "at": "2026-10-18T17:12:42+00:00",
    "md5": "6c0c696e1690bb5d2c0d67a52d346c9f",
@@ -75184,6 +75754,106 @@
    "at": "2026-10-14T02:33:51+00:00",
    "md5": "2dc188fadde74fcdf83c709190f96107",
    "size": 2241884
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_north_0/cedar_tower_lobby_north_0_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:21+00:00",
+   "md5": "2768169b32cb3efbd00521d0d7a1db0d",
+   "size": 3111105
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_north_0/front.png": {
+   "at": "2026-10-28T03:05:21+00:00",
+   "md5": "2768169b32cb3efbd00521d0d7a1db0d",
+   "size": 3111105
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_north_1/cedar_tower_lobby_north_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:32+00:00",
+   "md5": "a6dc669932608acd54a6cf2e7bac7162",
+   "size": 3366169
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_north_1/front.png": {
+   "at": "2026-10-28T03:05:32+00:00",
+   "md5": "a6dc669932608acd54a6cf2e7bac7162",
+   "size": 3366169
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_west_0/cedar_tower_lobby_west_0_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:40+00:00",
+   "md5": "eb728e6624379a8b1a32572fabe35adf",
+   "size": 2959236
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_west_0/front.png": {
+   "at": "2026-10-28T03:05:40+00:00",
+   "md5": "eb728e6624379a8b1a32572fabe35adf",
+   "size": 2959236
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_west_1/cedar_tower_lobby_west_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:52+00:00",
+   "md5": "1af5e1087c3911bc41c296236237d64d",
+   "size": 2631714
+  },
+  "godot/assets/concept/meshy/cedar_tower_lobby_west_1/front.png": {
+   "at": "2026-10-28T03:05:52+00:00",
+   "md5": "1af5e1087c3911bc41c296236237d64d",
+   "size": 2631714
+  },
+  "godot/assets/concept/meshy/cedar_tower_quarters_north_0/cedar_tower_quarters_north_0_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:05:58+00:00",
+   "md5": "baff18edd8d31f9137d7acca71add405",
+   "size": 2508743
+  },
+  "godot/assets/concept/meshy/cedar_tower_quarters_north_0/front.png": {
+   "at": "2026-10-28T03:05:58+00:00",
+   "md5": "baff18edd8d31f9137d7acca71add405",
+   "size": 2508743
+  },
+  "godot/assets/concept/meshy/cedar_tower_quarters_north_1/cedar_tower_quarters_north_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:06:08+00:00",
+   "md5": "aad40f6ceb8e320bb40b0bda542def6b",
+   "size": 2388021
+  },
+  "godot/assets/concept/meshy/cedar_tower_quarters_north_1/front.png": {
+   "at": "2026-10-28T03:06:08+00:00",
+   "md5": "aad40f6ceb8e320bb40b0bda542def6b",
+   "size": 2388021
+  },
+  "godot/assets/concept/meshy/cedar_tower_quarters_north_2/cedar_tower_quarters_north_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:06:18+00:00",
+   "md5": "dbef3824027574d6e37abfc522cb98ad",
+   "size": 2492718
+  },
+  "godot/assets/concept/meshy/cedar_tower_quarters_north_2/front.png": {
+   "at": "2026-10-28T03:06:18+00:00",
+   "md5": "dbef3824027574d6e37abfc522cb98ad",
+   "size": 2492718
+  },
+  "godot/assets/concept/meshy/cedar_tower_studio_north_a/cedar_tower_studio_north_a_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:06:41+00:00",
+   "md5": "a1d551f9b0c1a613a9ad417c934b2d92",
+   "size": 2299999
+  },
+  "godot/assets/concept/meshy/cedar_tower_studio_north_a/front.png": {
+   "at": "2026-10-28T03:06:41+00:00",
+   "md5": "a1d551f9b0c1a613a9ad417c934b2d92",
+   "size": 2299999
+  },
+  "godot/assets/concept/meshy/cedar_tower_studio_north_b/cedar_tower_studio_north_b_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:06:55+00:00",
+   "md5": "02eff7f3180a8ca907beb1ea76eb1ebb",
+   "size": 2517513
+  },
+  "godot/assets/concept/meshy/cedar_tower_studio_north_b/front.png": {
+   "at": "2026-10-28T03:06:55+00:00",
+   "md5": "02eff7f3180a8ca907beb1ea76eb1ebb",
+   "size": 2517513
+  },
+  "godot/assets/concept/meshy/cedar_tower_studio_south/cedar_tower_studio_south_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:02+00:00",
+   "md5": "3e22ae116fb605ca4867d4fa2ee36150",
+   "size": 1872456
+  },
+  "godot/assets/concept/meshy/cedar_tower_studio_south/front.png": {
+   "at": "2026-10-28T03:07:02+00:00",
+   "md5": "3e22ae116fb605ca4867d4fa2ee36150",
+   "size": 1872456
   },
   "godot/assets/concept/meshy/centro_break_room_bulletinboard/centro_break_room_bulletinboard_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:33:59+00:00",
@@ -75485,6 +76155,36 @@
    "md5": "6b206040528521cb5c0264a6d3a11ed4",
    "size": 2084139
   },
+  "godot/assets/concept/meshy/charlie_drouet/back.png": {
+   "at": "2026-10-28T03:07:13+00:00",
+   "md5": "b7af02385a7d569321b2c848a4d04d56",
+   "size": 2066664
+  },
+  "godot/assets/concept/meshy/charlie_drouet/charlie_drouet_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:13+00:00",
+   "md5": "b7af02385a7d569321b2c848a4d04d56",
+   "size": 2066664
+  },
+  "godot/assets/concept/meshy/charlie_drouet/charlie_drouet_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:13+00:00",
+   "md5": "6f3033d4db23f7028a4f6ee83fba2d31",
+   "size": 2089649
+  },
+  "godot/assets/concept/meshy/charlie_drouet/charlie_drouet_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:13+00:00",
+   "md5": "8b86e321c826ce9b87968e773ffe8617",
+   "size": 1987091
+  },
+  "godot/assets/concept/meshy/charlie_drouet/front.png": {
+   "at": "2026-10-28T03:07:13+00:00",
+   "md5": "6f3033d4db23f7028a4f6ee83fba2d31",
+   "size": 2089649
+  },
+  "godot/assets/concept/meshy/charlie_drouet/side.png": {
+   "at": "2026-10-28T03:07:13+00:00",
+   "md5": "8b86e321c826ce9b87968e773ffe8617",
+   "size": 1987091
+  },
   "godot/assets/concept/meshy/chart_1932/back.png": {
    "at": "2026-10-27T16:39:53+00:00",
    "md5": "d9eb8f56195f3dab51b8d7df75a6253c",
@@ -75735,6 +76435,26 @@
    "md5": "409f0d31257e8498dc399fa78e2ca770",
    "size": 2014567
   },
+  "godot/assets/concept/meshy/chillwave_front_window_e/chillwave_front_window_e_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:20+00:00",
+   "md5": "93fb8561334162ff2c1d4f9aa98f8af6",
+   "size": 2846540
+  },
+  "godot/assets/concept/meshy/chillwave_front_window_e/front.png": {
+   "at": "2026-10-28T03:07:20+00:00",
+   "md5": "93fb8561334162ff2c1d4f9aa98f8af6",
+   "size": 2846540
+  },
+  "godot/assets/concept/meshy/chillwave_front_window_w/chillwave_front_window_w_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:37+00:00",
+   "md5": "7549ea60dab8e398472009a5c04ef039",
+   "size": 2648217
+  },
+  "godot/assets/concept/meshy/chillwave_front_window_w/front.png": {
+   "at": "2026-10-28T03:07:37+00:00",
+   "md5": "7549ea60dab8e398472009a5c04ef039",
+   "size": 2648217
+  },
   "godot/assets/concept/meshy/chillwave_interior_across_facade/chillwave_interior_across_facade_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:36:51+00:00",
    "md5": "ff572a5a474b71bfce9a5e5a3a594f20",
@@ -75764,6 +76484,36 @@
    "at": "2026-10-14T02:37:05+00:00",
    "md5": "ceeb6c4a176a9a9ac2183edd5e573cb7",
    "size": 2293695
+  },
+  "godot/assets/concept/meshy/chris_little_league/back.png": {
+   "at": "2026-10-28T03:07:54+00:00",
+   "md5": "43926f1f263097d6671165b7181fda5f",
+   "size": 2019445
+  },
+  "godot/assets/concept/meshy/chris_little_league/chris_little_league_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:54+00:00",
+   "md5": "43926f1f263097d6671165b7181fda5f",
+   "size": 2019445
+  },
+  "godot/assets/concept/meshy/chris_little_league/chris_little_league_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:54+00:00",
+   "md5": "3f5cfc320c1aac9d11205b5e93e9eada",
+   "size": 2121142
+  },
+  "godot/assets/concept/meshy/chris_little_league/chris_little_league_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:07:54+00:00",
+   "md5": "941c52e7e0afccf5b7de209982af2f52",
+   "size": 1921517
+  },
+  "godot/assets/concept/meshy/chris_little_league/front.png": {
+   "at": "2026-10-28T03:07:54+00:00",
+   "md5": "3f5cfc320c1aac9d11205b5e93e9eada",
+   "size": 2121142
+  },
+  "godot/assets/concept/meshy/chris_little_league/side.png": {
+   "at": "2026-10-28T03:07:54+00:00",
+   "md5": "941c52e7e0afccf5b7de209982af2f52",
+   "size": 1921517
   },
   "godot/assets/concept/meshy/claire_moyer/claire_moyer_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -77575,6 +78325,26 @@
    "md5": "24ad3d01dbc2e64410250941ad9c5fe6",
    "size": 1864926
   },
+  "godot/assets/concept/meshy/dreamgirl/dreamgirl_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:04+00:00",
+   "md5": "0ddd51dedef4addff79f533b995efe04",
+   "size": 1923161
+  },
+  "godot/assets/concept/meshy/dreamgirl/dreamgirl_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:04+00:00",
+   "md5": "9d5d1dfda547d1f44ab453be0dd16e8b",
+   "size": 1858498
+  },
+  "godot/assets/concept/meshy/dreamgirl/front.png": {
+   "at": "2026-10-28T03:08:04+00:00",
+   "md5": "0ddd51dedef4addff79f533b995efe04",
+   "size": 1923161
+  },
+  "godot/assets/concept/meshy/dreamgirl/side.png": {
+   "at": "2026-10-28T03:08:04+00:00",
+   "md5": "9d5d1dfda547d1f44ab453be0dd16e8b",
+   "size": 1858498
+  },
   "godot/assets/concept/meshy/drunk_uncle/back.png": {
    "at": "2026-10-27T16:41:16+00:00",
    "md5": "28735b400f22bda70460ea5601eace5c",
@@ -77930,6 +78700,36 @@
    "md5": "f6ce37ae59bd84c3437505ff2a651314",
    "size": 1885779
   },
+  "godot/assets/concept/meshy/eric/back.png": {
+   "at": "2026-10-28T03:08:07+00:00",
+   "md5": "e43b01a78215c95b97921405743b89e7",
+   "size": 2049726
+  },
+  "godot/assets/concept/meshy/eric/eric_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:07+00:00",
+   "md5": "e43b01a78215c95b97921405743b89e7",
+   "size": 2049726
+  },
+  "godot/assets/concept/meshy/eric/eric_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:07+00:00",
+   "md5": "498da2de4a83919c7fa95df5624bacc7",
+   "size": 2229666
+  },
+  "godot/assets/concept/meshy/eric/eric_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:07+00:00",
+   "md5": "18bd314749fd33ce921d142210534663",
+   "size": 1965926
+  },
+  "godot/assets/concept/meshy/eric/front.png": {
+   "at": "2026-10-28T03:08:07+00:00",
+   "md5": "498da2de4a83919c7fa95df5624bacc7",
+   "size": 2229666
+  },
+  "godot/assets/concept/meshy/eric/side.png": {
+   "at": "2026-10-28T03:08:07+00:00",
+   "md5": "18bd314749fd33ce921d142210534663",
+   "size": 1965926
+  },
   "godot/assets/concept/meshy/erica_campbell/erica_campbell_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "bbceff17b3d12ee2b67bb8e68928291a",
@@ -77969,6 +78769,66 @@
    "at": "2026-10-27T16:41:29+00:00",
    "md5": "e3b0b76ac3c9cf1a2921d463053a9c97",
    "size": 1072558
+  },
+  "godot/assets/concept/meshy/esther/back.png": {
+   "at": "2026-10-28T03:08:21+00:00",
+   "md5": "835b8d629dd6bc012168e18e9dc953ec",
+   "size": 2034109
+  },
+  "godot/assets/concept/meshy/esther/esther_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:21+00:00",
+   "md5": "835b8d629dd6bc012168e18e9dc953ec",
+   "size": 2034109
+  },
+  "godot/assets/concept/meshy/esther/esther_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:21+00:00",
+   "md5": "1bbb7be610437c556b2d2fc3a69a1c55",
+   "size": 2082186
+  },
+  "godot/assets/concept/meshy/esther/esther_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:21+00:00",
+   "md5": "9967f77bc8fd7276eef3d8deeb8009d9",
+   "size": 1915490
+  },
+  "godot/assets/concept/meshy/esther/front.png": {
+   "at": "2026-10-28T03:08:21+00:00",
+   "md5": "1bbb7be610437c556b2d2fc3a69a1c55",
+   "size": 2082186
+  },
+  "godot/assets/concept/meshy/esther/side.png": {
+   "at": "2026-10-28T03:08:21+00:00",
+   "md5": "9967f77bc8fd7276eef3d8deeb8009d9",
+   "size": 1915490
+  },
+  "godot/assets/concept/meshy/faceless_clerk/back.png": {
+   "at": "2026-10-28T03:08:30+00:00",
+   "md5": "1100c0695bde05d3afb3db8123257ce2",
+   "size": 1890678
+  },
+  "godot/assets/concept/meshy/faceless_clerk/faceless_clerk_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:30+00:00",
+   "md5": "1100c0695bde05d3afb3db8123257ce2",
+   "size": 1890678
+  },
+  "godot/assets/concept/meshy/faceless_clerk/faceless_clerk_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:30+00:00",
+   "md5": "663580217be4b60ff466d0a6fab07b88",
+   "size": 1617441
+  },
+  "godot/assets/concept/meshy/faceless_clerk/faceless_clerk_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:30+00:00",
+   "md5": "1bfe8d49ff9ffe0769472bb6e5230be4",
+   "size": 1821384
+  },
+  "godot/assets/concept/meshy/faceless_clerk/front.png": {
+   "at": "2026-10-28T03:08:30+00:00",
+   "md5": "663580217be4b60ff466d0a6fab07b88",
+   "size": 1617441
+  },
+  "godot/assets/concept/meshy/faceless_clerk/side.png": {
+   "at": "2026-10-28T03:08:30+00:00",
+   "md5": "1bfe8d49ff9ffe0769472bb6e5230be4",
+   "size": 1821384
   },
   "godot/assets/concept/meshy/father_amato/father_amato_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -78145,6 +79005,16 @@
    "md5": "950b9d5e335ea77356d22116b5937cd1",
    "size": 1947693
   },
+  "godot/assets/concept/meshy/finn_apartment_alley_window/finn_apartment_alley_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:39+00:00",
+   "md5": "136da3b671bd5771460349b5ab187e5c",
+   "size": 2257853
+  },
+  "godot/assets/concept/meshy/finn_apartment_alley_window/front.png": {
+   "at": "2026-10-28T03:08:39+00:00",
+   "md5": "136da3b671bd5771460349b5ab187e5c",
+   "size": 2257853
+  },
   "godot/assets/concept/meshy/finn_apartment_brandon_notebook/finn_apartment_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:04:47+00:00",
    "md5": "d7a9033bfcf9a89ace0c3cabfcbee243",
@@ -78184,6 +79054,16 @@
    "at": "2026-10-14T03:32:49+00:00",
    "md5": "710ae78dae87275478e2f947d679039d",
    "size": 2537036
+  },
+  "godot/assets/concept/meshy/finn_apartment_south_window/finn_apartment_south_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:08:47+00:00",
+   "md5": "b3808388e34629bd6418c1cf80d1c230",
+   "size": 1861992
+  },
+  "godot/assets/concept/meshy/finn_apartment_south_window/front.png": {
+   "at": "2026-10-28T03:08:47+00:00",
+   "md5": "b3808388e34629bd6418c1cf80d1c230",
+   "size": 1861992
   },
   "godot/assets/concept/meshy/finns_uv_light_and_radio/back.png": {
    "at": "2026-10-27T19:36:51+00:00",
@@ -79125,6 +80005,36 @@
    "md5": "87666338daf8828673449f36f28398c7",
    "size": 2101080
   },
+  "godot/assets/concept/meshy/guitar_gal/back.png": {
+   "at": "2026-10-28T03:09:00+00:00",
+   "md5": "06fa433753d70c2ec9dfc0e5cff9d980",
+   "size": 2211867
+  },
+  "godot/assets/concept/meshy/guitar_gal/front.png": {
+   "at": "2026-10-28T03:09:00+00:00",
+   "md5": "2a35bdee1081bcba5a0569fd9dd5886c",
+   "size": 2105118
+  },
+  "godot/assets/concept/meshy/guitar_gal/guitar_gal_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:00+00:00",
+   "md5": "06fa433753d70c2ec9dfc0e5cff9d980",
+   "size": 2211867
+  },
+  "godot/assets/concept/meshy/guitar_gal/guitar_gal_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:00+00:00",
+   "md5": "2a35bdee1081bcba5a0569fd9dd5886c",
+   "size": 2105118
+  },
+  "godot/assets/concept/meshy/guitar_gal/guitar_gal_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:00+00:00",
+   "md5": "a4b573b0e4d2b180f385e139cc8e6638",
+   "size": 1995559
+  },
+  "godot/assets/concept/meshy/guitar_gal/side.png": {
+   "at": "2026-10-28T03:09:00+00:00",
+   "md5": "a4b573b0e4d2b180f385e139cc8e6638",
+   "size": 1995559
+  },
   "godot/assets/concept/meshy/gym_weight_room_depthchart_1/front.png": {
    "at": "2026-10-14T02:57:52+00:00",
    "md5": "1d81ef8c26e80bc0b3665cd3a48c03ea",
@@ -79174,6 +80084,36 @@
    "at": "2026-10-19T16:27:22+00:00",
    "md5": "abf0ea11ca58ed9841cb791105b857f3",
    "size": 2019702
+  },
+  "godot/assets/concept/meshy/hannes/back.png": {
+   "at": "2026-10-28T03:09:12+00:00",
+   "md5": "2339c57cce5c3159cf921d82ea6ad851",
+   "size": 2266498
+  },
+  "godot/assets/concept/meshy/hannes/front.png": {
+   "at": "2026-10-28T03:09:12+00:00",
+   "md5": "be71be9edc4fdf4982b1158c6d681858",
+   "size": 2247859
+  },
+  "godot/assets/concept/meshy/hannes/hannes_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:12+00:00",
+   "md5": "2339c57cce5c3159cf921d82ea6ad851",
+   "size": 2266498
+  },
+  "godot/assets/concept/meshy/hannes/hannes_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:12+00:00",
+   "md5": "be71be9edc4fdf4982b1158c6d681858",
+   "size": 2247859
+  },
+  "godot/assets/concept/meshy/hannes/hannes_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:12+00:00",
+   "md5": "1ba24bf5cdbbc1bfaeee5d48f577a039",
+   "size": 1979552
+  },
+  "godot/assets/concept/meshy/hannes/side.png": {
+   "at": "2026-10-28T03:09:12+00:00",
+   "md5": "1ba24bf5cdbbc1bfaeee5d48f577a039",
+   "size": 1979552
   },
   "godot/assets/concept/meshy/hans/back.png": {
    "at": "2026-10-11T18:35:49+00:00",
@@ -79274,6 +80214,26 @@
    "at": "2026-10-14T02:58:09+00:00",
    "md5": "ffa495a0f3122fcac887496269738f6f",
    "size": 2102148
+  },
+  "godot/assets/concept/meshy/hans_bakery_front_window/front.png": {
+   "at": "2026-10-28T03:09:22+00:00",
+   "md5": "c82ff96e84a3df0de93e248b43c4cb41",
+   "size": 3339765
+  },
+  "godot/assets/concept/meshy/hans_bakery_front_window/hans_bakery_front_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:22+00:00",
+   "md5": "c82ff96e84a3df0de93e248b43c4cb41",
+   "size": 3339765
+  },
+  "godot/assets/concept/meshy/hans_bakery_side_window/front.png": {
+   "at": "2026-10-28T03:09:30+00:00",
+   "md5": "978dd4125477757764e117c84ac32fd6",
+   "size": 2502139
+  },
+  "godot/assets/concept/meshy/hans_bakery_side_window/hans_bakery_side_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:30+00:00",
+   "md5": "978dd4125477757764e117c84ac32fd6",
+   "size": 2502139
   },
   "godot/assets/concept/meshy/hector/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -79650,6 +80610,96 @@
    "md5": "513af5af24ec5a1f1873df18e3f82587",
    "size": 1159943
   },
+  "godot/assets/concept/meshy/hurstwood/back.png": {
+   "at": "2026-10-28T03:09:42+00:00",
+   "md5": "5ea9e375da3f18330fce3d26b75b6ba7",
+   "size": 2012823
+  },
+  "godot/assets/concept/meshy/hurstwood/front.png": {
+   "at": "2026-10-28T03:09:42+00:00",
+   "md5": "6564f53e1398cf265bbeba6419089a36",
+   "size": 2042063
+  },
+  "godot/assets/concept/meshy/hurstwood/hurstwood_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:42+00:00",
+   "md5": "5ea9e375da3f18330fce3d26b75b6ba7",
+   "size": 2012823
+  },
+  "godot/assets/concept/meshy/hurstwood/hurstwood_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:42+00:00",
+   "md5": "6564f53e1398cf265bbeba6419089a36",
+   "size": 2042063
+  },
+  "godot/assets/concept/meshy/hurstwood/hurstwood_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:09:42+00:00",
+   "md5": "b229fe981af35142e36c7948dab1f9c5",
+   "size": 1946536
+  },
+  "godot/assets/concept/meshy/hurstwood/side.png": {
+   "at": "2026-10-28T03:09:42+00:00",
+   "md5": "b229fe981af35142e36c7948dab1f9c5",
+   "size": 1946536
+  },
+  "godot/assets/concept/meshy/inoculation_nurse/back.png": {
+   "at": "2026-10-28T03:10:00+00:00",
+   "md5": "ab7c0bd79af9f536e977d1936d8a4a2e",
+   "size": 1908240
+  },
+  "godot/assets/concept/meshy/inoculation_nurse/front.png": {
+   "at": "2026-10-28T03:10:00+00:00",
+   "md5": "78bc63ccd462b4e396c3c0bea88814da",
+   "size": 1987664
+  },
+  "godot/assets/concept/meshy/inoculation_nurse/inoculation_nurse_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:00+00:00",
+   "md5": "ab7c0bd79af9f536e977d1936d8a4a2e",
+   "size": 1908240
+  },
+  "godot/assets/concept/meshy/inoculation_nurse/inoculation_nurse_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:00+00:00",
+   "md5": "78bc63ccd462b4e396c3c0bea88814da",
+   "size": 1987664
+  },
+  "godot/assets/concept/meshy/inoculation_nurse/inoculation_nurse_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:00+00:00",
+   "md5": "ed568173b2764207344b98bfc6770da0",
+   "size": 1884406
+  },
+  "godot/assets/concept/meshy/inoculation_nurse/side.png": {
+   "at": "2026-10-28T03:10:00+00:00",
+   "md5": "ed568173b2764207344b98bfc6770da0",
+   "size": 1884406
+  },
+  "godot/assets/concept/meshy/iris_binder/back.png": {
+   "at": "2026-10-28T03:10:09+00:00",
+   "md5": "1c08e1ddea1de20dd46f02e3e0ed6a9f",
+   "size": 1259779
+  },
+  "godot/assets/concept/meshy/iris_binder/front.png": {
+   "at": "2026-10-28T03:10:09+00:00",
+   "md5": "da2c2e62237d05e785d8fdc164a15bb0",
+   "size": 1200899
+  },
+  "godot/assets/concept/meshy/iris_binder/iris_binder_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:09+00:00",
+   "md5": "1c08e1ddea1de20dd46f02e3e0ed6a9f",
+   "size": 1259779
+  },
+  "godot/assets/concept/meshy/iris_binder/iris_binder_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:09+00:00",
+   "md5": "da2c2e62237d05e785d8fdc164a15bb0",
+   "size": 1200899
+  },
+  "godot/assets/concept/meshy/iris_binder/iris_binder_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:09+00:00",
+   "md5": "1dac0d4e65ae28d414c57ae7136c73d1",
+   "size": 1084184
+  },
+  "godot/assets/concept/meshy/iris_binder/side.png": {
+   "at": "2026-10-28T03:10:09+00:00",
+   "md5": "1dac0d4e65ae28d414c57ae7136c73d1",
+   "size": 1084184
+  },
   "godot/assets/concept/meshy/iv_pole/back.png": {
    "at": "2026-10-27T18:57:46+00:00",
    "md5": "c7d14868b53f846f6db61e22197fd521",
@@ -79679,6 +80729,66 @@
    "at": "2026-10-27T18:57:46+00:00",
    "md5": "f3c4e2641dc644e5527f400f3638ecc1",
    "size": 1065596
+  },
+  "godot/assets/concept/meshy/jack_parsons/back.png": {
+   "at": "2026-10-28T03:10:19+00:00",
+   "md5": "c1ba45d71c30644f0860e292486d7590",
+   "size": 2230349
+  },
+  "godot/assets/concept/meshy/jack_parsons/front.png": {
+   "at": "2026-10-28T03:10:19+00:00",
+   "md5": "743ee970e671d8e96d169546a269f1b1",
+   "size": 2193725
+  },
+  "godot/assets/concept/meshy/jack_parsons/jack_parsons_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:19+00:00",
+   "md5": "c1ba45d71c30644f0860e292486d7590",
+   "size": 2230349
+  },
+  "godot/assets/concept/meshy/jack_parsons/jack_parsons_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:19+00:00",
+   "md5": "743ee970e671d8e96d169546a269f1b1",
+   "size": 2193725
+  },
+  "godot/assets/concept/meshy/jack_parsons/jack_parsons_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:19+00:00",
+   "md5": "324919974acb57ce715f5bd9c28832fd",
+   "size": 2059496
+  },
+  "godot/assets/concept/meshy/jack_parsons/side.png": {
+   "at": "2026-10-28T03:10:19+00:00",
+   "md5": "324919974acb57ce715f5bd9c28832fd",
+   "size": 2059496
+  },
+  "godot/assets/concept/meshy/jack_perkins/back.png": {
+   "at": "2026-10-28T03:10:30+00:00",
+   "md5": "6fa243ca4000bf35d2deb531e5660246",
+   "size": 2043959
+  },
+  "godot/assets/concept/meshy/jack_perkins/front.png": {
+   "at": "2026-10-28T03:10:30+00:00",
+   "md5": "9f19230295ebbaa1567929c5840d4788",
+   "size": 2106958
+  },
+  "godot/assets/concept/meshy/jack_perkins/jack_perkins_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:30+00:00",
+   "md5": "6fa243ca4000bf35d2deb531e5660246",
+   "size": 2043959
+  },
+  "godot/assets/concept/meshy/jack_perkins/jack_perkins_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:30+00:00",
+   "md5": "9f19230295ebbaa1567929c5840d4788",
+   "size": 2106958
+  },
+  "godot/assets/concept/meshy/jack_perkins/jack_perkins_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:30+00:00",
+   "md5": "39bff629d0a7876fc2f915a227c8fbbc",
+   "size": 1947907
+  },
+  "godot/assets/concept/meshy/jack_perkins/side.png": {
+   "at": "2026-10-28T03:10:30+00:00",
+   "md5": "39bff629d0a7876fc2f915a227c8fbbc",
+   "size": 1947907
   },
   "godot/assets/concept/meshy/jackpot_polaroid_2019/back.png": {
    "at": "2026-10-27T16:42:07+00:00",
@@ -79755,6 +80865,36 @@
    "md5": "e47f10f110e900bf6ac307cdb9cc18f6",
    "size": 1978691
   },
+  "godot/assets/concept/meshy/jane_sleep_study/back.png": {
+   "at": "2026-10-28T03:10:41+00:00",
+   "md5": "38cb33aaf870d340a8dfef2233131237",
+   "size": 2074350
+  },
+  "godot/assets/concept/meshy/jane_sleep_study/front.png": {
+   "at": "2026-10-28T03:10:41+00:00",
+   "md5": "803739fbfe37a891e7fccf1624ac958a",
+   "size": 2108209
+  },
+  "godot/assets/concept/meshy/jane_sleep_study/jane_sleep_study_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:41+00:00",
+   "md5": "38cb33aaf870d340a8dfef2233131237",
+   "size": 2074350
+  },
+  "godot/assets/concept/meshy/jane_sleep_study/jane_sleep_study_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:41+00:00",
+   "md5": "803739fbfe37a891e7fccf1624ac958a",
+   "size": 2108209
+  },
+  "godot/assets/concept/meshy/jane_sleep_study/jane_sleep_study_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:41+00:00",
+   "md5": "5dbcc308fa5c51476e926e41548923a7",
+   "size": 1970122
+  },
+  "godot/assets/concept/meshy/jane_sleep_study/side.png": {
+   "at": "2026-10-28T03:10:41+00:00",
+   "md5": "5dbcc308fa5c51476e926e41548923a7",
+   "size": 1970122
+  },
   "godot/assets/concept/meshy/janessa/back.png": {
    "at": "2026-10-27T04:06:54+00:00",
    "md5": "55c43763aaa0ffe74e5f24ecf93d462e",
@@ -79789,6 +80929,36 @@
    "at": "2026-10-27T04:06:54+00:00",
    "md5": "29bee6b80ee47f3dead539486a4241a2",
    "size": 1955483
+  },
+  "godot/assets/concept/meshy/jay_rose/back.png": {
+   "at": "2026-10-28T03:10:55+00:00",
+   "md5": "09e2f77254e81c2b72d7e0796f3d9f6f",
+   "size": 2079391
+  },
+  "godot/assets/concept/meshy/jay_rose/front.png": {
+   "at": "2026-10-28T03:10:55+00:00",
+   "md5": "4d054a956bf084ab79599f7b087f10ff",
+   "size": 2177886
+  },
+  "godot/assets/concept/meshy/jay_rose/jay_rose_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:55+00:00",
+   "md5": "09e2f77254e81c2b72d7e0796f3d9f6f",
+   "size": 2079391
+  },
+  "godot/assets/concept/meshy/jay_rose/jay_rose_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:55+00:00",
+   "md5": "4d054a956bf084ab79599f7b087f10ff",
+   "size": 2177886
+  },
+  "godot/assets/concept/meshy/jay_rose/jay_rose_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:10:55+00:00",
+   "md5": "65fba6e9142d6331746a8dbe1b1114fd",
+   "size": 1994420
+  },
+  "godot/assets/concept/meshy/jay_rose/side.png": {
+   "at": "2026-10-28T03:10:55+00:00",
+   "md5": "65fba6e9142d6331746a8dbe1b1114fd",
+   "size": 1994420
   },
   "godot/assets/concept/meshy/jen/back.png": {
    "at": "2026-10-18T18:27:04+00:00",
@@ -80060,6 +81230,36 @@
    "md5": "77c7b385b8509484b08ba08d3f7eaa33",
    "size": 90924
   },
+  "godot/assets/concept/meshy/joe_ku/back.png": {
+   "at": "2026-10-28T03:11:06+00:00",
+   "md5": "807d3c8eb2c07ffb47e0ff4eb8307117",
+   "size": 1940481
+  },
+  "godot/assets/concept/meshy/joe_ku/front.png": {
+   "at": "2026-10-28T03:11:06+00:00",
+   "md5": "73f55991fa9fadc3c3cca30e68df310f",
+   "size": 2086045
+  },
+  "godot/assets/concept/meshy/joe_ku/joe_ku_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:06+00:00",
+   "md5": "807d3c8eb2c07ffb47e0ff4eb8307117",
+   "size": 1940481
+  },
+  "godot/assets/concept/meshy/joe_ku/joe_ku_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:06+00:00",
+   "md5": "73f55991fa9fadc3c3cca30e68df310f",
+   "size": 2086045
+  },
+  "godot/assets/concept/meshy/joe_ku/joe_ku_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:06+00:00",
+   "md5": "f6283d6a8120dfd07b68cfe8b5bf8b21",
+   "size": 1882484
+  },
+  "godot/assets/concept/meshy/joe_ku/side.png": {
+   "at": "2026-10-28T03:11:06+00:00",
+   "md5": "f6283d6a8120dfd07b68cfe8b5bf8b21",
+   "size": 1882484
+  },
   "godot/assets/concept/meshy/john_frank/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c295a835e50676569c1f608f003ac694",
@@ -80110,6 +81310,36 @@
    "md5": "4b54192e49fb3faf429e33f1c14f0564",
    "size": 2019117
   },
+  "godot/assets/concept/meshy/jordan/back.png": {
+   "at": "2026-10-28T03:11:16+00:00",
+   "md5": "e68d996d1a2eb98eb7e277c1132afdfb",
+   "size": 1847955
+  },
+  "godot/assets/concept/meshy/jordan/front.png": {
+   "at": "2026-10-28T03:11:16+00:00",
+   "md5": "94ea478e738ca1184b1a8f4043010ef7",
+   "size": 1917102
+  },
+  "godot/assets/concept/meshy/jordan/jordan_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:16+00:00",
+   "md5": "e68d996d1a2eb98eb7e277c1132afdfb",
+   "size": 1847955
+  },
+  "godot/assets/concept/meshy/jordan/jordan_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:16+00:00",
+   "md5": "94ea478e738ca1184b1a8f4043010ef7",
+   "size": 1917102
+  },
+  "godot/assets/concept/meshy/jordan/jordan_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:16+00:00",
+   "md5": "409fd103e141587ddd1e41e8fc661f98",
+   "size": 1847872
+  },
+  "godot/assets/concept/meshy/jordan/side.png": {
+   "at": "2026-10-28T03:11:16+00:00",
+   "md5": "409fd103e141587ddd1e41e8fc661f98",
+   "size": 1847872
+  },
   "godot/assets/concept/meshy/judge_halverson/back.png": {
    "at": "2026-10-19T16:40:05+00:00",
    "md5": "f9826fa029c2496757b07dc9a75b0c9e",
@@ -80144,6 +81374,66 @@
    "at": "2026-10-19T16:40:05+00:00",
    "md5": "6f0ae05efb358b6d0415b571eecd660b",
    "size": 1851169
+  },
+  "godot/assets/concept/meshy/jules/back.png": {
+   "at": "2026-10-28T03:11:25+00:00",
+   "md5": "7ce41df6281f8b9bd977a3c863fa61f5",
+   "size": 1988230
+  },
+  "godot/assets/concept/meshy/jules/front.png": {
+   "at": "2026-10-28T03:11:25+00:00",
+   "md5": "6c155a3e08dea4a8a3acecb91b8f0f77",
+   "size": 2038951
+  },
+  "godot/assets/concept/meshy/jules/jules_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:25+00:00",
+   "md5": "7ce41df6281f8b9bd977a3c863fa61f5",
+   "size": 1988230
+  },
+  "godot/assets/concept/meshy/jules/jules_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:25+00:00",
+   "md5": "6c155a3e08dea4a8a3acecb91b8f0f77",
+   "size": 2038951
+  },
+  "godot/assets/concept/meshy/jules/jules_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:25+00:00",
+   "md5": "d3b3e5770a0df534d307493e7f4ec1f7",
+   "size": 1916620
+  },
+  "godot/assets/concept/meshy/jules/side.png": {
+   "at": "2026-10-28T03:11:25+00:00",
+   "md5": "d3b3e5770a0df534d307493e7f4ec1f7",
+   "size": 1916620
+  },
+  "godot/assets/concept/meshy/june_okimoto/back.png": {
+   "at": "2026-10-28T03:11:36+00:00",
+   "md5": "c7420cff7ae31a620f32afd3b4e04013",
+   "size": 1901487
+  },
+  "godot/assets/concept/meshy/june_okimoto/front.png": {
+   "at": "2026-10-28T03:11:36+00:00",
+   "md5": "48a1006d9c9fedf7332fbe8ae5075513",
+   "size": 1965955
+  },
+  "godot/assets/concept/meshy/june_okimoto/june_okimoto_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:36+00:00",
+   "md5": "c7420cff7ae31a620f32afd3b4e04013",
+   "size": 1901487
+  },
+  "godot/assets/concept/meshy/june_okimoto/june_okimoto_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:36+00:00",
+   "md5": "48a1006d9c9fedf7332fbe8ae5075513",
+   "size": 1965955
+  },
+  "godot/assets/concept/meshy/june_okimoto/june_okimoto_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:36+00:00",
+   "md5": "fe790bd8899e672ac346cdd674361b92",
+   "size": 1872290
+  },
+  "godot/assets/concept/meshy/june_okimoto/side.png": {
+   "at": "2026-10-28T03:11:36+00:00",
+   "md5": "fe790bd8899e672ac346cdd674361b92",
+   "size": 1872290
   },
   "godot/assets/concept/meshy/kai/back.png": {
    "at": "2026-10-11T17:55:46+00:00",
@@ -80195,6 +81485,16 @@
    "md5": "eedde6201f85d7406941b2f52bd8cd70",
    "size": 2020590
   },
+  "godot/assets/concept/meshy/kai_apartment_north_window/front.png": {
+   "at": "2026-10-28T03:11:56+00:00",
+   "md5": "9d7f3f76c41104b1b2b4f37c0cb4a121",
+   "size": 2619135
+  },
+  "godot/assets/concept/meshy/kai_apartment_north_window/kai_apartment_north_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:11:56+00:00",
+   "md5": "9d7f3f76c41104b1b2b4f37c0cb4a121",
+   "size": 2619135
+  },
   "godot/assets/concept/meshy/karamazov_paperback/back.png": {
    "at": "2026-10-27T18:58:01+00:00",
    "md5": "1c6453d09e66ee0eee924f15ad760211",
@@ -80224,6 +81524,66 @@
    "at": "2026-10-27T18:58:01+00:00",
    "md5": "c377023d375b9b8c0dee12ea8dda3f9a",
    "size": 1211941
+  },
+  "godot/assets/concept/meshy/kathy/back.png": {
+   "at": "2026-10-28T03:12:13+00:00",
+   "md5": "71f1e77703696ebe5c804ba6a3b813cd",
+   "size": 1935655
+  },
+  "godot/assets/concept/meshy/kathy/front.png": {
+   "at": "2026-10-28T03:12:13+00:00",
+   "md5": "e9666e1f82b517e732550bca564c31e7",
+   "size": 1992022
+  },
+  "godot/assets/concept/meshy/kathy/kathy_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:13+00:00",
+   "md5": "71f1e77703696ebe5c804ba6a3b813cd",
+   "size": 1935655
+  },
+  "godot/assets/concept/meshy/kathy/kathy_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:13+00:00",
+   "md5": "e9666e1f82b517e732550bca564c31e7",
+   "size": 1992022
+  },
+  "godot/assets/concept/meshy/kathy/kathy_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:13+00:00",
+   "md5": "2b6cc0ead97bea77d4111dce291e1374",
+   "size": 1872099
+  },
+  "godot/assets/concept/meshy/kathy/side.png": {
+   "at": "2026-10-28T03:12:13+00:00",
+   "md5": "2b6cc0ead97bea77d4111dce291e1374",
+   "size": 1872099
+  },
+  "godot/assets/concept/meshy/katrina/back.png": {
+   "at": "2026-10-28T03:12:23+00:00",
+   "md5": "03f6b7b7435df37a10a0c8e97ff8b509",
+   "size": 2148857
+  },
+  "godot/assets/concept/meshy/katrina/front.png": {
+   "at": "2026-10-28T03:12:23+00:00",
+   "md5": "73e5e2618b923fc79e1d826efd826c85",
+   "size": 2191769
+  },
+  "godot/assets/concept/meshy/katrina/katrina_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:23+00:00",
+   "md5": "03f6b7b7435df37a10a0c8e97ff8b509",
+   "size": 2148857
+  },
+  "godot/assets/concept/meshy/katrina/katrina_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:23+00:00",
+   "md5": "73e5e2618b923fc79e1d826efd826c85",
+   "size": 2191769
+  },
+  "godot/assets/concept/meshy/katrina/katrina_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:23+00:00",
+   "md5": "b7577aca6066a41332486bbf68d07869",
+   "size": 1988987
+  },
+  "godot/assets/concept/meshy/katrina/side.png": {
+   "at": "2026-10-28T03:12:23+00:00",
+   "md5": "b7577aca6066a41332486bbf68d07869",
+   "size": 1988987
   },
   "godot/assets/concept/meshy/kerosene_lamp/back.png": {
    "at": "2026-10-27T19:37:37+00:00",
@@ -80830,6 +82190,16 @@
    "md5": "3245929ef1cbfe3e7d52260c53e667ec",
    "size": 2437801
   },
+  "godot/assets/concept/meshy/lena_apartment_front_window/front.png": {
+   "at": "2026-10-28T03:12:31+00:00",
+   "md5": "c8c4cec640e98c5229118144dbb9fe1d",
+   "size": 2634133
+  },
+  "godot/assets/concept/meshy/lena_apartment_front_window/lena_apartment_front_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:31+00:00",
+   "md5": "c8c4cec640e98c5229118144dbb9fe1d",
+   "size": 2634133
+  },
   "godot/assets/concept/meshy/lena_apartment_jorgen_letter/front.png": {
    "at": "2026-10-27T04:06:10+00:00",
    "md5": "e8ee0022e8fcea2ab4b853b3dd79e1e1",
@@ -80859,6 +82229,26 @@
    "at": "2026-10-14T03:06:28+00:00",
    "md5": "1f97581675ff1a896413302afa1448c1",
    "size": 2590723
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_0/front.png": {
+   "at": "2026-10-28T03:12:39+00:00",
+   "md5": "f870e6285828622dcaf50cbcce430d1b",
+   "size": 3506409
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_0/lena_apartment_nook_window_0_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:39+00:00",
+   "md5": "f870e6285828622dcaf50cbcce430d1b",
+   "size": 3506409
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_1/front.png": {
+   "at": "2026-10-28T03:12:48+00:00",
+   "md5": "105b9c14f27c5b22752d5437a1f2ea71",
+   "size": 3377215
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_1/lena_apartment_nook_window_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:48+00:00",
+   "md5": "105b9c14f27c5b22752d5437a1f2ea71",
+   "size": 3377215
   },
   "godot/assets/concept/meshy/lena_studio_canvas_1/front.png": {
    "at": "2026-10-14T03:06:35+00:00",
@@ -81150,6 +82540,36 @@
    "md5": "fceb8b23499599336f1802d8e6d24f77",
    "size": 1099509
   },
+  "godot/assets/concept/meshy/marcus/back.png": {
+   "at": "2026-10-28T03:12:59+00:00",
+   "md5": "390c19a46c0dcb371003832c2462aba8",
+   "size": 1855833
+  },
+  "godot/assets/concept/meshy/marcus/front.png": {
+   "at": "2026-10-28T03:12:59+00:00",
+   "md5": "dbbd42fe6fcd1269b14b61a07395fd9d",
+   "size": 1946434
+  },
+  "godot/assets/concept/meshy/marcus/marcus_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:59+00:00",
+   "md5": "390c19a46c0dcb371003832c2462aba8",
+   "size": 1855833
+  },
+  "godot/assets/concept/meshy/marcus/marcus_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:59+00:00",
+   "md5": "dbbd42fe6fcd1269b14b61a07395fd9d",
+   "size": 1946434
+  },
+  "godot/assets/concept/meshy/marcus/marcus_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:12:59+00:00",
+   "md5": "3271ff13f0087cc2a810ffebbadd5ca2",
+   "size": 1856914
+  },
+  "godot/assets/concept/meshy/marcus/side.png": {
+   "at": "2026-10-28T03:12:59+00:00",
+   "md5": "3271ff13f0087cc2a810ffebbadd5ca2",
+   "size": 1856914
+  },
   "godot/assets/concept/meshy/margaret_coop/back.png": {
    "at": "2026-10-11T19:42:01+00:00",
    "md5": "9bd121a473e63d82b56e37d8e9d6da80",
@@ -81184,6 +82604,36 @@
    "at": "2026-10-11T19:42:01+00:00",
    "md5": "bd794a55a7b310cd795e5d72a35e98e9",
    "size": 1980402
+  },
+  "godot/assets/concept/meshy/margaret_vol1/back.png": {
+   "at": "2026-10-28T03:13:12+00:00",
+   "md5": "1ea661caec48186ecc84795c4b5ca5bc",
+   "size": 1922501
+  },
+  "godot/assets/concept/meshy/margaret_vol1/front.png": {
+   "at": "2026-10-28T03:13:12+00:00",
+   "md5": "9a013676a8b3f7f355a04e8b976f922e",
+   "size": 1981995
+  },
+  "godot/assets/concept/meshy/margaret_vol1/margaret_vol1_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:12+00:00",
+   "md5": "1ea661caec48186ecc84795c4b5ca5bc",
+   "size": 1922501
+  },
+  "godot/assets/concept/meshy/margaret_vol1/margaret_vol1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:12+00:00",
+   "md5": "9a013676a8b3f7f355a04e8b976f922e",
+   "size": 1981995
+  },
+  "godot/assets/concept/meshy/margaret_vol1/margaret_vol1_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:12+00:00",
+   "md5": "655715bae0838e64ca653561d2c33ae4",
+   "size": 1861781
+  },
+  "godot/assets/concept/meshy/margaret_vol1/side.png": {
+   "at": "2026-10-28T03:13:12+00:00",
+   "md5": "655715bae0838e64ca653561d2c33ae4",
+   "size": 1861781
   },
   "godot/assets/concept/meshy/marina/back.png": {
    "at": "2026-10-11T19:08:27+00:00",
@@ -81339,6 +82789,36 @@
    "at": "2026-10-27T15:40:29+00:00",
    "md5": "a2d9b0c6694e4380004b6946e53b8b45",
    "size": 1903917
+  },
+  "godot/assets/concept/meshy/marty/back.png": {
+   "at": "2026-10-28T03:13:29+00:00",
+   "md5": "a200df2875525c39886f4dd184f90c2c",
+   "size": 2083553
+  },
+  "godot/assets/concept/meshy/marty/front.png": {
+   "at": "2026-10-28T03:13:29+00:00",
+   "md5": "b267462dcd383f8ce9b94d6ea178b6d3",
+   "size": 2172091
+  },
+  "godot/assets/concept/meshy/marty/marty_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:29+00:00",
+   "md5": "a200df2875525c39886f4dd184f90c2c",
+   "size": 2083553
+  },
+  "godot/assets/concept/meshy/marty/marty_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:29+00:00",
+   "md5": "b267462dcd383f8ce9b94d6ea178b6d3",
+   "size": 2172091
+  },
+  "godot/assets/concept/meshy/marty/marty_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:29+00:00",
+   "md5": "2c2a17e0e39b0d56a7b0815b7c4db9bf",
+   "size": 2025478
+  },
+  "godot/assets/concept/meshy/marty/side.png": {
+   "at": "2026-10-28T03:13:29+00:00",
+   "md5": "2c2a17e0e39b0d56a7b0815b7c4db9bf",
+   "size": 2025478
   },
   "godot/assets/concept/meshy/master_tape_february/back.png": {
    "at": "2026-10-18T17:13:34+00:00",
@@ -81569,6 +83049,66 @@
    "at": "2026-10-27T18:58:22+00:00",
    "md5": "a3f2425f87653d3133fc22eabf189c90",
    "size": 1137187
+  },
+  "godot/assets/concept/meshy/melody/back.png": {
+   "at": "2026-10-28T03:13:40+00:00",
+   "md5": "92e4d65b52b2cf14d4af9cae1bb86784",
+   "size": 1907066
+  },
+  "godot/assets/concept/meshy/melody/front.png": {
+   "at": "2026-10-28T03:13:40+00:00",
+   "md5": "3ed50746fc4efe3bc711e7998c12af98",
+   "size": 1981047
+  },
+  "godot/assets/concept/meshy/melody/melody_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:40+00:00",
+   "md5": "92e4d65b52b2cf14d4af9cae1bb86784",
+   "size": 1907066
+  },
+  "godot/assets/concept/meshy/melody/melody_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:40+00:00",
+   "md5": "3ed50746fc4efe3bc711e7998c12af98",
+   "size": 1981047
+  },
+  "godot/assets/concept/meshy/melody/melody_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:40+00:00",
+   "md5": "93abb77a8139f9b270d3ecf85a0d35cc",
+   "size": 1861006
+  },
+  "godot/assets/concept/meshy/melody/side.png": {
+   "at": "2026-10-28T03:13:40+00:00",
+   "md5": "93abb77a8139f9b270d3ecf85a0d35cc",
+   "size": 1861006
+  },
+  "godot/assets/concept/meshy/mercedes_1969/back.png": {
+   "at": "2026-10-28T03:13:49+00:00",
+   "md5": "ebaa21f979a9499b87ed538f2405315c",
+   "size": 2516893
+  },
+  "godot/assets/concept/meshy/mercedes_1969/front.png": {
+   "at": "2026-10-28T03:13:49+00:00",
+   "md5": "5cc03045e89579d3e70a574a2c75ada4",
+   "size": 2628666
+  },
+  "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:49+00:00",
+   "md5": "ebaa21f979a9499b87ed538f2405315c",
+   "size": 2516893
+  },
+  "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:49+00:00",
+   "md5": "5cc03045e89579d3e70a574a2c75ada4",
+   "size": 2628666
+  },
+  "godot/assets/concept/meshy/mercedes_1969/mercedes_1969_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:49+00:00",
+   "md5": "63884fc73c73ebb08f9a482e61ca113b",
+   "size": 2243395
+  },
+  "godot/assets/concept/meshy/mercedes_1969/side.png": {
+   "at": "2026-10-28T03:13:49+00:00",
+   "md5": "63884fc73c73ebb08f9a482e61ca113b",
+   "size": 2243395
   },
   "godot/assets/concept/meshy/miller_kitchen_diego_notebook/front.png": {
    "at": "2026-10-27T15:25:21+00:00",
@@ -83020,6 +84560,186 @@
    "md5": "e84cbd5a11ecc734f7c72d5b70d7e3e5",
    "size": 2246677
   },
+  "godot/assets/concept/meshy/niles/back.png": {
+   "at": "2026-10-28T03:13:58+00:00",
+   "md5": "c57b6d51574901287337371f6c4ba35c",
+   "size": 2013729
+  },
+  "godot/assets/concept/meshy/niles/front.png": {
+   "at": "2026-10-28T03:13:58+00:00",
+   "md5": "196d84c584e8360a6d98404798c58f50",
+   "size": 2074692
+  },
+  "godot/assets/concept/meshy/niles/niles_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:58+00:00",
+   "md5": "c57b6d51574901287337371f6c4ba35c",
+   "size": 2013729
+  },
+  "godot/assets/concept/meshy/niles/niles_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:58+00:00",
+   "md5": "196d84c584e8360a6d98404798c58f50",
+   "size": 2074692
+  },
+  "godot/assets/concept/meshy/niles/niles_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:13:58+00:00",
+   "md5": "49353bb2a9953d82b43dd79d69d6565e",
+   "size": 1973107
+  },
+  "godot/assets/concept/meshy/niles/side.png": {
+   "at": "2026-10-28T03:13:58+00:00",
+   "md5": "49353bb2a9953d82b43dd79d69d6565e",
+   "size": 1973107
+  },
+  "godot/assets/concept/meshy/not_chuck/back.png": {
+   "at": "2026-10-28T03:14:09+00:00",
+   "md5": "4c4f590ce0b9b56877a66143d3440ff8",
+   "size": 2032454
+  },
+  "godot/assets/concept/meshy/not_chuck/front.png": {
+   "at": "2026-10-28T03:14:09+00:00",
+   "md5": "9486f11fb9bb49c22fadb3391f406e19",
+   "size": 1738130
+  },
+  "godot/assets/concept/meshy/not_chuck/not_chuck_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:09+00:00",
+   "md5": "4c4f590ce0b9b56877a66143d3440ff8",
+   "size": 2032454
+  },
+  "godot/assets/concept/meshy/not_chuck/not_chuck_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:09+00:00",
+   "md5": "9486f11fb9bb49c22fadb3391f406e19",
+   "size": 1738130
+  },
+  "godot/assets/concept/meshy/not_chuck/not_chuck_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:09+00:00",
+   "md5": "cea0827abd421c1f3e8b3f1b7c09536e",
+   "size": 1988620
+  },
+  "godot/assets/concept/meshy/not_chuck/side.png": {
+   "at": "2026-10-28T03:14:09+00:00",
+   "md5": "cea0827abd421c1f3e8b3f1b7c09536e",
+   "size": 1988620
+  },
+  "godot/assets/concept/meshy/old_man_kestrel/back.png": {
+   "at": "2026-10-28T03:14:18+00:00",
+   "md5": "d5ddc9ef4080021b4c0b8a852d2d3bcf",
+   "size": 2100471
+  },
+  "godot/assets/concept/meshy/old_man_kestrel/front.png": {
+   "at": "2026-10-28T03:14:18+00:00",
+   "md5": "ab88a02a19dfc6f09d812be5ff240a8f",
+   "size": 2058854
+  },
+  "godot/assets/concept/meshy/old_man_kestrel/old_man_kestrel_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:18+00:00",
+   "md5": "d5ddc9ef4080021b4c0b8a852d2d3bcf",
+   "size": 2100471
+  },
+  "godot/assets/concept/meshy/old_man_kestrel/old_man_kestrel_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:18+00:00",
+   "md5": "ab88a02a19dfc6f09d812be5ff240a8f",
+   "size": 2058854
+  },
+  "godot/assets/concept/meshy/old_man_kestrel/old_man_kestrel_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:18+00:00",
+   "md5": "be102fb24faadfc330ec8cb2202970e2",
+   "size": 1959713
+  },
+  "godot/assets/concept/meshy/old_man_kestrel/side.png": {
+   "at": "2026-10-28T03:14:18+00:00",
+   "md5": "be102fb24faadfc330ec8cb2202970e2",
+   "size": 1959713
+  },
+  "godot/assets/concept/meshy/old_woman_pharmacy/back.png": {
+   "at": "2026-10-28T03:14:30+00:00",
+   "md5": "d5fd026efdff7a14d034e824257a7cdd",
+   "size": 1990504
+  },
+  "godot/assets/concept/meshy/old_woman_pharmacy/front.png": {
+   "at": "2026-10-28T03:14:30+00:00",
+   "md5": "9d237915cbc8bc98923124882e0fd183",
+   "size": 1804398
+  },
+  "godot/assets/concept/meshy/old_woman_pharmacy/old_woman_pharmacy_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:30+00:00",
+   "md5": "d5fd026efdff7a14d034e824257a7cdd",
+   "size": 1990504
+  },
+  "godot/assets/concept/meshy/old_woman_pharmacy/old_woman_pharmacy_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:30+00:00",
+   "md5": "9d237915cbc8bc98923124882e0fd183",
+   "size": 1804398
+  },
+  "godot/assets/concept/meshy/old_woman_pharmacy/old_woman_pharmacy_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:30+00:00",
+   "md5": "ebffc9edf4b01bfc9af94e63218ef515",
+   "size": 1866011
+  },
+  "godot/assets/concept/meshy/old_woman_pharmacy/side.png": {
+   "at": "2026-10-28T03:14:30+00:00",
+   "md5": "ebffc9edf4b01bfc9af94e63218ef515",
+   "size": 1866011
+  },
+  "godot/assets/concept/meshy/olivia/back.png": {
+   "at": "2026-10-28T03:14:39+00:00",
+   "md5": "6533c5271706b83a7d7ee025a4a99366",
+   "size": 1987084
+  },
+  "godot/assets/concept/meshy/olivia/front.png": {
+   "at": "2026-10-28T03:14:39+00:00",
+   "md5": "1e51f4fe944c7541ed284f037a9c6a44",
+   "size": 2063099
+  },
+  "godot/assets/concept/meshy/olivia/olivia_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:39+00:00",
+   "md5": "6533c5271706b83a7d7ee025a4a99366",
+   "size": 1987084
+  },
+  "godot/assets/concept/meshy/olivia/olivia_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:39+00:00",
+   "md5": "1e51f4fe944c7541ed284f037a9c6a44",
+   "size": 2063099
+  },
+  "godot/assets/concept/meshy/olivia/olivia_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:39+00:00",
+   "md5": "db98d77ea49bebe05022010ced9f42ce",
+   "size": 1954242
+  },
+  "godot/assets/concept/meshy/olivia/side.png": {
+   "at": "2026-10-28T03:14:39+00:00",
+   "md5": "db98d77ea49bebe05022010ced9f42ce",
+   "size": 1954242
+  },
+  "godot/assets/concept/meshy/out_of_towner/back.png": {
+   "at": "2026-10-28T03:14:49+00:00",
+   "md5": "f6018bf277d7c9d0f3fb8c03dd7148d2",
+   "size": 1960054
+  },
+  "godot/assets/concept/meshy/out_of_towner/front.png": {
+   "at": "2026-10-28T03:14:49+00:00",
+   "md5": "e65d2f9d05d59e08593e719bc232c504",
+   "size": 1944582
+  },
+  "godot/assets/concept/meshy/out_of_towner/out_of_towner_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:49+00:00",
+   "md5": "f6018bf277d7c9d0f3fb8c03dd7148d2",
+   "size": 1960054
+  },
+  "godot/assets/concept/meshy/out_of_towner/out_of_towner_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:49+00:00",
+   "md5": "e65d2f9d05d59e08593e719bc232c504",
+   "size": 1944582
+  },
+  "godot/assets/concept/meshy/out_of_towner/out_of_towner_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:14:49+00:00",
+   "md5": "96f39f1c22749ecf9acf2795b00a860f",
+   "size": 1938006
+  },
+  "godot/assets/concept/meshy/out_of_towner/side.png": {
+   "at": "2026-10-28T03:14:49+00:00",
+   "md5": "96f39f1c22749ecf9acf2795b00a860f",
+   "size": 1938006
+  },
   "godot/assets/concept/meshy/panel_vol5_folded_napkin/front.png": {
    "at": "2026-10-27T04:17:39+00:00",
    "md5": "9a475767f24500fa410a44c27807ee90",
@@ -83259,6 +84979,36 @@
    "at": "2026-10-27T15:28:13+00:00",
    "md5": "77f0fb299a8fd51598556194da40ce3a",
    "size": 2614522
+  },
+  "godot/assets/concept/meshy/pastor_tim/back.png": {
+   "at": "2026-10-28T03:15:01+00:00",
+   "md5": "6d6e2c02a34e11f61fd0b398875a7de0",
+   "size": 2059343
+  },
+  "godot/assets/concept/meshy/pastor_tim/front.png": {
+   "at": "2026-10-28T03:15:01+00:00",
+   "md5": "8677ef56cd990a4adc9306a30da45322",
+   "size": 2108103
+  },
+  "godot/assets/concept/meshy/pastor_tim/pastor_tim_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:01+00:00",
+   "md5": "6d6e2c02a34e11f61fd0b398875a7de0",
+   "size": 2059343
+  },
+  "godot/assets/concept/meshy/pastor_tim/pastor_tim_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:01+00:00",
+   "md5": "8677ef56cd990a4adc9306a30da45322",
+   "size": 2108103
+  },
+  "godot/assets/concept/meshy/pastor_tim/pastor_tim_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:01+00:00",
+   "md5": "9c1a421d5f8b531e0549fef26d48b94d",
+   "size": 1981818
+  },
+  "godot/assets/concept/meshy/pastor_tim/side.png": {
+   "at": "2026-10-28T03:15:01+00:00",
+   "md5": "9c1a421d5f8b531e0549fef26d48b94d",
+   "size": 1981818
   },
   "godot/assets/concept/meshy/pauls_black_car/back.png": {
    "at": "2026-10-27T18:58:46+00:00",
@@ -85930,6 +87680,36 @@
    "md5": "aae857e7f0c456d4c7d8be423ca3c86a",
    "size": 67016
   },
+  "godot/assets/concept/meshy/red_string_ball/back.png": {
+   "at": "2026-10-28T03:15:13+00:00",
+   "md5": "8d9fc461c2b8cc716f72efa3a826e003",
+   "size": 1502693
+  },
+  "godot/assets/concept/meshy/red_string_ball/front.png": {
+   "at": "2026-10-28T03:15:13+00:00",
+   "md5": "8dd60214647afd397bf8ebb5bf2c51d2",
+   "size": 1415459
+  },
+  "godot/assets/concept/meshy/red_string_ball/red_string_ball_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:13+00:00",
+   "md5": "8d9fc461c2b8cc716f72efa3a826e003",
+   "size": 1502693
+  },
+  "godot/assets/concept/meshy/red_string_ball/red_string_ball_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:13+00:00",
+   "md5": "8dd60214647afd397bf8ebb5bf2c51d2",
+   "size": 1415459
+  },
+  "godot/assets/concept/meshy/red_string_ball/red_string_ball_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:13+00:00",
+   "md5": "ec2e419c9ffc22239a0a4399e5fecf96",
+   "size": 1474836
+  },
+  "godot/assets/concept/meshy/red_string_ball/side.png": {
+   "at": "2026-10-28T03:15:13+00:00",
+   "md5": "ec2e419c9ffc22239a0a4399e5fecf96",
+   "size": 1474836
+  },
   "godot/assets/concept/meshy/relic_kayak/back.png": {
    "at": "2026-10-27T19:09:54+00:00",
    "md5": "9af960cdee72632b7faa0fd688664109",
@@ -86355,6 +88135,66 @@
    "md5": "5fce7b24fa8314005b26f3fe2141c059",
    "size": 2822744
   },
+  "godot/assets/concept/meshy/ron/back.png": {
+   "at": "2026-10-28T03:15:27+00:00",
+   "md5": "8d76e0f29e0e26cc22af31c4ed84325c",
+   "size": 2117531
+  },
+  "godot/assets/concept/meshy/ron/front.png": {
+   "at": "2026-10-28T03:15:27+00:00",
+   "md5": "8aac1b782a729945bfc0bea8dfffa6ff",
+   "size": 2165276
+  },
+  "godot/assets/concept/meshy/ron/ron_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:27+00:00",
+   "md5": "8d76e0f29e0e26cc22af31c4ed84325c",
+   "size": 2117531
+  },
+  "godot/assets/concept/meshy/ron/ron_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:27+00:00",
+   "md5": "8aac1b782a729945bfc0bea8dfffa6ff",
+   "size": 2165276
+  },
+  "godot/assets/concept/meshy/ron/ron_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:27+00:00",
+   "md5": "505cb4357861d02df22782b1e4d4326c",
+   "size": 1990941
+  },
+  "godot/assets/concept/meshy/ron/side.png": {
+   "at": "2026-10-28T03:15:27+00:00",
+   "md5": "505cb4357861d02df22782b1e4d4326c",
+   "size": 1990941
+  },
+  "godot/assets/concept/meshy/ron_typewriter/back.png": {
+   "at": "2026-10-28T03:15:38+00:00",
+   "md5": "879fa60ce2a8a9671e94f0e6a850a0a4",
+   "size": 1415995
+  },
+  "godot/assets/concept/meshy/ron_typewriter/front.png": {
+   "at": "2026-10-28T03:15:38+00:00",
+   "md5": "0fa4a4515e31fb55495a8d3f6589ef15",
+   "size": 1571541
+  },
+  "godot/assets/concept/meshy/ron_typewriter/ron_typewriter_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:38+00:00",
+   "md5": "879fa60ce2a8a9671e94f0e6a850a0a4",
+   "size": 1415995
+  },
+  "godot/assets/concept/meshy/ron_typewriter/ron_typewriter_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:38+00:00",
+   "md5": "0fa4a4515e31fb55495a8d3f6589ef15",
+   "size": 1571541
+  },
+  "godot/assets/concept/meshy/ron_typewriter/ron_typewriter_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:38+00:00",
+   "md5": "ad824a4b384685351c60c7054e0c443c",
+   "size": 1439026
+  },
+  "godot/assets/concept/meshy/ron_typewriter/side.png": {
+   "at": "2026-10-28T03:15:38+00:00",
+   "md5": "ad824a4b384685351c60c7054e0c443c",
+   "size": 1439026
+  },
   "godot/assets/concept/meshy/roy/back.png": {
    "at": "2026-10-11T19:18:35+00:00",
    "md5": "a521a5b4f00a249ecb61e61e017847f7",
@@ -86519,6 +88359,16 @@
    "at": "2026-10-11T18:05:05+00:00",
    "md5": "775826aa4e7d8570865d1b3433822164",
    "size": 1962811
+  },
+  "godot/assets/concept/meshy/salty_tome_front_window/front.png": {
+   "at": "2026-10-28T03:15:46+00:00",
+   "md5": "94fbb11a4bbaad7b208a4669a6e8e5e2",
+   "size": 2739587
+  },
+  "godot/assets/concept/meshy/salty_tome_front_window/salty_tome_front_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:46+00:00",
+   "md5": "94fbb11a4bbaad7b208a4669a6e8e5e2",
+   "size": 2739587
   },
   "godot/assets/concept/meshy/salty_tome_interior_alley_muralwall/front.png": {
    "at": "2026-10-14T05:31:17+00:00",
@@ -86970,6 +88820,36 @@
    "md5": "700f1b21c81fe58fedbb65b7022b4c30",
    "size": 1207656
   },
+  "godot/assets/concept/meshy/shannon/back.png": {
+   "at": "2026-10-28T03:15:58+00:00",
+   "md5": "d7fe3b819ab2d468f6d80ab4e37da6d7",
+   "size": 2186245
+  },
+  "godot/assets/concept/meshy/shannon/front.png": {
+   "at": "2026-10-28T03:15:58+00:00",
+   "md5": "866ef71a0f2fc00bf658258e0698e160",
+   "size": 2236650
+  },
+  "godot/assets/concept/meshy/shannon/shannon_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:58+00:00",
+   "md5": "d7fe3b819ab2d468f6d80ab4e37da6d7",
+   "size": 2186245
+  },
+  "godot/assets/concept/meshy/shannon/shannon_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:58+00:00",
+   "md5": "866ef71a0f2fc00bf658258e0698e160",
+   "size": 2236650
+  },
+  "godot/assets/concept/meshy/shannon/shannon_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:15:58+00:00",
+   "md5": "a7f8c6949ea9d1fce9e85d9298546058",
+   "size": 2021543
+  },
+  "godot/assets/concept/meshy/shannon/side.png": {
+   "at": "2026-10-28T03:15:58+00:00",
+   "md5": "a7f8c6949ea9d1fce9e85d9298546058",
+   "size": 2021543
+  },
   "godot/assets/concept/meshy/shortwave_radio/back.png": {
    "at": "2026-10-27T19:00:04+00:00",
    "md5": "65b8dca5267441cd71a4dbd521b10900",
@@ -86999,6 +88879,36 @@
    "at": "2026-10-27T19:00:04+00:00",
    "md5": "4595f23aadf84b40b7dd7a5c78f04f24",
    "size": 1486100
+  },
+  "godot/assets/concept/meshy/sister_carrie_book/back.png": {
+   "at": "2026-10-28T03:16:10+00:00",
+   "md5": "a4c22f961017ae2960f4b22ae51bd927",
+   "size": 1433666
+  },
+  "godot/assets/concept/meshy/sister_carrie_book/front.png": {
+   "at": "2026-10-28T03:16:10+00:00",
+   "md5": "2f0b2d44fd43a2818be042aee59bb21c",
+   "size": 1494084
+  },
+  "godot/assets/concept/meshy/sister_carrie_book/side.png": {
+   "at": "2026-10-28T03:16:10+00:00",
+   "md5": "22f00fa0209cfd1163935224499eb09b",
+   "size": 1190854
+  },
+  "godot/assets/concept/meshy/sister_carrie_book/sister_carrie_book_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:10+00:00",
+   "md5": "a4c22f961017ae2960f4b22ae51bd927",
+   "size": 1433666
+  },
+  "godot/assets/concept/meshy/sister_carrie_book/sister_carrie_book_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:10+00:00",
+   "md5": "2f0b2d44fd43a2818be042aee59bb21c",
+   "size": 1494084
+  },
+  "godot/assets/concept/meshy/sister_carrie_book/sister_carrie_book_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:10+00:00",
+   "md5": "22f00fa0209cfd1163935224499eb09b",
+   "size": 1190854
   },
   "godot/assets/concept/meshy/skip_donnelly/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -87550,6 +89460,36 @@
    "md5": "458cdd0b33e9dd53b1f7272f0a8eb049",
    "size": 1146376
   },
+  "godot/assets/concept/meshy/star_gal/back.png": {
+   "at": "2026-10-28T03:16:21+00:00",
+   "md5": "dc150b6636c455af5cafefdf58344373",
+   "size": 2172996
+  },
+  "godot/assets/concept/meshy/star_gal/front.png": {
+   "at": "2026-10-28T03:16:21+00:00",
+   "md5": "207ab38ab94afaed606c44e9968cc0f6",
+   "size": 2253562
+  },
+  "godot/assets/concept/meshy/star_gal/side.png": {
+   "at": "2026-10-28T03:16:21+00:00",
+   "md5": "6781e7b98486f6430924a7f3e3c29e20",
+   "size": 2074506
+  },
+  "godot/assets/concept/meshy/star_gal/star_gal_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:21+00:00",
+   "md5": "dc150b6636c455af5cafefdf58344373",
+   "size": 2172996
+  },
+  "godot/assets/concept/meshy/star_gal/star_gal_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:21+00:00",
+   "md5": "207ab38ab94afaed606c44e9968cc0f6",
+   "size": 2253562
+  },
+  "godot/assets/concept/meshy/star_gal/star_gal_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:21+00:00",
+   "md5": "6781e7b98486f6430924a7f3e3c29e20",
+   "size": 2074506
+  },
   "godot/assets/concept/meshy/star_key/back.png": {
    "at": "2026-10-19T19:11:23+00:00",
    "md5": "533bb6dce88a05347c7169a62a356c4b",
@@ -87644,6 +89584,36 @@
    "at": "2026-10-11T21:20:04+00:00",
    "md5": "25162f875d29f40abbc296ca2b6f23df",
    "size": 1351782
+  },
+  "godot/assets/concept/meshy/steven_chau/back.png": {
+   "at": "2026-10-28T03:16:33+00:00",
+   "md5": "19ff0a7044cded36f1b9ce5d5c350e47",
+   "size": 2057079
+  },
+  "godot/assets/concept/meshy/steven_chau/front.png": {
+   "at": "2026-10-28T03:16:33+00:00",
+   "md5": "0893b32b916487bb36faee3129763992",
+   "size": 2119136
+  },
+  "godot/assets/concept/meshy/steven_chau/side.png": {
+   "at": "2026-10-28T03:16:33+00:00",
+   "md5": "a4d896667b1732c96be0c5bed89d12b1",
+   "size": 1949957
+  },
+  "godot/assets/concept/meshy/steven_chau/steven_chau_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:33+00:00",
+   "md5": "19ff0a7044cded36f1b9ce5d5c350e47",
+   "size": 2057079
+  },
+  "godot/assets/concept/meshy/steven_chau/steven_chau_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:33+00:00",
+   "md5": "0893b32b916487bb36faee3129763992",
+   "size": 2119136
+  },
+  "godot/assets/concept/meshy/steven_chau/steven_chau_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:33+00:00",
+   "md5": "a4d896667b1732c96be0c5bed89d12b1",
+   "size": 1949957
   },
   "godot/assets/concept/meshy/stick_reader/back.png": {
    "at": "2026-10-27T14:28:38+00:00",
@@ -87895,6 +89865,66 @@
    "md5": "6427d677f8962f0c9a2265e851ee2998",
    "size": 1978558
   },
+  "godot/assets/concept/meshy/the_businesswoman/back.png": {
+   "at": "2026-10-28T03:16:43+00:00",
+   "md5": "ed446d14edc3c1801a44d3fd660ae949",
+   "size": 1938854
+  },
+  "godot/assets/concept/meshy/the_businesswoman/front.png": {
+   "at": "2026-10-28T03:16:43+00:00",
+   "md5": "81c58d48a241cc5c22600818be6effef",
+   "size": 1993886
+  },
+  "godot/assets/concept/meshy/the_businesswoman/side.png": {
+   "at": "2026-10-28T03:16:43+00:00",
+   "md5": "199e7d291394f6bc8e40f054a66e3c52",
+   "size": 1882777
+  },
+  "godot/assets/concept/meshy/the_businesswoman/the_businesswoman_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:43+00:00",
+   "md5": "ed446d14edc3c1801a44d3fd660ae949",
+   "size": 1938854
+  },
+  "godot/assets/concept/meshy/the_businesswoman/the_businesswoman_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:43+00:00",
+   "md5": "81c58d48a241cc5c22600818be6effef",
+   "size": 1993886
+  },
+  "godot/assets/concept/meshy/the_businesswoman/the_businesswoman_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:16:43+00:00",
+   "md5": "199e7d291394f6bc8e40f054a66e3c52",
+   "size": 1882777
+  },
+  "godot/assets/concept/meshy/the_core/back.png": {
+   "at": "2026-10-28T03:17:03+00:00",
+   "md5": "23ea7300bd6bf2d48062b78ab322db46",
+   "size": 2448289
+  },
+  "godot/assets/concept/meshy/the_core/front.png": {
+   "at": "2026-10-28T03:17:03+00:00",
+   "md5": "2b858dd21eb828e3245016dd5586c812",
+   "size": 2536146
+  },
+  "godot/assets/concept/meshy/the_core/side.png": {
+   "at": "2026-10-28T03:17:03+00:00",
+   "md5": "6127b20a533648f754a0951c4bc97234",
+   "size": 2312706
+  },
+  "godot/assets/concept/meshy/the_core/the_core_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:03+00:00",
+   "md5": "23ea7300bd6bf2d48062b78ab322db46",
+   "size": 2448289
+  },
+  "godot/assets/concept/meshy/the_core/the_core_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:03+00:00",
+   "md5": "2b858dd21eb828e3245016dd5586c812",
+   "size": 2536146
+  },
+  "godot/assets/concept/meshy/the_core/the_core_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:03+00:00",
+   "md5": "6127b20a533648f754a0951c4bc97234",
+   "size": 2312706
+  },
   "godot/assets/concept/meshy/the_critic/back.png": {
    "at": "2026-10-27T16:44:00+00:00",
    "md5": "725fcf4be44919d6894bd39c9625333f",
@@ -87979,6 +90009,36 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "cffc04a12667559abdbaaa74d0aadc71",
    "size": 102353
+  },
+  "godot/assets/concept/meshy/the_fool/back.png": {
+   "at": "2026-10-28T03:17:25+00:00",
+   "md5": "520026d5b3f6b4b33e9eccc1d5b6512b",
+   "size": 2230647
+  },
+  "godot/assets/concept/meshy/the_fool/front.png": {
+   "at": "2026-10-28T03:17:25+00:00",
+   "md5": "70c4c538bcfe5d3e9836b34b5a3baeb1",
+   "size": 2204194
+  },
+  "godot/assets/concept/meshy/the_fool/side.png": {
+   "at": "2026-10-28T03:17:25+00:00",
+   "md5": "e8732419359818d9406f440e9b7cd790",
+   "size": 2089634
+  },
+  "godot/assets/concept/meshy/the_fool/the_fool_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:25+00:00",
+   "md5": "520026d5b3f6b4b33e9eccc1d5b6512b",
+   "size": 2230647
+  },
+  "godot/assets/concept/meshy/the_fool/the_fool_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:25+00:00",
+   "md5": "70c4c538bcfe5d3e9836b34b5a3baeb1",
+   "size": 2204194
+  },
+  "godot/assets/concept/meshy/the_fool/the_fool_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:25+00:00",
+   "md5": "e8732419359818d9406f440e9b7cd790",
+   "size": 2089634
   },
   "godot/assets/concept/meshy/the_frog/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -88255,6 +90315,66 @@
    "md5": "8785d642a4c341660e8c4351f3d836ed",
    "size": 1910593
   },
+  "godot/assets/concept/meshy/tourista/back.png": {
+   "at": "2026-10-28T03:17:37+00:00",
+   "md5": "0d2eda58f8f6da1589f8e4239e81262d",
+   "size": 1987084
+  },
+  "godot/assets/concept/meshy/tourista/front.png": {
+   "at": "2026-10-28T03:17:37+00:00",
+   "md5": "d41b45e1907f504bc077a7386a449e4f",
+   "size": 2028384
+  },
+  "godot/assets/concept/meshy/tourista/side.png": {
+   "at": "2026-10-28T03:17:37+00:00",
+   "md5": "48b40bfd0264a3f4d67da2e899390c2b",
+   "size": 1962134
+  },
+  "godot/assets/concept/meshy/tourista/tourista_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:37+00:00",
+   "md5": "0d2eda58f8f6da1589f8e4239e81262d",
+   "size": 1987084
+  },
+  "godot/assets/concept/meshy/tourista/tourista_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:37+00:00",
+   "md5": "d41b45e1907f504bc077a7386a449e4f",
+   "size": 2028384
+  },
+  "godot/assets/concept/meshy/tourista/tourista_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:37+00:00",
+   "md5": "48b40bfd0264a3f4d67da2e899390c2b",
+   "size": 1962134
+  },
+  "godot/assets/concept/meshy/toy_soldier/back.png": {
+   "at": "2026-10-28T03:17:46+00:00",
+   "md5": "af5d15abfe0fd177b851fdb4586dc00e",
+   "size": 1274378
+  },
+  "godot/assets/concept/meshy/toy_soldier/front.png": {
+   "at": "2026-10-28T03:17:46+00:00",
+   "md5": "b0273ab1ec49a3c272479e4734143b01",
+   "size": 1145535
+  },
+  "godot/assets/concept/meshy/toy_soldier/side.png": {
+   "at": "2026-10-28T03:17:46+00:00",
+   "md5": "ae07446c756e80673b8a59b7613c2e4e",
+   "size": 1301592
+  },
+  "godot/assets/concept/meshy/toy_soldier/toy_soldier_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:46+00:00",
+   "md5": "af5d15abfe0fd177b851fdb4586dc00e",
+   "size": 1274378
+  },
+  "godot/assets/concept/meshy/toy_soldier/toy_soldier_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:46+00:00",
+   "md5": "b0273ab1ec49a3c272479e4734143b01",
+   "size": 1145535
+  },
+  "godot/assets/concept/meshy/toy_soldier/toy_soldier_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:17:46+00:00",
+   "md5": "ae07446c756e80673b8a59b7613c2e4e",
+   "size": 1301592
+  },
   "godot/assets/concept/meshy/tucker/back.png": {
    "at": "2026-10-19T14:53:36+00:00",
    "md5": "1a88b33db46f12c25bdd40d5670e5f7f",
@@ -88310,6 +90430,36 @@
    "md5": "e9a190795059933b0adbd91bc9aa0902",
    "size": 2610272
   },
+  "godot/assets/concept/meshy/uncle_nick/back.png": {
+   "at": "2026-10-28T03:18:00+00:00",
+   "md5": "ecd91517754840179cac34e06942f239",
+   "size": 1828206
+  },
+  "godot/assets/concept/meshy/uncle_nick/front.png": {
+   "at": "2026-10-28T03:18:00+00:00",
+   "md5": "7252327717633782cafbf52af802eb67",
+   "size": 1857397
+  },
+  "godot/assets/concept/meshy/uncle_nick/side.png": {
+   "at": "2026-10-28T03:18:00+00:00",
+   "md5": "740d0732636aab201ac9d8a2c0889fea",
+   "size": 1826035
+  },
+  "godot/assets/concept/meshy/uncle_nick/uncle_nick_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:00+00:00",
+   "md5": "ecd91517754840179cac34e06942f239",
+   "size": 1828206
+  },
+  "godot/assets/concept/meshy/uncle_nick/uncle_nick_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:00+00:00",
+   "md5": "7252327717633782cafbf52af802eb67",
+   "size": 1857397
+  },
+  "godot/assets/concept/meshy/uncle_nick/uncle_nick_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:00+00:00",
+   "md5": "740d0732636aab201ac9d8a2c0889fea",
+   "size": 1826035
+  },
   "godot/assets/concept/meshy/vehicle_cab_altima_map/front.png": {
    "at": "2026-10-14T03:29:03+00:00",
    "md5": "904acb938120a9a8617ebe177ad47817",
@@ -88349,6 +90499,36 @@
    "at": "2026-10-14T03:29:24+00:00",
    "md5": "b7e96cd2b6f2385a1cf0a4bfb05eca58",
    "size": 2471616
+  },
+  "godot/assets/concept/meshy/verse/back.png": {
+   "at": "2026-10-28T03:18:09+00:00",
+   "md5": "aefc68379db7c038d8a01a3917adf629",
+   "size": 2242752
+  },
+  "godot/assets/concept/meshy/verse/front.png": {
+   "at": "2026-10-28T03:18:09+00:00",
+   "md5": "4e15abca45c82e4e1a586ef991b3f859",
+   "size": 2308670
+  },
+  "godot/assets/concept/meshy/verse/side.png": {
+   "at": "2026-10-28T03:18:09+00:00",
+   "md5": "f4c0a8c47c163439f705d156b177e374",
+   "size": 2119611
+  },
+  "godot/assets/concept/meshy/verse/verse_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:09+00:00",
+   "md5": "aefc68379db7c038d8a01a3917adf629",
+   "size": 2242752
+  },
+  "godot/assets/concept/meshy/verse/verse_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:09+00:00",
+   "md5": "4e15abca45c82e4e1a586ef991b3f859",
+   "size": 2308670
+  },
+  "godot/assets/concept/meshy/verse/verse_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:09+00:00",
+   "md5": "f4c0a8c47c163439f705d156b177e374",
+   "size": 2119611
   },
   "godot/assets/concept/meshy/vince_kane/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -90115,6 +92295,26 @@
    "md5": "b90c84a463af7f82c853751a629b4856",
    "size": 2053934
   },
+  "godot/assets/concept/meshy/workshop_girl/front.png": {
+   "at": "2026-10-28T03:18:23+00:00",
+   "md5": "3d582dd7a1ed704aab7ea9774cd2d920",
+   "size": 2119647
+  },
+  "godot/assets/concept/meshy/workshop_girl/side.png": {
+   "at": "2026-10-28T03:18:23+00:00",
+   "md5": "75be623db91a9cd418bb4d9970b2c5e5",
+   "size": 1977096
+  },
+  "godot/assets/concept/meshy/workshop_girl/workshop_girl_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:23+00:00",
+   "md5": "3d582dd7a1ed704aab7ea9774cd2d920",
+   "size": 2119647
+  },
+  "godot/assets/concept/meshy/workshop_girl/workshop_girl_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:23+00:00",
+   "md5": "75be623db91a9cd418bb4d9970b2c5e5",
+   "size": 1977096
+  },
   "godot/assets/concept/meshy/wren/back.png": {
    "at": "2026-10-11T17:33:50+00:00",
    "md5": "1d93e87f3552e0047f62348173730f78",
@@ -90260,15 +92460,35 @@
    "md5": "1470911808964b6e79e67b7570a21a8e",
    "size": 2121197
   },
+  "godot/assets/concept/meshy/yellow_raincoat_small/back.png": {
+   "at": "2026-10-28T03:18:34+00:00",
+   "md5": "59e80f11a28b4fcc7c7817c9aa5ec792",
+   "size": 1189467
+  },
   "godot/assets/concept/meshy/yellow_raincoat_small/front.png": {
    "at": "2026-10-27T19:38:06+00:00",
    "md5": "35527d7d4e74e97e5a8264da22580478",
    "size": 1117176
   },
+  "godot/assets/concept/meshy/yellow_raincoat_small/side.png": {
+   "at": "2026-10-28T03:18:34+00:00",
+   "md5": "8653dffcacd5be90d95773d2adc04643",
+   "size": 1138082
+  },
+  "godot/assets/concept/meshy/yellow_raincoat_small/yellow_raincoat_small_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:34+00:00",
+   "md5": "59e80f11a28b4fcc7c7817c9aa5ec792",
+   "size": 1189467
+  },
   "godot/assets/concept/meshy/yellow_raincoat_small/yellow_raincoat_small_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T19:38:06+00:00",
    "md5": "35527d7d4e74e97e5a8264da22580478",
    "size": 1117176
+  },
+  "godot/assets/concept/meshy/yellow_raincoat_small/yellow_raincoat_small_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T03:18:34+00:00",
+   "md5": "8653dffcacd5be90d95773d2adc04643",
+   "size": 1138082
   },
   "godot/assets/video/intro.ogv": {
    "at": "2026-10-01T05:59:49+00:00",
