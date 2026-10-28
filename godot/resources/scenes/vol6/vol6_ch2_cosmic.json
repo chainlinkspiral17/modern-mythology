@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Maya is at the counter when the bell above the door chimes.",
+      "text": "[shot:insert counter][mood:morning_bright]Maya is at the counter when the bell above the door chimes.",
       "voice": "assets/audio/voice/vol6_ch2_cosmic/006.mp3"
     },
     {
@@ -193,7 +193,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya returns to the indie rack.",
+      "text": "[shot:insert rack]Maya returns to the indie rack.",
       "voice": "assets/audio/voice/vol6_ch2_cosmic/033.mp3"
     },
     {

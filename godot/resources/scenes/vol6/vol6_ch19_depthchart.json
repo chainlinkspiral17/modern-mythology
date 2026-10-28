@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bill, in the way Bill has been doing all summer when the conversation about football has had to happen, looks up from the crossword.",
+      "text": "[shot:insert crossword]Bill, in the way Bill has been doing all summer when the conversation about football has had to happen, looks up from the crossword.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/052.mp3"
     },
     {
@@ -365,7 +365,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bill returns to the crossword.",
+      "text": "[shot:insert crossword]Bill returns to the crossword.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/064.mp3"
     },
     {
@@ -383,7 +383,7 @@
     },
     {
       "t": "narrate",
-      "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes.",
+      "text": "[shot:insert couch]He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/068.mp3"
     },
     {
@@ -437,7 +437,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marcus, who turns when Ben gets out of the Civic, gives Ben a small thumbs-up that is, by Marcus's unmistakable register, the yeah man of a teammate who has already read the sheet and who is signaling Ben that the read is going to be good.",
+      "text": "[shot:insert sheet]Marcus, who turns when Ben gets out of the Civic, gives Ben a small thumbs-up that is, by Marcus's unmistakable register, the yeah man of a teammate who has already read the sheet and who is signaling Ben that the read is going to be good.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/079.mp3"
     },
     {
@@ -571,7 +571,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out.",
+      "text": "[shot:insert seat]Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/102.mp3"
     },
     {
@@ -739,7 +739,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, on instinct that he does not, in the moment, examine, pulls the Civic into the small lot behind the shed.",
+      "text": "[shot:insert shed]Ben, on instinct that he does not, in the moment, examine, pulls the Civic into the small lot behind the shed.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/132.mp3"
     },
     {
@@ -829,7 +829,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits on the small overturned milk crate Coach Dale gestures at.",
+      "text": "[shot:insert milk]He sits on the small overturned milk crate Coach Dale gestures at.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/147.mp3"
     },
     {
@@ -1159,7 +1159,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, on the milk crate, in the shed, with the tees half-sorted at his feet, does not, for a long moment, respond.",
+      "text": "[shot:insert milk]Ben, on the milk crate, in the shed, with the tees half-sorted at his feet, does not, for a long moment, respond.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/198.mp3"
     },
     {
@@ -1260,7 +1260,7 @@
     },
     {
       "t": "narrate",
-      "text": "The tees, by one twenty-one, are sorted.",
+      "text": "[shot:insert tees]The tees, by one twenty-one, are sorted.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/213.mp3"
     },
     {
@@ -1293,7 +1293,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets up. He goes to the door of the shed.",
+      "text": "[shot:insert door]He gets up. He goes to the door of the shed.",
       "voice": "assets/audio/voice/vol6_ch19_depthchart/218.mp3"
     },
     {

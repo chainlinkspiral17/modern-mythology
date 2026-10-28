@@ -156,7 +156,7 @@
   },
   {
    "t": "narrate",
-   "text": "Whoever ate the last of the coffee at three is on my list.",
+   "text": "[shot:insert coffee]Whoever ate the last of the coffee at three is on my list.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/027.mp3"
   },
   {
@@ -341,7 +341,7 @@
   },
   {
    "t": "narrate",
-   "text": "The scanner beeps. He moves to the next can.",
+   "text": "[shot:insert scanner]The scanner beeps. He moves to the next can.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/064.mp3"
   },
   {
@@ -379,7 +379,7 @@
   },
   {
    "t": "narrate",
-   "text": "Russell looks up from the clipboard.",
+   "text": "[shot:insert clipboard]Russell looks up from the clipboard.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/071.mp3"
   },
   {
@@ -500,7 +500,7 @@
   },
   {
    "t": "narrate",
-   "text": "BT stops at the shelf next to Diego. He holds his hand out for the scanner.",
+   "text": "[shot:insert scanner]BT stops at the shelf next to Diego. He holds his hand out for the scanner.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/090.mp3"
   },
   {
@@ -882,7 +882,7 @@
   },
   {
    "t": "narrate",
-   "text": "The team listens to BT's footsteps cross the break-room corridor, hit the dock, push the dock door open, fade.",
+   "text": "[shot:insert dock]The team listens to BT's footsteps cross the break-room corridor, hit the dock, push the dock door open, fade.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/155.mp3"
   },
   {
@@ -923,7 +923,7 @@
   },
   {
    "t": "narrate",
-   "text": "Russell sets the Express-News down on the table.",
+   "text": "[shot:insert table]Russell sets the Express-News down on the table.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/162.mp3"
   },
   {
@@ -1490,7 +1490,7 @@
   },
   {
    "t": "narrate",
-   "text": "He drives with the radio off. He has not, this morning, decided what music he wants in the truck.",
+   "text": "[shot:insert radio]He drives with the radio off. He has not, this morning, decided what music he wants in the truck.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/254.mp3"
   },
   {

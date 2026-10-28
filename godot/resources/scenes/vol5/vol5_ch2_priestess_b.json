@@ -26,7 +26,7 @@
     },
     {
       "t": "narrate",
-      "text": "She set the page down. The teacup that had belonged to her mother — which she had picked up again without noticing — was now in her left hand. She set that down too.",
+      "text": "[shot:insert page]She set the page down. The teacup that had belonged to her mother — which she had picked up again without noticing — was now in her left hand. She set that down too.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/003.mp3"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her phone buzzed again. She ignored it again.",
+      "text": "[shot:insert phone]Her phone buzzed again. She ignored it again.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/008.mp3"
     },
     {
@@ -175,7 +175,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:bungalow_late]The void she had flirted with in her scripts. The comforting darkness she had offered as an artistic choice. Was starting to feel less like an aesthetic and more like — well. Home.",
+      "text": "[shot:insert scripts][mood:bungalow_late]The void she had flirted with in her scripts. The comforting darkness she had offered as an artistic choice. Was starting to feel less like an aesthetic and more like — well. Home.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/028.mp3"
     },
     {

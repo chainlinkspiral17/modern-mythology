@@ -74,7 +74,7 @@
   },
   {
    "t": "narrate",
-   "text": "She drinks her coffee at the table.",
+   "text": "[shot:insert coffee]She drinks her coffee at the table.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/014.mp3"
   },
   {
@@ -89,7 +89,7 @@
   },
   {
    "t": "narrate",
-   "text": "Friday is the table. Saturday is hers. The arrangement is, by the eighth Saturday of it, the thing she did not, back in June, know she was building.",
+   "text": "[shot:insert table]Friday is the table. Saturday is hers. The arrangement is, by the eighth Saturday of it, the thing she did not, back in June, know she was building.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/017.mp3"
   },
   {
@@ -134,7 +134,7 @@
   },
   {
    "t": "narrate",
-   "text": "The kitchen clock, on the wall above the toaster, ticks. The refrigerator hum cycles up at four thirty-six and back down at four forty-two. The cul-de-sac stays dark.",
+   "text": "[shot:insert clock]The kitchen clock, on the wall above the toaster, ticks. The refrigerator hum cycles up at four thirty-six and back down at four forty-two. The cul-de-sac stays dark.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/026.mp3"
   },
   {
@@ -536,7 +536,7 @@
   },
   {
    "t": "narrate",
-   "text": "The cicadas in the crepe myrtle are at their morning volume, which is loud but not yet the full afternoon loud. The cordless in her hand is the cordless.",
+   "text": "[shot:insert myrtle]The cicadas in the crepe myrtle are at their morning volume, which is loud but not yet the full afternoon loud. The cordless in her hand is the cordless.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/090.mp3"
   },
   {
@@ -930,7 +930,7 @@
   },
   {
    "t": "narrate",
-   "text": "She does not know what Don does on Saturday mornings. She knows the porch light. She knows the time. She has been making a relationship out of a porch light for nineteen years.",
+   "text": "[shot:insert porch]She does not know what Don does on Saturday mornings. She knows the porch light. She knows the time. She has been making a relationship out of a porch light for nineteen years.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/153.mp3"
   },
   {
@@ -1004,7 +1004,7 @@
   },
   {
    "t": "narrate",
-   "text": "She is not, at ten-fourteen on a Saturday morning, expecting anybody. Sammy at the Kwik Stop until four. Mike in Alabama. Carmen in San Diego, who has not visited since 2022. The Beecher kid does not, at ten-fourteen, do the route.",
+   "text": "[shot:insert mike]She is not, at ten-fourteen on a Saturday morning, expecting anybody. Sammy at the Kwik Stop until four. Mike in Alabama. Carmen in San Diego, who has not visited since 2022. The Beecher kid does not, at ten-fourteen, do the route.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/167.mp3"
   },
   {

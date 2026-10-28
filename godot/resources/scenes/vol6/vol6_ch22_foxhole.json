@@ -34,7 +34,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse pulls into the lot at five fifty-two. The Civic has been making a noise since June that he has been not addressing. The noise had been louder on the drive over. He cuts the engine. He sits for a count with both hands on the wheel.",
+   "text": "[shot:insert drive]Jesse pulls into the lot at five fifty-two. The Civic has been making a noise since June that he has been not addressing. The noise had been louder on the drive over. He cuts the engine. He sits for a count with both hands on the wheel.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/006.mp3"
   },
   {
@@ -79,7 +79,7 @@
   },
   {
    "t": "narrate",
-   "text": "Two doors down at the back of the strip mall is the unit — the unit Jesse has been watching since June, the unit with the white panel van that comes Tuesday and Wednesday nights between eleven and one, the unit that is, this evening at five fifty-two, dark.",
+   "text": "[shot:insert unit]Two doors down at the back of the strip mall is the unit — the unit Jesse has been watching since June, the unit with the white panel van that comes Tuesday and Wednesday nights between eleven and one, the unit that is, this evening at five fifty-two, dark.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/015.mp3"
   },
   {
@@ -121,7 +121,7 @@
   },
   {
    "t": "narrate",
-   "text": "Em is on the stage with her mic in her hand checking the cord. Carl is at the kit, half-assembled, looking at the snare's wing nut. Nate is plugging the bass into the house DI.",
+   "text": "[shot:insert bass]Em is on the stage with her mic in her hand checking the cord. Carl is at the kit, half-assembled, looking at the snare's wing nut. Nate is plugging the bass into the house DI.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/023.mp3"
   },
   {
@@ -257,7 +257,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ricky has white hair pulled back in a small tail. Ricky drinks Topo Chico from the cooler under the board.",
+   "text": "[shot:insert cooler]Ricky has white hair pulled back in a small tail. Ricky drinks Topo Chico from the cooler under the board.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/047.mp3"
   },
   {
@@ -287,7 +287,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jess, leave your knob where it is. Carl, when you do the fill on the third bar of the third song you do the high tom too hard. Hit it like you want to be married to it, not like you're mad at it.",
+   "text": "[shot:insert knob]Jess, leave your knob where it is. Carl, when you do the fill on the third bar of the third song you do the high tom too hard. Hit it like you want to be married to it, not like you're mad at it.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/053.mp3"
   },
   {
@@ -334,7 +334,7 @@
   },
   {
    "t": "narrate",
-   "text": "The four of them are spread across the room: Em on one folding chair stretching her neck, Carl on the floor against the wall with his sticks rolling between his palms, Nate on the second folding chair on his phone, Jesse standing at the rack with one hand on the metal.",
+   "text": "[shot:insert rack]The four of them are spread across the room: Em on one folding chair stretching her neck, Carl on the floor against the wall with his sticks rolling between his palms, Nate on the second folding chair on his phone, Jesse standing at the rack with one hand on the metal.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/062.mp3"
   },
   {
@@ -475,7 +475,7 @@
   },
   {
    "t": "narrate",
-   "text": "They walk down the small hallway to the stage door.",
+   "text": "[shot:insert door]They walk down the small hallway to the stage door.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/084.mp3"
   },
   {
@@ -988,7 +988,7 @@
   },
   {
    "t": "narrate",
-   "text": "Chess winks at Jesse from the booth on her way to the first drop.",
+   "text": "[shot:insert booth]Chess winks at Jesse from the booth on her way to the first drop.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/180.mp3"
   },
   {
@@ -1003,7 +1003,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse, at the bar in the back, drinks a beer he is not technically old enough to buy but that he has been buying at this venue since he was nineteen. The bartender, who knows, does not ask. The bartender slides him the bottle. He drinks.",
+   "text": "[shot:insert beer]Jesse, at the bar in the back, drinks a beer he is not technically old enough to buy but that he has been buying at this venue since he was nineteen. The bartender, who knows, does not ask. The bartender slides him the bottle. He drinks.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/183.mp3"
   },
   {
@@ -1018,7 +1018,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse watches the room. The kid who had been at the rail is now talking to a different kid who he had apparently come with. The two of them are at a high-top to the left of the stage. The kid is gesturing.",
+   "text": "[shot:insert rail]Jesse watches the room. The kid who had been at the rail is now talking to a different kid who he had apparently come with. The two of them are at a high-top to the left of the stage. The kid is gesturing.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/186.mp3"
   },
   {
@@ -1114,7 +1114,7 @@
   },
   {
    "t": "narrate",
-   "text": "The dark might mean nothing. The dark might mean the people who run the unit decided that a Saturday with a hundred and twenty people across the lot was a night to be elsewhere. The dark might mean they moved the operation.",
+   "text": "[shot:insert unit]The dark might mean nothing. The dark might mean the people who run the unit decided that a Saturday with a hundred and twenty people across the lot was a night to be elsewhere. The dark might mean they moved the operation.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/205.mp3"
   },
   {

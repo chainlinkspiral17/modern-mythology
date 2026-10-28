@@ -108,7 +108,7 @@
   },
   {
    "t": "narrate",
-   "text": "He crosses to the coffee pot. He pours a mug. He looks at the paper.",
+   "text": "[shot:insert paper]He crosses to the coffee pot. He pours a mug. He looks at the paper.",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/018.mp3"
   },
   {
@@ -156,7 +156,7 @@
   {
    "t": "think",
    "char": "Sam",
-   "text": "07:17 — his phone buzzes. He does not look at it. He lets it buzz itself out.",
+   "text": "[shot:insert phone]07:17 — his phone buzzes. He does not look at it. He lets it buzz itself out.",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/026.mp3"
   },
   {
@@ -325,7 +325,7 @@
   },
   {
    "t": "narrate",
-   "text": "He leaves through the garage. Sam listens to his truck start, reverse out, and leave. She sits at the table. She finishes her cereal.",
+   "text": "[shot:insert table]He leaves through the garage. Sam listens to his truck start, reverse out, and leave. She sits at the table. She finishes her cereal.",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/052.mp3"
   },
   {

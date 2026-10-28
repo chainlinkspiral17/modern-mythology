@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "Skip Donnelly did not see this because Skip was on his phone, which I am now beginning to think is not an accident of Skip's work ethic but an arranged condition.",
+      "text": "[shot:insert phone]Skip Donnelly did not see this because Skip was on his phone, which I am now beginning to think is not an accident of Skip's work ethic but an arranged condition.",
       "voice": "assets/audio/voice/vol6_ch3_pit_stop_office/015.ogg"
     },
     {
@@ -125,7 +125,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the list in the bottom drawer of the desk, beneath the folded apron. He closes the drawer. He stands. He goes to the grill.",
+      "text": "[shot:insert list]He puts the list in the bottom drawer of the desk, beneath the folded apron. He closes the drawer. He stands. He goes to the grill.",
       "voice": "assets/audio/voice/vol6_ch3_pit_stop_office/024.mp3"
     },
     {

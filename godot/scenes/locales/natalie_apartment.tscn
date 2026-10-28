@@ -426,3 +426,69 @@ metadata/fov = 42.0
 position = Vector3(2.750, 1.200, -1.550)
 rotation = Vector3(-0.4647, 2.3884, 0.0)
 metadata/fov = 42.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_blinds__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.669, 1.776, -0.851)
+rotation = Vector3(-0.2618, 0.4275, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_patch__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.392, 0.434, -2.159)
+rotation = Vector3(-0.5236, -0.9869, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_fridge__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.043, 1.505, -3.967)
+rotation = Vector3(-0.1156, -0.6683, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cards__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.977, 0.797, -1.486)
+rotation = Vector3(-0.2618, 0.4475, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lamp__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.271, 1.204, -3.383)
+rotation = Vector3(-0.2618, -1.0673, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_futon__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.138, 1.140, -1.586)
+rotation = Vector3(-0.2618, -1.2579, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_tonearm__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.519, 0.971, -0.562)
+rotation = Vector3(-0.2618, 0.5309, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_platter__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.514, 0.937, -0.599)
+rotation = Vector3(-0.2618, 0.7103, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_seat__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.204, 1.021, -1.256)
+rotation = Vector3(-0.3649, -1.5744, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cards__natalie_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.977, 0.797, -1.486)
+rotation = Vector3(-0.2618, 0.4475, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_notebook__natalie_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.576, 1.057, -0.680)
+rotation = Vector3(-0.2618, -1.5771, 0.0)
+metadata/fov = 35.0

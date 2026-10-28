@@ -462,3 +462,57 @@ metadata/fov = 40.0
 position = Vector3(1.600, 1.200, -2.600)
 rotation = Vector3(-0.4565, -0.8330, 0.0)
 metadata/fov = 40.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffee__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.442, 1.027, -4.168)
+rotation = Vector3(-0.2618, 2.8966, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_dishwasher__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.706, 1.099, -6.159)
+rotation = Vector3(-0.2618, 1.4983, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_eggs__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.611, 1.220, -6.409)
+rotation = Vector3(-0.2618, 1.4805, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_slice__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.688, 1.245, -6.374)
+rotation = Vector3(-0.2618, 1.5040, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffees__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.442, 1.027, -4.168)
+rotation = Vector3(-0.2618, 2.8966, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.692, 1.302, -5.548)
+rotation = Vector3(-0.3162, 2.8215, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_clock__bianca_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.167, 2.212, -6.407)
+rotation = Vector3(-0.2618, 1.0642, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__bianca_kitchen_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.692, 1.302, -5.548)
+rotation = Vector3(-0.3162, 2.8215, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffee__bianca_kitchen_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.442, 1.027, -4.168)
+rotation = Vector3(-0.2618, 2.8966, 0.0)
+metadata/fov = 35.0

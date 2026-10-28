@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him.",
+      "text": "[shot:insert tile]By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him.",
       "voice": "assets/audio/voice/vol6_ch6_boyd/009.mp3"
     },
     {
@@ -160,7 +160,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:",
+      "text": "[shot:insert blanket]Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:",
       "voice": "assets/audio/voice/vol6_ch6_boyd/030.mp3"
     },
     {

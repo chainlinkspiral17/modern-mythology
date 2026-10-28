@@ -252,7 +252,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse stands. He puts his apron on. He goes to his station.",
+   "text": "[shot:insert station]Jesse stands. He puts his apron on. He goes to his station.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/043.mp3"
   },
   {

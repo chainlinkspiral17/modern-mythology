@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior]Chief Miller's home office is in what was, originally, a formal dining room. He converted it in 2018. The table that had been there became his desk. The built-in china cabinet became his file storage.",
+      "text": "[shot:insert desk][mood:rain_interior]Chief Miller's home office is in what was, originally, a formal dining room. He converted it in 2018. The table that had been there became his desk. The built-in china cabinet became his file storage.",
       "voice": "assets/audio/voice/vol6_ch4_miller_office/004.ogg"
     },
     {
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "He picks up the phone on the desk. He types: Need to discuss timing. Can you do 07:30 at the usual place.",
+      "text": "[shot:insert phone]He picks up the phone on the desk. He types: Need to discuss timing. Can you do 07:30 at the usual place.",
       "voice": "assets/audio/voice/vol6_ch4_miller_office/017.mp3"
     },
     {

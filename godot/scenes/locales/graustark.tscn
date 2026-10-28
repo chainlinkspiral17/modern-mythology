@@ -815,3 +815,57 @@ upright = true
 seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Bandstand_Crow_")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_hinges__graustark_chalk_wall_star" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-38.011, 1.653, -15.058)
+rotation = Vector3(-0.5236, 0.1877, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cracks__graustark_chalk_wall_star" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(280.743, 1.643, -344.751)
+rotation = Vector3(-0.2618, -0.3307, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_charcoal__graustark_chalk_wall_star" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(41.042, 0.689, 375.878)
+rotation = Vector3(-0.2618, -2.3241, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_envelope__graustark_shotgun_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(53.068, 1.400, 381.646)
+rotation = Vector3(-0.2618, -0.8445, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_flagstone__graustark_cottage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(50.754, 0.653, 389.557)
+rotation = Vector3(-0.3028, -0.3979, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lemonade__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-195.054, 1.123, -179.643)
+rotation = Vector3(-0.2618, 0.0502, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cats__graustark_chalk_wall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(42.353, 0.524, 374.475)
+rotation = Vector3(-0.2618, -2.0887, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pool__graustark_chalk_wall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-352.154, 1.995, -4.288)
+rotation = Vector3(-0.2618, 0.4524, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_streets__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-31.631, 0.415, 4.390)
+rotation = Vector3(-0.5236, 0.2398, 0.0)
+metadata/fov = 35.0

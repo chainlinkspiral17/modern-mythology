@@ -121,7 +121,7 @@
   },
   {
    "t": "narrate",
-   "text": "He has learned, instead, to walk past the truck, set his bag down at the end of the player bench by the field gate, and begin his own pre-warmup — the shoulder rolls and the static stretches he has been adding to since the second day without being asked.",
+   "text": "[shot:insert bench]He has learned, instead, to walk past the truck, set his bag down at the end of the player bench by the field gate, and begin his own pre-warmup — the shoulder rolls and the static stretches he has been adding to since the second day without being asked.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/023.ogg"
   },
   {
@@ -203,7 +203,7 @@
   },
   {
    "t": "narrate",
-   "text": "The route is the standard one — out the back gate, across the parking lot, through the gap in the fence behind the field house, onto the asphalt road that runs the perimeter of the school grounds, three loops.",
+   "text": "[shot:insert gate]The route is the standard one — out the back gate, across the parking lot, through the gap in the fence behind the field house, onto the asphalt road that runs the perimeter of the school grounds, three loops.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/039.ogg"
   },
   {
@@ -258,7 +258,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K clicks the stopwatch off.",
+   "text": "[shot:insert stopwatch]Coach K clicks the stopwatch off.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/050.mp3"
   },
   {
@@ -284,7 +284,7 @@
   },
   {
    "t": "narrate",
-   "text": "It is small. It has, in 2026, the same equipment it had in 2008 — the year the boosters last raised money for an upgrade. The benches are old. The bars are old. The plates are old.",
+   "text": "[shot:insert bars]It is small. It has, in 2026, the same equipment it had in 2008 — the year the boosters last raised money for an upgrade. The benches are old. The bars are old. The plates are old.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/055.ogg"
   },
   {
@@ -309,7 +309,7 @@
   },
   {
    "t": "narrate",
-   "text": "He has been doing farmer's carries with the heaviest pair of dumbbells the school owns, which are eighty-pounders that have been at the school since 1998 and have, over the years, lost the rubber coating on their handles.",
+   "text": "[shot:insert rubber]He has been doing farmer's carries with the heaviest pair of dumbbells the school owns, which are eighty-pounders that have been at the school since 1998 and have, over the years, lost the rubber coating on their handles.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/060.ogg"
   },
   {
@@ -345,7 +345,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben does not, at the rack, argue. He pulls a five-pound plate off each side. He re-racks. He does the set at the lower weight.",
+   "text": "[shot:insert rack]Ben does not, at the rack, argue. He pulls a five-pound plate off each side. He re-racks. He does the set at the lower weight.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/066.mp3"
   },
   {
@@ -360,7 +360,7 @@
   },
   {
    "t": "narrate",
-   "text": "He moves to the deadlift platform, where Tucker is.",
+   "text": "[shot:insert platform]He moves to the deadlift platform, where Tucker is.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/069.mp3"
   },
   {
@@ -544,7 +544,7 @@
   },
   {
    "t": "narrate",
-   "text": "By seven-thirty the team is at the field gate, in pads.",
+   "text": "[shot:insert gate]By seven-thirty the team is at the field gate, in pads.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/102.mp3"
   },
   {
@@ -565,7 +565,7 @@
   },
   {
    "t": "narrate",
-   "text": "Tucker, who is in the middle of the pack on pads-on time, looks at Pete after he finishes his own. Tucker, without saying anything, walks over to Pete and adjusts the back of Pete's shoulder strap, which Pete has crossed wrong.",
+   "text": "[shot:insert strap]Tucker, who is in the middle of the pack on pads-on time, looks at Pete after he finishes his own. Tucker, without saying anything, walks over to Pete and adjusts the back of Pete's shoulder strap, which Pete has crossed wrong.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/106.mp3"
   },
   {
@@ -611,7 +611,7 @@
   },
   {
    "t": "narrate",
-   "text": "The cone work is the technical part of the morning.",
+   "text": "[shot:insert cone]The cone work is the technical part of the morning.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/114.mp3"
   },
   {
@@ -641,7 +641,7 @@
   },
   {
    "t": "narrate",
-   "text": "His first step is — by his own internal sense, which is, three weeks in, becoming a thing he can trust — better.",
+   "text": "[shot:insert step]His first step is — by his own internal sense, which is, three weeks in, becoming a thing he can trust — better.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/120.ogg"
   },
   {
@@ -829,7 +829,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben drinks from the cooler. He sets the cup down.",
+   "text": "[shot:insert cooler]Ben drinks from the cooler. He sets the cup down.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/154.mp3"
   },
   {
@@ -904,7 +904,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben goes to the field gate, picks up his bag, walks to the locker room. He showers. He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six.",
+   "text": "[shot:insert gate]Ben goes to the field gate, picks up his bag, walks to the locker room. He showers. He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/167.mp3"
   },
   {

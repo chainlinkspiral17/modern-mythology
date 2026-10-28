@@ -360,3 +360,9 @@ metadata/fov = 45.0
 position = Vector3(0.798, 1.612, -4.492)
 rotation = Vector3(-0.2618, 2.6180, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lamp__coach_k_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.624, 0.989, -3.229)
+rotation = Vector3(-0.2618, -0.6947, 0.0)
+metadata/fov = 35.0

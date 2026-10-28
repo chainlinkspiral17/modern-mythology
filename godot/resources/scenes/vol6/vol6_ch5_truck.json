@@ -572,7 +572,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya clicks the seatbelt. The truck pulls away from the curb.",
+   "text": "[shot:insert seatbelt]Maya clicks the seatbelt. The truck pulls away from the curb.",
    "voice": "assets/audio/voice/vol6_ch5_truck/099.mp3"
   },
   {

@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sighed. A sound barely audible over the gurgle of the coffee maker. Middle age, he had concluded, was largely about developing a tolerance for ambiguity and lukewarm coffee. The first one was harder.",
+      "text": "[shot:insert maker]He sighed. A sound barely audible over the gurgle of the coffee maker. Middle age, he had concluded, was largely about developing a tolerance for ambiguity and lukewarm coffee. The first one was harder.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/013.ogg"
     },
     {
@@ -229,7 +229,7 @@
     },
     {
       "t": "narrate",
-      "text": "The version that had stood at the counter had not, at the time, factored in that getting out would feel like this.",
+      "text": "[shot:insert counter]The version that had stood at the counter had not, at the time, factored in that getting out would feel like this.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/045.mp3"
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maybe write a footnote about the dust motes. Explore the inherent narrative potential of the narwhal mug. Life felt less like a grand opera now, more like a series of nested anecdotes, slightly absurd, quietly profound.",
+      "text": "[shot:insert narwhal]Maybe write a footnote about the dust motes. Explore the inherent narrative potential of the narwhal mug. Life felt less like a grand opera now, more like a series of nested anecdotes, slightly absurd, quietly profound.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/063.ogg"
     },
     {
@@ -398,7 +398,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looked at the text. He looked at the dust motes. He looked at the drainpipe in the alley, which the light was, at this exact moment, hitting in the particular way.",
+      "text": "[shot:insert drainpipe]He looked at the text. He looked at the dust motes. He looked at the drainpipe in the alley, which the light was, at this exact moment, hitting in the particular way.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/079.mp3"
     },
     {
@@ -498,7 +498,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looked at the line for a long minute. Then he closed the notebook. He set the pen on top of it. He stood up. He carried the narwhal mug to the kitchen. He rinsed it. He set it upside-down on the rack to dry.",
+      "text": "[shot:insert notebook]He looked at the line for a long minute. Then he closed the notebook. He set the pen on top of it. He stood up. He carried the narwhal mug to the kitchen. He rinsed it. He set it upside-down on the rack to dry.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/099.mp3"
     },
     {
@@ -518,7 +518,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drafted. The dust motes resumed. The moss persisted. The alley was, again, just an alley.",
+      "text": "[shot:insert moss]He drafted. The dust motes resumed. The moss persisted. The alley was, again, just an alley.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/103.mp3"
     },
     {

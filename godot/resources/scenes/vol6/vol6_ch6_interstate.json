@@ -356,7 +356,7 @@
     },
     {
       "t": "narrate",
-      "text": "Claire stares at her phone.",
+      "text": "[shot:insert phone]Claire stares at her phone.",
       "voice": "assets/audio/voice/vol6_ch6_interstate/055.mp3"
     },
     {

@@ -70,7 +70,7 @@
   },
   {
    "t": "narrate",
-   "text": "On Saturday, Ben had — for the first time — entered the ring himself. Not because he wanted to.",
+   "text": "[shot:insert ring]On Saturday, Ben had — for the first time — entered the ring himself. Not because he wanted to.",
    "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/013.ogg"
   },
   {
@@ -135,7 +135,7 @@
   },
   {
    "t": "narrate",
-   "text": "They were the kind of acquaintance a big quiet teenager at the diner had with a compact serious teenager at the gas station — which is to say,",
+   "text": "[shot:insert station]They were the kind of acquaintance a big quiet teenager at the diner had with a compact serious teenager at the gas station — which is to say,",
    "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/026.ogg"
   },
   {

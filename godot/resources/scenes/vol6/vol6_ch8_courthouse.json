@@ -153,7 +153,7 @@
     },
     {
       "t": "narrate",
-      "text": "He returns to his folder.",
+      "text": "[shot:insert folder]He returns to his folder.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/029.mp3"
     },
     {
@@ -241,7 +241,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits at the defense table beside the lawyer Ramirez had arranged.",
+      "text": "[shot:insert table]He sits at the defense table beside the lawyer Ramirez had arranged.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/045.mp3"
     },
     {
@@ -600,7 +600,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "looking at the third row of the gallery directly across the aisle from her own row, where a silver-haired woman in a gray wool coat has, at some point during the recess, quietly seated herself — at least one woman she has never met but whose face she now recognizes from Maya's description of Miriam.",
+      "text": "[shot:insert aisle]looking at the third row of the gallery directly across the aisle from her own row, where a silver-haired woman in a gray wool coat has, at some point during the recess, quietly seated herself — at least one woman she has never met but whose face she now recognizes from Maya's description of Miriam.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/108.ogg"
     },
     {
@@ -641,7 +641,7 @@
     },
     {
       "t": "narrate",
-      "text": "She takes the bench.",
+      "text": "[shot:insert bench]She takes the bench.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/116.mp3"
     },
     {
@@ -698,7 +698,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's father is, at 15:04, escorted out the side door — by federal marshals, not by state deputies. He does not, on the way out, look at the gallery.",
+      "text": "[shot:insert door]Sam's father is, at 15:04, escorted out the side door — by federal marshals, not by state deputies. He does not, on the way out, look at the gallery.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/125.ogg"
     },
     {

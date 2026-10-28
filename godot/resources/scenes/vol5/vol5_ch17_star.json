@@ -203,7 +203,7 @@
     },
     {
       "t": "narrate",
-      "text": "She saw the spectral outline of Dante D'Ambrosio's ambition still clinging to the rusted hinges of forgotten warehouses, still pulsing faintly at the helm of his floating mausoleum.",
+      "text": "[shot:insert hinges]She saw the spectral outline of Dante D'Ambrosio's ambition still clinging to the rusted hinges of forgotten warehouses, still pulsing faintly at the helm of his floating mausoleum.",
       "voice": "assets/audio/voice/vol5_ch17_star/040.ogg"
     },
     {
@@ -263,7 +263,7 @@
     },
     {
       "t": "narrate",
-      "text": "Back at D'Ambrosio's, pouring coffee, wiping tables — they hadn't seen a waitress. They had seen the cracks in her smile, the haunted hollows beneath her eyes.",
+      "text": "[shot:insert cracks]Back at D'Ambrosio's, pouring coffee, wiping tables — they hadn't seen a waitress. They had seen the cracks in her smile, the haunted hollows beneath her eyes.",
       "voice": "assets/audio/voice/vol5_ch17_star/052.ogg"
     },
     {
@@ -433,7 +433,7 @@
     },
     {
       "t": "narrate",
-      "text": "She set the charcoal down.",
+      "text": "[shot:insert charcoal]She set the charcoal down.",
       "voice": "assets/audio/voice/vol5_ch17_star/086.mp3"
     },
     {
@@ -653,7 +653,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the morning she would walk to Elm Street. In the morning she would buy a stamp. In the morning she would put the envelope in the mailbox.",
+      "text": "[shot:insert envelope]In the morning she would walk to Elm Street. In the morning she would buy a stamp. In the morning she would put the envelope in the mailbox.",
       "voice": "assets/audio/voice/vol5_ch17_star/128.mp3"
     },
     {

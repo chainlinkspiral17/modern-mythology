@@ -34,7 +34,7 @@
   },
   {
    "t": "narrate",
-   "text": "The light at nine PM in mid-August is the lavender Texas does in the small window between the day's heat dropping off and the night's full dark settling. The cicadas are loud.",
+   "text": "[shot:insert window]The light at nine PM in mid-August is the lavender Texas does in the small window between the day's heat dropping off and the night's full dark settling. The cicadas are loud.",
    "voice": "assets/audio/voice/vol6_ch12_porch/006.ogg"
   },
   {
@@ -119,7 +119,7 @@
   },
   {
    "t": "narrate",
-   "text": "with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour.",
+   "text": "[shot:insert table]with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour.",
    "voice": "assets/audio/voice/vol6_ch12_porch/021.ogg"
   },
   {
@@ -544,7 +544,7 @@
   },
   {
    "t": "narrate",
-   "text": "She locks the front door.",
+   "text": "[shot:insert door]She locks the front door.",
    "voice": "assets/audio/voice/vol6_ch12_porch/093.mp3"
   },
   {
@@ -564,7 +564,7 @@
   },
   {
    "t": "narrate",
-   "text": "She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready.",
+   "text": "[shot:insert clock]She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready.",
    "voice": "assets/audio/voice/vol6_ch12_porch/097.ogg"
   },
   {

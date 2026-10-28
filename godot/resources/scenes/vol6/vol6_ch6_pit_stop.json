@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Ben is at the grill. The breakfast rush has just ended. He is wiping down the line. His phone, in the pocket of his apron, has not, this morning, buzzed.",
+      "text": "[shot:insert grill][mood:morning_bright]Ben is at the grill. The breakfast rush has just ended. He is wiping down the line. His phone, in the pocket of his apron, has not, this morning, buzzed.",
       "voice": "assets/audio/voice/vol6_ch6_pit_stop/006.mp3"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "H. Hal. The bookshop guy. Ben reads the message. He reads it again. He puts the phone back. He breathes for maybe four seconds. Then he opens the office door.",
+      "text": "[shot:insert phone]H. Hal. The bookshop guy. Ben reads the message. He reads it again. He puts the phone back. He breathes for maybe four seconds. Then he opens the office door.",
       "voice": "assets/audio/voice/vol6_ch6_pit_stop/010.ogg"
     },
     {

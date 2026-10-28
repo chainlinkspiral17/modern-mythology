@@ -252,7 +252,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stops in the doorway.",
+      "text": "[shot:insert doorway]He stops in the doorway.",
       "voice": "assets/audio/voice/vol6_ch18_letter/049.mp3"
     },
     {

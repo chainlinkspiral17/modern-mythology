@@ -294,7 +294,7 @@
     },
     {
       "t": "narrate",
-      "text": "A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened.",
+      "text": "[shot:insert table]A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened.",
       "voice": "assets/audio/voice/vol6_ch4_kitchen/052.ogg"
     },
     {
@@ -475,7 +475,7 @@
     },
     {
       "t": "narrate",
-      "text": "The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm.",
+      "text": "[shot:insert sedan]The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm.",
       "voice": "assets/audio/voice/vol6_ch4_kitchen/085.mp3"
     },
     {

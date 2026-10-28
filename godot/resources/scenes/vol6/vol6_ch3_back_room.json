@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]The door at the back of the strip mall is unlocked, exactly as promised.",
+   "text": "[shot:insert door][mood:day_bright]The door at the back of the strip mall is unlocked, exactly as promised.",
    "voice": "assets/audio/voice/vol6_ch3_back_room/005.mp3"
   },
   {
@@ -80,7 +80,7 @@
   },
   {
    "t": "narrate",
-   "text": "Sam takes the coffee. Sam sits on an overturned milk crate opposite the desk. Maya closes the door. She slides a bolt Sam did not realize was there.",
+   "text": "[shot:insert coffee]Sam takes the coffee. Sam sits on an overturned milk crate opposite the desk. Maya closes the door. She slides a bolt Sam did not realize was there.",
    "voice": "assets/audio/voice/vol6_ch3_back_room/014.mp3"
   },
   {

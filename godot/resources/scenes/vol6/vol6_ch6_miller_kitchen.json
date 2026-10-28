@@ -38,7 +38,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father is at the table. He is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief.",
+      "text": "[shot:insert table]Her father is at the table. He is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief.",
       "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/007.mp3"
     },
     {
@@ -172,7 +172,7 @@
     },
     {
       "t": "narrate",
-      "text": "She holds the phone out to Sam's father. He takes it.",
+      "text": "[shot:insert phone]She holds the phone out to Sam's father. He takes it.",
       "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/030.mp3"
     },
     {

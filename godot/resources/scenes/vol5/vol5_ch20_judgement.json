@@ -224,7 +224,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gripped her desk. The abyss not yawning below. Opening up within.",
+      "text": "[shot:insert desk]She gripped her desk. The abyss not yawning below. Opening up within.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/043.ogg"
     },
     {
@@ -325,7 +325,7 @@
     },
     {
       "t": "narrate",
-      "text": "He reached for his notebook. The pen shaking.",
+      "text": "[shot:insert notebook]He reached for his notebook. The pen shaking.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/060.ogg"
     },
     {
@@ -393,7 +393,7 @@
     },
     {
       "t": "narrate",
-      "text": "Joanna was, at the moment the earth began, halfway to the door.",
+      "text": "[shot:insert door]Joanna was, at the moment the earth began, halfway to the door.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/072.ogg"
     },
     {
@@ -911,7 +911,7 @@
     },
     {
       "t": "narrate",
-      "text": "She saved D'AMB-IDOL-01.psd one more time. She airdropped it, for the first time, to her phone.",
+      "text": "[shot:insert phone]She saved D'AMB-IDOL-01.psd one more time. She airdropped it, for the first time, to her phone.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/164.ogg"
     },
     {
@@ -1098,7 +1098,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mackenzie, without asking questions, handed Philip the phone.\n\nThe wheels, in their quiet patient way, kept turning.",
+      "text": "[shot:insert wheels]Mackenzie, without asking questions, handed Philip the phone.\n\nThe wheels, in their quiet patient way, kept turning.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/198.mp3"
     },
     {
@@ -1156,7 +1156,7 @@
     },
     {
       "t": "narrate",
-      "text": "She hung up. She looked at the camera.",
+      "text": "[shot:insert camera]She hung up. She looked at the camera.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/208.mp3"
     },
     {

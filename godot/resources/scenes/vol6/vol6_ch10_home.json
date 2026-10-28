@@ -248,7 +248,7 @@
   },
   {
    "t": "narrate",
-   "text": "The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees.",
+   "text": "[shot:insert radio]The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees.",
    "voice": "assets/audio/voice/vol6_ch10_home/042.ogg"
   },
   {

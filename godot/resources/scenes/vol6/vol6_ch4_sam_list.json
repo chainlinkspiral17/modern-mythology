@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm.",
+      "text": "[shot:insert lamp][mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm.",
       "voice": "assets/audio/voice/vol6_ch4_sam_list/004.ogg"
     },
     {
@@ -104,7 +104,7 @@
     },
     {
       "t": "narrate",
-      "text": "She closes the notebook. She slides it between the mattress and the box spring.",
+      "text": "[shot:insert notebook]She closes the notebook. She slides it between the mattress and the box spring.",
       "voice": "assets/audio/voice/vol6_ch4_sam_list/020.mp3"
     },
     {

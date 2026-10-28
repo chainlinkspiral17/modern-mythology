@@ -571,3 +571,21 @@ vertical_alignment = 0
 position = Vector3(0.550, 6.150, 1.880)
 rotation = Vector3(-0.6700, -1.5708, 0.0)
 metadata/fov = 18.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_papers__riverboat_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.176, 1.188, 0.662)
+rotation = Vector3(-0.5236, 2.0672, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_phone__riverboat_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.536, 1.276, 0.569)
+rotation = Vector3(-0.5236, -2.5413, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__riverboat_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.735, 2.412, -1.796)
+rotation = Vector3(-0.2618, 1.3102, 0.0)
+metadata/fov = 35.0

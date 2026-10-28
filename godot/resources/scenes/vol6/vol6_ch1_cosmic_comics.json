@@ -72,7 +72,7 @@
     },
     {
       "t": "narrate",
-      "text": "He returns to his book. She leaves.",
+      "text": "[shot:insert book]He returns to his book. She leaves.",
       "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/011.mp3"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "t": "narrate",
-      "text": "because Rick has been doing what the voice on the phone tells him for twenty-four years, since the voice got him out of a situation in Beaumont in 2002 that Rick has, otherwise, not thought about in some time.",
+      "text": "[shot:insert phone]because Rick has been doing what the voice on the phone tells him for twenty-four years, since the voice got him out of a situation in Beaumont in 2002 that Rick has, otherwise, not thought about in some time.",
       "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/016.ogg"
     },
     {

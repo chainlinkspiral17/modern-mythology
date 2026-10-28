@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya smiles in the dark of the passenger seat.",
+      "text": "[shot:insert passenger]Maya smiles in the dark of the passenger seat.",
       "voice": "assets/audio/voice/vol6_ch5_radio/015.mp3"
     },
     {

@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "Skip Donnelly is thirty-nine years old, shift supervisor, divorced, and vaping behind the counter. He has worked at the Gas & Go — first the Texaco, then the NexCorp Gas & Go — for six years.",
+      "text": "[shot:insert counter]Skip Donnelly is thirty-nine years old, shift supervisor, divorced, and vaping behind the counter. He has worked at the Gas & Go — first the Texaco, then the NexCorp Gas & Go — for six years.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/006.ogg"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "t": "narrate",
-      "text": "They look, at a glance, like meter readers, or like the kind of people who show up to check on infrastructure. One of them taps twice on the driver's window of the pickup. The window comes down.",
+      "text": "[shot:insert pickup]They look, at a glance, like meter readers, or like the kind of people who show up to check on infrastructure. One of them taps twice on the driver's window of the pickup. The window comes down.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/013.ogg"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 15:16, Skip Donnelly looks up from his phone. He can see the back corner of the pickup from his position — just the tailgate, the Louisiana plate — parked behind the car wash, engine off, driver presumably still inside.",
+      "text": "[shot:insert phone]At 15:16, Skip Donnelly looks up from his phone. He can see the back corner of the pickup from his position — just the tailgate, the Louisiana plate — parked behind the car wash, engine off, driver presumably still inside.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/019.ogg"
     },
     {

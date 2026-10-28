@@ -94,7 +94,7 @@
   },
   {
    "t": "narrate",
-   "text": "He microwaves the plate. He sits across from her. The plate is enchiladas — the same enchiladas she has been making since he was four — and the small side of black beans she does with the cumin and the lime.",
+   "text": "[shot:insert lime]He microwaves the plate. He sits across from her. The plate is enchiladas — the same enchiladas she has been making since he was four — and the small side of black beans she does with the cumin and the lime.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/017.mp3"
   },
   {
@@ -354,7 +354,7 @@
   },
   {
    "t": "narrate",
-   "text": "The Hendersons arrive at three fifty-two. Eileen has the cinnamon coffee cake in the small white box from the bakery. Jim is beside her, in the careful clothes he has been wearing this summer for any public appearance.",
+   "text": "[shot:insert cake]The Hendersons arrive at three fifty-two. Eileen has the cinnamon coffee cake in the small white box from the bakery. Jim is beside her, in the careful clothes he has been wearing this summer for any public appearance.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/066.mp3"
   },
   {
@@ -547,7 +547,7 @@
   },
   {
    "t": "narrate",
-   "text": "Anita cuts the cake.",
+   "text": "[shot:insert cake]Anita cuts the cake.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/099.mp3"
   },
   {
@@ -657,7 +657,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya brings out three iced teas.",
+   "text": "[shot:insert teas]Maya brings out three iced teas.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/120.mp3"
   },
   {
@@ -1055,7 +1055,7 @@
   },
   {
    "t": "narrate",
-   "text": "The two of them sit at the table.",
+   "text": "[shot:insert table]The two of them sit at the table.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/182.mp3"
   },
   {
@@ -1195,7 +1195,7 @@
   },
   {
    "t": "narrate",
-   "text": "Tomorrow Sammy starts senior year. I will be at the kitchen window watching her drive away in the car you bought her in 2023. I will, after she is gone, sit with my coffee for a long time. The sitting is what I do.",
+   "text": "[shot:insert coffee]Tomorrow Sammy starts senior year. I will be at the kitchen window watching her drive away in the car you bought her in 2023. I will, after she is gone, sit with my coffee for a long time. The sitting is what I do.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/207.mp3"
   },
   {

@@ -440,3 +440,27 @@ position = Vector3(-0.450, 1.400, -2.450)
 rotation = Vector3(-0.2145, -1.3353, 0.0)
 metadata/fov = 42.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bridge__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.194, 0.979, -2.035)
+rotation = Vector3(-0.2618, 1.0190, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_stove__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.861, 1.204, -3.186)
+rotation = Vector3(-0.2618, 0.1413, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_burner__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.774, 1.240, -3.973)
+rotation = Vector3(-0.2618, 0.1335, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_fork__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.173, 1.233, -1.652)
+rotation = Vector3(-0.2792, 0.8185, 0.0)
+metadata/fov = 35.0

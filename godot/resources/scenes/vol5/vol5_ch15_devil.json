@@ -70,7 +70,7 @@
     },
     {
       "t": "narrate",
-      "text": "He swung his legs off the sofa. The springs groaned in protest. The floor felt sticky. Everything felt sticky.",
+      "text": "[shot:insert sofa]He swung his legs off the sofa. The springs groaned in protest. The floor felt sticky. Everything felt sticky.",
       "voice": "assets/audio/voice/vol5_ch15_devil/013.ogg"
     },
     {
@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "The person who said yes coach had been a person who believed coaches existed. The person who looked at him from the microwave door this morning had not, in some time, believed in coaches.",
+      "text": "[shot:insert microwave]The person who said yes coach had been a person who believed coaches existed. The person who looked at him from the microwave door this morning had not, in some time, believed in coaches.",
       "voice": "assets/audio/voice/vol5_ch15_devil/025.ogg"
     },
     {
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "He had stopped pretending the register was just the bourbon.",
+      "text": "[shot:insert bourbon]He had stopped pretending the register was just the bourbon.",
       "voice": "assets/audio/voice/vol5_ch15_devil/038.mp3"
     },
     {
@@ -414,7 +414,7 @@
     },
     {
       "t": "narrate",
-      "text": "He grabbed the buzzing phone. Time to make the rounds. Time to tighten the chains.",
+      "text": "[shot:insert phone]He grabbed the buzzing phone. Time to make the rounds. Time to tighten the chains.",
       "voice": "assets/audio/voice/vol5_ch15_devil/082.mp3"
     },
     {
@@ -568,7 +568,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turned away from the microwave. He picked up the buzzing phone, which had, in the meantime, begun to buzz again. This time it actually was Antonio.",
+      "text": "[shot:insert microwave]He turned away from the microwave. He picked up the buzzing phone, which had, in the meantime, begun to buzz again. This time it actually was Antonio.",
       "voice": "assets/audio/voice/vol5_ch15_devil/111.mp3"
     },
     {
@@ -830,7 +830,7 @@
     },
     {
       "t": "narrate",
-      "text": "He opened the door.",
+      "text": "[shot:insert door]He opened the door.",
       "voice": "assets/audio/voice/vol5_ch15_devil/161.mp3"
     },
     {

@@ -357,3 +357,21 @@ metadata/fov = 50.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.2, -0.75)
 rotation = Vector3(-0.1664, -2.5679, 0.0)
 metadata/fov = 42.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_award__elicia_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.642, 0.590, -0.729)
+rotation = Vector3(-0.2618, -1.6071, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lens__elicia_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.213, 1.112, -0.357)
+rotation = Vector3(-0.2618, -1.6866, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__elicia_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.291, 1.030, -4.367)
+rotation = Vector3(-0.2618, -0.8288, 0.0)
+metadata/fov = 35.0

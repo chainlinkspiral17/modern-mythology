@@ -40,7 +40,7 @@
   },
   {
    "t": "narrate",
-   "text": "The garage door is open because the temperature has dropped from the day's high of one hundred and three to the early-evening of ninety-six, and ninety-six is the threshold at which Jesse, in August, will leave the door up while he plays.",
+   "text": "[shot:insert door]The garage door is open because the temperature has dropped from the day's high of one hundred and three to the early-evening of ninety-six, and ninety-six is the threshold at which Jesse, in August, will leave the door up while he plays.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/007.ogg"
   },
   {
@@ -267,7 +267,7 @@
   },
   {
    "t": "narrate",
-   "text": "The van leaves. There is no signage on the unit. There is no permit displayed in the window.",
+   "text": "[shot:insert window]The van leaves. There is no signage on the unit. There is no permit displayed in the window.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/051.ogg"
   },
   {
@@ -315,7 +315,7 @@
   },
   {
    "t": "narrate",
-   "text": "Nate's father — a man in his fifties named Walt who works in commercial insurance and who plays the bass himself in a wedding band that performs three times a year — had finished the conversion the summer Nate had turned fifteen,",
+   "text": "[shot:insert bass]Nate's father — a man in his fifties named Walt who works in commercial insurance and who plays the bass himself in a wedding band that performs three times a year — had finished the conversion the summer Nate had turned fifteen,",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/060.ogg"
   },
   {
@@ -803,7 +803,7 @@
   },
   {
    "t": "narrate",
-   "text": "In the driveway, while Carl is at the curb, Em comes up to Jesse.",
+   "text": "[shot:insert driveway]In the driveway, while Carl is at the curb, Em comes up to Jesse.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/142.mp3"
   },
   {

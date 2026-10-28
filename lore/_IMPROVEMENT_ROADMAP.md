@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 204: THE CAMERA GOES WHERE THE SENTENCE LOOKS, vols 5–6 (draft 1).**
+- `text_focus_pass.py` was run on vols 5 and 6 after tightening the subject picker:
+  - a named thing needs an article or owner before it ("the kettle", "his notebook");
+  - a word after a pronoun or name is a verb ("Sam rings him up");
+  - a tarot card read aloud ("THE STAR. The naked figure kneels at the pool") describes the card, not the room;
+  - music, number, colour and role words are not subjects.
+- **Vol 5:** 116 cues, 59 new markers. Samples: the candle, the microwave, the bourbon, the bedside table, the futon.
+- **Vol 6:** 304 cues, 163 new markers. Samples: the crossword, the seatbelt, the grill, the eggs, the top desk drawer, the bulb in the cage.
+- **Gates:** tscn_syntax is at zero. The marker gates are logged in the next commit.
+- **Draft N+1 targets:**
+  1. Vols 1–4.
+  2. Re-run vol 7 under the stricter picker; the dry run finds 43 more cues.
+  3. Clause-aware subject picking.
+  4. Deck-verify.
+
 **2026-10-27 · pass 203: THE CAMERA GOES WHERE THE SENTENCE LOOKS (vol 7) + vol 7's windows (draft 1 of both).**
 - **The Deck:** "still not seeing images in lots of windows in vol 7 ... shots aren't focusing on what the text is describing."
 - **Direction: `godot/tools/audit/text_focus_pass.py`** (new).

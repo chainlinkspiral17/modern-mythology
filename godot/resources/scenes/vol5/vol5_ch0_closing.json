@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][stage:john counter_post]John stood for a while at the counter.",
+      "text": "[shot:insert counter][mood:night][stage:john counter_post]John stood for a while at the counter.",
       "voice": "assets/audio/voice/vol5_ch0_closing/000.mp3"
     },
     {
@@ -60,7 +60,7 @@
     },
 {
      "t": "narrate",
-     "text": "He did not put a quarter in. It played anyway, low — the song the man in booth six had been humming. The machine had a working theory too."
+     "text": "[shot:insert machine]He did not put a quarter in. It played anyway, low — the song the man in booth six had been humming. The machine had a working theory too."
     },
 {
      "t": "jump",

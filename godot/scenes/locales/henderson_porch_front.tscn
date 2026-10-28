@@ -339,3 +339,27 @@ light_color = Color(0.940, 0.840, 0.660, 1)
 light_energy = 1.20
 shadow_enabled = false
 omni_range = 4.00
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_driveway__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.003, 0.382, -4.534)
+rotation = Vector3(-0.2618, -1.7716, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_porch__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.550, 0.746, -4.060)
+rotation = Vector3(-0.3089, -2.8831, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_steps__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.325, 0.428, -3.312)
+rotation = Vector3(-0.2618, -2.9021, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_truck__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.232, 1.454, -7.263)
+rotation = Vector3(-0.6320, -0.2825, 0.0)
+metadata/fov = 35.0

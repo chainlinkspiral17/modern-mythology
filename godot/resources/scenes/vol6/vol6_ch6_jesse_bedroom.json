@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "The door is not locked —",
+      "text": "[shot:insert door]The door is not locked —",
       "voice": "assets/audio/voice/vol6_ch6_jesse_bedroom/018.mp3"
     },
     {

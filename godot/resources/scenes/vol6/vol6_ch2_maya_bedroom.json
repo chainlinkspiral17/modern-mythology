@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya reads the message. She gets up. She crosses the hall. She opens her grandmother's bedroom door, quietly, just an inch.",
+      "text": "[shot:insert door]Maya reads the message. She gets up. She crosses the hall. She opens her grandmother's bedroom door, quietly, just an inch.",
       "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/020.mp3"
     },
     {

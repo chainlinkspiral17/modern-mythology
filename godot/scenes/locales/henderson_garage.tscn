@@ -377,3 +377,39 @@ metadata/fov = 45.0
 position = Vector3(0.522, 1.612, -1.915)
 rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.188, 2.018, 1.261)
+rotation = Vector3(-0.2618, -0.2976, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_snare__henderson_garage_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.331, 0.842, -2.979)
+rotation = Vector3(-0.2618, 0.4068, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_driveway__henderson_garage_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.414, 0.641, 2.209)
+rotation = Vector3(-0.2618, 1.5533, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_unit__henderson_garage_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(6.300, 0.592, -5.316)
+rotation = Vector3(-0.2618, -0.5296, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_workbench__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.587, 1.296, -2.628)
+rotation = Vector3(-0.2618, 0.0648, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bass__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.955, 1.283, -1.111)
+rotation = Vector3(-0.4206, 0.2977, 0.0)
+metadata/fov = 35.0

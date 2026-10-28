@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "She puts on the robe that is on the hook on the back of the bedroom door. The robe is the green one — not the green plaid Mr.",
+      "text": "[shot:insert robe]She puts on the robe that is on the hook on the back of the bedroom door. The robe is the green one — not the green plaid Mr.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/017.ogg"
     },
     {
@@ -170,7 +170,7 @@
     },
     {
       "t": "narrate",
-      "text": "She pours a cup. She does not, this morning, put cream in it. She had, for sixteen years, put cream in her coffee.",
+      "text": "[shot:insert coffee]She pours a cup. She does not, this morning, put cream in it. She had, for sixteen years, put cream in her coffee.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/033.ogg"
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "t": "narrate",
-      "text": "By the seventh week the tape was playing in the shower, in the car, while she was running the dishwasher, in the small spaces between sentences in conversations with neighbors.",
+      "text": "[shot:insert dishwasher]By the seventh week the tape was playing in the shower, in the car, while she was running the dishwasher, in the small spaces between sentences in conversations with neighbors.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/055.ogg"
     },
     {
@@ -320,7 +320,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her mother's voice, on the phone, calling her at college during her freshman year — long-distance, expensive, ten minutes a week, every Sunday, until her mother had died in Bianca's junior year in the spring of 1987.",
+      "text": "[shot:insert phone]Her mother's voice, on the phone, calling her at college during her freshman year — long-distance, expensive, ten minutes a week, every Sunday, until her mother had died in Bianca's junior year in the spring of 1987.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/063.ogg"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets the eggs. She gets the bread — the loaf of challah she had bought at the H-E-B yesterday, because she had, at some point Sunday night, decided that this Monday morning was going to be a French toast morning.",
+      "text": "[shot:insert eggs]She gets the eggs. She gets the bread — the loaf of challah she had bought at the H-E-B yesterday, because she had, at some point Sunday night, decided that this Monday morning was going to be a French toast morning.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/072.ogg"
     },
     {
@@ -409,7 +409,7 @@
     },
     {
       "t": "narrate",
-      "text": "The first slice goes in at six oh-six.",
+      "text": "[shot:insert slice]The first slice goes in at six oh-six.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/081.mp3"
     },
     {
@@ -1005,7 +1005,7 @@
     },
     {
       "t": "narrate",
-      "text": "She puts the syrup back in the pantry.",
+      "text": "[shot:insert pantry]She puts the syrup back in the pantry.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/179.mp3"
     },
     {
@@ -1039,7 +1039,7 @@
     },
     {
       "t": "narrate",
-      "text": "It has, against the back wall, a wicker chair that had been her mother's and that had come down to Texas in the move from Lubbock in 1989 and that has, in the years since, lived in three different houses with her.",
+      "text": "[shot:insert wicker]It has, against the back wall, a wicker chair that had been her mother's and that had come down to Texas in the move from Lubbock in 1989 and that has, in the years since, lived in three different houses with her.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/186.ogg"
     },
     {
@@ -1059,7 +1059,7 @@
     },
     {
       "t": "narrate",
-      "text": "The back yard is in the small soft light a Texas back yard does at seven AM in mid-August. The grass is browning in patches. The crepe myrtle in the corner is in late bloom. The cicadas are tuning up.",
+      "text": "[shot:insert myrtle]The back yard is in the small soft light a Texas back yard does at seven AM in mid-August. The grass is browning in patches. The crepe myrtle in the corner is in late bloom. The cicadas are tuning up.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/190.ogg"
     },
     {
@@ -1094,7 +1094,7 @@
     },
     {
       "t": "narrate",
-      "text": "The smell of the rosin in the solder, which she has not, in years, smelled and which is, this morning at seven oh-eight on the back porch in mid-August, suddenly, vividly available to her in a way she had not, on Sunday night, been preparing herself for.",
+      "text": "[shot:insert porch]The smell of the rosin in the solder, which she has not, in years, smelled and which is, this morning at seven oh-eight on the back porch in mid-August, suddenly, vividly available to her in a way she had not, on Sunday night, been preparing herself for.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/197.ogg"
     },
     {
@@ -1205,7 +1205,7 @@
     },
     {
       "t": "narrate",
-      "text": "She comes to the back porch. She knocks on the door frame.",
+      "text": "[shot:insert porch]She comes to the back porch. She knocks on the door frame.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/219.mp3"
     },
     {

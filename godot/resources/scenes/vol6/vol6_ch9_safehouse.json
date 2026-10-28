@@ -309,7 +309,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee.",
+      "text": "[shot:insert slushie]He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee.",
       "voice": "assets/audio/voice/vol6_ch9_safehouse/051.ogg"
     },
     {
@@ -448,7 +448,7 @@
     },
     {
       "t": "narrate",
-      "text": "He finishes it, finally, on a Sunday in October, at Sam's kitchen table, with Sam beside him reading a book, and Sam's mother at the stove making a soup that smells of the small specific home a mother's stove can become.",
+      "text": "[shot:insert table]He finishes it, finally, on a Sunday in October, at Sam's kitchen table, with Sam beside him reading a book, and Sam's mother at the stove making a soup that smells of the small specific home a mother's stove can become.",
       "voice": "assets/audio/voice/vol6_ch9_safehouse/077.mp3"
     },
     {
@@ -515,7 +515,7 @@
     },
     {
       "t": "narrate",
-      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf,",
+      "text": "[shot:insert notebook]When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf,",
       "voice": "assets/audio/voice/vol6_ch9_safehouse/088.ogg"
     },
     {
@@ -618,7 +618,7 @@
     },
     {
       "t": "narrate",
-      "text": "He keeps it, anyway, on his phone.",
+      "text": "[shot:insert phone]He keeps it, anyway, on his phone.",
       "voice": "assets/audio/voice/vol6_ch9_safehouse/109.mp3"
     },
     {

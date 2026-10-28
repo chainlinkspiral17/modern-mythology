@@ -253,7 +253,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist.",
+      "text": "[shot:insert coffees]The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist.",
       "voice": "assets/audio/voice/vol6_ch17_table/043.mp3"
     },
     {
@@ -354,7 +354,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca drinks her coffee.",
+      "text": "[shot:insert coffee]Bianca drinks her coffee.",
       "voice": "assets/audio/voice/vol6_ch17_table/060.mp3"
     },
     {
@@ -1773,7 +1773,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, at the doorway, does not, immediately, respond.",
+      "text": "[shot:insert doorway]Sam, at the doorway, does not, immediately, respond.",
       "voice": "assets/audio/voice/vol6_ch17_table/277.mp3"
     },
     {
@@ -2114,7 +2114,7 @@
     },
     {
       "t": "narrate",
-      "text": "She rinses them. She puts them in the dishwasher. She wipes the table.",
+      "text": "[shot:insert table]She rinses them. She puts them in the dishwasher. She wipes the table.",
       "voice": "assets/audio/voice/vol6_ch17_table/334.mp3"
     },
     {

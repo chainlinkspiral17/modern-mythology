@@ -39,7 +39,7 @@
   },
   {
    "t": "narrate",
-   "text": "His mother's car is in the driveway. The garage is open. His father's truck is on the street, where Bill parks on Fridays because the trash trucks come Friday afternoons and Bill has been parking on the street for the trash trucks since 2014.",
+   "text": "[shot:insert garage]His mother's car is in the driveway. The garage is open. His father's truck is on the street, where Bill parks on Fridays because the trash trucks come Friday afternoons and Bill has been parking on the street for the trash trucks since 2014.",
    "voice": "assets/audio/voice/vol6_ch13_home/007.mp3"
   },
   {
@@ -154,7 +154,7 @@
   },
   {
    "t": "narrate",
-   "text": "Bill returns to the crossword.",
+   "text": "[shot:insert crossword]Bill returns to the crossword.",
    "voice": "assets/audio/voice/vol6_ch13_home/026.mp3"
   },
   {

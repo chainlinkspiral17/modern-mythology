@@ -44,7 +44,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pallet does not fall.",
+      "text": "[shot:insert pallet]The pallet does not fall.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/008.ogg"
     },
     {
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marisol, three pallets up the aisle, glances back without lifting her head.",
+      "text": "[shot:insert pallets]Marisol, three pallets up the aisle, glances back without lifting her head.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/011.mp3"
     },
     {
@@ -282,7 +282,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has thought about it on the drive in, in the truck which he is again driving and which he has not, since June, asked himself how he feels about driving.",
+      "text": "[shot:insert truck]He has thought about it on the drive in, in the truck which he is again driving and which he has not, since June, asked himself how he feels about driving.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/052.ogg"
     },
     {
@@ -501,7 +501,7 @@
     },
     {
       "t": "narrate",
-      "text": "The break room is at the back of the store, off the dock corridor, with a single exterior door that opens onto the loading dock and the dumpster pad and the cedar scrub beyond. There is a card table with four mismatched chairs.",
+      "text": "[shot:insert dock]The break room is at the back of the store, off the dock corridor, with a single exterior door that opens onto the loading dock and the dumpster pad and the cedar scrub beyond. There is a card table with four mismatched chairs.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/094.ogg"
     },
     {
@@ -560,7 +560,7 @@
     },
     {
       "t": "narrate",
-      "text": "She comes in for forty-five seconds, which is what she does on every break — she walks in, refills her own coffee from the pot, takes one sip, and walks back out. She does not, on breaks, sit. She does not, on breaks, talk.",
+      "text": "[shot:insert coffee]She comes in for forty-five seconds, which is what she does on every break — she walks in, refills her own coffee from the pot, takes one sip, and walks back out. She does not, on breaks, sit. She does not, on breaks, talk.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/105.ogg"
     },
     {
@@ -949,7 +949,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the phone back.",
+      "text": "[shot:insert phone]He puts the phone back.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/176.mp3"
     },
     {
@@ -974,7 +974,7 @@
     },
     {
       "t": "narrate",
-      "text": "He will check it at eight twenty AM, in his truck in the parking lot, with the morning light coming in low across the cedar scrub. The reply from Sam will read: ok. i'm here when u want. no pressure. drive safe. xo.",
+      "text": "[shot:insert truck]He will check it at eight twenty AM, in his truck in the parking lot, with the morning light coming in low across the cedar scrub. The reply from Sam will read: ok. i'm here when u want. no pressure. drive safe. xo.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/181.ogg"
     },
     {
@@ -1008,7 +1008,7 @@
     },
     {
       "t": "narrate",
-      "text": "At five oh-six AM Diego goes out the dock door for his second break.",
+      "text": "[shot:insert dock]At five oh-six AM Diego goes out the dock door for his second break.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/188.mp3"
     },
     {
@@ -1063,7 +1063,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has not, in five weeks, mentioned to anybody on the team that the smear is visible from this dock. He has not mentioned it to Sam. He has not mentioned it to his grandmother. He has not mentioned it to Dr. Patel.",
+      "text": "[shot:insert dock]He has not, in five weeks, mentioned to anybody on the team that the smear is visible from this dock. He has not mentioned it to Sam. He has not mentioned it to his grandmother. He has not mentioned it to Dr. Patel.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/199.mp3"
     },
     {
@@ -1263,7 +1263,7 @@
     },
     {
       "t": "narrate",
-      "text": "The question is whether Diego will, on this dock in the four AM blue, be the one person at Centro who lets him be a peer.",
+      "text": "[shot:insert dock]The question is whether Diego will, on this dock in the four AM blue, be the one person at Centro who lets him be a peer.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/234.ogg"
     },
     {
@@ -1326,7 +1326,7 @@
     },
     {
       "t": "narrate",
-      "text": "The dock door closes behind him.",
+      "text": "[shot:insert dock]The dock door closes behind him.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/246.mp3"
     },
     {
@@ -1349,7 +1349,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truck comes at five fifty-eight. The morning load gets staged. The day side starts arriving at six fifteen. By six forty-five the night team is wrapping up, breaking down their pallets, checking their aisles, signing out.",
+      "text": "[shot:insert truck]The truck comes at five fifty-eight. The morning load gets staged. The day side starts arriving at six fifteen. By six forty-five the night team is wrapping up, breaking down their pallets, checking their aisles, signing out.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/251.ogg"
     },
     {
@@ -1568,7 +1568,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the truck in gear.",
+      "text": "[shot:insert truck]He puts the truck in gear.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/289.mp3"
     },
     {

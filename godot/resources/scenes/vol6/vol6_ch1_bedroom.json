@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk]She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight.",
+      "text": "[shot:insert phone][mood:dusk]She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight.",
       "voice": "assets/audio/voice/vol6_ch1_bedroom/003.mp3"
     },
     {

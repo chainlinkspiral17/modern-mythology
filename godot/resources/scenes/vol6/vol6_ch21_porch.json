@@ -466,7 +466,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets up. She goes inside. She locks the front door. She turns off the kitchen light. She climbs the stairs.",
+      "text": "[shot:insert door]She gets up. She goes inside. She locks the front door. She turns off the kitchen light. She climbs the stairs.",
       "voice": "assets/audio/voice/vol6_ch21_porch/078.mp3"
     },
     {
@@ -488,7 +488,7 @@
     },
     {
       "t": "narrate",
-      "text": "She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready.",
+      "text": "[shot:insert clock]She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready.",
       "voice": "assets/audio/voice/vol6_ch21_porch/083.mp3"
     },
     {

@@ -610,3 +610,45 @@ metadata/fov = 45.0
 position = Vector3(1.340, 1.612, -4.824)
 rotation = Vector3(-0.2618, -2.0944, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pocket__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.040, 1.390, -3.537)
+rotation = Vector3(-0.2618, -0.7955, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.606, 0.825, -1.421)
+rotation = Vector3(-0.3419, 1.8722, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lottery__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.075, 2.390, -3.205)
+rotation = Vector3(-0.2618, -2.3550, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cash__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.141, 1.662, -2.100)
+rotation = Vector3(-0.5236, 0.1710, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bottles__kwik_stop_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.554, 1.563, -3.223)
+rotation = Vector3(-0.2618, 2.2540, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_roller__kwik_stop_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.615, 1.632, -3.866)
+rotation = Vector3(-0.2618, -0.5288, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_receipt__kwik_stop_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.837, 1.661, -2.214)
+rotation = Vector3(-0.3671, 0.8543, 0.0)
+metadata/fov = 35.0
