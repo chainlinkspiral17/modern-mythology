@@ -458,8 +458,8 @@ metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_window__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.300, 2.433, -1.164)
-rotation = Vector3(-0.0873, 3.1416, 0.0)
+position = Vector3(2.657, 2.433, -1.101)
+rotation = Vector3(-0.0873, 2.7925, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -474,8 +474,3 @@ position = Vector3(2.611, 1.724, -3.337)
 rotation = Vector3(-0.2216, 1.3699, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_teas__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.739, 0.872, -2.420)
-rotation = Vector3(-0.2618, 2.1313, 0.0)
-metadata/fov = 35.0

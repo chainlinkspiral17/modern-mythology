@@ -474,13 +474,6 @@ position = Vector3(3.677, 0.807, -10.839)
 rotation = Vector3(-0.2618, 1.0335, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_truck__centro_grocery_aisle" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.758, 0.532, -9.899)
-rotation = Vector3(-0.2618, 1.1193, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bale__centro_grocery_aisle" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(4.024, 1.411, -20.228)
 rotation = Vector3(-0.2618, 0.5002, 0.0)

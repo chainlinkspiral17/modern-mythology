@@ -541,6 +541,35 @@ def coverage_report(only, drop):
     return low
 
 
+def strip_cues(drop_cues, pre, places):
+    """Take `[shot:insert <word>]` off every line played in one of these views
+    whose marker is gone (drop_cues: (preset, word) pairs)."""
+    if True:
+        cue_rx = {}
+        for v, w in drop_cues:
+            cue_rx.setdefault(v, set()).add(w)
+        for f in glob.glob(os.path.join(SCENES, "*", "*.json")):
+            raw = open(f, encoding="utf-8").read()
+            if "[shot:insert " not in raw:
+                continue
+            j = json.loads(raw)
+            nodes = j.get("nodes", [])
+            at = chapter_presets(nodes, j.get("id", ""), places, pre)
+            changed = False
+            for i, n in enumerate(nodes):
+                t = str(n.get("text") or "")
+                m = re.match(r"\[shot:insert (\w+)\]", t)
+                if m and at.get(i) in cue_rx and m.group(1) in cue_rx[at.get(i)] \
+                        and not has_marker(pre[at.get(i)][0], at.get(i), m.group(1)):
+                    old = json.dumps(t, ensure_ascii=False)[1:-1]
+                    new = json.dumps(t[m.end():], ensure_ascii=False)[1:-1]
+                    if old in raw:
+                        raw = raw.replace(old, new, 1)
+                        changed = True
+            if changed:
+                open(f, "w", encoding="utf-8").write(raw)
+
+
 def refit(low, pre, places):
     """Re-place each low-coverage insert with the coverage-checked search
     (same name, new pose). One that cannot be placed: this pass's own is
@@ -593,35 +622,12 @@ def refit(low, pre, places):
             a = head if head != -1 and blk.start() - head < 200 else blk.start()
             src = src[:a] + "\n" + src[blk.end():]
             open(path, "w").write(src)
-            drop_cues += [(v, word) for v in views]
+            strip_cues([(v, word) for v in views], pre, places)   # at once: a killed run leaves no orphan cue
             dropped += 1
             print("  dropped %-26s %s" % (loc, name))
         else:
             kept += 1
             print("  KEPT    %-26s %s (no clear frame found)" % (loc, name))
-    if drop_cues:
-        cue_rx = {}
-        for v, w in drop_cues:
-            cue_rx.setdefault(v, set()).add(w)
-        for f in glob.glob(os.path.join(SCENES, "*", "*.json")):
-            raw = open(f, encoding="utf-8").read()
-            if "[shot:insert " not in raw:
-                continue
-            j = json.loads(raw)
-            nodes = j.get("nodes", [])
-            at = chapter_presets(nodes, j.get("id", ""), places, pre)
-            changed = False
-            for i, n in enumerate(nodes):
-                t = str(n.get("text") or "")
-                m = re.match(r"\[shot:insert (\w+)\]", t)
-                if m and at.get(i) in cue_rx and m.group(1) in cue_rx[at.get(i)]:
-                    old = json.dumps(t, ensure_ascii=False)[1:-1]
-                    new = json.dumps(t[m.end():], ensure_ascii=False)[1:-1]
-                    if old in raw:
-                        raw = raw.replace(old, new, 1)
-                        changed = True
-            if changed:
-                open(f, "w", encoding="utf-8").write(raw)
     print("refit · %d moved · %d dropped (with their cues) · %d hand marker(s) kept" % (moved, dropped, kept))
 
 

@@ -401,17 +401,10 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_dock__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.035, 2.389, -7.395)
-rotation = Vector3(1.0541, -0.0692, 0.0)
+position = Vector3(-0.366, 1.478, -7.733)
+rotation = Vector3(-0.4484, 1.6332, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_truck__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.427, 0.603, -7.297)
-rotation = Vector3(-0.2618, -1.8657, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pallet__centro_stockroom" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.192, 0.802, -3.884)
 rotation = Vector3(-0.2618, 0.4541, 0.0)

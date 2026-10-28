@@ -421,8 +421,3 @@ position = Vector3(-1.522, 1.062, -2.558)
 rotation = Vector3(-0.2618, 0.9794, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_keys__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(9.753, 1.197, -14.746)
-rotation = Vector3(-0.2618, -0.5993, 0.0)
-metadata/fov = 35.0

@@ -540,20 +540,8 @@ position = Vector3(-0.409, 0.870, -0.683)
 rotation = Vector3(-0.2840, 1.6341, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_coffee__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.857, 1.227, -4.376)
-rotation = Vector3(-0.2618, 0.4178, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_ring__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.945, 1.527, -1.940)
 rotation = Vector3(-0.2618, 0.9505, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_clamp__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.225, 1.192, -5.892)
-rotation = Vector3(-0.2618, 0.5665, 0.0)
-metadata/fov = 35.0

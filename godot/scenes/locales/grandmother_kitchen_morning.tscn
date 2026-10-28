@@ -406,14 +406,14 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_recipe__grandmother_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.550, 1.390, -4.113)
-rotation = Vector3(-0.5236, 0.0980, 0.0)
+position = Vector3(1.159, 1.308, -4.351)
+rotation = Vector3(-0.5236, -0.6001, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_doorway__grandmother_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.257, 1.713, -0.643)
-rotation = Vector3(-0.1549, 1.7888, 0.0)
+position = Vector3(1.777, 2.235, -1.180)
+rotation = Vector3(-0.3924, 2.0809, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -424,12 +424,7 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bowls__grandmother_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.978, 2.322, -1.768)
-rotation = Vector3(-0.2618, 0.6478, 0.0)
+position = Vector3(0.993, 2.181, -1.749)
+rotation = Vector3(-0.0873, 0.6478, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_dish__grandmother_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.832, 1.415, -0.263)
-rotation = Vector3(-0.2618, 1.6755, 0.0)
-metadata/fov = 35.0

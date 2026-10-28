@@ -472,13 +472,6 @@ position = Vector3(2.749, 0.788, -5.791)
 rotation = Vector3(-0.2618, -0.2692, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_knob__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.892, 1.880, -12.972)
-rotation = Vector3(-0.2618, -0.4247, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_beer__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.263, 1.432, -1.855)
 rotation = Vector3(-0.2618, 1.0494, 0.0)

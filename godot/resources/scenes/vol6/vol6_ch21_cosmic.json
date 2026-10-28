@@ -44,7 +44,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert deadbolt]She unlocks the deadbolt. She unlocks the bottom lock. She pushes the door open.",
+      "text": "She unlocks the deadbolt. She unlocks the bottom lock. She pushes the door open.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/008.mp3"
     },
     {
@@ -417,7 +417,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert grille]The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark.",
+      "text": "The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/076.mp3"
     },
     {

@@ -752,7 +752,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert coffee]He drank from the coffee at his elbow. The coffee was cold.",
+      "text": "He drank from the coffee at his elbow. The coffee was cold.",
       "t": "narrate"
     },
     {

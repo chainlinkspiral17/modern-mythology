@@ -547,12 +547,12 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_page__bungalow_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.474, 0.851, -1.518)
-rotation = Vector3(-0.2618, 1.1590, 0.0)
+position = Vector3(-1.549, 1.049, -1.551)
+rotation = Vector3(-0.5236, 1.1590, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_scripts__bungalow_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.474, 0.851, -1.518)
-rotation = Vector3(-0.2618, 1.1590, 0.0)
+position = Vector3(-1.549, 1.049, -1.551)
+rotation = Vector3(-0.5236, 1.1590, 0.0)
 metadata/fov = 35.0

@@ -657,7 +657,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert teas]Maya brings out three iced teas.",
+   "text": "Maya brings out three iced teas.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/120.mp3"
   },
   {
@@ -1195,7 +1195,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert coffee]Tomorrow Sammy starts senior year. I will be at the kitchen window watching her drive away in the car you bought her in 2023. I will, after she is gone, sit with my coffee for a long time. The sitting is what I do.",
+   "text": "Tomorrow Sammy starts senior year. I will be at the kitchen window watching her drive away in the car you bought her in 2023. I will, after she is gone, sit with my coffee for a long time. The sitting is what I do.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/207.mp3"
   },
   {

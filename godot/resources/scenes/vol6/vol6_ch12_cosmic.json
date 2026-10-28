@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert deadbolt]The deadbolt slides.",
+      "text": "The deadbolt slides.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/013.mp3"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert list]— Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway.",
+      "text": "— Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/028.mp3"
     },
     {

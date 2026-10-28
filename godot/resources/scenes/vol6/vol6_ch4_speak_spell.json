@@ -63,7 +63,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert grille]The Speak & Spell falls silent. The grille stops glowing.",
+   "text": "The Speak & Spell falls silent. The grille stops glowing.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/012.mp3"
   },
   {
@@ -576,7 +576,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert grille]The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection.",
+   "text": "The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/102.mp3"
   },
   {

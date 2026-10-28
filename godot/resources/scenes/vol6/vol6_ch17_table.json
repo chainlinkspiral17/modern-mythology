@@ -253,7 +253,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffees]The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist.",
+      "text": "The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist.",
       "voice": "assets/audio/voice/vol6_ch17_table/043.mp3"
     },
     {
@@ -354,7 +354,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]Bianca drinks her coffee.",
+      "text": "Bianca drinks her coffee.",
       "voice": "assets/audio/voice/vol6_ch17_table/060.mp3"
     },
     {

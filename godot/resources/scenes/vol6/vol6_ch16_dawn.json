@@ -464,7 +464,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert truck]Diego clocks out. He goes out the back door. His truck is in its usual spot. BT's Altima is — Diego registers, walking past — still in the lot. BT is at the Altima, in the driver's seat with the door open, looking at the seat.",
+   "text": "Diego clocks out. He goes out the back door. His truck is in its usual spot. BT's Altima is — Diego registers, walking past — still in the lot. BT is at the Altima, in the driver's seat with the door open, looking at the seat.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/086.mp3"
   },
   {
@@ -649,7 +649,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert truck]He starts the truck.",
+   "text": "He starts the truck.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/117.mp3"
   },
   {
