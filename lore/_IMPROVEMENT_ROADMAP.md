@@ -3843,7 +3843,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - music, number, colour and role words are not subjects.
 - **Vol 5:** 116 cues, 59 new markers. Samples: the candle, the microwave, the bourbon, the bedside table, the futon.
 - **Vol 6:** 304 cues, 163 new markers. Samples: the crossword, the seatbelt, the grill, the eggs, the top desk drawer, the bulb in the cage.
-- **Gates:** tscn_syntax is at zero. The marker gates are logged in the next commit.
+- **Gates at zero:** tscn_syntax, marker_aim (846 markers in 58 sets), vantage_obstruction `--markers` (58 sets), wrong_room and shot_marker.
 - **Draft N+1 targets:**
   1. Vols 1–4.
   2. Re-run vol 7 under the stricter picker; the dry run finds 43 more cues.
