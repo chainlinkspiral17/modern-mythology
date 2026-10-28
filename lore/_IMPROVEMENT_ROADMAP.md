@@ -3835,6 +3835,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 207: AN INSERT MUST SHOW ITS THING; night windows; the bed's window.**
+- **Coverage.** Contact sheets of the new inserts found frames that passed every gate and showed nothing:
+  - puddles (flat on the ground);
+  - "dock" = the dock door's coil;
+  - "the truck comes at five fifty-eight" framing a HandTruck;
+  - the thermos behind the register at 5 %.
+
+  `text_focus_pass.coverage()` casts rays over the picture above the reading box, with the director's lift, and counts the subject's share. A new lens needs 6 %. `--coverage --refit --mine` re-placed or dropped this pass's own markers under 3 %: 24 moved, 59 dropped with their cues (dropped cues are now stripped at once).
+- **Hand markers are reported, not moved.** Coverage reads builder boxes. Hero props (the carved bowls) score 0 % and frame well. A first refit that moved hand markers was reverted.
+- **Stop words:** puddles, stains, cracks, tile, dock, "truck" never a HandTruck.
+- **Night windows.** cabin_interior is the kerosene-lit night view (668 of 1017 lines candlelight):
+  - its ten day window pictures stay off it (and the porch);
+  - ten `_night` pictures take their place;
+  - Lena's and Finn's night views get night versions too;
+  - 14 to generate.
+- **The bed's window.** HeroArt keys rows by scene file. The bedroom window's picture is now also laid in `cabin_interior_bed` ("The window above the bed gave her the gray-green of cedars").
+- **Gates at zero:**
+  - marker_aim (insert tight cone 8°, all 1797 markers);
+  - shot_marker;
+  - tscn_syntax.
+- **Draft N+1 targets:**
+  1. Coverage that sees hero props (read the tscn HeroProp transforms + size_m into the box model).
+  2. Then measure the hand markers.
+  3. Clause-aware subject picking.
+  4. Deck-verify.
+
 **2026-10-28 · pass 206: EVERY OLD INSERT AIMED AT ITS THING.**
 - **Problem:** marker_aim_audit passes a subject up to 38° off axis, and an insert lens is 35° wide. Many older hand markers had their object at the frame's edge, or under the reading box once the director lifted the frame (pass 205).
 - **New `marker_reaim.py --tight`:**
