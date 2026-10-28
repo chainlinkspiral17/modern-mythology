@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 214: THE BLUE HERON, 1997 (vol 2 bookstores).**
+- **Andy:** the Cat's Pause and the Blue Heron "can be 1990s Salty Tome".
+- **Three era presets** on the same building:
+  - `blue_heron_1997`, the store;
+  - `blue_heron_1997_lounge`, the store room as "a very well furnished lounge and study area" on a dark, wet Thursday;
+  - `blue_heron_1997_sea_wall`.
+- **They `strip` the 2050s:**
+  - the Starfish Nebula (painted 2050) and Aria's face;
+  - the slowstick terminal and the substrate patch;
+  - Kai's notebook, the cedar bowls, Margit's mug and Lena's brush;
+  - the alley crow and the Salty Tome sign.
+- The 2052 pictures skip them (`not_presets`). The store cat stays.
+- The three vol 2 stems map exact.
+- **Draft 2:**
+  - the Blue Heron's own sign (hero art);
+  - Frances's coffee station and the literary-journal rack;
+  - the sea wall itself (the view is a blank brick wall).
+
 **2026-10-28 · pass 213: DOWNTOWN PORTLAND, a Friday (vol 3 ch 4 invitation only, draft 1).**
 - **Before:** the chapter played on vol 7's 2052 Smolvud Main Street and the cedar tower lobby.
 - **New `portland_downtown`** (early 2000s), from the text:

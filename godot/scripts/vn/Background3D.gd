@@ -2660,6 +2660,47 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	# THE SAME BUILDING IN THE 1990s (2026-10-28; Andy: the vol 2 bookstores
+	# "can be 1990s Salty Tome"): Frances's Blue Heron on the sea wall (ch5,
+	# "a reader's store", the store room "a very well furnished lounge and study
+	# area") and the Cat's Pause (ch4). The 2050s leave: the Starfish Nebula
+	# (painted 2050) and Aria's face on the alley wall, the slowstick terminal,
+	# the substrate patch, Kai's notebook, the cedar bowls, Margit's mug, Lena's
+	# brush, the crow, the Salty Tome's sign; the store's cat stays.
+	"blue_heron_1997": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		"camera_origin": Vector3(-2.4, 1.75, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-54.3), 0.0),
+		"fov": 62.0,
+		"strip": ["Nebula_", "Face_", "Hand_Wall_Print", "Substrate_Patch", "SlowTerminal_", "Kai_Notebook", "Cedar_Bowl_", "Clay_Mug_Margits", "Paint_Brush", "SaltyTomeSign", "HP_Alley_Crow"],
+		"suppress_input": true,
+	},
+	"blue_heron_1997_lounge": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# ch5: "a Thursday evening. It was dark and cold and wet outside" — the
+		# Egretta meeting in the back room
+		"camera_origin": Vector3(1.25, 1.55, -6.35),
+		"camera_rotation": Vector3(-0.272, -0.785, 0.0),
+		"fov": 60.0,
+		"strip": ["Nebula_", "Face_", "Hand_Wall_Print", "Substrate_Patch", "SlowTerminal_", "Kai_Notebook", "Cedar_Bowl_", "Clay_Mug_Margits", "Paint_Brush", "SaltyTomeSign", "HP_Alley_Crow"],
+		"env": {"sky_top": Color(0.06, 0.07, 0.12, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.10, 0.09, 0.10, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.52, 0.46, 0.40, 1), "ambient_energy": 0.50, "fog_color": Color(0.14, 0.13, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"blue_heron_1997_sea_wall": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# ch5: "I was taking a walk along the sea wall ... when I happened to look
+		# up" — the back of the building, before any mural
+		"camera_origin": Vector3(0.8, 1.60, -9.5),
+		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
+		"fov": 58.0,
+		"strip": ["Nebula_", "Face_", "Hand_Wall_Print", "Substrate_Patch", "SlowTerminal_", "Kai_Notebook", "Cedar_Bowl_", "Clay_Mug_Margits", "Paint_Brush", "SaltyTomeSign", "HP_Alley_Crow"],
+		"suppress_input": true,
+	},
 	"salty_tome_interior": {
 		"scene": "res://scenes/locales/salty_tome_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",

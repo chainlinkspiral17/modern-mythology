@@ -326,9 +326,9 @@
       "scenes": 1
     },
     "vol2_bookstore_back_lounge": {
-      "fit": "reuse",
-      "to": "3d:salty_tome_office",
-      "note": "Small Wood's bookstore = the Salty Tome",
+      "fit": "exact",
+      "to": "3d:blue_heron_1997_lounge",
+      "note": "the Blue Heron's store room, \"a very well furnished lounge and study area\", 1990s",
       "scenes": 2
     },
     "vol2_briar_falls_building": {
@@ -702,9 +702,10 @@
       }
     },
     "vol2_sea_wall_bookstore": {
-      "fit": "reuse",
-      "to": "3d:salty_tome_alley",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:blue_heron_1997_sea_wall",
+      "scenes": 1,
+      "note": "the Blue Heron from the sea wall, 1990s: no mural yet"
     },
     "vol2_seagash_circus_old": {
       "fit": "exact",
@@ -741,9 +742,10 @@
       "scenes": 1
     },
     "vol2_used_bookstore": {
-      "fit": "reuse",
-      "to": "3d:salty_tome_interior",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:blue_heron_1997",
+      "scenes": 1,
+      "note": "the Salty Tome's building in the 1990s (Andy, 2026-10-28): the Cat's Pause / the Blue Heron, the 2050s stripped"
     },
     "vol2_video_store_counter": {
       "fit": "exact",
