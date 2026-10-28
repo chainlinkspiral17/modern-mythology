@@ -189,6 +189,20 @@ PRONOUN = set("he she it they i we you".split())
 FUNCTION = set("in on at of and or to with from was were had has is are the a an by for as but that this its it".split())
 
 
+# a word that names a different thing inside a compound part name:
+# "the truck comes at five fifty-eight" is the delivery truck, not the
+# HandTruck on the dock floor (2026-10-28)
+COMPOUND_NOT = {"truck": {"hand"}, "dock": {"coil", "track", "edgeguard", "face", "bumper", "plate", "leveler"}}
+
+
+def word_hits(word, geo):
+    hits = M.matches_for(word, geo)
+    bad = COMPOUND_NOT.get(word)
+    if bad:
+        hits = [h for h in hits if not (set(CAMEL.sub("_", h[0]).lower().split("_")) & bad)]
+    return hits
+
+
 def subject_for(text, geo, cast, marked=()):
     """(word, hits) for the thing the line names that the set has in view, or
     None. Every candidate is gathered; one the set already has an insert
@@ -227,7 +241,7 @@ def subject_for(text, geo, cast, marked=()):
         for cand in (wl, wl[:-1] if wl.endswith("s") and not wl.endswith("ss") else None):
             if not cand or len(cand) < 4 or cand in NEVER:
                 continue
-            hits = M.matches_for(cand, geo)
+            hits = word_hits(cand, geo)
             if not hits or len(hits) >= GENERIC_MAX:
                 continue
             found.append((cand, hits))
@@ -250,7 +264,8 @@ def subject_for(text, geo, cast, marked=()):
 
 
 _PLACED = {}
-COVER_MIN = 0.03       # of the visible frame the subject must own
+COVER_MIN = 0.03       # of the visible frame the subject must own (report / keep)
+COVER_NEW = 0.06       # a NEW lens asks more: the thermos behind the register owned 5 % and read as nothing
 INSERT_CENTER = 0.36   # VnDirector.INSERT_CENTER: the director's lift
 TEXT_BAND = 0.31       # the reading box's share of the screen, from the bottom
 
@@ -384,7 +399,7 @@ def _search(hits, cam, boxes_all):
                 st = VO.frame_stats(pb, rx, ry, 35.0, boxes_all)
                 if st["escape"] >= VO.EMPTY_FRAC:
                     continue
-                if coverage(pb, rx, ry, 35.0, boxes_all, subj) < COVER_MIN:
+                if coverage(pb, rx, ry, 35.0, boxes_all, subj) < COVER_NEW:
                     continue
                 return npos, rx, ry
     return None
@@ -504,7 +519,13 @@ def coverage_report(only, drop):
             hits = M.matches_for(word, geo)
             if not hits:
                 continue
-            hits = [h for h in hits if math.dist(h[1], pos) <= 30.0] or hits
+            good = word_hits(word, geo)
+            hits = [h for h in good if math.dist(h[1], pos) <= 30.0] or good
+            if not hits:
+                # it frames the wrong thing (the HandTruck for "the truck")
+                mine = ('; authored by text_focus_pass.py' in src.split('name="%s"' % name)[0][-200:])
+                low.append((loc, name, 0.0, mine, pos))
+                continue
             subj = {h[0] for h in hits}
             mf = re.search(r'\[node name="%s"[^\n]*\n(?:[^\n\[]*\n)*?metadata/fov = ([\d.]+)' % re.escape(name), src)
             fov = float(mf.group(1)) if mf else 35.0
@@ -528,6 +549,11 @@ def refit(low, pre, places):
     moved = dropped = kept = 0
     drop_cues = []                # (preset, word)
     for loc, name, cv, mine, mpos in low:
+        if not mine:
+            # a hand marker may frame a hero prop the builder's boxes do
+            # not hold (the carved bowls score 0 % and read well): report it
+            kept += 1
+            continue
         path = os.path.join(TSCN, loc + ".tscn")
         cue = name[len("shot_insert_"):]
         word, _, view = cue.partition("__")
@@ -545,7 +571,7 @@ def refit(low, pre, places):
             continue
         vb = [b for b in allb if VO._in_view(b[0], views[0])] if views[0] in VO.PRESET_IDS else allb
         geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in vb]
-        hits = M.matches_for(word, geo)
+        hits = word_hits(word, geo)
         if hits:
             _an, near = M.subject_target(hits, cam)
             hits = [h for h in hits if math.dist(h[1], near) <= 1.2] or hits
@@ -570,7 +596,7 @@ def refit(low, pre, places):
             print("  dropped %-26s %s" % (loc, name))
         else:
             kept += 1
-            print("  KEPT    %-26s %s (hand marker, no clear frame found)" % (loc, name))
+            print("  KEPT    %-26s %s (no clear frame found)" % (loc, name))
     if drop_cues:
         cue_rx = {}
         for v, w in drop_cues:
