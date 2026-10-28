@@ -81,6 +81,9 @@ figure figures flame purifiers twenty five seven eight nine blue black empty wor
 south iced indie novelty interior heat dust well weight yards tips strip grid smear marks sorts dates base backs
 skip fill fills leave gets plays works stage lake motes mote
 ones highs manager managers squat towers rings registers clerk owner customer customers
+banks bank drugstore frozen four pink high broken wakes runs pull main players player parents teacher torso jobs job
+business service expense images forms surrounds border coast island cave farm dune surf sand grass moss sidelines
+recess overhang copy carbon seams seam
 brow brows forehead eyebrow eyebrows wrist wrists elbow elbows thumb thumbs palm palms jaw chin lap hip hips belly
 """.split())
 # furniture every room has: one cue a chapter, not a refrain

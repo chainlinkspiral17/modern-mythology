@@ -918,6 +918,23 @@ func _fire_blink(node: Control) -> void:
 var bg_is_3d: bool = false
 
 
+# (2026-10-28) while the director holds an insert on a narrated line the
+# portraits step back (fade out) so the object is the picture; they return on
+# the next line that is not one, or when someone speaks.
+var _insert_quiet: bool = false
+var _quiet_tw: Tween = null
+
+
+func set_insert_quiet(on: bool) -> void:
+	if on == _insert_quiet:
+		return
+	_insert_quiet = on
+	if _quiet_tw != null and _quiet_tw.is_valid():
+		_quiet_tw.kill()
+	_quiet_tw = create_tween()
+	_quiet_tw.tween_property(self, "modulate:a", 0.0 if on else 1.0, 0.25)
+
+
 func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:
 	if not POSITIONS.has(pos):
 		pos = "center"
