@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 213: DOWNTOWN PORTLAND, a Friday (vol 3 ch 4 invitation only, draft 1).**
+- **Before:** the chapter played on vol 7's 2052 Smolvud Main Street and the cedar tower lobby.
+- **New `portland_downtown`** (early 2000s), from the text:
+  - "window drop shopping independent record stores, trailblazing Powells book store": the bookstore corner with its red band, the record store's window of LPs, a coffee shop, brick four-storeys, the 2001 streetcar rails;
+  - "a pigeon occupied park plaza": brick, amphitheatre steps, the flock on the stones;
+  - the vacant gallery: "unlocked the glass doors, kick stopped them open", "The floor was unswept ... footprints emerged", "a table with refreshments set up along one wall, a trashcan filled with ice and cans of beer", lights "appeared non-sequentially" (a few tubes lit).
+- **Presets:** `portland_street_friday`, `vacant_gallery_lobby`.
+- **Cues:** records (replacing a stray "window"), pigeons, trashcan.
+- **Removed:** a metaphor cue ("the book we walk through") that text_focus_pass took for an object.
+- **Gates at zero.**
+- **Draft 2:**
+  - hero art: the bookstore sign, the record covers, the invite card;
+  - the line of people at the gallery door;
+  - the screening room beyond.
+
 **2026-10-28 · pass 212: HER ROOM, that night (vol 2 mayhune, draft 1).**
 - **Before:** "she went up to her room and sat in silence" played on the narrator's ranch bedroom.
 - **Now:** her own room upstairs, built into `small_wood_backyard` (x 40..44.4), with:

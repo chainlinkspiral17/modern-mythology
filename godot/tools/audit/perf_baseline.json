@@ -251,6 +251,11 @@
  "pharmacy": {
   "draw": 1096
  },
+ "portland_downtown": {
+  "draw": 114,
+  "prims": 31524,
+  "objects": 284
+ },
  "riverfront": {
   "draw": 471
  },

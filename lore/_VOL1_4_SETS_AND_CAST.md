@@ -81,7 +81,8 @@ A sweep on 2026-10-27 found 36 vol 1–4 uses of sets built for vols 5–7 (`bg_
 | 2 | vol3 ch8 passengers' 3 a.m. stop | vol 6 NexCorp (2026 brand) | an unbranded early-2000s station | **done 2026-10-27** — era preset `gas_station_2003_night` on the same station: the brand pictures skip it (`not_presets`), the 2026 van, cars, badge and morning sun leave it (`strip`), night lights of its own |
 | 2 | vol4 cc_3's "grungy bathroom" (an AFTER PARTY's, not a gas station's) | vol 6 NexCorp restroom | a house-party bathroom | **built 2026-10-28** — `afterparty_bathroom` in `carrie_city`, off the after party's loft: the mirror with the sharpie face, graffiti over tile, a bare bulb, the tub of ice and cans |
 | 3 | vol2 docks, Hwy 101 (Small Wood 1997); vol3's coast road | vol 7 Smolvud jetty, Hwy 101 (2052) | the same places in their own years | **done 2026-10-27** — era presets: `coast_highway_day` (no Tem's truck, no chain or marker on a turn not yet bypassed, a clear day); `smolvud_docks_evening` strips the Frog's things |
-| 3 | vol3 ch4 city street; vol4 apartments | vol 7 main street, Finn's 2052 apartment | era-right streets and rooms | to plan |
+| 3 | vol3 ch4 city street (+ the vacant gallery) | vol 7 main street, cedar tower lobby | early-2000s Portland | **built 2026-10-28** — `portland_downtown` (draft 1): `portland_street_friday` (the bookstore with its red band, the record store, the coffee shop, the pigeon plaza at the end) and `vacant_gallery_lobby` (doors kick-stopped open, the unswept floor with footprints, the refreshment table, the trashcan of ice and beer, a few tubes lit) |
+| 3 | vol4 apartments (influx's apartment at dawn, Chess's) | Finn's 2052 apartment | era-right rooms | to plan |
 | ok | MD Anderson hospital, Dean's tower, dream cells, Cape Perpetua | — | — | kept |
 
 

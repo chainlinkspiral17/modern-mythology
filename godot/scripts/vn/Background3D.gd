@@ -1683,6 +1683,30 @@ const CAMERA_PRESETS := {
 	# VOL 3 ch 6 arcadeum (2026-10-28): the Honolulu high-rise's ground floor
 	# and its boutique game store, early 2000s (build_honolulu_highrise.py).
 	# It played on the 2052 cedar tower lobby and the 2026 Cosmic Comics.
+	# VOL 3 ch 4 invitation only (2026-10-28): a Friday in downtown Portland,
+	# early 2000s (build_portland_downtown.py) — "window drop shopping
+	# independent record stores, trailblazing Powells book store"; the pigeon
+	# plaza at the street's east end; that night the vacant gallery. They
+	# played on the 2052 Smolvud Main Street and cedar tower lobby.
+	"portland_street_friday": {
+		"scene": "res://scenes/locales/portland_downtown.tscn",
+		"requires_glb": "res://assets/3d/locales/portland_downtown.glb",
+		"camera_origin": Vector3(-12.0, 1.6, -1.0),
+		"camera_rotation": Vector3(0.02, -0.55, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"vacant_gallery_lobby": {
+		"scene": "res://scenes/locales/portland_downtown.tscn",
+		"requires_glb": "res://assets/3d/locales/portland_downtown.glb",
+		"camera_origin": Vector3(104.5, 1.6, -1.2),
+		"camera_rotation": Vector3(-0.04, 0.25, 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.06, 0.07, 0.12, 1), "sky_horizon": Color(0.16, 0.14, 0.18, 1),
+			"ground_horizon": Color(0.10, 0.09, 0.10, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.46, 0.48, 0.52, 1), "ambient_energy": 0.40, "fog_color": Color(0.14, 0.14, 0.16, 1)},
+		"suppress_input": true,
+	},
 	"honolulu_lobby": {
 		"scene": "res://scenes/locales/honolulu_highrise.tscn",
 		"requires_glb": "res://assets/3d/locales/honolulu_highrise.glb",

@@ -962,9 +962,12 @@
       "built": "2026-10-18 draft 1"
     },
     "vol3_city_street_friday": {
-      "fit": "reuse",
-      "to": "3d:main_street",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:portland_street_friday",
+      "scenes": 1,
+      "build": "portland_downtown",
+      "built": "2026-10-28 draft 1",
+      "note": "downtown Portland, a Friday early evening: the bookstore, the record store, the pigeon plaza"
     },
     "vol3_clinic_1945": {
       "fit": "exact",
@@ -1508,9 +1511,12 @@
       "built": "2026-10-27 draft 1"
     },
     "vol3_vacant_gallery_lobby": {
-      "fit": "reuse",
-      "to": "3d:cedar_tower_lobby",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:vacant_gallery_lobby",
+      "scenes": 1,
+      "build": "portland_downtown",
+      "built": "2026-10-28 draft 1",
+      "note": "the invite-only screening's vacant gallery: the glass doors kick-stopped open, the unswept floor, the trashcan of ice and beer"
     },
     "vol3_warehouse_club_night": {
       "fit": "exact",
