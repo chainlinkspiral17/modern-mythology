@@ -46,6 +46,11 @@ CONE_DEG = 38.0        # half-angle · insert lenses are tight but a
                        # named object should be near frame center
 NEAR_MAX = 40.0        # an insert subject more than 40m out is a miss
 ANY_CONE_DEG = 55.0    # abstract markers: anything in a wide cone
+# (2026-10-28) an INSERT frames its thing: within this of the axis. The 38°
+# cone passed 223 inserts whose object sat on the edge of a 35° lens or, once
+# the director lifted the frame above the reading box, under the words.
+# marker_reaim.py --tight fixes them (TIGHT_DEG 6; this gate leaves 2° slack).
+INSERT_TIGHT_DEG = 8.0
 # Insert cues whose subject genuinely does not exist in that locale's
 # geometry (the story object lives in a sibling scene). Reported as
 # WARN, not a failure — build the prop or re-home the cue to clear it.
@@ -265,6 +270,8 @@ def main():
                     best = (best_name, None)
                     if ang > CONE_DEG or dist > NEAR_MAX:
                         misaims.append((locale, name, best[0], ang, dist))
+                    elif m.group(1) == "insert" and ang > INSERT_TIGHT_DEG:
+                        misaims.append((locale, name, best[0] + " (off-centre: marker_reaim.py --tight)", ang, dist))
                     continue
                 if m.group(1) == "insert" and (locale, name) in KNOWN_UNRESOLVED:
                     print("WARN    %-26s %-28s %s" % (locale, name, KNOWN_UNRESOLVED[(locale, name)]))
