@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · passes 208–209: coverage fixed, direction re-run, hand inserts re-placed.**
+- **Coverage bug.** The ray cast skipped PASSABLE names: foliage, which includes "cedar", and glass.
+  - So the cedar bowls (well framed) scored 0 %, and glass, windshield and lens subjects were dropped in pass 207.
+  - The subject's own parts are now always solid.
+- **Direction re-run on all volumes** with the fixed check: 99 cues.
+- **Speed.**
+  - Builder boxes are cached on disk (`godot/tools/audit/.box_cache`, keyed to builder + _props + recorder bytes).
+  - `--refit --hand` shards by set, one process per core.
+  - Preset rotations written with PI no longer crash the camera reader.
+- **Hand inserts below 3 % coverage.** 32 re-placed with a covered same-room lens; the rest kept, since no clear frame was found. Gates at zero on the touched sets.
+- **Stopped:** the last shard (a handful of sets) ran for hours without a change. cabin_interior's porch cedar and cigarette inserts were left as they are.
+- **The user, on the pace:** "Been waiting hours … just divide the task." Long whole-game sweeps are low yield now: 32 moves for many hours of compute.
+- **Next passes should be targeted:**
+  1. Deck-reported frames first.
+  2. One volume or one set per pass, sharded.
+  3. Every run under ~20 min.
+
 **2026-10-28 · pass 207: AN INSERT MUST SHOW ITS THING; night windows; the bed's window.**
 - **Coverage.** Contact sheets of the new inserts found frames that passed every gate and showed nothing:
   - puddles (flat on the ground);
