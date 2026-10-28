@@ -362,8 +362,8 @@ script = ExtResource("14_dbgm")
 ; insert: the paper cup of coffee she has not drunk
 ; (2026-10-08) her coffee, not drunk, on the seat beside hers — the waiting room next door
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-7.500, 1.100, -3.750)
-rotation = Vector3(-0.5707, 0.4834, 0.0)
+position = Vector3(-7.557, 0.712, -4.031)
+rotation = Vector3(-0.2618, 0.6098, 0.0)
 metadata/fov = 42.0
 
 ; insert: she takes Linda's free hand in both of hers

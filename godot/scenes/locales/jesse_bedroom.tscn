@@ -217,8 +217,8 @@ rotation = Vector3(-0.5562, 0.0877, 0.0)   ; the bed
 ; ── vn_shot wave (2026-08-19) · positions authored, aim
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.759, -1.974)
-rotation = Vector3(-0.0790, 0.0290, 0.0)
+position = Vector3(0.216, 1.005, -3.395)
+rotation = Vector3(-0.5236, 0.4141, 0.0)
 
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.950, 1.150, -0.450)

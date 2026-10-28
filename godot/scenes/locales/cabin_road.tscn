@@ -359,8 +359,8 @@ rotation = Vector3(-0.4099, -2.3694, 0.0)
 
 ; insert: the crow on the dashboard of Finn's truck, through the windshield from the pull-out (2026-10-09: it aimed at a road with no crow)
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.000, 1.600, 4.300)
-rotation = Vector3(-0.0854, 2.9997, 0.0)
+position = Vector3(-2.869, 1.411, 8.113)
+rotation = Vector3(-0.0873, 0.4212, 0.0)
 metadata/fov = 40.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]

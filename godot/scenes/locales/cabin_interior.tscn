@@ -596,14 +596,14 @@ metadata/fov = 42.0
 
 ; insert: she reached the door — the latch
 [node name="shot_insert_doorknob" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360, 1.300, -0.750)
-rotation = Vector3(-0.4067, -3.1416, 0.0)
+position = Vector3(-0.832, 1.136, -0.674)
+rotation = Vector3(-0.1170, -2.4561, 0.0)
 metadata/fov = 42.0
 
 ; insert: the disc-case on the kitchen table
 [node name="shot_insert_disc_case" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.306, 0.978, -3.562)
-rotation = Vector3(-0.2618, 1.0472, 0.0)
+position = Vector3(0.454, 1.125, -3.398)
+rotation = Vector3(-0.5236, -0.4882, 0.0)
 metadata/fov = 42.0
 
 ; insert: the player, taken down from the shelf
