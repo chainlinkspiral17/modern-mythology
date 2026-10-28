@@ -748,7 +748,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren closes the door.",
+      "text": "[shot:insert door]Wren closes the door.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/135.mp3"
     },
     {
@@ -1267,7 +1267,7 @@
     },
     {
       "t": "narrate",
-      "text": "She comes back to the counter at eight twenty-seven.",
+      "text": "[shot:insert counter]She comes back to the counter at eight twenty-seven.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/226.mp3"
     },
     {

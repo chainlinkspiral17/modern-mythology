@@ -1108,7 +1108,7 @@
     },
     {
       "t": "narrate",
-      "text": "The dock door behind him opens.",
+      "text": "[shot:insert dock]The dock door behind him opens.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/208.mp3"
     },
     {

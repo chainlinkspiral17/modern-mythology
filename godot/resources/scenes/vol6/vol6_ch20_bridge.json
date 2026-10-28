@@ -1233,7 +1233,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the door, registers the not-being-a-thing. He nods. He goes.",
+      "text": "[shot:insert door]Jesse, at the door, registers the not-being-a-thing. He nods. He goes.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/212.mp3"
     },
     {

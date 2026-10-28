@@ -171,7 +171,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, grips Ben's wrist briefly. Ben does not move.",
+      "text": "[shot:insert table]Jesse, at the table, grips Ben's wrist briefly. Ben does not move.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/032.mp3"
     },
     {

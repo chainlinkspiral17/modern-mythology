@@ -1347,7 +1347,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy, at the table, has not picked up the money.",
+      "text": "[shot:insert table]Lucy, at the table, has not picked up the money.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/234.mp3"
     },
     {

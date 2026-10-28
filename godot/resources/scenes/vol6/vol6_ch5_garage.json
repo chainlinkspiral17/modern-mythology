@@ -502,7 +502,7 @@
     },
     {
       "t": "narrate",
-      "text": "It is Jesse's mother, ducking under the partially opened door with a pizza box balanced on her hip and a stack of paper plates in the other hand.",
+      "text": "[shot:insert door]It is Jesse's mother, ducking under the partially opened door with a pizza box balanced on her hip and a stack of paper plates in the other hand.",
       "voice": "assets/audio/voice/vol6_ch5_garage/094.mp3"
     },
     {

@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door.",
+      "text": "[shot:insert door]He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door.",
       "voice": "assets/audio/voice/vol6_ch9_room/019.ogg"
     },
     {

@@ -384,7 +384,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem drank her coffee.",
+      "text": "[shot:insert coffee]Tem drank her coffee.",
       "voice": "assets/audio/voice/vol7_ch1_morning/066.mp3"
     },
     {

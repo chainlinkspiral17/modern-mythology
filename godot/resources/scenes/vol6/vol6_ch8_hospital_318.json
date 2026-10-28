@@ -212,7 +212,7 @@
   },
   {
    "t": "narrate",
-   "text": "The door closes.",
+   "text": "[shot:insert door]The door closes.",
    "voice": "assets/audio/voice/vol6_ch8_hospital_318/036.mp3"
   },
   {

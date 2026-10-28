@@ -821,7 +821,7 @@
     },
     {
       "t": "narrate",
-      "text": "She locks the back-office door behind her. She texts Rick.",
+      "text": "[shot:insert door]She locks the back-office door behind her. She texts Rick.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/147.mp3"
     },
     {

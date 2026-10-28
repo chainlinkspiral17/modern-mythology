@@ -543,7 +543,7 @@
   },
   {
    "t": "narrate",
-   "text": "His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine,",
+   "text": "[shot:insert table]His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine,",
    "voice": "assets/audio/voice/vol6_ch7_hospital/089.ogg"
   },
   {
@@ -607,7 +607,7 @@
   },
   {
    "t": "narrate",
-   "text": "Eileen and Jim, on the couch.",
+   "text": "[shot:insert couch]Eileen and Jim, on the couch.",
    "voice": "assets/audio/voice/vol6_ch7_hospital/102.mp3"
   },
   {
