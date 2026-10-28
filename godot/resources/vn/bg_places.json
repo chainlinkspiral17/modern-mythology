@@ -1147,15 +1147,19 @@
    "built": "2026-10-17 draft 1"
   },
   "vol3_honolulu_game_store": {
-   "fit": "reuse",
-   "to": "3d:cosmic_comics_interior",
+   "fit": "exact",
+   "to": "3d:honolulu_game_store",
    "note": "Koa Works' game store",
-   "scenes": 1
+   "scenes": 1,
+   "build": "honolulu_highrise",
+   "built": "2026-10-28 draft 1"
   },
   "vol3_honolulu_highrise_lobby": {
-   "fit": "reuse",
-   "to": "3d:cedar_tower_lobby",
-   "scenes": 1
+   "fit": "exact",
+   "to": "3d:honolulu_lobby",
+   "scenes": 1,
+   "build": "honolulu_highrise",
+   "built": "2026-10-28 draft 1"
   },
   "vol3_hospital_catwalk_night": {
    "fit": "exact",

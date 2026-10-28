@@ -1680,6 +1680,25 @@ const CAMERA_PRESETS := {
 	# balloons ... in the tall grass"; "a fog horn off in the distance, birds
 	# overhead". From the lawn by the slip and slide, back across the yard to
 	# the table and the house, the firs over the fence behind the lens.
+	# VOL 3 ch 6 arcadeum (2026-10-28): the Honolulu high-rise's ground floor
+	# and its boutique game store, early 2000s (build_honolulu_highrise.py).
+	# It played on the 2052 cedar tower lobby and the 2026 Cosmic Comics.
+	"honolulu_lobby": {
+		"scene": "res://scenes/locales/honolulu_highrise.tscn",
+		"requires_glb": "res://assets/3d/locales/honolulu_highrise.glb",
+		"camera_origin": Vector3(-5.0, 1.6, -2.5),
+		"camera_rotation": Vector3(-0.04, -1.03, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"honolulu_game_store": {
+		"scene": "res://scenes/locales/honolulu_highrise.tscn",
+		"requires_glb": "res://assets/3d/locales/honolulu_highrise.glb",
+		"camera_origin": Vector3(9.6, 1.6, -9.6),
+		"camera_rotation": Vector3(-0.08, -2.16, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"small_wood_backyard_party": {
 		"scene": "res://scenes/locales/small_wood_backyard.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_backyard.glb",

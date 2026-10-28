@@ -144,6 +144,11 @@
  "henderson_kitchen": {
   "draw": 106
  },
+ "honolulu_highrise": {
+  "draw": 218,
+  "prims": 50516,
+  "objects": 388
+ },
  "hospital_room": {
   "draw": 100
  },

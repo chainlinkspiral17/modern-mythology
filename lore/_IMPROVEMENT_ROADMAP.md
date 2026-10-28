@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 210: HONOLULU (vol 3 ch 6 arcadeum) gets its own set (draft 1).**
+- **Before:** June's job interview played on vol 7's 2052 cedar tower lobby and vol 6's 2026 Cosmic Comics.
+- **New `honolulu_highrise`** (early 2000s), from the text:
+  - "a hollowed out chunk of Honolulu high-rise";
+  - "tourist trap photography parlour, travel agency, corner suit shoppe & luggage boutique";
+  - the game store "between a men's suit and leather case store and a dry cleaner";
+  - "a cheap box vinyl back-lit fluorescent number that promised only COMPUTER GAMES";
+  - the front window display with Final Cut;
+  - "the clear display underneath the register" with WHAT LIES BEYOND;
+  - the card imprinter ("two-part transfer paper in a hard plastic shell");
+  - "old used games" in a bin.
+- **Presets:**
+  - `honolulu_lobby` (marble, brass elevators, the glass street front onto palms and towers);
+  - `honolulu_game_store`.
+- **Inserts:** register, window, sign. Coverage-checked, aimed within 6°.
+- **Gates:** marker_aim, vantage_obstruction (markers + presets), preset_vantage and tscn_syntax at zero; perf baseline recorded. bg_places stems now map exact.
+- **Draft 2 targets:**
+  - hero art for the shop signs, the travel posters and the two game boxes;
+  - the clerk's corner;
+  - coverage of the window from the lobby;
+  - Deck framing.
+
 **2026-10-28 · passes 208–209: coverage fixed, direction re-run, hand inserts re-placed.**
 - **Coverage bug.** The ray cast skipped PASSABLE names: foliage, which includes "cedar", and glass.
   - So the cedar bowls (well framed) scored 0 %, and glass, windshield and lens subjects were dropped in pass 207.
