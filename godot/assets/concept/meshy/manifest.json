@@ -34154,5 +34154,705 @@
       "godot/assets/concept/meshy/brother_in_law/brother_in_law_side_openai_gpt-image-2.5-sunburst_01.png",
       "godot/assets/concept/meshy/brother_in_law/brother_in_law_back_openai_gpt-image-2.5-sunburst_01.png"
     ]
+  },
+  {
+    "at": "2026-10-28T02:50:53+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_south_window_w",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view south from the cabin's big front window: the porch, the clearing, the cedars, like this: Outside the cabin's south-facing window the rain came down through the cedars at the steady rate it had been coming down since Tuesday afternoon. The forest beyond the small porch was the wet dark green of cedar at this hour. Finn rolled off the floor at five twenty-two and went to the south window to look at his crow on Kai's truck. Lena, in the second chair, watched the cedars through the south-facing window Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking south out of the front window of an old off-grid cedar cabin in the Oregon Coast Range: in the near ground the cabin's small covered porch \u2014 a weathered cedar rail and two posts, the drip line of the porch roof across the top edge with rain sheeting off it. Beyond the porch a small muddy gravel clearing with an older pickup truck parked at its edge, beaded with rain. Past the clearing the forest: tall western red cedar and Sitka spruce, the wet dark green of cedar, rain coming down through them at a steady rate, mist between the trunks. Grey Pacific Northwest rain, soft flat light, saturated greens. 1.7:1 landscape.\nSIZE: the real object is 1.78 m wide by 1.06 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view south from the cabin's big front window: the porch, the clearing, the cedars, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_south_window_w/cabin_interior_south_window_w_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:51:13+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_south_window_e",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view south from the cabin's smaller front window: porch post and cedars like this: Outside the cabin's south-facing window the rain came down through the cedars at the steady rate it had been coming down since Tuesday afternoon. The forest beyond the small porch was the wet dark green of cedar at this hour. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking south out of a small square window of an old cedar cabin in the Oregon Coast Range: one weathered cedar porch post and the end of the porch rail close in the foreground, rain dripping off the porch roof edge at the top. Beyond, the edge of a gravel clearing going to fern and salal, then a wall of western red cedar and Sitka spruce, wet and dark green, mist hanging between the trunks, steady rain. Overcast, soft flat grey light. Near-square.\nSIZE: the real object is 1.03 m wide by 1.01 m tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view south from the cabin's smaller front window: porch post and cedars, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_south_window_e/cabin_interior_south_window_e_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:51:31+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_kitchen_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view north from the cabin's kitchen window: mist on the cedars like this: Tem did not, for a count, say anything. She looked at the kitchen window. The mist on the cedars. Finn was at the kitchen window watching the mist on the cedars the way Finn had been at the kitchen window the previous afternoon. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking north out of a kitchen window at the back of an old cedar cabin in the Oregon Coast Range: a few metres of wet ground with sword fern, salal and a moss-covered log, then the trunks of western red cedar rising close together into mist \u2014 the mist on the cedars, grey-white, the far trunks fading into it. Dripping branches, a pale grey sky barely showing at the top. Early morning, wet, still, soft flat light. 1.7:1 landscape.\nSIZE: the real object is 1.68 m wide by 1.01 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from the cabin's kitchen window: mist on the cedars, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_kitchen_window/cabin_interior_kitchen_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:51:54+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_west_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking west out of a small square side window of a cedar cabin in the Oregon Coast Range: a stacked woodpile under a cedar-shake lean-to close outside, beyond it the dense understory of salal and sword fern and the mossy trunks of Sitka spruce and red cedar, rain and drifting mist. Grey overcast, soft flat light, deep saturated greens and rain-dark browns. Near-square.\nSIZE: the real object is 96 cm wide by 96 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view west out of the cabin's side window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_west_window/cabin_interior_west_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:52:13+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_gable_w",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking up and out of a high gable window of a cabin in the Oregon Coast Range: the upper trunks and crowns of tall western red cedar and Sitka spruce against a pale grey overcast sky, drooping cedar boughs heavy with rain, wisps of low cloud caught in the crowns. Soft flat light, cool greys and dark greens. 1.3:1 landscape.\nSIZE: the real object is 1.16 m wide by 86 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the sky and cedar crowns through the cabin's west gable window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_gable_w/cabin_interior_gable_w_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:52:34+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_gable_e",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking up and out of a high gable window of a cabin in the Oregon Coast Range, facing east: the crowns of Sitka spruce and red cedar against a brighter patch of grey cloud where the morning is, mist threading between the tops, rain-dark boughs. Soft flat light, cool greys and dark greens. 1.3:1 landscape.\nSIZE: the real object is 1.16 m wide by 86 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the sky and cedar crowns through the cabin's east gable window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_gable_e/cabin_interior_gable_e_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:52:52+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_loft_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view out of the loft window above the kitchen like this: Marina was asleep in the loft above the kitchen. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a small loft window under the eaves of a cedar cabin in the Oregon Coast Range, facing north: the dripping edge of a cedar-shake roof across the top, then the mid-trunks and boughs of western red cedar close by, mist behind them, rain. Dim grey light, deep greens. 1.4:1 landscape.\nSIZE: the real object is 76 cm wide by 56 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view out of the loft window above the kitchen, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_loft_window/cabin_interior_loft_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:53:12+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_front_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the street below Lena's front window like this: She went to the front window and looked down. Three of them got out. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking down from a second-floor apartment window onto the street in front of a small second-hand bookshop in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk directly below, the curb, an older pickup truck pulled in at the curb with rain beading on its cab, the far side of the street with its wood and brick shopfronts and upstairs windows, a dripping awning edge. Steady rain, slate-grey evening light, a couple of warm lit windows. 1:1.2 portrait.\nSIZE: the real object is 1.08 m wide by 1.26 m tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the street below Lena's front window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_front_window/lena_apartment_front_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:53:32+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_nook_window_0",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a tall second-floor window at the back of an old building in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet tar-and-gravel roof of the next building just below, a rusty vent stack and a rooftop heat-pump unit, then a jumble of pitched roofs and chimneys climbing a hill, Sitka spruce and hemlock on the ridge above disappearing into low grey cloud. Rain, soft flat light, muted greys and dark greens. 1:1.3 portrait.\nSIZE: the real object is 1.03 m wide by 1.36 m tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from Lena's nook windows (left), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_nook_window_0/lena_apartment_nook_window_0_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:53:52+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_nook_window_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a tall second-floor window at the back of an old building in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the shingled side wall and a lit upstairs window of the neighbouring house across a narrow gap, a downspout running with rain, a bigleaf maple dripping, and above the rooftops a dark spruce ridge fading into cloud. Rain, slate-grey light. 1:1.3 portrait.\nSIZE: the real object is 1.03 m wide by 1.36 m tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from Lena's nook windows (right), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_nook_window_1/lena_apartment_nook_window_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:54:13+00:00",
+    "stage": "image",
+    "slug": "salty_tome_front_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the street outside the Salty Tome's front window like this: Petra was at the bookstore window, putting a book on the display. Soren at the Daily Grind was at the counter with a customer. Cale's truck was outside ChillWave Video and the OPEN sign was on the door. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out through a second-hand bookshop's front display window onto the street in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk right outside, a sandwich board leaning against the wall, the street with long reflections, and across it a row of old two-storey shopfronts \u2014 a caf\u00e9 with its lights on, a small video shop, painted clapboard and brick, deep awnings dripping. Steady rain, slate-grey daylight, a few warm windows. 1.8:1 landscape.\nSIZE: the real object is 2.48 m wide by 1.36 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the street outside the Salty Tome's front window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/salty_tome_front_window/salty_tome_front_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:54:32+00:00",
+    "stage": "image",
+    "slug": "hans_bakery_side_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Hemlock through the bakery's side window like this: She went to the window at the side of the bakery that looked out on Hemlock. She stood at the window with her hands flat on the sill. She looked out at the street. The rain on the sidewalk was the rain on the sidewalk. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of the side window of a small-town bakery onto a residential street called Hemlock in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk close below the sill, rain bouncing on it, the curb and the street, a parked car, and across the street wood-frame houses with porches and a big dripping spruce. Steady rain, grey daylight. The rain on the sidewalk is the subject. Near-square.\nSIZE: the real object is 1.18 m wide by 1.16 m tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Hemlock through the bakery's side window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/hans_bakery_side_window/hans_bakery_side_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:54:51+00:00",
+    "stage": "image",
+    "slug": "hans_bakery_front_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out through the big front window of a small-town bakery onto the street in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk, a bench, the street, and across it a row of old two-storey wood and brick shopfronts with awnings, a spruce-dark hill behind the rooftops into low cloud. Rain, early grey morning light. 1.5:1 landscape.\nSIZE: the real object is 2.40 m wide by 1.60 m tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the street through the bakery's front-of-house window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/hans_bakery_front_window/hans_bakery_front_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:55:12+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_south_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the town to the south from Finn's kitchen window like this: The kitchen window faced south. South was the direction of Cape Perpetua, the Starfish Nebula, Kai's apartment, Tem's apartment, the tower on the bluff above old-Yachats. The face was looking out at the town. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking south out of a second-floor kitchen window over Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): wet rooftops and chimneys of the town stepping down, a few lit windows, and beyond them a forested headland dropping to the grey Pacific, and on a bluff above the old part of town a tall cedar-and-glass tower among Sitka spruce. Rain, slate-grey sky, soft flat light. Near-square.\nSIZE: the real object is 76 cm wide by 81 cm tall \u2014 a portrait picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the town to the south from Finn's kitchen window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_south_window/finn_apartment_south_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:55:33+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_alley_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the alley below Finn's west kitchen window like this: He stood at the kitchen window looking down at the alley. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking down from a second-floor window into a narrow wet alley behind a small kayak shop in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): stacked plastic sea kayaks on a rack under a lean-to, a dumpster, puddles on cracked asphalt, the back wall of the next building with a fire escape and a downspout running, rain. Grey light. Near-square.\nSIZE: the real object is 96 cm wide by 86 cm tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the alley below Finn's west kitchen window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_alley_window/finn_apartment_alley_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:55:53+00:00",
+    "stage": "image",
+    "slug": "chillwave_front_window_w",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the street outside ChillWave's front window (west) like this: Cale's truck was outside ChillWave Video and the OPEN sign was on the door. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out through the front window of a small slowstick-and-video shop onto the street in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk, a pickup truck parked at the curb, the street with reflections, and across it old wood and brick shopfronts with upstairs apartments and awnings. Rain, slate-grey light. 1.2:1 landscape.\nSIZE: the real object is 1.88 m wide by 1.51 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the street outside ChillWave's front window (west), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/chillwave_front_window_w/chillwave_front_window_w_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:56:12+00:00",
+    "stage": "image",
+    "slug": "chillwave_front_window_e",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out through a shop's front window onto the street in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet sidewalk with a bike rack and a street tree dripping, the street, and across it a caf\u00e9 front with warm light and a laundromat, a forested hill above the rooftops into low cloud. Rain, slate-grey light. 1.2:1 landscape.\nSIZE: the real object is 1.88 m wide by 1.51 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the street outside ChillWave's front window (east), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/chillwave_front_window_e/chillwave_front_window_e_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:56:32+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_studio_south",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the ocean from the tower studio's south window like this: Dean alone at the studio's south window looking at the ocean in '32, a year after his wife had died. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking south from the second floor of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s: over the tops of the Sitka spruce ring, the bluff falling away, and the grey Pacific Ocean filling the lower half \u2014 long swells, a white line of surf on dark rocks, a headland in the distance. Low overcast, mist over the water, soft flat silver light. Near-square.\nSIZE: the real object is 1.98 m wide by 1.86 m tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the ocean from the tower studio's south window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_studio_south/cedar_tower_studio_south_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:56:44+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_studio_north_a",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. A long narrow strip view from a high clerestory window in a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s, facing north: the crowns of Sitka spruce close by, dark and dense, against pale grey cloud, mist in the tops. Soft flat light. Very wide 4:1 strip.\nSIZE: the real object is 2.28 m wide by 58 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 59% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of spruce crowns through the studio's north clerestory (a), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_studio_north_a/cedar_tower_studio_north_a_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:56:56+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_studio_north_b",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. A long narrow strip view from a high clerestory window in a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s, facing north: a gap in the Sitka spruce crowns showing a far grey forested ridge under low cloud, one dead silver snag. Soft flat light. Very wide 4:1 strip.\nSIZE: the real object is 2.28 m wide by 58 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 59% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of spruce crowns through the studio's north clerestory (b), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_studio_north_b/cedar_tower_studio_north_b_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:57:12+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_lobby_west_0",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a tall ground-floor window of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s: a wet gravel clearing, the ring of huge Sitka spruce around it, ferns at their feet, and between two trunks a glimpse of grey sea light far off. Mist, overcast, soft grey light. 1:1.6 tall portrait.\nSIZE: the real object is 1.38 m wide by 2.26 m tall \u2014 a portrait picture, aspect 9:16. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the clearing through the tower lobby's west windows (south pane), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_lobby_west_0/cedar_tower_lobby_west_0_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:57:28+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_lobby_west_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a tall ground-floor window of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s: the edge of a wet gravel clearing with an older station wagon parked under the Sitka spruce, its windows fogged, the dark trunks of the spruce ring rising out of frame, mist. Overcast grey early light. 1:1.6 tall portrait.\nSIZE: the real object is 1.38 m wide by 2.26 m tall \u2014 a portrait picture, aspect 9:16. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the clearing through the tower lobby's west windows (north pane), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_lobby_west_1/cedar_tower_lobby_west_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:57:48+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_lobby_north_0",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a tall ground-floor window of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s, facing north: the massive mossy trunk of a Sitka spruce close outside, salal and sword fern, the gravel path curving away under the trees toward Old Yachats Road, mist. Overcast grey light. 1:1.8 tall portrait.\nSIZE: the real object is 1.28 m wide by 2.26 m tall \u2014 a portrait picture, aspect 9:16. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the spruce ring through the lobby's north window (west), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_lobby_north_0/cedar_tower_lobby_north_0_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:58:07+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_lobby_north_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "2:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a tall ground-floor window of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s, facing north: a stand of Sitka spruce with hanging lichen, a mossy nurse log in the foreground, ferns, deep shade and drifting mist. Overcast grey light. 1:1.5 tall portrait.\nSIZE: the real object is 1.28 m wide by 1.96 m tall \u2014 a portrait picture, aspect 2:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the spruce ring through the lobby's north window (east), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_lobby_north_1/cedar_tower_lobby_north_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:58:27+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_quarters_north_0",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking north from the third floor of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s: the spruce crowns falling away to the north, and the roofs of a small coastal town far below along a curving shore. Overcast, mist, soft flat silver light, cool greens and greys. Near-square.\nSIZE: the real object is 1.58 m wide by 1.41 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from the tower quarters (west), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_quarters_north_0/cedar_tower_quarters_north_0_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:58:46+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_quarters_north_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking north from the third floor of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s: over the Sitka crowns, the coastline running north \u2014 a long grey beach, a river mouth, a headland in mist. Overcast, mist, soft flat silver light, cool greens and greys. Near-square.\nSIZE: the real object is 1.58 m wide by 1.41 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from the tower quarters (middle), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_quarters_north_1/cedar_tower_quarters_north_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:59:08+00:00",
+    "stage": "image",
+    "slug": "cedar_tower_quarters_north_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking north from the third floor of a seven-storey cedar-and-glass tower on a bluff above old Yachats on the Oregon coast, ringed by Sitka spruce, in the 2050s: the forested hills inland rising ridge behind ridge into low cloud, a highway bridge catching light far off. Overcast, mist, soft flat silver light, cool greens and greys. Near-square.\nSIZE: the real object is 1.58 m wide by 1.41 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from the tower quarters (east), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cedar_tower_quarters_north_2/cedar_tower_quarters_north_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:59:28+00:00",
+    "stage": "image",
+    "slug": "kai_apartment_north_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the laundromat wall across Main from Kai's window like this: The first thing he did at six was check the wall across Main from his apartment window. The patch on the side of the laundromat building was where it had been Friday and where it had been yesterday. Additional direction: Exterior only, seen through a window from inside; no window frame, no glass reflections, no people in focus, no readable signs. Looking out of a second-floor apartment window across Main Street in Smolvud, a small Oregon coast town in the 2050s (wood-frame and brick two-storey buildings, quiet electric cars, the odd small maintenance drone): the wet street below, and across it the side wall of an old brick laundromat building, a large outdoor mural of sanderlings on a beach painted around one small window of it, and on the plain brick beside the mural one pale rectangular patch where the wall looks too clean and too even, as if something had been erased. Dawn, rain, slate-grey light. 1.2:1 landscape.\nSIZE: the real object is 1.28 m wide by 1.06 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the laundromat wall across Main from Kai's window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/kai_apartment_north_window/kai_apartment_north_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T02:59:28+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_south_window_w",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_south_window_w/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_south_window_w.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_south_window_e",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_south_window_e/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_south_window_e.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_kitchen_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_kitchen_window/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_kitchen_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_west_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_west_window/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_west_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_gable_w",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_gable_w/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_gable_w.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_gable_e",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_gable_e/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_gable_e.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_loft_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_loft_window/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_loft_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_front_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_front_window/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_front_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_nook_window_0",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_nook_window_0/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_nook_window_0.png"
+  },
+  {
+    "at": "2026-10-28T02:59:29+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_nook_window_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_nook_window_1/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_nook_window_1.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "salty_tome_front_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/salty_tome_front_window/front.png",
+    "output": "godot/assets/art/hero/salty_tome_front_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "hans_bakery_side_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/hans_bakery_side_window/front.png",
+    "output": "godot/assets/art/hero/hans_bakery_side_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "hans_bakery_front_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/hans_bakery_front_window/front.png",
+    "output": "godot/assets/art/hero/hans_bakery_front_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_south_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_south_window/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_south_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_alley_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_alley_window/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_alley_window.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "chillwave_front_window_w",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/chillwave_front_window_w/front.png",
+    "output": "godot/assets/art/hero/chillwave_front_window_w.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "chillwave_front_window_e",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/chillwave_front_window_e/front.png",
+    "output": "godot/assets/art/hero/chillwave_front_window_e.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_studio_south",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_studio_south/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_studio_south.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_studio_north_a",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_studio_north_a/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_studio_north_a.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_studio_north_b",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_studio_north_b/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_studio_north_b.png"
+  },
+  {
+    "at": "2026-10-28T02:59:30+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_lobby_west_0",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_lobby_west_0/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_lobby_west_0.png"
+  },
+  {
+    "at": "2026-10-28T02:59:31+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_lobby_west_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_lobby_west_1/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_lobby_west_1.png"
+  },
+  {
+    "at": "2026-10-28T02:59:31+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_lobby_north_0",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_lobby_north_0/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_lobby_north_0.png"
+  },
+  {
+    "at": "2026-10-28T02:59:36+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_lobby_north_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_lobby_north_1/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_lobby_north_1.png"
+  },
+  {
+    "at": "2026-10-28T02:59:42+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_quarters_north_0",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_quarters_north_0/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_quarters_north_0.png"
+  },
+  {
+    "at": "2026-10-28T02:59:48+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_quarters_north_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_quarters_north_1/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_quarters_north_1.png"
+  },
+  {
+    "at": "2026-10-28T02:59:54+00:00",
+    "stage": "art",
+    "slug": "cedar_tower_quarters_north_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cedar_tower_quarters_north_2/front.png",
+    "output": "godot/assets/art/hero/cedar_tower_quarters_north_2.png"
+  },
+  {
+    "at": "2026-10-28T03:00:02+00:00",
+    "stage": "art",
+    "slug": "kai_apartment_north_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/kai_apartment_north_window/front.png",
+    "output": "godot/assets/art/hero/kai_apartment_north_window.png"
   }
 ]
