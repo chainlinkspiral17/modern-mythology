@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "The tires make the noise of oars."
+      "text": "[shot:insert tires]The tires make the noise of oars."
     },
     {
       "t": "narrate",
@@ -227,7 +227,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust thinks about it. He pulls Judgement Day up to the booth."
+      "text": "[shot:insert booth]Faust thinks about it. He pulls Judgement Day up to the booth."
     },
     {
       "t": "say",
