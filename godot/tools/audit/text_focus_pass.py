@@ -84,6 +84,7 @@ ones highs manager managers squat towers rings registers clerk owner customer cu
 banks bank drugstore frozen four pink high broken wakes runs pull main players player parents teacher torso jobs job
 business service expense images forms surrounds border coast island cave farm dune surf sand grass moss sidelines
 recess overhang copy carbon seams seam
+puddle puddles stain stains spill spills mark scuff scuffs crack cracks
 brow brows forehead eyebrow eyebrows wrist wrists elbow elbows thumb thumbs palm palms jaw chin lap hip hips belly
 """.split())
 # furniture every room has: one cue a chapter, not a refrain

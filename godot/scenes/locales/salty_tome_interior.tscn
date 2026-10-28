@@ -591,11 +591,6 @@ length_axis = "x"
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Cat_Loaf", "Cat_Ear")
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_puddles__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.578, 0.416, -10.258)
-rotation = Vector3(-0.5236, 1.0680, 0.0)
-metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_lids__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
