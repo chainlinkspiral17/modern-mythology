@@ -212,12 +212,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 1.08, -1.54)
 rotation = Vector3(-0.4589, 0.9610, 0.0)
 
 [node name="shot_insert_photo" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78, 1.09, -1.75)
-rotation = Vector3(-0.4614, 1.1831, 0.0)
+position = Vector3(0.075, 0.923, -2.651)
+rotation = Vector3(-0.5236, 2.7497, 0.0)
 
 [node name="shot_insert_iced_tea" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 1.14, -1.82)
-rotation = Vector3(-0.4682, 1.4402, 0.0)
+position = Vector3(0.662, 1.093, -2.372)
+rotation = Vector3(-0.5236, 2.1313, 0.0)
 
 ; ── the yard party's day (2026-10-10, preset caldwell_yard_afternoon) — row-major
 ; 3:45 PM in mid-August: a high sun out of the WSW, travelling east, north and down
