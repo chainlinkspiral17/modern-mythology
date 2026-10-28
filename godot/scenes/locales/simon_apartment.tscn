@@ -346,8 +346,8 @@ metadata/fov = 42.0
 
 ; insert: the one boot hanging by its laces from the peg on the W wall
 [node name="shot_insert_boot" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.5, -5.2)
-rotation = Vector3(-0.05, 1.35, 0.0)
+position = Vector3(-1.242, 1.729, -5.387)
+rotation = Vector3(-0.2618, 1.4548, 0.0)
 metadata/fov = 40.0
 
 ; the room's one closeup frame: a person mid-room by the armchair, the window behind
