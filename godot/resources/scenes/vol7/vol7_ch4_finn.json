@@ -69,7 +69,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/011.mp3"
     },
     {
-      "text": "He set the duffel down. He set the package on the table beside the lamp. He took off the wet coat and hung it on the peg.",
+      "text": "[shot:insert package]He set the duffel down. He set the package on the table beside the lamp. He took off the wet coat and hung it on the peg.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/012.mp3"
     },
@@ -669,7 +669,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/107.mp3"
     },
     {
-      "text": "He nodded once. He wrapped the three pieces back in the wax paper. He put the package in his coat pocket on the peg by the door rather than back on the table.",
+      "text": "[shot:insert package]He nodded once. He wrapped the three pieces back in the wax paper. He put the package in his coat pocket on the peg by the door rather than back on the table.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/108.mp3"
     },
@@ -733,7 +733,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/117.mp3"
     },
     {
-      "text": "He stayed until five. They did not talk much more about the substrate or the tower or the bowl. He told her about the slide on the Tideway and a small repair on his bike he had been trying to figure out.",
+      "text": "[shot:insert bowl]He stayed until five. They did not talk much more about the substrate or the tower or the bowl. He told her about the slide on the Tideway and a small repair on his bike he had been trying to figure out.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/118.mp3"
     },
@@ -748,7 +748,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/120.mp3"
     },
     {
-      "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much.",
+      "text": "[shot:insert table]Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/121.mp3"
     },
@@ -810,7 +810,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/133.mp3"
     },
     {
-      "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had [wave amp=6 freq=2]something inside it[/wave].",
+      "text": "[shot:insert table]She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had [wave amp=6 freq=2]something inside it[/wave].",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/134.mp3"
     },
@@ -825,7 +825,7 @@
       "voice": "assets/audio/voice/vol7_ch4_finn/136.mp3"
     },
     {
-      "text": "After a while she put the bowl back on the shelf. She made a small dinner of eggs and the rest of the bread, ate it at the table, and went to bed at nine-something. The cabin held her. The rain on the roof did not change. She slept.",
+      "text": "[shot:insert bowl]After a while she put the bowl back on the shelf. She made a small dinner of eggs and the rest of the bread, ate it at the table, and went to bed at nine-something. The cabin held her. The rain on the roof did not change. She slept.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch4_finn/137.mp3"
     },

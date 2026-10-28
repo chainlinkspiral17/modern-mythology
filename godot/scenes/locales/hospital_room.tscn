@@ -388,6 +388,30 @@ metadata/fov = 45.0
 ; (2026-10-07) out and down through the cut window: the street three storeys below
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.000, 1.600, -3.300)
-rotation = Vector3(-0.2379, 0.0653, 0.0)
+rotation = Vector3(-0.0317, 0.0998, 0.0)
 metadata/fov = 52.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__hospital_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.746, 2.571, -0.332)
+rotation = Vector3(-0.0873, -1.9890, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sockets__hospital_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.968, 0.512, -1.074)
+rotation = Vector3(-0.2618, 0.5489, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_blanket__hospital_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.652, 0.997, -2.351)
+rotation = Vector3(-0.2618, -0.6371, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__hospital_waiting" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.843, 1.761, -1.536)
+rotation = Vector3(-0.3788, 2.9835, 0.0)
+metadata/fov = 35.0

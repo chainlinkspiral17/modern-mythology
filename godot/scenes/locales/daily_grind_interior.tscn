@@ -456,7 +456,7 @@ metadata/fov = 40.0
 ; insert: the front window and the slate-gray light over Main
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.000, 1.550, -1.600)
-rotation = Vector3(-0.0110, 3.1122, 0.0)
+rotation = Vector3(-0.8669, 2.7322, 0.0)
 metadata/fov = 52.0
 
 ; reverse: Lena's view from behind the bar, over the machine to the front window and Main
@@ -464,3 +464,21 @@ metadata/fov = 52.0
 position = Vector3(2.000, 1.680, -8.900)
 rotation = Vector3(-0.0492, 2.7192, 0.0)
 metadata/fov = 60.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_espresso__daily_grind_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.930, 1.821, -6.899)
+rotation = Vector3(-0.2617, -0.7532, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_chocolate__daily_grind_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.229, 1.337, -7.348)
+rotation = Vector3(-0.2618, -0.9005, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_marshmallow__daily_grind_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.239, 1.369, -7.353)
+rotation = Vector3(-0.2618, -0.9007, 0.0)
+metadata/fov = 35.0

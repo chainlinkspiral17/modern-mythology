@@ -70,7 +70,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sometimes — like when the faucet dripped with the infuriating insistence of a cosmic truth Philip wasn't quite ready for — it just felt precarious.",
+      "text": "[shot:insert faucet]Sometimes — like when the faucet dripped with the infuriating insistence of a cosmic truth Philip wasn't quite ready for — it just felt precarious.",
       "voice": "assets/audio/voice/vol5_ch6_lovers/013.ogg"
     },
     {
@@ -232,7 +232,7 @@
     },
     {
       "t": "narrate",
-      "text": "The casserole had not, in the end, helped.",
+      "text": "[shot:insert casserole]The casserole had not, in the end, helped.",
       "voice": "assets/audio/voice/vol5_ch6_lovers/044.ogg"
     },
     {
@@ -277,7 +277,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then she had started weaving again. He had seen her, one evening, sitting at the loom in the spare room, picking up the threads where she had left them. He had not interrupted.",
+      "text": "[shot:insert loom]Then she had started weaving again. He had seen her, one evening, sitting at the loom in the spare room, picking up the threads where she had left them. He had not interrupted.",
       "voice": "assets/audio/voice/vol5_ch6_lovers/053.ogg"
     },
     {
@@ -374,7 +374,7 @@
     },
     {
       "t": "narrate",
-      "text": "Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door.",
+      "text": "[shot:insert dishtowel]Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door.",
       "voice": "assets/audio/voice/vol5_ch6_lovers/072.mp3"
     },
     {
@@ -408,7 +408,7 @@
     },
     {
       "t": "narrate",
-      "text": "The boy thrust out the envelope. Philip took it. The boy turned and walked back down the steps, across the gravel drive, to a station wagon idling at the curb where an older woman Philip half-recognized — Mrs.",
+      "text": "[shot:insert steps]The boy thrust out the envelope. Philip took it. The boy turned and walked back down the steps, across the gravel drive, to a station wagon idling at the curb where an older woman Philip half-recognized — Mrs.",
       "voice": "assets/audio/voice/vol5_ch6_lovers/078.ogg"
     },
     {
@@ -598,7 +598,7 @@
     },
     {
       "t": "narrate",
-      "text": "Philip crossed the kitchen and put his arms around her from behind, and she let him, and they stood like that for a long time while the radio finished its weather report and moved on to the obituaries.",
+      "text": "[shot:insert radio]Philip crossed the kitchen and put his arms around her from behind, and she let him, and they stood like that for a long time while the radio finished its weather report and moved on to the obituaries.",
       "voice": "assets/audio/voice/vol5_ch6_lovers/115.mp3"
     },
     {

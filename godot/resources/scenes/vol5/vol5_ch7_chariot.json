@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "He let the phone buzz.",
+      "text": "[shot:insert phone]He let the phone buzz.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/022.mp3"
     },
     {
@@ -429,7 +429,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio crossed back to the desk. Picked up his phone. Thumbed Jimmy.",
+      "text": "[shot:insert phone]Antonio crossed back to the desk. Picked up his phone. Thumbed Jimmy.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/083.mp3"
     },
     {
@@ -507,7 +507,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jimmy crossed to the leaded window himself. Stood at an angle that allowed him to see the corner across the street while remaining, from the corner's perspective, invisible. He watched for perhaps thirty seconds.",
+      "text": "[shot:insert window]Jimmy crossed to the leaded window himself. Stood at an angle that allowed him to see the corner across the street while remaining, from the corner's perspective, invisible. He watched for perhaps thirty seconds.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/097.mp3"
     },
     {
@@ -535,7 +535,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio felt the bourbon stop helping.",
+      "text": "[shot:insert bourbon]Antonio felt the bourbon stop helping.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/102.mp3"
     },
     {
@@ -728,7 +728,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio looked at the bourbon bottle. He did not pour another.",
+      "text": "[shot:insert bourbon]Antonio looked at the bourbon bottle. He did not pour another.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/136.ogg"
     },
     {
@@ -783,7 +783,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jimmy nodded once. He drank his coffee in three long swallows. He stood up.",
+      "text": "[shot:insert coffee]Jimmy nodded once. He drank his coffee in three long swallows. He stood up.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/146.mp3"
     },
     {
@@ -836,7 +836,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jimmy left through the back stair. The office door clicked shut. Antonio sat at the desk and listened to the salsa from the crew's radio downstairs and the slow grinding death of the air-conditioner and the small interior sound —",
+      "text": "[shot:insert door]Jimmy left through the back stair. The office door clicked shut. Antonio sat at the desk and listened to the salsa from the crew's radio downstairs and the slow grinding death of the air-conditioner and the small interior sound —",
       "voice": "assets/audio/voice/vol5_ch7_chariot/155.ogg"
     },
     {
@@ -861,7 +861,7 @@
     },
     {
       "t": "narrate",
-      "text": "He set the phone down.",
+      "text": "[shot:insert phone]He set the phone down.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/160.mp3"
     },
     {

@@ -325,7 +325,7 @@ metadata/fov = 42.0
 ; insert: the casket on the lowering straps, the spray on its lid
 [node name="shot_insert_casket" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.600, 1.400, 1.400)
-rotation = Vector3(-0.2531, 0.8520, 0.0)
+rotation = Vector3(-0.3803, 0.9201, 0.0)
 metadata/fov = 44.0
 
 ; reverse: from among the old stones down to the canopy and the grave

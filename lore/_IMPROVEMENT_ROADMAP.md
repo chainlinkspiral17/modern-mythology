@@ -3835,6 +3835,124 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 206: EVERY OLD INSERT AIMED AT ITS THING.**
+- **Problem:** marker_aim_audit passes a subject up to 38° off axis, and an insert lens is 35° wide. Many older hand markers had their object at the frame's edge, or under the reading box once the director lifted the frame (pass 205).
+- **New `marker_reaim.py --tight`:**
+  - re-aims every INSERT marker whose subject is more than 6° off axis;
+  - the lens keeps its place;
+  - face frames are left to their own tools. The first run also turned `shot_closeup_lena` toward her phone screen; it was reverted, and tight mode now skips closeups.
+- **Result:** 223 inserts re-aimed across 87 sets.
+- **Gates at zero:**
+  - marker_aim (1367 markers);
+  - vantage_obstruction `--markers` on all 87 sets;
+  - tscn_syntax.
+- **Lena's kettle:** vol7 ch3 "The kettle on the stove had cooled" was cut to a stove marker that framed the stove top with no kettle. It now has `shot_insert_kettle__lena_apartment`, authored by text_focus's search.
+- **Draft N+1 targets:**
+  - A gate: inserts must aim within TIGHT_DEG (make `--tight` an audit, not only a fixer).
+  - Render a contact sheet of every insert per set and look.
+
+**2026-10-28 · pass 205: THE INSERT SHOWS ITS THING — above the text, no portrait over it; vols 1–4 + vol 7 re-run.**
+- **The director** (VnDirector / CharLayer / GameEngine):
+  - Every insert tilts down so its object's centre sits `INSERT_CENTER` (36 %) from the top. Markers are aimed at the object's centre, and the reading box owns the lower ~31 %.
+  - Before, objects sat under the words (the vol 5 recording camera, Bill's crossword at the box's edge).
+  - While an insert or a noticed picture holds on a narrated line, the portraits fade out (`set_insert_quiet`). They return on a spoken or thought line, or when the insert lets go.
+  - Before, a portrait card stood in front of the camera the line was about.
+- **text_focus_pass:**
+  - Stop words for vols 1–4: river banks, the drugstore building, "frozen", "four", "pink", people and landscape words.
+  - Results:
+    - vol 1: 43 cues (34 new markers);
+    - vol 2: 51 (43);
+    - vol 3: 78 (67);
+    - vol 4: 51 (39);
+    - vol 7 re-run: 43 cues on existing markers.
+  - Samples: John's alarm, the easel, the brush, the jukebox label, the windshield, the coffee gone cold.
+- **Gates at zero:**
+  - marker_aim: 563 markers in 55 sets.
+  - vantage_obstruction `--markers`. Two new markers were dropped with their cues: apple_peddler's booth seat (behind the booth back) and Aaron's toys (behind the open door).
+  - wrong_room, shot_marker, tscn_syntax.
+  - Five abstract `[shot:insert five]` cues in vol 6 were removed ("five weeks", "the five of them"). "He pushes a five across the table" keeps its cue.
+- **Re-aim list** (old hand markers framing low or off):
+  - elicia_apartment `shot_insert_camera`;
+  - Lena's `shot_insert_stove`.
+- **Draft N+1 targets:**
+  1. A `marker_reaim` pass over every pre-2026-10-27 insert marker, re-aimed with the text_focus search.
+  2. Clause-aware subject picking.
+  3. Deck-verify the fade and the lift in play.
+
+**2026-10-28 · pass 204: THE CAMERA GOES WHERE THE SENTENCE LOOKS, vols 5–6 (draft 1).**
+- `text_focus_pass.py` was run on vols 5 and 6 after tightening the subject picker:
+  - a named thing needs an article or owner before it ("the kettle", "his notebook");
+  - a word after a pronoun or name is a verb ("Sam rings him up");
+  - a tarot card read aloud ("THE STAR. The naked figure kneels at the pool") describes the card, not the room;
+  - music, number, colour and role words are not subjects.
+- **Vol 5:** 116 cues, 59 new markers. Samples: the candle, the microwave, the bourbon, the bedside table, the futon.
+- **Vol 6:** 304 cues, 163 new markers. Samples: the crossword, the seatbelt, the grill, the eggs, the top desk drawer, the bulb in the cage.
+- **Gates at zero:** tscn_syntax, marker_aim (846 markers in 58 sets), vantage_obstruction `--markers` (58 sets), wrong_room and shot_marker.
+- **Draft N+1 targets:**
+  1. Vols 1–4.
+  2. Re-run vol 7 under the stricter picker; the dry run finds 43 more cues.
+  3. Clause-aware subject picking.
+  4. Deck-verify.
+
+**2026-10-27 · pass 203: THE CAMERA GOES WHERE THE SENTENCE LOOKS (vol 7) + vol 7's windows (draft 1 of both).**
+- **The Deck:** "still not seeing images in lots of windows in vol 7 ... shots aren't focusing on what the text is describing."
+- **Direction: `godot/tools/audit/text_focus_pass.py`** (new).
+  - It reads every narrated line and finds the thing the line names that the set has in view (builder part names).
+  - It filters out:
+    - names (capitalised words mid-sentence);
+    - possessives ("Marit's bowl" → the bowl);
+    - material and room modifiers ("the cedar roof", "wool socks");
+    - verbs (-ed / -ing words);
+    - structure, landscape, bodies and weather;
+    - pictures, which the director's NOTICING shot already handles.
+  - In vol 7's carvings ("the hooded coat … at the rim"), the subject is the bowl.
+  - A subject the set already frames wins.
+  - When the set has no marker for the subject, it authors `shot_insert_<word>__<preset>`:
+    - searched outward from the preset camera's side;
+    - in the same room (nothing structural, glass included, between it and the preset camera);
+    - unoccluded, with the frame not empty.
+  - Then it cues `[shot:insert <word>]`.
+  - Spacing rules:
+    - an authored cue is never touched;
+    - at least 3 nodes since the last cue;
+    - the same insert not within 10 nodes;
+    - at most nodes / 5 cues a chapter;
+    - room furniture (table, door, counter …) once a chapter.
+- **Vol 7 result:**
+  - 830 lines name a thing in view.
+  - 250 new cues and 98 new markers across 18 sets.
+  - 531 lines were held by spacing; 49 subjects had no clear lens.
+  - Gates at zero: marker_aim (448 markers), vantage_obstruction `--markers` (18 sets), wrong_room, shot_marker, tscn_syntax.
+  - A 15-line render sample checked by eye: the kettle, the hand grinder, Marit's bowl, the clamp, the lamp, the truck, the bedroom door.
+- **Windows:** 28 window-view art entries (`art_cat` WINDOW), quoted from the scenes where the prose looks out. Sets:
+  - **cabin:** south windows W and E (porch, clearing, the truck, rain through the cedars), kitchen (mist on the cedars), west, both gables, loft;
+  - **Lena's:** front window (the truck from above) and two nook windows;
+  - **Salty Tome:** front window;
+  - **Hans:** side window on Hemlock, front of house;
+  - **Finn:** south window (the town and the tower on the bluff), alley window;
+  - **ChillWave:** two front windows;
+  - **cedar tower:** studio south (Dean's ocean), the clerestory, four lobby windows, three quarters windows;
+  - **Kai's:** the laundromat wall and its patch across Main.
+- Day pictures stay off the exterior and night views (`not_presets`). The windows that already look at mural art across the street were left alone: Lena's kitchen, the Tome's kitchenette, Board Lords' front.
+- **Draft N+1 targets:**
+  1. Run text_focus_pass on vols 5–6, then 1–4.
+  2. Night variants of the window pictures for cabin_interior's and Lena's night views.
+  3. Re-aim the older hand-authored inserts the sample showed framing the wrong thing (Lena's `shot_insert_stove` frames the counter edge, the kettle cropped).
+  4. A subject picker that reads the clause, not the first noun.
+  5. Deck-verify the new cuts in play.
+
+**2026-10-27 · pass 202: THE CROW SITS (draft 2 of the crow).**
+- **The Deck:** "crow seems to just be hanging out or hovering."
+- **Cause:** the 16 crow HeroProps were laid with `length_axis = "z"`, so the model was sized by its beak-to-tail length and seated on its lowest vertex. That vertex was the tail tip, so the feet floated a hand above the rail or roof.
+- **Fix:**
+  - HeroProp `seat_center` seats a model on the lowest vertex of the middle half of its footprint (the feet), not the whole model's lowest point.
+  - All 16 crows are now `upright` + `seat_center` and sized by height: 0.34 m, or 0.26 m for the one on Finn's truck.
+  - The crows are in 11 sets: bindery, board_lords_interior, cabin_interior, cabin_road, cape_perpetua_overlook, county_line_station, finn_apartment, graustark, miller_back_porch, miriam_subaru and salty_tome_interior.
+  - Checked by a render on the cabin porch rail.
+- **Draft 3 targets:**
+  - A perched pose. The GLB stands; a crow on a rail should crouch.
+  - Turn each crow toward what its scene's text has it watching.
+
 **2026-10-27 · pass 201: THE READING SCREEN'S BASICS — text off the faces, the phone beside the reader, stale sets named.**
 - **The text** ("text over portraits is wrong. bring text lower or keep it off to the side"):
   - The reading box is ~31 % of the screen (was 44 %), so its text starts below the chin. The eyes sit ~44 % down since pass 188.

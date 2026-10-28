@@ -40,7 +40,7 @@
     },
     {
       "t": "narrate",
-      "text": "The microwave clock, set nine minutes fast on purpose because Jen the day manager says it helps the closers, reads eight-eleven. The actual clock by the office door reads eight oh-two.",
+      "text": "[shot:insert door]The microwave clock, set nine minutes fast on purpose because Jen the day manager says it helps the closers, reads eight-eleven. The actual clock by the office door reads eight oh-two.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/007.ogg"
     },
     {
@@ -164,7 +164,7 @@
     },
     {
       "t": "narrate",
-      "text": "She puts the phone down.",
+      "text": "[shot:insert phone]She puts the phone down.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/030.mp3"
     },
     {
@@ -406,7 +406,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls a leather wallet out of his back pocket — old, brown, the leather worn at the edges in the specific way wallets that have been carried for a decade wear — and opens it.",
+      "text": "[shot:insert pocket]He pulls a leather wallet out of his back pocket — old, brown, the leather worn at the edges in the specific way wallets that have been carried for a decade wear — and opens it.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/073.ogg"
     },
     {
@@ -872,7 +872,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy, at the table, eventually looks at Sam.",
+      "text": "[shot:insert table]Lucy, at the table, eventually looks at Sam.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/152.mp3"
     },
     {
@@ -903,7 +903,7 @@
     },
     {
       "t": "narrate",
-      "text": "A regular comes in at ten twenty-two — Stan, retired, in for his morning lottery tickets, the same five he buys every morning. Sam rings him up. Stan says, on his way out: that's a hell of a Peugeot out there.",
+      "text": "[shot:insert lottery]A regular comes in at ten twenty-two — Stan, retired, in for his morning lottery tickets, the same five he buys every morning. Sam rings him up. Stan says, on his way out: that's a hell of a Peugeot out there.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/158.ogg"
     },
     {
@@ -1061,7 +1061,7 @@
     },
     {
       "t": "narrate",
-      "text": "Friday's paycheck — the cash portion, which is the tips Jen runs through the till at the end of each week — is going to be roughly two hundred.",
+      "text": "[shot:insert cash]Friday's paycheck — the cash portion, which is the tips Jen runs through the till at the end of each week — is going to be roughly two hundred.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/184.ogg"
     },
     {
@@ -1929,7 +1929,7 @@
     },
     {
       "t": "narrate",
-      "text": "She clears the water bottles.",
+      "text": "[shot:insert bottles]She clears the water bottles.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/334.mp3"
     },
     {

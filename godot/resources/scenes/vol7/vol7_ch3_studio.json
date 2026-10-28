@@ -33,7 +33,7 @@
       "voice": "assets/audio/voice/vol7_ch3_studio/005.mp3"
     },
     {
-      "text": "When Lena had asked, he had said the room was hers as long as she was at the Daily Grind. Twelve by sixteen. One north window. A sink. Cold concrete she had covered, in winter, with a wool rug from Margit's.",
+      "text": "[shot:insert window]When Lena had asked, he had said the room was hers as long as she was at the Daily Grind. Twelve by sixteen. One north window. A sink. Cold concrete she had covered, in winter, with a wool rug from Margit's.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_studio/006.mp3"
     },
@@ -59,7 +59,7 @@
       "t": "show"
     },
     {
-      "text": "She set up. The apron. The brushes. Bone black, Naples yellow, the green, titanium white onto the glass palette. Solvent at the corner of the table. Heater on, because the room was at fifty-three.",
+      "text": "[shot:insert apron]She set up. The apron. The brushes. Bone black, Naples yellow, the green, titanium white onto the glass palette. Solvent at the corner of the table. Heater on, because the room was at fifty-three.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_studio/011.mp3"
     },
@@ -84,7 +84,7 @@
       "voice": "assets/audio/voice/vol7_ch3_studio/015.mp3"
     },
     {
-      "text": "She let herself think about Tem in a way she had not let herself in five months. Tem at her door at six in April.",
+      "text": "[shot:insert door]She let herself think about Tem in a way she had not let herself in five months. Tem at her door at six in April.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_studio/016.mp3"
     },
@@ -330,7 +330,7 @@
       "t": "bg"
     },
     {
-      "text": "She walked the three blocks to her apartment. The rain picked up on the second block. By the time she was unlocking her door her flannel was soaked through the coat.",
+      "text": "[shot:insert door]She walked the three blocks to her apartment. The rain picked up on the second block. By the time she was unlocking her door her flannel was soaked through the coat.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_studio/057.mp3"
     },
@@ -345,7 +345,7 @@
       "t": "show"
     },
     {
-      "text": "She hung the coat. She pulled off the boots. She put the kettle on for tea.",
+      "text": "[shot:insert coat]She hung the coat. She pulled off the boots. She put the kettle on for tea.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_studio/060.mp3"
     },

@@ -375,7 +375,7 @@ metadata/fov = 42.0
 ; insert: the window over the table — the drive, the neighbour's stucco, the palm (ch10)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.700, 1.450, -2.700)
-rotation = Vector3(-0.0294, 1.5708, 0.0)
+rotation = Vector3(-0.0819, 1.6678, 0.0)
 metadata/fov = 50.0
 
 ; insert: the soup at his place (ch10)
@@ -395,3 +395,9 @@ metadata/fov = 45.0
 position = Vector3(-1.020, 1.300, -2.420)
 rotation = Vector3(-0.1056, 0.4874, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_radio__ramos_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.464, 1.237, -1.559)
+rotation = Vector3(-0.2618, 0.8307, 0.0)
+metadata/fov = 35.0

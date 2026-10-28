@@ -668,7 +668,7 @@
     },
     {
       "t": "narrate",
-      "text": "She puts the phone down.",
+      "text": "[shot:insert phone]She puts the phone down.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/116.mp3"
     },
     {
@@ -702,7 +702,7 @@
     },
     {
       "t": "narrate",
-      "text": "The light in the back yard has shifted into the small late-morning angle. The crepe myrtle is doing its work. The grass is browning. The wicker chair, on the porch, holds her.",
+      "text": "[shot:insert myrtle]The light in the back yard has shifted into the small late-morning angle. The crepe myrtle is doing its work. The grass is browning. The wicker chair, on the porch, holds her.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/123.mp3"
     },
     {
@@ -717,7 +717,7 @@
     },
     {
       "t": "narrate",
-      "text": "become — and she finds, sitting in her mother's wicker chair on the back porch on a Monday morning in mid-August, that the thinking has, today, the small quality of something her body is allowing her to do without the tape.",
+      "text": "[shot:insert wicker]become — and she finds, sitting in her mother's wicker chair on the back porch on a Monday morning in mid-August, that the thinking has, today, the small quality of something her body is allowing her to do without the tape.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/126.ogg"
     },
     {

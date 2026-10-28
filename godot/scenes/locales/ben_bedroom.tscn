@@ -329,7 +329,7 @@ script = ExtResource("14_dbgm")
 ; insert: Mister, the half-Kowalski cat, curls up at his feet
 [node name="shot_insert_cat" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.0, -2.55)
-rotation = Vector3(-0.5782, 0.5860, 0.0)
+rotation = Vector3(-0.6562, 0.1837, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -345,3 +345,15 @@ metadata/fov = 45.0
 position = Vector3(1.654, 1.612, -3.855)
 rotation = Vector3(-0.2618, 2.3562, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lamp__ben_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.454, 1.221, -1.095)
+rotation = Vector3(-0.2618, 0.5713, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_backpack__ben_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.429, 0.675, -1.174)
+rotation = Vector3(-0.5236, -2.6918, 0.0)
+metadata/fov = 35.0

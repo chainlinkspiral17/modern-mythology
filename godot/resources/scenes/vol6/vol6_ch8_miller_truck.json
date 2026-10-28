@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "The radio is off.",
+      "text": "[shot:insert radio]The radio is off.",
       "voice": "assets/audio/voice/vol6_ch8_miller_truck/011.mp3"
     },
     {
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 06:14 her father reaches across the console without taking his eyes off the road and adjusts the AC down two clicks.",
+      "text": "[shot:insert console]At 06:14 her father reaches across the console without taking his eyes off the road and adjusts the AC down two clicks.",
       "voice": "assets/audio/voice/vol6_ch8_miller_truck/019.mp3"
     },
     {

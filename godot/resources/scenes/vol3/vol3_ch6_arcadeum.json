@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "The newest game in their front window display was Mountaintop's Final Cut, a graphic adventure about a film editor who was also a spy, one of their first CD-ROM enhanced titles."
+      "text": "[shot:insert display]The newest game in their front window display was Mountaintop's Final Cut, a graphic adventure about a film editor who was also a spy, one of their first CD-ROM enhanced titles."
     },
     {
       "t": "choice",
@@ -327,7 +327,7 @@
     },
     {
       "t": "narrate",
-      "text": "She didn't get the job. She kept the game in the back of her closet for a long time, not wanting to even think of the dent it made to her bank account while staving off impending financial doom, nor the shame of not being able to negotiate its return."
+      "text": "[shot:insert closet]She didn't get the job. She kept the game in the back of her closet for a long time, not wanting to even think of the dent it made to her bank account while staving off impending financial doom, nor the shame of not being able to negotiate its return."
     },
     {
       "t": "narrate",

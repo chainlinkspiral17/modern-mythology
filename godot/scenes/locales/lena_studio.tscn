@@ -343,3 +343,21 @@ metadata/fov = 42.0
 position = Vector3(0.550, 1.700, -4.400)
 rotation = Vector3(-0.1065, -2.6397, 0.0)
 metadata/fov = 60.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_window__lena_studio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.094, 2.194, -2.482)
+rotation = Vector3(-0.2618, 0.2442, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_apron__lena_studio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.181, 1.986, -0.914)
+rotation = Vector3(-0.5247, 2.2150, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__lena_studio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.574, 1.330, -1.108)
+rotation = Vector3(-0.2618, -3.1022, 0.0)
+metadata/fov = 35.0

@@ -70,7 +70,7 @@
     },
     {
       "t": "narrate",
-      "text": "He heard it in the static between radio stations late at night, whispers that sounded suspiciously like stage directions."
+      "text": "[shot:insert radio]He heard it in the static between radio stations late at night, whispers that sounded suspiciously like stage directions."
     },
     {
       "t": "think",
@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "He wiped the counter again. The steel was cool and indifferent beneath his palm.",
+      "text": "[shot:insert counter]He wiped the counter again. The steel was cool and indifferent beneath his palm.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/009.mp3"
     },
     {

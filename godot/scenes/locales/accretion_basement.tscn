@@ -340,7 +340,7 @@ metadata/fov = 42.0
 ; insert: the desk — the notebook in the hand from Cale's thumb, three pieces of cedar in a pattern
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, -1.5, -1.4)
-rotation = Vector3(-0.347, 2.70, 0.0)
+rotation = Vector3(-0.4672, 2.5566, 0.0)
 metadata/fov = 42.0
 
 
@@ -395,3 +395,9 @@ metadata/fov = 45.0
 position = Vector3(12.357, 1.007, -9.670)
 rotation = Vector3(0.1745, 0.2618, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_glass__accretion_corridor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.419, 1.762, -1.683)
+rotation = Vector3(-0.2618, -1.1591, 0.0)
+metadata/fov = 35.0

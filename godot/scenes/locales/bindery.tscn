@@ -360,7 +360,20 @@ metadata/fov = 45.0
 transform = Transform3D(-1.0000, 0, -0.0000, 0, 1, 0, 0.0000, 0, -1.0000, 0.000, 2.639, 0.211)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.698
-length_axis = "z"
+size_m = 0.34
+upright = true
+seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Bindery_Crow_")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_window__bindery" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.056, 1.210, -1.156)
+rotation = Vector3(-0.2618, 1.8367, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__bindery" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.034, 1.678, -2.089)
+rotation = Vector3(-0.0679, 2.9338, 0.0)
+metadata/fov = 35.0

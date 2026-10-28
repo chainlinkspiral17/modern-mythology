@@ -82,7 +82,7 @@
   },
   {
    "t": "narrate",
-   "text": "Deborah is helping a customer at the front table. Faust saunters up.",
+   "text": "[shot:insert table]Deborah is helping a customer at the front table. Faust saunters up.",
    "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/012.mp3"
   },
   {

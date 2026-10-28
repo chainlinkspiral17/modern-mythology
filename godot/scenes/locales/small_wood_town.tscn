@@ -327,3 +327,15 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__video_store_counter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(43.638, 1.103, -5.729)
+rotation = Vector3(-0.2618, 0.1083, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_radio__radio_studio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.545, 1.321, -5.284)
+rotation = Vector3(-0.2618, 0.5684, 0.0)
+metadata/fov = 35.0

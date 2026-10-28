@@ -373,13 +373,13 @@ metadata/fov = 56.0
 ; insert: the road sign against the sky
 [node name="shot_insert_sign" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-4.6, 1.6, -3.5)
-rotation = Vector3(0.71065, 0.555656, 0)
+rotation = Vector3(0.1399, 0.5646, 0.0)
 metadata/fov = 44.0
 
 ; insert: the shuttle bench
 [node name="shot_insert_bench" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(4, 1.3, -4.9)
-rotation = Vector3(-0.183222, -0.569313, 0)
+rotation = Vector3(-0.3115, -0.5590, 0.0)
 metadata/fov = 44.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -395,3 +395,27 @@ metadata/fov = 45.0
 position = Vector3(-2.233, 1.612, -3.776)
 rotation = Vector3(-0.2618, 2.8798, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.422, 2.175, -6.871)
+rotation = Vector3(-0.3803, 1.0728, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_apron__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.706, 0.410, -5.777)
+rotation = Vector3(-0.5236, 1.6795, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doors__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.422, 2.175, -6.871)
+rotation = Vector3(-0.3803, 1.0728, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_taillights__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.041, 1.386, -7.712)
+rotation = Vector3(-0.3623, -3.0849, 0.0)
+metadata/fov = 35.0

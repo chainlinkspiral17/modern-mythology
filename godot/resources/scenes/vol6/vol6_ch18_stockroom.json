@@ -503,7 +503,7 @@
     },
     {
       "t": "narrate",
-      "text": "The distance lets him drink coffee at the same table as Doug without having to be Doug's friend.",
+      "text": "[shot:insert table]The distance lets him drink coffee at the same table as Doug without having to be Doug's friend.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/092.mp3"
     },
     {
@@ -649,7 +649,7 @@
     },
     {
       "t": "narrate",
-      "text": "The radio above the microwave plays the Tejano station Marisol has, since 2019, put on every shift.",
+      "text": "[shot:insert radio]The radio above the microwave plays the Tejano station Marisol has, since 2019, put on every shift.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/116.mp3"
     },
     {
@@ -697,7 +697,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bale is at the corner. The bale's wire-tying device is on the floor beside the bale.",
+      "text": "[shot:insert bale]The bale is at the corner. The bale's wire-tying device is on the floor beside the bale.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/126.mp3"
     },
     {
@@ -733,7 +733,7 @@
     },
     {
       "t": "narrate",
-      "text": "He folds the second pallet.",
+      "text": "[shot:insert pallet]He folds the second pallet.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/133.mp3"
     },
     {
@@ -828,7 +828,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cardboard is flat in the bale. The pile is shorter than it had been. He has been working. He has not been watching himself working. The watching had stopped. He had not stopped it. It had, by itself, stopped.",
+      "text": "[shot:insert bale]The cardboard is flat in the bale. The pile is shorter than it had been. He has been working. He has not been watching himself working. The watching had stopped. He had not stopped it. It had, by itself, stopped.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/152.mp3"
     },
     {
@@ -878,7 +878,7 @@
     },
     {
       "t": "narrate",
-      "text": "He folds the ninth pallet.",
+      "text": "[shot:insert pallet]He folds the ninth pallet.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/162.mp3"
     },
     {
@@ -893,7 +893,7 @@
     },
     {
       "t": "narrate",
-      "text": "The watcher is in the room with him now in a different posture — the watcher is, this morning, sitting down. The watcher is not, this morning, standing at the corner of the wall above the door staring at him.",
+      "text": "[shot:insert door]The watcher is in the room with him now in a different posture — the watcher is, this morning, sitting down. The watcher is not, this morning, standing at the corner of the wall above the door staring at him.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/165.mp3"
     },
     {
@@ -936,7 +936,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks about it once, at four eleven, standing by the meat counter waiting for Marisol to roll the cart past — the watcher was off, in the stockroom, from somewhere around two-oh-five to somewhere around two-eleven.",
+      "text": "[shot:insert counter]He thinks about it once, at four eleven, standing by the meat counter waiting for Marisol to roll the cart past — the watcher was off, in the stockroom, from somewhere around two-oh-five to somewhere around two-eleven.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/174.mp3"
     },
     {
@@ -1179,7 +1179,7 @@
     },
     {
       "t": "narrate",
-      "text": "The August sun, at eight twenty, is already at the brightness it will be at noon. He pulls the visor down. He drives without the radio. He thinks, on the drive, about the bale. He thinks about Russell saying good.",
+      "text": "[shot:insert radio]The August sun, at eight twenty, is already at the brightness it will be at noon. He pulls the visor down. He drives without the radio. He thinks, on the drive, about the bale. He thinks about Russell saying good.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/217.mp3"
     },
     {
@@ -1244,7 +1244,7 @@
     },
     {
       "t": "narrate",
-      "text": "He eats the eggs at the kitchen table.",
+      "text": "[shot:insert eggs]He eats the eggs at the kitchen table.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/229.mp3"
     },
     {
@@ -1306,7 +1306,7 @@
     },
     {
       "t": "narrate",
-      "text": "He finishes the eggs.",
+      "text": "[shot:insert eggs]He finishes the eggs.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/239.mp3"
     },
     {

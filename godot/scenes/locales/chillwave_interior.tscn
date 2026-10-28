@@ -379,13 +379,13 @@ omni_range = 4.5
 ; insert: the wooden box held three sticks — the third was Estuary 7
 [node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.0, -1.1)
-rotation = Vector3(-0.6502, 3.0509, 0.0)
+rotation = Vector3(-0.6075, -2.7150, 0.0)
 metadata/fov = 42.0
 
 ; insert: he was at the workbench
 [node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.4, -5.7)
-rotation = Vector3(-0.6712, -0.5220, 0.0)
+rotation = Vector3(-0.8783, -0.0493, 0.0)
 metadata/fov = 42.0
 
 ; closeups (2026-10-10, the vol7 ch6 chain): Cale at the workbench, and the visitor in the folding chair
@@ -418,3 +418,33 @@ position = Vector3(2.200, 1.550, -5.100)
 rotation = Vector3(-0.0276, 1.4601, 0.0)
 metadata/fov = 42.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_transformer__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.221, 1.194, -5.760)
+rotation = Vector3(-0.1666, -0.4899, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__chillwave_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.297, 1.266, -2.249)
+rotation = Vector3(-0.2618, 0.8019, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doorway__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.447, 2.521, -5.280)
+rotation = Vector3(-0.0873, -2.5536, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_chair__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.775, 0.692, -5.160)
+rotation = Vector3(-0.2618, -0.2812, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.610, 0.592, -5.142)
+rotation = Vector3(-0.2618, 1.4978, 0.0)
+metadata/fov = 35.0

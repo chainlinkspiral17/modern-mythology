@@ -54,7 +54,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bridge, with the four chords, is — by his own internal sense which is, by August, becoming a thing he can trust — the bridge.",
+      "text": "[shot:insert bridge]The bridge, with the four chords, is — by his own internal sense which is, by August, becoming a thing he can trust — the bridge.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/010.mp3"
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "Practice today is at his garage. Carl pulled up with the snare at four-forty-eight. Nate came over with the bass at four-fifty-two.",
+      "text": "[shot:insert snare]Practice today is at his garage. Carl pulled up with the snare at four-forty-eight. Nate came over with the bass at four-fifty-two.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/018.mp3"
     },
     {
@@ -384,7 +384,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the driveway, Em comes up to Jesse.",
+      "text": "[shot:insert driveway]In the driveway, Em comes up to Jesse.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/068.mp3"
     },
     {
@@ -472,7 +472,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is going to register whatever is or is not at the unit, and he is going to do nothing with the registering, because tomorrow is a gig night and the gig is the gig.",
+      "text": "[shot:insert unit]He is going to register whatever is or is not at the unit, and he is going to do nothing with the registering, because tomorrow is a gig night and the gig is the gig.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/083.mp3"
     },
     {
@@ -524,7 +524,7 @@
     },
     {
       "t": "narrate",
-      "text": "He takes the back road. He takes the small parallel side road that leads to the strip mall on Live Oak. He approaches from the south, the way he always approaches, with the small angle that puts the strip mall's back unit on his right as he passes.",
+      "text": "[shot:insert unit]He takes the back road. He takes the small parallel side road that leads to the strip mall on Live Oak. He approaches from the south, the way he always approaches, with the small angle that puts the strip mall's back unit on his right as he passes.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/093.mp3"
     },
     {
@@ -593,7 +593,7 @@
     },
     {
       "t": "narrate",
-      "text": "The lights are doing — Jesse registers, standing at the door — a slow specific cycle of deep blue into deep purple into a small magenta, with a single white spike at the end of the cycle that comes and goes in maybe two seconds.",
+      "text": "[shot:insert door]The lights are doing — Jesse registers, standing at the door — a slow specific cycle of deep blue into deep purple into a small magenta, with a single white spike at the end of the cycle that comes and goes in maybe two seconds.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/107.mp3"
     },
     {
@@ -711,7 +711,7 @@
     },
     {
       "t": "narrate",
-      "text": "The track plays again. The bass, on the back wall, hits — Jesse registers — cleaner. The doubling is gone. The kick is, in the way the kick should sit in this room, sitting where it should.",
+      "text": "[shot:insert bass]The track plays again. The bass, on the back wall, hits — Jesse registers — cleaner. The doubling is gone. The kick is, in the way the kick should sit in this room, sitting where it should.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/127.mp3"
     },
     {
@@ -1135,7 +1135,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chess, at the booth, looks up.",
+      "text": "[shot:insert booth]Chess, at the booth, looks up.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/196.mp3"
     },
     {

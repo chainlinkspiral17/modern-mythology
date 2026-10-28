@@ -541,7 +541,7 @@
       "t": "say"
     },
     {
-      "text": "The kettle made the pre-whistle sound.",
+      "text": "[shot:insert kettle]The kettle made the pre-whistle sound.",
       "t": "narrate"
     },
     {
@@ -681,7 +681,7 @@
       "t": "narrate"
     },
     {
-      "text": "The base had, when Per turned it over, a mark — a flame-shape pressed into the wood with a heated iron.",
+      "text": "[shot:insert iron]The base had, when Per turned it over, a mark — a flame-shape pressed into the wood with a heated iron.",
       "t": "narrate"
     },
     {

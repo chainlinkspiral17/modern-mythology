@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Four in the morning at the copy shop. The first page of a pulp story goes under the lid and comes out warm."
+      "text": "[shot:insert page]Four in the morning at the copy shop. The first page of a pulp story goes under the lid and comes out warm."
     },
     {
       "t": "narrate",
@@ -136,7 +136,7 @@
     },
     {
       "t": "narrate",
-      "text": "Last pass comes out nearly black, the whole ruined city one field of toner, and a white line down the middle where the glass is scratched."
+      "text": "[shot:insert glass]Last pass comes out nearly black, the whole ruined city one field of toner, and a white line down the middle where the glass is scratched."
     },
     {
       "t": "flag",

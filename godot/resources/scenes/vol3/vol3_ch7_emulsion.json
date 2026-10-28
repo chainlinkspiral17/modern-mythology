@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "Before the trip she gave the children each a roll of quarters to spend on arcade games and treats from roadside convenience stores along the way. Said, but if you ask when we gonna get there, you gotta give me back a quarter, each, which kept them on each other honest without fail."
+      "text": "[shot:insert roll]Before the trip she gave the children each a roll of quarters to spend on arcade games and treats from roadside convenience stores along the way. Said, but if you ask when we gonna get there, you gotta give me back a quarter, each, which kept them on each other honest without fail."
     },
     {
       "t": "bg",
@@ -174,7 +174,7 @@
     },
     {
       "t": "narrate",
-      "text": "She keeps the children away from the curios as best she can."
+      "text": "[shot:insert curios]She keeps the children away from the curios as best she can."
     },
     {
       "t": "flag",

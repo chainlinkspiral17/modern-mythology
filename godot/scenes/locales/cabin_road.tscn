@@ -437,7 +437,38 @@ metadata/fov = 48.0
 position = Vector3(-3.380, 1.232, 6.907)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.523
-length_axis = "z"
+size_m = 0.26
+upright = true
+seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("FinnTruck_Crow_")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_keys__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.738, 1.242, 8.031)
+rotation = Vector3(-0.2618, 0.5099, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_headlights__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.813, 1.496, 4.830)
+rotation = Vector3(-0.3624, -1.5708, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_windshields__cabin_road" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.294, 1.894, 5.759)
+rotation = Vector3(-0.2618, 2.7078, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_mirror__cabin_road" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.667, 1.985, 5.325)
+rotation = Vector3(-0.3329, 2.6024, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_phone__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.656, 1.496, 7.908)
+rotation = Vector3(-0.2618, -0.2244, 0.0)
+metadata/fov = 35.0

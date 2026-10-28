@@ -19,7 +19,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lena had been at her apartment since one. She had made coffee. She had eaten a piece of bread with cheese."
+      "text": "[shot:insert coffee]Lena had been at her apartment since one. She had made coffee. She had eaten a piece of bread with cheese."
     },
     {
       "t": "narrate",
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had waited. She had a reason now and still no reader, and the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip."
+      "text": "[shot:insert stick]She had waited. She had a reason now and still no reader, and the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip."
     },
     {
       "t": "narrate",
@@ -105,7 +105,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem and Finn took the couch. Kai took the chair by the window. Lena was about to take the kitchen chair when Kai said, \"Is there anything to eat.\""
+      "text": "[shot:insert couch]Tem and Finn took the couch. Kai took the chair by the window. Lena was about to take the kitchen chair when Kai said, \"Is there anything to eat.\""
     },
     {
       "t": "jump",

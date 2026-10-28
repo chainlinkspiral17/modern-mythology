@@ -59,7 +59,7 @@
   },
   {
    "t": "narrate",
-   "text": "At the Diaz house at the end of Magnolia loop, Diego has been awake since three forty-two. He is in the dark in his bedroom with the curtains pulled. He has not turned on the light. He has not picked up his phone.",
+   "text": "[shot:insert phone]At the Diaz house at the end of Magnolia loop, Diego has been awake since three forty-two. He is in the dark in his bedroom with the curtains pulled. He has not turned on the light. He has not picked up his phone.",
    "voice": "assets/audio/voice/vol6_ch22_sunday/011.mp3"
   },
   {
@@ -98,7 +98,7 @@
   },
   {
    "t": "narrate",
-   "text": "She has been on the back porch since eleven, when Eileen Henderson — who had come over at ten fourteen and stayed for the kouglof and the coffee and an hour of Friday-table talk in a Saturday register — had gone home.",
+   "text": "[shot:insert porch]She has been on the back porch since eleven, when Eileen Henderson — who had come over at ten fourteen and stayed for the kouglof and the coffee and an hour of Friday-table talk in a Saturday register — had gone home.",
    "voice": "assets/audio/voice/vol6_ch22_sunday/019.mp3"
   },
   {

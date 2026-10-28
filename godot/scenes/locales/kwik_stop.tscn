@@ -475,7 +475,7 @@ metadata/fov = 42.0
 ; cut now — out through the west picture window, decals and the lot)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-3.000, 1.550, -3.000)
-rotation = Vector3(-0.0340, 2.9697, 0.0)
+rotation = Vector3(-0.6553, 3.1040, 0.0)
 metadata/fov = 50.0
 
 ; insert: the NexCorp van, engine running, facing her (ch15)
@@ -505,14 +505,14 @@ metadata/fov = 30.0
 ; insert (towed): "By eleven twenty-eight the Peugeot is on the truck"
 [node name="shot_insert_lot__kwik_stop_towed" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(5.750, 1.620, -1.200)
-rotation = Vector3(-0.0275, 2.1661, 0.0)
+rotation = Vector3(-0.0403, 2.3096, 0.0)
 metadata/fov = 28.0
 
 ; insert (hood): from the window tables, seated, under the lottery decal — the car
 ; out in its corner with its hood up (ch15 "Lucy goes to the table by the window")
 [node name="shot_insert_window__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.950, 1.180, -2.600)
-rotation = Vector3(-0.0097, 2.7576, 0.0)
+rotation = Vector3(-0.6848, -2.9958, 0.0)
 metadata/fov = 36.0
 
 ; HERO PROPS (2026-10-27): the red Peugeot's morning, one per state (each node's
@@ -610,3 +610,45 @@ metadata/fov = 45.0
 position = Vector3(1.340, 1.612, -4.824)
 rotation = Vector3(-0.2618, -2.0944, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pocket__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.040, 1.390, -3.537)
+rotation = Vector3(-0.2618, -0.7955, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.606, 0.825, -1.421)
+rotation = Vector3(-0.3419, 1.8722, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lottery__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.075, 2.390, -3.205)
+rotation = Vector3(-0.2618, -2.3550, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cash__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.141, 1.662, -2.100)
+rotation = Vector3(-0.5236, 0.1710, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bottles__kwik_stop_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.554, 1.563, -3.223)
+rotation = Vector3(-0.2618, 2.2540, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_roller__kwik_stop_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.615, 1.632, -3.866)
+rotation = Vector3(-0.2618, -0.5288, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_receipt__kwik_stop_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.837, 1.661, -2.214)
+rotation = Vector3(-0.3671, 0.8543, 0.0)
+metadata/fov = 35.0

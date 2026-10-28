@@ -350,7 +350,7 @@
   },
   {
    "t": "narrate",
-   "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs.",
+   "text": "[shot:insert table]The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs.",
    "voice": "assets/audio/voice/vol6_ch7_hospital/056.ogg"
   },
   {
@@ -572,7 +572,7 @@
   },
   {
    "t": "narrate",
-   "text": "Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles.",
+   "text": "[shot:insert couch]Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles.",
    "voice": "assets/audio/voice/vol6_ch7_hospital/095.mp3"
   },
   {

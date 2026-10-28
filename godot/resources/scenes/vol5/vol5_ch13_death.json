@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "The room was lit only by the small under-cabinet light above the sink, the one Alice had asked the day staff to leave on at night, because the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough.",
+      "text": "[shot:insert sink]The room was lit only by the small under-cabinet light above the sink, the one Alice had asked the day staff to leave on at night, because the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough.",
       "voice": "assets/audio/voice/vol5_ch13_death/019.ogg"
     },
     {
@@ -114,7 +114,7 @@
     },
     {
       "t": "narrate",
-      "text": "On the bedside table: a paper cup of water with a bent straw, the small plastic dispenser of mouth swabs the night nurse had refilled at midnight, a worn copy of the Book of Common Prayer Alice's daughter had brought on Sunday and that Alice had not, in the four days since, opened.",
+      "text": "[shot:insert table]On the bedside table: a paper cup of water with a bent straw, the small plastic dispenser of mouth swabs the night nurse had refilled at midnight, a worn copy of the Book of Common Prayer Alice's daughter had brought on Sunday and that Alice had not, in the four days since, opened.",
       "voice": "assets/audio/voice/vol5_ch13_death/022.ogg"
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "Not death itself — she had stopped thinking of death as a thing that arrived, exactly, sometime around month two, when she had begun to understand that it was less a guest at the door than a slow change in the weather inside the room.",
+      "text": "[shot:insert door]Not death itself — she had stopped thinking of death as a thing that arrived, exactly, sometime around month two, when she had begun to understand that it was less a guest at the door than a slow change in the weather inside the room.",
       "voice": "assets/audio/voice/vol5_ch13_death/029.ogg"
     },
     {
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "She lay still and watched the rose for a long while. The rose did not, in any visible way, do anything. The rose was a rose.",
+      "text": "[shot:insert rose]She lay still and watched the rose for a long while. The rose did not, in any visible way, do anything. The rose was a rose.",
       "voice": "assets/audio/voice/vol5_ch13_death/035.ogg"
     },
     {
@@ -384,7 +384,7 @@
     },
     {
       "t": "narrate",
-      "text": "Alice approved. Alice's approval flowed in the direction of the chair, and the chair, possibly, accepted it.",
+      "text": "[shot:insert chair]Alice approved. Alice's approval flowed in the direction of the chair, and the chair, possibly, accepted it.",
       "voice": "assets/audio/voice/vol5_ch13_death/076.mp3"
     },
     {
@@ -439,7 +439,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rose on the windowsill, she suspected, had something to do with the rose bush.",
+      "text": "[shot:insert rose]The rose on the windowsill, she suspected, had something to do with the rose bush.",
       "voice": "assets/audio/voice/vol5_ch13_death/087.mp3"
     },
     {
@@ -644,7 +644,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rose, in the window, in the under-cabinet light, did not, after Alice, change again.",
+      "text": "[shot:insert rose]The rose, in the window, in the under-cabinet light, did not, after Alice, change again.",
       "voice": "assets/audio/voice/vol5_ch13_death/128.mp3"
     },
     {

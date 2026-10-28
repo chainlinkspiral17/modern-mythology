@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "A modest modern looking building tucked into the quiet part of a neighborhood. Dickens Dean unlocks the door and goes in."
+      "text": "[shot:insert door]A modest modern looking building tucked into the quiet part of a neighborhood. Dickens Dean unlocks the door and goes in."
     },
     {
       "t": "show",
@@ -76,7 +76,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob looks at the business card on his desk. Oneironautics."
+      "text": "[shot:insert card]Jacob looks at the business card on his desk. Oneironautics."
     },
     {
       "t": "say",
@@ -106,7 +106,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust sits at a desk, puts on the strange goggles."
+      "text": "[shot:insert goggles]Faust sits at a desk, puts on the strange goggles."
     },
     {
       "t": "say",

@@ -175,7 +175,7 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up the heavy glass award. Some digital media accolade for Whispers from the Liminal. Its sharp edges cool against her palm. She had won it in 2022.",
+      "text": "[shot:insert award]She picked up the heavy glass award. Some digital media accolade for Whispers from the Liminal. Its sharp edges cool against her palm. She had won it in 2022.",
       "voice": "assets/audio/voice/vol5_ch16_tower/034.ogg"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "t": "narrate",
-      "text": "She faced the lens. Her own reflection staring back. Stark. Unadorned. No crew. No script. No safety net.",
+      "text": "[shot:insert lens]She faced the lens. Her own reflection staring back. Stark. Unadorned. No crew. No script. No safety net.",
       "voice": "assets/audio/voice/vol5_ch16_tower/072.mp3"
     },
     {
@@ -421,7 +421,7 @@
     },
     {
       "t": "narrate",
-      "text": "The red light continued. The camera continued recording. The room held its breath.",
+      "text": "[shot:insert camera]The red light continued. The camera continued recording. The room held its breath.",
       "voice": "assets/audio/voice/vol5_ch16_tower/083.mp3"
     },
     {
@@ -470,7 +470,7 @@
     },
     {
       "t": "narrate",
-      "text": "She let the camera record for thirteen minutes.",
+      "text": "[shot:insert camera]She let the camera record for thirteen minutes.",
       "voice": "assets/audio/voice/vol5_ch16_tower/093.mp3"
     },
     {
@@ -529,7 +529,7 @@
     },
     {
       "t": "narrate",
-      "text": "She set it back on the counter, clean, on the small porcelain saucer that had always belonged to it and that she had not, in eleven months, allowed it to sit on, because she had been treating the cup as an artifact rather than an object and artifacts did not sit on saucers.",
+      "text": "[shot:insert counter]She set it back on the counter, clean, on the small porcelain saucer that had always belonged to it and that she had not, in eleven months, allowed it to sit on, because she had been treating the cup as an artifact rather than an object and artifacts did not sit on saucers.",
       "voice": "assets/audio/voice/vol5_ch16_tower/105.ogg"
     },
     {

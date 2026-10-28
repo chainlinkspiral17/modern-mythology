@@ -306,7 +306,7 @@
     },
     {
       "t": "narrate",
-      "text": "He closes the notebook.",
+      "text": "[shot:insert notebook]He closes the notebook.",
       "voice": "assets/audio/voice/vol6_ch23_sleep/050.mp3"
     },
     {
@@ -541,7 +541,7 @@
     },
     {
       "t": "narrate",
-      "text": "After dinner Ben goes upstairs. He packs his backpack for the morning. He sets the alarm for six. He gets in bed at nine forty-eight.",
+      "text": "[shot:insert backpack]After dinner Ben goes upstairs. He packs his backpack for the morning. He sets the alarm for six. He gets in bed at nine forty-eight.",
       "voice": "assets/audio/voice/vol6_ch23_sleep/090.mp3"
     },
     {

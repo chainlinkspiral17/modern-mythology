@@ -559,3 +559,33 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_plate__pizza_party_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1501.415, 0.992, -1.708)
+rotation = Vector3(-0.2618, -0.5071, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bubbles__coast_bathroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(610.625, 1.530, -5.701)
+rotation = Vector3(-0.5236, -0.1557, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cameras__coast_bathroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(610.270, 1.592, -3.861)
+rotation = Vector3(-0.2618, -0.7328, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_phone__oregon_home_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(301.040, 1.515, -2.785)
+rotation = Vector3(-0.2618, 0.9659, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_closet__june_closet" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.596, 1.819, -1.842)
+rotation = Vector3(-0.2289, -0.3206, 0.0)
+metadata/fov = 35.0

@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:studio]Cale was not at the counter. The lights were on."
+      "text": "[shot:insert counter][mood:studio]Cale was not at the counter. The lights were on."
     },
     {
       "t": "narrate",
@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in."
+      "text": "[shot:insert workbench]Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in."
     },
     {
       "t": "narrate",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "There was a chair. She sat. He unplugged the soldering iron from the strip on the wall, moved a few small parts off the bench into a tray, pulled a second chair over from the corner, and sat."
+      "text": "[shot:insert chair]There was a chair. She sat. He unplugged the soldering iron from the strip on the wall, moved a few small parts off the bench into a tray, pulled a second chair over from the corner, and sat."
     },
     {
       "t": "jump",

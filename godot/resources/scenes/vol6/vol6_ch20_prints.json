@@ -39,7 +39,7 @@
     },
     {
      "t": "narrate",
-     "text": "On the stove, the kettle his mother uses and his father does not. Cold.",
+     "text": "[shot:insert stove]On the stove, the kettle his mother uses and his father does not. Cold.",
      "voice": "assets/audio/voice/vol6_ch20_prints/007.mp3"
     },
 {
@@ -80,7 +80,7 @@
     },
 {
      "t": "narrate",
-     "text": "He fills it and sets it on the clean burner and does not say why. His father does not ask why. The click of the igniter is the loudest thing in the room.",
+     "text": "[shot:insert burner]He fills it and sets it on the clean burner and does not say why. His father does not ask why. The click of the igniter is the loudest thing in the room.",
      "voice": "assets/audio/voice/vol6_ch20_prints/011.mp3"
     },
 {
@@ -321,7 +321,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:still]Jim, at the table, is for a beat very still.",
+      "text": "[shot:insert table][beat:still]Jim, at the table, is for a beat very still.",
       "voice": "assets/audio/voice/vol6_ch20_prints/051.mp3"
     },
     {
@@ -835,7 +835,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is going to play it as well as he can. The bridge is the bridge. The bridge is his. The song is for the people in the parking lot. They are, all of them, in the parking lot.",
+      "text": "[shot:insert bridge]He is going to play it as well as he can. The bridge is the bridge. The bridge is his. The song is for the people in the parking lot. They are, all of them, in the parking lot.",
       "voice": "assets/audio/voice/vol6_ch20_prints/132.mp3"
     },
     {

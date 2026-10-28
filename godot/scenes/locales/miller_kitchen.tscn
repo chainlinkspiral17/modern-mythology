@@ -402,7 +402,7 @@ metadata/fov = 34.0
 
 [node name="shot_insert_landline" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-3.700, 1.450, -3.550)
-rotation = Vector3(-0.0463, 1.8045, 0.0)
+rotation = Vector3(-0.1693, 1.7388, 0.0)
 metadata/fov = 30.0
 
 ; insert: the French toast in the skillet (ch11)
@@ -414,19 +414,19 @@ metadata/fov = 40.0
 ; insert: the sink window — the front yard, the cul-de-sac
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.600, 1.550, -5.400)
-rotation = Vector3(0.0000, -0.0000, 0.0)
+rotation = Vector3(-0.1152, 0.0899, 0.0)
 metadata/fov = 50.0
 
 ; insert: the small light over the sink (ch11)
 [node name="shot_insert_sink_light" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.200, 1.500, -5.600)
-rotation = Vector3(0.4155, 0.6288, 0.0)
+rotation = Vector3(-0.0942, 0.1822, 0.0)
 metadata/fov = 45.0
 
 ; insert: the table
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.600, 1.450, -2.400)
-rotation = Vector3(-0.4234, -0.8330, 0.0)
+rotation = Vector3(-0.7080, -0.4375, 0.0)
 metadata/fov = 45.0
 
 ; insert: the fridge and its papers
@@ -438,7 +438,7 @@ metadata/fov = 45.0
 ; insert: the worn places where the hands meet
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.000, 1.350, -2.600)
-rotation = Vector3(-0.4615, -1.0304, 0.0)
+rotation = Vector3(-0.5861, -0.9319, 0.0)
 metadata/fov = 42.0
 
 ; insert: Eileen's cinnamon roll, untouched
@@ -462,7 +462,7 @@ metadata/fov = 40.0
 ; insert: the white sedan at the curb, through the sink window
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.600, 1.600, -5.900)
-rotation = Vector3(-0.0627, 0.0898, 0.0)
+rotation = Vector3(-0.1235, -0.0391, 0.0)
 metadata/fov = 40.0
 
 ; insert: the photographs on the island
@@ -529,3 +529,51 @@ position = Vector3(2.750, 1.400, -2.350)
 rotation = Vector3(-0.1697, 0.0286, 0.0)
 metadata/fov = 42.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffee__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.314, 1.287, 1.125)
+rotation = Vector3(-0.5263, 2.8288, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_paper__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.225, 1.276, -5.887)
+rotation = Vector3(-0.2618, 0.2120, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pantry__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.073, 1.494, -3.433)
+rotation = Vector3(-0.2618, 0.8712, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_plate__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.594, 1.412, -0.377)
+rotation = Vector3(-0.2618, -1.6302, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doorway__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.560, 1.943, -0.958)
+rotation = Vector3(0.1063, 1.2336, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_mike__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.117, 0.696, -2.079)
+rotation = Vector3(-0.2618, -0.5316, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_plate__miller_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.594, 1.412, -0.377)
+rotation = Vector3(-0.2618, -1.6302, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_nook__miller_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.770, 1.771, -4.438)
+rotation = Vector3(-0.2618, -0.2326, 0.0)
+metadata/fov = 35.0

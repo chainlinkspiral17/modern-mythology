@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in.",
+   "text": "[shot:insert bench][mood:lithograph]You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in.",
    "voice": "assets/audio/voice/vol2_bf_end/001.mp3"
   },
   {
@@ -26,7 +26,7 @@
   },
   {
    "t": "narrate",
-   "text": "The dog has come back from the trailhead. It waits at the open door, looks once at the box behind it, and gets in. It settles between the two rows of seats and does not look out the window.",
+   "text": "[shot:insert door]The dog has come back from the trailhead. It waits at the open door, looks once at the box behind it, and gets in. It settles between the two rows of seats and does not look out the window.",
    "voice": "assets/audio/voice/vol2_bf_end/004.mp3"
   },
   {

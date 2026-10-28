@@ -150,7 +150,7 @@
     },
     {
       "t": "narrate",
-      "text": "The contract was for Alberto. The contract was, structurally, sound. The contract, executed, would protect Antonio from the consequences of the option Antonio was about to choose.",
+      "text": "[shot:insert contract]The contract was for Alberto. The contract was, structurally, sound. The contract, executed, would protect Antonio from the consequences of the option Antonio was about to choose.",
       "voice": "assets/audio/voice/vol5_ch11_justice/029.ogg"
     },
     {
@@ -419,7 +419,7 @@
     },
     {
       "t": "narrate",
-      "text": "She would, before the meeting, finish the contract. She would, at nine-fifteen, find out which side of the contract Mr. D. Dean was on, or whether the question of side was one Mr. D. Dean intended to recognize.",
+      "text": "[shot:insert contract]She would, before the meeting, finish the contract. She would, at nine-fifteen, find out which side of the contract Mr. D. Dean was on, or whether the question of side was one Mr. D. Dean intended to recognize.",
       "voice": "assets/audio/voice/vol5_ch11_justice/078.mp3"
     },
     {
@@ -478,7 +478,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anna sipped her cold brew (cashew milk, locally roasted beans, naturally) and squinted at the pitch deck mock-up.",
+      "text": "[shot:insert brew]Anna sipped her cold brew (cashew milk, locally roasted beans, naturally) and squinted at the pitch deck mock-up.",
       "voice": "assets/audio/voice/vol5_ch11_justice/090.mp3"
     },
     {
@@ -574,7 +574,7 @@
     },
     {
       "t": "narrate",
-      "text": "She put the phone down.",
+      "text": "[shot:insert phone]She put the phone down.",
       "voice": "assets/audio/voice/vol5_ch11_justice/108.mp3"
     },
     {
@@ -709,7 +709,7 @@
     },
     {
       "t": "narrate",
-      "text": "The phone buzzed.",
+      "text": "[shot:insert phone]The phone buzzed.",
       "voice": "assets/audio/voice/vol5_ch11_justice/135.mp3"
     },
     {
@@ -764,7 +764,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stubbed the cigarette out. He went inside. The desk clerk waved him to the elevator.",
+      "text": "[shot:insert desk]He stubbed the cigarette out. He went inside. The desk clerk waved him to the elevator.",
       "voice": "assets/audio/voice/vol5_ch11_justice/146.mp3"
     },
     {

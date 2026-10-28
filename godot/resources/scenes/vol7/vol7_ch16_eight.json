@@ -499,7 +499,7 @@
       "t": "bg"
     },
     {
-      "text": "They walked the four blocks to Lena's apartment. She packed an overnight bag in five minutes. She turned off the lights. She locked the door.",
+      "text": "[shot:insert door]They walked the four blocks to Lena's apartment. She packed an overnight bag in five minutes. She turned off the lights. She locked the door.",
       "t": "narrate"
     },
     {
@@ -519,7 +519,7 @@
       "t": "narrate"
     },
     {
-      "text": "The first creek crossing came at ten-fifteen. The second at ten-thirty. The Sitka stand at the top of the switchbacks stood close around the road as the headlights pushed through.",
+      "text": "[shot:insert headlights]The first creek crossing came at ten-fifteen. The second at ten-thirty. The Sitka stand at the top of the switchbacks stood close around the road as the headlights pushed through.",
       "t": "narrate"
     },
     {

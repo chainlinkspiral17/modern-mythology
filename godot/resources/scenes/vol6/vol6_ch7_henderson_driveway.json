@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]Ben walks Jesse to the front porch.",
+      "text": "[shot:insert porch][trip:1.2][mood:night]Ben walks Jesse to the front porch.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/007.mp3"
     },
     {
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse cries, briefly, on the steps.",
+      "text": "[shot:insert steps]Jesse cries, briefly, on the steps.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/023.mp3"
     },
     {
@@ -204,7 +204,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben gets up. He walks to his truck.",
+      "text": "[shot:insert truck]Ben gets up. He walks to his truck.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/032.mp3"
     },
     {

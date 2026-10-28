@@ -210,7 +210,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is not sure, sitting here now with the rosary, why she did not get up. She tells herself it was because she knew she could not stop him. She tells herself it was because a boy his age has to be allowed to go.",
+      "text": "[shot:insert rosary]She is not sure, sitting here now with the rosary, why she did not get up. She tells herself it was because she knew she could not stop him. She tells herself it was because a boy his age has to be allowed to go.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/040.ogg"
     },
     {
@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "He slides the paper into the developer tray. He uses the tongs. He watches.",
+      "text": "[shot:insert tray]He slides the paper into the developer tray. He uses the tongs. He watches.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/051.mp3"
     },
     {
@@ -397,7 +397,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is sitting at the desk that used to be Rick's father's desk, in the chair that has been reupholstered twice, looking at a legal pad.",
+      "text": "[shot:insert desk]He is sitting at the desk that used to be Rick's father's desk, in the chair that has been reupholstered twice, looking at a legal pad.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/076.mp3"
     },
     {
@@ -520,7 +520,7 @@
     },
     {
       "t": "narrate",
-      "text": "that he is always the last person in any room to say what he actually thinks — is standing at his kitchen counter at 6:24, waiting for his coffee to finish, reading a text message.",
+      "text": "[shot:insert coffee]that he is always the last person in any room to say what he actually thinks — is standing at his kitchen counter at 6:24, waiting for his coffee to finish, reading a text message.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/100.ogg"
     },
     {
@@ -548,7 +548,7 @@
     },
     {
       "t": "narrate",
-      "text": "He reads it twice. He puts the phone on the counter. He pours his coffee.",
+      "text": "[shot:insert phone]He reads it twice. He puts the phone on the counter. He pours his coffee.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/105.mp3"
     },
     {
@@ -565,7 +565,7 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I looked into it and I found what I expected to find, which is that there is nothing on paper that shouldn't be there, and I know enough about how these things work to know that means either there really is nothing, or the paper is very clean.",
+      "text": "[shot:insert paper]I looked into it and I found what I expected to find, which is that there is nothing on paper that shouldn't be there, and I know enough about how these things work to know that means either there really is nothing, or the paper is very clean.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/108.ogg"
     },
     {
@@ -595,7 +595,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]At 6:28, the sprinklers on Meadowlark Circle finish their cycle. The cracked head on the Miller lawn sputters once and goes still, leaving a last thin arc of water that catches the early light for a moment and then falls.",
+      "text": "[shot:insert sprinklers][trip:1.2]At 6:28, the sprinklers on Meadowlark Circle finish their cycle. The cracked head on the Miller lawn sputters once and goes still, leaving a last thin arc of water that catches the early light for a moment and then falls.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/114.mp3"
     },
     {

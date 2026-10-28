@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "She pours anyway, into a cup that's already full, and it goes over and runs along the cables."
+      "text": "[shot:insert cables]She pours anyway, into a cup that's already full, and it goes over and runs along the cables."
     },
     {
       "t": "cg",
@@ -104,7 +104,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nothing stops. The coffee finds the door and goes out under it, downhill."
+      "text": "[shot:insert door]Nothing stops. The coffee finds the door and goes out under it, downhill."
     },
     {
       "t": "bg",

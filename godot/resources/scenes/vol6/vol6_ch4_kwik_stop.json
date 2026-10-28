@@ -33,7 +33,7 @@
   },
   {
    "t": "narrate",
-   "text": "The Kwik Stop is empty. Sam has been on shift for two hours. The ice cream novelty cooler has been acting up. The hot dog roller has been ignored because nobody is coming in.",
+   "text": "[shot:insert roller]The Kwik Stop is empty. Sam has been on shift for two hours. The ice cream novelty cooler has been acting up. The hot dog roller has been ignored because nobody is coming in.",
    "voice": "assets/audio/voice/vol6_ch4_kwik_stop/006.mp3"
   },
   {

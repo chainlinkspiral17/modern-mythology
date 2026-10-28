@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "His room is how it always is. Books on the floor in drifts, dust in the lamplight, nowhere to stand. He clears a spot on the bed for me with his forearm and sits at the desk half turned away."
+      "text": "[shot:insert desk]His room is how it always is. Books on the floor in drifts, dust in the lamplight, nowhere to stand. He clears a spot on the bed for me with his forearm and sits at the desk half turned away."
     },
     {
       "t": "narrate",
@@ -70,7 +70,7 @@
     },
     {
       "t": "narrate",
-      "text": "The page is blank except for the title at the top, centered, underlined twice."
+      "text": "[shot:insert page]The page is blank except for the title at the top, centered, underlined twice."
     },
     {
       "t": "narrate",
@@ -178,7 +178,7 @@
     },
     {
       "t": "narrate",
-      "text": "I tell him. My mother by the window. My sister, who had to leave for a shot so she could go to Brazil and study rocks the way he did. Me."
+      "text": "[shot:insert window]I tell him. My mother by the window. My sister, who had to leave for a shot so she could go to Brazil and study rocks the way he did. Me."
     },
     {
       "t": "say",

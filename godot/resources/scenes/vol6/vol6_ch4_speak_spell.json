@@ -63,7 +63,7 @@
   },
   {
    "t": "narrate",
-   "text": "The Speak & Spell falls silent. The grille stops glowing.",
+   "text": "[shot:insert grille]The Speak & Spell falls silent. The grille stops glowing.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/012.mp3"
   },
   {
@@ -478,7 +478,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya closes her book.",
+   "text": "[shot:insert book]Maya closes her book.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/084.mp3"
   },
   {
@@ -559,7 +559,7 @@
   },
   {
    "t": "narrate",
-   "text": "The bell over the door chimes. A customer comes in. Mrs. Delacroix, mid-sixties, buys a new Archie collection every Wednesday, tips Maya fifty cents each time. Maya resumes her counter face. Rick returns to the office.",
+   "text": "[shot:insert door]The bell over the door chimes. A customer comes in. Mrs. Delacroix, mid-sixties, buys a new Archie collection every Wednesday, tips Maya fifty cents each time. Maya resumes her counter face. Rick returns to the office.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/098.mp3"
   },
   {
@@ -576,7 +576,7 @@
   },
   {
    "t": "narrate",
-   "text": "The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection.",
+   "text": "[shot:insert grille]The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/102.mp3"
   },
   {

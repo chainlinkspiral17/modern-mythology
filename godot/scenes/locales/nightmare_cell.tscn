@@ -183,11 +183,11 @@ shadow_enabled = false
 ; from these for any unauthored insert id in this room.
 [node name="shot_insert_cot" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30, 1.05, -1.60)
-rotation = Vector3(-0.62, -0.50, 0.0)   ; the cot + blanket
+rotation = Vector3(-0.6369, -0.9557, 0.0)   ; the cot + blanket
 
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.55, -2.4)
-rotation = Vector3(0.0, 1.5708, 0.0)   ; the cell wall
+rotation = Vector3(0.0977, -1.7682, 0.0)   ; the cell wall
 ; (2026-09-24: the camera stood OUTSIDE the cell, 0.2 m behind the west
 ; wall's back face — a black frame; now inside, 1.8 m from the dots)
 
@@ -342,3 +342,27 @@ metadata/fov = 45.0
 position = Vector3(1.457, 1.250, -4.304)
 rotation = Vector3(0.0000, 2.6180, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_food__nightmare_cell" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.359, 0.432, -0.432)
+rotation = Vector3(-0.2618, -2.0317, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_chair__nightmare_cell" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.120, 0.665, -0.790)
+rotation = Vector3(-0.2618, -1.1304, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doors__nightmare_cell" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.520, 1.748, -2.037)
+rotation = Vector3(-0.2598, -2.3923, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__nightmare_cell" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.520, 1.748, -2.037)
+rotation = Vector3(-0.2598, -2.3923, 0.0)
+metadata/fov = 35.0

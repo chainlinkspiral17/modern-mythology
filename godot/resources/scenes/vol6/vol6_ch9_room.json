@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door.",
+      "text": "[shot:insert food]He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door.",
       "voice": "assets/audio/voice/vol6_ch9_room/019.ogg"
     },
     {
@@ -164,7 +164,7 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd sits in the chair across from him. Boyd is smaller than Diego. Boyd's hands are smaller than Diego's hands. Boyd is, in some specific physical sense, not the man Diego had imagined would come into a room like this.",
+      "text": "[shot:insert chair]Boyd sits in the chair across from him. Boyd is smaller than Diego. Boyd's hands are smaller than Diego's hands. Boyd is, in some specific physical sense, not the man Diego had imagined would come into a room like this.",
       "voice": "assets/audio/voice/vol6_ch9_room/031.mp3"
     },
     {
@@ -281,7 +281,7 @@
     },
     {
       "t": "narrate",
-      "text": "Two: his grandmother was, two doors away, asleep, and he was not, under any condition, going to bring this man into the same house as his grandmother.",
+      "text": "[shot:insert doors]Two: his grandmother was, two doors away, asleep, and he was not, under any condition, going to bring this man into the same house as his grandmother.",
       "voice": "assets/audio/voice/vol6_ch9_room/054.mp3"
     },
     {
@@ -315,7 +315,7 @@
     },
     {
       "t": "narrate",
-      "text": "He had walked out the front door.",
+      "text": "[shot:insert door]He had walked out the front door.",
       "voice": "assets/audio/voice/vol6_ch9_room/060.mp3"
     },
     {
@@ -471,7 +471,7 @@
     },
     {
       "t": "narrate",
-      "text": "It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes.",
+      "text": "[shot:insert bulb]It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes.",
       "voice": "assets/audio/voice/vol6_ch9_room/091.mp3"
     },
     {
@@ -539,7 +539,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sleeps in patches. The bulb in the cage stays on. The bulb has not, in the duration of his stay, been turned off. He sleeps when he can, in the small amounts the bulb permits.",
+      "text": "[shot:insert bulb]He sleeps in patches. The bulb in the cage stays on. The bulb has not, in the duration of his stay, been turned off. He sleeps when he can, in the small amounts the bulb permits.",
       "voice": "assets/audio/voice/vol6_ch9_room/104.mp3"
     },
     {
@@ -855,7 +855,7 @@
     },
     {
       "t": "narrate",
-      "text": "The device, on the wall, pulses three times — slow, deliberate, the soft cadence of a being marking a thing for the record.",
+      "text": "[shot:insert device]The device, on the wall, pulses three times — slow, deliberate, the soft cadence of a being marking a thing for the record.",
       "voice": "assets/audio/voice/vol6_ch9_room/160.mp3"
     },
     {

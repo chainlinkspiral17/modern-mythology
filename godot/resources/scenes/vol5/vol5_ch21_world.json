@@ -201,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "The older man had tipped his hat. He had turned. He had walked back down the flagstone path. He had, at the gate, paused, looked once over his shoulder at the crow on the roof, and nodded to the crow also.",
+      "text": "[shot:insert flagstone]The older man had tipped his hat. He had turned. He had walked back down the flagstone path. He had, at the gate, paused, looked once over his shoulder at the crow on the roof, and nodded to the crow also.",
       "voice": "assets/audio/voice/vol5_ch21_world/036.ogg"
     },
     {
@@ -736,7 +736,7 @@
     },
     {
       "t": "narrate",
-      "text": "In a notebook on her nightstand — a notebook she had only recently begun to keep — she wrote, in Portuguese: I had the dream again. The man with the bomber jacket. The riverboat in the glass case. This time he said don't hurry.",
+      "text": "[shot:insert notebook]In a notebook on her nightstand — a notebook she had only recently begun to keep — she wrote, in Portuguese: I had the dream again. The man with the bomber jacket. The riverboat in the glass case. This time he said don't hurry.",
       "voice": "assets/audio/voice/vol5_ch21_world/134.ogg"
     },
     {

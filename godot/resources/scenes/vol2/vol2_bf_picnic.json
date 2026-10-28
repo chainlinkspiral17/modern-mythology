@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]The shelter is a six-by-six post-and-beam square with a corrugated metal roof and three picnic tables under it. Two tables are bolted to the slab. The third is loose, set off-square, like somebody had been planning to make off with it and changed their mind.",
+   "text": "[shot:insert shelter][mood:lithograph]The shelter is a six-by-six post-and-beam square with a corrugated metal roof and three picnic tables under it. Two tables are bolted to the slab. The third is loose, set off-square, like somebody had been planning to make off with it and changed their mind.",
    "voice": "assets/audio/voice/vol2_bf_picnic/001.mp3"
   },
   {
@@ -36,7 +36,7 @@
   },
   {
    "t": "narrate",
-   "text": "On the middle table, a paperback face-down, splayed, the spine cracked. The cover faces away. You turn it over with two fingers. It is a copy of GREAT EXPECTATIONS, the Bantam paperback, the schoolbook edition.",
+   "text": "[shot:insert table]On the middle table, a paperback face-down, splayed, the spine cracked. The cover faces away. You turn it over with two fingers. It is a copy of GREAT EXPECTATIONS, the Bantam paperback, the schoolbook edition.",
    "voice": "assets/audio/voice/vol2_bf_picnic/006.mp3"
   },
   {

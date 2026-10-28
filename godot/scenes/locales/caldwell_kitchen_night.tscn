@@ -323,12 +323,12 @@ metadata/fov = 35.0
 
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.001, 1.480, -0.958)
-rotation = Vector3(-0.5151, 0.4628, 0.0)
+rotation = Vector3(-0.4577, 0.5860, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_counter" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.637, 1.598, -1.475)
-rotation = Vector3(-0.2701, 0.7563, 0.0)
+rotation = Vector3(-0.3425, -0.0490, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -352,6 +352,6 @@ metadata/fov = 45.0
 ; (2026-10-07) over the sink and out: the back yard at night
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.200, 1.550, -3.000)
-rotation = Vector3(-0.0783, 0.0428, 0.0)
+rotation = Vector3(-0.0549, 0.1726, 0.0)
 metadata/fov = 52.0
 

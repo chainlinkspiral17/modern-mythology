@@ -325,7 +325,7 @@
     },
     {
       "t": "narrate",
-      "text": "The alarm goes off. It's 4:00 am."
+      "text": "[shot:insert alarm]The alarm goes off. It's 4:00 am."
     },
     {
       "t": "narrate",
@@ -339,7 +339,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turns it off. He drinks a tug of water and gets up. He goes to the bathroom and stands over the toilet a long time, waiting to be sick."
+      "text": "[shot:insert toilet]He turns it off. He drinks a tug of water and gets up. He goes to the bathroom and stands over the toilet a long time, waiting to be sick."
     },
     {
       "t": "narrate",

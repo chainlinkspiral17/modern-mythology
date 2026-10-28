@@ -131,7 +131,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits at the table next to Anita. Daisy comes out from under the table and puts her head on Maya's foot. Maya rubs Daisy with her toes.",
+      "text": "[shot:insert table]She sits at the table next to Anita. Daisy comes out from under the table and puts her head on Maya's foot. Maya rubs Daisy with her toes.",
       "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/023.mp3"
     },
     {
@@ -212,7 +212,7 @@
     },
     {
       "t": "narrate",
-      "text": "The eggs are perfect.",
+      "text": "[shot:insert eggs]The eggs are perfect.",
       "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/036.mp3"
     },
     {

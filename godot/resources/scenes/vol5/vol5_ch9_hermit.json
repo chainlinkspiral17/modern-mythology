@@ -190,7 +190,7 @@
     },
     {
       "t": "narrate",
-      "text": "The animals settled around her. Silent sentinels. The cat began meticulously cleaning a paw, ignoring the vastness of the situation in the way only cats could ignore vastness.",
+      "text": "[shot:insert cats]The animals settled around her. Silent sentinels. The cat began meticulously cleaning a paw, ignoring the vastness of the situation in the way only cats could ignore vastness.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/037.ogg"
     },
     {
@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one.",
+      "text": "[shot:insert pool]Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/052.mp3"
     },
     {
@@ -300,7 +300,7 @@
     },
     {
       "t": "narrate",
-      "text": "Pecked, twice, at a particular spot in the plaster — not at the chalk, but a few inches to the right of the chalk, at a place where the plaster bulged faintly in a way Joanna had not noticed.",
+      "text": "[shot:insert chalk]Pecked, twice, at a particular spot in the plaster — not at the chalk, but a few inches to the right of the chalk, at a place where the plaster bulged faintly in a way Joanna had not noticed.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/059.ogg"
     },
     {
@@ -335,7 +335,7 @@
     },
     {
       "t": "narrate",
-      "text": "The receipt bore, in the bottom margin, a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river. The figure was unmistakable.",
+      "text": "[shot:insert receipt]The receipt bore, in the bottom margin, a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river. The figure was unmistakable.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/066.ogg"
     },
     {
@@ -510,7 +510,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town.",
+      "text": "[shot:insert streets]The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/100.ogg"
     },
     {
@@ -574,7 +574,7 @@
     },
     {
       "t": "narrate",
-      "text": "She put the receipt back in her pocket. She stepped inside. Rumpus padded in after her. The crow settled on the patched roof above the door, with the proprietary air of a creature who has decided to stand the night watch and does not require to be asked.",
+      "text": "[shot:insert receipt]She put the receipt back in her pocket. She stepped inside. Rumpus padded in after her. The crow settled on the patched roof above the door, with the proprietary air of a creature who has decided to stand the night watch and does not require to be asked.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/112.mp3"
     },
     {
@@ -608,7 +608,7 @@
     },
     {
       "t": "narrate",
-      "text": "The candle flickered. Held.",
+      "text": "[shot:insert candle]The candle flickered. Held.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/118.mp3"
     },
     {

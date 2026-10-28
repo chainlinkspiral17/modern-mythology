@@ -34,7 +34,7 @@
     },
     {
       "t": "narrate",
-      "text": "It was the rain she heard first, before she registered the bed, the cabin, the wool blanket across her legs.",
+      "text": "[shot:insert blanket]It was the rain she heard first, before she registered the bed, the cabin, the wool blanket across her legs.",
       "voice": "assets/audio/voice/vol7_ch1_morning/006.mp3"
     },
     {
@@ -84,7 +84,7 @@
     },
     {
       "t": "narrate",
-      "text": "The wool blanket was Pendleton, a pattern she had come to associate with the cabin, woven by a mill in Washougal that had closed in 2046 and that the cabin had three blankets from. The blanket smelled like the cabin.",
+      "text": "[shot:insert blanket]The wool blanket was Pendleton, a pattern she had come to associate with the cabin, woven by a mill in Washougal that had closed in 2046 and that the cabin had three blankets from. The blanket smelled like the cabin.",
       "voice": "assets/audio/voice/vol7_ch1_morning/016.mp3"
     },
     {
@@ -108,7 +108,7 @@
     },
     {
       "t": "narrate",
-      "text": "The main room held the wood stove, the small wooden table beside the kerosene lamp, two armchairs, a daybed where Kai had slept. Kai was still on the daybed.",
+      "text": "[shot:insert table]The main room held the wood stove, the small wooden table beside the kerosene lamp, two armchairs, a daybed where Kai had slept. Kai was still on the daybed.",
       "voice": "assets/audio/voice/vol7_ch1_morning/021.mp3"
     },
     {
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "The April night was in her body where it had been since April. The April night was a Thursday. They had had coffee at Tem's apartment. Tem had asked her to stay for tea. She had stayed. Tea had become wine.",
+      "text": "[shot:insert coffee]The April night was in her body where it had been since April. The April night was a Thursday. They had had coffee at Tem's apartment. Tem had asked her to stay for tea. She had stayed. Tea had become wine.",
       "voice": "assets/audio/voice/vol7_ch1_morning/036.mp3"
     },
     {
@@ -210,7 +210,7 @@
     },
     {
       "t": "narrate",
-      "text": "and on Wednesday Tem had been at the Daily Grind for their coffee at the regular hour and neither of them had mentioned the Thursday, and they had not, in the four months since, mentioned it, and they had not, in the four months since, slept together again.",
+      "text": "[shot:insert coffee]and on Wednesday Tem had been at the Daily Grind for their coffee at the regular hour and neither of them had mentioned the Thursday, and they had not, in the four months since, mentioned it, and they had not, in the four months since, slept together again.",
       "voice": "assets/audio/voice/vol7_ch1_morning/039.mp3"
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had concluded, over time, that the reasons were the kettle, the cone, the cedar smoke in the air, and Tem.",
+      "text": "[shot:insert kettle]She had concluded, over time, that the reasons were the kettle, the cone, the cedar smoke in the air, and Tem.",
       "voice": "assets/audio/voice/vol7_ch1_morning/056.mp3"
     },
     {
@@ -804,7 +804,7 @@
     },
     {
       "t": "narrate",
-      "text": "The smell of the eggs and the cedar smoke and the rosemary on the windowsill held the room.",
+      "text": "[shot:insert eggs]The smell of the eggs and the cedar smoke and the rosemary on the windowsill held the room.",
       "voice": "assets/audio/voice/vol7_ch1_morning/126.mp3"
     },
     {
@@ -954,7 +954,7 @@
     },
     {
       "t": "narrate",
-      "text": "After the eggs Tem made a second pot of coffee. She poured the three of them and sat back down. The rain on the roof had not changed. The cabin was at sixty-one degrees by the thermometer.",
+      "text": "[shot:insert eggs]After the eggs Tem made a second pot of coffee. She poured the three of them and sat back down. The rain on the roof had not changed. The cabin was at sixty-one degrees by the thermometer.",
       "voice": "assets/audio/voice/vol7_ch1_morning/147.mp3"
     },
     {
@@ -1689,7 +1689,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem sat back down at the table.",
+      "text": "[shot:insert table]Tem sat back down at the table.",
       "voice": "assets/audio/voice/vol7_ch1_morning/246.mp3"
     },
     {

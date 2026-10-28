@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "Four folding chairs, church basement, one with a lean."
+      "text": "[shot:insert chairs]Four folding chairs, church basement, one with a lean."
     },
     {
       "t": "say",
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "By the door a man stands like he's in line for a movie, a slip of waxed paper held like a ticket. He doesn't come in."
+      "text": "[shot:insert door]By the door a man stands like he's in line for a movie, a slip of waxed paper held like a ticket. He doesn't come in."
     },
     {
       "t": "narrate",

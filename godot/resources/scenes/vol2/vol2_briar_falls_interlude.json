@@ -31,7 +31,7 @@
   },
   {
    "t": "narrate",
-   "text": "The asphalt of the rest stop is grey-going-on-green where the moss has the upper hand. A picnic shelter, a low brick building with two doors marked, a wooden box at the trailhead, a curve of railing where the bluff begins.",
+   "text": "[shot:insert doors]The asphalt of the rest stop is grey-going-on-green where the moss has the upper hand. A picnic shelter, a low brick building with two doors marked, a wooden box at the trailhead, a curve of railing where the bluff begins.",
    "voice": "assets/audio/voice/vol2_briar_falls_interlude/005.mp3"
   },
   {
@@ -46,7 +46,7 @@
   },
   {
    "t": "narrate",
-   "text": "Father, with the keys still in his hand. Mother, pulling a sweatshirt over a t-shirt because the wood is cooler than the highway was.",
+   "text": "[shot:insert keys]Father, with the keys still in his hand. Mother, pulling a sweatshirt over a t-shirt because the wood is cooler than the highway was.",
    "voice": "assets/audio/voice/vol2_briar_falls_interlude/008.mp3"
   },
   {

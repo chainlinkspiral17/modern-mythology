@@ -44,7 +44,7 @@
     },
     {
       "t": "narrate",
-      "text": "The front and back doors are the ones Rick had, on Sunday at noon when he handed her the ring, walked her through twice — front door deadbolt first, then the bottom lock, then the chain inside if she is the last one out, which today she is going to be.",
+      "text": "[shot:insert ring]The front and back doors are the ones Rick had, on Sunday at noon when he handed her the ring, walked her through twice — front door deadbolt first, then the bottom lock, then the chain inside if she is the last one out, which today she is going to be.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/008.ogg"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "The deadbolt slides.",
+      "text": "[shot:insert deadbolt]The deadbolt slides.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/013.mp3"
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "The brass bell above the door — the one from the 1994 estate sale that the previous owner had, Rick says, heard something in — chimes in its small dry way. The fluorescent tubes overhead are not yet on.",
+      "text": "[shot:insert door]The brass bell above the door — the one from the 1994 estate sale that the previous owner had, Rick says, heard something in — chimes in its small dry way. The fluorescent tubes overhead are not yet on.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/018.ogg"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "t": "narrate",
-      "text": "— Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway.",
+      "text": "[shot:insert list]— Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/028.mp3"
     },
     {
@@ -188,7 +188,7 @@
     },
     {
       "t": "narrate",
-      "text": "She puts it in the top drawer of the desk.",
+      "text": "[shot:insert drawer]She puts it in the top drawer of the desk.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/037.mp3"
     },
     {
@@ -276,7 +276,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has, in his hand, a thermos and a copy of yesterday's Sentinel.",
+      "text": "[shot:insert thermos]He has, in his hand, a thermos and a copy of yesterday's Sentinel.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/055.ogg"
     },
     {
@@ -960,7 +960,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the register, finds — between customers — that her hands have begun to know the motions of the register and the bag and the receipt without her conscious attention,",
+      "text": "[shot:insert register]Maya, at the register, finds — between customers — that her hands have begun to know the motions of the register and the bag and the receipt without her conscious attention,",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/170.ogg"
     },
     {
@@ -990,7 +990,7 @@
     },
     {
       "t": "narrate",
-      "text": "By six the shop has the late-afternoon hum of a small shop on a Tuesday — three customers browsing, two at the back issues, one at the manga wall. Curtis is at the counter.",
+      "text": "[shot:insert counter]By six the shop has the late-afternoon hum of a small shop on a Tuesday — three customers browsing, two at the back issues, one at the manga wall. Curtis is at the counter.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/176.ogg"
     },
     {
@@ -1091,7 +1091,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks. She had read the notebook list four times. The Diamond invoice from Friday is not, she is fairly sure, in the list.",
+      "text": "[shot:insert notebook]She thinks. She had read the notebook list four times. The Diamond invoice from Friday is not, she is fairly sure, in the list.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/195.mp3"
     },
     {
@@ -1220,7 +1220,7 @@
     },
     {
       "t": "narrate",
-      "text": "The shop, at eight oh-one, has three customers left — two in the back issues, one at the new-arrivals shelf.",
+      "text": "[shot:insert shelf]The shop, at eight oh-one, has three customers left — two in the back issues, one at the new-arrivals shelf.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/217.mp3"
     },
     {
@@ -1287,7 +1287,7 @@
     },
     {
       "t": "narrate",
-      "text": "He comes out of the back office. He has his thermos and his Sentinel. He has the green folder with the Friday invoice now timestamped and filed.",
+      "text": "[shot:insert thermos]He comes out of the back office. He has his thermos and his Sentinel. He has the green folder with the Friday invoice now timestamped and filed.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/230.mp3"
     },
     {

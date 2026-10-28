@@ -291,3 +291,57 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bench__ballfield_dugout" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.707, 1.219, 5.605)
+rotation = Vector3(-0.3310, -3.1136, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_plate__ballfield_third_base" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.632, 0.426, -0.098)
+rotation = Vector3(-0.5236, -1.5997, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_glove__ballfield_dugout" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-13.472, 0.722, 7.830)
+rotation = Vector3(-0.2618, -2.1294, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_glove__ballfield_mound" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.355, 0.722, 7.497)
+rotation = Vector3(-0.2618, 2.8271, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_soda__ballfield_stand" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(15.044, 1.479, 12.122)
+rotation = Vector3(-0.2618, 2.6219, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_fridge__ballfield_stand" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(13.383, 1.318, 14.411)
+rotation = Vector3(-0.2618, 2.5518, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_glove__ballfield_first_base" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.349, 0.722, 7.499)
+rotation = Vector3(-0.2618, 2.8193, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_seat__ballfield_home_plate" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-10.199, 0.850, 7.568)
+rotation = Vector3(-0.5236, -2.8582, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_plate__ballfield_home_plate" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.427, 0.426, -0.578)
+rotation = Vector3(-0.5236, -2.3517, 0.0)
+metadata/fov = 35.0

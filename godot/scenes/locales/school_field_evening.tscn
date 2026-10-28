@@ -241,7 +241,7 @@ shadow_enabled = false
 ; insert: Coach K's white F-250 at the head of the lot — camper shell, ladder rack (draft 5: it framed Coach Dale's truck by the shed)
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(17.600, 1.750, 10.400)
-rotation = Vector3(-0.0581, 0.9505, 0.0)
+rotation = Vector3(-0.0421, 1.1616, 0.0)
 metadata/fov = 46.0
 
 [node name="shot_insert_corkboard" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -250,7 +250,7 @@ rotation = Vector3(-0.2618, 1.5708, 0.0)
 
 [node name="shot_insert_ball" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 0.69, -53.76)
-rotation = Vector3(0.0, 0.0, 0.0)
+rotation = Vector3(-0.4802, -0.0000, 0.0)
 
 ; ── THE DAY (pass 61): school_field_day — the floods and the lot lamps are the evening's;
 ; the August sun, high, and the sky
@@ -412,7 +412,7 @@ metadata/fov = 44.0
 ; insert: the home stands behind the home bench, the press box on top (draft 5: the stands moved east)
 [node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(22.384, 1.700, -33.864)
-rotation = Vector3(0.0792, -0.6541, 0.0)
+rotation = Vector3(-0.1707, -0.4845, 0.0)
 metadata/fov = 46.0
 
 ; insert: the Vinton bus pulls into the lot at four oh-three
@@ -535,3 +535,93 @@ metadata/fov = 45.0
 position = Vector3(19.500, 1.620, -47.000)
 rotation = Vector3(-0.0300, -1.8989, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bench__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(28.081, 0.785, -46.416)
+rotation = Vector3(-0.2618, 1.2649, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_gate__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(11.116, 1.061, 1.409)
+rotation = Vector3(-0.2618, 2.7735, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_strap__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(26.363, 0.714, -44.866)
+rotation = Vector3(-0.2618, -3.0947, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cone__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.582, 0.480, -27.560)
+rotation = Vector3(-0.5236, 2.1910, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_step__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(14.261, 0.602, 9.559)
+rotation = Vector3(-0.2618, 1.2910, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cooler__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(27.674, 0.685, -40.964)
+rotation = Vector3(-0.2618, 2.8114, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pads__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.427, 1.162, -0.667)
+rotation = Vector3(-0.2618, 2.5729, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sheet__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.702, 1.812, 6.129)
+rotation = Vector3(-0.2618, 2.4622, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_seat__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(31.436, 1.482, -45.539)
+rotation = Vector3(-0.2618, -1.7935, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_shed__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-28.394, 1.834, -113.093)
+rotation = Vector3(-0.3836, 0.9726, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_helmets__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(29.083, 1.480, -46.730)
+rotation = Vector3(-0.2618, 0.4094, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bench__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(28.081, 0.785, -46.416)
+rotation = Vector3(-0.2618, 1.2649, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_chair__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(31.130, 1.475, -45.613)
+rotation = Vector3(-0.2618, -1.7909, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_gate__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(11.116, 1.061, 1.409)
+rotation = Vector3(-0.2618, 2.7735, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sideline__school_field_evening" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(24.734, 0.411, -54.246)
+rotation = Vector3(-0.5236, 0.5150, 0.0)
+metadata/fov = 35.0

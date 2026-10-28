@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team.",
+      "text": "[shot:insert bale]BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/026.mp3"
     },
     {
@@ -348,7 +348,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets his backpack from the cubby behind the register. He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap.",
+      "text": "[shot:insert phone]He gets his backpack from the cubby behind the register. He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/066.mp3"
     },
     {
@@ -430,7 +430,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror.",
+      "text": "[shot:insert rearview]The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/081.mp3"
     },
     {
@@ -1174,7 +1174,7 @@
     },
     {
       "t": "narrate",
-      "text": "He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order.",
+      "text": "[shot:insert sauce]He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/210.mp3"
     },
     {
@@ -1226,7 +1226,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT pulls into the turnout. He parks. He kills the engine.",
+      "text": "[shot:insert turnout]BT pulls into the turnout. He parks. He kills the engine.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/220.mp3"
     },
     {
@@ -1284,7 +1284,7 @@
     },
     {
       "t": "narrate",
-      "text": "Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion,",
+      "text": "[shot:insert guac]Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion,",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/230.mp3"
     },
     {
@@ -1362,7 +1362,7 @@
     },
     {
       "t": "narrate",
-      "text": "The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta,",
+      "text": "[shot:insert foil]The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta,",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/244.mp3"
     },
     {
@@ -1632,7 +1632,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks,",
+      "text": "[shot:insert foil]His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks,",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/288.mp3"
     },
     {
@@ -1722,7 +1722,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, in the passenger seat, after a beat, also laughs.",
+      "text": "[shot:insert passenger]Diego, in the passenger seat, after a beat, also laughs.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/304.mp3"
     },
     {

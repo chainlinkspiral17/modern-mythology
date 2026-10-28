@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]You step back out into the rain. The bell over the door is unsubtle about your leaving. The rain has the steady quality of rain that has been raining for longer than it needs to."
+   "text": "[shot:insert door][mood:night]You step back out into the rain. The bell over the door is unsubtle about your leaving. The rain has the steady quality of rain that has been raining for longer than it needs to."
   },
   {
    "t": "show",

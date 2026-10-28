@@ -428,3 +428,33 @@ metadata/fov = 58.0
 position = Vector3(1.050, 1.580, -3.600)
 rotation = Vector3(-0.2474, -2.4912, 0.0)
 metadata/fov = 56.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_wheels__roberts_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.100, 0.517, 7.920)
+rotation = Vector3(-0.5236, 3.0904, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_casserole__roberts_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.296, 1.274, -3.740)
+rotation = Vector3(-0.2618, 0.0876, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_loom__roberts_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.045, 1.686, -5.267)
+rotation = Vector3(-0.2618, 2.2542, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_dishtowel__roberts_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.078, 0.892, -5.647)
+rotation = Vector3(-0.2618, 0.0982, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_steps__roberts_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.168, 0.470, 1.932)
+rotation = Vector3(-0.5275, 2.9861, 0.0)
+metadata/fov = 35.0

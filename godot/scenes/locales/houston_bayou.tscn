@@ -481,23 +481,41 @@ metadata/fov = 45.0
 ; the white arched footbridge over the bayou, the joggers' turn
 [node name="shot_insert_bridge" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(40.000, 1.600, 24.000)
-rotation = Vector3(0.0400, -0.6950, 0.0)
+rotation = Vector3(-0.0225, -1.4881, 0.0)
 metadata/fov = 45.0
 
 ; "an old wooden arm painted red and white, a booth with nobody in it"
 [node name="shot_insert_toll" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3003.000, 1.600, -85.000)
-rotation = Vector3(0.0200, -0.5410, 0.0)
+rotation = Vector3(-0.0187, -0.0312, 0.0)
 metadata/fov = 42.0
 
 ; "a building sits on the water with every light on"
 [node name="shot_insert_drugstore" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2996.000, 1.600, -142.000)
-rotation = Vector3(0.0300, -0.2070, 0.0)
+rotation = Vector3(-0.0254, -0.0000, 0.0)
 metadata/fov = 45.0
 
 ; "A Little League diamond with the lights still on."
 [node name="shot_insert_diamond" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3021.000, 2.000, -71.000)
-rotation = Vector3(0.0200, -1.3400, 0.0)
+rotation = Vector3(-0.0759, 2.2738, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_tires__jd_river" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2998.932, 0.463, 2.457)
+rotation = Vector3(-0.5236, -0.1133, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_booth__jd_river" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3008.216, 2.360, -92.917)
+rotation = Vector3(-0.2618, -0.0833, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_wheel__jd_river_turn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3001.139, 0.489, 307.498)
+rotation = Vector3(-0.5236, 3.0483, 0.0)
+metadata/fov = 35.0

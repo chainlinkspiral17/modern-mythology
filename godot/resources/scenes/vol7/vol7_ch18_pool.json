@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:day_bright]Finn was at a tide pool. The tide pool on a basalt headland — rendered by a designer who had been at the Oregon coast. The pool the size of a kitchen table. The basalt around it: the wear of a thing wet at every high tide for millennia.",
+      "text": "[shot:insert pool][mood:day_bright]Finn was at a tide pool. The tide pool on a basalt headland — rendered by a designer who had been at the Oregon coast. The pool the size of a kitchen table. The basalt around it: the wear of a thing wet at every high tide for millennia.",
       "t": "narrate"
     },
     {
@@ -59,7 +59,7 @@
       "t": "narrate"
     },
     {
-      "text": "\"January 13, 2050. Second playing. Walked the headland to the second pool. The pool had a man in it. Old, white-haired, in waders to the waist, kneeling at the edge of the pool, looking at the water. I sat at the pool with him.",
+      "text": "[shot:insert pool]\"January 13, 2050. Second playing. Walked the headland to the second pool. The pool had a man in it. Old, white-haired, in waders to the waist, kneeling at the edge of the pool, looking at the water. I sat at the pool with him.",
       "t": "narrate"
     },
     {
@@ -67,7 +67,7 @@
       "t": "narrate"
     },
     {
-      "text": "Third page:",
+      "text": "[shot:insert page]Third page:",
       "t": "narrate"
     },
     {
@@ -99,7 +99,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn looked up from the notebook. He was at the first pool. He had not yet walked to the second pool. The substrate had given him the notebook so he would know what the second pool was.",
+      "text": "[shot:insert notebook]Finn looked up from the notebook. He was at the first pool. He had not yet walked to the second pool. The substrate had given him the notebook so he would know what the second pool was.",
       "t": "narrate"
     },
     {
@@ -119,7 +119,7 @@
       "t": "narrate"
     },
     {
-      "text": "\"October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me — for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes.",
+      "text": "[shot:insert pool]\"October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me — for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes.",
       "t": "narrate"
     },
     {
@@ -135,7 +135,7 @@
       "t": "narrate"
     },
     {
-      "text": "He said: soon enough. Give the crow now. I said: I will. He turned back to the pool.\"",
+      "text": "[shot:insert pool]He said: soon enough. Give the crow now. I said: I will. He turned back to the pool.\"",
       "t": "narrate"
     },
     {
@@ -163,7 +163,7 @@
       "t": "narrate"
     },
     {
-      "text": "He walked. The path to the second pool visible in the basalt — a slight wear in the rock from the boots of people who had walked it. Worn into the substrate by the players. He followed it. He came to the second pool at maybe ten minutes of walking.",
+      "text": "[shot:insert pool]He walked. The path to the second pool visible in the basalt — a slight wear in the rock from the boots of people who had walked it. Worn into the substrate by the players. He followed it. He came to the second pool at maybe ten minutes of walking.",
       "t": "narrate"
     },
     {
@@ -203,7 +203,7 @@
       "t": "narrate"
     },
     {
-      "text": "The imprint of someone who had been at the second pool of Tideline Survey since 2023. By what Finn could read at his face — the imprint of a person who had loved his brother.",
+      "text": "[shot:insert pool]The imprint of someone who had been at the second pool of Tideline Survey since 2023. By what Finn could read at his face — the imprint of a person who had loved his brother.",
       "t": "narrate"
     },
     {
@@ -615,7 +615,7 @@
       "t": "say"
     },
     {
-      "text": "Finn stood up. The old man at the pool turned back to the water. Finn walked.",
+      "text": "[shot:insert pool]Finn stood up. The old man at the pool turned back to the water. Finn walked.",
       "t": "narrate"
     },
     {
@@ -627,7 +627,7 @@
       "t": "narrate"
     },
     {
-      "text": "He stood at the first pool for a count. He took the cedar out of the coat pocket. He held it up to the substrate's rendered sun — the gray-white sun behind the gray-white horizon. The cedar caught the gray-white.",
+      "text": "[shot:insert pool]He stood at the first pool for a count. He took the cedar out of the coat pocket. He held it up to the substrate's rendered sun — the gray-white sun behind the gray-white horizon. The cedar caught the gray-white.",
       "t": "narrate"
     },
     {

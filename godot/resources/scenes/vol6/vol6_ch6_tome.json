@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Claire is at the counter, paying for a Diet Coke and a bag of pretzels, when Tomé's car pulls into the lot. She watches it through the front window. Tomé is, Frasier had said, the third contractor — Vince's relief, Boyd's swap.",
+      "text": "[shot:insert counter][mood:day_bright]Claire is at the counter, paying for a Diet Coke and a bag of pretzels, when Tomé's car pulls into the lot. She watches it through the front window. Tomé is, Frasier had said, the third contractor — Vince's relief, Boyd's swap.",
       "voice": "assets/audio/voice/vol6_ch6_tome/006.ogg"
     },
     {

@@ -110,7 +110,7 @@
   },
   {
    "t": "narrate",
-   "text": "Now, sitting in the heart of that dream, the dream felt suspiciously like the other place. The polite term, in the papers, was his shady past. Dante had stopped reading the papers in 2009. He still received them. He used them, mostly, to wrap fish.",
+   "text": "[shot:insert papers]Now, sitting in the heart of that dream, the dream felt suspiciously like the other place. The polite term, in the papers, was his shady past. Dante had stopped reading the papers in 2009. He still received them. He used them, mostly, to wrap fish.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/021.mp3"
   },
   {
@@ -195,7 +195,7 @@
   },
   {
    "t": "narrate",
-   "text": "He had not had dinner with Antonio in three years. They spoke on the phone every six weeks, on the first Sunday of an even-numbered month. Antonio always called. Dante always answered. Neither had ever said anything important. Both knew this.",
+   "text": "[shot:insert phone]He had not had dinner with Antonio in three years. They spoke on the phone every six weeks, on the first Sunday of an even-numbered month. Antonio always called. Dante always answered. Neither had ever said anything important. Both knew this.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/038.mp3"
   },
   {
@@ -250,7 +250,7 @@
   },
   {
    "t": "narrate",
-   "text": "He did not go through the front door. He exited through the side entrance, the one nearest the river. He moved with the unhurried economy of a man who knew his way around the boat better than he had any reason to.",
+   "text": "[shot:insert door]He did not go through the front door. He exited through the side entrance, the one nearest the river. He moved with the unhurried economy of a man who knew his way around the boat better than he had any reason to.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/049.mp3"
   },
   {

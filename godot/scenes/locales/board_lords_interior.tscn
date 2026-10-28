@@ -200,11 +200,11 @@ shadow_enabled = false
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95, 1.95, -1.64)
-rotation = Vector3(-0.2475, 1.1023, 0.0)
+rotation = Vector3(-0.5246, 1.3378, 0.0)
 
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -1.40)
-rotation = Vector3(-0.0954, -3.1416, 0.0)
+rotation = Vector3(0.5635, 3.1416, 0.0)
 
 ; (pass 68) the back office's own light: Devon's desk lamp, the bare bulb over the nook
 [node name="Devon_Desk_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
@@ -357,7 +357,7 @@ metadata/fov = 56.0
 ; insert: the deck display wall
 [node name="shot_insert_deckwall" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.9, 1.5, -3.8)
-rotation = Vector3(-0.165149, 1.5708, 0)
+rotation = Vector3(0.6541, 1.5708, 0.0)
 metadata/fov = 42.0
 
 ; insert: the lathe on the repair bench
@@ -371,12 +371,12 @@ metadata/fov = 42.0
 ; the front window looking out across Main.
 [node name="shot_insert_decks" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.5, -3.0)
-rotation = Vector3(-0.0598, 1.5246, 0.0)
+rotation = Vector3(-1.0005, -0.6889, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.35, -4.5)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.4153, -0.0567, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -408,7 +408,7 @@ metadata/fov = 42.0
 ; insert: Roy passes the front window at three-twelve
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 1.5, -0.9)
-rotation = Vector3(0.0598, -3.1416, 0.0)
+rotation = Vector3(0.0658, 2.9345, 0.0)
 metadata/fov = 42.0
 
 ; insert: the crow rides the cab roof (Main Street)
@@ -510,7 +510,50 @@ metadata/fov = 58.0
 position = Vector3(4.300, 1.699, 3.179)
 script = ExtResource("hp_hero_prop")
 glb_path = "res://assets/3d/props/crow.glb"
-size_m = 0.697
-length_axis = "z"
+size_m = 0.34
+upright = true
+seat_center = true
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Crow_")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_shelf__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.887, 0.492, -4.720)
+rotation = Vector3(-0.2618, 0.1736, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bearings__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.819, 0.556, -6.852)
+rotation = Vector3(-0.2618, -2.0189, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.453, 0.499, -5.767)
+rotation = Vector3(-0.0873, 1.2628, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bench__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.409, 0.870, -0.683)
+rotation = Vector3(-0.2840, 1.6341, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffee__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.857, 1.227, -4.376)
+rotation = Vector3(-0.2618, 0.4178, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_ring__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.945, 1.527, -1.940)
+rotation = Vector3(-0.2618, 0.9505, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_clamp__board_lords_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.225, 1.192, -5.892)
+rotation = Vector3(-0.2618, 0.5665, 0.0)
+metadata/fov = 35.0

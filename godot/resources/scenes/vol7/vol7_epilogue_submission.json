@@ -40,7 +40,7 @@
    "t": "narrate"
   },
   {
-   "text": "She moved the cursor. She moved it to the position on the template that corresponded to the cabin she was sitting in.",
+   "text": "[shot:insert cursor]She moved the cursor. She moved it to the position on the template that corresponded to the cabin she was sitting in.",
    "t": "narrate"
   },
   {
@@ -56,7 +56,7 @@
    "t": "narrate"
   },
   {
-   "text": "The clock counted. 0:01.",
+   "text": "[shot:insert clock]The clock counted. 0:01.",
    "t": "narrate"
   },
   {
@@ -165,7 +165,7 @@
    "t": "narrate"
   },
   {
-   "text": "Finn stayed at the table. Tem stayed at the table.",
+   "text": "[shot:insert table]Finn stayed at the table. Tem stayed at the table.",
    "t": "narrate"
   },
   {

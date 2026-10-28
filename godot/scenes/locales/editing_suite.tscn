@@ -353,3 +353,27 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_console__suite_wide" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.357, 1.012, -4.443)
+rotation = Vector3(-0.2618, 0.4682, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__suite_wide" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.330, -1.162)
+rotation = Vector3(-0.2618, -3.1416, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cables__suite_4am" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.599, 1.082, -1.664)
+rotation = Vector3(-0.4849, -0.6941, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__suite_4am" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.639, 1.191, -1.353)
+rotation = Vector3(-0.2618, -2.2214, 0.0)
+metadata/fov = 35.0

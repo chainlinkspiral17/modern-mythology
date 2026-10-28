@@ -157,7 +157,7 @@
     },
     {
       "t": "narrate",
-      "text": "She put her cup in the sink of the kitchen and ran it under water. She looked out the kitchen window, past the fruit-bearing trees and saw the light from the workshop."
+      "text": "[shot:insert sink]She put her cup in the sink of the kitchen and ran it under water. She looked out the kitchen window, past the fruit-bearing trees and saw the light from the workshop."
     },
     {
       "t": "choice",
@@ -202,7 +202,7 @@
     },
     {
       "t": "narrate",
-      "text": "She walked to the service porch, pulled on a jacket and unlocked the door. The smashing, shattering sound of glass again this time from right outside in the garage port not twenty feet from her. The wife and mother got very afraid now."
+      "text": "[shot:insert door]She walked to the service porch, pulled on a jacket and unlocked the door. The smashing, shattering sound of glass again this time from right outside in the garage port not twenty feet from her. The wife and mother got very afraid now."
     },
     {
       "t": "narrate",

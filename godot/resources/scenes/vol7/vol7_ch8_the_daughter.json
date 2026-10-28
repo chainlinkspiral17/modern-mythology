@@ -37,7 +37,7 @@
   },
   {
    "t": "narrate",
-   "text": "Finn, on the couch, who had not yet spoken, said: \"The crow.\""
+   "text": "[shot:insert couch]Finn, on the couch, who had not yet spoken, said: \"The crow.\""
   },
   {
    "t": "narrate",
@@ -63,7 +63,7 @@
   },
   {
    "t": "narrate",
-   "text": "Kai stopped cutting. He set the knife down on the cutting board."
+   "text": "[shot:insert knife]Kai stopped cutting. He set the knife down on the cutting board."
   },
   {
    "t": "say",
@@ -97,7 +97,7 @@
   },
   {
    "t": "narrate",
-   "text": "Kai picked the knife back up and resumed cutting."
+   "text": "[shot:insert knife]Kai picked the knife back up and resumed cutting."
   },
   {
    "t": "say",

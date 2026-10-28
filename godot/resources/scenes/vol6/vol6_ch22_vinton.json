@@ -55,7 +55,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben's helmet is in his right hand. His mouthguard is in his left. The pads are the pads he has been in for three weeks. They are starting to smell like pads.",
+   "text": "[shot:insert pads]Ben's helmet is in his right hand. His mouthguard is in his left. The pads are the pads he has been in for three weeks. They are starting to smell like pads.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/010.mp3"
   },
   {
@@ -70,7 +70,7 @@
   },
   {
    "t": "narrate",
-   "text": "Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker.",
+   "text": "[shot:insert helmets]Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/013.mp3"
   },
   {
@@ -181,7 +181,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder.",
+   "text": "[shot:insert bench]Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/032.mp3"
   },
   {
@@ -215,7 +215,7 @@
   },
   {
    "t": "narrate",
-   "text": "I'll set up the folding chair in the third row Saturday morning. And that had been that.",
+   "text": "[shot:insert chair]I'll set up the folding chair in the third row Saturday morning. And that had been that.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/039.mp3"
   },
   {
@@ -281,7 +281,7 @@
   },
   {
    "t": "narrate",
-   "text": "Today she is at the gate.",
+   "text": "[shot:insert gate]Today she is at the gate.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/052.mp3"
   },
   {
@@ -327,7 +327,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, on the sideline, has not yet turned around to see her.",
+   "text": "[shot:insert sideline]Coach K, on the sideline, has not yet turned around to see her.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/061.mp3"
   },
   {
@@ -565,7 +565,7 @@
   },
   {
    "t": "narrate",
-   "text": "The ball is in the air.",
+   "text": "[shot:insert ball]The ball is in the air.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/107.mp3"
   },
   {
@@ -1114,7 +1114,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner.",
+   "text": "[shot:insert booth]Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/203.mp3"
   },
   {
@@ -1232,7 +1232,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, across the booth, is eating his flauta and listening.",
+   "text": "[shot:insert booth]Coach K, across the booth, is eating his flauta and listening.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/222.mp3"
   },
   {

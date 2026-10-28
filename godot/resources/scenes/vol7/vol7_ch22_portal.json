@@ -66,7 +66,7 @@
       "caption": "The portal-room door. Cedar. Window at chest height, six inches by six."
     },
     {
-      "text": "Tem stood at the door. Kai and Finn behind her at the landing.",
+      "text": "[shot:insert door]Tem stood at the door. Kai and Finn behind her at the landing.",
       "t": "narrate"
     },
     {
@@ -102,7 +102,7 @@
       "t": "narrate"
     },
     {
-      "text": "There was a door on the room's far side. The door was cedar. It had no markings. The door's handle was at the far wall directly opposite the door Tem was looking through.",
+      "text": "[shot:insert door]There was a door on the room's far side. The door was cedar. It had no markings. The door's handle was at the far wall directly opposite the door Tem was looking through.",
       "t": "narrate"
     },
     {
@@ -390,7 +390,7 @@
       "t": "bg"
     },
     {
-      "text": "The cabin was cold. Kai built the fire back up. Tem heated the rye in the oven. Finn cut the rye. They ate. The disc-case was still on the kitchen table where Cale had left it.",
+      "text": "[shot:insert table]The cabin was cold. Kai built the fire back up. Tem heated the rye in the oven. Finn cut the rye. They ate. The disc-case was still on the kitchen table where Cale had left it.",
       "t": "narrate"
     },
     {
@@ -422,7 +422,7 @@
       "t": "narrate"
     },
     {
-      "text": "The substrate at the tower forty-three miles north was running in the portal room on the fourth floor without anyone in the room.",
+      "text": "[shot:insert substrate]The substrate at the tower forty-three miles north was running in the portal room on the fourth floor without anyone in the room.",
       "t": "narrate"
     },
     {

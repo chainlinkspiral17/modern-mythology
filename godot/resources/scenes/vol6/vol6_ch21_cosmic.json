@@ -44,7 +44,7 @@
     },
     {
       "t": "narrate",
-      "text": "She unlocks the deadbolt. She unlocks the bottom lock. She pushes the door open.",
+      "text": "[shot:insert deadbolt]She unlocks the deadbolt. She unlocks the bottom lock. She pushes the door open.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/008.mp3"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "and laying the painted Galactus across the floor in the long purple bars that have been the shop's morning for as long as the painted Galactus has been on the window.",
+      "text": "[shot:insert bars]and laying the painted Galactus across the floor in the long purple bars that have been the shop's morning for as long as the painted Galactus has been on the window.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/012.mp3"
     },
     {
@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "The customers in the first hour are mostly the regulars. Phil — who had asked about the Saga hardcover on Tuesday and who has, since, come back twice — comes in at ten forty-three to look at the new arrivals.",
+      "text": "[shot:insert arrivals]The customers in the first hour are mostly the regulars. Phil — who had asked about the Saga hardcover on Tuesday and who has, since, come back twice — comes in at ten forty-three to look at the new arrivals.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/024.mp3"
     },
     {
@@ -313,7 +313,7 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer is at the doorway of the back office. The back-office door is open. She has been, all morning, going in and out for things and has not, since opening, closed it.",
+      "text": "[shot:insert door]The wanderer is at the doorway of the back office. The back-office door is open. She has been, all morning, going in and out for things and has not, since opening, closed it.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/056.mp3"
     },
     {
@@ -417,7 +417,7 @@
     },
     {
       "t": "narrate",
-      "text": "The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark.",
+      "text": "[shot:insert grille]The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/076.mp3"
     },
     {
@@ -747,7 +747,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Speak & Spell, on the shelf under the register, is dim for the rest of the day. Every twenty minutes or so she glances down at it. It is, every time, dim. She rings.",
+      "text": "[shot:insert shelf]The Speak & Spell, on the shelf under the register, is dim for the rest of the day. Every twenty minutes or so she glances down at it. It is, every time, dim. She rings.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/132.mp3"
     },
     {
@@ -787,7 +787,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the small bin under the register. She wipes the counter.",
+      "text": "[shot:insert till]She does the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the small bin under the register. She wipes the counter.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/140.mp3"
     },
     {

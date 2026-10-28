@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had looked, when she came in through the door, like a woman who had, in the recent past, been inside a building that was collapsing and who had, on exiting the building, not yet fully understood that she was still covered in dust.",
+      "text": "[shot:insert door]She had looked, when she came in through the door, like a woman who had, in the recent past, been inside a building that was collapsing and who had, on exiting the building, not yet fully understood that she was still covered in dust.",
       "voice": "assets/audio/voice/vol5_ch19_sun/025.ogg"
     },
     {
@@ -301,7 +301,7 @@
       "t": "narrate",
       "when_flag": "elicia_pick",
       "is": "A",
-      "text": "You don't pick the abattoir, she had told him in March, over the espresso, unless some part of you is already standing in it. He had written that down later, in the notebook, word for word."
+      "text": "[shot:insert espresso]You don't pick the abattoir, she had told him in March, over the espresso, unless some part of you is already standing in it. He had written that down later, in the notebook, word for word."
     },
     {
       "t": "narrate",
@@ -464,7 +464,7 @@
     },
     {
       "t": "narrate",
-      "text": "He closed the notebook.",
+      "text": "[shot:insert notebook]He closed the notebook.",
       "voice": "assets/audio/voice/vol5_ch19_sun/084.ogg"
     },
     {
@@ -742,7 +742,7 @@
     },
     {
       "t": "narrate",
-      "text": "John ordered the croissants. He returned to the table.",
+      "text": "[shot:insert croissants]John ordered the croissants. He returned to the table.",
       "voice": "assets/audio/voice/vol5_ch19_sun/130.ogg"
     },
     {
@@ -856,7 +856,7 @@
     },
     {
       "t": "narrate",
-      "text": "I am glad that there are two warm croissants on the table. I am glad that I have six years of dust-mote notes and that they have, finally, begun to be about something.",
+      "text": "[shot:insert croissants]I am glad that there are two warm croissants on the table. I am glad that I have six years of dust-mote notes and that they have, finally, begun to be about something.",
       "voice": "assets/audio/voice/vol5_ch19_sun/149.ogg"
     },
     {
@@ -896,7 +896,7 @@
     },
     {
       "t": "narrate",
-      "text": "But the hum at the base of his skull — the small new hum, the one he had written about in his notebook ten minutes ago — registered the arrival.",
+      "text": "[shot:insert notebook]But the hum at the base of his skull — the small new hum, the one he had written about in his notebook ten minutes ago — registered the arrival.",
       "voice": "assets/audio/voice/vol5_ch19_sun/157.ogg"
     },
     {
@@ -959,7 +959,7 @@
     },
     {
       "t": "narrate",
-      "text": "Not, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did.",
+      "text": "[shot:insert croissants]Not, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did.",
       "voice": "assets/audio/voice/vol5_ch19_sun/168.ogg"
     },
     {

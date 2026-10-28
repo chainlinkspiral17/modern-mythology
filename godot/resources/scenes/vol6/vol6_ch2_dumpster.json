@@ -60,7 +60,7 @@
     },
     {
      "t": "narrate",
-     "text": "Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease.",
+     "text": "[shot:insert dumpster]Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease.",
      "when_flag": "item:two Powerades",
      "drop_item": "two Powerades"
     },

@@ -452,7 +452,7 @@ metadata/fov = 55.0
 ; the scoreboard past the track's north curve (rewind: R.I.P. — the CG has that moment)
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(7.000, 1.700, -131.728)
-rotation = Vector3(0.3000, 0.4636, 0.0)
+rotation = Vector3(0.1273, 0.2727, 0.0)
 metadata/fov = 38.0
 
 ; "The stadium lights hung over the field in a white haze": a visitors'-side bank over the firs
@@ -464,11 +464,11 @@ metadata/fov = 45.0
 ; from the near curb across the street: the church door, the nave, the belfry (the vigil)
 [node name="shot_insert_church" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(15.000, 1.700, 69.000)
-rotation = Vector3(0.3000, 3.0831, 0.0)
+rotation = Vector3(-0.0234, 3.0831, 0.0)
 metadata/fov = 52.0
 
 ; the concession window on the walk
 [node name="shot_insert_concession" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(47.500, 1.600, 1.500)
-rotation = Vector3(-0.0500, 3.1416, 0.0)
+rotation = Vector3(0.1227, -2.9598, 0.0)
 metadata/fov = 40.0

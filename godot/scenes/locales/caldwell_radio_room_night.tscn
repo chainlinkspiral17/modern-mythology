@@ -335,7 +335,7 @@ script = ExtResource("14_dbgm")
 ; (2026-10-08) over her chair onto the transceiver, the key, the log
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.050, 1.300, -1.000)
-rotation = Vector3(-0.4201, -1.1526, 0.0)
+rotation = Vector3(-0.7947, -1.0785, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -358,7 +358,7 @@ metadata/fov = 45.0
 ; (2026-10-08) out the window and down: the back yard a storey below
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.900, 1.550, -1.900)
-rotation = Vector3(-0.4058, -3.0319, 0.0)
+rotation = Vector3(0.0251, -2.8797, 0.0)
 metadata/fov = 52.0
 
 ; insert (2026-10-10, ch2 Maya's bedroom): "Her grandmother's hand on hers" — the edge of the bed, in the dark

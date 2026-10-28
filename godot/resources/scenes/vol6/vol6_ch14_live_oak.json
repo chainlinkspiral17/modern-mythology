@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "The loading area is a long single strip of asphalt behind all the units, with a chain-link fence at the back separating the lot from a small drainage easement and a stand of cedar beyond.",
+      "text": "[shot:insert units]The loading area is a long single strip of asphalt behind all the units, with a chain-link fence at the back separating the lot from a small drainage easement and a stand of cedar beyond.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/016.ogg"
     },
     {
@@ -293,7 +293,7 @@
     },
     {
       "t": "narrate",
-      "text": "The vehicle is a sedan. Dark color. Jesse cannot, in the sodium light, read the plate.",
+      "text": "[shot:insert plate]The vehicle is a sedan. Dark color. Jesse cannot, in the sodium light, read the plate.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/050.mp3"
     },
     {
@@ -366,7 +366,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on \u2014 his mother has, all summer, been leaving the kitchen light on for him on practice nights.",
+      "text": "[shot:insert driveway]He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on \u2014 his mother has, all summer, been leaving the kitchen light on for him on practice nights.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/062.ogg"
     },
     {
@@ -632,7 +632,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: the bridge is going to be hard.",
+      "text": "[shot:insert bridge]He thinks: the bridge is going to be hard.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/103.mp3"
     },
     {
@@ -646,7 +646,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes upstairs. His parents' bedroom door is closed. The light under the door is off. His father snores in the cadence his father has snored in for as long as Jesse has known what snoring is.",
+      "text": "[shot:insert door]He goes upstairs. His parents' bedroom door is closed. The light under the door is off. His father snores in the cadence his father has snored in for as long as Jesse has known what snoring is.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/105.mp3"
     },
     {
@@ -686,7 +686,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: that's the bridge. He thinks: I'll have it set to music by Friday.",
+      "text": "[shot:insert bridge]He thinks: that's the bridge. He thinks: I'll have it set to music by Friday.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/113.mp3"
     },
     {
@@ -750,7 +750,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, the bridge is about the parking lot.",
+      "text": "[shot:insert bridge]He thinks, the bridge is about the parking lot.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/126.mp3"
     },
     {
@@ -770,7 +770,7 @@
     },
     {
       "t": "narrate",
-      "text": "In a different bedroom in a different cul-de-sac, Maya \u2014 at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down \u2014 opens her ThinkPad on her lap.",
+      "text": "[shot:insert phone]In a different bedroom in a different cul-de-sac, Maya \u2014 at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down \u2014 opens her ThinkPad on her lap.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/130.mp3"
     },
     {
@@ -830,7 +830,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight, on the porch with her grandmother already inside, the radio is \u2014 for the third night in a row \u2014 off.",
+      "text": "[shot:insert radio]Tonight, on the porch with her grandmother already inside, the radio is \u2014 for the third night in a row \u2014 off.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/140.mp3"
     },
     {

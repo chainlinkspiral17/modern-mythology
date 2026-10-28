@@ -366,5 +366,5 @@ script = ExtResource("14_dbgm")
 ; insert: Judgement Day at the curb — the shirt tied to its rearview, the cat hair on the seat
 [node name="shot_insert_judgement_day" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.5, 0.2)
-rotation = Vector3(-0.154, -2.427, 0.0)
+rotation = Vector3(-0.2306, -2.2154, 0.0)
 metadata/fov = 44.0

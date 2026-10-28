@@ -253,7 +253,7 @@
       "t": "show"
     },
     {
-      "text": "He set the bag on the kitchen table. He stood at the table and looked at the bag for a count. Then he opened it.",
+      "text": "[shot:insert table]He set the bag on the kitchen table. He stood at the table and looked at the bag for a count. Then he opened it.",
       "t": "narrate"
     },
     {
@@ -269,7 +269,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn looked at the label. He had not, until this moment, seen Brandon's handwriting other than once on a check Brandon had given to the co-op for a delivery in '49 that Margaret had let Finn see.",
+      "text": "[shot:insert label]Finn looked at the label. He had not, until this moment, seen Brandon's handwriting other than once on a check Brandon had given to the co-op for a delivery in '49 that Margaret had let Finn see.",
       "t": "narrate"
     },
     {
@@ -285,7 +285,7 @@
       "t": "narrate"
     },
     {
-      "text": "He took the stick out of the sleeve. The standard SCUMM stick — a dark plastic rectangle about the size of his palm, with the gold connector at one end. The stick was clean. No marks on it. He set it on the table beside the sleeve.",
+      "text": "[shot:insert stick]He took the stick out of the sleeve. The standard SCUMM stick — a dark plastic rectangle about the size of his palm, with the gold connector at one end. The stick was clean. No marks on it. He set it on the table beside the sleeve.",
       "t": "narrate"
     },
     {
@@ -312,7 +312,7 @@
       "t": "say"
     },
     {
-      "text": "The crow tapped the table once with its beak.",
+      "text": "[shot:insert table]The crow tapped the table once with its beak.",
       "t": "narrate"
     },
     {
@@ -320,7 +320,7 @@
       "t": "narrate"
     },
     {
-      "text": "He thought about whether to call Tem. He decided not to. Tem had said: Play it today if you can. He could play it now. The reader was at his apartment. The crow was at his apartment. The morning was his.",
+      "text": "[shot:insert reader]He thought about whether to call Tem. He decided not to. Tem had said: Play it today if you can. He could play it now. The reader was at his apartment. The crow was at his apartment. The morning was his.",
       "t": "narrate"
     },
     {
@@ -352,7 +352,7 @@
       "t": "narrate"
     },
     {
-      "text": "He lay down on the bed. He pulled the wool blanket up.",
+      "text": "[shot:insert blanket]He lay down on the bed. He pulled the wool blanket up.",
       "t": "narrate"
     },
     {

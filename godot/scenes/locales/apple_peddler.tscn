@@ -333,3 +333,22 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_window__apple_peddler_booth" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.420, 1.062, -3.050)
+rotation = Vector3(-0.2618, -1.6345, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_register__apple_peddler_booth" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.527, 1.378, -5.249)
+rotation = Vector3(-0.2618, -1.2905, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_fryer__apple_peddler_grill" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.245, 1.120, -7.414)
+rotation = Vector3(-0.2618, -0.5901, 0.0)
+metadata/fov = 35.0

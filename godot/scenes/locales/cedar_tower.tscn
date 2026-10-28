@@ -402,7 +402,7 @@ metadata/fov = 42.0
 ; insert: the unmarked cedar door
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.3, -2.2)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.1616, -0.2102, 0.0)
 metadata/fov = 42.0
 
 ; insert: the six-by-six window above the handle
@@ -420,13 +420,13 @@ metadata/fov = 42.0
 ; insert: the seventh floor's smart-glass running the garden
 [node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 1.7, 5.0)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(0.1013, 0.0867, 0.0)
 metadata/fov = 42.0
 
 ; insert: the tower's doors from the clearing
 [node name="shot_insert_doors" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.5, 1.2)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.1867, 0.4821, 0.0)
 metadata/fov = 42.0
 
 ; practicals authored by practical_author.py (2026-09-11):
@@ -500,3 +500,9 @@ light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_wagon__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(40.077, 0.552, -0.228)
+rotation = Vector3(-0.2618, 0.2251, 0.0)
+metadata/fov = 35.0

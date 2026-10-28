@@ -399,6 +399,17 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-27 · seat an animal on its feet, not its lowest point (pass 202)
+
+**Context:** every crow in vol 7 read as hovering. HeroProp seats a model on
+its lowest vertex, and a bird's lowest vertex is its tail tip, which hangs
+below the feet.
+
+**Rule:** for anything that stands on legs (birds, figures with a trailing
+cape), set `seat_center = true`. It seats the model on the lowest vertex of
+the middle half of its footprint. Size it by height (`upright`), not by
+length.
+
 ### 2026-10-27 · another year at the same place is a preset, not a new set (pass 198)
 
 **Context:** vol 3's early-2000s night stop had borrowed vol 6's 2026 NexCorp

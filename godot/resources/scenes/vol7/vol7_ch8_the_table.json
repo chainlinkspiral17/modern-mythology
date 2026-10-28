@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch]Kai brought the soup to the small kitchen table at six-twenty-something."
+      "text": "[shot:insert table][mood:lunch]Kai brought the soup to the small kitchen table at six-twenty-something."
     },
     {
       "t": "narrate",
@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "They moved to the table. The four chairs were not a matched set. Lena had bought three of them at Margit's at three different points and had inherited the fourth from the previous tenant when she had moved in."
+      "text": "[shot:insert table]They moved to the table. The four chairs were not a matched set. Lena had bought three of them at Margit's at three different points and had inherited the fourth from the previous tenant when she had moved in."
     },
     {
       "t": "narrate",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second."
+      "text": "[shot:insert bowl]They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second."
     },
     {
       "t": "narrate",

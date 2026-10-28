@@ -158,6 +158,37 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-28 · "sees its subject" is not "frames its subject" (passes 205–206)
+
+**Context:** marker_aim_audit's 38° cone passed 223 inserts whose object
+sat at the edge of a 35° lens, or under the reading box. On top of that,
+every insert kept the portraits standing over the object.
+
+**Rule:** an insert marker aims at its object within 6°. Write it with
+text_focus_pass's search, or fix it with `marker_reaim.py --tight`. The
+director does the rest at play time:
+- it lifts the aim point to 36 % from the top (`INSERT_CENTER`);
+- it fades the portraits while the insert holds on narration.
+
+A tight re-aim must never touch closeups. A face frame named for a person
+whose name also tags geometry ("Lena_Phone_Screen") would be turned toward
+the prop.
+
+### 2026-10-27 · an insert lens must stand in the reader's room (pass 203)
+
+**Context:** text_focus_pass's first apply framed Lena's Pendleton blanket
+from the porch, looking in through the south window. Every gate passed:
+- the occlusion test lets glass through;
+- the bounds test takes the whole set, porch included.
+
+**Rule:** a candidate lens must have no structural part between it and the
+view's own preset camera. Structural means wall, glass, window, door,
+partition or roof, with glass counted as a blocker (`same_room`).
+
+Also: search outward from the preset camera's side and stop at the first
+clear lens. marker_reframe's full ring search costs about 20 s a subject,
+which is hours for a volume.
+
 ### 2026-10-27 · a script that calls the audits must install the stubs first (pass 192)
 
 **Context:** a search for the nearest passing pose of 8 face frames called

@@ -354,3 +354,75 @@ metadata/fov = 45.0
 position = Vector3(-0.974, 1.612, -5.287)
 rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doors__briar_falls_building" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.388, 1.062, -2.973)
+rotation = Vector3(-0.2618, 1.5370, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_alcove__briar_falls_building" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.296, 1.712, -8.090)
+rotation = Vector3(-0.2618, 0.8712, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bench__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.080, 1.450, -6.065)
+rotation = Vector3(-0.5295, 0.6663, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.186, 1.312, -7.197)
+rotation = Vector3(-0.2618, 0.2740, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_falls__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.370, 1.262, -14.819)
+rotation = Vector3(-0.2618, -0.1651, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_ribbon__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.780, 1.372, -14.728)
+rotation = Vector3(-0.2618, -0.5586, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_shelter__briar_falls_picnic" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.970, 1.562, -7.720)
+rotation = Vector3(-0.2618, 0.9202, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__briar_falls_picnic" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.508, 1.123, -7.873)
+rotation = Vector3(-0.2872, 0.9567, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_falls__briar_falls_trail" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(8.667, 1.529, -14.308)
+rotation = Vector3(-0.3020, -0.5729, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bench__briar_falls_trail" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.284, 0.934, -7.486)
+rotation = Vector3(-0.2603, 1.6028, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doors__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.522, 1.062, -2.558)
+rotation = Vector3(-0.2618, 0.9794, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_keys__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.753, 1.197, -14.746)
+rotation = Vector3(-0.2618, -0.5993, 0.0)
+metadata/fov = 35.0

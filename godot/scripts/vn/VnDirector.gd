@@ -41,6 +41,7 @@ const DRIFT_MIN_RATIO := 0.86
 const TYPE_FOV := {"closeup": 45.0, "insert": 35.0}
 const CLOSEUP_PITCH_MIN := -0.07     # rad: a face frame looks level, a touch down at most
 const CLOSEUP_PITCH_MAX := 0.035
+const INSERT_CENTER := 0.36           # of the frame's height from the top: an insert's object, clear of the text
 
 # ── Coverage rotation (2026-08-04, "directing the scenes") ──────
 # A locale like louisiana_road appears in 37 scenes through ONE
@@ -495,6 +496,16 @@ func _cut_to_marker(marker: Node3D, shot_type: String, drift: bool) -> void:
 	var fov := float(TYPE_FOV.get(shot_type, 50.0))
 	if marker.has_meta("fov"):
 		fov = float(marker.get_meta("fov"))
+	if shot_type == "insert":
+		# ABOVE THE TEXT (2026-10-28): every insert marker is aimed at its
+		# object's centre (marker_aim_audit holds it there), and the reading
+		# box owns the lower ~31 % of the screen: a camera on a tripod sat
+		# under the words. Tilt down so the object's centre rises to
+		# INSERT_CENTER of the frame from the top, the middle of the clear
+		# picture.
+		var lift: float = atan(tan(deg_to_rad(fov) * 0.5) * (1.0 - 2.0 * INSERT_CENTER))
+		var tb: Basis = cam.global_transform.basis * Basis(Vector3.RIGHT, -lift)
+		cam.global_transform = Transform3D(tb, cam.global_position)
 	cam.fov = fov
 	cam.make_current()
 	_start_drift(drift)
@@ -806,6 +817,15 @@ static func _line_words(text: String) -> PackedStringArray:
 		if ww != "":
 			out.append(ww)
 	return out
+
+
+## (2026-10-28) true while the camera holds on a THING — an insert, or a
+## picture the line noticed. The Deck: "shots aren't focusing on what the
+## text is describing"; a portrait card stood over the object the insert was
+## cut to show (vol 5 ch16: the recording camera behind a portrait). GameEngine
+## asks after each line and the portraits step back while it holds.
+func insert_showing() -> bool:
+	return _insert_left > 0 or not _art_return.is_empty()
 
 
 ## Every text line passes here before it shows (GameEngine). `cued`: the

@@ -212,17 +212,17 @@ rotation = Vector3(-0.7685, 0.1497, 0.0)   ; the north window
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10, 1.00, -2.10)
-rotation = Vector3(-0.5383, -0.0756, 0.0)   ; the bed
+rotation = Vector3(-0.5562, 0.0877, 0.0)   ; the bed
 
 ; ── vn_shot wave (2026-08-19) · positions authored, aim
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.759, -1.974)
-rotation = Vector3(-0.2618, 0.0000, 0.0)
+rotation = Vector3(-0.0790, 0.0290, 0.0)
 
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.950, 1.150, -0.450)
-rotation = Vector3(-0.3285, -1.1812, 0.0)
+rotation = Vector3(-0.5225, -1.1596, 0.0)
 
 ; ── THE DAY (pass 60): jesse_bedroom_day — the N window
 [node name="Day_Sun__jesse_bedroom_day" type="DirectionalLight3D" parent="."]
@@ -368,7 +368,7 @@ metadata/fov = 42.0
 ; insert: the Telecaster from its stand, plugged into the practice setting
 [node name="shot_insert_telecaster" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.450, 1.100, -0.220)
-rotation = Vector3(-0.5503, -0.6128, 0.0)
+rotation = Vector3(0.2141, -0.6371, 0.0)
 metadata/fov = 50.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -397,5 +397,17 @@ omni_range = 2.32
 ; insert (2026-10-10): his own door, closed behind him ("He closes the door")
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.700, 1.550, -1.700)
-rotation = Vector3(-0.2207, 2.7382, 0.0)
+rotation = Vector3(-0.3760, 2.9014, 0.0)
 metadata/fov = 46.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bridge__jesse_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.136, 0.592, -0.628)
+rotation = Vector3(-0.2618, -1.3052, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bridge__jesse_bedroom_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.136, 0.592, -0.628)
+rotation = Vector3(-0.2618, -1.3052, 0.0)
+metadata/fov = 35.0

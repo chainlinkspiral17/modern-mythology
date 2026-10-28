@@ -31,6 +31,11 @@ extends Node3D
 ## (2026-10-27) the widest a standing prop may be across its footprint, metres
 ## (0: no cap) — a collectible with a spread cape on a 0.84 m shelf of two
 @export var fit_w: float = 0.0
+## (2026-10-27, the Deck: "crow seems to just be hanging out or hovering") seat
+## the model on the lowest point of its CENTRAL footprint (a bird's feet), not
+## its lowest point overall (the perched crow's tail hangs 15 % of its height
+## below its feet, and the crow sat on its tail tip, feet in the air)
+@export var seat_center: bool = false
 @export var lay_down: bool = false         # true: a model standing on end is laid along length_axis (a book, a rolled rug); a Meshy model is drawn upright and never is (2026-10-27)
 @export var stand_in_root: NodePath        # the locale GLB instance holding the procedural stand-in
 @export var hide_prefixes: PackedStringArray = PackedStringArray()
@@ -114,8 +119,35 @@ func _fit(root: Node3D) -> void:
 	root.scale = Vector3(s, s, s)
 	var lo: Vector3 = box.position
 	var hi: Vector3 = box.position + box.size
-	root.position = Vector3(-((lo.x + hi.x) * 0.5) * s, -lo.y * s, -((lo.z + hi.z) * 0.5) * s)
+	var floor_y: float = lo.y
+	if seat_center:
+		floor_y = _central_floor(meshes, box, floor_y)
+	root.position = Vector3(-((lo.x + hi.x) * 0.5) * s, -floor_y * s, -((lo.z + hi.z) * 0.5) * s)
 	print("[HeroProp] %s: ext=(%.2f, %.2f, %.2f) scale=%.3f" % [name, ext.x, ext.y, ext.z, s])
+
+
+# The lowest vertex inside the middle half of the footprint (x and z within
+# 25 % of the box's half-size of its centre), in this node's space at unit
+# scale — where a bird stands. Falls back to the box's floor.
+func _central_floor(meshes: Array[Node], box: AABB, fallback: float) -> float:
+	var c: Vector3 = box.get_center()
+	var hx: float = box.size.x * 0.25
+	var hz: float = box.size.z * 0.25
+	var inv: Transform3D = global_transform.affine_inverse()
+	var best: float = INF
+	for n: Node in meshes:
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi.mesh == null:
+			continue
+		var xf: Transform3D = inv * mi.global_transform
+		for si in mi.mesh.get_surface_count():
+			var arrays: Array = mi.mesh.surface_get_arrays(si)
+			var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			for v: Vector3 in verts:
+				var w: Vector3 = xf * v
+				if absf(w.x - c.x) <= hx and absf(w.z - c.z) <= hz and w.y < best:
+					best = w.y
+	return best if best < INF else fallback
 
 
 # The merged AABB of the model's meshes in THIS node's space (root's

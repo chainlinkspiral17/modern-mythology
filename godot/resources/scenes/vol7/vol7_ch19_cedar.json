@@ -140,7 +140,7 @@
    "t": "say"
   },
   {
-   "text": "She went to the kitchen. Finn sat at the table.",
+   "text": "[shot:insert table]She went to the kitchen. Finn sat at the table.",
    "t": "narrate"
   },
   {
@@ -260,7 +260,7 @@
    "t": "say"
   },
   {
-   "text": "The crow, beside him on the table, tilted its head.",
+   "text": "[shot:insert table]The crow, beside him on the table, tilted its head.",
    "t": "narrate"
   },
   {
@@ -466,7 +466,7 @@
    "t": "say"
   },
   {
-   "text": "Tem stopped reading. She set the notebook on the table beside the cedar.",
+   "text": "[shot:insert notebook]Tem stopped reading. She set the notebook on the table beside the cedar.",
    "t": "narrate"
   },
   {
@@ -594,7 +594,7 @@
    "t": "narrate"
   },
   {
-   "text": "Bean soup — white beans she had soaked overnight, leeks Hans had given her at the bakery yesterday, salt cod she had been keeping in the cabin's pantry since Per had brought her a kilo from his mother's freezer in July.",
+   "text": "[shot:insert beans]Bean soup — white beans she had soaked overnight, leeks Hans had given her at the bakery yesterday, salt cod she had been keeping in the cabin's pantry since Per had brought her a kilo from his mother's freezer in July.",
    "t": "narrate"
   },
   {

@@ -354,5 +354,17 @@ metadata/fov = 34.0
 ; through the leaded window: the streetlight across, the man in the charcoal suit (re-aimed 2026-10-05 for the canon-scale room)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.720, 1.520, -0.780)
-rotation = Vector3(-0.3476, -2.9929, 0.0)
+rotation = Vector3(-0.0887, -2.9758, 0.0)
 metadata/fov = 40.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffee__new_orleans_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.024, 1.090, -1.439)
+rotation = Vector3(-0.2618, -0.9501, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__new_orleans_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.064, 1.598, -1.205)
+rotation = Vector3(-0.2908, 1.7731, 0.0)
+metadata/fov = 35.0

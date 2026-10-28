@@ -73,7 +73,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben crosses to the lawn chair. Daisy, behind it, twitches.",
+   "text": "[shot:insert daisy]Ben crosses to the lawn chair. Daisy, behind it, twitches.",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/013.mp3"
   },
   {
@@ -399,7 +399,7 @@
   },
   {
    "t": "narrate",
-   "text": "Gracie, on the patio, watches them, and smiles, and does not say anything, and writes something in her sketchbook, which she will later, when she is much older and has begun her own kind of attention, recognize as the first thing she ever wrote that was not, in some way, for somebody else.",
+   "text": "[shot:insert patio]Gracie, on the patio, watches them, and smiles, and does not say anything, and writes something in her sketchbook, which she will later, when she is much older and has begun her own kind of attention, recognize as the first thing she ever wrote that was not, in some way, for somebody else.",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/063.mp3"
   },
   {

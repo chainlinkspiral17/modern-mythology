@@ -477,3 +477,57 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_stuffing__dabney_couch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(65.488, 0.752, -4.024)
+rotation = Vector3(-0.2618, -2.0883, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cases__dabney_couch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(60.946, 1.032, -8.008)
+rotation = Vector3(-0.2618, 0.7269, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_kittens__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-8.548, 0.531, -7.488)
+rotation = Vector3(-0.2745, 1.5776, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doors__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(7.700, 1.312, 2.214)
+rotation = Vector3(-0.2618, 2.8860, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_trash__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-10.730, 0.662, -3.386)
+rotation = Vector3(-0.2618, 1.8072, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_engine__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(16.940, 1.030, -2.461)
+rotation = Vector3(-0.5236, -1.9475, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_controller__dabney_game_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(65.692, 0.667, -3.901)
+rotation = Vector3(-0.2618, 1.5720, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_hallways__caltech_tunnels" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(102.930, 1.212, -7.240)
+rotation = Vector3(-0.2618, -1.6338, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__caltech_bare_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(104.357, 1.212, -7.661)
+rotation = Vector3(-0.2618, 2.2075, 0.0)
+metadata/fov = 35.0

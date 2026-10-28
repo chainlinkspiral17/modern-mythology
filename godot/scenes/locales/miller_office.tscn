@@ -236,15 +236,15 @@ shadow_enabled = false
 ; from these for any unauthored insert id in this room.
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.20, -2.10)
-rotation = Vector3(-0.40, 0.00, 0.0)   ; the walnut desk
+rotation = Vector3(-0.2784, 0.0558, 0.0)   ; the walnut desk
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400, 1.700, -4.200)
-rotation = Vector3(-0.154, -0.427, 0.0)   ; the north window, from inside the room (2026-09-25: the lens stood beyond the N wall, in the dark)
+rotation = Vector3(-0.1724, -0.2105, 0.0)   ; the north window, from inside the room (2026-09-25: the lens stood beyond the N wall, in the dark)
 
 [node name="shot_insert_cabinet" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577, 1.812, -3.890)
-rotation = Vector3(-0.2618, -2.6180, 0.0)   ; the file cabinet
+rotation = Vector3(-0.0424, -2.5119, 0.0)   ; the file cabinet
 
 ; Bianca's morning window (stripped from the set's other presets)
 [node name="Bianca_Window_Fill__miller_office_bianca" type="OmniLight3D" parent="."]
@@ -397,7 +397,7 @@ metadata/fov = 42.0
 ; insert: the phone on the desk buzzes — Movement Wednesday 23:00
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.780, 1.250, -3.080)
-rotation = Vector3(-0.5563, 0.3092, 0.0)
+rotation = Vector3(-0.6731, 0.9828, 0.0)
 metadata/fov = 34.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

@@ -467,3 +467,16 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_seat__shanghai_window_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(705.180, 0.642, -2.672)
+rotation = Vector3(-0.2618, -2.5830, 0.0)
+metadata/fov = 35.0
+
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_honeydew__garage_level" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.952, 1.112, -12.000)
+rotation = Vector3(-0.2618, 1.5708, 0.0)
+metadata/fov = 35.0

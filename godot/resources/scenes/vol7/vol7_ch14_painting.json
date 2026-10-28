@@ -104,7 +104,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marit's bowl: the crow's head had turned toward the door, which was where Kai would come in. The substrate-bowl: the young woman had her back to Lena now and one hand out, the way a person tests a wall in the dark."
+      "text": "[shot:insert bowl]Marit's bowl: the crow's head had turned toward the door, which was where Kai would come in. The substrate-bowl: the young woman had her back to Lena now and one hand out, the way a person tests a wall in the dark."
     },
     {
       "t": "narrate",
@@ -116,7 +116,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl."
+      "text": "[shot:insert bowl]She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl."
     },
     {
       "t": "narrate",
@@ -259,7 +259,7 @@
       "t": "hide"
     },
     {
-      "text": "She had put her hand on Cale's shoulder. He had opened his eyes. He had not pretended otherwise. He had said, \"All right.\" He had stood. He had put on his coat. He had gone outside to start his truck.",
+      "text": "[shot:insert coat]She had put her hand on Cale's shoulder. He had opened his eyes. He had not pretended otherwise. He had said, \"All right.\" He had stood. He had put on his coat. He had gone outside to start his truck.",
       "t": "narrate"
     },
     {
@@ -339,7 +339,7 @@
       "t": "say"
     },
     {
-      "text": "He came halfway. She walked over. She took the coffee.",
+      "text": "[shot:insert coffee]He came halfway. She walked over. She took the coffee.",
       "t": "narrate"
     },
     {
@@ -489,7 +489,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bone black was the black she had used for the octopus's eyes in 2050. She wet the brush in the jar of medium. She set the brush against the wall.",
+      "text": "[shot:insert brush]The bone black was the black she had used for the octopus's eyes in 2050. She wet the brush in the jar of medium. She set the brush against the wall.",
       "t": "narrate"
     },
     {
@@ -509,7 +509,7 @@
       "t": "narrate"
     },
     {
-      "text": "The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred.",
+      "text": "[shot:insert brush]The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred.",
       "t": "narrate"
     },
     {
@@ -521,7 +521,7 @@
       "t": "narrate"
     },
     {
-      "text": "She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
+      "text": "[shot:insert lids]She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
       "t": "narrate"
     },
     {
@@ -533,7 +533,7 @@
       "t": "narrate"
     },
     {
-      "text": "She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count.",
+      "text": "[shot:insert paint]She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count.",
       "t": "narrate"
     },
     {

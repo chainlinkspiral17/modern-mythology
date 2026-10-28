@@ -136,7 +136,7 @@
     },
     {
       "t": "narrate",
-      "text": "The paint is still wet. The tower leans a little, like it wants to see over his shoulder."
+      "text": "[shot:insert paint]The paint is still wet. The tower leans a little, like it wants to see over his shoulder."
     },
     {
       "t": "say",
@@ -150,7 +150,7 @@
     },
     {
       "t": "narrate",
-      "text": "It starts to rain. Faust drags the easel inside and the paint runs anyway."
+      "text": "[shot:insert easel]It starts to rain. Faust drags the easel inside and the paint runs anyway."
     },
     {
       "t": "flag",

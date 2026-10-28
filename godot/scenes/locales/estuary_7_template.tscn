@@ -332,7 +332,7 @@ metadata/fov = 42.0
 ; insert: Aud's diner at the roadside
 [node name="shot_insert_diner" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 1.0, 1.5)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.4566, -0.4731, 0.0)
 metadata/fov = 42.0
 
 ; insert: Brandon's Tideline Survey — the pools on the basalt headland
@@ -356,7 +356,7 @@ metadata/fov = 42.0
 ; insert: Olaus's cove south of Bandon, off the south frame — the line stops at the ridge
 [node name="shot_insert_cove" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.1, 2.5)
-rotation = Vector3(-0.6382, -2.4669, 0.0)
+rotation = Vector3(-0.5938, -2.3452, 0.0)
 metadata/fov = 42.0
 
 
@@ -366,3 +366,39 @@ metadata/fov = 42.0
 position = Vector3(-6.420, 1.612, 4.890)
 rotation = Vector3(-0.2618, -1.8326, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_palette__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.260, 0.981, 2.465)
+rotation = Vector3(-0.2656, -1.2447, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_clock__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.552, 0.633, -2.811)
+rotation = Vector3(-0.2618, -0.0456, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_drones__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.520, 0.927, 0.379)
+rotation = Vector3(-0.2618, -0.9101, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_substrate__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.561, 1.581, 1.518)
+rotation = Vector3(-0.6734, -0.5237, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pools__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.026, 0.809, -2.387)
+rotation = Vector3(-0.2618, -0.3068, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cursor__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.719, 0.582, 0.392)
+rotation = Vector3(-0.2618, -1.1388, 0.0)
+metadata/fov = 35.0

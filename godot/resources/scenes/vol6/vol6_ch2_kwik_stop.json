@@ -107,7 +107,7 @@
     },
     {
      "t": "narrate",
-     "text": "He opens the cooler and takes two Powerades, the blue kind, and does not look at the glass while the door is open. The cold comes off the shelves like a held breath let out."
+     "text": "[shot:insert door]He opens the cooler and takes two Powerades, the blue kind, and does not look at the glass while the door is open. The cold comes off the shelves like a held breath let out."
     },
 {
      "t": "jump",
@@ -172,7 +172,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes.",
+      "text": "[shot:insert receipt]The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes.",
       "voice": "assets/audio/voice/vol6_ch2_kwik_stop/027.mp3"
     },
     {
@@ -228,7 +228,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam reads the message three times. She puts the phone down.",
+      "text": "[shot:insert phone]Sam reads the message three times. She puts the phone down.",
       "voice": "assets/audio/voice/vol6_ch2_kwik_stop/037.mp3"
     },
     {

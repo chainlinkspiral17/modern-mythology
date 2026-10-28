@@ -32,7 +32,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn's door was unlocked. Kai went in.",
+      "text": "[shot:insert door]Finn's door was unlocked. Kai went in.",
       "t": "narrate"
     },
     {
@@ -184,7 +184,7 @@
       "t": "say"
     },
     {
-      "text": "Finn got up. He pulled the wool cap over his hair and the coat over the wool cap and they went down to the truck. The crow stayed at the table with the wood.",
+      "text": "[shot:insert table]Finn got up. He pulled the wool cap over his hair and the coat over the wool cap and they went down to the truck. The crow stayed at the table with the wood.",
       "t": "narrate"
     },
     {

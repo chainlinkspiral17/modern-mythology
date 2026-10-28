@@ -34,7 +34,7 @@
     },
     {
       "t": "narrate",
-      "text": "Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice.",
+      "text": "[shot:insert chain]Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice.",
       "voice": "assets/audio/voice/vol5_ch8_strength/006.ogg"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "t": "narrate",
-      "text": "His corner booth smelled faintly of stale smoke and something else — something metallic and sad, maybe just him. He didn't flinch when the Saints inevitably failed to convert. He just watched. Stillness was a kind of armor.",
+      "text": "[shot:insert booth]His corner booth smelled faintly of stale smoke and something else — something metallic and sad, maybe just him. He didn't flinch when the Saints inevitably failed to convert. He just watched. Stillness was a kind of armor.",
       "voice": "assets/audio/voice/vol5_ch8_strength/012.ogg"
     },
     {
@@ -199,7 +199,7 @@
     },
     {
       "t": "narrate",
-      "text": "The chain rattled, sometimes, in his sleep. He had stopped, in the past two years, going to anyone who could reasonably be called a friend with the news of the rattling.",
+      "text": "[shot:insert chain]The chain rattled, sometimes, in his sleep. He had stopped, in the past two years, going to anyone who could reasonably be called a friend with the news of the rattling.",
       "voice": "assets/audio/voice/vol5_ch8_strength/039.mp3"
     },
     {

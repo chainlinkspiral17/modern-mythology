@@ -313,3 +313,9 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_window__dean_basement_1994" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 0.579, -2.276)
+rotation = Vector3(0.3151, 0.0167, 0.0)
+metadata/fov = 35.0

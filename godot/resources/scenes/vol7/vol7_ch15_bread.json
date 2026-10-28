@@ -57,7 +57,7 @@
       "t": "narrate"
     },
     {
-      "text": "Per came in from the back kitchen with a basket of the morning's brötchen. He set the basket in the center of the table. He sat down beside his mother. He put his hand briefly on her shoulder and did not, immediately, take it off.",
+      "text": "[shot:insert basket]Per came in from the back kitchen with a basket of the morning's brötchen. He set the basket in the center of the table. He sat down beside his mother. He put his hand briefly on her shoulder and did not, immediately, take it off.",
       "t": "narrate"
     },
     {
@@ -503,7 +503,7 @@
       "t": "narrate"
     },
     {
-      "text": "She put her hands on the sill and watched the rain.",
+      "text": "[shot:insert sill]She put her hands on the sill and watched the rain.",
       "t": "narrate"
     },
     {

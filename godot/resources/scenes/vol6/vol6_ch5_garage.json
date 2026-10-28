@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "He swept the garage at five PM because his mother asked him to. He swept it again, without being asked, at six, because the first sweep had missed a small drift of paint chips in the corner by the workbench,",
+      "text": "[shot:insert workbench]He swept the garage at five PM because his mother asked him to. He swept it again, without being asked, at six, because the first sweep had missed a small drift of paint chips in the corner by the workbench,",
       "voice": "assets/audio/voice/vol6_ch5_garage/007.ogg"
     },
     {
@@ -90,7 +90,7 @@
     },
     {
       "t": "narrate",
-      "text": "The garage door is closed against the rain, which has mostly stopped but which has left the subdivision in the specific sticky humidity that follows a Texas storm.",
+      "text": "[shot:insert door]The garage door is closed against the rain, which has mostly stopped but which has left the subdivision in the specific sticky humidity that follows a Texas storm.",
       "voice": "assets/audio/voice/vol6_ch5_garage/017.ogg"
     },
     {
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam arrives second. She is in the Corolla. She parks behind Ben's truck. Maya arrives third. She is on her bike, in the rain, with her backpack on and her hair wet. She chains the bike to the light post at the end of the driveway.",
+      "text": "[shot:insert bike]Sam arrives second. She is in the Corolla. She parks behind Ben's truck. Maya arrives third. She is on her bike, in the rain, with her backpack on and her hair wet. She chains the bike to the light post at the end of the driveway.",
       "voice": "assets/audio/voice/vol6_ch5_garage/026.ogg"
     },
     {
@@ -299,7 +299,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Jesse, when he sees the three of them coming up the driveway together, makes the small unguarded sound a person makes when a thing he had not, consciously, expected to be given is, in fact, given. He hops off the workbench. He meets them at the door.",
+      "text": "[shot:insert workbench][trip:1.2]Jesse, when he sees the three of them coming up the driveway together, makes the small unguarded sound a person makes when a thing he had not, consciously, expected to be given is, in fact, given. He hops off the workbench. He meets them at the door.",
       "voice": "assets/audio/voice/vol6_ch5_garage/056.mp3"
     },
     {
@@ -427,7 +427,7 @@
     },
     {
       "t": "narrate",
-      "text": "The song is loud. The song is, in Jesse's garage, on a Thursday evening in late May after a thunderstorm, exactly what the three on the workbench need. Sam feels her shoulders drop two inches. Maya closes her eyes.",
+      "text": "[shot:insert workbench]The song is loud. The song is, in Jesse's garage, on a Thursday evening in late May after a thunderstorm, exactly what the three on the workbench need. Sam feels her shoulders drop two inches. Maya closes her eyes.",
       "voice": "assets/audio/voice/vol6_ch5_garage/080.ogg"
     },
     {
@@ -574,7 +574,7 @@
     },
     {
       "t": "narrate",
-      "text": "The band eats. The four teenagers and the three band members eat. The Telecaster is set aside. Nate has taken his bass off. Carl has come out from behind the kit and is sitting on the floor with his back against the amp.",
+      "text": "[shot:insert bass]The band eats. The four teenagers and the three band members eat. The Telecaster is set aside. Nate has taken his bass off. Carl has come out from behind the kit and is sitting on the floor with his back against the amp.",
       "voice": "assets/audio/voice/vol6_ch5_garage/107.ogg"
     },
     {

@@ -40,7 +40,7 @@
    "t": "narrate"
   },
   {
-   "text": "The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero.",
+   "text": "[shot:insert palette]The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero.",
    "t": "narrate"
   },
   {
@@ -52,11 +52,11 @@
    "t": "narrate"
   },
   {
-   "text": "A second clock appeared at the upper-left of the planner's-view. The second clock counted up from zero. The drone-palette was greyed out. The construction primitives were greyed out. The labor-crew palette was greyed out.",
+   "text": "[shot:insert clock]A second clock appeared at the upper-left of the planner's-view. The second clock counted up from zero. The drone-palette was greyed out. The construction primitives were greyed out. The labor-crew palette was greyed out.",
    "t": "narrate"
   },
   {
-   "text": "The gallery clock was counting. The substrate was going to show her the saved player-builds for this template. The completed Estuary 7s of other players. The substrate was going to walk her through them.",
+   "text": "[shot:insert clock]The gallery clock was counting. The substrate was going to show her the saved player-builds for this template. The completed Estuary 7s of other players. The substrate was going to walk her through them.",
    "t": "narrate"
   },
   {
@@ -72,7 +72,7 @@
    "t": "narrate"
   },
   {
-   "text": "The drones laid the footprint of a structure on the bluff — seventy feet on a side. The footprint extruded upward through seven floor-levels.",
+   "text": "[shot:insert drones]The drones laid the footprint of a structure on the bluff — seventy feet on a side. The footprint extruded upward through seven floor-levels.",
    "t": "narrate"
   },
   {
@@ -84,7 +84,7 @@
    "t": "narrate"
   },
   {
-   "text": "Then the town below the bluff rendered. The substrate placed the town of Smolvud into the template's coastline.",
+   "text": "[shot:insert substrate]Then the town below the bluff rendered. The substrate placed the town of Smolvud into the template's coastline.",
    "t": "narrate"
   },
   {
@@ -104,7 +104,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 2:14. 2:15. The build faded to dimness — still visible, tower and town held as the gallery's first layer — and the next build began to render over it.",
+   "text": "[shot:insert clock]The gallery clock counted. 2:14. 2:15. The build faded to dimness — still visible, tower and town held as the gallery's first layer — and the next build began to render over it.",
    "t": "narrate"
   },
   {
@@ -128,7 +128,7 @@
    "t": "narrate"
   },
   {
-   "text": "The substrate was showing her what Olaf had submitted in 2003 when he was thirty-three. The plan he had laid out before he had carved the bowls in '06 through '09 and before he had built the cabin with Eddvard in '11.",
+   "text": "[shot:insert substrate]The substrate was showing her what Olaf had submitted in 2003 when he was thirty-three. The plan he had laid out before he had carved the bowls in '06 through '09 and before he had built the cabin with Eddvard in '11.",
    "t": "narrate"
   },
   {
@@ -144,7 +144,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 4:32. 4:33. The build faded to the gallery's second layer.",
+   "text": "[shot:insert clock]The gallery clock counted. 4:32. 4:33. The build faded to the gallery's second layer.",
    "t": "narrate"
   },
   {
@@ -164,7 +164,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 5:48. 5:49. The build faded to the third layer.",
+   "text": "[shot:insert clock]The gallery clock counted. 5:48. 5:49. The build faded to the third layer.",
    "t": "narrate"
   },
   {
@@ -184,7 +184,7 @@
    "t": "narrate"
   },
   {
-   "text": "Marit's Estuary 7 submission had been patience as architecture. Nothing built fast. Everything tended for half a century. The substrate still rendering as ongoing because Marit was still tending. The bowl-carrying and the grove-tending were one practice.",
+   "text": "[shot:insert substrate]Marit's Estuary 7 submission had been patience as architecture. Nothing built fast. Everything tended for half a century. The substrate still rendering as ongoing because Marit was still tending. The bowl-carrying and the grove-tending were one practice.",
    "t": "narrate"
   },
   {
@@ -212,7 +212,7 @@
    "t": "narrate"
   },
   {
-   "text": "The Tuesday-night dinners — that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came — were the substrate beginning to use the diner the way her submission had anticipated.",
+   "text": "[shot:insert substrate]The Tuesday-night dinners — that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came — were the substrate beginning to use the diner the way her submission had anticipated.",
    "t": "narrate"
   },
   {
@@ -220,7 +220,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 9:21. 9:22. The diner faded to the fifth layer.",
+   "text": "[shot:insert clock]The gallery clock counted. 9:21. 9:22. The diner faded to the fifth layer.",
    "t": "narrate"
   },
   {
@@ -244,7 +244,7 @@
    "t": "narrate"
   },
   {
-   "text": "Brandon had built his grief. He had laid out the pools where his dead would wait for him.",
+   "text": "[shot:insert pools]Brandon had built his grief. He had laid out the pools where his dead would wait for him.",
    "t": "narrate"
   },
   {
@@ -256,7 +256,7 @@
    "t": "narrate"
   },
   {
-   "text": "Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's.",
+   "text": "[shot:insert substrate]Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's.",
    "t": "narrate"
   },
   {
@@ -284,7 +284,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 12:48. 12:49. The press faded to the seventh layer.",
+   "text": "[shot:insert clock]The gallery clock counted. 12:48. 12:49. The press faded to the seventh layer.",
    "t": "narrate"
   },
   {
@@ -308,7 +308,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 14:22. 14:23. The foundation faded to the eighth layer.",
+   "text": "[shot:insert clock]The gallery clock counted. 14:22. 14:23. The foundation faded to the eighth layer.",
    "t": "narrate"
   },
   {
@@ -328,7 +328,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock counted. 15:51. 15:52. The cove faded to the ninth layer.",
+   "text": "[shot:insert clock]The gallery clock counted. 15:51. 15:52. The cove faded to the ninth layer.",
    "t": "narrate"
   },
   {
@@ -340,7 +340,7 @@
    "t": "narrate"
   },
   {
-   "text": "The nine builds held in the planner's-view as nine layers of architecture across the coastal template. The tower at the bluff. The cabin and the four radiating points. The mill. The grove. The diner. The tide-pools.",
+   "text": "[shot:insert mill]The nine builds held in the planner's-view as nine layers of architecture across the coastal template. The tower at the bluff. The cabin and the four radiating points. The mill. The grove. The diner. The tide-pools.",
    "t": "narrate"
   },
   {
@@ -388,7 +388,7 @@
    "t": "narrate"
   },
   {
-   "text": "The gallery clock hit 19:00.",
+   "text": "[shot:insert clock]The gallery clock hit 19:00.",
    "t": "narrate"
   },
   {

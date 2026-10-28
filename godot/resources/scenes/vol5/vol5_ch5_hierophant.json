@@ -170,7 +170,7 @@
     },
     {
       "t": "narrate",
-      "text": "For now: she finished her lemonade, dropped the cup in the trash, took her father's hand when he came down the steps, and did not mention any of it.",
+      "text": "[shot:insert lemonade]For now: she finished her lemonade, dropped the cup in the trash, took her father's hand when he came down the steps, and did not mention any of it.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/033.mp3"
     },
     {
@@ -426,7 +426,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio set the phone down. Picked it back up. Dialed Jimmy. It rang four times. It went to voicemail.",
+      "text": "[shot:insert phone]Antonio set the phone down. Picked it back up. Dialed Jimmy. It rang four times. It went to voicemail.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/082.mp3"
     },
     {
@@ -481,7 +481,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was supposed to be outlining his next article. The one dissecting the town's fractured psyche post-sinkhole. The notebook on his lap was open to a clean page.",
+      "text": "[shot:insert notebook]He was supposed to be outlining his next article. The one dissecting the town's fractured psyche post-sinkhole. The notebook on his lap was open to a clean page.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/093.mp3"
     },
     {

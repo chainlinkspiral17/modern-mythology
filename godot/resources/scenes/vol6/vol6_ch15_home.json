@@ -85,7 +85,7 @@
   },
   {
    "t": "narrate",
-   "text": "At the kitchen table at four forty-eight she eats a piece of cold chicken her mother had left in the fridge for her.",
+   "text": "[shot:insert table]At the kitchen table at four forty-eight she eats a piece of cold chicken her mother had left in the fridge for her.",
    "voice": "assets/audio/voice/vol6_ch15_home/016.mp3"
   },
   {
@@ -146,7 +146,7 @@
   },
   {
    "t": "narrate",
-   "text": "She washes the plate.",
+   "text": "[shot:insert plate]She washes the plate.",
    "voice": "assets/audio/voice/vol6_ch15_home/027.mp3"
   },
   {

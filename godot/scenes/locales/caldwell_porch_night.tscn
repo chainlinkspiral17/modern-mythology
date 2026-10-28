@@ -205,7 +205,7 @@ rotation = Vector3(-0.4666, -2.5502, 0.0)
 
 [node name="shot_insert_blanket" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.03, -1.72)
-rotation = Vector3(-0.4608, 1.8788, 0.0)
+rotation = Vector3(-0.2713, 1.4112, 0.0)
 
 [node name="shot_insert_cake" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 1.08, -1.54)
@@ -370,7 +370,7 @@ metadata/fov = 42.0
 ; insert: Maya's bike at the porch steps
 [node name="shot_insert_bike" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2, 1.1, -1.4)
-rotation = Vector3(-0.4463, -2.7599, 0.0)
+rotation = Vector3(-0.5334, 3.0157, 0.0)
 metadata/fov = 44.0
 
 ; insert: her phone buzzes at the stoplight
@@ -388,7 +388,7 @@ omni_range = 0.9
 ; insert: a car comes down the street, slow
 [node name="shot_insert_car" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.180, 1.373, 2.726)
-rotation = Vector3(-0.2618, -3.1416, 0.0)
+rotation = Vector3(-0.2010, -2.8243, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -455,3 +455,27 @@ position = Vector3(-2.900, 1.400, -1.600)
 rotation = Vector3(-0.2228, -1.3290, 0.0)
 metadata/fov = 42.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_window__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.300, 2.433, -1.164)
+rotation = Vector3(-0.0873, 3.1416, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.934, 0.556, -2.569)
+rotation = Vector3(-0.2618, 2.1176, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.611, 1.724, -3.337)
+rotation = Vector3(-0.2216, 1.3699, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_teas__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.739, 0.872, -2.420)
+rotation = Vector3(-0.2618, 2.1313, 0.0)
+metadata/fov = 35.0

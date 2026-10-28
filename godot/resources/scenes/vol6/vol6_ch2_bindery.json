@@ -34,7 +34,7 @@
   },
   {
    "t": "narrate",
-   "text": "Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them.",
+   "text": "[shot:insert window]Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them.",
    "voice": "assets/audio/voice/vol6_ch2_bindery/006.ogg"
   },
   {
@@ -50,7 +50,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya comes in. The bell over this door is different too — lower, mellower. An older bell.",
+   "text": "[shot:insert door]Maya comes in. The bell over this door is different too — lower, mellower. An older bell.",
    "voice": "assets/audio/voice/vol6_ch2_bindery/009.mp3"
   },
   {
@@ -237,7 +237,7 @@
   },
   {
    "t": "narrate",
-   "text": "She mounts her bike. She rides back toward Harmony Creek. The envelope, against her ribs, is warm from her body. She does not open it on the road.",
+   "text": "[shot:insert envelope]She mounts her bike. She rides back toward Harmony Creek. The envelope, against her ribs, is warm from her body. She does not open it on the road.",
    "voice": "assets/audio/voice/vol6_ch2_bindery/041.mp3"
   },
   {

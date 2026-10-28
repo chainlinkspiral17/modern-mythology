@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "[trip:1.2][mood:dawn_warm]The cabin held. Tem stood at her chair for a count without sitting. The six at the table did not, for the count, do anything.",
+      "text": "[shot:insert table][trip:1.2][mood:dawn_warm]The cabin held. Tem stood at her chair for a count without sitting. The six at the table did not, for the count, do anything.",
       "t": "narrate"
     },
     {
@@ -191,7 +191,7 @@
       "t": "say"
     },
     {
-      "text": "Nobody went back to sleep. The seven stayed at the table. Tem made fresh coffee at three-fifty. They drank it. They did not, for the most part, talk. The crow stayed beside the cedar bell-piece. The bowls held what they had been holding.",
+      "text": "[shot:insert table]Nobody went back to sleep. The seven stayed at the table. Tem made fresh coffee at three-fifty. They drank it. They did not, for the most part, talk. The crow stayed beside the cedar bell-piece. The bowls held what they had been holding.",
       "t": "narrate"
     },
     {
@@ -426,7 +426,7 @@
       "t": "say"
     },
     {
-      "text": "She poured the eighth coffee.",
+      "text": "[shot:insert coffee]She poured the eighth coffee.",
       "t": "narrate"
     },
     {

@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie David did not so much unlock her apartment door as phase through it.",
+      "text": "[shot:insert door]Natalie David did not so much unlock her apartment door as phase through it.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/008.mp3"
     },
     {
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "Inside: the quiet hum of the ancient refrigerator, the scent of dust motes dancing in moonlight slanting through the blinds, and the low crackle of vinyl anticipation before the needle drop.",
+      "text": "[shot:insert blinds]Inside: the quiet hum of the ancient refrigerator, the scent of dust motes dancing in moonlight slanting through the blinds, and the low crackle of vinyl anticipation before the needle drop.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/012.ogg"
     },
     {
@@ -135,7 +135,7 @@
     },
     {
       "t": "narrate",
-      "text": "Underneath, she was just — Natalie. A dancer at heart, even if her stage was now the worn patch of rug between the futon and the record player.",
+      "text": "[shot:insert patch]Underneath, she was just — Natalie. A dancer at heart, even if her stage was now the worn patch of rug between the futon and the record player.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/026.mp3"
     },
     {
@@ -180,7 +180,7 @@
     },
     {
       "t": "narrate",
-      "text": "An unfolding. An acceptance. Her body tracing patterns in the air, responding not to choreography but to the pull of the music, the hum of the fridge, the specific gravity of this particular Tuesday nearing Wednesday. Divination through sinew and bone.",
+      "text": "[shot:insert fridge]An unfolding. An acceptance. Her body tracing patterns in the air, responding not to choreography but to the pull of the music, the hum of the fridge, the specific gravity of this particular Tuesday nearing Wednesday. Divination through sinew and bone.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/035.mp3"
     },
     {
@@ -250,7 +250,7 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie stood. She held the card lightly. She looked at it, then around the apartment, then back at the card.",
+      "text": "[shot:insert card]Natalie stood. She held the card lightly. She looked at it, then around the apartment, then back at the card.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/049.mp3"
     },
     {
@@ -300,7 +300,7 @@
     },
     {
       "t": "narrate",
-      "text": "The acknowledgment was, in her experience, sufficient. The cards mostly wanted, like everyone else, only to be noticed.",
+      "text": "[shot:insert cards]The acknowledgment was, in her experience, sufficient. The cards mostly wanted, like everyone else, only to be noticed.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/059.mp3"
     },
     {
@@ -355,7 +355,7 @@
     },
     {
       "t": "narrate",
-      "text": "The phone rang four times. The phone went to voicemail. The phone did not, however, stop. The phone rang again, immediately, the way phones rang when somebody was calling without thinking, the way phones rang when somebody was upset.",
+      "text": "[shot:insert phone]The phone rang four times. The phone went to voicemail. The phone did not, however, stop. The phone rang again, immediately, the way phones rang when somebody was calling without thinking, the way phones rang when somebody was upset.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/070.mp3"
     },
     {
@@ -590,7 +590,7 @@
     },
     {
       "t": "narrate",
-      "text": "She uncovered the lamp from its scarf, so the reading light would be ready. She filled the kettle, set it on the stove without lighting the burner, so it would be ready to light when the bell rang.",
+      "text": "[shot:insert lamp]She uncovered the lamp from its scarf, so the reading light would be ready. She filled the kettle, set it on the stove without lighting the burner, so it would be ready to light when the bell rang.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/112.ogg"
     },
     {
@@ -645,7 +645,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over.",
+      "text": "[shot:insert cards]She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/123.ogg"
     },
     {
@@ -660,7 +660,7 @@
     },
     {
       "t": "narrate",
-      "text": "The fridge cycled. The fridge cycled again.",
+      "text": "[shot:insert fridge]The fridge cycled. The fridge cycled again.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/126.mp3"
     },
     {

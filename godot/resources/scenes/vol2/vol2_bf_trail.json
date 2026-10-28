@@ -26,7 +26,7 @@
   },
   {
    "t": "narrate",
-   "text": "Most of the entries say UP TO THE FALLS AND BACK. A few have the falls as their direction and a return time that nobody crossed off. Those are not necessarily ominous. People forget.",
+   "text": "[shot:insert falls]Most of the entries say UP TO THE FALLS AND BACK. A few have the falls as their direction and a return time that nobody crossed off. Those are not necessarily ominous. People forget.",
    "voice": "assets/audio/voice/vol2_bf_trail/004.mp3"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "Behind the laminated page, taped to the wood, is a square Polaroid. The polaroid is of a young man in a trench coat at the depot bench, the rain matting his hair flat. The seams of the coat have a thin, steady light.",
+   "text": "[shot:insert bench]Behind the laminated page, taped to the wood, is a square Polaroid. The polaroid is of a young man in a trench coat at the depot bench, the rain matting his hair flat. The seams of the coat have a thin, steady light.",
    "voice": "assets/audio/voice/vol2_bf_trail/007.mp3"
   },
   {

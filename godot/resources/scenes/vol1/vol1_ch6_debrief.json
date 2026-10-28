@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "He holds the coffee in both hands. It has long gone cold."
+      "text": "[shot:insert coffee]He holds the coffee in both hands. It has long gone cold."
     },
     {
       "t": "say",

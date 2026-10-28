@@ -431,3 +431,15 @@ position = Vector3(-9.460, 1.750, 1.400)
 rotation = Vector3(-0.1002, -0.4137, 0.0)
 metadata/fov = 44.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_booth__el_rancho_taqueria" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.420, 1.234, -5.019)
+rotation = Vector3(-0.2740, -0.2326, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_tables__el_rancho_taqueria" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.290, 0.860, -0.555)
+rotation = Vector3(-0.5236, -1.5776, 0.0)
+metadata/fov = 35.0

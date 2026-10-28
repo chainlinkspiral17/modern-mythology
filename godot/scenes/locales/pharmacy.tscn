@@ -458,7 +458,7 @@ metadata/fov = 42.0
 ; insert: "glances about his office" — from the chair to the mirror, the jacket, the corkboard
 [node name="shot_insert_office__pharmacy_office" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.450, 1.700, -20.600)
-rotation = Vector3(-0.1356, -2.1480, 0.0)
+rotation = Vector3(-1.2987, 3.1416, 0.0)
 metadata/fov = 50.0
 
 ; closeup: Faust behind PICK UP, from the customer's side of "the front table"
@@ -478,3 +478,33 @@ metadata/fov = 42.0
 position = Vector3(1.500, 1.700, -4.900)
 rotation = Vector3(0.0540, 0.0270, 0.0)
 metadata/fov = 58.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.511, 2.568, -16.844)
+rotation = Vector3(0.0063, -0.5920, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.167, 1.063, -15.970)
+rotation = Vector3(-0.1344, 1.8192, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_desk__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.766, 1.513, -19.447)
+rotation = Vector3(-0.2540, -0.1726, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bottle__pharmacy_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.338, 1.481, -20.836)
+rotation = Vector3(-0.2618, -0.5430, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_table__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.443, 1.076, -5.945)
+rotation = Vector3(-0.2374, 2.9630, 0.0)
+metadata/fov = 35.0

@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "The machinery under the curtain looks simple but expensive. It hums. It's the hum of the air conditioning unit in Dad's room, the one Andy fell asleep beside on the floor, the constant mechanical breeze."
+      "text": "[shot:insert curtain]The machinery under the curtain looks simple but expensive. It hums. It's the hum of the air conditioning unit in Dad's room, the one Andy fell asleep beside on the floor, the constant mechanical breeze."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "four in the morning at the copy shop. the light goes back and forth under the lid, a dirty pink, and the pages come out warm."
+      "text": "[shot:insert pages]four in the morning at the copy shop. the light goes back and forth under the lid, a dirty pink, and the pages come out warm."
     },
     {
       "t": "cg",
@@ -92,7 +92,7 @@
     },
     {
       "t": "narrate",
-      "text": "home. the desk drawer sticks, then gives."
+      "text": "[shot:insert drawer]home. the desk drawer sticks, then gives."
     },
     {
       "t": "cg",

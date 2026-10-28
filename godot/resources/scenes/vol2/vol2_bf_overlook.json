@@ -26,7 +26,7 @@
   },
   {
    "t": "narrate",
-   "text": "The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind.",
+   "text": "[shot:insert falls]The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind.",
    "voice": "assets/audio/voice/vol2_bf_overlook/004.mp3"
   },
   {
@@ -46,7 +46,7 @@
   },
   {
    "t": "narrate",
-   "text": "You consider untying the ribbon. You do not. It is not your knot.",
+   "text": "[shot:insert ribbon]You consider untying the ribbon. You do not. It is not your knot.",
    "voice": "assets/audio/voice/vol2_bf_overlook/008.mp3"
   },
   {

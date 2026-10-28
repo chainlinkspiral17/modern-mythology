@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "It used to be an office supply store, the big ticket item back in the day was the mechanical pencil. Boxes of unsold merchandise fill a back room which I hide in to read on breaks. The walls are greenish black in places, the lighting what you'd expect when every third long florescent bulb gasps as the end nears."
+      "text": "[shot:insert ticket]It used to be an office supply store, the big ticket item back in the day was the mechanical pencil. Boxes of unsold merchandise fill a back room which I hide in to read on breaks. The walls are greenish black in places, the lighting what you'd expect when every third long florescent bulb gasps as the end nears."
     },
     {
       "t": "bg",
@@ -77,7 +77,7 @@
     },
     {
       "t": "narrate",
-      "text": "I say it's good food, but it's not good for you. I work the fryer as much as I do the grill. Breakfast and lunch food, grease and starch mostly."
+      "text": "[shot:insert fryer]I say it's good food, but it's not good for you. I work the fryer as much as I do the grill. Breakfast and lunch food, grease and starch mostly."
     },
     {
       "t": "narrate",
@@ -177,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "Simply put, an evening strung together with little pockets of emotional void. The whole mess leaving me feeling empty and broken. As soon as my hands grabbed onto the steering wheel, I was sobbing."
+      "text": "[shot:insert wheel]Simply put, an evening strung together with little pockets of emotional void. The whole mess leaving me feeling empty and broken. As soon as my hands grabbed onto the steering wheel, I was sobbing."
     },
     {
       "t": "narrate",

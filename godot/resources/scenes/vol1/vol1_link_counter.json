@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:liminal_interior]You take a stool at the counter. The vinyl is cracked in the way vinyl is always cracked in places like this. The stool spins a half-turn with no effort and stops itself, pointed exactly at the swinging door to the kitchen.",
+   "text": "[shot:insert door][mood:liminal_interior]You take a stool at the counter. The vinyl is cracked in the way vinyl is always cracked in places like this. The stool spins a half-turn with no effort and stops itself, pointed exactly at the swinging door to the kitchen.",
    "voice": "assets/audio/voice/vol1_link_counter/001.mp3"
   },
   {

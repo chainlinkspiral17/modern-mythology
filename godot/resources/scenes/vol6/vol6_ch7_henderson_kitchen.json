@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pot roast stays in the oven on warm. The table, set, waits.",
+      "text": "[shot:insert table]The pot roast stays in the oven on warm. The table, set, waits.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/020.mp3"
     },
     {
@@ -336,7 +336,7 @@
     },
     {
       "t": "narrate",
-      "text": "After perhaps eight minutes, Mr. Henderson sets down his fork.",
+      "text": "[shot:insert fork]After perhaps eight minutes, Mr. Henderson sets down his fork.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/062.mp3"
     },
     {

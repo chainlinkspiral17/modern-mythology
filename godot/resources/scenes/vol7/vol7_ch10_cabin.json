@@ -46,7 +46,7 @@
       "t": "narrate"
     },
     {
-      "text": "Hans was at the stove. He had two trays out of the oven and was, when Kai came in, lifting a third. Per turned.",
+      "text": "[shot:insert trays]Hans was at the stove. He had two trays out of the oven and was, when Kai came in, lifting a third. Per turned.",
       "t": "narrate"
     },
     {
@@ -220,7 +220,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem had handed Lena the keys this morning. He registered it three minutes later, at the second light. Tem was, this morning, the passenger.",
+      "text": "[shot:insert keys]Tem had handed Lena the keys this morning. He registered it three minutes later, at the second light. Tem was, this morning, the passenger.",
       "t": "narrate"
     },
     {
@@ -584,7 +584,7 @@
       "t": "narrate"
     },
     {
-      "text": "The kettle was about to whistle.",
+      "text": "[shot:insert kettle]The kettle was about to whistle.",
       "t": "narrate"
     },
     {

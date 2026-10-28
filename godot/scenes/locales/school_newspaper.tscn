@@ -385,13 +385,13 @@ metadata/fov = 52.0
 ; insert: the layout island from above — the paste-up, the waxer, the rule
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.950, 1.800, -3.550)
-rotation = Vector3(-0.6831, 0.6202, 0.0)
+rotation = Vector3(-1.0188, 0.1853, 0.0)
 metadata/fov = 45.0
 
 ; insert: a paste-up page, its columns waxed down
 [node name="shot_insert_page" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.200, 1.300, -3.800)
-rotation = Vector3(-0.8375, -0.6435, 0.0)
+rotation = Vector3(-0.8548, -0.2294, 0.0)
 metadata/fov = 40.0
 
 ; closeup: the narrator by the island's E end
@@ -411,3 +411,9 @@ metadata/fov = 42.0
 position = Vector3(-4.000, 1.700, -7.600)
 rotation = Vector3(-0.0403, -2.2991, 0.0)
 metadata/fov = 60.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_paper__school_newspaper" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.321, 1.107, -0.524)
+rotation = Vector3(-0.2618, 1.7155, 0.0)
+metadata/fov = 35.0

@@ -334,7 +334,7 @@ shadow_enabled = false
 ; insert: Daisy, as advertised, a coward
 [node name="shot_insert_daisy" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.7, -4.8)
-rotation = Vector3(-0.5129, 0.9759, 0.0)
+rotation = Vector3(-0.6650, 1.1308, 0.0)
 metadata/fov = 42.0
 
 ; insert: the butterfly leaves
@@ -375,3 +375,9 @@ metadata/fov = 42.0
 position = Vector3(-1.400, 1.700, 6.600)
 rotation = Vector3(-0.0382, -2.3562, 0.0)
 metadata/fov = 60.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_patio__kowalski_backyard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.366, 0.686, -3.459)
+rotation = Vector3(-0.2736, 2.8937, 0.0)
+metadata/fov = 35.0

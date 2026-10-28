@@ -350,10 +350,28 @@ metadata/fov = 30.0
 ; prick the bruise-colored Montreal dusk. Lights of the harbour gleam red and gold afar" (2026-10-03)
 [node name="shot_insert_skyline" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.200, 1.500, -3.000)
-rotation = Vector3(-0.0681, 1.5708, 0.0)
+rotation = Vector3(0.0102, 1.4161, 0.0)
 metadata/fov = 50.0
 
 [node name="shot_insert_camera" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.2, -0.75)
-rotation = Vector3(-0.1664, -2.5679, 0.0)
+rotation = Vector3(-0.3929, -2.4730, 0.0)
 metadata/fov = 42.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_award__elicia_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.642, 0.590, -0.729)
+rotation = Vector3(-0.2618, -1.6071, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lens__elicia_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.213, 1.112, -0.357)
+rotation = Vector3(-0.2618, -1.6866, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__elicia_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.291, 1.030, -4.367)
+rotation = Vector3(-0.2618, -0.8288, 0.0)
+metadata/fov = 35.0

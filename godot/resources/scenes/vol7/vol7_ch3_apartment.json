@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:morning_bright]Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one.",
+      "text": "[shot:insert thermostat][mood:morning_bright]Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/005.mp3"
     },
@@ -62,7 +62,7 @@
       "voice": "assets/audio/voice/vol7_ch3_apartment/010.mp3"
     },
     {
-      "text": "A nod against the pillow.",
+      "text": "[shot:insert pillow]A nod against the pillow.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/011.mp3"
     },
@@ -77,7 +77,7 @@
       "voice": "assets/audio/voice/vol7_ch3_apartment/013.mp3"
     },
     {
-      "text": "She set Tem's on the end table beside the couch and took her own to the chair across from her.",
+      "text": "[shot:insert table]She set Tem's on the end table beside the couch and took her own to the chair across from her.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/014.mp3"
     },
@@ -198,7 +198,7 @@
       "voice": "assets/audio/voice/vol7_ch3_apartment/032.mp3"
     },
     {
-      "text": "The rain on the roof dropped a notch. Lena drank her coffee. After a minute Tem said, without looking at her:",
+      "text": "[shot:insert coffee]The rain on the roof dropped a notch. Lena drank her coffee. After a minute Tem said, without looking at her:",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/033.mp3"
     },
@@ -564,7 +564,7 @@
       "voice": "assets/audio/voice/vol7_ch3_apartment/086.mp3"
     },
     {
-      "text": "The kettle on the stove had cooled. Through the kitchen window the rain had picked up in the way rain picks up when the front is reorganizing itself.",
+      "text": "[shot:insert kettle]The kettle on the stove had cooled. Through the kitchen window the rain had picked up in the way rain picks up when the front is reorganizing itself.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/087.mp3"
     },
@@ -626,7 +626,7 @@
       "voice": "assets/audio/voice/vol7_ch3_apartment/096.mp3"
     },
     {
-      "text": "She could hear the small click of the radiator pipe in the corner that ran whether the heat was on or off, in a way the building's super had been promising to fix since 2049.",
+      "text": "[shot:insert radiator]She could hear the small click of the radiator pipe in the corner that ran whether the heat was on or off, in a way the building's super had been promising to fix since 2049.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/097.mp3"
     },
@@ -1015,7 +1015,7 @@
       "t": "hide"
     },
     {
-      "text": "The door closed. The apartment, after she was gone, was quieter than it had been in any morning Lena could remember.",
+      "text": "[shot:insert door]The door closed. The apartment, after she was gone, was quieter than it had been in any morning Lena could remember.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_apartment/156.mp3"
     },

@@ -973,6 +973,7 @@ func _do_narrate(n: Dictionary) -> void:
 	_chars.call("activate_speaker", subject.to_lower())
 	_push_scene_light()
 	_chars.call("direct_line", "", text, "", "narrate")
+	_chars.call("set_insert_quiet", _director != null and bool(_director.call("insert_showing")))
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -1016,6 +1017,7 @@ func _do_say(n: Dictionary) -> void:
 	if via == "" or bool(_chars.call("has_character", char_name)):
 		_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
+	_chars.call("set_insert_quiet", false)
 	_chars.call("direct_line", char_name.to_lower(), text, expr, "say")
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
@@ -1040,6 +1042,7 @@ func _do_think(n: Dictionary) -> void:
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
 	_push_scene_light()
+	_chars.call("set_insert_quiet", false)
 	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr, "think")
 	_dlg.visible = true
 	_dlg.call("show_think", char_name, _s(n, "text"))

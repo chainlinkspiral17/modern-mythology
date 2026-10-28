@@ -210,7 +210,7 @@ shadow_enabled = false
 ; ROOM_D=5.0 → godot (0.0, 0.90, -2.72).
 [node name="shot_insert_pot_roast" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
-rotation = Vector3(-0.55, 0.0, 0.0)
+rotation = Vector3(-0.3440, -0.0358, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -354,13 +354,13 @@ metadata/fov = 42.0
 ; insert: the place settings
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.000, 1.250, 0.040)
-rotation = Vector3(-0.2686, 0.0000, 0.0)
+rotation = Vector3(-0.8392, -0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Telecaster on its stand by the stairs
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 0.9, -1.0)
-rotation = Vector3(0.2241, -2.3842, 0.0)
+rotation = Vector3(-0.0363, -2.3842, 0.0)
 metadata/fov = 42.0
 
 ; insert: the small spiral notebook, the bridge lyrics
@@ -404,7 +404,7 @@ metadata/fov = 50.0
 ; insert: the door (the basement door, cracked the small specific way)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568, 1.775, -2.300)
-rotation = Vector3(0.2182, 2.8997, 0.0)
+rotation = Vector3(-0.9183, 2.7074, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -440,3 +440,27 @@ position = Vector3(-0.450, 1.400, -2.450)
 rotation = Vector3(-0.2145, -1.3353, 0.0)
 metadata/fov = 42.0
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bridge__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.194, 0.979, -2.035)
+rotation = Vector3(-0.2618, 1.0190, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_stove__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.861, 1.204, -3.186)
+rotation = Vector3(-0.2618, 0.1413, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_burner__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.774, 1.240, -3.973)
+rotation = Vector3(-0.2618, 0.1335, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_fork__henderson_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.173, 1.233, -1.652)
+rotation = Vector3(-0.2792, 0.8185, 0.0)
+metadata/fov = 35.0

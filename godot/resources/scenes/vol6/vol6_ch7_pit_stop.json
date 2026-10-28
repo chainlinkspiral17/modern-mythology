@@ -109,7 +109,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse is in the kitchen with the morning prep, where he has agreed, with Ben at six AM by text, to stay until Ben taps the bell on the pass-through twice — twice means come out, once means stay back.",
+   "text": "[shot:insert prep]Jesse is in the kitchen with the morning prep, where he has agreed, with Ben at six AM by text, to stay until Ben taps the bell on the pass-through twice — twice means come out, once means stay back.",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/019.ogg"
   },
   {
@@ -579,7 +579,7 @@
   },
   {
    "t": "narrate",
-   "text": "She drinks her coffee.",
+   "text": "[shot:insert coffee]She drinks her coffee.",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/095.mp3"
   },
   {
