@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 212: HER ROOM, that night (vol 2 mayhune, draft 1).**
+- **Before:** "she went up to her room and sat in silence" played on the narrator's ranch bedroom.
+- **Now:** her own room upstairs, built into `small_wood_backyard` (x 40..44.4), with:
+  - the bed under the window and the pillows she sits on;
+  - the stethoscope he gave her, on the quilt;
+  - the unwrapped presents and their paper;
+  - the desk lamp on, a boom box and cordless phone (late 90s);
+  - the rabbit and horse posters of the vet she meant to be, and Everest (the Nepal climb);
+  - the china and stuffed rabbits.
+- Preset `mayhune_room_night` (night env, lamp + moon); `by_scene` maps the chapter's stem there.
+- Inserts: stethoscope, presents. Gates at zero.
+
 **2026-10-28 · pass 211: THE AFTER PARTY'S BATHROOM (vol 4 cc_3, draft 1).**
 - **Before:** "A Grungy Bathroom" played on vol 6's NexCorp gas-station restroom.
 - **Now:** a bathroom off the after party's loft in `carrie_city`, through a door cut in the loft's east wall:

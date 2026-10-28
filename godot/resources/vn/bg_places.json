@@ -314,7 +314,10 @@
       "build": "small_wood_ranch",
       "scenes": 2,
       "note": "the window, the moon behind the trees",
-      "built": "2026-10-17 draft 1"
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol2_ch6_mayhune": "3d:mayhune_room_night"
+      }
     },
     "vol2_bingo_hall_projector": {
       "fit": "reuse",

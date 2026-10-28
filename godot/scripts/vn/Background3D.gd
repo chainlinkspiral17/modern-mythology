@@ -1699,6 +1699,22 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	# (2026-10-28) mayhune, that night: "she went up to her room and sat in
+	# silence. She looked over all her unwrapped presents" — the stethoscope
+	# on the quilt, the pillows under the window, the desk lamp on. It played
+	# on the narrator's ranch bedroom (vol2_bedroom_window_night).
+	"mayhune_room_night": {
+		"scene": "res://scenes/locales/small_wood_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_backyard.glb",
+		"camera_origin": Vector3(44.0, 1.5, -0.45),
+		"camera_rotation": Vector3(-0.14, 0.56, 0.0),
+		"fov": 64.0,
+		"strip": ["Sun__", "SkyFill__"],
+		"env": {"sky_top": Color(0.05, 0.06, 0.12, 1), "sky_horizon": Color(0.14, 0.14, 0.22, 1),
+			"ground_horizon": Color(0.08, 0.09, 0.10, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.40, 0.38, 0.46, 1), "ambient_energy": 0.45, "fog_color": Color(0.12, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
 	"small_wood_backyard_party": {
 		"scene": "res://scenes/locales/small_wood_backyard.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_backyard.glb",

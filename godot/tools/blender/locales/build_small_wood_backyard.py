@@ -20,6 +20,9 @@ Blender: x east, y north, z up; Godot (x, z, -y). The house's back wall
 on y 0 facing north into the yard (y 0..24, x -12..12), the firs past
 the back fence at y 26.
 
+(2026-10-28) her room, upstairs that night (x 40..44.4): the stethoscope
+on the quilt, the unwrapped presents, the pillows → mayhune_room_night.
+
 DRAFT 2 targets: the kids in the sprinkler as figures with a pose; the
 presents unwrapped on the table; her window above (her room, which the
 scene goes up to after); the neighbours' roofs; Deck framing.
@@ -27,10 +30,11 @@ scene goes up to after); the neighbours' roofs; Deck framing.
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import (clear_scene, make_box, make_cyl, make_rot_box, make_blob, make_tube,
+from _props.geometry import (clear_scene, make_box, make_cyl, make_rot_box, make_blob, make_tube, make_lathe,
                              join_stock, export_glb)
 from _props.trees import make_conifer, make_shrub
-from _props.furniture import make_chair
+from _props.furniture import make_chair, make_bed, make_lamp
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window
 
 GRASS = (0.34, 0.46, 0.24, 1.0)
 GRASS_TALL = (0.42, 0.50, 0.28, 1.0)
@@ -149,11 +153,82 @@ def build_party():
                  ((0.96, 0.30, 0.40, 1.0), (0.30, 0.60, 0.96, 1.0), (0.96, 0.86, 0.24, 1.0), (0.50, 0.86, 0.40, 1.0))[k % 4])
 
 
+def build_her_room():
+    """(2026-10-28) HER ROOM, upstairs, that night — x 40..44.4, y 0..4,
+    its own area (the VN only ever sees it from inside). The text: "she
+    went up to her room and sat in silence. She looked over all her
+    unwrapped presents"; "He'd given her a stethoscope for her birthday.
+    She'd wanted to be a doctor now"; "The day turned to night and she sat
+    on her pillows, her legs crossed"; at nine she "wanted to be a vet,
+    loved animals and was preoccupied with breeding rabbits"; at thirteen
+    she wanted "to go to Nepal and climb the highest mountain". A late-90s
+    girl's room: the bed under the window, the presents and their paper,
+    the stethoscope on the quilt, the animal posters of the vet she meant
+    to be, the mountain she means to climb, the desk lamp on."""
+    x0, x1, y0, y1, H = 40.0, 44.4, 0.0, 4.0, 2.45
+    PAL = {"wall": (0.86, 0.80, 0.84, 1.0), "baseboard": (0.92, 0.90, 0.86, 1.0)}
+    make_floor("Her_Room_Floor", ((x0 + x1) / 2, (y0 + y1) / 2, 0.0), size_x=x1 - x0, size_y=y1 - y0,
+               palette={"vinyl": (0.58, 0.52, 0.56, 1.0), "seam": (0.52, 0.46, 0.50, 1.0)}, style="plank")
+    make_box("Her_Room_Carpet", ((x0 + x1) / 2, 1.6, 0.006), (2.4, 1.8, 0.01), (0.46, 0.56, 0.62, 1.0))
+    make_box("Her_Room_Ceiling", ((x0 + x1) / 2, (y0 + y1) / 2, H + 0.04), (x1 - x0 + 0.3, y1 - y0 + 0.3, 0.08), (0.94, 0.92, 0.90, 1.0))
+    make_wall_with_openings("Her_Room_Wall_N", ((x0 + x1) / 2, y1, 0.0), length=x1 - x0 + 0.16, height=H, thickness=0.16,
+                            axis='X', palette=PAL, baseboard_face_sign=-1, openings=[(42.8, 1.45, 1.1, 1.0)])
+    make_window("Her_Room_Window", (42.8, y1 - 0.08, 1.45), width=1.1, height=1.0, axis='X', room_dir=-1)
+    make_wall("Her_Room_Wall_S", ((x0 + x1) / 2, y0, 0.0), length=x1 - x0 + 0.16, height=H, thickness=0.16, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Her_Room_Wall_W", (x0, (y0 + y1) / 2, 0.0), length=y1 - y0, height=H, thickness=0.16, axis='Y', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Her_Room_Wall_E", (x1, (y0 + y1) / 2, 0.0), length=y1 - y0, height=H, thickness=0.16, axis='Y', palette=PAL, baseboard_face_sign=-1)
+    make_box("Her_Room_Door", (x1 - 0.08, 0.8, 1.02), (0.04, 0.84, 2.04), (0.92, 0.90, 0.86, 1.0))
+    # the bed under the window, piled pillows she sits on, the quilt
+    make_bed("Her_Bed", 42.4, 3.0, head="+Y", w=1.05, d=1.95, style="frame")
+    for k in range(3):
+        make_box(f"Her_Bed_Pillow_{k}", (42.05 + k * 0.33, 3.70, 0.70 + (k % 2) * 0.04), (0.34, 0.30, 0.14), ((0.96, 0.90, 0.94, 1.0), (0.80, 0.86, 0.96, 1.0))[k % 2])
+    make_box("Her_Bed_Quilt", (42.4, 2.70, 0.585), (1.10, 1.30, 0.04), (0.70, 0.40, 0.52, 1.0))
+    # the stethoscope on the quilt: its tubing as a loop, the chest piece, the ear tips
+    make_lathe("Stethoscope_Tubing", (42.55, 2.55, 0.615), [(0.10, 0.0), (0.12, 0.0), (0.12, 0.012), (0.10, 0.012)], (0.12, 0.12, 0.14, 1.0), segments=16, loop=True)
+    make_cyl("Stethoscope_Chest_Piece", (42.72, 2.40, 0.62), 0.035, 0.02, (0.78, 0.78, 0.80, 1.0), segments=12)
+    for s_ in (-1, 1):
+        make_cyl(f"Stethoscope_Ear_Tip_{s_:+d}", (42.40 + s_ * 0.04, 2.68, 0.62), 0.012, 0.02, (0.20, 0.20, 0.22, 1.0), segments=8)
+    # the unwrapped presents and their paper, on the bed's foot and the floor
+    for k, (px, py, pz, col) in enumerate(((42.0, 2.15, 0.66, (0.30, 0.50, 0.86, 1.0)), (42.75, 2.05, 0.65, (0.96, 0.80, 0.24, 1.0)),
+                                           (41.3, 1.6, 0.12, (0.40, 0.76, 0.46, 1.0)))):
+        make_box(f"Present_Open_{k}", (px, py, pz), (0.26, 0.22, 0.16), col)
+    for k in range(5):
+        make_box(f"Present_Paper_{k}", (41.0 + k * 0.32, 1.2 + (k % 2) * 0.35, 0.012), (0.30, 0.22, 0.008),
+                 ((0.90, 0.56, 0.62, 1.0), (0.30, 0.50, 0.86, 1.0), (0.96, 0.86, 0.30, 1.0))[k % 3])
+    make_box("Present_Bow", (41.4, 1.35, 0.03), (0.08, 0.08, 0.05), (0.86, 0.20, 0.30, 1.0))
+    # the desk, its lamp lit, a boom box, the phone
+    make_box("Her_Desk_Top", (40.45, 2.2, 0.74), (0.60, 1.10, 0.04), (0.84, 0.80, 0.72, 1.0))
+    for sy_ in (-1, 1):
+        make_box(f"Her_Desk_Side_{sy_:+d}", (40.45, 2.2 + sy_ * 0.52, 0.37), (0.56, 0.03, 0.74), (0.84, 0.80, 0.72, 1.0))
+    make_lamp("Her_Desk_Lamp", 40.35, 2.55, base_z=0.76, h=0.40, shade_col=(0.96, 0.86, 0.70, 1.0))
+    make_box("Boom_Box", (40.45, 1.85, 0.86), (0.40, 0.16, 0.20), (0.24, 0.24, 0.26, 1.0))
+    make_box("Her_Phone_Cordless", (40.55, 2.15, 0.78), (0.06, 0.18, 0.04), (0.92, 0.90, 0.86, 1.0))
+    make_chair("Her_Desk_Chair", 40.95, 2.2, yaw=math.pi / 2.0, wood=(0.84, 0.80, 0.72, 1.0))
+    # the walls: the vet she meant to be, the mountain she means to climb
+    make_box("Poster_Rabbits", (40.09, 1.2, 1.60), (0.02, 0.50, 0.66), (0.86, 0.80, 0.70, 1.0))
+    make_box("Poster_Horse", (40.09, 3.0, 1.62), (0.02, 0.56, 0.42), (0.62, 0.46, 0.32, 1.0))
+    make_box("Poster_Everest", (43.2, 0.09, 1.55), (0.80, 0.02, 0.56), (0.80, 0.86, 0.94, 1.0))
+    make_box("Corkboard", (41.4, 0.09, 1.45), (0.70, 0.02, 0.50), (0.70, 0.56, 0.40, 1.0))
+    for k in range(5):
+        make_box(f"Corkboard_Photo_{k}", (41.15 + (k % 3) * 0.24, 0.075, 1.38 + (k // 3) * 0.18), (0.14, 0.004, 0.10),
+                 (0.5 + k * 0.08, 0.6, 0.7 - k * 0.06, 1.0))
+    # the china rabbit and a stuffed one, from the rabbit years
+    make_blob("Rabbit_Figurine", (40.55, 2.75, 0.82), 0.05, (0.94, 0.92, 0.88, 1.0), noise=0.1, seed=9, squash=0.9)
+    make_blob("Stuffed_Rabbit", (42.9, 3.65, 0.78), 0.11, (0.84, 0.78, 0.70, 1.0), noise=0.12, seed=11, squash=0.85)
+    make_box("Her_Dresser", (43.95, 2.6, 0.45), (0.46, 1.0, 0.90), (0.88, 0.86, 0.80, 1.0))
+    make_box("Her_Dresser_Mirror", (44.27, 2.6, 1.30), (0.02, 0.60, 0.70), (0.66, 0.72, 0.76, 1.0))
+    # outside the window: the backyard's firs under the night sky
+    for k in range(6):
+        make_conifer(f"Her_Room_View_Fir_{k}", 38.0 + k * 2.4, 9.0 + (k % 2) * 3.0, 9.0 + (k % 3) * 3.0, FIR, TRUNK, skirt=0.24)
+    make_box("Her_Room_View_Ground", (42.0, 9.0, -2.6), (20.0, 12.0, 0.04), (0.10, 0.14, 0.10, 1.0))
+
+
 def main():
     clear_scene()
     build_house()
     build_yard()
     build_party()
+    build_her_room()
     try:
         join_stock()
     except Exception as _e:

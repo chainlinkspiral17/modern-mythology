@@ -166,6 +166,20 @@ light_color = Color(0.76, 0.82, 0.92, 1)
 light_energy = 0.4
 shadow_enabled = false
 
+[node name="Her_Desk_Lamp_Light__mayhune_room_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.45, 1.25, -2.55)
+light_color = Color(1.0, 0.80, 0.56, 1)
+light_energy = 1.3
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Her_Room_Moon__mayhune_room_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, 2.2, -5.5)
+light_color = Color(0.62, 0.70, 0.92, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 5.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -298,3 +312,14 @@ position = Vector3(8.600, 1.300, -15.000)
 rotation = Vector3(-0.2859, -1.5708, 0.0)
 metadata/fov = 42.0
 
+; (2026-10-28) mayhune: "He'd given her a stethoscope for her birthday."
+[node name="shot_insert_stethoscope__mayhune_room_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(42.900, 1.300, -1.900)
+rotation = Vector3(-0.7181, 0.5140, 0.0)
+metadata/fov = 38.0
+
+; (2026-10-28) mayhune: "She looked over all her unwrapped presents"
+[node name="shot_insert_presents__mayhune_room_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(42.300, 1.400, -0.900)
+rotation = Vector3(-1.2012, 0.6844, 0.0)
+metadata/fov = 42.0
