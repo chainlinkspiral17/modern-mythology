@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert glass][mood:liminal_interior]You stand at the window. The glass is glazed with rain on the outside and breath on the inside. Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man.",
+   "text": "[mood:liminal_interior]You stand at the window. The glass is glazed with rain on the outside and breath on the inside. Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man.",
    "voice": "assets/audio/voice/vol1_link_window/001.mp3"
   },
   {

@@ -449,17 +449,10 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_phone__miller_back_porch_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.795, 0.691, -2.475)
-rotation = Vector3(-0.2618, 2.1219, 0.0)
+position = Vector3(0.604, 0.807, -2.357)
+rotation = Vector3(-0.5236, 2.1219, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_plate__miller_back_porch_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.528, 1.412, -3.737)
-rotation = Vector3(-0.2618, 1.3828, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_porch__miller_back_porch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.409, 2.582, -1.190)
 rotation = Vector3(-0.0873, 2.2551, 0.0)

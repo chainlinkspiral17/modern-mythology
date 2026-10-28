@@ -439,35 +439,13 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_polaroid__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.218, 1.536, -5.686)
-rotation = Vector3(-0.2618, 1.0214, 0.0)
+position = Vector3(-4.337, 1.651, -5.987)
+rotation = Vector3(-0.5236, 1.3705, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_label__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.117, 1.831, -3.846)
-rotation = Vector3(-0.3080, 1.0968, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_plate__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.165, 0.512, -3.271)
-rotation = Vector3(-0.2618, -1.1423, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_glass__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.650, 1.382, -0.751)
-rotation = Vector3(-0.2618, -2.8198, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_burner__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.690, 1.291, -5.465)
-rotation = Vector3(-0.2618, 0.7544, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_counter__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.752, 1.360, -3.259)
 rotation = Vector3(-0.2618, 0.6647, 0.0)

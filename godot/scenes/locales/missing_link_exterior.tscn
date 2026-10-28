@@ -414,8 +414,3 @@ position = Vector3(4.422, 2.175, -6.871)
 rotation = Vector3(-0.3803, 1.0728, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_taillights__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-12.041, 1.386, -7.712)
-rotation = Vector3(-0.3623, -3.0849, 0.0)
-metadata/fov = 35.0

@@ -357,19 +357,7 @@ position = Vector3(0.584, 0.943, -4.095)
 rotation = Vector3(-0.2618, 1.4382, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_ball__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.274, 0.902, -4.064)
-rotation = Vector3(-0.2618, -0.4987, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_switch__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.653, 1.412, -0.888)
-rotation = Vector3(-0.2618, -2.8896, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_lamp__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.421, 1.281, -4.492)
 rotation = Vector3(-0.2618, 0.6468, 0.0)

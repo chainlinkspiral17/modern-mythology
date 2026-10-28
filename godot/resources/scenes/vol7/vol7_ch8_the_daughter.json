@@ -63,7 +63,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert knife]Kai stopped cutting. He set the knife down on the cutting board."
+   "text": "Kai stopped cutting. He set the knife down on the cutting board."
   },
   {
    "t": "say",
@@ -97,7 +97,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert knife]Kai picked the knife back up and resumed cutting."
+   "text": "Kai picked the knife back up and resumed cutting."
   },
   {
    "t": "say",

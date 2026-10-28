@@ -548,13 +548,6 @@ position = Vector3(-3.073, 1.494, -3.433)
 rotation = Vector3(-0.2618, 0.8712, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_plate__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.594, 1.412, -0.377)
-rotation = Vector3(-0.2618, -1.6302, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_doorway__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.560, 1.943, -0.958)
 rotation = Vector3(0.1063, 1.2336, 0.0)
@@ -566,13 +559,6 @@ position = Vector3(3.117, 0.696, -2.079)
 rotation = Vector3(-0.2618, -0.5316, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_plate__miller_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.594, 1.412, -0.377)
-rotation = Vector3(-0.2618, -1.6302, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_nook__miller_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.770, 1.771, -4.438)
 rotation = Vector3(-0.2618, -0.2326, 0.0)

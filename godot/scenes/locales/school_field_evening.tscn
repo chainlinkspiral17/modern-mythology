@@ -548,13 +548,6 @@ position = Vector3(11.116, 1.061, 1.409)
 rotation = Vector3(-0.2618, 2.7735, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_strap__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(26.363, 0.714, -44.866)
-rotation = Vector3(-0.2618, -3.0947, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_cone__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.582, 0.480, -27.560)
 rotation = Vector3(-0.5236, 2.1910, 0.0)

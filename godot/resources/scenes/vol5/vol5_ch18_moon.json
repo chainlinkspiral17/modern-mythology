@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cards][trip:1.2][mood:night]By five AM Natalie David had read for both of them — first Nicola, then Aria, the cards arranging themselves on the low table with the small deliberate courtesy of a deck that knew it was being watched by more than one intelligence and had decided, for once, to perform rather than murmur.",
+      "text": "[trip:1.2][mood:night]By five AM Natalie David had read for both of them — first Nicola, then Aria, the cards arranging themselves on the low table with the small deliberate courtesy of a deck that knew it was being watched by more than one intelligence and had decided, for once, to perform rather than murmur.",
       "voice": "assets/audio/voice/vol5_ch18_moon/006.ogg"
     },
     {
@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cards]She had not, yet, made any move. She had, instead, stayed where she was — on the rug, the cards around her, the candle she had lit at midnight burning low — and allowed the room to show her what the room had to show.",
+      "text": "She had not, yet, made any move. She had, instead, stayed where she was — on the rug, the cards around her, the candle she had lit at midnight burning low — and allowed the room to show her what the room had to show.",
       "voice": "assets/audio/voice/vol5_ch18_moon/022.ogg"
     },
     {
@@ -697,7 +697,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cards]The cards, on the low table, she left spread. They had done their work. She would tidy them when she returned.",
+      "text": "The cards, on the low table, she left spread. They had done their work. She would tidy them when she returned.",
       "voice": "assets/audio/voice/vol5_ch18_moon/127.ogg"
     },
     {
@@ -1030,7 +1030,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cards]She walked the three blocks to her apartment. She let herself in. The under-cabinet light was still on, as she had left it. The cards were on the low table, as she had left them.",
+      "text": "She walked the three blocks to her apartment. She let herself in. The under-cabinet light was still on, as she had left it. The cards were on the low table, as she had left them.",
       "voice": "assets/audio/voice/vol5_ch18_moon/190.ogg"
     },
     {

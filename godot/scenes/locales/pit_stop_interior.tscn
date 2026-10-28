@@ -577,13 +577,6 @@ position = Vector3(0.971, 1.255, -12.673)
 rotation = Vector3(-0.4148, 0.8694, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_ring__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.104, 1.224, -5.014)
-rotation = Vector3(-0.2618, -2.5429, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_station__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.194, 1.727, -5.044)
 rotation = Vector3(-0.2618, -2.0468, 0.0)

@@ -530,6 +530,6 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_cover__andy_house_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.380, 0.973, -1.996)
-rotation = Vector3(-0.2618, -1.3360, 0.0)
+position = Vector3(3.676, 1.089, -1.867)
+rotation = Vector3(-0.5236, -0.9869, 0.0)
 metadata/fov = 35.0
