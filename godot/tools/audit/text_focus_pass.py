@@ -79,7 +79,7 @@ wear shops foundation storage submissions submission cedar
 band break song songs verse chorus dance dream dreams ghosts witness text title titles team groups readings deck
 figure figures flame purifiers twenty five seven eight nine blue black empty worn spare lower rear west east north
 south iced indie novelty interior heat dust well weight yards tips strip grid smear marks sorts dates base backs
-skip fill fills leave gets plays works stage lake
+skip fill fills leave gets plays works stage lake motes mote
 brow brows forehead eyebrow eyebrows wrist wrists elbow elbows thumb thumbs palm palms jaw chin lap hip hips belly
 """.split())
 # furniture every room has: one cue a chapter, not a refrain
@@ -394,6 +394,10 @@ def run_chapter(path, pre, places, cast, dry, stats):
         geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in view]
         clean = BB_RX.sub("", text)
         if ART_WORDS.search(clean):
+            continue
+        # a tarot card read aloud ("THE STAR. The naked figure kneels at the
+        # pool") describes the card, not the room
+        if re.match(r"\s*(THE |[IVXL]+\. )?[A-Z]{3,}[A-Z ,']*[.:]", clean):
             continue
         found = subject_for(clean, geo, cast, marked_words(scene, preset))
         if not found:
