@@ -3850,6 +3850,11 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
     - vol 4: 51 (39);
     - vol 7 re-run: 43 cues on existing markers.
   - Samples: John's alarm, the easel, the brush, the jukebox label, the windshield, the coffee gone cold.
+- **Gates at zero:**
+  - marker_aim: 563 markers in 55 sets.
+  - vantage_obstruction `--markers`. Two new markers were dropped with their cues: apple_peddler's booth seat (behind the booth back) and Aaron's toys (behind the open door).
+  - wrong_room, shot_marker, tscn_syntax.
+  - Five abstract `[shot:insert five]` cues in vol 6 were removed ("five weeks", "the five of them"). "He pushes a five across the table" keeps its cue.
 - **Re-aim list** (old hand markers framing low or off):
   - elicia_apartment `shot_insert_camera`;
   - Lena's `shot_insert_stove`.
