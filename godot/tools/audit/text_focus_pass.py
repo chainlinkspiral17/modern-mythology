@@ -609,11 +609,13 @@ def refit(low, pre, places):
     moved = dropped = kept = 0
     drop_cues = []                # (preset, word)
     for loc, name, cv, mine, mpos in low:
-        if not mine:
+        if not mine and "--hand" not in sys.argv:
             # a hand marker may frame a hero prop the builder's boxes do
-            # not hold (the carved bowls score 0 % and read well): report it
+            # not hold: report it (--hand: re-place it, never drop it)
             kept += 1
             continue
+        if mine and "--hand" in sys.argv:
+            continue        # this pass's own: a separate, serial run (its drops edit chapter JSON)
         path = os.path.join(TSCN, loc + ".tscn")
         cue = name[len("shot_insert_"):]
         word, _, view = cue.partition("__")
