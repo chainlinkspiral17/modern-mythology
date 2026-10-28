@@ -362,8 +362,8 @@ metadata/fov = 40.0
 
 ; insert: the rack by the door where he puts up his board
 [node name="shot_insert_skateboard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.900, 1.500, -0.550)
-rotation = Vector3(-0.0431, 1.3704, 0.0)
+position = Vector3(-1.294, 1.847, -1.018)
+rotation = Vector3(-0.2618, 1.6513, 0.0)
 metadata/fov = 44.0
 
 ; insert: the sofa, the blanket, the cans on the table

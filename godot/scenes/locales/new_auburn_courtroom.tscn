@@ -420,8 +420,8 @@ metadata/fov = 44.0
 
 ; insert: the quilt's faint outline on the seat
 [node name="shot_insert_quilt" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.900, 0.550, 6.600)
-rotation = Vector3(-0.3355, 2.8236, 0.0)
+position = Vector3(0.026, 0.515, 7.289)
+rotation = Vector3(-0.5236, -2.7637, 0.0)
 metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
