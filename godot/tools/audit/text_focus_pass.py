@@ -80,6 +80,7 @@ band break song songs verse chorus dance dream dreams ghosts witness text title 
 figure figures flame purifiers twenty five seven eight nine blue black empty worn spare lower rear west east north
 south iced indie novelty interior heat dust well weight yards tips strip grid smear marks sorts dates base backs
 skip fill fills leave gets plays works stage lake motes mote
+ones highs manager managers squat towers rings registers clerk owner customer customers
 brow brows forehead eyebrow eyebrows wrist wrists elbow elbows thumb thumbs palm palms jaw chin lap hip hips belly
 """.split())
 # furniture every room has: one cue a chapter, not a refrain
