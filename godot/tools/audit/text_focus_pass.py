@@ -122,10 +122,14 @@ def preset_camera(body):
     rm = re.search(r'"camera_rotation":\s*Vector3\(((?:[^()]|\([^()]*\))+)\)', body)
     if not om:
         return None, None
-    pos = tuple(float(eval(v, {"deg_to_rad": math.radians})) for v in om.group(1).split(","))
+    pos = tuple(float(eval(v, {"deg_to_rad": math.radians, "PI": math.pi, "TAU": math.tau})) for v in om.group(1).split(","))
     rot = (0.0, 0.0, 0.0)
+    env = {"deg_to_rad": math.radians, "PI": math.pi, "TAU": math.tau}
     if rm:
-        rot = tuple(float(eval(v, {"deg_to_rad": math.radians})) for v in re.split(r",(?![^(]*\))", rm.group(1)))
+        try:
+            rot = tuple(float(eval(v, env)) for v in re.split(r",(?![^(]*\))", rm.group(1)))
+        except Exception:
+            pass        # only the position is used for search and same-room tests
     return pos, rot
 
 
