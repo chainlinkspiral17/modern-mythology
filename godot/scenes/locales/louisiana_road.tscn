@@ -385,3 +385,9 @@ metadata/fov = 45.0
 position = Vector3(-1.000, 1.612, 1.350)
 rotation = Vector3(-0.2618, -0.0000, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_windshield__louisiana_road" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.046, 1.390, -9.351)
+rotation = Vector3(-0.5236, 2.3534, 0.0)
+metadata/fov = 35.0

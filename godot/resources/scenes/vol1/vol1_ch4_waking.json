@@ -74,7 +74,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit][mood:night]John Faust wakes up in his bed. His alarm is ringing. It is 4:00 am. He turns the alarm off and goes back to bed."
+      "text": "[shot:insert alarm][beat:hit][mood:night]John Faust wakes up in his bed. His alarm is ringing. It is 4:00 am. He turns the alarm off and goes back to bed."
     },
     {
       "t": "show",
@@ -90,7 +90,7 @@
     },
     {
       "t": "narrate",
-      "text": "John gets up. To the bathroom. Pukes in the toilet."
+      "text": "[shot:insert toilet]John gets up. To the bathroom. Pukes in the toilet."
     },
     {
       "t": "narrate",

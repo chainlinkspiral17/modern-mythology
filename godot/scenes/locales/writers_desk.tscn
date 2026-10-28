@@ -332,3 +332,129 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lamp__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.383, 1.281, -4.522)
+rotation = Vector3(-0.2618, 0.6905, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_drawer__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.554, 0.896, -3.569)
+rotation = Vector3(-0.2618, 0.4378, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_cork__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.364, 1.832, -4.724)
+rotation = Vector3(-0.2618, 0.3029, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_post__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.584, 0.943, -4.095)
+rotation = Vector3(-0.2618, 1.4382, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_ball__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.274, 0.902, -4.064)
+rotation = Vector3(-0.2618, -0.4987, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_switch__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.653, 1.412, -0.888)
+rotation = Vector3(-0.2618, -2.8896, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_lamp__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.421, 1.281, -4.492)
+rotation = Vector3(-0.2618, 0.6468, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_chairs__writers_desk_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.723, 0.863, -3.175)
+rotation = Vector3(-0.2618, 0.8170, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__writers_desk_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.703, 0.418, -3.012)
+rotation = Vector3(-0.5236, 2.8143, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_strings__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.400, 0.902, -4.025)
+rotation = Vector3(-0.2618, 0.3810, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_chair__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.723, 0.863, -3.175)
+rotation = Vector3(-0.2618, 0.8170, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.703, 0.418, -3.012)
+rotation = Vector3(-0.5236, 2.8143, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_frame__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.458, 2.150, -2.968)
+rotation = Vector3(-0.2501, -0.9424, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_paper__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.287, 1.062, -4.673)
+rotation = Vector3(-0.2618, -0.3388, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_doors__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.703, 0.418, -3.012)
+rotation = Vector3(-0.5236, 2.8143, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_posts__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.324, 0.943, -3.521)
+rotation = Vector3(-0.2618, 0.8537, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_post__writers_desk_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.114, 0.943, -3.335)
+rotation = Vector3(-0.2618, 0.5958, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sill__writers_desk_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.609, 1.062, -4.630)
+rotation = Vector3(-0.2618, 0.0740, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_blankets__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.204, 1.004, -2.731)
+rotation = Vector3(-0.2581, 2.1352, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_ties__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.366, 1.808, -2.992)
+rotation = Vector3(-0.2307, -0.9450, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_zine__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.201, 0.982, -4.325)
+rotation = Vector3(-0.2618, 0.6808, 0.0)
+metadata/fov = 35.0

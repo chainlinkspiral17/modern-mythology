@@ -62,7 +62,7 @@
     },
     {
       "t": "narrate",
-      "text": "The lamp is on. It's late, or it's early."
+      "text": "[shot:insert lamp]The lamp is on. It's late, or it's early."
     },
     {
       "t": "narrate",

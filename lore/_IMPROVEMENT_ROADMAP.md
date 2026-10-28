@@ -3835,6 +3835,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 205: THE INSERT SHOWS ITS THING — above the text, no portrait over it; vols 1–4 + vol 7 re-run.**
+- **The director** (VnDirector / CharLayer / GameEngine):
+  - Every insert tilts down so its object's centre sits `INSERT_CENTER` (36 %) from the top. Markers are aimed at the object's centre, and the reading box owns the lower ~31 %.
+  - Before, objects sat under the words (the vol 5 recording camera, Bill's crossword at the box's edge).
+  - While an insert or a noticed picture holds on a narrated line, the portraits fade out (`set_insert_quiet`). They return on a spoken or thought line, or when the insert lets go.
+  - Before, a portrait card stood in front of the camera the line was about.
+- **text_focus_pass:**
+  - Stop words for vols 1–4: river banks, the drugstore building, "frozen", "four", "pink", people and landscape words.
+  - Results:
+    - vol 1: 43 cues (34 new markers);
+    - vol 2: 51 (43);
+    - vol 3: 78 (67);
+    - vol 4: 51 (39);
+    - vol 7 re-run: 43 cues on existing markers.
+  - Samples: John's alarm, the easel, the brush, the jukebox label, the windshield, the coffee gone cold.
+- **Re-aim list** (old hand markers framing low or off):
+  - elicia_apartment `shot_insert_camera`;
+  - Lena's `shot_insert_stove`.
+- **Draft N+1 targets:**
+  1. A `marker_reaim` pass over every pre-2026-10-27 insert marker, re-aimed with the text_focus search.
+  2. Clause-aware subject picking.
+  3. Deck-verify the fade and the lift in play.
+
 **2026-10-28 · pass 204: THE CAMERA GOES WHERE THE SENTENCE LOOKS, vols 5–6 (draft 1).**
 - `text_focus_pass.py` was run on vols 5 and 6 after tightening the subject picker:
   - a named thing needs an article or owner before it ("the kettle", "his notebook");

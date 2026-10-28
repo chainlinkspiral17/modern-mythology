@@ -398,3 +398,21 @@ metadata/fov = 45.0
 position = Vector3(0.900, 1.612, 14.448)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__small_wood_road_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-10.095, 1.212, 12.399)
+rotation = Vector3(-0.2618, 1.0436, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_drive__small_wood_road_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-15.565, 0.418, -2.439)
+rotation = Vector3(-0.5236, 0.6595, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_mirror__small_wood_road" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-9.968, 1.323, -0.782)
+rotation = Vector3(-0.2618, 0.7112, 0.0)
+metadata/fov = 35.0

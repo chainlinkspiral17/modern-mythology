@@ -211,7 +211,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/039.mp3"
     },
     {
-      "text": "Lena pulled the hot chocolate. The cocoa was good.",
+      "text": "[shot:insert chocolate]Lena pulled the hot chocolate. The cocoa was good.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/040.mp3"
     },

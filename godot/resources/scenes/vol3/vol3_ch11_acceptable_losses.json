@@ -58,7 +58,7 @@
     },
     {
       "t": "narrate",
-      "text": "I push my empty plate to the pile and sit back full and tired. My ear goes to the window and I close my eyes. The chill of the rain on the pane of glass feels great, a tingle goes down my spine and then my back."
+      "text": "[shot:insert plate]I push my empty plate to the pile and sit back full and tired. My ear goes to the window and I close my eyes. The chill of the rain on the pane of glass feels great, a tingle goes down my spine and then my back."
     },
     {
       "t": "narrate",
@@ -178,7 +178,7 @@
     },
     {
       "t": "narrate",
-      "text": "The car ride to the country, to a large man-made lake in the middle of nowhere. I play games with the streams of rain running down the windshield. I sit in the front seat with Dad."
+      "text": "[shot:insert windshield]The car ride to the country, to a large man-made lake in the middle of nowhere. I play games with the streams of rain running down the windshield. I sit in the front seat with Dad."
     },
     {
       "t": "narrate",
@@ -220,7 +220,7 @@
     },
     {
       "t": "narrate",
-      "text": "The dugout was full because we were up to bat. I was sitting next to Dad and a kid named Cody. Dad gripped the bench beneath him hunched over watching with focused attention."
+      "text": "[shot:insert bench]The dugout was full because we were up to bat. I was sitting next to Dad and a kid named Cody. Dad gripped the bench beneath him hunched over watching with focused attention."
     },
     {
       "t": "narrate",

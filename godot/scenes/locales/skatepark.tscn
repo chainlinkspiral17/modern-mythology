@@ -347,3 +347,9 @@ metadata/fov = 45.0
 position = Vector3(-0.575, 1.612, -4.906)
 rotation = Vector3(-0.2618, 2.8798, 0.0)
 metadata/fov = 45.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_pool__skatepark_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.223, 0.437, -5.325)
+rotation = Vector3(-0.4209, -1.6517, 0.0)
+metadata/fov = 35.0

@@ -445,3 +445,27 @@ metadata/fov = 44.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 1.0, -8.6)
 rotation = Vector3(-0.184, 0.381, 0.0)
 metadata/fov = 36.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_sink__farm_kitchen_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.778, 1.178, -7.030)
+rotation = Vector3(-0.2618, -1.5454, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__farm_living_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.800, 1.212, -1.191)
+rotation = Vector3(-0.2618, -3.0916, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_plaster__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(30.780, 1.512, 13.515)
+rotation = Vector3(-0.2618, 1.0198, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_mattress__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(31.040, 0.647, 13.037)
+rotation = Vector3(-0.2862, -0.0272, 0.0)
+metadata/fov = 35.0

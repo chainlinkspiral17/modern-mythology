@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "The street slides past the windshield, ordinary and bright."
+      "text": "[shot:insert windshield]The street slides past the windshield, ordinary and bright."
     },
     {
       "t": "say",

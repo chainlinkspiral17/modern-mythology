@@ -353,3 +353,39 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_desk__ron_night_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.030, 1.004, -2.362)
+rotation = Vector3(-0.3324, 1.6420, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_page__ron_night_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.297, 0.992, -1.940)
+rotation = Vector3(-0.2618, 1.7230, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_window__ron_night_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.696, 2.563, -2.389)
+rotation = Vector3(-0.2618, 2.8168, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__parsonage_hall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.126, 1.212, -7.708)
+rotation = Vector3(-0.2618, -0.7266, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__ron_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.382, 2.204, -2.828)
+rotation = Vector3(-0.1210, 0.5126, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_page__ron_night_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.292, 0.992, -1.744)
+rotation = Vector3(-0.2618, 1.4746, 0.0)
+metadata/fov = 35.0

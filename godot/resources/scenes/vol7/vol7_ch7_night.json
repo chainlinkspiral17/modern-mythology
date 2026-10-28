@@ -624,7 +624,7 @@
       "t": "say"
     },
     {
-      "text": "He went down the stairwell. Kai followed. The door closed behind them.",
+      "text": "[shot:insert door]He went down the stairwell. Kai followed. The door closed behind them.",
       "t": "narrate"
     },
     {

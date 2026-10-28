@@ -476,3 +476,27 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_coffee__onei_office_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.793, 1.011, -8.126)
+rotation = Vector3(-0.2618, -0.8301, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__onei_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.568, 1.374, -1.086)
+rotation = Vector3(-0.2618, -2.9084, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_card__onei_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.038, 1.004, -3.888)
+rotation = Vector3(-0.2618, -0.4420, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_goggles__onei_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.960, 0.994, -7.680)
+rotation = Vector3(-0.2618, -0.0783, 0.0)
+metadata/fov = 35.0

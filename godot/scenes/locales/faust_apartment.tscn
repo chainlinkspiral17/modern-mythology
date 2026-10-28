@@ -425,3 +425,33 @@ metadata/fov = 45.0
 position = Vector3(3.200, 1.700, -5.900)
 rotation = Vector3(-0.0969, 2.2282, 0.0)
 metadata/fov = 60.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_frame__faust_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.074, 0.993, -0.771)
+rotation = Vector3(-0.2618, -1.4033, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_toilet__faust_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.388, 1.262, -2.772)
+rotation = Vector3(-0.2618, -2.9002, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_glass__faust_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.249, 1.912, -3.848)
+rotation = Vector3(-0.2618, -1.2466, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_paint__faust_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.960, 0.596, -2.631)
+rotation = Vector3(-0.0808, -1.3708, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_brush__faust_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.602, 1.114, -3.313)
+rotation = Vector3(-0.2618, -2.1234, 0.0)
+metadata/fov = 35.0

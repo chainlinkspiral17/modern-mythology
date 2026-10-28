@@ -36,7 +36,7 @@
   },
   {
    "t": "narrate",
-   "text": "A young man is standing at the bench. He is not sitting on it.",
+   "text": "[shot:insert bench]A young man is standing at the bench. He is not sitting on it.",
    "voice": "assets/audio/voice/vol1_missing_link/006.mp3"
   },
   {
@@ -75,7 +75,7 @@
   },
   {
    "t": "narrate",
-   "text": "Inside: a counter with five stools, four booths against the front windows, a jukebox in the corner blinking through its red eye. The fluorescents hum in the particular B-flat that fluorescents hum in. The coffee on the burner has been on the burner a while.",
+   "text": "[shot:insert burner]Inside: a counter with five stools, four booths against the front windows, a jukebox in the corner blinking through its red eye. The fluorescents hum in the particular B-flat that fluorescents hum in. The coffee on the burner has been on the burner a while.",
    "voice": "assets/audio/voice/vol1_missing_link/014.mp3"
   },
   {

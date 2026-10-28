@@ -74,7 +74,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man is old, older than any man Jack has ever stood next to. His skin gone yellow like old piano keys and mapped all over with bruises, his gums bleeding, his chest bound up in gauze, his eyes too big for their sockets, rolling around in there and not settling."
+      "text": "[shot:insert sockets]The man is old, older than any man Jack has ever stood next to. His skin gone yellow like old piano keys and mapped all over with bruises, his gums bleeding, his chest bound up in gauze, his eyes too big for their sockets, rolling around in there and not settling."
     },
     {
       "t": "narrate",
@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at the hand strapped down on the blanket. Square nails. Knuckles knotted up. A little white scar across the back of the thumb from the summer the hatchet slipped up at the lake. Nothing else about the man, only the hand."
+      "text": "[shot:insert blanket]He looks at the hand strapped down on the blanket. Square nails. Knuckles knotted up. A little white scar across the back of the thumb from the summer the hatchet slipped up at the lake. Nothing else about the man, only the hand."
     },
     {
       "t": "choice",

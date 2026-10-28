@@ -149,7 +149,7 @@
       "t": "narrate"
     },
     {
-      "text": "Then he laid the eighth piece on the table. He took the cloth out of the duffel. He took the other seven pieces out one at a time and laid them on the cloth. He moved pieces. He moved the eighth.",
+      "text": "[shot:insert duffel]Then he laid the eighth piece on the table. He took the cloth out of the duffel. He took the other seven pieces out one at a time and laid them on the cloth. He moved pieces. He moved the eighth.",
       "t": "narrate"
     },
     {
@@ -169,7 +169,7 @@
       "t": "narrate"
     },
     {
-      "text": "He set the piece down on the cloth next to the hexagon.",
+      "text": "[shot:insert hexagon]He set the piece down on the cloth next to the hexagon.",
       "t": "narrate"
     },
     {

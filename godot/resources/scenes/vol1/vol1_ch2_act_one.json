@@ -26,7 +26,7 @@
   },
   {
    "t": "narrate",
-   "text": "Faust wakes at four a.m. with the sound of an alarm.",
+   "text": "[shot:insert alarm]Faust wakes at four a.m. with the sound of an alarm.",
    "voice": "assets/audio/voice/vol1_ch2_act_one/004.mp3"
   },
   {

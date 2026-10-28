@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE DIRECTOR is at the console. THE WRITER sits on the arm of the couch with a notebook. THE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil."
+      "text": "[shot:insert console]THE DIRECTOR is at the console. THE WRITER sits on the arm of the couch with a notebook. THE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil."
     },
     {
       "t": "narrate",
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE FOOL bursts in through the door, disheveled, carrying a bucket of popcorn that is mostly empty, wearing a t-shirt with a painted wooden frame on it and nothing inside."
+      "text": "[shot:insert door]THE FOOL bursts in through the door, disheveled, carrying a bucket of popcorn that is mostly empty, wearing a t-shirt with a painted wooden frame on it and nothing inside."
     },
     {
       "t": "say",

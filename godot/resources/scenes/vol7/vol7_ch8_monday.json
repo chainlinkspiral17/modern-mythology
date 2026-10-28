@@ -630,7 +630,7 @@
       "t": "say"
     },
     {
-      "text": "She held the counter.",
+      "text": "[shot:insert counter]She held the counter.",
       "t": "narrate"
     },
     {

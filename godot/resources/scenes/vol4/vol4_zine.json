@@ -160,7 +160,7 @@
     },
     {
       "t": "narrate",
-      "text": "And music studio. I collect cold war relics, got hundreds of museum quality pieces, spy stuff, historical documents, and I have a Dr. Strangelove Nuke Ride. You can program in whatever city you want to bomb and Yeehaw on down the bomb bay doors."
+      "text": "[shot:insert doors]And music studio. I collect cold war relics, got hundreds of museum quality pieces, spy stuff, historical documents, and I have a Dr. Strangelove Nuke Ride. You can program in whatever city you want to bomb and Yeehaw on down the bomb bay doors."
     },
     {
       "t": "narrate",
@@ -375,7 +375,7 @@
     },
     {
       "t": "narrate",
-      "text": "When he got to the door and it was locked, he called out to whoever was inside. A lone voice said go away. Not a command, it was too defeated for that, too broken to mean anything."
+      "text": "[shot:insert door]When he got to the door and it was locked, he called out to whoever was inside. A lone voice said go away. Not a command, it was too defeated for that, too broken to mean anything."
     },
     {
       "t": "narrate",
@@ -395,7 +395,7 @@
     },
     {
       "t": "narrate",
-      "text": "The windows were open, it was a beautiful day outside. The students never got up from their picnic blankets until sirens ushered them off the lawns."
+      "text": "[shot:insert blankets]The windows were open, it was a beautiful day outside. The students never got up from their picnic blankets until sirens ushered them off the lawns."
     },
     {
       "t": "narrate",
@@ -826,7 +826,7 @@
     },
     {
       "t": "narrate",
-      "text": "He cut off his ties to them that night. Went back to her side in the morning, and when the sun came up and they came in to adjust her drip, she woke up and he listened to her weep."
+      "text": "[shot:insert ties]He cut off his ties to them that night. Went back to her side in the morning, and when the sun came up and they came in to adjust her drip, she woke up and he listened to her weep."
     },
     {
       "t": "narrate",
@@ -935,7 +935,7 @@
     },
     {
       "t": "narrate",
-      "text": "A page of the zine has come loose from the staple, the one with the seal on it. He pins it up on the board crooked and leaves it crooked."
+      "text": "[shot:insert zine]A page of the zine has come loose from the staple, the one with the seal on it. He pins it up on the board crooked and leaves it crooked."
     },
     {
       "t": "flag",

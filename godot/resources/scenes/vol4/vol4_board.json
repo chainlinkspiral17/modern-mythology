@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Four things up on the cork now. He digs a ball of red string out of the drawer, in with the rubber bands and the dead nine-volts."
+      "text": "[shot:insert cork]Four things up on the cork now. He digs a ball of red string out of the drawer, in with the rubber bands and the dead nine-volts."
     },
     {
       "t": "narrate",
@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "Left again, to the blog post. A kid up all night in March with a story due Monday, finishing the rough of weep."
+      "text": "[shot:insert post]Left again, to the blog post. A kid up all night in March with a story due Monday, finishing the rough of weep."
     },
     {
       "t": "narrate",
@@ -96,7 +96,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls. The card holds and the string keeps coming off the ball, more than the board has room for."
+      "text": "[shot:insert ball]He pulls. The card holds and the string keeps coming off the ball, more than the board has room for."
     },
     {
       "t": "bgm",
@@ -108,7 +108,7 @@
     },
     {
       "t": "narrate",
-      "text": "He runs it down off the board and down the wall to a strip of old cork under the light switch, where a few things have been pinned so long the pins have rusted."
+      "text": "[shot:insert switch]He runs it down off the board and down the wall to a strip of old cork under the light switch, where a few things have been pinned so long the pins have rusted."
     },
     {
       "t": "narrate",
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "Headlights cross the ceiling. He turns off the lamp."
+      "text": "[shot:insert lamp]Headlights cross the ceiling. He turns off the lamp."
     },
     {
       "t": "flag",

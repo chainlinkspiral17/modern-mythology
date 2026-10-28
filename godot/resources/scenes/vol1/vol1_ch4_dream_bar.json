@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust is now sitting across the table from this young person — tall, attractive. The man is watching Faust draw."
+      "text": "[shot:insert table]Faust is now sitting across the table from this young person — tall, attractive. The man is watching Faust draw."
     },
     {
       "t": "show",
@@ -193,7 +193,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust gets up out of his chair — drunk and staggering."
+      "text": "[shot:insert chair]Faust gets up out of his chair — drunk and staggering."
     },
     {
       "t": "say",

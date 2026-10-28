@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]The building is brick painted brown, then painted brown again. Two doors. One stick figure with a triangle skirt; one without. Between them, a vending machine with the row of selection buttons taped over except for B-4.",
+   "text": "[shot:insert doors][mood:lithograph]The building is brick painted brown, then painted brown again. Two doors. One stick figure with a triangle skirt; one without. Between them, a vending machine with the row of selection buttons taped over except for B-4.",
    "voice": "assets/audio/voice/vol2_bf_building/001.mp3"
   },
   {
@@ -31,7 +31,7 @@
   },
   {
    "t": "narrate",
-   "text": "A brochure rack just inside the alcove. The plastic slots are the kind that always sag at one end. The brochures, top to bottom:",
+   "text": "[shot:insert alcove]A brochure rack just inside the alcove. The plastic slots are the kind that always sag at one end. The brochures, top to bottom:",
    "voice": "assets/audio/voice/vol2_bf_building/005.mp3"
   },
   {

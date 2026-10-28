@@ -210,7 +210,7 @@
     },
     {
       "t": "narrate",
-      "text": "and on Wednesday Tem had been at the Daily Grind for their coffee at the regular hour and neither of them had mentioned the Thursday, and they had not, in the four months since, mentioned it, and they had not, in the four months since, slept together again.",
+      "text": "[shot:insert coffee]and on Wednesday Tem had been at the Daily Grind for their coffee at the regular hour and neither of them had mentioned the Thursday, and they had not, in the four months since, mentioned it, and they had not, in the four months since, slept together again.",
       "voice": "assets/audio/voice/vol7_ch1_morning/039.mp3"
     },
     {
@@ -1689,7 +1689,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem sat back down at the table.",
+      "text": "[shot:insert table]Tem sat back down at the table.",
       "voice": "assets/audio/voice/vol7_ch1_morning/246.mp3"
     },
     {

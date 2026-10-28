@@ -330,7 +330,7 @@
       "t": "bg"
     },
     {
-      "text": "She walked the three blocks to her apartment. The rain picked up on the second block. By the time she was unlocking her door her flannel was soaked through the coat.",
+      "text": "[shot:insert door]She walked the three blocks to her apartment. The rain picked up on the second block. By the time she was unlocking her door her flannel was soaked through the coat.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch3_studio/057.mp3"
     },

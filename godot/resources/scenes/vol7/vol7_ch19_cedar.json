@@ -260,7 +260,7 @@
    "t": "say"
   },
   {
-   "text": "The crow, beside him on the table, tilted its head.",
+   "text": "[shot:insert table]The crow, beside him on the table, tilted its head.",
    "t": "narrate"
   },
   {

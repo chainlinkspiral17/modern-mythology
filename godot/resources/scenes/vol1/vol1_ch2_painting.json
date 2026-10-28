@@ -34,7 +34,7 @@
   },
   {
    "t": "narrate",
-   "text": "Faust has an easel set up.",
+   "text": "[shot:insert easel]Faust has an easel set up.",
    "voice": "assets/audio/voice/vol1_ch2_painting/006.mp3"
   },
   {

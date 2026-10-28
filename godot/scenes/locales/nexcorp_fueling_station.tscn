@@ -548,3 +548,27 @@ metadata/fov = 35.0
 position = Vector3(-2.874, 1.707, -5.458)
 rotation = Vector3(-0.2618, 1.9118, 0.0)
 metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_counter__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(8.107, 0.964, -3.169)
+rotation = Vector3(-0.2618, 0.5693, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_mirror__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(8.235, 1.308, 3.861)
+rotation = Vector3(-0.2618, 0.2929, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_windshield__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.136, 2.112, 13.707)
+rotation = Vector3(-0.2618, 1.9497, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_squeegee__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.343, 0.772, 13.514)
+rotation = Vector3(-0.2618, 0.4481, 0.0)
+metadata/fov = 35.0

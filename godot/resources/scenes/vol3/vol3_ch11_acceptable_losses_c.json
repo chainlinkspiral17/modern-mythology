@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "I was guarding first base and some bastard last named Larry was keeping me company. He had a crew cut and he tried to spit on my shoe. I just smiled and held out my glove arm, waiting for Chris to throw the ball my way."
+      "text": "[shot:insert glove]I was guarding first base and some bastard last named Larry was keeping me company. He had a crew cut and he tried to spit on my shoe. I just smiled and held out my glove arm, waiting for Chris to throw the ball my way."
     },
     {
       "t": "narrate",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "I sit at a table with my box of granola watching the sun crawl over the horizon. Terry is outside the window fishing off the dock in his shorts. I take the cereal under my arm and open the sliding glass door."
+      "text": "[shot:insert granola]I sit at a table with my box of granola watching the sun crawl over the horizon. Terry is outside the window fishing off the dock in his shorts. I take the cereal under my arm and open the sliding glass door."
     },
     {
       "t": "narrate",
@@ -291,7 +291,7 @@
     },
     {
       "t": "narrate",
-      "text": "I watched from second behind the pitcher. I had the best seat in the house. I smiled, urging him on my head, trying to mentally vibe over good thoughts."
+      "text": "[shot:insert seat]I watched from second behind the pitcher. I had the best seat in the house. I smiled, urging him on my head, trying to mentally vibe over good thoughts."
     },
     {
       "t": "narrate",
@@ -343,7 +343,7 @@
     },
     {
       "t": "narrate",
-      "text": "Somewhere between third and home the catcher saw me coming and began twirling his free arm in the air to draw all attention to the situation at hand. I pushed him out of my way and stomped down on the plate."
+      "text": "[shot:insert plate]Somewhere between third and home the catcher saw me coming and began twirling his free arm in the air to draw all attention to the situation at hand. I pushed him out of my way and stomped down on the plate."
     },
     {
       "t": "cg",

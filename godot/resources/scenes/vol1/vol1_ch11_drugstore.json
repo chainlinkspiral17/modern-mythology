@@ -51,7 +51,7 @@
     },
     {
       "t": "narrate",
-      "text": "It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door."
+      "text": "[shot:insert door]It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door."
     },
     {
       "t": "narrate",
@@ -137,7 +137,7 @@
     },
     {
       "t": "narrate",
-      "text": "They all look at the carrier. A gray cat comes out slowly, the way old cats get up, and sits on the counter facing Faust."
+      "text": "[shot:insert counter]They all look at the carrier. A gray cat comes out slowly, the way old cats get up, and sits on the counter facing Faust."
     },
     {
       "t": "say",
@@ -251,7 +251,7 @@
     },
     {
       "t": "narrate",
-      "text": "Olivia slides three forms across the desk. On each one the boxes have been filled in already in Faust's handwriting, which he doesn't remember doing."
+      "text": "[shot:insert desk]Olivia slides three forms across the desk. On each one the boxes have been filled in already in Faust's handwriting, which he doesn't remember doing."
     },
     {
       "t": "say",

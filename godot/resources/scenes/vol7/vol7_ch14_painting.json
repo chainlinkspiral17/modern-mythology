@@ -116,7 +116,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl."
+      "text": "[shot:insert bowl]She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl."
     },
     {
       "t": "narrate",
@@ -509,7 +509,7 @@
       "t": "narrate"
     },
     {
-      "text": "The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred.",
+      "text": "[shot:insert brush]The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred.",
       "t": "narrate"
     },
     {

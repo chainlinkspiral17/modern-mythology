@@ -439,3 +439,15 @@ metadata/fov = 35.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 1.55, -11.45)
 rotation = Vector3(-0.328, 1.084, 0.0)
 metadata/fov = 42.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_liquor__chau_game_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-8.071, 1.848, -12.166)
+rotation = Vector3(-0.1958, 1.8722, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_purse__chau_entry_morning" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.971, 1.182, -1.540)
+rotation = Vector3(-0.2618, 1.1681, 0.0)
+metadata/fov = 35.0

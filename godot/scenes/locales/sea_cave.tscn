@@ -331,3 +331,9 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_detector__riverbed_sand" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(198.000, 0.416, -2.462)
+rotation = Vector3(-0.2618, -0.4523, 0.0)
+metadata/fov = 35.0

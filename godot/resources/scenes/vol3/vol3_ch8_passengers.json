@@ -109,7 +109,7 @@
     },
     {
       "t": "narrate",
-      "text": "He recognized the sound of his garage door opening, closing behind them. He was home."
+      "text": "[shot:insert door]He recognized the sound of his garage door opening, closing behind them. He was home."
     },
     {
       "t": "bg",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aaron Cauther helping his friend up out of the back seat. Steven cursing at him, at the smell of what, he is not sure, saying softly, whathufuckishat smell."
+      "text": "[shot:insert seat]Aaron Cauther helping his friend up out of the back seat. Steven cursing at him, at the smell of what, he is not sure, saying softly, whathufuckishat smell."
     },
     {
       "t": "bg",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aaron went inside the small market, bleached white light, smelling of burnt popcorn and windex. The kid behind the counter raised his eyebrows at Aaron as if that was word or warning enough."
+      "text": "[shot:insert counter]Aaron went inside the small market, bleached white light, smelling of burnt popcorn and windex. The kid behind the counter raised his eyebrows at Aaron as if that was word or warning enough."
     },
     {
       "t": "narrate",
@@ -192,7 +192,7 @@
     },
     {
       "t": "narrate",
-      "text": "The mirror is scratched and spotted, the bulb above it humming a sick green."
+      "text": "[shot:insert mirror]The mirror is scratched and spotted, the bulb above it humming a sick green."
     },
     {
       "t": "narrate",
@@ -236,7 +236,7 @@
     },
     {
       "t": "narrate",
-      "text": "The gas station attendant yelling. Aaron thought because wasted Steven might be doing something stupid. Instead the attendant was focused on a homeless man squeegeeing the car windshield."
+      "text": "[shot:insert windshield]The gas station attendant yelling. Aaron thought because wasted Steven might be doing something stupid. Instead the attendant was focused on a homeless man squeegeeing the car windshield."
     },
     {
       "t": "narrate",
@@ -248,7 +248,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aaron threw the driftwood key rather hard at the attendant, walked over to the homeless fellow, took the squeegee from his hands and continued wiping. The homeless guy stumbled back, leaning against a pillar. The attendant just stood there while Aaron finished wiping."
+      "text": "[shot:insert squeegee]Aaron threw the driftwood key rather hard at the attendant, walked over to the homeless fellow, took the squeegee from his hands and continued wiping. The homeless guy stumbled back, leaning against a pillar. The attendant just stood there while Aaron finished wiping."
     },
     {
       "t": "narrate",

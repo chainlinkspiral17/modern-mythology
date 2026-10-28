@@ -35,7 +35,7 @@
   },
   {
    "t": "narrate",
-   "text": "The girls join them. Helen pushes Margaret into the seat next to Faust and sits next to Jacob. Emily puts her purse next to Faust and heads outside to join Wagner for a smoke."
+   "text": "[shot:insert seat]The girls join them. Helen pushes Margaret into the seat next to Faust and sits next to Jacob. Emily puts her purse next to Faust and heads outside to join Wagner for a smoke."
   },
   {
    "t": "show",
@@ -133,7 +133,7 @@
   },
   {
    "t": "narrate",
-   "text": "Wagner and Emily return to the table."
+   "text": "[shot:insert table]Wagner and Emily return to the table."
   },
   {
    "t": "hide",

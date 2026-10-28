@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust gets up to get his paint. He returns and prepares behind her."
+      "text": "[shot:insert paint]Faust gets up to get his paint. He returns and prepares behind her."
     },
     {
       "t": "say",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "John strokes her back with his brush."
+      "text": "[shot:insert brush]John strokes her back with his brush."
     },
     {
       "t": "cg",

@@ -312,7 +312,7 @@
       "t": "say"
     },
     {
-      "text": "The crow tapped the table once with its beak.",
+      "text": "[shot:insert table]The crow tapped the table once with its beak.",
       "t": "narrate"
     },
     {
