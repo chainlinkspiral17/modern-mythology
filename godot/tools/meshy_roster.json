@@ -8432,13 +8432,36 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Builder glass colour (0.50,0.58,0.52) is 'the cedars' grey-green'; berm rising to the forest from the builder. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Builder glass colour (0.50,0.58,0.52) is 'the cedars' grey-green'; berm rising to the forest from the builder. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-10-28) Also laid in the bed view (cabin_interior_bed.tscn instances the same set; HeroArt keys rows by scene file, so the window above the bed had no picture where the line is read).",
       "art_cat": "WINDOW",
       "score_lines": 2131,
       "score_mentions": 35,
       "apply": [
         {
           "locale": "cabin_interior",
+          "label": "EBed_Win_Glass",
+          "center": [
+            3.85,
+            1.45,
+            1.75
+          ],
+          "size": [
+            1.46,
+            1.02
+          ],
+          "facing": "-x",
+          "hide": [
+            "EBed_Win_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        },
+        {
+          "locale": "cabin_interior_bed",
           "label": "EBed_Win_Glass",
           "center": [
             3.85,
@@ -8664,6 +8687,12 @@
           "facing": "-y",
           "hide": [
             "North_Window_E_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
           ]
         }
       ]
@@ -8703,6 +8732,12 @@
           "facing": "-x",
           "hide": [
             "Window_E_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
           ]
         }
       ]
@@ -58541,6 +58576,7 @@
             "South_Window_W_Warm"
           ],
           "not_presets": [
+            "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day"
@@ -58591,6 +58627,7 @@
             "South_Window_E_Warm"
           ],
           "not_presets": [
+            "cabin_interior",
             "cabin_porch",
             "cabin_porch_dawn",
             "cabin_porch_day"
@@ -58640,7 +58677,13 @@
             1.01
           ],
           "facing": "-y",
-          "hide": []
+          "hide": [],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
         }
       ]
     },
@@ -58679,6 +58722,12 @@
           "facing": "+x",
           "hide": [
             "West_Window_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
           ]
         }
       ]
@@ -58718,6 +58767,12 @@
           "facing": "+x",
           "hide": [
             "Gable_W_Win_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
           ]
         }
       ]
@@ -58757,6 +58812,12 @@
           "facing": "-x",
           "hide": [
             "Gable_E_Win_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
           ]
         }
       ]
@@ -58801,6 +58862,12 @@
           "facing": "-y",
           "hide": [
             "Loft_Window_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
           ]
         }
       ]
@@ -59677,6 +59744,771 @@
           ],
           "facing": "-y",
           "hide": []
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_south_window_w_night",
+      "kind": "art",
+      "name": "the view south from the cabin's big front window: the porch, the clearing, the cedars — at night",
+      "file": "cabin_interior_south_window_w_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_south_window_w_night"
+      ],
+      "tag": "window · cabin_interior · 1.78 x 1.06 m · 2131 lines play here, 18 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking south out of an old cedar cabin's front window at night in the Oregon Coast Range: the porch rail and two posts close outside, lit warm amber by the cabin's own window light, a square of yellow lamplight lying on the wet porch boards; beyond, the dark gravel clearing with the black shape of an older pickup truck beaded with rain catching a little of the light; past it the black wall of cedar and Sitka spruce against a deep blue-black sky; steady rain streaks caught in the light. Kerosene-warm near, cold blue-black far. Low light, no moon.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_south_window_w: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 18,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_south_window_w",
+          "center": [
+            -2.0,
+            0.07,
+            1.45
+          ],
+          "size": [
+            1.78,
+            1.06
+          ],
+          "facing": "+y",
+          "hide": [
+            "South_Window_W_Glass",
+            "South_Window_W_Warm"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_south_window_e_night",
+      "kind": "art",
+      "name": "the view south from the cabin's smaller front window: porch post and cedars — at night",
+      "file": "cabin_interior_south_window_e_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_south_window_e_night"
+      ],
+      "tag": "window · cabin_interior · 1.03 x 1.01 m · 2131 lines play here, 18 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking south out of a small window of a cedar cabin at night: one porch post and the end of the rail lit warm amber by the window's own light, rain dripping off the porch roof edge in bright drops, then darkness — the faint black silhouettes of cedars against a deep blue-black sky. Near-square. Low light.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_south_window_e: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 18,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_south_window_e",
+          "center": [
+            2.25,
+            0.07,
+            1.45
+          ],
+          "size": [
+            1.03,
+            1.01
+          ],
+          "facing": "+y",
+          "hide": [
+            "South_Window_E_Glass",
+            "South_Window_E_Warm"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_kitchen_window_night",
+      "kind": "art",
+      "name": "the view north from the cabin's kitchen window: mist on the cedars — at night",
+      "file": "cabin_interior_kitchen_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_kitchen_window_night"
+      ],
+      "tag": "window · cabin_interior · 1.68 x 1.01 m · 2131 lines play here, 3 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking north out of a cabin's kitchen window at night: the dark clearing behind the cabin, only the nearest sword ferns and a mossy log touched by the window's warm light, then the black trunks of cedar fading into darkness, a faint cold-blue sky between the crowns, rain. Very low light, warm near edge, blue-black beyond.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_kitchen_window: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 3,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_kitchen_window",
+          "center": [
+            -2.6,
+            7.93,
+            1.48
+          ],
+          "size": [
+            1.68,
+            1.01
+          ],
+          "facing": "-y",
+          "hide": [],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_west_window_night",
+      "kind": "art",
+      "name": "the view west out of the cabin's side window — at night",
+      "file": "cabin_interior_west_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_west_window_night"
+      ],
+      "tag": "window · cabin_interior · 0.96 x 0.96 m · 2131 lines play here, 0 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking west out of a small side window of a cedar cabin at night: a stacked woodpile under a lean-to just outside, caught in a little warm window light, then black forest and rain. Near-square. Very low light.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_west_window: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_west_window",
+          "center": [
+            -3.85,
+            7.1,
+            1.55
+          ],
+          "size": [
+            0.96,
+            0.96
+          ],
+          "facing": "+x",
+          "hide": [
+            "West_Window_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_gable_w_night",
+      "kind": "art",
+      "name": "the sky and cedar crowns through the cabin's west gable window — at night",
+      "file": "cabin_interior_gable_w_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_gable_w_night"
+      ],
+      "tag": "window · cabin_interior · 1.16 x 0.86 m · 2131 lines play here, 0 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking up and out of a high gable window of a cabin at night: the black crowns of cedar and spruce against a deep blue-black overcast sky with a faint glow where the cloud is thinnest, rain. Very dark, cool blues.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_gable_w: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_gable_w",
+          "center": [
+            -3.85,
+            4.0,
+            4.75
+          ],
+          "size": [
+            1.16,
+            0.86
+          ],
+          "facing": "+x",
+          "hide": [
+            "Gable_W_Win_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_gable_e_night",
+      "kind": "art",
+      "name": "the sky and cedar crowns through the cabin's east gable window — at night",
+      "file": "cabin_interior_gable_e_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_gable_e_night"
+      ],
+      "tag": "window · cabin_interior · 1.16 x 0.86 m · 2131 lines play here, 0 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking up and out of a high east gable window of a cabin at night: black spruce crowns against a deep blue-black sky, low cloud barely lighter than the trees, rain. Very dark, cool blues.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_gable_e: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_gable_e",
+          "center": [
+            3.85,
+            4.0,
+            4.75
+          ],
+          "size": [
+            1.16,
+            0.86
+          ],
+          "facing": "-x",
+          "hide": [
+            "Gable_E_Win_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_loft_window_night",
+      "kind": "art",
+      "name": "the view out of the loft window above the kitchen — at night",
+      "file": "cabin_interior_loft_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_loft_window_night"
+      ],
+      "tag": "window · cabin_interior · 0.76 x 0.56 m · 2131 lines play here, 0 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking out of a small loft window under a cabin's eaves at night: the dripping edge of the cedar-shake roof catching a thread of warm light from inside, then the dark boughs of red cedar close by, rain, darkness. Very low light.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_loft_window: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "cabin_interior_loft_window",
+          "center": [
+            -2.6,
+            7.85,
+            2.85
+          ],
+          "size": [
+            0.76,
+            0.56
+          ],
+          "facing": "-y",
+          "hide": [
+            "Loft_Window_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_north_window_night",
+      "kind": "art",
+      "name": "the view north out of the cabin's window by the stove — at night",
+      "file": "cabin_interior_north_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_north_window_night"
+      ],
+      "tag": "window · cabin_interior · 1.06 x 0.96 m · 2131 lines play here, 35 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking north out of a cabin window by the wood stove at night: the stove's orange glow faintly touching the nearest salmonberry leaves and a wet stump outside, then darkness; the sound-shape of a creek implied by a pale glint of water on gravel far back; black cedars, rain. Very low light, warm near, black far.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_north_window: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 35,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "North_Window",
+          "center": [
+            1.95,
+            7.85,
+            1.8
+          ],
+          "size": [
+            1.06,
+            0.96
+          ],
+          "facing": "-y",
+          "hide": [
+            "North_Window_E_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cabin_interior_window_night",
+      "kind": "art",
+      "name": "the view east out of the cabin's main-room window — at night",
+      "file": "cabin_interior_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cabin_interior_window_night"
+      ],
+      "tag": "window · cabin_interior · 1.24 x 0.94 m · 2131 lines play here, 35 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking east out of a cabin's main-room window at night: the edge of the muddy clearing faintly lit by the window's warm light, the dark trunk of a big Sitka spruce close by with fern at its foot, black forest rising behind into a deep blue-black sky, rain, mist. Low light.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The light from the cabin's south window threw a square of yellow onto the porch boards."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch20_calls.json",
+          "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch13_marina.json",
+          "text": "The rain on the cedar roof had been steady since seven."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of cabin_interior_window: cabin_interior is the kerosene-lit night view (668 of its 1017 lines are candlelight), where a daylight window read wrong. Laid only in cabin_interior.",
+      "art_cat": "WINDOW",
+      "score_lines": 2131,
+      "score_mentions": 35,
+      "apply": [
+        {
+          "locale": "cabin_interior",
+          "label": "Window",
+          "center": [
+            3.85,
+            6.2,
+            1.6
+          ],
+          "size": [
+            1.24,
+            0.94
+          ],
+          "facing": "-x",
+          "hide": [
+            "Window_E_Glass"
+          ],
+          "not_presets": [
+            "cabin_interior_day",
+            "cabin_porch",
+            "cabin_porch_dawn",
+            "cabin_porch_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_front_window_night",
+      "kind": "art",
+      "name": "the street below Lena's front window — at night",
+      "file": "lena_apartment_front_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_front_window_night"
+      ],
+      "tag": "window · lena_apartment · 1.08 x 1.26 m · 941 lines play here, 2 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking down from a second-floor apartment window at night onto a small-town street on the Oregon coast in the 2050s: wet asphalt shining under a streetlamp, the curb below, the dark shopfronts across the street with one lit upstairs window, rain falling through the lamplight. Deep blue night, sodium-warm pools. 1:1.2 portrait.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch10_morning.json",
+          "text": "Kai could hear the early traffic on Hemlock."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch10_morning.json",
+          "text": "He had stood at the window with the water for some minutes."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of lena_apartment_front_window, laid only in lena_apartment_night (the day picture stays off it).",
+      "art_cat": "WINDOW",
+      "score_lines": 941,
+      "score_mentions": 2,
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "lena_apartment_front_window",
+          "center": [
+            2.0,
+            0.07,
+            1.42
+          ],
+          "size": [
+            1.08,
+            1.26
+          ],
+          "facing": "+y",
+          "hide": [],
+          "not_presets": [
+            "lena_apartment"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_nook_window_0_night",
+      "kind": "art",
+      "name": "the view north from Lena's nook windows (left) — at night",
+      "file": "lena_apartment_nook_window_0_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_nook_window_0_night"
+      ],
+      "tag": "window · lena_apartment · 1.03 x 1.36 m · 941 lines play here, 0 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking out of a tall second-floor window at the back of an old building at night: the dark wet roof of the next building below with a rooftop heat-pump unit's small green status light, pitched roofs and chimneys climbing a hill in silhouette, a few warm windows, a black spruce ridge against a deep blue overcast sky, rain. 1:1.3 portrait.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch10_morning.json",
+          "text": "Kai could hear the early traffic on Hemlock."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch10_morning.json",
+          "text": "He had stood at the window with the water for some minutes."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of lena_apartment_nook_window_0, laid only in lena_apartment_night (the day picture stays off it).",
+      "art_cat": "WINDOW",
+      "score_lines": 941,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "lena_apartment_nook_window_0",
+          "center": [
+            0.75,
+            6.53,
+            1.5
+          ],
+          "size": [
+            1.03,
+            1.36
+          ],
+          "facing": "-y",
+          "hide": [],
+          "not_presets": [
+            "lena_apartment"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_nook_window_1_night",
+      "kind": "art",
+      "name": "the view north from Lena's nook windows (right) — at night",
+      "file": "lena_apartment_nook_window_1_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_nook_window_1_night"
+      ],
+      "tag": "window · lena_apartment · 1.03 x 1.36 m · 941 lines play here, 0 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking out of a tall second-floor window at night: the shingled side wall of the neighbouring house across a narrow gap with one warm lit upstairs window, a downspout glinting with rain, the black shape of a bigleaf maple, a deep blue overcast sky above the rooftops. 1:1.3 portrait.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch10_morning.json",
+          "text": "Kai could hear the early traffic on Hemlock."
+        },
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch10_morning.json",
+          "text": "He had stood at the window with the water for some minutes."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of lena_apartment_nook_window_1, laid only in lena_apartment_night (the day picture stays off it).",
+      "art_cat": "WINDOW",
+      "score_lines": 941,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "lena_apartment_nook_window_1",
+          "center": [
+            2.35,
+            6.53,
+            1.5
+          ],
+          "size": [
+            1.03,
+            1.36
+          ],
+          "facing": "-y",
+          "hide": [],
+          "not_presets": [
+            "lena_apartment"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "finn_apartment_south_window_night",
+      "kind": "art",
+      "name": "the town to the south from Finn's kitchen window — at night",
+      "file": "finn_apartment_south_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "finn_apartment_south_window_night"
+      ],
+      "tag": "window · finn_apartment · 0.76 x 0.81 m · 303 lines play here, 3 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking south out of a second-floor kitchen window at night over a small Oregon coast town: wet rooftops and chimneys in silhouette with scattered warm windows, streetlamps on the wet streets, and far off on a dark bluff a tall tower with a faint green glow on its top floor among black spruce; the sea a darker band beyond. Rain, deep blue night. Near-square.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch12_kai.json",
+          "text": "The kitchen window faced south. South was the direction of Cape Perpetua, the Starfish Nebula, Kai's apartment, Tem's apartment, the tower on the bluff above old-Yachats. The face was looking out at the town."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of finn_apartment_south_window, laid only in finn_apartment_night (the day picture stays off it).",
+      "art_cat": "WINDOW",
+      "score_lines": 303,
+      "score_mentions": 3,
+      "apply": [
+        {
+          "locale": "finn_apartment",
+          "label": "finn_apartment_south_window",
+          "center": [
+            1.8,
+            0.0,
+            1.55
+          ],
+          "size": [
+            0.76,
+            0.81
+          ],
+          "facing": "+y",
+          "hide": [
+            "S_Window_Glass"
+          ],
+          "not_presets": [
+            "finn_apartment",
+            "finn_apartment_day"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "finn_apartment_alley_window_night",
+      "kind": "art",
+      "name": "the alley below Finn's west kitchen window — at night",
+      "file": "finn_apartment_alley_window_night.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "finn_apartment_alley_window_night"
+      ],
+      "tag": "window · finn_apartment · 0.96 x 0.86 m · 303 lines play here, 1 mention it",
+      "prompt": "Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking down from a second-floor window at night into a narrow wet alley behind a small kayak shop: stacked sea kayaks under a lean-to lit by one caged bulb over a back door, puddles reflecting it, a dumpster, the black back wall of the next building, rain. Near-square.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol7/vol7_ch12_morning.json",
+          "text": "He stood at the kitchen window looking down at the alley."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-28) Pass 207. The night view of finn_apartment_alley_window, laid only in finn_apartment_night (the day picture stays off it).",
+      "art_cat": "WINDOW",
+      "score_lines": 303,
+      "score_mentions": 1,
+      "apply": [
+        {
+          "locale": "finn_apartment",
+          "label": "finn_apartment_alley_window",
+          "center": [
+            -4.2,
+            2.2,
+            1.55
+          ],
+          "size": [
+            0.96,
+            0.86
+          ],
+          "facing": "+x",
+          "hide": [
+            "Kitchen_Window_Glass"
+          ],
+          "not_presets": [
+            "finn_apartment",
+            "finn_apartment_day"
+          ]
         }
       ]
     }
