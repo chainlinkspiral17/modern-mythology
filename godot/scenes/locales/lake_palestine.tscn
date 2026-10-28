@@ -338,8 +338,8 @@ metadata/fov = 42.0
 
 ; insert: the cleat she had, at six, decided was boring
 [node name="shot_insert_cleat" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.1, 14.2)
-rotation = Vector3(-0.2827, 2.9364, 0.0)
+position = Vector3(-0.048, 0.832, 15.262)
+rotation = Vector3(-0.2618, -2.3747, 0.0)
 metadata/fov = 42.0
 
 ; insert: the sandwiches in the cooler in the bed
