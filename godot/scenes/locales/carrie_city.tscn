@@ -288,6 +288,13 @@ light_energy = 0.6
 shadow_enabled = false
 omni_range = 4.0
 
+[node name="Bath_Bulb_Light__afterparty_bathroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.6, 2.40, -11.0)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 4.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -431,3 +438,9 @@ metadata/fov = 40.0
 position = Vector3(47.888, 1.008, -9.881)
 rotation = Vector3(-0.3129, 0.1488, 0.0)
 metadata/fov = 35.0
+
+; (2026-10-28) cc_3: "Charlie leans up against the wall, looks at himself in the mirror. Someone has drawn a face with a sharpie marker."
+[node name="shot_insert_mirror__afterparty_bathroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(59.900, 1.620, -11.300)
+rotation = Vector3(-0.0408, -1.1759, 0.0)
+metadata/fov = 40.0

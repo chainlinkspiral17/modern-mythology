@@ -25,8 +25,10 @@ nothing later than that (no smartphones, no flat screens on walls).
 Blender: x east, y north, z up; Godot (x, z, -y). Each area keeps its city
 or street inside 200 m (the VN camera's far plane).
 
-DRAFT 2 targets: the flat's kitchen; Paradise Lost (the club) and its
-bathroom as their own area; the sister's street with its neighbours;
+(2026-10-28) the after party's grungy bathroom off the loft's east wall
+(cc_3: "Someone has drawn a face with a sharpie marker") → afterparty_bathroom.
+
+DRAFT 2 targets: the flat's kitchen; Paradise Lost (the club) as its own area; the sister's street with its neighbours;
 the two children's room; Deck framing.
 """
 import os, sys, math
@@ -144,7 +146,10 @@ def build_party():
                             baseboard_face_sign=+1, openings=[(44.0, 2.2, 2.2, 2.4), (50.0, 2.2, 2.2, 2.4), (56.0, 1.1, 1.0, 2.2)])
     make_wall("Loft_Wall_N", (49.0, y1, 0), length=18.0 + T, height=H, thickness=T, axis='X', palette=LOFT, baseboard_face_sign=-1)
     make_wall("Loft_Wall_W", (x0, 7.0, 0), length=14.0 - T, height=H, thickness=T, axis='Y', palette=LOFT, baseboard_face_sign=+1)
-    make_wall("Loft_Wall_E", (x1, 7.0, 0), length=14.0 - T, height=H, thickness=T, axis='Y', palette=LOFT, baseboard_face_sign=-1)
+    # (2026-10-28) the door to the grungy bathroom at y 11 (build_party_bathroom)
+    make_wall_with_openings("Loft_Wall_E", (x1, 7.0, 0), length=14.0 - T, height=H, thickness=T, axis='Y', palette=LOFT,
+                            baseboard_face_sign=-1, openings=[(11.0, 1.05, 0.9, 2.1)])
+    make_box("Bathroom_Door_Open", (x1 + 0.45, 11.45 + 0.0, 1.05), (0.04, 0.84, 2.06), (0.30, 0.26, 0.24, 1.0))
     for nm, al in (("Loft_Window_A", 44.0), ("Loft_Window_B", 50.0)):
         window_frame(nm, 'X', al, y0, 2.2, 2.2, 2.4)
     make_box("Loft_Door_Shut", (56.0, y0, 1.1), (0.96, 0.05, 2.2), (0.30, 0.26, 0.24, 1.0))
@@ -199,6 +204,75 @@ def build_party():
         for j in range(4):
             make_box(f"Loft_Across_Window_Glow_{k}_{j}", (40.6 + k * 6.0 + (j % 2) * 2.4, -15.48, 4.0 + (j // 2) * 3.4), (1.0, 0.04, 1.4),
                      ((1.0, 0.80, 0.50, 1.0), (0.14, 0.14, 0.16, 1.0))[(j + k) % 2])
+
+
+def build_party_bathroom():
+    """(2026-10-28, cc_3 "A Grungy Bathroom") off the loft's east wall:
+    x 58..61.2, y 9..13. "Charlie leans up against the wall, looks at
+    himself in the mirror. Someone has drawn a face with a sharpie marker.
+    His reflection framed most peculiar." An after party's bathroom:
+    graffiti over cracked tile, a bare bulb, a tub of ice and cans, a torn
+    shower curtain, a towel on the floor."""
+    bx0, bx1, by0, by1, bh = 58.0, 61.2, 9.0, 13.0, 2.6
+    TILE = (0.70, 0.74, 0.68, 1.0)
+    GRUNGE = {"wall": TILE, "baseboard": (0.36, 0.36, 0.32, 1.0)}
+    make_floor("Bath_Floor", ((bx0 + bx1) / 2, (by0 + by1) / 2, 0.0), size_x=bx1 - bx0, size_y=by1 - by0,
+               palette={"vinyl": (0.52, 0.50, 0.44, 1.0), "seam": (0.30, 0.28, 0.24, 1.0)})
+    make_box("Bath_Ceil", ((bx0 + bx1) / 2, (by0 + by1) / 2, bh + 0.04), (bx1 - bx0 + 0.2, by1 - by0 + 0.2, 0.08), (0.62, 0.60, 0.54, 1.0))
+    make_wall("Bath_Wall_E", (bx1, (by0 + by1) / 2, 0), length=by1 - by0, height=bh, thickness=T, axis='Y', palette=GRUNGE, baseboard_face_sign=-1)
+    make_wall("Bath_Wall_N", ((bx0 + bx1) / 2, by1, 0), length=bx1 - bx0 + T, height=bh, thickness=T, axis='X', palette=GRUNGE, baseboard_face_sign=-1)
+    make_wall("Bath_Wall_S", ((bx0 + bx1) / 2, by0, 0), length=bx1 - bx0 + T, height=bh, thickness=T, axis='X', palette=GRUNGE, baseboard_face_sign=+1)
+    for k in range(9):
+        make_box(f"Bath_Tile_Line_{k}", (bx1 - T / 2 - 0.006, (by0 + by1) / 2, 0.15 + k * 0.15), (0.004, by1 - by0, 0.008), (0.48, 0.50, 0.46, 1.0))
+    # the sink and the mirror with the sharpie face
+    sy = 11.8
+    make_box("Bath_Sink_Basin", (bx1 - 0.32, sy, 0.84), (0.46, 0.56, 0.16), (0.90, 0.90, 0.86, 1.0))
+    make_box("Bath_Sink_Pedestal", (bx1 - 0.30, sy, 0.40), (0.18, 0.20, 0.76), (0.88, 0.88, 0.84, 1.0))
+    make_cyl("Bath_Sink_Faucet", (bx1 - 0.12, sy, 0.98), 0.02, 0.14, (0.66, 0.66, 0.68, 1.0), segments=8)
+    make_box("Mirror_Glass", (bx1 - T / 2 - 0.01, sy, 1.55), (0.02, 0.62, 0.80), (0.70, 0.76, 0.78, 1.0))
+    make_box("Mirror_Frame", (bx1 - T / 2 - 0.005, sy, 1.55), (0.015, 0.70, 0.88), (0.30, 0.28, 0.26, 1.0))
+    # the sharpie face on the glass: two eyes, a nose, a mouth, a head outline
+    INK = (0.06, 0.06, 0.08, 1.0)
+    gx = bx1 - T / 2 - 0.022
+    for s in (-1, 1):
+        make_box(f"Mirror_Sharpie_Eye_{s:+d}", (gx, sy + s * 0.09, 1.66), (0.003, 0.05, 0.03), INK)
+    make_box("Mirror_Sharpie_Nose", (gx, sy, 1.58), (0.003, 0.012, 0.07), INK)
+    make_box("Mirror_Sharpie_Mouth", (gx, sy, 1.47), (0.003, 0.16, 0.012), INK)
+    for k in range(10):
+        a = k * math.tau / 10.0
+        make_box(f"Mirror_Sharpie_Head_{k}", (gx, sy + math.cos(a) * 0.20, 1.56 + math.sin(a) * 0.26), (0.003, 0.05, 0.012), INK)
+    # graffiti and stickers over the tile, the bare bulb
+    r_cols = ((0.86, 0.20, 0.30, 1.0), (0.20, 0.30, 0.80, 1.0), (0.10, 0.10, 0.10, 1.0), (0.96, 0.80, 0.20, 1.0))
+    for k in range(14):
+        wy = by0 + 0.3 + (k * 0.73) % (by1 - by0 - 0.6)
+        wz = 0.9 + (k * 0.37) % 1.4
+        make_box(f"Bath_Graffiti_{k}", (bx1 - T / 2 - 0.004, wy, wz), (0.003, 0.18 + (k % 3) * 0.08, 0.05 + (k % 2) * 0.06), r_cols[k % 4])
+    for k in range(8):
+        make_box(f"Bath_Sticker_{k}", (bx0 + 0.4 + k * 0.33, by0 + T / 2 + 0.004, 1.2 + (k % 3) * 0.3), (0.10, 0.003, 0.08), r_cols[(k + 1) % 4])
+    make_cyl("Bath_Bulb", ((bx0 + bx1) / 2, (by0 + by1) / 2, bh - 0.12), 0.05, 0.10, (1.0, 0.94, 0.78, 1.0), segments=10)
+    make_cyl("Bath_Bulb_Socket", ((bx0 + bx1) / 2, (by0 + by1) / 2, bh - 0.03), 0.04, 0.06, (0.20, 0.20, 0.20, 1.0), segments=8)
+    # the toilet, the roll, the plunger
+    make_box("Bath_Toilet_Bowl", (bx1 - 0.40, 9.6, 0.22), (0.56, 0.38, 0.44), (0.90, 0.90, 0.86, 1.0))
+    make_box("Bath_Toilet_Tank", (bx1 - 0.16, 9.6, 0.62), (0.18, 0.46, 0.40), (0.90, 0.90, 0.86, 1.0))
+    make_box("Bath_Toilet_Lid_Up", (bx1 - 0.26, 9.6, 0.70), (0.04, 0.36, 0.42), (0.86, 0.86, 0.82, 1.0))
+    make_cyl("Bath_TP_Roll", (bx1 - 0.10, 10.15, 0.70), 0.05, 0.10, (0.94, 0.94, 0.90, 1.0), segments=10, axis='Y')
+    make_cyl("Bath_Plunger_Handle", (bx1 - 0.14, 10.4, 0.30), 0.012, 0.56, (0.50, 0.32, 0.18, 1.0), segments=6)
+    make_cyl("Bath_Plunger_Cup", (bx1 - 0.14, 10.4, 0.04), 0.07, 0.08, (0.66, 0.14, 0.14, 1.0), segments=10)
+    # the tub along the north wall: ice, cans, the torn curtain
+    tx0, tx1 = bx0 + 0.25, bx1 - 0.15
+    make_box("Bath_Tub", ((tx0 + tx1) / 2, by1 - 0.40, 0.26), (tx1 - tx0, 0.72, 0.52), (0.88, 0.88, 0.84, 1.0))
+    make_box("Bath_Tub_Ice", ((tx0 + tx1) / 2, by1 - 0.40, 0.46), (tx1 - tx0 - 0.12, 0.60, 0.04), (0.84, 0.90, 0.94, 1.0))
+    for k in range(12):
+        make_cyl(f"Bath_Tub_Can_{k}", (tx0 + 0.20 + k * 0.22, by1 - 0.40 + ((k % 3) - 1) * 0.16, 0.52), 0.033, 0.12,
+                 ((0.80, 0.10, 0.14, 1.0), (0.80, 0.80, 0.84, 1.0), (0.14, 0.30, 0.66, 1.0))[k % 3], segments=8)
+    make_box("Bath_Curtain_Rod", ((tx0 + tx1) / 2, by1 - 0.78, 2.05), (tx1 - tx0, 0.02, 0.02), (0.66, 0.66, 0.68, 1.0))
+    make_box("Bath_Curtain_Torn", (tx0 + 0.45, by1 - 0.78, 1.45), (0.80, 0.01, 1.20), (0.46, 0.66, 0.70, 1.0))
+    # a towel on the floor, red cups, a bottle on the cistern
+    make_box("Bath_Towel_Floor", (bx0 + 0.9, 10.2, 0.02), (0.70, 0.46, 0.04), (0.70, 0.52, 0.30, 1.0))
+    for k in range(3):
+        make_cyl(f"Bath_Red_Cup_{k}", (bx0 + 0.4 + k * 0.5, 9.4 + (k % 2) * 0.3, 0.06), 0.045, 0.12, (0.80, 0.12, 0.14, 1.0), segments=8)
+    make_lathe("Bath_Bottle_On_Tank", (bx1 - 0.16, 9.45, 0.82), [(0.0, 0.0), (0.035, 0.0), (0.035, 0.18), (0.012, 0.24), (0.0, 0.24)],
+               (0.30, 0.40, 0.24, 1.0), segments=8)
 
 
 def build_sister_house():
@@ -296,6 +370,7 @@ def main():
     clear_scene()
     build_flat()
     build_party()
+    build_party_bathroom()
     build_sister_house()
     try:
         join_stock()

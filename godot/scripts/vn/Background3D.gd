@@ -4283,6 +4283,17 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
 		"suppress_input": true,
 	},
+	# (2026-10-28) cc_3 "A Grungy Bathroom": the after party's bathroom off the
+	# loft's east wall — the mirror with the sharpie face over the sink, the
+	# tub of ice and cans. It played on vol 6's NexCorp restroom.
+	"afterparty_bathroom": {
+		"scene": "res://scenes/locales/carrie_city.tscn",
+		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
+		"camera_origin": Vector3(58.4, 1.6, -10.3),
+		"camera_rotation": Vector3(-0.05, -1.09, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"afterparty_room": {
 		"scene": "res://scenes/locales/carrie_city.tscn",
 		"requires_glb": "res://assets/3d/locales/carrie_city.glb",

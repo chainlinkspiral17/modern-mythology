@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 211: THE AFTER PARTY'S BATHROOM (vol 4 cc_3, draft 1).**
+- **Before:** "A Grungy Bathroom" played on vol 6's NexCorp gas-station restroom.
+- **Now:** a bathroom off the after party's loft in `carrie_city`, through a door cut in the loft's east wall:
+  - the mirror over the sink with the sharpie face ("Someone has drawn a face with a sharpie marker");
+  - graffiti and stickers over cracked tile;
+  - a bare bulb;
+  - the tub of ice and cans, a torn curtain;
+  - a towel and red cups on the floor;
+  - the plunger.
+- Preset `afterparty_bathroom` with its bulb light; insert `shot_insert_mirror__afterparty_bathroom`.
+- Gates at zero; perf baseline updated.
+- **Draft 2:** the sharpie face as hero art on the glass; Charlie's reflection.
+
 **2026-10-28 · pass 210: HONOLULU (vol 3 ch 6 arcadeum) gets its own set (draft 1).**
 - **Before:** June's job interview played on vol 7's 2052 cedar tower lobby and vol 6's 2026 Cosmic Comics.
 - **New `honolulu_highrise`** (early 2000s), from the text:

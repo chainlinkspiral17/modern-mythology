@@ -1,2016 +1,2019 @@
 {
- "_comment": [
-  "BG PLACES (2026-10-16): the vols 1-4 scenes (branch claude/vol1-4-source-text) name",
-  "flat pictures — assets/backgrounds/<stem>.jpg — that were never made. GameEngine._do_bg looks the",
-  "stem up here and plays the 3D set instead, so those scenes render without editing their JSON.",
-  "fit: exact (the place) · reuse (an existing set that is this kind of place) · standin (the nearest",
-  "set until its 'build' locale exists) · 2d (stays a picture; to: null until it is painted).",
-  "When a build group's locale lands, point its stems at the new presets and change fit to exact.",
-  "Plan and priorities: lore/_VOL1_4_SETS_AND_CAST.md.",
-  "by_scene (2026-10-17): {scene_id: '3d:<preset>'} picks a different view of the same place for one scene (the sleep lab at work vs. at night)."
- ],
- "places": {
-  "vol1_above_the_record": {
-   "fit": "2d",
-   "to": null,
-   "note": "abstract",
-   "scenes": 1
-  },
-  "vol1_bar_exterior_night": {
-   "fit": "exact",
-   "to": "3d:bar_exterior_night",
-   "scenes": 2
-  },
-  "vol1_bar_interior": {
-   "fit": "exact",
-   "to": "3d:new_orleans_bar",
-   "scenes": 2
-  },
-  "vol1_battle_painting": {
-   "fit": "2d",
-   "to": null,
-   "note": "Joan Charging Off Into Battle — the painting itself",
-   "scenes": 1
-  },
-  "vol1_city_color_night": {
-   "fit": "exact",
-   "to": "3d:club_street_curb",
-   "build": "club_street",
-   "note": "the street outside Club #: the curb and Judgement Day; the door (ch8); the neon (the meld)",
-   "scenes": 3,
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol1_ch8_triumvirate": "3d:club_street_door",
-    "meld_kaleidoscope_a": "3d:club_street_neon_wide"
-   }
-  },
-  "vol1_club_dance": {
-   "fit": "exact",
-   "to": "3d:foxhole_stage",
-   "note": "aligned with the 3D vol1 scenes",
-   "scenes": 1
-  },
-  "vol1_club_office_night": {
-   "fit": "exact",
-   "to": "3d:club_office",
-   "build": "dean_offices",
-   "note": "Dean's back office in Club #: the shirts, the four devices; Aria at rest under a sheet",
-   "scenes": 2,
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol1_ch8_triumvirate": "3d:club_office_after"
-   }
-  },
-  "vol1_club_sharp": {
-   "fit": "exact",
-   "to": "3d:club_sharp",
-   "scenes": 3
-  },
-  "vol1_club_sharp_empty": {
-   "fit": "exact",
-   "to": "3d:club_sharp",
-   "note": "the club after hours",
-   "scenes": 2
-  },
-  "vol1_deep_end_pool": {
-   "fit": "2d",
-   "to": null,
-   "note": "the deep end: an empty pool, the corpse-painted boy — a painted plate",
-   "scenes": 1
-  },
-  "vol1_dream_bar": {
-   "fit": "reuse",
-   "to": "3d:new_orleans_bar",
-   "note": "the bar dreamed",
-   "scenes": 2
-  },
-  "vol1_dream_bed": {
-   "fit": "reuse",
-   "to": "3d:faust_bedroom",
-   "scenes": 1
-  },
-  "vol1_drugstore_aisles": {
-   "fit": "exact",
-   "to": "3d:pharmacy_floor",
-   "note": "Act Three's drugstore hub",
-   "scenes": 2
-  },
-  "vol1_drugstore_purgatory": {
-   "fit": "reuse",
-   "to": "3d:pharmacy_floor",
-   "note": "the drugstore as purgatory: a mood, same aisles",
-   "scenes": 1
-  },
-  "vol1_editing_suite": {
-   "fit": "exact",
-   "to": "3d:suite_wide",
-   "build": "editing_suite",
-   "note": "the four's suite at Aud's: the frozen frame, the console, the couch, the window",
-   "scenes": 1,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol1_faust_apartment_day": {
-   "fit": "exact",
-   "to": "3d:faust_apartment_day",
-   "scenes": 5
-  },
-  "vol1_faust_bedroom_night": {
-   "fit": "exact",
-   "to": "3d:faust_bedroom",
-   "scenes": 5
-  },
-  "vol1_grandparents_montage": {
-   "fit": "reuse",
-   "to": "3d:riverfront_park",
-   "note": "aligned",
-   "scenes": 1
-  },
-  "vol1_hall_of_ratifications": {
-   "fit": "2d",
-   "to": null,
-   "note": "dream architecture",
-   "scenes": 1
-  },
-  "vol1_jacob_apartment": {
-   "fit": "exact",
-   "to": "3d:new_orleans_apartment",
-   "note": "aligned",
-   "scenes": 2
-  },
-  "vol1_jacob_house_ext_day": {
-   "fit": "exact",
-   "to": "3d:jacob_house_front",
-   "build": "wagner_home",
-   "note": "Jacob's, on another block, plain (apartment in ch2, house in ch5: the author's call)",
-   "scenes": 1,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol1_jd_driving_day": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab",
-   "note": "in the car, day",
-   "scenes": 1
-  },
-  "vol1_jd_driving_night": {
-   "fit": "exact",
-   "to": "3d:small_wood_road_night",
-   "note": "aligned",
-   "scenes": 1
-  },
-  "vol1_jd_river": {
-   "fit": "exact",
-   "to": "3d:jd_river",
-   "build": "houston_bayou",
-   "note": "the dream river: the shore things, the toll gate, the drugstore on the water (was vol 5 Graustark riverfront)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol1_missing_link_exterior": {
-   "fit": "exact",
-   "to": "3d:missing_link_exterior",
-   "scenes": 1
-  },
-  "vol1_missing_link_interior": {
-   "fit": "exact",
-   "to": "3d:missing_link_interior",
-   "scenes": 2
-  },
-  "vol1_office_day": {
-   "fit": "exact",
-   "to": "3d:onei_office",
-   "build": "dean_offices",
-   "note": "INT. THE OFFICE: the trio's new office (not Dean's - 'This is your new office'), three desks, the goggles",
-   "scenes": 2,
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol1_ch6_debrief": "3d:onei_office_door"
-   }
-  },
-  "vol1_painting_interior": {
-   "fit": "reuse",
-   "to": "3d:faust_apartment_day",
-   "note": "Faust painting at home",
-   "scenes": 1
-  },
-  "vol1_park_day": {
-   "fit": "exact",
-   "to": "3d:riverfront_park",
-   "scenes": 1
-  },
-  "vol1_pharmacy_floor": {
-   "fit": "exact",
-   "to": "3d:pharmacy_floor",
-   "scenes": 1
-  },
-  "vol1_pharmacy_office": {
-   "fit": "exact",
-   "to": "3d:pharmacy_office",
-   "scenes": 1
-  },
-  "vol1_river_turn": {
-   "fit": "exact",
-   "to": "3d:jd_river_turn",
-   "build": "houston_bayou",
-   "note": "the turn: no shore, Club # far off (was vol 5 Graustark riverfront)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol1_shuttle_bench": {
-   "fit": "exact",
-   "to": "3d:shuttle_bench",
-   "scenes": 8
-  },
-  "vol1_skatepark_day": {
-   "fit": "exact",
-   "to": "3d:skatepark_day",
-   "scenes": 1
-  },
-  "vol1_tutorial_lobby": {
-   "fit": "exact",
-   "to": "3d:tutorial_lobby",
-   "build": "dean_offices",
-   "note": "the tutorial: a lobby carved out of imagination, Olivia's console, the television",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol1_wagner_home": {
-   "fit": "exact",
-   "to": "3d:wagner_home",
-   "scenes": 2
-  },
-  "vol1_wagner_house_ext_day": {
-   "fit": "exact",
-   "to": "3d:wagner_house_steps",
-   "build": "wagner_home",
-   "note": "the steps and the open door, the album playing to an empty room",
-   "scenes": 1,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol1_wagner_porch_day": {
-   "fit": "exact",
-   "to": "3d:wagner_porch_morning",
-   "build": "wagner_home",
-   "note": "Wagner on his porch in the morning, reading and smoking",
-   "scenes": 1,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_apple_peddler_diner": {
-   "fit": "exact",
-   "to": "3d:apple_peddler_booth",
-   "build": "apple_peddler",
-   "scenes": 1,
-   "note": "the Apple Peddler: off the main drag, next to the Greyhound depot, open 24 hours",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_ark_hillside": {
-   "fit": "2d",
-   "to": null,
-   "note": "the ark on the hill: painted until a build is planned",
-   "scenes": 2
-  },
-  "vol2_art_classroom": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_art",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol2_backyard_party_summer": {
-   "fit": "exact",
-   "to": "3d:small_wood_backyard_party",
-   "build": "small_wood_backyard",
-   "note": "her fifteenth birthday: the table, the sprinkler and slip and slide, the balloon husks, the hutches (was vol 6's Texas backyard)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol2_barn_interior": {
-   "fit": "exact",
-   "to": "3d:crumpled_barn_int",
-   "scenes": 1
-  },
-  "vol2_beach_bonfire": {
-   "fit": "reuse",
-   "to": "3d:beach_night",
-   "scenes": 1
-  },
-  "vol2_beach_night": {
-   "fit": "exact",
-   "to": "3d:beach_night",
-   "scenes": 2
-  },
-  "vol2_beach_overcast": {
-   "fit": "reuse",
-   "to": "3d:grunion_beach",
-   "scenes": 4
-  },
-  "vol2_bed_breakfast_christmas": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol2_bedroom_window_night": {
-   "fit": "exact",
-   "to": "3d:ranch_bedroom_night",
-   "build": "small_wood_ranch",
-   "scenes": 2,
-   "note": "the window, the moon behind the trees",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol2_bingo_hall_projector": {
-   "fit": "reuse",
-   "to": "3d:small_wood_rec_center",
-   "note": "the bingo hall, projector slides of an impossible coastal theme park",
-   "scenes": 1
-  },
-  "vol2_bookstore_back_lounge": {
-   "fit": "reuse",
-   "to": "3d:salty_tome_office",
-   "note": "Small Wood's bookstore = the Salty Tome",
-   "scenes": 2
-  },
-  "vol2_briar_falls_building": {
-   "fit": "exact",
-   "to": "3d:briar_falls_building",
-   "scenes": 1
-  },
-  "vol2_briar_falls_overlook": {
-   "fit": "exact",
-   "to": "3d:briar_falls_overlook",
-   "scenes": 1
-  },
-  "vol2_briar_falls_picnic": {
-   "fit": "exact",
-   "to": "3d:briar_falls_picnic",
-   "scenes": 1
-  },
-  "vol2_briar_falls_rest_stop": {
-   "fit": "exact",
-   "to": "3d:briar_falls_rest_stop",
-   "scenes": 4
-  },
-  "vol2_briar_falls_trail": {
-   "fit": "exact",
-   "to": "3d:briar_falls_trail",
-   "scenes": 2
-  },
-  "vol2_cannery_dawn": {
-   "fit": "exact",
-   "to": "3d:grunion_beach",
-   "note": "aligned",
-   "scenes": 1
-  },
-  "vol2_car_interior_day": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab",
-   "scenes": 1
-  },
-  "vol2_chainsaw_ghost_town": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol2_christmas_lights_road": {
-   "fit": "reuse",
-   "to": "3d:small_wood_road_night",
-   "scenes": 1
-  },
-  "vol2_cliffside_circus": {
-   "fit": "exact",
-   "to": "3d:cliffside_circus",
-   "scenes": 1
-  },
-  "vol2_coast_highway_day": {
-   "fit": "exact",
-   "to": "3d:coast_highway_day",
-   "build": "highway_101",
-   "note": "the coast road on a clear 1990s day (era preset: no 2052 truck, chain or marker)",
-   "scenes": 2,
-   "built": "2026-10-27 era preset"
-  },
-  "vol2_coast_woods_dawn": {
-   "fit": "reuse",
-   "to": "3d:cape_perpetua_overlook",
-   "scenes": 1
-  },
-  "vol2_copy_shop_night": {
-   "fit": "exact",
-   "to": "3d:copy_shop_floor",
-   "build": "copy_shop",
-   "scenes": 2,
-   "note": "the small ugly copy shop on the graveyard shift: the dying tubes, the greenish-black walls",
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol2_ch8_apple_peddler": "3d:copy_shop_wastebasket"
-   }
-  },
-  "vol2_country_road_night": {
-   "fit": "reuse",
-   "to": "3d:small_wood_road_night",
-   "scenes": 1
-  },
-  "vol2_crumpled_barn_ext": {
-   "fit": "exact",
-   "to": "3d:crumpled_barn_ext",
-   "scenes": 1
-  },
-  "vol2_dean_basement_1994": {
-   "fit": "exact",
-   "to": "3d:dean_basement_1994",
-   "build": "dean_house_1994",
-   "scenes": 1,
-   "note": "the basement at the window well: the graph paper (SCUMM, slow sticks), the monitor off, first light on the Hagstrom place",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_dean_bedroom_1994": {
-   "fit": "exact",
-   "to": "3d:dean_bedroom_1994",
-   "build": "dean_house_1994",
-   "note": "N. Dean's bedroom, March 1994, 3:50 a.m.: over the furnace, the rain on the window",
-   "scenes": 2,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_diner_grill_dawn": {
-   "fit": "reuse",
-   "to": "3d:apple_peddler_grill",
-   "build": "apple_peddler",
-   "note": "ch8's unnamed local diner plays the Apple Peddler's line (a reuse); the meld's block is the Missing Link",
-   "scenes": 2,
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "meld_seam_1_2": "3d:missing_link_interior"
-   }
-  },
-  "vol2_diner_night": {
-   "fit": "reuse",
-   "to": "3d:apple_peddler_night",
-   "build": "apple_peddler",
-   "scenes": 1,
-   "note": "an unnamed diner one evening (ch5): the Apple Peddler's room plays it (a reuse)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_dive_bar_bridge": {
-   "fit": "reuse",
-   "to": "3d:foxhole_bar",
-   "scenes": 1
-  },
-  "vol2_farmhouse_night": {
-   "fit": "exact",
-   "to": "3d:farm_living_night",
-   "scenes": 2,
-   "build": "small_wood_farmhouse",
-   "note": "the farmhouse at night: the living room at the picture windows (points of impact); the porch (loose pages)",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol2_ch12x_loose_pages": "3d:farm_porch_night"
-   }
-  },
-  "vol2_football_field_night": {
-   "fit": "exact",
-   "to": "3d:small_wood_field_night",
-   "build": "small_wood_field",
-   "note": "Small Wood High's field, Friday night under the lights (points of impact, rewind) — was vol 6's Texas field",
-   "scenes": 2,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol2_football_practice": {
-   "fit": "exact",
-   "to": "3d:small_wood_field_dusk",
-   "build": "small_wood_field",
-   "note": "two-a-days at dusk",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol2_glass_apartment_ext_day": {
-   "fit": "2d",
-   "to": null,
-   "note": "the House of Glass promo — the building",
-   "scenes": 1
-  },
-  "vol2_glass_apartment_monitors": {
-   "fit": "2d",
-   "to": null,
-   "note": "the House of Glass — camera views, an empty hallway",
-   "scenes": 1
-  },
-  "vol2_glass_mansion_bay": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol2_grunion_beach": {
-   "fit": "exact",
-   "to": "3d:grunion_beach",
-   "scenes": 1
-  },
-  "vol2_gymnasium_hearing": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_gym",
-   "build": "small_wood_high",
-   "note": "the school-board hearing in the gym",
-   "scenes": 3,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol2_harbor_dusk": {
-   "fit": "reuse",
-   "to": "3d:smolvud_docks_evening",
-   "note": "the docks at evening: the bench, the boats coming in, the sun going down (pass 159) · 2026-10-27: Small Wood in 1997 — the Frog's things stripped (Smolvud is the 2050s Small Wood)",
-   "scenes": 1
-  },
-  "vol2_ice_storm": {
-   "fit": "exact",
-   "to": "3d:cliffside_circus",
-   "note": "aligned",
-   "scenes": 1
-  },
-  "vol2_interview_room": {
-   "fit": "reuse",
-   "to": "3d:county_line_station",
-   "note": "a police interview room",
-   "scenes": 1
-  },
-  "vol2_lighthouse_night": {
-   "fit": "exact",
-   "to": "3d:lighthouse_base_up",
-   "build": "oregon_lighthouse",
-   "note": "the lighthouse 1.5 hours from Small Wood, December night: from the column's foot, looking up (not the bayou lighthouse)",
-   "scenes": 1,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_little_switzerland": {
-   "fit": "exact",
-   "to": "3d:little_switzerland",
-   "scenes": 1
-  },
-  "vol2_locker_room": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_locker",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol2_meld_editing_suite_tideflats": {
-   "fit": "exact",
-   "to": "3d:suite_tide",
-   "build": "editing_suite",
-   "scenes": 1,
-   "note": "the four's suite: four chairs on casters, the monitors full of the tide",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_minivan_night_coast": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab_night",
-   "scenes": 2
-  },
-  "vol2_model_workbench": {
-   "fit": "2d",
-   "to": null,
-   "note": "an insert",
-   "scenes": 1
-  },
-  "vol2_pier_crabbing": {
-   "fit": "reuse",
-   "to": "3d:smolvud_docks_evening",
-   "note": "the pier: the harbor from the shore path (pass 159; the fog frame is vol 7's) · 2026-10-27: Small Wood in 1997 — the Frog's things stripped (Smolvud is the 2050s Small Wood)",
-   "scenes": 2
-  },
-  "vol2_radio_studio": {
-   "fit": "exact",
-   "to": "3d:radio_studio",
-   "note": "the town's annual radio drama, read live on the air (December 1992); no station name in the text",
-   "scenes": 1,
-   "build": "small_wood_town",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_rain_windshield_night": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab_night",
-   "scenes": 1
-  },
-  "vol2_reading_lamp_night": {
-   "fit": "reuse",
-   "to": "3d:ranch_bedroom_lamp",
-   "build": "small_wood_ranch",
-   "scenes": 2,
-   "note": "a reading lamp at night (ch10's 'Home · Night' is the adult narrator's house)",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol2_rec_center_dance": {
-   "fit": "exact",
-   "to": "3d:small_wood_rec_center",
-   "note": "Jay Rose's dance",
-   "scenes": 1
-  },
-  "vol2_riverbed_dunes": {
-   "fit": "exact",
-   "to": "3d:riverbed_sand",
-   "scenes": 1,
-   "build": "sea_cave",
-   "note": "Charles's ground by the riverbed (the text never says dunes)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_road_running": {
-   "fit": "exact",
-   "to": "3d:small_wood_road",
-   "scenes": 1
-  },
-  "vol2_room_ranch_bedroom": {
-   "fit": "exact",
-   "to": "3d:ranch_bedroom_day",
-   "build": "small_wood_ranch",
-   "note": "\"the room\" up the hill: the narrator's old room, rebuilt",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol2_room_roof_dusk": {
-   "fit": "2d",
-   "to": null,
-   "note": "from the roof: the field down to the road, the second house",
-   "scenes": 1
-  },
-  "vol2_sapo_falls": {
-   "fit": "exact",
-   "to": "3d:sapo_falls",
-   "scenes": 1
-  },
-  "vol2_school_hallway": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_hall",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol2_school_newspaper": {
-   "fit": "exact",
-   "to": "3d:school_newspaper",
-   "scenes": 3
-  },
-  "vol2_scumm_hemlock_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "in-fiction graphic adventure screen (ch vii) — modern art, not era cosplay",
-   "scenes": 3
-  },
-  "vol2_scumm_inventory_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 1
-  },
-  "vol2_scumm_missing_link_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 1
-  },
-  "vol2_scumm_save_screen_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 1
-  },
-  "vol2_scumm_spiral_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 1
-  },
-  "vol2_scumm_theater_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 1
-  },
-  "vol2_scumm_tideflats_crab_vga": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 2
-  },
-  "vol2_sea_cave": {
-   "fit": "exact",
-   "to": "3d:cave_dawn",
-   "build": "sea_cave",
-   "note": "Julie's cave: dawn (flotsam), low tide (art class), the tide coming in (truck)",
-   "scenes": 3,
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol2_ch9_art_class": "3d:cave_low_tide",
-    "vol2_ch9_truck": "3d:cave_tide_in"
-   }
-  },
-  "vol2_sea_wall_bookstore": {
-   "fit": "reuse",
-   "to": "3d:salty_tome_alley",
-   "scenes": 1
-  },
-  "vol2_seagash_circus_old": {
-   "fit": "exact",
-   "to": "3d:cliffside_circus",
-   "scenes": 2
-  },
-  "vol2_second_house_night": {
-   "fit": "exact",
-   "to": "3d:ranch_second_house",
-   "build": "small_wood_ranch",
-   "note": "the second house, the kerosene lamp",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol2_small_town_road": {
-   "fit": "exact",
-   "to": "3d:small_wood_roadside",
-   "scenes": 1
-  },
-  "vol2_small_wood_scrapbook": {
-   "fit": "2d",
-   "to": null,
-   "note": "the scrapbook: an insert",
-   "scenes": 2
-  },
-  "vol2_truck_cab_day": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab",
-   "scenes": 1
-  },
-  "vol2_upturned_log_woods": {
-   "fit": "reuse",
-   "to": "3d:briar_falls_trail",
-   "scenes": 1
-  },
-  "vol2_used_bookstore": {
-   "fit": "reuse",
-   "to": "3d:salty_tome_interior",
-   "scenes": 1
-  },
-  "vol2_video_store_counter": {
-   "fit": "exact",
-   "to": "3d:video_store_counter",
-   "build": "small_wood_town",
-   "note": "Small Wood's video store, February 2013: the counter, MELODY from behind it, the shelves",
-   "scenes": 1,
-   "built": "2026-10-18 draft 1"
-  },
-  "vol2_white_room": {
-   "fit": "2d",
-   "to": null,
-   "note": "the House of Glass promo — a generic white room",
-   "scenes": 1
-  },
-  "vol3_andy_room_day": {
-   "fit": "exact",
-   "to": "3d:ranch_home_day",
-   "build": "small_wood_ranch",
-   "scenes": 1,
-   "note": "ch4 the coast: back home in Small Wood by day (the house ten miles inland, 'on the coast': the user)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_andy_room_night": {
-   "fit": "exact",
-   "to": "3d:ranch_bedroom_night",
-   "build": "small_wood_ranch",
-   "scenes": 1,
-   "note": "ch4 the coast: 'back home quiet and moody' that evening, the Small Wood house",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_ballfield_convenience_stand": {
-   "fit": "exact",
-   "to": "3d:ballfield_stand",
-   "build": "little_league",
-   "scenes": 1,
-   "note": "the convenience stand (the text's word): the counter, the ice cream bar pictures",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_ballfield_dugout_august": {
-   "fit": "exact",
-   "to": "3d:ballfield_dugout",
-   "build": "little_league",
-   "note": "the home dugout's bench, Dad gripping it, the field past the front",
-   "scenes": 2,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_ballfield_third_base": {
-   "fit": "exact",
-   "to": "3d:ballfield_third_base",
-   "build": "little_league",
-   "scenes": 1,
-   "note": "on third, in at Chris batting and the dusty home plate",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_ballfield_first_base": {
-   "fit": "exact",
-   "to": "3d:ballfield_first_base",
-   "build": "little_league",
-   "scenes": 1,
-   "note": "guarding first base, Larry leading off",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_ballfield_home_plate": {
-   "fit": "exact",
-   "to": "3d:ballfield_home_plate",
-   "build": "little_league",
-   "scenes": 2,
-   "note": "the last inning, in at home from second",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_ballfield_pitchers_mound": {
-   "fit": "exact",
-   "to": "3d:ballfield_mound",
-   "build": "little_league",
-   "scenes": 1,
-   "note": "Chris on the mound, from first base",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_bedroom_closet_dallas": {
-   "fit": "exact",
-   "to": "3d:june_closet",
-   "build": "vol3_rooms",
-   "scenes": 1,
-   "note": "June's closet, 1991: the sealed box at the back",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_bedroom_lamp_night": {
-   "fit": "exact",
-   "to": "3d:andy_house_bedroom_lamp",
-   "build": "link_house",
-   "scenes": 2,
-   "note": "the bedside lamp",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_blanket_fort_night": {
-   "fit": "exact",
-   "to": "3d:amanda_fort",
-   "build": "amanda_house",
-   "scenes": 2,
-   "note": "Amanda's: the pushed-together couches, the fan's sheet (by sequence); a sub-area of build_chau_house.py",
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol3_ch8_passengers_c": "3d:amanda_fort_close"
-   }
-  },
-  "vol3_brick_wall_halloween_night": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol3_caltech_bare_room": {
-   "fit": "exact",
-   "to": "3d:caltech_bare_room",
-   "build": "caltech_dabney",
-   "note": "1945: the bare cement room, one bulb, the door propped open",
-   "scenes": 2,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_caltech_campus_afternoon": {
-   "fit": "reuse",
-   "to": "3d:dabney_side_yard",
-   "build": "caltech_dabney",
-   "scenes": 1,
-   "note": "the side yard out to the ivy wall and Pasadena (the couchmobile under its tarp)",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_caltech_dabney_day": {
-   "fit": "exact",
-   "to": "3d:dabney_courtyard_1945",
-   "build": "caltech_dabney",
-   "scenes": 1,
-   "note": "the same courtyard in 1945, from the same camera: no hoop, no speakers, no murals",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_caltech_hallway_1945": {
-   "fit": "exact",
-   "to": "3d:caltech_hallway_1945",
-   "build": "caltech_dabney",
-   "note": "the same corridor in 1945, bare under fluorescent tubes",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_caltech_tunnels_night": {
-   "fit": "exact",
-   "to": "3d:caltech_tunnels",
-   "build": "caltech_dabney",
-   "note": "the tunnels in 2003: graffiti on everything, the lantern room's red and blue",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_car_backseat_streetlamps": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab_rear_night",
-   "scenes": 1
-  },
-  "vol3_car_coast_dusk": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab",
-   "scenes": 1
-  },
-  "vol3_car_coast_night": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab_night",
-   "scenes": 1
-  },
-  "vol3_chau_bathroom_steam": {
-   "fit": "exact",
-   "to": "3d:chau_bath",
-   "build": "chau_house",
-   "scenes": 1,
-   "note": "the mirror cabinet, the shower, the towels on the floor",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_chau_game_room_morning": {
-   "fit": "exact",
-   "to": "3d:chau_game_room",
-   "build": "chau_house",
-   "scenes": 1,
-   "note": "Sunday morning: the pool table, the dartboard, the liquor cabinet, the fern",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_chau_house_day": {
-   "fit": "exact",
-   "to": "3d:chau_hall_noon",
-   "build": "chau_house",
-   "note": "Saturday noon: the hall, the candy dish, the locked bathroom door",
-   "scenes": 2,
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol3_ch8_passengers_c": "3d:chau_entry_morning"
-   }
-  },
-  "vol3_chau_living_room": {
-   "fit": "exact",
-   "to": "3d:chau_living",
-   "build": "chau_house",
-   "scenes": 1,
-   "note": "Mrs. Chau on the couch, the seats round her",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_chris_bedroom_night": {
-   "fit": "exact",
-   "to": "3d:chris_room_night",
-   "scenes": 1,
-   "build": "lake_house",
-   "note": "Chris's room that night, the light left on, the card game in the corner",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_chris_bedroom_trophies": {
-   "fit": "exact",
-   "to": "3d:chris_room_day",
-   "scenes": 1,
-   "build": "lake_house",
-   "note": "Chris's room at the lake house on arrival: clean and sterile",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_city_street_friday": {
-   "fit": "reuse",
-   "to": "3d:main_street",
-   "scenes": 1
-  },
-  "vol3_clinic_1945": {
-   "fit": "exact",
-   "to": "3d:clinic_1945",
-   "build": "pasadena_1945",
-   "scenes": 1,
-   "note": "the small clinic: the glass of water, the cuff",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_clinic_waiting_room": {
-   "fit": "reuse",
-   "to": "3d:hospital_waiting",
-   "scenes": 1
-  },
-  "vol3_coast_home_studio": {
-   "fit": "exact",
-   "to": "3d:coast_studio",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "note": "the photographer's lent home-studio over the coast",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_coast_road_forest": {
-   "fit": "exact",
-   "to": "3d:coast_highway_day",
-   "build": "highway_101",
-   "note": "the coast road by day, early 2000s (era preset)",
-   "scenes": 1,
-   "built": "2026-10-27 era preset"
-  },
-  "vol3_coast_studio_bathroom": {
-   "fit": "exact",
-   "to": "3d:coast_bathroom",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "note": "the stranger's bathroom: the tub in the kit lights",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_crt_monitor_newsgroup": {
-   "fit": "2d",
-   "to": null,
-   "note": "an insert: the Usenet post",
-   "scenes": 1
-  },
-  "vol3_dabney_courtyard_day": {
-   "fit": "exact",
-   "to": "3d:dabney_courtyard",
-   "build": "caltech_dabney",
-   "scenes": 1,
-   "note": "the courtyard in 2003: The Birth of God, the palms, the arcade",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_dabney_game_room": {
-   "fit": "exact",
-   "to": "3d:dabney_game_room",
-   "build": "caltech_dabney",
-   "scenes": 2,
-   "note": "Dabney's basement: the U of black leather couches, the wall of screens, the fridges",
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol3_ch6_couch": "3d:dabney_couch"
-   }
-  },
-  "vol3_dance_floor_fog": {
-   "fit": "reuse",
-   "to": "3d:club_sharp",
-   "scenes": 1
-  },
-  "vol3_desert_gas_station": {
-   "fit": "exact",
-   "to": "3d:desert_gas_station",
-   "build": "desert_route",
-   "note": "the one-room store off the main drag: the pumps, the ice chest, Galaga, the curios (was vol 6 sets)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol3_desert_motel_dusk": {
-   "fit": "exact",
-   "to": "3d:desert_motel_dusk",
-   "build": "desert_route",
-   "note": "the motel twenty miles down, the office lit (was vol 6 sets)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol3_dust_storm_highway": {
-   "fit": "exact",
-   "to": "3d:dust_storm_highway",
-   "build": "desert_route",
-   "note": "the red dust storm and the wreck of the two semis (was vol 6 sets)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol3_editing_suite_night": {
-   "fit": "exact",
-   "to": "3d:edit_station",
-   "build": "editing_suite",
-   "scenes": 2,
-   "note": "vol 3 ch4: the night edit station (the AVID is the program); the meld at Aud's plays the suite",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "meld_kaleidoscope_c": "3d:suite_4am"
-   }
-  },
-  "vol3_family_bathroom_day": {
-   "fit": "exact",
-   "to": "3d:andy_house_bath",
-   "build": "link_house",
-   "note": "the bathroom by day, the dad at the door",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_family_bathroom_night": {
-   "fit": "exact",
-   "to": "3d:lake_bath_night",
-   "build": "lake_house",
-   "scenes": 1,
-   "note": "the lake-house bathroom before dawn ('The lake house · before dawn'); 'family' in the stem is historical",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_family_kitchen_evening": {
-   "fit": "exact",
-   "to": "3d:andy_house_kitchen",
-   "build": "link_house",
-   "scenes": 2,
-   "note": "the kitchen table at evening, the magazine between father and son",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_family_living_room_night": {
-   "fit": "exact",
-   "to": "3d:andy_house_living",
-   "build": "link_house",
-   "scenes": 1,
-   "note": "Nick asleep on the couch, the TV on",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_father_bedside": {
-   "fit": "reuse",
-   "to": "3d:hospital_room",
-   "note": "Dad in hospital",
-   "scenes": 1
-  },
-  "vol3_four_screen_room": {
-   "fit": "exact",
-   "to": "3d:four_screens_show",
-   "build": "sleep_lab",
-   "scenes": 2,
-   "built": "2026-10-17 draft 1",
-   "note": "the gallery's back room: the chair island, four walls lit; meld_seam_2_3 is the dark and the beam",
-   "by_scene": {
-    "meld_seam_2_3": "3d:four_screens_beam"
-   }
-  },
-  "vol3_gas_station_night": {
-   "fit": "exact",
-   "to": "3d:gas_station_2003_night",
-   "build": "nexcorp_fueling_station",
-   "note": "the one stop at 3 a.m., early 2000s: the station without vol 6's brand, van and cars",
-   "scenes": 1,
-   "built": "2026-10-27 era preset"
-  },
-  "vol3_glass_condo_demo_unit": {
-   "fit": "exact",
-   "to": "3d:condo_demo_unit",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "note": "the empty demo unit, Vancouver WA, autumn 2001 (the text never says glass)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_grandma_house_night": {
-   "fit": "exact",
-   "to": "3d:nick_house_front",
-   "scenes": 1,
-   "build": "nick_house",
-   "note": "Nick's grandmother's house, Halloween night: unlit from the outside, the mini-bike, the neighbour's fence",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_hollywood_street_1945": {
-   "fit": "exact",
-   "to": "3d:hollywood_shoot",
-   "build": "pasadena_1945",
-   "scenes": 1,
-   "note": "a busier street, a shoot on it",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_honolulu_game_store": {
-   "fit": "exact",
-   "to": "3d:honolulu_game_store",
-   "note": "Koa Works' game store",
-   "scenes": 1,
-   "build": "honolulu_highrise",
-   "built": "2026-10-28 draft 1"
-  },
-  "vol3_honolulu_highrise_lobby": {
-   "fit": "exact",
-   "to": "3d:honolulu_lobby",
-   "scenes": 1,
-   "build": "honolulu_highrise",
-   "built": "2026-10-28 draft 1"
-  },
-  "vol3_hospital_catwalk_night": {
-   "fit": "exact",
-   "to": "3d:catwalk_rail_night",
-   "scenes": 2,
-   "build": "vol3_rooms",
-   "note": "the glass catwalk between the towers over the lit city; yellow card walks it",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol3_ch5_yellow_card": "3d:catwalk_walk"
-   }
-  },
-  "vol3_hospital_elevator_benches": {
-   "fit": "reuse",
-   "to": "3d:hospital_waiting",
-   "scenes": 3
-  },
-  "vol3_hospital_lobby_night": {
-   "fit": "reuse",
-   "to": "3d:hospital_waiting",
-   "scenes": 1
-  },
-  "vol3_hospital_room_night": {
-   "fit": "reuse",
-   "to": "3d:hospital_room",
-   "scenes": 4
-  },
-  "vol3_hospital_room_window_night": {
-   "fit": "reuse",
-   "to": "3d:hospital_room",
-   "scenes": 3
-  },
-  "vol3_hot_tub_night": {
-   "fit": "exact",
-   "to": "3d:amanda_hot_tub",
-   "build": "amanda_house",
-   "scenes": 1,
-   "note": "Amanda's, Saturday 10 p.m. (the interlude says so); a sub-area of build_chau_house.py",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_houston_car_night": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab_night",
-   "scenes": 1
-  },
-  "vol3_korean_bbq_night": {
-   "fit": "exact",
-   "to": "3d:korean_bbq_table",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "note": "Korean barbecue, Pasadena 2003: the booth table and its grill",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_lake_dock_dawn": {
-   "fit": "exact",
-   "to": "3d:lake_dock_dawn",
-   "scenes": 1,
-   "build": "lake_house",
-   "note": "sunrise from the kitchen table: Terry fishing off the dock outside the window",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_lake_dock_day": {
-   "fit": "exact",
-   "to": "3d:lake_dock_day",
-   "scenes": 1,
-   "build": "lake_house",
-   "note": "the dock's polished wood, the lake with its boats and balloons",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_lake_house_day": {
-   "fit": "exact",
-   "to": "3d:lake_house_day",
-   "scenes": 1,
-   "build": "lake_house",
-   "note": "Terry's big home on the lake on arrival: the barbecue, the screen door, the boathouse out back (not the vol 6 boat ramp)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_lax_terminal_night": {
-   "fit": "exact",
-   "to": "3d:lax_gate",
-   "build": "airport_cabin",
-   "note": "the gate at LAX, the convenience store across the concourse",
-   "scenes": 3,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_meld_time_pod_interior": {
-   "fit": "2d",
-   "to": null,
-   "note": "pulp: the time pod",
-   "scenes": 2
-  },
-  "vol3_mojave_desert_1945": {
-   "fit": "2d",
-   "to": null,
-   "note": "the Mojave in 1945: painted",
-   "scenes": 1
-  },
-  "vol3_motel_pool_dusk": {
-   "fit": "exact",
-   "to": "3d:motel_pool_dusk",
-   "build": "desert_route",
-   "note": "the pool's concrete shorelines, red silt on the water (was vol 6 sets)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol3_motel_room_dusk": {
-   "fit": "exact",
-   "to": "3d:motel_room_dusk",
-   "build": "desert_route",
-   "note": "room No. 4: the single bed, the television (was vol 6 sets)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol3_nick_bedroom_drawings": {
-   "fit": "exact",
-   "to": "3d:nick_room",
-   "note": "Nick's room: the walls lined with designs; the drafting table for the after-Halloween scene",
-   "scenes": 2,
-   "build": "nick_house",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol3_ch12_uncle_nick_b": "3d:nick_drafting"
-   }
-  },
-  "vol3_nick_garage_workshop": {
-   "fit": "exact",
-   "to": "3d:nick_garage_halloween",
-   "note": "Mark's old workshop, Halloween night, before any press (the press is years later: vol3_silkscreen_garage)",
-   "scenes": 1,
-   "build": "nick_house",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_oil_field_dusk": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol3_oregon_apartment_day": {
-   "fit": "exact",
-   "to": "3d:oregon_home_day",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "note": "the shared Oregon home by day (the stem says apartment; vol 2 says duplex)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_oregon_apartment_night": {
-   "fit": "exact",
-   "to": "3d:oregon_home_night",
-   "scenes": 2,
-   "build": "vol3_rooms",
-   "note": "their room that evening on the lamp",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_parsonage_hallway": {
-   "fit": "exact",
-   "to": "3d:parsonage_hall",
-   "build": "parsonage_1945",
-   "scenes": 1,
-   "note": "the upstairs hall, wide enough for Jack's meeting",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_parsonage_ron_room_dawn": {
-   "fit": "exact",
-   "to": "3d:ron_dawn",
-   "build": "parsonage_1945",
-   "scenes": 1,
-   "note": "Ron's room upstairs at first light",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_parsonage_ron_room_day": {
-   "fit": "exact",
-   "to": "3d:ron_day",
-   "build": "parsonage_1945",
-   "scenes": 1,
-   "note": "Ron's room: the books in drifts, the bed, the desk",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_parsonage_ron_room_night": {
-   "fit": "exact",
-   "to": "3d:ron_night_floor",
-   "build": "parsonage_1945",
-   "note": "Ron's room at night on its lamp; ch19 from the bed, the window open",
-   "scenes": 2,
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol3_ch19_ron_takes_notes": "3d:ron_night_bed"
-   }
-  },
-  "vol3_pasadena_park_1945": {
-   "fit": "exact",
-   "to": "3d:park_chess",
-   "build": "pasadena_1945",
-   "scenes": 1,
-   "note": "chess boards in the shade, pigeons on the gravel, kites beyond",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_pasadena_street_1945": {
-   "fit": "exact",
-   "to": "3d:street_day",
-   "build": "pasadena_1945",
-   "scenes": 2,
-   "note": "the street in 1945: readers, slow cars, the bus, the marquee, orange trees",
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "meld_seam_2_3": "3d:street_rain"
-   }
-  },
-  "vol3_pink_light_void": {
-   "fit": "2d",
-   "to": null,
-   "note": "abstract",
-   "scenes": 1
-  },
-  "vol3_pizza_parlor_rain": {
-   "fit": "exact",
-   "to": "3d:pizza_party_window",
-   "note": "the strip-mall pizza parlor's party room on a rainy night",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_plane_cabin_day": {
-   "fit": "exact",
-   "to": "3d:plane_day",
-   "build": "airport_cabin",
-   "scenes": 1,
-   "note": "\"flight number one\": the notebook on his tray, the shades up",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_plane_cabin_night": {
-   "fit": "exact",
-   "to": "3d:plane_night",
-   "build": "airport_cabin",
-   "scenes": 1,
-   "note": "the late flight: Andy at the window, the armrest up, the cups, the lamp",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_pulp_helipad_dawn": {
-   "fit": "2d",
-   "to": null,
-   "note": "pulp",
-   "scenes": 1
-  },
-  "vol3_pulp_pod_street_dawn": {
-   "fit": "2d",
-   "to": null,
-   "note": "pulp",
-   "scenes": 1
-  },
-  "vol3_pulp_ward_rows": {
-   "fit": "2d",
-   "to": null,
-   "note": "the Earthman pulp — painted in its own register",
-   "scenes": 2
-  },
-  "vol3_river_edge_dusk": {
-   "fit": "reuse",
-   "to": "3d:riverfront_exterior",
-   "scenes": 1
-  },
-  "vol3_ruined_city_night": {
-   "fit": "2d",
-   "to": null,
-   "note": "pulp",
-   "scenes": 2
-  },
-  "vol3_saab_highway_dusk": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab",
-   "scenes": 1
-  },
-  "vol3_silkscreen_garage": {
-   "fit": "exact",
-   "to": "3d:nick_print_shop",
-   "scenes": 1,
-   "build": "nick_house",
-   "note": "the same garage years later: the printing press Nick built, comics and T-shirts",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_sleep_lab": {
-   "fit": "exact",
-   "to": "3d:sleep_lab_entry",
-   "build": "sleep_lab",
-   "note": "Jane's sleep study: the two beds, the bookshelf between, the black curtain round the computer",
-   "scenes": 3,
-   "built": "2026-10-17 draft 1",
-   "by_scene": {
-    "vol3_ch6_jane": "3d:sleep_lab_desk",
-    "vol3_ch6_binder": "3d:sleep_lab_night",
-    "meld_seam_3_4": "3d:sleep_lab_night"
-   }
-  },
-  "vol3_spencer_room": {
-   "fit": "exact",
-   "to": "3d:spencer_room",
-   "build": "caltech_dabney",
-   "scenes": 1,
-   "note": "Spencer on the floor with the laptop; the Contra sketch framed on the wall",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol3_suburban_garage_night": {
-   "fit": "reuse",
-   "to": "3d:henderson_garage",
-   "scenes": 1
-  },
-  "vol3_suburban_street_ambulance": {
-   "fit": "reuse",
-   "to": "3d:meadowlark_circle_night",
-   "scenes": 1
-  },
-  "vol3_taxi_night": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab_rear_night",
-   "scenes": 1
-  },
-  "vol3_texas_highway_rain": {
-   "fit": "reuse",
-   "to": "3d:louisiana_road",
-   "scenes": 1
-  },
-  "vol3_tulsa_backyard_night": {
-   "fit": "exact",
-   "to": "3d:tulsa_patio",
-   "scenes": 1,
-   "build": "tulsa_house",
-   "note": "the patio later on, the fall: the sawdust playground, the fort, the moon between the trees",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_tulsa_living_room_slideshow": {
-   "fit": "exact",
-   "to": "3d:tulsa_slideshow",
-   "note": "Marty's slide show, Tulsa, mid-eighties: the projector, the pull-down screen, the bar",
-   "scenes": 1,
-   "build": "tulsa_house",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol3_utah_highway_day": {
-   "fit": "exact",
-   "to": "3d:utah_highway_day",
-   "build": "desert_route",
-   "note": "Kathy's Utah two-lane at noon, the Voyager, a semi (was vol 6 sets)",
-   "scenes": 1,
-   "built": "2026-10-27 draft 1"
-  },
-  "vol3_vacant_gallery_lobby": {
-   "fit": "reuse",
-   "to": "3d:cedar_tower_lobby",
-   "scenes": 1
-  },
-  "vol3_warehouse_club_night": {
-   "fit": "exact",
-   "to": "3d:warehouse_floor",
-   "scenes": 1,
-   "build": "vol3_rooms",
-   "note": "the club in industrial downtown, 1 a.m.: green and pink through the fog",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_abstract_club_night": {
-   "fit": "reuse",
-   "to": "3d:club_sharp",
-   "scenes": 1
-  },
-  "vol4_after_party_night": {
-   "fit": "exact",
-   "to": "3d:afterparty_room",
-   "scenes": 2,
-   "build": "carrie_city",
-   "note": "the after party: the tire swing, the bar; cc_5's two stools",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol4_cc_5": "3d:afterparty_stools"
-   }
-  },
-  "vol4_airplane_cabin": {
-   "fit": "reuse",
-   "to": "3d:plane_vol4",
-   "build": "airport_cabin",
-   "scenes": 1,
-   "note": "November: the cabin full of strangers asleep, most shades down",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol4_all_over_town": {
-   "fit": "reuse",
-   "to": "3d:main_street",
-   "scenes": 1
-  },
-  "vol4_alley_dumpster": {
-   "fit": "reuse",
-   "to": "3d:salty_tome_alley",
-   "scenes": 1
-  },
-  "vol4_ambulance_road": {
-   "fit": "reuse",
-   "to": "3d:louisiana_road",
-   "scenes": 1
-  },
-  "vol4_angry_fog_suburb": {
-   "fit": "reuse",
-   "to": "3d:meadowlark_circle_night",
-   "scenes": 1
-  },
-  "vol4_apartment_dawn": {
-   "fit": "reuse",
-   "to": "3d:finn_apartment_day",
-   "scenes": 1
-  },
-  "vol4_arcade_cabinet": {
-   "fit": "2d",
-   "to": null,
-   "note": "an insert",
-   "scenes": 1
-  },
-  "vol4_aria_childhood": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_bathroom_mirror": {
-   "fit": "exact",
-   "to": "3d:mirror_room",
-   "scenes": 1,
-   "build": "vol4_story_rooms",
-   "note": "cracked and broken: the mirror and the world behind her (the text never says bathroom)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_beach_daycare": {
-   "fit": "2d",
-   "to": null,
-   "note": "four coloured variants: a painted series",
-   "scenes": 1
-  },
-  "vol4_beach_daycare_kitchen": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_beach_daycare_red": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_beach_daycare_yellow": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_bedroom_desk": {
-   "fit": "exact",
-   "to": "3d:writers_desk_room",
-   "build": "writers_desk",
-   "scenes": 2,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_betterment_desk_2am": {
-   "fit": "exact",
-   "to": "3d:writers_desk",
-   "build": "writers_desk",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_betterment_wire_table": {
-   "fit": "exact",
-   "to": "3d:writers_desk_room",
-   "build": "writers_desk",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_bigbox_parking_lot_day": {
-   "fit": "reuse",
-   "to": "3d:new_auburn_lot",
-   "scenes": 1
-  },
-  "vol4_blue_sand_beach": {
-   "fit": "2d",
-   "to": null,
-   "note": "surreal",
-   "scenes": 1
-  },
-  "vol4_bus_interior_day": {
-   "fit": "exact",
-   "to": "3d:bus_two_shot",
-   "build": "bus_station",
-   "scenes": 2,
-   "note": "the seat pair, the city in the window; cc_2's stops from up the aisle",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol4_cc_2": "3d:bus_aisle"
-   }
-  },
-  "vol4_bus_station_day": {
-   "fit": "exact",
-   "to": "3d:bus_station",
-   "build": "bus_station",
-   "scenes": 2,
-   "note": "under the bus overhang, the city by day",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_caltech_basement": {
-   "fit": "exact",
-   "to": "3d:dabney_couch_carving",
-   "build": "caltech_dabney",
-   "scenes": 1,
-   "note": "the same basement, along the carved couch (the poem)",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol4_charlie_apartment_day": {
-   "fit": "exact",
-   "to": "3d:charlie_apartment_day",
-   "scenes": 2,
-   "build": "carrie_city",
-   "note": "Charlie's flat by day; cc_5's morning is the couch with the blanket left on it",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol4_cc_5": "3d:charlie_living_day"
-   }
-  },
-  "vol4_charlie_apartment_night": {
-   "fit": "exact",
-   "to": "3d:charlie_bedroom_night",
-   "note": "Sister Carrie: Charlie's bedroom at night; the couch and the chair for cc_5",
-   "scenes": 2,
-   "build": "carrie_city",
-   "built": "2026-10-18 draft 1",
-   "by_scene": {
-    "vol4_cc_5": "3d:charlie_living_night"
-   }
-  },
-  "vol4_chess_apartment_morning": {
-   "fit": "reuse",
-   "to": "3d:finn_apartment_day",
-   "note": "Chess's place",
-   "scenes": 1
-  },
-  "vol4_classroom": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_class",
-   "build": "small_wood_high",
-   "note": "Todd's 7th-grade class",
-   "scenes": 2,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_classroom_afternoon": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_class",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_cold_water": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_computer_lab": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_lab",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_corkboard_night": {
-   "fit": "exact",
-   "to": "3d:writers_desk_board",
-   "build": "writers_desk",
-   "scenes": 2,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_crash_intersection": {
-   "fit": "reuse",
-   "to": "3d:new_auburn_two_lane",
-   "scenes": 1
-  },
-  "vol4_crt_adventure": {
-   "fit": "2d",
-   "to": null,
-   "note": "game screen",
-   "scenes": 1
-  },
-  "vol4_dark_hallway": {
-   "fit": "reuse",
-   "to": "3d:accretion_corridor",
-   "scenes": 1
-  },
-  "vol4_dead_department_store": {
-   "fit": "exact",
-   "to": "3d:dead_store",
-   "note": "map of the city: the dead clothing store (mannequins, banners, the counter, the escalator)",
-   "scenes": 1,
-   "build": "vol4_story_rooms",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_dead_park": {
-   "fit": "reuse",
-   "to": "3d:riverfront_park",
-   "scenes": 1
-  },
-  "vol4_dean_home_night": {
-   "fit": "exact",
-   "to": "3d:dean_house_late",
-   "note": "the Deans' home, late night: the reading chair (the text names no city)",
-   "scenes": 1,
-   "build": "vol4_story_rooms",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_dean_office_night": {
-   "fit": "exact",
-   "to": "3d:dean_tower_corridor",
-   "build": "dean_offices",
-   "scenes": 1,
-   "note": "his office building at night: the corridor, the city, the door he leads her through",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol4_desk_dawn": {
-   "fit": "exact",
-   "to": "3d:writers_desk_dawn",
-   "build": "writers_desk",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_desk_night": {
-   "fit": "exact",
-   "to": "3d:writers_desk",
-   "build": "writers_desk",
-   "note": "the scrapbook desk — 26 scenes",
-   "scenes": 26,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_drawer_open": {
-   "fit": "exact",
-   "to": "3d:writers_desk",
-   "build": "writers_desk",
-   "note": "the bottom drawer of the scrapbook desk — 11 scenes; draft 2: a writers_desk_drawer view",
-   "scenes": 11
-  },
-  "vol4_esther_neighborhood": {
-   "fit": "2d",
-   "to": null,
-   "note": "Esther's simulated neighbourhood",
-   "scenes": 1
-  },
-  "vol4_fast_food_riot": {
-   "fit": "reuse",
-   "to": "3d:el_rancho_taqueria",
-   "scenes": 1
-  },
-  "vol4_glass_tower": {
-   "fit": "reuse",
-   "to": "3d:cedar_tower_exterior",
-   "scenes": 2
-  },
-  "vol4_graffiti_alley": {
-   "fit": "2d",
-   "to": null,
-   "note": "video tests — graffiti writing itself on the alley wall",
-   "scenes": 1
-  },
-  "vol4_grungy_bathroom_night": {
-   "fit": "reuse",
-   "to": "3d:nexcorp_fueling_restroom",
-   "scenes": 1
-  },
-  "vol4_heavy_breathing_bedroom": {
-   "fit": "exact",
-   "to": "3d:aaron_bedroom",
-   "scenes": 1,
-   "build": "vol4_story_rooms",
-   "note": "heavy breathing: Aaron's room at thirteen (aaron_bedroom_blue is the waking dream's light)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_ivy_wall_door": {
-   "fit": "2d",
-   "to": null,
-   "note": "video tests — the ivy wall, the metal door, the star key",
-   "scenes": 1
-  },
-  "vol4_jack_of_suede_stage": {
-   "fit": "reuse",
-   "to": "3d:foxhole_stage",
-   "scenes": 1
-  },
-  "vol4_letters": {
-   "fit": "2d",
-   "to": null,
-   "note": "an insert",
-   "scenes": 1
-  },
-  "vol4_looking_forward_bath": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_machine_cell": {
-   "fit": "reuse",
-   "to": "3d:nightmare_cell",
-   "scenes": 1
-  },
-  "vol4_meld_lens_mandala": {
-   "fit": "2d",
-   "to": null,
-   "note": "abstract",
-   "scenes": 1
-  },
-  "vol4_monitor_room_night": {
-   "fit": "exact",
-   "to": "3d:dean_monitor_room",
-   "build": "dean_offices",
-   "note": "Dean's bedroom office in the glass house: the ring of monitors, the text game",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1"
-  },
-  "vol4_monitor_wall": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_museum_case": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_office_copier": {
-   "fit": "exact",
-   "to": "3d:copy_shop_copier",
-   "build": "copy_shop",
-   "scenes": 2,
-   "note": "the copier at 4 a.m.: the lid, the scratched glass, the pink scan light (the melds)",
-   "built": "2026-10-17 draft 1"
-  },
-  "vol4_office_after_hours": {
-   "fit": "exact",
-   "to": "3d:office_after_hours",
-   "build": "copy_shop",
-   "scenes": 1,
-   "built": "2026-10-17 draft 1",
-   "note": "paper cuts: the office after hours (his desk, the copying machine, the bright corner); a sub-area of build_copy_shop.py"
-  },
-  "vol4_ourobouros_mirror": {
-   "fit": "2d",
-   "to": null,
-   "scenes": 1
-  },
-  "vol4_parking_garage": {
-   "fit": "exact",
-   "to": "3d:garage_level",
-   "scenes": 1,
-   "build": "vol4_story_rooms",
-   "note": "paper cuts: the honeydew garage, the fluorescent tubes, the car descending",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_retirement_kitchen": {
-   "fit": "reuse",
-   "to": "3d:grandmother_kitchen_morning",
-   "scenes": 1
-  },
-  "vol4_school_hallway": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_hall",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_seem_drugstore_night": {
-   "fit": "reuse",
-   "to": "3d:pharmacy_floor",
-   "scenes": 1
-  },
-  "vol4_shanghai_apartment": {
-   "fit": "exact",
-   "to": "3d:shanghai_window_night",
-   "scenes": 1,
-   "build": "vol4_story_rooms",
-   "note": "daddy: Dean's one-room apartment in Shanghai, the city lights below",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_sister_carrie_notes": {
-   "fit": "2d",
-   "to": null,
-   "note": "an insert",
-   "scenes": 1
-  },
-  "vol4_sister_house_ext_day": {
-   "fit": "exact",
-   "to": "3d:sister_house_yard",
-   "scenes": 1,
-   "build": "carrie_city",
-   "note": "the sister's house: low rent, bad shape, the yard in a sorry state",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_sister_house_int_day": {
-   "fit": "exact",
-   "to": "3d:sister_house_inside",
-   "scenes": 1,
-   "build": "carrie_city",
-   "note": "inside the sister's house: cramped, the laundry and the dryer",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_squirrel_road": {
-   "fit": "reuse",
-   "to": "3d:small_wood_road",
-   "scenes": 1
-  },
-  "vol4_vacant_lot_dusk": {
-   "fit": "2d",
-   "to": null,
-   "note": "video tests — the vacant lot and the stump",
-   "scenes": 1
-  },
-  "vol4_various_locales": {
-   "fit": "2d",
-   "to": null,
-   "note": "montage",
-   "scenes": 1
-  },
-  "vol4_voices_crowded_room": {
-   "fit": "reuse",
-   "to": "3d:foxhole_bar",
-   "scenes": 1
-  },
-  "vol4_wasted_sentiment_bedroom": {
-   "fit": "exact",
-   "to": "3d:chau_steven_room",
-   "scenes": 1,
-   "build": "chau_house",
-   "note": "the wasted sentiment: Steven's room at the Chau house, the armchair he slept twisted in (the user: Steven lives at the Chau house)",
-   "built": "2026-10-18 draft 1"
-  },
-  "vol4_what_sort_of_car_dawn": {
-   "fit": "reuse",
-   "to": "3d:vehicle_cab",
-   "scenes": 1
-  },
-  "vol4_workshop_classroom_day": {
-   "fit": "exact",
-   "to": "3d:small_wood_high_class",
-   "build": "small_wood_high",
-   "scenes": 1,
-   "built": "2026-10-16 draft 1"
-  },
-  "vol4_xerox_sky": {
-   "fit": "2d",
-   "to": null,
-   "note": "a xeroxed sky",
-   "scenes": 2
-  },
-  "vol1_club_street_dawn": {
-   "fit": "exact",
-   "to": "3d:club_street_dawn",
-   "build": "club_street",
-   "note": "ch16: the same street at 4 a.m., ordinary and grey, Judgement Day at the curb",
-   "built": "2026-10-18 draft 1",
-   "scenes": 1
+  "_comment": [
+    "BG PLACES (2026-10-16): the vols 1-4 scenes (branch claude/vol1-4-source-text) name",
+    "flat pictures — assets/backgrounds/<stem>.jpg — that were never made. GameEngine._do_bg looks the",
+    "stem up here and plays the 3D set instead, so those scenes render without editing their JSON.",
+    "fit: exact (the place) · reuse (an existing set that is this kind of place) · standin (the nearest",
+    "set until its 'build' locale exists) · 2d (stays a picture; to: null until it is painted).",
+    "When a build group's locale lands, point its stems at the new presets and change fit to exact.",
+    "Plan and priorities: lore/_VOL1_4_SETS_AND_CAST.md.",
+    "by_scene (2026-10-17): {scene_id: '3d:<preset>'} picks a different view of the same place for one scene (the sleep lab at work vs. at night)."
+  ],
+  "places": {
+    "vol1_above_the_record": {
+      "fit": "2d",
+      "to": null,
+      "note": "abstract",
+      "scenes": 1
+    },
+    "vol1_bar_exterior_night": {
+      "fit": "exact",
+      "to": "3d:bar_exterior_night",
+      "scenes": 2
+    },
+    "vol1_bar_interior": {
+      "fit": "exact",
+      "to": "3d:new_orleans_bar",
+      "scenes": 2
+    },
+    "vol1_battle_painting": {
+      "fit": "2d",
+      "to": null,
+      "note": "Joan Charging Off Into Battle — the painting itself",
+      "scenes": 1
+    },
+    "vol1_city_color_night": {
+      "fit": "exact",
+      "to": "3d:club_street_curb",
+      "build": "club_street",
+      "note": "the street outside Club #: the curb and Judgement Day; the door (ch8); the neon (the meld)",
+      "scenes": 3,
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol1_ch8_triumvirate": "3d:club_street_door",
+        "meld_kaleidoscope_a": "3d:club_street_neon_wide"
+      }
+    },
+    "vol1_club_dance": {
+      "fit": "exact",
+      "to": "3d:foxhole_stage",
+      "note": "aligned with the 3D vol1 scenes",
+      "scenes": 1
+    },
+    "vol1_club_office_night": {
+      "fit": "exact",
+      "to": "3d:club_office",
+      "build": "dean_offices",
+      "note": "Dean's back office in Club #: the shirts, the four devices; Aria at rest under a sheet",
+      "scenes": 2,
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol1_ch8_triumvirate": "3d:club_office_after"
+      }
+    },
+    "vol1_club_sharp": {
+      "fit": "exact",
+      "to": "3d:club_sharp",
+      "scenes": 3
+    },
+    "vol1_club_sharp_empty": {
+      "fit": "exact",
+      "to": "3d:club_sharp",
+      "note": "the club after hours",
+      "scenes": 2
+    },
+    "vol1_deep_end_pool": {
+      "fit": "2d",
+      "to": null,
+      "note": "the deep end: an empty pool, the corpse-painted boy — a painted plate",
+      "scenes": 1
+    },
+    "vol1_dream_bar": {
+      "fit": "reuse",
+      "to": "3d:new_orleans_bar",
+      "note": "the bar dreamed",
+      "scenes": 2
+    },
+    "vol1_dream_bed": {
+      "fit": "reuse",
+      "to": "3d:faust_bedroom",
+      "scenes": 1
+    },
+    "vol1_drugstore_aisles": {
+      "fit": "exact",
+      "to": "3d:pharmacy_floor",
+      "note": "Act Three's drugstore hub",
+      "scenes": 2
+    },
+    "vol1_drugstore_purgatory": {
+      "fit": "reuse",
+      "to": "3d:pharmacy_floor",
+      "note": "the drugstore as purgatory: a mood, same aisles",
+      "scenes": 1
+    },
+    "vol1_editing_suite": {
+      "fit": "exact",
+      "to": "3d:suite_wide",
+      "build": "editing_suite",
+      "note": "the four's suite at Aud's: the frozen frame, the console, the couch, the window",
+      "scenes": 1,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol1_faust_apartment_day": {
+      "fit": "exact",
+      "to": "3d:faust_apartment_day",
+      "scenes": 5
+    },
+    "vol1_faust_bedroom_night": {
+      "fit": "exact",
+      "to": "3d:faust_bedroom",
+      "scenes": 5
+    },
+    "vol1_grandparents_montage": {
+      "fit": "reuse",
+      "to": "3d:riverfront_park",
+      "note": "aligned",
+      "scenes": 1
+    },
+    "vol1_hall_of_ratifications": {
+      "fit": "2d",
+      "to": null,
+      "note": "dream architecture",
+      "scenes": 1
+    },
+    "vol1_jacob_apartment": {
+      "fit": "exact",
+      "to": "3d:new_orleans_apartment",
+      "note": "aligned",
+      "scenes": 2
+    },
+    "vol1_jacob_house_ext_day": {
+      "fit": "exact",
+      "to": "3d:jacob_house_front",
+      "build": "wagner_home",
+      "note": "Jacob's, on another block, plain (apartment in ch2, house in ch5: the author's call)",
+      "scenes": 1,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol1_jd_driving_day": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab",
+      "note": "in the car, day",
+      "scenes": 1
+    },
+    "vol1_jd_driving_night": {
+      "fit": "exact",
+      "to": "3d:small_wood_road_night",
+      "note": "aligned",
+      "scenes": 1
+    },
+    "vol1_jd_river": {
+      "fit": "exact",
+      "to": "3d:jd_river",
+      "build": "houston_bayou",
+      "note": "the dream river: the shore things, the toll gate, the drugstore on the water (was vol 5 Graustark riverfront)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol1_missing_link_exterior": {
+      "fit": "exact",
+      "to": "3d:missing_link_exterior",
+      "scenes": 1
+    },
+    "vol1_missing_link_interior": {
+      "fit": "exact",
+      "to": "3d:missing_link_interior",
+      "scenes": 2
+    },
+    "vol1_office_day": {
+      "fit": "exact",
+      "to": "3d:onei_office",
+      "build": "dean_offices",
+      "note": "INT. THE OFFICE: the trio's new office (not Dean's - 'This is your new office'), three desks, the goggles",
+      "scenes": 2,
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol1_ch6_debrief": "3d:onei_office_door"
+      }
+    },
+    "vol1_painting_interior": {
+      "fit": "reuse",
+      "to": "3d:faust_apartment_day",
+      "note": "Faust painting at home",
+      "scenes": 1
+    },
+    "vol1_park_day": {
+      "fit": "exact",
+      "to": "3d:riverfront_park",
+      "scenes": 1
+    },
+    "vol1_pharmacy_floor": {
+      "fit": "exact",
+      "to": "3d:pharmacy_floor",
+      "scenes": 1
+    },
+    "vol1_pharmacy_office": {
+      "fit": "exact",
+      "to": "3d:pharmacy_office",
+      "scenes": 1
+    },
+    "vol1_river_turn": {
+      "fit": "exact",
+      "to": "3d:jd_river_turn",
+      "build": "houston_bayou",
+      "note": "the turn: no shore, Club # far off (was vol 5 Graustark riverfront)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol1_shuttle_bench": {
+      "fit": "exact",
+      "to": "3d:shuttle_bench",
+      "scenes": 8
+    },
+    "vol1_skatepark_day": {
+      "fit": "exact",
+      "to": "3d:skatepark_day",
+      "scenes": 1
+    },
+    "vol1_tutorial_lobby": {
+      "fit": "exact",
+      "to": "3d:tutorial_lobby",
+      "build": "dean_offices",
+      "note": "the tutorial: a lobby carved out of imagination, Olivia's console, the television",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol1_wagner_home": {
+      "fit": "exact",
+      "to": "3d:wagner_home",
+      "scenes": 2
+    },
+    "vol1_wagner_house_ext_day": {
+      "fit": "exact",
+      "to": "3d:wagner_house_steps",
+      "build": "wagner_home",
+      "note": "the steps and the open door, the album playing to an empty room",
+      "scenes": 1,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol1_wagner_porch_day": {
+      "fit": "exact",
+      "to": "3d:wagner_porch_morning",
+      "build": "wagner_home",
+      "note": "Wagner on his porch in the morning, reading and smoking",
+      "scenes": 1,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_apple_peddler_diner": {
+      "fit": "exact",
+      "to": "3d:apple_peddler_booth",
+      "build": "apple_peddler",
+      "scenes": 1,
+      "note": "the Apple Peddler: off the main drag, next to the Greyhound depot, open 24 hours",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_ark_hillside": {
+      "fit": "2d",
+      "to": null,
+      "note": "the ark on the hill: painted until a build is planned",
+      "scenes": 2
+    },
+    "vol2_art_classroom": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_art",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol2_backyard_party_summer": {
+      "fit": "exact",
+      "to": "3d:small_wood_backyard_party",
+      "build": "small_wood_backyard",
+      "note": "her fifteenth birthday: the table, the sprinkler and slip and slide, the balloon husks, the hutches (was vol 6's Texas backyard)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol2_barn_interior": {
+      "fit": "exact",
+      "to": "3d:crumpled_barn_int",
+      "scenes": 1
+    },
+    "vol2_beach_bonfire": {
+      "fit": "reuse",
+      "to": "3d:beach_night",
+      "scenes": 1
+    },
+    "vol2_beach_night": {
+      "fit": "exact",
+      "to": "3d:beach_night",
+      "scenes": 2
+    },
+    "vol2_beach_overcast": {
+      "fit": "reuse",
+      "to": "3d:grunion_beach",
+      "scenes": 4
+    },
+    "vol2_bed_breakfast_christmas": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol2_bedroom_window_night": {
+      "fit": "exact",
+      "to": "3d:ranch_bedroom_night",
+      "build": "small_wood_ranch",
+      "scenes": 2,
+      "note": "the window, the moon behind the trees",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol2_bingo_hall_projector": {
+      "fit": "reuse",
+      "to": "3d:small_wood_rec_center",
+      "note": "the bingo hall, projector slides of an impossible coastal theme park",
+      "scenes": 1
+    },
+    "vol2_bookstore_back_lounge": {
+      "fit": "reuse",
+      "to": "3d:salty_tome_office",
+      "note": "Small Wood's bookstore = the Salty Tome",
+      "scenes": 2
+    },
+    "vol2_briar_falls_building": {
+      "fit": "exact",
+      "to": "3d:briar_falls_building",
+      "scenes": 1
+    },
+    "vol2_briar_falls_overlook": {
+      "fit": "exact",
+      "to": "3d:briar_falls_overlook",
+      "scenes": 1
+    },
+    "vol2_briar_falls_picnic": {
+      "fit": "exact",
+      "to": "3d:briar_falls_picnic",
+      "scenes": 1
+    },
+    "vol2_briar_falls_rest_stop": {
+      "fit": "exact",
+      "to": "3d:briar_falls_rest_stop",
+      "scenes": 4
+    },
+    "vol2_briar_falls_trail": {
+      "fit": "exact",
+      "to": "3d:briar_falls_trail",
+      "scenes": 2
+    },
+    "vol2_cannery_dawn": {
+      "fit": "exact",
+      "to": "3d:grunion_beach",
+      "note": "aligned",
+      "scenes": 1
+    },
+    "vol2_car_interior_day": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab",
+      "scenes": 1
+    },
+    "vol2_chainsaw_ghost_town": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol2_christmas_lights_road": {
+      "fit": "reuse",
+      "to": "3d:small_wood_road_night",
+      "scenes": 1
+    },
+    "vol2_cliffside_circus": {
+      "fit": "exact",
+      "to": "3d:cliffside_circus",
+      "scenes": 1
+    },
+    "vol2_coast_highway_day": {
+      "fit": "exact",
+      "to": "3d:coast_highway_day",
+      "build": "highway_101",
+      "note": "the coast road on a clear 1990s day (era preset: no 2052 truck, chain or marker)",
+      "scenes": 2,
+      "built": "2026-10-27 era preset"
+    },
+    "vol2_coast_woods_dawn": {
+      "fit": "reuse",
+      "to": "3d:cape_perpetua_overlook",
+      "scenes": 1
+    },
+    "vol2_copy_shop_night": {
+      "fit": "exact",
+      "to": "3d:copy_shop_floor",
+      "build": "copy_shop",
+      "scenes": 2,
+      "note": "the small ugly copy shop on the graveyard shift: the dying tubes, the greenish-black walls",
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol2_ch8_apple_peddler": "3d:copy_shop_wastebasket"
+      }
+    },
+    "vol2_country_road_night": {
+      "fit": "reuse",
+      "to": "3d:small_wood_road_night",
+      "scenes": 1
+    },
+    "vol2_crumpled_barn_ext": {
+      "fit": "exact",
+      "to": "3d:crumpled_barn_ext",
+      "scenes": 1
+    },
+    "vol2_dean_basement_1994": {
+      "fit": "exact",
+      "to": "3d:dean_basement_1994",
+      "build": "dean_house_1994",
+      "scenes": 1,
+      "note": "the basement at the window well: the graph paper (SCUMM, slow sticks), the monitor off, first light on the Hagstrom place",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_dean_bedroom_1994": {
+      "fit": "exact",
+      "to": "3d:dean_bedroom_1994",
+      "build": "dean_house_1994",
+      "note": "N. Dean's bedroom, March 1994, 3:50 a.m.: over the furnace, the rain on the window",
+      "scenes": 2,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_diner_grill_dawn": {
+      "fit": "reuse",
+      "to": "3d:apple_peddler_grill",
+      "build": "apple_peddler",
+      "note": "ch8's unnamed local diner plays the Apple Peddler's line (a reuse); the meld's block is the Missing Link",
+      "scenes": 2,
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "meld_seam_1_2": "3d:missing_link_interior"
+      }
+    },
+    "vol2_diner_night": {
+      "fit": "reuse",
+      "to": "3d:apple_peddler_night",
+      "build": "apple_peddler",
+      "scenes": 1,
+      "note": "an unnamed diner one evening (ch5): the Apple Peddler's room plays it (a reuse)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_dive_bar_bridge": {
+      "fit": "reuse",
+      "to": "3d:foxhole_bar",
+      "scenes": 1
+    },
+    "vol2_farmhouse_night": {
+      "fit": "exact",
+      "to": "3d:farm_living_night",
+      "scenes": 2,
+      "build": "small_wood_farmhouse",
+      "note": "the farmhouse at night: the living room at the picture windows (points of impact); the porch (loose pages)",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol2_ch12x_loose_pages": "3d:farm_porch_night"
+      }
+    },
+    "vol2_football_field_night": {
+      "fit": "exact",
+      "to": "3d:small_wood_field_night",
+      "build": "small_wood_field",
+      "note": "Small Wood High's field, Friday night under the lights (points of impact, rewind) — was vol 6's Texas field",
+      "scenes": 2,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol2_football_practice": {
+      "fit": "exact",
+      "to": "3d:small_wood_field_dusk",
+      "build": "small_wood_field",
+      "note": "two-a-days at dusk",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol2_glass_apartment_ext_day": {
+      "fit": "2d",
+      "to": null,
+      "note": "the House of Glass promo — the building",
+      "scenes": 1
+    },
+    "vol2_glass_apartment_monitors": {
+      "fit": "2d",
+      "to": null,
+      "note": "the House of Glass — camera views, an empty hallway",
+      "scenes": 1
+    },
+    "vol2_glass_mansion_bay": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol2_grunion_beach": {
+      "fit": "exact",
+      "to": "3d:grunion_beach",
+      "scenes": 1
+    },
+    "vol2_gymnasium_hearing": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_gym",
+      "build": "small_wood_high",
+      "note": "the school-board hearing in the gym",
+      "scenes": 3,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol2_harbor_dusk": {
+      "fit": "reuse",
+      "to": "3d:smolvud_docks_evening",
+      "note": "the docks at evening: the bench, the boats coming in, the sun going down (pass 159) · 2026-10-27: Small Wood in 1997 — the Frog's things stripped (Smolvud is the 2050s Small Wood)",
+      "scenes": 1
+    },
+    "vol2_ice_storm": {
+      "fit": "exact",
+      "to": "3d:cliffside_circus",
+      "note": "aligned",
+      "scenes": 1
+    },
+    "vol2_interview_room": {
+      "fit": "reuse",
+      "to": "3d:county_line_station",
+      "note": "a police interview room",
+      "scenes": 1
+    },
+    "vol2_lighthouse_night": {
+      "fit": "exact",
+      "to": "3d:lighthouse_base_up",
+      "build": "oregon_lighthouse",
+      "note": "the lighthouse 1.5 hours from Small Wood, December night: from the column's foot, looking up (not the bayou lighthouse)",
+      "scenes": 1,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_little_switzerland": {
+      "fit": "exact",
+      "to": "3d:little_switzerland",
+      "scenes": 1
+    },
+    "vol2_locker_room": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_locker",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol2_meld_editing_suite_tideflats": {
+      "fit": "exact",
+      "to": "3d:suite_tide",
+      "build": "editing_suite",
+      "scenes": 1,
+      "note": "the four's suite: four chairs on casters, the monitors full of the tide",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_minivan_night_coast": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab_night",
+      "scenes": 2
+    },
+    "vol2_model_workbench": {
+      "fit": "2d",
+      "to": null,
+      "note": "an insert",
+      "scenes": 1
+    },
+    "vol2_pier_crabbing": {
+      "fit": "reuse",
+      "to": "3d:smolvud_docks_evening",
+      "note": "the pier: the harbor from the shore path (pass 159; the fog frame is vol 7's) · 2026-10-27: Small Wood in 1997 — the Frog's things stripped (Smolvud is the 2050s Small Wood)",
+      "scenes": 2
+    },
+    "vol2_radio_studio": {
+      "fit": "exact",
+      "to": "3d:radio_studio",
+      "note": "the town's annual radio drama, read live on the air (December 1992); no station name in the text",
+      "scenes": 1,
+      "build": "small_wood_town",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_rain_windshield_night": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab_night",
+      "scenes": 1
+    },
+    "vol2_reading_lamp_night": {
+      "fit": "reuse",
+      "to": "3d:ranch_bedroom_lamp",
+      "build": "small_wood_ranch",
+      "scenes": 2,
+      "note": "a reading lamp at night (ch10's 'Home · Night' is the adult narrator's house)",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol2_rec_center_dance": {
+      "fit": "exact",
+      "to": "3d:small_wood_rec_center",
+      "note": "Jay Rose's dance",
+      "scenes": 1
+    },
+    "vol2_riverbed_dunes": {
+      "fit": "exact",
+      "to": "3d:riverbed_sand",
+      "scenes": 1,
+      "build": "sea_cave",
+      "note": "Charles's ground by the riverbed (the text never says dunes)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_road_running": {
+      "fit": "exact",
+      "to": "3d:small_wood_road",
+      "scenes": 1
+    },
+    "vol2_room_ranch_bedroom": {
+      "fit": "exact",
+      "to": "3d:ranch_bedroom_day",
+      "build": "small_wood_ranch",
+      "note": "\"the room\" up the hill: the narrator's old room, rebuilt",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol2_room_roof_dusk": {
+      "fit": "2d",
+      "to": null,
+      "note": "from the roof: the field down to the road, the second house",
+      "scenes": 1
+    },
+    "vol2_sapo_falls": {
+      "fit": "exact",
+      "to": "3d:sapo_falls",
+      "scenes": 1
+    },
+    "vol2_school_hallway": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_hall",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol2_school_newspaper": {
+      "fit": "exact",
+      "to": "3d:school_newspaper",
+      "scenes": 3
+    },
+    "vol2_scumm_hemlock_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "in-fiction graphic adventure screen (ch vii) — modern art, not era cosplay",
+      "scenes": 3
+    },
+    "vol2_scumm_inventory_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 1
+    },
+    "vol2_scumm_missing_link_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 1
+    },
+    "vol2_scumm_save_screen_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 1
+    },
+    "vol2_scumm_spiral_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 1
+    },
+    "vol2_scumm_theater_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 1
+    },
+    "vol2_scumm_tideflats_crab_vga": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 2
+    },
+    "vol2_sea_cave": {
+      "fit": "exact",
+      "to": "3d:cave_dawn",
+      "build": "sea_cave",
+      "note": "Julie's cave: dawn (flotsam), low tide (art class), the tide coming in (truck)",
+      "scenes": 3,
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol2_ch9_art_class": "3d:cave_low_tide",
+        "vol2_ch9_truck": "3d:cave_tide_in"
+      }
+    },
+    "vol2_sea_wall_bookstore": {
+      "fit": "reuse",
+      "to": "3d:salty_tome_alley",
+      "scenes": 1
+    },
+    "vol2_seagash_circus_old": {
+      "fit": "exact",
+      "to": "3d:cliffside_circus",
+      "scenes": 2
+    },
+    "vol2_second_house_night": {
+      "fit": "exact",
+      "to": "3d:ranch_second_house",
+      "build": "small_wood_ranch",
+      "note": "the second house, the kerosene lamp",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol2_small_town_road": {
+      "fit": "exact",
+      "to": "3d:small_wood_roadside",
+      "scenes": 1
+    },
+    "vol2_small_wood_scrapbook": {
+      "fit": "2d",
+      "to": null,
+      "note": "the scrapbook: an insert",
+      "scenes": 2
+    },
+    "vol2_truck_cab_day": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab",
+      "scenes": 1
+    },
+    "vol2_upturned_log_woods": {
+      "fit": "reuse",
+      "to": "3d:briar_falls_trail",
+      "scenes": 1
+    },
+    "vol2_used_bookstore": {
+      "fit": "reuse",
+      "to": "3d:salty_tome_interior",
+      "scenes": 1
+    },
+    "vol2_video_store_counter": {
+      "fit": "exact",
+      "to": "3d:video_store_counter",
+      "build": "small_wood_town",
+      "note": "Small Wood's video store, February 2013: the counter, MELODY from behind it, the shelves",
+      "scenes": 1,
+      "built": "2026-10-18 draft 1"
+    },
+    "vol2_white_room": {
+      "fit": "2d",
+      "to": null,
+      "note": "the House of Glass promo — a generic white room",
+      "scenes": 1
+    },
+    "vol3_andy_room_day": {
+      "fit": "exact",
+      "to": "3d:ranch_home_day",
+      "build": "small_wood_ranch",
+      "scenes": 1,
+      "note": "ch4 the coast: back home in Small Wood by day (the house ten miles inland, 'on the coast': the user)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_andy_room_night": {
+      "fit": "exact",
+      "to": "3d:ranch_bedroom_night",
+      "build": "small_wood_ranch",
+      "scenes": 1,
+      "note": "ch4 the coast: 'back home quiet and moody' that evening, the Small Wood house",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_ballfield_convenience_stand": {
+      "fit": "exact",
+      "to": "3d:ballfield_stand",
+      "build": "little_league",
+      "scenes": 1,
+      "note": "the convenience stand (the text's word): the counter, the ice cream bar pictures",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_ballfield_dugout_august": {
+      "fit": "exact",
+      "to": "3d:ballfield_dugout",
+      "build": "little_league",
+      "note": "the home dugout's bench, Dad gripping it, the field past the front",
+      "scenes": 2,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_ballfield_third_base": {
+      "fit": "exact",
+      "to": "3d:ballfield_third_base",
+      "build": "little_league",
+      "scenes": 1,
+      "note": "on third, in at Chris batting and the dusty home plate",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_ballfield_first_base": {
+      "fit": "exact",
+      "to": "3d:ballfield_first_base",
+      "build": "little_league",
+      "scenes": 1,
+      "note": "guarding first base, Larry leading off",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_ballfield_home_plate": {
+      "fit": "exact",
+      "to": "3d:ballfield_home_plate",
+      "build": "little_league",
+      "scenes": 2,
+      "note": "the last inning, in at home from second",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_ballfield_pitchers_mound": {
+      "fit": "exact",
+      "to": "3d:ballfield_mound",
+      "build": "little_league",
+      "scenes": 1,
+      "note": "Chris on the mound, from first base",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_bedroom_closet_dallas": {
+      "fit": "exact",
+      "to": "3d:june_closet",
+      "build": "vol3_rooms",
+      "scenes": 1,
+      "note": "June's closet, 1991: the sealed box at the back",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_bedroom_lamp_night": {
+      "fit": "exact",
+      "to": "3d:andy_house_bedroom_lamp",
+      "build": "link_house",
+      "scenes": 2,
+      "note": "the bedside lamp",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_blanket_fort_night": {
+      "fit": "exact",
+      "to": "3d:amanda_fort",
+      "build": "amanda_house",
+      "scenes": 2,
+      "note": "Amanda's: the pushed-together couches, the fan's sheet (by sequence); a sub-area of build_chau_house.py",
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol3_ch8_passengers_c": "3d:amanda_fort_close"
+      }
+    },
+    "vol3_brick_wall_halloween_night": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol3_caltech_bare_room": {
+      "fit": "exact",
+      "to": "3d:caltech_bare_room",
+      "build": "caltech_dabney",
+      "note": "1945: the bare cement room, one bulb, the door propped open",
+      "scenes": 2,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_caltech_campus_afternoon": {
+      "fit": "reuse",
+      "to": "3d:dabney_side_yard",
+      "build": "caltech_dabney",
+      "scenes": 1,
+      "note": "the side yard out to the ivy wall and Pasadena (the couchmobile under its tarp)",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_caltech_dabney_day": {
+      "fit": "exact",
+      "to": "3d:dabney_courtyard_1945",
+      "build": "caltech_dabney",
+      "scenes": 1,
+      "note": "the same courtyard in 1945, from the same camera: no hoop, no speakers, no murals",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_caltech_hallway_1945": {
+      "fit": "exact",
+      "to": "3d:caltech_hallway_1945",
+      "build": "caltech_dabney",
+      "note": "the same corridor in 1945, bare under fluorescent tubes",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_caltech_tunnels_night": {
+      "fit": "exact",
+      "to": "3d:caltech_tunnels",
+      "build": "caltech_dabney",
+      "note": "the tunnels in 2003: graffiti on everything, the lantern room's red and blue",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_car_backseat_streetlamps": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab_rear_night",
+      "scenes": 1
+    },
+    "vol3_car_coast_dusk": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab",
+      "scenes": 1
+    },
+    "vol3_car_coast_night": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab_night",
+      "scenes": 1
+    },
+    "vol3_chau_bathroom_steam": {
+      "fit": "exact",
+      "to": "3d:chau_bath",
+      "build": "chau_house",
+      "scenes": 1,
+      "note": "the mirror cabinet, the shower, the towels on the floor",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_chau_game_room_morning": {
+      "fit": "exact",
+      "to": "3d:chau_game_room",
+      "build": "chau_house",
+      "scenes": 1,
+      "note": "Sunday morning: the pool table, the dartboard, the liquor cabinet, the fern",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_chau_house_day": {
+      "fit": "exact",
+      "to": "3d:chau_hall_noon",
+      "build": "chau_house",
+      "note": "Saturday noon: the hall, the candy dish, the locked bathroom door",
+      "scenes": 2,
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol3_ch8_passengers_c": "3d:chau_entry_morning"
+      }
+    },
+    "vol3_chau_living_room": {
+      "fit": "exact",
+      "to": "3d:chau_living",
+      "build": "chau_house",
+      "scenes": 1,
+      "note": "Mrs. Chau on the couch, the seats round her",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_chris_bedroom_night": {
+      "fit": "exact",
+      "to": "3d:chris_room_night",
+      "scenes": 1,
+      "build": "lake_house",
+      "note": "Chris's room that night, the light left on, the card game in the corner",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_chris_bedroom_trophies": {
+      "fit": "exact",
+      "to": "3d:chris_room_day",
+      "scenes": 1,
+      "build": "lake_house",
+      "note": "Chris's room at the lake house on arrival: clean and sterile",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_city_street_friday": {
+      "fit": "reuse",
+      "to": "3d:main_street",
+      "scenes": 1
+    },
+    "vol3_clinic_1945": {
+      "fit": "exact",
+      "to": "3d:clinic_1945",
+      "build": "pasadena_1945",
+      "scenes": 1,
+      "note": "the small clinic: the glass of water, the cuff",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_clinic_waiting_room": {
+      "fit": "reuse",
+      "to": "3d:hospital_waiting",
+      "scenes": 1
+    },
+    "vol3_coast_home_studio": {
+      "fit": "exact",
+      "to": "3d:coast_studio",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "note": "the photographer's lent home-studio over the coast",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_coast_road_forest": {
+      "fit": "exact",
+      "to": "3d:coast_highway_day",
+      "build": "highway_101",
+      "note": "the coast road by day, early 2000s (era preset)",
+      "scenes": 1,
+      "built": "2026-10-27 era preset"
+    },
+    "vol3_coast_studio_bathroom": {
+      "fit": "exact",
+      "to": "3d:coast_bathroom",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "note": "the stranger's bathroom: the tub in the kit lights",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_crt_monitor_newsgroup": {
+      "fit": "2d",
+      "to": null,
+      "note": "an insert: the Usenet post",
+      "scenes": 1
+    },
+    "vol3_dabney_courtyard_day": {
+      "fit": "exact",
+      "to": "3d:dabney_courtyard",
+      "build": "caltech_dabney",
+      "scenes": 1,
+      "note": "the courtyard in 2003: The Birth of God, the palms, the arcade",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_dabney_game_room": {
+      "fit": "exact",
+      "to": "3d:dabney_game_room",
+      "build": "caltech_dabney",
+      "scenes": 2,
+      "note": "Dabney's basement: the U of black leather couches, the wall of screens, the fridges",
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol3_ch6_couch": "3d:dabney_couch"
+      }
+    },
+    "vol3_dance_floor_fog": {
+      "fit": "reuse",
+      "to": "3d:club_sharp",
+      "scenes": 1
+    },
+    "vol3_desert_gas_station": {
+      "fit": "exact",
+      "to": "3d:desert_gas_station",
+      "build": "desert_route",
+      "note": "the one-room store off the main drag: the pumps, the ice chest, Galaga, the curios (was vol 6 sets)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol3_desert_motel_dusk": {
+      "fit": "exact",
+      "to": "3d:desert_motel_dusk",
+      "build": "desert_route",
+      "note": "the motel twenty miles down, the office lit (was vol 6 sets)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol3_dust_storm_highway": {
+      "fit": "exact",
+      "to": "3d:dust_storm_highway",
+      "build": "desert_route",
+      "note": "the red dust storm and the wreck of the two semis (was vol 6 sets)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol3_editing_suite_night": {
+      "fit": "exact",
+      "to": "3d:edit_station",
+      "build": "editing_suite",
+      "scenes": 2,
+      "note": "vol 3 ch4: the night edit station (the AVID is the program); the meld at Aud's plays the suite",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "meld_kaleidoscope_c": "3d:suite_4am"
+      }
+    },
+    "vol3_family_bathroom_day": {
+      "fit": "exact",
+      "to": "3d:andy_house_bath",
+      "build": "link_house",
+      "note": "the bathroom by day, the dad at the door",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_family_bathroom_night": {
+      "fit": "exact",
+      "to": "3d:lake_bath_night",
+      "build": "lake_house",
+      "scenes": 1,
+      "note": "the lake-house bathroom before dawn ('The lake house · before dawn'); 'family' in the stem is historical",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_family_kitchen_evening": {
+      "fit": "exact",
+      "to": "3d:andy_house_kitchen",
+      "build": "link_house",
+      "scenes": 2,
+      "note": "the kitchen table at evening, the magazine between father and son",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_family_living_room_night": {
+      "fit": "exact",
+      "to": "3d:andy_house_living",
+      "build": "link_house",
+      "scenes": 1,
+      "note": "Nick asleep on the couch, the TV on",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_father_bedside": {
+      "fit": "reuse",
+      "to": "3d:hospital_room",
+      "note": "Dad in hospital",
+      "scenes": 1
+    },
+    "vol3_four_screen_room": {
+      "fit": "exact",
+      "to": "3d:four_screens_show",
+      "build": "sleep_lab",
+      "scenes": 2,
+      "built": "2026-10-17 draft 1",
+      "note": "the gallery's back room: the chair island, four walls lit; meld_seam_2_3 is the dark and the beam",
+      "by_scene": {
+        "meld_seam_2_3": "3d:four_screens_beam"
+      }
+    },
+    "vol3_gas_station_night": {
+      "fit": "exact",
+      "to": "3d:gas_station_2003_night",
+      "build": "nexcorp_fueling_station",
+      "note": "the one stop at 3 a.m., early 2000s: the station without vol 6's brand, van and cars",
+      "scenes": 1,
+      "built": "2026-10-27 era preset"
+    },
+    "vol3_glass_condo_demo_unit": {
+      "fit": "exact",
+      "to": "3d:condo_demo_unit",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "note": "the empty demo unit, Vancouver WA, autumn 2001 (the text never says glass)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_grandma_house_night": {
+      "fit": "exact",
+      "to": "3d:nick_house_front",
+      "scenes": 1,
+      "build": "nick_house",
+      "note": "Nick's grandmother's house, Halloween night: unlit from the outside, the mini-bike, the neighbour's fence",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_hollywood_street_1945": {
+      "fit": "exact",
+      "to": "3d:hollywood_shoot",
+      "build": "pasadena_1945",
+      "scenes": 1,
+      "note": "a busier street, a shoot on it",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_honolulu_game_store": {
+      "fit": "exact",
+      "to": "3d:honolulu_game_store",
+      "note": "Koa Works' game store",
+      "scenes": 1,
+      "build": "honolulu_highrise",
+      "built": "2026-10-28 draft 1"
+    },
+    "vol3_honolulu_highrise_lobby": {
+      "fit": "exact",
+      "to": "3d:honolulu_lobby",
+      "scenes": 1,
+      "build": "honolulu_highrise",
+      "built": "2026-10-28 draft 1"
+    },
+    "vol3_hospital_catwalk_night": {
+      "fit": "exact",
+      "to": "3d:catwalk_rail_night",
+      "scenes": 2,
+      "build": "vol3_rooms",
+      "note": "the glass catwalk between the towers over the lit city; yellow card walks it",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol3_ch5_yellow_card": "3d:catwalk_walk"
+      }
+    },
+    "vol3_hospital_elevator_benches": {
+      "fit": "reuse",
+      "to": "3d:hospital_waiting",
+      "scenes": 3
+    },
+    "vol3_hospital_lobby_night": {
+      "fit": "reuse",
+      "to": "3d:hospital_waiting",
+      "scenes": 1
+    },
+    "vol3_hospital_room_night": {
+      "fit": "reuse",
+      "to": "3d:hospital_room",
+      "scenes": 4
+    },
+    "vol3_hospital_room_window_night": {
+      "fit": "reuse",
+      "to": "3d:hospital_room",
+      "scenes": 3
+    },
+    "vol3_hot_tub_night": {
+      "fit": "exact",
+      "to": "3d:amanda_hot_tub",
+      "build": "amanda_house",
+      "scenes": 1,
+      "note": "Amanda's, Saturday 10 p.m. (the interlude says so); a sub-area of build_chau_house.py",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_houston_car_night": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab_night",
+      "scenes": 1
+    },
+    "vol3_korean_bbq_night": {
+      "fit": "exact",
+      "to": "3d:korean_bbq_table",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "note": "Korean barbecue, Pasadena 2003: the booth table and its grill",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_lake_dock_dawn": {
+      "fit": "exact",
+      "to": "3d:lake_dock_dawn",
+      "scenes": 1,
+      "build": "lake_house",
+      "note": "sunrise from the kitchen table: Terry fishing off the dock outside the window",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_lake_dock_day": {
+      "fit": "exact",
+      "to": "3d:lake_dock_day",
+      "scenes": 1,
+      "build": "lake_house",
+      "note": "the dock's polished wood, the lake with its boats and balloons",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_lake_house_day": {
+      "fit": "exact",
+      "to": "3d:lake_house_day",
+      "scenes": 1,
+      "build": "lake_house",
+      "note": "Terry's big home on the lake on arrival: the barbecue, the screen door, the boathouse out back (not the vol 6 boat ramp)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_lax_terminal_night": {
+      "fit": "exact",
+      "to": "3d:lax_gate",
+      "build": "airport_cabin",
+      "note": "the gate at LAX, the convenience store across the concourse",
+      "scenes": 3,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_meld_time_pod_interior": {
+      "fit": "2d",
+      "to": null,
+      "note": "pulp: the time pod",
+      "scenes": 2
+    },
+    "vol3_mojave_desert_1945": {
+      "fit": "2d",
+      "to": null,
+      "note": "the Mojave in 1945: painted",
+      "scenes": 1
+    },
+    "vol3_motel_pool_dusk": {
+      "fit": "exact",
+      "to": "3d:motel_pool_dusk",
+      "build": "desert_route",
+      "note": "the pool's concrete shorelines, red silt on the water (was vol 6 sets)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol3_motel_room_dusk": {
+      "fit": "exact",
+      "to": "3d:motel_room_dusk",
+      "build": "desert_route",
+      "note": "room No. 4: the single bed, the television (was vol 6 sets)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol3_nick_bedroom_drawings": {
+      "fit": "exact",
+      "to": "3d:nick_room",
+      "note": "Nick's room: the walls lined with designs; the drafting table for the after-Halloween scene",
+      "scenes": 2,
+      "build": "nick_house",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol3_ch12_uncle_nick_b": "3d:nick_drafting"
+      }
+    },
+    "vol3_nick_garage_workshop": {
+      "fit": "exact",
+      "to": "3d:nick_garage_halloween",
+      "note": "Mark's old workshop, Halloween night, before any press (the press is years later: vol3_silkscreen_garage)",
+      "scenes": 1,
+      "build": "nick_house",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_oil_field_dusk": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol3_oregon_apartment_day": {
+      "fit": "exact",
+      "to": "3d:oregon_home_day",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "note": "the shared Oregon home by day (the stem says apartment; vol 2 says duplex)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_oregon_apartment_night": {
+      "fit": "exact",
+      "to": "3d:oregon_home_night",
+      "scenes": 2,
+      "build": "vol3_rooms",
+      "note": "their room that evening on the lamp",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_parsonage_hallway": {
+      "fit": "exact",
+      "to": "3d:parsonage_hall",
+      "build": "parsonage_1945",
+      "scenes": 1,
+      "note": "the upstairs hall, wide enough for Jack's meeting",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_parsonage_ron_room_dawn": {
+      "fit": "exact",
+      "to": "3d:ron_dawn",
+      "build": "parsonage_1945",
+      "scenes": 1,
+      "note": "Ron's room upstairs at first light",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_parsonage_ron_room_day": {
+      "fit": "exact",
+      "to": "3d:ron_day",
+      "build": "parsonage_1945",
+      "scenes": 1,
+      "note": "Ron's room: the books in drifts, the bed, the desk",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_parsonage_ron_room_night": {
+      "fit": "exact",
+      "to": "3d:ron_night_floor",
+      "build": "parsonage_1945",
+      "note": "Ron's room at night on its lamp; ch19 from the bed, the window open",
+      "scenes": 2,
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol3_ch19_ron_takes_notes": "3d:ron_night_bed"
+      }
+    },
+    "vol3_pasadena_park_1945": {
+      "fit": "exact",
+      "to": "3d:park_chess",
+      "build": "pasadena_1945",
+      "scenes": 1,
+      "note": "chess boards in the shade, pigeons on the gravel, kites beyond",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_pasadena_street_1945": {
+      "fit": "exact",
+      "to": "3d:street_day",
+      "build": "pasadena_1945",
+      "scenes": 2,
+      "note": "the street in 1945: readers, slow cars, the bus, the marquee, orange trees",
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "meld_seam_2_3": "3d:street_rain"
+      }
+    },
+    "vol3_pink_light_void": {
+      "fit": "2d",
+      "to": null,
+      "note": "abstract",
+      "scenes": 1
+    },
+    "vol3_pizza_parlor_rain": {
+      "fit": "exact",
+      "to": "3d:pizza_party_window",
+      "note": "the strip-mall pizza parlor's party room on a rainy night",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_plane_cabin_day": {
+      "fit": "exact",
+      "to": "3d:plane_day",
+      "build": "airport_cabin",
+      "scenes": 1,
+      "note": "\"flight number one\": the notebook on his tray, the shades up",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_plane_cabin_night": {
+      "fit": "exact",
+      "to": "3d:plane_night",
+      "build": "airport_cabin",
+      "scenes": 1,
+      "note": "the late flight: Andy at the window, the armrest up, the cups, the lamp",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_pulp_helipad_dawn": {
+      "fit": "2d",
+      "to": null,
+      "note": "pulp",
+      "scenes": 1
+    },
+    "vol3_pulp_pod_street_dawn": {
+      "fit": "2d",
+      "to": null,
+      "note": "pulp",
+      "scenes": 1
+    },
+    "vol3_pulp_ward_rows": {
+      "fit": "2d",
+      "to": null,
+      "note": "the Earthman pulp — painted in its own register",
+      "scenes": 2
+    },
+    "vol3_river_edge_dusk": {
+      "fit": "reuse",
+      "to": "3d:riverfront_exterior",
+      "scenes": 1
+    },
+    "vol3_ruined_city_night": {
+      "fit": "2d",
+      "to": null,
+      "note": "pulp",
+      "scenes": 2
+    },
+    "vol3_saab_highway_dusk": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab",
+      "scenes": 1
+    },
+    "vol3_silkscreen_garage": {
+      "fit": "exact",
+      "to": "3d:nick_print_shop",
+      "scenes": 1,
+      "build": "nick_house",
+      "note": "the same garage years later: the printing press Nick built, comics and T-shirts",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_sleep_lab": {
+      "fit": "exact",
+      "to": "3d:sleep_lab_entry",
+      "build": "sleep_lab",
+      "note": "Jane's sleep study: the two beds, the bookshelf between, the black curtain round the computer",
+      "scenes": 3,
+      "built": "2026-10-17 draft 1",
+      "by_scene": {
+        "vol3_ch6_jane": "3d:sleep_lab_desk",
+        "vol3_ch6_binder": "3d:sleep_lab_night",
+        "meld_seam_3_4": "3d:sleep_lab_night"
+      }
+    },
+    "vol3_spencer_room": {
+      "fit": "exact",
+      "to": "3d:spencer_room",
+      "build": "caltech_dabney",
+      "scenes": 1,
+      "note": "Spencer on the floor with the laptop; the Contra sketch framed on the wall",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol3_suburban_garage_night": {
+      "fit": "reuse",
+      "to": "3d:henderson_garage",
+      "scenes": 1
+    },
+    "vol3_suburban_street_ambulance": {
+      "fit": "reuse",
+      "to": "3d:meadowlark_circle_night",
+      "scenes": 1
+    },
+    "vol3_taxi_night": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab_rear_night",
+      "scenes": 1
+    },
+    "vol3_texas_highway_rain": {
+      "fit": "reuse",
+      "to": "3d:louisiana_road",
+      "scenes": 1
+    },
+    "vol3_tulsa_backyard_night": {
+      "fit": "exact",
+      "to": "3d:tulsa_patio",
+      "scenes": 1,
+      "build": "tulsa_house",
+      "note": "the patio later on, the fall: the sawdust playground, the fort, the moon between the trees",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_tulsa_living_room_slideshow": {
+      "fit": "exact",
+      "to": "3d:tulsa_slideshow",
+      "note": "Marty's slide show, Tulsa, mid-eighties: the projector, the pull-down screen, the bar",
+      "scenes": 1,
+      "build": "tulsa_house",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol3_utah_highway_day": {
+      "fit": "exact",
+      "to": "3d:utah_highway_day",
+      "build": "desert_route",
+      "note": "Kathy's Utah two-lane at noon, the Voyager, a semi (was vol 6 sets)",
+      "scenes": 1,
+      "built": "2026-10-27 draft 1"
+    },
+    "vol3_vacant_gallery_lobby": {
+      "fit": "reuse",
+      "to": "3d:cedar_tower_lobby",
+      "scenes": 1
+    },
+    "vol3_warehouse_club_night": {
+      "fit": "exact",
+      "to": "3d:warehouse_floor",
+      "scenes": 1,
+      "build": "vol3_rooms",
+      "note": "the club in industrial downtown, 1 a.m.: green and pink through the fog",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_abstract_club_night": {
+      "fit": "reuse",
+      "to": "3d:club_sharp",
+      "scenes": 1
+    },
+    "vol4_after_party_night": {
+      "fit": "exact",
+      "to": "3d:afterparty_room",
+      "scenes": 2,
+      "build": "carrie_city",
+      "note": "the after party: the tire swing, the bar; cc_5's two stools",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol4_cc_5": "3d:afterparty_stools"
+      }
+    },
+    "vol4_airplane_cabin": {
+      "fit": "reuse",
+      "to": "3d:plane_vol4",
+      "build": "airport_cabin",
+      "scenes": 1,
+      "note": "November: the cabin full of strangers asleep, most shades down",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol4_all_over_town": {
+      "fit": "reuse",
+      "to": "3d:main_street",
+      "scenes": 1
+    },
+    "vol4_alley_dumpster": {
+      "fit": "reuse",
+      "to": "3d:salty_tome_alley",
+      "scenes": 1
+    },
+    "vol4_ambulance_road": {
+      "fit": "reuse",
+      "to": "3d:louisiana_road",
+      "scenes": 1
+    },
+    "vol4_angry_fog_suburb": {
+      "fit": "reuse",
+      "to": "3d:meadowlark_circle_night",
+      "scenes": 1
+    },
+    "vol4_apartment_dawn": {
+      "fit": "reuse",
+      "to": "3d:finn_apartment_day",
+      "scenes": 1
+    },
+    "vol4_arcade_cabinet": {
+      "fit": "2d",
+      "to": null,
+      "note": "an insert",
+      "scenes": 1
+    },
+    "vol4_aria_childhood": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_bathroom_mirror": {
+      "fit": "exact",
+      "to": "3d:mirror_room",
+      "scenes": 1,
+      "build": "vol4_story_rooms",
+      "note": "cracked and broken: the mirror and the world behind her (the text never says bathroom)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_beach_daycare": {
+      "fit": "2d",
+      "to": null,
+      "note": "four coloured variants: a painted series",
+      "scenes": 1
+    },
+    "vol4_beach_daycare_kitchen": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_beach_daycare_red": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_beach_daycare_yellow": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_bedroom_desk": {
+      "fit": "exact",
+      "to": "3d:writers_desk_room",
+      "build": "writers_desk",
+      "scenes": 2,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_betterment_desk_2am": {
+      "fit": "exact",
+      "to": "3d:writers_desk",
+      "build": "writers_desk",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_betterment_wire_table": {
+      "fit": "exact",
+      "to": "3d:writers_desk_room",
+      "build": "writers_desk",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_bigbox_parking_lot_day": {
+      "fit": "reuse",
+      "to": "3d:new_auburn_lot",
+      "scenes": 1
+    },
+    "vol4_blue_sand_beach": {
+      "fit": "2d",
+      "to": null,
+      "note": "surreal",
+      "scenes": 1
+    },
+    "vol4_bus_interior_day": {
+      "fit": "exact",
+      "to": "3d:bus_two_shot",
+      "build": "bus_station",
+      "scenes": 2,
+      "note": "the seat pair, the city in the window; cc_2's stops from up the aisle",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol4_cc_2": "3d:bus_aisle"
+      }
+    },
+    "vol4_bus_station_day": {
+      "fit": "exact",
+      "to": "3d:bus_station",
+      "build": "bus_station",
+      "scenes": 2,
+      "note": "under the bus overhang, the city by day",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_caltech_basement": {
+      "fit": "exact",
+      "to": "3d:dabney_couch_carving",
+      "build": "caltech_dabney",
+      "scenes": 1,
+      "note": "the same basement, along the carved couch (the poem)",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol4_charlie_apartment_day": {
+      "fit": "exact",
+      "to": "3d:charlie_apartment_day",
+      "scenes": 2,
+      "build": "carrie_city",
+      "note": "Charlie's flat by day; cc_5's morning is the couch with the blanket left on it",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol4_cc_5": "3d:charlie_living_day"
+      }
+    },
+    "vol4_charlie_apartment_night": {
+      "fit": "exact",
+      "to": "3d:charlie_bedroom_night",
+      "note": "Sister Carrie: Charlie's bedroom at night; the couch and the chair for cc_5",
+      "scenes": 2,
+      "build": "carrie_city",
+      "built": "2026-10-18 draft 1",
+      "by_scene": {
+        "vol4_cc_5": "3d:charlie_living_night"
+      }
+    },
+    "vol4_chess_apartment_morning": {
+      "fit": "reuse",
+      "to": "3d:finn_apartment_day",
+      "note": "Chess's place",
+      "scenes": 1
+    },
+    "vol4_classroom": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_class",
+      "build": "small_wood_high",
+      "note": "Todd's 7th-grade class",
+      "scenes": 2,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_classroom_afternoon": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_class",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_cold_water": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_computer_lab": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_lab",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_corkboard_night": {
+      "fit": "exact",
+      "to": "3d:writers_desk_board",
+      "build": "writers_desk",
+      "scenes": 2,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_crash_intersection": {
+      "fit": "reuse",
+      "to": "3d:new_auburn_two_lane",
+      "scenes": 1
+    },
+    "vol4_crt_adventure": {
+      "fit": "2d",
+      "to": null,
+      "note": "game screen",
+      "scenes": 1
+    },
+    "vol4_dark_hallway": {
+      "fit": "reuse",
+      "to": "3d:accretion_corridor",
+      "scenes": 1
+    },
+    "vol4_dead_department_store": {
+      "fit": "exact",
+      "to": "3d:dead_store",
+      "note": "map of the city: the dead clothing store (mannequins, banners, the counter, the escalator)",
+      "scenes": 1,
+      "build": "vol4_story_rooms",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_dead_park": {
+      "fit": "reuse",
+      "to": "3d:riverfront_park",
+      "scenes": 1
+    },
+    "vol4_dean_home_night": {
+      "fit": "exact",
+      "to": "3d:dean_house_late",
+      "note": "the Deans' home, late night: the reading chair (the text names no city)",
+      "scenes": 1,
+      "build": "vol4_story_rooms",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_dean_office_night": {
+      "fit": "exact",
+      "to": "3d:dean_tower_corridor",
+      "build": "dean_offices",
+      "scenes": 1,
+      "note": "his office building at night: the corridor, the city, the door he leads her through",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol4_desk_dawn": {
+      "fit": "exact",
+      "to": "3d:writers_desk_dawn",
+      "build": "writers_desk",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_desk_night": {
+      "fit": "exact",
+      "to": "3d:writers_desk",
+      "build": "writers_desk",
+      "note": "the scrapbook desk — 26 scenes",
+      "scenes": 26,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_drawer_open": {
+      "fit": "exact",
+      "to": "3d:writers_desk",
+      "build": "writers_desk",
+      "note": "the bottom drawer of the scrapbook desk — 11 scenes; draft 2: a writers_desk_drawer view",
+      "scenes": 11
+    },
+    "vol4_esther_neighborhood": {
+      "fit": "2d",
+      "to": null,
+      "note": "Esther's simulated neighbourhood",
+      "scenes": 1
+    },
+    "vol4_fast_food_riot": {
+      "fit": "reuse",
+      "to": "3d:el_rancho_taqueria",
+      "scenes": 1
+    },
+    "vol4_glass_tower": {
+      "fit": "reuse",
+      "to": "3d:cedar_tower_exterior",
+      "scenes": 2
+    },
+    "vol4_graffiti_alley": {
+      "fit": "2d",
+      "to": null,
+      "note": "video tests — graffiti writing itself on the alley wall",
+      "scenes": 1
+    },
+    "vol4_grungy_bathroom_night": {
+      "fit": "exact",
+      "to": "3d:afterparty_bathroom",
+      "scenes": 1,
+      "build": "carrie_city",
+      "built": "2026-10-28 draft 1",
+      "note": "the after party's bathroom: the sharpie face on the mirror"
+    },
+    "vol4_heavy_breathing_bedroom": {
+      "fit": "exact",
+      "to": "3d:aaron_bedroom",
+      "scenes": 1,
+      "build": "vol4_story_rooms",
+      "note": "heavy breathing: Aaron's room at thirteen (aaron_bedroom_blue is the waking dream's light)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_ivy_wall_door": {
+      "fit": "2d",
+      "to": null,
+      "note": "video tests — the ivy wall, the metal door, the star key",
+      "scenes": 1
+    },
+    "vol4_jack_of_suede_stage": {
+      "fit": "reuse",
+      "to": "3d:foxhole_stage",
+      "scenes": 1
+    },
+    "vol4_letters": {
+      "fit": "2d",
+      "to": null,
+      "note": "an insert",
+      "scenes": 1
+    },
+    "vol4_looking_forward_bath": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_machine_cell": {
+      "fit": "reuse",
+      "to": "3d:nightmare_cell",
+      "scenes": 1
+    },
+    "vol4_meld_lens_mandala": {
+      "fit": "2d",
+      "to": null,
+      "note": "abstract",
+      "scenes": 1
+    },
+    "vol4_monitor_room_night": {
+      "fit": "exact",
+      "to": "3d:dean_monitor_room",
+      "build": "dean_offices",
+      "note": "Dean's bedroom office in the glass house: the ring of monitors, the text game",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1"
+    },
+    "vol4_monitor_wall": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_museum_case": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_office_copier": {
+      "fit": "exact",
+      "to": "3d:copy_shop_copier",
+      "build": "copy_shop",
+      "scenes": 2,
+      "note": "the copier at 4 a.m.: the lid, the scratched glass, the pink scan light (the melds)",
+      "built": "2026-10-17 draft 1"
+    },
+    "vol4_office_after_hours": {
+      "fit": "exact",
+      "to": "3d:office_after_hours",
+      "build": "copy_shop",
+      "scenes": 1,
+      "built": "2026-10-17 draft 1",
+      "note": "paper cuts: the office after hours (his desk, the copying machine, the bright corner); a sub-area of build_copy_shop.py"
+    },
+    "vol4_ourobouros_mirror": {
+      "fit": "2d",
+      "to": null,
+      "scenes": 1
+    },
+    "vol4_parking_garage": {
+      "fit": "exact",
+      "to": "3d:garage_level",
+      "scenes": 1,
+      "build": "vol4_story_rooms",
+      "note": "paper cuts: the honeydew garage, the fluorescent tubes, the car descending",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_retirement_kitchen": {
+      "fit": "reuse",
+      "to": "3d:grandmother_kitchen_morning",
+      "scenes": 1
+    },
+    "vol4_school_hallway": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_hall",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_seem_drugstore_night": {
+      "fit": "reuse",
+      "to": "3d:pharmacy_floor",
+      "scenes": 1
+    },
+    "vol4_shanghai_apartment": {
+      "fit": "exact",
+      "to": "3d:shanghai_window_night",
+      "scenes": 1,
+      "build": "vol4_story_rooms",
+      "note": "daddy: Dean's one-room apartment in Shanghai, the city lights below",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_sister_carrie_notes": {
+      "fit": "2d",
+      "to": null,
+      "note": "an insert",
+      "scenes": 1
+    },
+    "vol4_sister_house_ext_day": {
+      "fit": "exact",
+      "to": "3d:sister_house_yard",
+      "scenes": 1,
+      "build": "carrie_city",
+      "note": "the sister's house: low rent, bad shape, the yard in a sorry state",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_sister_house_int_day": {
+      "fit": "exact",
+      "to": "3d:sister_house_inside",
+      "scenes": 1,
+      "build": "carrie_city",
+      "note": "inside the sister's house: cramped, the laundry and the dryer",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_squirrel_road": {
+      "fit": "reuse",
+      "to": "3d:small_wood_road",
+      "scenes": 1
+    },
+    "vol4_vacant_lot_dusk": {
+      "fit": "2d",
+      "to": null,
+      "note": "video tests — the vacant lot and the stump",
+      "scenes": 1
+    },
+    "vol4_various_locales": {
+      "fit": "2d",
+      "to": null,
+      "note": "montage",
+      "scenes": 1
+    },
+    "vol4_voices_crowded_room": {
+      "fit": "reuse",
+      "to": "3d:foxhole_bar",
+      "scenes": 1
+    },
+    "vol4_wasted_sentiment_bedroom": {
+      "fit": "exact",
+      "to": "3d:chau_steven_room",
+      "scenes": 1,
+      "build": "chau_house",
+      "note": "the wasted sentiment: Steven's room at the Chau house, the armchair he slept twisted in (the user: Steven lives at the Chau house)",
+      "built": "2026-10-18 draft 1"
+    },
+    "vol4_what_sort_of_car_dawn": {
+      "fit": "reuse",
+      "to": "3d:vehicle_cab",
+      "scenes": 1
+    },
+    "vol4_workshop_classroom_day": {
+      "fit": "exact",
+      "to": "3d:small_wood_high_class",
+      "build": "small_wood_high",
+      "scenes": 1,
+      "built": "2026-10-16 draft 1"
+    },
+    "vol4_xerox_sky": {
+      "fit": "2d",
+      "to": null,
+      "note": "a xeroxed sky",
+      "scenes": 2
+    },
+    "vol1_club_street_dawn": {
+      "fit": "exact",
+      "to": "3d:club_street_dawn",
+      "build": "club_street",
+      "note": "ch16: the same street at 4 a.m., ordinary and grey, Judgement Day at the curb",
+      "built": "2026-10-18 draft 1",
+      "scenes": 1
+    }
   }
- }
 }
