@@ -3852,9 +3852,9 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - 14 to generate.
 - **The bed's window.** HeroArt keys rows by scene file. The bedroom window's picture is now also laid in `cabin_interior_bed` ("The window above the bed gave her the gray-green of cedars").
 - **Gates at zero:**
-  - marker_aim (insert tight cone 8°, all 1797 markers);
-  - shot_marker;
-  - tscn_syntax.
+  - marker_aim (insert tight cone 8°: all 1797 markers, and 831 re-checked in the 46 touched sets);
+  - vantage_obstruction `--markers` (46 sets);
+  - wrong_room, shot_marker, tscn_syntax.
 - **Draft N+1 targets:**
   1. Coverage that sees hero props (read the tscn HeroProp transforms + size_m into the box model).
   2. Then measure the hand markers.
