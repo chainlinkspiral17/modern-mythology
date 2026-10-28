@@ -34854,5 +34854,355 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/kai_apartment_north_window/front.png",
     "output": "godot/assets/art/hero/kai_apartment_north_window.png"
+  },
+  {
+    "at": "2026-10-28T13:45:53+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_south_window_w_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view south from the cabin's big front window: the porch, the clearing, the cedars \u2014 at night, like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking south out of an old cedar cabin's front window at night in the Oregon Coast Range: the porch rail and two posts close outside, lit warm amber by the cabin's own window light, a square of yellow lamplight lying on the wet porch boards; beyond, the dark gravel clearing with the black shape of an older pickup truck beaded with rain catching a little of the light; past it the black wall of cedar and Sitka spruce against a deep blue-black sky; steady rain streaks caught in the light. Kerosene-warm near, cold blue-black far. Low light, no moon.\nSIZE: the real object is 1.78 m wide by 1.06 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view south from the cabin's big front window: the porch, the clearing, the cedars \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_south_window_w_night/cabin_interior_south_window_w_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:46:28+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_south_window_e_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view south from the cabin's smaller front window: porch post and cedars \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking south out of a small window of a cedar cabin at night: one porch post and the end of the rail lit warm amber by the window's own light, rain dripping off the porch roof edge in bright drops, then darkness \u2014 the faint black silhouettes of cedars against a deep blue-black sky. Near-square. Low light.\nSIZE: the real object is 1.03 m wide by 1.01 m tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view south from the cabin's smaller front window: porch post and cedars \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_south_window_e_night/cabin_interior_south_window_e_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:47:01+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_kitchen_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view north from the cabin's kitchen window: mist on the cedars \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking north out of a cabin's kitchen window at night: the dark clearing behind the cabin, only the nearest sword ferns and a mossy log touched by the window's warm light, then the black trunks of cedar fading into darkness, a faint cold-blue sky between the crowns, rain. Very low light, warm near edge, blue-black beyond.\nSIZE: the real object is 1.68 m wide by 1.01 m tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from the cabin's kitchen window: mist on the cedars \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_kitchen_window_night/cabin_interior_kitchen_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:47:24+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_west_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view west out of the cabin's side window \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking west out of a small side window of a cedar cabin at night: a stacked woodpile under a lean-to just outside, caught in a little warm window light, then black forest and rain. Near-square. Very low light.\nSIZE: the real object is 96 cm wide by 96 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view west out of the cabin's side window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_west_window_night/cabin_interior_west_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:47:43+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_gable_w_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the sky and cedar crowns through the cabin's west gable window \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking up and out of a high gable window of a cabin at night: the black crowns of cedar and spruce against a deep blue-black overcast sky with a faint glow where the cloud is thinnest, rain. Very dark, cool blues.\nSIZE: the real object is 1.16 m wide by 86 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the sky and cedar crowns through the cabin's west gable window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_gable_w_night/cabin_interior_gable_w_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:48:03+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_gable_e_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the sky and cedar crowns through the cabin's east gable window \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking up and out of a high east gable window of a cabin at night: black spruce crowns against a deep blue-black sky, low cloud barely lighter than the trees, rain. Very dark, cool blues.\nSIZE: the real object is 1.16 m wide by 86 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the sky and cedar crowns through the cabin's east gable window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_gable_e_night/cabin_interior_gable_e_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:48:26+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_loft_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view out of the loft window above the kitchen \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking out of a small loft window under a cabin's eaves at night: the dripping edge of the cedar-shake roof catching a thread of warm light from inside, then the dark boughs of red cedar close by, rain, darkness. Very low light.\nSIZE: the real object is 76 cm wide by 56 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view out of the loft window above the kitchen \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_loft_window_night/cabin_interior_loft_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:48:53+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_north_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view north out of the cabin's window by the stove \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking north out of a cabin window by the wood stove at night: the stove's orange glow faintly touching the nearest salmonberry leaves and a wet stump outside, then darkness; the sound-shape of a creek implied by a pale glint of water on gravel far back; black cedars, rain. Very low light, warm near, black far.\nSIZE: the real object is 1.06 m wide by 96 cm tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north out of the cabin's window by the stove \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_north_window_night/cabin_interior_north_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:49:20+00:00",
+    "stage": "image",
+    "slug": "cabin_interior_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view east out of the cabin's main-room window \u2014 at night like this: The light from the cabin's south window threw a square of yellow onto the porch boards. Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back. The rain on the cedar roof had been steady since seven. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections of the room, no people, no readable signs. Looking east out of a cabin's main-room window at night: the edge of the muddy clearing faintly lit by the window's warm light, the dark trunk of a big Sitka spruce close by with fern at its foot, black forest rising behind into a deep blue-black sky, rain, mist. Low light.\nSIZE: the real object is 1.24 m wide by 94 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view east out of the cabin's main-room window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/cabin_interior_window_night/cabin_interior_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:49:40+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_front_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the street below Lena's front window \u2014 at night like this: Kai could hear the early traffic on Hemlock. He had stood at the window with the water for some minutes. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking down from a second-floor apartment window at night onto a small-town street on the Oregon coast in the 2050s: wet asphalt shining under a streetlamp, the curb below, the dark shopfronts across the street with one lit upstairs window, rain falling through the lamplight. Deep blue night, sodium-warm pools. 1:1.2 portrait.\nSIZE: the real object is 1.08 m wide by 1.26 m tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the street below Lena's front window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_front_window_night/lena_apartment_front_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:49:59+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_nook_window_0_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view north from Lena's nook windows (left) \u2014 at night like this: Kai could hear the early traffic on Hemlock. He had stood at the window with the water for some minutes. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking out of a tall second-floor window at the back of an old building at night: the dark wet roof of the next building below with a rooftop heat-pump unit's small green status light, pitched roofs and chimneys climbing a hill in silhouette, a few warm windows, a black spruce ridge against a deep blue overcast sky, rain. 1:1.3 portrait.\nSIZE: the real object is 1.03 m wide by 1.36 m tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from Lena's nook windows (left) \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_nook_window_0_night/lena_apartment_nook_window_0_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:50:17+00:00",
+    "stage": "image",
+    "slug": "lena_apartment_nook_window_1_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view north from Lena's nook windows (right) \u2014 at night like this: Kai could hear the early traffic on Hemlock. He had stood at the window with the water for some minutes. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking out of a tall second-floor window at night: the shingled side wall of the neighbouring house across a narrow gap with one warm lit upstairs window, a downspout glinting with rain, the black shape of a bigleaf maple, a deep blue overcast sky above the rooftops. 1:1.3 portrait.\nSIZE: the real object is 1.03 m wide by 1.36 m tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north from Lena's nook windows (right) \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_apartment_nook_window_1_night/lena_apartment_nook_window_1_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:50:37+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_south_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the town to the south from Finn's kitchen window \u2014 at night like this: The kitchen window faced south. South was the direction of Cape Perpetua, the Starfish Nebula, Kai's apartment, Tem's apartment, the tower on the bluff above old-Yachats. The face was looking out at the town. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking south out of a second-floor kitchen window at night over a small Oregon coast town: wet rooftops and chimneys in silhouette with scattered warm windows, streetlamps on the wet streets, and far off on a dark bluff a tall tower with a faint green glow on its top floor among black spruce; the sea a darker band beyond. Rain, deep blue night. Near-square.\nSIZE: the real object is 76 cm wide by 81 cm tall \u2014 a portrait picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the town to the south from Finn's kitchen window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_south_window_night/finn_apartment_south_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:50:58+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_alley_window_night",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the alley below Finn's west kitchen window \u2014 at night like this: He stood at the kitchen window looking down at the alley. Additional direction: Exterior only, seen through a window from inside at night; no window frame, no reflections, no people in focus, no readable signs. Looking down from a second-floor window at night into a narrow wet alley behind a small kayak shop: stacked sea kayaks under a lean-to lit by one caged bulb over a back door, puddles reflecting it, a dumpster, the black back wall of the next building, rain. Near-square.\nSIZE: the real object is 96 cm wide by 86 cm tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the alley below Finn's west kitchen window \u2014 at night, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo captions or labels about the picture, no watermark, no border. Words that belong in the world \u2014 signs, papers, pages, screens, spines, labels, packaging \u2014 are real, readable, sensible English, as much of it as the real thing carries: never gibberish, never fake letter-shapes, never one lonely word on an empty page.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_alley_window_night/finn_apartment_alley_window_night_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-28T13:50:58+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_south_window_w_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_south_window_w_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_south_window_w_night.png"
+  },
+  {
+    "at": "2026-10-28T13:50:59+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_south_window_e_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_south_window_e_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_south_window_e_night.png"
+  },
+  {
+    "at": "2026-10-28T13:50:59+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_kitchen_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_kitchen_window_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_kitchen_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:04+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_west_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_west_window_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_west_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:10+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_gable_w_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_gable_w_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_gable_w_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:15+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_gable_e_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_gable_e_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_gable_e_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:20+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_loft_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_loft_window_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_loft_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:24+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_north_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_north_window_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_north_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:29+00:00",
+    "stage": "art",
+    "slug": "cabin_interior_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cabin_interior_window_night/front.png",
+    "output": "godot/assets/art/hero/cabin_interior_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:42+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_front_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_front_window_night/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_front_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:47+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_nook_window_0_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_nook_window_0_night/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_nook_window_0_night.png"
+  },
+  {
+    "at": "2026-10-28T13:51:52+00:00",
+    "stage": "art",
+    "slug": "lena_apartment_nook_window_1_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/lena_apartment_nook_window_1_night/front.png",
+    "output": "godot/assets/art/hero/lena_apartment_nook_window_1_night.png"
+  },
+  {
+    "at": "2026-10-28T13:52:03+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_south_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_south_window_night/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_south_window_night.png"
+  },
+  {
+    "at": "2026-10-28T13:52:07+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_alley_window_night",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_alley_window_night/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_alley_window_night.png"
   }
 ]
