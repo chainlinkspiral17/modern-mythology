@@ -437,7 +437,7 @@ metadata/fov = 36.0
 ; insert: Dad's recliner — "passed out, inside on his recliner, slumped at a precarious angle"
 [node name="shot_insert_recliner" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 1.25, -2.4)
-rotation = Vector3(-0.421, 2.678, 0.0)
+rotation = Vector3(-0.6596, 2.5309, 0.0)
 metadata/fov = 44.0
 
 ; insert: the small, barely working television

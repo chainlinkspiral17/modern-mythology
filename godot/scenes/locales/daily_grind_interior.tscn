@@ -456,7 +456,7 @@ metadata/fov = 40.0
 ; insert: the front window and the slate-gray light over Main
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.000, 1.550, -1.600)
-rotation = Vector3(-0.0110, 3.1122, 0.0)
+rotation = Vector3(-0.8669, 2.7322, 0.0)
 metadata/fov = 52.0
 
 ; reverse: Lena's view from behind the bar, over the machine to the front window and Main

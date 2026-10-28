@@ -378,7 +378,7 @@ metadata/fov = 42.0
 ; insert: Carl's kit at the room's back
 [node name="shot_insert_drum_kit" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.400, 1.400, -5.400)
-rotation = Vector3(-0.4965, 0.4939, 0.0)
+rotation = Vector3(-0.6277, 0.7302, 0.0)
 metadata/fov = 40.0
 
 ; establish (driveway): from the bay looking out down the driveway to the street

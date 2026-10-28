@@ -200,7 +200,7 @@ shadow_enabled = false
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_laptop" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52, 1.39, -0.73)
-rotation = Vector3(-0.4687, -0.6234, 0.0)
+rotation = Vector3(-0.3168, -1.0172, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390, 1.024, -0.687)

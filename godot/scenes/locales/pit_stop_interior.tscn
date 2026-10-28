@@ -376,25 +376,25 @@ omni_range = 8.0
 ; insert: the grill line — the grease hisses (ch2/ch6)
 [node name="shot_insert_grill" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.450, 1.720, -9.350)
-rotation = Vector3(-0.5917, 0.0454, 0.0)
+rotation = Vector3(-0.6932, -0.0291, 0.0)
 metadata/fov = 42.0
 
 ; insert: the kitchen window — cataloguing the lot (ch2)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-3.900, 1.600, -9.600)
-rotation = Vector3(-0.1245, -0.4076, 0.0)
+rotation = Vector3(0.0387, -0.2422, 0.0)
 metadata/fov = 42.0
 
 ; insert: the bell over the diner door chimes (ch4)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.3, -1.1)
-rotation = Vector3(0.1977, 2.8506, 0.0)
+rotation = Vector3(-0.2219, 2.8947, 0.0)
 metadata/fov = 42.0
 
 ; insert: the ten-dollar bill — "The red light lies." (ch4)
 [node name="shot_insert_bill" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1.35, -3.95)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.5957, -0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: Ben's phone buzzes at 09:18 (ch6)
@@ -406,7 +406,7 @@ metadata/fov = 42.0
 ; insert: three eight-by-tens from the paper bag
 [node name="shot_insert_prints" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.4, -4.0)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.5323, -0.1041, 0.0)
 metadata/fov = 42.0
 
 ; practicals authored by practical_author.py (2026-09-11):
@@ -542,7 +542,7 @@ metadata/fov = 60.0
 ; insert (back lot): the back door, the screen door shut in it
 [node name="shot_insert_door__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(5.900, 1.500, -12.700)
-rotation = Vector3(-0.1489, 2.4981, 0.0)
+rotation = Vector3(-0.2697, 2.4201, 0.0)
 metadata/fov = 42.0
 
 ; insert (back lot): Ben's truck in the employee spots

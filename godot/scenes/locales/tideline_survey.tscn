@@ -317,7 +317,7 @@ script = ExtResource("14_dbgm")
 ; insert: the first pool — anemone, shore crab, two sea stars, the hermit crab
 [node name="shot_insert_tide_pool" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 2.2, 4.6)
-rotation = Vector3(-0.6672, 1.0286, 0.0)
+rotation = Vector3(-0.7695, 1.3258, 0.0)
 metadata/fov = 42.0
 
 ; insert: Brandon's notebook, leather-bound, palm-sized, on the basalt

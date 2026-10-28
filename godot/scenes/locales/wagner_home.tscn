@@ -363,7 +363,7 @@ metadata/fov = 40.0
 ; insert: the rack by the door where he puts up his board
 [node name="shot_insert_skateboard" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.900, 1.500, -0.550)
-rotation = Vector3(-0.2182, 1.3796, 0.0)
+rotation = Vector3(-0.0431, 1.3704, 0.0)
 metadata/fov = 44.0
 
 ; insert: the sofa, the blanket, the cans on the table
@@ -375,7 +375,7 @@ metadata/fov = 48.0
 ; insert: the front window, the curtains pushed open, JD on the drive
 [node name="shot_insert_curtain" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.000, 1.550, -2.100)
-rotation = Vector3(-0.0804, -2.9499, 0.0)
+rotation = Vector3(0.2375, 3.0815, 0.0)
 metadata/fov = 48.0
 
 ; reverse: from the hall opening to the front window, the door and JD outside

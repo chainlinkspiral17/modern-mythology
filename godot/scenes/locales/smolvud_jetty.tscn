@@ -335,7 +335,7 @@ metadata/fov = 40.0
 ; insert: the rod in the bucket, its line going down into the channel — not, technically, fishing
 [node name="shot_insert_rod" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.200, 4.100, -32.400)
-rotation = Vector3(-0.5349, 1.2847, 0.0)
+rotation = Vector3(0.0159, 1.1431, 0.0)
 metadata/fov = 46.0
 
 ; reverse: the jetty in profile from the shore path, where the three will pass at four
@@ -360,7 +360,7 @@ metadata/fov = 42.0
 ; insert: the crab pots stacked at the float's root — "helping the tourists catch crabs"
 [node name="shot_insert_crab_pot" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.2, 1.5, -12.6)
-rotation = Vector3(-0.254, -2.834, 0.0)
+rotation = Vector3(-0.6202, -2.3951, 0.0)
 metadata/fov = 42.0
 
 ; insert: daddy's boat at the finger float — "cleaning the deck of my daddy's boat"
@@ -372,7 +372,7 @@ metadata/fov = 46.0
 ; insert: the bench they rock on — "We rocked back and forth on a bench"
 [node name="shot_insert_float_bench" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0, 1.3, -4.6)
-rotation = Vector3(-0.351, 0.915, 0.0)
+rotation = Vector3(-0.4551, 1.3080, 0.0)
 metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

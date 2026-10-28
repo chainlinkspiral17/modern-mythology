@@ -210,7 +210,7 @@ shadow_enabled = false
 ; ROOM_D=5.0 → godot (0.0, 0.90, -2.72).
 [node name="shot_insert_pot_roast" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
-rotation = Vector3(-0.55, 0.0, 0.0)
+rotation = Vector3(-0.3440, -0.0358, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -354,13 +354,13 @@ metadata/fov = 42.0
 ; insert: the place settings
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.000, 1.250, 0.040)
-rotation = Vector3(-0.2686, 0.0000, 0.0)
+rotation = Vector3(-0.8392, -0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Telecaster on its stand by the stairs
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 0.9, -1.0)
-rotation = Vector3(0.2241, -2.3842, 0.0)
+rotation = Vector3(-0.0363, -2.3842, 0.0)
 metadata/fov = 42.0
 
 ; insert: the small spiral notebook, the bridge lyrics
@@ -404,7 +404,7 @@ metadata/fov = 50.0
 ; insert: the door (the basement door, cracked the small specific way)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568, 1.775, -2.300)
-rotation = Vector3(0.2182, 2.8997, 0.0)
+rotation = Vector3(-0.9183, 2.7074, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

@@ -341,7 +341,7 @@ metadata/fov = 40.0
 
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.450, 1.200, -2.300)
-rotation = Vector3(-0.4547, 0.6947, 0.0)
+rotation = Vector3(-0.5169, 0.9415, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]

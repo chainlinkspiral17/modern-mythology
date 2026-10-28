@@ -445,7 +445,7 @@ script = ExtResource("14_dbgm")
 ; insert: the bathroom door from the toilet — "My dad puts his ear to the bathroom door"
 [node name="shot_insert_door_bath" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 3.95, -8.0)
-rotation = Vector3(-0.106, -2.662, 0.0)
+rotation = Vector3(-0.0214, -2.8058, 0.0)
 metadata/fov = 40.0
 
 ; insert: the Playboy on the dining table — "The magazine sits between us"
@@ -469,7 +469,7 @@ metadata/fov = 38.0
 ; insert: the books pulled out onto the floor — "I rummage through my bedroom for a book"
 [node name="shot_insert_rummage_book" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 3.95, -8.0)
-rotation = Vector3(-0.746, 0.983, 0.0)
+rotation = Vector3(-0.9608, 1.2754, 0.0)
 metadata/fov = 40.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)

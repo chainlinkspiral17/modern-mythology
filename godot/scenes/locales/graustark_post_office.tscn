@@ -330,7 +330,7 @@ metadata/fov = 42.0
 ; insert: the line through the tiles from the bin to the door
 [node name="shot_insert_crack" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.400, 1.900, -3.400)
-rotation = Vector3(-1.1613, 2.8966, 0.0)
+rotation = Vector3(-1.2908, 2.4667, 0.0)
 metadata/fov = 44.0
 
 ; reverse: from by the window across the lobby to the counter and the PO boxes

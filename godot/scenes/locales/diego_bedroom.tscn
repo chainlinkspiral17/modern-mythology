@@ -361,7 +361,7 @@ metadata/fov = 45.0
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.450, 1.300, -1.900)
-rotation = Vector3(-0.3810, 0.9754, 0.0)
+rotation = Vector3(-0.6850, 0.6486, 0.0)
 metadata/fov = 45.0
 
 [node name="shot_insert_glass" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -394,13 +394,13 @@ metadata/fov = 38.0
 ; "Three shirts, a phone charger, a pair of boots" — into the open bag, the boots beside it
 [node name="shot_insert_boots" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.800, 0.900, -2.600)
-rotation = Vector3(-0.7510, 2.9060, 0.0)
+rotation = Vector3(-0.8046, -3.1016, 0.0)
 metadata/fov = 38.0
 
 ; the window's two curtain pairs, the blackout on the outer rod
 [node name="shot_insert_curtains" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.200, 1.500, -2.550)
-rotation = Vector3(-0.0727, 0.0973, 0.0)
+rotation = Vector3(0.1227, 0.1378, 0.0)
 metadata/fov = 50.0
 
 ; "The fan, on the ceiling, clicks on the third rotation" — from the bed, looking up
@@ -436,7 +436,7 @@ metadata/fov = 38.0
 ; "the desk that has been his desk since he was nine"
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.750, 1.450, -2.450)
-rotation = Vector3(-0.5502, -1.1372, 0.0)
+rotation = Vector3(-0.9121, -0.6214, 0.0)
 metadata/fov = 45.0
 
 ; "He closes the desk drawer"

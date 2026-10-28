@@ -398,7 +398,7 @@ metadata/fov = 40.0
 ; with the room behind the speaker, not a wall at arm's length
 [node name="shot_insert_card" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.200, 0.950, -1.900)
-rotation = Vector3(-0.5798, -0.8567, 0.0)
+rotation = Vector3(-0.6584, -0.6049, 0.0)
 metadata/fov = 40.0
 
 ; insert: the worn deck, shuffled (vol5)
@@ -418,7 +418,7 @@ metadata/fov = 38.0
 ; insert: the apartment door — the bell, the stairs, the second set of feet (vol5)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 1.300, -1.400)
-rotation = Vector3(-0.1458, 2.4393, 0.0)
+rotation = Vector3(-0.1979, 2.7701, 0.0)
 metadata/fov = 42.0
 
 ; insert: the desk, the dream journal open after three years (vol5)

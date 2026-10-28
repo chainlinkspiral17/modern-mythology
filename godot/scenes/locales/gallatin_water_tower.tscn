@@ -302,7 +302,7 @@ script = ExtResource("14_dbgm")
 ; insert: the white NexCorp Residential Solutions van beside the fence, engine off
 [node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-6.000, 1.850, 34.400)
-rotation = Vector3(-0.0973, 2.2794, 0.0)
+rotation = Vector3(-0.2373, 2.7655, 0.0)
 metadata/fov = 44.0
 
 ; reverse: from beside the fence up Gallatin, the van at left

@@ -343,7 +343,7 @@ metadata/fov = 56.0
 ; insert: EMBER & ASH on the third monitor
 [node name="shot_insert_monitor" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.150, 1.400, -3.450)
-rotation = Vector3(-0.2675, -1.2259, 0.0)
+rotation = Vector3(-0.3251, -1.6906, 0.0)
 metadata/fov = 40.0
 
 ; insert: her phone on the desk
@@ -355,7 +355,7 @@ metadata/fov = 40.0
 ; insert: the white-oak desk, the three screens, the cold brew
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.600, 1.550, -2.200)
-rotation = Vector3(-0.4149, -0.8685, 0.0)
+rotation = Vector3(-0.6995, -1.7127, 0.0)
 metadata/fov = 44.0
 
 ; closeup: Anna at her desk, the city in the glass to her left

@@ -204,12 +204,12 @@ rotation = Vector3(-0.6715, -3.1416, 0.0)
 ; godot (1.95, 0.5, -5.4). Low camera, level with the door.
 [node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.350, 0.560, -7.320)
-rotation = Vector3(0.02, -1.42, 0.0)
+rotation = Vector3(-0.0996, -1.4371, 0.0)
 
 ; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 1.350, -3.050)
-rotation = Vector3(-0.50, 0.42, 0.0)
+rotation = Vector3(-0.7441, -0.0573, 0.0)
 
 ; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -353,13 +353,13 @@ metadata/fov = 38.0
 ; → godot (±0.22, 0.785, -2.84).
 [node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.060, -3.060)
-rotation = Vector3(-0.52, 0.0, 0.0)
+rotation = Vector3(-0.2502, 0.0000, 0.0)
 
 ; The single bowl — closer, off-axis, so "insert bowl" is not the
 ; same frame as "insert bowls".
 [node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.300, 1.000, -3.300)
-rotation = Vector3(-0.60, -0.30, 0.0)
+rotation = Vector3(-0.2505, 0.1471, 0.0)
 
 ; [shot:insert coffee] (3x) — the stove-side table where the pot sits
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -401,13 +401,13 @@ script = ExtResource("14_dbgm")
 ; (2026-10-08) inside at the west south window, as in cabin_interior.tscn — it stood outside the west wall, where Olaf's shop is now
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.900, 1.600, -0.450)
-rotation = Vector3(-0.1146, 2.4968, 0)
+rotation = Vector3(-0.2256, 2.3630, 0.0)
 metadata/fov = 40.0
 
 ; insert: the wagon came up the road at nine fifty-two (east south window)
 [node name="shot_insert_wagon" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.550, 1.800, -0.700)
-rotation = Vector3(-0.1701, -2.9610, 0)
+rotation = Vector3(-0.3141, -2.9546, 0.0)
 metadata/fov = 42.0
 
 ; insert: the package on the table
@@ -419,13 +419,13 @@ metadata/fov = 42.0
 ; insert: the desk, the notebook, three pieces of cedar
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.000, 1.250, -1.250)
-rotation = Vector3(-0.7701, 3.1310, 0.0)
+rotation = Vector3(-0.6602, -3.0972, 0.0)
 metadata/fov = 42.0
 
 ; insert: the face inside Marit's bowl, tilted into the lamp
 [node name="shot_insert_face" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450, 1.250, -3.450)
-rotation = Vector3(-0.4492, -0.4584, 0.0)
+rotation = Vector3(-0.6363, -0.5328, 0.0)
 metadata/fov = 42.0
 
 ; insert: the three sticks in waxed-paper sleeves, the middle one

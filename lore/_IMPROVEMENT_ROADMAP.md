@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 206: EVERY OLD INSERT AIMED AT ITS THING.**
+- **Problem:** marker_aim_audit passes a subject up to 38° off axis, and an insert lens is 35° wide. Many older hand markers had their object at the frame's edge, or under the reading box once the director lifted the frame (pass 205).
+- **New `marker_reaim.py --tight`:**
+  - re-aims every INSERT marker whose subject is more than 6° off axis;
+  - the lens keeps its place;
+  - face frames are left to their own tools. The first run also turned `shot_closeup_lena` toward her phone screen; it was reverted, and tight mode now skips closeups.
+- **Result:** 223 inserts re-aimed across 87 sets.
+- **Gates at zero:**
+  - marker_aim (1367 markers);
+  - vantage_obstruction `--markers` on all 87 sets;
+  - tscn_syntax.
+- **Lena's kettle:** vol7 ch3 "The kettle on the stove had cooled" was cut to a stove marker that framed the stove top with no kettle. It now has `shot_insert_kettle__lena_apartment`, authored by text_focus's search.
+- **Draft N+1 targets:**
+  - A gate: inserts must aim within TIGHT_DEG (make `--tight` an audit, not only a fixer).
+  - Render a contact sheet of every insert per set and look.
+
 **2026-10-28 · pass 205: THE INSERT SHOWS ITS THING — above the text, no portrait over it; vols 1–4 + vol 7 re-run.**
 - **The director** (VnDirector / CharLayer / GameEngine):
   - Every insert tilts down so its object's centre sits `INSERT_CENTER` (36 %) from the top. Markers are aimed at the object's centre, and the reading box owns the lower ~31 %.

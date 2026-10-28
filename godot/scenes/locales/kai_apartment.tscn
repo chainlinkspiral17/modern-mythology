@@ -318,7 +318,7 @@ metadata/fov = 35.0
 
 [node name="shot_insert_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.300, 1.465, -0.988)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
+rotation = Vector3(-0.3840, 0.2618, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_chair" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -348,7 +348,7 @@ metadata/fov = 45.0
 ; (2026-10-07) out through the cut N window: the side yard, the neighbour's wall
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.350, 1.550, -3.300)
-rotation = Vector3(-0.0612, 0.0613, 0.0)
+rotation = Vector3(-0.0627, 0.1688, 0.0)
 metadata/fov = 52.0
 
 ; practicals authored by practical_author.py (2026-09-11):

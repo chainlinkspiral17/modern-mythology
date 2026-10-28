@@ -17,6 +17,14 @@ run the audit.
 Usage:
     python3 godot/tools/audit/marker_reaim.py            # all
     python3 godot/tools/audit/marker_reaim.py <locale>…  # some
+    python3 godot/tools/audit/marker_reaim.py --tight    # inserts > TIGHT_DEG off
+
+--tight (2026-10-28): the audit's cone is 38° wide, and an insert lens is
+35°, so a subject can sit on the frame's edge, or out of it, and pass. The
+director now lifts every insert so its aim point rises above the reading
+box (VnDirector.INSERT_CENTER), which only works if the marker aims AT the
+thing. --tight re-aims every INSERT marker whose subject is more than
+TIGHT_DEG off axis; the lens keeps its place.
 """
 import math
 import os
@@ -37,7 +45,11 @@ def cluster_centroid(hits, anchor):
     return tuple(sum(p[i] for p in near) / n for i in range(3))
 
 
+TIGHT_DEG = 6.0
+
+
 def main():
+    tight = "--tight" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("-")]
     fixed = 0
     for fn in sorted(os.listdir(M.LOCALES_TSCN)):
@@ -59,14 +71,23 @@ def main():
             m = re.match(r"shot_(insert|closeup)_(\w+)$", name)
             if not m:
                 continue
-            hits = M.matches_for(m.group(2), geo)
+            if tight and m.group(1) != "insert":
+                continue        # a face frame is aimed by its own tools
+            cue_id = m.group(2).split("__")[0]
+            hits = M.matches_for(cue_id, geo)
+            if "__" in m.group(2):
+                # a per-preset marker frames its own area (marker_aim_audit)
+                hits = [h for h in hits if sum((a - b) ** 2 for a, b in zip(h[1], pos)) ** 0.5 <= 30.0]
             if not hits:
                 continue
             fwd = M.yxz_forward(*rot)
             anchor_name, tgt = M.subject_target(hits, pos)
             nearest = (anchor_name, tgt)
             ang, dist = M.angle_to(pos, fwd, tgt)
-            if ang <= M.CONE_DEG and dist <= M.NEAR_MAX:
+            limit = TIGHT_DEG if (tight and m.group(1) == "insert") else M.CONE_DEG
+            if ang <= limit and dist <= M.NEAR_MAX:
+                continue
+            if tight and dist > M.NEAR_MAX:
                 continue
             dx, dy, dz = (tgt[i] - pos[i] for i in range(3))
             ry = math.atan2(-dx, -dz)

@@ -361,7 +361,7 @@ metadata/fov = 42.0
 ; insert: the bale at the eighth pallet
 [node name="shot_insert_bale" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.9, -1.1)
-rotation = Vector3(-0.3921, -2.3562, 0.0)
+rotation = Vector3(-0.6386, -2.8081, 0.0)
 metadata/fov = 42.0
 
 ; insert: his hands stop
@@ -402,7 +402,7 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_dock__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.035, 2.389, -7.395)
-rotation = Vector3(-0.4766, 1.3264, 0.0)
+rotation = Vector3(1.0541, -0.0692, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

@@ -340,7 +340,7 @@ metadata/fov = 42.0
 ; insert: the desk — the notebook in the hand from Cale's thumb, three pieces of cedar in a pattern
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, -1.5, -1.4)
-rotation = Vector3(-0.347, 2.70, 0.0)
+rotation = Vector3(-0.4672, 2.5566, 0.0)
 metadata/fov = 42.0
 
 

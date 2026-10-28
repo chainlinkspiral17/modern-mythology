@@ -317,7 +317,7 @@ script = ExtResource("14_dbgm")
 ; insert: the second pool — dining-table size, clear, the old man at its edge
 [node name="shot_insert_tide_pool" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 2.2, -4.4)
-rotation = Vector3(-0.8849, 0.3939, 0.0)
+rotation = Vector3(-1.0282, 1.4877, 0.0)
 metadata/fov = 42.0
 
 ; insert: the cedar at the bottom — a hand, open, palm up, holding a bell

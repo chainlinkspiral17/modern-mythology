@@ -262,7 +262,7 @@ shadow_enabled = false
 ; the Foxhole's lit door at frame edge, the unit dark.
 [node name="shot_insert_unit" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 1.55, -42.2)
-rotation = Vector3(0.0, -1.5708, 0.0)
+rotation = Vector3(-0.0193, -1.4363, 0.0)
 
 ; The chalk marquee: blender (11.5, 35.5, 3.1) → godot (11.5, 3.1,
 ; -35.5). Camera low on the road shoulder, board against the sky —
@@ -463,7 +463,7 @@ shadow_enabled = false
 ; insert: the unit's back door open two inches, a faint light through the gap
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, -41.5)
-rotation = Vector3(-0.0992, -1.7135, 0.0)
+rotation = Vector3(-0.1626, 3.0119, 0.0)
 metadata/fov = 42.0
 
 ; insert: Jesse's phone, lit, on the Civic's dash at ten twenty-three
@@ -482,19 +482,19 @@ metadata/fov = 42.0
 ; insert: the white sedan in the front lot, the Chronicle lanyard on the dash
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0, 1.6, -44.0)
-rotation = Vector3(-0.1572, -1.6186, 0.0)
+rotation = Vector3(-0.2138, -1.4049, 0.0)
 metadata/fov = 42.0
 
 ; insert: the white unmarked van three cars ahead through the easing storm
 [node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.100, 1.294, -317.141)
-rotation = Vector3(-0.2618, 0.0000, 0.0)
+rotation = Vector3(-0.2413, -0.1786, 0.0)
 metadata/fov = 42.0
 
 ; insert: Miller's truck in the substation lot, end space, three from the door
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0, 1.5, -108.0)
-rotation = Vector3(-0.1685, 2.1953, 0.0)
+rotation = Vector3(-0.3833, 1.6595, 0.0)
 metadata/fov = 42.0
 
 [node name="Substation_Side" type="OmniLight3D" parent="."]

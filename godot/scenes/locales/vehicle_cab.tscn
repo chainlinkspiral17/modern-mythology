@@ -559,13 +559,13 @@ script = ExtResource("14_dbgm")
 ; insert: the phone in the dashboard cradle — BT presses play; Claire calls the number
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 1.35, -0.55)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.2111, -0.3194, 0.0)
 metadata/fov = 42.0
 
 ; insert: the radio head in the center stack
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.05, -0.45)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.2985, 0.1805, 0.0)
 metadata/fov = 42.0
 
 ; insert: Claire's white sedan at the turnout
@@ -637,7 +637,7 @@ metadata/fov = 45.0
 ; insert: the fountain cup in the holder — BT looks at the cup
 [node name="shot_insert_cup__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(9.250, 1.060, -0.550)
-rotation = Vector3(-0.6508, -0.5942, 0.0)
+rotation = Vector3(-0.6436, -0.7277, 0.0)
 metadata/fov = 42.0
 
 ; insert: the flauta box open on the center console
@@ -682,7 +682,7 @@ metadata/fov = 45.0
 
 [node name="shot_insert_cup__vehicle_cab_altima_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(9.250, 1.060, -0.550)
-rotation = Vector3(-0.6508, -0.5942, 0.0)
+rotation = Vector3(-0.6436, -0.7277, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_flautas__vehicle_cab_altima_night" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -200,11 +200,11 @@ shadow_enabled = false
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95, 1.95, -1.64)
-rotation = Vector3(-0.2475, 1.1023, 0.0)
+rotation = Vector3(-0.5246, 1.3378, 0.0)
 
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -1.40)
-rotation = Vector3(-0.0954, -3.1416, 0.0)
+rotation = Vector3(0.5635, 3.1416, 0.0)
 
 ; (pass 68) the back office's own light: Devon's desk lamp, the bare bulb over the nook
 [node name="Devon_Desk_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
@@ -357,7 +357,7 @@ metadata/fov = 56.0
 ; insert: the deck display wall
 [node name="shot_insert_deckwall" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.9, 1.5, -3.8)
-rotation = Vector3(-0.165149, 1.5708, 0)
+rotation = Vector3(0.6541, 1.5708, 0.0)
 metadata/fov = 42.0
 
 ; insert: the lathe on the repair bench
@@ -371,12 +371,12 @@ metadata/fov = 42.0
 ; the front window looking out across Main.
 [node name="shot_insert_decks" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.5, -3.0)
-rotation = Vector3(-0.0598, 1.5246, 0.0)
+rotation = Vector3(-1.0005, -0.6889, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.35, -4.5)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.4153, -0.0567, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -408,7 +408,7 @@ metadata/fov = 42.0
 ; insert: Roy passes the front window at three-twelve
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 1.5, -0.9)
-rotation = Vector3(0.0598, -3.1416, 0.0)
+rotation = Vector3(0.0658, 2.9345, 0.0)
 metadata/fov = 42.0
 
 ; insert: the crow rides the cab roof (Main Street)

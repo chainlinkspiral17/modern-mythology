@@ -415,13 +415,13 @@ metadata/fov = 40.0
 ; "a long burning mass of wreckage": the two semis across both lanes
 [node name="shot_insert_wreck" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(5.000, 1.600, -35.000)
-rotation = Vector3(0.0000, 0.1490, 0.0)
+rotation = Vector3(-0.1025, 0.0556, 0.0)
 metadata/fov = 45.0
 
 ; "Red silt settles on the skin of the water"
 [node name="shot_insert_pool" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-398.500, 1.500, 2.600)
-rotation = Vector3(-0.3100, 0.4830, 0.0)
+rotation = Vector3(-0.8561, 2.4469, 0.0)
 metadata/fov = 45.0
 
 ; the motel television, "the first thing that came on"

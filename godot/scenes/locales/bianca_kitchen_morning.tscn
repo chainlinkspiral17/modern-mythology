@@ -394,7 +394,7 @@ omni_range = 3.0
 ; insert: the green robe on the hook by the back door
 [node name="shot_insert_robe" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.200, 1.450, -2.400)
-rotation = Vector3(-0.2069, -2.1005, 0.0)
+rotation = Vector3(-0.0709, -2.1010, 0.0)
 metadata/fov = 42.0
 
 ; insert: Don Geller's porch light across the cul-de-sac, through the sink window
@@ -440,17 +440,17 @@ metadata/fov = 40.0
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.600, 1.550, -5.400)
-rotation = Vector3(0.0000, -0.0000, 0.0)
+rotation = Vector3(-0.1152, 0.0899, 0.0)
 metadata/fov = 50.0
 
 [node name="shot_insert_sink_light" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.200, 1.500, -5.600)
-rotation = Vector3(0.4155, 0.6288, 0.0)
+rotation = Vector3(-0.0942, 0.1822, 0.0)
 metadata/fov = 45.0
 
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.000, 1.350, -2.600)
-rotation = Vector3(-0.4615, -1.0304, 0.0)
+rotation = Vector3(-0.5861, -0.9319, 0.0)
 metadata/fov = 42.0
 
 [node name="shot_insert_cinnamon_roll" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -206,7 +206,7 @@ rotation = Vector3(-0.5369, -0.9121, 0.0)
 ; the patches, in that order.
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.350, 1.480, -1.300)
-rotation = Vector3(0.0, 1.5708, 0.0)
+rotation = Vector3(0.0196, 1.7461, 0.0)
 
 [node name="shot_insert_mural" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.396, 2.475, -0.633)
@@ -355,13 +355,13 @@ metadata/fov = 54.0
 ; insert: the stove
 [node name="shot_insert_stove" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.224, 1.030, -1.456)
-rotation = Vector3(-0.2618, 2.3562, 0.0)
+rotation = Vector3(-0.2021, 2.5185, 0.0)
 metadata/fov = 36.0
 
 ; insert: the nightstand
 [node name="shot_insert_nightstand" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.000, 1.100, -5.400)
-rotation = Vector3(-0.5487, 0.5436, 0)
+rotation = Vector3(-0.7276, 0.7356, 0.0)
 metadata/fov = 36.0
 
 ; insert: the Estuary 7 stick on the side table (ch7/ch8 six-oclock)
@@ -379,7 +379,7 @@ metadata/fov = 42.0
 ; insert: the eighth piece on the cloth's far corner (ch12_lena)
 [node name="shot_insert_eighth_piece" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.600, 1.080, -1.600)
-rotation = Vector3(-0.5454, 0.8372, 0.0)
+rotation = Vector3(-0.3191, 0.8128, 0.0)
 metadata/fov = 30.0
 
 ; insert: the sheet of paper, "Jorgen" at the top (ch6)
@@ -409,13 +409,13 @@ metadata/fov = 42.0
 ; insert: Kai cutting bread on the small wooden board (ch7)
 [node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.700, 1.320, -1.660)
-rotation = Vector3(-0.4691, 0.8288, 0.0)
+rotation = Vector3(-0.5964, 0.7945, 0.0)
 metadata/fov = 36.0
 
 ; insert: the bowl pushed an inch away from her (ch8 the_table)
 [node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400, 1.150, -1.550)
-rotation = Vector3(-0.6463, 0.7086, 0.0)
+rotation = Vector3(-0.7673, 0.9828, 0.0)
 metadata/fov = 42.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -607,4 +607,10 @@ metadata/fov = 35.0
 [node name="shot_insert_knife__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.264, 1.164, -1.769)
 rotation = Vector3(-0.2618, 1.2941, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_kettle__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.157, 1.263, -0.414)
+rotation = Vector3(-0.2618, 1.6489, 0.0)
 metadata/fov = 35.0

@@ -522,7 +522,7 @@ metadata/fov = 30.0
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.050, 6.700, 2.200)
-rotation = Vector3(-0.5846, 2.8674, 0.0)
+rotation = Vector3(-0.2445, 3.0792, 0.0)
 metadata/fov = 44.0
 
 ; RE-AIMED 2026-10-02 (the Deck: "camera and director attention not where they

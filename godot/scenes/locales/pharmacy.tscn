@@ -458,7 +458,7 @@ metadata/fov = 42.0
 ; insert: "glances about his office" — from the chair to the mirror, the jacket, the corkboard
 [node name="shot_insert_office__pharmacy_office" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.450, 1.700, -20.600)
-rotation = Vector3(-0.1356, -2.1480, 0.0)
+rotation = Vector3(-1.2987, 3.1416, 0.0)
 metadata/fov = 50.0
 
 ; closeup: Faust behind PICK UP, from the customer's side of "the front table"

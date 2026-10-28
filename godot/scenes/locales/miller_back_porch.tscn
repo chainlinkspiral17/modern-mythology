@@ -344,7 +344,7 @@ metadata/fov = 50.0
 ; insert: the wicker chair
 [node name="shot_insert_wicker" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.2, 1.2, -2.6)
-rotation = Vector3(-0.209033, -0.785398, 0)
+rotation = Vector3(-0.4419, -0.8161, 0.0)
 metadata/fov = 38.0
 
 ; insert: the crepe myrtle in bloom
@@ -385,13 +385,13 @@ metadata/fov = 42.0
 ; insert: Finn's grandfather's Toyota at the turnaround (vol7)
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.4, 0.3)
-rotation = Vector3(-0.2730, 2.8954, 0.0)
+rotation = Vector3(-0.4405, 2.8646, 0.0)
 metadata/fov = 42.0
 
 ; insert: the door to the house
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 1.400, -1.450)
-rotation = Vector3(-0.1413, 0.5416, 0.0)
+rotation = Vector3(-0.2235, 2.7764, 0.0)
 metadata/fov = 46.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -420,7 +420,7 @@ omni_range = 3.50
 ; insert (2026-10-10): the porch light over the steps, on at 1:15 AM ("Bianca had come out to the porch")
 [node name="shot_insert_porch_light" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.550, 1.450, -1.350)
-rotation = Vector3(0.4186, 2.4062, 0.0)
+rotation = Vector3(0.6190, 2.4062, 0.0)
 metadata/fov = 44.0
 
 ; insert (2026-10-10, ch22 Bianca): the cordless on the side table by the rocker

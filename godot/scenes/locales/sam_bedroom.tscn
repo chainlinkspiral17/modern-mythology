@@ -338,7 +338,7 @@ metadata/fov = 45.0
 
 [node name="shot_insert_sprinklers" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.050, 1.750, -5.150)
-rotation = Vector3(-0.6583, -0.1277, 0.0)
+rotation = Vector3(-0.9091, -0.0997, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -363,7 +363,7 @@ metadata/fov = 40.0
 
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 1.550, -2.400)
-rotation = Vector3(-0.1194, -2.8578, 0.0)
+rotation = Vector3(-0.1637, -2.2502, 0.0)
 metadata/fov = 45.0
 
 [node name="shot_insert_fan" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -394,7 +394,7 @@ metadata/fov = 45.0
 ; the bed, the sheets pushed aside (vol6 ch0)
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.350, 1.350, -2.550)
-rotation = Vector3(-0.4010, 1.0122, 0.0)
+rotation = Vector3(-0.9547, 0.7923, 0.0)
 metadata/fov = 42.0
 
 ; ── named closeup (pass 87): Sam at the desk with the WEDNESDAY LIST (the plain pair frames the bed)

@@ -415,7 +415,7 @@ metadata/fov = 40.0
 ; insert: Miriam's dark green Subaru wagon at the curb, the door open
 [node name="shot_insert_subaru" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.600, 0.700, 3.200)
-rotation = Vector3(-0.0973, 2.8535, 0.0)
+rotation = Vector3(-0.1606, 2.9825, 0.0)
 metadata/fov = 44.0
 
 ; insert: the quilt's faint outline on the seat

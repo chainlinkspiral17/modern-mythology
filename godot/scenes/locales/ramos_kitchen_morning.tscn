@@ -375,7 +375,7 @@ metadata/fov = 42.0
 ; insert: the window over the table — the drive, the neighbour's stucco, the palm (ch10)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.700, 1.450, -2.700)
-rotation = Vector3(-0.0294, 1.5708, 0.0)
+rotation = Vector3(-0.0819, 1.6678, 0.0)
 metadata/fov = 50.0
 
 ; insert: the soup at his place (ch10)
