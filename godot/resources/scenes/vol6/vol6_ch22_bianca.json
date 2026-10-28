@@ -74,7 +74,7 @@
   },
   {
    "t": "narrate",
-   "text": "She drinks her coffee at the table.",
+   "text": "[shot:insert table]She drinks her coffee at the table.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/014.mp3"
   },
   {
@@ -985,7 +985,7 @@
   },
   {
    "t": "narrate",
-   "text": "She drinks her coffee.",
+   "text": "[shot:insert coffee]She drinks her coffee.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/164.mp3"
   },
   {

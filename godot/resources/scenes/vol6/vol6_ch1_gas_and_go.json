@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes back to his phone.",
+      "text": "[shot:insert phone]He goes back to his phone.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/022.mp3"
     },
     {

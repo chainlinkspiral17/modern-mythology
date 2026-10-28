@@ -483,7 +483,7 @@
     },
     {
       "t": "narrate",
-      "text": "She passes her grandmother's bedroom door, which is open because her grandmother is on the porch.",
+      "text": "[shot:insert door]She passes her grandmother's bedroom door, which is open because her grandmother is on the porch.",
       "voice": "assets/audio/voice/vol6_ch21_porch/082.mp3"
     },
     {

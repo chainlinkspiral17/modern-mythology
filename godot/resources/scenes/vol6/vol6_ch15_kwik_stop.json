@@ -1081,7 +1081,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cash in the wallet is, today, what she has.",
+      "text": "[shot:insert cash]The cash in the wallet is, today, what she has.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/188.mp3"
     },
     {
@@ -1244,7 +1244,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, at the table, thinks for a second.",
+      "text": "[shot:insert table]Sam, at the table, thinks for a second.",
       "voice": "assets/audio/voice/vol6_ch15_kwik_stop/217.mp3"
     },
     {

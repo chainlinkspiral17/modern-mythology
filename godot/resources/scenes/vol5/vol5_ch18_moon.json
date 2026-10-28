@@ -150,7 +150,7 @@
     },
     {
       "t": "narrate",
-      "text": "The tonearm, having lifted, moved. Slowly. In the small careful way a sleeper's hand moves when the sleeper is groping for a glass of water in the dark.",
+      "text": "[shot:insert tonearm]The tonearm, having lifted, moved. Slowly. In the small careful way a sleeper's hand moves when the sleeper is groping for a glass of water in the dark.",
       "voice": "assets/audio/voice/vol5_ch18_moon/029.ogg"
     },
     {
@@ -702,7 +702,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Hanged Man, on the windowsill, she picked up. She tucked it into her coat pocket.",
+      "text": "[shot:insert coat]The Hanged Man, on the windowsill, she picked up. She tucked it into her coat pocket.",
       "voice": "assets/audio/voice/vol5_ch18_moon/128.ogg"
     },
     {
@@ -1035,7 +1035,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cat from down the hall had, at some point in the past four hours, let itself in through the window and was asleep on the futon in the exact spot Nicola had slept. Natalie did not, this morning, evict it.",
+      "text": "[shot:insert futon]The cat from down the hall had, at some point in the past four hours, let itself in through the window and was asleep on the futon in the exact spot Nicola had slept. Natalie did not, this morning, evict it.",
       "voice": "assets/audio/voice/vol5_ch18_moon/191.ogg"
     },
     {

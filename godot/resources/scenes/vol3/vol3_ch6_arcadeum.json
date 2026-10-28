@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "She did eye something unique in the clear display underneath the register. A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script."
+      "text": "[shot:insert register]She did eye something unique in the clear display underneath the register. A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script."
     },
     {
       "t": "say",
@@ -343,7 +343,7 @@
     },
     {
       "t": "narrate",
-      "text": "When she finally got the box out of the closet, she'd already been to the nearest campus library and learned everything there was to know that she could find. It got a couple mention in trade magazines, one half ad, and not even a review. It was a forgotten and unreleased thing, near as she could tell."
+      "text": "[shot:insert closet]When she finally got the box out of the closet, she'd already been to the nearest campus library and learned everything there was to know that she could find. It got a couple mention in trade magazines, one half ad, and not even a review. It was a forgotten and unreleased thing, near as she could tell."
     },
     {
       "t": "narrate",

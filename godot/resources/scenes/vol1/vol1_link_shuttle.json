@@ -81,7 +81,7 @@
   },
   {
    "t": "narrate",
-   "text": "You step up. The light in the cabin reads you the way a room reads someone who has come home in the middle of a sentence. Nobody asks for fare. The doors close. The Shillelagh pulls away from the depot in the same soundless way it arrived."
+   "text": "[shot:insert doors]You step up. The light in the cabin reads you the way a room reads someone who has come home in the middle of a sentence. Nobody asks for fare. The doors close. The Shillelagh pulls away from the depot in the same soundless way it arrived."
   },
   {
    "t": "jump",
@@ -98,7 +98,7 @@
   },
   {
    "t": "narrate",
-   "text": "You stand on the apron in the rain a while longer. Then, eventually, you go in. The second mug is empty again. Or it was always empty. You decide, on balance, that it was always empty."
+   "text": "[shot:insert apron]You stand on the apron in the rain a while longer. Then, eventually, you go in. The second mug is empty again. Or it was always empty. You decide, on balance, that it was always empty."
   },
   {
    "t": "jump",

@@ -167,7 +167,7 @@
     },
     {
       "t": "narrate",
-      "text": "She finishes the slushie. She drops the cup in the trash. She waves at Jen. She leaves.",
+      "text": "[shot:insert slushie]She finishes the slushie. She drops the cup in the trash. She waves at Jen. She leaves.",
       "voice": "assets/audio/voice/vol6_ch3_parking_lot/028.mp3"
     },
     {

@@ -157,7 +157,7 @@
   },
   {
    "t": "narrate",
-   "text": "Brent nods at Ben at the bench. Ben nods back.",
+   "text": "[shot:insert bench]Brent nods at Ben at the bench. Ben nods back.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/030.ogg"
   },
   {
@@ -636,7 +636,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben does the cone drill.",
+   "text": "[shot:insert cone]Ben does the cone drill.",
    "voice": "assets/audio/voice/vol6_ch13_two_a_days/119.mp3"
   },
   {

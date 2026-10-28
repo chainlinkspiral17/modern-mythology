@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "He held out my giant, way-too expensive left-handed first baseman's glove. It looks like a leather scythe, black and orange. I managed to turn my grimace into a half smile."
+      "text": "[shot:insert glove]He held out my giant, way-too expensive left-handed first baseman's glove. It looks like a leather scythe, black and orange. I managed to turn my grimace into a half smile."
     },
     {
       "t": "narrate",
@@ -346,7 +346,7 @@
     },
     {
       "t": "narrate",
-      "text": "No more bullshit.\" He is animate, in motion, cleaning up the mess of cards and trying to stop me from leaving the corner."
+      "text": "[shot:insert cards]No more bullshit.\" He is animate, in motion, cleaning up the mess of cards and trying to stop me from leaving the corner."
     },
     {
       "t": "narrate",

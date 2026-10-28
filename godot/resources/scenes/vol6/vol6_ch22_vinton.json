@@ -296,7 +296,7 @@
   },
   {
    "t": "narrate",
-   "text": "She passes Ben at the gate.",
+   "text": "[shot:insert gate]She passes Ben at the gate.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/055.mp3"
   },
   {
@@ -433,7 +433,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach Guidry's kid kicker misses the PAT. 0-7. The home crowd is quiet. The visiting bench is loud.",
+   "text": "[shot:insert bench]Coach Guidry's kid kicker misses the PAT. 0-7. The home crowd is quiet. The visiting bench is loud.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/083.mp3"
   },
   {
@@ -925,7 +925,7 @@
   },
   {
    "t": "narrate",
-   "text": "Linda Guidry, after a beat, puts her hand briefly on Eileen's hand on the armrest of the folding chair. Once. Light. Then her hand is gone.",
+   "text": "[shot:insert chair]Linda Guidry, after a beat, puts her hand briefly on Eileen's hand on the armrest of the folding chair. Once. Light. Then her hand is gone.",
    "voice": "assets/audio/voice/vol6_ch22_vinton/169.mp3"
   },
   {

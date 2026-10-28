@@ -704,7 +704,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has been here five weeks and he is sixteen and the team has, in the small ways teams do, decided that his contribution to the social maintenance of the break room is to sit by the door with his coffee and listen, and that this is a fair contribution.",
+      "text": "[shot:insert coffee]He has been here five weeks and he is sixteen and the team has, in the small ways teams do, decided that his contribution to the social maintenance of the break room is to sit by the door with his coffee and listen, and that this is a fair contribution.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/129.ogg"
     },
     {
@@ -979,7 +979,7 @@
     },
     {
       "t": "narrate",
-      "text": "And he will read it three times in the parking lot, and he will set the phone face-down on the passenger seat, and he will put the truck in gear, and he will drive home, and his grandmother will be at the kitchen window when he pulls in,",
+      "text": "[shot:insert phone]And he will read it three times in the parking lot, and he will set the phone face-down on the passenger seat, and he will put the truck in gear, and he will drive home, and his grandmother will be at the kitchen window when he pulls in,",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/182.ogg"
     },
     {
@@ -1088,7 +1088,7 @@
     },
     {
       "t": "narrate",
-      "text": "stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing.",
+      "text": "[shot:insert dock]stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/204.ogg"
     },
     {
@@ -1295,7 +1295,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT, on the dock, registers this.",
+      "text": "[shot:insert dock]BT, on the dock, registers this.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/240.mp3"
     },
     {
@@ -1349,7 +1349,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truck comes at five fifty-eight. The morning load gets staged. The day side starts arriving at six fifteen. By six forty-five the night team is wrapping up, breaking down their pallets, checking their aisles, signing out.",
+      "text": "[shot:insert pallets]The truck comes at five fifty-eight. The morning load gets staged. The day side starts arriving at six fifteen. By six forty-five the night team is wrapping up, breaking down their pallets, checking their aisles, signing out.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/251.ogg"
     },
     {

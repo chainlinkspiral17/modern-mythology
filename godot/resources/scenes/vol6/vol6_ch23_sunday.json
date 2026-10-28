@@ -567,7 +567,7 @@
   },
   {
    "t": "narrate",
-   "text": "The cake gets eaten.",
+   "text": "[shot:insert cake]The cake gets eaten.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/103.mp3"
   },
   {
@@ -657,7 +657,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya brings out three iced teas.",
+   "text": "[shot:insert teas]Maya brings out three iced teas.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/120.mp3"
   },
   {
@@ -1130,7 +1130,7 @@
   },
   {
    "t": "narrate",
-   "text": "After Sammy goes upstairs to do the small things she does on Sunday evenings — laundry, folding, bag-packing for the first day — Bianca stays at the table.",
+   "text": "[shot:insert table]After Sammy goes upstairs to do the small things she does on Sunday evenings — laundry, folding, bag-packing for the first day — Bianca stays at the table.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/194.mp3"
   },
   {
@@ -1200,7 +1200,7 @@
   },
   {
    "t": "narrate",
-   "text": "October is the next phone call. I will be ready.",
+   "text": "[shot:insert phone]October is the next phone call. I will be ready.",
    "voice": "assets/audio/voice/vol6_ch23_sunday/208.mp3"
   },
   {

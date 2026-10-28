@@ -775,7 +775,7 @@
       "t": "say"
     },
     {
-      "text": "The eleven at the table got up.",
+      "text": "[shot:insert table]The eleven at the table got up.",
       "t": "narrate"
     },
     {

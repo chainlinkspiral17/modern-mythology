@@ -88,7 +88,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rain hits harder. The chandelier above his desk — which is not lit — rattles very faintly as the pressure in the house shifts. Chief Miller looks at the ceiling. The chandelier stops rattling.",
+      "text": "[shot:insert desk]The rain hits harder. The chandelier above his desk — which is not lit — rattles very faintly as the pressure in the house shifts. Chief Miller looks at the ceiling. The chandelier stops rattling.",
       "voice": "assets/audio/voice/vol6_ch4_miller_office/016.mp3"
     },
     {

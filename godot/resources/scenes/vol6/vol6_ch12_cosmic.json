@@ -203,7 +203,7 @@
     },
     {
       "t": "narrate",
-      "text": "The total matches. She files the slip in the green folder in the second drawer.",
+      "text": "[shot:insert drawer]The total matches. She files the slip in the green folder in the second drawer.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/040.ogg"
     },
     {
@@ -341,7 +341,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Tuesday flow is not the flow of a Wednesday or a Thursday or a Saturday — but it is a flow. Maya, at the back-office door, watches Curtis handle the first hour and a half from her doorway.",
+      "text": "[shot:insert door]The Tuesday flow is not the flow of a Wednesday or a Thursday or a Saturday — but it is a flow. Maya, at the back-office door, watches Curtis handle the first hour and a half from her doorway.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/066.ogg"
     },
     {
@@ -1043,7 +1043,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the counter, has the front of the shop.",
+      "text": "[shot:insert counter]Maya, at the counter, has the front of the shop.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/187.mp3"
     },
     {

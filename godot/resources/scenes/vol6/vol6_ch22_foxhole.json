@@ -297,7 +297,7 @@
   },
   {
    "t": "narrate",
-   "text": "He goes to the cooler. He gets a Topo Chico.",
+   "text": "[shot:insert cooler]He goes to the cooler. He gets a Topo Chico.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/055.mp3"
   },
   {

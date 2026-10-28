@@ -216,7 +216,7 @@
   },
   {
    "t": "narrate",
-   "text": "Doug came to Centro in 2019 and has done dairy alone on every inventory since 2020 and is, by everyone's reckoning including his own, the fastest cooler counter in the chain north of San Antonio. Doug is forty-three.",
+   "text": "[shot:insert counter]Doug came to Centro in 2019 and has done dairy alone on every inventory since 2020 and is, by everyone's reckoning including his own, the fastest cooler counter in the chain north of San Antonio. Doug is forty-three.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/039.mp3"
   },
   {
@@ -419,7 +419,7 @@
   },
   {
    "t": "narrate",
-   "text": "Russell, the clipboard, looks at BT for a beat.",
+   "text": "[shot:insert clipboard]Russell, the clipboard, looks at BT for a beat.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/077.mp3"
   },
   {
@@ -963,7 +963,7 @@
   },
   {
    "t": "narrate",
-   "text": "Marisol, at the table, has stopped lifting her thermos.",
+   "text": "[shot:insert table]Marisol, at the table, has stopped lifting her thermos.",
    "voice": "assets/audio/voice/vol6_ch22_inventory/168.mp3"
   },
   {

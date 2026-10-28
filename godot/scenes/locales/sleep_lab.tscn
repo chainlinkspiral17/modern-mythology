@@ -434,3 +434,15 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_curtain__sleep_lab_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.540, 2.049, -3.243)
+rotation = Vector3(-0.2618, -1.3724, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_curtain__sleep_lab_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.127, 2.049, -1.266)
+rotation = Vector3(-0.2680, -0.3599, 0.0)
+metadata/fov = 35.0

@@ -429,7 +429,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turns the second slice.",
+      "text": "[shot:insert slice]She turns the second slice.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/085.mp3"
     },
     {

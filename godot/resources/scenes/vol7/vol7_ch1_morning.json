@@ -230,7 +230,7 @@
     },
     {
       "t": "narrate",
-      "text": "The two of them sat with the coffee for a minute without speaking.",
+      "text": "[shot:insert coffee]The two of them sat with the coffee for a minute without speaking.",
       "voice": "assets/audio/voice/vol7_ch1_morning/043.mp3"
     },
     {

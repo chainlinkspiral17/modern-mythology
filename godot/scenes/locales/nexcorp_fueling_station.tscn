@@ -572,3 +572,15 @@ metadata/fov = 35.0
 position = Vector3(10.343, 0.772, 13.514)
 rotation = Vector3(-0.2618, 0.4481, 0.0)
 metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_seat__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.258, 1.930, 15.774)
+rotation = Vector3(-0.5849, 0.3088, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_door__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.848, 1.958, 2.371)
+rotation = Vector3(-0.2618, 0.5983, 0.0)
+metadata/fov = 35.0

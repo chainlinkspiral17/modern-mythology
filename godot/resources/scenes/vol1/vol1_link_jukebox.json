@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "You put a finger to the glass. The selection wheel is warm. There is no coin slot.",
+   "text": "[shot:insert glass]You put a finger to the glass. The selection wheel is warm. There is no coin slot.",
    "voice": "assets/audio/voice/vol1_link_jukebox/007.mp3"
   },
   {

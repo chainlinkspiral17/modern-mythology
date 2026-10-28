@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it.",
+      "text": "[shot:insert door]She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/025.ogg"
     },
     {
@@ -370,7 +370,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had not, in three months, had a phone call from Nicola Greer.",
+      "text": "[shot:insert phone]She had not, in three months, had a phone call from Nicola Greer.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/073.ogg"
     },
     {
@@ -645,7 +645,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over.",
+      "text": "[shot:insert futon]She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/123.ogg"
     },
     {

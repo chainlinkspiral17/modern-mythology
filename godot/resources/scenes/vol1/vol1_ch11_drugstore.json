@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "Behind the front counter, where Deborah should be, there's a reception desk. Olivia is behind it, the secretary from the tutorial, in the same cardigan, typing. A cat carrier sits on the counter beside her keyboard with the little door open."
+      "text": "[shot:insert counter]Behind the front counter, where Deborah should be, there's a reception desk. Olivia is behind it, the secretary from the tutorial, in the same cardigan, typing. A cat carrier sits on the counter beside her keyboard with the little door open."
     },
     {
       "t": "say",
@@ -175,7 +175,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust stands there. Then he picks up the cat, carefully, the way you pick up something that already hurts. He carries her out the door, down to the boat, and sets her on the front seat. She turns around once and lies down."
+      "text": "[shot:insert door]Faust stands there. Then he picks up the cat, carefully, the way you pick up something that already hurts. He carries her out the door, down to the boat, and sets her on the front seat. She turns around once and lies down."
     },
     {
       "t": "narrate",

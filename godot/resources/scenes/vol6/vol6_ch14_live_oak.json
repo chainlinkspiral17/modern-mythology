@@ -710,7 +710,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, in the dark: the door was open two inches.",
+      "text": "[shot:insert door]He thinks, in the dark: the door was open two inches.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/118.mp3"
     },
     {

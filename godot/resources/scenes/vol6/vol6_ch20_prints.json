@@ -640,7 +640,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim, at the table, looks at Eileen.",
+      "text": "[shot:insert table]Jim, at the table, looks at Eileen.",
       "voice": "assets/audio/voice/vol6_ch20_prints/099.mp3"
     },
     {

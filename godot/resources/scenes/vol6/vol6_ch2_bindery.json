@@ -227,7 +227,7 @@
   },
   {
    "t": "narrate",
-   "text": "The man is not looking at the woman's face. The man is looking at the window — at Maya.",
+   "text": "[shot:insert window]The man is not looking at the woman's face. The man is looking at the window — at Maya.",
    "voice": "assets/audio/voice/vol6_ch2_bindery/039.ogg"
   },
   {
@@ -267,7 +267,7 @@
   },
   {
    "t": "narrate",
-   "text": "But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open.",
+   "text": "[shot:insert envelope]But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open.",
    "voice": "assets/audio/voice/vol6_ch2_bindery/047.mp3"
   },
   {

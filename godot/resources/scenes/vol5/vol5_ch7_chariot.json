@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "The phone went to voicemail.",
+      "text": "[shot:insert phone]The phone went to voicemail.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/025.mp3"
     },
     {

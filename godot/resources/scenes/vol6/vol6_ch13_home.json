@@ -201,7 +201,7 @@
   },
   {
    "t": "narrate",
-   "text": "Bill returns to the crossword.",
+   "text": "[shot:insert crossword]Bill returns to the crossword.",
    "voice": "assets/audio/voice/vol6_ch13_home/033.mp3"
   },
   {

@@ -486,7 +486,7 @@
     },
     {
       "t": "narrate",
-      "text": "At eight-seventeen the garage door rumbles. All three of them — Sam, Maya, Ben — tense. The band continues playing. They have not, with the volume of Grid Failure at this point, heard the door.",
+      "text": "[shot:insert door]At eight-seventeen the garage door rumbles. All three of them — Sam, Maya, Ben — tense. The band continues playing. They have not, with the volume of Grid Failure at this point, heard the door.",
       "voice": "assets/audio/voice/vol6_ch5_garage/091.ogg"
     },
     {

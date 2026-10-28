@@ -374,7 +374,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had not, in years, been on her own side of the camera.",
+      "text": "[shot:insert camera]She had not, in years, been on her own side of the camera.",
       "voice": "assets/audio/voice/vol5_ch16_tower/074.ogg"
     },
     {
@@ -450,7 +450,7 @@
     },
     {
       "t": "narrate",
-      "text": "She did not, in front of the camera, say any of this out loud.",
+      "text": "[shot:insert camera]She did not, in front of the camera, say any of this out loud.",
       "voice": "assets/audio/voice/vol5_ch16_tower/089.mp3"
     },
     {

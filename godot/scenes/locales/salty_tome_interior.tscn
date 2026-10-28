@@ -643,3 +643,15 @@ metadata/fov = 35.0
 position = Vector3(1.458, 0.650, -6.465)
 rotation = Vector3(-0.2618, -1.0637, 0.0)
 metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_dumpster__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.920, 1.543, -9.550)
+rotation = Vector3(-0.2618, -1.1760, 0.0)
+metadata/fov = 35.0
+
+; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+[node name="shot_insert_bowl__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.738, 0.457, -10.862)
+rotation = Vector3(-0.2618, 1.0783, 0.0)
+metadata/fov = 35.0
