@@ -270,6 +270,35 @@ INSERT_CENTER = 0.36   # VnDirector.INSERT_CENTER: the director's lift
 TEXT_BAND = 0.31       # the reading box's share of the screen, from the bottom
 
 
+def _cast_subj(o, d, boxes, subj):
+    """VO.cast, except the subject's own parts are always solid: the cast
+    skips PASSABLE names (foliage — 'cedar' trees), and so never saw vol 7's
+    cedar bowls (2026-10-28: their well-framed insert scored 0 %)."""
+    best, who = None, None
+    for name, c, h in boxes:
+        if name not in subj and (VO.IGNORE.search(name) or VO.PASSABLE.search(name)):
+            continue
+        tmin, tmax = 0.0, 1e9
+        ok = True
+        for i in range(3):
+            lo_, hi_ = c[i] - h[i], c[i] + h[i]
+            if abs(d[i]) < 1e-9:
+                if o[i] < lo_ or o[i] > hi_:
+                    ok = False
+                    break
+                continue
+            t1, t2 = (lo_ - o[i]) / d[i], (hi_ - o[i]) / d[i]
+            if t1 > t2:
+                t1, t2 = t2, t1
+            tmin, tmax = max(tmin, t1), min(tmax, t2)
+            if tmin > tmax:
+                ok = False
+                break
+        if ok and tmin > 0.02 and (best is None or tmin < best):
+            best, who = tmin, name
+    return best, who
+
+
 def coverage(pos_b, rx, ry, fov, boxes, subj, rows=11, cols=17):
     """The share of the picture ABOVE the reading box whose first hit is the
     subject, with the director's insert lift applied (2026-10-28: frames
@@ -288,7 +317,7 @@ def coverage(pos_b, rx, ry, fov, boxes, subj, rows=11, cols=17):
         for c in range(cols):
             fx = c / (cols - 1.0)
             dh = math.atan((2.0 * fx - 1.0) * math.tan(hf / 2.0))
-            t, who = VO.cast(pos_b, VO.ray_dir(pitch, ry, dh, dv), boxes, ignore=re.compile(r"^$"))
+            t, who = _cast_subj(pos_b, VO.ray_dir(pitch, ry, dh, dv), boxes, subj)
             n += 1
             if who in subj:
                 own += 1
