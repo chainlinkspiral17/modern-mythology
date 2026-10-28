@@ -158,6 +158,22 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-28 · "sees its subject" is not "frames its subject" (passes 205–206)
+
+**Context:** marker_aim_audit's 38° cone passed 223 inserts whose object
+sat at the edge of a 35° lens, or under the reading box. On top of that,
+every insert kept the portraits standing over the object.
+
+**Rule:** an insert marker aims at its object within 6°. Write it with
+text_focus_pass's search, or fix it with `marker_reaim.py --tight`. The
+director does the rest at play time:
+- it lifts the aim point to 36 % from the top (`INSERT_CENTER`);
+- it fades the portraits while the insert holds on narration.
+
+A tight re-aim must never touch closeups. A face frame named for a person
+whose name also tags geometry ("Lena_Phone_Screen") would be turned toward
+the prop.
+
 ### 2026-10-27 · an insert lens must stand in the reader's room (pass 203)
 
 **Context:** text_focus_pass's first apply framed Lena's Pendleton blanket
