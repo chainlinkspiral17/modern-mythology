@@ -512,6 +512,8 @@ def coverage_report(only, drop):
             continue
         src = open(path).read()
         for name, pos, rot in markers:
+            if "--mine" in sys.argv and '; authored by text_focus_pass.py' not in src.split('name="%s"' % name)[0][-200:]:
+                continue
             cue = name[len("shot_insert_"):]
             word, _, view = cue.partition("__")
             vb = [b for b in bx if VO._in_view(b[0], view)] if view in VO.PRESET_IDS else bx
