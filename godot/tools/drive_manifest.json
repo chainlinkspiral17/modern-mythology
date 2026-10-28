@@ -5830,45 +5830,90 @@
    "md5": "2f8406166b5bc70cb68478fa0f5a08e9",
    "size": 2941511
   },
+  "godot/assets/art/hero/cabin_interior_gable_e_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "de827a7c40d0885e9d4f4c5c07731bd8",
+   "size": 2449892
+  },
   "godot/assets/art/hero/cabin_interior_gable_w.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "4e864973d7434bef39dd000f207e014f",
    "size": 3199577
+  },
+  "godot/assets/art/hero/cabin_interior_gable_w_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "affedb1f3ca10e39e23a34afede3743e",
+   "size": 2265975
   },
   "godot/assets/art/hero/cabin_interior_kitchen_window.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "861e9dbd07b784d60e7ef762fef0bc06",
    "size": 3086430
   },
+  "godot/assets/art/hero/cabin_interior_kitchen_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "8d12a37fc2bbfec2330ed971cd11fbcf",
+   "size": 2162112
+  },
   "godot/assets/art/hero/cabin_interior_loft_window.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "225548e2178cd3b946c04dd5aa2a3fa6",
    "size": 3471002
+  },
+  "godot/assets/art/hero/cabin_interior_loft_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "0c1591f1675066ce6195ff369d2d5dfd",
+   "size": 2604480
   },
   "godot/assets/art/hero/cabin_interior_north_window.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "f174404219896797b1122cae11bba9f1",
    "size": 2583311
   },
+  "godot/assets/art/hero/cabin_interior_north_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "f93a63dfdb9d6922572420134665f4f1",
+   "size": 1804648
+  },
   "godot/assets/art/hero/cabin_interior_south_window_e.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "04b3073bbfd185cb6e575e375180f786",
    "size": 2397448
+  },
+  "godot/assets/art/hero/cabin_interior_south_window_e_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "65e171e637d07f9bc3c0388e42e0237f",
+   "size": 1650850
   },
   "godot/assets/art/hero/cabin_interior_south_window_w.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "e9a7870787df47d4b477c961e36c9802",
    "size": 2767857
   },
+  "godot/assets/art/hero/cabin_interior_south_window_w_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "71a50f17770eca84188dfb633df04aa7",
+   "size": 2216404
+  },
   "godot/assets/art/hero/cabin_interior_west_window.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "7c4a1132be49d2ec8af559e95b05d10d",
    "size": 2479083
   },
+  "godot/assets/art/hero/cabin_interior_west_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "b247a77a35ebc786618149aac052b030",
+   "size": 1701747
+  },
   "godot/assets/art/hero/cabin_interior_window.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "2d1d7d68a9ccdd6121f70acb79cf50e2",
    "size": 3965396
+  },
+  "godot/assets/art/hero/cabin_interior_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "dd836455df8fecc198e770f7ac7a5ca9",
+   "size": 3017318
   },
   "godot/assets/art/hero/cabin_road_roadsign.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -6885,6 +6930,11 @@
    "md5": "136da3b671bd5771460349b5ab187e5c",
    "size": 2257853
   },
+  "godot/assets/art/hero/finn_apartment_alley_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "ef43abd642392efdafc55f76013e38c7",
+   "size": 1871561
+  },
   "godot/assets/art/hero/finn_apartment_brandon_notebook.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "d7a9033bfcf9a89ace0c3cabfcbee243",
@@ -6909,6 +6959,11 @@
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "b3808388e34629bd6418c1cf80d1c230",
    "size": 1861992
+  },
+  "godot/assets/art/hero/finn_apartment_south_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "bd7c89e21c7907c6743d965bfafa8610",
+   "size": 1664308
   },
   "godot/assets/art/hero/foxhole_bar_backbar_neon_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -7605,6 +7660,11 @@
    "md5": "c8c4cec640e98c5229118144dbb9fe1d",
    "size": 2634133
   },
+  "godot/assets/art/hero/lena_apartment_front_window_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "7ef5c96c46e3e2fa5f318ea7e3cc28fd",
+   "size": 2392285
+  },
   "godot/assets/art/hero/lena_apartment_jorgen_letter.png": {
    "at": "2026-10-27T04:00:41+00:00",
    "md5": "e8ee0022e8fcea2ab4b853b3dd79e1e1",
@@ -7625,10 +7685,20 @@
    "md5": "f870e6285828622dcaf50cbcce430d1b",
    "size": 3506409
   },
+  "godot/assets/art/hero/lena_apartment_nook_window_0_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "4e99be7d2efb0c1a85a6f50378b2b63b",
+   "size": 2808410
+  },
   "godot/assets/art/hero/lena_apartment_nook_window_1.png": {
    "at": "2026-10-28T03:01:42+00:00",
    "md5": "105b9c14f27c5b22752d5437a1f2ea71",
    "size": 3377215
+  },
+  "godot/assets/art/hero/lena_apartment_nook_window_1_night.png": {
+   "at": "2026-10-28T13:52:57+00:00",
+   "md5": "054f751ce0a715ff808be27f81087275",
+   "size": 2387463
   },
   "godot/assets/art/hero/lena_studio_canvas_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -75035,6 +75105,16 @@
    "md5": "2f8406166b5bc70cb68478fa0f5a08e9",
    "size": 2941511
   },
+  "godot/assets/concept/meshy/cabin_interior_gable_e_night/cabin_interior_gable_e_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:53:08+00:00",
+   "md5": "de827a7c40d0885e9d4f4c5c07731bd8",
+   "size": 2449892
+  },
+  "godot/assets/concept/meshy/cabin_interior_gable_e_night/front.png": {
+   "at": "2026-10-28T13:53:08+00:00",
+   "md5": "de827a7c40d0885e9d4f4c5c07731bd8",
+   "size": 2449892
+  },
   "godot/assets/concept/meshy/cabin_interior_gable_w/cabin_interior_gable_w_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-28T03:04:11+00:00",
    "md5": "4e864973d7434bef39dd000f207e014f",
@@ -75044,6 +75124,16 @@
    "at": "2026-10-28T03:04:11+00:00",
    "md5": "4e864973d7434bef39dd000f207e014f",
    "size": 3199577
+  },
+  "godot/assets/concept/meshy/cabin_interior_gable_w_night/cabin_interior_gable_w_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:53:18+00:00",
+   "md5": "affedb1f3ca10e39e23a34afede3743e",
+   "size": 2265975
+  },
+  "godot/assets/concept/meshy/cabin_interior_gable_w_night/front.png": {
+   "at": "2026-10-28T13:53:18+00:00",
+   "md5": "affedb1f3ca10e39e23a34afede3743e",
+   "size": 2265975
   },
   "godot/assets/concept/meshy/cabin_interior_kitchen_window/cabin_interior_kitchen_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-28T03:04:20+00:00",
@@ -75055,6 +75145,16 @@
    "md5": "861e9dbd07b784d60e7ef762fef0bc06",
    "size": 3086430
   },
+  "godot/assets/concept/meshy/cabin_interior_kitchen_window_night/cabin_interior_kitchen_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:53:32+00:00",
+   "md5": "8d12a37fc2bbfec2330ed971cd11fbcf",
+   "size": 2162112
+  },
+  "godot/assets/concept/meshy/cabin_interior_kitchen_window_night/front.png": {
+   "at": "2026-10-28T13:53:32+00:00",
+   "md5": "8d12a37fc2bbfec2330ed971cd11fbcf",
+   "size": 2162112
+  },
   "godot/assets/concept/meshy/cabin_interior_loft_window/cabin_interior_loft_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-28T03:04:30+00:00",
    "md5": "225548e2178cd3b946c04dd5aa2a3fa6",
@@ -75064,6 +75164,16 @@
    "at": "2026-10-28T03:04:30+00:00",
    "md5": "225548e2178cd3b946c04dd5aa2a3fa6",
    "size": 3471002
+  },
+  "godot/assets/concept/meshy/cabin_interior_loft_window_night/cabin_interior_loft_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:53:42+00:00",
+   "md5": "0c1591f1675066ce6195ff369d2d5dfd",
+   "size": 2604480
+  },
+  "godot/assets/concept/meshy/cabin_interior_loft_window_night/front.png": {
+   "at": "2026-10-28T13:53:42+00:00",
+   "md5": "0c1591f1675066ce6195ff369d2d5dfd",
+   "size": 2604480
   },
   "godot/assets/concept/meshy/cabin_interior_north_window/cabin_interior_north_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:30:30+00:00",
@@ -75075,6 +75185,16 @@
    "md5": "f174404219896797b1122cae11bba9f1",
    "size": 2583311
   },
+  "godot/assets/concept/meshy/cabin_interior_north_window_night/cabin_interior_north_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:53:51+00:00",
+   "md5": "f93a63dfdb9d6922572420134665f4f1",
+   "size": 1804648
+  },
+  "godot/assets/concept/meshy/cabin_interior_north_window_night/front.png": {
+   "at": "2026-10-28T13:53:51+00:00",
+   "md5": "f93a63dfdb9d6922572420134665f4f1",
+   "size": 1804648
+  },
   "godot/assets/concept/meshy/cabin_interior_south_window_e/cabin_interior_south_window_e_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-28T03:04:38+00:00",
    "md5": "04b3073bbfd185cb6e575e375180f786",
@@ -75084,6 +75204,16 @@
    "at": "2026-10-28T03:04:38+00:00",
    "md5": "04b3073bbfd185cb6e575e375180f786",
    "size": 2397448
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_e_night/cabin_interior_south_window_e_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:53:59+00:00",
+   "md5": "65e171e637d07f9bc3c0388e42e0237f",
+   "size": 1650850
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_e_night/front.png": {
+   "at": "2026-10-28T13:53:59+00:00",
+   "md5": "65e171e637d07f9bc3c0388e42e0237f",
+   "size": 1650850
   },
   "godot/assets/concept/meshy/cabin_interior_south_window_w/cabin_interior_south_window_w_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-28T03:04:50+00:00",
@@ -75095,6 +75225,16 @@
    "md5": "e9a7870787df47d4b477c961e36c9802",
    "size": 2767857
   },
+  "godot/assets/concept/meshy/cabin_interior_south_window_w_night/cabin_interior_south_window_w_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:54:12+00:00",
+   "md5": "71a50f17770eca84188dfb633df04aa7",
+   "size": 2216404
+  },
+  "godot/assets/concept/meshy/cabin_interior_south_window_w_night/front.png": {
+   "at": "2026-10-28T13:54:12+00:00",
+   "md5": "71a50f17770eca84188dfb633df04aa7",
+   "size": 2216404
+  },
   "godot/assets/concept/meshy/cabin_interior_west_window/cabin_interior_west_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-28T03:04:59+00:00",
    "md5": "7c4a1132be49d2ec8af559e95b05d10d",
@@ -75105,6 +75245,16 @@
    "md5": "7c4a1132be49d2ec8af559e95b05d10d",
    "size": 2479083
   },
+  "godot/assets/concept/meshy/cabin_interior_west_window_night/cabin_interior_west_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:54:22+00:00",
+   "md5": "b247a77a35ebc786618149aac052b030",
+   "size": 1701747
+  },
+  "godot/assets/concept/meshy/cabin_interior_west_window_night/front.png": {
+   "at": "2026-10-28T13:54:22+00:00",
+   "md5": "b247a77a35ebc786618149aac052b030",
+   "size": 1701747
+  },
   "godot/assets/concept/meshy/cabin_interior_window/cabin_interior_window_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:30:37+00:00",
    "md5": "2d1d7d68a9ccdd6121f70acb79cf50e2",
@@ -75114,6 +75264,16 @@
    "at": "2026-10-14T02:30:37+00:00",
    "md5": "2d1d7d68a9ccdd6121f70acb79cf50e2",
    "size": 3965396
+  },
+  "godot/assets/concept/meshy/cabin_interior_window_night/cabin_interior_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:54:35+00:00",
+   "md5": "dd836455df8fecc198e770f7ac7a5ca9",
+   "size": 3017318
+  },
+  "godot/assets/concept/meshy/cabin_interior_window_night/front.png": {
+   "at": "2026-10-28T13:54:35+00:00",
+   "md5": "dd836455df8fecc198e770f7ac7a5ca9",
+   "size": 3017318
   },
   "godot/assets/concept/meshy/cabin_road_roadsign/cabin_road_roadsign_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:30:44+00:00",
@@ -79015,6 +79175,16 @@
    "md5": "136da3b671bd5771460349b5ab187e5c",
    "size": 2257853
   },
+  "godot/assets/concept/meshy/finn_apartment_alley_window_night/finn_apartment_alley_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:54:43+00:00",
+   "md5": "ef43abd642392efdafc55f76013e38c7",
+   "size": 1871561
+  },
+  "godot/assets/concept/meshy/finn_apartment_alley_window_night/front.png": {
+   "at": "2026-10-28T13:54:43+00:00",
+   "md5": "ef43abd642392efdafc55f76013e38c7",
+   "size": 1871561
+  },
   "godot/assets/concept/meshy/finn_apartment_brandon_notebook/finn_apartment_brandon_notebook_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-27T04:04:47+00:00",
    "md5": "d7a9033bfcf9a89ace0c3cabfcbee243",
@@ -79064,6 +79234,16 @@
    "at": "2026-10-28T03:08:47+00:00",
    "md5": "b3808388e34629bd6418c1cf80d1c230",
    "size": 1861992
+  },
+  "godot/assets/concept/meshy/finn_apartment_south_window_night/finn_apartment_south_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:54:53+00:00",
+   "md5": "bd7c89e21c7907c6743d965bfafa8610",
+   "size": 1664308
+  },
+  "godot/assets/concept/meshy/finn_apartment_south_window_night/front.png": {
+   "at": "2026-10-28T13:54:53+00:00",
+   "md5": "bd7c89e21c7907c6743d965bfafa8610",
+   "size": 1664308
   },
   "godot/assets/concept/meshy/finns_uv_light_and_radio/back.png": {
    "at": "2026-10-27T19:36:51+00:00",
@@ -82200,6 +82380,16 @@
    "md5": "c8c4cec640e98c5229118144dbb9fe1d",
    "size": 2634133
   },
+  "godot/assets/concept/meshy/lena_apartment_front_window_night/front.png": {
+   "at": "2026-10-28T13:55:10+00:00",
+   "md5": "7ef5c96c46e3e2fa5f318ea7e3cc28fd",
+   "size": 2392285
+  },
+  "godot/assets/concept/meshy/lena_apartment_front_window_night/lena_apartment_front_window_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:55:10+00:00",
+   "md5": "7ef5c96c46e3e2fa5f318ea7e3cc28fd",
+   "size": 2392285
+  },
   "godot/assets/concept/meshy/lena_apartment_jorgen_letter/front.png": {
    "at": "2026-10-27T04:06:10+00:00",
    "md5": "e8ee0022e8fcea2ab4b853b3dd79e1e1",
@@ -82240,6 +82430,16 @@
    "md5": "f870e6285828622dcaf50cbcce430d1b",
    "size": 3506409
   },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_0_night/front.png": {
+   "at": "2026-10-28T13:55:23+00:00",
+   "md5": "4e99be7d2efb0c1a85a6f50378b2b63b",
+   "size": 2808410
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_0_night/lena_apartment_nook_window_0_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:55:23+00:00",
+   "md5": "4e99be7d2efb0c1a85a6f50378b2b63b",
+   "size": 2808410
+  },
   "godot/assets/concept/meshy/lena_apartment_nook_window_1/front.png": {
    "at": "2026-10-28T03:12:48+00:00",
    "md5": "105b9c14f27c5b22752d5437a1f2ea71",
@@ -82249,6 +82449,16 @@
    "at": "2026-10-28T03:12:48+00:00",
    "md5": "105b9c14f27c5b22752d5437a1f2ea71",
    "size": 3377215
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_1_night/front.png": {
+   "at": "2026-10-28T13:55:33+00:00",
+   "md5": "054f751ce0a715ff808be27f81087275",
+   "size": 2387463
+  },
+  "godot/assets/concept/meshy/lena_apartment_nook_window_1_night/lena_apartment_nook_window_1_night_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-28T13:55:33+00:00",
+   "md5": "054f751ce0a715ff808be27f81087275",
+   "size": 2387463
   },
   "godot/assets/concept/meshy/lena_studio_canvas_1/front.png": {
    "at": "2026-10-14T03:06:35+00:00",
