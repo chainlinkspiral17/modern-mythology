@@ -158,3 +158,4 @@ lore/drift_wood/refs/**/*.webp
 # Drive by Hero Studio, never in git (meshy_pipeline.py slim_glb)
 godot/assets/3d/characters/*/_full/
 godot/assets/3d/props/_full/
+godot/tools/audit/.box_cache/

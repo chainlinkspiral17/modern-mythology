@@ -172,6 +172,44 @@ def presets():
 
 
 _cache = {}
+# (2026-10-28) A DISK CACHE of every builder's recorded boxes. Replaying a
+# builder costs 10-60 s and every marker tool replays all ~260 of them, so a
+# whole-game pass spent most of its hour re-learning geometry that had not
+# changed (the Deck: "not getting much done"). The key is the builder's bytes
+# + every shared _props module + the builders it imports + the recorder
+# itself; any change to any of them re-records. Gitignored.
+DISK_CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".box_cache")
+_shared_sig = None
+
+
+def _sig_files(paths):
+    import hashlib
+    h = hashlib.sha1()
+    for fp in sorted(paths):
+        try:
+            h.update(fp.encode())
+            h.update(open(fp, "rb").read())
+        except OSError:
+            pass
+    return h.hexdigest()
+
+
+def _builder_sig(path):
+    global _shared_sig
+    import glob as _g
+    if _shared_sig is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        shared = _g.glob(os.path.join(P.A.LOCALES, "_props", "**", "*.py"), recursive=True)
+        shared += _g.glob(os.path.join(BLENDER_ALT, "_props", "**", "*.py"), recursive=True)
+        shared += [os.path.join(here, f) for f in ("prop_overlap_audit.py", "locale_geometry_audit.py")]
+        _shared_sig = _sig_files(shared)
+    deps = [path]
+    src = open(path, encoding="utf-8", errors="replace").read()
+    for m in re.finditer(r"^\s*(?:import|from) (build_\w+)", src, re.M):
+        d = os.path.join(os.path.dirname(path), m.group(1) + ".py")
+        if os.path.exists(d):
+            deps.append(d)
+    return _shared_sig + _sig_files(deps)
 
 
 def boxes_for(locale):
@@ -180,8 +218,29 @@ def boxes_for(locale):
     for cand in (os.path.join(P.A.LOCALES, "build_%s.py" % locale),
                  os.path.join(BLENDER_ALT, "build_%s.py" % locale)):
         if os.path.exists(cand):
+            import json as _j
+            import hashlib
+            sig = hashlib.sha1(_builder_sig(cand).encode()).hexdigest()
+            cf = os.path.join(DISK_CACHE, "%s.%s.json" % (locale, sig[:16]))
+            if os.path.exists(cf):
+                try:
+                    _cache[locale] = [(n, tuple(c), tuple(h)) for n, c, h in _j.load(open(cf))]
+                    return _cache[locale]
+                except Exception:
+                    pass
             bx, _err = P.record_builder(cand)
             _cache[locale] = bx or []
+            if bx:
+                try:
+                    os.makedirs(DISK_CACHE, exist_ok=True)
+                    for old_f in os.listdir(DISK_CACHE):
+                        if old_f.startswith(locale + ".") and old_f.count(".") == 2:
+                            os.remove(os.path.join(DISK_CACHE, old_f))
+                    tmp = cf + ".tmp"
+                    _j.dump([[n, list(c), list(h)] for n, c, h in bx], open(tmp, "w"))
+                    os.replace(tmp, cf)
+                except OSError:
+                    pass
             return _cache[locale]
     _cache[locale] = None
     return None
