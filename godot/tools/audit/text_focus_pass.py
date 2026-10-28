@@ -250,6 +250,34 @@ def subject_for(text, geo, cast, marked=()):
 
 
 _PLACED = {}
+COVER_MIN = 0.03       # of the visible frame the subject must own
+INSERT_CENTER = 0.36   # VnDirector.INSERT_CENTER: the director's lift
+TEXT_BAND = 0.31       # the reading box's share of the screen, from the bottom
+
+
+def coverage(pos_b, rx, ry, fov, boxes, subj, rows=11, cols=17):
+    """The share of the picture ABOVE the reading box whose first hit is the
+    subject, with the director's insert lift applied (2026-10-28: frames
+    that passed the empty and occlusion tests showed a wall where a thermos,
+    a dock and the puddles were meant to be)."""
+    vf = math.radians(fov)
+    hf = 2.0 * math.atan(math.tan(vf / 2.0) * VO.ASPECT)
+    lift = math.atan(math.tan(vf / 2.0) * (1.0 - 2.0 * INSERT_CENTER))
+    pitch = rx - lift
+    own = n = 0
+    for r in range(rows):
+        fy = r / (rows - 1.0)                     # 0 top .. 1 bottom
+        if fy > 1.0 - TEXT_BAND:
+            continue
+        dv = math.atan((1.0 - 2.0 * fy) * math.tan(vf / 2.0))
+        for c in range(cols):
+            fx = c / (cols - 1.0)
+            dh = math.atan((2.0 * fx - 1.0) * math.tan(hf / 2.0))
+            t, who = VO.cast(pos_b, VO.ray_dir(pitch, ry, dh, dv), boxes, ignore=re.compile(r"^$"))
+            n += 1
+            if who in subj:
+                own += 1
+    return own / float(max(1, n))
 # what divides one room from another (and a room from outside): a lens on
 # the far side of one of these is in another room, or looking in through a
 # window from the porch (2026-10-27: the first blanket insert did exactly that)
@@ -308,6 +336,28 @@ def _place(scene, preset, word, hits, cam, boxes_all, dry):
     size = R.subject_size(hits)
     if size > SIZE_MAX:
         return None, "too big (%.1f m)" % size
+    pose = _search(hits, cam, boxes_all)
+    if pose is None:
+        return None, "no clear position"
+    npos, rx, ry = pose
+    name = "shot_insert_%s__%s" % (word, preset)
+    if not dry:
+        blk = ["", "; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it",
+               '[node name="%s" type="Marker3D" parent="." groups=["vn_shot"]]' % name,
+               "position = Vector3(%.3f, %.3f, %.3f)" % npos,
+               "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
+               "metadata/fov = 35.0", ""]
+        with open(path, "a") as f:
+            f.write("\n".join(blk))
+    return name, "ok"
+
+
+def _search(hits, cam, boxes_all):
+    """(pos, rx, ry) of the first clear, same-room, covered lens, or None."""
+    lo, hi = R.locale_bounds(boxes_all)
+    subj = {h[0] for h in hits}
+    _an, tgt = M.subject_target(hits, cam)
+    size = R.subject_size(hits)
     pref = R.preferred_dist(size)
     base = math.atan2(cam[2] - tgt[2], cam[0] - tgt[0])
     max_eye = max(R.MAX_EYE, tgt[1] - 1.0)
@@ -334,17 +384,10 @@ def _place(scene, preset, word, hits, cam, boxes_all, dry):
                 st = VO.frame_stats(pb, rx, ry, 35.0, boxes_all)
                 if st["escape"] >= VO.EMPTY_FRAC:
                     continue
-                name = "shot_insert_%s__%s" % (word, preset)
-                if not dry:
-                    blk = ["", "; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it",
-                           '[node name="%s" type="Marker3D" parent="." groups=["vn_shot"]]' % name,
-                           "position = Vector3(%.3f, %.3f, %.3f)" % npos,
-                           "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
-                           "metadata/fov = 35.0", ""]
-                    with open(path, "a") as f:
-                        f.write("\n".join(blk))
-                return name, "%.1fm" % d
-    return None, "no clear position"
+                if coverage(pb, rx, ry, 35.0, boxes_all, subj) < COVER_MIN:
+                    continue
+                return npos, rx, ry
+    return None
 
 
 _MW = {}
@@ -436,7 +479,133 @@ def run_chapter(path, pre, places, cast, dry, stats):
     return len(edits)
 
 
+def coverage_report(only, drop):
+    """Every insert marker's subject coverage (see coverage()); `--drop`
+    deletes the ones this pass authored below COVER_MIN, and their cues."""
+    low = []
+    for fn in sorted(os.listdir(TSCN)):
+        loc = fn[:-5]
+        if not fn.endswith(".tscn") or (only and loc not in only):
+            continue
+        path = os.path.join(TSCN, fn)
+        markers = [mk for mk in M.parse_markers(path) if mk[0].startswith("shot_insert_")]
+        if not markers:
+            continue
+        gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', open(path).read())
+        bx = VO.boxes_for(gm.group(1) if gm else loc) or []
+        if not bx:
+            continue
+        src = open(path).read()
+        for name, pos, rot in markers:
+            cue = name[len("shot_insert_"):]
+            word, _, view = cue.partition("__")
+            vb = [b for b in bx if VO._in_view(b[0], view)] if view in VO.PRESET_IDS else bx
+            geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in vb]
+            hits = M.matches_for(word, geo)
+            if not hits:
+                continue
+            hits = [h for h in hits if math.dist(h[1], pos) <= 30.0] or hits
+            subj = {h[0] for h in hits}
+            mf = re.search(r'\[node name="%s"[^\n]*\n(?:[^\n\[]*\n)*?metadata/fov = ([\d.]+)' % re.escape(name), src)
+            fov = float(mf.group(1)) if mf else 35.0
+            cv = coverage(R.to_b(pos), rot[0], rot[1], fov, vb, subj)
+            if cv < COVER_MIN:
+                mine = ('; authored by text_focus_pass.py' in src.split('name="%s"' % name)[0][-200:])
+                low.append((loc, name, cv, mine, pos))
+    for loc, name, cv, mine, _p in low:
+        print("  LOW %-28s %-46s %4.1f%%%s" % (loc, name, cv * 100, "  (text_focus)" if mine else ""))
+    print("coverage · %d insert marker(s) below %.0f%% of the picture" % (len(low), COVER_MIN * 100))
+    return low
+
+
+def refit(low, pre, places):
+    """Re-place each low-coverage insert with the coverage-checked search
+    (same name, new pose). One that cannot be placed: this pass's own is
+    deleted with its cues; an older hand marker is reported and kept."""
+    by_scene = {}
+    for pid, (scene, body) in pre.items():
+        by_scene.setdefault(scene, []).append(pid)
+    moved = dropped = kept = 0
+    drop_cues = []                # (preset, word)
+    for loc, name, cv, mine, mpos in low:
+        path = os.path.join(TSCN, loc + ".tscn")
+        cue = name[len("shot_insert_"):]
+        word, _, view = cue.partition("__")
+        # an unsuffixed marker belongs to the view whose camera is nearest it
+        views = [view] if view in pre else sorted(
+            by_scene.get(loc, []), key=lambda v: math.dist(preset_camera(pre[v][1])[0] or (0, 0, 0), mpos))
+        if not views:
+            kept += 1
+            continue
+        scene, body = pre[views[0]]
+        cam, _r = preset_camera(body)
+        allb = boxes(scene)
+        if cam is None or not allb:
+            kept += 1
+            continue
+        vb = [b for b in allb if VO._in_view(b[0], views[0])] if views[0] in VO.PRESET_IDS else allb
+        geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in vb]
+        hits = M.matches_for(word, geo)
+        if hits:
+            _an, near = M.subject_target(hits, cam)
+            hits = [h for h in hits if math.dist(h[1], near) <= 1.2] or hits
+        pose = _search(hits, cam, vb) if hits else None
+        src = open(path).read()
+        blk = re.search(r'\[node name="%s"[^\n]*\n((?:[^\n\[]*\n)*)' % re.escape(name), src)
+        if pose and blk:
+            npos, rx, ry = pose
+            body_new = re.sub(r"(?m)^(transform|position|rotation) = .*\n", "", blk.group(1))
+            body_new = "position = Vector3(%.3f, %.3f, %.3f)\nrotation = Vector3(%.4f, %.4f, 0.0)\n" % (npos + (rx, ry)) + body_new
+            src = src[:blk.start(1)] + body_new + src[blk.end(1):]
+            open(path, "w").write(src)
+            moved += 1
+            print("  moved   %-26s %s" % (loc, name))
+        elif mine and blk:
+            head = src.rfind("\n; authored by text_focus_pass.py", 0, blk.start())
+            a = head if head != -1 and blk.start() - head < 200 else blk.start()
+            src = src[:a] + "\n" + src[blk.end():]
+            open(path, "w").write(src)
+            drop_cues += [(v, word) for v in views]
+            dropped += 1
+            print("  dropped %-26s %s" % (loc, name))
+        else:
+            kept += 1
+            print("  KEPT    %-26s %s (hand marker, no clear frame found)" % (loc, name))
+    if drop_cues:
+        cue_rx = {}
+        for v, w in drop_cues:
+            cue_rx.setdefault(v, set()).add(w)
+        for f in glob.glob(os.path.join(SCENES, "*", "*.json")):
+            raw = open(f, encoding="utf-8").read()
+            if "[shot:insert " not in raw:
+                continue
+            j = json.loads(raw)
+            nodes = j.get("nodes", [])
+            at = chapter_presets(nodes, j.get("id", ""), places, pre)
+            changed = False
+            for i, n in enumerate(nodes):
+                t = str(n.get("text") or "")
+                m = re.match(r"\[shot:insert (\w+)\]", t)
+                if m and at.get(i) in cue_rx and m.group(1) in cue_rx[at.get(i)]:
+                    old = json.dumps(t, ensure_ascii=False)[1:-1]
+                    new = json.dumps(t[m.end():], ensure_ascii=False)[1:-1]
+                    if old in raw:
+                        raw = raw.replace(old, new, 1)
+                        changed = True
+            if changed:
+                open(f, "w", encoding="utf-8").write(raw)
+    print("refit · %d moved · %d dropped (with their cues) · %d hand marker(s) kept" % (moved, dropped, kept))
+
+
 def main():
+    if "--coverage" in sys.argv:
+        VO.P.A.install_stubs()
+        VO.PRESET_IDS.update(p[0] for p in VO.presets())
+        low = coverage_report([a for a in sys.argv[1:] if not a.startswith("--")], "--drop" in sys.argv)
+        if "--refit" in sys.argv:
+            places = json.load(open(PLACES))["places"] if os.path.exists(PLACES) else {}
+            refit(low, presets(), places)
+        return
     dry = "--dry" in sys.argv
     VO.P.A.install_stubs()
     VO.PRESET_IDS.update(p[0] for p in VO.presets())
