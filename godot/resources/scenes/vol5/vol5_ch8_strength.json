@@ -591,6 +591,10 @@
       "voice": "assets/audio/voice/vol5_ch8_strength/117.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:new_orleans_bar"
+    },
+    {
       "t": "narrate",
       "text": "[mood:tv_glow_blue][shot:insert tv~]In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag.",
       "voice": "assets/audio/voice/vol5_ch8_strength/118.ogg"
