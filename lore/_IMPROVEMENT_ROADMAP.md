@@ -3842,9 +3842,9 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - cabin_interior reads well (warm, the loft, table and stove modelled).
   - accretion_basement is flat grey but legible.
   - cosmic_comics_back_office has no VN preset.
-- **Riverboat helm:** a stronger VN ambient (1.5) barely shows on walnut; the door corner still needs the sconce brighter.
+- **Riverboat helm:** a stronger VN ambient (1.5) barely shows on walnut. The door sconce goes 1.0 → 2.2 (range 3.6): its pool now lights the corner, and the office door's knob and edge and the side door read.
 - **Next:**
-  - the helm sconce;
+  - the helm establish is still dim below the ceiling;
   - the cabin bed's window view (cedars);
   - the accretion basement's flat light.
 
