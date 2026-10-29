@@ -383,12 +383,17 @@ def build_hull_and_decks():
         ("MainCeil",  MAIN_CEIL_Z),
         ("UpperCeil", UPPER_CEIL_Z),
     ]:
+        # (2026-10-29) The helm's tin is darker: Dante's walnut office under
+        # the light ochre of the dining room's tin read as a glowing orange
+        # lid over a black room (the VN establish's brightest surface).
+        ceil_col = (0.34, 0.25, 0.15, 1.0) if label == "UpperCeil" else COL_CEILING
+        tile_col = (0.44, 0.34, 0.20, 1.0) if label == "UpperCeil" else (0.74, 0.56, 0.30, 1.0)
         if label == "MainCeil":
-            _slab_with_hole(f"Hull_{label}", zc + 0.05, 0.10, COL_CEILING, ATRIUM)
+            _slab_with_hole(f"Hull_{label}", zc + 0.05, 0.10, ceil_col, ATRIUM)
         else:
             make_box(f"Hull_{label}",
                      (0.0, 0.0, zc + 0.05),
-                     (12.0, 24.0, 0.10), COL_CEILING)
+                     (12.0, 24.0, 0.10), ceil_col)
         # Tin stamp pattern (subtle raised tiles)
         for i in range(-2, 3):
             for j in range(-5, 6):
@@ -400,7 +405,7 @@ def build_hull_and_decks():
                 make_box(f"Hull_{label}_Tile_{i}_{j}",
                          (i * 1.6, j * 1.6, zc - 0.003),
                          (1.40, 1.40, 0.005),
-                         (0.74, 0.56, 0.30, 1.0))
+                         tile_col)
 
 
 # ════════════════════════════════════════════════════════════════

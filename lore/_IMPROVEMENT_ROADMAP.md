@@ -3844,7 +3844,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - cosmic_comics_back_office has no VN preset.
 - **Riverboat helm:** a stronger VN ambient (1.5) barely shows on walnut. The door sconce goes 1.0 → 2.2 (range 3.6): its pool now lights the corner, and the office door's knob and edge and the side door read.
 - **Next:**
-  - the helm establish: a VN-only warm fill (Helm_Fill__riverboat_interior, 0.9 at the lamp's height on the lens side) brings up the desk, window, panelling and carpet; the orange coffered ceiling is now the brightest thing in frame (find its source);
+  - the helm establish: a VN-only warm fill (Helm_Fill__riverboat_interior, 0.9 at the lamp's height on the lens side) brings up the desk, window, panelling and carpet. The helm's tin ceiling (Hull_UpperCeil and its tiles) goes from the dining room's light ochre to a darker aged tin, so the lit window and the desk lamp hold the eye, not the ceiling;
   - the cabin bed's window view (cedars);
   - the accretion basement's flat light.
 
