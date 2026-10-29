@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 230: the insert pass on elicia_apartment (150) and roberts_kitchen (145); the espresso machine checked.**
+- **Espresso machine:** rendered on the rebuilt GLB, it reads as a machine: badge and gauges, heads and portafilters, cups under the spouts, the drip tray and the wand.
+- **elicia_apartment:** passes (camera and red light, the eviction notice on the door, the award, the laptop, the teacup). The counter insert is weak: the cup on the saucer is far up the frame.
+- **roberts_kitchen:** passes (faucet, radio on the sill, polaroid, the screen door with the car beyond, the loom, both closeups). Re-placed:
+  - **steps:** the camera sat on the porch boards at knee height. It is now at the doorway, looking down the steps to the gravel drive and the car: "The boy… walked back down the steps, across the gravel drive."
+  - **dishtowel:** 0.8 m off, it filled the frame. It is now the towel on the stove door, between the cabinets.
+- **Direction:**
+  - ch16 #9: "Data slates… cables snaked across surfaces" was `insert teacup`. It is now `establish_b`.
+  - ch20 #212: "The wheels, in their quiet patient way, kept turning" is the Wheel, not a wheel. It is now `closeup mackenzie` (she hands Philip the phone).
+- **Gates:** marker_aim and shot_marker at 0.
+- **Next:**
+  - the next vol 5 sets by lines: hospice_room_night, dambrosios_formal, montreal_apartment, the chalk wall, new_orleans_bar;
+  - elicia's counter insert.
+
 **2026-10-29 · pass 229: the re-aimed decal markers, render-checked; the cafe's espresso machine.**
 - **Read:** cabin table, cabin stove and kettle, centro table, henderson table and door, the pit stop booth, the writer's door, both tide pools.
 - **Fixed:**
