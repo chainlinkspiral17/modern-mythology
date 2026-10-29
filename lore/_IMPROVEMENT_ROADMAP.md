@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 232: the graustark insert pass (chalk wall ×2, wreck, ruins).**
+- **Pass:** the Hermit's poem on the wall (ch9's chalk insert reads every line), the cat, Joanna, the receipt, the frog, the wide sinkhole.
+- **Re-placed:**
+  - **The chalk wall's `insert_wall`** had matched `Rumpus_Wall_*`, a figure, and framed the floor. It now stands back 4 m on the moonlit wall, with both verses (the Hermit's, the Star's) in frame.
+  - **steamship:** a cypress trunk stood in front of it. It is now from the south bank up the Minstral's length to the stern name board.
+  - **sinkhole:** a brown blur from the lip. It is now from 2.4 m, down over the broken slabs.
+- **Direction (ch17, ch9, ch20, ch21):**
+  - Joanna's visions (Dante's hinges, John's notebook in Montreal, the cracks in a smile) → `closeup joanna`.
+  - The Hermit's poem "Reflection in the stagnant pool" matched a swimming pool 400 m away. It is now `insert chalk` (the poem is on the wall).
+  - "Toward the streets… the small lit windows" → `establish`.
+  - A notebook on someone's nightstand elsewhere → `establish`.
+  - A letter reaching its addressee elsewhere → `establish`.
+- **Tool lesson:** `marker_reaim --tight` picks the part nearest the lens, which differs from the audit's best-on-axis cluster. In graustark it turned the wall marker to the next wall, the steamship to a clump of moss, the sinkhole to a fence post. Reverted. For big sets, hand-aim and check the audit, not `--tight`.
+- **Gates:** marker_aim (1760) and shot_marker at 0.
+- **Next:**
+  - make marker_reaim use the audit's subject choice;
+  - the small sets' inserts (county line, jetty, St Jude's, the shotgun house);
+  - then vol 6.
+
 **2026-10-29 · pass 231: the insert pass on hospice_room_night, dambrosios_formal, montreal_apartment, new_orleans_bar.**
 - **Pass:**
   - hospice: the rose in its glass on the sill, the chair, the sink, the bedside table, Alice;

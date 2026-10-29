@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pool]Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one.",
+      "text": "[shot:insert chalk]Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/052.mp3"
     },
     {
@@ -510,7 +510,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert streets]The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town.",
+      "text": "[shot:establish]The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/100.ogg"
     },
     {

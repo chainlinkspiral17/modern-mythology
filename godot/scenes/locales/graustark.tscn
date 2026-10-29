@@ -284,9 +284,9 @@ omni_range = 9
 ;   cottage + gate   (50, -380 / -387.8) herb bed (52.2, -379)
 ;   Minstral wreck   (38, -120)          paddlebox (42.2, -124)
 [node name="shot_insert_sinkhole" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(23.300, 1.700, 336.600)
-rotation = Vector3(-0.7305, 0.8766, 0.0)
-metadata/fov = 55.0
+position = Vector3(24.500, 2.400, 338.500)
+rotation = Vector3(-0.4434, 0.4324, 0.0)
+metadata/fov = 50.0
 
 [node name="shot_insert_chalk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(42.850, 1.450, 374.850)
@@ -459,9 +459,9 @@ script = ExtResource("14_dbgm")
 
 ; insert: the chalked wall, charcoal against pale concrete (ch17_star)
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(41.000, 1.620, 374.600)
-rotation = Vector3(-0.5238, -2.5429, 0.0)
-metadata/fov = 46.0
+position = Vector3(40.000, 1.900, 372.000)
+rotation = Vector3(0.3000, -1.7680, 0.0)
+metadata/fov = 55.0
 
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(39.600, 2.550, 371.900)
@@ -479,9 +479,9 @@ rotation = Vector3(-0.2714, -2.1763, 0.0)
 metadata/fov = 36.0
 
 [node name="shot_insert_steamship" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(61.000, 1.450, 127.500)
-rotation = Vector3(0.4039, -0.1651, 0.0)
-metadata/fov = 48.0
+position = Vector3(42.000, 2.000, 141.000)
+rotation = Vector3(0.0250, 0.1244, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_closeup_child" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(39.750, -0.750, 135.300)
