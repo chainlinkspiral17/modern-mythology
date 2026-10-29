@@ -4318,6 +4318,20 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.40, 0.58, 0.86, 1), "sky_horizon": Color(0.80, 0.86, 0.92, 1), "ground_horizon": Color(0.46, 0.50, 0.40, 1), "ground_bottom": Color(0.22, 0.24, 0.18, 1), "ambient_color": Color(0.84, 0.88, 0.92, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.84, 0.90, 1)},
 		"suppress_input": true,
 	},
+	# (2026-10-29) the dock at sunrise, ch11c: the narrator opens the sliding
+	# glass and goes out ("Terry hears me and turns around raising his free
+	# hand in the air in a half-salute") and the whole talk about the soccer
+	# club happens on the dock — it stayed on the kitchen-table view. The
+	# dock's camera under lake_dock_dawn's sky and its low eastern sun.
+	"lake_dock_sunrise": {
+		"scene": "res://scenes/locales/lake_house.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_house.glb",
+		"camera_origin": Vector3(22.4, 1.7, 4.0),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.30, 0.34, 0.56, 1), "sky_horizon": Color(0.96, 0.66, 0.42, 1), "ground_horizon": Color(0.40, 0.32, 0.30, 1), "ground_bottom": Color(0.14, 0.12, 0.12, 1), "ambient_color": Color(0.92, 0.72, 0.62, 1), "ambient_energy": 0.50, "fog_color": Color(0.90, 0.74, 0.64, 1)},
+		"suppress_input": true,
+	},
 	"lake_dock_dawn": {
 		"scene": "res://scenes/locales/lake_house.tscn",
 		"requires_glb": "res://assets/3d/locales/lake_house.glb",

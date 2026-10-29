@@ -110,6 +110,10 @@
       "text": "[shot:insert granola]I sit at a table with my box of granola watching the sun crawl over the horizon. Terry is outside the window fishing off the dock in his shorts. I take the cereal under my arm and open the sliding glass door."
     },
     {
+      "t": "bg",
+      "src": "3d:lake_dock_sunrise"
+    },
+    {
       "t": "narrate",
       "text": "Terry hears me and turns around raising his free hand in the air in a half-salute."
     },
