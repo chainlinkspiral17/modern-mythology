@@ -75,6 +75,8 @@ def main():
                 continue        # a face frame is aimed by its own tools
             cue_id = m.group(2).split("__")[0]
             hits = M.matches_for(cue_id, geo)
+            if m.group(1) == "closeup" and cue_id in M.PERSON_CUES:
+                continue        # a person's closeup is not aimed at her things
             if "__" in m.group(2):
                 # a per-preset marker frames its own area (marker_aim_audit)
                 hits = [h for h in hits if sum((a - b) ** 2 for a, b in zip(h[1], pos)) ** 0.5 <= 30.0]

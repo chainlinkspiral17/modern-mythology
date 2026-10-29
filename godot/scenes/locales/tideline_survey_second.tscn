@@ -317,7 +317,7 @@ script = ExtResource("14_dbgm")
 ; insert: the second pool — dining-table size, clear, the old man at its edge
 [node name="shot_insert_tide_pool" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 2.2, -4.4)
-rotation = Vector3(-1.0282, 1.4877, 0.0)
+rotation = Vector3(-0.8301, -0.1456, 0.0)
 metadata/fov = 42.0
 
 ; insert: the cedar at the bottom — a hand, open, palm up, holding a bell
@@ -350,5 +350,5 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pool__tideline_survey_second" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(9.396, 1.593, -2.836)
-rotation = Vector3(-0.2312, 0.2408, 0.0)
+rotation = Vector3(-0.2829, 0.0416, 0.0)
 metadata/fov = 35.0

@@ -213,7 +213,7 @@ rotation = Vector3(-0.0996, -1.4371, 0.0)
 ; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 1.350, -3.050)
-rotation = Vector3(-0.7441, -0.0573, 0.0)
+rotation = Vector3(-0.6447, 0.5743, 0.0)
 
 ; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -1175,7 +1175,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_iron__cabin_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.710, 1.297, -5.994)
-rotation = Vector3(-1.0039, -0.2963, 0.0)
+rotation = Vector3(-0.0567, -0.4969, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

@@ -753,7 +753,7 @@ hide_prefixes = PackedStringArray("BO_SpeakSpell_Body", "BO_SpeakSpell_Keys", "B
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_ring__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.466, 0.416, -4.859)
-rotation = Vector3(-0.5236, 0.2355, 0.0)
+rotation = Vector3(0.3184, 0.7756, 0.0)
 metadata/fov = 35.0
 
 

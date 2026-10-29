@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 228: the insert pass on vol 5's next four sets, and inserts aimed at floor scuffs (project-wide).**
+- **Pass as they stand (every insert frames its subject):** houston_office (242 lines) and new_orleans_office (199).
+- **cafe_olimpico (164):**
+  - The croissant was an orange box on a paper bag. It is now two crescents (a tube arc and a blob belly) on a plate: "John ordered the croissants"; "Elicia broke the first croissant in half."
+  - ch19 #51, "a carpenter named Luc, who worked with his hands", is a figure of speech. It goes to `closeup elicia`. The real hands line (#117, she takes his hand) keeps its insert.
+  - The espresso insert frames the machine, but the machine is a crude beige block: next.
+- **new_orleans_apartment (160):** the sofa insert ("He swung his legs off the sofa") showed floorboards. Its subject was `Wear_Sofa_Bed_Seg1`, a floor-wear decal named for the path it marks. The marker is re-placed at the sofa.
+- **THE CLASS (project-wide):**
+  - **Decals:** `marker_aim_audit.matches_for` (which text_focus_pass and marker_reaim also use) now skips floor-wear decals (`Wear_*`, `*_Wear_*`). That surfaced 20 markers, in 12 sets, that had been aimed at scuffs named after real objects: cabin table and iron, the centro break room's table, the comics shop ring, the henderson kitchen's table and door, Lena's pillow, the New Orleans bar's booth, the pit stop booth, the school field's bench and gate, the writer's desk doors, the tide pools. marker_reaim re-aimed them all (default, then `--tight`).
+  - **Person closeups:** `PERSON_CUES` (character-index first names plus the vol 7 cast) stops a person's closeup being aimed at her things. closeup_lena had matched Lena_Phone_Screen; its rotation is restored.
+  - The aim gate is at 0 across 1760 markers.
+- **Next:**
+  - spot-check renders of the re-aimed far ones (Lena's pillow from 5.8 m, the bar booth);
+  - cafe_olimpico's espresso machine;
+  - then elicia_apartment and roberts_kitchen inserts.
+
 **2026-10-29 · pass 227: natalie_apartment_night, the insert pass (270 lines, vol 5's busiest set).**
 - **Rendered:** the twelve markers its lines call.
 - **Good:** card (the reading on the coffee table), futon, establish_b, both character closeups, coat.

@@ -209,7 +209,7 @@ rotation = Vector3(-0.0996, -1.4371, 0.0)
 ; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 1.350, -3.050)
-rotation = Vector3(-0.7441, -0.0573, 0.0)
+rotation = Vector3(-0.6447, 0.5743, 0.0)
 
 ; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]

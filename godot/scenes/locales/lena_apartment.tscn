@@ -557,7 +557,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pillow__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.964, 0.635, -2.415)
-rotation = Vector3(-0.5236, -0.2645, 0.0)
+rotation = Vector3(-0.0052, 0.8834, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

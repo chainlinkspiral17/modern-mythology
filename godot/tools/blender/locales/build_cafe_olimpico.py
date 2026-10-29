@@ -2,11 +2,11 @@
 Classic Italian espresso bar: counter w/ espresso machine, pastry
 case, marble tables, vinyl booth, soccer-pennant decor.
 """
-import os, sys
+import math, os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_chamfer_box
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_chamfer_box, make_blob
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.food_service import make_donut_display, make_coffee_pots
@@ -125,8 +125,20 @@ def build_seating():
     make_box("CornerTable_Notebook", (ctx-0.10, cty-0.05, 0.765), (0.30, 0.21, 0.015), (0.92, 0.90, 0.84, 1.0))
     make_box("CornerTable_Notebook_Spine", (ctx-0.10, cty-0.05, 0.772), (0.015, 0.21, 0.012), (0.30, 0.28, 0.26, 1.0))
     make_cyl("CornerTable_Pen", (ctx+0.08, cty-0.16, 0.775), 0.007, 0.13, (0.16, 0.18, 0.32, 1.0), axis='X', segments=6)
-    make_box("CornerTable_CroissantBag", (ctx-0.02, cty+0.20, 0.775), (0.20, 0.13, 0.05), (0.80, 0.68, 0.48, 1.0))
-    make_box("CornerTable_Croissant", (ctx-0.02, cty+0.24, 0.795), (0.13, 0.06, 0.04), (0.86, 0.64, 0.34, 1.0))
+    # (2026-10-29) the croissants, ch19: "John ordered the croissants" and
+    # "Elicia broke the first croissant in half." Two crescents on a
+    # plate — the box stand-in (on a paper bag) read as an orange brick.
+    make_cyl("CornerTable_Croissant_Plate", (ctx-0.02, cty+0.20, 0.765), 0.11, 0.012, (0.94, 0.93, 0.90, 1.0), segments=14)
+    golden = (0.84, 0.60, 0.30, 1.0)
+    for k, (ox, oy, yaw) in enumerate(((-0.035, -0.02, 0.0), (0.04, 0.035, 2.4))):
+        cx0, cy0 = ctx - 0.02 + ox, cty + 0.20 + oy
+        arc = []
+        for s in range(7):
+            a = yaw - 1.1 + s * (2.2 / 6.0)
+            arc.append((cx0 + 0.045 * math.cos(a), cy0 + 0.045 * math.sin(a), 0.792 + 0.006 * (1.0 - abs(s - 3) / 3.0)))
+        make_tube(f"CornerTable_Croissant_{k}_Arc", arc, 0.018, golden, segments=8)
+        mx, my, _ = arc[3]
+        make_blob(f"CornerTable_Croissant_{k}_Belly", (mx, my, 0.795), 0.026, golden, noise=0.10, seed=11 + k, squash=0.7)
 
 def build_pennants_and_decor():
     # Soccer pennants hanging on north wall over bar

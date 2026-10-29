@@ -372,7 +372,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__writers_desk_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.703, 0.418, -3.012)
-rotation = Vector3(-0.5236, 2.8143, 0.0)
+rotation = Vector3(0.2516, -2.9367, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_chair__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -383,7 +383,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.703, 0.418, -3.012)
-rotation = Vector3(-0.5236, 2.8143, 0.0)
+rotation = Vector3(0.2516, -2.9367, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -401,7 +401,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_doors__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.703, 0.418, -3.012)
-rotation = Vector3(-0.5236, 2.8143, 0.0)
+rotation = Vector3(0.2516, -2.9367, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

@@ -354,7 +354,7 @@ metadata/fov = 42.0
 ; insert: the place settings
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.000, 1.250, 0.040)
-rotation = Vector3(-0.8392, -0.0000, 0.0)
+rotation = Vector3(-0.2794, -0.0116, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Telecaster on its stand by the stairs
@@ -404,7 +404,7 @@ metadata/fov = 50.0
 ; insert: the door (the basement door, cracked the small specific way)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568, 1.775, -2.300)
-rotation = Vector3(-0.9183, 2.7074, 0.0)
+rotation = Vector3(0.2181, 2.8995, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

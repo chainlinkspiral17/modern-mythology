@@ -40,6 +40,27 @@ from shot_marker_audit import SYNONYMS, EXCLUDE
 
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 LOCALES_TSCN = os.path.join(ROOT, "scenes", "locales")
+
+
+def _person_cues():
+    """(2026-10-29) A CLOSEUP of a person frames the person, not the things
+    named for them: closeup_lena matched Lena_Phone_Screen once floor-wear
+    decals stopped counting. First names from the character index, plus
+    the vol 7 cast the index does not carry."""
+    names = {"lena", "lily", "kai", "margit", "andy", "erica", "natalie", "jimmy", "douglas"}
+    try:
+        import json
+        with open(os.path.join(ROOT, "resources", "characters", "_index.json")) as f:
+            for c in json.load(f).get("characters", []):
+                cid = c.get("id", "") if isinstance(c, dict) else str(c)
+                if cid:
+                    names.add(cid.split("_")[0].lower())
+    except (OSError, ValueError):
+        pass
+    return names
+
+
+PERSON_CUES = _person_cues()
 BUILDERS = os.path.join(ROOT, "tools", "blender", "locales")
 
 CONE_DEG = 38.0        # half-angle · insert lenses are tight but a
@@ -170,6 +191,11 @@ def matches_for(cue_id, geo):
     hits = []
     excl = [e for e in EXCLUDE.get(cue_id, [])]
     for name, pos in geo:
+        # (2026-10-29) floor-wear decals (make_traffic_wear) are named for
+        # the path they mark — Wear_Sofa_Bed_Seg1 is a scuff on the floor,
+        # not the sofa; the text pass aimed an insert at one.
+        if name.startswith("Wear_") or "_Wear_" in name:
+            continue
         if excl:
             low_parts = CAMEL_RE.sub("_", name).lower().split("_")
             if any(p == e for p in low_parts for e in excl):
@@ -239,6 +265,9 @@ def main():
                 # person frame; the subject is still "person"
                 cue_id = m.group(2).split("__")[0]
                 hits = matches_for(cue_id, geo)
+                if m.group(1) == "closeup" and cue_id in PERSON_CUES:
+                    # her things are not her (Lena_Phone_Screen)
+                    hits = []
                 if "__" in m.group(2):
                     # A per-preset marker frames its preset's AREA. The
                     # ruins' `child` frame is a face at the ruins; the

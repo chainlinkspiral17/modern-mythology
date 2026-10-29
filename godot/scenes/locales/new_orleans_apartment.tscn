@@ -354,9 +354,9 @@ metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_sofa__new_orleans_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.128, 0.418, -2.640)
-rotation = Vector3(-0.5236, 0.0392, 0.0)
-metadata/fov = 35.0
+position = Vector3(-1.100, 1.150, -1.700)
+rotation = Vector3(-0.3810, 1.1220, 0.0)
+metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bourbon__new_orleans_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
