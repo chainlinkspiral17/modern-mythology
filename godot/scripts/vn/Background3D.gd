@@ -236,9 +236,12 @@ const CAMERA_PRESETS := {
 		# at the north side of the office looking SOUTH: mahogany
 		# desk (blender y=-1.5) in the foreground, the leaded window
 		# over the dining floor (y=-3) beyond.
-		"camera_origin": Vector3(0.0, 6.85, -1.6),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(180.0), 0.0),
-		"fov": 58.0,
+		# (2026-10-29) from the NE corner, between the file cabinet and the
+		# wife's photograph, SW across the desk to the brass rail and the
+		# leaded window — it had faced the desk's skirt head-on.
+		"camera_origin": Vector3(2.3, 6.75, -2.6),
+		"camera_rotation": Vector3(-0.10, 2.645, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────

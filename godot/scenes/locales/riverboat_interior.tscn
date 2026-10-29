@@ -209,6 +209,14 @@ light_energy = 1.4
 omni_range = 3.0
 shadow_enabled = false
 
+; HELM · the sconce between the office door and the side door (2026-10-29)
+[node name="Practical_Helm_DoorSconce" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88, 6.9, 2.72)
+light_color = Color(1, 0.78, 0.5, 1)
+light_energy = 1.0
+omni_range = 2.8
+shadow_enabled = false
+
 ; DINING · two chandeliers
 [node name="Practical_Dining_Chandelier1" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4, 4.5)

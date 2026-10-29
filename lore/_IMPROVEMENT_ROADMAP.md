@@ -3835,6 +3835,12 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 223: the riverboat helm, draft 2.**
+- **Checked locally:** the bungalow's wash is gone (the lamp pools model the walls). The papers insert reads, and the phone insert is on its aim line.
+- **Door insert:** it was a dark wall. A brass sconce now hangs between the office door and the side door, with its practical, `Practical_Helm_DoorSconce`.
+- **Establish:** it had faced the desk's skirt head-on. It now looks from the NE corner, between the file cabinet and the wife's photograph, SW across the desk to the wrong-brass rail and the leaded window.
+- **Next:** check both frames on the Deck; the `dawn_diner` ×3 sets.
+
 **2026-10-29 · pass 222: VOL 5, the bungalow's orange wash and Dante's desk (task #1).**
 - **Bungalow (100 lines, ch2 Priestess):** the frame was a blown orange-yellow from wall to wall, and changing the lamps or the ambient light did nothing. The cause was the scene's style pack: `bungalow_clean` applied the `golden_hour` lighting preset, which multiplies the directional lights by 8 and sets a 1.2 orange ambient. It now uses `scene_default`, the scene's own three-light rig and practicals.
   - Packs with the same risk: `kitchen_clean` uses `dawn_diner` (×3) on roberts_kitchen, cabin_interior(_bed), cosmic_comics_back_office and accretion_basement. Check each one's frame next.

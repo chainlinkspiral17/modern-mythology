@@ -2070,6 +2070,14 @@ def build_emperor_props():
     # Helm_WifePhoto_Wall leaves it standing.
     make_box("Helm_WallFrame_WifePhoto", (0.95, 2.94, 6.80), (0.40, 0.02, 0.50), (0.30, 0.22, 0.14, 1.0))
     make_box("Helm_WifePhoto_Wall", (0.95, 2.93, 6.80), (0.32, 0.015, 0.42), (0.72, 0.68, 0.58, 1.0))
+    # (2026-10-29) A brass sconce between the office door and the side
+    # door, on the south partition: Sammy knocks at the office door and
+    # Dean leaves by the side door, and the corner had no fixture — the
+    # door insert rendered as a dark wall. Practical_Helm_DoorSconce
+    # (riverboat_interior.tscn) is its light.
+    make_box("Helm_DoorSconce_Plate", (2.88, -2.96, 6.95), (0.10, 0.02, 0.16), brass)
+    make_box("Helm_DoorSconce_Arm", (2.88, -2.91, 6.95), (0.02, 0.08, 0.02), brass)
+    make_cyl("Helm_DoorSconce_Shade", (2.88, -2.84, 6.93), 0.06, 0.10, (0.92, 0.70, 0.40, 1.0), segments=10)
     # (2026-10-29) The two things ch4 names at the desk that were not on it:
     # "He still received them [the papers]. He used them, mostly, to wrap
     # fish." — the week's papers, folded and unread, at the desk's west
