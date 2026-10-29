@@ -4079,8 +4079,12 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/apple_peddler.tscn",
 		"requires_glb": "res://assets/3d/locales/apple_peddler.glb",
 		# the Apple Peddler: Bernard's booth under the rain on the glass, the counter, the pie
-		"camera_origin": Vector3(-3.2, 1.45, -3.6),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(135.0), 0.0),
+		# (2026-10-29) from the door end looking W down the room: the booths
+		# under the rain on the glass at left, the counter and its stools at
+		# right, the pie case, the coffee pots and the menu board, Bernard's
+		# booth at the far end — from the corner it saw two booths and a wall.
+		"camera_origin": Vector3(5.6, 1.55, -3.2),
+		"camera_rotation": Vector3(-0.08, 1.5708, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
