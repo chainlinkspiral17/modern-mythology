@@ -146,8 +146,8 @@ background_mode = 2
 sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.06, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.86, 0.74, 0.52, 1)
-ambient_light_energy = 0.85
+ambient_light_color = Color(0.62, 0.52, 0.40, 1)
+ambient_light_energy = 0.55
 fog_enabled = true
 fog_sky_affect = 0.0
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
@@ -172,7 +172,7 @@ environment = SubResource("Env_Locale")
 [node name="Key_PendantAmber" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(1.00, 0.78, 0.42, 1)
-light_energy = 1.0
+light_energy = 0.6
 shadow_enabled = false
 
 [node name="Fill_StreetWindow" type="DirectionalLight3D" parent="."]

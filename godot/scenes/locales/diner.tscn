@@ -327,8 +327,8 @@ shadow_enabled = false
 [node name="WestFormalChandelier" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 2.50, 3.5)
 light_color = Color(0.98, 0.78, 0.42, 1)
-light_energy = 3.4
-omni_range = 5.5
+light_energy = 2.0
+omni_range = 6.5
 shadow_enabled = false
 
 ; The Empress's floor at table height (2026-10-05): seven votives — Tables

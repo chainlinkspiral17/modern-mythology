@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 225: VOL 5, the next eight sets by lines played (task #1).**
+- **Rendered:** natalie_apartment_night (270), cafe_olimpico (164), hospice_room_night (127), dambrosios_formal (125), montreal_apartment (124), graustark_chalk_wall_star (114), new_orleans_bar (108), graustark_wreck (106).
+- **Fixed — cafe_olimpico:** blown to white. Its ambient was (0.86,0.74,0.52) ×0.85 with no tonemap, and is now (0.62,0.52,0.40) ×0.55. The key goes 1.0 → 0.6. The walls are warm, the floor reads, and the tables are no longer burnt.
+- **Fixed — dambrosios_formal (diner.tscn, a model chapter, one light):** WestFormalChandelier was 3.4 at range 5.5 and made a white hot spot on the back wall. It is now 2.0 at range 6.5, an even wall with the linen white, not glare.
+- **Read acceptably, left:**
+  - natalie_apartment_night, hospice_room_night (a little flat), montreal_apartment (good);
+  - the chalk wall (should be "pale moonlit": check it is night enough);
+  - new_orleans_bar (moody, good) and the wreck (daylight).
+- **Next:**
+  - the chalk wall's night;
+  - the hospice room's flat light;
+  - the remaining sets: diner_interior, cathedral_interior, houston_design_studio, graustark_ruins, miriam_subaru;
+  - then closeups and inserts per set.
+
 **2026-10-29 · pass 224: the ×3 dawn_diner sets checked (draft 3 of pass 222's lighting finding).**
 - **Roberts' kitchen:** blown to white. It now has its own pack, `roberts_kitchen_clean` (scene_default), and the cream walls, island, uppers and fridge model again.
 - **Lena's bed alcove (vol 7 ch1):** "the window above the bed gave her the gray-green of cedars." It read orange under dawn_diner and night-dark under scene_default. It is now `cabin_bed_clean` on `blue_hour`, a cool grey first light.
