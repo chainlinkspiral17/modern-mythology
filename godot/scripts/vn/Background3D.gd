@@ -242,6 +242,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.3, 6.75, -2.6),
 		"camera_rotation": Vector3(-0.10, 2.645, 0.0),
 		"fov": 62.0,
+		# (2026-10-29) the helm's walls are dark walnut: at the scene's
+		# ambient the doors and partitions read as one black. A warmer,
+		# stronger fill for the VN only (the gauntlet keeps its dark).
+		"env": {"ambient_color": Color(0.40, 0.32, 0.26, 1), "ambient_energy": 1.5},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────
