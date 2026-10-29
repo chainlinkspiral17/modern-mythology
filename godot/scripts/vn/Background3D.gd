@@ -2308,6 +2308,22 @@ const CAMERA_PRESETS := {
 		"fov": 72.0,
 		"suppress_input": true,
 	},
+	# (2026-10-29) JUDGEMENT DAY, Faust's beat-up maroon sedan (vol 1 ch 6:
+	# "The street slides past the windshield, ordinary and bright.") on its own
+	# Houston street at blender (-80, -80): live oaks, power lines, strip shops,
+	# a painted wall, the overpass ahead. It played in Ben's pickup on a West
+	# Texas turnout. Camera at the centre console looking forward.
+	"vehicle_cab_judgement_day": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		"camera_origin": Vector3(-80.0, 1.12, 79.9),
+		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.40, 0.62, 0.92, 1), "sky_horizon": Color(0.84, 0.88, 0.92, 1),
+			"ground_horizon": Color(0.60, 0.58, 0.52, 1), "ground_bottom": Color(0.30, 0.28, 0.24, 1),
+			"ambient_color": Color(0.92, 0.90, 0.86, 1), "ambient_energy": 0.95, "fog_color": Color(0.86, 0.88, 0.90, 1)},
+		"suppress_input": true,
+	},
 	"vehicle_cab_corolla": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",

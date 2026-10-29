@@ -236,6 +236,25 @@ shadow_enabled = false
 ; Practicals: the dome light over the rear bench, the phone screen
 ; in the dash cradle, the radio display.
 
+[node name="Sun__vehicle_cab_judgement_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.25, 0.433, 0, 0.866, 0.5, -0.5, -0.433, 0.75, 0, 4, 0)
+light_color = Color(1, 0.90, 0.74, 1)
+light_energy = 0.9
+shadow_enabled = false
+
+[node name="Sky_Fill__vehicle_cab_judgement_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
+light_color = Color(0.74, 0.80, 0.92, 1)
+light_energy = 0.5
+shadow_enabled = false
+
+[node name="Cab_Fill__vehicle_cab_judgement_day" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.0, 1.55, 79.6)
+light_color = Color(1.0, 0.96, 0.90, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 3.2
+
 [node name="Dome_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66, 0.3)
 light_color = Color(1, 0.90, 0.70, 1)

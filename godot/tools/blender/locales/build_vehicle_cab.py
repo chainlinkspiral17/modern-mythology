@@ -516,6 +516,81 @@ def build_corolla_2026_10():
         make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
 
 
+JD_X, JD_Y, JD_DZ = -80.0, -80.0, -0.16       # (2026-10-29) Judgement Day, on its own Houston street, far from the turnout
+JD_RED = (0.40, 0.18, 0.16, 1.0)
+JD_RED_DK = (0.30, 0.13, 0.12, 1.0)
+
+
+def build_judgement_day_2026_10():
+    """JUDGEMENT DAY (2026-10-29, vol 1 ch 6): Faust's car — club_street's
+    "beat-up maroon sedan" with its primer patch — and the three of them in
+    it: "The boys sit in near silence for a moment."; "The street slides past
+    the windshield, ordinary and bright."; "Judgement Day speeds off." Vol 1
+    is 2010s Houston, weird. It played in Ben's green pickup on a West Texas
+    turnout. The Corolla's pattern (the cab run lower, in the car's
+    colours, a sedan body round it), parked at (-80, -80) on a bright Houston
+    street of its own: live oaks, power lines, low strip shops, a painted
+    wall, an overpass ahead. Draft 2: the bench-seat dash of an older car;
+    the shirt on the rearview as hero art; the street in motion."""
+    from _props.plan import shifted
+    ax, ay, dz = JD_X, JD_Y, JD_DZ
+    make_box("JD_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
+    make_box("JD_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    make_box("JD_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), JD_RED)
+    make_wedge("JD_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), JD_RED, high_end="-Y")
+    make_box("JD_Hood_Primer_Patch", (ax + 0.40, ay + 2.40, 0.965), (0.60, 0.50, 0.006), (0.56, 0.56, 0.54, 1.0))
+    make_box("JD_Cowl", (ax, ay + 1.575, 0.69), (1.86, 0.05, 0.74), JD_RED)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"JD_Fender_F_{nm}", (ax + sgn * 0.9125, ay + 2.27, 0.575), (0.025, 1.34, 0.50), JD_RED)
+        make_box(f"JD_Quarter_{nm}", (ax + sgn * 0.9125, ay - 2.05, 0.60), (0.025, 0.90, 0.56), JD_RED)
+        make_box(f"JD_Mirror_Arm_{nm}", (ax + sgn * 1.00, ay + 1.30, 1.12), (0.16, 0.04, 0.04), JD_RED_DK)
+        make_box(f"JD_Mirror_{nm}", (ax + sgn * 1.12, ay + 1.30, 1.12), (0.08, 0.14, 0.12), JD_RED)
+    make_box("JD_Fascia", (ax, ay + 2.965, 0.52), (1.84, 0.05, 0.40), JD_RED)
+    make_box("JD_Grille", (ax, ay + 2.995, 0.56), (1.00, 0.01, 0.20), (0.14, 0.14, 0.15, 1.0))
+    make_box("JD_Trunk_Block", (ax, ay - 2.05, 0.60), (1.80, 0.90, 0.56), JD_RED)
+    make_box("JD_Rear_Fascia", (ax, ay - 2.52, 0.50), (1.84, 0.04, 0.36), JD_RED)
+    for wi, (wx, wy) in enumerate(((-1.06, 2.20), (1.06, 2.20), (-1.06, -1.95), (1.06, -1.95))):
+        make_cyl(f"JD_Wheel_{wi}", (ax + wx, ay + wy, 0.32), 0.32, 0.22, RUBBER, axis="X", segments=14)
+    with shifted(globals(), ax, ay, prefix="JD_", dz=dz, extra=("make_blob", "make_wedge"),
+                 TRUCK_GREEN=JD_RED, TRUCK_GREEN_DK=JD_RED_DK, SEAT=(0.36, 0.30, 0.26, 1.0),
+                 SEAT_DK=(0.28, 0.24, 0.20, 1.0), HEADLINER=(0.66, 0.62, 0.56, 1.0)):
+        build_cab_shell()
+        build_dash()
+        build_seats()
+        make_box("Cat_Hair_Seat", (0.45, 0.20, 0.625), (0.34, 0.30, 0.004), (0.78, 0.74, 0.66, 1.0))   # the cat's
+        make_box("Rearview_Shirt_Knot", (0.0, 0.92, 1.42), (0.10, 0.04, 0.06), (0.86, 0.84, 0.80, 1.0))
+        make_box("Dash_Fast_Food_Bag", (-0.35, 1.05, 0.98), (0.20, 0.14, 0.10), (0.84, 0.70, 0.42, 1.0))
+    # the street: asphalt, the yellow line, sidewalks, live oaks, power poles, low shops, a painted wall, the overpass
+    make_box("JD_Street", (ax, ay + 40.0, 0.0), (14.0, 140.0, 0.04), (0.26, 0.26, 0.27, 1.0))
+    for k in range(20):
+        make_box(f"JD_Street_Dash_{k}", (ax - 1.9, ay - 20.0 + k * 6.0, 0.025), (0.12, 3.0, 0.01), (0.92, 0.80, 0.24, 1.0))
+    for s_ in (-1, 1):
+        make_box(f"JD_Sidewalk_{s_:+d}", (ax + s_ * 8.6, ay + 40.0, 0.06), (3.2, 140.0, 0.12), (0.72, 0.70, 0.66, 1.0))
+        for k in range(12):
+            oy = ay - 10.0 + k * 10.0
+            make_cyl(f"JD_Oak_{s_:+d}_{k}_Trunk", (ax + s_ * 9.4, oy, 1.6), 0.24, 3.2, (0.32, 0.26, 0.20, 1.0), segments=8)
+            make_blob(f"JD_Oak_{s_:+d}_{k}_Crown", (ax + s_ * 8.6, oy, 4.6), 3.2, (0.24, 0.36, 0.18, 1.0), noise=0.3, seed=k * 3 + (s_ > 0), squash=0.6)
+            if k % 2 == 0:
+                make_cyl(f"JD_Pole_{s_:+d}_{k}", (ax + s_ * 7.2, oy + 4.0, 4.5), 0.12, 9.0, (0.42, 0.34, 0.26, 1.0), segments=8)
+                make_box(f"JD_Pole_{s_:+d}_{k}_Arm", (ax + s_ * 7.2, oy + 4.0, 8.6), (1.6, 0.08, 0.08), (0.42, 0.34, 0.26, 1.0))
+        make_box(f"JD_Wire_{s_:+d}", (ax + s_ * 7.2, ay + 40.0, 8.3), (0.02, 140.0, 0.02), (0.10, 0.10, 0.10, 1.0))
+    shop_cols = ((0.90, 0.80, 0.56, 1.0), (0.70, 0.84, 0.86, 1.0), (0.92, 0.66, 0.50, 1.0), (0.84, 0.84, 0.80, 1.0))
+    for k in range(8):
+        for s_ in (-1, 1):
+            sy = ay - 6.0 + k * 14.0
+            make_box(f"JD_Shop_{s_:+d}_{k}", (ax + s_ * 16.0, sy, 2.4), (9.0, 12.0, 4.8), shop_cols[(k + (s_ > 0)) % 4])
+            make_box(f"JD_Shop_{s_:+d}_{k}_Sign", (ax + s_ * 11.45, sy, 4.0), (0.10, 8.0, 1.0),
+                     ((0.86, 0.20, 0.18, 1.0), (0.16, 0.36, 0.70, 1.0), (0.96, 0.80, 0.20, 1.0))[k % 3])
+            make_box(f"JD_Shop_{s_:+d}_{k}_Glass", (ax + s_ * 11.47, sy, 1.4), (0.04, 8.0, 2.2), (0.30, 0.36, 0.40, 1.0))
+    # the painted wall: Houston's murals, weird and bright
+    for k, col in enumerate(((0.96, 0.40, 0.30, 1.0), (0.30, 0.70, 0.86, 1.0), (0.96, 0.86, 0.30, 1.0), (0.60, 0.36, 0.80, 1.0))):
+        make_box(f"JD_Mural_Band_{k}", (ax + 11.44, ay + 22.0 + k * 2.2, 2.4), (0.02, 2.2, 4.4), col)
+    make_box("JD_Overpass_Deck", (ax, ay + 90.0, 8.0), (60.0, 12.0, 1.2), (0.70, 0.68, 0.64, 1.0))
+    for s_ in (-1, 1):
+        make_box(f"JD_Overpass_Pier_{s_:+d}", (ax + s_ * 10.0, ay + 90.0, 3.7), (1.6, 3.0, 7.4), (0.66, 0.64, 0.60, 1.0))
+    make_box("JD_Ground", (ax, ay + 40.0, -0.06), (120.0, 160.0, 0.04), (0.42, 0.48, 0.32, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -529,6 +604,7 @@ def main():
     build_draft4_2026_09()
     build_altima_2026_10()
     build_corolla_2026_10()
+    build_judgement_day_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/vehicle_cab.glb"))
     print(f"\n[build_vehicle_cab] exporting to {out}")

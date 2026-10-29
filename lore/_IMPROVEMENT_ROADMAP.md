@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 217: INSIDE JUDGEMENT DAY (vol 1 ch 6, draft 1).**
+- **Before:** "The street slides past the windshield, ordinary and bright." played in Ben's green pickup on a West Texas gravel turnout.
+- **Now:** `build_vehicle_cab.build_judgement_day_2026_10()` builds Faust's maroon sedan, the car parked at club_street's curb, using the Corolla pattern (the cab shifted lower, in the car's colours, a sedan body round it).
+  - It has the hood's primer patch, the cat's hair on the passenger seat, the rearview.
+  - It is parked at blender (-80, -80) on its own bright 2010s Houston street: live oaks, power poles and lines, strip shops with signs, a painted wall, the overpass ahead.
+- Preset `vehicle_cab_judgement_day` with its own sun, sky fill, cab fill and a bright day env. The vol1 stem maps exact.
+- Gates at zero; perf baseline updated.
+- **Draft 2:** an older car's bench-seat dash (not the pickup's); the shirt on the rearview; the street's motion.
+
 **2026-10-29 · pass 216: THE ALLEY BEFORE THE FACE (vol 7 ch14).**
 - The generated alley face was laid in every `salty_tome_alley` chapter, including the morning Lena paints it.
 - **New preset `salty_tome_alley_patch`:** the same view with the face's stand-in stripped and its picture skipped (`not_presets`). The substrate patch stays.

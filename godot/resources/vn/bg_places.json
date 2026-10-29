@@ -146,10 +146,12 @@
       "built": "2026-10-18 draft 1"
     },
     "vol1_jd_driving_day": {
-      "fit": "reuse",
-      "to": "3d:vehicle_cab",
-      "note": "in the car, day",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:vehicle_cab_judgement_day",
+      "note": "inside Judgement Day, Faust's maroon sedan, on a bright Houston street",
+      "scenes": 1,
+      "build": "vehicle_cab",
+      "built": "2026-10-29 draft 1"
     },
     "vol1_jd_driving_night": {
       "fit": "exact",

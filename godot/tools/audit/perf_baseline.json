@@ -339,6 +339,11 @@
   "prims": 24688,
   "objects": 244
  },
+ "vehicle_cab": {
+  "draw": 408,
+  "prims": 25000,
+  "objects": 578
+ },
  "vol3_rooms": {
   "draw": 200,
   "prims": 135652,
