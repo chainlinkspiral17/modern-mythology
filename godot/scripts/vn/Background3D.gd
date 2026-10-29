@@ -4974,8 +4974,12 @@ const CAMERA_PRESETS := {
 		# At the trailhead posts looking up the path as it bends NE
 		# through the pines toward the overlook; crossbeam sign
 		# overhead, dirt path leading the eye.
-		"camera_origin": Vector3(5.8, 1.70, -7.8),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(-17.0), 0.0),
+		# (2026-10-29) back to the lot's edge: at the posts a post filled the
+		# left of frame and the box was cut off. Now the posts, the crossbeam
+		# sign, THE BOX ("Lid hinged from the back. A pencil on a string.")
+		# and the path into the firs — where the dog sits and stares.
+		"camera_origin": Vector3(3.6, 1.60, -5.4),
+		"camera_rotation": Vector3(-0.12, -0.507, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
