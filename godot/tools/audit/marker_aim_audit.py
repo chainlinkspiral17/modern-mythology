@@ -228,6 +228,28 @@ def subject_target(hits, pos):
     return nearest[0], tuple(sum(p[i] for p in near) / len(near) for i in range(3))
 
 
+def best_subject(hits, pos, fwd):
+    """The audit's SUBJECT: subject_target() (the part nearest the lens,
+    widened to its cluster) unless a different same-cue cluster within
+    NEAR_MAX sits closer to the axis (two windows in a room: the one the
+    camera faces is the subject). Returns (name, centroid, angle, dist).
+    Shared with marker_reaim --tight (2026-10-29) — re-aiming at the part
+    nearest the lens turned graustark's wall insert to the next wall."""
+    best_name, cen = subject_target(hits, pos)
+    ang, dist = angle_to(pos, fwd, cen)
+    for h in hits:
+        a1, d1 = angle_to(pos, fwd, h[1])
+        if d1 > NEAR_MAX or a1 >= ang:
+            continue
+        r = cluster_radius(d1)
+        near = [g[1] for g in hits if sum((a - b) ** 2 for a, b in zip(g[1], h[1])) ** 0.5 < r]
+        c2 = tuple(sum(p[i] for p in near) / len(near) for i in range(3))
+        a2, d2 = angle_to(pos, fwd, c2)
+        if a2 < ang:
+            ang, dist, best_name, cen = a2, d2, h[0], c2
+    return best_name, cen, ang, dist
+
+
 def angle_to(pos, fwd, target):
     dx = target[0] - pos[0]
     dy = target[1] - pos[1]
@@ -284,18 +306,7 @@ def main():
                     # different same-cue cluster within NEAR_MAX sits
                     # closer to the axis (two windows in a room: the one
                     # the camera faces is the subject).
-                    best_name, cen = subject_target(hits, pos)
-                    ang, dist = angle_to(pos, fwd, cen)
-                    for h in hits:
-                        a1, d1 = angle_to(pos, fwd, h[1])
-                        if d1 > NEAR_MAX or a1 >= ang:
-                            continue
-                        r = cluster_radius(d1)
-                        near = [g[1] for g in hits if sum((a - b) ** 2 for a, b in zip(g[1], h[1])) ** 0.5 < r]
-                        c2 = tuple(sum(p[i] for p in near) / len(near) for i in range(3))
-                        a2, d2 = angle_to(pos, fwd, c2)
-                        if a2 < ang:
-                            ang, dist, best_name = a2, d2, h[0]
+                    best_name, _cen, ang, dist = best_subject(hits, pos, fwd)
                     best = (best_name, None)
                     if ang > CONE_DEG or dist > NEAR_MAX:
                         misaims.append((locale, name, best[0], ang, dist))

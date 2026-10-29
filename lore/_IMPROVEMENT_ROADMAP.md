@@ -3850,7 +3850,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - **Tool lesson:** `marker_reaim --tight` picks the part nearest the lens, which differs from the audit's best-on-axis cluster. In graustark it turned the wall marker to the next wall, the steamship to a clump of moss, the sinkhole to a fence post. Reverted. For big sets, hand-aim and check the audit, not `--tight`.
 - **Gates:** marker_aim (1760) and shot_marker at 0.
 - **Next:**
-  - make marker_reaim use the audit's subject choice;
+  - DONE in the follow-up: `best_subject()` in marker_aim_audit is now shared, and `marker_reaim --tight` aims at the audit's subject (on graustark it now re-aims nothing; the audit is unchanged at 0);
   - the small sets' inserts (county line, jetty, St Jude's, the shotgun house);
   - then vol 6.
 

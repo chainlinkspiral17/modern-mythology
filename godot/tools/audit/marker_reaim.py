@@ -83,7 +83,12 @@ def main():
             if not hits:
                 continue
             fwd = M.yxz_forward(*rot)
-            anchor_name, tgt = M.subject_target(hits, pos)
+            if tight:
+                # the audit's subject (the cluster nearest the axis), so a
+                # nearly-aimed insert is centred on what it already frames
+                anchor_name, tgt, _a, _d = M.best_subject(hits, pos, fwd)
+            else:
+                anchor_name, tgt = M.subject_target(hits, pos)
             nearest = (anchor_name, tgt)
             ang, dist = M.angle_to(pos, fwd, tgt)
             limit = TIGHT_DEG if (tight and m.group(1) == "insert") else M.CONE_DEG
