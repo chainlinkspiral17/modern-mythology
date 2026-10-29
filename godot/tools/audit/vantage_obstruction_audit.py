@@ -55,7 +55,7 @@ COLS, ROWS = 9, 3
 # — the melds' 4 a.m. copier, close on its lid and its pink scan light.)
 # korean_bbq_table (2026-10-18) is seated at the booth over the grill: the
 # table, the dishes and the hood are the picture.
-DELIBERATE = {"amanda_fort_close", "copy_shop_copier", "korean_bbq_table", "vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "vehicle_cab_night", "vehicle_cab_rear_night", "vehicle_cab_altima_night", "miriam_subaru_night", "vehicle_cab_corolla", "vehicle_cab_corolla_night", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
+DELIBERATE = {"amanda_fort_close", "copy_shop_copier", "korean_bbq_table", "vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "vehicle_cab_night", "vehicle_cab_rear_night", "vehicle_cab_altima_night", "miriam_subaru_night", "vehicle_cab_corolla", "vehicle_cab_corolla_night", "vehicle_cab_judgement_day", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 # EMPTY (2026-09-07 · the diner's first shot was a yellow field with a
