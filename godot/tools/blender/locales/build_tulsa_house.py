@@ -33,6 +33,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
                              join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_curtains
 from _props.furniture import make_chair, make_table
+from _props.figures import make_standing_figure
 
 H, T = 3.0, 0.20
 PANEL = (0.46, 0.32, 0.22, 1.0); PANEL_SEAM = (0.36, 0.24, 0.16, 1.0)
@@ -168,6 +169,21 @@ def build_show():
     for k in range(3):
         make_chamfer_box(f"Minolta_Camera_{k}", (bx, 6.0 + k * 0.18, 1.18), (0.14, 0.09, 0.09), (0.12, 0.12, 0.12, 1.0), chamfer=0.015)
     make_blob("Burlap_Lens_Bag", (bx + 0.05, 2.9, 1.24), 0.12, (0.62, 0.52, 0.36, 1.0), noise=0.25, seed=5, squash=0.8)
+    # (2026-10-29) the guests. "Trickled in coworkers and a strange collective
+    # of friends. The men mostly oil… The women medical professionals";
+    # "Marty's young children were allowed to mingle and run around until
+    # exhausted". The room had the sofa and chairs and nobody in it; these
+    # are stand-ins for the crowd (scale and staging, never faces), kept off
+    # the camera's line to the screen. Marty and Kathy stay the VN's.
+    for nm, x, y, hd, h, coat, dress, arms in (
+            ("Guest_Bar_0", -3.10, 3.90, math.pi * 0.55, 1.80, (0.22, 0.24, 0.30, 1.0), None, "front"),
+            ("Guest_Bar_1", -3.00, 5.30, math.pi * 0.45, 1.66, (0.50, 0.18, 0.22, 1.0), (0.50, 0.18, 0.22, 1.0), "front"),
+            ("Guest_Mid_0", -1.70, 3.40, math.pi * 0.10, 1.78, (0.36, 0.30, 0.24, 1.0), None, "folded"),
+            ("Guest_Mid_1", -2.20, 6.10, math.pi * 0.20, 1.64, (0.20, 0.36, 0.44, 1.0), (0.20, 0.36, 0.44, 1.0), "down"),
+            ("Guest_Right_0", 2.40, 6.00, math.pi * -0.15, 1.82, (0.28, 0.28, 0.30, 1.0), None, "front"),
+            ("Guest_Right_1", 3.60, 5.40, math.pi * -0.30, 1.70, (0.62, 0.54, 0.40, 1.0), (0.62, 0.54, 0.40, 1.0), "folded")):
+        make_standing_figure(nm, x, y, heading=hd, h=h, coat=coat, dress=dress, arms=arms)
+    make_standing_figure("Guest_Child", -0.60, 5.20, heading=math.pi * 0.9, h=1.12, coat=(0.80, 0.56, 0.24, 1.0), arms="down")
     # the lamp left on low at the room's far corner
     make_cyl("Floor_Lamp_Pole", (5.4, 8.4, 0.80), 0.02, 1.60, BRASS, segments=8)
     make_cyl("Floor_Lamp_Base", (5.4, 8.4, 0.015), 0.16, 0.03, BRASS, segments=12)

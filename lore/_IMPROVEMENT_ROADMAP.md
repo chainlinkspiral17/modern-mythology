@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 234: VOLS 1–4 backgrounds, draft 2 (the second tier and the wrong places).**
+- **onei_office (vol 1, 70):** moved in from the door corner to mid-room, facing the three desks (goggles, monitors, pinboards of game sketches). Ambient 0.60 → 0.42; the walls had burnt white.
+- **vol4_glass_tower:** "Dickens Dean sat at his tangle of inverted eyeballs, monitors… his glass tower on the Pacific Ocean". It is now dean_monitor_room; it was cedar_tower_exterior, another building.
+- **Two vol 1 chapters on black:** the editing-suite prelude → suite_wide; the pharmacy-mirror chapter opens in pharmacy_office ("Faust exits the office, emerges into the drugstore proper").
+- **beach_bonfire (vol 2 ch10 + ch12x, 52):** the night beach had no fire.
+  - The `Bonfire_*` parts: the driftwood fire, the seat logs, the bottles ("Frank tossed his empty bottle in the fire"), the taffy, the patchwork quilt, the cooler, and the fires "run on down the beach… like porch lights".
+  - A new preset, beach_bonfire. The ghost scene's two views strip `Bonfire_`.
+- **lake_dock_sunrise (vol 3 ch11c):** the narrator walks out onto the dock and the whole soccer-club talk plays there; it had stayed on the kitchen-table view. The dawn lights carry the new tag.
+- **tulsa_slideshow (vol 3, 58):** the party had nobody in it. Six adult guests and one of Marty's children stand in silhouette against the lit screen wall ("Trickled in coworkers and a strange collective of friends"; "Marty's young children were allowed to mingle and run around").
+- **Rendered, read:** the classroom, the Missing Link, Ron's room by day, the ballfield, the club street, the Dabney game room, the cliffside circus, the Apple Peddler booth (sparse).
+- **Gates:** preset_vantage, wrong_room, shot_marker, tscn syntax; perf grunion_beach 84 (new baseline).
+- **Next:**
+  - render the vols 1–4 sets under 30 lines;
+  - the Apple Peddler booth's sparseness;
+  - vol4_fast_food_riot (a fast-food place with an indoor playground; it is played on a taqueria).
+
 **2026-10-29 · pass 233: VOLS 1–4 backgrounds (user: "focus on improving backgrounds in vol 1-4").**
 - **Survey:** every vols 1–4 background is now a 3D set (bg_places: exact 3725 lines, reuse 1069, deliberate 2D 889). The twelve heaviest sets were rendered on rebuilt GLBs (five were stale locally).
   - Read: writers_desk (≈620 lines across four vol 4 stems), faust_apartment_day and faust_bedroom, club_sharp, sleep_lab_entry, pharmacy_floor, hospital_room, the bookstore lounge.
