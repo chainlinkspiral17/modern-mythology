@@ -528,9 +528,9 @@
       "scenes": 1
     },
     "vol2_interview_room": {
-      "fit": "reuse",
-      "to": "3d:county_line_station",
-      "note": "a police interview room",
+      "fit": "exact",
+      "to": "3d:small_wood_interview_room",
+      "note": "the interview room at the Small Wood police station (2026-10-29; was the County Line gas station)",
       "scenes": 1
     },
     "vol2_lighthouse_night": {

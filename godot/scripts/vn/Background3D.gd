@@ -1755,6 +1755,19 @@ const CAMERA_PRESETS := {
 	# one-bedroom in a gated complex an hour before sunrise, and Chess's
 	# building — the old elevator and the hallway where Earl passes with his
 	# garden trough. Both played on vol 7's 2052 Finn apartment.
+	# ── VOL 2 — ch9 "In town": the interview room (2026-10-29) ─────────
+	# It played on the County Line gas station. "My name is James, he said to
+	# me, when we were sitting and everything was ready." From the SE corner
+	# by the door, NW across the steel table to Julie's chair, the mirror and
+	# the officer standing by it; the coffee cart at frame right.
+	"small_wood_interview_room": {
+		"scene": "res://scenes/locales/small_wood_police.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_police.glb",
+		"camera_origin": Vector3(4.30, 1.62, -0.35),
+		"camera_rotation": Vector3(-0.207, 0.8935, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"vol4_apartment_dawn": {
 		"scene": "res://scenes/locales/vol4_apartments.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_apartments.glb",
