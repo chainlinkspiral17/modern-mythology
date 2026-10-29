@@ -1825,9 +1825,11 @@
       "scenes": 1
     },
     "vol4_glass_tower": {
-      "fit": "reuse",
-      "to": "3d:cedar_tower_exterior",
-      "scenes": 2
+      "fit": "exact",
+      "to": "3d:dean_monitor_room",
+      "scenes": 2,
+      "build": "dean_offices",
+      "note": "Dean's glass tower on the Pacific — \"Dickens Dean sat at his tangle of inverted eyeballs, monitors\" (vii. daddy): the monitor room in the glass house (2026-10-29; was cedar_tower_exterior, another building)"
     },
     "vol4_graffiti_alley": {
       "fit": "2d",
