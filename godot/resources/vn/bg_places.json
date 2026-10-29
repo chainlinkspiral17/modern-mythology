@@ -1561,8 +1561,9 @@
     },
     "vol4_alley_dumpster": {
       "fit": "reuse",
-      "to": "3d:salty_tome_alley",
-      "scenes": 1
+      "to": "3d:blue_heron_1997_sea_wall",
+      "scenes": 1,
+      "note": "map of the city: \"I wake in a dumpster\" — a city alley; the Salty Tome's alley with its 2050s stripped (no Nebula, no face, no crow), the dumpster in it (2026-10-29; was the 2052 mural alley)"
     },
     "vol4_ambulance_road": {
       "fit": "reuse",
