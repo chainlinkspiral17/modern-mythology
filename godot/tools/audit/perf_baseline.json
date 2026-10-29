@@ -141,6 +141,11 @@
  "graustark": {
   "draw": 1254
  },
+ "grunion_beach": {
+  "draw": 84,
+  "prims": 10548,
+  "objects": 254
+ },
  "henderson_kitchen": {
   "draw": 106
  },

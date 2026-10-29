@@ -205,6 +205,28 @@ light_energy = 2.4
 shadow_enabled = false
 omni_range = 70.0
 
+; (2026-10-29) THE BONFIRE (vol 2 ch10, ch12x): lights for beach_bonfire only
+[node name="Bonfire_Light__beach_bonfire" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 0.8, -5.0)
+light_color = Color(1.0, 0.58, 0.26, 1)
+light_energy = 3.2
+omni_range = 9.0
+shadow_enabled = false
+
+[node name="Bonfire_Far_W_Light__beach_bonfire" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0, 0.6, -6.4)
+light_color = Color(1.0, 0.58, 0.26, 1)
+light_energy = 1.6
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Bonfire_Far_W2_Light__beach_bonfire" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0, 0.6, -7.4)
+light_color = Color(1.0, 0.58, 0.26, 1)
+light_energy = 1.4
+omni_range = 5.0
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

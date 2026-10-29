@@ -5071,6 +5071,22 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-0.3, 1.6, -1.6),
 		"camera_rotation": Vector3(-0.10, deg_to_rad(16.0), 0.0),
 		"fov": 60.0,
+		# (2026-10-29) the ghost scene has no fire: the bonfire is beach_bonfire's
+		"strip": ["Bonfire_"],
+		"suppress_input": true,
+	},
+	# ── VOL 2 — the bonfire (ch10 "The bonfire", ch12x beach blanket) ──
+	# (2026-10-29) "Frank and I built a bonfire on the beach"; "the fires
+	# run on down the beach as far as anybody can see, one and then
+	# another, like porch lights along a county road". From behind the fire
+	# on the dune side, NW over it to the water, the line of fires going away
+	# west along the dry sand.
+	"beach_bonfire": {
+		"scene": "res://scenes/locales/grunion_beach.tscn",
+		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
+		"camera_origin": Vector3(1.2, 1.4, -2.0),
+		"camera_rotation": Vector3(-0.26, 0.633, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"grunion_beach": {
@@ -5083,6 +5099,8 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.0, 0.9, -8.6),
 		"camera_rotation": Vector3(-0.14, deg_to_rad(78.0), 0.0),
 		"fov": 60.0,
+		# (2026-10-29) the ghost scene has no fire: the bonfire is beach_bonfire's
+		"strip": ["Bonfire_"],
 		"suppress_input": true,
 	},
 	"bar_exterior_night": {

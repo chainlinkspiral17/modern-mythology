@@ -291,9 +291,11 @@
       "scenes": 1
     },
     "vol2_beach_bonfire": {
-      "fit": "reuse",
-      "to": "3d:beach_night",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:beach_bonfire",
+      "scenes": 1,
+      "build": "grunion_beach",
+      "note": "the bonfire on the night beach, the fires running down the shore (2026-10-29; the beach had no fire)"
     },
     "vol2_beach_night": {
       "fit": "exact",

@@ -20,10 +20,10 @@ Vantages wired in Background3D.CAMERA_PRESETS:
                   water (the ghost scene).
   grunion_beach — low at the tide edge, the silver run at your feet.
 """
-import os, sys
+import math, os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, export_glb
 
 COL_SAND = (0.30, 0.28, 0.24, 1.0)       # night sand
 COL_SAND_WET = (0.20, 0.20, 0.20, 1.0)   # gleaming band, darker
@@ -94,6 +94,58 @@ def build_grunion():
                  (0.16, 0.045, 0.02), COL_GRUNION)
 
 
+def build_bonfires_2026_10():
+    """(2026-10-29) THE BONFIRE — vol 2, ch10 and ch12x, played on this beach
+    with no fire in it. ch10: "Frank and I built a bonfire on the beach and
+    spent the night out there, drunk beyond good measure… Frank tossed his
+    empty bottle in the fire and watched it smoke up from the inside"; they
+    had bought "saltwater taffy and beer". ch12x: "a white-capped moonlit
+    beach, dotted with campfires and larger bonfires… From the top of the
+    dune the fires run on down the beach as far as anybody can see, one and
+    then another, like porch lights along a county road"; "Two women are
+    sitting on a patchwork quilt by the fire."
+    Every part is Bonfire_*: the ghost scene's two views (beach_night,
+    grunion_beach) strip them; beach_bonfire shows them."""
+    fx, fy = -1.0, 5.0
+    ember = (1.0, 0.46, 0.14, 1.0)
+    flame = (1.0, 0.78, 0.30, 1.0)
+    char = (0.12, 0.10, 0.09, 1.0)
+    make_cyl("Bonfire_Ring", (fx, fy, 0.05), 0.75, 0.06, char, segments=16)
+    for k in range(7):                                  # the stacked driftwood, leaning in
+        a = k * (2 * math.pi / 7)
+        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.28 * math.cos(a), fy + 0.28 * math.sin(a), 0.32),
+                     (0.10, 0.10, 0.78), COL_DRIFT, yaw=a, pitch=0.55)
+    make_blob("Bonfire_Flame_Core", (fx, fy, 0.42), 0.30, ember, noise=0.25, seed=4, squash=1.6)
+    make_blob("Bonfire_Flame_Top", (fx, fy, 0.82), 0.18, flame, noise=0.3, seed=9, squash=1.9)
+    make_blob("Bonfire_Embers", (fx, fy, 0.10), 0.42, (0.70, 0.22, 0.08, 1.0), noise=0.18, seed=2, squash=0.25)
+    # the logs they sat on, the bottles, the taffy, the quilt
+    make_rot_box("Bonfire_Seat_Log_0", (fx - 1.6, fy - 0.6, 0.18), (2.2, 0.34, 0.34), COL_DRIFT, yaw=0.4)
+    make_rot_box("Bonfire_Seat_Log_1", (fx + 1.5, fy - 0.9, 0.16), (1.8, 0.30, 0.30), COL_DRIFT, yaw=-0.5)
+    bottle = (0.30, 0.20, 0.08, 1.0)
+    for k, (bx, by, lying) in enumerate(((fx - 1.2, fy - 1.1, False), (fx - 1.0, fy - 1.25, True), (fx + 1.1, fy - 1.4, False),
+                                         (fx + 0.9, fy - 1.6, True), (fx + 0.3, fy + 0.2, True))):
+        if lying:
+            make_cyl(f"Bonfire_Bottle_{k}", (bx, by, 0.065), 0.032, 0.22, bottle, axis='X', segments=8)
+        else:
+            make_cyl(f"Bonfire_Bottle_{k}", (bx, by, 0.15), 0.032, 0.22, bottle, segments=8)
+            make_cyl(f"Bonfire_Bottle_{k}_Neck", (bx, by, 0.30), 0.012, 0.08, bottle, segments=6)
+    make_box("Bonfire_Taffy_Box", (fx - 1.7, fy - 1.0, 0.07), (0.22, 0.14, 0.08), (0.92, 0.70, 0.76, 1.0))
+    make_box("Bonfire_Cooler", (fx - 2.4, fy + 0.6, 0.22), (0.56, 0.36, 0.40), (0.24, 0.42, 0.66, 1.0))
+    make_box("Bonfire_Cooler_Lid", (fx - 2.4, fy + 0.6, 0.43), (0.58, 0.38, 0.04), (0.92, 0.92, 0.88, 1.0))
+    quilt = ((0.70, 0.30, 0.28, 1.0), (0.86, 0.74, 0.40, 1.0), (0.30, 0.44, 0.60, 1.0), (0.40, 0.56, 0.34, 1.0))
+    for i in range(4):
+        for j in range(3):
+            make_box(f"Bonfire_Quilt_{i}{j}", (fx - 0.9 + i * 0.45, fy + 1.6 + j * 0.45, 0.035), (0.44, 0.44, 0.01), quilt[(i + j) % 4])
+    # down the beach, both ways: campfires and bonfires along the dry sand
+    for side in (-1, 1):
+        for k, d in enumerate((14.0, 26.0, 41.0, 60.0, 84.0, 114.0, 150.0, 195.0)):
+            x = fx + side * d
+            y = 6.4 + ((k * 7 + (side > 0)) % 3) * 0.5
+            s = 0.6 if k % 3 else 1.0
+            make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}", (x, y, 0.30 * s), 0.34 * s, ember, noise=0.3, seed=k, squash=1.5)
+            make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}_Top", (x, y, 0.62 * s), 0.18 * s, flame, noise=0.3, seed=k + 3, squash=1.8)
+
+
 def main():
     clear_scene()
     build_sand()
@@ -106,6 +158,7 @@ def main():
     print(f"\n[build_grunion_beach] exporting to {out}")
     build_horizon_2026_08()
     build_shore_2026_09()
+    build_bonfires_2026_10()
     export_glb(out)
 
 
