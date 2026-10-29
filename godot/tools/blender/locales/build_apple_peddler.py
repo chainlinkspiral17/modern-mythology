@@ -43,7 +43,7 @@ TILE_A = (0.86, 0.84, 0.78, 1.0); TILE_B = (0.30, 0.30, 0.32, 1.0)
 VINYL_RED = (0.62, 0.16, 0.14, 1.0); CHROME = (0.80, 0.80, 0.80, 1.0)
 FORMICA = (0.86, 0.82, 0.70, 1.0)
 STEEL = (0.66, 0.68, 0.70, 1.0)
-NIGHT_GLASS = (0.06, 0.07, 0.10, 1.0)
+NIGHT_GLASS = (0.06, 0.07, 0.10, 0.45)   # (2026-10-29) was opaque: the wet drag never showed
 KX0, KD = 2.0, 3.0          # the kitchen: x 2..7 behind the counter, y 6..9
 
 
@@ -181,6 +181,18 @@ def build_outside():
     for k in range(3):
         make_box(f"Across_Bldg_{k}", (-14.0 + k * 13.0, -18.0, 3.5), (11.0, 6.0, 7.0), ((0.56, 0.50, 0.44, 1.0), (0.46, 0.44, 0.42, 1.0))[k % 2])
     make_car("Drag_Car_0", -6.0, -4.9, 4.4, (0.30, 0.30, 0.34, 1.0), along="X")
+    # (2026-10-29) the drag's sodium lamps, and the lit windows of the
+    # buildings across it — what shows through the rain on the glass
+    for k, sx in enumerate((-7.0, 5.0)):
+        make_cyl(f"Drag_Lamp_{k}_Pole", (sx, -3.4, 2.6), 0.07, 5.2, (0.30, 0.30, 0.32, 1.0), segments=8)
+        make_box(f"Drag_Lamp_{k}_Arm", (sx, -4.0, 5.1), (0.08, 1.2, 0.08), (0.30, 0.30, 0.32, 1.0))
+        make_box(f"Drag_Lamp_{k}_Head", (sx, -4.6, 5.0), (0.30, 0.50, 0.14), (1.0, 0.70, 0.36, 1.0))
+    for k in range(3):
+        for j in range(2):
+            for w in range(3):
+                lit = (k + j + w) % 3 == 0
+                make_box(f"Across_Window_{k}_{j}_{w}", (-14.0 + k * 13.0 - 3.0 + w * 3.0, -14.98, 1.6 + j * 2.6), (1.6, 0.02, 1.3),
+                         (1.0, 0.80, 0.50, 1.0) if lit else (0.12, 0.13, 0.16, 1.0))
     # the sign over the front glass, on the wall's outside face
     make_box("AP_Sign_Board", (-1.5, -0.16, 2.66), (6.0, 0.12, 0.56), (0.90, 0.86, 0.70, 1.0))
     make_box("AP_Sign_Apple", (-4.2, -0.24, 2.66), (0.46, 0.04, 0.46), (0.80, 0.16, 0.14, 1.0))

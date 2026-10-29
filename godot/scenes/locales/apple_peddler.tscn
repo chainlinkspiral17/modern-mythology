@@ -214,6 +214,21 @@ light_energy = 1.0
 shadow_enabled = false
 omni_range = 8.0
 
+; (2026-10-29) the drag's two sodium lamps (Drag_Lamp_* fixtures)
+[node name="Drag_Lamp_0_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 4.8, 4.6)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 2.4
+omni_range = 9.0
+shadow_enabled = false
+
+[node name="Drag_Lamp_1_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 4.8, 4.6)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 2.4
+omni_range = 9.0
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
