@@ -1215,6 +1215,11 @@ const STYLE_PACKS: Array = [
 	# directional blew the cream walls and the island to white.
 	{"name": "roberts_kitchen_clean", "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
+	# (2026-10-29) Lena's bed alcove, vol 7 ch1 — "the window above the bed
+	# gave her the gray-green of cedars": dawn_diner's orange ×3 washed it;
+	# the cool, low blue_hour reads as the grey first light.
+	{"name": "cabin_bed_clean", "mood": "raw", "lighting": "blue_hour",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── DARKROOM (2026-07-15) — Mr. Henderson's converted-closet
 	#    darkroom. The red-and-black look is carried ENTIRELY by
 	#    darkroom.tscn's environment + red safelight Omni; the mood is

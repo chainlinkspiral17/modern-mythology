@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 224: the ×3 dawn_diner sets checked (draft 3 of pass 222's lighting finding).**
+- **Roberts' kitchen:** blown to white. It now has its own pack, `roberts_kitchen_clean` (scene_default), and the cream walls, island, uppers and fridge model again.
+- **Lena's bed alcove (vol 7 ch1):** "the window above the bed gave her the gray-green of cedars." It read orange under dawn_diner and night-dark under scene_default. It is now `cabin_bed_clean` on `blue_hour`, a cool grey first light.
+- **Left alone:**
+  - cabin_interior reads well (warm, the loft, table and stove modelled).
+  - accretion_basement is flat grey but legible.
+  - cosmic_comics_back_office has no VN preset.
+- **Riverboat helm:** a stronger VN ambient (1.5) barely shows on walnut; the door corner still needs the sconce brighter.
+- **Next:**
+  - the helm sconce;
+  - the cabin bed's window view (cedars);
+  - the accretion basement's flat light.
+
 **2026-10-29 · pass 223: the riverboat helm, draft 2.**
 - **Checked locally:** the bungalow's wash is gone (the lamp pools model the walls). The papers insert reads, and the phone insert is on its aim line.
 - **Door insert:** it was a dark wall. A brass sconce now hangs between the office door and the side door, with its practical, `Practical_Helm_DoorSconce`.

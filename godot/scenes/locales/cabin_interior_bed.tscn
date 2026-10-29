@@ -222,7 +222,7 @@ rotation = Vector3(-0.4252, -0.8622, 0.0)
 layer = 50
 script = ExtResource("5_mood")
 mood_strata = Array[String](["raw", "noir", "ink_blue", "sodium_streetlamp", "candlelight", "memory_warm"])
-default_style_pack = "kitchen_clean"
+default_style_pack = "cabin_bed_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
