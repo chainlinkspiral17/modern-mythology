@@ -716,18 +716,18 @@
       "voice": "assets/audio/voice/vol5_ch18_moon/130.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:miriam_subaru"
+    },
+    {
       "t": "narrate",
-      "text": "[shot:insert seat]Miriam's car was a 2009 Subaru wagon, dark green, immaculate. The back seat had a folded blanket and a thermos of coffee. The crow, as they reached the car, took flight from Miriam's shoulder and settled on the roof.",
+      "text": "[shot:insert blanket]Miriam's car was a 2009 Subaru wagon, dark green, immaculate. The back seat had a folded blanket and a thermos of coffee. The crow, as they reached the car, took flight from Miriam's shoulder and settled on the roof.",
       "voice": "assets/audio/voice/vol5_ch18_moon/131.ogg"
     },
     {
       "t": "narrate",
       "text": "It did not ride inside. It rode above.",
       "voice": "assets/audio/voice/vol5_ch18_moon/132.ogg"
-    },
-    {
-      "t": "bg",
-      "src": "3d:miriam_subaru"
     },
     {
       "t": "narrate",
