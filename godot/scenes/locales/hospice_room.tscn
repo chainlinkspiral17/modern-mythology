@@ -197,6 +197,17 @@ light_energy = 1.1
 omni_range = 2.6
 shadow_enabled = false
 
+; (2026-10-29) the night: "The room was lit only by the small under-cabinet
+; light above the sink" (ch13) — the night preset's ambient drops to 0.18
+; and this lifts the one source so its pool models the sage wall, the
+; sill and the rose.
+[node name="UnderCab_Night__hospice_room_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48, 1.30, -4.45)
+light_color = Color(0.98, 0.82, 0.56, 1)
+light_energy = 1.2
+omni_range = 4.2
+shadow_enabled = false
+
 [node name="WindowGlowSoft__hospice_room" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.6, -5.3)
 light_color = Color(0.96, 0.88, 0.74, 1)

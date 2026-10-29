@@ -754,11 +754,11 @@ const CAMERA_PRESETS := {
 		# in the near foreground, the bed with the window's gentle glow
 		# behind it — the vantage of the one who stays.
 		"camera_origin": Vector3(1.8, 1.60, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(36.2), 0.0),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(18.0), 0.0),
 		"fov": 60.0,
 		"env": {"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.14, 0.14, 0.20, 1),
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
-			"ambient_color": Color(0.32, 0.32, 0.40, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+			"ambient_color": Color(0.30, 0.32, 0.38, 1), "ambient_energy": 0.18, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	"county_line_station": {
