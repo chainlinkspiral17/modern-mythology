@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 235: VOLS 1–4 backgrounds, draft 3 (the 30–60-line tier).**
+- **Rendered, 24 sets.**
+  - Read: vehicle_cab, school_newspaper, writers_desk_room, dabney_courtyard, small_wood_road_night, small_wood_high_art, ranch_bedroom_night, park_chess, meadowlark_circle_night, andy_house_bedroom_lamp, plane_night, nick_print_shop, grandmother_kitchen_morning (strong), foxhole_stage, gas_station_2003_night, writers_desk_board.
+  - Dark by design: foxhole_bar, jd_river, caltech_bare_room.
+  - Right as built: four_screens_show ("an island of leather executive swivel chairs" under "cinema on four screens").
+- **apple_peddler_booth (44):**
+  - From the door end down the room: booths under the glass, the counter and stools, the register, the menu board, Bernard's booth at the end. From the corner it saw two booths and a wall.
+  - The front glass was opaque. It is now 0.45 alpha, with two sodium lamps (fixtures + lights) and lit windows across the drag.
+  - The windows still read dark at this grazing angle: check from a booth.
+- **briar_falls_trail (36):** back to the lot's edge. The posts, the crossbeam sign, the sign-in box ("Lid hinged from the back. A pencil on a string.") and the path into the firs. At the posts, a post had filled the frame.
+- **farm_living_night (35):** from the SE corner (an empty floor) to the couch's E side, W across the afghan to the small TV's blue glow and the lamp between the black picture windows.
+- **Next:**
+  - copy_shop_floor (31, the copiers are white boxes);
+  - the apple peddler's window view from a booth;
+  - apple_peddler_grill (close on the grill);
+  - the sets under 30 lines.
+
 **2026-10-29 · pass 234: VOLS 1–4 backgrounds, draft 2 (the second tier and the wrong places).**
 - **onei_office (vol 1, 70):** moved in from the door corner to mid-room, facing the three desks (goggles, monitors, pinboards of game sketches). Ambient 0.60 → 0.42; the walls had burnt white.
 - **vol4_glass_tower:** "Dickens Dean sat at his tangle of inverted eyeballs, monitors… his glass tower on the Pacific Ocean". It is now dean_monitor_room; it was cedar_tower_exterior, another building.

@@ -4418,9 +4418,13 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
 		# the renters' night: the two picture windows black over the valley, the small TV, the afghan, the stair and its banister
-		"camera_origin": Vector3(-0.8, 1.5, -1.2),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(40.0), 0.0),
-		"fov": 66.0,
+		# (2026-10-29) in from the SE corner (an empty floor, the couch far
+		# off in the dark) to the couch's E side, W across the afghan to the
+		# small TV's glow: "She went into the living room and turned on the
+		# small, barely working television… She sat with the blanket on her lap"
+		"camera_origin": Vector3(-1.2, 1.5, -7.2),
+		"camera_rotation": Vector3(-0.24, 1.385, 0.0),
+		"fov": 64.0,
 		"env": {"ambient_color": Color(0.44, 0.46, 0.58, 1), "ambient_energy": 0.30, "fog_color": Color(0.05, 0.05, 0.07, 1)},
 		"suppress_input": true,
 	},
