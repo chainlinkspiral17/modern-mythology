@@ -3728,10 +3728,15 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/dean_offices.tscn",
 		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
 		# "Dickens Dean unlocks the door and goes in" - from the street door: the three desks, the goggles
-		"camera_origin": Vector3(-4.5, 1.6, -0.8),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-30.0), 0.0),
-		"fov": 70.0,
-		"env": {"ambient_color": Color(0.90, 0.90, 0.88, 1), "ambient_energy": 0.60, "fog_color": Color(0.80, 0.82, 0.84, 1)},
+		# (2026-10-29) in from the door corner to mid-room, N to the three
+		# desks under the clerestory ("This is your new office."; the goggles
+		# at each, the business card on Jacob's), the playtest table's end at
+		# frame left — from the door it was a white floor with furniture far
+		# off. Ambient 0.60 → 0.42: the walls had burnt to white.
+		"camera_origin": Vector3(0.3, 1.6, -3.2),
+		"camera_rotation": Vector3(-0.07, 0.0, 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.90, 0.88, 0.84, 1), "ambient_energy": 0.42, "fog_color": Color(0.80, 0.82, 0.84, 1)},
 		"suppress_input": true,
 	},
 	"onei_office_desk": {
