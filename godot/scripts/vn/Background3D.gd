@@ -639,9 +639,17 @@ const CAMERA_PRESETS := {
 		# door looking NE across the desk toward the window — 3/4 angle
 		# so the oak desk + banker's lamp read with depth, not a flat
 		# head-on stare.
-		"camera_origin": Vector3(-1.45, 1.62, -0.42),
-		"camera_rotation": Vector3(-0.218, -0.750, 0.0),
-		"fov": 62.0,
+		# (2026-10-29, vol 5 pass) The notes above describe drafts 1-3's 7 x 6 m
+		# law office; draft 4 rebuilt it at the canon's twelve by ten feet
+		# (3.66 x 3.05 m), and the old vantage then stood a step from the desk
+		# looking into it. From the NE corner (the back door side) looking SW
+		# with a wider lens: the leaded window and Jimmy's AC in the street
+		# wall, the front door, the pinboard of notes, the desk with the lamp,
+		# the rolled plans and the bourbon; the hard hat on the file cabinet
+		# at the frame's left.
+		"camera_origin": Vector3(1.45, 1.62, -2.75),
+		"camera_rotation": Vector3(-0.14, 2.337, 0.0),
+		"fov": 70.0,
 		"suppress_input": true,
 	},
 	"new_orleans_apartment": {
