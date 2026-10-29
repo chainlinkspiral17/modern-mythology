@@ -84,12 +84,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]Movie posters (mostly Criterion Collection reprints now, less the frantic blockbusters of his youth) jostled for wall space with pages torn from obscure literary journals.",
+      "text": "[shot:establish_b]Movie posters (mostly Criterion Collection reprints now, less the frantic blockbusters of his youth) jostled for wall space with pages torn from obscure literary journals.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/016.ogg"
     },
     {
       "t": "narrate",
-      "text": "Notebooks filled with fragmented observations and abandoned narratives formed precarious ziggurats on every available surface. He was still a writer. Still an observer.",
+      "text": "[shot:insert notebook]Notebooks filled with fragmented observations and abandoned narratives formed precarious ziggurats on every available surface. He was still a writer. Still an observer.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/017.ogg"
     },
     {
