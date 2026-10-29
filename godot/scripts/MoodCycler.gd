@@ -1211,6 +1211,10 @@ const STYLE_PACKS: Array = [
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "kitchen_clean",    "mood": "raw", "lighting": "dawn_diner",
 	"blend_mode": 0, "blend_amt": 0},
+	# (2026-10-29) Roberts' kitchen on its own rig: dawn_diner's ×3
+	# directional blew the cream walls and the island to white.
+	{"name": "roberts_kitchen_clean", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── DARKROOM (2026-07-15) — Mr. Henderson's converted-closet
 	#    darkroom. The red-and-black look is carried ENTIRELY by
 	#    darkroom.tscn's environment + red safelight Omni; the mood is
