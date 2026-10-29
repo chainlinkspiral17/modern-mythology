@@ -2070,6 +2070,35 @@ def build_emperor_props():
     # Helm_WifePhoto_Wall leaves it standing.
     make_box("Helm_WallFrame_WifePhoto", (0.95, 2.94, 6.80), (0.40, 0.02, 0.50), (0.30, 0.22, 0.14, 1.0))
     make_box("Helm_WifePhoto_Wall", (0.95, 2.93, 6.80), (0.32, 0.015, 0.42), (0.72, 0.68, 0.58, 1.0))
+    # (2026-10-29) The two things ch4 names at the desk that were not on it:
+    # "He still received them [the papers]. He used them, mostly, to wrap
+    # fish." — the week's papers, folded and unread, at the desk's west
+    # end; and the phone Antonio calls on "the first Sunday of an
+    # even-numbered month" — a black desk set at his right hand. The text
+    # pass had sent both inserts to the catering office on the lower deck.
+    top = 5.91
+    newsprint = (0.80, 0.78, 0.72, 1.0)
+    for i, (dx, dy) in enumerate(((0.0, 0.0), (0.02, -0.01), (-0.015, 0.02), (0.01, 0.01))):
+        make_box(f"Helm_Paper_Stack_{i}", (-0.42 + dx, -1.28 + dy, top + 0.006 + i * 0.012),
+                 (0.30, 0.42, 0.011), newsprint)
+    # The masthead and two column rules on the top paper
+    make_box("Helm_Paper_Masthead", (-0.41, -1.15, top + 0.048), (0.24, 0.05, 0.002),
+             (0.16, 0.15, 0.14, 1.0))
+    for j, ox in enumerate((-0.07, 0.03)):
+        make_box(f"Helm_Paper_Column_{j}", (-0.41 + ox, -1.32, top + 0.048), (0.06, 0.22, 0.002),
+                 (0.46, 0.45, 0.42, 1.0))
+    # The telephone — black, heavy, the handset in its cradle
+    black = (0.06, 0.06, 0.07, 1.0)
+    px, py = 0.40, -1.30
+    make_box("Helm_Phone_Base", (px, py, top + 0.035), (0.20, 0.23, 0.07), black)
+    # the cradle and handset at the back, the dial facing his chair (-y)
+    make_box("Helm_Phone_Cradle", (px, py + 0.05, top + 0.085), (0.16, 0.05, 0.03), black)
+    make_box("Helm_Phone_Handset", (px, py + 0.05, top + 0.115), (0.24, 0.05, 0.035), black)
+    for sgn in (-1, 1):
+        make_box(f"Helm_Phone_Handset_End_{sgn}", (px + sgn * 0.11, py + 0.05, top + 0.10),
+                 (0.06, 0.07, 0.05), black)
+    make_cyl("Helm_Phone_Dial", (px, py - 0.06, top + 0.075), 0.06, 0.008, (0.84, 0.82, 0.76, 1.0), segments=12)
+    make_cyl("Helm_Phone_Dial_Hub", (px, py - 0.06, top + 0.081), 0.02, 0.006, black, segments=8)
 
 
 def main():
@@ -2104,6 +2133,10 @@ def main():
     # to Sammy, Paul's calling card on the desk square to the corner,
     # the SIDE DOOR threshold Dean uses on the way out.
     build_emperor_dressing()
+    # (2026-10-29) defined 2026-08-03 and never called until now: the
+    # ashtray, lighter, Dean's note, office door and the wife's photograph
+    # (plus the desk's papers and phone) had never been built.
+    build_emperor_props()
     export_glb()
 
 

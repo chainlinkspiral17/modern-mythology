@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 222: VOL 5, the bungalow's orange wash and Dante's desk (task #1).**
+- **Bungalow (100 lines, ch2 Priestess):** the frame was a blown orange-yellow from wall to wall, and changing the lamps or the ambient light did nothing. The cause was the scene's style pack: `bungalow_clean` applied the `golden_hour` lighting preset, which multiplies the directional lights by 8 and sets a 1.2 orange ambient. It now uses `scene_default`, the scene's own three-light rig and practicals.
+  - Packs with the same risk: `kitchen_clean` uses `dawn_diner` (×3) on roberts_kitchen, cabin_interior(_bed), cosmic_comics_back_office and accretion_basement. Check each one's frame next.
+- **Riverboat helm (ch4 + ch20):**
+  - `build_emperor_props()` (2026-08-03) was never called, so the ashtray, the lighter, Dean's note at Table 14, the office door and the wife's photograph had never been built. It is called now.
+  - The desk gains the two things ch4 names there: "the papers" (a folded stack, "used them, mostly, to wrap fish") and the phone Antonio calls on.
+  - The text pass had put the papers and phone inserts in the catering office on the lower deck, and the door insert there too. All three are re-placed in the helm. The door insert frames the office door and the side door.
+  - marker_aim reports 0 misaims.
+- **Next:**
+  - Render-check both frames on the Deck. Local renders were still running at commit time.
+  - The riverboat establish: a dark, head-on counter.
+  - The `dawn_diner` sets listed above.
+
 **2026-10-29 · pass 221: THE NEW ORLEANS APARTMENT'S WINDOWS (vol 5).**
 - **Before:** the two tall windows read as flat yellow. The builder's glass was a warm tint at alpha 0.70, a wash that hid the street, and nothing was painted outside.
 - **Glass:** now a grimy grey-yellow at 0.38 ("the grimy apartment window"); the balcony rails show through.
