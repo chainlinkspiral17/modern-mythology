@@ -3847,7 +3847,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - **Person closeups:** `PERSON_CUES` (character-index first names plus the vol 7 cast) stops a person's closeup being aimed at her things. closeup_lena had matched Lena_Phone_Screen; its rotation is restored.
   - The aim gate is at 0 across 1760 markers.
 - **Next:**
-  - spot-check renders of the re-aimed far ones (Lena's pillow from 5.8 m, the bar booth);
+  - spot-checked: the sofa and croissants read; Lena's pillow (re-aimed from 5.8 m, it saw posts and a box) and the bar booth (dark mass from 4.7 m) are re-placed close — the bed head-on with both pillows; the booth table with its bottles;
   - cafe_olimpico's espresso machine;
   - then elicia_apartment and roberts_kitchen inserts.
 
