@@ -67,8 +67,21 @@ def copier(prefix, x, y, face="+Y", hero=False):
     make_rot_box(f"{prefix}_Panel", (*at(0.38, 0.30), 1.18), (0.26, 0.10, 0.04), COPIER_DARK, yaw=yaw)
     make_rot_box(f"{prefix}_Tray", (*at(0.66, 0.0), 0.92), (0.24, 0.40, 0.02), COPIER_DARK, yaw=yaw)
     make_rot_box(f"{prefix}_Tray_Arm", (*at(0.56, 0.0), 0.89), (0.04, 0.36, 0.06), COPIER_DARK, yaw=yaw)
+    # (2026-10-29) the machine read as a white box: the cabinet a shade
+    # darker than the body, a dark seam band between them, the paper drawers
+    # with their recessed pulls, the sorter's stepped bins on the far side,
+    # the panel's green display, the front door's outline
+    make_rot_box(f"{prefix}_Cabinet_Shade", (*at(0.0, 0.351), 0.40), (1.08, 0.004, 0.78), (0.70, 0.68, 0.62, 1.0), yaw=yaw)
+    make_rot_box(f"{prefix}_Seam", (*at(0.0, 0.0), 0.805), (1.12, 0.72, 0.03), COPIER_DARK, yaw=yaw)
     for k in range(3):
-        make_rot_box(f"{prefix}_Drawer_{k}", (*at(0.0, 0.352), 0.16 + k * 0.24), (0.96, 0.004, 0.18), (0.74, 0.72, 0.66, 1.0), yaw=yaw)
+        make_rot_box(f"{prefix}_Drawer_{k}", (*at(0.0, 0.356), 0.16 + k * 0.24), (0.96, 0.006, 0.20), (0.84, 0.82, 0.76, 1.0), yaw=yaw)
+        make_rot_box(f"{prefix}_Drawer_{k}_Gap", (*at(0.0, 0.357), 0.055 + k * 0.24), (0.98, 0.004, 0.012), COPIER_DARK, yaw=yaw)
+        make_rot_box(f"{prefix}_Drawer_{k}_Pull", (*at(0.0, 0.362), 0.22 + k * 0.24), (0.30, 0.012, 0.03), COPIER_DARK, yaw=yaw)
+    make_rot_box(f"{prefix}_Door_Line", (*at(-0.20, 0.356), 0.98), (0.004, 0.004, 0.30), COPIER_DARK, yaw=yaw)
+    make_rot_box(f"{prefix}_Display", (*at(0.32, 0.33), 1.205), (0.10, 0.04, 0.006), (0.40, 0.86, 0.50, 1.0), yaw=yaw)
+    for k in range(4):                      # the sorter: stepped bins on the left end
+        make_rot_box(f"{prefix}_Sorter_Bin_{k}", (*at(-0.66, 0.0), 0.70 + k * 0.12), (0.22, 0.44, 0.015), COPIER_DARK, yaw=yaw)
+    make_rot_box(f"{prefix}_Sorter_Post", (*at(-0.76, 0.0), 0.86), (0.04, 0.44, 0.44), COPIER, yaw=yaw)
     if hero:
         # the lid half open, the scratch on the glass, the pink scan bar
         # bleeding from under it (copier view only), the warm page in the tray
@@ -79,7 +92,7 @@ def copier(prefix, x, y, face="+Y", hero=False):
                      yaw=yaw)
         make_rot_box(f"{prefix}_Page_Warm", (*at(0.66, 0.0), 0.935), (0.22, 0.30, 0.004), PAPER, yaw=yaw)
     else:
-        make_rot_box(f"{prefix}_Lid", (*at(-0.08, -0.02), 1.19), (0.74, 0.54, 0.04), (0.86, 0.84, 0.78, 1.0), yaw=yaw)
+        make_rot_box(f"{prefix}_Lid", (*at(-0.08, -0.02), 1.19), (0.74, 0.54, 0.04), (0.46, 0.46, 0.48, 1.0), yaw=yaw)
 
 
 def build_shop():
