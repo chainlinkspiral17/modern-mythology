@@ -3835,6 +3835,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 229: the re-aimed decal markers, render-checked; the cafe's espresso machine.**
+- **Read:** cabin table, cabin stove and kettle, centro table, henderson table and door, the pit stop booth, the writer's door, both tide pools.
+- **Fixed:**
+  - **school_field (day + evening):**
+    - The bench camera stood behind the backrest of a 10.8 m bench and saw a blue wall. It is now on the field side, three-quarter.
+    - The gate camera was 1.7 m from the chain-link mesh, a solid grey frame. It is now 5 m off, with the gate, its posts and the truck behind.
+    - The bench frame has a light pole in front: next.
+  - **cosmic comics (vol 6 ch12 #8):** `insert ring` had framed a purple box. The ring is Rick's key ring, but the line is about the doors and their locks, so it is now `insert door`.
+- **Cafe Olimpico's espresso machine, rebuilt:**
+  - Before: its group heads sat 3 cm inside a 60 cm beige box standing straight on the counter, so the insert saw a flat panel.
+  - Now: a chrome body over a drip tray on a back panel; the heads hang below its front with portafilter handles out; cups under the spouts and five on the warmer; gauges and a steam wand.
+- **Gates:** marker_aim at 0.
+- **Next:**
+  - render the espresso insert on the rebuilt GLB;
+  - the bench frame's pole;
+  - elicia_apartment and roberts_kitchen inserts.
+
 **2026-10-29 · pass 228: the insert pass on vol 5's next four sets, and inserts aimed at floor scuffs (project-wide).**
 - **Pass as they stand (every insert frames its subject):** houston_office (242 lines) and new_orleans_office (199).
 - **cafe_olimpico (164):**
