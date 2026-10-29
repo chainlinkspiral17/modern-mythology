@@ -697,6 +697,13 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-1.3, 1.55, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(-28.7), 0.0),
 		"fov": 58.0,
+		# (2026-10-29) ch8's coda is Saturday night ("[mood:night]… the
+		# room above the laundromat"): the bare bulb and the LAUNDROMAT
+		# sign light it. It rendered the same as the afternoon twin — a
+		# warm 0.85 directional (now 0.25) under a 0.7 warm ambient.
+		"env": {"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.16, 0.12, 0.18, 1),
+			"ground_horizon": Color(0.08, 0.07, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.30, 0.30, 1), "ambient_energy": 0.32, "fog_color": Color(0.12, 0.10, 0.12, 1)},
 		"suppress_input": true,
 	},
 	"new_orleans_room_day": {

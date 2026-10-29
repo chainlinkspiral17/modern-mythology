@@ -173,7 +173,7 @@ environment = SubResource("Env_Locale")
 [node name="Key_BareBulb__new_orleans_room" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.86, 0.46, 1)
-light_energy = 0.85
+light_energy = 0.25
 shadow_enabled = false
 
 [node name="Fill_SashWindow__new_orleans_room" type="DirectionalLight3D" parent="."]

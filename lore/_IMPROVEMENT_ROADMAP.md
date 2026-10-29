@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 226: VOL 5, the night rooms and the small sets.**
+- **hospice_room_night (127 lines, ch13):** "The room was lit only by the small under-cabinet light above the sink." It rendered as an even grey.
+  - The night ambient goes 0.40 → 0.18.
+  - `UnderCab_Night__hospice_room_night` lifts that one source.
+  - The view turns 36° → 18° to take in the sink corner and the window.
+  - It now reads as a single warm pool falling off across the bed.
+- **new_orleans_room (ch8 coda, Saturday night, "the room above the laundromat"):** it rendered the same as its afternoon twin.
+  - The warm directional goes 0.85 → 0.25.
+  - The preset gains a night env (ambient 0.32, dark sky).
+  - The bare bulb lights the walls and the floor falls dark.
+- **Read acceptably, left:** graustark_st_jude, natalie_apartment (day), graustark_armory_park, graustark_shotgun_interior (sparse).
+- **Weak, not yet touched:**
+  - smolvud_jetty (28 lines): flat grey water and sky, a figure far off.
+  - county_line_station (28): a pump in the near-left foreground.
+- **Next:**
+  - the jetty and the station;
+  - then the close-up and insert pass per set, starting with the busiest: natalie_apartment_night (270), houston_office (242), new_orleans_office (199).
+
 **2026-10-29 · pass 225: VOL 5, the next eight sets by lines played (task #1).**
 - **Rendered:** natalie_apartment_night (270), cafe_olimpico (164), hospice_room_night (127), dambrosios_formal (125), montreal_apartment (124), graustark_chalk_wall_star (114), new_orleans_bar (108), graustark_wreck (106).
 - **Fixed — cafe_olimpico:** blown to white. Its ambient was (0.86,0.74,0.52) ×0.85 with no tonemap, and is now (0.62,0.52,0.40) ×0.55. The key goes 1.0 → 0.6. The walls are warm, the floor reads, and the tables are no longer burnt.
