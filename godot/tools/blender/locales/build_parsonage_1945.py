@@ -147,20 +147,32 @@ def build_room():
     make_box("Pages_Face_Down", (dx + 0.06, dy - 0.48, F + 0.78), (0.22, 0.28, 0.04), (0.92, 0.90, 0.82, 1.0))
     make_box("Carbon_Box", (dx - 0.10, dy + 0.48, F + 0.78), (0.22, 0.30, 0.04), (0.20, 0.20, 0.26, 1.0))
     make_lamp("Lamp_Desk", dx - 0.10, dy - 0.15 + 0.62, base_z=F + 0.76, h=0.46)
-    # the books in drifts over the floor, leaving the one patch by the desk
+    # the books in drifts over the floor, leaving the one patch by the desk.
+    # (2026-10-29, draft 2) "Books on the floor in drifts… nowhere to stand":
+    # the 47 cm grid of 1–4-book stacks read as books dropped here and there.
+    # Now a 36 cm grid, piles of 2–11 that rise toward the walls, a slumped
+    # book or two on top of each, the same clear patches.
     k = 0
-    for i in range(10):
-        for j in range(9):
-            x = X0 + 0.35 + i * 0.47
-            y = 0.30 + j * 0.47
+    for i in range(14):
+        for j in range(12):
+            x = X0 + 0.25 + i * 0.36 + ((i * 13 + j * 7) % 5) * 0.012
+            y = 0.24 + j * 0.36 + ((i * 5 + j * 11) % 5) * 0.012
             if (abs(x - (dx + 1.0)) < 0.55 and abs(y - 2.0) < 0.80) or (x > bx - 0.55 and 1.5 < y < 3.7) or (x < X0 + 0.85 and 1.5 < y < 3.1):
                 continue        # the clear patch, the bed, the desk
             if -2.3 < x < -0.8 and y > 3.2:
                 continue        # the door's swing
-            n = 1 + ((i * 7 + j * 3) % 4)
+            wall = min(x - X0, X1 - x, y, D - y)            # nearer a wall, a deeper drift
+            n = 2 + ((i * 7 + j * 3) % 5) + (4 if wall < 0.6 else 2 if wall < 1.1 else 0)
             for m in range(n):
-                make_rot_box(f"Books_Stock_{k}", (x + (m % 2) * 0.05, y, F + 0.025 + m * 0.05), (0.18 + (m % 3) * 0.03, 0.26, 0.05),
+                make_rot_box(f"Books_Stock_{k}", (x + (m % 2) * 0.03, y + ((m * 7) % 3) * 0.01, F + 0.025 + m * 0.05),
+                             (0.17 + (m % 3) * 0.03, 0.24 + (m % 2) * 0.03, 0.05),
                              (*BOOK_COLS[(k * 3) % len(BOOK_COLS)], 1.0), yaw=((i + j + m) % 5) * 0.35)
+                k += 1
+            # one or two slumped off the top, leaning on the pile
+            for s in range(1 + (i + j) % 2):
+                make_rot_box(f"Books_Slumped_{k}", (x + 0.12 - s * 0.24, y + 0.04, F + 0.04 + n * 0.025),
+                             (0.18, 0.25, 0.04), (*BOOK_COLS[(k * 5) % len(BOOK_COLS)], 1.0),
+                             yaw=(i * 3 + j) % 5 * 0.4, pitch=0.5 + s * 0.3)
                 k += 1
     # the door onto the hall, shut, the gap under it
     make_box("Door_Ron", (-1.6, D, F + 1.0), (0.84, 0.05, 2.0), (0.50, 0.36, 0.24, 1.0))

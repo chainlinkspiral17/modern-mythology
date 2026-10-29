@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 233: VOLS 1–4 backgrounds (user: "focus on improving backgrounds in vol 1-4").**
+- **Survey:** every vols 1–4 background is now a 3D set (bg_places: exact 3725 lines, reuse 1069, deliberate 2D 889). The twelve heaviest sets were rendered on rebuilt GLBs (five were stale locally).
+  - Read: writers_desk (≈620 lines across four vol 4 stems), faust_apartment_day and faust_bedroom, club_sharp, sleep_lab_entry, pharmacy_floor, hospital_room, the bookstore lounge.
+  - jd_river_turn is the painting's edge ("where the painted water meets the real water"), dark by design.
+- **NEW SET — small_wood_police (vol 2 ch9 "In town", 36 lines):** it had played on the County Line gas station.
+  - From the text: the steel table and the two chairs ("when we were sitting and everything was ready"); James's notebook with the pen on its clip; the coffee pot and styrofoam cups ("he poured coffee for himself and the other men in the room"); two officers standing.
+  - Proposed, not in the text: the observation mirror, the coffee cart, the squad room through the wire-glass door (desks with beige CRTs, phones, files, corkboard, the wet main street outside).
+  - Preset small_wood_interview_room; bg_places vol2_interview_room → exact.
+  - Draft 1 notes: the coffee pot moved to James's end (mid-table it stood in both closeups); the officer by the cart stood back.
+- **club_office (vol 1, 58):** it had NO light and rendered black. Now a pendant over the briefing table (fixture + practical), Dean's desk lamp lit, and the club's pink neon through the open door. Reads: the three shirts, the listening devices, Aria under the sheet on the couch.
+- **Ron's room (vol 3, 60):** "Books on the floor in drifts… nowhere to stand." The drifts are now a 36 cm grid of piles (2–11, deeper at the walls, a slumped book or two on each) with the same clear patches. It reads as drowned in books. Perf unchanged (76 draw calls; join_stock merges them).
+- **Gates:**
+  - marker_aim, preset_vantage (405), vantage_obstruction (406), wrong_room at 0;
+  - perf: dean_offices 122, parsonage 76, small_wood_police 144 (new baseline).
+- **Next:**
+  - onei_office (70, vol 1): stark and empty;
+  - the wrong-kind reuses: vol4_voices_crowded_room → foxhole_bar; vol4_fast_food_riot → a taqueria; vol4_glass_tower → cedar_tower; vol3 texas_highway_rain → louisiana_road;
+  - the 91 vol 1–4 lines whose bg is None.
+
 **2026-10-29 · pass 232: the graustark insert pass (chalk wall ×2, wreck, ruins).**
 - **Pass:** the Hermit's poem on the wall (ch9's chalk insert reads every line), the cat, Joanna, the receipt, the frog, the wide sinkhole.
 - **Re-placed:**

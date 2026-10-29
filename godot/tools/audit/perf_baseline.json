@@ -309,6 +309,11 @@
   "prims": 151964,
   "objects": 396
  },
+ "small_wood_police": {
+  "draw": 144,
+  "prims": 33188,
+  "objects": 314
+ },
  "small_wood_ranch": {
   "draw": 102,
   "prims": 16944,
