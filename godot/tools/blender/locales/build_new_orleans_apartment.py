@@ -93,7 +93,8 @@ def build_shuttered_windows():
     # 3 — the whole set used to sit inside the wall's thickness)
     for sgn, sx in [(-1, -2.50), (+1, +2.50)]:
         make_frame_ring(f"Window_{sgn:+d}_Frame", (sx, 0.0, 1.80), (1.40, 0.04, 2.40), (0.42, 0.32, 0.22, 1.0), bar=0.10)
-        make_box(f"Window_{sgn:+d}_Glass", (sx, -0.02, 1.80), (1.20, 0.005, 2.20), (0.96, 0.84, 0.62, 0.70))
+        # (2026-10-29) grimy, not opaque: at 0.70 the warm glass was a flat yellow wash and the street beyond never showed
+        make_box(f"Window_{sgn:+d}_Glass", (sx, -0.02, 1.80), (1.20, 0.005, 2.20), (0.84, 0.80, 0.66, 0.38))
         make_box(f"Window_{sgn:+d}_Mullion", (sx, -0.015, 1.80), (0.04, 0.02, 2.20), (0.42, 0.32, 0.22, 1.0))
         for shs in (-1, +1):
             make_box(f"Shutter_{sgn:+d}_{shs:+d}", (sx + shs*0.75, 0.13, 1.80), (0.10, 0.04, 2.20), COL_SHUTTER)

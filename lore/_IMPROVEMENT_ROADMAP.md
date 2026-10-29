@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 221: THE NEW ORLEANS APARTMENT'S WINDOWS (vol 5).**
+- **Before:** the two tall windows read as flat yellow. The builder's glass was a warm tint at alpha 0.70, a wash that hid the street, and nothing was painted outside.
+- **Glass:** now a grimy grey-yellow at 0.38 ("the grimy apartment window"); the balcony rails show through.
+- **Two window views** (roster, to generate), quoting The Devil ("all bruised purples and sickly greens bleeding through the grimy apartment window"; "Below, the street was slowly coming alive"):
+  - the facade across the narrow Quarter street at a hungover dawn;
+  - the block below waking.
+- They are laid at y -1.2, beyond the iron rails, so the rails stay 3D in front of them.
+- They glow 0.7: in a night-mood room, a picture lit only by the practicals read as nothing.
+- Placement and visibility tested with placeholder images.
+
 **2026-10-29 · pass 220: VOL 5, the three worst establishing frames re-aimed (task #1).**
 - **Method:** render vol 5's nine most-read views (on GLBs rebuilt locally first, since six were stale), take the three that read worst, and re-place each camera only after rendering 2–4 candidates.
 - **new_orleans_apartment** (159 lines): the view faced the bare north wall and the kitchenette (its old target, the bed, moved to a wing in draft 4). It now looks from the NE, west of Jimmy's bass (its strings had stood 0.48 m from the lens in the first try), SW at both tall shuttered windows, the door between, the brick, the fan and the sofa.

@@ -17875,7 +17875,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch15 prose (cobblestones, bread delivery, purple/green pre-dawn light, street 'coming alive') + builder Out_Street/Out_Facade three floors down. The lace curtain is a separate interior piece and is omitted. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch15 prose (cobblestones, bread delivery, purple/green pre-dawn light, street 'coming alive') + builder Out_Street/Out_Facade three floors down. The lace curtain is a separate interior piece and is omitted. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. glow 0.7: the dawn outside is the light; lit only by the room's practicals it read as nothing.",
       "art_cat": "WINDOW",
       "score_lines": 162,
       "score_mentions": 4,
@@ -17895,7 +17895,8 @@
           "facing": "+y",
           "hide": [
             "Window_-1_Glass"
-          ]
+          ],
+          "glow": 0.7
         }
       ]
     },
@@ -17920,7 +17921,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch15 light description + builder geometry. Complements window_1 (adjacent view to the right). (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read: ch15 light description + builder geometry. Complements window_1 (adjacent view to the right). (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. glow 0.7: the dawn outside is the light; lit only by the room's practicals it read as nothing.",
       "art_cat": "WINDOW",
       "score_lines": 162,
       "score_mentions": 4,
@@ -17940,7 +17941,8 @@
           "facing": "+y",
           "hide": [
             "Window_+1_Glass"
-          ]
+          ],
+          "glow": 0.7
         }
       ]
     },
@@ -61071,6 +61073,100 @@
       ],
       "lettering": "THE BLUE HERON",
       "text_body": "Small under the name: used & rare books"
+    },
+    {
+      "slug": "new_orleans_apartment_window_w",
+      "kind": "art",
+      "name": "the street from the apartment's west window",
+      "file": "new_orleans_apartment_window_w.png",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "new_orleans_apartment_window_w"
+      ],
+      "tag": "window · new_orleans_apartment · 3.00 x 3.20 m · 159 lines play here",
+      "prompt": "Exterior only, seen from inside a third-floor apartment through a tall window, beyond a wrought-iron balcony rail (the rail is NOT in the picture); no window frame, no people in focus, no readable signs. Looking across a narrow French Quarter street in New Orleans at first light: the facade opposite, close, three storeys of old stucco in faded salmon and ochre, its own iron gallery dripping with ferns, tall green shutters half open, a gas lamp still burning on a bracket, rooftops and a sliver of sky beyond. The light is a hungover dawn: bruised purples and sickly greens in the sky, the stucco greyed, a jaundiced glow on the wet street far below. 1:1.1 near-square.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol5/vol5_ch15_devil.json",
+          "text": "The world swam in a jaundiced filter, all bruised purples and sickly greens bleeding through the grimy apartment window."
+        },
+        {
+          "src": "godot/resources/scenes/vol5/vol5_ch15_devil.json",
+          "text": "Below, the street was slowly coming alive."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) Vol 5 pass. Laid outside the iron balcony rail (y -1.2, beyond the bars at -0.88) so the rail stays 3D in front of the picture; sized to fill the opening's view from the room. The Devil chapter: Jimmy's hangover morning at the window. glow 0.7: the dawn outside is the light; lit only by the room's practicals it read as nothing.",
+      "art_cat": "WINDOW",
+      "score_lines": 159,
+      "score_mentions": 5,
+      "apply": [
+        {
+          "locale": "new_orleans_apartment",
+          "label": "new_orleans_apartment_window_w",
+          "center": [
+            -2.5,
+            -1.2,
+            1.85
+          ],
+          "size": [
+            3.0,
+            3.2
+          ],
+          "facing": "+y",
+          "hide": [],
+          "glow": 0.7
+        }
+      ]
+    },
+    {
+      "slug": "new_orleans_apartment_window_e",
+      "kind": "art",
+      "name": "the street from the apartment's east window, looking down the block",
+      "file": "new_orleans_apartment_window_e.png",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "new_orleans_apartment_window_e"
+      ],
+      "tag": "window · new_orleans_apartment · 3.00 x 3.20 m · 159 lines play here",
+      "prompt": "Exterior only, seen from inside a third-floor apartment through a tall window, beyond a wrought-iron balcony rail (the rail is NOT in the picture); no window frame, no people in focus, no readable signs. Looking down a narrow French Quarter street in New Orleans from three floors up at first light, the street slowly coming alive: wet pavement shining, a delivery truck backing up to a bar's side door, a man hosing down the sidewalk, iron galleries and hanging ferns running down both sides of the block, a church steeple far off. Bruised purple and sickly green dawn sky, jaundiced streetlight still on. 1:1.1 near-square.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol5/vol5_ch15_devil.json",
+          "text": "The world swam in a jaundiced filter, all bruised purples and sickly greens bleeding through the grimy apartment window."
+        },
+        {
+          "src": "godot/resources/scenes/vol5/vol5_ch15_devil.json",
+          "text": "Below, the street was slowly coming alive."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) Vol 5 pass. Laid outside the iron balcony rail (y -1.2, beyond the bars at -0.88) so the rail stays 3D in front of the picture; sized to fill the opening's view from the room. The Devil chapter: Jimmy's hangover morning at the window. glow 0.7: the dawn outside is the light; lit only by the room's practicals it read as nothing.",
+      "art_cat": "WINDOW",
+      "score_lines": 159,
+      "score_mentions": 5,
+      "apply": [
+        {
+          "locale": "new_orleans_apartment",
+          "label": "new_orleans_apartment_window_e",
+          "center": [
+            2.5,
+            -1.2,
+            1.85
+          ],
+          "size": [
+            3.0,
+            3.2
+          ],
+          "facing": "+y",
+          "hide": [],
+          "glow": 0.7
+        }
+      ]
     }
   ]
 }
