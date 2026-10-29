@@ -3846,7 +3846,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - **Next:**
   - the chalk wall's night;
   - the hospice room's flat light;
-  - the remaining sets, rendered: diner, cathedral, ruins and the chalk wall read. miriam_subaru (both presets) moved to the gap between the front seats (the seat backs had filled the frame; preset_vantage clean). houston_design_studio is stark and empty — next;
+  - the remaining sets, rendered: diner, cathedral, ruins and the chalk wall read. miriam_subaru (both presets) moved to the gap between the front seats (the seat backs had filled the frame; preset_vantage clean). houston_design_studio: the camera comes in from the door corner to mid-room, 3 m off Anna's desk, with the three monitors (the EMBER & ASH flame) facing the lens and the curtain wall on the left. The greige emptiness is canon; the subject is now readable;
   - then closeups and inserts per set.
 
 **2026-10-29 · pass 224: the ×3 dawn_diner sets checked (draft 3 of pass 222's lighting finding).**

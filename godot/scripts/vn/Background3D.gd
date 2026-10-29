@@ -582,9 +582,14 @@ const CAMERA_PRESETS := {
 		# [-3.5,3.5], z in [0,-6], ceil 2.9), the N wall glass over the
 		# city. Camera inside the door, looking NE at her desk, its three
 		# monitors, the glass.
-		"camera_origin": Vector3(-2.9, 1.62, -0.7),
-		"camera_rotation": Vector3(-0.062, -0.954, 0.0),
-		"fov": 62.0,
+		# (2026-10-29) in from the door to mid-room, 3 m off the desk: from
+		# the corner the desk and its three monitors were a strip at the
+		# back of an empty greige box. Now the monitors (the text's subject
+		# — the kerning, Slide 7, EMBER & ASH) face the lens, the curtain
+		# wall and the city on the left.
+		"camera_origin": Vector3(0.3, 1.55, -1.3),
+		"camera_rotation": Vector3(-0.112, -0.740, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Cameos — Montreal + Olimpico ─────────────────────
