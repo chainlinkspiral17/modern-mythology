@@ -111,7 +111,7 @@ def build_interview():
     # the other men in the room — standing; they are scale, never faces
     make_standing_figure("Officer_By_Mirror", 0.55, 0.75, heading=math.pi * 0.25, h=1.80,
                          coat=(0.20, 0.24, 0.34, 1.0), pants=(0.18, 0.20, 0.26, 1.0), arms="folded")
-    make_standing_figure("Officer_By_Cart", 3.75, 3.0, heading=math.pi * 1.15, h=1.76,
+    make_standing_figure("Officer_By_Cart", 3.05, 3.62, heading=math.pi * 1.05, h=1.76,
                          coat=(0.46, 0.40, 0.32, 1.0), pants=(0.26, 0.24, 0.22, 1.0), arms="down")
 
 
