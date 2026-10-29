@@ -62,18 +62,35 @@ def build_bar_counter():
     # Orleans bar and the pit stop's lunch counter).
     top_z = make_counter("Bar", (0.0, 5.0, 0.0), length=0.80, depth=5.0, height=1.05, palette={"formica": COL_MARBLE, "top": COL_MARBLE_VEIN, "kick": COL_WOOD})
     make_counter_bullnose("Bar", (0.0, 5.0 - 0.40, top_z), length=5.0, palette={"top": COL_MARBLE_VEIN}, axis='X')
-    # Espresso machine — classic 2-group La Marzocco-ish chrome
+    # Espresso machine — classic 2-group La Marzocco-ish chrome.
+    # (2026-10-29) Rebuilt: the group heads sat 3 cm INSIDE a 60 cm box
+    # that stood straight on the counter, so the insert framed a flat
+    # beige panel with two dark squares. Now the body rides above a drip
+    # tray on a back panel, the heads hang below its front with their
+    # portafilter handles out toward the barista, cups under the spouts.
     ex, ey = 0.0, 5.10
-    make_box("Espresso_Body", (ex, ey, top_z+0.30), (1.40, 0.50, 0.60), COL_ESPRESSO)
-    make_box("Espresso_TopHat", (ex, ey, top_z+0.66), (1.40, 0.50, 0.10), COL_ESPRESSO_TRIM)
+    CHROME = (0.82, 0.84, 0.86, 1.0)
+    make_box("Espresso_DripTray", (ex, ey - 0.06, top_z + 0.03), (1.40, 0.44, 0.06), P.METAL_BLACK)
+    make_box("Espresso_DripTray_Grate", (ex, ey - 0.10, top_z + 0.062), (1.30, 0.30, 0.004), P.METAL_STEEL)
+    make_box("Espresso_BackPanel", (ex, ey + 0.18, top_z + 0.16), (1.40, 0.10, 0.20), CHROME)
+    make_box("Espresso_Body", (ex, ey, top_z + 0.48), (1.40, 0.46, 0.44), CHROME)
+    make_box("Espresso_Badge", (ex, ey - 0.232, top_z + 0.56), (0.70, 0.004, 0.08), COL_ESPRESSO_TRIM)
+    make_box("Espresso_TopHat", (ex, ey, top_z + 0.72), (1.40, 0.46, 0.04), COL_ESPRESSO_TRIM)
+    make_box("Espresso_CupRail", (ex, ey - 0.20, top_z + 0.77), (1.30, 0.02, 0.06), CHROME)
     for gi in range(2):
-        gx = ex - 0.30 + gi*0.60
-        make_cyl(f"Espresso_Group_{gi}_Head", (gx, ey-0.22, top_z+0.20), 0.06, 0.10, COL_ESPRESSO_TRIM)
-        make_cyl(f"Espresso_Group_{gi}_Spout", (gx, ey-0.22, top_z+0.12), 0.02, 0.08, P.METAL_STEEL)
+        gx = ex - 0.30 + gi * 0.60
+        make_cyl(f"Espresso_Group_{gi}_Head", (gx, ey - 0.28, top_z + 0.24), 0.055, 0.08, CHROME)
+        make_tube(f"Espresso_Group_{gi}_Portafilter", [(gx, ey - 0.28, top_z + 0.19), (gx, ey - 0.40, top_z + 0.18), (gx, ey - 0.52, top_z + 0.16)],
+                  0.016, P.METAL_BLACK, segments=6)
+        make_cyl(f"Espresso_Group_{gi}_Spout", (gx, ey - 0.28, top_z + 0.15), 0.02, 0.05, P.METAL_STEEL)
         # Cup waiting under spout
-        make_cyl(f"Espresso_Cup_{gi}", (gx, ey-0.22, top_z+0.04), 0.04, 0.06, P.PAPER)
-    # Steam wand
-    make_cyl("Espresso_SteamWand", (ex+0.60, ey-0.10, top_z+0.30), 0.012, 0.30, P.METAL_STEEL)
+        make_cyl(f"Espresso_Cup_{gi}", (gx, ey - 0.28, top_z + 0.095), 0.04, 0.06, P.PAPER)
+        make_cyl(f"Espresso_Gauge_{gi}", (gx, ey - 0.236, top_z + 0.42), 0.04, 0.01, (0.94, 0.92, 0.86, 1.0), axis='Y', segments=10)
+    for ci in range(5):   # cups warming on top
+        make_cyl(f"Espresso_TopCup_{ci}", (ex - 0.48 + ci * 0.24, ey + 0.02, top_z + 0.77), 0.035, 0.06, P.PAPER)
+    # Steam wand, out of the right side and down
+    make_tube("Espresso_SteamWand", [(ex + 0.66, ey - 0.20, top_z + 0.40), (ex + 0.74, ey - 0.26, top_z + 0.36), (ex + 0.76, ey - 0.28, top_z + 0.14)],
+              0.010, P.METAL_STEEL, segments=6)
     # Pastry case east end of bar
     make_donut_display("Pastry", (+2.20, 5.20, top_z))
     # Coffee pots west end
