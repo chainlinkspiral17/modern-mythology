@@ -60543,6 +60543,534 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "honolulu_game_store_sign",
+      "kind": "art",
+      "name": "the game store's back-lit box sign",
+      "file": "honolulu_game_store_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_game_store_sign"
+      ],
+      "tag": "sign · honolulu_highrise · 3.80 x 0.60 m",
+      "prompt": "A cheap back-lit fluorescent box sign over a small shop's door in a 1970s office-tower lobby, early 2000s, seen flat-on: a long white translucent acrylic face lit evenly from inside, the words in plain red vinyl capitals applied slightly crooked, a hairline crack across one corner, a dead fly in the bottom of the lens, a thin aluminium frame. Very wide, flat-on.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "The name outside the game store was a cheap box vinyl back-lit fluorescent number that promised only COMPUTER GAMES, and inside an anxious man staffed the store."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6 arcadeum. Glows (back-lit).",
+      "art_cat": "SIGN",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_game_store_sign",
+          "center": [
+            8.777,
+            8.0,
+            3.3
+          ],
+          "size": [
+            3.8,
+            0.6
+          ],
+          "facing": "-x",
+          "hide": [
+            "Game_Store_Sign_Letters"
+          ],
+          "glow": 1.0
+        }
+      ],
+      "lettering": "COMPUTER GAMES",
+      "text_body": "Small red vinyl at the right end: NEW · USED · IMPORTS"
+    },
+    {
+      "slug": "honolulu_final_cut_box",
+      "kind": "art",
+      "name": "Mountaintop's Final Cut, the box in the front window",
+      "file": "honolulu_final_cut_box.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_final_cut_box"
+      ],
+      "tag": "picture · honolulu_highrise · 0.26 x 0.34 m",
+      "prompt": "The front of a late-1990s PC big-box game: a CD-ROM-enhanced graphic adventure about a film editor who is also a spy. Box art: a man in shirtsleeves at a flatbed film editing desk, a strip of film running through his fingers, a pistol half-hidden in an open film can, a city skyline in a strip of celluloid behind him, moody blue and amber. A \"CD-ROM ENHANCED\" starburst, a small publisher logo. Flat-on, the whole box front, portrait.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "The newest game in their front window display was Mountaintop's Final Cut, a graphic adventure about a film editor who was also a spy, one of their first CD-ROM enhanced titles."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6: the newest game in the window display.",
+      "art_cat": "PICTURE",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_final_cut_box",
+          "center": [
+            9.707,
+            6.7,
+            1.22
+          ],
+          "size": [
+            0.26,
+            0.34
+          ],
+          "facing": "-x",
+          "hide": []
+        }
+      ],
+      "lettering": "FINAL CUT",
+      "text_body": "Small at the top: MOUNTAINTOP presents. Starburst: CD-ROM ENHANCED. Bottom: \"Every cut is a clue.\""
+    },
+    {
+      "slug": "honolulu_what_lies_beyond_box",
+      "kind": "art",
+      "name": "WHAT LIES BEYOND, the box in the case under the register",
+      "file": "honolulu_what_lies_beyond_box.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_what_lies_beyond_box"
+      ],
+      "tag": "picture · honolulu_highrise · 0.24 x 0.31 m",
+      "prompt": "The front of an obscure late-1990s PC game box, small press run, never opened in its shrink wrap: a cloudy pale-blue sky field, the title in a regal cloudy-blue script, a small lone figure on a cliff edge looking out at a sea of cloud, a thin gold border. Hand-made, a little homemade in its printing. Flat-on, portrait.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "She did eye something unique in the clear display underneath the register. A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6: the shopkeeper made it himself ('Worked on it a few years back when I got out of the Army').",
+      "art_cat": "PICTURE",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_what_lies_beyond_box",
+          "center": [
+            12.9,
+            6.65,
+            0.692
+          ],
+          "size": [
+            0.24,
+            0.31
+          ],
+          "facing": "up",
+          "hide": []
+        }
+      ],
+      "lettering": "WHAT LIES BEYOND",
+      "text_body": "Small at the bottom: a one-man studio's name and \"Honolulu, Hawaii\"; on the back flap edge a hand-written price sticker."
+    },
+    {
+      "slug": "honolulu_photo_parlour_sign",
+      "kind": "art",
+      "name": "the tourist photography parlour's sign",
+      "file": "honolulu_photo_parlour_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_photo_parlour_sign"
+      ],
+      "tag": "sign · honolulu_highrise · 3.60 x 0.60 m",
+      "prompt": "A shop sign band over a tourist-trap photography parlour in a 1970s Honolulu office-tower lobby, early 2000s: bright yellow with a hibiscus flower and a camera icon, cheerful red script. Very wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "Ground floors are tourist trap photography parlour, travel agency, corner suit shoppe & luggage boutique."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6. Shop names invented; the kinds of shop are the text's.",
+      "art_cat": "SIGN",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_photo_parlour_sign",
+          "center": [
+            -8.827,
+            5.0,
+            3.2
+          ],
+          "size": [
+            3.6,
+            0.6
+          ],
+          "facing": "+x",
+          "hide": []
+        }
+      ],
+      "lettering": "ALOHA PORTRAITS"
+    },
+    {
+      "slug": "honolulu_travel_agency_sign",
+      "kind": "art",
+      "name": "the travel agency's sign",
+      "file": "honolulu_travel_agency_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_travel_agency_sign"
+      ],
+      "tag": "sign · honolulu_highrise · 4.20 x 0.60 m",
+      "prompt": "A shop sign band over a small travel agency in a 1970s Honolulu office-tower lobby, early 2000s: ocean blue with a white jet silhouette and a palm, clean white capitals. Very wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "Ground floors are tourist trap photography parlour, travel agency, corner suit shoppe & luggage boutique."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6. Shop names invented; the kinds of shop are the text's.",
+      "art_cat": "SIGN",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_travel_agency_sign",
+          "center": [
+            -8.827,
+            10.5,
+            3.2
+          ],
+          "size": [
+            4.2,
+            0.6
+          ],
+          "facing": "+x",
+          "hide": []
+        }
+      ],
+      "lettering": "ISLAND TRAVEL"
+    },
+    {
+      "slug": "honolulu_suit_shop_sign",
+      "kind": "art",
+      "name": "the men's suit and leather case store's sign",
+      "file": "honolulu_suit_shop_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_suit_shop_sign"
+      ],
+      "tag": "sign · honolulu_highrise · 3.00 x 0.60 m",
+      "prompt": "A shop sign band over a men's suit and luggage boutique in a 1970s Honolulu office-tower lobby, early 2000s: black with brushed brass serif lettering, a small briefcase emblem. Very wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "Ground floors are tourist trap photography parlour, travel agency, corner suit shoppe & luggage boutique."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6. Shop names invented; the kinds of shop are the text's.",
+      "art_cat": "SIGN",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_suit_shop_sign",
+          "center": [
+            8.827,
+            3.7,
+            3.2
+          ],
+          "size": [
+            3.0,
+            0.6
+          ],
+          "facing": "-x",
+          "hide": []
+        }
+      ],
+      "lettering": "SUITS & LUGGAGE"
+    },
+    {
+      "slug": "honolulu_dry_cleaner_sign",
+      "kind": "art",
+      "name": "the dry cleaner's sign",
+      "file": "honolulu_dry_cleaner_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "honolulu_dry_cleaner_sign"
+      ],
+      "tag": "sign · honolulu_highrise · 3.00 x 0.60 m",
+      "prompt": "A shop sign band over a dry cleaner in a 1970s Honolulu office-tower lobby, early 2000s: white with a blue hanger icon and plain blue capitals. Very wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch6_arcadeum.json",
+          "text": "At lunch, she had fifteen minutes to herself and went to the lobby, and returned by a boutique video game store that sat between a men's suit and leather case store and a dry cleaner that she saw on her way in."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 6. Shop names invented; the kinds of shop are the text's.",
+      "art_cat": "SIGN",
+      "score_lines": 60,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "honolulu_highrise",
+          "label": "honolulu_dry_cleaner_sign",
+          "center": [
+            8.827,
+            12.3,
+            3.2
+          ],
+          "size": [
+            3.0,
+            0.6
+          ],
+          "facing": "-x",
+          "hide": []
+        }
+      ],
+      "lettering": "DRY CLEANING"
+    },
+    {
+      "slug": "portland_bookstore_sign",
+      "kind": "art",
+      "name": "the big bookstore's red sign band",
+      "file": "portland_bookstore_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "portland_bookstore_sign"
+      ],
+      "tag": "sign · portland_downtown · 10.00 x 0.70 m",
+      "prompt": "The long sign band over the entrance of a huge independent bookstore filling a whole city block in downtown Portland, Oregon, early 2000s, seen flat-on from across the street: a deep red painted band with big white serif capitals, a small open-book emblem, rain-darkened at the edges. Very wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch4_invitation_only.json",
+          "text": "We wandered streets in the early evening, window drop shopping independent record stores, trailblazing Powells book store, being observed out in the open laughing and celebrating early that rush of impending weekend freedom rubbing it in eager curious noses that looked up from lack of passion duties."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 4. The text names Powell's; if the generator refuses the name, use CITY OF BOOKS.",
+      "art_cat": "SIGN",
+      "score_lines": 40,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "portland_downtown",
+          "label": "portland_bookstore_sign",
+          "center": [
+            -17.0,
+            15.817,
+            3.3
+          ],
+          "size": [
+            10.0,
+            0.7
+          ],
+          "facing": "-y",
+          "hide": []
+        }
+      ],
+      "lettering": "POWELL'S BOOKS",
+      "text_body": "Smaller white type at the right end: NEW & USED · OPEN 365 DAYS"
+    },
+    {
+      "slug": "portland_bookstore_corner_sign",
+      "kind": "art",
+      "name": "the bookstore's vertical corner sign",
+      "file": "portland_bookstore_corner_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "portland_bookstore_corner_sign"
+      ],
+      "tag": "sign · portland_downtown · 1.20 x 5.00 m",
+      "prompt": "A tall vertical blade sign on a city-block bookstore's corner in downtown Portland, early 2000s: deep red, white capitals stacked top to bottom, a thin white border, weathered. Tall narrow portrait, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch4_invitation_only.json",
+          "text": "We wandered streets in the early evening, window drop shopping independent record stores, trailblazing Powells book store, being observed out in the open laughing and celebrating early that rush of impending weekend freedom rubbing it in eager curious noses that looked up from lack of passion duties."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 4.",
+      "art_cat": "SIGN",
+      "score_lines": 40,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "portland_downtown",
+          "label": "portland_bookstore_corner_sign",
+          "center": [
+            -4.553,
+            15.4,
+            6.0
+          ],
+          "size": [
+            1.2,
+            5.0
+          ],
+          "facing": "-x",
+          "hide": []
+        }
+      ],
+      "lettering": "BOOKS"
+    },
+    {
+      "slug": "portland_record_store_sign",
+      "kind": "art",
+      "name": "the independent record store's sign",
+      "file": "portland_record_store_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "portland_record_store_sign"
+      ],
+      "tag": "sign · portland_downtown · 8.40 x 0.70 m",
+      "prompt": "The sign band over a small independent record store in downtown Portland, early 2000s: black with hand-painted cream lettering and a spinning-LP emblem, a little chipped, stickers on the frame. Very wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol3/vol3_ch4_invitation_only.json",
+          "text": "We wandered streets in the early evening, window drop shopping independent record stores, trailblazing Powells book store, being observed out in the open laughing and celebrating early that rush of impending weekend freedom rubbing it in eager curious noses that looked up from lack of passion duties."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 3 ch 4. Store name not given in the text.",
+      "art_cat": "SIGN",
+      "score_lines": 40,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "portland_downtown",
+          "label": "portland_record_store_sign",
+          "center": [
+            3.0,
+            15.817,
+            3.3
+          ],
+          "size": [
+            8.4,
+            0.7
+          ],
+          "facing": "-y",
+          "hide": []
+        }
+      ],
+      "lettering": "RECORDS",
+      "text_body": "Small at the right end: NEW · USED · VINYL · CDs"
+    },
+    {
+      "slug": "portland_coffee_shop_sign",
+      "kind": "art",
+      "name": "the coffee shop's sign",
+      "file": "portland_coffee_shop_sign.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "portland_coffee_shop_sign"
+      ],
+      "tag": "sign · portland_downtown · 6.40 x 0.70 m",
+      "prompt": "The sign band over a small corner coffee shop in downtown Portland, early 2000s: forest green with cream lettering and a steaming-cup emblem. Very wide, flat-on, evenly lit.",
+      "canon": [],
+      "prompt_mode": "fallback",
+      "notes": "(2026-10-29) vol 3 ch 4 (the street's furniture; not in the text).",
+      "art_cat": "SIGN",
+      "score_lines": 40,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "portland_downtown",
+          "label": "portland_coffee_shop_sign",
+          "center": [
+            14.0,
+            15.817,
+            3.3
+          ],
+          "size": [
+            6.4,
+            0.7
+          ],
+          "facing": "-y",
+          "hide": []
+        }
+      ],
+      "lettering": "COFFEE",
+      "text_body": "Small: ESPRESSO · PASTRY"
+    },
+    {
+      "slug": "blue_heron_sign",
+      "kind": "art",
+      "name": "the Blue Heron's hanging sign, 1990s",
+      "file": "blue_heron_sign.png",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "blue_heron_sign"
+      ],
+      "tag": "sign · salty_tome_interior · 1.90 x 0.40 m",
+      "prompt": "A hand-painted hanging wooden sign inside a small 1990s second-hand bookstore on the Oregon coast: a long cedar board, a painted great blue heron standing in reeds at the left, the shop's name in friendly cream serif letters on deep sea-green, a little worn at the edges. Wide, flat-on, evenly lit.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol2/vol2_ch5_lessons_in_leaves.json",
+          "text": "Many discoveries in life are made by wandering aimlessly and I owe it to chance that I discovered the Blue Heron by such an accident."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-10-29) vol 2 ch 5. The Salty Tome's building in the 1990s (Andy, 2026-10-28); laid only in the blue_heron_1997 presets (the Salty Tome's sign is stripped there).",
+      "art_cat": "SIGN",
+      "score_lines": 30,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "salty_tome_interior",
+          "label": "blue_heron_sign",
+          "center": [
+            0.0,
+            1.415,
+            2.38
+          ],
+          "size": [
+            1.9,
+            0.4
+          ],
+          "facing": "+y",
+          "hide": [],
+          "not_presets": [
+            "salty_tome_interior",
+            "salty_tome_kitchenette",
+            "salty_tome_office",
+            "salty_tome_alley",
+            "salty_tome_alley_patch"
+          ]
+        }
+      ],
+      "lettering": "THE BLUE HERON",
+      "text_body": "Small under the name: used & rare books"
     }
   ]
 }

@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 218: PICTURES FOR THE NEW SETS (roster, 12 to generate).**
+- **Honolulu (7):**
+  - the back-lit COMPUTER GAMES box sign (glows);
+  - Mountaintop's Final Cut in the window;
+  - WHAT LIES BEYOND face-up in the case, "in a regal cloudy blue script";
+  - the photo parlour, travel agency, suits & luggage and dry cleaner signs (the kinds of shop are the text's, the names invented).
+- **Portland (4):**
+  - the bookstore's red band and its corner blade (the text names Powell's; fallback CITY OF BOOKS);
+  - the record store's sign;
+  - the coffee shop's sign.
+- **The Blue Heron's hanging sign (1):** laid only in the `blue_heron_1997` presets, where the Salty Tome's sign is stripped.
+- Quotes verified verbatim. Placement tested with placeholder images: 7 + 4 + 1 laid.
+
 **2026-10-29 · pass 217: INSIDE JUDGEMENT DAY (vol 1 ch 6, draft 1).**
 - **Before:** "The street slides past the windshield, ordinary and bright." played in Ben's green pickup on a West Texas gravel turnout.
 - **Now:** `build_vehicle_cab.build_judgement_day_2026_10()` builds Faust's maroon sedan, the car parked at club_street's curb, using the Corolla pattern (the cab shifted lower, in the car's colours, a sedan body round it).
