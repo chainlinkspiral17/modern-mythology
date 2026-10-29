@@ -137,6 +137,14 @@ static func apply(root: Node, locale: String, preset_id: String = "") -> int:
 		var skip_v: Variant = row.get("not_presets", [])
 		if preset_id != "" and typeof(skip_v) == TYPE_ARRAY and (skip_v as Array).has(preset_id):
 			continue
+		# (2026-10-28, the Deck: "The Aria face should be a generation. That
+		# looks bad.") a picture PAINTED on a surface — a mural on brick — laid
+		# as a hard-edged card read as a poster taped up. `feather` (a fraction
+		# of the picture's size) fades its edges to clear, so only the paint
+		# sits on the wall.
+		var feather: float = float(row.get("feather", 0.0))
+		if feather > 0.0:
+			tex = _feathered(tex, feather)
 		var quad: MeshInstance3D = _quad(tex, row)
 		quad.name = "HeroArt_" + slug
 		root.add_child(quad)
@@ -180,6 +188,37 @@ static func _texture(stem: String) -> Texture2D:
 	return null
 
 
+static func _feathered(tex: Texture2D, feather: float) -> Texture2D:
+	var src: Image = tex.get_image()
+	if src == null or src.is_empty():
+		return tex
+	var img: Image = src.duplicate() as Image
+	if img.is_compressed():
+		if img.decompress() != OK:
+			return tex
+	img.convert(Image.FORMAT_RGBA8)
+	var longest: int = maxi(img.get_width(), img.get_height())
+	if longest > 768:
+		var k: float = 768.0 / float(longest)
+		img.resize(maxi(1, int(img.get_width() * k)), maxi(1, int(img.get_height() * k)), Image.INTERPOLATE_BILINEAR)
+	var w: int = img.get_width()
+	var h: int = img.get_height()
+	var f: float = clampf(feather, 0.01, 0.5)
+	for y: int in h:
+		var v: float = float(y) / float(maxi(h - 1, 1))
+		var dv: float = minf(v, 1.0 - v)
+		for x: int in w:
+			var u: float = float(x) / float(maxi(w - 1, 1))
+			var d: float = minf(minf(u, 1.0 - u), dv)
+			if d >= f:
+				continue
+			var px: Color = img.get_pixel(x, y)
+			px.a *= smoothstep(0.0, f, d)
+			img.set_pixel(x, y, px)
+	img.generate_mipmaps()
+	return ImageTexture.create_from_image(img)
+
+
 static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	var c: Array = row.get("center", [0.0, 0.0, 0.0])
 	var sz: Array = row.get("size", [1.0, 1.0])
@@ -198,6 +237,8 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	var two_sided: bool = bool(row.get("two_sided", false))
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED if two_sided else BaseMaterial3D.CULL_BACK
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	if float(row.get("feather", 0.0)) > 0.0:
+		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	# (2026-10-14) a screen or a neon sign makes its own light — painted
 	# like a poster it went dead in every night room. `glow` (roster row) is
 	# the emission energy: the picture itself lights, on top of the room's

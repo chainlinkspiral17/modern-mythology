@@ -8255,7 +8255,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "Aria: 'always young, always curly blue hair' (vol 7 wiki). The canon gives bone black hair; the blue is a sheen, not a colour — edit if it reads wrong.",
+      "notes": "Aria: 'always young, always curly blue hair' (vol 7 wiki). The canon gives bone black hair; the blue is a sheen, not a colour — edit if it reads wrong. (2026-10-28) feather 0.18: painted on the brick, not a card on it (the Deck: \"That looks bad.\")",
       "apply": [
         {
           "locale": "salty_tome_interior",
@@ -8280,7 +8280,8 @@
             "blue_heron_1997",
             "blue_heron_1997_lounge",
             "blue_heron_1997_sea_wall"
-          ]
+          ],
+          "feather": 0.18
         }
       ],
       "inspect": true
