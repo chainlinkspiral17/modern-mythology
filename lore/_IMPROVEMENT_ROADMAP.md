@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 219: PEOPLE IN THE NEW SETS (draft 2 of the gallery and the hallway).**
+- **`_props/figures.make_standing_figure`:** one shared stand-in person.
+  - Two legs, a torso narrower at the waist, arms down / in front holding something / folded, a head, hair.
+  - Optional dress and stoop. It returns the hands' position for a held thing.
+  - The sets' inline torso+cylinder figures were the same idea, unshared.
+- **chess_hallway:** Earl, stooped, in a cardigan, comes down the hall carrying the garden trough. The trough insert frames him and it.
+- **vacant_gallery_lobby:** eight people waiting in small circles ("circles within circles"), and the doll-dress woman in the corner.
+- **Audit fix:** `figures` joins locale_geometry_audit's run-for-real module list. Stubbed, every audit was blind to the people and to what they hold ("no geometry named trough").
+- Gates at zero.
+
 **2026-10-29 · pass 218: PICTURES FOR THE NEW SETS (roster, 12 to generate).**
 - **Honolulu (7):**
   - the back-lit COMPUTER GAMES box sign (glows);

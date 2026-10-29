@@ -415,7 +415,7 @@ script = ExtResource("14_dbgm")
 ; "a pigeon occupied park plaza"; "The whole flock lifts an inch off the stones and settles again where it was."
 [node name="shot_insert_pigeons" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(46.500, 2.600, 0.500)
-rotation = Vector3(-0.3063, -0.6055, 0.0)
+rotation = Vector3(-0.4950, -0.7352, 0.0)
 metadata/fov = 52.0
 [node name="shot_insert_records" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.000, 1.600, -9.000)

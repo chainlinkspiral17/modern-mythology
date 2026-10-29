@@ -28,9 +28,10 @@ Blender: x east, y north, z up; Godot (x, z, -y). The street runs E-W on
 y 0..14 (the camera's sidewalk on the south side, y 0..4); the plaza at
 its east end (x 40..64); the gallery a separate area at x 100..114.
 
-DRAFT 2 targets: hero art for the bookstore's sign, the record store's
-window of LP covers, the invite card; figures in the line at the gallery
-door; the screening room beyond the dark; Deck framing.
+(DRAFT 2, 2026-10-29: the people waiting in the gallery and the doll-dress
+woman in the corner.)
+DRAFT 3 targets: the record store's window of LP covers, the invite card;
+the line outside the gallery door; the screening room beyond the dark; Deck framing.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -39,6 +40,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_ta
                              join_stock, export_glb)
 from _props.structure import make_wall, make_wall_with_openings
 from _props.furniture import make_chair
+from _props.figures import make_standing_figure
 
 BRICK = (0.56, 0.32, 0.26, 1.0)
 BRICK_DK = (0.44, 0.26, 0.22, 1.0)
@@ -203,6 +205,26 @@ def build_gallery():
     for k, (cx, cy, yaw) in enumerate(((109.5, 6.5, 0.4), (110.8, 7.4, -0.3), (112.6, 8.6, 2.6), (106.0, 3.2, 1.2))):
         make_chair(f"Folding_Chair_{k}", cx, cy, yaw=yaw, wood=(0.36, 0.36, 0.38, 1.0))
     make_box("Corner_Rug_Remnant", (112.6, 9.0, 0.004), (1.4, 1.0, 0.006), (0.56, 0.30, 0.32, 1.0))
+    # (draft 2, 2026-10-29) the people waiting: "These people were individuals
+    # ... cool and different"; "Justin and April at different corners with
+    # different circles, our shapes formed an imaginary triangle, circles
+    # within circles"; and in the corner "a strange young woman ... in a
+    # ratty dress. Ratty like a doll dress"
+    crowd = (((103.6, 4.4, 0.6), ((0.20, 0.20, 0.22, 1.0), (0.30, 0.20, 0.18, 1.0))),
+             ((104.4, 5.0, 3.6), ((0.46, 0.30, 0.50, 1.0), (0.20, 0.24, 0.30, 1.0))),
+             ((103.4, 5.4, 2.2), ((0.70, 0.62, 0.30, 1.0), (0.16, 0.16, 0.18, 1.0))),
+             ((108.2, 4.2, -2.4), ((0.16, 0.30, 0.34, 1.0), (0.24, 0.22, 0.20, 1.0))),
+             ((108.9, 3.5, 2.8), ((0.60, 0.20, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0))),
+             ((107.6, 3.3, 0.9), ((0.30, 0.32, 0.28, 1.0), (0.26, 0.24, 0.22, 1.0))),
+             ((111.0, 5.6, 1.9), ((0.86, 0.84, 0.78, 1.0), (0.18, 0.20, 0.24, 1.0))),
+             ((111.8, 4.9, -1.2), ((0.24, 0.20, 0.30, 1.0), (0.20, 0.20, 0.22, 1.0))))
+    hairs = ((0.12, 0.10, 0.08, 1.0), (0.60, 0.40, 0.20, 1.0), (0.82, 0.30, 0.50, 1.0), (0.20, 0.16, 0.12, 1.0))
+    for k, ((fx, fy, hd), (coat, pants)) in enumerate(crowd):
+        make_standing_figure(f"Gallery_Waiting_{k}", fx, fy, heading=hd, h=1.62 + (k % 3) * 0.08, coat=coat, pants=pants,
+                             hair=hairs[k % 4], arms=("folded", "down", "front")[k % 3])
+    make_standing_figure("Doll_Dress_Woman", 112.9, 9.2, heading=math.pi * 0.85, h=1.60, coat=(0.70, 0.56, 0.58, 1.0),
+                         dress=(0.70, 0.56, 0.58, 1.0), pants=(0.80, 0.74, 0.70, 1.0), hair=(0.56, 0.24, 0.16, 1.0), arms="front")
+
 
 
 def main():

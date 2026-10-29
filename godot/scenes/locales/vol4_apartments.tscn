@@ -394,12 +394,10 @@ metadata/fov = 38.0
 
 ; "an elderly man was walking their way with a garden trough in his hand"
 [node name="shot_insert_trough__chess_hallway" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(41.900, 1.300, -10.600)
-rotation = Vector3(-0.4336, 0.4228, 0.0)
+position = Vector3(41.550, 1.550, -9.600)
+rotation = Vector3(-0.3486, -0.1326, 0.0)
 metadata/fov = 40.0
-
-; "The elevator hums and settles, slow as an old man."
 [node name="shot_insert_elevator__chess_hallway" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(41.150, 1.500, -0.750)
-rotation = Vector3(-0.2289, -1.0778, 0.0)
+position = Vector3(41.950, 1.350, -1.750)
+rotation = Vector3(-0.6476, -1.3734, 0.0)
 metadata/fov = 40.0

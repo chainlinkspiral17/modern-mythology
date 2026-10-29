@@ -21,7 +21,8 @@ length, its carpet and sconces, the trough set down by a door.
 
 Blender: x east, y north, z up; Godot (x, z, -y).
 
-DRAFT 2 targets: Earl and his trough as a hero prop; the influx bathroom
+(DRAFT 2, 2026-10-29: Earl, a stooped figure carrying the trough.)
+DRAFT 3 targets: the influx bathroom
 mirror; Chess's own door at the hallway's end; Deck framing.
 """
 import os, sys, math
@@ -31,6 +32,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_la
                              join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window, make_blinds
 from _props.furniture import make_bed, make_chair, make_table, make_lamp
+from _props.figures import make_standing_figure
 
 BEIGE = {"wall": (0.84, 0.80, 0.70, 1.0), "baseboard": (0.70, 0.66, 0.58, 1.0)}
 HALL = {"wall": (0.76, 0.72, 0.60, 1.0), "baseboard": (0.36, 0.28, 0.22, 1.0)}
@@ -138,11 +140,15 @@ def build_chess_hall():
                             baseboard_face_sign=-1, openings=[(41.6, 1.5, 1.0, 1.4)])
     make_window("Hall_End_Window", (41.6, 29.92, 1.5), width=1.0, height=1.4, axis='X', room_dir=-1)
     make_box("Hall_End_View", (41.6, 40.0, 3.0), (30.0, 0.2, 20.0), (0.76, 0.82, 0.90, 1.0))
-    # the garden trough Earl carried, set down by his door; a doormat
-    make_box("Garden_Trough", (41.0, 12.6, 0.12), (0.30, 0.80, 0.22), (0.56, 0.36, 0.24, 1.0))
-    make_box("Garden_Trough_Soil", (41.0, 12.6, 0.235), (0.26, 0.76, 0.01), (0.30, 0.22, 0.16, 1.0))
+    # (draft 2, 2026-10-29) EARL coming down the hall toward the elevator,
+    # "with a garden trough in his hand": an old man, a little stooped, a
+    # cardigan, the trough held in front of him
+    hx, hy, hz = make_standing_figure("Earl", 41.75, 11.5, heading=math.pi, h=1.68, coat=(0.52, 0.46, 0.36, 1.0),
+                                      pants=(0.36, 0.34, 0.32, 1.0), hair=(0.82, 0.82, 0.80, 1.0), arms="front", stoop=0.12)
+    make_box("Garden_Trough", (hx, hy, hz + 0.06), (0.70, 0.26, 0.20), (0.56, 0.36, 0.24, 1.0))
+    make_box("Garden_Trough_Soil", (hx, hy, hz + 0.165), (0.66, 0.22, 0.01), (0.30, 0.22, 0.16, 1.0))
     for k in range(4):
-        make_blob(f"Garden_Trough_Plant_{k}", (41.0, 12.3 + k * 0.2, 0.34), 0.08, (0.34, 0.56, 0.28, 1.0), noise=0.2, seed=k, squash=0.9)
+        make_blob(f"Garden_Trough_Plant_{k}", (hx - 0.24 + k * 0.16, hy, hz + 0.26), 0.07, (0.34, 0.56, 0.28, 1.0), noise=0.2, seed=k, squash=0.9)
     make_box("Hall_Doormat", (40.95, 12.0, 0.008), (0.40, 0.70, 0.01), (0.40, 0.34, 0.24, 1.0))
 
 
