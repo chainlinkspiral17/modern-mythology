@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 231: the insert pass on hospice_room_night, dambrosios_formal, montreal_apartment, new_orleans_bar.**
+- **Pass:**
+  - hospice: the rose in its glass on the sill, the chair, the sink, the bedside table, Alice;
+  - the formal room's closeups and the note on Table 14;
+  - montreal: notebook, phone, the narwhal mug, the dust in the window;
+  - the bar: Douglas, the hands, the TV.
+- **Montreal, re-placed:**
+  - **drainpipe:** the camera stood out in the alley, 1 m from the pipe, a dark wall with a pink stripe. It is now John's view from inside, through the window mullions: "the way the light hit that one specific graffiti-scarred drainpipe."
+  - **coffee maker:** it was blocked by a counter edge. It is now the drip maker with the mugs and the press.
+- **Direction (figurative cues):**
+  - ch13 #29: death "a guest at the door" → `establish_b`.
+  - ch3 #114: the baby's "second kick was new" was `insert register`. It is now `closeup nicola`.
+  - ch14 #16: the posters line had the notebook cue. The cue moves to #17 ("Notebooks… formed precarious ziggurats"), and #16 → `establish_b`.
+  - ch8 #6: the Strength card's "chain you've placed on yourself": the insert is dropped.
+- **Process note:** four Godot renders in parallel died part-way. Render two at a time at most.
+- **Next:**
+  - the bar TV frame looks down onto the screen (it reads, but oddly);
+  - then the graustark sets (chalk wall ×2, wreck, ruins) and the small sets' inserts.
+
 **2026-10-29 · pass 230: the insert pass on elicia_apartment (150) and roberts_kitchen (145); the espresso machine checked.**
 - **Espresso machine:** rendered on the rebuilt GLB, it reads as a machine: badge and gauges, heads and portafilters, cups under the spouts, the drip tray and the wand.
 - **elicia_apartment:** passes (camera and red light, the eviction notice on the door, the award, the laptop, the teacup). The counter insert is weak: the cup on the saucer is far up the frame.

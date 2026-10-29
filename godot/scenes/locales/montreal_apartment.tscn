@@ -359,9 +359,9 @@ metadata/fov = 42.0
 ; RE-AIMED 2026-10-03: from inside at the window, THROUGH the glass at the pipe
 ; across the alley (the lens stood in the alley against the pipe)
 [node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.600, 1.300, -6.300)
-rotation = Vector3(0.2053, -0.6910, 0.0)
-metadata/fov = 36.0
+position = Vector3(-0.300, 1.550, -3.900)
+rotation = Vector3(-0.0140, -0.4690, 0.0)
+metadata/fov = 30.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
@@ -379,9 +379,9 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_maker__montreal_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.179, 1.312, -4.008)
-rotation = Vector3(-0.2618, -0.9012, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.200, 1.650, -3.750)
+rotation = Vector3(-0.5200, -0.6750, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_narwhal__montreal_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.375, 1.049, -2.764)
