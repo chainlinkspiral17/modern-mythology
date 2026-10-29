@@ -357,6 +357,39 @@ light_color = Color(0.56, 0.6, 0.8, 1)
 light_energy = 0.08
 shadow_enabled = false
 
+; ── THE CLUB OFFICE (2026-10-29): it had no light at all and rendered
+; black. Dickens Dean's office off the club floor: the pendant over the
+; briefing table ("Each of them has a t-shirt laid out. There are four
+; portable listening devices."), his desk lamp, the pink of the club's #
+; coming through the open door.
+[node name="Club_Off_Pendant_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.0, 2.05, -3.0)
+light_color = Color(1.0, 0.86, 0.66, 1)
+light_energy = 1.6
+omni_range = 4.6
+shadow_enabled = false
+
+[node name="Club_Off_Desk_Lamp_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.2, 1.15, -5.5)
+light_color = Color(1.0, 0.80, 0.54, 1)
+light_energy = 1.0
+omni_range = 3.4
+shadow_enabled = false
+
+[node name="Club_Neon_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.6, 2.4, 7.4)
+light_color = Color(0.98, 0.36, 0.66, 1)
+light_energy = 2.0
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Club_Door_Neon_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.0, 1.6, 0.6)
+light_color = Color(0.98, 0.40, 0.70, 1)
+light_energy = 0.7
+omni_range = 3.0
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

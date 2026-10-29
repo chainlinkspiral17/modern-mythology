@@ -381,6 +381,12 @@ def build_club_office():
         make_chamfer_box(f"Listener_{k}", (x, ty + 0.36, 0.785), (0.07, 0.11, 0.03), (0.08, 0.08, 0.09, 1.0), chamfer=0.008)
         make_tube(f"Listener_{k}_Earpiece", [(x, ty + 0.30, 0.78), (x + 0.05, ty + 0.26, 0.775), (x + 0.08, ty + 0.30, 0.775)],
                   0.004, (0.20, 0.20, 0.22, 1.0))
+    # (2026-10-29) a pendant over the briefing table — the room had no light
+    # but Dean's desk lamp, and rendered black (club_office.tscn now hangs
+    # practicals on this, the lamp, and the neon through the door)
+    make_cyl("Club_Off_Pendant_Cord", (tx, ty, CH - 0.35), 0.006, 0.70, (0.08, 0.08, 0.08, 1.0), segments=6)
+    make_cyl("Club_Off_Pendant_Shade", (tx, ty, CH - 0.78), 0.22, 0.16, (0.12, 0.10, 0.12, 1.0), segments=14)
+    make_cyl("Club_Off_Pendant_Bulb", (tx, ty, CH - 0.87), 0.05, 0.04, (1.0, 0.92, 0.74, 1.0), segments=10)
     make_box("Needle_Tray", (tx + 0.95, ty - 0.30, 0.775), (0.30, 0.20, 0.01), (0.80, 0.82, 0.84, 1.0))
     for k in range(3):
         make_cyl(f"Needle_{k}", (tx + 0.88 + k * 0.07, ty - 0.30, 0.79), 0.008, 0.10, (0.86, 0.88, 0.92, 1.0), axis='Y', segments=8)
