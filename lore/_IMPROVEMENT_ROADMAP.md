@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 220: VOL 5, the three worst establishing frames re-aimed (task #1).**
+- **Method:** render vol 5's nine most-read views (on GLBs rebuilt locally first, since six were stale), take the three that read worst, and re-place each camera only after rendering 2–4 candidates.
+- **new_orleans_apartment** (159 lines): the view faced the bare north wall and the kitchenette (its old target, the bed, moved to a wing in draft 4). It now looks from the NE, west of Jimmy's bass (its strings had stood 0.48 m from the lens in the first try), SW at both tall shuttered windows, the door between, the brick, the fan and the sofa.
+- **roberts_kitchen** (144): from the front door the lens looked down the island through the foyer's cased opening. Now from the SE, NW across the island and a stool to the sink under the window, the hood, the uppers and the fridge.
+- **elicia_apartment** (149): a floor lamp's shade and the armchair filled the near frame. Now from the front door looking N: the desk and monitors at the window, the whiteboard, corkboard and poster, the shelf, the tripod, the counter, the ring light.
+- Gates at zero (preset_vantage, vantage_obstruction, wrong_room).
+- **Next (vol 5):**
+  - new_orleans_office (cramped, desk in the face);
+  - the New Orleans apartment's windows (flat glow: window views to write);
+  - houston_office's empty floor;
+  - then the closeup/insert passes per set.
+
 **2026-10-29 · pass 219: PEOPLE IN THE NEW SETS (draft 2 of the gallery and the hallway).**
 - **`_props/figures.make_standing_figure`:** one shared stand-in person.
   - Two legs, a torso narrower at the waist, arms down / in front holding something / folded, a head, hair.

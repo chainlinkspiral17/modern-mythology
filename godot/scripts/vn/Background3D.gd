@@ -461,8 +461,13 @@ const CAMERA_PRESETS := {
 		# re-planned by zones (plan.zoned) — the living room 1.5 m W, the
 		# dining room 1.5 m E, the kitchen run 1.2 m N, the island 0.6 m N;
 		# the foyer and this vantage stay. The island no longer fills the lens.
-		"camera_origin": Vector3(0.55, 1.62, -0.85),
-		"camera_rotation": Vector3(-0.07, 0.12, 0.0),
+		# (2026-10-29, vol 5 pass) from the front door the lens looked down the
+		# island's long axis through the foyer's cased opening: the header,
+		# a post and the island's end filled the near frame. From the SE of
+		# the kitchen it looks NW across the island (a stool at its side) to
+		# the sink under the window, the hood, the uppers and the fridge.
+		"camera_origin": Vector3(2.80, 1.62, -2.10),
+		"camera_rotation": Vector3(-0.09, 0.798, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -536,8 +541,14 @@ const CAMERA_PRESETS := {
 		# corner). Room is 7×5.5m, ceiling 2.6 — eye 1.85 keeps the
 		# crown molding out of frame. The old default yaw-180 vantage
 		# faced the entry wall (the "abstract corners" complaint).
-		"camera_origin": Vector3(-2.6, 1.85, -0.8),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-57.0), 0.0),
+		# (2026-10-29, vol 5 pass) from the SW corner a floor lamp's shade and
+		# the armchair filled the near frame. From just inside the front door
+		# looking N: the desk and its monitors under the window (left), the
+		# whiteboard, corkboard and poster on the N wall, the shelf, the
+		# tripod, the kitchen counter and the ring light (right), the sofa's
+		# back low in the foreground.
+		"camera_origin": Vector3(0.0, 1.80, -0.45),
+		"camera_rotation": Vector3(-0.08, 0.088, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
