@@ -6,6 +6,10 @@
   "title": "Prelude in the Editing Suite",
   "nodes": [
     {
+      "t": "bg",
+      "src": "3d:suite_wide"
+    },
+    {
       "t": "narrate",
       "text": "PRELUDE IN THE EDITING SUITE",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/000.mp3"

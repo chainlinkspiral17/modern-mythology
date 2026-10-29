@@ -6,6 +6,10 @@
  "title": "Act One — Fortress of Solitude",
  "nodes": [
   {
+   "t": "bg",
+   "src": "3d:pharmacy_office"
+  },
+  {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
@@ -33,7 +37,7 @@
    "text": "Three was the right number. The mirror agrees — a little too readily.",
    "voice": "assets/audio/voice/vol1_ch2_pharmacy_mirror/003.mp3"
   },
-{
+  {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
