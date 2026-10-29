@@ -643,9 +643,15 @@ const CAMERA_PRESETS := {
 		# just inside the door looking NNW at the bed: canopy + brick
 		# wall (frame right) with the tall room's headroom above. Eye
 		# lifted to 1.80 for the 3.4m ceiling grandeur.
-		"camera_origin": Vector3(2.2, 1.80, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(32.3), 0.0),
-		"fov": 60.0,
+		# (2026-10-29, vol 5 pass) RE-AIMED: the old vantage near the door
+		# looked NNW at the bare north wall and the kitchenette (the bed it
+		# was aimed at moved to its own wing in draft 4). From the NE corner
+		# looking SW (west of Jimmy's bass on its stand) the frame holds the two tall shuttered windows and their
+		# iron galleries, the door between them, Jimmy's sofa with the
+		# blanket tangle (W), the TV (frame right).
+		"camera_origin": Vector3(1.6, 1.75, -5.2),
+		"camera_rotation": Vector3(-0.06, 2.75, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"new_orleans_room": {
