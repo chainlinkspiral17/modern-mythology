@@ -2226,8 +2226,11 @@ const CAMERA_PRESETS := {
 		# gap between the front seats over the dash at the road; Nicola's
 		# window (and the sun) on the right. The Moon and Judgement
 		# borrowed vol 6's parked pickup (vehicle_cab) until now.
-		"camera_origin": Vector3(-0.18, 1.36, 0.72),
-		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
+		# (2026-10-29) the eye moved right to the gap between the front
+		# seats: the two seat backs had filled the frame and the road was
+		# a sliver behind the left headrest.
+		"camera_origin": Vector3(-0.05, 1.42, 0.72),
+		"camera_rotation": Vector3(-0.12, -0.04, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -2243,8 +2246,11 @@ const CAMERA_PRESETS := {
 		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Judgement's chorus (mood:night) in the Subaru on the night road,
 		# on the dawn rig.
 		# The authored rig is suffixed to miriam_subaru; this twin has its own lights and env.
-		"camera_origin": Vector3(-0.18, 1.36, 0.72),
-		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
+		# (2026-10-29) the eye moved right to the gap between the front
+		# seats: the two seat backs had filled the frame and the road was
+		# a sliver behind the left headrest.
+		"camera_origin": Vector3(-0.05, 1.42, 0.72),
+		"camera_rotation": Vector3(-0.12, -0.04, 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
