@@ -305,6 +305,17 @@ omni_range = 2.4
 shadow_enabled = false
 
 ; ── The riverboat interior GLB ───────────────────────────────────
+; (2026-10-29) VN-only fill for the helm establish: the walnut room read
+; black below the coffered ceiling. Tagged to the preset, so the gauntlet
+; keeps its dark; sits at the desk lamp's height on the lens side, so the
+; desk lamp still looks like the source.
+[node name="Helm_Fill__riverboat_interior" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 6.3, -0.6)
+light_color = Color(1, 0.82, 0.60, 1)
+light_energy = 0.9
+omni_range = 5.5
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_boat_glb")]
 
 ; Lower-deck floor collider
