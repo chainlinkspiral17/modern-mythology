@@ -247,6 +247,17 @@ light_color = Color(0.62, 0.70, 0.90, 1)
 light_energy = 0.45
 shadow_enabled = true
 
+; (2026-10-29) the moonlight through the WEST window lands on the record
+; player beside it ("dust motes dancing in moonlight", ch12; the tonearm
+; that moves on its own, ch18). The Moon_Window directional washes the
+; room; this is the window's own pool, so the turntable inserts read.
+[node name="Moon_WestSpill__natalie_apartment_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85, 1.55, -2.10)
+light_color = Color(0.66, 0.74, 0.92, 1)
+light_energy = 0.9
+omni_range = 2.6
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -405,21 +416,21 @@ metadata/fov = 40.0
 ; (draft 5, 2026-10-21: the rug runs west from the futon now; the deck lies
 ; on its west half, blender (0.2, 2.0), the lens low off its SW corner)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.550, 0.750, -1.550)
-rotation = Vector3(-0.6765, -1.0343, 0.0)
-metadata/fov = 40.0
+position = Vector3(-0.050, 0.700, -1.550)
+rotation = Vector3(-0.9080, -0.5070, 0.0)
+metadata/fov = 32.0
 
 ; insert: her phone on the kitchen counter, ringing (vol5)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.300, 1.180, -4.450)
-rotation = Vector3(-0.2293, 0.7419, 0.0)
-metadata/fov = 38.0
+position = Vector3(-1.550, 1.300, -4.650)
+rotation = Vector3(-0.5550, 0.6435, 0.0)
+metadata/fov = 24.0
 
 ; insert: the apartment door — the bell, the stairs, the second set of feet (vol5)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.600, 1.300, -1.400)
-rotation = Vector3(-0.1979, 2.7701, 0.0)
-metadata/fov = 42.0
+position = Vector3(-0.450, 1.450, -1.900)
+rotation = Vector3(-0.2130, 3.0330, 0.0)
+metadata/fov = 45.0
 
 ; insert: the desk, the dream journal open after three years (vol5)
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -458,9 +469,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_tonearm__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.519, 0.971, -0.562)
-rotation = Vector3(-0.2618, 0.5309, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.550, 1.250, -0.850)
+rotation = Vector3(-0.7200, 0.9100, 0.0)
+metadata/fov = 46.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_platter__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]

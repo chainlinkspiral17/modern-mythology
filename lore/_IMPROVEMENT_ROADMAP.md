@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 227: natalie_apartment_night, the insert pass (270 lines, vol 5's busiest set).**
+- **Rendered:** the twelve markers its lines call.
+- **Good:** card (the reading on the coffee table), futon, establish_b, both character closeups, coat.
+- **Re-placed** (aim was on axis; the frames were the problem):
+  - **door:** it saw a bare wall with the door's edge at the right. It now looks square at the leaf, knob and chain plate.
+  - **phone:** a speck on the far counter. Now 0.5 m off at fov 24: "Her phone, on the kitchen counter, rang."
+  - **deck:** mostly floor. It now looks down on the deck and the two cards on the rug.
+  - **tonearm:** a black mass. `Moon_WestSpill__natalie_apartment_night` is the west window's own moonlight pool ("dust motes dancing in moonlight"), and the tonearm and pivot now catch it. The black is the record on the platter.
+- **Direction:**
+  - ch12 #35, Natalie dancing, had `insert fridge` (the fridge is only a hum in the line). It is now `establish`.
+  - ch18's Subaru description ("Miriam's car was a 2009 Subaru wagon… The back seat had a folded blanket") played over the apartment. The car background moves up two lines (the file has no gotos), and the cue is `insert blanket`.
+- **Gates:** marker_aim and shot_marker at 0.
+- **Next:** the same pass on houston_office (242) and new_orleans_office (199).
+
 **2026-10-29 · pass 226: VOL 5, the night rooms and the small sets.**
 - **hospice_room_night (127 lines, ch13):** "The room was lit only by the small under-cabinet light above the sink." It rendered as an even grey.
   - The night ambient goes 0.40 → 0.18.
