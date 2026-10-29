@@ -91,7 +91,8 @@ def build_interview():
     make_chair("Julie_Chair", tx - 0.95, ty, yaw=-math.pi / 2, wood=(0.36, 0.38, 0.40, 1.0), seat_col=(0.28, 0.30, 0.34, 1.0))
     make_chair("James_Chair", tx + 0.95, ty, yaw=math.pi / 2, wood=(0.36, 0.38, 0.40, 1.0), seat_col=(0.28, 0.30, 0.34, 1.0))
     # on the table: James's notebook with the pen on its clip, the folder,
-    # the styrofoam cups he poured, the coffee pot set down between them
+    # the styrofoam cups he poured, the coffee pot set down at his end
+    # (it stood mid-table, square in both closeups)
     top = 0.76
     make_box("Interview_Notebook", (tx + 0.42, ty - 0.10, top + 0.006), (0.16, 0.24, 0.012), (0.92, 0.90, 0.80, 1.0))
     make_box("Interview_Notebook_Coil", (tx + 0.42, ty + 0.02, top + 0.016), (0.16, 0.012, 0.012), (0.70, 0.70, 0.72, 1.0))
@@ -100,9 +101,9 @@ def build_interview():
     for k, (cx, cy) in enumerate(((tx + 0.40, ty + 0.30), (tx - 0.40, ty - 0.20), (tx + 0.05, ty - 0.32))):
         make_lathe(f"Interview_Coffee_Cup_{k}", (cx, cy, top), [(0.0, 0.0), (0.032, 0.0), (0.040, 0.10), (0.0, 0.10)], (0.96, 0.96, 0.94, 1.0), segments=10)
         make_cyl(f"Interview_Coffee_Cup_{k}_Coffee", (cx, cy, top + 0.092), 0.036, 0.004, (0.24, 0.14, 0.08, 1.0), segments=10)
-    make_lathe("Interview_Coffee_Pot", (tx - 0.05, ty + 0.10, top), [(0.0, 0.0), (0.075, 0.0), (0.085, 0.08), (0.06, 0.16), (0.05, 0.19), (0.0, 0.19)],
+    make_lathe("Interview_Coffee_Pot", (tx + 0.62, ty + 0.30, top), [(0.0, 0.0), (0.075, 0.0), (0.085, 0.08), (0.06, 0.16), (0.05, 0.19), (0.0, 0.19)],
                (0.28, 0.18, 0.12, 0.85), segments=12)
-    make_box("Interview_Coffee_Pot_Handle", (tx - 0.05, ty + 0.20, top + 0.10), (0.03, 0.04, 0.10), (0.10, 0.10, 0.10, 1.0))
+    make_box("Interview_Coffee_Pot_Handle", (tx + 0.62, ty + 0.40, top + 0.10), (0.03, 0.04, 0.10), (0.10, 0.10, 0.10, 1.0))
     # the coffee cart in the NE corner: the machine the pot came from
     make_box("Coffee_Cart", (3.9, 3.55, 0.40), (0.70, 0.45, 0.80), (0.40, 0.42, 0.44, 1.0))
     make_box("Coffee_Maker", (3.8, 3.6, 0.96), (0.24, 0.26, 0.32), (0.86, 0.84, 0.78, 1.0))

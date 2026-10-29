@@ -366,8 +366,8 @@ metadata/fov = 38.0
 
 ; "he poured coffee for himself and the other men in the room"
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.500, 1.350, -1.400)
-rotation = Vector3(-0.4820, -0.7480, 0.0)
+position = Vector3(2.200, 1.400, -1.550)
+rotation = Vector3(-0.5144, -0.6908, 0.0)
 metadata/fov = 40.0
 
 ; closeup: Julie's chair from James's side, the observation mirror behind her

@@ -46,7 +46,7 @@ CFG = {
 MARKERS = [
     ("shot_insert_notebook", (3.10, 1.35, -1.55), (-0.7730, 0.9410), 38.0,
      "\"He pulled his pin from the clip on his notebook and tapped the butt, clicking it ready.\""),
-    ("shot_insert_coffee", (1.50, 1.35, -1.40), (-0.4820, -0.7480), 40.0,
+    ("shot_insert_coffee", (2.20, 1.40, -1.55), (-0.5144, -0.6908), 40.0,
      "\"he poured coffee for himself and the other men in the room\""),
     ("shot_closeup_julie", (3.20, 1.25, -2.00), (-0.1020, 1.5708), 45.0,
      "closeup: Julie's chair from James's side, the observation mirror behind her"),
