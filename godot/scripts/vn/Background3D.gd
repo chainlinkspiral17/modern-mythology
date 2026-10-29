@@ -2690,6 +2690,20 @@ const CAMERA_PRESETS := {
 	# (painted 2050) and Aria's face on the alley wall, the slowstick terminal,
 	# the substrate patch, Kai's notebook, the cedar bowls, Margit's mug, Lena's
 	# brush, the crow, the Salty Tome's sign; the store's cat stays.
+	# (2026-10-28) THE ALLEY BEFORE THE FACE: vol7 ch14 "painting" from the
+	# alley's first light ("The patch was the size of her torso ... The patch
+	# was the place where the face was going to go") until the face is done
+	# ("The face on the wall was the face.") — the face's stand-in and its
+	# picture leave; the substrate patch stays. Everything after keeps the face.
+	"salty_tome_alley_patch": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		"camera_origin": Vector3(0.8, 1.60, -9.5),
+		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
+		"fov": 58.0,
+		"strip": ["Face_"],
+		"suppress_input": true,
+	},
 	"blue_heron_1997": {
 		"scene": "res://scenes/locales/salty_tome_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",

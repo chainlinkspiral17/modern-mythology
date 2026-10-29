@@ -3835,6 +3835,14 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-29 · pass 216: THE ALLEY BEFORE THE FACE (vol 7 ch14).**
+- The generated alley face was laid in every `salty_tome_alley` chapter, including the morning Lena paints it.
+- **New preset `salty_tome_alley_patch`:** the same view with the face's stand-in stripped and its picture skipped (`not_presets`). The substrate patch stays.
+- **ch14_painting:**
+  - plays it from the alley's first light (node 51: "The patch was the place where the face was going to go");
+  - switches back to `salty_tome_alley` before "The face on the wall was the face." (a bg node inserted; the chapter's choice targets all precede it; vn_target audit clean).
+- Everything after (ch14_figure on) keeps the face.
+
 **2026-10-28 · pass 215: VOL 4's APARTMENTS + the mural that looked like a poster (draft 1).**
 - **New `vol4_apartments`.** Both scenes played on vol 7's 2052 Finn apartment.
   - **influx** ("He fills the morning emptiness with hot coffee"; "the apartment gates inhale to let him out"):

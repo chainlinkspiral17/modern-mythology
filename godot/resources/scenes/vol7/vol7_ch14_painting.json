@@ -85,19 +85,22 @@
       "prompt": "",
       "opts": [
         {
-          "text": "look at", "skill": "logic",
+          "text": "look at",
+          "skill": "logic",
           "goto": 18,
           "flag": "ch14_bowls_looked",
           "hide_if_flag": "ch14_bowls_looked"
         },
         {
-          "text": "turn a bowl", "skill": "signal",
+          "text": "turn a bowl",
+          "skill": "signal",
           "goto": 21,
           "flag": "ch14_bowls_turned",
           "hide_if_flag": "ch14_bowls_turned"
         },
         {
-          "text": "leave them", "skill": "composure",
+          "text": "leave them",
+          "skill": "composure",
           "goto": 24
         }
       ]
@@ -275,7 +278,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:salty_tome_alley",
+      "src": "3d:salty_tome_alley_patch",
       "t": "bg"
     },
     {
@@ -543,6 +546,10 @@
     {
       "text": "[mood:day_bright][shot:establish]She finished the line of the collarbone. The count was at six hundred and twelve. She stepped back.",
       "t": "narrate"
+    },
+    {
+      "t": "bg",
+      "src": "3d:salty_tome_alley"
     },
     {
       "text": "[beat:still][shot:insert face~]The face on the wall was the face.",
