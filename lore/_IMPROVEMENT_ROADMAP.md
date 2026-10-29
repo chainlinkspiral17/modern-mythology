@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-28 · pass 215: VOL 4's APARTMENTS + the mural that looked like a poster (draft 1).**
+- **New `vol4_apartments`.** Both scenes played on vol 7's 2052 Finn apartment.
+  - **influx** ("He fills the morning emptiness with hot coffee"; "the apartment gates inhale to let him out"):
+    - a one-bedroom an hour before sunrise;
+    - the tangled sheets, the alarm's red figures;
+    - the coffee maker and its mug;
+    - blinds onto the lot under sodium lamps, the gate.
+  - **Chess's building** ("The elevator hums and settles, slow as an old man"; Earl "with a garden trough in his hand"):
+    - the old elevator cab and its button panel;
+    - a 28 m hallway with runner, sconces and numbered doors;
+    - the trough set down by a door.
+- **Presets:** `vol4_apartment_dawn`, `chess_hallway`.
+- **Inserts:** coffee, elevator, trough. Gates at zero.
+- **The Deck: "The Aria face should be a generation. That looks bad."** The generated face was laid as a hard-edged card on the brick.
+  - HeroArt `feather` fades a painted picture's edges into its surface.
+  - The alley face is feathered 0.18, so it sits in the Starfish Nebula mural as paint.
+- **Next:**
+  - The face is laid in every alley chapter, including those before Lena paints it (ch14). It needs a pre-ch14 alley state (the patch) via a preset or `not_presets` by chapter.
+  - Earl as a figure.
+
 **2026-10-28 · pass 214: THE BLUE HERON, 1997 (vol 2 bookstores).**
 - **Andy:** the Cat's Pause and the Blue Heron "can be 1990s Salty Tome".
 - **Three era presets** on the same building:

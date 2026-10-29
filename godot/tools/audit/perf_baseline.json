@@ -344,6 +344,11 @@
   "prims": 135652,
   "objects": 370
  },
+ "vol4_apartments": {
+  "draw": 100,
+  "prims": 21832,
+  "objects": 270
+ },
  "vol4_story_rooms": {
   "draw": 132,
   "prims": 56404,

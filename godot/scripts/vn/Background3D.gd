@@ -1707,6 +1707,29 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.46, 0.48, 0.52, 1), "ambient_energy": 0.40, "fog_color": Color(0.14, 0.14, 0.16, 1)},
 		"suppress_input": true,
 	},
+	# VOL 4 apartments (2026-10-28, build_vol4_apartments.py): influx's
+	# one-bedroom in a gated complex an hour before sunrise, and Chess's
+	# building — the old elevator and the hallway where Earl passes with his
+	# garden trough. Both played on vol 7's 2052 Finn apartment.
+	"vol4_apartment_dawn": {
+		"scene": "res://scenes/locales/vol4_apartments.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_apartments.glb",
+		"camera_origin": Vector3(6.3, 1.6, -1.4),
+		"camera_rotation": Vector3(-0.08, 1.01, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"chess_hallway": {
+		"scene": "res://scenes/locales/vol4_apartments.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_apartments.glb",
+		"camera_origin": Vector3(41.6, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.02, 0.0, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.52, 0.62, 0.80, 1), "sky_horizon": Color(0.78, 0.80, 0.84, 1),
+			"ground_horizon": Color(0.40, 0.38, 0.36, 1), "ground_bottom": Color(0.20, 0.20, 0.20, 1),
+			"ambient_color": Color(0.76, 0.74, 0.70, 1), "ambient_energy": 0.60, "fog_color": Color(0.70, 0.72, 0.76, 1)},
+		"suppress_input": true,
+	},
 	"honolulu_lobby": {
 		"scene": "res://scenes/locales/honolulu_highrise.tscn",
 		"requires_glb": "res://assets/3d/locales/honolulu_highrise.glb",

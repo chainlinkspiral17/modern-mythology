@@ -1573,9 +1573,12 @@
       "scenes": 1
     },
     "vol4_apartment_dawn": {
-      "fit": "reuse",
-      "to": "3d:finn_apartment_day",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:vol4_apartment_dawn",
+      "scenes": 1,
+      "build": "vol4_apartments",
+      "built": "2026-10-28 draft 1",
+      "note": "influx: the one-bedroom an hour before sunrise, the coffee, the complex gate"
     },
     "vol4_arcade_cabinet": {
       "fit": "2d",
@@ -1699,10 +1702,12 @@
       }
     },
     "vol4_chess_apartment_morning": {
-      "fit": "reuse",
-      "to": "3d:finn_apartment_day",
-      "note": "Chess's place",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:chess_hallway",
+      "note": "Chess's building: the old elevator, the hallway, Earl's garden trough",
+      "scenes": 1,
+      "build": "vol4_apartments",
+      "built": "2026-10-28 draft 1"
     },
     "vol4_classroom": {
       "fit": "exact",
