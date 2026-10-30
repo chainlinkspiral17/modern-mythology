@@ -3859,6 +3859,14 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - **Small Wood field at dusk:**
     - Painted stroke yard numbers (`SF.build_ground(digits=True)`: 10…50…10, joined) instead of the "abstract digit-pair slabs" that read as a board on the turf. Vol 6 keeps its slabs.
     - The grandstand's back wall is board and batten in the school green, in the roof's shadow, not one cream slab.
+    - The practice walks off with helmets in hand, so the players read as bare-headed people, not seven blue cans.
+  - **Editing suite (`suite_wide`), draft 2:**
+    - A tape shelf on the west wall, two speakers on brackets, acoustic panels.
+    - A drop ceiling with troffers, and a worn patch in the carpet at the console.
+    - Render-checked (D7). The ceiling grid reads heavy (N+1).
+  - **Houston:** `shot_insert_diamond` re-aimed at the rebuilt outfield fence (`marker_reaim.py`).
+  - **`batch.py`** always runs the Godot import. A hand-built GLB is never "stale", so a render showed the old suite.
+  - **Full suite after the pass:** all 48 gate headers ran and the geometry gates are at 0. It fails only on the three deferred user-side gates.
 - **Thread B (6 commits):**
   - little_league 10, vol3_rooms 50, vol4_story_rooms 31, desert_route 13, vehicle_cab 1, small_wood_farmhouse 10 → 0.
   - The seated-figure kit's neck now runs from inside the torso into the head.
@@ -3871,7 +3879,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - Houston's outfield fence stood in the river; it is now an arc on the grass.
   - The Honolulu security desk is DELIBERATE in `placement_audit` (an island facing the doors).
 - **Draft N+1 targets:**
-  - The vol 1 editing suite (`suite_wide`: the prelude's "the three", the FOOL's entrance, the monitors).
+  - The vol 1 editing suite, draft 3: a lighter ceiling grid; the prelude's "the three", the FOOL's entrance, the monitors.
   - The 1945 clinic's green wash, with its doctor's desk, candlestick phone, hat rack and anatomy chart.
   - Honolulu shopfronts deeper than 2 m, and tower mullions.
   - Houston's Little League diamond (bases, dugouts, backstop) and the river-turn sky (star sizes, a moon).
