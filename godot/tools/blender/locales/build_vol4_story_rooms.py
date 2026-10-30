@@ -362,6 +362,25 @@ def build_mirror_room():
         make_box(f"Mirror_{tag}_Towel_Bar_Mounted", (260.03, Y(1.4), 1.42), (0.06, 0.60, 0.03), (0.70, 0.70, 0.72, 1.0))
         make_box(f"Mirror_{tag}_Tub_Body", (262.9, Y(0.95), 0.28), (1.5, 1.7, 0.56), (0.94, 0.94, 0.92, 1.0))
         make_box(f"Mirror_{tag}_Picture_Mounted", (263.58, Y(1.5), 1.6), (0.02, 0.40, 0.50), (0.40, 0.30, 0.26, 1.0))
+        # (2026-10-30, draft 2) an ordinary washroom, dressed: the floor's
+        # checker, white tile to a cap rail on the walls, the tub's shower
+        # curtain on its rod, a bath mat — all mirrored in the glass room
+        for i in range(12):
+            for j in range(10):
+                if (i + j) % 2:
+                    make_box(f"Mirror_{tag}_Floor_Tile_Stock_{i}_{j}", (260.15 + i * 0.30, Y(0.15 + j * 0.30), 0.010), (0.30, 0.30, 0.004),
+                             (0.24, 0.26, 0.30, 1.0))
+        for nm, cx, cy, sx, sy in (("W", 260.01, 1.5, 0.02, 3.0), ("E", 263.59, 1.5, 0.02, 3.0)):
+            make_box(f"Mirror_{tag}_Tile_{nm}", (cx, Y(cy), 0.60), (sx, sy, 1.20), (0.92, 0.94, 0.94, 1.0))
+            make_box(f"Mirror_{tag}_Tile_Cap_{nm}", (cx + (0.01 if nm == "W" else -0.01), Y(cy), 1.21), (0.04, sy, 0.04), (0.70, 0.74, 0.76, 1.0))
+            for g in range(1, 8):
+                make_box(f"Mirror_{tag}_Grout_{nm}_{g}", (cx + (0.011 if nm == "W" else -0.011), Y(cy), g * 0.15), (0.003, sy, 0.006),
+                         (0.66, 0.68, 0.68, 1.0))
+        make_cyl(f"Mirror_{tag}_Curtain_Rod", (262.9, Y(1.82), 1.95), 0.012, 1.60, (0.80, 0.80, 0.82, 1.0), axis='X', segments=8)
+        for k in range(5):
+            make_box(f"Mirror_{tag}_Curtain_Fold_{k}", (263.45 + 0.04 * (k % 2), Y(1.82 + 0.03 * (k % 2)), 1.20), (0.05, 0.03, 1.46),
+                     (0.70, 0.80, 0.82, 1.0))
+        make_box(f"Mirror_{tag}_Bath_Mat", (262.9, Y(2.15), 0.012), (0.80, 0.50, 0.012), (0.56, 0.62, 0.70, 1.0))
     room("Here", False)
     room("Glass", True)
     # the N wall with the mirror opening, the sink under it
@@ -377,6 +396,25 @@ def build_mirror_room():
     make_box("Mirror_Glass_Sink_Vanity", (261.8, 3.0 + 0.03 + 0.25, 0.42), (1.0, 0.50, 0.84), (0.66, 0.58, 0.48, 1.0))
     make_box("Mirror_Glass_Sink_Counter", (261.8, 3.0 + 0.03 + 0.26, 0.86), (1.04, 0.52, 0.04), (0.86, 0.84, 0.80, 1.0))
     make_box("Mirror_Side_Lamp_Mounted_Glow", (260.95, 3.0 - 0.06, 1.65), (0.10, 0.06, 0.24), (1.0, 0.92, 0.74, 1.0))
+    # the N wall's tile to the cap rail round the vanity (this side only: the
+    # glass room's own N wall is the mirror's far side)
+    for nm, cx, w in (("W", 260.45, 1.30), ("E", 263.15, 1.30), ("Mid", 261.8, 1.40)):
+        top = 1.06 if nm == "Mid" else 1.20       # under the mirror's sill (1.10)
+        make_box(f"Mirror_Here_Tile_N_{nm}", (cx, 2.965, top / 2.0), (w, 0.01, top), (0.92, 0.94, 0.94, 1.0))
+        make_box(f"Mirror_Here_Tile_N_Cap_{nm}", (cx, 2.955, top + 0.01), (w, 0.03, 0.04), (0.70, 0.74, 0.76, 1.0))
+        for g in range(1, 8 if nm != "Mid" else 7):
+            make_box(f"Mirror_Here_Grout_N_{nm}_{g}", (cx, 2.958, g * 0.15), (w, 0.003, 0.006), (0.66, 0.68, 0.68, 1.0))
+    # the faucet and its reflection, the cup with two toothbrushes, the soap
+    for side, sy in (("Here", 1.0), ("Glass", -1.0)):
+        pre = "" if side == "Here" else "Mirror_Glass_"
+        yb = 3.0 - sy * 0.08
+        make_cyl(f"{pre}Sink_Faucet_Base", (261.8, yb, 0.92), 0.025, 0.08, (0.80, 0.80, 0.82, 1.0), segments=8)
+        make_box(f"{pre}Sink_Faucet_Spout", (261.8, yb - sy * 0.08, 0.96), (0.025, 0.16, 0.025), (0.80, 0.80, 0.82, 1.0))
+        make_cyl(f"{pre}Sink_Toothbrush_Cup", (262.15, yb - sy * 0.04, 0.93), 0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=10)
+        for b in range(2):
+            make_rot_box(f"{pre}Sink_Toothbrush_{b}", (262.14 + 0.02 * b, yb - sy * 0.04, 1.02), (0.012, 0.012, 0.18),
+                         ((0.30, 0.50, 0.90, 1.0), (0.90, 0.40, 0.50, 1.0))[b], pitch=0.15 * (2 * b - 1))
+        make_chamfer_box(f"{pre}Sink_Soap", (261.42, yb - sy * 0.06, 0.895), (0.09, 0.06, 0.03), (0.92, 0.86, 0.70, 1.0), chamfer=0.01)
 
 
 def build_boys_rooms():

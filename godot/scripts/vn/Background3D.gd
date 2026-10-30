@@ -4639,8 +4639,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# "not herself, but the world behind her": over her shoulder into the mirror, one side bright, the other black
-		"camera_origin": Vector3(261.8, 1.62, -1.2),
-		"camera_rotation": Vector3(0.0, deg_to_rad(0.0), 0.0),
+		# (2026-10-30) off the mirror's axis, so the tiled walls and the lamp's
+		# one bright side read; the mirror still holds the room behind her
+		"camera_origin": Vector3(262.45, 1.60, -0.95),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(12.0), 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
