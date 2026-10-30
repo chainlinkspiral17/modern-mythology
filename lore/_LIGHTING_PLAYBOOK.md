@@ -151,6 +151,25 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-30 · a shadowed SpotLight lit nothing under the compatibility renderer
+
+**Context:** Club Sharp's cage (pass 238). A stage spot 5.8 m over the cage
+(`shadow_enabled = true`, energy 7, range 8) left the cage and its tiles
+black. Stripping the floor-show omnis, in case it was the 8-lights-per-object
+cap, changed nothing.
+- **The working fix was `shadow_enabled = false` with a much higher energy
+  (34, range 12).** The spot then poured a pool on the floor and lit the
+  bars. In this project (`gl_compatibility`), test a new spot WITHOUT
+  shadow first, then raise its energy: a 5–6 m throw needs 25–40, not the
+  1–4 an omni wants. The foxhole and airport spots that work are short
+  throws, unshadowed or low.
+- **A spot from straight above lights tops, not faces.** Add a low warm
+  omni on the camera's side as the floor's bounce (`Stage_Bounce`), or the
+  bars are silhouettes in their own pool.
+- **A shadowed omni costs six passes.** The Chau billiard lamp drew 1758
+  calls shadowed and 152 without. Leave practical omnis unshadowed unless
+  the shadow is the shot.
+
 ### 2026-10-23 · a night preset with no env is a black frame, however many practicals it has
 
 **Context:** The sweep's sw161 tier (pass 161). The farmhouse's two nights,
