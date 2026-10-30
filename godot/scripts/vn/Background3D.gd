@@ -3832,9 +3832,13 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/dean_offices.glb",
 		# "These are the things you probably shouldn't see" - the corridor, the city, the door at the end
 		"camera_origin": Vector3(142.0, 1.6, -1.0),
-		"camera_rotation": Vector3(0.0, deg_to_rad(-5.0), 0.0),
+		# (2026-10-30) turned toward the glass so the night city is half the frame,
+		# its glow on the sky (the corridor read as a black tube)
+		"camera_rotation": Vector3(0.0, deg_to_rad(-24.0), 0.0),
 		"fov": 66.0,
-		"env": {"ambient_color": Color(0.50, 0.50, 0.60, 1), "ambient_energy": 0.20, "fog_color": Color(0.06, 0.06, 0.10, 1)},
+		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.26, 0.18, 0.16, 1),
+			"ground_horizon": Color(0.14, 0.11, 0.11, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.50, 0.50, 0.60, 1), "ambient_energy": 0.28, "fog_color": Color(0.16, 0.12, 0.12, 1), "fog_sky": 0.2},
 		"suppress_input": true,
 	},
 	"ballfield_dugout": {
