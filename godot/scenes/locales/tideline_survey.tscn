@@ -348,8 +348,10 @@ metadata/fov = 45.0
 
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-10-30) from over the rim down into the pool (at 1.5 m from outside it the rim's
+; basalt stood between the lens and the pool's floor)
 [node name="shot_insert_pool__tideline_survey" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.863, 1.506, 5.622)
-rotation = Vector3(-0.2580, 0.4085, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.000, 2.100, 4.600)
+rotation = Vector3(-0.6435, -0.0000, 0.0)
+metadata/fov = 50.0
 
