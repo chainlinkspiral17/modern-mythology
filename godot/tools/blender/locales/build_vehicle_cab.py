@@ -521,6 +521,22 @@ JD_RED = (0.40, 0.18, 0.16, 1.0)
 JD_RED_DK = (0.30, 0.13, 0.12, 1.0)
 
 
+def _drop_parts(prefixes):
+    """Remove built parts whose names start with any of `prefixes` (a shared
+    builder brought them along). No-op without Blender."""
+    try:
+        import bpy as _bpy
+    except ImportError:
+        return
+    for o in list(getattr(getattr(_bpy, "data", None), "objects", []) or []):
+        try:
+            nm = o.name
+        except Exception:
+            continue
+        if isinstance(nm, str) and nm.startswith(tuple(prefixes)):
+            _bpy.data.objects.remove(o, do_unlink=True)
+
+
 def build_judgement_day_2026_10():
     """JUDGEMENT DAY (2026-10-29, vol 1 ch 6): Faust's car — club_street's
     "beat-up maroon sedan" with its primer patch — and the three of them in
@@ -560,6 +576,10 @@ def build_judgement_day_2026_10():
         make_box("Cat_Hair_Seat", (0.45, 0.20, 0.625), (0.34, 0.30, 0.004), (0.78, 0.74, 0.66, 1.0))   # the cat's
         make_box("Rearview_Shirt_Knot", (0.0, 0.92, 1.42), (0.10, 0.04, 0.06), (0.86, 0.84, 0.80, 1.0))
         make_box("Dash_Fast_Food_Bag", (-0.35, 1.05, 0.98), (0.20, 0.14, 0.10), (0.84, 0.70, 0.42, 1.0))
+    # (2026-10-30) the truck's own things are not Faust's: Ben's map on the
+    # dash (vol 6 ch14) and the phone in its cradle came along with
+    # build_dash. Drop them from this car.
+    _drop_parts(("JD_Map_Folded", "JD_Phone"))
     # the street: asphalt, the yellow line, sidewalks, live oaks, power poles, low shops, a painted wall, the overpass
     make_box("JD_Street", (ax, ay + 40.0, 0.0), (14.0, 140.0, 0.04), (0.26, 0.26, 0.27, 1.0))
     for k in range(20):

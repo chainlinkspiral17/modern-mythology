@@ -52,6 +52,11 @@
   "prims": 90280,
   "objects": 320
  },
+ "cape_perpetua_overlook": {
+  "draw": 136,
+  "prims": 30048,
+  "objects": 306
+ },
  "carrie_city": {
   "draw": 130,
   "prims": 66468,

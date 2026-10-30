@@ -50,9 +50,14 @@ def build_ground():
     make_box("Bluff_Face", (-6.1, 12.0, -3.95), (1.0, 300.0, 8.0), (0.36, 0.32, 0.28, 1.0))
     make_box("Bluff_Lip", (-5.55, 12.0, -0.10), (0.3, 300.0, 0.25), EARTH_WET)
     # trees below the platform, in the fog
-    for ti, (tx, ty, th) in enumerate(((-8.5, 9.0, 7.0), (-10.2, 12.5, 8.0), (-8.8, 15.5, 6.5), (-11.5, 7.5, 7.5))):
-        make_cyl(f"Below_Sitka_{ti}", (tx, ty, -6.0 + th / 2.0), 0.30, th, (0.30, 0.24, 0.20, 1.0), segments=7)
-        make_blob(f"Below_Sitka_Crown_{ti}", (tx, ty, -6.0 + th + 0.8), 1.6, (0.14, 0.22, 0.16, 1.0), noise=0.22, seed=31 + ti, squash=0.8)
+    # (2026-10-30, draft 2: Sitka spruce, not a ball on a stick — the four
+    # "Sitkas" read from the platform as lollipops; more of them now, their
+    # spires coming up through the fog below the rail)
+    from _props.trees import make_conifer
+    for ti, (tx, ty, th) in enumerate(((-8.5, 9.0, 9.0), (-10.2, 12.5, 11.0), (-8.8, 15.5, 8.5), (-11.5, 7.5, 10.0),
+                                        (-12.8, 16.8, 12.0), (-9.6, 19.5, 9.5), (-13.5, 10.6, 11.5), (-9.2, 4.5, 8.0),
+                                        (-14.8, 4.0, 12.5), (-11.0, 23.0, 10.5))):
+        make_conifer(f"Below_Sitka_{ti}", tx, ty, th, (0.13, 0.21, 0.15, 1.0), (0.30, 0.24, 0.20, 1.0), skirt=0.20, z0=-6.0)
     # BELOW the bluff (2026-09-30, the 09-26 sheet): the bank's top was
     # at +1.0 and its east edge at x -4, so it stood a metre over the
     # platform's western half — a solid white table with the rail and
@@ -83,6 +88,27 @@ def build_ground():
                    [(60.0, 90.0, 8.0, 0.90), (120.0, 150.0, 11.0, 0.70),
                     (220.0, 240.0, 14.0, 0.52), (400.0, 380.0, 17.0, 0.40)],
                    sides="NSE", cy=12.0, profile="treeline")
+
+
+def build_headland_trees_2026_10():
+    """DRAFT 2 (2026-10-30): the headland was bare grass round the platform.
+    Sitka spruce and shore pine stand behind the salal and along the bluff,
+    a couple wind-bent toward land, the way the coast grows them; the
+    platform sits in a clearing at the edge. Draft 3 targets: the fog as a
+    mood (the shader) rather than blobs, the sea's surf line under the
+    fog's edge, rain on the bench."""
+    from _props.trees import make_conifer
+    from _props.geometry import make_rot_box
+    spots = ((1.8, 15.0, 12.0), (3.4, 11.2, 10.0), (-1.2, 17.8, 13.0), (2.6, 19.2, 11.0), (5.8, 15.4, 14.0),
+             (6.4, 8.2, 12.0), (4.8, 3.8, 10.5), (-4.6, 18.6, 9.0), (8.8, 12.0, 13.5), (8.0, 20.5, 12.5),
+             (-3.2, 22.4, 11.5), (5.2, 24.0, 13.0), (9.5, 4.5, 11.0), (-5.0, 2.0, 8.5))
+    for i, (x, y, h) in enumerate(spots):
+        make_conifer(f"Headland_Sitka_{i}", x, y, h, (0.14, 0.23, 0.16, 1.0) if i % 2 else (0.12, 0.20, 0.14, 1.0),
+                     (0.32, 0.26, 0.20, 1.0), skirt=0.18)
+    # two shore pines on the bluff's lip, bent landward by the wind
+    for i, (x, y) in enumerate(((-5.2, 7.2), (-5.0, 16.8))):
+        make_rot_box(f"Shore_Pine_Trunk_{i}", (x + 0.5, y, 1.4), (0.18, 0.18, 2.9), (0.30, 0.24, 0.18, 1.0), pitch=0.35)
+        make_blob(f"Shore_Pine_Crown_{i}", (x + 1.4, y, 2.9), 1.3, (0.16, 0.26, 0.16, 1.0), noise=0.3, seed=80 + i, squash=0.45)
 
 
 def build_lot():
@@ -174,6 +200,7 @@ def main():
     build_lot()
     build_trail()
     build_platform()
+    build_headland_trees_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cape_perpetua_overlook.glb"))
     print(f"\n[build_cape_perpetua_overlook] exporting to {out}")
