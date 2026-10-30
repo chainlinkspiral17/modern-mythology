@@ -3588,9 +3588,13 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/caltech_dabney.tscn",
 		"requires_glb": "res://assets/3d/locales/caltech_dabney.glb",
 		# the couchmobile under its tarp, the overgrown ivy wall, Pasadena beyond (also the campus establishing shot)
-		"camera_origin": Vector3(16.6, 2.0, -1.2),
-		"camera_rotation": Vector3(0.05, deg_to_rad(-60.0), 0.0),
-		"fov": 70.0,
+		# (2026-10-30: 2 m from the tarp, the couchmobile filled the low frame and
+		# the campus was a lawn and a hedge. Back down the yard to the SE, looking
+		# NW: the house's E wing, the couchmobile against it, the palms — the
+		# ch6 "establishing shots" panorama)
+		"camera_origin": Vector3(27.5, 1.7, 6.0),
+		"camera_rotation": Vector3(0.07, 0.767, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"dabney_game_room": {

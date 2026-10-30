@@ -292,6 +292,12 @@ def build_side_yard():
     make_box("Couchmobile_Tarp_Skirt", (kx, ky - 0.10, 0.56), (1.34, 2.14, 0.12), (0.24, 0.36, 0.54, 1.0))
     for k in range(3):
         make_box(f"Couchmobile_Rope_{k}", (kx, ky - 0.80 + k * 0.70, 0.93), (1.36, 0.02, 0.86), (0.82, 0.76, 0.56, 1.0))
+    # the wings' OUTER faces toward the yard (2026-10-30: blank stucco; from
+    # the yard the house read as a windowless warehouse wall)
+    facade_windows("Ext_E_S", 'Y', CX1 + 4.0, -1.5, 5.0, sign=1)
+    facade_windows("Ext_E_N", 'Y', CX1 + 4.0, 11.0, 17.0, sign=1)
+    facade_windows("Ext_N_E", 'Y', CX1 + 8.0, 19.5, 25.5, sign=1)
+    facade_windows("Ext_S_E", 'Y', CX1 + 8.0, -9.5, -4.5, sign=1)
     # the overgrown ivy wall: block wall under lumps of ivy
     make_box("Ivy_Wall", (x1, 8.0, 1.5), (0.40, 40.0, 3.0), (0.56, 0.54, 0.50, 1.0))
     for k in range(26):
