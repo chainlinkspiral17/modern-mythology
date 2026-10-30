@@ -47,7 +47,7 @@ peak, the field's ruts to the gate gap.)
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_heightfield, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_heightfield, make_prism, export_glb
 
 COL_FIELD = (0.54, 0.50, 0.32, 1.0)      # dry pasture (2026-09-30: was 0.42 grey-olive — the barn, field and sky were one value)
 COL_DIRT = (0.40, 0.34, 0.26, 1.0)
@@ -74,13 +74,24 @@ def build_field():
 def build_gable():
     """The standing end wall, face at y=8: wide base narrowing in
     three steps to the peak, doorway and hay door punched dark."""
-    make_box("Gable_Base", (-0.5, 8.4, 1.6), (6.4, 0.35, 3.2), COL_BARN)
-    make_box("Gable_Mid", (-0.5, 8.4, 3.85), (4.6, 0.33, 1.3), COL_BARN)
-    make_box("Gable_Peak", (-0.5, 8.4, 4.95), (2.4, 0.30, 0.9), COL_BARN_DK)
-    # Board seams: darker vertical strips
-    for i in range(7):
-        make_box(f"Gable_Seam_{i}", (-3.2 + i * 0.95, 8.22, 1.6), (0.06, 0.02, 3.15),
-                 COL_BARN_DK)
+    # (2026-10-30, draft 5: a GABLE — the pitched pentagon of a barn's end,
+    # not three stepped slabs that read as a robot's head from the field)
+    make_prism("Gable_Base", (-0.5, 8.4, 0.0), [(-3.2, 0.0), (3.2, 0.0), (3.2, 3.2), (0.0, 5.5), (-3.2, 3.2)], 0.35, COL_BARN, axis="Y")
+    # battens up into the triangle, each stopping under the rake
+    for i in range(13):
+        x = -3.45 + i * 0.5
+        u = abs(x + 0.5)
+        top = 3.2 + (3.2 - u) * (2.3 / 3.2) - 0.06 if u < 3.2 else 3.14
+        if -2.05 < x < -0.35 and True:
+            make_box(f"Gable_Batten_Up_{i}", (x, 8.215, (2.6 + top) / 2.0), (0.06, 0.02, top - 2.6), COL_BARN_DK)
+            continue                                    # over the doorway only
+        make_box(f"Gable_Batten_{i}", (x, 8.215, top / 2.0), (0.06, 0.02, top - 0.02), COL_BARN_DK)
+    # the rake boards along the two roof edges, and a scrap of shingle at the peak
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        make_rot_box(f"Gable_Rake_{tag}", (-0.5 + sgn * 1.6, 8.20, 3.2 + 1.15 + 0.06), (3.95, 0.05, 0.14), (0.36, 0.34, 0.32, 1.0),
+                     pitch=sgn * 0.623)
+    make_rot_box("Gable_Shingle_Scrap", (-0.9, 8.55, 5.2), (1.2, 0.5, 0.05), COL_ROOF_DK, pitch=-0.62, roll=-0.2)
+    # (the old board seams are the battens above now, carried up under the rakes)
     # The doorway (door long gone) + hay door above
     make_box("Doorway", (-1.2, 8.30, 1.25), (1.7, 0.45, 2.5), COL_DOOR)
     make_box("Hay_Door", (-0.5, 8.28, 4.05), (1.0, 0.40, 1.0), COL_DOOR)
