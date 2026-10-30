@@ -4475,8 +4475,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/carrie_city.tscn",
 		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
 		# "Charlie is lying in bed, a book over his chest": the bed, the reading lamp, the door to the dark living room
-		"camera_origin": Vector3(1.0, 1.4, -3.0),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(-40.0), 0.0),
+		# (2026-10-30) turned from the door to the bed: the bed and its book,
+		# the canvases and the bookshelf on the W wall, the print over it
+		"camera_origin": Vector3(2.8, 1.4, -2.0),
+		"camera_rotation": Vector3(-0.13, 0.308, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},

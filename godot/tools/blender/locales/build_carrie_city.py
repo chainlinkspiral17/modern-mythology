@@ -90,6 +90,26 @@ def build_flat():
     make_box("Dresser_Clothes_Pile", (3.92 - 0.06 - 0.25, 1.8, 1.00), (0.40, 0.40, 0.08), (0.26, 0.30, 0.40, 1.0))
     make_box("Clothes_On_Floor", (2.8, 3.6, 0.03), (0.60, 0.40, 0.06), (0.30, 0.30, 0.34, 1.0))
     make_box("Bedroom_Rug", (1.8, 3.6, 0.004), (1.6, 1.2, 0.008), (0.50, 0.38, 0.30, 1.0))
+    # (2026-10-30) the bedroom was the bed in a bare box; his art lived only
+    # in the living room. "I have projects I must work on, people to see, art
+    # to make"; "Charlie is lying in bed, a book over his chest." Canvases
+    # leaning on the W wall (one begun), the bookshelf, a print over the bed,
+    # the book open on the blanket, a stack beside the bed.
+    for k, (y, w, h, col) in enumerate(((2.4, 0.90, 1.10, (0.92, 0.90, 0.84, 1.0)), (2.5, 0.70, 0.90, (0.86, 0.60, 0.40, 1.0)),
+                                        (3.3, 0.60, 0.76, (0.40, 0.52, 0.66, 1.0)))):
+        make_rot_box(f"Bedroom_Canvas_{k}", (0.20 + k * 0.05, y, h / 2.0 + 0.02), (0.03, w, h), col, roll=0.10)
+    make_rot_box("Bedroom_Canvas_1_Mark", (0.27, 2.45, 0.50), (0.004, 0.40, 0.30), (0.30, 0.20, 0.16, 1.0), roll=0.10)
+    make_box("Bedroom_Shelf", (0.20, 4.6, 0.95), (0.32, 0.90, 1.90), (0.40, 0.30, 0.22, 1.0))
+    for r in range(4):
+        for b in range(7):
+            make_box(f"Bedroom_Shelf_Book_{r}_{b}", (0.30, 4.25 + b * 0.10, 0.32 + r * 0.44), (0.18, 0.06, 0.24 + (b % 3) * 0.03),
+                     ((0.60, 0.20, 0.18, 1.0), (0.20, 0.30, 0.44, 1.0), (0.84, 0.78, 0.60, 1.0), (0.30, 0.40, 0.26, 1.0))[(r + b) % 4])
+    make_box("Bedroom_Print_Frame", (1.6, 7.92 - 0.016, 1.75), (0.80, 0.02, 0.60), (0.18, 0.16, 0.14, 1.0))
+    make_box("Bedroom_Print", (1.6, 7.92 - 0.028, 1.75), (0.72, 0.004, 0.52), (0.70, 0.66, 0.50, 1.0))
+    make_rot_box("Book_On_Bed", (1.55, 6.3, 0.66), (0.20, 0.26, 0.03), (0.30, 0.36, 0.50, 1.0), yaw=0.3)
+    for k in range(5):
+        make_box(f"Bed_Side_Book_Stack_{k}", (2.6, 7.0, 0.03 + k * 0.05), (0.20 + (k % 2) * 0.03, 0.26, 0.05),
+                 ((0.60, 0.20, 0.18, 1.0), (0.84, 0.78, 0.60, 1.0), (0.20, 0.30, 0.44, 1.0))[k % 3])
     # the living room: the small couch, the chair across, the low table;
     # canvases leaning (he has art to make); the blanket on the couch
     make_sofa("Couch", 6.2, 6.8, back="+Y", w=1.6, d=0.86, seats=2, color=(0.40, 0.44, 0.50, 1.0), arm="track",
