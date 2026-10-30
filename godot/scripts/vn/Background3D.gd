@@ -5408,6 +5408,10 @@ const CAMERA_PRESETS := {
 		"fov": 70.0,
 		# the floor below in its own light: the cabinets' glow, a thinner haze
 		"env": {"ambient_color": Color(0.46, 0.40, 0.66, 1), "ambient_energy": 1.10, "fog_color": Color(0.20, 0.14, 0.30, 1), "fog_density": 0.004},
+		# the rail's glass read as the only lit thing in the frame; the main
+		# floor's show lights are behind the lens — their slots go to the
+		# arcade's own wash (Arcade_Wash_*__club_sharp_arcade)
+		"strip": ["Atrium_Rail_Glass", "Dance_Glow_", "Truss_0_Can_", "Truss_1_Can_", "Truss_2_Can_"],
 		"suppress_input": true,
 	},
 	# (2026-10-30) the club after hours, the cage in its two states — vol1
