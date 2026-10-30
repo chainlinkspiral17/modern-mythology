@@ -3835,6 +3835,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-30 · pass 239: VOLS 1–4 backgrounds, draft 7 — the gates the suite never ran (three threads).**
+`run_all_audits.sh` exited at `music_coverage`, which fails on what only the user makes (the catalog, audio files). Every gate after it had not run in the container or on the Deck: support, placement, window backing, buried decor, the furniture FLOAT ceiling, the ambient map. Behind it were **~1,650 floating parts across twenty vols 1–4 sets**, 2 off-wall pieces, 5 buried photos, 1 pane on a board, and 9 rooms with no hum.
+- **The suite:**
+  - `music_coverage`, `audio_reference` and `page_length` now DEFER their failure to the end, so every geometry gate always has its say.
+  - The suite still exits 1 on them.
+- **The box cache:**
+  - `vantage_obstruction_audit.boxes_for` installs the audit stubs itself.
+  - A caller that skipped `install_stubs()` recorded builders with no `_props` part (walls, tables, figures) and wrote that to the shared `.box_cache`. A probe script did it, and the police station read 23 floating parts instead of 6.
+- **Main thread (support 1,269 → 0 in eleven sets):**
+  - **small_wood_field 1,202:**
+    - The crowd kit's heads sat 2 cm over their torsos.
+    - The lamp cans hung off the crossarms; they got yokes.
+    - The concession sign is on its wall.
+  - **carrie_city 9, chau_house 3, club_sharp 1, crumpled_barn 1, nick_house 4, small_wood_police 6, vol4_apartments 11, wagner_home 3, small_wood_backyard 16:** the pieces sit on their desks, walls and posts.
+  - **The backyard:**
+    - Her dresser stands against the wall (placement).
+    - The corkboard photos are on the cork (buried decor).
+    - The slider is rails over a dim family room, not glass on a board (window backing).
+  - **Ambient 9 → 0:** the eight new presets take their place's bed or their volume's floor. `new_orleans_bar` takes its place bed per `rebuild_locale_ambient`'s rule. The full rebuild was NOT run: it would re-point 44 hand-tuned beds.
+  - **Club Sharp, draft 4:** "not quite synchronized but are not quite not". The main floor turns to the dais and the # within ±17°, arms mostly up and off each other's beat.
+  - **faust_bedroom:** the couch's back faces the bed, so the lens east of it saw only the couch. The lens now stands in the aisle at the bed's foot, looking up the bed to the headboard wall. Render-checked.
+  - **Small Wood field at dusk:**
+    - Painted stroke yard numbers (`SF.build_ground(digits=True)`: 10…50…10, joined) instead of the "abstract digit-pair slabs" that read as a board on the turf. Vol 6 keeps its slabs.
+    - The grandstand's back wall is board and batten in the school green, in the roof's shadow, not one cream slab.
+- **Thread B (6 commits):**
+  - little_league 10, vol3_rooms 50, vol4_story_rooms 31, desert_route 13, vehicle_cab 1, small_wood_farmhouse 10 → 0.
+  - The seated-figure kit's neck now runs from inside the torso into the head.
+  - June's closet got back the rod and shelf that round 1 dropped.
+  - The dead store's sun shafts are `_Glow`.
+- **Thread C (1 commit, 0c9d91dd):**
+  - honolulu_highrise 108, houston_bayou 111, portland_downtown 27, pasadena_1945 17 → 0.
+  - The Houston stars are `Turn_Sky_Star_Stock` (NOT a SKY regex word: `_Star_` also names chair bases and the Texas seal).
+  - **Bug:** `_props/vehicles.make_car(along="-Y")` put the grille and headlights on the tail.
+  - Houston's outfield fence stood in the river; it is now an arc on the grass.
+  - The Honolulu security desk is DELIBERATE in `placement_audit` (an island facing the doors).
+- **Draft N+1 targets:**
+  - The vol 1 editing suite (`suite_wide`: the prelude's "the three", the FOOL's entrance, the monitors).
+  - The 1945 clinic's green wash, with its doctor's desk, candlestick phone, hat rack and anatomy chart.
+  - Honolulu shopfronts deeper than 2 m, and tower mullions.
+  - Houston's Little League diamond (bases, dugouts, backstop) and the river-turn sky (star sizes, a moon).
+  - Portland's recessed storefronts.
+  - Club Sharp's arcade and bowling alley seen from the rail.
+  - The field at dusk: May in the stand readable.
+  - The `.box_cache` could key on the stub state, not only the builder signature.
+
 **2026-10-30 · pass 238: VOLS 1–4 backgrounds, draft 6 — two threads (the user: "Keep working on background for the next several hours ... multiple threads as needed").**
 The main thread and one forked agent split the remaining vols 1–4 sets BY LOCALE (one owner per builder). Every Godot call goes through one `flock`, because two renders at once crash this 4-core box. Each thread commits only its own hunks of Background3D.gd (`stage_hunks.py`). Main thread:
 - **crumpled_barn_int (vol 2 ch1), draft 4:**

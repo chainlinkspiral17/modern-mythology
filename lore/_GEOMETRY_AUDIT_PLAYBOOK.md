@@ -158,6 +158,25 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-30 · the same bug, one gate lower: music_coverage; and a poisoned box cache
+
+**Context:** pass 238 fixed the suite stopping at `vn_story`. Pass 239 ran it
+again and it stopped at `music_coverage`, ten gates later. That gate fails on
+the user's music catalog, so it fails in every container run and on the Deck
+until every chapter has a track. Below it, support_audit had ~1,650 floating
+parts across twenty vols 1–4 sets that no run had reported.
+- **A gate whose failure only the user can clear DEFERS** (run_all_audits.sh):
+  music_coverage, audio_reference and page_length add to `$DEFERRED` and the
+  suite exits 1 at the END. A geometry gate may still exit on the spot.
+- **Read the gate headers after every full run.** Compare them with
+  `grep -c '^echo "──' run_all_audits.sh`. A short list means it stopped.
+- **The box cache is shared state.** `VO.boxes_for` writes whatever it
+  recorded to `.box_cache`. Called without `install_stubs()`, the recorder
+  sees no `_props` part, and every later audit read that thin record. A
+  scratch probe (`near.py`) did it. `boxes_for` now installs the stubs
+  itself (`locale_geometry_audit.STUBS_ON`). If counts jump after a probe,
+  delete `.box_cache/<locale>.*`.
+
 ### 2026-10-30 · a non-gate step that exits stops every gate after it — for a month
 
 **Context:** pass 238 ran the full suite and found 727 prop-overlap clips
