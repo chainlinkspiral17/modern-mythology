@@ -89,6 +89,27 @@ def build_flat():
     make_box("Book_On_Nightstand", (0.40, 7.15, 0.62), (0.16, 0.22, 0.04), (0.50, 0.20, 0.18, 1.0))
     make_box("Dresser", (3.92 - 0.06 - 0.25, 2.0, 0.48), (0.50, 1.10, 0.96), (0.44, 0.34, 0.24, 1.0))
     make_box("Dresser_Clothes_Pile", (3.92 - 0.06 - 0.25, 1.8, 1.00), (0.40, 0.40, 0.08), (0.26, 0.30, 0.40, 1.0))
+    # (2026-10-30, the "getting dressed and ready for the day" insert framed a
+    # bare box) the drawers, the top one pulled out with a shirt over its lip,
+    # the mirror over it, his things on top
+    fx = 3.92 - 0.06 - 0.50 - 0.004                      # the drawers' face
+    for k in range(4):
+        z = 0.14 + k * 0.22
+        make_box(f"Dresser_Drawer_Seam_{k}", (fx, 2.0, z + 0.11), (0.006, 1.04, 0.008), (0.30, 0.22, 0.16, 1.0))
+        if k == 3:
+            continue
+        for s in (-1, 1):
+            make_box(f"Dresser_Pull_{k}_{s:+d}", (fx - 0.012, 2.0 + s * 0.28, z), (0.02, 0.10, 0.02), (0.70, 0.62, 0.40, 1.0))
+    make_box("Dresser_Drawer_Open", (fx - 0.16, 2.0, 0.80), (0.34, 1.00, 0.16), (0.48, 0.38, 0.27, 1.0))
+    make_box("Dresser_Drawer_Open_Clothes", (fx - 0.16, 2.0, 0.875), (0.28, 0.92, 0.03), (0.86, 0.84, 0.80, 1.0))
+    make_rot_box("Dresser_Shirt_Over", (fx - 0.34, 2.15, 0.70), (0.02, 0.36, 0.30), (0.40, 0.52, 0.70, 1.0), pitch=0.15)
+    make_box("Dresser_Mirror_Frame", (3.92 - 0.06 - 0.015, 2.0, 1.55), (0.03, 0.80, 0.90), (0.30, 0.22, 0.16, 1.0))
+    make_box("Dresser_Mirror", (3.92 - 0.06 - 0.032, 2.0, 1.55), (0.004, 0.70, 0.80), (0.72, 0.78, 0.82, 1.0))
+    make_box("Dresser_Wallet", (3.55, 2.22, 0.975), (0.10, 0.12, 0.02), (0.20, 0.14, 0.10, 1.0))
+    make_rot_box("Dresser_Keys", (3.50, 2.40, 0.97), (0.08, 0.03, 0.01), (0.76, 0.74, 0.70, 1.0), yaw=0.6)
+    make_cyl("Dresser_Watch", (3.66, 2.38, 0.968), 0.03, 0.016, (0.70, 0.62, 0.40, 1.0), segments=12)
+    make_box("Dresser_Cologne", (3.72, 2.18, 1.02), (0.05, 0.08, 0.12), (0.60, 0.70, 0.76, 1.0))
+    make_cyl("Dresser_Cologne_Cap", (3.72, 2.18, 1.095), 0.02, 0.03, (0.14, 0.14, 0.16, 1.0), segments=8)
     make_box("Clothes_On_Floor", (2.8, 3.6, 0.03), (0.60, 0.40, 0.06), (0.30, 0.30, 0.34, 1.0))
     make_box("Bedroom_Rug", (1.8, 3.6, 0.004), (1.6, 1.2, 0.008), (0.50, 0.38, 0.30, 1.0))
     # (2026-10-30) the bedroom was the bed in a bare box; his art lived only
@@ -448,8 +469,8 @@ def build_sister_2026_10():
         make_box(f"Sister_Panel_Stock_N_{k}", (x, ny - 0.007, z0 + H / 2.0), (0.012, 0.003, H - 0.04), GROOVE)
     # the stain on the ceiling, the hole in the partition
     # (a flat ring-marked stain on the plaster, not a lump: three discs, darker at the tide line)
-    for k, (dx, dy, r, col) in enumerate(((0.0, 0.0, 0.58, (0.66, 0.58, 0.44, 1.0)), (0.08, -0.05, 0.44, (0.74, 0.68, 0.56, 1.0)),
-                                          (0.30, 0.32, 0.26, (0.68, 0.60, 0.46, 1.0)))):
+    for k, (dx, dy, r, col) in enumerate(((0.0, 0.0, 0.58, (0.76, 0.70, 0.58, 1.0)), (0.08, -0.05, 0.44, (0.80, 0.76, 0.66, 1.0)),
+                                          (0.30, 0.32, 0.26, (0.74, 0.68, 0.56, 1.0)))):
         make_cyl(f"Sister_Ceiling_Stain_{k}", (85.8 + dx, 5.2 + dy, z0 + H - 0.003 - 0.002 * k), r, 0.002, col, segments=20)
     make_blob("Sister_Wall_Hole", (87.94, 6.3, z0 + 1.15), 0.09, (0.16, 0.14, 0.12, 1.0), noise=0.45, seed=8, squash=0.15)
     # the playpen, the high chair, the box fan
