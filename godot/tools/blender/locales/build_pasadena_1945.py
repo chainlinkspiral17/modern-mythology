@@ -342,12 +342,64 @@ def build_clinic():
     make_box("Cl_Ceil_Light", (cx, cy, CH - 0.05), (0.80, 0.30, 0.10), (0.98, 0.98, 0.94, 1.0))
 
 
+def build_clinic_2026_10():
+    """DRAFT 3 of the 1945 clinic (2026-10-30): "Here's the clinic son, the
+    nice woman is handing you a glass of water" / "the nurse puts a blood
+    pressure cuff on Andy's arm". It read as an empty green room with a table.
+    Now a 1945 doctor's room: the white-enamel instrument cabinet with glass
+    doors and its instruments; a balance-beam scale; an eye chart; a
+    three-panel privacy screen; venetian blinds in the window; a school-house
+    clock over the door; a calendar for 1945; an enamel pendant shade; a
+    kidney dish and a rolled bandage on the tray.
+    Draft 4 targets: the doctor's desk and candlestick telephone in the
+    corridor's office, the men's hats on a rack, the anatomy chart."""
+    ENAMEL = (0.94, 0.94, 0.90, 1.0); CHROME = (0.76, 0.76, 0.78, 1.0)
+    # the instrument cabinet, NW corner on the N wall
+    ix, iy = CX0 + 0.10 + 0.32, CD - 0.10 - 0.18
+    make_box("Cl_Instrument_Cabinet", (ix, iy, 0.90), (0.60, 0.34, 1.80), ENAMEL)
+    make_box("Cl_Instrument_Glass", (ix, iy - 0.172, 1.20), (0.52, 0.006, 1.00), (0.80, 0.86, 0.88, 0.35))
+    for lvl in range(3):
+        make_box(f"Cl_Instrument_Shelf_{lvl}", (ix, iy, 0.80 + lvl * 0.34), (0.54, 0.28, 0.012), (0.86, 0.88, 0.88, 1.0))
+        for k in range(3):
+            make_cyl(f"Cl_Instrument_Bottle_{lvl}_{k}", (ix - 0.17 + k * 0.17, iy + 0.02, 0.87 + lvl * 0.34), 0.03, 0.12,
+                     ((0.40, 0.26, 0.14, 1.0), (0.86, 0.88, 0.86, 1.0), (0.30, 0.40, 0.56, 1.0))[(lvl + k) % 3], segments=10)
+    make_box("Cl_Instrument_Drawer_Seam", (ix, iy - 0.172, 0.55), (0.56, 0.004, 0.008), (0.70, 0.70, 0.68, 1.0))
+    make_box("Cl_Instrument_Pull", (ix, iy - 0.18, 0.45), (0.12, 0.02, 0.02), CHROME)
+    # the balance-beam scale by the S wall
+    scx, scy = CX1 - 1.4, 0.45
+    make_box("Cl_Scale_Platform", (scx, scy, 0.05), (0.40, 0.50, 0.10), (0.30, 0.30, 0.32, 1.0))
+    make_box("Cl_Scale_Column", (scx, scy - 0.20, 0.80), (0.06, 0.06, 1.40), ENAMEL)
+    make_box("Cl_Scale_Beam", (scx, scy - 0.20, 1.45), (0.50, 0.03, 0.05), CHROME)
+    make_box("Cl_Scale_Poise", (scx + 0.10, scy - 0.20, 1.45), (0.04, 0.05, 0.07), (0.30, 0.30, 0.32, 1.0))
+    # the eye chart on the E wall, the privacy screen
+    make_box("Cl_Eye_Chart", (CX1 - 0.11, 2.05, 1.55), (0.01, 0.44, 0.70), (0.96, 0.96, 0.92, 1.0))
+    for k in range(6):
+        make_box(f"Cl_Eye_Chart_Row_{k}", (CX1 - 0.116, 2.05, 1.80 - k * 0.09), (0.004, 0.30 - k * 0.04, 0.04 - k * 0.005), (0.10, 0.10, 0.10, 1.0))
+    for k, (x, y, yaw) in enumerate(((CX1 - 0.95, 3.05, 0.5), (CX1 - 0.72, 3.48, -0.5), (CX1 - 0.49, 3.91, 0.5))):
+        make_rot_box(f"Cl_Screen_Panel_{k}", (x, y, 0.92), (0.03, 0.52, 1.60), (0.86, 0.88, 0.84, 1.0), yaw=yaw)
+    # blinds in the window, a clock over the door, a calendar
+    for k in range(16):
+        make_box(f"Cl_Blind_Slat_Stock_{k}", (CX0 + 0.13, 2.2, 1.0 + k * 0.07), (0.01, 1.36, 0.03), (0.92, 0.90, 0.84, 1.0))
+    make_box("Cl_Blind_Head", (CX0 + 0.13, 2.2, 2.16), (0.04, 1.40, 0.05), (0.92, 0.90, 0.84, 1.0))
+    make_cyl("Cl_Clock", (CX0 + 1.2, 0.12, 2.42), 0.16, 0.04, (0.36, 0.26, 0.18, 1.0), axis='Y', segments=18)
+    make_cyl("Cl_Clock_Face", (CX0 + 1.2, 0.142, 2.42), 0.13, 0.004, (0.94, 0.92, 0.84, 1.0), axis='Y', segments=18)
+    make_box("Cl_Calendar", (CX0 + 0.11, 3.45, 1.70), (0.01, 0.30, 0.44), (0.92, 0.90, 0.82, 1.0))
+    make_box("Cl_Calendar_Picture", (CX0 + 0.116, 3.45, 1.82), (0.004, 0.26, 0.16), (0.56, 0.40, 0.34, 1.0))
+    make_box("Cl_Calendar_Year", (CX0 + 0.116, 3.45, 1.70), (0.004, 0.16, 0.03), (0.70, 0.16, 0.14, 1.0))
+    # the enamel shade under the ceiling light, the tray's kidney dish and bandage
+    cx, cy = (CX0 + CX1) / 2.0, CD / 2.0
+    make_lathe("Cl_Pendant_Shade", (cx, cy, CH - 0.50), [(0.03, 0.40), (0.06, 0.38), (0.26, 0.10), (0.28, 0.0)], ENAMEL, segments=16)
+    make_box("Cl_Kidney_Dish", (CX1 - 0.10 - 0.28, 1.12, 0.94), (0.14, 0.08, 0.02), CHROME)
+    make_cyl("Cl_Bandage_Roll", (CX1 - 0.20, 0.84, 0.96), 0.03, 0.06, (0.96, 0.96, 0.94, 1.0), axis='Y', segments=10)
+
+
 def main():
     clear_scene()
     build_street()
     build_park()
     build_hollywood()
     build_clinic()
+    build_clinic_2026_10()
     try:
         join_stock()
         join_named("RainStreak_", "RainStreak" + RAIN)
