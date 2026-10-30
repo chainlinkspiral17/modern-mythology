@@ -5147,9 +5147,13 @@ const CAMERA_PRESETS := {
 		# nightstand lamp + alarm; bookcase and reading chair frame-left.
 		# (2026-10-21: the couch stands mid-studio now — the lens steps east of
 		# its low table so the couch's back is a foreground edge, not the frame)
-		"camera_origin": Vector3(1.60, 1.50, -2.40),
-		"camera_rotation": Vector3(-0.145, deg_to_rad(56.3), 0.0),
-		"fov": 58.0,
+		# (2026-10-30: it still was the frame — the couch's back faces the bed,
+		# so any lens east of it looks over it. The lens stands in the aisle
+		# between the couch and the bed's foot, looking north up the bed to the
+		# headboard wall: "Sitting at the foot of his bed is a woman.")
+		"camera_origin": Vector3(-1.40, 1.55, -1.00),
+		"camera_rotation": Vector3(-0.14, 0.255, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"carnival_lot": {
