@@ -615,7 +615,9 @@ def build_pizza():
     # the steamed panes (opaque: our materials have no alpha), the rain on
     # them, the wet lot and a car beyond
     for k, x in enumerate((x0 + 2.0, x0 + 5.0)):
-        make_box(f"Pizza_Window_Steam_Pane_{k}", (x, 0.0, 1.4), (1.68, 0.02, 0.50), (0.72, 0.74, 0.74, 1.0))
+        # (2026-10-30: LocaleGlass draws vertex alpha now — the steamed pane
+        # covers the whole sash, the wet lot faint through it)
+        make_box(f"Pizza_Window_Steam_Pane_{k}", (x, 0.0, 1.4), (1.68, 0.02, 1.18), (0.80, 0.82, 0.82, 0.62))
         for j in range(6):
             make_box(f"Pizza_Rain_Water_Streak_{k}_{j}", (x - 0.7 + j * 0.28, -0.03, 1.2 + (j % 2) * 0.1), (0.008, 0.008, 0.70), (0.80, 0.84, 0.88, 1.0))
     make_box("Lot_Wet_Asphalt", (x0 + 6.0, -10.0, -0.02), (40.0, 20.0, 0.04), (0.16, 0.16, 0.18, 1.0))
@@ -647,6 +649,62 @@ def build_pizza():
     make_box("Screen_Image_Pitcher", (x0 + 5.8, 8.0 - 0.08 - 0.058, 1.50), (0.16, 0.004, 0.50), (0.90, 0.88, 0.84, 1.0))
     make_box("Projector_Cart", (x0 + 6.0, 3.8, 0.45), (0.60, 0.50, 0.90), (0.30, 0.30, 0.32, 1.0))
     make_chamfer_box("Projector_Body", (x0 + 6.0, 3.8, 0.98), (0.34, 0.30, 0.16), (0.60, 0.60, 0.58, 1.0), chamfer=0.03)
+    build_pizza_party_2026_10(x0)
+
+
+def build_pizza_party_2026_10(x0):
+    """acceptable losses (vol 3 ch11): "a party room reserved for a baseball
+    team in the back"; "sixteen teenage boys with their families celebrating
+    loudly humidity steaming windows air thick with sweat and perfume
+    smelling of pepperoni". DRAFT 2: the room was set and empty —
+    - the team in its jerseys round the tables, the families with them,
+      little kids underfoot
+    - the pizzas: boxes open down the tables with pies in them, pitchers of
+      soda, the cups, a sheet cake and the season's trophy
+    - the steamed panes as glass (see build_pizza), the rain's streaks on them
+    Draft 3 targets: seated figures (the grammar only stands), the father and
+    son outside in the lot, the screen's picture as an image."""
+    from _props.figures import make_standing_figure
+    import random
+    rnd = random.Random(1511)
+    jersey, jpants = (0.18, 0.28, 0.58, 1.0), (0.86, 0.86, 0.84, 1.0)
+    adult = ((0.70, 0.30, 0.26, 1.0), (0.86, 0.84, 0.78, 1.0), (0.30, 0.40, 0.30, 1.0), (0.56, 0.46, 0.60, 1.0), (0.20, 0.20, 0.24, 1.0))
+    n = 0
+    for r, y in enumerate((2.4, 5.2)):
+        for k in range(3):
+            tx = x0 + 2.4 + k * 2.6
+            for s in (-1, 1):
+                for c in (-1.15, 0.0, 1.15):
+                    if rnd.random() < 0.3:
+                        continue
+                    boy = rnd.random() < 0.62
+                    make_standing_figure(f"Party_Guest_{n}", tx + c + rnd.uniform(-0.1, 0.1), y + s * 1.20,
+                                         heading=(math.pi if s > 0 else 0.0) + rnd.uniform(-0.5, 0.5),
+                                         h=(rnd.uniform(1.55, 1.74) if boy else rnd.uniform(1.62, 1.86)),
+                                         coat=jersey if boy else adult[rnd.randrange(len(adult))],
+                                         pants=jpants if boy else (0.28, 0.30, 0.38, 1.0),
+                                         arms=("front", "down", "folded")[rnd.randrange(3)])
+                    n += 1
+    for i, (kx, ky) in enumerate(((x0 + 1.2, 3.8), (x0 + 9.6, 3.9))):
+        make_standing_figure(f"Party_Little_Kid_{i}", kx, ky, heading=rnd.uniform(0, 6.28), h=1.05, coat=adult[i], pants=(0.30, 0.32, 0.40, 1.0))
+    # the pizzas down the tables, the pitchers, the cake, the trophy
+    for r, y in enumerate((2.4, 5.2)):
+        for k in range(3):
+            tx = x0 + 2.4 + k * 2.6
+            for j in (-0.55, 0.55):
+                make_box(f"Pizza_Box_{r}_{k}_{j:+.2f}", (tx + j, y, 0.765), (0.44, 0.44, 0.03), (0.86, 0.80, 0.66, 1.0))
+                make_rot_box(f"Pizza_Box_Lid_{r}_{k}_{j:+.2f}", (tx + j, y + 0.24, 0.98), (0.44, 0.03, 0.44), (0.86, 0.80, 0.66, 1.0), roll=-0.15)
+                make_cyl(f"Pizza_Pie_{r}_{k}_{j:+.2f}", (tx + j, y, 0.79), 0.19, 0.015, (0.86, 0.56, 0.30, 1.0), segments=14)
+                for p in range(5):
+                    a = p * 1.26 + r
+                    make_cyl(f"Pizza_Pepperoni_{r}_{k}_{j:+.2f}_{p}", (tx + j + 0.10 * math.cos(a), y + 0.10 * math.sin(a), 0.800), 0.025, 0.004,
+                             (0.66, 0.16, 0.12, 1.0), segments=8)
+            make_cyl(f"Soda_Pitcher_{r}_{k}", (tx, y - 0.25, 0.86), 0.07, 0.22, (0.30, 0.16, 0.10, 0.85), segments=12)
+    make_box("Party_Sheet_Cake", (x0 + 8.55, 2.4, 0.80), (0.36, 0.30, 0.10), (0.96, 0.94, 0.90, 1.0))
+    make_box("Party_Sheet_Cake_Icing_Diamond", (x0 + 8.55, 2.4, 0.853), (0.22, 0.16, 0.004), (0.20, 0.30, 0.66, 1.0))
+    make_box("Party_Trophy_Base", (x0 + 8.6, 5.2, 0.80), (0.18, 0.18, 0.10), (0.30, 0.22, 0.16, 1.0))
+    make_cyl("Party_Trophy_Column", (x0 + 8.6, 5.2, 0.97), 0.03, 0.24, (0.86, 0.72, 0.30, 1.0), segments=10)
+    make_blob("Party_Trophy_Figure", (x0 + 8.6, 5.2, 1.15), 0.06, (0.86, 0.72, 0.30, 1.0), noise=0.1, seed=9, squash=1.6)
 
 
 # ── G. the club, industrial downtown (x 1800..1830, y 0..24) ────────────

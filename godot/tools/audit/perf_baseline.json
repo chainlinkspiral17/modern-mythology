@@ -48,9 +48,9 @@
   "objects": 482
  },
  "caltech_dabney": {
-  "draw": 154,
-  "prims": 120896,
-  "objects": 324
+  "draw": 150,
+  "prims": 90280,
+  "objects": 320
  },
  "cape_perpetua_overlook": {
   "draw": 136,
@@ -74,11 +74,6 @@
   "draw": 64,
   "prims": 33544,
   "objects": 234
- },
- "club_sharp": {
-  "draw": 152,
-  "prims": 36964,
-  "objects": 322
  },
  "club_street": {
   "draw": 110,
@@ -295,9 +290,9 @@
   "objects": 460
  },
  "sapo_falls": {
-  "draw": 118,
-  "prims": 29324,
-  "objects": 288
+  "draw": 112,
+  "prims": 7732,
+  "objects": 282
  },
  "sea_cave": {
   "draw": 102,
@@ -376,7 +371,7 @@
  },
  "vol3_rooms": {
   "draw": 354,
-  "prims": 226992,
+  "prims": 253560,
   "objects": 524
  },
  "vol4_apartments": {
