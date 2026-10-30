@@ -77,6 +77,7 @@ INSERT_TIGHT_DEG = 8.0
 # WARN, not a failure — build the prop or re-home the cue to clear it.
 KNOWN_UNRESOLVED = {
     ("cabin_road", "shot_insert_crow"): "the crow is a cabin_interior hero prop; cabin_road's cue reads the sky",
+    ("desert_route", "shot_insert_roll__utah_highway_day"): "vol3 ch7: the children's rolls of quarters ride inside the Voyager, which has no interior; the cue frames the van from close behind (2026-10-30: text_focus_pass had sent it to the motel's bedroll, 400 m off)",
     ("smolvud_jetty", "shot_insert_drone"): "vol7 ch2: the drones are docked and the sky over Smolvud is empty — the cue reads the sky",
     ("caldwell_radio_room_night", "shot_insert_hands"): "ch2: her grandmother's hand on hers, on the bed in the dark — the cue reads the bed",
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima"): "ch16 Dawn: \"for the first time in five weeks\" — an abstract cue; the marker reads the Altima's dash",

@@ -139,7 +139,8 @@ def build_desert():
         rr_ = 0.5 + r() * 1.3
         make_blob(f"Rock_Stock_{k}", (x0, y0, rr_ * 0.35), rr_, ROCK, noise=0.35, seed=k, squash=0.55 + r() * 0.3)
     # the mesas and buttes on every horizon
-    for i, (mx, my, rr, hh) in enumerate(((-520.0, 760.0, 180.0, 110.0), (180.0, 900.0, 240.0, 150.0), (820.0, 560.0, 150.0, 80.0),
+    # (round 4) Mesa_1 back off the highway's N end (its talus lay on the road)
+    for i, (mx, my, rr, hh) in enumerate(((-520.0, 760.0, 180.0, 110.0), (260.0, 1050.0, 240.0, 150.0), (820.0, 560.0, 150.0, 80.0),
                                           (-950.0, 120.0, 200.0, 130.0), (980.0, -260.0, 180.0, 100.0), (-380.0, -900.0, 220.0, 120.0),
                                           (460.0, -820.0, 120.0, 170.0), (-120.0, 560.0, 60.0, 60.0))):
         make_taper_cyl(f"Mesa_{i}", (mx, my, hh / 2.0 - 2.0), rr, rr * 0.82, hh, ROCK, segments=12)
@@ -189,10 +190,14 @@ def build_dust_storm():
     make_car("WreckWagon", -3.0, 52.0, 5.0, (0.46, 0.36, 0.22, 1.0), hatch=True, along="X")
     r = _rng(31)
     for k in range(14):
-        make_rot_box(f"WreckDebris_{k}", (-6.0 + r() * 12.0, 48.0 + r() * 34.0, 0.2), (0.4 + r() * 1.4, 0.3 + r(), 0.2 + r() * 0.5),
-                     (0.24, 0.22, 0.22, 1.0), yaw=r() * 3.0)
+        # (round 4) on the road, not sunk 15 cm through it, and clear of the
+        # semis' wheels
+        dx_, dy_, sx_, sy_, sz_, yw_ = -6.0 + r() * 12.0, 48.0 + r() * 34.0, 0.4 + r() * 1.4, 0.3 + r(), 0.2 + r() * 0.5, r() * 3.0
+        if min(math.hypot(dx_ + 1.5, dy_ - 62.0), math.hypot(dx_ - 2.0, dy_ - 74.0)) < 4.5:
+            continue
+        make_rot_box(f"WreckDebris_{k}", (dx_, dy_, sz_ / 2.0 + 0.002), (sx_, sy_, sz_), (0.24, 0.22, 0.22, 1.0), yaw=yw_)
     for k in range(6):
-        make_taper_cyl(f"WreckFire_{k}", (-4.0 + k * 1.8, 60.0 + (k % 3) * 5.0, 0.9), 1.0, 0.1, 1.8 + r() * 1.4, (1.0, 0.56, 0.18, 1.0), segments=7)
+        make_taper_cyl(f"WreckFire_Glow_{k}", (-4.0 + k * 1.8, 60.0 + (k % 3) * 5.0, 0.9), 1.0, 0.1, 1.8 + r() * 1.4, (1.0, 0.56, 0.18, 1.0), segments=7)
         make_taper_cyl(f"WreckSmoke_{k}", (-4.0 + k * 1.8, 61.0 + (k % 3) * 5.0, 7.0), 1.6, 3.4, 9.0, (0.10, 0.08, 0.08, 1.0), segments=8)
 
 
@@ -272,7 +277,7 @@ def build_motel():
     fy = my + 14.0
     make_box("WingA_Back", (mx, fy + 8.0, 1.4), (34.0, 0.24, 2.8), wall)
     make_box("WingA_Roof", (mx, fy + 4.0, 2.92), (35.0, 9.8, 0.2), (0.62, 0.36, 0.24, 1.0))
-    make_box("WingA_Walk", (mx, fy - 0.9, 0.06), (34.0, 1.8, 0.12), (0.72, 0.70, 0.66, 1.0))
+    make_box("WingA_Walk", (mx, fy - 0.96, 0.06), (34.0, 1.68, 0.12), (0.72, 0.70, 0.66, 1.0))   # (round 4) to the fronts' face
     for k in range(9):
         make_box(f"WingA_Party_{k}", (mx - 17.0 + k * 4.25, fy + 4.0, 1.4), (0.2, 8.0, 2.8), wall)
     for k in range(8):
@@ -284,16 +289,16 @@ def build_motel():
         make_box(f"WingA_Window_{k}", (rx + 0.8, fy - 0.13, 1.5), (1.6, 0.04, 1.0), (0.40, 0.42, 0.44, 1.0))
     # room No. 4, open to the camera through its door, lit inside
     r4 = mx - 17.0 + 2.125 + 3 * 4.25
-    make_box("Room4_Front_W", (r4 - 1.75, fy, 1.4), (0.75, 0.24, 2.8), wall)
+    make_box("Room4_Front_W", (r4 - 1.70, fy, 1.4), (0.65, 0.24, 2.8), wall)   # (round 4) between the party walls
     make_box("Room4_Front_Mid", (r4 + 0.0, fy, 2.45), (2.75, 0.24, 0.7), wall)
-    make_box("Room4_Front_E", (r4 + 1.75, fy, 1.4), (0.75, 0.24, 2.8), wall)
+    make_box("Room4_Front_E", (r4 + 1.70, fy, 1.4), (0.65, 0.24, 2.8), wall)
     make_box("Room4_Front_Sill", (r4 + 0.8, fy, 0.45), (1.25, 0.24, 0.9), wall)
     make_box("Room4_Window", (r4 + 0.8, fy, 1.5), (1.25, 0.04, 1.0), (0.40, 0.42, 0.44, 1.0))
     make_box("Room4_Floor", (r4, fy + 3.0, 0.02), (4.0, 5.8, 0.02), (0.44, 0.34, 0.30, 1.0))
     make_box("Room4_Ceiling", (r4, fy + 4.0, 2.78), (4.0, 7.8, 0.04), (0.86, 0.84, 0.78, 1.0))
     make_box("Room4_Bath_Wall", (r4, fy + 6.0, 1.4), (4.0, 0.14, 2.8), wall)
     make_box("Room4_Bath_Door", (r4 + 1.2, fy + 5.92, 1.05), (0.8, 0.04, 2.1), (0.70, 0.62, 0.50, 1.0))
-    make_bed("Room4_Bed", r4 - 0.6, fy + 3.6, head="+Y", w=1.0, d=2.0)
+    make_bed("Room4_Bed", r4 - 0.6, fy + 4.92, head="+Y", w=1.0, d=2.0)   # (round 4) headboard to the bath wall (face fy + 5.93)
     make_box("Room4_Dresser", (r4 + 1.55, fy + 2.6, 0.42), (0.5, 1.6, 0.84), (0.42, 0.30, 0.22, 1.0))
     make_box("Room4_TV", (r4 + 1.5, fy + 2.6, 1.08), (0.46, 0.52, 0.44), (0.12, 0.12, 0.12, 1.0))
     make_box("Room4_TV_Screen", (r4 + 1.26, fy + 2.6, 1.10), (0.02, 0.40, 0.30), (0.40, 0.62, 0.72, 1.0))
