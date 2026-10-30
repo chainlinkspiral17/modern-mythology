@@ -3924,6 +3924,21 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
     - Next: catcher's crouch, gloves and bats, base coaches.
   - **dean_tower_corridor:** turned toward the glass and the night city.
     - Next: the offices' lit sidelights.
+  - **ROUND 2 (8 commits):**
+    - **SEATED FIGURES.** `_props/figures.py` `make_seated_figure` (thighs level on the seat, shins down, arms `lap` / `table` / `folded`; the standing figure is unchanged). Used in:
+      - **pizza_party_window:** the team and families seated, a few parents standing behind the far rows.
+      - **korean_bbq_table:** Spencer and Jessie across from Andy, diners in the other booths. The floor chairs all faced AWAY from their tables; fixed.
+    - **little_league d4:** catchers crouch with a mitt; fielders' gloves; the bleachers mostly seated. Next: base coaches, dust, the dugout's bat bag.
+    - **briar_falls d3:** four basalt strata bands, moss near the falls, a two-green forest floor, ferns, a spray veil, a light thrown off the white water. Next: water motion, plunge spray from the side, the shelf streaks too regular.
+    - **dean_house_late d3:** the three bookcases were solid blocks hiding every spine; now open cases with brass picture lights. Next: the hall stair vantage.
+    - **cape_perpetua_overlook:** fog banks translucent, the fog floor a thin sheet, the spruce show through. Next: a shader fog, the surf line, rain on the bench.
+    - **vehicle_cab_judgement_day d2:**
+      - A front bench with a column shifter replaces the truck's buckets.
+      - Faust and the third boy sit up front, and the rearview shirt hangs.
+      - The camera is at the back seat's middle.
+      - Next: the old dash (sweep speedo, push-button radio); hair capping the backs of the heads; the street in motion.
+    - **Doorway gate:** vol3_rooms is at 0 (the Oregon chair and the coast bath's toilet moved). All of thread B's locales are BLOCKED 0.
+    - **Not done:** the dead_store roof vantage. `vol4_story_map_of_the_city.json` node 22 is a choice jumping to 23 and 25 BY INDEX, so a bg insert before 25 needs every index reference renumbered. It needs a scene-editing step that renumbers.
   - **Shared helpers:**
     - `_props/figures.py` arms "up" / "up_r".
     - `_props/trees.py` `make_conifer(z0=)`.
