@@ -158,6 +158,25 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-30 · a non-gate step that exits stops every gate after it — for a month
+
+**Context:** pass 238 ran the full suite and found 727 prop-overlap clips
+(baseline: zero everywhere since 2026-09-24), 8 blocked doorways, a
+blender_dryrun failure and an obstructed preset — none of them reported.
+`run_all_audits.sh` ran `vn_story_audit.py` early with `|| { ...; exit 1; }`,
+and the story audit fails on MISSING ASSET files: the .mp3 bgm are
+git-ignored, so a fresh checkout never has them. Every run in the container
+exited there, and the doorway, dry-run, overlap, obstruction, furniture,
+expression, space-map … gates below it never ran.
+- **A missing asset is reported, not a stop** (run_all_audits.sh, 2026-10-30):
+  "file missing" lines are counted, the ones git does NOT ignore are listed
+  (`MISSING assets/cg/...` — pictures for the user to make), and every other
+  story PROBLEM still fails the suite.
+- **When a suite prints fewer gate headers than it has, it stopped early.**
+  Read the last `── name ──` line, not just the exit code.
+- **The clip debt is per locale in the roadmap (pass 238);** never raise
+  overlap_baseline.json to make the gate pass — fix the clips.
+
 ### 2026-10-28 · "sees its subject" is not "frames its subject" (passes 205–206)
 
 **Context:** marker_aim_audit's 38° cone passed 223 inserts whose object
