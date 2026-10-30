@@ -245,13 +245,16 @@ def build_pines():
     """Scattered pines (2026-10-30: real conifers; they were three stacked
     boxes on a stick)."""
     from _props.trees import make_conifer
-    spots = [(-10.5, 7.5), (-12.2, 16.2), (-6.5, 15.5), (-1.0, 12.0),
+    # (round 4) three nudged off the shelter's and the building's roofs
+    spots = [(-13.6, 6.2), (-12.2, 16.2), (-5.6, 17.0), (0.6, 13.4),
              (1.5, 10.5), (3.5, 13.0), (3.6, 15.2), (11.5, 9.0),
              (12.5, 12.5), (-11.5, 3.0), (13.0, 4.5), (10.5, 6.5),
              (2.0, 15.4), (-3.0, 15.4)]
     for i, (px, py) in enumerate(spots):
-        h = 6.0 + 1.6 * ((i * 7) % 4)
-        make_conifer(f"Pine_{i}", px, py, h, COL_PINE if i % 2 == 0 else COL_PINE_LT, COL_TRUNK, skirt=0.24)
+        h = 5.0 + 1.2 * ((i * 7) % 4)
+        # (round 4) narrower skirts: at 0.24 the lot's pines ran their lowest
+        # tier through the shelter's and the building's roofs
+        make_conifer(f"Pine_{i}", px, py, h, COL_PINE if i % 2 == 0 else COL_PINE_LT, COL_TRUNK, skirt=0.16)
 
 
 def build_valley():
@@ -430,9 +433,12 @@ def build_gorge_2026_10():
                 (floor_ if (r * 7 + c * 3) % 5 else floor_dk).append(q)
     for i, cells in rock_bands.items():
         if cells:
-            _terrain_mesh(f"Gorge_Rock_{i}", verts, cells, strata[i])
+            # (round 4) named as TERRAIN: the recorder sees a heightfield mesh as
+            # its bounding box, and the overlook's camera stood "inside" the
+            # rock's box (vantage_obstruction: Gorge_Rock_3 fills 100% at 1 m)
+            _terrain_mesh(f"Gorge_Terrain_Rock_{i}", verts, cells, strata[i])
     if moss:
-        _terrain_mesh("Gorge_Rock_Moss", verts, moss, (0.24, 0.34, 0.22, 1.0))
+        _terrain_mesh("Gorge_Terrain_Rock_Moss", verts, moss, (0.24, 0.34, 0.22, 1.0))
     _terrain_mesh("Gorge_Ground", verts, floor_, (0.32, 0.38, 0.24, 1.0))
     _terrain_mesh("Gorge_Ground_Dk", verts, floor_dk, (0.26, 0.32, 0.20, 1.0))
 
@@ -509,7 +515,7 @@ def build_gorge_2026_10():
     n = 0
     for _ in range(420):
         x = rnd.uniform(-38.0, 58.0)
-        y = rnd.uniform(24.0, 74.0)
+        y = rnd.uniform(24.0, 62.0)       # (round 4) S of the far stone band at y 65..75
         z = hz(x, y)
         zs = [hz(x + dx, y + dy) for dx, dy in ((1.5, 0), (-1.5, 0), (0, 1.5), (0, -1.5))]
         if max(zs) - min(zs) > 1.4:
