@@ -453,7 +453,14 @@ def build_gorge_2026_10():
     slope = math.atan(SSL)
     ym = (SH0 + SH1) / 2.0
     L = (SH1 - SH0) / math.cos(slope)
-    make_rot_box("Falls_Shelf_Water", (9.5, ym, shelf_z(ym) + 0.07), (7.6, L, 0.04), COL_WATER_SHELF, roll=-slope)
+    # (round 5) in 0.8 m strips (joined): one tilted 12.8 m slab's bounding
+    # box stood over everything on the shelf, so the lens "saw" the water
+    # between it and the feather lying on it
+    nseg = 16
+    for k in range(nseg):
+        yk = SH0 + (k + 0.5) * (SH1 - SH0) / nseg
+        make_rot_box(f"Shelf_Water_Stock_{k}", (9.5, yk, shelf_z(yk) + 0.07), (7.6, L / nseg + 0.005, 0.04), COL_WATER_SHELF,
+                     roll=-slope)
     for i, (sx, w, f) in enumerate(((6.6, 0.22, 0.55), (7.7, 0.40, 0.8), (8.9, 0.30, 0.9), (10.3, 0.50, 0.85),
                                     (11.5, 0.26, 0.6), (12.3, 0.20, 0.45))):
         sl = L * f
@@ -463,9 +470,10 @@ def build_gorge_2026_10():
     for i in range(9):
         make_blob(f"Falls_Lip_Foam_{i}", (6.1 + i * 0.85, SH1 - 0.1, LIP + 0.12), 0.55, COL_FALLS, noise=0.25, seed=540 + i, squash=0.45)
     # the feather on the wet shelf below the rail ("long and grey, with a white tip")
-    fz = shelf_z(18.6) + 0.10
-    make_rot_box("Feather", (8.3, 18.6, fz), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0), roll=-slope)
-    make_rot_box("Feather_Tip", (8.5, 18.6, fz + 0.005), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0), roll=-slope)
+    fy_ = SH0 + 1.5 * (SH1 - SH0) / 16.0          # (round 5) mid-strip, not on a strip's seam
+    fz = shelf_z(fy_) + 0.10
+    make_rot_box("Feather", (8.3, fy_, fz), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0), roll=-slope)
+    make_rot_box("Feather_Tip", (8.5, fy_, fz + 0.005), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0), roll=-slope)
     # the creek in its cut, falling onto the shelf from the east
     for i in range(6):
         x0_, x1_ = 13.0 + i * 8.0, 21.0 + i * 8.0

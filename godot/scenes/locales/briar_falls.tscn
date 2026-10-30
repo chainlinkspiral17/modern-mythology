@@ -342,7 +342,7 @@ metadata/fov = 35.0
 
 [node name="shot_insert_feather" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(8.200, 1.780, -15.320)
-rotation = Vector3(-1.1227, -0.0457, 0.0)
+rotation = Vector3(-1.0889, -0.0412, 0.0)
 metadata/fov = 14.0
 
 [node name="shot_insert_trail" type="Marker3D" parent="." groups=["vn_shot"]]
