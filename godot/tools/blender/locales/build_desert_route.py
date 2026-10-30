@@ -161,7 +161,7 @@ def build_highway():
         make_box(f"Pole_Stock_{k}_Arm", (12.0, py, 8.4), (1.8, 0.10, 0.10), WOOD)
     for k in range(28):
         py = -700.0 + k * 50.0
-        make_tube(f"Wire_Stock_{k}", [(12.6, py, 8.5), (12.6, py + 50.0, 8.5)], 0.012, (0.10, 0.10, 0.10, 1.0), segments=4)
+        make_tube(f"Wire_Stock_{k}", [(12.6, py, 8.465), (12.6, py + 50.0, 8.465)], 0.012, (0.10, 0.10, 0.10, 1.0), segments=4)   # on the arms
     # the shoulder's upturned root clumps (red dust: "the undercar bumping against upturned root clumps")
     r = _rng(9)
     for k in range(30):
@@ -235,7 +235,9 @@ def build_gas_station():
     make_box("Galaga_Marquee", (gx - 3.6, sy0 + 1.02, 1.66), (0.56, 0.02, 0.16), (0.90, 0.40, 0.20, 1.0))
     for k in range(3):
         make_box(f"Candy_Rack_{k}", (gx - 0.6, sy0 + 3.0 + k * 0.01, 0.45 + k * 0.4), (2.0, 0.4, 0.04), (0.70, 0.70, 0.68, 1.0))
-    make_box("Curio_Shelf", (gx - 2.2, sy0 + 6.6, 1.2), (2.4, 0.4, 2.0), WOOD)
+    for s in (-1, 1):       # (round 6) the rack's uprights: the shelves stood on air
+        make_box(f"Candy_Rack_Upright_{s:+d}", (gx - 0.6 + s * 0.98, sy0 + 3.01, 0.66), (0.04, 0.04, 1.28), (0.60, 0.60, 0.58, 1.0))
+    make_box("Curio_Shelf", (gx - 2.2, sy0 + 6.6, 1.02), (2.4, 0.4, 2.0), WOOD)   # on the floor (round 6)
     r = _rng(5)
     for k in range(12):
         make_box(f"Curio_Stock_{k}", (gx - 3.2 + (k % 6) * 0.38, sy0 + 6.5, 0.6 + (k // 6) * 0.7 + 0.08), (0.24, 0.16, 0.10), (0.56 + r() * 0.2, 0.46, 0.30, 1.0))
@@ -260,7 +262,7 @@ def build_gas_station():
     voyager("VoyagerGas", gx - 1.6, gy - 2.6, along="X")
     make_box("MudMan_Legs", (gx + 2.7, sy0 - 1.0, 0.42), (0.30, 0.22, 0.84), (0.30, 0.26, 0.22, 1.0))
     make_box("MudMan_Torso", (gx + 2.7, sy0 - 1.0, 1.15), (0.42, 0.26, 0.62), (0.62, 0.42, 0.34, 1.0))
-    make_cyl("MudMan_Head", (gx + 2.7, sy0 - 1.0, 1.62), 0.11, 0.24, (0.70, 0.50, 0.42, 1.0), segments=8)
+    make_cyl("MudMan_Head", (gx + 2.7, sy0 - 1.0, 1.58), 0.11, 0.24, (0.70, 0.50, 0.42, 1.0), segments=8)
 
 
 def build_motel():
@@ -300,12 +302,12 @@ def build_motel():
     make_box("Room4_Bath_Door", (r4 + 1.2, fy + 5.92, 1.05), (0.8, 0.04, 2.1), (0.70, 0.62, 0.50, 1.0))
     make_bed("Room4_Bed", r4 - 0.6, fy + 4.92, head="+Y", w=1.0, d=2.0)   # (round 4) headboard to the bath wall (face fy + 5.93)
     make_box("Room4_Dresser", (r4 + 1.55, fy + 2.6, 0.42), (0.5, 1.6, 0.84), (0.42, 0.30, 0.22, 1.0))
-    make_box("Room4_TV", (r4 + 1.5, fy + 2.6, 1.08), (0.46, 0.52, 0.44), (0.12, 0.12, 0.12, 1.0))
+    make_box("Room4_TV", (r4 + 1.5, fy + 2.6, 1.06), (0.46, 0.52, 0.44), (0.12, 0.12, 0.12, 1.0))   # on the dresser
     make_box("Room4_TV_Screen", (r4 + 1.26, fy + 2.6, 1.10), (0.02, 0.40, 0.30), (0.40, 0.62, 0.72, 1.0))
     make_lamp("Room4_Lamp", r4 - 1.6, fy + 5.0, base_z=0.6)
     make_box("Room4_Nightstand", (r4 - 1.6, fy + 5.0, 0.30), (0.42, 0.42, 0.60), (0.42, 0.30, 0.22, 1.0))
     make_box("Room4_Curtain", (r4 + 0.8, fy + 0.18, 1.5), (1.4, 0.04, 1.2), (0.62, 0.38, 0.26, 1.0))
-    make_box("Room4_Painting", (r4 - 0.6, fy + 5.9, 1.7), (0.9, 0.02, 0.6), (0.62, 0.42, 0.30, 1.0))
+    make_box("Room4_Painting", (r4 - 0.6, fy + 5.92, 1.7), (0.9, 0.02, 0.6), (0.62, 0.42, 0.30, 1.0))   # on the wall
     make_chair("Room4_Chair", r4 + 1.2, fy + 1.0, yaw=math.pi * 0.75)
     # wing B: five rooms along y on the west, facing east; the office at the corner
     wx = mx - 17.0
@@ -322,7 +324,7 @@ def build_motel():
     make_box("Office_Roof", (ox, oy, 3.3), (7.8, 6.8, 0.2), (0.62, 0.36, 0.24, 1.0))
     make_box("Office_Window", (ox, oy - 3.02, 1.5), (5.0, 0.04, 1.6), (0.92, 0.80, 0.56, 1.0))
     make_box("Office_Door", (ox - 2.8, oy - 3.02, 1.05), (0.9, 0.04, 2.1), trim)
-    make_box("Office_Sign", (ox, oy - 3.06, 2.75), (4.0, 0.04, 0.4), trim)
+    make_box("Office_Sign", (ox, oy - 3.02, 2.75), (4.0, 0.04, 0.4), trim)   # on the facade
     # the court: the pool and its concrete shorelines, the low fence, chairs
     px, py = mx - 2.0, my + 2.0
     # the concrete shorelines: four strips round the water (a whole slab hid it)
@@ -335,7 +337,7 @@ def build_motel():
     make_box("Pool_Silt", (px + 1.4, py - 0.6, 0.052), (3.2, 1.6, 0.004), (0.62, 0.32, 0.24, 1.0))
     make_box("Pool_Coping", (px, py, 0.075), (10.4, 5.4, 0.03), (0.92, 0.90, 0.86, 1.0), open_faces={'+Z', '-Z'})
     for k in range(4):
-        make_rot_box(f"Pool_Lounger_{k}", (px - 6.0 + k * 2.6, py - 4.2, 0.30), (0.7, 1.9, 0.12), (0.92, 0.92, 0.90, 1.0), yaw=0.0, roll=0.1)
+        make_rot_box(f"Pool_Lounger_{k}", (px - 6.0 + k * 2.6, py - 4.2, 0.21), (0.7, 1.9, 0.12), (0.92, 0.92, 0.90, 1.0), yaw=0.0, roll=0.1)   # on the deck
     make_tube("Pool_Ladder", [(px + 4.6, py + 2.3, 0.0), (px + 4.6, py + 2.3, 0.9), (px + 4.6, py + 2.0, 0.9)], 0.025, (0.80, 0.80, 0.80, 1.0), segments=6)
     for k in range(17):
         make_cyl(f"PoolFence_Stock_{k}", (px - 8.0 + k * 1.0, py - 5.2, 0.6), 0.02, 1.2, (0.62, 0.62, 0.64, 1.0), segments=5)
