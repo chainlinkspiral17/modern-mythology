@@ -3835,6 +3835,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-30 · pass 238: VOLS 1–4 backgrounds, draft 6 — two threads (the user: "Keep working on background for the next several hours ... multiple threads as needed").**
+The main thread and one forked agent split the remaining vols 1–4 sets BY LOCALE (one owner per builder). Every Godot call goes through one `flock`, because two renders at once crash this 4-core box. Each thread commits only its own hunks of Background3D.gd (`stage_hunks.py`). Main thread:
+- **crumpled_barn_int (vol 2 ch1), draft 4:**
+  - The mermaid relief stood 5–10 cm BEHIND its panels, inside the gable, so the sign read as two blank boards. It now hangs by one chain with the carving in front: the rock, the figure, the hair, "a long bluefish tail that hugged the rock", the surf and the script.
+  - The bay is a room: the side walls' broken boards, posts, girts and battens, and the doorway boarded with daylight in the cracks.
+  - Jiggles' cabinet: the marquee, curtains, brass buttons and levers. The glass is on the floor, not across him, and his name is lettered in red on cream.
+- **blue_heron_1997_sea_wall / vol 4 dumpster alley:** the camera was 0.7 m from a brick wall. It now looks from the alley mouth down to the open dumpster.
+- **amanda_hot_tub (vol 3 ch8), draft 4:**
+  - It was a lit box in a black void. Now there are board fences, the neighbours past them (a porch light lit), trees and a far tree line.
+  - A mist lies on the water. The square Jack Daniel's has its black label, with two cups. The cover is folded against the fence, the cedar skirt has boards, and there is a night env.
+- **lighthouse_gate (vol 2 ch4), draft 2:**
+  - The family's flashlights are three SpotLights.
+  - The tower shows its stone courses, with slit windows lit from the floors behind and the door ajar.
+  - The headland has tussocks and rocks. The black Night_Sky wall is stripped from this view.
+- **chau_game_room, draft 5:**
+  - The billiard lamp is left burning (unshadowed: a shadowed omni drew 1758 calls).
+  - Walnut wainscot, a cue rack, a print, and a second club chair.
+  - The night's bottles, tumblers and ash, and the TV on the jazz channel. The cabinet's bottles are bottles now.
+- **chau_bath, draft 4:** the stall's glass had alpha 1.0 and read as a white fridge. Now it is glass, with chrome, tile, steam and a fogged mirror. His clothes are on the toilet lid and his boots on the tile; the aftershave and the deodorant are out on the vanity.
+- **Chau bedrooms, draft 4:**
+  - Steven's: rave flyers; the desk worked at; a CD tower; the stereo and speakers under the window; a hoodie and sneakers.
+  - Mrs. Chau's: the dog's bed and bowls, a bench, a reading chair and a landscape. Her dresser stood across her doorway and moved 0.6 m N.
+  - chau_steven_desk is 1.3 m nearer.
+- **Next (main):** the vol 4 carrie_city set (sister's house, Charlie's apartment, the grungy bathroom), lake_house_day, Chris's room, Nick's house, Pasadena 1945, Sapo Falls, Honolulu lobby, Dabney side yard, Small Wood field and high, El Rancho, Henderson garage, crumpled_barn_ext, Wagner porch, club street.
+- **Draft N+1 targets:**
+  - The chau bath: the vanity's drawers, the razor wrappers in the sink, water on the tile.
+  - Steven's room: the closet and a beanbag.
+  - The game room: the fern's wet dirt and the man's jacket where he fell.
+  - The barn: the hay door's leaf and a crow on the peak.
+  - The lighthouse: breath vapor in the beams and the B&B's lights down the trail.
+
 **2026-10-30 · pass 237: VOLS 1–4 backgrounds, draft 5 (the smallest sets; 60 more rendered).**
 - **charlie_bedroom_night (vol 4):** "art to make" now lives in his room too: canvases on the W wall (one begun), a crammed bookshelf, a print over the bed, the book on the blanket ("a book over his chest"), a stack by the bed. The camera is turned from the door to the bed.
 - **smolvud_docks_evening (vol 2 ch10):** turned NE. Due N along the float, the moored boats sat 56° off to the right. Now the bench, the pilings, a boat and the town at sunset.
