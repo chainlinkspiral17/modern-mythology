@@ -25,17 +25,17 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, export_glb
 
-COL_SAND = (0.30, 0.28, 0.24, 1.0)       # night sand
+COL_SAND = (0.34, 0.32, 0.28, 1.0)       # night sand (draft 3: a touch up, so the walk down reads)
 COL_SAND_WET = (0.20, 0.20, 0.20, 1.0)   # gleaming band, darker
-COL_GLEAM = (0.38, 0.40, 0.42, 1.0)      # tide-edge sheen
-COL_SURF = (0.55, 0.58, 0.58, 1.0)       # foam lines
+COL_GLEAM = (0.56, 0.60, 0.66, 1.0)      # tide-edge sheen — "water that gleamed off the fresh tide's edge"
+COL_SURF = (0.72, 0.76, 0.78, 1.0)       # foam
 COL_SEA = (0.07, 0.09, 0.12, 1.0)
 COL_SEA_FAR = (0.10, 0.13, 0.17, 1.0)
 COL_SKY = (0.13, 0.14, 0.19, 1.0)        # clouded night
 COL_CLOUD = (0.18, 0.19, 0.24, 1.0)
 COL_MOONGLOW = (0.30, 0.31, 0.36, 1.0)   # the moon behind the clouds
 COL_GRASS = (0.16, 0.19, 0.14, 1.0)
-COL_DRIFT = (0.26, 0.22, 0.18, 1.0)
+COL_DRIFT = (0.44, 0.41, 0.37, 1.0)      # (draft 3) sea-bleached grey, as Pacific drift is
 COL_GRUNION = (0.72, 0.76, 0.78, 1.0)    # silver flecks — bloom lifts them
 
 
@@ -49,9 +49,18 @@ def build_sand():
 
 
 def build_sea():
-    make_box("Surf_0", (0.0, 10.6, 0.035), (420.0, 0.25, 0.02), COL_SURF)
-    make_box("Surf_1", (-2.0, 11.5, 0.03), (410.0, 0.20, 0.02), COL_SURF)
-    make_box("Surf_2", (3.0, 12.6, 0.03), (400.0, 0.16, 0.02), COL_SURF)
+    # (draft 3, 2026-10-30) the surf as BROKEN water: three lines of foam
+    # in runs of 2-9 m with gaps, not three unbroken 400 m strips
+    import random as _r
+    rng = _r.Random(77)
+    for li, (ly, lw) in enumerate(((10.6, 0.25), (11.5, 0.20), (12.6, 0.16))):
+        x, k = -205.0, 0
+        while x < 205.0:
+            ln = rng.uniform(2.0, 9.0)
+            w = lw * rng.uniform(0.6, 1.4)
+            make_box(f"Surf_{li}_{k}", (x + ln / 2.0, ly + rng.uniform(-0.12, 0.12), 0.03 + 0.005 * (li == 0)), (ln, w, 0.02), COL_SURF)
+            x += ln + rng.uniform(0.4, 3.5)
+            k += 1
     # up to the tide gleam (2026-09-23: a 70 cm strip of nothing between
     # the gleam and the sea, with the first surf line floating over it)
     make_box("Sea_Near", (0.0, 14.15, 0.0), (440.0, 7.7, 0.05), COL_SEA)
@@ -219,8 +228,12 @@ def build_shore_2026_09():
     # the moon behind the gap between decks 3 and 4 (x 8..36)
     make_blob("Moon_Disc", (26.0, 240.0, 38.0), 5.0, (0.70, 0.72, 0.78, 1.0), noise=0.02, seed=3, rings=6, segments=12, squash=1.0)
     make_blob("Moon_Glow_Halo", (26.0, 242.0, 38.0), 11.0, COL_MOONGLOW, noise=0.10, seed=4, rings=5, segments=12, squash=0.8)
+    # (draft 3) the moon gap's smear on the wet band: what light there is,
+    # "caught up in water" — pale, broken, under where the moon hides
+    for k, (sx, sw) in enumerate(((0.6, 1.4), (1.4, 0.9), (2.0, 0.6), (0.1, 0.5))):
+        make_box(f"Moon_Smear_{k}", (sx, 8.95 + 0.20 * k, 0.037), (sw, 0.16, 0.004), (0.50, 0.53, 0.60, 1.0))
     # the walk down: left-right pairs from the dune to the wet band
-    FOOT = (0.22, 0.20, 0.17, 1.0)
+    FOOT = (0.17, 0.16, 0.14, 1.0)       # (draft 3) each print a shadow in the paler sand
     for k in range(14):
         t = k / 13.0
         fx = -0.9 + 0.55 * t + (0.13 if k % 2 else -0.13)

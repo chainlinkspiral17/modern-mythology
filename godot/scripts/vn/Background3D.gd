@@ -5250,6 +5250,11 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		# (2026-10-29) the ghost scene has no fire: the bonfire is beach_bonfire's
 		"strip": ["Bonfire_"],
+		# (2026-10-30, draft 3) "the moon could not be seen behind the clouds":
+		# an overcast sky, so the deck reads as its darker underside and not
+		# as cut-outs on a clear night
+		"env": {"sky_top": Color(0.15, 0.16, 0.21, 1), "sky_horizon": Color(0.25, 0.26, 0.31, 1),
+			"ground_horizon": Color(0.14, 0.14, 0.16, 1), "ground_bottom": Color(0.06, 0.06, 0.07, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 2 — the bonfire (ch10 "The bonfire", ch12x beach blanket) ──
@@ -5278,6 +5283,11 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		# (2026-10-29) the ghost scene has no fire: the bonfire is beach_bonfire's
 		"strip": ["Bonfire_"],
+		# (2026-10-30, draft 3) "the moon could not be seen behind the clouds":
+		# an overcast sky, so the deck reads as its darker underside and not
+		# as cut-outs on a clear night
+		"env": {"sky_top": Color(0.15, 0.16, 0.21, 1), "sky_horizon": Color(0.25, 0.26, 0.31, 1),
+			"ground_horizon": Color(0.14, 0.14, 0.16, 1), "ground_bottom": Color(0.06, 0.06, 0.07, 1)},
 		"suppress_input": true,
 	},
 	"bar_exterior_night": {
