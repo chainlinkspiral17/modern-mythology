@@ -4625,6 +4625,22 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"dead_store_roof": {
+		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
+		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
+		# (2026-10-30, draft 1) map of the city: "We climb to the sky, broken and
+		# pink. King runs to the edge of the roof and looks out ... The city
+		# feeds on itself". From the bulkhead they came up through, SW across
+		# the roof to King at the parapet and the city leaning, fused, fallen.
+		"far": 600.0,
+		"camera_origin": Vector3(138.0, 10.9, -16.0),
+		"camera_rotation": Vector3(-0.05, 2.66, 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.52, 0.30, 0.46, 1), "sky_horizon": Color(0.98, 0.62, 0.66, 1),
+			"ground_horizon": Color(0.62, 0.42, 0.46, 1), "ground_bottom": Color(0.24, 0.18, 0.20, 1),
+			"ambient_color": Color(0.96, 0.74, 0.78, 1), "ambient_energy": 0.80, "fog_color": Color(0.90, 0.60, 0.66, 1), "fog_sky": 0.4},
+		"suppress_input": true,
+	},
 	"dead_store": {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",

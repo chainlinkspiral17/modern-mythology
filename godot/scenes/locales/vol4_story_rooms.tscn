@@ -232,6 +232,13 @@ shadow_enabled = false
 spot_range = 14.0
 spot_angle = 25.0
 
+; (2026-10-30) the roof under the pink sky: a low pink sun from the W
+[node name="Sun_Pink__dead_store_roof" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0, 0.423, -0.906, 0, 0.906, 0.423, 1, 0, 0, 135, 30, -12)
+light_color = Color(1.0, 0.70, 0.74, 1)
+light_energy = 1.1
+shadow_enabled = false
+
 [node name="Sun_High__dead_store" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 135, 20, 10)
 light_color = Color(1.0, 0.96, 0.86, 1)

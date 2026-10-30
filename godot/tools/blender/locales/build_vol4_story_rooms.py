@@ -253,6 +253,7 @@ def build_store():
     # (2026-10-30: the 400 m "Sky_Day_S" slab is gone — an occluder the
     # geometry audit flagged; the sky is the environment's)
     build_store_2026_10()
+    build_store_roof_2026_10()
 
 
 def build_store_2026_10():
@@ -337,6 +338,102 @@ def build_store_2026_10():
     # dust thick on everything low: a darker veil at the walls' feet
     for k, (x, y, w, d) in enumerate(((121.0, 6.0, 1.4, 11.0), (149.0, 6.0, 1.4, 11.0), (135.0, 11.4, 28.0, 1.0))):
         make_box(f"Dust_Bank_{k}", (x, y, 0.005), (w, d, 0.006), (0.66, 0.62, 0.56, 1.0))
+
+
+def build_store_roof_2026_10():
+    """map of the city (vol 4): "We walk up the metal spine of the dead
+    escalator. We climb to the sky, broken and pink. King runs to the edge
+    of the roof and looks out, hoots for me to come over. Vertigo swells.
+    We're someplace not real. ... The city feeds on itself, gives birth to
+    itself, twists, turns, collapses, congeals." → dead_store_roof.
+    The store's roof (top z 9.30): the parapet, the stair bulkhead they come
+    up through with its door hung open, the dead HVAC units and their ducts,
+    a skylight smashed in, ponding and gravel; King at the S parapet (a
+    figure for scale, his paper crown a gold band); round it the city
+    feeding on itself — towers leaning into each other, one fused into the
+    next, a stump of one collapsed, others rising out of the rubble — under
+    a sky the preset makes pink. Draft 2 targets: the sky's "broken" as the
+    shader's work (a mood), the street far below with its river of people,
+    King's hoot as a pose."""
+    from _props.figures import make_standing_figure
+    import random
+    rnd = random.Random(144)
+    Z = 9.30
+    x0, x1, y0, y1 = 120.0, 150.0, 0.0, 24.0
+    roof = (0.46, 0.44, 0.42, 1.0)
+    make_box("Roof_Membrane", (135.0, 12.0, Z + 0.01), (29.6, 23.6, 0.02), roof)
+    for k in range(9):
+        make_blob(f"Roof_Ponding_{k}", (122.0 + rnd.uniform(0, 26), rnd.uniform(1.5, 22.5), Z + 0.022), rnd.uniform(0.6, 1.6),
+                  (0.32, 0.30, 0.34, 1.0), noise=0.4, seed=k, squash=0.02)
+    # the parapet with its coping
+    for nm, c, sz in (("S", (135.0, y0 + 0.15, Z + 0.45), (30.3, 0.30, 0.90)), ("N", (135.0, y1 - 0.15, Z + 0.45), (30.3, 0.30, 0.90)),
+                      ("W", (x0 + 0.15, 12.0, Z + 0.45), (0.30, 23.4, 0.90)), ("E", (x1 - 0.15, 12.0, Z + 0.45), (0.30, 23.4, 0.90))):
+        make_box(f"Roof_Parapet_{nm}", c, sz, (0.66, 0.62, 0.56, 1.0))
+        make_box(f"Roof_Parapet_Coping_{nm}", (c[0], c[1], Z + 0.92), (sz[0] + 0.06, sz[1] + 0.06, 0.05), (0.76, 0.76, 0.74, 1.0))
+    # the stair bulkhead, its door hung open (they came up the escalator to the mezzanine, then here)
+    make_box("Roof_Bulkhead", (137.0, 19.5, Z + 1.35), (3.0, 3.4, 2.7), (0.60, 0.56, 0.50, 1.0))
+    make_box("Roof_Bulkhead_Doorway_Dark", (137.0, 17.79, Z + 1.05), (0.95, 0.02, 2.05), (0.08, 0.08, 0.08, 1.0))
+    make_rot_box("Roof_Bulkhead_Door_Open", (137.55, 17.35, Z + 1.05), (0.04, 0.90, 2.05), (0.40, 0.42, 0.44, 1.0), yaw=0.35)
+    # dead HVAC units, their ducts, vents
+    for k, (hx, hy) in enumerate(((126.0, 16.0), (131.0, 20.0), (144.0, 8.0))):
+        make_box(f"Roof_HVAC_{k}", (hx, hy, Z + 0.75), (2.2, 1.4, 1.5), (0.70, 0.70, 0.68, 1.0))
+        make_cyl(f"Roof_HVAC_Fan_{k}", (hx + 0.5, hy, Z + 1.52), 0.45, 0.04, (0.20, 0.20, 0.22, 1.0), segments=14)
+        make_box(f"Roof_HVAC_Duct_{k}", (hx - 1.6, hy, Z + 0.35), (1.0, 0.5, 0.5), (0.66, 0.66, 0.64, 1.0))
+    for k in range(6):
+        make_cyl(f"Roof_Vent_Stack_{k}", (123.0 + k * 4.4, 3.0 + (k % 3) * 6.5, Z + 0.35), 0.10, 0.70, (0.56, 0.56, 0.58, 1.0), segments=8)
+    # a skylight smashed in, its frame and a few shards
+    make_box("Roof_Skylight_Curb", (130.0, 9.0, Z + 0.15), (2.6, 2.6, 0.30), (0.60, 0.58, 0.54, 1.0))
+    make_box("Roof_Skylight_Hole_Dark", (130.0, 9.0, Z + 0.305), (2.2, 2.2, 0.01), (0.05, 0.05, 0.06, 1.0))
+    for k in range(5):
+        make_rot_box(f"Roof_Skylight_Shard_{k}", (128.4 + k * 0.7, 7.3 + (k % 2) * 0.5, Z + 0.03), (0.40, 0.30, 0.01), (0.80, 0.84, 0.86, 0.6), yaw=k)
+    # King at the S parapet, looking out; his fast food paper crown
+    make_standing_figure("Roof_King", 129.5, 0.75, heading=math.pi, h=1.40, coat=(0.40, 0.30, 0.20, 1.0), pants=(0.30, 0.24, 0.18, 1.0),
+                         hair=(0.16, 0.12, 0.08, 1.0), arms="front", z0=Z + 0.02)
+    make_cyl("Roof_King_Paper_Crown", (129.5, 0.75, Z + 0.02 + 1.40 * 0.97), 0.085, 0.08, (0.96, 0.80, 0.24, 1.0), segments=10)
+    # the city feeding on itself: towers in rings round the store, leaning
+    # into each other, fused, collapsed, rising from the rubble
+    grey = ((0.40, 0.40, 0.44, 1.0), (0.50, 0.48, 0.50, 1.0), (0.32, 0.32, 0.36, 1.0), (0.56, 0.52, 0.50, 1.0))
+    n = 0
+    for ring, (r, cnt) in enumerate(((70.0, 14), (115.0, 20), (165.0, 26))):
+        for i in range(cnt):
+            a = (i + 0.5 * (ring % 2)) * 2.0 * math.pi / cnt
+            bx, by = 135.0 + r * math.cos(a), 12.0 + r * math.sin(a)
+            if by > -20.0 and by < 30.0 and abs(bx - 135.0) < 40.0:
+                continue
+            # clear of this file's other rooms (the garage at x 0..47, the
+            # mirror room at 260, Aaron's at 300, the reading room at 420)
+            if any(ax0 - 20.0 < bx < ax1 + 20.0 and -25.0 < by < 35.0
+                   for ax0, ax1 in ((0.0, 47.0), (259.0, 264.0), (300.0, 304.4), (420.0, 428.0))):
+                continue
+            w = rnd.uniform(14.0, 26.0)
+            hgt = rnd.uniform(30.0, 90.0) + ring * 20.0
+            kind = rnd.random()
+            col = grey[rnd.randrange(len(grey))]
+            if kind < 0.25:
+                # leaning, into its neighbour
+                make_rot_box(f"City_Feed_Tower_Stock_{n}", (bx, by, hgt / 2.0 - 2.0), (w, w, hgt), col,
+                             yaw=a, pitch=rnd.choice((-1, 1)) * rnd.uniform(0.12, 0.30))
+            elif kind < 0.40:
+                # collapsed to a stump, its rubble round it
+                make_box(f"City_Feed_Tower_Stock_{n}", (bx, by, hgt * 0.12), (w, w, hgt * 0.24), col)
+                make_blob(f"City_Feed_Rubble_Stock_{n}", (bx, by, 2.0), w * 0.9, (0.36, 0.34, 0.34, 1.0), noise=0.4, seed=n, squash=0.25)
+            elif kind < 0.55:
+                # fused: a second block grown through it at an angle
+                make_box(f"City_Feed_Tower_Stock_{n}", (bx, by, hgt / 2.0), (w, w, hgt), col)
+                make_rot_box(f"City_Feed_Graft_Stock_{n}", (bx, by, hgt * 0.62), (w * 1.6, w * 0.6, w * 0.6), grey[(n + 1) % 4],
+                             yaw=a + 0.7, roll=0.4)
+            else:
+                make_box(f"City_Feed_Tower_Stock_{n}", (bx, by, hgt / 2.0), (w, w, hgt), col)
+                # dark window bands on the face toward the store
+                for j in range(int(hgt / 6.0)):
+                    if (n + j) % 3 == 0:
+                        continue
+                    fx_, fy_ = bx - (w / 2.0 + 0.05) * math.cos(a), by - (w / 2.0 + 0.05) * math.sin(a)
+                    make_rot_box(f"City_Feed_Band_Stock_{n}_{j}", (fx_, fy_, 3.0 + j * 6.0), (0.1, w * 0.86, 1.6), (0.18, 0.16, 0.20, 1.0),
+                                 yaw=a)
+            n += 1
+    # under the other rooms' slabs (their floors' bottoms at -0.20)
+    make_box("City_Feed_Ground", (135.0, 12.0, -0.28), (420.0, 420.0, 0.04), (0.30, 0.28, 0.28, 1.0))
 
 
 def build_mirror_room():
