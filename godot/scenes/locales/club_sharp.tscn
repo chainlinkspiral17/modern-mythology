@@ -281,23 +281,23 @@ omni_range = 3.80
 ; (2026-10-30) the arcade view's own wash: tagged, so they exist only in
 ; club_sharp_arcade and never touch the main floor's light budget
 [node name="Arcade_Wash_0__club_sharp_arcade" type="OmniLight3D" parent="."]
-position = Vector3(-7.500, -0.600, -4.000)
+position = Vector3(-7.500, -1.400, -4.000)
 light_color = Color(0.40, 0.80, 0.98, 1)
-light_energy = 2.40
+light_energy = 3.60
 shadow_enabled = false
 omni_range = 8.50
 
 [node name="Arcade_Wash_1__club_sharp_arcade" type="OmniLight3D" parent="."]
-position = Vector3(-7.500, -0.600, -9.000)
+position = Vector3(-7.500, -1.400, -9.000)
 light_color = Color(0.98, 0.46, 0.78, 1)
-light_energy = 2.40
+light_energy = 3.60
 shadow_enabled = false
 omni_range = 8.50
 
 [node name="Arcade_Wash_2__club_sharp_arcade" type="OmniLight3D" parent="."]
-position = Vector3(-7.500, -0.600, -14.000)
+position = Vector3(-7.500, -1.400, -14.000)
 light_color = Color(0.70, 0.56, 0.98, 1)
-light_energy = 2.40
+light_energy = 3.60
 shadow_enabled = false
 omni_range = 8.50
 
