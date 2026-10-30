@@ -516,7 +516,8 @@ def build_corolla_2026_10():
         make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
 
 
-JD_X, JD_Y, JD_DZ = -80.0, -80.0, -0.16       # (2026-10-29) Judgement Day, on its own Houston street, far from the turnout
+JD_X, JD_Y, JD_DZ = -700.0, -700.0, -0.16     # (2026-10-29) Judgement Day, on its own Houston street, far from the turnout
+# (round 4) moved from (-80, -80): the turnout's far tree band (x -60) ran through its shops and overpass
 JD_RED = (0.40, 0.18, 0.16, 1.0)
 JD_RED_DK = (0.30, 0.13, 0.12, 1.0)
 
@@ -675,7 +676,7 @@ def build_judgement_day_2026_10():
     make_box("JD_Overpass_Deck", (ax, ay + 90.0, 8.0), (60.0, 12.0, 1.2), (0.70, 0.68, 0.64, 1.0))
     for s_ in (-1, 1):
         make_box(f"JD_Overpass_Pier_{s_:+d}", (ax + s_ * 10.0, ay + 90.0, 3.7), (1.6, 3.0, 7.4), (0.66, 0.64, 0.60, 1.0))
-    make_box("JD_Ground", (ax, ay + 40.0, -0.06), (120.0, 160.0, 0.04), (0.42, 0.48, 0.32, 1.0))
+    make_box("JD_Ground", (ax, ay + 40.0, -0.06), (400.0, 400.0, 0.04), (0.42, 0.48, 0.32, 1.0))   # (round 4) on its own now, past Ground_Far
 
 
 def main():

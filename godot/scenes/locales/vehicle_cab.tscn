@@ -249,7 +249,7 @@ light_energy = 0.5
 shadow_enabled = false
 
 [node name="Cab_Fill__vehicle_cab_judgement_day" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.0, 1.55, 79.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -700.0, 1.55, 699.6)
 light_color = Color(1.0, 0.96, 0.90, 1)
 light_energy = 0.9
 shadow_enabled = false

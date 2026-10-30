@@ -28,9 +28,9 @@
   "objects": 256
  },
  "briar_falls": {
-  "draw": 132,
-  "prims": 57696,
-  "objects": 302
+  "draw": 130,
+  "prims": 57484,
+  "objects": 300
  },
  "bus_station": {
   "draw": 80,
@@ -199,7 +199,7 @@
  },
  "little_league": {
   "draw": 94,
-  "prims": 52596,
+  "prims": 50444,
   "objects": 264
  },
  "miller_back_porch": {
@@ -365,13 +365,13 @@
   "objects": 244
  },
  "vehicle_cab": {
-  "draw": 408,
-  "prims": 25000,
-  "objects": 578
+  "draw": 424,
+  "prims": 45928,
+  "objects": 594
  },
  "vol3_rooms": {
   "draw": 354,
-  "prims": 266968,
+  "prims": 271720,
   "objects": 524
  },
  "vol4_apartments": {
@@ -381,7 +381,7 @@
  },
  "vol4_story_rooms": {
   "draw": 176,
-  "prims": 340848,
+  "prims": 340736,
   "objects": 346
  },
  "wagner_home": {

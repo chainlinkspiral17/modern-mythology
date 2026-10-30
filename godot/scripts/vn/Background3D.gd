@@ -2386,7 +2386,7 @@ const CAMERA_PRESETS := {
 		# (round 2, 2026-10-30) from the back seat's middle: Faust at the wheel
 		# and the third boy on the front bench, the shirt on the rearview, the
 		# street through the windshield ("The boys sit in near silence")
-		"camera_origin": Vector3(-80.0, 1.40, 80.80),
+		"camera_origin": Vector3(-700.0, 1.40, 700.80),   # (round 4) the street moved to (-700, -700)
 		"camera_rotation": Vector3(-0.05, 0.0, 0.0),
 		"fov": 72.0,
 		"env": {"sky_top": Color(0.40, 0.62, 0.92, 1), "sky_horizon": Color(0.84, 0.88, 0.92, 1),
