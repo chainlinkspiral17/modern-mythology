@@ -414,6 +414,25 @@ def _in_view(name, view):
 
 
 PRESET_IDS = set()
+STRIPS = {}
+
+
+def _strips():
+    """(2026-10-30) each preset's `strip` prefixes (Background3D removes those
+    nodes for that view). The marker pass honoured `__<preset>` tags but not
+    strips, so the batting team on the dugout bench (Game_Bat_*, stripped by
+    the field views) "blocked" ballfield_home_plate's seat insert."""
+    src = open(V.GD).read()
+    out = {}
+    for m in V.BLOCK.finditer(src):
+        sm = re.search(r'"strip":\s*\[([^\]]*)\]', m.group(2))
+        if sm:
+            out[m.group(1)] = re.findall(r'"([^"]+)"', sm.group(1))
+    return out
+
+
+def _not_stripped(name, view):
+    return not any(name.startswith(p) for p in STRIPS.get(view, ()))
 
 
 def markers_pass(only, show_all):
@@ -421,6 +440,7 @@ def markers_pass(only, show_all):
     marker is a camera pose; fov from metadata/fov (default 42)."""
     import marker_aim_audit as M
     PRESET_IDS.update(p[0] for p in presets())
+    STRIPS.update(_strips())
     flagged = []
     n = 0
     for fn in sorted(os.listdir(M.LOCALES_TSCN)):
@@ -452,7 +472,7 @@ def markers_pass(only, show_all):
             # one, else the locale's own preset (wagner_house_steps' open
             # front door is not in wagner_home's skateboard insert).
             view = name.split("__")[1] if "__" in name else locale
-            boxes = [b for b in all_boxes if _in_view(b[0], view)] if view in PRESET_IDS else all_boxes
+            boxes = [b for b in all_boxes if _in_view(b[0], view) and _not_stripped(b[0], view)] if view in PRESET_IDS else all_boxes
             name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
             n += 1
             if name.startswith("shot_closeup_"):
