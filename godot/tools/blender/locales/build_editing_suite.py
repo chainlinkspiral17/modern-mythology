@@ -169,9 +169,64 @@ def build_edit_station():
     make_chair("Edit_Chair_2", dx + 0.60, dy - 0.85, yaw=0.3, wood=(0.24, 0.24, 0.26, 1.0))
 
 
+def build_suite_dressing_2026_10():
+    """DRAFT 2 (2026-10-30): the room read as four bare walls round the
+    monitors — nothing an editing suite keeps. The text gives the monitors,
+    the console, the couch, the window with nothing out of it, the door; this
+    adds what such a room has and the text does not contradict: the tapes,
+    the monitor speakers, the acoustic panels, a drop ceiling, and the worn
+    carpet where the Human Being sits on the floor against the couch's arm."""
+    WX = X0 + T / 2.0            # the W wall's room face
+    NY = D - T / 2.0             # the N wall's room face
+    # a tape shelf on the W wall between the couch end and the window
+    sy0, sy1, sd, sh = 1.0, 2.8, 0.30, 2.0
+    shelf = (0.20, 0.18, 0.18, 1.0)
+    for k, y in enumerate((sy0, sy1)):
+        make_box(f"Tape_Shelf_Side_{k}", (WX + sd / 2.0, y, sh / 2.0), (sd, 0.03, sh), shelf)
+    for r in range(6):
+        z = 0.06 + r * 0.38
+        make_box(f"Tape_Shelf_Board_{r}", (WX + sd / 2.0, (sy0 + sy1) / 2.0, z), (sd, sy1 - sy0 - 0.03, 0.025), shelf)
+        if r == 5:
+            continue
+        # the tapes standing on it, spines out: black cases, a few labelled
+        y = sy0 + 0.04
+        k = 0
+        while y < sy1 - 0.06:
+            w = 0.028 if (k * 7 + r) % 5 else 0.034
+            col = (0.08, 0.08, 0.09, 1.0) if (k + r) % 4 else (0.70, 0.66, 0.58, 1.0)
+            make_box(f"Tape_Stock_{r}_{k}", (WX + 0.12, y + w / 2.0, z + 0.0125 + 0.095), (0.18, w - 0.004, 0.19), col)
+            y += w + (0.06 if (k * 3 + r) % 11 == 0 else 0.0)
+            k += 1
+    # the monitor speakers either side of the big monitor, on wall brackets
+    for sx in (-1, 1):
+        x = sx * 1.35
+        make_box(f"Suite_Speaker_Bracket_{sx:+d}", (x, NY - 0.10, 1.86), (0.12, 0.20, 0.04), FLAT)
+        make_chamfer_box(f"Suite_Speaker_{sx:+d}", (x, NY - 0.12, 2.06), (0.24, 0.22, 0.36), (0.12, 0.12, 0.13, 1.0), chamfer=0.01)
+        make_cyl(f"Suite_Speaker_Cone_{sx:+d}", (x, NY - 0.235, 2.00), 0.08, 0.01, (0.20, 0.20, 0.22, 1.0), axis='Y', segments=14)
+        make_cyl(f"Suite_Speaker_Tweeter_{sx:+d}", (x, NY - 0.235, 2.16), 0.025, 0.01, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=10)
+    # acoustic panels on the N wall past the monitors, two each side
+    for sx in (-1, 1):
+        for j in range(2):
+            x = sx * (2.70 + j * 0.66)
+            make_box(f"Suite_Acoustic_Panel_{sx:+d}_{j}", (x, NY - 0.025, 1.65), (0.60, 0.05, 1.20), (0.20, 0.22, 0.28, 1.0))
+    # the drop ceiling: the grid's T-bars and two troffers (the overhead's)
+    grid = (0.62, 0.62, 0.60, 1.0)
+    for i in range(1, 11):
+        y = i * 0.61
+        make_box(f"Ceil_Grid_Stock_Y{i}", ((X0 + X1) / 2.0, y, H - 0.01), (X1 - X0, 0.025, 0.02), grid)
+    for i in range(1, 7):
+        x = X0 + i * 1.22 - 0.06
+        make_box(f"Ceil_Grid_Stock_X{i}", (x, D / 2.0, H - 0.01), (0.025, D, 0.02), grid)
+    for k, (x, y) in enumerate(((-0.81, 2.745), (1.63, 4.575))):
+        make_box(f"Ceil_Troffer_{k}", (x, y, H - 0.012), (1.18, 0.57, 0.02), (0.88, 0.88, 0.84, 1.0))
+    # the carpet worn flat where the Human Being sits against the couch's arm
+    make_box("Suite_Carpet_Worn", (0.86, 1.50, 0.004), (0.54, 0.62, 0.004), (0.32, 0.31, 0.34, 1.0))
+
+
 def main():
     clear_scene()
     build_suite()
+    build_suite_dressing_2026_10()
     build_edit_station()
     try:
         join_stock()
