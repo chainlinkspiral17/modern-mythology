@@ -3858,7 +3858,36 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
   - Steven's: rave flyers; the desk worked at; a CD tower; the stereo and speakers under the window; a hoodie and sneakers.
   - Mrs. Chau's: the dog's bed and bowls, a bench, a reading chair and a landscape. Her dresser stood across her doorway and moved 0.6 m N.
   - chau_steven_desk is 1.3 m nearer.
-- **Next (main):** the vol 4 carrie_city set (sister's house, Charlie's apartment, the grungy bathroom), lake_house_day, Chris's room, Nick's house, Pasadena 1945, Sapo Falls, Honolulu lobby, Dabney side yard, Small Wood field and high, El Rancho, Henderson garage, crumpled_barn_ext, Wagner porch, club street.
+- **The sister's house (vol 4 cc_4), draft 3.** "pretty low rent, in bad shape … tight and cramped, the yard in a sorry state".
+  - Inside: paneling, a ceiling water stain, a hole in the partition, a playpen, a high chair, a box fan, clothes and a lone sock, the dryer piled with an unfolded load, beer cans, an ashtray, a baby bottle and diapers.
+  - The washer and dryer now have faces for the dryer insert.
+  - The yard: weeds, trash bags, a cracked kiddie pool, the screen door hanging, and a day sky (it had been a purple dusk).
+- **Charlie's apartment by day (vol 4).** The camera is turned onto the bed and canvases.
+  - The dresser has drawers, the top one pulled out with a shirt, a mirror, and his wallet, keys, watch and cologne.
+  - The "getting dressed" insert is pulled back to hold it.
+- **Nick's house (vol 3 ch12), draft 3.**
+  - Mark's workshop: oil stains, a vise, a drill press, a lumber rack, a shop vac, sawhorses, and the costume box spilling.
+  - Grandma's living room: a sofa under the family photos, a curio cabinet, her side table, a rug, sheers and a clock, and the shopping channel's ring and price banner on the muted set.
+- **The 1945 clinic (vol 3 ch9), draft 3.** An enamel instrument cabinet, a balance-beam scale, an eye chart, a privacy screen, blinds, a clock, a 1945 calendar, an enamel pendant, and the kidney dish.
+  - A `make_lathe` import was missing, so the build failed on its first push. That is fixed. Lesson: never commit a builder before its build has run to "wrote".
+- **The Dabney side yard (vol 3 ch6, the establishing panorama).** The wings' outer faces get windows (it had been a blank warehouse wall). The camera stands back down the yard looking at the E wing and the couchmobile.
+- **Sapo Falls (vol 2 ch2), draft 4.**
+  - Boulder masses break the walls, half of them mossy. Foliage clusters, vines, trees and ferns.
+  - Two of "the many smaller" falls, striated and wooded tepuis, round boulders and a teal pool.
+  - The camera stands up on the viewing rock.
+- **The crumpled barn's exterior, draft 5.** The gable end is a pitched pentagon with battens carried under its rakes. The stepped slabs had read as a robot's head.
+- **club_street_dawn (vol 1 ch16).** A grey pre-dawn sky: "ordinary, gray, about to be morning".
+- **The lake-house bath (vol 3 ch11).** A real toilet bowl, a frosted window, a basket, a magazine and a night light.
+- **Club Sharp's CAGE (vol 1 ch8 / ch16).** The club had no cage.
+  - New presets: `club_sharp_cage` (standing, "Sitting caged in the center of the club") and `club_sharp_cage_up` (tipped, the door down, Joan's dagger inside).
+  - A stage spot and a bounce, with the floor show's lights stripped after hours.
+  - ch8 and ch16 now open on them; both had played the plain club stem.
+  - Lesson in the lighting playbook: a shadowed spot lit nothing under the compatibility renderer.
+- **Busiest sets checked (by lines played), no change needed:** writers_desk (588), faust_apartment_day (231), pharmacy_floor, small_wood_high_class and hospital_room all read.
+- **Next (main):**
+  - Club Sharp's base view: the crowd, "dancers … not quite synchronized".
+  - The Faust bedroom; vehicle_cab (fork); the 1945 clinic's green wash; the Honolulu lobby's storefront signs (waiting on the user's sign images).
+  - Small Wood field at dusk; el_rancho_taqueria.
 - **Draft N+1 targets:**
   - The chau bath: the vanity's drawers, the razor wrappers in the sink, water on the tile.
   - Steven's room: the closet and a beanbag.
