@@ -57,7 +57,7 @@
  },
  "chau_house": {
   "draw": 148,
-  "prims": 137664,
+  "prims": 143072,
   "objects": 318
  },
  "chillwave_interior": {
@@ -239,9 +239,9 @@
   "objects": 252
  },
  "oregon_lighthouse": {
-  "draw": 68,
-  "prims": 7620,
-  "objects": 238
+  "draw": 218,
+  "prims": 24180,
+  "objects": 378
  },
  "parsonage_1945": {
   "draw": 76,
