@@ -45,8 +45,8 @@ hospital's other rooms moving in from vol 6's sets; Deck framing.
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe, make_gable,
-                             join_stock, export_glb)
+from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe, make_gable, make_tube,
+                             join_stock, export_glb, _finalize_mesh)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_bed, make_chair, make_table, make_lamp
 from _props.vehicles import make_car
@@ -103,26 +103,92 @@ def build_june():
     for s in (-1, 1):
         make_box(f"June_Closet_Side_{s:+d}", (2.6 + s * 0.88, 4.64, 1.25), (0.16, 0.88, 2.5), (0.80, 0.74, 0.76, 1.0))
     make_box("June_Closet_Ceil", (2.6, 4.64, 2.54), (1.9, 0.88, 0.08), (0.90, 0.90, 0.88, 1.0))
-    make_box("June_Closet_Sliding_Panel", (2.0, 4.26, 1.05), (0.80, 0.04, 2.1), (0.86, 0.84, 0.80, 1.0))
-    make_box("June_Closet_Rod", (2.6, 4.66, 1.85), (1.6, 0.03, 0.03), (0.70, 0.70, 0.72, 1.0))
-    for k in range(8):
-        make_box(f"June_Closet_Clothes_Hang_{k}", (1.95 + k * 0.18, 4.66, 1.44), (0.05, 0.46, 0.80),
-                 ((0.30, 0.40, 0.70, 1.0), (0.80, 0.40, 0.50, 1.0), (0.20, 0.20, 0.24, 1.0), (0.86, 0.84, 0.70, 1.0))[k % 4])
-    make_box("June_Closet_Shelf", (2.6, 4.66, 2.10), (1.6, 0.70, 0.03), (0.86, 0.84, 0.80, 1.0))
-    for k in range(3):
-        make_box(f"June_Closet_Shelf_Box_{k}", (2.1 + k * 0.5, 4.70, 2.26), (0.40, 0.40, 0.28), (0.66, 0.54, 0.38, 1.0))
-    # the sealed box at the back, the blue script on its face
-    make_box("What_Lies_Beyond_Box", (2.9, 4.82, 0.158), (0.36, 0.08, 0.30), (0.20, 0.22, 0.36, 1.0))
-    make_box("What_Lies_Beyond_Script", (2.9, 4.775, 0.20), (0.26, 0.004, 0.08), (0.56, 0.74, 0.96, 1.0))
-    make_box("What_Lies_Beyond_Shrink_Wrap_Sheen", (2.9, 4.778, 0.08), (0.30, 0.002, 0.04), (0.80, 0.86, 0.90, 1.0))
-    for k in range(3):
-        make_box(f"June_Closet_Shoe_{k}", (2.1 + k * 0.28, 4.5, 0.05), (0.12, 0.26, 0.10), (0.30, 0.24, 0.20, 1.0))
+    # DRAFT 2 (2026-10-30): the sliding panel stood across half the opening and
+    # the box was a dark shape under eight clothes; now a lived-in reach-in.
+    build_june_closet_2026_10()
     # the room: the bed, the desk with a cassette player and a lamp, a poster
     make_bed("June_Bed", 4.0 - 0.08 - 0.50, 1.6, head="+X", w=0.95, d=1.95, made=False, blanket_col=(0.60, 0.40, 0.56, 1.0))
     make_table("June_Desk", 0.08 + 0.35, 1.2, w=0.70, d=1.1, h=0.74, wood=(0.56, 0.46, 0.36, 1.0))
     make_lamp("June_Desk_Lamp", 0.30, 1.6, base_z=0.74, h=0.46)
-    make_box("June_Cassette_Player", (0.45, 0.9, 0.80), (0.30, 0.18, 0.10), (0.20, 0.20, 0.22, 1.0))
+    make_box("June_Cassette_Player", (0.45, 0.78, 0.80), (0.30, 0.18, 0.10), (0.20, 0.20, 0.22, 1.0))
     make_box("June_Poster_Mounted", (2.2, 0.08 + 0.004, 1.6), (0.60, 0.006, 0.80), (0.30, 0.50, 0.70, 1.0))
+
+
+def build_june_closet_2026_10():
+    """arcadeum (vol 3 ch6): "She kept the game in the back of her closet for
+    a long time"; "When she finally got the box out of the closet"; "She
+    went back to playing her usual gaming stand-bys ... a good Dungeon Run
+    session". 1991.
+    - the bifold doors folded back to the jambs, the opening clear
+    - the rod full: shirts, jackets, two long dresses, hems at three heights,
+      pushed apart at the right where the box stands
+    - the floor: shoes kicked in, a laundry heap, shoe boxes stacked; WHAT
+      LIES BEYOND leaning against the back wall in the corner, still in its
+      shrink-wrap, the "regal cloudy blue script" across its face
+    - the shelf: folded sweaters, storage boxes, a board game
+    - the pull-chain bulb (the tscn's Closet_Dim) and June's PC on the desk,
+      its screen lit (the tscn's June_CRT_Glow)
+    Draft 3 targets: the box's cover art (a requested image: the user makes
+    it), the room's other three walls dressed (posters, a bookcase of game
+    boxes), the floor's carpet, the window's street at night."""
+    import math as _m
+    jb = (0.86, 0.84, 0.80, 1.0)
+    # bifold doors folded back at the jambs: each pair stands square to the
+    # wall, into the room
+    for s, jx in ((-1, 1.84), (1, 3.36)):
+        for k in range(2):
+            make_rot_box(f"June_Closet_Bifold_{s:+d}_{k}", (jx - s * (0.025 + 0.036 * k), 3.92, 1.05), (0.38, 0.03, 2.06), jb,
+                         yaw=_m.pi / 2.0)
+    # the rod's clothes: (x, length, depth, colour)
+    shirts = ((0.30, 0.40, 0.70), (0.80, 0.40, 0.50), (0.20, 0.20, 0.24), (0.86, 0.84, 0.70), (0.48, 0.20, 0.30),
+              (0.24, 0.42, 0.36), (0.90, 0.88, 0.86), (0.18, 0.18, 0.30), (0.62, 0.52, 0.40), (0.40, 0.46, 0.58))
+    k = 0
+    x = 1.92
+    while x < 3.30:
+        if 2.86 < x < 3.12:
+            x += 0.05                                  # the gap the box shows through
+            continue
+        kind = (k * 7) % 5
+        ln = (0.68, 0.72, 1.18, 0.82, 0.70)[kind]      # shirt, shirt, dress, jacket, shirt
+        dp = (0.42, 0.44, 0.36, 0.50, 0.42)[kind]
+        th = (0.035, 0.04, 0.03, 0.07, 0.035)[kind]
+        col = shirts[k % len(shirts)]
+        make_rot_box(f"June_Closet_Garment_{k}", (x, 4.66, 1.84 - 0.04 - ln / 2.0), (th, dp, ln), col + (1.0,),
+                     yaw=0.08 * (((k * 5) % 3) - 1))
+        make_rot_box(f"June_Closet_Hanger_{k}", (x, 4.66, 1.84 - 0.03), (0.01, 0.40, 0.012), (0.60, 0.58, 0.56, 1.0))
+        x += th + 0.03 + 0.02 * ((k * 3) % 2)
+        k += 1
+    # the floor: shoes kicked in, the laundry heap, shoe boxes
+    for i, (sx, sy, yw) in enumerate(((1.98, 4.42, 0.4), (2.14, 4.36, -0.3), (2.34, 4.48, 1.2), (2.52, 4.40, 0.1),
+                                      (2.70, 4.46, -0.9), (2.20, 4.70, 0.7))):
+        make_rot_box(f"June_Closet_Shoe_{i}", (sx, sy, 0.045), (0.10, 0.26, 0.09),
+                     ((0.30, 0.24, 0.20, 1.0), (0.86, 0.86, 0.84, 1.0), (0.12, 0.12, 0.14, 1.0))[i % 3], yaw=yw)
+    make_blob("June_Closet_Laundry", (2.42, 4.80, 0.16), 0.28, (0.56, 0.58, 0.66, 1.0), noise=0.35, seed=91, squash=0.55)
+    for i in range(3):
+        make_box(f"June_Closet_ShoeBox_{i}", (1.98, 4.82, 0.07 + i * 0.13), (0.30 - 0.02 * i, 0.18, 0.12),
+                 ((0.86, 0.60, 0.30, 1.0), (0.80, 0.80, 0.78, 1.0), (0.30, 0.40, 0.56, 1.0))[i])
+    # WHAT LIES BEYOND, leaning against the back wall in the corner
+    make_rot_box("June_Closet_What_Lies_Beyond_Box", (3.02, 4.93, 0.17), (0.30, 0.07, 0.34), (0.20, 0.22, 0.36, 1.0), roll=-0.16)
+    for i, (u, v, w) in enumerate(((-0.02, 0.10, 0.22), (0.03, 0.065, 0.16), (-0.04, 0.03, 0.12))):
+        make_rot_box(f"June_Closet_What_Lies_Beyond_Script_{i}", (3.02 + u, 4.893 - v * 0.16, 0.17 + v), (w, 0.004, 0.022),
+                     (0.56, 0.74, 0.96, 1.0), roll=-0.16)
+    make_rot_box("June_Closet_What_Lies_Beyond_Cloud", (3.02, 4.894, 0.13), (0.24, 0.003, 0.10), (0.42, 0.52, 0.72, 1.0), roll=-0.16)
+    make_rot_box("June_Closet_What_Lies_Beyond_Shrink_Wrap_Sheen", (3.08, 4.89, 0.20), (0.05, 0.002, 0.26), (0.80, 0.86, 0.90, 1.0), roll=-0.16)
+    # the shelf: folded sweaters, storage boxes, a board game
+    for i in range(3):
+        make_box(f"June_Closet_Shelf_Box_{i}", (2.1 + i * 0.52, 4.72, 2.26), (0.40, 0.40, 0.28), ((0.66, 0.54, 0.38, 1.0), (0.80, 0.76, 0.70, 1.0), (0.66, 0.54, 0.38, 1.0))[i])
+    for i in range(4):
+        make_box(f"June_Closet_Sweater_{i}", (3.14, 4.62, 2.135 + i * 0.07), (0.34, 0.30, 0.07),
+                 ((0.70, 0.30, 0.30, 1.0), (0.30, 0.40, 0.30, 1.0), (0.86, 0.80, 0.66, 1.0), (0.26, 0.28, 0.40, 1.0))[i])
+    # the pull-chain bulb
+    make_cyl("June_Closet_Bulb_Base", (2.6, 4.6, 2.46), 0.05, 0.08, (0.92, 0.92, 0.90, 1.0), segments=10)
+    make_blob("June_Closet_Bulb", (2.6, 4.6, 2.37), 0.04, (1.0, 0.94, 0.78, 1.0), noise=0.02, seed=3, squash=1.2)
+    make_box("June_Closet_Bulb_Chain", (2.64, 4.6, 2.18), (0.005, 0.005, 0.40), (0.70, 0.66, 0.50, 1.0))
+    # June's PC on the desk: the beige case under it, the monitor, the keyboard
+    make_box("June_PC_Monitor", (0.30, 1.20, 0.74 + 0.18), (0.36, 0.38, 0.34), (0.80, 0.76, 0.66, 1.0))
+    make_box("June_PC_Screen", (0.483, 1.20, 0.74 + 0.20), (0.005, 0.28, 0.22), (0.30, 0.62, 0.56, 1.0))
+    make_box("June_PC_Keyboard", (0.64, 1.18, 0.755), (0.16, 0.44, 0.03), (0.82, 0.78, 0.70, 1.0))
+    make_box("June_PC_Case", (0.36, 0.95, 0.22), (0.42, 0.18, 0.40), (0.80, 0.76, 0.66, 1.0))
 
 
 # ── B. the Oregon home (x 300..308, y 0..6) ─────────────────────────────
@@ -138,6 +204,8 @@ def build_oregon():
     # the bedroom door swung back flat to the partition (out of both views)
     make_box("Oregon_Bedroom_Door_Open", (x0 + 4.6 + 0.07, 1.2 + 0.41 + 0.40, 1.0), (0.04, 0.80, 2.0), (0.66, 0.58, 0.46, 1.0))
     for k, x in enumerate((x0 + 2.4, x0 + 6.4)):
+        if k == 1:
+            continue          # the bedroom's window looks out on the street now (build_oregon_bedroom_2026_10)
         make_box(f"Oregon_Window_Sky_Day_{k}__oregon_home_day", (x, 6.5, 1.45), (1.8, 0.04, 1.6), (0.70, 0.76, 0.80, 1.0))
         make_box(f"Oregon_Window_Sky_Night_{k}__oregon_home_night", (x, 6.5, 1.45), (1.8, 0.04, 1.6), (0.06, 0.07, 0.10, 1.0))
     # the main room: the wall phone, the table with the papers and the
@@ -164,6 +232,67 @@ def build_oregon():
     make_box("Oregon_Duffel_Clothes_Spill", (x0 + 6.6, 0.6, 0.37), (0.50, 0.26, 0.06), (0.60, 0.50, 0.66, 1.0))
     make_box("Oregon_Clothes_Floor", (x0 + 5.4, 4.6, 0.03), (0.60, 0.40, 0.06), (0.30, 0.30, 0.36, 1.0))
     make_box("Oregon_Dresser", (x0 + 4.6 + 0.05 + 0.25, 4.8, 0.48), (0.50, 1.00, 0.96), (0.50, 0.40, 0.30, 1.0))
+    build_oregon_bedroom_2026_10(x0)
+
+
+def build_oregon_bedroom_2026_10(x0):
+    """christine / janessa first (vol 3 ch5): "Andy has to tell the live-in
+    girlfriend he's going away"; "the little rented duplex college town
+    shack" (vol 2). DRAFT 2 — the bedroom read as a lamp, a bed and two
+    blank walls with a black hole for a window:
+    - out the N window, the street at night: the other half of the next
+      duplex with one window lit, a street lamp (the tscn's Street_Lamp
+      practical), a maple, parked cars
+    - two people's room: prints and a photo strip over the bed, a shelf of
+      paperbacks and textbooks, a rug, a chair with clothes over its back,
+      the closet's curtain, things on the dresser, her bag's spill
+    Draft 3 targets: the main room's half (the couch, the phone wall) at
+    the same density, the window's curtain, Deck framing."""
+    # the street out the bedroom window (x 306.4, sill 0.9, head 2.0)
+    make_box("Oregon_Yard", (x0 + 6.0, 9.0, -0.02), (14.0, 6.0, 0.04), (0.20, 0.26, 0.18, 1.0))
+    make_box("Oregon_Street", (x0 + 6.0, 13.5, -0.03), (40.0, 3.0, 0.04), (0.16, 0.16, 0.18, 1.0))
+    make_box("Oregon_Curb", (x0 + 6.0, 11.95, 0.06), (40.0, 0.15, 0.12), (0.46, 0.46, 0.46, 1.0))
+    make_box("Oregon_Neighbor_Duplex", (x0 + 7.0, 19.0, 2.4), (12.0, 7.0, 4.8), (0.46, 0.42, 0.36, 1.0))
+    make_box("Oregon_Neighbor_Roof", (x0 + 7.0, 19.0, 5.0), (12.6, 7.6, 0.4), (0.18, 0.16, 0.16, 1.0))
+    for i, (wx, lit) in enumerate(((x0 + 3.0, False), (x0 + 6.4, True), (x0 + 10.0, False))):
+        make_box(f"Oregon_Neighbor_Window_{i}", (wx, 15.48, 1.6), (1.2, 0.04, 1.1), (0.96, 0.78, 0.46, 1.0) if lit else (0.10, 0.10, 0.12, 1.0))
+    make_box("Oregon_Neighbor_Porch_Light", (x0 + 8.4, 15.47, 2.1), (0.12, 0.04, 0.18), (1.0, 0.86, 0.60, 1.0))
+    make_cyl("Oregon_Street_Lamp_Pole", (x0 + 4.4, 11.6, 3.0), 0.07, 6.0, (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_box("Oregon_Street_Lamp_Arm", (x0 + 4.4, 12.1, 5.95), (0.08, 1.0, 0.08), (0.30, 0.30, 0.32, 1.0))
+    make_box("Oregon_Street_Lamp_Head", (x0 + 4.4, 12.6, 5.85), (0.30, 0.50, 0.14), (1.0, 0.76, 0.44, 1.0))
+    from _props.trees import make_broadleaf
+    make_broadleaf("Oregon_Maple", x0 + 8.8, 10.0, 7.0, (0.18, 0.24, 0.16, 1.0), (0.24, 0.20, 0.16, 1.0))
+    make_car("Oregon_Parked_Car", x0 + 3.0, 12.9, 4.4, (0.30, 0.34, 0.40, 1.0), along="X")
+    # over the bed (E wall, face x 307.92): prints and a photo strip
+    ex = x0 + 8.0 - 0.08
+    for i, (py, pz, w, h, col) in enumerate(((2.9, 1.55, 0.50, 0.70, (0.30, 0.42, 0.50)), (3.75, 1.65, 0.40, 0.50, (0.66, 0.40, 0.30)))):
+        make_box(f"Oregon_Print_Mounted_{i}", (ex - 0.012, py, pz), (0.02, w, h), (0.86, 0.84, 0.80, 1.0))
+        make_box(f"Oregon_Print_Image_{i}", (ex - 0.025, py, pz), (0.006, w - 0.08, h - 0.08), col + (1.0,))
+    for i in range(4):
+        make_box(f"Oregon_Photo_Strip_{i}", (ex - 0.006, 4.35, 1.75 - i * 0.11), (0.006, 0.08, 0.10), ((0.70, 0.60, 0.50, 1.0), (0.50, 0.46, 0.50, 1.0))[i % 2])
+    # a shelf of paperbacks and textbooks on the E wall, S of the bed
+    make_box("Oregon_Shelf_Board", (ex - 0.12, 1.6, 1.30), (0.24, 1.0, 0.03), (0.50, 0.40, 0.30, 1.0))
+    bx = 1.14
+    for i in range(16):
+        bw = 0.03 + 0.012 * ((i * 7) % 4)
+        bh = 0.18 + 0.03 * ((i * 5) % 4)
+        make_box(f"Oregon_Shelf_Book_{i}", (ex - 0.12, bx + bw / 2.0, 1.315 + bh / 2.0), (0.16, bw, bh),
+                 ((0.62, 0.20, 0.18, 1.0), (0.20, 0.30, 0.50, 1.0), (0.86, 0.82, 0.70, 1.0), (0.24, 0.36, 0.24, 1.0), (0.30, 0.26, 0.24, 1.0))[i % 5])
+        bx += bw + 0.004
+        if bx > 2.05:
+            break
+    # a rug, the chair with clothes over its back
+    make_box("Oregon_Rug", (x0 + 6.2, 2.6, 0.006), (1.6, 2.2, 0.012), (0.56, 0.40, 0.34, 1.0))
+    make_chair("Oregon_Bedroom_Chair", x0 + 5.3, 2.4, yaw=-math.pi / 2.0, wood=(0.44, 0.34, 0.26, 1.0))
+    make_rot_box("Oregon_Chair_Shirt_Hang", (x0 + 5.08, 2.4, 0.78), (0.06, 0.46, 0.36), (0.30, 0.40, 0.56, 1.0), pitch=0.1)
+    # on the dresser: a mirror, a jewellery box, a hairbrush, his wallet and keys
+    make_box("Oregon_Dresser_Mirror_Mounted", (x0 + 4.6 + 0.07, 4.8, 1.45), (0.02, 0.70, 0.80), (0.62, 0.68, 0.72, 1.0))
+    make_box("Oregon_Dresser_Jewel_Box", (x0 + 4.95, 4.55, 1.01), (0.16, 0.12, 0.08), (0.40, 0.22, 0.20, 1.0))
+    make_rot_box("Oregon_Dresser_Brush", (x0 + 4.98, 5.0, 0.985), (0.05, 0.20, 0.03), (0.20, 0.16, 0.14, 1.0), yaw=0.4)
+    make_box("Oregon_Dresser_Wallet", (x0 + 4.90, 5.15, 0.975), (0.10, 0.08, 0.02), (0.28, 0.20, 0.14, 1.0))
+    # her bag's spill
+    for i, (dx, dy, col) in enumerate(((0.45, 0.10, (0.86, 0.84, 0.80)), (-0.40, -0.05, (0.30, 0.30, 0.36)), (0.20, 0.32, (0.70, 0.40, 0.50)))):
+        make_blob(f"Oregon_Duffel_Spill_{i}", (x0 + 6.6 + dx, 0.6 + dy, 0.05), 0.14, col + (1.0,), noise=0.3, seed=60 + i, squash=0.35)
 
 
 # ── C. the coast home-studio and its bathroom (x 600..612, y 0..8) ──────
@@ -204,13 +333,11 @@ def build_coast_studio():
     make_box("Studio_Sofa_Back", (x0 + 3.4, 0.62, 0.64), (2.2, 0.16, 0.42), (0.70, 0.66, 0.60, 1.0))
     for k in range(3):
         make_box(f"Studio_Print_Mounted_{k}", (x0 + 8.92 - 0.004, 1.4 + k * 1.1, 1.6), (0.006, 0.80, 0.60), ((0.20, 0.20, 0.22, 1.0), (0.86, 0.84, 0.80, 1.0))[k % 2])
+    build_coast_studio_2026_10(x0)
     # the bathroom: the tub with its thin film of bubbles, the crew's kit
     bx0, by0 = x0 + 9.0, 3.5
-    make_box("Bath_Tub_Body", (bx0 + 2.0, by0 + 4.5 - 0.08 - 0.40, 0.28), (1.7, 0.80, 0.56), (0.96, 0.96, 0.94, 1.0))
-    make_box("Bath_Tub_Water", (bx0 + 2.0, by0 + 4.5 - 0.08 - 0.40, 0.50), (1.5, 0.62, 0.01), (0.66, 0.80, 0.86, 1.0))
-    for k in range(9):
-        make_blob(f"Bath_Bubble_Film_Foam_{k}", (bx0 + 1.4 + (k % 5) * 0.28, by0 + 3.85 + (k // 5) * 0.22, 0.51), 0.05, (0.94, 0.96, 0.98, 1.0),
-                  noise=0.2, seed=k, squash=0.3)
+    # (2026-10-30, draft 2: the tub was one white box) — build_coast_bath_2026_10
+    build_coast_bath_2026_10(bx0, by0)
     make_box("Bath_Sink_Vanity", (bx0 + 4.0 - 0.08 - 0.28, by0 + 1.2, 0.42), (0.56, 1.0, 0.84), (0.60, 0.50, 0.40, 1.0))
     make_box("Bath_Mirror_Mounted", (bx0 + 4.0 - 0.08 - 0.012, by0 + 1.2, 1.55), (0.02, 0.90, 0.80), (0.70, 0.76, 0.80, 1.0))
     make_box("Bath_Towel_Bar_Mounted", (bx0 + 0.08 + 0.06, by0 + 2.0, 1.20), (0.04, 0.70, 0.03), (0.70, 0.70, 0.72, 1.0))
@@ -227,6 +354,132 @@ def build_coast_studio():
     make_cyl("Tripod_Collar", (tx, ty, 1.22), 0.10, 0.06, (0.14, 0.14, 0.16, 1.0), segments=10)
     make_box("Tripod_Head", (tx, ty, 1.28), (0.10, 0.10, 0.06), (0.14, 0.14, 0.16, 1.0))
     make_chamfer_box("Tape_Camera", (tx, ty + 0.05, 1.38), (0.14, 0.32, 0.16), (0.16, 0.16, 0.18, 1.0), chamfer=0.02)
+
+
+def build_coast_studio_2026_10(x0):
+    """the coast (vol 3 ch4): "a photographer friend's home-studio
+    overlooking the coast. He was on a shoot in Washington state and gave
+    us access to his place." DRAFT 2: a working photographer's room, not a
+    furniture showroom — a big layout table under the windows with contact
+    sheets, a loupe, a light box and film canisters; a shelf of photo books
+    and binders; prints pinned in a grid on the N wall; a rug, a fig in a
+    pot, camera bags by the door.
+    Draft 3 targets: the deck outside the windows, the coast's surf line,
+    a darkroom door, Deck framing."""
+    tx, ty = x0 + 1.6, 4.0
+    make_box("Studio_Layout_Table_Top", (tx, ty, 0.90), (1.0, 2.4, 0.05), (0.62, 0.56, 0.46, 1.0))
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            make_box(f"Studio_Layout_Table_Leg_{sx:+d}{sy:+d}", (tx + sx * 0.44, ty + sy * 1.14, 0.44), (0.05, 0.05, 0.88), (0.24, 0.24, 0.26, 1.0))
+    make_box("Studio_Light_Box_Glow", (tx, ty - 0.6, 0.94), (0.60, 0.46, 0.03), (0.96, 0.96, 0.92, 1.0))
+    for i in range(6):
+        make_box(f"Studio_Contact_Sheet_{i}", (tx - 0.20 + 0.18 * (i % 3), ty + 0.20 + 0.32 * (i // 3), 0.926 + 0.002 * i),
+                 (0.20, 0.25, 0.002), (0.20, 0.20, 0.22, 1.0) if i % 2 else (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Studio_Loupe", (tx + 0.05, ty - 0.55, 0.985), 0.025, 0.06, (0.86, 0.88, 0.90, 1.0), segments=10)
+    for i in range(5):
+        make_cyl(f"Studio_Film_Canister_{i}", (tx + 0.32, ty + 0.9 + 0.06 * i, 0.95), 0.016, 0.05, (0.20, 0.20, 0.22, 1.0), segments=8)
+    make_chair("Studio_Layout_Stool", tx + 0.75, ty, yaw=math.pi / 2.0, wood=(0.24, 0.24, 0.26, 1.0))
+    # the shelf of photo books along the S wall (face y 0.08)
+    make_box("Studio_Book_Shelf", (x0 + 6.4, 0.08 + 0.17, 0.95), (2.4, 0.34, 1.9), (0.40, 0.32, 0.24, 1.0))
+    for r in range(4):
+        bx = x0 + 5.26
+        i = 0
+        while bx < x0 + 7.5:
+            bw = 0.04 + 0.02 * ((i * 7 + r) % 3)
+            bh = 0.24 + 0.05 * ((i * 3 + r) % 3)
+            make_box(f"Studio_Photo_Book_{r}_{i}", (bx + bw / 2.0, 0.08 + 0.20, 0.08 + r * 0.46 + bh / 2.0 + 0.02), (bw, 0.24, bh),
+                     ((0.10, 0.10, 0.12, 1.0), (0.86, 0.84, 0.78, 1.0), (0.56, 0.20, 0.18, 1.0), (0.30, 0.36, 0.40, 1.0))[(i + r) % 4])
+            bx += bw + 0.006
+            i += 1
+    # prints pinned in a grid on the N wall (face y 7.92), W of the backdrop
+    for r in range(3):
+        for c in range(4):
+            make_box(f"Studio_Pinned_Print_{r}_{c}", (x0 + 0.7 + c * 0.42, 7.92 - 0.004, 1.25 + r * 0.42), (0.30, 0.006, 0.36),
+                     ((0.20, 0.20, 0.22, 1.0), (0.82, 0.82, 0.80, 1.0), (0.46, 0.46, 0.48, 1.0))[(r + c) % 3])
+    make_box("Studio_Rug", (x0 + 3.4, 1.9, 0.006), (2.8, 2.0, 0.012), (0.70, 0.62, 0.50, 1.0))
+    make_cyl("Studio_Fig_Pot", (x0 + 8.4, 7.4, 0.22), 0.22, 0.44, (0.66, 0.40, 0.30, 1.0), segments=12)
+    make_blob("Studio_Fig_Leaves", (x0 + 8.4, 7.4, 1.30), 0.55, (0.24, 0.40, 0.22, 1.0), noise=0.4, seed=33, squash=1.6)
+    for i in range(2):
+        make_chamfer_box(f"Studio_Kit_Bag_{i}", (x0 + 8.4, 5.0 + 0.5 * i, 0.16), (0.40, 0.26, 0.32), (0.16, 0.16, 0.18, 1.0), chamfer=0.03)
+
+
+def build_coast_bath_2026_10(bx0, by0):
+    """names in neon / the coast (vol 3 ch4): "We set-up in the bathroom.
+    Lighting kits were unfurled and cameras set-up on tripods."; "the girl
+    shivering in the stranger's bathtub. The bubbles there to cover her have
+    mostly dispersed into a thin film". DRAFT 2:
+    - the tub as a tub: an alcove tub with a rolled rim, apron and basin, the
+      water a little below the rim, a few islands of foam on a translucent
+      film; the faucet and spout, the shower head, the curtain shoved to one
+      end on its rod
+    - white tile around the alcove to 1.9 m, grout lines
+    - the crew's kit: umbrellas on the two light heads turned on the tub,
+      cables snaking across the floor to the door, a towel dropped on the mat
+    - a toilet by the W wall
+    Draft 3 targets: steam on the mirror, the tile's grout as one decal, the
+    crew's monitor on a case, the frosted window's light."""
+    tx, ty = bx0 + 2.0, by0 + 4.5 - 0.08 - 0.40          # the tub's centre
+    W, D, Hh, R = 1.70, 0.80, 0.56, 0.08
+    white = (0.96, 0.96, 0.94, 1.0)
+    make_box("Bath_Tub_Floor", (tx, ty, 0.06), (W, D, 0.12), white)
+    for nm, c, s in (("S", (tx, ty - D / 2.0 + R / 2.0, Hh / 2.0), (W, R, Hh)), ("N", (tx, ty + D / 2.0 - R / 2.0, Hh / 2.0), (W, R, Hh)),
+                     ("W", (tx - W / 2.0 + R / 2.0, ty, Hh / 2.0), (R, D - 2 * R, Hh)), ("E", (tx + W / 2.0 - R / 2.0, ty, Hh / 2.0), (R, D - 2 * R, Hh))):
+        make_chamfer_box(f"Bath_Tub_Side_{nm}", c, s, white, chamfer=0.02)
+    for nm, c, ln, ax in (("S", (tx, ty - D / 2.0 + R / 2.0, Hh), W, 'X'), ("N", (tx, ty + D / 2.0 - R / 2.0, Hh), W, 'X'),
+                          ("W", (tx - W / 2.0 + R / 2.0, ty, Hh), D, 'Y'), ("E", (tx + W / 2.0 - R / 2.0, ty, Hh), D, 'Y')):
+        make_cyl(f"Bath_Tub_Rim_{nm}", c, R * 0.62, ln, white, axis=ax, segments=10)
+    wz = Hh - 0.11
+    make_box("Bath_Tub_Water", (tx, ty, wz), (W - 2 * R, D - 2 * R, 0.01), (0.58, 0.72, 0.78, 1.0))
+    make_box("Bath_Tub_Bubble_Film", (tx, ty, wz + 0.008), (W - 2 * R - 0.02, D - 2 * R - 0.02, 0.004), (0.96, 0.98, 1.0, 0.30))
+    import random
+    rnd = random.Random(44)
+    for k in range(26):
+        fx = tx + rnd.uniform(-0.66, 0.66)
+        fy = ty + rnd.uniform(-0.26, 0.26)
+        if abs(fx - tx) < 0.30 and abs(fy - ty) < 0.14 and k % 3:
+            continue                                      # thinner where she pulls it in
+        make_blob(f"Bath_Bubble_Film_Foam_{k}", (fx, fy, wz + 0.012), rnd.uniform(0.02, 0.07), (0.94, 0.96, 0.98, 1.0),
+                  noise=0.2, seed=k, squash=0.25)
+    # faucet, spout, shower head (the E end wall is the room's E wall: x bx0+4)
+    ex = bx0 + 4.0 - 0.08
+    make_box("Bath_Spout", (ex - 0.08, ty, Hh + 0.16), (0.16, 0.05, 0.05), (0.80, 0.80, 0.82, 1.0))
+    for i, dy in enumerate((-0.14, 0.14)):
+        make_cyl(f"Bath_Faucet_Handle_{i}", (ex - 0.03, ty + dy, Hh + 0.30), 0.03, 0.06, (0.80, 0.80, 0.82, 1.0), axis='X', segments=8)
+    make_box("Bath_Shower_Arm", (ex - 0.10, ty, 1.95), (0.20, 0.025, 0.025), (0.80, 0.80, 0.82, 1.0))
+    make_cyl("Bath_Shower_Head", (ex - 0.22, ty, 1.92), 0.06, 0.05, (0.80, 0.80, 0.82, 1.0), segments=10)
+    # the curtain rod across the alcove's mouth, the curtain shoved to the W end
+    make_cyl("Bath_Curtain_Rod", (tx, ty - D / 2.0 - 0.02, 2.02), 0.012, W + 0.30, (0.80, 0.80, 0.82, 1.0), axis='X', segments=8)
+    for i in range(5):
+        make_box(f"Bath_Curtain_Fold_{i}", (tx - W / 2.0 - 0.05 + i * 0.055, ty - D / 2.0 - 0.02 + (0.03 if i % 2 else -0.03), 1.35),
+                 (0.05, 0.03, 1.30), (0.78, 0.86, 0.84, 1.0))
+    # tile on the alcove's walls to 1.9 m: the face and its grout
+    tile = (0.92, 0.94, 0.94, 1.0)
+    grout = (0.70, 0.72, 0.72, 1.0)
+    ny = by0 + 4.5 - 0.08
+    make_box("Bath_Tile_N", (tx, ny - 0.006, (Hh + 1.9) / 2.0), (W + 0.30, 0.012, 1.9 - Hh), tile)
+    for k in range(9):
+        make_box(f"Bath_Grout_N_H_{k}", (tx, ny - 0.013, Hh + 0.15 * (k + 1)), (W + 0.30, 0.003, 0.006), grout)
+    for k in range(12):
+        make_box(f"Bath_Grout_N_V_{k}", (tx - W / 2.0 - 0.15 + 0.15 * (k + 0.5), ny - 0.013, (Hh + 1.9) / 2.0), (0.006, 0.003, 1.9 - Hh), grout)
+    make_box("Bath_Tile_E", (ex - 0.006, ty, (Hh + 1.9) / 2.0), (0.012, D, 1.9 - Hh), tile)
+    # the toilet against the W wall
+    make_chamfer_box("Bath_Toilet_Tank", (bx0 + 0.20, by0 + 1.0, 0.72), (0.20, 0.48, 0.36), white, chamfer=0.02)
+    make_chamfer_box("Bath_Toilet_Bowl", (bx0 + 0.48, by0 + 1.0, 0.24), (0.52, 0.38, 0.40), white, chamfer=0.05)
+    make_box("Bath_Toilet_Seat", (bx0 + 0.50, by0 + 1.0, 0.45), (0.46, 0.38, 0.03), (0.92, 0.92, 0.90, 1.0))
+    # the bath mat, the towel dropped on it
+    make_box("Bath_Mat", (tx, ty - D / 2.0 - 0.40, 0.006), (0.90, 0.55, 0.012), (0.56, 0.66, 0.70, 1.0))
+    make_blob("Bath_Towel_Dropped", (tx - 0.25, ty - D / 2.0 - 0.36, 0.06), 0.18, (0.86, 0.80, 0.70, 1.0), noise=0.3, seed=17, squash=0.35)
+    # the umbrellas on the two kit lights, turned on the tub, and their cables
+    for k, (x, y) in enumerate(((bx0 + 0.9, by0 + 2.4), (bx0 + 3.2, by0 + 2.2))):
+        dx, dy = tx - x, ty - y
+        yaw = math.atan2(dx, dy)
+        ux, uy = x - 0.30 * math.sin(yaw), y - 0.30 * math.cos(yaw)
+        make_rot_box(f"Kit_Light_{k}_Umbrella_Shaft", ((x + ux) / 2.0, (y + uy) / 2.0, 1.86), (0.012, 0.34, 0.012), (0.20, 0.20, 0.22, 1.0), yaw=-yaw)
+        # the umbrella: a shallow cone on the shaft's end, opening on the tub
+        _cone(f"Kit_Light_{k}_Umbrella", (ux, uy, 1.86), (dx, dy, 0.0), 0.16, 0.44, (0.86, 0.86, 0.88, 1.0), segs=12, both_sides=True)
+        make_tube(f"Kit_Light_{k}_Cable", [(x, y, 0.02), (x + 0.3, y - 0.5, 0.01), (bx0 + 0.6 + 0.3 * k, by0 + 0.9, 0.01),
+                                           (bx0 + 0.15, by0 + 2.0 + 0.1 * k, 0.01), (bx0 - 0.4, by0 + 2.1 + 0.1 * k, 0.01)],
+                  0.008, (0.08, 0.08, 0.08, 1.0))
 
 
 # ── D. the condo demo unit, autumn 2001 (x 900..910, y 0..8) ────────────
@@ -289,8 +542,13 @@ def build_bbq():
             make_box(f"Booth_{b}_Bench_{s:+d}", (cx + s * 1.0, cy, 0.24), (0.50, 0.90, 0.48), (0.50, 0.14, 0.12, 1.0))
             make_box(f"Booth_{b}_Bench_Back_{s:+d}", (cx + s * 1.22, cy, 0.76), (0.10, 0.90, 0.60), (0.50, 0.14, 0.12, 1.0))
         make_cyl(f"Booth_{b}_Grill", (cx, cy, 0.77), 0.22, 0.04, (0.30, 0.30, 0.32, 1.0), segments=16)
-        make_cyl(f"Booth_{b}_Hood", (cx, cy, 1.90), 0.26, 0.24, (0.66, 0.66, 0.68, 1.0), segments=14)
-        make_cyl(f"Booth_{b}_Hood_Pipe", (cx, cy, 2.61), 0.08, 1.18, (0.66, 0.66, 0.68, 1.0), segments=10)
+        # (2026-10-30) the copper bell hood on its telescoping duct, the
+        # restaurant's signature (it "looks like something out of a movie")
+        make_lathe(f"Booth_{b}_Hood", (cx, cy, 1.62), [(0.34, 0.0), (0.33, 0.06), (0.24, 0.20), (0.12, 0.30), (0.10, 0.34)],
+                   (0.72, 0.46, 0.30, 1.0), segments=16)
+        make_cyl(f"Booth_{b}_Hood_Pipe", (cx, cy, 2.30), 0.10, 0.70, (0.72, 0.46, 0.30, 1.0), segments=12)
+        make_cyl(f"Booth_{b}_Hood_Pipe_Upper", (cx, cy, 2.93), 0.12, 0.58, (0.64, 0.40, 0.26, 1.0), segments=12)
+        make_cyl(f"Booth_{b}_Hood_Collar", (cx, cy, 2.66), 0.125, 0.04, (0.86, 0.66, 0.40, 1.0), segments=12)
     gx, gy = x0 + 2.0, 10.0 - 0.08 - 1.0
     for k in range(12):
         a = k * 2.0 * math.pi / 12.0
@@ -299,8 +557,13 @@ def build_bbq():
     for k in range(3):
         make_box(f"Raw_Meat_Plate_{k}", (gx - 0.36 + k * 0.36, gy - 0.30, 0.765), (0.24, 0.16, 0.03), (0.86, 0.46, 0.44, 1.0))
     make_box("Empty_Plates_Stack", (gx + 0.56, gy + 0.32, 0.79), (0.22, 0.22, 0.08), (0.94, 0.94, 0.92, 1.0))
-    for k in range(4):
-        make_blob(f"Grill_Steam_Cloud_{k}", (gx + 0.02 * k, gy, 0.98 + k * 0.20), 0.10 + k * 0.03, (0.86, 0.86, 0.86, 1.0), noise=0.3, seed=k)
+    # (2026-10-30, draft 2) the steam was four stacked grey blobs; it is a
+    # translucent rise into the hood now, over the hotpot ("the communal
+    # center over a hotpot"), the coals lit under the grate
+    for k in range(5):
+        make_blob(f"Grill_Steam_Cloud_{k}", (gx + 0.03 * math.sin(k * 1.9), gy + 0.03 * math.cos(k * 1.3), 1.00 + k * 0.11),
+                  0.06 + k * 0.016, (0.94, 0.94, 0.94, 0.14), noise=0.30, seed=k, squash=0.9)
+    build_bbq_table_2026_10(gx, gy)
     # other tables in the room's middle, other diners' places set
     for k in range(3):
         make_table(f"BBQ_Floor_Table_{k}", x0 + 3.5 + k * 3.6, 4.0, w=1.2, d=0.9, h=0.74, wood=(0.22, 0.16, 0.12, 1.0))
@@ -310,6 +573,37 @@ def build_bbq():
     for k in range(5):
         make_cyl(f"BBQ_Pendant_Glow_{k}", (x0 + 2.0 + k * 2.6, 5.6, 2.50), 0.16, 0.24, (0.98, 0.80, 0.52, 1.0), segments=12)
         make_box(f"BBQ_Pendant_Cord_{k}", (x0 + 2.0 + k * 2.6, 5.6, 2.92), (0.01, 0.01, 0.56), (0.20, 0.20, 0.20, 1.0))
+
+
+def build_bbq_table_2026_10(gx, gy):
+    """tunnels (vol 3 ch6): "the table is full of good uncooked food and
+    kimchees of variety. They cook their meal in the communal center over a
+    hotpot."; "in tiny booth". The group's table, draft 2: the coals glowing
+    under the grate, the hotpot of broth set into the centre, meat on the
+    grate, lettuce for wrapping, soju and its glasses, chopsticks and spoons
+    at four places. Draft 3 targets: the other booths' diners, the menu
+    boards on the slat wall, the kitchen pass at the E end."""
+    make_cyl("Grill_Coals_Glow", (gx, gy, 0.796), 0.20, 0.012, (1.0, 0.42, 0.14, 1.0), segments=16)
+    for k in range(7):
+        make_box(f"Grill_Grate_Bar_{k}", (gx, gy - 0.18 + k * 0.06, 0.806), (0.40, 0.008, 0.008), (0.16, 0.16, 0.16, 1.0))
+    make_lathe("Hotpot", (gx, gy, 0.812), [(0.0, 0.0), (0.13, 0.0), (0.15, 0.02), (0.16, 0.10), (0.17, 0.11)], (0.62, 0.62, 0.64, 1.0), segments=16)
+    make_cyl("Hotpot_Broth", (gx, gy, 0.905), 0.15, 0.006, (0.78, 0.30, 0.16, 1.0), segments=16)
+    for k in range(5):
+        make_blob(f"Hotpot_Tofu_{k}", (gx - 0.08 + k * 0.04, gy + 0.03 * ((k % 3) - 1), 0.912), 0.022, (0.94, 0.92, 0.84, 1.0), noise=0.1, seed=k, squash=0.7)
+    for k in range(4):
+        make_rot_box(f"Grill_Meat_Strip_{k}", (gx + 0.20 + 0.03 * k, gy - 0.10 + 0.07 * k, 0.815), (0.12, 0.04, 0.008), (0.62, 0.30, 0.26, 1.0), yaw=0.4 * k)
+    make_box("Lettuce_Plate", (gx - 0.42, gy + 0.22, 0.765), (0.22, 0.18, 0.02), (0.94, 0.94, 0.92, 1.0))
+    for k in range(4):
+        make_blob(f"Lettuce_Leaf_{k}", (gx - 0.46 + 0.03 * k, gy + 0.22 + 0.02 * (k % 2), 0.785), 0.06, (0.46, 0.66, 0.30, 1.0), noise=0.3, seed=k + 20, squash=0.3)
+    for k in range(2):
+        make_cyl(f"Soju_Bottle_{k}", (gx + 0.50 + 0.08 * k, gy - 0.30, 0.84), 0.035, 0.18, (0.30, 0.58, 0.36, 1.0), segments=10)
+        make_cyl(f"Soju_Bottle_Neck_{k}", (gx + 0.50 + 0.08 * k, gy - 0.30, 0.96), 0.014, 0.06, (0.30, 0.58, 0.36, 1.0), segments=8)
+    for k, (sx, sy) in enumerate(((-0.45, -0.32), (0.45, 0.32), (-0.20, 0.36), (0.25, -0.36))):
+        make_cyl(f"Soju_Glass_{k}", (gx + sx, gy + sy, 0.775), 0.022, 0.05, (0.86, 0.90, 0.92, 0.6), segments=8)
+        for c in range(2):
+            make_rot_box(f"Chopstick_{k}_{c}", (gx + sx * 0.82 + 0.012 * c, gy + sy * 0.82, 0.758), (0.006, 0.22, 0.006),
+                         (0.74, 0.72, 0.68, 1.0), yaw=0.3 * (1 if sx > 0 else -1))
+        make_rot_box(f"Spoon_{k}", (gx + sx * 0.82 + 0.05, gy + sy * 0.82, 0.758), (0.02, 0.18, 0.006), (0.74, 0.72, 0.68, 1.0), yaw=0.3 * (1 if sx > 0 else -1))
 
 
 # ── F. the pizza parlor's party room, rain (x 1500..1512, y 0..8) ───────
@@ -385,16 +679,36 @@ def build_warehouse():
     build_warehouse_2026_10(x0, H)
 
 
+def _cone(name, apex, direction, length, radius, col, segs=16, both_sides=False):
+    """A cone from `apex` along `direction`, opening to `radius` at `length`.
+    Built from its own verts through the module-level _finalize_mesh, so the
+    audits' recorder sees it (2026-10-30: importing _props.geometry's private
+    lathe helpers inside a function returned stubs under the recorder and cut
+    the rest of the build out of every gate)."""
+    dl = math.sqrt(sum(c * c for c in direction))
+    d = tuple(c / dl for c in direction)
+    ref = (0.0, 0.0, 1.0) if abs(d[2]) < 0.9 else (1.0, 0.0, 0.0)
+    u = (d[1] * ref[2] - d[2] * ref[1], d[2] * ref[0] - d[0] * ref[2], d[0] * ref[1] - d[1] * ref[0])
+    ul = math.sqrt(sum(c * c for c in u))
+    u = tuple(c / ul for c in u)
+    v = (d[1] * u[2] - d[2] * u[1], d[2] * u[0] - d[0] * u[2], d[0] * u[1] - d[1] * u[0])
+    verts = [tuple(apex)]
+    for i in range(segs):
+        a = 2.0 * math.pi * i / segs
+        verts.append(tuple(apex[j] + d[j] * length + radius * (math.cos(a) * u[j] + math.sin(a) * v[j]) for j in range(3)))
+    faces = [[0, 1 + (i + 1) % segs, 1 + i] for i in range(segs)]
+    if both_sides:
+        faces += [[0, 1 + i, 1 + (i + 1) % segs] for i in range(segs)]
+    else:
+        faces.append([1 + i for i in range(segs)])
+    return _finalize_mesh(name, verts, faces, col)
+
+
 def _beam(name, apex, length, angle, roll, col):
     """A light beam as a translucent cone (LocaleGlass draws vertex alpha):
     apex at the lamp, opening `angle` (half, radians), tilted from straight
     down by `roll` about X (negative swings it toward -y, the camera)."""
-    from _props.geometry import _gen_lathe, _rot3, _finalize_mesh, _fix_winding
-    r = length * math.tan(angle)
-    prof = [(r, -length), (r * 0.5, -length * 0.5), (0.12, 0.0)]
-    verts, faces = _gen_lathe(apex, prof, 16, False)
-    verts = _rot3(verts, apex, 0.0, 0.0, roll)
-    return _finalize_mesh(name, verts, _fix_winding(verts, faces, apex), col)
+    return _cone(name, apex, (0.0, math.sin(roll), -math.cos(roll)), length, length * math.tan(angle), col)
 
 
 def build_warehouse_2026_10(x0, H):

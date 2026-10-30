@@ -168,6 +168,14 @@ light_energy = 0.4
 shadow_enabled = false
 omni_range = 2.5
 
+; draft 2 (2026-10-30): June's PC screen (June_PC_Screen)
+[node name="June_CRT_Glow__june_closet" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 0.95, -1.2)
+light_color = Color(0.5, 0.9, 0.8, 1)
+light_energy = 0.5
+shadow_enabled = false
+omni_range = 2.2
+
 [node name="Fill__june_closet" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 2, 2, -2)
 light_color = Color(0.6, 0.62, 0.72, 1)
@@ -193,6 +201,14 @@ light_color = Color(1.0, 0.8, 0.56, 1)
 light_energy = 1.0
 shadow_enabled = false
 omni_range = 5.0
+
+; draft 2 (2026-10-30): the street lamp out the bedroom window (Oregon_Street_Lamp_Head)
+[node name="Street_Lamp__oregon_home_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.4, 5.6, -12.6)
+light_color = Color(1.0, 0.72, 0.4, 1)
+light_energy = 2.0
+shadow_enabled = false
+omni_range = 12.0
 
 [node name="Fill_Night__oregon_home_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 306, 2, -3)
@@ -617,6 +633,6 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_closet__june_closet" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.596, 1.819, -1.842)
-rotation = Vector3(-0.2289, -0.3206, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.800, 0.900, -3.600)
+rotation = Vector3(-0.5904, 0.0069, 0.0)
+metadata/fov = 40.0

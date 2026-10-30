@@ -4753,9 +4753,11 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol3_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
 		# June's room, 1991: the closet open, the sealed WHAT LIES BEYOND box at the back
-		"camera_origin": Vector3(1.7, 1.4, -2.2),
-		"camera_rotation": Vector3(-0.22, deg_to_rad(-20.0), 0.0),
-		"fov": 64.0,
+		# (2026-10-30, draft 2) from the hall door across June's room: the
+		# desk and its PC at the left, the open closet ahead, the bed right
+		"camera_origin": Vector3(1.3, 1.5, -0.35),
+		"camera_rotation": Vector3(-0.12, -0.297, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"oregon_home_day": {
@@ -4772,8 +4774,9 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol3_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
 		# their room on the lamp that evening: the bed, her bag half-packed for a trip she won't take
+		# (2026-10-30, draft 2) turned 10 deg E so her half-packed bag is in it
 		"camera_origin": Vector3(304.9, 1.4, -0.5),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(-45.0), 0.0),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(-55.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
@@ -4810,8 +4813,8 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol3_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
 		# the booth table: the grill at the centre, raw food and the kimchi dishes, the handsome room beyond
-		"camera_origin": Vector3(1201.1, 1.15, -8.92),
-		"camera_rotation": Vector3(-0.30, deg_to_rad(-90.0), 0.0),
+		"camera_origin": Vector3(1201.1, 1.22, -8.92),
+		"camera_rotation": Vector3(-0.24, deg_to_rad(-90.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

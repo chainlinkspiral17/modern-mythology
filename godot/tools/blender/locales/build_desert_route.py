@@ -41,7 +41,7 @@ as flicker; the curios as a hero prop; Deck framing.
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import (clear_scene, make_box, make_cyl, make_taper_cyl, make_rot_box,
+from _props.geometry import (clear_scene, make_box, make_cyl, make_taper_cyl, make_rot_box, make_blob,
                              make_tube, join_stock, export_glb)
 from _props.trees import make_shrub
 from _props.vehicles import make_car
@@ -135,7 +135,9 @@ def build_desert():
         y0 = (r() - 0.5) * 700.0
         if abs(x0) < 10.0 or (abs(x0 - 400) < 40 and abs(y0) < 40) or (abs(x0 + 400) < 50 and abs(y0) < 45):
             continue
-        make_rot_box(f"Rock_Stock_{k}", (x0, y0, 0.3), (0.8 + r() * 2.4, 0.6 + r() * 1.8, 0.5 + r() * 1.2), ROCK, yaw=r() * 3.0)
+        # (2026-10-30: boulders, not boxes)
+        rr_ = 0.5 + r() * 1.3
+        make_blob(f"Rock_Stock_{k}", (x0, y0, rr_ * 0.35), rr_, ROCK, noise=0.35, seed=k, squash=0.55 + r() * 0.3)
     # the mesas and buttes on every horizon
     for i, (mx, my, rr, hh) in enumerate(((-520.0, 760.0, 180.0, 110.0), (180.0, 900.0, 240.0, 150.0), (820.0, 560.0, 150.0, 80.0),
                                           (-950.0, 120.0, 200.0, 130.0), (980.0, -260.0, 180.0, 100.0), (-380.0, -900.0, 220.0, 120.0),
@@ -162,7 +164,13 @@ def build_highway():
     # the shoulder's upturned root clumps (red dust: "the undercar bumping against upturned root clumps")
     r = _rng(9)
     for k in range(30):
-        make_rot_box(f"Root_Stock_{k}", (7.0 + r() * 2.0, -60.0 + k * 6.0, 0.15), (0.6, 0.3, 0.3), (0.32, 0.24, 0.18, 1.0), yaw=r() * 3.0, roll=0.4)
+        # (2026-10-30: a clump of dirt with its roots in the air, not a dark box)
+        cx_, cy_ = 7.0 + r() * 2.0, -60.0 + k * 6.0
+        make_blob(f"Root_Stock_{k}", (cx_, cy_, 0.12), 0.30, (0.46, 0.30, 0.20, 1.0), noise=0.4, seed=200 + k, squash=0.6)
+        for j in range(3):
+            a = r() * 6.28
+            make_tube(f"Root_Stock_{k}_Tendril_{j}", [(cx_, cy_, 0.2), (cx_ + 0.25 * math.cos(a), cy_ + 0.25 * math.sin(a), 0.42),
+                                                   (cx_ + 0.40 * math.cos(a), cy_ + 0.40 * math.sin(a), 0.50)], 0.02, (0.36, 0.26, 0.18, 1.0), segments=4)
 
 
 def build_highway_day():

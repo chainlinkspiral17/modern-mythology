@@ -28,7 +28,7 @@ Vantages wired in Background3D.CAMERA_PRESETS:
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, _finalize_mesh
 
 # ── Palette (mountain day) ──
 COL_GRASS = (0.42, 0.52, 0.30, 1.0)
@@ -310,7 +310,8 @@ def build_horizon_2026_08():
 
 
 def _terrain_mesh(name, verts_xyz, cells, col):
-    from _props.geometry import _finalize_mesh
+    # (_finalize_mesh is imported at module level so the audits' recorder
+    # can rebind it and see the terrain)
     used = sorted({i for c in cells for i in c})
     remap = {o: n for n, o in enumerate(used)}
     return _finalize_mesh(name, [verts_xyz[i] for i in used], [[remap[i] for i in c] for c in cells], col)
