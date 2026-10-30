@@ -34,6 +34,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_rot_box, make
                              join_stock, export_glb)
 from _props.trees import make_conifer, make_shrub
 from _props.furniture import make_chair, make_bed, make_lamp
+from _props.figures import make_standing_figure
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_window
 
 GRASS = (0.34, 0.46, 0.24, 1.0)
@@ -151,6 +152,18 @@ def build_party():
         by = 3.0 + r() * 19.0
         make_box(f"Balloon_Husk_Stock_{k}", (bx, by, 0.04), (0.10, 0.07, 0.01),
                  ((0.96, 0.30, 0.40, 1.0), (0.30, 0.60, 0.96, 1.0), (0.96, 0.86, 0.24, 1.0), (0.50, 0.86, 0.40, 1.0))[k % 4])
+    # (2026-10-30, draft 2's target) the party had nobody at it. Stand-ins
+    # (scale and staging, never faces; the girl and the boy are the VN's):
+    # "The small children played in a sprinkler, on a slip and slide";
+    # "Their parents had been best friends" — three of them at the table.
+    for nm, x, y, hd, h, coat in (("Party_Kid_0", 4.9, 9.6, math.pi * 1.2, 1.12, (0.96, 0.40, 0.30, 1.0)),
+                                  ("Party_Kid_1", 3.8, 10.5, math.pi * 0.7, 1.24, (0.30, 0.56, 0.86, 1.0)),
+                                  ("Party_Kid_2", 5.5, 8.3, math.pi * 1.6, 1.05, (0.96, 0.86, 0.30, 1.0))):
+        make_standing_figure(nm, x, y, heading=hd, h=h, coat=coat, pants=(0.30, 0.36, 0.56, 1.0), arms="down")
+    make_standing_figure("Party_Parent_0", tx - 2.2, ty - 0.2, heading=math.pi * 0.5, h=1.76, coat=(0.56, 0.62, 0.48, 1.0), arms="folded")
+    make_standing_figure("Party_Parent_1", tx + 2.1, ty + 0.4, heading=math.pi * 1.5, h=1.66, coat=(0.84, 0.66, 0.70, 1.0),
+                         dress=(0.84, 0.66, 0.70, 1.0), arms="front")
+    make_standing_figure("Party_Parent_2", tx + 0.7, ty - 1.6, heading=0.0, h=1.80, coat=(0.40, 0.44, 0.56, 1.0), arms="down")
 
 
 def build_her_room():

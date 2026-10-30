@@ -1822,9 +1822,11 @@ const CAMERA_PRESETS := {
 	"small_wood_backyard_party": {
 		"scene": "res://scenes/locales/small_wood_backyard.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_backyard.glb",
-		"camera_origin": Vector3(6.5, 1.6, -14.5),
-		"camera_rotation": Vector3(-0.06, 2.17, 0.0),
-		"fov": 60.0,
+		# (2026-10-30) out on the lawn facing the house, between the kids at
+		# the sprinkler (right) and the table and its parents (left)
+		"camera_origin": Vector3(1.5, 1.6, -14.5),
+		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"small_wood_field_night": {
