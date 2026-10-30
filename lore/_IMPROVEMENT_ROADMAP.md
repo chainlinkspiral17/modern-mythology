@@ -3886,6 +3886,14 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
 - **jd_river_turn (vol 1 ch15, 66 lines):**
   - Was a car on a flat purple plain.
   - Now stars over the open water ("then a star"), current streaks past the boat, and the far door's light laid down the water to the boat ("just a door").
+- **THE GATES THAT WEREN'T RUNNING.** `run_all_audits.sh` exited at vn_story_audit on "file missing": git-ignored .mp3 bgm, absent in every fresh checkout. So every gate after it went unrun in the container for about a month.
+  - **Fixed:** missing assets are now reported, not a stop. The non-ignored ones are listed to make: `assets/cg/vol1_joan_painted_back.jpg`, `vol5_prelude_crystal_lattice.jpg` and `vol5_prelude_gallery_paper.jpg`, all referenced by chapters and absent.
+  - **What it had hidden:**
+    - 8 blocked doorways, now 0.
+    - A blender_dryrun failure in build_small_wood_farmhouse (`.keys()` on the stand-in collection), now 0.
+    - 727 prop-overlap clips against a zero baseline. Main thread's 11 sets are 535 → 0 (small_wood_field's far ridges 454; the rest small). Thread B's 6 sets (192) are in progress.
+    - One obstructed preset (briar_falls_overlook, thread B).
+  - Lesson in `_GEOMETRY_AUDIT_PLAYBOOK.md`.
 - **THREAD B (the forked agent, 15 commits, every locale render-checked). Per locale, with draft N+1 targets:**
   - **warehouse_floor, draft 2.**
     - Green and pink beam cones; ~40 dancers, arms up; DJ and lamp on the riser.
