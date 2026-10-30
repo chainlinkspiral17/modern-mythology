@@ -633,7 +633,7 @@ def build_judgement_day_2026_10():
         make_chamfer_box("Rear_Bench_Back", (0.0, -1.21, 1.21), (1.70, 0.12, 0.70), SEAT, chamfer=0.04)
         make_box("Rear_Bench_Bolster", (0.0, -0.90, 0.885), (1.70, 0.50, 0.05), SEAT_DK)
         make_box("Cat_Hair_Seat", (0.45, 0.20, 0.625), (0.34, 0.30, 0.004), (0.78, 0.74, 0.66, 1.0))   # the cat's
-        make_box("Rearview_Shirt_Knot", (0.0, 0.92, 1.42), (0.10, 0.04, 0.06), (0.86, 0.84, 0.80, 1.0))
+        make_box("Rearview_Shirt_Knot", (0.0, 1.40, 1.515), (0.10, 0.04, 0.06), (0.86, 0.84, 0.80, 1.0))   # (round 6) knotted on the mirror itself
         make_box("Dash_Fast_Food_Bag", (-0.35, 1.05, 0.98), (0.20, 0.14, 0.10), (0.84, 0.70, 0.42, 1.0))
     # (2026-10-30) the truck's own things are not Faust's: Ben's map on the
     # dash (vol 6 ch14) and the phone in its cradle came along with
@@ -647,7 +647,7 @@ def build_judgement_day_2026_10():
     make_seated_figure("JD_Front_Passenger", ax + 0.45, ay + 0.12, heading=0.05, seat_h=0.42, h=1.76, z0=0.30 + dz,
                        coat=(0.56, 0.20, 0.18, 1.0), pants=(0.30, 0.32, 0.40, 1.0), hair=(0.40, 0.28, 0.16, 1.0), arms="lap")
     # the shirt knotted on the rearview, hanging (the draft-1 knot was all of it)
-    make_rot_box("JD_Rearview_Shirt_Hang", (ax + 0.0, ay + 0.90, 1.24 + dz), (0.22, 0.03, 0.30), (0.86, 0.84, 0.80, 1.0), pitch=0.08)
+    make_box("JD_Rearview_Shirt_Hang", (ax + 0.0, ay + 1.40, 1.335 + dz), (0.22, 0.03, 0.30), (0.86, 0.84, 0.80, 1.0))   # from the knot down
     # the street: asphalt, the yellow line, sidewalks, live oaks, power poles, low shops, a painted wall, the overpass
     make_box("JD_Street", (ax, ay + 40.0, 0.0), (14.0, 140.0, 0.04), (0.26, 0.26, 0.27, 1.0))
     for k in range(20):
