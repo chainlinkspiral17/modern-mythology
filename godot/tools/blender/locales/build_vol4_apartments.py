@@ -139,7 +139,7 @@ def build_chess_hall():
     make_wall_with_openings("Hall_Wall_N", (41.6, 30.0, 0.0), length=2.16, height=H, thickness=0.16, axis='X', palette=HALL,
                             baseboard_face_sign=-1, openings=[(41.6, 1.5, 1.0, 1.4)])
     make_window("Hall_End_Window", (41.6, 29.92, 1.5), width=1.0, height=1.4, axis='X', room_dir=-1)
-    make_box("Hall_End_View", (41.6, 40.0, 3.0), (30.0, 0.2, 20.0), (0.76, 0.82, 0.90, 1.0))
+    make_box("Hall_End_Backdrop", (41.6, 40.0, 3.0), (30.0, 0.2, 20.0), (0.76, 0.82, 0.90, 1.0))
     # (draft 2, 2026-10-29) EARL coming down the hall toward the elevator,
     # "with a garden trough in his hand": an old man, a little stooped, a
     # cardigan, the trough held in front of him

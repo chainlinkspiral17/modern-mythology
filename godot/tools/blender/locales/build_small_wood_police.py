@@ -66,7 +66,8 @@ def build_interview():
     make_box("Observation_Mirror", (x0 + 0.03, 2.0, 1.45), (0.02, 1.8, 0.9), (0.20, 0.22, 0.24, 1.0))
     make_box("Observation_Mirror_Frame_T", (x0 + 0.05, 2.0, 1.92), (0.04, 1.9, 0.05), STEEL)
     make_box("Observation_Mirror_Frame_B", (x0 + 0.05, 2.0, 0.98), (0.04, 1.9, 0.05), STEEL)
-    make_box("Observation_Room_Dark", (x0 - 1.4, 2.0, 1.3), (2.6, 3.6, 2.6), (0.05, 0.05, 0.06, 1.0))
+    make_box("Observation_Room_Void",   # the dark behind the mirror (not a prop on a floor)
+              (x0 - 1.4, 2.0, 1.3), (2.6, 3.6, 2.6), (0.05, 0.05, 0.06, 1.0))
     make_wall("Interview_Wall_N", ((x0 + x1) / 2, y1, 0.0), length=x1 - x0 + 0.16, height=H, thickness=0.16, axis='X', palette=BLOCK, baseboard_face_sign=-1)
     make_wall("Interview_Wall_S", ((x0 + x1) / 2, y0, 0.0), length=x1 - x0 + 0.16, height=H, thickness=0.16, axis='X', palette=BLOCK, baseboard_face_sign=+1)
     make_wall_with_openings("Interview_Wall_E", (x1, (y0 + y1) / 2, 0.0), length=y1 - y0 + 0.16, height=H, thickness=0.16, axis='Y',
