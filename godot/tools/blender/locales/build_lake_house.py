@@ -234,7 +234,11 @@ def build_bath():
     make_box("Tub_Curtain_Rod", (-7.98, -3.94 + 0.78, 2.02), (3.84, 0.02, 0.02), (0.70, 0.70, 0.72, 1.0))
     make_box("Tub_Curtain", (-8.9, -3.94 + 0.78, 1.36), (1.6, 0.02, 1.28), (0.56, 0.70, 0.76, 1.0))
     # the toilet against the W wall, lid up
-    make_box("Toilet_Bowl", (-9.9 + 0.36, -1.6, 0.20), (0.56, 0.38, 0.40), (0.96, 0.96, 0.94, 1.0))
+    # (2026-10-30: a bowl, not a box — the pedestal narrowing to the floor,
+    # the seat's ring down)
+    make_lathe("Toilet_Bowl", (-9.9 + 0.40, -1.6, 0.0), [(0.0, 0.0), (0.13, 0.0), (0.12, 0.10), (0.15, 0.24), (0.20, 0.36), (0.19, 0.39), (0.0, 0.39)],
+               (0.96, 0.96, 0.94, 1.0), segments=16)
+    make_cyl("Toilet_Seat_Ring", (-9.9 + 0.40, -1.6, 0.405), 0.205, 0.03, (0.94, 0.94, 0.92, 1.0), segments=16)
     make_box("Toilet_Tank", (-9.9 + 0.12, -1.6, 0.62), (0.20, 0.46, 0.44), (0.96, 0.96, 0.94, 1.0))
     make_rot_box("Toilet_Lid_Up", (-9.9 + 0.25, -1.6, 0.66), (0.03, 0.38, 0.44), (0.96, 0.96, 0.94, 1.0), pitch=-0.15)
     make_box("Toilet_Paper_Roll_Mounted", (-9.85, -1.0, 0.70), (0.10, 0.12, 0.12), (0.96, 0.96, 0.94, 1.0))
@@ -250,6 +254,15 @@ def build_bath():
     make_box("Towel_Bar_Mounted", (-8.0, -0.08, 1.20), (0.70, 0.04, 0.03), (0.70, 0.70, 0.72, 1.0))
     make_box("Towel_Hang", (-8.0, -0.11, 0.92), (0.50, 0.02, 0.56), (0.70, 0.86, 0.88, 1.0))
     make_box("Bath_Mat", (-8.4, -2.9, 0.012), (0.80, 0.50, 0.010), (0.70, 0.86, 0.88, 1.0))
+    # (2026-10-30) the small frosted window over the toilet's corner, black
+    # with the hour; a waste basket, a magazine on the tank, a night light
+    wx = -9.94 + 0.005
+    make_box("Bath_Window_Frame", (wx, -2.6, 1.65), (0.02, 0.70, 0.86), (0.90, 0.88, 0.84, 1.0))
+    make_box("Bath_Window_Frosted", (wx + 0.012, -2.6, 1.65), (0.004, 0.58, 0.74), (0.14, 0.16, 0.22, 1.0))
+    make_box("Bath_Window_Muntin", (wx + 0.016, -2.6, 1.65), (0.004, 0.58, 0.03), (0.90, 0.88, 0.84, 1.0))
+    make_cyl("Bath_Waste_Basket", (-9.62, -2.35, 0.14), 0.12, 0.28, (0.80, 0.84, 0.86, 1.0), segments=14)
+    make_box("Bath_Magazine", (-9.8, -1.52, 0.846), (0.16, 0.22, 0.012), (0.70, 0.30, 0.24, 1.0))
+    make_box("Bath_Night_Light", (-6.06 - 0.02, -0.7, 0.32), (0.03, 0.06, 0.08), (1.0, 0.90, 0.60, 1.0))
 
 
 def build_kitchen():
