@@ -4585,17 +4585,22 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# "The parking garage is the color of honeydew": the tubes, the concrete, the down-ramp with a car coming
-		"camera_origin": Vector3(6.0, 1.6, -12.0),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(-80.0), 0.0),
-		"fov": 64.0,
+		# (2026-10-30, draft 2) down the drive lane E to the ramp's mouth, where
+		# the car is coming down, under the middle row of tubes
+		"camera_origin": Vector3(3.0, 1.6, -10.8),
+		"camera_rotation": Vector3(0.0, deg_to_rad(-88.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"dead_store": {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# the dead clothing store, the sun high outside: the glass counter, naked mannequins, slumped banners, the escalator
-		"camera_origin": Vector3(131.0, 1.6, -1.2),
-		"camera_rotation": Vector3(0.04, deg_to_rad(30.0), 0.0),
+		# (2026-10-30, draft 2) in from the street door, NE across the dusty floor:
+		# the counter at the left, the mannequins, the dead escalator up to the
+		# mezzanine at the right, the sun's shafts behind
+		"camera_origin": Vector3(126.0, 1.55, -1.4),
+		"camera_rotation": Vector3(-0.07, -0.70, 0.0),
 		"fov": 66.0,
 		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
 		"suppress_input": true,
@@ -4674,9 +4679,15 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# "She wanders from window to window": the one room high over the city, its lights below without end
+		# (2026-10-30, draft 2) level enough to see the towers' lit windows run
+		# to the haze; the city's glow on the sky so the towers silhouette
 		"camera_origin": Vector3(704.6, 1.6, -3.6),
-		"camera_rotation": Vector3(-0.28, deg_to_rad(-30.0), 0.0),
+		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
 		"fov": 66.0,
+		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.30, 0.20, 0.18, 1),
+			"ground_horizon": Color(0.16, 0.12, 0.12, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.50, 0.46, 0.56, 1), "ambient_energy": 0.40,
+			"fog_color": Color(0.20, 0.15, 0.15, 1), "fog_sky": 0.2},
 		"suppress_input": true,
 	},
 	"wagner_porch_morning": {

@@ -133,6 +133,7 @@ def build_house():
     make_box("Kitchen_Counter_Top", (6.0 - 0.10 - 0.33, 7.0, 0.92), (0.66, 3.04, 0.04), (0.84, 0.82, 0.76, 1.0))
     make_box("Kitchen_Sink_Basin", (6.0 - 0.10 - 0.33, 7.0, 0.942), (0.40, 0.56, 0.004), (0.70, 0.72, 0.74, 1.0))
     make_box("Kitchen_Sink_Mug" + KITCH, (6.0 - 0.10 - 0.33, 7.1, 0.99), (0.08, 0.08, 0.10), (0.86, 0.84, 0.78, 1.0))
+    build_kitchen_2026_10()
     make_table("Kitchen_Table", 2.6, 7.2, w=1.2, d=0.9, h=0.75, wood=WOOD)
     for k, (dx, yaw) in enumerate(((-0.80, -math.pi / 2.0), (0.80, math.pi / 2.0))):
         make_chair(f"Kitchen_Chair_{k}", 2.6 + dx, 7.2, yaw=yaw, wood=WOOD)
@@ -161,6 +162,70 @@ def build_house():
     for k, x in enumerate((-5.0, -1.0, 3.0)):
         make_box(f"Upper_Window_Dark_{k}", (x, -0.115, H + 1.4), (1.0, 0.03, 1.1), (0.06, 0.06, 0.08, 1.0))
     make_gable("House_Roof", (-1.0, 5.0, 2 * H + 0.16 + 1.3), (15.0, 11.0, 2.6), ROOF, ridge_axis='X')
+
+
+def build_kitchen_2026_10():
+    """points of impact (vol 2 ch3): "She put her cup in the sink of the
+    kitchen and ran it under water. She looked out the kitchen window, past
+    the fruit-bearing trees and saw the light from the workshop." DRAFT 2:
+    the kitchen was a counter under a small window in a blank wall —
+    - the window dressed: cafe curtains on a rod, a sill with a plant and a
+      jar, the faucet and its handles over the sink, a dish rack
+    - upper cabinets either side of the window, the counter's drawers and
+      doors, a canister set, the toaster
+    - the stove and the fridge on the N wall, a calendar, a towel on the
+      oven bar
+    - out the window, the yard light on its pole by the workshop (the
+      tscn's Workshop_Light is its practical)
+    Draft 3 targets: the water running (a ribbon from the tap), steam off
+    the cup, the trees' fruit, the linoleum's pattern."""
+    ex = 6.0 - 0.10                         # the E wall's inner face
+    cab = (0.70, 0.64, 0.50, 1.0)
+    # the faucet and its handles behind the basin, a dish rack to the S
+    make_cyl("Kitchen_Faucet_Base", (ex - 0.06, 7.0, 0.98), 0.03, 0.08, (0.80, 0.80, 0.82, 1.0), segments=8)
+    make_box("Kitchen_Faucet_Spout", (ex - 0.18, 7.0, 1.05), (0.24, 0.025, 0.025), (0.80, 0.80, 0.82, 1.0))
+    for i, dy in enumerate((-0.12, 0.12)):
+        make_cyl(f"Kitchen_Faucet_Handle_{i}", (ex - 0.06, 7.0 + dy, 0.97), 0.022, 0.05, (0.80, 0.80, 0.82, 1.0), segments=8)
+    make_box("Kitchen_Dish_Rack", (ex - 0.33, 6.30, 1.00), (0.36, 0.44, 0.12), (0.84, 0.84, 0.86, 1.0))
+    for i in range(4):
+        make_rot_box(f"Kitchen_Dish_Rack_Plate_{i}", (ex - 0.33, 6.16 + i * 0.09, 1.10), (0.24, 0.015, 0.22), (0.92, 0.90, 0.84, 1.0), pitch=0.0, roll=0.15)
+    # the cafe curtains on their rod over the lower half of the window (sill 0.95, head 1.95)
+    make_cyl("Kitchen_Curtain_Rod", (ex - 0.04, 7.0, 1.48), 0.008, 1.40, (0.70, 0.66, 0.50, 1.0), axis='Y', segments=6)
+    for s in (-1, 1):
+        for k in range(3):
+            make_box(f"Kitchen_Curtain_{s:+d}_{k}", (ex - 0.05 - 0.01 * (k % 2), 7.0 + s * (0.42 + k * 0.08), 1.22), (0.015, 0.09, 0.50),
+                     (0.90, 0.86, 0.72, 1.0))
+    make_box("Kitchen_Window_Sill", (ex - 0.06, 7.0, 0.955), (0.12, 1.30, 0.03), (0.86, 0.84, 0.78, 1.0))
+    make_cyl("Kitchen_Sill_Plant_Pot", (ex - 0.06, 6.62, 1.02), 0.05, 0.10, (0.70, 0.40, 0.30, 1.0), segments=10)
+    make_blob("Kitchen_Sill_Plant", (ex - 0.06, 6.62, 1.13), 0.08, (0.30, 0.46, 0.26, 1.0), noise=0.4, seed=7, squash=0.9)
+    make_cyl("Kitchen_Sill_Jar", (ex - 0.06, 7.40, 1.03), 0.04, 0.12, (0.80, 0.86, 0.80, 1.0), segments=10)
+    # upper cabinets either side of the window
+    for s, cy in ((-1, 5.95), (1, 8.05)):
+        make_box(f"Kitchen_Upper_Cabinet_{s:+d}", (ex - 0.17, cy, 1.85), (0.34, 0.80, 0.70), cab)
+        make_box(f"Kitchen_Upper_Cabinet_Seam_{s:+d}", (ex - 0.345, cy, 1.85), (0.005, 0.01, 0.66), (0.40, 0.34, 0.26, 1.0))
+        for j in (-1, 1):
+            make_box(f"Kitchen_Upper_Cabinet_Pull_{s:+d}{j:+d}", (ex - 0.35, cy + j * 0.05, 1.62), (0.01, 0.02, 0.06), (0.80, 0.78, 0.70, 1.0))
+    # the counter's doors and drawers (its W face at x ex - 0.64)
+    fx = ex - 0.645
+    for k in range(5):
+        cy = 5.75 + k * 0.62
+        make_box(f"Kitchen_Counter_Door_{k}", (fx, cy, 0.42), (0.01, 0.56, 0.62), cab)
+        make_box(f"Kitchen_Counter_Drawer_{k}", (fx, cy, 0.82), (0.01, 0.56, 0.12), cab)
+        make_box(f"Kitchen_Counter_Pull_{k}", (fx - 0.01, cy, 0.82), (0.01, 0.10, 0.02), (0.80, 0.78, 0.70, 1.0))
+    for i, (cy, h) in enumerate(((8.15, 0.24), (8.30, 0.20), (8.43, 0.16))):
+        make_cyl(f"Kitchen_Canister_{i}", (ex - 0.30, cy, 0.94 + h / 2.0), 0.065, h, (0.86, 0.80, 0.62, 1.0), segments=12)
+    make_chamfer_box("Kitchen_Toaster", (ex - 0.30, 5.85, 1.03), (0.18, 0.28, 0.18), (0.80, 0.80, 0.82, 1.0), chamfer=0.03)
+    # the stove and the fridge on the N wall (face y 9.9), the calendar, the towel
+    make_box("Kitchen_Stove", (4.4, 9.9 - 0.33, 0.45), (0.76, 0.66, 0.90), (0.92, 0.90, 0.84, 1.0))
+    make_box("Kitchen_Stove_Back", (4.4, 9.9 - 0.04, 1.06), (0.76, 0.08, 0.32), (0.92, 0.90, 0.84, 1.0))
+    for i in range(4):
+        make_cyl(f"Kitchen_Stove_Burner_{i}", (4.4 - 0.18 + 0.36 * (i % 2), 9.9 - 0.45 + 0.24 * (i // 2), 0.905), 0.09, 0.01, (0.16, 0.16, 0.16, 1.0), segments=12)
+    make_box("Kitchen_Oven_Bar", (4.4, 9.9 - 0.67, 0.80), (0.60, 0.02, 0.02), (0.80, 0.80, 0.82, 1.0))
+    make_box("Kitchen_Oven_Towel", (4.25, 9.9 - 0.68, 0.66), (0.22, 0.01, 0.30), (0.70, 0.30, 0.26, 1.0))
+    make_chamfer_box("Kitchen_Fridge", (1.0, 9.9 - 0.36, 0.88), (0.76, 0.72, 1.76), (0.92, 0.90, 0.84, 1.0), chamfer=0.04)
+    make_box("Kitchen_Fridge_Handle", (1.32, 9.9 - 0.73, 1.10), (0.03, 0.02, 0.50), (0.80, 0.80, 0.82, 1.0))
+    make_box("Kitchen_Calendar", (2.6, 9.9 - 0.006, 1.55), (0.36, 0.006, 0.50), (0.92, 0.90, 0.86, 1.0))
+    make_box("Kitchen_Calendar_Picture", (2.6, 9.9 - 0.012, 1.68), (0.30, 0.004, 0.20), (0.40, 0.52, 0.40, 1.0))
 
 
 def build_porch_and_yard():
@@ -212,6 +277,12 @@ def build_porch_and_yard():
     make_gable("Workshop_Roof", (wx, wy, 3.0 + 0.7), (6.6, 5.6, 1.4), (0.30, 0.30, 0.32, 1.0), ridge_axis='Y')
     make_box("Workshop_Window_Glow", (wx - 3.02, wy, 1.6), (0.04, 1.4, 1.0), (1.0, 0.84, 0.56, 1.0))
     make_box("Workshop_Door_Light_Glow", (wx - 3.02, wy - 1.8, 1.0), (0.04, 0.9, 2.0), (0.96, 0.80, 0.52, 1.0))
+    # the yard light on its pole by the workshop's door (2026-10-30): "The
+    # workshop light held steady across the dark yard"
+    make_cyl("Workshop_Yard_Light_Pole", (wx - 4.0, wy - 3.0, 2.5), 0.08, 5.0, (0.36, 0.30, 0.24, 1.0), segments=8)
+    make_box("Workshop_Yard_Light_Arm", (wx - 4.3, wy - 3.0, 4.9), (0.70, 0.06, 0.06), (0.36, 0.30, 0.24, 1.0))
+    make_lathe("Workshop_Yard_Light_Shade", (wx - 4.6, wy - 3.0, 4.70), [(0.30, 0.0), (0.18, 0.12), (0.04, 0.18)], (0.30, 0.36, 0.30, 1.0), segments=12)
+    make_blob("Workshop_Yard_Light_Bulb_Glow", (wx - 4.6, wy - 3.0, 4.72), 0.07, (1.0, 0.90, 0.64, 1.0), noise=0.02, seed=1, squash=1.1)
     for k in range(5):
         make_rot_box(f"Scrap_Metal_{k}", (wx + 4.2, wy - 1.6 + k * 0.7, 0.03 + k * 0.01), (0.8, 0.10, 0.06 + k * 0.02), (0.36, 0.34, 0.32, 1.0),
                      yaw=k * 0.8)

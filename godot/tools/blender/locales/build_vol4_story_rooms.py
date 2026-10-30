@@ -76,43 +76,104 @@ def car(prefix, x, y, yaw, col):
 
 def build_garage():
     """x 0..40, y 0..24: one level, columns on a 8 m grid, the bays, the
-    down-ramp from the level above along the E side."""
-    H = 2.5
-    make_box("Garage_Floor_Slab", (20.0, 12.0, -0.10), (40.0, 24.0, 0.20), CONC)
-    make_box("Garage_Ceil_Slab", (20.0, 12.0, H + 0.15), (40.0, 24.0, 0.30), (0.62, 0.62, 0.60, 1.0))
+    down-ramp from the level above along the E side.
+
+    DRAFT 2 (2026-10-30). "The parking garage is the color of honeydew. The
+    fluorescent lighting plays against the concrete hardtop interior. The hum
+    in the air is like electricity on the teeth."; "the far off car
+    descending"; "The headlights catching me". Draft 1 was grey concrete with
+    a honeydew stripe, lit only at its two ends — the camera stood in the dark
+    middle. Now the walls, columns and soffits are PAINTED honeydew over a
+    grey kick band; tee-beams run across the ceiling every 2.5 m with twin-tube
+    fixtures in three rows (a light per fixture pair, the middle row too);
+    sprinkler and conduit runs; the level (8) and arrows painted; oil stains
+    and tyre marks; eleven cars in the bays; on the ramp, a car coming down
+    with its headlights on. Draft 3 targets: the hum as flicker on one tube,
+    a stair door with its wired glass, the elevator lobby, the level above
+    seen up the ramp."""
+    H = 2.6
+    HD = HONEYDEW
+    HD_CEIL = (0.74, 0.82, 0.68, 1.0)
+    KICK = (0.44, 0.46, 0.44, 1.0)
+    make_box("Garage_Floor_Slab", (20.0, 12.0, -0.10), (40.0, 24.0, 0.20), (0.50, 0.52, 0.48, 1.0))
+    make_box("Garage_Ceil_Slab", (20.0, 12.0, H + 0.15), (40.0, 24.0, 0.30), HD_CEIL)
     for nm, c, sz in (("Garage_Wall_S", (20.0, 0.0, H / 2.0), (40.4, 0.30, H)), ("Garage_Wall_N", (20.0, 24.0, H / 2.0), (40.4, 0.30, H)),
                       ("Garage_Wall_W", (0.0, 12.0, H / 2.0), (0.30, 24.0, H))):
-        make_box(nm, c, sz, CONC)
-    make_box("Garage_Wall_E_S", (40.0, 5.0, H / 2.0), (0.30, 10.0, H), CONC)
-    make_box("Garage_Wall_E_N", (40.0, 21.0, H / 2.0), (0.30, 6.0, H), CONC)
-    # the honeydew band round the walls, on every column
-    for nm, c, sz in (("Honeydew_Band_S", (20.0, 0.16, 0.90), (40.0, 0.02, 1.0)), ("Honeydew_Band_N", (20.0, 23.84, 0.90), (40.0, 0.02, 1.0)),
-                      ("Honeydew_Band_W", (0.16, 12.0, 0.90), (0.02, 23.6, 1.0))):
-        make_box(nm, c, sz, HONEYDEW)
+        make_box(nm, c, sz, HD)
+    make_box("Garage_Wall_E_S", (40.0, 5.0, H / 2.0), (0.30, 10.0, H), HD)
+    make_box("Garage_Wall_E_N", (40.0, 21.0, H / 2.0), (0.30, 6.0, H), HD)
+    # the grey kick band round the walls (it was the honeydew band; the
+    # honeydew is the paint now)
+    for nm, c, sz in (("Kick_Band_S", (20.0, 0.16, 0.30), (40.0, 0.02, 0.60)), ("Kick_Band_N", (20.0, 23.84, 0.30), (40.0, 0.02, 0.60)),
+                      ("Kick_Band_W", (0.16, 12.0, 0.30), (0.02, 23.6, 0.60))):
+        make_box(nm, c, sz, KICK)
     for i in range(1, 5):
         for j in range(1, 3):
             x, y = i * 8.0, j * 8.0
-            make_box(f"Garage_Column_{i}_{j}", (x, y, H / 2.0), (0.50, 0.50, H), CONC)
-            make_box(f"Garage_Column_Band_{i}_{j}", (x, y, 0.90), (0.54, 0.54, 1.0), HONEYDEW)
-    # the fluorescent tubes in rows, the bay stripes, the cars
+            make_box(f"Honeydew_Column_{i}_{j}", (x, y, H / 2.0), (0.50, 0.50, H), HD)
+            make_box(f"Garage_Column_Kick_{i}_{j}", (x, y, 0.30), (0.54, 0.54, 0.60), KICK)
+            # the level painted on the column: a big "8" (three bars, two
+            # spines — the same read from any side; a "3" came out mirrored)
+            for k, zz in enumerate((1.75, 1.45, 1.15)):
+                make_box(f"Garage_Column_Level_{i}_{j}_{k}", (x, y - 0.256, zz), (0.24, 0.012, 0.05), (0.20, 0.30, 0.22, 1.0))
+            for s in (-1, 1):
+                make_box(f"Garage_Column_Level_{i}_{j}_Spine_{s:+d}", (x + s * 0.095, y - 0.256, 1.45), (0.05, 0.012, 0.65), (0.20, 0.30, 0.22, 1.0))
+    # tee-beams across the ceiling every 2.5 m; twin-tube fixtures between
+    for k in range(16):
+        make_box(f"Garage_Tee_Beam_Stock_{k}", (1.25 + k * 2.5, 12.0, H - 0.20), (0.30, 24.0, 0.40), HD_CEIL)
     for i in range(5):
         for j in range(3):
-            make_box(f"Garage_Tube_Glow_{i}_{j}", (4.0 + i * 8.0, 4.0 + j * 8.0, H - 0.04), (1.2, 0.12, 0.06), (0.92, 0.98, 0.92, 1.0))
+            fx, fy = 4.0 + i * 8.0 + 0.0, 4.0 + j * 8.0
+            make_box(f"Garage_Tube_Housing_{i}_{j}", (fx, fy, H - 0.06), (0.30, 1.30, 0.08), (0.86, 0.88, 0.84, 1.0))
+            for s in (-1, 1):
+                make_box(f"Garage_Tube_Glow_{i}_{j}_{s:+d}", (fx + s * 0.07, fy, H - 0.115), (0.04, 1.22, 0.04), (0.92, 1.0, 0.94, 1.0))
+    # sprinkler main (red) and a conduit run along the bays
+    make_cyl("Garage_Sprinkler_Main", (20.0, 6.0, H - 0.50), 0.05, 40.0, (0.66, 0.16, 0.14, 1.0), axis='X', segments=8)
+    make_cyl("Garage_Sprinkler_Main_N", (20.0, 18.0, H - 0.50), 0.05, 40.0, (0.66, 0.16, 0.14, 1.0), axis='X', segments=8)
+    make_cyl("Garage_Conduit", (20.0, 11.6, H - 0.46), 0.02, 40.0, (0.66, 0.66, 0.68, 1.0), axis='X', segments=6)
+    # the bay stripes, the drive lane's arrows, wheel stops, oil and tyre marks
     for k in range(16):
         make_box(f"Bay_Stripe_Stock_S_{k}", (1.5 + k * 2.5, 2.8, 0.003), (0.10, 5.0, 0.006), (0.90, 0.90, 0.86, 1.0))
         make_box(f"Bay_Stripe_Stock_N_{k}", (1.5 + k * 2.5, 21.2, 0.003), (0.10, 5.0, 0.006), (0.90, 0.90, 0.86, 1.0))
-    for k, (x, y, col) in enumerate(((2.75, 3.0, (0.40, 0.42, 0.46, 1.0)), (10.25, 3.0, (0.60, 0.20, 0.18, 1.0)),
-                                     (17.75, 21.0, (0.82, 0.82, 0.80, 1.0)), (27.75, 21.0, (0.20, 0.24, 0.30, 1.0)),
-                                     (30.25, 3.0, (0.30, 0.30, 0.30, 1.0)))):
-        car(f"Parked_Car_{k}", x, y, 0.0, col)
+        if k < 15:
+            make_box(f"Wheel_Stop_Stock_S_{k}", (2.75 + k * 2.5, 0.75, 0.06), (1.6, 0.18, 0.12), (0.62, 0.62, 0.58, 1.0))
+            make_box(f"Wheel_Stop_Stock_N_{k}", (2.75 + k * 2.5, 23.25, 0.06), (1.6, 0.18, 0.12), (0.62, 0.62, 0.58, 1.0))
+    for k in range(4):
+        ax_ = 6.0 + k * 9.0
+        make_box(f"Lane_Arrow_Stock_Shaft_{k}", (ax_, 12.0, 0.003), (2.0, 0.22, 0.006), (0.90, 0.90, 0.86, 1.0))
+        for s in (-1, 1):
+            make_rot_box(f"Lane_Arrow_Stock_Head_{k}_{s:+d}", (ax_ + 1.05, 12.0 + s * 0.22, 0.003), (0.7, 0.18, 0.006), (0.90, 0.90, 0.86, 1.0), yaw=-s * 0.6)
+    import random
+    rnd = random.Random(4)
+    for k in range(14):
+        make_blob(f"Oil_Stain_Stock_{k}", (2.75 + rnd.randrange(15) * 2.5, rnd.choice((2.6, 21.4)), 0.004), rnd.uniform(0.3, 0.6),
+                  (0.34, 0.36, 0.32, 1.0), noise=0.4, seed=k, squash=0.02)
+    for k in range(3):
+        make_rot_box(f"Tyre_Mark_Stock_{k}", (12.0 + k * 8.0, 11.0 + 0.6 * k, 0.003), (6.0, 0.22, 0.004), (0.40, 0.42, 0.38, 1.0), yaw=0.08 * (k - 1))
+    # the cars in the bays (nose in)
+    from _props.vehicles import make_car
+    cols = ((0.40, 0.42, 0.46, 1.0), (0.60, 0.20, 0.18, 1.0), (0.82, 0.82, 0.80, 1.0), (0.20, 0.24, 0.30, 1.0), (0.30, 0.30, 0.30, 1.0),
+            (0.64, 0.58, 0.44, 1.0), (0.16, 0.30, 0.22, 1.0))
+    taken = ((0, "S"), (3, "S"), (4, "S"), (7, "S"), (11, "S"), (12, "S"), (1, "N"), (5, "N"), (6, "N"), (9, "N"), (13, "N"))
+    for n, (k, side) in enumerate(taken):
+        y = 2.7 if side == "S" else 21.3
+        make_car(f"Parked_Car_{n}", 2.75 + k * 2.5, y, 4.4, cols[n % len(cols)], along="Y")
     # the down-ramp from above, in along the E side (x 40..46, y 10..18)
     make_rot_box("Ramp_Down_Slab", (44.0, 14.0, H / 2.0 - 0.1), (6.0, 8.6, 0.30), CONC, roll=math.atan2(H, 8.0))
-    make_box("Ramp_Wall_E", (47.0, 14.0, H / 2.0 + 0.6), (0.30, 9.0, H + 1.2), CONC)
-    make_box("Ramp_Wall_Honeydew_Band", (46.84, 14.0, 0.90), (0.02, 8.6, 1.0), HONEYDEW)
-    make_box("Ramp_Upper_Ceil", (44.0, 14.0, H + 1.3), (6.4, 9.0, 0.30), (0.62, 0.62, 0.60, 1.0))
-    make_box("Ramp_Upper_Wall_N", (43.5, 18.4, (H + 1.2) / 2.0), (7.0, 0.30, H + 1.2), CONC)
-    make_box("Ramp_Upper_Wall_S", (43.5, 9.6, (H + 1.2) / 2.0), (7.0, 0.30, H + 1.2), CONC)
+    make_box("Ramp_Wall_E", (47.0, 14.0, H / 2.0 + 0.6), (0.30, 9.0, H + 1.2), HD)
+    make_box("Ramp_Wall_Kick_Band", (46.84, 14.0, 0.30), (0.02, 8.6, 0.60), KICK)
+    make_box("Ramp_Upper_Ceil", (44.0, 14.0, H + 1.3), (6.4, 9.0, 0.30), HD_CEIL)
+    make_box("Ramp_Upper_Wall_N", (43.5, 18.4, (H + 1.2) / 2.0), (7.0, 0.30, H + 1.2), HD)
+    make_box("Ramp_Upper_Wall_S", (43.5, 9.6, (H + 1.2) / 2.0), (7.0, 0.30, H + 1.2), HD)
     make_box("Exit_Sign_Mounted_Glow", (39.8, 9.0, 2.1), (0.06, 0.40, 0.16), (0.30, 0.86, 0.40, 1.0))
+    # the car coming down the ramp, its headlights on (the tscn's
+    # Headlights_Descending spot): nose -Y, down the slope
+    rz = math.atan2(H, 8.0)
+    make_rot_box("Ramp_Car_Body", (44.0, 15.6, H * (15.6 - 10.0) / 8.0 - 0.1 + 0.62), (1.8, 4.4, 0.70), (0.24, 0.26, 0.30, 1.0), roll=rz)
+    make_rot_box("Ramp_Car_Cabin", (44.0, 15.8, H * (15.8 - 10.0) / 8.0 - 0.1 + 1.16), (1.6, 2.2, 0.44), (0.12, 0.14, 0.16, 1.0), roll=rz)
+    for s in (-1, 1):
+        make_box(f"Ramp_Car_Headlight_Glow_{s:+d}", (44.0 + s * 0.62, 13.38, H * (13.38 - 10.0) / 8.0 - 0.1 + 0.70), (0.30, 0.04, 0.14),
+                 (1.0, 0.98, 0.86, 1.0))
 
 
 def build_store():
@@ -189,7 +250,93 @@ def build_store():
     for k in range(4):
         make_box(f"Across_Building_{k}", (105.0 + k * 20.0 if k < 2 else 155.0 + (k - 2) * 20.0, -18.0, 8.0), (14.0, 2.0, 16.0),
                  ((0.56, 0.52, 0.48, 1.0), (0.48, 0.50, 0.52, 1.0))[k % 2])
-    make_box("Sky_Day_S", (135.0, -150.0, 50.0), (400.0, 0.2, 160.0), (0.70, 0.78, 0.86, 1.0))
+    # (2026-10-30: the 400 m "Sky_Day_S" slab is gone — an occluder the
+    # geometry audit flagged; the sky is the environment's)
+    build_store_2026_10()
+
+
+def build_store_2026_10():
+    """map of the city (vol 4), DRAFT 2: "a clothing store", "empty except for
+    naked mannequins and sale banners slumped and covered thick with dust";
+    "He hops up on a counter, the glass crunching in the recess"; "And his
+    words echo in the empty shell"; "the metal spine of the dead escalator".
+    Draft 1 read as a beige box with three mannequins. Now:
+    - the drop ceiling over the sales floor, its grid with tiles gone
+      (black holes) and three hanging by a corner
+    - the sun high through the empty S frames: translucent shafts on the
+      dust, bright pools on the floor
+    - round racks and wall racks stripped, hangers on the floor, a display
+      table, a mannequin face down, an arm by the counter
+    - the store's name over the mezzanine as an empty fascia with its
+      letters' ghosts, the mezzanine's racks above
+    Draft 3 targets: the roof ("We climb to the sky, broken and pink") as
+    its own vantage, King's paper crown on the counter as an insert, the
+    fitting rooms' curtains, the escalator's handrail peeled."""
+    Hc = 4.0                                     # the drop ceiling over the front half (y 0..12)
+    grid = (0.70, 0.68, 0.64, 1.0)
+    tile = (0.84, 0.82, 0.78, 1.0)
+    import random
+    rnd = random.Random(118)
+    for ix in range(24):
+        for iy in range(9):
+            x, y = 120.9 + ix * 1.22, 0.9 + iy * 1.22
+            if 132.6 < x < 135.4 and y > 3.6:
+                continue                         # open over the escalator
+            r_ = rnd.random()
+            if r_ < 0.16:
+                continue                         # a tile gone: the black above
+            if r_ < 0.19:
+                make_rot_box(f"Ceiling_Tile_Hanging_Stock_{ix}_{iy}", (x, y - 0.3, Hc - 0.45), (1.18, 0.02, 0.9), tile, roll=1.2)
+                continue
+            make_box(f"Ceiling_Tile_Stock_{ix}_{iy}", (x, y, Hc + 0.01), (1.18, 1.18, 0.02), tile)
+    for ix in range(25):
+        gx_ = 120.29 + ix * 1.22
+        if 132.6 < gx_ < 135.4:
+            make_box(f"Ceiling_Grid_Stock_X_{ix}", (gx_, 1.95, Hc - 0.01), (0.03, 3.3, 0.03), grid)   # stops at the escalator's well
+            continue
+        make_box(f"Ceiling_Grid_Stock_X_{ix}", (gx_, 6.0, Hc - 0.01), (0.03, 11.0, 0.03), grid)
+    for iy in range(10):
+        gy_ = 0.29 + iy * 1.22
+        if gy_ > 3.6:
+            make_box(f"Ceiling_Grid_Stock_Y_{iy}_W", (126.3, gy_, Hc - 0.01), (12.6, 0.03, 0.03), grid)
+            make_box(f"Ceiling_Grid_Stock_Y_{iy}_E", (142.7, gy_, Hc - 0.01), (14.6, 0.03, 0.03), grid)
+            continue
+        make_box(f"Ceiling_Grid_Stock_Y_{iy}", (135.0, gy_, Hc - 0.01), (29.6, 0.03, 0.03), grid)
+    make_box("Ceiling_Plenum_Dark", (135.0, 6.0, Hc + 0.6), (29.6, 11.6, 0.02), (0.12, 0.12, 0.12, 1.0))
+    # the sun's shafts through the S frames, and their pools on the floor
+    for k, x in enumerate((122.5, 132.5, 137.5, 147.5)):
+        make_rot_box(f"Sun_Shaft_{k}", (x, 1.9, 1.8), (4.2, 0.02, 4.8), (1.0, 0.96, 0.84, 0.10), roll=0.785)
+        make_box(f"Sun_Pool_{k}", (x, 3.4, 0.004), (4.6, 2.4, 0.004), (0.92, 0.86, 0.72, 1.0))
+    # round racks stripped, hangers on the floor
+    for k, (x, y) in enumerate(((125.0, 5.0), (130.0, 9.0), (140.0, 4.5), (145.5, 8.0))):
+        make_cyl(f"Round_Rack_{k}_Base", (x, y, 0.03), 0.30, 0.06, (0.40, 0.40, 0.42, 1.0), segments=12)
+        make_cyl(f"Round_Rack_{k}_Pole", (x, y, 0.70), 0.025, 1.30, (0.66, 0.66, 0.68, 1.0), segments=8)
+        make_lathe(f"Round_Rack_{k}_Ring", (x, y, 1.30), [(0.62, 0.0), (0.66, 0.0), (0.66, 0.03), (0.62, 0.03)], (0.66, 0.66, 0.68, 1.0), segments=20, loop=True)
+        for j in range(4):
+            a = j * math.pi / 2.0
+            make_rot_box(f"Round_Rack_{k}_Spoke_{j}", (x + 0.32 * math.cos(a), y + 0.32 * math.sin(a), 1.31), (0.64, 0.02, 0.02),
+                         (0.66, 0.66, 0.68, 1.0), yaw=a)
+    for k in range(18):
+        make_rot_box(f"Hanger_Floor_Stock_{k}", (rnd.uniform(122.0, 148.0), rnd.uniform(1.0, 11.0), 0.012), (0.40, 0.02, 0.012),
+                     (0.20, 0.20, 0.22, 1.0) if k % 3 else (0.86, 0.86, 0.84, 1.0), yaw=rnd.uniform(0, 3.1))
+    # the display table, a mannequin face down, an arm by the counter
+    make_box("Display_Table_Top", (136.8, 2.6, 0.80), (1.8, 1.0, 0.05), (0.56, 0.46, 0.36, 1.0))
+    make_box("Display_Table_Plinth", (136.8, 2.6, 0.39), (1.6, 0.8, 0.78), (0.50, 0.42, 0.34, 1.0))
+    make_blob("Mannequin_Fallen_Torso", (128.8, 2.6, 0.22), 0.22, (0.86, 0.82, 0.76, 1.0), noise=0.0, seed=41, squash=0.6)
+    make_rot_box("Mannequin_Fallen_Legs", (129.6, 2.8, 0.10), (0.9, 0.24, 0.18), (0.86, 0.82, 0.76, 1.0), yaw=0.2)
+    make_blob("Mannequin_Fallen_Head", (128.3, 2.5, 0.10), 0.10, (0.86, 0.82, 0.76, 1.0), noise=0.0, seed=42, squash=1.1)
+    make_rot_box("Mannequin_Arm_Floor", (128.9, 6.3, 0.04), (0.62, 0.08, 0.08), (0.86, 0.82, 0.76, 1.0), yaw=1.0)
+    # wall racks on the W wall, stripped
+    for k in range(4):
+        make_box(f"Wall_Rack_Bar_{k}", (120.4, 2.5 + k * 2.6, 1.6), (0.04, 2.0, 0.03), (0.66, 0.66, 0.68, 1.0))
+        make_box(f"Wall_Rack_Slat_{k}", (120.17, 2.5 + k * 2.6, 1.4), (0.02, 2.2, 1.6), (0.56, 0.54, 0.50, 1.0))
+    # the store's fascia over the mezzanine edge, the letters' ghosts
+    make_box("Store_Fascia", (135.0, 11.9, 3.75), (29.6, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
+    for k in range(9):
+        make_box(f"Store_Fascia_Letter_Ghost_{k}", (129.6 + k * 1.35, 11.84, 3.75), (0.80, 0.006, 0.34), (0.68, 0.66, 0.62, 1.0))
+    # dust thick on everything low: a darker veil at the walls' feet
+    for k, (x, y, w, d) in enumerate(((121.0, 6.0, 1.4, 11.0), (149.0, 6.0, 1.4, 11.0), (135.0, 11.4, 28.0, 1.0))):
+        make_box(f"Dust_Bank_{k}", (x, y, 0.005), (w, d, 0.006), (0.66, 0.62, 0.56, 1.0))
 
 
 def build_mirror_room():
@@ -364,15 +511,40 @@ def build_shanghai():
             bx, by = 704.0 + r * math.cos(a), 3.0 + r * math.sin(a)
             h = 30.0 + ((i * 7 + ring * 3) % 5) * 12.0
             make_box(f"City_Tower_Stock_{k}", (bx, by, -60.0 + h / 2.0), (12.0, 12.0, h), (0.14, 0.15, 0.18, 1.0))
-            for j in range(6):
-                make_box(f"City_Window_Glow_Stock_{k}_{j}", (bx - 6.02 * math.cos(a), by - 6.02 * math.sin(a), -60.0 + h * (0.15 + j * 0.14)),
-                         (abs(math.sin(a)) * 10.0 + 0.1, abs(math.cos(a)) * 10.0 + 0.1, 2.0),
-                         ((1.0, 0.82, 0.52, 1.0), (0.80, 0.90, 1.0, 1.0), (1.0, 0.70, 0.40, 1.0))[(k + j) % 3])
+            # (2026-10-30, draft 2) the lit windows one by one — "every window
+            # someone else's" — on the faces the room sees (they were six solid
+            # bands per tower, which read as bars)
+            for face in (0, 1):
+                fx_, fy_ = (bx, by - 6.02) if face == 0 else (bx - 6.02, by)
+                if (face == 0 and by < 3.0 + 10.0) or (face == 1 and bx < 704.0 + 10.0):
+                    continue                     # a face turned away from the room
+                rows = int(h / 3.4)
+                for rr in range(rows):
+                    for cc in range(5):
+                        if ((k * 31 + rr * 7 + cc * 13 + face * 5) % 11) > 4:
+                            continue
+                        u = -4.4 + cc * 2.2
+                        cz_ = -60.0 + 2.0 + rr * 3.4
+                        col = ((1.0, 0.82, 0.52, 1.0), (0.80, 0.90, 1.0, 1.0), (1.0, 0.70, 0.40, 1.0))[(k + rr + cc) % 3]
+                        if face == 0:
+                            make_box(f"City_Window_Glow_Stock_{k}_{face}_{rr}_{cc}", (fx_ + u, fy_, cz_), (1.5, 0.06, 1.6), col)
+                        else:
+                            make_box(f"City_Window_Glow_Stock_{k}_{face}_{rr}_{cc}", (fx_, fy_ + u, cz_), (0.06, 1.5, 1.6), col)
             k += 1
     for k in range(6):
         make_box(f"City_Street_Glow_Stock_{k}", (704.0 + (k - 3) * 30.0, 3.0, -59.8), (2.0, 360.0, 0.1), (0.90, 0.70, 0.40, 1.0))
-    make_box("Sky_Night_N", (704.0, 190.0, 20.0), (400.0, 0.2, 200.0), (0.06, 0.06, 0.10, 1.0))
-    make_box("Sky_Night_E", (894.0, 3.0, 20.0), (0.2, 400.0, 200.0), (0.06, 0.06, 0.10, 1.0))
+    # an elevated expressway curving through, its traffic as red and white
+    # lights (2026-10-30)
+    for k in range(40):
+        a = -0.2 + k * 0.035
+        ex_, ey_ = 704.0 + 95.0 * math.cos(a), 3.0 + 95.0 * math.sin(a)
+        make_rot_box(f"Expressway_Deck_Stock_{k}", (ex_, ey_, -44.0), (4.0, 3.4, 0.8), (0.22, 0.22, 0.24, 1.0), yaw=a)
+        for lane, col in ((-0.8, (1.0, 0.16, 0.12, 1.0)), (0.8, (1.0, 0.96, 0.86, 1.0))):
+            if (k * 3 + int(lane * 10)) % 4 == 0:
+                continue
+            make_box(f"Expressway_Light_Stock_{k}_{lane:+.1f}", (ex_ + lane * math.cos(a), ey_ + lane * math.sin(a), -43.5), (0.6, 0.6, 0.2), col)
+    # (2026-10-30: the two painted "Sky_Night" slabs are gone — the preset's
+    # night env carries the city's glow on the sky, and the slabs hid it)
 
 
 def main():

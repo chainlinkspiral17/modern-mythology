@@ -101,9 +101,9 @@
   "objects": 292
  },
  "desert_route": {
-  "draw": 96,
-  "prims": 65060,
-  "objects": 266
+  "draw": 98,
+  "prims": 73092,
+  "objects": 268
  },
  "diner": {
   "draw": 1248
@@ -305,9 +305,9 @@
   "objects": 248
  },
  "small_wood_farmhouse": {
-  "draw": 150,
-  "prims": 41312,
-  "objects": 320
+  "draw": 154,
+  "prims": 44504,
+  "objects": 324
  },
  "small_wood_field": {
   "draw": 276,
@@ -360,9 +360,9 @@
   "objects": 578
  },
  "vol3_rooms": {
-  "draw": 350,
-  "prims": 194132,
-  "objects": 520
+  "draw": 354,
+  "prims": 226992,
+  "objects": 524
  },
  "vol4_apartments": {
   "draw": 100,
@@ -370,9 +370,9 @@
   "objects": 270
  },
  "vol4_story_rooms": {
-  "draw": 132,
-  "prims": 56404,
-  "objects": 302
+  "draw": 166,
+  "prims": 278260,
+  "objects": 336
  },
  "wagner_home": {
   "draw": 134,

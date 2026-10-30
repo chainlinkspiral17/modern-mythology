@@ -215,6 +215,14 @@ light_energy = 2.0
 shadow_enabled = false
 omni_range = 8.0
 
+; draft 2 (2026-10-30): the yard light on its pole by the workshop (Workshop_Yard_Light_*)
+[node name="Yard_Light__farm_kitchen_window" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4, 4.6, -4.0)
+light_color = Color(1.0, 0.86, 0.6, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 10.0
+
 [node name="Kitchen_Low__farm_kitchen_window" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, 2.2, -7.0)
 light_color = Color(1.0, 0.86, 0.66, 1)
