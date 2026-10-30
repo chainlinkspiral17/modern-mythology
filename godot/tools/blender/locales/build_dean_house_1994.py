@@ -89,6 +89,17 @@ def build_bedroom():
     make_chamfer_box("Dean_School_Bag", (0.30, 0.50, 0.16), (0.40, 0.24, 0.32), (0.20, 0.28, 0.40, 1.0), chamfer=0.06)
     make_box("Dean_Door_Open", (DOOR_X + 0.43, 0.10 + 0.40, 0.995), (0.04, 0.80, 1.99), (0.70, 0.62, 0.50, 1.0))
     make_box("Dean_Rug", (0.10, 2.10, 0.006), (1.40, 1.00, 0.012), (0.40, 0.30, 0.26, 1.0))
+    # (2026-10-30) the dream journal — "Woke up at 3:50 with my jaw hurting"
+    # is its entry: open on the floor by the bed where it slid, the pen by it
+    jx, jy = -0.62, 3.05
+    for side in (-1, 1):
+        make_rot_box(f"Dean_Journal_Page_{side:+d}", (jx + side * 0.075, jy, 0.010 + 0.004), (0.15, 0.21, 0.008),
+                     (0.92, 0.90, 0.84, 1.0), yaw=0.25, roll=side * 0.06)
+    make_rot_box("Dean_Journal_Cover", (jx, jy, 0.003), (0.32, 0.23, 0.004), (0.16, 0.18, 0.22, 1.0), yaw=0.25)
+    for k in range(5):
+        make_rot_box(f"Dean_Journal_Line_{k}", (jx + 0.08, jy - 0.07 + k * 0.03, 0.0195), (0.10, 0.004, 0.0006),
+                     (0.18, 0.20, 0.34, 1.0), yaw=0.25)
+    make_rot_box("Dean_Journal_Pen", (jx + 0.22, jy + 0.10, 0.008), (0.14, 0.012, 0.012), (0.12, 0.14, 0.40, 1.0), yaw=0.9)
 
 
 def build_hall():
@@ -223,9 +234,13 @@ def build_outside():
     for k in range(8):
         make_blob(f"Hill_Fir_{k}", (-30.0 + k * 9.0, y0h + 151.0 + (k % 3) * 5.0, top + 5.0), 3.0, (0.14, 0.20, 0.14, 1.0),
                   noise=0.3, seed=k, squash=2.0)
-    for k in range(14):
-        make_box(f"Rain_Water_Streak_Bed_{k}", (WIN_X - 0.6 + k * 0.09, D + 0.5 + (k % 3) * 0.3, 1.5 + (k % 2) * 0.3), (0.006, 0.006, 1.6),
-                 (0.70, 0.74, 0.80, 1.0))
+    # (2026-10-30) the rain past the bedroom window: 14 streaks read as none
+    # from the room; "raining in long lines that reach the ground"
+    import random as _r
+    rr = _r.Random(350)
+    for k in range(90):
+        make_box(f"Rain_Water_Streak_Bed_{k}", (WIN_X + rr.uniform(-1.3, 1.3), D + rr.uniform(0.45, 2.2), rr.uniform(0.7, 2.6)),
+                 (0.005, 0.005, rr.uniform(0.6, 1.4)), (0.70, 0.74, 0.80, 1.0))
     for k in range(14):
         make_box(f"Rain_Water_Streak_Well_{k}", (WELL_X0 + k * 0.10, yw + 1.2 + (k % 3) * 0.4, 0.4), (0.006, 0.006, 1.4),
                  (0.70, 0.74, 0.80, 1.0))
