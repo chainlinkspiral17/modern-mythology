@@ -167,6 +167,37 @@ def build_edit_station():
     make_lamp("Lamp_Edit", dx + 0.78, dy + 0.18, base_z=0.755, h=0.40)
     make_chair("Edit_Chair", dx - 0.10, dy - 0.75, yaw=0.0, wood=(0.24, 0.24, 0.26, 1.0))
     make_chair("Edit_Chair_2", dx + 0.60, dy - 0.85, yaw=0.3, wood=(0.24, 0.24, 0.26, 1.0))
+    # DRAFT 2 (2026-10-30): the room was a desk in four bare walls. Vol 3
+    # ch4's two friends "Shooting, editing, writing and planning three days a
+    # week straight": "We capture impressions with Polaroid cameras", "he
+    # prints t-shirts and stickers that I design". The Polaroids pinned over
+    # the desk, the camera on it, the planning board, a box of the shirts.
+    wy = d - 0.10                                        # the N wall's room face
+    rng = __import__("random").Random(404)
+    for k in range(16):
+        px = 41.15 + (k % 8) * 0.21 + rng.uniform(-0.03, 0.03)
+        pz = 1.30 + (k // 8) * 0.24 + rng.uniform(-0.04, 0.04)
+        make_box(f"Edit_Polaroid_{k}", (px, wy - 0.002, pz), (0.088, 0.003, 0.107), (0.94, 0.93, 0.90, 1.0))
+        tint = rng.choice(((0.30, 0.22, 0.28, 1.0), (0.42, 0.30, 0.20, 1.0), (0.18, 0.22, 0.34, 1.0), (0.50, 0.40, 0.30, 1.0)))
+        make_box(f"Edit_Polaroid_{k}_Image", (px, wy - 0.004, pz + 0.008), (0.076, 0.002, 0.076), tint)
+    make_box("Edit_Polaroid_Camera", (dx - 0.66, dy + 0.24, 0.81), (0.15, 0.11, 0.10), (0.88, 0.86, 0.80, 1.0))
+    make_cyl("Edit_Polaroid_Camera_Lens", (dx - 0.66, dy + 0.18, 0.825), 0.028, 0.012, (0.10, 0.10, 0.12, 1.0), axis='Y', segments=10)
+    # the planning board on the E wall: a whiteboard, its scrawl, a marker tray
+    ex = x1 - 0.10
+    make_box("Edit_Whiteboard", (ex - 0.008, 2.0, 1.50), (0.016, 1.40, 0.90), (0.94, 0.95, 0.96, 1.0))
+    make_box("Edit_Whiteboard_Frame", (ex - 0.004, 2.0, 1.50), (0.008, 1.46, 0.96), (0.62, 0.64, 0.66, 1.0))
+    for k, (yy, zz, ww) in enumerate(((1.62, 1.82, 0.70), (1.70, 1.70, 0.56), (1.58, 1.58, 0.82), (2.40, 1.80, 0.40),
+                                      (2.36, 1.66, 0.30), (2.30, 1.38, 0.62), (1.66, 1.28, 0.48))):
+        make_box(f"Edit_Whiteboard_Scrawl_{k}", (ex - 0.017, yy, zz), (0.002, ww, 0.018), ((0.14, 0.22, 0.60, 1.0), (0.70, 0.16, 0.14, 1.0))[k % 3 == 2])
+    make_box("Edit_Whiteboard_Tray", (ex - 0.04, 2.0, 1.035), (0.07, 0.80, 0.025), (0.62, 0.64, 0.66, 1.0))
+    # a box of the printed shirts under the board, folded, the top one out
+    bx, by = x1 - 0.40, 2.05
+    make_box("Edit_Shirt_Box", (bx, by, 0.16), (0.46, 0.38, 0.32), (0.62, 0.50, 0.34, 1.0))
+    for k, col in enumerate(((0.12, 0.12, 0.14, 1.0), (0.90, 0.90, 0.86, 1.0), (0.80, 0.30, 0.26, 1.0))):
+        make_box(f"Edit_Shirt_{k}", (bx - 0.04 + k * 0.03, by + 0.02 - k * 0.02, 0.33 + k * 0.025), (0.32, 0.26, 0.025), col)
+    # the cables off the back of the desk to the tower and the deck
+    for k in range(3):
+        make_box(f"Edit_Cable_{k}", (dx + 0.30 + k * 0.10, dy + 0.30, 0.38), (0.02, 0.02, 0.74), (0.08, 0.08, 0.09, 1.0))
 
 
 def build_suite_dressing_2026_10():
