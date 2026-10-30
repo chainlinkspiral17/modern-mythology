@@ -228,6 +228,34 @@ def build_kitchen_2026_10():
     make_box("Kitchen_Calendar_Picture", (2.6, 9.9 - 0.012, 1.68), (0.30, 0.004, 0.20), (0.40, 0.52, 0.40, 1.0))
 
 
+def build_siding_2026_10():
+    """(2026-10-30) the S facade read as one flat white slab at night: lap
+    siding courses every 20 cm on both storeys, broken round the door and
+    the windows, corner boards at the ends. Draft 3: the E and W gables."""
+    def runs(x0, x1, holes):
+        out, cur = [], x0
+        for a, b in sorted(holes):
+            if a > cur:
+                out.append((cur, a))
+            cur = max(cur, b)
+        if cur < x1:
+            out.append((cur, x1))
+        return out
+    dark = (0.64, 0.62, 0.58, 1.0)
+    ground_holes = (((-1.2 - 0.48, -1.2 + 0.48), 0.0, 2.05), ((-5.0 - 0.64, -5.0 + 0.64), 0.72, 1.98))
+    upper_holes = tuple(((x - 0.54, x + 0.54), H + 0.82, H + 1.98) for x in (-5.0, -1.0, 3.0))
+    k = 0
+    for zlist, holes in ((tuple(0.30 + i * 0.20 for i in range(11)), ground_holes),
+                         (tuple(H + 0.28 + i * 0.20 for i in range(12)), upper_holes)):
+        for z in zlist:
+            hx = [xr for xr, z0, z1 in holes if z0 <= z <= z1]
+            for a, b in runs(-8.2, 6.2, hx):
+                make_box(f"Siding_Course_Stock_{k}", ((a + b) / 2.0, -0.112, z), (b - a, 0.012, 0.018), dark)
+                k += 1
+    for x in (-8.2, 6.2):
+        make_box(f"Siding_Corner_Board_{x:+.1f}", (x, -0.115, (2 * H + 0.2) / 2.0), (0.14, 0.02, 2 * H + 0.2), TRIM)
+
+
 def build_porch_and_yard():
     # the front porch along the S wall: its boards, posts, roof, rail; the
     # chair, the spit cup, the bottle, the cats
@@ -340,6 +368,7 @@ def main():
     _placed(RANCH.build_second_house, SECOND_AT, "LS_", drop=("SH_View_E",))
     build_house()
     build_porch_and_yard()
+    build_siding_2026_10()
     try:
         join_stock()
     except Exception as _e:
