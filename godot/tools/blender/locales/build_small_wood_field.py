@@ -91,6 +91,8 @@ SOUTH = -24.0                                   # the lot, the street, the churc
 PAINT = (0.84, 0.82, 0.76, 1.0)       # weathered white
 TRIM = (0.10, 0.34, 0.19, 1.0)        # the school's green
 ROOF = (0.20, 0.26, 0.24, 1.0)
+BACKWALL = (0.16, 0.24, 0.18, 1.0)    # the stand's back wall, green in the roof's shadow
+BACKWALL_BATTEN = (0.12, 0.19, 0.14, 1.0)
 SEAT_WOOD = (0.52, 0.40, 0.28, 1.0)
 STEP_WOOD = (0.42, 0.36, 0.30, 1.0)
 CREOSOTE = (0.26, 0.19, 0.13, 1.0)
@@ -124,7 +126,7 @@ def _rng(seed):
 def build_field():
     """The gridiron (vol 6's, true scale) and a home field's wear: the
     Oregon fall has the middle of it in mud by the first home game."""
-    SF.build_ground()
+    SF.build_ground(digits=True)
     SF.build_hashmarks()
     SF.build_goalposts()
     make_box("Ground_Beyond", (0.0, MID_Y - 20.0, -0.06), (420.0, 420.0, 0.04), (0.13, 0.20, 0.12, 1.0))
@@ -180,7 +182,13 @@ def build_grandstand():
                      (0.06, 0.06, 0.41), SEAT_WOOD)
     rise = ROOF_B[1] - ROOF_F[1]
     run = ROOF_B[0] - ROOF_F[0]
-    make_box("GS_BackWall", (GS_XB + 0.15, MID_Y, ROOF_B[1] / 2.0), (0.30, GS_LEN, ROOF_B[1]), PAINT)
+    # the back wall under the roof is in the roof's shadow, board and batten
+    # in the school's dark green (2026-10-30: one cream slab read as a row of
+    # blank billboards behind the stand in every view of it)
+    make_box("GS_BackWall", (GS_XB + 0.15, MID_Y, ROOF_B[1] / 2.0), (0.30, GS_LEN, ROOF_B[1]), BACKWALL)
+    for b in range(int(GS_LEN / 1.2)):
+        make_box(f"GS_Batten_Stock_{b}", (GS_XB - 0.03, y0 + 0.6 + b * 1.2, (Z0 + RISE * GS_ROWS + ROOF_B[1]) / 2.0),
+                 (0.06, 0.08, ROOF_B[1] - (Z0 + RISE * GS_ROWS)), BACKWALL_BATTEN)
     for tag, ey in (("S", y0), ("N", y1)):
         make_box(f"GS_EndWall_{tag}", ((GS_X0 + GS_XB) / 2.0 + 0.15, ey, ROOF_F[1] / 2.0), (GS_XB - GS_X0 + 0.3, 0.25, ROOF_F[1]), PAINT)
         make_box(f"GS_EndWall_{tag}_Trim", ((GS_X0 + GS_XB) / 2.0 + 0.15, ey, ROOF_F[1] - 0.12), (GS_XB - GS_X0 + 0.4, 0.30, 0.24), TRIM)

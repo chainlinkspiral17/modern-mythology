@@ -77,7 +77,7 @@ COL_GOAL  = (0.94, 0.82, 0.28, 1.0)
 COL_LAMP  = (1.0, 0.98, 0.90, 1.0)
 
 
-def build_ground():
+def build_ground(digits=False):
     # End zones (their own turf color)
     make_box("Turf_EZ_S", (0.0, GL_S / 2.0, -0.02), (FIELD_W, EZ, 0.04), COL_EZ)
     make_box("Turf_EZ_N", (0.0, GL_N + EZ / 2.0, -0.02), (FIELD_W, EZ, 0.04), COL_EZ)
@@ -104,12 +104,44 @@ def build_ground():
                  (0.14, FIELD_LEN, 0.02), COL_LINE)
     # Abstract yard numbers every 10yd (both sides): a digit-pair slab
     # ~2yd tall with its top toward the near sideline, 9yd inboard.
+    # digits=True (small_wood_field, 2026-10-30): painted stroke digits
+    # instead — 10 20 30 40 50 40 30 20 10, 6 ft tall, tops to the
+    # sideline, read from midfield; `Num_Stock_` so a joining builder
+    # draws them as one mesh. The slab read as a stray board on the turf.
     for k in range(1, 10):
         ny = GL_S + k * 10.0 * YD
         for sx in (-1, +1):
+            if digits:
+                _yard_digits(min(k, 10 - k) * 10, sx, sx * (SIDE_X - 9.0 * YD), ny, f"{k}{'L' if sx < 0 else 'R'}")
+                continue
             make_box(f"Num_{k}0_{'L' if sx < 0 else 'R'}",
                      (sx * (SIDE_X - 9.0 * YD), ny, 0.0015),
                      (1.2, 1.8, 0.02), COL_LINE)
+
+
+# seven-segment strokes per digit: a top, b upper right, c lower right,
+# d bottom, e lower left, f upper left, g middle
+_SEGS = {"0": "abcdef", "1": "bc", "2": "abged", "3": "abgcd", "4": "fgbc", "5": "afgcd"}
+
+
+def _yard_digits(n, sx, cx, cy, tag):
+    """Two painted digits centred on (cx, cy). Their 'up' points to the
+    near sideline (+x for sx=+1), reading left to right toward -sx·y."""
+    W, H, T = 0.80, 1.80, 0.20          # a digit's width, height, stroke
+    GAP = 0.40
+    txt = str(n)
+    for di, ch in enumerate(txt):
+        # digit centre along the reading direction (u), 0 at the pair's middle
+        u0 = (di - (len(txt) - 1) / 2.0) * (W + GAP)
+        for seg in _SEGS[ch]:
+            # (u, v, du, dv) in the digit's own frame, v up
+            u, v, du, dv = {"a": (0.0, H / 2 - T / 2, W, T), "d": (0.0, -H / 2 + T / 2, W, T),
+                            "g": (0.0, 0.0, W, T),
+                            "b": (W / 2 - T / 2, H / 4, T, H / 2), "c": (W / 2 - T / 2, -H / 4, T, H / 2),
+                            "f": (-W / 2 + T / 2, H / 4, T, H / 2), "e": (-W / 2 + T / 2, -H / 4, T, H / 2)}[seg]
+            # up = (sx, 0), reading right = (0, -sx)
+            x, y = cx + sx * v, cy - sx * (u0 + u)
+            make_box(f"Num_Stock_{tag}_{di}{seg}", (x, y, 0.0015), (dv, du, 0.02), COL_LINE)
 
 
 def build_hashmarks():
