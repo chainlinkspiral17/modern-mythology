@@ -556,9 +556,12 @@ rotation = Vector3(-0.2618, 0.5693, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-10-30) vol3 ch8: "The mirror is scratched and spotted, the bulb above it
+; humming a sick green" — the restroom's mirror, from inside the restroom. It
+; aimed at the getaway sedan's side mirror, which this 2003 view strips.
 [node name="shot_insert_mirror__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(8.235, 1.308, 3.861)
-rotation = Vector3(-0.2618, 0.2929, 0.0)
+position = Vector3(6.600, 1.550, -13.400)
+rotation = Vector3(-0.05, 1.5708, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
