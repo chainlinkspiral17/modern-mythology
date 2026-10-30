@@ -550,7 +550,12 @@ def build_dean_house():
     make_box("DeanHome_Window_Sky_Night", (422.4, y1 + 0.5, 1.5), (2.2, 0.04, 2.0), (0.04, 0.05, 0.08, 1.0))
     # the bookshelves along the W wall, the armchair, the lamp, the book
     for k in range(3):
-        make_box(f"DeanHome_Bookcase_{k}", (x0 + 0.09 + 0.18, 1.2 + k * 1.6, 1.10), (0.36, 1.5, 2.20), (0.36, 0.24, 0.16, 1.0))
+        # (round 2) open cases: back, sides, top — the solid block hid every book
+        cy_ = 1.2 + k * 1.6
+        make_box(f"DeanHome_Bookcase_{k}_Back", (x0 + 0.10, cy_, 1.10), (0.02, 1.5, 2.20), (0.30, 0.20, 0.14, 1.0))
+        for s_ in (-1, 1):
+            make_box(f"DeanHome_Bookcase_{k}_Side_{s_:+d}", (x0 + 0.09 + 0.18, cy_ + s_ * 0.74, 1.10), (0.36, 0.02, 2.20), (0.36, 0.24, 0.16, 1.0))
+        make_box(f"DeanHome_Bookcase_{k}_Top", (x0 + 0.09 + 0.18, cy_, 2.19), (0.36, 1.5, 0.02), (0.36, 0.24, 0.16, 1.0))
         # (2026-10-30) spines, not a coloured slab per shelf: a run of books of
         # varied width and height, a gap and a leaner now and then
         for lvl in range(5):
@@ -590,6 +595,13 @@ def build_dean_house():
     # lamp in the dark. Esther's floor lamp by the sofa (the tscn's
     # Floor_Lamp practical), the family on the wall, Aria's things, a throw
     make_lamp("DeanHome_Floor_Lamp", 427.4, 6.4, base_z=0.0, h=1.50)
+    # (round 2) brass picture lights over the three bookcases (the tscn's
+    # Bookcase_Lights practical): the book wall read black
+    for k in range(3):
+        by_ = 1.2 + k * 1.6
+        make_box(f"DeanHome_Picture_Light_Bar_{k}", (x0 + 0.20, by_, 2.32), (0.10, 0.70, 0.05), (0.72, 0.58, 0.30, 1.0))
+        make_box(f"DeanHome_Picture_Light_Arm_{k}", (x0 + 0.13, by_, 2.36), (0.06, 0.04, 0.05), (0.72, 0.58, 0.30, 1.0))
+        make_box(f"DeanHome_Picture_Light_Glow_{k}", (x0 + 0.20, by_, 2.29), (0.06, 0.62, 0.01), (1.0, 0.90, 0.66, 1.0))
     for i, (py_, pz_, w, h) in enumerate(((424.6, 1.70, 0.40, 0.30), (425.2, 1.55, 0.28, 0.36), (425.75, 1.75, 0.34, 0.26),
                                           (426.3, 1.58, 0.30, 0.30))):
         make_box(f"DeanHome_Photo_Frame_{i}", (py_, y1 - 0.094 - 0.01, pz_ + 0.2), (w, 0.02, h), (0.30, 0.22, 0.16, 1.0))
