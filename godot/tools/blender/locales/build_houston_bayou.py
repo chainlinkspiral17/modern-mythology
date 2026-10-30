@@ -208,6 +208,31 @@ def build_river():
     make_box("FarBank_S", (RX, -660.0, 0.2), (700.0, 30.0, 0.6), (0.12, 0.13, 0.12, 1.0))
     make_box("Club_Building", (RX, -652.0, 3.5), (14.0, 10.0, 7.0), (0.14, 0.13, 0.16, 1.0))
     make_box("Club_Door_Light", (RX, -646.96, 1.2), (1.2, 0.04, 2.2), (1.0, 0.82, 0.56, 1.0))
+    # (2026-10-30, the turn's draft 2: the frame was a car on a flat purple
+    # plain) "Out in the middle of the river it's very quiet. There's no shore
+    # on either side." / "Then it's just a bright smudge, then a star." /
+    # "The river starts to move. There's current now" / "Up ahead ... Club #,
+    # with no line and no sign, just a door." — stars over the open water,
+    # the current drawn in streaks past the boat, the door's light laid down
+    # the water all the way to the boat so the far door reads
+    import random as _r
+    rnd = _r.Random(15)
+    for k in range(90):
+        az = rnd.uniform(-math.pi * 0.95, math.pi * 0.95) - math.pi / 2.0      # around the south
+        el = rnd.uniform(0.10, 0.95)
+        R = 600.0
+        x = RX + R * math.cos(el) * math.cos(az)
+        y = -300.0 + R * math.cos(el) * math.sin(az)
+        z = R * math.sin(el)
+        s = rnd.choice((4.0, 5.5, 7.0, 9.0))
+        make_box(f"Turn_Star_Stock_{k}", (x, y, z), (s, s, s), (1.0, 1.0, 1.0, 1.0))
+    for k in range(28):
+        sx = RX + rnd.uniform(-9.0, 9.0)
+        sy = -312.0 - rnd.uniform(0.0, 70.0)
+        make_box(f"Turn_Current_Stock_{k}", (sx, sy, 0.004), (0.10 + rnd.random() * 0.12, rnd.uniform(1.5, 5.0), 0.004),
+                 (0.62, 0.64, 0.92, 1.0))
+    make_box("Turn_Door_Reflection", (RX, -488.0, 0.003), (1.6, 312.0, 0.004), (1.0, 0.82, 0.56, 1.0))
+    make_box("Turn_Door_Reflection_Near", (RX, -352.0, 0.0035), (0.7, 40.0, 0.004), (1.0, 0.92, 0.74, 1.0))
 
 
 def main():
