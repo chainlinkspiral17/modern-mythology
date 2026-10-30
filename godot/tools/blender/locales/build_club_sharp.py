@@ -297,12 +297,16 @@ def build_crowd_2026_10():
 def main():
     clear_scene()
     build_shell(); build_dance_floors(); build_bar()
+    build_atrium_and_arcade(); build_bowling(); build_outside()
     build_cage_2026_10()
     build_crowd_2026_10()
+    # (2026-10-30) the arcade, the lanes and the ground had been pasted into
+    # this except branch, so they were built only when the join FAILED: the
+    # club shipped with no arcade, no bowling alley and no rail
     try:
         join_stock()
     except Exception as _e:
-        print("[join_stock] skipped:", _e); build_atrium_and_arcade(); build_bowling(); build_outside()
+        print("[join_stock] skipped:", _e)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/club_sharp.glb"))
     print(f"\n[build_club_sharp] exporting to {out}")
     export_glb(out)
