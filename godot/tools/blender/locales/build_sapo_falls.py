@@ -33,16 +33,17 @@ Vantages wired in Background3D.CAMERA_PRESETS:
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import (clear_scene, make_box, make_cyl,
-                             make_blob, make_taper_cyl, export_glb)
+from _props.geometry import (clear_scene, make_box, make_cyl, make_rot_box,
+                             make_blob, make_taper_cyl, join_stock, export_glb)
+from _props.trees import make_broadleaf, make_fern
 
 COL_ROCK = (0.42, 0.42, 0.40, 1.0)
 COL_ROCK_DK = (0.32, 0.32, 0.31, 1.0)
 COL_ROCK_WET = (0.26, 0.27, 0.27, 1.0)
 COL_FALL = (0.88, 0.90, 0.90, 0.45)      # translucent since draft 3 — the world shows through from behind
 COL_FALL_CORE = (0.94, 0.96, 0.96, 1.0)
-COL_POOL = (0.20, 0.30, 0.30, 1.0)
-COL_POOL_DK = (0.14, 0.22, 0.23, 1.0)
+COL_POOL = (0.22, 0.40, 0.40, 1.0)      # (2026-10-30: lifted — it read as a grey slab)
+COL_POOL_DK = (0.16, 0.30, 0.32, 1.0)
 COL_FOAM = (0.78, 0.82, 0.80, 1.0)
 COL_MIST = (0.72, 0.76, 0.76, 0.45)
 COL_GREEN = (0.18, 0.32, 0.18, 1.0)      # dense Canaima green, dark
@@ -153,8 +154,10 @@ def build_foreground():
     rocks = [(-2.8, 4.6, 0.55, 1.4), (-0.6, 3.6, 0.40, 1.1), (1.8, 4.9, 0.65, 1.6),
              (3.4, 3.4, 0.35, 0.9), (-4.2, 3.0, 0.45, 1.2), (0.9, 5.8, 0.30, 0.8)]
     for i, (rx, ry, rz, rs) in enumerate(rocks):
-        make_box(f"Boulder_{i}", (rx, ry, rz / 2.0 + 0.02), (rs, rs * 0.8, rz),
-                 COL_ROCK_WET if i % 2 == 0 else COL_ROCK_DK)
+        # (2026-10-30: rounded wet stones, not crates)
+        r = rs * 0.5
+        make_blob(f"Boulder_{i}", (rx, ry, rz * 0.5 + 0.02), r, COL_ROCK_WET if i % 2 == 0 else COL_ROCK_DK,
+                  noise=0.22, seed=50 + i, squash=(rz * 0.5) / r)
     make_box("Shore", (0.0, 2.2, 0.05), (12.0, 3.4, 0.14), COL_ROCK)
     # the rock between the shore and the pool, wall to wall (2026-09-24: a
     # 1.6 m strip of nothing, boulder 0 standing over it)
@@ -166,9 +169,12 @@ def build_foreground():
               (-5.6, 5.0, 2.2), (5.8, 5.6, 2.6), (-7.0, 10.0, 6.8),
               (7.2, 10.5, 7.4), (-4.8, 8.5, 5.6), (5.2, 11.5, 8.6),
               (-2.6, 13.4, 9.8), (2.4, 13.4, 9.8)]
+    # (2026-10-30: each mass a cluster of foliage lobes, not a green crate)
     for i, (gx, gy, gz) in enumerate(fringe):
-        col = COL_GREEN if i % 2 == 0 else COL_GREEN_LT
-        make_box(f"Green_{i}", (gx, gy, gz), (2.0, 1.5, 1.2), col)
+        for k in range(3):
+            col = (COL_GREEN, COL_GREEN_LT, (0.22, 0.36, 0.16, 1.0))[(i + k) % 3]
+            make_blob(f"Green_{i}_{k}", (gx + (k - 1) * 0.6, gy + ((k * 7) % 3 - 1) * 0.3, gz + 0.15 * (k % 2)),
+                      0.75 + 0.1 * ((i + k) % 3), col, noise=0.32, seed=200 + i * 3 + k, squash=0.7)
 
 
 def build_sky():
@@ -185,6 +191,64 @@ def build_sky():
     # The sky is the .tscn environment's job.)
 
 
+def build_jungle_2026_10():
+    """DRAFT 4 (2026-10-30): "the Canaima region — naturally rich in elevated
+    tepuis, dense with dark green vegetation and flowing with towering
+    waterfalls"; "one of the many smaller Sapo Falls". The gorge was grey
+    crates stepped back with green crates on them. Now:
+    - the rock walls broken by boulder masses along their inner faces
+      (joined), so the silhouettes are rock, not boxes
+    - vines hanging down the walls; trees and ferns on the tiers and shore
+    - two of the "many smaller" falls threading down the walls, foam at
+      their feet; the tepuis' flanks striated, their tops wooded
+    Draft 5 targets: the mermaid's dark length under the foam, rainbow in
+    the mist, the camera's foreground leaf frame."""
+    # half the masses under moss and growth ("dense with dark green vegetation")
+    rock_cols = (COL_ROCK, (0.30, 0.44, 0.24, 1.0), (0.46, 0.44, 0.40, 1.0), (0.24, 0.40, 0.20, 1.0))
+    k = 0
+    for sgn in (-1, 1):
+        for (xf, zs, r) in ((4.25, (1.0, 2.4), 0.80), (5.6, (4.2, 5.6), 0.95), (7.0, (7.2, 8.6), 1.05)):
+            y = 4.6
+            while y < 12.8:
+                if xf < 5.0 and abs(y - (8.2 if sgn < 0 else 10.6)) < 1.0:
+                    y += 1.5
+                    continue                       # the small fall comes down here
+                for z in zs:
+                    make_blob(f"Gorge_Rock_Stock_{k}", (sgn * (xf + 0.1 * ((k * 3) % 3)), y + 0.3 * ((k * 5) % 3 - 1), z),
+                              r * (0.85 + 0.1 * (k % 3)), rock_cols[k % 4], noise=0.34, seed=300 + k, squash=0.9)
+                    k += 1
+                y += 1.5
+    # vines down the walls
+    for i in range(18):
+        sgn = -1 if i % 2 else 1
+        tier = i % 3
+        top = (3.2, 6.0, 9.0)[tier]
+        x = sgn * (3.75 + tier * 1.4)
+        y = 5.0 + (i * 0.47) % 7.5
+        L = 1.4 + (i % 4) * 0.6
+        make_rot_box(f"Vine_Stock_{i}", (x, y, top - L / 2.0), (0.04, 0.04, L), (0.20, 0.34, 0.16, 1.0), pitch=0.04 * (i % 3 - 1))
+    # trees on the tiers' tops and ferns on the shore
+    for i, (x, y, z, h) in enumerate(((-6.6, 6.0, 3.2, 4.0), (6.8, 7.2, 3.2, 3.6), (-8.4, 9.6, 6.0, 4.4), (8.6, 10.6, 6.0, 4.0),
+                                      (-10.2, 12.0, 9.0, 5.0), (10.4, 12.4, 9.0, 4.6))):
+        make_taper_cyl(f"Jungle_Tree_{i}_Trunk", (x, y, z + h * 0.35), 0.14, 0.08, h * 0.7, (0.30, 0.24, 0.18, 1.0), segments=7)
+        for j in range(3):
+            make_blob(f"Jungle_Tree_{i}_Crown_{j}", (x + (j - 1) * 0.7, y + ((j * 2) % 3 - 1) * 0.4, z + h * 0.78 + 0.2 * (j % 2)),
+                      1.0 + 0.2 * j, (COL_GREEN, COL_GREEN_LT, (0.20, 0.34, 0.18, 1.0))[j], noise=0.3, seed=400 + i * 3 + j, squash=0.75)
+    for i, (x, y) in enumerate(((-4.9, 2.0), (4.7, 1.6), (-3.6, 1.0), (5.4, 3.6), (-5.6, 3.8))):
+        make_fern(f"Shore_Fern_{i}", x, y, h=0.7 + 0.1 * (i % 3), fronds=8, col=(0.22, 0.42, 0.20, 1.0), z0=0.12)
+    # two of the many smaller falls, down the lower tier faces
+    for i, (sgn, y) in enumerate(((-1, 8.2), (1, 10.6))):
+        x = sgn * 3.82
+        make_box(f"Small_Fall_{i}", (x, y, 1.65), (0.04, 0.34, 3.1), (0.90, 0.92, 0.92, 0.55))
+        make_box(f"Small_Fall_{i}_Core", (x - sgn * 0.01, y, 1.65), (0.03, 0.12, 3.0), (0.96, 0.97, 0.97, 1.0))
+        make_blob(f"Small_Fall_{i}_Foam", (x - sgn * 0.35, y, 0.12), 0.40, COL_FOAM, noise=0.2, seed=60 + i, squash=0.35)
+    # the tepuis: flank striations, wooded tops
+    for i in range(10):
+        make_box(f"Tepui_Striation_{i}", (-13.2 + i * 0.9, 16.72, 5.6), (0.10, 0.04, 10.6), (0.40, 0.36, 0.38, 1.0))
+    for j in range(5):
+        make_blob(f"Tepui_Top_Wood_{j}", (-12.6 + j * 1.8, 17.2, 12.5), 0.9, COL_TEPUI_TOP, noise=0.3, seed=500 + j, squash=0.5)
+
+
 def main():
     clear_scene()
     build_gorge()
@@ -192,6 +256,11 @@ def main():
     build_pool()
     build_foreground()
     build_sky()
+    build_jungle_2026_10()
+    try:
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sapo_falls.glb"))
     print(f"\n[build_sapo_falls] exporting to {out}")

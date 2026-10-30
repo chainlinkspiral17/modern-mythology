@@ -5267,9 +5267,11 @@ const CAMERA_PRESETS := {
 		# drops from the rim notch (z≈-13.3, top ~9.5) into the pool
 		# with foam ring + mist; wet boulders foreground. Camera on
 		# the viewing rocks, pitched up at the column.
-		"camera_origin": Vector3(0.5, 1.70, -2.8),
-		"camera_rotation": Vector3(0.10, deg_to_rad(3.0), 0.0),
-		"fov": 64.0,
+		# (2026-10-30: up on the viewing rock so the pool reads past the
+		# shore, not a grey slab at a grazing angle)
+		"camera_origin": Vector3(0.5, 2.70, -2.4),
+		"camera_rotation": Vector3(0.02, deg_to_rad(3.0), 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"sapo_falls_behind": {
