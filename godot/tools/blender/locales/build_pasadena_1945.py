@@ -30,7 +30,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_tube,
-                             make_taper_cyl, join_stock, export_glb)
+                             make_taper_cyl, make_lathe, join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.trees import make_broadleaf
 from _props.furniture import make_chair
