@@ -130,8 +130,10 @@ shader_parameter/tint_color = Color(0.70, 0.60, 0.44, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
 ; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
-sky_top_color = Color(0.06, 0.08, 0.16, 1)
-sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+; (2026-10-30) overcast: "rain that has been raining for longer than it needs
+; to" — a low cloud deck lit from under by the lot, not a clear navy night
+sky_top_color = Color(0.09, 0.09, 0.12, 1)
+sky_horizon_color = Color(0.30, 0.27, 0.30, 1)
 sky_curve = 0.25
 ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
 ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
@@ -156,7 +158,7 @@ fog_light_energy = 0.4
 ; density capped so bands 200-800m out survive to the eye,
 ; aerial perspective + sky-affect so the horizon is haze,
 ; not a cut edge.
-fog_density = 0.0045
+fog_density = 0.0070   ; (2026-10-30) the rain's haze
 fog_sky_affect = 1.0
 fog_aerial_perspective = 1.0
 adjustment_enabled = true

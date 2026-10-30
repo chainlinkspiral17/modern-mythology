@@ -284,8 +284,49 @@ def main():
         "../../../assets/3d/locales/missing_link_exterior.glb"))
     print(f"\n[build_missing_link_exterior] exporting to {out}")
     build_horizon_2026_08()
+    build_rain_2026_10()
     export_glb(out)
 
+
+
+def build_rain_2026_10():
+    """(2026-10-30) THE RAIN. Every line at the Missing Link is wet: "a
+    wet asphalt apron", "the rain has crept in along the seams", "You
+    step back out into the rain. The rain has the steady quality of rain
+    that has been raining for longer than it needs to." The set had the
+    puddles and a clear night. Streaks hang in the open air over the road
+    and the apron — none under the awning, inside the diner or through a
+    fixture — joined as one `Rain_Streak_Stock` mesh. (A frozen still of
+    rain is what a camera sees; the shader playbook defers particles.)"""
+    import random as _r
+    rng = _r.Random(1031)
+    keep_out = [                                   # (x0, x1, y0, y1) columns the rain stops at
+        (-4.6, 3.6, 7.9, 30.0),                    # the diner
+        (3.8, 7.5, 5.5, 7.8),                      # the depot awning
+        (-4.6, -1.8, 4.7, 6.1),                    # the pump island
+        (-7.0, -6.0, 6.0, 7.0),                    # the sign pole
+        (7.8, 8.6, 2.2, 4.4),                      # the lamp pole and its head
+        (-12.3, -6.9, 4.5, 6.8),                   # the pickup
+        (3.1, 3.9, 4.9, 5.9),                      # the route post and its board
+        (0.6, 1.8, 6.8, 7.9),                      # the carved greeter
+        (-12.6, -11.4, -1.4, -0.2), (-2.6, -1.4, -1.4, -0.2), (7.4, 8.6, -1.4, -0.2),   # the poles
+    ]
+    col = (0.66, 0.70, 0.78, 1.0)
+    n = 0
+    tries = 0
+    while n < 900 and tries < 6000:
+        tries += 1
+        x, y, z = rng.uniform(-13.0, 11.0), rng.uniform(-0.2, 7.6), rng.uniform(0.25, 4.6)
+        if any(a <= x <= b and c <= y <= d for a, b, c, d in keep_out):
+            continue
+        ln = rng.uniform(0.28, 0.48)
+        make_box(f"Rain_Streak_Stock_{n}", (x, y, z), (0.004, 0.004, ln), col)
+        n += 1
+    try:
+        from _props.geometry import join_stock
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
 
 
 def build_horizon_2026_08():
