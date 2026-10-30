@@ -355,9 +355,9 @@
   "objects": 578
  },
  "vol3_rooms": {
-  "draw": 200,
-  "prims": 135652,
-  "objects": 370
+  "draw": 350,
+  "prims": 194132,
+  "objects": 520
  },
  "vol4_apartments": {
   "draw": 100,

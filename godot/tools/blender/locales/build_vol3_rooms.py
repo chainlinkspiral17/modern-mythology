@@ -368,16 +368,115 @@ def build_warehouse():
     for k in range(6):
         make_box(f"Warehouse_Truss_{k}", (x0 + 2.5 + k * 5.0, 12.0, H - 0.4), (0.30, 24.0, 0.50), (0.22, 0.22, 0.24, 1.0))
         make_box(f"Warehouse_Column_{k}", (x0 + 2.5 + k * 5.0, 0.4, (H - 0.65) / 2.0), (0.40, 0.40, H - 0.65), (0.22, 0.22, 0.24, 1.0))
-    # the floor packed in fog: haze banks (non-solid), the beams' lamps
-    for k in range(14):
-        make_blob(f"Haze_Fog_{k}", (x0 + 4.0 + (k % 7) * 3.6, 6.0 + (k // 7) * 8.0, 1.6 + (k % 3) * 0.6), 2.2, (0.40, 0.40, 0.44, 1.0),
-                  noise=0.4, seed=k, squash=0.6)
+    # (2026-10-30, draft 2: the "haze banks" were opaque grey blobs, one of
+    # them around the camera, and the floor was empty — the frame was a
+    # black void with a green smear. The fog is the environment's now; the
+    # light is drawn as beams; the floor is full.)
     for k in range(8):
         make_cyl(f"Beam_Lamp_Can_{k}", (x0 + 4.0 + k * 3.2, 23.4, 6.0), 0.18, 0.40, (0.10, 0.10, 0.10, 1.0), axis='Y', segments=10)
+    make_box("Beam_Lamp_Bar", (x0 + 15.2, 23.55, 6.25), (24.0, 0.10, 0.10), (0.16, 0.16, 0.18, 1.0))
     make_box("DJ_Riser", (x0 + 15.0, 22.6, 0.40), (6.0, 2.4, 0.80), (0.10, 0.10, 0.12, 1.0))
     make_box("DJ_Table", (x0 + 15.0, 22.4, 1.25), (2.4, 0.80, 0.90), (0.08, 0.08, 0.10, 1.0))
     for s in (-1, 1):
         make_box(f"Speaker_Stack_{s:+d}", (x0 + 15.0 + s * 4.6, 22.6, 1.4), (1.2, 1.0, 2.8), (0.06, 0.06, 0.08, 1.0))
+        for j in range(2):
+            make_cyl(f"Speaker_Cone_{s:+d}_{j}", (x0 + 15.0 + s * 4.6, 22.09, 0.75 + j * 1.25), 0.38, 0.02,
+                     (0.14, 0.14, 0.16, 1.0), axis='Y', segments=16)
+    build_warehouse_2026_10(x0, H)
+
+
+def _beam(name, apex, length, angle, roll, col):
+    """A light beam as a translucent cone (LocaleGlass draws vertex alpha):
+    apex at the lamp, opening `angle` (half, radians), tilted from straight
+    down by `roll` about X (negative swings it toward -y, the camera)."""
+    from _props.geometry import _gen_lathe, _rot3, _finalize_mesh, _fix_winding
+    r = length * math.tan(angle)
+    prof = [(r, -length), (r * 0.5, -length * 0.5), (0.12, 0.0)]
+    verts, faces = _gen_lathe(apex, prof, 16, False)
+    verts = _rot3(verts, apex, 0.0, 0.0, roll)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, apex), col)
+
+
+def build_warehouse_2026_10(x0, H):
+    """passengers (vol 3 ch8), DRAFT 2: "Green and pink light cut across body
+    mist, artificial smoke"; "Young people flinging all up against each
+    other"; "into those four walls, even more into the floor".
+    - the four beams drawn: translucent green and pink cones from the cans
+      on the N wall's bar, down across the floor toward the camera
+    - the crowd: thirty-odd dancers packed on the floor, arms up, the DJ on
+      the riser behind his table
+    - the four walls as an industrial downtown shell: brick courses on the N
+      and S walls, the clerestory windows (sodium glow outside), the steel
+      doors and the red EXIT over one, a bar along the W wall with its lit
+      back shelf, ducts along the trusses
+    Draft 3 targets: the fog as volumetric fog in this preset only (if the
+    Deck can carry it), the dancers' clothes under the beams' colours, the
+    bar's people, the coats piled on the riser's edge."""
+    from _props.figures import make_standing_figure
+    import random
+    rnd = random.Random(1801)
+    # the beams: the four spots in the tscn (x 1804, 1810.4, 1816.8, 1823.2,
+    # 6 m up at y 23.4, aimed 37 deg below level toward -y), narrower than
+    # the spot so the cone's skin stays inside the light
+    for k, (bx, col) in enumerate(((4.0, (0.40, 1.0, 0.50, 0.10)), (10.4, (1.0, 0.40, 0.80, 0.10)),
+                                    (16.8, (0.40, 1.0, 0.50, 0.10)), (23.2, (1.0, 0.40, 0.80, 0.10)))):
+        _beam(f"Beam_Cone_{k}", (x0 + bx, 23.2, 5.85), 9.6, math.radians(13.0), -0.927, col)
+    # the crowd: a jittered grid on y 11..19, facing the riser (heading ~0)
+    tops = ((0.10, 0.10, 0.12, 1.0), (0.16, 0.12, 0.20, 1.0), (0.52, 0.52, 0.56, 1.0), (0.12, 0.16, 0.20, 1.0),
+            (0.50, 0.12, 0.16, 1.0), (0.20, 0.20, 0.22, 1.0), (0.70, 0.60, 0.20, 1.0))
+    hairs = ((0.10, 0.08, 0.06, 1.0), (0.30, 0.20, 0.12, 1.0), (0.62, 0.50, 0.30, 1.0), (0.06, 0.06, 0.06, 1.0))
+    n = 0
+    for j in range(6):
+        for i in range(10):
+            if rnd.random() < 0.28:
+                continue
+            fx = x0 + 6.0 + i * 1.9 + rnd.uniform(-0.35, 0.35) + (0.9 if j % 2 else 0.0)
+            fy = 11.0 + j * 1.55 + rnd.uniform(-0.3, 0.3)
+            if fx > x0 + 25.0:
+                continue
+            arms = ("up", "up_r", "down", "up", "front", "up_r")[rnd.randrange(6)]
+            dress = (0.12, 0.10, 0.14, 1.0) if rnd.random() < 0.3 else None
+            make_standing_figure(f"Dancer_{n}", fx, fy, heading=rnd.uniform(-0.6, 0.6) + (math.pi if rnd.random() < 0.2 else 0.0),
+                                 h=rnd.uniform(1.62, 1.86), coat=tops[rnd.randrange(len(tops))],
+                                 pants=(0.12, 0.12, 0.16, 1.0), hair=hairs[rnd.randrange(len(hairs))],
+                                 dress=dress, arms=arms)
+            n += 1
+    # the DJ's gooseneck lamp on the table (the tscn's DJ_Lamp practical)
+    make_cyl("DJ_Lamp_Base", (x0 + 16.0, 22.2, 1.71), 0.07, 0.02, (0.12, 0.12, 0.12, 1.0), segments=10)
+    make_rot_box("DJ_Lamp_Neck", (x0 + 16.0, 22.12, 1.86), (0.015, 0.015, 0.30), (0.12, 0.12, 0.12, 1.0), roll=0.5)
+    make_cyl("DJ_Lamp_Head", (x0 + 16.0, 22.02, 2.0), 0.04, 0.07, (1.0, 0.86, 0.60, 1.0), segments=10)
+    make_standing_figure("DJ", x0 + 15.0, 23.15, heading=math.pi, h=1.78, coat=(0.08, 0.08, 0.10, 1.0), arms="front", z0=0.80)
+    # brick courses on the N and S walls (their inner faces at y 23.85 / 0.15)
+    brick = (0.46, 0.30, 0.24, 1.0)
+    for wy, nm in ((23.84, "N"), (0.16, "S")):
+        make_box(f"Brick_Face_{nm}", (x0 + 15.0, wy, H / 2.0), (29.6, 0.01, H), brick)
+        for c in range(26):
+            make_box(f"Brick_Course_{nm}_{c}", (x0 + 15.0, wy + (-0.006 if nm == "N" else 0.006), 0.15 + c * 0.30),
+                     (29.6, 0.004, 0.02), (0.18, 0.12, 0.10, 1.0))
+    # clerestory windows high on the E and W walls: sodium light outside
+    for wx, nm in ((x0 + 0.16, "W"), (x0 + 29.84, "E")):
+        for k in range(5):
+            make_box(f"Clerestory_{nm}_{k}", (wx, 3.0 + k * 4.4, 6.4), (0.02, 2.6, 1.0), (0.62, 0.42, 0.20, 1.0))
+            for m in range(3):
+                make_box(f"Clerestory_Mull_{nm}_{k}_{m}", (wx + (0.01 if nm == "W" else -0.01), 3.0 + k * 4.4 + (m - 1) * 0.87, 6.4),
+                         (0.02, 0.05, 1.0), (0.12, 0.12, 0.14, 1.0))
+    # the steel doors in the S wall, the red EXIT over the W one
+    for k, dx in enumerate((4.0, 26.0)):
+        make_box(f"Steel_Door_{k}", (x0 + dx, 0.18, 1.05), (1.8, 0.04, 2.1), (0.26, 0.28, 0.30, 1.0))
+        make_box(f"Steel_Door_Bar_{k}", (x0 + dx, 0.22, 1.0), (1.4, 0.04, 0.06), (0.50, 0.50, 0.52, 1.0))
+    make_box("Exit_Sign", (x0 + 4.0, 0.22, 2.45), (0.50, 0.08, 0.20), (0.95, 0.12, 0.10, 1.0))
+    # the bar along the W wall: counter, lit back shelf, bottles
+    make_box("Bar_Counter", (x0 + 2.6, 12.0, 0.55), (0.80, 9.0, 1.10), (0.12, 0.10, 0.10, 1.0))
+    make_box("Bar_Top", (x0 + 2.6, 12.0, 1.13), (0.90, 9.1, 0.05), (0.30, 0.24, 0.20, 1.0))
+    make_box("Bar_Back_Shelf_Glow", (x0 + 0.20, 12.0, 1.9), (0.04, 8.0, 0.9), (0.95, 0.66, 0.30, 1.0))
+    for sh in range(2):
+        make_box(f"Bar_Shelf_{sh}", (x0 + 0.35, 12.0, 1.55 + sh * 0.5), (0.26, 8.0, 0.03), (0.20, 0.18, 0.16, 1.0))
+        for b in range(22):
+            make_cyl(f"Bar_Bottle_{sh}_{b}", (x0 + 0.36, 8.3 + b * 0.35, 1.68 + sh * 0.5), 0.035, 0.24,
+                     ((0.30, 0.50, 0.30, 1.0), (0.60, 0.40, 0.20, 1.0), (0.80, 0.80, 0.84, 1.0))[(b + sh) % 3], segments=8)
+    # ducts along the trusses
+    for k in range(2):
+        make_cyl(f"Duct_{k}", (x0 + 9.0 + k * 12.0, 12.0, H - 1.2), 0.40, 23.4, (0.40, 0.40, 0.42, 1.0), axis='Y', segments=14)
 
 
 # ── H. the catwalk between the towers, the lit city below (x 2100..) ────

@@ -369,16 +369,54 @@ spot_angle = 20.0
 [node name="Wash_0__warehouse_floor" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1808.0, 4.0, -14.0)
 light_color = Color(0.4, 1.0, 0.5, 1)
-light_energy = 1.5
+light_energy = 2.6
 shadow_enabled = false
 omni_range = 14.0
 
 [node name="Wash_1__warehouse_floor" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1822.0, 4.0, -14.0)
 light_color = Color(1.0, 0.4, 0.8, 1)
-light_energy = 1.5
+light_energy = 2.6
 shadow_enabled = false
 omni_range = 14.0
+
+; draft 2 (2026-10-30): practicals tied to the new fixtures — the bar's lit
+; back shelf, the EXIT sign, the DJ's gooseneck lamp
+[node name="Bar_Shelf_Glow__warehouse_floor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1801.0, 1.9, -12.0)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 6.5
+
+[node name="Exit_Glow__warehouse_floor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1804.0, 2.45, -0.6)
+light_color = Color(1.0, 0.16, 0.12, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 3.5
+
+[node name="DJ_Lamp__warehouse_floor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1816.0, 1.95, -21.9)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 3.0
+
+; the beams' spill on the N wall's brick and the riser (the cans' bar is the fixture)
+[node name="Back_Wash_G__warehouse_floor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1808.0, 5.0, -19.0)
+light_color = Color(0.4, 1.0, 0.5, 1)
+light_energy = 3.5
+shadow_enabled = false
+omni_range = 15.0
+
+[node name="Back_Wash_P__warehouse_floor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1822.0, 5.0, -19.0)
+light_color = Color(1.0, 0.4, 0.8, 1)
+light_energy = 3.5
+shadow_enabled = false
+omni_range = 15.0
 
 [node name="Fill__warehouse_floor" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 1815, 3, -12)

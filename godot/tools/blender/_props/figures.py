@@ -50,6 +50,20 @@ def make_standing_figure(prefix, x, y, *, heading=0.0, h=1.72, coat=(0.30, 0.32,
             make_rot_box(f"{prefix}_Forearm_{side}", at(fx * 0.7, lean + 0.20 * s, shoulder_z - 0.32 * s), (0.08 * s, 0.30 * s, 0.08 * s), coat, yaw=-heading)
             make_blob(f"{prefix}_Hand_{side}", at(fx * 0.6, lean + 0.34 * s, shoulder_z - 0.33 * s), 0.045 * s, skin, noise=0.05, seed=3, squash=0.9)
         return at(0.0, lean + 0.36 * s, shoulder_z - 0.36 * s)
+    if arms in ("up", "up_r"):
+        # dancing (2026-10-30, the warehouse floor): both arms thrown up in a
+        # V, or the right one up and the left one down
+        a = 0.45
+        for side, sg in (("L", -1.0), ("R", 1.0)):
+            if arms == "up_r" and side == "L":
+                make_rot_box(f"{prefix}_Arm_{side}", at(-0.25 * s, lean, shoulder_z - 0.30 * s), (0.09 * s, 0.10 * s, 0.58 * s), coat, yaw=-heading)
+                make_blob(f"{prefix}_Hand_{side}", at(-0.25 * s, lean, shoulder_z - 0.62 * s), 0.045 * s, skin, noise=0.05, seed=5, squash=0.9)
+                continue
+            make_rot_box(f"{prefix}_Arm_{side}", at(sg * (0.21 * s + 0.29 * s * math.sin(a)), lean, shoulder_z + 0.29 * s * math.cos(a)),
+                         (0.09 * s, 0.10 * s, 0.58 * s), coat, yaw=-heading, pitch=sg * a)
+            make_blob(f"{prefix}_Hand_{side}", at(sg * (0.21 * s + 0.62 * s * math.sin(a)), lean, shoulder_z + 0.62 * s * math.cos(a)),
+                      0.045 * s, skin, noise=0.05, seed=5, squash=0.9)
+        return at(0.0, lean, shoulder_z + 0.62 * s)
     if arms == "folded":
         make_rot_box(f"{prefix}_Arms_Folded", at(0.0, lean + 0.14 * s, shoulder_z - 0.22 * s), (0.40 * s, 0.10 * s, 0.10 * s), coat, yaw=-heading)
         return at(0.0, lean + 0.16 * s, shoulder_z - 0.22 * s)
