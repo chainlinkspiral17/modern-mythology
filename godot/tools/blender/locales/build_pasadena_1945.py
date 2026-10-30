@@ -376,11 +376,15 @@ def build_clinic_2026_10():
     for k in range(6):
         make_box(f"Cl_Eye_Chart_Row_{k}", (CX1 - 0.116, 2.05, 1.80 - k * 0.09), (0.004, 0.30 - k * 0.04, 0.04 - k * 0.005), (0.10, 0.10, 0.10, 1.0))
     for k, (x, y, yaw) in enumerate(((CX1 - 0.95, 3.05, 0.5), (CX1 - 0.72, 3.48, -0.5), (CX1 - 0.49, 3.91, 0.5))):
-        make_rot_box(f"Cl_Screen_Panel_{k}", (x, y, 0.92), (0.03, 0.52, 1.60), (0.86, 0.88, 0.84, 1.0), yaw=yaw)
+        make_rot_box(f"Cl_Screen_Panel_{k}", (x, y, 0.82), (0.03, 0.52, 1.64), (0.86, 0.88, 0.84, 1.0), yaw=yaw)
     # blinds in the window, a clock over the door, a calendar
     for k in range(16):
         make_box(f"Cl_Blind_Slat_Stock_{k}", (CX0 + 0.13, 2.2, 1.0 + k * 0.07), (0.01, 1.36, 0.03), (0.92, 0.90, 0.84, 1.0))
     make_box("Cl_Blind_Head", (CX0 + 0.13, 2.2, 2.16), (0.04, 1.40, 0.05), (0.92, 0.90, 0.84, 1.0))
+    # the ladder tapes the slats hang in, head rail to bottom slat (the slats
+    # read as floating without them, 2026-10-30)
+    for k, dy in enumerate((-0.48, 0.0, 0.48)):
+        make_box(f"Cl_Blind_Tape_{k}", (CX0 + 0.1375, 2.2 + dy, 1.56), (0.005, 0.012, 1.15), (0.88, 0.86, 0.80, 1.0))
     make_cyl("Cl_Clock", (CX0 + 1.2, 0.12, 2.42), 0.16, 0.04, (0.36, 0.26, 0.18, 1.0), axis='Y', segments=18)
     make_cyl("Cl_Clock_Face", (CX0 + 1.2, 0.142, 2.42), 0.13, 0.004, (0.94, 0.92, 0.84, 1.0), axis='Y', segments=18)
     make_box("Cl_Calendar", (CX0 + 0.11, 3.45, 1.70), (0.01, 0.30, 0.44), (0.92, 0.90, 0.82, 1.0))

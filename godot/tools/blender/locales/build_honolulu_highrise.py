@@ -84,17 +84,17 @@ def build_lobby():
         make_box(f"Elevator_{k}_Door", (ex, 15.97, 1.2), (1.2, 0.04, 2.4), BRASS)
         make_box(f"Elevator_{k}_Seam", (ex, 15.94, 1.2), (0.01, 0.02, 2.4), (0.52, 0.42, 0.20, 1.0))
         make_box(f"Elevator_{k}_Frame", (ex, 15.98, 1.25), (1.5, 0.03, 2.6), (0.30, 0.26, 0.20, 1.0))
-        make_cyl(f"Elevator_{k}_Dial", (ex, 15.95, 2.85), 0.22, 0.03, BRASS, segments=14, axis='Y')
-        make_box(f"Elevator_{k}_Button", (ex + 0.95, 15.96, 1.1), (0.10, 0.03, 0.20), BRASS)
+        make_cyl(f"Elevator_{k}_Dial", (ex, 15.985, 2.85), 0.22, 0.03, BRASS, segments=14, axis='Y')
+        make_box(f"Elevator_{k}_Button", (ex + 0.95, 15.985, 1.1), (0.10, 0.03, 0.20), BRASS)
     # the security desk, the guard's stool, the directory board
     make_box("Security_Desk", (0.0, 11.0, 0.55), (3.2, 0.8, 1.1), (0.40, 0.28, 0.20, 1.0))
     make_box("Security_Desk_Top", (0.0, 11.0, 1.12), (3.4, 0.95, 0.05), (0.20, 0.18, 0.16, 1.0))
-    make_box("Security_Desk_Monitor", (0.6, 11.2, 1.32), (0.36, 0.30, 0.30), (0.80, 0.78, 0.72, 1.0))
+    make_box("Security_Desk_Monitor", (0.6, 11.2, 1.295), (0.36, 0.30, 0.30), (0.80, 0.78, 0.72, 1.0))
     make_box("Security_Desk_Logbook", (-0.5, 10.8, 1.16), (0.40, 0.28, 0.03), (0.16, 0.20, 0.36, 1.0))
     make_stool("Security_Stool", 0.3, 11.8, h=0.75)
-    make_box("Directory_Board", (-7.3, 15.95, 1.8), (1.6, 0.06, 1.6), (0.10, 0.10, 0.12, 1.0))
+    make_box("Directory_Board", (-7.3, 15.97, 1.8), (1.6, 0.06, 1.6), (0.10, 0.10, 0.12, 1.0))
     for k in range(10):
-        make_box(f"Directory_Board_Line_{k}", (-7.3, 15.91, 2.4 - k * 0.13), (1.2, 0.01, 0.03), (0.94, 0.94, 0.90, 1.0))
+        make_box(f"Directory_Board_Line_{k}", (-7.3, 15.935, 2.4 - k * 0.13), (1.2, 0.01, 0.03), (0.94, 0.94, 0.90, 1.0))
     # potted palms and a bench by the glass
     for k, (px, py) in enumerate(((-7.6, 1.4), (7.6, 1.4), (-6.0, 14.8), (6.0, 14.8))):
         make_cyl(f"Lobby_Planter_{k}", (px, py, 0.35), 0.38, 0.7, (0.30, 0.26, 0.22, 1.0), segments=14)
@@ -122,7 +122,7 @@ def build_street_front():
         make_box(f"Front_Glass_{k}", (x, 0.0, LH / 2.0), (1.9, 0.02, LH - 0.1), GLASS)
     for s in (-1, 1):
         make_box(f"Front_Door_{s:+d}_Glass", (s * 0.5, 0.0, 1.35), (0.92, 0.02, 2.6), GLASS)
-        make_box(f"Front_Door_{s:+d}_Pull", (s * 0.12, -0.06, 1.1), (0.04, 0.04, 0.9), BRASS)
+        make_box(f"Front_Door_{s:+d}_Pull", (s * 0.12, -0.03, 1.1), (0.04, 0.04, 0.9), BRASS)
     make_box("Front_Door_Transom_Glass", (0.0, 0.0, 4.15), (1.9, 0.02, 2.6), GLASS)
     # the street: sidewalk, kerb, asphalt, palms, the towers across
     make_box("Street_Sidewalk", (0.0, -3.0, -0.04), (60.0, 6.0, 0.08), (0.74, 0.72, 0.68, 1.0))
@@ -145,7 +145,7 @@ def build_street_front():
         make_box(f"Tower_Across_{k}", (bx, -28.0, h / 2.0), (11.0, 12.0, h),
                  ((0.84, 0.82, 0.76, 1.0), (0.70, 0.76, 0.80, 1.0), (0.92, 0.90, 0.86, 1.0))[k % 3])
         for f in range(int(h / 3.5)):
-            make_box(f"Tower_Across_{k}_Band_{f}", (bx, -21.95, 2.0 + f * 3.5), (11.0, 0.05, 1.2), (0.36, 0.46, 0.52, 1.0))
+            make_box(f"Tower_Across_{k}_Band_{f}", (bx, -21.975, 2.0 + f * 3.5), (11.0, 0.05, 1.2), (0.36, 0.46, 0.52, 1.0))
     for k, (cx, col) in enumerate(((-12.0, (0.86, 0.86, 0.84, 1.0)), (6.0, (0.60, 0.12, 0.14, 1.0)))):
         make_box(f"Street_Car_{k}_Body", (cx, -9.0 if k == 0 else -13.0, 0.62), (4.4, 1.75, 0.75), col)
         make_box(f"Street_Car_{k}_Cabin", (cx - 0.2, -9.0 if k == 0 else -13.0, 1.22), (2.4, 1.6, 0.5), (0.30, 0.36, 0.40, 1.0))
@@ -155,7 +155,7 @@ def _shopfront(name, wall_x, y0, y1, sign_col, inside_col, room_sign):
     """A glass shopfront in the lobby's side wall: sign band, glass, a
     shallow lit interior behind it (the shop is not entered)."""
     yc, w = (y0 + y1) / 2.0, y1 - y0
-    make_box(f"{name}_Sign", (wall_x + room_sign * 0.12, yc, 3.2), (0.10, w - 0.2, 0.6), sign_col)
+    make_box(f"{name}_Sign", (wall_x + room_sign * 0.05, yc, 3.2), (0.10, w - 0.2, 0.6), sign_col)
     make_box(f"{name}_Glass", (wall_x, yc, 1.4), (0.02, w - 0.2, 2.6), GLASS)
     make_box(f"{name}_Frame_T", (wall_x, yc, 2.75), (0.08, w, 0.10), DARK)
     for s in (-1, 1):
@@ -175,12 +175,12 @@ def build_shops():
                             openings=[(5.0, 1.4, 3.8, 2.8), (10.5, 1.4, 4.4, 2.8)], palette={"wall": WALL})
     _shopfront("Photo_Parlour", -9.0, 3.1, 6.9, (0.94, 0.80, 0.26, 1.0), (0.80, 0.74, 0.62, 1.0), +1)
     for k in range(4):
-        make_box(f"Photo_Parlour_Print_{k}", (-10.9, 3.7 + k * 0.85, 1.8), (0.03, 0.6, 0.8), (0.40 + k * 0.1, 0.60, 0.80, 1.0))
-    make_box("Photo_Parlour_Backdrop", (-10.6, 5.0, 1.3), (0.05, 1.8, 2.4), (0.30, 0.56, 0.70, 1.0))
+        make_box(f"Photo_Parlour_Print_{k}", (-10.935, 3.7 + k * 0.85, 1.8), (0.03, 0.6, 0.8), (0.40 + k * 0.1, 0.60, 0.80, 1.0))
+    make_box("Photo_Parlour_Backdrop", (-10.6, 5.0, 1.22), (0.05, 1.8, 2.4), (0.30, 0.56, 0.70, 1.0))
     make_box("Photo_Parlour_Grass_Skirt_Rack", (-9.8, 6.3, 0.8), (0.5, 0.5, 1.6), (0.70, 0.62, 0.36, 1.0))
     _shopfront("Travel_Agency", -9.0, 8.3, 12.7, (0.20, 0.50, 0.70, 1.0), (0.86, 0.86, 0.82, 1.0), +1)
     for k in range(4):
-        make_box(f"Travel_Agency_Poster_{k}", (-10.9, 9.0 + k * 1.0, 1.9), (0.03, 0.7, 1.0), (0.20, 0.60 + k * 0.08, 0.76, 1.0))
+        make_box(f"Travel_Agency_Poster_{k}", (-10.935, 9.0 + k * 1.0, 1.9), (0.03, 0.7, 1.0), (0.20, 0.60 + k * 0.08, 0.76, 1.0))
     make_box("Travel_Agency_Desk", (-10.0, 10.5, 0.4), (0.7, 2.0, 0.8), (0.50, 0.38, 0.26, 1.0))
     make_box("Travel_Agency_Brochure_Rack", (-9.4, 12.2, 0.8), (0.3, 0.5, 1.6), (0.80, 0.80, 0.82, 1.0))
     # east wall: cut for the suit shop, the game store's front, the dry cleaner
@@ -190,12 +190,13 @@ def build_shops():
     _shopfront("Suit_Shop", 9.0, 2.1, 5.3, (0.16, 0.16, 0.20, 1.0), (0.66, 0.60, 0.52, 1.0), -1)
     for k in range(3):
         make_box(f"Suit_Shop_Suit_{k}", (10.3, 2.8 + k * 0.9, 1.3), (0.30, 0.50, 1.1), (0.18 + k * 0.05, 0.18, 0.22, 1.0))
+    make_box("Suit_Shop_Rail", (10.3, 3.7, 1.88), (0.04, 3.12, 0.04), (0.70, 0.70, 0.72, 1.0))  # the suits hang from it
     make_box("Suit_Shop_Luggage", (9.7, 4.6, 0.35), (0.5, 0.7, 0.7), (0.42, 0.26, 0.14, 1.0))
     make_box("Suit_Shop_Briefcase", (9.7, 4.6, 0.82), (0.45, 0.10, 0.34), (0.30, 0.18, 0.10, 1.0))
     _shopfront("Dry_Cleaner", 9.0, 10.7, 13.9, (0.86, 0.90, 0.94, 1.0), (0.86, 0.88, 0.90, 1.0), -1)
     for k in range(8):
         make_box(f"Dry_Cleaner_Bag_{k}", (10.6, 11.0 + k * 0.36, 1.7), (0.10, 0.30, 1.1), (0.92, 0.92, 0.94, 1.0))
-    make_box("Dry_Cleaner_Rail", (10.6, 12.3, 2.3), (0.04, 3.0, 0.04), (0.70, 0.70, 0.72, 1.0))
+    make_box("Dry_Cleaner_Rail", (10.6, 12.3, 2.27), (0.04, 3.12, 0.04), (0.70, 0.70, 0.72, 1.0))
 
 
 def build_store():
@@ -205,12 +206,12 @@ def build_store():
     # the front on the lobby's east wall (x 9): display window, door, window
     make_box("Game_Store_Sign", (8.86, 8.0, 3.3), (0.16, 3.8, 0.6), SIGN_LIT)
     make_box("Game_Store_Sign_Letters", (8.77, 8.0, 3.3), (0.01, 3.2, 0.32), (0.86, 0.16, 0.14, 1.0))
-    make_box("Game_Store_Sign_Box", (8.95, 8.0, 3.3), (0.06, 3.9, 0.7), (0.24, 0.24, 0.26, 1.0))
+    make_box("Game_Store_Sign_Box", (8.97, 8.0, 3.3), (0.06, 3.9, 0.7), (0.24, 0.24, 0.26, 1.0))
     make_box("Game_Store_Window_Glass", (9.0, 6.7, 1.45), (0.02, 1.8, 2.3), GLASS)
     make_box("Game_Store_Window_2_Glass", (9.0, 9.55, 1.45), (0.02, 1.2, 2.3), GLASS)
-    make_box("Game_Store_Door_Glass", (9.0, 8.4, 1.25), (0.02, 1.0, 2.3), GLASS)
+    make_box("Game_Store_Door_Glass", (9.0, 8.4, 1.20), (0.02, 1.0, 2.4), GLASS)
     make_box("Game_Store_Door_Frame", (9.0, 8.4, 2.45), (0.08, 1.1, 0.10), DARK)
-    make_box("Game_Store_Door_Pull", (8.94, 8.0, 1.1), (0.04, 0.04, 0.4), BRASS)
+    make_box("Game_Store_Door_Pull", (8.97, 8.0, 1.1), (0.04, 0.04, 0.4), BRASS)
     make_box("Game_Store_Door_Hours", (8.98, 8.7, 1.5), (0.01, 0.24, 0.30), (0.96, 0.96, 0.94, 1.0))
     # the room
     make_box("Game_Store_Carpet", ((SX0 + SX1) / 2, (SY0 + SY1) / 2, 0.01), (SX1 - SX0, SY1 - SY0, 0.02), CARPET)
@@ -227,10 +228,10 @@ def build_store():
     # the window display: a stepped riser inside the front window, Final Cut on top
     for k in range(3):
         make_box(f"Window_Display_Riser_{k}", (9.45 + k * 0.30, 6.7, 0.20 + k * 0.20), (0.30, 1.6, 0.40 + k * 0.40), (0.62, 0.66, 0.76, 1.0))
-    make_box("Window_Display_Final_Cut", (9.75, 6.7, 1.22), (0.08, 0.26, 0.34), (0.82, 0.30, 0.16, 1.0))
+    make_box("Window_Display_Final_Cut", (10.05, 6.7, 1.37), (0.08, 0.26, 0.34), (0.82, 0.30, 0.16, 1.0))
     r = _rng(2002)
     for k in range(6):
-        make_box(f"Window_Display_Game_{k}", (9.45 + (k % 3) * 0.30, 6.2 + (k // 3) * 0.9, 0.52 + (k % 3) * 0.20),
+        make_box(f"Window_Display_Game_{k}", (9.45 + (k % 3) * 0.30, 6.2 + (k // 3) * 0.9, 0.555 + (k % 3) * 0.40),  # on each step
                  (0.07, 0.24, 0.31), (0.2 + r() * 0.7, 0.2 + r() * 0.6, 0.2 + r() * 0.7, 1.0))
     # shelving down both side walls and across the back: rows of big boxes
     def shelves(prefix, x0, x1, y, face):
@@ -259,13 +260,13 @@ def build_store():
     for k in range(10):
         make_box(f"Used_Bin_Game_Stock_{k}", (11.3 + (k % 5) * 0.24, 8.8 + (k // 5) * 0.36, 0.98),
                  (0.07, 0.24, 0.31), (0.3 + r() * 0.5, 0.3 + r() * 0.4, 0.3 + r() * 0.5, 1.0))
-    make_box("Used_Bin_Card", (11.8, 8.62, 1.05), (0.40, 0.01, 0.20), (0.96, 0.92, 0.40, 1.0))
+    make_box("Used_Bin_Card", (11.8, 8.64, 0.85), (0.40, 0.01, 0.20), (0.96, 0.92, 0.40, 1.0))
     # the counter: a glass display case under the register
     cx, cy = 13.2, 6.7
     make_box("Display_Case_Base", (cx, cy, 0.18), (2.2, 0.62, 0.36), (0.20, 0.20, 0.22, 1.0))
     make_box("Display_Case_Glass_Front", (cx, cy - 0.30, 0.66), (2.2, 0.02, 0.60), GLASS)
     make_box("Display_Case_Glass_Top", (cx, cy, 0.97), (2.2, 0.62, 0.02), GLASS)
-    make_box("Display_Case_Shelf", (cx, cy, 0.62), (2.1, 0.55, 0.02), (0.86, 0.86, 0.84, 1.0))
+    make_box("Display_Case_Shelf", (cx, cy, 0.62), (2.17, 0.55, 0.02), (0.86, 0.86, 0.84, 1.0))
     for s in (-1, 1):
         make_box(f"Display_Case_End_{s:+d}", (cx + s * 1.1, cy, 0.66), (0.03, 0.62, 0.62), (0.70, 0.70, 0.72, 1.0))
     # WHAT LIES BEYOND: the one box face-up in the case, regal cloudy blue
@@ -276,7 +277,7 @@ def build_store():
     # the register on the counter, the imprinter beside it
     make_box("Register_Body", (cx + 0.5, cy + 0.05, 1.10), (0.42, 0.40, 0.24), (0.80, 0.78, 0.72, 1.0))
     make_box("Register_Keys", (cx + 0.5, cy - 0.10, 1.23), (0.36, 0.16, 0.03), (0.30, 0.30, 0.32, 1.0))
-    make_box("Register_Display", (cx + 0.5, cy + 0.20, 1.32), (0.24, 0.06, 0.12), (0.20, 0.30, 0.24, 1.0))
+    make_box("Register_Display", (cx + 0.5, cy + 0.20, 1.28), (0.24, 0.06, 0.12), (0.20, 0.30, 0.24, 1.0))
     make_box("Register_Drawer", (cx + 0.5, cy + 0.05, 0.99), (0.40, 0.38, 0.04), (0.66, 0.64, 0.58, 1.0))
     make_box("Imprinter_Base", (cx - 0.25, cy + 0.05, 1.00), (0.34, 0.20, 0.04), (0.20, 0.20, 0.22, 1.0))
     make_box("Imprinter_Slider", (cx - 0.25, cy + 0.05, 1.05), (0.10, 0.22, 0.05), (0.62, 0.62, 0.64, 1.0))

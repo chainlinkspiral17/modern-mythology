@@ -109,6 +109,11 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
                 (nose - 1.10, 0.96), (nose - 1.70, 1.42), (nose - 1.95, 1.46), (tail + 1.35, 1.46),
                 (tail + 1.15, 1.42), (tail + 0.55, 1.02), (tail + 0.10, 0.98)]
     prof_abs = [(u, z0 + z) for (u, z) in prof]
+    if along == "-Y":
+        # the prism lays its profile along +y whatever P does: mirror it so the
+        # hood is at the nose (2026-10-30: Judgement Day on the turn had its
+        # body facing north and its grille and headlights hanging off the tail)
+        prof_abs = [(-u, z) for (u, z) in prof_abs]
     # prism polygon plane for axis across the car: along X → extrude on Y, polygon (u=x, v=z)
     make_prism(f"{prefix}_Body", P(0.0, 0.0, 0.0), prof_abs, 2 * hw - 0.04, col, axis=side_axis)
     make_chamfer_box(f"{prefix}_Pan", P(0.0, 0.0, z0 + 0.36), S(L - 0.40, 2 * hw - 0.20, 0.12), DARK, chamfer=0.03)

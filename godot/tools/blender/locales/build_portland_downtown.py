@@ -69,7 +69,7 @@ def _facade(name, x0, x1, y, h, col, storefront_col, sign_col=None, lit=True):
     make_box(f"{name}_Storefront_Glass", (xc, y - 0.02, 1.6), (w - 1.2, 0.04, 2.6), storefront_col)
     make_box(f"{name}_Storefront_Kick", (xc, y - 0.03, 0.2), (w - 1.0, 0.06, 0.4), (0.20, 0.20, 0.22, 1.0))
     if sign_col:
-        make_box(f"{name}_Sign", (xc, y - 0.10, 3.3), (w - 1.6, 0.16, 0.7), sign_col)
+        make_box(f"{name}_Sign", (xc, y - 0.08, 3.3), (w - 1.6, 0.16, 0.7), sign_col)  # back on the mass, not 2 cm off it
     floors = int((h - 4.2) / 3.2)
     for f in range(floors):
         for k in range(int(w / 2.2)):
@@ -99,7 +99,7 @@ def build_street():
         make_box(f"Bookstore_Window_Books_{k}", (-26.0 + k * 3.8, 15.9, 1.0), (2.6, 0.30, 0.9), ((0.4, 0.3, 0.2, 1.0), (0.2, 0.3, 0.5, 1.0), (0.6, 0.2, 0.2, 1.0))[k % 3])
     _facade("Record_Store", -2.0, 8.0, 16.0, 9.6, BRICK, (0.92, 0.76, 0.50, 1.0), sign_col=(0.12, 0.12, 0.14, 1.0))
     for k in range(8):
-        make_box(f"Record_Store_LP_{k}", (-1.0 + k * 1.1, 15.9, 1.7 + (k % 2) * 0.4), (0.31, 0.02, 0.31),
+        make_box(f"Record_Store_LP_{k}", (-1.0 + k * 1.1, 15.95, 1.7 + (k % 2) * 0.4), (0.31, 0.02, 0.31),  # taped to the glass
                  ((0.86, 0.30, 0.20, 1.0), (0.20, 0.30, 0.70, 1.0), (0.94, 0.86, 0.30, 1.0), (0.10, 0.10, 0.10, 1.0))[k % 4])
     _facade("Coffee_Shop", 10.0, 18.0, 16.0, 9.6, BRICK_DK, (1.0, 0.82, 0.52, 1.0), sign_col=(0.18, 0.34, 0.26, 1.0))
     make_box("Coffee_Shop_Awning", (14.0, 15.2, 3.0), (7.6, 1.6, 0.2), (0.18, 0.34, 0.26, 1.0))
@@ -140,13 +140,15 @@ def build_plaza():
     r = _rng(26)
     for k in range(34):
         px, py = 46.0 + r() * 10.0, 2.0 + r() * 8.0
-        make_blob(f"Pigeon_{k}", (px, py, 0.12), 0.10, ((0.46, 0.48, 0.54, 1.0), (0.36, 0.38, 0.42, 1.0), (0.56, 0.56, 0.58, 1.0))[k % 3],
+        make_blob(f"Pigeon_{k}", (px, py, 0.105), 0.10, ((0.46, 0.48, 0.54, 1.0), (0.36, 0.38, 0.42, 1.0), (0.56, 0.56, 0.58, 1.0))[k % 3],
                   noise=0.15, seed=k, squash=0.75)
-        make_blob(f"Pigeon_{k}_Head", (px + 0.08, py, 0.22), 0.045, (0.30, 0.34, 0.40, 1.0), noise=0.05, seed=k + 50, squash=1.0)
+        make_blob(f"Pigeon_{k}_Head", (px + 0.08, py, 0.205), 0.045, (0.30, 0.34, 0.40, 1.0), noise=0.05, seed=k + 50, squash=1.0)
     for k in range(4):
         make_cyl(f"Plaza_Lamp_{k}_Pole", (44.0 + k * 6.0, 12.0, 2.2), 0.08, 4.4, (0.18, 0.20, 0.18, 1.0), segments=8)
         make_blob(f"Plaza_Lamp_{k}_Globe", (44.0 + k * 6.0, 12.0, 4.5), 0.26, (1.0, 0.92, 0.72, 1.0), noise=0.02, seed=k + 9, squash=1.0)
     make_box("Plaza_Bench", (50.0, -1.5, 0.45), (2.4, 0.5, 0.10), (0.40, 0.30, 0.20, 1.0))
+    for s in (-1, 1):
+        make_box(f"Plaza_Bench_Leg_{s:+d}", (50.0 + s * 0.95, -1.5, 0.215), (0.08, 0.42, 0.37), (0.20, 0.20, 0.22, 1.0))
     make_box("Plaza_Building_E", (72.0, 7.0, 10.0), (12.0, 30.0, 20.0), (0.76, 0.72, 0.64, 1.0))
 
 

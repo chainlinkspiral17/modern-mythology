@@ -47,6 +47,7 @@ DELIBERATE = {
     ("cedar_tower", "Reception_Desk"): "a reception desk faces the doors",
     ("cosmic_comics_back_office", "Milk_Crate"): "Sam's seat, opposite the desk",
     ("nexcorp_gas_go", "Locker_Bench"): "a locker-room bench between the rows",
+    ("honolulu_highrise", "Security_Desk"): "the tower lobby's security desk, an island facing the street doors",
     ("houston_office", "Office_PartN"): "the manager office's L — meets Office_PartE",
     ("houston_office", "Office_PartE"): "the manager office's L — meets Office_PartN",
     ("school_newspaper", "Radiator"): "under the E windows, its back on the 1.0 m spandrel (a wall the wall rule is too short to see)",

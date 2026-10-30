@@ -69,7 +69,8 @@ def _rng(seed):
 def _figure(name, x, y, z, coat, h=1.0):
     make_box(f"{name}_L", (x, y, z + 0.38 * h), (0.28, 0.22, 0.76 * h), (0.18, 0.18, 0.22, 1.0))
     make_box(f"{name}_T", (x, y, z + 1.06 * h), (0.42, 0.26, 0.60 * h), coat)
-    make_cyl(f"{name}_H", (x, y, z + 1.50 * h), 0.11, 0.24, (0.80, 0.64, 0.52, 1.0), segments=8)
+    make_cyl(f"{name}_H", (x, y, z + 1.36 * h + 0.12), 0.11, 0.24,  # on the torso, not 2 cm over it
+             (0.80, 0.64, 0.52, 1.0), segments=8)
 
 
 # ── the park: Buffalo Bayou by day ─────────────────────────────────────
@@ -153,8 +154,8 @@ def build_river():
     make_box("StripMall", (RX + 36.0, 25.0, 2.9), (14.0, 46.0, 4.8), (0.66, 0.60, 0.52, 1.0))
     make_box("StripMall_Canopy", (RX + 28.0, 25.0, 4.1), (2.4, 46.0, 0.24), (0.30, 0.28, 0.30, 1.0))
     for k in range(5):
-        make_box(f"StripMall_Window_{k}", (RX + 28.95, 7.0 + k * 9.0, 1.9), (0.04, 6.4, 2.2), (0.96, 0.86, 0.60, 1.0))
-        make_box(f"StripMall_Sign_{k}", (RX + 28.92, 7.0 + k * 9.0, 3.6), (0.04, 5.0, 0.6), ((0.86, 0.30, 0.30, 1.0), (0.30, 0.60, 0.86, 1.0), (0.90, 0.80, 0.30, 1.0), (0.40, 0.80, 0.50, 1.0), (0.80, 0.50, 0.80, 1.0))[k])
+        make_box(f"StripMall_Window_{k}", (RX + 28.98, 7.0 + k * 9.0, 1.9), (0.04, 6.4, 2.2), (0.96, 0.86, 0.60, 1.0))
+        make_box(f"StripMall_Sign_{k}", (RX + 28.98, 7.0 + k * 9.0, 3.6), (0.04, 5.0, 0.6), ((0.86, 0.30, 0.30, 1.0), (0.30, 0.60, 0.86, 1.0), (0.90, 0.80, 0.30, 1.0), (0.40, 0.80, 0.50, 1.0), (0.80, 0.50, 0.80, 1.0))[k])
     # the figure on the bank, hailing a cab
     _figure("Hitchhiker", RX + 20.8, 52.0, 0.5, (0.36, 0.36, 0.40, 1.0))
     make_rot_box("Hitchhiker_Arm", (RX + 20.6, 52.0, 2.1), (0.10, 0.10, 0.70), (0.36, 0.36, 0.40, 1.0), pitch=-0.5)
@@ -163,10 +164,14 @@ def build_river():
     make_box("Diamond_Grass", (dx, dy, 0.52), (46.0, 46.0, 0.04), (0.28, 0.46, 0.24, 1.0))
     make_rot_box("Diamond_Infield", (dx - 10.0, dy, 0.545), (17.0, 17.0, 0.02), (0.56, 0.40, 0.28, 1.0), yaw=math.pi / 4)
     make_rot_box("Diamond_InfieldGrass", (dx - 10.0, dy, 0.556), (11.0, 11.0, 0.02), (0.30, 0.50, 0.26, 1.0), yaw=math.pi / 4)
-    for k in range(8):                   # (the ninth panel ran through the strip mall)
-        a = -math.pi / 2 + k * math.pi / 8
-        make_box(f"Diamond_Fence_{k}", (dx - 10.0 + 30.0 * math.cos(a) * 0.0 + 26.0 * math.cos(a + math.pi), dy + 26.0 * math.sin(a + math.pi), 1.3),
-                 (0.06, 9.0, 1.6), (0.46, 0.48, 0.48, 1.0))
+    # the outfield fence: an arc 25 m out from home plate (the infield's east
+    # corner), each panel turned to the arc and standing on the grass
+    # (2026-10-30: eight panels all along Y, five of them out in the river)
+    hx = dx + 2.0
+    for k in range(8):
+        th = math.radians(-49.0 + k * 14.0)
+        make_rot_box(f"Diamond_Fence_{k}", (hx - 25.0 * math.cos(th), dy + 25.0 * math.sin(th), 1.34),
+                     (0.06, 6.0, 1.6), (0.46, 0.48, 0.48, 1.0), yaw=-th)
     for k, (lx, ly) in enumerate(((dx - 24.0, dy - 20.0), (dx - 24.0, dy + 20.0), (dx + 20.0, dy - 22.0), (dx + 20.0, dy + 22.0))):
         make_cyl(f"Diamond_Pole_{k}", (lx, ly, 7.5), 0.18, 14.0, (0.36, 0.36, 0.38, 1.0), segments=8)
         make_box(f"Diamond_Lamps_{k}", (lx, ly, 14.6), (1.2, 1.2, 0.8), (1.0, 0.98, 0.90, 1.0))
@@ -189,7 +194,7 @@ def build_river():
     make_box("Drugstore", (RX, sy + 1.0, 2.6), (20.0, 12.0, 4.0), (0.88, 0.88, 0.86, 1.0))
     for k in range(5):
         make_box(f"Drugstore_Window_{k}", (RX - 8.0 + k * 4.0, sy - 5.02, 2.0), (3.4, 0.04, 2.2), (1.0, 0.98, 0.90, 1.0))
-    make_box("Drugstore_Sign", (RX, sy - 5.06, 4.0), (10.0, 0.06, 0.9), (0.86, 0.16, 0.18, 1.0))
+    make_box("Drugstore_Sign", (RX, sy - 5.03, 4.0), (10.0, 0.06, 0.9), (0.86, 0.16, 0.18, 1.0))
     make_box("Drugstore_Roof", (RX, sy + 1.0, 4.7), (20.6, 12.6, 0.2), (0.30, 0.30, 0.32, 1.0))
     # "It's also a gas station: pumps outside on the water, a methane torch
     # burning on a pole, a bucket of filthy window-wash fluid by the door."
@@ -197,8 +202,9 @@ def build_river():
     for k, px in enumerate((RX - 4.0, RX + 4.0)):
         make_box(f"Drugstore_Pump_{k}", (px, sy - 10.0, 1.3), (0.7, 0.5, 1.4), (0.86, 0.86, 0.84, 1.0))
         make_box(f"Drugstore_Pump_{k}_Face", (px, sy - 10.26, 1.5), (0.5, 0.02, 0.4), (0.30, 0.60, 0.40, 1.0))
-    make_cyl("Methane_Torch_Pole", (RX + 9.0, sy - 11.0, 4.0), 0.10, 7.4, (0.30, 0.30, 0.32, 1.0), segments=6)
-    make_taper_cyl("Methane_Torch_Flame", (RX + 9.0, sy - 11.0, 8.2), 0.30, 0.02, 1.2, (1.0, 0.62, 0.20, 1.0), segments=7)
+    # the pole stands on the apron's corner (it stood in the river off it, 2026-10-30)
+    make_cyl("Methane_Torch_Pole", (RX + 7.6, sy - 12.4, 4.3), 0.10, 7.4, (0.30, 0.30, 0.32, 1.0), segments=6)
+    make_taper_cyl("Methane_Torch_Flame", (RX + 7.6, sy - 12.4, 8.6), 0.30, 0.02, 1.2, (1.0, 0.62, 0.20, 1.0), segments=7)
     make_cyl("Washfluid_Bucket", (RX - 2.2, sy - 5.6, 0.78), 0.18, 0.36, (0.22, 0.34, 0.30, 1.0), segments=10)
     # Judgement Day riding low, a boat now — and again, on the turn, heading south
     for tag, jy, heading in (("Jd", 0.0, "N"), ("JdTurn", -310.0, "S")):
@@ -226,7 +232,7 @@ def build_river():
         y = -300.0 + R * math.cos(el) * math.sin(az)
         z = R * math.sin(el)
         s = rnd.choice((4.0, 5.5, 7.0, 9.0))
-        make_box(f"Turn_Star_Stock_{k}", (x, y, z), (s, s, s), (1.0, 1.0, 1.0, 1.0))
+        make_box(f"Turn_Sky_Star_Stock_{k}", (x, y, z), (s, s, s), (1.0, 1.0, 1.0, 1.0))  # Sky_: in the sky by design
     for k in range(28):
         sx = RX + rnd.uniform(-9.0, 9.0)
         sy = -312.0 - rnd.uniform(0.0, 70.0)
