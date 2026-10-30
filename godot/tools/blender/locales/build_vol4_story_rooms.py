@@ -110,7 +110,8 @@ def build_garage():
     for i in range(1, 5):
         for j in range(1, 3):
             x, y = i * 8.0, j * 8.0
-            make_box(f"Honeydew_Column_{i}_{j}", (x, y, H / 2.0), (0.50, 0.50, H), HD)
+            # (round 4) the column rises from the top of its kick band
+            make_box(f"Honeydew_Column_{i}_{j}", (x, y, (H + 0.60) / 2.0), (0.50, 0.50, H - 0.60), HD)
             make_box(f"Garage_Column_Kick_{i}_{j}", (x, y, 0.30), (0.54, 0.54, 0.60), KICK)
             # the level painted on the column: a big "8" (three bars, two
             # spines — the same read from any side; a "3" came out mirrored)
@@ -119,8 +120,10 @@ def build_garage():
             for s in (-1, 1):
                 make_box(f"Garage_Column_Level_{i}_{j}_Spine_{s:+d}", (x + s * 0.095, y - 0.256, 1.45), (0.05, 0.012, 0.65), (0.20, 0.30, 0.22, 1.0))
     # tee-beams across the ceiling every 2.5 m; twin-tube fixtures between
-    for k in range(16):
-        make_box(f"Garage_Tee_Beam_Stock_{k}", (1.25 + k * 2.5, 12.0, H - 0.20), (0.30, 24.0, 0.40), HD_CEIL)
+    # (round 4) every 2 m on the odd metres, so none runs through a column
+    # (the columns stand on the 8 m grid)
+    for k in range(20):
+        make_box(f"Garage_Tee_Beam_Stock_{k}", (1.0 + k * 2.0, 12.0, H - 0.20), (0.30, 23.7, 0.40), HD_CEIL)
     for i in range(5):
         for j in range(3):
             fx, fy = 4.0 + i * 8.0 + 0.0, 4.0 + j * 8.0
@@ -281,7 +284,7 @@ def build_store_2026_10():
     for ix in range(24):
         for iy in range(9):
             x, y = 120.9 + ix * 1.22, 0.9 + iy * 1.22
-            if 132.6 < x < 135.4 and y > 3.6:
+            if 132.6 < x < 135.4 and y > 2.9:
                 continue                         # open over the escalator
             r_ = rnd.random()
             if r_ < 0.16:
@@ -293,17 +296,20 @@ def build_store_2026_10():
     for ix in range(25):
         gx_ = 120.29 + ix * 1.22
         if 132.6 < gx_ < 135.4:
-            make_box(f"Ceiling_Grid_Stock_X_{ix}", (gx_, 1.95, Hc - 0.01), (0.03, 3.3, 0.03), grid)   # stops at the escalator's well
+            make_box(f"Ceiling_Grid_Stock_X_{ix}", (gx_, 1.45, Hc - 0.01), (0.03, 2.3, 0.03), grid)   # stops at the escalator's well
             continue
         make_box(f"Ceiling_Grid_Stock_X_{ix}", (gx_, 6.0, Hc - 0.01), (0.03, 11.0, 0.03), grid)
     for iy in range(10):
         gy_ = 0.29 + iy * 1.22
-        if gy_ > 3.6:
+        if gy_ > 2.6:
             make_box(f"Ceiling_Grid_Stock_Y_{iy}_W", (126.3, gy_, Hc - 0.01), (12.6, 0.03, 0.03), grid)
             make_box(f"Ceiling_Grid_Stock_Y_{iy}_E", (142.7, gy_, Hc - 0.01), (14.6, 0.03, 0.03), grid)
             continue
         make_box(f"Ceiling_Grid_Stock_Y_{iy}", (135.0, gy_, Hc - 0.01), (29.6, 0.03, 0.03), grid)
-    make_box("Ceiling_Plenum_Dark", (135.0, 6.0, Hc + 0.6), (29.6, 11.6, 0.02), (0.12, 0.12, 0.12, 1.0))
+    # (round 4) the plenum, the grid and the fascia stop at the escalator's well
+    make_box("Ceiling_Plenum_Dark_W", (126.4, 6.0, Hc + 0.6), (12.4, 11.6, 0.02), (0.12, 0.12, 0.12, 1.0))
+    make_box("Ceiling_Plenum_Dark_E", (142.6, 6.0, Hc + 0.6), (14.4, 11.6, 0.02), (0.12, 0.12, 0.12, 1.0))
+    make_box("Ceiling_Plenum_Dark_S", (134.0, 1.45, Hc + 0.6), (2.8, 2.5, 0.02), (0.12, 0.12, 0.12, 1.0))
     # the sun's shafts through the S frames, and their pools on the floor
     for k, x in enumerate((122.5, 132.5, 137.5, 147.5)):
         make_rot_box(f"Sun_Shaft_{k}", (x, 1.9, 1.8), (4.2, 0.02, 4.8), (1.0, 0.96, 0.84, 0.10), roll=0.785)
@@ -332,9 +338,11 @@ def build_store_2026_10():
         make_box(f"Wall_Rack_Bar_{k}", (120.4, 2.5 + k * 2.6, 1.6), (0.04, 2.0, 0.03), (0.66, 0.66, 0.68, 1.0))
         make_box(f"Wall_Rack_Slat_{k}", (120.17, 2.5 + k * 2.6, 1.4), (0.02, 2.2, 1.6), (0.56, 0.54, 0.50, 1.0))
     # the store's fascia over the mezzanine edge, the letters' ghosts
-    make_box("Store_Fascia", (135.0, 11.9, 3.75), (29.6, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
+    make_box("Store_Fascia_W", (126.3, 11.9, 3.75), (12.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
+    make_box("Store_Fascia_E", (142.7, 11.9, 3.75), (14.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
     for k in range(9):
-        make_box(f"Store_Fascia_Letter_Ghost_{k}", (129.6 + k * 1.35, 11.84, 3.75), (0.80, 0.006, 0.34), (0.68, 0.66, 0.62, 1.0))
+        lx = 129.6 + k * 1.35 + (2.8 if k >= 3 else 0.0)        # the name split round the well
+        make_box(f"Store_Fascia_Letter_Ghost_{k}", (lx, 11.84, 3.75), (0.80, 0.006, 0.34), (0.68, 0.66, 0.62, 1.0))
     # dust thick on everything low: a darker veil at the walls' feet
     for k, (x, y, w, d) in enumerate(((121.0, 6.0, 1.4, 11.0), (149.0, 6.0, 1.4, 11.0), (135.0, 11.4, 28.0, 1.0))):
         make_box(f"Dust_Bank_{k}", (x, y, 0.005), (w, d, 0.006), (0.66, 0.62, 0.56, 1.0))
@@ -402,6 +410,8 @@ def build_store_roof_2026_10():
                 continue
             # clear of this file's other rooms (the garage at x 0..47, the
             # mirror room at 260, Aaron's at 300, the reading room at 420)
+            if min(math.hypot(bx - ax_, by + 18.0) for ax_ in (105.0, 125.0, 135.0, 155.0, 175.0)) < 34.0:
+                continue                     # (round 4) clear of the street's buildings across from the store
             if any(ax0 - 20.0 < bx < ax1 + 20.0 and -25.0 < by < 35.0
                    for ax0, ax1 in ((0.0, 47.0), (259.0, 264.0), (300.0, 304.4), (420.0, 428.0))):
                 continue
