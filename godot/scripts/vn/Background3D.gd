@@ -5327,6 +5327,30 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	# (2026-10-30) the club after hours, the cage in its two states — vol1
+	# ch8 "Sitting caged in the center of the club, beaten and raw is Joan" /
+	# "lit like a stage in the middle of a bar"; ch16 "a loose triangle
+	# around the up-ended cage". From the floor SE of it: the cage under the
+	# stage spot, the dais and the # behind. The parts are tagged
+	# Cg_*__<preset>, so each state shows only in its own view.
+	"club_sharp_cage": {
+		"scene": "res://scenes/locales/club_sharp.tscn",
+		"requires_glb": "res://assets/3d/locales/club_sharp.glb",
+		"camera_origin": Vector3(5.5, 1.60, -4.0),
+		"camera_rotation": Vector3(-0.105, 0.661, 0.0),
+		"fov": 60.0,
+		"env": {"ambient_color": Color(0.50, 0.44, 0.60, 1), "ambient_energy": 0.22, "fog_color": Color(0.06, 0.05, 0.08, 1)},
+		"suppress_input": true,
+	},
+	"club_sharp_cage_up": {
+		"scene": "res://scenes/locales/club_sharp.tscn",
+		"requires_glb": "res://assets/3d/locales/club_sharp.glb",
+		"camera_origin": Vector3(4.8, 1.30, -4.6),
+		"camera_rotation": Vector3(-0.16, 0.700, 0.0),
+		"fov": 60.0,
+		"env": {"ambient_color": Color(0.50, 0.44, 0.60, 1), "ambient_energy": 0.20, "fog_color": Color(0.06, 0.05, 0.08, 1)},
+		"suppress_input": true,
+	},
 	"smolvud_coop": {
 		"scene": "res://scenes/locales/smolvud_coop.tscn",
 		"requires_glb": "res://assets/3d/locales/smolvud_coop.glb",

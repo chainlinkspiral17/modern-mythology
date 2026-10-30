@@ -198,9 +198,60 @@ def build_outside():
     make_box("Ground_Far", (0.0, 0.0, LOW_Z - 0.4), (300.0, 300.0, 0.2), (0.04, 0.04, 0.06, 1.0))
 
 
+def build_cage_2026_10():
+    """DRAFT 3 (2026-10-30): the cage the club turns on, missing from the set.
+    vol1 ch8: "Sitting caged in the center of the club, beaten and raw is
+    Joan" / "lit like a stage in the middle of a bar". ch16: "The three are on
+    the floor where they lay down, in a loose triangle around the up-ended
+    cage ... On the floor of the cage there's one object ... Joan's dagger."
+    One cage in two states, each tagged to its own preset: standing on the
+    big dance floor (club_sharp_cage), tipped on its side with its door
+    hanging and the dagger inside (club_sharp_cage_up). The stage spot over
+    it is a SpotLight in the .tscn for both.
+    Draft 4 targets: the chain and hook it hung from, the scuffs on the
+    tiles where it was dragged, the swept floor inside it."""
+    cx, cy = 2.0, 8.5
+    IRON = (0.20, 0.20, 0.22, 1.0); BRASS = (0.62, 0.52, 0.30, 1.0)
+    S, HGT = 0.70, 2.2
+
+    def cage(tag, up):
+        def put(name, u, v, w, su, sv, sw, col):
+            if up:     # tipped toward +x: its height lies along x, its u side up
+                make_box(f"{name}__{tag}", (cx - HGT / 2.0 + w, cy + v, S + 0.03 + u), (sw, sv, su), col)
+            else:
+                make_box(f"{name}__{tag}", (cx + u, cy + v, w), (su, sv, sw), col)
+        k = 0
+        for su_ in (-1, 1):
+            for sv_ in (-1, 1):
+                put(f"Cg_Post_{su_:+d}{sv_:+d}", su_ * S, sv_ * S, HGT / 2.0, 0.05, 0.05, HGT, IRON)
+        for w in (0.04, 1.10, HGT - 0.03):
+            for sgn in (-1, 1):
+                put(f"Cg_Ring_{int(w * 100)}_U{sgn:+d}", 0.0, sgn * S, w, 2 * S, 0.04, 0.04, IRON)
+                put(f"Cg_Ring_{int(w * 100)}_V{sgn:+d}", sgn * S, 0.0, w, 0.04, 2 * S, 0.04, IRON)
+        for i in range(1, 10):
+            a = -S + i * 0.14
+            put(f"Cg_Bar_N{i}", a, S, HGT / 2.0, 0.02, 0.02, HGT, IRON)
+            put(f"Cg_Bar_E{i}", S, a, HGT / 2.0, 0.02, 0.02, HGT, IRON)
+            put(f"Cg_Bar_W{i}", -S, a, HGT / 2.0, 0.02, 0.02, HGT, IRON)
+            if up and 3 <= i <= 6:
+                continue                    # the door's gap; the door hangs open below
+            put(f"Cg_Bar_S{i}", a, -S, HGT / 2.0, 0.02, 0.02, HGT, IRON)
+        put("Cg_Floor", 0.0, 0.0, 0.03, 2 * S, 2 * S, 0.03, (0.14, 0.14, 0.16, 1.0))
+        put("Cg_Top", 0.0, 0.0, HGT - 0.01, 2 * S, 2 * S, 0.02, IRON)
+        put("Cg_Lock", -0.12, -S - 0.03, 1.10, 0.08, 0.04, 0.10, BRASS)
+    cage("club_sharp_cage", False)
+    cage("club_sharp_cage_up", True)
+    # the door, swung down off the tipped cage onto the tiles; the dagger inside
+    make_rot_box("Cg_Door__club_sharp_cage_up", (cx - 0.20, cy - S - 0.30, 0.03), (1.0, 0.56, 0.02), IRON, yaw=0.12)
+    make_box("Cg_Dagger_Blade__club_sharp_cage_up", (cx + 0.05, cy + 0.05, 0.075), (0.26, 0.04, 0.008), (0.80, 0.80, 0.84, 1.0))
+    make_box("Cg_Dagger_Hilt__club_sharp_cage_up", (cx - 0.15, cy + 0.05, 0.08), (0.12, 0.03, 0.02), (0.30, 0.18, 0.12, 1.0))
+    make_box("Cg_Dagger_Guard__club_sharp_cage_up", (cx - 0.085, cy + 0.05, 0.08), (0.02, 0.10, 0.02), BRASS)
+
+
 def main():
     clear_scene()
-    build_shell(); build_dance_floors(); build_bar(); build_atrium_and_arcade(); build_bowling(); build_outside()
+    build_shell(); build_dance_floors(); build_bar()
+    build_cage_2026_10(); build_atrium_and_arcade(); build_bowling(); build_outside()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/club_sharp.glb"))
     print(f"\n[build_club_sharp] exporting to {out}")
     export_glb(out)

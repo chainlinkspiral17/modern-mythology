@@ -269,6 +269,17 @@ light_energy = 1.00
 shadow_enabled = false
 omni_range = 6.00
 
+; the stage light on the cage, "lit like a stage in the middle of a bar" (2026-10-30)
+[node name="Stage_Spot__club_sharp_cage__club_sharp_cage_up" type="SpotLight3D" parent="."]
+position = Vector3(2.0, 5.8, -8.5)
+rotation = Vector3(-1.5708, 0.0, 0.0)
+light_color = Color(1.0, 0.92, 0.80, 1)
+light_energy = 7.0
+shadow_enabled = true
+spot_range = 8.0
+spot_angle = 20.0
+spot_angle_attenuation = 1.4
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
