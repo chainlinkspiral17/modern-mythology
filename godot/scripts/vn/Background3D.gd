@@ -5407,6 +5407,8 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-3.10, 1.80, -12.5),
 		"camera_rotation": Vector3(-0.50, 2.20, 0.0),
 		"fov": 66.0,
+		# the floor below in its own light: the cabinets' glow, a thinner haze
+		"env": {"ambient_color": Color(0.46, 0.40, 0.66, 1), "ambient_energy": 1.10, "fog_color": Color(0.20, 0.14, 0.30, 1), "fog_density": 0.004},
 		"suppress_input": true,
 	},
 	# (2026-10-30) the club after hours, the cage in its two states — vol1
