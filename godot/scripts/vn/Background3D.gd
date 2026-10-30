@@ -2383,8 +2383,11 @@ const CAMERA_PRESETS := {
 	"vehicle_cab_judgement_day": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
-		"camera_origin": Vector3(-80.0, 1.12, 79.9),
-		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
+		# (round 2, 2026-10-30) from the back seat's middle: Faust at the wheel
+		# and the third boy on the front bench, the shirt on the rearview, the
+		# street through the windshield ("The boys sit in near silence")
+		"camera_origin": Vector3(-80.0, 1.40, 80.80),
+		"camera_rotation": Vector3(-0.05, 0.0, 0.0),
 		"fov": 72.0,
 		"env": {"sky_top": Color(0.40, 0.62, 0.92, 1), "sky_horizon": Color(0.84, 0.88, 0.92, 1),
 			"ground_horizon": Color(0.60, 0.58, 0.52, 1), "ground_bottom": Color(0.30, 0.28, 0.24, 1),

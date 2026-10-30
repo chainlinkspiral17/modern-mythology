@@ -572,7 +572,17 @@ def build_judgement_day_2026_10():
                  SEAT_DK=(0.28, 0.24, 0.20, 1.0), HEADLINER=(0.66, 0.62, 0.56, 1.0)):
         build_cab_shell()
         build_dash()
-        build_seats()
+        # (round 2) an older sedan's FRONT BENCH, not the truck's buckets and
+        # console; the column shifter; the rear bench as the truck's
+        make_chamfer_box("Front_Bench_Base", (0.0, 0.15, 0.67), (1.70, 0.55, 0.42), SEAT, chamfer=0.05)
+        make_chamfer_box("Front_Bench_Back", (0.0, -0.18, 1.155), (1.70, 0.12, 0.55), SEAT, chamfer=0.04)
+        make_box("Front_Bench_Bolster", (0.0, 0.15, 0.905), (1.70, 0.55, 0.05), SEAT_DK)
+        for k in range(5):
+            make_box(f"Front_Bench_Seam_{k}", (-0.68 + k * 0.34, 0.15, 0.932), (0.01, 0.52, 0.004), (0.22, 0.18, 0.15, 1.0))
+        make_rot_box("Column_Shifter", (-0.30, 0.86, 1.00), (0.24, 0.015, 0.015), CHROME, yaw=0.3, roll=0.0)
+        make_chamfer_box("Rear_Bench_Base", (0.0, -0.90, 0.66), (1.70, 0.50, 0.40), SEAT, chamfer=0.05)
+        make_chamfer_box("Rear_Bench_Back", (0.0, -1.21, 1.21), (1.70, 0.12, 0.70), SEAT, chamfer=0.04)
+        make_box("Rear_Bench_Bolster", (0.0, -0.90, 0.885), (1.70, 0.50, 0.05), SEAT_DK)
         make_box("Cat_Hair_Seat", (0.45, 0.20, 0.625), (0.34, 0.30, 0.004), (0.78, 0.74, 0.66, 1.0))   # the cat's
         make_box("Rearview_Shirt_Knot", (0.0, 0.92, 1.42), (0.10, 0.04, 0.06), (0.86, 0.84, 0.80, 1.0))
         make_box("Dash_Fast_Food_Bag", (-0.35, 1.05, 0.98), (0.20, 0.14, 0.10), (0.84, 0.70, 0.42, 1.0))
@@ -580,6 +590,15 @@ def build_judgement_day_2026_10():
     # dash (vol 6 ch14) and the phone in its cradle came along with
     # build_dash. Drop them from this car.
     _drop_parts(("JD_Map_Folded", "JD_Phone"))
+    # "The boys sit in near silence for a moment." Faust at the wheel, the
+    # third boy beside him on the bench; the narrator is the camera, in back
+    from _props.figures import make_seated_figure
+    make_seated_figure("JD_Faust", ax - 0.42, ay + 0.12, heading=0.0, seat_h=0.42, h=1.80, z0=0.30 + dz,
+                       coat=(0.16, 0.16, 0.18, 1.0), pants=(0.20, 0.22, 0.30, 1.0), hair=(0.10, 0.08, 0.06, 1.0), arms="table")
+    make_seated_figure("JD_Front_Passenger", ax + 0.45, ay + 0.12, heading=0.05, seat_h=0.42, h=1.76, z0=0.30 + dz,
+                       coat=(0.56, 0.20, 0.18, 1.0), pants=(0.30, 0.32, 0.40, 1.0), hair=(0.40, 0.28, 0.16, 1.0), arms="lap")
+    # the shirt knotted on the rearview, hanging (the draft-1 knot was all of it)
+    make_rot_box("JD_Rearview_Shirt_Hang", (ax + 0.0, ay + 0.90, 1.24 + dz), (0.22, 0.03, 0.30), (0.86, 0.84, 0.80, 1.0), pitch=0.08)
     # the street: asphalt, the yellow line, sidewalks, live oaks, power poles, low shops, a painted wall, the overpass
     make_box("JD_Street", (ax, ay + 40.0, 0.0), (14.0, 140.0, 0.04), (0.26, 0.26, 0.27, 1.0))
     for k in range(20):
