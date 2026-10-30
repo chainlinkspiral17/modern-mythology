@@ -5689,8 +5689,10 @@ const CAMERA_PRESETS := {
 		# the edge.
 		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
 		# (user: "another establishing shot that is 90 percent wall").
-		"camera_origin": Vector3(2.25, 1.70, 0.00),
-		"camera_rotation": Vector3(-0.02, 0.000, 0.0),
+		# (2026-10-30) through the gate: at (2.25, 0) the carved gate sign
+		# hung 2 m in front of the lens and its post took the left third
+		"camera_origin": Vector3(1.00, 1.70, -3.20),
+		"camera_rotation": Vector3(-0.05, 0.05, 0.0),
 		"fov": 68.0,
 		"suppress_input": true,
 	},
