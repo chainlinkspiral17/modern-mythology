@@ -265,6 +265,9 @@ def build_porch_and_yard():
     for k in range(4):
         make_box(f"Front_Porch_Post_{k}", (-8.0 + k * 2.6, -2.4, 1.28), (0.12, 0.12, 2.24), TRIM)
     make_box("Front_Porch_Roof", (-4.0, -1.3, 2.46), (8.8, 2.8, 0.12), ROOF)
+    # (round 3) the porch's bare bulb under its roof (the tscn's Porch_Bulb)
+    make_cyl("Front_Porch_Bulb_Base", (-3.4, -1.0, 2.37), 0.05, 0.06, (0.30, 0.28, 0.26, 1.0), segments=10)
+    make_blob("Front_Porch_Bulb_Glow", (-3.4, -1.0, 2.29), 0.05, (1.0, 0.90, 0.66, 1.0), noise=0.02, seed=2, squash=1.2)
     for k in range(3):
         make_box(f"Front_Porch_Rail_{k}", (-6.7 + k * 2.6, -2.4, 0.90), (2.48, 0.06, 0.06), TRIM)
     make_box("Front_Porch_Step", (-1.2, -2.8, 0.06), (1.2, 0.6, 0.12), (0.44, 0.36, 0.28, 1.0))

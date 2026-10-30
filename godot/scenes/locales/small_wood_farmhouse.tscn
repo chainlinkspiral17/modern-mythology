@@ -185,7 +185,7 @@ omni_range = 7.0
 [node name="Moon_Cloud__farm_porch_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, -4, 10, 6)
 light_color = Color(0.46, 0.5, 0.66, 1)
-light_energy = 0.45
+light_energy = 0.8
 shadow_enabled = false
 
 [node name="Window_From_Inside__farm_porch_night" type="OmniLight3D" parent="."]
@@ -194,6 +194,14 @@ light_color = Color(0.8, 0.8, 0.9, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 5.0
+
+; (round 3) the porch's bare bulb (Front_Porch_Bulb_*), the yard read by the moon
+[node name="Porch_Bulb__farm_porch_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 2.2, 1.0)
+light_color = Color(1.0, 0.84, 0.56, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 7.0
 
 [node name="Door_Spill__farm_porch_night" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.6, -0.4)
