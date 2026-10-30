@@ -2815,9 +2815,13 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
 		# ch5: "I was taking a walk along the sea wall ... when I happened to look
 		# up" — the back of the building, before any mural
-		"camera_origin": Vector3(0.8, 1.60, -9.5),
-		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
-		"fov": 58.0,
+		# (2026-10-30) from the alley mouth E down the alley: 0.7 m from the
+		# dumpster facing the back wall at 2.4 m, the wall filled the frame.
+		# The dumpster (vol 4: "I wake in a dumpster"), its lid up, the crates,
+		# the back of the building over them.
+		"camera_origin": Vector3(-5.0, 1.60, -10.3),
+		"camera_rotation": Vector3(-0.04, -1.5708, 0.0),
+		"fov": 62.0,
 		"strip": ["Nebula_", "Face_", "Hand_Wall_Print", "Substrate_Patch", "SlowTerminal_", "Kai_Notebook", "Cedar_Bowl_", "Clay_Mug_Margits", "Paint_Brush", "SaltyTomeSign", "HP_Alley_Crow"],
 		"suppress_input": true,
 	},
@@ -5356,9 +5360,11 @@ const CAMERA_PRESETS := {
 		# 2026-10-23: 2.8 m from the gable's inner face so the pair fills the
 		# frame; the bay darker than the field (ambient 0.35) so the sun's
 		# stripes through the rafter remnant read as "sunlight poking through".
-		"camera_origin": Vector3(-0.25, 1.50, -11.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
-		"fov": 88.0,
+		# 2026-10-30 (draft 4): the bay walled in with its broken side boards,
+		# so the frame no longer opens on sky either side; fov 88 -> 74.
+		"camera_origin": Vector3(-0.35, 1.55, -11.3),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(180.0), 0.0),
+		"fov": 74.0,
 		"env": {"ambient_color": Color(0.60, 0.62, 0.60, 1), "ambient_energy": 0.40, "fog_color": Color(0.30, 0.31, 0.30, 1)},
 		"suppress_input": true,
 	},
