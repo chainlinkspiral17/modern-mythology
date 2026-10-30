@@ -88,7 +88,7 @@ def build_interview():
     for sx in (-0.68, 0.68):
         for sy in (-0.38, 0.38):
             make_box(f"Interview_Table_Leg_{sx:+.2f}_{sy:+.2f}", (tx + sx, ty + sy, 0.36), (0.05, 0.05, 0.72), (0.40, 0.42, 0.44, 1.0))
-    make_box("Interview_Table_Ring", (tx - 0.68, ty, 0.62), (0.06, 0.12, 0.06), STEEL)   # the bolted ring
+    make_box("Interview_Table_Ring", (tx - 0.68, ty, 0.69), (0.06, 0.12, 0.06), STEEL)   # the bolted ring
     make_chair("Julie_Chair", tx - 0.95, ty, yaw=-math.pi / 2, wood=(0.36, 0.38, 0.40, 1.0), seat_col=(0.28, 0.30, 0.34, 1.0))
     make_chair("James_Chair", tx + 0.95, ty, yaw=math.pi / 2, wood=(0.36, 0.38, 0.40, 1.0), seat_col=(0.28, 0.30, 0.34, 1.0))
     # on the table: James's notebook with the pen on its clip, the folder,
@@ -137,8 +137,8 @@ def build_squad_room():
     # desks: beige CRTs, desk phones, in-trays, a chair at each
     for k, (dx, dy) in enumerate(((7.0, 5.6), (10.2, 5.6), (7.0, 1.4), (10.2, 1.4), (12.8, -1.6))):
         make_table(f"Squad_Desk_{k}", dx, dy, w=1.5, d=0.75, h=0.76, wood=(0.50, 0.44, 0.36, 1.0))
-        make_box(f"Squad_Desk_{k}_CRT", (dx - 0.35, dy + 0.12, 0.96), (0.40, 0.38, 0.36), (0.80, 0.78, 0.70, 1.0))
-        make_box(f"Squad_Desk_{k}_CRT_Screen", (dx - 0.35, dy - 0.075, 0.98), (0.30, 0.01, 0.22), (0.16, 0.22, 0.20, 1.0))
+        make_box(f"Squad_Desk_{k}_CRT", (dx - 0.35, dy + 0.12, 0.94), (0.40, 0.38, 0.36), (0.80, 0.78, 0.70, 1.0))
+        make_box(f"Squad_Desk_{k}_CRT_Screen", (dx - 0.35, dy - 0.075, 0.96), (0.30, 0.01, 0.22), (0.16, 0.22, 0.20, 1.0))
         make_box(f"Squad_Desk_{k}_Phone", (dx + 0.40, dy, 0.80), (0.20, 0.22, 0.08), (0.22, 0.22, 0.22, 1.0))
         make_box(f"Squad_Desk_{k}_Tray", (dx + 0.10, dy + 0.18, 0.80), (0.28, 0.34, 0.08), (0.30, 0.30, 0.30, 1.0))
         make_chair(f"Squad_Desk_{k}_Chair", dx, dy - 0.75, yaw=0.0, seat_col=(0.20, 0.22, 0.30, 1.0))

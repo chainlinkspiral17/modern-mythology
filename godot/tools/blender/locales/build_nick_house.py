@@ -223,14 +223,14 @@ def build_garage_2026_10():
     # the vise on the bench's W end, the drill press on its E end
     STEEL = (0.30, 0.34, 0.36, 1.0)
     make_box("Bench_Vise_Body", (bx - 1.66, by - 0.22, 1.03), (0.16, 0.22, 0.14), STEEL)
-    make_box("Bench_Vise_Jaw", (bx - 1.66, by - 0.38, 1.05), (0.16, 0.06, 0.12), STEEL)
+    make_box("Bench_Vise_Jaw", (bx - 1.66, by - 0.38 - 0.005, 1.05), (0.16, 0.10, 0.12), STEEL)
     make_cyl("Bench_Vise_Bar", (bx - 1.66, by - 0.44, 1.00), 0.012, 0.24, (0.70, 0.70, 0.72, 1.0), axis='X', segments=6)
     dpx, dpy = bx + 1.45, by + 0.10
     make_box("Drill_Press_Base", (dpx, dpy, 0.975), (0.26, 0.36, 0.05), STEEL)
     make_cyl("Drill_Press_Column", (dpx, dpy + 0.12, 1.30), 0.03, 0.62, (0.70, 0.70, 0.72, 1.0), segments=8)
     make_box("Drill_Press_Head", (dpx, dpy + 0.02, 1.58), (0.20, 0.34, 0.20), STEEL)
     make_cyl("Drill_Press_Chuck", (dpx, dpy - 0.08, 1.42), 0.025, 0.12, (0.70, 0.70, 0.72, 1.0), segments=8)
-    make_box("Drill_Press_Table", (dpx, dpy - 0.04, 1.18), (0.20, 0.20, 0.02), STEEL)
+    make_box("Drill_Press_Table", (dpx, dpy - 0.01, 1.18), (0.20, 0.20, 0.02), STEEL)
     # the lumber rack on the E wall
     ex = -7.0 - T / 2.0
     for i, y in enumerate((1.2, 2.5, 3.8)):
@@ -301,8 +301,8 @@ def build_grandma_living_2026_10():
     make_box("Grandma_Rug_Border", (-3.4, 2.4, 0.0125), (1.9, 2.7, 0.001), (0.66, 0.54, 0.42, 1.0))
     # the front window's sheers, drawn; a clock on the S wall
     for s in (-1, 1):
-        make_box(f"Grandma_Sheer_{s:+d}", (-5.6 + s * 0.42, T / 2.0 + 0.05 + (0.02 if s > 0 else 0.0), 1.45), (0.86, 0.02, 1.40), (0.84, 0.80, 0.72, 1.0))
-    make_box("Grandma_Sheer_Rod", (-5.6, T / 2.0 + 0.05, 2.18), (1.90, 0.02, 0.02), (0.60, 0.50, 0.30, 1.0))
+        make_box(f"Grandma_Sheer_{s:+d}", (-5.6 + s * 0.42, T / 2.0 + 0.015 + (0.02 if s > 0 else 0.0), 1.45), (0.86, 0.02, 1.40), (0.84, 0.80, 0.72, 1.0))
+    make_box("Grandma_Sheer_Rod", (-5.6, T / 2.0 + 0.012, 2.18), (1.90, 0.02, 0.02), (0.60, 0.50, 0.30, 1.0))
     make_cyl("Grandma_Wall_Clock", (-2.3, T / 2.0 + 0.02, 1.95), 0.16, 0.03, (0.60, 0.48, 0.30, 1.0), axis='Y', segments=18)
     make_cyl("Grandma_Wall_Clock_Face", (-2.3, T / 2.0 + 0.036, 1.95), 0.13, 0.004, (0.92, 0.90, 0.84, 1.0), axis='Y', segments=18)
     # the shopping channel on the muted set

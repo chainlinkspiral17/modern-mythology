@@ -379,6 +379,13 @@ def install_stubs():
         sys.modules["_props." + real_mod] = real
         setattr(pkg, real_mod, real)
         exec(compile(open(mpath).read(), mpath, "exec"), real.__dict__)
+    global STUBS_ON
+    STUBS_ON = True
+
+
+# set by install_stubs(); vantage_obstruction_audit.boxes_for checks it
+# before recording, since what it records goes to the shared disk cache
+STUBS_ON = False
 
 
 def camera_presets():

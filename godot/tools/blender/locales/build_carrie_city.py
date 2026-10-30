@@ -103,8 +103,8 @@ def build_flat():
     make_box("Dresser_Drawer_Open", (fx - 0.16, 2.0, 0.80), (0.34, 1.00, 0.16), (0.48, 0.38, 0.27, 1.0))
     make_box("Dresser_Drawer_Open_Clothes", (fx - 0.16, 2.0, 0.875), (0.28, 0.92, 0.03), (0.86, 0.84, 0.80, 1.0))
     make_rot_box("Dresser_Shirt_Over", (fx - 0.34, 2.15, 0.70), (0.02, 0.36, 0.30), (0.40, 0.52, 0.70, 1.0), pitch=0.15)
-    make_box("Dresser_Mirror_Frame", (3.92 - 0.06 - 0.015, 2.0, 1.55), (0.03, 0.80, 0.90), (0.30, 0.22, 0.16, 1.0))
-    make_box("Dresser_Mirror", (3.92 - 0.06 - 0.032, 2.0, 1.55), (0.004, 0.70, 0.80), (0.72, 0.78, 0.82, 1.0))
+    make_box("Dresser_Mirror_Frame", (3.94 - 0.015, 2.0, 1.55), (0.03, 0.80, 0.90), (0.30, 0.22, 0.16, 1.0))
+    make_box("Dresser_Mirror", (3.94 - 0.032, 2.0, 1.55), (0.004, 0.70, 0.80), (0.72, 0.78, 0.82, 1.0))
     make_box("Dresser_Wallet", (3.55, 2.22, 0.975), (0.10, 0.12, 0.02), (0.20, 0.14, 0.10, 1.0))
     make_rot_box("Dresser_Keys", (3.50, 2.40, 0.97), (0.08, 0.03, 0.01), (0.76, 0.74, 0.70, 1.0), yaw=0.6)
     make_cyl("Dresser_Watch", (3.66, 2.38, 0.968), 0.03, 0.016, (0.70, 0.62, 0.40, 1.0), segments=12)
@@ -191,7 +191,7 @@ def build_party():
     # (2026-10-28) the door to the grungy bathroom at y 11 (build_party_bathroom)
     make_wall_with_openings("Loft_Wall_E", (x1, 7.0, 0), length=14.0 - T, height=H, thickness=T, axis='Y', palette=LOFT,
                             baseboard_face_sign=-1, openings=[(11.0, 1.05, 0.9, 2.1)])
-    make_box("Bathroom_Door_Open", (x1 + 0.45, 11.45 + 0.0, 1.05), (0.04, 0.84, 2.06), (0.30, 0.26, 0.24, 1.0))
+    make_box("Bathroom_Door_Open", (x1 + 0.45, 11.45 + 0.0, 1.03), (0.04, 0.84, 2.06), (0.30, 0.26, 0.24, 1.0))
     for nm, al in (("Loft_Window_A", 44.0), ("Loft_Window_B", 50.0)):
         window_frame(nm, 'X', al, y0, 2.2, 2.2, 2.4)
     make_box("Loft_Door_Shut", (56.0, y0, 1.1), (0.96, 0.05, 2.2), (0.30, 0.26, 0.24, 1.0))
@@ -247,7 +247,7 @@ def build_party():
     # lands in a shot glass") drawn as ribbons of light, the one that lands
     # arcing to the pink shot glass; the party round the room.
     for k, (bx, by) in enumerate(((45.4, 4.0), (49.0, 9.5), (52.6, 4.0))):
-        make_cyl(f"Loft_Bulb_{k}_Cord", (bx, by, H - 0.90), 0.006, 0.80, (0.10, 0.10, 0.10, 1.0), segments=6)
+        make_cyl(f"Loft_Bulb_{k}_Cord", (bx, by, H - 0.855), 0.006, 0.87, (0.10, 0.10, 0.10, 1.0), segments=6)
         make_cyl(f"Loft_Bulb_{k}", (bx, by, H - 1.34), 0.06, 0.10, (1.0, 0.86, 0.60, 1.0), segments=10)
     make_box("Back_Bar_Light_Strip", (50.0, y1 - 0.10, 2.70), (7.6, 0.04, 0.05), (1.0, 0.60, 0.40, 1.0))
     def ribbon(name, pts, col, w=0.05):
@@ -338,7 +338,7 @@ def build_party_bathroom():
     for k in range(12):
         make_cyl(f"Bath_Tub_Can_{k}", (tx0 + 0.20 + k * 0.22, by1 - 0.40 + ((k % 3) - 1) * 0.16, 0.52), 0.033, 0.12,
                  ((0.80, 0.10, 0.14, 1.0), (0.80, 0.80, 0.84, 1.0), (0.14, 0.30, 0.66, 1.0))[k % 3], segments=8)
-    make_box("Bath_Curtain_Rod", ((tx0 + tx1) / 2, by1 - 0.78, 2.05), (tx1 - tx0, 0.02, 0.02), (0.66, 0.66, 0.68, 1.0))
+    make_box("Bath_Curtain_Rod", ((tx0 + tx1 + 0.07) / 2, by1 - 0.78, 2.05), (tx1 - tx0 + 0.07, 0.02, 0.02), (0.66, 0.66, 0.68, 1.0))
     make_box("Bath_Curtain_Torn", (tx0 + 0.45, by1 - 0.78, 1.45), (0.80, 0.01, 1.20), (0.46, 0.66, 0.70, 1.0))
     # a towel on the floor, red cups, a bottle on the cistern
     make_box("Bath_Towel_Floor", (bx0 + 0.9, 10.2, 0.02), (0.70, 0.46, 0.04), (0.70, 0.52, 0.30, 1.0))
@@ -492,8 +492,11 @@ def build_sister_2026_10():
     make_box("High_Chair_Seat", (hcx, hcy, z0 + 0.78), (0.34, 0.34, 0.05), (0.86, 0.84, 0.80, 1.0))
     make_box("High_Chair_Back", (hcx, hcy + 0.16, z0 + 1.02), (0.32, 0.04, 0.44), (0.86, 0.84, 0.80, 1.0))
     make_box("High_Chair_Tray", (hcx, hcy - 0.26, z0 + 0.98), (0.44, 0.24, 0.03), (0.96, 0.80, 0.30, 1.0))
-    make_box("Box_Fan", (82.45, 3.0, z0 + 0.28), (0.14, 0.52, 0.52), (0.84, 0.84, 0.82, 1.0))
-    make_cyl("Box_Fan_Grille", (82.53, 3.0, z0 + 0.28), 0.22, 0.01, (0.40, 0.40, 0.42, 1.0), axis='X', segments=14)
+    # the tray rides on two arms up from the seat
+    for sx in (-1, 1):
+        make_box(f"High_Chair_Tray_Arm_{sx:+d}", (hcx + sx * 0.15, hcy - 0.155, z0 + 0.885), (0.03, 0.03, 0.16), (0.90, 0.88, 0.84, 1.0))
+    make_box("Box_Fan", (82.45, 3.0, z0 + 0.26), (0.14, 0.52, 0.52), (0.84, 0.84, 0.82, 1.0))
+    make_cyl("Box_Fan_Grille", (82.53, 3.0, z0 + 0.26), 0.22, 0.01, (0.40, 0.40, 0.42, 1.0), axis='X', segments=14)
     # clothes on the floor and on the couch, the lone sock
     for k, (x, y, r, col) in enumerate(((83.2, 6.6, 0.22, (0.30, 0.34, 0.50, 1.0)), (85.6, 7.3, 0.18, (0.80, 0.76, 0.70, 1.0)),
                                         (83.6, 7.75, 0.20, (0.60, 0.20, 0.20, 1.0)), (87.2, 7.9, 0.24, (0.40, 0.46, 0.36, 1.0)))):
@@ -535,7 +538,7 @@ def build_sister_2026_10():
         make_blob(f"Yard_Trash_Bag_{k}", (x, y, r * 0.8), r, (0.10, 0.10, 0.12, 1.0), noise=0.25, seed=70 + k, squash=0.85)
     make_cyl("Yard_Kiddie_Pool", (90.4, -2.4, 0.10), 0.75, 0.20, (0.30, 0.60, 0.86, 1.0), segments=18)
     make_cyl("Yard_Kiddie_Pool_Water", (90.4, -2.4, 0.15), 0.70, 0.02, (0.44, 0.50, 0.40, 1.0), segments=18)
-    make_rot_box("Screen_Door_Hanging", (84.42, hy0 - 0.30, z0 + 1.05), (0.84, 0.04, 2.0), (0.40, 0.42, 0.40, 0.55),
+    make_rot_box("Screen_Door_Hanging", (84.42, hy0 - 0.275, z0 + 1.05), (0.84, 0.04, 2.0), (0.40, 0.42, 0.40, 0.55),
                  yaw=0.35, pitch=0.10)
 
 

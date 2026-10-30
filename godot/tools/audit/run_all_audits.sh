@@ -257,10 +257,17 @@ echo ""
 # came before it. That happened two ways: 234 scenes no entry named,
 # and 36 entries chapters DID name whose file was never rendered. Six
 # volumes played vol5's four beds. Both gate at zero.
+# These three gates fail on what only the user makes (the music catalog,
+# the audio files, the pages they write) and used to `exit 1` on the spot —
+# so every gate after them (support, placement, window backing, buried
+# decor, the furniture FLOAT ceiling …) never ran: 2026-10-30 found ~1,650
+# floating parts across twenty vols 1-4 sets that way. They still fail
+# the suite, at the END, after every geometry gate has had its say.
+DEFERRED=""
 echo "── music_coverage_audit.py ──"
 MUOUT="$(python3 music_coverage_audit.py 2>/dev/null)" || {
     echo "$MUOUT" | grep "^SILENT\|^NOFILE" | head -20
-    echo "$MUOUT" | tail -1; exit 1; }
+    echo "$MUOUT" | tail -1; DEFERRED="$DEFERRED music_coverage"; }
 echo "$MUOUT" | tail -1
 echo ""
 
@@ -274,7 +281,7 @@ echo ""
 echo "── audio_reference_audit.py ──"
 AROUT="$(python3 audio_reference_audit.py 2>/dev/null)" || {
     echo "$AROUT" | grep "^NOFILE\|^NOPRESET" | head -20
-    echo "$AROUT" | tail -1; exit 1; }
+    echo "$AROUT" | tail -1; DEFERRED="$DEFERRED audio_reference"; }
 echo "$AROUT" | tail -1
 echo ""
 
@@ -453,7 +460,7 @@ echo ""
 echo "── page_length_audit.py ──"
 PLOUT="$(python3 page_length_audit.py 2>/dev/null)" || {
     echo "$PLOUT" | grep "^LONG" | head -20
-    echo "$PLOUT" | tail -1; exit 1; }
+    echo "$PLOUT" | tail -1; DEFERRED="$DEFERRED page_length"; }
 echo "$PLOUT" | tail -1
 echo ""
 
@@ -500,3 +507,6 @@ if [ "${N:-999}" -gt "$FLOAT_CEILING" ]; then
     echo "$GOUT" | grep "^   FLOAT"
     echo "REGRESSION  $N floating props (ceiling $FLOAT_CEILING)"; exit 1; fi
 echo ""
+
+if [ -n "$DEFERRED" ]; then
+    echo "FAILED (deferred to the end so the gates after them ran):$DEFERRED"; exit 1; fi

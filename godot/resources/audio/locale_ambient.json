@@ -406,7 +406,7 @@
       "gain": 0.8
     },
     "new_orleans_bar": {
-      "bed": "assets/audio/bgm/vol1_club_thump.wav",
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.85
     },
     "chillwave_interior": {
@@ -836,6 +836,38 @@
     "club_sharp": {
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.6
+    },
+    "club_sharp_cage": {
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "gain": 0.6
+    },
+    "club_sharp_cage_up": {
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "gain": 0.6
+    },
+    "dead_store_roof": {
+      "bed": "assets/audio/bgm/vol4_ambient.wav",
+      "gain": 0.82
+    },
+    "houston_park_day": {
+      "bed": "assets/audio/bgm/vol1_ambient.wav",
+      "gain": 0.82
+    },
+    "lake_dock_sunrise": {
+      "bed": "assets/audio/bgm/vol3_ambient.wav",
+      "gain": 0.82
+    },
+    "small_wood_field_dusk": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "suite_wide": {
+      "bed": "assets/audio/bgm/vol1_ambient.wav",
+      "gain": 0.82
+    },
+    "salty_tome_alley_patch": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
     },
     "pharmacy_floor": {
       "bed": "assets/audio/bgm/vol1_pharmacy.wav",

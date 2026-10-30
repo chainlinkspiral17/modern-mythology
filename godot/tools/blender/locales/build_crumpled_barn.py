@@ -180,7 +180,7 @@ def build_interior():
              (0.55, 0.62, 0.66, 0.35))
     # (2026-10-30: the shard stood across Jiggles in both inserts; it is a
     # stub in the W corner now, and the rest of the pane lies on the boards)
-    make_box("Cab_Glass_Shard", (cbx - 0.24, cby + 0.42, 0.86), (0.10, 0.02, 0.14),
+    make_box("Cab_Glass_Shard", (cbx - 0.255, cby + 0.42, 0.86), (0.10, 0.02, 0.14),
              (0.55, 0.62, 0.66, 0.5))
     for i, (gx, gy_, w, d) in enumerate(((-0.15, 0.62, 0.16, 0.10), (0.12, 0.75, 0.10, 0.07),
                                          (0.30, 0.58, 0.07, 0.12), (-0.32, 0.90, 0.06, 0.05))):

@@ -235,6 +235,13 @@ def boxes_for(locale):
                     return _cache[locale]
                 except Exception:
                     pass
+            # a caller that skipped install_stubs() records the builder
+            # without any _props part (no walls, tables, figures) and that
+            # record would go to the disk cache every audit shares
+            # (2026-10-30: a probe script did, and the police station read
+            # 23 floating parts instead of 6)
+            if not getattr(P.A, "STUBS_ON", False):
+                P.A.install_stubs()
             bx, _err = P.record_builder(cand)
             _cache[locale] = bx or []
             if bx:

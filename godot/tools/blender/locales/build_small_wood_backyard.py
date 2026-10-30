@@ -68,7 +68,15 @@ def build_house():
         make_box(f"House_Window_{k}", (wx, 0.02, 1.6), (1.6, 0.04, 1.1), (0.30, 0.34, 0.36, 1.0))
         make_box(f"House_Window_{k}_Trim", (wx, 0.03, 1.6), (1.8, 0.02, 1.3), TRIM)
         make_box(f"House_Window_{k}_Glass", (wx, 0.05, 1.6), (1.6, 0.01, 1.1), (0.30, 0.34, 0.36, 1.0))
-    make_box("Slider_Frame", (0.0, 0.03, 1.05), (2.4, 0.04, 2.1), TRIM)
+    # the slider's frame is four rails and the meeting stile, not a board:
+    # through the glass, the dim family room (window_backing_audit)
+    make_box("Slider_Room_Dark", (0.0, 0.012, 1.05), (2.2, 0.02, 1.95), (0.14, 0.12, 0.10, 1.0))
+    make_box("Slider_Room_Lamp_Glow", (-0.7, 0.024, 0.95), (0.30, 0.004, 0.40), (0.62, 0.46, 0.26, 1.0))
+    make_box("Slider_Frame_Head", (0.0, 0.03, 2.05), (2.4, 0.04, 0.10), TRIM)
+    make_box("Slider_Frame_Sill", (0.0, 0.03, 0.05), (2.4, 0.04, 0.10), TRIM)
+    for sx in (-1, 1):
+        make_box(f"Slider_Frame_Jamb_{sx:+d}", (sx * 1.15, 0.03, 1.05), (0.10, 0.04, 2.1), TRIM)
+    make_box("Slider_Frame_Stile", (0.0, 0.035, 1.05), (0.06, 0.03, 1.9), TRIM)
     make_box("Slider_Glass", (0.0, 0.05, 1.05), (2.2, 0.01, 1.95), (0.32, 0.38, 0.40, 1.0))
     make_box("House_Eave", (0.0, 0.6, 2.9), (18.6, 1.4, 0.16), TRIM)
     make_rot_box("House_Roof", (0.0, -2.6, 3.9), (18.8, 7.0, 0.2), (0.30, 0.28, 0.28, 1.0), roll=-0.32)
@@ -77,8 +85,8 @@ def build_house():
         make_box(f"Deck_Step_{k}", (0.0, 3.8 + k * 0.0, 0.10), (2.0, 0.5, 0.20), DECK)
     for k in range(9):
         make_box(f"Deck_Board_Seam_{k}", (-4.0 + k * 1.0, 1.8, 0.302), (0.02, 3.6, 0.004), (0.40, 0.30, 0.20, 1.0))
-    make_box("Deck_Grill", (3.2, 1.2, 0.75), (0.6, 0.5, 0.8), (0.12, 0.12, 0.12, 1.0))
-    make_cyl("Deck_Grill_Lid", (3.2, 1.2, 1.25), 0.32, 0.25, (0.12, 0.12, 0.12, 1.0), segments=12)
+    make_box("Deck_Grill", (3.2, 1.2, 0.70), (0.6, 0.5, 0.8), (0.12, 0.12, 0.12, 1.0))
+    make_cyl("Deck_Grill_Lid", (3.2, 1.2, 1.22), 0.32, 0.25, (0.12, 0.12, 0.12, 1.0), segments=12)
 
 
 def build_yard():
@@ -155,7 +163,7 @@ def build_party():
     for k in range(18):
         bx = -10.6 + r() * 2.2 if k % 2 else 9.0 + r() * 2.0
         by = 3.0 + r() * 19.0
-        make_box(f"Balloon_Husk_Stock_{k}", (bx, by, 0.04), (0.10, 0.07, 0.01),
+        make_box(f"Balloon_Husk_Stock_{k}", (bx, by, 0.005), (0.10, 0.07, 0.01),
                  ((0.96, 0.30, 0.40, 1.0), (0.30, 0.60, 0.96, 1.0), (0.96, 0.86, 0.24, 1.0), (0.50, 0.86, 0.40, 1.0))[k % 4])
     # (2026-10-30, draft 2's target) the party had nobody at it. Stand-ins
     # (scale and staging, never faces; the girl and the boy are the VN's):
@@ -208,7 +216,7 @@ def build_her_room():
         make_cyl(f"Stethoscope_Ear_Tip_{s_:+d}", (42.40 + s_ * 0.04, 2.68, 0.62), 0.012, 0.02, (0.20, 0.20, 0.22, 1.0), segments=8)
     # the unwrapped presents and their paper, on the bed's foot and the floor
     for k, (px, py, pz, col) in enumerate(((42.0, 2.15, 0.66, (0.30, 0.50, 0.86, 1.0)), (42.75, 2.05, 0.65, (0.96, 0.80, 0.24, 1.0)),
-                                           (41.3, 1.6, 0.12, (0.40, 0.76, 0.46, 1.0)))):
+                                           (41.3, 1.6, 0.096, (0.40, 0.76, 0.46, 1.0)))):
         make_box(f"Present_Open_{k}", (px, py, pz), (0.26, 0.22, 0.16), col)
     for k in range(5):
         make_box(f"Present_Paper_{k}", (41.0 + k * 0.32, 1.2 + (k % 2) * 0.35, 0.012), (0.30, 0.22, 0.008),
@@ -228,13 +236,13 @@ def build_her_room():
     make_box("Poster_Everest", (43.2, 0.09, 1.55), (0.80, 0.02, 0.56), (0.80, 0.86, 0.94, 1.0))
     make_box("Corkboard", (41.4, 0.09, 1.45), (0.70, 0.02, 0.50), (0.70, 0.56, 0.40, 1.0))
     for k in range(5):
-        make_box(f"Corkboard_Photo_{k}", (41.15 + (k % 3) * 0.24, 0.075, 1.38 + (k // 3) * 0.18), (0.14, 0.004, 0.10),
+        make_box(f"Corkboard_Photo_{k}", (41.15 + (k % 3) * 0.24, 0.102, 1.38 + (k // 3) * 0.18), (0.14, 0.004, 0.10),
                  (0.5 + k * 0.08, 0.6, 0.7 - k * 0.06, 1.0))
     # the china rabbit and a stuffed one, from the rabbit years
-    make_blob("Rabbit_Figurine", (40.55, 2.75, 0.82), 0.05, (0.94, 0.92, 0.88, 1.0), noise=0.1, seed=9, squash=0.9)
+    make_blob("Rabbit_Figurine", (40.55, 2.70, 0.805), 0.05, (0.94, 0.92, 0.88, 1.0), noise=0.1, seed=9, squash=0.9)
     make_blob("Stuffed_Rabbit", (42.9, 3.65, 0.78), 0.11, (0.84, 0.78, 0.70, 1.0), noise=0.12, seed=11, squash=0.85)
-    make_box("Her_Dresser", (43.95, 2.6, 0.45), (0.46, 1.0, 0.90), (0.88, 0.86, 0.80, 1.0))
-    make_box("Her_Dresser_Mirror", (44.27, 2.6, 1.30), (0.02, 0.60, 0.70), (0.66, 0.72, 0.76, 1.0))
+    make_box("Her_Dresser", (44.075, 2.6, 0.45), (0.46, 1.0, 0.90), (0.88, 0.86, 0.80, 1.0))
+    make_box("Her_Dresser_Mirror", (44.30, 2.6, 1.30), (0.02, 0.60, 0.70), (0.66, 0.72, 0.76, 1.0))
     # outside the window: the backyard's firs under the night sky
     for k in range(6):
         make_conifer(f"Her_Room_View_Fir_{k}", 38.0 + k * 2.4, 9.0 + (k % 2) * 3.0, 9.0 + (k % 3) * 3.0, FIR, TRUNK, skirt=0.24)

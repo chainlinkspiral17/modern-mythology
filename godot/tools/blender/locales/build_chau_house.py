@@ -737,8 +737,8 @@ def build_bath_2026_10():
     make_cyl("Deodorant_Can", (vx + 0.05, 0.86, 0.97), 0.026, 0.18, (0.16, 0.20, 0.30, 1.0), segments=10)
     make_cyl("Deodorant_Cap", (vx + 0.05, 0.86, 1.075), 0.024, 0.03, (0.80, 0.80, 0.82, 1.0), segments=10)
     # a towel bar on the bath's N wall by the door, one towel left on it
-    make_box("Towel_Bar", (9.3, 3.6 - 0.07 - 0.05, 1.20), (0.70, 0.02, 0.02), CHROME)
-    make_box("Towel_Bar_Towel", (9.3, 3.6 - 0.07 - 0.065, 0.95), (0.40, 0.03, 0.52), (0.94, 0.94, 0.92, 1.0))
+    make_box("Towel_Bar", (9.3, 3.6 - 0.07 - 0.015, 1.20), (0.70, 0.02, 0.02), CHROME)
+    make_box("Towel_Bar_Towel", (9.3, 3.6 - 0.07 - 0.03, 0.95), (0.40, 0.03, 0.52), (0.94, 0.94, 0.92, 1.0))
 
 
 def build_bedrooms_2026_10():
@@ -795,7 +795,7 @@ def build_bedrooms_2026_10():
     make_box("Steven_Bed_Poster", (10.9, 9.0 - 0.07 - 0.012, 1.95), (0.70, 0.02, 0.95), (0.10, 0.10, 0.16, 1.0))
     make_box("Steven_Bed_Poster_Art", (10.9, 9.0 - 0.07 - 0.024, 2.00), (0.56, 0.004, 0.62), (0.30, 0.50, 0.90, 1.0))
     make_box("Steven_Bed_Poster_Type", (10.9, 9.0 - 0.07 - 0.027, 1.60), (0.56, 0.002, 0.08), (0.96, 0.70, 0.24, 1.0))
-    make_chamfer_box("Steven_Hoodie", (dx + 0.66 + 0.29, dy + 0.05, 0.72), (0.06, 0.40, 0.45), (0.30, 0.30, 0.34, 1.0), chamfer=0.03)
+    make_chamfer_box("Steven_Hoodie", (dx + 0.66 + 0.23, dy + 0.05, 0.72), (0.06, 0.40, 0.45), (0.30, 0.30, 0.34, 1.0), chamfer=0.03)
     for k, (x, y, yaw) in enumerate(((9.55, 7.55, 0.4), (9.65, 7.25, -0.3))):
         make_rot_box(f"Steven_Sneaker_{k}", (x, y, 0.058), (0.11, 0.28, 0.09), (0.86, 0.86, 0.84, 1.0), yaw=yaw)
     for nm, (x, y) in (("Steven", (9.8, 6.3)), ("Mom", (9.8, 11.5))):
@@ -875,10 +875,10 @@ def build_game_room_2026_10():
     make_box("Cue_Rack", (gx - 1.7, ny - 0.02, 1.45), (0.56, 0.04, 1.10), WAL_LT)
     for k in range(4):
         make_rot_box(f"Cue_Rack_Cue_{k}", (gx - 1.9 + k * 0.13, ny - 0.07, 0.74), (0.022, 0.022, 1.45), (0.74, 0.58, 0.36, 1.0), roll=0.02 * (k - 1.5))
-    make_box("Game_Print_Frame", (gx + 1.9, ny - 0.02, 1.80), (1.30, 0.04, 0.95), (0.70, 0.60, 0.36, 1.0))
-    make_box("Game_Print_Mat", (gx + 1.9, ny - 0.043, 1.80), (1.16, 0.006, 0.81), (0.90, 0.88, 0.82, 1.0))
-    make_box("Game_Print_Image", (gx + 1.9, ny - 0.048, 1.80), (0.92, 0.004, 0.58), (0.30, 0.42, 0.52, 1.0))
-    make_box("Game_Print_Image_Band", (gx + 1.9, ny - 0.051, 1.66), (0.92, 0.002, 0.14), (0.72, 0.56, 0.34, 1.0))
+    make_box("Game_Print_Frame", (gx + 1.9, ny + 0.02, 1.80), (1.30, 0.04, 0.95), (0.70, 0.60, 0.36, 1.0))
+    make_box("Game_Print_Mat", (gx + 1.9, ny - 0.003, 1.80), (1.16, 0.006, 0.81), (0.90, 0.88, 0.82, 1.0))
+    make_box("Game_Print_Image", (gx + 1.9, ny - 0.008, 1.80), (0.92, 0.004, 0.58), (0.30, 0.42, 0.52, 1.0))
+    make_box("Game_Print_Image_Band", (gx + 1.9, ny - 0.011, 1.66), (0.92, 0.002, 0.14), (0.72, 0.56, 0.34, 1.0))
     # -- a second club chair, a side table, a rug --
     make_box("Game_Rug", (gx + 2.05, 8.3, 0.018), (1.7, 2.6, 0.012), (0.50, 0.36, 0.26, 1.0))
     make_box("Game_Chair_2_Base", (gx + 2.2, 9.1, 0.22), (0.86, 0.86, 0.44), LEATHER)

@@ -76,7 +76,7 @@ def build_influx():
     make_box("Influx_Fridge", (6.6, 0.40, 0.85), (0.70, 0.70, 1.70), (0.88, 0.88, 0.86, 1.0))
     make_table("Influx_Table", 4.6, 2.6, w=0.9, d=0.7)
     make_chair("Influx_Chair", 4.6, 2.0, yaw=0.0)
-    make_box("Influx_Keys", (4.4, 2.7, 0.77), (0.08, 0.04, 0.01), (0.80, 0.78, 0.70, 1.0))
+    make_box("Influx_Keys", (4.4, 2.7, 0.755), (0.08, 0.04, 0.01), (0.80, 0.78, 0.70, 1.0))
     make_box("Influx_Bathroom_Door_Ajar", (6.0, 5.3, 1.02), (0.84, 0.04, 2.04), (0.80, 0.78, 0.72, 1.0))
     # outside the window: the lot under sodium lamps, the gate, the next building
     make_box("Complex_Lot", (3.0, 18.0, -2.8), (30.0, 22.0, 0.04), (0.20, 0.20, 0.22, 1.0))
@@ -93,7 +93,7 @@ def build_influx():
     make_box("Complex_Building_Across", (2.0, 28.0, 2.0), (20.0, 8.0, 10.0), (0.66, 0.60, 0.50, 1.0))
     for k in range(8):
         for j in range(2):
-            make_box(f"Complex_Across_Window_{k}_{j}", (-6.0 + k * 2.4, 23.95, 0.4 + j * 3.0), (1.2, 0.04, 1.1),
+            make_box(f"Complex_Across_Window_{k}_{j}", (-6.0 + k * 2.4, 23.975, 0.4 + j * 3.0), (1.2, 0.04, 1.1),
                      (1.0, 0.82, 0.54, 1.0) if (k + j) % 4 == 0 else (0.16, 0.18, 0.22, 1.0))
 
 
@@ -109,7 +109,7 @@ def build_chess_hall():
     for s in (-1, 1):
         make_box(f"Elevator_Wall_{s:+d}", (41.6 + s * 0.82, 1.0, 1.18), (0.04, 1.6, 2.36), (0.60, 0.50, 0.36, 1.0))
     make_box("Elevator_Wall_Back", (41.6, 0.18, 1.18), (1.6, 0.04, 2.36), (0.60, 0.50, 0.36, 1.0))
-    make_box("Elevator_Handrail", (41.6, 0.24, 0.92), (1.4, 0.04, 0.04), (0.74, 0.66, 0.40, 1.0))
+    make_box("Elevator_Handrail", (41.6, 0.225, 0.92), (1.4, 0.04, 0.04), (0.74, 0.66, 0.40, 1.0))
     make_box("Elevator_Panel", (42.38, 1.4, 1.2), (0.03, 0.22, 0.60), (0.70, 0.66, 0.56, 1.0))
     for k in range(8):
         make_cyl(f"Elevator_Button_{k}", (42.36, 1.34 + (k % 2) * 0.10, 0.98 + (k // 2) * 0.11), 0.018, 0.01, (0.94, 0.90, 0.70, 1.0), segments=8, axis='X')
@@ -149,7 +149,7 @@ def build_chess_hall():
     make_box("Garden_Trough", (hx, hy, hz + 0.19), (0.70, 0.26, 0.20), (0.56, 0.36, 0.24, 1.0))
     make_box("Garden_Trough_Soil", (hx, hy, hz + 0.295), (0.66, 0.22, 0.01), (0.30, 0.22, 0.16, 1.0))
     for k in range(4):
-        make_blob(f"Garden_Trough_Plant_{k}", (hx - 0.24 + k * 0.16, hy, hz + 0.39), 0.07, (0.34, 0.56, 0.28, 1.0), noise=0.2, seed=k, squash=0.9)
+        make_blob(f"Garden_Trough_Plant_{k}", (hx - 0.24 + k * 0.16, hy, hz + 0.36), 0.07, (0.34, 0.56, 0.28, 1.0), noise=0.2, seed=k, squash=0.9)
     make_box("Hall_Doormat", (40.95, 12.0, 0.008), (0.40, 0.70, 0.01), (0.40, 0.34, 0.24, 1.0))
 
 

@@ -225,7 +225,7 @@ def _figure(tag, x, y, z, r, coat, standing=True, helmet=None):
     else:
         tz = z
     make_box(f"{tag}_Stock_{n}_T", (x, y, tz + 0.30 * h), (0.42, 0.28, 0.60 * h), coat)
-    make_cyl(f"{tag}_Stock_{n}_H", (x, y, tz + 0.60 * h + 0.14), 0.11, 0.24, helmet or skin, segments=8)
+    make_cyl(f"{tag}_Stock_{n}_H", (x, y, tz + 0.60 * h + 0.125), 0.11, 0.24, helmet or skin, segments=8)
     if helmet is None and r() < 0.3:
         make_cyl(f"{tag}_Stock_{n}_C", (x, y, tz + 0.60 * h + 0.29), 0.115, 0.08, COATS[int(r() * 10) % 10], segments=8)
 
@@ -339,6 +339,8 @@ def build_light_poles():
                 ly = -1.8 + li * 0.9
                 make_cyl(f"Lamp_{pi}_{ai}_{li}", (px + toward * 0.62, py + ly, az + 0.32), 0.20, 0.22, LAMP, axis='X', segments=10)
                 make_cyl(f"Lamp_{pi}_{ai}_{li}_Can", (px + toward * 0.48, py + ly, az + 0.32), 0.23, 0.12, (0.20, 0.20, 0.22, 1.0), axis='X', segments=10)
+                # the yoke the can swings in, bolted to the crossarm
+                make_box(f"Lamp_Yoke_Stock_{pi}_{ai}_{li}", (px + toward * 0.33, py + ly, az + 0.16), (0.24, 0.05, 0.32), (0.20, 0.20, 0.22, 1.0))
 
 
 def build_scoreboard():
@@ -368,7 +370,7 @@ def build_concession():
     make_box("Concession_Window", (cx, cy + 2.01, 1.55), (3.2, 0.02, 1.0), (0.96, 0.84, 0.58, 1.0))
     make_box("Concession_Counter", (cx, cy + 2.25, 1.02), (3.4, 0.5, 0.06), PAINT)
     make_rot_box("Concession_Awning", (cx, cy + 2.6, 2.75), (3.8, 1.3, 0.06), TRIM, roll=-0.30)
-    make_box("Concession_Sign", (cx, cy + 2.03, 2.30), (3.0, 0.02, 0.40), PAINT)
+    make_box("Concession_Sign", (cx, cy + 2.01, 2.30), (3.0, 0.02, 0.40), PAINT)
 
 
 def build_lot_and_street():

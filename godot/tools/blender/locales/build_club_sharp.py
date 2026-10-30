@@ -244,9 +244,9 @@ def build_cage_2026_10():
     cage("club_sharp_cage_up", True)
     # the door, swung down off the tipped cage onto the tiles; the dagger inside
     make_rot_box("Cg_Door__club_sharp_cage_up", (cx - 0.20, cy - S - 0.30, 0.03), (1.0, 0.56, 0.02), IRON, yaw=0.12)
-    make_box("Cg_Dagger_Blade__club_sharp_cage_up", (cx + 0.05, cy + 0.05, 0.075), (0.26, 0.04, 0.008), (0.80, 0.80, 0.84, 1.0))
-    make_box("Cg_Dagger_Hilt__club_sharp_cage_up", (cx - 0.15, cy + 0.05, 0.08), (0.12, 0.03, 0.02), (0.30, 0.18, 0.12, 1.0))
-    make_box("Cg_Dagger_Guard__club_sharp_cage_up", (cx - 0.085, cy + 0.05, 0.08), (0.02, 0.10, 0.02), BRASS)
+    make_box("Cg_Dagger_Blade__club_sharp_cage_up", (cx + 0.05, cy + 0.05, 0.047), (0.26, 0.04, 0.008), (0.80, 0.80, 0.84, 1.0))
+    make_box("Cg_Dagger_Hilt__club_sharp_cage_up", (cx - 0.15, cy + 0.05, 0.052), (0.12, 0.03, 0.02), (0.30, 0.18, 0.12, 1.0))
+    make_box("Cg_Dagger_Guard__club_sharp_cage_up", (cx - 0.085, cy + 0.05, 0.052), (0.02, 0.10, 0.02), BRASS)
 
 
 def build_crowd_2026_10():
