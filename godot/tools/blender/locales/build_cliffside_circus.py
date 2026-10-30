@@ -60,7 +60,7 @@ COL_SKY = (0.62, 0.66, 0.68, 1.0)        # cold coastal overcast
 
 
 def build_ground():
-    make_box("Headland", (0.0, 6.0, 0.0), (30.0, 12.0, 0.06), COL_GRASS)
+    make_box("Headland", (0.0, 6.0, 0.0), (240.0, 12.0, 0.06), COL_GRASS)   # (2026-10-30) the headland runs out of frame both ways
     make_box("Yard", (0.0, 5.5, 0.02), (14.0, 8.0, 0.05), COL_DIRT)
 
 
@@ -220,25 +220,32 @@ def build_cliff_and_sea():
     overlooking jagged rock outcroppings, beaten raw by the harsh
     surf beneath'). The drop is 14m now — the old band fell 3m,
     which read as a garden wall, not an Oregon sea cliff."""
-    make_box("Cliff_Face_Upper", (0.0, 12.5, -3.2), (30.0, 1.0, 6.6), COL_CLIFF)
-    make_box("Cliff_Face_Lower", (0.0, 13.3, -10.4), (30.0, 1.8, 7.9),
+    make_box("Cliff_Face_Upper", (0.0, 12.5, -3.2), (240.0, 1.0, 6.6), COL_CLIFF)
+    make_box("Cliff_Face_Lower", (0.0, 13.3, -10.4), (240.0, 1.8, 7.9),
              (0.24, 0.23, 0.22, 1.0))
-    make_box("Cliff_Talus", (0.0, 14.3, -13.6), (30.0, 1.6, 1.6), COL_ROCK_JAG)
+    make_box("Cliff_Talus", (0.0, 14.3, -13.6), (240.0, 1.6, 1.6), COL_ROCK_JAG)
     # Jagged black outcroppings rising from the surf, tall enough
     # to matter against a 14m wall
-    jags = [(-8.0, 15.4, 4.2), (-3.5, 16.2, 5.8), (0.5, 15.6, 3.2), (4.5, 16.6, 6.6),
-            (8.5, 15.8, 3.8), (11.5, 17.0, 5.0), (-11.0, 16.6, 3.0)]
-    for i, (jx, jy, jh) in enumerate(jags):
-        make_box(f"Jag_{i}", (jx, jy, -14.0 + jh / 2.0), (1.5 + 0.4 * (i % 3), 1.3, jh),
-                 COL_ROCK_JAG)
-        make_box(f"Jag_{i}_Tip", (jx + 0.25, jy + 0.15, -14.0 + jh + 0.3),
-                 (0.6, 0.6, 0.7), COL_ROCK_JAG)
+    # (2026-10-30) the jags as rock, not boxes: craggy blobs along the foot,
+    # the cliff's whole length in view from the water
+    from _props.geometry import make_blob
+    import random as _r
+    rng = _r.Random(1902)
+    x, i = -110.0, 0
+    while x < 110.0:
+        jh = rng.uniform(2.5, 7.0) if abs(x) < 20 else rng.uniform(1.5, 5.0)
+        r = rng.uniform(1.0, 1.5)
+        sq = jh / (2.0 * r)
+        make_blob(f"Jag_{i}", (x, rng.uniform(15.1, 15.8), -14.0 + jh * 0.5 - 0.4), r, COL_ROCK_JAG,
+                  noise=0.30, seed=500 + i, rings=6, segments=8, squash=sq)
+        x += rng.uniform(3.5, 7.5)
+        i += 1
     # Surf beaten raw around the rocks, far below
-    make_box("Surf_0", (0.0, 15.8, -13.75), (28.0, 0.7, 0.06), COL_SURF)
-    make_box("Surf_1", (-2.0, 17.2, -13.8), (24.0, 0.5, 0.05), COL_SURF)
-    make_box("Surf_2", (3.0, 18.6, -13.85), (20.0, 0.4, 0.05), COL_SURF)
-    make_box("Sea_Near", (0.0, 21.0, -13.9), (44.0, 6.0, 0.06), COL_SEA)
-    make_box("Sea_Far", (0.0, 27.0, -13.5), (52.0, 6.5, 0.06), COL_SEA_FAR)
+    make_box("Surf_0", (0.0, 15.8, -13.75), (220.0, 0.7, 0.06), COL_SURF)
+    make_box("Surf_1", (-2.0, 17.2, -13.8), (210.0, 0.5, 0.05), COL_SURF)
+    make_box("Surf_2", (3.0, 18.6, -13.85), (200.0, 0.4, 0.05), COL_SURF)
+    make_box("Sea_Near", (0.0, 21.0, -13.9), (240.0, 6.0, 0.06), COL_SEA)
+    make_box("Sea_Far", (0.0, 27.0, -13.5), (260.0, 6.5, 0.06), COL_SEA_FAR)
 
 
 def main():

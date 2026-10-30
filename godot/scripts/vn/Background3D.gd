@@ -5084,22 +5084,6 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
-	"zz_bench_a": {
-		"scene": "res://scenes/locales/missing_link_exterior.tscn",
-		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
-		"camera_origin": Vector3(6.6, 1.25, -6.0),
-		"camera_rotation": Vector3(-0.03, 1.326, 0.0),
-		"fov": 60.0,
-		"suppress_input": true,
-	},
-	"zz_bench_b": {
-		"scene": "res://scenes/locales/missing_link_exterior.tscn",
-		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
-		"camera_origin": Vector3(5.6, 1.15, -6.9),
-		"camera_rotation": Vector3(-0.02, 2.80, 0.0),
-		"fov": 64.0,
-		"suppress_input": true,
-	},
 	"shuttle_bench": {
 		"scene": "res://scenes/locales/missing_link_exterior.tscn",
 		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
@@ -5108,9 +5092,12 @@ const CAMERA_PRESETS := {
 		# under the depot awning (godot 5.6, z=-6.6) looking W past
 		# the diner front: window band right, pumps + pole sign
 		# center, wet road left, awning post kissing frame right.
-		"camera_origin": Vector3(5.5, 1.35, -6.3),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(72.0), 0.0),
-		"fov": 58.0,
+		# (2026-10-30, pass 241) from the bench's E end, a little S of W: the
+		# old seat at x 5.5 had the route board's post at the left edge and
+		# the awning's back panel across the right third
+		"camera_origin": Vector3(6.6, 1.25, -6.0),
+		"camera_rotation": Vector3(-0.03, 1.60, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"briar_falls_rest_stop": {
@@ -5724,14 +5711,14 @@ const CAMERA_PRESETS := {
 	},
 	# (2026-10-30, pass 241) "The main building was true enough built up
 	# along the edge of a cliff — overlooking jagged rock outcroppings,
-	# beaten raw by the harsh surf beneath." On the headland's E end at the
-	# lip, looking WNW along the edge: the main building on it (left), the
-	# drop, the jags and the surf at its foot, the sea stacks out (right).
+	# beaten raw by the harsh surf beneath." From off the water below (a
+	# view from on top hid the drop behind the lip): up at the cliff with
+	# the circus on its edge, the jags and the surf at its foot.
 	"cliffside_circus_edge": {
 		"scene": "res://scenes/locales/cliffside_circus.tscn",
 		"requires_glb": "res://assets/3d/locales/cliffside_circus.glb",
-		"camera_origin": Vector3(12.0, 1.75, -11.3),
-		"camera_rotation": Vector3(-0.30, 1.00, 0.0),
+		"camera_origin": Vector3(6.0, -11.0, -30.0),
+		"camera_rotation": Vector3(0.35, 2.678, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},

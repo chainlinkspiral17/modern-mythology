@@ -217,14 +217,27 @@ def build_shore_2026_09():
     reflection of the moon gap (a pale smear on the wet band under
     it); the grunion run bigger and brighter at the tide-edge vantage
     (the run is the vol2 interlude's whole subject)."""
-    # the cloud deck — (x, y, z, radius, squash, seed)
-    deck = [(-150.0, 150.0, 30.0, 34.0, 0.26, 11), (-95.0, 175.0, 34.0, 30.0, 0.24, 12),
-            (-45.0, 160.0, 27.0, 28.0, 0.28, 13), (-8.0, 190.0, 36.0, 26.0, 0.22, 14),
-            (62.0, 165.0, 30.0, 30.0, 0.26, 15), (110.0, 185.0, 36.0, 32.0, 0.22, 16),
-            (160.0, 150.0, 28.0, 34.0, 0.26, 17), (20.0, 205.0, 46.0, 24.0, 0.20, 18),
-            (-120.0, 215.0, 48.0, 30.0, 0.20, 19)]
-    for i, (x, y, z, r, sq, sd) in enumerate(deck):
-        make_blob("Cloud_Deck_%d" % i, (x, y, z), r, COL_CLOUD, noise=0.30, seed=sd, rings=5, segments=12, squash=sq)
+    # the cloud deck (draft 3, 2026-10-30): nine dark blobs read as cut-outs
+    # pasted on the sky. "The moon could not be seen behind the clouds": a
+    # low continuous layer instead, two overlapping rows a shade under the
+    # overcast sky (the low one down to the horizon), and a paler moonlit
+    # mass over where the moon is, so the
+    # light comes THROUGH cloud and the disc never shows clean.
+    import random as _r
+    rng = _r.Random(2402)
+    n = 0
+    for row, (y0, z0, r0, sq, col, step) in enumerate((
+            (138.0, 11.0, 34.0, 0.17, (0.22, 0.23, 0.28, 1.0), 26.0),
+            (205.0, 30.0, 46.0, 0.14, (0.24, 0.25, 0.30, 1.0), 32.0))):
+        x = -290.0
+        while x < 290.0:
+            make_blob("Cloud_Deck_%d" % n, (x + rng.uniform(-6, 6), y0 + rng.uniform(-14, 14), z0 + rng.uniform(-3, 3)),
+                      r0 * rng.uniform(0.85, 1.15), col, noise=0.26, seed=100 + n, rings=5, segments=12, squash=sq)
+            x += step
+            n += 1
+    for m, (mx, my, mz, mr) in enumerate(((24.0, 190.0, 34.0, 30.0), (30.0, 198.0, 37.0, 22.0))):
+        make_blob("Cloud_Moonlit_%d" % m, (mx, my, mz), mr, (0.30, 0.31, 0.37, 1.0), noise=0.22, seed=300 + m,
+                  rings=5, segments=12, squash=0.20)
     # the moon behind the gap between decks 3 and 4 (x 8..36)
     make_blob("Moon_Disc", (26.0, 240.0, 38.0), 5.0, (0.70, 0.72, 0.78, 1.0), noise=0.02, seed=3, rings=6, segments=12, squash=1.0)
     make_blob("Moon_Glow_Halo", (26.0, 242.0, 38.0), 11.0, COL_MOONGLOW, noise=0.10, seed=4, rings=5, segments=12, squash=0.8)
