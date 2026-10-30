@@ -315,9 +315,9 @@
   "objects": 248
  },
  "small_wood_farmhouse": {
-  "draw": 224,
-  "prims": 46112,
-  "objects": 394
+  "draw": 234,
+  "prims": 47336,
+  "objects": 404
  },
  "small_wood_field": {
   "draw": 276,
@@ -366,13 +366,13 @@
  },
  "vehicle_cab": {
   "draw": 424,
-  "prims": 45928,
+  "prims": 45992,
   "objects": 594
  },
  "vol3_rooms": {
-  "draw": 354,
-  "prims": 271720,
-  "objects": 524
+  "draw": 358,
+  "prims": 271896,
+  "objects": 528
  },
  "vol4_apartments": {
   "draw": 100,

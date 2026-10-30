@@ -183,7 +183,7 @@ def build_kitchen_2026_10():
     cab = (0.70, 0.64, 0.50, 1.0)
     # the faucet and its handles behind the basin, a dish rack to the S
     make_cyl("Kitchen_Faucet_Base", (ex - 0.06, 7.0, 0.98), 0.03, 0.08, (0.80, 0.80, 0.82, 1.0), segments=8)
-    make_box("Kitchen_Faucet_Spout", (ex - 0.18, 7.0, 1.05), (0.24, 0.025, 0.025), (0.80, 0.80, 0.82, 1.0))
+    make_box("Kitchen_Faucet_Spout", (ex - 0.18, 7.0, 1.04), (0.24, 0.025, 0.025), (0.80, 0.80, 0.82, 1.0))   # on its base
     for i, dy in enumerate((-0.12, 0.12)):
         make_cyl(f"Kitchen_Faucet_Handle_{i}", (ex - 0.06, 7.0 + dy, 0.97), 0.022, 0.05, (0.80, 0.80, 0.82, 1.0), segments=8)
     make_box("Kitchen_Dish_Rack", (ex - 0.33, 6.30, 1.00), (0.36, 0.44, 0.12), (0.84, 0.84, 0.86, 1.0))
@@ -368,7 +368,14 @@ def _placed(build, at, prefix, drop=()):
 def main():
     clear_scene()
     import build_small_wood_ranch as RANCH
-    _placed(RANCH.build_bedroom, ROOM_AT, "LR_", drop=("View_N",))
+    # (round 6) the ranch room's far firs ride up with the room to the second
+    # storey (they stood 2.2 m in the air); here they are dropped and
+    # planted on the ground where they stood, as conifers
+    _placed(RANCH.build_bedroom, ROOM_AT, "LR_", drop=("View_N", "Fir_Far"))
+    from _props.trees import make_conifer
+    for k in range(9):
+        make_conifer(f"Fir_Far_{k}", -20.0 + k * 5.0 + ROOM_AT[0], 4.2 + 34.0 + (k % 3) * 4.0 + ROOM_AT[1], 10.0 + (k % 4) * 1.5,
+                     (0.12, 0.20, 0.14, 1.0), (0.24, 0.20, 0.16, 1.0), skirt=0.16)
     _placed(RANCH.build_second_house, SECOND_AT, "LS_", drop=("SH_View_E",))
     build_house()
     build_porch_and_yard()
