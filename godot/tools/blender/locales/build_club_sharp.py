@@ -159,6 +159,20 @@ def build_atrium_and_arcade():
                 make_box(f"Cabinet_{k}_Marquee", (x, cy + sgn * 0.402, LOW_Z + 1.64), (0.60, 0.004, 0.16), scr[rnd.randrange(4)])
                 make_box(f"Cabinet_{k}_Panel", (x, cy + sgn * 0.47, LOW_Z + 0.96), (0.60, 0.14, 0.06), (0.20, 0.20, 0.24, 1.0))
                 k += 1
+    # (2026-10-30) the arcade's walls read black past the cabinets: neon
+    # strips along the W and N walls under the deck, a change machine and a
+    # prize counter at the N end, clear of the stair — what a gigantic arcade has
+    for k, (col, z) in enumerate(((NEON_CYAN, LOW_Z + 2.9), (NEON_PINK, LOW_Z + 2.6))):
+        make_box(f"Arcade_Neon_W_{k}", (XW + 0.02, D / 2.0, z), (0.03, D - 1.2, 0.05), col)
+        make_box(f"Arcade_Neon_N_{k}", ((XW + ATRIUM_X1) / 2.0, YN - 0.02, z), (ATRIUM_X1 - XW - 1.2, 0.03, 0.05), col)
+    make_box("Arcade_Change_Machine", (XW + 0.32, YN - 1.6, LOW_Z + 0.85), (0.44, 0.50, 1.70), (0.62, 0.64, 0.68, 1.0))
+    make_box("Arcade_Change_Machine_Face", (XW + 0.555, YN - 1.6, LOW_Z + 1.20), (0.01, 0.34, 0.40), NEON_GREEN)
+    make_box("Arcade_Prize_Counter", (XW + 2.6, YN - 0.9, LOW_Z + 0.50), (2.6, 0.60, 1.00), (0.20, 0.10, 0.26, 1.0))
+    make_box("Arcade_Prize_Counter_Glass", (XW + 2.6, YN - 0.9, LOW_Z + 1.02), (2.5, 0.50, 0.04), (0.60, 0.70, 0.86, 1.0))
+    rnd_p = random.Random(31)
+    for i in range(14):
+        make_box(f"Arcade_Prize_{i}", (XW + 1.45 + i * 0.165, YN - 0.9 + rnd_p.uniform(-0.12, 0.12), LOW_Z + 1.10),
+                 (0.10, 0.10, 0.12), scr[i % 4])
     make_box("Arcade_Carpet", ((XW + ATRIUM_X1) / 2.0 - 0.3, D / 2.0, LOW_Z + 0.004), (ATRIUM_X1 - XW - 1.2, D - 1.0, 0.008), (0.16, 0.10, 0.30, 1.0))
     for i in range(40):
         make_box(f"Arcade_Carpet_Star_{i}", (rnd.uniform(XW + 0.8, ATRIUM_X1 - 1.0), rnd.uniform(1.0, D - 1.0), LOW_Z + 0.0095), (0.10, 0.10, 0.002), scr[i % 4])
