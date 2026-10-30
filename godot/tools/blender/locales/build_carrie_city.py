@@ -447,7 +447,10 @@ def build_sister_2026_10():
             continue                               # the frame hangs there
         make_box(f"Sister_Panel_Stock_N_{k}", (x, ny - 0.007, z0 + H / 2.0), (0.012, 0.003, H - 0.04), GROOVE)
     # the stain on the ceiling, the hole in the partition
-    make_blob("Sister_Ceiling_Stain", (85.8, 5.2, z0 + H - 0.006), 0.55, (0.62, 0.52, 0.38, 1.0), noise=0.35, seed=7, squash=0.02)
+    # (a flat ring-marked stain on the plaster, not a lump: three discs, darker at the tide line)
+    for k, (dx, dy, r, col) in enumerate(((0.0, 0.0, 0.58, (0.66, 0.58, 0.44, 1.0)), (0.08, -0.05, 0.44, (0.74, 0.68, 0.56, 1.0)),
+                                          (0.30, 0.32, 0.26, (0.68, 0.60, 0.46, 1.0)))):
+        make_cyl(f"Sister_Ceiling_Stain_{k}", (85.8 + dx, 5.2 + dy, z0 + H - 0.003 - 0.002 * k), r, 0.002, col, segments=20)
     make_blob("Sister_Wall_Hole", (87.94, 6.3, z0 + 1.15), 0.09, (0.16, 0.14, 0.12, 1.0), noise=0.45, seed=8, squash=0.15)
     # the playpen, the high chair, the box fan
     px, py = 86.7, 3.4
@@ -477,8 +480,17 @@ def build_sister_2026_10():
         make_blob(f"Sister_Clothes_{k}", (x, y, z + r * 0.27), r, col, noise=0.35, seed=20 + k, squash=0.3)
     make_rot_box("Sister_Lone_Sock", (86.2, 4.6, z0 + 0.012), (0.08, 0.24, 0.02), (0.92, 0.92, 0.90, 1.0), yaw=0.7)
     # the dryer piled with the load nobody folded
-    make_blob("Dryer_Pile", (91.5, 8.4, z0 + 0.88 + 0.12), 0.34, (0.70, 0.70, 0.74, 1.0), noise=0.3, seed=30, squash=0.4)
+    make_blob("Dryer_Pile", (91.5, 8.28, z0 + 0.88 + 0.10), 0.30, (0.70, 0.70, 0.74, 1.0), noise=0.3, seed=30, squash=0.4)
     make_blob("Dryer_Pile_2", (91.35, 8.3, z0 + 0.88 + 0.22), 0.20, (0.40, 0.46, 0.60, 1.0), noise=0.3, seed=31, squash=0.5)
+    # the machines' faces (2026-10-30: two blank white boxes in the dryer insert):
+    # the dryer's round door, the washer's lid seam, the backsplash and its knobs
+    for nm, x in (("Dryer", 91.5), ("Washer", 90.8)):
+        make_box(f"{nm}_Backsplash", (x, 8.4 + 0.27, z0 + 0.88 + 0.09), (0.66, 0.10, 0.18), (0.86, 0.86, 0.84, 1.0))
+        for k in range(2):
+            make_cyl(f"{nm}_Knob_{k}", (x - 0.18 + 0.36 * k, 8.4 + 0.215, z0 + 0.97), 0.025, 0.02, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=10)
+    make_cyl("Dryer_Door", (91.5, 8.4 - 0.335, z0 + 0.48), 0.21, 0.012, (0.70, 0.72, 0.72, 1.0), axis='Y', segments=20)
+    make_cyl("Dryer_Door_Glass", (91.5, 8.4 - 0.343, z0 + 0.48), 0.15, 0.006, (0.30, 0.32, 0.34, 1.0), axis='Y', segments=20)
+    make_box("Washer_Lid_Seam", (90.8, 8.32, z0 + 0.881), (0.56, 0.44, 0.002), (0.66, 0.66, 0.64, 1.0))
     # beer cans and an ashtray on the TV stand, a baby bottle; diapers
     for k in range(3):
         make_cyl(f"Sister_Beer_Can_{k}", (82.40 + 0.08 * k, 4.72 + 0.03 * k, z0 + 0.66), 0.033, 0.12, (0.80, 0.80, 0.84, 1.0), segments=10)
