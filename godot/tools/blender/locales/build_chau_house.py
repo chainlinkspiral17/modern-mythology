@@ -327,19 +327,19 @@ def build_hall_rooms():
     make_box("Steven_Controller_On_Arm__chau_steven_room", (ax - 0.05, ay + 0.05, 0.515), (0.14, 0.06, 0.03), (0.14, 0.14, 0.16, 1.0))   # on the blanket (pass 164)
     # Mrs. Chau's room (y 9..14): the bed, the dresser and its mirror
     make_bed("Mom_Bed", X1 - 0.10 - 1.1, 12.4, head="+X", w=1.60, d=2.1, blanket_col=(0.80, 0.74, 0.66, 1.0))
-    make_box("Mom_Dresser", (HALL_X1 + 0.07 + 0.26, 12.0, 0.42), (0.50, 1.20, 0.84), (0.52, 0.40, 0.30, 1.0))
+    make_box("Mom_Dresser", (HALL_X1 + 0.07 + 0.26, 12.60, 0.42), (0.50, 1.20, 0.84), (0.52, 0.40, 0.30, 1.0))
     # (pass 168: the mirror in a frame, its bevel line, the dresser top dressed — the
     # chapter's insert "pulls at her bangs in the mirror" is cut to it)
-    make_box("Mom_Mirror_Frame", (HALL_X1 + 0.085, 12.0, 1.40), (0.03, 0.92, 1.02), (0.46, 0.34, 0.24, 1.0))
-    make_box("Mom_Dresser_Mirror", (HALL_X1 + 0.105, 12.0, 1.40), (0.01, 0.80, 0.90), (0.72, 0.78, 0.82, 1.0))
-    make_box("Mom_Mirror_Bevel", (HALL_X1 + 0.111, 12.0, 1.40), (0.002, 0.74, 0.84), (0.78, 0.84, 0.88, 1.0))
+    make_box("Mom_Mirror_Frame", (HALL_X1 + 0.085, 12.60, 1.40), (0.03, 0.92, 1.02), (0.46, 0.34, 0.24, 1.0))
+    make_box("Mom_Dresser_Mirror", (HALL_X1 + 0.105, 12.60, 1.40), (0.01, 0.80, 0.90), (0.72, 0.78, 0.82, 1.0))
+    make_box("Mom_Mirror_Bevel", (HALL_X1 + 0.111, 12.60, 1.40), (0.002, 0.74, 0.84), (0.78, 0.84, 0.88, 1.0))
     for k in range(3):
-        make_box(f"_Stock_Mom_Drawer_Seam_{k}", (HALL_X1 + 0.07 + 0.505, 12.0, 0.21 + k * 0.21), (0.004, 1.10, 0.008), (0.40, 0.30, 0.22, 1.0))
-        make_box(f"_Stock_Mom_Drawer_Pull_{k}", (HALL_X1 + 0.07 + 0.52, 12.0, 0.31 + k * 0.21), (0.02, 0.12, 0.012), (0.70, 0.62, 0.40, 1.0))
-    make_cyl("Mom_Perfume", (HALL_X1 + 0.07 + 0.30, 11.55, 0.90), 0.03, 0.12, (0.80, 0.60, 0.70, 0.7), segments=10)
-    make_box("Mom_Hairbrush", (HALL_X1 + 0.07 + 0.26, 12.35, 0.855), (0.20, 0.06, 0.03), (0.30, 0.22, 0.18, 1.0))
-    make_box("Mom_Photo_Frame", (HALL_X1 + 0.07 + 0.16, 11.75, 0.93), (0.02, 0.14, 0.18), (0.70, 0.62, 0.40, 1.0))
-    make_box("Mom_Jewelry_Box", (HALL_X1 + 0.07 + 0.34, 12.30, 0.89), (0.14, 0.10, 0.10), (0.36, 0.26, 0.22, 1.0))
+        make_box(f"_Stock_Mom_Drawer_Seam_{k}", (HALL_X1 + 0.07 + 0.505, 12.60, 0.21 + k * 0.21), (0.004, 1.10, 0.008), (0.40, 0.30, 0.22, 1.0))
+        make_box(f"_Stock_Mom_Drawer_Pull_{k}", (HALL_X1 + 0.07 + 0.52, 12.60, 0.31 + k * 0.21), (0.02, 0.12, 0.012), (0.70, 0.62, 0.40, 1.0))
+    make_cyl("Mom_Perfume", (HALL_X1 + 0.07 + 0.30, 12.15, 0.90), 0.03, 0.12, (0.80, 0.60, 0.70, 0.7), segments=10)
+    make_box("Mom_Hairbrush", (HALL_X1 + 0.07 + 0.26, 12.95, 0.855), (0.20, 0.06, 0.03), (0.30, 0.22, 0.18, 1.0))
+    make_box("Mom_Photo_Frame", (HALL_X1 + 0.07 + 0.16, 12.35, 0.93), (0.02, 0.14, 0.18), (0.70, 0.62, 0.40, 1.0))
+    make_box("Mom_Jewelry_Box", (HALL_X1 + 0.07 + 0.34, 12.90, 0.89), (0.14, 0.10, 0.10), (0.36, 0.26, 0.22, 1.0))
     # her room, furnished: a nightstand and lamp, a rug, drapes on the E window, the
     # suitcase just set down inside the door (the scene's state)
     make_box("Mom_Nightstand", (X1 - 0.10 - 0.25, 10.9, 0.30), (0.50, 0.50, 0.60), (0.52, 0.40, 0.30, 1.0))
@@ -741,6 +741,82 @@ def build_bath_2026_10():
     make_box("Towel_Bar_Towel", (9.3, 3.6 - 0.07 - 0.065, 0.95), (0.40, 0.03, 0.52), (0.94, 0.94, 0.92, 1.0))
 
 
+def build_bedrooms_2026_10():
+    """DRAFT 4 of the two bedrooms (2026-10-30): each was a 4 x 5 m beige box
+    with its furniture against the walls and nothing else.
+    STEVEN'S (vol 3 ch8: Aaron "hunched by the computer ... transfixed with
+    levels of murky Internet correspondence"; vol 4: "parties to go to, raves
+    to track down"): rave flyers on the W wall round the poster and over the
+    desk; the desk worked at (mousepad and mouse, desk speakers, soda cans, glow
+    sticks); a CD tower by the desk; a low console under the E
+    window with the stereo and its two speakers; a poster over the bed; a
+    hoodie over the chair; sneakers by the bed; a flush ceiling light.
+    MRS. CHAU'S ("Her tiny dog runs up to her begging for food"): the dog's
+    bed and bowls; a bench at the foot of the bed; a reading chair by the
+    window; a framed landscape on the N wall; the ceiling light. (The dresser
+    moved 0.6 m N: it stood across her door's opening.)
+    Draft 5 targets: Steven's closet doors, a beanbag, the monitor's glow on
+    Aaron's side; her room's vanity stool, the dog itself as a figure, family
+    photos on the dresser."""
+    wx = HALL_X1 + 0.07                    # the rooms' W wall face
+    FLY = ((0.90, 0.30, 0.60, 1.0), (0.30, 0.80, 0.90, 1.0), (0.96, 0.86, 0.24, 1.0), (0.50, 0.90, 0.40, 1.0),
+           (0.60, 0.40, 0.90, 1.0), (0.96, 0.50, 0.20, 1.0))
+    for k, (y, z, w, h) in enumerate(((7.35, 1.90, 0.21, 0.30), (7.45, 1.45, 0.15, 0.21), (8.62, 1.75, 0.21, 0.30),
+                                      (8.55, 2.25, 0.15, 0.21), (4.10, 1.55, 0.21, 0.30), (4.45, 1.70, 0.15, 0.21),
+                                      (4.85, 1.50, 0.21, 0.30), (5.05, 1.95, 0.15, 0.21))):
+        make_box(f"Steven_Flyer_{k}", (wx + 0.004, y, z), (0.004, w, h), FLY[k % 6])
+        make_box(f"Steven_Flyer_{k}_Type", (wx + 0.007, y, z + h * 0.18), (0.002, w * 0.8, h * 0.16), ((0.10, 0.10, 0.12, 1.0), (0.96, 0.96, 0.94, 1.0))[k % 2])
+    dx, dy = wx + 0.36, 4.5
+    make_box("Steven_Mousepad", (dx + 0.20, dy - 0.40, 0.757), (0.22, 0.26, 0.004), (0.20, 0.24, 0.50, 1.0))
+    make_chamfer_box("Steven_Mouse", (dx + 0.20, dy - 0.40, 0.772), (0.10, 0.06, 0.03), (0.80, 0.76, 0.66, 1.0), chamfer=0.012)
+    for s in (-1, 1):
+        make_box(f"Steven_Desk_Speaker_{s:+d}", (dx - 0.18, dy + 0.10 + s * 0.30, 0.86), (0.12, 0.10, 0.20), (0.18, 0.18, 0.20, 1.0))
+    for k, y in enumerate((dy - 0.58, dy - 0.50)):
+        make_cyl(f"Steven_Soda_Can_{k}", (dx - 0.05 + 0.05 * k, y, 0.815), 0.033, 0.12, ((0.80, 0.14, 0.12, 1.0), (0.20, 0.50, 0.24, 1.0))[k], segments=10)
+    for k, (gx_, gy_, yaw, col) in enumerate(((dx + 0.22, dy - 0.63, 1.4, (0.40, 1.0, 0.50, 1.0)), (dx + 0.07, dy - 0.64, 1.5, (1.0, 0.40, 0.80, 1.0)),
+                                              (9.4, 6.4, 0.9, (0.40, 0.80, 1.0, 1.0)))):
+        z = 0.765 if k < 2 else 0.028
+        make_rot_box(f"Steven_Glowstick_{k}", (gx_, gy_, z), (0.015, 0.15, 0.015), col, yaw=yaw)
+    # the CD tower by the desk (its cases a joined stack)
+    make_box("Steven_CD_Tower", (wx + 0.14, 5.45, 0.55), (0.20, 0.18, 1.10), (0.20, 0.20, 0.22, 1.0))
+    for k in range(18):
+        make_box(f"Steven_CD_Stock_{k}", (wx + 0.25, 5.45, 0.10 + k * 0.055), (0.02, 0.14, 0.01),
+                 ((0.86, 0.86, 0.88, 1.0), (0.30, 0.30, 0.34, 1.0), (0.80, 0.40, 0.20, 1.0))[k % 3])
+    # the console under the E window, the stereo and its speakers
+    cx_ = X1 - 0.10 - 0.22
+    make_box("Steven_Console", (cx_, 6.0, 0.25), (0.40, 1.30, 0.50), (0.24, 0.22, 0.22, 1.0))
+    make_box("Steven_Stereo", (cx_, 6.0, 0.58), (0.34, 0.44, 0.16), (0.16, 0.16, 0.18, 1.0))
+    make_box("Steven_Stereo_Display", (cx_ - 0.172, 6.0, 0.60), (0.004, 0.16, 0.04), (0.30, 0.86, 0.90, 1.0))
+    for s in (-1, 1):
+        make_box(f"Steven_Speaker_{s:+d}", (cx_ - 0.02, 6.0 + s * 0.95, 0.42), (0.30, 0.30, 0.84), (0.14, 0.14, 0.15, 1.0))
+        make_cyl(f"Steven_Speaker_{s:+d}_Cone", (cx_ - 0.175, 6.0 + s * 0.95, 0.30), 0.10, 0.01, (0.30, 0.30, 0.32, 1.0), axis='X', segments=14)
+    # a poster over the bed on the N wall, the hoodie over the chair, sneakers
+    make_box("Steven_Bed_Poster", (10.9, 9.0 - 0.07 - 0.012, 1.95), (0.70, 0.02, 0.95), (0.10, 0.10, 0.16, 1.0))
+    make_box("Steven_Bed_Poster_Art", (10.9, 9.0 - 0.07 - 0.024, 2.00), (0.56, 0.004, 0.62), (0.30, 0.50, 0.90, 1.0))
+    make_box("Steven_Bed_Poster_Type", (10.9, 9.0 - 0.07 - 0.027, 1.60), (0.56, 0.002, 0.08), (0.96, 0.70, 0.24, 1.0))
+    make_chamfer_box("Steven_Hoodie", (dx + 0.66 + 0.29, dy + 0.05, 0.72), (0.06, 0.40, 0.45), (0.30, 0.30, 0.34, 1.0), chamfer=0.03)
+    for k, (x, y, yaw) in enumerate(((9.55, 7.55, 0.4), (9.65, 7.25, -0.3))):
+        make_rot_box(f"Steven_Sneaker_{k}", (x, y, 0.058), (0.11, 0.28, 0.09), (0.86, 0.86, 0.84, 1.0), yaw=yaw)
+    for nm, (x, y) in (("Steven", (9.8, 6.3)), ("Mom", (9.8, 11.5))):
+        make_cyl(f"{nm}_Ceiling_Light", (x, y, H - 0.06), 0.24, 0.10, (0.96, 0.94, 0.88, 1.0), segments=16)
+    # -- Mrs. Chau's: the dog's bed and bowls, a bench, a chair, a picture --
+    make_cyl("Mom_Dog_Bed", (8.62, 13.45, 0.07), 0.32, 0.14, (0.70, 0.50, 0.56, 1.0), segments=16)
+    make_cyl("Mom_Dog_Bed_Cushion", (8.62, 13.45, 0.145), 0.25, 0.02, (0.92, 0.88, 0.84, 1.0), segments=16)
+    for k, x in enumerate((8.05, 8.25)):
+        make_lathe(f"Mom_Dog_Bowl_{k}", (x, 11.85, 0.0), [(0.0, 0.0), (0.07, 0.0), (0.09, 0.06), (0.0, 0.06)],
+                   ((0.80, 0.80, 0.82, 1.0), (0.86, 0.40, 0.50, 1.0))[k], segments=12)
+    bfx = X1 - 0.10 - 1.1 - 1.05 - 0.30         # the bed's foot, less the bench
+    make_box("Mom_Bench_Seat", (bfx, 12.4, 0.43), (0.40, 1.30, 0.08), (0.80, 0.74, 0.66, 1.0))
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            make_box(f"Mom_Bench_Leg_{sx:+d}_{sy:+d}", (bfx + sx * 0.16, 12.4 + sy * 0.58, 0.201), (0.05, 0.05, 0.378), (0.46, 0.34, 0.24, 1.0))
+    make_sofa("Mom_Reading_Chair", X1 - 0.10 - 0.55, 9.75, back="+X", w=0.80, d=0.80, seats=1, color=(0.70, 0.62, 0.56, 1.0),
+              cushion_col=(0.76, 0.68, 0.62, 1.0), leg_col=(0.40, 0.30, 0.22, 1.0), arm="roll", seat_h=0.42)
+    make_box("Mom_Picture_Frame", (10.0, D - 0.07 - 0.02, 1.85), (1.10, 0.04, 0.80), (0.70, 0.60, 0.36, 1.0))
+    make_box("Mom_Picture", (10.0, D - 0.07 - 0.043, 1.85), (0.96, 0.006, 0.66), (0.50, 0.62, 0.56, 1.0))
+    make_box("Mom_Picture_Sky", (10.0, D - 0.07 - 0.047, 2.05), (0.96, 0.002, 0.24), (0.76, 0.80, 0.84, 1.0))
+
+
 def build_game_room_2026_10():
     """DRAFT 5 of the game room (2026-10-30): the low Sunday-morning frame was
     a dark box with a table and a cabinet in it — no luxury and none of the
@@ -925,6 +1001,7 @@ def main():
     build_game_bar()
     build_game_room_2026_10()
     build_bath_2026_10()
+    build_bedrooms_2026_10()
     build_amanda()
     build_amanda_deck()
     build_amanda_yard_2026_10()
