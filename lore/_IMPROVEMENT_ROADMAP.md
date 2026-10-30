@@ -3874,7 +3874,22 @@ The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped throu
   - **portland_downtown (vol 3 ch4), draft 3:**
     - The storefront glass had alpha 1, so every shopfront was a board. Now there are recessed bays: piers, bulkheads, see-through glass, tiled vestibules with the doors 2.2 m back, display decks (books, records, cafe), and lit shops 6 m deep.
     - The S block faced away from the street; it now faces it.
+- **Thread E (its four files committed by the main thread after a container restart lost its marker run; every geometry gate is 0 on both sets, including `--markers`):**
+  - **houston_bayou, draft 2:**
+    - The Little League diamond at real scale: 60 ft bases and a 200 ft fence.
+    - It has a backstop, dugouts, bleachers, chalk, the mound, a dark scoreboard, and six light towers with glowing banks. The floods moved over the field.
+    - The river turn's stars are 240 at 2–4 px; at 1–2 px the ink outline made them dark specks. There is no moon: the text gives that night none.
+    - `shot_insert_diamond` looks down the third-base line from 4 m up. The bank's lamp posts block any low view from the water.
+  - **honolulu_highrise, draft 2:**
+    - The four shops are 5.8 m deep, with troffers. Each is dressed from the text: the photo parlour, the travel agency, the suit shop and the dry cleaner. Eight shop lights.
+    - The towers across the street are curtain walls: mullions, spandrels and lit storefronts.
+    - `shot_insert_window` now looks from the lobby at the display.
+- **Edit station (vol 3 ch4), draft 2:**
+  - Draws on the text's "We capture impressions with Polaroid cameras", "he prints t-shirts and stickers", and "writing and planning".
+  - The Polaroids are pinned over the desk, with the camera on it. There is a planning whiteboard, a box of printed shirts, and the cables.
+- **Render-checked and fine as they stand:** hospital_waiting, small_wood_high_gym, small_wood_high_class, ranch_bedroom_night, vehicle_cab_night, club_street_curb, cave_dawn, ron_night_floor, dabney_game_room, lax_gate.
 - **Draft N+1 targets:**
+  - Houston: SpotLights pooling from the six banks; from `jd_river` the strip mall hides the field. Honolulu: COMPUTER GAMES lettering (Label3D), clearer shop glass, a street-side view of the towers.
   - The clinic: the campus through the blinds, an empty foreground floor, a SpotLight for the afternoon sun, and the door-glass lettering. Portland: fewer, bigger stock blocks; glass lettering (no real names); the gallery queue; the screening room.
   - The arcade's walls and stair (they still read black past the cabinets). The bowling alley from the S glass.
   - The writers_desk dawn: the four folding chairs, the car at the curb with its cardboard sign, the string gone brown, and the chair off the pulled drawers. The drawer view wants the lamp's light.

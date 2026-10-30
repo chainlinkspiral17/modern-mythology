@@ -319,32 +319,32 @@ shadow_enabled = false
 omni_range = 22.0
 
 [node name="Diamond_Flood_0__jd_river__jd_river_turn" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3024.0, 14.0, -55.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3051.0, 17.0, -76.0)
 light_color = Color(1.0, 0.98, 0.9, 1)
-light_energy = 3.0
+light_energy = 4.5
 shadow_enabled = false
-omni_range = 45.0
+omni_range = 48.0
 
 [node name="Diamond_Flood_1__jd_river__jd_river_turn" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3024.0, 14.0, -95.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3051.0, 17.0, -106.0)
 light_color = Color(1.0, 0.98, 0.9, 1)
-light_energy = 3.0
+light_energy = 4.5
 shadow_enabled = false
-omni_range = 45.0
+omni_range = 48.0
 
 [node name="Diamond_Flood_2__jd_river__jd_river_turn" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3068.0, 14.0, -53.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3081.0, 17.0, -76.0)
 light_color = Color(1.0, 0.98, 0.9, 1)
-light_energy = 3.0
+light_energy = 4.5
 shadow_enabled = false
-omni_range = 45.0
+omni_range = 48.0
 
 [node name="Diamond_Flood_3__jd_river__jd_river_turn" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3068.0, 14.0, -97.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3081.0, 17.0, -106.0)
 light_color = Color(1.0, 0.98, 0.9, 1)
-light_energy = 3.0
+light_energy = 4.5
 shadow_enabled = false
-omni_range = 45.0
+omni_range = 48.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -498,8 +498,8 @@ metadata/fov = 45.0
 
 ; "A Little League diamond with the lights still on."
 [node name="shot_insert_diamond" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3021.000, 2.000, -71.000)
-rotation = Vector3(-0.1525, -1.3469, 0.0)
+position = Vector3(3012.000, 4.000, -100.000)
+rotation = Vector3(-0.0200, -2.0060, 0.0)
 metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

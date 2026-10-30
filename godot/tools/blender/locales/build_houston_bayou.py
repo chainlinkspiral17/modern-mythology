@@ -33,7 +33,16 @@ Blender: x east, y north, z up; Godot (x, z, -y). The park at x 0 (the bayou
 running east-west on y 0, downtown east), the dream river at x +3000
 (running north; its shore things y 0..240, open water south to y -650).
 
-DRAFT 2 targets: the river's reflections as the streetlights' long smears;
+DRAFT 2 (2026-10-30, the diamond and the sky): the Little League field
+is built at its real size (60 ft bases, a 200 ft fence) with its home plate
+by the water, the backstop, both dugouts and bleachers, the chalk, the
+mound, six light towers burning and a dark scoreboard. The shores run
+300 m back. The turn's stars are point-sized, 340 of them. The text gives
+that night no moon, so there is none.
+
+DRAFT 3 targets: the diamond's light pooling on the grass (SpotLights from
+the six banks, not four omnis); a cap of moths in the light; the river's
+reflections as the streetlights' long smears;
 the tanooki leaf; the drugstore's interior through its glass; joggers with a
 pose; the skyline's lit windows at dusk; Deck framing.
 """
@@ -142,8 +151,10 @@ def build_river():
     # "a fluorescent kind of bright": the flat water at the toll and on to the drugstore
     make_box("River_Water_Bright", (RX, 150.0, 0.005), (30.0, 110.0, 0.01), RIVER_BRIGHT)
     # the shores come in only where the things go by (y -60..280)
+    # (2026-10-30) 300 m deep, not 60: the ball field runs to x +105 and the
+    # back edge stood in frame as a step on the horizon
     for sg, bx in ((1, RX + 20.0), (-1, RX - 22.0)):
-        make_box(f"Shore_{'E' if sg > 0 else 'W'}", (bx + sg * 30.0, 110.0, 0.2), (60.0, 340.0, 0.6), (0.16, 0.18, 0.14, 1.0))
+        make_box(f"Shore_{'E' if sg > 0 else 'W'}", (bx + sg * 150.0, 110.0, 0.2), (300.0, 340.0, 0.6), (0.16, 0.18, 0.14, 1.0))
     # the streetlights whose reflections turned into the water, along the east bank
     for k in range(12):
         py = -50.0 + k * 28.0
@@ -159,22 +170,14 @@ def build_river():
     # the figure on the bank, hailing a cab
     _figure("Hitchhiker", RX + 20.8, 52.0, 0.5, (0.36, 0.36, 0.40, 1.0))
     make_rot_box("Hitchhiker_Arm", (RX + 20.6, 52.0, 2.1), (0.10, 0.10, 0.70), (0.36, 0.36, 0.40, 1.0), pitch=-0.5)
-    # "A Little League diamond with the lights still on."
-    dx, dy = RX + 48.0, 75.0
-    make_box("Diamond_Grass", (dx, dy, 0.52), (46.0, 46.0, 0.04), (0.28, 0.46, 0.24, 1.0))
-    make_rot_box("Diamond_Infield", (dx - 10.0, dy, 0.545), (17.0, 17.0, 0.02), (0.56, 0.40, 0.28, 1.0), yaw=math.pi / 4)
-    make_rot_box("Diamond_InfieldGrass", (dx - 10.0, dy, 0.556), (11.0, 11.0, 0.02), (0.30, 0.50, 0.26, 1.0), yaw=math.pi / 4)
-    # the outfield fence: an arc 25 m out from home plate (the infield's east
-    # corner), each panel turned to the arc and standing on the grass
-    # (2026-10-30: eight panels all along Y, five of them out in the river)
-    hx = dx + 2.0
-    for k in range(8):
-        th = math.radians(-49.0 + k * 14.0)
-        make_rot_box(f"Diamond_Fence_{k}", (hx - 25.0 * math.cos(th), dy + 25.0 * math.sin(th), 1.34),
-                     (0.06, 6.0, 1.6), (0.46, 0.48, 0.48, 1.0), yaw=-th)
-    for k, (lx, ly) in enumerate(((dx - 24.0, dy - 20.0), (dx - 24.0, dy + 20.0), (dx + 20.0, dy - 22.0), (dx + 20.0, dy + 22.0))):
-        make_cyl(f"Diamond_Pole_{k}", (lx, ly, 7.5), 0.18, 14.0, (0.36, 0.36, 0.38, 1.0), segments=8)
-        make_box(f"Diamond_Lamps_{k}", (lx, ly, 14.6), (1.2, 1.2, 0.8), (1.0, 0.98, 0.90, 1.0))
+    # "A Little League diamond with the lights still on." (draft 2, 2026-10-30:
+    # it was a 46 m grass square with a fence arc 25 m out). Now a Little
+    # League field at its real size, 60 ft bases and a 200 ft fence, built
+    # BIG. Home plate is by the water so the river sees it past the backstop.
+    # The foul lines run east (first base) and north (third base) so the
+    # dugouts, bleachers and side fences sit square. Six light towers burn
+    # over an empty field.
+    build_diamond(RX)
     # "A toll gate rises out of it, an old wooden arm painted red and white, a booth with nobody in it."
     ty = 95.0
     make_box("Toll_Island", (RX + 9.0, ty, 0.25), (4.0, 6.0, 0.5), CONC)
@@ -224,15 +227,20 @@ def build_river():
     # the water all the way to the boat so the far door reads
     import random as _r
     rnd = _r.Random(15)
-    for k in range(90):
+    # (2026-10-30, draft 3) the stars were 4-9 m cubes at 600 m, each as wide
+    # as the moon. Now there are 240, most 2-3 px (a pixel here is ~0.9 m at
+    # 600 m; at 1-2 px the ink outline eats the star and leaves a dark
+    # speck), a few brighter and a few tinted. The text gives that night no moon.
+    for k in range(240):
         az = rnd.uniform(-math.pi * 0.95, math.pi * 0.95) - math.pi / 2.0      # around the south
-        el = rnd.uniform(0.10, 0.95)
+        el = math.asin(rnd.uniform(math.sin(0.06), math.sin(1.35)))
         R = 600.0
         x = RX + R * math.cos(el) * math.cos(az)
         y = -300.0 + R * math.cos(el) * math.sin(az)
         z = R * math.sin(el)
-        s = rnd.choice((4.0, 5.5, 7.0, 9.0))
-        make_box(f"Turn_Sky_Star_Stock_{k}", (x, y, z), (s, s, s), (1.0, 1.0, 1.0, 1.0))  # Sky_: in the sky by design
+        s = rnd.choice((2.2, 2.2, 2.2, 2.6, 2.6, 3.0, 3.0, 3.6, 4.4))
+        tint = rnd.choice(((1.0, 1.0, 1.0, 1.0),) * 6 + ((0.80, 0.86, 1.0, 1.0), (1.0, 0.90, 0.76, 1.0)))
+        make_box(f"Turn_Sky_Star_Stock_{k}", (x, y, z), (s, s, s), tint)  # Sky_: in the sky by design
     for k in range(28):
         sx = RX + rnd.uniform(-9.0, 9.0)
         sy = -312.0 - rnd.uniform(0.0, 70.0)
@@ -240,6 +248,141 @@ def build_river():
                  (0.62, 0.64, 0.92, 1.0))
     make_box("Turn_Door_Reflection", (RX, -488.0, 0.003), (1.6, 312.0, 0.004), (1.0, 0.82, 0.56, 1.0))
     make_box("Turn_Door_Reflection_Near", (RX, -352.0, 0.0035), (0.7, 40.0, 0.004), (1.0, 0.92, 0.74, 1.0))
+
+
+def build_diamond(RX):
+    """The Little League field on the east bank (draft 2, 2026-10-30)."""
+    DIRT = (0.58, 0.40, 0.27, 1.0)
+    INGRASS = (0.31, 0.50, 0.26, 1.0)
+    CHALK = (0.94, 0.94, 0.90, 1.0)
+    FENCE = (0.14, 0.26, 0.20, 1.0)       # green windscreen on the chain link
+    CAP = (0.96, 0.82, 0.16, 1.0)         # the yellow fence cap and foul poles
+    GALV = (0.56, 0.58, 0.60, 1.0)
+    BLOCK = (0.70, 0.68, 0.62, 1.0)
+    ROOF = (0.20, 0.34, 0.26, 1.0)
+    LAMP = (1.0, 0.98, 0.90, 1.0)
+    HX, HY, Z0 = RX + 41.0, 66.0, 0.54
+    BASE = 18.29                          # 60 ft
+    FR = 61.0                             # 200 ft to the fence
+
+    def fp(u, v):
+        return (HX + u, HY + v)
+
+    def lbox(name, side, t0, t1, o0, o1, z0, z1, col):
+        """A box in a foul line's frame: t along the line from home, o out
+        into foul territory. side +1 is first base (east, out is south),
+        -1 is third base (north, out is west)."""
+        tc, oc = (t0 + t1) / 2.0, (o0 + o1) / 2.0
+        if side > 0:
+            c, sz = fp(tc, -oc), (t1 - t0, o1 - o0, z1 - z0)
+        else:
+            c, sz = fp(-oc, tc), (o1 - o0, t1 - t0, z1 - z0)
+        make_box(name, (c[0], c[1], (z0 + z1) / 2.0), sz, col)
+
+    # the outfield grass, on the bank (its top at 0.5); clear of the strip mall
+    make_box("Diamond_Grass", (RX + 64.5, 91.0, 0.52), (81.0, 82.0, 0.04), (0.28, 0.46, 0.24, 1.0))
+    # the skinned infield: a 50 ft dirt circle round the mound, the infield
+    # grass inside the base paths, the dirt circle at home
+    mx, my = fp(BASE * 0.5418, BASE * 0.5418)            # the rubber at 46 ft
+    make_cyl("Diamond_Infield", (mx, my, 0.545), 15.24, 0.02, DIRT, segments=40)
+    make_box("Diamond_InfieldGrass", (*fp(9.6, 9.6), 0.556), (14.6, 14.6, 0.02), INGRASS)
+    make_cyl("Diamond_HomeCircle", (*fp(0.0, 0.0), 0.548), 3.2, 0.02, DIRT, segments=24)
+    make_cyl("Diamond_Mound", (mx, my, 0.60), 1.6, 0.14, DIRT, segments=20)
+    make_rot_box("Diamond_Rubber", (mx, my, 0.675), (0.61, 0.15, 0.02), CHALK, yaw=-math.pi / 4.0)
+    make_rot_box("Diamond_HomePlate", (*fp(0.0, 0.0), 0.562), (0.43, 0.43, 0.012), CHALK, yaw=math.pi / 4.0)
+    for k, (bu, bv) in enumerate(((BASE - 0.19, 0.19), (BASE, BASE), (0.19, BASE - 0.19))):
+        make_box(f"Diamond_Base_{k + 1}", (*fp(bu, bv), 0.585), (0.38, 0.38, 0.06), CHALK)
+    # the foul lines, home to the poles, and the batter's boxes
+    make_box("Diamond_Chalk_Stock_1B", (*fp(FR / 2.0 + 0.3, 0.0), 0.562), (FR - 0.6, 0.08, 0.012), CHALK)
+    make_box("Diamond_Chalk_Stock_3B", (*fp(0.0, FR / 2.0 + 0.3), 0.562), (0.08, FR - 0.6, 0.012), CHALK)
+    # each box 3 x 6 ft, its long sides along the home-second line (a), one
+    # either side of the plate across it (p)
+    au, av, pu, pv = 0.7071, 0.7071, 0.7071, -0.7071
+    for sd in (-1, 1):
+        cu, cv = sd * 0.92 * pu, sd * 0.92 * pv
+        edges = ((cu + 0.455 * pu, cv + 0.455 * pv, 1.83, -math.pi / 4.0),
+                 (cu - 0.455 * pu, cv - 0.455 * pv, 1.83, -math.pi / 4.0),
+                 (cu + 0.915 * au, cv + 0.915 * av, 0.91, math.pi / 4.0),
+                 (cu - 0.915 * au, cv - 0.915 * av, 0.91, math.pi / 4.0))
+        for k, (ou, ov, L, yw) in enumerate(edges):
+            make_rot_box(f"Diamond_Chalk_Stock_Box_{sd:+d}_{k}", (*fp(ou, ov), 0.562), (0.06, L, 0.012), CHALK, yaw=yw)
+    # the outfield fence: chain link in a green windscreen, the yellow cap,
+    # an arc 200 ft from home that runs past the poles to meet the side fences
+    th0, th1 = math.radians(-8.5), math.radians(98.5)
+    n = 45
+    seg = FR * (th1 - th0) / n
+    for k in range(n):
+        th = th0 + (k + 0.5) * (th1 - th0) / n
+        c = fp(FR * math.cos(th), FR * math.sin(th))
+        make_rot_box(f"Diamond_Fence_Stock_{k}", (c[0], c[1], Z0 + 0.915), (0.05, seg + 0.06, 1.83), FENCE, yaw=th)
+        make_rot_box(f"Diamond_FenceCap_Stock_{k}", (c[0], c[1], Z0 + 1.86), (0.09, seg + 0.06, 0.06), CAP, yaw=th)
+    for k, th in enumerate((0.0, math.pi / 2.0)):
+        make_cyl(f"Diamond_FoulPole_{k}", (*fp((FR + 0.13) * math.cos(th), (FR + 0.13) * math.sin(th)), Z0 + 6.0),
+                 0.10, 12.0, CAP, segments=8)
+    # the backstop: a 6 m chain-link screen behind home, its wings running
+    # out along both lines. Posts, rails, and the wire drawn as a 0.5 m grid
+    # you can see the infield through.
+    A, B = fp(-9.0, -2.0), fp(-2.0, -9.0)
+    L = math.hypot(B[0] - A[0], B[1] - A[1])
+    for k in range(int(L / 0.5) + 1):
+        f = k / int(L / 0.5)
+        make_box(f"Diamond_Backstop_Stock_V_{k}", (A[0] + (B[0] - A[0]) * f, A[1] + (B[1] - A[1]) * f, Z0 + 3.0),
+                 (0.04, 0.04, 6.0), GALV)
+    for k in range(13):
+        make_rot_box(f"Diamond_Backstop_Stock_H_{k}", ((A[0] + B[0]) / 2.0, (A[1] + B[1]) / 2.0, Z0 + 0.25 + k * 0.48),
+                     (0.04, L, 0.04), GALV, yaw=math.pi / 4.0)
+    for k, (px, py) in enumerate((A, B)):
+        make_cyl(f"Diamond_Backstop_Post_{k}", (px, py, Z0 + 3.05), 0.06, 6.1, GALV, segments=8)
+    for side in (1, -1):
+        # the wing: from the screen's corner out to t = 8 along the line, 3.6 m
+        for k in range(21):
+            t = -2.0 + k * 0.5
+            lbox(f"Diamond_Backstop_Stock_W{side:+d}_V_{k}", side, t - 0.02, t + 0.02, 8.98, 9.02, Z0, Z0 + 3.6, GALV)
+        for k in range(8):
+            lbox(f"Diamond_Backstop_Stock_W{side:+d}_H_{k}", side, -2.0, 8.0, 8.98, 9.02, Z0 + 0.25 + k * 0.48, Z0 + 0.29 + k * 0.48, GALV)
+        lbox(f"Diamond_Backstop_Stock_W{side:+d}_Rail", side, -2.0, 8.0, 8.96, 9.04, Z0 + 3.56, Z0 + 3.64, GALV)
+        # the dugout: block back and ends, a green roof, a bench, a cooler
+        D = f"Diamond_Dugout_{'1B' if side > 0 else '3B'}"
+        lbox(f"{D}_Floor", side, 9.0, 19.0, 9.0, 11.4, Z0, Z0 + 0.05, (0.56, 0.55, 0.52, 1.0))
+        lbox(f"{D}_Back", side, 9.0, 19.0, 11.2, 11.4, Z0, Z0 + 2.3, BLOCK)
+        lbox(f"{D}_End_0", side, 9.0, 9.2, 9.0, 11.2, Z0, Z0 + 2.3, BLOCK)
+        lbox(f"{D}_End_1", side, 18.8, 19.0, 9.0, 11.2, Z0, Z0 + 2.3, BLOCK)
+        lbox(f"{D}_Roof", side, 8.9, 19.1, 8.8, 11.5, Z0 + 2.3, Z0 + 2.42, ROOF)
+        lbox(f"{D}_Front_Fence", side, 9.2, 18.8, 9.0, 9.04, Z0 + 0.05, Z0 + 1.05, FENCE)
+        lbox(f"{D}_Bench", side, 9.6, 18.4, 10.8, 11.2, Z0 + 0.05, Z0 + 0.48, (0.52, 0.40, 0.26, 1.0))
+        cu, cv = (17.9, -10.2) if side > 0 else (-10.2, 17.9)
+        make_cyl(f"{D}_Cooler", (*fp(cu, cv), Z0 + 0.27), 0.18, 0.44, (0.92, 0.46, 0.14, 1.0), segments=12)
+        # the bleachers behind it: three aluminium steps
+        for i in range(3):
+            lbox(f"Diamond_Bleacher_{'1B' if side > 0 else '3B'}_Step_{i}", side, 9.0, 19.0,
+                 11.6 + i * 0.8, 12.4 + i * 0.8, Z0, Z0 + 0.42 * (i + 1), GALV)
+            lbox(f"Diamond_Bleacher_{'1B' if side > 0 else '3B'}_Plank_{i}", side, 9.0, 19.0,
+                 11.65 + i * 0.8, 11.95 + i * 0.8, Z0 + 0.42 * (i + 1), Z0 + 0.42 * (i + 1) + 0.04, (0.80, 0.82, 0.84, 1.0))
+        # the side fence on from the gate to the outfield arc
+        lbox(f"Diamond_SideFence_{'1B' if side > 0 else '3B'}", side, 20.5, 60.4, 9.0, 9.05, Z0, Z0 + 1.22, FENCE)
+    # six light towers, every one still burning, their banks turned to the field
+    cx, cy = fp(28.0, 28.0)
+    for k, (u, v) in enumerate(((4.0, -13.0), (-13.0, 4.0), (38.0, -12.0), (-12.0, 38.0),
+                                (67.0 * math.cos(math.radians(25)), 67.0 * math.sin(math.radians(25))),
+                                (67.0 * math.cos(math.radians(65)), 67.0 * math.sin(math.radians(65))))):
+        px, py = fp(u, v)
+        make_cyl(f"Diamond_Pole_{k}", (px, py, Z0 + 9.0), 0.22, 18.0, (0.36, 0.36, 0.38, 1.0), segments=8)
+        yw = math.atan2(cy - py, cx - px) + math.pi / 2.0
+        make_rot_box(f"Diamond_Lamps_{k}_Frame", (px, py, Z0 + 18.6), (2.8, 0.30, 1.5), (0.92, 0.88, 0.76, 1.0), yaw=yw)  # its housing glows from behind too
+        dx, dy = (cx - px), (cy - py)
+        d = math.hypot(dx, dy)
+        make_rot_box(f"Diamond_Lamps_{k}", (px + dx / d * 0.20, py + dy / d * 0.20, Z0 + 18.6), (2.6, 0.12, 1.3), LAMP, yaw=yw)
+    # the scoreboard over left-centre, dark but for its lamps
+    sc = fp(66.0 * 0.7071, 66.0 * 0.7071)
+    make_rot_box("Diamond_Scoreboard", (sc[0], sc[1], Z0 + 4.3), (6.0, 0.25, 2.6), (0.10, 0.20, 0.14, 1.0), yaw=-math.pi / 4.0 + math.pi)
+    for sg in (-1, 1):
+        make_cyl(f"Diamond_Scoreboard_Post_{sg:+d}", (sc[0] + sg * 2.6 * 0.7071 + 0.245 * 0.7071, sc[1] - sg * 2.6 * 0.7071 + 0.245 * 0.7071, Z0 + 2.8),
+                 0.12, 5.6, GALV, segments=8)
+    for k in range(6):
+        f = -2.2 + k * 0.88
+        make_rot_box(f"Diamond_Scoreboard_Lamp_Stock_{k}", (sc[0] + f * 0.7071 - 0.135 * 0.7071, sc[1] - f * 0.7071 - 0.135 * 0.7071, Z0 + 3.6),
+                     (0.36, 0.02, 0.36), (1.0, 0.70, 0.30, 1.0) if k % 2 == 0 else (0.30, 0.20, 0.10, 1.0), yaw=-math.pi / 4.0)
+    make_rot_box("Diamond_Scoreboard_Band", (sc[0] - 0.135 * 0.7071, sc[1] - 0.135 * 0.7071, Z0 + 5.15), (5.2, 0.02, 0.30), CHALK, yaw=-math.pi / 4.0)
 
 
 def main():

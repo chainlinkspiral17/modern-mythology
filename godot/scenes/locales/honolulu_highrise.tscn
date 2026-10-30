@@ -257,6 +257,63 @@ light_energy = 0.8
 shadow_enabled = false
 omni_range = 3.0
 
+; (2026-10-30) the shops are rooms now, 5.8 m deep: two troffers each
+[node name="Photo_Parlour_Troffer_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.80, 2.7, -5.00)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Photo_Parlour_Troffer_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.40, 2.7, -5.00)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Travel_Agency_Troffer_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.80, 2.7, -10.50)
+light_color = Color(0.94, 0.98, 1.0, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Travel_Agency_Troffer_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.40, 2.7, -10.50)
+light_color = Color(0.94, 0.98, 1.0, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Suit_Shop_Troffer_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.80, 2.7, -3.70)
+light_color = Color(1.0, 0.92, 0.8, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Suit_Shop_Troffer_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.40, 2.7, -3.70)
+light_color = Color(1.0, 0.92, 0.8, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Dry_Cleaner_Troffer_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.80, 2.7, -12.30)
+light_color = Color(0.92, 0.98, 1.0, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Dry_Cleaner_Troffer_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.40, 2.7, -12.30)
+light_color = Color(0.92, 0.98, 1.0, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -385,8 +442,8 @@ metadata/fov = 35.0
 
 ; "The newest game in their front window display was Mountaintop's Final Cut"
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(9.655, 1.172, -8.526)
-rotation = Vector3(0.2248, 0.5691, 0.0)
+position = Vector3(7.000, 1.350, -6.000)
+rotation = Vector3(0.0000, -1.3450, 0.0)
 metadata/fov = 40.0
 
 ; "a cheap box vinyl back-lit fluorescent number that promised only COMPUTER GAMES"
