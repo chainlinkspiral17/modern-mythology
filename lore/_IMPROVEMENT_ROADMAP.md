@@ -3856,7 +3856,23 @@ The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped throu
   - `small_wood_field_may` covers "Her name was May" on. She is the props kit's seated figure in the third row: "a very thin dark-featured young woman". In the wide shot she had been 15 px.
   - She sits in a gap in the night crowd's row, so the two never clip.
 - **Editing suite, draft 3:** the drop-ceiling grid sits near flush, so the edge pass draws a ceiling, not a cage.
+- **Grunion beach, draft 3 (`beach_night`, the ghost scene, last passed in 58):** "the moon could not be seen behind the clouds ... light was caught up in water that gleamed off the fresh tide's edge".
+  - A brighter gleam and foam, with the surf in broken runs instead of three 400 m strips.
+  - The moon gap's smear on the wet band.
+  - Sea-bleached driftwood, and the prints of the walk down as shadows in paler sand.
+  - The view's sky is overcast.
+- **Thread D (commit e8d9f5b0):**
+  - **clinic_1945 (vol 3 ch9), draft 4:**
+    - The text gives a Caltech clinic, "the nice woman" with the glass of water, the nurse's cuff, and several men whistling. The candlestick phone, hat rack and anatomy chart are NOT in the text and were not built.
+    - The room is 7.5 x 6 x 3.3 m, with a sage wainscot under cream walls (no all-green wash).
+    - Two W windows have blinds and radiators, with a stucco campus hall and oaks outside.
+    - The nurse's desk holds the glass of water, a cradle phone and a card file. There is a crock cooler, a waiting bench, and the cuff by the exam table.
+    - Two pendants light the room. The camera is in the SE corner.
+  - **portland_downtown (vol 3 ch4), draft 3:**
+    - The storefront glass had alpha 1, so every shopfront was a board. Now there are recessed bays: piers, bulkheads, see-through glass, tiled vestibules with the doors 2.2 m back, display decks (books, records, cafe), and lit shops 6 m deep.
+    - The S block faced away from the street; it now faces it.
 - **Draft N+1 targets:**
+  - The clinic: the campus through the blinds, an empty foreground floor, a SpotLight for the afternoon sun, and the door-glass lettering. Portland: fewer, bigger stock blocks; glass lettering (no real names); the gallery queue; the screening room.
   - The arcade's walls and stair (they still read black past the cabinets). The bowling alley from the S glass.
   - The writers_desk dawn: the four folding chairs, the car at the curb with its cardboard sign, the string gone brown, and the chair off the pulled drawers. The drawer view wants the lamp's light.
   - shuttle_bench's framing: the awning post and the back panel box it in.
