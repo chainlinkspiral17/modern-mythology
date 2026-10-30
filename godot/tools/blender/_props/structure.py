@@ -177,13 +177,17 @@ def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
     # 2026-08-09: they used to sit INSIDE the slab volume, near-
     # coplanar with its bottom face — "flickering geometry in the
     # roof" at glancing angles, in every interior using this).
+    # (2026-10-30) The T-bars sit ~1 cm proud, 4 mm thick, just under the stains (they hung 16 mm
+    # down in a tan far darker than the tile): the edge pass outlined every
+    # bar and a drop ceiling read as a cage of beams (the pharmacy, the
+    # editing suite). Still clear of the slab's face, so no z-fight.
     if with_grid:
         for i in range(int(cx - size_x / 2), int(cx + size_x / 2) + 1):
-            make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z - 0.010),
-                     (0.04, size_y, 0.012), grid)
+            make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z - 0.0075),
+                     (0.03, size_y, 0.004), grid)
         for j in range(int(cy - size_y / 2), int(cy + size_y / 2) + 1):
-            make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z - 0.010),
-                     (size_x, 0.04, 0.012), grid)
+            make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z - 0.0075),
+                     (size_x, 0.03, 0.004), grid)
     # Water stains (2026-09-24, the user: "furniture on ceilings"): they
     # were three SOLID 0.8 m squares in a dark tan, at fixed metre
     # offsets from the centre (so in small rooms they hit the walls) —
