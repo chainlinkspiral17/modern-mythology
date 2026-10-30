@@ -283,8 +283,9 @@ def build_oregon_bedroom_2026_10(x0):
             break
     # a rug, the chair with clothes over its back
     make_box("Oregon_Rug", (x0 + 6.2, 2.6, 0.006), (1.6, 2.2, 0.012), (0.56, 0.40, 0.34, 1.0))
-    make_chair("Oregon_Bedroom_Chair", x0 + 5.3, 2.4, yaw=-math.pi / 2.0, wood=(0.44, 0.34, 0.26, 1.0))
-    make_rot_box("Oregon_Chair_Shirt_Hang", (x0 + 5.08, 2.4, 0.78), (0.06, 0.46, 0.36), (0.30, 0.40, 0.56, 1.0), pitch=0.1)
+    # (clear of the bedroom door's swing: the doorway gate, 2026-10-30)
+    make_chair("Oregon_Bedroom_Chair", x0 + 7.3, 1.25, yaw=math.pi / 2.0, wood=(0.44, 0.34, 0.26, 1.0))
+    make_rot_box("Oregon_Chair_Shirt_Hang", (x0 + 7.52, 1.25, 0.78), (0.06, 0.46, 0.36), (0.30, 0.40, 0.56, 1.0), pitch=-0.1)
     # on the dresser: a mirror, a jewellery box, a hairbrush, his wallet and keys
     make_box("Oregon_Dresser_Mirror_Mounted", (x0 + 4.6 + 0.07, 4.8, 1.45), (0.02, 0.70, 0.80), (0.62, 0.68, 0.72, 1.0))
     make_box("Oregon_Dresser_Jewel_Box", (x0 + 4.95, 4.55, 1.01), (0.16, 0.12, 0.08), (0.40, 0.22, 0.20, 1.0))
@@ -463,9 +464,10 @@ def build_coast_bath_2026_10(bx0, by0):
         make_box(f"Bath_Grout_N_V_{k}", (tx - W / 2.0 - 0.15 + 0.15 * (k + 0.5), ny - 0.013, (Hh + 1.9) / 2.0), (0.006, 0.003, 1.9 - Hh), grout)
     make_box("Bath_Tile_E", (ex - 0.006, ty, (Hh + 1.9) / 2.0), (0.012, D, 1.9 - Hh), tile)
     # the toilet against the W wall
-    make_chamfer_box("Bath_Toilet_Tank", (bx0 + 0.20, by0 + 1.0, 0.72), (0.20, 0.48, 0.36), white, chamfer=0.02)
-    make_chamfer_box("Bath_Toilet_Bowl", (bx0 + 0.48, by0 + 1.0, 0.24), (0.52, 0.38, 0.40), white, chamfer=0.05)
-    make_box("Bath_Toilet_Seat", (bx0 + 0.50, by0 + 1.0, 0.45), (0.46, 0.38, 0.03), (0.92, 0.92, 0.90, 1.0))
+    # (against the S wall, clear of the door's swing: the doorway gate, 2026-10-30)
+    make_chamfer_box("Bath_Toilet_Tank", (bx0 + 2.95, by0 + 0.08 + 0.10, 0.72), (0.48, 0.20, 0.36), white, chamfer=0.02)
+    make_chamfer_box("Bath_Toilet_Bowl", (bx0 + 2.95, by0 + 0.08 + 0.46, 0.24), (0.38, 0.52, 0.40), white, chamfer=0.05)
+    make_box("Bath_Toilet_Seat", (bx0 + 2.95, by0 + 0.08 + 0.48, 0.45), (0.38, 0.46, 0.03), (0.92, 0.92, 0.90, 1.0))
     # the bath mat, the towel dropped on it
     make_box("Bath_Mat", (tx, ty - D / 2.0 - 0.40, 0.006), (0.90, 0.55, 0.012), (0.56, 0.66, 0.70, 1.0))
     make_blob("Bath_Towel_Dropped", (tx - 0.25, ty - D / 2.0 - 0.36, 0.06), 0.18, (0.86, 0.80, 0.70, 1.0), noise=0.3, seed=17, squash=0.35)
