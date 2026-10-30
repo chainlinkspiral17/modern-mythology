@@ -4648,8 +4648,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# Aaron's room at thirteen: the bed, the toys still out, the grey console, the magazines
-		"camera_origin": Vector3(300.6, 1.4, -1.0),
-		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
+		# (2026-10-30) from the SE corner NW across the rug: the toy shelf and
+		# its chest, the TV and the console, the window, the desk at the right
+		"camera_origin": Vector3(303.85, 1.45, -0.45),
+		"camera_rotation": Vector3(-0.16, 0.90, 0.0),
 		"fov": 66.0,
 		"env": {"sky_top": Color(0.10, 0.12, 0.24, 1), "sky_horizon": Color(0.40, 0.30, 0.34, 1), "ground_horizon": Color(0.12, 0.10, 0.10, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1), "ambient_color": Color(0.72, 0.68, 0.70, 1), "ambient_energy": 0.50, "fog_color": Color(0.22, 0.20, 0.24, 1)},
 		"suppress_input": true,
@@ -4658,8 +4660,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# the waking dream: "soft melodies and blue lighting filled his bedroom"
-		"camera_origin": Vector3(300.6, 1.4, -1.0),
-		"camera_rotation": Vector3(-0.12, deg_to_rad(-30.0), 0.0),
+		# (2026-10-30) from the SE corner NW across the rug: the toy shelf and
+		# its chest, the TV and the console, the window, the desk at the right
+		"camera_origin": Vector3(303.85, 1.45, -0.45),
+		"camera_rotation": Vector3(-0.16, 0.90, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},

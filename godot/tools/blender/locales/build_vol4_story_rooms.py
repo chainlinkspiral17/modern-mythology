@@ -409,10 +409,12 @@ def build_boys_rooms():
     # magazines and comics, a shelf of toys
     ax = 300.0
     make_bed("Aaron_Bed", ax + 4.4 - 0.09 - 0.50, 1.9, head="+Y", w=0.95, d=1.9, made=False, blanket_col=(0.30, 0.40, 0.60, 1.0))
-    make_box("Aaron_Toy_Shelf", (ax + 0.09 + 0.18, 2.4, 0.70), (0.36, 1.4, 1.40), (0.60, 0.50, 0.36, 1.0))
-    for k in range(8):
-        make_box(f"Aaron_Shelf_Toy_{k}", (ax + 0.27, 1.85 + (k % 4) * 0.30, 0.30 + (k // 4) * 0.50), (0.18, 0.16, 0.20),
-                 ((0.90, 0.30, 0.20, 1.0), (0.30, 0.50, 0.90, 1.0), (0.96, 0.84, 0.30, 1.0), (0.30, 0.70, 0.40, 1.0))[k % 4])
+    # the toy shelf, open (2026-10-30: it was a solid block with cubes sunk in it)
+    make_box("Aaron_Toy_Shelf_Back", (ax + 0.11, 2.4, 0.71), (0.02, 1.40, 1.42), (0.56, 0.46, 0.32, 1.0))
+    for s, sy in (("S", 1.71), ("N", 3.09)):
+        make_box(f"Aaron_Toy_Shelf_Side_{s}", (ax + 0.27, sy, 0.71), (0.34, 0.02, 1.42), (0.60, 0.50, 0.36, 1.0))
+    for k, bz in enumerate((0.01, 1.41)):
+        make_box(f"Aaron_Toy_Shelf_Board_{k}", (ax + 0.27, 2.4, bz), (0.34, 1.36, 0.02), (0.60, 0.50, 0.36, 1.0))
     for k in range(7):
         make_box(f"Aaron_Floor_Toy_{k}", (ax + 1.4 + (k % 4) * 0.5, 1.2 + (k // 4) * 0.7, 0.06), (0.14 + (k % 2) * 0.08, 0.12, 0.12),
                  ((0.90, 0.30, 0.20, 1.0), (0.30, 0.50, 0.90, 1.0), (0.96, 0.84, 0.30, 1.0))[k % 3])
@@ -426,6 +428,69 @@ def build_boys_rooms():
         make_box(f"Aaron_Magazine_{k}", (ax + 2.6, 1.0, 0.008 + k * 0.012), (0.21, 0.28, 0.010),
                  ((0.86, 0.30, 0.24, 1.0), (0.30, 0.40, 0.70, 1.0), (0.92, 0.86, 0.40, 1.0))[k % 3])
     make_box("Aaron_Rug", (ax + 2.0, 1.6, 0.004), (1.8, 1.4, 0.008), (0.40, 0.46, 0.56, 1.0))
+    build_aaron_room_2026_10(ax)
+
+
+def build_aaron_room_2026_10(ax):
+    """heavy breathing (vol 4), DRAFT 2: "He still played with his toys when
+    he was thirteen"; "One of those early nintendo systems"; "magazines,
+    strategies and comic books"; at school he was "sewing costumes for the
+    puppets, ones he designed". The shelf's toys were coloured cubes; now:
+    - the shelf's toys as toys: little figures standing in rows, a robot, a
+      plush, a castle; a toy chest open at the shelf's foot, its lid up and
+      toys over the rim
+    - a desk under the E wall's posters: the sewing tin, fabric scraps, a
+      half-made puppet costume, a gooseneck lamp
+    - comics in stacks and fanned on the rug, the console's cartridges in a
+      row, a beanbag in front of the TV
+    - posters on the walls, a pennant
+    Draft 3 targets: the imaginary friend's place (the text says he could
+    not see it — so nothing, deliberately), the blue dream's "soft
+    melodies" as a music box, Deck framing."""
+    from _props.figures import make_standing_figure
+    cols = ((0.90, 0.30, 0.20, 1.0), (0.30, 0.50, 0.90, 1.0), (0.96, 0.84, 0.30, 1.0), (0.30, 0.70, 0.40, 1.0), (0.70, 0.40, 0.80, 1.0))
+    # little figures on the shelf's two boards (the shelf: x ax+0.09..0.45, y 1.7..3.1, top 1.40)
+    for k in range(10):
+        row = k // 5
+        make_standing_figure(f"Aaron_Shelf_Figure_{k}", ax + 0.30, 1.86 + (k % 5) * 0.26, heading=math.pi / 2.0, h=0.18,
+                             coat=cols[k % 5], pants=cols[(k + 2) % 5], z0=0.02 + row * 0.70)
+    make_box("Aaron_Shelf_Board_Mid", (ax + 0.27, 2.4, 0.71), (0.34, 1.36, 0.02), (0.56, 0.46, 0.32, 1.0))
+    make_chamfer_box("Aaron_Toy_Robot", (ax + 0.27, 2.95, 1.53), (0.14, 0.12, 0.26), (0.70, 0.72, 0.76, 1.0), chamfer=0.02)
+    make_blob("Aaron_Plush", (ax + 0.27, 1.92, 1.52), 0.12, (0.62, 0.46, 0.30, 1.0), noise=0.2, seed=8, squash=1.2)
+    make_box("Aaron_Toy_Castle", (ax + 0.27, 2.45, 1.50), (0.28, 0.40, 0.20), (0.70, 0.66, 0.60, 1.0))
+    for k in range(4):
+        make_box(f"Aaron_Toy_Castle_Merlon_{k}", (ax + 0.27, 2.30 + k * 0.10, 1.63), (0.28, 0.05, 0.06), (0.70, 0.66, 0.60, 1.0))
+    # the toy chest at the shelf's foot, lid up, toys over the rim
+    make_box("Aaron_Toy_Chest", (ax + 0.62, 1.2, 0.25), (0.40, 0.70, 0.50), (0.30, 0.46, 0.70, 1.0))
+    make_rot_box("Aaron_Toy_Chest_Lid", (ax + 0.40, 1.2, 0.68), (0.04, 0.70, 0.40), (0.30, 0.46, 0.70, 1.0), pitch=-0.25)
+    for k in range(4):
+        make_rot_box(f"Aaron_Chest_Toy_{k}", (ax + 0.62 + 0.06 * (k % 2), 0.98 + k * 0.15, 0.53), (0.10, 0.16, 0.08), cols[k], yaw=0.5 * k)
+    # the desk under the E wall's posters (E wall face x ax+4.31), the sewing
+    dx_ = ax + 4.31 - 0.30
+    make_box("Aaron_Desk_Top", (dx_, 3.25, 0.74), (0.60, 0.90, 0.04), (0.56, 0.46, 0.34, 1.0))
+    for sy in (-1, 1):
+        make_box(f"Aaron_Desk_Side_{sy:+d}", (dx_, 3.25 + sy * 0.43, 0.36), (0.58, 0.03, 0.72), (0.50, 0.40, 0.30, 1.0))
+    make_cyl("Aaron_Sewing_Tin", (dx_ - 0.05, 3.05, 0.79), 0.10, 0.06, (0.30, 0.46, 0.66, 1.0), segments=14)
+    for k in range(3):
+        make_rot_box(f"Aaron_Fabric_Scrap_{k}", (dx_ - 0.10 + 0.08 * k, 3.40 - 0.05 * k, 0.765 + 0.004 * k), (0.20, 0.16, 0.004), cols[(k + 1) % 5], yaw=0.6 * k)
+    make_blob("Aaron_Puppet_Costume", (dx_ + 0.05, 3.50, 0.84), 0.09, (0.86, 0.30, 0.36, 1.0), noise=0.3, seed=12, squash=1.3)
+    make_cyl("Aaron_Desk_Lamp_Base", (dx_ + 0.15, 3.62, 0.77), 0.06, 0.02, (0.20, 0.20, 0.22, 1.0), segments=10)
+    make_rot_box("Aaron_Desk_Lamp_Neck", (dx_ + 0.10, 3.58, 0.92), (0.015, 0.015, 0.30), (0.20, 0.20, 0.22, 1.0), pitch=-0.4)
+    make_cyl("Aaron_Desk_Lamp_Head", (dx_ + 0.03, 3.55, 1.06), 0.05, 0.08, (0.92, 0.84, 0.50, 1.0), segments=10)
+    # posters on the E and W walls, a pennant over the window
+    for i, (py, pz, w, h, col) in enumerate(((3.25, 1.55, 0.50, 0.70, (0.20, 0.30, 0.56)), (2.35, 1.70, 0.42, 0.56, (0.86, 0.60, 0.20)))):
+        make_box(f"Aaron_Poster_E_{i}", (ax + 4.31 - 0.004, py, pz), (0.006, w, h), col + (1.0,))
+    make_box("Aaron_Poster_W_0", (ax + 0.094, 1.0, 1.65), (0.006, 0.50, 0.66), (0.30, 0.56, 0.36, 1.0))
+    make_rot_box("Aaron_Pennant", (ax + 2.2 - 0.9, 3.8 - 0.094, 1.95), (0.60, 0.006, 0.18), (0.80, 0.20, 0.16, 1.0), roll=0.0, pitch=0.12)
+    # comics in stacks and fanned on the rug, the cartridges, the beanbag
+    for s in range(2):
+        for k in range(6):
+            make_box(f"Aaron_Comic_Stack_{s}_{k}", (ax + 1.1 + s * 0.30, 2.9, 0.006 + k * 0.006), (0.17, 0.26, 0.005), cols[(k + s) % 5])
+    for k in range(4):
+        make_rot_box(f"Aaron_Comic_Fanned_{k}", (ax + 2.2 + 0.10 * k, 1.9 - 0.04 * k, 0.010 + 0.002 * k), (0.17, 0.26, 0.004), cols[(k + 2) % 5], yaw=0.35 * k)
+    for k in range(6):
+        make_box(f"Aaron_Cartridge_{k}", (ax + 1.30 + k * 0.07, 3.8 - 0.09 - 0.70, 0.065), (0.05, 0.12, 0.13), (0.50, 0.50, 0.52, 1.0))
+    make_blob("Aaron_Beanbag", (ax + 1.7, 2.0, 0.22), 0.40, (0.70, 0.30, 0.24, 1.0), noise=0.15, seed=21, squash=0.55)
 
 
 def build_dean_house():

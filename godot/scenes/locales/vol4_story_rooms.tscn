@@ -506,5 +506,5 @@ metadata/fov = 45.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_toys__aaron_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(300.747, 1.077, -0.490)
-rotation = Vector3(-0.2797, 0.2744, 0.0)
+rotation = Vector3(-0.4656, 0.2611, 0.0)
 metadata/fov = 35.0
