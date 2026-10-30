@@ -4572,10 +4572,13 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/carrie_city.tscn",
 		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
 		# Charlie wakes and walks through the apartment: the unmade bed, the door, the living room beyond in daylight
-		# (2026-10-30: was turned to the door and a blank wall; now the night
-		# preset's frame by day — the bed, the canvases, the books, the window)
-		"camera_origin": Vector3(2.8, 1.5, -2.0),
-		"camera_rotation": Vector3(-0.12, 0.308, 0.0),
+		# (2026-10-30, second pass) the night frame by day read as a bed in
+		# blank walls. The morning is "Charlie wakes up in bed and walks through
+		# the apartment ... getting dressed and ready for the day": from beside
+		# the bed looking SE, the daylit window, the canvases on the W wall, the
+		# dresser with its mirror and pulled drawer, the clothes on the floor.
+		"camera_origin": Vector3(0.70, 1.55, -5.50),
+		"camera_rotation": Vector3(-0.12, -2.70, 0.0),
 		"fov": 64.0,
 		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
 		"suppress_input": true,
