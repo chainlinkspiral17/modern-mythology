@@ -3835,6 +3835,27 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-30 · pass 237: VOLS 1–4 backgrounds, draft 5 (the smallest sets; 60 more rendered).**
+- **charlie_bedroom_night (vol 4):** "art to make" now lives in his room too: canvases on the W wall (one begun), a crammed bookshelf, a print over the bed, the book on the blanket ("a book over his chest"), a stack by the bed. The camera is turned from the door to the bed.
+- **smolvud_docks_evening (vol 2 ch10):** turned NE. Due N along the float, the moored boats sat 56° off to the right. Now the bench, the pilings, a boat and the town at sunset.
+- **afterparty_room (vol 4 cc_3/cc_5):** the loft had no light and no party. Now:
+  - bulbs on the beams and the back bar's strip (fixtures + practicals);
+  - the CONTRAILS drawn as ribbons of pink and orange light from the tire swing, one arcing to the pink shot glass ("Charlie follows it to the bar, where it lands in a shot glass");
+  - six guests.
+  - Perf 92 → 130.
+- **catwalk_rail_night (vol 3 ch8):**
+  - The "near roof" stood 14 m ABOVE the glass tube and filled the view; it is now below, with its vent and steam ("On a near roof a vent breathes steam").
+  - The lamp quilt goes 40 → 192 ("thousands and thousands of them laid out over the land like a quilt").
+  - The camera is over the E rail, looking down on the lit city.
+- **tulsa_patio (vol 3 ch3):** near-black. The preset gains a moonlit night env; the sawdust playground, the fort and the moon read. The skinny trees are still dark slivers.
+- **Checked:** jacob_house_front's mailbox off the walk.
+- **Read, left:** the copier view, the Blue Heron, the plane, the pizza room, the 1994 basement, the Dabney courtyard 1945, LAX, the coast highway, the ballfield, the tunnels, the parsonage hall, the Missing Link exterior, and more.
+- **Next:**
+  - blue_heron_1997_sea_wall (a wall fills the frame; it also plays vol 4's dumpster alley);
+  - crumpled_barn_int;
+  - the skinny trees at the Tulsa patio;
+  - the last ~70 small sets.
+
 **2026-10-30 · pass 236: VOLS 1–4 backgrounds, draft 4 (the under-30-line tier, 48 sets rendered).**
 - **copy_shop (vol 2):** the copiers read as white boxes. They now have:
   - a two-tone cabinet, a seam band, drawers with gaps and pulls;

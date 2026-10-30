@@ -4396,6 +4396,11 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(7.4, 1.6, -4.2),
 		"camera_rotation": Vector3(0.06, deg_to_rad(-92.0), 0.0),
 		"fov": 62.0,
+		# (2026-10-30) the yard rendered near-black: a moonlit night, the fall
+		# air crisp — enough ambient for the slab, the fort, the skinny trees
+		"env": {"sky_top": Color(0.05, 0.07, 0.14, 1), "sky_horizon": Color(0.16, 0.18, 0.28, 1),
+			"ground_horizon": Color(0.08, 0.09, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.46, 0.52, 0.70, 1), "ambient_energy": 0.70, "fog_color": Color(0.10, 0.11, 0.16, 1)},
 		"suppress_input": true,
 	},
 	"dean_bedroom_1994": {
