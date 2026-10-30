@@ -1866,6 +1866,25 @@ const CAMERA_PRESETS := {
 			"fog_density": 0.0015},
 		"suppress_input": true,
 	},
+	# (2026-10-30) the interlude's lines on May — "Her name was May" / "Content
+	# just to sit around half the day and watch the boys practice": from the
+	# home sideline by the track, up at her in the stand's third row, the
+	# stand running off right under its roof, the firs behind. The dusk
+	# wide had her at 15 px. The practice parts and the dusk lights are
+	# tagged for both views.
+	"small_wood_field_may": {
+		"scene": "res://scenes/locales/small_wood_field.tscn",
+		"far": 600.0,
+		"requires_glb": "res://assets/3d/locales/small_wood_field.glb",
+		"camera_origin": Vector3(40.0, 1.55, -40.0),
+		"camera_rotation": Vector3(0.12, -0.68, 0.0),
+		"fov": 45.0,
+		"env": {"sky_top": Color(0.30, 0.38, 0.62, 1), "sky_horizon": Color(0.96, 0.70, 0.48, 1),
+			"ground_horizon": Color(0.40, 0.36, 0.28, 1), "ground_bottom": Color(0.14, 0.16, 0.12, 1),
+			"ambient_color": Color(0.86, 0.74, 0.62, 1), "ambient_energy": 0.80, "fog_color": Color(0.82, 0.68, 0.58, 1),
+			"fog_density": 0.0015},
+		"suppress_input": true,
+	},
 	# ── VOL 1 — Houston outside, 2010s, "weird and fantastical" (build_houston_bayou.py, 2026-10-27) ──
 	# Andy: vol 1 is 2010s Houston; the interiors may share with New Orleans,
 	# the outside may not — the park and the river had played on vol 5's
@@ -3244,6 +3263,19 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# (2026-10-30, draft 3) vol4_drawer's eleven scenes: "The bottom drawer
+	# sticks, then gives. Green hanging folders, the tabs typed ONEIRONAUTICS
+	# INC." From beside the chair, down into the pulled file drawer, the
+	# desk's edge and the lamp above.
+	"writers_desk_drawer": {
+		"scene": "res://scenes/locales/writers_desk.tscn",
+		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
+		"camera_origin": Vector3(0.40, 1.20, -3.80),
+		"camera_rotation": Vector3(-0.78, 0.40, 0.0),
+		"fov": 58.0,
+		"strip": ["Desk_Drawer_2"],
+		"suppress_input": true,
+	},
 	"writers_desk_dawn": {
 		"scene": "res://scenes/locales/writers_desk.tscn",
 		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
@@ -3251,6 +3283,9 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.75, 1.45, -3.15),
 		"camera_rotation": Vector3(-0.058, deg_to_rad(30.0), 0.0),
 		"fov": 56.0,
+		# (draft 3) "Every drawer pulled out": the open middle and file drawers
+		# are tagged for this view; the closed fronts leave it
+		"strip": ["Desk_Drawer_1", "Desk_Drawer_2"],
 		"env": {"sky_top": Color(0.46, 0.54, 0.70, 1), "sky_horizon": Color(0.86, 0.80, 0.74, 1),
 			"ground_horizon": Color(0.40, 0.40, 0.42, 1), "ground_bottom": Color(0.16, 0.16, 0.18, 1),
 			"ambient_color": Color(0.70, 0.72, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.64, 0.66, 0.72, 1)},
@@ -5356,6 +5391,19 @@ const CAMERA_PRESETS := {
 		# and Dickens Dean's booth under the #.
 		"camera_origin": Vector3(-2.00, 1.75, -6.00),
 		"camera_rotation": Vector3(-0.030, -0.755, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	# (2026-10-30) vol1 ch4 "There is a gigantic arcade downstairs, several
+	# dance floors, and a bowling alley. Music and movement seem to flow from
+	# one area to the next." From the atrium rail, looking SW and down over
+	# the arcade's cabinet rows four metres below, the stair going down, and
+	# the bowling glass at the left edge.
+	"club_sharp_arcade": {
+		"scene": "res://scenes/locales/club_sharp.tscn",
+		"requires_glb": "res://assets/3d/locales/club_sharp.glb",
+		"camera_origin": Vector3(-3.10, 1.80, -12.5),
+		"camera_rotation": Vector3(-0.50, 2.20, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},

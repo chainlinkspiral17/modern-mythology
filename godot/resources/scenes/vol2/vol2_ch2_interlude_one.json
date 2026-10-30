@@ -98,6 +98,10 @@
    "voice": "assets/audio/voice/vol2_ch2_interlude_one/017.mp3"
   },
   {
+   "t": "bg",
+   "src": "3d:small_wood_field_may"
+  },
+  {
    "t": "narrate",
    "text": "Her name was May. And she was fun to think about — amid all the poundings in pads, the forced repetition of drilling, distracting my thoughts from the sounds of whistles and grunts.",
    "voice": "assets/audio/voice/vol2_ch2_interlude_one/018.mp3"

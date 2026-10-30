@@ -247,6 +247,37 @@ light_energy = 1.20
 shadow_enabled = false
 omni_range = 9.00
 
+; (2026-10-30) the arcade's aisles, between the cabinet rows: the screens' wash
+; ("a gigantic arcade downstairs"). Range 3.8 keeps them off the main floor's
+; 8-light budget; the cage views strip them with Arcade_Glow
+[node name="Arcade_Glow_Aisle_0" type="OmniLight3D" parent="."]
+position = Vector3(-8.200, -1.900, -2.500)
+light_color = Color(0.40, 0.86, 0.98, 1)
+light_energy = 1.40
+shadow_enabled = false
+omni_range = 3.80
+
+[node name="Arcade_Glow_Aisle_1" type="OmniLight3D" parent="."]
+position = Vector3(-8.200, -1.900, -6.600)
+light_color = Color(0.98, 0.42, 0.74, 1)
+light_energy = 1.40
+shadow_enabled = false
+omni_range = 3.80
+
+[node name="Arcade_Glow_Aisle_2" type="OmniLight3D" parent="."]
+position = Vector3(-8.200, -1.900, -10.800)
+light_color = Color(0.62, 0.98, 0.46, 1)
+light_energy = 1.40
+shadow_enabled = false
+omni_range = 3.80
+
+[node name="Arcade_Glow_Aisle_3" type="OmniLight3D" parent="."]
+position = Vector3(-8.200, -1.900, -15.000)
+light_color = Color(0.98, 0.84, 0.36, 1)
+light_energy = 1.40
+shadow_enabled = false
+omni_range = 3.80
+
 ; the pin decks
 [node name="Lane_0_Pin_Light_Practical" type="OmniLight3D" parent="."]
 position = Vector3(-2.000, 3.500, 26.000)

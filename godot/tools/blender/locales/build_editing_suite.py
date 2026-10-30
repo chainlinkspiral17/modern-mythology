@@ -209,16 +209,18 @@ def build_suite_dressing_2026_10():
         for j in range(2):
             x = sx * (2.70 + j * 0.66)
             make_box(f"Suite_Acoustic_Panel_{sx:+d}_{j}", (x, NY - 0.025, 1.65), (0.60, 0.05, 1.20), (0.20, 0.22, 0.28, 1.0))
-    # the drop ceiling: the grid's T-bars and two troffers (the overhead's)
-    grid = (0.62, 0.62, 0.60, 1.0)
+    # the drop ceiling: the grid's T-bars and two troffers (the overhead's).
+    # DRAFT 3: the bars sit near flush (4 mm proud) in a tone near the tiles',
+    # so the edge pass draws a ceiling and not a cage of outlined beams
+    grid = (0.40, 0.40, 0.41, 1.0)
     for i in range(1, 11):
         y = i * 0.61
-        make_box(f"Ceil_Grid_Stock_Y{i}", ((X0 + X1) / 2.0, y, H - 0.01), (X1 - X0, 0.025, 0.02), grid)
+        make_box(f"Ceil_Grid_Stock_Y{i}", ((X0 + X1) / 2.0, y, H - 0.002), (X1 - X0, 0.022, 0.004), grid)
     for i in range(1, 7):
         x = X0 + i * 1.22 - 0.06
-        make_box(f"Ceil_Grid_Stock_X{i}", (x, D / 2.0, H - 0.01), (0.025, D, 0.02), grid)
+        make_box(f"Ceil_Grid_Stock_X{i}", (x, D / 2.0, H - 0.002), (0.022, D, 0.004), grid)
     for k, (x, y) in enumerate(((-0.81, 2.745), (1.63, 4.575))):
-        make_box(f"Ceil_Troffer_{k}", (x, y, H - 0.012), (1.18, 0.57, 0.02), (0.88, 0.88, 0.84, 1.0))
+        make_box(f"Ceil_Troffer_{k}", (x, y, H - 0.003), (1.18, 0.57, 0.006), (0.88, 0.88, 0.84, 1.0))
     # the carpet worn flat where the Human Being sits against the couch's arm
     make_box("Suite_Carpet_Worn", (0.86, 1.50, 0.004), (0.54, 0.62, 0.004), (0.32, 0.31, 0.34, 1.0))
 

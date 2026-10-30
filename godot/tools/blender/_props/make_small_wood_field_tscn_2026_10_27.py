@@ -19,6 +19,7 @@ B_FILL = "Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.
 B_SUN_FROM_W = "Transform3D(0, 0.208, -0.978, 0, 0.978, 0.208, 1, 0, 0, {}, {}, {})"
 B_MOON = "Transform3D(-1, 0, 0, 0, 0.707, 0.707, 0, 0.707, -0.707, {}, {}, {})"
 NIGHT, DUSK = "__small_wood_field_night", "__small_wood_field_dusk"
+MAY = "__small_wood_field_may"     # May's view in the stand, the same dusk light
 
 # from build_small_wood_field.py
 YD = 0.9144
@@ -54,8 +55,8 @@ lights += [
 for i in range(-3, 4):
     lights.append(("Streetlight_{}".format(i + 3) + NIGHT, "OmniLight3D", I.format(i * 24.0, 6.8, round(46.0 - SOUTH, 2)), c(1.0, 0.74, 0.40), 1.4, {"omni_range": 15.0}))
 lights += [
-    ("Sun" + DUSK, "DirectionalLight3D", B_SUN_FROM_W.format(-80, 20, -55), c(1.0, 0.76, 0.50), 1.5),
-    ("SkyFill" + DUSK, "DirectionalLight3D", B_FILL.format(0, 20, -50), c(0.62, 0.70, 0.92), 0.35),
+    ("Sun" + DUSK + MAY, "DirectionalLight3D", B_SUN_FROM_W.format(-80, 20, -55), c(1.0, 0.76, 0.50), 1.5),
+    ("SkyFill" + DUSK + MAY, "DirectionalLight3D", B_FILL.format(0, 20, -50), c(0.62, 0.70, 0.92), 0.35),
 ]
 
 CFG = {

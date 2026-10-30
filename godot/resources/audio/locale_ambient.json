@@ -837,6 +837,10 @@
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.6
     },
+    "club_sharp_arcade": {
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "gain": 0.6
+    },
     "club_sharp_cage": {
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.6
@@ -858,6 +862,10 @@
       "gain": 0.82
     },
     "small_wood_field_dusk": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "small_wood_field_may": {
       "bed": "assets/audio/bgm/vol2_ambient.wav",
       "gain": 0.82
     },

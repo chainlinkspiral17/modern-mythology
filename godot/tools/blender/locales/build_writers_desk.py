@@ -34,19 +34,29 @@ rectangle broken by an old chimney breast on the W wall (fireplace bricked
 up, a mantel); a two-panel door; the bed kit's soft mattress, stuffed
 pillows and draped blanket. The sill papers sit on the stool.
 
-DRAFT 3 targets: the four folding church-basement chairs of "curtain call"
-(they "weren't here before": needs a per-preset prop switch like the lights'
-`__<preset>`); the copier counter of the meld seams as its own set
-(copy_shop); the RUTA 77 car at the curb for the dawn preset; HeroArt
-entries for the four clippings (the zine, "All over town", the blog page,
-the poem) and the corkboard's red string as one drawn path; wear (a chair
-track in the floor, a scorch under the lamp); Deck-verified framing.
+DRAFT 3 (2026-10-30, the vols 1-4 sweep; the set carries 37 scene uses):
+the text over the build — the lamp "has a round brass shade. Up close it
+looks like a porthole" (it was a green banker's can); the kaleidoscope that
+"rolls out from under the zine ... ducks printed on the paper, worn white at
+both ends"; the top drawer's "newspaper, a novel, and a toy soldier"; and
+the bottom FILE drawer of vol4_drawer (eleven scenes: "Green hanging
+folders, the tabs typed ONEIRONAUTICS INC."), pulled in its own view
+`writers_desk_drawer`, with every drawer pulled at dawn ("Every drawer
+pulled out"). The pulled drawers hang under tagged empties; the views that
+pull them `strip` the closed fronts.
+
+DRAFT 4 targets: the four folding church-basement chairs of "curtain call"
+(a tagged group, like the drawers, for the dawn); the RUTA 77 car at the
+curb with its cardboard sign for the dawn; the man by the door "in line for
+a movie" is a figure, not set; HeroArt entries for the four clippings and
+the folder tabs' type; the corkboard's red string gone brown at dawn;
+wear (a scorch under the lamp); Deck-verified framing.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_soft_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_soft_box, make_lathe, export_glb
 from _props.views import make_view
 from _props.structure import (make_floor, make_wall, make_ceiling, make_crown_molding,
                               make_window, make_wall_with_openings, make_curtains)
@@ -144,15 +154,20 @@ def build_desk():
     px = x + DESK_W / 2.0 - 0.24
     make_box("Desk_Pedestal", (px, y, (top - 0.04) / 2.0), (0.44, DESK_D - 0.04, top - 0.04), WOOD)
     make_box("Desk_Modesty", (x - 0.24, y + DESK_D / 2.0 - 0.03, 0.46), (DESK_W - 0.55, 0.02, 0.50), WOOD_DARK)
-    for k in range(3):
-        z = 0.58 - k * 0.22
-        pull = 0.14 if k == 0 else 0.0                 # the top drawer: stuck, then gave
-        # flush on the pedestal's face (it was 2 cm proud of it, holding nothing);
-        # the stuck top drawer runs back into the pedestal as a real drawer does
-        face_y = y - (DESK_D - 0.04) / 2.0
-        make_box(f"Desk_Drawer_{k}", (px, face_y - (0.024 + pull) / 2.0 + 0.01, z), (0.40, 0.024 + pull + 0.02, 0.18), WOOD_DARK)
+    # (draft 3) a pencil drawer, a middle drawer and a deep file drawer — "the
+    # bottom drawer ... Green hanging folders" (vol4_drawer); z centre, height
+    face_y = y - (DESK_D - 0.04) / 2.0
+    DRAWERS = ((0.58, 0.18), (0.40, 0.14), (0.17, 0.28))
+    for k, (z, dh) in enumerate(DRAWERS):
+        pull = 0.26 if k == 0 else 0.0                 # the top drawer: stuck, then gave
+        # flush on the pedestal's face; the stuck top drawer runs back into the
+        # pedestal as a real drawer does. The closed middle and file drawers
+        # are `strip`ped by the views that pull them (dawn: every drawer)
+        make_box(f"Desk_Drawer_{k}", (px, face_y - (0.024 + pull) / 2.0 + 0.01, z), (0.40, 0.024 + pull + 0.02, dh), WOOD_DARK)
         make_box(f"Desk_Drawer_{k}_Pull", (px, face_y - 0.024 - pull - 0.009, z), (0.10, 0.02, 0.018), (0.62, 0.54, 0.34, 1.0))
-    # the open drawer's contents: rubber bands, dead nine-volts, the red string, sand in the runners
+    # the open drawer's contents: rubber bands, dead nine-volts, the red string,
+    # sand in the runners — and (draft 3, the meld seam) "in there, for no
+    # good reason, a newspaper, a novel, and a toy soldier"
     dz, dy = 0.66, y - DESK_D / 2.0 - 0.06
     make_box("Drawer_Sand", (px, dy, dz - 0.005), (0.34, 0.12, 0.004), (0.80, 0.70, 0.50, 1.0))
     for k, (bx, bc) in enumerate([(-0.11, (0.70, 0.56, 0.38, 1.0)), (-0.06, (0.56, 0.42, 0.30, 1.0))]):
@@ -161,6 +176,14 @@ def build_desk():
         make_box(f"Drawer_9V_{k}", (px + 0.02 + k * 0.035, dy - 0.01, dz + 0.012), (0.026, 0.017, 0.048), (0.16, 0.16, 0.18, 1.0))
         make_box(f"Drawer_9V_{k}_Cap", (px + 0.02 + k * 0.035, dy - 0.01, dz + 0.04), (0.02, 0.012, 0.008), (0.70, 0.62, 0.36, 1.0))
     make_cyl("Drawer_String_Ball", (px + 0.12, dy, dz + 0.03), 0.032, 0.06, RED_STRING, segments=10)
+    make_box("Drawer_Newspaper", (px - 0.08, y - 0.545, dz + 0.006), (0.19, 0.11, 0.012), P.NEWSPRINT)
+    make_box("Drawer_Novel", (px + 0.10, y - 0.545, dz + 0.012), (0.16, 0.10, 0.024), (0.50, 0.24, 0.18, 1.0))
+    make_box("Drawer_Novel_Pages", (px + 0.10, y - 0.545, dz + 0.0125), (0.152, 0.104, 0.018), P.PAPER_AGED)
+    sold = (0.34, 0.42, 0.22, 1.0)                       # the toy soldier, lying on his side
+    make_box("Drawer_Soldier_Body", (px - 0.03, y - 0.475, dz + 0.009), (0.040, 0.012, 0.016), sold)
+    make_cyl("Drawer_Soldier_Head", (px - 0.0035, y - 0.475, dz + 0.009), 0.0065, 0.012, sold, axis='X', segments=8)
+    make_box("Drawer_Soldier_Base", (px - 0.054, y - 0.475, dz + 0.009), (0.004, 0.020, 0.018), sold)
+    build_open_drawers(px, face_y, DRAWERS)
     # on the desk: the screen and keyboard (2006), the lamp, the paper
     make_box("Monitor_Stand", (x + 0.10, y + 0.16, top + 0.01), (0.20, 0.16, 0.02), P.METAL_BLACK)
     make_box("Monitor_Neck", (x + 0.10, y + 0.18, top + 0.11), (0.05, 0.03, 0.20), P.METAL_BLACK)
@@ -168,12 +191,27 @@ def build_desk():
     make_box("Monitor_Screen", (x + 0.10, y + 0.152, top + 0.37), (0.42, 0.004, 0.28), (0.20, 0.30, 0.42, 1.0))
     make_box("Keyboard", (x + 0.10, y - 0.14, top + 0.012), (0.44, 0.15, 0.02), (0.84, 0.82, 0.76, 1.0))
     make_box("Mouse", (x + 0.42, y - 0.14, top + 0.015), (0.06, 0.10, 0.03), (0.84, 0.82, 0.76, 1.0))
+    # (draft 3) "The desk lamp has a round brass shade. Up close it looks like
+    # a porthole." (meld kaleidoscope e) — it was a green banker's can
     lx, ly = x - 0.62, y + 0.18
-    make_cyl("Lamp_Base", (lx, ly, top + 0.015), 0.07, 0.03, P.METAL_BLACK, segments=12)
-    make_cyl("Lamp_Neck", (lx, ly, top + 0.20), 0.008, 0.34, P.METAL_BLACK, segments=6)
-    make_box("Lamp_Arm", (lx + 0.09, ly, top + 0.37), (0.18, 0.012, 0.012), P.METAL_BLACK)       # off the post itself
-    make_cyl("Lamp_Shade", (lx + 0.19, ly, top + 0.33), 0.06, 0.09, (0.18, 0.30, 0.22, 1.0), segments=12)
-    make_cyl("Lamp_Bulb", (lx + 0.19, ly, top + 0.285), 0.025, 0.02, (1.0, 0.92, 0.70, 1.0), segments=8)
+    BRASS, BRASS_DK = (0.74, 0.58, 0.28, 1.0), (0.52, 0.40, 0.18, 1.0)
+    make_lathe("Lamp_Base", (lx, ly, top), [(0.0, 0.0), (0.075, 0.0), (0.075, 0.012), (0.05, 0.026), (0.012, 0.034), (0.0, 0.034)], BRASS_DK, segments=16)
+    make_cyl("Lamp_Neck", (lx, ly, top + 0.20), 0.008, 0.34, BRASS_DK, segments=6)
+    make_box("Lamp_Arm", (lx + 0.095, ly, top + 0.37), (0.19, 0.012, 0.012), BRASS_DK)        # off the post itself
+    make_cyl("Lamp_Shade_Stem", (lx + 0.19, ly, top + 0.357), 0.006, 0.014, BRASS_DK, segments=6)
+    make_lathe("Lamp_Shade", (lx + 0.19, ly, top + 0.27),
+               [(0.095, 0.0), (0.093, 0.018), (0.082, 0.042), (0.062, 0.064), (0.034, 0.078), (0.0, 0.084)], BRASS, segments=20)
+    make_lathe("Lamp_Shade_Rim", (lx + 0.19, ly, top + 0.27), [(0.090, 0.0), (0.100, 0.0), (0.100, 0.008), (0.090, 0.008)],
+               BRASS_DK, segments=20, loop=True)
+    make_cyl("Lamp_Bulb", (lx + 0.19, ly, top + 0.30), 0.03, 0.04, (1.0, 0.92, 0.70, 1.0), segments=10)
+    # "A kaleidoscope rolls out from under the zine. The cheap cardboard kind,
+    # ducks printed on the paper, worn white at both ends." (meld kaleidoscope a)
+    kx, ky, kr, kl = x + 0.035, y - 0.30, 0.021, 0.22
+    make_cyl("Kaleidoscope", (kx, ky, top + kr), kr, kl - 0.04, (0.46, 0.66, 0.84, 1.0), axis='X', segments=12)
+    for e in (-1, 1):
+        make_cyl(f"Kaleidoscope_End_{e:+d}", (kx + e * (kl / 2.0 - 0.01), ky, top + kr), kr + 0.001, 0.02, (0.90, 0.88, 0.82, 1.0), axis='X', segments=12)
+    for d in range(3):                                   # the ducks: yellow flecks on the blue
+        make_box(f"Kaleidoscope_Duck_{d}", (kx - 0.06 + d * 0.06, ky - kr * 0.55, top + kr * 1.7), (0.016, 0.004, 0.010), (0.96, 0.82, 0.26, 1.0))
     for k in range(5):                                   # the stacks: scraps, stories, the zine
         make_box(f"Paper_Stack_{k}", (x - 0.42 + (k % 2) * 0.08, y - 0.08 - (k // 2) * 0.02, top + 0.012 + k * 0.012),
                  (0.22, 0.29, 0.010), P.PAPER if k % 2 == 0 else P.PAPER_AGED)
@@ -192,6 +230,63 @@ def build_desk():
     for k, (bx, by) in enumerate([(-0.04, 0.02), (0.04, -0.03), (0.0, 0.05)]):
         make_chamfer_box(f"Crumple_{k}", (x - 0.95 + bx, y - 0.30 + by, 0.30 + k * 0.02), (0.07, 0.07, 0.06), P.PAPER, chamfer=0.02)
     make_chamfer_box("Crumple_Floor", (x - 0.70, y - 0.58, 0.03), (0.07, 0.07, 0.06), P.PAPER, chamfer=0.02)
+
+
+def build_open_drawers(px, face_y, drawers):
+    """(draft 3) The pulled drawers, each under an empty tagged with the views
+    it shows in: "The bottom drawer sticks, then gives. Green hanging folders,
+    the tabs typed ONEIRONAUTICS INC. ... Pitches and design docs, a story, a
+    deck of cards. Games, mostly." (vol4_drawer, eleven scenes) and the dawn's
+    "Every drawer pulled out" (curtain call). Built as open boxes — front,
+    sides, floor — so the folders show from above; the part still inside the
+    pedestal is not built."""
+    from _props.geometry import make_box as _mb
+    # the middle drawer: pulled 20 cm, a few loose papers in it (dawn only)
+    z, dh = drawers[1]
+    pull = 0.20
+    _open_box("DrawerMidOpen", px, face_y, z, dh, pull)
+    for k in range(3):
+        _mb(f"DrawerMidOpen_Paper_{k}", (px - 0.06 + k * 0.05, face_y - 0.10 - k * 0.02, z - dh / 2.0 + 0.032 + k * 0.004),
+            (0.21, 0.15, 0.003), P.PAPER if k % 2 else P.PAPER_AGED)
+    # the file drawer: pulled 36 cm on its slides, the folders hanging in it
+    z, dh = drawers[2]
+    pull = 0.36
+    _open_box("DrawerFileOpen", px, face_y, z, dh, pull)
+    rail_z = z + dh / 2.0 - 0.02
+    greens = [(0.28, 0.44, 0.28, 1.0), (0.24, 0.40, 0.26, 1.0), (0.32, 0.48, 0.30, 1.0)]
+    tabs_x = (-0.12, -0.04, 0.04, 0.12)
+    n = 11
+    for i in range(n):
+        fy = face_y - 0.33 + i * 0.03
+        _mb(f"DrawerFileOpen_Folder_{i}", (px, fy, rail_z - 0.115), (0.33, 0.004, 0.22), greens[i % 3])
+        _mb(f"DrawerFileOpen_Folder_{i}_Bar", (px, fy, rail_z + 0.004), (0.366, 0.006, 0.008), (0.20, 0.22, 0.20, 1.0))
+        _mb(f"DrawerFileOpen_Folder_{i}_Tab", (px + tabs_x[i % 4], fy, rail_z + 0.020), (0.055, 0.003, 0.024), (0.92, 0.92, 0.86, 1.0))
+        if i in (2, 5, 8):                               # a fat one: a deck of cards, a design doc
+            _mb(f"DrawerFileOpen_Folder_{i}_Papers", (px, fy + 0.008, rail_z - 0.10), (0.30, 0.010, 0.20), P.PAPER)
+    try:
+        import bpy
+        for empty_name, prefix in (("DrawerMid__writers_desk_dawn", "DrawerMidOpen"),
+                                   ("DrawerFile__writers_desk_drawer__writers_desk_dawn", "DrawerFileOpen")):
+            empty = bpy.data.objects.new(empty_name, None)
+            bpy.context.scene.collection.objects.link(empty)
+            for obj in list(bpy.data.objects):
+                if obj is not empty and obj.parent is None and obj.name.startswith(prefix):
+                    obj.parent = empty
+    except Exception:
+        pass
+
+
+def _open_box(nm, px, face_y, z, dh, pull):
+    """A drawer pulled `pull` m out of the pedestal face at `face_y` (-y is
+    out): the front, the two sides and the floor of the part that shows."""
+    w, t = 0.40, 0.016
+    z0 = z - dh / 2.0
+    make_box(f"{nm}_Front", (px, face_y - pull - 0.012, z), (w, 0.024, dh), WOOD_DARK)
+    make_box(f"{nm}_Front_Pull", (px, face_y - pull - 0.033, z + dh * 0.20), (0.10, 0.02, 0.018), (0.62, 0.54, 0.34, 1.0))
+    for sd in (-1, 1):
+        make_box(f"{nm}_Side_{sd:+d}", (px + sd * (w / 2.0 - t / 2.0), face_y - pull / 2.0, z0 + 0.01 + (dh - 0.04) / 2.0),
+                 (t, pull, dh - 0.04), WOOD)
+    make_box(f"{nm}_Floor", (px, face_y - pull / 2.0, z0 + 0.016), (w - 2 * t, pull, 0.012), WOOD)
 
 
 def build_corkboard():

@@ -342,8 +342,14 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_drawer__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.554, 0.896, -3.569)
-rotation = Vector3(-0.2618, 0.4378, 0.0)
+rotation = Vector3(-0.4071, 0.4736, 0.0)
 metadata/fov = 35.0
+
+; (2026-10-30, draft 3) vol4_drawer: down into the pulled file drawer, the folders
+[node name="shot_insert_drawer__writers_desk_drawer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.15, 0.75, -4.25)
+rotation = Vector3(-0.876, 0.383, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_cork__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]

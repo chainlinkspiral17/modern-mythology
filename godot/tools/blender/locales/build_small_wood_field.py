@@ -51,6 +51,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_taper_cyl, ma
                              make_chamfer_box, make_tube, join_stock, export_glb)
 from _props.trees import make_conifer
 from _props.vehicles import make_car
+from _props.figures import make_seated_figure
 import build_school_field_evening as SF
 
 try:
@@ -61,6 +62,7 @@ except ImportError:
 SIDE_X, MID_Y, FIELD_LEN = SF.SIDE_X, SF.MID_Y, SF.FIELD_LEN
 NIGHT = "__small_wood_field_night"
 DUSK = "__small_wood_field_dusk"
+MAY = "__small_wood_field_may"
 
 # DRAFT 2 (2026-10-27, Andy): "small wood high is green primary white
 # secondary"; "the field has a running track around it"; "Home stand is
@@ -286,7 +288,17 @@ def build_practice():
         _figure("Practice", px, py, 0.0, r, HOME_JERSEY, helmet=SKIN[i % len(SKIN)])
         make_cyl(f"Practice_Stock_Helm_{i}", (px + 0.33, py, 0.95), 0.12, 0.20, HOME_HELMET, segments=10)
     _figure("PracticeCoach", SIDE_X - 3.0, SF.GL_S + 36.0, 0.0, r, (0.26, 0.28, 0.32, 1.0))
-    _figure("PracticeMay", GS_X0 + 0.30 + TREAD * 3 + 0.35, MID_Y - 6.0, Z0 + RISE * 3 + 0.45, r, (0.70, 0.30, 0.24, 1.0), standing=False)
+    # May (2026-10-30, draft N+1): "A very thin dark-featured young woman ...
+    # Content just to sit around half the day and watch the boys practice".
+    # The props kit's seated figure, not the crowd's box stand-in: row 2,
+    # facing the field, feet on the row below, hands in her lap.
+    # (the night crowd's row 2 leaves a 3 m gap at MID_Y - 4.2: she sits in
+    # it, so the two never share a seat in the audits' one record of the set)
+    k = 2
+    make_seated_figure("PracticeMay_Stock_0", GS_X0 + 0.30 + TREAD * k + 0.35, MID_Y - 4.2,
+                       heading=-math.pi / 2.0, seat_h=RISE, h=1.64, z0=Z0 + RISE * (k - 1),
+                       coat=(0.70, 0.30, 0.24, 1.0), pants=(0.20, 0.24, 0.40, 1.0),
+                       skin=(0.70, 0.52, 0.40, 1.0), hair=(0.07, 0.05, 0.05, 1.0), arms="lap")
 
 
 def build_benches():
@@ -480,8 +492,9 @@ def main():
     # the night's people go with the night, the practice with the dusk
     for nm in ("CrowdHome", "CrowdAway", "TeamHome", "TeamAway", "PlayHome", "PlayAway", "Officials"):
         _rename(nm + "_Stock", nm + NIGHT)
+    # the dusk wide and May's view both see the practice
     for nm in ("Practice", "PracticeCoach", "PracticeMay"):
-        _rename(nm + "_Stock", nm + DUSK)
+        _rename(nm + "_Stock", nm + DUSK + MAY)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                         "../../../assets/3d/locales/small_wood_field.glb"))
     print(f"\n[build_small_wood_field] exporting to {out}")

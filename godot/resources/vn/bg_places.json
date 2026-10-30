@@ -1813,10 +1813,11 @@
     },
     "vol4_drawer_open": {
       "fit": "exact",
-      "to": "3d:writers_desk",
+      "to": "3d:writers_desk_drawer",
       "build": "writers_desk",
-      "note": "the bottom drawer of the scrapbook desk — 11 scenes; draft 2: a writers_desk_drawer view",
-      "scenes": 11
+      "note": "the bottom drawer of the scrapbook desk — 11 scenes; the file drawer pulled, its green hanging folders",
+      "scenes": 11,
+      "built": "2026-10-30 draft 3"
     },
     "vol4_esther_neighborhood": {
       "fit": "2d",

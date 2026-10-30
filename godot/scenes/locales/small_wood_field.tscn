@@ -299,13 +299,13 @@ light_energy = 1.4
 shadow_enabled = false
 omni_range = 15.0
 
-[node name="Sun__small_wood_field_dusk" type="DirectionalLight3D" parent="."]
+[node name="Sun__small_wood_field_dusk__small_wood_field_may" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0, 0.208, -0.978, 0, 0.978, 0.208, 1, 0, 0, -80, 20, -55)
 light_color = Color(1.0, 0.76, 0.5, 1)
 light_energy = 1.5
 shadow_enabled = false
 
-[node name="SkyFill__small_wood_field_dusk" type="DirectionalLight3D" parent="."]
+[node name="SkyFill__small_wood_field_dusk__small_wood_field_may" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 20, -50)
 light_color = Color(0.62, 0.7, 0.92, 1)
 light_energy = 0.35
