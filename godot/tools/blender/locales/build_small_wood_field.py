@@ -279,8 +279,12 @@ def build_practice():
     coach with his clipboard at the 40, a girl sitting in the stands
     watching — May — and her car in the lot. Dusk only."""
     r = _rng(722)
+    # walking off with their helmets off, carried at the hip (2026-10-30:
+    # helmeted, the green helmet on the green jersey read as a headless block)
     for i in range(7):
-        _figure("Practice", 19.0 + i * 1.4 + r(), SF.GL_S + 30.0 + r() * 6.0, 0.0, r, HOME_JERSEY, helmet=HOME_HELMET)
+        px, py = 19.0 + i * 1.4 + r(), SF.GL_S + 30.0 + r() * 6.0
+        _figure("Practice", px, py, 0.0, r, HOME_JERSEY, helmet=SKIN[i % len(SKIN)])
+        make_cyl(f"Practice_Stock_Helm_{i}", (px + 0.33, py, 0.95), 0.12, 0.20, HOME_HELMET, segments=10)
     _figure("PracticeCoach", SIDE_X - 3.0, SF.GL_S + 36.0, 0.0, r, (0.26, 0.28, 0.32, 1.0))
     _figure("PracticeMay", GS_X0 + 0.30 + TREAD * 3 + 0.35, MID_Y - 6.0, Z0 + RISE * 3 + 0.45, r, (0.70, 0.30, 0.24, 1.0), standing=False)
 
