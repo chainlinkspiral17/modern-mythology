@@ -127,10 +127,62 @@ def build_grounds():
     make_box("Night_Sky", (-130.0, 0.0, 20.0), (0.2, 300.0, 90.0), (0.02, 0.03, 0.06, 1.0))
 
 
+def build_gate_night_2026_10():
+    """DRAFT 2 (2026-10-30), the gate view: the tower read as one dark
+    pipe, the headland as a flat disc. Now:
+    - the stone in COURSES: a darker joint ring every 0.9 m (joined mesh)
+    - "the light twinkling up above shot out of floorboard and crevasse":
+      slit windows up the S face, warm with the lit floors behind them
+    - the door in the doorway, plank and strap, ajar on its keys' night
+    - grass and heather in tussocks on the headland, rocks along the fence
+    (the beams are SpotLights in the .tscn: the family's flashlights)
+    Draft 3 targets: breath vapor in the beams, the bed and breakfast's
+    lights down the trail, the gallery rail's ring, the sea's surf line."""
+    JOINT = (0.30, 0.29, 0.27, 1.0)
+    n = 20
+    for c in range(1, 20):
+        z = c * 0.9
+        for k in range(n):
+            am = k * 2.0 * math.pi / n + math.pi / n
+            if z < 2.25 and abs(math.atan2(math.sin(am + math.pi / 2.0), math.cos(am + math.pi / 2.0))) < 0.25:
+                continue                                   # the doorway
+            r = R_OUT + 0.006
+            make_rot_box(f"Column_Joint_Stock_{c}_{k}", (r * math.cos(am), r * math.sin(am), z),
+                         (0.012, 2.0 * r * math.sin(math.pi / n) + 0.02, 0.05), JOINT, yaw=am)
+    for i, z in enumerate((3.4, 7.2, 10.6, 13.4)):
+        a = -math.pi / 2.0 + (0.55 if i % 2 else -0.55)
+        x, y = (R_OUT + 0.01) * math.cos(a), (R_OUT + 0.01) * math.sin(a)
+        make_rot_box(f"Tower_Slit_{i}_Frame", (x, y, z), (0.04, 0.38, 0.86), (0.22, 0.21, 0.20, 1.0), yaw=a)
+        x2, y2 = (R_OUT + 0.03) * math.cos(a), (R_OUT + 0.03) * math.sin(a)
+        make_rot_box(f"Tower_Slit_{i}_Glow", (x2, y2, z), (0.02, 0.24, 0.70), (1.0, 0.84, 0.56, 1.0), yaw=a)
+    # the door, ajar into the bore
+    make_rot_box("Tower_Door", (0.32, -R_IN - 0.05, 1.05), (0.95, 0.08, 2.10), (0.30, 0.22, 0.16, 1.0), yaw=0.35)
+    for i, z in enumerate((0.4, 1.7)):
+        make_rot_box(f"Tower_Door_Strap_{i}", (0.30, -R_IN - 0.10, z), (0.90, 0.02, 0.06), (0.16, 0.16, 0.18, 1.0), yaw=0.35)
+    make_box("Tower_Door_Lintel", (0.0, -R_OUT + 0.10, 2.28), (1.30, 0.30, 0.16), STONE_DARK)
+    # tussocks of grass and heather on the headland, rocks by the fence
+    gy = -R_OUT - 6.2
+    for k in range(70):
+        x = -14.0 + ((k * 37) % 280) / 10.0
+        y = gy + 4.6 - ((k * 53) % 150) / 10.0
+        if abs(x) < 1.3 or (abs(x) < 1.0 and y > gy):
+            continue                                       # the trail and the walkway
+        if abs(y - gy) < 0.35:
+            continue                                       # the fence line itself
+        r = 0.16 + 0.05 * (k % 4)
+        col = ((0.26, 0.32, 0.20, 1.0), (0.34, 0.36, 0.24, 1.0), (0.30, 0.24, 0.28, 1.0))[k % 3]
+        make_blob(f"Headland_Tuft_Stock_{k}", (x, y, r * 0.35), r, col, noise=0.4, seed=100 + k, squash=0.7)
+    for k in range(8):
+        x = (-1 if k % 2 else 1) * (2.0 + k * 1.3)
+        make_blob(f"Fence_Rock_{k}", (x, gy - 0.6 - (k % 3) * 0.3, 0.12), 0.30 + 0.06 * (k % 3), (0.34, 0.33, 0.31, 1.0),
+                  noise=0.35, seed=140 + k, squash=0.6)
+
+
 def main():
     clear_scene()
     build_tower()
     build_grounds()
+    build_gate_night_2026_10()
     try:
         join_stock()
     except Exception as _e:

@@ -4255,6 +4255,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.09, 0.12, 1), "ground_bottom": Color(0.03, 0.03, 0.05, 1),
 			"ambient_color": Color(0.40, 0.46, 0.62, 1), "ambient_energy": 0.45,
 			"fog_color": Color(0.06, 0.07, 0.10, 1), "fog_sky": 0.15},
+		"strip": ["Night_Sky"],
 		"suppress_input": true,
 	},
 	"nick_house_front": {
