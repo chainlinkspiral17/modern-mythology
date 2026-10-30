@@ -278,13 +278,18 @@ def build_game_2026_10():
 
     def player(nm, x, y, top, pants, cap, h=1.56, heading=None, arms="down"):
         hd = face_home(x, y) if heading is None else heading
+        if nm.endswith("_CF"):
+            hd += 0.45          # (round 4) shaded toward left-centre: square on the diagonal the arms read through the waist
+        # (round 4) the pitcher stands ON the mound (its crown and the rubber
+        # are 0.215 up), not ankle-deep in it
+        z0 = 0.216 if (x, y) == MOUND else 0.0
         if h < 1.2:
             # (round 2) the catcher CROUCHES: a seated figure with no seat,
             # thighs level at the knees' height, mitt out in front
             hand = make_seated_figure(nm, x, y, heading=hd, seat_h=0.42, h=1.56, coat=top, pants=pants, hair=cap, arms="table")
             make_blob(nm + "_Mitt", hand, 0.10, glove, noise=0.15, seed=len(nm), squash=0.8)
             return
-        hand = make_standing_figure(nm, x, y, heading=hd, h=h, coat=top, pants=pants, hair=cap, arms=arms)
+        hand = make_standing_figure(nm, x, y, heading=hd, h=h, coat=top, pants=pants, hair=cap, arms=arms, z0=z0)
         if arms == "front" and "Umpire" not in nm and "Batter" not in nm and "Chris" != nm.split("_")[-1]:
             make_blob(nm + "_Glove", hand, 0.075, glove, noise=0.15, seed=len(nm), squash=0.8)
 
@@ -323,7 +328,11 @@ def build_game_2026_10():
         for j in range(7):
             if rnd.random() < 0.35:
                 continue
-            x = 2.8 + j * 1.6 + rnd.uniform(-0.3, 0.3)
+            # (round 4) rows staggered half a seat so feet on a footboard never
+            # land in the back of the one below; clear of the frame posts
+            x = 2.8 + j * 1.6 + (0.8 if k % 2 else 0.0) + rnd.uniform(-0.12, 0.12)
+            if x > 13.6 or min(abs(x - (2.2 + f * 2.95)) for f in range(5)) < 0.42:
+                continue
             kid = rnd.random() < 0.3
             sz = 0.42 + k * 0.40
             coat_ = shirts[rnd.randrange(len(shirts))]
