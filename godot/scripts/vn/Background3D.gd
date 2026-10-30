@@ -4704,9 +4704,12 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol4_story_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_story_rooms.glb",
 		# "one late night": the armchair under the reading lamp, the books, the dark doorway Esther stands in
-		"camera_origin": Vector3(421.2, 1.5, -5.4),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(-130.0), 0.0),
-		"fov": 64.0,
+		# (2026-10-30) from the hall door NW: the books, the armchair under its
+		# lamp, the dark window, Esther's lamp and the sofa (it looked at the
+		# room's two empty walls)
+		"camera_origin": Vector3(427.3, 1.5, -0.9),
+		"camera_rotation": Vector3(-0.10, 0.90, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"shanghai_window_night": {

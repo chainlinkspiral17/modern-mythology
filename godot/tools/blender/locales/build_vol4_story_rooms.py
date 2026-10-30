@@ -513,9 +513,22 @@ def build_dean_house():
     # the bookshelves along the W wall, the armchair, the lamp, the book
     for k in range(3):
         make_box(f"DeanHome_Bookcase_{k}", (x0 + 0.09 + 0.18, 1.2 + k * 1.6, 1.10), (0.36, 1.5, 2.20), (0.36, 0.24, 0.16, 1.0))
+        # (2026-10-30) spines, not a coloured slab per shelf: a run of books of
+        # varied width and height, a gap and a leaner now and then
         for lvl in range(5):
-            make_box(f"DeanHome_Books_Stock_{k}_{lvl}", (x0 + 0.09 + 0.20, 1.2 + k * 1.6, 0.30 + lvl * 0.42), (0.26, 1.36, 0.26),
-                     ((0.50, 0.20, 0.18, 1.0), (0.20, 0.30, 0.40, 1.0), (0.60, 0.50, 0.30, 1.0))[(k + lvl) % 3])
+            make_box(f"DeanHome_Shelf_Board_{k}_{lvl}", (x0 + 0.09 + 0.20, 1.2 + k * 1.6, 0.16 + lvl * 0.42), (0.30, 1.40, 0.02),
+                     (0.30, 0.20, 0.14, 1.0))
+            by = 1.2 + k * 1.6 - 0.66
+            b = 0
+            while by < 1.2 + k * 1.6 + 0.62:
+                bw = 0.025 + 0.012 * ((k * 7 + lvl * 3 + b * 5) % 4)
+                bh = 0.22 + 0.03 * ((k + lvl * 2 + b * 3) % 5)
+                if (k + lvl + b) % 11 != 5:
+                    make_box(f"DeanHome_Book_Stock_{k}_{lvl}_{b}", (x0 + 0.09 + 0.22, by + bw / 2.0, 0.17 + lvl * 0.42 + bh / 2.0), (0.20, bw, bh),
+                             ((0.50, 0.20, 0.18, 1.0), (0.20, 0.30, 0.40, 1.0), (0.60, 0.50, 0.30, 1.0), (0.26, 0.36, 0.24, 1.0),
+                              (0.82, 0.78, 0.68, 1.0))[(k + lvl + b) % 5])
+                by += bw + 0.003
+                b += 1
     make_box("Armchair_Base", (422.4, 3.6, 0.24), (0.90, 0.90, 0.48), (0.46, 0.24, 0.18, 1.0))
     make_box("Armchair_Back", (422.4, 4.0, 0.80), (0.90, 0.18, 0.66), (0.46, 0.24, 0.18, 1.0))
     for s in (-1, 1):
@@ -535,6 +548,19 @@ def build_dean_house():
     for k in range(4):
         make_box(f"DeanHome_Stair_Step_{k}", (427.6, -1.0 - k * 0.28, 0.09 + k * 0.18), (1.0, 0.28, 0.18 * (k + 1)), (0.36, 0.24, 0.16, 1.0))
     make_box("DeanHome_Hall_Wall_Far", (426.6, -2.95, 1.45), (3.2, 0.10, 2.9), (0.40, 0.34, 0.28, 1.0))
+    # (2026-10-30, draft 2) "a comfortable family house": the room read as a
+    # lamp in the dark. Esther's floor lamp by the sofa (the tscn's
+    # Floor_Lamp practical), the family on the wall, Aria's things, a throw
+    make_lamp("DeanHome_Floor_Lamp", 427.4, 6.4, base_z=0.0, h=1.50)
+    for i, (py_, pz_, w, h) in enumerate(((424.6, 1.70, 0.40, 0.30), (425.2, 1.55, 0.28, 0.36), (425.75, 1.75, 0.34, 0.26),
+                                          (426.3, 1.58, 0.30, 0.30))):
+        make_box(f"DeanHome_Photo_Frame_{i}", (py_, y1 - 0.094 - 0.01, pz_ + 0.2), (w, 0.02, h), (0.30, 0.22, 0.16, 1.0))
+        make_box(f"DeanHome_Photo_{i}", (py_, y1 - 0.094 - 0.022, pz_ + 0.2), (w - 0.06, 0.004, h - 0.06),
+                 ((0.70, 0.62, 0.52, 1.0), (0.56, 0.60, 0.66, 1.0))[i % 2])
+    make_rot_box("DeanHome_Throw", (425.0, 5.9, 0.47), (0.70, 0.60, 0.04), (0.62, 0.40, 0.30, 1.0), yaw=0.3)
+    make_blob("DeanHome_Aria_Plush", (426.6, 5.8, 0.56), 0.12, (0.86, 0.80, 0.70, 1.0), noise=0.2, seed=4, squash=1.1)
+    for i in range(3):
+        make_rot_box(f"DeanHome_Crayon_{i}", (425.5 + 0.05 * i, 4.5, 0.41), (0.08, 0.01, 0.01), ((0.86, 0.20, 0.18, 1.0), (0.20, 0.40, 0.80, 1.0), (0.96, 0.80, 0.20, 1.0))[i], yaw=0.4 * i)
 
 
 def build_shanghai():
