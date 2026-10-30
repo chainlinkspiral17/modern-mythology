@@ -272,13 +272,22 @@ def build_crowd_2026_10():
             if any((x - a) ** 2 + (y - b) ** 2 < 0.55 ** 2 for a, b in spots):
                 continue
             spots.append((x, y)); k += 1
+    # draft 4: "not quite synchronized but are not quite not, either" — the
+    # main floor all turned to the dais and the # (a few degrees off one
+    # another), arms mostly up and not on the same beat; the small floor
+    # dances in a ring round its own middle
     for i, (x, y) in enumerate(spots):
-        heading = math.atan2(2.0 - x, 8.5 - y) + rnd.uniform(-1.2, 1.2)
+        if i < 14:
+            heading = math.atan2(2.0 - x, (YN - 2.0) - y) + rnd.uniform(-0.30, 0.30)
+            arms = ("up", "up_r", "up", "front", "up_r", "up", "down")[i % 7]
+        else:
+            heading = math.atan2(8.5 - x, 4.8 - y) + rnd.uniform(-0.5, 0.5)
+            arms = ("up_r", "front", "up", "folded")[i % 4]
         dress = tops[rnd.randrange(len(tops))] if rnd.random() < 0.35 else None
         make_standing_figure(f"Dancer_Stock_{i}", x, y, heading=heading, h=rnd.uniform(1.58, 1.86),
                              coat=tops[rnd.randrange(len(tops))], pants=(0.14, 0.14, 0.18, 1.0),
                              hair=hairs[rnd.randrange(len(hairs))], dress=dress,
-                             arms=("front", "down", "folded", "front")[i % 4], z0=0.012)
+                             arms=arms, z0=0.012)
     # a few at the bar's stools side, facing it
     for i, y in enumerate((5.15, 7.35, 9.55, 11.75)):          # between the stools
         make_standing_figure(f"Dancer_Stock_Bar_{i}", XE - 3.2 - 1.35, y, heading=math.pi / 2.0, h=1.74,
