@@ -495,6 +495,15 @@ def build_tower():
     # offices along the W wall: doors shut
     for k in range(4):
         make_box(f"Tow_Office_Door_{k}", (TX0 + 0.02, 4.0 + k * 6.0, 1.1), (0.04, 1.0, 2.2), (0.26, 0.24, 0.24, 1.0))
+    # (round 3) "These are the things you probably shouldn't see": each office
+    # door's wired-glass sidelight lit from inside, the blue of screens left
+    # on, one door ajar on a room of them (the tscn's Office_Screens_*)
+    for k in range(4):
+        dy = 4.0 + k * 6.0
+        make_box(f"Tow_Office_Sidelight_Frame_{k}", (TX0 + 0.03, dy + 0.80, 1.25), (0.05, 0.40, 1.90), (0.30, 0.30, 0.32, 1.0))
+        make_box(f"Tow_Office_Sidelight_Glow_{k}", (TX0 + 0.06, dy + 0.80, 1.25), (0.01, 0.30, 1.78), (0.40, 0.58, 0.86, 1.0))
+        for g in range(5):
+            make_box(f"Tow_Office_Sidelight_Wire_{k}_{g}", (TX0 + 0.067, dy + 0.80, 0.50 + g * 0.36), (0.003, 0.30, 0.006), (0.20, 0.22, 0.26, 1.0))
     for k in range(10):
         make_cyl(f"Tow_Downlight_{k}", (cx - 0.6, 1.5 + k * 3.0, TH - 0.01), 0.08, 0.02, (0.96, 0.96, 0.94, 1.0), segments=10)
     # the E side: floor-to-ceiling glass, the city at night below and beyond
