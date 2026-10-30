@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-30 · pass 241: VOLS 1–4 backgrounds, draft 9 — pass 240's N+1 list and the unseen sets (three threads).**
+- **Thread F (58c35c2a):**
+  - **writers_desk_dawn ("curtain call"), each piece tagged `__writers_desk_dawn`:**
+    - "Four folding chairs, church basement, one with a lean": three open on the rug, one folded against the W wall. The chairs marker is re-aimed.
+    - "the red string gone brown": a brown string over the same pins; the red one is stripped at dawn.
+    - The por puesto idling at the far curb with its parking lights and cardboard sign.
+    - The desk chair is pushed back off the pulled drawers.
+  - **Charlie's flat by day:** the facades across the S window faced away from the sun and read as dark slabs. Day-only sky-grey panes now cover the night glows, there are two street bounce lights for the day views, and the brick and stucco are lighter. The night view is unchanged.
+- **Thread G (de308b21, acd13cdf):**
+  - **beach_night:** the nine dark cut-out clouds are one low, unbroken overcast to the horizon. A paler moonlit mass sits in front of the hidden moon.
+  - **shuttle_bench:** the lens sits at the bench's E end, looking a little S of W. The frame shows the diner front, the greeter, the lit windows and the rain; the back panel is down to a strip.
+  - **cliffside_circus_edge (new):** looking up from the water at the circus on its cliff. The headland, cliff, rubble, surf and near sea run 240 m, and the jags are lumps, not boxes. Vol 2 ch2 cuts to it on "built up along the edge of a cliff", with its own ambient bed.
+- **Main thread:**
+  - Of the 211 presets the vols 1–4 chapters use, 35 had not been rendered in 30 hours; it went through them in batches.
+  - **dean_bedroom_1994:** the dream journal, open on the floor by the bed with its pen ("Woke up at 3:50 with my jaw hurting" is its entry). There are 90 rain streaks past the window; 14 read as none. The PC stays in the basement, where the text has it.
+  - **vol4_apartment_dawn (in/flux):** the lens looked past the coffee at a bare wall. It now sits in the NE corner looking SW: the bed and its sheets, the kitchenette with the coffee maker ("hot coffee diluted to last through the weekend"), and the table with the keys.
+  - Read fine as they stand: new_orleans_apartment, oregon_home_night, video_store_counter, utah_highway_day, copy_shop_floor, chau_hall_noon, farm_living_night.
+- **Draft N+1 targets:**
+  - Writers_desk dawn: the car is not yet seen through the window, the chairs insert needs a render, and the man at the door.
+  - Charlie: the street level still reads dim.
+  - Cliffside edge: the face reads as one flat mass; the buildings should be bigger in frame; foam round the jags.
+  - Beach: a thin clear strip shows under the deck.
+  - Bench: a thinner post, and a clear spot where the Shillelagh pulls in.
+
 **2026-10-30 · pass 240: VOLS 1–4 backgrounds, draft 8 — the text over the build (three threads).**
 The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped through to the presets) and by the last pass that touched them. Then it read each one's lines against its render. Threads D (pasadena_1945, portland_downtown) and E (houston_bayou, honolulu_highrise) are below as they report.
 - **Club Sharp: the arcade, the bowling alley and the rail were never built.**
