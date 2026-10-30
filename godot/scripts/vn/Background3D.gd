@@ -1771,8 +1771,13 @@ const CAMERA_PRESETS := {
 	"vol4_apartment_dawn": {
 		"scene": "res://scenes/locales/vol4_apartments.tscn",
 		"requires_glb": "res://assets/3d/locales/vol4_apartments.glb",
-		"camera_origin": Vector3(6.3, 1.6, -1.4),
-		"camera_rotation": Vector3(-0.08, 1.01, 0.0),
+		# (2026-10-30) in/flux: "He wakes to troubled dreams ... He fills the
+		# morning emptiness with hot coffee diluted to last through the
+		# weekend." From the NE corner looking SW: the bed and its tangled
+		# sheets right, the kitchenette and the coffee maker left, the table
+		# with the keys between (it looked WNW past the coffee to a bare wall)
+		"camera_origin": Vector3(6.6, 1.6, -4.4),
+		"camera_rotation": Vector3(-0.10, 2.11, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -3285,7 +3290,9 @@ const CAMERA_PRESETS := {
 		"fov": 56.0,
 		# (draft 3) "Every drawer pulled out": the open middle and file drawers
 		# are tagged for this view; the closed fronts leave it
-		"strip": ["Desk_Drawer_1", "Desk_Drawer_2"],
+		# (draft 4) the red string goes brown and the desk chair is pushed back:
+		# the dawn's own (Dawn_*__writers_desk_dawn) replace them
+		"strip": ["Desk_Drawer_1", "Desk_Drawer_2", "Board_String_", "Desk_Chair"],
 		"env": {"sky_top": Color(0.46, 0.54, 0.70, 1), "sky_horizon": Color(0.86, 0.80, 0.74, 1),
 			"ground_horizon": Color(0.40, 0.40, 0.42, 1), "ground_bottom": Color(0.16, 0.16, 0.18, 1),
 			"ambient_color": Color(0.70, 0.72, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.64, 0.66, 0.72, 1)},
@@ -5077,6 +5084,22 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"zz_bench_a": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		"camera_origin": Vector3(6.6, 1.25, -6.0),
+		"camera_rotation": Vector3(-0.03, 1.326, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"zz_bench_b": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		"camera_origin": Vector3(5.6, 1.15, -6.9),
+		"camera_rotation": Vector3(-0.02, 2.80, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"shuttle_bench": {
 		"scene": "res://scenes/locales/missing_link_exterior.tscn",
 		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
@@ -5697,6 +5720,19 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.00, 1.70, -3.20),
 		"camera_rotation": Vector3(-0.05, 0.05, 0.0),
 		"fov": 68.0,
+		"suppress_input": true,
+	},
+	# (2026-10-30, pass 241) "The main building was true enough built up
+	# along the edge of a cliff — overlooking jagged rock outcroppings,
+	# beaten raw by the harsh surf beneath." On the headland's E end at the
+	# lip, looking WNW along the edge: the main building on it (left), the
+	# drop, the jags and the surf at its foot, the sea stacks out (right).
+	"cliffside_circus_edge": {
+		"scene": "res://scenes/locales/cliffside_circus.tscn",
+		"requires_glb": "res://assets/3d/locales/cliffside_circus.glb",
+		"camera_origin": Vector3(12.0, 1.75, -11.3),
+		"camera_rotation": Vector3(-0.30, 1.00, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 }
