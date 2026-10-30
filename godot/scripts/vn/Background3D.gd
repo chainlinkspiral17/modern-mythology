@@ -5398,15 +5398,14 @@ const CAMERA_PRESETS := {
 	},
 	# (2026-10-30) vol1 ch4 "There is a gigantic arcade downstairs, several
 	# dance floors, and a bowling alley. Music and movement seem to flow from
-	# one area to the next." From the atrium rail, looking SW and down over
-	# the arcade's cabinet rows four metres below, the stair going down, and
-	# the bowling glass at the left edge.
+	# one area to the next." A step back from the atrium rail, square to it,
+	# looking W and down over the arcade's cabinet rows four metres below.
 	"club_sharp_arcade": {
 		"scene": "res://scenes/locales/club_sharp.tscn",
 		"requires_glb": "res://assets/3d/locales/club_sharp.glb",
-		"camera_origin": Vector3(-3.10, 1.80, -12.5),
-		"camera_rotation": Vector3(-0.50, 2.20, 0.0),
-		"fov": 66.0,
+		"camera_origin": Vector3(-2.40, 1.75, -9.0),
+		"camera_rotation": Vector3(-0.55, 1.5708, 0.0),
+		"fov": 70.0,
 		# the floor below in its own light: the cabinets' glow, a thinner haze
 		"env": {"ambient_color": Color(0.46, 0.40, 0.66, 1), "ambient_energy": 1.10, "fog_color": Color(0.20, 0.14, 0.30, 1), "fog_density": 0.004},
 		"suppress_input": true,
