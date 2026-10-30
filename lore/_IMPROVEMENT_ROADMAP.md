@@ -3891,8 +3891,29 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
   - **What it had hidden:**
     - 8 blocked doorways, now 0.
     - A blender_dryrun failure in build_small_wood_farmhouse (`.keys()` on the stand-in collection), now 0.
-    - 727 prop-overlap clips against a zero baseline. Main thread's 11 sets are 535 → 0 (small_wood_field's far ridges 454; the rest small). Thread B's 6 sets (192) are in progress.
-    - One obstructed preset (briar_falls_overlook, thread B).
+    - 727 prop-overlap clips against a zero baseline, now 0 in every set. No baseline was raised.
+      - Main thread's 11 sets: 535 → 0 (small_wood_field's far ridges 454; the rest small).
+      - Thread B's 6 sets: 192 → 0.
+        - briar_falls 73: pines out of the far rock band.
+        - desert_route 43: the mesa off the highway, the wreck's flames named as glow, Room 4's walls.
+        - vol4_story_rooms 27: garage columns and beams, the dead store's plenum at the escalator well.
+        - vol3_rooms 24: the warehouse trusses.
+        - little_league 19: pitchers on the mound, staggered bleachers.
+        - vehicle_cab 6: Judgement Day's street on its own ground at (-700, -700).
+    - One obstructed preset, briar_falls_overlook.
+      - The terrain meshes are now named `Gorge_Terrain_Rock_*`, which the gate ignores. The recorder treats a heightfield as its bounding box, so the camera read as "inside" the rock.
+      - Draft N+1: smaller terrain chunks, if it should be measured.
+    - Furniture grammar, gated classes all 0:
+      - Little League's centre fielders turned (POKE).
+      - The desert motel's bed against the bath wall (BED).
+      - The Honolulu security desk freestanding by design (DESK).
+      - The interview room's void and the hall's backdrop named as such (OUTSIDE).
+    - `shot_insert_roll__utah_highway_day` had been authored onto the motel's bedroll 400 m away.
+      - It now frames the Voyager.
+      - It is listed as KNOWN_UNRESOLVED: the quarters ride inside a van with no interior.
+    - Still open:
+      - vantage_obstruction --markers: 10 obstructed markers repo-wide, listing in progress.
+      - Music coverage and audio references: user-side files.
   - Lesson in `_GEOMETRY_AUDIT_PLAYBOOK.md`.
 - **THREAD B (the forked agent, 15 commits, every locale render-checked). Per locale, with draft N+1 targets:**
   - **warehouse_floor, draft 2.**
