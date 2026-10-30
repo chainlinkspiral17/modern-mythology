@@ -3883,6 +3883,51 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
   - A stage spot and a bounce, with the floor show's lights stripped after hours.
   - ch8 and ch16 now open on them; both had played the plain club stem.
   - Lesson in the lighting playbook: a shadowed spot lit nothing under the compatibility renderer.
+- **jd_river_turn (vol 1 ch15, 66 lines):**
+  - Was a car on a flat purple plain.
+  - Now stars over the open water ("then a star"), current streaks past the boat, and the far door's light laid down the water to the boat ("just a door").
+- **THREAD B (the forked agent, 15 commits, every locale render-checked). Per locale, with draft N+1 targets:**
+  - **warehouse_floor, draft 2.**
+    - Green and pink beam cones; ~40 dancers, arms up; DJ and lamp on the riser.
+    - Brick, high windows, EXIT sign, bar, ducts. Perf 350.
+    - Next: volumetric fog, the bar's patrons, coats on the riser.
+  - **briar_falls overlook, draft 2.**
+    - The land past the rail drops into a gorge.
+    - Shelf with streaks and lip foam; the creek's cut; the second stage narrowing; the mist column; the feather.
+    - 140 conifers joined. Perf 134.
+    - Next: water motion and spray, ferns, the rock reads flat grey, a side vantage.
+  - **vol3_rooms, draft 2:**
+    - **june_closet:** folded doors, a full rod, the boxed game, shoes, the bulb, the PC.
+    - **coast_bathroom:** a real tub with bubble film, tile, umbrella lights.
+    - **coast_studio:** layout table, photo books.
+    - **korean_bbq_table:** copper hoods, coals, hotpot, soju.
+    - **oregon_home_night:** street outside, a dressed bedroom.
+    - **pizza_party_window:** the team and families, pizzas, cake, trophy, steamed glass.
+    - Next: SEATED figures (the kit only stands); the lot argument; June's other walls.
+  - **desert_route:** boulders, not boxes; the roots in the air.
+  - **vol4_story_rooms, draft 2:**
+    - **garage_level:** honeydew paint, a lit tube row, beams, eleven cars, one coming down the ramp. The column level is now "8"; the "3" read as a mirrored "E".
+    - **dead_store:** a dropped ceiling with missing tiles, sun shafts, stripped racks; the flagged 400 m sky slab removed.
+    - **shanghai_window_night:** towers lit window by window, an expressway, the city glow.
+    - **aaron_bedroom** dressed.
+    - **dean_house_late:** books, photos, a floor lamp; camera from the hall door.
+    - **mirror_room:** tile, faucet and reflection, the camera off-axis.
+    - Next: the store's roof vantage, King's paper crown insert, the reading room's dark bookcase wall, the mirror's mark.
+  - **small_wood_farmhouse:** the kitchen window dressed (faucet, curtains, cabinets, stove, fridge, the yard light), lap siding S.
+    - Next: the gables, the yard at night.
+  - **cape_perpetua_overlook:** Sitka spruce in the fog.
+    - **vehicle_cab:** Judgement Day drops the truck's map and phone.
+    - Next: fog as a mood, not blobs; an older bench-seat dash.
+  - **bigbox_lot_day, NEW:** vol 4 cc 4's Wal-Mart lot had reused Cosmic Comics' lot. Now its own unbranded store and lot. Perf 846.
+    - Next: garden-centre fence, a greeter.
+  - **little_league, draft 3:** the game in two states (batting / fielding) per shot; a crowd on the bleachers; inserts 40–42° (were 60–64°).
+    - Next: catcher's crouch, gloves and bats, base coaches.
+  - **dean_tower_corridor:** turned toward the glass and the night city.
+    - Next: the offices' lit sidelights.
+  - **Shared helpers:**
+    - `_props/figures.py` arms "up" / "up_r".
+    - `_props/trees.py` `make_conifer(z0=)`.
+    - The audit RECORDER now sees geometry built through `_finalize_mesh`. Builders importing private helpers inside a function used to drop everything after them from every gate (vol3_rooms past the warehouse crowd, Briar Falls' terrain). Expect new findings there.
 - **Busiest sets checked (by lines played), no change needed:** writers_desk (588), faust_apartment_day (231), pharmacy_floor, small_wood_high_class and hospital_room all read.
 - **Next (main):**
   - Club Sharp's base view: the crowd, "dancers … not quite synchronized".
