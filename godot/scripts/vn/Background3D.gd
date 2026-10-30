@@ -5142,9 +5142,13 @@ const CAMERA_PRESETS := {
 		# streetlamp at the right edge, the dark upper story (2026-09-30:
 		# on the sidewalk 2.3 m from the facade looking WNW, the lit
 		# window filled a third of the frame and the door was a sliver).
-		"camera_origin": Vector3(0.9, 1.65, 0.6),
-		"camera_rotation": Vector3(0.10, 0.098, 0.0),
-		"fov": 60.0,
+		# (2026-10-30) back across the road, level: from 5 m and tilted up,
+		# the door and the window filled the frame with no street under them.
+		# "Jacob and Emily are talking outside" — the sidewalk, the sedan at the
+		# curb, the lamp.
+		"camera_origin": Vector3(0.9, 1.65, 3.4),
+		"camera_rotation": Vector3(-0.02, 0.098, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"skatepark_day": {
