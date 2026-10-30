@@ -270,6 +270,16 @@ def build_horizon_2026_08():
              (0.20, 0.21, 0.22, 1.0))
     make_box("Headland_E", (150.0, 200.0, 3.0), (55.0, 22.0, 6.0),
              (0.17, 0.18, 0.20, 1.0))
+    # (2026-10-30) the sea stacks: the jags at the cliff's foot top out 7 m
+    # below the clifftop, so no view from the grounds ever saw a rock. These
+    # stand 15-21 m out of the sea, 40-75 m off, above the edge's sightline —
+    # "jagged rock outcroppings, beaten raw by the harsh surf beneath"
+    from _props.geometry import make_blob
+    for i, (sx, sy, r, sq) in enumerate(((-14.0, 46.0, 4.0, 2.6), (-4.0, 58.0, 3.0, 3.0), (9.0, 50.0, 3.5, 2.2),
+                                         (20.0, 66.0, 5.0, 1.8), (-24.0, 72.0, 3.0, 2.4))):
+        h = 2.0 * r * sq
+        make_blob(f"Sea_Stack_{i}", (sx, sy, -13.0 + h * 0.5 - r * 0.6), r, COL_ROCK_JAG, noise=0.32, seed=60 + i,
+                  rings=6, segments=9, squash=sq)
     from _props.detail import make_far_bands
     make_far_bands("FarScrub", COL_GRASS,
                    [(70.0, 80.0, 6.0, 0.80), (150.0, 130.0, 8.0, 0.60),
