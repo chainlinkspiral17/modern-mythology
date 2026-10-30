@@ -217,8 +217,9 @@ def build_garage_2026_10():
     extension cords, Mark's coffee cans of screws, the lightning ball's
     cracked glass."""
     bx, by = -10.15, 7.0 - 0.10 - 0.36
-    for k, (x, y, r) in enumerate(((-10.4, 1.8, 0.62), (-9.7, 2.5, 0.38), (-10.9, 2.9, 0.45), (-9.2, 1.3, 0.28))):
-        make_cyl(f"Garage_Oil_Stain_{k}", (x, y, 0.0205 + 0.0006 * k), r, 0.001, (0.26, 0.25, 0.24, 1.0), segments=18)
+    # (stains, not holes: a shade under the slab, two tones, smaller)
+    for k, (x, y, r) in enumerate(((-10.4, 1.8, 0.46), (-9.7, 2.5, 0.28), (-10.9, 2.9, 0.34), (-9.2, 1.3, 0.20))):
+        make_cyl(f"Garage_Oil_Stain_{k}", (x, y, 0.0205 + 0.0006 * k), r, 0.001, ((0.40, 0.38, 0.35, 1.0), (0.44, 0.42, 0.39, 1.0))[k % 2], segments=18)
     # the vise on the bench's W end, the drill press on its E end
     STEEL = (0.30, 0.34, 0.36, 1.0)
     make_box("Bench_Vise_Body", (bx - 1.66, by - 0.22, 1.03), (0.16, 0.22, 0.14), STEEL)
