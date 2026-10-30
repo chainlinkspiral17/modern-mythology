@@ -127,9 +127,9 @@ def build_garage():
     for i in range(5):
         for j in range(3):
             fx, fy = 4.0 + i * 8.0 + 0.0, 4.0 + j * 8.0
-            make_box(f"Garage_Tube_Housing_{i}_{j}", (fx, fy, H - 0.06), (0.30, 1.30, 0.08), (0.86, 0.88, 0.84, 1.0))
+            make_box(f"Garage_Tube_Housing_{i}_{j}", (fx, fy, H - 0.04), (0.30, 1.30, 0.08), (0.86, 0.88, 0.84, 1.0))   # up to the slab
             for s in (-1, 1):
-                make_box(f"Garage_Tube_Glow_{i}_{j}_{s:+d}", (fx + s * 0.07, fy, H - 0.115), (0.04, 1.22, 0.04), (0.92, 1.0, 0.94, 1.0))
+                make_box(f"Garage_Tube_Glow_{i}_{j}_{s:+d}", (fx + s * 0.07, fy, H - 0.10), (0.04, 1.22, 0.04), (0.92, 1.0, 0.94, 1.0))
     # sprinkler main (red) and a conduit run along the bays
     make_cyl("Garage_Sprinkler_Main", (20.0, 6.0, H - 0.50), 0.05, 40.0, (0.66, 0.16, 0.14, 1.0), axis='X', segments=8)
     make_cyl("Garage_Sprinkler_Main_N", (20.0, 18.0, H - 0.50), 0.05, 40.0, (0.66, 0.16, 0.14, 1.0), axis='X', segments=8)
@@ -312,7 +312,7 @@ def build_store_2026_10():
     make_box("Ceiling_Plenum_Dark_S", (134.0, 1.45, Hc + 0.6), (2.8, 2.5, 0.02), (0.12, 0.12, 0.12, 1.0))
     # the sun's shafts through the S frames, and their pools on the floor
     for k, x in enumerate((122.5, 132.5, 137.5, 147.5)):
-        make_rot_box(f"Sun_Shaft_{k}", (x, 1.9, 1.8), (4.2, 0.02, 4.8), (1.0, 0.96, 0.84, 0.10), roll=0.785)
+        make_rot_box(f"Sun_Shaft_Glow_{k}", (x, 1.9, 1.8), (4.2, 0.02, 4.8), (1.0, 0.96, 0.84, 0.10), roll=0.785)
         make_box(f"Sun_Pool_{k}", (x, 3.4, 0.004), (4.6, 2.4, 0.004), (0.92, 0.86, 0.72, 1.0))
     # round racks stripped, hangers on the floor
     for k, (x, y) in enumerate(((125.0, 5.0), (130.0, 9.0), (140.0, 4.5), (145.5, 8.0))):
@@ -329,7 +329,7 @@ def build_store_2026_10():
     # the display table, a mannequin face down, an arm by the counter
     make_box("Display_Table_Top", (136.8, 2.6, 0.80), (1.8, 1.0, 0.05), (0.56, 0.46, 0.36, 1.0))
     make_box("Display_Table_Plinth", (136.8, 2.6, 0.39), (1.6, 0.8, 0.78), (0.50, 0.42, 0.34, 1.0))
-    make_blob("Mannequin_Fallen_Torso", (128.8, 2.6, 0.22), 0.22, (0.86, 0.82, 0.76, 1.0), noise=0.0, seed=41, squash=0.6)
+    make_blob("Mannequin_Fallen_Torso", (128.8, 2.6, 0.135), 0.22, (0.86, 0.82, 0.76, 1.0), noise=0.0, seed=41, squash=0.6)
     make_rot_box("Mannequin_Fallen_Legs", (129.6, 2.8, 0.10), (0.9, 0.24, 0.18), (0.86, 0.82, 0.76, 1.0), yaw=0.2)
     make_blob("Mannequin_Fallen_Head", (128.3, 2.5, 0.10), 0.10, (0.86, 0.82, 0.76, 1.0), noise=0.0, seed=42, squash=1.1)
     make_rot_box("Mannequin_Arm_Floor", (128.9, 6.3, 0.04), (0.62, 0.08, 0.08), (0.86, 0.82, 0.76, 1.0), yaw=1.0)
@@ -338,11 +338,12 @@ def build_store_2026_10():
         make_box(f"Wall_Rack_Bar_{k}", (120.4, 2.5 + k * 2.6, 1.6), (0.04, 2.0, 0.03), (0.66, 0.66, 0.68, 1.0))
         make_box(f"Wall_Rack_Slat_{k}", (120.17, 2.5 + k * 2.6, 1.4), (0.02, 2.2, 1.6), (0.56, 0.54, 0.50, 1.0))
     # the store's fascia over the mezzanine edge, the letters' ghosts
-    make_box("Store_Fascia_W", (126.3, 11.9, 3.75), (12.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
-    make_box("Store_Fascia_E", (142.7, 11.9, 3.75), (14.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
+    # (round 6) hung on the mezzanine slab's edge (y 12.0, z 4.20..4.50)
+    make_box("Store_Fascia_W", (126.3, 11.95, 4.20), (12.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
+    make_box("Store_Fascia_E", (142.7, 11.95, 4.20), (14.2, 0.10, 0.50), (0.80, 0.78, 0.74, 1.0))
     for k in range(9):
         lx = 129.6 + k * 1.35 + (2.8 if k >= 3 else 0.0)        # the name split round the well
-        make_box(f"Store_Fascia_Letter_Ghost_{k}", (lx, 11.84, 3.75), (0.80, 0.006, 0.34), (0.68, 0.66, 0.62, 1.0))
+        make_box(f"Store_Fascia_Letter_Ghost_{k}", (lx, 11.897, 4.20), (0.80, 0.006, 0.34), (0.68, 0.66, 0.62, 1.0))
     # dust thick on everything low: a darker veil at the walls' feet
     for k, (x, y, w, d) in enumerate(((121.0, 6.0, 1.4, 11.0), (149.0, 6.0, 1.4, 11.0), (135.0, 11.4, 28.0, 1.0))):
         make_box(f"Dust_Bank_{k}", (x, y, 0.005), (w, d, 0.006), (0.66, 0.62, 0.56, 1.0))
@@ -666,7 +667,7 @@ def build_dean_house():
         # (2026-10-30) spines, not a coloured slab per shelf: a run of books of
         # varied width and height, a gap and a leaner now and then
         for lvl in range(5):
-            make_box(f"DeanHome_Shelf_Board_{k}_{lvl}", (x0 + 0.09 + 0.20, 1.2 + k * 1.6, 0.16 + lvl * 0.42), (0.30, 1.40, 0.02),
+            make_box(f"DeanHome_Shelf_Board_{k}_{lvl}", (x0 + 0.28, 1.2 + k * 1.6, 0.16 + lvl * 0.42), (0.34, 1.46, 0.02),   # back to sides (round 6)
                      (0.30, 0.20, 0.14, 1.0))
             by = 1.2 + k * 1.6 - 0.66
             b = 0
