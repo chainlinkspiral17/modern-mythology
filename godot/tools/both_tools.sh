@@ -197,6 +197,25 @@ else
   done
 fi
 
+# ── 2b. Comic images never go into git from the main folder ─────────────────
+# Leftover renders copied to the comic folder stay in the main folder too;
+# on 2026-10-16 a `git add -A` there committed 25 of them (77 MB). A local
+# exclude rule (.git/info/exclude: this machine only, not a repo change)
+# keeps any untracked comic image out of git in every folder. Files already
+# tracked, and the files on disk, are untouched.
+EXCL="$(cd "$(git rev-parse --git-common-dir)" && pwd)/info/exclude"
+if ! grep -qs "modern-mythology: comic images live on Google Drive" "$EXCL"; then
+  mkdir -p "$(dirname "$EXCL")"
+  {
+    echo "# modern-mythology: comic images live on Google Drive (comic_drive.py), never in git"
+    for e in png jpg jpeg webp; do
+      echo "godot/assets/comic/**/*.$e"
+      echo "lore/drift_wood/refs/**/*.$e"
+    done
+  } >> "$EXCL"
+  echo "· comic images are now ignored by git in this repo's folders (local rule; nothing deleted)"
+fi
+
 # ── 3. One set of API keys for both folders ─────────────────────────────────
 # The main folder holds the real files; the comic folder links to them. A key
 # saved only in the comic folder (e.g. OpenAI from the comic inspector) moves
