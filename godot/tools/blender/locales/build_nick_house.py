@@ -35,7 +35,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe, make_gable,
                              join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
-from _props.furniture import make_bed, make_chair, make_lamp
+from _props.furniture import make_bed, make_chair, make_lamp, make_sofa
 from _props.trees import make_broadleaf
 
 H, T = 2.6, 0.20
@@ -204,6 +204,113 @@ def build_garage_dressing():
             make_box(f"Shelf_Box_{k}", (-12.85, 1.9 + i * 0.7, z + 0.12), (0.36, 0.40, 0.24), (0.62, 0.50, 0.34, 1.0))
 
 
+def build_garage_2026_10():
+    """DRAFT 3 of the garage (2026-10-30): "The garage was Mark's workshop
+    until Nick cleaned it up for his own purposes. Thick old grease and oil
+    stains ..." The frame was an empty concrete room with a bench at the end.
+    Both years: the oil stains on the slab; a bench vise and a drill press on
+    the counter; a lumber rack on the E wall; a shop vac in the corner; a
+    hand saw and a hammer on the pegboard. Halloween only: a pair of
+    sawhorses with a board across, the costume box spilling (a rubber mask,
+    a witch's hat, a tail of fabric).
+    Draft 4 targets: a car's worth of oil drip under where the car stood,
+    extension cords, Mark's coffee cans of screws, the lightning ball's
+    cracked glass."""
+    bx, by = -10.15, 7.0 - 0.10 - 0.36
+    for k, (x, y, r) in enumerate(((-10.4, 1.8, 0.62), (-9.7, 2.5, 0.38), (-10.9, 2.9, 0.45), (-9.2, 1.3, 0.28))):
+        make_cyl(f"Garage_Oil_Stain_{k}", (x, y, 0.0205 + 0.0006 * k), r, 0.001, (0.26, 0.25, 0.24, 1.0), segments=18)
+    # the vise on the bench's W end, the drill press on its E end
+    STEEL = (0.30, 0.34, 0.36, 1.0)
+    make_box("Bench_Vise_Body", (bx - 1.66, by - 0.22, 1.03), (0.16, 0.22, 0.14), STEEL)
+    make_box("Bench_Vise_Jaw", (bx - 1.66, by - 0.38, 1.05), (0.16, 0.06, 0.12), STEEL)
+    make_cyl("Bench_Vise_Bar", (bx - 1.66, by - 0.44, 1.00), 0.012, 0.24, (0.70, 0.70, 0.72, 1.0), axis='X', segments=6)
+    dpx, dpy = bx + 1.45, by + 0.10
+    make_box("Drill_Press_Base", (dpx, dpy, 0.975), (0.26, 0.36, 0.05), STEEL)
+    make_cyl("Drill_Press_Column", (dpx, dpy + 0.12, 1.30), 0.03, 0.62, (0.70, 0.70, 0.72, 1.0), segments=8)
+    make_box("Drill_Press_Head", (dpx, dpy + 0.02, 1.58), (0.20, 0.34, 0.20), STEEL)
+    make_cyl("Drill_Press_Chuck", (dpx, dpy - 0.08, 1.42), 0.025, 0.12, (0.70, 0.70, 0.72, 1.0), segments=8)
+    make_box("Drill_Press_Table", (dpx, dpy - 0.04, 1.18), (0.20, 0.20, 0.02), STEEL)
+    # the lumber rack on the E wall
+    ex = -7.0 - T / 2.0
+    for i, y in enumerate((1.2, 2.5, 3.8)):
+        for j, z in enumerate((1.50, 2.00)):
+            make_box(f"Lumber_Bracket_{i}_{j}", (ex - 0.20, y, z), (0.40, 0.04, 0.04), (0.30, 0.30, 0.32, 1.0))
+    for k in range(5):
+        z = 1.50 + 0.035 + 0.5 * (k // 3) + 0.0
+        make_box(f"Lumber_Board_{k}", (ex - 0.08 - (k % 3) * 0.10, 2.5, z + (0.0 if k < 3 else 0.0)), (0.09, 3.2 - 0.3 * (k % 2), 0.03),
+                 (0.74, 0.60, 0.42, 1.0))
+    make_cyl("Shop_Vac", (-12.70, 6.45, 0.25), 0.22, 0.50, (0.86, 0.66, 0.20, 1.0), segments=14)
+    make_cyl("Shop_Vac_Lid", (-12.70, 6.45, 0.53), 0.20, 0.06, (0.16, 0.16, 0.18, 1.0), segments=14)
+    # a saw and a hammer on the pegboard
+    pz = 7.0 - 0.135
+    make_box("Pegboard_Saw_Blade", (bx - 0.9, pz, 1.30), (0.50, 0.01, 0.12), (0.72, 0.72, 0.74, 1.0))
+    make_box("Pegboard_Saw_Handle", (bx - 0.60, pz, 1.30), (0.12, 0.03, 0.14), (0.50, 0.30, 0.18, 1.0))
+    make_box("Pegboard_Hammer_Handle", (bx + 0.62, pz, 1.30), (0.03, 0.03, 0.30), (0.60, 0.46, 0.30, 1.0))
+    make_box("Pegboard_Hammer_Head", (bx + 0.62, pz, 1.46), (0.14, 0.04, 0.04), STEEL)
+    # Halloween: sawhorses and a board; the costume box spilling
+    for i, y in enumerate((2.6, 3.9)):
+        make_box(f"Sawhorse_Beam_{i}" + HALLOW, (-8.3, y, 0.68), (0.80, 0.08, 0.08), (0.70, 0.56, 0.38, 1.0))
+        for sx in (-1, 1):
+            for sy in (-1, 1):
+                make_rot_box(f"Sawhorse_Leg_{i}_{sx:+d}_{sy:+d}" + HALLOW, (-8.3 + sx * 0.32, y + sy * 0.10, 0.33), (0.05, 0.04, 0.70),
+                             (0.70, 0.56, 0.38, 1.0), roll=sy * 0.25)
+    make_box("Sawhorse_Board" + HALLOW, (-8.3, 3.25, 0.735), (0.30, 1.80, 0.03), (0.78, 0.66, 0.48, 1.0))
+    cbx, cby = bx + 2.3, by - 0.9
+    make_blob("Costume_Mask" + HALLOW, (cbx - 0.48, cby - 0.20, 0.09), 0.10, (0.50, 0.66, 0.34, 1.0), noise=0.3, seed=11, squash=0.6)
+    make_lathe("Costume_Witch_Hat" + HALLOW, (cbx + 0.22, cby + 0.05, 0.54), [(0.0, 0.0), (0.18, 0.0), (0.18, 0.01), (0.07, 0.02), (0.0, 0.30)],
+               (0.12, 0.10, 0.14, 1.0), segments=12)
+    make_rot_box("Costume_Fabric_Tail" + HALLOW, (cbx - 0.45, cby + 0.05, 0.25), (0.06, 0.30, 0.46), (0.60, 0.16, 0.30, 1.0), pitch=0.35)
+
+
+def build_grandma_living_2026_10():
+    """DRAFT 3 of the living room (2026-10-30): "Nick's grandma was asleep
+    on the recliner, the television mute but alive with a shopping channel."
+    The frame was a recliner and a set in a bare carpeted box. Now a grandma's
+    room: the sofa against the W wall with the family's photographs over it,
+    a curio cabinet of figurines, a side table at the recliner (the lamp
+    off, her glasses, a water glass, the TV Guide), an oval rug, the front
+    window's sheers drawn, a wall clock; on the screen the shopping channel's
+    velvet, its piece of jewelry and the price banner.
+    Draft 4 targets: doilies on the sofa's arms, a candy dish, the kitchen
+    beyond lit by the range hood, the hall's photographs."""
+    make_sofa("Grandma_Sofa", -6.40, 3.0, back="-X", w=2.0, d=0.86, seats=3, color=(0.56, 0.48, 0.40, 1.0),
+              cushion_col=(0.62, 0.54, 0.44, 1.0), arm="roll", leg_col=(0.30, 0.22, 0.16, 1.0), pillows=((0.70, 0.56, 0.60, 1.0),))
+    wx = -7.0 + T / 2.0 + 0.012
+    for k, (y, z, w, h) in enumerate(((2.35, 1.55, 0.30, 0.38), (2.95, 1.65, 0.44, 0.34), (3.55, 1.50, 0.28, 0.36), (3.0, 2.05, 0.22, 0.26))):
+        make_box(f"Grandma_Photo_{k}_Frame", (wx, y, z), (0.024, w, h), (0.60, 0.48, 0.30, 1.0))
+        make_box(f"Grandma_Photo_{k}", (wx + 0.013, y, z), (0.004, w - 0.06, h - 0.06), ((0.70, 0.62, 0.52, 1.0), (0.56, 0.58, 0.60, 1.0))[k % 2])
+    # the curio cabinet, figurines behind its glass
+    cx, cy = -6.68, 5.05
+    make_box("Curio_Body", (cx, cy, 0.90), (0.40, 0.90, 1.80), (0.38, 0.26, 0.18, 1.0))
+    make_box("Curio_Glass", (cx + 0.205, cy, 1.05), (0.01, 0.78, 1.36), (0.74, 0.80, 0.84, 0.30))
+    for lvl in range(3):
+        make_box(f"Curio_Shelf_{lvl}", (cx + 0.02, cy, 0.62 + lvl * 0.42), (0.34, 0.80, 0.015), (0.80, 0.80, 0.82, 1.0))
+        for i in range(3):
+            make_lathe(f"Curio_Figurine_{lvl}_{i}", (cx + 0.04, cy - 0.25 + i * 0.25, 0.63 + lvl * 0.42),
+                       [(0.0, 0.0), (0.035, 0.0), (0.03, 0.06), (0.02, 0.10), (0.025, 0.12), (0.0, 0.15)],
+                       ((0.92, 0.90, 0.86, 1.0), (0.60, 0.70, 0.86, 1.0), (0.86, 0.66, 0.70, 1.0))[(lvl + i) % 3], segments=10)
+    # the side table at the recliner: the lamp (off), her glasses, water, the TV Guide
+    sx, sy = -2.55, 3.5
+    make_cyl("Grandma_Side_Table", (sx, sy, 0.30), 0.24, 0.60, (0.38, 0.26, 0.18, 1.0), segments=14)
+    make_lamp("Grandma_Lamp", sx + 0.06, sy + 0.08, base_z=0.60, h=0.50, shade_col=(0.90, 0.86, 0.74, 1.0))
+    make_cyl("Grandma_Water_Glass", (sx - 0.12, sy - 0.08, 0.65), 0.035, 0.10, (0.80, 0.86, 0.88, 1.0), segments=10)
+    make_box("Grandma_TV_Guide", (sx + 0.06, sy - 0.12, 0.606), (0.14, 0.20, 0.012), (0.86, 0.80, 0.30, 1.0))
+    make_box("Grandma_Glasses", (sx + 0.06, sy - 0.12, 0.616), (0.12, 0.05, 0.008), (0.60, 0.50, 0.30, 1.0))
+    make_box("Grandma_Rug", (-3.4, 2.4, 0.006), (2.2, 3.0, 0.012), (0.56, 0.40, 0.34, 1.0))
+    make_box("Grandma_Rug_Border", (-3.4, 2.4, 0.0125), (1.9, 2.7, 0.001), (0.66, 0.54, 0.42, 1.0))
+    # the front window's sheers, drawn; a clock on the S wall
+    for s in (-1, 1):
+        make_box(f"Grandma_Sheer_{s:+d}", (-5.6 + s * 0.42, T / 2.0 + 0.05 + (0.02 if s > 0 else 0.0), 1.45), (0.86, 0.02, 1.40), (0.84, 0.80, 0.72, 1.0))
+    make_box("Grandma_Sheer_Rod", (-5.6, T / 2.0 + 0.05, 2.18), (1.90, 0.02, 0.02), (0.60, 0.50, 0.30, 1.0))
+    make_cyl("Grandma_Wall_Clock", (-2.3, T / 2.0 + 0.02, 1.95), 0.16, 0.03, (0.60, 0.48, 0.30, 1.0), axis='Y', segments=18)
+    make_cyl("Grandma_Wall_Clock_Face", (-2.3, T / 2.0 + 0.036, 1.95), 0.13, 0.004, (0.92, 0.90, 0.84, 1.0), axis='Y', segments=18)
+    # the shopping channel on the muted set
+    make_box("TV_Shop_Velvet", (-3.42, 0.596, 0.92), (0.30, 0.002, 0.22), (0.16, 0.18, 0.40, 1.0))
+    make_cyl("TV_Shop_Ring", (-3.42, 0.598, 0.92), 0.04, 0.002, (0.96, 0.82, 0.36, 1.0), axis='Y', segments=14)
+    make_box("TV_Shop_Banner", (-3.4, 0.596, 0.72), (0.54, 0.002, 0.07), (0.86, 0.20, 0.24, 1.0))
+    make_box("TV_Shop_Price", (-3.25, 0.598, 0.72), (0.18, 0.002, 0.035), (0.98, 0.90, 0.40, 1.0))
+
+
 def build_nick_room():
     """x 1.46..6.9, y 4.66..9.9: designs on every wall, posters hung from
     the ceiling, comics on the floor, the drafting table, the closet."""
@@ -324,6 +431,8 @@ def main():
     clear_scene()
     build_shell()
     build_garage_dressing()
+    build_garage_2026_10()
+    build_grandma_living_2026_10()
     build_nick_room()
     build_street()
     try:
