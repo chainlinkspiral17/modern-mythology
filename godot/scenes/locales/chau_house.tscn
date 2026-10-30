@@ -294,6 +294,22 @@ light_energy = 1.0
 shadow_enabled = false
 omni_range = 7.0
 
+; the neighbour's porch light over the E fence (2026-10-30)
+[node name="Nb_Porch_Light__amanda_hot_tub" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7, 2.1, -0.65)
+light_color = Color(1.0, 0.82, 0.52, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 6.0
+
+; the strings' N run over the cover and the fence (2026-10-30)
+[node name="String_Lights_N__amanda_hot_tub" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5, 2.0, -7.4)
+light_color = Color(1.0, 0.86, 0.58, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 5.0
+
 [node name="House_Spill__amanda_hot_tub" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.4, 1.8, -3.2)
 light_color = Color(1.0, 0.84, 0.62, 1)

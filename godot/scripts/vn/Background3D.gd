@@ -3933,10 +3933,14 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/chau_house.tscn",
 		"requires_glb": "res://assets/3d/locales/chau_house.glb",
 		# Amanda's, 10 p.m.: the jetted water on the deck, the bottle on the rim
-		"camera_origin": Vector3(48.0, 1.5, -0.2),
-		"camera_rotation": Vector3(-0.25, deg_to_rad(-40.0), 0.0),
-		"fov": 64.0,
-		"env": {"ambient_color": Color(0.30, 0.32, 0.50, 1), "ambient_energy": 0.10, "fog_color": Color(0.04, 0.04, 0.08, 1)},
+		# (2026-10-30, draft 4: across the steaming tub to the board fence and
+		# the neighbours' house past it, not a lit box in a black void)
+		"camera_origin": Vector3(48.6, 1.45, -0.6),
+		"camera_rotation": Vector3(-0.12, -0.940, 0.0),
+		"fov": 66.0,
+		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.12, 0.13, 0.20, 1),
+			"ground_horizon": Color(0.06, 0.07, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.05, 1),
+			"ambient_color": Color(0.36, 0.40, 0.58, 1), "ambient_energy": 0.22, "fog_color": Color(0.07, 0.08, 0.12, 1)},
 		"suppress_input": true,
 	},
 	"amanda_fort": {
@@ -4817,10 +4821,12 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol3_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
 		# the dance floor at 1 a.m.: green and pink light cutting the fog, the four walls
-		"camera_origin": Vector3(1815.0, 1.6, -8.0),
-		"camera_rotation": Vector3(0.06, deg_to_rad(0.0), 0.0),
+		# (2026-10-30, draft 2: the camera stood inside a grey "haze" blob; now at
+		# the crowd's back edge, a step up, over the heads to the riser and the beams)
+		"camera_origin": Vector3(1815.0, 2.05, -8.6),
+		"camera_rotation": Vector3(0.02, deg_to_rad(0.0), 0.0),
 		"fov": 66.0,
-		"env": {"ambient_color": Color(0.56, 0.48, 0.62, 1), "ambient_energy": 0.40, "fog_color": Color(0.30, 0.26, 0.34, 1)},
+		"env": {"ambient_color": Color(0.56, 0.48, 0.62, 1), "ambient_energy": 0.75, "fog_color": Color(0.30, 0.26, 0.34, 1)},
 		"suppress_input": true,
 	},
 	"catwalk_rail_night": {

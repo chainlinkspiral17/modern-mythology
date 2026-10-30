@@ -663,12 +663,92 @@ def build_amanda():
     for k in range(10):
         make_blob(f"Tub_Bubble_{k}", (tx - 0.7 + (k * 37 % 14) / 10.0, ty - 0.7 + (k * 53 % 14) / 10.0, 0.89), 0.05,
                   (0.80, 0.92, 0.96, 1.0), noise=0.1, seed=k, squash=0.5)
-    make_cyl("Tub_Bottle", (tx + 1.0, ty - 0.95, 1.02), 0.045, 0.22, (0.40, 0.24, 0.10, 1.0), segments=10)
+    # (2026-10-30: the Jack Daniel's is the square bottle now — build_amanda_yard_2026_10)
     for k in range(3):
         make_chamfer_box(f"Tub_Towel_{k}", (tx - 1.5, ty - 0.8 + k * 0.5, 0.04), (0.50, 0.40, 0.06),
                          (0.94, 0.94, 0.92, 1.0), chamfer=0.02)
-    for side, (x, y, w, d) in {"E": (56.0, 3.2, 0.10, 10.0), "N": (51.5, 8.2, 9.0, 0.10), "S": (51.5, -1.8, 9.0, 0.10)}.items():
-        make_box(f"Am_Fence_{side}", (x, y, 0.9), (w, d, 1.8), (0.26, 0.22, 0.18, 1.0))
+    # (the fences are build_amanda_yard_2026_10's board fences now)
+
+
+def build_amanda_yard_2026_10():
+    """DRAFT 4 of the deck (2026-10-30): from the tub the frame was a lit box
+    in a black void, with three flat dark slabs for the fence. Now:
+    - board fences on posts and rails (the boards one joined mesh per run)
+    - the neighbours past them: a house over the E fence and one over the N,
+      a lit window or two, a porch light; trees, a far tree line, so the
+      dark ends in a neighbourhood and not at the world's edge
+    - the tub's steam (translucent blobs over the jets), its cover folded
+      against the fence, the step up to the rim
+    - "passing around a bottle of jack daniels": the square bottle, black
+      label, on the rim; two cups beside it
+    Draft 5 targets: the boys' and the girls' clothes on the chairs, the
+    jets as rings in the shell's inner walls, the moon over the N house,
+    the neighbour's dog-eared fence boards, the sheet's breathing indoors."""
+    from _props.views import _Frame, _house, _tree
+    WOOD = (0.42, 0.34, 0.26, 1.0)
+    WOOD_DK = (0.36, 0.29, 0.22, 1.0)
+    runs = {"E": ((56.0, -1.8), (56.0, 8.2)), "N": ((47.4, 8.2), (56.0, 8.2)), "S": ((47.4, -1.8), (56.0, -1.8))}
+    for side, ((x0, y0), (x1, y1)) in runs.items():
+        L = math.hypot(x1 - x0, y1 - y0)
+        ux, uy = (x1 - x0) / L, (y1 - y0) / L
+        nposts = int(L / 2.4) + 1
+        for k in range(nposts + 1):
+            f = k / float(nposts)
+            make_box(f"Am_Fence_{side}_Post_{k}", (x0 + (x1 - x0) * f, y0 + (y1 - y0) * f, 0.95), (0.10, 0.10, 1.90), WOOD_DK)
+        for ri, rz in enumerate((0.40, 1.45)):
+            sx, sy = (L, 0.05) if uy == 0 else (0.05, L)
+            # rails on the deck side of the boards
+            inx = -0.075 if side == "E" else 0.0
+            iny = -0.075 if side == "N" else (0.075 if side == "S" else 0.0)
+            make_box(f"Am_Fence_{side}_Rail_{ri}", ((x0 + x1) / 2.0 + inx, (y0 + y1) / 2.0 + iny, rz), (sx, sy, 0.09), WOOD_DK)
+        nb = int(L / 0.16)
+        for b in range(nb):
+            s = 0.08 + b * 0.16
+            bx, by = x0 + ux * s, y0 + uy * s
+            h = 1.80 + 0.03 * ((b * 7) % 3)
+            size = (0.14, 0.02, h) if uy == 0 else (0.02, 0.14, h)
+            make_box(f"Am_Fence_{side}_Stock_{b}", (bx, by, h / 2.0), size, WOOD if b % 6 else WOOD_DK)
+    # beyond the fences: grass to the neighbours, their houses, trees
+    make_box("Am_Yard_Beyond_E", (66.0, 3.2, -0.03), (20.0, 40.0, 0.05), (0.20, 0.26, 0.16, 1.0))
+    make_box("Am_Yard_Beyond_N", (51.0, 18.0, -0.03), (10.0, 20.0, 0.05), (0.20, 0.26, 0.16, 1.0))
+    FE = _Frame('E', 56.0, 3.2, 0.0)
+    _house(FE, "Am_Nb_E", 1.5, 6.0, 11.0, 8.0, 3.0, (0.70, 0.66, 0.58, 1.0), door=True, porch_light=True)
+    _tree(FE, "Am_Nb_E_Tree_0", -4.6, 2.6, h=6.0, r=2.3, col=(0.18, 0.26, 0.16, 1.0), seed=31)
+    _tree(FE, "Am_Nb_E_Tree_1", 7.4, 3.2, h=5.2, r=2.0, col=(0.20, 0.28, 0.17, 1.0), seed=32)
+    FN = _Frame('N', 8.2, 51.0, 0.0)
+    _house(FN, "Am_Nb_N", 1.0, 7.0, 10.0, 8.0, 3.0, (0.62, 0.64, 0.62, 1.0), door=False)
+    _tree(FN, "Am_Nb_N_Tree", 6.4, 2.2, h=6.5, r=2.4, col=(0.18, 0.26, 0.16, 1.0), seed=33)
+    for i in range(9):                           # the far tree line, past the neighbours
+        a = -0.2 + i * 0.22
+        make_blob(f"Am_Far_Trees_{i}", (51.0 + 30.0 * math.cos(a), 3.2 + 30.0 * math.sin(a), 4.5), 4.5 + (i % 3),
+                  (0.10, 0.14, 0.10, 1.0), noise=0.25, seed=50 + i, squash=0.9)
+    # the tub: steam over the jets, the cover folded against the fence, a step
+    tx, ty = 51.4, 3.6
+    # (a mist lying on the water, not clouds hung over it: low, wide,
+    # overlapping, faint — the outline pass draws every puff's edge, so few)
+    for k, (dx, dy, z, r) in enumerate(((-0.35, -0.30, 1.00, 0.70), (0.35, 0.25, 1.06, 0.66),
+                                        (0.0, 0.0, 1.16, 0.80), (-0.2, 0.4, 1.28, 0.60))):
+        make_blob(f"Tub_Steam_{k}", (tx + dx, ty + dy, z), r, (0.88, 0.92, 0.94, 0.08 - 0.012 * k),
+                  noise=0.08, seed=70 + k, squash=0.22, rings=7, segments=14)
+    # the cedar skirt's boards (the shell was one plain block)
+    for f, (fx, fy, along) in enumerate(((tx, ty - 1.152, 'X'), (tx, ty + 1.152, 'X'), (tx - 1.152, ty, 'Y'), (tx + 1.152, ty, 'Y'))):
+        for k in range(15):
+            s = -1.05 + k * 0.15
+            pos = (fx + s, fy, 0.44) if along == 'X' else (fx, fy + s, 0.44)
+            size = (0.018, 0.006, 0.84) if along == 'X' else (0.006, 0.018, 0.84)
+            make_box(f"Tub_Skirt_Stock_{f}_{k}", pos, size, (0.28, 0.22, 0.17, 1.0))
+    make_rot_box("Tub_Cover_0", (55.80, 3.3, 0.95), (0.10, 2.3, 1.15), (0.30, 0.30, 0.28, 1.0), roll=0.0, pitch=-0.10)
+    make_rot_box("Tub_Cover_1", (55.68, 3.3, 0.92), (0.10, 2.3, 1.10), (0.34, 0.34, 0.32, 1.0), pitch=-0.13)
+    make_box("Tub_Step", (tx, ty - 1.40, 0.12), (1.20, 0.50, 0.24), (0.40, 0.34, 0.28, 1.0))
+    # the Jack Daniel's: square, black label, on the rim; two cups
+    bx, by = tx + 0.95, ty - 0.97
+    make_box("Tub_Bottle", (bx, by, 1.01), (0.085, 0.085, 0.20), (0.36, 0.20, 0.08, 1.0))
+    make_box("Tub_Bottle_Label", (bx, by - 0.044, 1.01), (0.07, 0.004, 0.09), (0.06, 0.06, 0.06, 1.0))
+    make_box("Tub_Bottle_Label_Text", (bx, by - 0.047, 1.015), (0.05, 0.002, 0.012), (0.86, 0.84, 0.80, 1.0))
+    make_cyl("Tub_Bottle_Neck", (bx, by, 1.15), 0.016, 0.08, (0.36, 0.20, 0.08, 1.0), segments=8)
+    make_cyl("Tub_Bottle_Cap", (bx, by, 1.20), 0.019, 0.025, (0.08, 0.08, 0.08, 1.0), segments=8)
+    for i, dx in enumerate((-0.18, -0.30)):
+        make_cyl(f"Tub_Cup_{i}", (bx + dx, by + 0.02 * i, 0.965), 0.04, 0.11, (0.86, 0.22, 0.20, 1.0), segments=10)
 
 
 def main():
@@ -684,6 +764,7 @@ def main():
     build_game_bar()
     build_amanda()
     build_amanda_deck()
+    build_amanda_yard_2026_10()
     try:
         join_stock()
     except Exception as _e:
