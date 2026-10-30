@@ -2141,8 +2141,10 @@ const CAMERA_PRESETS := {
 		# floats and boats, one boat coming in, the sun low over the sea. The fog jetty stays vol 7's.
 		# On the harbor float itself ("cleaning the deck of my daddy's boat"), from its root by the
 		# bench and the crab pots, north along it: the boats either side, the one coming in ahead.
+		# (2026-10-30) turned NE: due N along the float the moored boats sat
+		# 56° off to the right, out of frame (pilings and crab pots only).
 		"camera_origin": Vector3(-48.9, 1.70, -4.6),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(14.0), 0.0),
+		"camera_rotation": Vector3(-0.04, -0.42, 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.26, 0.30, 0.52, 1), "sky_horizon": Color(0.98, 0.66, 0.40, 1), "ground_horizon": Color(0.30, 0.28, 0.30, 1), "ground_bottom": Color(0.12, 0.12, 0.14, 1), "ambient_color": Color(0.70, 0.60, 0.62, 1), "ambient_energy": 0.60, "fog_color": Color(0.82, 0.60, 0.46, 1), "fog_sky": 0.15},
 		# (2026-10-27) Small Wood in 1997 (Smolvud is its 2050s, Andy): the Frog's things are vol 7's
