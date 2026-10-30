@@ -29,7 +29,8 @@ waiting outside").
 import os, sys, math, random
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, join_stock, export_glb
+from _props.figures import make_standing_figure
 from _props.objects import make_liquor_bottle
 
 W, D, H = 24.0, 18.0, 6.0
@@ -248,10 +249,51 @@ def build_cage_2026_10():
     make_box("Cg_Dagger_Guard__club_sharp_cage_up", (cx - 0.085, cy + 0.05, 0.08), (0.02, 0.10, 0.02), BRASS)
 
 
+def build_crowd_2026_10():
+    """DRAFT 3 (2026-10-30): the dance floors were empty in the club's own
+    view. ch4: "You watch the floors below shift and refract. The dancers are
+    not quite synchronized but are not quite not, either"; vol 3 ch13 "I
+    strut onto the floor"; vol 4 "An Abstract Night Club". A crowd on both
+    floors and at the bar, joined into one mesh (Dancer_Stock); the cage
+    presets strip it ("curiously empty")."""
+    rnd = random.Random(11)
+    tops = [(0.86, 0.20, 0.50, 1.0), (0.20, 0.70, 0.86, 1.0), (0.94, 0.94, 0.96, 1.0), (0.12, 0.12, 0.14, 1.0),
+            (0.60, 0.30, 0.86, 1.0), (0.96, 0.80, 0.30, 1.0), (0.30, 0.80, 0.40, 1.0)]
+    hairs = [(0.10, 0.08, 0.06, 1.0), (0.42, 0.26, 0.14, 1.0), (0.86, 0.74, 0.40, 1.0), (0.06, 0.06, 0.06, 1.0)]
+    spots = []
+    for f, (cx, cy, half, n) in enumerate(((2.0, 8.5, 3.0, 14), (8.5, 4.8, 1.9, 7))):
+        k = 0
+        while k < n:
+            x, y = cx + rnd.uniform(-half, half), cy + rnd.uniform(-half, half)
+            if f == 0 and abs(x - 2.0) < 1.0 and abs(y - 8.5) < 1.0:
+                continue                                  # where the cage stands in its own views
+            if f == 1 and x > 7.3 and y > 3.6:
+                continue                                  # the bar and its stools
+            if any((x - a) ** 2 + (y - b) ** 2 < 0.55 ** 2 for a, b in spots):
+                continue
+            spots.append((x, y)); k += 1
+    for i, (x, y) in enumerate(spots):
+        heading = math.atan2(2.0 - x, 8.5 - y) + rnd.uniform(-1.2, 1.2)
+        dress = tops[rnd.randrange(len(tops))] if rnd.random() < 0.35 else None
+        make_standing_figure(f"Dancer_Stock_{i}", x, y, heading=heading, h=rnd.uniform(1.58, 1.86),
+                             coat=tops[rnd.randrange(len(tops))], pants=(0.14, 0.14, 0.18, 1.0),
+                             hair=hairs[rnd.randrange(len(hairs))], dress=dress,
+                             arms=("front", "down", "folded", "front")[i % 4], z0=0.012)
+    # a few at the bar's stools side, facing it
+    for i, y in enumerate((5.15, 7.35, 9.55, 11.75)):          # between the stools
+        make_standing_figure(f"Dancer_Stock_Bar_{i}", XE - 3.2 - 1.35, y, heading=math.pi / 2.0, h=1.74,
+                             coat=tops[(i * 3) % len(tops)], pants=(0.14, 0.14, 0.18, 1.0), hair=hairs[i % 4], arms="front")
+
+
 def main():
     clear_scene()
     build_shell(); build_dance_floors(); build_bar()
-    build_cage_2026_10(); build_atrium_and_arcade(); build_bowling(); build_outside()
+    build_cage_2026_10()
+    build_crowd_2026_10()
+    try:
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e); build_atrium_and_arcade(); build_bowling(); build_outside()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/club_sharp.glb"))
     print(f"\n[build_club_sharp] exporting to {out}")
     export_glb(out)

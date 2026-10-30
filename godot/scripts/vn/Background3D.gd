@@ -5346,7 +5346,7 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.50, 0.44, 0.60, 1), "ambient_energy": 0.22, "fog_color": Color(0.06, 0.05, 0.08, 1)},
 		# after hours: the floor show's lights off, so the stage spot is among
 		# the 8 lights a mesh takes in the compatibility renderer
-		"strip": ["Dance_Glow_", "Arcade_Glow", "Lane_0_Pin_Light", "Lane_2_Pin_Light", "Lane_4_Pin_Light",
+		"strip": ["Dancer_", "Dance_Glow_", "Arcade_Glow", "Lane_0_Pin_Light", "Lane_2_Pin_Light", "Lane_4_Pin_Light",
 			"Truss_0_Can_1_Practical", "Truss_0_Can_4_Practical", "Truss_1_Can_2_Practical", "Truss_1_Can_5_Practical",
 			"Truss_2_Can_1_Practical", "Truss_2_Can_4_Practical"],
 		"suppress_input": true,
@@ -5360,7 +5360,7 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.50, 0.44, 0.60, 1), "ambient_energy": 0.20, "fog_color": Color(0.06, 0.05, 0.08, 1)},
 		# after hours: the floor show's lights off, so the stage spot is among
 		# the 8 lights a mesh takes in the compatibility renderer
-		"strip": ["Dance_Glow_", "Arcade_Glow", "Lane_0_Pin_Light", "Lane_2_Pin_Light", "Lane_4_Pin_Light",
+		"strip": ["Dancer_", "Dance_Glow_", "Arcade_Glow", "Lane_0_Pin_Light", "Lane_2_Pin_Light", "Lane_4_Pin_Light",
 			"Truss_0_Can_1_Practical", "Truss_0_Can_4_Practical", "Truss_1_Can_2_Practical", "Truss_1_Can_5_Practical",
 			"Truss_2_Can_1_Practical", "Truss_2_Can_4_Practical"],
 		"suppress_input": true,
