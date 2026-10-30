@@ -253,14 +253,15 @@ def build_dugout_full_2026_10():
     """(2026-10-30, the vols 1-4 sweep) "The dugout was full because we were
     up to bat. I was sitting next to Dad and a kid named Cody." The dugout
     view showed an empty bench. The team in its home whites and red caps:
-    six on the bench between the gloves and the helmets (the lens sits at
+    four on the bench between the gloves and the helmets (the lens sits at
     its W end, beside Dad), two at the front wall watching the plate. Named
     Game_Bat_*, so they leave with the batting state (the field views)."""
     from _props.figures import make_seated_figure, make_standing_figure
     top, pants, cap = (0.94, 0.94, 0.92, 1.0), (0.94, 0.94, 0.92, 1.0), (0.70, 0.14, 0.12, 1.0)
     skins = [(0.86, 0.70, 0.58, 1.0), (0.74, 0.56, 0.42, 1.0), (0.92, 0.78, 0.66, 1.0), (0.56, 0.40, 0.30, 1.0)]
     y0, y1 = -8.6, -6.0
-    for k, x in enumerate((-12.25, -11.75, -10.7, -10.15, -7.05, -6.6)):
+    # (the first metre past the lens is Dad and Cody: portraits, not set)
+    for k, x in enumerate((-10.7, -10.15, -7.05, -6.6)):
         make_seated_figure(f"Game_Bat_Dugout_Kid_{k}", x, y0 + 0.35, heading=0.0, seat_h=0.445, h=1.42 + 0.04 * (k % 3),
                            coat=top, pants=pants, skin=skins[k % 4], hair=cap, arms=("lap", "folded")[k % 2], z0=0.02)
     for k, x in enumerate((-11.0, -9.6)):
