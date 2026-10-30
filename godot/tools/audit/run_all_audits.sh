@@ -193,6 +193,9 @@ MOUT="$(python3 vantage_obstruction_audit.py --markers 2>/dev/null | grep -v "^\
 MCOUNT="$(echo "$MOUT" | grep -oE "^[0-9]+ obstructed marker" | grep -oE "^[0-9]+")"
 echo "$MOUT" | tail -1
 if [ "${MCOUNT:-999}" -gt "$MARKER_CEILING" ]; then
+    # (2026-10-30) name them: the gate printed only its count, so a failure
+    # sent the next session hunting through 169 locales for the culprit
+    echo "$MOUT" | grep -E "^OBSTRUCTED|OBSTRUCTED " || true
     echo "REGRESSION  $MCOUNT obstructed markers (ceiling $MARKER_CEILING)"; exit 1; fi
 echo ""
 
