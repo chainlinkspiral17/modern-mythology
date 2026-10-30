@@ -406,15 +406,35 @@ def build_gorge_2026_10():
             row.append(round(z, 3))
         H.append(row)
     verts = [(X0 + c * CELL, Y0 + r * CELL, H[r][c]) for r in range(NR) for c in range(NC)]
-    rock, floor_ = [], []
+    # (round 2, 2026-10-30) the rock read as one flat grey: the faces split
+    # into basalt STRATA (bands by height, darker and lighter, the columnar
+    # layers of the coast range), MOSS on the wet rock round the falls, and
+    # the forest floor in two greens
+    strata = ((0.30, 0.29, 0.29, 1.0), (0.40, 0.38, 0.36, 1.0), (0.26, 0.26, 0.27, 1.0), (0.46, 0.43, 0.39, 1.0))
+    rock_bands = {i: [] for i in range(len(strata))}
+    moss, floor_, floor_dk = [], [], []
     for r in range(NR - 1):
         for c in range(NC - 1):
             a = r * NC + c
             q = [a, a + 1, a + NC + 1, a + NC]
             zs = [verts[i][2] for i in q]
-            (rock if max(zs) - min(zs) > 1.6 else floor_).append(q)
-    _terrain_mesh("Gorge_Rock", verts, rock, (0.34, 0.33, 0.33, 1.0))
+            cxq = sum(verts[i][0] for i in q) / 4.0
+            cyq = sum(verts[i][1] for i in q) / 4.0
+            if max(zs) - min(zs) > 1.6:
+                if (cxq - 9.5) ** 2 + (cyq - 31.0) ** 2 < 9.0 ** 2:
+                    moss.append(q)
+                else:
+                    band = int((sum(zs) / 4.0 + 40.0) / 5.0) % len(strata)
+                    rock_bands[band].append(q)
+            else:
+                (floor_ if (r * 7 + c * 3) % 5 else floor_dk).append(q)
+    for i, cells in rock_bands.items():
+        if cells:
+            _terrain_mesh(f"Gorge_Rock_{i}", verts, cells, strata[i])
+    if moss:
+        _terrain_mesh("Gorge_Rock_Moss", verts, moss, (0.24, 0.34, 0.22, 1.0))
     _terrain_mesh("Gorge_Ground", verts, floor_, (0.32, 0.38, 0.24, 1.0))
+    _terrain_mesh("Gorge_Ground_Dk", verts, floor_dk, (0.26, 0.32, 0.20, 1.0))
 
     def hz(x, y):
         c = min(NC - 2, max(0, int((x - X0) / CELL)))
@@ -474,6 +494,15 @@ def build_gorge_2026_10():
     for k in range(14):
         make_blob(f"Falls_Mist_Column_{k}", (3.0 + 1.1 * math.sin(k * 1.7), 43.0 + 0.9 * math.cos(k * 1.3), -32.0 + k * 3.2),
                   5.6 - 0.10 * k, (0.92, 0.92, 0.90, 0.07), noise=0.35, seed=560 + k, squash=1.1)
+    # (round 2) ferns on the shelf's banks and the bluff's ledges, the spray
+    # veil drifting off the column's face
+    from _props.trees import make_fern
+    for i, (fx_, fy_) in enumerate(((5.2, 19.0), (5.6, 22.5), (5.0, 26.0), (13.8, 18.4), (14.2, 25.0), (13.6, 28.5),
+                                    (4.0, 17.2), (15.4, 17.0), (6.0, 29.4), (13.0, 29.8))):
+        make_fern(f"Ledge_Fern_Stock_{i}", fx_, fy_, h=0.6, fronds=7, z0=hz(fx_, fy_))
+    for k in range(5):
+        make_blob(f"Falls_Spray_Veil_{k}", (9.5 + (k - 2) * 0.9, SH1 + 1.4 + 0.3 * (k % 2), LIP - 3.0 - k * 4.0), 2.2 + 0.3 * k,
+                  (0.92, 0.94, 0.94, 0.16), noise=0.3, seed=590 + k, squash=1.4)
     # conifers on the rims and down in the woods (one joined mesh: _Stock_)
     import random
     rnd = random.Random(1707)

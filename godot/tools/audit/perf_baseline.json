@@ -28,9 +28,9 @@
   "objects": 256
  },
  "briar_falls": {
-  "draw": 128,
-  "prims": 52056,
-  "objects": 298
+  "draw": 132,
+  "prims": 57696,
+  "objects": 302
  },
  "bus_station": {
   "draw": 80,
