@@ -13,11 +13,15 @@ indentation and escaping so the diff is the insert and the renumbered jumps.
         '{"t": "bg", "src": "3d:dead_store_roof"}'
     ... --dry-run   print what would change, write nothing
 
-The new node lands AT <index> (the old node <index> becomes <index>+1). A goto
-or beat that pointed at <index> or later is bumped: a jump to the old node 25
-still reaches that node, so in the example "climb." now plays the cut first and
-then the line. (2026-10-30: written for vol 4's dead store roof, where node 22's
-choice jumps to 23 and 25 by index.)
+The new node lands AT <index> (the old node <index> becomes <index>+1).
+- a goto pointing PAST <index> is bumped by one, so it still reaches its line;
+- a goto pointing AT <index> is left alone: it now lands on the new node, which
+  plays first and falls through to the old line ("climb." cuts to the roof,
+  then reads its line);
+- a music beat at <index> or later is bumped: a beat belongs to its LINE.
+(2026-10-30: written for vol 4's dead store roof, where node 22's choice jumps
+to 23 and 25 by index. The first version bumped a goto AT the index too, so
+"climb." jumped past the new cut — thread B caught it.)
 """
 import json
 import os
@@ -38,7 +42,7 @@ def _bump_gotos(obj, at):
     n = 0
     if isinstance(obj, dict):
         for k, v in obj.items():
-            if k == "goto" and isinstance(v, int) and v >= at:
+            if k == "goto" and isinstance(v, int) and v > at:
                 obj[k] = v + 1
                 n += 1
             else:
