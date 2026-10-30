@@ -137,8 +137,12 @@ def build_june_closet_2026_10():
     # wall, into the room
     for s, jx in ((-1, 1.84), (1, 3.36)):
         for k in range(2):
-            make_rot_box(f"June_Closet_Bifold_{s:+d}_{k}", (jx - s * (0.025 + 0.036 * k), 3.92, 1.05), (0.38, 0.03, 2.06), jb,
+            make_rot_box(f"June_Closet_Bifold_{s:+d}_{k}", (jx - s * (0.025 + 0.036 * k), 3.92, 1.04), (0.38, 0.03, 2.06), jb,
                          yaw=_m.pi / 2.0)
+    # (round 6) the rod and the shelf over it (draft 2 dropped them with the
+    # old panel: the clothes hung on nothing and the shelf's boxes floated)
+    make_box("June_Closet_Rod", (2.6, 4.66, 1.85), (1.6, 0.03, 0.03), (0.70, 0.70, 0.72, 1.0))
+    make_box("June_Closet_Shelf", (2.6, 4.66, 2.10), (1.6, 0.70, 0.03), (0.86, 0.84, 0.80, 1.0))
     # the rod's clothes: (x, length, depth, colour)
     shirts = ((0.30, 0.40, 0.70), (0.80, 0.40, 0.50), (0.20, 0.20, 0.24), (0.86, 0.84, 0.70), (0.48, 0.20, 0.30),
               (0.24, 0.42, 0.36), (0.90, 0.88, 0.86), (0.18, 0.18, 0.30), (0.62, 0.52, 0.40), (0.40, 0.46, 0.58))
@@ -153,9 +157,9 @@ def build_june_closet_2026_10():
         dp = (0.42, 0.44, 0.36, 0.50, 0.42)[kind]
         th = (0.035, 0.04, 0.03, 0.07, 0.035)[kind]
         col = shirts[k % len(shirts)]
-        make_rot_box(f"June_Closet_Garment_{k}", (x, 4.66, 1.84 - 0.04 - ln / 2.0), (th, dp, ln), col + (1.0,),
+        make_rot_box(f"June_Closet_Garment_{k}", (x, 4.66, 1.823 - ln / 2.0), (th, dp, ln), col + (1.0,),
                      yaw=0.08 * (((k * 5) % 3) - 1))
-        make_rot_box(f"June_Closet_Hanger_{k}", (x, 4.66, 1.84 - 0.03), (0.01, 0.40, 0.012), (0.60, 0.58, 0.56, 1.0))
+        make_rot_box(f"June_Closet_Hanger_{k}", (x, 4.66, 1.829), (0.01, 0.40, 0.012), (0.60, 0.58, 0.56, 1.0))   # its hook on the rod
         x += th + 0.03 + 0.02 * ((k * 3) % 2)
         k += 1
     # the floor: shoes kicked in, the laundry heap, shoe boxes
@@ -376,7 +380,7 @@ def build_coast_studio_2026_10(x0):
     for i in range(6):
         make_box(f"Studio_Contact_Sheet_{i}", (tx - 0.20 + 0.18 * (i % 3), ty + 0.20 + 0.32 * (i // 3), 0.926 + 0.002 * i),
                  (0.20, 0.25, 0.002), (0.20, 0.20, 0.22, 1.0) if i % 2 else (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Studio_Loupe", (tx + 0.05, ty - 0.55, 0.985), 0.025, 0.06, (0.86, 0.88, 0.90, 1.0), segments=10)
+    make_cyl("Studio_Loupe", (tx + 0.25, ty - 0.15, 0.955), 0.025, 0.06, (0.86, 0.88, 0.90, 1.0), segments=10)   # on the table top
     for i in range(5):
         make_cyl(f"Studio_Film_Canister_{i}", (tx + 0.32, ty + 0.9 + 0.06 * i, 0.95), 0.016, 0.05, (0.20, 0.20, 0.22, 1.0), segments=8)
     make_chair("Studio_Layout_Stool", tx + 0.75, ty, yaw=math.pi / 2.0, wood=(0.24, 0.24, 0.26, 1.0))
@@ -449,7 +453,9 @@ def build_coast_bath_2026_10(bx0, by0):
     make_box("Bath_Shower_Arm", (ex - 0.10, ty, 1.95), (0.20, 0.025, 0.025), (0.80, 0.80, 0.82, 1.0))
     make_cyl("Bath_Shower_Head", (ex - 0.22, ty, 1.92), 0.06, 0.05, (0.80, 0.80, 0.82, 1.0), segments=10)
     # the curtain rod across the alcove's mouth, the curtain shoved to the W end
-    make_cyl("Bath_Curtain_Rod", (tx, ty - D / 2.0 - 0.02, 2.02), 0.012, W + 0.30, (0.80, 0.80, 0.82, 1.0), axis='X', segments=8)
+    # (round 6) the rod runs to the E wall it is fixed to
+    make_cyl("Bath_Curtain_Rod", ((tx - W / 2.0 - 0.15 + ex) / 2.0, ty - D / 2.0 - 0.02, 2.02), 0.012, ex - (tx - W / 2.0 - 0.15),
+             (0.80, 0.80, 0.82, 1.0), axis='X', segments=8)
     for i in range(5):
         make_box(f"Bath_Curtain_Fold_{i}", (tx - W / 2.0 - 0.05 + i * 0.055, ty - D / 2.0 - 0.02 + (0.03 if i % 2 else -0.03), 1.35),
                  (0.05, 0.03, 1.30), (0.78, 0.86, 0.84, 1.0))
@@ -466,8 +472,8 @@ def build_coast_bath_2026_10(bx0, by0):
     # the toilet against the W wall
     # (against the S wall, clear of the door's swing: the doorway gate, 2026-10-30)
     make_chamfer_box("Bath_Toilet_Tank", (bx0 + 2.95, by0 + 0.08 + 0.10, 0.72), (0.48, 0.20, 0.36), white, chamfer=0.02)
-    make_chamfer_box("Bath_Toilet_Bowl", (bx0 + 2.95, by0 + 0.08 + 0.46, 0.24), (0.38, 0.52, 0.40), white, chamfer=0.05)
-    make_box("Bath_Toilet_Seat", (bx0 + 2.95, by0 + 0.08 + 0.48, 0.45), (0.38, 0.46, 0.03), (0.92, 0.92, 0.90, 1.0))
+    make_chamfer_box("Bath_Toilet_Bowl", (bx0 + 2.95, by0 + 0.08 + 0.46, 0.20), (0.38, 0.52, 0.40), white, chamfer=0.05)   # on the floor
+    make_box("Bath_Toilet_Seat", (bx0 + 2.95, by0 + 0.08 + 0.48, 0.415), (0.38, 0.46, 0.03), (0.92, 0.92, 0.90, 1.0))
     # the bath mat, the towel dropped on it
     make_box("Bath_Mat", (tx, ty - D / 2.0 - 0.40, 0.006), (0.90, 0.55, 0.012), (0.56, 0.66, 0.70, 1.0))
     make_blob("Bath_Towel_Dropped", (tx - 0.25, ty - D / 2.0 - 0.36, 0.06), 0.18, (0.86, 0.80, 0.70, 1.0), noise=0.3, seed=17, squash=0.35)
@@ -890,13 +896,13 @@ def build_warehouse_2026_10(x0, H):
     make_box("Bar_Top", (x0 + 2.6, 12.0, 1.13), (0.90, 9.1, 0.05), (0.30, 0.24, 0.20, 1.0))
     make_box("Bar_Back_Shelf_Glow", (x0 + 0.20, 12.0, 1.9), (0.04, 8.0, 0.9), (0.95, 0.66, 0.30, 1.0))
     for sh in range(2):
-        make_box(f"Bar_Shelf_{sh}", (x0 + 0.35, 12.0, 1.55 + sh * 0.5), (0.26, 8.0, 0.03), (0.20, 0.18, 0.16, 1.0))
+        make_box(f"Bar_Shelf_{sh}", (x0 + 0.28, 12.0, 1.55 + sh * 0.5), (0.26, 8.0, 0.03), (0.20, 0.18, 0.16, 1.0))   # to the wall
         for b in range(22):
             make_cyl(f"Bar_Bottle_{sh}_{b}", (x0 + 0.36, 8.3 + b * 0.35, 1.68 + sh * 0.5), 0.035, 0.24,
                      ((0.30, 0.50, 0.30, 1.0), (0.60, 0.40, 0.20, 1.0), (0.80, 0.80, 0.84, 1.0))[(b + sh) % 3], segments=8)
     # ducts along the trusses
     for k in range(2):
-        make_cyl(f"Duct_{k}", (x0 + 9.0 + k * 12.0, 12.0, H - 1.2), 0.40, 23.4, (0.40, 0.40, 0.42, 1.0), axis='Y', segments=14)
+        make_cyl(f"Duct_{k}", (x0 + 7.5 + k * 15.0, 12.2, H - 1.05), 0.40, 23.0, (0.40, 0.40, 0.42, 1.0), axis='Y', segments=14)   # hung tight under the trusses
 
 
 # ── H. the catwalk between the towers, the lit city below (x 2100..) ────
