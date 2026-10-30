@@ -765,7 +765,8 @@ def build_warehouse():
                       ("Warehouse_Wall_W", (x0, 12.0, H / 2.0), (0.30, 24.0, H)), ("Warehouse_Wall_E", (x0 + 30.0, 12.0, H / 2.0), (0.30, 24.0, H))):
         make_box(nm, c, sz, conc)
     for k in range(6):
-        make_box(f"Warehouse_Truss_{k}", (x0 + 2.5 + k * 5.0, 12.0, H - 0.4), (0.30, 24.0, 0.50), (0.22, 0.22, 0.24, 1.0))
+        # (round 4) between the brick faces (y 0.17..23.83), not through them
+        make_box(f"Warehouse_Truss_{k}", (x0 + 2.5 + k * 5.0, 12.0, H - 0.4), (0.30, 23.6, 0.50), (0.22, 0.22, 0.24, 1.0))
         make_box(f"Warehouse_Column_{k}", (x0 + 2.5 + k * 5.0, 0.4, (H - 0.65) / 2.0), (0.40, 0.40, H - 0.65), (0.22, 0.22, 0.24, 1.0))
     # (2026-10-30, draft 2: the "haze banks" were opaque grey blobs, one of
     # them around the camera, and the floor was empty — the frame was a
