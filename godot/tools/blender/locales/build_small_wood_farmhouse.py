@@ -344,7 +344,8 @@ def _placed(build, at, prefix, drop=()):
     A = sys.modules.get("locale_geometry_audit")
     mark_boxes = len(A.BOXES) if A is not None else 0
     real = bpy is not None and not isinstance(getattr(bpy, "data", 0.0), float)
-    before = set(bpy.data.objects.keys()) if real else set()
+    # (by iteration: the dry-run gate's stand-in collection is a list, no .keys())
+    before = set(o.name for o in bpy.data.objects) if real else set()
     build()
     dx, dy, dz = at
     if real:
