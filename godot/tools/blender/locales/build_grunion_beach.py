@@ -113,13 +113,13 @@ def build_bonfires_2026_10():
     make_cyl("Bonfire_Ring", (fx, fy, 0.05), 0.75, 0.06, char, segments=16)
     for k in range(7):                                  # the stacked driftwood, leaning in
         a = k * (2 * math.pi / 7)
-        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.28 * math.cos(a), fy + 0.28 * math.sin(a), 0.32),
+        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.28 * math.cos(a), fy + 0.28 * math.sin(a), 0.40),   # (feet on the sand, not 7 cm under it)
                      (0.10, 0.10, 0.78), COL_DRIFT, yaw=a, pitch=0.55)
-    make_blob("Bonfire_Flame_Core", (fx, fy, 0.42), 0.30, ember, noise=0.25, seed=4, squash=1.6)
-    make_blob("Bonfire_Flame_Top", (fx, fy, 0.82), 0.18, flame, noise=0.3, seed=9, squash=1.9)
-    make_blob("Bonfire_Embers", (fx, fy, 0.10), 0.42, (0.70, 0.22, 0.08, 1.0), noise=0.18, seed=2, squash=0.25)
+    make_blob("Bonfire_Flame_Glow_Core", (fx, fy, 0.42), 0.30, ember, noise=0.25, seed=4, squash=1.6)
+    make_blob("Bonfire_Flame_Glow_Top", (fx, fy, 0.82), 0.18, flame, noise=0.3, seed=9, squash=1.9)
+    make_blob("Bonfire_Embers_Glow", (fx, fy, 0.10), 0.42, (0.70, 0.22, 0.08, 1.0), noise=0.18, seed=2, squash=0.25)
     # the logs they sat on, the bottles, the taffy, the quilt
-    make_rot_box("Bonfire_Seat_Log_0", (fx - 1.6, fy - 0.6, 0.18), (2.2, 0.34, 0.34), COL_DRIFT, yaw=0.4)
+    make_rot_box("Bonfire_Seat_Log_0", (fx - 0.2, fy - 1.7, 0.18), (2.2, 0.34, 0.34), COL_DRIFT, yaw=0.12)   # (off the old driftwood, 2026-10-30)
     make_rot_box("Bonfire_Seat_Log_1", (fx + 1.5, fy - 0.9, 0.16), (1.8, 0.30, 0.30), COL_DRIFT, yaw=-0.5)
     bottle = (0.30, 0.20, 0.08, 1.0)
     for k, (bx, by, lying) in enumerate(((fx - 1.2, fy - 1.1, False), (fx - 1.0, fy - 1.25, True), (fx + 1.1, fy - 1.4, False),
@@ -142,8 +142,8 @@ def build_bonfires_2026_10():
             x = fx + side * d
             y = 6.4 + ((k * 7 + (side > 0)) % 3) * 0.5
             s = 0.6 if k % 3 else 1.0
-            make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}", (x, y, 0.30 * s), 0.34 * s, ember, noise=0.3, seed=k, squash=1.5)
-            make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}_Top", (x, y, 0.62 * s), 0.18 * s, flame, noise=0.3, seed=k + 3, squash=1.8)
+            make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}_Glow", (x, y, 0.30 * s), 0.34 * s, ember, noise=0.3, seed=k, squash=1.5)
+            make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}_Glow_Top", (x, y, 0.62 * s), 0.18 * s, flame, noise=0.3, seed=k + 3, squash=1.8)
 
 
 def main():
@@ -225,6 +225,8 @@ def build_shore_2026_09():
         t = k / 13.0
         fx = -0.9 + 0.55 * t + (0.13 if k % 2 else -0.13)
         fy = 0.4 + t * 7.9
+        if (fx + 1.0) ** 2 + (fy - 5.0) ** 2 < 0.9 ** 2:
+            continue                     # (the bonfire burns on this stretch of the walk now)
         make_box("Footprint_%d" % k, (fx, fy, 0.031), (0.11, 0.26, 0.004), FOOT)
     # the wrack line at the high-tide mark (y 7.3-7.8), ragged
     WRACK = (0.14, 0.15, 0.11, 1.0)

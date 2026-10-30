@@ -259,9 +259,9 @@ def build_party():
                          yaw=math.atan2(dy, dx), pitch=-math.atan2(dz, math.hypot(dx, dy)))
     PINK, ORANGE = (1.0, 0.46, 0.70, 1.0), (1.0, 0.62, 0.24, 1.0)
     sgx, sgy = 49.6, y1 - 0.08 - 1.4 - 0.10
-    ribbon("Contrail_Pink", [(tx, ty, 1.1), (47.6, 7.4, 2.4), (46.6, 9.4, 3.0), (47.8, 11.2, 2.2), (sgx - 0.6, sgy - 0.4, 1.5), (sgx, sgy, 1.2)], PINK)
-    ribbon("Contrail_Orange", [(tx, ty, 1.0), (50.6, 5.0, 1.9), (52.8, 4.4, 2.8), (54.6, 5.8, 3.2), (55.2, 8.2, 2.6)], ORANGE)
-    ribbon("Contrail_Pink_Bounce", [(tx, ty, 1.2), (48.0, 4.2, 2.6), (45.2, 3.4, 3.4), (43.0, 5.0, 2.8), (42.4, 7.6, 3.4)], PINK, w=0.035)
+    ribbon("Contrail_Glow_Pink", [(tx, ty, 1.1), (47.6, 7.4, 2.4), (46.6, 9.4, 3.0), (47.8, 11.2, 2.2), (sgx - 0.6, sgy - 0.4, 1.5), (sgx, sgy, 1.2)], PINK)
+    ribbon("Contrail_Glow_Orange", [(tx, ty, 1.0), (50.6, 5.0, 1.9), (52.8, 4.4, 2.8), (54.6, 5.8, 3.2), (55.2, 8.2, 2.6)], ORANGE)
+    ribbon("Contrail_Glow_Pink_Bounce", [(tx, ty, 1.2), (48.0, 4.2, 2.6), (45.2, 3.4, 3.4), (43.0, 5.0, 2.8), (42.4, 7.6, 3.4)], PINK, w=0.035)
     # the party: scale and staging (Charlie, Carrie are the VN's)
     for nm, x, y, hd, h, coat, dress, arms in (
             ("Party_Guest_0", 46.2, 10.8, math.pi * 1.0, 1.74, (0.20, 0.22, 0.28, 1.0), None, "front"),

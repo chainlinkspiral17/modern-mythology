@@ -48,6 +48,8 @@ FIR = (0.12, 0.24, 0.16, 1.0)
 TRUNK = (0.30, 0.22, 0.16, 1.0)
 
 
+HUTCH_Y = (15.0, 16.4, 17.8)       # the rabbit hutches on the E fence (15.0 + k * 1.4)
+
 def _rng(seed):
     s = [seed & 0x7fffffff or 1]
     def r():
@@ -88,12 +90,15 @@ def build_yard():
     for k in range(70):
         side = k % 3
         if side == 0:
-            gx, gy = -11.5 + r() * 1.6, 2.0 + r() * 22.0
+            gx, gy = -11.4 + r() * 1.4, 2.0 + r() * 21.4
         elif side == 1:
-            gx, gy = 9.9 + r() * 1.6, 2.0 + r() * 22.0
+            gx, gy = 9.9 + r() * 1.4, 2.0 + r() * 21.4
         else:
-            gx, gy = -11.0 + r() * 22.0, 22.4 + r() * 1.4
-        make_shrub(f"TallGrass_Stock_{k}", gx, gy, h=0.35 + r() * 0.3, r=0.3 + r() * 0.25, col=GRASS_TALL, segments=6)
+            gx, gy = -11.0 + r() * 22.0, 22.4 + r() * 0.9   # (clear of the N fence, 2026-10-30)
+        rr = 0.3 + r() * 0.25
+        if gx > 10.3 and any(abs(gy - hy) < 0.6 + rr + 0.1 for hy in HUTCH_Y):
+            continue                     # the rabbit hutches stand there (2026-10-30)
+        make_shrub(f"TallGrass_Stock_{k}", gx, gy, h=0.35 + r() * 0.3, r=rr, col=GRASS_TALL, segments=6)
     # the cedar-board fence, silvered
     for name, a, b in (("W", (-12.0, 0.0), (-12.0, 24.0)), ("E", (12.0, 0.0), (12.0, 24.0)), ("N", (-12.0, 24.0), (12.0, 24.0))):
         L = math.hypot(b[0] - a[0], b[1] - a[1])
@@ -158,7 +163,7 @@ def build_party():
     # "Their parents had been best friends" — three of them at the table.
     for nm, x, y, hd, h, coat in (("Party_Kid_0", 4.9, 9.6, math.pi * 1.2, 1.12, (0.96, 0.40, 0.30, 1.0)),
                                   ("Party_Kid_1", 3.8, 10.5, math.pi * 0.7, 1.24, (0.30, 0.56, 0.86, 1.0)),
-                                  ("Party_Kid_2", 5.5, 8.3, math.pi * 1.6, 1.05, (0.96, 0.86, 0.30, 1.0))):
+                                  ("Party_Kid_2", 3.9, 8.4, math.pi * 1.6, 1.05, (0.96, 0.86, 0.30, 1.0))):
         make_standing_figure(nm, x, y, heading=hd, h=h, coat=coat, pants=(0.30, 0.36, 0.56, 1.0), arms="down")
     make_standing_figure("Party_Parent_0", tx - 2.2, ty - 0.2, heading=math.pi * 0.5, h=1.76, coat=(0.56, 0.62, 0.48, 1.0), arms="folded")
     make_standing_figure("Party_Parent_1", tx + 2.1, ty + 0.4, heading=math.pi * 1.5, h=1.66, coat=(0.84, 0.66, 0.70, 1.0),

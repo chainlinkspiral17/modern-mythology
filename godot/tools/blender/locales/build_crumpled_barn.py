@@ -90,7 +90,7 @@ def build_gable():
     for sgn, tag in ((-1, "W"), (1, "E")):
         make_rot_box(f"Gable_Rake_{tag}", (-0.5 + sgn * 1.6, 8.20, 3.2 + 1.15 + 0.06), (3.95, 0.05, 0.14), (0.36, 0.34, 0.32, 1.0),
                      pitch=sgn * 0.623)
-    make_rot_box("Gable_Shingle_Scrap", (-0.9, 8.55, 5.2), (1.2, 0.5, 0.05), COL_ROOF_DK, pitch=-0.62, roll=-0.2)
+    make_rot_box("Gable_Shingle_Scrap", (-0.30, 8.55, 5.2), (0.5, 0.5, 0.05), COL_ROOF_DK, pitch=-0.62, roll=-0.2)
     # (the old board seams are the battens above now, carried up under the rakes)
     # The doorway (door long gone) + hay door above
     make_box("Doorway", (-1.2, 8.30, 1.25), (1.7, 0.45, 2.5), COL_DOOR)
@@ -254,6 +254,8 @@ def build_bay_2026_10():
                 continue                                   # a board gone
             h = 3.05 - 0.17 * k - 0.22 * ((k * 7 + (3 if side == "E" else 0)) % 3)
             z0 = 0.0
+            if side == "W" and y > 11.0:
+                continue                                   # Rubble_2's heap took this board down
             if side == "W" and 9.05 < y < 10.15:
                 z0 = 0.5                                   # standing on Rubble_0
             if side == "W" and y > 10.2:

@@ -161,6 +161,7 @@ def build_room():
                 continue        # the clear patch, the bed, the desk
             if -2.3 < x < -0.8 and y > 3.2:
                 continue        # the door's swing
+            x = min(max(x, X0 + 0.34), X1 - 0.34)          # (books against the plaster, not in it: 2026-10-30)
             wall = min(x - X0, X1 - x, y, D - y)            # nearer a wall, a deeper drift
             n = 2 + ((i * 7 + j * 3) % 5) + (4 if wall < 0.6 else 2 if wall < 1.1 else 0)
             for m in range(n):

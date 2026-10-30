@@ -428,9 +428,11 @@ def build_firs():
         for _ in range(n):
             make_conifer(f"Fir_Stock_{k}", x0 + r() * (x1 - x0), y0 + r() * (y1 - y0), 24.0 + r() * 16.0, FIR, FIR_TRUNK, skirt=0.22)
             k += 1
-    for i, (hx, hy, rr, hh) in enumerate(((-220.0, 420.0, 260.0, 120.0), (160.0, 470.0, 300.0, 150.0),
+    # (2026-10-30: the two N ridges 60 m further out — their footprints reached
+    # the fir band and the overlap gate counted 454 trees inside them)
+    for i, (hx, hy, rr, hh) in enumerate(((-220.0, 480.0, 260.0, 120.0), (160.0, 530.0, 300.0, 150.0),
                                           (-380.0, 200.0, 220.0, 110.0), (420.0, 160.0, 240.0, 120.0),
-                                          (40.0, -420.0, 280.0, 110.0))):
+                                          (40.0, -430.0, 280.0, 110.0))):
         make_taper_cyl(f"Ridge_{i}", (hx, hy, hh / 2.0 - 4.0), rr, rr * 0.18, hh, (0.10, 0.17, 0.13, 1.0), segments=14)
 
 

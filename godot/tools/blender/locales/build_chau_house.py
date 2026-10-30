@@ -779,9 +779,9 @@ def build_bedrooms_2026_10():
         make_rot_box(f"Steven_Glowstick_{k}", (gx_, gy_, z), (0.015, 0.15, 0.015), col, yaw=yaw)
     # the CD tower by the desk (its cases a joined stack)
     # (on the E wall by the bed: by the desk it stood in the open door's clearance)
-    make_box("Steven_CD_Tower", (X1 - 0.10 - 0.11, 7.22, 0.55), (0.20, 0.18, 1.10), (0.20, 0.20, 0.22, 1.0))
+    make_box("Steven_CD_Tower", (X1 - 0.10 - 0.35, 7.22, 0.55), (0.20, 0.18, 1.10), (0.20, 0.20, 0.22, 1.0))
     for k in range(18):
-        make_box(f"Steven_CD_Stock_{k}", (X1 - 0.10 - 0.22, 7.22, 0.10 + k * 0.055), (0.02, 0.14, 0.01),
+        make_box(f"Steven_CD_Stock_{k}", (X1 - 0.10 - 0.46, 7.22, 0.10 + k * 0.055), (0.02, 0.14, 0.01),
                  ((0.86, 0.86, 0.88, 1.0), (0.30, 0.30, 0.34, 1.0), (0.80, 0.40, 0.20, 1.0))[k % 3])
     # the console under the E window, the stereo and its speakers
     cx_ = X1 - 0.10 - 0.22

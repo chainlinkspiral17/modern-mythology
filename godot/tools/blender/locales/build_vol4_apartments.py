@@ -145,10 +145,11 @@ def build_chess_hall():
     # cardigan, the trough held in front of him
     hx, hy, hz = make_standing_figure("Earl", 41.75, 11.5, heading=math.pi, h=1.68, coat=(0.52, 0.46, 0.36, 1.0),
                                       pants=(0.36, 0.34, 0.32, 1.0), hair=(0.82, 0.82, 0.80, 1.0), arms="front", stoop=0.12)
-    make_box("Garden_Trough", (hx, hy, hz + 0.06), (0.70, 0.26, 0.20), (0.56, 0.36, 0.24, 1.0))
-    make_box("Garden_Trough_Soil", (hx, hy, hz + 0.165), (0.66, 0.22, 0.01), (0.30, 0.22, 0.16, 1.0))
+    # (on his hands, not round them: 2026-10-30)
+    make_box("Garden_Trough", (hx, hy, hz + 0.19), (0.70, 0.26, 0.20), (0.56, 0.36, 0.24, 1.0))
+    make_box("Garden_Trough_Soil", (hx, hy, hz + 0.295), (0.66, 0.22, 0.01), (0.30, 0.22, 0.16, 1.0))
     for k in range(4):
-        make_blob(f"Garden_Trough_Plant_{k}", (hx - 0.24 + k * 0.16, hy, hz + 0.26), 0.07, (0.34, 0.56, 0.28, 1.0), noise=0.2, seed=k, squash=0.9)
+        make_blob(f"Garden_Trough_Plant_{k}", (hx - 0.24 + k * 0.16, hy, hz + 0.39), 0.07, (0.34, 0.56, 0.28, 1.0), noise=0.2, seed=k, squash=0.9)
     make_box("Hall_Doormat", (40.95, 12.0, 0.008), (0.40, 0.70, 0.01), (0.40, 0.34, 0.24, 1.0))
 
 

@@ -240,8 +240,8 @@ def build_garage_2026_10():
         z = 1.50 + 0.035 + 0.5 * (k // 3) + 0.0
         make_box(f"Lumber_Board_{k}", (ex - 0.08 - (k % 3) * 0.10, 2.5, z + (0.0 if k < 3 else 0.0)), (0.09, 3.2 - 0.3 * (k % 2), 0.03),
                  (0.74, 0.60, 0.42, 1.0))
-    make_cyl("Shop_Vac", (-12.70, 6.45, 0.25), 0.22, 0.50, (0.86, 0.66, 0.20, 1.0), segments=14)
-    make_cyl("Shop_Vac_Lid", (-12.70, 6.45, 0.53), 0.20, 0.06, (0.16, 0.16, 0.18, 1.0), segments=14)
+    make_cyl("Shop_Vac", (-12.70, 0.75, 0.25), 0.22, 0.50, (0.86, 0.66, 0.20, 1.0), segments=14)
+    make_cyl("Shop_Vac_Lid", (-12.70, 0.75, 0.53), 0.20, 0.06, (0.16, 0.16, 0.18, 1.0), segments=14)
     # a saw and a hammer on the pegboard
     pz = 7.0 - 0.135
     make_box("Pegboard_Saw_Blade", (bx - 0.9, pz, 1.30), (0.50, 0.01, 0.12), (0.72, 0.72, 0.74, 1.0))

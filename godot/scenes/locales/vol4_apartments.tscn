@@ -395,7 +395,7 @@ metadata/fov = 38.0
 ; "an elderly man was walking their way with a garden trough in his hand"
 [node name="shot_insert_trough__chess_hallway" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(41.550, 1.550, -9.600)
-rotation = Vector3(-0.3486, -0.1326, 0.0)
+rotation = Vector3(-0.1752, -0.1316, 0.0)
 metadata/fov = 40.0
 [node name="shot_insert_elevator__chess_hallway" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(41.950, 1.350, -1.750)

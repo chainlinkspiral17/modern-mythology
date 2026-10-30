@@ -139,7 +139,7 @@ def build_river():
     RX = 3000.0
     make_box("River_Water", (RX, -200.0, -0.05), (700.0, 1100.0, 0.1), RIVER)
     # "a fluorescent kind of bright": the flat water at the toll and on to the drugstore
-    make_box("River_Bright", (RX, 150.0, 0.005), (30.0, 110.0, 0.01), RIVER_BRIGHT)
+    make_box("River_Water_Bright", (RX, 150.0, 0.005), (30.0, 110.0, 0.01), RIVER_BRIGHT)
     # the shores come in only where the things go by (y -60..280)
     for sg, bx in ((1, RX + 20.0), (-1, RX - 22.0)):
         make_box(f"Shore_{'E' if sg > 0 else 'W'}", (bx + sg * 30.0, 110.0, 0.2), (60.0, 340.0, 0.6), (0.16, 0.18, 0.14, 1.0))
@@ -149,11 +149,12 @@ def build_river():
         make_cyl(f"RiverLamp_Stock_{k}", (RX + 21.5, py, 3.6), 0.07, 7.0, (0.24, 0.24, 0.26, 1.0), segments=6)
         make_box(f"RiverLamp_Stock_{k}_Head", (RX + 20.7, py, 7.05), (1.6, 0.30, 0.16), (1.0, 0.86, 0.56, 1.0))
     # "A strip mall."
-    make_box("StripMall", (RX + 36.0, 25.0, 2.4), (14.0, 46.0, 4.8), (0.66, 0.60, 0.52, 1.0))
-    make_box("StripMall_Canopy", (RX + 28.0, 25.0, 3.6), (2.4, 46.0, 0.24), (0.30, 0.28, 0.30, 1.0))
+    # on the bank (its top is at 0.5), 2026-10-30
+    make_box("StripMall", (RX + 36.0, 25.0, 2.9), (14.0, 46.0, 4.8), (0.66, 0.60, 0.52, 1.0))
+    make_box("StripMall_Canopy", (RX + 28.0, 25.0, 4.1), (2.4, 46.0, 0.24), (0.30, 0.28, 0.30, 1.0))
     for k in range(5):
-        make_box(f"StripMall_Window_{k}", (RX + 28.95, 7.0 + k * 9.0, 1.4), (0.04, 6.4, 2.2), (0.96, 0.86, 0.60, 1.0))
-        make_box(f"StripMall_Sign_{k}", (RX + 28.92, 7.0 + k * 9.0, 3.1), (0.04, 5.0, 0.6), ((0.86, 0.30, 0.30, 1.0), (0.30, 0.60, 0.86, 1.0), (0.90, 0.80, 0.30, 1.0), (0.40, 0.80, 0.50, 1.0), (0.80, 0.50, 0.80, 1.0))[k])
+        make_box(f"StripMall_Window_{k}", (RX + 28.95, 7.0 + k * 9.0, 1.9), (0.04, 6.4, 2.2), (0.96, 0.86, 0.60, 1.0))
+        make_box(f"StripMall_Sign_{k}", (RX + 28.92, 7.0 + k * 9.0, 3.6), (0.04, 5.0, 0.6), ((0.86, 0.30, 0.30, 1.0), (0.30, 0.60, 0.86, 1.0), (0.90, 0.80, 0.30, 1.0), (0.40, 0.80, 0.50, 1.0), (0.80, 0.50, 0.80, 1.0))[k])
     # the figure on the bank, hailing a cab
     _figure("Hitchhiker", RX + 20.8, 52.0, 0.5, (0.36, 0.36, 0.40, 1.0))
     make_rot_box("Hitchhiker_Arm", (RX + 20.6, 52.0, 2.1), (0.10, 0.10, 0.70), (0.36, 0.36, 0.40, 1.0), pitch=-0.5)
@@ -162,7 +163,7 @@ def build_river():
     make_box("Diamond_Grass", (dx, dy, 0.52), (46.0, 46.0, 0.04), (0.28, 0.46, 0.24, 1.0))
     make_rot_box("Diamond_Infield", (dx - 10.0, dy, 0.545), (17.0, 17.0, 0.02), (0.56, 0.40, 0.28, 1.0), yaw=math.pi / 4)
     make_rot_box("Diamond_InfieldGrass", (dx - 10.0, dy, 0.556), (11.0, 11.0, 0.02), (0.30, 0.50, 0.26, 1.0), yaw=math.pi / 4)
-    for k in range(9):
+    for k in range(8):                   # (the ninth panel ran through the strip mall)
         a = -math.pi / 2 + k * math.pi / 8
         make_box(f"Diamond_Fence_{k}", (dx - 10.0 + 30.0 * math.cos(a) * 0.0 + 26.0 * math.cos(a + math.pi), dy + 26.0 * math.sin(a + math.pi), 1.3),
                  (0.06, 9.0, 1.6), (0.46, 0.48, 0.48, 1.0))
@@ -206,8 +207,8 @@ def build_river():
         make_box(f"{tag}_Wake", (RX, jy + (-4.5 if heading == "N" else 4.5), 0.01), (2.4, 4.0, 0.01), (0.26, 0.34, 0.40, 1.0))
     # far south, the bank coming back: Club #, a door with the lights low
     make_box("FarBank_S", (RX, -660.0, 0.2), (700.0, 30.0, 0.6), (0.12, 0.13, 0.12, 1.0))
-    make_box("Club_Building", (RX, -652.0, 3.5), (14.0, 10.0, 7.0), (0.14, 0.13, 0.16, 1.0))
-    make_box("Club_Doorway_Glow", (RX, -646.96, 1.2), (1.2, 0.04, 2.2), (1.0, 0.82, 0.56, 1.0))
+    make_box("Club_Building", (RX, -652.0, 4.0), (14.0, 10.0, 7.0), (0.14, 0.13, 0.16, 1.0))
+    make_box("Club_Doorway_Glow", (RX, -646.96, 1.7), (1.2, 0.04, 2.2), (1.0, 0.82, 0.56, 1.0))
     # (2026-10-30, the turn's draft 2: the frame was a car on a flat purple
     # plain) "Out in the middle of the river it's very quiet. There's no shore
     # on either side." / "Then it's just a bright smudge, then a star." /

@@ -152,8 +152,10 @@ def build_gate_night_2026_10():
     for i, z in enumerate((3.4, 7.2, 10.6, 13.4)):
         a = -math.pi / 2.0 + (0.55 if i % 2 else -0.55)
         x, y = (R_OUT + 0.01) * math.cos(a), (R_OUT + 0.01) * math.sin(a)
-        make_rot_box(f"Tower_Slit_{i}_Frame", (x, y, z), (0.04, 0.38, 0.86), (0.22, 0.21, 0.20, 1.0), yaw=a)
-        x2, y2 = (R_OUT + 0.03) * math.cos(a), (R_OUT + 0.03) * math.sin(a)
+        # (2026-10-30: the dark frame went — on a curved wall the overlap gate
+        # tests each stone segment as an axis-aligned box, and every frame
+        # "clipped" it; the outline pass draws the slit's edge anyway)
+        x2, y2 = (R_OUT + 0.02) * math.cos(a), (R_OUT + 0.02) * math.sin(a)
         make_rot_box(f"Tower_Slit_{i}_Glow", (x2, y2, z), (0.02, 0.24, 0.70), (1.0, 0.84, 0.56, 1.0), yaw=a)
     # the door, ajar into the bore
     make_rot_box("Tower_Door", (0.32, -R_IN - 0.05, 1.05), (0.95, 0.08, 2.10), (0.30, 0.22, 0.16, 1.0), yaw=0.35)
@@ -169,6 +171,8 @@ def build_gate_night_2026_10():
             continue                                       # the trail and the walkway
         if abs(y - gy) < 0.35:
             continue                                       # the fence line itself
+        if abs(x) < 3.4 and y < gy - 1.0:
+            continue                                       # the trail's brush owns the trail's edges
         r = 0.16 + 0.05 * (k % 4)
         col = ((0.26, 0.32, 0.20, 1.0), (0.34, 0.36, 0.24, 1.0), (0.30, 0.24, 0.28, 1.0))[k % 3]
         make_blob(f"Headland_Tuft_Stock_{k}", (x, y, r * 0.35), r, col, noise=0.4, seed=100 + k, squash=0.7)
