@@ -4629,9 +4629,10 @@ const CAMERA_PRESETS := {
 		# (pass 168, directing vol 3 ch8) "there is Aaron hunched by the computer, typing, not
 		# looking up" / "He goes into Steven's room, finds the computer on, sits down": the desk
 		# by the door from inside the room, the CRT lit, the hall beyond the open door
-		"camera_origin": Vector3(10.6, 1.50, -7.4),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(138.0), 0.0),
-		"fov": 62.0,
+		# (2026-10-30: 1.3 m nearer, so the worked desk and its flyers hold the frame)
+		"camera_origin": Vector3(9.9, 1.55, -6.3),
+		"camera_rotation": Vector3(-0.24, 2.420, 0.0),
+		"fov": 58.0,
 		"env": {"ambient_color": Color(0.90, 0.90, 0.86, 1), "ambient_energy": 0.55, "fog_color": Color(0.80, 0.80, 0.78, 1)},
 		"suppress_input": true,
 	},
