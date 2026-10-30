@@ -104,11 +104,12 @@ def build_interview():
     make_lathe("Interview_Coffee_Pot", (tx + 0.62, ty + 0.30, top), [(0.0, 0.0), (0.075, 0.0), (0.085, 0.08), (0.06, 0.16), (0.05, 0.19), (0.0, 0.19)],
                (0.28, 0.18, 0.12, 0.85), segments=12)
     make_box("Interview_Coffee_Pot_Handle", (tx + 0.62, ty + 0.40, top + 0.10), (0.03, 0.04, 0.10), (0.10, 0.10, 0.10, 1.0))
-    # the coffee cart in the NE corner: the machine the pot came from
-    make_box("Coffee_Cart", (3.9, 3.55, 0.40), (0.70, 0.45, 0.80), (0.40, 0.42, 0.44, 1.0))
-    make_box("Coffee_Maker", (3.8, 3.6, 0.96), (0.24, 0.26, 0.32), (0.86, 0.84, 0.78, 1.0))
-    make_box("Coffee_Maker_Plate", (3.8, 3.48, 0.81), (0.16, 0.16, 0.01), (0.12, 0.12, 0.12, 1.0))
-    make_box("Coffee_Cup_Stack", (4.1, 3.6, 0.88), (0.08, 0.08, 0.16), (0.96, 0.96, 0.94, 1.0))
+    # the coffee cart in the SE corner: the machine the pot came from
+    # (2026-10-30: in the NE corner it stood in the door's clearance)
+    make_box("Coffee_Cart", (3.9, 0.45, 0.40), (0.70, 0.45, 0.80), (0.40, 0.42, 0.44, 1.0))
+    make_box("Coffee_Maker", (3.8, 0.40, 0.96), (0.24, 0.26, 0.32), (0.86, 0.84, 0.78, 1.0))
+    make_box("Coffee_Maker_Plate", (3.8, 0.52, 0.81), (0.16, 0.16, 0.01), (0.12, 0.12, 0.12, 1.0))
+    make_box("Coffee_Cup_Stack", (4.1, 0.40, 0.88), (0.08, 0.08, 0.16), (0.96, 0.96, 0.94, 1.0))
     # the other men in the room — standing; they are scale, never faces
     make_standing_figure("Officer_By_Mirror", 0.55, 0.75, heading=math.pi * 0.25, h=1.80,
                          coat=(0.20, 0.24, 0.34, 1.0), pants=(0.18, 0.20, 0.26, 1.0), arms="folded")

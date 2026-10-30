@@ -207,7 +207,7 @@ def build_river():
     # far south, the bank coming back: Club #, a door with the lights low
     make_box("FarBank_S", (RX, -660.0, 0.2), (700.0, 30.0, 0.6), (0.12, 0.13, 0.12, 1.0))
     make_box("Club_Building", (RX, -652.0, 3.5), (14.0, 10.0, 7.0), (0.14, 0.13, 0.16, 1.0))
-    make_box("Club_Door_Light", (RX, -646.96, 1.2), (1.2, 0.04, 2.2), (1.0, 0.82, 0.56, 1.0))
+    make_box("Club_Doorway_Glow", (RX, -646.96, 1.2), (1.2, 0.04, 2.2), (1.0, 0.82, 0.56, 1.0))
     # (2026-10-30, the turn's draft 2: the frame was a car on a flat purple
     # plain) "Out in the middle of the river it's very quiet. There's no shore
     # on either side." / "Then it's just a bright smudge, then a star." /

@@ -368,7 +368,7 @@ def build_jacob_house():
     make_box("Jacob_Mailbox_Post", (jx - 4.2, -8.0, 0.55), (0.08, 0.08, 1.10), (0.30, 0.24, 0.18, 1.0))
     make_box("Jacob_Mailbox", (jx - 4.2, -8.0, 1.16), (0.20, 0.46, 0.22), (0.24, 0.26, 0.28, 1.0))
     make_box("Jacob_Porch_Light", (jx - 0.55, -0.05, 2.05), (0.14, 0.10, 0.22), (0.96, 0.88, 0.64, 1.0))
-    make_cyl("Jacob_Butt_Can", (jx - 0.75, -0.35, 0.25), 0.07, 0.15, (0.62, 0.56, 0.30, 1.0), segments=10)
+    make_cyl("Jacob_Butt_Can", (jx + 0.10, -0.35, 0.25), 0.07, 0.15, (0.62, 0.56, 0.30, 1.0), segments=10)
     for s_ in (-1, 1):
         make_box(f"Jacob_Stoop_Rail_{s_:+d}", (jx - 1.2 + s_ * 0.68, -0.6, 0.62), (0.04, 1.1, 0.04), (0.20, 0.20, 0.22, 1.0))
 

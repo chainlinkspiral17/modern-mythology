@@ -2067,9 +2067,17 @@ def build_emperor_props():
     # Dean's note + the hundred, Table 14 (main deck)
     make_box("Dean_Note", (0.15, -3.42, 3.264), (0.10, 0.07, 0.004), (0.90, 0.88, 0.80, 1.0))
     make_box("Dean_Hundred", (0.15, -3.42, 3.269), (0.156, 0.066, 0.003), (0.62, 0.66, 0.54, 1.0))
-    # The office door at the helm's south partition
-    make_box("Helm_Office_Door", (2.2, -2.95, 6.10), (0.86, 0.06, 1.98), (0.34, 0.24, 0.16, 1.0))
-    make_cyl("Helm_Office_Knob", (2.52, -2.90, 6.05), 0.03, 0.04, brass, axis='Y', segments=8)
+    # The office door at the helm's south partition — in its W half (2026-10-30:
+    # in the E half the outside stair came up through its clearance)
+    make_box("Helm_Office_Door", (-2.2, -2.95, 6.10), (0.86, 0.06, 1.98), (0.34, 0.24, 0.16, 1.0))
+    make_cyl("Helm_Office_Knob", (-1.88, -2.90, 6.05), 0.03, 0.04, brass, axis='Y', segments=8)
+    # its casing and two raised panels, so the door reads against the
+    # partition's same dark wood (2026-10-30)
+    for i, x in enumerate((-2.67, -1.73)):
+        make_box(f"Helm_Office_Door_Casing_{i}", (x, -2.905, 6.11), (0.08, 0.03, 2.04), (0.52, 0.38, 0.24, 1.0))
+    make_box("Helm_Office_Door_Casing_Head", (-2.2, -2.905, 7.15), (1.02, 0.03, 0.08), (0.52, 0.38, 0.24, 1.0))
+    for i, z in enumerate((5.62, 6.56)):
+        make_box(f"Helm_Office_Door_Panel_{i}", (-2.2, -2.91, z), (0.60, 0.012, 0.74), (0.44, 0.32, 0.21, 1.0))
     # The photograph on the wall OPPOSITE the desk (north partition). The
     # frame is Helm_WallFrame_* (2026-10-19) so the hero art's hide rule for
     # Helm_WifePhoto_Wall leaves it standing.
@@ -2079,10 +2087,11 @@ def build_emperor_props():
     # door, on the south partition: Sammy knocks at the office door and
     # Dean leaves by the side door, and the corner had no fixture — the
     # door insert rendered as a dark wall. Practical_Helm_DoorSconce
-    # (riverboat_interior.tscn) is its light.
-    make_box("Helm_DoorSconce_Plate", (2.88, -2.96, 6.95), (0.10, 0.02, 0.16), brass)
-    make_box("Helm_DoorSconce_Arm", (2.88, -2.91, 6.95), (0.02, 0.08, 0.02), brass)
-    make_cyl("Helm_DoorSconce_Shade", (2.88, -2.84, 6.93), 0.06, 0.10, (0.92, 0.70, 0.40, 1.0), segments=10)
+    # (riverboat_interior.tscn) is its light. (2026-10-30: it went W with the
+    # office door.)
+    make_box("Helm_DoorSconce_Plate", (-2.88, -2.96, 6.95), (0.10, 0.02, 0.16), brass)
+    make_box("Helm_DoorSconce_Arm", (-2.88, -2.91, 6.95), (0.02, 0.08, 0.02), brass)
+    make_cyl("Helm_DoorSconce_Shade", (-2.88, -2.84, 6.93), 0.06, 0.10, (0.92, 0.70, 0.40, 1.0), segments=10)
     # (2026-10-29) The two things ch4 names at the desk that were not on it:
     # "He still received them [the papers]. He used them, mostly, to wrap
     # fish." — the week's papers, folded and unread, at the desk's west

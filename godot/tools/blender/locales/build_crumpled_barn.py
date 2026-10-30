@@ -283,7 +283,7 @@ def build_bay_2026_10():
     for i, dx in enumerate((-1.125, -0.775)):
         make_box(f"Bay_Door_Crack_{i}", (dx, gy + 0.004, 1.25), (0.03, 0.006, 2.40), COL_GAP_DAY)
     make_box("Bay_Door_Header", (-1.2, gy + 0.05, 2.53), (1.80, 0.08, 0.10), COL_FRAME)
-    make_rot_box("Bay_Door_Brace", (-0.95, gy + 0.05, 1.25), (0.10, 0.03, 2.2), COL_FRAME, pitch=-0.42)
+    make_rot_box("Bay_Boarded_Brace", (-0.95, gy + 0.05, 1.25), (0.10, 0.03, 2.2), COL_FRAME, pitch=-0.42)
     # -- Jiggles' cabinet (Cab_* in build_interior: x -2.15..-1.45, front y 9.40) --
     cbx, cfy = -1.8, 9.40
     make_box("Cab_Marquee", (cbx, cfy - 0.02, 2.02), (0.70, 0.04, 0.24), (0.66, 0.56, 0.38, 1.0))

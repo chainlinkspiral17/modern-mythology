@@ -211,7 +211,7 @@ shadow_enabled = false
 
 ; HELM · the sconce between the office door and the side door (2026-10-29)
 [node name="Practical_Helm_DoorSconce" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88, 6.9, 2.72)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88, 6.9, 2.72)
 light_color = Color(1, 0.78, 0.5, 1)
 light_energy = 2.2
 omni_range = 3.6
@@ -606,5 +606,5 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__riverboat_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 6.700, 0.600)
-rotation = Vector3(-0.1950, -2.1740, 0.0)
+rotation = Vector3(0.0080, 2.1811, 0.0)
 metadata/fov = 50.0
