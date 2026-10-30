@@ -19,12 +19,13 @@ def _seed_of(prefix):
 
 
 def make_conifer(prefix, px, py, h, foliage_col, trunk_col,
-                 skirt=0.30):
+                 skirt=0.30, z0=0.0):
     """Spruce/Sitka: tapered trunk + three stacked CONES, each a
     touch off-axis so the tree isn't a lathe object. `skirt` is the
-    bottom cone's radius as a fraction of height."""
+    bottom cone's radius as a fraction of height. `z0` is the ground under
+    it (2026-10-30: a gorge floor, a slope)."""
     s = _seed_of(prefix)
-    make_taper_cyl(f"{prefix}_Trunk", (px, py, h * 0.22),
+    make_taper_cyl(f"{prefix}_Trunk", (px, py, z0 + h * 0.22),
                    0.10 * h * 0.14 + 0.10, 0.05, h * 0.44,
                    trunk_col, segments=7)
     # DETAIL DRAFT 4 (2026-09-06): five tiers, each a touch off-axis,
@@ -39,10 +40,10 @@ def make_conifer(prefix, px, py, h, foliage_col, trunk_col,
         rj = 1.0 + ((s >> (ti * 2 + 1)) % 3 - 1) * 0.07
         make_taper_cyl(f"{prefix}_C{ti}",
                        (px + jx, py + jy,
-                        h * base_f + h * h_f * 0.5),
+                        z0 + h * base_f + h * h_f * 0.5),
                        h * skirt * r_f * rj, 0.0, h * h_f,
                        foliage_col if ti % 2 == 0 else dark, segments=8 + (ti == 0) * 2)
-    make_taper_cyl(f"{prefix}_Leader", (px, py, h * 1.04 + 0.02), 0.05, 0.0, h * 0.08,
+    make_taper_cyl(f"{prefix}_Leader", (px, py, z0 + h * 1.04 + 0.02), 0.05, 0.0, h * 0.08,
                    dark, segments=5)
 
 

@@ -70,7 +70,7 @@ COL_SKY = (0.66, 0.76, 0.84, 1.0)
 
 
 def build_ground():
-    make_box("Grass_Base", (1.0, 8.0, 0.0), (28.0, 22.0, 0.05), COL_GRASS)
+    make_box("Grass_Base", (1.0, 6.4, 0.0), (28.0, 18.8, 0.05), COL_GRASS)   # to the bluff edge, y 15.8 (2026-10-30)
     # Parking lot, x ∈ [-8, 4], y ∈ [0, 6] — "grey-going-on-green
     # where the moss has the upper hand"
     make_box("Lot", (-2.0, 3.0, 0.02), (12.0, 6.0, 0.05), COL_ASPHALT)
@@ -182,23 +182,10 @@ def build_overlook():
     # 3.5 cm over it on a ribbon the support gate reads as cloth)
     make_box("Ribbon", (10.2, 15.40, 1.16), (0.05, 0.03, 0.25), COL_RIBBON)
     make_box("Key_707", (10.2, 15.40, 0.985), (0.045, 0.02, 0.10), COL_KEY)
-    # THE FALLS, right below the bluff: stage one — the long shallow
-    # tilted shelf, water spreading white at the lip
-    make_box("Falls_Shelf", (9.5, 16.8, 0.9), (5.5, 2.6, 0.14), COL_WATER_SHELF)
-    make_box("Falls_Lip", (9.5, 15.6, 1.05), (5.0, 0.35, 0.10), COL_FALLS)
-    # The feather on the wet shelf ("long and grey, with a white tip")
-    # on the shelf (2026-09-23: 2 cm over the water)
-    make_box("Feather", (8.4, 16.3, 0.98), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0))
-    make_box("Feather_Tip", (8.60, 16.3, 0.985), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0))
-    # Stage two — the column dropping out of sight below the shelf
-    make_box("Falls_Column", (9.5, 18.3, -1.6), (2.6, 0.4, 5.4), COL_FALLS)
-    make_box("Falls_Column_Core", (9.5, 18.25, -1.2), (1.4, 0.3, 4.6), (0.94, 0.96, 0.96, 1.0))
-    # Mist coming up the column, warmer than the air at the railing
-    make_box("Falls_Mist_Lo", (9.5, 17.6, 0.9), (3.6, 1.2, 1.8), COL_MIST)
-    make_box("Falls_Mist_Hi", (9.5, 17.2, 2.2), (2.4, 0.9, 1.2), COL_MIST)
-    # The gorge walls the third stage vanishes between
-    make_box("Gorge_W", (6.0, 18.5, -0.8), (2.0, 3.0, 4.4), COL_BASALT)
-    make_box("Gorge_E", (13.0, 18.5, -0.8), (2.0, 3.0, 4.4), COL_BASALT)
+    # (2026-10-30, draft 2: the falls, the mist and the gorge are
+    # build_gorge_2026_10's. They were boxes on FLAT ground — the shelf a
+    # slab 0.9 m above the lot, the mist two translucent boxes that read as
+    # a glass case standing past the rail, the column sunk into a field.)
 
 
 def build_picnic():
@@ -255,18 +242,16 @@ def build_minivan():
 
 
 def build_pines():
-    """Scattered pines: trunk + three shrinking canopy tiers."""
+    """Scattered pines (2026-10-30: real conifers; they were three stacked
+    boxes on a stick)."""
+    from _props.trees import make_conifer
     spots = [(-10.5, 7.5), (-12.2, 16.2), (-6.5, 15.5), (-1.0, 12.0),
-             (1.5, 10.5), (3.5, 13.0), (5.0, 16.5), (11.5, 9.0),
+             (1.5, 10.5), (3.5, 13.0), (3.6, 15.2), (11.5, 9.0),
              (12.5, 12.5), (-11.5, 3.0), (13.0, 4.5), (10.5, 6.5),
-             (2.0, 16.0), (-3.0, 15.8)]
+             (2.0, 15.4), (-3.0, 15.4)]
     for i, (px, py) in enumerate(spots):
-        h = 3.2 + 0.9 * ((i * 7) % 4)
-        make_cyl(f"Pine_{i}_Trunk", (px, py, h * 0.18), 0.14, h * 0.36, COL_TRUNK, segments=6)
-        col = COL_PINE if i % 2 == 0 else COL_PINE_LT
-        make_box(f"Pine_{i}_Canopy_0", (px, py, h * 0.42), (1.9, 1.9, h * 0.30), col)
-        make_box(f"Pine_{i}_Canopy_1", (px, py, h * 0.66), (1.4, 1.4, h * 0.26), col)
-        make_box(f"Pine_{i}_Canopy_2", (px, py, h * 0.88), (0.8, 0.8, h * 0.22), col)
+        h = 6.0 + 1.6 * ((i * 7) % 4)
+        make_conifer(f"Pine_{i}", px, py, h, COL_PINE if i % 2 == 0 else COL_PINE_LT, COL_TRUNK, skirt=0.24)
 
 
 def build_valley():
@@ -295,6 +280,9 @@ def main():
         "../../../assets/3d/locales/briar_falls.glb"))
     print(f"\n[build_briar_falls] exporting to {out}")
     build_horizon_2026_08()
+    build_gorge_2026_10()
+    from _props.geometry import join_stock
+    join_stock()
     export_glb(out)
 
 
@@ -305,8 +293,13 @@ def build_horizon_2026_08():
     # GROUND under everything out past the last band (2026-08-09,
     # user: "no ground on any of the roads — a flat expanse of
     # nothing"). Locale-colored so exteriors stop sharing a void.
-    make_box("Ground_Far", (0.0, 0.0, -0.03), (1240.0, 1240.0, 0.02),
-             (0.24, 0.22, 0.18, 1.0))
+    # (2026-10-30: in four pieces around the gorge's terrain patch,
+    # x -40..60, y 15.8..75.8, which it would otherwise cap)
+    gf = (0.24, 0.22, 0.18, 1.0)
+    make_box("Ground_Far_S", (0.0, -302.1, -0.03), (1240.0, 635.8, 0.02), gf)
+    make_box("Ground_Far_N", (0.0, 347.9, -0.03), (1240.0, 544.2, 0.02), gf)
+    make_box("Ground_Far_W", (-330.0, 45.8, -0.03), (580.0, 60.0, 0.02), gf)
+    make_box("Ground_Far_E", (340.0, 45.8, -0.03), (560.0, 60.0, 0.02), gf)
     from _props.detail import make_far_bands
     make_far_bands("FarStone", COL_STONE_DK,
                    [(70.0, 80.0, 11.0, 0.86), (150.0, 130.0, 15.0, 0.68)],
@@ -314,6 +307,193 @@ def build_horizon_2026_08():
     make_far_bands("FarWood", (0.18, 0.26, 0.15),
                    [(300.0, 230.0, 14.0, 0.52), (540.0, 380.0, 18.0, 0.40)],
                    profile="treeline")
+
+
+def _terrain_mesh(name, verts_xyz, cells, col):
+    from _props.geometry import _finalize_mesh
+    used = sorted({i for c in cells for i in c})
+    remap = {o: n for n, o in enumerate(used)}
+    return _finalize_mesh(name, [verts_xyz[i] for i in used], [[remap[i] for i in c] for c in cells], col)
+
+
+def build_gorge_2026_10():
+    """DRAFT 2 of the overlook (2026-10-30). "The railing is bolted into a
+    slab of basalt at the edge of the lot, where the asphalt stops with no
+    fanfare and the bluff begins. Briar Falls drop in two stages, then a
+    third you cannot see." The land past the rail was flat; now it falls.
+
+    - the bluff: a 5 m rock face below the rail, then the first stage's
+      "long shallow" SHELF (y 17.8..30.2), tilted, the creek coming onto it
+      from the east in its own cut, "white at the lip"
+    - the second stage: the column "concentrates it and ... lets go", 26 m
+      down a basalt face into the gorge, narrowing as it falls
+    - the gorge running N, then turning W ("where the canyon turns and the
+      falls go into the woods proper"), its floor stepping down out of
+      sight; conifers on the rims and down in the woods
+    - the mist "as a slow soft column" rising straight out of the hidden
+      third stage, past the turn
+    - the feather on the wet shelf below the rail
+    Terrain: one height grid (x -40..60, y 15.8..75.8, 2 m), split by slope
+    into rock (basalt) and forest floor. Draft 3 targets: water motion as
+    streaks on the column, spray at the plunge, ferns on the ledges, a
+    trail down the far rim, the rail's view framed by the pines nearest it.
+    """
+    import math
+    from _props.geometry import make_rot_box, make_blob, make_prism
+    from _props.trees import make_conifer
+    X0, Y0, CELL, NC, NR = -40.0, 15.8, 2.0, 51, 31
+
+    SH0, SH1, SZ0, SSL = 17.8, 30.2, -5.0, 0.25      # the shelf: y from/to, top z, fall per metre
+    LIP = SZ0 - SSL * (SH1 - SH0)                     # -8.1
+
+    def shelf_z(y):
+        return SZ0 - SSL * (y - SH0)
+
+    def gorge(x, y):
+        """(floor z, half width, centre x) of the gorge at y, or None."""
+        if y < 31.0 or y > 62.0:
+            return None
+        cx = 9.5 - max(0.0, y - 38.0) * 1.1
+        hw = min(10.0, 4.5 + (y - 31.0) * 0.3)
+        fl = -34.0 - max(0.0, 9.5 - cx) * 0.45
+        return fl, hw, cx
+
+    def rim(x, y):
+        rise = max(0.0, (y - 34.0) / 41.0) * 8.0
+        n = 0.35 * math.sin(x * 0.37 + y * 0.21) * math.cos(y * 0.17 - x * 0.11)
+        if y < 21.0 and -2.0 < x < 22.0:
+            n *= 0.3
+        return rise + n
+
+    def creek_z(x):
+        return -4.7 + 0.075 * (x - 12.0)
+
+    H = []
+    for r in range(NR):
+        y = Y0 + r * CELL
+        row = []
+        for c in range(NC):
+            x = X0 + c * CELL
+            if r == 0:
+                row.append(0.0)
+                continue
+            z = rim(x, y)
+            # the first stage's shelf in its notch under the bluff
+            if y <= SH1 + 0.5:
+                d = abs(x - 9.5)
+                sz = shelf_z(min(y, SH1))
+                if d <= 4.0:
+                    z = sz
+                elif d <= 7.0:
+                    z = sz + (z - sz) * (d - 4.0) / 3.0
+            # the creek's cut from the east onto the shelf
+            if 18.5 <= y <= 25.5 and x > 12.0:
+                cz = creek_z(x)
+                dy = abs(y - 21.8)
+                if dy <= 1.2:
+                    z = min(z, cz)
+                elif dy <= 3.2:
+                    z = min(z, cz + (rim(x, y) - cz) * (dy - 1.2) / 2.0)
+            g = gorge(x, y)
+            if g:
+                fl, hw, gx = g
+                d = abs(x - gx)
+                if d <= hw:
+                    z = fl
+                elif d <= hw + 4.0:
+                    z = min(z, fl + (z - fl) * (d - hw) / 4.0)
+            row.append(round(z, 3))
+        H.append(row)
+    verts = [(X0 + c * CELL, Y0 + r * CELL, H[r][c]) for r in range(NR) for c in range(NC)]
+    rock, floor_ = [], []
+    for r in range(NR - 1):
+        for c in range(NC - 1):
+            a = r * NC + c
+            q = [a, a + 1, a + NC + 1, a + NC]
+            zs = [verts[i][2] for i in q]
+            (rock if max(zs) - min(zs) > 1.6 else floor_).append(q)
+    _terrain_mesh("Gorge_Rock", verts, rock, (0.34, 0.33, 0.33, 1.0))
+    _terrain_mesh("Gorge_Ground", verts, floor_, (0.32, 0.38, 0.24, 1.0))
+
+    def hz(x, y):
+        c = min(NC - 2, max(0, int((x - X0) / CELL)))
+        r = min(NR - 2, max(0, int((y - Y0) / CELL)))
+        fx, fy = (x - X0) / CELL - c, (y - Y0) / CELL - r
+        z00, z10, z01, z11 = H[r][c], H[r][c + 1], H[r + 1][c], H[r + 1][c + 1]
+        return (z00 * (1 - fx) + z10 * fx) * (1 - fy) + (z01 * (1 - fx) + z11 * fx) * fy
+
+    # first stage: "the water spreading and slowing along a tilted shelf"
+    slope = math.atan(SSL)
+    ym = (SH0 + SH1) / 2.0
+    L = (SH1 - SH0) / math.cos(slope)
+    make_rot_box("Falls_Shelf_Water", (9.5, ym, shelf_z(ym) + 0.07), (7.6, L, 0.04), COL_WATER_SHELF, roll=-slope)
+    for i, (sx, w, f) in enumerate(((6.6, 0.22, 0.55), (7.7, 0.40, 0.8), (8.9, 0.30, 0.9), (10.3, 0.50, 0.85),
+                                    (11.5, 0.26, 0.6), (12.3, 0.20, 0.45))):
+        sl = L * f
+        yc = SH1 - sl * math.cos(slope) / 2.0
+        make_rot_box(f"Falls_Shelf_Streak_{i}", (sx, yc, shelf_z(yc) + 0.10), (w, sl, 0.02), (0.76, 0.84, 0.86, 1.0), roll=-slope)
+    # "white at the lip": a roll of foam along the edge
+    for i in range(9):
+        make_blob(f"Falls_Lip_Foam_{i}", (6.1 + i * 0.85, SH1 - 0.1, LIP + 0.12), 0.55, COL_FALLS, noise=0.25, seed=540 + i, squash=0.45)
+    # the feather on the wet shelf below the rail ("long and grey, with a white tip")
+    fz = shelf_z(18.6) + 0.10
+    make_rot_box("Feather", (8.3, 18.6, fz), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0), roll=-slope)
+    make_rot_box("Feather_Tip", (8.5, 18.6, fz + 0.005), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0), roll=-slope)
+    # the creek in its cut, falling onto the shelf from the east
+    for i in range(6):
+        x0_, x1_ = 13.0 + i * 8.0, 21.0 + i * 8.0
+        z0_, z1_ = creek_z(x0_) + 0.12, creek_z(x1_) + 0.12
+        make_rot_box(f"Creek_Water_{i}", ((x0_ + x1_) / 2.0, 21.8, (z0_ + z1_) / 2.0),
+                     (math.hypot(8.0, z1_ - z0_), 2.0, 0.04), COL_WATER_SHELF, pitch=-math.atan((z1_ - z0_) / 8.0))
+        make_blob(f"Creek_Rock_{i}", (16.0 + i * 8.0, 21.8 + (0.9 if i % 2 else -0.9), creek_z(16.0 + i * 8.0) + 0.05),
+                  0.5 + 0.1 * (i % 3), (0.36, 0.36, 0.36, 1.0), noise=0.3, seed=500 + i, squash=0.6)
+    make_rot_box("Creek_Spill", (12.4, 21.8, (creek_z(12.6) + shelf_z(21.8)) / 2.0 + 0.1), (1.0, 2.0, 0.04), COL_FALLS,
+                 pitch=-math.atan(0.4))
+    # second stage: "takes the volume and concentrates it and the water
+    # remembers what it is and lets go" — a sheet narrowing as it drops
+    bot = -34.0
+    hgt = LIP - bot
+    make_prism("Falls_Column", (9.5, SH1 + 0.45, (LIP + bot) / 2.0),
+               [(-3.6, hgt / 2.0), (-1.1, -hgt / 2.0), (1.1, -hgt / 2.0), (3.6, hgt / 2.0)], 0.7, COL_FALLS, axis="Y")
+    make_prism("Falls_Column_Core", (9.5, SH1 + 0.85, (LIP + bot) / 2.0 - 0.2),
+               [(-1.8, hgt / 2.0 - 0.4), (-0.6, -hgt / 2.0), (0.6, -hgt / 2.0), (1.8, hgt / 2.0 - 0.4)], 0.3,
+               (0.97, 0.98, 0.98, 1.0), axis="Y")
+    for k in range(4):
+        make_blob(f"Falls_Plunge_Spray_{k}", (9.5 + (k - 1.5) * 1.6, SH1 + 2.0, bot + 1.0 + (k % 2) * 1.2), 2.4,
+                  (0.92, 0.93, 0.93, 0.35), noise=0.3, seed=531 + k, squash=0.6)
+    for i in range(8):
+        y = 34.0 + i * 4.0
+        g = gorge(9.5, y)
+        if not g:
+            continue
+        fl, hw, gx = g
+        make_box(f"Gorge_Stream_{i}", (gx, y, fl + 0.06), (min(3.0, hw), 4.2, 0.05), COL_WATER_SHELF)
+    # the third stage's mist: "a slow soft column, and the column does not
+    # move with the wind" — many soft overlapping puffs, straight up
+    for k in range(14):
+        make_blob(f"Falls_Mist_Column_{k}", (3.0 + 1.1 * math.sin(k * 1.7), 43.0 + 0.9 * math.cos(k * 1.3), -32.0 + k * 3.2),
+                  5.6 - 0.10 * k, (0.92, 0.92, 0.90, 0.07), noise=0.35, seed=560 + k, squash=1.1)
+    # conifers on the rims and down in the woods (one joined mesh: _Stock_)
+    import random
+    rnd = random.Random(1707)
+    n = 0
+    for _ in range(420):
+        x = rnd.uniform(-38.0, 58.0)
+        y = rnd.uniform(24.0, 74.0)
+        z = hz(x, y)
+        zs = [hz(x + dx, y + dy) for dx, dy in ((1.5, 0), (-1.5, 0), (0, 1.5), (0, -1.5))]
+        if max(zs) - min(zs) > 1.4:
+            continue                                # not on the rock faces
+        if abs(x - 9.5) < 7.0 and y < 40.0:
+            continue                                # keep the column and the pool clear
+        if abs(x - 3.0) < 6.0 and y > 38.0 and z < -10.0:
+            continue                                # the mist's own hole in the woods
+        h = rnd.uniform(9.0, 17.0)
+        make_conifer(f"GorgePine_Stock_{n}", x, y, h, COL_PINE if n % 2 else COL_PINE_LT, COL_TRUNK,
+                     skirt=0.22, z0=z - 0.05)
+        n += 1
+        if n >= 140:
+            break
 
 
 if __name__ == "__main__":

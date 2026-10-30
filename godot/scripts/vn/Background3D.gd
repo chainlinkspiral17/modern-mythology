@@ -5019,8 +5019,11 @@ const CAMERA_PRESETS := {
 		# On the basalt slab at the rail: the first-stage shelf and
 		# the column dropping out of sight below, mist rising, the
 		# ribbon + 707 key on the top rail frame-right, ridges beyond.
-		"camera_origin": Vector3(9.2, 1.75, -13.8),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(0.0), 0.0),
+		# (2026-10-30, draft 2: the land past the rail falls away now — the
+		# camera looks down over the rail onto the shelf, the lip and the
+		# column, the gorge and the mist column beyond)
+		"camera_origin": Vector3(9.0, 1.82, -15.0),
+		"camera_rotation": Vector3(-0.33, deg_to_rad(4.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},

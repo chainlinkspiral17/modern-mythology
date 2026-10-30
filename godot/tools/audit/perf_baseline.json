@@ -27,6 +27,11 @@
   "prims": 29064,
   "objects": 256
  },
+ "briar_falls": {
+  "draw": 128,
+  "prims": 52056,
+  "objects": 298
+ },
  "bus_station": {
   "draw": 80,
   "prims": 19652,
