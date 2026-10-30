@@ -3938,7 +3938,27 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
       - The camera is at the back seat's middle.
       - Next: the old dash (sweep speedo, push-button radio); hair capping the backs of the heads; the street in motion.
     - **Doorway gate:** vol3_rooms is at 0 (the Oregon chair and the coast bath's toilet moved). All of thread B's locales are BLOCKED 0.
-    - **Not done:** the dead_store roof vantage. `vol4_story_map_of_the_city.json` node 22 is a choice jumping to 23 and 25 BY INDEX, so a bg insert before 25 needs every index reference renumbered. It needs a scene-editing step that renumbers.
+  - **ROUND 3 (5 commits):**
+    - **dead_store_roof (NEW preset):**
+      - "We climb to the sky, broken and pink. King runs to the edge of the roof".
+      - The parapet, the stair bulkhead with its door hung open, dead HVAC units, a smashed skylight.
+      - King as a small figure with a gold paper crown.
+      - Leaning, fused and collapsed towers all round, under a pink sky and a low sun.
+      - Cut in at node 25 with `tools/vn_insert_node.py`.
+      - Next: the "broken" sky as a shader, the street's crowds below, King's hoot as a pose.
+    - **vehicle_cab_judgement_day:**
+      - The truck's modern dash parts no longer build in Faust's car.
+      - An older dash: sweep speedo, push-button radio, ashtray, heat sliders.
+      - Next: a vantage that SHOWS the dash (the back-seat camera sits below it).
+    - **Seated figures:** a hair cap on the back of the head, so heads seen from behind stop reading as faces.
+    - **dean_tower_corridor:** wired-glass sidelights lit blue by the screens within. Next: one door ajar.
+    - **little_league d5:** base coaches in both boxes, per state.
+    - **farm_porch_night:** a bare bulb under the porch roof; the moon 0.45 → 0.8 so the yard reads. Next: siding on the gables.
+    - **vn_insert_node fix:** the first version bumped a goto AT the index too, so "climb." skipped the cut. Now only gotos past the index are bumped; beats still follow their line.
+    - **Not done:**
+      - King's crown insert: the lines play inside the store, where King is a portrait.
+      - Briar Falls' water: the column barely shows in any frame without a side vantage.
+    - **Earlier gap, the dead_store roof vantage:** `vol4_story_map_of_the_city.json` node 22 is a choice jumping to 23 and 25 BY INDEX, so a bg insert before 25 needs every index reference renumbered. It needs a scene-editing step that renumbers.
   - **Shared helpers:**
     - `_props/figures.py` arms "up" / "up_r".
     - `_props/trees.py` `make_conifer(z0=)`.
