@@ -3887,7 +3887,9 @@ The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped throu
 - **Edit station (vol 3 ch4), draft 2:**
   - Draws on the text's "We capture impressions with Polaroid cameras", "he prints t-shirts and stickers", and "writing and planning".
   - The Polaroids are pinned over the desk, with the camera on it. There is a planning whiteboard, a box of printed shirts, and the cables.
-- **Render-checked and fine as they stand:** hospital_waiting, small_wood_high_gym, small_wood_high_class, ranch_bedroom_night, vehicle_cab_night, club_street_curb, cave_dawn, ron_night_floor, dabney_game_room, lax_gate.
+- **Charlie's flat by day (vol 4 Sister Carrie):** it had the night frame by day, a bed in blank walls. It now has the morning frame for "walks through the apartment ... getting dressed": from beside the bed looking SE at the window, the canvases, the dresser with its pulled drawer, and the clothes on the floor.
+- **Cliffside, the sea stacks:** the jags at the cliff's foot top out 7 m below the clifftop, so no view from the grounds saw a rock. Five stacks 15–21 m tall stand 40–75 m out. One reads between the main building and the shacks; the haze pales it.
+- **Render-checked and fine as they stand:** sleep_lab_entry, dean_monitor_room, copy_shop_copier, small_wood_high_hall, nick_room ("posters hanging from the ceiling"), hospital_waiting, small_wood_high_gym, small_wood_high_class, ranch_bedroom_night, vehicle_cab_night, club_street_curb, cave_dawn, ron_night_floor, dabney_game_room, lax_gate.
 - **Draft N+1 targets:**
   - Houston: SpotLights pooling from the six banks; from `jd_river` the strip mall hides the field. Honolulu: COMPUTER GAMES lettering (Label3D), clearer shop glass, a street-side view of the towers.
   - The clinic: the campus through the blinds, an empty foreground floor, a SpotLight for the afternoon sun, and the door-glass lettering. Portland: fewer, bigger stock blocks; glass lettering (no real names); the gallery queue; the screening room.
@@ -3895,7 +3897,8 @@ The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped throu
   - The writers_desk dawn: the four folding chairs, the car at the curb with its cardboard sign, the string gone brown, and the chair off the pulled drawers. The drawer view wants the lamp's light.
   - shuttle_bench's framing: the awning post and the back panel box it in.
   - May's view: the stand post grazes her.
-  - Cliffside: the cliff edge, the jagged rocks and the surf below (the horizon is flat). Beach: the cloud deck reads as cut-outs.
+  - Cliffside: a view along the edge, so the drop and the surf show; the stacks need less haze. Beach: the cloud deck reads as cut-outs.
+  - Charlie's flat by day: the street across the S window reads dark (one facade for night and day).
   - hospital_waiting and small_wood_high_gym read; the rest of the queue continues (vehicle_cab_night, small_wood_high_class, ranch_bedroom_night).
 
 **2026-10-30 · pass 239: VOLS 1–4 backgrounds, draft 7 — the gates the suite never ran (three threads).**
