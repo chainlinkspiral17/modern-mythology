@@ -3270,9 +3270,9 @@ const CAMERA_PRESETS := {
 	"writers_desk_drawer": {
 		"scene": "res://scenes/locales/writers_desk.tscn",
 		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
-		"camera_origin": Vector3(0.40, 1.20, -3.80),
-		"camera_rotation": Vector3(-0.78, 0.40, 0.0),
-		"fov": 58.0,
+		"camera_origin": Vector3(0.30, 1.15, -4.00),
+		"camera_rotation": Vector3(-0.90, 0.47, 0.0),
+		"fov": 52.0,
 		"strip": ["Desk_Drawer_2"],
 		"suppress_input": true,
 	},
@@ -4109,11 +4109,13 @@ const CAMERA_PRESETS := {
 	"clinic_1945": {
 		"scene": "res://scenes/locales/pasadena_1945.tscn",
 		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
-		# 'Here's the clinic son' - from the door: the exam table, the glass of water, the cuff
-		"camera_origin": Vector3(201.2, 1.6, -0.8),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(-27.0), 0.0),
-		"fov": 72.0,
-		"env": {"ambient_color": Color(0.90, 0.92, 0.88, 1), "ambient_energy": 0.50, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		# 'Here's the clinic son' - from the SE corner (draft 4, 7.5 x 6 m): the
+		# exam table and its cuff, the nurse's desk with the glass of water,
+		# the campus through the west windows
+		"camera_origin": Vector3(207.0, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(46.0), 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.94, 0.90, 0.82, 1), "ambient_energy": 0.42, "fog_color": Color(0.78, 0.74, 0.68, 1)},
 		"suppress_input": true,
 	},
 	"suite_wide": {

@@ -253,7 +253,7 @@ def build_open_drawers(px, face_y, drawers):
     pull = 0.36
     _open_box("DrawerFileOpen", px, face_y, z, dh, pull)
     rail_z = z + dh / 2.0 - 0.02
-    greens = [(0.28, 0.44, 0.28, 1.0), (0.24, 0.40, 0.26, 1.0), (0.32, 0.48, 0.30, 1.0)]
+    greens = [(0.38, 0.60, 0.36, 1.0), (0.32, 0.54, 0.34, 1.0), (0.42, 0.64, 0.40, 1.0)]   # light enough to read in the drawer's shade
     tabs_x = (-0.12, -0.04, 0.04, 0.12)
     n = 11
     for i in range(n):
