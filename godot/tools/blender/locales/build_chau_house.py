@@ -282,7 +282,7 @@ def build_hall_rooms():
     make_cyl("Bath_Sink", (bx - 0.30, 1.4, 0.875), 0.18, 0.02, (0.96, 0.96, 0.96, 1.0), segments=16)
     make_box("Bath_Mirror_Cabinet", (bx - 0.06, 1.4, 1.55), (0.12, 0.80, 0.76), (0.86, 0.86, 0.84, 1.0))
     make_rot_box("Bath_Mirror_Door", (bx - 0.30, 1.4 + 0.40 - 0.03, 1.55), (0.02, 0.06, 0.74), (0.70, 0.76, 0.80, 1.0))
-    make_box("Bath_Mirror_Door_Glass", (bx - 0.12 - 0.15, 1.4 + 0.42, 1.55), (0.30, 0.02, 0.72), (0.72, 0.78, 0.82, 1.0))
+    make_box("Bath_Mirror_Door_Glass", (bx - 0.12 - 0.15, 1.4 + 0.42, 1.55), (0.30, 0.02, 0.72), (0.84, 0.86, 0.86, 1.0))   # fogged
     for k in range(3):
         make_box(f"Bath_Razor_{k}", (bx - 0.10, 1.25 + k * 0.08, 1.30), (0.06, 0.012, 0.10), (0.30, 0.50, 0.86, 1.0))
     make_box("Bath_Cabinet_Shelf", (bx - 0.07, 1.4, 1.26), (0.10, 0.76, 0.012), (0.86, 0.86, 0.84, 1.0))
@@ -291,8 +291,9 @@ def build_hall_rooms():
         make_cyl(f"Bath_Toiletry_{k}", (bx - 0.45, 0.95 + k * 0.10, 0.94), 0.025, 0.14, ((0.40, 0.70, 0.86, 1.0), (0.90, 0.86, 0.70, 1.0))[k % 2],
                  segments=8)
     make_box("Shower_Base", (X1 - 0.10 - 0.55, 3.6 - 0.07 - 0.55, 0.05), (1.1, 1.1, 0.10), (0.94, 0.94, 0.94, 1.0))
-    make_box("Shower_Glass_S", (X1 - 0.10 - 0.55, 3.6 - 0.07 - 1.10, 1.05), (1.1, 0.02, 1.90), (0.80, 0.86, 0.88, 1.0))
-    make_box("Shower_Glass_W", (X1 - 0.10 - 1.10, 3.6 - 0.07 - 0.55, 1.05), (0.02, 1.1, 1.90), (0.80, 0.86, 0.88, 1.0))
+    # (2026-10-30: alpha 1.0 made the stall a white fridge in the frame)
+    make_box("Shower_Glass_S", (X1 - 0.10 - 0.55, 3.6 - 0.07 - 1.10, 1.05), (1.1, 0.02, 1.90), (0.80, 0.86, 0.88, 0.28))
+    make_box("Shower_Glass_W", (X1 - 0.10 - 1.10, 3.6 - 0.07 - 0.55, 1.05), (0.02, 1.1, 1.90), (0.80, 0.86, 0.88, 0.28))
     make_cyl("Shower_Drain", (X1 - 0.10 - 0.55, 3.6 - 0.07 - 0.55, 0.102), 0.05, 0.004, (0.60, 0.60, 0.62, 1.0), segments=10)
     make_box("Shower_Head_Arm", (X1 - 0.18, 3.6 - 0.07 - 0.55, 1.95), (0.16, 0.025, 0.025), (0.74, 0.74, 0.76, 1.0))
     make_cyl("Shower_Head", (X1 - 0.27, 3.6 - 0.07 - 0.55, 1.93), 0.06, 0.03, (0.74, 0.74, 0.76, 1.0), segments=10)
@@ -684,6 +685,62 @@ def build_amanda():
     # (the fences are build_amanda_yard_2026_10's board fences now)
 
 
+def build_bath_2026_10():
+    """DRAFT 4 of the bath (2026-10-30), "the stranger finishing up his
+    shower": the stall's glass was opaque and stood in the frame as a white
+    fridge; nothing said steam, nothing said a man had just used the room.
+    - the stall in chrome (corner post, top rail, the door's pull), its walls
+      tiled inside, the glass glass
+    - the steam: a haze under the ceiling and in the stall (faint blobs)
+    - his "filthy clothes" on the toilet lid, his boots on the tile, the bath
+      mat askew, the aftershave and the spray-on deodorant out on the vanity
+    - the toilet as a toilet (bowl, seat, lid, tank lid) and a towel bar
+    Draft 5 targets: the razors' wrappers in the sink, water on the tile, the
+    fogged mirror's wiped streak, the vanity's drawers and pulls."""
+    sx0, sx1 = X1 - 0.10 - 1.10, X1 - 0.10            # the stall, x
+    sy0, sy1 = 3.6 - 0.07 - 1.10, 3.6 - 0.07          # and y
+    CHROME = (0.78, 0.78, 0.80, 1.0)
+    make_box("Shower_Frame_Post", (sx0, sy0, 1.05), (0.03, 0.03, 1.92), CHROME)
+    make_box("Shower_Frame_Rail_S", ((sx0 + sx1) / 2.0, sy0, 2.02), (1.10, 0.03, 0.03), CHROME)
+    make_box("Shower_Frame_Rail_W", (sx0, (sy0 + sy1) / 2.0, 2.02), (0.03, 1.10, 0.03), CHROME)
+    make_box("Shower_Door_Pull", (sx0 + 0.25, sy0 - 0.03, 1.05), (0.02, 0.03, 0.30), CHROME)
+    # tile inside the stall: joints on its E and N walls to 2.1 m
+    for k in range(9):
+        z = 0.12 + k * 0.24
+        make_box(f"Shower_Tile_Stock_E_H_{k}", (sx1 - 0.004, (sy0 + sy1) / 2.0, z), (0.006, 1.08, 0.008), (0.70, 0.72, 0.74, 1.0))
+        make_box(f"Shower_Tile_Stock_N_H_{k}", ((sx0 + sx1) / 2.0, sy1 - 0.004, z), (1.08, 0.006, 0.008), (0.70, 0.72, 0.74, 1.0))
+    for k in range(4):
+        u = 0.24 + k * 0.24
+        make_box(f"Shower_Tile_Stock_E_V_{k}", (sx1 - 0.004, sy0 + u, 1.10), (0.006, 0.008, 1.98), (0.70, 0.72, 0.74, 1.0))
+        make_box(f"Shower_Tile_Stock_N_V_{k}", (sx0 + u, sy1 - 0.004, 1.10), (0.008, 0.006, 1.98), (0.70, 0.72, 0.74, 1.0))
+    # the steam
+    for k, (x, y, z, r, a) in enumerate(((11.3, 3.0, 1.6, 0.45, 0.10), (11.2, 2.9, 2.3, 0.55, 0.08), (10.4, 2.0, 3.2, 0.9, 0.06),
+                                         (9.2, 1.6, 3.4, 1.0, 0.05), (8.4, 2.6, 3.3, 0.8, 0.04))):
+        make_blob(f"Bath_Steam_{k}", (x, y, z), r, (0.92, 0.93, 0.94, a), noise=0.08, seed=90 + k, squash=0.45, rings=7, segments=14)
+    # the toilet: a bowl that narrows, the seat and lid down, the tank's lid
+    tx, ty = 8.2, 3.6 - 0.07 - 0.36
+    make_box("Toilet_Seat_Lid", (tx, ty - 0.05, 0.415), (0.40, 0.40, 0.03), (0.94, 0.94, 0.93, 1.0))
+    make_box("Toilet_Tank_Lid", (tx, 3.6 - 0.07 - 0.11, 0.775), (0.47, 0.20, 0.03), (0.94, 0.94, 0.93, 1.0))
+    make_box("Toilet_Flush", (tx - 0.17, 3.6 - 0.07 - 0.205, 0.70), (0.06, 0.012, 0.02), CHROME)
+    # his clothes on the lid: the jeans folded over, the flannel on top
+    make_chamfer_box("Clothes_Jeans", (tx, ty - 0.07, 0.47), (0.36, 0.38, 0.08), (0.22, 0.26, 0.34, 1.0), chamfer=0.03)
+    make_chamfer_box("Clothes_Flannel", (tx + 0.02, ty - 0.09, 0.53), (0.34, 0.36, 0.05), (0.46, 0.20, 0.16, 1.0), chamfer=0.02)
+    make_rot_box("Clothes_Sleeve", (tx + 0.25, ty - 0.18, 0.30), (0.10, 0.06, 0.42), (0.46, 0.20, 0.16, 1.0), roll=0.25)
+    for k, (dx, yaw) in enumerate(((-0.10, 0.2), (0.12, -0.3))):
+        make_rot_box(f"Clothes_Boot_{k}", (8.7 + dx, 2.4 + 0.1 * k, 0.07), (0.11, 0.28, 0.14), (0.26, 0.18, 0.12, 1.0), yaw=yaw)
+    # the bath mat by the stall, kicked askew
+    make_rot_box("Bath_Mat", (sx0 - 0.50, sy0 + 0.30, 0.022), (0.55, 0.85, 0.012), (0.56, 0.66, 0.70, 1.0), yaw=0.3)
+    # the aftershave and the spray-on deodorant out on the vanity
+    vx = X1 - 0.10 - 0.42
+    make_box("Aftershave_Bottle", (vx, 1.92, 0.94), (0.06, 0.04, 0.12), (0.30, 0.46, 0.60, 1.0))
+    make_cyl("Aftershave_Cap", (vx, 1.92, 1.015), 0.015, 0.03, (0.10, 0.10, 0.10, 1.0), segments=8)
+    make_cyl("Deodorant_Can", (vx + 0.05, 0.86, 0.97), 0.026, 0.18, (0.16, 0.20, 0.30, 1.0), segments=10)
+    make_cyl("Deodorant_Cap", (vx + 0.05, 0.86, 1.075), 0.024, 0.03, (0.80, 0.80, 0.82, 1.0), segments=10)
+    # a towel bar on the bath's N wall by the door, one towel left on it
+    make_box("Towel_Bar", (9.3, 3.6 - 0.07 - 0.05, 1.20), (0.70, 0.02, 0.02), CHROME)
+    make_box("Towel_Bar_Towel", (9.3, 3.6 - 0.07 - 0.065, 0.95), (0.40, 0.03, 0.52), (0.94, 0.94, 0.92, 1.0))
+
+
 def build_game_room_2026_10():
     """DRAFT 5 of the game room (2026-10-30): the low Sunday-morning frame was
     a dark box with a table and a cabinet in it — no luxury and none of the
@@ -867,6 +924,7 @@ def main():
     build_kitchen_luxury()
     build_game_bar()
     build_game_room_2026_10()
+    build_bath_2026_10()
     build_amanda()
     build_amanda_deck()
     build_amanda_yard_2026_10()
