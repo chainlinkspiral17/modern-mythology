@@ -284,8 +284,8 @@ omni_range = 9
 ;   cottage + gate   (50, -380 / -387.8) herb bed (52.2, -379)
 ;   Minstral wreck   (38, -120)          paddlebox (42.2, -124)
 [node name="shot_insert_sinkhole" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(24.500, 2.400, 338.500)
-rotation = Vector3(-0.4434, 0.4324, 0.0)
+position = Vector3(14.000, 2.600, 352.000)
+rotation = Vector3(-0.1800, 0.0850, 0.0)
 metadata/fov = 50.0
 
 [node name="shot_insert_chalk" type="Marker3D" parent="." groups=["vn_shot"]]

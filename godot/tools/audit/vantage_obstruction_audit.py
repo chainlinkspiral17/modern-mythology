@@ -98,6 +98,8 @@ DELIBERATE_MARKERS = {
     ("hans_bakery_back_kitchen", "shot_closeup_finn__hans_bakery_back_door"),   # Finn beside his pickup: the truck is the frame
     ("miller_kitchen", "shot_closeup_bianca"),   # a seat framed across a dressed table: the runner and the bag are the frame
     ("miller_kitchen", "shot_closeup_sammy"),
+    ("small_wood_police", "shot_closeup_julie"),   # the interview across the table (vol 2 ch9): the table is the frame
+    ("small_wood_police", "shot_closeup_james"),
     ("cabin_interior", "shot_closeup_marina"),   # Marina under the blanket in the loft: the blanket is the frame
     ("vehicle_cab", "shot_insert_map"),   # the glove box from the driver's eye: the dash is the frame
     ("nate_garage", "shot_closeup_walt__nate_driveway"),   # Walt at the side door: the house is the frame
