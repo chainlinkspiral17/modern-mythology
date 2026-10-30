@@ -376,9 +376,23 @@ def build_game_room():
     # the liquor cabinet on the W wall, open, bottles out on its top
     lx = X0 + 0.10 + 0.25
     make_box("Liquor_Cabinet", (lx, 11.5, 0.70), (0.50, 1.40, 1.40), (0.30, 0.18, 0.12, 1.0))
+    # (2026-10-30: bottles, not tubes — shoulder, neck, cap, a label;
+    # two of them down to the dregs, one empty on its side)
     for k in range(6):
-        make_cyl(f"Liquor_Bottle_{k}", (lx, 11.25 + k * 0.17, 1.52), 0.04, 0.24 + (k % 3) * 0.04,
-                 ((0.50, 0.30, 0.12, 1.0), (0.80, 0.80, 0.76, 1.0), (0.20, 0.36, 0.20, 1.0))[k % 3], segments=8)
+        h = 0.20 + (k % 3) * 0.04
+        col = ((0.50, 0.30, 0.12, 1.0), (0.80, 0.80, 0.76, 1.0), (0.20, 0.36, 0.20, 1.0))[k % 3]
+        by = 11.13 + k * 0.17
+        if k == 4:
+            make_cyl(f"Liquor_Bottle_{k}", (lx + 0.05, by, 1.44), 0.04, h, col, axis='Y', segments=10)
+            make_cyl(f"Liquor_Bottle_{k}_Neck", (lx + 0.05, by + h / 2.0 + 0.04, 1.44), 0.014, 0.08, col, axis='Y', segments=8)
+            continue
+        make_cyl(f"Liquor_Bottle_{k}", (lx, by, 1.40 + h / 2.0), 0.04, h, col, segments=10)
+        make_lathe(f"Liquor_Bottle_{k}_Shoulder", (lx, by, 1.40 + h), [(0.04, 0.0), (0.016, 0.05), (0.0, 0.05)], col, segments=10)
+        make_cyl(f"Liquor_Bottle_{k}_Neck", (lx, by, 1.40 + h + 0.08), 0.014, 0.07, col, segments=8)
+        make_cyl(f"Liquor_Bottle_{k}_Cap", (lx, by, 1.40 + h + 0.125), 0.017, 0.025,
+                 ((0.70, 0.60, 0.30, 1.0), (0.12, 0.12, 0.12, 1.0), (0.60, 0.16, 0.12, 1.0))[k % 3], segments=8)
+        make_cyl(f"Liquor_Bottle_{k}_Label", (lx, by, 1.40 + h * 0.45), 0.0415, h * 0.38,
+                 ((0.90, 0.86, 0.74, 1.0), (0.10, 0.10, 0.10, 1.0), (0.86, 0.80, 0.56, 1.0))[(k + 1) % 3], segments=10)
     make_cyl("Bottle_On_Floor", (gx + 1.4, gy + 2.6, 0.04), 0.04, 0.28, (0.50, 0.30, 0.12, 1.0), axis='X', segments=8)
     make_box("Cigar_Box", (lx + 0.10, 10.95, 1.43), (0.24, 0.18, 0.06), (0.60, 0.40, 0.20, 1.0))
     make_cyl("Ashtray", (gx + 0.66, gy - 1.10, 0.875), 0.08, 0.02, (0.70, 0.70, 0.70, 1.0), segments=12)
@@ -670,6 +684,96 @@ def build_amanda():
     # (the fences are build_amanda_yard_2026_10's board fences now)
 
 
+def build_game_room_2026_10():
+    """DRAFT 5 of the game room (2026-10-30): the low Sunday-morning frame was
+    a dark box with a table and a cabinet in it — no luxury and none of the
+    night. Now:
+    - the billiard lamp over the table, three shades on a bar, left burning
+      (a practical in the .tscn)
+    - walnut wainscot and a chair rail round the N, S and W walls; a cue
+      rack on the N wall, a big framed print beside the dartboard
+    - a second club chair and a side table; a rug under them
+    - the night's leavings: bottles down on the carpet, tumblers on the rail,
+      ash on the felt, a dart on the floor, the remote, the cigar box open;
+      the TV on the jazz channel (its banner across the screen)
+    Draft 6 targets: the fern's dirt as the text has it (wet, "gelling"),
+    the man's jacket and shoes where he fell, a humidor, the room's window
+    with its morning blinds, the bar's mirror."""
+    gx, gy = -7.0, 10.0
+    WAL = (0.28, 0.18, 0.12, 1.0); WAL_LT = (0.34, 0.22, 0.15, 1.0)
+    # -- the billiard lamp --
+    make_box("Billiard_Lamp_Bar", (gx, gy, 1.86), (0.08, 1.90, 0.06), (0.16, 0.14, 0.12, 1.0))
+    for s in (-1, 1):
+        make_cyl(f"Billiard_Lamp_Rod_{s:+d}", (gx, gy + s * 0.7, (1.89 + H) / 2.0), 0.008, H - 1.89, (0.30, 0.28, 0.24, 1.0), segments=6)
+    for k in range(3):
+        y = gy - 0.66 + k * 0.66
+        make_lathe(f"Billiard_Lamp_Shade_{k}", (gx, y, 1.84), [(0.04, 0.0), (0.06, -0.02), (0.22, -0.20), (0.23, -0.24)],
+                   (0.16, 0.30, 0.20, 1.0), segments=14)
+        make_blob(f"Billiard_Lamp_Bulb_{k}", (gx, y, 1.66), 0.05, (1.0, 0.92, 0.70, 1.0), noise=0.0, seed=k)
+    # -- wainscot + chair rail (N wall y 14, S wall y 6, W wall x -10; inner faces) --
+    wfaces = (("N", (gx, D - T / 2.0 - 0.012), 6.0, 'X'), ("S", (gx, 6.0 + T / 2.0 + 0.012), 6.0, 'X'),
+              ("W", (X0 + T / 2.0 + 0.012, 10.0), 8.0, 'Y'))
+    # (each wall's run is cut where furniture stands against it: the TV
+    # console on S, the liquor cabinet on W)
+    gaps = {"S": (-0.90, 0.90), "W": (0.65, 2.30), "N": None}
+    for nm, (cx, cy), L, ax in wfaces:
+        segs = [(-L / 2.0 + 0.05, L / 2.0 - 0.05)]
+        if gaps[nm]:
+            g0, g1 = gaps[nm]
+            segs = [(segs[0][0], g0), (g1, segs[0][1])]
+        for si, (u0, u1) in enumerate(segs):
+            um = (u0 + u1) / 2.0; ul = u1 - u0
+            pos = (cx + um, cy) if ax == 'X' else (cx, cy + um)
+            size = (ul, 0.024, 0.96) if ax == 'X' else (0.024, ul, 0.96)
+            make_box(f"Game_Wainscot_{nm}_{si}", pos + (0.50,), size, WAL)
+            rail = (ul, 0.05, 0.06) if ax == 'X' else (0.05, ul, 0.06)
+            make_box(f"Game_Chair_Rail_{nm}_{si}", pos + (1.00,), rail, WAL_LT)
+        n = int(L / 0.75)
+        for k in range(n + 1):
+            u = -L / 2.0 + 0.1 + k * (L - 0.2) / n
+            if gaps[nm] and gaps[nm][0] - 0.05 < u < gaps[nm][1] + 0.05:
+                continue
+            pos = (cx + u, cy + (-0.014 if nm == "N" else 0.014), 0.50) if ax == 'X' else (cx + 0.014, cy + u, 0.50)
+            sz = (0.05, 0.008, 0.90) if ax == 'X' else (0.008, 0.05, 0.90)
+            make_box(f"Game_Wainscot_Stock_{nm}_{k}", pos, sz, WAL_LT)
+    # -- the cue rack and a framed print on the N wall --
+    ny = D - T / 2.0 - 0.04
+    make_box("Cue_Rack", (gx - 1.7, ny - 0.02, 1.45), (0.56, 0.04, 1.10), WAL_LT)
+    for k in range(4):
+        make_rot_box(f"Cue_Rack_Cue_{k}", (gx - 1.9 + k * 0.13, ny - 0.07, 0.74), (0.022, 0.022, 1.45), (0.74, 0.58, 0.36, 1.0), roll=0.02 * (k - 1.5))
+    make_box("Game_Print_Frame", (gx + 1.9, ny - 0.02, 1.80), (1.30, 0.04, 0.95), (0.70, 0.60, 0.36, 1.0))
+    make_box("Game_Print_Mat", (gx + 1.9, ny - 0.043, 1.80), (1.16, 0.006, 0.81), (0.90, 0.88, 0.82, 1.0))
+    make_box("Game_Print_Image", (gx + 1.9, ny - 0.048, 1.80), (0.92, 0.004, 0.58), (0.30, 0.42, 0.52, 1.0))
+    make_box("Game_Print_Image_Band", (gx + 1.9, ny - 0.051, 1.66), (0.92, 0.002, 0.14), (0.72, 0.56, 0.34, 1.0))
+    # -- a second club chair, a side table, a rug --
+    make_box("Game_Rug", (gx + 2.05, 8.3, 0.018), (1.7, 2.6, 0.012), (0.50, 0.36, 0.26, 1.0))
+    make_box("Game_Chair_2_Base", (gx + 2.2, 9.1, 0.22), (0.86, 0.86, 0.44), LEATHER)
+    make_box("Game_Chair_2_Back", (gx + 2.2, 9.1 + 0.36, 0.66), (0.86, 0.16, 0.50), LEATHER)
+    for s in (-1, 1):
+        for i, cy in enumerate((7.4, 9.1)):
+            make_box(f"Game_Chair_Arm_{i}_{s:+d}", (gx + 2.2 + s * 0.38, cy + (0.08, -0.08)[i], 0.56), (0.12, 0.64, 0.24), LEATHER)
+    make_cyl("Game_Side_Table", (gx + 2.2, 8.25, 0.27), 0.22, 0.54, WAL, segments=14)
+    make_cyl("Game_Side_Table_Glass", (gx + 2.25, 8.20, 0.585), 0.035, 0.09, (0.80, 0.74, 0.56, 1.0), segments=10)
+    # -- the night's leavings --
+    for k, (x, y, yaw, col) in enumerate(((-8.6, 8.0, 0.4, (0.50, 0.30, 0.12, 1.0)), (-5.3, 11.8, 1.9, (0.80, 0.80, 0.76, 1.0)),
+                                          (-6.0, 7.2, 2.6, (0.20, 0.36, 0.20, 1.0)))):
+        make_rot_box(f"Floor_Bottle_{k}", (x, y, 0.053), (0.08, 0.28, 0.08), col, yaw=yaw)
+        make_rot_box(f"Floor_Bottle_{k}_Neck", (x - 0.17 * math.sin(yaw), y + 0.17 * math.cos(yaw), 0.053), (0.03, 0.08, 0.03), col, yaw=yaw)
+    for k, (x, y) in enumerate(((gx - 0.70, gy + 0.6), (gx + 0.70, gy - 0.3))):
+        make_cyl(f"Rail_Tumbler_{k}", (x, y, 0.90), 0.035, 0.08, (0.82, 0.78, 0.62, 1.0), segments=10)
+    for k in range(4):
+        make_blob(f"Felt_Ash_{k}", (gx + 0.2 + 0.08 * k, gy - 0.5 + 0.05 * (k % 2), 0.814), 0.03, (0.56, 0.56, 0.54, 1.0),
+                  noise=0.3, seed=80 + k, squash=0.25)
+    make_rot_box("Floor_Dart", (gx + 0.4, D - 1.2, 0.02), (0.012, 0.14, 0.012), (0.20, 0.30, 0.70, 1.0), yaw=0.9)
+    make_box("Floor_Remote", (gx + 1.2, 7.0, 0.026), (0.05, 0.18, 0.025), (0.12, 0.12, 0.13, 1.0))
+    make_rot_box("Cigar_Box_Lid", (X0 + 0.45, 10.95 + 0.10, 1.52), (0.24, 0.02, 0.16), (0.60, 0.40, 0.20, 1.0), roll=-0.5)
+    # -- the TV on the jazz channel --
+    sy = 6.0 + 0.07 + 0.096
+    make_box("Game_TV_Banner", (gx, sy, 1.30), (1.18, 0.003, 0.12), (0.12, 0.12, 0.20, 1.0))
+    make_box("Game_TV_Banner_Text", (gx - 0.25, sy + 0.002, 1.30), (0.50, 0.002, 0.03), (0.86, 0.80, 0.56, 1.0))
+    make_box("Game_TV_Channel", (gx + 0.48, sy + 0.002, 1.74), (0.14, 0.002, 0.08), (0.40, 0.86, 0.50, 1.0))
+
+
 def build_amanda_yard_2026_10():
     """DRAFT 4 of the deck (2026-10-30): from the tub the frame was a lit box
     in a black void, with three flat dark slabs for the fence. Now:
@@ -762,6 +866,7 @@ def main():
     build_luxury_finish()
     build_kitchen_luxury()
     build_game_bar()
+    build_game_room_2026_10()
     build_amanda()
     build_amanda_deck()
     build_amanda_yard_2026_10()

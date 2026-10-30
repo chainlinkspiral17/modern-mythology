@@ -245,6 +245,14 @@ light_energy = 0.9
 shadow_enabled = false
 omni_range = 4.5
 
+; the billiard lamp, left burning all night (2026-10-30)
+[node name="Billiard_Lamp__chau_game_room" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 1.55, -10.0)
+light_color = Color(1.0, 0.86, 0.60, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 3.6
+
 [node name="Game_TV_Glow__chau_game_room" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 1.5, -6.4)
 light_color = Color(0.56, 0.62, 1.0, 1)
