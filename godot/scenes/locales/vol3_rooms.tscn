@@ -206,9 +206,17 @@ omni_range = 5.0
 [node name="Street_Lamp__oregon_home_night" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.4, 5.6, -12.6)
 light_color = Color(1.0, 0.72, 0.4, 1)
-light_energy = 2.0
+light_energy = 4.0
 shadow_enabled = false
-omni_range = 12.0
+omni_range = 14.0
+
+; the neighbour's porch light (Oregon_Neighbor_Porch_Light)
+[node name="Neighbor_Porch__oregon_home_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308.4, 2.1, -15.2)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 5.0
 
 [node name="Fill_Night__oregon_home_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 306, 2, -3)
