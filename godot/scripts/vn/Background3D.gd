@@ -4502,8 +4502,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/carrie_city.tscn",
 		"requires_glb": "res://assets/3d/locales/carrie_city.glb",
 		# Charlie wakes and walks through the apartment: the unmade bed, the door, the living room beyond in daylight
-		"camera_origin": Vector3(1.2, 1.5, -4.2),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-50.0), 0.0),
+		# (2026-10-30: was turned to the door and a blank wall; now the night
+		# preset's frame by day — the bed, the canvases, the books, the window)
+		"camera_origin": Vector3(2.8, 1.5, -2.0),
+		"camera_rotation": Vector3(-0.12, 0.308, 0.0),
 		"fov": 64.0,
 		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
 		"suppress_input": true,
@@ -4563,7 +4565,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(86.0, 1.6, 9.0),
 		"camera_rotation": Vector3(0.02, deg_to_rad(0.0), 0.0),
 		"fov": 62.0,
-		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		# (2026-10-30: a day sky — the locale's night background read as a purple dusk)
+		"env": {"sky_top": Color(0.42, 0.58, 0.80, 1), "sky_horizon": Color(0.80, 0.84, 0.88, 1),
+			"ground_horizon": Color(0.60, 0.58, 0.52, 1), "ground_bottom": Color(0.30, 0.30, 0.28, 1),
+			"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"sister_house_inside": {

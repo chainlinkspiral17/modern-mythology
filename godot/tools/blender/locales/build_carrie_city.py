@@ -399,8 +399,8 @@ def build_sister_house():
     for e in (-1, 1):                          # the rod's brackets to the wall
         make_box(f"Sister_Curtain_Bracket_{e:+d}", (89.6 + e * 0.82, hy0 + 0.12, z0 + 2.10), (0.03, 0.10, 0.03), (0.30, 0.26, 0.20, 1.0))
     # (pass 167: both sat inside the wall's thickness — on its room face now)
-    make_box("Sister_Frame", (85.6, hy1 - T / 2.0 - 0.012, z0 + 1.60), (0.44, 0.02, 0.34), (0.24, 0.20, 0.16, 1.0))
-    make_box("Sister_Frame_Photo", (85.6, hy1 - T / 2.0 - 0.024, z0 + 1.60), (0.36, 0.004, 0.26), (0.72, 0.66, 0.56, 1.0))
+    make_box("Sister_Frame", (85.6, hy1 - T / 2.0 - 0.026, z0 + 1.60), (0.44, 0.02, 0.34), (0.24, 0.20, 0.16, 1.0))
+    make_box("Sister_Frame_Photo", (85.6, hy1 - T / 2.0 - 0.038, z0 + 1.60), (0.36, 0.004, 0.26), (0.72, 0.66, 0.56, 1.0))
     make_box("Sister_Laundry_Fold", (84.9, 7.8, z0 + 0.52), (0.30, 0.26, 0.14), (0.86, 0.84, 0.80, 1.0))
     make_box("Sister_Remote", (83.6, 5.6, z0 + 0.012), (0.05, 0.16, 0.02), (0.14, 0.14, 0.16, 1.0))
     make_box("Sister_TV_Stand", (82.5, 4.4, z0 + 0.30), (0.50, 0.90, 0.60), (0.40, 0.32, 0.24, 1.0))
@@ -418,12 +418,101 @@ def build_sister_house():
     make_box("Dish_Pile", (89.4, 5.92, z0 + 1.00), (0.40, 0.30, 0.12), (0.86, 0.86, 0.84, 1.0))
 
 
+def build_sister_2026_10():
+    """DRAFT 3 of the sister's house (2026-10-30). Inside was a beige box with
+    a couch and five toy cubes; the yard was a lawn. The text: "pretty low
+    rent, in bad shape, maybe two bedrooms, tight and cramped, the yard in a
+    sorry state"; two small kids; the fight over the socks and the dryer.
+    INSIDE: cheap wood-grain paneling on the W and N walls; a water stain on
+    the ceiling; a fist-sized hole in the partition; a playpen, a high chair,
+    a box fan; clothes on the floor and the couch, a lone sock; the dryer
+    piled with a load nobody folded; beer cans and an ashtray on the TV
+    stand, a baby bottle; a box of diapers by the couch.
+    YARD: weeds high along the house and the fence; trash bags by the side;
+    a cracked kiddie pool; the screen door hanging off its top hinge.
+    Draft 4 targets: the two bedrooms' doors, a kitchen table, the kids'
+    drawings taped up, the TV on; outside the neighbours' fences, a car."""
+    z0, H = 0.30, 2.4
+    hx0, hx1, hy0, hy1 = 82.0, 92.0, 2.0, 9.0
+    PANEL = (0.46, 0.32, 0.20, 1.0); GROOVE = (0.34, 0.22, 0.14, 1.0)
+    wx = hx0 + T / 2.0 + 0.008
+    make_box("Sister_Panel_W", (wx, (hy0 + hy1) / 2.0, z0 + H / 2.0), (0.012, hy1 - hy0 - T - 0.02, H - 0.02), PANEL)
+    for k in range(int((hy1 - hy0 - T) / 0.40)):
+        make_box(f"Sister_Panel_Stock_W_{k}", (wx + 0.007, hy0 + T / 2.0 + 0.2 + k * 0.40, z0 + H / 2.0), (0.003, 0.012, H - 0.04), GROOVE)
+    ny = hy1 - T / 2.0 - 0.008
+    make_box("Sister_Panel_N", ((hx0 + 88.0) / 2.0 + 0.02, ny, z0 + H / 2.0), (88.0 - hx0 - T - 0.10, 0.012, H - 0.02), PANEL)
+    for k in range(int((88.0 - hx0 - T) / 0.40)):
+        x = hx0 + T / 2.0 + 0.2 + k * 0.40
+        if abs(x - 85.6) < 0.26:
+            continue                               # the frame hangs there
+        make_box(f"Sister_Panel_Stock_N_{k}", (x, ny - 0.007, z0 + H / 2.0), (0.012, 0.003, H - 0.04), GROOVE)
+    # the stain on the ceiling, the hole in the partition
+    make_blob("Sister_Ceiling_Stain", (85.8, 5.2, z0 + H - 0.006), 0.55, (0.62, 0.52, 0.38, 1.0), noise=0.35, seed=7, squash=0.02)
+    make_blob("Sister_Wall_Hole", (87.94, 6.3, z0 + 1.15), 0.09, (0.16, 0.14, 0.12, 1.0), noise=0.45, seed=8, squash=0.15)
+    # the playpen, the high chair, the box fan
+    px, py = 86.7, 3.4
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            make_box(f"Playpen_Post_{sx:+d}_{sy:+d}", (px + sx * 0.48, py + sy * 0.48, z0 + 0.36), (0.04, 0.04, 0.72), (0.86, 0.86, 0.84, 1.0))
+    for nm, (cx, cy, sx_, sy_) in {"S": (px, py - 0.48, 0.92, 0.01), "N": (px, py + 0.48, 0.92, 0.01),
+                                   "W": (px - 0.48, py, 0.01, 0.92), "E": (px + 0.48, py, 0.01, 0.92)}.items():
+        make_box(f"Playpen_Mesh_{nm}", (cx, cy, z0 + 0.40), (sx_, sy_, 0.60), (0.70, 0.74, 0.80, 0.35))
+        make_box(f"Playpen_Rail_{nm}", (cx, cy, z0 + 0.71), (max(sx_, 0.03), max(sy_, 0.03), 0.03), (0.30, 0.46, 0.70, 1.0))
+    make_box("Playpen_Pad", (px, py, z0 + 0.06), (0.92, 0.92, 0.04), (0.40, 0.56, 0.76, 1.0))
+    make_blob("Playpen_Bear", (px + 0.2, py + 0.1, z0 + 0.14), 0.09, (0.62, 0.46, 0.30, 1.0), noise=0.15, seed=9, squash=1.0)
+    hcx, hcy = 87.45, 5.05
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            make_rot_box(f"High_Chair_Leg_{sx:+d}_{sy:+d}", (hcx + sx * 0.18, hcy + sy * 0.18, z0 + 0.38), (0.03, 0.03, 0.78),
+                         (0.86, 0.84, 0.80, 1.0), roll=-sy * 0.12, pitch=sx * 0.12)
+    make_box("High_Chair_Seat", (hcx, hcy, z0 + 0.78), (0.34, 0.34, 0.05), (0.86, 0.84, 0.80, 1.0))
+    make_box("High_Chair_Back", (hcx, hcy + 0.16, z0 + 1.02), (0.32, 0.04, 0.44), (0.86, 0.84, 0.80, 1.0))
+    make_box("High_Chair_Tray", (hcx, hcy - 0.26, z0 + 0.98), (0.44, 0.24, 0.03), (0.96, 0.80, 0.30, 1.0))
+    make_box("Box_Fan", (82.45, 3.0, z0 + 0.28), (0.14, 0.52, 0.52), (0.84, 0.84, 0.82, 1.0))
+    make_cyl("Box_Fan_Grille", (82.53, 3.0, z0 + 0.28), 0.22, 0.01, (0.40, 0.40, 0.42, 1.0), axis='X', segments=14)
+    # clothes on the floor and on the couch, the lone sock
+    for k, (x, y, r, col) in enumerate(((83.2, 6.6, 0.22, (0.30, 0.34, 0.50, 1.0)), (85.6, 7.3, 0.18, (0.80, 0.76, 0.70, 1.0)),
+                                        (83.6, 7.75, 0.20, (0.60, 0.20, 0.20, 1.0)), (87.2, 7.9, 0.24, (0.40, 0.46, 0.36, 1.0)))):
+        z = z0 + 0.47 if k == 2 else z0
+        make_blob(f"Sister_Clothes_{k}", (x, y, z + r * 0.27), r, col, noise=0.35, seed=20 + k, squash=0.3)
+    make_rot_box("Sister_Lone_Sock", (86.2, 4.6, z0 + 0.012), (0.08, 0.24, 0.02), (0.92, 0.92, 0.90, 1.0), yaw=0.7)
+    # the dryer piled with the load nobody folded
+    make_blob("Dryer_Pile", (91.5, 8.4, z0 + 0.88 + 0.12), 0.34, (0.70, 0.70, 0.74, 1.0), noise=0.3, seed=30, squash=0.4)
+    make_blob("Dryer_Pile_2", (91.35, 8.3, z0 + 0.88 + 0.22), 0.20, (0.40, 0.46, 0.60, 1.0), noise=0.3, seed=31, squash=0.5)
+    # beer cans and an ashtray on the TV stand, a baby bottle; diapers
+    for k in range(3):
+        make_cyl(f"Sister_Beer_Can_{k}", (82.40 + 0.08 * k, 4.72 + 0.03 * k, z0 + 0.66), 0.033, 0.12, (0.80, 0.80, 0.84, 1.0), segments=10)
+    make_cyl("Sister_Ashtray", (82.55, 3.98, z0 + 0.61), 0.07, 0.02, (0.40, 0.40, 0.42, 1.0), segments=12)
+    make_cyl("Sister_Baby_Bottle", (82.40, 4.05, z0 + 0.67), 0.03, 0.14, (0.92, 0.92, 0.94, 1.0), segments=10)
+    make_box("Sister_Diaper_Box", (85.4, 8.4, z0 + 0.20), (0.50, 0.30, 0.40), (0.40, 0.66, 0.90, 1.0))
+    # -- the yard in its sorry state --
+    for k in range(16):
+        x = 82.2 + k * 0.62
+        if 84.3 < x < 85.7:
+            continue                               # the step and the walk
+        h = 0.35 + 0.15 * ((k * 7) % 3)
+        make_blob(f"Yard_Weed_Stock_{k}", (x, hy0 - 0.95 - 0.12 * (k % 2), h * 0.45), h * 0.55, (0.40, 0.44, 0.24, 1.0),
+                  noise=0.4, seed=40 + k, squash=0.9)
+    for k in range(10):
+        x = 80.8 + k * 1.1
+        if 84.5 < x < 85.6:
+            continue
+        make_blob(f"Yard_Fence_Weed_Stock_{k}", (x + 0.3, -6.75, 0.25), 0.30, (0.42, 0.44, 0.26, 1.0), noise=0.4, seed=60 + k, squash=0.8)
+    for k, (x, y, r) in enumerate(((92.9, 3.4, 0.36), (93.1, 4.2, 0.32), (92.8, 4.9, 0.28))):
+        make_blob(f"Yard_Trash_Bag_{k}", (x, y, r * 0.8), r, (0.10, 0.10, 0.12, 1.0), noise=0.25, seed=70 + k, squash=0.85)
+    make_cyl("Yard_Kiddie_Pool", (90.4, -2.4, 0.10), 0.75, 0.20, (0.30, 0.60, 0.86, 1.0), segments=18)
+    make_cyl("Yard_Kiddie_Pool_Water", (90.4, -2.4, 0.15), 0.70, 0.02, (0.44, 0.50, 0.40, 1.0), segments=18)
+    make_rot_box("Screen_Door_Hanging", (84.42, hy0 - 0.30, z0 + 1.05), (0.84, 0.04, 2.0), (0.40, 0.42, 0.40, 0.55),
+                 yaw=0.35, pitch=0.10)
+
+
 def main():
     clear_scene()
     build_flat()
     build_party()
     build_party_bathroom()
     build_sister_house()
+    build_sister_2026_10()
     try:
         join_stock()
     except Exception as _e:
