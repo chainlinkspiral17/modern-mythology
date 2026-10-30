@@ -21,9 +21,17 @@
    "voice": "assets/audio/voice/vol2_ch2_cliffside/002.mp3"
   },
   {
+   "t": "bg",
+   "src": "3d:cliffside_circus_edge"
+  },
+  {
    "t": "narrate",
    "text": "The main building was true enough built up along the edge of a cliff — overlooking jagged rock outcroppings, beaten raw by the harsh surf beneath. Smaller satellite lodgings and showrooms were built up in a semi-circle. An interrupted wagon train.",
    "voice": "assets/audio/voice/vol2_ch2_cliffside/003.mp3"
+  },
+  {
+   "t": "bg",
+   "src": "3d:cliffside_circus"
   },
   {
    "t": "narrate",

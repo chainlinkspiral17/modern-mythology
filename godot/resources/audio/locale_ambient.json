@@ -737,6 +737,10 @@
       "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
       "gain": 0.82
     },
+    "cliffside_circus_edge": {
+      "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
+      "gain": 0.82
+    },
     "crumpled_barn_ext": {
       "bed": "assets/audio/bgm/vol2_ambient.wav",
       "gain": 0.82
