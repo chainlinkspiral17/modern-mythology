@@ -2017,8 +2017,9 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/desert_route.glb",
 		# "Kathy had sat on the single bed in the empty room, the television on":
 		# room No. 4 from inside its door — the bed, the lamp, the bathroom door.
+		# (2026-10-30) turned 11° right: "the television on" sat cut at the edge
 		"camera_origin": Vector3(-401.625, 1.55, -14.700),
-		"camera_rotation": Vector3(-0.12, 0.491, 0.0),
+		"camera_rotation": Vector3(-0.12, 0.30, 0.0),
 		"fov": 66.0,
 		"env": {"ambient_color": Color(0.80, 0.64, 0.54, 1), "ambient_energy": 0.40, "fog_density": 0.0},
 		"suppress_input": true,
