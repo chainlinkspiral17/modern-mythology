@@ -221,6 +221,23 @@ light_energy = 1.2
 shadow_enabled = false
 omni_range = 5.0
 
+; (2026-10-30) the day's street bounce: the sun is south of the facades
+; across the street, so their faces toward the flat were in shadow and read
+; as dark slabs by day. Range 9 m from the street keeps it off the flat (12 m)
+[node name="Street_Day_Bounce_0__charlie_apartment_day__charlie_living_day" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.0, 13.0)
+light_color = Color(1.0, 0.96, 0.88, 1)
+light_energy = 3.4
+shadow_enabled = false
+omni_range = 9.0
+
+[node name="Street_Day_Bounce_1__charlie_apartment_day__charlie_living_day" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0, 4.0, 13.0)
+light_color = Color(1.0, 0.96, 0.88, 1)
+light_energy = 3.4
+shadow_enabled = false
+omni_range = 9.0
+
 [node name="Fill__afterparty_room__afterparty_stools" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 49, 3, -7)
 light_color = Color(0.6, 0.5, 0.56, 1)

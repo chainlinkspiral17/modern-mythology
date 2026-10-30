@@ -52,7 +52,7 @@ a movie" is a figure, not set; HeroArt entries for the four clippings and
 the folder tabs' type; the corkboard's red string gone brown at dawn;
 wear (a scorch under the lamp); Deck-verified framing.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -317,6 +317,73 @@ def build_corkboard():
         make_tube(f"Board_String_{k}", catenary((x0, yy, z0), (x1, yy, z1), 0.025, n=8), 0.0035, RED_STRING, segments=5)
 
 
+def build_dawn_2026_10():
+    """(DRAFT 4, 2026-10-30) curtain call's dawn, each piece under an empty
+    tagged `__writers_desk_dawn` so it exists in that view only:
+      "Four folding chairs, church basement, one with a lean" — they were
+          not here before: three open on the rug facing the desk, the fourth
+          folded and leaning on the W wall;
+      "the red string gone brown" — a brown string over the same pins (the
+          dawn view strips the red one, `Board_String_`);
+      "Through the glass the street. A car idling at the curb, parking
+          lights on, a cardboard sign wedged against the windshield" (RUTA 77,
+          the por puesto) — at the far curb, where the lens sees it through
+          the N window over the sill;
+      the desk chair pushed back off the pulled drawers (the dawn view strips
+          `Desk_Chair`)."""
+    from _props.geometry import make_rot_box, make_tube, catenary
+    from _props.furniture import make_chair
+    from _props.vehicles import make_car
+    METAL = (0.62, 0.58, 0.48, 1.0)                     # church-basement tan
+    for k, (cx, cy, yaw) in enumerate(((-1.20, 3.10, 0.10), (-0.45, 2.95, 0.0), (0.30, 3.05, -0.10))):
+        import math as _m
+        c, s_ = _m.cos(yaw), _m.sin(yaw)
+        def at(fx, fy, z):
+            return (cx + fx * c + fy * s_, cy - fx * s_ + fy * c, z)
+        make_rot_box(f"Dawn_Fold_Chair_{k}_Seat", at(0.0, 0.0, 0.455), (0.40, 0.38, 0.03), METAL, yaw=-yaw)
+        for side in (-1, 1):
+            make_rot_box(f"Dawn_Fold_Chair_{k}_Front_{side:+d}", at(side * 0.18, 0.16, 0.22), (0.022, 0.022, 0.44), METAL, yaw=-yaw)
+            make_rot_box(f"Dawn_Fold_Chair_{k}_Rear_{side:+d}", at(side * 0.18, -0.17, 0.43), (0.022, 0.022, 0.86), METAL, yaw=-yaw)
+        make_rot_box(f"Dawn_Fold_Chair_{k}_Back", at(0.0, -0.17, 0.74), (0.38, 0.02, 0.20), METAL, yaw=-yaw)
+        make_rot_box(f"Dawn_Fold_Chair_{k}_Brace", at(0.0, 0.16, 0.12), (0.34, 0.016, 0.016), METAL, yaw=-yaw)
+    # the fourth, folded, leaning on the W wall between the bed and the nightstand
+    th = 0.20
+    make_rot_box("Dawn_Fold_Chair_3_Folded", (-ROOM_W / 2.0 + 0.10 + 0.88 * math.sin(th) / 2.0 + 0.025, 2.50, 0.88 * math.cos(th) / 2.0),
+                 (0.04, 0.42, 0.88), METAL, roll=th)
+    # the string gone brown, over the same pins, a hair in front of the red
+    bx, bz = DESK_X - 0.05, 1.62
+    face = ROOM_D - 0.10 - 0.012
+    clips = [(-0.46, 0.20, 0.28), (-0.12, -0.18, 0.18), (0.20, 0.16, 0.26), (0.46, -0.20, 0.24)]
+    pins = [(bx + cx, bz + cz + h / 2.0 - 0.03) for cx, cz, h in clips]
+    for k, (a, b) in enumerate(((3, 2), (2, 1), (1, 0))):
+        (x0, z0), (x1, z1) = pins[a], pins[b]
+        yy = face - 0.040
+        make_tube(f"Dawn_Board_StringBrown_{k}", catenary((x0, yy, z0), (x1, yy, z1), 0.028, n=8), 0.0035, (0.42, 0.26, 0.16, 1.0), segments=5)
+    # the desk chair pushed back and turned, off the pulled drawers
+    make_chair("Dawn_Desk_Chair", DESK_X - 0.55, DESK_Y - 1.20, yaw=0.5, wood=WOOD_DARK, seat_col=(0.30, 0.22, 0.16, 1.0))
+    # the por puesto at the far curb, idling, parking lights on, the sign in the windshield
+    cx, cy, zc = 3.6, ROOM_D + 15.4, -3.2 - 0.03 + 0.025
+    L = 4.5
+    make_car("Dawn_Car", cx, cy, L, (0.82, 0.78, 0.66, 1.0), along="X", z0=zc)
+    for sgn in (-1, 1):
+        make_box(f"Dawn_Car_Park_Light_F_{sgn:+d}", (cx + L / 2.0 + 0.012, cy + sgn * 0.66, zc + 0.66), (0.025, 0.14, 0.06), (1.0, 0.70, 0.24, 1.0))
+        make_box(f"Dawn_Car_Park_Light_R_{sgn:+d}", (cx - L / 2.0 - 0.012, cy + sgn * 0.66, zc + 0.80), (0.025, 0.16, 0.08), (0.90, 0.16, 0.12, 1.0))
+    make_box("Dawn_Car_Sign", (cx + L / 2.0 - 1.45, cy - 0.30, zc + 1.12), (0.02, 0.48, 0.24), (0.70, 0.56, 0.36, 1.0))
+    try:
+        import bpy
+        for empty_name, prefix in (("DawnChairs__writers_desk_dawn", "Dawn_Fold_Chair"),
+                                   ("DawnString__writers_desk_dawn", "Dawn_Board_StringBrown"),
+                                   ("DawnDeskChair__writers_desk_dawn", "Dawn_Desk_Chair"),
+                                   ("DawnCar__writers_desk_dawn", "Dawn_Car")):
+            empty = bpy.data.objects.new(empty_name, None)
+            bpy.context.scene.collection.objects.link(empty)
+            for obj in list(bpy.data.objects):
+                if obj is not empty and obj.parent is None and obj.name.startswith(prefix):
+                    obj.parent = empty
+    except Exception:
+        pass
+
+
 def build_bed_and_books():
     # head against Wall_W: the bed lies along x, so its centre is half its length off the wall face
     make_bed("Bed", -ROOM_W / 2.0 + 0.10 + 1.95 / 2.0 + 0.02, 1.65, head="-X", w=1.0, d=1.95)
@@ -373,9 +440,10 @@ def main():
     build_corkboard()
     build_bed_and_books()
     build_infra()
-    # through the window: the street (curtain call's car at the curb is draft 2)
+    # through the window: the street (curtain call's car is build_dawn_2026_10's)
     make_view("View_N", "N", ROOM_D, 0.0, kind="front", ground_z=-3.2, seed=11)   # a second-floor room over a residential street
     make_view("View_E", "E", ROOM_W / 2.0, WINE_Y, kind="side", ground_z=-3.2, seed=4)   # (draft 2) the side street
+    build_dawn_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                         "../../../assets/3d/locales/writers_desk.glb"))
     print(f"\n[build_writers_desk] exporting to {out}")

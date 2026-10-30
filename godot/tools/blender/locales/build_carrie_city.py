@@ -165,10 +165,15 @@ def build_flat():
     # the city across the street (inside 200 m), lit windows per hour
     for k in range(5):
         make_box(f"Across_Facade_{k}", (-6.0 + k * 6.0, -18.0, 7.0), (5.6, 1.0, 14.0 + (k % 3) * 4.0),
-                 ((0.46, 0.40, 0.36, 1.0), (0.40, 0.42, 0.44, 1.0))[k % 2])
+                 ((0.64, 0.56, 0.48, 1.0), (0.58, 0.60, 0.62, 1.0))[k % 2])   # (2026-10-30) brick and stucco that read by day
         for j in range(6):
             make_box(f"Across_Window_Glow_{k}_{j}" + CN, (-7.6 + k * 6.0 + (j % 3) * 1.6, -17.48, 3.0 + (j // 3) * 3.2),
                      (0.9, 0.04, 1.2), ((1.0, 0.82, 0.52, 1.0), (0.12, 0.12, 0.14, 1.0))[(j + k) % 2])
+        # (2026-10-30) by day the glows are gone and the facades read as blank
+        # slabs: sky-grey panes in front of the night glows, day views only
+        for j in range(6):
+            make_box(f"Across_Pane_Day_{k}_{j}" + CD + "__charlie_apartment_day", (-7.6 + k * 6.0 + (j % 3) * 1.6, -17.47, 3.0 + (j // 3) * 3.2),
+                     (0.9, 0.06, 1.2), ((0.66, 0.72, 0.80, 1.0), (0.52, 0.58, 0.66, 1.0))[(j + k) % 2])
     make_box("Street_Below_Asphalt", (5.0, -10.0, -6.0), (60.0, 14.0, 0.2), (0.24, 0.24, 0.26, 1.0))
     make_box("Sky_Night_S" + CN + "__charlie_bedroom_night", (5.0, -120.0, 40.0), (300.0, 0.2, 140.0), (0.04, 0.05, 0.08, 1.0))
     make_box("Sky_Day_S" + CD + "__charlie_apartment_day", (5.0, -120.0, 40.0), (300.0, 0.2, 140.0), (0.70, 0.76, 0.82, 1.0))
