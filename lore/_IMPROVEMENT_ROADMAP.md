@@ -3911,8 +3911,16 @@ The main thread and one forked agent split the remaining vols 1–4 sets BY LOCA
     - `shot_insert_roll__utah_highway_day` had been authored onto the motel's bedroll 400 m away.
       - It now frames the Voyager.
       - It is listed as KNOWN_UNRESOLVED: the quarters ride inside a van with no interior.
+    - **Obstructed markers 8 → 0** (vantage_obstruction --markers):
+      - **Main thread:**
+        - graustark: the sinkhole insert stood on the fence with its subject behind the lens; now back over the posts and the sign to the lip.
+        - small_wood_police: the across-the-table close-ups go to DELIBERATE_MARKERS, like Miller's.
+      - **Thread B:**
+        - briar_falls feather: the shelf water was one tilted 12.8 m slab, whose box covered the shelf; now 16 joined strips.
+        - cosmic_comics ring: was looking up through the counter front; now down onto the keys. The marker has NO cue in any chapter, so draft N+1 decides delete vs keep.
+        - The two tideline pools: now looking down over the rim.
+        - The quarters insert goes to DELIBERATE_MARKERS.
     - Still open:
-      - vantage_obstruction --markers: 10 obstructed markers repo-wide, listing in progress.
       - Music coverage and audio references: user-side files.
   - Lesson in `_GEOMETRY_AUDIT_PLAYBOOK.md`.
 - **THREAD B (the forked agent, 15 commits, every locale render-checked). Per locale, with draft N+1 targets:**
