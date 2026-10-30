@@ -297,49 +297,148 @@ def build_hollywood():
 
 
 # ── the clinic ────────────────────────────────────────────────────────
-CX0, CX1, CD, CH = 200.0, 205.0, 4.4, 2.8
+# DRAFT 4 (2026-10-30): 7.5 x 6.0 x 3.3 m (was 5 x 4.4 x 2.8). Ron, Jack,
+# the nurse and the man who asks "From how far in the future" all stand in
+# it ("Each man whistles"); a 1945 Caltech building has tall ceilings.
+CX0, CX1, CD, CH = 200.0, 207.5, 6.0, 3.3
+CREAM_WALL = (0.90, 0.86, 0.76, 1.0)
+SAGE = (0.40, 0.52, 0.44, 1.0)
+CAP = (0.22, 0.26, 0.22, 1.0)
+DESK_WOOD = (0.42, 0.28, 0.17, 1.0)
+WIN_Y = (1.8, 4.4)              # the two west windows' centres
+WIN_Z, WIN_W, WIN_H = 1.75, 1.4, 1.5
 
 
 def build_clinic():
     cx, cy = (CX0 + CX1) / 2.0, CD / 2.0
     make_floor("Cl_Floor", (cx, cy, 0.0), size_x=CX1 - CX0 + 0.4, size_y=CD + 0.4,
-               palette={"vinyl": (0.70, 0.72, 0.66, 1.0), "seam": (0.60, 0.62, 0.56, 1.0)})
-    make_box("Cl_Ceil", (cx, cy, CH + 0.04), (CX1 - CX0 + 0.4, CD + 0.4, 0.08), (0.92, 0.92, 0.88, 1.0))
-    pal = {"wall": (0.82, 0.86, 0.80, 1.0), "baseboard": (0.40, 0.44, 0.40, 1.0)}
+               palette={"vinyl": (0.50, 0.42, 0.34, 1.0), "seam": (0.42, 0.34, 0.27, 1.0)})
+    make_box("Cl_Ceil", (cx, cy, CH + 0.04), (CX1 - CX0 + 0.4, CD + 0.4, 0.08), (0.94, 0.93, 0.88, 1.0))
+    pal = {"wall": CREAM_WALL, "baseboard": (0.30, 0.22, 0.16, 1.0)}
     make_wall("Cl_Wall_N", (cx, CD, 0), length=CX1 - CX0 + 0.4, height=CH, thickness=0.2, axis='X', palette=pal, baseboard_face_sign=-1)
     make_wall("Cl_Wall_E", (CX1, cy, 0), length=CD + 0.4, height=CH, thickness=0.2, axis='Y', palette=pal, baseboard_face_sign=-1)
     make_wall_with_openings("Cl_Wall_W", (CX0, cy, 0), length=CD + 0.4, height=CH, thickness=0.2, axis='Y', palette=pal,
-                            baseboard_face_sign=+1, openings=[(2.2, 1.55, 1.4, 1.2)])
-    make_box("Cl_Window", (CX0, 2.2, 1.55), (0.02, 1.4, 1.2), (0.86, 0.90, 0.92, 1.0))
-    for k in range(3):
-        make_box(f"Cl_Window_Mullion_{k}", (CX0 + 0.02, 1.75 + k * 0.45, 1.55), (0.03, 0.03, 1.2), (0.92, 0.92, 0.88, 1.0))
+                            baseboard_face_sign=+1, openings=[(wy, WIN_Z, WIN_W, WIN_H) for wy in WIN_Y])
+    for w, wy in enumerate(WIN_Y):
+        # the pane is glass now (alpha 0.25), with the campus beyond it
+        make_box(f"Cl_Window_{w}_Glass", (CX0, wy, WIN_Z), (0.02, WIN_W, WIN_H), (0.80, 0.86, 0.88, 0.25))
+        for k in range(3):
+            make_box(f"Cl_Window_{w}_Mullion_{k}", (CX0 + 0.02, wy - 0.35 + k * 0.35, WIN_Z), (0.03, 0.03, WIN_H), (0.92, 0.92, 0.88, 1.0))
+        make_box(f"Cl_Window_{w}_Rail", (CX0 + 0.02, wy, WIN_Z + 0.25), (0.03, WIN_W, 0.04), (0.92, 0.92, 0.88, 1.0))
+        make_box(f"Cl_Window_{w}_Sill", (CX0 + 0.13, wy, WIN_Z - WIN_H / 2.0 - 0.02), (0.07, WIN_W + 0.12, 0.04), (0.92, 0.92, 0.88, 1.0))
     make_wall_with_openings("Cl_Wall_S", (cx, 0.0, 0), length=CX1 - CX0 + 0.4, height=CH, thickness=0.2, axis='X', palette=pal,
                             baseboard_face_sign=+1, openings=[(CX0 + 1.2, 1.05, 0.96, 2.1)])
-    make_box("Cl_Door_Open", (CX0 + 1.2 - 0.48 + 0.02, 0.10 + 0.46, 1.05), (0.04, 0.92, 2.08), (0.86, 0.84, 0.76, 1.0))
+    make_box("Cl_Door_Open", (CX0 + 1.2 - 0.48 + 0.02, 0.10 + 0.46, 1.05), (0.04, 0.92, 2.08), (0.46, 0.32, 0.20, 1.0))
     make_box("Cl_Door_Glass", (CX0 + 1.2 - 0.48 + 0.02, 0.10 + 0.46, 1.50), (0.05, 0.60, 0.70), (0.80, 0.84, 0.82, 1.0))
-    make_box("Cl_Corridor_Floor", (CX0 + 1.2, -1.4, 0.0), (3.0, 2.6, 0.02), (0.62, 0.62, 0.56, 1.0))
-    make_box("Cl_Corridor_Wall", (CX0 + 1.2, -2.8, CH / 2.0), (3.0, 0.2, CH), (0.76, 0.80, 0.74, 1.0))
+    make_box("Cl_Corridor_Floor", (CX0 + 1.2, -1.4, 0.0), (3.0, 2.6, 0.02), (0.46, 0.40, 0.32, 1.0))
+    make_box("Cl_Corridor_Wall", (CX0 + 1.2, -2.8, CH / 2.0), (3.0, 0.2, CH), CREAM_WALL)
+    # the two-tone of a 1945 institution: a sage wainscot to 0.95 m with its
+    # dark cap rail, cream above (draft 3 was one pale green everywhere —
+    # walls, floor and fog — and read as a green wash)
+    fx0, fx1, fy0, fy1 = CX0 + 0.1, CX1 - 0.1, 0.1, CD - 0.1
+    runs = [("N", (cx, fy1 - 0.006), (fx1 - fx0, 0.012)), ("E", (fx1 - 0.006, cy), (0.012, fy1 - fy0)),
+            ("W", (fx0 + 0.006, cy), (0.012, fy1 - fy0)),
+            ("S0", ((fx0 + CX0 + 0.72) / 2.0, fy0 + 0.006), (CX0 + 0.72 - fx0, 0.012)),
+            ("S1", ((CX0 + 1.68 + fx1) / 2.0, fy0 + 0.006), (fx1 - CX0 - 1.68, 0.012))]
+    for nm, (x, y), (sx, sy) in runs:
+        make_box(f"Cl_Wainscot_{nm}", (x, y, 0.555), (sx, sy, 0.79), SAGE)
+        cs = (sx, 0.025) if sy < sx else (0.025, sy)
+        ox = 0.0 if sy < sx else (0.0125 - 0.006) * (1 if nm == "W" else -1)
+        oy = 0.0 if sx < sy else (0.0125 - 0.006) * (1 if nm.startswith("S") else -1)
+        make_box(f"Cl_Wainscot_{nm}_Cap", (x + ox, y + oy, 0.97), (cs[0], cs[1], 0.04), CAP)
     # the exam table against the N wall, its sheet, the step
-    ex, ey = cx + 0.3, CD - 0.10 - 0.36
+    ex, ey = CX0 + 4.2, CD - 0.10 - 0.36
     make_box("Exam_Table_Base", (ex, ey, 0.38), (1.80, 0.62, 0.76), (0.86, 0.86, 0.82, 1.0))
-    make_box("Exam_Table_Pad", (ex, ey, 0.82), (1.84, 0.66, 0.12), (0.30, 0.36, 0.34, 1.0))
+    make_box("Exam_Table_Pad", (ex, ey, 0.82), (1.84, 0.66, 0.12), (0.30, 0.24, 0.20, 1.0))
     make_box("Exam_Table_Sheet", (ex + 0.2, ey, 0.885), (1.30, 0.64, 0.01), (0.96, 0.96, 0.94, 1.0))
     make_box("Exam_Step", (ex - 0.6, ey - 0.50, 0.12), (0.46, 0.34, 0.24), (0.70, 0.70, 0.68, 1.0))
-    # the cuff: the sphygmomanometer's gauge on its wall bracket, the cuff hung by it
-    make_box("BP_Bracket", (CX1 - 0.12, 2.6, 1.40), (0.04, 0.20, 0.30), (0.70, 0.70, 0.72, 1.0))
-    make_cyl("BP_Gauge", (CX1 - 0.165, 2.6, 1.48), 0.09, 0.05, (0.92, 0.92, 0.88, 1.0), axis='X', segments=16)
-    make_box("BP_Cuff", (CX1 - 0.16, 2.6, 1.18), (0.04, 0.16, 0.30), (0.20, 0.26, 0.36, 1.0))
-    make_blob("BP_Bulb", (CX1 - 0.18, 2.64, 1.00), 0.04, (0.10, 0.10, 0.10, 1.0), noise=0.0, seed=2)
+    # "the nurse puts a blood pressure cuff on Andy's arm": the
+    # sphygmomanometer on the N wall at the table's head, the cuff hung by it
+    bx = ex + 1.30
+    make_box("BP_Bracket", (bx, CD - 0.12, 1.40), (0.20, 0.04, 0.30), (0.70, 0.70, 0.72, 1.0))
+    make_cyl("BP_Gauge", (bx, CD - 0.165, 1.48), 0.09, 0.05, (0.92, 0.92, 0.88, 1.0), axis='Y', segments=16)
+    make_box("BP_Cuff", (bx, CD - 0.16, 1.18), (0.16, 0.04, 0.30), (0.20, 0.26, 0.36, 1.0))
+    make_blob("BP_Bulb", (bx + 0.04, CD - 0.18, 1.00), 0.04, (0.10, 0.10, 0.10, 1.0), noise=0.0, seed=2)
     # the cabinet and sink on the E wall, the glass of water on a tray
     make_box("Cl_Cabinet", (CX1 - 0.10 - 0.28, 1.2, 0.45), (0.56, 1.20, 0.90), (0.92, 0.92, 0.88, 1.0))
     make_box("Cl_Cabinet_Top", (CX1 - 0.10 - 0.29, 1.2, 0.915), (0.58, 1.24, 0.03), (0.80, 0.80, 0.78, 1.0))
     make_cyl("Cl_Sink", (CX1 - 0.10 - 0.30, 1.5, 0.92), 0.16, 0.02, (0.96, 0.96, 0.96, 1.0), segments=14)
     make_box("Cl_Tray", (CX1 - 0.10 - 0.30, 0.9, 0.937), (0.30, 0.22, 0.015), (0.74, 0.74, 0.76, 1.0))
-    make_cyl("Glass_Of_Water", (CX1 - 0.10 - 0.30, 0.9, 1.0), 0.035, 0.11, (0.80, 0.88, 0.92, 1.0), segments=12)
     for k in range(3):
         make_cyl(f"Cl_Jar_{k}", (CX1 - 0.10 - 0.24, 1.35 + k * 0.14, 0.99), 0.04, 0.12, (0.86, 0.88, 0.84, 1.0), segments=10)
-    make_chair("Cl_Chair", CX0 + 0.6, 3.4, yaw=-math.pi / 2.0, wood=(0.62, 0.62, 0.60, 1.0), seat_col=(0.40, 0.44, 0.40, 1.0))
-    make_box("Cl_Ceil_Light", (cx, cy, CH - 0.05), (0.80, 0.30, 0.10), (0.98, 0.98, 0.94, 1.0))
+    for k, px in enumerate((cx - 1.6, cx + 1.6)):
+        make_cyl(f"Cl_Ceil_Light_{k}_Rod", (px, cy, CH - 0.25), 0.012, 0.50, (0.30, 0.30, 0.30, 1.0), segments=6)
+
+
+def build_clinic_2026_11():
+    """DRAFT 4 of the 1945 clinic (2026-10-30). Draft 3 was a pale green
+    box, too small for the four people the text stands in it. The room is
+    7.5 x 6 x 3.3 m, two-toned (above), with:
+    - two west windows onto the campus: a lawn, a walk, an arcaded stucco
+      hall under a tile roof, oaks (Caltech, 1945: "we'll show you to the
+      clinic" from the hallway);
+    - cast-iron radiators under the windows;
+    - the nurse's desk between them ("the nice woman"): blotter, card file,
+      a cradle telephone, her chair; the calendar over it;
+    - a crock water cooler in the NE corner with its cup dispenser ("handing
+      you a glass of water");
+    - a waiting bench on the S wall; two enamel pendants.
+    NOT in the text, so not built: the candlestick phone, a hat rack, an
+    anatomy chart (draft 3's own guesses).
+    Draft 5 targets: Deck framing; the corridor's door glass lettering
+    (no name); the window's afternoon light as a real SpotLight."""
+    # the campus beyond the west windows
+    make_box("Cl_View_Lawn", (193.85, 3.0, -0.015), (11.7, 30.0, 0.03), (0.36, 0.48, 0.26, 1.0))
+    make_box("Cl_View_Walk", (195.5, 3.0, 0.005), (1.8, 30.0, 0.02), (0.80, 0.76, 0.66, 1.0))
+    HALL = (0.90, 0.84, 0.70, 1.0); TILE = (0.62, 0.30, 0.20, 1.0)
+    make_box("Cl_View_Hall_Mass", (187.0, 3.0, 5.0), (6.0, 30.0, 10.0), HALL)
+    make_box("Cl_View_Hall_Roof", (187.4, 3.0, 10.25), (7.2, 30.4, 0.5), TILE)
+    for k in range(11):
+        py = -10.0 + k * 2.6
+        make_box(f"Cl_View_Hall_Stock_Pier_{k}", (191.75, py, 1.8), (0.5, 0.5, 3.6), HALL)
+        for f, z in enumerate((5.4, 8.0)):
+            make_box(f"Cl_View_Hall_Stock_Win_{k}_{f}", (190.01, py + 1.3, z), (0.02, 1.0, 1.6), (0.22, 0.24, 0.26, 1.0))
+    make_box("Cl_View_Hall_Lintel", (191.75, 3.0, 4.0), (0.5, 26.5, 0.8), HALL)
+    make_box("Cl_View_Hall_Loggia_Roof", (191.0, 3.0, 4.45), (2.0, 26.5, 0.1), TILE)
+    make_box("Cl_View_Hall_Loggia_Back", (190.02, 3.0, 1.8), (0.04, 26.0, 3.6), (0.62, 0.56, 0.46, 1.0))
+    for k, (tx, ty, th) in enumerate(((196.8, -0.5, 7.0), (197.4, 6.0, 8.0), (193.0, 2.4, 6.0))):
+        make_broadleaf(f"Cl_View_Oak_{k}", tx, ty, th, (0.24, 0.38, 0.20, 1.0), (0.34, 0.26, 0.20, 1.0))
+    # radiators under the windows: cast iron sections on the floor
+    for w, wy in enumerate(WIN_Y):
+        for k in range(12):
+            make_box(f"Cl_Radiator_{w}_Stock_{k}", (CX0 + 0.21, wy - 0.55 + k * 0.10, 0.36), (0.18, 0.06, 0.62), (0.56, 0.56, 0.52, 1.0))
+        make_box(f"Cl_Radiator_{w}_Stock_Rail", (CX0 + 0.21, wy, 0.06), (0.16, 1.16, 0.04), (0.48, 0.48, 0.44, 1.0))
+    # the nurse's desk between the windows, facing the room
+    dx, dy = CX0 + 0.10 + 0.34, 3.1
+    make_box("Cl_Desk_Top", (dx, dy, 0.755), (0.68, 1.12, 0.03), DESK_WOOD)
+    for s in (-1, 1):
+        make_box(f"Cl_Desk_Pedestal_{s:+d}", (dx, dy + s * 0.38, 0.37), (0.62, 0.34, 0.74), DESK_WOOD)
+        for d in range(3):
+            make_box(f"Cl_Desk_Pull_{s:+d}_{d}", (dx + 0.315, dy + s * 0.38, 0.62 - d * 0.22), (0.01, 0.10, 0.02), (0.70, 0.62, 0.40, 1.0))
+    make_box("Cl_Desk_Blotter", (dx + 0.02, dy, 0.774), (0.40, 0.56, 0.008), (0.30, 0.40, 0.30, 1.0))
+    make_box("Cl_Desk_Card_File", (dx - 0.12, dy - 0.40, 0.84), (0.20, 0.14, 0.14), (0.30, 0.30, 0.32, 1.0))
+    make_box("Cl_Desk_Phone_Base", (dx - 0.10, dy + 0.38, 0.81), (0.18, 0.20, 0.08), (0.08, 0.08, 0.08, 1.0))
+    make_cyl("Cl_Desk_Phone_Dial", (dx - 0.01, dy + 0.38, 0.81), 0.05, 0.01, (0.86, 0.84, 0.78, 1.0), axis='X', segments=12)
+    make_box("Cl_Desk_Phone_Handset", (dx - 0.12, dy + 0.38, 0.875), (0.06, 0.22, 0.05), (0.08, 0.08, 0.08, 1.0))
+    # "the nice woman is handing you a glass of water" — poured at her desk
+    make_cyl("Glass_Of_Water", (dx + 0.12, dy + 0.14, 0.83), 0.035, 0.11, (0.80, 0.88, 0.92, 1.0), segments=12)
+    make_box("Cl_Desk_Papers", (dx + 0.06, dy - 0.10, 0.776), (0.22, 0.30, 0.006), (0.96, 0.95, 0.90, 1.0))
+    make_chair("Cl_Chair", CX0 + 1.05, dy, yaw=-math.pi / 2.0, wood=DESK_WOOD, seat_col=(0.36, 0.26, 0.18, 1.0))
+    # the crock water cooler in the NE corner, its cups on the wall
+    wx, wy = CX1 - 0.40, CD - 0.40
+    make_box("Cl_Cooler_Stand", (wx, wy, 0.38), (0.42, 0.42, 0.76), DESK_WOOD)
+    make_cyl("Cl_Cooler_Crock", (wx, wy, 0.985), 0.18, 0.45, (0.90, 0.88, 0.80, 1.0), segments=16)
+    make_cyl("Cl_Cooler_Band", (wx, wy, 1.10), 0.183, 0.04, (0.26, 0.36, 0.56, 1.0), segments=16)
+    make_cyl("Cl_Cooler_Bottle", (wx, wy, 1.385), 0.13, 0.35, (0.72, 0.84, 0.86, 0.5), segments=16)
+    make_box("Cl_Cooler_Spigot", (wx - 0.19, wy, 0.86), (0.05, 0.03, 0.05), (0.70, 0.70, 0.72, 1.0))
+    make_cyl("Cl_Cup_Dispenser", (CX1 - 0.13, wy - 0.42, 1.25), 0.04, 0.32, (0.80, 0.80, 0.82, 1.0), segments=10)
+    make_box("Cl_Cup_Dispenser_Clip", (CX1 - 0.105, wy - 0.42, 1.25), (0.01, 0.06, 0.10), (0.70, 0.70, 0.72, 1.0))
+    # a waiting bench on the S wall
+    bx0, bx1 = CX0 + 2.2, CX0 + 4.4
+    make_box("Cl_Bench_Seat", ((bx0 + bx1) / 2.0, 0.34, 0.445), (bx1 - bx0, 0.40, 0.05), DESK_WOOD)
+    for k, lx in enumerate((bx0 + 0.1, (bx0 + bx1) / 2.0, bx1 - 0.1)):
+        make_box(f"Cl_Bench_Leg_{k}", (lx, 0.34, 0.21), (0.06, 0.34, 0.42), DESK_WOOD)
+    make_box("Cl_Bench_Back", ((bx0 + bx1) / 2.0, 0.12, 0.76), (bx1 - bx0, 0.04, 0.22), DESK_WOOD)
 
 
 def build_clinic_2026_10():
@@ -375,24 +474,30 @@ def build_clinic_2026_10():
     make_box("Cl_Eye_Chart", (CX1 - 0.11, 2.05, 1.55), (0.01, 0.44, 0.70), (0.96, 0.96, 0.92, 1.0))
     for k in range(6):
         make_box(f"Cl_Eye_Chart_Row_{k}", (CX1 - 0.116, 2.05, 1.80 - k * 0.09), (0.004, 0.30 - k * 0.04, 0.04 - k * 0.005), (0.10, 0.10, 0.10, 1.0))
-    for k, (x, y, yaw) in enumerate(((CX1 - 0.95, 3.05, 0.5), (CX1 - 0.72, 3.48, -0.5), (CX1 - 0.49, 3.91, 0.5))):
+    # (draft 4: folded back against the E wall; open across the room it
+    # filled the lens's right third)
+    for k, (x, y, yaw) in enumerate(((CX1 - 0.22, 3.30, 0.30), (CX1 - 0.22, 3.80, -0.30), (CX1 - 0.22, 4.30, 0.30))):
         make_rot_box(f"Cl_Screen_Panel_{k}", (x, y, 0.82), (0.03, 0.52, 1.64), (0.86, 0.88, 0.84, 1.0), yaw=yaw)
     # blinds in the window, a clock over the door, a calendar
-    for k in range(16):
-        make_box(f"Cl_Blind_Slat_Stock_{k}", (CX0 + 0.13, 2.2, 1.0 + k * 0.07), (0.01, 1.36, 0.03), (0.92, 0.90, 0.84, 1.0))
-    make_box("Cl_Blind_Head", (CX0 + 0.13, 2.2, 2.16), (0.04, 1.40, 0.05), (0.92, 0.90, 0.84, 1.0))
-    # the ladder tapes the slats hang in, head rail to bottom slat (the slats
-    # read as floating without them, 2026-10-30)
-    for k, dy in enumerate((-0.48, 0.0, 0.48)):
-        make_box(f"Cl_Blind_Tape_{k}", (CX0 + 0.1375, 2.2 + dy, 1.56), (0.005, 0.012, 1.15), (0.88, 0.86, 0.80, 1.0))
-    make_cyl("Cl_Clock", (CX0 + 1.2, 0.12, 2.42), 0.16, 0.04, (0.36, 0.26, 0.18, 1.0), axis='Y', segments=18)
-    make_cyl("Cl_Clock_Face", (CX0 + 1.2, 0.142, 2.42), 0.13, 0.004, (0.94, 0.92, 0.84, 1.0), axis='Y', segments=18)
-    make_box("Cl_Calendar", (CX0 + 0.11, 3.45, 1.70), (0.01, 0.30, 0.44), (0.92, 0.90, 0.82, 1.0))
-    make_box("Cl_Calendar_Picture", (CX0 + 0.116, 3.45, 1.82), (0.004, 0.26, 0.16), (0.56, 0.40, 0.34, 1.0))
-    make_box("Cl_Calendar_Year", (CX0 + 0.116, 3.45, 1.70), (0.004, 0.16, 0.03), (0.70, 0.16, 0.14, 1.0))
+    # (draft 4: one blind per window, raised to the upper sash)
+    top = WIN_Z + WIN_H / 2.0
+    for w, wy in enumerate(WIN_Y):
+        for k in range(9):
+            make_box(f"Cl_Blind_{w}_Slat_Stock_{k}", (CX0 + 0.13, wy, top - 0.66 + k * 0.07), (0.01, 1.36, 0.03), (0.92, 0.90, 0.84, 1.0))
+        make_box(f"Cl_Blind_{w}_Head", (CX0 + 0.13, wy, top - 0.04), (0.04, 1.40, 0.05), (0.92, 0.90, 0.84, 1.0))
+        # the ladder tapes the slats hang in, head rail to bottom slat (the
+        # slats read as floating without them, 2026-10-30)
+        for k, dy in enumerate((-0.48, 0.0, 0.48)):
+            make_box(f"Cl_Blind_{w}_Tape_{k}", (CX0 + 0.1375, wy + dy, top - 0.37), (0.005, 0.012, 0.66), (0.88, 0.86, 0.80, 1.0))
+    make_cyl("Cl_Clock", (CX0 + 1.2, 0.12, 2.52), 0.16, 0.04, (0.36, 0.26, 0.18, 1.0), axis='Y', segments=18)
+    make_cyl("Cl_Clock_Face", (CX0 + 1.2, 0.142, 2.52), 0.13, 0.004, (0.94, 0.92, 0.84, 1.0), axis='Y', segments=18)
+    make_box("Cl_Calendar", (CX0 + 0.105, 3.1, 1.70), (0.01, 0.30, 0.44), (0.92, 0.90, 0.82, 1.0))
+    make_box("Cl_Calendar_Picture", (CX0 + 0.111, 3.1, 1.82), (0.004, 0.26, 0.16), (0.56, 0.40, 0.34, 1.0))
+    make_box("Cl_Calendar_Year", (CX0 + 0.111, 3.1, 1.70), (0.004, 0.16, 0.03), (0.70, 0.16, 0.14, 1.0))
     # the enamel shade under the ceiling light, the tray's kidney dish and bandage
     cx, cy = (CX0 + CX1) / 2.0, CD / 2.0
-    make_lathe("Cl_Pendant_Shade", (cx, cy, CH - 0.50), [(0.03, 0.40), (0.06, 0.38), (0.26, 0.10), (0.28, 0.0)], ENAMEL, segments=16)
+    for k, px in enumerate((cx - 1.6, cx + 1.6)):
+        make_lathe(f"Cl_Pendant_Shade_{k}", (px, cy, CH - 0.90), [(0.03, 0.40), (0.06, 0.38), (0.26, 0.10), (0.28, 0.0)], ENAMEL, segments=16)
     make_box("Cl_Kidney_Dish", (CX1 - 0.10 - 0.28, 1.12, 0.94), (0.14, 0.08, 0.02), CHROME)
     make_cyl("Cl_Bandage_Roll", (CX1 - 0.20, 0.84, 0.96), 0.03, 0.06, (0.96, 0.96, 0.94, 1.0), axis='Y', segments=10)
 
@@ -404,6 +509,7 @@ def main():
     build_hollywood()
     build_clinic()
     build_clinic_2026_10()
+    build_clinic_2026_11()
     try:
         join_stock()
         join_named("RainStreak_", "RainStreak" + RAIN)

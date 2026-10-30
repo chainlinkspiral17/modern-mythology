@@ -30,8 +30,14 @@ its east end (x 40..64); the gallery a separate area at x 100..114.
 
 (DRAFT 2, 2026-10-29: the people waiting in the gallery and the doll-dress
 woman in the corner.)
-DRAFT 3 targets: the record store's window of LP covers, the invite card;
-the line outside the gallery door; the screening room beyond the dark; Deck framing.
+(DRAFT 3, 2026-10-30: recessed storefronts in `_facade` — piers, bulkheads,
+see-through glass, tiled vestibules, display decks, lit shops 6 m deep; the
+record store's sleeves on easels and taped to the glass; the south block
+turned to face the street.)
+DRAFT 4 targets: the shops' interiors read busy at distance (fewer, larger
+stock blocks); per-shop door hardware and lettering on the glass (no real
+names); the invite card; the line outside the gallery door; the screening
+room beyond the dark; Deck framing.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -60,22 +66,113 @@ def _rng(seed):
     return r
 
 
-def _facade(name, x0, x1, y, h, col, storefront_col, sign_col=None, lit=True):
-    """A building face on the street's north side (y = its face), its
-    storefront at the bottom and rows of windows above."""
+SHOP_GLASS = (0.62, 0.70, 0.74, 0.22)   # LocaleGlass: vertex alpha < 0.98 → transparent
+VEST_TILE = (0.84, 0.82, 0.76, 1.0)
+DISPLAY_COLS = {
+    "books": ((0.40, 0.30, 0.20, 1.0), (0.20, 0.30, 0.50, 1.0), (0.60, 0.20, 0.20, 1.0), (0.86, 0.80, 0.62, 1.0)),
+    "lps": ((0.86, 0.30, 0.20, 1.0), (0.20, 0.30, 0.70, 1.0), (0.94, 0.86, 0.30, 1.0), (0.10, 0.10, 0.10, 1.0)),
+    "cafe": ((0.92, 0.90, 0.84, 1.0), (0.36, 0.22, 0.14, 1.0), (0.18, 0.34, 0.26, 1.0), (0.70, 0.50, 0.30, 1.0)),
+    None: ((0.56, 0.50, 0.44, 1.0), (0.30, 0.34, 0.40, 1.0), (0.74, 0.62, 0.40, 1.0), (0.46, 0.30, 0.30, 1.0)),
+}
+
+
+def _facade(name, x0, x1, y, h, col, storefront_col, sign_col=None, lit=True, out=-1, display=None, seed=0):
+    """A building face (y = its face; `out` = the face's outward normal in
+    y, -1 for the street's north side, +1 for the south side), rows of
+    windows above and, at the bottom, RECESSED STOREFRONTS (draft 3,
+    2026-10-30): the storefronts were opaque slabs laid flat on the mass
+    (the glass had alpha 1, so LocaleGlass left it a painted board). Now
+    each ~7 m bay has a pier each side, a bulkhead under its display glass
+    set 0.6 m back, the door 2.2 m back in a tiled vestibule with glass
+    returns, a display deck behind the glass, and a lit shop 6 m deep:
+    floor, ceiling, back-wall shelves of stock, a counter. `storefront_col`
+    is the shop's light (its back wall)."""
     w = x1 - x0
     xc = (x0 + x1) / 2.0
-    make_box(f"{name}_Mass", (xc, y + 6.0, h / 2.0), (w, 12.0, h), col)
-    make_box(f"{name}_Storefront_Glass", (xc, y - 0.02, 1.6), (w - 1.2, 0.04, 2.6), storefront_col)
-    make_box(f"{name}_Storefront_Kick", (xc, y - 0.03, 0.2), (w - 1.0, 0.06, 0.4), (0.20, 0.20, 0.22, 1.0))
+    dd = -out                                   # depth into the building, as +y
+    Y = lambda d: y + dd * d                    # noqa: E731
+    G = 4.2                                     # the ground storey
+    SH = 6.0                                    # shop depth
+    make_box(f"{name}_Mass", (xc, Y(6.0), (h + G) / 2.0), (w, 12.0, h - G), col)
+    make_box(f"{name}_Mass_Low", (xc, Y(SH + (12.0 - SH) / 2.0), G / 2.0), (w, 12.0 - SH, G), col)
+    r = _rng(seed + 7)
+    pal = DISPLAY_COLS[display]
+    nb = max(1, int(round(w / 7.0)))
+    PW = 0.5
+    bw = (w - PW * (nb + 1)) / nb
+    for i in range(nb + 1):
+        px = x0 + PW / 2.0 + i * (bw + PW)
+        make_box(f"{name}_Front_Stock_Pier_{i}", (px, Y(SH / 2.0), G / 2.0), (PW, SH, G), col)
+    for b in range(nb):
+        bx0 = x0 + PW + b * (bw + PW)
+        bx1 = bx0 + bw
+        bc = (bx0 + bx1) / 2.0
+        tag = f"{name}_Front_Stock_B{b}"
+        gtag = f"{name}_Shop_Glass_Stock_B{b}"
+        make_box(f"{tag}_Head", (bc, Y(SH / 2.0), (3.1 + G) / 2.0), (bw, SH, G - 3.1), col)
+        make_box(f"{tag}_Floor", (bc, Y(SH / 2.0), 0.05), (bw, SH, 0.10), (0.46, 0.40, 0.34, 1.0))
+        # the vestibule: door 1.8 wide, 2.2 back; glass returns either side
+        dw, DR, F = 1.8, 2.2, 0.6
+        make_box(f"{tag}_Vest_Tile", (bc, Y(DR / 2.0), 0.103), (dw, DR, 0.006), VEST_TILE)
+        for s in (-1, 1):
+            ex = bc + s * dw / 2.0                       # the return's line
+            ox = bx0 if s < 0 else bx1                   # the pier's inner face
+            span = abs(ex - ox)
+            mx = (ex + ox) / 2.0
+            make_box(f"{tag}_Bulk_{s:+d}", (mx, Y(F), 0.30), (span, 0.12, 0.40), (0.20, 0.20, 0.22, 1.0))
+            make_box(f"{gtag}_Disp_{s:+d}", (mx, Y(F), 1.80), (span - 0.02, 0.03, 2.60), SHOP_GLASS)
+            make_box(f"{tag}_Mull_{s:+d}", (ex, Y((F + DR) / 2.0), 1.80), (0.06, DR - F + 0.06, 2.60), (0.20, 0.20, 0.22, 1.0))
+            make_box(f"{tag}_RBulk_{s:+d}", (ex + s * 0.06, Y((F + DR) / 2.0), 0.30), (0.12, DR - F, 0.40), (0.20, 0.20, 0.22, 1.0))
+            make_box(f"{gtag}_Ret_{s:+d}", (ex + s * 0.06, Y((F + DR) / 2.0), 1.80), (0.03, DR - F - 0.12, 2.60), SHOP_GLASS)
+            # the display deck behind the glass, and what it shows
+            make_box(f"{tag}_Deck_{s:+d}", (mx, Y(F + 0.56), 0.30), (span, 1.0, 0.40), (0.30, 0.24, 0.20, 1.0))
+            n = max(1, int(span / 0.7))
+            for k in range(n):
+                kx = min(ex, ox) + (k + 0.5) * span / n
+                c = pal[(k + b + (s > 0)) % len(pal)]
+                if display == "lps":
+                    # sleeves on easels on the deck, and taped to the glass
+                    make_box(f"{tag}_Disp_{s:+d}_{k}", (kx, Y(F + 0.40), 0.66), (0.31, 0.03, 0.31), c)
+                    make_box(f"{tag}_Tape_{s:+d}_{k}", (kx + 0.12, Y(F + 0.02), 1.70 + (k % 2) * 0.40), (0.31, 0.01, 0.31),
+                             pal[(k + 2) % len(pal)])
+                elif display == "books":
+                    for q in range(3):
+                        make_box(f"{tag}_Disp_{s:+d}_{k}_{q}", (kx - 0.18 + q * 0.18, Y(F + 0.50), 0.50 + 0.12 + 0.03 * q),
+                                 (0.15, 0.04, 0.24 + 0.06 * q), pal[(k + q) % len(pal)])
+                else:
+                    hh = 0.2 + r() * 0.4
+                    make_box(f"{tag}_Disp_{s:+d}_{k}", (kx, Y(F + 0.55), 0.50 + hh / 2.0), (0.40, 0.40, hh), c)
+        make_box(f"{tag}_Door_Frame_Head", (bc, Y(DR), 2.42), (dw, 0.10, 0.08), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"{tag}_Door_Mid", (bc, Y(DR), 1.21), (0.06, 0.10, 2.34), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"{gtag}_Door", (bc, Y(DR), 1.27), (dw - 0.08, 0.03, 2.34), SHOP_GLASS)
+        make_box(f"{gtag}_Transom", (bc, Y(DR), 2.76), (dw, 0.03, 0.60), SHOP_GLASS)
+        make_box(f"{tag}_Door_Push_Bar", (bc + 0.33, Y(DR - 0.07), 1.05), (0.60, 0.04, 0.04), (0.70, 0.70, 0.72, 1.0))
+        # the shop: the back wall lit in the shop's colour, shelves of stock,
+        # a counter, the ceiling's fixtures
+        make_box(f"{tag}_Back", (bc, Y(SH - 0.05), 1.60), (bw, 0.10, 3.0), storefront_col)
+        for lv in range(4):
+            make_box(f"{tag}_Shelf_{lv}", (bc, Y(SH - 0.30), 0.40 + lv * 0.55), (bw - 0.2, 0.40, 0.03), (0.40, 0.32, 0.24, 1.0))
+            nk = int((bw - 0.4) / 0.5)
+            for k in range(nk):
+                if r() < 0.25:
+                    continue
+                hh = 0.18 + r() * 0.24
+                make_box(f"{tag}_Shelf_{lv}_{k}", (bx0 + 0.45 + k * 0.5, Y(SH - 0.30), 0.415 + lv * 0.55 + hh / 2.0),
+                         (0.40, 0.30, hh), pal[(k + lv) % len(pal)])
+        make_box(f"{tag}_Counter", (bx0 + bw * 0.25, Y(SH - 1.8), 0.55), (1.6, 0.6, 0.90), (0.36, 0.28, 0.22, 1.0))
+        make_box(f"{tag}_Table", (bc + bw * 0.15, Y(3.6), 0.45), (1.2, 0.8, 0.70), (0.40, 0.32, 0.24, 1.0))
+        for k in range(2):
+            make_box(f"{tag}_Table_Pile_{k}", (bc + bw * 0.15 - 0.3 + k * 0.6, Y(3.6), 0.85), (0.40, 0.50, 0.10), pal[(k + b) % len(pal)])
+        for k in range(2):
+            make_box(f"{tag}_Fixture_{k}", (bc, Y(1.8 + k * 2.4), 3.06), (min(2.4, bw - 0.4), 0.30, 0.08), (1.0, 0.96, 0.86, 1.0))
     if sign_col:
-        make_box(f"{name}_Sign", (xc, y - 0.08, 3.3), (w - 1.6, 0.16, 0.7), sign_col)  # back on the mass, not 2 cm off it
+        make_box(f"{name}_Sign", (xc, Y(-0.08), 3.6), (w - 1.6, 0.16, 0.7), sign_col)  # back on the head, not 2 cm off it
     floors = int((h - 4.2) / 3.2)
     for f in range(floors):
         for k in range(int(w / 2.2)):
-            make_box(f"{name}_Window_{f}_{k}", (x0 + 1.2 + k * 2.2, y - 0.02, 5.2 + f * 3.2), (1.2, 0.04, 1.6),
+            make_box(f"{name}_Window_{f}_{k}", (x0 + 1.2 + k * 2.2, Y(-0.02), 5.2 + f * 3.2), (1.2, 0.04, 1.6),
                      WARM if (lit and (f + k) % 3 == 0) else GLASS)
-    make_box(f"{name}_Cornice", (xc, y - 0.15, h - 0.2), (w + 0.2, 0.3, 0.4), CREAM)
+    make_box(f"{name}_Cornice", (xc, Y(-0.15), h - 0.2), (w + 0.2, 0.3, 0.4), CREAM)
 
 
 def build_street():
@@ -92,21 +189,20 @@ def build_street():
     make_box("Curb_S", (0.0, 2.05, 0.05), (140.0, 0.12, 0.18), (0.76, 0.74, 0.70, 1.0))
     make_box("Curb_N", (0.0, 11.95, 0.05), (140.0, 0.12, 0.18), (0.76, 0.74, 0.70, 1.0))
     # north side, facing the camera across the street
-    _facade("Bookstore", -30.0, -4.0, 16.0, 13.0, (0.80, 0.76, 0.66, 1.0), (0.96, 0.84, 0.56, 1.0), sign_col=(0.74, 0.14, 0.14, 1.0))
+    _facade("Bookstore", -30.0, -4.0, 16.0, 13.0, (0.80, 0.76, 0.66, 1.0), (0.96, 0.84, 0.56, 1.0), sign_col=(0.74, 0.14, 0.14, 1.0),
+            display="books", seed=1)
     make_box("Bookstore_Corner_Sign", (-4.4, 15.4, 6.0), (0.3, 1.2, 5.0), (0.74, 0.14, 0.14, 1.0))
-    make_box("Bookstore_Entry_Canopy", (-17.0, 15.2, 3.0), (6.0, 1.8, 0.2), (0.74, 0.14, 0.14, 1.0))
-    for k in range(6):
-        make_box(f"Bookstore_Window_Books_{k}", (-26.0 + k * 3.8, 15.9, 1.0), (2.6, 0.30, 0.9), ((0.4, 0.3, 0.2, 1.0), (0.2, 0.3, 0.5, 1.0), (0.6, 0.2, 0.2, 1.0))[k % 3])
-    _facade("Record_Store", -2.0, 8.0, 16.0, 9.6, BRICK, (0.92, 0.76, 0.50, 1.0), sign_col=(0.12, 0.12, 0.14, 1.0))
-    for k in range(8):
-        make_box(f"Record_Store_LP_{k}", (-1.0 + k * 1.1, 15.95, 1.7 + (k % 2) * 0.4), (0.31, 0.02, 0.31),  # taped to the glass
-                 ((0.86, 0.30, 0.20, 1.0), (0.20, 0.30, 0.70, 1.0), (0.94, 0.86, 0.30, 1.0), (0.10, 0.10, 0.10, 1.0))[k % 4])
-    _facade("Coffee_Shop", 10.0, 18.0, 16.0, 9.6, BRICK_DK, (1.0, 0.82, 0.52, 1.0), sign_col=(0.18, 0.34, 0.26, 1.0))
-    make_box("Coffee_Shop_Awning", (14.0, 15.2, 3.0), (7.6, 1.6, 0.2), (0.18, 0.34, 0.26, 1.0))
-    _facade("Brick_Block_E", 20.0, 38.0, 16.0, 16.2, BRICK, (0.86, 0.70, 0.48, 1.0))
-    _facade("Brick_Block_W", -50.0, -32.0, 16.0, 19.4, BRICK_DK, (0.80, 0.68, 0.48, 1.0))
-    # the south side behind the camera (seen in the reverse)
-    _facade("South_Block", -40.0, 36.0, -14.0, 13.0, (0.70, 0.66, 0.58, 1.0), (0.84, 0.70, 0.48, 1.0))
+    make_box("Bookstore_Entry_Canopy", (-20.19, 15.2, 3.0), (5.6, 1.8, 0.2), (0.74, 0.14, 0.14, 1.0))
+    _facade("Record_Store", -2.0, 8.0, 16.0, 9.6, BRICK, (0.92, 0.76, 0.50, 1.0), sign_col=(0.12, 0.12, 0.14, 1.0),
+            display="lps", seed=2)
+    _facade("Coffee_Shop", 10.0, 18.0, 16.0, 9.6, BRICK_DK, (1.0, 0.82, 0.52, 1.0), sign_col=(0.18, 0.34, 0.26, 1.0),
+            display="cafe", seed=3)
+    make_box("Coffee_Shop_Awning", (14.0, 15.2, 3.0), (6.8, 1.8, 0.2), (0.18, 0.34, 0.26, 1.0))
+    _facade("Brick_Block_E", 20.0, 38.0, 16.0, 16.2, BRICK, (0.86, 0.70, 0.48, 1.0), seed=4)
+    _facade("Brick_Block_W", -50.0, -32.0, 16.0, 19.4, BRICK_DK, (0.80, 0.68, 0.48, 1.0), seed=5)
+    # the south side behind the camera (seen in the reverse). Its face was on
+    # y -14, turned AWAY from the street; it faces north onto the sidewalk now.
+    _facade("South_Block", -40.0, 36.0, -2.0, 13.0, (0.70, 0.66, 0.58, 1.0), (0.84, 0.70, 0.48, 1.0), out=+1, seed=6)
     # street trees, newspaper boxes, a bus shelter, parked early-2000s cars
     r = _rng(2001)
     for k in range(10):
