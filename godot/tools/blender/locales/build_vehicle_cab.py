@@ -73,7 +73,7 @@ cab keeps the truck's upright glass); Finn's truck (vol7) is not Ben's
 green one — the crow on the dash, the shortwave in the back; the night
 rig; rain for ch4_storm.
 """
-import os, sys, math
+import os, sys, contextlib, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -521,6 +521,49 @@ JD_RED = (0.40, 0.18, 0.16, 1.0)
 JD_RED_DK = (0.30, 0.13, 0.12, 1.0)
 
 
+@contextlib.contextmanager
+def _skipping(g, prefixes, names=("make_box", "make_cyl", "make_lathe", "make_chamfer_box", "make_rot_box", "make_taper_cyl")):
+    """Inside the block, the builder's own helpers skip any part whose name
+    starts with one of `prefixes` — so a shared build (build_dash) can be run
+    for a car that has its own instruments. Wraps whatever is bound now (the
+    shifted() wrappers, or the audits' recorders), so the gates skip them too."""
+    saved = {n: g[n] for n in names if n in g}
+
+    def wrap(fn):
+        def w(name, *a, **k):
+            if str(name).startswith(tuple(prefixes)):
+                return None
+            return fn(name, *a, **k)
+        return w
+    for n, fn in saved.items():
+        g[n] = wrap(fn)
+    try:
+        yield
+    finally:
+        g.update(saved)
+
+
+def build_old_dash_2026_10():
+    """(round 3) Faust's older sedan's dash, in cab-local coordinates (run
+    inside the JD shifted() block): a long sweep speedometer in a hooded pod
+    behind the wheel, a push-button radio in the middle of the dash face,
+    two big knobs, the ashtray, a pair of slider levers for the heat."""
+    make_box("Old_Speedo_Hood", (-0.46, 0.93, 1.09), (0.52, 0.10, 0.04), DASH)
+    make_box("Old_Speedo_Face", (-0.46, 0.944, 0.99), (0.46, 0.006, 0.08), (0.86, 0.82, 0.70, 1.0))
+    for k in range(9):
+        make_box(f"Old_Speedo_Tick_{k}", (-0.66 + k * 0.05, 0.940, 1.015), (0.004, 0.002, 0.02), (0.14, 0.14, 0.14, 1.0))
+    make_box("Old_Speedo_Needle", (-0.50, 0.939, 0.99), (0.18, 0.002, 0.008), (0.86, 0.18, 0.12, 1.0))
+    make_box("Old_Radio_Face", (0.0, 0.944, 0.90), (0.30, 0.006, 0.08), (0.20, 0.20, 0.22, 1.0))
+    make_box("Old_Radio_Dial_Window", (0.0, 0.940, 0.915), (0.16, 0.002, 0.025), (0.92, 0.80, 0.54, 1.0))
+    for k in range(5):
+        make_box(f"Old_Radio_Button_{k}", (-0.08 + k * 0.04, 0.936, 0.88), (0.025, 0.012, 0.016), CHROME)
+    for s in (-1, 1):
+        make_cyl(f"Old_Radio_Knob_{s:+d}", (s * 0.12, 0.932, 0.90), 0.022, 0.02, CHROME, axis="Y", segments=10)
+    make_box("Old_Ashtray", (0.0, 0.944, 0.79), (0.18, 0.006, 0.05), CHROME)
+    for k in range(2):
+        make_box(f"Old_Heat_Slider_{k}", (0.24 + k * 0.08, 0.944, 0.80), (0.012, 0.006, 0.05), (0.80, 0.80, 0.82, 1.0))
+
+
 def _drop_parts(prefixes):
     """Remove built parts whose names start with any of `prefixes` (a shared
     builder brought them along). No-op without Blender."""
@@ -571,7 +614,12 @@ def build_judgement_day_2026_10():
                  TRUCK_GREEN=JD_RED, TRUCK_GREEN_DK=JD_RED_DK, SEAT=(0.36, 0.30, 0.26, 1.0),
                  SEAT_DK=(0.28, 0.24, 0.20, 1.0), HEADLINER=(0.66, 0.62, 0.56, 1.0)):
         build_cab_shell()
-        build_dash()
+        # (round 3) the truck's modern instrument cluster, vents, radio head,
+        # climate knobs and phone are not built in this car (_skipping), and
+        # the older dash's own go in after
+        with _skipping(globals(), ("Gauge_", "Radio_", "Dash_Vent_", "Climate_Knob_", "Hazard_Button", "Phone", "Map_Folded")):
+            build_dash()
+        build_old_dash_2026_10()
         # (round 2) an older sedan's FRONT BENCH, not the truck's buckets and
         # console; the column shifter; the rear bench as the truck's
         make_chamfer_box("Front_Bench_Base", (0.0, 0.15, 0.67), (1.70, 0.55, 0.42), SEAT, chamfer=0.05)

@@ -108,6 +108,9 @@ def make_seated_figure(prefix, x, y, *, heading=0.0, seat_h=0.46, h=1.72, coat=(
     make_cyl(f"{prefix}_Neck", at(0.0, 0.0, head_z - 0.10 * s), 0.05 * s, 0.08 * s, skin, segments=8)
     make_blob(f"{prefix}_Head", at(0.0, 0.01 * s, head_z + 0.03 * s), 0.11 * s, skin, noise=0.05, seed=len(prefix), squash=1.15)
     make_blob(f"{prefix}_Hair", at(0.0, -0.01 * s, head_z + 0.08 * s), 0.115 * s, hair, noise=0.12, seed=len(prefix) + 7, squash=0.8)
+    # the back of the head is hair (a seated figure is often seen from behind:
+    # a back seat, a bleacher; without this the skin read as a face)
+    make_blob(f"{prefix}_Hair_Back", at(0.0, -0.045 * s, head_z + 0.0 * s), 0.10 * s, hair, noise=0.10, seed=len(prefix) + 9, squash=1.05)
     shoulder_z = base + 0.18 * s + torso_h - 0.04 * s
     if arms == "folded":
         make_rot_box(f"{prefix}_Arms_Folded", at(0.0, 0.14 * s, shoulder_z - 0.22 * s), (0.40 * s, 0.10 * s, 0.10 * s), coat, yaw=yaw)
