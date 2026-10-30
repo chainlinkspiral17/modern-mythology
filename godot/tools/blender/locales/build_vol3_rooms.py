@@ -426,13 +426,21 @@ def build_catwalk():
         make_box(f"Road_Tail_Light_Stock_{k}", (x0 + 28.0, y0 - 100.0 + k * 8.0, cz + 0.2), (0.6, 1.6, 0.2), (0.96, 0.20, 0.16, 1.0))
         make_box(f"Road_Head_Light_Stock_{k}", (x0 + 32.0, y0 - 96.0 + k * 8.0, cz + 0.2), (0.6, 1.6, 0.2), (0.98, 0.96, 0.90, 1.0))
     make_box("Road_Asphalt", (x0 + 30.0, y0 + L / 2.0, cz + 0.02), (10.0, 300.0, 0.04), (0.10, 0.10, 0.12, 1.0))
-    for k in range(40):
-        make_box(f"Streetlamp_Quilt_Glow_Stock_{k}", (x0 - 140.0 + (k % 10) * 30.0, y0 - 120.0 + (k // 10) * 80.0, cz + 0.4), (0.8, 0.8, 0.4),
-                 (1.0, 0.80, 0.46, 1.0))
-    make_box("Near_Roof", (x0 + 16.0, y0 + 24.0, -12.0), (16.0, 14.0, 56.0), (0.40, 0.40, 0.42, 1.0))
-    make_box("Near_Roof_Vent", (x0 + 14.0, y0 + 24.0, 16.6), (1.2, 1.2, 1.2), (0.50, 0.50, 0.52, 1.0))
+    # (2026-10-30) "lamps up on poles, thousands and thousands of them laid
+    # out over the land like a quilt": 40 lamps on a 30 m grid read as a
+    # dozen dots; now a 12 m grid out past the towers, both sides
+    k = 0
+    for i in range(16):
+        for j in range(12):
+            lx, ly = x0 + 36.0 + i * 12.0 + (j % 2) * 6.0, y0 - 60.0 + j * 14.0
+            make_box(f"Streetlamp_Quilt_Glow_Stock_{k}", (lx, ly, cz + 0.4), (0.8, 0.8, 0.4), (1.0, 0.80, 0.46, 1.0))
+            k += 1
+    # the near roof is BELOW the catwalk ("On a near roof a vent breathes
+    # steam up into the dark") — it stood 14 m above it and filled the view
+    make_box("Near_Roof", (x0 + 16.0, y0 + 24.0, -24.0), (16.0, 14.0, 32.0), (0.40, 0.40, 0.42, 1.0))
+    make_box("Near_Roof_Vent", (x0 + 14.0, y0 + 24.0, -7.4), (1.2, 1.2, 1.2), (0.50, 0.50, 0.52, 1.0))
     for k in range(4):
-        make_blob(f"Vent_Steam_Cloud_{k}", (x0 + 14.0 + k * 0.3, y0 + 24.0, 17.8 + k * 0.9), 0.6 + k * 0.3, (0.80, 0.80, 0.82, 1.0), noise=0.3, seed=k)
+        make_blob(f"Vent_Steam_Cloud_{k}", (x0 + 14.0 + k * 0.3, y0 + 24.0, -6.2 + k * 0.9), 0.6 + k * 0.3, (0.80, 0.80, 0.82, 1.0), noise=0.3, seed=k)
     make_chamfer_box("Helicopter_Sky_Body", (x0 + 40.0, y0 + 50.0, 22.0), (2.0, 5.0, 1.8), (0.20, 0.22, 0.26, 1.0), chamfer=0.4)
     make_blob("Helicopter_Light_Red_Glow", (x0 + 40.0, y0 + 47.4, 22.4), 0.25, (1.0, 0.20, 0.16, 1.0), noise=0.0, seed=1)
     make_blob("Helicopter_Light_White_Glow", (x0 + 40.0, y0 + 52.6, 22.4), 0.25, (1.0, 1.0, 1.0, 1.0), noise=0.0, seed=2)

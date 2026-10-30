@@ -201,7 +201,7 @@ const CAMERA_PRESETS := {
 		# and the floor + counter outline read unambiguously.
 		"camera_origin": Vector3(0.0, 2.75, -4.5),
 		"camera_rotation": Vector3(-PI / 2.0, 0.0, 0.0),
-		"fov": 70.0,
+		"fov": 72.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Priestess chapter ─────────────────────────────────
@@ -4818,9 +4818,12 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/vol3_rooms.tscn",
 		"requires_glb": "res://assets/3d/locales/vol3_rooms.glb",
 		# "a tube of glass slung out over nothing": at the rail, the city lit below, the road of red and white lights
-		"camera_origin": Vector3(2100.9, 1.5, -20.0),
-		"camera_rotation": Vector3(-0.30, deg_to_rad(-90.0), 0.0),
-		"fov": 64.0,
+		# (2026-10-30) at the E rail, over it and down: the near roof and its
+		# steam below, the towers of lit windows, the road and the lamp quilt
+		# (the near roof stood 14 m ABOVE the catwalk and filled the view)
+		"camera_origin": Vector3(2100.85, 1.7, -20.0),
+		"camera_rotation": Vector3(-0.36, deg_to_rad(-95.0), 0.0),
+		"fov": 70.0,
 		"suppress_input": true,
 	},
 	"catwalk_walk": {
