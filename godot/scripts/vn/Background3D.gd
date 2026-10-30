@@ -4777,7 +4777,11 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.4, 1.6, -3.0),
 		"camera_rotation": Vector3(0.0, deg_to_rad(160.0), 0.0),
 		"fov": 64.0,
-		"env": {"ambient_color": Color(0.66, 0.68, 0.72, 1), "ambient_energy": 0.45, "fog_color": Color(0.46, 0.48, 0.52, 1)},
+		# (2026-10-30: the locale's night background made it black at 4 a.m.; the
+		# text has it "gray, about to be morning" — a grey pre-dawn sky)
+		"env": {"sky_top": Color(0.34, 0.38, 0.46, 1), "sky_horizon": Color(0.64, 0.64, 0.66, 1),
+			"ground_horizon": Color(0.44, 0.44, 0.46, 1), "ground_bottom": Color(0.22, 0.22, 0.24, 1),
+			"ambient_color": Color(0.66, 0.68, 0.72, 1), "ambient_energy": 0.55, "fog_color": Color(0.50, 0.52, 0.56, 1)},
 		"suppress_input": true,
 	},
 	"june_closet": {
