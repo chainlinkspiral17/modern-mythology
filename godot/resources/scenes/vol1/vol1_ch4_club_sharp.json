@@ -36,8 +36,16 @@
    "text": "EXT. CLUB SHARP — NIGHT"
   },
   {
+   "t": "bg",
+   "src": "3d:club_sharp_arcade"
+  },
+  {
    "t": "narrate",
    "text": "Club Sharp has a # for a logo. Dickens Dean seems to have the run of the place. There is a gigantic arcade downstairs, several dance floors, and a bowling alley. Music and movement seem to flow from one area to the next."
+  },
+  {
+   "t": "bg",
+   "src": "3d:club_sharp"
   },
   {
    "t": "show",
@@ -127,16 +135,19 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"What if insanity was a large part of me to begin with?\"", "skill": "rhetoric",
-     "goto": 22
+     "text": "\"What if insanity was a large part of me to begin with?\"",
+     "skill": "rhetoric",
+     "goto": 24
     },
     {
-     "text": "\"Then I'll fortify. I have things to make.\"", "skill": "composure",
-     "goto": 25
+     "text": "\"Then I'll fortify. I have things to make.\"",
+     "skill": "composure",
+     "goto": 27
     },
     {
-     "text": "[Say nothing. Watch the dance floors.]", "skill": "empathy",
-     "goto": 28
+     "text": "[Say nothing. Watch the dance floors.]",
+     "skill": "empathy",
+     "goto": 30
     }
    ]
   },
