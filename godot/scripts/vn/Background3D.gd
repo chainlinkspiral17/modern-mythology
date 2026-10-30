@@ -2611,6 +2611,22 @@ const CAMERA_PRESETS := {
 		"fov": 58.0,
 		"suppress_input": true,
 	},
+	"bigbox_lot_day": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# (2026-10-30, draft 1) vol 4 cc 4: "Wal-Mart Parking Lot ... Carrie
+		# stands in the parking lot, wearing a Wal-Mart vest." It played on
+		# Cosmic Comics' lot. The big box's own lot far W of the road
+		# (build_bigbox_lot_2026_10): from a drive aisle across the parked
+		# rows to the long front, its blue band and the S vestibule.
+		"camera_origin": Vector3(-372.0, 1.6, 14.0),
+		"camera_rotation": Vector3(0.03, 1.52, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.86, 1), "sky_horizon": Color(0.86, 0.88, 0.86, 1),
+			"ground_horizon": Color(0.56, 0.56, 0.46, 1), "ground_bottom": Color(0.24, 0.24, 0.20, 1),
+			"ambient_color": Color(0.90, 0.88, 0.84, 1), "ambient_energy": 0.95, "fog_color": Color(0.84, 0.86, 0.84, 1)},
+		"suppress_input": true,
+	},
 	"new_auburn_lot": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
 		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",

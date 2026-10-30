@@ -225,6 +225,11 @@
   "prims": 131452,
   "objects": 384
  },
+ "new_auburn_road": {
+  "draw": 846,
+  "prims": 208080,
+  "objects": 1016
+ },
  "new_orleans_apartment": {
   "draw": 74,
   "prims": 27788,

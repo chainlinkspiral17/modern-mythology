@@ -1647,9 +1647,12 @@
       "built": "2026-10-16 draft 1"
     },
     "vol4_bigbox_parking_lot_day": {
-      "fit": "reuse",
-      "to": "3d:new_auburn_lot",
-      "scenes": 1
+      "fit": "exact",
+      "to": "3d:bigbox_lot_day",
+      "scenes": 1,
+      "build": "new_auburn_road",
+      "built": "2026-10-30 draft 1",
+      "note": "the big box's lot (was Cosmic Comics' front lot): the long tan front, the blue band, carts, rows of cars"
     },
     "vol4_blue_sand_beach": {
       "fit": "2d",

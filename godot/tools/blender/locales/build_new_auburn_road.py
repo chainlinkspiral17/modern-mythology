@@ -697,6 +697,80 @@ def build_horizon():
                    sides="EW", cx=0.0, cy=0.0, profile="treeline")
 
 
+def build_bigbox_lot_2026_10():
+    """vol 4 "cc 4": "Wal-Mart Parking Lot"; "Carrie stands in the parking
+    lot, wearing a Wal-Mart vest."; "Wal-Mart is always hiring ... it's big
+    and you can slip under the radar." It played on Cosmic Comics' front
+    lot (vol 6's). Its own place now, far W of the road (x -470..-330): the
+    big box's long tan front with its blue sign band (no lettering — the
+    prose names it, the set does not brand it), two entry vestibules, the
+    cart corrals, the lot's rows of cars, the light poles, the islands, a
+    line of carts being pushed in.
+    DRAFT 1 targets for draft 2: the garden centre's fence at the S end,
+    the vest-wearing greeter at the door, the heat off the asphalt, the
+    road and its traffic beyond the lot's E edge."""
+    from _props.vehicles import make_car
+    from _props.trees import make_broadleaf
+    import random
+    rnd = random.Random(1964)
+    fx = -450.0                                   # the store's front face (it faces E)
+    tan = (0.74, 0.68, 0.56, 1.0)
+    make_box("BigBox_Ground", (-400.0, 0.0, -0.04), (160.0, 200.0, 0.04), (0.42, 0.46, 0.32, 1.0))
+    make_box("BigBox_Store", (fx - 40.0, 0.0, 4.5), (80.0, 130.0, 9.0), tan)
+    make_box("BigBox_Parapet", (fx - 0.4, 0.0, 9.4), (0.8, 130.0, 0.8), (0.66, 0.60, 0.50, 1.0))
+    make_box("BigBox_Base_Band", (fx + 0.02, 0.0, 0.5), (0.06, 130.0, 1.0), (0.56, 0.52, 0.44, 1.0))
+    make_box("BigBox_Sign_Band", (fx + 0.15, 0.0, 7.4), (0.3, 30.0, 2.4), (0.14, 0.32, 0.62, 1.0))
+    for k in range(8):
+        make_box(f"BigBox_Sign_Letter_Ghost_{k}", (fx + 0.32, -11.0 + k * 3.1, 7.4), (0.04, 2.2, 1.5), (0.92, 0.94, 0.96, 1.0))
+    make_box("BigBox_Sign_Spark", (fx + 0.32, 14.2, 7.4), (0.04, 1.6, 1.6), (0.98, 0.78, 0.18, 1.0))
+    # the two entry vestibules, their glass and doors, the canopy
+    for i, vy in enumerate((-22.0, 22.0)):
+        make_box(f"BigBox_Vestibule_{i}", (fx + 3.0, vy, 2.0), (6.0, 12.0, 4.0), (0.70, 0.64, 0.52, 1.0))
+        make_box(f"BigBox_Vestibule_Glass_{i}", (fx + 6.02, vy, 1.4), (0.04, 8.0, 2.6), (0.30, 0.36, 0.40, 1.0))
+        make_box(f"BigBox_Vestibule_Doors_Glow_{i}", (fx + 6.04, vy, 1.2), (0.03, 3.0, 2.2), (0.84, 0.86, 0.80, 1.0))
+        make_box(f"BigBox_Vestibule_Band_{i}", (fx + 6.05, vy, 3.4), (0.06, 12.0, 0.6), (0.14, 0.32, 0.62, 1.0))
+    make_box("BigBox_Walk", (fx + 9.0, 0.0, 0.06), (6.0, 130.0, 0.12), (0.70, 0.70, 0.66, 1.0))
+    for k in range(10):
+        make_cyl(f"BigBox_Bollard_{k}", (fx + 11.6, -27.0 + 6.0 * k, 0.55), 0.14, 1.1, (0.96, 0.80, 0.20, 1.0), segments=10)
+    # the lot: asphalt, bays in rows running E-W, drive aisles between
+    make_box("BigBox_Lot", (-400.0, 0.0, 0.01), (90.0, 140.0, 0.03), (0.24, 0.24, 0.25, 1.0))
+    rows = (-430.0, -414.0, -398.0, -382.0)
+    for r, rx in enumerate(rows):
+        for k in range(46):
+            y = -62.0 + k * 2.8
+            make_box(f"BigBox_Stripe_Stock_{r}_{k}", (rx, y, 0.03), (10.0, 0.10, 0.01), (0.90, 0.90, 0.86, 1.0))
+        # islands with a tree at the row ends
+        for e, ey in enumerate((-66.0, 66.0)):
+            make_box(f"BigBox_Island_{r}_{e}", (rx, ey, 0.10), (10.0, 4.0, 0.20), (0.62, 0.62, 0.58, 1.0))
+            make_broadleaf(f"BigBox_Island_Tree_{r}_{e}", rx, ey, 5.0, (0.26, 0.38, 0.20, 1.0), (0.30, 0.24, 0.18, 1.0))
+        # the cars, nose in, both sides of each row's centreline
+        for k in range(46):
+            for side in (-1, 1):
+                if rnd.random() < (0.42 if abs(-62.0 + k * 2.8) < 26 else 0.10):
+                    cy = -62.0 + k * 2.8 + 1.4
+                    col = ((0.80, 0.80, 0.80, 1.0), (0.20, 0.20, 0.22, 1.0), (0.56, 0.16, 0.14, 1.0), (0.30, 0.36, 0.46, 1.0),
+                           (0.62, 0.60, 0.56, 1.0), (0.90, 0.90, 0.88, 1.0), (0.24, 0.30, 0.24, 1.0))[rnd.randrange(7)]
+                    make_car(f"BigBox_Car_Stock_{r}_{k}_{side:+d}", rx + side * 2.5, cy, 4.5, col, pickup=rnd.random() < 0.25,
+                             along="X")
+    # light poles down the rows, double heads
+    for r, rx in enumerate(rows):
+        for k in range(5):
+            py = -50.0 + k * 25.0
+            make_cyl(f"BigBox_Light_Pole_Stock_{r}_{k}", (rx, py, 6.0), 0.12, 12.0, (0.56, 0.56, 0.58, 1.0), segments=8)
+            make_box(f"BigBox_Light_Pole_Base_Stock_{r}_{k}", (rx, py, 0.45), (0.6, 0.6, 0.9), (0.66, 0.66, 0.62, 1.0))
+            for s in (-1, 1):
+                make_box(f"BigBox_Light_Head_Stock_{r}_{k}_{s:+d}", (rx + s * 0.8, py, 11.9), (1.0, 0.5, 0.20), (0.40, 0.40, 0.42, 1.0))
+    # cart corrals, carts, a line being pushed in
+    for i, (cx_, cy_) in enumerate(((-414.0, -20.0), (-382.0, 10.0), (-398.0, 38.0))):
+        for s in (-1, 1):
+            make_box(f"BigBox_Corral_Rail_{i}_{s:+d}", (cx_ + s * 1.0, cy_, 0.9), (0.06, 6.0, 0.06), (0.62, 0.64, 0.66, 1.0))
+        make_box(f"BigBox_Corral_Sign_{i}", (cx_, cy_ + 3.0, 1.6), (2.0, 0.06, 0.7), (0.14, 0.32, 0.62, 1.0))
+        for c in range(4):
+            make_box(f"BigBox_Cart_Stock_{i}_{c}", (cx_, cy_ - 2.0 + c * 0.45, 0.55), (0.55, 0.9, 0.7), (0.70, 0.72, 0.74, 1.0))
+    for c in range(9):
+        make_box(f"BigBox_Cart_Line_Stock_{c}", (-436.0 + c * 0.45, -6.0, 0.55), (0.9, 0.55, 0.7), (0.70, 0.72, 0.74, 1.0))
+
+
 def main():
     clear_scene()
     build_road()
@@ -712,6 +786,9 @@ def main():
     build_two_lane_north()
     build_substation()
     build_horizon()
+    build_bigbox_lot_2026_10()
+    from _props.geometry import join_stock
+    join_stock()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_auburn_road.glb"))
     print(f"\n[build_new_auburn_road] exporting to {out}")
     export_glb(out)
