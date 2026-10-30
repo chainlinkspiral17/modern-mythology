@@ -105,7 +105,9 @@ def make_seated_figure(prefix, x, y, *, heading=0.0, seat_h=0.46, h=1.72, coat=(
     torso_h = 0.46 * s
     make_rot_box(f"{prefix}_Torso", at(0.0, -0.01 * s, base + 0.18 * s + torso_h / 2.0), (0.42 * s, 0.24 * s, torso_h), dress or coat, yaw=yaw)
     head_z = base + 0.80 * s
-    make_cyl(f"{prefix}_Neck", at(0.0, 0.0, head_z - 0.10 * s), 0.05 * s, 0.08 * s, skin, segments=8)
+    # (round 6) the neck runs from 3 cm inside the torso's top into the head
+    # (it hung 2 cm over the torso: support_audit read every head as floating)
+    make_cyl(f"{prefix}_Neck", at(0.0, 0.0, head_z - 0.115 * s), 0.05 * s, 0.11 * s, skin, segments=8)
     make_blob(f"{prefix}_Head", at(0.0, 0.01 * s, head_z + 0.03 * s), 0.11 * s, skin, noise=0.05, seed=len(prefix), squash=1.15)
     make_blob(f"{prefix}_Hair", at(0.0, -0.01 * s, head_z + 0.08 * s), 0.115 * s, hair, noise=0.12, seed=len(prefix) + 7, squash=0.8)
     # the back of the head is hair (a seated figure is often seen from behind:
