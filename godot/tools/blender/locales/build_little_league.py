@@ -249,12 +249,80 @@ def build_visitors():
         make_box(f"Vis_Dugout_Bench_Leg_{k}", (x1 - 0.35, y0 + 0.6 + k * 1.7, 0.21), (0.30, 0.06, 0.42), METAL)
 
 
+def build_game_2026_10():
+    """DRAFT 3 (2026-10-30): the field was empty in every frame — "half the
+    people in attendance" hollering at nobody. Two states of the same game,
+    stripped per preset (Background3D `strip`):
+      Game_Bat_*   — "we were up to bat": the visitors in the field (grey and
+                     blue), Chris at the plate ("All Chris had to do at bat"),
+                     their catcher, the umpire  → dugout, third_base, stand
+      Game_Field_* — the narrator's team in the field (white and red), Chris
+                     on the mound "pulling his glove and throwing arm to his
+                     chest", our catcher, a visiting batter, the umpire; no one
+                     at first or second (the narrator's own bags: the camera)
+                                                 → mound, first_base, home_plate
+    And the crowd on the bleachers, standing, both states.
+    Draft 4 targets: a catcher's crouch (the figures only stand), the bat
+    and gloves as props in hand, the coaches at the boxes, dust kicked up."""
+    from _props.figures import make_standing_figure
+    home_top, home_pants = (0.94, 0.94, 0.92, 1.0), (0.94, 0.94, 0.92, 1.0)
+    vis_top, vis_pants = (0.56, 0.58, 0.60, 1.0), (0.56, 0.58, 0.60, 1.0)
+    cap_home, cap_vis = (0.70, 0.14, 0.12, 1.0), (0.16, 0.24, 0.46, 1.0)
+    ump = (0.12, 0.12, 0.14, 1.0)
+
+    def face_home(x, y):
+        return math.atan2(-x, -y)
+
+    def player(nm, x, y, top, pants, cap, h=1.56, heading=None, arms="down"):
+        hd = face_home(x, y) if heading is None else heading
+        make_standing_figure(nm, x, y, heading=hd, h=h, coat=top, pants=pants, hair=cap, arms=arms)
+
+    fielders = {"P": (-9.9, 9.9), "C": (0.75, -0.75), "SS": (-22.0, 11.0), "3B": (-19.5, 2.4),
+                "LF": (-38.0, 16.0), "CF": (-34.0, 34.0), "RF": (-16.0, 38.0), "1B": (-1.4, 19.2), "2B": (-9.0, 22.6)}
+    # -- we're up to bat: the visitors field all nine; Chris bats --
+    for pos, (x, y) in fielders.items():
+        player(f"Game_Bat_Vis_{pos}", x, y, vis_top, vis_pants, cap_vis, h=(1.10 if pos == "C" else 1.56),
+               arms=("front" if pos in ("P", "C", "SS", "3B", "1B", "2B") else "down"))
+    player("Game_Bat_Chris", -0.75, -0.75, home_top, home_pants, cap_home, h=1.60, heading=math.pi / 4.0, arms="front")
+    make_rot_box("Game_Bat_Chris_Bat", (-0.62, -0.88, 1.55), (0.06, 0.06, 0.80), (0.70, 0.56, 0.36, 1.0), roll=0.5, pitch=-0.3)
+    player("Game_Bat_Umpire", 1.45, -1.45, ump, ump, ump, h=1.80, arms="front")
+    # -- we're in the field: Chris pitching, our catcher, their batter --
+    for pos in ("P", "C", "SS", "3B", "LF", "CF", "RF"):
+        x, y = fielders[pos]
+        player(f"Game_Field_Home_{pos}", x, y, home_top, home_pants, cap_home, h=(1.10 if pos == "C" else (1.62 if pos == "P" else 1.56)),
+               arms=("front" if pos in ("P", "C", "SS", "3B") else "down"))
+    player("Game_Field_Vis_Batter", -0.75, -0.75, vis_top, vis_pants, cap_vis, h=1.58, heading=math.pi / 4.0, arms="front")
+    make_rot_box("Game_Field_Vis_Bat", (-0.62, -0.88, 1.55), (0.06, 0.06, 0.80), (0.66, 0.54, 0.36, 1.0), roll=0.5, pitch=-0.3)
+    player("Game_Field_Umpire", 1.45, -1.45, ump, ump, ump, h=1.80, arms="front")
+    # -- the crowd on the bleachers (seats z 0.42 + k * 0.40 at y -8.4 - k * 0.7), standing to holler --
+    import random
+    rnd = random.Random(1311)
+    shirts = ((0.86, 0.30, 0.26, 1.0), (0.30, 0.46, 0.66, 1.0), (0.92, 0.90, 0.80, 1.0), (0.40, 0.54, 0.34, 1.0),
+              (0.92, 0.74, 0.30, 1.0), (0.60, 0.40, 0.56, 1.0), (0.24, 0.24, 0.26, 1.0))
+    n = 0
+    for k in range(4):
+        for j in range(7):
+            if rnd.random() < 0.35:
+                continue
+            x = 2.8 + j * 1.6 + rnd.uniform(-0.3, 0.3)
+            kid = rnd.random() < 0.3
+            make_standing_figure(f"Crowd_{n}", x, -8.4 - k * 0.7, heading=rnd.uniform(-0.3, 0.3), h=(1.20 if kid else rnd.uniform(1.62, 1.84)),
+                                 coat=shirts[rnd.randrange(len(shirts))], pants=(0.30, 0.32, 0.40, 1.0) if rnd.random() < 0.6 else (0.70, 0.62, 0.50, 1.0),
+                                 arms=("down", "folded", "front")[rnd.randrange(3)], z0=0.42 + k * 0.40 + 0.02)
+            n += 1
+    # dirty children at their feet on the pavement
+    for i, (x, y) in enumerate(((3.4, -7.4), (6.2, -7.2), (11.0, -7.6))):
+        make_standing_figure(f"Crowd_Kid_{i}", x, y, heading=rnd.uniform(0, 6.28), h=1.0, coat=shirts[(i * 3) % len(shirts)],
+                             pants=(0.30, 0.32, 0.40, 1.0))
+
+
 def main():
     clear_scene()
     build_field()
     build_dugout()
     build_crowd_side()
     build_visitors()
+    build_game_2026_10()
     try:
         join_stock()
         join_named("Fence_Out_", "Fence_Outfield")

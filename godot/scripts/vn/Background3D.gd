@@ -3845,6 +3845,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.04, deg_to_rad(-58.0), 0.0),
 		"fov": 68.0,
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
+		"strip": ["Game_Field_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
 	},
 	"ballfield_third_base": {
@@ -3853,8 +3854,9 @@ const CAMERA_PRESETS := {
 		# "I sat on third" - from the bag, in at the batter and "the dusty home plate"
 		"camera_origin": Vector3(-18.0, 1.3, -0.6),
 		"camera_rotation": Vector3(-0.03, deg_to_rad(-90.0), 0.0),
-		"fov": 64.0,
+		"fov": 40.0,   # (2026-10-30) in on the batter, the catcher, the ump
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
+		"strip": ["Game_Field_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
 	},
 	"ballfield_mound": {
@@ -3862,9 +3864,10 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/little_league.glb",
 		# "Chris stepped forward and down the mound" - from first base, the catcher beyond
 		"camera_origin": Vector3(1.2, 1.3, -18.8),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(145.0), 0.0),
-		"fov": 60.0,
+		"camera_rotation": Vector3(-0.03, deg_to_rad(150.0), 0.0),
+		"fov": 40.0,   # (2026-10-30) in on Chris and home: at 60 deg the players were specks
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
+		"strip": ["Game_Bat_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
 	},
 	"ballfield_first_base": {
@@ -3875,6 +3878,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, deg_to_rad(150.0), 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
+		"strip": ["Game_Bat_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
 	},
 	"ballfield_home_plate": {
@@ -3883,8 +3887,9 @@ const CAMERA_PRESETS := {
 		# "I watched from second behind the pitcher" - the last inning, in at home
 		"camera_origin": Vector3(-17.5, 1.2, -17.5),
 		"camera_rotation": Vector3(-0.04, deg_to_rad(-135.0), 0.0),
-		"fov": 60.0,
+		"fov": 42.0,   # (2026-10-30) past the pitcher, in at home
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
+		"strip": ["Game_Bat_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
 	},
 	"ballfield_stand": {
@@ -3895,6 +3900,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.10, deg_to_rad(141.0), 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
+		"strip": ["Game_Field_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
 	},
 	"chau_hall_noon": {
