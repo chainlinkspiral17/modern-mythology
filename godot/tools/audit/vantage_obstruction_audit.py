@@ -78,6 +78,11 @@ DELIBERATE_MARKERS = {
     # the cedar, on the far horizon, the rust-colored thermal smear" — the
     # smear is a sky card, the cedars are passable, the ground is ignored.
     ("centro_stockroom", "shot_insert_smear"),
+    # (2026-10-30) vol 3 ch7's rolls of quarters ride inside the Voyager, which
+    # has no interior: the insert frames the van from close behind (marker_aim
+    # KNOWN_UNRESOLVED); the only geometry named "roll" is Room 4's bedroll at
+    # the motel 400 m off, which is not its subject.
+    ("desert_route", "shot_insert_roll__utah_highway_day"),
     # (2026-10-10) inside the van at the NexCorp pump the cargo bay is 1.96 m
     # wide: its close-ups are at arm's length by design, like the Subaru's.
     ("nexcorp_fueling_station", "shot_closeup_diego__nexcorp_van_cargo"),
