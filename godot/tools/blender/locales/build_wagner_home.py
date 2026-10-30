@@ -347,6 +347,30 @@ def build_jacob_house():
     make_box("Jacob_Lot_Ground", (jx, 4.0, -0.025), (10.0, 8.6, 0.05), (0.30, 0.36, 0.22, 1.0))
     make_box("Jacob_Walk", (jx - 1.2, -5.0, -0.001), (1.0, 7.6, 0.008), (0.62, 0.60, 0.56, 1.0))
     make_box("Jacob_Trash_Can", (jx + 3.4, -0.6, 0.45), (0.56, 0.56, 0.90), (0.30, 0.34, 0.30, 1.0))
+    # (2026-10-30) the block: Jacob's stood alone on a patch of grass. Now
+    # the houses either side, the sidewalk, a yard tree, the mailbox, the
+    # porch light, and the stoop where he waits ("Jacob is waiting for them
+    # outside, smoking") with the coffee can he uses for butts.
+    make_box("Jacob_Sidewalk", (jx, -9.0, 0.02), (40.0, 1.6, 0.06), (0.62, 0.60, 0.56, 1.0))
+    make_box("Jacob_Block_Lawn", (jx, -4.0, -0.03), (40.0, 9.0, 0.04), (0.30, 0.38, 0.22, 1.0))
+    for k, (nx, body, roof_c) in enumerate(((jx - 12.0, (0.62, 0.66, 0.70, 1.0), (0.30, 0.28, 0.28, 1.0)),
+                                          (jx + 12.0, (0.80, 0.74, 0.58, 1.0), (0.36, 0.24, 0.20, 1.0)))):
+        make_box(f"Jacob_Neighbor_{k}_Body", (nx, 4.5, 1.4), (8.4, 8.0, 2.8), body)
+        make_gable(f"Jacob_Neighbor_{k}_Roof", (nx, 4.5, 2.8 + 0.9), (9.2, 8.8, 1.8), roof_c, ridge_axis='X')
+        make_box(f"Jacob_Neighbor_{k}_Door", (nx + 1.5, 0.48, 1.0), (0.90, 0.04, 2.0), (0.46, 0.30, 0.24, 1.0))
+        for w, wx in enumerate((nx - 2.0, nx - 0.4)):
+            make_box(f"Jacob_Neighbor_{k}_Window_{w}", (wx, 0.48, 1.5), (1.1, 0.03, 1.0), (0.30, 0.34, 0.38, 1.0))
+        make_box(f"Jacob_Neighbor_{k}_Walk", (nx + 1.5, -4.2, -0.001), (1.0, 8.4, 0.008), (0.62, 0.60, 0.56, 1.0))
+    make_box("Jacob_Neighbor_Drive", (jx + 6.5, -4.0, -0.002), (2.8, 9.0, 0.008), (0.50, 0.50, 0.50, 1.0))
+    make_car("Jacob_Neighbor_Car", jx + 6.5, -3.4, 4.5, (0.56, 0.62, 0.70, 1.0), along="Y")
+    make_cyl("Jacob_Yard_Tree_Trunk", (jx + 3.2, -3.4, 1.4), 0.16, 2.8, (0.32, 0.24, 0.18, 1.0), segments=8)
+    make_blob("Jacob_Yard_Tree_Crown", (jx + 3.2, -3.4, 3.6), 1.6, (0.24, 0.36, 0.20, 1.0), noise=0.25, seed=14, squash=0.9)
+    make_box("Jacob_Mailbox_Post", (jx - 4.2, -8.0, 0.55), (0.08, 0.08, 1.10), (0.30, 0.24, 0.18, 1.0))
+    make_box("Jacob_Mailbox", (jx - 4.2, -8.0, 1.16), (0.20, 0.46, 0.22), (0.24, 0.26, 0.28, 1.0))
+    make_box("Jacob_Porch_Light", (jx - 0.55, -0.05, 2.05), (0.14, 0.10, 0.22), (0.96, 0.88, 0.64, 1.0))
+    make_cyl("Jacob_Butt_Can", (jx - 0.75, -0.35, 0.25), 0.07, 0.15, (0.62, 0.56, 0.30, 1.0), segments=10)
+    for s_ in (-1, 1):
+        make_box(f"Jacob_Stoop_Rail_{s_:+d}", (jx - 1.2 + s_ * 0.68, -0.6, 0.62), (0.04, 1.1, 0.04), (0.20, 0.20, 0.22, 1.0))
 
 
 def build_outside():
