@@ -295,6 +295,49 @@ light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
 
+; (2026-10-30) the after party had no light: the bulbs on the beams, the back bar, the contrails' glow
+[node name="Loft_Bulb_0_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.4, 2.8000000000000003, -4.0)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.2
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="Loft_Bulb_1_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.0, 2.8000000000000003, -9.5)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.2
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="Loft_Bulb_2_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6, 2.8000000000000003, -4.0)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.2
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="Back_Bar_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0, 2.6, -13.6)
+light_color = Color(1.0, 0.60, 0.40, 1)
+light_energy = 1.0
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Contrail_Pink_Glow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.4, 2.4, -8.6)
+light_color = Color(1.0, 0.46, 0.70, 1)
+light_energy = 1.2
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Contrail_Orange_Glow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2, 2.6, -5.2)
+light_color = Color(1.0, 0.62, 0.24, 1)
+light_energy = 1.0
+omni_range = 5.0
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

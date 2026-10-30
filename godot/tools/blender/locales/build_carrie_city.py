@@ -40,6 +40,7 @@ from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_bed, make_chair, make_table, make_lamp, make_sofa
 from _props.decor import make_floor_plant
 from _props.objects import make_mug
+from _props.figures import make_standing_figure
 
 T = 0.16
 FLAT = {"wall": (0.82, 0.80, 0.74, 1.0), "baseboard": (0.40, 0.36, 0.30, 1.0)}
@@ -218,6 +219,37 @@ def build_party():
     make_box("Speaker_Stack", (57.2, 12.2, 0.60), (0.60, 0.60, 1.20), (0.10, 0.10, 0.10, 1.0))
     make_box("Party_Lamp_Pink_Glow", (41.0, 12.6, 1.6), (0.30, 0.30, 0.40), (0.96, 0.50, 0.66, 1.0))
     make_box("Party_Lamp_Stand", (41.0, 12.6, 0.70), (0.06, 0.06, 1.40), (0.20, 0.20, 0.20, 1.0))
+    # (2026-10-30) the loft had no light and no party. Bare bulbs on the
+    # beams, the back bar's strip; the CONTRAILS ("A woman swings on a tire,
+    # her dress leaving contrails of pink and orange light. One contrail
+    # bounces all over the room. Charlie follows it to the bar, where it
+    # lands in a shot glass") drawn as ribbons of light, the one that lands
+    # arcing to the pink shot glass; the party round the room.
+    for k, (bx, by) in enumerate(((45.4, 4.0), (49.0, 9.5), (52.6, 4.0))):
+        make_cyl(f"Loft_Bulb_{k}_Cord", (bx, by, H - 0.90), 0.006, 0.80, (0.10, 0.10, 0.10, 1.0), segments=6)
+        make_cyl(f"Loft_Bulb_{k}", (bx, by, H - 1.34), 0.06, 0.10, (1.0, 0.86, 0.60, 1.0), segments=10)
+    make_box("Back_Bar_Light_Strip", (50.0, y1 - 0.10, 2.70), (7.6, 0.04, 0.05), (1.0, 0.60, 0.40, 1.0))
+    def ribbon(name, pts, col, w=0.05):
+        for j in range(len(pts) - 1):
+            (ax, ay, az), (bx2, by2, bz) = pts[j], pts[j + 1]
+            dx, dy, dz = bx2 - ax, by2 - ay, bz - az
+            L = math.sqrt(dx * dx + dy * dy + dz * dz)
+            make_rot_box(f"{name}_{j}", ((ax + bx2) / 2, (ay + by2) / 2, (az + bz) / 2), (L, w, w), col,
+                         yaw=math.atan2(dy, dx), pitch=-math.atan2(dz, math.hypot(dx, dy)))
+    PINK, ORANGE = (1.0, 0.46, 0.70, 1.0), (1.0, 0.62, 0.24, 1.0)
+    sgx, sgy = 49.6, y1 - 0.08 - 1.4 - 0.10
+    ribbon("Contrail_Pink", [(tx, ty, 1.1), (47.6, 7.4, 2.4), (46.6, 9.4, 3.0), (47.8, 11.2, 2.2), (sgx - 0.6, sgy - 0.4, 1.5), (sgx, sgy, 1.2)], PINK)
+    ribbon("Contrail_Orange", [(tx, ty, 1.0), (50.6, 5.0, 1.9), (52.8, 4.4, 2.8), (54.6, 5.8, 3.2), (55.2, 8.2, 2.6)], ORANGE)
+    ribbon("Contrail_Pink_Bounce", [(tx, ty, 1.2), (48.0, 4.2, 2.6), (45.2, 3.4, 3.4), (43.0, 5.0, 2.8), (42.4, 7.6, 3.4)], PINK, w=0.035)
+    # the party: scale and staging (Charlie, Carrie are the VN's)
+    for nm, x, y, hd, h, coat, dress, arms in (
+            ("Party_Guest_0", 46.2, 10.8, math.pi * 1.0, 1.74, (0.20, 0.22, 0.28, 1.0), None, "front"),
+            ("Party_Guest_1", 47.0, 11.0, math.pi * 1.05, 1.66, (0.70, 0.30, 0.44, 1.0), (0.70, 0.30, 0.44, 1.0), "front"),
+            ("Party_Guest_2", 53.4, 10.6, math.pi * 0.9, 1.80, (0.40, 0.36, 0.30, 1.0), None, "folded"),
+            ("Party_Guest_3", 55.6, 4.4, math.pi * 1.6, 1.70, (0.24, 0.40, 0.44, 1.0), (0.24, 0.40, 0.44, 1.0), "down"),
+            ("Party_Guest_4", 51.8, 3.0, math.pi * 0.1, 1.78, (0.60, 0.56, 0.48, 1.0), None, "front"),
+            ("Party_Guest_5", 43.4, 8.8, math.pi * 0.6, 1.68, (0.86, 0.62, 0.30, 1.0), (0.86, 0.62, 0.30, 1.0), "down")):
+        make_standing_figure(nm, x, y, heading=hd, h=h, coat=coat, dress=dress, arms=arms)
     # outside the tall windows: the city at night
     for k in range(4):
         make_box(f"Loft_Across_Facade_{k}", (42.0 + k * 6.0, -16.0, 9.0), (5.6, 1.0, 18.0), (0.20, 0.20, 0.24, 1.0))
