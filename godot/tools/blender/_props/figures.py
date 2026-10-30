@@ -71,3 +71,55 @@ def make_standing_figure(prefix, x, y, *, heading=0.0, h=1.72, coat=(0.30, 0.32,
         make_rot_box(f"{prefix}_Arm_{side}", at(fx, lean, shoulder_z - 0.30 * s), (0.09 * s, 0.10 * s, 0.58 * s), coat, yaw=-heading, pitch=stoop * 0.5)
         make_blob(f"{prefix}_Hand_{side}", at(fx, lean, shoulder_z - 0.62 * s), 0.045 * s, skin, noise=0.05, seed=5, squash=0.9)
     return at(0.0, lean + 0.10 * s, shoulder_z - 0.62 * s)
+
+
+def make_seated_figure(prefix, x, y, *, heading=0.0, seat_h=0.46, h=1.72, coat=(0.30, 0.32, 0.38, 1.0),
+                       pants=(0.22, 0.22, 0.26, 1.0), skin=SKIN, hair=(0.20, 0.16, 0.12, 1.0),
+                       dress=None, arms="lap", z0=0.0):
+    """One person sitting (2026-10-30): (x, y) is the middle of the seat under
+    them, `seat_h` the seat's top, `heading` the way they face (0 = +Y). The
+    thighs lie level on the seat, the shins drop to the floor, the feet on it.
+    arms "lap" (hands on the thighs) | "table" (forearms forward on a table
+    edge ~0.29 m above the seat, the bench-and-table height) | "folded".
+    `h` is the standing height the figure is scaled from. Returns the (x, y,
+    z) of the hands' middle, for a held thing."""
+    s = h / 1.72
+    ch, sh = math.cos(heading), math.sin(heading)
+
+    def at(fx, fy, z):
+        # figure-local (fx: right, fy: forward) -> world
+        return (x + fx * ch + fy * sh, y - fx * sh + fy * ch, z0 + z)
+
+    yaw = -heading
+    thigh_top = seat_h + 0.14 * s
+    leg = skin if dress else pants
+    for side, fx in (("L", -0.09 * s), ("R", 0.09 * s)):
+        make_rot_box(f"{prefix}_Thigh_{side}", at(fx, 0.20 * s, seat_h + 0.07 * s), (0.14 * s, 0.44 * s, 0.14 * s), dress or pants, yaw=yaw)
+        shin = thigh_top - 0.05 * s
+        make_rot_box(f"{prefix}_Shin_{side}", at(fx, 0.44 * s, 0.05 * s + shin / 2.0), (0.12 * s, 0.13 * s, shin), leg, yaw=yaw)
+        make_rot_box(f"{prefix}_Shoe_{side}", at(fx, 0.50 * s, 0.03 * s), (0.11 * s, 0.26 * s, 0.06 * s), (0.10, 0.09, 0.08, 1.0), yaw=yaw)
+    if dress:
+        make_rot_box(f"{prefix}_Skirt", at(0.0, 0.16 * s, seat_h + 0.10 * s), (0.40 * s, 0.50 * s, 0.18 * s), dress, yaw=yaw)
+    base = seat_h + 0.02 * s
+    make_rot_box(f"{prefix}_Waist", at(0.0, 0.0, base + 0.10 * s), (0.32 * s, 0.22 * s, 0.20 * s), dress or coat, yaw=yaw)
+    torso_h = 0.46 * s
+    make_rot_box(f"{prefix}_Torso", at(0.0, -0.01 * s, base + 0.18 * s + torso_h / 2.0), (0.42 * s, 0.24 * s, torso_h), dress or coat, yaw=yaw)
+    head_z = base + 0.80 * s
+    make_cyl(f"{prefix}_Neck", at(0.0, 0.0, head_z - 0.10 * s), 0.05 * s, 0.08 * s, skin, segments=8)
+    make_blob(f"{prefix}_Head", at(0.0, 0.01 * s, head_z + 0.03 * s), 0.11 * s, skin, noise=0.05, seed=len(prefix), squash=1.15)
+    make_blob(f"{prefix}_Hair", at(0.0, -0.01 * s, head_z + 0.08 * s), 0.115 * s, hair, noise=0.12, seed=len(prefix) + 7, squash=0.8)
+    shoulder_z = base + 0.18 * s + torso_h - 0.04 * s
+    if arms == "folded":
+        make_rot_box(f"{prefix}_Arms_Folded", at(0.0, 0.14 * s, shoulder_z - 0.22 * s), (0.40 * s, 0.10 * s, 0.10 * s), coat, yaw=yaw)
+        return at(0.0, 0.16 * s, shoulder_z - 0.22 * s)
+    if arms == "table":
+        elbow_z, reach = seat_h + 0.33 * s, 0.46 * s
+    else:                                       # "lap"
+        elbow_z, reach = thigh_top + 0.05 * s, 0.30 * s
+    up = shoulder_z - elbow_z
+    for side, sg in (("L", -1.0), ("R", 1.0)):
+        make_rot_box(f"{prefix}_UpperArm_{side}", at(sg * 0.24 * s, 0.03 * s, elbow_z + up / 2.0), (0.09 * s, 0.10 * s, up), coat, yaw=yaw)
+        make_rot_box(f"{prefix}_Forearm_{side}", at(sg * 0.17 * s, (0.06 * s + reach) / 2.0, elbow_z), (0.08 * s, reach - 0.06 * s, 0.08 * s),
+                     coat, yaw=yaw)
+        make_blob(f"{prefix}_Hand_{side}", at(sg * 0.13 * s, reach + 0.03 * s, elbow_z), 0.045 * s, skin, noise=0.05, seed=3, squash=0.9)
+    return at(0.0, reach + 0.04 * s, elbow_z)

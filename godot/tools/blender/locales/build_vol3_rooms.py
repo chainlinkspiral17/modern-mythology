@@ -569,7 +569,34 @@ def build_bbq():
         make_table(f"BBQ_Floor_Table_{k}", x0 + 3.5 + k * 3.6, 4.0, w=1.2, d=0.9, h=0.74, wood=(0.22, 0.16, 0.12, 1.0))
         make_cyl(f"BBQ_Floor_Table_{k}_Grill", (x0 + 3.5 + k * 3.6, 4.0, 0.765), 0.20, 0.03, (0.30, 0.30, 0.32, 1.0), segments=14)
         for s in (-1, 1):
-            make_chair(f"BBQ_Floor_Chair_{k}_{s:+d}", x0 + 3.5 + k * 3.6 + s * 0.85, 4.0, yaw=-s * math.pi / 2.0, wood=(0.22, 0.16, 0.12, 1.0))
+            # (2026-10-30: yaw was -s*pi/2 — every chair faced away from its table)
+            make_chair(f"BBQ_Floor_Chair_{k}_{s:+d}", x0 + 3.5 + k * 3.6 + s * 0.85, 4.0, yaw=s * math.pi / 2.0, wood=(0.22, 0.16, 0.12, 1.0))
+    # (round 2, 2026-10-30) people: "Spencer and Jessie ... collapse cozy
+    # into the other in tiny booth" across from Andy (the camera), diners in
+    # the other booths and at the floor tables — "the cast is gorgeous"
+    from _props.figures import make_seated_figure
+    import random as _r
+    rr = _r.Random(1206)
+    tops = ((0.20, 0.20, 0.24, 1.0), (0.70, 0.30, 0.30, 1.0), (0.30, 0.40, 0.56, 1.0), (0.86, 0.84, 0.78, 1.0), (0.40, 0.50, 0.36, 1.0))
+    hairs = ((0.08, 0.06, 0.05, 1.0), (0.30, 0.20, 0.12, 1.0), (0.56, 0.42, 0.24, 1.0))
+    for i, (sy, arms) in enumerate(((8.66, "table"), (9.12, "lap"))):
+        make_seated_figure(f"BBQ_Group_E_{i}", gx + 0.95, sy, heading=-math.pi / 2.0, seat_h=0.48, h=1.74 - 0.08 * i,
+                           coat=tops[i + 1], hair=hairs[i], arms=arms)
+    for b in range(1, 4):
+        cx = x0 + 2.0 + b * 3.2
+        for side in (-1, 1):
+            for sy in (8.68, 9.16):
+                if rr.random() < 0.4:
+                    continue
+                make_seated_figure(f"BBQ_Diner_{b}_{side:+d}_{sy:.2f}", cx + side * 0.95, sy, heading=-side * math.pi / 2.0, seat_h=0.48,
+                                   h=rr.uniform(1.58, 1.84), coat=tops[rr.randrange(5)], hair=hairs[rr.randrange(3)],
+                                   arms=("table", "lap")[rr.randrange(2)])
+    for k in range(3):
+        for s in (-1, 1):
+            if rr.random() < 0.35:
+                continue
+            make_seated_figure(f"BBQ_Floor_Diner_{k}_{s:+d}", x0 + 3.5 + k * 3.6 + s * 0.85, 4.0, heading=-s * math.pi / 2.0, seat_h=0.45,
+                               h=rr.uniform(1.58, 1.84), coat=tops[rr.randrange(5)], hair=hairs[rr.randrange(3)], arms="table")
     for k in range(5):
         make_cyl(f"BBQ_Pendant_Glow_{k}", (x0 + 2.0 + k * 2.6, 5.6, 2.50), 0.16, 0.24, (0.98, 0.80, 0.52, 1.0), segments=12)
         make_box(f"BBQ_Pendant_Cord_{k}", (x0 + 2.0 + k * 2.6, 5.6, 2.92), (0.01, 0.01, 0.56), (0.20, 0.20, 0.20, 1.0))
@@ -669,12 +696,30 @@ def build_pizza_party_2026_10(x0):
     rnd = random.Random(1511)
     jersey, jpants = (0.18, 0.28, 0.58, 1.0), (0.86, 0.86, 0.84, 1.0)
     adult = ((0.70, 0.30, 0.26, 1.0), (0.86, 0.84, 0.78, 1.0), (0.30, 0.40, 0.30, 1.0), (0.56, 0.46, 0.60, 1.0), (0.20, 0.20, 0.24, 1.0))
+    from _props.figures import make_seated_figure
     n = 0
+    # (round 2) most of the party SEATED at the chairs, hands on the table
+    for r, y in enumerate((2.4, 5.2)):
+        for k in range(3):
+            tx = x0 + 2.4 + k * 2.6
+            for s in (-1, 1):
+                for c in (-1, 1):
+                    if rnd.random() < 0.15:
+                        continue
+                    boy = rnd.random() < 0.7
+                    make_seated_figure(f"Party_Seated_{n}", tx + c * 0.6, y + s * 0.75, heading=(0.0 if s < 0 else math.pi), seat_h=0.45,
+                                       h=(rnd.uniform(1.55, 1.74) if boy else rnd.uniform(1.62, 1.84)),
+                                       coat=jersey if boy else adult[rnd.randrange(len(adult))],
+                                       pants=jpants if boy else (0.28, 0.30, 0.38, 1.0),
+                                       arms=("table", "table", "lap", "folded")[rnd.randrange(4)])
+                    n += 1
     for r, y in enumerate((2.4, 5.2)):
         for k in range(3):
             tx = x0 + 2.4 + k * 2.6
             for s in (-1, 1):
                 for c in (-1.15, 0.0, 1.15):
+                    if rnd.random() < 0.72 or (r == 0 and s < 0):
+                        continue            # (round 2) a few parents stand behind the seated (none in the lens's lap)
                     if rnd.random() < 0.3:
                         continue
                     boy = rnd.random() < 0.62
