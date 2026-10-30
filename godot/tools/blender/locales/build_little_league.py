@@ -305,6 +305,14 @@ def build_game_2026_10():
     player("Game_Field_Vis_Batter", -0.75, -0.75, vis_top, vis_pants, cap_vis, h=1.58, heading=math.pi / 4.0, arms="front")
     make_rot_box("Game_Field_Vis_Bat", (-0.62, -0.88, 1.55), (0.06, 0.06, 0.80), (0.66, 0.54, 0.36, 1.0), roll=0.5, pitch=-0.3)
     player("Game_Field_Umpire", 1.45, -1.45, ump, ump, ump, h=1.80, arms="front")
+    # (round 3) the base coaches in their boxes in foul ground: ours when we
+    # bat, theirs when we field
+    coach_spots = (("3B", -15.5, -3.6), ("1B", 3.6, 15.5))
+    for nm, cxx, cyy in coach_spots:
+        make_standing_figure(f"Game_Bat_Coach_{nm}", cxx, cyy, heading=face_home(cxx, cyy) + 0.6, h=1.80,
+                             coat=(0.94, 0.94, 0.92, 1.0), pants=(0.24, 0.24, 0.28, 1.0), hair=cap_home, arms="folded")
+        make_standing_figure(f"Game_Field_Coach_{nm}", cxx, cyy, heading=face_home(cxx, cyy) + 0.6, h=1.78,
+                             coat=(0.56, 0.58, 0.60, 1.0), pants=(0.24, 0.24, 0.28, 1.0), hair=cap_vis, arms="folded")
     # -- the crowd on the bleachers (seats z 0.42 + k * 0.40 at y -8.4 - k * 0.7), standing to holler --
     import random
     rnd = random.Random(1311)
