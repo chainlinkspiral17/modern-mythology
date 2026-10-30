@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-30 · pass 236: VOLS 1–4 backgrounds, draft 4 (the under-30-line tier, 48 sets rendered).**
+- **copy_shop (vol 2):** the copiers read as white boxes. They now have:
+  - a two-tone cabinet, a seam band, drawers with gaps and pulls;
+  - the sorter's stepped bins, the green display, dark lids.
+  The grime and dying tubes were already built.
+- **Apple Peddler ch8:** "in through the window, out by daylight" is Bernard's story of another house. The insert was framing the vending machine's glass, so it is dropped.
+- **bar_exterior_night (vol 1 ch3):** back across the road and level. From 5 m tilted up, the door and window filled the frame; now the frontage, the sidewalk, the sedan and the lamp.
+- **jacob_house_front (vol 1 ch5):** the lone house on a patch of grass gets its block:
+  - the neighbours either side, the sidewalk, a yard tree, the mailbox;
+  - the porch light, the stoop rails, the coffee can of butts where "Jacob is waiting for them outside, smoking".
+  - Perf 122 → 134.
+- **small_wood_backyard_party (vol 2 ch6):** draft 2's target, the people.
+  - Three small children at the sprinkler and the slip and slide; three parents at the table.
+  - The camera is out on the lawn between them, facing the house; the kids had been outside the frame.
+- **Read, left:** the plane by day, the shuttle bench, the Wagner steps, the roadside, the Houston park, Chris's room, Little Switzerland, the dugout, the lab, the rest stop, Andy's kitchen, the rec center, the desert gas station, the hospital waiting room, the gym, Main Street, the cave, the street by day, the field at night, Nick's room, the corridor, Aaron's room, Ron at dawn.
+- **Dark or blank by design:** grunion_beach (the tide edge), tutorial_lobby ("a little too smooth to be real"), nightmare_cell.
+- **Next:**
+  - the remaining ~110 small sets (under 20 lines);
+  - charlie_bedroom_night (bare);
+  - the ballfield stand (close on a wall);
+  - office_after_hours (dark).
+
 **2026-10-29 · pass 235: VOLS 1–4 backgrounds, draft 3 (the 30–60-line tier).**
 - **Rendered, 24 sets.**
   - Read: vehicle_cab, school_newspaper, writers_desk_room, dabney_courtyard, small_wood_road_night, small_wood_high_art, ranch_bedroom_night, park_chess, meadowlark_circle_night, andy_house_bedroom_lamp, plane_night, nick_print_shop, grandmother_kitchen_morning (strong), foxhole_stage, gas_station_2003_night, writers_desk_board.
