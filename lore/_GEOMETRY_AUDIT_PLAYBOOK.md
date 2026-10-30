@@ -158,6 +158,28 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-30 · a builder that builds half its set, and every gate passes it (pass 240)
+
+**Context:** the vol 1 Club Sharp arcade view rendered BLACK four times,
+through lights, ambient and framing. It was not the lighting.
+`build_atrium_and_arcade(); build_bowling(); build_outside()` sat on the
+`print(...)` line of `join_stock()`'s `except` branch, so they ran only
+when the join FAILED. From the set's first commit, the club shipped with
+no arcade, no lanes, no rail and no ground. The text names "a gigantic
+arcade downstairs ... and a bowling alley".
+- **Every gate passes what was never built.** The audits record the same
+  `main()`, so nothing missing can float, clip or misplace.
+  `preset_vantage` saw the club's walls and called the arcade view "not
+  blind".
+- **When a view renders empty, check the GLB before the light.** List its
+  node names from the glTF JSON (a 10-line read of the GLB header) and look
+  for the parts the view is meant to show.
+- **The scan:** run each builder for `def build_*` that its own file never
+  calls. On 2026-10-30 it found only Club Sharp's losses. The others
+  (foxhole dressing room's green-room furniture, centro's old round table
+  and dock infill) were retired on purpose, and their docstrings say so. A
+  retired builder says so in its docstring, or it goes.
+
 ### 2026-10-30 · the same bug, one gate lower: music_coverage; and a poisoned box cache
 
 **Context:** pass 238 fixed the suite stopping at `vn_story`. Pass 239 ran it

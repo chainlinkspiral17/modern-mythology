@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-30 · pass 240: VOLS 1–4 backgrounds, draft 8 — the text over the build (three threads).**
+The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped through to the presets) and by the last pass that touched them. Then it read each one's lines against its render. Threads D (pasadena_1945, portland_downtown) and E (houston_bayou, honolulu_highrise) are below as they report.
+- **Club Sharp: the arcade, the bowling alley and the rail were never built.**
+  - `build_atrium_and_arcade / build_bowling / build_outside` sat in `join_stock()`'s `except` branch, so they ran only when the join failed. This had been true since the set's first commit.
+  - Every gate passed what wasn't there (lesson in `_GEOMETRY_AUDIT_PLAYBOOK.md`).
+  - A scan for builders that define `build_*` and never call it found only this one. The others are retired on purpose.
+  - **`club_sharp_arcade`:** a new view at the rail, looking down on the cabinet rows, with its own wash lights (`Arcade_Wash_*__club_sharp_arcade`). The rail glass and the floor-show lights are stripped from it.
+  - Ch4's "There is a gigantic arcade downstairs" now cuts to it, then back to the floor. The choice targets shifted +2.
+- **writers_desk (vol 4's scrapbook desk, 37 scene uses), draft 3:**
+  - The lamp "has a round brass shade. Up close it looks like a porthole". It had been a green banker's can.
+  - The kaleidoscope sits by the zine, "worn white at both ends".
+  - The top drawer holds "a newspaper, a novel, and a toy soldier".
+  - The bottom FILE drawer has "Green hanging folders, the tabs typed ONEIRONAUTICS INC." It shows in a new `writers_desk_drawer` view, which `vol4_drawer_open` (11 scenes) now maps to.
+  - Every drawer is pulled at dawn: tagged groups, with the closed fronts `strip`ped.
+- **The Missing Link exterior (vol 1's most-used stop, 8 scenes in the link chain):**
+  - Every line is rain ("You step back out into the rain"), but the set was a clear navy night.
+  - It now has an overcast sky lit from below, the rain's haze, and 900 still streaks over the road and the apron, joined. The edge pass draws them as rain, not scratches.
+- **May in the stand (vol 2, interlude one):**
+  - `small_wood_field_may` covers "Her name was May" on. She is the props kit's seated figure in the third row: "a very thin dark-featured young woman". In the wide shot she had been 15 px.
+  - She sits in a gap in the night crowd's row, so the two never clip.
+- **Editing suite, draft 3:** the drop-ceiling grid sits near flush, so the edge pass draws a ceiling, not a cage.
+- **Draft N+1 targets:**
+  - The arcade's walls and stair (they still read black past the cabinets). The bowling alley from the S glass.
+  - The writers_desk dawn: the four folding chairs, the car at the curb with its cardboard sign, the string gone brown, and the chair off the pulled drawers. The drawer view wants the lamp's light.
+  - shuttle_bench's framing: the awning post and the back panel box it in.
+  - May's view: the stand post grazes her.
+  - The contact sheet stopped after 3 of 10. Still unseen: hospital_waiting, pharmacy_floor, beach_night (last pass 58), cliffside_circus (pass 160), ballfield_dugout, small_wood_high_gym, vehicle_cab_night.
+
 **2026-10-30 · pass 239: VOLS 1–4 backgrounds, draft 7 — the gates the suite never ran (three threads).**
 `run_all_audits.sh` exited at `music_coverage`, which fails on what only the user makes (the catalog, audio files). Every gate after it had not run in the container or on the Deck: support, placement, window backing, buried decor, the furniture FLOAT ceiling, the ambient map. Behind it were **~1,650 floating parts across twenty vols 1–4 sets**, 2 off-wall pieces, 5 buried photos, 1 pane on a board, and 9 rooms with no hum.
 - **The suite:**
