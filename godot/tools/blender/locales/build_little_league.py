@@ -273,9 +273,20 @@ def build_game_2026_10():
     def face_home(x, y):
         return math.atan2(-x, -y)
 
+    from _props.figures import make_seated_figure
+    glove = (0.36, 0.22, 0.12, 1.0)
+
     def player(nm, x, y, top, pants, cap, h=1.56, heading=None, arms="down"):
         hd = face_home(x, y) if heading is None else heading
-        make_standing_figure(nm, x, y, heading=hd, h=h, coat=top, pants=pants, hair=cap, arms=arms)
+        if h < 1.2:
+            # (round 2) the catcher CROUCHES: a seated figure with no seat,
+            # thighs level at the knees' height, mitt out in front
+            hand = make_seated_figure(nm, x, y, heading=hd, seat_h=0.42, h=1.56, coat=top, pants=pants, hair=cap, arms="table")
+            make_blob(nm + "_Mitt", hand, 0.10, glove, noise=0.15, seed=len(nm), squash=0.8)
+            return
+        hand = make_standing_figure(nm, x, y, heading=hd, h=h, coat=top, pants=pants, hair=cap, arms=arms)
+        if arms == "front" and "Umpire" not in nm and "Batter" not in nm and "Chris" != nm.split("_")[-1]:
+            make_blob(nm + "_Glove", hand, 0.075, glove, noise=0.15, seed=len(nm), squash=0.8)
 
     fielders = {"P": (-9.9, 9.9), "C": (0.75, -0.75), "SS": (-22.0, 11.0), "3B": (-19.5, 2.4),
                 "LF": (-38.0, 16.0), "CF": (-34.0, 34.0), "RF": (-16.0, 38.0), "1B": (-1.4, 19.2), "2B": (-9.0, 22.6)}
@@ -306,9 +317,18 @@ def build_game_2026_10():
                 continue
             x = 2.8 + j * 1.6 + rnd.uniform(-0.3, 0.3)
             kid = rnd.random() < 0.3
-            make_standing_figure(f"Crowd_{n}", x, -8.4 - k * 0.7, heading=rnd.uniform(-0.3, 0.3), h=(1.20 if kid else rnd.uniform(1.62, 1.84)),
-                                 coat=shirts[rnd.randrange(len(shirts))], pants=(0.30, 0.32, 0.40, 1.0) if rnd.random() < 0.6 else (0.70, 0.62, 0.50, 1.0),
-                                 arms=("down", "folded", "front")[rnd.randrange(3)], z0=0.42 + k * 0.40 + 0.02)
+            sz = 0.42 + k * 0.40
+            coat_ = shirts[rnd.randrange(len(shirts))]
+            pants_ = (0.30, 0.32, 0.40, 1.0) if rnd.random() < 0.6 else (0.70, 0.62, 0.50, 1.0)
+            if rnd.random() < 0.7:
+                # (round 2) most SIT, feet on the footboard below (its top
+                # 0.205 under the seat's centre, 0.32 forward)
+                make_seated_figure(f"Crowd_{n}", x, -8.4 - k * 0.7, heading=rnd.uniform(-0.2, 0.2), seat_h=0.225,
+                                   h=(1.30 if kid else rnd.uniform(1.62, 1.84)), coat=coat_, pants=pants_,
+                                   arms=("lap", "folded", "lap")[rnd.randrange(3)], z0=sz - 0.205)
+            else:
+                make_standing_figure(f"Crowd_{n}", x, -8.4 - k * 0.7, heading=rnd.uniform(-0.3, 0.3), h=(1.20 if kid else rnd.uniform(1.62, 1.84)),
+                                     coat=coat_, pants=pants_, arms=("down", "folded", "front")[rnd.randrange(3)], z0=sz + 0.02)
             n += 1
     # dirty children at their feet on the pavement
     for i, (x, y) in enumerate(((3.4, -7.4), (6.2, -7.2), (11.0, -7.6))):
