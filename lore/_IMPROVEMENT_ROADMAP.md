@@ -3861,6 +3861,9 @@ The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped throu
   - The moon gap's smear on the wet band.
   - Sea-bleached driftwood, and the prints of the walk down as shadows in paler sand.
   - The view's sky is overcast.
+- **Drop ceilings, all 77 sets that use the kit (`make_ceiling`):** the T-bars hung 16 mm below the tiles in a dark tan, and the edge pass drew every bar. They now sit near flush and a shade under the tile. In the pharmacy render they read as a grid, not a cage. The full suite ran all 48 gates with the geometry ones at 0.
+- **Little League dugout:** "The dugout was full because we were up to bat". Four of the team sit on the bench and two stand at the front wall (`Game_Bat_*`, so they leave with the batting state). The two seats beside the lens are Dad's and Cody's: those are portraits, not set.
+- **Cliffside Circus establish:** the lens stood 2 m behind the carved gate sign, whose post took the left third of the frame. It now stands through the gate: the main building left, the shacks and bunting, the pool in front.
 - **Thread D (commit e8d9f5b0):**
   - **clinic_1945 (vol 3 ch9), draft 4:**
     - The text gives a Caltech clinic, "the nice woman" with the glass of water, the nurse's cuff, and several men whistling. The candlestick phone, hat rack and anatomy chart are NOT in the text and were not built.
@@ -3877,7 +3880,8 @@ The main thread ranked the vols 1–4 sets by use (`bg_places.json` mapped throu
   - The writers_desk dawn: the four folding chairs, the car at the curb with its cardboard sign, the string gone brown, and the chair off the pulled drawers. The drawer view wants the lamp's light.
   - shuttle_bench's framing: the awning post and the back panel box it in.
   - May's view: the stand post grazes her.
-  - The contact sheet stopped after 3 of 10. Still unseen: hospital_waiting, pharmacy_floor, beach_night (last pass 58), cliffside_circus (pass 160), ballfield_dugout, small_wood_high_gym, vehicle_cab_night.
+  - Cliffside: the cliff edge, the jagged rocks and the surf below (the horizon is flat). Beach: the cloud deck reads as cut-outs.
+  - hospital_waiting and small_wood_high_gym read; the rest of the queue continues (vehicle_cab_night, small_wood_high_class, ranch_bedroom_night).
 
 **2026-10-30 · pass 239: VOLS 1–4 backgrounds, draft 7 — the gates the suite never ran (three threads).**
 `run_all_audits.sh` exited at `music_coverage`, which fails on what only the user makes (the catalog, audio files). Every gate after it had not run in the container or on the Deck: support, placement, window backing, buried decor, the furniture FLOAT ceiling, the ambient map. Behind it were **~1,650 floating parts across twenty vols 1–4 sets**, 2 off-wall pieces, 5 buried photos, 1 pane on a board, and 9 rooms with no hum.
