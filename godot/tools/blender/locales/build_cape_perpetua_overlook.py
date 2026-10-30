@@ -68,7 +68,10 @@ def build_ground():
     # the overlook as a frozen white lake. A floor of fog low in the drop
     # and ~65 flattened grey blobs rolling over it, the Sitka crowns
     # coming up through; greyer than white, so it sits in the haze.
-    make_box("Fog_Floor", (-17.0, 12.0, -4.3), (20.0, 80.0, 0.2), (0.62, 0.65, 0.68, 1.0))
+    # (round 2, 2026-10-30) the fog as a veil, not a field of grey boulders:
+    # LocaleGlass draws vertex alpha now, so the banks are translucent and the
+    # Sitka spires show through them; the floor a thin sheet over the sea
+    make_box("Fog_Floor", (-17.0, 12.0, -4.3), (20.0, 80.0, 0.2), (0.70, 0.72, 0.74, 0.55))
     k = 0
     for gx in range(5):
         for gy in range(13):
@@ -77,7 +80,7 @@ def build_ground():
             r = 3.2 + 0.5 * ((gx + gy * 2) % 4)
             shade = 0.66 + 0.03 * ((gx * 5 + gy) % 4)
             make_blob(f"Fog_Bank_{k}", (fx, fy, -3.3 + 0.25 * ((gx + gy) % 3)), r,
-                      (shade, shade + 0.02, shade + 0.04, 1.0), noise=0.30, seed=200 + k, squash=0.32)
+                      (shade + 0.06, shade + 0.08, shade + 0.10, 0.30), noise=0.30, seed=200 + k, squash=0.32)
             k += 1
     # the sea and its horizon
     make_box("Sea_Plane", (-108.3, 12.0, -6.0), (203.4, 300.0, 0.06), (0.30, 0.38, 0.42, 1.0))
