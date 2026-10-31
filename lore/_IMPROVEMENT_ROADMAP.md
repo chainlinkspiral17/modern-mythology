@@ -3853,9 +3853,13 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - New view `shuttle_bench_bus`, from the apron's east end: the nose three-quarter on, the doors, the bench and the diner. It has two lights of its own (the cabin glow through the glass, the door spill) and two inserts (`apron`, `doors`).
   - The chapter cuts to it on the arrival line and back to the empty apron on "You stand on the apron in the rain"; the choice gotos moved +1.
   - The rain stays out of the bus's volume below its roof line.
+- **Follow-ups the same day:**
+  - `wrong_room_audit`: "We have a seat for you" ([shot:closeup person]) fell back to the bench-side closeup 14.6 m from the bus view's camera. It now has its own `shot_closeup_person__shuttle_bench_bus`, off the doorway's axis.
+  - The full suite ran all 48 gates; only the deferred user-side three fail.
+  - **cliffside main building, seaward:** the face the water sees was blank maroon. It now has windows on both floors (lit and dark), a gallery over the drop on braces with posts, rail and a door onto it, and a cupola on the ridge. From the edge view it reads as a house on the cliff.
+  - **The Shillelagh, draft 2:** an older, browner copper (draft 1 read as a red bus), and the lit cabin streaked in the two puddles off its kerb side (hidden from the establish; the inserts may catch them).
 - **Draft N+1 targets:**
-  - Shillelagh: a browner, older copper; rain beading and sheen on the flank; lit-window reflections in the puddles; its cab interior for the boarded branch.
-  - Cliffside: the main building stands back from the edge, so no lens makes it big. The seaward facade belongs on the edge.
+  - Shillelagh: rain beading and sheen on the flank; its cab interior for the boarded branch.
   - Charlie's flat: the living room by day; a kitchen (the draft-2 target in the builder).
   - Writers_desk dawn: the car is still not seen through the window; the man at the door.
   - Bench: a thinner awning post.

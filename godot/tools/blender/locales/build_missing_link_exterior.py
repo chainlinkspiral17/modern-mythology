@@ -306,8 +306,8 @@ def build_shillelagh_2026_10():
     a reflection of the lit windows in the puddles; the inside of the cab
     for the boarded branch."""
     T = "__shuttle_bench_bus"
-    COPPER = (0.58, 0.36, 0.24, 1.0)
-    COPPER_DK = (0.40, 0.24, 0.16, 1.0)
+    COPPER = (0.50, 0.34, 0.25, 1.0)          # (draft 2) older, browner: it read as a red bus
+    COPPER_DK = (0.34, 0.22, 0.16, 1.0)
     VERDIGRIS = (0.38, 0.52, 0.46, 1.0)
     CABIN = (0.92, 0.80, 0.56, 1.0)         # the lit cabin through the glass
     DARK = (0.07, 0.08, 0.09, 1.0)
@@ -361,6 +361,10 @@ def build_shillelagh_2026_10():
         box(f"Taillight_{j}", X0 - 0.03, X0, hy - 0.14, hy + 0.14, 0.80, 1.16, (0.58, 0.28, 0.82, 1.0))
     box("Bumper_R", X0 - 0.12, X0, Y0, Y1, ZL0, 0.62, COPPER_DK)
     box("Rear_Glass", X0 - 0.03, X0, Y0 + 0.30, Y1 - 0.30, 1.50, 2.30, (0.70, 0.60, 0.44, 1.0))
+    # (draft 2) the lit cabin caught in the puddles beside it: warm broken
+    # streaks on the two pools off its kerb side, a hair above the water
+    for k, (rx, ry, rw) in enumerate(((3.55, 5.05, 0.50), (4.05, 5.25, 0.30), (-1.9, 6.05, 0.70), (-1.1, 6.30, 0.40), (-0.7, 6.55, 0.25))):
+        box(f"Puddle_Glow_{k}", rx - rw / 2.0, rx + rw / 2.0, ry - 0.04, ry + 0.04, 0.033, 0.036, (0.80, 0.66, 0.44, 1.0))
 
 
 def build_rain_2026_10():

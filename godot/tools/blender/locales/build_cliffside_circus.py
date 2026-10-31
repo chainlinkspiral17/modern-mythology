@@ -30,7 +30,7 @@ Vantage wired in Background3D.CAMERA_PRESETS:
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import (clear_scene, make_box, make_cyl,
+from _props.geometry import (clear_scene, make_box, make_cyl, make_rot_box,
                              make_taper_cyl, make_tube, export_glb)
 
 COL_GRASS = (0.40, 0.44, 0.30, 1.0)      # salt-wind headland grass
@@ -264,6 +264,7 @@ def main():
     build_bandstand()
     build_cliff_and_sea()
     build_cliff_face_2026_10()
+    build_main_seaward_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cliffside_circus.glb"))
     print(f"\n[build_cliffside_circus] exporting to {out}")
@@ -302,6 +303,38 @@ def build_cliff_face_2026_10():
         k += 1
     # the wet band the spray keeps dark, above the talus
     make_box("Cliff_Wet_Band", (0.0, 14.2 + 0.02, -12.2), (240.0, 0.04, 1.6), (0.14, 0.14, 0.15, 1.0))
+
+
+def build_main_seaward_2026_10():
+    """(2026-10-31) the main building from the water (cliffside_circus_edge)
+    was a blank maroon back: the face the sea sees, and the reason it is
+    "built up along the edge of a cliff". Its seaward side now: windows on
+    both floors, a gallery over the drop on braces with its rail, and a
+    cupola on the ridge that stands into the sky from below."""
+    BY = 11.5                                           # the back wall's face
+    for i, wx in enumerate((-6.3, -4.8, -3.3, -1.8)):
+        col = COL_WIN_WARM if i % 2 else COL_WIN_DARK
+        make_box(f"Main_Back_UWin_Frame_{i}", (wx, BY + 0.03, 4.45), (0.94, 0.06, 1.5), COL_CREAM)
+        make_box(f"Main_Back_UWin_{i}", (wx, BY + 0.07, 4.45), (0.80, 0.02, 1.35), col)
+    for i, wx in enumerate((-5.6, -2.4)):
+        make_box(f"Main_Back_GWin_Frame_{i}", (wx, BY + 0.03, 1.65), (1.1, 0.06, 1.7), COL_CREAM)
+        make_box(f"Main_Back_GWin_{i}", (wx, BY + 0.07, 1.65), (0.95, 0.02, 1.55), COL_WIN_DARK)
+    # the gallery off the upper floor, over the edge, a door onto it
+    make_box("Main_Back_Gallery_Deck", (-4.0, BY + 0.60, 3.05), (6.2, 1.20, 0.12), COL_SIGN_WOOD)
+    make_box("Main_Back_Gallery_Door", (-4.0, BY + 0.03, 4.10), (0.9, 0.06, 2.0), COL_MAROON_DK)
+    for k, bx in enumerate((-6.8, -4.0, -1.2)):
+        make_rot_box(f"Main_Back_Gallery_Brace_{k}", (bx, BY + 0.42, 2.58), (0.08, 0.10, 1.10), COL_CREAM, roll=0.0, pitch=0.75)
+    for k in range(7):
+        px = -7.0 + 0.04 + k * (6.0 - 0.08) / 6.0
+        make_box(f"Main_Back_Gallery_Post_{k}", (px, BY + 1.14, 3.56), (0.07, 0.07, 0.90), COL_CREAM)
+    make_box("Main_Back_Gallery_Rail", (-4.0, BY + 1.14, 4.045), (6.2, 0.08, 0.07), COL_CREAM)
+    make_box("Main_Back_Gallery_Midrail", (-4.0, BY + 1.14, 3.55), (6.0, 0.05, 0.05), COL_CREAM)
+    # the cupola on the ridge (the roof slab tops out at z 6.5)
+    make_box("Main_Cupola_Body", (-4.0, 10.0, 7.10), (1.6, 1.6, 1.20), COL_MAROON)
+    for k, (dx, dy, sx, sy) in enumerate(((0.0, 0.81, 0.9, 0.02), (0.0, -0.81, 0.9, 0.02), (0.81, 0.0, 0.02, 0.9), (-0.81, 0.0, 0.02, 0.9))):
+        make_box(f"Main_Cupola_Win_{k}", (-4.0 + dx, 10.0 + dy, 7.15), (sx, sy, 0.70), COL_WIN_WARM if k == 0 else COL_WIN_DARK)
+    make_box("Main_Cupola_Cap", (-4.0, 10.0, 7.82), (2.0, 2.0, 0.24), COL_ROOF)
+    make_box("Main_Cupola_Finial", (-4.0, 10.0, 8.14), (0.12, 0.12, 0.40), COL_CREAM)
 
 
 def build_horizon_2026_08():
