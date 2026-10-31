@@ -71,6 +71,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, deg_to_rad(-51.0), 0.0),
 		"fov": 50.0,
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"riverfront_park": {
 		"scene": "res://scenes/locales/riverfront.tscn",
@@ -85,6 +86,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, 0.49, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
+		"far": 500.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"highway9_long": {
 		"scene": "res://scenes/locales/harmony_terrain.tscn",
@@ -790,6 +792,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.04, deg_to_rad(180.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
+		"far": 1250.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 6 — Planned Community / Harmony Creek Estates ─────────
 	# All vol6 presets use the same default cinematographic vantage:
@@ -1969,6 +1972,7 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.86, 0.44, 0.30, 1), "ambient_energy": 0.55, "fog_color": Color(0.70, 0.30, 0.18, 1),
 			"fog_density": 0.022},
 		"suppress_input": true,
+		"far": 1650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"desert_gas_station": {
 		"scene": "res://scenes/locales/desert_route.tscn",
@@ -2023,6 +2027,7 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"env": {"ambient_color": Color(0.80, 0.64, 0.54, 1), "ambient_energy": 0.40, "fog_density": 0.0},
 		"suppress_input": true,
+		"far": 1800.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"ramos_kitchen_morning": {
 		"scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
@@ -2203,6 +2208,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.06, 0.785, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 7 — Main Street, Smolvud (re-homed off cabin_road
 	# 2026-09-01): the sidewalk in front of Board Lords, the sanderling
@@ -2266,6 +2272,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 6 — the cab (re-homed off louisiana_road 2026-09-03): every
 	# parked-car conversation — Ben's truck (ch5), the El Rancho lay-by
@@ -2323,6 +2330,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
 		"fov": 72.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab_night": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2344,6 +2352,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab_side": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2418,6 +2427,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.60, 0.58, 0.52, 1), "ground_bottom": Color(0.30, 0.28, 0.24, 1),
 			"ambient_color": Color(0.92, 0.90, 0.86, 1), "ambient_energy": 0.95, "fog_color": Color(0.86, 0.88, 0.90, 1)},
 		"suppress_input": true,
+		"far": 1700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab_corolla": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2499,6 +2509,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"lake_palestine_dock": {
 		"scene": "res://scenes/locales/lake_palestine.tscn",
@@ -2654,6 +2665,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.56, 0.56, 0.46, 1), "ground_bottom": Color(0.24, 0.24, 0.20, 1),
 			"ambient_color": Color(0.90, 0.88, 0.84, 1), "ambient_energy": 0.95, "fog_color": Color(0.84, 0.86, 0.84, 1)},
 		"suppress_input": true,
+		"far": 450.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"new_auburn_lot": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
@@ -2679,6 +2691,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.0, 0.0, 0.0),
 		"fov": 50.0,
 		"suppress_input": true,
+		"far": 1100.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"new_auburn_bypass": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
@@ -3929,6 +3942,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"strip": ["Game_Field_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"ballfield_third_base": {
 		"scene": "res://scenes/locales/little_league.tscn",
@@ -3940,6 +3954,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"strip": ["Game_Field_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"ballfield_mound": {
 		"scene": "res://scenes/locales/little_league.tscn",
@@ -3951,6 +3966,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"strip": ["Game_Bat_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"ballfield_first_base": {
 		"scene": "res://scenes/locales/little_league.tscn",
@@ -3962,6 +3978,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"strip": ["Game_Bat_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"ballfield_home_plate": {
 		"scene": "res://scenes/locales/little_league.tscn",
@@ -3973,6 +3990,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"strip": ["Game_Bat_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"ballfield_stand": {
 		"scene": "res://scenes/locales/little_league.tscn",
@@ -3984,6 +4002,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.42, 0.60, 0.88, 1), "sky_horizon": Color(0.88, 0.90, 0.88, 1), "ground_horizon": Color(0.62, 0.60, 0.40, 1), "ground_bottom": Color(0.30, 0.30, 0.20, 1), "ambient_color": Color(0.92, 0.90, 0.84, 1), "ambient_energy": 1.0, "fog_color": Color(0.86, 0.86, 0.80, 1)},
 		"strip": ["Game_Field_"],   # (2026-10-30) the game in the other state
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"chau_hall_noon": {
 		"scene": "res://scenes/locales/chau_house.tscn",
@@ -5116,6 +5135,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, deg_to_rad(-8.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 800.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"shuttle_bench": {
 		"scene": "res://scenes/locales/missing_link_exterior.tscn",
@@ -5132,6 +5152,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.03, 1.60, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 800.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"shuttle_bench_bus": {
 		"scene": "res://scenes/locales/missing_link_exterior.tscn",
@@ -5145,6 +5166,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.025, 1.855, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 800.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"briar_falls_rest_stop": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
@@ -5161,6 +5183,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, deg_to_rad(22.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"briar_falls_building": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
@@ -5174,6 +5197,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.03, 0.654, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"briar_falls_trail": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
@@ -5189,6 +5213,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.12, -0.507, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"briar_falls_overlook": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
@@ -5203,6 +5228,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.33, deg_to_rad(4.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"briar_falls_picnic": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
@@ -5216,6 +5242,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.03, 0.262, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"faust_apartment_day": {
 		"scene": "res://scenes/locales/faust_apartment.tscn",
@@ -5315,6 +5342,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.15, 0.16, 0.21, 1), "sky_horizon": Color(0.25, 0.26, 0.31, 1),
 			"ground_horizon": Color(0.14, 0.14, 0.16, 1), "ground_bottom": Color(0.06, 0.06, 0.07, 1)},
 		"suppress_input": true,
+		"far": 1200.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 2 — the bonfire (ch10 "The bonfire", ch12x beach blanket) ──
 	# (2026-10-29) "Frank and I built a bonfire on the beach"; "the fires
@@ -5329,6 +5357,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.26, 0.633, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 1200.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"grunion_beach": {
 		"scene": "res://scenes/locales/grunion_beach.tscn",
@@ -5348,6 +5377,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.15, 0.16, 0.21, 1), "sky_horizon": Color(0.25, 0.26, 0.31, 1),
 			"ground_horizon": Color(0.14, 0.14, 0.16, 1), "ground_bottom": Color(0.06, 0.06, 0.07, 1)},
 		"suppress_input": true,
+		"far": 500.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"bar_exterior_night": {
 		"scene": "res://scenes/locales/bar_exterior.tscn",
@@ -5370,6 +5400,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, 0.098, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"skatepark_day": {
 		"scene": "res://scenes/locales/skatepark.tscn",
@@ -5384,6 +5415,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.17, deg_to_rad(-21.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"wagner_home": {
 		"scene": "res://scenes/locales/wagner_home.tscn",
@@ -5425,6 +5457,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.02, deg_to_rad(3.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"sapo_falls_behind": {
 		"scene": "res://scenes/locales/sapo_falls.tscn",
@@ -5437,6 +5470,7 @@ const CAMERA_PRESETS := {
 		"fov": 88.0,
 		"env": {"ambient_color": Color(0.50, 0.58, 0.58, 1), "ambient_energy": 0.45, "fog_color": Color(0.40, 0.46, 0.46, 1)},
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"little_switzerland": {
 		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
@@ -5614,6 +5648,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.56, 0.56, 0.46, 1), "ground_bottom": Color(0.30, 0.30, 0.24, 1),
 			"ambient_color": Color(0.80, 0.82, 0.80, 1), "ambient_energy": 0.60, "fog_sky": 0.20},
 		"suppress_input": true,
+		"far": 900.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"crumpled_barn_int": {
 		"scene": "res://scenes/locales/crumpled_barn.tscn",
@@ -5765,6 +5800,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.05, 0.05, 0.0),
 		"fov": 68.0,
 		"suppress_input": true,
+		"far": 350.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# (2026-10-30, pass 241) "The main building was true enough built up
 	# along the edge of a cliff — overlooking jagged rock outcroppings,
@@ -5778,6 +5814,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.35, 2.678, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
+		"far": 450.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 }
 
