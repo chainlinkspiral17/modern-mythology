@@ -182,6 +182,22 @@ def build_flat():
         ch = 0.96 - k * 0.12
         make_rot_box(f"Canvas_Leaning_{k}", (9.92 - 0.02 - ch / 2.0 * math.sin(0.12) - k * 0.05, 2.0 + k * 0.10, ch / 2.0 * math.cos(0.12) + 0.002),
                      (0.03, 0.80 - k * 0.10, ch), ((0.92, 0.90, 0.86, 1.0), (0.80, 0.70, 0.56, 1.0), (0.94, 0.94, 0.92, 1.0))[k], pitch=0.12)
+    # (2026-10-31) the living room by day ("It is morning now, the blanket is
+    # still on the couch, but Carrie is gone") looked at a blank wall: the
+    # morning laid on the floor from the two S windows, his sketches pinned
+    # on the bedroom wall's living-room face, his coat on a hook by the door
+    for k, wx in enumerate((6.6, 8.6)):
+        make_box(f"Sun_Patch_{k}" + CD, (wx + 0.25, 1.35, 0.002), (1.30, 1.40, 0.004), (0.88, 0.76, 0.56, 1.0))
+    BW = 4.0 + 0.06                                    # the bedroom wall's E face
+    for k, (sy, sz, w, h, col) in enumerate(((2.55, 1.70, 0.42, 0.30, (0.94, 0.92, 0.86, 1.0)), (3.05, 1.55, 0.30, 0.40, (0.90, 0.86, 0.76, 1.0)),
+                                            (3.45, 1.80, 0.36, 0.26, (0.96, 0.94, 0.90, 1.0)), (2.80, 1.25, 0.34, 0.24, (0.86, 0.82, 0.72, 1.0)),
+                                            (3.85, 1.35, 0.28, 0.36, (0.94, 0.90, 0.82, 1.0)), (4.25, 1.65, 0.40, 0.30, (0.92, 0.92, 0.88, 1.0)))):
+        make_box(f"Living_Sketch_{k}", (BW + 0.002, sy, sz), (0.004, w, h), col)
+        make_box(f"Living_Sketch_{k}_Line", (BW + 0.0045, sy - w * 0.1, sz + h * 0.05), (0.001, w * 0.55, 0.012), (0.24, 0.20, 0.18, 1.0))
+        make_cyl(f"Living_Sketch_{k}_Pin", (BW + 0.007, sy, sz + h / 2.0 - 0.03), 0.008, 0.006, (0.80, 0.20, 0.18, 1.0), axis='X', segments=6)
+    make_box("Living_Coat_Hook", (BW + 0.03, 4.85, 1.78), (0.06, 0.03, 0.03), (0.30, 0.26, 0.22, 1.0))
+    make_box("Living_Coat", (BW + 0.10, 4.85, 1.30), (0.14, 0.46, 0.92), (0.30, 0.28, 0.26, 1.0))
+    make_box("Living_Coat_Collar", (BW + 0.10, 4.85, 1.79), (0.12, 0.20, 0.06), (0.24, 0.22, 0.20, 1.0))
     make_lamp("Living_Floor_Lamp", 9.5, 7.5, base_z=0.0, h=1.50)
     make_box("Living_Shelf", (5.0, 7.92 - 0.20, 0.90), (1.6, 0.30, 1.80), (0.44, 0.34, 0.24, 1.0))
     for k in range(10):

@@ -3298,7 +3298,8 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.40, 0.40, 0.42, 1), "ground_bottom": Color(0.16, 0.16, 0.18, 1),
 			"ambient_color": Color(0.70, 0.72, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.64, 0.66, 0.72, 1)},
 		"suppress_input": true,
-	},	"writers_desk_dawn_gone": {
+	},
+	"writers_desk_dawn_gone": {
 		"scene": "res://scenes/locales/writers_desk.tscn",
 		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
 		# (2026-10-31) "When they look again the man at the door is gone and the car
