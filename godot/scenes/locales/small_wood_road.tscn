@@ -169,14 +169,14 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
+[node name="Sun__small_wood_road__small_wood_roadside" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0, -0.37, 0.929, 0, 0.929, 0.37, -1, 0, 0, 0, 4, 0)
 light_color = Color(1, 0.94, 0.82, 1)
 light_energy = 0.9
 shadow_enabled = false
 metadata/daylight = true
 
-[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
+[node name="Sky_Fill__small_wood_road__small_wood_roadside" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.72, 0.80, 0.92, 1)
 light_energy = 0.5
@@ -190,7 +190,7 @@ light_energy = 1.2
 omni_range = 7.0
 shadow_enabled = false
 
-[node name="Headlights" type="SpotLight3D" parent="."]
+[node name="Headlights__small_wood_road_night" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.966, 0.259, 0, -0.259, 0.966, 0.9, 0.7, 19.6)
 light_color = Color(1, 0.94, 0.80, 1)
 light_energy = 3.0
@@ -200,7 +200,7 @@ shadow_enabled = false
 
 ; (pass 72, 2026-10-11) the suns above carry metadata/daylight and follow the mood's hour;
 ; this cool fill stays on so a night cut keeps its shapes
-[node name="Night_Sky_Fill" type="DirectionalLight3D" parent="."]
+[node name="Night_Sky_Fill__small_wood_road_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.2588, 0.9659, 0, -0.9659, 0.2588, 0, 8, 0)
 light_color = Color(0.56, 0.64, 0.86, 1)
 light_energy = 0.18

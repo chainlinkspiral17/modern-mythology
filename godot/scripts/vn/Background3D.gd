@@ -2710,11 +2710,18 @@ const CAMERA_PRESETS := {
 	"small_wood_road": {
 		"scene": "res://scenes/locales/small_wood_road.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
-		# Day. On the west shoulder at the property gate, eye 1.7, NNE
-		# up the road: the fence, the drive, the pole barn, the firs.
-		"camera_origin": Vector3(-2.4, 1.7, 8.0),
+		# Day. On the west verge at the property gate, eye 1.7, NNE up the
+		# road: the fence, the drive, the pole barn, the firs, the hills.
+		# (2026-10-31) off the gravel (stood on, the shoulder ran from the
+		# lens's feet to the vanishing point like a median), and its own
+		# summer sky: every view had worn the set's dusk.
+		"camera_origin": Vector3(-3.3, 1.7, 8.0),
 		"camera_rotation": Vector3(-0.03, -0.20, 0.0),
 		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.82, 1), "sky_horizon": Color(0.82, 0.86, 0.88, 1),
+			"ground_horizon": Color(0.48, 0.52, 0.42, 1), "ground_bottom": Color(0.26, 0.30, 0.22, 1),
+			"ambient_color": Color(0.84, 0.86, 0.82, 1), "ambient_energy": 0.90, "fog_color": Color(0.78, 0.82, 0.84, 1)},
+		"far": 1100.0,   # the hills, 300-1000 m out
 		"suppress_input": true,
 	},
 	"small_wood_road_night": {
@@ -2722,10 +2729,14 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
 		# Night, driving around. The car's hood (eye 1.0) on the
 		# centerline, the dashes running into the firs, the town's
-		# lights far up. (vol1 ch3)
+		# lights far up. (vol1 ch3) (2026-10-31) a night sky of its own.
 		"camera_origin": Vector3(0.9, 1.0, 18.8),
 		"camera_rotation": Vector3(0.02, 0.0, 0.0),
 		"fov": 70.0,
+		"env": {"sky_top": Color(0.03, 0.04, 0.09, 1), "sky_horizon": Color(0.13, 0.13, 0.20, 1),
+			"ground_horizon": Color(0.06, 0.07, 0.08, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.40, 0.56, 1), "ambient_energy": 0.40, "fog_color": Color(0.10, 0.11, 0.16, 1)},
+		"far": 1100.0,   # the hills, 300-1000 m out
 		"suppress_input": true,
 	},
 	"small_wood_roadside": {
@@ -2736,6 +2747,7 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.9, 0.7, -6.0),
 		"camera_rotation": Vector3(0.06, 0.42, 0.0),
 		"fov": 50.0,
+		"far": 1100.0,   # the hills, 300-1000 m out
 		"suppress_input": true,
 	},
 	# vol7 · Highway 101 north of Yachats
@@ -5447,6 +5459,7 @@ const CAMERA_PRESETS := {
 		"strip": ["Yard_Ground", "Valley_Slope_Ground", "Far_Ridge_Band_", "Far_Cloud_Band_Moonlit",
 			"Porch_Spit_Cup", "Porch_Whiskey_Bottle", "Cat_", "Front_Porch_Bulb_Glow",
 			"Egg_Stand_"],   # the renters' ("The wife sold chicken eggs by the side of the road"), years on
+		"far": 600.0,   # the coast range, 150-300 m out
 		"suppress_input": true,
 	},
 	"club_sharp": {

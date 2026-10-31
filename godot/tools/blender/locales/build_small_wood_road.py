@@ -26,6 +26,14 @@ Presets (Background3D), each a different place, height and lens:
   small_wood_roadside    dawn · in the east ditch, eye 0.7, looking
                           along the gravel where the minister stopped · 50°
 
+DRAFT 4 (2026-10-31): the coast range all round as hills (the far bands
+were slabs, E and W only), the night's car, spill and town lights tagged to
+the night, each light to its views, a sky per preset and the far plane out
+to 1100 m. DRAFT 5 targets: vol2 ch1's "Knotted paths leading both up and
+down the road, twisting alongside cricks" (a footpath off the shoulder into
+the firs); the gate's chain and padlock; the roadside preset's minister's
+car; the near firs' lowest tiers (the day frame's top-right canopy).
+
 Coordinate frame: Blender Z-up. Road N-S along y at x 0, ±1200 so
 the lines converge. The property gate at y 0 west; the crick at
 y 30; the fallen-in house east at y -30. glTF export remaps to Godot
@@ -36,7 +44,6 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, export_glb
-from _props.detail import make_far_bands
 from _props.trees import make_conifer, make_broadleaf
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house, make_shed
@@ -225,17 +232,51 @@ def build_trees_and_fields():
 def build_night():
     """vol1's driving: the car on the road for the night preset, its
     headlight spill on the asphalt ahead; the Small Wood lights far up."""
+    # (2026-10-31) the night's alone: the car, its spill and the town's lights
+    # stood in the day and the dawn views too (the spill a pale slab on the
+    # day road)
+    NT = "__small_wood_road_night"
     make_car("Night_Car", 0.9, -22.0, 4.6, (0.30, 0.34, 0.42, 1.0), along="Y", z0=0.02)
-    make_box("Headlight_Spill", (0.9, -8.0, 0.0205), (3.2, 24.0, 0.001), (0.34, 0.34, 0.30, 1.0))
+    make_box("Headlight_Spill" + NT, (0.9, -8.0, 0.0205), (3.2, 24.0, 0.001), (0.34, 0.34, 0.30, 1.0))
     for i in range(3):
-        make_box(f"Town_Glow_{i}", (-40.0 + i * 30.0, 400.0, 3.0 + i), (6.0, 0.4, 2.0), (0.60, 0.52, 0.34, 1.0))
+        make_box(f"Town_Glow_{i}" + NT, (-40.0 + i * 30.0, 400.0, 3.0 + i), (6.0, 0.4, 2.0), (0.60, 0.52, 0.34, 1.0))
+    try:
+        import bpy
+        empty = bpy.data.objects.new("NightCar" + NT, None)
+        bpy.context.scene.collection.objects.link(empty)
+        for obj in list(bpy.data.objects):
+            if obj is not empty and obj.parent is None and obj.name.startswith("Night_Car"):
+                obj.parent = empty
+    except Exception:
+        pass
     make_box("Church_Steeple", (-20.0, 380.0, 9.0), (2.0, 2.0, 18.0), (0.84, 0.84, 0.80, 1.0))
 
 
 def build_horizon():
-    make_far_bands("FarFirs", (0.14, 0.22, 0.16),
-                   [(120.0, 200.0, 26.0, 0.90), (260.0, 320.0, 30.0, 0.72), (520.0, 500.0, 36.0, 0.55)],
-                   sides="EW", cx=0.0, cy=0.0, profile="ridge")
+    """(2026-10-31, draft 4) the coast range all round: forested hills, a
+    near ring dark with firs and a far ring in haze, each a squashed blob
+    sunk below the fields. The 09-03 far bands were flat-topped slabs (the
+    day view's right edge read as a dark wall) and stood E and W only, so
+    the view up the road ran flat to the horizon like a prairie. Hills keep
+    off the road's line (it bends 20 deg E at y 150) so it still runs into
+    the firs. Joined as stock (join_stock in main)."""
+    def road_x(y):
+        return 0.0 if y < 150.0 else (y - 150.0) * math.tan(math.radians(20.0))
+    k = 0
+    for ring, (dist, rad, sq, col) in enumerate(((400.0, 115.0, 0.66, (0.18, 0.27, 0.20, 1.0)),
+                                                 (760.0, 210.0, 0.58, (0.34, 0.42, 0.42, 1.0)))):
+        n = 22 if ring == 0 else 26
+        for i in range(n):
+            a = 2.0 * math.pi * (i + 0.5 * ring) / n
+            cx, cy = dist * math.sin(a), dist * math.cos(a)
+            r = rad * (0.85 + 0.30 * ((i * 7 + ring) % 5) / 4.0)
+            if abs(cx - road_x(cy)) < r * 1.05 + 12.0:
+                continue                                  # the road runs through here (N and S)
+            if math.hypot(cx + 10.0, cy - 390.0) < r + 45.0:
+                continue                                  # the steeple and the town's lights
+            hk = sq + 0.10 * ((i * 3 + ring) % 3)
+            make_blob(f"Hills_Stock_{ring}_{i}", (cx, cy, -r * 0.15), r, col, noise=0.10, seed=200 + k, squash=hk)
+            k += 1
 
 
 def build_property_dressing_2026_09():
@@ -265,6 +306,8 @@ def main():
     build_night()
     build_horizon()
     build_property_dressing_2026_09()
+    from _props.geometry import join_stock
+    join_stock()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/small_wood_road.glb"))
     print(f"\n[build_small_wood_road] exporting to {out}")
     export_glb(out)

@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 247: VOLS 1–4 backgrounds, draft 15 — the Small Wood road gets its valley.**
+- **small_wood_road (vol1 ch3's night drive, vol2 ch1's runs "up and down the property", vol2 ch2's roadside):** untouched since 09-27.
+  - All three views wore the set's dusk sky, the night's sun stayed up, and the car's headlights shone on the day road. The night car, its headlight spill (a pale slab on the day asphalt) and the town lights stood in every view.
+    - Each light is now tagged to its views.
+    - The night pieces are tagged to `small_wood_road_night`, with the car under a tagged empty.
+    - The day and the night have skies of their own; the dawn keeps the set's.
+  - The far "ridge" bands were flat-topped slabs, east and west only. The day frame's right edge read as a dark wall, and the view up the road ran flat to the horizon like a prairie. Now there are two rings of forested hills (the near ring dark, the far ring in haze), kept off the road's whole line and clear of the steeple and town lights. They are joined as one stock mesh.
+  - **The far plane:** the hills first vanished, because the lens sees 200 m by default (pass 195's lesson). The three views now set `far` 1100. Little Switzerland's coast range, 150–300 m out, was being cut too; it now sets `far` 600.
+  - The day lens stood on the gravel shoulder, which ran from its feet to the vanishing point like a median. It is on the verge now.
+- **Draft N+1 targets (also in the builder's docstring):**
+  - "Knotted paths leading both up and down the road, twisting alongside cricks": a footpath off the shoulder into the firs.
+  - The gate's chain and padlock.
+  - The roadside's minister's car.
+  - The near firs' lowest tiers crowding the day frame's top right.
+
 **2026-10-31 · pass 246: VOLS 1–4 backgrounds, draft 14 — the Shillelagh leaves, the day loses its moon.**
 - **vol1_link_shuttle, "You stay. The Shillelagh pulls away … The taillights are not red. They are something on the other side of red":**
   - The line played over the parked bus, seen nose-on. It now cuts to `shot_insert_shillelagh__shuttle_bench_bus`, from the road behind the bus, on its copper rear, its violet taillights and the lit rear glass.
