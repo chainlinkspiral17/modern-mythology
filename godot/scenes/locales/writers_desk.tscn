@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://writers_desk_v4"]
+[gd_scene load_steps=25 format=3 uid="uid://writers_desk_v4"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/writers_desk.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/Caveat-Variable.ttf" id="20_marker"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -226,15 +227,55 @@ metadata/fov = 35.0
 ; (2026-10-31) "Through the glass the street. A car idling at the curb, parking
 ; lights on, a cardboard sign wedged against the windshield." / "Cut to: the car."
 [node name="shot_insert_car__writers_desk_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.25, 1.55, -5.25)
-rotation = Vector3(-0.2549, -0.1481, 0.0)
-metadata/fov = 30.0
+position = Vector3(1.45, 1.7, -5.4)
+rotation = Vector3(-0.3237, 0.4183, 0.0)
+metadata/fov = 22.0
 
 ; the same frame after: "the car is gone and the street is wet"
 [node name="shot_insert_car__writers_desk_dawn_gone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.25, 1.55, -5.25)
-rotation = Vector3(-0.2549, -0.1481, 0.0)
-metadata/fov = 30.0
+position = Vector3(1.45, 1.7, -5.4)
+rotation = Vector3(-0.3237, 0.4183, 0.0)
+metadata/fov = 22.0
+
+; (draft 5) "RUTA 77 on the sign in the windshield. Chacaíto, Sabana Grande,
+; Petare." The long lens from the window onto the cardboard. Lettering in
+; marker (Caveat), shaded so it takes the dawn like the board does.
+[node name="shot_insert_sign__writers_desk_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.45, 1.7, -5.4)
+rotation = Vector3(-0.3027, 0.414, 0.0)
+metadata/fov = 6.0
+
+[node name="Dawn_Car_Sign_Text__writers_desk_dawn" type="Label3D" parent="."]
+position = Vector3(-3.1864, -1.868, -15.9557)
+rotation = Vector3(0, 0.9608, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.10, 0.09, 0.10, 1)
+outline_size = 0
+text = "RUTA 77"
+font = ExtResource("20_marker")
+font_size = 104
+
+[node name="Dawn_Car_Sign_Stops__writers_desk_dawn" type="Label3D" parent="."]
+position = Vector3(-3.1864, -1.982, -15.9557)
+rotation = Vector3(0, 0.9608, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.10, 0.09, 0.10, 1)
+outline_size = 0
+text = "Chacaíto · Sabana Grande · Petare"
+font = ExtResource("20_marker")
+font_size = 34
+
+; "parking lights on": the amber glow on the bumper and the gutter
+[node name="Dawn_Car_Park_Glow__writers_desk_dawn" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82, -2.54, -16.3)
+light_color = Color(1.0, 0.66, 0.28, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 1.6
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

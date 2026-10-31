@@ -115,7 +115,12 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         # body facing north and its grille and headlights hanging off the tail)
         prof_abs = [(-u, z) for (u, z) in prof_abs]
     # prism polygon plane for axis across the car: along X → extrude on Y, polygon (u=x, v=z)
-    make_prism(f"{prefix}_Body", P(0.0, 0.0, 0.0), prof_abs, 2 * hw - 0.04, col, axis=side_axis)
+    # the winding reference (the prism's centre) must sit INSIDE the body: at
+    # z 0 it was above the roof of a car set below the origin (2026-10-31, the
+    # curtain call's por puesto at z0 -3.2 under a second-floor window drew
+    # roofless from above: the roof faces wound inward and culled)
+    zr = z0 + 0.70
+    make_prism(f"{prefix}_Body", P(0.0, 0.0, zr), [(u, z - zr) for (u, z) in prof_abs], 2 * hw - 0.04, col, axis=side_axis)
     make_chamfer_box(f"{prefix}_Pan", P(0.0, 0.0, z0 + 0.36), S(L - 0.40, 2 * hw - 0.20, 0.12), DARK, chamfer=0.03)
     # ── glass: plates just outside the body's glass band
     if pickup:

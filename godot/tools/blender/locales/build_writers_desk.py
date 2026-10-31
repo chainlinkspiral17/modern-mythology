@@ -327,10 +327,13 @@ def build_dawn_2026_10():
           dawn view strips the red one, `Board_String_`);
       "Through the glass the street. A car idling at the curb, parking
           lights on, a cardboard sign wedged against the windshield" (RUTA 77,
-          the por puesto) — at the far curb, where the lens sees it through
-          the N window over the sill;
+          the por puesto) — (draft 5) at the NEAR curb west of the window,
+          nosed east, so the long lens upstairs reads its front and the board;
       the desk chair pushed back off the pulled drawers (the dawn view strips
-          `Desk_Chair`)."""
+          `Desk_Chair`).
+    Draft 6 targets: make_car's windshield is a vertical plate buried in the
+    raked body; give it a raked glass panel and set the board BEHIND it. The
+    man at the door is a blank head."""
     from _props.geometry import make_rot_box, make_tube, catenary
     from _props.furniture import make_chair
     from _props.vehicles import make_car
@@ -363,14 +366,32 @@ def build_dawn_2026_10():
         make_tube(f"Dawn_Board_StringBrown_{k}", catenary((x0, yy, z0), (x1, yy, z1), 0.028, n=8), 0.0035, (0.42, 0.26, 0.16, 1.0), segments=5)
     # the desk chair pushed back and turned, off the pulled drawers
     make_chair("Dawn_Desk_Chair", DESK_X - 0.55, DESK_Y - 1.20, yaw=0.5, wood=WOOD_DARK, seat_col=(0.30, 0.22, 0.16, 1.0))
-    # the por puesto at the far curb, idling, parking lights on, the sign in the windshield
-    cx, cy, zc = 3.6, ROOM_D + 15.4, -3.2 - 0.03 + 0.025
+    # the por puesto idling at the NEAR curb (draft 5, 2026-10-31), west of
+    # the window and nosed east, so the lens upstairs sees its front three-
+    # quarter: the parking lights and "RUTA 77 on the sign in the windshield.
+    # Chacaíto, Sabana Grande, Petare." (draft 4 had it side-on at the far
+    # curb with the sign inside the body, where nothing could read it). The
+    # street (make_view "front"): asphalt y 15.3..22.3; the street light at
+    # x -7 stands in the gutter, so the tail stops short of it.
+    from _props.vehicles import curb_park
     L = 4.5
+    zc = -3.2 - 0.03 + 0.025
+    cx, cy = curb_park(ROOM_D + 13.2, 3.5, "X", -1, -4.25)
     make_car("Dawn_Car", cx, cy, L, (0.82, 0.78, 0.66, 1.0), along="X", z0=zc)
+    nose = cx + L / 2.0
     for sgn in (-1, 1):
-        make_box(f"Dawn_Car_Park_Light_F_{sgn:+d}", (cx + L / 2.0 + 0.012, cy + sgn * 0.66, zc + 0.66), (0.025, 0.14, 0.06), (1.0, 0.70, 0.24, 1.0))
+        make_box(f"Dawn_Car_Park_Light_F_{sgn:+d}", (nose + 0.012, cy + sgn * 0.66, zc + 0.66), (0.025, 0.14, 0.06), (1.0, 0.70, 0.24, 1.0))
         make_box(f"Dawn_Car_Park_Light_R_{sgn:+d}", (cx - L / 2.0 - 0.012, cy + sgn * 0.66, zc + 0.80), (0.025, 0.16, 0.08), (0.90, 0.16, 0.12, 1.0))
-    make_box("Dawn_Car_Sign", (cx + L / 2.0 - 1.45, cy - 0.30, zc + 1.12), (0.02, 0.48, 0.24), (0.70, 0.56, 0.36, 1.0))
+    # the cardboard, wedged in the passenger corner of the windshield and
+    # turned 35 deg toward the curb; this pipeline's glass is opaque, so it
+    # stands on the glass's outer face (its rear edge on the plate, its foot
+    # clear of the hood's rake). The lettering is a Label3D in the .tscn
+    # (Dawn_Car_Sign_Text__writers_desk_dawn), on the face toward the house.
+    sy = -0.61
+    tx, ty = math.sin(-sy), math.cos(-sy)          # the board's run, rotated with it
+    hw_ = 0.28
+    sx = nose - 1.365 + hw_ * tx + 0.012
+    make_rot_box("Dawn_Car_Sign", (sx, cy - 0.34, zc + 1.30), (0.012, 2 * hw_, 0.24), (0.70, 0.56, 0.36, 1.0), yaw=sy)
     # (2026-10-31) "By the door a man stands like he's in line for a movie, a
     # slip of waxed paper held like a ticket. He doesn't come in." Just inside
     # the closed door, facing the room; dawn only. And for "the man at the
@@ -382,9 +403,11 @@ def build_dawn_2026_10():
                                       coat=(0.34, 0.30, 0.26, 1.0), pants=(0.20, 0.20, 0.24, 1.0), hair=(0.14, 0.12, 0.10, 1.0))
     from _props.geometry import make_rot_box as _mrb
     _mrb("Dawn_Man_Waxed_Paper", (hx, hy - 0.02, hz + 0.03), (0.27, 0.004, 0.10), (0.92, 0.90, 0.78, 1.0), yaw=0.0)   # held in both hands
-    make_box("DawnWet_Street_Sheen", (0.0, 18.8, -3.175 + 0.002), (24.0, 6.9, 0.004), (0.34, 0.37, 0.43, 1.0))
-    for k, (px, py, pw, pd) in enumerate(((3.4, 21.0, 3.6, 1.2), (-2.6, 19.4, 2.2, 0.9), (7.8, 17.2, 1.6, 0.7), (-7.4, 21.6, 2.8, 0.8))):
-        make_box(f"DawnWet_Pool_{k}", (px, py, -3.175 + 0.0055), (pw, pd, 0.003), (0.52, 0.56, 0.62, 1.0))
+    make_box("DawnWet_Street_Sheen", (0.0, 18.8, -3.175 + 0.002), (24.0, 6.9, 0.004), (0.38, 0.41, 0.47, 1.0))
+    # the pools carry the dawn sky (paler than the sheen); the first lies in
+    # the gutter where the car stood
+    for k, (px, py, pw, pd) in enumerate(((-4.0, 16.0, 3.4, 0.9), (1.6, 19.4, 2.2, 0.9), (7.8, 17.2, 1.6, 0.7), (-7.4, 21.6, 2.8, 0.8), (4.6, 21.2, 2.6, 0.8))):
+        make_box(f"DawnWet_Pool_{k}", (px, py, -3.175 + 0.0055), (pw, pd, 0.003), (0.70, 0.73, 0.80, 1.0))
     try:
         import bpy
         for empty_name, prefix in (("DawnChairs__writers_desk_dawn__writers_desk_dawn_gone", "Dawn_Fold_Chair"),

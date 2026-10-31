@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 244: VOLS 1–4 backgrounds, draft 12 — RUTA 77, and the roofless cars.**
+- **vol4_curtain_call, pass 243's N+1 list:**
+  - **The car, and "RUTA 77 on the sign in the windshield. Chacaíto, Sabana Grande, Petare."** Draft 4's por puesto sat side-on at the far curb, and its sign stood inside the body behind the windshield plate, so no frame could ever read it.
+    - The car now idles at the NEAR curb, west of the window and nosed east (`curb_park`; the tail stops short of the street light standing in the gutter). The lens upstairs gets its front three-quarter: the grille, the amber parking lights and their glow in the gutter (`Dawn_Car_Park_Glow__…`).
+    - The cardboard is wedged in the passenger corner of the windshield and turned toward the curb. It is lettered in marker with the prose's own words (two Caveat `Label3D`s: "RUTA 77" and the three stops).
+    - The line gets its own long-lens insert, `shot_insert_sign__writers_desk_dawn` (fov 6), and node 26 carries `[shot:insert sign]`.
+    - The car inserts stand in the N window's centre pane, at x 1.45 and 1.70 m up. At 1.55 m the lens sat level with the transom, and at x 1.6 it sat behind the east muntin; the gate found both.
+  - **The pools** carry the dawn sky now, paler than the sheen, and one lies in the gutter where the car stood. The gone view's car insert frames them.
+  - The man already faces the room in the door inserts. The target is met as drafted, without a face.
+- **`make_car`, every set:** the body prism's winding reference was z 0, not the car. A car set below the origin was judged inside-out: the curtain call's, 3.2 m under a second-floor window, drew roofless from above, with its roof faces culled. The reference now sits inside the body (z0 + 0.70). Cars on the ground (z0 near 0) were affected only on their unseen underside, which the fix also corrects whenever their sets are next rebuilt. Only writers_desk is rebuilt now.
+- **`vantage_obstruction_audit`:** the sign insert goes on DELIBERATE_MARKERS, because the cast is AABBs and the board stands inside the car body's box above the hood. The render reads the lettering clear.
+- **Draft N+1 targets:** `make_car`'s windshield is a vertical plate buried in a raked body (the glass barely shows from above); a raked glass panel would let the sign sit BEHIND it, as the prose has it. The man's face is a blank head. The stops line is small at 6°; one more step in on the board if the Deck can't read it.
+
 **2026-10-31 · pass 243: VOLS 1–4 backgrounds, draft 11 — the curtain call's street and its door.**
 - **vol4_curtain_call:**
   - **"Through the glass the street. A car idling at the curb, parking lights on, a cardboard sign wedged against the windshield."** The por puesto was built (pass 241) but no frame reached it: from the desk it sits under the sill line, and the street is 3.2 m down. Now `shot_insert_car__writers_desk_dawn` looks from the N window down to the far curb, and the line plus "Cut to: the car." carry `[shot:insert car]`.

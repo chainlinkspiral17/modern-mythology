@@ -49,6 +49,17 @@ func _ready() -> void:
 		cam.global_transform = m.global_transform
 		if m.has_meta("fov"):
 			cam.fov = float(m.get_meta("fov"))
+	# --cam "x,y,z,pitch_deg,yaw_deg,fov" (godot frame): try a vantage before
+	# writing it into a preset or a marker (2026-10-31)
+	var cam_s: String = String(args.get("cam", ""))
+	if cam_s != "":
+		var p: PackedFloat64Array = cam_s.split_floats(",")
+		if p.size() >= 5:
+			var cam: Camera3D = bg.get_node("SubViewport/Camera3D") as Camera3D
+			cam.global_position = Vector3(p[0], p[1], p[2])
+			cam.global_rotation = Vector3(deg_to_rad(p[3]), deg_to_rad(p[4]), 0.0)
+			if p.size() >= 6:
+				cam.fov = p[5]
 	# --yaw_deg 3: turn the view a little (does the paper travel with the room?)
 	var yaw: float = float(String(args.get("yaw_deg", "0")))
 	if yaw != 0.0:

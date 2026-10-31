@@ -83,6 +83,10 @@ DELIBERATE_MARKERS = {
     # KNOWN_UNRESOLVED); the only geometry named "roll" is Room 4's bedroll at
     # the motel 400 m off, which is not its subject.
     ("desert_route", "shot_insert_roll__utah_highway_day"),
+    # (2026-10-31) curtain call's RUTA 77 board stands in the windshield's
+    # corner above the hood, inside the car body's BOX (the cast is AABBs; the
+    # body is a raked prism). The render reads the lettering clear.
+    ("writers_desk", "shot_insert_sign__writers_desk_dawn"),
     # (2026-10-10) inside the van at the NexCorp pump the cargo bay is 1.96 m
     # wide: its close-ups are at arm's length by design, like the Subaru's.
     ("nexcorp_fueling_station", "shot_closeup_diego__nexcorp_van_cargo"),
