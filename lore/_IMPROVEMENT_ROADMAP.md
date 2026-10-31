@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 248: VOLS 1–4 backgrounds — 37 open views draw their horizons.**
+- **The scan:** pass 247 found the Small Wood hills invisible behind the camera's 200 m far plane (pass 195's lesson, applied then to only a few sets). A scan of every preset vols 1–4 use listed the views whose named far scenery stood past `far` in the lens's cone: hills, tree lines, the sea horizon and cloud decks, mesas, pole and road runs. That found 37 views across 16 sets.
+- **The fix:** each view now sets `far` from its own farthest such piece (+5%, 300 to 2000 m). The multi-room sets (vol3_rooms, vol4_story_rooms, pasadena_1945) are left alone, because past 200 m there is another room, not a horizon.
+- **Checked:** all 37 were rendered before and after.
+  - The dust-storm highway gains its mesas (one fragment showed before).
+  - The beach views' cloud decks run unbroken.
+  - Most views change little, because their own fog already softened the far bands.
+  - No world edge was exposed.
+- **Draft N+1:** turn the scan into an audit (presets whose far scenery stands past their far plane), so a new open view can't ship cut.
+
 **2026-10-31 · pass 247: VOLS 1–4 backgrounds, draft 15 — the Small Wood road gets its valley.**
 - **small_wood_road (vol1 ch3's night drive, vol2 ch1's runs "up and down the property", vol2 ch2's roadside):** untouched since 09-27.
   - All three views wore the set's dusk sky, the night's sun stayed up, and the car's headlights shone on the day road. The night car, its headlight spill (a pale slab on the day asphalt) and the town lights stood in every view.
