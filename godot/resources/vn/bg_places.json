@@ -1803,6 +1803,14 @@
       "scenes": 1,
       "built": "2026-10-16 draft 1"
     },
+    "vol4_desk_dawn_gone": {
+      "fit": "exact",
+      "to": "3d:writers_desk_dawn_gone",
+      "build": "writers_desk",
+      "scenes": 1,
+      "note": "curtain call, after: the man at the door gone, the car gone, the street wet",
+      "built": "2026-10-31 draft 1"
+    },
     "vol4_desk_night": {
       "fit": "exact",
       "to": "3d:writers_desk",

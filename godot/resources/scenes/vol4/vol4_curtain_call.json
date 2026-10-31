@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "Through the glass the street. A car idling at the curb, parking lights on, a cardboard sign wedged against the windshield."
+      "text": "[shot:insert car]Through the glass the street. A car idling at the curb, parking lights on, a cardboard sign wedged against the windshield."
     },
     {
       "t": "say",
@@ -115,7 +115,7 @@
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Cut to: the car."
+      "text": "[shot:insert car]Cut to: the car."
     },
     {
       "t": "narrate",
@@ -148,6 +148,10 @@
       "char": "The Director",
       "expr": "neutral",
       "text": "Lights down. Not out."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_dawn_gone.jpg"
     },
     {
       "t": "narrate",

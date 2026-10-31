@@ -265,8 +265,8 @@ def build_open_drawers(px, face_y, drawers):
             _mb(f"DrawerFileOpen_Folder_{i}_Papers", (px, fy + 0.008, rail_z - 0.10), (0.30, 0.010, 0.20), P.PAPER)
     try:
         import bpy
-        for empty_name, prefix in (("DrawerMid__writers_desk_dawn", "DrawerMidOpen"),
-                                   ("DrawerFile__writers_desk_drawer__writers_desk_dawn", "DrawerFileOpen")):
+        for empty_name, prefix in (("DrawerMid__writers_desk_dawn__writers_desk_dawn_gone", "DrawerMidOpen"),
+                                   ("DrawerFile__writers_desk_drawer__writers_desk_dawn__writers_desk_dawn_gone", "DrawerFileOpen")):
             empty = bpy.data.objects.new(empty_name, None)
             bpy.context.scene.collection.objects.link(empty)
             for obj in list(bpy.data.objects):
@@ -371,12 +371,28 @@ def build_dawn_2026_10():
         make_box(f"Dawn_Car_Park_Light_F_{sgn:+d}", (cx + L / 2.0 + 0.012, cy + sgn * 0.66, zc + 0.66), (0.025, 0.14, 0.06), (1.0, 0.70, 0.24, 1.0))
         make_box(f"Dawn_Car_Park_Light_R_{sgn:+d}", (cx - L / 2.0 - 0.012, cy + sgn * 0.66, zc + 0.80), (0.025, 0.16, 0.08), (0.90, 0.16, 0.12, 1.0))
     make_box("Dawn_Car_Sign", (cx + L / 2.0 - 1.45, cy - 0.30, zc + 1.12), (0.02, 0.48, 0.24), (0.70, 0.56, 0.36, 1.0))
+    # (2026-10-31) "By the door a man stands like he's in line for a movie, a
+    # slip of waxed paper held like a ticket. He doesn't come in." Just inside
+    # the closed door, facing the room; dawn only. And for "the man at the
+    # door is gone and the car is gone and the street is wet" (the _gone view):
+    # the street's sheen and its pools, where the car stood among them.
+    from _props.figures import make_standing_figure
+    # beside the door's E casing, not in front of it (the door inserts look at the door)
+    hx, hy, hz = make_standing_figure("Dawn_Man", 2.12, 0.42, heading=-0.25, arms="front", h=1.78,
+                                      coat=(0.34, 0.30, 0.26, 1.0), pants=(0.20, 0.20, 0.24, 1.0), hair=(0.14, 0.12, 0.10, 1.0))
+    from _props.geometry import make_rot_box as _mrb
+    _mrb("Dawn_Man_Waxed_Paper", (hx, hy - 0.02, hz + 0.03), (0.27, 0.004, 0.10), (0.92, 0.90, 0.78, 1.0), yaw=0.25)   # held in both hands
+    make_box("DawnWet_Street_Sheen", (0.0, 18.8, -3.175 + 0.002), (24.0, 6.9, 0.004), (0.34, 0.37, 0.43, 1.0))
+    for k, (px, py, pw, pd) in enumerate(((3.4, 21.0, 3.6, 1.2), (-2.6, 19.4, 2.2, 0.9), (7.8, 17.2, 1.6, 0.7), (-7.4, 21.6, 2.8, 0.8))):
+        make_box(f"DawnWet_Pool_{k}", (px, py, -3.175 + 0.0055), (pw, pd, 0.003), (0.52, 0.56, 0.62, 1.0))
     try:
         import bpy
-        for empty_name, prefix in (("DawnChairs__writers_desk_dawn", "Dawn_Fold_Chair"),
-                                   ("DawnString__writers_desk_dawn", "Dawn_Board_StringBrown"),
-                                   ("DawnDeskChair__writers_desk_dawn", "Dawn_Desk_Chair"),
-                                   ("DawnCar__writers_desk_dawn", "Dawn_Car")):
+        for empty_name, prefix in (("DawnChairs__writers_desk_dawn__writers_desk_dawn_gone", "Dawn_Fold_Chair"),
+                                   ("DawnString__writers_desk_dawn__writers_desk_dawn_gone", "Dawn_Board_StringBrown"),
+                                   ("DawnDeskChair__writers_desk_dawn__writers_desk_dawn_gone", "Dawn_Desk_Chair"),
+                                   ("DawnCar__writers_desk_dawn", "Dawn_Car"),
+                                   ("DawnMan__writers_desk_dawn", "Dawn_Man"),
+                                   ("DawnWet__writers_desk_dawn_gone", "DawnWet_")):
             empty = bpy.data.objects.new(empty_name, None)
             bpy.context.scene.collection.objects.link(empty)
             for obj in list(bpy.data.objects):

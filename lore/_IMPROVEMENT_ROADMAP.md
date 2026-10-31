@@ -3835,6 +3835,13 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 243: VOLS 1–4 backgrounds, draft 11 — the curtain call's street and its door.**
+- **vol4_curtain_call:**
+  - **"Through the glass the street. A car idling at the curb, parking lights on, a cardboard sign wedged against the windshield."** The por puesto was built (pass 241) but no frame reached it: from the desk it sits under the sill line, and the street is 3.2 m down. Now `shot_insert_car__writers_desk_dawn` looks from the N window down to the far curb, and the line plus "Cut to: the car." carry `[shot:insert car]`.
+  - **"By the door a man stands like he's in line for a movie, a slip of waxed paper held like a ticket. He doesn't come in."** A standing figure, dawn only, beside the door's E casing (in front of it he blocked the door inserts), with the slip held in both hands at the waist.
+  - **"When they look again the man at the door is gone and the car is gone and the street is wet."** A second state, `writers_desk_dawn_gone`, reached through the chapter's own bg_places convention (`vol4_desk_dawn_gone`, like `vol4_desk_dawn`, so neither view takes a room bed under the finale's music). It holds the dawn set without the man and the car: the chairs, the brown string, the pulled drawers and the dawn lights carry both tags. The street has a sheen and four pools. The view has its own door, chairs and car inserts.
+- **Draft N+1 targets:** the car's parking lights and the RUTA 77 sign as legible as the line wants (an insert closer on the windshield); the pools want the sky in them (paler); the man's face toward the room; the night desk and the dawn have no room bed — a decision for the music direction, not this pass.
+
 **2026-10-31 · pass 242: VOLS 1–4 backgrounds, draft 10 — pass 241's N+1 list, and the Shillelagh arrives.**
 - **The suite, and what it found:**
   - The marker gate prints its OBSTRUCTED lines when it fails. Before, it gave only a count.
@@ -3861,7 +3868,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 - **Draft N+1 targets:**
   - Shillelagh: rain beading and sheen on the flank; its cab interior for the boarded branch.
   - Charlie's flat: the living room by day; a kitchen (the draft-2 target in the builder).
-  - Writers_desk dawn: the car is still not seen through the window; the man at the door.
+  - (done the same day, below) ~~Writers_desk dawn: the car; the man at the door.~~
   - Bench: a thinner awning post.
 
 **2026-10-30 · pass 241: VOLS 1–4 backgrounds, draft 9 — pass 240's N+1 list and the unseen sets (three threads).**

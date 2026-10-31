@@ -3298,6 +3298,25 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.40, 0.40, 0.42, 1), "ground_bottom": Color(0.16, 0.16, 0.18, 1),
 			"ambient_color": Color(0.70, 0.72, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.64, 0.66, 0.72, 1)},
 		"suppress_input": true,
+	},	"writers_desk_dawn_gone": {
+		"scene": "res://scenes/locales/writers_desk.tscn",
+		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
+		# (2026-10-31) "When they look again the man at the door is gone and the car
+		# is gone and the street is wet." The dawn set without the man and the
+		# por puesto (tagged __writers_desk_dawn alone); the street sheens
+		# (DawnWet__writers_desk_dawn_gone).
+		"camera_origin": Vector3(0.75, 1.45, -3.15),
+		"camera_rotation": Vector3(-0.058, deg_to_rad(30.0), 0.0),
+		"fov": 56.0,
+		# (draft 3) "Every drawer pulled out": the open middle and file drawers
+		# are tagged for this view; the closed fronts leave it
+		# (draft 4) the red string goes brown and the desk chair is pushed back:
+		# the dawn's own (Dawn_*__writers_desk_dawn) replace them
+		"strip": ["Desk_Drawer_1", "Desk_Drawer_2", "Board_String_", "Desk_Chair"],
+		"env": {"sky_top": Color(0.46, 0.54, 0.70, 1), "sky_horizon": Color(0.86, 0.80, 0.74, 1),
+			"ground_horizon": Color(0.40, 0.40, 0.42, 1), "ground_bottom": Color(0.16, 0.16, 0.18, 1),
+			"ambient_color": Color(0.70, 0.72, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.64, 0.66, 0.72, 1)},
+		"suppress_input": true,
 	},
 	# THE SCHOOL (2026-10-16, build_small_wood_high.py; draft 1): vol 2's
 	# Small Wood Senior High and vol 4's middle school, one building — the
