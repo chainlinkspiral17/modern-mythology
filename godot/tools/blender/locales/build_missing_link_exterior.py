@@ -191,7 +191,8 @@ def build_depot_awning():
     sx, sy = 5.6, 6.6          # awning center, abutting the diner's SE corner
     # Posts + sloped-read roof (two stacked slabs, lower lip south)
     for px, py in ((sx - 1.5, sy - 0.85), (sx + 1.5, sy - 0.85)):
-        make_cyl(f"Awning_Post_{px:.1f}", (px, py, 1.25), 0.06, 2.5, COL_POLE, segments=6)
+        # (2026-10-31) a 9 cm pipe, not 12: the W post stands mid-frame in shuttle_bench
+        make_cyl(f"Awning_Post_{px:.1f}", (px, py, 1.25), 0.045, 2.5, COL_POLE, segments=8)
     make_box("Awning_Roof_Hi", (sx, sy + 0.5, 2.72), (3.5, 1.1, 0.10), COL_CLAD_DK)
     make_box("Awning_Roof_Lo", (sx, sy - 0.5, 2.52), (3.5, 1.2, 0.10), COL_CLAD_DK)
     make_box("Awning_Corrugate", (sx, sy, 2.64), (3.4, 2.0, 0.05), COL_SHELTER)

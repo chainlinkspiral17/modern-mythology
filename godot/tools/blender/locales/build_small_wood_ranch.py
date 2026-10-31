@@ -142,7 +142,8 @@ def build_bedroom():
                       tint=(FLOOR[0] * 0.86, FLOOR[1] * 0.86, FLOOR[2] * 0.86, 1.0))
     # through the window: the firs, and the moon low over them (night presets light it)
     make_view("View_N", "N", D, 0.0, kind="back", ground_z=-0.4, seed=21)
-    make_cyl("Moon", (-6.0, D + 60.0, 9.0), 1.6, 0.05, (0.96, 0.94, 0.86, 1.0), axis='Y', segments=24)
+    # the night window's moon only (2026-10-31: it hung over the farmhouse's day views)
+    make_cyl("Moon__ranch_bedroom_night__ranch_bedroom_lamp", (-6.0, D + 60.0, 9.0), 1.6, 0.05, (0.96, 0.94, 0.86, 1.0), axis='Y', segments=24)
     for k in range(9):
         a = k * 0.7
         make_lathe(f"Fir_Far_{k}", (-20.0 + k * 5.0, D + 34.0 + (k % 3) * 4.0, -0.4),   # beyond the view's houses

@@ -392,17 +392,17 @@ def build_little_switzerland_2026_10():
     # the lane: on from the drive's foot (y -22) to the sign at its mouth
     make_box("LS_Lane_Pebble" + LS, (11.0, -35.0, 0.005), (3.2, 26.0, 0.01), PEBBLE)
     for k, (dx, dy) in enumerate(((-0.6, -26.0), (0.5, -29.5), (-0.2, -33.0), (0.7, -36.5), (-0.8, -39.0))):
-        make_box(f"LS_Lane_Rut_{k}" + LS, (11.0 + dx, dy, 0.0105), (0.30, 2.6, 0.002), (0.50, 0.47, 0.41, 1.0))
+        make_box(f"LSG_Lane_Stock_Rut_{k}", (11.0 + dx, dy, 0.0105), (0.30, 2.6, 0.002), (0.50, 0.47, 0.41, 1.0))
     # post-and-wire both sides of the lane, the carport to the mouth
     for side, fx in (("W", 9.0), ("E", 13.0)):
         y = -39.5
         k = 0
         while y <= -8.5:
-            make_box(f"LS_Fence_{side}_Post_{k}" + LS, (fx, y, 0.58), (0.10, 0.10, 1.16), POST)
+            make_box(f"LSG_Fence_Stock_{side}_Post_{k}", (fx, y, 0.58), (0.10, 0.10, 1.16), POST)
             y += 3.0
             k += 1
         for j, z in enumerate((0.48, 0.80, 1.08)):
-            make_box(f"LS_Fence_{side}_Wire_{j}" + LS, (fx, (-39.5 + -8.5) / 2.0, z), (0.012, 31.0, 0.012), WIRE)
+            make_box(f"LSG_Fence_Stock_{side}_Wire_{j}", (fx, (-39.5 + -8.5) / 2.0, z), (0.012, 31.0, 0.012), WIRE)
     # the sign at the lane's mouth, W side, facing the highway (S)
     for k, px in enumerate((7.3, 9.1)):
         make_box(f"LS_Sign_Post_{k}" + LS, (px, -40.9, 0.80), (0.10, 0.10, 1.60), POST)
@@ -412,20 +412,20 @@ def build_little_switzerland_2026_10():
     for k, (cx, cy, yaw, coat, face, g) in enumerate(((2.0, -27.0, 0.6, BLACK, None, True), (-5.5, -22.0, 2.4, RED, WHITE, True),
                                                        (-3.5, -34.0, -0.4, BLACK, None, False), (21.0, -24.0, 2.9, RED, WHITE, True),
                                                        (27.0, -31.0, 1.2, BLACK, None, True))):
-        make_cow(f"LSG_Cow_{k}", cx, cy, yaw=yaw, coat=coat, face=face, grazing=g)
+        make_cow(f"LSG_Cows_Stock_{k}", cx, cy, yaw=yaw, coat=coat, face=face, grazing=g)
     # "dodging cow pies in a mad rush to the water"
     for k, (px, py) in enumerate(((5.0, -18.0), (1.5, -23.5), (-3.0, -16.0), (-6.0, -20.5), (-5.5, -14.5), (-4.0, -26.0), (3.5, -12.5))):
-        make_blob(f"LS_Cow_Pie_{k}" + LS, (px, py, 0.012), 0.16 + 0.03 * (k % 3), (0.20, 0.17, 0.12, 1.0), noise=0.25, seed=40 + k, squash=0.18)
+        make_blob(f"LSG_Cow_Pie_Stock_{k}", (px, py, 0.012), 0.16 + 0.03 * (k % 3), (0.20, 0.17, 0.12, 1.0), noise=0.25, seed=40 + k, squash=0.18)
     # the river on the west edge of the pastures, and the alders along it
     RX = -18.0
     for k in range(12):                     # in 20 m reaches, its top above the pasture's
-        make_box(f"LS_River_{k}" + LS, (RX, -120.0 + 20.0 * (k + 0.5), 0.012), (11.0, 20.0, 0.02), (0.52, 0.62, 0.68, 1.0))
+        make_box(f"LSG_River_Stock_{k}", (RX, -120.0 + 20.0 * (k + 0.5), 0.012), (11.0, 20.0, 0.02), (0.52, 0.62, 0.68, 1.0))
     for k in range(10):                     # south of the old firs behind the house
         ry = -70.0 + k * 10.0
         for side in (-1, 1):
             if (k + (side > 0)) % 2:
                 continue
-            make_broadleaf(f"LSG_Alder_{k}_{side:+d}", RX + side * 6.0, ry + side * 2.0, 7.0 + (k % 3), (0.22, 0.32, 0.16, 1.0), (0.30, 0.24, 0.18, 1.0))
+            make_broadleaf(f"LSG_Alders_Stock_{k}_{side:+d}", RX + side * 6.0, ry + side * 2.0, 7.0 + (k % 3), (0.22, 0.32, 0.16, 1.0), (0.30, 0.24, 0.18, 1.0))
     # the woods behind the house: a belt on the flat round the old firs,
     # then up a hillside to the north, "descending down to touch the
     # valley". The hill is terraced (axis-true boxes, 3 m deep, 0.9 m up),
@@ -435,7 +435,7 @@ def build_little_switzerland_2026_10():
     STEP, RISE, HY0 = 3.0, 0.9, 56.0
     for i in range(16):
         top = RISE * (i + 1)
-        make_box(f"LS_Hill_Ground_{i}" + LS, (8.0, HY0 + STEP * (i + 0.5), top / 2.0 - 0.03), (130.0, STEP, top + 0.06), (0.30, 0.38, 0.22, 1.0))
+        make_box(f"LSG_Hill_Ground_Stock_{i}", (8.0, HY0 + STEP * (i + 0.5), top / 2.0 - 0.03), (130.0, STEP, top + 0.06), (0.30, 0.38, 0.22, 1.0))
     def hill_z(y):
         return 0.0 if y < HY0 else RISE * (int((y - HY0) // STEP) + 1)
     k = 0
@@ -447,7 +447,7 @@ def build_little_switzerland_2026_10():
                 continue
             if HY0 > 0 and abs(((wy - HY0) % STEP) - STEP / 2.0) > STEP / 2.0 - 0.6 and wy >= HY0:
                 wy += 0.8                                   # off the tread's riser
-            make_conifer(f"LSG_Wood_{k}", wx, wy, 14.0 + ((k * 7) % 5) * 1.6, (0.12, 0.22, 0.14, 1.0), (0.26, 0.20, 0.14, 1.0),
+            make_conifer(f"LSG_Woods_Stock_{k}", wx, wy, 14.0 + ((k * 7) % 5) * 1.6, (0.12, 0.22, 0.14, 1.0), (0.26, 0.20, 0.14, 1.0),
                          skirt=0.18, z0=hill_z(wy))
             k += 1
     # the coast range in haze, west and north (the night bands are stripped):
@@ -457,9 +457,11 @@ def build_little_switzerland_2026_10():
                                                       (-150.0, 175.0, 36.0, 0.0, 11, 52.0, (0.54, 0.61, 0.62, 1.0)))):
         for k in range(n):
             hk = 0.30 + 0.12 * ((k * 5 + r) % 4)
-            make_blob(f"LS_Ridge_{r}_{k}" + LS, (x0 + dx * k, y0 + dy * k, -rad * 0.15), rad, col, noise=0.10, seed=70 + r * 13 + k, squash=hk)
+            make_blob(f"LSG_Ridge_Stock_{r}_{k}", (x0 + dx * k, y0 + dy * k, -rad * 0.15), rad, col, noise=0.10, seed=70 + r * 13 + k, squash=hk)
     # the cows and trees are many parts each: one tagged empty owns them
-    # (a tag mid-name, `LS_Cow_4__little_switzerland_Tail`, names no preset)
+    # (a tag mid-name, `LS_Cow_4__little_switzerland_Tail`, names no preset),
+    # and main()'s join_stock folds each family (`_Stock_`) into one mesh
+    # that keeps the parent: the woods were ~700 draw calls on their own
     if bpy is not None:
         empty = bpy.data.objects.new("LittleSwitzerland" + LS, None)
         bpy.context.scene.collection.objects.link(empty)
@@ -488,7 +490,7 @@ def build_weathering_2026_10():
         cur = -8.1
         for a, b in sorted(cut) + [(6.1, 6.1)]:
             if a > cur:
-                make_box(f"Skin_S_{k}", ((cur + a) / 2.0, -0.104, (z0 + z1) / 2.0), (a - cur, 0.004, z1 - z0), YEL)
+                make_box(f"Skin_Stock_S_{k}", ((cur + a) / 2.0, -0.104, (z0 + z1) / 2.0), (a - cur, 0.004, z1 - z0), YEL)
                 k += 1
             cur = max(cur, b)
     # the E and W ground walls' outsides, round their windows (the service
@@ -504,13 +506,13 @@ def build_weathering_2026_10():
             cur = b
         if cur < y1:
             make_box(f"{nm}_{k}", (x, (cur + y1) / 2.0, (z0 + z1) / 2.0), (0.004, y1 - cur, z1 - z0), YEL)
-    skin_x("Skin_E", 6.104, 4.06, 9.9, [(6.4, 7.6, 0.95, 1.95)])     # between the S and N walls' faces
-    skin_x("Skin_W", -8.104, 0.1, 9.9, [(2.7, 4.9, 0.60, 2.10), (6.5, 8.7, 0.60, 2.10)])
+    skin_x("Skin_Stock_E", 6.104, 4.06, 9.9, [(6.4, 7.6, 0.95, 1.95)])     # between the S and N walls' faces
+    skin_x("Skin_Stock_W", -8.104, 0.1, 9.9, [(2.7, 4.9, 0.60, 2.10), (6.5, 8.7, 0.60, 2.10)])
     # mildew: the splash line at the foot, streaks down from the eaves
     for k, (x0, x1) in enumerate(((-8.0, -6.1), (-3.9, -1.8), (-0.4, 2.2), (3.0, 6.0))):
-        make_box(f"Mildew_Foot_S_{k}", ((x0 + x1) / 2.0, -0.124, 0.32), (x1 - x0, 0.004, 0.22 + 0.06 * (k % 2)), MILDEW)
+        make_box(f"Mildew_Stock_Foot_{k}", ((x0 + x1) / 2.0, -0.124, 0.32), (x1 - x0, 0.004, 0.22 + 0.06 * (k % 2)), MILDEW)
     for k, (x, ln) in enumerate(((-7.6, 1.1), (-3.6, 0.7), (-0.2, 1.3), (1.8, 0.6), (4.8, 1.0), (5.8, 0.8))):
-        make_box(f"Mildew_Streak_S_{k}", (x, -0.124, 2 * H + 0.06 - ln / 2.0), (0.22 + 0.08 * (k % 3), 0.004, ln), MILDEW)
+        make_box(f"Mildew_Stock_Streak_{k}", (x, -0.124, 2 * H + 0.06 - ln / 2.0), (0.22 + 0.08 * (k % 3), 0.004, ln), MILDEW)
     # shingles: the S slope's courses, and a few split and lifting loose
     zc = 2 * H + 0.16 + 1.3
     eave_y, eave_z, ridge_y, rise = 5.0 - 5.5, zc - 1.3, 5.0, 2.6
@@ -519,10 +521,10 @@ def build_weathering_2026_10():
         return eave_z + (y - eave_y) * math.tan(th) + lift / math.cos(th)
     for j in range(9):
         y = eave_y + 0.45 + j * 0.55
-        make_rot_box(f"Roof_Shingle_Course_S_{j}", (-1.0, y, on_slope(y, 0.012)), (15.0, 0.03, 0.012), (0.18, 0.17, 0.17, 1.0), roll=th)
+        make_rot_box(f"Roof_Shingle_Stock_Course_{j}", (-1.0, y, on_slope(y, 0.012)), (15.0, 0.03, 0.012), (0.18, 0.17, 0.17, 1.0), roll=th)
     for k, (x, y, yaw, lift) in enumerate(((-6.3, 0.6, 0.25, 0.03), (-2.2, 1.9, -0.18, 0.05), (1.4, 0.9, 0.35, 0.02),
                                             (3.9, 2.6, -0.30, 0.06), (-4.6, 3.1, 0.12, 0.03))):
-        make_rot_box(f"Roof_Shingle_Loose_{k}", (x, y, on_slope(y, 0.02 + lift)), (0.36, 0.22, 0.014), (0.36, 0.33, 0.31, 1.0),
+        make_rot_box(f"Roof_Shingle_Stock_Loose_{k}", (x, y, on_slope(y, 0.02 + lift)), (0.36, 0.22, 0.014), (0.36, 0.33, 0.31, 1.0),
                      yaw=yaw, roll=th + 0.18 + lift)
 
 

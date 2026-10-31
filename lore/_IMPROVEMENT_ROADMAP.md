@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 246: VOLS 1–4 backgrounds, draft 14 — the Shillelagh leaves, the day loses its moon.**
+- **vol1_link_shuttle, "You stay. The Shillelagh pulls away … The taillights are not red. They are something on the other side of red":**
+  - The line played over the parked bus, seen nose-on. It now cuts to `shot_insert_shillelagh__shuttle_bench_bus`, from the road behind the bus, on its copper rear, its violet taillights and the lit rear glass.
+  - A violet glow (`Bus_Tail_Glow__…`) lights the tail.
+  - The cue is `shillelagh`, not `taillights`, because the parked pickup's taillights stand nearer the lens and answered to that word.
+- **shuttle_bench:** the awning's W post stands mid-frame wherever the lens sits under the awning (it marks the awning's front corner). It is a 9 cm pipe now, not 12.
+- **The farmhouse's day views:** the bedroom view's moon disc hung 70 m out in every view. It is now `Moon__ranch_bedroom_night__ranch_bedroom_lamp`.
+- **Draw calls:** the Little Switzerland layer had taken the house's worst view from 234 to 986. The woods, alders, cows, fences, ridges, terraces, river reaches and cow pies are now joined as `LSG_*_Stock` families under the tagged empty: a joined mesh keeps its parent, so the tag holds. So are the house's skin, mildew and shingles. The worst view is now 636, and its baseline is recorded.
+- **Draft N+1 targets:**
+  - Little Switzerland: the coastal highway at the lane's foot, the river's banks and flood line, a tree fallen across the road, the woods' understory.
+  - The Shillelagh: rain sheen on the flank.
+  - The curtain call: make_car's raked windshield, with the RUTA 77 board behind the glass.
+
 **2026-10-31 · pass 245: VOLS 1–4 backgrounds, draft 13 — Little Switzerland is the grandmother's place.**
 - **A canon fix (vol2 ch1, "A Brief History of Me, Part One"):** `little_switzerland` was an invented alpine village: three chalet fronts with timber X-braces and flower boxes, under snow-capped ridges. The text has "Little Switzerland" only as a sign: "turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland." It leads to "a beautiful but fallen-upon-disrepair ranch house. It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose." Around it: "cow pastures, bordered on one edge by a river. The other — primal woods descend down to touch the valley."
   - That house is the Link home (Andy, 2026-10-27: "Small Wood house, unified"). The preset now loads `small_wood_farmhouse`, by day, from the lane's mouth. The chalet set (`little_switzerland.tscn` and its builder) is unreferenced and retired, not deleted.
