@@ -232,6 +232,16 @@ light_color = Color(0.56, 0.64, 0.86, 1)
 light_energy = 0.18
 shadow_enabled = false
 
+; (2026-10-31) the edge view looks at the cliff from the water, and every
+; daylight source shone landward: the sea face read as a black silhouette.
+; The overcast off the sea, for that view only.
+[node name="Sea_Face_Key__cliffside_circus_edge" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.5232, -2.8490, 0.0)
+light_color = Color(0.82, 0.84, 0.86, 1)
+light_energy = 0.95
+shadow_enabled = false
+metadata/daylight = true
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

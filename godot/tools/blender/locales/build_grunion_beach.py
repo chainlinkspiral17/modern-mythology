@@ -235,6 +235,15 @@ def build_shore_2026_09():
                       r0 * rng.uniform(0.85, 1.15), col, noise=0.26, seed=100 + n, rings=5, segments=12, squash=sq)
             x += step
             n += 1
+    # (2026-10-31) the low row's underside sat ~5 m up at 138 m out, so a
+    # thin strip of clear sky showed between it and the sea: a haze row
+    # sitting ON the horizon closes it
+    x = -290.0
+    while x < 290.0:
+        make_blob("Cloud_Deck_%d" % n, (x + rng.uniform(-5, 5), 172.0 + rng.uniform(-8, 8), 5.8),
+                  34.0 * rng.uniform(0.9, 1.1), (0.20, 0.21, 0.26, 1.0), noise=0.18, seed=100 + n, rings=5, segments=12, squash=0.12)
+        x += 24.0
+        n += 1
     for m, (mx, my, mz, mr) in enumerate(((24.0, 190.0, 34.0, 30.0), (30.0, 198.0, 37.0, 22.0))):
         make_blob("Cloud_Moonlit_%d" % m, (mx, my, mz), mr, (0.30, 0.31, 0.37, 1.0), noise=0.22, seed=300 + m,
                   rings=5, segments=12, squash=0.20)

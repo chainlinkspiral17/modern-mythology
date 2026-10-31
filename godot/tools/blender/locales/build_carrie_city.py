@@ -132,6 +132,31 @@ def build_flat():
     for k in range(5):
         make_box(f"Bed_Side_Book_Stack_{k}", (2.6, 7.0, 0.03 + k * 0.05), (0.20 + (k % 2) * 0.03, 0.26, 0.05),
                  ((0.60, 0.20, 0.18, 1.0), (0.84, 0.78, 0.60, 1.0), (0.20, 0.30, 0.44, 1.0))[k % 3])
+    # (2026-10-31) the bedroom floor was empty from the bed to the window. "art
+    # to make": the easel in the window's daylight, a canvas begun on it, the
+    # drop cloth, the taboret of jars and brushes, the stool he paints from.
+    # (west of the window: the dresser insert stands at x 2.3, y 1.0)
+    WOOD = (0.62, 0.48, 0.32, 1.0)
+    make_box("Easel_Drop_Cloth", (1.45, 1.30, 0.004), (1.50, 1.20, 0.008), (0.82, 0.80, 0.72, 1.0))
+    for k, (x, y) in enumerate(((1.15, 1.02), (1.75, 1.02))):
+        make_box(f"Easel_Leg_{k}", (x, y, 0.90), (0.045, 0.045, 1.80), WOOD)
+    make_box("Easel_Leg_Back", (1.45, 0.62, 0.75), (0.045, 0.045, 1.50), WOOD)
+    make_box("Easel_Back_Strut", (1.45, 0.82, 1.48), (0.04, 0.42, 0.04), WOOD)
+    make_box("Easel_Cross", (1.45, 1.02, 1.72), (0.70, 0.045, 0.045), WOOD)
+    make_box("Easel_Ledge", (1.45, 1.08, 0.86), (0.76, 0.10, 0.04), WOOD)
+    make_box("Easel_Canvas", (1.45, 1.07, 1.30), (0.66, 0.025, 0.84), (0.94, 0.92, 0.86, 1.0))
+    for k, (dx, dz, w, h, col) in enumerate(((-0.12, 0.18, 0.30, 0.22, (0.86, 0.56, 0.30, 1.0)), (0.10, -0.02, 0.26, 0.34, (0.30, 0.44, 0.62, 1.0)),
+                                            (-0.05, -0.24, 0.40, 0.10, (0.50, 0.30, 0.26, 1.0)))):
+        make_box(f"Easel_Canvas_Paint_{k}", (1.45 + dx, 1.0835, 1.30 + dz), (w, 0.004, h), col)
+    make_box("Taboret", (0.50, 0.42, 0.34), (0.44, 0.40, 0.68), (0.36, 0.30, 0.26, 1.0))
+    for k, (dx, dy, col) in enumerate(((-0.12, -0.08, (0.80, 0.30, 0.22, 1.0)), (0.0, 0.06, (0.24, 0.34, 0.56, 1.0)), (0.12, -0.06, (0.86, 0.76, 0.40, 1.0)))):
+        make_cyl(f"Taboret_Jar_{k}", (0.50 + dx, 0.42 + dy, 0.74), 0.045, 0.12, col, segments=10)
+    make_cyl("Taboret_Brush_Jar", (0.64, 0.52, 0.75), 0.05, 0.14, (0.70, 0.74, 0.76, 1.0), segments=10)
+    for k in range(4):
+        make_box(f"Taboret_Brush_{k}", (0.62 + k * 0.012, 0.51 + (k % 2) * 0.02, 0.90), (0.008, 0.008, 0.22), (0.50, 0.36, 0.22, 1.0))
+    make_cyl("Easel_Stool_Seat", (1.45, 1.95, 0.62), 0.17, 0.04, WOOD, segments=14)
+    for k, (dx, dy) in enumerate(((-0.10, -0.10), (0.10, -0.10), (-0.10, 0.10), (0.10, 0.10))):
+        make_box(f"Easel_Stool_Leg_{k}", (1.45 + dx, 1.95 + dy, 0.30), (0.03, 0.03, 0.60), WOOD)
     # the living room: the small couch, the chair across, the low table;
     # canvases leaning (he has art to make); the blanket on the couch
     make_sofa("Couch", 6.2, 6.8, back="+Y", w=1.6, d=0.86, seats=2, color=(0.40, 0.44, 0.50, 1.0), arm="track",
@@ -163,17 +188,33 @@ def build_flat():
         make_box(f"Living_Shelf_Book_Stock_{k}", (4.4 + k * 0.13, 7.92 - 0.22, 0.30 + (k % 3) * 0.55), (0.04, 0.22, 0.26),
                  ((0.50, 0.20, 0.18, 1.0), (0.20, 0.30, 0.46, 1.0), (0.80, 0.76, 0.66, 1.0))[k % 3])
     # the city across the street (inside 200 m), lit windows per hour
+    # (2026-10-31) the facades stood on nothing: z 0..14 over a street at z -6,
+    # their two rows of windows above the flat's sightline, so the bedroom
+    # window framed a blank brown slab. They run down to the street now, four
+    # storeys of windows level with his and a shopfront at the sidewalk.
     for k in range(5):
-        make_box(f"Across_Facade_{k}", (-6.0 + k * 6.0, -18.0, 7.0), (5.6, 1.0, 14.0 + (k % 3) * 4.0),
+        top = 14.0 + (k % 3) * 4.0
+        make_box(f"Across_Facade_{k}", (-6.0 + k * 6.0, -18.0, (top - 6.0) / 2.0), (5.6, 1.0, top + 6.0),
                  ((0.64, 0.56, 0.48, 1.0), (0.58, 0.60, 0.62, 1.0))[k % 2])   # (2026-10-30) brick and stucco that read by day
-        for j in range(6):
-            make_box(f"Across_Window_Glow_{k}_{j}" + CN, (-7.6 + k * 6.0 + (j % 3) * 1.6, -17.48, 3.0 + (j // 3) * 3.2),
+        make_box(f"Across_Facade_{k}_Cornice", (-6.0 + k * 6.0, -17.40, top - 0.20), (5.8, 0.24, 0.40), (0.42, 0.38, 0.34, 1.0))
+        rows = [z for z in (0.2, 3.2, 6.2, 9.2) if z < top - 2.0]
+        for j in range(3 * len(rows)):
+            wx, wz = -7.6 + k * 6.0 + (j % 3) * 1.6, rows[j // 3]
+            make_box(f"Across_Window_Sill_{k}_{j}", (wx, -17.44, wz - 0.66), (1.04, 0.12, 0.06), (0.80, 0.78, 0.72, 1.0))
+            make_box(f"Across_Window_Glow_{k}_{j}" + CN, (wx, -17.48, wz),
                      (0.9, 0.04, 1.2), ((1.0, 0.82, 0.52, 1.0), (0.12, 0.12, 0.14, 1.0))[(j + k) % 2])
-        # (2026-10-30) by day the glows are gone and the facades read as blank
-        # slabs: sky-grey panes in front of the night glows, day views only
-        for j in range(6):
-            make_box(f"Across_Pane_Day_{k}_{j}" + CD + "__charlie_apartment_day", (-7.6 + k * 6.0 + (j % 3) * 1.6, -17.47, 3.0 + (j // 3) * 3.2),
+            # (2026-10-30) by day the glows are gone and the facades read as
+            # blank slabs: sky-grey panes in front of the night glows
+            make_box(f"Across_Pane_Day_{k}_{j}" + CD + "__charlie_apartment_day", (wx, -17.47, wz),
                      (0.9, 0.06, 1.2), ((0.66, 0.72, 0.80, 1.0), (0.52, 0.58, 0.66, 1.0))[(j + k) % 2])
+        # the shop at the sidewalk: a long window under an awning
+        make_box(f"Across_Shop_Glass_{k}", (-6.0 + k * 6.0, -17.48, -4.6), (4.2, 0.04, 2.0),
+                 ((0.30, 0.34, 0.36, 1.0), (0.40, 0.36, 0.30, 1.0))[k % 2])
+        make_box(f"Across_Shop_Glow_{k}" + CN, (-6.0 + k * 6.0, -17.46, -4.6), (4.0, 0.04, 1.8), (1.0, 0.86, 0.60, 1.0))
+        make_rot_box(f"Across_Shop_Awning_{k}", (-6.0 + k * 6.0, -17.05, -3.35), (4.6, 0.90, 0.05),
+                     ((0.60, 0.20, 0.18, 1.0), (0.22, 0.36, 0.30, 1.0), (0.30, 0.30, 0.44, 1.0))[k % 3], roll=0.30)
+    make_box("Across_Sidewalk", (5.0, -16.0, -5.88), (60.0, 2.4, 0.04), (0.56, 0.55, 0.52, 1.0))
+    make_box("Near_Sidewalk", (5.0, -1.4, -5.88), (60.0, 2.4, 0.04), (0.56, 0.55, 0.52, 1.0))
     make_box("Street_Below_Asphalt", (5.0, -10.0, -6.0), (60.0, 14.0, 0.2), (0.24, 0.24, 0.26, 1.0))
     make_box("Sky_Night_S" + CN + "__charlie_bedroom_night", (5.0, -120.0, 40.0), (300.0, 0.2, 140.0), (0.04, 0.05, 0.08, 1.0))
     make_box("Sky_Day_S" + CD + "__charlie_apartment_day", (5.0, -120.0, 40.0), (300.0, 0.2, 140.0), (0.70, 0.76, 0.82, 1.0))

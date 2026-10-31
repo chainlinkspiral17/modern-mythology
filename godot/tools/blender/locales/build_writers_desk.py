@@ -343,8 +343,10 @@ def build_dawn_2026_10():
         make_rot_box(f"Dawn_Fold_Chair_{k}_Seat", at(0.0, 0.0, 0.455), (0.40, 0.38, 0.03), METAL, yaw=-yaw)
         for side in (-1, 1):
             make_rot_box(f"Dawn_Fold_Chair_{k}_Front_{side:+d}", at(side * 0.18, 0.16, 0.22), (0.022, 0.022, 0.44), METAL, yaw=-yaw)
-            make_rot_box(f"Dawn_Fold_Chair_{k}_Rear_{side:+d}", at(side * 0.18, -0.17, 0.43), (0.022, 0.022, 0.86), METAL, yaw=-yaw)
-        make_rot_box(f"Dawn_Fold_Chair_{k}_Back", at(0.0, -0.17, 0.74), (0.38, 0.02, 0.20), METAL, yaw=-yaw)
+            # rear leg stops under the seat; the back upright stands on the seat's top
+            make_rot_box(f"Dawn_Fold_Chair_{k}_Rear_{side:+d}", at(side * 0.18, -0.17, 0.22), (0.022, 0.022, 0.44), METAL, yaw=-yaw)
+            make_rot_box(f"Dawn_Fold_Chair_{k}_Upright_{side:+d}", at(side * 0.18, -0.17, 0.665), (0.022, 0.022, 0.39), METAL, yaw=-yaw)
+        make_rot_box(f"Dawn_Fold_Chair_{k}_Back", at(0.0, -0.17, 0.74), (0.336, 0.02, 0.20), METAL, yaw=-yaw)
         make_rot_box(f"Dawn_Fold_Chair_{k}_Brace", at(0.0, 0.16, 0.12), (0.34, 0.016, 0.016), METAL, yaw=-yaw)
     # the fourth, folded, leaning on the W wall between the bed and the nightstand
     th = 0.20

@@ -5101,6 +5101,19 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"shuttle_bench_bus": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		# (2026-10-31) the Shillelagh pulled in: "a shape too large for the
+		# apron pulls in, slow, without sound ... a long bus the color of old
+		# copper." From the apron's east end past the lamp pole, the nose
+		# three-quarter and the open doors down its kerb side, the diner and
+		# the bench beyond. The bus and its cabin lights exist only here.
+		"camera_origin": Vector3(10.6, 1.55, -6.6),
+		"camera_rotation": Vector3(-0.025, 1.855, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"briar_falls_rest_stop": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
 		"requires_glb": "res://assets/3d/locales/briar_falls.glb",

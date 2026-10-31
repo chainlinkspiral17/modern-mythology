@@ -929,6 +929,10 @@
       "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
       "gain": 0.82
     },
+    "shuttle_bench_bus": {
+      "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
+      "gain": 0.82
+    },
     "skatepark_day": {
       "bed": "assets/audio/bgm/vol1_ambient.wav",
       "gain": 0.82

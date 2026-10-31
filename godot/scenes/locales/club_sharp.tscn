@@ -325,14 +325,27 @@ omni_range = 6.00
 
 ; the stage light on the cage, "lit like a stage in the middle of a bar" (2026-10-30)
 [node name="Stage_Spot__club_sharp_cage__club_sharp_cage_up" type="SpotLight3D" parent="."]
-position = Vector3(2.0, 5.8, -8.5)
-rotation = Vector3(-1.5708, 0.0, 0.0)
+; from up and in front, not straight down: a vertical spot only lights the
+; tops of the bars, and the cage read black (2026-10-31)
+position = Vector3(4.0, 5.4, -5.8)
+rotation = Vector3(-0.9294, 0.6375, 0.0)
 light_color = Color(1.0, 0.92, 0.80, 1)
-light_energy = 34.0
+light_energy = 90.0
 shadow_enabled = false
-spot_range = 12.0
-spot_angle = 20.0
+spot_range = 10.0
+spot_angle = 16.0
 spot_angle_attenuation = 1.4
+
+; the rim: a magenta edge on the bars from behind, off the club's # neon
+[node name="Stage_Rim__club_sharp_cage__club_sharp_cage_up" type="SpotLight3D" parent="."]
+position = Vector3(0.4, 4.0, -11.8)
+rotation = Vector3(-0.6346, -2.6901, 0.0)
+light_color = Color(0.96, 0.36, 0.70, 1)
+light_energy = 14.0
+shadow_enabled = false
+spot_range = 8.0
+spot_angle = 24.0
+spot_angle_attenuation = 1.2
 
 ; the spot's bounce off the floor up the bars on the camera's side
 [node name="Stage_Bounce__club_sharp_cage__club_sharp_cage_up" type="OmniLight3D" parent="."]

@@ -285,8 +285,82 @@ def main():
     print(f"\n[build_missing_link_exterior] exporting to {out}")
     build_horizon_2026_08()
     build_rain_2026_10()
+    build_shillelagh_2026_10()
     export_glb(out)
 
+
+
+def build_shillelagh_2026_10():
+    """(2026-10-31) THE SHILLELAGH, only in its own view (shuttle_bench_bus).
+    vol1 link_shuttle: "headlights crawl over the wet asphalt and a shape too
+    large for the apron pulls in, slow, without sound ... The Shillelagh is a
+    long bus the color of old copper." "It has no destination listed in the
+    window. It has no driver visible from inside." "The doors part." "The
+    light in the cabin". "The taillights are not red. They are something on
+    the other side of red."
+    Twelve metres of it along the apron, nose east, its doors open across
+    from the bench and its kerb side over the road's edge (too large for
+    the apron). The cabin is lit (pale warm glass, a light inside it in the
+    .tscn); the windscreen is dark, the destination glass blank.
+    Draft 2 targets: rain beading on the roof, the wet sheen on the flank,
+    a reflection of the lit windows in the puddles; the inside of the cab
+    for the boarded branch."""
+    T = "__shuttle_bench_bus"
+    COPPER = (0.58, 0.36, 0.24, 1.0)
+    COPPER_DK = (0.40, 0.24, 0.16, 1.0)
+    VERDIGRIS = (0.38, 0.52, 0.46, 1.0)
+    CABIN = (0.92, 0.80, 0.56, 1.0)         # the lit cabin through the glass
+    DARK = (0.07, 0.08, 0.09, 1.0)
+    X0, X1, Y0, Y1 = -5.9, 6.2, 2.25, 4.75
+    DX0, DX1 = 4.6, 5.8                     # the doors, kerb side, facing the bench
+    AXLES = (-3.7, 3.4)
+    def box(nm, xa, xb, ya, yb, za, zb, col):
+        make_box(f"Shillelagh_{nm}{T}", ((xa + xb) / 2.0, (ya + yb) / 2.0, (za + zb) / 2.0), (xb - xa, yb - ya, zb - za), col)
+    # the lower body between the wheel arches and round the doorway
+    ZL0, ZL1 = 0.34, 1.30
+    for k, (xa, xb) in enumerate(((X0, AXLES[0] - 0.6), (AXLES[0] + 0.6, AXLES[1] - 0.6), (AXLES[1] + 0.6, DX0), (DX1, X1))):
+        box(f"Lower_{k}", xa, xb, Y0, Y1, ZL0, ZL1, COPPER)
+    box("Lower_Door", DX0, DX1, Y0, 4.50, ZL0, ZL1, COPPER)
+    for k, xa in enumerate(AXLES):
+        box(f"Arch_{k}", xa - 0.6, xa + 0.6, Y0, Y1, 0.98, ZL1, COPPER)
+        box(f"Well_{k}", xa - 0.6, xa + 0.6, 2.58, 4.42, 0.40, 0.98, DARK)
+        for j, wy in enumerate((2.40, 4.60)):
+            make_cyl(f"Shillelagh_Wheel_{k}_{j}{T}", (xa, wy, 0.48), 0.47, 0.28, (0.10, 0.10, 0.11, 1.0), axis='Y', segments=14)
+            make_cyl(f"Shillelagh_Hub_{k}_{j}{T}", (xa, wy + (0.15 if j else -0.15), 0.48), 0.18, 0.02, COPPER_DK, axis='Y', segments=10)
+    # the window band: the lit cabin behind copper pillars
+    ZW0, ZW1 = ZL1, 2.42
+    box("Cabin", X0, DX0, Y0 + 0.06, Y1 - 0.06, ZW0, ZW1, CABIN)
+    box("Cabin_Door", DX0, DX1, Y0 + 0.06, 4.50, ZW0, ZW1, CABIN)
+    box("Cabin_Fore", DX1, X1, Y0 + 0.06, Y1 - 0.06, ZW0, ZW1, CABIN)
+    k = 0
+    px = X0
+    while px < X1 - 0.1:
+        for side, (ya, yb) in enumerate(((Y0, Y0 + 0.06), (Y1 - 0.06, Y1))):
+            if side == 1 and DX0 - 0.1 < px < DX1:
+                continue
+            box(f"Pillar_{k}_{side}", px, px + 0.12, ya, yb, ZW0, ZW1, COPPER_DK)
+        px += 1.32
+        k += 1
+    # the doors: folded back to the jambs, the stairwell lit, two steps
+    box("Door_Glow", DX0, DX1, 4.50, 4.56, ZL0, ZW1, CABIN)
+    for k, (xa, xb) in enumerate(((DX0, DX0 + 0.10), (DX1 - 0.10, DX1))):
+        box(f"Door_Leaf_{k}", xa, xb, 4.56, 4.74, ZL0 + 0.06, ZW1 - 0.06, COPPER_DK)
+    box("Step_0", DX0 + 0.10, DX1 - 0.10, 4.56, 4.74, ZL0, 0.40, (0.30, 0.30, 0.32, 1.0))
+    # the upper band, the roof in verdigris, the beltline
+    box("Upper", X0, X1, Y0, Y1, ZW1, 3.08, COPPER)
+    box("Roof", X0 + 0.10, X1 - 0.10, Y0 + 0.10, Y1 - 0.10, 3.08, 3.18, VERDIGRIS)
+    box("Roof_Pod", -2.6, 1.0, 2.9, 4.1, 3.18, 3.42, VERDIGRIS)
+    for j, (ya, yb) in enumerate(((Y0 - 0.02, Y0), (Y1, Y1 + 0.02))):
+        box(f"Beltline_{j}", X0, (DX0 if j else X1), ya, yb, ZL1 - 0.05, ZL1 + 0.03, COPPER_DK)
+    # the nose: dark windscreen (no driver), blank destination glass, headlights
+    box("Windscreen", X1, X1 + 0.04, Y0 + 0.14, Y1 - 0.14, 1.20, 2.56, DARK)
+    box("Destination", X1, X1 + 0.04, Y0 + 0.40, Y1 - 0.40, 2.64, 2.94, (0.12, 0.12, 0.13, 1.0))
+    box("Bumper_F", X1, X1 + 0.12, Y0, Y1, ZL0, 0.62, COPPER_DK)
+    for j, hy in enumerate((Y0 + 0.30, Y1 - 0.30)):
+        box(f"Headlight_{j}", X1, X1 + 0.03, hy - 0.16, hy + 0.16, 0.74, 0.92, (0.96, 0.94, 0.84, 1.0))
+        box(f"Taillight_{j}", X0 - 0.03, X0, hy - 0.14, hy + 0.14, 0.80, 1.16, (0.58, 0.28, 0.82, 1.0))
+    box("Bumper_R", X0 - 0.12, X0, Y0, Y1, ZL0, 0.62, COPPER_DK)
+    box("Rear_Glass", X0 - 0.03, X0, Y0 + 0.30, Y1 - 0.30, 1.50, 2.30, (0.70, 0.60, 0.44, 1.0))
 
 
 def build_rain_2026_10():
@@ -320,6 +394,8 @@ def build_rain_2026_10():
         if any(a <= x <= b and c <= y <= d for a, b, c, d in keep_out):
             continue
         ln = rng.uniform(0.28, 0.48)
+        if -6.1 <= x <= 6.4 and 2.1 <= y <= 4.9 and z - ln / 2.0 < 3.6:
+            continue                               # (2026-10-31) the Shillelagh's body, in its own view
         make_box(f"Rain_Streak_Stock_{n}", (x, y, z), (0.004, 0.004, ln), col)
         n += 1
     try:

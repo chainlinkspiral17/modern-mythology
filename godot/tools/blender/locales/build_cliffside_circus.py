@@ -236,8 +236,14 @@ def build_cliff_and_sea():
         jh = rng.uniform(2.5, 7.0) if abs(x) < 20 else rng.uniform(1.5, 5.0)
         r = rng.uniform(1.0, 1.5)
         sq = jh / (2.0 * r)
-        make_blob(f"Jag_{i}", (x, rng.uniform(15.1, 15.8), -14.0 + jh * 0.5 - 0.4), r, COL_ROCK_JAG,
+        jy = rng.uniform(15.1, 15.8)
+        make_blob(f"Jag_{i}", (x, jy, -14.0 + jh * 0.5 - 0.4), r, COL_ROCK_JAG,
                   noise=0.30, seed=500 + i, rings=6, segments=8, squash=sq)
+        # (2026-10-31) "beaten raw by the harsh surf": a skirt of foam round
+        # each rock's foot, not only the three straight surf lines
+        if abs(x) < 70.0:
+            make_blob(f"Surf_Foam_{i}", (x + 0.3, jy + 0.4, -13.80), r * 1.55, COL_SURF,
+                      noise=0.40, seed=900 + i, rings=4, segments=10, squash=0.07)
         x += rng.uniform(3.5, 7.5)
         i += 1
     # Surf beaten raw around the rocks, far below
@@ -257,12 +263,45 @@ def main():
     build_entrance()
     build_bandstand()
     build_cliff_and_sea()
+    build_cliff_face_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cliffside_circus.glb"))
     print(f"\n[build_cliffside_circus] exporting to {out}")
     build_horizon_2026_08()
     export_glb(out)
 
+
+
+def build_cliff_face_2026_10():
+    """(2026-10-31) seen from the water (cliffside_circus_edge) the face was
+    two flat 240 m slabs, one colour each. Strata ledges that break and step,
+    crags standing proud of the rock, a darker wet band above the talus."""
+    from _props.geometry import make_blob
+    import random as _r
+    rng = _r.Random(3141)
+    tones = ((0.34, 0.31, 0.28, 1.0), (0.27, 0.25, 0.24, 1.0), (0.40, 0.36, 0.31, 1.0), (0.22, 0.21, 0.21, 1.0))
+    # the upper face (y 13.0, z -6.5..0.1): broken strata ledges
+    for band, (z0, z1) in enumerate(((-1.4, -0.8), (-3.2, -2.4), (-5.2, -4.4))):
+        x, k = -70.0, 0
+        while x < 70.0:
+            ln = rng.uniform(4.0, 11.0)
+            z = rng.uniform(z0, z1)
+            make_box(f"Cliff_Ledge_{band}_{k}", (x + ln / 2.0, 13.0 + 0.16, z), (ln, 0.32, rng.uniform(0.25, 0.55)),
+                     tones[(band + k) % 4])
+            x += ln + rng.uniform(0.5, 3.0)
+            k += 1
+    # crags proud of both faces
+    x, k = -66.0, 0
+    while x < 66.0:
+        upper = k % 2 == 0
+        r = rng.uniform(0.9, 1.8)
+        fy, z = (13.0, rng.uniform(-5.6, -1.2)) if upper else (14.2, rng.uniform(-12.0, -7.4))
+        make_blob(f"Cliff_Crag_{k}", (x, fy + r * 0.35, z), r, tones[k % 4], noise=0.34, seed=700 + k,
+                  rings=5, segments=8, squash=rng.uniform(0.9, 1.6))
+        x += rng.uniform(2.0, 5.0)
+        k += 1
+    # the wet band the spray keeps dark, above the talus
+    make_box("Cliff_Wet_Band", (0.0, 14.2 + 0.02, -12.2), (240.0, 0.04, 1.6), (0.14, 0.14, 0.15, 1.0))
 
 
 def build_horizon_2026_08():

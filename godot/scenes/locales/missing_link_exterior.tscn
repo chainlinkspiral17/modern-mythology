@@ -239,6 +239,36 @@ light_energy = 0.7
 shadow_enabled = false
 omni_range = 3.0
 
+; (2026-10-31) the Shillelagh's lit cabin, its own view only: no shadows,
+; so the cabin light spills out through the glass onto the wet apron
+[node name="Bus_Cabin_Glow__shuttle_bench_bus" type="OmniLight3D" parent="."]
+position = Vector3(1.0, 1.9, -3.5)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 7.5
+
+; the open doors' spill onto the apron across from the bench
+[node name="Bus_Door_Spill__shuttle_bench_bus" type="OmniLight3D" parent="."]
+position = Vector3(5.2, 0.9, -5.3)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 3.5
+
+; "headlights crawl over the wet asphalt": low past the trash can, the
+; wet apron, the nose and the open doors
+[node name="shot_insert_apron__shuttle_bench_bus" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.0, 0.9, -6.6)
+rotation = Vector3(-0.0716, 1.7783, 0.0)
+metadata/fov = 44.0
+
+; "The doors part" / "The doors do not close": from the bench
+[node name="shot_insert_doors__shuttle_bench_bus" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.4, 1.2, -6.4)
+rotation = Vector3(0.055, 3.031, 0.0)
+metadata/fov = 45.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

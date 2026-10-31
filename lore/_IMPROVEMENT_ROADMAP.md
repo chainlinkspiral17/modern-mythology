@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 242: VOLS 1–4 backgrounds, draft 10 — pass 241's N+1 list, and the Shillelagh arrives.**
+- **The suite, and what it found:**
+  - The marker gate prints its OBSTRUCTED lines when it fails. Before, it gave only a count.
+  - `vantage_obstruction_audit --markers` now honours each preset's `strip` list. Little League's seat insert was a false positive.
+  - That exposed a real misaim: vol 3 ch8's "The mirror is scratched and spotted" insert aimed through the storefront at the getaway sedan's mirror, which the 2003-night view strips. It now looks at the restroom mirror.
+  - **writers_desk (thread F's folding chairs):** the rear legs ran 0.86 m straight up through the seats (6 POKE). Now a leg stops under the seat, and an upright stands on the seat for the back. The chairs insert is re-aimed.
+- **club_sharp_cage / _cage_up ("lit like a stage in the middle of a bar"):** the stage spot pointed straight down, so it lit only the tops of the bars and the dark iron read black. It now comes from up and in front at 90 energy, with a 16° cone, plus a magenta rim from behind (`Stage_Rim__…`). The cage reads in both states.
+- **Charlie's flat (vol 4 cc_2, cc_5):**
+  - The facades across the street stood on nothing (z 0..14 over a street at z −6), and their windows sat above his sightline, so the bedroom window framed a brown slab. They now run down to the street, with four storeys of windows and sills, cornices, a shopfront and awning on each, and both sidewalks.
+  - The bedroom floor was empty from the bed to the window. "Art to make": an easel in the window's daylight with a canvas begun on it, a drop cloth, a taboret of jars and brushes, and the stool. It is placed west of the window because the dresser insert stands at x 2.3.
+- **cliffside_circus_edge:** every daylight source shone landward, so from the water the face was a silhouette. `Sea_Face_Key__cliffside_circus_edge` is the overcast off the sea, for that view only. The two flat slabs now have broken strata ledges in three bands, 30-odd crags standing proud, and a wet band over the talus. "Beaten raw by the harsh surf": a skirt of foam round each jag's foot. Two tighter framings lost the surf and the foot, so the 66° frame stays.
+- **grunion beach:** the low cloud row's underside sat about 5 m up at 138 m, which left a strip of clear sky above the sea. A haze row now sits on the horizon at 172 m, lifted clear of the sea bands (the first try clipped six).
+- **THE SHILLELAGH (vol 1 link_shuttle):**
+  - "Headlights crawl over the wet asphalt and a shape too large for the apron pulls in ... a long bus the color of old copper." The bus was never built; the lines played over an empty apron.
+  - It is now 12 m of copper along the apron, nose east, with its kerb side over the road's edge. The doors are folded open across from the bench, with a lit stairwell and step. The cabin glass is lit, with copper pillars. The windscreen is dark ("no driver visible"), the destination glass blank, the roof verdigris, and the taillights violet ("something on the other side of red").
+  - New view `shuttle_bench_bus`, from the apron's east end: the nose three-quarter on, the doors, the bench and the diner. It has two lights of its own (the cabin glow through the glass, the door spill) and two inserts (`apron`, `doors`).
+  - The chapter cuts to it on the arrival line and back to the empty apron on "You stand on the apron in the rain"; the choice gotos moved +1.
+  - The rain stays out of the bus's volume below its roof line.
+- **Draft N+1 targets:**
+  - Shillelagh: a browner, older copper; rain beading and sheen on the flank; lit-window reflections in the puddles; its cab interior for the boarded branch.
+  - Cliffside: the main building stands back from the edge, so no lens makes it big. The seaward facade belongs on the edge.
+  - Charlie's flat: the living room by day; a kitchen (the draft-2 target in the builder).
+  - Writers_desk dawn: the car is still not seen through the window; the man at the door.
+  - Bench: a thinner awning post.
+
 **2026-10-30 · pass 241: VOLS 1–4 backgrounds, draft 9 — pass 240's N+1 list and the unseen sets (three threads).**
 - **Thread F (58c35c2a):**
   - **writers_desk_dawn ("curtain call"), each piece tagged `__writers_desk_dawn`:**
