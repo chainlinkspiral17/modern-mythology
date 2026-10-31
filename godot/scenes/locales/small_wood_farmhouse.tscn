@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://small_wood_farmhouse_v2"]
+[gd_scene load_steps=25 format=3 uid="uid://small_wood_farmhouse_v2"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/small_wood_farmhouse.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="FontFile" path="res://resources/fonts/IMFellEnglish-Regular.ttf" id="20_sign"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -439,6 +440,50 @@ script = ExtResource("14_dbgm")
 
 ; ── shots (pass 170, directing vol 2 loose_pages + points_of_impact) ──────────────────────────
 ; insert: the spit cup on the porch boards — "A cold ugly night to spit into a cup on the porch"
+
+; (2026-10-31) LITTLE SWITZERLAND, vol2 ch1's first sight of the grandmother's
+; place by day: "a small, one-lane pebble road marked by a sign stating simply
+; — Little Switzerland." The summer sun from the south-west, the sky's fill.
+[node name="Sun__little_switzerland" type="DirectionalLight3D" parent="."]
+position = Vector3(0, 30, 0)
+rotation = Vector3(-0.7754, -0.6857, 0)
+light_color = Color(1.0, 0.94, 0.82, 1)
+light_energy = 1.35
+shadow_enabled = true
+
+[node name="Sky_Fill__little_switzerland" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-1.2, 3.0, 0)
+light_color = Color(0.72, 0.80, 0.95, 1)
+light_energy = 0.45
+
+[node name="Sign_Lettering__little_switzerland" type="Label3D" parent="."]
+position = Vector3(8.2, 1.32, 40.996)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+modulate = Color(0.20, 0.15, 0.10, 1)
+outline_size = 0
+text = "Little Switzerland"
+font = ExtResource("20_sign")
+font_size = 150
+
+; "It was two stories. Yellowed and mildewed on the outside. Shingles split"
+[node name="shot_insert_house__little_switzerland" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(11.500, 1.600, 14.000)
+rotation = Vector3(0.2105, 0.5819, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_sign__little_switzerland" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.000, 1.450, 43.600)
+rotation = Vector3(-0.1467, 0.5920, 0.0)
+metadata/fov = 34.0
+
+; "hopping the fence and dodging cow pies in a mad rush to the water"
+[node name="shot_insert_river__little_switzerland" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.000, 1.450, 18.000)
+rotation = Vector3(-0.0069, 1.2315, 0.0)
+metadata/fov = 50.0
+
 [node name="shot_insert_cup" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.75, 1.0)
 rotation = Vector3(-0.663, 2.246, 0.0)

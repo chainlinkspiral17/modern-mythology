@@ -5427,16 +5427,26 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"little_switzerland": {
-		"scene": "res://scenes/locales/little_switzerland.tscn",
-		"requires_glb": "res://assets/3d/locales/little_switzerland.glb",
-		# OUTDOOR alpine-kitsch village. Road z∈[0,-3], pull-off,
-		# three chalet fronts at z=-7 (x -7 / -0.5 / +6) with timber
-		# grids + flower boxes, sign W on posts, pines, two ridge
-		# planes with snow caps. Camera across the road looking N at
-		# the chalets, ridges over the rooflines.
-		"camera_origin": Vector3(-3.5, 1.70, -1.5),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(-8.0), 0.0),
-		"fov": 66.0,
+		"scene": "res://scenes/locales/small_wood_farmhouse.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_farmhouse.glb",
+		# (2026-10-31) THE GRANDMOTHER'S PLACE by day, vol2 ch1: "turning off a
+		# small, one-lane pebble road marked by a sign stating simply — Little
+		# Switzerland" to "a beautiful but fallen-upon-disrepair ranch house.
+		# It was two stories. Yellowed and mildewed". It is the Link home (Andy,
+		# 2026-10-27: "Small Wood house, unified"). From the lane's mouth by the
+		# sign, looking up the lane between the pastures to the house, the
+		# woods behind it, the river under its alders at the left. (Was an
+		# invented alpine village of chalets, little_switzerland.tscn, retired.)
+		"camera_origin": Vector3(12.2, 1.62, 44.0),
+		"camera_rotation": Vector3(0.0437, 0.1326, 0.0),
+		"fov": 52.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.84, 1), "sky_horizon": Color(0.84, 0.88, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.56, 0.44, 1), "ground_bottom": Color(0.28, 0.32, 0.22, 1),
+			"ambient_color": Color(0.86, 0.86, 0.80, 1), "ambient_energy": 0.95, "fog_color": Color(0.80, 0.84, 0.86, 1)},
+		# the yard's night dressing and the night valley give way to the summer pasture
+		"strip": ["Yard_Ground", "Valley_Slope_Ground", "Far_Ridge_Band_", "Far_Cloud_Band_Moonlit",
+			"Porch_Spit_Cup", "Porch_Whiskey_Bottle", "Cat_", "Front_Porch_Bulb_Glow",
+			"Egg_Stand_"],   # the renters' ("The wife sold chicken eggs by the side of the road"), years on
 		"suppress_input": true,
 	},
 	"club_sharp": {

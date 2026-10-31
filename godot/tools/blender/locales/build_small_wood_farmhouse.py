@@ -58,7 +58,7 @@ if _HERE not in sys.path: sys.path.insert(0, _HERE)
 H, T = 2.5, 0.20
 PAL = {"wall": (0.80, 0.76, 0.66, 1.0), "baseboard": (0.40, 0.32, 0.24, 1.0)}
 TRIM = (0.86, 0.84, 0.78, 1.0); WOOD = (0.46, 0.34, 0.22, 1.0)
-SIDING = (0.82, 0.80, 0.74, 1.0); ROOF = (0.26, 0.24, 0.24, 1.0)
+SIDING = (0.80, 0.76, 0.60, 1.0); ROOF = (0.26, 0.24, 0.24, 1.0)   # (2026-10-31) yellowed: "Yellowed and mildewed on the outside"
 GRASS = (0.24, 0.30, 0.20, 1.0)
 LIVE, PORCH, KITCH = "__farm_living_night", "__farm_porch_night", "__farm_kitchen_window"
 
@@ -241,7 +241,7 @@ def build_siding_2026_10():
         if cur < x1:
             out.append((cur, x1))
         return out
-    dark = (0.64, 0.62, 0.58, 1.0)
+    dark = (0.60, 0.56, 0.44, 1.0)          # (2026-10-31) the yellowed siding's shadow lines
     ground_holes = (((-1.2 - 0.48, -1.2 + 0.48), 0.0, 2.05), ((-5.0 - 0.64, -5.0 + 0.64), 0.72, 1.98))
     upper_holes = tuple(((x - 0.54, x + 0.54), H + 0.82, H + 1.98) for x in (-5.0, -1.0, 3.0))
     k = 0
@@ -330,6 +330,202 @@ def build_porch_and_yard():
     # as a hard edge over the porch roof.
 
 
+LS = "__little_switzerland"
+
+
+def make_cow(prefix, x, y, *, yaw=0.0, coat=(0.10, 0.09, 0.09, 1.0), face=None, grazing=False):
+    """A beef cow, nose along +X at yaw 0: barrel, hips, neck, head, four
+    legs, tail. `face` (a colour) gives a Hereford its white face."""
+    c, s = math.cos(yaw), math.sin(yaw)
+    def at(u, v, z):
+        return (x + u * c - v * s, y + u * s + v * c, z)
+    # rot boxes, not chamfered: the audits model a chamfer box unturned
+    make_rot_box(f"{prefix}_Barrel", at(0.0, 0.0, 1.00), (1.70, 0.70, 0.66), coat, yaw=yaw)
+    make_rot_box(f"{prefix}_Hips", at(-0.70, 0.0, 1.06), (0.44, 0.66, 0.60), coat, yaw=yaw)
+    hz = 0.62 if grazing else 1.02
+    make_rot_box(f"{prefix}_Neck", at(0.98, 0.0, (1.10 + hz) / 2.0 + 0.06), (0.46, 0.40, 0.42), coat, yaw=yaw, pitch=(0.70 if grazing else 0.20))
+    make_rot_box(f"{prefix}_Head", at(1.24, 0.0, hz), (0.46, 0.30, 0.34), face or coat, yaw=yaw)
+    make_rot_box(f"{prefix}_Muzzle", at(1.48, 0.0, hz - 0.06), (0.06, 0.24, 0.18), (0.30, 0.24, 0.22, 1.0), yaw=yaw)
+    for side in (-1, 1):
+        make_rot_box(f"{prefix}_Ear_{side:+d}", at(1.14, side * 0.22, hz + 0.10), (0.08, 0.16, 0.04), coat, yaw=yaw)
+    for k, (u, v) in enumerate(((0.58, -0.17), (0.58, 0.17), (-0.62, -0.17), (-0.62, 0.17))):
+        # up into the barrel past its chamfered underside
+        make_rot_box(f"{prefix}_Leg_{k}", at(u, v, 0.37), (0.13, 0.13, 0.74), coat, yaw=yaw)
+        make_rot_box(f"{prefix}_Hoof_{k}", at(u, v, 0.03), (0.14, 0.14, 0.06), (0.12, 0.10, 0.09, 1.0), yaw=yaw)
+    make_rot_box(f"{prefix}_Tail", at(-0.90, 0.0, 0.86), (0.04, 0.04, 0.56), coat, yaw=yaw, pitch=-0.12)
+
+
+def build_little_switzerland_2026_10():
+    """(2026-10-31) vol2 ch1, "This will not be a typical bit of biography":
+    the narrator's first sight of his grandmother's place, the summer they
+    moved from Caracas. Every piece tagged `__little_switzerland` (the
+    preset strips the yard's night dressing and the night ridges):
+      "a beautiful but fallen-upon-disrepair ranch house. It was two
+       stories. Yellowed and mildewed on the outside. Shingles split and
+       prone to falling loose."        → build_weathering_2026_10 (all views)
+      "reached driving down from the coastal highway by turning off a
+       small, one-lane pebble road marked by a sign stating simply —
+       Little Switzerland."            → the lane on from the gravel drive,
+                                         the sign at its mouth (the lettering
+                                         is a Label3D in the .tscn)
+      "Surrounding the property were cow pastures, bordered on one edge by
+       a river. The other — primal woods descend down to touch the
+       valley."                        → summer pasture to the horizon,
+                                         post-and-wire both sides of the
+                                         lane, cattle; the river west
+                                         under its alders; the conifer
+                                         woods behind the house, up a hill
+      "hopping the fence and dodging cow pies in a mad rush to the water"
+                                       → the fence insert looks across the
+                                         west pasture to the river
+    (This replaces an invented alpine village of chalets that had stood in
+    for the name on the sign.)
+    Draft 2 targets: the coastal highway itself at the lane's foot; the
+    woods' understory; the river's banks and its flood line ("The river
+    flooded"); a tree split and fallen across the road."""
+    from _props.trees import make_conifer
+    GRASS_SUMMER = (0.44, 0.50, 0.28, 1.0)
+    PEBBLE = (0.58, 0.55, 0.48, 1.0)
+    POST = (0.40, 0.33, 0.25, 1.0)
+    WIRE = (0.30, 0.30, 0.30, 1.0)
+    make_box("LS_Pasture_Ground" + LS, (10.0, -10.0, -0.06), (420.0, 420.0, 0.12), GRASS_SUMMER)
+    # the lane: on from the drive's foot (y -22) to the sign at its mouth
+    make_box("LS_Lane_Pebble" + LS, (11.0, -35.0, 0.005), (3.2, 26.0, 0.01), PEBBLE)
+    for k, (dx, dy) in enumerate(((-0.6, -26.0), (0.5, -29.5), (-0.2, -33.0), (0.7, -36.5), (-0.8, -39.0))):
+        make_box(f"LS_Lane_Rut_{k}" + LS, (11.0 + dx, dy, 0.0105), (0.30, 2.6, 0.002), (0.50, 0.47, 0.41, 1.0))
+    # post-and-wire both sides of the lane, the carport to the mouth
+    for side, fx in (("W", 9.0), ("E", 13.0)):
+        y = -39.5
+        k = 0
+        while y <= -8.5:
+            make_box(f"LS_Fence_{side}_Post_{k}" + LS, (fx, y, 0.58), (0.10, 0.10, 1.16), POST)
+            y += 3.0
+            k += 1
+        for j, z in enumerate((0.48, 0.80, 1.08)):
+            make_box(f"LS_Fence_{side}_Wire_{j}" + LS, (fx, (-39.5 + -8.5) / 2.0, z), (0.012, 31.0, 0.012), WIRE)
+    # the sign at the lane's mouth, W side, facing the highway (S)
+    for k, px in enumerate((7.3, 9.1)):
+        make_box(f"LS_Sign_Post_{k}" + LS, (px, -40.9, 0.80), (0.10, 0.10, 1.60), POST)
+    make_box("LS_Sign_Board" + LS, (8.2, -40.97, 1.32), (2.10, 0.04, 0.46), (0.74, 0.70, 0.60, 1.0))
+    # the cattle, a few to each pasture
+    BLACK, RED, WHITE = (0.10, 0.09, 0.09, 1.0), (0.38, 0.20, 0.12, 1.0), (0.86, 0.84, 0.78, 1.0)
+    for k, (cx, cy, yaw, coat, face, g) in enumerate(((2.0, -27.0, 0.6, BLACK, None, True), (-5.5, -22.0, 2.4, RED, WHITE, True),
+                                                       (-3.5, -34.0, -0.4, BLACK, None, False), (21.0, -24.0, 2.9, RED, WHITE, True),
+                                                       (27.0, -31.0, 1.2, BLACK, None, True))):
+        make_cow(f"LSG_Cow_{k}", cx, cy, yaw=yaw, coat=coat, face=face, grazing=g)
+    # "dodging cow pies in a mad rush to the water"
+    for k, (px, py) in enumerate(((5.0, -18.0), (1.5, -23.5), (-3.0, -16.0), (-6.0, -20.5), (-5.5, -14.5), (-4.0, -26.0), (3.5, -12.5))):
+        make_blob(f"LS_Cow_Pie_{k}" + LS, (px, py, 0.012), 0.16 + 0.03 * (k % 3), (0.20, 0.17, 0.12, 1.0), noise=0.25, seed=40 + k, squash=0.18)
+    # the river on the west edge of the pastures, and the alders along it
+    RX = -18.0
+    for k in range(12):                     # in 20 m reaches, its top above the pasture's
+        make_box(f"LS_River_{k}" + LS, (RX, -120.0 + 20.0 * (k + 0.5), 0.012), (11.0, 20.0, 0.02), (0.52, 0.62, 0.68, 1.0))
+    for k in range(10):                     # south of the old firs behind the house
+        ry = -70.0 + k * 10.0
+        for side in (-1, 1):
+            if (k + (side > 0)) % 2:
+                continue
+            make_broadleaf(f"LSG_Alder_{k}_{side:+d}", RX + side * 6.0, ry + side * 2.0, 7.0 + (k % 3), (0.22, 0.32, 0.16, 1.0), (0.30, 0.24, 0.18, 1.0))
+    # the woods behind the house: a belt on the flat round the old firs,
+    # then up a hillside to the north, "descending down to touch the
+    # valley". The hill is terraced (axis-true boxes, 3 m deep, 0.9 m up),
+    # the canopy over the treads; the old firs (main) and the bedroom
+    # view's moon disc (LR_Moon, 70 m out) keep their ground.
+    old = [(-20.0 + i * 5.0 + ROOM_AT[0], 38.2 + (i % 3) * 4.0 + ROOM_AT[1]) for i in range(9)] + [(-11.9, 70.0)]
+    STEP, RISE, HY0 = 3.0, 0.9, 56.0
+    for i in range(16):
+        top = RISE * (i + 1)
+        make_box(f"LS_Hill_Ground_{i}" + LS, (8.0, HY0 + STEP * (i + 0.5), top / 2.0 - 0.03), (130.0, STEP, top + 0.06), (0.30, 0.38, 0.22, 1.0))
+    def hill_z(y):
+        return 0.0 if y < HY0 else RISE * (int((y - HY0) // STEP) + 1)
+    k = 0
+    for row in range(6):
+        wy = 34.0 + row * 9.0
+        for col in range(10):
+            wx = -32.0 + col * 8.0 + (row % 2) * 4.0
+            if any(math.hypot(wx - ox, wy - oy) < 7.5 for ox, oy in old):
+                continue
+            if HY0 > 0 and abs(((wy - HY0) % STEP) - STEP / 2.0) > STEP / 2.0 - 0.6 and wy >= HY0:
+                wy += 0.8                                   # off the tread's riser
+            make_conifer(f"LSG_Wood_{k}", wx, wy, 14.0 + ((k * 7) % 5) * 1.6, (0.12, 0.22, 0.14, 1.0), (0.26, 0.20, 0.14, 1.0),
+                         skirt=0.18, z0=hill_z(wy))
+            k += 1
+    # the coast range in haze, west and north (the night bands are stripped):
+    # rounded hills, each ridge a run of squashed blobs sunk below the pasture
+    for r, (x0, y0, dx, dy, n, rad, col) in enumerate(((-150.0, -160.0, 0.0, 34.0, 11, 46.0, (0.50, 0.58, 0.58, 1.0)),
+                                                      (-215.0, -190.0, 0.0, 40.0, 11, 62.0, (0.60, 0.67, 0.70, 1.0)),
+                                                      (-150.0, 175.0, 36.0, 0.0, 11, 52.0, (0.54, 0.61, 0.62, 1.0)))):
+        for k in range(n):
+            hk = 0.30 + 0.12 * ((k * 5 + r) % 4)
+            make_blob(f"LS_Ridge_{r}_{k}" + LS, (x0 + dx * k, y0 + dy * k, -rad * 0.15), rad, col, noise=0.10, seed=70 + r * 13 + k, squash=hk)
+    # the cows and trees are many parts each: one tagged empty owns them
+    # (a tag mid-name, `LS_Cow_4__little_switzerland_Tail`, names no preset)
+    if bpy is not None:
+        empty = bpy.data.objects.new("LittleSwitzerland" + LS, None)
+        bpy.context.scene.collection.objects.link(empty)
+        for obj in list(bpy.data.objects):
+            if obj is not empty and obj.parent is None and obj.name.startswith("LSG_"):
+                obj.parent = empty
+
+
+def build_weathering_2026_10():
+    """(2026-10-31) "Yellowed and mildewed on the outside. Shingles split and
+    prone to falling loose." (vol2 ch1). In every view: the house is the
+    same house. The ground storey's outside wore the rooms' paint; it gets
+    a yellowed skin (the upper storey and the service porch are SIDING,
+    yellowed at the top of this file), mildew at the foot and under the
+    eaves, and loose shingles on the S slope."""
+    YEL = (0.80, 0.76, 0.60, 1.0)          # old white gone yellow, not paint-yellow
+    MILDEW = (0.40, 0.44, 0.34, 1.0)
+    # the S facade's ground storey, in 20 cm bands round the door and window
+    holes = (((-1.2 - 0.48, -1.2 + 0.48), 0.0, 2.05), ((-5.0 - 0.64, -5.0 + 0.64), 0.72, 1.98))
+    k = 0
+    for i in range(12):
+        z0, z1 = 0.10 + i * 0.20, min(0.10 + (i + 1) * 0.20, H)
+        if z1 <= z0:
+            continue
+        cut = [xr for xr, a, b in holes if a < z1 and b > z0]
+        cur = -8.1
+        for a, b in sorted(cut) + [(6.1, 6.1)]:
+            if a > cur:
+                make_box(f"Skin_S_{k}", ((cur + a) / 2.0, -0.104, (z0 + z1) / 2.0), (a - cur, 0.004, z1 - z0), YEL)
+                k += 1
+            cur = max(cur, b)
+    # the E and W ground walls' outsides, round their windows (the service
+    # porch covers E y 0..4): (y0, y1, z0, z1) holes from build_house's openings
+    def skin_x(nm, x, y0, y1, holes):
+        z0, z1 = 0.10, H - 0.02
+        cur, k = y0, 0
+        for a, b, hz0, hz1 in sorted(holes):
+            if a > cur:
+                make_box(f"{nm}_{k}", (x, (cur + a) / 2.0, (z0 + z1) / 2.0), (0.004, a - cur, z1 - z0), YEL); k += 1
+            make_box(f"{nm}_{k}", (x, (a + b) / 2.0, (z0 + hz0) / 2.0), (0.004, b - a, hz0 - z0), YEL); k += 1
+            make_box(f"{nm}_{k}", (x, (a + b) / 2.0, (hz1 + z1) / 2.0), (0.004, b - a, z1 - hz1), YEL); k += 1
+            cur = b
+        if cur < y1:
+            make_box(f"{nm}_{k}", (x, (cur + y1) / 2.0, (z0 + z1) / 2.0), (0.004, y1 - cur, z1 - z0), YEL)
+    skin_x("Skin_E", 6.104, 4.06, 9.9, [(6.4, 7.6, 0.95, 1.95)])     # between the S and N walls' faces
+    skin_x("Skin_W", -8.104, 0.1, 9.9, [(2.7, 4.9, 0.60, 2.10), (6.5, 8.7, 0.60, 2.10)])
+    # mildew: the splash line at the foot, streaks down from the eaves
+    for k, (x0, x1) in enumerate(((-8.0, -6.1), (-3.9, -1.8), (-0.4, 2.2), (3.0, 6.0))):
+        make_box(f"Mildew_Foot_S_{k}", ((x0 + x1) / 2.0, -0.124, 0.32), (x1 - x0, 0.004, 0.22 + 0.06 * (k % 2)), MILDEW)
+    for k, (x, ln) in enumerate(((-7.6, 1.1), (-3.6, 0.7), (-0.2, 1.3), (1.8, 0.6), (4.8, 1.0), (5.8, 0.8))):
+        make_box(f"Mildew_Streak_S_{k}", (x, -0.124, 2 * H + 0.06 - ln / 2.0), (0.22 + 0.08 * (k % 3), 0.004, ln), MILDEW)
+    # shingles: the S slope's courses, and a few split and lifting loose
+    zc = 2 * H + 0.16 + 1.3
+    eave_y, eave_z, ridge_y, rise = 5.0 - 5.5, zc - 1.3, 5.0, 2.6
+    th = math.atan2(rise, ridge_y - eave_y)
+    def on_slope(y, lift=0.0):
+        return eave_z + (y - eave_y) * math.tan(th) + lift / math.cos(th)
+    for j in range(9):
+        y = eave_y + 0.45 + j * 0.55
+        make_rot_box(f"Roof_Shingle_Course_S_{j}", (-1.0, y, on_slope(y, 0.012)), (15.0, 0.03, 0.012), (0.18, 0.17, 0.17, 1.0), roll=th)
+    for k, (x, y, yaw, lift) in enumerate(((-6.3, 0.6, 0.25, 0.03), (-2.2, 1.9, -0.18, 0.05), (1.4, 0.9, 0.35, 0.02),
+                                            (3.9, 2.6, -0.30, 0.06), (-4.6, 3.1, 0.12, 0.03))):
+        make_rot_box(f"Roof_Shingle_Loose_{k}", (x, y, on_slope(y, 0.02 + lift)), (0.36, 0.22, 0.014), (0.36, 0.33, 0.31, 1.0),
+                     yaw=yaw, roll=th + 0.18 + lift)
+
+
 # where the ranch's rooms stand in the Link home (blender metres)
 ROOM_AT = (-5.9, 5.8, H + 0.143)       # the narrator's room, upstairs NW (its N wall on the house's)
 SECOND_AT = (0.0, -14.0, 0.0)          # the second house, in the field SE of the yard
@@ -380,6 +576,8 @@ def main():
     build_house()
     build_porch_and_yard()
     build_siding_2026_10()
+    build_weathering_2026_10()
+    build_little_switzerland_2026_10()
     try:
         join_stock()
     except Exception as _e:

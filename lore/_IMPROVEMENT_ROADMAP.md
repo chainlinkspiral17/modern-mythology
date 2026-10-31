@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-31 · pass 245: VOLS 1–4 backgrounds, draft 13 — Little Switzerland is the grandmother's place.**
+- **A canon fix (vol2 ch1, "A Brief History of Me, Part One"):** `little_switzerland` was an invented alpine village: three chalet fronts with timber X-braces and flower boxes, under snow-capped ridges. The text has "Little Switzerland" only as a sign: "turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland." It leads to "a beautiful but fallen-upon-disrepair ranch house. It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose." Around it: "cow pastures, bordered on one edge by a river. The other — primal woods descend down to touch the valley."
+  - That house is the Link home (Andy, 2026-10-27: "Small Wood house, unified"). The preset now loads `small_wood_farmhouse`, by day, from the lane's mouth. The chalet set (`little_switzerland.tscn` and its builder) is unreferenced and retired, not deleted.
+  - **New, tagged `__little_switzerland`:**
+    - summer pasture to the horizon;
+    - the pebble lane on from the gravel drive, with wheel ruts;
+    - post-and-wire fencing both sides of the lane;
+    - the sign at the lane's mouth, lettered "Little Switzerland" (Label3D, IM Fell);
+    - five cattle (Angus and Hereford) and cow pies ("dodging cow pies in a mad rush to the water");
+    - the river at the pastures' west edge, under alders;
+    - conifer woods behind the house, on the flat and then up a terraced hillside;
+    - the coast range in haze as rounded hills.
+  - **Stripped from this view:** the night yard and valley slab, the porch's spit cup, bottle and cats, and the renters' egg stand ("The wife sold chicken eggs by the side of the road" is years on).
+  - **The house, in every view:** the siding is yellowed (old white gone yellow, not paint-yellow). The ground storey's outside gets a skin of the same colour, with holes round its windows; it had worn the rooms' interior paint. There is mildew at the foot and in streaks under the eaves, shingle courses on the S slope, and five split shingles lifting loose.
+  - **Inserts:** `house` on the facade line, `sign` on "marked by a sign", and `river` on the skinny-dipping line. That cue was `fence`; the line names the river, and the fence wires stay in the foreground. Node 11's misplaced `insert sign` is now `insert house`.
+- **Lessons the gates taught:**
+  - **A tag mid-name names no preset.** `LS_Cow_4__little_switzerland_Tail` would have stood in every farmhouse view. Multi-part props (`make_cow`, `make_conifer`, `make_broadleaf`) take a plain `LSG_` stem and go under one tagged empty; single meshes keep the tag at the end.
+  - **The audits model `make_chamfer_box` unturned.** A cow turned 69° floated off its own legs in support_audit, so the cows are `make_rot_box`.
+  - **A sloped roof's AABB swallows anything on it.** Roof parts named `Roof_…` are excused as roof members.
+- **The container restarted mid-suite:** the clone came back without GLBs (they are git-ignored), Godot or bpy. All 169 sets were rebuilt (bpy 5.0.1) and re-imported, and the full suite re-run for 244 and 245 together.
+- **Draft N+1 targets:**
+  - the coastal highway at the lane's foot;
+  - the river's banks and flood line ("The river flooded");
+  - a tree split and fallen across the road;
+  - the woods' understory;
+  - the night views' moon disc (LR_Moon) shows in the farmhouse's day views (ranch_home_day); tag it to the night presets;
+  - the Shillelagh taillights insert and the bench's awning post (from pass 244's list).
+
 **2026-10-31 · pass 244: VOLS 1–4 backgrounds, draft 12 — RUTA 77, and the roofless cars.**
 - **vol4_curtain_call, pass 243's N+1 list:**
   - **The car, and "RUTA 77 on the sign in the windshield. Chacaíto, Sabana Grande, Petare."** Draft 4's por puesto sat side-on at the far curb, and its sign stood inside the body behind the windshield plate, so no frame could ever read it.

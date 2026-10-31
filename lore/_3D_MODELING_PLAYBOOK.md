@@ -399,6 +399,27 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-31 · a view tag goes at the END of a name, or on an empty (passes 244–245)
+
+**Context:** the Little Switzerland day layer on the farmhouse named its cows
+`LS_Cow_4__little_switzerland`, and `make_cow` appended `_Tail`, `_Leg_0`… to
+that prefix. Background3D reads every `__` part of a name and keeps a node
+unless one part IS a preset id; `little_switzerland_Tail` is not, so every
+cow, tree and alder would have stood in every view of the house (the porch
+at night included). Two more traps the same pass: the audits model
+`make_chamfer_box` UNTURNED (a cow yawed 69° floated off its own legs in
+support_audit), and `make_car`'s body prism took its winding reference from
+the centre passed in (z 0), so a car set 3.2 m below the origin drew
+roofless from above.
+
+**Rule:** tag single meshes at the end of the name. Build multi-part props
+(`make_cow`, `make_conifer`, `make_broadleaf`, `make_car`, figures) under a
+plain stem and parent them to ONE empty named `Group__<preset>[__<preset>]`.
+Use `make_rot_box` for anything turned that the audits must seat. A prism's
+centre must lie inside the solid it describes. Parts set on a sloped roof
+are named `Roof_…` (the overlap audit excuses roof members against each other;
+a gable's AABB swallows anything on it).
+
 ### 2026-10-27 · seat an animal on its feet, not its lowest point (pass 202)
 
 **Context:** every crow in vol 7 read as hovering. HeroProp seats a model on

@@ -61,12 +61,12 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert sign]It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose.",
+   "text": "[shot:insert house]It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose.",
    "voice": "assets/audio/voice/vol2_ch1_history_one/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland.",
+   "text": "[shot:insert sign]The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland.",
    "voice": "assets/audio/voice/vol2_ch1_history_one/012.mp3"
   },
   {
@@ -116,7 +116,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert fence]I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention.",
+   "text": "[shot:insert river]I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention.",
    "voice": "assets/audio/voice/vol2_ch1_history_one/022.mp3"
   },
   {
