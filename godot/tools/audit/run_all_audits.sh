@@ -419,6 +419,19 @@ WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
 echo "$WROUT" | tail -1
 echo ""
 
+# ── Far-plane gate (2026-10-31) ───────────────────────────────
+# The VN camera's far plane is 200 m unless a preset sets "far"; 80 open
+# views had their hills, tree lines, cloud decks and mesas wholly past it
+# (the Small Wood road ran flat to the horizon; the dust storm hid its
+# mesas). Every view a chapter uses whose named far scenery stands past
+# its far plane, inside the lens's cone, fails. Zero.
+echo "── far_plane_audit.py ──"
+FPOUT="$(python3 far_plane_audit.py 2>/dev/null)" || {
+    echo "$FPOUT" | grep "^CUT" | head -20
+    echo "$FPOUT" | tail -1; exit 1; }
+echo "$FPOUT" | tail -1
+echo ""
+
 # ── Page-length gate (2026-09-12) ─────────────────────────────
 # DialogueBox keeps its full font to 260 visible characters and then
 # shrinks toward half size to fit — "too much text on screen at once,

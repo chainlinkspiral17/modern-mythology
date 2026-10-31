@@ -48,6 +48,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.10, 2.787, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"diner_exterior_porch": {
 		"scene": "res://scenes/locales/diner.tscn",
@@ -193,6 +194,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"kwik_stop_godseye": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
@@ -312,6 +314,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
 			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
+		"far": 450.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"graustark_armory_park": {
 		"scene": "res://scenes/locales/graustark.tscn",
@@ -321,6 +324,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.051, 0.716, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 1200.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"graustark_ruins": {
 		"scene": "res://scenes/locales/graustark.tscn",
@@ -340,6 +344,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.037, 0.653, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
+		"far": 1100.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 5 — Hermit — Joanna's chalked wall + the crow's perch ─
 	"graustark_chalk_wall": {
@@ -362,6 +367,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# (2026-10-19) THE SAME WALL on the Star's night (ch17): "The charcoal
 	# leaving stark black lines against the pale moonlit surface." The moon
@@ -377,6 +383,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.38, 0.40, 0.54, 1), "ambient_energy": 0.42, "fog_color": Color(0.12, 0.12, 0.17, 1)},
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# (2026-10-19) THE SAME WALL the morning after (ch20 Judgement, dawn_warm):
 	# "the small clean clarity she had earned on the wall last night". A low
@@ -391,6 +398,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.50, 0.44, 0.36, 1), "ground_bottom": Color(0.22, 0.20, 0.17, 1),
 			"ambient_color": Color(0.86, 0.78, 0.68, 1), "ambient_energy": 0.80, "fog_color": Color(0.90, 0.80, 0.66, 1)},
 		"suppress_input": true,
+		"far": 300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
 	"graustark_shotgun_interior": {
@@ -410,6 +418,7 @@ const CAMERA_PRESETS := {
 		# presets; the walls shield the room, so only ambient and fog go dark)
 		"env": {"ambient_color": Color(0.42, 0.36, 0.30, 1), "ambient_energy": 0.55, "fog_color": Color(0.14, 0.12, 0.12, 1)},
 		"suppress_input": true,
+		"far": 1000.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"graustark_cottage": {
 		"scene": "res://scenes/locales/graustark.tscn",
@@ -427,6 +436,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
 			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
+		"far": 1050.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 5 — Judgement — the Minstral's Green wreck ────────────
 	"graustark_wreck": {
@@ -448,6 +458,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.52, 0.46, 0.32, 1), "ground_bottom": Color(0.20, 0.19, 0.14, 1),
 			"ambient_color": Color(0.90, 0.78, 0.58, 1), "ambient_energy": 0.80, "fog_color": Color(0.92, 0.80, 0.58, 1)},
 		"suppress_input": true,
+		"far": 850.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
 	"roberts_kitchen": {
@@ -1114,6 +1125,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.034, 0.365, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"centro_dock": {
 		"scene": "res://scenes/locales/centro_stockroom.tscn",
@@ -1135,6 +1147,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.210, -0.053, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"darkroom": {
 		"scene": "res://scenes/locales/darkroom.tscn",
@@ -1684,6 +1697,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.05, deg_to_rad(71.2), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"school_field_day": {
 		"scene": "res://scenes/locales/school_field_evening.tscn",
@@ -1714,6 +1728,7 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1),
 			"fog_density": 0.0012},   # (2026-10-27) the scene's 0.0045 greyed the turf across 110 m
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 2 — Small Wood High's field (build_small_wood_field.py, 2026-10-27) ──
 	# The Deck: "football field and stadium is still nonsense … it's all
@@ -1901,7 +1916,7 @@ const CAMERA_PRESETS := {
 	"houston_park_day": {
 		"scene": "res://scenes/locales/houston_bayou.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_bayou.glb",
-		"far": 2500.0,   # downtown over the trees, 1.2-1.7 km east
+		"far": 3200.0,   # downtown over the trees, 1.2-1.7 km east; (2026-10-31) the far bank at 2.75 km
 		# ch2: "EXT. THE PARK — DAY"; "Faust is jogging with his friend, Jacob":
 		# on the trail along the bayou, east toward the footbridge and downtown.
 		"camera_origin": Vector3(-30.0, 1.6, 26.0),
@@ -2256,6 +2271,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, -1.5708, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"meadowlark_circle_night": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
@@ -2294,6 +2310,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.12, -0.04, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 850.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"miriam_subaru_night": {
 		"scene": "res://scenes/locales/miriam_subaru.tscn",
@@ -2317,6 +2334,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
+		"far": 850.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2365,6 +2383,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.04, 1.022, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 6 — Lake Palestine, the north boat ramp (re-homed off
 	# louisiana_road 2026-09-03): ch8's accounting on the dock.
@@ -2380,6 +2399,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.0525, 3.053, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
+		"far": 750.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 7 — Estuary 7, the planner's-view (re-homed off cabin_road
 	# 2026-09-03): the epilogue's gallery and submission. The stick's
@@ -2440,6 +2460,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
 		"fov": 72.0,
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab_corolla_night": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2457,6 +2478,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab_altima_night": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2478,6 +2500,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"vehicle_cab_rear": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
@@ -2522,6 +2545,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 750.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"meadowlark_circle_henderson": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
@@ -2540,6 +2564,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
 			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
+		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── VOL 7 — Tideline Survey, inside the stick (re-homed off cabin_road
 	# 2026-09-03): ch18's basalt headland, two pools, one glb, two scenes.
@@ -2554,6 +2579,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.259, 0.427, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
+		"far": 400.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"tideline_survey_second": {
 		"scene": "res://scenes/locales/tideline_survey_second.tscn",
@@ -2580,6 +2606,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.05, 0.0, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 450.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"kestrel_mountain_square": {
 		"scene": "res://scenes/locales/kestrel_mountain.tscn",
@@ -2632,6 +2659,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.01, 0.611, 0.0),
 		"fov": 56.0,
 		"suppress_input": true,
+		"far": 1350.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# ── THE ROADS (2026-09-03, user: "the stretches of highway across
 	# all the volumes look identical, same geometry, same camera") ──
@@ -2649,6 +2677,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, -1.215, 0.0),   # (2026-10-10: re-aimed at the unit, now two doors down from the Foxhole's)
 		"fov": 58.0,
 		"suppress_input": true,
+		"far": 750.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"bigbox_lot_day": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
@@ -2680,6 +2709,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
 			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
+		"far": 1350.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"new_auburn_two_lane": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
@@ -2707,6 +2737,7 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.30, 0.28, 0.26, 1), "ground_bottom": Color(0.12, 0.12, 0.12, 1),
 			"ambient_color": Color(0.72, 0.62, 0.58, 1), "ambient_energy": 0.70, "fog_color": Color(0.60, 0.50, 0.46, 1)},
 		"suppress_input": true,
+		"far": 1300.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"new_auburn_cedar_route": {
 		"scene": "res://scenes/locales/new_auburn_road.tscn",
@@ -2718,6 +2749,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, 3.1416, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
+		"far": 1350.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# vol1 + vol2 · Small Wood, Oregon
 	"small_wood_road": {
@@ -2774,6 +2806,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.0, 0.0, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 1350.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	# (2026-10-27) THE SAME ROAD IN ITS OWN YEARS: vol 2's late-1990s rides
 	# (Salmon's "road trip up to Depot Bay for the day"; Triptych's "Sunlight on
@@ -2804,6 +2837,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.04, 0.80, 0.0),
 		"fov": 52.0,
 		"suppress_input": true,
+		"far": 1700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"board_lords_office": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
@@ -5613,6 +5647,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.076, 0.095, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
+		"far": 700.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"parish_cemetery": {
 		"scene": "res://scenes/locales/parish_cemetery.tscn",
@@ -5684,6 +5719,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
 		"fov": 72.0,
 		"suppress_input": true,
+		"far": 900.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"cabin_road": {
 		"scene": "res://scenes/locales/cabin_road.tscn",
@@ -5697,6 +5733,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.02, deg_to_rad(-4.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 900.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"cedar_tower_lobby": {
 		"scene": "res://scenes/locales/cedar_tower.tscn",
@@ -5713,6 +5750,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"cedar_tower_studio": {
 		"scene": "res://scenes/locales/cedar_tower.tscn",
@@ -5726,6 +5764,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.03, deg_to_rad(18.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"cedar_tower_quarters": {
 		"scene": "res://scenes/locales/cedar_tower.tscn",
@@ -5737,6 +5776,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.03, deg_to_rad(8.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"cedar_tower_portal": {
 		"scene": "res://scenes/locales/cedar_tower.tscn",
@@ -5749,6 +5789,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
 		"fov": 56.0,
 		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"cedar_tower_exterior": {
 		"scene": "res://scenes/locales/cedar_tower.tscn",
@@ -5766,6 +5807,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.10, -0.02, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
 	"nexcorp_gas_go": {
 		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
