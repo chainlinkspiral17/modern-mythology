@@ -911,6 +911,11 @@ those tools.
   master knobs, tape volumes, arm. The cheat sheet lives on surface_checkout.html — change it with the code.
 - Tested against a mock Web MIDI (MiniLab + FM-1 ports). Nobody has touched a real MiniLab with it yet: the
   first real session should run LEARN EVERY CONTROL and report the map it finds.
+- First real session (user feedback: "it's not finding the arturia minilab"): never trust one guessed port name.
+  The match is now loose (any MiniLab / Arturia name or manufacturer), surface_checkout.html lists EVERY
+  input the browser sees with USE THIS (kept in `mm_surface_port`, claimed from midi_input.js like a matched
+  name), and says why when the list is empty (MIDI blocked for the page; Flatpak Chrome only lists devices it
+  saw at launch — plug in, then restart Chrome; charge-only USB-C cables).
 
 ## TEMPLATE
 

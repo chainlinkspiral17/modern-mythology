@@ -32,7 +32,7 @@
   // the sound-design layer seqgen.js writes: ambience beds (texture, texture2 → one 'texture' stem) · transitions + hits (→ 'fx')
   const SOUND_PARTS = ['texture', 'texture2', 'fx', 'hit'], SOUND_ROLES = ['texture', 'fx'], ALL_ROLES = ROLE_ORDER.concat(SOUND_ROLES);
   // starting balance: the arrangement parts sit under the lead (arp / counter / double well under it — they must not mask it)
-  const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36, perc: 0.38, arp: 0.24, counter: 0.28, double: 0.24, texture: 0.3, texture2: 0.24, fx: 0.4, hit: 0.42 };
+  const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36, perc: 0.38, arp: 0.24, counter: 0.28, double: 0.2, texture: 0.3, texture2: 0.24, fx: 0.4, hit: 0.42 };
   const ROLE_VEL = { drums: 1, bass: 0.95, chords: 0.75, lead: 0.85, pad: 0.7, perc: 0.85, arp: 0.6, counter: 0.65, double: 0.6 };
   const COLORS = { drums: '#e08a7a', bass: '#c87633', chords: '#d8a060', lead: '#a8e89c', pad: '#8ab4f0', perc: '#e0b07a', arp: '#7ad8c8', counter: '#d4e87a', double: '#b4c8f0',
     audio: '#c8a4f0', midi: '#f0b94a' };

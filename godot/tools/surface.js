@@ -37,7 +37,7 @@
   const note = (n, ch = null) => ({ t: 'note', n, ch });
   const PROFILES = {
     minilab3: {
-      id: 'minilab3', name: 'Arturia MiniLab 3', match: /mini ?lab ?(3|iii|mk ?3)|minilab3/i,
+      id: 'minilab3', name: 'Arturia MiniLab 3', match: /mini ?lab|arturia/i,      // any MiniLab / Arturia port name (Linux: "Minilab3 Minilab3 MIDI", Windows: "Minilab3 MIDI"); or pick the port on surface_checkout.html
       // the defaults (factory "Arturia" mode as far as published / reported — learn your own on surface_checkout.html)
       keys: { ch: 1 }, padCh: 10,
       controls: Object.assign({},
@@ -67,7 +67,16 @@
     access: null, input: null, output: null, connected: false, portName: '', profile: PROFILES.minilab3, map: null,
     listeners: new Set(), learning: null, last: {}, _started: null,
     PROFILES, CONTROL_ORDER, labelOf,
-    claims(name) { return Object.values(PROFILES).some(p => p.match.test(name || '')); },
+    claims(name) { const c = this.chosenPort(); return !!name && ((c && name === c) || Object.values(PROFILES).some(p => p.match.test(name))); },
+    // a port picked by hand on surface_checkout.html (kept for every page) — wins over the name match
+    chosenPort() { try { return localStorage.getItem(LS + 'port') || ''; } catch (e) { return ''; } },
+    usePort(name) { try { if (name) localStorage.setItem(LS + 'port', name); else localStorage.removeItem(LS + 'port'); } catch (e) {} this._pick(); this._emit({ kind: 'ports' }); },
+    // every MIDI input the browser sees: { name, state, mine (the surface uses it), match (looks like a MiniLab) }
+    ports() {
+      if (!this.access) return [];
+      return [...this.access.inputs.values()].map(x => ({ name: x.name || '(no name)', id: x.id, state: x.state, manufacturer: x.manufacturer || '',
+        mine: x === this.input, match: Object.values(PROFILES).some(p => p.match.test(x.name || '') || p.match.test(x.manufacturer || '')) }));
+    },
     loadMap() {
       let saved = null; try { saved = JSON.parse(localStorage.getItem(LS + this.profile.id) || 'null'); } catch (e) {}
       this.map = Object.assign({}, this.profile.controls, (saved && saved.controls) || {});
@@ -94,22 +103,25 @@
       if (!this.map) this.loadMap();
       if (!this.supported) return (this._started = Promise.resolve(false));
       this._started = navigator.requestMIDIAccess({ sysex: false }).then(acc => {
-        this.access = acc; acc.addEventListener('statechange', () => this._pick()); this._pick(); return true;
-      }).catch(e => { console.warn('surface MIDI:', e && e.message); return false; });
+        this.access = acc; acc.addEventListener('statechange', () => { this._pick(); this._emit({ kind: 'ports' }); }); this._pick(); this._emit({ kind: 'ports' }); return true;
+      }).catch(e => { this.error = (e && (e.name + ': ' + e.message)) || 'refused'; console.warn('surface MIDI:', this.error); return false; });
       return this._started;
     },
     _pick() {
       if (!this.access) return;
       const ins = [...this.access.inputs.values()], outs = [...this.access.outputs.values()];
       let prof = null, inp = null;
-      for (const p of Object.values(PROFILES)) { inp = ins.find(x => p.match.test(x.name || '') && !/\bdin\b|\bthru\b/i.test(x.name || '')) || ins.find(x => p.match.test(x.name || '')); if (inp) { prof = p; break; } }
+      const chosen = this.chosenPort(), byHand = chosen && ins.find(x => x.name === chosen);
+      if (byHand) { inp = byHand; prof = this.profile; }
+      else for (const p of Object.values(PROFILES)) { const m = x => p.match.test(x.name || '') || p.match.test(x.manufacturer || '');
+        inp = ins.find(x => m(x) && !/\bdin\b|\bthru\b|through/i.test(x.name || '')) || ins.find(m); if (inp) { prof = p; break; } }
       if (inp !== this.input) {
         if (this.input) this.input.onmidimessage = null;
         this.input = inp || null;
         if (this.input) this.input.onmidimessage = e => this._msg(e.data);
       }
       if (prof && prof !== this.profile) { this.profile = prof; this.loadMap(); }
-      this.output = prof ? outs.find(x => prof.match.test(x.name || '')) || null : null;
+      this.output = !this.input ? null : outs.find(x => x.name === this.input.name) || (prof ? outs.find(x => prof.match.test(x.name || '') || prof.match.test(x.manufacturer || '')) : null) || null;
       const was = this.connected;
       this.connected = !!this.input; this.portName = this.input ? this.input.name : '';
       if (was !== this.connected) this._emit({ kind: this.connected ? 'connected' : 'disconnected', port: this.portName });

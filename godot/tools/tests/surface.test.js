@@ -6,7 +6,7 @@ const { suite } = require('./harness');
 const MOCK = `(() => {
   const mkIn = (id, name) => { const p = { id, name, type: 'input', state: 'connected', onmidimessage: null, _l: [],
     addEventListener(t, f) { if (t === 'midimessage') this._l.push(f); }, removeEventListener(t, f) { this._l = this._l.filter(x => x !== f); } }; return p; };
-  const mini = mkIn('in-mini', 'Minilab3 MIDI'), fm1 = mkIn('in-fm1', 'FM-1');
+  const mini = mkIn('in-mini', window.__MINI_NAME || 'Minilab3 MIDI'), fm1 = mkIn('in-fm1', 'FM-1');
   const outs = new Map([['out-mini', { id: 'out-mini', name: 'Minilab3 MIDI', type: 'output', state: 'connected', send() {} }]]);
   const withFm1 = !window.__NO_FM1;
   const access = { inputs: new Map(withFm1 ? [['in-fm1', fm1], ['in-mini', mini]] : [['in-mini', mini]]), outputs: outs, sysexEnabled: false, addEventListener() {}, removeEventListener() {} };
@@ -37,6 +37,23 @@ suite('surface · MiniLab 3: checkout, learn, DAW / director / FORGE / TAPE STUD
     await p.reload(); await p.waitForTimeout(400);
     await p.evaluate(() => __mini([0xB0, 20, 50])); await tick(p);
     t.ok(await p.evaluate(() => document.querySelector('[data-c="knob1"]').classList.contains('hit') && Surface.map.knob1.n === 20), 'the learned map after a reload');
+    t.noErrors(errors);
+  });
+
+  await t.test('checkout: a MiniLab under an odd port name is listed, USE THIS picks it, every page keeps the pick, AUTO undoes it', async () => {
+    const init = 'window.__MINI_NAME = "USB MIDI Interface 20:0";' + MOCK.replace("'__surf_clean'", "'__surf_clean2'").replace("'__surf_clean', '1'", "'__surf_clean2', '1'") + ';try{if(!sessionStorage.getItem("__port_clean")){localStorage.removeItem("mm_surface_port");sessionStorage.setItem("__port_clean","1")}}catch(e){}';
+    const { p, errors } = await t.page('surface_checkout.html', { init, settle: 500 });
+    const before = await p.evaluate(() => ({ conn: Surface.connected, rows: [...document.querySelectorAll('#ports tr')].map(r => r.textContent) }));
+    t.ok(!before.conn && before.rows.some(r => /USB MIDI Interface/.test(r)) && before.rows.some(r => /FM-1/.test(r)), 'not matched by name, but listed: ' + before.rows.join(' | '));
+    const i = before.rows.findIndex(r => /USB MIDI Interface/.test(r));
+    await p.click(`#ports tr:nth-child(${i + 1}) [data-pick]`); await tick(p);
+    await p.evaluate(() => __mini([0xB0, 74, 100])); await tick(p);
+    const r = await p.evaluate(() => ({ conn: Surface.connected, port: Surface.portName, hit: document.querySelector('[data-c="knob1"]').classList.contains('hit'), badge: document.getElementById('b-conn').textContent, claims: Surface.claims('USB MIDI Interface 20:0') }));
+    t.ok(r.conn && r.hit && /USB MIDI Interface/.test(r.badge) && r.claims, JSON.stringify(r));
+    await p.reload(); await p.waitForTimeout(400);
+    t.ok(await p.evaluate(() => Surface.connected && Surface.portName === 'USB MIDI Interface 20:0'), 'kept after a reload');
+    await p.click('[data-unpick]'); await tick(p);
+    t.ok(await p.evaluate(() => !Surface.connected && !Surface.chosenPort()), 'AUTO: back to the name match');
     t.noErrors(errors);
   });
 

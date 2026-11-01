@@ -66,6 +66,11 @@
     <div class="row"><span id="wiz">Plug the MiniLab 3 in (USB-C) — touch any control and it lights up below. Tap a control here to learn just that one.</span></div>
     <div class="row"><button class="dim" id="skip" style="display:none">SKIP THIS ONE</button><button class="dim" id="stop" style="display:none">STOP LEARNING</button><span class="note" id="wizinfo"></span></div>
   </div>
+  <div class="panel" id="portsbox">
+    <h2>MIDI PORTS THE BROWSER SEES <span class="note">(not finding it? tap USE THIS on the MiniLab's port — every page keeps the choice)</span></h2>
+    <table><thead><tr><th>PORT</th><th>MAKER</th><th>STATE</th><th></th></tr></thead><tbody id="ports"></tbody></table>
+    <div class="note" id="portsinfo" style="margin-top:6px"></div>
+  </div>
   <div class="panel">
     <h2>KNOBS</h2><div class="knobs" id="knobs"></div>
     <h2>FADERS · ENCODER · STRIPS</h2>
@@ -113,7 +118,8 @@ let baseNote = null;
 const LOG = [];
 S.on(ev => {
   if (ev.kind === 'raw') { LOG.push(ev.data.map(x => x.toString(16).padStart(2, '0')).join(' ')); if (LOG.length > 200) LOG.shift(); $('log').textContent = LOG.slice(-60).join('\n'); $('log').scrollTop = 1e9; return; }
-  if (ev.kind === 'connected' || ev.kind === 'disconnected') { badge(); return; }
+  if (ev.kind === 'connected' || ev.kind === 'disconnected') { badge(); ports(); return; }
+  if (ev.kind === 'ports') { ports(); return; }
   if (ev.kind === 'learned') { render(); WIZ.next(); return; }
   if (ev.kind === 'map') { render(); return; }
   if (ev.kind === 'knob' || ev.kind === 'fader') flash(ev.control, ev.value);
@@ -126,7 +132,19 @@ S.on(ev => {
     const k = document.querySelector(`[data-k="${ev.note - baseNote}"]`); if (k) k.classList.toggle('down', ev.on);
   }
 });
-function badge() { $('b-conn').textContent = 'MINILAB: ' + (S.connected ? S.portName : S.supported ? 'not found — plug it in' : 'no Web MIDI (Chrome / Edge)'); $('b-conn').className = 'badge ' + (S.connected ? 'ok' : 'warn'); }
+function ports() {
+  const list = S.ports(), chosen = S.chosenPort(), esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  $('ports').innerHTML = list.length ? list.map((x, i) => `<tr><td>${esc(x.name)}${x.mine ? ' <b style="color:var(--gold)">◀ IN USE</b>' : ''}${x.match && !x.mine ? ' <span class="note">(looks like a MiniLab)</span>' : ''}</td><td>${esc(x.manufacturer)}</td><td>${esc(x.state)}</td>`
+    + `<td>${x.mine && chosen ? '<button class="dim" data-unpick="1">AUTO</button>' : x.mine ? '' : `<button class="go" data-pick="${i}">USE THIS</button>`}</td></tr>`).join('')
+    : `<tr><td colspan="4">${S.access ? 'no MIDI inputs at all — the browser sees nothing plugged in' : S.error ? 'MIDI refused: ' + esc(S.error) : 'waiting for MIDI access…'}</td></tr>`;
+  $('ports').querySelectorAll('[data-pick]').forEach(b => b.onclick = () => S.usePort(list[+b.dataset.pick].name));
+  $('ports').querySelectorAll('[data-unpick]').forEach(b => b.onclick = () => S.usePort(''));
+  $('portsinfo').textContent = !S.access ? (S.error ? 'Chrome blocked MIDI for this page: click the lock / site icon left of the address → allow MIDI devices, then reload.' : '')
+    : !list.length ? 'Nothing at all: unplug and replug the MiniLab (USB-C, data cable — some USB-C cables are charge-only), then quit Chrome completely and start it again (Chrome only lists devices it saw at launch on some Linux setups).'
+    : !S.connected ? 'The MiniLab is not among these names? It is not reaching Chrome: replug it, then quit and restart Chrome. If it IS here under another name, tap USE THIS.'
+    : chosen ? 'picked by hand: ' + chosen : 'found by name';
+}
+function badge() { $('b-conn').textContent = 'MINILAB: ' + (S.connected ? S.portName : S.supported ? 'not found — see MIDI PORTS below' : 'no Web MIDI (Chrome / Edge)'); $('b-conn').className = 'badge ' + (S.connected ? 'ok' : 'warn'); }
 // LEARN EVERY CONTROL: one control at a time, lit violet; touch it on the MiniLab
 const WIZ = {
   list: [], i: -1, on: false,
@@ -151,7 +169,8 @@ $('stop').addEventListener('click', () => WIZ.stop());
 $('reset').addEventListener('click', () => { if (confirm('Forget the learned map and go back to the defaults?')) { WIZ.stop(); S.resetMap(); render(); } });
 document.addEventListener('click', e => { const c = e.target.closest('.ctl[data-c]'); if (!c || c.dataset.c === 'mod') return; WIZ.start([c.dataset.c]); });
 render(); badge();
-S.start().then(ok => { badge(); if (!ok) $('wiz').textContent = 'Web MIDI is not available here (Chrome / Edge, and allow MIDI when asked).'; });
+ports();
+S.start().then(ok => { badge(); ports(); if (!ok) $('wiz').textContent = 'Web MIDI is not available here (Chrome / Edge, and allow MIDI when asked).'; });
 </script>
 </body>
 </html>
