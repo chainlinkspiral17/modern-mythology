@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 250: VOLS 1–4 backgrounds, draft 16 — the Small Wood road's paths, its gate, its roadside at night.**
+- **The paths:** vol2 ch1 has "Knotted paths leading both up and down the road, twisting alongside cricks, emerging upon tool shed areas". One worn path leaves the hay field past the east ditch and twists along the crick's south bank into the firs. Another runs up from the gate to the tool shed, on the bare ground inside the fence.
+- **The gate:** a chain loops round the south post and the gate's end, with a padlock hanging off it.
+- **The roadside (vol2 ch2):** the chapter plays it at night (`[mood:night]`), but the preset wore the set's dusk with the sun up.
+  - It now has a night sky of its own.
+  - The sun and the day fill are tagged to the day view alone, and the night fill joins the roadside.
+  - A moon (`Moon__small_wood_roadside`) high in the south-east behind the lens lights the gravel, the ditch and the culvert's headwalls, with the firs against the sky.
+- **Dropped: the minister's car.** "Gloria was found by the side of the road … Her rescuer was a travelling minister by the name of Cook" belongs to the 1910 episode ("reported killed in 1910"), and the text gives Cook no vehicle.
+- **Draft N+1 targets (also in the builder's docstring):**
+  - the crick's banks and alders where the path runs;
+  - the fallen-in house to the east, read from the roadside at night.
+
 **2026-11-01 · VN portraits: the eye line holds, and the lens looks up only at menace.**
 - **The report:** the user wrote, "characters in the visual novel, their portraits, move up and down as the lines progress, it's really disconcerting." Four things moved the face vertically between lines:
   - **The speaker pop:** CharLayer scaled the speaker 1.05 and the listeners 0.92 about the slot's centre. The face sits in the slot's upper third, so every change of speaker lifted one face and dropped another.

@@ -2787,11 +2787,16 @@ const CAMERA_PRESETS := {
 	"small_wood_roadside": {
 		"scene": "res://scenes/locales/small_wood_road.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
-		# Dawn. In the east ditch, eye 0.7, looking north-west along the
-		# gravel toward the culvert where the minister stopped. (vol2 ch2)
+		# In the east ditch, eye 0.7, looking north-west along the gravel
+		# toward the culvert: "Gloria was found by the side of the road".
+		# (vol2 ch2) (2026-11-01) NIGHT, as the chapter plays it
+		# ([mood:night]): it wore the set's dusk with the sun up.
 		"camera_origin": Vector3(2.9, 0.7, -6.0),
 		"camera_rotation": Vector3(0.06, 0.42, 0.0),
 		"fov": 50.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.16, 0.16, 0.24, 1),
+			"ground_horizon": Color(0.07, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.40, 0.44, 0.60, 1), "ambient_energy": 0.62, "fog_color": Color(0.12, 0.13, 0.18, 1)},
 		"far": 1100.0,   # the hills, 300-1000 m out
 		"suppress_input": true,
 	},

@@ -33,6 +33,12 @@ to 1100 m. DRAFT 5 targets: vol2 ch1's "Knotted paths leading both up and
 down the road, twisting alongside cricks" (a footpath off the shoulder into
 the firs); the gate's chain and padlock; the roadside preset's minister's
 car; the near firs' lowest tiers (the day frame's top-right canopy).
+DRAFT 5 (2026-11-01): the paths (along the crick, up to the shed), the
+gate's chain and padlock, and the roadside view at night as its chapter
+plays it. The minister's car is dropped: vol2 ch2's episode is 1910
+("reported killed in 1910") and the text gives Cook no vehicle. DRAFT 6
+targets: the crick's banks and alders where the path runs; the fallen-in
+house to the east read from the roadside at night.
 
 Coordinate frame: Blender Z-up. Road N-S along y at x 0, ±1200 so
 the lines converge. The property gate at y 0 west; the crick at
@@ -297,6 +303,36 @@ def build_property_dressing_2026_09():
         make_box("Mailbox_Reflector_%d" % mi, (-3.285, -1.6 - mi * 0.5, 1.12), (0.01, 0.06, 0.06), (0.92, 0.40, 0.22, 1.0))
 
 
+def build_paths_and_gate_2026_11():
+    """(2026-11-01, draft 5) vol2 ch1, the runs off the road: "Knotted paths
+    leading both up and down the road, twisting alongside cricks, emerging
+    upon tool shed areas, out-of-the-way pole barns" — a worn path leaves
+    the hay field's edge past the east ditch and twists along the crick's
+    south bank into the firs; a second runs up the west pasture's fence
+    line to the tool shed. And the gate's chain and padlock, looped round
+    the south post and the gate's end (draft 2's NEXT)."""
+    from _props.geometry import make_rot_box
+    PATH = (0.46, 0.38, 0.28, 1.0)
+    def path(prefix, pts, w=0.55, z=0.0095):
+        for k in range(len(pts) - 1):
+            (x0, y0), (x1, y1) = pts[k], pts[k + 1]
+            ln = math.hypot(x1 - x0, y1 - y0)
+            yaw = math.atan2(y1 - y0, x1 - x0)
+            make_rot_box(f"{prefix}_{k}", ((x0 + x1) / 2.0, (y0 + y1) / 2.0, z), (ln + 0.25, w, 0.003), PATH, yaw=yaw)
+    # along the crick (water at y 29.2..30.8, the bed to 28.8): the south bank
+    path("Footpath_Crick", [(10.4, 22.6), (11.8, 25.6), (15.0, 27.2), (19.0, 26.6), (23.0, 27.6), (27.5, 27.0), (31.0, 27.8)])
+    # the west pasture: up the fence line toward the tool shed (-12, -12)
+    # (on the bare ground between the fence and the pasture plate, top -0.05)
+    path("Footpath_Shed", [(-5.4, -6.0), (-7.2, -8.0), (-8.8, -9.4), (-9.8, -10.9)], w=0.5, z=-0.0475)
+    # the gate's chain: a loop round the south post and the gate's end, a
+    # padlock hanging off it
+    IRON = (0.22, 0.21, 0.20, 1.0)
+    for k, (dx, dy) in enumerate(((0.0, -0.16), (0.16, 0.0), (0.0, 0.16), (-0.16, 0.0))):
+        make_box(f"Gate_Chain_{k}", (-4.8 + dx, 1.26 + dy, 0.92), (0.03 if dx else 0.32, 0.32 if dx else 0.03, 0.03), IRON)
+    make_box("Gate_Padlock", (-4.62, 1.26, 0.85), (0.05, 0.03, 0.07), (0.72, 0.58, 0.28, 1.0))
+    make_box("Gate_Padlock_Shackle", (-4.62, 1.26, 0.905), (0.035, 0.01, 0.04), IRON)
+
+
 def main():
     clear_scene()
     build_road()
@@ -306,6 +342,7 @@ def main():
     build_night()
     build_horizon()
     build_property_dressing_2026_09()
+    build_paths_and_gate_2026_11()
     from _props.geometry import join_stock
     join_stock()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/small_wood_road.glb"))
