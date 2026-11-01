@@ -82,12 +82,15 @@ def build_road():
                    edge=(0.92, 0.92, 0.88, 1.0), shoulder_w=1.4, shoulder=SHOULDER, seg_len=10.0)
     # the drop to the sea: a long wedge falling west from the shelf
     make_wedge("Sea_Bluff", (-15.0 - 12.0, mid, (SEA_Z + -0.95) / 2.0), (24.0, span, -0.95 - SEA_Z), ROCK, high_end="+X")
-    make_box("Sea", (-160.0, 0.0, SEA_Z - 0.05), (260.0, 2600.0, 0.10), SEA)
+    # (2026-11-01) out to the horizon: 260 m of sea ended in a haze slab whose
+    # top read as a ledge once the far plane let it draw
+    make_box("Sea", (-1530.0, 0.0, SEA_Z - 0.05), (3000.0, 4000.0, 0.10), SEA)
     make_box("Swell_Line", (-40.6, 0.0, SEA_Z + 0.012), (1.0, 2600.0, 0.024), FOAM)
     make_box("Swell_Line_2", (-43.2, 0.0, SEA_Z + 0.006), (0.6, 2600.0, 0.012), FOAM)
     # sea stacks
     for i, (x, y, r, s) in enumerate(((-58.0, 90.0, 6.0, 1), (-70.0, 260.0, 8.0, 2), (-52.0, -140.0, 5.0, 3), (-66.0, 520.0, 7.0, 4))):
-        make_blob(f"Sea_Stack_{i}", (x, y, SEA_Z + r * 1.6), r, ROCK, noise=0.30, seed=s, squash=1.2)
+        # seated in the water (they hung 0.4 r above it: 1.6 r up, 1.2 r tall)
+        make_blob(f"Sea_Stack_{i}", (x, y, SEA_Z + r * 0.9), r, ROCK, noise=0.30, seed=s, squash=1.2)
 
 
 def build_inland():
@@ -142,7 +145,6 @@ def build_horizon():
     make_far_bands("FarRidge", (0.16, 0.24, 0.18),
                    [(200.0, 300.0, 40.0, 0.85), (420.0, 480.0, 55.0, 0.65)],
                    sides="E", cx=60.0, cy=0.0, profile="ridge")
-    make_box("Sea_Horizon_Haze", (-320.0, 0.0, 6.0), (30.0, 2600.0, 12.0), (0.74, 0.78, 0.80, 1.0))
 
 
 def build_dusk_dressing_2026_09():

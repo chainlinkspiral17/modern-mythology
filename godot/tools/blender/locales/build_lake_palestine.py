@@ -172,15 +172,18 @@ def build_far_shore_2026_09():
     sun off frame-left"); a boat launch and a lit cabin on the far
     shore; the east shore curving round to meet it (the cove's mouth
     is open now between the two)."""
-    make_box("Far_Shore_S_Land", (0.0, -208.0, -0.06), (460.0, 100.0, 0.08), (0.30, 0.33, 0.22, 1.0))
-    make_box("Far_Shore_S_Bank", (0.0, -159.5, 0.20), (460.0, 3.0, 0.40), (0.52, 0.42, 0.32, 1.0))
+    make_box("Far_Shore_S_Land", (0.0, -208.0, -0.06), (960.0, 100.0, 0.08), (0.30, 0.33, 0.22, 1.0))
+    make_box("Far_Shore_S_Bank", (0.0, -159.5, 0.20), (960.0, 3.0, 0.40), (0.52, 0.42, 0.32, 1.0))
     for row, (y0, h0) in enumerate(((-165.0, 13.0), (-174.0, 16.0))):
-        for i in range(44):
-            x = -150.0 + i * 7.0 + (3.0 if row else 0.0) + 1.3 * ((i * 7) % 3 - 1)
+        for i in range(64):                         # (2026-11-01) across the widened shore
+            x = -220.0 + i * 7.0 + (3.0 if row else 0.0) + 1.3 * ((i * 7) % 3 - 1)
             h = h0 + 2.5 * ((i * 5 + row) % 4) - 3.0
             make_pine(f"FarShore_Pine_{row}_{i}", x, y0 - 1.5 * ((i * 3) % 3), -0.02, h=h, seed=i + row * 50)
-    make_far_bands("FarShoreRidge", (0.16, 0.24, 0.16),
-                   [(230.0, 480.0, 18.0, 0.70), (330.0, 620.0, 22.0, 0.55), (480.0, 800.0, 26.0, 0.42)],
+    # (2026-11-01) the treelines behind: low and in haze. East Texas has no
+    # ridges; at 18-26 m in the pines' own green they stood over the shore
+    # rows as one dark wall once the far plane let them draw
+    make_far_bands("FarShoreRidge", (0.34, 0.42, 0.40),
+                   [(230.0, 960.0, 11.0, 0.70), (330.0, 1100.0, 13.0, 0.55), (480.0, 1300.0, 15.0, 0.42)],
                    sides="S", cx=0.0, cy=0.0, profile="treeline")
 
 

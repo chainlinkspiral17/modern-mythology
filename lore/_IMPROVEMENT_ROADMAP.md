@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 249: the two views held at 200 m now draw their horizons too.**
+- **Lake Palestine and its dock (vol6 ch8):** the treelines behind the far shore were ridge bands, 18–26 m tall in the shore pines' own green, so once drawn they stood over the shore rows as one dark wall.
+  - East Texas has no ridges. The treelines are now low (11–15 m) and in haze, and widened with the far shore, its bank and the two pine rows to run past both frame edges. Before, the shore ended in a pale block at x −230.
+  - `far` is 900.
+- **Highway 101 and its turn (vol7 ch22):**
+  - The sea was 260 m wide. Behind it, a 12 m haze box's flat top read as a ledge on the W horizon, so the sea now runs 3 km out to a true horizon and the haze box is gone.
+  - The sea stacks hung 0.4 r above the water (centred 1.6 r up, 1.2 r tall), which was the stack floating over the horizon in the turn view; they are seated now.
+  - `far` is 2000.
+- far_plane_audit's KNOWN list is empty: every view a chapter uses draws its horizon.
+
 **2026-10-31 · pass 248: VOLS 1–4 backgrounds — 37 open views draw their horizons.**
 - **The scan:** pass 247 found the Small Wood hills invisible behind the camera's 200 m far plane (pass 195's lesson, applied then to only a few sets). A scan of every preset vols 1–4 use listed the views whose named far scenery stood past `far` in the lens's cone: hills, tree lines, the sea horizon and cloud decks, mesas, pole and road runs. That found 37 views across 16 sets.
 - **The fix:** each view now sets `far` from its own farthest such piece (+5%, 300 to 2000 m). The multi-room sets (vol3_rooms, vol4_story_rooms, pasadena_1945) are left alone, because past 200 m there is another room, not a horizon.
