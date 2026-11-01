@@ -124,6 +124,12 @@ def make_cyl(name, center, radius, height, base_color,
         faces.append([i, ni, ni + segments, i + segments])
     faces.append(list(reversed(range(segments))))
     faces.append(list(range(segments, segments * 2)))
+    if axis == 'Y':
+        # (2026-11-01) the ring runs from +X toward +Z, which turns round -Y:
+        # every face of a Y cylinder wound INWARD (a closed-mesh scan found
+        # the wheels of every car parked along X, and every Y rail and pipe,
+        # inside out: drawn by their far inner faces, lit from behind)
+        faces = [list(reversed(f)) for f in faces]
     return _finalize_mesh(name, verts, faces, base_color)
 
 
@@ -660,7 +666,13 @@ def make_prism(name, center, polygon, length, base_color, axis="Z", yaw=0.0):
     keep them simple (< 24 points) and counter-clockwise."""
     verts, faces = _gen_prism(center, polygon, length, axis.upper())
     verts = _yaw_rot(verts, center, yaw)
-    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
+    # (2026-11-01) wound about the solid's own centroid, not the centre the
+    # caller passed: a road bend's shoulder and edge strips are offset from
+    # the segment centre they were given (their road-side faces wound in),
+    # and a car set below the origin drew roofless (pass 244)
+    n = float(len(verts))
+    c = (sum(v[0] for v in verts) / n, sum(v[1] for v in verts) / n, sum(v[2] for v in verts) / n)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, c), base_color)
 
 
 def _gen_tube(path, radius, segments):
@@ -694,17 +706,20 @@ def _gen_tube(path, radius, segments):
             faces.append([a[s], a[ns], b[ns], b[s]])
     faces.append(list(reversed(rings[0])))
     faces.append(list(rings[-1]))
-    return verts, faces
+    # (2026-11-01) the ring turns from u toward v = u x t, i.e. round -t,
+    # so every face above winds INWARD; reversed, all of them face out
+    return verts, [list(reversed(f)) for f in faces]
 
 
 def make_tube(name, path, radius, base_color, segments=6):
     """A polyline swept with a ring. Wires (build the sag into the
     path with `catenary`), pipes, conduit, handrails, hoses, branches,
     chains, cables — anything that is a LINE with thickness."""
+    # (2026-11-01) wound outward by construction: _fix_winding round the
+    # path's centroid flipped half of any sagging wire (the centroid sits
+    # below the arc, outside the tube)
     verts, faces = _gen_tube(path, radius, segments)
-    c = (sum(p[0] for p in path) / len(path), sum(p[1] for p in path) / len(path),
-         sum(p[2] for p in path) / len(path))
-    return _finalize_mesh(name, verts, _fix_winding(verts, faces, c), base_color)
+    return _finalize_mesh(name, verts, faces, base_color)
 
 
 def catenary(a, b, sag, n=8):

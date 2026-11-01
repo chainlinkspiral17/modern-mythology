@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 254: inside-out geometry, project-wide.**
+- **The scan:** pass 244's roofless car (a prism wound about a centre outside it) and pass 252's splayed logs pointed at a class of bug the gates can't see, because they read boxes, not faces. Every closed mesh in all 169 GLBs (150,394) was checked for its signed volume: a closed mesh wound inside out has a negative one. 4,309 did.
+- **Three helper bugs carried most of it (`_props/geometry.py`):**
+  - **`make_cyl(axis='Y')` wound every face inward:** its ring turns from +X toward +Z, which is round −Y. That covered the wheels of every car parked along X, and every Y rail and pipe, all drawn by their far inner faces and lit from behind. Its faces are reversed for Y now.
+  - **`_gen_tube` wound inward too** (the ring turns round −t), and `make_tube` "fixed" it with `_fix_winding` round the path's centroid. That flips half of any sagging wire, because the centroid sits under the arc, outside the tube. Tubes are now wound outward by construction, with no guess.
+  - **`make_prism` wound about the centre the caller passed.** A road bend's shoulder and edge strips are offset from their segment's centre, so their road-side faces wound in; that is the same cause as the roofless car. It now uses the solid's own centroid.
+- **The count:** 4,309 → 994. The rest are single faces in non-convex shapes (arches, frets) that `_fix_winding`'s centre test misjudges, which are small and mostly unseen.
+- **`stale_sets.py` follows `_props` now.** A set is stale when any shared helper it imports (transitively) was committed after its GLB, so this fix reaches every set the Deck builds. Its first `--stale` run after this pull rebuilds nearly every set, once.
+- **Draft N+1:** a per-face winding test (ray parity) to replace `_fix_winding`'s centre heuristic for non-convex shapes, and the scan as an audit.
+
 **2026-11-01 · pass 253: the club street gets its "wash of color".**
 - **The survey's next-worst view was `club_street_curb`**, vol1 ch9's ~40 lines and ch8's "Outside, the world is a wash of color and activity … so bright shiny new and overwhelming". It was a near-black frame: Judgement Day an unlit mass at the curb, the far side a row of black walls with lit rectangles floating on them.
 - **The fix:**

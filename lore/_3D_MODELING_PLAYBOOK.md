@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-01 · wind faces outward by construction, not by guessing from a centre (pass 254)
+
+**Context:** a scan of every closed mesh's signed volume found 4,309 inside
+out (of 150,394). `make_cyl(axis='Y')` and `_gen_tube` built their rings
+turning the wrong way round their axis, and `_fix_winding` (flip any face
+whose normal points toward a reference centre) misjudged any shape whose
+reference sat outside it: a prism's caller-given centre, a sagging wire's
+path centroid. The visible symptom is rarely a missing face: double-sided
+or not, the far inner faces draw and the part reads dark or wrongly lit
+(the roofless car, black wheels).
+
+**Rule:** a new generator winds its faces outward by construction (check the
+ring's direction against its axis by hand: u × v must equal +t). Use
+`_fix_winding` only for convex shapes, about the solid's OWN centroid.
+After touching a helper, rebuild and run the closed-mesh scan (signed
+volume < 0 on a closed mesh = inside out).
+
 ### 2026-11-01 · a leaning ring's tops lean IN: pitch is negative (pass 252)
 
 **Context:** the user: "Logs look like they are exploding out instead of
