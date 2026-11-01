@@ -96,14 +96,20 @@ elif cmd == "classify":     # vendor-name info-string port-product → id<TAB>di
         fid = hit["id"] if hit else "felucca-family"
         disp = info
         if hit and hit["id"] == "felucca": disp = "Felucca " + re.sub(r"^FELUCCA\s*", "", info, flags=re.I)
-        elif hit and re.match(r"^FELUCCA\s+", info, re.I): disp = re.sub(r"^FELUCCA\s+", "", info, flags=re.I)
+        elif hit and re.match(r"^FELUCCA\s+", info, re.I):
+            disp = re.sub(r"^FELUCCA\s+", "", info, flags=re.I)
+            if hit["name"].lower() not in disp.lower(): disp = hit["name"] + " " + disp   # GHOULBOX: "FELUCCA v1.4.1 GB2.3.2"
         if vendor: disp += f" (package {vendor})"
     else:
         m = re.match(r"^(\S+?)_(\d+)$", vendor or "")
         if m:
             v = int(m.group(2))
+            # single-firmware ranges on M-VAVE's USB ID first (FM1 Open's FM-1_8000014 is not a Felucca fork)
+            own = [f for f in F if f.get("identity") and f["identity"].get("range") and not fam(f)
+                   and f["identity"]["range"][0] <= v <= f["identity"]["range"][1]]
             if m.group(1).lower().startswith("ota"): fid, disp = "loader", vendor + " (updater)"
             elif v == 0: fid, disp = "rescue", vendor + " (USB rescue mode)"
+            elif len(own) == 1: fid = own[0]["id"]
             elif v >= 900:
                 byp = [f for f in F if fam(f) and any(p != "Felucca" and p.lower() in port.lower() for p in f["usb"]["products"])]
                 fid = byp[0]["id"] if len(byp) == 1 else "felucca-family"

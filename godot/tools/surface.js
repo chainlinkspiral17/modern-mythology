@@ -45,6 +45,9 @@
         ...[82, 83, 85, 17].map((n, i) => ({ ['fader' + (i + 1)]: cc(n) })),
         ...Array.from({ length: 16 }, (_, i) => ({ ['pad' + (i + 1)]: note(36 + i, 10) })),
         { encoder: cc(28, null, { rel: true }), click: cc(118) }),
+      // also heard until that control is learned: the main encoder sends CC 114 in Arturia / User mode, CC 28 in DAW
+      // mode (Arturia's MIDI chart, 2026-11-01 firmware re-check — MiniLab firmware 1.2.0)
+      alts: { encoder: [cc(114, null, { rel: true })] },
       layout: { keys: 25, pads: 8, banks: 2, knobs: 8, faders: 4 },
       labels: { encoder: 'MAIN ENCODER (turn)', click: 'MAIN ENCODER (push)' },
     },
@@ -141,7 +144,10 @@
         if (b.ch === ch) return id;
         if (b.ch === null || b.ch === undefined) any = any || id;
       }
-      return any;
+      if (any) return any;
+      for (const [id, list] of Object.entries(this.profile.alts || {}))
+        if (!this.learned[id] && list.some(b => b.t === t && b.n === n && (b.ch == null || b.ch === ch)) && !Object.values(this.map).some(b => b && b.t === t && b.n === n)) return id;
+      return null;
     },
     _msg(data) {
       if (!data || !data.length) return;

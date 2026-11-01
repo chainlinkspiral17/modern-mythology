@@ -34,7 +34,7 @@ suite('surface · MiniLab 3: checkout, learn, DAW / director / FORGE / TAPE STUD
     t.ok(/done/.test(r.wiz) && r.n === 30, r.wiz + ' · learned ' + r.n);
     t.eq([r.k8.n, r.f1.n, r.p16.t, r.p16.n, r.enc.n, r.enc.rel], [27, 30, 'note', 75, 40, true]);
     t.ok(JSON.parse(r.saved).controls.knob1.n === 20, 'saved for every page');
-    await p.reload(); await p.waitForTimeout(400);
+    await p.reload(); await p.waitForFunction(() => window.Surface && Surface.connected, null, { timeout: 10000 });
     await p.evaluate(() => __mini([0xB0, 20, 50])); await tick(p);
     t.ok(await p.evaluate(() => document.querySelector('[data-c="knob1"]').classList.contains('hit') && Surface.map.knob1.n === 20), 'the learned map after a reload');
     t.noErrors(errors);
@@ -50,7 +50,7 @@ suite('surface · MiniLab 3: checkout, learn, DAW / director / FORGE / TAPE STUD
     await p.evaluate(() => __mini([0xB0, 74, 100])); await tick(p);
     const r = await p.evaluate(() => ({ conn: Surface.connected, port: Surface.portName, hit: document.querySelector('[data-c="knob1"]').classList.contains('hit'), badge: document.getElementById('b-conn').textContent, claims: Surface.claims('USB MIDI Interface 20:0') }));
     t.ok(r.conn && r.hit && /USB MIDI Interface/.test(r.badge) && r.claims, JSON.stringify(r));
-    await p.reload(); await p.waitForTimeout(400);
+    await p.reload(); await p.waitForFunction(() => window.Surface && Surface.connected, null, { timeout: 10000 });
     t.ok(await p.evaluate(() => Surface.connected && Surface.portName === 'USB MIDI Interface 20:0'), 'kept after a reload');
     await p.click('[data-unpick]'); await tick(p);
     t.ok(await p.evaluate(() => !Surface.connected && !Surface.chosenPort()), 'AUTO: back to the name match');
@@ -72,7 +72,7 @@ suite('surface · MiniLab 3: checkout, learn, DAW / director / FORGE / TAPE STUD
       __mini([0x99, 36, 110]); __mini([0x89, 36, 0]); await wait();   // pad 1 → kick on the drum track
       const loop0 = P.loop.on; __mini([0x99, 46, 100]); await wait(); // pad 3 of bank B → loop
       const loop1 = P.loop.on;
-      __mini([0xB0, 28, 65]); await wait(); const after = sel.trackId; // encoder → next track
+      __mini([0xB0, 114, 65]); await wait(); const after = sel.trackId; // encoder (CC 114, Arturia mode) → next track
       return { calls, m1, fvol, loop0, loop1, moved: after !== lead.id, fm1In: E.midi && E.midi.input ? E.midi.input.name : null, badge: document.getElementById('b-surf').textContent };
     });
     t.ok(r.calls.some(c => c[0] === 'lead' && c[1] === 60 && c[2]) && r.calls.some(c => c[0] === 'lead' && c[1] === 60 && !c[2]), 'keys → the lead: ' + JSON.stringify(r.calls));

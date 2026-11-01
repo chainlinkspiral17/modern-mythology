@@ -43,6 +43,10 @@
   code { color: var(--gold-hi); }
   .others { padding: 0 28px 30px; font-size: 11px; color: var(--text-dim); line-height: 1.6; }
   .others b { color: var(--text); font-weight: normal; }
+  .t.star { color: var(--amber); border-color: #8a6420; }
+  .buzz { margin: 6px 0 0; padding: 4px 6px; border-left: 2px solid var(--amber); color: var(--text); font-size: 10px; }
+  .buzz b { color: var(--amber); font-weight: normal; letter-spacing: 0.08em; }
+  .src a { margin-right: 6px; }
 </style>
 </head>
 <body>
@@ -57,6 +61,10 @@
   <span class="chip" data-k="synth">synth</span>
   <span class="chip" data-k="groovebox">groovebox</span>
   <span class="chip" data-k="research">research / ports</span>
+  <span>order:</span>
+  <span class="chip on" data-sort="registry">registry</span>
+  <span class="chip" data-sort="stars">★ most starred</span>
+  <span class="chip" data-sort="date">newest release</span>
   <span style="flex:1"></span>
   <button id="check">⌕ WHICH ONE IS ON MY SYNTH?</button>
   <span id="found"></span>
@@ -70,14 +78,17 @@
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
-let filter = 'all', mine = null;
-$('sub').textContent += ' Catalogued ' + FM1_REGISTRY.catalogued + '.';
+let filter = 'all', sort = 'registry', mine = null;
+$('sub').textContent += ' Catalogued ' + FM1_REGISTRY.catalogued + (FM1_REGISTRY.checked ? ' · versions and buzz last checked ' + FM1_REGISTRY.checked : '') + '.';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const link = (u, t) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t || u.replace(/^https?:\/\//, ''))}</a>` : '—';
 
 function render() {
   const g = $('grid'); g.innerHTML = '';
-  for (const f of FM1_FIRMWARES) {
+  const stars = f => (f.stars && f.stars.count) || -1;
+  const list = sort === 'stars' ? [...FM1_FIRMWARES].sort((a, b) => stars(b) - stars(a))
+    : sort === 'date' ? [...FM1_FIRMWARES].sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))) : FM1_FIRMWARES;
+  for (const f of list) {
     if (filter === 'installable' && f.status !== 'installable') continue;
     if (filter === 'synth' && f.kind !== 'synth') continue;
     if (filter === 'groovebox' && f.kind !== 'groovebox') continue;
@@ -86,12 +97,16 @@ function render() {
     const dx7 = f.dx7 === true ? '<span class="t ok">DX7 SysEx</span>' : f.dx7 === 'editor' ? '<span class="t">DX7 via editor</span>' : f.dx7 === false ? '<span class="t no">no DX7</span>' : '<span class="t">DX7 ?</span>';
     const tools = f.status === 'installable' && f.usb ? '<span class="t ok">auto-detected</span>' : '<span class="t">not in the tools</span>';
     const flash = f.installer ? `<code>fm1_flash.sh --firmware ${esc(f.id)}</code>` : '—';
+    const star = f.stars ? `<span class="t star" title="GitHub stars / forks on ${esc(f.checked || '')}">★ ${esc(f.stars.count)} · ${esc(f.stars.forks)} forks</span>` : '';
+    const srcs = (f.sources || []).map(u => link(u, u.replace(/^https?:\/\/(www\.)?/, '').replace(/^(raw\.githubusercontent\.com|github\.com)\//, '').slice(0, 48))).join('');
     const c = document.createElement('div');
     c.className = 'card' + (mine && mine === f.id ? ' mine' : '');
+    c.dataset.id = f.id;
     c.innerHTML = `<h3>${esc(f.name)} <span style="color:var(--text-dim);font-size:11px;">${esc(f.version || '')}</span></h3>
-      <div class="by">${esc(f.author)} · ${esc(f.license)} · ${esc(f.date || '')}</div>
-      <div class="tags"><span class="t k-${esc(f.kind)}">${esc(f.kind)}</span><span class="t">${esc(f.status)}</span>${tools}${dx7}</div>
+      <div class="by">${esc(f.author)} · ${esc(f.license)} · ${esc(f.date || 'date not published')}${f.prerelease ? ' · next: ' + esc(f.prerelease) : ''}</div>
+      <div class="tags"><span class="t k-${esc(f.kind)}">${esc(f.kind)}</span><span class="t">${esc(f.status)}</span>${tools}${dx7}${star}</div>
       <div class="sum">${esc(f.summary || '')}</div>
+      ${f.buzz ? `<div class="buzz"><b>BUZZ</b> ${esc(f.buzz)}</div>` : ''}
       <dl>
         <dt>based on</dt><dd>${esc(f.base)}</dd>
         <dt>install</dt><dd>${link(f.installer, 'web installer')}${f.cli ? ' · ' + esc(f.cli) : ''}</dd>
@@ -105,14 +120,19 @@ function render() {
         ${f.verified ? `<dt>verified</dt><dd>✔ ${esc(f.verified.date)} · ${esc(f.verified.version)} · ${esc(f.verified.how)}: ${esc(f.verified.facts.join(' · '))}${f.verified.pending && f.verified.pending.length ? ' — still untested: ' + esc(f.verified.pending.join(', ')) : ''}</dd>` : ''}
         ${f.warnings && f.warnings.length ? `<dt>watch out</dt><dd>${esc(f.warnings.join(' · '))}</dd>` : ''}
         <dt>source</dt><dd>${link(f.url)}</dd>
+        ${f.checked ? `<dt>checked</dt><dd>${esc(f.checked)}</dd>` : ''}
+        ${srcs ? `<dt>evidence</dt><dd class="src">${srcs}</dd>` : ''}
       </dl>`;
     g.appendChild(c);
   }
   $('others').innerHTML = '<b>Also out there, not catalogued yet:</b> ' + FM1_REGISTRY.others.map(esc).join(' · ') +
     '.<br>' + esc(FM1_REGISTRY.others_note) + ' To add one: copy a block in <code>godot/tools/fm1_firmwares.js</code> (strict JSON), fill it from the project\'s usb.c / build.py / editor.c, reload.';
 }
-document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
-  filter = ch.dataset.k; document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === ch)); render();
+document.querySelectorAll('.chip[data-k]').forEach(ch => ch.addEventListener('click', () => {
+  filter = ch.dataset.k; document.querySelectorAll('.chip[data-k]').forEach(c => c.classList.toggle('on', c === ch)); render();
+}));
+document.querySelectorAll('.chip[data-sort]').forEach(ch => ch.addEventListener('click', () => {
+  sort = ch.dataset.sort; document.querySelectorAll('.chip[data-sort]').forEach(c => c.classList.toggle('on', c === ch)); render();
 }));
 render();
 

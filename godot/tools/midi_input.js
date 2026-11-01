@@ -517,12 +517,14 @@ function fm1DecodeIdentity(bytes) {
   const r = { name: m[1] + '_' + m[2].padStart(3, '0'), model: m[1], version, family: false, firmware: 'unknown' };
   if (/^ota/i.test(m[1])) { r.firmware = 'loader'; return r; }
   if (version === 0) { r.firmware = 'rescue'; return r; }
-  if (version >= 900) { r.family = true; r.firmware = 'felucca-family'; return r; }
-  // Single-firmware ranges (stock 009–019, FM-1+VA 020–099).
+  // Single-firmware ranges on M-VAVE's own USB ID (stock 009–019, FM-1+VA 020–099,
+  // FM1 Open 8000000–8000099). Checked before the ≥ 900 family rule: FM1 Open's
+  // FM-1_8000014 sits in the family's number space but is not a Felucca fork.
   const hits = _FM1_REG.firmwares.filter(f => f.identity && f.identity.range &&
     version >= f.identity.range[0] && version <= f.identity.range[1] && !(f.usb && f.usb.vidpid === '1209:0001'));
-  if (hits.length === 1) r.firmware = hits[0].id;
-  else if (version >= 9 && version <= 19) r.firmware = 'stock';
+  if (hits.length === 1) { r.firmware = hits[0].id; return r; }
+  if (version >= 900) { r.family = true; r.firmware = 'felucca-family'; return r; }
+  if (version >= 9 && version <= 19) r.firmware = 'stock';
   return r;
 }
 
@@ -545,8 +547,11 @@ function fm1DecodeEditorInfo(bytes) {
   // Friendly name: Felucca keeps its word; forks that prefix "FELUCCA "
   // (SLOOP, SLOOP ALG) drop it; others are already self-named.
   let name = s;
-  if (hit && hit.id !== 'felucca' && /^FELUCCA\s+/i.test(s)) name = s.replace(/^FELUCCA\s+/i, '');
-  else if (hit && hit.id === 'felucca') name = 'Felucca ' + s.replace(/^FELUCCA\s*/i, '');
+  if (hit && hit.id !== 'felucca' && /^FELUCCA\s+/i.test(s)) {
+    name = s.replace(/^FELUCCA\s+/i, '');
+    // "FELUCCA v1.4.1 GB2.3.2" (GHOULBOX) names the fork only by a suffix: lead with the registry name
+    if (!name.toLowerCase().includes(hit.name.toLowerCase())) name = hit.name + ' ' + name;
+  } else if (hit && hit.id === 'felucca') name = 'Felucca ' + s.replace(/^FELUCCA\s*/i, '');
   return { raw: s, firmware, name };
 }
 

@@ -29,6 +29,7 @@ suite('fm1 checkout · mock hardware', async t => {
     o.goto = async id => { await o.press(`.nav-step[data-go="${id}"]`); t.eq(await p.evaluate(() => R.cur), id, 'on step'); };
     return o;
   }
+  const p_eval = (o, fn) => o.p.evaluate(fn);
   const isInfo = s => s.d[0] === 0xF0 && s.d[1] === 0x7D;
   const noteOnChans = sent => [...new Set(sent.filter(x => (x.d[0] & 0xF0) === 0x90).map(x => (x.d[0] & 15) + 1))];
 
@@ -157,6 +158,33 @@ suite('fm1 checkout · mock hardware', async t => {
     const r = await p.evaluate(() => ({ found: R.steps.audio.checks.found.status, why: R.steps.audio.checks.found.value }));
     t.eq(r.found, 'pass', 'digital silence between notes → USB input: ' + r.why.slice(0, 80));
     t.noErrors(o.errors);
+  });
+
+  await t.test('FM1 Open (FM-1_8000014): its own entry, not the Felucca family — no INFO request', async () => {
+    const o = await open('fm1open');
+    await o.connect();
+    t.eq(await p_eval(o, () => R.device.firmware), 'fm1open', 'firmware');
+    t.ok(!(await o.sentSince(0)).some(isInfo), 'INFO not sent to M-VAVE\'s own firmware');
+    t.noErrors(o.errors);
+  });
+
+  await t.test('FIRMWARE ATLAS renders every registry entry with its buzz, sources and sort orders', async () => {
+    const { p, errors } = await t.page('fm1_firmware_atlas.html', { settle: 300 });
+    const r = await p.evaluate(() => ({ n: FM1_FIRMWARES.length, ids: FM1_FIRMWARES.map(f => f.id), cards: [...document.querySelectorAll('.card')].map(c => c.dataset.id),
+      buzz: document.querySelectorAll('.card .buzz').length, src: document.querySelectorAll('.card .src a').length, sub: document.getElementById('sub').textContent,
+      others: document.getElementById('others').textContent }));
+    t.eq(r.cards, r.ids, 'one card per firmware, registry order');
+    t.eq(r.buzz, r.n, 'every card shows its buzz');
+    t.ok(r.src >= r.n, 'evidence links: ' + r.src);
+    t.ok(/last checked \d{4}-\d{2}-\d{2}/.test(r.sub), 'checked date in the header');
+    t.ok(/Mutable Dreams/.test(r.others), 'others list');
+    await p.click('.chip[data-sort="stars"]');
+    const starred = await p.evaluate(() => [...document.querySelectorAll('.card')].map(c => (FM1_FIRMWARES.find(f => f.id === c.dataset.id).stars || { count: -1 }).count));
+    t.eq(starred, [...starred].sort((a, b) => b - a), 'most starred first');
+    t.eq(await p.evaluate(() => document.querySelectorAll('.card').length), r.n, 'sorting keeps every card');
+    await p.click('.chip[data-k="installable"]');
+    t.eq(await p.evaluate(() => document.querySelectorAll('.card').length), await p.evaluate(() => FM1_FIRMWARES.filter(f => f.status === 'installable').length), 'filter still works while sorted');
+    t.noErrors(errors);
   });
 
   await t.test('answers persist across a reload', async () => {

@@ -1,6 +1,6 @@
 // registries, catalogs and the pure-JS composer / MIDI file code — no browser needed
 const { suite, TOOLS } = require('./harness');
-const fs = require('fs'), path = require('path');
+const fs = require('fs'), path = require('path'), vm = require('vm');
 const between = (s, a, b) => s.split(a)[1].split(b)[0];
 
 suite('data · registries, composer, MIDI files', async t => {
@@ -15,6 +15,47 @@ suite('data · registries, composer, MIDI files', async t => {
     }
     const fel = reg.firmwares.find(f => f.id === 'felucca');
     t.eq([fel.roles.bass, fel.roles.chords, fel.roles.lead], [1, 2, 3], 'Felucca role map (bass 1, chords 2, lead 3)');
+    // the 2026-11-01 re-check: every entry says when it was checked, where the facts came from, and how much people use it
+    const DAY = /^\d{4}-\d{2}-\d{2}$/;
+    t.ok(DAY.test(reg.checked) && reg.checked >= reg.catalogued, 'registry checked date');
+    for (const f of reg.firmwares) {
+      t.ok(DAY.test(f.checked) && f.checked <= reg.checked, f.id + ' checked date');
+      t.ok(f.date === null || DAY.test(f.date), f.id + ' release date is a day or null');
+      t.ok(Array.isArray(f.sources) && f.sources.length && f.sources.every(u => /^https:\/\/[^\s]+$/.test(u)), f.id + ' sources are https URLs');
+      t.ok(typeof f.buzz === 'string' && f.buzz.length > 20, f.id + ' buzz note');
+      if (f.stars) t.ok(Number.isInteger(f.stars.count) && Number.isInteger(f.stars.forks) && f.stars.count >= 0, f.id + ' stars');
+      if (f.prerelease) t.ok(typeof f.prerelease === 'string', f.id + ' prerelease');
+      if (f.status === 'installable') t.ok(/^https:\/\//.test(f.installer || '') || f.id === 'stock', f.id + ' installer URL');
+      if (f.info) new RegExp(f.info.match, 'i');                             // compiles
+      if (f.usb && f.usb.vidpid === '1209:0001') t.ok(!f.usb.products.some(p => /^fm-?1$/i.test(p)), f.id + ': a bare "FM-1" product would make every stock port look like a Felucca fork');
+    }
+    // INFO is matched in registry order: a fork whose INFO also starts "FELUCCA v…" must come before Felucca
+    const order = id => reg.firmwares.findIndex(f => f.id === id);
+    t.ok(order('ghoulbox') < order('felucca') && order('sloop_alg') < order('sloop'), 'specific forks before their base');
+  });
+
+  await t.test('FM-1 identity, INFO and port names classify to the right registry entry', async () => {
+    const ctx = { console }; vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(path.join(TOOLS, 'fm1_firmwares.js'), 'utf8') + '\n' + fs.readFileSync(path.join(TOOLS, 'midi_input.js'), 'utf8') +
+      '\n;this.T = { fm1DecodeIdentity, fm1DecodeEditorInfo, fm1FirmwareFromPort, MIDI_FELUCCA_PORT };', ctx);
+    const T = ctx.T;
+    // the reply the FM-1 sends to the vendor identity query: a 34-byte block, 7-bit LSB-first (as tests/mocks/fm1_mock.js)
+    const pack = s => { const blk = [0x00, 0x59, 0x11, 0, 0, 0, ...[...s].map(c => c.charCodeAt(0))]; while (blk.length < 34) blk.push(0);
+      let acc = 0, bits = 0; const o = [0xF0]; for (const x of blk) { acc |= x << bits; bits += 8; while (bits >= 7) { o.push(acc & 0x7F); acc >>>= 7; bits -= 7; } }
+      if (bits) o.push(acc & 0x7F); o.push(0xF7); return o; };
+    const id = s => { const r = T.fm1DecodeIdentity(pack(s)); return r.firmware + (r.family ? '+family' : ''); };
+    t.eq(['FM-1_015', 'FM-1_016', 'FM-1_097', 'FM-1_8000014', 'FM-1_918', 'FM-1_8000100', 'FM-1_9010100', 'FM-1_000'].map(id),
+      ['stock', 'stock', 'baudgirl', 'fm1open', 'felucca-family+family', 'felucca-family+family', 'felucca-family+family', 'rescue'], 'identity numbers');
+    // INFO strings as the firmwares' editor.c builds them (2026-11-01 sources)
+    const info = s => (T.fm1DecodeEditorInfo([0xF0, 0x7D, 0x46, 0x4C, 0x01, ...[...s].map(c => c.charCodeAt(0)), 0, 0xF7]) || {});
+    const cases = { 'FELUCCA v1.8.0': 'felucca', 'FELUCCA SLOOP 2.8.4': 'sloop', 'FELUCCA SLOOP ALG05 TEST': 'sloop_alg', 'FELUCCA CLIPPER 1.3': 'clipper',
+      'FELUCCA v1.4.1 GB2.3.2': 'ghoulbox', 'JIANT v0.9.18': 'jiant', 'X0X 1.1.0 BETA': 'x0x', 'JANGADA 1.0.1': 'jangada', 'MELODEE v1.5.1': 'melodee', 'FELUCCA NEWFORK 0.1': 'felucca-family' };
+    t.eq(Object.keys(cases).map(s => info(s).firmware), Object.values(cases), 'INFO → firmware');
+    t.eq(info('FELUCCA v1.4.1 GB2.3.2').name, 'GHOULBOX v1.4.1 GB2.3.2', 'a suffix-only fork is named by the registry');
+    // port names: unique ones decide, a stock port never looks like a Felucca fork
+    const ports = { 'Clipper MIDI 1': 'clipper', 'JIANT MIDI 1': 'jiant', 'FoMni FM-1 MIDI 1': 'fomni', 'Melodee FM-1 MIDI 1': 'melodee', 'X0X FM-1 MIDI 1': 'x0x', 'Felucca MIDI 1': null, 'FM-1 MIDI 1': null };
+    t.eq(Object.keys(ports).map(p => T.fm1FirmwareFromPort(p)), Object.values(ports), 'port → firmware');
+    t.eq(T.MIDI_FELUCCA_PORT.test('FM-1 MIDI 1'), false, 'stock port is not a family port');
   });
 
   await t.test('PATCH BANK catalog: pinned commits, known licences, unique item ids', async () => {
