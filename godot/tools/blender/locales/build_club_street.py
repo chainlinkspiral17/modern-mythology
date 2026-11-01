@@ -84,6 +84,12 @@ def build_street():
         make_cyl(f"Streetlight_{k}_Pole", (4.5, y + 3.0, 2.9), 0.08, 5.8, (0.36, 0.36, 0.38, 1.0), segments=8)
         make_box(f"Streetlight_{k}_Arm", (5.1, y + 3.0, 5.75), (1.2, 0.10, 0.10), (0.36, 0.36, 0.38, 1.0))
         make_box(f"Streetlight_{k}_Head_Glow", (5.7, y + 3.0, 5.66), (0.50, 0.26, 0.12), (1.0, 0.80, 0.50, 1.0))
+        # (2026-11-01) ch9: "Every streetlight has a halo and each halo has
+        # its own halo." Two soft spheres round each head, translucent (the
+        # vertex alpha becomes real transparency, LocaleGlass); the dawn
+        # view strips them (its lamps are going off)
+        make_blob(f"Streetlight_{k}_Halo_Glow", (5.7, y + 3.0, 5.62), 0.75, (1.0, 0.78, 0.46, 0.20), noise=0.0, seed=k, squash=1.0)
+        make_blob(f"Streetlight_{k}_Halo_Outer_Glow", (5.7, y + 3.0, 5.62), 1.7, (1.0, 0.74, 0.44, 0.08), noise=0.0, seed=k + 9, squash=1.0)
     # Judgement Day at the curb: the beat-up maroon sedan; the frame shirt on
     # its rearview in the ch9 view; the cat hair is the sprite-scale detail
     make_car("Judgement_Day", 5.15, -4.0, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
@@ -110,8 +116,11 @@ def build_far_side():
     for k in range(13):
         y = -84.0 + k * 14.0
         h = 7.0 + (k % 3) * 3.5
-        make_box(f"Far_Frontage_{k}", (24.0, y, h / 2.0), (12.0, 13.6, h), ((0.34, 0.30, 0.28, 1.0), (0.28, 0.30, 0.34, 1.0),
-                                                                          (0.40, 0.34, 0.30, 1.0))[k % 3])
+        # (2026-11-01) brick, stucco and painted fronts with value in them:
+        # at 0.28-0.40 the streetlights and the neon had nothing to light,
+        # and ch8's "wash of color and activity" was a row of black walls
+        make_box(f"Far_Frontage_{k}", (24.0, y, h / 2.0), (12.0, 13.6, h), ((0.58, 0.40, 0.34, 1.0), (0.54, 0.56, 0.60, 1.0),
+                                                                          (0.66, 0.56, 0.44, 1.0))[k % 3])
         make_box(f"Far_Shop_Window_Glow_{k}", (17.98, y, 1.6), (0.04, 9.0, 2.0), ((1.0, 0.86, 0.60, 1.0), (0.12, 0.12, 0.14, 1.0))[k % 4 == 3])
         make_box(f"Far_Sign_Glow_{k}", (17.94, y, 3.4), (0.08, 6.0, 0.9), sign_cols[k % 4])
         for j in range(3):

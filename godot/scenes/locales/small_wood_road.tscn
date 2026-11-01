@@ -169,14 +169,14 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Sun__small_wood_road__small_wood_roadside" type="DirectionalLight3D" parent="."]
+[node name="Sun__small_wood_road" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0, -0.37, 0.929, 0, 0.929, 0.37, -1, 0, 0, 0, 4, 0)
 light_color = Color(1, 0.94, 0.82, 1)
 light_energy = 0.9
 shadow_enabled = false
 metadata/daylight = true
 
-[node name="Sky_Fill__small_wood_road__small_wood_roadside" type="DirectionalLight3D" parent="."]
+[node name="Sky_Fill__small_wood_road" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.72, 0.80, 0.92, 1)
 light_energy = 0.5
@@ -200,11 +200,21 @@ shadow_enabled = false
 
 ; (pass 72, 2026-10-11) the suns above carry metadata/daylight and follow the mood's hour;
 ; this cool fill stays on so a night cut keeps its shapes
-[node name="Night_Sky_Fill__small_wood_road_night" type="DirectionalLight3D" parent="."]
+[node name="Night_Sky_Fill__small_wood_road_night__small_wood_roadside" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.2588, 0.9659, 0, -0.9659, 0.2588, 0, 8, 0)
 light_color = Color(0.56, 0.64, 0.86, 1)
 light_energy = 0.18
 shadow_enabled = false
+
+; (2026-11-01) the roadside at night reads by the moon: high in the
+; south-east, behind the lens, so the gravel, the ditch and the culvert's
+; headwall catch it and the firs stand against the sky
+[node name="Moon__small_wood_roadside" type="DirectionalLight3D" parent="."]
+position = Vector3(0, 30, 0)
+rotation = Vector3(-0.85, 2.6, 0)
+light_color = Color(0.64, 0.72, 0.94, 1)
+light_energy = 0.55
+shadow_enabled = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

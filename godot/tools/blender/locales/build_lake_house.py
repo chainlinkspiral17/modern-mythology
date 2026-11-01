@@ -297,7 +297,7 @@ def build_grounds():
     for k in range(3):
         a = k * 2.0 * math.pi / 3.0
         make_rot_box(f"Barbecue_Leg_{k}", (bx + 0.22 * math.cos(a), by + 0.22 * math.sin(a), 0.36), (0.03, 0.03, 0.74),
-                     (0.16, 0.16, 0.16, 1.0), roll=0.18 * math.sin(a), pitch=0.18 * math.cos(a))
+                     (0.16, 0.16, 0.16, 1.0), roll=0.18 * math.sin(a), pitch=-0.18 * math.cos(a))   # (2026-11-01) tops in under the kettle
     make_lathe("Barbecue_Kettle", (bx, by, 0.66), [(0.0, 0.0), (0.22, 0.02), (0.29, 0.12), (0.30, 0.22), (0.0, 0.22)],
                (0.12, 0.12, 0.13, 1.0), segments=16)
     make_lathe("Barbecue_Lid", (bx, by, 0.88), [(0.30, 0.0), (0.28, 0.10), (0.18, 0.20), (0.0, 0.24)], (0.12, 0.12, 0.13, 1.0), segments=16)

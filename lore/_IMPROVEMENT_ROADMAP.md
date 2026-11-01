@@ -3835,6 +3835,58 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 254: inside-out geometry, project-wide.**
+- **The scan:** pass 244's roofless car (a prism wound about a centre outside it) and pass 252's splayed logs pointed at a class of bug the gates can't see, because they read boxes, not faces. Every closed mesh in all 169 GLBs (150,394) was checked for its signed volume: a closed mesh wound inside out has a negative one. 4,309 did.
+- **Three helper bugs carried most of it (`_props/geometry.py`):**
+  - **`make_cyl(axis='Y')` wound every face inward:** its ring turns from +X toward +Z, which is round −Y. That covered the wheels of every car parked along X, and every Y rail and pipe, all drawn by their far inner faces and lit from behind. Its faces are reversed for Y now.
+  - **`_gen_tube` wound inward too** (the ring turns round −t), and `make_tube` "fixed" it with `_fix_winding` round the path's centroid. That flips half of any sagging wire, because the centroid sits under the arc, outside the tube. Tubes are now wound outward by construction, with no guess.
+  - **`make_prism` wound about the centre the caller passed.** A road bend's shoulder and edge strips are offset from their segment's centre, so their road-side faces wound in; that is the same cause as the roofless car. It now uses the solid's own centroid.
+- **The count:** 4,309 → 994. The rest are single faces in non-convex shapes (arches, frets) that `_fix_winding`'s centre test misjudges, which are small and mostly unseen.
+- **`stale_sets.py` follows `_props` now.** A set is stale when any shared helper it imports (transitively) was committed after its GLB, so this fix reaches every set the Deck builds. Its first `--stale` run after this pull rebuilds nearly every set, once.
+- **Draft N+1:** a per-face winding test (ray parity) to replace `_fix_winding`'s centre heuristic for non-convex shapes, and the scan as an audit.
+
+**2026-11-01 · pass 253: the club street gets its "wash of color".**
+- **The survey's next-worst view was `club_street_curb`**, vol1 ch9's ~40 lines and ch8's "Outside, the world is a wash of color and activity … so bright shiny new and overwhelming". It was a near-black frame: Judgement Day an unlit mass at the curb, the far side a row of black walls with lit rectangles floating on them.
+- **The fix:**
+  - The far side's frontages had been painted 0.28–0.40, so no light had anything to land on. They are now brick, stucco and painted fronts with value in them.
+  - The night fill went 0.06 → 0.14, and the streetlight over the car 2.0 → 3.4 (range 20).
+  - The three neon spills went 1.0 → 2.4 (range 13), so the colour reaches the far sidewalk and the cars.
+  - The three night views' ambient went 0.55 → 0.85.
+- **What it looks like now:** a lit, coloured street, with Judgement Day reading at the curb. The dawn view stays grey and ordinary, as ch16 has it.
+- **The same day, the halos:** "Every streetlight has a halo and each halo has its own halo". Two translucent spheres round each sodium head (vertex alpha, drawn as glass by LocaleGlass): a warm halo and a fainter one twice its size. The dawn view strips them.
+- **Draft N+1:**
+  - More neon spill along the far side. The compatibility renderer allows 8 lights per mesh, and the 190 m sidewalks and asphalt are at that, so split them first.
+  - The frame shirt on the rearview.
+
+**2026-11-01 · pass 252: the logs lean in.**
+- **The report:** the user wrote, "Logs look like they are exploding out instead of leaning against each other stacked up." The grunion beach bonfire's logs had `yaw=a, pitch=+0.55`, which tips each top away from the fire.
+- **The bonfire:** the logs are now a teepee of 1.15 m driftwood, feet on the ring at 0.6 m and tops meeting over the fire, with a smaller flame inside and its tip up through the apex.
+- **The same sign elsewhere:**
+  - The New Orleans office work light's tripod had its tops splayed out and its feet under the pole.
+  - Elicia's camera tripod leaned round the circle.
+  - The lake house barbecue's legs splayed half out.
+  - All three now have their tops in (vol3_rooms' tripod was already right).
+- Lesson in the 3D playbook.
+
+**2026-11-01 · pass 251: the grunion beach stops reading as a highway.**
+- **The survey:** 24 of the vols 1–4 views not yet seen this session were rendered.
+  - The worst read was `grunion_beach`: "low at the tide's edge looking W along the wet band". Three foam lines and the 420 m tide-gleam strip all run straight along the shore, so from the low lens they converged on the vanishing point like the lane lines of a highway.
+  - `jd_river_turn` (the car alone on the river in the dark) is empty on purpose ("There's no shore on either side").
+- **The fix:** the shoreline wanders now (`_shore(x)`). Each foam run follows it and turns with it. The gleam ("water that gleamed off the fresh tide's edge") is swash lobes on the wander; the strip under it keeps the wet sand's tone, so it fills the edge without drawing it. beach_night and beach_bonfire are unchanged in character.
+- **Draft N+1:** the foam runs still read as long streaks from 0.9 m. Shorter, curled runs, a foam fringe on each lobe, and the wet sand's edge itself wandering.
+
+**2026-11-01 · pass 250: VOLS 1–4 backgrounds, draft 16 — the Small Wood road's paths, its gate, its roadside at night.**
+- **The paths:** vol2 ch1 has "Knotted paths leading both up and down the road, twisting alongside cricks, emerging upon tool shed areas". One worn path leaves the hay field past the east ditch and twists along the crick's south bank into the firs. Another runs up from the gate to the tool shed, on the bare ground inside the fence.
+- **The gate:** a chain loops round the south post and the gate's end, with a padlock hanging off it.
+- **The roadside (vol2 ch2):** the chapter plays it at night (`[mood:night]`), but the preset wore the set's dusk with the sun up.
+  - It now has a night sky of its own.
+  - The sun and the day fill are tagged to the day view alone, and the night fill joins the roadside.
+  - A moon (`Moon__small_wood_roadside`) high in the south-east behind the lens lights the gravel, the ditch and the culvert's headwalls, with the firs against the sky.
+- **Dropped: the minister's car.** "Gloria was found by the side of the road … Her rescuer was a travelling minister by the name of Cook" belongs to the 1910 episode ("reported killed in 1910"), and the text gives Cook no vehicle.
+- **Draft N+1 targets (also in the builder's docstring):**
+  - the crick's banks and alders where the path runs;
+  - the fallen-in house to the east, read from the roadside at night.
+
 **2026-11-01 · VN portraits: the eye line holds, and the lens looks up only at menace.**
 - **The report:** the user wrote, "characters in the visual novel, their portraits, move up and down as the lines progress, it's really disconcerting." Four things moved the face vertically between lines:
   - **The speaker pop:** CharLayer scaled the speaker 1.05 and the listeners 0.92 about the slot's centre. The face sits in the slot's upper third, so every change of speaker lifted one face and dropped another.

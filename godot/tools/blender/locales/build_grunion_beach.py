@@ -39,11 +39,33 @@ COL_DRIFT = (0.44, 0.41, 0.37, 1.0)      # (draft 3) sea-bleached grey, as Pacif
 COL_GRUNION = (0.72, 0.76, 0.78, 1.0)    # silver flecks — bloom lifts them
 
 
+def _shore(x):
+    """The shoreline's wander (m, across the beach) along it: the swash
+    reaches further up in some places than others."""
+    return 0.35 * math.sin(x / 7.0) + 0.18 * math.sin(x / 2.9 + 1.3)
+
+
+def _shore_slope(x):
+    return 0.35 / 7.0 * math.cos(x / 7.0) + 0.18 / 2.9 * math.cos(x / 2.9 + 1.3)
+
+
 def build_sand():
     make_box("Sand_Dry", (0.0, 4.0, 0.0), (420.0, 8.0, 0.06), COL_SAND)
     make_box("Sand_Wet", (0.0, 9.0, 0.01), (420.0, 2.2, 0.05), COL_SAND_WET)
-    # The gleam: a thin lighter band right at the tide's edge
-    make_box("Tide_Gleam", (0.0, 10.05, 0.03), (420.0, 0.5, 0.02), COL_GLEAM)
+    # The gleam: "water that gleamed off the fresh tide's edge". (2026-11-01)
+    # One ruled 420 m stripe read, from the low lens looking along the
+    # shore, as a lane line on a highway. The strip under it keeps the wet
+    # sand's tone (it fills the edge, it does not draw it); the gleam is
+    # the swash's lobes on top, wandering with the shoreline.
+    make_box("Tide_Gleam", (0.0, 10.05, 0.03), (420.0, 0.5, 0.02), (0.30, 0.31, 0.33, 1.0))
+    x, k = -208.0, 0
+    while x < 208.0:
+        ln = 2.4 + 1.6 * abs(math.sin(x * 0.37))
+        xc = x + ln / 2.0
+        yaw = math.atan(_shore_slope(xc))
+        make_rot_box(f"Tide_Gleam_Lobe_{k}", (xc, 9.95 + 0.35 * _shore(xc), 0.0405), (ln, 0.18 + 0.12 * abs(math.sin(x * 0.9)), 0.004), COL_GLEAM, yaw=yaw)
+        x += ln + 0.5 + 0.9 * abs(math.cos(x * 0.53))
+        k += 1
     # Low dune rise at the very south edge
     make_box("Dune", (0.0, -0.8, 0.20), (420.0, 2.0, 0.45), COL_SAND)
 
@@ -58,7 +80,11 @@ def build_sea():
         while x < 205.0:
             ln = rng.uniform(2.0, 9.0)
             w = lw * rng.uniform(0.6, 1.4)
-            make_box(f"Surf_{li}_{k}", (x + ln / 2.0, ly + rng.uniform(-0.12, 0.12), 0.03 + 0.005 * (li == 0)), (ln, w, 0.02), COL_SURF)
+            # (2026-11-01) along the shore's wander, each run turned to it,
+            # so the lines stop converging like a highway's
+            xc = x + ln / 2.0
+            make_rot_box(f"Surf_{li}_{k}", (xc, ly + (0.5 - 0.05 * li) * _shore(xc) + rng.uniform(-0.08, 0.08), 0.03 + 0.005 * (li == 0)),
+                         (ln, w, 0.02), COL_SURF, yaw=math.atan(_shore_slope(xc)) + rng.uniform(-0.05, 0.05))
             x += ln + rng.uniform(0.4, 3.5)
             k += 1
     # up to the tide gleam (2026-09-23: a 70 cm strip of nothing between
@@ -122,10 +148,15 @@ def build_bonfires_2026_10():
     make_cyl("Bonfire_Ring", (fx, fy, 0.05), 0.75, 0.06, char, segments=16)
     for k in range(7):                                  # the stacked driftwood, leaning in
         a = k * (2 * math.pi / 7)
-        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.28 * math.cos(a), fy + 0.28 * math.sin(a), 0.40),   # (feet on the sand, not 7 cm under it)
-                     (0.10, 0.10, 0.78), COL_DRIFT, yaw=a, pitch=0.55)
-    make_blob("Bonfire_Flame_Glow_Core", (fx, fy, 0.42), 0.30, ember, noise=0.25, seed=4, squash=1.6)
-    make_blob("Bonfire_Flame_Glow_Top", (fx, fy, 0.82), 0.18, flame, noise=0.3, seed=9, squash=1.9)
+        # (2026-11-01, the user: "Logs look like they are exploding out
+        # instead of leaning against each other stacked up") +0.55 tipped
+        # each top AWAY from the fire. A teepee now: feet on the ring at
+        # 0.6 m, tops meeting over the flame at 0.12 m, 1.15 m of driftwood
+        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.36 * math.cos(a), fy + 0.36 * math.sin(a), 0.63),
+                     (0.11, 0.11, 1.15), COL_DRIFT, yaw=a, pitch=-0.42)
+    # the fire inside the stack, its tip up through the apex
+    make_blob("Bonfire_Flame_Glow_Core", (fx, fy, 0.45), 0.24, ember, noise=0.25, seed=4, squash=1.5)
+    make_blob("Bonfire_Flame_Glow_Top", (fx, fy, 0.95), 0.15, flame, noise=0.3, seed=9, squash=2.0)
     make_blob("Bonfire_Embers_Glow", (fx, fy, 0.10), 0.42, (0.70, 0.22, 0.08, 1.0), noise=0.18, seed=2, squash=0.25)
     # the logs they sat on, the bottles, the taffy, the quilt
     make_rot_box("Bonfire_Seat_Log_0", (fx - 0.2, fy - 1.7, 0.18), (2.2, 0.34, 0.34), COL_DRIFT, yaw=0.12)   # (off the old driftwood, 2026-10-30)
