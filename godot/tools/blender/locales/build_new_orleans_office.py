@@ -389,7 +389,7 @@ def build_warehouse():
     for k in range(3):
         a = k * 2.094
         make_rot_box(f"Work_Light_Leg_{k}", (2.8 + 0.22 * math.cos(a), 8.5 + 0.22 * math.sin(a), z + 0.25), (0.03, 0.03, 0.55),
-                     (0.20, 0.20, 0.20, 1.0), yaw=a, pitch=0.6)
+                     (0.20, 0.20, 0.20, 1.0), yaw=a, pitch=-0.6)   # (2026-11-01) tops in at the pole, feet out
     make_box("Work_Light_Head", (2.8, 8.42, z + 1.95), (0.30, 0.12, 0.24), (0.96, 0.86, 0.30, 1.0))
 
 

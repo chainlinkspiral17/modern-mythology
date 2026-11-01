@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 252: the logs lean in.**
+- **The report:** the user wrote, "Logs look like they are exploding out instead of leaning against each other stacked up." The grunion beach bonfire's logs had `yaw=a, pitch=+0.55`, which tips each top away from the fire.
+- **The bonfire:** the logs are now a teepee of 1.15 m driftwood, feet on the ring at 0.6 m and tops meeting over the fire, with a smaller flame inside and its tip up through the apex.
+- **The same sign elsewhere:**
+  - The New Orleans office work light's tripod had its tops splayed out and its feet under the pole.
+  - Elicia's camera tripod leaned round the circle.
+  - The lake house barbecue's legs splayed half out.
+  - All three now have their tops in (vol3_rooms' tripod was already right).
+- Lesson in the 3D playbook.
+
 **2026-11-01 · pass 251: the grunion beach stops reading as a highway.**
 - **The survey:** 24 of the vols 1–4 views not yet seen this session were rendered.
   - The worst read was `grunion_beach`: "low at the tide's edge looking W along the wet band". Three foam lines and the 420 m tide-gleam strip all run straight along the shore, so from the low lens they converged on the vanishing point like the lane lines of a highway.

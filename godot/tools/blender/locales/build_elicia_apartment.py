@@ -341,7 +341,7 @@ def build_wrecked_command_center_2026_10():
     import math
     for i in range(3):
         a = i * 2.094 + 0.5
-        make_rot_box(f"Tripod_Leg_{i}", (tx + math.cos(a) * 0.18, ty + math.sin(a) * 0.18, 0.62), (0.02, 0.02, 1.30), (0.16, 0.16, 0.18, 1.0), pitch=0.26 * math.sin(a), roll=-0.26 * math.cos(a))
+        make_rot_box(f"Tripod_Leg_{i}", (tx + math.cos(a) * 0.18, ty + math.sin(a) * 0.18, 0.62), (0.02, 0.02, 1.30), (0.16, 0.16, 0.18, 1.0), pitch=-0.26 * math.cos(a), roll=0.26 * math.sin(a))   # (2026-11-01) tops in at the collar (they leaned round the circle)
     make_cyl("Tripod_Collar", (tx, ty, 1.21), 0.05, 0.10, (0.16, 0.16, 0.18, 1.0), segments=8)   # where the legs meet
     make_cyl("Tripod_Head", (tx, ty, 1.29), 0.04, 0.06, (0.16, 0.16, 0.18, 1.0), segments=8)
     make_box("Tripod_Plate", (tx, ty, 1.33), (0.08, 0.06, 0.02), (0.22, 0.22, 0.24, 1.0))

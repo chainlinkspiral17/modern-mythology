@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-01 · a leaning ring's tops lean IN: pitch is negative (pass 252)
+
+**Context:** the user: "Logs look like they are exploding out instead of
+leaning against each other stacked up." The grunion beach bonfire placed each
+log at angle `a` round the fire with `make_rot_box(..., yaw=a, pitch=+0.55)`.
+`_rot3` applies roll (local X), then pitch (local Y), then yaw (Z), and a
+positive pitch moves a box's TOP toward local +X, which yaw then turns to
+(cos a, sin a): outward. A scan found the same splay in the New Orleans work
+light's tripod, and two tripods built with roll/pitch and no yaw whose tops
+leaned round the circle or half outward (Elicia's camera tripod, the lake
+house's barbecue).
+
+**Rule:** for a part at angle `a` around a centre whose top must lean IN
+(teepee, tripod, kettle legs): `yaw=a, pitch=-tilt`; or, with no yaw,
+`pitch=-tilt*cos(a), roll=tilt*sin(a)`. Check one leg on paper: its top
+should end nearer the centre than its foot.
+
 ### 2026-10-31 · a view tag goes at the END of a name, or on an empty (passes 244–245)
 
 **Context:** the Little Switzerland day layer on the farmhouse named its cows

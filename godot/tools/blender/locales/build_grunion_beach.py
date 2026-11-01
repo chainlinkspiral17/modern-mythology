@@ -148,10 +148,15 @@ def build_bonfires_2026_10():
     make_cyl("Bonfire_Ring", (fx, fy, 0.05), 0.75, 0.06, char, segments=16)
     for k in range(7):                                  # the stacked driftwood, leaning in
         a = k * (2 * math.pi / 7)
-        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.28 * math.cos(a), fy + 0.28 * math.sin(a), 0.40),   # (feet on the sand, not 7 cm under it)
-                     (0.10, 0.10, 0.78), COL_DRIFT, yaw=a, pitch=0.55)
-    make_blob("Bonfire_Flame_Glow_Core", (fx, fy, 0.42), 0.30, ember, noise=0.25, seed=4, squash=1.6)
-    make_blob("Bonfire_Flame_Glow_Top", (fx, fy, 0.82), 0.18, flame, noise=0.3, seed=9, squash=1.9)
+        # (2026-11-01, the user: "Logs look like they are exploding out
+        # instead of leaning against each other stacked up") +0.55 tipped
+        # each top AWAY from the fire. A teepee now: feet on the ring at
+        # 0.6 m, tops meeting over the flame at 0.12 m, 1.15 m of driftwood
+        make_rot_box(f"Bonfire_Log_{k}", (fx + 0.36 * math.cos(a), fy + 0.36 * math.sin(a), 0.63),
+                     (0.11, 0.11, 1.15), COL_DRIFT, yaw=a, pitch=-0.42)
+    # the fire inside the stack, its tip up through the apex
+    make_blob("Bonfire_Flame_Glow_Core", (fx, fy, 0.45), 0.24, ember, noise=0.25, seed=4, squash=1.5)
+    make_blob("Bonfire_Flame_Glow_Top", (fx, fy, 0.95), 0.15, flame, noise=0.3, seed=9, squash=2.0)
     make_blob("Bonfire_Embers_Glow", (fx, fy, 0.10), 0.42, (0.70, 0.22, 0.08, 1.0), noise=0.18, seed=2, squash=0.25)
     # the logs they sat on, the bottles, the taffy, the quilt
     make_rot_box("Bonfire_Seat_Log_0", (fx - 0.2, fy - 1.7, 0.18), (2.2, 0.34, 0.34), COL_DRIFT, yaw=0.12)   # (off the old driftwood, 2026-10-30)
