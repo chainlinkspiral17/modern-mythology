@@ -3843,8 +3843,8 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - The three neon spills went 1.0 → 2.4 (range 13), so the colour reaches the far sidewalk and the cars.
   - The three night views' ambient went 0.55 → 0.85.
 - **What it looks like now:** a lit, coloured street, with Judgement Day reading at the curb. The dawn view stays grey and ordinary, as ch16 has it.
+- **The same day, the halos:** "Every streetlight has a halo and each halo has its own halo". Two translucent spheres round each sodium head (vertex alpha, drawn as glass by LocaleGlass): a warm halo and a fainter one twice its size. The dawn view strips them.
 - **Draft N+1:**
-  - "Every streetlight has a halo and each halo has its own halo": halo cards round the heads.
   - More neon spill along the far side. The compatibility renderer allows 8 lights per mesh, and the 190 m sidewalks and asphalt are at that, so split them first.
   - The frame shirt on the rearview.
 

@@ -84,6 +84,12 @@ def build_street():
         make_cyl(f"Streetlight_{k}_Pole", (4.5, y + 3.0, 2.9), 0.08, 5.8, (0.36, 0.36, 0.38, 1.0), segments=8)
         make_box(f"Streetlight_{k}_Arm", (5.1, y + 3.0, 5.75), (1.2, 0.10, 0.10), (0.36, 0.36, 0.38, 1.0))
         make_box(f"Streetlight_{k}_Head_Glow", (5.7, y + 3.0, 5.66), (0.50, 0.26, 0.12), (1.0, 0.80, 0.50, 1.0))
+        # (2026-11-01) ch9: "Every streetlight has a halo and each halo has
+        # its own halo." Two soft spheres round each head, translucent (the
+        # vertex alpha becomes real transparency, LocaleGlass); the dawn
+        # view strips them (its lamps are going off)
+        make_blob(f"Streetlight_{k}_Halo_Glow", (5.7, y + 3.0, 5.62), 0.75, (1.0, 0.78, 0.46, 0.20), noise=0.0, seed=k, squash=1.0)
+        make_blob(f"Streetlight_{k}_Halo_Outer_Glow", (5.7, y + 3.0, 5.62), 1.7, (1.0, 0.74, 0.44, 0.08), noise=0.0, seed=k + 9, squash=1.0)
     # Judgement Day at the curb: the beat-up maroon sedan; the frame shirt on
     # its rearview in the ch9 view; the cat hair is the sprite-scale detail
     make_car("Judgement_Day", 5.15, -4.0, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
