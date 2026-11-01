@@ -3835,6 +3835,13 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 255: car glass lies on the rake.**
+- `make_car`'s windshield and rear window were vertical plates half buried in the body's raked profile. From above or in front they read as boards stood up on the hood: the curtain call's por puesto, and every parked sedan seen from a window.
+- Each pane now lies on its own profile segment, 2.5 cm proud, for the sedan, hatch and pickup front, and the sedan and hatch rear (the pickup's cab back stays upright). The panes turn with the car's heading (X, Y, −Y) and keep their names for the markers.
+- The RUTA 77 board now stands against the glass, as "wedged against the windshield" has it.
+- Now that `stale_sets.py` follows `_props`, this reaches every car on the Deck.
+- Rendered: the curtain call's car and sign inserts, Judgement Day at the club's curb and on the river, and the Small Wood road's pickup.
+
 **2026-11-01 · pass 254: inside-out geometry, project-wide.**
 - **The scan:** pass 244's roofless car (a prism wound about a centre outside it) and pass 252's splayed logs pointed at a class of bug the gates can't see, because they read boxes, not faces. Every closed mesh in all 169 GLBs (150,394) was checked for its signed volume: a closed mesh wound inside out has a negative one. 4,309 did.
 - **Three helper bugs carried most of it (`_props/geometry.py`):**
