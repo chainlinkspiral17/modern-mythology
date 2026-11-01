@@ -2399,6 +2399,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.0525, 3.053, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
+		"far": 900.0,   # (2026-11-01) the far shore and the treelines behind it, 160-850 m
 	},
 	# ── VOL 7 — Estuary 7, the planner's-view (re-homed off cabin_road
 	# 2026-09-03): the epilogue's gallery and submission. The stick's
@@ -2544,6 +2545,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		"far": 900.0,   # (2026-11-01) the far shore and the treelines behind it, 160-850 m
 	},
 	"meadowlark_circle_henderson": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
@@ -2804,6 +2806,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(0.0, 0.0, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
+		"far": 2000.0,   # (2026-11-01) the sea out to the horizon, the ridges behind
 	},
 	# (2026-10-27) THE SAME ROAD IN ITS OWN YEARS: vol 2's late-1990s rides
 	# (Salmon's "road trip up to Depot Bay for the day"; Triptych's "Sunlight on
@@ -2834,6 +2837,7 @@ const CAMERA_PRESETS := {
 		"camera_rotation": Vector3(-0.04, 0.80, 0.0),
 		"fov": 52.0,
 		"suppress_input": true,
+		"far": 2000.0,   # (2026-11-01) the sea out to the horizon, the ridges behind
 	},
 	"board_lords_office": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",

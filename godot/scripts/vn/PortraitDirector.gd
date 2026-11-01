@@ -27,8 +27,8 @@ extends RefCounted
 ##
 ##   ANGLE — eye level is neutral and is the default (Ozu built a whole
 ##   cinema on the level lens). Low angle grants power (Welles shooting
-##   Kane from the floor): used for figures with authority in the story,
-##   when they speak hard or level. High angle takes it away: sorrow,
+##   Kane from the floor): kept for the intimidating and the creepy
+##   (MENACE), when they speak hard or level. High angle takes it away: sorrow,
 ##   exhaustion, hurt. A dutch tilt is unease (The Third Man): nerves,
 ##   and the demons.
 ##
@@ -68,13 +68,15 @@ extends RefCounted
 
 const SIZES := ["wide", "medium", "mcu", "cu", "ecu"]
 
-# Figures whose word carries weight in their scenes — the low angle is
-# theirs when they speak level or hard. Keyed by hero GLB basename.
-const AUTHORITY := {
-	"quentin_paul": true, "dante_dambrosio": true, "dickens_dean": true,
-	"vince_kane": true, "chief_miller": true, "tanya_horne": true,
-	"coach_guidry": true, "coach_k": true, "judge_halverson": true,
-	"erica_campbell": true, "the_demon": true, "father_amato": true,
+# The figures the lens may look UP at (2026-11-01, the user: "I don't like
+# the camera looking up at the characters, it's a creepy thing, so maybe
+# only save it for characters who are intimidating or creepy"). It was
+# every figure of standing (the coaches, the judge, the chief, the priest
+# ...) whenever they spoke level or hard. Now only the intimidating or
+# creepy; everyone else is shot at eye level or from above. Keyed by hero
+# GLB basename. Add a figure here when the story makes them menacing.
+const MENACE := {
+	"the_demon": true,
 }
 
 # Models whose face is not a face in an extreme close-up: the Frog's is
@@ -180,7 +182,7 @@ static func choose(ctx: Dictionary) -> Dictionary:
 		angle = "dutch"
 	elif VULNERABLE.has(mood):
 		angle = "high"
-	elif AUTHORITY.has(glb) and (mood == "neutral" or mood == "angry"):
+	elif MENACE.has(glb) and (mood == "neutral" or mood == "angry"):
 		angle = "low"
 	return {"size": SIZES[want], "angle": angle, "why": why, "score": score, "register": reg}
 
