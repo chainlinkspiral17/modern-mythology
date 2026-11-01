@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · VN portraits: the eye line holds, and the lens looks up only at menace.**
+- **The report:** the user wrote, "characters in the visual novel, their portraits, move up and down as the lines progress, it's really disconcerting." Four things moved the face vertically between lines:
+  - **The speaker pop:** CharLayer scaled the speaker 1.05 and the listeners 0.92 about the slot's centre. The face sits in the slot's upper third, so every change of speaker lifted one face and dropped another.
+  - **The cut:** each shot size put the eyes at its own height (0.35 / 0.35 / 0.34 / 0.32 / 0.30 of the slot), and a crown cap could pull them up again.
+  - **The take:** each new take rolled a vertical offset of up to 4 % of the frame.
+  - **The mood:** happy lifted the camera, sad and tired dropped and tilted it, and each mood bobbed.
+- **The measurement:** on John Frank (PortraitCastSheet, five sizes and three moods), the eyes moved between 0.235 and 0.405 of the slot, about 150 px on screen. After the fix they sit at 0.350–0.353 everywhere.
+- **The fix:**
+  - The listener only dims; nothing scales.
+  - `Portrait3D.EYE_LINE` (0.35, 44 % down the screen) holds for every size, and the cap is gone.
+  - No take rolls a vertical offset.
+  - Moods keep their push in or out and their side step, sway and look, but lose the lift, the tilt and the bob.
+- **The angle:** the user wrote, "I don't like the camera looking up at the characters, it's a creepy thing, so maybe only save it for characters who are intimidating or creepy."
+  - The low angle belonged to a dozen figures of standing (coaches, the judge, the chief, the priest…). `PortraitDirector.MENACE` now holds only `the_demon`, the one figure the code itself marks as menacing.
+  - A take's random elevation is now level to slightly above, never below.
+  - A writer's `[portrait:… low]` still wins.
+- **Open, the user's call:** which other figures are intimidating or creepy enough for `MENACE`.
+
 **2026-11-01 · pass 249: the two views held at 200 m now draw their horizons too.**
 - **Lake Palestine and its dock (vol6 ch8):** the treelines behind the far shore were ridge bands, 18–26 m tall in the shore pines' own green, so once drawn they stood over the shore rows as one dark wall.
   - East Texas has no ridges. The treelines are now low (11–15 m) and in haze, and widened with the far shore, its bank and the two pine rows to run past both frame edges. Before, the shore ended in a pale block at x −230.

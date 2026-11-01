@@ -140,12 +140,24 @@ const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
 # they never pull the eyes back up (a cap binds when crown + cap <
 # eyes + eye_at x h). Headroom over the crown is the price, and in the
 # close sizes the dialogue now crosses the lower face — the user's call.
+#
+# ONE EYE LINE (2026-11-01, the user: "characters in the visual novel, their
+# portraits, move up and down as the lines progress, it's really
+# disconcerting"). The director cuts sizes line to line, and each size put
+# the eyes at its own height (44 % for the talking sizes, 40 % / 38 % close),
+# a crown cap could pull them up again, and each new take rolled the frame
+# up or down by up to 4 %. Now EVERY size puts the eyes on the same line, 44 %
+# down the screen (the 10-27 ask: "at the center of the screen or just
+# above"); a cut changes how much of the figure the frame holds, never where
+# the face is. The cap is gone (headroom over the crown varies instead), and
+# VARY rolls no vertical offset.
+const EYE_LINE: float = 0.35          # of the 900 px slot from the top: 44 % down the 720 px screen
 const FACE_FRAMES := {
-	"wide":   {"h": 1.22, "eye_at": 0.35, "cap": 0.60},   # torso-up: talking distance; eyes ~44 % down the screen
-	"medium": {"h": 0.90, "eye_at": 0.35, "cap": 0.55},   # waist-up; eyes ~44 %
-	"mcu": {"h": 0.80, "eye_at": 0.34, "cap": 0.45},      # chest-up; eyes ~42 %
-	"cu":  {"h": 0.56, "eye_at": 0.32, "cap": 0.30},      # the head fills the frame; eyes ~40 %
-	"ecu": {"h": 0.36, "eye_at": 0.30, "cap": 0.20},      # brow to mouth; eyes ~38 %
+	"wide":   {"h": 1.22},   # torso-up: talking distance
+	"medium": {"h": 0.90},   # waist-up
+	"mcu": {"h": 0.80},      # chest-up
+	"cu":  {"h": 0.56},      # the head fills the frame
+	"ecu": {"h": 0.36},      # brow to mouth
 }
 const EYES_OVER_NECK: float = 0.10     # the sheet-43 median, for a model not in the table
 # Where the eye line sat in each hero's sheet-43 ecu frame (fraction
@@ -191,7 +203,7 @@ var _motion_scale: float = 1.0               # mood push/bob/shake shrink with t
 const VARY := {
 	"yaw": 0.10,          # rad either side of the 3/4 angle
 	"elev": 0.04,         # rad up/down on top of the shot's angle
-	"frame_y": 0.04,      # fraction of the frame height the subject may sit off-centre
+	"frame_y": 0.0,       # (2026-11-01) was 0.04: a take moved the face up or down the screen
 	"fov": 1.5,           # degrees of lens either way
 	"dutch_min": 0.07, "dutch_max": 0.14,
 	"key_yaw": 0.28, "key_pitch": 0.12,   # rad the key may swing round the head
@@ -597,20 +609,20 @@ func _process(delta: float) -> void:
 	var pos: Vector3 = _rest_cam_pos
 	if _mood.has("pos_off"):
 		var po: Vector3 = _mood["pos_off"]
-		pos += po * _motion_scale
-	# Bob (vertical sway)
-	if _mood.has("bob_amp") and _mood.has("bob_freq"):
-		var amp: float = _mood["bob_amp"]
-		var freq: float = _mood["bob_freq"]
-		pos.y += sin(_mood_t * freq * TAU) * amp * _motion_scale * MOTION_GAIN
+		# (2026-11-01) no vertical: a mood's lift or drop moved the face up
+		# or down the screen at every change of mood ("move up and down as
+		# the lines progress"); the push in / out and the side step stay
+		pos += Vector3(po.x, 0.0, po.z) * _motion_scale
+	# (the mood's vertical bob is gone with it: the eyes hold their line)
 	_camera.position = pos
 	# Pitch + yaw — start from defaults, layer offsets + animation
 	# The old moods tilted the camera down for sad/tired — built for the
 	# wide frame; in a tighter shot it cropped the head off (the 2026-10-01
 	# sheet). The director owns the angle now: the mood's tilt fades out
 	# as the shot tightens (full at wide, none from the medium close-up in).
-	var tilt_keep: float = clampf((_motion_scale - 0.5) * 2.0, 0.0, 1.0)
-	var pitch: float = float(_mood.get("pitch_off", 0.0)) * tilt_keep
+	# (2026-11-01) the mood's tilt is gone too: at the talking distance it
+	# dropped the face a tenth of the frame for every sad or tired line
+	var pitch: float = 0.0
 	var yaw: float = _mood.get("yaw_off", 0.0)
 	# angular motion reads against the lens: the same radian is twice the
 	# screen on half the field of view
@@ -895,9 +907,8 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	if _neck_y > 0.0 and FACE_FRAMES.has(size):
 		var ff: Dictionary = FACE_FRAMES[size]
 		var fh: float = float(ff["h"])
-		# the eyes at eye_at from the top; never air over the crown (sheet
-		# 42: Jimmy and Thomas sat low under a band of empty headroom)
-		t = minf(_eyes_y() + float(ff["eye_at"]) * fh, TARGET_HEIGHT_M + float(ff["cap"]))
+		# the eyes on the one line, whatever the size (2026-11-01)
+		t = _eyes_y() + EYE_LINE * fh
 		b = t - fh
 	var frame_h: float = t - b
 	var fov: float = float(f["fov"]) + float(_roll.get("fov", 0.0))
@@ -972,7 +983,10 @@ func _roll_take(seed: int) -> void:
 	var dsign: float = 1.0 if _rng.randf() < 0.5 else -1.0
 	_roll = {
 		"yaw": _rng.randf_range(-VARY["yaw"], VARY["yaw"]),
-		"elev": _rng.randf_range(-VARY["elev"], VARY["elev"]),
+		# (2026-11-01) level or a touch from above, never from below: the
+		# user finds the lens looking up at people creepy; low is a choice
+		# (PortraitDirector.MENACE, or a writer's [portrait: … low])
+		"elev": _rng.randf_range(0.0, VARY["elev"]),
 		"frame_y": _rng.randf_range(-VARY["frame_y"], VARY["frame_y"]),
 		"fov": _rng.randf_range(-VARY["fov"], VARY["fov"]),
 		"dutch": dsign * _rng.randf_range(VARY["dutch_min"], VARY["dutch_max"]),

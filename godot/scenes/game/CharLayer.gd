@@ -339,9 +339,14 @@ const PARALLAX_Y_AMP  := 0.4
 # Active speaker pop: scale + alpha boost on the active portrait,
 # desaturate + dim non-active. Non-active really pulls back so the
 # focus reads strongly during back-and-forth dialogue.
-const ACTIVE_SCALE   := 1.05
+# (2026-11-01, the user: "their portraits, move up and down as the lines
+# progress, it's really disconcerting") The pop scaled the speaker 1.05 and
+# the listeners 0.92 about the slot's centre, and the face sits in the
+# slot's upper third, so every change of speaker lifted one face and dropped
+# another. The scale holds now; the listener's dim carries the focus.
+const ACTIVE_SCALE   := 1.0
 const ACTIVE_ALPHA   := 1.00
-const INACTIVE_SCALE := 0.92
+const INACTIVE_SCALE := 1.0
 const INACTIVE_ALPHA := 0.55
 
 # Character-keyed accent palette. Used for portrait border tint,
