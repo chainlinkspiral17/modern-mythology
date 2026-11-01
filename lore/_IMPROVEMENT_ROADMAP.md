@@ -3835,6 +3835,13 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 251: the grunion beach stops reading as a highway.**
+- **The survey:** 24 of the vols 1–4 views not yet seen this session were rendered.
+  - The worst read was `grunion_beach`: "low at the tide's edge looking W along the wet band". Three foam lines and the 420 m tide-gleam strip all run straight along the shore, so from the low lens they converged on the vanishing point like the lane lines of a highway.
+  - `jd_river_turn` (the car alone on the river in the dark) is empty on purpose ("There's no shore on either side").
+- **The fix:** the shoreline wanders now (`_shore(x)`). Each foam run follows it and turns with it. The gleam ("water that gleamed off the fresh tide's edge") is swash lobes on the wander; the strip under it keeps the wet sand's tone, so it fills the edge without drawing it. beach_night and beach_bonfire are unchanged in character.
+- **Draft N+1:** the foam runs still read as long streaks from 0.9 m. Shorter, curled runs, a foam fringe on each lobe, and the wet sand's edge itself wandering.
+
 **2026-11-01 · pass 250: VOLS 1–4 backgrounds, draft 16 — the Small Wood road's paths, its gate, its roadside at night.**
 - **The paths:** vol2 ch1 has "Knotted paths leading both up and down the road, twisting alongside cricks, emerging upon tool shed areas". One worn path leaves the hay field past the east ditch and twists along the crick's south bank into the firs. Another runs up from the gate to the tool shed, on the bare ground inside the fence.
 - **The gate:** a chain loops round the south post and the gate's end, with a padlock hanging off it.
