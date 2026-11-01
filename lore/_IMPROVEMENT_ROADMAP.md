@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 253: the club street gets its "wash of color".**
+- **The survey's next-worst view was `club_street_curb`**, vol1 ch9's ~40 lines and ch8's "Outside, the world is a wash of color and activity … so bright shiny new and overwhelming". It was a near-black frame: Judgement Day an unlit mass at the curb, the far side a row of black walls with lit rectangles floating on them.
+- **The fix:**
+  - The far side's frontages had been painted 0.28–0.40, so no light had anything to land on. They are now brick, stucco and painted fronts with value in them.
+  - The night fill went 0.06 → 0.14, and the streetlight over the car 2.0 → 3.4 (range 20).
+  - The three neon spills went 1.0 → 2.4 (range 13), so the colour reaches the far sidewalk and the cars.
+  - The three night views' ambient went 0.55 → 0.85.
+- **What it looks like now:** a lit, coloured street, with Judgement Day reading at the curb. The dawn view stays grey and ordinary, as ch16 has it.
+- **Draft N+1:**
+  - "Every streetlight has a halo and each halo has its own halo": halo cards round the heads.
+  - More neon spill along the far side. The compatibility renderer allows 8 lights per mesh, and the 190 m sidewalks and asphalt are at that, so split them first.
+  - The frame shirt on the rearview.
+
 **2026-11-01 · pass 252: the logs lean in.**
 - **The report:** the user wrote, "Logs look like they are exploding out instead of leaning against each other stacked up." The grunion beach bonfire's logs had `yaw=a, pitch=+0.55`, which tips each top away from the fire.
 - **The bonfire:** the logs are now a teepee of 1.15 m driftwood, feet on the ring at 0.6 m and tops meeting over the fire, with a smaller flame inside and its tip up through the apex.

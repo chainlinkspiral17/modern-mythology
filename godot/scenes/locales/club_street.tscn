@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Fill__club_street_door__club_street_curb__club_street_neon_wide" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 8, 6, 0)
 light_color = Color(0.46, 0.5, 0.7, 1)
-light_energy = 0.06
+light_energy = 0.14
 shadow_enabled = false
 
 [node name="Streetlight_0__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
@@ -170,9 +170,9 @@ omni_range = 16.0
 [node name="Streetlight_1__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 5.5, -3.0)
 light_color = Color(1.0, 0.78, 0.46, 1)
-light_energy = 2.0
+light_energy = 3.4
 shadow_enabled = false
-omni_range = 16.0
+omni_range = 20.0
 
 [node name="Streetlight_2__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 5.5, -33.0)
@@ -191,23 +191,23 @@ omni_range = 16.0
 [node name="Sign_Glow_0__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0, 3.4, 28.0)
 light_color = Color(0.98, 0.4, 0.7, 1)
-light_energy = 1.0
+light_energy = 2.4
 shadow_enabled = false
-omni_range = 8.0
+omni_range = 13.0
 
 [node name="Sign_Glow_1__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0, 3.4, -0.0)
 light_color = Color(0.4, 0.9, 0.98, 1)
-light_energy = 1.0
+light_energy = 2.4
 shadow_enabled = false
-omni_range = 8.0
+omni_range = 13.0
 
 [node name="Sign_Glow_2__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0, 3.4, -28.0)
 light_color = Color(0.98, 0.76, 0.36, 1)
-light_energy = 1.0
+light_energy = 2.4
 shadow_enabled = false
-omni_range = 8.0
+omni_range = 13.0
 
 [node name="Club_Door_Lamp__club_street_door__club_street_curb__club_street_neon_wide" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.6, -1.3)

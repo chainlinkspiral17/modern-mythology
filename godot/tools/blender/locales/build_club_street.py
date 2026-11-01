@@ -110,8 +110,11 @@ def build_far_side():
     for k in range(13):
         y = -84.0 + k * 14.0
         h = 7.0 + (k % 3) * 3.5
-        make_box(f"Far_Frontage_{k}", (24.0, y, h / 2.0), (12.0, 13.6, h), ((0.34, 0.30, 0.28, 1.0), (0.28, 0.30, 0.34, 1.0),
-                                                                          (0.40, 0.34, 0.30, 1.0))[k % 3])
+        # (2026-11-01) brick, stucco and painted fronts with value in them:
+        # at 0.28-0.40 the streetlights and the neon had nothing to light,
+        # and ch8's "wash of color and activity" was a row of black walls
+        make_box(f"Far_Frontage_{k}", (24.0, y, h / 2.0), (12.0, 13.6, h), ((0.58, 0.40, 0.34, 1.0), (0.54, 0.56, 0.60, 1.0),
+                                                                          (0.66, 0.56, 0.44, 1.0))[k % 3])
         make_box(f"Far_Shop_Window_Glow_{k}", (17.98, y, 1.6), (0.04, 9.0, 2.0), ((1.0, 0.86, 0.60, 1.0), (0.12, 0.12, 0.14, 1.0))[k % 4 == 3])
         make_box(f"Far_Sign_Glow_{k}", (17.94, y, 3.4), (0.08, 6.0, 0.9), sign_cols[k % 4])
         for j in range(3):
