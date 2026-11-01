@@ -7,9 +7,10 @@ const MOCK = `(() => {
   const mkIn = (id, name) => { const p = { id, name, type: 'input', state: 'connected', onmidimessage: null, _l: [],
     addEventListener(t, f) { if (t === 'midimessage') this._l.push(f); }, removeEventListener(t, f) { this._l = this._l.filter(x => x !== f); } }; return p; };
   const mini = mkIn('in-mini', window.__MINI_NAME || 'Minilab3 MIDI'), fm1 = mkIn('in-fm1', 'FM-1');
+  const thru = mkIn('in-thru', 'Midi Through Port-0');
   const outs = new Map([['out-mini', { id: 'out-mini', name: 'Minilab3 MIDI', type: 'output', state: 'connected', send() {} }]]);
   const withFm1 = !window.__NO_FM1;
-  const access = { inputs: new Map(withFm1 ? [['in-fm1', fm1], ['in-mini', mini]] : [['in-mini', mini]]), outputs: outs, sysexEnabled: false, addEventListener() {}, removeEventListener() {} };
+  const access = { inputs: new Map(withFm1 ? [['in-thru', thru], ['in-fm1', fm1], ['in-mini', mini]] : [['in-thru', thru], ['in-mini', mini]]), outputs: outs, sysexEnabled: false, addEventListener() {}, removeEventListener() {} };
   navigator.requestMIDIAccess = async () => access;
   const fire = (port, bytes) => { const ev = { data: new Uint8Array(bytes), timeStamp: performance.now() }; if (port.onmidimessage) port.onmidimessage(ev); for (const f of port._l) f(ev); };
   window.__mini = bytes => fire(mini, bytes);
@@ -34,7 +35,7 @@ suite('surface · MiniLab 3: checkout, learn, DAW / director / FORGE / TAPE STUD
     t.ok(/done/.test(r.wiz) && r.n === 30, r.wiz + ' · learned ' + r.n);
     t.eq([r.k8.n, r.f1.n, r.p16.t, r.p16.n, r.enc.n, r.enc.rel], [27, 30, 'note', 75, 40, true]);
     t.ok(JSON.parse(r.saved).controls.knob1.n === 20, 'saved for every page');
-    await p.reload(); await p.waitForFunction(() => window.Surface && Surface.connected, null, { timeout: 10000 });
+    await p.waitForTimeout(300); await p.reload(); await p.waitForFunction(() => window.Surface && Surface.connected, null, { timeout: 10000 });
     await p.evaluate(() => __mini([0xB0, 20, 50])); await tick(p);
     t.ok(await p.evaluate(() => document.querySelector('[data-c="knob1"]').classList.contains('hit') && Surface.map.knob1.n === 20), 'the learned map after a reload');
     t.noErrors(errors);
@@ -45,12 +46,13 @@ suite('surface · MiniLab 3: checkout, learn, DAW / director / FORGE / TAPE STUD
     const { p, errors } = await t.page('surface_checkout.html', { init, settle: 500 });
     const before = await p.evaluate(() => ({ conn: Surface.connected, rows: [...document.querySelectorAll('#ports tr')].map(r => r.textContent) }));
     t.ok(!before.conn && before.rows.some(r => /USB MIDI Interface/.test(r)) && before.rows.some(r => /FM-1/.test(r)), 'not matched by name, but listed: ' + before.rows.join(' | '));
+    t.ok(await p.evaluate(() => { const r = [...document.querySelectorAll('#ports tr')].find(r => /Midi Through/.test(r.textContent)); return r && /loopback/.test(r.textContent) && !r.querySelector('[data-pick]'); }), 'Midi Through is marked as the loopback, no USE THIS');
     const i = before.rows.findIndex(r => /USB MIDI Interface/.test(r));
     await p.click(`#ports tr:nth-child(${i + 1}) [data-pick]`); await tick(p);
     await p.evaluate(() => __mini([0xB0, 74, 100])); await tick(p);
     const r = await p.evaluate(() => ({ conn: Surface.connected, port: Surface.portName, hit: document.querySelector('[data-c="knob1"]').classList.contains('hit'), badge: document.getElementById('b-conn').textContent, claims: Surface.claims('USB MIDI Interface 20:0') }));
     t.ok(r.conn && r.hit && /USB MIDI Interface/.test(r.badge) && r.claims, JSON.stringify(r));
-    await p.reload(); await p.waitForFunction(() => window.Surface && Surface.connected, null, { timeout: 10000 });
+    await p.waitForTimeout(300); await p.reload(); await p.waitForFunction(() => window.Surface && Surface.connected, null, { timeout: 10000 });
     t.ok(await p.evaluate(() => Surface.connected && Surface.portName === 'USB MIDI Interface 20:0'), 'kept after a reload');
     await p.click('[data-unpick]'); await tick(p);
     t.ok(await p.evaluate(() => !Surface.connected && !Surface.chosenPort()), 'AUTO: back to the name match');

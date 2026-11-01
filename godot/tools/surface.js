@@ -71,14 +71,16 @@
     listeners: new Set(), learning: null, last: {}, _started: null,
     PROFILES, CONTROL_ORDER, labelOf,
     claims(name) { const c = this.chosenPort(); return !!name && ((c && name === c) || Object.values(PROFILES).some(p => p.match.test(name))); },
+    // Linux's own loopback port (ALSA "Midi Through Port-0"): always there, never a device — never picked
+    isLoopback(name) { return /midi through|^through port/i.test(name || ''); },
     // a port picked by hand on surface_checkout.html (kept for every page) — wins over the name match
-    chosenPort() { try { return localStorage.getItem(LS + 'port') || ''; } catch (e) { return ''; } },
+    chosenPort() { try { const c = localStorage.getItem(LS + 'port') || ''; return this.isLoopback(c) ? '' : c; } catch (e) { return ''; } },
     usePort(name) { try { if (name) localStorage.setItem(LS + 'port', name); else localStorage.removeItem(LS + 'port'); } catch (e) {} this._pick(); this._emit({ kind: 'ports' }); },
     // every MIDI input the browser sees: { name, state, mine (the surface uses it), match (looks like a MiniLab) }
     ports() {
       if (!this.access) return [];
       return [...this.access.inputs.values()].map(x => ({ name: x.name || '(no name)', id: x.id, state: x.state, manufacturer: x.manufacturer || '',
-        mine: x === this.input, match: Object.values(PROFILES).some(p => p.match.test(x.name || '') || p.match.test(x.manufacturer || '')) }));
+        mine: x === this.input, loopback: this.isLoopback(x.name), match: Object.values(PROFILES).some(p => p.match.test(x.name || '') || p.match.test(x.manufacturer || '')) }));
     },
     loadMap() {
       let saved = null; try { saved = JSON.parse(localStorage.getItem(LS + this.profile.id) || 'null'); } catch (e) {}

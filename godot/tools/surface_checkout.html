@@ -134,12 +134,13 @@ S.on(ev => {
 });
 function ports() {
   const list = S.ports(), chosen = S.chosenPort(), esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  $('ports').innerHTML = list.length ? list.map((x, i) => `<tr><td>${esc(x.name)}${x.mine ? ' <b style="color:var(--gold)">◀ IN USE</b>' : ''}${x.match && !x.mine ? ' <span class="note">(looks like a MiniLab)</span>' : ''}</td><td>${esc(x.manufacturer)}</td><td>${esc(x.state)}</td>`
-    + `<td>${x.mine && chosen ? '<button class="dim" data-unpick="1">AUTO</button>' : x.mine ? '' : `<button class="go" data-pick="${i}">USE THIS</button>`}</td></tr>`).join('')
+  $('ports').innerHTML = list.length ? list.map((x, i) => `<tr><td>${esc(x.name)}${x.mine ? ' <b style="color:var(--gold)">◀ IN USE</b>' : ''}${x.match && !x.mine ? ' <span class="note">(looks like a MiniLab)</span>' : ''}${x.loopback ? ' <span class="note">— Linux\'s built-in loopback, not a device: ignore it</span>' : ''}</td><td>${esc(x.manufacturer)}</td><td>${esc(x.state)}</td>`
+    + `<td>${x.loopback ? '' : x.mine && chosen ? '<button class="dim" data-unpick="1">AUTO</button>' : x.mine ? '' : `<button class="go" data-pick="${i}">USE THIS</button>`}</td></tr>`).join('')
     : `<tr><td colspan="4">${S.access ? 'no MIDI inputs at all — the browser sees nothing plugged in' : S.error ? 'MIDI refused: ' + esc(S.error) : 'waiting for MIDI access…'}</td></tr>`;
   $('ports').querySelectorAll('[data-pick]').forEach(b => b.onclick = () => S.usePort(list[+b.dataset.pick].name));
   $('ports').querySelectorAll('[data-unpick]').forEach(b => b.onclick = () => S.usePort(''));
   $('portsinfo').textContent = !S.access ? (S.error ? 'Chrome blocked MIDI for this page: click the lock / site icon left of the address → allow MIDI devices, then reload.' : '')
+    : !list.filter(x => !x.loopback).length ? 'Chrome sees no MIDI device at all (only Linux\'s loopback). The MiniLab is not reaching Chrome: check the Deck sees it (cat /proc/asound/cards — look for Minilab3), use a data USB-C cable, plug it in BEFORE starting Chrome.'
     : !list.length ? 'Nothing at all: unplug and replug the MiniLab (USB-C, data cable — some USB-C cables are charge-only), then quit Chrome completely and start it again (Chrome only lists devices it saw at launch on some Linux setups).'
     : !S.connected ? 'The MiniLab is not among these names? It is not reaching Chrome: replug it, then quit and restart Chrome. If it IS here under another name, tap USE THIS.'
     : chosen ? 'picked by hand: ' + chosen : 'found by name';
