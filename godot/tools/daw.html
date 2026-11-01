@@ -183,6 +183,7 @@
   <span class="badge" id="b-emu">FM-1 EMU: —</span>
   <span class="badge" id="b-midi">MIDI: —</span>
   <span class="badge" id="b-save">—</span>
+  <a class="badge" id="b-surf" href="surface_checkout.html" target="_blank" title="the MiniLab 3: what each control does here, and LEARN its map" style="text-decoration:none">MINILAB: —</a>
   <span id="takebar" style="display:none;gap:6px;align-items:center"><span class="badge ok" id="take-what"></span><button id="takesend" title="render this project as it is now and add it to the AUDIO DIRECTOR as a new take of the same track (the take you opened stays)">⇪ SEND TO DIRECTOR</button><span class="note" id="take-msg"></span></span>
 </header>
 
@@ -341,6 +342,7 @@
 <div class="modal" id="modal"><div class="box"><div class="mh"><b style="color:var(--gold-hi)" id="modaltitle">EDITOR</b><button class="dim" id="modalclose">✕ CLOSE</button></div><div class="mb" id="modalbody"></div></div></div>
 
 <script src="fm1_firmwares.js"></script>
+<script src="surface.js"></script>
 <script src="midi_input.js"></script>
 <script src="audio_kit.js"></script>
 <script src="touch_controls.js"></script>
@@ -1504,6 +1506,65 @@ window.addEventListener('midiinput-note', e => {
   if (d && d.type === 'hw' && !E.perfActive(t)) { if (E.recording && t.arm) E.recordMidi(t, e.detail.note, e.detail.vel, e.detail.on, E.recNow()); return; }
   E.liveNote(sel.trackId, e.detail.note, e.detail.vel, e.detail.on);
 });
+
+// ═══════════════════════════════════════════════════════════════════
+// the MiniLab 3 (surface.js): keys play the selected track · knobs = its FORGE macros (else vol / pan / sends) ·
+// faders = four tracks' volumes · pads A = drums on the drum track · pads B = transport · encoder = track select
+// (push = arm). The cheat sheet + LEARN: surface_checkout.html
+// ═══════════════════════════════════════════════════════════════════
+const SURF = { padsHeld: new Map() };
+const surfSay = text => { const b = $('b-surf'); b.textContent = 'MINILAB · ' + text; b.className = 'badge ok'; clearTimeout(SURF.t); SURF.t = setTimeout(() => { b.textContent = 'MINILAB: ' + (Surface.connected ? 'ready' : '—'); }, 2500); };
+const GM_PADS = [36, 38, 42, 46, 39, 45, 49, 51];          // kick · snare · closed hat · open hat · clap · tom · crash · ride
+function surfDrumTrack() { return P.tracks.find(t => t.role === 'drums') || P.tracks.find(t => t.role === 'perc') || P.tracks.find(t => { const d = E.dev(t.deviceId); return d && d.type === 'kit'; }); }
+function surfSelectStep(d) {
+  const i = P.tracks.findIndex(t => t.id === sel.trackId), j = Math.max(0, Math.min(P.tracks.length - 1, (i < 0 ? 0 : i) + d));
+  if (!P.tracks[j]) return;
+  sel.trackId = P.tracks[j].id; renderHeads(); drawArr(); if (typeof renderDevDetail === 'function') renderDevDetail();
+  surfSay('track ' + P.tracks[j].name);
+}
+Surface.on(ev => {
+  if (ev.kind === 'connected' || ev.kind === 'disconnected') { $('b-surf').textContent = 'MINILAB: ' + (Surface.connected ? 'ready' : '—'); $('b-surf').className = 'badge' + (Surface.connected ? ' ok' : ''); return; }
+  if (!P || Surface.learning) return;
+  const t = sel.trackId && E.track(sel.trackId), inst = t && t.kind === 'midi' && E.devices.get(t.deviceId);
+  if (ev.kind === 'key') { if (t) E.liveNote(t.id, ev.note, ev.vel, ev.on); return; }
+  if (ev.kind === 'mod') { if (inst && inst.cc) inst.cc(1, ev.value); return; }
+  if (ev.kind === 'bend') { if (inst && inst.pitchBend) inst.pitchBend(ev.value); return; }
+  if (ev.kind === 'knob') {
+    if (inst && inst.__type === 'forge' && inst.setMacro) {
+      inst.setMacro(ev.i, ev.value);
+      let nm = ''; try { nm = inst.getState().macros[ev.i].name; } catch (e) {}
+      surfSay((nm || 'macro ' + (ev.i + 1)).toLowerCase() + ' ' + Math.round(ev.value * 100) + '%'); saveSoon(); return;
+    }
+    const sid = t && E.stripOf(t), own = sid && E.stripOwner(sid), k = ['vol', 'pan', 'sendA', 'sendB'][ev.i];
+    if (own && k) { own.mix[k] = k === 'pan' ? ev.value * 2 - 1 : k === 'vol' ? ev.value * 1.4 : ev.value; if (E.recording) E.recordAuto(sid, k, own.mix[k]); E.applyMix(); surfSay(k + ' ' + own.mix[k].toFixed(2)); saveSoon(); }
+    return;
+  }
+  if (ev.kind === 'fader') {
+    const i0 = Math.max(0, P.tracks.findIndex(x => x.id === sel.trackId)), base = i0 - (i0 % 4), tr = P.tracks[base + ev.i];
+    const sid = tr && E.stripOf(tr), own = sid && E.stripOwner(sid);
+    if (own) { own.mix.vol = +(ev.value * 1.4).toFixed(3); if (E.recording) E.recordAuto(sid, 'vol', own.mix.vol); E.applyMix(); surfSay(tr.name + ' vol ' + own.mix.vol.toFixed(2)); saveSoon(); }
+    return;
+  }
+  if (ev.kind === 'encoder') { surfSelectStep(ev.delta > 0 ? 1 : -1); return; }
+  if (ev.kind === 'click') { if (ev.on && t) { t.arm = !t.arm; renderHeads(); surfSay(t.name + (t.arm ? ' armed' : ' disarmed')); saveSoon(); } return; }
+  if (ev.kind === 'pad' && ev.i >= 0 && ev.i < 8) {
+    const dt = surfDrumTrack(); if (!dt) { if (ev.on) surfSay('no drum track'); return; }
+    E.liveNote(dt.id, GM_PADS[ev.i], ev.on ? Math.max(0.2, ev.vel) : 0, ev.on); return;
+  }
+  if (ev.kind === 'pad' && ev.i >= 8 && ev.on) {
+    const act = ev.i - 8;
+    if (act === 0) $('play').click();
+    else if (act === 1) $('rec').click();
+    else if (act === 2) $('loopbtn').click();
+    else if (act === 3) undo();
+    else if (act === 4) surfSelectStep(-1);
+    else if (act === 5) surfSelectStep(1);
+    else if (act === 6) $('metro').click();
+    else if (act === 7) { E.stop(); E._stopTick = 0; drawArr(0); }
+    surfSay(['▶/■', '● record', 'loop', '↶ undo', '◀ track', 'track ▶', 'click', '⏮ start'][act]);
+  }
+});
+Surface.start();
 
 // ═══════════════════════════════════════════════════════════════════
 // generator

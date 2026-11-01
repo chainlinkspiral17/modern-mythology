@@ -190,6 +190,8 @@ class MidiInput {
     if (!port) return -1;
     const name = port.name || '';
     if (MIDI_SYSTEM_PORT.test(name)) return -9;
+    // a control surface (surface.js: the MiniLab 3 …) is not a synth — it has its own listener; leave its port alone
+    if (typeof Surface !== 'undefined' && Surface.claims && Surface.claims(name) && !(preferredName && name === preferredName)) return -9;
     if (MIDI_OTA_HINT.test(name)) return -2;
     if (preferredName && name === preferredName) return 3;
     if (MIDI_DEVICE_HINTS.some(rx => rx.test(name))) return 2;

@@ -38,7 +38,7 @@ touching code:
    `tarot_synth.html`, `fm1_console.html`, `fm1_checkout.html`, FORGE (`forge_synth.js`),
    the FM-1 emulators (`fm1_emu.js`), the PATCH BANK (`patch_bank.js`,
    `patch_sources.js` — generated, `sampler.js`, `dx7_synth.js`), or
-   those helpers. Every
+   those helpers, or the MiniLab 3 control surface (`surface.js`, `surface_checkout.html`). Every
    FM-1 firmware fact lives in `godot/tools/fm1_firmwares.js`.
 8. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
    the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,

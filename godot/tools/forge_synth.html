@@ -106,6 +106,7 @@
 </div>
 
 <script src="fm1_firmwares.js"></script>
+<script src="surface.js"></script>
 <script src="midi_input.js"></script>
 <script src="audio_kit.js"></script>
 <script src="touch_controls.js"></script>
@@ -325,6 +326,28 @@ if (mi) {
   window.addEventListener('midiinput-pitchbend', e => { synth.pitchBend(e.detail.value); $('pb').value = e.detail.value; });
 } else {
   $('fm1panel').disabled = true; $('b-midi').textContent = 'MIDI: unavailable';
+}
+
+
+// ── the MiniLab 3 (surface.js): keys / mod / bend play the synth · knobs = macros 1–8 · fader 4 = volume ·
+// pads A = C3–G3 · encoder browses presets, push loads it. Map + cheat sheet: surface_checkout.html
+{
+  const SV = { pick: -1 }, PADN = [48, 50, 52, 53, 55, 57, 59, 60];
+  const say = t => { const b = $('b-midi'); b.dataset.surf = t; b.title = 'MiniLab: ' + t; b.textContent = 'MINILAB · ' + t; clearTimeout(SV.t); SV.t = setTimeout(() => { if (mi) window.dispatchEvent(new CustomEvent('midiinput-status')); }, 2500); };
+  Surface.on(ev => {
+    if (Surface.learning) return;
+    if (ev.kind === 'key') { if (ev.on && ev.vel > 0) play(ev.note, ev.vel); else stop(ev.note); return; }
+    if (ev.kind === 'pad' && ev.i >= 0 && ev.i < 8) { if (ev.on) play(PADN[ev.i], Math.max(0.2, ev.vel)); else stop(PADN[ev.i]); return; }
+    if (ev.kind === 'mod') { synth.cc(1, ev.value); $('mw').value = ev.value; return; }
+    if (ev.kind === 'bend') { synth.pitchBend(ev.value); $('pb').value = ev.value; return; }
+    if (ev.kind === 'sustain') { setSustain(ev.on); return; }
+    if (ev.kind === 'knob') { ensureAudio(); synth.setMacro(ev.i, ev.value); const el = $('mac' + (ev.i + 1)); if (el) el.value = ev.value; say(((synth.state.macros[ev.i] || {}).name || 'macro ' + (ev.i + 1)).toLowerCase() + ' ' + Math.round(ev.value * 100) + '%'); return; }
+    if (ev.kind === 'fader' && ev.i === 3) { synth.setParam('master.gain', ev.value * 1.5); $('vol').value = ev.value * 1.5; say('volume ' + Math.round(ev.value * 100) + '%'); return; }
+    const list = window.FORGE_PRESETS || [];
+    if (ev.kind === 'encoder' && list.length) { if (SV.pick < 0) SV.pick = Math.max(0, list.findIndex(x => x.id === synth.presetId)); SV.pick = (SV.pick + (ev.delta > 0 ? 1 : -1) + list.length) % list.length; say('▸ ' + list[SV.pick].name + ' — push to load'); return; }
+    if (ev.kind === 'click' && ev.on && SV.pick >= 0 && list[SV.pick]) { ensureAudio(); synth.loadPreset(list[SV.pick].id); say('loaded ' + list[SV.pick].name); }
+  });
+  Surface.start();
 }
 
 buildKbd();

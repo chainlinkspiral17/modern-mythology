@@ -891,6 +891,27 @@ those tools.
   or "heartbeat" still gets `fx_bell_hit` / nothing. That table sits
   next to the generators other work was editing, so it was left alone.
 
+### 2026-11-01 — the Arturia MiniLab 3 as a control surface (surface.js)
+
+- A controller is not a synth: surface.js opens the MiniLab's port BY NAME on its own MIDI access, and
+  midi_input.js now ranks any port Surface.claims() at −9, so the FM-1 keeps midi_input's one slot and both
+  can be plugged in. (Before, with no FM-1 present, midi_input would have grabbed the MiniLab and every key
+  would have arrived twice.)
+- The factory map isn't published as a table and every control can be re-assigned in Arturia MIDI Control
+  Center, so the profile is a best guess (knobs CC 74 71 76 77 93 18 19 16, faders 82 83 85 17, pads notes
+  36–51 on ch 10, encoder CC 28 relative, push CC 118) and surface_checkout.html's LEARN EVERY CONTROL walks
+  all 30 controls; the learned map (localStorage mm_surface_minilab3) wins on every page. Learning a message
+  another control had takes it from that control (one control per message).
+- Relative encoders come in two flavours (two's complement 1..63 / 65..127, offset-64): relDelta tells them
+  apart by where the values cluster, so either setting works without a switch.
+- What it does: DAW keys → selected track (records when armed), knobs → its FORGE macros (else vol / pan /
+  sends), faders → the selected track's group of four, pads A → GM drums on the drum track, pads B → transport,
+  encoder → track, push → arm · AUDIO DIRECTOR: encoder → track, pads → take 1–6 / approve / reject (same
+  two-tap safety as the buttons), knob 1 / fader 1 → intensity · FORGE: macros, preset browse · TAPE STUDIO:
+  master knobs, tape volumes, arm. The cheat sheet lives on surface_checkout.html — change it with the code.
+- Tested against a mock Web MIDI (MiniLab + FM-1 ports). Nobody has touched a real MiniLab with it yet: the
+  first real session should run LEARN EVERY CONTROL and report the map it finds.
+
 ## TEMPLATE
 
 ```

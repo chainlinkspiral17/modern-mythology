@@ -130,6 +130,7 @@
   <span style="flex:1"></span>
   <label class="note">who <input type="text" id="who" style="width:110px" placeholder="your name"></label>
   <button id="helpbtn" title="how to approve a song, step by step">? HOW TO</button>
+  <a class="badge" id="b-surf" href="surface_checkout.html" target="_blank" title="the MiniLab 3: what each control does here, and LEARN its map" style="text-decoration:none">MINILAB: —</a>
   <button class="dim" id="diagbtn" title="copy what happened (messages, errors, the audio engine's log) — paste it to Claude">DIAG</button>
   <a href="index.html" style="color:var(--text-dim)">tools</a>
 </header>
@@ -304,6 +305,7 @@
 <script src="daw_engine.js"></script>
 <script src="temp_maker.js"></script>
 <script src="remix.js"></script>
+<script src="surface.js"></script>
 <script src="transcribe_notes.js"></script>
 <script>
 "use strict";
@@ -1453,6 +1455,31 @@ async function covMake() {
   return req;
 }
 $('cov-go').addEventListener('click', () => covMake().catch(e => msg('cover failed: ' + (e.message || e), true, 'covmsg')));
+
+// ═══════════════════════════════════════════════════════════════════
+// the MiniLab 3 (surface.js) as a listening desk: encoder = track · push = play / stop · pads 1–6 = take 1–6 ·
+// 7 approve · 8 reject (two taps, like the buttons) · pads B: make takes · loop · play as scene · remix ·
+// knob 1 / fader 1 = intensity · knob 2 = preview volume. Map + cheat sheet: surface_checkout.html
+// ═══════════════════════════════════════════════════════════════════
+const surfSay = text => { const b = $('b-surf'); b.textContent = 'MINILAB · ' + text; b.className = 'badge ok'; clearTimeout(surfSay.t); surfSay.t = setTimeout(() => { b.textContent = 'MINILAB: ' + (Surface.connected ? 'ready' : '—'); }, 2500); };
+Surface.on(ev => {
+  if (ev.kind === 'connected' || ev.kind === 'disconnected') { $('b-surf').textContent = 'MINILAB: ' + (Surface.connected ? 'ready' : '—'); $('b-surf').className = 'badge' + (Surface.connected ? ' ok' : ''); return; }
+  if (Surface.learning || document.activeElement && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && ev.kind === 'key') return;
+  if (ev.kind === 'encoder') { stepTrack(ev.delta > 0 ? 1 : -1); surfSay('track ' + (DIR.sel || '—')); return; }
+  if (ev.kind === 'click') { if (ev.on) $('play').click(); return; }
+  if (ev.kind === 'knob' && ev.i === 0 || ev.kind === 'fader' && ev.i === 0) { sceneStop(); const v = Math.round(ev.value * 4) / 4; if (v !== PV.intensity) { PV.setIntensity(v); surfSay('intensity ' + v); } return; }
+  if (ev.kind === 'knob' && ev.i === 1) { PV.ensure(); PV.out.gain.setTargetAtTime(ev.value * 1.2, PV.ctx.currentTime, 0.03); surfSay('volume ' + Math.round(ev.value * 100) + '%'); return; }
+  if (ev.kind !== 'pad' || !ev.on || ev.i < 0) return;
+  if (ev.i < 6) { if (DIR.takes && DIR.takes[ev.i]) { pickTake(ev.i, { autoplay: true }); surfSay('take ' + (ev.i + 1)); } else surfSay('no take ' + (ev.i + 1)); return; }
+  if (ev.i === 6) { if (DIR.cur >= 0) { approve(DIR.cur, document.querySelector(`[data-ap="${DIR.cur}"]`)); surfSay('✓ approve take ' + (DIR.cur + 1)); } return; }
+  if (ev.i === 7) { if (DIR.cur >= 0) { reject(DIR.cur, document.querySelector(`[data-rej="${DIR.cur}"]`)); surfSay('✕ reject take ' + (DIR.cur + 1)); } return; }
+  const act = ev.i - 8;
+  if (act === 0) { makeNow(); surfSay('⚄ make takes'); }
+  else if (act === 1) { $('loop').click(); surfSay('loop'); }
+  else if (act === 2) { $('sceneplay').click(); surfSay('play as scene'); }
+  else if (act === 3) { jumpTo('remix'); surfSay('remix'); }
+});
+Surface.start();
 
 // instrument picker: FORGE presets and PATCH BANK patches, read at runtime (both libraries grow)
 async function openPicker(role) {

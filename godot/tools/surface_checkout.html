@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MiniLab 3 · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  CONTROLLER CHECK-OUT — the Arturia MiniLab 3 (surface.js) on the Steam Deck: see every control light up,
+  LEARN the map your unit really sends (the factory map isn't published and can be re-assigned in Arturia MIDI
+  Control Center), and read what each control does in each tool. The map is saved in this browser
+  (localStorage mm_surface_minilab3) and every tool page uses it.
+-->
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --red: #c64a3a; --amber: #f0b94a; --violet: #b49ae0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; font-size: 13px; }
+  header { padding: 8px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  .badge { font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 1px solid var(--rule); color: var(--text-dim); white-space: nowrap; }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); } .badge.warn { color: var(--amber); border-color: var(--amber); }
+  button { font: inherit; background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); padding: 6px 12px; min-height: 38px; cursor: pointer; }
+  button.go { border-color: var(--gold); } button.dim { color: var(--text-dim); } button.on { background: #3a2a10; border-color: var(--gold-hi); }
+  main { padding: 12px 16px 40px; display: grid; gap: 14px; max-width: 1240px; }
+  h2 { margin: 6px 0 4px; font-size: 12px; letter-spacing: 0.16em; color: var(--gold); font-weight: normal; }
+  .panel { border: 1px solid var(--rule); background: var(--bg-1); padding: 10px 12px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+  .note { color: var(--text-dim); font-size: 12px; }
+  .ctl { border: 1px solid var(--rule); background: var(--ink); padding: 6px; text-align: center; cursor: pointer; position: relative; min-width: 70px; min-height: 64px; transition: border-color .08s, background .08s; }
+  .ctl.hit { border-color: var(--gold-hi); background: #3a2a10; }
+  .ctl.learn { border-color: var(--violet); box-shadow: 0 0 0 2px var(--violet) inset; }
+  .ctl.learned::after { content: '✔'; position: absolute; top: 2px; right: 4px; color: var(--emerald-hi); font-size: 11px; }
+  .ctl.unset { opacity: 0.55; border-style: dashed; }
+  .ctl b { display: block; color: var(--gold-hi); font-weight: normal; font-size: 11px; letter-spacing: 0.08em; }
+  .ctl .bind { font-size: 10px; color: var(--text-dim); }
+  .ctl .val { height: 6px; background: var(--rule); margin-top: 4px; } .ctl .val i { display: block; height: 100%; background: var(--gold); width: 0; }
+  .knobs, .faders, .pads { display: grid; gap: 6px; }
+  .knobs { grid-template-columns: repeat(8, 1fr); } .faders { grid-template-columns: repeat(4, 1fr); } .pads { grid-template-columns: repeat(8, 1fr); }
+  .fader { min-height: 110px; } .fader .val { height: 70px; width: 14px; margin: 4px auto 0; display: flex; align-items: flex-end; } .fader .val i { width: 100%; height: 0; }
+  .keys { display: flex; height: 70px; border: 1px solid var(--rule); position: relative; }
+  .keys .k { flex: 1; border-right: 1px solid var(--rule); background: #d8cdb6; } .keys .k.blk { background: #241a12; }
+  .keys .k.down { background: var(--gold); }
+  .strips { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: 12px; } td, th { border-bottom: 1px solid var(--rule); padding: 4px 6px; text-align: left; vertical-align: top; } th { color: var(--gold); font-weight: normal; letter-spacing: 0.08em; }
+  #log { height: 120px; overflow-y: auto; font-size: 11px; color: var(--text-dim); white-space: pre; background: var(--ink); padding: 4px 6px; }
+  #wiz { font-size: 15px; color: var(--violet); min-height: 22px; }
+  @media (max-width: 900px) { .knobs, .pads { grid-template-columns: repeat(4, 1fr); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>CONTROLLER · ARTURIA MINILAB 3</h1>
+  <span class="badge" id="b-conn">MINILAB: —</span>
+  <span class="badge" id="b-map">MAP: default</span>
+  <span style="flex:1"></span>
+  <button class="go" id="learnall" title="walk through every control: touch each one when it lights up">LEARN EVERY CONTROL</button>
+  <button class="dim" id="reset" title="forget the learned map, back to the factory defaults">RESET MAP</button>
+  <a href="index.html" style="color:var(--text-dim)">⌂ tools</a>
+</header>
+<main>
+  <div class="panel">
+    <div class="row"><span id="wiz">Plug the MiniLab 3 in (USB-C) — touch any control and it lights up below. Tap a control here to learn just that one.</span></div>
+    <div class="row"><button class="dim" id="skip" style="display:none">SKIP THIS ONE</button><button class="dim" id="stop" style="display:none">STOP LEARNING</button><span class="note" id="wizinfo"></span></div>
+  </div>
+  <div class="panel">
+    <h2>KNOBS</h2><div class="knobs" id="knobs"></div>
+    <h2>FADERS · ENCODER · STRIPS</h2>
+    <div class="row" style="align-items:stretch"><div class="faders" id="faders" style="flex:2"></div><div class="strips" style="flex:2" id="strips"></div></div>
+    <h2>PADS <span class="note">(bank A, then bank B — the PAD A/B button on the MiniLab switches)</span></h2><div class="pads" id="pads"></div>
+    <h2>KEYS <span class="note" id="keysinfo"></span></h2><div class="keys" id="keys"></div>
+  </div>
+  <div class="panel">
+    <h2>WHAT EACH CONTROL DOES</h2>
+    <table>
+      <tr><th></th><th>DAW</th><th>AUDIO DIRECTOR</th><th>FORGE</th><th>TAPE STUDIO</th></tr>
+      <tr><td>KEYS · MOD · BEND</td><td>play the selected track (records when armed); mod wheel + pitch bend to its synth</td><td>—</td><td>play the synth, mod wheel, pitch bend</td><td>—</td></tr>
+      <tr><td>KNOBS 1–8</td><td>the selected track's FORGE macros 1–8 (non-FORGE: vol · pan · reverb · delay)</td><td>1: intensity · 2: preview volume</td><td>macros 1–8</td><td>DJ · echo · verb · sat · wow · flutter · hiss · age</td></tr>
+      <tr><td>FADERS 1–4</td><td>volumes of four tracks (the selected one's group of four)</td><td>1: intensity</td><td>4: volume</td><td>track 1–4 volumes</td></tr>
+      <tr><td>PADS bank A</td><td>drums on the drum track: kick · snare · closed hat · open hat · clap · tom · crash · ride</td><td>1–6 play take 1–6 · 7 ✓ approve · 8 ✕ reject (two taps, like the buttons)</td><td>play notes C3–G3</td><td>arm track 1–8</td></tr>
+      <tr><td>PADS bank B</td><td>▶/■ · ● record · loop · ↶ undo · ◀ track · track ▶ · click · ⏮ to start</td><td>⚄ make takes · loop · ▶ play as scene · ⤳ remix ↓</td><td>—</td><td>▶ · ● · ■ · print</td></tr>
+      <tr><td>ENCODER · PUSH</td><td>select track · push: arm it</td><td>next / previous track · push: play / stop</td><td>browse presets · push: load</td><td>—</td></tr>
+    </table>
+    <div class="note" style="margin-top:6px">The MiniLab's keys play on its own channel; the FM-1 (if it's plugged in too) keeps working through the 🎛 FM-1 panels as before.</div>
+  </div>
+  <div class="panel"><h2>MIDI MONITOR</h2><div id="log"></div></div>
+</main>
+<script src="surface.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id), S = Surface, P = S.profile;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const bindText = b => !b ? 'not set' : (b.t === 'cc' ? 'CC ' + b.n : 'note ' + b.n) + (b.ch ? ' · ch ' + b.ch : '') + (b.rel ? ' · rel' : '');
+function cell(id, cls = '') { const b = S.map[id]; return `<div class="ctl ${cls} ${S.learned[id] ? 'learned' : ''} ${b ? '' : 'unset'}" data-c="${id}"><b>${esc(S.labelOf(P, id))}</b><span class="bind">${esc(bindText(b))}</span><div class="val"><i></i></div></div>`; }
+function render() {
+  $('knobs').innerHTML = Array.from({ length: P.layout.knobs }, (_, i) => cell('knob' + (i + 1))).join('');
+  $('faders').innerHTML = Array.from({ length: P.layout.faders }, (_, i) => cell('fader' + (i + 1), 'fader')).join('');
+  $('pads').innerHTML = Array.from({ length: P.layout.pads * P.layout.banks }, (_, i) => cell('pad' + (i + 1))).join('');
+  $('strips').innerHTML = cell('encoder') + cell('click') + `<div class="ctl" data-c="mod"><b>MOD / BEND STRIPS</b><span class="bind" id="strip">mod CC 1 · pitch bend</span><div class="val"><i id="modv"></i></div></div>`;
+  $('keys').innerHTML = Array.from({ length: P.layout.keys }, (_, i) => `<div class="k ${[1, 3, 6, 8, 10].includes(i % 12) ? 'blk' : ''}" data-k="${i}"></div>`).join('');
+  $('keysinfo').textContent = '(any note that isn\'t a pad; channel ' + (S.keysCh || 'any') + ')';
+  const n = Object.keys(S.learned).length; $('b-map').textContent = 'MAP: ' + (n ? n + ' learned' : 'default'); $('b-map').className = 'badge' + (n ? ' ok' : '');
+}
+function flash(id, v) {
+  const el = document.querySelector(`[data-c="${id}"]`); if (!el) return;
+  el.classList.add('hit'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('hit'), 220);
+  if (v !== undefined) { const i = el.querySelector('.val i'); if (i) { if (el.classList.contains('fader')) i.style.height = (v * 100) + '%'; else i.style.width = (v * 100) + '%'; } }
+}
+let baseNote = null;
+const LOG = [];
+S.on(ev => {
+  if (ev.kind === 'raw') { LOG.push(ev.data.map(x => x.toString(16).padStart(2, '0')).join(' ')); if (LOG.length > 200) LOG.shift(); $('log').textContent = LOG.slice(-60).join('\n'); $('log').scrollTop = 1e9; return; }
+  if (ev.kind === 'connected' || ev.kind === 'disconnected') { badge(); return; }
+  if (ev.kind === 'learned') { render(); WIZ.next(); return; }
+  if (ev.kind === 'map') { render(); return; }
+  if (ev.kind === 'knob' || ev.kind === 'fader') flash(ev.control, ev.value);
+  else if (ev.kind === 'pad') flash(ev.control, ev.on ? ev.vel : 0);
+  else if (ev.kind === 'encoder' || ev.kind === 'click' || ev.kind === 'button') flash(ev.control);
+  else if (ev.kind === 'mod') { flash('mod'); $('modv').style.width = (ev.value * 100) + '%'; $('strip').textContent = 'mod ' + Math.round(ev.value * 127); }
+  else if (ev.kind === 'bend') { flash('mod'); $('strip').textContent = 'bend ' + ev.value.toFixed(2); }
+  else if (ev.kind === 'key') {
+    if (baseNote === null || ev.note < baseNote || ev.note >= baseNote + P.layout.keys) baseNote = ev.note - (ev.note % 12);
+    const k = document.querySelector(`[data-k="${ev.note - baseNote}"]`); if (k) k.classList.toggle('down', ev.on);
+  }
+});
+function badge() { $('b-conn').textContent = 'MINILAB: ' + (S.connected ? S.portName : S.supported ? 'not found — plug it in' : 'no Web MIDI (Chrome / Edge)'); $('b-conn').className = 'badge ' + (S.connected ? 'ok' : 'warn'); }
+// LEARN EVERY CONTROL: one control at a time, lit violet; touch it on the MiniLab
+const WIZ = {
+  list: [], i: -1, on: false,
+  start(list) { this.list = list; this.i = -1; this.on = true; $('skip').style.display = $('stop').style.display = ''; this.next(); },
+  next() {
+    document.querySelectorAll('.ctl.learn').forEach(x => x.classList.remove('learn'));
+    if (!this.on) return;
+    this.i++;
+    if (this.i >= this.list.length) { this.stop(); $('wiz').textContent = '✔ done — every control is mapped. They work on every tool page now.'; return; }
+    const id = this.list[this.i], el = document.querySelector(`[data-c="${id}"]`);
+    if (el) { el.classList.add('learn'); el.scrollIntoView({ block: 'nearest' }); }
+    $('wiz').textContent = (this.i + 1) + ' / ' + this.list.length + ' — ' + (id === 'encoder' ? 'TURN' : id === 'click' ? 'PUSH' : /^knob/.test(id) ? 'TURN' : /^fader/.test(id) ? 'MOVE' : 'HIT') + ' ' + S.labelOf(P, id) + ' on the MiniLab';
+    $('wizinfo').textContent = /^pad(9|1[0-6])$/.test(id) ? 'switch the pads to bank B first (PAD button)' : '';
+    S.learn(id).catch(() => {});
+  },
+  skip() { S.cancelLearn(); this.next(); },
+  stop() { this.on = false; S.cancelLearn(); $('skip').style.display = $('stop').style.display = 'none'; document.querySelectorAll('.ctl.learn').forEach(x => x.classList.remove('learn')); $('wiz').textContent = 'stopped — tap a control to learn just that one.'; },
+};
+$('learnall').addEventListener('click', () => WIZ.start(S.CONTROL_ORDER(P)));
+$('skip').addEventListener('click', () => WIZ.skip());
+$('stop').addEventListener('click', () => WIZ.stop());
+$('reset').addEventListener('click', () => { if (confirm('Forget the learned map and go back to the defaults?')) { WIZ.stop(); S.resetMap(); render(); } });
+document.addEventListener('click', e => { const c = e.target.closest('.ctl[data-c]'); if (!c || c.dataset.c === 'mod') return; WIZ.start([c.dataset.c]); });
+render(); badge();
+S.start().then(ok => { badge(); if (!ok) $('wiz').textContent = 'Web MIDI is not available here (Chrome / Edge, and allow MIDI when asked).'; });
+</script>
+</body>
+</html>

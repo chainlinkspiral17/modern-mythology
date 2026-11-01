@@ -189,6 +189,7 @@
 </div></div>
 
 <script src="fm1_firmwares.js"></script>
+<script src="surface.js"></script>
 <script src="midi_input.js"></script>
 <script src="audio_kit.js"></script>
 <script src="tape_model.js"></script>
@@ -1049,6 +1050,23 @@ $('fm1panel').addEventListener('click', () => {
 // learned knobs work even while the panel is closed
 ['mf', 'echomix', 'verbmix', 'wow'].forEach(k => bindCcToRange(mi, 'tape.' + (k === 'echomix' ? 'echo' : k === 'verbmix' ? 'verb' : k), k));
 for (let t = 0; t < NT; t++) { bindCcToRange(mi, 'tape.vol' + t, 'vol-' + t); bindCcToRange(mi, 'tape.dj' + t, 'dj-' + t); }
+
+// ── the MiniLab 3 (surface.js): knobs = DJ · echo · verb · sat · wow · flutter · hiss · age · faders = tape
+// 1–4 volumes · pads A = arm tape 1–8 · pads B = ▶ · ● · ■ · print. Map + cheat sheet: surface_checkout.html
+{
+  const KN = ['mf', 'echomix', 'verbmix', 'sat', 'wow', 'flut', 'hiss', 'age'];
+  const setRange = (id, v01) => { const el = $(id); if (!el) return; const lo = +el.min, hi = +el.max; el.value = lo + (hi - lo) * v01; el.dispatchEvent(new Event('input')); };
+  Surface.on(ev => {
+    if (Surface.learning) return;
+    if (ev.kind === 'knob' && KN[ev.i]) { setRange(KN[ev.i], ev.value); return; }
+    if (ev.kind === 'fader' && tracks[ev.i]) { tracks[ev.i].vol = +(ev.value * 1.2).toFixed(2); const el = $('vol-' + ev.i); if (el) el.value = tracks[ev.i].vol; applyTrack(ev.i); saveMetaSoon(); return; }
+    if (ev.kind !== 'pad' || !ev.on || ev.i < 0) return;
+    if (ev.i < 8) { if (tracks[ev.i]) trackAction(ev.i, 'arm'); return; }
+    const act = ev.i - 8;
+    if (act === 0) $('playbtn').click(); else if (act === 1) $('recbtn').click(); else if (act === 2) stop(); else if (act === 3) $('print').click();
+  });
+  Surface.start();
+}
 </script>
 </body>
 </html>
