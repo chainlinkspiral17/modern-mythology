@@ -3835,6 +3835,11 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 257: Small Wood road, draft 17 — the crick the path twists alongside.**
+- **The banks:** the crick's banks were the field plates' cut edges, a 20 cm sheer drop to the bed. Each side now has a sloped mud bank, clear of the culvert's headwalls and, on the east, past the ditch field.
+- **The alders:** six along the water, broadleaf among the firs, on the north bank east of the road and on the south bank west of it, where no path runs. Each stands 9 m or more off the firs, whose lowest tiers spread about 6 m.
+- **Draft N+1:** the fallen-in house east of the road has no frame. The roadside's lens faces NW, away from it, so it needs its own view if a line asks.
+
 **2026-11-01 · pass 256: Little Switzerland, draft 2: the intrusions.**
 - vol2 ch1: "Cows got loose. The river flooded. Trees split and fell across the road. These were typical of the intrusions upon day-to-day life."
 - **The river:** mud banks along both sides of the water, and the flood's line of driftwood up the west pasture.

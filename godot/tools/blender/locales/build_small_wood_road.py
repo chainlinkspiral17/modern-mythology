@@ -37,8 +37,9 @@ DRAFT 5 (2026-11-01): the paths (along the crick, up to the shed), the
 gate's chain and padlock, and the roadside view at night as its chapter
 plays it. The minister's car is dropped: vol2 ch2's episode is 1910
 ("reported killed in 1910") and the text gives Cook no vehicle. DRAFT 6
-targets: the crick's banks and alders where the path runs; the fallen-in
-house to the east read from the roadside at night.
+targets: the crick's banks and alders where the path runs (draft 6, done
+the same day); the fallen-in house to the east read from the roadside at
+night (it stands behind that lens: it needs its own frame).
 
 Coordinate frame: Blender Z-up. Road N-S along y at x 0, ±1200 so
 the lines converge. The property gate at y 0 west; the crick at
@@ -303,6 +304,25 @@ def build_property_dressing_2026_09():
         make_box("Mailbox_Reflector_%d" % mi, (-3.285, -1.6 - mi * 0.5, 1.12), (0.01, 0.06, 0.06), (0.92, 0.40, 0.22, 1.0))
 
 
+def build_crick_2026_11():
+    """(2026-11-01, draft 6) the crick the path twists alongside: its banks
+    were the field plates' cut edges, a 20 cm sheer drop to the bed; now a
+    sloped mud bank each side, clear of the culvert's headwalls, and alders
+    along the water (the north bank, and the south bank west of the road,
+    where no path runs)."""
+    MUD = (0.34, 0.29, 0.22, 1.0)
+    for side, (xa, xb) in (("E", (8.95, 30.0)), ("W", (-30.0, -4.9))):   # E: past the ditch field (x 2.9..8.9)
+        ln = xb - xa
+        cx = (xa + xb) / 2.0
+        make_wedge(f"Crick_Bank_S_{side}", (cx, 29.0, -0.10), (ln, 0.4, 0.20), MUD, high_end="-Y")
+        make_wedge(f"Crick_Bank_N_{side}", (cx, 31.0, -0.10), (ln, 0.4, 0.20), MUD, high_end="+Y")
+    ALDER = (0.28, 0.38, 0.22, 1.0)
+    # (9 m and more off the firs: a fir's lowest tier spreads ~6 m)
+    for k, (x, y, h) in enumerate(((8.5, 32.6, 8.0), (14.0, 32.9, 9.5), (19.0, 32.5, 8.5),
+                                   (-6.5, 27.2, 8.5), (-11.5, 27.4, 8.0), (-16.5, 27.4, 9.0))):
+        make_broadleaf(f"Crick_Alder_{k}", x, y, h, ALDER, TRUNK)
+
+
 def build_paths_and_gate_2026_11():
     """(2026-11-01, draft 5) vol2 ch1, the runs off the road: "Knotted paths
     leading both up and down the road, twisting alongside cricks, emerging
@@ -343,6 +363,7 @@ def main():
     build_horizon()
     build_property_dressing_2026_09()
     build_paths_and_gate_2026_11()
+    build_crick_2026_11()
     from _props.geometry import join_stock
     join_stock()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/small_wood_road.glb"))
