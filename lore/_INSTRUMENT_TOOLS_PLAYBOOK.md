@@ -891,6 +891,62 @@ those tools.
   or "heartbeat" still gets `fx_bell_hit` / nothing. That table sits
   next to the generators other work was editing, so it was left alone.
 
+### 2026-11-01 — firmware re-check: versions, buzz, five new entries
+
+- User ask: "check for newer firmwares both by version number and buzz or
+  chatter as what's popular and add them to the tool." Every registry entry
+  now carries `checked`, `sources` (URLs), `buzz` (evidence with dates) and,
+  for GitHub projects, `stars` {count, forks}; the registry has a top-level
+  `checked`. The atlas shows them (BUZZ line, ★ tag, evidence links, "last
+  checked" in the header) and sorts by registry / most starred / newest
+  release. data.test.js checks the new fields; fm1_checkout.test.js opens
+  the atlas and checks one card per firmware.
+- **Versions moved fast in three weeks**: Felucca 1.5.1 → 1.8.0, SLOOP 2.5 →
+  2.8.4, X0X 1.0.5 → 1.1.0, Jangada 0.9.4 alpha → 1.0.1, Melodee 1.1.0 →
+  1.5.1 (+ 1.6.0-rc.7), stock V15 → V16, Groove OS 1.2.1 → 1.3 (from a video
+  post only). Release pages show day + month, no year — all 2026 here.
+- **New entries** (USB names / identity / INFO read from each repo's usb.c,
+  build.py and editor.c, like the first pass): **FM1 Open** (M-VAVE's own
+  open firmware, V14, `FM-1_8000014` from app/version.h), **JIANT FM**
+  (port "JIANT", INFO "JIANT v…"), **Clipper** (SLOOP's author; port
+  "Clipper", INFO "FELUCCA CLIPPER 1.3"), **GHOULBOX** (port "Felucca",
+  INFO "FELUCCA v1.4.1 GB…"), **FoMni** (port "FoMni FM-1", no editor
+  INFO, identity `FM-1_8XXYYZZ`).
+- **Two classification traps, both now tested in data.test.js**:
+  - FM1 Open's `FM-1_8000014` is ≥ 900, so the old decoder called it
+    "Felucca family" and would have sent it the Felucca INFO SysEx.
+    `fm1DecodeIdentity` (and fm1_flash.sh's classify) now match the
+    non-1209:0001 ranges FIRST. FoMni shares the 8-million space
+    (0.1 = 8000100) but is 1209:0001, so it still goes the family way.
+  - GHOULBOX's INFO starts "FELUCCA v1.4.1", which Felucca's own regex
+    matches. It is listed before Felucca. The friendly name now leads
+    with the registry name when the INFO only carries a suffix ("GHOULBOX
+    v1.4.1 GB2.3.2", not "v1.4.1 GB2.3.2").
+  - Never give a 1209:0001 entry the bare product "FM-1": the family
+    port regex would then match every stock port (the test checks this).
+    JIANT's README says it shows as "FM-1"; its usb.c says "JIANT" —
+    source wins.
+- **Which sources worked from the sandbox**: github.com pages through
+  WebFetch (repo page = stars / forks / issue counts, /releases = tags +
+  notes) and raw.githubusercontent.com through curl (source files,
+  READMEs, awesome-fm-1's full list, atlas-fm-1's `data/github-meta.json`,
+  which gave star counts on 2026-10-14 to compare with). `gh api` was
+  refused (repos not attached), and curl to github.com got a 403 from the
+  proxy. Nothing else resolved: baudgirl.com, groove-os.com,
+  m-vave.com, the aliyuncs release notes, arturia.com / support /
+  dl.arturia.net, matrixsynth, elektronauts, neoteo, *.github.io. Reddit
+  is blocked for WebSearch. Search snippets were the only route to
+  those, and the registry says so where a fact comes from a snippet
+  (Groove OS 1.3, V16's date and changes).
+- **Buzz, measured**: stars on 2026-11-01 (vs 2026-10-14): SLOOP 703 (485),
+  Felucca 617 (479), FM1 Open 274 (new), X0X 211 (158), JIANT 193 (112),
+  Melodee 164 (74), GHOULBOX 78 (43), FoMni 73 (58), Clipper 68,
+  Lunar 63 (59), Jangada 36 (26). awesome-fm-1 lists 224 open-source
+  firmwares; `others` keeps the ~50 with articles, releases or forks.
+- For the MiniLab 3 owner: **WaveLoop FM-1** (ELI7VH/Felucca) is a
+  Felucca fork played from a MiniLab 3 (faders, follow-the-track knobs, DJ
+  filter, momentary effect pads). It is in `others`, not yet catalogued.
+
 ## TEMPLATE
 
 ```

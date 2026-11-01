@@ -6,6 +6,7 @@
 module.exports.PROFILES = {
   fm1va:   { port: 'FM-1 MIDI 1', identity: 'FM-1_093', info: null, keyCh: 1, audioLabel: 'FM-1 Analog Stereo', latencyMs: 23 },
   stock:   { port: 'FM-1 MIDI 1', identity: 'FM-1_015', info: null, keyCh: 1, audioLabel: 'FM-1 Analog Stereo', latencyMs: 23 },
+  fm1open: { port: 'FM-1 MIDI 1', identity: 'FM-1_8000014', info: null, keyCh: 1, audioLabel: 'FM-1 Analog Stereo', latencyMs: 23 },
   felucca: { port: 'Felucca MIDI 1', identity: 'FM-1_915', info: 'FELUCCA v1.5.1', keyCh: 3, audioLabel: 'Felucca Analog Stereo', latencyMs: 23 },
   sloop:   { port: 'Felucca MIDI 1', identity: 'FM-1_925', info: 'FELUCCA SLOOP 2.5', keyCh: 1, audioLabel: 'Felucca Analog Stereo', latencyMs: 23 },
   x0x:     { port: 'X0X FM-1 MIDI 1', identity: 'FM-1_9010005', info: 'X0X 1.0.5 BETA', keyCh: 10, audioLabel: 'X0X FM-1 Analog Stereo', latencyMs: 23 },
