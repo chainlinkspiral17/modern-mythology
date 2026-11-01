@@ -426,6 +426,33 @@ def build_little_switzerland_2026_10():
             if (k + (side > 0)) % 2:
                 continue
             make_broadleaf(f"LSG_Alders_Stock_{k}_{side:+d}", RX + side * 6.0, ry + side * 2.0, 7.0 + (k % 3), (0.22, 0.32, 0.16, 1.0), (0.30, 0.24, 0.18, 1.0))
+    # (draft 2, 2026-11-01) "Cows got loose. The river flooded. Trees split
+    # and fell across the road. These were typical of the intrusions upon
+    # day-to-day life": mud banks along the water, the flood's line of
+    # driftwood up the west pasture, and a tree that came down across the
+    # lane, sawn and pushed against the fence, its split stump past it
+    MUD, DRIFT = (0.36, 0.30, 0.22, 1.0), (0.58, 0.54, 0.48, 1.0)
+    for k in range(12):
+        ry = -120.0 + 20.0 * (k + 0.5)
+        for side in (-1, 1):
+            make_box(f"LSG_Bank_Stock_{k}_{side:+d}", (RX + side * 6.3, ry, 0.006), (1.6, 20.0, 0.012), MUD)
+    import random as _r
+    rng = _r.Random(1101)
+    for k in range(26):
+        fy = -62.0 + k * 3.6 + rng.uniform(-1.2, 1.2)
+        fx = RX + 14.0 + 1.6 * math.sin(fy / 9.0) + rng.uniform(-0.6, 0.6)
+        ln = rng.uniform(0.5, 1.6)
+        make_rot_box(f"LSG_Flood_Stock_{k}", (fx, fy, 0.024), (ln, 0.07 + 0.03 * (k % 3), 0.05), DRIFT,
+                     yaw=rng.uniform(-1.2, 1.2))
+    BARK, WOOD_CUT = (0.30, 0.24, 0.18, 1.0), (0.78, 0.64, 0.44, 1.0)
+    # the trunk, limbed and laid along the W fence outside it; the rounds
+    # sawn from where it lay across the lane; the split stump beyond
+    make_cyl("LSG_Fallen_Stock_Trunk", (7.9, -27.0, 0.21), 0.22, 5.2, BARK, segments=10, axis='Y')   # (a 10-gon's floor is 0.95 r down)
+    for k, (rx, ry) in enumerate(((7.5, -31.0), (8.05, -31.4), (7.75, -32.0))):
+        make_cyl(f"LSG_Fallen_Stock_Round_{k}", (rx, ry, 0.20), 0.21, 0.40, BARK, segments=10)
+        make_cyl(f"LSG_Fallen_Stock_Round_Face_{k}", (rx, ry, 0.405), 0.19, 0.01, WOOD_CUT, segments=10)
+    make_cyl("LSG_Fallen_Stock_Stump", (5.6, -29.4, 0.45), 0.26, 0.90, BARK, segments=10)
+    make_rot_box("LSG_Fallen_Stock_Split", (5.62, -29.4, 1.02), (0.30, 0.10, 0.36), WOOD_CUT, roll=0.35)   # the splinter left standing
     # the woods behind the house: a belt on the flat round the old firs,
     # then up a hillside to the north, "descending down to touch the
     # valley". The hill is terraced (axis-true boxes, 3 m deep, 0.9 m up),

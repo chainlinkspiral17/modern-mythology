@@ -3835,6 +3835,13 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 256: Little Switzerland, draft 2: the intrusions.**
+- vol2 ch1: "Cows got loose. The river flooded. Trees split and fell across the road. These were typical of the intrusions upon day-to-day life."
+- **The river:** mud banks along both sides of the water, and the flood's line of driftwood up the west pasture.
+- **The tree:** one that came down across the lane, its trunk limbed and laid along the W fence, three rounds sawn from where it lay, and the split stump beyond with its splinter standing.
+- All of it is joined as `LSG_*_Stock` under the tagged empty (642 draw calls).
+- **Draft N+1:** the coastal highway at the lane's foot (it needs a view looking back south); the river's far bank and the valley beyond it.
+
 **2026-11-01 · pass 255: car glass lies on the rake.**
 - `make_car`'s windshield and rear window were vertical plates half buried in the body's raked profile. From above or in front they read as boards stood up on the hood: the curtain call's por puesto, and every parked sedan seen from a window.
 - Each pane now lies on its own profile segment, 2.5 cm proud, for the sedan, hatch and pickup front, and the sedan and hatch rear (the pickup's cab back stays upright). The panes turn with the car's heading (X, Y, −Y) and keep their names for the markers.
