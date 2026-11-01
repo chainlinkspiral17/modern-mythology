@@ -3843,7 +3843,13 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - The beach views' cloud decks run unbroken.
   - Most views change little, because their own fog already softened the far bands.
   - No world edge was exposed.
-- **Draft N+1:** turn the scan into an audit (presets whose far scenery stands past their far plane), so a new open view can't ship cut.
+- **The same day, the rest of the volumes:**
+  - `far_plane_audit.py` turns the scan into a zero gate in the full suite. It covers every view a chapter uses, skips multi-room sets, and fails on named far scenery wholly past the far plane inside the lens's cone.
+  - 43 more views got `far`: the cedar tower, Graustark, the cabin road, New Auburn, the school field, Meadowlark Circle, the vehicle cabs, the diner's windows and the Small Wood cemetery. Houston's park went 2500 → 3200 for the far bank at 2.75 km.
+  - Before/after renders caught two that got worse, so they are held at 200 as the audit's KNOWN list, each naming its fix:
+    - Lake Palestine and its dock: the far band rose over the shore firs as a dark wall. Give it hills.
+    - Highway 101 and its turn: the sea plane's far edge showed as a ledge on the W horizon. Run the sea out.
+    - Also seen there, and already present: highway_101_turn's sea stack floats above the horizon.
 
 **2026-10-31 · pass 247: VOLS 1–4 backgrounds, draft 15 — the Small Wood road gets its valley.**
 - **small_wood_road (vol1 ch3's night drive, vol2 ch1's runs "up and down the property", vol2 ch2's roadside):** untouched since 09-27.

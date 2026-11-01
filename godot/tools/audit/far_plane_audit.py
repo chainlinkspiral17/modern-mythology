@@ -33,6 +33,14 @@ DEFAULT_FAR = 200.0
 LAND = re.compile(r"Far|Treeline|Cloud|Sea_Horizon|Mesa|Headland|Ridge|Hill|Wood|Bluff|Windbreak|"
                   r"Pole|Wire|Road|Surf|Canopy|Scrub|Trees", re.I)
 MULTI_ROOM = {"vol3_rooms", "vol4_story_rooms", "pasadena_1945"}
+# Views held at the default because opening the far plane made them worse
+# (rendered before/after, 2026-10-31). Each names its fix; remove it then.
+KNOWN = {
+    "lake_palestine": "the far band stands over the shore firs as a dark wall: give it hills",
+    "lake_palestine_dock": "the far band stands over the shore firs as a dark wall: give it hills",
+    "highway_101": "the sea plane's far edge reads as a ledge on the W horizon: run the sea out",
+    "highway_101_turn": "the sea plane's far edge reads as a ledge on the W horizon: run the sea out",
+}
 
 
 def _ev(x):
@@ -114,6 +122,9 @@ def main():
             continue
         sc, (x, y, z), yaw, far = P[pre]
         if sc in MULTI_ROOM:
+            continue
+        if pre in KNOWN:
+            print("KNOWN %-30s %s" % (pre, KNOWN[pre]))
             continue
         ms = meshes(sc)
         if not ms:
