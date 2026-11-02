@@ -243,6 +243,12 @@ def build_office():
     make_box("Lunch_Notepad", (hx - 0.40, hy - 0.15, 0.754), (0.14, 0.20, 0.008), (0.96, 0.92, 0.62, 1.0))
     make_box("Expense_Report", (hx - 0.10, hy - 0.20, 0.752), (0.22, 0.28, 0.004), PAPER)
     make_box("Form_Letter_Stack", (hx + 0.15, hy - 0.10, 0.76), (0.22, 0.28, 0.02), PAPER)
+    # (2026-11-02) "I skim the rolodex and remove hazy recollections, broken
+    # trusts, go-betweens": the cards he pulled, face up on the desk by it
+    for k, (cdx, cdy, cyaw) in enumerate(((0.50, -0.18, 0.3), (0.58, -0.24, -0.4), (0.42, -0.28, 0.9), (0.62, -0.13, 1.4),
+                                           (0.36, -0.17, -0.2), (0.54, -0.31, 0.6))):
+        make_rot_box(f"Rolodex_Card_Pulled_{k}", (hx + cdx, hy + cdy, 0.7515 + 0.0012 * k), (0.076, 0.127, 0.001),
+                     (0.96, 0.95, 0.90, 1.0), yaw=cyaw)
     # the copying machine against the E wall, its enlargements in the tray
     copier("Off_Copier", OX1 - 0.10 - 0.35, 9.0, face="-X")
     # (2026-11-02) the enlargements fanned on the copier's top: "The letter e.

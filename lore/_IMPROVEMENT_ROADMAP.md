@@ -3835,6 +3835,12 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 278: the rolodex cards; the Wagners' parked street.**
+- **office_after_hours:** "I skim the rolodex and remove hazy recollections, broken trusts, go-betweens": the cards he pulled lie face up on his desk by the rolodex.
+- **wagner_home:** three cars parked along the near curb (the street had none).
+- **Six views never on a contact sheet** checked: jd_river, small_wood_road and its night, foxhole_bar, writers_desk_dawn and its gone. All read by their text, including the dawn's "Every drawer pulled out".
+- **Draft N+1:** the office's bright corner as a light pool on the floor; the skate pool's deep end.
+
 **2026-11-02 · pass 277: four auto cues that framed the wrong thing (vol 4).**
 - text_focus_pass (2026-10-27) wrote `[shot:insert X]` from a word in each line, and its markers aim at geometry named X. Listing every vols 1–4 cue beside the words it was cut from found four in vol 4 that read the word wrong. Each is fixed in the direction only; the text is untouched.
   - **paper cuts:** "the tiny human dabs of paint that **stick** out" framed the cleaning cart. Now `enlargements`, on the copier's lid (pass 276).

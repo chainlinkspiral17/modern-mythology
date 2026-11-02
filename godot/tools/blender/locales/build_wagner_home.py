@@ -378,6 +378,9 @@ def build_outside():
     # right of the house once the sky cards' seams came out of the frame
     for k, cx_ in enumerate((-24.0, 24.0)):
         make_view(f"View_S_{'W' if k == 0 else 'E'}", "S", Y0, cx_, kind="front", ground_z=0.0, seed=31 + k * 7)
+    # the cars parked along the near curb (the street had none)
+    for k, (cxp, col) in enumerate(((-19.0, (0.30, 0.34, 0.40, 1.0)), (9.5, (0.66, 0.64, 0.58, 1.0)), (27.0, (0.20, 0.30, 0.24, 1.0)))):
+        make_car(f"Street_Parked_Car_{k}", cxp, Y0 - 10.85, 4.6, col, along="X")
     for k, (nx, body, roof_c) in enumerate(((-16.0, (0.70, 0.72, 0.66, 1.0), (0.32, 0.30, 0.30, 1.0)),
                                           (16.5, (0.82, 0.76, 0.62, 1.0), (0.38, 0.26, 0.22, 1.0)))):
         make_box(f"Wagner_Neighbor_{k}_Body", (nx, 4.5, 1.4), (8.4, 8.0, 2.8), body)
