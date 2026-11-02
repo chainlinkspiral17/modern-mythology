@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 273: Philip's sleepers, the boxing's sawdust, the clapper.**
+- **philip_beach, draft 3:** each sleeper has shoulders under the bag's top, and two have a bare arm out over the bag (a summer night).
+- **tulsa_patio** ("Marty and Niles boxing … using the children's sawdust playground as a proving ground"): the sawdust is scuffed where they went round each other, with a bottle dropped in it. The men stay the VN's sprites.
+- **hollywood_shoot, draft 3:** the clapper stands between the lens and the players with the slate up to it.
+- **Draft N+1:**
+  - Hollywood: a car stopped by the shoot.
+  - The beach: the smoke off the embers.
+  - Tulsa: the house's back wall and the patio door's spill seen from the yard.
+
 **2026-11-02 · pass 272: the meeting's smoke and glasses; the motel's towels and "the dust pass over".**
 - **parsonage_hall, draft 2:**
   - The ones standing with their hands in front hold a glass in the right hand.

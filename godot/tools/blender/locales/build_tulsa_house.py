@@ -201,6 +201,13 @@ def build_yard():
     for k in range(4):
         make_box(f"Sawdust_Border_Timber_{k}", (17.0 + (0, 0, -5.06, 5.06)[k], 4.5 + (-6.06, 6.06, 0, 0)[k], 0.06),
                  ((10.2, 10.2, 0.12, 0.12)[k], (0.12, 0.12, 12.0, 12.0)[k], 0.12), (0.46, 0.34, 0.22, 1.0))
+    # (2026-11-02) "Marty and Niles boxing ... using the children's sawdust
+    # playground as a proving ground": the sawdust kicked up and scuffed
+    # where they went round each other, a bottle dropped in it
+    for k, (sx_, sy_, yaw_) in enumerate(((15.6, 3.6, 0.3), (16.4, 4.4, 1.2), (17.2, 3.9, -0.6), (15.9, 5.0, 2.0), (16.9, 5.3, 0.8),
+                                           (17.6, 4.7, -1.4), (16.2, 3.0, 1.7))):
+        make_rot_box(f"Sawdust_Scuff_{k}", (sx_, sy_, 0.003), (0.70, 0.26, 0.006), (0.50, 0.38, 0.26, 1.0), yaw=yaw_)
+    make_cyl("Sawdust_Dropped_Bottle", (14.8, 5.6, 0.034), 0.034, 0.26, (0.30, 0.20, 0.08, 1.0), axis='X', segments=8)
     # the wooden fort on posts, its ladder, the opening, the play kitchen
     fx, fy, fz = 19.6, 7.4, 1.2
     wood = (0.56, 0.42, 0.28, 1.0)

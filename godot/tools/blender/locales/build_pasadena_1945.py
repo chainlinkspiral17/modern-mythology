@@ -306,6 +306,10 @@ def build_hollywood():
     make_box("Shoot_Reflector_Stand", (sx - 1.45, sy + 4.0, W + 0.25), (0.40, 0.40, 0.50), (0.30, 0.30, 0.32, 1.0))
     make_standing_figure("Hw_Crew_Stock_Grip", sx - 1.45, sy + 2.9, heading=0.0, coat=(0.52, 0.46, 0.36, 1.0), arms="front", z0=W)
     make_standing_figure("Hw_Crew_Stock_Cameraman", sx, sy - 0.75, heading=0.0, coat=(0.36, 0.34, 0.30, 1.0), arms="front", z0=W)
+    # (draft 3) the clapper between the lens and the players, the slate up to it
+    hand = make_standing_figure("Hw_Crew_Stock_Clapper", sx - 0.05, sy + 2.1, heading=math.pi, coat=(0.56, 0.50, 0.40, 1.0), arms="front", z0=W)
+    make_box("Shoot_Slate", (hand[0], hand[1] - 0.03, hand[2] + 0.12), (0.30, 0.02, 0.24), (0.10, 0.10, 0.10, 1.0))
+    make_box("Shoot_Slate_Clapstick", (hand[0], hand[1] - 0.03, hand[2] + 0.27), (0.30, 0.025, 0.05), (0.92, 0.92, 0.90, 1.0))
     make_chair("Shoot_Chair", sx + 1.5, sy + 0.6, yaw=0.0, wood=(0.62, 0.48, 0.30, 1.0), seat_col=(0.30, 0.26, 0.20, 1.0), z0=W)
     make_seated_figure("Hw_Crew_Stock_Director", sx + 1.5, sy + 0.6, heading=0.0, coat=(0.44, 0.40, 0.32, 1.0), z0=W)
     # the rope across the walk behind the camera, the people stopped at it

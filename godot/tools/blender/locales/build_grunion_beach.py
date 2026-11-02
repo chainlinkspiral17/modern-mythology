@@ -225,6 +225,13 @@ def build_philip_2026_11():
         make_rot_box(f"Philip_Sleeper_{k}_Bag{T}", (bx - ux * 0.35, by - uy * 0.35, 0.10), (1.85, 0.72, 0.20), col, yaw=ang)
         make_chamfer_box(f"Philip_Sleeper_{k}_Body{T}", (bx - ux * 0.50, by - uy * 0.50, 0.26), (1.20, 0.56, 0.14), col,
                          chamfer=0.07, yaw=ang + 0.04)
+        # (draft 3) the shoulders under the bag's top, and an arm out over it on two of them
+        make_chamfer_box(f"Philip_Sleeper_{k}_Shoulders{T}", (bx + ux * 0.12, by + uy * 0.12, 0.27), (0.30, 0.50, 0.14), col,
+                         chamfer=0.06, yaw=ang)
+        if k % 2 == 0:
+            px_, py_ = -uy, ux                                   # across the bag
+            make_rot_box(f"Philip_Sleeper_{k}_Arm{T}", (bx + ux * 0.05 + px_ * 0.30, by + uy * 0.05 + py_ * 0.30, 0.23),
+                         (0.10, 0.44, 0.08), (0.66, 0.52, 0.44, 1.0), yaw=ang)   # a bare arm, a summer night
         make_blob(f"Philip_Sleeper_{k}_Head{T}", (bx + ux * 0.38, by + uy * 0.38, 0.28), 0.12, hair, noise=0.3, seed=320 + k, squash=0.9)
     # his blanket, kicked off and empty, the hollow where he lay
     make_rot_box(f"Philip_Blanket{T}", (31.4, 5.8, 0.02), (1.7, 1.2, 0.03), (0.62, 0.30, 0.20, 1.0), yaw=0.9)
