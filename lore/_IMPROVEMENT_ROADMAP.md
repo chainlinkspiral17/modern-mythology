@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 268: Charles's week of kit; the ocean rising for Philip; the hay door open.**
+- **The dig, draft 3** (vol2 ch5): "Charles excavated the machine by himself over the course of a week".
+  - A wheelbarrow at the head of the ramp he cut: rust tray, wheel and fork, handles, legs, a load of sand.
+  - A bucket upturned by the south rim.
+  - The tarp on the sand, its corners held with stones, with the water jug and a pick.
+- **Philip's night, draft 2** (vol2 ch6): "Philip saw the ocean rise up and he scrambled for his surf board."
+  - In his view only, the swell stands up in three ridges of dark water, the farthest the tallest (0.55, 0.85 and 1.25 m), each breaking white along its crest.
+  - The last one's foam is pushed up the wet sand past the tide's edge toward the camp.
+  - Every part is `__philip_beach`; each ridge sits exactly on its sea slab.
+- **The barn:** the hay door's leaf hangs open on its two strap hinges, swung out 100 degrees.
+- **Draft N+1:**
+  - The crow on the barn's peak (clear of the rake boards' boxes).
+  - The bungalow's porch and window.
+  - Charles's car under a tarp in a later view, if the text gives one.
+
 **2026-11-02 · pass 267: the harbor's gulls; the barn into its hill.**
 - **The gulls** (smolvud_jetty, vol2 ch10): "tossed a small crab to the gulls that hovered overhead. They swooped and fought to get a piece."
   - `_gull`: a herring gull about 0.6 m long, with body, head, bill and tail.

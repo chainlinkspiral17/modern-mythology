@@ -34,7 +34,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_chamfer_box, make_heightfield, make_prism,
-                             rolling_heights, join_stock, export_glb)
+                             make_tube, rolling_heights, join_stock, export_glb)
 
 try:
     import bpy
@@ -206,6 +206,31 @@ def build_riverbed():
     make_box("Metal_Detector_Control_Box", (px + 2.85, dy, 0.085), (0.20, 0.11, 0.09), (0.16, 0.17, 0.18, 1.0))
     make_box("Metal_Detector_Grip", (px + 3.02, dy, 0.07), (0.12, 0.05, 0.06), (0.10, 0.10, 0.10, 1.0))
     make_box("Metal_Detector_Arm_Cuff", (px + 3.18, dy, 0.07), (0.06, 0.12, 0.06), (0.10, 0.10, 0.10, 1.0))
+    # (draft 3) the week's kit: "Charles excavated the machine by himself
+    # over the course of a week": the wheelbarrow at the head of the ramp he
+    # cut, a bucket upturned by the south rim, the tarp on the sand with the
+    # water jug and stones on its corners
+    wx, wy = px - FL - RAMP - 1.3, py - 0.4
+    rust, steel = (0.46, 0.30, 0.20, 1.0), (0.30, 0.30, 0.32, 1.0)
+    make_prism("Barrow_Tray", (wx, wy, 0.0), [(-0.42, 0.34), (0.28, 0.34), (0.48, 0.68), (-0.54, 0.68)], 0.62, rust, axis="Y")
+    make_cyl("Barrow_Wheel", (wx + 0.66, wy, 0.20), 0.20, 0.10, (0.12, 0.12, 0.12, 1.0), segments=14, axis="Y")
+    for s_ in (-1, 1):
+        make_tube(f"Barrow_Fork_{s_:+d}", [(wx + 0.20, wy + s_ * 0.10, 0.36), (wx + 0.66, wy + s_ * 0.07, 0.20)], 0.018, steel, segments=5)
+        make_tube(f"Barrow_Handle_{s_:+d}", [(wx + 0.20, wy + s_ * 0.24, 0.36), (wx - 0.40, wy + s_ * 0.27, 0.40),
+                                             (wx - 1.15, wy + s_ * 0.29, 0.55)], 0.020, (0.50, 0.40, 0.28, 1.0), segments=5)
+        make_rot_box(f"Barrow_Leg_{s_:+d}", (wx - 0.36, wy + s_ * 0.24, 0.19), (0.04, 0.04, 0.36), steel, pitch=0.12)
+    make_blob("Barrow_Load_Sand", (wx - 0.04, wy, 0.66), 0.36, SAND, noise=0.25, seed=180, squash=0.35)
+    make_cyl("Kit_Bucket", (px - 2.4, py - FW - SLOPE - 0.6, 0.15), 0.15, 0.30, (0.62, 0.64, 0.62, 1.0), segments=12)
+    tx, ty = px - 4.4, py + FW + SLOPE + 2.2
+    make_rot_box("Kit_Tarp", (tx, ty, 0.006), (2.4, 1.8, 0.012), (0.24, 0.36, 0.56, 1.0), yaw=0.25)
+    for k, (dx, dy_) in enumerate(((-1.05, -0.78), (1.05, -0.78), (-1.05, 0.78), (1.05, 0.78))):
+        c, s2 = 0.968, 0.247
+        make_blob(f"Kit_Tarp_Stone_{k}", (tx + dx * c - dy_ * s2, ty + dx * s2 + dy_ * c, 0.07), 0.10, (0.50, 0.48, 0.44, 1.0),
+                  noise=0.3, seed=190 + k, squash=0.7)
+    make_cyl("Kit_Water_Jug", (tx + 0.4, ty + 0.1, 0.17), 0.12, 0.30, (0.84, 0.86, 0.90, 1.0), segments=12)
+    make_cyl("Kit_Water_Jug_Cap", (tx + 0.4, ty + 0.1, 0.345), 0.04, 0.05, (0.20, 0.40, 0.70, 1.0), segments=8)
+    make_rot_box("Kit_Pick", (tx - 0.5, ty - 0.2, 0.03), (0.90, 0.05, 0.05), (0.50, 0.40, 0.28, 1.0), yaw=1.1)
+    make_rot_box("Kit_Pick_Head", (tx - 0.5 + 0.40 * 0.454, ty - 0.2 + 0.40 * 0.891, 0.04), (0.06, 0.55, 0.05), steel, yaw=1.1)
     # the bungalow, small in the distance
     bx, by = ox - 30.0, oy + 40.0
     make_box("Bungalow_Body", (bx, by, 1.4), (7.0, 5.0, 2.8), (0.86, 0.82, 0.70, 1.0))

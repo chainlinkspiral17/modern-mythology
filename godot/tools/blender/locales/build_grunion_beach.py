@@ -229,6 +229,29 @@ def build_philip_2026_11():
     # his blanket, kicked off and empty, the hollow where he lay
     make_rot_box(f"Philip_Blanket{T}", (31.4, 5.8, 0.02), (1.7, 1.2, 0.03), (0.62, 0.30, 0.20, 1.0), yaw=0.9)
     make_rot_box(f"Philip_Blanket_Fold{T}", (31.9, 6.2, 0.07), (0.9, 0.35, 0.07), (0.56, 0.26, 0.18, 1.0), yaw=1.2)
+    # (draft 2) "Philip saw the ocean rise up": in his view only, the swell
+    # stands up in three ridges of dark water, each breaking white along its
+    # crest, the farthest the tallest, and the foam of the last one pushed up
+    # the wet sand past the tide's edge toward the camp
+    import random as _r
+    rng = _r.Random(613)
+    dark = (0.06, 0.08, 0.11, 1.0)
+    for row, (ry, rh, base) in enumerate(((13.0, 0.55, 0.025), (15.8, 0.85, 0.025), (19.0, 1.25, 0.425))):   # on the sea slabs' tops
+        x, k = 6.0, 0
+        while x < 60.0:
+            ln = rng.uniform(4.0, 11.0)
+            xc = x + ln / 2.0
+            yc = ry + 0.5 * _shore(xc) + rng.uniform(-0.15, 0.15)
+            yaw = math.atan(_shore_slope(xc)) + rng.uniform(-0.04, 0.04)
+            make_rot_box(f"Philip_Swell_{row}_{k}{T}", (xc, yc, base + rh / 2.0), (ln, 1.1 + 0.3 * row, rh), dark, yaw=yaw)
+            make_rot_box(f"Philip_Swell_{row}_{k}_Crest{T}", (xc, yc - 0.12, base + rh + 0.02), (ln * 0.92, 0.42 + 0.1 * row, 0.10),
+                         COL_SURF, yaw=yaw)
+            x += ln + rng.uniform(0.3, 1.6)
+            k += 1
+    for k in range(7):
+        fxc = 14.0 + k * 6.5 + rng.uniform(-1.0, 1.0)
+        make_rot_box(f"Philip_Surge_Foam_{k}{T}", (fxc, 9.2 + 0.5 * _shore(fxc), 0.045), (5.2, 0.9, 0.02), (0.78, 0.80, 0.82, 0.85),
+                     yaw=math.atan(_shore_slope(fxc)))
     # the boards stood on their tails in the dry sand, the water beyond
     board = [(-0.20, 0.0), (0.20, 0.0), (0.27, 0.6), (0.27, 1.45), (0.18, 2.0), (0.0, 2.3), (-0.18, 2.0), (-0.27, 1.45), (-0.27, 0.6)]
     for k, (bx, by, col) in enumerate(((35.2, 6.3, (0.62, 0.58, 0.50, 1.0)), (35.9, 6.0, (0.58, 0.50, 0.28, 1.0)),

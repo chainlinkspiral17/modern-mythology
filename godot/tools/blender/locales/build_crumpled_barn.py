@@ -106,6 +106,14 @@ def build_gable():
     # The doorway (door long gone) + hay door above
     make_box("Doorway", (-1.2, 8.30, 1.25), (1.7, 0.45, 2.5), COL_DOOR)
     make_box("Hay_Door", (-0.5, 8.28, 4.05), (1.0, 0.40, 1.0), COL_DOOR)
+    # (draft 7) the hay door's leaf: hung on its W strap hinges, swung out
+    # and round 100 degrees, hanging open over the field
+    import math as _m
+    a = -_m.radians(100.0)
+    hgx, hgy = -1.0, 8.17
+    make_rot_box("Hay_Door_Leaf", (hgx + 0.5 * _m.cos(a), hgy + 0.5 * _m.sin(a), 4.05), (1.0, 0.05, 1.0), COL_BARN_DK, yaw=a)
+    for k, hz in enumerate((3.75, 4.35)):
+        make_box(f"Hay_Door_Hinge_{k}", (hgx, 8.20, hz), (0.10, 0.06, 0.05), (0.22, 0.20, 0.18, 1.0))
     # One leaning siding board by the doorway
     make_box("Lean_Board", (0.4, 8.05, 1.15), (0.28, 0.10, 2.3), COL_BARN_DK)
 
