@@ -188,7 +188,9 @@ def build_desk():
     make_box("Monitor_Stand", (x + 0.10, y + 0.16, top + 0.01), (0.20, 0.16, 0.02), P.METAL_BLACK)
     make_box("Monitor_Neck", (x + 0.10, y + 0.18, top + 0.11), (0.05, 0.03, 0.20), P.METAL_BLACK)
     make_chamfer_box("Monitor", (x + 0.10, y + 0.18, top + 0.36), (0.46, 0.05, 0.34), (0.20, 0.20, 0.22, 1.0), chamfer=0.008)
-    make_box("Monitor_Screen", (x + 0.10, y + 0.152, top + 0.37), (0.42, 0.004, 0.28), (0.20, 0.30, 0.42, 1.0))
+    # (2026-11-02) lit: he is at it ("The comment box under the post sits empty, cursor blinking";
+    # "All these posts"). The roster's Monitor_Screen card replaces it when it is made
+    make_box("Monitor_Screen", (x + 0.10, y + 0.152, top + 0.37), (0.42, 0.004, 0.28), (0.66, 0.72, 0.80, 1.0))
     make_box("Keyboard", (x + 0.10, y - 0.14, top + 0.012), (0.44, 0.15, 0.02), (0.84, 0.82, 0.76, 1.0))
     make_box("Mouse", (x + 0.42, y - 0.14, top + 0.015), (0.06, 0.10, 0.03), (0.84, 0.82, 0.76, 1.0))
     # (draft 3) "The desk lamp has a round brass shade. Up close it looks like

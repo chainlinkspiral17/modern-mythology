@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 277: four auto cues that framed the wrong thing (vol 4).**
+- text_focus_pass (2026-10-27) wrote `[shot:insert X]` from a word in each line, and its markers aim at geometry named X. Listing every vols 1–4 cue beside the words it was cut from found four in vol 4 that read the word wrong. Each is fixed in the direction only; the text is untouched.
+  - **paper cuts:** "the tiny human dabs of paint that **stick** out" framed the cleaning cart. Now `enlargements`, on the copier's lid (pass 276).
+  - **the corkboard:** "Left again, to the blog **post**" framed the desk chair's back posts. Now `clipping`: the blog post's clipping on the cork, the third the red string reaches (`Board_Clipping_1` keeps its name; it is a roster slot).
+  - **nothing doing:** "The comment box under the **post** sits empty, cursor blinking" framed the chair. Now `screen`, on the monitor.
+  - **betterment:** "All these **posts** are saying exactly the same thing" framed the chair. Now `screen`.
+- **The monitor's screen** is lit (pale): he is at it. The roster's `Monitor_Screen` card replaces it when it's made.
+- **Draft N+1:** give text_focus_pass a stop list of words that are usually verbs or web nouns here (stick, post, run, set, point), so a later pass doesn't make the same picks.
+
 **2026-11-02 · pass 276: the Wagners' street goes on; the office after hours.**
 - **wagner_home (vol1):** the outside views (`wagner_house_steps`, `wagner_porch_morning`, `jacob_house_front`) sat in a cube of four lit sky cards whose seams stood in the frame as flat walls.
   - The cards are gone; each view takes a daytime sky gradient.

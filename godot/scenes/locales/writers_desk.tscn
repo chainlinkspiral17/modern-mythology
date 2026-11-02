@@ -421,11 +421,11 @@ position = Vector3(-0.364, 1.832, -4.724)
 rotation = Vector3(-0.2618, 0.3029, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_post__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.584, 0.943, -4.095)
-rotation = Vector3(-0.2618, 1.4382, 0.0)
-metadata/fov = 35.0
+; (2026-11-02) "Left again, to the blog post": its clipping on the cork, the third the string reaches (the auto cue "post" framed the chair's back posts)
+[node name="shot_insert_clipping__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.550, -4.550)
+rotation = Vector3(0.1388, 0.1365, 0.0)
+metadata/fov = 34.0
 
 
 [node name="shot_insert_lamp__writers_desk_board" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -474,17 +474,17 @@ position = Vector3(0.703, 0.418, -3.012)
 rotation = Vector3(0.2516, -2.9367, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_posts__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.324, 0.943, -3.521)
-rotation = Vector3(-0.2618, 0.8537, 0.0)
-metadata/fov = 35.0
+; (2026-11-02) "All these posts are saying exactly the same thing": the monitor (the auto cue framed the chair's back posts)
+[node name="shot_insert_screen__writers_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.400, 1.250, -4.700)
+rotation = Vector3(-0.2029, 0.0792, 0.0)
+metadata/fov = 36.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_post__writers_desk_room" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.114, 0.943, -3.335)
-rotation = Vector3(-0.2618, 0.5958, 0.0)
-metadata/fov = 35.0
+; (2026-11-02) "The comment box under the post sits empty, cursor blinking": the monitor (the auto cue framed the chair's back posts)
+[node name="shot_insert_screen__writers_desk_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.400, 1.250, -4.700)
+rotation = Vector3(-0.2029, 0.0792, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_sill__writers_desk_room" type="Marker3D" parent="." groups=["vn_shot"]]
