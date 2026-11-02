@@ -114,6 +114,16 @@ def build_gable():
     make_rot_box("Hay_Door_Leaf", (hgx + 0.5 * _m.cos(a), hgy + 0.5 * _m.sin(a), 4.05), (1.0, 0.05, 1.0), COL_BARN_DK, yaw=a)
     for k, hz in enumerate((3.75, 4.35)):
         make_box(f"Hay_Door_Hinge_{k}", (hgx, 8.20, hz), (0.10, 0.06, 0.05), (0.22, 0.20, 0.18, 1.0))
+    # (draft 8) a crow on the peak, facing the field: its legs on the
+    # gable's top, set back of the face (y 8.45) and clear of the rake boards
+    cx_, cy_, cz_ = -0.5, 8.42, 5.5
+    black, beak = (0.08, 0.08, 0.10, 1.0), (0.14, 0.13, 0.12, 1.0)
+    for k, lx_ in enumerate((-0.04, 0.04)):
+        make_box(f"Crow_Leg_{k}", (cx_ + lx_, cy_, cz_ + 0.04), (0.012, 0.012, 0.08), beak)
+    make_rot_box("Crow_Body", (cx_, cy_ + 0.02, cz_ + 0.15), (0.12, 0.30, 0.12), black, roll=-0.25)
+    make_rot_box("Crow_Tail", (cx_, cy_ + 0.20, cz_ + 0.11), (0.08, 0.14, 0.03), black, roll=0.35)
+    make_blob("Crow_Head", (cx_, cy_ - 0.13, cz_ + 0.25), 0.055, black, noise=0.05, seed=5, squash=1.0)
+    make_rot_box("Crow_Beak", (cx_, cy_ - 0.20, cz_ + 0.245), (0.025, 0.08, 0.025), beak, roll=0.15)
     # One leaning siding board by the doorway
     make_box("Lean_Board", (0.4, 8.05, 1.15), (0.28, 0.10, 2.3), COL_BARN_DK)
 

@@ -3740,8 +3740,10 @@ const CAMERA_PRESETS := {
 		# the campus was a lawn and a hedge. Back down the yard to the SE, looking
 		# NW: the house's E wing, the couchmobile against it, the palms — the
 		# ch6 "establishing shots" panorama)
-		"camera_origin": Vector3(27.5, 1.7, 6.0),
-		"camera_rotation": Vector3(0.07, 0.767, 0.0),
+		# (2026-11-02) 1.3 m west and 4 deg right: the near palm's trunk stood
+		# in the middle of the frame; it frames the right edge now
+		"camera_origin": Vector3(26.2, 1.7, 6.8),
+		"camera_rotation": Vector3(0.0698, 0.6981, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},

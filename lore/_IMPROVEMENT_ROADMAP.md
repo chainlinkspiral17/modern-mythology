@@ -3835,6 +3835,14 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 271: the barn's crow; the Dabney yard's palm out of the lens.**
+- **crumpled_barn, draft 8:** a crow on the peak, facing the field. Its legs stand on the gable's top, set back of the face so it stays clear of the rake boards.
+- **`dabney_side_yard`** (vol3, the Caltech campus panorama): the near palm's trunk stood in the middle of the frame. The lens moved 1.3 m west and turned 4° right, so the trunk frames the right edge and the house wing and the couchmobile under its tarp read clear.
+- **Draft N+1:**
+  - The barn's field ruts to the gate gap.
+  - Jiggles' face and juggling pins in the bay.
+  - The gable's outer board lap as real courses.
+
 **2026-11-02 · pass 270: Nick's grandmother's house, unlit on Halloween (nick_house `nick_house_front`).**
 - vol3 ch12: "His grandma's house was unlit from the outside. Kids didn't stop by anymore. When Nick's dad took off with his little brother, their yearly Halloween decorations became a memory."
 - **The problem (survey 8):** the lens framed only the dark house. The lit neighbours stood 20–26 m off, outside the frame, so the dark had nothing lit to be dark against.
