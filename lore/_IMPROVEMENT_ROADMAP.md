@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 272: the meeting's smoke and glasses; the motel's towels and "the dust pass over".**
+- **parsonage_hall, draft 2:**
+  - The ones standing with their hands in front hold a glass in the right hand.
+  - The smoke of a 1945 bohemian evening hangs under the ceiling in flattened translucent drifts, thicker over the crowd at the stair end and thinning toward the lens.
+- **motel_pool_dusk, draft 3:**
+  - The kids' towels are left on two loungers, one trailing to the deck.
+  - "watched the sky change, the dust pass over": the dust cloud goes over the mesas NNW of the court, red, thin and drifting.
+  - The clouds are `_Haze` parts (airborne by design).
+- **Draft N+1:**
+  - The kids in the pool (the author's call).
+  - Cigarettes in the meeting's hands.
+  - The dust's shadow moving across the court (a light, if the director can animate one).
+
 **2026-11-02 · pass 271: the barn's crow; the Dabney yard's palm out of the lens.**
 - **crumpled_barn, draft 8:** a crow on the peak, facing the field. Its legs stand on the gable's top, set back of the face so it stays clear of the rake boards.
 - **`dabney_side_yard`** (vol3, the Caltech campus panorama): the near palm's trunk stood in the middle of the frame. The lens moved 1.3 m west and turned 4° right, so the trunk frames the right edge and the house wing and the couchmobile under its tarp read clear.

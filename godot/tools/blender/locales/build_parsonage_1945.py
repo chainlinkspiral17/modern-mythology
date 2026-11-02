@@ -263,8 +263,15 @@ def build_hall_meeting_2026_11():
         h = 1.64 if dress else 1.70 + 0.06 * (k % 3)
         pfx = f"Hall_Crowd_Stock_{k}"
         hair = hairs[k % len(hairs)]
-        make_standing_figure(pfx, x, y, heading=hd, h=h, coat=coats[k % len(coats)], dress=dresses[k % len(dresses)] if dress else None,
-                             hair=hair, arms=("down", "folded", "down", "front")[k % 4])
+        arms = ("down", "folded", "down", "front")[k % 4]
+        hand = make_standing_figure(pfx, x, y, heading=hd, h=h, coat=coats[k % len(coats)], dress=dresses[k % len(dresses)] if dress else None,
+                                    hair=hair, arms=arms)
+        if arms == "front":
+            # (draft 2) a glass in the hands: bourbon, or something cheaper
+            # in the right hand (the figure's hands sit 0.12 m either side of the point it returns)
+            sc = h / 1.72
+            gx_, gy_ = hand[0] + 0.12 * sc * math.cos(hd), hand[1] - 0.12 * sc * math.sin(hd)
+            make_cyl(f"{pfx}_Glass", (gx_, gy_, hand[2] + 0.03 * sc + 0.03), 0.035, 0.10, (0.70, 0.52, 0.26, 0.55), segments=10)
         s_ = h / 1.72
         head_z = 1.50 * s_
         # the back of the head is hair: from the lens this crowd is all backs
@@ -276,12 +283,22 @@ def build_hall_meeting_2026_11():
             make_cyl(f"{pfx}_Hat_Crown", (x, y, hz + 0.06), 0.105, 0.11, (0.22, 0.20, 0.18, 1.0), segments=10)
 
 
+def build_hall_smoke_2026_11():
+    """(draft 2) The smoke of a 1945 bohemian evening hanging under the hall's
+    ceiling: flattened translucent drifts, thicker over the crowd at the stair
+    end, thinning toward the lens. `_Haze` parts (airborne by design)."""
+    for k, (x, y, r, a) in enumerate(((2.6, 6.4, 1.3, 0.20), (1.2, 5.9, 1.1, 0.17), (0.8, 7.2, 1.2, 0.16), (-0.6, 6.5, 1.2, 0.13),
+                                      (-1.9, 6.0, 1.0, 0.10), (-2.4, 7.3, 0.9, 0.08), (3.4, 7.4, 0.9, 0.18))):
+        make_blob(f"Hall_Smoke_{k}_Haze", (x, y, F + H - 0.42 + 0.06 * (k % 3)), r, (0.80, 0.78, 0.74, a), noise=0.30, seed=700 + k, squash=0.16)
+
+
 def main():
     clear_scene()
     build_house()
     build_room()
     build_street()
     build_hall_meeting_2026_11()
+    build_hall_smoke_2026_11()
     try:
         join_stock()
     except Exception as _e:

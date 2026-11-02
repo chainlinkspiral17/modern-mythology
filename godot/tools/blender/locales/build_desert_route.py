@@ -385,6 +385,15 @@ def build_motel():
     make_box("Pool_Coping", (px, py, 0.075), (10.4, 5.4, 0.03), (0.92, 0.90, 0.86, 1.0), open_faces={'+Z', '-Z'})
     for k in range(4):
         make_rot_box(f"Pool_Lounger_{k}", (px - 6.0 + k * 2.6, py - 4.2, 0.21), (0.7, 1.9, 0.12), (0.92, 0.92, 0.90, 1.0), yaw=0.0, roll=0.1)   # on the deck
+    # (draft 3) the kids' towels left on two of the loungers, one trailing to the deck
+    for k, col in ((0, (0.86, 0.40, 0.36, 1.0)), (2, (0.30, 0.56, 0.70, 1.0))):
+        make_rot_box(f"Pool_Lounger_{k}_Towel", (px - 6.0 + k * 2.6, py - 4.25, 0.285), (0.60, 0.95, 0.02), col, roll=0.1)
+    make_rot_box("Pool_Lounger_0_Towel_Trail", (px - 6.0 + 0.36, py - 4.4, 0.15), (0.02, 0.55, 0.26), (0.86, 0.40, 0.36, 1.0), pitch=-0.25)
+    # "watched the sky change, the dust pass over": the dust cloud going over
+    # the mesas NNW of the court, red, thin, drifting (`_Haze`)
+    for k, (dx_, dy_, z_, r_) in enumerate(((-260.0, 380.0, 70.0, 90.0), (-190.0, 430.0, 85.0, 70.0), (-330.0, 340.0, 60.0, 80.0),
+                                             (-120.0, 470.0, 95.0, 60.0), (-400.0, 300.0, 55.0, 70.0), (-220.0, 520.0, 110.0, 80.0))):
+        make_blob(f"Dust_Cloud_{k}_Haze", (mx + dx_, my + dy_, z_), r_, (0.86, 0.54, 0.38, 0.30), noise=0.35, seed=820 + k, squash=0.28)
     # the ladder at the deep end: two rails up off the deck, over the coping,
     # down the N wall into the water, two treads under the surface
     for k, lx in enumerate((px + 3.9, px + 4.4)):
