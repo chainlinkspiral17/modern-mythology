@@ -3924,7 +3924,9 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(37.0, 1.6, -0.9),
 		"camera_rotation": Vector3(-0.04, deg_to_rad(10.0), 0.0),
 		"fov": 70.0,
-		"env": {"ambient_color": Color(1.0, 0.98, 0.96, 1), "ambient_energy": 1.10, "fog_color": Color(0.94, 0.94, 0.96, 1)},
+		# (2026-11-02) ambient 1.10 -> 0.78: the white room blew out to one flat
+		# white; "too smooth to be real" still, but the planes read
+		"env": {"ambient_color": Color(1.0, 0.98, 0.96, 1), "ambient_energy": 0.78, "fog_color": Color(0.94, 0.94, 0.96, 1)},
 		"suppress_input": true,
 	},
 	"club_office": {

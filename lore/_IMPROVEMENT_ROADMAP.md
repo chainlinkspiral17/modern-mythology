@@ -3835,6 +3835,14 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 258: the second survey, the winding gate, and the tutorial lobby.**
+- **`winding_audit.py`** (a zero-regression gate in the full suite) holds every set's inside-out closed meshes at `winding_baseline.json`: 996 in all after pass 254's helper fixes.
+- **The survey:** 24 more vols 1–4 views rendered. Most read as their places.
+  - `caltech_bare_room` is bare by its text: "Bare cement, bare walls, a single bulb burning overhead".
+  - The thinnest was `tutorial_lobby` (vol1 ch6, ~30 lines). It is white by its text ("These office spaces were carved out of imagination"; the builder's "a little too smooth to be real, 'Hazy'"), but at ambient 1.10 it blew out to one flat white.
+- **The lobby:** ambient 0.78; a soft carpet under the seating group; and the television's picture, for "A sitcom family relates its day in the products it consumed": a lit living room, the family on its couch.
+- **Draft N+1:** the lobby's haze (fog density) graded so the console and Olivia's monitor read from the door, and the company's look if the text ever names it (it doesn't yet).
+
 **2026-11-01 · pass 257: Small Wood road, draft 17 — the crick the path twists alongside.**
 - **The banks:** the crick's banks were the field plates' cut edges, a 20 cm sheer drop to the bed. Each side now has a sloped mud bank, clear of the culvert's headwalls and, on the east, past the ditch field.
 - **The alders:** six along the water, broadleaf among the firs, on the north bank east of the road and on the south bank west of it, where no path runs. Each stands 9 m or more off the firs, whose lowest tiers spread about 6 m.

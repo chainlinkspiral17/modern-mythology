@@ -324,6 +324,20 @@ def build_lobby():
         make_chair(f"Lob_Chair_{s:+d}", LX0 + 3.0, ty + s * 2.0, yaw=math.pi / 2.0 + s * 0.4, wood=(0.80, 0.80, 0.80, 1.0),
                    seat_col=(0.76, 0.76, 0.80, 1.0))
     make_box("Lob_Table", (LX0 + 2.8, ty, 0.20), (0.70, 1.20, 0.40), (0.86, 0.86, 0.84, 1.0))
+    # (2026-11-02) a soft carpet under the group; and on the screen, "A sitcom
+    # family relates its day in the products it consumed": a lit living
+    # room, the family on its couch (the picture laid on the screen's face)
+    make_box("Lob_Carpet", (LX0 + 3.0, ty, 0.004), (3.4, 4.8, 0.008), (0.72, 0.70, 0.78, 1.0))
+    sx = tx + 0.0445
+    for nm, (dy, dz, w, h, col) in {"Wall": (0.0, 0.10, 1.70, 0.62, (0.92, 0.80, 0.56, 1.0)),
+                                    "Floor": (0.0, -0.36, 1.70, 0.24, (0.62, 0.42, 0.30, 1.0)),
+                                    "Couch": (0.05, -0.20, 1.00, 0.24, (0.34, 0.52, 0.66, 1.0)),
+                                    "Window": (-0.62, 0.18, 0.36, 0.34, (0.66, 0.84, 0.96, 1.0)),
+                                    "Lamp": (0.70, 0.02, 0.10, 0.40, (0.98, 0.92, 0.70, 1.0))}.items():
+        make_box(f"Lob_TV_Picture_{nm}", (sx, ty + dy, 1.75 + dz), (0.002, w, h), col)
+    for k, (dy, hh, col) in enumerate(((-0.30, 0.30, (0.86, 0.36, 0.30, 1.0)), (-0.06, 0.34, (0.30, 0.40, 0.62, 1.0)),
+                                       (0.18, 0.24, (0.92, 0.80, 0.30, 1.0)), (0.40, 0.20, (0.50, 0.74, 0.40, 1.0)))):
+        make_box(f"Lob_TV_Picture_Family_{k}", (sx + 0.001, ty + dy, 1.75 - 0.20 + hh / 2.0), (0.002, 0.12, hh), col)
     for k in range(4):
         make_box(f"Lob_Light_{k}", (LX0 + 2.5 + k * 3.0, LD / 2.0, LH - 0.01), (2.0, 0.40, 0.02), (1.0, 1.0, 0.98, 1.0))
 
