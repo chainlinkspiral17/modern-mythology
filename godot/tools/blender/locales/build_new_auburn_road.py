@@ -371,7 +371,10 @@ def build_live_oak_2026_09():
     # went, and its screen's light is a patch laid on the windshield
     # rake, which runs from (y 39.05, z 0.99) up to (38.30, 1.47) for a
     # hatch nosed north (2026-09-25)
-    make_rot_box("Civic_Phone_Screen", (6.85, 38.9205, 1.0724), (0.062, 0.126, 0.001), (0.66, 0.80, 0.96, 1.0), roll=-0.5695)
+    # (2026-11-01) on the GLASS now: make_car's windshield lies on the rake,
+    # 2.5 cm proud and 2 cm thick, so the patch moves out along the rake's
+    # normal (0.54, 0.84 in y, z) by 3.7 cm, or the pane covers it
+    make_rot_box("Civic_Phone_Screen", (6.85, 38.9405, 1.1034), (0.062, 0.126, 0.001), (0.66, 0.80, 0.96, 1.0), roll=-0.5695)
 
 def build_back_lot_2026_10():
     """THE LOADING AREA, from the prose (vol 6 contact sheet, 2026-10-06:

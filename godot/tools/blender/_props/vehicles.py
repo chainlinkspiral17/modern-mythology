@@ -21,7 +21,7 @@ the DRAFT 1 parts (Body, Cabin→now part of the Body profile but a
 "Cabin" glass band remains, Windshield, Rear_Glass, Side_Glass_L/R,
 Wheel_0..3) so every existing marker and synonym still lands.
 """
-from .geometry import make_box, make_cyl, make_chamfer_box, make_prism, make_lathe
+from .geometry import make_box, make_cyl, make_chamfer_box, make_prism, make_lathe, make_rot_box
 
 GLASS_DK = (0.26, 0.30, 0.36, 1.0)
 RUBBER = (0.12, 0.12, 0.13, 1.0)
@@ -132,12 +132,28 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     else:
         ws_u, ws_z, ws_h = nose - 1.40, z0 + 1.19, 0.46
         cab_u0, cab_u1 = tail + 1.30, nose - 1.10
-    make_box(f"{prefix}_Windshield", P(ws_u + 0.02, 0.0, ws_z), S(0.03, 2 * hw - 0.40, ws_h), glass)
-    if not pickup:
-        rg_u = tail + 0.60 if hatch else tail + 0.85
-        make_box(f"{prefix}_Rear_Glass", P(rg_u, 0.0, ws_z - 0.02), S(0.03, 2 * hw - 0.44, ws_h - 0.06), glass)
+    # (2026-11-01) the glass LIES ON the body's rake: a vertical plate half
+    # buried in the slope read, from above and in front, as a board stood
+    # up on the hood (the curtain call's por puesto, every parked sedan).
+    # Each pane follows its profile segment (u, z rel. z0), 2.5 cm proud.
+    yaw_u = {"X": 0.0, "Y": math.pi / 2.0, "-Y": -math.pi / 2.0}.get(along, math.pi / 2.0)
+    def raked(nm, a, b, width, keep=0.86):
+        (ua, za), (ub, zb) = a, b
+        slope = (zb - za) / (ub - ua)
+        ln = math.hypot(ub - ua, zb - za)
+        nrm = 1.0 / math.sqrt(1.0 + slope * slope)
+        cu = (ua + ub) / 2.0 - slope * nrm * 0.025
+        cz = (za + zb) / 2.0 + nrm * 0.025
+        make_rot_box(nm, P(cu, 0.0, z0 + cz), (ln * keep, width, 0.02), glass, yaw=yaw_u, pitch=-math.atan(slope))
+    if pickup:
+        raked(f"{prefix}_Windshield", (nose - 1.85, 1.10), (nose - 2.25, 1.62), 2 * hw - 0.40)
+        make_box(f"{prefix}_Rear_Glass", P(nose - 3.44, 0.0, z0 + 1.36), S(0.03, 2 * hw - 0.44, 0.44), glass)   # the cab's back is upright
+    elif hatch:
+        raked(f"{prefix}_Windshield", (nose - 1.10, 0.96), (nose - 1.85, 1.44), 2 * hw - 0.40)
+        raked(f"{prefix}_Rear_Glass", (tail + 0.20, 1.10), (tail + 0.90, 1.44), 2 * hw - 0.44)
     else:
-        make_box(f"{prefix}_Rear_Glass", P(nose - 3.44, 0.0, z0 + 1.36), S(0.03, 2 * hw - 0.44, 0.44), glass)
+        raked(f"{prefix}_Windshield", (nose - 1.10, 0.96), (nose - 1.70, 1.42), 2 * hw - 0.40)
+        raked(f"{prefix}_Rear_Glass", (tail + 0.55, 1.02), (tail + 1.15, 1.42), 2 * hw - 0.44)
     for sgn, nm in ((1, "L"), (-1, "R")):
         # the body's side is at hw - 0.02: everything on the flank starts
         # there (2026-09-22: handles, pillars and mirrors sat 2 cm off it)

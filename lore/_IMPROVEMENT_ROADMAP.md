@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-01 · pass 257: Small Wood road, draft 17 — the crick the path twists alongside.**
+- **The banks:** the crick's banks were the field plates' cut edges, a 20 cm sheer drop to the bed. Each side now has a sloped mud bank, clear of the culvert's headwalls and, on the east, past the ditch field.
+- **The alders:** six along the water, broadleaf among the firs, on the north bank east of the road and on the south bank west of it, where no path runs. Each stands 9 m or more off the firs, whose lowest tiers spread about 6 m.
+- **Draft N+1:** the fallen-in house east of the road has no frame. The roadside's lens faces NW, away from it, so it needs its own view if a line asks.
+
+**2026-11-01 · pass 256: Little Switzerland, draft 2: the intrusions.**
+- vol2 ch1: "Cows got loose. The river flooded. Trees split and fell across the road. These were typical of the intrusions upon day-to-day life."
+- **The river:** mud banks along both sides of the water, and the flood's line of driftwood up the west pasture.
+- **The tree:** one that came down across the lane, its trunk limbed and laid along the W fence, three rounds sawn from where it lay, and the split stump beyond with its splinter standing.
+- All of it is joined as `LSG_*_Stock` under the tagged empty (642 draw calls).
+- **Draft N+1:** the coastal highway at the lane's foot (it needs a view looking back south); the river's far bank and the valley beyond it.
+
+**2026-11-01 · pass 255: car glass lies on the rake.**
+- `make_car`'s windshield and rear window were vertical plates half buried in the body's raked profile. From above or in front they read as boards stood up on the hood: the curtain call's por puesto, and every parked sedan seen from a window.
+- Each pane now lies on its own profile segment, 2.5 cm proud, for the sedan, hatch and pickup front, and the sedan and hatch rear (the pickup's cab back stays upright). The panes turn with the car's heading (X, Y, −Y) and keep their names for the markers.
+- The RUTA 77 board now stands against the glass, as "wedged against the windshield" has it.
+- Now that `stale_sets.py` follows `_props`, this reaches every car on the Deck.
+- Rendered: the curtain call's car and sign inserts, Judgement Day at the club's curb and on the river, and the Small Wood road's pickup.
+
 **2026-11-01 · pass 254: inside-out geometry, project-wide.**
 - **The scan:** pass 244's roofless car (a prism wound about a centre outside it) and pass 252's splayed logs pointed at a class of bug the gates can't see, because they read boxes, not faces. Every closed mesh in all 169 GLBs (150,394) was checked for its signed volume: a closed mesh wound inside out has a negative one. 4,309 did.
 - **Three helper bugs carried most of it (`_props/geometry.py`):**
