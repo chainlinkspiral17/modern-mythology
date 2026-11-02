@@ -3842,7 +3842,8 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - **nothing doing:** "The comment box under the **post** sits empty, cursor blinking" framed the chair. Now `screen`, on the monitor.
   - **betterment:** "All these **posts** are saying exactly the same thing" framed the chair. Now `screen`.
 - **The monitor's screen** is lit (pale): he is at it. The roster's `Monitor_Screen` card replaces it when it's made.
-- **Draft N+1:** give text_focus_pass a stop list of words that are usually verbs or web nouns here (stick, post, run, set, point), so a later pass doesn't make the same picks.
+- **text_focus_pass learned both misreads.** A word followed by a verb's particle (out, up, off, down, around, away, over, back) is a verb. "post", "posts" and "blog" are never subjects (in this corpus they are web posts). Checked: "paint that stick out" and "the comment box under the post" no longer resolve, and "He picked up the stick" still does.
+- **Draft N+1:** the same listing for vols 5–7 (the vol 7 "stick" cues are slowsticks and correct).
 
 **2026-11-02 · pass 276: the Wagners' street goes on; the office after hours.**
 - **wagner_home (vol1):** the outside views (`wagner_house_steps`, `wagner_porch_morning`, `jacob_house_front`) sat in a cube of four lit sky cards whose seams stood in the frame as flat walls.

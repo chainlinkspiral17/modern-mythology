@@ -85,6 +85,7 @@ banks bank drugstore frozen four pink high broken wakes runs pull main players p
 business service expense images forms surrounds border coast island cave farm dune surf sand grass moss sidelines
 recess overhang copy carbon seams seam
 puddle puddles stain stains spill spills mark scuff scuffs crack cracks
+post posts blog
 brow brows forehead eyebrow eyebrows wrist wrists elbow elbows thumb thumbs palm palms jaw chin lap hip hips belly
 """.split())
 # furniture every room has: one cue a chapter, not a refrain
@@ -188,6 +189,7 @@ def cast_words():
 CARVING = re.compile(r"\b(carv\w*|rim|spiral|figures?|totems?)\b", re.I)
 # a thing is named with an article or an owner before it ("the kettle", "his
 # notebook", "Lena's grinder"): "Sam rings him up" names no rings
+PARTICLE = set("out up off down around away over back".split())
 DETERMINER = set("the a an his her their my your our its this that these those some two three four each every".split())
 PRONOUN = set("he she it they i we you".split())
 FUNCTION = set("in on at of and or to with from was were had has is are the a an by for as but that this its it".split())
@@ -239,6 +241,12 @@ def subject_for(text, geo, cast, marked=()):
         if prev and (prev[-1] in PRONOUN or (toks[ti - 1][0][0].isupper() and not prev[-1] in DETERMINER)):
             continue
         nxt = toks[ti + 1][0].lower() if ti + 1 < len(toks) else ""
+        # (2026-11-02) a word with a verb's particle after it is the verb:
+        # "the tiny human dabs of paint that stick out" framed a stick (the
+        # cleaning cart). "post"/"posts"/"blog" (NEVER, above) are this
+        # corpus's web posts: three such cues framed a chair's back posts
+        if nxt in PARTICLE:
+            continue
         if wl in MODIFIER and nxt and nxt not in FUNCTION and len(nxt) >= 3 and \
                 text.find(w + " " + toks[ti + 1][0]) >= 0:
             continue
