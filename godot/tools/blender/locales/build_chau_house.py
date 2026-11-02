@@ -83,7 +83,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, make_rot_box, make_blob, make_lathe,
-                             make_taper_cyl, join_stock, export_glb)
+                             make_taper_cyl, join_stock, export_glb, make_heightfield)
 from _props.structure import (make_floor, make_wall, make_wall_with_openings, make_window, make_blinds, make_crown_molding, make_curtains,
                               make_lap_siding)
 from _props.views import make_view
@@ -651,14 +651,43 @@ def build_amanda():
                segments=12)
     # the sheet: a ridge from the lamp's top down over the couches, its two
     # sides falling away, billowed on the fan's side
-    make_rot_box("Am_Sheet_Ridge", (lx + 0.5, ly, 1.64), (2.30, 0.10, 0.02), (0.90, 0.90, 0.94, 1.0), pitch=-0.38)
-    for s in (-1, 1):
-        make_rot_box(f"Am_Sheet_Side_{s:+d}", (lx + 0.3, ly + s * 0.55, 1.20), (2.30, 1.30, 0.02), (0.90, 0.90, 0.94, 1.0),
-                     roll=s * 0.95, pitch=-0.30)
+    # (2026-11-02) "The sheet lifts and falls with the fan, slow as
+    # breathing, lit blue by the television": ONE draped surface (a height
+    # field) — the ridge rising from over the couches' far end to the lamp's
+    # shade, the sides falling soft over the couch backs, folds running down
+    # them, and the fan's side lifted in a slow billow. The ridge plank and
+    # two flat side panels read from the close lens as a blue board.
+    import math as _m
+    x0, x1, y0, y1, cell = lx - 1.25, lx + 1.75, ly - 1.40, ly + 1.40, 0.10
+    nx, ny = int(round((x1 - x0) / cell)) + 1, int(round((y1 - y0) / cell)) + 1
+    rows = []
+    for j in range(ny):
+        y = y0 + j * cell
+        dy = y - ly
+        row = []
+        for i in range(nx):
+            x = x0 + i * cell
+            u = (x - x0) / (x1 - x0)
+            zr = 1.00 + 1.08 * u ** 1.3                      # the ridge: 1.00 m to 2.08 m over the shade
+            if x > lx + 1.60:
+                zr -= (x - (lx + 1.60)) * 1.4                # past the lamp it falls away
+            a = min(1.0, abs(dy) / 1.40)
+            z = 0.92 + (zr - 0.92) * (1.0 - a ** 1.4)        # down to the couch backs (~0.9) at the edges
+            z += 0.035 * _m.sin(x * 7.0 + dy * 2.0) * a      # the folds running down the sides
+            if dy < 0.0:                                     # the fan's side, lifted
+                z += 0.16 * _m.exp(-((x - (lx - 0.2)) ** 2) / 0.6) * _m.sin(a * _m.pi)
+            row.append(round(z, 3))
+        rows.append(row)
+    make_heightfield("Am_Sheet_Drape", (x0, y0, 0.0), cell, rows, (0.90, 0.90, 0.94, 1.0), skirt=0.0)
     # (pass 166) the sheet falls past the couch backs to the floor: two
     # skirts, the fan's side billowed at the hem — "enclosed and safe"
+    # (2026-11-02) each skirt hangs in pleats, eight panels turned alternately
+    # (one flat 2 m panel read from the close lens as a board)
     for sgn, tag in ((-1, "S"), (1, "N")):
-        make_rot_box(f"Am_Sheet_Skirt_{tag}", (lx + 0.1, ly + sgn * 1.36, 0.46), (2.0, 0.02, 0.92), (0.90, 0.90, 0.94, 1.0), roll=-sgn * 0.10)
+        for k in range(8):
+            px_ = lx + 0.1 - 1.0 + 0.125 + k * 0.25
+            make_rot_box(f"Am_Sheet_Skirt_{tag}_{k}", (px_, ly + sgn * (1.36 + (0.035 if k % 2 else -0.035)), 0.46), (0.27, 0.02, 0.92),
+                         (0.90, 0.90, 0.94, 1.0), yaw=(0.38 if k % 2 else -0.38), roll=-sgn * 0.10)
     for i, (x, r) in enumerate(((lx - 0.5, 0.30), (lx + 0.4, 0.26))):
         make_blob(f"Am_Sheet_Hem_{i}", (x, ly - 1.50, r * 0.6 - 0.02), r, (0.90, 0.90, 0.94, 1.0), noise=0.12, seed=40 + i, squash=0.6)
     make_blob("Am_Sheet_Billow", (lx - 0.85, ly - 1.75, 0.10), 0.30, (0.90, 0.90, 0.94, 1.0), noise=0.1, seed=4, squash=0.4)   # the hem on the floor

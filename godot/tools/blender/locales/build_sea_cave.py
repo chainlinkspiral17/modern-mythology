@@ -237,6 +237,24 @@ def build_riverbed():
     make_rot_box("Bungalow_Roof_N", (bx, by + 1.25, 3.25), (7.6, 2.9, 0.12), (0.40, 0.30, 0.26, 1.0), roll=0.35)
     make_rot_box("Bungalow_Roof_S", (bx, by - 1.25, 3.25), (7.6, 2.9, 0.12), (0.40, 0.30, 0.26, 1.0), roll=-0.35)
     make_box("Bungalow_Door", (bx + 1.0, by - 2.52, 1.0), (0.9, 0.04, 2.0), (0.36, 0.28, 0.22, 1.0))
+    # (draft 3) "he'd rented a bungalow nearby": a place someone lives in for
+    # a week — the front porch under its own shed roof, two windows either
+    # side of the door, a chimney pipe, a chair on the porch
+    trim, glass = (0.94, 0.92, 0.86, 1.0), (0.22, 0.26, 0.30, 1.0)
+    make_box("Bungalow_Porch_Deck", (bx + 0.5, by - 3.4, 0.10), (5.0, 1.8, 0.20), (0.56, 0.46, 0.34, 1.0))
+    for k, px_ in enumerate((bx - 1.85, bx + 2.85)):
+        make_box(f"Bungalow_Porch_Post_{k}", (px_, by - 4.2, 1.23), (0.12, 0.12, 2.06), trim)
+    make_rot_box("Bungalow_Porch_Roof", (bx + 0.5, by - 3.45, 2.38), (5.4, 2.1, 0.08), (0.40, 0.30, 0.26, 1.0), roll=0.18)
+    make_box("Bungalow_Porch_Beam", (bx + 0.5, by - 4.2, 2.30), (5.0, 0.14, 0.14), trim)
+    for k, wx_ in enumerate((bx - 1.6, bx + 2.6)):
+        make_box(f"Bungalow_Window_{k}", (wx_, by - 2.52, 1.55), (1.1, 0.04, 1.0), glass)
+        make_box(f"Bungalow_Window_{k}_Sill", (wx_, by - 2.56, 1.02), (1.3, 0.10, 0.05), trim)
+        make_box(f"Bungalow_Window_{k}_Head", (wx_, by - 2.545, 2.09), (1.3, 0.05, 0.08), trim)
+    make_cyl("Bungalow_Chimney_Pipe", (bx - 2.2, by + 0.9, 3.8), 0.10, 1.4, (0.26, 0.26, 0.28, 1.0), segments=8)
+    make_box("Bungalow_Porch_Chair_Seat", (bx - 0.9, by - 3.3, 0.62), (0.50, 0.46, 0.05), (0.62, 0.50, 0.34, 1.0))
+    make_box("Bungalow_Porch_Chair_Back", (bx - 0.9, by - 3.07, 0.92), (0.50, 0.05, 0.55), (0.62, 0.50, 0.34, 1.0))
+    for k, (cx2, cy2) in enumerate(((-0.22, -0.2), (0.22, -0.2), (-0.22, 0.2), (0.22, 0.2))):
+        make_box(f"Bungalow_Porch_Chair_Leg_{k}", (bx - 0.9 + cx2, by - 3.3 + cy2, 0.405), (0.04, 0.04, 0.41), (0.62, 0.50, 0.34, 1.0))
     # (draft 2) the sky card went: 500 m wide, its end stood mid-frame once
     # the camera turned north-west; the sky is the environment's now. The
     # dunes rise WEST of the flat so the sand never ends in a line (the cave's

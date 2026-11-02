@@ -2193,7 +2193,9 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.26, 0.30, 0.52, 1), "sky_horizon": Color(0.98, 0.66, 0.40, 1), "ground_horizon": Color(0.30, 0.28, 0.30, 1), "ground_bottom": Color(0.12, 0.12, 0.14, 1), "ambient_color": Color(0.70, 0.60, 0.62, 1), "ambient_energy": 0.60, "fog_color": Color(0.82, 0.60, 0.46, 1), "fog_sky": 0.15},
 		# (2026-10-27) Small Wood in 1997 (Smolvud is its 2050s, Andy): the Frog's things are vol 7's
-		"strip": ["Frog_"],
+		# (2026-11-02) and the Minstral's Green is vol 5's (~2019: "a rusted steamship that had
+		# been relocated from Louisiana"): not in the 1997 harbor
+		"strip": ["Frog_", "Wreck_"],
 		"suppress_input": true,
 	},
 	"smolvud_jetty": {

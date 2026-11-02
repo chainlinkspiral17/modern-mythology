@@ -49,7 +49,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 _LOC = os.path.dirname(os.path.abspath(__file__))
 if _LOC not in sys.path: sys.path.insert(0, _LOC)
-from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, make_blob, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, make_blob, make_tube, export_glb
 
 LAND_Z = 1.8
 CREST_Z = 3.1
@@ -196,6 +196,24 @@ def build_shore():
     make_box("Jetty_Sign_Text", (2.4, -6.457, pz + 1.62), (0.56, 0.004, 0.28), COL_DARK)
 
 
+def _bell_buoy(name, x, y):
+    """A channel bell buoy: the float half under the water (z 0), a
+    four-legged tower tapering to the cage, the bell hanging in it, the
+    light on top; buoy red with a white band."""
+    red, white, steel, bronze = (0.72, 0.18, 0.14, 1.0), (0.90, 0.88, 0.84, 1.0), (0.30, 0.30, 0.32, 1.0), (0.56, 0.44, 0.24, 1.0)
+    make_cyl(f"{name}_Float", (x, y, 0.15), 1.0, 0.70, red, segments=16)
+    make_cyl(f"{name}_Float_Deck", (x, y, 0.53), 0.86, 0.06, red, segments=16)
+    for k in range(4):
+        a = math.pi / 4.0 + k * math.pi / 2.0
+        make_tube(f"{name}_Leg_{k}", [(x + 0.62 * math.cos(a), y + 0.62 * math.sin(a), 0.56),
+                                      (x + 0.26 * math.cos(a), y + 0.26 * math.sin(a), 3.10)], 0.05, red, segments=6)
+    make_cyl(f"{name}_Band", (x, y, 1.70), 0.46, 0.50, white, segments=12)
+    make_cyl(f"{name}_Cage_Ring", (x, y, 3.12), 0.34, 0.06, red, segments=12)
+    make_cyl(f"{name}_Bell", (x, y, 2.82), 0.22, 0.34, bronze, segments=12)
+    make_cyl(f"{name}_Bell_Hanger", (x, y, 3.04), 0.03, 0.12, steel, segments=6)
+    make_cyl(f"{name}_Light", (x, y, 3.30), 0.12, 0.30, (0.96, 0.90, 0.60, 1.0), segments=10)
+
+
 def _gull(name, x, y, z, heading, bank, flying=True):
     """A herring gull, about 0.6 m long, its heading in radians (0 = +X).
     In the air: wings set in a shallow gull-wing (up from the body, the
@@ -286,6 +304,11 @@ def build_harbor_and_town():
         _gull(f"Gull_{k}_Aloft", gx, gy, gz, hd, bank, flying=True)
     for k, pk in enumerate((2, 5)):
         _gull(f"Gull_Perched_{k}", hx - 1.6, -1.0 + pk * 5.0, 3.2, 0.9 + k * 2.0, 0.0, flying=False)
+    # (2026-11-02) "hearing the bells and whistles and moans of the harbor"
+    # (vol2 ch10): a bell buoy out in the channel past the boat coming in (clear
+    # of the Minstral wreck's place, vol 5's, stripped from 1997), its float riding the
+    # water, the lattice tower, the bell hung under its cage, the light
+    _bell_buoy("Bell_Buoy", -18.0, 50.0)
     make_box("Far_Shore_Headland", (-170.0, 40.0, 4.0), (80.0, 140.0, 12.0), (0.34, 0.38, 0.30, 1.0))
     # Smolvud low on its rise behind the shore, going grey in the fog
     placed = 0

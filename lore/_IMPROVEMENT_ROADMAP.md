@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 269: survey 8 — the fort's sheet, the beam, the bell buoy, the rented bungalow; the wreck out of 1997.**
+- **Survey 8:** 31 more vols 1–4 views (every one not yet rendered).
+- **`amanda_fort_close`** (vol3 ch8, "The sheet lifts and falls with the fan, slow as breathing, lit blue by the television"). The sheet was a ridge plank and two flat panels, and from the close lens it read as a blue board.
+  - It is now ONE draped surface (a height field): the ridge rises from over the couches' far end to the lamp's shade, the sides fall soft over the couch backs, folds run down them, and the fan's side is lifted in a slow billow.
+  - Each skirt hangs in eight pleats.
+- **`four_screens_beam`** (meld_seam_2_3, "Then a beam came down out of the dark at a slant, from very high up, from a machine on a long jointed stalk"). The spot lit a pool on the floor, but the beam itself never showed.
+  - A translucent shaft now runs along the spot's axis, widening as it falls.
+- **The harbor** (vol2 ch10, "the bells and whistles and moans of the harbor"): a bell buoy out in the channel past the boat coming in, with its float, lattice tower, bell and light.
+- **The *Minstral's Green* wreck is out of 1997.** vol5 ch21 has the museum relocate it to Smolvud, and vol 5 is ~2019, so `smolvud_docks_evening` (vol2's 1997 harbor) strips `Wreck_`. It had stood mid-frame in Frank's evening.
+- **Charles's bungalow** ("he'd rented a bungalow nearby"): the front porch under its shed roof, two windows either side of the door, a chimney pipe, a chair on the porch.
+- **Draft N+1:**
+  - The beam's pool on the floor and the man in the pod it finds (the meld's CG covers the close shot).
+  - The fort sheet's breathing as motion (the builder note's per-frame target).
+  - The bell buoy in a view that frames it.
+
 **2026-11-02 · pass 268: Charles's week of kit; the ocean rising for Philip; the hay door open.**
 - **The dig, draft 3** (vol2 ch5): "Charles excavated the machine by himself over the course of a week".
   - A wheelbarrow at the head of the ramp he cut: rust tray, wheel and fork, handles, legs, a load of sand.

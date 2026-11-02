@@ -413,6 +413,18 @@ def build_stalk():
         make_box(f"Stalk_Eye_{k}" + beam, (hx + 0.31 * math.cos(a) * (1 if k % 2 else 0.8), hy + 0.26 * math.sin(a), hz - 0.05 - (k % 4) * 0.09),
                  (0.06, 0.06, 0.06), (1.0, 0.92, 0.70, 1.0))
     make_box("Stalk_Lens" + beam, (hx - 0.1, hy + 0.1, hz - 0.42), (0.22, 0.22, 0.04), (1.0, 0.96, 0.86, 1.0))
+    # (2026-11-02) "Then a beam came down out of the dark at a slant": the
+    # spot lit a pool on the floor but the beam itself never showed. The
+    # shaft along the spot's axis (the .tscn's Stalk_Beam: from the lens down
+    # and away to the floor at ~38 degrees off vertical), widening as it
+    # falls, faint and translucent; it stops short of the floor
+    lx, ly, lz = hx - 0.1, hy + 0.1, hz - 0.44
+    d = (-0.531, 0.311, -0.788)
+    t_end = (lz - 0.15) / 0.788
+    for k, (t0, t1, r) in enumerate(((0.0, 0.34, 0.10), (0.34, 0.68, 0.20), (0.68, 1.0, 0.30))):
+        a = (lx + d[0] * t_end * t0, ly + d[1] * t_end * t0, lz + d[2] * t_end * t0)
+        b = (lx + d[0] * t_end * t1, ly + d[1] * t_end * t1, lz + d[2] * t_end * t1)
+        make_tube(f"Stalk_Shaft_{k}" + beam, [a, b], r * 1.2, (1.0, 0.96, 0.86, 0.34), segments=12)
 
 
 def main():
