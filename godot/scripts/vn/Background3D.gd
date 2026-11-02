@@ -4583,6 +4583,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(7.4, 1.6, -4.2),
 		"camera_rotation": Vector3(0.06, deg_to_rad(-92.0), 0.0),
 		"fov": 62.0,
+		# (2026-11-02) the sky is the environment's gradient (its horizon a
+		# moonlit grey-blue the skinny trees stand black against); the sky box
+		# that was an unlit black wall at 160 m is gone from the builder
+		"far": 400.0,
 		# (2026-10-30) the yard rendered near-black: a moonlit night, the fall
 		# air crisp — enough ambient for the slab, the fort, the skinny trees
 		"env": {"sky_top": Color(0.05, 0.07, 0.14, 1), "sky_horizon": Color(0.16, 0.18, 0.28, 1),

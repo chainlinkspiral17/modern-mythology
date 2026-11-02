@@ -224,14 +224,40 @@ def build_yard():
     for k in range(4):
         make_rot_box(f"Play_Sink_Twig_{k}", (fx + 0.56 + k * 0.03, fy + 0.6, fz + 0.575), (0.20, 0.008, 0.008), (0.36, 0.26, 0.18, 1.0), yaw=k * 0.7)
     # tall skinny trees round the yard, the moon between them
+    # (2026-11-02) "The moon is there between tall skinny trees": the gap is
+    # kept on the moon's line (y 5; a trunk stood dead in front of it), the
+    # bark lighter and the trunks a touch thicker, so they read against the
+    # moonlit sky behind them and not as nothing on black
     for k in range(9):
         x, y = 27.0 + (k % 3) * 1.6, -4.0 + k * 2.2
+        if abs(y - 5.0) < 1.6:
+            continue
         h = 12.0 + (k % 4) * 1.5
-        make_cyl(f"Skinny_Tree_Trunk_{k}", (x, y, h / 2.0), 0.14, h, (0.30, 0.24, 0.20, 1.0), segments=8)
+        make_cyl(f"Skinny_Tree_Trunk_{k}", (x, y, h / 2.0), 0.18, h, (0.44, 0.40, 0.36, 1.0), segments=8)
         make_blob(f"Skinny_Tree_Crown_{k}", (x, y, h - 1.4), 1.1, (0.18, 0.22, 0.16, 1.0), noise=0.35, seed=70 + k, squash=2.2)
     make_box("Back_Fence", (34.0, 4.5, 0.75), (0.06, 30.0, 1.5), (0.40, 0.32, 0.24, 1.0))
     make_blob("Sky_Moon_Disc" + PATIO, (150.0, 5.0, 19.0), 3.4, (0.96, 0.96, 0.88, 1.0), noise=0.0, seed=3, squash=1.0)
-    make_box("Sky_Night_E" + PATIO, (170.0, 4.5, 60.0), (0.2, 900.0, 200.0), (0.04, 0.05, 0.10, 1.0))
+    # (2026-11-02) no sky box: the environment's night gradient is the sky,
+    # its moonlit horizon the skinny trees stand black against (the box was
+    # an unlit black wall at 160 m)
+    # (2026-11-02) "Finishing off the booze, gulping now instead of tasting";
+    # "They hold whole bottles now": the chairs pulled into a loose ring on
+    # the patio's S end, the cooler, the bottles standing and fallen
+    cx_, cy_ = 9.7, 1.6
+    for k, a in enumerate((0.3, 1.9, 3.3, 4.8)):
+        chx, chy = cx_ + math.cos(a) * 1.05, cy_ + math.sin(a) * 1.05
+        make_chair(f"Patio_Chair_{k}", chx, chy, yaw=a + math.pi / 2.0, wood=(0.66, 0.66, 0.64, 1.0), seat_col=(0.30, 0.44, 0.40, 1.0))
+    make_box("Patio_Cooler", (cx_ + 1.75, cy_ - 0.9, 0.21), (0.56, 0.36, 0.40), (0.62, 0.16, 0.14, 1.0))
+    make_box("Patio_Cooler_Lid", (cx_ + 1.75, cy_ - 0.9, 0.42), (0.58, 0.38, 0.04), (0.92, 0.92, 0.88, 1.0))
+    bottle = (0.30, 0.20, 0.08, 1.0)
+    for k, (bx, by, lying) in enumerate(((cx_ + 0.25, cy_ + 0.15, False), (cx_ - 0.30, cy_ - 0.20, False), (cx_ + 0.10, cy_ - 0.40, True),
+                                          (cx_ - 0.45, cy_ + 0.40, True), (cx_ + 1.30, cy_ - 0.35, False), (cx_ + 0.55, cy_ + 0.55, True))):
+        if lying:
+            make_cyl(f"Patio_Bottle_{k}", (bx, by, 0.042), 0.034, 0.24, bottle, axis='X', segments=8)
+        else:
+            make_cyl(f"Patio_Bottle_{k}", (bx, by, 0.130), 0.034, 0.24, bottle, segments=8)
+            make_cyl(f"Patio_Bottle_{k}_Neck", (bx, by, 0.285), 0.013, 0.08, bottle, segments=6)
+    # (the Hero Studio roster's backdrop card slot: keep the name)
     make_box("Far_Hill_Band", (120.0, 4.5, 4.0), (0.2, 600.0, 8.0), (0.06, 0.07, 0.08, 1.0))
 
 

@@ -198,7 +198,7 @@ shadow_enabled = false
 [node name="Fill_Night__tulsa_patio" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 15, 6, -4)
 light_color = Color(0.4, 0.44, 0.6, 1)
-light_energy = 0.06
+light_energy = 0.32
 shadow_enabled = false
 
 [node name="House_Spill__tulsa_patio" type="OmniLight3D" parent="."]
@@ -353,14 +353,14 @@ position = Vector3(-3.389, 1.473, -5.575)
 rotation = Vector3(-0.2618, 0.9848, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-02) down on the ring of chairs and the bottles: "Finishing off the booze"
 [node name="shot_insert_patio__tulsa_patio" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(7.874, 1.613, -4.098)
-rotation = Vector3(-1.3263, 0.0596, 0.0)
-metadata/fov = 35.0
+position = Vector3(8.100, 1.450, -3.700)
+rotation = Vector3(-0.4266, -2.4905, 0.0)
+metadata/fov = 42.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-02) the sawdust playground and the fort, the moon between the trees (it framed the dirt 1 m off)
 [node name="shot_insert_sawdust__tulsa_patio" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(11.231, 0.470, -4.453)
-rotation = Vector3(-0.5236, -1.5048, 0.0)
-metadata/fov = 35.0
+position = Vector3(10.600, 1.350, -3.600)
+rotation = Vector3(-0.1118, -1.4924, 0.0)
+metadata/fov = 44.0

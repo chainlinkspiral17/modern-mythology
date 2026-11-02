@@ -31,8 +31,8 @@ z -3.4, past the S wall.
 DRAFT 2 targets: the house's exterior (the text gives none); the downstairs
 and the table "at the table" tonight; the orange trees behind the street;
 Deck framing.
-THE HALL MEETING (2026-11-02): build_hall_meeting_2026_11 — Jack, the tall
-man, the crowd pressed toward them. Next: smoke under the ceiling, glasses
+THE HALL MEETING (2026-11-02): build_hall_meeting_2026_11 — the crowd pressed
+toward the clear place where Jack stands (the portraits are Jack and the tall man). Next: smoke under the ceiling, glasses
 and cigarettes in hands, someone on the stair.
 """
 import os, sys, math
@@ -238,17 +238,15 @@ def build_hall_meeting_2026_11():
     the bent and broken, also writers, poets, artists, actors, charlatans,
     and those who loved them … all gathered close to Jack"; "Jack had with
     him the tall man, the time-traveler" (vol3 ch2). The hall was empty.
-    Jack at the stair end facing back down the hall, the tall man at his
-    shoulder, the crowd pressed toward him, its back to the lens: 1945 suits
-    and dresses, a few hats. Stand-ins for scale and staging, never faces
+    The crowd pressed toward the clear place at the stair end where Jack
+    stands (his portrait, and the tall man's), its back to the lens: 1945
+    suits and dresses, a few hats. Stand-ins for scale and staging, never faces
     (the portraits are the faces). Clear of the two N doors and Ron's door.
     All `Hall_Crowd_Stock_*`: one mesh."""
-    W = -math.pi / 2.0                       # facing -x, down the hall to the lens
+    # Jack and the tall man are the VN's portraits, not the set's: the crowd
+    # turns toward the clear place at the stair end where Jack stands (a
+    # stand-in there would double his portrait)
     jx, jy = 2.9, 6.3
-    make_standing_figure("Hall_Crowd_Stock_Jack", jx, jy, heading=W, coat=(0.22, 0.22, 0.26, 1.0), pants=(0.22, 0.22, 0.26, 1.0),
-                         hair=(0.14, 0.11, 0.09, 1.0), arms="front")
-    make_standing_figure("Hall_Crowd_Stock_Tall_Man", jx + 0.55, jy + 0.85, heading=W - 0.35, h=1.98, coat=(0.40, 0.38, 0.34, 1.0),
-                         pants=(0.30, 0.29, 0.27, 1.0), hair=(0.30, 0.26, 0.20, 1.0), arms="folded")
     coats = ((0.34, 0.30, 0.26, 1.0), (0.24, 0.26, 0.34, 1.0), (0.52, 0.40, 0.30, 1.0), (0.30, 0.32, 0.28, 1.0),
              (0.44, 0.22, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0))
     dresses = ((0.56, 0.30, 0.34, 1.0), (0.30, 0.40, 0.46, 1.0), (0.42, 0.34, 0.28, 1.0), (0.20, 0.30, 0.24, 1.0))

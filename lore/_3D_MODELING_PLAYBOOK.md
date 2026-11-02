@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-02 · a stand-in named in the roster is a slot: never remove or rename it (pass 266)
+
+**Context:** pass 263 replaced Hollywood's flat 80 m far wall (`Hw_Far_N`) with
+3D blocks and hills, and deleted the box. `godot/tools/meshy_roster.json`
+had a backlot card for exactly that box (`pasadena_1945_hollywood_far_n`),
+written for the user to generate. HeroArt places a picture by its `apply`
+row and hides the stand-in BY NAME. With the name gone, the card would land
+with nothing hidden, and none of the full suite's gates noticed.
+
+**Rule:** before removing or renaming any part of a set, grep
+meshy_roster.json for the name (its `apply[].label` and `hide` lists).
+- If a row names it, keep the node at the recorded place. If the 3D
+  replacement should show until the picture exists, make the stand-in
+  clear (vertex alpha 0: LocaleGlass draws it transparent).
+- Never move a slot's recorded `center` or `size` yourself: the picture
+  was framed for it.
+
 ### 2026-11-02 · a foliage mass is leaf clusters over a core, not one blob (pass 262)
 
 **Context:** the crumpled barn's bramble and its hedge were single faceted

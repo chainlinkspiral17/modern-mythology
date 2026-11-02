@@ -3835,13 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 266: Marty's patio, "the moon is there between tall skinny trees" (tulsa_house `tulsa_patio`).**
+- vol3 ch3: "Much later on, Marty would go out to the patio with a select few … Finishing off the booze"; "Marty and Niles boxing … using the children's sawdust playground as a proving ground. The moon is there between tall skinny trees"; "They relax against the wooden fort Marty built for the children".
+- **The problems (survey 7):**
+  - The view rendered near-black: everything faced away from the moon, the fill was 0.06, and the skinny trees stood on an unlit black sky box.
+  - One trunk stood dead in front of the moon.
+  - The patio was bare.
+  - The `sawdust` insert framed the dirt a metre off; the `patio` insert looked straight down at the bare slab.
+- **The fixes:**
+  - The fill is up to 0.32, from the house side.
+  - The sky box is gone: the environment's night gradient silhouettes the trees.
+  - The trees keep a gap on the moon's line, with lighter, thicker trunks.
+  - On the patio's south end: chairs pulled into a loose ring, the cooler, the bottles standing and fallen.
+  - Both inserts are re-aimed: the ring of chairs and the bottles; the playground and the fort with the moon.
+- **The Hero Studio roster:** `Far_Hill_Band` is the slot for the user's planned backdrop card (`tulsa_house_far_hills_night`), so it stays as built.
+- **Fixed alongside:** pass 263 had removed `Hw_Far_N`, the slot for `pasadena_1945_hollywood_far_n`. It is back at its recorded place as a clear (alpha 0) stand-in, so the card lands when the user makes it and the street's 3D end shows until then.
+- **Draft N+1:**
+  - (Marty, Niles and the young men are the VN's sprites, by the builder's own rule: no stand-ins in the sawdust.)
+  - The sawdust scuffed where they boxed.
+  - The house's back wall and the patio door's warm spill seen from the yard.
+  - Fireflies are wrong for the fall ("Mosquitoes dying off in the fall"): keep the air empty.
+
 **2026-11-02 · pass 265: Jack's meeting in the hall (parsonage_1945 `parsonage_hall`).**
 - vol3 ch2: "Jack was holding a meeting or something in the hallway thick with bohemian peoples pressed up intimate: Physicists, journalists, the bent and broken, also writers, poets, artists, actors, charlatans, and those who loved them … all gathered close to Jack"; "Jack had with him the tall man, the time-traveler".
 - **The problem (survey 7):** the hall was empty.
 - **The meeting:**
-  - Jack at the stair end, facing back down the hall; the tall man (1.98 m) at his shoulder, arms folded.
-  - Twenty-two people pressed toward them, each turned to Jack: 1945 suits and dresses, a few hats.
+  - Twenty-two people pressed toward a clear place at the stair end, each turned to it: 1945 suits and dresses, a few hats.
   - The ones who could not get closer line the walls nearer the lens.
+  - Jack and the tall man are the VN's portraits, so they are not in the set. A stand-in "Jack" would double his portrait. The first build had them, and they came out in the same pass.
 - Their backs are to the lens, so every head has hair at the back (a bare head from behind read as a face).
 - All clear of the two N doors and Ron's door; `Hall_Crowd_Stock_*`, one mesh.
 - **Draft N+1:**

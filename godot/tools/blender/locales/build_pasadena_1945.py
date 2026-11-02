@@ -332,6 +332,11 @@ def build_hollywood():
     # (draft 2) the street's end was an 80 m beige wall 20 m past the last
     # building. Now the road and walks run on over a cross street, the next
     # blocks stand beyond it as a roofline, and the hills close the view
+    # Hw_Far_N stays as the Hero Studio roster's card slot (the backlot
+    # picture `pasadena_1945_hollywood_far_n` lands here, 80 x 20 m facing -y,
+    # and hides it); until the user makes that picture the stand-in is clear
+    # (alpha 0) and the street's 3D end below shows
+    make_box("Hw_Far_N", (hx, L1 + 19.0, 10.0), (80.0, 0.02, 20.0), (0.80, 0.76, 0.66, 0.0))
     make_box("Hw_Road_Cross", (hx, L1 + 10.0, -0.01), (14.0, 20.0, 0.02), ASPHALT)
     make_box("Hw_Cross_Street", (hx, L1 + 10.0, -0.012), (220.0, 12.0, 0.02), ASPHALT)
     make_box("Hw_Ground", (hx, cy + 20.0, -0.05), (120.0, (L1 - L0) + 80.0, 0.04), (0.44, 0.42, 0.36, 1.0))
