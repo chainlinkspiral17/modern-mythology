@@ -261,9 +261,9 @@ shadow_enabled = false
 omni_range = 3.5
 
 [node name="Pool_Underwater__desert_motel_dusk__motel_pool_dusk__motel_room_dusk" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -402.0, 0.0, -2.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -402.0, -0.9, -2.0)
 light_color = Color(0.4, 0.9, 1.0, 1)
-light_energy = 1.2
+light_energy = 2.0
 shadow_enabled = false
 omni_range = 6.0
 
@@ -420,8 +420,8 @@ metadata/fov = 45.0
 
 ; "Red silt settles on the skin of the water"
 [node name="shot_insert_pool" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-398.500, 1.500, 2.600)
-rotation = Vector3(-0.8561, 2.4469, 0.0)
+position = Vector3(-399.200, 1.450, 1.700)
+rotation = Vector3(-0.4175, 0.5261, 0.0)
 metadata/fov = 45.0
 
 ; the motel television, "the first thing that came on"

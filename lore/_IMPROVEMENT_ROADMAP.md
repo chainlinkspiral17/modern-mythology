@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 264: the motel pool is dug (desert_route `motel_pool_dusk`).**
+- vol3 ch7: "The kids all found the pool and watched the sky change, the dust pass over … ran along the concrete shorelines … jumping into the pool where the bottom never quite settled"; "Red silt settles on the skin of the water and turns slowly there."
+- **The problem (survey 6):** the pool was a 4 cm slab lying on the sand: a flat blue rectangle with a hard orange rectangle of "silt" on it.
+- **The basin:** dug 10 x 5 m through the ground (`Ground_Desert` is now four pieces round `POOL_HOLE`).
+  - The shallow end is 0.9 m and the deep end 1.8 m, the floor sloping between, with its dark lane line.
+  - Plaster walls, with the tile band at the water line.
+  - The water is translucent, 15 cm under the coping, so the floor shows through.
+  - The underwater light is in the basin now.
+- **The silt:** nine thin, translucent films drifting on the surface in a slow turn.
+- **The ladder:** at the deep end, over the coping and down the wall, with two treads under the water.
+- **The `pool` insert** looks down across the water at the silt.
+- **Draft N+1:**
+  - The kids in the water (the author's call: "the only ones in that pool").
+  - Towels on the loungers.
+  - The dust passing over, as a haze band in the sky.
+
 **2026-11-02 · pass 263: Hollywood, 1945 (pasadena_1945 `hollywood_shoot`, draft 2).**
 - vol3 ch10: "I stroll down to Hollywood. It is a hub of activity. The studios are busy crafting dreams lived in at 24 frames per second. They shoot on the streets, the closed sets are easy to gain access to."
 - **The problems (survey 5):**

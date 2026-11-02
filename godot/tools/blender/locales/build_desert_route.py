@@ -37,6 +37,14 @@ main drag, the motel at x -400.
 DRAFT 2 targets: heat shimmer and the dust as particles; the mud man's
 "fine pink powder"; the elderly woman's office interior; the wreck's fire
 as flicker; the curios as a hero prop; Deck framing.
+
+THE POOL, draft 2 (2026-11-02): dug — a 10 x 5 m basin through the ground
+(Ground_Desert in four pieces round POOL_HOLE), 0.9 m to 1.8 m, plaster walls,
+the tile band, the floor's lane line, translucent water 15 cm under the
+coping, the red silt as films drifting in a slow turn on the surface, the
+ladder down the deep end's wall. Draft 3: the kids in the water (the
+author's call: "the only ones in that pool"), towels on the loungers, the
+dust passing over as a haze band in the sky.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -114,9 +122,17 @@ def semi(prefix, x, y, yaw=0.0, trailer_yaw=None, cab_col=(0.62, 0.14, 0.12, 1.0
                      0.52, 0.32, (0.10, 0.10, 0.10, 1.0), axis='X', segments=10)
 
 
+POOL_HOLE = (-407.0, -397.0, -0.5, 4.5)       # the basin's rim (x0, x1, y0, y1): px -402, py 2, 10 x 5
+
+
 def build_desert():
     """The red desert to the horizon: sand, sage, rocks, the mesas."""
-    make_box("Ground_Desert", (0.0, 0.0, -0.06), (2400.0, 2400.0, 0.04), SAND)
+    # (2026-11-02) four pieces round the motel pool's basin (POOL_HOLE): the
+    # pool is dug now, and one 2.4 km slab covered its hole
+    hx0, hx1, hy0, hy1 = POOL_HOLE
+    for nm, (ax, bx_, ay, by_) in {"S": (-1200.0, 1200.0, -1200.0, hy0), "N": (-1200.0, 1200.0, hy1, 1200.0),
+                                   "W": (-1200.0, hx0, hy0, hy1), "E": (hx1, 1200.0, hy0, hy1)}.items():
+        make_box(f"Ground_Desert_{nm}", ((ax + bx_) / 2.0, (ay + by_) / 2.0, -0.06), (bx_ - ax, by_ - ay, 0.04), SAND)
     r = _rng(77)
     for k in range(70):
         x0 = (r() - 0.5) * 1400.0
@@ -332,13 +348,50 @@ def build_motel():
     for tag, cx_, cy_, w, d in (("S", px, py - 3.75, 16.0, 2.5), ("N", px, py + 3.75, 16.0, 2.5),
                                 ("W", px - 6.5, py, 3.0, 5.0), ("E", px + 6.5, py, 3.0, 5.0)):
         make_box(f"Pool_Deck_{tag}", (cx_, cy_, 0.03), (w, d, 0.06), deck)
-    make_box("Pool_Water", (px, py, 0.02), (10.0, 5.0, 0.04), (0.18, 0.56, 0.70, 1.0), open_faces={'+Z'})
-    make_box("Pool_Water_Surface", (px, py, 0.045), (9.9, 4.9, 0.01), (0.22, 0.60, 0.72, 1.0))
-    make_box("Pool_Silt", (px + 1.4, py - 0.6, 0.052), (3.2, 1.6, 0.004), (0.62, 0.32, 0.24, 1.0))
+    # (2026-11-02, draft 2) the pool is DUG: it was a 4 cm slab on the sand. A
+    # basin 10 x 5 m, the shallow end (W) 0.9 m, the deep end 1.8 m, its
+    # floor sloping between; plaster walls with the tile band at the water
+    # line; the water 15 cm under the coping and translucent, the floor
+    # showing through. "Red silt settles on the skin of the water and turns
+    # slowly there": films of it drifting in a slow turn on the surface,
+    # thin and translucent (it was one hard orange rectangle)
+    PL, PW, WZ = 10.0, 5.0, -0.15
+    plaster = (0.70, 0.86, 0.88, 1.0)
+    floor = (0.60, 0.82, 0.86, 1.0)
+    tile = (0.16, 0.34, 0.46, 1.0)
+    sh, dp = -0.90, -1.80
+    slope = math.atan2(dp - sh, PL)
+    make_rot_box("Pool_Basin_Floor", (px, py, (sh + dp) / 2.0 - 0.05), (math.hypot(PL, dp - sh), PW, 0.10), floor, pitch=-slope)
+    for s_ in (-1, 1):
+        make_box(f"Pool_Basin_Wall_{'N' if s_ > 0 else 'S'}", (px, py + s_ * (PW / 2.0 + 0.05), (dp - 0.10 - 0.08) / 2.0),
+                 (PL + 0.20, 0.10, -dp + 0.10 - 0.08), plaster)
+        make_box(f"Pool_Tile_Band_{'N' if s_ > 0 else 'S'}", (px, py + s_ * (PW / 2.0 - 0.005), -0.13), (PL, 0.01, 0.16), tile)
+    make_box("Pool_Basin_Wall_W", (px - PL / 2.0 - 0.05, py, (sh - 0.10 - 0.08) / 2.0), (0.10, PW, -sh + 0.10 - 0.08), plaster)
+    make_box("Pool_Basin_Wall_E", (px + PL / 2.0 + 0.05, py, (dp - 0.10 - 0.08) / 2.0), (0.10, PW, -dp + 0.10 - 0.08), plaster)
+    for s_ in (-1, 1):
+        make_box(f"Pool_Tile_Band_{'E' if s_ > 0 else 'W'}", (px + s_ * (PL / 2.0 - 0.005), py, -0.13), (0.01, PW - 0.02, 0.16), tile)
+    # the lane line on the floor, dark down the slope
+    make_rot_box("Pool_Floor_Line", (px, py, (sh + dp) / 2.0 + 0.005), (math.hypot(PL, dp - sh) - 1.2, 0.22, 0.01), tile, pitch=-slope)
+    make_box("Pool_Water", (px, py, WZ), (PL - 0.02, PW - 0.02, 0.02), (0.30, 0.64, 0.72, 0.62))
+    silt = (0.66, 0.30, 0.20, 0.50)
+    for k in range(9):
+        a = 0.9 + k * 0.74
+        rr = 0.6 + k * 0.32
+        sx_, sy_ = px + 0.8 + math.cos(a) * rr * 1.5, py - 0.2 + math.sin(a) * rr * 0.55
+        sx_ = max(px - PL / 2.0 + 0.7, min(px + PL / 2.0 - 0.7, sx_))
+        sy_ = max(py - PW / 2.0 + 0.6, min(py + PW / 2.0 - 0.6, sy_))
+        make_blob(f"Pool_Silt_{k}", (sx_, sy_, WZ + 0.013), 0.32 + 0.09 * (k % 3), silt, noise=0.30, seed=500 + k, squash=0.03,
+                  rings=5, segments=13)
     make_box("Pool_Coping", (px, py, 0.075), (10.4, 5.4, 0.03), (0.92, 0.90, 0.86, 1.0), open_faces={'+Z', '-Z'})
     for k in range(4):
         make_rot_box(f"Pool_Lounger_{k}", (px - 6.0 + k * 2.6, py - 4.2, 0.21), (0.7, 1.9, 0.12), (0.92, 0.92, 0.90, 1.0), yaw=0.0, roll=0.1)   # on the deck
-    make_tube("Pool_Ladder", [(px + 4.6, py + 2.3, 0.0), (px + 4.6, py + 2.3, 0.9), (px + 4.6, py + 2.0, 0.9)], 0.025, (0.80, 0.80, 0.80, 1.0), segments=6)
+    # the ladder at the deep end: two rails up off the deck, over the coping,
+    # down the N wall into the water, two treads under the surface
+    for k, lx in enumerate((px + 3.9, px + 4.4)):
+        make_tube(f"Pool_Ladder_Rail_{k}", [(lx, py + 2.95, 0.06), (lx, py + 2.95, 0.80), (lx, py + 2.62, 0.86),
+                                            (lx, py + 2.40, 0.40), (lx, py + 2.40, -1.10)], 0.025, (0.80, 0.80, 0.80, 1.0), segments=6)
+    for k, tz in enumerate((-0.45, -0.80)):
+        make_box(f"Pool_Ladder_Tread_{k}", (px + 4.15, py + 2.40, tz), (0.50, 0.08, 0.03), (0.80, 0.80, 0.80, 1.0))
     for k in range(17):
         make_cyl(f"PoolFence_Stock_{k}", (px - 8.0 + k * 1.0, py - 5.2, 0.6), 0.02, 1.2, (0.62, 0.62, 0.64, 1.0), segments=5)
     make_tube("PoolFence_Stock_Top", [(px - 8.0, py - 5.2, 1.2), (px + 8.0, py - 5.2, 1.2)], 0.02, (0.62, 0.62, 0.64, 1.0), segments=5)
