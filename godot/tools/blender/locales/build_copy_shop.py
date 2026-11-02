@@ -218,6 +218,24 @@ def build_office():
             make_box(f"Off_Desk_{r}_{k}_Monitor", (x - 0.10, y + back * 0.20, 0.96), (0.40, 0.36, 0.40), (0.80, 0.78, 0.72, 1.0))
             make_chair(f"Off_Desk_{r}_{k}_Chair", x, y - back * 0.70, yaw=(0.0 if back > 0 else math.pi), wood=(0.24, 0.24, 0.26, 1.0),
                        seat_col=(0.24, 0.26, 0.36, 1.0))
+    # (2026-11-02) the floor's middle: an island of desks back to back with a
+    # low divider down its spine (the room was two wall rows round an empty
+    # 18 x 13 m floor: a hall, not an office). Left as the day left it
+    for r, (y, back) in enumerate(((6.62, 1), (7.98, -1))):   # monitors to the divider, chairs out
+        for k in range(4):
+            x = 38.6 + k * 3.0
+            make_box(f"Off_Isle_{r}_{k}_Top", (x, y, 0.735), (1.50, 0.76, 0.03), (0.62, 0.56, 0.48, 1.0))
+            make_box(f"Off_Isle_{r}_{k}_Pedestal", (x + 0.52, y, 0.36), (0.42, 0.70, 0.72), (0.50, 0.50, 0.52, 1.0))
+            make_box(f"Off_Isle_{r}_{k}_Leg", (x - 0.70, y, 0.36), (0.04, 0.70, 0.72), (0.50, 0.50, 0.52, 1.0))
+            make_box(f"Off_Isle_{r}_{k}_Monitor", (x - 0.10, y + back * 0.18, 0.96), (0.40, 0.36, 0.40), (0.80, 0.78, 0.72, 1.0))
+            make_chair(f"Off_Isle_{r}_{k}_Chair", x + (0.15 if k % 2 else -0.10), y - back * 0.78, yaw=(0.0 if back > 0 else math.pi) + (0.25 if k % 2 else -0.15),
+                       wood=(0.24, 0.24, 0.26, 1.0), seat_col=(0.24, 0.26, 0.36, 1.0))
+            if (r + k) % 3 == 0:
+                make_box(f"Off_Isle_{r}_{k}_Papers", (x + 0.25, y - back * 0.10, 0.755), (0.24, 0.30, 0.012), PAPER)
+            if (r + k) % 4 == 1:
+                make_cyl(f"Off_Isle_{r}_{k}_Mug", (x - 0.55, y - back * 0.20, 0.80), 0.04, 0.10, (0.70, 0.30, 0.24, 1.0), segments=10)
+    make_box("Off_Isle_Divider", (38.6 + 4.5, 7.30, 0.62), (12.4, 0.05, 1.24), (0.46, 0.50, 0.58, 1.0))
+    make_box("Off_Isle_Divider_Cap", (38.6 + 4.5, 7.30, 1.255), (12.4, 0.08, 0.03), (0.36, 0.38, 0.42, 1.0))
     hx, hy = 37.0, OD - 0.10 - 0.38
     make_box("His_Drawer", (hx + 0.52, hy - 0.352, 0.58), (0.38, 0.012, 0.16), (0.56, 0.56, 0.58, 1.0))
     make_cyl("Rolodex", (hx + 0.45, hy + 0.05, 0.81), 0.08, 0.14, (0.20, 0.20, 0.22, 1.0), axis='X', segments=12)
@@ -227,11 +245,32 @@ def build_office():
     make_box("Form_Letter_Stack", (hx + 0.15, hy - 0.10, 0.76), (0.22, 0.28, 0.02), PAPER)
     # the copying machine against the E wall, its enlargements in the tray
     copier("Off_Copier", OX1 - 0.10 - 0.35, 9.0, face="-X")
-    make_box("Off_Copier_Enlargements", (OX1 - 0.10 - 0.35, 9.0 - 0.66, 0.945), (0.30, 0.22, 0.03), PAPER)
+    # (2026-11-02) the enlargements fanned on the copier's top: "The letter e.
+    # lower case like e.e. cummings, filling eight and a half by eleven ...
+    # Takes me twelve copies at four hundred percent". (One 30 cm slab among
+    # the sorter's bins read as nothing.) Each sheet carries its e: a black
+    # ring, a white counter, the crossbar
+    ccx, ccy = OX1 - 0.10 - 0.35, 9.0
+    ink = (0.06, 0.06, 0.07, 1.0)
+    for k, (dy_, dx_, yaw_) in enumerate(((-0.30, 0.02, 0.20), (-0.02, -0.04, -0.12), (0.24, 0.03, 0.08))):
+        ex, ey, ez = ccx + dx_, ccy + dy_, 1.212 + 0.002 + k * 0.004   # on the closed lid
+        yw = yaw_ - math.pi / 2.0              # the sheet's top to the E, away from where he stands
+        cw, sw = math.cos(yw), math.sin(yw)
+        make_rot_box(f"Off_Copier_Enlargements_{k}", (ex, ey, ez), (0.216, 0.279, 0.004), PAPER, yaw=yw)
+        make_cyl(f"Off_Copier_Enlargements_{k}_E_Ring", (ex, ey, ez + 0.0025), 0.085, 0.002, ink, segments=18)
+        make_cyl(f"Off_Copier_Enlargements_{k}_E_Counter", (ex, ey, ez + 0.0035), 0.052, 0.002, PAPER, segments=18)
+        make_rot_box(f"Off_Copier_Enlargements_{k}_E_Bar", (ex, ey + 0.0, ez + 0.0045), (0.15, 0.016, 0.002), ink, yaw=yw)
+        # the e's mouth, open at the lower right
+        lx, ly = 0.062, -0.040
+        make_rot_box(f"Off_Copier_Enlargements_{k}_E_Mouth", (ex + lx * cw - ly * sw, ey + lx * sw + ly * cw, ez + 0.0045),
+                     (0.07, 0.05, 0.002), PAPER, yaw=yw - 0.35)
+    for k in range(4):                      # the rejects on the floor by the machine
+        make_rot_box(f"Off_Copier_Enlargements_Floor_{k}", (ccx - 0.9 - 0.25 * k, ccy - 0.6 + 0.35 * k, 0.003 + 0.002 * k),
+                     (0.216, 0.279, 0.003), PAPER, yaw=0.4 * k - 0.3)
     # the cleaning crew's cart and a vacuum, far off
-    make_box("Cleaning_Cart", (49.0, 6.2, 0.45), (0.60, 1.10, 0.90), (0.84, 0.84, 0.86, 1.0))
-    make_cyl("Cleaning_Bin", (49.0, 5.8, 1.05), 0.18, 0.30, (0.30, 0.30, 0.34, 1.0), segments=12)
-    make_box("Vacuum", (48.0, 7.2, 0.40), (0.30, 0.34, 0.80), (0.86, 0.84, 0.80, 1.0))
+    make_box("Cleaning_Cart", (50.2, 6.0, 0.45), (0.60, 1.10, 0.90), (0.84, 0.84, 0.86, 1.0))   # (2026-11-02) east of the desk island
+    make_cyl("Cleaning_Bin", (50.2, 5.6, 1.05), 0.18, 0.30, (0.30, 0.30, 0.34, 1.0), segments=12)
+    make_box("Vacuum", (49.6, 7.6, 0.40), (0.30, 0.34, 0.80), (0.86, 0.84, 0.80, 1.0))
     # the bright corner where the walls meet (NE) is a light, not a prop
 
 

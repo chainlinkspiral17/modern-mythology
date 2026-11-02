@@ -4167,9 +4167,11 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/copy_shop.tscn",
 		"requires_glb": "res://assets/3d/locales/copy_shop.glb",
 		# "How bright it is in the center, at the nexus" - from behind his desk along the row to the corner
-		"camera_origin": Vector3(36.0, 1.2, -12.4),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-70.0), 0.0),
-		"fov": 66.0,
+		# (2026-11-02) out from the N wall (it filled the left third), down the room past the
+		# desk island to the copying machine and the bright corner
+		"camera_origin": Vector3(37.2, 1.3, -11.2),
+		"camera_rotation": Vector3(-0.0246, -1.5708, 0.0),
+		"fov": 58.0,
 		"env": {"ambient_color": Color(0.60, 0.62, 0.70, 1), "ambient_energy": 0.22, "fog_color": Color(0.08, 0.08, 0.10, 1)},
 		"suppress_input": true,
 	},
@@ -4912,7 +4914,12 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-5.8, 1.45, 1.7),
 		"camera_rotation": Vector3(-0.06, deg_to_rad(-80.0), 0.0),
 		"fov": 62.0,
-		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		# (2026-11-02) a sky gradient, not the four lit sky cards (their seams
+		# stood in the frame as flat walls; see jacob_house_front)
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1),
+			"sky_top": Color(0.44, 0.58, 0.80, 1), "sky_horizon": Color(0.80, 0.85, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.54, 0.50, 1), "ground_bottom": Color(0.30, 0.32, 0.28, 1)},
+		"far": 400.0,
 		"suppress_input": true,
 	},
 	"wagner_house_steps": {
@@ -4922,7 +4929,12 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-1.4, 1.6, 5.6),
 		"camera_rotation": Vector3(0.02, deg_to_rad(15.0), 0.0),
 		"fov": 60.0,
-		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		# (2026-11-02) a sky gradient, not the four lit sky cards (their seams
+		# stood in the frame as flat walls; see jacob_house_front)
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1),
+			"sky_top": Color(0.44, 0.58, 0.80, 1), "sky_horizon": Color(0.80, 0.85, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.54, 0.50, 1), "ground_bottom": Color(0.30, 0.32, 0.28, 1)},
+		"far": 400.0,
 		"suppress_input": true,
 	},
 	"jacob_house_front": {
@@ -4934,7 +4946,6 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		# (2026-11-02) the sky is a gradient, not the four lit cards: the N and E
 		# cards met behind the house in a tonal seam that stood like a wall
-		"strip": ["Sky_N", "Sky_E", "Sky_W", "Sky_S"],
 		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1),
 			"sky_top": Color(0.44, 0.58, 0.80, 1), "sky_horizon": Color(0.80, 0.85, 0.90, 1),
 			"ground_horizon": Color(0.52, 0.54, 0.50, 1), "ground_bottom": Color(0.30, 0.32, 0.28, 1)},

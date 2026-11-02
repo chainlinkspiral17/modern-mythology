@@ -322,13 +322,8 @@ def build_front():
     # the walk from the steps to the sidewalk, the path to the drive
     make_box("Front_Walk", (-2.5, -6.0, -0.001), (1.0, 5.4, 0.008), (0.62, 0.60, 0.56, 1.0))
     make_box("Walk_To_Drive", (-0.95, -3.5, -0.001), (2.1, 0.8, 0.008), (0.62, 0.60, 0.56, 1.0))
-    # the sky for the outside views (the room's own env is warm and dark)
-    for tag, col in (("__wagner_porch_morning", (0.76, 0.82, 0.90, 1.0)), ("__wagner_house_steps", (0.70, 0.78, 0.88, 1.0)),
-                     ("__jacob_house_front", (0.72, 0.80, 0.90, 1.0))):
-        make_box("Sky_S" + tag, (0.0, -150.0, 40.0), (400.0, 0.2, 160.0), col)
-        make_box("Sky_W" + tag, (-150.0, 0.0, 40.0), (0.2, 400.0, 160.0), col)
-        make_box("Sky_E" + tag, (150.0, 0.0, 40.0), (0.2, 400.0, 160.0), col)
-        make_box("Sky_N" + tag, (0.0, 150.0, 40.0), (400.0, 0.2, 160.0), col)
+    # (2026-11-02) the outside views take their sky from the preset's
+    # gradient: the four lit sky cards met in seams that stood in the frame
 
 
 def build_jacob_house():
@@ -377,6 +372,25 @@ def build_jacob_house():
 def build_outside():
     """The yard, the driveway and JD on it; the street of small houses."""
     make_view("View_S", "S", Y0, 0.0, kind="front", ground_z=0.0, seed=27)
+    # (2026-11-02) the street goes on: a 24 m segment either side (the lawn,
+    # the walk, the street, the houses across it), and the Wagners'
+    # neighbours on this side. The outside views had a bare horizon left and
+    # right of the house once the sky cards' seams came out of the frame
+    for k, cx_ in enumerate((-24.0, 24.0)):
+        make_view(f"View_S_{'W' if k == 0 else 'E'}", "S", Y0, cx_, kind="front", ground_z=0.0, seed=31 + k * 7)
+    for k, (nx, body, roof_c) in enumerate(((-16.0, (0.70, 0.72, 0.66, 1.0), (0.32, 0.30, 0.30, 1.0)),
+                                          (16.5, (0.82, 0.76, 0.62, 1.0), (0.38, 0.26, 0.22, 1.0)))):
+        make_box(f"Wagner_Neighbor_{k}_Body", (nx, 4.5, 1.4), (8.4, 8.0, 2.8), body)
+        make_gable(f"Wagner_Neighbor_{k}_Roof", (nx, 4.5, 2.8 + 0.9), (9.2, 8.8, 1.8), roof_c, ridge_axis='X')
+        make_box(f"Wagner_Neighbor_{k}_Door", (nx + 1.5, 0.48, 1.0), (0.90, 0.04, 2.0), (0.46, 0.30, 0.24, 1.0))
+        for w, wx in enumerate((nx - 2.0, nx - 0.4)):
+            make_box(f"Wagner_Neighbor_{k}_Window_{w}", (wx, 0.48, 1.5), (1.1, 0.03, 1.0), (0.30, 0.34, 0.38, 1.0))
+        make_box(f"Wagner_Neighbor_{k}_Walk", (nx + 1.5, -4.2, -0.001), (1.0, 8.4, 0.008), (0.62, 0.60, 0.56, 1.0))
+        make_box(f"Wagner_Neighbor_{k}_Lot_Ground", (nx, 4.5, -0.025), (10.4, 9.0, 0.05), (0.30, 0.38, 0.22, 1.0))
+    # the next street's roofs and trees north, behind the block
+    from _props.detail import make_far_bands
+    make_far_bands("Wagner_Far", (0.30, 0.34, 0.30), [(60.0, 120.0, 6.0, 0.9), (140.0, 220.0, 9.0, 0.7)], sides="NWE",
+                   cx=0.0, cy=4.0, profile="treeline")
     make_box("Driveway", (1.5, -4.5, -0.001), (2.8, 9.0, 0.008), (0.62, 0.60, 0.56, 1.0))
     build_front()
     build_jacob_house()

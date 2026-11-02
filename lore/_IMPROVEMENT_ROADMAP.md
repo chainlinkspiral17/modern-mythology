@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 276: the Wagners' street goes on; the office after hours.**
+- **wagner_home (vol1):** the outside views (`wagner_house_steps`, `wagner_porch_morning`, `jacob_house_front`) sat in a cube of four lit sky cards whose seams stood in the frame as flat walls.
+  - The cards are gone; each view takes a daytime sky gradient.
+  - With the cards out, a bare horizon showed either side of the house. The street now goes on: a 24 m segment of lawn, walk, street and the houses across it on each side.
+  - The Wagners have neighbours on their own side (doors, windows, walks, lots), and the next street's treeline stands to the north.
+- **office_after_hours** (vol4 "paper cuts"):
+  - The lens stood 1.6 m off the N wall, which filled a third of the frame. It now comes out beside his desk, down the room to the copier and the bright corner.
+  - The floor's empty middle got an island of eight desks back to back, with a divider down its spine, left as the day left them (papers, a mug). The cleaning crew's cart and vacuum moved east of it.
+  - "The letter e. lower case like e.e. cummings, filling eight and a half by eleven … Takes me twelve copies at four hundred percent": three enlargements fanned on the copier's lid, each a giant lower-case e, and the rejects on the floor.
+  - The chapter's auto cue `[shot:insert stick]` had read "the tiny human dabs of paint that stick out" as a stick and framed the cleaning cart. It is now `[shot:insert enlargements]`, on the e's. This is direction only; the text is untouched.
+- **Draft N+1:**
+  - The office's "bright corner" as a real light pool on the floor.
+  - Rolodex cards spilled ("I skim the rolodex and remove hazy recollections").
+  - The Wagners' street: parked cars along the curb.
+
 **2026-11-02 · pass 275: the skate pool, draft 3; Jacob's sky; an insert-size scan.**
 - **The skatepark** (vol1 ch2, "Faust is with his friends Wagner and Jacob, waiting to push off into the pool").
   - The pool was 5.5 x 3.9 x 1.5 m, a hot tub's footprint. It is now 6.6 x 4.6 x 1.8 m (the pipe hump moved west for it).

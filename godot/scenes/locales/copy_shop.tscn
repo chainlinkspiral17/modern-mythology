@@ -383,10 +383,12 @@ metadata/fov = 35.0
 
 
 
-[node name="shot_insert_stick__office_after_hours" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(48.285, 0.662, -6.541)
-rotation = Vector3(-0.2618, -2.0158, 0.0)
-metadata/fov = 35.0
+; (2026-11-02) the enlargements fanned on the copier's top ("Takes me twelve copies at four hundred
+; percent"); the auto cue had read "stick out" as a stick and framed the cleaning cart
+[node name="shot_insert_enlargements__office_after_hours" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(50.550, 1.850, -8.600)
+rotation = Vector3(-0.5632, -1.1903, 0.0)
+metadata/fov = 38.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_report__office_after_hours" type="Marker3D" parent="." groups=["vn_shot"]]
