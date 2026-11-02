@@ -432,6 +432,18 @@ FPOUT="$(python3 far_plane_audit.py 2>/dev/null)" || {
 echo "$FPOUT" | tail -1
 echo ""
 
+# ── Winding gate (2026-11-01) ─────────────────────────────────
+# No other gate sees a face. Closed meshes wound inside out draw their far
+# inner faces, lit from behind (pass 244's roofless car, every X-parked
+# car's wheels, half of each sagging wire). Each set is held at or under
+# winding_baseline.json (lower it with --write-baseline; never raise it).
+echo "── winding_audit.py ──"
+WDOUT="$(python3 winding_audit.py 2>/dev/null)" || {
+    echo "$WDOUT" | grep "^REGRESSION" | head -20
+    echo "$WDOUT" | tail -1; exit 1; }
+echo "$WDOUT" | tail -1
+echo ""
+
 # ── Page-length gate (2026-09-12) ─────────────────────────────
 # DialogueBox keeps its full font to 260 visible characters and then
 # shrinks toward half size to fit — "too much text on screen at once,
