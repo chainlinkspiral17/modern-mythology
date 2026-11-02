@@ -31,6 +31,9 @@ z -3.4, past the S wall.
 DRAFT 2 targets: the house's exterior (the text gives none); the downstairs
 and the table "at the table" tonight; the orange trees behind the street;
 Deck framing.
+THE HALL MEETING (2026-11-02): build_hall_meeting_2026_11 — Jack, the tall
+man, the crowd pressed toward them. Next: smoke under the ceiling, glasses
+and cigarettes in hands, someone on the stair.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -39,6 +42,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
                              join_stock, export_glb)
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.furniture import make_chair, make_lamp
+from _props.figures import make_standing_figure
 
 F = 0.0                                     # the upstairs floor (our walls rise from z 0)
 G = -3.4                                    # the street, a storey below
@@ -228,11 +232,58 @@ def build_street():
     make_box("Sky_Card__ron_night_floor__ron_night_bed__parsonage_hall", (0.0, -45.0, G + 15.0), (120.0, 0.2, 30.0), (0.04, 0.05, 0.10, 1.0))
 
 
+def build_hall_meeting_2026_11():
+    """(2026-11-02) "Jack was holding a meeting or something in the hallway
+    thick with bohemian peoples pressed up intimate: Physicists, journalists,
+    the bent and broken, also writers, poets, artists, actors, charlatans,
+    and those who loved them … all gathered close to Jack"; "Jack had with
+    him the tall man, the time-traveler" (vol3 ch2). The hall was empty.
+    Jack at the stair end facing back down the hall, the tall man at his
+    shoulder, the crowd pressed toward him, its back to the lens: 1945 suits
+    and dresses, a few hats. Stand-ins for scale and staging, never faces
+    (the portraits are the faces). Clear of the two N doors and Ron's door.
+    All `Hall_Crowd_Stock_*`: one mesh."""
+    W = -math.pi / 2.0                       # facing -x, down the hall to the lens
+    jx, jy = 2.9, 6.3
+    make_standing_figure("Hall_Crowd_Stock_Jack", jx, jy, heading=W, coat=(0.22, 0.22, 0.26, 1.0), pants=(0.22, 0.22, 0.26, 1.0),
+                         hair=(0.14, 0.11, 0.09, 1.0), arms="front")
+    make_standing_figure("Hall_Crowd_Stock_Tall_Man", jx + 0.55, jy + 0.85, heading=W - 0.35, h=1.98, coat=(0.40, 0.38, 0.34, 1.0),
+                         pants=(0.30, 0.29, 0.27, 1.0), hair=(0.30, 0.26, 0.20, 1.0), arms="folded")
+    coats = ((0.34, 0.30, 0.26, 1.0), (0.24, 0.26, 0.34, 1.0), (0.52, 0.40, 0.30, 1.0), (0.30, 0.32, 0.28, 1.0),
+             (0.44, 0.22, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0))
+    dresses = ((0.56, 0.30, 0.34, 1.0), (0.30, 0.40, 0.46, 1.0), (0.42, 0.34, 0.28, 1.0), (0.20, 0.30, 0.24, 1.0))
+    hairs = ((0.14, 0.11, 0.09, 1.0), (0.30, 0.22, 0.14, 1.0), (0.52, 0.40, 0.24, 1.0), (0.10, 0.09, 0.08, 1.0), (0.46, 0.44, 0.42, 1.0))
+    # (x, y, dress?, hat?) — pressed toward Jack, thinning toward the lens
+    crowd = ((1.8, 5.5, 0, 0), (1.7, 6.3, 1, 0), (1.9, 7.1, 0, 1), (1.0, 5.3, 1, 0), (1.05, 6.0, 0, 0), (0.95, 6.75, 0, 1),
+             (1.1, 7.45, 1, 0), (0.25, 5.6, 0, 1), (0.3, 6.35, 1, 0), (-0.45, 5.9, 0, 0), (-0.4, 6.7, 0, 0), (-1.2, 6.5, 1, 0),
+             (-1.15, 7.3, 0, 1), (-2.0, 6.0, 0, 0), (-2.1, 6.9, 1, 0), (3.0, 7.7, 0, 0),
+             # along the walls, nearer the lens: the ones who could not get closer
+             (-2.9, 5.25, 0, 0), (-2.7, 7.7, 1, 0), (2.3, 5.0, 0, 1), (-0.9, 7.8, 0, 0), (-0.75, 5.2, 1, 0), (0.2, 5.0, 0, 0))
+    for k, (x, y, dress, hat) in enumerate(crowd):
+        # each turns toward Jack
+        hd = math.atan2(jx - x, jy - y)
+        h = 1.64 if dress else 1.70 + 0.06 * (k % 3)
+        pfx = f"Hall_Crowd_Stock_{k}"
+        hair = hairs[k % len(hairs)]
+        make_standing_figure(pfx, x, y, heading=hd, h=h, coat=coats[k % len(coats)], dress=dresses[k % len(dresses)] if dress else None,
+                             hair=hair, arms=("down", "folded", "down", "front")[k % 4])
+        s_ = h / 1.72
+        head_z = 1.50 * s_
+        # the back of the head is hair: from the lens this crowd is all backs
+        make_blob(f"{pfx}_Hair_Back", (x - 0.045 * s_ * math.sin(hd), y - 0.045 * s_ * math.cos(hd), head_z + 0.01 * s_), 0.10 * s_, hair,
+                  noise=0.10, seed=k + 40, squash=1.05)
+        if hat:
+            hz = h * 0.93
+            make_cyl(f"{pfx}_Hat_Brim", (x, y, hz), 0.17, 0.015, (0.22, 0.20, 0.18, 1.0), segments=12)
+            make_cyl(f"{pfx}_Hat_Crown", (x, y, hz + 0.06), 0.105, 0.11, (0.22, 0.20, 0.18, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_house()
     build_room()
     build_street()
+    build_hall_meeting_2026_11()
     try:
         join_stock()
     except Exception as _e:

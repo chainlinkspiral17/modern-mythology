@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 265: Jack's meeting in the hall (parsonage_1945 `parsonage_hall`).**
+- vol3 ch2: "Jack was holding a meeting or something in the hallway thick with bohemian peoples pressed up intimate: Physicists, journalists, the bent and broken, also writers, poets, artists, actors, charlatans, and those who loved them … all gathered close to Jack"; "Jack had with him the tall man, the time-traveler".
+- **The problem (survey 7):** the hall was empty.
+- **The meeting:**
+  - Jack at the stair end, facing back down the hall; the tall man (1.98 m) at his shoulder, arms folded.
+  - Twenty-two people pressed toward them, each turned to Jack: 1945 suits and dresses, a few hats.
+  - The ones who could not get closer line the walls nearer the lens.
+- Their backs are to the lens, so every head has hair at the back (a bare head from behind read as a face).
+- All clear of the two N doors and Ron's door; `Hall_Crowd_Stock_*`, one mesh.
+- **Draft N+1:**
+  - Smoke under the ceiling (it is 1945, and bohemian).
+  - Glasses and cigarettes in hands.
+  - Someone sitting on the stair.
+  - The figures' grammar (`_props/figures`) is still blocky at this distance: the next helper pass is shoulders and a skirt that flares.
+
 **2026-11-02 · pass 264: the motel pool is dug (desert_route `motel_pool_dusk`).**
 - vol3 ch7: "The kids all found the pool and watched the sky change, the dust pass over … ran along the concrete shorelines … jumping into the pool where the bottom never quite settled"; "Red silt settles on the skin of the water and turns slowly there."
 - **The problem (survey 6):** the pool was a 4 cm slab lying on the sand: a flat blue rectangle with a hard orange rectangle of "silt" on it.
