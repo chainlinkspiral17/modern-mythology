@@ -5680,6 +5680,11 @@
    "md5": "b9811b7064ab9b4f5cdd5e91670c1214",
    "size": 1832453
   },
+  "godot/assets/art/hero/blue_heron_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "2074abaa4a452c5e44023a3f0d8a3357",
+   "size": 2574026
+  },
   "godot/assets/art/hero/board_lords_interior_across_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "2f0796f215d89991c016e0da9880abdf",
@@ -7315,6 +7320,41 @@
    "md5": "9ace83b528f21cef1d62d43d964aca86",
    "size": 1747915
   },
+  "godot/assets/art/hero/honolulu_dry_cleaner_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "1f6c0c4579596a6d76511fc464e267a4",
+   "size": 1685160
+  },
+  "godot/assets/art/hero/honolulu_final_cut_box.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "2d1cd8f1f5e27c3328d53b93ca99b313",
+   "size": 3209710
+  },
+  "godot/assets/art/hero/honolulu_game_store_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "640d6fd26cdda499131a519138eb7db2",
+   "size": 1296473
+  },
+  "godot/assets/art/hero/honolulu_photo_parlour_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "965411df4cf922af7d24d3cde9c7d4c5",
+   "size": 2111305
+  },
+  "godot/assets/art/hero/honolulu_suit_shop_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "a8e79027a6a3453a3772ef1e6d703ceb",
+   "size": 1855211
+  },
+  "godot/assets/art/hero/honolulu_travel_agency_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "aadaa94830e92a58f7073bf5ca72b7a8",
+   "size": 1818031
+  },
+  "godot/assets/art/hero/honolulu_what_lies_beyond_box.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "aa5ffeca7deb7d37dae78f5848c5be75",
+   "size": 3084062
+  },
   "godot/assets/art/hero/hospice_room_beach_print_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "7a2f8a575d9abf4c10a24cd9086fe939",
@@ -8120,6 +8160,16 @@
    "md5": "46d9db296a74639a2b7d4003d3571d22",
    "size": 2661161
   },
+  "godot/assets/art/hero/new_orleans_apartment_window_e.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "9184334108b8aeda14077cb0965c83a7",
+   "size": 2218440
+  },
+  "godot/assets/art/hero/new_orleans_apartment_window_w.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "5d08462b5ee532d2b3d9001c312d4a90",
+   "size": 1903157
+  },
   "godot/assets/art/hero/new_orleans_bar_atm_screen.png": {
    "at": "2026-10-14T03:30:44+00:00",
    "md5": "63c9293e8fe1cb5f1f438d4340556061",
@@ -8519,6 +8569,21 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "e1df03931142e529401019685b5197e3",
    "size": 2336393
+  },
+  "godot/assets/art/hero/portland_bookstore_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "8d2eed950446c0131b5f1563566965f4",
+   "size": 2459256
+  },
+  "godot/assets/art/hero/portland_coffee_shop_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "11435de8cd79d195b6f7e639ad57952a",
+   "size": 2586630
+  },
+  "godot/assets/art/hero/portland_record_store_sign.png": {
+   "at": "2026-11-02T03:44:37+00:00",
+   "md5": "34cf3af2b9a5a320752896c3f7fcf029",
+   "size": 1504251
   },
   "godot/assets/art/hero/riverboat_interior_bc_bulletin.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -74445,6 +74510,16 @@
    "md5": "8e686fd4439bafddf93c2d4d15163526",
    "size": 1072096
   },
+  "godot/assets/concept/meshy/blue_heron_sign/blue_heron_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:44:45+00:00",
+   "md5": "2074abaa4a452c5e44023a3f0d8a3357",
+   "size": 2574026
+  },
+  "godot/assets/concept/meshy/blue_heron_sign/front.png": {
+   "at": "2026-11-02T03:44:45+00:00",
+   "md5": "2074abaa4a452c5e44023a3f0d8a3357",
+   "size": 2574026
+  },
   "godot/assets/concept/meshy/board_lords_interior_across_facade/board_lords_interior_across_facade_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:27:09+00:00",
    "md5": "2f0796f215d89991c016e0da9880abdf",
@@ -80515,6 +80590,76 @@
    "md5": "9ace83b528f21cef1d62d43d964aca86",
    "size": 1747915
   },
+  "godot/assets/concept/meshy/honolulu_dry_cleaner_sign/front.png": {
+   "at": "2026-11-02T03:44:56+00:00",
+   "md5": "1f6c0c4579596a6d76511fc464e267a4",
+   "size": 1685160
+  },
+  "godot/assets/concept/meshy/honolulu_dry_cleaner_sign/honolulu_dry_cleaner_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:44:56+00:00",
+   "md5": "1f6c0c4579596a6d76511fc464e267a4",
+   "size": 1685160
+  },
+  "godot/assets/concept/meshy/honolulu_final_cut_box/front.png": {
+   "at": "2026-11-02T03:45:05+00:00",
+   "md5": "2d1cd8f1f5e27c3328d53b93ca99b313",
+   "size": 3209710
+  },
+  "godot/assets/concept/meshy/honolulu_final_cut_box/honolulu_final_cut_box_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:45:05+00:00",
+   "md5": "2d1cd8f1f5e27c3328d53b93ca99b313",
+   "size": 3209710
+  },
+  "godot/assets/concept/meshy/honolulu_game_store_sign/front.png": {
+   "at": "2026-11-02T03:45:15+00:00",
+   "md5": "640d6fd26cdda499131a519138eb7db2",
+   "size": 1296473
+  },
+  "godot/assets/concept/meshy/honolulu_game_store_sign/honolulu_game_store_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:45:15+00:00",
+   "md5": "640d6fd26cdda499131a519138eb7db2",
+   "size": 1296473
+  },
+  "godot/assets/concept/meshy/honolulu_photo_parlour_sign/front.png": {
+   "at": "2026-11-02T03:45:24+00:00",
+   "md5": "965411df4cf922af7d24d3cde9c7d4c5",
+   "size": 2111305
+  },
+  "godot/assets/concept/meshy/honolulu_photo_parlour_sign/honolulu_photo_parlour_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:45:24+00:00",
+   "md5": "965411df4cf922af7d24d3cde9c7d4c5",
+   "size": 2111305
+  },
+  "godot/assets/concept/meshy/honolulu_suit_shop_sign/front.png": {
+   "at": "2026-11-02T03:45:33+00:00",
+   "md5": "a8e79027a6a3453a3772ef1e6d703ceb",
+   "size": 1855211
+  },
+  "godot/assets/concept/meshy/honolulu_suit_shop_sign/honolulu_suit_shop_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:45:33+00:00",
+   "md5": "a8e79027a6a3453a3772ef1e6d703ceb",
+   "size": 1855211
+  },
+  "godot/assets/concept/meshy/honolulu_travel_agency_sign/front.png": {
+   "at": "2026-11-02T03:45:40+00:00",
+   "md5": "aadaa94830e92a58f7073bf5ca72b7a8",
+   "size": 1818031
+  },
+  "godot/assets/concept/meshy/honolulu_travel_agency_sign/honolulu_travel_agency_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:45:40+00:00",
+   "md5": "aadaa94830e92a58f7073bf5ca72b7a8",
+   "size": 1818031
+  },
+  "godot/assets/concept/meshy/honolulu_what_lies_beyond_box/front.png": {
+   "at": "2026-11-02T03:45:53+00:00",
+   "md5": "aa5ffeca7deb7d37dae78f5848c5be75",
+   "size": 3084062
+  },
+  "godot/assets/concept/meshy/honolulu_what_lies_beyond_box/honolulu_what_lies_beyond_box_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:45:53+00:00",
+   "md5": "aa5ffeca7deb7d37dae78f5848c5be75",
+   "size": 3084062
+  },
   "godot/assets/concept/meshy/hospice_room_beach_print_1/front.png": {
    "at": "2026-10-14T02:58:49+00:00",
    "md5": "7a2f8a575d9abf4c10a24cd9086fe939",
@@ -84200,6 +84345,31 @@
    "md5": "46d9db296a74639a2b7d4003d3571d22",
    "size": 2661161
   },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_e/front.png": {
+   "at": "2026-11-02T03:46:00+00:00",
+   "md5": "9184334108b8aeda14077cb0965c83a7",
+   "size": 2218440
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_e/new_orleans_apartment_window_e_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:46:00+00:00",
+   "md5": "9184334108b8aeda14077cb0965c83a7",
+   "size": 2218440
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_e/new_orleans_apartment_window_e_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-11-02T03:46:00+00:00",
+   "md5": "a44742db3a8d12e6bc3352a65f3f3c6b",
+   "size": 2139760
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_w/front.png": {
+   "at": "2026-11-02T03:46:07+00:00",
+   "md5": "5d08462b5ee532d2b3d9001c312d4a90",
+   "size": 1903157
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_w/new_orleans_apartment_window_w_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:46:07+00:00",
+   "md5": "5d08462b5ee532d2b3d9001c312d4a90",
+   "size": 1903157
+  },
   "godot/assets/concept/meshy/new_orleans_bar_atm_screen/front.png": {
    "at": "2026-10-14T03:36:33+00:00",
    "md5": "63c9293e8fe1cb5f1f438d4340556061",
@@ -87194,6 +87364,46 @@
    "at": "2026-10-27T19:09:30+00:00",
    "md5": "ce8619652d612aaf783633deb32cb97b",
    "size": 1270796
+  },
+  "godot/assets/concept/meshy/portland_bookstore_corner_sign/front.png": {
+   "at": "2026-11-02T03:46:14+00:00",
+   "md5": "6bdfb5c290d63eb912803439dd34b37a",
+   "size": 1422801
+  },
+  "godot/assets/concept/meshy/portland_bookstore_corner_sign/portland_bookstore_corner_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:46:14+00:00",
+   "md5": "6bdfb5c290d63eb912803439dd34b37a",
+   "size": 1422801
+  },
+  "godot/assets/concept/meshy/portland_bookstore_sign/front.png": {
+   "at": "2026-11-02T03:46:23+00:00",
+   "md5": "8d2eed950446c0131b5f1563566965f4",
+   "size": 2459256
+  },
+  "godot/assets/concept/meshy/portland_bookstore_sign/portland_bookstore_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:46:23+00:00",
+   "md5": "8d2eed950446c0131b5f1563566965f4",
+   "size": 2459256
+  },
+  "godot/assets/concept/meshy/portland_coffee_shop_sign/front.png": {
+   "at": "2026-11-02T03:46:29+00:00",
+   "md5": "11435de8cd79d195b6f7e639ad57952a",
+   "size": 2586630
+  },
+  "godot/assets/concept/meshy/portland_coffee_shop_sign/portland_coffee_shop_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:46:29+00:00",
+   "md5": "11435de8cd79d195b6f7e639ad57952a",
+   "size": 2586630
+  },
+  "godot/assets/concept/meshy/portland_record_store_sign/front.png": {
+   "at": "2026-11-02T03:46:37+00:00",
+   "md5": "34cf3af2b9a5a320752896c3f7fcf029",
+   "size": 1504251
+  },
+  "godot/assets/concept/meshy/portland_record_store_sign/portland_record_store_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-11-02T03:46:37+00:00",
+   "md5": "34cf3af2b9a5a320752896c3f7fcf029",
+   "size": 1504251
   },
   "godot/assets/concept/meshy/quentin_paul/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
