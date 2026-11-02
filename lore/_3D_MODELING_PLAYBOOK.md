@@ -399,6 +399,24 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-02 · a foliage mass is leaf clusters over a core, not one blob (pass 262)
+
+**Context:** the crumpled barn's bramble and its hedge were single faceted
+blobs (noise 0.3, r 0.5–2 m). Under an overcast key and the post stack,
+the big facets read as grey boulders. The barn read as a clean shed in a
+rock garden, not something "Foliage consuming much of the exterior".
+
+**Rule:** build a foliage mass as a dark core blob, with 10 + 26·r small
+leaf clusters (r 0.16–0.30, three greens, a yellow-green at the crown)
+packed over its dome, each INSIDE the old blob's radius so nothing the
+mound cleared it now touches. Name them all `<mass>_Stock_*` and call
+`join_stock()`, so a mound costs one draw call (`_bramble` /
+`_ivy` in build_crumpled_barn.py).
+- Seat the core on the mound's own floor: an inset core hangs off the
+  ground, and support_audit stops the whole suite on it.
+- Arching canes (thin tubes out of the flank) read from 15 m as
+  lollipops on sticks. Leave them out.
+
 ### 2026-11-01 · wind faces outward by construction, not by guessing from a centre (pass 254)
 
 **Context:** a scan of every closed mesh's signed volume found 4,309 inside

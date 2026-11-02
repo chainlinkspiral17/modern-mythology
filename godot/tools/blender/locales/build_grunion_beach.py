@@ -23,7 +23,7 @@ Vantages wired in Background3D.CAMERA_PRESETS:
 import math, os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_prism, make_chamfer_box, export_glb
 
 COL_SAND = (0.34, 0.32, 0.28, 1.0)       # night sand (draft 3: a touch up, so the walk down reads)
 COL_SAND_WET = (0.20, 0.20, 0.20, 1.0)   # gleaming band, darker
@@ -186,6 +186,56 @@ def build_bonfires_2026_10():
             make_blob(f"Bonfire_Far_{'E' if side > 0 else 'W'}_{k}_Glow_Top", (x, y, 0.62 * s), 0.18 * s, flame, noise=0.3, seed=k + 3, squash=1.8)
 
 
+def build_philip_2026_11():
+    """(2026-11-02) PHILIP'S NIGHT — vol2 ch6 ("Triptych — Philip") played on
+    the ghost scene's empty view. The text: "Most of his friends were
+    hippies because like them he liked to surf, smoke and screw"; "One
+    summer night baked on the beach Jesus spoke to Philip"; "Philip saw the
+    ocean rise up and he scrambled for his surf board. His friends slept
+    through the rising surf." 30 m east of the ch10 bonfire: a campfire
+    burned down to its embers in a ring of stones, the friends asleep round
+    it in their bags, one blanket kicked off and empty (his), the boards
+    stood on their tails between the camp and the water. Every part
+    ends `__philip_beach`: no other view shows it."""
+    T = "__philip_beach"
+    fx, fy = 32.0, 4.0
+    stone = (0.30, 0.29, 0.27, 1.0)
+    char = (0.10, 0.09, 0.08, 1.0)
+    for k in range(9):
+        a = k * (2 * math.pi / 9) + 0.2
+        make_blob(f"Philip_Fire_Stone_{k}{T}", (fx + 0.55 * math.cos(a), fy + 0.55 * math.sin(a), 0.08), 0.12, stone,
+                  noise=0.3, seed=300 + k, squash=0.7)
+    make_blob(f"Philip_Fire_Embers_Glow{T}", (fx, fy, 0.05), 0.38, (0.78, 0.26, 0.08, 1.0), noise=0.2, seed=310, squash=0.22)
+    make_blob(f"Philip_Fire_Coal_Glow{T}", (fx + 0.05, fy - 0.04, 0.10), 0.16, (1.0, 0.50, 0.16, 1.0), noise=0.3, seed=311, squash=0.5)
+    # two logs burned through and fallen across each other
+    make_rot_box(f"Philip_Fire_Log_0{T}", (fx - 0.05, fy, 0.10), (0.85, 0.12, 0.12), char, yaw=0.5)
+    make_rot_box(f"Philip_Fire_Log_1{T}", (fx + 0.05, fy + 0.02, 0.21), (0.75, 0.10, 0.10), char, yaw=-0.7)
+    # the friends asleep in their bags, heads to the fire
+    bags = (((30.4, 4.9), 0.35, (0.30, 0.34, 0.22, 1.0), (0.46, 0.32, 0.20, 1.0)),
+            ((33.7, 5.0), -0.45, (0.50, 0.24, 0.14, 1.0), (0.20, 0.16, 0.12, 1.0)),
+            ((33.3, 2.6), 0.75, (0.22, 0.26, 0.40, 1.0), (0.62, 0.52, 0.30, 1.0)),
+            ((29.9, 3.2), -0.55, (0.40, 0.30, 0.42, 1.0), (0.28, 0.20, 0.14, 1.0)))
+    for k, ((bx, by), yaw, col, hair) in enumerate(bags):
+        # the bag's axis points at the fire; the head is at the fire end
+        dx, dy = fx - bx, fy - by
+        d = math.hypot(dx, dy)
+        ux, uy = dx / d, dy / d
+        ang = math.atan2(dy, dx)
+        # soft: every edge cut well back, the body a second rounded hump
+        make_rot_box(f"Philip_Sleeper_{k}_Bag{T}", (bx - ux * 0.35, by - uy * 0.35, 0.10), (1.85, 0.72, 0.20), col, yaw=ang)
+        make_chamfer_box(f"Philip_Sleeper_{k}_Body{T}", (bx - ux * 0.50, by - uy * 0.50, 0.26), (1.20, 0.56, 0.14), col,
+                         chamfer=0.07, yaw=ang + 0.04)
+        make_blob(f"Philip_Sleeper_{k}_Head{T}", (bx + ux * 0.38, by + uy * 0.38, 0.28), 0.12, hair, noise=0.3, seed=320 + k, squash=0.9)
+    # his blanket, kicked off and empty, the hollow where he lay
+    make_rot_box(f"Philip_Blanket{T}", (31.4, 5.8, 0.02), (1.7, 1.2, 0.03), (0.62, 0.30, 0.20, 1.0), yaw=0.9)
+    make_rot_box(f"Philip_Blanket_Fold{T}", (31.9, 6.2, 0.07), (0.9, 0.35, 0.07), (0.56, 0.26, 0.18, 1.0), yaw=1.2)
+    # the boards stood on their tails in the dry sand, the water beyond
+    board = [(-0.20, 0.0), (0.20, 0.0), (0.27, 0.6), (0.27, 1.45), (0.18, 2.0), (0.0, 2.3), (-0.18, 2.0), (-0.27, 1.45), (-0.27, 0.6)]
+    for k, (bx, by, col) in enumerate(((35.2, 6.3, (0.62, 0.58, 0.50, 1.0)), (35.9, 6.0, (0.58, 0.50, 0.28, 1.0)),
+                                       (36.6, 6.4, (0.26, 0.38, 0.50, 1.0)))):
+        make_prism(f"Philip_Board_{k}{T}", (bx, by, 0.03), board, 0.07, col, axis="Y", yaw=0.15 * (k - 1))
+
+
 def main():
     clear_scene()
     build_sand()
@@ -199,6 +249,7 @@ def main():
     build_horizon_2026_08()
     build_shore_2026_09()
     build_bonfires_2026_10()
+    build_philip_2026_11()
     export_glb(out)
 
 

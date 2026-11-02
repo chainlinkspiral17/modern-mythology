@@ -227,6 +227,14 @@ light_energy = 1.4
 omni_range = 5.0
 shadow_enabled = false
 
+; (2026-11-02) PHILIP'S NIGHT (vol 2 ch6): the campfire burned to its embers
+[node name="Philip_Ember_Light__philip_beach" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0, 0.45, -4.0)
+light_color = Color(1.0, 0.46, 0.18, 1)
+light_energy = 2.2
+omni_range = 5.5
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

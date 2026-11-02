@@ -152,9 +152,9 @@
   "draw": 1254
  },
  "grunion_beach": {
-  "draw": 84,
-  "prims": 10548,
-  "objects": 254
+  "draw": 200,
+  "prims": 22076,
+  "objects": 370
  },
  "henderson_kitchen": {
   "draw": 106
@@ -264,9 +264,9 @@
   "objects": 246
  },
  "pasadena_1945": {
-  "draw": 134,
-  "prims": 70248,
-  "objects": 304
+  "draw": 164,
+  "prims": 55808,
+  "objects": 334
  },
  "pharmacy": {
   "draw": 1096
@@ -295,9 +295,9 @@
   "objects": 282
  },
  "sea_cave": {
-  "draw": 102,
-  "prims": 29626,
-  "objects": 272
+  "draw": 106,
+  "prims": 32922,
+  "objects": 276
  },
  "simon_apartment": {
   "draw": 54,

@@ -39,6 +39,14 @@ in front of the board). Draft 5 targets: the hay door's swung leaf, the
 bramble as a vine kit with leaves (and coming in through the wall gaps), a
 crow on the peak, the field's ruts to the gate gap, Jiggles' face and
 juggling pins, the gable's outer board lap as real courses.
+DRAFT 6 (2026-11-02, survey 5): the bramble as bramble — every mound a dark
+core with its leaf clusters packed over the dome (_bramble), ivy up the
+gable's boards from the two climbing mounds (_ivy), the hedge leafed the
+same way (from the field they all read as grey boulders). All `_Stock_`,
+joined. Draft 7 targets: the hay door's swung leaf; a crow on the peak; the
+field's ruts to the gate gap; Jiggles' face and juggling pins; the gable's
+outer board lap as real courses; the hill brought down to the collapse so
+the barn sits INTO it ("I thought it part of the hill").
 (Old draft 4 targets: the gable's board lap as real courses (make_lap_siding
 in grey), the hay door's swung leaf, the cabinet's levers and buttons as
 a row of brass, the bramble as a vine kit with leaves, a crow on the
@@ -47,7 +55,10 @@ peak, the field's ruts to the gate gap.)
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_heightfield, make_prism, export_glb
+from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_heightfield, make_prism, make_tube,
+                             join_stock, export_glb)
+import math
+import random
 
 COL_FIELD = (0.54, 0.50, 0.32, 1.0)      # dry pasture (2026-09-30: was 0.42 grey-olive — the barn, field and sky were one value)
 COL_DIRT = (0.40, 0.34, 0.26, 1.0)
@@ -341,6 +352,66 @@ COL_BRAMBLE_LT = (0.30, 0.38, 0.20, 1.0)
 COL_HILL = (0.36, 0.42, 0.24, 1.0)
 
 
+COL_BRAMBLE_DK = (0.14, 0.20, 0.11, 1.0)
+COL_BRAMBLE_YL = (0.38, 0.44, 0.22, 1.0)      # the new growth at the tips
+COL_CANE = (0.38, 0.22, 0.20, 1.0)            # blackberry cane, red-brown
+
+
+def _bramble(name, center, r, col, seed, squash, canes=(), light=None, tip=None, dark=None):
+    """(2026-11-02, draft 6) A bramble mound as a bramble: a dark core with
+    the leaf clusters packed over its dome (inside the old blob's bounds,
+    so nothing it cleared it now touches) and arching canes thrown out
+    along `canes` (headings in radians, only where the ground is open).
+    The old single faceted blob read from the field as a grey boulder.
+    Every part is `<name>_Stock_*`: join_stock makes the mound one mesh."""
+    cx, cy, cz = center
+    rng = random.Random(seed)
+    hz = r * squash
+    light, tip, dark = light or COL_BRAMBLE_LT, tip or COL_BRAMBLE_YL, dark or COL_BRAMBLE_DK
+    # the core sits on the mound's own floor (inset 20 %, it hung off the ground)
+    make_blob(f"{name}_Stock_Core", (cx, cy, cz - hz * 0.20), r * 0.80, dark, noise=0.22, seed=seed, squash=squash)
+    n = int(10 + 26 * r)
+    for k in range(n):
+        th = rng.uniform(0.0, 2.0 * math.pi)
+        ph = rng.uniform(-0.15, 1.35)
+        rr = rng.uniform(0.16, 0.30) * min(1.0, 0.45 + r * 0.5)
+        reach = max(0.0, r - rr)
+        x = cx + reach * math.cos(ph) * math.cos(th)
+        y = cy + reach * math.cos(ph) * math.sin(th)
+        z = max(cz + (hz - rr * 0.8) * math.sin(ph), rr * 0.75)
+        c = (col, light, tip if ph > 0.9 else col)[k % 3]
+        make_blob(f"{name}_Stock_Leaf_{k}", (x, y, z), rr, c, noise=0.35, seed=seed * 7 + k, squash=0.8, rings=4, segments=7)
+    for k, a in enumerate(canes):
+        ca, sa = math.cos(a), math.sin(a)
+        top = cz + hz * 0.80              # out of the mound's flank, not over its crown
+        out = r * 1.35
+        path = [(cx + ca * r * 0.4, cy + sa * r * 0.4, cz + hz * 0.4),
+                (cx + ca * r * 0.95, cy + sa * r * 0.95, top),
+                (cx + ca * r * 1.2, cy + sa * r * 1.2, top * 0.6),
+                (cx + ca * out, cy + sa * out, 0.03)]
+        make_tube(f"{name}_Stock_Cane_{k}", path, 0.014, COL_CANE, segments=5)
+        make_blob(f"{name}_Stock_Cane_Tip_{k}", (cx + ca * r * 1.0, cy + sa * r * 1.0, top - 0.02), 0.11, tip,
+                  noise=0.3, seed=seed + 90 + k, squash=0.8, rings=4, segments=6)
+
+
+def _ivy(name, stem, seed, n):
+    """Ivy up the gable's face: a stem from the bramble at the foot up the
+    boards, its leaves packed along it (flat to the wall, in contact with
+    the battens at y 8.205). One `_Stock_` mesh."""
+    rng = random.Random(seed)
+    make_tube(f"{name}_Stock_Stem", stem, 0.022, COL_CANE, segments=5)
+    for k in range(n):
+        t = rng.uniform(0.0, 1.0)
+        seg = min(int(t * (len(stem) - 1)), len(stem) - 2)
+        f = t * (len(stem) - 1) - seg
+        a, b = stem[seg], stem[seg + 1]
+        x = a[0] + (b[0] - a[0]) * f + rng.uniform(-0.16, 0.16)
+        z = a[2] + (b[2] - a[2]) * f + rng.uniform(-0.12, 0.12)
+        c = (COL_BRAMBLE, COL_BRAMBLE_LT, COL_BRAMBLE_DK)[k % 3]
+        make_rot_box(f"{name}_Stock_Leaf_{k}", (x, 8.19, z), (0.14, 0.03, 0.12), c, yaw=rng.uniform(-0.25, 0.25),
+                     pitch=rng.uniform(-0.6, 0.6))
+
+
 def build_foliage():
     """"Foliage consuming much of the exterior — more negative space
     than positive": bramble mounds against the gable face, over the
@@ -348,21 +419,24 @@ def build_foliage():
     # against the gable's outer face (y < 8.2), seated on the field
     # (each mound's y + r stays under 8.2 — the gable's face; the two past the
     # gable's ends sit clear of the rubble and the weed clumps)
-    mounds = ((-0.6, 7.5, 0.5, 15), (-5.8, 7.4, 0.9, 16), (5.4, 7.6, 0.9, 17))
-    for i, (x, y, r, sd) in enumerate(mounds):
-        make_blob(f"Bramble_{i}", (x, y, r * 0.7 - 0.03), r, (COL_BRAMBLE, COL_BRAMBLE_LT)[i % 2],
-                  noise=0.30, seed=40 + sd, squash=0.7)
+    # (the arching canes went: from the field they read as lollipops on sticks)
+    mounds = ((-0.6, 7.5, 0.5, 15, ()), (-5.8, 7.4, 0.9, 16, ()), (5.4, 7.6, 0.9, 17, ()))
+    for i, (x, y, r, sd, canes) in enumerate(mounds):
+        _bramble(f"Bramble_{i}", (x, y, r * 0.7 - 0.03), r, (COL_BRAMBLE, COL_BRAMBLE_LT)[i % 2], 40 + sd, 0.7, canes)
     # climbing the gable: two tall mounds, seated, reaching the hay door
-    for i, (x, r, sd) in enumerate(((-3.1, 1.5, 21), (2.1, 1.5, 22))):
-        make_blob(f"Bramble_Climb_{i}", (x, 8.2 - r - 0.05, r - 0.03), r, COL_BRAMBLE, noise=0.26, seed=40 + sd, squash=1.0)
+    for i, (x, r, sd, canes) in enumerate(((-3.1, 1.5, 21, ()), (2.1, 1.5, 22, ()))):
+        _bramble(f"Bramble_Climb_{i}", (x, 8.2 - r - 0.05, r - 0.03), r, COL_BRAMBLE, 40 + sd, 1.0, canes)
     # over the fallen planes: the collapse is going back to the hill
     for i, (x, y, z, r, sd) in enumerate(((-3.6, 12.0, 0.9, 1.3, 31), (-3.2, 14.2, 0.9, 0.8, 32), (2.8, 13.6, 1.3, 1.2, 33),
                                           (2.4, 11.9, 1.3, 0.7, 34), (5.2, 9.9, 0.0, 0.9, 35))):
-        make_blob(f"Bramble_Roof_{i}", (x, y, z + r * 0.55), r, (COL_BRAMBLE_LT, COL_BRAMBLE)[i % 2],
-                  noise=0.32, seed=40 + sd, squash=0.55)
+        _bramble(f"Bramble_Roof_{i}", (x, y, z + r * 0.55), r, (COL_BRAMBLE_LT, COL_BRAMBLE)[i % 2], 40 + sd, 0.55)
     # the fence line is going under too (low, under the rails)
     for i, x in enumerate((-7.6, -4.4, 4.6, 7.4)):
-        make_blob(f"Bramble_Fence_{i}", (x, 3.5, 0.23), 0.5, COL_BRAMBLE_LT, noise=0.3, seed=60 + i, squash=0.5)
+        _bramble(f"Bramble_Fence_{i}", (x, 3.5, 0.23), 0.5, COL_BRAMBLE_LT, 60 + i, 0.5)
+    # (draft 6) the ivy up the boards from the two climbing mounds: the
+    # west one to under the rake, the east one across toward the hay door
+    _ivy("Ivy_W", [(-2.95, 8.19, 2.55), (-2.75, 8.19, 3.10), (-2.55, 8.19, 3.55), (-2.20, 8.19, 3.85)], 81, 46)
+    _ivy("Ivy_E", [(1.95, 8.19, 2.55), (1.70, 8.19, 3.10), (1.25, 8.19, 3.55), (0.55, 8.19, 3.90), (0.25, 8.19, 4.35)], 82, 58)
 
 
 def build_roof_remnant():
@@ -422,8 +496,10 @@ def build_backdrop():
             # half-height is radius x squash), 2 cm in
             # the back row is on the hill now (2026-10-23): ground ~0.5-0.9 m up at y 26
             hy = (18.5, 26.0)[k]
-            make_blob(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, hy, (0.025 - 0.02, 0.60 - 0.25)[k] + r * 0.85),
-                      r, COL_TREE, noise=0.26, seed=70 + i * 2 + k, squash=0.85)
+            # (draft 6) leafed like the bramble: one faceted blob read as a boulder
+            _bramble(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, hy, (0.025 - 0.02, 0.60 - 0.25)[k] + r * 0.85),
+                     r, COL_TREE, 70 + i * 2 + k, 0.85, light=(0.26, 0.33, 0.20, 1.0), tip=(0.32, 0.38, 0.22, 1.0),
+                     dark=(0.12, 0.16, 0.10, 1.0))
     # GROUND out past the last windbreak (2026-08-09 ground wave):
     # wheat-stubble section, not a void.
     make_box("Ground_Far", (0.0, 0.0, -0.03), (1680.0, 1680.0, 0.02),
@@ -457,6 +533,7 @@ def main():
     build_bay_2026_10()
     build_hill()
     build_backdrop()
+    join_stock()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/crumpled_barn.glb"))
     print(f"\n[build_crumpled_barn] exporting to {out}")

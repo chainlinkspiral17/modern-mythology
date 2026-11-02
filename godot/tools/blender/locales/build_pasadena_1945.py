@@ -25,6 +25,12 @@ Blender: x east, y north, z up; Godot (x, z, -y).
 DRAFT 2 targets: the streetcar itself, the crowd as hats and coats on benches, the marquee's
 lettering (no real title), the park's paths, the clinic's corridor; Deck
 framing.
+
+HOLLYWOOD DRAFT 2 (2026-11-02): the shoot staged up the walk with its
+people (players, cameraman, grip, director, the crowd at the rope), walkers
+both ways, the street running on to a cross street, a roofline and hills.
+Draft 3 targets: a marquee or studio gate down the block, a boom or slate,
+a car stopped by the shoot.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -34,6 +40,7 @@ from _props.geometry import (clear_scene, make_box, make_cyl, make_chamfer_box, 
 from _props.structure import make_floor, make_wall, make_wall_with_openings
 from _props.trees import make_broadleaf
 from _props.furniture import make_chair
+from _props.figures import make_standing_figure, make_seated_figure
 
 try:
     import bpy
@@ -271,29 +278,69 @@ def build_hollywood():
     for k in range(10):
         car_1940s(f"Hw_Car_{k}", hx + (-5.0 if k % 2 else 5.0) + (k % 3 - 1) * 0.4, 6.0 + k * 9.0, CAR_COLS[(k + 2) % len(CAR_COLS)],
                   heading=(-1 if k % 2 else 1))
-    # the shoot on the E walk: the camera on its tripod, a lamp on its stand,
-    # a reflector, a canvas chair, the rope and its stands, a cable
-    sx, sy = hx + 8.4, 30.0
+    # the shoot on the E walk (2026-11-02, draft 2): "a hub of activity... They
+    # shoot on the streets". The camera on its tripod looks NORTH up the walk
+    # at the two players (draft 1 aimed it west at its own lamp); the lamp
+    # and the reflector flank them, the director in his chair, the cameraman
+    # at the eyepiece, a grip at the reflector, the rope across the walk
+    # behind the camera and the people stopped at it
+    sx, sy = hx + 8.6, 30.0
+    W = 0.12                                    # the walk's top
     for k in range(3):
-        a = k * 2.09
-        make_rot_box(f"Shoot_Tripod_Leg_{k}", (sx + math.cos(a) * 0.22, sy + math.sin(a) * 0.22, 0.62), (0.03, 0.03, 1.30),
+        a = k * 2.09 + 0.5
+        make_rot_box(f"Shoot_Tripod_Leg_{k}", (sx + math.cos(a) * 0.22, sy + math.sin(a) * 0.22, W + 0.62), (0.03, 0.03, 1.30),
                      (0.36, 0.28, 0.20, 1.0), yaw=a, pitch=0.0, roll=0.18)
-    make_box("Shoot_Camera_Body", (sx, sy, 1.42), (0.34, 0.52, 0.40), (0.12, 0.12, 0.14, 1.0))
-    make_cyl("Shoot_Camera_Lens", (sx - 0.30, sy, 1.44), 0.07, 0.26, (0.10, 0.10, 0.10, 1.0), axis='X', segments=12)
-    for s in (-1, 1):
-        make_cyl(f"Shoot_Camera_Reel_{s:+d}", (sx, sy + s * 0.12, 1.78), 0.16, 0.06, (0.16, 0.16, 0.18, 1.0), axis='Y', segments=14)
-    make_cyl("Shoot_Lamp_Stand", (sx + 1.2, sy + 3.0, 1.1), 0.03, 2.2, (0.30, 0.30, 0.32, 1.0), segments=8)
-    make_cyl("Shoot_Lamp", (sx + 1.1, sy + 3.0, 2.30), 0.24, 0.40, (0.20, 0.20, 0.22, 1.0), axis='X', segments=12)
-    make_box("Shoot_Lamp_Base", (sx + 1.2, sy + 3.0, 0.02), (0.60, 0.60, 0.04), (0.30, 0.30, 0.32, 1.0))
-    make_box("Shoot_Reflector", (sx + 1.4, sy - 2.4, 1.10), (0.04, 1.2, 1.2), (0.92, 0.90, 0.80, 1.0))
-    make_box("Shoot_Reflector_Stand", (sx + 1.4, sy - 2.4, 0.25), (0.40, 0.40, 0.50), (0.30, 0.30, 0.32, 1.0))
-    make_chair("Shoot_Chair", sx + 1.6, sy + 1.2, yaw=math.pi / 2.0, wood=(0.62, 0.48, 0.30, 1.0), seat_col=(0.30, 0.26, 0.20, 1.0))
-    for k in range(5):
-        make_cyl(f"Shoot_Stanchion_{k}", (hx + 7.4, sy - 4.0 + k * 2.0, 0.55), 0.03, 1.0, (0.62, 0.56, 0.36, 1.0), segments=8)
-    make_box("Shoot_Rope", (hx + 7.4, sy, 0.98), (0.02, 8.0, 0.02), (0.70, 0.18, 0.16, 1.0))
-    make_tube("Shoot_Cable", [(sx + 1.2, sy + 3.0, 0.15), (sx + 0.6, sy + 1.4, 0.02), (sx, sy, 0.02)], 0.02, (0.10, 0.10, 0.10, 1.0))
-    make_box("Hw_Far_N", (hx, L1 + 20.0, 10.0), (80.0, 2.0, 20.0), (0.80, 0.76, 0.66, 1.0))
-    make_box("Hw_Ground", (hx, cy, -0.05), (120.0, (L1 - L0) + 40.0, 0.04), (0.44, 0.42, 0.36, 1.0))
+    make_box("Shoot_Camera_Body", (sx, sy, W + 1.42), (0.52, 0.34, 0.40), (0.12, 0.12, 0.14, 1.0))
+    make_cyl("Shoot_Camera_Lens", (sx, sy + 0.30, W + 1.44), 0.07, 0.26, (0.10, 0.10, 0.10, 1.0), axis='Y', segments=12)
+    for e in (-1, 1):
+        make_cyl(f"Shoot_Camera_Reel_{e:+d}", (sx, sy + e * 0.12, W + 1.78), 0.16, 0.06, (0.16, 0.16, 0.18, 1.0), axis='X', segments=14)
+    ax, ay = sx - 0.2, sy + 4.4                 # the players' mark
+    make_standing_figure("Hw_Crew_Stock_Actor", ax - 0.35, ay, heading=math.pi * 0.62, coat=(0.26, 0.26, 0.30, 1.0),
+                         pants=(0.26, 0.26, 0.30, 1.0), hair=(0.12, 0.10, 0.08, 1.0), z0=W)
+    make_standing_figure("Hw_Crew_Stock_Actress", ax + 0.35, ay, heading=-math.pi * 0.62, h=1.64, coat=(0.80, 0.78, 0.74, 1.0),
+                         dress=(0.80, 0.78, 0.74, 1.0), hair=(0.82, 0.70, 0.44, 1.0), z0=W)
+    make_cyl("Shoot_Lamp_Stand", (sx + 1.6, sy + 3.2, W + 1.1), 0.03, 2.2, (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_cyl("Shoot_Lamp", (sx + 1.5, sy + 3.2, W + 2.30), 0.24, 0.40, (0.20, 0.20, 0.22, 1.0), axis='X', segments=12)
+    make_box("Shoot_Lamp_Base", (sx + 1.6, sy + 3.2, W + 0.02), (0.60, 0.60, 0.04), (0.30, 0.30, 0.32, 1.0))
+    make_box("Shoot_Reflector", (sx - 1.45, sy + 4.0, W + 1.10), (0.04, 1.2, 1.2), (0.92, 0.90, 0.80, 1.0))
+    make_box("Shoot_Reflector_Stand", (sx - 1.45, sy + 4.0, W + 0.25), (0.40, 0.40, 0.50), (0.30, 0.30, 0.32, 1.0))
+    make_standing_figure("Hw_Crew_Stock_Grip", sx - 1.45, sy + 2.9, heading=0.0, coat=(0.52, 0.46, 0.36, 1.0), arms="front", z0=W)
+    make_standing_figure("Hw_Crew_Stock_Cameraman", sx, sy - 0.75, heading=0.0, coat=(0.36, 0.34, 0.30, 1.0), arms="front", z0=W)
+    make_chair("Shoot_Chair", sx + 1.5, sy + 0.6, yaw=0.0, wood=(0.62, 0.48, 0.30, 1.0), seat_col=(0.30, 0.26, 0.20, 1.0), z0=W)
+    make_seated_figure("Hw_Crew_Stock_Director", sx + 1.5, sy + 0.6, heading=0.0, coat=(0.44, 0.40, 0.32, 1.0), z0=W)
+    # the rope across the walk behind the camera, the people stopped at it
+    for k in range(4):
+        make_cyl(f"Shoot_Stanchion_{k}", (hx + 7.5 + k * 1.1, sy - 2.2, W + 0.50), 0.03, 1.0, (0.62, 0.56, 0.36, 1.0), segments=8)
+    make_box("Shoot_Rope", (hx + 9.15, sy - 2.2, W + 0.93), (3.3, 0.02, 0.02), (0.70, 0.18, 0.16, 1.0))
+    make_tube("Shoot_Cable", [(sx + 1.6, sy + 3.2, W + 0.15), (sx + 1.0, sy + 1.6, W + 0.02), (sx + 0.15, sy, W + 0.02)], 0.02,
+              (0.10, 0.10, 0.10, 1.0))
+    onlookers = ((hx + 7.8, sy - 2.9, (0.30, 0.34, 0.44, 1.0), None), (hx + 8.7, sy - 3.0, (0.56, 0.30, 0.30, 1.0), (0.56, 0.30, 0.30, 1.0)),
+                 (hx + 9.6, sy - 2.8, (0.40, 0.36, 0.30, 1.0), None), (hx + 8.2, sy - 3.8, (0.30, 0.40, 0.34, 1.0), (0.30, 0.40, 0.34, 1.0)))
+    for k, (ox_, oy_, coat, dress) in enumerate(onlookers):
+        make_standing_figure(f"Hw_Crowd_Stock_{k}", ox_, oy_, heading=0.0, coat=coat, dress=dress, h=1.62 if dress else 1.74, z0=W)
+    # the walks busy both ways, the men in hats
+    walkers = ((hx - 9.6, 18.0, 0.0), (hx - 8.4, 27.0, math.pi), (hx - 9.2, 38.0, 0.0), (hx - 8.6, 46.0, math.pi),
+               (hx - 9.4, 58.0, math.pi), (hx + 8.2, 44.0, math.pi), (hx + 9.4, 52.0, 0.0), (hx + 8.6, 64.0, math.pi))
+    coats = ((0.34, 0.30, 0.26, 1.0), (0.24, 0.26, 0.34, 1.0), (0.62, 0.48, 0.40, 1.0), (0.30, 0.32, 0.30, 1.0))
+    for k, (wx, wy, hd) in enumerate(walkers):
+        dress = (0.50, 0.34, 0.42, 1.0) if k % 3 == 1 else None
+        make_standing_figure(f"Hw_Crowd_Stock_W{k}", wx, wy, heading=hd, coat=coats[k % 4], dress=dress, h=1.62 if dress else 1.76, z0=W)
+        if not dress:
+            hz = W + 1.76 * 0.93
+            make_cyl(f"Hw_Crowd_Stock_W{k}_Hat_Brim", (wx, wy, hz), 0.17, 0.015, (0.22, 0.20, 0.18, 1.0), segments=12)
+            make_cyl(f"Hw_Crowd_Stock_W{k}_Hat_Crown", (wx, wy, hz + 0.06), 0.105, 0.11, (0.22, 0.20, 0.18, 1.0), segments=10)
+    # (draft 2) the street's end was an 80 m beige wall 20 m past the last
+    # building. Now the road and walks run on over a cross street, the next
+    # blocks stand beyond it as a roofline, and the hills close the view
+    make_box("Hw_Road_Cross", (hx, L1 + 10.0, -0.01), (14.0, 20.0, 0.02), ASPHALT)
+    make_box("Hw_Cross_Street", (hx, L1 + 10.0, -0.012), (220.0, 12.0, 0.02), ASPHALT)
+    make_box("Hw_Ground", (hx, cy + 20.0, -0.05), (120.0, (L1 - L0) + 80.0, 0.04), (0.44, 0.42, 0.36, 1.0))
+    make_box("Hw_Ground_Far", (hx, 500.0, -0.12), (1400.0, 760.0, 0.04), (0.46, 0.44, 0.36, 1.0))
+    from _props.detail import make_far_bands
+    make_far_bands("Hw_FarBlock", (0.80, 0.74, 0.64), [(L1 + 30.0, 70.0, 14.0, 0.95), (L1 + 110.0, 160.0, 20.0, 0.82)],
+                   sides="N", cx=hx, cy=0.0, profile="roofline")
+    make_far_bands("Hw_FarHills", (0.52, 0.50, 0.40), [(520.0, 520.0, 70.0, 0.80), (760.0, 700.0, 110.0, 0.66)],
+                   sides="N", cx=hx, cy=0.0, profile="ridge")
 
 
 # ── the clinic ────────────────────────────────────────────────────────

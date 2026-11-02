@@ -300,7 +300,10 @@
     "vol2_beach_night": {
       "fit": "exact",
       "to": "3d:beach_night",
-      "scenes": 2
+      "scenes": 2,
+      "by_scene": {
+        "vol2_ch6_ark": "3d:philip_beach"
+      }
     },
     "vol2_beach_overcast": {
       "fit": "reuse",

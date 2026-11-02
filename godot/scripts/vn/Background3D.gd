@@ -4201,9 +4201,13 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/pasadena_1945.tscn",
 		"requires_glb": "res://assets/3d/locales/pasadena_1945.glb",
 		# "They shoot on the streets" - a busier street, the camera on its tripod down the walk
-		"camera_origin": Vector3(169.5, 1.6, -14.0),
-		"camera_rotation": Vector3(0.0, deg_to_rad(2.0), 0.0),
-		"fov": 64.0,
+		# (2026-11-02, draft 2) out in the street, NNE across at the shoot on the E
+		# walk: the players, the camera and its man, the lamp and the reflector, the
+		# rope and the people at it; the street on north to the next blocks and the hills
+		"camera_origin": Vector3(161.8, 1.65, -25.6),
+		"camera_rotation": Vector3(-0.0272, -0.5528, 0.0),
+		"fov": 56.0,
+		"far": 900.0,
 		"suppress_input": true,
 	},
 	"clinic_1945": {
@@ -4395,9 +4399,13 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/sea_cave.tscn",
 		"requires_glb": "res://assets/3d/locales/sea_cave.glb",
 		# Charles's ground: sand near a riverbed, off the roads and beaches; the dig, the bungalow
-		"camera_origin": Vector3(190.0, 1.7, 14.0),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(0.0), 0.0),
-		"fov": 66.0,
+		# (2026-11-02) south-east of the pit, looking north-west: the car in the
+		# dug-out pit, the detector on the near rim, the bungalow beyond
+		"camera_origin": Vector3(203.5, 2.3, 2.0),
+		"camera_rotation": Vector3(-0.2414, 0.7532, 0.0),
+		"fov": 54.0,
+		"far": 420.0,
+		"strip": ["Headland_", "Cave_", "Beach_", "Rock_Stock", "Floor_Rock", "Seaweed_", "Sinkhole_", "Spout_", "Husk_", "Tide_", "Sea_", "Sky_"],
 		"env": {"ambient_color": Color(0.88, 0.88, 0.84, 1), "ambient_energy": 0.60, "fog_color": Color(0.80, 0.82, 0.84, 1)},
 		"suppress_input": true,
 	},
@@ -5385,6 +5393,23 @@ const CAMERA_PRESETS := {
 			"ground_horizon": Color(0.14, 0.14, 0.16, 1), "ground_bottom": Color(0.06, 0.06, 0.07, 1)},
 		"suppress_input": true,
 		"far": 1200.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
+	# ── VOL 2 ch6 — Philip's night (2026-11-02) ──
+	# "One summer night baked on the beach"; "Philip saw the ocean rise up
+	# and he scrambled for his surf board. His friends slept through the
+	# rising surf." Behind the sleepers, NNE over the campfire burned to its
+	# embers, his kicked-off blanket, the boards stood in the sand, the water.
+	"philip_beach": {
+		"scene": "res://scenes/locales/grunion_beach.tscn",
+		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
+		"camera_origin": Vector3(31.0, 2.2, 2.6),
+		"camera_rotation": Vector3(-0.1787, -0.2389, 0.0),
+		"fov": 54.0,
+		"strip": ["Bonfire_"],
+		"env": {"sky_top": Color(0.15, 0.16, 0.21, 1), "sky_horizon": Color(0.25, 0.26, 0.31, 1),
+			"ground_horizon": Color(0.14, 0.14, 0.16, 1), "ground_bottom": Color(0.06, 0.06, 0.07, 1)},
+		"suppress_input": true,
+		"far": 1200.0,
 	},
 	# ── VOL 2 — the bonfire (ch10 "The bonfire", ch12x beach blanket) ──
 	# (2026-10-29) "Frank and I built a bonfire on the beach"; "the fires

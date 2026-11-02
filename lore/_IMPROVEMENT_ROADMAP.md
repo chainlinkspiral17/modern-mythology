@@ -3835,6 +3835,73 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 263: Hollywood, 1945 (pasadena_1945 `hollywood_shoot`, draft 2).**
+- vol3 ch10: "I stroll down to Hollywood. It is a hub of activity. The studios are busy crafting dreams lived in at 24 frames per second. They shoot on the streets, the closed sets are easy to gain access to."
+- **The problems (survey 5):**
+  - The lens stood on the E walk against a storefront: half the frame was blank wall.
+  - The street had no one on it.
+  - The film camera pointed west at its own lamp.
+  - The street ended in an 80 m beige wall.
+- **The shoot** (`_props/figures`):
+  - The camera on its tripod now looks NORTH up the walk at two players (a man in a suit, a woman in a pale dress, facing each other and cheated to the lens).
+  - The lamp and the reflector flank them. The cameraman is at the eyepiece, a grip at the reflector, the director in his chair.
+  - The rope runs across the walk behind the camera, with four people stopped at it.
+- **The walks:** eight walkers both ways, the men in hats.
+- All the figures are `_Stock_`: 11 meshes in all.
+- **The lens** is out in the street, NNE across at the shoot, with the street running on beyond.
+- **The end of the street:** the road crosses a cross street, the next blocks stand as a roofline beyond, then the hills. The preset's `far` is 900.
+- **Draft N+1:**
+  - A marquee or a studio gate down the block (the text names neither; keep it generic).
+  - A boom or a slate in the crew's hands.
+  - The cars moving: one stopped by the shoot, its driver leaning out.
+
+**2026-11-02 · pass 262: the crumpled barn, draft 6 — the bramble is bramble.**
+- vol2 ch1: "The first time I saw the crumpled barn, I thought it part of the hill. Foliage consuming much of the exterior — more negative space than positive."
+- **The problem (survey 5):** every bramble mound and every hedge was one faceted blob. From the field they read as grey boulders heaped round a clean barn.
+- **`_bramble`:** a dark core with its leaf clusters packed over the dome. The clusters stay inside the old blob's bounds, so nothing the mound cleared it now touches. The new growth at the crowns is yellow-green.
+- **`_ivy`:** ivy up the gable's boards from the two climbing mounds. The west run stops under the rake; the east one runs across toward the hay door.
+- **The hedge** is leafed the same way.
+- Everything is `_Stock_`, joined: 1,298 parts become 28 meshes.
+- Arching canes were tried and dropped: from the field they read as lollipops on sticks.
+- **Draft N+1:**
+  - Bring the hill down to the collapse, so the barn sits INTO it ("I thought it part of the hill").
+  - The hay door's swung leaf.
+  - A crow on the peak.
+  - The field's ruts to the gate gap.
+
+**2026-11-02 · pass 261: Philip's night (vol2 ch6), its own view of the beach.**
+- `vol2_beach_night` served three scenes: the ghost walk, the field notes, and Philip's triptych. Philip's view showed the ghost scene's empty shore.
+- His text: "Most of his friends were hippies because like them he liked to surf, smoke and screw"; "One summer night baked on the beach"; "Philip saw the ocean rise up and he scrambled for his surf board. His friends slept through the rising surf."
+- **`philip_beach`** (grunion_beach, routed with `by_scene` for `vol2_ch6_ark`). 30 m east of the ch10 bonfire:
+  - a campfire burned down to its embers in a ring of stones, with two logs burned through and fallen across each other, and an ember light;
+  - four friends asleep in their bags, heads to the fire;
+  - one blanket kicked off and empty: his;
+  - three boards stood on their tails between the camp and the water.
+- Every part ends `__philip_beach`, so the ghost scene's views are unchanged.
+- **Draft N+1:**
+  - "the ocean rise up": the surf higher and whiter in this view only.
+  - The smoke off the embers.
+  - The sleepers as figures under the bags (shoulders, an arm out).
+
+**2026-11-02 · pass 260: Charles's dig (sea_cave riverbed, draft 2).**
+- vol2 ch5: "Charles never expected to find a whole vehicle buried in the sand. It was near a riverbed off the way of the roads and beaches. A 1969 Mercedes-Benz. Red, convertible top." And: "Charles excavated the machine by himself over the course of a week he'd rented a bungalow nearby."
+- **The camera** (`riverbed_sand`) looked north from 14 m off. The pit was a dark sliver mid-frame. It now stands south-east of the pit, looking north-west: the detector on the near rim, the car down in its pit, the spoil, the bungalow beyond.
+- **The dig** was a 5 x 3.2 m box hole with a chamfer box in it. Now it is dug out round the whole car:
+  - sand walls at the angle sand stands at, and a ramp cut up the west end;
+  - the spoil thrown off the north and east rims;
+  - the car on the floor: a side-profile body, the black canvas top up, a raked windscreen, chrome bumpers and grille, wheels, and sand still drifted on the hood and deck.
+- **The metal detector** has its control box, grip and arm cuff. It moved to the south rim, and the `detector` insert was re-aimed.
+- **Edges:**
+  - The river channel sat 10 cm PROUD of the sand, a ridge across the view. It is now cut in: the ground stops at sloped banks, with wet sand, stones and water below grade.
+  - The 500 m sky card's end stood mid-frame once the lens turned. It is gone; the environment is the sky.
+  - Dunes now rise west of the flat, so the sand never ends in a line.
+  - The cave's headland, 200 m off, is stripped from this view, and `far` is 420.
+- **Draft N+1:**
+  - The channel is a dead-straight canal. Meander it, and let it run on under the north dunes instead of stopping at their edge.
+  - Charles's kit for the week: a wheelbarrow, a bucket, a tarp.
+  - The bungalow: its porch and a window, so it reads as rented, not a shed.
+  - Sun shadows, so the car seats in the pit.
+
 **2026-11-02 · pass 259: the third survey; the harbor's boats are boats.**
 - **The survey:** 24 more vols 1–4 views. The weakest was `smolvud_docks_evening`, vol2 ch10's harbor ("cleaning the deck of my daddy's boat"; "watching the rest of the boats come in for the evening"). Its three moored boats and the one coming in were a hull box, a cabin box and a pole.
 - **`_props/vehicles.make_fishing_boat`:** a West Coast crab / salmon boat.

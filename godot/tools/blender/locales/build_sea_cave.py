@@ -22,11 +22,18 @@ DRAFT 2 targets: the shore woods and the dirt path; other caves along the
 beach; the cave's rock as a sculpted shell rather than lumps; whether the
 body shows in the dawn view (the author's call); the riverbed's car whole
 in a separate view; Deck framing.
+
+DRAFT 2 (2026-11-02, the riverbed): the pit dug out round the whole car (a
+week's work), the car modelled (profile body, canvas top, chrome, wheels),
+the channel cut into the sand, the sky card gone, dunes to the west.
+DRAFT 3 targets: meander the channel and run it under the north dunes; the
+week's kit (wheelbarrow, bucket, tarp); the bungalow's porch and window;
+sun shadows to seat the car in its pit.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_chamfer_box, make_heightfield,
+from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_rot_box, make_chamfer_box, make_heightfield, make_prism,
                              rolling_heights, join_stock, export_glb)
 
 try:
@@ -124,42 +131,101 @@ def build_riverbed():
     pit with a sliver of red bodywork."""
     ox, oy = 200.0, 0.0
     # the flat sand round the dig (a real hole where the pit is), the dunes
-    # rolling up beyond it; their first rows ramp from flat so no step shows
+    # rolling up beyond it; their first rows ramp from flat so no step shows.
+    # (2026-11-02, draft 2) "Charles excavated the machine by himself over
+    # the course of a week": the pit is dug out round the whole car now, its
+    # sand walls at the angle sand stands at, a ramp cut up the west end, the
+    # spoil thrown back in heaps, the car down on the floor with its top up
     px, py = ox - 4.0, oy + 6.0
-    hx0, hx1, hy0, hy1 = px - 2.7, px + 2.7, py - 1.8, py + 1.8
+    FL, FW, DEPTH, SLOPE = 3.2, 1.7, 1.0, 0.70          # floor half-sizes, depth, wall run
+    RAMP = 2.6
+    hx0, hx1, hy0, hy1 = px - FL - RAMP, px + FL + SLOPE, py - FW - SLOPE, py + FW + SLOPE
     x0, x1, y0, y1 = ox - 80.0, ox + 80.0, oy - 60.0, oy + 60.0
+    # (draft 2) the river channel is CUT into the sand: the ground stops at
+    # its banks, which slope down to wet sand and a thread of water (it sat
+    # 10 cm proud of the sand, a ridge across the view)
+    CX, CH, CD = ox + 10.0, 3.0, 0.45                 # channel centre x, half-width at the rim, depth
     for nm, (ax, bx_, ay, by_) in {"S": (x0, x1, y0, hy0), "N": (x0, x1, hy1, y1),
                                    "W": (x0, hx0, hy0, hy1), "E": (hx1, x1, hy0, hy1)}.items():
-        make_box(f"Riverbed_Flat_Sand_Ground_{nm}", ((ax + bx_) / 2.0, (ay + by_) / 2.0, -0.10), (bx_ - ax, by_ - ay, 0.20), SAND)
+        for part, (qa, qb) in (("", (ax, min(bx_, CX - CH))), ("_Far", (max(ax, CX + CH), bx_))):
+            if qb - qa > 0.01:
+                make_box(f"Riverbed_Flat_Sand_Ground_{nm}{part}", ((qa + qb) / 2.0, (ay + by_) / 2.0, -0.10), (qb - qa, by_ - ay, 0.20), SAND)
     hf = rolling_heights(20, 32, 0.8, seed=7, base=0.0, bumps=4)
     hf = [[z * min(1.0, r / 4.0) for z in row] for r, row in enumerate(hf)]
     make_heightfield("Riverbed_Dunes_Ground", (x0, y1, 0.0), 5.0, hf, SAND)
-    make_box("Riverbed_Channel", (ox + 10.0, oy - 10.0, -0.05), (6.0, 140.0, 0.30), WET_SAND)
-    make_box("Riverbed_Water", (ox + 10.0, oy - 10.0, 0.06), (2.2, 140.0, 0.02), (0.40, 0.48, 0.48, 1.0))
-    for k in range(12):
-        make_blob(f"River_Stone_{k}", (ox + 8.0 + (k % 3) * 1.8, oy - 30.0 + k * 5.0, 0.10), 0.25, (0.50, 0.48, 0.44, 1.0),
-                  noise=0.3, seed=130 + k, squash=0.5)
-    # the dig: a pit, the spoil heap, the red car body's sliver
-    make_box("Dig_Pit_Floor", (px, py, -0.70), (5.0, 3.2, 0.10), WET_SAND)
+    make_box("Riverbed_Channel", (CX, oy, -CD - 0.10), (2.0 * CH - 1.4, 120.0, 0.20), WET_SAND)
+    bank = math.atan2(0.7, CD)
     for s in (-1, 1):
-        make_box(f"Dig_Pit_Wall_{s:+d}", (px + s * 2.6, py, -0.30), (0.20, 3.2, 0.90), WET_SAND)
-        make_box(f"Dig_Pit_End_{s:+d}", (px, py + s * 1.7, -0.30), (5.4, 0.20, 0.90), WET_SAND)
-    make_chamfer_box("Mercedes_Body", (px, py, -0.25), (4.2, 1.7, 0.70), (0.66, 0.10, 0.08, 1.0), chamfer=0.20)
-    make_chamfer_box("Mercedes_Top", (px - 0.3, py, 0.20), (1.6, 1.5, 0.30), (0.12, 0.12, 0.12, 1.0), chamfer=0.10)
-    make_blob("Dig_Spoil_Sand", (px + 5.0, py + 1.0, 0.0), 2.2, SAND, noise=0.2, seed=150, squash=0.35)
-    make_rot_box("Dig_Shovel", (px + 3.4, py - 1.6, 0.55), (0.06, 0.06, 1.30), (0.50, 0.40, 0.28, 1.0), roll=0.4)
-    make_box("Metal_Detector_Shaft", (px + 3.0, py - 2.2, 0.02), (1.20, 0.04, 0.04), (0.30, 0.30, 0.32, 1.0))
-    make_cyl("Metal_Detector_Coil", (px + 2.3, py - 2.2, 0.015), 0.14, 0.03, (0.20, 0.20, 0.22, 1.0), segments=12)
+        make_rot_box(f"Riverbed_Channel_Bank_{'E' if s > 0 else 'W'}", (CX + s * (CH - 0.35), oy, -CD / 2.0),
+                     (0.10, 120.0, math.hypot(0.7, CD)), WET_SAND, pitch=s * bank)
+    make_box("Riverbed_Water", (CX, oy, -CD + 0.03), (2.2, 120.0, 0.02), (0.40, 0.48, 0.48, 1.0))
+    for k in range(12):
+        make_blob(f"River_Stone_{k}", (CX - 1.8 + (k % 3) * 1.8, oy - 30.0 + k * 5.0, -CD + 0.08), 0.25, (0.50, 0.48, 0.44, 1.0),
+                  noise=0.3, seed=130 + k, squash=0.5)
+    # the dig: the floor, three sloped walls and the ramp, all wet sand
+    zf = -DEPTH
+    make_box("Dig_Pit_Floor", (px, py, zf - 0.05), (2.0 * FL, 2.0 * FW, 0.10), WET_SAND)
+    tilt = math.atan2(SLOPE, DEPTH)
+    slant = math.hypot(SLOPE, DEPTH)
+    make_rot_box("Dig_Pit_Wall_E", (px + FL + SLOPE / 2.0 + 0.05, py, zf / 2.0), (0.12, 2.0 * (FW + SLOPE), slant),
+                 WET_SAND, pitch=tilt)
+    for s in (-1, 1):
+        make_rot_box(f"Dig_Pit_Wall_{'N' if s > 0 else 'S'}", (px + (SLOPE - RAMP) / 2.0, py + s * (FW + SLOPE / 2.0 + 0.05), zf / 2.0),
+                     (2.0 * FL + SLOPE + RAMP, 0.12, slant), WET_SAND, roll=-s * tilt)
+    ramp = math.atan2(DEPTH, RAMP)
+    make_rot_box("Dig_Pit_Ramp", (px - FL - RAMP / 2.0, py, zf / 2.0 - 0.05), (math.hypot(RAMP, DEPTH), 2.0 * FW, 0.10),
+                 WET_SAND, pitch=ramp)
+    # the car on the pit floor: a 1969 Mercedes-Benz, red, convertible top
+    # up; the nose east. Body a side profile across its width, the top black
+    # canvas, the windscreen raked, chrome at the ends, the wheels to the rims
+    RED, CANVAS, CHROME = (0.66, 0.10, 0.08, 1.0), (0.10, 0.10, 0.11, 1.0), (0.70, 0.70, 0.68, 1.0)
+    cz = zf
+    body = [(-2.25, 0.30), (2.22, 0.30), (2.28, 0.52), (2.20, 0.78), (1.00, 0.86), (-1.60, 0.86), (-2.22, 0.80), (-2.28, 0.52)]
+    make_prism("Mercedes_Body", (px, py, cz), body, 1.76, RED, axis="Y")
+    top = [(0.20, 0.86), (0.05, 1.30), (-0.95, 1.32), (-1.45, 0.86)]
+    make_prism("Mercedes_Top", (px, py, cz), top, 1.62, CANVAS, axis="Y")
+    screen = [(0.62, 0.86), (0.24, 1.28), (0.08, 1.28), (0.46, 0.86)]
+    make_prism("Mercedes_Windscreen", (px, py, cz), screen, 1.56, (0.22, 0.26, 0.28, 1.0), axis="Y")
+    for s in (-1, 1):
+        make_box(f"Mercedes_Bumper_{'F' if s > 0 else 'R'}", (px + s * 2.30, py, cz + 0.44), (0.08, 1.80, 0.10), CHROME)
+        for t in (-1, 1):
+            make_cyl(f"Mercedes_Wheel_{'F' if s > 0 else 'R'}{'L' if t > 0 else 'R'}", (px + s * 1.42, py + t * 0.78, cz + 0.33),
+                     0.33, 0.22, (0.12, 0.12, 0.12, 1.0), segments=14, axis="Y")
+    make_box("Mercedes_Grille", (px + 2.27, py, cz + 0.62), (0.06, 0.42, 0.26), CHROME)
+    # a drift of sand still on the hood and the deck, the week not quite done
+    make_blob("Mercedes_Hood_Sand", (px + 1.55, py + 0.2, cz + 0.84), 0.55, SAND, noise=0.3, seed=171, squash=0.18)
+    make_blob("Mercedes_Deck_Sand", (px - 1.95, py - 0.3, cz + 0.82), 0.40, SAND, noise=0.3, seed=172, squash=0.18)
+    # the spoil thrown back off the north and east rims
+    make_blob("Dig_Spoil_Sand", (px + FL + SLOPE + 2.6, py + 0.8, 0.0), 2.2, SAND, noise=0.2, seed=150, squash=0.35)
+    make_blob("Dig_Spoil_North", (px - 0.5, py + FW + SLOPE + 2.4, 0.0), 2.0, SAND, noise=0.2, seed=151, squash=0.30)
+    # the tools on the south rim, where the camera comes in
+    make_rot_box("Dig_Shovel", (px + 3.4, py - FW - SLOPE - 0.9, 0.55), (0.06, 0.06, 1.30), (0.50, 0.40, 0.28, 1.0), roll=0.4)
+    make_box("Metal_Detector_Shaft", (px + 2.6, py - FW - SLOPE - 1.4, 0.02), (1.20, 0.04, 0.04), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Metal_Detector_Coil", (px + 1.9, py - FW - SLOPE - 1.4, 0.015), 0.14, 0.03, (0.20, 0.20, 0.22, 1.0), segments=12)
+    dy = py - FW - SLOPE - 1.4
+    make_box("Metal_Detector_Control_Box", (px + 2.85, dy, 0.085), (0.20, 0.11, 0.09), (0.16, 0.17, 0.18, 1.0))
+    make_box("Metal_Detector_Grip", (px + 3.02, dy, 0.07), (0.12, 0.05, 0.06), (0.10, 0.10, 0.10, 1.0))
+    make_box("Metal_Detector_Arm_Cuff", (px + 3.18, dy, 0.07), (0.06, 0.12, 0.06), (0.10, 0.10, 0.10, 1.0))
     # the bungalow, small in the distance
     bx, by = ox - 30.0, oy + 40.0
     make_box("Bungalow_Body", (bx, by, 1.4), (7.0, 5.0, 2.8), (0.86, 0.82, 0.70, 1.0))
     make_rot_box("Bungalow_Roof_N", (bx, by + 1.25, 3.25), (7.6, 2.9, 0.12), (0.40, 0.30, 0.26, 1.0), roll=0.35)
     make_rot_box("Bungalow_Roof_S", (bx, by - 1.25, 3.25), (7.6, 2.9, 0.12), (0.40, 0.30, 0.26, 1.0), roll=-0.35)
     make_box("Bungalow_Door", (bx + 1.0, by - 2.52, 1.0), (0.9, 0.04, 2.0), (0.36, 0.28, 0.22, 1.0))
-    make_box("Riverbed_Sky", (ox, oy + 170.0, 60.0), (500.0, 0.2, 240.0), (0.72, 0.80, 0.88, 1.0))
+    # (draft 2) the sky card went: 500 m wide, its end stood mid-frame once
+    # the camera turned north-west; the sky is the environment's now. The
+    # dunes rise WEST of the flat so the sand never ends in a line (the cave's
+    # headland, 200 m off, is stripped from this view in its preset)
+    wc, wr = 13, 44
+    west = [[(1.0 - c / float(wc - 1)) ** 1.5 * 4.5 + (0.6 * math.sin(r * 0.55 + c * 0.9) * (1.0 - c / float(wc - 1)))
+             for c in range(wc)] for r in range(wr)]
+    make_heightfield("Riverbed_West_Dunes_Ground", (x0 - 5.0 * (wc - 1), y0, 0.0), 5.0, west, SAND)
     for k in range(8):
-        if abs(ox - 20.0 + k * 6.0 - (ox + 10.0)) < 4.0:
+        gx, gy = ox - 20.0 + k * 6.0, oy + 20.0 - (k % 3) * 8.0
+        if abs(gx - CX) < CH + 1.0:
             continue                # not in the channel
+        if hx0 - 1.0 < gx < hx1 + 1.0 and hy0 - 1.0 < gy < hy1 + 1.0:
+            continue                # not in the dig
         make_blob(f"Dune_Grass_{k}", (ox - 20.0 + k * 6.0, oy + 20.0 - (k % 3) * 8.0, 0.4), 0.9, (0.50, 0.56, 0.36, 1.0),
                   noise=0.4, seed=160 + k, squash=0.5)
 
