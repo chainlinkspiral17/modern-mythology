@@ -44,7 +44,10 @@ BUILDERS = P.A.LOCALES
 TOUCH = 0.012   # 1.2 cm: a 3 cm gap reads as floating on the Deck (2026-09-22, user: pillows off their beds)
 # foliage and vapour hang in their crowns by design — whole name PARTS,
 # so "smoke" cannot eat the Smokers_Tin (the vantage audit's PASSABLE did)
-FOLIAGE = re.compile(r"caneleaf|(^|_)(foliage|leaf|leaves|frond|lobe|salal|shrub|bush|hedge|needles|fern|grass|reed|vine|ivy|moss|drape|sheer|curtain|spray|stream|fog|haze|mist|steam|cloud|leader)(_|$)|_[CL][0-9]+(_|$)", re.I)
+FOLIAGE = re.compile(r"caneleaf|(^|_)(foliage|leaf|leaves|frond|lobe|salal|shrub|bush|hedge|needles|fern|grass|reed|vine|ivy|moss|drape|sheer|curtain|spray|stream|fog|haze|mist|steam|cloud|leader|aloft)(_|$)|_[CL][0-9]+(_|$)", re.I)
+# (2026-11-02) "aloft": a bird in the air (the harbor's gulls "that hovered
+# overhead") is airborne by design; a whole name part, so nothing perched
+# or merely high is let off
 # a tree's crown hangs in its trunk by design; a candelabra's crown, a
 # register's crown, crown moulding do not (2026-09-22: "crown" in FOLIAGE
 # dropped the diner's candelabra ring, so its candles read as floating)

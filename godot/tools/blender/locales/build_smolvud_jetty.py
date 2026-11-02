@@ -49,7 +49,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 _LOC = os.path.dirname(os.path.abspath(__file__))
 if _LOC not in sys.path: sys.path.insert(0, _LOC)
-from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, make_blob, export_glb
 
 LAND_Z = 1.8
 CREST_Z = 3.1
@@ -196,6 +196,38 @@ def build_shore():
     make_box("Jetty_Sign_Text", (2.4, -6.457, pz + 1.62), (0.56, 0.004, 0.28), COL_DARK)
 
 
+def _gull(name, x, y, z, heading, bank, flying=True):
+    """A herring gull, about 0.6 m long, its heading in radians (0 = +X).
+    In the air: wings set in a shallow gull-wing (up from the body, the
+    hands drooped), banked by `bank`. Perched: wings folded along the
+    body, legs down to (x, y, z)."""
+    c, s_ = math.cos(heading), math.sin(heading)
+
+    def at(u, v, w):
+        return (x + u * c - v * s_, y + u * s_ + v * c, w)
+    white, grey, dark, bill = (0.92, 0.92, 0.90, 1.0), (0.60, 0.62, 0.66, 1.0), (0.18, 0.18, 0.20, 1.0), (0.90, 0.74, 0.30, 1.0)
+    bz = z if flying else z + 0.20
+    make_rot_box(f"{name}_Body", at(0.0, 0.0, bz), (0.42, 0.14, 0.13), white, yaw=heading, pitch=0.0, roll=bank)
+    make_blob(f"{name}_Head", at(0.24, 0.0, bz + 0.05), 0.065, white, noise=0.05, seed=3, squash=0.95)
+    make_rot_box(f"{name}_Bill", at(0.32, 0.0, bz + 0.04), (0.07, 0.025, 0.025), bill, yaw=heading)
+    make_rot_box(f"{name}_Tail", at(-0.25, 0.0, bz + 0.01), (0.12, 0.12, 0.02), white, yaw=heading)
+    if flying:
+        for side in (-1, 1):
+            # the arm up 18 degrees off the body, the hand out and drooped
+            make_rot_box(f"{name}_Wing_Arm_{'L' if side > 0 else 'R'}", at(0.02, side * 0.26, bz + 0.07 + side * bank * 0.25),
+                         (0.17, 0.40, 0.018), grey, yaw=heading, roll=-side * 0.32 + bank)
+            make_rot_box(f"{name}_Wing_Hand_{'L' if side > 0 else 'R'}", at(-0.03, side * 0.62, bz + 0.12 + side * bank * 0.62),
+                         (0.13, 0.36, 0.015), grey, yaw=heading, roll=side * 0.20 + bank)
+            make_rot_box(f"{name}_Wing_Tip_{'L' if side > 0 else 'R'}", at(-0.05, side * 0.82, bz + 0.09 + side * bank * 0.82),
+                         (0.08, 0.08, 0.014), dark, yaw=heading, roll=side * 0.20 + bank)
+    else:
+        for side in (-1, 1):
+            make_rot_box(f"{name}_Wing_{'L' if side > 0 else 'R'}", at(-0.04, side * 0.075, bz + 0.03), (0.36, 0.03, 0.10), grey, yaw=heading)
+        make_rot_box(f"{name}_Wing_Tips", at(-0.27, 0.0, bz + 0.04), (0.10, 0.10, 0.03), dark, yaw=heading)
+        for side in (-1, 1):
+            make_cyl(f"{name}_Leg_{'L' if side > 0 else 'R'}", at(0.0, side * 0.04, z + 0.07), 0.008, 0.14, bill, segments=5)
+
+
 def build_harbor_and_town():
     rnd = random.Random(41)
     # across the channel: the floats, the pilings, three boats
@@ -242,6 +274,18 @@ def build_harbor_and_town():
             make_box(f"Float_Cleat_{k}_{e:+d}", (hx + e * 0.85, 13.2 + k * 4.2, fz + 0.05), (0.26, 0.10, 0.10), (0.40, 0.40, 0.42, 1.0))
     make_cyl("Float_Line_Coil", (hx - 0.6, 11.4, fz + 0.04), 0.26, 0.08, (0.82, 0.78, 0.60, 1.0), segments=12)
     make_cyl("Float_Bollard", (hx - 0.9, 10.2, fz + 0.30), 0.14, 0.60, COL_DARK, segments=10)
+    # (2026-11-02) "tossed a small crab to the gulls that hovered overhead.
+    # They swooped and fought to get a piece" (vol2 ch10): gulls over the
+    # float's root by the bench, wings set, and two more sat on the pilings.
+    # The ones in the air are `_Aloft` (support_audit: airborne by design).
+    for k, (gx, gy, gz, hd, bank) in enumerate(((hx + 1.6, 6.8, 4.2, 0.6, 0.25), (hx + 0.2, 4.6, 5.1, 2.4, -0.30),
+                                                 # three out over the water ahead of the evening lens, between
+                                                 # the float and the first boat, wheeling for the crab
+                                                 (hx + 2.0, 11.0, 4.2, -1.9, 0.40), (hx + 1.7, 13.8, 5.0, 1.2, 0.10),
+                                                 (hx + 2.8, 10.6, 3.2, -0.4, -0.20))):
+        _gull(f"Gull_{k}_Aloft", gx, gy, gz, hd, bank, flying=True)
+    for k, pk in enumerate((2, 5)):
+        _gull(f"Gull_Perched_{k}", hx - 1.6, -1.0 + pk * 5.0, 3.2, 0.9 + k * 2.0, 0.0, flying=False)
     make_box("Far_Shore_Headland", (-170.0, 40.0, 4.0), (80.0, 140.0, 12.0), (0.34, 0.38, 0.30, 1.0))
     # Smolvud low on its rise behind the shore, going grey in the fog
     placed = 0

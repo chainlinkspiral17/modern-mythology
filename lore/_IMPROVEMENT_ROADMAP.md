@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 267: the harbor's gulls; the barn into its hill.**
+- **The gulls** (smolvud_jetty, vol2 ch10): "tossed a small crab to the gulls that hovered overhead. They swooped and fought to get a piece."
+  - `_gull`: a herring gull about 0.6 m long, with body, head, bill and tail.
+  - In the air, its wings are set in a shallow gull-wing: arm up, hand drooped, the tips dark. It is banked.
+  - Perched, its wings fold along the body and its legs stand on the piling.
+  - Three wheel out over the water ahead of the evening lens, two hover over the bench, and two sit on the pilings.
+- **support_audit** learns `aloft` (a whole name part, beside foliage and vapour): a bird in the air is airborne by design. Nothing perched or merely high is let off.
+- **The barn, draft 7** (vol2 ch1, "I thought it part of the hill"):
+  - The hill's foot moved from y 21 to y 15, right where the fallen roof's bramble ends. From the field, the barn's broken back now runs into the slope.
+  - The lumps grow with the rise, so the foot meets the field with no step.
+  - The hedge sits on the hill where it stands (`hill_h`).
+- **Draft N+1:**
+  - The harbor's "bells and whistles": a bell buoy out in the channel.
+  - The boats' names on their transoms.
+  - The barn's crow on the peak and the hay door's swung leaf.
+
 **2026-11-02 · pass 266: Marty's patio, "the moon is there between tall skinny trees" (tulsa_house `tulsa_patio`).**
 - vol3 ch3: "Much later on, Marty would go out to the patio with a select few … Finishing off the booze"; "Marty and Niles boxing … using the children's sawdust playground as a proving ground. The moon is there between tall skinny trees"; "They relax against the wooden fort Marty built for the children".
 - **The problems (survey 7):**

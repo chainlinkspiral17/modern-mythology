@@ -78,7 +78,7 @@ COL_SKY = (0.62, 0.63, 0.64, 1.0)        # flat overcast
 
 
 def build_field():
-    make_box("Field", (0.0, 9.0, 0.0), (34.0, 24.0, 0.05), COL_FIELD)   # to y 21, under the hedge (2026-09-30)
+    make_box("Field", (0.0, 6.0, 0.0), (34.0, 18.0, 0.05), COL_FIELD)   # to y 15, the hill's foot (draft 7; was to y 21)
     make_box("Yard_Dirt", (0.0, 8.5, 0.01), (10.0, 6.0, 0.05), COL_DIRT)
 
 
@@ -464,20 +464,33 @@ def build_debris():
     make_cyl("Bucket_Side", (-2.4, 9.3, 0.20), 0.14, 0.30, (0.34, 0.32, 0.30, 1.0), segments=10, axis='Y')   # on the plank patch
 
 
+HILL_Y0 = 15.0                  # (draft 7) the hill's foot: at the back of the collapse
+
+
+def hill_h(x, y):
+    """The hill's height at (x, y): 0 at its foot (HILL_Y0) rising to a
+    rounded crest ~8.5 m up 36 m back; the lumps grow with the rise so the
+    foot meets the field with no step."""
+    t = max(0.0, (y - HILL_Y0) / 36.0)
+    return 8.5 * (t ** 1.3) * (1.0 - 0.25 * (x / 32.0) ** 2)
+
+
 def build_hill():
-    """"I thought it part of the hill": the ground rises behind the
-    footprint to a rounded crest the hedge sits on."""
+    """"I thought it part of the hill": (draft 7, 2026-11-02) the ground
+    rises from right behind the collapse (its foot at y 15, where the fallen
+    roof's bramble ends), so from the field the barn's broken back runs into
+    the slope; the hedge sits on it. Draft 3's hill began 6 m further back
+    and read as a separate rise behind a barn in a field."""
     rows = []
-    for j in range(8):          # y 21 (the field's edge) .. 49 at 4 m
-        y = 21.0 + j * 4.0
-        t = (y - 21.0) / 28.0
+    for j in range(10):         # y 15 .. 51 at 4 m
+        y = HILL_Y0 + j * 4.0
         row = []
         for i in range(17):     # x -32 .. 32 at 4 m
             x = -32.0 + i * 4.0
-            h = 7.0 * (t ** 1.4) * (1.0 - 0.25 * (x / 32.0) ** 2) + 0.6 * ((i * 7 + j * 3) % 5) / 5.0
-            row.append(round(h, 2))
+            lump = 0.6 * ((i * 7 + j * 3) % 5) / 5.0 * min(1.0, j / 2.0)
+            row.append(round(hill_h(x, y) + lump, 2))
         rows.append(row)
-    make_heightfield("Hill", (-32.0, 21.0, 0.0), 4.0, rows, COL_HILL, skirt=0.3)
+    make_heightfield("Hill", (-32.0, HILL_Y0, 0.0), 4.0, rows, COL_HILL, skirt=0.3)
 
 
 def build_backdrop():
@@ -496,8 +509,9 @@ def build_backdrop():
             # half-height is radius x squash), 2 cm in
             # the back row is on the hill now (2026-10-23): ground ~0.5-0.9 m up at y 26
             hy = (18.5, 26.0)[k]
+            gz = hill_h(tx - 1.2 + k * 2.4, hy)        # (draft 7) seated on the hill where it stands
             # (draft 6) leafed like the bramble: one faceted blob read as a boulder
-            _bramble(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, hy, (0.025 - 0.02, 0.60 - 0.25)[k] + r * 0.85),
+            _bramble(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, hy, gz + 0.005 + r * 0.85),
                      r, COL_TREE, 70 + i * 2 + k, 0.85, light=(0.26, 0.33, 0.20, 1.0), tip=(0.32, 0.38, 0.22, 1.0),
                      dark=(0.12, 0.16, 0.10, 1.0))
     # GROUND out past the last windbreak (2026-08-09 ground wave):
