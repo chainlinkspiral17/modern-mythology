@@ -581,6 +581,27 @@ def _drop_parts(prefixes):
             _bpy.data.objects.remove(o, do_unlink=True)
 
 
+
+def _frame_shirt(name, x, y, z_top):
+    """(2026-11-02) The fourth shirt, tied by its sleeves to a rearview (vol1
+    ch9): "a border of painted wood grain, knots and rings, and inside it
+    nothing at all, just white cotton"; "It hangs there like fuzzy dice."
+    The white torso hanging flat across the car (facing along it), the
+    sleeves gathered up to the knot, the wood-grain border round the front
+    and the back."""
+    white, grain, knot_c = (0.92, 0.91, 0.88, 1.0), (0.52, 0.36, 0.20, 1.0), (0.84, 0.82, 0.78, 1.0)
+    make_blob(f"{name}_Knot", (x, y, z_top), 0.035, knot_c, noise=0.2, seed=11, squash=0.9)
+    for s in (-1, 1):
+        make_rot_box(f"{name}_Sleeve_{'L' if s > 0 else 'R'}", (x + s * 0.07, y, z_top - 0.05), (0.15, 0.012, 0.06), white, pitch=s * 0.75)
+    tz = z_top - 0.08 - 0.17
+    make_box(f"{name}_Torso", (x, y, tz), (0.30, 0.012, 0.34), white)
+    for f in (-1, 1):
+        fy = y + f * 0.0075
+        make_box(f"{name}_Grain_Top_{f:+d}", (x, fy, tz + 0.150), (0.30, 0.003, 0.035), grain)
+        make_box(f"{name}_Grain_Bottom_{f:+d}", (x, fy, tz - 0.150), (0.30, 0.003, 0.035), grain)
+        for s in (-1, 1):
+            make_box(f"{name}_Grain_Side_{s:+d}_{f:+d}", (x + s * 0.1325, fy, tz), (0.035, 0.003, 0.34), grain)
+
 def build_judgement_day_2026_10():
     """JUDGEMENT DAY (2026-10-29, vol 1 ch 6): Faust's car — club_street's
     "beat-up maroon sedan" with its primer patch — and the three of them in
@@ -633,7 +654,7 @@ def build_judgement_day_2026_10():
         make_chamfer_box("Rear_Bench_Back", (0.0, -1.21, 1.21), (1.70, 0.12, 0.70), SEAT, chamfer=0.04)
         make_box("Rear_Bench_Bolster", (0.0, -0.90, 0.885), (1.70, 0.50, 0.05), SEAT_DK)
         make_box("Cat_Hair_Seat", (0.45, 0.20, 0.625), (0.34, 0.30, 0.004), (0.78, 0.74, 0.66, 1.0))   # the cat's
-        make_box("Rearview_Shirt_Knot", (0.0, 1.40, 1.515), (0.10, 0.04, 0.06), (0.86, 0.84, 0.80, 1.0))   # (round 6) knotted on the mirror itself
+        _frame_shirt("Rearview_Shirt", 0.0, 1.40, 1.50)   # knotted on the mirror itself, the frame shirt hanging
         make_box("Dash_Fast_Food_Bag", (-0.35, 1.05, 0.98), (0.20, 0.14, 0.10), (0.84, 0.70, 0.42, 1.0))
     # (2026-10-30) the truck's own things are not Faust's: Ben's map on the
     # dash (vol 6 ch14) and the phone in its cradle came along with
@@ -647,7 +668,7 @@ def build_judgement_day_2026_10():
     make_seated_figure("JD_Front_Passenger", ax + 0.45, ay + 0.12, heading=0.05, seat_h=0.42, h=1.76, z0=0.30 + dz,
                        coat=(0.56, 0.20, 0.18, 1.0), pants=(0.30, 0.32, 0.40, 1.0), hair=(0.40, 0.28, 0.16, 1.0), arms="lap")
     # the shirt knotted on the rearview, hanging (the draft-1 knot was all of it)
-    make_box("JD_Rearview_Shirt_Hang", (ax + 0.0, ay + 1.40, 1.335 + dz), (0.22, 0.03, 0.30), (0.86, 0.84, 0.80, 1.0))   # from the knot down
+    _frame_shirt("JD_Rearview_Shirt", ax + 0.0, ay + 1.40, 1.50 + dz)
     # the street: asphalt, the yellow line, sidewalks, live oaks, power poles, low shops, a painted wall, the overpass
     make_box("JD_Street", (ax, ay + 40.0, 0.0), (14.0, 140.0, 0.04), (0.26, 0.26, 0.27, 1.0))
     for k in range(20):

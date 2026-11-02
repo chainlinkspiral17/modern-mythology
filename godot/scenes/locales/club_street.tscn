@@ -363,8 +363,8 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; ── shots (pass 171, directing vol 1 ch9 + ch16) ──────────────────────────
-; insert: Judgement Day at the curb — the shirt tied to its rearview, the cat hair on the seat
+; insert: Judgement Day at the curb — the shirt tied to its rearview (2026-11-02: in at the windshield, the frame shirt on the glass)
 [node name="shot_insert_judgement_day" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.5, 0.2)
-rotation = Vector3(-0.2306, -2.2154, 0.0)
-metadata/fov = 44.0
+position = Vector3(4.500, 1.550, 0.600)
+rotation = Vector3(-0.1712, -2.8771, 0.0)
+metadata/fov = 38.0

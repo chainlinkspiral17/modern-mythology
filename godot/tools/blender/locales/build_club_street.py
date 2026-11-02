@@ -71,6 +71,32 @@ def build_club_front():
                      ((1.0, 0.82, 0.52, 1.0), (0.10, 0.10, 0.12, 1.0))[(j + k) % 2])
 
 
+
+def _shirt_on_glass(name, cx, cy, nose_u0=1.25, nose_z0=0.96, top_u=0.65, top_z=1.42):
+    """make_car's sedan windshield runs (u 1.25, z 0.96) -> (u 0.65, z 1.42)
+    along a car on +Y (u = y - cy); its pane sits 2.5 cm out from that line.
+    Each part lies in that plane, 5 cm out (on the pane's face)."""
+    du, dz = nose_u0 - top_u, nose_z0 - top_z
+    ln = math.hypot(du, dz)
+    tu, tz = du / ln, dz / ln                      # down the glass
+    nu, nz = -tz, tu                               # out of it (forward and up)
+    if nz < 0.0:
+        nu, nz = -nu, -nz
+    pitch = -math.atan((top_z - nose_z0) / (top_u - nose_u0))
+    white, grain, dark = (0.92, 0.91, 0.88, 1.0), (0.52, 0.36, 0.20, 1.0), (0.10, 0.10, 0.10, 1.0)
+
+    def at(sv, across, off=0.050):
+        return (cx + across, cy + top_u + sv * tu + off * nu, top_z + sv * tz + off * nz)
+
+    def part(nm, sv, across, along, wide, col, off=0.050, th=0.012):
+        make_rot_box(f"{name}_{nm}", at(sv, across, off), (along, wide, th), col, yaw=math.pi / 2.0, pitch=pitch)
+    part("Mirror", 0.07, 0.0, 0.05, 0.22, dark, off=0.045, th=0.02)
+    part("Shirt_Sleeves", 0.13, 0.0, 0.07, 0.20, white)
+    part("Shirt_Torso", 0.32, 0.0, 0.32, 0.30, white)
+    for nm, sv, ac, al, wd in (("Top", 0.32 - 0.1425, 0.0, 0.035, 0.30), ("Bottom", 0.32 + 0.1425, 0.0, 0.035, 0.30),
+                               ("Side_L", 0.32, 0.1325, 0.32, 0.035), ("Side_R", 0.32, -0.1325, 0.32, 0.035)):
+        part(f"Shirt_Grain_{nm}", sv, ac, al, wd, grain, off=0.057, th=0.003)
+
 def build_street():
     make_box("Sidewalk", (2.0, 0.0, 0.06), (4.0, 190.0, 0.12), CONC)
     make_box("Curb", (4.05, 0.0, 0.07), (0.10, 190.0, 0.14), (0.62, 0.60, 0.56, 1.0))
@@ -94,7 +120,11 @@ def build_street():
     # its rearview in the ch9 view; the cat hair is the sprite-scale detail
     make_car("Judgement_Day", 5.15, -4.0, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
     make_box("Judgement_Day_Primer_Patch", (5.15 - 0.885, -3.4, 0.62), (0.006, 0.80, 0.30), (0.56, 0.56, 0.54, 1.0))
-    make_box("Judgement_Day_Rearview_Hang", (5.15, -3.0, 1.32), (0.20, 0.04, 0.06), (0.10, 0.10, 0.10, 1.0))
+    # the frame shirt on the rearview, as it reads through the windshield:
+    # the car is a solid body under its glass panes, so a shirt hung "inside"
+    # is buried in it; it lies in the windshield's plane just outside the
+    # pane, hanging down the glass from the mirror at its head
+    _shirt_on_glass("Judgement_Day_Rearview", 5.15, -4.0)
     # other cars parked along the far curb
     for k, (y, col) in enumerate(((-20.0, (0.30, 0.32, 0.36, 1.0)), (14.0, (0.70, 0.70, 0.68, 1.0)), (36.0, (0.20, 0.26, 0.34, 1.0)))):
         make_car(f"Parked_Far_{k}", 12.85, y, 4.6, col, along="Y")

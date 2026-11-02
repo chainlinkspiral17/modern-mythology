@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 274: the frame shirt on Judgement Day's rearview (vol1 ch9, ch15).**
+- vol1 ch9: Faust holds up "the fourth shirt … a border of painted wood grain, knots and rings, and inside it nothing at all, just white cotton", and "ties the shirt by its sleeves to the rearview of Judgement Day … It hangs there like fuzzy dice". ch15: "The empty shirt hangs from the rearview".
+- **The problem:** on the club street it was a black 20 cm box; in the cab, a plain white box.
+- **In the cab** (`_frame_shirt`): the white torso hanging from the knot on the mirror, the sleeves gathered up to it, and the wood-grain border round front and back. The truck cab dressed as Judgement Day carries it too.
+- **On the club street** (`_shirt_on_glass`): make_car's body is a solid under its glass panes, so a shirt hung "inside" is buried in it. The shirt now lies in the windshield's plane just outside the pane, hanging down the glass from the mirror. The `judgement_day` insert comes in at the windshield to frame it.
+- **Draft N+1:**
+  - Dickens "a small dark figure in the middle of the frame" in ch15's view: the author's call (he is a portrait, not set).
+  - The cat hair on Judgement Day's seat, seen through the side glass.
+
 **2026-11-02 · pass 273: Philip's sleepers, the boxing's sawdust, the clapper.**
 - **philip_beach, draft 3:** each sleeper has shoulders under the bag's top, and two have a bare arm out over the bag (a summer night).
 - **tulsa_patio** ("Marty and Niles boxing … using the children's sawdust playground as a proving ground"): the sawdust is scuffed where they went round each other, with a bottle dropped in it. The men stay the VN's sprites.
