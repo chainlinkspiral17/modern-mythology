@@ -205,21 +205,21 @@ def build_harbor_and_town():
         make_box(f"Harbor_Dock_Float_Finger_{k}", (hx + 5.2, 4.0 + k * 9.0, 0.15), (8.0, 1.4, 0.30), (0.52, 0.48, 0.40, 1.0))
     for k in range(9):
         make_cyl(f"Harbor_Piling_{k}", (hx - 1.6, -1.0 + k * 5.0, 1.2), 0.20, 4.0, (0.30, 0.26, 0.22, 1.0), segments=8)
+    # (2026-11-02) boats, not boxes: a crab / salmon boat each side of the
+    # fingers (vol2 ch10, "cleaning the deck of my daddy's boat"; "watching
+    # the rest of the boats come in for the evening"), bows to the east
+    from _props.vehicles import make_fishing_boat
     for k, (bx, by) in enumerate(((hx + 5.0, 8.5), (hx + 5.4, 17.5), (hx + 5.0, 26.5))):
         col = ((0.84, 0.82, 0.76, 1.0), (0.30, 0.46, 0.62, 1.0), (0.70, 0.26, 0.20, 1.0))[k]
-        make_box(f"Boat_{k}_Hull", (bx, by, 0.45), (8.0, 2.6, 1.30), col)
-        make_box(f"Boat_{k}_Cabin", (bx - 1.0, by, 1.65), (2.6, 2.0, 1.10), (0.88, 0.88, 0.84, 1.0))
-        make_cyl(f"Boat_{k}_Mast", (bx + 1.2, by, 1.10 + 1.9), 0.08, 3.8, COL_DARK, segments=6)   # stepped on the deck
-        if k == 0:                                   # the deck lamp on the nearest boat's cabin (the evening preset's practical)
-            make_box("Boat_0_Deck_Lamp", (bx, by, 2.26), (0.16, 0.16, 0.12), (0.96, 0.92, 0.70, 1.0))
+        make_fishing_boat(f"Boat_{k}", bx, by, 0.0, L=8.0, B=2.6, z0=0.0, hull=col, pots=(4 if k != 1 else 0), poles=(k == 1))
+        if k == 0:                                   # the deck lamp on the nearest boat's cabin roof (the evening preset's practical)
+            make_box("Boat_0_Deck_Lamp", (bx + 0.64, by, 2.69), (0.16, 0.16, 0.12), (0.96, 0.92, 0.70, 1.0))
     # pass 159: one boat coming in up the channel for the evening (vol 2's
     # docks: "watching the rest of the boats come in"), its wake behind it
     bx, by, yaw = -22.0, 30.0, math.radians(-150.0)
     c, s_ = math.cos(yaw), math.sin(yaw)
-    make_rot_box("Boat_In_Hull", (bx, by, 0.45), (8.0, 2.6, 1.30), (0.30, 0.40, 0.52, 1.0), yaw=yaw)
-    make_rot_box("Boat_In_Cabin", (bx - 1.0 * c, by - 1.0 * s_, 1.65), (2.6, 2.0, 1.10), (0.88, 0.88, 0.84, 1.0), yaw=yaw)
-    make_cyl("Boat_In_Mast", (bx + 1.2 * c, by + 1.2 * s_, 3.0), 0.08, 3.8, COL_DARK, segments=6)
-    make_box("Boat_In_Light", (bx - 1.0 * c, by - 1.0 * s_, 2.26), (0.14, 0.14, 0.12), (0.96, 0.92, 0.70, 1.0))
+    make_fishing_boat("Boat_In", bx, by, yaw, L=8.0, B=2.6, z0=0.0, hull=(0.30, 0.40, 0.52, 1.0), pots=2, poles=True)
+    make_box("Boat_In_Light", (bx + 0.64 * c, by + 0.64 * s_, 2.69), (0.14, 0.14, 0.12), (0.96, 0.92, 0.70, 1.0))
     for j in range(4):
         d = 5.0 + j * 4.0
         make_rot_box(f"Boat_In_Wake_{j}", (bx - d * c, by - d * s_, 0.02), (3.0, 1.2 + j * 1.0, 0.02), COL_FOAM, yaw=yaw)

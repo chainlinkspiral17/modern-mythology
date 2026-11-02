@@ -21,7 +21,7 @@ the DRAFT 1 parts (Body, Cabin→now part of the Body profile but a
 "Cabin" glass band remains, Windshield, Rear_Glass, Side_Glass_L/R,
 Wheel_0..3) so every existing marker and synonym still lands.
 """
-from .geometry import make_box, make_cyl, make_chamfer_box, make_prism, make_lathe, make_rot_box
+from .geometry import make_box, make_cyl, make_chamfer_box, make_prism, make_lathe, make_rot_box, make_tube
 
 GLASS_DK = (0.26, 0.30, 0.36, 1.0)
 RUBBER = (0.12, 0.12, 0.13, 1.0)
@@ -203,3 +203,47 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     # (2026-09-22: at hw + 0.14 the tires cleared the body by 4 cm and every kit car floated)
     for wi, (wu, wv) in enumerate(((-L * 0.32, -(hw + 0.08)), (L * 0.32, -(hw + 0.08)), (-L * 0.32, hw + 0.08), (L * 0.32, hw + 0.08))):
         _wheel(f"{prefix}_Wheel_{wi}", P, cx, cy, wu, wv, z0, along)
+
+
+def make_fishing_boat(prefix, x, y, heading=0.0, *, L=9.0, B=3.0, z0=0.0, hull=(0.84, 0.82, 0.76, 1.0),
+                      house=(0.88, 0.88, 0.84, 1.0), trim=(0.20, 0.22, 0.24, 1.0), pots=0, poles=True):
+    """(2026-11-02) A West Coast crab / salmon boat, bow toward `heading`
+    (radians, 0 = +X), the waterline at z0: a hull in plan (square transom,
+    the bow drawn to a point) with its sheer at z0 + 1.0, a dark boot-top at
+    the waterline, the wheelhouse forward with its window band and roof, a
+    mast with two trolling poles and a boom aft, crab pots stacked on the
+    afterdeck. Names stay <prefix>_Hull / _Cabin / _Mast (markers and cues
+    that named the old box boats still land)."""
+    c, s = math.cos(heading), math.sin(heading)
+
+    def at(u, v, z):
+        return (x + u * c - v * s, y + u * s + v * c, z)
+    hb, bow = B / 2.0, L * 0.26
+    plan = [(-L / 2.0, -hb), (L / 2.0 - bow, -hb), (L / 2.0, 0.0), (L / 2.0 - bow, hb), (-L / 2.0, hb)]
+    top, bot = z0 + 1.0, z0 - 0.40
+    make_prism(f"{prefix}_Hull", (x, y, (top + bot) / 2.0), plan, top - bot, hull, axis="Z", yaw=heading)
+    # the boot-top: a dark band round the hull at the waterline, 3 cm proud
+    grow = [(u * (1.0 + 0.06 / L), v * (1.0 + 0.06 / B)) for (u, v) in plan]
+    make_prism(f"{prefix}_Boot_Top", (x, y, z0 + 0.08), grow, 0.16, trim, axis="Z", yaw=heading)
+    # the rub rail at the sheer
+    rail = [(u * (1.0 + 0.05 / L), v * (1.0 + 0.05 / B)) for (u, v) in plan]
+    make_prism(f"{prefix}_Rub_Rail", (x, y, top - 0.05), rail, 0.10, trim, axis="Z", yaw=heading)
+    # the wheelhouse forward of midships
+    wu, wl, ww, wh = L * 0.08, L * 0.30, B * 0.72, 1.55
+    make_rot_box(f"{prefix}_Cabin", at(wu, 0.0, top + wh / 2.0), (wl, ww, wh), house, yaw=heading)
+    make_rot_box(f"{prefix}_Cabin_Windows", at(wu, 0.0, top + wh * 0.66), (wl + 0.02, ww + 0.02, wh * 0.30), (0.22, 0.28, 0.32, 1.0), yaw=heading)
+    make_rot_box(f"{prefix}_Cabin_Roof", at(wu, 0.0, top + wh + 0.04), (wl + 0.30, ww + 0.20, 0.08), trim, yaw=heading)
+    # the mast on the wheelhouse roof's aft edge, the boom over the afterdeck
+    mu = wu - wl / 2.0 + 0.15
+    mz0 = top + wh + 0.08
+    make_cyl(f"{prefix}_Mast", at(mu, 0.0, mz0 + 2.2), 0.07, 4.4, trim, segments=6)
+    make_tube(f"{prefix}_Boom", [at(mu, 0.0, mz0 + 0.9), at(-L / 2.0 + 0.8, 0.0, top + 1.2)], 0.05, trim, segments=6)
+    if poles:
+        # the trolling poles, stowed up beside the mast
+        for side in (-1, 1):
+            make_tube(f"{prefix}_Pole_{'L' if side > 0 else 'R'}", [at(mu + 0.1, side * 0.35, mz0), at(mu - 0.6, side * 1.4, mz0 + 5.6)],
+                      0.04, trim, segments=6)
+    for k in range(pots):
+        pu = -L / 2.0 + 1.2 + (k // 2) * 0.95
+        pv = (-0.5 + (k % 2)) * 0.95
+        make_rot_box(f"{prefix}_Pot_{k}", at(pu, pv, top + 0.35), (0.85, 0.85, 0.70), (0.30, 0.34, 0.32, 1.0), yaw=heading)

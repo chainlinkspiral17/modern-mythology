@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 259: the third survey; the harbor's boats are boats.**
+- **The survey:** 24 more vols 1–4 views. The weakest was `smolvud_docks_evening`, vol2 ch10's harbor ("cleaning the deck of my daddy's boat"; "watching the rest of the boats come in for the evening"). Its three moored boats and the one coming in were a hull box, a cabin box and a pole.
+- **`_props/vehicles.make_fishing_boat`:** a West Coast crab / salmon boat.
+  - A hull in plan, square transom with the bow drawn to a point, its sheer 1 m above the waterline.
+  - A dark boot-top at the waterline and a rub rail at the sheer.
+  - The wheelhouse forward, with its window band and roof.
+  - A mast with a boom aft over the deck, and trolling poles (stowed up).
+  - Crab pots stacked on the afterdeck.
+  - Part names keep `<prefix>_Hull / _Cabin / _Mast`, so the chapter's `boat_0` / `boats` cues still land.
+- **The harbor:** the three moored boats (one a troller with poles, two crabbers with pots) and the one coming in up the channel. The deck lamp and its light are now on the new wheelhouse roof.
+- **The `boats` insert** ("dodge the boats and canneries") stood 3.5 m from the new wheelhouse. It now looks from the float's root up the row of boats.
+- **Draft N+1:** the boats' names on their transoms; gulls over the float ("tossed a small crab to the gulls that hovered overhead"); the harbor's "bells and whistles".
+
 **2026-11-02 · pass 258: the second survey, the winding gate, and the tutorial lobby.**
 - **`winding_audit.py`** (a zero-regression gate in the full suite) holds every set's inside-out closed meshes at `winding_baseline.json`: 996 in all after pass 254's helper fixes.
 - **The survey:** 24 more vols 1–4 views rendered. Most read as their places.
