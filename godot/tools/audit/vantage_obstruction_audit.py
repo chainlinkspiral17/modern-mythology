@@ -87,6 +87,10 @@ DELIBERATE_MARKERS = {
     # corner above the hood, inside the car body's BOX (the cast is AABBs; the
     # body is a raked prism). The render reads the lettering clear.
     ("writers_desk", "shot_insert_sign__writers_desk_dawn"),
+    # (2026-11-02) the pool insert stands on the S deck looking down across
+    # the pool at its marked far wall: the near wall (the subject cluster's
+    # centroid, nearest the lens) is under the slab's lip by construction
+    ("skatepark", "shot_insert_pool__skatepark_day"),
     # (2026-10-10) inside the van at the NexCorp pump the cargo bay is 1.96 m
     # wide: its close-ups are at arm's length by design, like the Subaru's.
     ("nexcorp_fueling_station", "shot_closeup_diego__nexcorp_van_cargo"),

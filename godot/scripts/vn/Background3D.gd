@@ -4932,7 +4932,13 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(78.0, 1.6, 9.0),
 		"camera_rotation": Vector3(0.0, deg_to_rad(-5.0), 0.0),
 		"fov": 62.0,
-		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1)},
+		# (2026-11-02) the sky is a gradient, not the four lit cards: the N and E
+		# cards met behind the house in a tonal seam that stood like a wall
+		"strip": ["Sky_N", "Sky_E", "Sky_W", "Sky_S"],
+		"env": {"ambient_color": Color(0.86, 0.86, 0.84, 1), "ambient_energy": 0.50, "fog_color": Color(0.70, 0.74, 0.80, 1),
+			"sky_top": Color(0.44, 0.58, 0.80, 1), "sky_horizon": Color(0.80, 0.85, 0.90, 1),
+			"ground_horizon": Color(0.52, 0.54, 0.50, 1), "ground_bottom": Color(0.30, 0.32, 0.28, 1)},
+		"far": 400.0,
 		"suppress_input": true,
 	},
 	"club_street_door": {

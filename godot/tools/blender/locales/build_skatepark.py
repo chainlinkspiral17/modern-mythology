@@ -17,7 +17,8 @@ Vantage wired in Background3D.CAMERA_PRESETS:
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_prism, export_glb
+import math
+from _props.geometry import clear_scene, make_box, make_cyl, make_prism, make_rot_box, export_glb
 
 COL_SLAB = (0.56, 0.56, 0.54, 1.0)
 COL_SLAB_DK = (0.46, 0.46, 0.45, 1.0)
@@ -39,7 +40,9 @@ COL_POOL_FLOOR = (0.44, 0.44, 0.43, 1.0)
 
 # THE POOL is a real hole (2026-09-30, draft 2): x -2.23..3.23, y 5.27..9.13,
 # flush with the coping's inner edges, 1.5 m deep.
-POOL_PX, POOL_PY, POOL_HX, POOL_HY, POOL_DEPTH = 0.5, 7.2, 2.73, 1.93, 1.5
+# (2026-11-02, draft 3) a skate pool's size: 6.6 x 4.6 m and 1.8 m deep (it was
+# 5.5 x 3.9 x 1.5, a hot tub's footprint); the pipe hump moved west for it
+POOL_PX, POOL_PY, POOL_HX, POOL_HY, POOL_DEPTH = 0.5, 7.2, 3.3, 2.3, 1.8
 POOL_X0, POOL_X1 = POOL_PX - POOL_HX, POOL_PX + POOL_HX
 POOL_Y0, POOL_Y1 = POOL_PY - POOL_HY, POOL_PY + POOL_HY
 
@@ -78,7 +81,7 @@ def build_features():
     build_pool_2026_09()
     # One half-buried pipe hump keeps the flow line west (2026-09-30:
     # half a metre further west — its east end poked into the pool's mouth)
-    make_cyl("Hump_W", (-5.0, 5.0, -0.25), 1.15, 5.0, COL_SLAB_DK, segments=18, axis='X')
+    make_cyl("Hump_W", (-5.6, 5.0, -0.25), 1.15, 5.0, COL_SLAB_DK, segments=18, axis='X')
     # Grind ledge pair
     make_box("Ledge_Lo", (1.5, 4.0, 0.20), (2.6, 0.65, 0.40), COL_LEDGE)
     make_box("Ledge_Lo_Coping", (1.5, 4.0, 0.415), (2.6, 0.65, 0.035), COL_COPING)
@@ -108,10 +111,11 @@ def build_pool_2026_09():
     floor, quarter-round transitions at the base of every wall (the
     curve a skater rides from the floor up the wall), a drain, and
     the steel coping flush with the hole's edge, full length.
-    NEXT (draft 3): rounded corners (the transitions stop short of
-    them, so each corner is a vertical seam); a deep end (one half
-    stepped down); tags and wheel marks on the walls; a skater
-    mid-carve at the far wall for the establish."""
+    DRAFT 3 (2026-11-02): sized as a skate pool (6.6 x 4.6 x 1.8 m),
+    the corners rounded, wheel marks and two tags on the far wall.
+    NEXT (draft 4): a deep end (one half stepped down); the coping
+    rounded at the corners too; the boards and the boys are the VN's
+    (Faust, Wagner and Jacob are portraits, never stand-ins)."""
     px, py, hx, hy, dep = POOL_PX, POOL_PY, POOL_HX, POOL_HY, POOL_DEPTH
     top = 0.05
     wtop = -0.045                        # under every ground layer (slab, grass, far ground end at the hole's edge themselves)
@@ -142,14 +146,40 @@ def build_pool_2026_09():
             pts = [(sgn * u, v) for (u, v) in poly]
             if sgn < 0:
                 pts = list(reversed(pts))
-            make_prism(f"Pool_Transition_{side}", (pos, py, fz), pts, ln, COL_POOL, axis="Y")
+            # (draft 3) convex wedges from the corner: one concave prism wound
+            # about its vertex centroid, which lay outside it (S drew inside out)
+            for k in range(1, len(arc)):
+                make_prism(f"Pool_Transition_{side}_{k}", (pos, py, fz), [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]),
+                           (sgn * arc[k][0], arc[k][1])], ln, COL_POOL, axis="Y")
         else:
             sgn = 1.0 if into == "+Y" else -1.0
             # prism along X: (u, v) -> (y, z)
             pts = [(sgn * u, v) for (u, v) in poly]
             if sgn < 0:
                 pts = list(reversed(pts))
-            make_prism(f"Pool_Transition_{side}", (px, pos, fz), pts, ln, COL_POOL, axis="X")
+            for k in range(1, len(arc)):
+                make_prism(f"Pool_Transition_{side}_{k}", (px, pos, fz), [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]),
+                           (sgn * arc[k][0], arc[k][1])], ln, COL_POOL, axis="X")
+    # (draft 3) the corners rounded: a quarter-round fill up each corner, so
+    # the walls turn into each other (each corner was a vertical seam)
+    Rc = 1.0
+    arcq = [(Rc + Rc * math.cos(math.radians(a)), Rc + Rc * math.sin(math.radians(a))) for a in range(-90, -181, -15)]
+    for tag, cxx, cyy, sx_, sy_ in (("SW", POOL_X0, POOL_Y0, 1, 1), ("SE", POOL_X1, POOL_Y0, -1, 1),
+                                    ("NW", POOL_X0, POOL_Y1, 1, -1), ("NE", POOL_X1, POOL_Y1, -1, -1)):
+        # convex wedges from the corner (the whole fill is concave, and a
+        # prism winds about its vertex centroid, which lay outside it)
+        pts = [(sx_ * u, sy_ * v) for (u, v) in arcq]
+        for k in range(len(pts) - 1):
+            make_prism(f"Pool_Corner_{tag}_{k}", (cxx, cyy, (fz + wtop) / 2.0), [(0.0, 0.0), pts[k], pts[k + 1]], wtop - fz,
+                       COL_POOL, axis="Z")
+    # the far (N) wall the lens looks down at: wheel marks where the boards
+    # carve it, two tags
+    mark = (0.30, 0.30, 0.30, 1.0)
+    for k, (mx, mz, a) in enumerate(((-1.6, -0.55, 0.20), (-0.6, -0.40, -0.10), (0.4, -0.62, 0.15), (1.3, -0.48, -0.25),
+                                       (2.2, -0.70, 0.30), (-0.1, -0.78, 0.05))):
+        make_rot_box(f"Pool_Wheel_Mark_{k}", (px + mx, POOL_Y1 - 0.006, mz), (0.95, 0.01, 0.045), mark, pitch=a)
+    make_box("Pool_Tag_A", (px - 1.1, POOL_Y1 - 0.007, -0.30), (0.85, 0.01, 0.32), COL_TAG_A)
+    make_box("Pool_Tag_B", (px + 1.9, POOL_Y1 - 0.007, -0.36), (0.60, 0.01, 0.28), COL_TAG_B)
     # the coping, flush with the hole's edge, full length, meeting at the corners
     ct = 0.14
     make_box("Pool_Coping_W", (POOL_X0 - ct / 2.0, py, top + 0.025), (ct, 2 * hy + 2 * ct, 0.05), COL_COPING)

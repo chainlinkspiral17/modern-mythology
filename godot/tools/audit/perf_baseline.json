@@ -304,6 +304,11 @@
   "prims": 14360,
   "objects": 224
  },
+ "skatepark": {
+  "draw": 96,
+  "prims": 9756,
+  "objects": 266
+ },
  "sleep_lab": {
   "draw": 348,
   "prims": 31240,

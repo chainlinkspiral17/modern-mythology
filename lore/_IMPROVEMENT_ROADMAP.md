@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 275: the skate pool, draft 3; Jacob's sky; an insert-size scan.**
+- **The skatepark** (vol1 ch2, "Faust is with his friends Wagner and Jacob, waiting to push off into the pool").
+  - The pool was 5.5 x 3.9 x 1.5 m, a hot tub's footprint. It is now 6.6 x 4.6 x 1.8 m (the pipe hump moved west for it).
+  - The corners are rounded: each was a vertical seam.
+  - The far wall has wheel marks where boards carve it, and two tags.
+  - The `pool` insert stands on the south deck, looking down across the pool at the marked wall. vantage_obstruction lists it as deliberate: the near wall is under the slab's lip by construction.
+  - The quarter-round transitions, and the new corner fills, are built as convex wedges from the corner. The concave prism wound about a centroid outside itself, and the S transition drew inside out. winding_baseline is lowered: 996 -> 995.
+- **`jacob_house_front`** (vol1): the four lit sky cards met behind the house in a tonal seam that stood like a wall. The view strips them and takes a daytime sky gradient (`far` 400).
+- **The insert-size scan** (a scratch tool, not a gate) measured every insert's subject against its lens (1,160 inserts). The few that frame their subject as a speck are vol 6 (the porch light at 24 m, the sprinkler heads), or a marker no line uses (the bayou's `diamond`). Vols 1–4 have none.
+- **Draft N+1:**
+  - The pool's deep end.
+  - The coping rounded at the corners.
+  - The skatepark's fence line and the street beyond, for the establish.
+
 **2026-11-02 · pass 274: the frame shirt on Judgement Day's rearview (vol1 ch9, ch15).**
 - vol1 ch9: Faust holds up "the fourth shirt … a border of painted wood grain, knots and rings, and inside it nothing at all, just white cotton", and "ties the shirt by its sleeves to the rearview of Judgement Day … It hangs there like fuzzy dice". ch15: "The empty shirt hangs from the rearview".
 - **The problem:** on the club street it was a black 20 cm box; in the cab, a plain white box.
