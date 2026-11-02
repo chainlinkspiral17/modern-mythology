@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 279: five more inserts that framed the wrong thing (vols 1–3).**
+- **The scan:** a scratch scan listed every vols 1–4 insert whose cue word matches only a sub-part of some other object, as "post" had matched `Desk_Chair_Back_Post`. Rendering the suspects found five broken.
+  - **Briar Falls** (vol2), "Two doors. One stick figure with a triangle skirt" and "a low brick building with two doors marked". Both markers stood INSIDE the parked van and rendered black. Each now frames the restroom door from west of the info kiosk. (The van's open door keeps its name: "The dog … waits at the open door".)
+  - **The retirement kitchen** (vol4, on grandmother_kitchen_morning), "Two plates, two bowls, two pans". It framed the ceiling fan's light bowl; now the counter's bowls by the sink.
+  - **Inside the painting** (vol1 ch14, on faust_apartment), "The frame creaks, the whole huge frame at the edge of everything". The cue `frame` framed his bicycle. It is now `canvas`: the painting on the easel they are inside.
+  - **The red dust** (vol3 ch7), "The kids quiet excited faces pressed up to the windows". The cue framed the motel office window 400 m off. It is now `glass`: the Voyager's side glass in the storm.
+  - **The Salty Schooner** (vol2 ch5, on foxhole_bar), "I liked the empty booth". The set has no dining booth, only the DJ's, and the frame was black. The cue and its marker are removed, so the line plays on the wide.
+- All of this is direction only; the text is untouched.
+- **Draft N+1:**
+  - A dining booth by a window in the foxhole bar, for the dive bar's "empty booth" and "the view of the bridge".
+  - Briar Falls: a lens that holds both doors (the van and the kiosk crowd it).
+
 **2026-11-02 · pass 278: the rolodex cards; the Wagners' parked street.**
 - **office_after_hours:** "I skim the rolodex and remove hazy recollections, broken trusts, go-betweens": the cards he pulled lie face up on his desk by the rolodex.
 - **wagner_home:** three cars parked along the near curb (the street had none).

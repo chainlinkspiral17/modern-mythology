@@ -364,11 +364,11 @@ position = Vector3(-0.974, 1.612, -5.287)
 rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-02) "Two doors. One stick figure with a triangle skirt; one without": the building's two doors and the machine between (it stood inside the van)
 [node name="shot_insert_doors__briar_falls_building" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.388, 1.062, -2.973)
-rotation = Vector3(-0.2618, 1.5370, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.000, 1.600, -5.500)
+rotation = Vector3(-0.1986, -0.1413, 0.0)
+metadata/fov = 62.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_alcove__briar_falls_building" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -424,11 +424,11 @@ position = Vector3(-3.284, 0.934, -7.486)
 rotation = Vector3(-0.2603, 1.6028, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-02) "a low brick building with two doors marked": the building's two doors (it stood inside the van)
 [node name="shot_insert_doors__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.522, 1.062, -2.558)
-rotation = Vector3(-0.2618, 0.9794, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.000, 1.600, -5.500)
+rotation = Vector3(-0.1986, -0.1413, 0.0)
+metadata/fov = 62.0
 
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
