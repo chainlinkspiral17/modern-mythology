@@ -174,18 +174,33 @@ shadow_enabled = false
 omni_range = 15.0
 
 [node name="Neighbor_Window_0__nick_house_front" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0, 1.4, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0, 1.4, 1.4)
 light_color = Color(1.0, 0.8, 0.5, 1)
 light_energy = 1.0
 shadow_enabled = false
 omni_range = 5.0
 
 [node name="Neighbor_Window_1__nick_house_front" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0, 1.4, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 1.4, 1.4)
 light_color = Color(1.0, 0.8, 0.5, 1)
 light_energy = 1.0
 shadow_enabled = false
 omni_range = 5.0
+
+; (2026-11-02) the neighbours' porch lights and their jack-o'-lanterns, grandma's between them dark
+[node name="Neighbor_Porch_0__nick_house_front" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.55, 1.9, 1.3)
+light_color = Color(1.0, 0.78, 0.46, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Neighbor_Porch_1__nick_house_front" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.55, 1.9, 1.3)
+light_color = Color(1.0, 0.78, 0.46, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 4.5
 
 [node name="Key__nick_garage_halloween__nick_print_shop" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 0, 0, 0, 0.707, 0.707, 0, 0.707, -0.707, -10, 4, -4)

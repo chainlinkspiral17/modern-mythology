@@ -4442,9 +4442,10 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/nick_house.tscn",
 		"requires_glb": "res://assets/3d/locales/nick_house.glb",
 		# Halloween night from the street: grandma's house unlit, the rusting mini-bike outside, the neighbour's fence, lit houses either side
-		"camera_origin": Vector3(-2.0, 1.6, 12.0),
-		"camera_rotation": Vector3(0.04, deg_to_rad(0.0), 0.0),
-		"fov": 62.0,
+		# (2026-11-02) from the far side of the street, wide enough for the lit porches either side (they were out of frame)
+		"camera_origin": Vector3(-4.0, 1.6, 14.5),
+		"camera_rotation": Vector3(0.03, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
 		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.14, 0.14, 0.20, 1), "ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1), "ambient_color": Color(0.50, 0.54, 0.70, 1), "ambient_energy": 0.42, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
 	},

@@ -3835,6 +3835,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-02 · pass 270: Nick's grandmother's house, unlit on Halloween (nick_house `nick_house_front`).**
+- vol3 ch12: "His grandma's house was unlit from the outside. Kids didn't stop by anymore. When Nick's dad took off with his little brother, their yearly Halloween decorations became a memory."
+- **The problem (survey 8):** the lens framed only the dark house. The lit neighbours stood 20–26 m off, outside the frame, so the dark had nothing lit to be dark against.
+- **The neighbours:** moved in to a suburban lot's spacing, each with a lit window and a door on grandma's side.
+  - Each has its porch step, its porch light (a glow box and an omni) and three jack-o'-lanterns glowing on the step, clear of the door.
+- **Two trick-or-treaters** on the sidewalk going past for the lit house: a sheet ghost and one in orange with a bag.
+- **The lens** is on the far side of the street, wider (66°): the lit neighbour, the dark house, the mini-bike, the kids.
+- **Draft N+1:**
+  - The E neighbour's porch is behind the shot-through fence: keep it that way. The fence is canon, and the W house carries the contrast.
+  - The other houses' decorations down the street (a string of lights, a cardboard skeleton).
+  - Leaves on the walk.
+
 **2026-11-02 · pass 269: survey 8 — the fort's sheet, the beam, the bell buoy, the rented bungalow; the wreck out of 1997.**
 - **Survey 8:** 31 more vols 1–4 views (every one not yet rendered).
 - **`amanda_fort_close`** (vol3 ch8, "The sheet lifts and falls with the fan, slow as breathing, lit blue by the television"). The sheet was a ridge plank and two flat panels, and from the close lens it read as a blue board.

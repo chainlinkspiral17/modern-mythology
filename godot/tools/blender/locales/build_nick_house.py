@@ -413,11 +413,27 @@ def build_street():
     for k in range(5):
         make_cyl(f"Fence_Hole_{k}", (8.466, -5.0 + k * 0.7, 0.9 + (k % 2) * 0.3), 0.03, 0.01, (0.06, 0.06, 0.06, 1.0), axis='X', segments=8)
     # the neighbours' houses, their windows lit, a pumpkin on each step
-    for k, x in enumerate((-26.0, 18.0)):
+    # (2026-11-02) "His grandma's house was unlit from the outside. Kids
+    # didn't stop by anymore": the houses either side moved in to a real
+    # suburban lot's spacing (they stood 20-26 m off, out of the frame, so
+    # the dark house had nothing lit to be dark against), each with its lit
+    # window and porch on grandma's side, jack-o'-lanterns glowing on the step
+    for k, (x, toward) in enumerate(((-20.5, 1.0), (16.0, -1.0))):
         make_box(f"Neighbor_House_{k}", (x, 4.0, 1.5), (12.0, 9.0, 3.0), ((0.70, 0.66, 0.58, 1.0), (0.60, 0.62, 0.66, 1.0))[k])
         make_box(f"Neighbor_Roof_{k}", (x, 4.0, 3.3), (12.6, 9.6, 0.60), ROOF)
-        make_box(f"Neighbor_Window_Glow_{k}", (x + 2.0, -0.52, 1.4), (1.4, 0.04, 1.0), (1.0, 0.80, 0.50, 1.0))
-        make_blob(f"Pumpkin_{k}", (x - 1.0, -0.9, 0.144), 0.18, (0.90, 0.46, 0.10, 1.0), noise=0.1, seed=k, squash=0.8)
+        make_box(f"Neighbor_Window_Glow_{k}", (x + toward * 3.5, -0.52, 1.4), (1.4, 0.04, 1.0), (1.0, 0.80, 0.50, 1.0))
+        dx_ = x + toward * 2.2
+        make_box(f"Neighbor_Door_{k}", (dx_, -0.52, 1.16), (0.9, 0.04, 2.0), (0.46, 0.30, 0.22, 1.0))   # on its porch step
+        make_box(f"Neighbor_Porch_{k}", (dx_, -1.2, 0.08), (2.2, 1.3, 0.16), CONCRETE)
+        make_box(f"Neighbor_Porch_Light_Glow_{k}", (dx_ + 0.75, -0.56, 2.15), (0.14, 0.06, 0.22), (1.0, 0.86, 0.56, 1.0))
+        for j, (ox, r) in enumerate(((-0.90, 0.16), (-0.64, 0.12), (0.88, 0.15))):   # clear of the door
+            make_blob(f"Pumpkin_{k}_{j}", (dx_ + ox, -1.45, 0.16 + r * 0.8), r, (0.90, 0.46, 0.10, 1.0), noise=0.1, seed=k * 3 + j, squash=0.8)
+            make_box(f"Pumpkin_{k}_{j}_Face_Glow", (dx_ + ox, -1.45 - r * 0.95, 0.16 + r * 0.85), (r * 0.9, 0.012, r * 0.5), (1.0, 0.74, 0.30, 1.0))
+    # two trick-or-treaters on the sidewalk, going past for the lit house
+    from _props.figures import make_standing_figure
+    make_standing_figure("Treat_Kid_0", 4.2, -6.9, heading=1.571, h=1.18, coat=(0.94, 0.94, 0.92, 1.0), dress=(0.94, 0.94, 0.92, 1.0),
+                         pants=(0.94, 0.94, 0.92, 1.0), hair=(0.94, 0.94, 0.92, 1.0), skin=(0.94, 0.94, 0.92, 1.0), z0=0.12)
+    make_standing_figure("Treat_Kid_1", 3.3, -6.6, heading=1.571, h=1.26, coat=(0.86, 0.44, 0.12, 1.0), arms="front", z0=0.12)
     for k in range(3):
         make_broadleaf(f"Street_Tree_{k}", (-20.0, 12.0, 26.0)[k], -5.4, 6.0, (0.24, 0.30, 0.20, 1.0), (0.34, 0.26, 0.20, 1.0))
     make_cyl("Streetlamp_Post", (4.0, -6.6, 2.72), 0.08, 5.2, (0.30, 0.30, 0.32, 1.0), segments=8)
