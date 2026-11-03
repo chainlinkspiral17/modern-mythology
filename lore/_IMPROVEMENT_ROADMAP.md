@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 283: the insert survey, last batch — and the survey's result.**
+- **The steering wheel** (vol2 ch8, "As soon as my hands grabbed onto the steering wheel, I was sobbing"; vol3 ch5, "her hands on the wheel"): the cue `wheel` framed a road tyre from outside the cab. It is now `steering`, the steering wheel from the passenger seat (the gates read `wheel` as a road wheel).
+- **The slide** (vol3 ch3, "Jackie Onassis played a major role in the slide shows"): it framed the slide box on the floor. It now frames the slide on the screen.
+- **Cues removed:**
+  - vol2 ch10, Becca's father "pushing the garage door up": the set has no garage there; it framed a tool shed's door 0.8 m off, at night.
+  - vol2 ch4 "So it was to be our mini-vacation to drive there": `drive` is the verb.
+  - vol3 ch3: the projector and Marty's cameras are lost in the dark slide-show room. The wide already shows the beam to the screen.
+- **THE SURVEY (passes 279–283):** all 217 vols 1–4 inserts were rendered under the views their lines play in, and every frame checked.
+  - **Re-placed (24):** most had stood 0.5–2 m off their subject (text_focus_pass's placement), so they rendered as one colour.
+  - **Re-cued (10):** the word picked the wrong thing (stick, post, wheel, frame, windows, seat, door …).
+  - **Removed (16):** the set has no such object, or the word was a verb.
+  - **Built (3):** the Briar Falls alcove, the curio shelf, Aaron's car in 2003.
+- **Draft N+1:**
+  - Give text_focus_pass a minimum lens distance (about 2 m, or the subject's own size times 3). Most of the survey's re-placements were its 0.8 m default.
+  - The same survey for vols 5–7.
+
 **2026-11-03 · pass 282: the insert survey, third batch.**
 - **Re-placed** (each had stood 0.45–1.9 m off its subject and rendered as one colour):
   - Dickens' glass door (vol1 ch6, "unlocks the door and goes in").

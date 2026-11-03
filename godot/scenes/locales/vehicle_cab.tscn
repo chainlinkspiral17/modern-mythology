@@ -835,11 +835,11 @@ position = Vector3(-2.113, 1.446, -3.370)
 rotation = Vector3(-0.3624, -1.5708, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_wheel__vehicle_cab_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.804, 0.457, -1.903)
-rotation = Vector3(-0.0873, 0.4194, 0.0)
-metadata/fov = 35.0
+; (2026-11-03) "my hands grabbed onto the steering wheel"; "her hands on the wheel": the steering wheel from the passenger seat (it framed a tyre outside)
+[node name="shot_insert_steering__vehicle_cab_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.250, 1.350, -0.200)
+rotation = Vector3(-0.3836, 0.8858, 0.0)
+metadata/fov = 50.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_passenger__vehicle_cab" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -335,23 +335,13 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "Jackie Onassis played a major role in the slide shows": the slide on the screen (it framed the slide box on the floor)
 [node name="shot_insert_slide__tulsa_slideshow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.486, 0.662, -1.855)
-rotation = Vector3(-0.2618, 1.4507, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.400, 1.700, -6.200)
+rotation = Vector3(0.0745, 0.1498, 0.0)
+metadata/fov = 50.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_projector__tulsa_slideshow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.467, 0.975, -2.131)
-rotation = Vector3(-0.2618, 1.1325, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_cameras__tulsa_slideshow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.389, 1.473, -5.575)
-rotation = Vector3(-0.2618, 0.9848, 0.0)
-metadata/fov = 35.0
 
 ; (2026-11-02) down on the ring of chairs and the bottles: "Finishing off the booze"
 [node name="shot_insert_patio__tulsa_patio" type="Marker3D" parent="." groups=["vn_shot"]]
