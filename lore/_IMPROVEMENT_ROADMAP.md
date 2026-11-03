@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 282: the insert survey, third batch.**
+- **Re-placed** (each had stood 0.45–1.9 m off its subject and rendered as one colour):
+  - Dickens' glass door (vol1 ch6, "unlocks the door and goes in").
+  - The parsonage hall door (vol3 ch2, "opening up the door to an empty room").
+  - The drugstore counter (vol1 ch11, "A cat carrier sits on the counter").
+  - Faust's pharmacy office (vol1 ch2, "glances about his office": desk, chair, shelf).
+  - The second house's painted plaster (vol2 ch6).
+  - The Shillelagh's doors (vol1, "The doors do not close"). Backed off along the old line, the lens caught the diner's door first, so it now stands between the bus and the diner.
+- A scratch `backoff.py` moves a marker back from its audited subject along the old line, keeping the aim. Three of its six placements went through a wall or behind a till, and were placed by hand.
+- **Cues removed** (the set has no such object; the lines play on the wide):
+  - vol3 ch4 "afraid to leave our seats, our cockpits" (a theatre): it framed a riverfront bus bench.
+  - vol1 "You stand on the apron in the rain": bare ground.
+  - vol1 ch11 `door` twice: the drugstore set has no front door; it framed the office door's head.
+  - vol3 ch5 "Andy always tries to get the aisle seat": a dark empty aisle floor.
+- **Draft N+1:** the drugstore's front door (it would serve "carries her out the door, down to the boat"); the survey's last batch.
+
 **2026-11-03 · pass 281: the insert survey, second batch — Aaron's car in 2003, and nine more inserts.**
 - **The survey's second batch** (insert renders 69–128): most inserts read; these did not.
 - **The 2003 gas station** (vol3 ch8, on nexcorp_fueling_station): the 2003 view strips every car in the set (they're 2026's), so its `seat`, `windshield` and `squeegee` inserts framed nothing.

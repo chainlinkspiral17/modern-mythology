@@ -263,11 +263,11 @@ position = Vector3(9.0, 0.9, -6.6)
 rotation = Vector3(-0.0716, 1.7783, 0.0)
 metadata/fov = 44.0
 
-; "The doors part" / "The doors do not close": from the bench
+; (2026-11-03) "The doors do not close": the Shillelagh's doors from the curb (1.8 m off, one glow)
 [node name="shot_insert_doors__shuttle_bench_bus" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(5.4, 1.2, -6.4)
-rotation = Vector3(0.055, 3.031, 0.0)
-metadata/fov = 45.0
+position = Vector3(4.300, 1.600, -7.300)
+rotation = Vector3(-0.1050, -2.8198, 0.0)
+metadata/fov = 50.0
 
 ; the speaker in the Shillelagh's open doorway ("We have a seat for you"),
 ; the bus view's own closeup: the bench-side one is 14.6 m off (wrong_room)
@@ -455,11 +455,6 @@ position = Vector3(4.422, 2.175, -6.871)
 rotation = Vector3(-0.3803, 1.0728, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_apron__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.706, 0.410, -5.777)
-rotation = Vector3(-0.5236, 1.6795, 0.0)
-metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_doors__shuttle_bench" type="Marker3D" parent="." groups=["vn_shot"]]

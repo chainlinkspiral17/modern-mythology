@@ -519,11 +519,11 @@ position = Vector3(-0.800, 1.212, -1.191)
 rotation = Vector3(-0.2618, -3.0916, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "painted what remained of the plaster": the painted plaster from a step back (1.1 m off)
 [node name="shot_insert_plaster__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(31.163, 1.587, 12.943)
-rotation = Vector3(-0.2618, 1.7179, 0.0)
-metadata/fov = 35.0
+position = Vector3(32.479, 1.500, 12.748)
+rotation = Vector3(-0.0831, 1.7180, 0.0)
+metadata/fov = 48.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_mattress__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]

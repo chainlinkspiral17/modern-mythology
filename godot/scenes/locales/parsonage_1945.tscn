@@ -372,11 +372,11 @@ position = Vector3(1.696, 2.563, -2.389)
 rotation = Vector3(-0.2618, 2.8168, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "opening up the door to an empty room": a hall door from across the hall (it stood 0.8 m off it)
 [node name="shot_insert_door__parsonage_hall" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.126, 1.212, -7.708)
-rotation = Vector3(-0.2618, -0.7266, 0.0)
-metadata/fov = 35.0
+position = Vector3(-5.593, 1.550, -6.057)
+rotation = Vector3(-0.1813, -0.7264, 0.0)
+metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__ron_day" type="Marker3D" parent="." groups=["vn_shot"]]

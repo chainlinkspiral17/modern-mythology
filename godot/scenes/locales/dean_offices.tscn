@@ -531,11 +531,11 @@ position = Vector3(2.793, 1.011, -8.126)
 rotation = Vector3(-0.2618, -0.8301, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "Dickens Dean unlocks the door and goes in": the glass door from the walk (it stood 1.2 m off it)
 [node name="shot_insert_door__onei_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.568, 1.374, -1.086)
-rotation = Vector3(-0.2618, -2.9084, 0.0)
-metadata/fov = 35.0
+position = Vector3(-5.050, 1.500, -3.113)
+rotation = Vector3(-0.1320, -2.9082, 0.0)
+metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_card__onei_office" type="Marker3D" parent="." groups=["vn_shot"]]
