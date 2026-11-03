@@ -121,10 +121,8 @@ def build_lots():
     for i, (tag, hx) in enumerate(south):
         build_house(tag, hx, -12.5, -1, HOUSE_COLS[5 + i], lit_window=(tag == "Salinas"), porch_on=False, lot_num=None)
     # the car Sammy will drive to school, in the Salinas driveway
-    make_box("Salinas_Car_Body", (-10.4, -6.6, 0.62), (1.75, 4.2, 0.62), (0.52, 0.56, 0.60, 1.0))
-    make_box("Salinas_Car_Cabin", (-10.4, -6.6, 1.18), (1.65, 2.3, 0.50), (0.44, 0.48, 0.52, 1.0))   # on the body
-    for wi, (wx, wy) in enumerate(((-11.275, -8.0), (-9.525, -8.0), (-11.275, -5.2), (-9.525, -5.2))):
-        make_cyl(f"Salinas_Car_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis="X", segments=10)
+    # (2026-11-03) a car, not three boxes: make_car, backed in, nose to the street
+    make_car("Salinas_Car", -10.4, -6.6, 4.4, (0.52, 0.56, 0.60, 1.0), along="Y")
     # the Geller house at the end of the cul-de-sac: porch light ON, Don at the window
     build_house("Geller", 31.5, 0.0, +1, HOUSE_COLS[3], lit_window=True, porch_on=True, garage=False)
     # standing at the window (2026-09-22: his feet were a metre up)
