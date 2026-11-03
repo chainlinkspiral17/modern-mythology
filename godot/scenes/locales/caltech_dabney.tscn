@@ -489,17 +489,17 @@ position = Vector3(-8.548, 0.531, -7.488)
 rotation = Vector3(-0.2745, 1.5776, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "told not to try and budge the front doors": the doors from the courtyard (it stood 0.8 m off one door's face)
 [node name="shot_insert_doors__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(7.700, 1.312, 2.214)
-rotation = Vector3(-0.2618, 2.8860, 0.0)
-metadata/fov = 35.0
+position = Vector3(6.200, 1.600, -1.000)
+rotation = Vector3(-0.1086, -2.8719, 0.0)
+metadata/fov = 45.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "throw the trash away": the can from a step off (it stood against its side)
 [node name="shot_insert_trash__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-10.730, 0.662, -3.386)
-rotation = Vector3(-0.2618, 1.8072, 0.0)
-metadata/fov = 35.0
+position = Vector3(-10.000, 1.500, -1.300)
+rotation = Vector3(-0.3560, 0.6683, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_engine__dabney_courtyard" type="Marker3D" parent="." groups=["vn_shot"]]
