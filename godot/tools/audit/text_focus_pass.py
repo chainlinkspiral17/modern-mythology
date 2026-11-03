@@ -417,7 +417,12 @@ def _search(hits, cam, boxes_all):
     pref = R.preferred_dist(size)
     base = math.atan2(cam[2] - tgt[2], cam[0] - tgt[0])
     max_eye = max(R.MAX_EYE, tgt[1] - 1.0)
-    for d in (pref, pref * 1.35, pref * 0.8, pref * 1.8):
+    # (2026-11-03) a floor under the lens distance: the vols 1-4 insert
+    # survey found 24 of this pass's markers 0.45-0.9 m off their subject
+    # (a door face, a tyre, a chair back), each rendering as one colour.
+    # Never nearer than 1.2 m or twice the subject's size (nearest allowed first).
+    floor_d = max(1.2, 2.0 * size)
+    for d in sorted({max(floor_d, x) for x in (pref, pref * 1.35, pref * 1.8, pref * 0.8)}):
         for dyaw in (0, 20, -20, 40, -40, 60, -60, 90, -90, 120, -120):
             a = base + math.radians(dyaw)
             for el in (15.0, 30.0, 5.0):

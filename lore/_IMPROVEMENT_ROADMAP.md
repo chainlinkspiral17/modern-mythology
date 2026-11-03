@@ -3848,7 +3848,7 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - **Removed (16):** the set has no such object, or the word was a verb.
   - **Built (3):** the Briar Falls alcove, the curio shelf, Aaron's car in 2003.
 - **Draft N+1:**
-  - Give text_focus_pass a minimum lens distance (about 2 m, or the subject's own size times 3). Most of the survey's re-placements were its 0.8 m default.
+  - (done, same day) text_focus_pass has a minimum lens distance: never nearer than 1.2 m or twice the subject's size. Most of the survey's re-placements were 0.6–0.9 m. On three chapters' dry runs it gives up one placement (left on the wide) to keep the rest readable.
   - The same survey for vols 5–7.
 
 **2026-11-03 · pass 282: the insert survey, third batch.**
