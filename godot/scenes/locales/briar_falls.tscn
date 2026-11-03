@@ -335,10 +335,11 @@ position = Vector3(-0.420, 2.300, -6.818)
 rotation = Vector3(-0.5098, 0.0000, 0.0)
 metadata/fov = 35.0
 
+; (2026-11-02) "The pay phone does not ring": from the alcove's mouth to the phone on the front wall
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.261, 1.783, -6.207)
-rotation = Vector3(-0.2618, 0.5236, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.200, 1.600, -7.350)
+rotation = Vector3(-0.1370, 1.0619, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_feather" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(8.200, 1.780, -15.320)
@@ -370,11 +371,11 @@ position = Vector3(-2.000, 1.600, -5.500)
 rotation = Vector3(-0.1986, -0.1413, 0.0)
 metadata/fov = 62.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-02) "A brochure rack just inside the alcove": into the nook (the rack was shut in a 19 cm slot)
 [node name="shot_insert_alcove__briar_falls_building" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.296, 1.712, -8.090)
-rotation = Vector3(-0.2618, 0.8712, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.000, 1.500, -6.850)
+rotation = Vector3(-0.0525, -0.2386, 0.0)
+metadata/fov = 50.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bench__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -382,11 +383,11 @@ position = Vector3(-4.080, 1.450, -6.065)
 rotation = Vector3(-0.5295, 0.6663, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_door__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.186, 1.312, -7.197)
-rotation = Vector3(-0.2618, 0.2740, 0.0)
-metadata/fov = 35.0
+; (2026-11-02) "The dog stands a moment at the open door"; "It waits at the open door ... and gets in": the van and its open side door (cue van: the gates read a bare "door" as a building's)
+[node name="shot_insert_van__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.400, 1.200, -2.200)
+rotation = Vector3(-0.1775, 1.1484, 0.0)
+metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_falls__briar_falls_overlook" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -418,11 +419,11 @@ position = Vector3(8.600, 1.850, -15.250)
 rotation = Vector3(-0.6421, -0.0593, 0.0)
 metadata/fov = 40.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_bench__briar_falls_trail" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.284, 0.934, -7.486)
-rotation = Vector3(-0.2603, 1.6028, 0.0)
-metadata/fov = 35.0
+; (2026-11-02) "taped to the wood, is a square Polaroid": the Polaroid on the trailhead box (the cue "bench" framed a bench; the bench is IN the photo)
+[node name="shot_insert_polaroid__briar_falls_trail" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.300, 1.350, -7.250)
+rotation = Vector3(-0.1711, -0.1065, 0.0)
+metadata/fov = 30.0
 
 ; (2026-11-02) "a low brick building with two doors marked": the building's two doors (it stood inside the van)
 [node name="shot_insert_doors__briar_falls_rest_stop" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -105,6 +105,27 @@ func _ready() -> void:
 		mat.set_shader_parameter("paint_under", inked)
 	for i in 4:
 		await get_tree().process_frame
+	# (2026-11-02) --markers "a,b,c" --outdir /tmp/d: shoot every listed marker
+	# in one launch, <outdir>/<marker>.png each (a preset loads once, not once
+	# a marker: a survey of 269 inserts took a Godot start each)
+	var mks: String = String(args.get("markers", ""))
+	if mks != "":
+		var outdir: String = String(args.get("outdir", "/tmp"))
+		var cam2: Camera3D = bg.get_node("SubViewport/Camera3D") as Camera3D
+		for mname: String in mks.split(","):
+			var mm: Node3D = bg.call("find_shot_marker", mname)
+			if mm == null:
+				push_error("no marker " + mname)
+				continue
+			cam2.global_transform = mm.global_transform
+			if mm.has_meta("fov"):
+				cam2.fov = float(mm.get_meta("fov"))
+			for i in 6:
+				await get_tree().process_frame
+			await RenderingServer.frame_post_draw
+			get_viewport().get_texture().get_image().save_png(outdir.path_join(mname + ".png"))
+		get_tree().quit(0)
+		return
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png(String(args.get("out", "/tmp/trip.png")))
 	get_tree().quit(0)

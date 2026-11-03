@@ -120,8 +120,15 @@ def build_building():
     make_box("Phone_Body", (-0.75, 7.88, 1.55), (0.26, 0.06, 0.38), COL_STONE_DK)
     make_box("Phone_Cord", (-0.66, 7.86, 1.12), (0.02, 0.02, 0.50), COL_DOOR)
     make_box("Phone_Receiver", (-0.66, 7.84, 0.84), (0.07, 0.06, 0.22), COL_DOOR)
-    # Brochure-rack alcove at the building's east end
-    make_box("Alcove_Wall", (-0.31, 8.6, 1.5), (0.10, 1.2, 3.0), COL_BRICK_BROWN)
+    # Brochure-rack alcove at the building's east end. (2026-11-02) A real
+    # nook: "A brochure rack just inside the alcove"; "You stand in the alcove
+    # a moment longer". The side wall stood 19 cm off the building's face and
+    # shut the rack in a slot no lens could see; now it stands 1.5 m out, with
+    # a back wall and a roof, the rack on the building's face inside it
+    make_box("Alcove_Wall", (1.05, 8.6, 1.5), (0.10, 1.2, 3.0), COL_BRICK_BROWN)
+    make_box("Alcove_Back_Wall", (0.30, 9.15, 1.5), (1.60, 0.10, 3.0), COL_BRICK_BROWN)
+    make_box("Alcove_Roof", (0.30, 8.55, 3.04), (1.70, 1.30, 0.12), COL_ROOF)
+    make_box("Alcove_Floor_Slab", (0.30, 8.55, 0.04), (1.60, 1.20, 0.08), COL_STONE_DK)
     make_box("Rack_Frame", (-0.46, 8.55, 1.30), (0.06, 0.9, 1.20), COL_TIMBER)
     for r in range(3):
         for cslot in range(3):
@@ -158,6 +165,12 @@ def build_trailhead():
     # The pencil on its string
     make_box("Box_String", (4.95, 8.02, 1.10), (0.015, 0.015, 0.28), COL_DOOR)
     make_box("Box_Pencil", (4.95, 8.00, 0.94), (0.03, 0.03, 0.12), (0.72, 0.58, 0.24, 1.0))
+    # (2026-11-02) "Behind the laminated page, taped to the wood, is a square
+    # Polaroid ... a young man in a trench coat at the depot bench": on the
+    # box's face, its white border, the dim square of the picture, the tape
+    make_box("Box_Polaroid", (5.38, 7.998, 1.22), (0.088, 0.003, 0.107), (0.94, 0.93, 0.88, 1.0))
+    make_box("Box_Polaroid_Image", (5.38, 7.9965, 1.232), (0.078, 0.001, 0.078), (0.24, 0.26, 0.28, 1.0))
+    make_box("Box_Polaroid_Tape", (5.38, 7.9962, 1.277), (0.05, 0.001, 0.016), (0.86, 0.84, 0.70, 1.0))
 
 
 def build_overlook():

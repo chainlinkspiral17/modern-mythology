@@ -3835,6 +3835,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 280: Briar Falls' inserts; the insert survey.**
+- **The insert survey:** every vols 1–4 insert rendered under the view its line actually plays in (217), then flagged by brightness and edge density.
+  - `TripPaintTest.gd --markers a,b,c --outdir d` shoots a list in one launch, so a set loads once.
+  - The first list had picked each set's alphabetically first view and made day inserts look black at night. The second is built from the chapters' own bg changes.
+- **Briar Falls (vol 2):**
+  - **The alcove** ("A brochure rack just inside the alcove"; "You stand in the alcove a moment longer"): the side wall stood 19 cm off the building's face and shut the rack in a slot no lens could see. It is now a nook 1.5 m deep with a back wall, a roof and a floor slab, the rack on the building's face inside it. The `alcove` and `phone` inserts are re-placed.
+  - **The dog at the van:** "The dog stands a moment at the open door"; "It waits at the open door … and gets in. It settles between the two rows of seats". The gates read a bare `door` as a building's (vehicle doors are excluded by design), so both cues are now `van`, framing the van and its open side door.
+  - **The Polaroid:** "Behind the laminated page, taped to the wood, is a square Polaroid … a young man in a trench coat at the depot bench". The cue `bench` framed a bench; the bench is IN the photo. The Polaroid is now on the trailhead box (border, image, tape), and the cue is `polaroid`.
+- **The foxhole bar's `booth` marker is restored.** It is vol 6's DJ booth ("Chess winks at Jesse from the booth"). Pass 279 removed only the vol 2 dive-bar line's cue.
+- **Draft N+1:** finish reviewing the survey's renders (in progress); the laminated page itself on the box.
+
 **2026-11-02 · pass 279: five more inserts that framed the wrong thing (vols 1–3).**
 - **The scan:** a scratch scan listed every vols 1–4 insert whose cue word matches only a sub-part of some other object, as "post" had matched `Desk_Chair_Back_Post`. Rendering the suspects found five broken.
   - **Briar Falls** (vol2), "Two doors. One stick figure with a triangle skirt" and "a low brick building with two doors marked". Both markers stood INSIDE the parked van and rendered black. Each now frames the restroom door from west of the info kiosk. (The van's open door keeps its name: "The dog … waits at the open door".)
