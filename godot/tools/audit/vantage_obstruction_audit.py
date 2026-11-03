@@ -91,6 +91,17 @@ DELIBERATE_MARKERS = {
     # the pool at its marked far wall: the near wall (the subject cluster's
     # centroid, nearest the lens) is under the slab's lip by construction
     ("skatepark", "shot_insert_pool__skatepark_day"),
+    # (2026-11-03) Aaron's car in 2003 (vol3 ch8): the windshield and the
+    # squeegee on the hood lie inside the car body's BOX (the cast is AABBs;
+    # the body is a raked prism), as the writers_desk car's sign does
+    ("nexcorp_fueling_station", "shot_insert_windshield__gas_station_2003_night"),
+    ("nexcorp_fueling_station", "shot_insert_squeegee__gas_station_2003_night"),
+    # (2026-11-03) "Faust takes the wheel": Judgement Day's raked windshield,
+    # inside its body's BOX (the cast is AABBs)
+    ("houston_bayou", "shot_insert_windshield__jd_river_turn"),
+    # (2026-11-03) "The tires make the noise of oars": Judgement Day drives on
+    # the river, its tires under the water's skin by design
+    ("houston_bayou", "shot_insert_tires__jd_river"),
     # (2026-10-10) inside the van at the NexCorp pump the cargo bay is 1.96 m
     # wide: its close-ups are at arm's length by design, like the Subaru's.
     ("nexcorp_fueling_station", "shot_closeup_diego__nexcorp_van_cargo"),

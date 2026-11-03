@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 281: the insert survey, second batch — Aaron's car in 2003, and nine more inserts.**
+- **The survey's second batch** (insert renders 69–128): most inserts read; these did not.
+- **The 2003 gas station** (vol3 ch8, on nexcorp_fueling_station): the 2003 view strips every car in the set (they're 2026's), so its `seat`, `windshield` and `squeegee` inserts framed nothing.
+  - Aaron's car is now at pump 7 with the squeegee left on the hood, tagged to `gas_station_2003_night` only (a plain `Aaron_Car` stem under the tagged empty `AaronCar__gas_station_2003_night`).
+  - "Steven in the front seat … Aaron stopped the car, went around to the passenger side": a make_car body is solid under its glass, so no lens can see a seat. The cue is now `car`, framing the passenger side.
+  - The windshield and squeegee inserts lie inside the car body's AABB, so they are listed deliberate in the vantage gate (as the writers_desk car is).
+- **desert gas station:** "She keeps the children away from the curios". The marker stood outside the store's south wall, and the curio "shelf" was a solid 2.4 x 0.4 x 2 m block with the stock buried inside it. It is now a shelf unit (back, sides, three boards) with the stock on the boards, and the lens is inside the store.
+- **Faust's easel:** "Faust has an easel set up". The marker looked down at the stool, and its first fix stood inside the bathroom door. It now stands on the floor between the bath wall and the easel, framing the canvas.
+- **jd_river (vol1):**
+  - The toll booth and the tires were framed from 1–2 m, filling the frame with one colour; they are now framed from the lane and low by the rear tire. The tires sit under the water's skin by design ("The tires make the noise of oars"), so that insert is listed deliberate.
+  - **jd_river_turn,** "Faust takes the wheel. The empty shirt hangs from the rearview": the cue `wheel` framed a hub cap 1 m off. It is now `windshield`, Judgement Day head-on (listed deliberate: the raked glass is inside the body's AABB).
+- **meadowlark_circle_night,** "Two police cars are off to the side": the lens stood 0.8 m off a wheel; now the car in the driveway from the street.
+- **Cues removed** (no such object in the set; the lines play on the wide):
+  - vol4 "chimes": "beasts of a machine" (the monster truck) framed a motel ice machine, and "The boy thought about an ice cold soda" a motel soda machine.
+  - vol3 ch8: "helping his friend up out of the back seat" framed a garage throne.
+- **perf note:** nexcorp_fueling_station draws 610 against a stale 174 baseline, with or without Aaron's car (tested). It is under the 2,000 cap; the baseline predates the shared-helper passes. Find what grew before recording it.
+- **Draft N+1:**
+  - The meadowlark Salinas car is an old box stand-in: make_car.
+  - Finish the survey's last batches.
+
 **2026-11-03 · pass 280: Briar Falls' inserts; the insert survey.**
 - **The insert survey:** every vols 1–4 insert rendered under the view its line actually plays in (217), then flagged by brightness and edge density.
   - `TripPaintTest.gd --markers a,b,c --outdir d` shoots a list in one launch, so a set loads once.

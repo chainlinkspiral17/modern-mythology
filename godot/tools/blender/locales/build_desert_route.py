@@ -253,10 +253,22 @@ def build_gas_station():
         make_box(f"Candy_Rack_{k}", (gx - 0.6, sy0 + 3.0 + k * 0.01, 0.45 + k * 0.4), (2.0, 0.4, 0.04), (0.70, 0.70, 0.68, 1.0))
     for s in (-1, 1):       # (round 6) the rack's uprights: the shelves stood on air
         make_box(f"Candy_Rack_Upright_{s:+d}", (gx - 0.6 + s * 0.98, sy0 + 3.01, 0.66), (0.04, 0.04, 1.28), (0.60, 0.60, 0.58, 1.0))
-    make_box("Curio_Shelf", (gx - 2.2, sy0 + 6.6, 1.02), (2.4, 0.4, 2.0), WOOD)   # on the floor (round 6)
+    # (2026-11-03) the curio shelf as a shelf: back panel, sides, three boards,
+    # the stock sitting ON the boards (it was a solid 2.4 x 0.4 x 2 m block and
+    # the stock lay buried inside it: "She keeps the children away from the
+    # curios as best she can" framed a brown slab)
+    cx_, cy_ = gx - 2.2, sy0 + 6.6
+    make_box("Curio_Shelf", (cx_, cy_ + 0.18, 1.02), (2.4, 0.04, 2.0), WOOD)          # the back
+    for sd in (-1, 1):
+        make_box(f"Curio_Shelf_Side_{sd:+d}", (cx_ + sd * 1.18, cy_, 1.02), (0.04, 0.40, 2.0), WOOD)
+    boards = (0.56, 1.26, 1.96)
+    for b, bz in enumerate(boards):
+        make_box(f"Curio_Shelf_Board_{b}", (cx_, cy_, bz), (2.32, 0.36, 0.03), WOOD)
     r = _rng(5)
     for k in range(12):
-        make_box(f"Curio_Stock_{k}", (gx - 3.2 + (k % 6) * 0.38, sy0 + 6.5, 0.6 + (k // 6) * 0.7 + 0.08), (0.24, 0.16, 0.10), (0.56 + r() * 0.2, 0.46, 0.30, 1.0))
+        bz = boards[k // 6] + 0.015
+        h = 0.10 + 0.08 * ((k * 7) % 3)
+        make_box(f"Curio_Stock_{k}", (gx - 3.2 + (k % 6) * 0.38, cy_ - 0.04, bz + h / 2.0), (0.22, 0.16, h), (0.56 + r() * 0.2, 0.46 + 0.1 * (k % 2), 0.30, 1.0))
     # out front: the ice chest, the pump island, the pole sign
     make_box("Ice_Chest", (gx + 3.6, sy0 - 0.9, 0.62), (1.6, 0.8, 1.24), (0.92, 0.94, 0.96, 1.0))
     make_box("Ice_Chest_Band", (gx + 3.6, sy0 - 1.31, 0.92), (1.5, 0.02, 0.32), (0.22, 0.46, 0.78, 1.0))

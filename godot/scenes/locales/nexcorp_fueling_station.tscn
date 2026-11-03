@@ -564,23 +564,23 @@ position = Vector3(6.600, 1.550, -13.400)
 rotation = Vector3(-0.05, 1.5708, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "a homeless man squeegeeing the car windshield": Aaron's windshield (there was no car)
 [node name="shot_insert_windshield__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.136, 2.112, 13.707)
-rotation = Vector3(-0.2618, 1.9497, 0.0)
-metadata/fov = 35.0
+position = Vector3(7.900, 1.550, 7.700)
+rotation = Vector3(-0.1065, 3.0191, 0.0)
+metadata/fov = 40.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "took the squeegee from his hands and continued wiping": the squeegee on Aaron's hood
 [node name="shot_insert_squeegee__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(10.343, 0.772, 13.514)
-rotation = Vector3(-0.2618, 0.4481, 0.0)
-metadata/fov = 35.0
+position = Vector3(9.300, 1.600, 8.900)
+rotation = Vector3(-0.2669, 2.4186, 0.0)
+metadata/fov = 38.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_seat__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.258, 1.930, 15.774)
-rotation = Vector3(-0.5849, 0.3088, 0.0)
-metadata/fov = 35.0
+; (2026-11-03) "Steven in the front seat ... Aaron stopped the car, went around to the passenger side": Aaron's car, its passenger side (the seat cue framed the 2026 van's seats, stripped from 2003)
+[node name="shot_insert_car__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.600, 1.550, 13.400)
+rotation = Vector3(-0.1740, 1.0153, 0.0)
+metadata/fov = 48.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__gas_station_2003_night" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -53,6 +53,10 @@ from _props.safety import make_fluorescent_tube_fixture
 from _props.merch import stock_gondola
 from _props.coolers_drinks import make_cooler_door
 from _props.vehicles import make_car
+try:
+    import bpy
+except ImportError:
+    bpy = None
 
 SX0, SX1 = -8.0, 8.0            # the store
 SY1 = 12.0
@@ -344,11 +348,34 @@ def build_restroom():
     make_box("Stall_TP_Holder", (RX1 - 0.10 - 0.05, 14.70, 0.65), (0.10, 0.18, 0.18), COL_STEEL)
 
 
+def build_aaron_2003():
+    """(2026-11-03) vol3 ch8, 2003: "Steven in the front seat pitching back
+    and forth stopped by the seat belt"; "a homeless man squeegeeing the car
+    windshield". The 2003 view strips every car in the set (the 2026 ones),
+    so there was no car at the pump for its seat, windshield and squeegee
+    inserts. Aaron's car at pump 7 (island 3, the W lane), Steven slumped in
+    the front passenger seat, the squeegee left on the hood. Parts under one
+    plain stem, parented to the tagged empty (a tag mid-name names no preset)."""
+    T = "__gas_station_2003_night"
+    ax, ay = ISLANDS[3] - 2.5, PUMP_Y[0] - 0.4
+    make_car("Aaron_Car", ax, ay, 4.6, (0.24, 0.30, 0.42, 1.0), along="Y")
+    # the squeegee laid on the hood, its wet blade toward the glass
+    make_rot_box("Aaron_Car_Squeegee_Handle", (ax + 0.25, ay + 1.30, 0.975), (0.03, 0.55, 0.03), (0.30, 0.30, 0.32, 1.0), yaw=0.3)
+    make_rot_box("Aaron_Car_Squeegee_Blade", (ax + 0.33, ay + 1.03, 0.975), (0.28, 0.05, 0.03), (0.12, 0.12, 0.12, 1.0), yaw=0.3)
+    if bpy is not None:
+        empty = bpy.data.objects.new("AaronCar" + T, None)
+        bpy.context.scene.collection.objects.link(empty)
+        for obj in list(bpy.data.objects):
+            if obj is not empty and obj.parent is None and obj.name.startswith("Aaron_Car"):
+                obj.parent = empty
+
+
 def main():
     clear_scene()
     build_ground()
     build_forecourt()
     build_vehicles()
+    build_aaron_2003()
     build_van()
     build_store()
     build_restroom()

@@ -502,20 +502,20 @@ position = Vector3(3012.000, 4.000, -100.000)
 rotation = Vector3(-0.0200, -2.0060, 0.0)
 metadata/fov = 45.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "The tires make the noise of oars": low by the rear tire on the water (it stood 1 m off it)
 [node name="shot_insert_tires__jd_river" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2998.932, 0.463, 2.457)
-rotation = Vector3(-0.5236, -0.1133, 0.0)
-metadata/fov = 35.0
+position = Vector3(2996.600, 0.900, 3.600)
+rotation = Vector3(-0.2200, -0.8601, 0.0)
+metadata/fov = 45.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-03) "He pulls Judgement Day up to the booth": the toll booth from the lane (it stood 2 m off its window)
 [node name="shot_insert_booth__jd_river" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3008.216, 2.360, -92.917)
-rotation = Vector3(-0.2618, -0.0833, 0.0)
-metadata/fov = 35.0
+position = Vector3(3005.500, 1.600, -86.000)
+rotation = Vector3(-0.0207, -0.3709, 0.0)
+metadata/fov = 45.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_wheel__jd_river_turn" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3001.139, 0.489, 307.498)
-rotation = Vector3(-0.5236, 3.0483, 0.0)
-metadata/fov = 35.0
+; (2026-11-03) "Faust takes the wheel. The empty shirt hangs from the rearview": Judgement Day through its windshield (the cue wheel framed a hub cap)
+[node name="shot_insert_windshield__jd_river_turn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3000.600, 1.400, 316.500)
+rotation = Vector3(-0.0986, 0.1081, 0.0)
+metadata/fov = 40.0
