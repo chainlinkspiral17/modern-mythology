@@ -3835,6 +3835,11 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 284: the Salinas car; the drugstore's doors.**
+- **meadowlark_circle:** "the car Sammy will drive to school, in the Salinas driveway" was three boxes; it is now make_car (same stem, same spot, nose to the street). The pass 281 `cars` insert frames a car.
+- **The drugstore** (vol1 ch11), "He carries her out the door, down to the boat": the set has its doors, automatic sliders named `Entry_*`. Pass 282 removed the cue because `door` found no door. It is now `entry`, framing the sliders from the aisle with the lot beyond.
+- **Draft N+1:** ch11's drugstore is "also a gas station: pumps outside on the water, a methane torch burning on a pole", with a boat Faust walks down to, but the pharmacy set shows an ordinary parking lot. It needs its own view (a tagged waterfront past the glass), or the author's call on whether the set is meant to be the plain one.
+
 **2026-11-03 · pass 283: the insert survey, last batch — and the survey's result.**
 - **The steering wheel** (vol2 ch8, "As soon as my hands grabbed onto the steering wheel, I was sobbing"; vol3 ch5, "her hands on the wheel"): the cue `wheel` framed a road tyre from outside the cab. It is now `steering`, the steering wheel from the passenger seat (the gates read `wheel` as a road wheel).
 - **The slide** (vol3 ch3, "Jackie Onassis played a major role in the slide shows"): it framed the slide box on the floor. It now frames the slide on the screen.

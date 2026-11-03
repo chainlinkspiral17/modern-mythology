@@ -480,6 +480,12 @@ rotation = Vector3(0.0540, 0.0270, 0.0)
 metadata/fov = 58.0
 
 
+; (2026-11-03) "He carries her out the door, down to the boat": the sliding entry doors from the aisle (the set's doors are Entry_*)
+[node name="shot_insert_entry__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.400, 1.600, -4.600)
+rotation = Vector3(-0.0717, 2.8069, 0.0)
+metadata/fov = 50.0
+
 ; (2026-11-03) "A cat carrier sits on the counter": the counter from the floor (1.9 m off, one colour)
 [node name="shot_insert_counter__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.200, 1.750, -12.600)
