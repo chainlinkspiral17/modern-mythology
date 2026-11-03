@@ -702,6 +702,42 @@ def overlaps(boxes):
 
 BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "overlap_baseline.json")
 
+# (2026-11-03) Families of one set that never share a view: a view that
+# shows one strips the other (Background3D "strip"), and the first is
+# tagged to that view alone (a tagged empty owns it). Pairs across them are
+# not clips. Each entry names the builder, the two name prefixes, and the
+# view that makes them exclusive (checked: its strip list must hold the
+# second prefix's parts).
+EXCLUSIVE = {
+    # vol1 ch11's all-night drugstore: the lot is water in drugstore_purgatory
+    "pharmacy": [("Purg_", "Out_", "drugstore_purgatory")],
+}
+
+
+_STRIP_OK = {}
+
+
+def _strips(view, prefix):
+    """True when Background3D's preset `view` strips names starting with
+    `prefix` (an EXCLUSIVE entry is honoured only then)."""
+    key = (view, prefix)
+    if key not in _STRIP_OK:
+        bg = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "scripts", "vn", "Background3D.gd")
+        src = open(bg).read()
+        m = re.search(r'\n\t"%s": \{(.*?)\n\t\},' % re.escape(view), src, re.S)
+        st = re.search(r'"strip": \[([^\]]*)\]', m.group(1)) if m else None
+        _STRIP_OK[key] = bool(st) and any(t.strip().strip('"').startswith(prefix) for t in st.group(1).split(","))
+    return _STRIP_OK[key]
+
+
+def _exclusive(builder, n1, n2):
+    for a, b, view in EXCLUSIVE.get(builder, ()):
+        if not _strips(view, b):
+            continue
+        if (n1.startswith(a) and n2.startswith(b)) or (n1.startswith(b) and n2.startswith(a)):
+            return True
+    return False
+
 
 def main():
     write_baseline = "--write-baseline" in sys.argv
@@ -729,6 +765,7 @@ def main():
         if err:
             print("%-32s (partial: %s)" % (name, err))
         hits = overlaps([b for b in boxes if b[0] not in MESH_NAMES])
+        hits = [h for h in hits if not _exclusive(name, h[1], h[2])]
         per[name] = len(hits)
         if hits:
             print("== %s · %d objects · %d clips" % (name, len(boxes), len(hits)))

@@ -5371,6 +5371,24 @@ const CAMERA_PRESETS := {
 	},
 	# ── Vols 1-2 · migration debt wave (2026-08-03, second pass) ──
 	# The nine sets that close the 2D-background estate to zero.
+	# (2026-11-03) vol1 ch11, THE ALL-NIGHT DRUGSTORE: "It's Faust's drugstore, or
+	# a cousin of it ... It's also a gas station: pumps outside on the water, a
+	# methane torch burning on a pole ... Every light is on, inside and out";
+	# Judgement Day "waiting with its engine idling" at the dock. The same
+	# vantage as pharmacy_floor, night; the lot is water (the Purg_ waterfront,
+	# tagged to this view; the lot, its cars and the street stripped)
+	"drugstore_purgatory": {
+		"scene": "res://scenes/locales/pharmacy.tscn",
+		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
+		"camera_origin": Vector3(1.20, 2.10, -15.98),
+		"camera_rotation": Vector3(-0.050, -3.123, 0.0),
+		"fov": 64.0,
+		"strip": ["Out_Lot", "Out_Car_", "Out_Stall", "Out_Fire_Lane", "Out_Corral", "View_S", "Sun_Storefront"],
+		"env": {"sky_top": Color(0.03, 0.04, 0.08, 1), "sky_horizon": Color(0.12, 0.12, 0.18, 1),
+			"ground_horizon": Color(0.06, 0.07, 0.10, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1)},
+		"far": 600.0,
+		"suppress_input": true,
+	},
 	"pharmacy_floor": {
 		"scene": "res://scenes/locales/pharmacy.tscn",
 		"requires_glb": "res://assets/3d/locales/pharmacy.glb",

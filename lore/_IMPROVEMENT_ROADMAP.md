@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 285: the all-night drugstore on the water (vol1 ch11, `drugstore_purgatory`).**
+- "It's Faust's drugstore, or a cousin of it … It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door. Every light is on, inside and out"; "the water outside, where Judgement Day is waiting with its engine idling"; "He carries her out the door, down to the boat"; "Judgement Day pulls away from the dock".
+- **The problem:** ch11 played on the plain `pharmacy_floor` (a day lot).
+- **The new view** is the same vantage at night: the lot, its cars, the street and the storefront sun are stripped, and the lot is water. The `Purg_` waterfront is parented to one tagged empty:
+  - the sea wall at the curb;
+  - a fuel dock off the walk at the entry, on pilings, with two pumps (hose, nozzle, display) and two lamps;
+  - the methane torch on its own piling, burning;
+  - the wash bucket by the doors, with a squeegee in it;
+  - Judgement Day afloat at the dock, wheels under the water's skin.
+- **Lights:** the torch and the two dock lamps, tagged to the view.
+- **Markers:** the floor view's six are copied for the new view.
+  - Two new inserts on the lines that name the waterfront: `pumps` (out through the doors to the dock and the torch) and `judgement_day` (from the walk to the car at the dock).
+- **Routing:** `vol1_drugstore_purgatory` now goes to the new view.
+- **prop_overlap_audit learned EXCLUSIVE:** families of a set that never share a view, honoured only when the view's strip list really strips the other family (see the geometry-audit playbook).
+- **Draft N+1:**
+  - The torch's flame flickering (a light animation, if the director can run one).
+  - Water that reads as water at night (a sheen band under the lamps).
+  - The "customers who aren't buying anything", reading boxes in the aisles: the author's call, since they are people.
+
 **2026-11-03 · pass 284: the Salinas car; the drugstore's doors.**
 - **meadowlark_circle:** "the car Sammy will drive to school, in the Salinas driveway" was three boxes; it is now make_car (same stem, same spot, nose to the street). The pass 281 `cars` insert frames a car.
 - **The drugstore** (vol1 ch11), "He carries her out the door, down to the boat": the set has its doors, automatic sliders named `Entry_*`. Pass 282 removed the cue because `door` found no door. It is now `entry`, framing the sliders from the aisle with the lot beyond.

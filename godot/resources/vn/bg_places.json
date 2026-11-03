@@ -97,8 +97,8 @@
     },
     "vol1_drugstore_purgatory": {
       "fit": "reuse",
-      "to": "3d:pharmacy_floor",
-      "note": "the drugstore as purgatory: a mood, same aisles",
+      "to": "3d:drugstore_purgatory",
+      "note": "the drugstore as purgatory: the same aisles, night, the lot become water (pumps on it, the methane torch, Judgement Day at the dock)",
       "scenes": 1
     },
     "vol1_editing_suite": {

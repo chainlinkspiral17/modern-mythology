@@ -158,6 +158,15 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-03 · two families that never share a view: EXCLUSIVE, checked against the strip list (pass 285)
+
+**Context:** vol1 ch11's all-night drugstore turns the pharmacy's parking lot into water, in a new view (`drugstore_purgatory`). It needed a fuel dock, a torch and Judgement Day afloat exactly where the lot, its stall lines and its parked cars sit. The view strips the lot and the waterfront is tagged to that view alone, so the two never render together. But prop_overlap_audit reads every box in the builder at once: it reported the dock lamp inside a parked car and the car on the asphalt.
+
+**Rule:** for families of one set that never share a view, add an entry to `prop_overlap_audit.EXCLUSIVE`: `{builder: [(prefix_a, prefix_b, view)]}`. Pairs across them are not clips.
+- An entry is honoured only when Background3D's `view` really strips `prefix_b` (`_strips()` reads the preset's strip list). A stale or wrong entry silently stops excusing anything.
+- Don't use it for anything a view shows together.
+- Don't reach for it before trying to place the new family clear of the old one.
+
 ### 2026-10-30 · a builder that builds half its set, and every gate passes it (pass 240)
 
 **Context:** the vol 1 Club Sharp arcade view rendered BLACK four times,

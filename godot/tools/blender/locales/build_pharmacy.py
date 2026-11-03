@@ -67,7 +67,11 @@ import os
 import sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, make_blob, export_glb
+try:
+    import bpy
+except ImportError:
+    bpy = None
 from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling
 from _props.safety import make_fluorescent_tube_fixture
 from _props.merch import stock_gondola
@@ -677,6 +681,65 @@ def build_waiting():
     make_box("Water_Fountain_Pedestal", (10.3, Y1 - 0.15, 0.35), (0.20, 0.10, 0.70), COL_STEEL)
 
 
+def build_purgatory_2026_11():
+    """(2026-11-03) THE ALL-NIGHT DRUGSTORE, vol1 ch11 (the `drugstore_purgatory`
+    view). "It's Faust's drugstore, or a cousin of it ... It's also a gas
+    station: pumps outside on the water, a methane torch burning on a pole, a
+    bucket of filthy window-wash fluid by the door. Every light is on, inside
+    and out"; "the water outside, where Judgement Day is waiting with its
+    engine idling"; "He carries her out the door, down to the boat";
+    "Judgement Day pulls away from the dock". In this view the lot is water
+    (the preset strips the lot, its cars and the street): the sea wall at the
+    curb, a fuel dock off the walk at the entry with its pumps and lamps, the
+    torch on its piling out in the water, the bucket by the doors, and
+    Judgement Day afloat at the dock. Every part is `Purg_*`, parented to one
+    tagged empty: no other view shows it."""
+    WZ = -0.50                                   # the water's skin
+    water = (0.10, 0.14, 0.20, 1.0)
+    wood, wood_dk = (0.46, 0.38, 0.28, 1.0), (0.30, 0.24, 0.18, 1.0)
+    make_box("Purg_Water", (0.0, -203.2, WZ - 0.02), (600.0, 400.0, 0.04), water)
+    make_box("Purg_Sea_Wall", (0.0, -3.23, (WZ - 0.6 + 0.02) / 2.0), (X1 - X0 + 8.0, 0.16, 0.62 - WZ + 0.02 - 0.6 + 0.6), COL_CONCRETE)
+    # the fuel dock off the walk at the entry, on its pilings
+    dx0, dx1, dy0, dy1 = -10.6, -7.4, -3.31, -14.0
+    make_box("Purg_Dock_Deck", ((dx0 + dx1) / 2.0, (dy0 + dy1) / 2.0, -0.07), (dx1 - dx0, dy0 - dy1, 0.10), wood)
+    for k in range(10):
+        make_box(f"Purg_Dock_Plank_Seam_{k}", ((dx0 + dx1) / 2.0, dy0 - 0.9 - k * 1.05, -0.018), (dx1 - dx0, 0.02, 0.004), wood_dk)
+    for e, px in (("W", dx0 + 0.12), ("E", dx1 - 0.12)):
+        for k in range(4):
+            make_cyl(f"Purg_Dock_Piling_{e}_{k}", (px, dy0 - 1.5 - k * 3.0, -0.75), 0.13, 1.6, wood_dk, segments=8)
+    # the pumps along the dock's W edge, a hose on each
+    for k, py in enumerate((-6.6, -10.2)):
+        make_box(f"Purg_Pump_{k}_Body", (dx0 + 0.55, py, 0.83), (0.60, 0.90, 1.70), COL_WHITE)
+        make_box(f"Purg_Pump_{k}_Band", (dx0 + 0.55, py, 1.47), (0.62, 0.92, 0.26), COL_RED)
+        make_box(f"Purg_Pump_{k}_Display", (dx0 + 0.86, py, 1.10), (0.004, 0.46, 0.28), (0.16, 0.30, 0.22, 1.0))
+        make_box(f"Purg_Pump_{k}_Nozzle", (dx0 + 0.89, py + 0.30, 0.95), (0.06, 0.06, 0.22), COL_DARK)
+        make_cyl(f"Purg_Pump_{k}_Hose", (dx0 + 0.88, py + 0.36, 0.55), 0.02, 0.76, COL_DARK, segments=6)
+    # the dock lamps on the E edge: "Every light is on, inside and out"
+    for k, py in enumerate((-5.0, -11.5)):
+        make_cyl(f"Purg_Dock_Lamp_{k}_Post", (dx1 - 0.15, py, 1.48), 0.05, 3.0, COL_STEEL, segments=6)
+        make_box(f"Purg_Dock_Lamp_{k}_Head_Glow", (dx1 - 0.15, py, 3.02), (0.30, 0.30, 0.16), (1.0, 0.92, 0.70, 1.0))
+    # the methane torch burning on a pole, out on its own piling
+    tx, ty = -16.0, -12.0
+    make_cyl("Purg_Torch_Piling", (tx, ty, WZ - 0.4 + 0.65), 0.28, 1.3, COL_CONCRETE, segments=10)
+    ptop = WZ - 0.4 + 0.65 + 0.65                # the piling's top
+    make_cyl("Purg_Torch_Pole", (tx, ty, ptop + 3.5), 0.08, 7.0, COL_STEEL, segments=8)
+    make_cyl("Purg_Torch_Nozzle", (tx, ty, ptop + 7.08), 0.13, 0.16, COL_DARK, segments=8)
+    make_blob("Purg_Torch_Flame_Glow", (tx, ty, ptop + 7.60), 0.40, (1.0, 0.62, 0.20, 1.0), noise=0.3, seed=11, squash=1.8)
+    make_blob("Purg_Torch_Flame_Core_Glow", (tx, ty, ptop + 7.37), 0.20, (1.0, 0.90, 0.60, 1.0), noise=0.2, seed=12, squash=1.6)
+    # the bucket of filthy window-wash fluid by the doors, its squeegee in it
+    make_cyl("Purg_Bucket", (-10.55, -0.55, 0.19), 0.17, 0.38, (0.30, 0.36, 0.34, 1.0), segments=12)
+    make_cyl("Purg_Bucket_Fluid", (-10.55, -0.55, 0.345), 0.155, 0.01, (0.30, 0.32, 0.20, 1.0), segments=12)
+    make_rot_box("Purg_Bucket_Squeegee", (-10.50, -0.55, 0.55), (0.03, 0.03, 0.62), COL_DARK, roll=0.18)
+    # Judgement Day afloat at the dock's E side, nose out, its wheels under
+    make_car("Purg_Judgement_Day", dx1 + 1.25, -9.2, 4.7, (0.40, 0.18, 0.16, 1.0), along="-Y", z0=WZ - 0.12)
+    if bpy is not None:
+        empty = bpy.data.objects.new("Purgatory__drugstore_purgatory", None)
+        bpy.context.scene.collection.objects.link(empty)
+        for obj in list(bpy.data.objects):
+            if obj is not empty and obj.parent is None and obj.name.startswith("Purg_"):
+                obj.parent = empty
+
+
 def main():
     clear_scene()
     build_shell()
@@ -686,6 +749,7 @@ def main():
     build_pharmacy()
     build_office()
     build_waiting()
+    build_purgatory_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pharmacy.glb"))
     print(f"\n[build_pharmacy] exporting to {out}")

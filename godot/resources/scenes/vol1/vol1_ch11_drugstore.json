@@ -51,7 +51,7 @@
     },
     {
       "t": "narrate",
-      "text": "It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door."
+      "text": "[shot:insert pumps]It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door."
     },
     {
       "t": "narrate",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cat looks at him. Then at the door. Then at the water outside, where Judgement Day is waiting with its engine idling."
+      "text": "[shot:insert judgement_day]The cat looks at him. Then at the door. Then at the water outside, where Judgement Day is waiting with its engine idling."
     },
     {
       "t": "say",

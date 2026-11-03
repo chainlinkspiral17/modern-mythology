@@ -328,6 +328,71 @@ light_energy = 0.95
 shadow_enabled = false
 omni_range = 4.60
 
+; (2026-11-03) vol1 ch11's waterfront: the methane torch, the dock lamps ("Every light is on, inside and out")
+[node name="Purg_Torch_Light__drugstore_purgatory" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0, 8.0, 12.0)
+light_color = Color(1.0, 0.6, 0.25, 1)
+light_energy = 3.0
+omni_range = 18.0
+shadow_enabled = false
+
+[node name="Purg_Dock_Lamp_0__drugstore_purgatory" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 2.8, 5.0)
+light_color = Color(1.0, 0.9, 0.7, 1)
+light_energy = 1.6
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Purg_Dock_Lamp_1__drugstore_purgatory" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 2.8, 11.5)
+light_color = Color(1.0, 0.9, 0.7, 1)
+light_energy = 1.6
+omni_range = 7.0
+shadow_enabled = false
+
+; (2026-11-03) vol1 ch11 (drugstore_purgatory): the floor view's markers, for the same vantage
+; "pumps outside on the water, a methane torch burning on a pole": out through the entry to the fuel dock and the torch
+[node name="shot_insert_pumps__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-8.600, 1.650, -1.300)
+rotation = Vector3(-0.0506, 2.9376, 0.0)
+metadata/fov = 60.0
+
+; "Then at the water outside, where Judgement Day is waiting with its engine idling": from the walk to the dock
+[node name="shot_insert_judgement_day__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.400, 1.750, 1.900)
+rotation = Vector3(-0.1960, -3.1074, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_counter__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.200, 1.750, -12.600)
+rotation = Vector3(-0.3555, -0.5129, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_desk__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.766, 1.513, -19.447)
+rotation = Vector3(-0.2540, -0.1726, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_entry__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.400, 1.600, -4.600)
+rotation = Vector3(-0.0717, 2.8069, 0.0)
+metadata/fov = 50.0
+
+[node name="shot_closeup_person__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.620, -13.900)
+rotation = Vector3(0.1518, -0.2141, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_closeup_person_b__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.550, 2.020, -16.450)
+rotation = Vector3(-0.2478, 2.8198, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_establish_b__drugstore_purgatory" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.500, 1.700, -4.900)
+rotation = Vector3(0.0540, 0.0270, 0.0)
+metadata/fov = 58.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
