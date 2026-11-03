@@ -5995,6 +5995,66 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_push_noise_shift()
+	_flicker_flames()
+
+
+# ── FLAME LIGHTS (2026-11-03) ─────────────────────────────────────────
+# A light whose name says it is a flame — a candle, a torch, a bonfire, a
+# burning wreck, embers, a kerosene lamp — breathes instead of burning as
+# steady as a bulb (vol1 ch11's "methane torch burning on a pole" was a
+# lamp). Chandeliers are bulbs ("Chand_"). The flicker multiplies whatever
+# energy the light has: when the mood stack rewrites a light's energy, that
+# new value is taken as the flame's base. Phase counts frames from the
+# load, so a still rendered N frames in is the same picture every time.
+const FLAME_WORDS := {"candle": 0.10, "bonfire": 0.22, "wreckfire": 0.24, "torch": 0.22,
+		"ember": 0.07, "kerosene": 0.06, "flame": 0.16, "hearth": 0.14, "campfire": 0.20}
+var _flames: Array[Dictionary] = []
+var _flame_frame: int = 0
+
+
+func _collect_flames(root: Node) -> void:
+	_flames.clear()
+	_flame_frame = 0
+	var k: int = 0
+	for n: Node in _walk_tree(root):
+		if not (n is OmniLight3D or n is SpotLight3D):
+			continue
+		var low: String = String(n.name).to_lower()
+		if low.begins_with("chand"):
+			continue
+		var amp: float = 0.0
+		for w: String in FLAME_WORDS:
+			if low.contains(w):
+				amp = maxf(amp, float(FLAME_WORDS[w]))
+		if amp <= 0.0:
+			continue
+		var l: Light3D = n as Light3D
+		# embers and lamps breathe slowly; open flame quickly
+		var rate: float = 0.9 if amp < 0.09 else 2.6
+		_flames.append({"light": l, "base": l.light_energy, "last": l.light_energy,
+				"amp": amp, "rate": rate, "seed": 1.7 + 2.39 * k})
+		k += 1
+
+
+func _flicker_flames() -> void:
+	if _flames.is_empty():
+		return
+	_flame_frame += 1
+	var t: float = _flame_frame / 60.0
+	for f: Dictionary in _flames:
+		var l: Light3D = f["light"] as Light3D
+		if l == null or not is_instance_valid(l):
+			continue
+		var last: float = float(f["last"])
+		if absf(l.light_energy - last) > 0.0005:
+			f["base"] = l.light_energy        # someone else set it: the new base
+		var r: float = float(f["rate"])
+		var s: float = float(f["seed"])
+		var wob: float = 0.55 * sin(t * r * 1.00 + s) + 0.30 * sin(t * r * 2.31 + s * 1.7) \
+				+ 0.15 * sin(t * r * 5.77 + s * 2.9)
+		var e: float = float(f["base"]) * (1.0 + float(f["amp"]) * wob)
+		l.light_energy = e
+		f["last"] = e
 
 
 func _add_painted_pass() -> void:
@@ -6170,6 +6230,7 @@ func load_location(preset_id: String) -> bool:
 	if spec.get("suppress_input", false):
 		_suppress_interactive_nodes(_location_instance)
 	_anchor.add_child(_location_instance)
+	_collect_flames(_location_instance)
 	# (2026-10-23) MM_NO_POST=1 hides the locale's PostProcess stack — an
 	# A/B for the sky and lighting under the paint (PresetShot, PerfProbe).
 	if OS.get_environment("MM_NO_POST") == "1":

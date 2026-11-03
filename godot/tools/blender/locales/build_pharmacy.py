@@ -732,6 +732,39 @@ def build_purgatory_2026_11():
     make_rot_box("Purg_Bucket_Squeegee", (-10.50, -0.55, 0.55), (0.03, 0.03, 0.62), COL_DARK, roll=0.18)
     # Judgement Day afloat at the dock's E side, nose out, its wheels under
     make_car("Purg_Judgement_Day", dx1 + 1.25, -9.2, 4.7, (0.40, 0.18, 0.16, 1.0), along="-Y", z0=WZ - 0.12)
+    # (2026-11-03, draft 2) the water at night was one flat navy slab. Lights
+    # on water at night lie as broken columns running from under each light
+    # toward whoever is looking (the doors, +Y): thin bright glints, wider
+    # and further apart the further they run.
+    # The dock lamps and the torch each lay one; the torch's, 7 m up, is the
+    # longest. Translucent, a hair over the skin.
+    # The column runs in the plane of the light and the eye: from under the
+    # light toward the view's camera (1.2, 16.0), so it slants. A dash that
+    # falls under the dock or the car is hidden by them and is not built.
+    ex, ey = 1.2, 16.0
+    hidden = ((dx0 - 0.15, dx1 + 0.15, dy1, dy0), (dx1 + 0.30, dx1 + 2.20, -11.65, -6.75))
+
+    def sheen(tag, lx, ly, length, warm):
+        slope = (ex - lx) / (ey - ly)
+        k = n = 0
+        y = ly
+        while y < min(ly + length, -3.6) and k < 40:
+            d = (y - ly) / length                     # 0 under the light .. 1 at the far end
+            w = 0.20 + 0.55 * d + 0.10 * math.sin(k * 2.3)
+            h = 0.05 + 0.09 * d                       # thin glints across the column, not tiles
+            x = lx + (y - ly) * slope + 0.18 * math.sin(k * 1.9 + lx) * (0.4 + d)
+            k += 1
+            gap = h + 0.12 + 0.24 * d
+            if any(a - w / 2 < x < b + w / 2 and c - h / 2 < y < e + h / 2 for a, b, c, e in hidden):
+                y += gap
+                continue
+            col = (warm[0], warm[1], warm[2], 0.80 - 0.40 * d)
+            make_box(f"Purg_Water_Sheen_{tag}_{n}", (x, y, WZ + 0.004 + 0.0004 * n), (w, h, 0.004), col)
+            n += 1
+            y += gap
+    sheen("Lamp0", dx1 + 0.30, -5.4, 3.0, (1.0, 0.86, 0.58))
+    sheen("Lamp1", dx1 + 0.30, -11.6, 7.5, (1.0, 0.86, 0.58))
+    sheen("Torch", tx, ty + 0.4, 8.4, (1.0, 0.62, 0.26))
     if bpy is not None:
         empty = bpy.data.objects.new("Purgatory__drugstore_purgatory", None)
         bpy.context.scene.collection.objects.link(empty)

@@ -3835,6 +3835,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-03 · pass 286: flames breathe; the drugstore's water at night.**
+- **Flame lights flicker** (Background3D, every 3D background): a light whose name says flame (candle, torch, bonfire, wreckfire, ember, kerosene, flame, hearth, campfire; never `Chand*`, which are bulbs) breathes: three sines, ±6–24% by kind, embers and lamps slow, open flame quick. 31 lights across the sets pick it up: the drugstore's methane torch, the bayou torch, Philip's embers, the bonfires, the burning wrecks, the candles.
+  - It multiplies whatever energy the light has. When the mood stack rewrites a light, that value becomes the new base, so the two never fight.
+  - Phase counts frames from the load, so a still rendered N frames in is the same picture every time.
+- **drugstore_purgatory, draft 2:** the water was one flat navy slab. Each dock lamp and the torch now lays a broken column of thin glints on the water (`Purg_Water_Sheen_*`), running from under the light toward the doors and slanting in the plane of light and eye. Dashes that would fall under the dock or the car are not built.
+- **Perf note:** nexcorp_fueling_station probes at 610 draw calls against its first 174. PerfProbe loads the raw scene with every era's tagged parts at once (2003 and 2026 together), which the game never shows. The gate's cap is 2,000; per-view cost is lower.
+- **Draft N+1:**
+  - PerfProbe measuring per preset (strip the other presets' tagged parts), so multi-era rooms are not over-counted.
+  - The glints shimmering (they are still geometry).
+  - The beach embers' smoke.
+
 **2026-11-03 · pass 285: the all-night drugstore on the water (vol1 ch11, `drugstore_purgatory`).**
 - "It's Faust's drugstore, or a cousin of it … It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door. Every light is on, inside and out"; "the water outside, where Judgement Day is waiting with its engine idling"; "He carries her out the door, down to the boat"; "Judgement Day pulls away from the dock".
 - **The problem:** ch11 played on the plain `pharmacy_floor` (a day lot).
