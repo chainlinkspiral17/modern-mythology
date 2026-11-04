@@ -241,29 +241,62 @@ light_energy = 0.6
 shadow_enabled = false
 omni_range = 6.0
 
-[node name="Bright_Corner__office_after_hours" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.55, 1.4, -13.55)
+[node name="Bright_Corner_0__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 0.30, -13.66)
 light_color = Color(1.0, 1.0, 0.96, 1)
-light_energy = 1.1
+light_energy = 0.48
 shadow_enabled = false
-omni_range = 3.5
-omni_attenuation = 1.6
+omni_range = 3.4
+omni_attenuation = 1.0
 
-[node name="Bright_Corner_High__office_after_hours" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.55, 2.4, -13.55)
+[node name="Bright_Corner_1__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 0.65, -13.66)
 light_color = Color(1.0, 1.0, 0.96, 1)
-light_energy = 0.9
+light_energy = 0.48
 shadow_enabled = false
-omni_range = 3.0
-omni_attenuation = 1.6
+omni_range = 3.4
+omni_attenuation = 1.0
 
-[node name="Bright_Corner_Low__office_after_hours" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.55, 0.4, -13.55)
+[node name="Bright_Corner_2__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 1.00, -13.66)
 light_color = Color(1.0, 1.0, 0.96, 1)
-light_energy = 0.9
+light_energy = 0.48
 shadow_enabled = false
-omni_range = 3.0
-omni_attenuation = 1.6
+omni_range = 3.4
+omni_attenuation = 1.0
+
+[node name="Bright_Corner_3__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 1.35, -13.66)
+light_color = Color(1.0, 1.0, 0.96, 1)
+light_energy = 0.48
+shadow_enabled = false
+omni_range = 3.4
+omni_attenuation = 1.0
+
+[node name="Bright_Corner_4__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 1.70, -13.66)
+light_color = Color(1.0, 1.0, 0.96, 1)
+light_energy = 0.48
+shadow_enabled = false
+omni_range = 3.4
+omni_attenuation = 1.0
+
+[node name="Bright_Corner_5__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 2.05, -13.66)
+light_color = Color(1.0, 1.0, 0.96, 1)
+light_energy = 0.48
+shadow_enabled = false
+omni_range = 3.4
+omni_attenuation = 1.0
+
+[node name="Bright_Corner_6__office_after_hours" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.66, 2.40, -13.66)
+light_color = Color(1.0, 1.0, 0.96, 1)
+light_energy = 0.48
+shadow_enabled = false
+omni_range = 3.4
+omni_attenuation = 1.0
+
 
 [node name="Bright_Corner_Pool__office_after_hours" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 51.0, 2.74, -13.0)
