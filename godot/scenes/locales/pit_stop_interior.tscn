@@ -509,29 +509,37 @@ rotation = Vector3(-0.0534, -2.2440, 0.0)
 metadata/fov = 45.0
 
 ; ── vn_shot coverage (pass 65) — the back lot, suffixed __pit_stop_back_lot
-; closeup (back lot): Ben at the dumpster, the first Powerade
+; closeup: Ben in the back lot, the kitchen's back door and the bread rack behind him (pass 292: the dumpster's side filled the old frame)
 [node name="shot_closeup_ben__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.800, 1.550, -12.300)
-rotation = Vector3(-0.0354, 1.1706, 0.0)
+position = Vector3(1.500, 1.550, -14.500)
+rotation = Vector3(-0.0552, -2.3874, 0.0)
 metadata/fov = 45.0
 
-; closeup (back lot): the same frame — whoever is at the dumpster
+
+
+; the back lot's closeup frame: toward the kitchen's back door (pass 292: the dumpster's side filled the old frame)
 [node name="shot_closeup_person__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.800, 1.550, -12.300)
-rotation = Vector3(-0.0354, 1.1706, 0.0)
+position = Vector3(1.500, 1.550, -14.500)
+rotation = Vector3(-0.0552, -2.3874, 0.0)
 metadata/fov = 45.0
 
-; closeup (back lot): Jesse leaning on the dumpster, then crouched at its foot
+
+
+; closeup: Jesse in the back lot, the pickup three-quarter and the lot behind him, from 5.7 m (pass 292: the dumpster's corner filled the old frame; at 2.6 m the truck filled this one)
 [node name="shot_closeup_jesse__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.600, 1.550, -12.300)
-rotation = Vector3(-0.0354, -1.1706, 0.0)
+position = Vector3(0.500, 1.550, -12.600)
+rotation = Vector3(-0.0963, -0.5344, 0.0)
 metadata/fov = 45.0
 
-; closeup (back lot): the reverse
+
+
+; the back lot's reverse closeup frame: toward the pickup and the lot (pass 292: the dumpster's corner filled the old frame)
 [node name="shot_closeup_person_b__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.600, 1.550, -12.300)
-rotation = Vector3(-0.0354, -1.1706, 0.0)
+position = Vector3(0.500, 1.550, -12.600)
+rotation = Vector3(-0.0963, -0.5344, 0.0)
 metadata/fov = 45.0
+
+
 
 ; establish (back lot): from the back door, the enclosure and the lot
 [node name="shot_establish_b__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]

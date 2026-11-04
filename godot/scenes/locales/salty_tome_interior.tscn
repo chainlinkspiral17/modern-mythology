@@ -533,11 +533,12 @@ position = Vector3(3.400, 1.500, -8.000)
 rotation = Vector3(-0.0455, 2.0956, 0.0)
 metadata/fov = 42.0
 
-; closeup (office): Lena on the couch under the blanket
+; closeup: Lena on the office couch, from the room — the back cushions and the wall behind her (pass 292: it looked 35 degrees down at the seat cushion and the blanket)
 [node name="shot_closeup_lena__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.200, 1.150, -6.250)
-rotation = Vector3(-0.6141, -0.8622, 0.0)
+position = Vector3(2.900, 1.150, -5.600)
+rotation = Vector3(-0.2290, 0.0000, 0.0)
 metadata/fov = 42.0
+
 
 ; establish (office): from the desk corner, the couch and the door
 [node name="shot_establish_b__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
