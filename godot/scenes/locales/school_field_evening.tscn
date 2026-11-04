@@ -244,9 +244,12 @@ position = Vector3(17.600, 1.750, 10.400)
 rotation = Vector3(-0.0421, 1.1616, 0.0)
 metadata/fov = 46.0
 
+; insert: the corkboard outside the field-house door, face on (it looked along the board's edge)
 [node name="shot_insert_corkboard" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.234, 1.809, 6.730)
-rotation = Vector3(-0.2618, 1.5708, 0.0)
+position = Vector3(-13.200, 1.500, 5.300)
+rotation = Vector3(0.0338, -3.1416, 0.0)
+metadata/fov = 40.0
+
 
 [node name="shot_insert_ball" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 0.69, -53.76)
@@ -415,11 +418,12 @@ position = Vector3(22.384, 1.700, -33.864)
 rotation = Vector3(-0.1707, -0.4845, 0.0)
 metadata/fov = 46.0
 
-; insert: the Vinton bus pulls into the lot at four oh-three
+; insert: the Vinton bus pulling into the lot, from across it (it looked down at a wheel)
 [node name="shot_insert_bus" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.7, 9.0)
-rotation = Vector3(-0.6386, -2.8474, 0.0)
-metadata/fov = 42.0
+position = Vector3(3.000, 1.700, 6.000)
+rotation = Vector3(-0.1127, -2.3562, 0.0)
+metadata/fov = 48.0
+
 
 ; insert: Coach K's stopwatch — partly theater
 [node name="shot_insert_stopwatch" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -565,11 +569,6 @@ position = Vector3(27.674, 0.685, -40.964)
 rotation = Vector3(-0.2618, 2.8114, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_pads__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.427, 1.162, -0.667)
-rotation = Vector3(-0.2618, 2.5729, 0.0)
-metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_sheet__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -583,11 +582,12 @@ position = Vector3(31.436, 1.482, -45.539)
 rotation = Vector3(-0.2618, -1.7935, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the equipment shed whole from its small lot (it stood 2 m from the door: a brown wall)
 [node name="shot_insert_shed__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-28.394, 1.834, -113.093)
-rotation = Vector3(-0.3836, 0.9726, 0.0)
-metadata/fov = 35.0
+position = Vector3(-26.500, 1.600, -110.500)
+rotation = Vector3(-0.0478, 0.5924, 0.0)
+metadata/fov = 46.0
+
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_helmets__school_field_day" type="Marker3D" parent="." groups=["vn_shot"]]
