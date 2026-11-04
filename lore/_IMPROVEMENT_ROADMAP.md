@@ -3835,6 +3835,15 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-04 · pass 291: the vols 5–7 insert survey (in progress): 782 inserts rendered under the views their lines play in.**
+- **The method** is pass 280's: every insert of vols 5–7 rendered under its line's view (`ins_list57`), the frames scanned for darkness and flatness, then every sheet read by eye.
+- **First batches (158 frames):**
+  - **Cues removed (21):** every `hands` in vols 5–7 (a hand on a hand — people, 13 of them), Bianca's `robe` (she wears it; the bedroom door with its hook is not in the kitchen set), the bindery's `envelope` (against her ribs), and "the small window between the day's heat dropping off and the night's full dark" (a figure of speech).
+  - **Re-placed:** caldwell_porch_night's `radio` (it framed the rail and a car wheel; now the transistor on the rail) and `car` ("A car comes down the street": the slow car from the porch, not its wheel); the cedar tower's `doors` (it stood at the lobby interior's S wall, which the exterior never shows; now the tower's doors from the gravel), `wagon` (from the clearing, not from under its flank), `photograph` (it looked at the ceiling); Ben's `cat` re-aimed.
+  - **Built:** Mister the cat is a curled loaf with a head, ears and a tail (he was a 16 cm puck that read as a frying pan); the photograph of Dean, framed on the reception desk; a dim warm fill at the cabin porch's rail corner so the cedar hand's night insert is not black.
+  - **Re-cued:** the cedar tower lobby's description line cues `desk` (it cued `doors`).
+- **Draft N+1:** the rest of the survey (624 frames to go); then the same scan for the closeups.
+
 **2026-11-04 · pass 290: the skatepark's street; Halloween on Nick's street; the patio door's spill; the fallen-in house framed.**
 - **little_switzerland (vol2 ch1), draft 2:** "reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign": the highway itself at the lane's foot: two lanes of asphalt past the sign with a yellow centre dash, white fog lines and gravel shoulders, the lane's pebble flared where it meets the road; the lens steps back 4 m onto the far shoulder so the near lane and the fog line are the foreground. The road runs east on the flat only (its west run clipped the valley slope and the far ridge: 14 clips, fixed before the commit).
 - **small_wood_road (vol2 ch1):** "the remains of fallen-in houses": the line cues `fallen_house`, a new frame on the ruin from the road's E shoulder (the `house` cue framed the two-storey house west).
