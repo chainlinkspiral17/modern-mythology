@@ -107,6 +107,8 @@ EXCLUDE = {
     "door": ["fridge", "cabinet", "cab", "oven", "microwave", "dishwasher", "stall", "car", "truck", "van", "locker", "safe", "bell"],
     # (2026-11-04) the rug in front of the sink is not the sink
     "sink": ["rug", "ring"],
+    # (2026-11-04) "He looks at the paper" is the newspaper
+    "paper": ["towel", "magnet", "board"],
     "window": ["car", "truck", "van", "cab"],
     "photograph": ["door", "window"],
     "phone": ["booth"],
@@ -121,6 +123,8 @@ EXCLUDE = {
 }
 
 SYNONYMS = {
+    # (2026-11-04) "He looks at the paper": the folded Newspaper (one CamelCase word)
+    "paper": ["paper", "newspaper"],
     "door": ["door", "doorway"],
     # 2026-09-07 · the position-form markers came into the audit and
     # sixteen insert cues had no geometry answering to their names

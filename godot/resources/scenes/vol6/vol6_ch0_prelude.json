@@ -565,7 +565,7 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "[shot:insert paper]I looked into it and I found what I expected to find, which is that there is nothing on paper that shouldn't be there, and I know enough about how these things work to know that means either there really is nothing, or the paper is very clean.",
+      "text": "I looked into it and I found what I expected to find, which is that there is nothing on paper that shouldn't be there, and I know enough about how these things work to know that means either there really is nothing, or the paper is very clean.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/108.ogg"
     },
     {

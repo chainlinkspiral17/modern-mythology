@@ -171,6 +171,14 @@ def build_north_run():
     make_lathe("Coffee_Maker_Carafe", (-3.15, YN - 0.26, TOP_Z + 0.04), [(0.07, 0.0), (0.08, 0.06), (0.07, 0.14), (0.04, 0.17), (0.0, 0.17)],
                (0.30, 0.22, 0.16, 1.0), segments=10)
     make_box("Coffee_Canister", (-2.90, YN - 0.15, TOP_Z + 0.10), (0.12, 0.12, 0.20), (0.86, 0.84, 0.80, 1.0))
+    # the morning paper, folded on the island's west end behind the coffee
+    # corner ("He crosses to the coffee pot. He pours a mug. He looks at the
+    # paper." — vol6 ch3; 2026-11-04. First try sat on the range's cooktop.)
+    make_box("Newspaper", (-1.75, 4.45, 0.98 + 0.012), (0.30, 0.18, 0.024), (0.84, 0.82, 0.76, 1.0))
+    make_box("Newspaper_Masthead", (-1.75, 4.51, 0.98 + 0.0245), (0.26, 0.03, 0.001), (0.18, 0.18, 0.20, 1.0))
+    make_box("Newspaper_Photo", (-1.80, 4.42, 0.98 + 0.0245), (0.10, 0.07, 0.001), (0.36, 0.34, 0.32, 1.0))
+    for ci in range(4):
+        make_box(f"Newspaper_Column_{ci}", (-1.66, 4.44 - ci * 0.02, 0.98 + 0.0245), (0.12, 0.004, 0.001), (0.50, 0.48, 0.46, 1.0))
     make_box("Microwave", (1.35, YN - 0.24, TOP_Z + 0.16), (0.52, 0.38, 0.32), KK.STAINLESS)
     make_box("Microwave_Door", (1.29, YN - 0.435, TOP_Z + 0.16), (0.38, 0.01, 0.26), (0.12, 0.12, 0.14, 1.0))
     make_box("Paper_Towel_Base", (0.05, YN - 0.20, TOP_Z + 0.006), (0.14, 0.14, 0.012), STEEL)
