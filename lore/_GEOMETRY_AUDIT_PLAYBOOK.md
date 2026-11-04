@@ -158,6 +158,49 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-04 · the insert survey (pass 291): what a render of every cue teaches that the gates cannot
+
+- **Method:** every `[shot:insert X]` of vols 5–7 rendered under the view
+  its line plays in (782 frames, contact sheets of 20 at a third scale),
+  every sheet read by eye, every suspect probed: the marker's transform,
+  the cue's matching parts nearest the lens, the chosen subject, and the
+  LINE the cue sits on. The aim and obstruction gates were green on
+  nearly all of them. What they cannot see:
+  - **The subject is a person.** "Hans was in the apron", "Doyle holds up
+    the badge", "a hand flat over Roy's bowl", "Maya in the passenger
+    seat": the cue finds the apron, the badge, a chair leg, a seatbelt
+    buckle. Some seventy such cues came out with their markers. The rule
+    stands: a cue on a person's body, hands or clothes is removed, not
+    framed. The same for journeys ("the five-minute drive"), figures of
+    speech ("nothing on paper", "the small window between the heat and
+    the dark") and objects in another set (the strip-mall unit cued in
+    the garage, Lena's door cued on the street).
+  - **The nearest part is the wrong part.** The entrance leaves had no
+    "Door" in their names, so the restroom door was the door; the sink's
+    rug ring was the sink; the paper-towel roll was the paper; a lot
+    stripe was the substation; the fill panel beside a door was the
+    door. Fix the NAMES (`Entrance_Door_Leaf_*`, `DR_Doorside_Fill_E`) or
+    the EXCLUDE / SYNONYMS tables in `shot_marker_audit.py`, then re-run
+    the full suite: a new exclusion moves OTHER markers' anchors (the
+    door-bell rule moved two door inserts 8–11° off and stopped the
+    suite at a hard gate).
+  - **Dark is not an aim fault.** A frame 50 cm from an unlit car door at
+    night is black whatever the lamp does. See the lighting playbook's
+    2026-11-04 lesson.
+  - **The survey renders the preset, not the chapter's mood.** A night
+    chapter on a day preset (the strip mall under `[mood:night]`) renders
+    in daylight here; judge the geometry, not the light, on those.
+- **The scratch helpers' body regex swallowed the NEXT node's comment
+  lines** on every re-place and delete (`(.*?)(?=\n\[)` runs past a
+  blank line and the following `;` comments). 21 scenes were repaired
+  from git. A marker body ends at the first blank line, `;` line or
+  `[node`: `(.*?)(?=\n\n|\n;|\n\[|\Z)`. Check `git diff` for removed `;`
+  lines after any scripted marker edit.
+- **A lens placed by hand lands inside things.** Three of this pass's
+  re-placements sat inside a wall, a shelf of books and a car's body box;
+  the obstruction gate caught each ("camera INSIDE"). Run it before the
+  render, not after.
+
 ### 2026-11-04 · a builder helper built on `_gen_prism` must survive the audits' stubs (pass 287)
 
 - **What happened:** the skate pool's sloped wall-base curves use a local
