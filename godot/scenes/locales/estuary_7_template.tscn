@@ -361,11 +361,12 @@ metadata/fov = 42.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10); pass 292 aims it at the model's tower and bluff (it looked along the table's edge at the dark)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-6.420, 1.612, 4.890)
-rotation = Vector3(-0.2618, -1.8326, 0.0)
+rotation = Vector3(-0.1168, -0.9120, 0.0)
 metadata/fov = 45.0
+
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_palette__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -390,3 +391,9 @@ position = Vector3(-4.026, 0.809, -2.387)
 rotation = Vector3(-0.2618, -0.3068, 0.0)
 metadata/fov = 35.0
 
+
+; the room's reverse closeup frame (pass 292): the far side of shot_closeup_person's spot, looking down at the model's tower and bluff
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.200, 1.600, 6.000)
+rotation = Vector3(-0.1357, -0.2063, 0.0)
+metadata/fov = 45.0

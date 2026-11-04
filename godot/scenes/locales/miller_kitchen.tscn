@@ -148,7 +148,7 @@ sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.86, 0.74, 0.52, 1)
-ambient_light_energy = 0.85
+ambient_light_energy = 0.55
 fog_enabled = true
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
@@ -159,7 +159,7 @@ adjustment_brightness = 1.0
 adjustment_contrast = 1.06
 adjustment_saturation = 0.94
 glow_enabled = true
-glow_intensity = 0.7
+glow_intensity = 0.45
 glow_bloom = 0.12
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
@@ -171,16 +171,19 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 ; (pass 61, 2026-10-11) the authored rig is suffixed to miller_kitchen: its time-of-day twin below brings its own
+; (pass 292, 2026-11-04) key 1.0 → 0.6, fill 0.5 → 0.35, the day ambient 0.85 → 0.55 and glow 0.7 → 0.45 (the
+; night preset brings its own env): the north run, the backsplash and the island top blew out to white in the
+; wide and in every insert there
 [node name="Key_KitchenWindow__miller_kitchen" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
 light_color = Color(1.00, 0.84, 0.62, 1)
-light_energy = 1.0
+light_energy = 0.6
 shadow_enabled = false
 
 [node name="Fill_Overhead__miller_kitchen" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.88, 0.72, 1)
-light_energy = 0.5
+light_energy = 0.35
 shadow_enabled = false
 
 [node name="Back_BackYardCool__miller_kitchen" type="DirectionalLight3D" parent="."]
@@ -477,11 +480,12 @@ position = Vector3(-0.600, 1.600, -5.900)
 rotation = Vector3(-0.1235, -0.0391, 0.0)
 metadata/fov = 40.0
 
-; insert: the photographs on the table, from the window side so the window does not flare the table
+; insert: the photographs fanned on the island, grazing from counter height so the room stands behind them (pass 292: from above they were white on white)
 [node name="shot_insert_photographs" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.900, 1.300, -5.200)
-rotation = Vector3(-0.4226, -2.7976, 0.0)
+position = Vector3(-0.900, 1.120, -5.300)
+rotation = Vector3(-0.1719, -2.8394, 0.0)
 metadata/fov = 32.0
+
 
 
 ; closeup: Mike's chair at the short end, the east window behind
@@ -556,11 +560,12 @@ rotation = Vector3(-0.3930, -0.8478, 0.0)
 metadata/fov = 32.0
 
 
-; insert: the pantry door (it looked at the casing beside it)
+; insert: the pantry door with its casing and the floor at its foot, from 2.1 m (pass 292: from 1.35 m the white door was the whole frame)
 [node name="shot_insert_pantry__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.200, 1.450, -4.000)
-rotation = Vector3(-0.3277, 1.1004, 0.0)
+position = Vector3(-2.600, 1.450, -3.400)
+rotation = Vector3(-0.1933, 1.0066, 0.0)
 metadata/fov = 40.0
+
 
 
 [node name="shot_insert_doorway__miller_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]

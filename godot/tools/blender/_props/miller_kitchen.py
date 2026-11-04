@@ -453,8 +453,12 @@ def dress_family():
     make_box("Sentinel_Folded", (TX + 0.55, TY - 0.15, top + 0.0075), (0.30, 0.20, 0.015), (0.86, 0.84, 0.78, 1.0))
     make_box("Sentinel_Headline", (TX + 0.55, TY - 0.08, top + 0.0155), (0.22, 0.03, 0.002), (0.28, 0.26, 0.24, 1.0))
     # THE PHOTOGRAPHS fanned on the island ("He looks at the photographs")
+    # (pass 292) each print carries its picture — a darker field inside the
+    # white border — so the fan reads on the quartz instead of white on white
     for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.04, 0.03), (0.08, 0.05))):
         make_box(f"Photographs_{pi}", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))
+        make_box(f"Photographs_{pi}_Picture", (IX + 0.50 + dx, IY - 0.10 + dy, 0.9806 + pi * 0.0012 + 0.0007),
+                 (0.084, 0.13, 0.0004), ((0.36, 0.33, 0.30, 1.0), (0.30, 0.34, 0.40, 1.0), (0.44, 0.38, 0.30, 1.0))[pi])
 
 
 def dress_dawn():

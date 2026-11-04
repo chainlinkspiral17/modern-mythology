@@ -382,17 +382,19 @@ shadow_enabled = false
 omni_range = 4.27
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; the room's one closeup frame (pass 292: down to the basement floor's eye line; it stood at ground level looking at the void)
 [node name="shot_closeup_person__accretion_basement" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(12.000, 1.250, -12.401)
-rotation = Vector3(0.0000, -3.1416, 0.0)
+position = Vector3(12.000, -1.450, -12.400)
+rotation = Vector3(-0.0600, -3.1416, 0.0)
 metadata/fov = 45.0
+
 
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; the room's reverse closeup frame (pass 292: down to the basement floor's eye line, looking back at the door)
 [node name="shot_closeup_person_b__accretion_basement" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(12.357, 1.007, -9.670)
-rotation = Vector3(0.1745, 0.2618, 0.0)
+position = Vector3(12.357, -1.450, -9.670)
+rotation = Vector3(-0.0500, 0.2618, 0.0)
 metadata/fov = 45.0
+
 

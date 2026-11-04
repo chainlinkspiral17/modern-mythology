@@ -5096,16 +5096,12 @@ def build_world_shore_2026_09():
     # Child stands on its mud bank a metre from the water, within the
     # establishing frame. Heights come from the MESH, the bank slopes.)
     cx2, cy2 = 39.6, -133.5
-    base = terrain_surface_z(cx2, cy2)
-    human_figure("Ruins_Child", base_x=cx2, base_y=cy2, base_z=base,
-                 scale=0.62, facing='-Y', body_type='male_avg',
-                 skin_color=skin,
-                 hair_color=(0.14, 0.11, 0.09, 1.0),
-                 jacket_color=(0.55, 0.48, 0.36, 1.0),
-                 pants_color=(0.46, 0.36, 0.26, 1.0),
-                 shoe_color=skin)
-    _mc("Doohickey_Egg", (cx2, cy2 - 0.20, base + 0.80), 0.035, 0.055,
-        (0.06, 0.06, 0.08, 1.0), segments=8)
+    # (2026-11-04, pass 292) the Child and the Frog SPEAK in ch21, so they
+    # are the VN's portraits and are not in the set — a primitive Child
+    # on the bank doubled the portrait in every wreck frame (the Jack
+    # rule, pass 287). The doohickey egg hung at the figure's chest and
+    # went with it (its insert marker came out in pass 291). What stays
+    # is the Child's trace: the stick, the crawdad hole, the footprints.
     hx3, hy3 = cx2 + 0.5, cy2 - 0.7
     _mc("Child_Crawdad_Hole", (hx3, hy3, terrain_surface_z(hx3, hy3) + 0.022), 0.05, 0.010,
         (0.16, 0.12, 0.09, 1.0), segments=8)
@@ -5116,20 +5112,10 @@ def build_world_shore_2026_09():
         _mb(f"Child_Footprint_{fi2}", (fx3, fy3, terrain_surface_z(fx3, fy3) + 0.0165),
             (0.055, 0.095, 0.003), (0.22, 0.17, 0.12, 1.0))
     # ── THE FROG · on the paddlebox top (z 2.30) ──
-    frog_green = (0.30, 0.42, 0.28, 1.0)
-    _mc("Frog_King_Body", (42.2, -124.0, 2.575), 0.30, 0.55, frog_green, segments=12)
-    _mc("Frog_King_Head", (42.2, -124.0, 2.980), 0.22, 0.25,
-        (0.34, 0.46, 0.30, 1.0), segments=12)
-    for si2 in (-1, 1):
-        _mc(f"Frog_King_Eye_{'L' if si2 < 0 else 'R'}",
-            (42.2 + 0.10 * si2, -124.14, 3.135), 0.050, 0.060,
-            (0.88, 0.86, 0.70, 1.0), segments=8)
-    _mc("Frog_King_Hat_Brim", (42.2, -124.0, 3.200), 0.19, 0.030,
-        (0.58, 0.46, 0.30, 1.0), segments=10)
-    _mc("Frog_King_Hat_Crown", (42.2, -124.0, 3.275), 0.13, 0.120,
-        (0.52, 0.40, 0.26, 1.0), segments=10)
-    _mc("Frog_King_Cigarette", (41.93, -124.0, 2.95), 0.010, 0.080,
-        (0.92, 0.90, 0.84, 1.0), axis='X', segments=6)
+    # (2026-11-04, pass 292) the Frog's primitive (body, head, eyes, cork
+    # hat, cigarette) is out for the same reason as the Child's: the Frog
+    # speaks, so the VN's portrait carries him; shot_closeup_frog frames
+    # his perch on the paddlebox. The smoke ring stays where his mouth was.
     # ── THE SMOKE RING + THE WILDFLOWER ──
     # at the Frog King's mouth, OUTSIDE the hull's box (2026-09-07: it sat
     # inside the Minstral hull bbox and no lens could reach it)

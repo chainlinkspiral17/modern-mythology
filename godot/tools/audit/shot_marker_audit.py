@@ -111,6 +111,9 @@ EXCLUDE = {
     "paper": ["towel", "magnet", "board"],
     # (2026-11-04) the substation is its building, not its lot's stripes
     "substation": ["stripe", "lot"],
+    # (2026-11-04) the Frog is a speaker (the VN's portrait, out of the set
+    # since pass 292); the Frog Knows Best shop across town is not him
+    "frog": ["shop"],
     "window": ["car", "truck", "van", "cab"],
     "photograph": ["door", "window"],
     "phone": ["booth"],

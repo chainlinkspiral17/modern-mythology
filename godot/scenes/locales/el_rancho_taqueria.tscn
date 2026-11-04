@@ -376,11 +376,12 @@ rotation = Vector3(-0.0826, -1.3481, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; the room's reverse closeup frame (pass 292: level from the long booth's seat, so the bench back is the lower third and the dining room stands behind — pitched down it was a red wall)
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.800, 1.500, -8.450)
-rotation = Vector3(-0.1500, 3.1416, 0.0)
+position = Vector3(-2.800, 1.550, -8.450)
+rotation = Vector3(0.0000, 3.1416, 0.0)
 metadata/fov = 45.0
+
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)

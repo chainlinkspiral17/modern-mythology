@@ -415,17 +415,19 @@ position = Vector3(2.100, 1.200, -2.600)
 rotation = Vector3(-0.5377, -0.5880, 0.0)
 metadata/fov = 40.0
 
-; closeup: Mike's chair at the short end, the east window behind
+; the room's one closeup frame (pass 292: lens 1.15 m, pitched down so the table pendant's shade stays out of the top)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.000, 1.250, -2.750)
-rotation = Vector3(-0.0517, -1.2278, 0.0)
+position = Vector3(2.000, 1.150, -2.750)
+rotation = Vector3(-0.2000, -1.2278, 0.0)
 metadata/fov = 45.0
 
-; reverse: the head of the table, the kitchen behind
+
+; the room's reverse closeup frame (pass 292: lens 1.15 m, pitched down clear of the pendant shade)
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.300, 1.250, -4.200)
-rotation = Vector3(-0.0532, 2.0106, 0.0)
+position = Vector3(3.300, 1.150, -4.200)
+rotation = Vector3(-0.2000, 2.0106, 0.0)
 metadata/fov = 45.0
+
 
 ; ── (2026-10-10) ch11 Kitchen and ch17 Table moved here from miller_kitchen for their 4 AM; the same room's inserts, copied from miller_kitchen.tscn
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]

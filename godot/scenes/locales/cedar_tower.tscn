@@ -517,3 +517,28 @@ omni_range = 5.00
 position = Vector3(35.000, 1.500, 2.000)
 rotation = Vector3(-0.0829, -0.7266, 0.0)
 metadata/fov = 40.0
+
+; closeup (pass 292): Kai out of the wagon, the tower's face behind him, near the preset camera (vol7 ch22 drive)
+[node name="shot_closeup_kai__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(45.500, 1.550, 24.000)
+rotation = Vector3(-0.0048, 0.0160, 0.0)
+metadata/fov = 45.0
+
+
+; closeup (pass 292): Tem at the portal door's window, from the landing where Kai and Finn stand (vol7 ch22 portal)
+[node name="shot_closeup_tem__cedar_tower_portal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 16.550, -0.900)
+rotation = Vector3(-0.0692, 0.2808, 0.0)
+metadata/fov = 45.0
+
+; closeup (pass 292): Aria at the far door, hand on the handle, off-axis so the door and its handle read (vol7 ch22 portal)
+[node name="shot_closeup_aria__cedar_tower_portal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.100, 16.500, -19.000)
+rotation = Vector3(-0.0445, 0.5633, 0.0)
+metadata/fov = 45.0
+
+; closeup (pass 292): Finn at the Tideline Survey poster on the S wall (vol7 ch22 floors)
+[node name="shot_closeup_finn__cedar_tower_studio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 6.500, -2.600)
+rotation = Vector3(-0.0805, -3.1416, 0.0)
+metadata/fov = 45.0

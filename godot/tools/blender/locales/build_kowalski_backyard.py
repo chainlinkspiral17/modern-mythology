@@ -22,6 +22,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.creatures import make_dog
 
 YARD_W = 11.0     # x ∈ [-5.5, 5.5]
 YARD_D = 9.0      # y ∈ [0, 9.0]
@@ -156,12 +157,12 @@ def build_scene_props():
     make_box("Chair_Arm_L", (cx - 0.28, cy, 0.55), (0.05, 0.5, 0.05), COL_CHAIR_FRAME)
     make_box("Chair_Arm_R", (cx + 0.28, cy, 0.55), (0.05, 0.5, 0.05), COL_CHAIR_FRAME)
     # DAISY — crouched BEHIND the chair (north side), head low
-    # belly on the grass (2026-09-23: the crouch hung 11 cm up)
-    make_box("Daisy_Body", (cx, cy + 0.75, 0.15), (0.35, 0.62, 0.30), COL_DAISY)
-    make_box("Daisy_Head", (cx, cy + 0.42, 0.11), (0.22, 0.26, 0.20), COL_DAISY)
-    make_box("Daisy_Ear_L", (cx - 0.10, cy + 0.38, 0.23), (0.05, 0.10, 0.12), (0.5, 0.4, 0.28, 1.0))
-    make_box("Daisy_Ear_R", (cx + 0.10, cy + 0.38, 0.23), (0.05, 0.10, 0.12), (0.5, 0.4, 0.28, 1.0))
-    make_box("Daisy_Tail", (cx, cy + 1.1, 0.19), (0.05, 0.24, 0.05), COL_DAISY)
+    # belly on the grass (2026-09-23: the crouch hung 11 cm up).
+    # (2026-11-04, pass 292) the kitchen's modelled mutt (make_dog, the
+    # sphinx pose) in place of five boxes: facing the chair, her muzzle
+    # 8 cm short of its back, hiding from the butterfly.
+    make_dog("Daisy", cx, cy + 0.75, 0.0, heading='-Y', pose='lying', scale=0.9,
+             coat=COL_DAISY)
     # Maya's patch — a towel flattened in the grass where she lies
     make_box("Maya_Towel", (-1.6, 5.4, 0.005), (0.9, 1.9, 0.015), (0.75, 0.62, 0.30, 1.0))
     # Gracie's patio corner: small table + chair + sketchbook + pencil cup

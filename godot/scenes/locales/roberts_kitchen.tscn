@@ -458,3 +458,9 @@ metadata/fov = 45.0
 position = Vector3(0.000, 1.550, 0.600)
 rotation = Vector3(-0.5750, 3.1416, 0.0)
 metadata/fov = 50.0
+
+; closeup (pass 292): Doug on the porch steps with his duffle, the road behind him (vol5 ch21 world)
+[node name="shot_closeup_doug__roberts_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.000, 1.600, 1.000)
+rotation = Vector3(-0.0907, -3.1416, 0.0)
+metadata/fov = 45.0

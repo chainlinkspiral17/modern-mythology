@@ -158,6 +158,30 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-04 · the closeup scan (pass 292): sculpted figures are invisible to the gates; a speaker's stand-in doubles the portrait
+
+- **What happened:** the closeup frames of vols 5–7 rendered under their
+  presets. Three generic pairs were wrong in ways no gate saw: Bianca's
+  kitchen's pair sat a metre under the table pendant (its shade filled the
+  top third of both frames); the accretion basement's pair stood at ground
+  level, 2.8 m above the basement floor, one looking at the void past the
+  set; the county line station's pair looked away from the station down
+  the empty highway. Each frame was CLEAR and UNOBSTRUCTED by the audits'
+  measure — the obstruction gate reads fill fraction and median depth, not
+  whether the thing in the frame is the room.
+- **Rule:** a generic closeup pair is checked by eye like an insert, under
+  its preset: eye height for the room's posture (1.15 m seated at a table,
+  1.45–1.6 m standing), on the preset's floor (not the scene's ground
+  plane), looking INTO the room's furniture.
+- **Also:** `human_sculpt` figures (graustark's 53) are meshes, not boxes
+  — `geometry_godot` and every box-based gate never see them, so a frame
+  can carry a stand-in that no audit reports. Check a frustum against the
+  builder's spawn table (NPC_SPAWNS, the named figures) when a frame shows
+  one. And when a speaking character's figure comes out of a set, its cue
+  word falls to the next part that carries it: `frog` found the Frog Knows
+  Best shop 437 m away the moment the Frog King's parts were gone. Add the
+  EXCLUDE entry in the same commit.
+
 ### 2026-11-04 · the insert survey (pass 291): what a render of every cue teaches that the gates cannot
 
 - **Method:** every `[shot:insert X]` of vols 5–7 rendered under the view
