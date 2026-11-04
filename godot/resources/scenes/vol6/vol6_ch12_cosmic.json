@@ -276,7 +276,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert thermos]He has, in his hand, a thermos and a copy of yesterday's Sentinel.",
+      "text": "He has, in his hand, a thermos and a copy of yesterday's Sentinel.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/055.ogg"
     },
     {
@@ -1287,7 +1287,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert thermos]He comes out of the back office. He has his thermos and his Sentinel. He has the green folder with the Friday invoice now timestamped and filed.",
+      "text": "He comes out of the back office. He has his thermos and his Sentinel. He has the green folder with the Friday invoice now timestamped and filed.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/230.mp3"
     },
     {

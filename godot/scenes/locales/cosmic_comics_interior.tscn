@@ -760,16 +760,11 @@ metadata/fov = 30.0
 
 
 [node name="shot_insert_drawer__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.170, 1.372, -8.629)
-rotation = Vector3(-0.2618, 1.5400, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.500, 1.150, -11.300)
+rotation = Vector3(-0.4227, -1.0050, 0.0)
+metadata/fov = 30.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_thermos__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.360, 0.367, -6.074)
-rotation = Vector3(-0.2618, 0.2035, 0.0)
-metadata/fov = 35.0
-
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_register__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.286, 1.660, -3.720)
@@ -813,9 +808,9 @@ rotation = Vector3(-0.2618, 0.7831, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_rack__cosmic_comics_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.855, 0.907, -3.367)
-rotation = Vector3(-0.2618, 2.3701, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.300, 1.500, -3.900)
+rotation = Vector3(-0.3638, 2.3562, 0.0)
+metadata/fov = 40.0
 
 
 

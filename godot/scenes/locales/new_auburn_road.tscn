@@ -473,6 +473,13 @@ rotation = Vector3(0.0000, 2.0944, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Cypress — twelve rooms in a long L, three cars, Room 7 lit
+; (2026-11-04) "The Cypress is ... a motel from the 1970s, single-story, twelve
+; rooms in a long L": the L from the road (the `cypress` cue found a tree)
+[node name="shot_insert_motel__cypress_motel" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.000, 1.600, -56.000)
+rotation = Vector3(-0.0040, 0.6999, 0.0)
+metadata/fov = 50.0
+
 [node name="shot_insert_cypress" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.294, 2.317, -59.794)
 rotation = Vector3(0.4363, -2.3562, 0.0)
