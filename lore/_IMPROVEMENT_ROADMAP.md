@@ -3835,6 +3835,8 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-04 · pass 290: the skatepark's street; Halloween on Nick's street; the patio door's spill; the fallen-in house framed.**
+- **skatepark (vol1 ch2):** the wide looked over the chain-link at bare ground to a roofline 55 m out. Past the fence now: the lawn strip, the walk, the curb, the street and nine houses across it (three `front` views along the fence line), two cars at the near curb, and the fence turned down the park's E side, which the lens looks toward. The text gives only "EXT. THE SKATEPARK — DAY": set dressing, no canon.
 **2026-11-04 · pass 289: the skate pool's coping rounds the corners; the office's seam as one line.**
 - **skatepark (vol1 ch2), pool draft 5:** the steel coping bends with the bowl: each run stops a metre short of the corner and six short pieces follow the corner's quarter circle (it met square over a rounded corner). A thin cap band tops each corner fill up to the slab, so the deck's inside corner is flush under the coping.
   - furniture_grammar's INTRA count on the set is 4 (the fan wedges of each rounded corner share the corner point). Pre-existing since draft 3, surfaced by pass 287's recorder fix; the count is not a gate (the suite carries 292 such fan joints).

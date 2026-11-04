@@ -256,6 +256,27 @@ def build_perimeter():
     make_box("Tag_B", (-8.45, 1.68, 0.92), (0.34, 0.02, 0.18), COL_TAG_B)
 
 
+def build_street_2026_11():
+    """(2026-11-04) the fence line and the street beyond, for the establish.
+    The wide looked over the chain-link at bare ground to a roofline 55 m
+    out. A municipal park sits on a street: past the fence a lawn strip, the
+    walk, the curb, the street, and the houses across it (three `front`
+    views along the fence line, nine houses), two cars at the near curb,
+    and the fence turned down the park's E side (the lens looks NE)."""
+    from _props.views import make_view
+    from _props.vehicles import make_car
+    for k, cx_ in enumerate((-24.0, 0.0, 24.0)):
+        make_view(f"View_N_{k}", "N", 12.5, cx_, kind="front", ground_z=0.0, seed=5 + k * 3)
+    for k, (cxp, col) in enumerate(((-13.5, (0.62, 0.60, 0.54, 1.0)), (7.0, (0.26, 0.30, 0.38, 1.0)))):
+        make_car(f"Street_Parked_Car_{k}", cxp, 12.5 + 10.85, 4.6, col, along="X")
+    # the E fence run, from the park's S edge to the N fence's E end
+    for i in range(6):
+        fy = -2.5 + i * 3.0
+        make_cyl(f"Fence_E_Post_{i}", (12.25, fy, 0.9), 0.05, 1.8, COL_FENCE, segments=6)
+    make_cyl("Fence_E_TopRail", (12.25, 5.0, 1.78), 0.035, 15.0, COL_FENCE, segments=6, axis='Y')
+    make_box("Fence_E_Mesh", (12.25, 5.0, 0.9), (0.02, 15.0, 1.7), (0.55, 0.57, 0.58, 0.35))
+
+
 def build_backdrop():
     # Trees over the fence line
     spots = [(-10.0, 14.5), (-5.0, 15.5), (0.5, 14.8), (6.0, 15.2), (10.5, 14.3)]
@@ -275,6 +296,7 @@ def main():
     build_features()
     build_perimeter()
     build_backdrop()
+    build_street_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/skatepark.glb"))
     print(f"\n[build_skatepark] exporting to {out}")
