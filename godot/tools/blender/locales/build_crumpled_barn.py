@@ -235,8 +235,18 @@ def build_interior():
     # slumped onto the stage, torso to boards (2026-09-23: hung 5 cm over it)
     make_box("Jiggles_Hip_Sag", (cbx + 0.06, cby + 0.06, 0.865), (0.13, 0.16, 0.17),
              (0.48, 0.36, 0.26, 1.0))
-    make_cyl("Jiggles_Head", (cbx + 0.14, cby - 0.09, 1.30), 0.07, 0.12,
-             (0.78, 0.68, 0.55, 1.0), segments=8)
+    # (2026-11-04, draft 9) "His head came to rest against his shoulder":
+    # the head and everything on it lean 0.55 rad toward the left shoulder
+    # about the neck (a tube along the tilted axis; the can stood upright)
+    _JP = (cbx + 0.14, cby - 0.09, 1.22)                 # the neck, the tilt's pivot
+    _JR = 0.55
+
+    def _jt(pt):
+        dy, dz = pt[1] - _JP[1], pt[2] - _JP[2]
+        c_, s_ = math.cos(_JR), math.sin(_JR)
+        return (pt[0], _JP[1] + dy * c_ - dz * s_, _JP[2] + dy * s_ + dz * c_)
+    make_tube("Jiggles_Head", [_jt((cbx + 0.14, cby - 0.09, 1.24)), _jt((cbx + 0.14, cby - 0.09, 1.36))], 0.07,
+              (0.78, 0.68, 0.55, 1.0), segments=10)
     make_box("Jiggles_Arm_L", (cbx + 0.04, cby - 0.115, 1.02), (0.05, 0.05, 0.26),   # at the shoulder
              (0.56, 0.44, 0.30, 1.0))
     make_box("Jiggles_Arm_R", (cbx + 0.04, cby + 0.115, 1.12), (0.05, 0.05, 0.22),
@@ -249,17 +259,18 @@ def build_interior():
     hx_, hy_, hz_ = cbx + 0.14, cby - 0.09, 1.30
     fy = hy_ + 0.07                                   # the head's N face
     ink, red = (0.10, 0.08, 0.08, 1.0), (0.72, 0.12, 0.10, 1.0)
+    # (draft 9) every part is placed upright, then leaned with the head
     for sgn, tag in ((-1, "L"), (1, "R")):
-        make_rot_box(f"Jiggles_Eye_{tag}", (hx_ + sgn * 0.028, fy + 0.003, 1.335), (0.026, 0.006, 0.009), ink, roll=sgn * 0.35)
-        make_box(f"Jiggles_Brow_{tag}", (hx_ + sgn * 0.028, fy + 0.003, 1.352), (0.024, 0.005, 0.005), ink)
-        make_box(f"Jiggles_Cheek_{tag}", (hx_ + sgn * 0.045, fy + 0.002, 1.295), (0.016, 0.004, 0.014), (0.80, 0.42, 0.40, 1.0))
-    make_blob("Jiggles_Nose", (hx_, fy + 0.008, 1.312), 0.013, red, noise=0.1, seed=71)
-    make_box("Jiggles_Grin", (hx_, fy + 0.003, 1.262), (0.052, 0.006, 0.010), red)
+        make_rot_box(f"Jiggles_Eye_{tag}", _jt((hx_ + sgn * 0.028, fy + 0.003, 1.335)), (0.026, 0.006, 0.009), ink, roll=sgn * 0.35 + _JR)
+        make_rot_box(f"Jiggles_Brow_{tag}", _jt((hx_ + sgn * 0.028, fy + 0.003, 1.352)), (0.024, 0.005, 0.005), ink, roll=_JR)
+        make_rot_box(f"Jiggles_Cheek_{tag}", _jt((hx_ + sgn * 0.045, fy + 0.002, 1.295)), (0.016, 0.004, 0.014), (0.80, 0.42, 0.40, 1.0), roll=_JR)
+    make_blob("Jiggles_Nose", _jt((hx_, fy + 0.008, 1.312)), 0.013, red, noise=0.1, seed=71)
+    make_rot_box("Jiggles_Grin", _jt((hx_, fy + 0.003, 1.262)), (0.052, 0.006, 0.010), red, roll=_JR)
     for sgn, tag in ((-1, "L"), (1, "R")):
-        make_rot_box(f"Jiggles_Grin_End_{tag}", (hx_ + sgn * 0.036, fy + 0.003, 1.272), (0.024, 0.006, 0.009), red, roll=-sgn * 0.7)
-    make_cyl("Jiggles_Bowler_Brim", (hx_, hy_, 1.37), 0.085, 0.012, ink, segments=14)
-    make_cyl("Jiggles_Bowler_Crown", (hx_, hy_, 1.405), 0.058, 0.058, ink, segments=14)
-    make_cyl("Jiggles_Bowler_Band", (hx_, hy_, 1.385), 0.060, 0.012, red, segments=14)
+        make_rot_box(f"Jiggles_Grin_End_{tag}", _jt((hx_ + sgn * 0.036, fy + 0.003, 1.272)), (0.024, 0.006, 0.009), red, roll=-sgn * 0.7 + _JR)
+    make_tube("Jiggles_Bowler_Brim", [_jt((hx_, hy_, 1.364)), _jt((hx_, hy_, 1.376))], 0.085, ink, segments=14)
+    make_tube("Jiggles_Bowler_Crown", [_jt((hx_, hy_, 1.376)), _jt((hx_, hy_, 1.434))], 0.058, ink, segments=14)
+    make_tube("Jiggles_Bowler_Band", [_jt((hx_, hy_, 1.379)), _jt((hx_, hy_, 1.391))], 0.060, red, segments=14)
     # his juggling clubs: one standing on its base by his hip, two lying on
     # the stage where the performance left them (white, a red band, a dark
     # handle, a white knob)
