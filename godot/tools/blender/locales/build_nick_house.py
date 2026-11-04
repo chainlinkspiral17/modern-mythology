@@ -429,6 +429,37 @@ def build_street():
         for j, (ox, r) in enumerate(((-0.90, 0.16), (-0.64, 0.12), (0.88, 0.15))):   # clear of the door
             make_blob(f"Pumpkin_{k}_{j}", (dx_ + ox, -1.45, 0.16 + r * 0.8), r, (0.90, 0.46, 0.10, 1.0), noise=0.1, seed=k * 3 + j, squash=0.8)
             make_box(f"Pumpkin_{k}_{j}_Face_Glow", (dx_ + ox, -1.45 - r * 0.95, 0.16 + r * 0.85), (r * 0.9, 0.012, r * 0.5), (1.0, 0.74, 0.30, 1.0))
+    # (2026-11-04) the neighbours' decorations, the contrast grandma's dark
+    # house stands against ("their yearly Halloween decorations became a
+    # memory"): a string of orange and purple lights along the W house's
+    # eave, a cardboard skeleton hung on the E house's door
+    for k in range(22):
+        lx = -26.0 + k * 0.5
+        make_blob(f"Neighbor_Lights_0_{k}_Glow", (lx, -0.57, 2.92 - 0.06 * (k % 2)), 0.05,
+                  ((1.0, 0.56, 0.12, 1.0), (0.62, 0.30, 0.86, 1.0))[k % 2], noise=0.0, seed=40 + k)
+    make_box("Neighbor_Lights_0_Wire", (-20.75, -0.512, 2.96), (10.6, 0.016, 0.01), (0.12, 0.10, 0.10, 1.0))   # on the eave's face
+    sk_x, sk_y = 10.9, -0.545                        # the E house's front, at its W corner (its door is past the frame's edge)
+    bone = (0.92, 0.92, 0.88, 1.0)
+    make_blob("Neighbor_Skeleton_Skull", (sk_x, sk_y - 0.02, 1.84), 0.075, bone, noise=0.05, seed=61, squash=1.1)
+    make_box("Neighbor_Skeleton_Eyes", (sk_x, sk_y - 0.10, 1.85), (0.09, 0.006, 0.025), (0.10, 0.08, 0.08, 1.0))
+    make_box("Neighbor_Skeleton_Spine", (sk_x, sk_y - 0.01, 1.45), (0.04, 0.008, 0.62), bone)
+    for j in range(4):
+        make_box(f"Neighbor_Skeleton_Rib_{j}", (sk_x, sk_y - 0.012, 1.66 - j * 0.08), (0.30 - j * 0.03, 0.008, 0.025), bone)
+    make_box("Neighbor_Skeleton_Pelvis", (sk_x, sk_y - 0.01, 1.14), (0.24, 0.008, 0.10), bone)
+    for sgn, tag in ((-1, "L"), (1, "R")):
+        make_rot_box(f"Neighbor_Skeleton_Arm_{tag}", (sk_x + sgn * 0.20, sk_y - 0.01, 1.48), (0.035, 0.008, 0.46), bone, pitch=sgn * 0.35)
+        make_rot_box(f"Neighbor_Skeleton_Leg_{tag}", (sk_x + sgn * 0.09, sk_y - 0.01, 0.80), (0.04, 0.008, 0.56), bone, pitch=sgn * 0.10)
+    # fall: leaves on the sidewalk, grandma's walk and the front lawn
+    leaf_cols = ((0.62, 0.40, 0.14, 1.0), (0.70, 0.52, 0.18, 1.0), (0.48, 0.30, 0.14, 1.0), (0.56, 0.46, 0.20, 1.0))
+    for k in range(44):
+        r1, r2 = ((k * 37) % 101) / 100.0, ((k * 59 + 13) % 101) / 100.0
+        if k < 18:
+            lx, ly, lz = -8.0 + 16.0 * r1, -7.55 + 1.5 * r2, 0.123       # the sidewalk
+        elif k < 26:
+            lx, ly, lz = -1.45 + 0.9 * r1, -5.9 + 5.6 * r2, 0.012         # the front walk
+        else:
+            lx, ly, lz = -9.0 + 18.0 * r1, -6.0 + 5.8 * r2, 0.004         # the front lawn
+        make_rot_box(f"Leaf_{k}", (lx, ly, lz), (0.09, 0.065, 0.004), leaf_cols[k % 4], yaw=r1 * 6.28)
     # two trick-or-treaters on the sidewalk, going past for the lit house
     from _props.figures import make_standing_figure
     make_standing_figure("Treat_Kid_0", 4.2, -6.9, heading=1.571, h=1.18, coat=(0.94, 0.94, 0.92, 1.0), dress=(0.94, 0.94, 0.92, 1.0),
