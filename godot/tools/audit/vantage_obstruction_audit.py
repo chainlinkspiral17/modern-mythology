@@ -76,6 +76,10 @@ DELIBERATE_MARKERS = {
     # (2026-11-04) "He pulls into his driveway": the driveway WITH the sedan and
     # Jim's truck on it, from the lawn; the slab's centre is under the sedan
     ("henderson_porch_front", "shot_insert_driveway__henderson_porch_front"),
+    # (2026-11-04) "The substation is a flat-roofed beige building ... off the
+    # Bypass": the building from the south of its lot, the Miller truck and the
+    # lot's cars at its door are the frame
+    ("new_auburn_road", "shot_insert_substation__new_auburn_bypass"),
     ("miller_back_porch", "shot_insert_myrtle"), ("new_auburn_road", "shot_insert_cypress"),
     # (2026-10-04) inside Miriam's Subaru the back-seat close-ups are at
     # arm's length by design: the gap between the front seats Nicola

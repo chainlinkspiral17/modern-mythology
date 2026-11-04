@@ -463,11 +463,6 @@ position = Vector3(-3.000, 2.000, -6.900)
 rotation = Vector3(0.5386, 0.1089, 0.0)
 metadata/fov = 34.0
 
-; insert: his hands on the sticky tabletop (Strength)
-[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.550, 1.300, -1.050)
-rotation = Vector3(-0.5511, 1.2526, 0.0)
-metadata/fov = 42.0
 
 ; insert: the chalk table — Faust's drawing, the shots (vol1)
 [node name="shot_insert_chalk" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -109,6 +109,8 @@ EXCLUDE = {
     "sink": ["rug", "ring"],
     # (2026-11-04) "He looks at the paper" is the newspaper
     "paper": ["towel", "magnet", "board"],
+    # (2026-11-04) the substation is its building, not its lot's stripes
+    "substation": ["stripe", "lot"],
     "window": ["car", "truck", "van", "cab"],
     "photograph": ["door", "window"],
     "phone": ["booth"],

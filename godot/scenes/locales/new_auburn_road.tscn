@@ -466,11 +466,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, -41.5)
 rotation = Vector3(-0.1626, 3.0119, 0.0)
 metadata/fov = 42.0
 
-; insert: Jesse's phone, lit, on the Civic's dash at ten twenty-three
-[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.062, 1.110, -39.619)
-rotation = Vector3(0.0000, 2.0944, 0.0)
-metadata/fov = 42.0
+
 
 ; insert: the Cypress — twelve rooms in a long L, three cars, Room 7 lit
 ; (2026-11-04) "The Cypress is ... a motel from the 1970s, single-story, twelve
@@ -646,28 +642,20 @@ position = Vector3(10.617, 2.051, -42.025)
 rotation = Vector3(-0.2618, -1.4408, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the dark sedan's plate in the sodium light (it framed the Civic's own plate)
 [node name="shot_insert_plate__new_auburn_strip_mall" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(6.877, 0.742, -40.881)
-rotation = Vector3(-0.2618, -2.7212, 0.0)
-metadata/fov = 35.0
+position = Vector3(28.000, 0.900, -48.300)
+rotation = Vector3(-0.1752, -3.1416, 0.0)
+metadata/fov = 34.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_drive__new_auburn_strip_mall" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.962, 0.441, -14.669)
-rotation = Vector3(-0.5236, 2.7993, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_drive__new_auburn_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.430, 0.441, -14.672)
-rotation = Vector3(-0.5236, -2.8123, 0.0)
-metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+
+; insert: the substation — the flat-roofed beige building from the south of its lot, the Miller truck at its door (the text pass had a lot stripe)
 [node name="shot_insert_substation__new_auburn_bypass" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-13.301, 0.442, -102.127)
-rotation = Vector3(-0.5236, 1.7506, 0.0)
-metadata/fov = 35.0
+position = Vector3(-6.500, 1.700, -113.000)
+rotation = Vector3(0.0093, 2.2236, 0.0)
+metadata/fov = 48.0
+
 
 
