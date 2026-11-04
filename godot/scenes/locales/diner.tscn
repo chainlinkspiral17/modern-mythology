@@ -737,9 +737,9 @@ rotation = Vector3(0.155, -1.5708, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_booth6" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-6.2, 1.45, -3.75)
-rotation = Vector3(0.7782, 1.5708, 0.0)
-metadata/fov = 38.0
+position = Vector3(-5.600, 1.500, -3.750)
+rotation = Vector3(-0.1745, 1.7301, 0.0)
+metadata/fov = 44.0
 
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-6.7, 1.45, -3.55)
@@ -916,9 +916,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_counter__diner_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.900, 0.392, 2.294)
-rotation = Vector3(-0.2618, -3.0154, 0.0)
-metadata/fov = 35.0
+position = Vector3(-0.800, 1.550, 1.900)
+rotation = Vector3(-0.3863, 2.4330, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_machine__diner_interior" type="Marker3D" parent="." groups=["vn_shot"]]
