@@ -571,11 +571,11 @@ rotation = Vector3(-0.0906, 0.9576, 0.0)
 metadata/fov = 42.0
 
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the dumpster Jesse leans on, whole, from across the back lot (2026-11-04: it looked down at a skid and its side filled the frame)
 [node name="shot_insert_dumpster__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.971, 1.255, -12.673)
-rotation = Vector3(-0.4148, 0.8694, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.600, 1.500, -12.200)
+rotation = Vector3(-0.1962, 1.1071, 0.0)
+metadata/fov = 44.0
 
 [node name="shot_insert_station__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.194, 1.727, -5.044)

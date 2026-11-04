@@ -3868,7 +3868,11 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   - **Re-placed:** the Gas & Go's `pickup` ("a black pickup truck with Louisiana plates pulls into the lot": the truck from the store's door; it looked straight down at a wheel).
   - **Cues removed, markers with them:** the three hundred-dollar bills handed over in the car, Doyle holding up the courtesy badge, Diego "in the blanket, on the floor", and Skip looking up from (and going back to) his phone — all people and their hands.
   - **Left as is:** the restroom `tile` (the wall Boyd leans on), the New Orleans room's `mirror` (a flat panel that cannot reflect; it reads as its frame).
-- **Draft N+1:** the rest of the survey (frames 652–782, ~40 sets); then the same scan for the closeups; graustark's primitive figures (every frame near one shows a stand-in); the backyard Daisy modelled like the kitchen's; the Millers' kitchen key brought down so the north counter keeps its colour.
+- **Frames 652–666** (the nightmare cell, the Pit Stop's back booth and back lot):
+  - **Re-placed:** the back lot's `dumpster` ("He leans against the dumpster": the whole dumpster from across the lot; it looked down at a skid and its side filled the frame).
+  - **Lit:** the cell's wall device has its LED as a dull red point in the corner ("The wall device, in its corner, pulses once"); the insert was a black box on a black wall.
+  - **Left as is:** the cell's `calendar` (May's page on the table, its red dots), the booth's `bill`, the lot's `prints` (the eight-by-tens and their bag).
+- **Draft N+1:** the rest of the survey (frames 667–782, ~35 sets); then the same scan for the closeups; graustark's primitive figures (every frame near one shows a stand-in); the backyard Daisy modelled like the kitchen's; the Millers' kitchen key brought down so the north counter keeps its colour.
 
 **2026-11-04 · pass 290: the skatepark's street; Halloween on Nick's street; the patio door's spill; the fallen-in house framed.**
 - **little_switzerland (vol2 ch1), draft 2:** "reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign": the highway itself at the lane's foot: two lanes of asphalt past the sign with a yellow centre dash, white fog lines and gravel shoulders, the lane's pebble flared where it meets the road; the lens steps back 4 m onto the far shoulder so the near lane and the fog line are the foreground. The road runs east on the flat only (its west run clipped the valley slope and the far ridge: 14 clips, fixed before the commit).
