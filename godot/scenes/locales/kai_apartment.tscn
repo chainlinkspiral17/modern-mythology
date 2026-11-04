@@ -360,14 +360,14 @@ light_energy = 1.30
 shadow_enabled = false
 omni_range = 2.32
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the dresser's bottom drawer (the thermal at the bottom of it), from the room side
 [node name="shot_insert_drawer__kai_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.636, 0.810, -2.471)
-rotation = Vector3(-0.2618, -0.0765, 0.0)
-metadata/fov = 35.0
+position = Vector3(1.000, 0.750, -3.000)
+rotation = Vector3(-0.2609, -0.8064, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_clock__kai_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.019, 0.612, -1.120)
-rotation = Vector3(-0.2618, 1.4056, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.950, 1.600, -3.300)
+rotation = Vector3(0.2742, 0.0000, 0.0)
+metadata/fov = 30.0

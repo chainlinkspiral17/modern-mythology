@@ -480,11 +480,11 @@ metadata/fov = 50.0
 
 ; insert: the NexCorp van, engine running, facing her (ch15)
 ; (2026-10-27: the van parks at the curb of Linden past the real-scale lot;
-; the marker keeps its 3.35 m to it)
+; insert: the NexCorp van at the dental lot, three-quarter (its flat side filled the old frame)
 [node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.900, 1.798, 18.080)
-rotation = Vector3(-0.2618, -3.1416, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.500, 1.700, 17.400)
+rotation = Vector3(-0.1604, -2.5536, 0.0)
+metadata/fov = 44.0
 
 ; insert: the lot's far corner from the counter, through the east window and
 ; its decal layers (ch15: "Sam, at the counter, looks up because the car comes
@@ -610,12 +610,6 @@ metadata/fov = 45.0
 position = Vector3(1.340, 1.612, -4.824)
 rotation = Vector3(-0.2618, -2.0944, 0.0)
 metadata/fov = 45.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_pocket__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.040, 1.390, -3.537)
-rotation = Vector3(-0.2618, -0.7955, 0.0)
-metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__kwik_stop_hood" type="Marker3D" parent="." groups=["vn_shot"]]

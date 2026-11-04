@@ -104,7 +104,9 @@ EXCLUDE = {
     # (2026-10-27) the lot frame looks for the car in its corner, not the
     # copy on the tow truck's deck (Car_PeugeotTowed_*)
     "lot": ["towed"],
-    "door": ["fridge", "cabinet", "cab", "oven", "microwave", "dishwasher", "stall", "car", "truck", "van", "locker", "safe"],
+    "door": ["fridge", "cabinet", "cab", "oven", "microwave", "dishwasher", "stall", "car", "truck", "van", "locker", "safe", "bell"],
+    # (2026-11-04) the rug in front of the sink is not the sink
+    "sink": ["rug", "ring"],
     "window": ["car", "truck", "van", "cab"],
     "photograph": ["door", "window"],
     "phone": ["booth"],

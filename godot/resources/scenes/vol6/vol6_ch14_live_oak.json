@@ -686,7 +686,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bridge]He thinks: that's the bridge. He thinks: I'll have it set to music by Friday.",
+      "text": "He thinks: that's the bridge. He thinks: I'll have it set to music by Friday.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/113.mp3"
     },
     {
@@ -750,7 +750,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bridge]He thinks, the bridge is about the parking lot.",
+      "text": "He thinks, the bridge is about the parking lot.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/126.mp3"
     },
     {

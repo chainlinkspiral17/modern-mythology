@@ -54,7 +54,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bridge]The bridge, with the four chords, is — by his own internal sense which is, by August, becoming a thing he can trust — the bridge.",
+      "text": "The bridge, with the four chords, is — by his own internal sense which is, by August, becoming a thing he can trust — the bridge.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/010.mp3"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bridge]He plays the bridge through twice more.",
+      "text": "He plays the bridge through twice more.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/013.mp3"
     },
     {

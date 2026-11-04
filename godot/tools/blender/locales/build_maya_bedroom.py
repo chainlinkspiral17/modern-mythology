@@ -131,7 +131,9 @@ def build_posters():
                  (0.004, 0.012, 0.07), (0.92, 0.88, 0.78, 1.0))
 
 def build_rug():
-    make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_ACCENT)
+    # pulled back off the loose board (2026-11-04): centred it covered the cavity
+    # and the envelope, which no frame ever showed
+    make_cyl("Rug", (0.0, 1.95, 0.012), 1.20, 0.005, COL_ACCENT)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
@@ -231,16 +233,16 @@ def build_hero_props():
         make_box(f"Plank_Seam_{i}", (0.0, py, 0.004), (4.0, 0.012, 0.004), pine_dk)
     make_box("Plank_Field", (0.0, 2.5, 0.002), (4.0, 5.0, 0.003), pine)
     # The loose board, lifted a crack at one end
-    make_box("Loose_Board", (0.0, 3.30, 0.020), (0.90, 0.13, 0.018), pine_dk)
+    make_box("Loose_Board", (0.0, 3.50, 0.020), (0.90, 0.13, 0.018), pine_dk)   # set aside beside its hole (2026-11-04: it lay over the envelope)
     # The cavity + the envelope
     # (2026-09-24: the cavity and the envelope were INSIDE the floor slab,
     # under the plank field — never visible. The dark of the gap and the
     # envelope now lie on the planks, under the lifted board.)
     make_box("Cavity_Void", (0.0, 3.30, 0.004), (0.42, 0.125, 0.001), (0.10, 0.08, 0.06, 1.0))
-    make_box("Manila_Envelope", (0.0, 3.30, 0.0075), (0.26, 0.11, 0.006), (0.82, 0.72, 0.50, 1.0))
+    make_box("Manila_Envelope", (0.0, 3.30, 0.0075), (0.26, 0.11, 0.006), (0.92, 0.86, 0.66, 1.0))   # paler than the pine (2026-11-04: it vanished into the planks)
     # Rug re-centred so it covers the board when smoothed back
     # (the build's Rug cyl stays; this ring marks the pulled-back lip)
-    make_cyl("Rug_Fold", (0.0, 3.02, 0.018), 0.55, 0.012, (0.72, 0.42, 0.44, 1.0), segments=14)
+    make_cyl("Rug_Fold", (0.0, 2.75, 0.018), 0.40, 0.012, (0.72, 0.42, 0.44, 1.0), segments=14)
     # The box fan by the window ("The fan is on.")
     make_chamfer_box("Box_Fan", (-1.30, 4.40, 0.24), (0.44, 0.16, 0.44), (0.80, 0.78, 0.74, 1.0))
     make_cyl("Box_Fan_Grille", (-1.30, 4.31, 0.24), 0.17, 0.02, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=12)

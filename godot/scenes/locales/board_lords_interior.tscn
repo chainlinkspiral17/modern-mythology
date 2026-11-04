@@ -202,9 +202,11 @@ shadow_enabled = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95, 1.95, -1.64)
 rotation = Vector3(-0.5246, 1.3378, 0.0)
 
+; insert: the shop's glass front door with its bar (it looked up at the bell's clapper)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -1.40)
-rotation = Vector3(0.5635, 3.1416, 0.0)
+position = Vector3(0.000, 1.500, -2.600)
+rotation = Vector3(-0.1550, -3.1416, 0.0)
+metadata/fov = 44.0
 
 ; (pass 68) the back office's own light: Devon's desk lamp, the bare bulb over the nook
 [node name="Devon_Desk_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]

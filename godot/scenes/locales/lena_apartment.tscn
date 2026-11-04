@@ -525,11 +525,11 @@ position = Vector3(2.205, 1.662, -1.688)
 rotation = Vector3(-0.3347, 2.4158, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the sink bowl (it looked at the rug ring on the floor in front of it)
 [node name="shot_insert_sink__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.590, 0.677, -1.140)
-rotation = Vector3(-0.4799, 1.4057, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.000, 1.450, -1.000)
+rotation = Vector3(-0.4296, 1.3135, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_grinder__lena_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -572,11 +572,11 @@ position = Vector3(-0.492, 1.141, -1.606)
 rotation = Vector3(-0.5236, 1.5818, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the radiator pipe in its corner, the corner in the frame
 [node name="shot_insert_radiator__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.610, 1.512, -0.434)
-rotation = Vector3(-0.2618, -1.8057, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.300, 1.400, -0.900)
+rotation = Vector3(-0.0792, -2.1126, 0.0)
+metadata/fov = 38.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
