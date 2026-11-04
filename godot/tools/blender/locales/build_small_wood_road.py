@@ -209,7 +209,7 @@ def build_fallen_house():
     for di in range(6):
         make_box(f"Fallen_Debris_{di}", (fx - 3.0 + di * 1.3, fy - 4.2 + (di % 2) * 0.8, 0.12), (1.2, 0.3, 0.24), WOOD_GRAY)
     make_blob("Fallen_House_Bramble", (fx - 3.0, fy - 2.6, 1.0), 1.0, (0.30, 0.38, 0.22, 1.0), noise=0.28, seed=91, squash=0.6)
-    make_box("Fallen_House_Path", (9.0, fy + 1.0, 0.004), (10.0, 0.8, 0.008), DIRT)
+    make_box("Ruin_Path", (9.0, fy + 1.0, 0.004), (10.0, 0.8, 0.008), DIRT)
     # the dead snag beside the ruin, the brush that has taken the yard
     make_bare_tree("Snag", fx + 7.5, fy + 5.5, 9.0, seed=3, limbs=6)
     for si, (sx, sy, sh) in enumerate(((fx - 6.5, fy + 4.5, 1.1), (fx + 5.5, fy - 5.0, 0.9), (fx - 6.0, fy - 5.5, 1.3))):

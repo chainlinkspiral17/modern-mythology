@@ -350,6 +350,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0, 1.5, 22.0)
 rotation = Vector3(-0.1, 1.5708, 0.0)
 metadata/fov = 42.0
 
+; (2026-11-04) "the remains of fallen-in houses. Debris of lives lost in
+; transition": the ruin east of the road, from the road's E shoulder (the
+; `house` cue framed the two-storey house west; the ruin had no frame)
+[node name="shot_insert_fallen_house" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.200, 1.500, 16.000)
+rotation = Vector3(0.0051, -2.2915, 0.0)
+metadata/fov = 36.0
+
 ; insert: the chicken coop behind the small house
 [node name="shot_insert_coop" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.327, 1.693, 27.034)
