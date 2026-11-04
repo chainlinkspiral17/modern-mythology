@@ -764,10 +764,13 @@ position = Vector3(-194.000, 1.300, -180.200)
 rotation = Vector3(-0.0702, -2.2565, 0.0)
 metadata/fov = 42.0
 
+; closeup: Maya at the lemonade table, from the church side looking over its east end to the lawn (pass 292: from the east the parishioners stood in her frame; straight back, the church attendee did)
 [node name="shot_closeup_maya__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-191.800, 1.150, -178.400)
-rotation = Vector3(-0.0840, 0.9048, 0.0)
+position = Vector3(-194.600, 1.150, -182.600)
+rotation = Vector3(-0.0987, -2.6780, 0.0)
 metadata/fov = 42.0
+
+
 
 [node name="shot_insert_notebook__graustark_armory_park" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(229.150, 4.250, 343.600)

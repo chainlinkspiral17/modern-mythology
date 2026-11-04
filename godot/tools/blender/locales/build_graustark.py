@@ -6006,9 +6006,12 @@ def build_st_jude_sunday_2026_10():
     for mi, (mx, my) in enumerate(((-1.6, -1.4), (1.2, -1.8), (-2.4, 0.2), (2.4, 0.6))):
         _mb(f"StJude_Oak_Moss_{mi}", (-213.5 + mx, 180.5 + my, 3.9), (0.22, 0.10, 1.0), (0.56, 0.58, 0.48, 1.0))
     # the small crowd leaving the service
+    # (2026-11-04, pass 292) the two women who stood at the lemonade table
+    # are 3 m up the lawn toward the steps: Maya's closeup is at that table,
+    # and a figure beside a portrait reads as a double.
     for fi, (fx, fy, face, body, jacket, pants, hair) in enumerate((
-            (-193.4, 181.9, '-X', 'female_avg', (0.62, 0.30, 0.44, 1.0), (0.62, 0.30, 0.44, 1.0), (0.82, 0.72, 0.52, 1.0)),
-            (-195.9, 181.9, '+X', 'female_slim', (0.30, 0.42, 0.62, 1.0), (0.30, 0.42, 0.62, 1.0), (0.66, 0.62, 0.58, 1.0)),
+            (-192.4, 184.9, '-X', 'female_avg', (0.62, 0.30, 0.44, 1.0), (0.62, 0.30, 0.44, 1.0), (0.82, 0.72, 0.52, 1.0)),
+            (-196.9, 184.9, '+X', 'female_slim', (0.30, 0.42, 0.62, 1.0), (0.30, 0.42, 0.62, 1.0), (0.66, 0.62, 0.58, 1.0)),
             (-203.9, 178.6, '+X', 'male_avg', (0.16, 0.16, 0.20, 1.0), (0.16, 0.16, 0.20, 1.0), (0.20, 0.16, 0.12, 1.0)),
             (-209.8, 179.2, '+Y', 'male_heavy', (0.40, 0.36, 0.30, 1.0), (0.22, 0.22, 0.26, 1.0), (0.42, 0.40, 0.38, 1.0)))):
         human_figure(f"StJude_Parishioner_{fi}", base_x=fx, base_y=fy, base_z=0.02, scale=1.0, facing=face,

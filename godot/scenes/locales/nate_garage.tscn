@@ -387,11 +387,12 @@ position = Vector3(0.000, 1.600, -1.000)
 rotation = Vector3(-0.0571, -3.1416, 0.0)
 metadata/fov = 60.0
 
-; closeup (driveway): Jesse beside the Civic
+; the drive's closeup frame (pass 292: turned from the Civic's roof edge and the sky to the garage door up the drive)
 [node name="shot_closeup_person__nate_driveway" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 1.550, 5.000)
-rotation = Vector3(-0.0293, 1.9296, 0.0)
+rotation = Vector3(-0.0452, 0.1087, 0.0)
 metadata/fov = 45.0
+
 
 ; closeup (driveway): the reverse, Em
 [node name="shot_closeup_person_b__nate_driveway" type="Marker3D" parent="." groups=["vn_shot"]]

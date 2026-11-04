@@ -488,11 +488,12 @@ metadata/fov = 32.0
 
 
 
-; closeup: Mike's chair at the short end, the east window behind
+; the room's one closeup frame (pass 292: lens 1.15 m, pitched down clear of the table pendant's shade)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.000, 1.250, -2.750)
-rotation = Vector3(-0.0517, -1.2278, 0.0)
+position = Vector3(2.000, 1.150, -2.750)
+rotation = Vector3(-0.2000, -1.2278, 0.0)
 metadata/fov = 45.0
+
 
 ; reverse: the head of the table, the kitchen behind
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -515,11 +516,12 @@ position = Vector3(2.400, 1.400, -2.450)
 rotation = Vector3(-0.1453, -0.9812, 0.0)
 metadata/fov = 42.0
 
-; closeup: Bianca at the long side (her old chair), from the island side of the table
+; closeup: Bianca at the table (pass 292: lens 1.15 m, pitched down so the table pendant's shade stays out of the top)
 [node name="shot_closeup_bianca" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.000, 1.400, -4.450)
-rotation = Vector3(-0.1260, 2.9889, 0.0)
+position = Vector3(3.000, 1.150, -4.450)
+rotation = Vector3(-0.2000, 2.9889, 0.0)
 metadata/fov = 42.0
+
 
 ; closeup: Sammy at the head of the table, from Mike's end
 [node name="shot_closeup_sammy" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -540,11 +542,12 @@ position = Vector3(-0.400, 1.550, -2.750)
 rotation = Vector3(-0.0692, 0.5880, 0.0)
 metadata/fov = 42.0
 
-; closeup: Eileen Henderson on the table's north long side, from across
+; closeup: Eileen at the table (pass 292: lens 1.15 m, pitched down clear of the pendant shade)
 [node name="shot_closeup_eileen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.750, 1.400, -2.350)
-rotation = Vector3(-0.1697, 0.0286, 0.0)
+position = Vector3(2.750, 1.150, -2.350)
+rotation = Vector3(-0.2000, 0.0286, 0.0)
 metadata/fov = 42.0
+
 
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

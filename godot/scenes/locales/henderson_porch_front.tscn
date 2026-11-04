@@ -325,20 +325,23 @@ rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; the room's REVERSE closeup frame (pass 292: turned from the black lawn toward the street lamp's end of the drive, Jim's truck and Ben's under it)
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.125, 1.612, -2.896)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
+rotation = Vector3(-0.2000, -0.3320, 0.0)
 metadata/fov = 45.0
+
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+; (pass 292, 2026-11-04) 1.2 → 5.0, range 4 → 7, 40 cm off the wall: under the night post stack the house front
+; was a black mass with a dim disc in the reverse closeup from the lawn (lighting playbook 2026-11-04)
 [node name="Porch_Lamp_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-0.650, 2.000, -0.060)
+position = Vector3(-0.650, 1.850, -0.460)
 light_color = Color(0.940, 0.840, 0.660, 1)
-light_energy = 1.20
+light_energy = 5.0
 shadow_enabled = false
-omni_range = 4.00
+omni_range = 7.00
 
 ; insert: the driveway from the lawn, the sedan on it and Jim's truck at its curb end, the kitchen window lit (it stood 50 cm from the sedan's door at night: black; from the curb end the truck's bed hid it)
 [node name="shot_insert_driveway__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
