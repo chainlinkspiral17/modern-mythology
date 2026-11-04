@@ -210,6 +210,14 @@ def build_philip_2026_11():
     # two logs burned through and fallen across each other
     make_rot_box(f"Philip_Fire_Log_0{T}", (fx - 0.05, fy, 0.10), (0.85, 0.12, 0.12), char, yaw=0.5)
     make_rot_box(f"Philip_Fire_Log_1{T}", (fx + 0.05, fy + 0.02, 0.21), (0.75, 0.10, 0.10), char, yaw=-0.7)
+    # (2026-11-04, draft 4) the smoke off the embers: a thin column that
+    # leans with the night's offshore breath, thinner and wider as it rises,
+    # translucent (`_Haze`: vapour, hung in the air by design)
+    for k in range(6):
+        h = 0.32 + k * 0.36
+        w = max(0.0, 1.0 - k / 3.0)                 # lit warm by the embers near them, grey above
+        make_blob(f"Philip_Fire_Smoke_Haze_{k}{T}", (fx + 0.10 + k * 0.17, fy - 0.04 + k * 0.05, h), 0.13 + k * 0.045,
+                  (0.56 + 0.22 * w, 0.57 + 0.02 * w, 0.60 - 0.18 * w, 0.34 - k * 0.04), noise=0.30, seed=320 + k, squash=0.75)
     # the friends asleep in their bags, heads to the fire
     bags = (((30.4, 4.9), 0.35, (0.30, 0.34, 0.22, 1.0), (0.46, 0.32, 0.20, 1.0)),
             ((33.7, 5.0), -0.45, (0.50, 0.24, 0.14, 1.0), (0.20, 0.16, 0.12, 1.0)),

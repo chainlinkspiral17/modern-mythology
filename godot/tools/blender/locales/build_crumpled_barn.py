@@ -44,8 +44,8 @@ core with its leaf clusters packed over the dome (_bramble), ivy up the
 gable's boards from the two climbing mounds (_ivy), the hedge leafed the
 same way (from the field they all read as grey boulders). All `_Stock_`,
 joined. Draft 7 targets: the hay door's swung leaf; a crow on the peak; the
-field's ruts to the gate gap; Jiggles' face and juggling pins; the gable's
-outer board lap as real courses; the hill brought down to the collapse so
+Jiggles' face and juggling pins; the gable's
+outer board lap as real courses (the ruts: draft 8, 2026-11-04); the hill brought down to the collapse so
 the barn sits INTO it ("I thought it part of the hill").
 (Old draft 4 targets: the gable's board lap as real courses (make_lap_siding
 in grey), the hay door's swung leaf, the cabinet's levers and buttons as
@@ -80,6 +80,21 @@ COL_SKY = (0.62, 0.63, 0.64, 1.0)        # flat overcast
 def build_field():
     make_box("Field", (0.0, 6.0, 0.0), (34.0, 18.0, 0.05), COL_FIELD)   # to y 15, the hill's foot (draft 7; was to y 21)
     make_box("Yard_Dirt", (0.0, 8.5, 0.01), (10.0, 6.0, 0.05), COL_DIRT)
+    # (2026-11-04, draft 8) the field's ruts to the gate gap: the wagon track
+    # that served the barn, two wheel lines 1.4 m apart worn to dirt, coming
+    # in from the SE (the lens's foreground), bending through the gap in the
+    # fence (x 0, y 3.4) and up the yard to the doorway. Each rut a hair
+    # above the field; the strip between them is the field's own grass.
+    path = ((17.0, -3.4), (12.0, -1.2), (7.5, 0.9), (3.4, 2.5), (0.6, 3.3), (0.0, 4.6), (0.0, 8.4))
+    rut = (0.44, 0.38, 0.28, 1.0)
+    for k in range(len(path) - 1):
+        (ax, ay), (bx, by) = path[k], path[k + 1]
+        ln = math.hypot(bx - ax, by - ay)
+        yaw = math.atan2(by - ay, bx - ax)
+        nx, ny = -math.sin(yaw), math.cos(yaw)
+        for side, tag in ((-1, "L"), (1, "R")):
+            cx, cy = (ax + bx) / 2.0 + side * 0.7 * nx, (ay + by) / 2.0 + side * 0.7 * ny
+            make_rot_box(f"Rut_{tag}_{k}", (cx, cy, 0.03), (ln + 0.24, 0.24, 0.012), rut, yaw=yaw)
 
 
 def build_gable():
