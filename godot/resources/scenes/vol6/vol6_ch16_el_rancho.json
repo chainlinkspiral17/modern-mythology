@@ -383,7 +383,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert five]He pushes a five across the table.",
+      "text": "He pushes a five across the table.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/072.mp3"
     },
     {

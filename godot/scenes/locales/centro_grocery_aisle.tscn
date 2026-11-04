@@ -470,9 +470,9 @@ metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pallets__centro_grocery_aisle" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.677, 0.807, -10.839)
-rotation = Vector3(-0.2618, 1.0335, 0.0)
-metadata/fov = 35.0
+position = Vector3(3.800, 1.500, -8.600)
+rotation = Vector3(-0.3186, 0.4368, 0.0)
+metadata/fov = 38.0
 
 [node name="shot_insert_bale__centro_grocery_aisle" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(4.024, 1.411, -20.228)
@@ -481,9 +481,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_counter__centro_grocery_aisle" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(14.096, 0.672, -8.973)
-rotation = Vector3(-0.2618, -0.6576, 0.0)
-metadata/fov = 35.0
+position = Vector3(7.000, 1.500, -18.200)
+rotation = Vector3(-0.2287, -0.7062, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_coffee__centro_grocery_aisle" type="Marker3D" parent="." groups=["vn_shot"]]

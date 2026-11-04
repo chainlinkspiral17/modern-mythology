@@ -69,6 +69,10 @@ EMBED_TOL = 0.18
 # sky rule and is right to (2026-09-10; each read by hand).
 DELIBERATE_MARKERS = {
     ("cabin_road", "shot_insert_drone"), ("cabin_road", "shot_insert_crow"),
+    # (2026-11-04) "standing by the meat counter": the lens looks at the meat
+    # case's cuts under the glass; the back counter behind it is the audit's
+    # name match, and the case in front of it IS the view
+    ("centro_grocery_aisle", "shot_insert_counter__centro_grocery_aisle"),
     ("miller_back_porch", "shot_insert_myrtle"), ("new_auburn_road", "shot_insert_cypress"),
     # (2026-10-04) inside Miriam's Subaru the back-seat close-ups are at
     # arm's length by design: the gap between the front seats Nicola
