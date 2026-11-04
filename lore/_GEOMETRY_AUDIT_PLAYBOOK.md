@@ -158,6 +158,26 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-04 · a builder helper built on `_gen_prism` must survive the audits' stubs (pass 287)
+
+- **What happened:** the skate pool's sloped wall-base curves use a local
+  `make_sheared_prism` built on `_gen_prism` + `_fix_winding` +
+  `_finalize_mesh`. Under `install_stubs()` `_gen_prism` is a stand-in that
+  does not return `(verts, faces)`; the helper raised inside `main()`, the
+  recorder fell back to running each `build_*` on its own, and everything
+  in `build_features()` after the pool (the rails, the stairs) was never
+  recorded. marker_aim then reported the stair rail's two inserts as aimed
+  at nothing — and only once the builder changed, so the full suite was
+  clean the day before.
+- **Rule:** a builder-local mesh helper that composes the private geometry
+  helpers catches `(TypeError, ValueError)` from them and falls back to the
+  nearest public helper (`make_prism`, `make_box`) so the recorder still
+  gets a box. Check with `P.A.install_stubs(); P.record_builder(path)` —
+  `err` must be None and the count must match the plain run's.
+- **Also:** `HandRail` is one name part to the cue matcher's CamelCase
+  split only when the camel case is clean; `Hand_Rail` is what a cue
+  `hand_rail` finds. Name multi-word parts with underscores.
+
 ### 2026-11-03 · two families that never share a view: EXCLUSIVE, checked against the strip list (pass 285)
 
 **Context:** vol1 ch11's all-night drugstore turns the pharmacy's parking lot into water, in a new view (`drugstore_purgatory`). It needed a fuel dock, a torch and Judgement Day afloat exactly where the lot, its stall lines and its parked cars sit. The view strips the lot and the waterfront is tagged to that view alone, so the two never render together. But prop_overlap_audit reads every box in the builder at once: it reported the dock lamp inside a parked car and the car on the asphalt.
