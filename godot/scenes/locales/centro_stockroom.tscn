@@ -400,10 +400,12 @@ rotation = Vector3(-0.2618, 1.0472, 0.0)
 metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (2026-11-04) from inside the dock door, out over the edge to the apron
+; (it stood behind a bollard, which filled the frame)
 [node name="shot_insert_dock__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.366, 1.478, -7.733)
-rotation = Vector3(-0.4484, 1.6332, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.000, 1.500, -5.900)
+rotation = Vector3(-0.6345, -0.0000, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_pallet__centro_stockroom" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.192, 0.802, -3.884)
@@ -418,6 +420,6 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pallets__centro_dock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.866, 0.864, -7.710)
-rotation = Vector3(-0.2618, 1.8527, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.400, 1.400, -6.300)
+rotation = Vector3(-0.5066, -0.6787, 0.0)
+metadata/fov = 38.0
