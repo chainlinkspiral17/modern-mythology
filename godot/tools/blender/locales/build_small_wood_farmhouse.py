@@ -380,8 +380,8 @@ def build_little_switzerland_2026_10():
                                          west pasture to the river
     (This replaces an invented alpine village of chalets that had stood in
     for the name on the sign.)
-    Draft 2 targets: the coastal highway itself at the lane's foot; the
-    woods' understory; the river's banks and its flood line ("The river
+    Draft 2 (2026-11-04): the coastal highway at the lane's foot.
+    Draft 3 targets: the woods' understory; the river's banks and its flood line ("The river
     flooded"); a tree split and fallen across the road."""
     from _props.trees import make_conifer
     GRASS_SUMMER = (0.44, 0.50, 0.28, 1.0)
@@ -403,6 +403,22 @@ def build_little_switzerland_2026_10():
             k += 1
         for j, z in enumerate((0.48, 0.80, 1.08)):
             make_box(f"LSG_Fence_Stock_{side}_Wire_{j}", (fx, (-39.5 + -8.5) / 2.0, z), (0.012, 31.0, 0.012), WIRE)
+    # (2026-11-04, draft 2) the coastal highway at the lane's foot: two lanes
+    # of asphalt E-W past the sign, a yellow centre dash, white fog lines,
+    # gravel shoulders, the lane's pebble flared where it meets the road.
+    # The lens stands on its far shoulder looking up the lane
+    ASPH, FOG, YEL = (0.22, 0.22, 0.23, 1.0), (0.86, 0.86, 0.82, 1.0), (0.80, 0.68, 0.22, 1.0)
+    HY = -45.5                                   # the highway's centre line
+    # it runs east on the flat (the valley slope and the far ridge rise
+    # west of x -8; the lens sees only the metres at the lane's foot)
+    HX0, HX1 = -8.0, 220.0
+    make_box("LS_Highway" + LS, ((HX0 + HX1) / 2.0, HY, 0.004), (HX1 - HX0, 7.2, 0.008), ASPH)
+    for side in (-1, 1):
+        make_box(f"LS_Highway_Shoulder_{'S' if side < 0 else 'N'}" + LS, ((HX0 + HX1) / 2.0, HY + side * 4.3, 0.003), (HX1 - HX0, 1.4, 0.006), PEBBLE)
+        make_box(f"LS_Highway_Fog_{'S' if side < 0 else 'N'}" + LS, ((HX0 + HX1) / 2.0, HY + side * 3.45, 0.009), (HX1 - HX0, 0.10, 0.002), FOG)
+    for k, dx in enumerate(range(-5, 220, 5)):
+        make_box(f"LSG_Highway_Stock_Dash_{k}", (float(dx), HY, 0.009), (2.0, 0.10, 0.002), YEL)
+    make_box("LS_Lane_Flare" + LS, (11.0, -41.3, 0.0045), (6.0, 1.6, 0.009), PEBBLE)
     # the sign at the lane's mouth, W side, facing the highway (S)
     for k, px in enumerate((7.3, 9.1)):
         make_box(f"LS_Sign_Post_{k}" + LS, (px, -40.9, 0.80), (0.10, 0.10, 1.60), POST)

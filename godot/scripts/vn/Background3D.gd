@@ -5594,7 +5594,9 @@ const CAMERA_PRESETS := {
 		# sign, looking up the lane between the pastures to the house, the
 		# woods behind it, the river under its alders at the left. (Was an
 		# invented alpine village of chalets, little_switzerland.tscn, retired.)
-		"camera_origin": Vector3(12.2, 1.62, 44.0),
+		# (2026-11-04) back 4 m onto the highway's far shoulder: its near
+		# lane, the fog line and the lane's pebble flare are the foreground
+		"camera_origin": Vector3(12.2, 1.62, 48.0),
 		"camera_rotation": Vector3(0.0437, 0.1326, 0.0),
 		"fov": 52.0,
 		"env": {"sky_top": Color(0.42, 0.60, 0.84, 1), "sky_horizon": Color(0.84, 0.88, 0.90, 1),
