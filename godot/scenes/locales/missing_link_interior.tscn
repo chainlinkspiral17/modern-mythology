@@ -415,7 +415,7 @@ metadata/fov = 48.0
 ; the front door and its bell
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.000, 1.600, -2.600)
-rotation = Vector3(-0.0376, -2.7960, 0.0)
+rotation = Vector3(-0.1795, -2.8077, 0.0)
 metadata/fov = 45.0
 
 ; the Sasquatch, the crossing sign, the casts

@@ -507,11 +507,6 @@ position = Vector3(0.300, 1.500, 14.300)
 rotation = Vector3(-0.2523, 3.0932, 0.0)
 metadata/fov = 44.0
 
-; insert: Doyle's courtesy badge, open on the bin lid at pump six
-[node name="shot_insert_badge" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.400, 1.550, 13.400)
-rotation = Vector3(-0.6191, -0.7419, 0.0)
-metadata/fov = 40.0
 
 ; insert: Boyd's phone and his Gatorade on the ice chest
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -519,11 +514,6 @@ position = Vector3(-2.000, 1.850, 1.650)
 rotation = Vector3(-0.5702, 0.2311, 0.0)
 metadata/fov = 40.0
 
-; insert: three hundreds fanned on the rental's roof over the driver's door
-[node name="shot_insert_cash" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(5.550, 1.700, 3.600)
-rotation = Vector3(-0.2050, -1.8267, 0.0)
-metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_tile__nexcorp_fueling_restroom" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -531,11 +521,6 @@ position = Vector3(7.566, 1.412, -13.081)
 rotation = Vector3(-0.2618, -0.4341, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_blanket__nexcorp_van_cargo" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.863, 1.636, 18.525)
-rotation = Vector3(-0.4582, 0.3801, 0.0)
-metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__nexcorp_fueling_station" type="Marker3D" parent="." groups=["vn_shot"]]

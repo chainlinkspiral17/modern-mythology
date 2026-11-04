@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]At 15:16, Skip Donnelly looks up from his phone. He can see the back corner of the pickup from his position — just the tailgate, the Louisiana plate — parked behind the car wash, engine off, driver presumably still inside.",
+      "text": "At 15:16, Skip Donnelly looks up from his phone. He can see the back corner of the pickup from his position — just the tailgate, the Louisiana plate — parked behind the car wash, engine off, driver presumably still inside.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/019.ogg"
     },
     {
@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]He goes back to his phone.",
+      "text": "He goes back to his phone.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/022.mp3"
     },
     {
