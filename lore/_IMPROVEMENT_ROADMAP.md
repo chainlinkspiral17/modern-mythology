@@ -3835,6 +3835,12 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-04 · pass 289: the skate pool's coping rounds the corners; the office's seam as one line.**
+- **skatepark (vol1 ch2), pool draft 5:** the steel coping bends with the bowl: each run stops a metre short of the corner and six short pieces follow the corner's quarter circle (it met square over a rounded corner). A thin cap band tops each corner fill up to the slab, so the deck's inside corner is flush under the coping.
+  - furniture_grammar's INTRA count on the set is 4 (the fan wedges of each rounded corner share the corner point). Pre-existing since draft 3, surfaced by pass 287's recorder fix; the count is not a gate (the suite carries 292 such fan joints).
+- **office_after_hours (vol4):** the bright corner's three lights read as separate patches; seven dimmer lights 0.35 m apart, set back from both walls, blend into one vertical line at the nexus. The floor pool stays.
+- **Draft N+1:** the hip where the pool's slope meets the deep end; Jiggles' head resting on his shoulder (in progress).
+
 **2026-11-04 · pass 288: Jiggles' face and his clubs (vol2 ch1, crumpled_barn_int).**
 - "the sneering puppet performer"; "His head came to rest against his shoulder ... His smile and jeering eyes set upon a something across the way"; "Jiggles the Juggler". The head was a bare can. It now carries a painted vaudeville face on the side toward the sign: two narrow eyes tilted to a jeer under their brows, a wide red grin turned up at the ends, a red nose, rouged cheeks, and a battered bowler. Three juggling clubs (white, a red band, a dark handle): one standing by his hip, two lying on the stage where the performance left them.
 - **Full suite on pass 287:** clean after the skatepark fix (the sheared-prism helper under the audits' stubs: see the geometry-audit playbook's 2026-11-04 lesson).

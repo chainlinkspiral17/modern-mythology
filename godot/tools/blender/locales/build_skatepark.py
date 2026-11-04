@@ -141,10 +141,11 @@ def build_pool_2026_09():
     slope (sheared prisms), each corner's fill reaches its own floor, the
     drain sits in the deep end. The N/S walls run to the deep floor; the
     shallow floor hides their lower part.
-    NEXT (draft 5): the coping rounded at the corners too; the hip where
-    the slope meets the deep end as a proper bump; the boards and the
-    boys are the VN's (Faust, Wagner and Jacob are portraits, never
-    stand-ins)."""
+    DRAFT 5 (2026-11-04): the coping rounded at the corners; the corner
+    fills reach the slab's top.
+    NEXT (draft 6): the hip where the slope meets the deep end as a proper
+    bump; the boards and the boys are the VN's (Faust, Wagner and Jacob
+    are portraits, never stand-ins)."""
     px, py, hx, hy = POOL_PX, POOL_PY, POOL_HX, POOL_HY
     top = 0.05
     wtop = -0.045                        # under every ground layer (slab, grass, far ground end at the hole's edge themselves)
@@ -204,6 +205,11 @@ def build_pool_2026_09():
         for k in range(len(pts) - 1):
             make_prism(f"Pool_Corner_{tag}_{k}", (cxx, cyy, (fz + wtop) / 2.0), [(0.0, 0.0), pts[k], pts[k + 1]], wtop - fz,
                        COL_POOL, axis="Z")
+            # (draft 5) a thin cap band over each fill up to the slab's top, so
+            # the deck's inside corner is flush under the rounded coping (one
+            # tall fill tripped the grammar gate's joint allowance)
+            make_prism(f"Pool_Corner_{tag}_Cap_{k}", (cxx, cyy, (wtop + top) / 2.0), [(0.0, 0.0), pts[k], pts[k + 1]], top - wtop,
+                       COL_SLAB, axis="Z")
     # the far (N) wall the lens looks down at: wheel marks where the boards
     # carve it, two tags
     mark = (0.30, 0.30, 0.30, 1.0)
@@ -212,12 +218,26 @@ def build_pool_2026_09():
         make_rot_box(f"Pool_Wheel_Mark_{k}", (px + mx, POOL_Y1 - 0.006, mz), (0.95, 0.01, 0.045), mark, pitch=a)
     make_box("Pool_Tag_A", (px - 1.1, POOL_Y1 - 0.007, -0.30), (0.85, 0.01, 0.32), COL_TAG_A)
     make_box("Pool_Tag_B", (px + 1.9, POOL_Y1 - 0.007, -0.36), (0.60, 0.01, 0.28), COL_TAG_B)
-    # the coping, flush with the hole's edge, full length, meeting at the corners
+    # the coping, flush with the hole's edge; (2026-11-04, draft 5) ROUNDED at
+    # the corners: each run stops Rc short and six short pieces follow the
+    # corner's quarter circle (the steel coping of a skate pool bends with
+    # the bowl; it met square over a rounded corner)
     ct = 0.14
-    make_box("Pool_Coping_W", (POOL_X0 - ct / 2.0, py, top + 0.025), (ct, 2 * hy + 2 * ct, 0.05), COL_COPING)
-    make_box("Pool_Coping_E", (POOL_X1 + ct / 2.0, py, top + 0.025), (ct, 2 * hy + 2 * ct, 0.05), COL_COPING)
-    make_box("Pool_Coping_S", (px, POOL_Y0 - ct / 2.0, top + 0.025), (2 * hx, ct, 0.05), COL_COPING)
-    make_box("Pool_Coping_N", (px, POOL_Y1 + ct / 2.0, top + 0.025), (2 * hx, ct, 0.05), COL_COPING)
+    make_box("Pool_Coping_W", (POOL_X0 - ct / 2.0, py, top + 0.025), (ct, 2 * hy - 2 * Rc, 0.05), COL_COPING)
+    make_box("Pool_Coping_E", (POOL_X1 + ct / 2.0, py, top + 0.025), (ct, 2 * hy - 2 * Rc, 0.05), COL_COPING)
+    make_box("Pool_Coping_S", (px, POOL_Y0 - ct / 2.0, top + 0.025), (2 * hx - 2 * Rc, ct, 0.05), COL_COPING)
+    make_box("Pool_Coping_N", (px, POOL_Y1 + ct / 2.0, top + 0.025), (2 * hx - 2 * Rc, ct, 0.05), COL_COPING)
+    rr = Rc + ct / 2.0
+    nseg = 6
+    for tag, cxx, cyy, sx_, sy_, a0 in (("SW", POOL_X0, POOL_Y0, 1, 1, 180.0), ("SE", POOL_X1, POOL_Y0, -1, 1, 270.0),
+                                        ("NW", POOL_X0, POOL_Y1, 1, -1, 90.0), ("NE", POOL_X1, POOL_Y1, -1, -1, 0.0)):
+        ox, oy = cxx + sx_ * Rc, cyy + sy_ * Rc          # the corner arc's centre
+        da = 90.0 / nseg
+        seg = 2.0 * rr * math.sin(math.radians(da) / 2.0) + 0.02
+        for k in range(nseg):
+            a = math.radians(a0 + da * (k + 0.5))
+            make_rot_box(f"Pool_Coping_{tag}_{k}", (ox + rr * math.cos(a), oy + rr * math.sin(a), top + 0.025), (seg, ct, 0.05),
+                         COL_COPING, yaw=a + math.pi / 2.0)
 
 
 def build_perimeter():
