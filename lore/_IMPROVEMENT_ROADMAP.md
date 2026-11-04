@@ -3835,6 +3835,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-04 · pass 287: the skate pool's deep end; the barn's ruts; the smoke off Philip's embers.**
+- **skatepark (vol1 ch2), pool draft 4:** "waiting to push off into the pool". The pool had one flat floor 1.8 m down. It now has a shallow end (W, 1.3 m) and a deep end (E, 2.3 m) with the floor sloping between over 1.8 m; the wall-base curves follow the slope (a sheared prism: `make_sheared_prism` in the builder, built on `_gen_prism` + `_finalize_mesh` so the audits' recorder sees it), each corner fill reaches its own floor, the drain sits in the deep end. 96 draw calls, unchanged.
+  - Two legacy markers (`shot_insert_rail`, `shot_insert_hand_rail`) misaim under the per-set gate; no chapter cues them on this set and the full suite does not count them. Left.
+- **crumpled_barn (vol2), draft 8:** the field's ruts to the gate gap. Two wheel lines 1.4 m apart worn to dirt, coming in from the lens's foreground, bending through the gap in the fence and up the yard to the doorway.
+- **philip_beach (vol2 ch6), draft 4:** the smoke off the embers: a thin translucent column leaning with the night breeze (`_Haze`).
+- **Draft N+1:**
+  - The skate pool's coping rounded at the corners; the hip where the slope meets the deep end.
+  - The barn's ruts worn into the yard dirt as well (they stop at its edge).
+  - Jiggles' face and juggling pins in the bay.
+  - The harbor boats' names: the text names none ("my daddy's boat"), so the transoms stay blank unless the author names them.
+
 **2026-11-03 · pass 286: flames breathe; the drugstore's water at night.**
 - **Flame lights flicker** (Background3D, every 3D background): a light whose name says flame (candle, torch, bonfire, wreckfire, ember, kerosene, flame, hearth, campfire; never `Chand*`, which are bulbs) breathes: three sines, ±6–24% by kind, embers and lamps slow, open flame quick. 31 lights across the sets pick it up: the drugstore's methane torch, the bayou torch, Philip's embers, the bonfires, the burning wrecks, the candles.
   - It multiplies whatever energy the light has. When the mood stack rewrites a light, that value becomes the new base, so the two never fight.

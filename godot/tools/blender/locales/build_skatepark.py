@@ -19,6 +19,20 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props.geometry import clear_scene, make_box, make_cyl, make_prism, make_rot_box, export_glb
+from _props.geometry import _gen_prism, _fix_winding, _finalize_mesh
+
+
+def make_sheared_prism(name, center, polygon, length, base_color, slope, axis="X"):
+    """(2026-11-04) make_prism, with the solid's far end raised by `slope`
+    per metre along the extrusion axis: a wall-base curve that follows a
+    floor sloping toward the deep end. (_finalize_mesh is imported at module
+    level so the audits' recorder can rebind it and see the solid.)"""
+    verts, faces = _gen_prism(center, polygon, length, axis.upper())
+    ax = 0 if axis.upper() == "X" else 1
+    verts = [(v[0], v[1], v[2] + (v[ax] - center[ax]) * slope) for v in verts]
+    n = float(len(verts))
+    c = (sum(v[0] for v in verts) / n, sum(v[1] for v in verts) / n, sum(v[2] for v in verts) / n)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, c), base_color)
 
 COL_SLAB = (0.56, 0.56, 0.54, 1.0)
 COL_SLAB_DK = (0.46, 0.46, 0.45, 1.0)
@@ -43,6 +57,10 @@ COL_POOL_FLOOR = (0.44, 0.44, 0.43, 1.0)
 # (2026-11-02, draft 3) a skate pool's size: 6.6 x 4.6 m and 1.8 m deep (it was
 # 5.5 x 3.9 x 1.5, a hot tub's footprint); the pipe hump moved west for it
 POOL_PX, POOL_PY, POOL_HX, POOL_HY, POOL_DEPTH = 0.5, 7.2, 3.3, 2.3, 1.8
+# (2026-11-04, draft 4) a deep end: the W end 1.3 m, the E end 2.3 m, the
+# floor sloping between (x from POOL_SLOPE_X0 to POOL_SLOPE_X1)
+POOL_SHALLOW, POOL_DEEP = 1.3, 2.3
+POOL_SLOPE_X0, POOL_SLOPE_X1 = POOL_PX - POOL_HX + 2.2, POOL_PX - POOL_HX + 4.0
 POOL_X0, POOL_X1 = POOL_PX - POOL_HX, POOL_PX + POOL_HX
 POOL_Y0, POOL_Y1 = POOL_PY - POOL_HY, POOL_PY + POOL_HY
 
@@ -113,22 +131,36 @@ def build_pool_2026_09():
     the steel coping flush with the hole's edge, full length.
     DRAFT 3 (2026-11-02): sized as a skate pool (6.6 x 4.6 x 1.8 m),
     the corners rounded, wheel marks and two tags on the far wall.
-    NEXT (draft 4): a deep end (one half stepped down); the coping
-    rounded at the corners too; the boards and the boys are the VN's
-    (Faust, Wagner and Jacob are portraits, never stand-ins)."""
-    px, py, hx, hy, dep = POOL_PX, POOL_PY, POOL_HX, POOL_HY, POOL_DEPTH
+    DRAFT 4 (2026-11-04): a deep end. The W end is 1.3 m, the E end 2.3 m,
+    the floor slopes between over 1.8 m; the wall-base curves follow the
+    slope (sheared prisms), each corner's fill reaches its own floor, the
+    drain sits in the deep end. The N/S walls run to the deep floor; the
+    shallow floor hides their lower part.
+    NEXT (draft 5): the coping rounded at the corners too; the hip where
+    the slope meets the deep end as a proper bump; the boards and the
+    boys are the VN's (Faust, Wagner and Jacob are portraits, never
+    stand-ins)."""
+    px, py, hx, hy = POOL_PX, POOL_PY, POOL_HX, POOL_HY
     top = 0.05
     wtop = -0.045                        # under every ground layer (slab, grass, far ground end at the hole's edge themselves)
-    wall_h = wtop - (top - dep)
-    wz = wtop - wall_h / 2.0
+    fz_s, fz_d = top - POOL_SHALLOW, top - POOL_DEEP    # the shallow and deep floors' tops
+    sx0, sx1 = POOL_SLOPE_X0, POOL_SLOPE_X1
+    slope = (fz_d - fz_s) / (sx1 - sx0)                 # negative: down toward +X
     t = 0.20
-    make_box("Pool_Wall_W", (POOL_X0 - t / 2.0, py, wz), (t, 2 * hy, wall_h), COL_POOL)
-    make_box("Pool_Wall_E", (POOL_X1 + t / 2.0, py, wz), (t, 2 * hy, wall_h), COL_POOL)
-    make_box("Pool_Wall_S", (px, POOL_Y0 - t / 2.0, wz), (2 * hx + 2 * t, t, wall_h), COL_POOL)
-    make_box("Pool_Wall_N", (px, POOL_Y1 + t / 2.0, wz), (2 * hx + 2 * t, t, wall_h), COL_POOL)
-    fz = top - dep                       # the floor's top
-    make_box("Pool_Floor", (px, py, fz - 0.05), (2 * hx, 2 * hy, 0.10), COL_POOL_FLOOR)
-    make_cyl("Pool_Drain", (px, py, fz + 0.004), 0.12, 0.008, (0.20, 0.20, 0.21, 1.0), segments=12)
+
+    def wall_box(name, cx, cy, sx, sy, floor):
+        h = wtop - floor
+        make_box(name, (cx, cy, wtop - h / 2.0), (sx, sy, h), COL_POOL)
+    wall_box("Pool_Wall_W", POOL_X0 - t / 2.0, py, t, 2 * hy, fz_s)
+    wall_box("Pool_Wall_E", POOL_X1 + t / 2.0, py, t, 2 * hy, fz_d)
+    wall_box("Pool_Wall_S", px, POOL_Y0 - t / 2.0, 2 * hx + 2 * t, t, fz_d)
+    wall_box("Pool_Wall_N", px, POOL_Y1 + t / 2.0, 2 * hx + 2 * t, t, fz_d)
+    # the floor in three: the shallow end, the slope, the deep end
+    make_box("Pool_Floor_Shallow", ((POOL_X0 + sx0) / 2.0, py, fz_s - 0.05), (sx0 - POOL_X0, 2 * hy, 0.10), COL_POOL_FLOOR)
+    make_box("Pool_Floor_Deep", ((sx1 + POOL_X1) / 2.0, py, fz_d - 0.05), (POOL_X1 - sx1, 2 * hy, 0.10), COL_POOL_FLOOR)
+    make_sheared_prism("Pool_Floor_Slope", ((sx0 + sx1) / 2.0, py, (fz_s + fz_d) / 2.0 - 0.05),
+                       [(-hy, -0.05), (hy, -0.05), (hy, 0.05), (-hy, 0.05)], sx1 - sx0, COL_POOL_FLOOR, slope, axis="X")
+    make_cyl("Pool_Drain", (sx1 + (POOL_X1 - sx1) / 2.0, py, fz_d + 0.004), 0.12, 0.008, (0.20, 0.20, 0.21, 1.0), segments=12)
     # transitions: a quarter-round fillet along each wall's base, stopping
     # R short of each corner (the fillets never cross)
     R = 0.9
@@ -137,35 +169,30 @@ def build_pool_2026_09():
     poly = [(0.0, 0.0)] + arc          # corner, along the floor to R, up the curve to the wall at R
     # u runs away from the wall along the floor, v up the wall
     import math as _m
-    runs = (("W", POOL_X0, "+X", 2 * hy - 2 * R), ("E", POOL_X1, "-X", 2 * hy - 2 * R),
-            ("S", POOL_Y0, "+Y", 2 * hx - 2 * R), ("N", POOL_Y1, "-Y", 2 * hx - 2 * R))
-    for side, pos, into, ln in runs:
-        if side in "WE":
-            sgn = 1.0 if into == "+X" else -1.0
-            # prism along Y: (u, v) -> (x, z)
-            pts = [(sgn * u, v) for (u, v) in poly]
-            if sgn < 0:
-                pts = list(reversed(pts))
-            # (draft 3) convex wedges from the corner: one concave prism wound
-            # about its vertex centroid, which lay outside it (S drew inside out)
+    # (draft 3) convex wedges from the corner: one concave prism wound about
+    # its vertex centroid, which lay outside it (S drew inside out)
+    # (draft 4) the W run sits on the shallow floor, the E run on the deep;
+    # the N and S runs come in three: shallow, sloped (sheared), deep
+    for side, pos, sgn in (("W", POOL_X0, 1.0), ("E", POOL_X1, -1.0)):
+        fz = fz_s if side == "W" else fz_d
+        for k in range(1, len(arc)):
+            make_prism(f"Pool_Transition_{side}_{k}", (pos, py, fz), [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]),
+                       (sgn * arc[k][0], arc[k][1])], 2 * hy - 2 * R, COL_POOL, axis="Y")
+    segs = (("Sh", POOL_X0 + R, sx0, fz_s, 0.0), ("Sl", sx0, sx1, (fz_s + fz_d) / 2.0, slope), ("Dp", sx1, POOL_X1 - R, fz_d, 0.0))
+    for side, pos, sgn in (("S", POOL_Y0, 1.0), ("N", POOL_Y1, -1.0)):
+        for tag, xa, xb, fz, sl in segs:
             for k in range(1, len(arc)):
-                make_prism(f"Pool_Transition_{side}_{k}", (pos, py, fz), [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]),
-                           (sgn * arc[k][0], arc[k][1])], ln, COL_POOL, axis="Y")
-        else:
-            sgn = 1.0 if into == "+Y" else -1.0
-            # prism along X: (u, v) -> (y, z)
-            pts = [(sgn * u, v) for (u, v) in poly]
-            if sgn < 0:
-                pts = list(reversed(pts))
-            for k in range(1, len(arc)):
-                make_prism(f"Pool_Transition_{side}_{k}", (px, pos, fz), [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]),
-                           (sgn * arc[k][0], arc[k][1])], ln, COL_POOL, axis="X")
+                poly_k = [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]), (sgn * arc[k][0], arc[k][1])]
+                if sl == 0.0:
+                    make_prism(f"Pool_Transition_{side}_{tag}_{k}", ((xa + xb) / 2.0, pos, fz), poly_k, xb - xa, COL_POOL, axis="X")
+                else:
+                    make_sheared_prism(f"Pool_Transition_{side}_{tag}_{k}", ((xa + xb) / 2.0, pos, fz), poly_k, xb - xa, COL_POOL, sl, axis="X")
     # (draft 3) the corners rounded: a quarter-round fill up each corner, so
     # the walls turn into each other (each corner was a vertical seam)
     Rc = 1.0
     arcq = [(Rc + Rc * math.cos(math.radians(a)), Rc + Rc * math.sin(math.radians(a))) for a in range(-90, -181, -15)]
-    for tag, cxx, cyy, sx_, sy_ in (("SW", POOL_X0, POOL_Y0, 1, 1), ("SE", POOL_X1, POOL_Y0, -1, 1),
-                                    ("NW", POOL_X0, POOL_Y1, 1, -1), ("NE", POOL_X1, POOL_Y1, -1, -1)):
+    for tag, cxx, cyy, sx_, sy_, fz in (("SW", POOL_X0, POOL_Y0, 1, 1, fz_s), ("SE", POOL_X1, POOL_Y0, -1, 1, fz_d),
+                                        ("NW", POOL_X0, POOL_Y1, 1, -1, fz_s), ("NE", POOL_X1, POOL_Y1, -1, -1, fz_d)):
         # convex wedges from the corner (the whole fill is concave, and a
         # prism winds about its vertex centroid, which lay outside it)
         pts = [(sx_ * u, sy_ * v) for (u, v) in arcq]
