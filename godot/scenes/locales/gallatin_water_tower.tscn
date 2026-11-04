@@ -299,13 +299,12 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; ── vn_shot coverage (2026-10-10) — the south end of Gallatin Avenue
-; insert: the white NexCorp Residential Solutions van beside the fence, engine off
+; insert: the NexCorp van beside the fence, three-quarter front from the lane
 [node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-6.000, 1.850, 34.400)
-rotation = Vector3(-0.2373, 2.7655, 0.0)
-metadata/fov = 44.0
+position = Vector3(-4.000, 1.500, 33.500)
+rotation = Vector3(-0.0865, 2.4669, 0.0)
+metadata/fov = 46.0
 
-; reverse: from beside the fence up Gallatin, the van at left
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.200, 1.700, 38.000)
 rotation = Vector3(0.0062, 0.0873, 0.0)

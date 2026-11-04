@@ -366,12 +366,6 @@ position = Vector3(-7.557, 0.712, -4.031)
 rotation = Vector3(-0.2618, 0.6098, 0.0)
 metadata/fov = 42.0
 
-; insert: she takes Linda's free hand in both of hers
-[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.05, -1.6)
-rotation = Vector3(-0.2120, 0.2753, 0.0)
-metadata/fov = 42.0
-
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -392,13 +386,12 @@ rotation = Vector3(-0.0317, 0.0998, 0.0)
 metadata/fov = 52.0
 
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the room door standing open (Maya comes through it)
 [node name="shot_insert_door__hospital_room" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.746, 2.571, -0.332)
-rotation = Vector3(-0.0873, -1.9890, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.600, 1.400, -1.900)
+rotation = Vector3(-0.1668, 2.3494, 0.0)
+metadata/fov = 40.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_sockets__hospital_room" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.968, 0.512, -1.074)
 rotation = Vector3(-0.2618, 0.5489, 0.0)

@@ -169,7 +169,12 @@ def build_hero_props():
     make_box("Fluor_Housing", (0.0, 2.0, 2.56), (1.20, 0.24, 0.08), (0.72, 0.72, 0.70, 1.0))
     make_box("Fluor_Tube", (0.0, 2.0, 2.51), (1.05, 0.10, 0.03), (0.92, 0.95, 0.88, 1.0))
     # The door + the marker sign
-    make_box("DR_Door", (-0.55, 0.03, 1.02), (0.85, 0.05, 2.03), (0.38, 0.32, 0.28, 1.0))
+    # a painted steel stage door, darker than the wall, with its inside push
+    # plate and lever (2026-11-04: it was the wall's colour and the insert read as plaster)
+    make_box("DR_Door", (-0.55, 0.03, 1.02), (0.85, 0.05, 2.03), (0.22, 0.30, 0.26, 1.0))
+    make_box("DR_Door_Kick", (-0.55, 0.06, 0.16), (0.80, 0.01, 0.28), (0.52, 0.52, 0.50, 1.0))
+    make_box("DR_Door_Plate", (-0.25, 0.06, 1.05), (0.10, 0.01, 0.30), (0.78, 0.78, 0.74, 1.0))
+    make_box("DR_Door_Lever", (-0.22, 0.09, 1.05), (0.12, 0.05, 0.025), (0.78, 0.78, 0.74, 1.0))
     make_box("DR_Sign", (-0.55, -0.005, 1.62), (0.30, 0.01, 0.22), (0.90, 0.88, 0.80, 1.0))
     make_box("DR_Sign_Marker", (-0.55, -0.012, 1.62), (0.24, 0.008, 0.06), (0.16, 0.16, 0.18, 1.0))
     # Carl's sticks on the floor against the wall
@@ -181,7 +186,9 @@ def build_hero_props():
 def build_door_infill_dr_door_2026_09():
     """DR_Door was narrower than its wall opening (the user, 2026-09-24:
     "doorways ... misaligned"): close the gap to the door and its frame."""
-    make_wall("DR_Door_Fill_E", (0.438, 0.000, 0), length=1.125, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    # named Doorside_ (2026-11-04): a "door" insert must find DR_Door, and the
+    # fill panel beside it was the nearest "Door_" part to the lens
+    make_wall("DR_Doorside_Fill_E", (0.438, 0.000, 0), length=1.125, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
 def build_closet_2026_10():
     """The storage closet's own things (see the module docstring)."""

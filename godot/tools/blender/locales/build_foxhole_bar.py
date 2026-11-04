@@ -101,9 +101,9 @@ def build_shell():
     # sodium light in it), the restrooms' leaves shut with their signs, the
     # backstage door propped open a hand
     for li, lx in enumerate((DOOR_X - DOOR_W / 4.0, DOOR_X + DOOR_W / 4.0)):
-        make_box(f"Entrance_Leaf_{li}", (lx, 0.06, 1.18), (DOOR_W / 2.0 - 0.04, 0.05, 2.34), (0.20, 0.20, 0.22, 1.0))
-        make_box(f"Entrance_Leaf_{li}_Glass", (lx, 0.03, 1.50), (DOOR_W / 2.0 - 0.30, 0.012, 1.10), (0.62, 0.50, 0.30, 1.0))
-        make_tube(f"Entrance_Leaf_{li}_Bar", [(lx - 0.30, 0.11, 1.05), (lx + 0.30, 0.11, 1.05)], 0.016, COL_STEEL, segments=6)
+        make_box(f"Entrance_Door_Leaf_{li}", (lx, 0.06, 1.18), (DOOR_W / 2.0 - 0.04, 0.05, 2.34), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Entrance_Door_Leaf_{li}_Glass", (lx, 0.03, 1.50), (DOOR_W / 2.0 - 0.30, 0.012, 1.10), (0.62, 0.50, 0.30, 1.0))
+        make_tube(f"Entrance_Door_Leaf_{li}_Bar", [(lx - 0.30, 0.11, 1.05), (lx + 0.30, 0.11, 1.05)], 0.016, COL_STEEL, segments=6)
     make_box("Entrance_Exit_Sign", (DOOR_X, 0.12, 2.62), (0.42, 0.06, 0.16), (0.24, 0.84, 0.36, 1.0))
     for ri, ry in enumerate((3.2, 4.6)):
         make_box(f"Restroom_Door_{ri}", (ROOM_W / 2.0 - 0.06, ry, 1.05), (0.05, 0.86, 2.08), (0.30, 0.26, 0.24, 1.0))
@@ -237,6 +237,8 @@ def build_floor():
     for ki in range(4):
         make_cyl(f"DJ_Controller_Platter_{ki % 2}_{ki}", (bx + 0.20 + (ki % 2) * 0.20, by - 0.05, 1.172), 0.06 if ki < 2 else 0.012, 0.006, (0.30, 0.30, 0.32, 1.0), segments=12)
     make_tube("DJ_Lamp", [(bx + 0.55, by + 0.30, 1.13), (bx + 0.55, by + 0.30, 1.40), (bx + 0.45, by + 0.15, 1.50)], 0.008, COL_BLACK, segments=5)
+    make_cyl("DJ_Lamp_Base", (bx + 0.55, by + 0.30, 1.14), 0.05, 0.02, COL_BLACK, segments=10)
+    make_rot_box("DJ_Lamp_Head", (bx + 0.42, by + 0.11, 1.50), (0.07, 0.11, 0.05), COL_BLACK, pitch=0.6)   # the shade, turned down at the console (2026-11-04)
     # FOH: the desk mid-room on a low platform, the console, Ricky's cooler under it
     fx, fy = 2.6, 6.4
     make_box("FOH_Platform", (fx, fy, 0.10), (2.4, 1.8, 0.20), (0.20, 0.19, 0.19, 1.0))

@@ -270,8 +270,18 @@ shadow_enabled = false
 [node name="DJ_Laptop_Screen_Practical" type="OmniLight3D" parent="."]
 position = Vector3(4.970, 1.300, -13.000)
 light_color = Color(0.40, 0.56, 0.96, 1)
-light_energy = 0.80
-omni_range = 1.60
+light_energy = 2.40
+omni_range = 2.40
+shadow_enabled = false
+
+; the booth's gooseneck lamp (DJ_Lamp_Head), down at the console (2026-11-04): the
+; "Chess, at the booth" insert rendered black — the night post stack eats a 0.8 screen glow
+[node name="DJ_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.570, 1.440, -13.010)
+light_color = Color(1.00, 0.84, 0.58, 1)
+light_energy = 5.00
+omni_range = 2.80
+omni_attenuation = 1.2
 shadow_enabled = false
 
 ; the stage's general wash from the pipe over the lip (the rig, not a fixture of its own)
@@ -450,17 +460,16 @@ metadata/fov = 48.0
 
 ; the DJ booth (vol6: "Chess winks at Jesse from the booth on her way to the first drop")
 [node name="shot_insert_booth__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.753, 1.189, -11.630)
-rotation = Vector3(-0.2618, -0.3029, 0.0)
-metadata/fov = 35.0
+position = Vector3(4.500, 1.650, -11.700)
+rotation = Vector3(-0.5397, -0.4964, 0.0)
+metadata/fov = 38.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the ENTRANCE doors (Jesse at the door) — not the restroom door the text pass found nearest
 [node name="shot_insert_door__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.009, 1.951, -2.630)
-rotation = Vector3(-0.2989, -1.2815, 0.0)
-metadata/fov = 35.0
+position = Vector3(3.800, 1.500, -2.000)
+rotation = Vector3(-0.1027, -3.1416, 0.0)
+metadata/fov = 40.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bass__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.755, 1.739, -12.885)
 rotation = Vector3(-0.2618, 0.2737, 0.0)
@@ -478,8 +487,8 @@ position = Vector3(-0.263, 1.432, -1.855)
 rotation = Vector3(-0.2618, 1.0494, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the stage-lip rail the kids stand at — not the bar's foot rail
 [node name="shot_insert_rail__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.308, 0.392, -2.455)
-rotation = Vector3(-0.2618, 1.5901, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.900, 1.350, -9.900)
+rotation = Vector3(-0.3554, 0.5555, 0.0)
+metadata/fov = 38.0

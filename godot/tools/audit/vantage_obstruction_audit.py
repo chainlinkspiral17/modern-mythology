@@ -73,6 +73,9 @@ DELIBERATE_MARKERS = {
     # case's cuts under the glass; the back counter behind it is the audit's
     # name match, and the case in front of it IS the view
     ("centro_grocery_aisle", "shot_insert_counter__centro_grocery_aisle"),
+    # (2026-11-04) "He pulls into his driveway": the driveway WITH the sedan and
+    # Jim's truck on it, from the lawn; the slab's centre is under the sedan
+    ("henderson_porch_front", "shot_insert_driveway__henderson_porch_front"),
     ("miller_back_porch", "shot_insert_myrtle"), ("new_auburn_road", "shot_insert_cypress"),
     # (2026-10-04) inside Miriam's Subaru the back-seat close-ups are at
     # arm's length by design: the gap between the front seats Nicola

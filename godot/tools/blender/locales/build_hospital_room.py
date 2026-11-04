@@ -30,6 +30,29 @@ def build_shell():
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    build_room_door_2026_11()
+
+
+def build_room_door_2026_11():
+    """The room's own door, standing open into the room (vol6 ch8 "When Maya
+    comes through the door" · "The door closes"): the opening had no leaf,
+    so the door insert framed the wall above it. Hinged on the W jamb,
+    swung 75 deg in; a push plate and a narrow wired-glass light like the
+    ward doors next door."""
+    from _props.geometry import make_rot_box
+    import math
+    hx, w, ang = -1.0, 0.92, math.radians(75.0)
+    cx = hx + 0.5 * w * math.cos(ang)
+    cy = 0.5 * w * math.sin(ang)
+    leaf = (0.62, 0.66, 0.70, 1.0)
+    make_rot_box("Room_Door_Leaf", (cx, cy, 1.05), (w, 0.045, 2.10), leaf, yaw=ang)
+    make_rot_box("Room_Door_Light", (cx + 0.02 * math.sin(ang), cy - 0.02 * math.cos(ang), 1.55),
+                 (0.20, 0.01, 0.40), (0.30, 0.34, 0.40, 1.0), yaw=ang)
+    make_rot_box("Room_Door_Plate", (hx + 0.78 * w * math.cos(ang) + 0.02 * math.sin(ang),
+                                     0.78 * w * math.sin(ang) - 0.02 * math.cos(ang), 1.05),
+                 (0.10, 0.01, 0.30), (0.80, 0.80, 0.78, 1.0), yaw=ang)
+    make_box("Room_Door_Jamb_W", (hx - 0.03, 0.0, 1.05), (0.06, 0.22, 2.10), (0.52, 0.52, 0.50, 1.0))
+    make_box("Room_Door_Jamb_E", (1.03, 0.0, 1.05), (0.06, 0.22, 2.10), (0.52, 0.52, 0.50, 1.0))
 
 BED_X = -0.2; BED_Y = 3.75     # head to the N wall (2026-09-10: 1.4 m off it)
 

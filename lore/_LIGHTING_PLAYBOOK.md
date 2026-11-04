@@ -151,6 +151,26 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-11-04 · an insert at night is lit for the frame, not for the wide
+
+**Context:** the vols 5–7 insert survey (pass 291). The Hendersons' porch
+is a one-lit-window night: a kitchen window at 2.2, a porch lamp at 1.2,
+one street lamp at 1.0. The wide read. Every insert at the curb rendered
+BLACK: the driveway from the sedan's door, Ben's truck from its wheel, the
+DJ booth under a 0.8 laptop glow.
+- **The night post stack eats most of a practical.** A street lamp that
+  reads in the wide at 1.0 needs 8 before a truck 6 m under it has a
+  colour; the booth's console lamp needed 5 at 60 cm. Raise the practical
+  that would really light the subject (the street lamp, the desk lamp),
+  not a fill, and re-render the WIDE afterwards: the window must still be
+  the centre.
+- **A dark object fills a dark frame.** An insert 50 cm from an unlit car
+  door is a black rectangle whatever the lamp does; step the lens back to
+  where the lamp's pool and the sky's edge are in the frame too.
+- **Build the lamp the practical hangs on** (`DJ_Lamp_Head` over the
+  booth): a light with no fixture is the orphan the audit hunts and the
+  viewer's eye cannot place.
+
 ### 2026-10-30 · a shadowed SpotLight lit nothing under the compatibility renderer
 
 **Context:** Club Sharp's cage (pass 238). A stage spot 5.8 m over the cage

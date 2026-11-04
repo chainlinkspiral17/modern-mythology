@@ -404,13 +404,12 @@ position = Vector3(-0.630, 0.987, -2.264)
 rotation = Vector3(-0.2618, 0.9752, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the recipe box, from the range side so the utensil crock is not in front of it
 [node name="shot_insert_recipe__grandmother_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.159, 1.308, -4.351)
-rotation = Vector3(-0.5236, -0.6001, 0.0)
+position = Vector3(0.950, 1.450, -4.550)
+rotation = Vector3(-0.6687, -1.0996, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_doorway__grandmother_kitchen_morning" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.777, 2.235, -1.180)
 rotation = Vector3(-0.3924, 2.0809, 0.0)

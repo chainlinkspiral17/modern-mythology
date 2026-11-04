@@ -397,12 +397,6 @@ rotation = Vector3(-0.2618, 1.5533, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_unit__henderson_garage_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(6.300, 0.592, -5.316)
-rotation = Vector3(-0.2618, -0.5296, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_workbench__henderson_garage" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.587, 1.296, -2.628)
 rotation = Vector3(-0.2618, 0.0648, 0.0)

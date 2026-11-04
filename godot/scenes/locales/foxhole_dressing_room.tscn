@@ -336,8 +336,8 @@ light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.10
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; insert: the stage door (DR_Door), seen from inside the room
 [node name="shot_insert_door__foxhole_dressing_room" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.706, 1.943, -1.029)
-rotation = Vector3(-0.5851, 2.1231, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.200, 1.500, -2.300)
+rotation = Vector3(-0.1647, 2.9172, 0.0)
+metadata/fov = 40.0
