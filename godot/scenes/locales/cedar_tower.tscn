@@ -382,9 +382,16 @@ rotation = Vector3(0, 0, 0)
 metadata/fov = 45.0
 
 ; insert: the photograph of Dean at forty-eight
+; (2026-11-04) the photograph of Dean on the reception desk (it looked at
+; the ceiling); the lobby line's `desk` from the doors
 [node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.7, -7.1)
-rotation = Vector3(0.6849, -1.7807, 0.0)
+position = Vector3(0.100, 1.450, -4.100)
+rotation = Vector3(-0.1447, -0.5071, 0.0)
+metadata/fov = 30.0
+
+[node name="shot_insert_desk__cedar_tower_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.550, -2.300)
+rotation = Vector3(-0.3304, 0.1031, 0.0)
 metadata/fov = 42.0
 
 ; insert: Estuary 7 — the poster, sixty-three times since July
@@ -424,10 +431,13 @@ rotation = Vector3(0.1013, 0.0867, 0.0)
 metadata/fov = 42.0
 
 ; insert: the tower's doors from the clearing
-[node name="shot_insert_doors" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.5, 1.2)
-rotation = Vector3(-0.1867, 0.4821, 0.0)
-metadata/fov = 42.0
+; (2026-11-04) "They walked across the gravel to the double-doors of the
+; lobby": the tower's doors from the gravel (it stood at the lobby interior's
+; S wall, which the exterior never shows)
+[node name="shot_insert_doors__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(45.300, 1.500, -3.000)
+rotation = Vector3(-0.0925, 0.0697, 0.0)
+metadata/fov = 38.0
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
@@ -503,6 +513,6 @@ omni_range = 5.00
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_wagon__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(40.077, 0.552, -0.228)
-rotation = Vector3(-0.2618, 0.2251, 0.0)
-metadata/fov = 35.0
+position = Vector3(35.000, 1.500, 2.000)
+rotation = Vector3(-0.0829, -0.7266, 0.0)
+metadata/fov = 40.0

@@ -31,7 +31,7 @@ export remaps to Godot (x, z, -y). Five CAMERA_PRESETS vantages.
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 from _props.structure import make_wall_with_openings, make_window, make_curtains
 
 CEDAR = (0.58, 0.42, 0.28, 1.0)          # polished cedar
@@ -128,6 +128,12 @@ def build_lobby():
     # Reception desk — empty, NO chair behind it
     make_box("Reception_Desk", (0.0, 5.2, z0 + 0.55), (2.8, 0.8, 1.10), CEDAR_DK)
     make_box("Reception_Top", (0.0, 5.2, z0 + 1.12), (2.95, 0.95, 0.06), CEDAR)
+    # (2026-11-04) "The photograph of Dean at forty-eight. Tem stopped at the
+    # desk. She looked at the photograph": a framed photograph standing on
+    # the desk's near corner, tilted back on its easel leg
+    make_rot_box("Reception_Photo_Frame", (0.60, 5.0, z0 + 1.15 + 0.13), (0.22, 0.02, 0.27), FRAME, roll=-0.18)
+    make_rot_box("Reception_Photo", (0.60, 5.0 - 0.012, z0 + 1.15 + 0.13), (0.18, 0.004, 0.22), (0.58, 0.54, 0.48, 1.0), roll=-0.18)
+    make_rot_box("Reception_Photo_Leg", (0.60, 5.0 + 0.09, z0 + 1.15 + 0.08), (0.03, 0.02, 0.18), FRAME, roll=0.45)
     # THE PHOTOGRAPH: Dean at forty-eight, corporate portrait, on
     # the N wall behind the desk — head and shoulders, eye-line to
     # the photographer's left (where Aria stood, at twelve)
