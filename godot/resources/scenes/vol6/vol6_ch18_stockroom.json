@@ -708,7 +708,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]He puts the gloves on. The gloves are the canvas gloves Jessa keeps in the stockroom drawer for this work. They are too large for his hands. They have always been too large for his hands. He has stopped, by week two, asking for smaller ones.",
+      "text": "He puts the gloves on. The gloves are the canvas gloves Jessa keeps in the stockroom drawer for this work. They are too large for his hands. They have always been too large for his hands. He has stopped, by week two, asking for smaller ones.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/128.mp3"
     },
     {
@@ -788,7 +788,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]He is at the bale at the eighth pallet's lid when his hands stop.",
+      "text": "He is at the bale at the eighth pallet's lid when his hands stop.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/144.mp3"
     },
     {

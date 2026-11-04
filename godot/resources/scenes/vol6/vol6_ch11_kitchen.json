@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert robe]She puts on the robe that is on the hook on the back of the bedroom door. The robe is the green one — not the green plaid Mr.",
+      "text": "She puts on the robe that is on the hook on the back of the bedroom door. The robe is the green one — not the green plaid Mr.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/017.ogg"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]She does not, generally, drink a second pot. She is, this morning, going to.",
+      "text": "She does not, generally, drink a second pot. She is, this morning, going to.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/069.ogg"
     },
     {

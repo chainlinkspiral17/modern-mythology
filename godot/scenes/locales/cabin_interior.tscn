@@ -756,6 +756,16 @@ metadata/daylight = true
 ; the porch boards": a warm spot just inside each south window, aimed
 ; down through the glass onto the deck. Not daylight-tagged: the lamps
 ; inside burn all day; at night they are what lights the porch.
+; (2026-11-04) the cedar hand on the rail's corner, at night: the window's
+; spill reaches the corner as a dim warm fill, so the insert is not black
+[node name="Rail_Corner_Fill__cabin_porch" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10, 1.45, 1.55)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 1.8
+omni_attenuation = 1.2
+
 [node name="South_Window_W_Spill__cabin_porch" type="SpotLight3D" parent="."]
 position = Vector3(-2.000, 1.750, -0.300)
 rotation = Vector3(-0.8961, -3.1416, 0)

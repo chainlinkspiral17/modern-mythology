@@ -200,8 +200,9 @@ shadow_enabled = false
 ; ── vn_shot wave (2026-08-19) · positions authored, aim by
 ; marker_reaim.py
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 1.68, -1.13)
-rotation = Vector3(-0.4666, -2.5502, 0.0)
+position = Vector3(0.850, 1.420, 0.500)
+rotation = Vector3(-0.3282, -0.7493, 0.0)
+metadata/fov = 30.0
 
 [node name="shot_insert_blanket" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.03, -1.72)
@@ -387,8 +388,8 @@ omni_range = 0.9
 
 ; insert: a car comes down the street, slow
 [node name="shot_insert_car" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.180, 1.373, 2.726)
-rotation = Vector3(-0.2010, -2.8243, 0.0)
+position = Vector3(0.400, 1.550, 1.300)
+rotation = Vector3(-0.1642, -2.9117, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

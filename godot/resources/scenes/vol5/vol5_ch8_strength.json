@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low][shot:insert hands]His hands rested on the sticky tabletop.",
+      "text": "[mood:candlelight_low]His hands rested on the sticky tabletop.",
       "voice": "assets/audio/voice/vol5_ch8_strength/015.mp3"
     },
     {
@@ -119,7 +119,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist.",
+      "text": "The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist.",
       "voice": "assets/audio/voice/vol5_ch8_strength/023.mp3"
     },
     {
@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]Intercepted. Shit. The neon ghosts on the screen threw up their hands in digital despair. Douglas took another slow sip. Didn't matter. Just pixels burning bright before fading out. Like memory.",
+      "text": "Intercepted. Shit. The neon ghosts on the screen threw up their hands in digital despair. Douglas took another slow sip. Didn't matter. Just pixels burning bright before fading out. Like memory.",
       "voice": "assets/audio/voice/vol5_ch8_strength/041.ogg"
     },
     {

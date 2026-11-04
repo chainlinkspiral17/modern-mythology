@@ -23,7 +23,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, make_chamfer_box, make_blob, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
@@ -106,8 +106,13 @@ def build_bed():
              frame_col=COL_FRAME, mattress_col=COL_SHEET, sheet_col=COL_SHEET,
              blanket_col=COL_BLANKET, pillow_col=COL_PILLOW, pillows=1, made=True, headboard=False)
     # Mister, curled at the foot — a low mound with a tail sweep
-    make_cyl("Cat_Mister", (bx - 0.75, by + 0.15, 0.57), 0.16, 0.10, COL_CAT, segments=10)
-    make_box("Cat_Tail", (bx - 0.60, by + 0.28, 0.545), (0.22, 0.05, 0.03), COL_CAT)
+    # (2026-11-04) a cat, not a puck: the body a soft loaf curled on the
+    # blanket, the head tucked at one end, the tail swept round the flank
+    make_chamfer_box("Cat_Mister", (bx - 0.75, by + 0.15, 0.595), (0.36, 0.24, 0.15), COL_CAT, chamfer=0.05, yaw=0.35)
+    make_blob("Cat_Mister_Head", (bx - 0.92, by + 0.05, 0.615), 0.075, COL_CAT, noise=0.06, seed=12, squash=0.85)
+    for k, (ex, ey) in enumerate(((-0.035, -0.02), (-0.035, 0.05))):
+        make_rot_box(f"Cat_Mister_Ear_{k}", (bx - 0.92 + ex, by + 0.05 + ey, 0.675), (0.03, 0.025, 0.035), COL_CAT, yaw=0.3)
+    make_rot_box("Cat_Tail", (bx - 0.58, by + 0.30, 0.545), (0.26, 0.045, 0.03), COL_CAT, yaw=-0.5)
     # Footlocker at the foot of the bed
     # its east face 2 cm off the platform's foot (2026-09-25: 7 cm — it read as standing in the room)
     make_box("Footlocker", (bx - 1.20, by, 0.20), (0.35, 0.9, 0.38), COL_FRAME_DK)
