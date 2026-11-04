@@ -3836,6 +3836,7 @@ REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
 **2026-11-04 · pass 290: the skatepark's street; Halloween on Nick's street; the patio door's spill; the fallen-in house framed.**
+- **tulsa_patio (vol3 ch3):** the house's spill was one omni that washed the whole sawdust the same warm. The patio door's light is a spot now, from the door down and out: a warm pool on the slab in the foreground that falls off into the yard; the omni stays as a dim wrap. (It took energy 12: at 3.4 the pool brightened the slab a quarter and read as nothing under the night paint; the post stack eats a lot.)
 - **nick_house (vol3 ch12), Halloween:** "their yearly Halloween decorations became a memory": the neighbours' decorations grandma's dark house stands against: a string of orange and purple lights along the W house's eave, a cardboard skeleton hung at the E house's near corner (its door is past the frame's edge), and fall leaves on the sidewalk, the walk and the lawn.
 - **skatepark (vol1 ch2):** the wide looked over the chain-link at bare ground to a roofline 55 m out. Past the fence now: the lawn strip, the walk, the curb, the street and nine houses across it (three `front` views along the fence line), two cars at the near curb, and the fence turned down the park's E side, which the lens looks toward. The text gives only "EXT. THE SKATEPARK — DAY": set dressing, no canon.
 **2026-11-04 · pass 289: the skate pool's coping rounds the corners; the office's seam as one line.**
