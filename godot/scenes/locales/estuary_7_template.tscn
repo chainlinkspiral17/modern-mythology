@@ -349,9 +349,9 @@ metadata/fov = 42.0
 
 ; insert: Lindholm's foundation in Eugene, off the south-east frame — the line runs to the edge
 [node name="shot_insert_foundation" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(5.237, 0.822, 1.427)
-rotation = Vector3(-0.5236, -1.1434, 0.0)
-metadata/fov = 42.0
+position = Vector3(5.700, 0.720, 1.450)
+rotation = Vector3(-0.6896, -0.6011, 0.0)
+metadata/fov = 30.0
 
 ; insert: Olaus's cove south of Bandon, off the south frame — the line stops at the ridge
 [node name="shot_insert_cove" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -369,9 +369,9 @@ metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_palette__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.260, 0.981, 2.465)
-rotation = Vector3(-0.2656, -1.2447, 0.0)
-metadata/fov = 35.0
+position = Vector3(5.800, 0.950, 1.700)
+rotation = Vector3(-0.7249, -1.5708, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_clock__estuary_7_template" type="Marker3D" parent="." groups=["vn_shot"]]
