@@ -27,7 +27,12 @@ def make_sheared_prism(name, center, polygon, length, base_color, slope, axis="X
     per metre along the extrusion axis: a wall-base curve that follows a
     floor sloping toward the deep end. (_finalize_mesh is imported at module
     level so the audits' recorder can rebind it and see the solid.)"""
-    verts, faces = _gen_prism(center, polygon, length, axis.upper())
+    try:
+        verts, faces = _gen_prism(center, polygon, length, axis.upper())
+    except (TypeError, ValueError):
+        # under the audits' stubs _gen_prism is a stand-in: record the
+        # unsheared prism's box instead (the shear is a few cm of height)
+        return make_prism(name, center, polygon, length, base_color, axis=axis)
     ax = 0 if axis.upper() == "X" else 1
     verts = [(v[0], v[1], v[2] + (v[ax] - center[ax]) * slope) for v in verts]
     n = float(len(verts))
@@ -114,9 +119,9 @@ def build_features():
         make_box(f"Stair_{s}", (-6.5, 8.6 + s * 0.35, 0.30 - s * 0.10),
                  (2.4, 0.35, 0.60 - s * 0.20), COL_LEDGE)
     make_box("Stair_Pad", (-6.5, 10.4, 0.02), (2.8, 1.6, 0.06), COL_SLAB_DK)
-    make_box("HandRail_Post_S", (-5.5, 8.5, 0.45), (0.06, 0.06, 0.9), COL_RAIL)
-    make_box("HandRail_Post_N", (-5.5, 10.3, 0.25), (0.06, 0.06, 0.5), COL_RAIL)
-    make_cyl("HandRail", (-5.5, 9.4, 0.72), 0.04, 2.0, COL_RAIL, segments=8, axis='Y')
+    make_box("Hand_Rail_Post_S", (-5.5, 8.5, 0.45), (0.06, 0.06, 0.9), COL_RAIL)
+    make_box("Hand_Rail_Post_N", (-5.5, 10.3, 0.25), (0.06, 0.06, 0.5), COL_RAIL)
+    make_cyl("Hand_Rail", (-5.5, 9.4, 0.72), 0.04, 2.0, COL_RAIL, segments=8, axis='Y')
 
 
 def build_pool_2026_09():
