@@ -44,8 +44,8 @@ core with its leaf clusters packed over the dome (_bramble), ivy up the
 gable's boards from the two climbing mounds (_ivy), the hedge leafed the
 same way (from the field they all read as grey boulders). All `_Stock_`,
 joined. Draft 7 targets: the hay door's swung leaf; a crow on the peak; the
-Jiggles' face and juggling pins; the gable's
-outer board lap as real courses (the ruts: draft 8, 2026-11-04); the hill brought down to the collapse so
+the gable's
+outer board lap as real courses (the ruts, Jiggles' face and clubs: draft 8, 2026-11-04); the hill brought down to the collapse so
 the barn sits INTO it ("I thought it part of the hill").
 (Old draft 4 targets: the gable's board lap as real courses (make_lap_siding
 in grey), the hay door's swung leaf, the cabinet's levers and buttons as
@@ -241,6 +241,47 @@ def build_interior():
              (0.56, 0.44, 0.30, 1.0))
     make_box("Jiggles_Arm_R", (cbx + 0.04, cby + 0.115, 1.12), (0.05, 0.05, 0.22),
              (0.56, 0.44, 0.30, 1.0))
+    # (2026-11-04, draft 8) his FACE, on the head's N side toward the sign
+    # "across the way": "the sneering puppet performer"; "His smile and
+    # jeering eyes set upon a something across the way". Painted vaudeville:
+    # two narrow eyes tilted to a jeer, a wide red grin turned up at the
+    # ends, a red nose, rouged cheeks, a battered bowler on top.
+    hx_, hy_, hz_ = cbx + 0.14, cby - 0.09, 1.30
+    fy = hy_ + 0.07                                   # the head's N face
+    ink, red = (0.10, 0.08, 0.08, 1.0), (0.72, 0.12, 0.10, 1.0)
+    for sgn, tag in ((-1, "L"), (1, "R")):
+        make_rot_box(f"Jiggles_Eye_{tag}", (hx_ + sgn * 0.028, fy + 0.003, 1.335), (0.026, 0.006, 0.009), ink, roll=sgn * 0.35)
+        make_box(f"Jiggles_Brow_{tag}", (hx_ + sgn * 0.028, fy + 0.003, 1.352), (0.024, 0.005, 0.005), ink)
+        make_box(f"Jiggles_Cheek_{tag}", (hx_ + sgn * 0.045, fy + 0.002, 1.295), (0.016, 0.004, 0.014), (0.80, 0.42, 0.40, 1.0))
+    make_blob("Jiggles_Nose", (hx_, fy + 0.008, 1.312), 0.013, red, noise=0.1, seed=71)
+    make_box("Jiggles_Grin", (hx_, fy + 0.003, 1.262), (0.052, 0.006, 0.010), red)
+    for sgn, tag in ((-1, "L"), (1, "R")):
+        make_rot_box(f"Jiggles_Grin_End_{tag}", (hx_ + sgn * 0.036, fy + 0.003, 1.272), (0.024, 0.006, 0.009), red, roll=-sgn * 0.7)
+    make_cyl("Jiggles_Bowler_Brim", (hx_, hy_, 1.37), 0.085, 0.012, ink, segments=14)
+    make_cyl("Jiggles_Bowler_Crown", (hx_, hy_, 1.405), 0.058, 0.058, ink, segments=14)
+    make_cyl("Jiggles_Bowler_Band", (hx_, hy_, 1.385), 0.060, 0.012, red, segments=14)
+    # his juggling clubs: one standing on its base by his hip, two lying on
+    # the stage where the performance left them (white, a red band, a dark
+    # handle, a white knob)
+    white, band, handle = (0.86, 0.84, 0.78, 1.0), (0.66, 0.12, 0.10, 1.0), (0.20, 0.16, 0.14, 1.0)
+    sz = 0.78                                        # the stage's top
+    px_, py_ = cbx + 0.22, cby + 0.16
+    make_cyl("Jiggles_Club_0_Body", (px_, py_, sz + 0.07), 0.030, 0.14, white, segments=10)
+    make_cyl("Jiggles_Club_0_Band", (px_, py_, sz + 0.10), 0.031, 0.02, band, segments=10)
+    make_cyl("Jiggles_Club_0_Handle", (px_, py_, sz + 0.14 + 0.05), 0.012, 0.10, handle, segments=8)
+    make_cyl("Jiggles_Club_0_Knob", (px_, py_, sz + 0.24 + 0.01), 0.018, 0.02, white, segments=8)
+    for k, (lx, ly, yaw_) in enumerate(((cbx - 0.10, cby + 0.20, 0.25), (cbx - 0.02, cby + 0.30, -1.10)), start=1):
+        c_, s_ = math.cos(yaw_), math.sin(yaw_)
+        def at(u):
+            return (lx + u * c_, ly + u * s_)
+        bx_, by_ = at(0.0)
+        make_rot_box(f"Jiggles_Club_{k}_Body", (bx_, by_, sz + 0.03), (0.14, 0.055, 0.055), white, yaw=yaw_)
+        bx_, by_ = at(0.03)
+        make_rot_box(f"Jiggles_Club_{k}_Band", (bx_, by_, sz + 0.03), (0.02, 0.057, 0.057), band, yaw=yaw_)
+        bx_, by_ = at(0.12)
+        make_rot_box(f"Jiggles_Club_{k}_Handle", (bx_, by_, sz + 0.012), (0.10, 0.024, 0.024), handle, yaw=yaw_)
+        bx_, by_ = at(0.18)
+        make_rot_box(f"Jiggles_Club_{k}_Knob", (bx_, by_, sz + 0.018), (0.02, 0.036, 0.036), white, yaw=yaw_)
     # His name in red paint on the cabinet base (north face)
     # (2026-10-30: a cream board with the name's strokes in red, not one red bar)
     make_box("Jiggles_Name", (cbx, cby + 0.46, 0.62), (0.56, 0.02, 0.10),

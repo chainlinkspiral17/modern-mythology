@@ -3835,6 +3835,11 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-04 · pass 288: Jiggles' face and his clubs (vol2 ch1, crumpled_barn_int).**
+- "the sneering puppet performer"; "His head came to rest against his shoulder ... His smile and jeering eyes set upon a something across the way"; "Jiggles the Juggler". The head was a bare can. It now carries a painted vaudeville face on the side toward the sign: two narrow eyes tilted to a jeer under their brows, a wide red grin turned up at the ends, a red nose, rouged cheeks, and a battered bowler. Three juggling clubs (white, a red band, a dark handle): one standing by his hip, two lying on the stage where the performance left them.
+- **Full suite on pass 287:** clean after the skatepark fix (the sheared-prism helper under the audits' stubs: see the geometry-audit playbook's 2026-11-04 lesson).
+- **Draft N+1:** the head tilted to the shoulder as geometry (it is upright; the sag is in the hip); the marionette's strings to the clubs' hands; the glass shard catching the bay's light.
+
 **2026-11-04 · pass 287: the skate pool's deep end; the barn's ruts; the smoke off Philip's embers.**
 - **skatepark (vol1 ch2), pool draft 4:** "waiting to push off into the pool". The pool had one flat floor 1.8 m down. It now has a shallow end (W, 1.3 m) and a deep end (E, 2.3 m) with the floor sloping between over 1.8 m; the wall-base curves follow the slope (a sheared prism: `make_sheared_prism` in the builder, built on `_gen_prism` + `_finalize_mesh` so the audits' recorder sees it), each corner fill reaches its own floor, the drain sits in the deep end. 96 draw calls, unchanged.
   - Two legacy markers (`shot_insert_rail`, `shot_insert_hand_rail`) misaim under the per-set gate; no chapter cues them on this set and the full suite does not count them. Left.
