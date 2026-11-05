@@ -323,6 +323,33 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-05 · a change of place is a transition the text chooses; a hide fades
+
+- **The user:** "I want a portrait fade in and out, the hard cuts and
+  disappearances feel weird in spots. Fades, stylized transitions, also
+  possible. Fade in and out into scenes. Director can use the text for
+  context."
+- **What was hard:** a scene FILE change already fades through the veil, but
+  a `bg` node inside a scene swapped the picture in one frame and
+  `hide_all` deleted every portrait in the same frame; a script's own
+  bare `hide` deleted them too.
+- **Now:** a `bg` node that changes the view (another place, or another
+  view of one set — the porch → the cabin's table) plays a transition and
+  holds the story until it is done. `"transition"` on the node wins
+  (`dissolve` | `fade` | `flash` | `cut`); else GameEngine reads the line
+  before and the lines after: a dream / memory / vision → a pale FLASH;
+  time passing (later, the next morning, a clock time, a weekday, a "—"
+  break) → a FADE through black; the action carrying on (went into, came
+  out, followed, inside, through the door) → a DISSOLVE of the last frame
+  into the new one; otherwise a fade. Portraits clear under the cover. A
+  bare `hide` fades its portraits out. The save-resume fast-forward stays
+  instant.
+- **Watch for:** flash words that are only facts ("bypassed thirty years
+  ago" fired the first draft); keep the flash list to dreams, memories and
+  visions. Check in the engine: `VnLineShot --shots <scene>:<node> --next 4`
+  and grep `[GameEngine] TRANSITION`.
+
+
 ### 2026-11-05 · move to a near frame, cut to a far one; faces always cut (pass 296)
 
 - **The user:** "Background is always cutting when other options may be

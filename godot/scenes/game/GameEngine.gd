@@ -523,6 +523,7 @@ func _open_music() -> void:
 
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_plate_opened = false
+	_xf_src = ""                    # a scene's first bg opens under the veil, not a transition
 	_held_shows.clear()
 	_phone_close()
 	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
@@ -859,7 +860,7 @@ func _dispatch(n: Dictionary) -> void:
 		"choice":     _do_choice(n)
 		"show":       _do_show(n); _run_next()
 		"hide":       _do_hide(n); _run_next()
-		"bg":         _do_bg(n);   _run_next()
+		"bg":         _bg_with_transition(n)
 		"substrate":  _do_substrate(n); _run_next()
 		"composition": _do_composition(n); _run_next()
 		"bgm":        _do_bgm(n);  _run_next()
@@ -1362,7 +1363,7 @@ func _cue_signature(char_name: String) -> void:
 func _do_hide(n: Dictionary) -> void:
 	var pos: String = n.get("pos", "")
 	if pos == "":
-		_chars.call("hide_all")
+		_chars.call("hide_all", true)
 	else:
 		_chars.call("hide_at", pos)
 
@@ -1459,9 +1460,145 @@ func _place_of(src: String) -> String:
 	return glb
 
 
+# ── Place changes inside a scene (2026-11-05) ────────────────────
+# The user: "I want a portrait fade in and out, the hard cuts and
+# disappearances feel weird in spots. Fades, stylized transitions, also
+# possible. Fade in and out into scenes. Director can use the text for
+# context." A `bg` node that moves the story to ANOTHER PLACE no longer
+# swaps the picture (and drops every portrait) in one frame: it plays a
+# transition and holds the story until it is done. The style comes from
+# the node's own "transition" ("dissolve" | "fade" | "flash" | "cut"),
+# else from the text around it:
+#   · flash — a dream, a memory, a vision: a pale dip
+#   · fade  — time passes ("later", "the next morning", a clock time, a
+#             "—" break): through black
+#   · dissolve — the action carries on into the next room: the old frame
+#             melts into the new one
+# Same place (another preset of one set) and the save-resume fast-forward
+# stay instant: there is nothing to cross.
+const XF_FADE_OUT := 0.32
+const XF_FADE_IN := 0.5
+const XF_DISSOLVE := 0.75
+const XF_FLASH_OUT := 0.14
+const XF_FLASH_IN := 0.55
+const XF_READY_MAX := 90            # frames to wait for a heavy set to load under the cover
+var _xf_cover: ColorRect = null
+var _xf_src: String = ""            # the bg on screen (set by _do_bg, the resume path included)
+var _xf_still: TextureRect = null
+var _xf_time_rx: RegEx = null
+var _xf_flash_rx: RegEx = null
+var _xf_walk_rx: RegEx = null
+
+
+func _bg_with_transition(n: Dictionary) -> void:
+	var src: String = resolve_bg(_s(n, "src"), _scene_id)
+	# another place, OR another view of the same set (the porch → the
+	# cabin's interior is one model and still a jump of the camera)
+	var moving: bool = _xf_src != "" and src != _xf_src
+	var style: String = String(n.get("transition", ""))
+	if style == "" and moving:
+		style = _transition_for(_node_idx - 1)
+	if not moving or style == "cut" or style == "":
+		_do_bg(n)
+		_run_next()
+		return
+	_transition_lock = true
+	await _transition_play(n, style)
+	_transition_lock = false
+	_run_next()
+
+
+func _transition_play(n: Dictionary, style: String) -> void:
+	print("[GameEngine] TRANSITION %s → %s" % [style, _s(n, "src")])
+	if style == "dissolve":
+		# hold the last frame as a still, change the place under it, melt
+		await RenderingServer.frame_post_draw
+		var img: Image = get_viewport().get_texture().get_image()
+		_xf_still = TextureRect.new()
+		_xf_still.texture = ImageTexture.create_from_image(img)
+		_xf_still.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_xf_still.stretch_mode = TextureRect.STRETCH_SCALE
+		_xf_still.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_xf_still.z_index = UI_Z + 39
+		add_child(_xf_still)
+		_do_bg(n)
+		await _xf_wait_ready()
+		var tw := create_tween()
+		tw.tween_property(_xf_still, "modulate:a", 0.0, XF_DISSOLVE)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		await tw.finished
+		_xf_still.queue_free()
+		_xf_still = null
+		return
+	# fade (through near-black) or flash (a pale dip)
+	if _xf_cover == null or not is_instance_valid(_xf_cover):
+		_xf_cover = ColorRect.new()
+		_xf_cover.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_xf_cover.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_xf_cover.z_index = UI_Z + 39
+		add_child(_xf_cover)
+	var flash: bool = style == "flash"
+	_xf_cover.color = Color(0.95, 0.93, 0.88, 0.0) if flash else Color(0.01, 0.008, 0.005, 0.0)
+	var t_out: float = XF_FLASH_OUT if flash else XF_FADE_OUT
+	var t_in: float = XF_FLASH_IN if flash else XF_FADE_IN
+	var tw_out := create_tween()
+	tw_out.tween_property(_xf_cover, "color:a", 0.88 if flash else 1.0, t_out)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await tw_out.finished
+	_do_bg(n)
+	await _xf_wait_ready()
+	var tw_in := create_tween()
+	tw_in.tween_property(_xf_cover, "color:a", 0.0, t_in)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	await tw_in.finished
+
+
+# Under the cover, give a 3D set the frames it takes to load and draw (a
+# heavy GLB hitches) before showing it.
+func _xf_wait_ready() -> void:
+	for i in XF_READY_MAX:
+		await get_tree().process_frame
+		var loaded: bool = _bg_3d_node == null or not is_instance_valid(_bg_3d_node) \
+			or not _bg_3d_node.has_method("has_locale_loaded") \
+			or bool(_bg_3d_node.call("has_locale_loaded"))
+		if loaded and i >= 2:
+			break
+	await RenderingServer.frame_post_draw
+
+
+# The director reads the text: the line before the place change and the
+# two after it.
+func _transition_for(bg_index: int) -> String:
+	if _xf_time_rx == null:
+		_xf_time_rx = RegEx.new()
+		_xf_time_rx.compile("(?i)\\b(later|the next (morning|day|night|evening|week)|next morning|that (night|evening|afternoon|morning)|hours? (later|passed)|days? later|weeks? later|the following|by (morning|evening|nightfall|dawn|dusk)|at (one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|noon|midnight|dawn|dusk|\\d)|\\d{1,2}:\\d\\d|(monday|tuesday|wednesday|thursday|friday|saturday|sunday))\\b")
+		_xf_flash_rx = RegEx.new()
+		_xf_flash_rx.compile("(?i)\\b(dream|dreamed|dreamt|in (the|her|his|a) memory|the memory of|vision|as a (child|kid|girl|boy)|flash(ed)? back)\\b")
+		_xf_walk_rx = RegEx.new()
+		_xf_walk_rx.compile("(?i)\\b(went (in|into|out|through|up|down|back)|walked (in|into|out|through|over|back)|came (in|into|out|through)|stepped (in|into|out|through)|followed|led (her|him|them)|inside|out back|through the door|crossed (to|into))\\b")
+	var nodes: Array = _scene_data.get("nodes", [])
+	var around: String = ""
+	for j: int in [bg_index - 1, bg_index + 1, bg_index + 2, bg_index + 3]:
+		if j >= 0 and j < nodes.size() and nodes[j] is Dictionary:
+			around += " " + String((nodes[j] as Dictionary).get("text", ""))
+	var after: String = ""
+	for j: int in [bg_index + 1, bg_index + 2]:
+		if j >= 0 and j < nodes.size() and nodes[j] is Dictionary:
+			after += " " + String((nodes[j] as Dictionary).get("text", ""))
+	if _xf_flash_rx.search(after) != null:
+		return "flash"
+	if _xf_time_rx.search(around) != null or after.strip_edges().begins_with("—") \
+			or after.strip_edges().begins_with("\"—"):
+		return "fade"
+	if _xf_walk_rx.search(around) != null:
+		return "dissolve"
+	return "fade"
+
+
 func _do_bg(n: Dictionary) -> void:
 	_phone_close()
 	var src: String = resolve_bg(_s(n, "src"), _scene_id)
+	_xf_src = src
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:
 		_chars.call("hide_all")

@@ -1024,17 +1024,24 @@ func hide_at(pos: String) -> void:
 		_slots[pos] = null
 
 
-func hide_all() -> void:
+func hide_all(fade: bool = false) -> void:
 	# Scene transitions hard-clear portraits immediately — on
 	# scene/chapter change we drop everything in the same frame so
 	# the next scene starts clean instead of overlapping a
-	# half-faded prior portrait with new dialogue.
+	# half-faded prior portrait with new dialogue. (The change happens
+	# under the engine's veil or transition cover, so the eye never
+	# sees the drop.) A script's own `hide` in the middle of a scene
+	# FADES (2026-11-05, the user: "the hard cuts and disappearances
+	# feel weird in spots").
 	for pos: String in _slots:
 		var slot = _slots.get(pos)
 		if slot != null:
 			var node: Control = slot["node"]
 			if is_instance_valid(node):
-				node.queue_free()
+				if fade:
+					_fade_out_free(node)
+				else:
+					node.queue_free()
 			_slots[pos] = null
 
 

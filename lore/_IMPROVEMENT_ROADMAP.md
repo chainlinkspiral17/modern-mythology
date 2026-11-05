@@ -3835,6 +3835,12 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-05 · pass 297: transitions into a new place, chosen from the text; portraits fade out instead of vanishing.**
+- The user: "I want a portrait fade in and out, the hard cuts and disappearances feel weird in spots. Fades, stylized transitions, also possible. Fade in and out into scenes. Director can use the text for context."
+- **Place changes inside a scene** were a one-frame swap with every portrait deleted. Now a transition plays and the story holds: FLASH (a pale dip) for a dream, memory or vision; FADE through black when time passes; DISSOLVE (the last frame melting into the new view) when the action carries on into the next room; a fade otherwise. A `bg` node's `"transition"` overrides. Across all volumes the text picks roughly 485 fades, 69 dissolves and a handful of flashes. Tested in the engine: the porch → the cabin table dissolves ("Come inside."), the highway → the turn and the cottage → the Roberts' fade.
+- **Portraits:** a script's bare `hide` fades them out (it deleted them); on a place change they clear under the cover. (Entrances and one character replacing another already faded.)
+- **Draft N+1:** the Deck read of the three styles' timing (0.32 + 0.5 s fades, 0.75 s dissolve, 0.14 + 0.55 s flash); more styles where a register wants one (the arcana's trip register could wipe or bleed); authored `transition` on the chapters' key place changes where the text-reading picks wrong.
+
 **2026-11-05 · pass 296: the holds of vols 5–7 cut (24 lines → 12); people's closeups in the Salty Tome and ChillWave no longer land on objects.**
 - **The holds:** the longest run of lines on one frame, per chapter, on 3D sets. 64 of 207 chapters held 12+ lines, the worst 24. `shot_seed --light` could only help where a chapter's whole-chapter cue budget allowed (4 of 28); 334 cues were placed by hand at the lines that turn (VN direction playbook, 2026-11-05). Now 13 chapters hold exactly 12 and none more; the chapter files changed only by the cues.
 - **People's closeups on objects:** the Salty Tome's kitchenette (19 cues), shop (8) and alley patch (4), and ChillWave's front room (5) had no person frame of their own, so a closeup borrowed the room's cat, counter, wall face, stick box or workbench. Each has its own pair now (`--closeup[-b] --preset`); the alley patch's pair looks along the mural wall before it is painted.
