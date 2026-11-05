@@ -3835,13 +3835,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-05 · pass 295: the skate pool's hip (vol1 ch2, skatepark, pool draft 6).**
+- The slope between the shallow and deep floors was one plane, so both breaks were hard creases. It is six pieces along a smoothstep now, tangent to each floor: a convex hip off the shallow end, a concave toe into the deep end; the N/S wall-base transitions follow the same pieces. Gates on the set clean (furniture_grammar's 4 INTRA are the corner fans, pre-existing). Deck must REBUILD skatepark.
+- **Draft N+1:** the drain's grate bars; the harbor's bell buoy and the Wagners' parked cars wait on a line that names them (no chapter text found for either).
+
 **2026-11-05 · pass 294: the truck's night closeups lit and framed; the vols 1–4 closeup and establishing scans.**
 - **The truck at night** (vehicle_cab_night, vehicle_cab_rear_night): the scene's generic closeup pair stands OUTSIDE the cab (authored for the day presets, where it reads), so every night closeup was black. Each night preset has its own pair now — from off the left and right fenders through the windshield at the driver's and passenger's seats — and its own dome-light practical at 2.2 (the 0.55 dome left the cab black under the night stack; the Altima's and Corolla's night presets already had their own at 0.45, and read).
 - **Vols 1–4 closeups:** 24 preset/marker frames (vols 1–4 cue 46 closeups in all; vols 3–4 are 2D except nine presets). Re-placed the skatepark's reverse (it stood on the pool's near rim looking at the slab's edge and the sky; now from the far rim back over the bowl to the slab, the bench and the fence). Left as is: the club's crowd (dancers, extras), the park's joggers, the bar exterior's door frame, the beach at night.
 - **Vols 1–4 establishing scan:** 55 preset wides + 22 markers (`est_list14`, `render_est14.sh`), all rendered and read: nothing to place. The vol 1–2 presets were authored one at a time against their chapters (the club's crowd, the Missing Link's bus stop, the falls) and every wide holds.
 - **Gates:** marker_aim, wrong_room, obstruction, the light gates on the cab clean; full suite 300 clean (50 gates, the three deferred).
 - **Checked:** the Hendersons' porch at night from the steps reads with the pass 292 lamp (the door, the lit kitchen window, the steps) — no second practical needed.
-- **Draft N+1:** the vols 5–7 scans again after the Deck's rebuild lands (the graustark, backyard and Miller kitchen GLBs there are the old ones until then).
+- **Draft N+1:** (the container builds every GLB from the same builders the Deck runs, so the scans above already saw the new sets; no re-scan waits on the Deck.) The user's generated images for the 12 sign/box slots, the 2 New Orleans window views and the 3 CG plates have not reached the branch or the Drive as of 2026-11-05 — wire them in when the manifest lands.
 
 **2026-11-04 · pass 293: the establishing scan of vols 5–7 begins (every preset wide and every `shot_establish` marker under its preset).**
 - **The method** is pass 291's: 172 preset wides and 151 establishing markers rendered under their presets (`est_list57`, `render_est57.sh`; skips what exists), read by eye in sheets of twenty. (The preset renders carry no chapter mood; `--mood` exists in TripPaintTest for when a frame needs one. The cabin porch's day preset is twice as bright as its dusk by pixel mean — a sheet read of it as "dark" was the montage's scaling, not the preset.)

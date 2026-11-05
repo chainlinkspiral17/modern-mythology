@@ -143,8 +143,10 @@ def build_pool_2026_09():
     shallow floor hides their lower part.
     DRAFT 5 (2026-11-04): the coping rounded at the corners; the corner
     fills reach the slab's top.
-    NEXT (draft 6): the hip where the slope meets the deep end as a proper
-    bump; the boards and the boys are the VN's (Faust, Wagner and Jacob
+    DRAFT 6 (2026-11-05): the hip — the slope a smoothstep in six pieces,
+    rounded into both floors (it was one plane with two hard creases).
+    NEXT (draft 7): the drain's grate bars; a puddle in the deep end after
+    rain if a chapter's weather asks for one; the boards and the boys are the VN's (Faust, Wagner and Jacob
     are portraits, never stand-ins)."""
     px, py, hx, hy = POOL_PX, POOL_PY, POOL_HX, POOL_HY
     top = 0.05
@@ -164,8 +166,23 @@ def build_pool_2026_09():
     # the floor in three: the shallow end, the slope, the deep end
     make_box("Pool_Floor_Shallow", ((POOL_X0 + sx0) / 2.0, py, fz_s - 0.05), (sx0 - POOL_X0, 2 * hy, 0.10), COL_POOL_FLOOR)
     make_box("Pool_Floor_Deep", ((sx1 + POOL_X1) / 2.0, py, fz_d - 0.05), (POOL_X1 - sx1, 2 * hy, 0.10), COL_POOL_FLOOR)
-    make_sheared_prism("Pool_Floor_Slope", ((sx0 + sx1) / 2.0, py, (fz_s + fz_d) / 2.0 - 0.05),
-                       [(-hy, -0.05), (hy, -0.05), (hy, 0.05), (-hy, 0.05)], sx1 - sx0, COL_POOL_FLOOR, slope, axis="X")
+    # (2026-11-05, draft 6) THE HIP: the slope was one plane, so both breaks
+    # were hard creases. Now six pieces along a smoothstep between the two
+    # floors, tangent to each: a convex hip off the shallow end and a concave
+    # toe into the deep end, the way a pool's floor is troweled. The N/S
+    # wall-base transitions follow the same pieces.
+    NS = 6
+    def _zs(x):
+        u = (x - sx0) / (sx1 - sx0)
+        return fz_s + (fz_d - fz_s) * (u * u * (3.0 - 2.0 * u))
+    slope_pieces = []
+    for k in range(NS):
+        xa_, xb_ = sx0 + (sx1 - sx0) * k / NS, sx0 + (sx1 - sx0) * (k + 1) / NS
+        za_, zb_ = _zs(xa_), _zs(xb_)
+        slope_pieces.append((xa_, xb_, (za_ + zb_) / 2.0, (zb_ - za_) / (xb_ - xa_)))
+    for k, (xa_, xb_, zm_, sl_) in enumerate(slope_pieces):
+        make_sheared_prism(f"Pool_Floor_Slope_{k}", ((xa_ + xb_) / 2.0, py, zm_ - 0.05),
+                           [(-hy, -0.05), (hy, -0.05), (hy, 0.05), (-hy, 0.05)], xb_ - xa_, COL_POOL_FLOOR, sl_, axis="X")
     make_cyl("Pool_Drain", (sx1 + (POOL_X1 - sx1) / 2.0, py, fz_d + 0.004), 0.12, 0.008, (0.20, 0.20, 0.21, 1.0), segments=12)
     # transitions: a quarter-round fillet along each wall's base, stopping
     # R short of each corner (the fillets never cross)
@@ -184,7 +201,9 @@ def build_pool_2026_09():
         for k in range(1, len(arc)):
             make_prism(f"Pool_Transition_{side}_{k}", (pos, py, fz), [(0.0, 0.0), (sgn * arc[k - 1][0], arc[k - 1][1]),
                        (sgn * arc[k][0], arc[k][1])], 2 * hy - 2 * R, COL_POOL, axis="Y")
-    segs = (("Sh", POOL_X0 + R, sx0, fz_s, 0.0), ("Sl", sx0, sx1, (fz_s + fz_d) / 2.0, slope), ("Dp", sx1, POOL_X1 - R, fz_d, 0.0))
+    segs = ((("Sh", POOL_X0 + R, sx0, fz_s, 0.0),)
+            + tuple((f"Sl{k}", xa_, xb_, zm_, sl_) for k, (xa_, xb_, zm_, sl_) in enumerate(slope_pieces))
+            + (("Dp", sx1, POOL_X1 - R, fz_d, 0.0),))
     for side, pos, sgn in (("S", POOL_Y0, 1.0), ("N", POOL_Y1, -1.0)):
         for tag, xa, xb, fz, sl in segs:
             for k in range(1, len(arc)):
