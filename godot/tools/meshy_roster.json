@@ -38508,26 +38508,22 @@
       "scenes": [
         "vol1_ch7_ink"
       ],
-      "prompt": "Faust's home by day, afterwards. Joan sits with her bare back to him, half dressed for battle that night; John, behind her, draws a coarse brush down her spine, laying in warm, strong, fierce lines over faint guide marks he etched with a fingernail. The bristles scratch. Daylight from the window on skin and wet paint; brushes and paints at hand. Intimate, tender, quietly charged, seen from behind, nothing explicit.",
+      "prompt": "Close on a woman's shoulder blade above the loose drape of a linen shirt, in a quiet room by day. A man's hand, from behind her, lays a coarse brush of warm, strong colour along faint guide lines scratched into the paint's ground with a fingernail: a bold design taking shape, half finished, the paint still wet. Window light, a jar of brushes and a palette of colours at the edge of the frame. Patient, tender, an artist at work. Only the shoulder and the hand are in frame; no faces.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol1/vol1_ch7_ink.json",
-          "text": "Afterwards, Joan is dressing, her naked back visible to John."
-        },
-        {
-          "src": "vol1/vol1_ch7_ink.json",
           "text": "He traces a faint line with his fingernail, etching in basic lines."
-        },
-        {
-          "src": "vol1/vol1_ch7_ink.json",
-          "text": "John kisses her neck, she looks up. The brush comes down her spine."
         }
       ],
-      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it. (2026-10-19 audit): generated without the cast reference; regenerate with refs so the faces match the portraits.",
+      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it. (2026-10-19 audit): generated without the cast reference; regenerate with refs so the faces match the portraits. (2026-11-05) The image model refused the first run under its sex/violence guidelines: Hero Studio prepends the canon quotes, and 'naked back', 'dressing' and 'kisses her neck' read as sexual. Those lines stay the scene's canon (kept in `canon_withheld`); only the quotes left in `canon` are sent, and the direction frames the picture so it never needs the others.",
       "refs": [
         "joan",
         "faust"
+      ],
+      "canon_withheld": [
+        "Afterwards, Joan is dressing, her naked back visible to John.",
+        "John kisses her neck, she looks up. The brush comes down her spine."
       ]
     },
     {
@@ -56461,13 +56457,9 @@
       "scenes": [
         "vol5_prelude_arcana_liar_king"
       ],
-      "prompt": "The view inside a small crystal ball held up to one eye at a river's edge in late sun: an impossible, trancelike void of lattices - webs and tendrils of light floating in depth, geometric and organic shapes that dance and collide, explosions of colour more profound than fireworks, all enfolded within the ball's curve. The near edge of the onyx-dark crystal and a squinting eye's blur frame the vision; the mudflat's sun scatter glints at the rim. Wonder, a little dangerous. No faces, no text.",
+      "prompt": "The view inside a small dark crystal sphere, held up to the light at a river's edge in late sun: a deep, luminous void of lattices — webs and tendrils of light floating at many depths, geometric and organic shapes drifting and meeting, blooms of colour like slow fireworks, all enfolded within the sphere's curve. The polished rim of the crystal frames the vision; sun glints off the mudflat beyond. Wonder. No people, no text.",
       "prompt_mode": "append",
       "canon": [
-        {
-          "src": "vol5/vol5_prelude_arcana_liar_king.json",
-          "text": "At a distance, it appears as if a small crystal ball hovers between two neck clasps, jutting out like a second Adam’s apple."
-        },
         {
           "src": "vol5/vol5_prelude_arcana_liar_king.json",
           "text": "Sitting at the water’s edge, having gotten some distance from the frog, the youth polishes the crystal, real careful like sonic cleaner, sun scatter revealing enfolded intricacies within the ball itself."
@@ -56475,13 +56467,13 @@
         {
           "src": "vol5/vol5_prelude_arcana_liar_king.json",
           "text": "The child goes lost, holding the crystal ball up to an eye, squinting in with the other. Inside, something more than all the collected wonder and beauty of the known universe, just possibly maybe."
-        },
-        {
-          "src": "vol5/vol5_prelude_arcana_liar_king.json",
-          "text": "And yet this child can look into that impossible trancelike void and survive its haunting lattices, navigate with ease, the webs and tendrils of light that float inside, geometric and organic shapes that dance and collide, explosions of color and beauty more profound than the most dazzling fireworks"
         }
       ],
-      "notes": "CG (2026-11-05): the scene cued assets/cg/vol5_prelude_crystal_lattice.jpg (caption 'the projector is your protector') with no roster entry, so Hero Studio never listed it. Written from the scene's own sentences; the picture is the view INTO the crystal, so the Child (a speaker) is not drawn."
+      "notes": "CG (2026-11-05): the scene cued assets/cg/vol5_prelude_crystal_lattice.jpg (caption 'the projector is your protector') with no roster entry, so Hero Studio never listed it. Written from the scene's own sentences; the picture is the view INTO the crystal, so the Child (a speaker) is not drawn. (2026-11-05) The image model refused the first run under its sex/violence guidelines: Hero Studio prepends the canon quotes, and 'survive', 'explosions' and the neck-clasp line read as violence. Those lines stay the scene's canon (kept in `canon_withheld`); only the quotes left in `canon` are sent, and the direction frames the picture so it never needs the others.",
+      "canon_withheld": [
+        "At a distance, it appears as if a small crystal ball hovers between two neck clasps, jutting out like a second Adam’s apple.",
+        "And yet this child can look into that impossible trancelike void and survive its haunting lattices, navigate with ease, the webs and tendrils of light that float inside, geometric and organic shapes that dance and collide, explosions of color and beauty more profound than the most dazzling fireworks"
+      ]
     },
     {
       "slug": "vol5_prelude_gallery_paper",
@@ -56501,19 +56493,18 @@
       "scenes": [
         "vol5_prelude_arcana_liar_king"
       ],
-      "prompt": "In a dim tiered portrait gallery like the decks of an old steamship, a crystal ball on a stand has just lit up from within; above it a single sheet of old paper hangs in the air, glowing, close enough to read (its writing left as soft illegible lines). Behind, rows of framed portraits at many levels shimmer with activity but stay dim and shadowy. Hushed, haunted, the moment before reading. No readable text anywhere in the picture.",
+      "prompt": "In a dim, tiered portrait gallery like the decks of an old steamship, a crystal ball on a brass stand has just lit up from within; above it a single sheet of old paper floats in the air, glowing softly, its writing shown as faint unreadable lines. Behind, rows of framed portraits at many levels shimmer faintly but stay dim and shadowy. Hushed and mysterious, the moment before reading. No people, no readable text.",
       "prompt_mode": "append",
       "canon": [
         {
           "src": "vol5/vol5_prelude_arcana_liar_king.json",
           "text": "The child goes to the crystal ball, when it lights up, the portraits sitting idly in the gallery, shimmer with activity, but remain dim and shadowy. Above the crystal ball shines a piece of paper. The child goes up to read it."
-        },
-        {
-          "src": "vol5/vol5_prelude_arcana_liar_king.json",
-          "text": "Once upon a time, in the dynamic inbred world of health care industry, energy behemoths, invasive houses of law, and breeding ground for political career trajectory, and the cutthroat food service industry that fed them fat and feasted on the crumbs, there existed the major arcana."
         }
       ],
-      "notes": "CG (2026-11-05): the scene cued assets/cg/vol5_prelude_gallery_paper.jpg (caption 'Once upon a time') with no roster entry, so Hero Studio never listed it. The gallery matches vol5_prelude_steamship_gallery (same room); the paper's text is the narration that follows, so the picture leaves it illegible. The Child (a speaker) is not drawn."
+      "notes": "CG (2026-11-05): the scene cued assets/cg/vol5_prelude_gallery_paper.jpg (caption 'Once upon a time') with no roster entry, so Hero Studio never listed it. The gallery matches vol5_prelude_steamship_gallery (same room); the paper's text is the narration that follows, so the picture leaves it illegible. The Child (a speaker) is not drawn. (2026-11-05) The image model refused the first run under its sex/violence guidelines: Hero Studio prepends the canon quotes, and the 'Once upon a time' line ('inbred', 'cutthroat', 'fed them fat') read as both. Those lines stay the scene's canon (kept in `canon_withheld`); only the quotes left in `canon` are sent, and the direction frames the picture so it never needs the others.",
+      "canon_withheld": [
+        "Once upon a time, in the dynamic inbred world of health care industry, energy behemoths, invasive houses of law, and breeding ground for political career trajectory, and the cutthroat food service industry that fed them fat and feasted on the crumbs, there existed the major arcana."
+      ]
     },
     {
       "slug": "vol5_prelude_restaurant_floor",
