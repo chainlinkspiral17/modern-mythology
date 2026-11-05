@@ -38508,7 +38508,7 @@
       "scenes": [
         "vol1_ch7_ink"
       ],
-      "prompt": "Close on a woman's shoulder blade above the loose drape of a linen shirt, in a quiet room by day. A man's hand, from behind her, lays a coarse brush of warm, strong colour along faint guide lines scratched into the paint's ground with a fingernail: a bold design taking shape, half finished, the paint still wet. Window light, a jar of brushes and a palette of colours at the edge of the frame. Patient, tender, an artist at work. Only the shoulder and the hand are in frame; no faces.",
+      "prompt": "A quiet room by day, window light. On a wooden table: open jars of warm, strong paint, a palette smeared with ochre, red and umber, a jar of brushes. A man's hand holds a coarse brush loaded with colour, lifted mid-stroke, the bristles wet; beside it a fingertip has scratched faint guide lines into a dried test swatch of the same design, bold and fierce, half finished. Patient, tender, an artist about to begin. Only the hand, the brush and the paints are in frame: no other body, no faces.",
       "prompt_mode": "append",
       "canon": [
         {
@@ -38516,7 +38516,7 @@
           "text": "He traces a faint line with his fingernail, etching in basic lines."
         }
       ],
-      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it. (2026-10-19 audit): generated without the cast reference; regenerate with refs so the faces match the portraits. (2026-11-05) The image model refused the first run under its sex/violence guidelines: Hero Studio prepends the canon quotes, and 'naked back', 'dressing' and 'kisses her neck' read as sexual. Those lines stay the scene's canon (kept in `canon_withheld`); only the quotes left in `canon` are sent, and the direction frames the picture so it never needs the others.",
+      "notes": "PICTURE (2026-10-17): described from a full reading of the scene that shows it (the user: 'double-check the generation descriptions versus the chapter contents, evoke, get details close to right'). `prompt` is what the picture shows; `canon` the scene's own sentences behind it. (2026-10-19 audit): generated without the cast reference; regenerate with refs so the faces match the portraits. (2026-11-05) The image model refused the first run under its sex/violence guidelines: Hero Studio prepends the canon quotes, and 'naked back', 'dressing' and 'kisses her neck' read as sexual. Those lines stay the scene's canon (kept in `canon_withheld`); only the quotes left in `canon` are sent, and the direction frames the picture so it never needs the others. (2026-11-05, the user: 'It'll run into nudity error otherwise') The picture holds no skin but the painter's hand: the paints, the brush lifted mid-stroke, and the design's guide lines on a test swatch.",
       "refs": [
         "joan",
         "faust"
