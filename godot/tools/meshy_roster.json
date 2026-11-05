@@ -56444,6 +56444,78 @@
       "setting": "America"
     },
     {
+      "slug": "vol5_prelude_crystal_lattice",
+      "kind": "scene2d",
+      "name": "inside the doohickey's crystal: the lattice",
+      "file": "cg/vol5_prelude_crystal_lattice.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_crystal_lattice"
+      ],
+      "tag": "vol5 · CG · the projector is your protector · vol5_prelude_arcana_liar_king",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_prelude_arcana_liar_king"
+      ],
+      "prompt": "The view inside a small crystal ball held up to one eye at a river's edge in late sun: an impossible, trancelike void of lattices - webs and tendrils of light floating in depth, geometric and organic shapes that dance and collide, explosions of colour more profound than fireworks, all enfolded within the ball's curve. The near edge of the onyx-dark crystal and a squinting eye's blur frame the vision; the mudflat's sun scatter glints at the rim. Wonder, a little dangerous. No faces, no text.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "At a distance, it appears as if a small crystal ball hovers between two neck clasps, jutting out like a second Adam’s apple."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Sitting at the water’s edge, having gotten some distance from the frog, the youth polishes the crystal, real careful like sonic cleaner, sun scatter revealing enfolded intricacies within the ball itself."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The child goes lost, holding the crystal ball up to an eye, squinting in with the other. Inside, something more than all the collected wonder and beauty of the known universe, just possibly maybe."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "And yet this child can look into that impossible trancelike void and survive its haunting lattices, navigate with ease, the webs and tendrils of light that float inside, geometric and organic shapes that dance and collide, explosions of color and beauty more profound than the most dazzling fireworks"
+        }
+      ],
+      "notes": "CG (2026-11-05): the scene cued assets/cg/vol5_prelude_crystal_lattice.jpg (caption 'the projector is your protector') with no roster entry, so Hero Studio never listed it. Written from the scene's own sentences; the picture is the view INTO the crystal, so the Child (a speaker) is not drawn."
+    },
+    {
+      "slug": "vol5_prelude_gallery_paper",
+      "kind": "scene2d",
+      "name": "the sheet of paper above the lit crystal in the gallery",
+      "file": "cg/vol5_prelude_gallery_paper.jpg",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "vol5_prelude_gallery_paper"
+      ],
+      "tag": "vol5 · CG · Once upon a time · vol5_prelude_arcana_liar_king",
+      "aspect": "16:9",
+      "pose": null,
+      "role": "cg",
+      "scenes": [
+        "vol5_prelude_arcana_liar_king"
+      ],
+      "prompt": "In a dim tiered portrait gallery like the decks of an old steamship, a crystal ball on a stand has just lit up from within; above it a single sheet of old paper hangs in the air, glowing, close enough to read (its writing left as soft illegible lines). Behind, rows of framed portraits at many levels shimmer with activity but stay dim and shadowy. Hushed, haunted, the moment before reading. No readable text anywhere in the picture.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "The child goes to the crystal ball, when it lights up, the portraits sitting idly in the gallery, shimmer with activity, but remain dim and shadowy. Above the crystal ball shines a piece of paper. The child goes up to read it."
+        },
+        {
+          "src": "vol5/vol5_prelude_arcana_liar_king.json",
+          "text": "Once upon a time, in the dynamic inbred world of health care industry, energy behemoths, invasive houses of law, and breeding ground for political career trajectory, and the cutthroat food service industry that fed them fat and feasted on the crumbs, there existed the major arcana."
+        }
+      ],
+      "notes": "CG (2026-11-05): the scene cued assets/cg/vol5_prelude_gallery_paper.jpg (caption 'Once upon a time') with no roster entry, so Hero Studio never listed it. The gallery matches vol5_prelude_steamship_gallery (same room); the paper's text is the narration that follows, so the picture leaves it illegible. The Child (a speaker) is not drawn."
+    },
+    {
       "slug": "vol5_prelude_restaurant_floor",
       "kind": "scene2d",
       "name": "the dining floor of an old-school Sicilian restaurant",
