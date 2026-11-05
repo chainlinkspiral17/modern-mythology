@@ -158,6 +158,27 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-05 · the establishing scan (pass 293): a second wide stands where a tree or a canopy is not
+
+- **What happened:** every preset wide and `shot_establish` marker of
+  vols 5–7 rendered and read. Three second wides were wrong the same way:
+  a lens 1.2–1.6 m from a trunk, a crown or a flowering shrub, which the
+  obstruction gate passes (a tree is "distinct geometry", and a canopy's
+  underside 1.3 m overhead is above the frame's median-depth ray) while
+  it fills a third of the picture as a black or red slab.
+- **Rule:** an establishing lens keeps 3 m from any tree part (trunk,
+  crown, canopy) and any shrub taller than the lens, and the first thing
+  to check in a re-place is what stands between 0 and 2 m of the new
+  spot above eye height — `near()` with `c[1] > 2.2`.
+- **Also:** the survey's preset renders carry no chapter mood, so a day
+  preset of a dusk-lit scene reads as its dusk (the cabin porch): judge
+  the frame's geometry there, not its light. A locale whose GLB is not
+  built in the container renders nothing and the loader says "preset did
+  not load" — build it with the headless Blender (the cathedral was the
+  one). And markers a sibling preset inherits from the shared .tscn
+  (the NexCorp restroom's `establish_b` is the pumps) are harmless only
+  while no such cue plays under it: check the chapter before fixing.
+
 ### 2026-11-04 · the closeup scan (pass 292): sculpted figures are invisible to the gates; a speaker's stand-in doubles the portrait
 
 - **What happened:** the closeup frames of vols 5–7 rendered under their

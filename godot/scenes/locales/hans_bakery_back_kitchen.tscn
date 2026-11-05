@@ -498,11 +498,13 @@ position = Vector3(-7.000, 1.550, -4.600)
 rotation = Vector3(-0.0274, 0.1651, 0.0)
 metadata/fov = 42.0
 
-; establish (back door): from the stoop, the lot, the truck, Hemlock and the wagon
+; the back door's second wide: from the lot's west, past the Toyota's nose, the door in the W wall under the hemlock (pass 293: it stood at the door looking at the pickup's flank from 2.5 m; a try from the north end sat under the hemlock's canopy, a black slab)
 [node name="shot_establish_b__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-5.000, 1.600, -5.600)
-rotation = Vector3(-0.1300, 1.3734, 0.0)
+position = Vector3(-10.500, 1.600, -3.500)
+rotation = Vector3(-0.0668, -1.2120, 0.0)
 metadata/fov = 60.0
+
+
 
 ; insert (back door): the brown paper bag on the truck's hood
 [node name="shot_insert_bag__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]

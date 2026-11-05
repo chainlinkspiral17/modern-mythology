@@ -437,11 +437,12 @@ position = Vector3(10.900, 1.300, 1.500)
 rotation = Vector3(-0.0541, 0.4182, 0.0)
 metadata/fov = 42.0
 
-; reverse: from under the pecan back to the porch and the street
+; the yard's second wide: the cake table and the wicker chair from the lawn's east side, the pecan at the frame's left and the porch beyond (pass 293: it stood 1.6 m behind the pecan's trunk, which split the frame)
 [node name="shot_establish_b__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(12.600, 1.700, -2.600)
-rotation = Vector3(-0.0268, 1.8982, 0.0)
+position = Vector3(13.000, 1.700, 0.600)
+rotation = Vector3(-0.1526, 1.1903, 0.0)
 metadata/fov = 60.0
+
 
 ; ── named closeups (pass 93): the two porch chairs, each from its outer side along the porch
 ; closeup: Maya in her porch chair with the iced tea, from the east along the porch
