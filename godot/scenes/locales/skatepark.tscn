@@ -344,11 +344,12 @@ rotation = Vector3(-0.2618, -0.2618, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; the room's reverse closeup frame (pass 294: from the pool's far rim looking back over the bowl to the slab, the bench and the fence — it stood on the near rim looking at the slab's edge and the sky)
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.575, 1.612, -4.906)
-rotation = Vector3(-0.2618, 2.8798, 0.0)
+position = Vector3(0.500, 1.600, -10.300)
+rotation = Vector3(-0.1654, 2.8885, 0.0)
 metadata/fov = 45.0
+
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pool__skatepark_day" type="Marker3D" parent="." groups=["vn_shot"]]
