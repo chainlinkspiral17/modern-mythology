@@ -235,7 +235,7 @@
     },
     {
       "t": "narrate",
-      "text": "A small laugh. Dry. Both of them.",
+      "text": "[shot:establish_b]A small laugh. Dry. Both of them.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/042.mp3"
     },
     {
@@ -247,25 +247,25 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Grandma. Mr. Dean has been — he was at a funeral in Graustark last week. I know this because he talked to a woman named Joanna LeMoine whose name I have also heard. He has been around this whole time.",
+      "text": "[shot:closeup maya]Grandma. Mr. Dean has been — he was at a funeral in Graustark last week. I know this because he talked to a woman named Joanna LeMoine whose name I have also heard. He has been around this whole time.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/044.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Yes, honey. I suspect he has.",
+      "text": "[shot:closeup grandmother]Yes, honey. I suspect he has.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/045.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "What do I — what do I do with this.",
+      "text": "[shot:closeup maya]What do I — what do I do with this.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/046.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Nothing, tonight. You put it back in the envelope. You put the envelope under the board. You put the rug back. You come downstairs and I will make you a sandwich and you will eat it because you have not eaten since eleven, which I noticed.",
+      "text": "[shot:closeup grandmother]Nothing, tonight. You put it back in the envelope. You put the envelope under the board. You put the rug back. You come downstairs and I will make you a sandwich and you will eat it because you have not eaten since eleven, which I noticed.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/047.mp3"
     },
     {
@@ -283,7 +283,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Should I — should I tell F.T. I've seen it.",
+      "text": "[shot:closeup maya]Should I — should I tell F.T. I've seen it.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/050.mp3"
     },
     {
@@ -294,7 +294,7 @@
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "No, honey. I don't think so. Not yet. If this photograph is what I think it is, then F.T. — the one you're calling F.T. — already knows it exists, because he is, as you have guessed, the kind of person who knows what exists.",
+      "text": "[shot:closeup grandmother]No, honey. I don't think so. Not yet. If this photograph is what I think it is, then F.T. — the one you're calling F.T. — already knows it exists, because he is, as you have guessed, the kind of person who knows what exists.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/052.ogg"
     },
     {
@@ -311,7 +311,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya slides the photograph back into the envelope. She slides the envelope back into the cavity. She replaces the board. She smooths the rug back over it. She stands.",
+      "text": "[shot:insert floorboards]Maya slides the photograph back into the envelope. She slides the envelope back into the cavity. She replaces the board. She smooths the rug back over it. She stands.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/055.mp3"
     },
     {

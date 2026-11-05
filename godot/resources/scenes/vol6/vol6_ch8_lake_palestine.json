@@ -724,7 +724,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "What do you eat instead.",
+      "text": "[shot:closeup miller]What do you eat instead.",
       "expr": "surprised",
       "voice": "assets/audio/voice/vol6_ch8_lake_palestine/116.mp3"
     },
@@ -759,7 +759,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Because Mom thinks it's mayo.",
+      "text": "[shot:closeup sam]Because Mom thinks it's mayo.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch8_lake_palestine/121.mp3"
     },
@@ -776,14 +776,14 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Sammy. You are — you are something else.",
+      "text": "[shot:closeup miller]Sammy. You are — you are something else.",
       "expr": "happy",
       "voice": "assets/audio/voice/vol6_ch8_lake_palestine/124.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "I'm yours.",
+      "text": "[shot:closeup sam]I'm yours.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch8_lake_palestine/125.mp3"
     },
@@ -801,7 +801,7 @@
     },
     {
       "t": "narrate",
-      "text": "They eat the sandwiches.",
+      "text": "[shot:insert cooler]They eat the sandwiches.",
       "voice": "assets/audio/voice/vol6_ch8_lake_palestine/128.mp3"
     },
     {

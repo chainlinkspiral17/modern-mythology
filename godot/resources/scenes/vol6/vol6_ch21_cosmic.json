@@ -904,7 +904,7 @@
     },
     {
       "t": "narrate",
-      "text": "Another beat.",
+      "text": "[shot:insert cypress]Another beat.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/162.mp3"
     },
     {
@@ -919,7 +919,7 @@
     },
     {
       "t": "narrate",
-      "text": "I just know I have, in this past four months, been doing a thing that has been turning me into a person who can be alone in a shop on a busy Saturday and not, by the alone-ness, lose the competence.",
+      "text": "[shot:establish]I just know I have, in this past four months, been doing a thing that has been turning me into a person who can be alone in a shop on a busy Saturday and not, by the alone-ness, lose the competence.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/165.mp3"
     },
     {

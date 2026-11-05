@@ -502,7 +502,7 @@
       "t": "narrate"
     },
     {
-      "text": "He registered the warmth — by what he had been feeling at the cabin Wednesday afternoon when Kai had been on the daybed with the cap — the warmth of the cedar of the bowls. The piece in his hand was at the same temperature.",
+      "text": "[shot:closeup finn]He registered the warmth — by what he had been feeling at the cabin Wednesday afternoon when Kai had been on the daybed with the cap — the warmth of the cedar of the bowls. The piece in his hand was at the same temperature.",
       "t": "narrate"
     },
     {
@@ -511,7 +511,7 @@
     },
     {
       "char": "old_man",
-      "text": "Finn.",
+      "text": "[shot:closeup old_man]Finn.",
       "t": "say"
     },
     {
@@ -536,12 +536,12 @@
     },
     {
       "char": "finn",
-      "text": "Tell me the three.",
+      "text": "[shot:closeup finn]Tell me the three.",
       "t": "say"
     },
     {
       "char": "old_man",
-      "text": "First. The crow is the bell. The crow is going to ring. Be where you can hear when she rings.",
+      "text": "[shot:closeup old_man]First. The crow is the bell. The crow is going to ring. Be where you can hear when she rings.",
       "t": "say"
     },
     {
@@ -556,7 +556,7 @@
     },
     {
       "char": "old_man",
-      "text": "You will have a count of seconds. Use the count to be where you need to be. Use it to get there if you are not. The bowls will give you the count.",
+      "text": "[shot:insert tide_pool]You will have a count of seconds. Use the count to be where you need to be. Use it to get there if you are not. The bowls will give you the count.",
       "t": "say"
     },
     {

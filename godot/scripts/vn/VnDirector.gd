@@ -39,6 +39,16 @@ const DRIFT_MIN_RATIO := 0.86
 
 # Default FOV per shot type when the marker carries no metadata/fov.
 const TYPE_FOV := {"closeup": 45.0, "insert": 35.0}
+# MOVES, NOT ONLY CUTS (2026-11-05, the user: "Background is always
+# cutting when other options may be better. Pans for nearby views, etc.").
+# A frame NEAR the current one — a short way off and a moderate turn — is
+# reached by moving the camera there (an eased pan / dolly, timed by how far
+# it goes); a reverse shot, a jump across the room, and the first frame after
+# a page turn stay cuts.
+const MOVE_MAX_DIST := 3.2          # m between the two lenses
+const MOVE_MAX_TURN := 0.95         # rad (~55°) between the two view axes
+const MOVE_MIN_SECS := 0.55
+const MOVE_MAX_SECS := 1.5
 const CLOSEUP_PITCH_MIN := -0.07     # rad: a face frame looks level, a touch down at most
 const CLOSEUP_PITCH_MAX := 0.035
 const INSERT_CENTER := 0.36           # of the frame's height from the top: an insert's object, clear of the text
@@ -80,6 +90,9 @@ var _insert_words: PackedStringArray = PackedStringArray()
 var _panel_words: PackedStringArray = PackedStringArray()
 
 var _drifting: bool = false
+var _cam_settled: bool = false      # a frame has been shown in this locale (a move needs a "from")
+var _last_shot_type: String = ""     # the frame on screen: establish / closeup / insert / wide
+var _move_tween: Tween = null
 var _drift_floor: float = 50.0
 
 # A [shot:] can land one line after a bg directive whose deferred
@@ -139,6 +152,9 @@ func on_locale_changed() -> void:
 	_pending_shot = ""
 	_pending_ops.clear()
 	_drifting = false
+	_cam_settled = false
+	_last_shot_type = ""
+	_kill_move()
 	_face_side.clear()
 	_set_letterbox(false)
 	_dismiss_panel()
@@ -361,10 +377,8 @@ func _try_apply_shot() -> void:
 			_cut_to_marker(marker, shot_type, drift)
 			print("[VnDirector] CUT establish → marker%s" % (" ~drift" if drift else ""))
 		else:
-			if _bg3d.has_method("restore_preset_vantage"):
-				_bg3d.restore_preset_vantage()
-			_start_drift(drift)
-			print("[VnDirector] CUT establish → preset vantage%s" % (" ~drift" if drift else ""))
+			_return_to_wide(drift)
+			print("[VnDirector] establish → preset vantage%s" % (" ~drift" if drift else ""))
 		return
 
 	# closeup / insert (and any future marker-backed type)
@@ -374,10 +388,8 @@ func _try_apply_shot() -> void:
 		# for the opposite. The widest framing we always have is the
 		# preset vantage.
 		if shot_type == "wide":
-			if _bg3d.has_method("restore_preset_vantage"):
-				_bg3d.restore_preset_vantage()
+			_return_to_wide(drift)
 			_set_letterbox(true)
-			_start_drift(drift)
 			print("[VnDirector] CUT wide (preset vantage, no %s)%s" % [marker_name, " ~drift" if drift else ""])
 			return
 		# ── No authored marker for this cue ────────────────────
@@ -424,9 +436,7 @@ func _try_apply_shot() -> void:
 				return
 		# Nothing authored in this locale at all: hold the wide. An
 		# honest establishing frame beats a zoom into a flat wall.
-		if _bg3d.has_method("restore_preset_vantage"):
-			_bg3d.restore_preset_vantage()
-		_start_drift(drift)
+		_return_to_wide(drift)
 		print("[VnDirector] %s has no marker pool → holding the wide (was %s)"
 			% [shot_type, marker_name])
 		return
@@ -483,6 +493,9 @@ func _cut_to_marker(marker: Node3D, shot_type: String, drift: bool) -> void:
 	var cam: Camera3D = _bg3d.get_camera() if _bg3d.has_method("get_camera") else null
 	if cam == null:
 		return
+	_kill_move()
+	var from_tf: Transform3D = cam.global_transform
+	var from_fov: float = cam.fov
 	cam.global_transform = marker.global_transform
 	if shot_type == "closeup":
 		# EYE LEVEL (2026-10-27, the Deck: "the camera being below their
@@ -508,6 +521,75 @@ func _cut_to_marker(marker: Node3D, shot_type: String, drift: bool) -> void:
 		cam.global_transform = Transform3D(tb, cam.global_position)
 	cam.fov = fov
 	cam.make_current()
+	_move_or_cut(cam, from_tf, from_fov, cam.global_transform, fov, drift, shot_type)
+
+
+# Reach a frame by moving when it is near the one on screen, else cut.
+# The camera already holds the target; when moving, it is set back to where
+# it was and eased across.
+func _move_or_cut(cam: Camera3D, from_tf: Transform3D, from_fov: float,
+		to_tf: Transform3D, to_fov: float, drift: bool, shot_type: String) -> void:
+	# Face to face stays a CUT: two speakers' frames at one table are often
+	# under a metre apart, and a swing between them on every line reads as
+	# seasick, not as coverage (shot / reverse-shot is a cut in any film).
+	var faces: bool = shot_type == "closeup" and _last_shot_type == "closeup"
+	var near: bool = _cam_settled and not faces and _is_near(from_tf, to_tf)
+	_cam_settled = true
+	_last_shot_type = shot_type
+	if not near:
+		_start_drift(drift)
+		return
+	var dist: float = from_tf.origin.distance_to(to_tf.origin)
+	var turn: float = (-from_tf.basis.z).angle_to(-to_tf.basis.z)
+	if dist < 0.05 and turn < 0.02:
+		_start_drift(drift)          # the frame on screen, cued again: nothing to move
+		return
+	var secs: float = clampf(MOVE_MIN_SECS + dist * 0.22 + turn * 0.6, MOVE_MIN_SECS, MOVE_MAX_SECS)
+	print("[VnDirector] MOVE %.1f m · %.0f° · %.2fs" % [dist, rad_to_deg(turn), secs])
+	var q0: Quaternion = from_tf.basis.get_rotation_quaternion()
+	var q1: Quaternion = to_tf.basis.get_rotation_quaternion()
+	_drifting = false
+	cam.global_transform = from_tf
+	cam.fov = from_fov
+	_move_tween = create_tween()
+	_move_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_move_tween.tween_method(func(t: float) -> void:
+		if not is_instance_valid(cam):
+			return
+		cam.global_transform = Transform3D(Basis(q0.slerp(q1, t)), from_tf.origin.lerp(to_tf.origin, t))
+		cam.fov = lerpf(from_fov, to_fov, t), 0.0, 1.0, secs)
+	_move_tween.finished.connect(func() -> void:
+		_start_drift(drift))
+
+
+func _is_near(a: Transform3D, b: Transform3D) -> bool:
+	if a.origin.distance_to(b.origin) > MOVE_MAX_DIST:
+		return false
+	return (-a.basis.z).angle_to(-b.basis.z) <= MOVE_MAX_TURN
+
+
+func _kill_move() -> void:
+	if _move_tween != null and _move_tween.is_valid():
+		_move_tween.kill()
+	_move_tween = null
+
+
+# Back to the room's own wide: a move when it is near, else the preset's
+# restore (which also restarts a preset's camera track).
+func _return_to_wide(drift: bool) -> void:
+	var cam: Camera3D = _bg3d.get_camera() if _bg3d.has_method("get_camera") else null
+	_kill_move()
+	if cam != null and _cam_settled and _bg3d.has_method("preset_vantage_transform") \
+			and not bool(_bg3d.call("preset_has_track")):
+		var to_tf: Transform3D = _bg3d.call("preset_vantage_transform")
+		var to_fov: float = float(_bg3d.call("preset_vantage_fov"))
+		if _is_near(cam.global_transform, to_tf):
+			_move_or_cut(cam, cam.global_transform, cam.fov, to_tf, to_fov, drift, "establish")
+			return
+	if _bg3d.has_method("restore_preset_vantage"):
+		_bg3d.restore_preset_vantage()
+	_cam_settled = true
+	_last_shot_type = "establish"
 	_start_drift(drift)
 
 

@@ -725,7 +725,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai is going to play the stick.",
+      "text": "[shot:closeup tem]Kai is going to play the stick.",
       "expr": "neutral",
       "t": "say"
     },
@@ -743,7 +743,7 @@
     },
     {
       "char": "kai",
-      "text": "This morning. Just now.",
+      "text": "[shot:closeup kai]This morning. Just now.",
       "expr": "neutral",
       "t": "say"
     },
@@ -753,7 +753,7 @@
     },
     {
       "char": "tem",
-      "text": "All right. Which stick.",
+      "text": "[shot:closeup tem]All right. Which stick.",
       "expr": "neutral",
       "t": "say"
     },
@@ -771,7 +771,7 @@
     },
     {
       "char": "kai",
-      "text": "Okay.",
+      "text": "[shot:closeup kai]Okay.",
       "expr": "neutral",
       "t": "say"
     },
@@ -789,7 +789,7 @@
     },
     {
       "char": "tem",
-      "text": "You'll be at the cabin when he comes out.",
+      "text": "[shot:closeup tem]You'll be at the cabin when he comes out.",
       "expr": "neutral",
       "t": "say"
     },
@@ -987,7 +987,7 @@
     },
     {
       "char": "tem",
-      "text": "The taking is what we are walking you into.",
+      "text": "[shot:establish_c]The taking is what we are walking you into.",
       "expr": "serious",
       "t": "say"
     },
@@ -1005,13 +1005,13 @@
     },
     {
       "char": "tem",
-      "text": "The sitting down with the stick is — the sitting down is the version of being-in-this where you have a chair and a reader and a person in the room with you. I am the person in the room with you.",
+      "text": "[shot:closeup tem]The sitting down with the stick is — the sitting down is the version of being-in-this where you have a chair and a reader and a person in the room with you. I am the person in the room with you.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader.",
+      "text": "[shot:insert stove]The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader.",
       "expr": "serious",
       "t": "say"
     },
@@ -1023,7 +1023,7 @@
     },
     {
       "char": "kai",
-      "text": "Tem.",
+      "text": "[shot:closeup kai]Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -1041,7 +1041,7 @@
     },
     {
       "char": "tem",
-      "text": "I have been thinking about you playing a stick since 2050.",
+      "text": "[shot:closeup tem]I have been thinking about you playing a stick since 2050.",
       "expr": "serious",
       "t": "say"
     },
@@ -1059,7 +1059,7 @@
     },
     {
       "char": "tem",
-      "text": "I did not know how to tell you. The not-knowing-how was my failure, and I am holding it, and I am going to tell you everything I should have told you over the past two years on the drive up. We have an hour. I will use the hour.",
+      "text": "[shot:establish_b]I did not know how to tell you. The not-knowing-how was my failure, and I am holding it, and I am going to tell you everything I should have told you over the past two years on the drive up. We have an hour. I will use the hour.",
       "expr": "serious",
       "t": "say"
     },
@@ -1205,7 +1205,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem. I want to come up with you.",
+      "text": "[shot:closeup lena]Tem. I want to come up with you.",
       "expr": "neutral",
       "t": "say"
     },
@@ -1215,7 +1215,7 @@
     },
     {
       "char": "tem",
-      "text": "All right.",
+      "text": "[shot:closeup tem]All right.",
       "expr": "neutral",
       "t": "say"
     },
@@ -1233,7 +1233,7 @@
     },
     {
       "char": "lena",
-      "text": "You were going to say it was Kai's morning and the cabin was Kai's cabin and you needed to be there for him alone.",
+      "text": "[shot:closeup lena]You were going to say it was Kai's morning and the cabin was Kai's cabin and you needed to be there for him alone.",
       "expr": "neutral",
       "t": "say"
     },
@@ -1251,7 +1251,7 @@
     },
     {
       "char": "tem",
-      "text": "And I changed my mind. The count's at forty-three. You're not going to sit at this apartment all day waiting. Come up.",
+      "text": "[shot:closeup tem]And I changed my mind. The count's at forty-three. You're not going to sit at this apartment all day waiting. Come up.",
       "expr": "neutral",
       "t": "say"
     },
@@ -1269,7 +1269,7 @@
     },
     {
       "char": "finn",
-      "text": "I'll be at the apartment. I'll drive up at three after I close out at the co-op. If the crow does anything I'll come up sooner.",
+      "text": "[shot:closeup finn]I'll be at the apartment. I'll drive up at three after I close out at the co-op. If the crow does anything I'll come up sooner.",
       "expr": "neutral",
       "t": "say"
     },
@@ -1281,7 +1281,7 @@
     },
     {
       "char": "tem",
-      "text": "Drive careful.",
+      "text": "[shot:closeup tem]Drive careful.",
       "expr": "neutral",
       "t": "say"
     },

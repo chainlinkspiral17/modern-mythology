@@ -261,7 +261,7 @@
   },
   {
    "char": "tem",
-   "text": "Cale. Roy is at the edge. By what I think, Roy has the fourth bowl. Roy is not who I had thought. Roy is the third person in this town in 2052 who has been carrying a piece of the listening for some decades and has not said it.",
+   "text": "[shot:closeup tem]Cale. Roy is at the edge. By what I think, Roy has the fourth bowl. Roy is not who I had thought. Roy is the third person in this town in 2052 who has been carrying a piece of the listening for some decades and has not said it.",
    "expr": "serious",
    "t": "say"
   },
@@ -284,7 +284,7 @@
    "t": "say"
   },
   {
-   "text": "Cale considered this.",
+   "text": "[shot:closeup cale]Cale considered this.",
    "t": "narrate"
   },
   {
@@ -305,7 +305,7 @@
   },
   {
    "char": "cale",
-   "text": "Tem.",
+   "text": "[shot:establish_b]Tem.",
    "expr": "neutral",
    "t": "say"
   },
@@ -317,7 +317,7 @@
   },
   {
    "char": "cale",
-   "text": "Marina is in.",
+   "text": "[shot:closeup cale]Marina is in.",
    "expr": "neutral",
    "t": "say"
   },
@@ -335,7 +335,7 @@
   },
   {
    "char": "tem",
-   "text": "Yeah, Cale.",
+   "text": "[shot:closeup tem]Yeah, Cale.",
    "expr": "neutral",
    "t": "say"
   },

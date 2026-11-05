@@ -491,7 +491,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "I learned, over the years, what he meant. They were people who had — who had, in different ways, also crossed the man in the suit.",
+   "text": "[shot:insert window]I learned, over the years, what he meant. They were people who had — who had, in different ways, also crossed the man in the suit.",
    "expr": "neutral"
   },
   {
@@ -503,7 +503,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Your grandfather served twelve of his fifteen years. He came home in 1989. He was — Maya. He was not the man who had gone in. He was thinner. He was quieter.",
+   "text": "[shot:closeup person]Your grandfather served twelve of his fifteen years. He came home in 1989. He was — Maya. He was not the man who had gone in. He was thinner. He was quieter.",
    "expr": "neutral"
   },
   {
@@ -527,7 +527,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "He lived eleven more years. He died in 2000 of complications from a kidney condition the prison doctors had, for nine years, declined to treat. He never took another photograph. He kept the radio. He taught me how to listen.",
+   "text": "[shot:establish]He lived eleven more years. He died in 2000 of complications from a kidney condition the prison doctors had, for nine years, declined to treat. He never took another photograph. He kept the radio. He taught me how to listen.",
    "expr": "neutral"
   },
   {
@@ -539,7 +539,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "He told me, on his last night, that someone — someone — would, eventually, ask me to be ready, and that when they asked, I would know.",
+   "text": "[shot:closeup person]He told me, on his last night, that someone — someone — would, eventually, ask me to be ready, and that when they asked, I would know.",
    "expr": "neutral"
   },
   {

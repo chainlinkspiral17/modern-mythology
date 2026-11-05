@@ -218,7 +218,7 @@
     },
     {
       "char": "per",
-      "text": "He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers.",
+      "text": "[shot:insert notebook]He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers.",
       "expr": "serious",
       "t": "say"
     },
@@ -230,7 +230,7 @@
     },
     {
       "char": "per",
-      "text": "He had written about the bowls. He had written about the people he knew who had bowls. He had written about a Norwegian carver in Bergen who had taught a man named Halvorsen-not-our-Halvorsen the carving in the late '40s.",
+      "text": "[shot:closeup per]He had written about the bowls. He had written about the people he knew who had bowls. He had written about a Norwegian carver in Bergen who had taught a man named Halvorsen-not-our-Halvorsen the carving in the late '40s.",
       "expr": "serious",
       "t": "say"
     },
@@ -242,7 +242,7 @@
     },
     {
       "char": "per",
-      "text": "He had written about a network. He had written about who in the network had a bowl and who did not. He had written about how the bowls listened.",
+      "text": "[shot:establish_b]He had written about a network. He had written about who in the network had a bowl and who did not. He had written about how the bowls listened.",
       "expr": "serious",
       "t": "say"
     },
@@ -259,12 +259,12 @@
       "t": "say"
     },
     {
-      "text": "He looked at Tem.",
+      "text": "[shot:closeup tem]He looked at Tem.",
       "t": "narrate"
     },
     {
       "char": "per",
-      "text": "[beat:still]My father called the network the Order of the Bowl. He had been writing the words in the notebook with the capitals. He had not been writing the words anywhere else. The words were in the notebook and only in the notebook.",
+      "text": "[shot:closeup per][beat:still]My father called the network the Order of the Bowl. He had been writing the words in the notebook with the capitals. He had not been writing the words anywhere else. The words were in the notebook and only in the notebook.",
       "expr": "serious",
       "t": "say"
     },

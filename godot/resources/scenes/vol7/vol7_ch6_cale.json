@@ -461,7 +461,7 @@
     },
     {
       "char": "cale",
-      "text": "I know.",
+      "text": "[shot:closeup cale]I know.",
       "expr": "neutral",
       "t": "say"
     },
@@ -485,7 +485,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem's been carrying this since July.",
+      "text": "[shot:closeup lena]Tem's been carrying this since July.",
       "expr": "neutral",
       "t": "say"
     },
@@ -509,7 +509,7 @@
     },
     {
       "char": "cale",
-      "text": "She's guessed. There's a difference between guessing and asking. I haven't confirmed it. I'll confirm it tonight if you tell her what I just told you.",
+      "text": "[shot:closeup cale]She's guessed. There's a difference between guessing and asking. I haven't confirmed it. I'll confirm it tonight if you tell her what I just told you.",
       "expr": "neutral",
       "t": "say"
     },
@@ -525,7 +525,7 @@
     },
     {
       "char": "lena",
-      "text": "Why me and not her, Cale.",
+      "text": "[shot:closeup lena]Why me and not her, Cale.",
       "expr": "neutral",
       "t": "say"
     },
@@ -537,7 +537,7 @@
     },
     {
       "char": "cale",
-      "text": "I'm telling you so the four of you have what I have to say and what she's been holding at the same time. The carrying alone is what kills people in this. I knew that as soon as Brandon walked in here in 2049.",
+      "text": "[shot:insert transformer]I'm telling you so the four of you have what I have to say and what she's been holding at the same time. The carrying alone is what kills people in this. I knew that as soon as Brandon walked in here in 2049.",
       "expr": "serious",
       "t": "say"
     },

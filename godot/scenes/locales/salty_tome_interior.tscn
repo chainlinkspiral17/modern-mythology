@@ -632,3 +632,44 @@ metadata/fov = 35.0
 position = Vector3(-1.738, 0.457, -10.862)
 rotation = Vector3(-0.2618, 1.0783, 0.0)
 metadata/fov = 35.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__salty_tome_kitchenette" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.898, 1.612, -7.266)
+rotation = Vector3(-0.0700, 1.0472, 0.0)
+metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__salty_tome_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.138, 1.612, -1.772)
+rotation = Vector3(-0.0700, -1.0472, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__salty_tome_kitchenette" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.240, 1.612, -8.619)
+rotation = Vector3(-0.0700, -2.0944, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__salty_tome_interior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.386, 1.612, -2.448)
+rotation = Vector3(-0.0700, 1.5708, 0.0)
+metadata/fov = 45.0
+
+; the alley-patch preset's closeup frame (pass 296): obliquely along the mural wall from the east, the patch Lena will paint at the frame's centre and the alley's depth beyond (a straight-on copy of the alley pair was all brick)
+[node name="shot_closeup_person__salty_tome_alley_patch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.600, 1.600, -10.200)
+rotation = Vector3(-0.0526, 1.1071, 0.0)
+metadata/fov = 45.0
+
+
+; the alley-patch preset's reverse closeup frame (pass 296): along the mural wall from the west, toward the patch
+[node name="shot_closeup_person_b__salty_tome_alley_patch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.000, 1.600, -10.200)
+rotation = Vector3(-0.0551, -1.0825, 0.0)
+metadata/fov = 45.0

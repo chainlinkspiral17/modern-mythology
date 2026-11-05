@@ -1272,7 +1272,7 @@
     },
     {
       "t": "narrate",
-      "text": "It was the horrifying magnificent sound of the world ending and beginning all at once. The weight of Graustark's history pressed down. Cracked open. Released — what.",
+      "text": "[shot:insert wreck]It was the horrifying magnificent sound of the world ending and beginning all at once. The weight of Graustark's history pressed down. Cracked open. Released — what.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/228.ogg"
     },
     {
@@ -1292,7 +1292,7 @@
     },
     {
       "t": "narrate",
-      "text": "The stillness shattered.",
+      "text": "[shot:insert steamship]The stillness shattered.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/232.ogg"
     },
     {
@@ -1317,7 +1317,7 @@
     },
     {
       "t": "narrate",
-      "text": "The small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette,",
+      "text": "[shot:insert smoke_ring]The small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette,",
       "voice": "assets/audio/voice/vol5_ch20_judgement/237.ogg"
     },
     {

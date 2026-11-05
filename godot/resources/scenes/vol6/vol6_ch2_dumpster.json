@@ -468,7 +468,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Dad will notice.\"",
+      "text": "[shot:closeup jesse]\"Dad will notice.\"",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/072.mp3"
     },
     {
@@ -487,7 +487,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben takes out his phone. He photographs all three. He hands them back to Jesse. Jesse puts them in the bag.",
+      "text": "[shot:insert prints]Ben takes out his phone. He photographs all three. He hands them back to Jesse. Jesse puts them in the bag.",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/075.mp3"
     },
     {
@@ -508,7 +508,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"We're going to need a third person who isn't us.\"",
+      "text": "[shot:closeup ben]\"We're going to need a third person who isn't us.\"",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/078.mp3"
     },
     {
@@ -529,7 +529,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "(short laugh) \"Sam is going to have her hands full.\"",
+      "text": "[shot:closeup jesse](short laugh) \"Sam is going to have her hands full.\"",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/081.mp3"
     },
     {
@@ -550,7 +550,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I think she's about to.\"",
+      "text": "[shot:closeup ben]\"I think she's about to.\"",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/084.mp3"
     },
     {
@@ -571,7 +571,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"What do we do.\"",
+      "text": "[shot:closeup jesse]\"What do we do.\"",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/087.mp3"
     },
     {

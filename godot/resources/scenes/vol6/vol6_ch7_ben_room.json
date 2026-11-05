@@ -291,7 +291,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Maya.",
+   "text": "[shot:closeup ben]Maya.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/046.mp3"
   },
@@ -312,21 +312,21 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "I don't know. I'm watching her. I don't think it's something I can intervene on. I think — I think she is going to tell me when she needs to. I'm trying to be ready.",
+   "text": "[shot:closeup maya]I don't know. I'm watching her. I don't think it's something I can intervene on. I think — I think she is going to tell me when she needs to. I'm trying to be ready.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/049.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Should I — should one of us be at your house.",
+   "text": "[shot:closeup ben]Should I — should one of us be at your house.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/050.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "No. Not yet. If I need it I'll text. But I think she needs to get to the next thing on her own.",
+   "text": "[shot:closeup maya]No. Not yet. If I need it I'll text. But I think she needs to get to the next thing on her own.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/051.mp3"
   },
@@ -338,7 +338,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Okay. I'm — Maya, I'm going to be at the Hendersons' tonight. We're sitting with Mr. Henderson when he comes out of the darkroom. If you need me, text. I will leave.",
+   "text": "[shot:closeup ben]Okay. I'm — Maya, I'm going to be at the Hendersons' tonight. We're sitting with Mr. Henderson when he comes out of the darkroom. If you need me, text. I will leave.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/053.mp3"
   },
@@ -359,7 +359,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "If I do, Ben, I will.",
+   "text": "[shot:closeup maya]If I do, Ben, I will.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_ben_room/056.mp3"
   },

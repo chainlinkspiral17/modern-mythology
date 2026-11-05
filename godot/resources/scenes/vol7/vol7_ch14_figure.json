@@ -558,25 +558,25 @@
     },
     {
       "char": "cale",
-      "text": "Kai.",
+      "text": "[shot:closeup cale]Kai.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "Yeah, Cale.",
+      "text": "[shot:closeup kai]Yeah, Cale.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "Marina has the wagon. Marina is going to drive me back up to the cabin around ten. You are going to your shop.",
+      "text": "[shot:closeup cale]Marina has the wagon. Marina is going to drive me back up to the cabin around ten. You are going to your shop.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "I am going to my shop. I am going to be at the shop until five.",
+      "text": "[shot:closeup kai]I am going to my shop. I am going to be at the shop until five.",
       "expr": "neutral",
       "t": "say"
     },
@@ -594,7 +594,7 @@
     },
     {
       "char": "cale",
-      "text": "Yeah.",
+      "text": "[shot:closeup cale]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -612,13 +612,13 @@
     },
     {
       "char": "kai",
-      "text": "Thank you for being the witness this morning.",
+      "text": "[shot:closeup kai]Thank you for being the witness this morning.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "Lena was the painter. I was the man at the entrance. The thanks goes the other way.",
+      "text": "[shot:closeup cale]Lena was the painter. I was the man at the entrance. The thanks goes the other way.",
       "expr": "serious",
       "t": "say"
     },

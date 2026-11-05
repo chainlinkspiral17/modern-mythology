@@ -466,7 +466,7 @@
     },
     {
       "t": "narrate",
-      "text": "Once, the temperature in the warehouse had dropped four degrees in the time it took him to step back and look at his work, and stayed there for an hour."
+      "text": "[shot:establish]Once, the temperature in the warehouse had dropped four degrees in the time it took him to step back and look at his work, and stayed there for an hour."
     },
     {
       "t": "narrate",
@@ -475,7 +475,7 @@
     },
     {
       "t": "narrate",
-      "text": "He held it now and considered, again, whether to try.",
+      "text": "[shot:closeup frasier]He held it now and considered, again, whether to try.",
       "voice": "assets/audio/voice/vol5_ch1_magician/067.mp3"
     },
     {
@@ -499,7 +499,7 @@
     },
 {
      "t": "narrate",
-     "text": "He wedged the capacitor under the river's substrate, where the hum lived. The hum changed key. It did not stop. Nothing in this room stops; it only changes key."
+     "text": "[shot:insert model_city]He wedged the capacitor under the river's substrate, where the hum lived. The hum changed key. It did not stop. Nothing in this room stops; it only changes key."
     },
 {
      "t": "narrate",
@@ -507,7 +507,7 @@
     },
     {
       "t": "narrate",
-      "text": "The phone chirped.",
+      "text": "[shot:insert phone]The phone chirped.",
       "voice": "assets/audio/voice/vol5_ch1_magician/068.mp3"
     },
     {
@@ -528,7 +528,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier raised an eyebrow. The Demon had not been asked.",
+      "text": "[shot:closeup frasier]Frasier raised an eyebrow. The Demon had not been asked.",
       "voice": "assets/audio/voice/vol5_ch1_magician/071.mp3"
     },
     {
@@ -553,7 +553,7 @@
     },
     {
       "t": "narrate",
-      "text": "The riverboat sat in his palm, weighing what it weighed.",
+      "text": "[shot:insert riverboat]The riverboat sat in his palm, weighing what it weighed.",
       "voice": "assets/audio/voice/vol5_ch1_magician/075.mp3"
     },
     {

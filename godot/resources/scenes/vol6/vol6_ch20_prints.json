@@ -360,13 +360,13 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "I'm — yeah. The bridge is — the bridge is here we are anyway. The bridge is about the parking lot.",
+      "text": "[shot:closeup jesse]I'm — yeah. The bridge is — the bridge is here we are anyway. The bridge is about the parking lot.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_prints/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jim, at the table, looks at the contact print of the pot.",
+      "text": "[shot:insert prints]Jim, at the table, looks at the contact print of the pot.",
       "voice": "assets/audio/voice/vol6_ch20_prints/058.mp3"
     },
     {
@@ -379,7 +379,7 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "The song is going to land tomorrow, son. The room is going to know what you are saying. The people who are in The Foxhole on a Saturday night in mid-August in this town are going to know what the substation is.",
+      "text": "[shot:closeup jim]The song is going to land tomorrow, son. The room is going to know what you are saying. The people who are in The Foxhole on a Saturday night in mid-August in this town are going to know what the substation is.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_prints/060.mp3"
     },
@@ -407,28 +407,28 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Yeah, Dad.",
+      "text": "[shot:closeup jesse]Yeah, Dad.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_prints/064.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
-      "text": "Don't apologize for the song. Don't introduce it with a small I want to dedicate this to. Just play it. The song does the work. Your introduction would only — your introduction would only undercut the song.",
+      "text": "[shot:closeup jim]Don't apologize for the song. Don't introduce it with a small I want to dedicate this to. Just play it. The song does the work. Your introduction would only — your introduction would only undercut the song.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_prints/065.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Yeah.",
+      "text": "[shot:closeup jesse]Yeah.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_prints/066.mp3"
     },
     {
       "t": "say",
       "char": "Jim",
-      "text": "I'm — I'm going to be glad about it, Jesse. I am going to be glad about it for the rest of my life. The song you wrote is — the song you wrote is the song this town did not know it needed to be written about it. You wrote it.",
+      "text": "[shot:closeup jim]I'm — I'm going to be glad about it, Jesse. I am going to be glad about it for the rest of my life. The song you wrote is — the song you wrote is the song this town did not know it needed to be written about it. You wrote it.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch20_prints/067.mp3"
     },

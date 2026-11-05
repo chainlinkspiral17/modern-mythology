@@ -137,7 +137,7 @@
     },
     {
       "char": "kai",
-      "text": "When.",
+      "text": "[shot:closeup kai]When.",
       "t": "say"
     },
     {
@@ -156,7 +156,7 @@
     },
     {
       "char": "tem",
-      "text": "Dean's tower. At old-Yachats.",
+      "text": "[shot:closeup tem]Dean's tower. At old-Yachats.",
       "t": "say"
     },
     {
@@ -171,7 +171,7 @@
     },
     {
       "char": "tem",
-      "text": " The disc-case moved itself onto Cale's counter and that's the substrate telling us the time is now.",
+      "text": "[shot:insert disc_case] The disc-case moved itself onto Cale's counter and that's the substrate telling us the time is now.",
       "t": "say"
     },
     {
@@ -181,7 +181,7 @@
     },
     {
       "char": "finn",
-      "text": "All three of us.",
+      "text": "[shot:closeup finn]All three of us.",
       "t": "say"
     },
     {
@@ -191,12 +191,12 @@
     },
     {
       "char": "kai",
-      "text": "When.",
+      "text": "[shot:closeup kai]When.",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "Now. We go up now. We're at old-Yachats by four. We're back by dark. I play it tomorrow morning at the cabin in the daylight.",
+      "text": "[shot:closeup tem]Now. We go up now. We're at old-Yachats by four. We're back by dark. I play it tomorrow morning at the cabin in the daylight.",
       "t": "say"
     },
     {

@@ -273,7 +273,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, with the small careful honesty he has been training all summer: I just changed something.",
+      "text": "[shot:closeup diego]He thinks, with the small careful honesty he has been training all summer: I just changed something.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/051.mp3"
     },
     {
@@ -283,12 +283,12 @@
     },
     {
       "t": "narrate",
-      "text": "He keeps stocking.",
+      "text": "[shot:establish_b]He keeps stocking.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness",
+      "text": "[shot:closeup doug]In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/054.mp3"
     },
     {
@@ -313,7 +313,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug returns to Book Seven.",
+      "text": "[shot:establish_c]Doug returns to Book Seven.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/059.mp3"
     },
     {

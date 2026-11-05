@@ -142,7 +142,7 @@
     },
     {
       "char": "hans",
-      "text": "Friedrich Schenck, my grandfather, was a carver in Bern who became a printer because his hands could not, by his sixties, hold a chisel anymore. He became a printer to keep doing the work.",
+      "text": "[shot:establish_b]Friedrich Schenck, my grandfather, was a carver in Bern who became a printer because his hands could not, by his sixties, hold a chisel anymore. He became a printer to keep doing the work.",
       "expr": "serious",
       "t": "say"
     },
@@ -178,7 +178,7 @@
     },
     {
       "char": "hans",
-      "text": "The end poem was about a young woman in a yellow slicker who would come to the family. The poem named her. Werner had named her Aria.",
+      "text": "[shot:closeup hans]The end poem was about a young woman in a yellow slicker who would come to the family. The poem named her. Werner had named her Aria.",
       "expr": "serious",
       "t": "say"
     },
@@ -214,7 +214,7 @@
     },
     {
       "char": "hans",
-      "text": "The third in '13, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it.",
+      "text": "[shot:establish_c]The third in '13, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it.",
       "expr": "serious",
       "t": "say"
     },
@@ -232,7 +232,7 @@
     },
     {
       "char": "hans",
-      "text": "Werner said: Hans. She is as real as the bread you bake on Wednesdays. She is the work the family has been doing for a hundred and fifteen years. She is going to come. She is going to come somewhere. Bern. Bandon. Smolvud.",
+      "text": "[shot:insert brotchen]Werner said: Hans. She is as real as the bread you bake on Wednesdays. She is the work the family has been doing for a hundred and fifteen years. She is going to come. She is going to come somewhere. Bern. Bandon. Smolvud.",
       "expr": "serious",
       "t": "say"
     },
@@ -250,7 +250,7 @@
     },
     {
       "char": "hans",
-      "text": "That was the conversation. I have not, in the thirty-three years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name.",
+      "text": "[shot:closeup hans]That was the conversation. I have not, in the thirty-three years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name.",
       "expr": "serious",
       "t": "say"
     },
@@ -718,7 +718,7 @@
     },
     {
       "char": "hans",
-      "text": "In '37 Roy came into the bakery in November and stood at the front counter and bought a loaf of the rye. He had been coming in for six years by then.",
+      "text": "[shot:insert basket]In '37 Roy came into the bakery in November and stood at the front counter and bought a loaf of the rye. He had been coming in for six years by then.",
       "expr": "serious",
       "t": "say"
     },
@@ -730,7 +730,7 @@
     },
     {
       "char": "hans",
-      "text": "The Olaus family had a bowl your friend Olaf carved. I have it. It is at my apartment. I have been keeping it. I want you to know. He did not wait for me to answer. He went out the door.",
+      "text": "[shot:closeup hans]The Olaus family had a bowl your friend Olaf carved. I have it. It is at my apartment. I have been keeping it. I want you to know. He did not wait for me to answer. He went out the door.",
       "expr": "serious",
       "t": "say"
     },
@@ -754,7 +754,7 @@
     },
     {
       "char": "hans",
-      "text": "He went out the door. He has been at the bakery three hundred times since. He has not, in the fifteen years since November of '37, mentioned the bowl. I have not asked. The conversation was done. I have been carrying the knowing.",
+      "text": "[shot:establish_b]He went out the door. He has been at the bakery three hundred times since. He has not, in the fifteen years since November of '37, mentioned the bowl. I have not asked. The conversation was done. I have been carrying the knowing.",
       "expr": "serious",
       "t": "say"
     },
@@ -766,7 +766,7 @@
     },
     {
       "char": "hans",
-      "text": "Roy is one of us. One of us in a way I do not have a clean account of. He came to this town with the bowl in '31. He told me he had it in '37.",
+      "text": "[shot:closeup hans]Roy is one of us. One of us in a way I do not have a clean account of. He came to this town with the bowl in '31. He told me he had it in '37.",
       "expr": "serious",
       "t": "say"
     },
@@ -784,7 +784,7 @@
     },
     {
       "char": "hans",
-      "text": "He has been doing what Tem has been doing. Watching. Roy and Tem have been the two watchers in this town for some years. Roy the older. Roy whose presence has been visible. Tem the one whose presence has not. I have known about both of them.",
+      "text": "[shot:establish_c]He has been doing what Tem has been doing. Watching. Roy and Tem have been the two watchers in this town for some years. Roy the older. Roy whose presence has been visible. Tem the one whose presence has not. I have known about both of them.",
       "expr": "serious",
       "t": "say"
     },
@@ -796,7 +796,7 @@
     },
     {
       "char": "hans",
-      "text": "I am going to ask Roy to come to the bakery tomorrow morning at six.",
+      "text": "[shot:closeup hans]I am going to ask Roy to come to the bakery tomorrow morning at six.",
       "expr": "serious",
       "t": "say"
     },

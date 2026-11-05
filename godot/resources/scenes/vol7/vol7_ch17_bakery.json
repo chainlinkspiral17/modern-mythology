@@ -337,7 +337,7 @@
    "t": "say"
   },
   {
-   "text": "Kai did not, for a count, do anything.",
+   "text": "[shot:closeup kai]Kai did not, for a count, do anything.",
    "t": "narrate"
   },
   {
@@ -357,7 +357,7 @@
   },
   {
    "char": "hans",
-   "text": "Kai. The not-telling was the telling. I have been at this bakery for thirty-one years.",
+   "text": "[shot:closeup hans]Kai. The not-telling was the telling. I have been at this bakery for thirty-one years.",
    "t": "say"
   },
   {
@@ -372,12 +372,12 @@
   },
   {
    "char": "hans",
-   "text": "I am telling you now because the right people are at this table. The carrying is over.",
+   "text": "[shot:establish_b]I am telling you now because the right people are at this table. The carrying is over.",
    "t": "say"
   },
   {
    "char": "kai",
-   "text": "Hans.",
+   "text": "[shot:closeup kai]Hans.",
    "t": "say"
   },
   {
@@ -392,7 +392,7 @@
   },
   {
    "char": "hans",
-   "text": "Mm.",
+   "text": "[shot:closeup hans]Mm.",
    "t": "say"
   },
   {

@@ -529,13 +529,13 @@
     },
     {
       "char": "lena",
-      "text": "Tem's well.",
+      "text": "[shot:closeup lena]Tem's well.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "roy",
-      "text": "She's been out at the cabin a lot.",
+      "text": "[shot:closeup roy]She's been out at the cabin a lot.",
       "expr": "happy",
       "t": "say"
     },
@@ -553,13 +553,13 @@
     },
     {
       "char": "lena",
-      "text": "Yes.",
+      "text": "[shot:closeup lena]Yes.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "roy",
-      "text": "You been up there?",
+      "text": "[shot:closeup roy]You been up there?",
       "expr": "happy",
       "t": "say"
     },
@@ -576,7 +576,7 @@
       "t": "say"
     },
     {
-      "text": "She kept her hand on the counter.",
+      "text": "[shot:insert counter]She kept her hand on the counter.",
       "t": "narrate"
     },
     {
@@ -587,13 +587,13 @@
     },
     {
       "char": "roy",
-      "text": "Beautiful country up there.",
+      "text": "[shot:closeup roy]Beautiful country up there.",
       "expr": "happy",
       "t": "say"
     },
     {
       "char": "lena",
-      "text": "It is.",
+      "text": "[shot:closeup lena]It is.",
       "expr": "neutral",
       "t": "say"
     },

@@ -323,6 +323,53 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-05 · move to a near frame, cut to a far one; faces always cut (pass 296)
+
+- **The user:** "Background is always cutting when other options may be
+  better. Pans for nearby views, etc."
+- **What changed:** VnDirector reaches a frame NEAR the one on screen (≤ 3.2 m
+  between lenses, ≤ ~55° between view axes) by moving there — an eased
+  pan/dolly of 0.55–1.5 s, timed by the distance and the turn — and the return
+  to the room's own wide moves the same way (`Background3D.preset_vantage_
+  transform`; a preset with a `camera_track` keeps its hard restore).
+- **What stays a cut:** closeup → closeup (two speakers' frames at one table
+  are often under a metre apart; a swing on every line read as seasick in the
+  first test — shot / reverse-shot is a cut), any jump past the limits, and the
+  first frame after a page turn. The same frame cued again is a no-op.
+- **Check it in the engine:** `tools/VnLineShot.tscn --shots <scene>:<node>
+  --next 14` and grep the log for `[VnDirector] MOVE`.
+
+
+### 2026-11-05 · a hold is local; cut the stretch, not the chapter (pass 296)
+
+- **What happened:** a scan of vols 5–7 for the longest run of lines on one
+  frame found 64 of 207 chapters holding twelve lines or more, the worst for
+  24 (Kai's ride, Hans's family history, Tem's instructions before the stick).
+  `shot_seed --light` helped four of the first six and none of the rest: its
+  budget is chapter-wide (cues ≤ nodes / 6), and these chapters are dense with
+  cues overall while one stretch sits uncut. 334 cues placed by hand brought
+  the longest hold to 12; 0 lines changed but the cues.
+- **Rules that held:**
+  - A two-hander cuts on the speaker's line, to the speaker. A monologue cuts
+    at its turns: to the room (`establish_b/_c`) at a change of subject, back
+    to the speaker at a reveal, to an object only when the line names one on
+    THIS set (the bread Hans names, the cap Tem names, the cordless Carlos is
+    on).
+  - Never cut to a listener's closeup on a line someone else says: the
+    speaker's portrait would stand on the listener's side of the room (two
+    of these slipped in and were moved to the wide).
+  - wrong_room catches a closeup that lands far off: a ride (Maya home at
+    dusk) has no conversation spot, so its frames are the road's inserts and
+    wide, not a closeup.
+- **Also:** a closeup that resolves to NO person frame borrows any closeup in
+  the area's pool — in the Salty Tome's shop and kitchenette that pool was the
+  cat, the counter and the wall face, so 31 people's closeups cut to objects.
+  A per-preset pair (`marker_author.py --closeup[-b] --preset <id> <locale>`)
+  fixes it; check `find_cast_closeup` / `shot_markers_of_type`, not marker
+  names, when asking whether a room has a person frame (a pair suffixed for
+  ANOTHER area does not count).
+
+
 ### 2026-10-27 · text never crosses a face; a phone stands where no one does (pass 201)
 
 **Context:** once the eyes moved to mid-screen, the 44 % reading box ran its text across chins. The column also leaned toward the speaker, onto them. Diego's thread stood on Maya's portrait, and the message printed twice.

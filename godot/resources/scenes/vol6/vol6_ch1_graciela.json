@@ -126,7 +126,7 @@
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"I think my grandson saw something at the Gas & Go that he was not meant to see. I think he told one person. I think that one person told the wrong person.",
+      "text": "[shot:closeup graciela]\"I think my grandson saw something at the Gas & Go that he was not meant to see. I think he told one person. I think that one person told the wrong person.",
       "voice": "assets/audio/voice/vol6_ch1_graciela/019.ogg"
     },
     {
@@ -154,14 +154,14 @@
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"You want me to spy on my dad.\"",
+      "text": "[shot:closeup sam]\"You want me to spy on my dad.\"",
       "voice": "assets/audio/voice/vol6_ch1_graciela/023.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"I want you to listen to your dad.\"",
+      "text": "[shot:closeup graciela]\"I want you to listen to your dad.\"",
       "voice": "assets/audio/voice/vol6_ch1_graciela/024.mp3"
     },
     {
@@ -192,14 +192,14 @@
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"I'll do it.\"",
+      "text": "[shot:closeup sam]\"I'll do it.\"",
       "voice": "assets/audio/voice/vol6_ch1_graciela/027.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"Thank you, mija.\"",
+      "text": "[shot:closeup graciela]\"Thank you, mija.\"",
       "voice": "assets/audio/voice/vol6_ch1_graciela/028.mp3"
     },
     {
@@ -213,14 +213,14 @@
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Who is they.\"",
+      "text": "[shot:closeup sam]\"Who is they.\"",
       "voice": "assets/audio/voice/vol6_ch1_graciela/030.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"Mija. That is the thing we do not, yet, know.\"",
+      "text": "[shot:closeup graciela]\"Mija. That is the thing we do not, yet, know.\"",
       "voice": "assets/audio/voice/vol6_ch1_graciela/031.mp3"
     },
     {
@@ -230,7 +230,7 @@
     },
     {
       "t": "narrate",
-      "text": "and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays.",
+      "text": "[shot:insert window]and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays.",
       "voice": "assets/audio/voice/vol6_ch1_graciela/033.ogg"
     },
     {

@@ -328,7 +328,7 @@
     },
     {
       "char": "roy",
-      "text": "I figured out in '38 that you had been at the foundation in Eugene. I figured out in '46 that you had retired in '30. I figured out in '49 that you and Henrik Lindholm had been close.",
+      "text": "[shot:closeup roy]I figured out in '38 that you had been at the foundation in Eugene. I figured out in '46 that you had retired in '30. I figured out in '49 that you and Henrik Lindholm had been close.",
       "t": "say"
     },
     {
@@ -348,7 +348,7 @@
     },
     {
       "char": "aud",
-      "text": "Roy.",
+      "text": "[shot:closeup aud]Roy.",
       "t": "say"
     },
     {
@@ -368,22 +368,22 @@
     },
     {
       "char": "aud",
-      "text": "We've been at the same table-edge for twenty years and we have not, in those twenty years, sat at the table together. We're sitting at the table today.",
+      "text": "[shot:establish_b]We've been at the same table-edge for twenty years and we have not, in those twenty years, sat at the table together. We're sitting at the table today.",
       "t": "say"
     },
     {
       "char": "roy",
-      "text": "Yes.",
+      "text": "[shot:closeup roy]Yes.",
       "t": "say"
     },
     {
       "char": "aud",
-      "text": "Thank you for saying what you said.",
+      "text": "[shot:closeup aud]Thank you for saying what you said.",
       "t": "say"
     },
     {
       "char": "roy",
-      "text": "Thank you for hearing it.",
+      "text": "[shot:closeup roy]Thank you for hearing it.",
       "t": "say"
     },
     {
@@ -418,7 +418,7 @@
     },
     {
       "char": "roy",
-      "text": "In April of '31 a woman named Inga Skarsgaard who was Olaus's widow's sister came to the boat at the dock at five in the morning. She had a wooden box.",
+      "text": "[shot:insert wooden_box]In April of '31 a woman named Inga Skarsgaard who was Olaus's widow's sister came to the boat at the dock at five in the morning. She had a wooden box.",
       "t": "say"
     },
     {
@@ -428,7 +428,7 @@
     },
     {
       "char": "roy",
-      "text": "She said: Roy Hummel. The bowl is yours. The bowl was Olaus's. Olaus has been dead fifty-three years. The bowl has been in the family until now.",
+      "text": "[shot:closeup roy]She said: Roy Hummel. The bowl is yours. The bowl was Olaus's. Olaus has been dead fifty-three years. The bowl has been in the family until now.",
       "t": "say"
     },
     {
@@ -443,7 +443,7 @@
     },
     {
       "char": "roy",
-      "text": "I opened the box at six. The bowl was inside. I had seen Olaus's bowl twice in my life.",
+      "text": "[shot:insert bowl]I opened the box at six. The bowl was inside. I had seen Olaus's bowl twice in my life.",
       "t": "say"
     },
     {
@@ -458,7 +458,7 @@
     },
     {
       "char": "roy",
-      "text": "The second time was in '27 at Olaus's wake at the family's house. I touched it again at the wake. The bowl was a thing I knew about as a thing the family had.",
+      "text": "[shot:establish_b]The second time was in '27 at Olaus's wake at the family's house. I touched it again at the wake. The bowl was a thing I knew about as a thing the family had.",
       "t": "say"
     },
     {
@@ -473,7 +473,7 @@
     },
     {
       "char": "roy",
-      "text": "At the end of the week — May of '31 — I made the decision. I would leave Bandon. I would take the bowl. I would go up the coast to a town the bowl had told me, at some moment that week, was the town.",
+      "text": "[shot:closeup roy]At the end of the week — May of '31 — I made the decision. I would leave Bandon. I would take the bowl. I would go up the coast to a town the bowl had told me, at some moment that week, was the town.",
       "t": "say"
     },
     {

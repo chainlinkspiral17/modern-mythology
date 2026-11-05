@@ -1115,7 +1115,7 @@
     },
     {
       "t": "narrate",
-      "text": "He returns to the indie rack.",
+      "text": "[shot:insert rack]He returns to the indie rack.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/199.mp3"
     },
     {
@@ -1125,7 +1125,7 @@
     },
     {
       "t": "narrate",
-      "text": "The exchange has also been — Maya registers, with the careful attention Wren had three hours earlier equipped her for — a man checking whether the kid running the shop has been entrusted with the paper part of the operation or only the floor part.",
+      "text": "[shot:closeup maya]The exchange has also been — Maya registers, with the careful attention Wren had three hours earlier equipped her for — a man checking whether the kid running the shop has been entrusted with the paper part of the operation or only the floor part.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/201.ogg"
     },
     {
@@ -1140,7 +1140,7 @@
     },
     {
       "t": "narrate",
-      "text": "She rings up the next customer.",
+      "text": "[shot:insert register]She rings up the next customer.",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/204.mp3"
     },
     {
@@ -1151,14 +1151,14 @@
     {
       "t": "say",
       "char": "Wren",
-      "text": "Curtis. I'm out. Big day Wednesday. Maya, you closing?",
+      "text": "[shot:closeup wren]Curtis. I'm out. Big day Wednesday. Maya, you closing?",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/206.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yeah.",
+      "text": "[shot:closeup maya]Yeah.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/207.mp3"
     },
@@ -1179,14 +1179,14 @@
     {
       "t": "say",
       "char": "Wren",
-      "text": "Curtis. Behave.",
+      "text": "[shot:closeup wren]Curtis. Behave.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/210.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
-      "text": "I always behave.",
+      "text": "[shot:closeup curtis]I always behave.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch12_cosmic/211.mp3"
     },

@@ -6720,6 +6720,31 @@ func get_preset_vantage() -> Dictionary:
 
 # Re-apply the loaded preset's authored vantage — the "establish"
 # fallback and the director's release() restore.
+# The loaded preset's own wide, as a world transform and fov — so the
+# director can MOVE back to it when it is near the frame on screen
+# (2026-11-05). A preset with a camera_track keeps the hard restore.
+func preset_vantage_transform() -> Transform3D:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset) or _camera == null:
+		return Transform3D.IDENTITY
+	var spec: Dictionary = CAMERA_PRESETS[_loaded_preset]
+	var local := Transform3D(Basis.from_euler(spec.get("camera_rotation", Vector3.ZERO)),
+		spec.get("camera_origin", Vector3.ZERO))
+	var parent := _camera.get_parent() as Node3D
+	return parent.global_transform * local if parent != null else local
+
+
+func preset_vantage_fov() -> float:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return 60.0
+	return float((CAMERA_PRESETS[_loaded_preset] as Dictionary).get("fov", 60.0))
+
+
+func preset_has_track() -> bool:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return false
+	return (CAMERA_PRESETS[_loaded_preset] as Dictionary).has("camera_track")
+
+
 func restore_preset_vantage() -> void:
 	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
 		return

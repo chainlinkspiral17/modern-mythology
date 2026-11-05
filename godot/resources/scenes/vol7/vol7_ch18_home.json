@@ -327,12 +327,12 @@
    "t": "narrate"
   },
   {
-   "text": "He took it out. He went back to the phone. He picked it up.",
+   "text": "[shot:insert phone]He took it out. He went back to the phone. He picked it up.",
    "t": "narrate"
   },
   {
    "char": "finn",
-   "text": "Tem. The notebook is here. The substrate gave me the notebook too. Brandon's writing. The thirty-eight entries from January to October of 2050. In my hand.",
+   "text": "[shot:closeup finn]Tem. The notebook is here. The substrate gave me the notebook too. Brandon's writing. The thirty-eight entries from January to October of 2050. In my hand.",
    "t": "say"
   },
   {
@@ -352,7 +352,7 @@
   },
   {
    "char": "finn",
-   "text": "I will.",
+   "text": "[shot:establish_b]I will.",
    "t": "say"
   },
   {
@@ -372,7 +372,7 @@
   },
   {
    "char": "finn",
-   "text": "I am bringing the crow.",
+   "text": "[shot:closeup finn]I am bringing the crow.",
    "t": "say"
   },
   {
@@ -391,7 +391,7 @@
    "t": "say"
   },
   {
-   "text": "He hung up.",
+   "text": "[shot:establish_c]He hung up.",
    "t": "narrate"
   },
   {

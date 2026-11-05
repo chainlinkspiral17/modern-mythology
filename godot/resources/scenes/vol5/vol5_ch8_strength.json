@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low]His hands rested on the sticky tabletop.",
+      "text": "[shot:insert table][mood:candlelight_low]His hands rested on the sticky tabletop.",
       "voice": "assets/audio/voice/vol5_ch8_strength/015.mp3"
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken.",
+      "text": "[shot:closeup douglas]He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken.",
       "voice": "assets/audio/voice/vol5_ch8_strength/018.ogg"
     },
     {
@@ -109,7 +109,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had said it was the only honest piece of him. He had not, at the time, understood what she meant. He had laughed and asked her what made it honest. She had said, Because it's a picture of itself eating itself, and that's true.",
+      "text": "[shot:establish_b]She had said it was the only honest piece of him. He had not, at the time, understood what she meant. He had laughed and asked her what made it honest. She had said, Because it's a picture of itself eating itself, and that's true.",
       "voice": "assets/audio/voice/vol5_ch8_strength/021.ogg"
     },
     {
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "The beer was piss-warm. Tasted like regret strained through an old sock. He drank it anyway. It was part of the ritual. Part of the waiting. He wasn't sure what he was waiting for anymore.",
+      "text": "[shot:closeup douglas]The beer was piss-warm. Tasted like regret strained through an old sock. He drank it anyway. It was part of the ritual. Part of the waiting. He wasn't sure what he was waiting for anymore.",
       "voice": "assets/audio/voice/vol5_ch8_strength/025.mp3"
     },
     {

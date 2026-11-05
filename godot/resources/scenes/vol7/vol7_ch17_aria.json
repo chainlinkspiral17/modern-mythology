@@ -406,7 +406,7 @@
     },
     {
       "char": "hans",
-      "text": "Ja.",
+      "text": "[shot:closeup hans]Ja.",
       "t": "say"
     },
     {
@@ -421,12 +421,12 @@
     },
     {
       "char": "kai",
-      "text": "Was that — was that the room being ready and the ringing not happening, or was that not the room being ready.",
+      "text": "[shot:closeup kai]Was that — was that the room being ready and the ringing not happening, or was that not the room being ready.",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "Kai. By every measure I have, we were ready. The bowls aligned. The eyes opened. The crow spoke. The smile happened. That was what the poem was about.",
+      "text": "[shot:closeup hans]Kai. By every measure I have, we were ready. The bowls aligned. The eyes opened. The crow spoke. The smile happened. That was what the poem was about.",
       "t": "say"
     },
     {
@@ -441,7 +441,7 @@
     },
     {
       "char": "kai",
-      "text": "Hans.",
+      "text": "[shot:closeup kai]Hans.",
       "t": "say"
     },
     {
@@ -456,12 +456,12 @@
     },
     {
       "char": "hans",
-      "text": "Kai. I do not know.",
+      "text": "[shot:closeup hans]Kai. I do not know.",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "Hans.",
+      "text": "[shot:closeup tem]Hans.",
       "t": "say"
     },
     {
@@ -664,7 +664,7 @@
     },
     {
       "char": "marit",
-      "text": "Roy. The poem.",
+      "text": "[shot:closeup marit]Roy. The poem.",
       "t": "say"
     },
     {
@@ -679,7 +679,7 @@
     },
     {
       "char": "roy",
-      "text": "She would ring when the room was ready.",
+      "text": "[shot:closeup roy]She would ring when the room was ready.",
       "t": "say"
     },
     {
@@ -694,7 +694,7 @@
     },
     {
       "char": "marit",
-      "text": "Roy. She is going to ring. The ringing is the next thing. The bowls have prepared.",
+      "text": "[shot:closeup marit]Roy. She is going to ring. The ringing is the next thing. The bowls have prepared.",
       "t": "say"
     },
     {
@@ -709,12 +709,12 @@
     },
     {
       "char": "roy",
-      "text": "Yes.",
+      "text": "[shot:closeup roy]Yes.",
       "t": "say"
     },
     {
       "char": "marit",
-      "text": "Be at the cabin tonight.",
+      "text": "[shot:closeup marit]Be at the cabin tonight.",
       "t": "say"
     },
     {
@@ -729,7 +729,7 @@
     },
     {
       "char": "roy",
-      "text": "I will be.",
+      "text": "[shot:closeup roy]I will be.",
       "t": "say"
     },
     {

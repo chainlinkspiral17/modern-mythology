@@ -961,7 +961,7 @@
     },
     {
       "char": "per",
-      "text": "The eyes are still closed.",
+      "text": "[shot:closeup per]The eyes are still closed.",
       "expr": "serious",
       "t": "say"
     },
@@ -979,7 +979,7 @@
     },
     {
       "char": "tem",
-      "text": "Per.",
+      "text": "[shot:closeup tem]Per.",
       "expr": "serious",
       "t": "say"
     },
@@ -1003,7 +1003,7 @@
     },
     {
       "char": "marina",
-      "text": "The road.",
+      "text": "[shot:closeup marina]The road.",
       "expr": "serious",
       "t": "say"
     },
@@ -1021,13 +1021,13 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup tem]Yeah.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marina",
-      "text": "The face is — the face is acknowledging that I am in the room.",
+      "text": "[shot:closeup marina]The face is — the face is acknowledging that I am in the room.",
       "expr": "serious",
       "t": "say"
     },

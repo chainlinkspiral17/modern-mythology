@@ -464,7 +464,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in.",
+      "text": "[shot:insert wreck]Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in.",
       "voice": "assets/audio/voice/vol5_ch21_world/084.ogg"
     },
     {
@@ -489,7 +489,7 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie David is, in Simons, clearing the spare corner of her apartment. The crib will arrive in six weeks.",
+      "text": "[shot:insert smoke_ring]Natalie David is, in Simons, clearing the spare corner of her apartment. The crib will arrive in six weeks.",
       "voice": "assets/audio/voice/vol5_ch21_world/089.ogg"
     },
     {
@@ -509,7 +509,7 @@
     },
     {
       "t": "narrate",
-      "text": "John Frank is on a plane.",
+      "text": "[shot:insert steamship]John Frank is on a plane.",
       "voice": "assets/audio/voice/vol5_ch21_world/093.ogg"
     },
     {

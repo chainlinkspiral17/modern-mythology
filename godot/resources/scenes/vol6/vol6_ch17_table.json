@@ -1985,7 +1985,7 @@
     },
     {
       "t": "narrate",
-      "text": "the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light.",
+      "text": "[shot:insert window]the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light.",
       "voice": "assets/audio/voice/vol6_ch17_table/313.mp3"
     },
     {
@@ -1995,7 +1995,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen and Bianca are, again, the two of them.",
+      "text": "[shot:establish_b]Eileen and Bianca are, again, the two of them.",
       "voice": "assets/audio/voice/vol6_ch17_table/315.mp3"
     },
     {
@@ -2008,14 +2008,14 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Anita is — Anita is the right amount.",
+      "text": "[shot:closeup bianca]Anita is — Anita is the right amount.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch17_table/317.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
-      "text": "She is. She is the right amount. I have been — I have been sitting with her for eight months at various tables and I had not known, until this morning, about the go-bag.",
+      "text": "[shot:closeup eileen]She is. She is the right amount. I have been — I have been sitting with her for eight months at various tables and I had not known, until this morning, about the go-bag.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch17_table/318.mp3"
     },
@@ -2036,7 +2036,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Eileen.",
+      "text": "[shot:closeup bianca]Eileen.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch17_table/321.mp3"
     },
@@ -2057,7 +2057,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yeah. I was — I was going to propose that.",
+      "text": "[shot:closeup eileen]Yeah. I was — I was going to propose that.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch17_table/324.mp3"
     },
@@ -2078,7 +2078,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Five to seven thirty.",
+      "text": "[shot:closeup bianca]Five to seven thirty.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch17_table/327.mp3"
     },

@@ -224,7 +224,7 @@
     },
     {
       "t": "narrate",
-      "text": "The current times were, John was the first to admit, exactly what he had wanted, exactly what he had earned, exactly what the version of him that had stood at the counter at three forty-seven AM in a B-flat hum had promised himself if he ever got out.",
+      "text": "[shot:closeup john]The current times were, John was the first to admit, exactly what he had wanted, exactly what he had earned, exactly what the version of him that had stood at the counter at three forty-seven AM in a B-flat hum had promised himself if he ever got out.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/044.ogg"
     },
     {
@@ -239,7 +239,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Great Unwritten Graustark Novel haunted his hard drive like a digital ghost. The folder was named gtk_drft_v6_FINAL_actual. He had not opened the folder in eleven months.",
+      "text": "[shot:establish_b]The Great Unwritten Graustark Novel haunted his hard drive like a digital ghost. The folder was named gtk_drft_v6_FINAL_actual. He had not opened the folder in eleven months.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/047.ogg"
     },
     {
@@ -254,12 +254,12 @@
     },
     {
       "t": "narrate",
-      "text": "Like the hum of the refrigerator. Like the distant traffic on Saint-Laurent. Part of the ambient texture of being.",
+      "text": "[shot:insert drainpipe]Like the hum of the refrigerator. Like the distant traffic on Saint-Laurent. Part of the ambient texture of being.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/050.ogg"
     },
     {
       "t": "narrate",
-      "text": "He still emailed Mackenzie Roberts twice a year. She still emailed back. The emails were short.",
+      "text": "[shot:insert phone]He still emailed Mackenzie Roberts twice a year. She still emailed back. The emails were short.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/051.ogg"
     },
     {
@@ -279,7 +279,7 @@
     },
     {
       "t": "narrate",
-      "text": "The most recent card had said: John — Houston is mostly the same. The painter and I are mostly the same. I am mostly happy. — E.",
+      "text": "[shot:closeup john]The most recent card had said: John — Houston is mostly the same. The painter and I are mostly the same. I am mostly happy. — E.",
       "voice": "assets/audio/voice/vol5_ch14_temperance/055.ogg"
     },
     {

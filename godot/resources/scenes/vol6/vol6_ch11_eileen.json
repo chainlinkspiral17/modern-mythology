@@ -518,7 +518,7 @@
     },
     {
       "t": "narrate",
-      "text": "They talk about the cinnamon roll. They talk about the bakery on Magnolia, which has, over the summer, hired a new pastry person whose work is, by Eileen's report, better than anything that town has had in some years.",
+      "text": "[shot:insert cinnamon_roll]They talk about the cinnamon roll. They talk about the bakery on Magnolia, which has, over the summer, hired a new pastry person whose work is, by Eileen's report, better than anything that town has had in some years.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/087.ogg"
     },
     {
@@ -528,7 +528,7 @@
     },
     {
       "t": "narrate",
-      "text": "They talk about Anita Kowalski's daughter Gracie, who Eileen has not yet met but who has been, in Maya's stories, one of the more vivid eleven-year-olds Maya has ever encountered. They talk about Maya.",
+      "text": "[shot:closeup eileen]They talk about Anita Kowalski's daughter Gracie, who Eileen has not yet met but who has been, in Maya's stories, one of the more vivid eleven-year-olds Maya has ever encountered. They talk about Maya.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/089.ogg"
     },
     {
@@ -538,7 +538,7 @@
     },
     {
       "t": "narrate",
-      "text": "They do not, in the forty minutes, talk about Mike.",
+      "text": "[shot:closeup bianca]They do not, in the forty minutes, talk about Mike.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/091.mp3"
     },
     {
@@ -558,7 +558,7 @@
     },
     {
       "t": "narrate",
-      "text": "They talk about the small things that two women in their late forties talk about, in a kitchen, on a Monday morning, when they have decided, together, that this is going to be one of the hours in which they do not perform anything.",
+      "text": "[shot:establish_b]They talk about the small things that two women in their late forties talk about, in a kitchen, on a Monday morning, when they have decided, together, that this is going to be one of the hours in which they do not perform anything.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/095.mp3"
     },
     {
@@ -573,7 +573,7 @@
     },
     {
       "t": "narrate",
-      "text": "At eight forty-six Eileen leaves.",
+      "text": "[shot:insert doorway]At eight forty-six Eileen leaves.",
       "voice": "assets/audio/voice/vol6_ch11_eileen/098.mp3"
     },
     {

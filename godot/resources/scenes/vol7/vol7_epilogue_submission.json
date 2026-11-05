@@ -89,17 +89,17 @@
   },
   {
    "char": "tem",
-   "text": "I saw what they built.",
+   "text": "[shot:closeup tem]I saw what they built.",
    "t": "say"
   },
   {
    "char": "finn",
-   "text": "What did they build.",
+   "text": "[shot:closeup finn]What did they build.",
    "t": "say"
   },
   {
    "char": "tem",
-   "text": "Dean built the tower and the town. Olaf built the cabin and the four bowls. Eddvard built the mill. Marit built a cedar grove east of Smolvud, fifty-one years old and still growing. Aud built the diner.",
+   "text": "[shot:closeup tem]Dean built the tower and the town. Olaf built the cabin and the four bowls. Eddvard built the mill. Marit built a cedar grove east of Smolvud, fifty-one years old and still growing. Aud built the diner.",
    "t": "say"
   },
   {
@@ -109,22 +109,22 @@
   },
   {
    "char": "kai",
-   "text": "All of them.",
+   "text": "[shot:closeup kai]All of them.",
    "t": "say"
   },
   {
    "char": "tem",
-   "text": "All of them played the stick. All of them submitted plans. All of them built what they submitted in the world. The lives I have been living in are the renderings.",
+   "text": "[shot:closeup tem]All of them played the stick. All of them submitted plans. All of them built what they submitted in the world. The lives I have been living in are the renderings.",
    "t": "say"
   },
   {
    "char": "finn",
-   "text": "And you.",
+   "text": "[shot:closeup finn]And you.",
    "t": "say"
   },
   {
    "char": "tem",
-   "text": "I placed a drone.",
+   "text": "[shot:closeup tem]I placed a drone.",
    "t": "say"
   },
   {
@@ -139,12 +139,12 @@
   },
   {
    "char": "finn",
-   "text": "What are you going to build.",
+   "text": "[shot:closeup finn]What are you going to build.",
    "t": "say"
   },
   {
    "char": "tem",
-   "text": "I don't know yet. I have placed the drone. The clock is counting. I have begun. The building is the next thing.",
+   "text": "[shot:closeup tem]I don't know yet. I have placed the drone. The clock is counting. I have begun. The building is the next thing.",
    "t": "say"
   },
   {

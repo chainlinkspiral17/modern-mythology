@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "The case had been called Newsom v. PetroTex.",
+      "text": "[shot:closeup alice]The case had been called Newsom v. PetroTex.",
       "voice": "assets/audio/voice/vol5_ch13_death/041.ogg"
     },
     {
@@ -249,7 +249,7 @@
     },
     {
       "t": "narrate",
-      "text": "The case had won. The settlement had been the largest of its kind in the parish. PetroTex had restructured.",
+      "text": "[shot:establish_b]The case had won. The settlement had been the largest of its kind in the parish. PetroTex had restructured.",
       "voice": "assets/audio/voice/vol5_ch13_death/049.ogg"
     },
     {
@@ -269,7 +269,7 @@
     },
     {
       "t": "narrate",
-      "text": "Erica had been making sure Henry had been named.",
+      "text": "[shot:closeup alice]Erica had been making sure Henry had been named.",
       "voice": "assets/audio/voice/vol5_ch13_death/053.mp3"
     },
     {

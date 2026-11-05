@@ -322,7 +322,7 @@
     },
     {
       "char": "petra",
-      "text": "Tem.",
+      "text": "[shot:closeup petra]Tem.",
       "t": "say"
     },
     {
@@ -347,7 +347,7 @@
     },
     {
       "char": "tem",
-      "text": "Petra. Yes. Wednesday.",
+      "text": "[shot:closeup person_b]Petra. Yes. Wednesday.",
       "t": "say"
     },
     {
@@ -370,7 +370,7 @@
     },
     {
       "char": "cale",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "t": "say"
     },
     {
@@ -395,7 +395,7 @@
     },
     {
       "char": "tem",
-      "text": "Cale. Yes.",
+      "text": "[shot:closeup person_b]Cale. Yes.",
       "t": "say"
     },
     {

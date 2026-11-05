@@ -399,12 +399,12 @@
   },
   {
    "char": "tem",
-   "text": "The bowls.",
+   "text": "[shot:closeup tem]The bowls.",
    "t": "say"
   },
   {
    "char": "per",
-   "text": "Yes.",
+   "text": "[shot:closeup per]Yes.",
    "t": "say"
   },
   {
@@ -419,7 +419,7 @@
   },
   {
    "char": "roy",
-   "text": "[beat:chill]The bowls are getting ready.",
+   "text": "[shot:closeup roy][beat:chill]The bowls are getting ready.",
    "t": "say"
   },
   {
@@ -434,7 +434,7 @@
   },
   {
    "char": "per",
-   "text": "Roy.",
+   "text": "[shot:closeup per]Roy.",
    "t": "say"
   },
   {
@@ -449,7 +449,7 @@
   },
   {
    "char": "roy",
-   "text": "Per. I do not know.",
+   "text": "[shot:closeup roy]Per. I do not know.",
    "t": "say"
   },
   {

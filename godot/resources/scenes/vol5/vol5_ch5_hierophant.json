@@ -70,7 +70,7 @@
     },
     {
       "t": "narrate",
-      "text": "Daddy was talking to some men near the church steps. His voice was the low rumble he used when he was talking to other grown-ups — not the bright voice he used when he talked to her. Daddy looked tired. Not regular tired.",
+      "text": "[shot:establish]Daddy was talking to some men near the church steps. His voice was the low rumble he used when he was talking to other grown-ups — not the bright voice he used when he talked to her. Daddy looked tired. Not regular tired.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/013.ogg"
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya traced patterns in the condensation on her sweating cup of lemonade-flavored water.",
+      "text": "[shot:insert lemonade]Maya traced patterns in the condensation on her sweating cup of lemonade-flavored water.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/015.ogg"
     },
     {

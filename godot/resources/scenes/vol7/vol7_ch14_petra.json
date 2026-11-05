@@ -352,7 +352,7 @@
   },
   {
    "char": "cale",
-   "text": "Lena.",
+   "text": "[shot:closeup person]Lena.",
    "expr": "serious",
    "t": "say"
   },
@@ -382,7 +382,7 @@
   },
   {
    "char": "lena",
-   "text": "The count was the count of the strokes. The strokes were done. The count is done.",
+   "text": "[shot:closeup lena]The count was the count of the strokes. The strokes were done. The count is done.",
    "expr": "serious",
    "t": "say"
   },
@@ -418,7 +418,7 @@
   },
   {
    "char": "cale",
-   "text": "I do not think the substrate is done with you.",
+   "text": "[shot:closeup person]I do not think the substrate is done with you.",
    "expr": "serious",
    "t": "say"
   },
@@ -454,7 +454,7 @@
   },
   {
    "char": "lena",
-   "text": "Yeah.",
+   "text": "[shot:closeup lena]Yeah.",
    "expr": "serious",
    "t": "say"
   },

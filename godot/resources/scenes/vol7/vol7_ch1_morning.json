@@ -1182,7 +1182,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "And the octopus.",
+      "text": "[shot:closeup lena]And the octopus.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/176.mp3"
     },
@@ -1190,7 +1190,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "I have been wondering whether the substrate, when it starts to leak, leaks first into the people who have been spending time near it.",
+      "text": "[shot:closeup tem]I have been wondering whether the substrate, when it starts to leak, leaks first into the people who have been spending time near it.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/177.mp3"
     },
@@ -1214,7 +1214,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "What is the same thing.",
+      "text": "[shot:closeup kai]What is the same thing.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/180.mp3"
     },
@@ -1222,7 +1222,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "That is the question I have been carrying. I do not have an answer. I have been waiting to bring it to the two of you and to Finn until the question had a shape I could put words to.",
+      "text": "[shot:closeup tem]That is the question I have been carrying. I do not have an answer. I have been waiting to bring it to the two of you and to Finn until the question had a shape I could put words to.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/181.mp3"
     },
@@ -1254,7 +1254,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "Why us.",
+      "text": "[shot:closeup kai]Why us.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/185.mp3"
     },
@@ -1262,7 +1262,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "I do not know.",
+      "text": "[shot:closeup tem]I do not know.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/186.mp3"
     },
@@ -1286,7 +1286,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "Have you been waiting for this.",
+      "text": "[shot:closeup kai]Have you been waiting for this.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/189.mp3"
     },
@@ -1323,7 +1323,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "Three years.",
+      "text": "[shot:closeup kai]Three years.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/194.mp3"
     },
@@ -1331,7 +1331,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Since the spring of 2049.",
+      "text": "[shot:closeup tem]Since the spring of 2049.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/195.mp3"
     },
@@ -1339,7 +1339,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "Why.",
+      "text": "[shot:closeup kai]Why.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/196.mp3"
     },
@@ -1347,7 +1347,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Because I am, by my own architecture, the kind of person who watches. I have always been. Since I was fourteen. I have, in the years since, learned that the watching is the thing I am here to do.",
+      "text": "[shot:closeup tem]Because I am, by my own architecture, the kind of person who watches. I have always been. Since I was fourteen. I have, in the years since, learned that the watching is the thing I am here to do.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/197.mp3"
     },
@@ -1371,7 +1371,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "Tem.",
+      "text": "[shot:closeup lena]Tem.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/200.mp3"
     },
@@ -1395,7 +1395,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Yes. Among others. Yes.",
+      "text": "[shot:closeup tem]Yes. Among others. Yes.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/203.mp3"
     },
@@ -1760,7 +1760,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "And.",
+      "text": "[shot:closeup lena]And.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/255.mp3"
     },
@@ -1768,7 +1768,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "And — I did not know, in 2049, that the writing was the substrate beginning to land. I thought it was a psychological habit. I now think — I think it was the substrate, beginning, as it had begun then, to land in me.",
+      "text": "[shot:closeup tem]And — I did not know, in 2049, that the writing was the substrate beginning to land. I thought it was a psychological habit. I now think — I think it was the substrate, beginning, as it had begun then, to land in me.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/256.mp3"
     },
@@ -1792,7 +1792,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "Has the cabin needed you to be at it on some specific days you remember.",
+      "text": "[shot:closeup lena]Has the cabin needed you to be at it on some specific days you remember.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/259.mp3"
     },
@@ -1800,7 +1800,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Yes. Three days in 2050. Two days in 2051. And Saturday. The day I texted the three of you. Saturday I was in town. I drove up here without knowing why. I sat at this table for an hour. I texted the three of you from this table.",
+      "text": "[shot:closeup tem]Yes. Three days in 2050. Two days in 2051. And Saturday. The day I texted the three of you. Saturday I was in town. I drove up here without knowing why. I sat at this table for an hour. I texted the three of you from this table.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/260.mp3"
     },
@@ -1832,7 +1832,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "You have been here alone for four days.",
+      "text": "[shot:closeup lena]You have been here alone for four days.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/264.mp3"
     },
@@ -1856,7 +1856,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Reading the John Frank novel. Burning the rosemary. Banking the stove. Drinking the coffee. Watching the rain. Waiting.",
+      "text": "[shot:establish_b]Reading the John Frank novel. Burning the rosemary. Banking the stove. Drinking the coffee. Watching the rain. Waiting.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/267.mp3"
     },

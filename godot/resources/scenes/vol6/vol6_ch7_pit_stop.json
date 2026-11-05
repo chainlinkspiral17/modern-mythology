@@ -591,7 +591,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben blinks.",
+   "text": "[shot:closeup ben]Ben blinks.",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/097.mp3"
   },
   {
@@ -604,7 +604,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "You're the ones who have a plan, Ben. I'm the one who has fourteen months of evidence and no plan. You and I are going to figure out what we do. Tell me what your group thinks the next step is.",
+   "text": "[shot:closeup eileen]You're the ones who have a plan, Ben. I'm the one who has fourteen months of evidence and no plan. You and I are going to figure out what we do. Tell me what your group thinks the next step is.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/099.mp3"
   },
@@ -616,7 +616,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Step one is — you and Jesse and I sit down with Mr. Henderson when he comes out of the darkroom. We do not confront. We do not press. We let him talk if he wants to. We sit in the kitchen with him. We eat.",
+   "text": "[shot:closeup ben]Step one is — you and Jesse and I sit down with Mr. Henderson when he comes out of the darkroom. We do not confront. We do not press. We let him talk if he wants to. We sit in the kitchen with him. We eat.",
    "expr": "thinking",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/101.ogg"
   },
@@ -637,14 +637,14 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Step two.",
+   "text": "[shot:closeup eileen]Step two.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/104.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Step two is — there is a man in Graustark named Frasier Temple. He runs — he runs digital things. Imps. He has been watching this town through them. He is the one who has been telling us things.",
+   "text": "[shot:closeup ben]Step two is — there is a man in Graustark named Frasier Temple. He runs — he runs digital things. Imps. He has been watching this town through them. He is the one who has been telling us things.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/105.ogg"
   },
@@ -658,14 +658,14 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Step three.",
+   "text": "[shot:closeup eileen]Step three.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/107.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Step three is — I do not have step three yet. I think step three is whatever the answer to step two is. I think we get one and two right first.",
+   "text": "[shot:closeup ben]Step three is — I do not have step three yet. I think step three is whatever the answer to step two is. I think we get one and two right first.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch7_pit_stop/108.mp3"
   },

@@ -135,7 +135,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Three. Sam Miller filed a missing-persons report on Diego this morning. From the Kwik Stop. It was deleted from the system within forty minutes. A New Auburn detective came in to tell her. He gave her a fake-name card. He told her not to use the PSA for this.",
+   "text": "[shot:closeup ben]Three. Sam Miller filed a missing-persons report on Diego this morning. From the Kwik Stop. It was deleted from the system within forty minutes. A New Auburn detective came in to tell her. He gave her a fake-name card. He told her not to use the PSA for this.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/023.mp3"
   },
   {
@@ -152,7 +152,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "How do you know this.",
+   "text": "[shot:closeup jesse]How do you know this.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/026.mp3"
   },
   {
@@ -182,7 +182,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "We are going to go ahead with Saturday morning breakfast with your mom, as planned. We are going to cover Friday night's match with the caveat that I may, depending on how it's shaping up, not go in the ring this time.",
+   "text": "[shot:closeup ben]We are going to go ahead with Saturday morning breakfast with your mom, as planned. We are going to cover Friday night's match with the caveat that I may, depending on how it's shaping up, not go in the ring this time.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/031.ogg"
   },
   {
@@ -194,19 +194,19 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Let him sit.",
+   "text": "[shot:closeup jesse]Let him sit.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/033.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah. He's trying to decide something, Jess. Let him. Don't pressure him. Don't tell him we know. If he decides on his own, it's going to be cleaner.",
+   "text": "[shot:closeup ben]Yeah. He's trying to decide something, Jess. Let him. Don't pressure him. Don't tell him we know. If he decides on his own, it's going to be cleaner.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/034.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Ben.",
+   "text": "[shot:closeup jesse]Ben.",
    "voice": "assets/audio/voice/vol6_ch4_pit_stop/035.mp3"
   },
   {

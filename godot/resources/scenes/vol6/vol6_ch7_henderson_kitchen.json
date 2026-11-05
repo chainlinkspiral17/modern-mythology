@@ -420,7 +420,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "The prints had — they had things in them I had not photographed. I had — I had photographed the same things I had always photographed. But the prints were — they were different.",
+      "text": "[shot:insert prints]The prints had — they had things in them I had not photographed. I had — I had photographed the same things I had always photographed. But the prints were — they were different.",
       "expr": "sad",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/075.ogg"
     },
@@ -440,7 +440,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse closes his eyes.",
+      "text": "[shot:closeup jesse]Jesse closes his eyes.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/078.mp3"
     },
     {
@@ -451,7 +451,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction.",
+      "text": "[shot:closeup mr_henderson]In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction.",
       "expr": "sad",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/080.ogg"
     },
@@ -484,7 +484,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "And then on Tuesday morning I saw, in the prints, a man in a charcoal suit looking at me. He was not — he was not real. Or he was. I do not — I do not know. But he was — he was seeing me back.",
+      "text": "[shot:insert prints]And then on Tuesday morning I saw, in the prints, a man in a charcoal suit looking at me. He was not — he was not real. Or he was. I do not — I do not know. But he was — he was seeing me back.",
       "expr": "sad",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/085.ogg"
     },
@@ -498,7 +498,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "The pencil writing. The eye did not know I was doing it. The eye — the eye thought I was being a good eye. But the small things — they were mine. They were — the only mine I had left.",
+      "text": "[shot:closeup mr_henderson]The pencil writing. The eye did not know I was doing it. The eye — the eye thought I was being a good eye. But the small things — they were mine. They were — the only mine I had left.",
       "expr": "sad",
       "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/087.ogg"
     },

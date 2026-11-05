@@ -701,7 +701,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I think about her on Saturdays.",
+   "text": "[shot:closeup bianca]I think about her on Saturdays.",
    "expr": "serious",
    "voice": "assets/audio/voice/vol6_ch22_bianca/116.mp3"
   },
@@ -713,7 +713,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "Bianca.",
+   "text": "[shot:insert cordless]Bianca.",
    "expr": "serious",
    "voice": "assets/audio/voice/vol6_ch22_bianca/118.mp3"
   },
@@ -734,7 +734,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I do not know why Saturdays. I have been thinking about it for eight weeks. I think the reason is that Saturdays were the day she used to call. She called on Saturdays.",
+   "text": "[shot:closeup bianca]I do not know why Saturdays. I have been thinking about it for eight weeks. I think the reason is that Saturdays were the day she used to call. She called on Saturdays.",
    "expr": "serious",
    "voice": "assets/audio/voice/vol6_ch22_bianca/121.mp3"
   },
@@ -761,7 +761,7 @@
   },
   {
    "t": "narrate",
-   "text": "A long count.",
+   "text": "[shot:insert myrtle]A long count.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/125.mp3"
   },
   {
@@ -773,7 +773,7 @@
   },
   {
    "t": "narrate",
-   "text": "She does not stop him this time.",
+   "text": "[shot:insert cordless]She does not stop him this time.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/127.mp3"
   },
   {
@@ -785,7 +785,7 @@
   },
   {
    "t": "narrate",
-   "text": "She opens her eyes.",
+   "text": "[shot:closeup bianca]She opens her eyes.",
    "voice": "assets/audio/voice/vol6_ch22_bianca/129.mp3"
   },
   {

@@ -886,7 +886,7 @@
     },
     {
       "char": "lena",
-      "text": "I know.",
+      "text": "[shot:closeup lena]I know.",
       "expr": "neutral",
       "t": "say",
       "voice": "assets/audio/voice/vol7_ch3_apartment/136.mp3"
@@ -907,7 +907,7 @@
     },
     {
       "char": "tem",
-      "text": "I don't know what to do with this in the next three hours.",
+      "text": "[shot:closeup tem]I don't know what to do with this in the next three hours.",
       "expr": "neutral",
       "t": "say",
       "voice": "assets/audio/voice/vol7_ch3_apartment/139.mp3"
@@ -942,7 +942,7 @@
     },
     {
       "char": "lena",
-      "text": "Don't make a plan about this on the drive up.",
+      "text": "[shot:closeup lena]Don't make a plan about this on the drive up.",
       "expr": "neutral",
       "t": "say",
       "voice": "assets/audio/voice/vol7_ch3_apartment/144.mp3"
@@ -968,7 +968,7 @@
     },
     {
       "char": "tem",
-      "text": "I was going to.",
+      "text": "[shot:closeup tem]I was going to.",
       "expr": "neutral",
       "t": "say",
       "voice": "assets/audio/voice/vol7_ch3_apartment/148.mp3"

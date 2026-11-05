@@ -604,7 +604,7 @@
     },
     {
       "t": "narrate",
-      "text": "She toggled layers in Illustrator, stripping back the D'Ambrosio logo to its wireframe.",
+      "text": "[shot:insert monitor]She toggled layers in Illustrator, stripping back the D'Ambrosio logo to its wireframe.",
       "voice": "assets/audio/voice/vol5_ch11_justice/114.mp3"
     },
     {
@@ -619,7 +619,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cursor blinked. The office air hummed, sterile and controlled.",
+      "text": "[shot:establish_b]The cursor blinked. The office air hummed, sterile and controlled.",
       "voice": "assets/audio/voice/vol5_ch11_justice/117.mp3"
     },
     {
@@ -629,7 +629,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her quest, she realized, wasn't about nailing the D'Ambrosio campaign anymore. It wasn't about billable hours or impressing Alberto or even finding the perfect shade of millennial pink.",
+      "text": "[shot:closeup anna]Her quest, she realized, wasn't about nailing the D'Ambrosio campaign anymore. It wasn't about billable hours or impressing Alberto or even finding the perfect shade of millennial pink.",
       "voice": "assets/audio/voice/vol5_ch11_justice/119.ogg"
     },
     {
@@ -654,7 +654,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cursor blinked again. Waiting.",
+      "text": "[shot:insert monitor]The cursor blinked again. Waiting.",
       "voice": "assets/audio/voice/vol5_ch11_justice/124.mp3"
     },
     {

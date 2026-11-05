@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "Outside her window, Houston in late afternoon: the freeway traffic doing its slow desperate ballet, the heat-shimmer rising off the asphalt twelve stories below,",
+      "text": "[shot:establish_b]Outside her window, Houston in late afternoon: the freeway traffic doing its slow desperate ballet, the heat-shimmer rising off the asphalt twelve stories below,",
       "voice": "assets/audio/voice/vol5_ch10_wheel/028.ogg"
     },
     {
@@ -165,12 +165,12 @@
     },
     {
       "t": "narrate",
-      "text": "Take Alberto D'Ambrosio.",
+      "text": "[shot:closeup erica]Take Alberto D'Ambrosio.",
       "voice": "assets/audio/voice/vol5_ch10_wheel/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Calling again. Demanding. Confiding.",
+      "text": "[shot:insert phone]Calling again. Demanding. Confiding.",
       "voice": "assets/audio/voice/vol5_ch10_wheel/033.ogg"
     },
     {
@@ -185,7 +185,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had been Alberto's childhood friend. She had been, then, his condolences-offerer when the riverboat first started losing money in 2020.",
+      "text": "[shot:insert photograph]She had been Alberto's childhood friend. She had been, then, his condolences-offerer when the riverboat first started losing money in 2020.",
       "voice": "assets/audio/voice/vol5_ch10_wheel/036.ogg"
     },
     {
@@ -200,7 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "She was now — she still wasn't quite sure what she was now. The category had drifted in the past nine months in a direction she had not authorized.",
+      "text": "[shot:closeup erica]She was now — she still wasn't quite sure what she was now. The category had drifted in the past nine months in a direction she had not authorized.",
       "voice": "assets/audio/voice/vol5_ch10_wheel/039.mp3"
     },
     {

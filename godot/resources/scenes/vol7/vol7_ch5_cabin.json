@@ -557,7 +557,7 @@
     },
     {
       "char": "finn",
-      "text": "There's a tower.",
+      "text": "[shot:closeup finn]There's a tower.",
       "expr": "neutral",
       "t": "say"
     },
@@ -592,7 +592,7 @@
       "t": "say"
     },
     {
-      "text": "Kai thought about the tower. He had seen it from the highway every time he had driven north for the past sixteen years.",
+      "text": "[shot:establish_b]Kai thought about the tower. He had seen it from the highway every time he had driven north for the past sixteen years.",
       "t": "narrate"
     },
     {
@@ -605,7 +605,7 @@
     },
     {
       "char": "kai",
-      "text": "And Roy is asking about us because of the tower.",
+      "text": "[shot:closeup kai]And Roy is asking about us because of the tower.",
       "expr": "neutral",
       "t": "say"
     },
@@ -628,7 +628,7 @@
       "t": "say"
     },
     {
-      "text": "The road climbed. The rain did not change.",
+      "text": "[shot:insert headlights]The road climbed. The rain did not change.",
       "t": "narrate"
     },
     {

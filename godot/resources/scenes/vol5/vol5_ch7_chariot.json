@@ -235,7 +235,7 @@
     },
     {
       "t": "narrate",
-      "text": "The buildout was four months behind schedule.",
+      "text": "[shot:closeup antonio]The buildout was four months behind schedule.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/046.ogg"
     },
     {
@@ -255,7 +255,7 @@
     },
     {
       "t": "narrate",
-      "text": "Quentin Paul was calling. Q. PAUL was calling. Q.",
+      "text": "[shot:insert phone]Quentin Paul was calling. Q. PAUL was calling. Q.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/050.ogg"
     },
     {
@@ -270,7 +270,7 @@
     },
     {
       "t": "narrate",
-      "text": "His father had not visited since May. His father did not call.",
+      "text": "[shot:closeup antonio]His father had not visited since May. His father did not call.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/053.ogg"
     },
     {
@@ -285,7 +285,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was not, at thirty-four, ready for that to be true.",
+      "text": "[shot:establish_b]He was not, at thirty-four, ready for that to be true.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/056.mp3"
     },
     {

@@ -200,7 +200,7 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Yeah. Jimmy Daigle's daughter. She moved in with her grandma in April.\"",
+   "text": "[shot:closeup sam]\"Yeah. Jimmy Daigle's daughter. She moved in with her grandma in April.\"",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/033.mp3"
   },
   {
@@ -219,7 +219,7 @@
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "(in a small careful voice that is not quite the voice he uses with her ordinarily) \"She doing alright over there?\"",
+   "text": "[shot:closeup miller](in a small careful voice that is not quite the voice he uses with her ordinarily) \"She doing alright over there?\"",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/036.mp3"
   },
   {
@@ -238,7 +238,7 @@
   },
   {
    "t": "narrate",
-   "text": "He dries his hands. He turns.",
+   "text": "[shot:insert sink_light]He dries his hands. He turns.",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/039.mp3"
   },
   {
@@ -252,7 +252,7 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Yeah.\"",
+   "text": "[shot:closeup sam]\"Yeah.\"",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/041.mp3"
   },
   {
@@ -273,7 +273,7 @@
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Kwik Stop. Cosmic Comics. The Pit Stop. Home. The Whataburger on 1604 if you're with a group.\"",
+   "text": "[shot:closeup miller]\"Kwik Stop. Cosmic Comics. The Pit Stop. Home. The Whataburger on 1604 if you're with a group.\"",
    "voice": "assets/audio/voice/vol6_ch3_circle_k/044.mp3"
   },
   {

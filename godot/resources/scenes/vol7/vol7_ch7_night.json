@@ -463,13 +463,13 @@
     },
     {
       "char": "lena",
-      "text": "I am not going to be useful for any more thinking tonight.",
+      "text": "[shot:closeup lena]I am not going to be useful for any more thinking tonight.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "Same.",
+      "text": "[shot:closeup tem]Same.",
       "expr": "neutral",
       "t": "say"
     },
@@ -485,19 +485,19 @@
     },
     {
       "char": "kai",
-      "text": "Same.",
+      "text": "[shot:closeup kai]Same.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "finn",
-      "text": "I'm fine to keep going if we need to.",
+      "text": "[shot:closeup finn]I'm fine to keep going if we need to.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "Finn. You're not. You haven't slept since Friday. You're saying you're fine because you don't know how to say you're not.",
+      "text": "[shot:closeup kai]Finn. You're not. You haven't slept since Friday. You're saying you're fine because you don't know how to say you're not.",
       "expr": "neutral",
       "t": "say"
     },
@@ -519,7 +519,7 @@
     },
     {
       "char": "lena",
-      "text": "We sleep. We meet at the cabin tomorrow. Cale comes up. Five of us. We figure out the next thing then.",
+      "text": "[shot:closeup lena]We sleep. We meet at the cabin tomorrow. Cale comes up. Five of us. We figure out the next thing then.",
       "expr": "neutral",
       "t": "say"
     },
@@ -535,13 +535,13 @@
     },
     {
       "char": "tem",
-      "text": "All right. The cabin at noon.",
+      "text": "[shot:closeup tem]All right. The cabin at noon.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "I'll close the shop tomorrow.",
+      "text": "[shot:closeup kai]I'll close the shop tomorrow.",
       "expr": "neutral",
       "t": "say"
     },
@@ -559,7 +559,7 @@
     },
     {
       "char": "tem",
-      "text": "All right.",
+      "text": "[shot:closeup tem]All right.",
       "expr": "neutral",
       "t": "say"
     },

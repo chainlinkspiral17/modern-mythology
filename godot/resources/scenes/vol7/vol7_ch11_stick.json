@@ -444,7 +444,7 @@
   },
   {
    "char": "tem",
-   "text": "The experience is going to begin with a place. The place is going to look real. The place is going to have a sun and a wind and a temperature and a ground under your feet. You are going to be standing somewhere.",
+   "text": "[shot:establish_b]The experience is going to begin with a place. The place is going to look real. The place is going to have a sun and a wind and a temperature and a ground under your feet. You are going to be standing somewhere.",
    "expr": "serious",
    "t": "say"
   },
@@ -462,7 +462,7 @@
   },
   {
    "char": "tem",
-   "text": "Diego's design is — the design is a mountain. The mountain has a path up. The path has stations. You walk the path. The mountain is the thing the experience is most clearly about.",
+   "text": "[shot:closeup tem]Diego's design is — the design is a mountain. The mountain has a path up. The path has stations. You walk the path. The mountain is the thing the experience is most clearly about.",
    "expr": "serious",
    "t": "say"
   },
@@ -492,7 +492,7 @@
   },
   {
    "char": "tem",
-   "text": "In the corridors — Kai. In the corridors the experience stops being Diego's. The corridors are the substrate's. The corridors have been worn by the players. The corridors do not follow rules.",
+   "text": "[shot:establish_c]In the corridors — Kai. In the corridors the experience stops being Diego's. The corridors are the substrate's. The corridors have been worn by the players. The corridors do not follow rules.",
    "expr": "serious",
    "t": "say"
   },
@@ -528,7 +528,7 @@
   },
   {
    "char": "tem",
-   "text": "The person — Kai. The person you meet in the basement is going to know you are there. The person is going to look at you. The person is going to know your name. The knowing is not — the knowing is not something to be afraid of.",
+   "text": "[shot:closeup tem]The person — Kai. The person you meet in the basement is going to know you are there. The person is going to look at you. The person is going to know your name. The knowing is not — the knowing is not something to be afraid of.",
    "expr": "serious",
    "t": "say"
   },
@@ -546,7 +546,7 @@
   },
   {
    "char": "tem",
-   "text": "You will be in for ninety minutes by the clock. You will feel longer than that. People come out of Kestrel Mountain having had what feels like one to two days of experience time for the ninety. You may feel longer.",
+   "text": "[shot:insert stick]You will be in for ninety minutes by the clock. You will feel longer than that. People come out of Kestrel Mountain having had what feels like one to two days of experience time for the ninety. You may feel longer.",
    "expr": "serious",
    "t": "say"
   },
@@ -558,7 +558,7 @@
   },
   {
    "char": "tem",
-   "text": "You go in through the cap, you come out through the cap, and the cap is yours.",
+   "text": "[shot:insert cap]You go in through the cap, you come out through the cap, and the cap is yours.",
    "expr": "serious",
    "t": "say"
   },
