@@ -530,3 +530,11 @@ metadata/fov = 48.0
 position = Vector3(31.040, 0.647, 13.037)
 rotation = Vector3(-0.2862, -0.0272, 0.0)
 metadata/fov = 35.0
+
+
+; the watcher's room's SECOND wide: round to the north wall, a painting and the
+; window, the corner the lamp doesn't reach (pass 302)
+[node name="shot_establish_b__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(31.000, 1.450, 13.600)
+rotation = Vector3(-0.0350, -0.8727, 0.0)
+metadata/fov = 55.0

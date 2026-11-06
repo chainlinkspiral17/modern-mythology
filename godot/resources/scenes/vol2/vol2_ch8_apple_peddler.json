@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "Notice the vending machines for cigarettes, local periodicals and tide tables stacked on the floor next to the door, the pages hard bricked together under considerable weight and ever present condensation."
+      "text": "[shot:insert vending]Notice the vending machines for cigarettes, local periodicals and tide tables stacked on the floor next to the door, the pages hard bricked together under considerable weight and ever present condensation."
     },
     {
       "t": "narrate",
@@ -63,29 +63,29 @@
     },
     {
       "t": "narrate",
-      "text": "Named the Apple Peddler, right off the main drag through town, next door to the Greyhound Station. Misery walks in and exhales, that breath lingers. The feeling that nobody wants to be here but there's no where else to go, this is it."
+      "text": "[shot:closeup person_b]Named the Apple Peddler, right off the main drag through town, next door to the Greyhound Station. Misery walks in and exhales, that breath lingers. The feeling that nobody wants to be here but there's no where else to go, this is it."
     },
     {
       "t": "narrate",
-      "text": "The menu is one page laminate, six main dishes. Meat loaf, chicken fried steak, fish and chips, fried chicken, cheeseburger, and club sandwich. They peddle in apple pie, hence the name."
+      "text": "[shot:insert coffee]The menu is one page laminate, six main dishes. Meat loaf, chicken fried steak, fish and chips, fried chicken, cheeseburger, and club sandwich. They peddle in apple pie, hence the name."
     },
     {
       "t": "narrate",
-      "text": "Pie and coffee, people drink whole pots here, often multiple. They have that look, pained past the point of confusion, eyes shaking, the thin glisten of surface moisture catching the light and holding it, blinking erratic. Go in and order a cup, it comes out smelling like ozone, too hot to intake."
+      "text": "[shot:insert pie]Pie and coffee, people drink whole pots here, often multiple. They have that look, pained past the point of confusion, eyes shaking, the thin glisten of surface moisture catching the light and holding it, blinking erratic. Go in and order a cup, it comes out smelling like ozone, too hot to intake."
     },
     {
       "t": "narrate",
-      "text": "There is a point in coming here, besides getting out of the rain. Here to see someone, talk over coffee. A neutral ground, away from places that stink of the past."
+      "text": "[shot:establish]There is a point in coming here, besides getting out of the rain. Here to see someone, talk over coffee. A neutral ground, away from places that stink of the past."
     },
     {
       "t": "narrate",
-      "text": "His name Bernard, nickname Saint. He was a boyfriend, then something else, a fascinating person with scary friends. Why she agreed to see him, let him explain."
+      "text": "[shot:insert coffee]His name Bernard, nickname Saint. He was a boyfriend, then something else, a fascinating person with scary friends. Why she agreed to see him, let him explain."
     },
     {
       "t": "say",
       "char": "Bernard",
       "expr": "neutral",
-      "text": "You want to be her mother again, you say. Well, you don't come out and say, but that's the only thing this could be about. You taking off like that, seemed awful sudden."
+      "text": "[shot:closeup person]You want to be her mother again, you say. Well, you don't come out and say, but that's the only thing this could be about. You taking off like that, seemed awful sudden."
     },
     {
       "t": "say",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is a pause while he gets himself a fresh cigarette. She looks at him. A young man in a body that never fit proper."
+      "text": "[shot:insert coffee]There is a pause while he gets himself a fresh cigarette. She looks at him. A young man in a body that never fit proper."
     },
     {
       "t": "narrate",
@@ -117,7 +117,7 @@
       "t": "say",
       "char": "Bernard",
       "expr": "neutral",
-      "text": "But you ain't getting her, because she's gone, off to live with relations, better for all of us, which, if you'd think about this rationally for a minute, is the truth. We can play all day at being parents, or not, in your case. We had the chance and we failed pretty awful bad."
+      "text": "[shot:closeup person]But you ain't getting her, because she's gone, off to live with relations, better for all of us, which, if you'd think about this rationally for a minute, is the truth. We can play all day at being parents, or not, in your case. We had the chance and we failed pretty awful bad."
     },
     {
       "t": "say",
@@ -139,7 +139,7 @@
       "t": "say",
       "char": "Bernard",
       "expr": "worried",
-      "text": "I want to know who she came from. I remember we were experimenting with all sorts of messed up no good shit back then, but if you have any idea, tell me now. For her sake, baby."
+      "text": "[shot:closeup person]I want to know who she came from. I remember we were experimenting with all sorts of messed up no good shit back then, but if you have any idea, tell me now. For her sake, baby."
     },
     {
       "t": "say",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "She was seventeen when she got pregnant, he was twenty-one. They met for the first time at a party when she was thirteen. He sold her drugs which she sometimes paid for with sex."
+      "text": "[shot:establish]She was seventeen when she got pregnant, he was twenty-one. They met for the first time at a party when she was thirteen. He sold her drugs which she sometimes paid for with sex."
     },
     {
       "t": "narrate",
@@ -161,7 +161,7 @@
     },
     {
       "t": "narrate",
-      "text": "He lived out of his truck when he couldn't live off anyone else, arrived in town already a high school dropout at age sixteen from who knows where. Authorities knew of him, hassled him just enough to lend an aura of respect more than he deserved, but never busted him for anything requiring more than a weekend in jail."
+      "text": "[shot:closeup person_b]He lived out of his truck when he couldn't live off anyone else, arrived in town already a high school dropout at age sixteen from who knows where. Authorities knew of him, hassled him just enough to lend an aura of respect more than he deserved, but never busted him for anything requiring more than a weekend in jail."
     },
     {
       "t": "narrate",
@@ -173,7 +173,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Saint was sometimes heard speaking to himself or not to himself rather but responding to voices no one else could hear. He said that the voices would let him know if a party was about to get busted or if trouble in the form of an angry ex-boyfriend was on his way over."
+      "text": "[shot:establish]The Saint was sometimes heard speaking to himself or not to himself rather but responding to voices no one else could hear. He said that the voices would let him know if a party was about to get busted or if trouble in the form of an angry ex-boyfriend was on his way over."
     },
     {
       "t": "narrate",
@@ -183,11 +183,11 @@
       "t": "say",
       "char": "Bernard",
       "expr": "neutral",
-      "text": "I mean, I have an idea who the daddy is, I just want to hear you say. Because I need to hear you say."
+      "text": "[shot:closeup person]I mean, I have an idea who the daddy is, I just want to hear you say. Because I need to hear you say."
     },
     {
       "t": "narrate",
-      "text": "Back when he was sneaking over, spending the night, she asked him why he came to Small Wood, he told her that it was because there was someone here he had to meet. Asked if he ever got around to meeting him, he told her, sure."
+      "text": "[shot:closeup person_b]Back when he was sneaking over, spending the night, she asked him why he came to Small Wood, he told her that it was because there was someone here he had to meet. Asked if he ever got around to meeting him, he told her, sure."
     },
     {
       "t": "narrate",
@@ -197,17 +197,17 @@
       "t": "say",
       "char": "Bernard",
       "expr": "neutral",
-      "text": "So, it must have been him, if you thought it was me, that's what you're saying."
+      "text": "[shot:closeup person]So, it must have been him, if you thought it was me, that's what you're saying."
     },
     {
       "t": "narrate",
-      "text": "He could be two people, she knew that from the beginning. The guy sitting before her was a down on his luck loser who got older and was falling apart at the edges. The one she fell in love with was the ageless ghost who crept into her, the one she would never know, whose uncut smile could cut like glass."
+      "text": "[shot:insert coffee]He could be two people, she knew that from the beginning. The guy sitting before her was a down on his luck loser who got older and was falling apart at the edges. The one she fell in love with was the ageless ghost who crept into her, the one she would never know, whose uncut smile could cut like glass."
     },
     {
       "t": "say",
       "char": "Bernard",
       "expr": "sad",
-      "text": "I see him sometimes, you know. Out for a stroll on the beach, on the far end of a grocery store aisle, we catch glimpses of each other."
+      "text": "[shot:closeup person]I see him sometimes, you know. Out for a stroll on the beach, on the far end of a grocery store aisle, we catch glimpses of each other."
     },
     {
       "t": "say",
@@ -236,7 +236,7 @@
     },
     {
       "t": "narrate",
-      "text": "The baby girl was always looking out windows, never saying a word. They thought her mentally retarded because she seldom ever spoke. She was so frail, stayed away from other children, would only ever go outside if it was raining, but loved the beach, oh did she ever."
+      "text": "[shot:closeup person_b]The baby girl was always looking out windows, never saying a word. They thought her mentally retarded because she seldom ever spoke. She was so frail, stayed away from other children, would only ever go outside if it was raining, but loved the beach, oh did she ever."
     },
     {
       "t": "narrate",
@@ -244,7 +244,7 @@
     },
     {
       "t": "narrate",
-      "text": "There were good times that did not last because when she looked down she saw not her child but a monster. She left, not for her own safety, but for her daughter's. She dreamt regularly of drowning her baby, her beautiful baby."
+      "text": "[shot:establish]There were good times that did not last because when she looked down she saw not her child but a monster. She left, not for her own safety, but for her daughter's. She dreamt regularly of drowning her baby, her beautiful baby."
     },
     {
       "t": "narrate",
@@ -258,7 +258,7 @@
       "t": "say",
       "char": "Bernard",
       "expr": "tired",
-      "text": "So you didn't come here for her, what did you come here for."
+      "text": "[shot:closeup person]So you didn't come here for her, what did you come here for."
     },
     {
       "t": "narrate",
