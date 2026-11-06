@@ -3835,6 +3835,10 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-06 · pass 298: the register's dissolve (stylized transitions per volume).**
+- In a registered volume a dissolve is that register's own: the last frame drains off along a slow noise field and its breaking edge glows in the register's ink (`vn_transition.gdshader`; a canvas_item shader on the transition's still). arcana: bayou water, sodium amber; milk_honey: an oil-projector melt, rose; community / xerox: a riso dot screen, pink / teal; small_wood, signal and triumvirate in their own palettes. domestic / base / slowstick keep the plain dissolve. Previewed at 25 / 50 / 75 % (the edge thinned after the first look); run in the engine on vol 7's porch → table ("the milk_honey register's dissolve"), no shader errors.
+- **Draft N+1:** the Deck read (is the edge too loud on the dark sets? the arcana's 1.0 s, milk_honey's 1.1 s); a register's own FADE as well, if the plain black reads flat in a pillar (a riso fade through the paper colour for the zines?).
+
 **2026-11-05 · pass 297: transitions into a new place, chosen from the text; portraits fade out instead of vanishing.**
 - The user: "I want a portrait fade in and out, the hard cuts and disappearances feel weird in spots. Fades, stylized transitions, also possible. Fade in and out into scenes. Director can use the text for context."
 - **Place changes inside a scene** were a one-frame swap with every portrait deleted. Now a transition plays and the story holds: FLASH (a pale dip) for a dream, memory or vision; FADE through black when time passes; DISSOLVE (the last frame melting into the new view) when the action carries on into the next room; a fade otherwise. A `bg` node's `"transition"` overrides. Across all volumes the text picks roughly 485 fades, 69 dissolves and a handful of flashes. Tested in the engine: the porch → the cabin table dissolves ("Come inside."), the highway → the turn and the cottage → the Roberts' fade.

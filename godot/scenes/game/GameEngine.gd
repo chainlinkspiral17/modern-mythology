@@ -1482,6 +1482,21 @@ const XF_DISSOLVE := 0.75
 const XF_FLASH_OUT := 0.14
 const XF_FLASH_IN := 0.55
 const XF_READY_MAX := 90            # frames to wait for a heavy set to load under the cover
+# THE REGISTER'S DISSOLVE (pass 298): in a volume with a visual register
+# the dissolve is that register's own — the still drains off along a slow
+# noise field and its breaking edge glows in the register's ink
+# (assets/shaders/vn_transition.gdshader). domestic / base / slowstick keep
+# the plain dissolve.
+const XF_SHADER := preload("res://assets/shaders/vn_transition.gdshader")
+const XF_REGISTER_STYLE := {
+	"arcana":      {"edge": Color(1.0, 0.70, 0.30, 0.72), "scale": 2.4, "flow": Vector2(0.0, 0.45), "halftone": 0.0, "secs": 1.0},
+	"milk_honey":  {"edge": Color(0.95, 0.52, 0.78, 0.72), "scale": 1.8, "flow": Vector2(0.35, 0.25), "halftone": 0.0, "secs": 1.1},
+	"community":   {"edge": Color(1.0, 0.36, 0.62, 0.76), "scale": 3.6, "flow": Vector2(0.0, 0.0), "halftone": 1.0, "secs": 0.85},
+	"xerox":       {"edge": Color(0.30, 0.82, 0.80, 0.72), "scale": 3.6, "flow": Vector2(0.0, 0.0), "halftone": 1.0, "secs": 0.85},
+	"small_wood":  {"edge": Color(0.86, 0.80, 0.70, 0.44), "scale": 1.6, "flow": Vector2(0.25, 0.0), "halftone": 0.0, "secs": 1.1},
+	"signal":      {"edge": Color(0.36, 0.86, 0.84, 0.68), "scale": 2.8, "flow": Vector2(0.0, -0.3), "halftone": 0.0, "secs": 0.95},
+	"triumvirate": {"edge": Color(1.0, 0.56, 0.42, 0.68), "scale": 2.6, "flow": Vector2(-0.3, 0.2), "halftone": 0.0, "secs": 0.95},
+}
 var _xf_cover: ColorRect = null
 var _xf_src: String = ""            # the bg on screen (set by _do_bg, the resume path included)
 var _xf_still: TextureRect = null
@@ -1523,9 +1538,25 @@ func _transition_play(n: Dictionary, style: String) -> void:
 		add_child(_xf_still)
 		_do_bg(n)
 		await _xf_wait_ready()
+		var reg: String = _xf_register()
 		var tw := create_tween()
-		tw.tween_property(_xf_still, "modulate:a", 0.0, XF_DISSOLVE)\
-			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		if XF_REGISTER_STYLE.has(reg):
+			var st: Dictionary = XF_REGISTER_STYLE[reg]
+			var mat := ShaderMaterial.new()
+			mat.shader = XF_SHADER
+			mat.set_shader_parameter("edge_color", st["edge"])
+			mat.set_shader_parameter("scale", float(st["scale"]))
+			mat.set_shader_parameter("flow", st["flow"])
+			mat.set_shader_parameter("halftone", float(st["halftone"]))
+			mat.set_shader_parameter("progress", 0.0)
+			_xf_still.material = mat
+			print("[GameEngine] TRANSITION · the %s register's dissolve" % reg)
+			tw.tween_method(func(v: float) -> void:
+				mat.set_shader_parameter("progress", v), 0.0, 1.0, float(st["secs"]))\
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		else:
+			tw.tween_property(_xf_still, "modulate:a", 0.0, XF_DISSOLVE)\
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		await tw.finished
 		_xf_still.queue_free()
 		_xf_still = null
@@ -1551,6 +1582,13 @@ func _transition_play(n: Dictionary, style: String) -> void:
 	tw_in.tween_property(_xf_cover, "color:a", 0.0, t_in)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	await tw_in.finished
+
+
+func _xf_register() -> String:
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip == null:
+		return ""
+	return String(trip.get("register_name"))
 
 
 # Under the cover, give a 3D set the frames it takes to load and draw (a

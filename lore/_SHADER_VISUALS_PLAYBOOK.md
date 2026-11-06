@@ -212,6 +212,7 @@ They're polish; static reads first.
 | `trip_sync.gdshader`                     | THE TRIP · music-synced rainbow edge aura + flat-region flow warp + capped hue drift + beat ripple; screen mode (global layer 60) or texture mode (VN backgrounds) | TripSync autoload, always on (Settings.trip_amount) |
 | `trip_feedback.gdshader`                 | THE TRIP · the feedback ACCUMULATE pass — re-projects the previous buffer (slow zoom/spin/drift), decays it, screens in the picture's highlights + the register's aura; runs inside two half-res ping-pong SubViewports | TripSync autoload (Settings.trip_trails) |
 | `trip_feedback_show.gdshader`            | THE TRIP · the feedback DISPLAY pass — soft-rolls the buffer (1 − e^−x) and adds it back over the surface, stepping back where the picture is already bright | TripSync, mounted by GameEngine above the VN background |
+| `vn_transition.gdshader`                 | THE REGISTER'S DISSOLVE · the last frame drains off along a slow noise field (or a riso dot screen) with its breaking edge in the register's ink — a canvas_item shader on GameEngine's still, not a post-process | GameEngine._transition_play (dissolves in registered volumes) |
 | `ascii_edges.gdshader` (legacy)          | Edge detection + ASCII overlay       | not wired (kept for ref) |
 | `glyph_field.gdshader` (legacy)          | Drifting ASCII glyph field           | not wired (kept for ref) |
 | `gouraud_lambert.gdshader`               | Cathedral baked vertex-color shader  | warehouse scene only   |

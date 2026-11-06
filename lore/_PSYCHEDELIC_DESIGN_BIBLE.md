@@ -137,6 +137,19 @@ midpoint. `pulse_decay` is per register — it is the single number
 that most changes how a pillar FEELS on the beat (arcade snaps,
 sludge hangs).
 
+## The register's dissolve (2026-11-05, pass 298)
+
+A change of place inside a chapter that the text reads as the action
+carrying on DISSOLVES; in a registered volume the dissolve is the
+register's own (`vn_transition.gdshader`, styles in
+`GameEngine.XF_REGISTER_STYLE`): arcana drains off like bayou water with
+a sodium-amber edge; milk_honey melts like an oil projector, rose at the
+edge; community and xerox break up through a riso dot screen (pink /
+teal ink); small_wood fogs off, signal sinks with teal, triumvirate
+turns against the clock with a warm edge. `domestic`, `base` and
+`slowstick` keep the plain dissolve. Fades (time passing) and flashes
+(dreams, memories) are the same in every register.
+
 ## Who pushes what
 
 - `GameEngine._apply_skin(vol)` → `register_for_volume(vol)`
