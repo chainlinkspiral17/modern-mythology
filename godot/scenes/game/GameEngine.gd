@@ -912,6 +912,9 @@ func _directed(n: Dictionary) -> Dictionary:
 		if m == null:
 			break
 		var arg := m.get_string(2).strip_edges()
+		if m.get_string(1) == "shot" and _frame_2d_live():
+			# a painting has no set to cut in: it reframes (pass 300)
+			_frame_shot(arg, _s(n, "char") if _s(n, "t") == "say" else "")
 		if _director != null:
 			match m.get_string(1):
 				"shot":  _director.call("apply_shot", arg)
@@ -944,7 +947,9 @@ func _directed_seen(n: Dictionary, kind: String) -> Dictionary:
 	var cued: bool = raw.begins_with("[") and raw.find("[shot:") != -1
 	var d: Dictionary = _directed(n)
 	if _director != null:
-		_director.call("consider_line", _s(d, "text"), kind, cued)
+		_director.call("consider_line", _s(d, "text"), kind, cued,
+			_s(n, "char") if kind == "say" else "")
+	_frame_line(kind, _s(n, "char") if kind == "say" else "", cued)
 	return d
 
 
@@ -1637,6 +1642,7 @@ func _do_bg(n: Dictionary) -> void:
 	_phone_close()
 	var src: String = resolve_bg(_s(n, "src"), _scene_id)
 	_xf_src = src
+	_frame_reset(src)
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:
 		_chars.call("hide_all")
@@ -2109,19 +2115,162 @@ func _apply_bg_motion(delta: float) -> void:
 	var sway_pos := Vector2(sin(sway_phase) * SWAY_X_AMP, cos(sway_phase * 0.7) * SWAY_Y_AMP)
 	var sway_rot := sin(sway_phase) * SWAY_ROT
 
-	var total_scale := Vector2(pan_scale, pan_scale)
+	var s: float = pan_scale * _frame_scale
+	var total_scale := Vector2(s, s)
 
 	if _bg != null and _bg.texture != null:
 		_bg.pivot_offset = _bg.size * 0.5
-		_bg.position     = sway_pos
+		_bg.position     = sway_pos + _frame_shift(_bg.size, s)
 		_bg.scale        = total_scale
 		_bg.rotation     = sway_rot
 
 	if _bg_composition != null and _bg_composition.get_child_count() > 0:
 		_bg_composition.pivot_offset = _bg_composition.size * 0.5
-		_bg_composition.position     = sway_pos
+		_bg_composition.position     = sway_pos + _frame_shift(_bg_composition.size, s)
 		_bg_composition.scale        = total_scale
 		_bg_composition.rotation     = sway_rot
+
+
+# ── THE PAINTING'S CAMERA (2026-11-06, pass 300) ─────────────────
+# A 2D background used to hold one framing for a whole scene — up to 140
+# lines on vol 5's in-flux painting — because a [shot:] cue means nothing
+# to a picture (the director drops it: no 3D set) and the only motion was
+# the ±0.4% breath. Now the painting has a camera of its own, the 2D
+# grammar of VnDirector's moves:
+#  • an authored [shot:] reframes it: establish / wide → the whole
+#    painting; closeup → a push toward the speaker's side; insert → a
+#    closer push to a part of the picture (seeded by the cue's name — a
+#    picture has no marker, so the push is a reframe, not a claim about
+#    what is painted there);
+#  • a hold eases on by itself: after FRAME_HOLD_LINES on one framing, the
+#    next turn in the text (a new speaker, or narration after talk) starts
+#    a slow move — a lean toward the one now speaking, or a drift to
+#    another part of the room for narration, back to the whole painting
+#    every third move. All moves are eased and slow (no cut on a painting).
+# Never past the picture's edge: the shift is a fraction of the margin the
+# push itself opens (scale − 1), so the frame never shows the matte.
+const FRAME_HOLD_LINES := 6
+const FRAME_MOVE_SECS  := 3.4      # an automatic move: slow, under the reading
+const FRAME_CUE_SECS   := 1.5      # an authored cue: the 3D move's top speed
+const FRAME_EDGE       := 0.85     # of the open margin (the sway needs the rest)
+var _frame_scale:   float   = 1.0
+var _frame_off:     Vector2 = Vector2.ZERO   # the point of the painting brought toward centre, −1..1
+var _frame_tween:   Tween   = null
+var _frame_lines:   int     = 0
+var _frame_moves:   int     = 0
+var _frame_speaker: String  = ""
+var _frame_kind:    String  = ""
+var _frame_seed:    int     = 0
+var _frame_glance:  bool    = false    # an insert's push eases back out after FRAME_GLANCE_LINES
+const FRAME_GLANCE_LINES := 2
+
+
+func _frame_shift(sz: Vector2, s: float) -> Vector2:
+	if s <= 1.0 or _frame_off == Vector2.ZERO:
+		return Vector2.ZERO
+	var margin: Vector2 = sz * (s - 1.0) * 0.5 * FRAME_EDGE
+	return Vector2(-_frame_off.x * margin.x, -_frame_off.y * margin.y)
+
+
+func _frame_2d_live() -> bool:
+	if _bg_3d_node != null and is_instance_valid(_bg_3d_node) and _bg_3d_node.visible:
+		return false
+	return (_bg != null and _bg.texture != null) or _composition_active
+
+
+## a new picture (or a 3D set) starts on the whole painting, at once —
+## the place change's own transition covers the jump
+func _frame_reset(src: String) -> void:
+	if _frame_tween != null and _frame_tween.is_valid():
+		_frame_tween.kill()
+	_frame_tween = null
+	_frame_scale = 1.0
+	_frame_off = Vector2.ZERO
+	_frame_lines = 0
+	_frame_moves = 0
+	_frame_speaker = ""
+	_frame_kind = ""
+	_frame_glance = false
+	_frame_seed = absi(src.hash())
+
+
+func _frame_to(scale: float, off: Vector2, secs: float) -> void:
+	if is_equal_approx(scale, _frame_scale) and off.is_equal_approx(_frame_off):
+		return
+	if _frame_tween != null and _frame_tween.is_valid():
+		_frame_tween.kill()
+	_frame_tween = create_tween().set_parallel(true) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_frame_tween.tween_property(self, "_frame_scale", scale, secs)
+	_frame_tween.tween_property(self, "_frame_off", off, secs)
+	_frame_lines = 0
+	print("[GameEngine] FRAME2D  x%.2f  (%.2f, %.2f)  %.1fs" % [scale, off.x, off.y, secs])
+
+
+func _frame_side(char_name: String) -> float:
+	if char_name == "" or _chars == null:
+		return 0.0
+	match String(_chars.call("slot_of", char_name)):
+		"left":  return -0.6
+		"right": return 0.6
+	return 0.0
+
+
+## an authored [shot:] on a painting
+func _frame_shot(spec: String, speaker: String) -> void:
+	var parts := spec.trim_suffix("~").strip_edges().split(" ", false)
+	if parts.is_empty():
+		return
+	var kind := String(parts[0]).to_lower()
+	var id := String(parts[1]).to_lower() if parts.size() > 1 else ""
+	_frame_glance = kind == "insert"
+	match kind:
+		"closeup":
+			_frame_to(1.11, Vector2(_frame_side(speaker), -0.25), FRAME_CUE_SECS)
+		"insert":
+			var h: int = absi((id + str(_frame_seed)).hash())
+			var ox: float = float(h % 1000) / 1000.0 * 1.6 - 0.8
+			var oy: float = float(int(h / 1000.0) % 1000) / 1000.0 * 1.2 - 0.6
+			_frame_to(1.15, Vector2(ox, oy), FRAME_CUE_SECS)
+		_:
+			_frame_to(1.0, Vector2.ZERO, FRAME_CUE_SECS)
+	_frame_speaker = speaker
+	_frame_lines = 0
+
+
+## every spoken / narrated line on a painting: a long hold eases on at the
+## next turn in the text
+func _frame_line(kind: String, speaker: String, cued: bool) -> void:
+	if cued or not _frame_2d_live():
+		return
+	_frame_lines += 1
+	if _frame_glance:
+		# an insert is a glance: back to the whole painting after a beat
+		if _frame_lines >= FRAME_GLANCE_LINES:
+			_frame_glance = false
+			_frame_to(1.0, Vector2.ZERO, 2.0)
+		if kind == "say":
+			_frame_speaker = speaker
+		_frame_kind = kind
+		return
+	var turn: bool = (kind == "say" and speaker != _frame_speaker) \
+		or (kind != "say" and _frame_kind == "say")
+	_frame_kind = kind
+	if kind == "say":
+		_frame_speaker = speaker
+	if _frame_lines <= FRAME_HOLD_LINES or not turn:
+		return
+	_frame_moves += 1
+	if _frame_moves % 3 == 0:
+		_frame_to(1.0, Vector2.ZERO, FRAME_MOVE_SECS)
+		return
+	var lift: float = -0.25 if _frame_moves % 2 == 1 else 0.2
+	if kind == "say":
+		_frame_to(1.07, Vector2(_frame_side(speaker), lift), FRAME_MOVE_SECS)
+		return
+	var h: int = absi((str(_frame_seed) + ":" + str(_frame_moves)).hash())
+	var ox: float = float(h % 1000) / 1000.0 * 1.2 - 0.6
+	_frame_to(1.06, Vector2(ox, lift), FRAME_MOVE_SECS)
 
 
 # True iff the VnPortraitDebugOverlay is currently on-screen.

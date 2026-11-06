@@ -165,6 +165,7 @@ func on_locale_changed() -> void:
 	_art_return = {}
 	_art_cooldown = 0
 	_drift_rate = DRIFT_RATE
+	_hold_reset()
 
 
 func release() -> void:
@@ -315,6 +316,11 @@ func set_line_speaker(char_id: String) -> void:
 
 
 func apply_shot(spec: String) -> void:
+	# an authored (or the hold's own) cut: the long-hold count starts over
+	_hold_lines = 0
+	_hold_away = false
+	_hold_pushed = false
+	_kill_push()
 	_pending_shot = spec.strip_edges()
 	_pending_speaker = _line_speaker
 	_pending_frames = 0
@@ -912,7 +918,8 @@ func insert_showing() -> bool:
 
 ## Every text line passes here before it shows (GameEngine). `cued`: the
 ## line carried its own [shot:] (the author's frame wins).
-func consider_line(text: String, kind: String, cued: bool) -> void:
+func consider_line(text: String, kind: String, cued: bool, speaker: String = "") -> void:
+	_hold_line(kind, speaker, cued)
 	if _insert_left > 0 and not cued:
 		_hold_or_leave_insert(text)
 	if not _art_return.is_empty():
@@ -954,6 +961,140 @@ func consider_line(text: String, kind: String, cued: bool) -> void:
 		print("[VnDirector] NOTICE → %s (the line names it)" % best["slug"])
 	else:
 		_art_return = {}
+
+
+# ── THE LONG HOLD (2026-11-06, pass 300) ─────────────────────────
+# A floor under the hand-placed cues: 98 chapters of vols 1–4 play on a
+# 3D set (a painting bg_places swaps for one) and held one frame for 12 to
+# 62 lines, because their cues were written for paintings. After HOLD_LINES
+# on one frame, at the next turn in the text (a new speaker, or narration
+# after talk) the director eases on — only to frames already read by eye:
+#  • on a closeup that has run long → back to the room's wide;
+#  • on the wide → the room's other establishing frame (establish_b /
+#    establish, the pass 293–294 scans read every one) — a move when near,
+#    a cut when not — and back to the wide the next time;
+#  • a room with no second wide → a slow lens push (fov × HOLD_PUSH over
+#    HOLD_PUSH_SECS; a zoom can never enter geometry), and out again.
+# An authored [shot:] always resets the count: the author's cut wins.
+const HOLD_LINES := 8
+const HOLD_PUSH := 0.86
+const HOLD_PUSH_SECS := 4.0
+var _hold_lines: int = 0
+var _hold_speaker: String = ""
+var _hold_kind: String = ""
+var _hold_away: bool = false        # on the room's other wide
+var _hold_pushed: bool = false      # the lens pushed in (no other wide)
+var _hold_fov0: float = 50.0        # the fov the push started from
+var _hold_tween: Tween = null
+
+
+func _hold_reset() -> void:
+	_hold_lines = 0
+	_hold_speaker = ""
+	_hold_kind = ""
+	_hold_away = false
+	_hold_pushed = false
+	_kill_push()
+
+
+func _kill_push() -> void:
+	if _hold_tween != null and _hold_tween.is_valid():
+		_hold_tween.kill()
+	_hold_tween = null
+
+
+func _hold_line(kind: String, speaker: String, cued: bool) -> void:
+	if cued:
+		_hold_lines = 0
+		_hold_kind = kind
+		_hold_speaker = speaker
+		return
+	_hold_lines += 1
+	var turn: bool = (kind == "say" and speaker != _hold_speaker) \
+		or (kind != "say" and _hold_kind == "say")
+	_hold_kind = kind
+	if kind == "say":
+		_hold_speaker = speaker
+	if _hold_lines <= HOLD_LINES or not turn:
+		return
+	if _bg3d == null or not is_instance_valid(_bg3d) or not _bg3d.visible:
+		return
+	if insert_showing() or _pending_shot != "" or not _locale_ready():
+		return
+	_ease_hold()
+
+
+func _ease_hold() -> void:
+	var cam: Camera3D = _bg3d.get_camera() if _bg3d.has_method("get_camera") else null
+	if cam == null:
+		return
+	if _last_shot_type == "closeup" or _last_shot_type == "wide":
+		apply_shot("establish")
+		_hold_away = false
+		_hold_pushed = false
+		print("[VnDirector] HOLD → the room (a closeup ran long)")
+		return
+	_hold_lines = 0
+	if _hold_pushed:
+		_hold_pushed = false
+		_hold_away = false
+		_lens_push(cam, _hold_fov0)
+		print("[VnDirector] HOLD → the lens eases back out")
+		return
+	if _hold_away:
+		_hold_away = false
+		_return_to_wide(false)
+		print("[VnDirector] HOLD → back to the room's wide")
+		return
+	if _bg3d.has_method("find_shot_marker"):
+		for marker_name: String in ["shot_establish_b", "shot_establish"]:
+			var m: Node3D = _bg3d.call("find_shot_marker", marker_name) as Node3D
+			if m == null:
+				continue
+			var tf: Transform3D = m.global_transform
+			if tf.origin.distance_to(cam.global_position) < 0.3 \
+					and (-tf.basis.z).angle_to(-cam.global_transform.basis.z) < 0.1:
+				continue
+			_hold_away = true
+			_set_letterbox(false)
+			_cut_to_marker(m, "establish", false)
+			print("[VnDirector] HOLD → %s (the room's other wide)" % m.name)
+			return
+	_hold_pushed = true
+	_hold_fov0 = cam.fov
+	_lens_push(cam, cam.fov * HOLD_PUSH)
+	print("[VnDirector] HOLD → a slow push in (no second wide here)")
+
+
+# The push tilts as it narrows so the ray at HOLD_ANCHOR (of the frame's
+# half-height below centre — just above the reading box, where a set's
+# subject usually sits) stays where it is on screen: a plain zoom slid the
+# lower third down under the words (the river turn's car, 2026-11-06).
+const HOLD_ANCHOR := 0.4
+var _hold_basis0: Basis = Basis.IDENTITY
+
+
+func _lens_push(cam: Camera3D, to_fov: float) -> void:
+	_kill_move()
+	_kill_push()
+	_drifting = false
+	var f0: float = cam.fov
+	var b0: Basis = cam.global_transform.basis
+	var b1: Basis = _hold_basis0
+	if to_fov < f0:
+		_hold_basis0 = b0
+		var tilt: float = atan(HOLD_ANCHOR * tan(deg_to_rad(f0) * 0.5)) \
+			- atan(HOLD_ANCHOR * tan(deg_to_rad(to_fov) * 0.5))
+		b1 = b0 * Basis(Vector3.RIGHT, -tilt)
+	var q0: Quaternion = b0.get_rotation_quaternion()
+	var q1: Quaternion = b1.get_rotation_quaternion()
+	var at: Vector3 = cam.global_position
+	_hold_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_hold_tween.tween_method(func(t: float) -> void:
+		if not is_instance_valid(cam):
+			return
+		cam.global_transform = Transform3D(Basis(q0.slerp(q1, t)), at)
+		cam.fov = lerpf(f0, to_fov, t), 0.0, 1.0, HOLD_PUSH_SECS)
 
 
 ## One more line on an insert: kept while the line names its subject or an

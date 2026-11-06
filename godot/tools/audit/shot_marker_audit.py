@@ -27,6 +27,9 @@ Usage:
     python3 godot/tools/audit/shot_marker_audit.py          # summary
     python3 godot/tools/audit/shot_marker_audit.py --all    # every gap
 """
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import bg_resolve
 import collections
 import json
 import os
@@ -246,10 +249,11 @@ def main():
             except Exception:
                 continue
             cur = ""
+            sid_ = j.get("id", fn[:-5]) if isinstance(j, dict) else fn[:-5]
             for n in j.get("nodes", []):
                 if n.get("t") == "bg":
-                    src = str(n.get("src") or "")
-                    cur = src[3:] if src.startswith("3d:") else ""
+                    # the engine's reading: a painting bg_places swaps for a set
+                    cur = bg_resolve.preset_of(n.get("src"), sid_) or ""
                 if not cur:
                     continue
                 for typ, sid in CUE.findall(json.dumps(n)):

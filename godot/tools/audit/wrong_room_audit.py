@@ -25,6 +25,9 @@ Inserts are not checked: an insert IS a cut to wherever the object is.
 
 Gate at zero.
 """
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import bg_resolve
 import glob
 import json
 import math
@@ -125,8 +128,8 @@ def main():
         pid = None
         for i, n in enumerate(j.get("nodes", [])):
             if n.get("t") == "bg":
-                s = str(n.get("src") or "")
-                pid = s[3:] if s.startswith("3d:") else None
+                # the engine's reading: a painting bg_places swaps for a set
+                pid = bg_resolve.preset_of(n.get("src"), sid)
                 continue
             if pid not in pre:
                 continue

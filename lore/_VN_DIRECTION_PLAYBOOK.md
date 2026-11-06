@@ -323,6 +323,25 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-06 · measure what the engine plays, not what the file says (pass 300)
+
+**What happened:** two hold scans read each `bg` node's `src` as
+written. Most of vols 1–4 name a painting that `bg_places.json` swaps
+for a 3D set at load, so 98 chapters that play on sets were counted as
+paintings and never measured; a pass reported "none over 12" while the
+river turn held one frame for 62 lines.
+
+**Rule:** any scan of what the player sees resolves the data the way
+the engine does (`resolve_bg` → `bg_places.json`, `by_scene` first)
+before it counts. The engine's resolver is the definition; a scan's
+own reading of the file is a guess.
+
+**And the floor under direction:** a picture with no camera and a set
+with no cues both hold for ever. Both now ease on by themselves at a
+turn in the text after 6 (painting) / 8 (set) lines, to frames that
+were read by eye, slowly. That is a floor; the hand cue at the line
+that turns is still the bar.
+
 ### 2026-11-06 · the gates pass a black face — read a new people's frame before cueing it (pass 299)
 
 **What happened:** the lighthouse base got a new `closeup person` pair

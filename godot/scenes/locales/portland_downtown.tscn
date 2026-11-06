@@ -428,3 +428,11 @@ position = Vector3(102.400, 1.500, -5.900)
 rotation = Vector3(-0.3257, 1.0637, 0.0)
 metadata/fov = 38.0
 
+; vol3 ch4: "We showed up early, there was already a line at the door." — from
+; inside, back toward the kick-stopped glass doors and the line beyond (pass 300)
+[node name="shot_insert_door__vacant_gallery_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(104.500, 1.450, -4.400)
+rotation = Vector3(-0.0600, -3.0394, 0.0)
+metadata/fov = 46.0
+
+

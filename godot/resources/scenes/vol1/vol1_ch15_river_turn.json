@@ -99,13 +99,13 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I can't hold this."
+      "text": "[shot:closeup person]I can't hold this."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Then don't."
+      "text": "[shot:closeup person_b]Then don't."
     },
     {
       "t": "say",
@@ -133,11 +133,11 @@
     },
     {
       "t": "narrate",
-      "text": "They look at each other. It's the oldest thing they know how to do. Fifteen years of it: jogging, the skatepark, the bar, Judgement Day."
+      "text": "[shot:establish]They look at each other. It's the oldest thing they know how to do. Fifteen years of it: jogging, the skatepark, the bar, Judgement Day."
     },
     {
       "t": "narrate",
-      "text": "Jacob holds out his hand, palm up. Wagner holds out his. Faust lays his paint-covered hand flat across both, and the paint spreads three ways. It goes up their arms, onto the shirts, into the cotton."
+      "text": "[shot:insert windshield]Jacob holds out his hand, palm up. Wagner holds out his. Faust lays his paint-covered hand flat across both, and the paint spreads three ways. It goes up their arms, onto the shirts, into the cotton."
     },
     {
       "t": "narrate",
@@ -151,7 +151,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "(looking down at his chest) Well. That's going to start conversations."
+      "text": "[shot:closeup person_b](looking down at his chest) Well. That's going to start conversations."
     },
     {
       "t": "say",
@@ -167,7 +167,7 @@
     },
     {
       "t": "narrate",
-      "text": "The river starts to move. There's current now, real current, carrying them somewhere. The banks come back, far off, and they're not the banks they came in on."
+      "text": "[shot:establish]The river starts to move. There's current now, real current, carrying them somewhere. The banks come back, far off, and they're not the banks they came in on."
     },
     {
       "t": "narrate",
@@ -177,7 +177,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "(from the mirror) This is the hard part. Coming back, you lose more than going in. Hold on to something that's yours."
+      "text": "[shot:insert windshield](from the mirror) This is the hard part. Coming back, you lose more than going in. Hold on to something that's yours."
     },
     {
       "t": "say",
@@ -193,7 +193,7 @@
     },
     {
       "t": "narrate",
-      "text": "The boat bucks. Water comes over the side. All three earbuds click at once, and the lifelines come up together, all of them, the whole queue, out loud, overlapping. It's a bar at closing time, a whole night in one breath."
+      "text": "[shot:closeup person]The boat bucks. Water comes over the side. All three earbuds click at once, and the lifelines come up together, all of them, the whole queue, out loud, overlapping. It's a bar at closing time, a whole night in one breath."
     },
     {
       "t": "say",
@@ -251,7 +251,7 @@
     },
     {
       "t": "narrate",
-      "text": "And under them, last, a text-message chime, and a voice Faust hasn't heard out loud in a very long time."
+      "text": "[shot:insert windshield]And under them, last, a text-message chime, and a voice Faust hasn't heard out loud in a very long time."
     },
     {
       "t": "say",
@@ -267,11 +267,11 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "That one's mine. That one's all mine."
+      "text": "[shot:closeup person]That one's mine. That one's all mine."
     },
     {
       "t": "narrate",
-      "text": "The boat steadies, a little. Not enough. The current is very strong."
+      "text": "[shot:establish]The boat steadies, a little. Not enough. The current is very strong."
     },
     {
       "t": "say",
@@ -283,7 +283,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "I've got one. You've got one. We all three have the same one. We said it in the car."
+      "text": "[shot:closeup person_b]I've got one. You've got one. We all three have the same one. We said it in the car."
     },
     {
       "t": "say",
@@ -305,7 +305,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "We three shall be the Handsome Triumvirate."
+      "text": "[shot:closeup person]We three shall be the Handsome Triumvirate."
     },
     {
       "t": "say",
@@ -317,7 +317,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "(and he means it, completely, the most sincere thing anyone has said in the whole picture) Living in this land of milk honey."
+      "text": "[shot:closeup person_b](and he means it, completely, the most sincere thing anyone has said in the whole picture) Living in this land of milk honey."
     },
     {
       "t": "narrate",
@@ -333,7 +333,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Here. This one. Not the next one. Not a better one. This one with the cheap fluorescents and the impulse buys and the drugstore and the bar and the overpriced drinks and the crusted restrooms and the ball fields and the downwind list and the girl in the square and the riff. I'll take it. I'll take all of it."
+      "text": "[shot:closeup person]Here. This one. Not the next one. Not a better one. This one with the cheap fluorescents and the impulse buys and the drugstore and the bar and the overpriced drinks and the crusted restrooms and the ball fields and the downwind list and the girl in the square and the riff. I'll take it. I'll take all of it."
     },
     {
       "t": "say",
@@ -345,7 +345,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Not trading it."
+      "text": "[shot:closeup person_b]Not trading it."
     },
     {
       "t": "say",
@@ -357,7 +357,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "sad",
-      "text": "(in the mirror, very small, almost to himself) Nobody's ever turned it down like that before. They usually counter."
+      "text": "[shot:insert windshield](in the mirror, very small, almost to himself) Nobody's ever turned it down like that before. They usually counter."
     },
     {
       "t": "say",
@@ -373,7 +373,7 @@
     },
     {
       "t": "narrate",
-      "text": "The current lets go. The river goes flat. Up ahead, on the bank, there's a building with the lights low: Club #, with no line and no sign, just a door."
+      "text": "[shot:establish]The current lets go. The river goes flat. Up ahead, on the bank, there's a building with the lights low: Club #, with no line and no sign, just a door."
     },
     {
       "t": "narrate",

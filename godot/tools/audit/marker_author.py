@@ -325,7 +325,7 @@ def author_closeup(locale, dry, side="a", preset=None):
     return 0
 
 
-def author_establish_b(locale, dry):
+def author_establish_b(locale, dry, preset=None):
     """--establish-b: a room's SECOND wide — `shot_establish_b` — for
     rooms that have only the preset camera to hold on. Three chapters
     ran 23-24 lines of narration on one frame (the courthouse, the Pit
@@ -336,7 +336,11 @@ def author_establish_b(locale, dry):
     verdict, and at least 90° round the spot from the first wide."""
     path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
     src_txt = open(path).read()
-    if 'name="shot_establish_b"' in src_txt:
+    # --preset <id> (2026-11-06, pass 300): the second wide of ONE area of a
+    # several-area scene (the dean's offices hold four rooms), built from that
+    # preset's camera and suffixed so Background3D resolves it only there
+    sfx = ("__" + preset) if preset else ""
+    if ('name="shot_establish_b%s"' % sfx) in src_txt:
         return 0
     gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
     glb = gm.group(1) if gm else locale
@@ -345,6 +349,8 @@ def author_establish_b(locale, dry):
     for m in re.finditer(r'"(\w+)":\s*\{(.*?)\n\t\}', csrc, re.S):
         pid, body = m.group(1), m.group(2)
         if re.search(r"godseye|diag|debug", pid):
+            continue
+        if preset and pid != preset:
             continue
         if ('"scene": "res://scenes/locales/%s.tscn"' % locale) in body:
             cm = re.search(r'"camera_origin":\s*Vector3\(([^)]+)\)', body)
@@ -379,12 +385,12 @@ def author_establish_b(locale, dry):
         st = VO.frame_stats(R.to_b(npos), rx, ry, 60.0, boxes)
         if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes) or st["distinct"] < 4:
             continue
-        print("== %-28s shot_establish_b at (%.1f, %.1f, %.1f) %.1fm · %+.0f° · %.0f° round · median %.1f distinct %d"
+        print("== %-28s shot_establish_b" + sfx + " at (%.1f, %.1f, %.1f) %.1fm · %+.0f° · %.0f° round · median %.1f distinct %d"
               % (locale, npos[0], npos[1], npos[2], d, el, math.degrees(sep), st["median"], st["distinct"]))
         if not dry:
             blk = ["", "; the room's SECOND wide, authored by marker_author.py --establish-b (2026-09-12)",
                    "; from the far side of the room's look-point, so a long hold has a frame to rotate to",
-                   '[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]',
+                   '[node name="shot_establish_b%s" type="Marker3D" parent="." groups=["vn_shot"]]' % sfx,
                    "position = Vector3(%.3f, %.3f, %.3f)" % npos,
                    "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
                    "metadata/fov = 60.0", ""]
@@ -403,7 +409,7 @@ def main():
         n = 0
         for fn in sorted(os.listdir(M.LOCALES_TSCN)):
             if fn.endswith(".tscn") and (not only or fn[:-5] in only):
-                n += author_establish_b(fn[:-5], dry)
+                n += author_establish_b(fn[:-5], dry, _preset_arg())
         print("\n%d second wide(s) %s" % (n, "planned" if dry else "authored"))
         return
     if "--closeup" in sys.argv or "--closeup-b" in sys.argv:
