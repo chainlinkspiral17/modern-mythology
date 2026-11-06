@@ -250,15 +250,15 @@
     },
     {
       "t": "narrate",
-      "text": "Tell us a bit about yourself Julie."
+      "text": "[shot:closeup james]Tell us a bit about yourself Julie."
     },
     {
       "t": "narrate",
-      "text": "I smiled and sat back a little, looking at him. I'm dead, I said."
+      "text": "[shot:closeup julie]I smiled and sat back a little, looking at him. I'm dead, I said."
     },
     {
       "t": "narrate",
-      "text": "He nodded and wrote my response down. How'd you die, he said."
+      "text": "[shot:insert notebook]He nodded and wrote my response down. How'd you die, he said."
     },
     {
       "t": "narrate",
@@ -274,7 +274,7 @@
     },
     {
       "t": "narrate",
-      "text": "I called Nathaniel a -"
+      "text": "[shot:establish]I called Nathaniel a -"
     },
     {
       "t": "narrate",
@@ -306,7 +306,7 @@
     },
     {
       "t": "narrate",
-      "text": "That's when I saw the knife. He must've grabbed it from his backpack. That's when he stabbed me with it. I died because I lied to him. That's what killed me. He was the only person who could ever see me."
+      "text": "[shot:closeup julie]That's when I saw the knife. He must've grabbed it from his backpack. That's when he stabbed me with it. I died because I lied to him. That's what killed me. He was the only person who could ever see me."
     },
     {
       "t": "narrate",
@@ -334,7 +334,7 @@
     },
     {
       "t": "narrate",
-      "text": "What happened to Nathaniel, he said."
+      "text": "[shot:closeup james]What happened to Nathaniel, he said."
     },
     {
       "t": "narrate",
@@ -354,7 +354,7 @@
     },
     {
       "t": "narrate",
-      "text": "Look, stop it, I said. Nathaniel was upset, I said. I'm the one that died."
+      "text": "[shot:closeup julie]Look, stop it, I said. Nathaniel was upset, I said. I'm the one that died."
     },
     {
       "t": "narrate",
@@ -366,7 +366,7 @@
     },
     {
       "t": "narrate",
-      "text": "Look Julie, we found the truck, he said. There was blood everywhere."
+      "text": "[shot:closeup james]Look Julie, we found the truck, he said. There was blood everywhere."
     },
     {
       "t": "narrate",
@@ -378,7 +378,7 @@
     },
     {
       "t": "narrate",
-      "text": "I didn't know he'd kill himself, I said. Weeping."
+      "text": "[shot:establish]I didn't know he'd kill himself, I said. Weeping."
     },
     {
       "t": "bg",

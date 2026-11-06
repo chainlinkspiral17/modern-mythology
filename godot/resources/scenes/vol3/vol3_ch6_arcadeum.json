@@ -151,7 +151,7 @@
       "t": "say",
       "char": "June",
       "expr": "neutral",
-      "text": "I've never heard of this game before."
+      "text": "[shot:closeup person_b]I've never heard of this game before."
     },
     {
       "t": "narrate",
@@ -159,7 +159,7 @@
     },
     {
       "t": "narrate",
-      "text": "The salesman stood up very straight."
+      "text": "[shot:closeup person]The salesman stood up very straight."
     },
     {
       "t": "say",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her next thought was of playing it when she got home from her interview."
+      "text": "[shot:insert register]Her next thought was of playing it when she got home from her interview."
     },
     {
       "t": "say",
@@ -193,7 +193,7 @@
     },
     {
       "t": "narrate",
-      "text": "She then returned to the second half of the interview which went well enough, but after some second guessing, she was convinced they wouldn't hire her, after all. She regretted buying the game earlier. During a forced bathroom break, she snuck a look at the receipt."
+      "text": "[shot:establish]She then returned to the second half of the interview which went well enough, but after some second guessing, she was convinced they wouldn't hire her, after all. She regretted buying the game earlier. During a forced bathroom break, she snuck a look at the receipt."
     },
     {
       "t": "narrate",
@@ -209,19 +209,19 @@
     },
     {
       "t": "narrate",
-      "text": "It was a boutique store in a corporate high rise. Her only option was to go back after the interview ended and see if she could return it."
+      "text": "[shot:insert window]It was a boutique store in a corporate high rise. Her only option was to go back after the interview ended and see if she could return it."
     },
     {
       "t": "say",
       "char": "The Shopkeeper",
       "expr": "neutral",
-      "text": "I'm sorry, but I can't return it."
+      "text": "[shot:closeup person]I'm sorry, but I can't return it."
     },
     {
       "t": "say",
       "char": "June",
       "expr": "neutral",
-      "text": "It's five hundred dollars."
+      "text": "[shot:closeup person_b]It's five hundred dollars."
     },
     {
       "t": "say",
@@ -239,17 +239,17 @@
       "t": "say",
       "char": "The Shopkeeper",
       "expr": "neutral",
-      "text": "This is an old, brand new never been opened game. Honestly. It's mine. My game. I made it. Worked on it a few years back when I got out of the Army, and there are maybe a hundred copies of it left in the world. Some soldiers stick around Hawaii making surfboards, I made a video game. It's a unique thing, and it found you, and there's gotta be a reason for that."
+      "text": "[shot:closeup person]This is an old, brand new never been opened game. Honestly. It's mine. My game. I made it. Worked on it a few years back when I got out of the Army, and there are maybe a hundred copies of it left in the world. Some soldiers stick around Hawaii making surfboards, I made a video game. It's a unique thing, and it found you, and there's gotta be a reason for that."
     },
     {
       "t": "narrate",
-      "text": "She looked back down at the game and the receipt and nodded."
+      "text": "[shot:insert register]She looked back down at the game and the receipt and nodded."
     },
     {
       "t": "say",
       "char": "June",
       "expr": "neutral",
-      "text": "I'd really like if you returned my money to me."
+      "text": "[shot:closeup person_b]I'd really like if you returned my money to me."
     },
     {
       "t": "say",
@@ -259,7 +259,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looked at her with a bit of anger, and a bit of sympathy."
+      "text": "[shot:closeup person]He looked at her with a bit of anger, and a bit of sympathy."
     },
     {
       "t": "say",
@@ -271,13 +271,13 @@
       "t": "say",
       "char": "June",
       "expr": "neutral",
-      "text": "I'm interviewing. I thought it was my dream job. I don't think I'll get it."
+      "text": "[shot:closeup person_b]I'm interviewing. I thought it was my dream job. I don't think I'll get it."
     },
     {
       "t": "say",
       "char": "The Shopkeeper",
       "expr": "neutral",
-      "text": "Good luck. There's good and bad things about the place. I guess you could say the culture, when you get down to it."
+      "text": "[shot:closeup person]Good luck. There's good and bad things about the place. I guess you could say the culture, when you get down to it."
     },
     {
       "t": "say",
@@ -295,11 +295,11 @@
       "t": "say",
       "char": "June",
       "expr": "neutral",
-      "text": "Have any of them bought your game?"
+      "text": "[shot:closeup person_b]Have any of them bought your game?"
     },
     {
       "t": "narrate",
-      "text": "She looked back down at it when he wouldn't answer her question."
+      "text": "[shot:insert register]She looked back down at it when he wouldn't answer her question."
     },
     {
       "t": "say",
@@ -311,7 +311,7 @@
       "t": "say",
       "char": "The Shopkeeper",
       "expr": "neutral",
-      "text": "So you'll play it?"
+      "text": "[shot:closeup person]So you'll play it?"
     },
     {
       "t": "bg",

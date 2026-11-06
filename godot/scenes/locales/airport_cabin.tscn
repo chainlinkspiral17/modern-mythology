@@ -480,3 +480,14 @@ position = Vector3(-5.398, 0.950, -16.741)
 rotation = Vector3(-0.2618, -0.6316, 0.0)
 metadata/fov = 35.0
 
+; vol3 ch5: "the fan positioned to hit him hard in the face" — Andy's vent (pass 303)
+[node name="shot_insert_vent__plane_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(60.600, 1.250, -7.600)
+rotation = Vector3(0.4396, -1.0753, 0.0)
+metadata/fov = 40.0
+
+; "Below, the dark, and now and then the lights of some town" — Andy's window (pass 303)
+[node name="shot_insert_win__plane_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(61.000, 1.250, -7.400)
+rotation = Vector3(-0.0518, -1.1205, 0.0)
+metadata/fov = 40.0
