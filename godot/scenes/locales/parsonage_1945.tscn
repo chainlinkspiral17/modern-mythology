@@ -416,3 +416,17 @@ metadata/fov = 45.0
 position = Vector3(-1.050, 1.612, -3.650)
 rotation = Vector3(-0.0700, -2.3562, 0.0)
 metadata/fov = 45.0
+
+
+; Ron's room at dawn: the same frame as the day's (pass 303)
+[node name="shot_insert_books__ron_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.500, -1.500)
+rotation = Vector3(-0.8221, 0.4266, 0.0)
+metadata/fov = 50.0
+
+
+; Ron's room at dawn: the same frame as the day's (pass 303)
+[node name="shot_closeup_person_b__ron_dawn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.050, 1.612, -3.650)
+rotation = Vector3(-0.0700, -2.3562, 0.0)
+metadata/fov = 45.0

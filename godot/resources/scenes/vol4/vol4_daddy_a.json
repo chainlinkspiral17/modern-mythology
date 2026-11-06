@@ -172,7 +172,7 @@
     },
     {
       "t": "narrate",
-      "text": "Yes, she said a large part of her fighting against that simple word."
+      "text": "[shot:closeup person]Yes, she said a large part of her fighting against that simple word."
     },
     {
       "t": "say",
@@ -200,7 +200,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "I know you're going to find this hard to believe but I created you. When you were praying to God, which I gave you, that belief, It was one of those things I really find attractive, but can't really understand."
+      "text": "[shot:insert desk]I know you're going to find this hard to believe but I created you. When you were praying to God, which I gave you, that belief, It was one of those things I really find attractive, but can't really understand."
     },
     {
       "t": "say",
@@ -230,7 +230,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "warm",
-      "text": "Yes! Of course you aren't but you're perfect for me."
+      "text": "[shot:establish]Yes! Of course you aren't but you're perfect for me."
     },
     {
       "t": "say",
@@ -260,7 +260,7 @@
       "t": "say",
       "char": "Esther",
       "expr": "worried",
-      "text": "That scares me."
+      "text": "[shot:insert door]That scares me."
     },
     {
       "t": "say",
