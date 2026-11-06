@@ -65,19 +65,19 @@
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Agreeably laid back. Productive."
+   "text": "[shot:closeup jacob]Agreeably laid back. Productive."
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Cool drinks. Swell friends. Cozy corner."
+   "text": "[shot:closeup faust]Cool drinks. Swell friends. Cozy corner."
   },
   {
    "t": "say",
    "char": "Margaret",
    "expr": "neutral",
-   "text": "Sounds most affirming. I got yelled at."
+   "text": "[shot:closeup margaret]Sounds most affirming. I got yelled at."
   },
   {
    "t": "say",
@@ -95,7 +95,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "That's no good."
+   "text": "[shot:closeup faust]That's no good."
   },
   {
    "t": "say",
@@ -105,7 +105,7 @@
   },
   {
    "t": "narrate",
-   "text": "They all hold to toast and drink."
+   "text": "[shot:insert table]They all hold to toast and drink."
   },
   {
    "t": "say",
@@ -117,19 +117,19 @@
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "May stupid jerkfaces in workforce get rightful comeuppance."
+   "text": "[shot:closeup jacob]May stupid jerkfaces in workforce get rightful comeuppance."
   },
   {
    "t": "say",
    "char": "Margaret",
    "expr": "neutral",
-   "text": "Thanks for helping me forget my troubles. If but for a moment."
+   "text": "[shot:closeup margaret]Thanks for helping me forget my troubles. If but for a moment."
   },
   {
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Cheers — to the simple magic in this."
+   "text": "[shot:closeup faust]Cheers — to the simple magic in this."
   },
   {
    "t": "narrate",
@@ -161,13 +161,13 @@
    "t": "say",
    "char": "Emily",
    "expr": "neutral",
-   "text": "I didn't know they had pinball here."
+   "text": "[shot:closeup emily]I didn't know they had pinball here."
   },
   {
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Yes. And Missile Command, too."
+   "text": "[shot:closeup jacob]Yes. And Missile Command, too."
   },
   {
    "t": "say",
@@ -191,19 +191,19 @@
    "t": "say",
    "char": "Margaret",
    "expr": "neutral",
-   "text": "Stop showing off, Emily. Else we'll leave you home next time."
+   "text": "[shot:closeup margaret]Stop showing off, Emily. Else we'll leave you home next time."
   },
   {
    "t": "say",
    "char": "Helen",
    "expr": "neutral",
-   "text": "Hey — we've all got our nerd triggers. Be it Star Trek, wrestling, pin-up photography."
+   "text": "[shot:closeup helen]Hey — we've all got our nerd triggers. Be it Star Trek, wrestling, pin-up photography."
   },
   {
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "It's times like these I could thank the suffragettes in person."
+   "text": "[shot:closeup wagner]It's times like these I could thank the suffragettes in person."
   },
   {
    "t": "say",
@@ -221,13 +221,13 @@
    "t": "say",
    "char": "Emily",
    "expr": "neutral",
-   "text": "Continue."
+   "text": "[shot:closeup emily]Continue."
   },
   {
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "Sad fact is — left to their own devices — white men would have ruled this world completely."
+   "text": "[shot:closeup wagner]Sad fact is — left to their own devices — white men would have ruled this world completely."
   },
   {
    "t": "say",
@@ -245,11 +245,11 @@
    "t": "say",
    "char": "Helen",
    "expr": "neutral",
-   "text": "If we're saying — down with white men — hear, hear."
+   "text": "[shot:closeup helen]If we're saying — down with white men — hear, hear."
   },
   {
    "t": "narrate",
-   "text": "The men all say, in chorus —"
+   "text": "[shot:establish_b]The men all say, in chorus —"
   },
   {
    "t": "say",

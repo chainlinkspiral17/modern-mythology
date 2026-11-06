@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "Second — the rural quality of life is a warm blanket that can both comfort and smother. When someone wants to vanish, it is very simple to do.",
+      "text": "[shot:closeup person]Second — the rural quality of life is a warm blanket that can both comfort and smother. When someone wants to vanish, it is very simple to do.",
       "voice": "assets/audio/voice/vol2_ch2_disappearance/004.mp3"
     },
     {
@@ -42,12 +42,12 @@
     },
     {
       "t": "narrate",
-      "text": "A girl by the name of Gloria Bryant was last seen tending to chickens in a coop outside her room. Because of the unusual nature of the disappearance, and the fact that she appeared to be a content young woman of the era — foul play was immediately suspect.",
+      "text": "[shot:insert coop]A girl by the name of Gloria Bryant was last seen tending to chickens in a coop outside her room. Because of the unusual nature of the disappearance, and the fact that she appeared to be a content young woman of the era — foul play was immediately suspect.",
       "voice": "assets/audio/voice/vol2_ch2_disappearance/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "In truth she had absconded with David Jarvis to his small one-bedroom home. They lived in sin for four days enjoying each other in as many ways possible.",
+      "text": "[shot:insert house]In truth she had absconded with David Jarvis to his small one-bedroom home. They lived in sin for four days enjoying each other in as many ways possible.",
       "voice": "assets/audio/voice/vol2_ch2_disappearance/008.mp3"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "t": "narrate",
-      "text": "Gloria was found by the side of the road — beaten and dishevelled. Her rescuer was a travelling minister by the name of Cook. Him and his wife tended to her cuts and bruises and delivered her into the safekeeping of her parents.",
+      "text": "[shot:establish]Gloria was found by the side of the road — beaten and dishevelled. Her rescuer was a travelling minister by the name of Cook. Him and his wife tended to her cuts and bruises and delivered her into the safekeeping of her parents.",
       "voice": "assets/audio/voice/vol2_ch2_disappearance/013.mp3"
     },
     {
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "David Jarvis was at once both reported killed in 1910 — and working as a fisherman later that year. Unusual consistencies such as this showed up time and time again in Small Wood records.",
+      "text": "[shot:insert fallen_house]David Jarvis was at once both reported killed in 1910 — and working as a fisherman later that year. Unusual consistencies such as this showed up time and time again in Small Wood records.",
       "voice": "assets/audio/voice/vol2_ch2_disappearance/018.mp3"
     },
     {

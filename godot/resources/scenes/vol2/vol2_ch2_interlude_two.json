@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:still]It happened on a Sunday. I was kissed by a girl who had a boyfriend, and the kiss was not innocent, and if there was fault for it happening, it was my own.",
+      "text": "[shot:closeup person][beat:still]It happened on a Sunday. I was kissed by a girl who had a boyfriend, and the kiss was not innocent, and if there was fault for it happening, it was my own.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/004.mp3"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "It all started earlier in the day. There was a beach cleanup my family was a part of. We scoured the coast for whatever nugget of refuse we could find.",
+      "text": "[shot:establish]It all started earlier in the day. There was a beach cleanup my family was a part of. We scoured the coast for whatever nugget of refuse we could find.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/006.mp3"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "As it was, the festival put the whole town in a heightened sense of activity, and tempers ran short all the way down that one main street running from the Pacific coast inland.",
+      "text": "[shot:closeup person_b]As it was, the festival put the whole town in a heightened sense of activity, and tempers ran short all the way down that one main street running from the Pacific coast inland.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/010.mp3"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "t": "narrate",
-      "text": "It was here I met Katrina. The youngest of the competing queens. Beautiful, feisty, and sometimes a chore. She liked most every person she dealt with and abstained from the gossipmongering that was so common in her clique.",
+      "text": "[shot:closeup person]It was here I met Katrina. The youngest of the competing queens. Beautiful, feisty, and sometimes a chore. She liked most every person she dealt with and abstained from the gossipmongering that was so common in her clique.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/013.mp3"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "Perhaps this common thread was the root of a friendship. Perhaps it was just that she was smart, friendly, and I gained much entertainment by working her into a frenzy.",
+      "text": "[shot:closeup person_b]Perhaps this common thread was the root of a friendship. Perhaps it was just that she was smart, friendly, and I gained much entertainment by working her into a frenzy.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/016.mp3"
     },
     {
@@ -111,7 +111,7 @@
     },
     {
       "t": "narrate",
-      "text": "A portly kid was the deejay and there were eight kids making an effort to shuffle in place uncomfortably, not counting my sister and I. We were standing at the entrance horrified, refusing to budge another step.",
+      "text": "[shot:establish_b]A portly kid was the deejay and there were eight kids making an effort to shuffle in place uncomfortably, not counting my sister and I. We were standing at the entrance horrified, refusing to budge another step.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/021.mp3"
     },
     {
@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "Janess and I made for the back, where we arranged fold-up chairs in sitting positions and looked around for out-dated but readily available reading material.",
+      "text": "[shot:closeup person]Janess and I made for the back, where we arranged fold-up chairs in sitting positions and looked around for out-dated but readily available reading material.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/023.mp3"
     },
     {
@@ -136,7 +136,7 @@
     },
     {
       "t": "narrate",
-      "text": "His name was Arthur Finch. And his aspirations, in no particular order, were actor, artist, and musician.",
+      "text": "[shot:insert decks]His name was Arthur Finch. And his aspirations, in no particular order, were actor, artist, and musician.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/026.mp3"
     },
     {
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "We never became fast friends but always respected and kept a charitable distance from each other. We were alike in many ways — so the desire to stand apart was quite strong.",
+      "text": "[shot:closeup person_b]We never became fast friends but always respected and kept a charitable distance from each other. We were alike in many ways — so the desire to stand apart was quite strong.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/029.mp3"
     },
     {
@@ -166,12 +166,12 @@
     },
     {
       "t": "narrate",
-      "text": "Before that happened, a girl I hadn't paid much attention to came up and asked me to dance.",
+      "text": "[shot:closeup person]Before that happened, a girl I hadn't paid much attention to came up and asked me to dance.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "I shrugged a confused sort of agreement and we walked out hand in hand sideways to the obvious dead zone of couples shuffling around in place ever so suggestively to the time of the beat.",
+      "text": "[shot:establish_b]I shrugged a confused sort of agreement and we walked out hand in hand sideways to the obvious dead zone of couples shuffling around in place ever so suggestively to the time of the beat.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/033.mp3"
     },
     {
@@ -186,7 +186,7 @@
     },
     {
       "t": "narrate",
-      "text": "My heart was actually getting nostalgic and pining for an older romance overseas, which was pesky and impossible, but still — that's where my head was.",
+      "text": "[shot:closeup person_b]My heart was actually getting nostalgic and pining for an older romance overseas, which was pesky and impossible, but still — that's where my head was.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/036.mp3"
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       "t": "narrate",
-      "text": "Arthur Finch killed the thing dead. And we all shuffled off to a ballgame.",
+      "text": "[shot:establish]Arthur Finch killed the thing dead. And we all shuffled off to a ballgame.",
       "voice": "assets/audio/voice/vol2_ch2_interlude_two/038.mp3"
     },
     {

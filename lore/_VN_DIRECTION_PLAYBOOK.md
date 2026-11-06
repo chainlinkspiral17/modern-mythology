@@ -323,6 +323,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-06 · the gates pass a black face — read a new people's frame before cueing it (pass 299)
+
+**What happened:** the lighthouse base got a new `closeup person` pair
+for V's memory of the place (vol2 ch4). marker_aim passed it (the
+marker sees its subject, the column) and so did wrong_room (it is
+under 12 m from the preset camera). Rendered under the preset, the
+frame was near-black: dark columns against a dark sky, and nothing
+for a portrait to stand in front of.
+
+**Rule:** a new people's frame is rendered and read before any cue
+uses it, as inserts already are (2026-10-24). When the frame does not
+read and the room cannot light it without inventing a practical the
+text doesn't name, drop the frame and cut the hold on the objects the
+prose names (the padlock, the column) and the wide. A dark closeup is
+worse than the hold it breaks.
+
 ### 2026-11-05 · a change of place is a transition the text chooses; a hide fades
 
 - **The user:** "I want a portrait fade in and out, the hard cuts and

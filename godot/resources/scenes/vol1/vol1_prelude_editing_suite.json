@@ -18,14 +18,14 @@
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "You two who have been here since the beginning — why even start if all we dare dream to do is break-even in this marginal marketplace?",
+      "text": "[shot:closeup person]You two who have been here since the beginning — why even start if all we dare dream to do is break-even in this marginal marketplace?",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/001.mp3"
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "What do you mean start? Where in time are you looking?",
+      "text": "[shot:closeup person_b]What do you mean start? Where in time are you looking?",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/002.mp3"
     },
     {
@@ -39,7 +39,7 @@
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor.",
+      "text": "[shot:closeup person]We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/004.mp3"
     },
     {
@@ -67,7 +67,7 @@
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "You may bang at those doors to get but a glimpse other side — all swell and good — but know there are other worlds than these.",
+      "text": "[shot:closeup person_b]You may bang at those doors to get but a glimpse other side — all swell and good — but know there are other worlds than these.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/008.mp3"
     },
     {
@@ -88,12 +88,12 @@
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "The crowds we might attract might utterly destroy us if not compromise everything we’re working towards.",
+      "text": "[shot:closeup person]The crowds we might attract might utterly destroy us if not compromise everything we’re working towards.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "The three sigh.",
+      "text": "[shot:establish]The three sigh.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/012.mp3"
     },
     {
@@ -119,14 +119,14 @@
     },
     {
       "t": "narrate",
-      "text": "Enter the FOOL, a disheveled and insane merry prankster.",
+      "text": "[shot:insert door]Enter the FOOL, a disheveled and insane merry prankster.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/016.mp3"
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power.",
+      "text": "[shot:closeup person_b]All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/017.mp3"
     },
     {
@@ -140,14 +140,14 @@
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Give this thing a shot in the arm — can’t feel the pulse here — amp up the soundtrack, swell their emotions, dim the lights just so, cue flashy credit sequence, lull ’em in for the ride to come.",
+      "text": "[shot:closeup person]Give this thing a shot in the arm — can’t feel the pulse here — amp up the soundtrack, swell their emotions, dim the lights just so, cue flashy credit sequence, lull ’em in for the ride to come.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/019.mp3"
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Keep things simple. Don’t think for a minute half-way smart patrons won’t notice how much of a hack you truly are.",
+      "text": "[shot:closeup person_b]Keep things simple. Don’t think for a minute half-way smart patrons won’t notice how much of a hack you truly are.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/020.mp3"
     },
     {
@@ -175,7 +175,7 @@
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Don’t forget — this is collaboration, plain and simple, sum of the whole not of the part. You three but a small fraction wrapped up in your own short-sighted drama.",
+      "text": "[shot:closeup person]Don’t forget — this is collaboration, plain and simple, sum of the whole not of the part. You three but a small fraction wrapped up in your own short-sighted drama.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/024.mp3"
     },
     {
@@ -201,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "The director shrugs and starts the film.",
+      "text": "[shot:insert console]The director shrugs and starts the film.",
       "voice": "assets/audio/voice/vol1_prelude_editing_suite/028.mp3"
     },
     {

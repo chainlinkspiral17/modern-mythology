@@ -59,13 +59,13 @@
     },
     {
       "t": "narrate",
-      "text": "Faust opens his eyes first. Then Wagner. Then Jacob, who sits up too fast and holds his head."
+      "text": "[shot:closeup faust]Faust opens his eyes first. Then Wagner. Then Jacob, who sits up too fast and holds his head."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Ow. Did we die."
+      "text": "[shot:closeup jacob]Ow. Did we die."
     },
     {
       "t": "say",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "They look at the cage. It's empty. There's no body. There's no blood. The floor inside it is swept clean."
+      "text": "[shot:establish_b]They look at the cage. It's empty. There's no body. There's no blood. The floor inside it is swept clean."
     },
     {
       "t": "say",
@@ -101,11 +101,11 @@
     },
     {
       "t": "narrate",
-      "text": "On the floor of the cage there's one object. Faust reaches in and picks it up. It's Joan's dagger. It's warm."
+      "text": "[shot:closeup faust]On the floor of the cage there's one object. Faust reaches in and picks it up. It's Joan's dagger. It's warm."
     },
     {
       "t": "narrate",
-      "text": "Dickens Dean comes from the back, from the DJ booth, slowly. He looks very tired, and very real. He's wearing the fourth shirt, the frame, the wood grain, and in the middle of it, where there was white cotton, there's something faint, a smudge, a watermark, the shape of something seen through rain."
+      "text": "[shot:establish]Dickens Dean comes from the back, from the DJ booth, slowly. He looks very tired, and very real. He's wearing the fourth shirt, the frame, the wood grain, and in the middle of it, where there was white cotton, there's something faint, a smudge, a watermark, the shape of something seen through rain."
     },
     {
       "t": "hide",
@@ -125,13 +125,13 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "Those are hers."
+      "text": "[shot:closeup dickens]Those are hers."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "(holding it up) This is a knife."
+      "text": "[shot:closeup faust](holding it up) This is a knife."
     },
     {
       "t": "say",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust holds it out. Dickens takes it gently. In his hands it's whatever it is to him. He puts it to his ear like a shell."
+      "text": "[shot:closeup dickens]Faust holds it out. Dickens takes it gently. In his hands it's whatever it is to him. He puts it to his ear like a shell."
     },
     {
       "t": "say",
@@ -169,7 +169,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "That's music, man. That's what it always means."
+      "text": "[shot:closeup wagner]That's music, man. That's what it always means."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "Something's in it. Could be her. Could be a water stain."
+      "text": "[shot:closeup dickens]Something's in it. Could be her. Could be a water stain."
     },
     {
       "t": "say",
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "He walks to the door, stops, and turns back."
+      "text": "[shot:establish_b]He walks to the door, stops, and turns back."
     },
     {
       "t": "say",
@@ -207,13 +207,13 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Did you get what you came for."
+      "text": "[shot:closeup faust]Did you get what you came for."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "I don't know yet. I'll tell you when I do. It may be a while. It may be somebody else I tell."
+      "text": "[shot:closeup dickens]I don't know yet. I'll tell you when I do. It may be a while. It may be somebody else I tell."
     },
     {
       "t": "say",
@@ -243,25 +243,25 @@
     },
     {
       "t": "narrate",
-      "text": "The three sit a while."
+      "text": "[shot:establish]The three sit a while."
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "I need a ginger beer."
+      "text": "[shot:closeup wagner]I need a ginger beer."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "I need to go home and watch my kid sleep like a creep."
+      "text": "[shot:closeup jacob]I need to go home and watch my kid sleep like a creep."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Breakfast first. Schnitzel."
+      "text": "[shot:closeup faust]Breakfast first. Schnitzel."
     },
     {
       "t": "say",
@@ -277,7 +277,7 @@
     },
     {
       "t": "narrate",
-      "text": "They help each other up. Jacob's back hurts, and when he reaches around to rub it there's a faint pencil line under his shirt that wasn't there yesterday. Wagner's hands smell like chlorine."
+      "text": "[shot:establish_b]They help each other up. Jacob's back hurts, and when he reaches around to rub it there's a faint pencil line under his shirt that wasn't there yesterday. Wagner's hands smell like chlorine."
     },
     {
       "t": "narrate",

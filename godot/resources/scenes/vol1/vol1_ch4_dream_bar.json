@@ -51,13 +51,13 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "What I just did right there is draw a picture. Plain and simple."
+      "text": "[shot:closeup faust]What I just did right there is draw a picture. Plain and simple."
     },
     {
       "t": "say",
       "char": "Man",
       "expr": "neutral",
-      "text": "No — you clearly summoned me. Dreams have dream rules."
+      "text": "[shot:closeup dickens]No — you clearly summoned me. Dreams have dream rules."
     },
     {
       "t": "say",
@@ -75,7 +75,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Exactly the jazz I'm working on. This table, right here. See — I'm ahead of your game, Antagonist. I know why you're here. And I'm going to lay it out early."
+      "text": "[shot:closeup faust]Exactly the jazz I'm working on. This table, right here. See — I'm ahead of your game, Antagonist. I know why you're here. And I'm going to lay it out early."
     },
     {
       "t": "say",
@@ -93,24 +93,24 @@
       "t": "say",
       "char": "Man",
       "expr": "neutral",
-      "text": "Not too shabby. But still — awful sloppy. Speed up. Not slow down."
+      "text": "[shot:closeup dickens]Not too shabby. But still — awful sloppy. Speed up. Not slow down."
     },
     {
       "t": "narrate",
-      "text": "Faust is drawing the man. He looks at his picture with strange recognition."
+      "text": "[shot:insert table]Faust is drawing the man. He looks at his picture with strange recognition."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Not that I trust you, or want anything to do with you. But if you aren't leaving — the name is John Faust. I've got this fantastic destiny ahead of me. And I want to know who you are, and what you're hoping to do with it."
+      "text": "[shot:closeup faust]Not that I trust you, or want anything to do with you. But if you aren't leaving — the name is John Faust. I've got this fantastic destiny ahead of me. And I want to know who you are, and what you're hoping to do with it."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Good to meet you, John. A name I go by is Dickens Dean. And you have in fact guessed it — I am a traveller from another realm. A world much like this one. More of a time-traveller, really."
+      "text": "[shot:closeup dickens]Good to meet you, John. A name I go by is Dickens Dean. And you have in fact guessed it — I am a traveller from another realm. A world much like this one. More of a time-traveller, really."
     },
     {
       "t": "say",
@@ -133,20 +133,20 @@
     },
     {
       "t": "narrate",
-      "text": "Faust extends a hand, staring across at his Nemesis. The two shake — comfortably familiar."
+      "text": "[shot:establish_b]Faust extends a hand, staring across at his Nemesis. The two shake — comfortably familiar."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I feel we've met somewhere."
+      "text": "[shot:closeup faust]I feel we've met somewhere."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "In a dream, perhaps. I have a friend you need to meet."
+      "text": "[shot:closeup dickens]In a dream, perhaps. I have a friend you need to meet."
     },
     {
       "t": "narrate",
@@ -173,13 +173,13 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "So you're the one people they've been talking about."
+      "text": "[shot:closeup joan]So you're the one people they've been talking about."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I find it strange — people are coming up to me in dreams now."
+      "text": "[shot:closeup faust]I find it strange — people are coming up to me in dreams now."
     },
     {
       "t": "narrate",
@@ -189,11 +189,11 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "This isn't a dream, honey."
+      "text": "[shot:closeup joan]This isn't a dream, honey."
     },
     {
       "t": "narrate",
-      "text": "Faust gets up out of his chair — drunk and staggering."
+      "text": "[shot:establish_b]Faust gets up out of his chair — drunk and staggering."
     },
     {
       "t": "say",
@@ -211,14 +211,14 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Where are my friends? I came with my friends."
+      "text": "[shot:closeup faust]Where are my friends? I came with my friends."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Relax, good sir. I think the effects of Joan have just kicked in. Sit back down — I have a story to tell."
+      "text": "[shot:closeup dickens]Relax, good sir. I think the effects of Joan have just kicked in. Sit back down — I have a story to tell."
     },
     {
       "t": "narrate",
@@ -228,7 +228,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Make it quick. Feels I may wake any minute."
+      "text": "[shot:closeup faust]Make it quick. Feels I may wake any minute."
     },
     {
       "t": "say",
@@ -241,7 +241,7 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "No spoilers."
+      "text": "[shot:closeup joan]No spoilers."
     },
     {
       "t": "jump",
