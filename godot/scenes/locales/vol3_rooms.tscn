@@ -644,3 +644,15 @@ metadata/fov = 35.0
 position = Vector3(2.800, 0.900, -3.600)
 rotation = Vector3(-0.5904, 0.0069, 0.0)
 metadata/fov = 40.0
+
+; the condo demo unit's SECOND wide: round to the kitchen island and the lamp (pass 303)
+[node name="shot_establish_b__condo_demo_unit" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(901.500, 1.550, -2.500)
+rotation = Vector3(-0.0349, -1.3090, 0.0)
+metadata/fov = 55.0
+
+; a THIRD wide: the wall of glass — "House of Glass" (pass 303)
+[node name="shot_establish_c__condo_demo_unit" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(902.000, 1.600, -1.500)
+rotation = Vector3(0.0000, -0.3491, 0.0)
+metadata/fov = 40.0

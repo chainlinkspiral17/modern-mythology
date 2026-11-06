@@ -108,7 +108,7 @@
       "t": "say",
       "char": "Janessa",
       "expr": "amused",
-      "text": "Know where the term comes from?"
+      "text": "[shot:insert doors]Know where the term comes from?"
     },
     {
       "t": "say",
@@ -132,7 +132,7 @@
     },
     {
       "t": "narrate",
-      "text": "Andy laughs. She continues. When they got there, there was a whole series of tests and games they had to pass."
+      "text": "[shot:insert kittens]Andy laughs. She continues. When they got there, there was a whole series of tests and games they had to pass."
     },
     {
       "t": "narrate",
@@ -156,7 +156,7 @@
       "t": "say",
       "char": "Janessa",
       "expr": "amused",
-      "text": "Video games, that was our theme."
+      "text": "[shot:establish]Video games, that was our theme."
     },
     {
       "t": "narrate",
