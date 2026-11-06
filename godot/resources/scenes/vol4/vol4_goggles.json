@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "We start off in Dickens Dean's bedroom office. He stands alone in the center of computer monitors. He is scraggly, neurotic. His workspace is his workspace."
+      "text": "[shot:closeup person]We start off in Dickens Dean's bedroom office. He stands alone in the center of computer monitors. He is scraggly, neurotic. His workspace is his workspace."
     },
     {
       "t": "narrate",
@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "His daughter comes into the room, Dickens smiles and turns to her."
+      "text": "[shot:establish]His daughter comes into the room, Dickens smiles and turns to her."
     },
     {
       "t": "narrate",
@@ -80,19 +80,19 @@
     },
     {
       "t": "narrate",
-      "text": "Close on the nearest monitor. A text game he's been building for years, a cursor blinking at the bottom of the screen, waiting on him."
+      "text": "[shot:insert game]Close on the nearest monitor. A text game he's been building for years, a cursor blinking at the bottom of the screen, waiting on him."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "expr": "warm",
-      "text": "Baby girl, what are you doing down there?"
+      "text": "[shot:closeup person]Baby girl, what are you doing down there?"
     },
     {
       "t": "say",
       "char": "The Girl",
       "expr": "neutral",
-      "text": "Watching you go crazy."
+      "text": "[shot:closeup person_b]Watching you go crazy."
     },
     {
       "t": "say",
@@ -114,13 +114,13 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "I forget you can't see yet, you're still too young."
+      "text": "[shot:closeup person]I forget you can't see yet, you're still too young."
     },
     {
       "t": "say",
       "char": "The Girl",
       "expr": "neutral",
-      "text": "But I can see, Daddy."
+      "text": "[shot:closeup person_b]But I can see, Daddy."
     },
     {
       "t": "say",
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "He watches her face light up as she looks around the room."
+      "text": "[shot:establish]He watches her face light up as she looks around the room."
     },
     {
       "t": "say",
@@ -146,13 +146,13 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "You're still too small. But you'll find your own way of seeing, when you're bigger."
+      "text": "[shot:closeup person]You're still too small. But you'll find your own way of seeing, when you're bigger."
     },
     {
       "t": "say",
       "char": "The Girl",
       "expr": "neutral",
-      "text": "I want to see more."
+      "text": "[shot:closeup person_b]I want to see more."
     },
     {
       "t": "say",

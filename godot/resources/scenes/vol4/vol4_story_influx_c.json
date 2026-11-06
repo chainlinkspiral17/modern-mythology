@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"Number seven, Michaela?\""
+      "text": "[shot:closeup person]\"Number seven, Michaela?\""
     },
     {
       "t": "narrate",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"Sea cucumbers are gross. They poop twenty-four seven.\""
+      "text": "[shot:insert papers]\"Sea cucumbers are gross. They poop twenty-four seven.\""
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "(the student in critical condition)"
+      "text": "[shot:establish](the student in critical condition)"
     },
     {
       "t": "narrate",
@@ -114,7 +114,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes to a computer, puts the Royal Tennenbaum soundtrack in the CD-ROM and listens with headphones while he eats baby carrots out of a bag."
+      "text": "[shot:closeup person_b]He goes to a computer, puts the Royal Tennenbaum soundtrack in the CD-ROM and listens with headphones while he eats baby carrots out of a bag."
     },
     {
       "t": "narrate",
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "Another sneeze. A kid with soft features, his hair cropped close to suggest a tight cap of hair. Quiet scratching of writing utensil to paper. The click of mechanical pencils, yawning, hurried shuffling. One child writes with a purple crayola marker, thin. Purses and pencil pouches on the tops of desks."
+      "text": "[shot:closeup person]Another sneeze. A kid with soft features, his hair cropped close to suggest a tight cap of hair. Quiet scratching of writing utensil to paper. The click of mechanical pencils, yawning, hurried shuffling. One child writes with a purple crayola marker, thin. Purses and pencil pouches on the tops of desks."
     },
     {
       "t": "narrate",
@@ -154,7 +154,7 @@
     },
     {
       "t": "narrate",
-      "text": "The social queen bee, strolling around casual, is unaware of the eyes on her. The other children smile as she gets close, but it is either friendly or forced."
+      "text": "[shot:insert papers]The social queen bee, strolling around casual, is unaware of the eyes on her. The other children smile as she gets close, but it is either friendly or forced."
     },
     {
       "t": "narrate",
@@ -182,7 +182,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"Why'd you say Amsterdam?\""
+      "text": "[shot:establish]\"Why'd you say Amsterdam?\""
     },
     {
       "t": "narrate",
@@ -202,7 +202,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"We were talking about fads.\""
+      "text": "[shot:closeup person_b]\"We were talking about fads.\""
     },
     {
       "t": "narrate",
@@ -222,7 +222,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"Prepositional phrase. You can take it out if you don't need it. I'm waiting for you to stop talking. Austin. I know you've been patient. You can put your arm down.\""
+      "text": "[shot:closeup person]\"Prepositional phrase. You can take it out if you don't need it. I'm waiting for you to stop talking. Austin. I know you've been patient. You can put your arm down.\""
     },
     {
       "t": "narrate",

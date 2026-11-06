@@ -629,3 +629,30 @@ metadata/fov = 45.0
 position = Vector3(64.592, 1.250, -3.389)
 rotation = Vector3(0.0000, 2.0944, 0.0)
 metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__dean_monitor_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(104.045, 1.612, -3.200)
+rotation = Vector3(-0.0700, -1.5708, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__dean_monitor_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(106.750, 1.612, -3.200)
+rotation = Vector3(-0.0700, 1.5708, 0.0)
+metadata/fov = 45.0
+
+; vol4 goggles: "Close on the nearest monitor. A text game he's been building for
+; years, a cursor blinking" — from the ring's centre (pass 303)
+[node name="shot_insert_game__dean_monitor_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(104.000, 1.250, -2.600)
+rotation = Vector3(-0.2753, 3.1416, 0.0)
+metadata/fov = 35.0
+
+; vol4 daddy (c): "Behind him the glass holds the whole dark Pacific" (pass 303)
+[node name="shot_insert_glass__dean_monitor_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(103.500, 1.600, -3.200)
+rotation = Vector3(0.0000, 1.5708, 0.0)
+metadata/fov = 55.0

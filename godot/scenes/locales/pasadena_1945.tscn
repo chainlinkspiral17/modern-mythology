@@ -359,9 +359,10 @@ metadata/fov = 38.0
 
 ; "pigeons working the gravel at their feet" (pass 303)
 [node name="shot_insert_pigeon__park_chess" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(71.500, 0.900, -12.000)
-rotation = Vector3(-0.2668, 0.0000, 0.0)
+position = Vector3(73.000, 1.000, -12.200)
+rotation = Vector3(-0.2939, 0.1651, 0.0)
 metadata/fov = 45.0
+
 
 ; "People are actually flying kites." (pass 303)
 [node name="shot_insert_kite__park_chess" type="Marker3D" parent="." groups=["vn_shot"]]

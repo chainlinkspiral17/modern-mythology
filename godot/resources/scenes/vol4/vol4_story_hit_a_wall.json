@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had moved into a retirement home because she could be surrounded by people who would gladly ask for her help. Maybe generosity was why she hadn't had sex in eighteen months. She outright refused pity sex and didn't pursue anything short term. Long term was just her way avoiding the issue altogether."
+      "text": "[shot:insert recipe]She had moved into a retirement home because she could be surrounded by people who would gladly ask for her help. Maybe generosity was why she hadn't had sex in eighteen months. She outright refused pity sex and didn't pursue anything short term. Long term was just her way avoiding the issue altogether."
     },
     {
       "t": "narrate",
@@ -71,7 +71,7 @@
       "t": "say",
       "char": "Chess",
       "expr": "warm",
-      "text": "Really, you can stay here until you get things figured out. It's not your home or nothing. Just a place to crash until you get a place of your own."
+      "text": "[shot:insert radio]Really, you can stay here until you get things figured out. It's not your home or nothing. Just a place to crash until you get a place of your own."
     },
     {
       "t": "narrate",
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "Norman Todd laughed, rocking back and forth on the edge of the counter."
+      "text": "[shot:establish_b]Norman Todd laughed, rocking back and forth on the edge of the counter."
     },
     {
       "t": "say",
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "Cups crowd the drying rack, none of them matching, red sugar water dried in rings."
+      "text": "[shot:insert bowls]Cups crowd the drying rack, none of them matching, red sugar water dried in rings."
     },
     {
       "t": "narrate",
@@ -154,7 +154,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Todd boy wouldn't know about her life. Wouldn't care. Chess wanted to know all about him. Wanted to keep him here until she knew he was good and decent. He could be a good person."
+      "text": "[shot:closeup person]The Todd boy wouldn't know about her life. Wouldn't care. Chess wanted to know all about him. Wanted to keep him here until she knew he was good and decent. He could be a good person."
     },
     {
       "t": "say",
@@ -182,7 +182,7 @@
       "t": "say",
       "char": "Chess",
       "expr": "neutral",
-      "text": "Sure. Whatever. Sleep is sleep."
+      "text": "[shot:insert eggs]Sure. Whatever. Sleep is sleep."
     },
     {
       "t": "narrate",

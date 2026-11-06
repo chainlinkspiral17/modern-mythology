@@ -57,13 +57,13 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "sad",
-      "text": "She's left this world and considering how many worlds there are, and how hard it is to travel across them, the chances of her coming home are zero to none."
+      "text": "[shot:closeup person]She's left this world and considering how many worlds there are, and how hard it is to travel across them, the chances of her coming home are zero to none."
     },
     {
       "t": "say",
       "char": "Esther",
       "expr": "worried",
-      "text": "What are you talking about, Dickens Dean?"
+      "text": "[shot:closeup person_b]What are you talking about, Dickens Dean?"
     },
     {
       "t": "say",
@@ -81,13 +81,13 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "You must have your opinions of me but know everything I've done in this life together with you has been for myself, my own ambition and our child."
+      "text": "[shot:closeup person]You must have your opinions of me but know everything I've done in this life together with you has been for myself, my own ambition and our child."
     },
     {
       "t": "say",
       "char": "Esther",
       "expr": "angry",
-      "text": "You are a selfish human being, now tell me where she is."
+      "text": "[shot:closeup person_b]You are a selfish human being, now tell me where she is."
     },
     {
       "t": "say",
@@ -105,7 +105,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "Yes and no. I come from another world. I came to this world looking for you in hopes of having a beautiful child."
+      "text": "[shot:closeup person]Yes and no. I come from another world. I came to this world looking for you in hopes of having a beautiful child."
     },
     {
       "t": "say",
@@ -129,13 +129,13 @@
       "t": "say",
       "char": "Esther",
       "expr": "angry",
-      "text": "What you are saying is so wrong, so abhorrent on so many levels."
+      "text": "[shot:closeup person_b]What you are saying is so wrong, so abhorrent on so many levels."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "You may not believe it but understand this, our child is a half-breed, a beautiful lovely entity living across the multiverse that has broken many natural and unnatural laws by her very existence."
+      "text": "[shot:closeup person]You may not believe it but understand this, our child is a half-breed, a beautiful lovely entity living across the multiverse that has broken many natural and unnatural laws by her very existence."
     },
     {
       "t": "say",
@@ -147,7 +147,7 @@
       "t": "say",
       "char": "Esther",
       "expr": "sad",
-      "text": "I don't know what you're saying."
+      "text": "[shot:closeup person_b]I don't know what you're saying."
     },
     {
       "t": "choice",
@@ -164,17 +164,17 @@
     },
     {
       "t": "narrate",
-      "text": "Dickens Dean didn't know how to explain to his wife that their daughter was gone forever."
+      "text": "[shot:establish]Dickens Dean didn't know how to explain to his wife that their daughter was gone forever."
     },
     {
       "t": "narrate",
-      "text": "Behind him the glass holds the whole dark Pacific, and nothing moving on it."
+      "text": "[shot:insert glass]Behind him the glass holds the whole dark Pacific, and nothing moving on it."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "I'm going to go look for her. I have so much to tell her. We've got people working on it right now, we just have to follow her and if that proves impossible, we'll have to draw her to us."
+      "text": "[shot:closeup person]I'm going to go look for her. I have so much to tell her. We've got people working on it right now, we just have to follow her and if that proves impossible, we'll have to draw her to us."
     },
     {
       "t": "say",
@@ -192,7 +192,7 @@
       "t": "say",
       "char": "Esther",
       "expr": "sad",
-      "text": "Assuming she wants to come back."
+      "text": "[shot:closeup person_b]Assuming she wants to come back."
     },
     {
       "t": "say",
