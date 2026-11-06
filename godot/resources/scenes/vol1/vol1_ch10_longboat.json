@@ -65,7 +65,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "(watching the water out the window) So we're a boat."
+      "text": "[shot:closeup person_b](watching the water out the window) So we're a boat."
     },
     {
       "t": "say",
@@ -77,17 +77,17 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I was being colorful."
+      "text": "[shot:closeup person]I was being colorful."
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "You're always being colorful. It keeps happening."
+      "text": "[shot:closeup person_b]You're always being colorful. It keeps happening."
     },
     {
       "t": "narrate",
-      "text": "On the shore, things go by. A strip mall. A Little League diamond with the lights still on. A tanooki leaf drifting down onto the water and floating there."
+      "text": "[shot:insert diamond]On the shore, things go by. A strip mall. A Little League diamond with the lights still on. A tanooki leaf drifting down onto the water and floating there."
     },
     {
       "t": "say",
@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "A figure on the bank raises a hand like he's hailing a cab. Faust slows the boat without meaning to."
+      "text": "[shot:establish]A figure on the bank raises a hand like he's hailing a cab. Faust slows the boat without meaning to."
     },
     {
       "t": "say",
@@ -137,37 +137,37 @@
     },
     {
       "t": "narrate",
-      "text": "Faust lets the figure slide by. It waves again, patient, unbothered, used to it."
+      "text": "[shot:closeup person]Faust lets the figure slide by. It waves again, patient, unbothered, used to it."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Okay hold up. Faust. I'm going to say a thing. You're driving the boat on the river with dead dudes waving at you."
+      "text": "[shot:closeup person_b]Okay hold up. Faust. I'm going to say a thing. You're driving the boat on the river with dead dudes waving at you."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I noticed."
+      "text": "[shot:closeup person]I noticed."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "You told Deborah, I feel like Charon ferrying and she said aptly put and now look."
+      "text": "[shot:closeup person_b]You told Deborah, I feel like Charon ferrying and she said aptly put and now look."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "That was a joke about pills."
+      "text": "[shot:closeup person]That was a joke about pills."
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Funny how jokes keep coming home to roost."
+      "text": "[shot:closeup person_b]Funny how jokes keep coming home to roost."
     },
     {
       "t": "say",
@@ -177,13 +177,13 @@
     },
     {
       "t": "narrate",
-      "text": "Faust pats his pockets. Receipts. A pen from work. A single blister-pack pill he doesn't remember pocketing."
+      "text": "[shot:establish]Faust pats his pockets. Receipts. A pen from work. A single blister-pack pill he doesn't remember pocketing."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I've got one Advil."
+      "text": "[shot:closeup person]I've got one Advil."
     },
     {
       "t": "say",
@@ -193,7 +193,7 @@
     },
     {
       "t": "narrate",
-      "text": "The water ahead is darker. A toll gate rises out of it, an old wooden arm painted red and white, a booth with nobody in it. The radio in the dash turns on by itself."
+      "text": "[shot:insert toll]The water ahead is darker. A toll gate rises out of it, an old wooden arm painted red and white, a booth with nobody in it. The radio in the dash turns on by itself."
     },
     {
       "t": "say",
@@ -217,7 +217,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "What counts as personal."
+      "text": "[shot:closeup person]What counts as personal."
     },
     {
       "t": "say",

@@ -140,41 +140,41 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "You will be in my thoughts while I do what I must."
+      "text": "[shot:closeup person_b]You will be in my thoughts while I do what I must."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "worried",
-      "text": "We've only just met. But come back to me in one piece, okay?"
+      "text": "[shot:closeup person]We've only just met. But come back to me in one piece, okay?"
     },
     {
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "What if this is all we get, John Faust?"
+      "text": "[shot:closeup person_b]What if this is all we get, John Faust?"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I'm selfish and don't accept that."
+      "text": "[shot:closeup person]I'm selfish and don't accept that."
     },
     {
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "And I repeat, what if this is it?"
+      "text": "[shot:closeup person_b]And I repeat, what if this is it?"
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Wear my ink for as long as you can."
+      "text": "[shot:closeup person]Wear my ink for as long as you can."
     },
     {
       "t": "narrate",
-      "text": "Joan kisses Faust and gets dressed. He touches her dagger until she takes it from him."
+      "text": "[shot:establish]Joan kisses Faust and gets dressed. He touches her dagger until she takes it from him."
     },
     {
       "t": "say",
@@ -188,7 +188,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is gone. John looks at his brushes. Then gets up to paint."
+      "text": "[shot:insert brush]She is gone. John looks at his brushes. Then gets up to paint."
     },
     {
       "t": "choice",
@@ -209,17 +209,17 @@
     },
     {
       "t": "narrate",
-      "text": "He paints Joan charging off into battle. Her clashes, her triumphs, her victory over many strange foe."
+      "text": "[shot:insert canvas]He paints Joan charging off into battle. Her clashes, her triumphs, her victory over many strange foe."
     },
     {
       "t": "narrate",
-      "text": "A phone ringing interrupts him. Faust answers it."
+      "text": "[shot:establish_b]A phone ringing interrupts him. Faust answers it."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Yellow?"
+      "text": "[shot:closeup person]Yellow?"
     },
     {
       "t": "say",
@@ -258,7 +258,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I've only known her a day."
+      "text": "[shot:establish]I've only known her a day."
     },
     {
       "t": "say",
@@ -297,7 +297,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "worried",
-      "text": "How bad will things get, if you don't mind me asking?"
+      "text": "[shot:closeup person]How bad will things get, if you don't mind me asking?"
     },
     {
       "t": "say",

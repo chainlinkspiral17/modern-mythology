@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "Off to the left, painted water. Off to the right, painted fire. In the middle, painted air, which is mostly the space between brushstrokes."
+      "text": "[shot:insert canvas]Off to the left, painted water. Off to the right, painted fire. In the middle, painted air, which is mostly the space between brushstrokes."
     },
     {
       "t": "narrate",
@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust's shirt-Water steps off his chest onto the gesso. Fire comes off Wagner. Air comes off Jacob. The three elementals stand in the places Faust painted them, left, right, and center, in the same poses as the afternoon he painted them."
+      "text": "[shot:establish_b]Faust's shirt-Water steps off his chest onto the gesso. Fire comes off Wagner. Air comes off Jacob. The three elementals stand in the places Faust painted them, left, right, and center, in the same poses as the afternoon he painted them."
     },
     {
       "t": "say",
@@ -87,13 +87,13 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I've been a little busy, dying-adjacent."
+      "text": "[shot:closeup person]I've been a little busy, dying-adjacent."
     },
     {
       "t": "say",
       "char": "Air",
       "expr": "neutral",
-      "text": "We know. We've been watching. We said we should warn you."
+      "text": "[shot:establish]We know. We've been watching. We said we should warn you."
     },
     {
       "t": "say",
@@ -123,7 +123,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "(to Wagner) I'm sorry, the fate of everything, was postponed for a bathroom break?"
+      "text": "[shot:establish_b](to Wagner) I'm sorry, the fate of everything, was postponed for a bathroom break?"
     },
     {
       "t": "say",
@@ -139,13 +139,13 @@
     },
     {
       "t": "narrate",
-      "text": "Faust sits on the wet gesso. It doesn't get on him, or it does and it's supposed to."
+      "text": "[shot:insert canvas]Faust sits on the wet gesso. It doesn't get on him, or it does and it's supposed to."
     },
     {
       "t": "say",
       "char": "Air",
       "expr": "neutral",
-      "text": "The old men before you. The ones who summoned us. They had manuals. They had circles on the floor. And every one of them wanted to keep something. A woman. A spirit. A youth. A summer that would never end."
+      "text": "[shot:establish]The old men before you. The ones who summoned us. They had manuals. They had circles on the floor. And every one of them wanted to keep something. A woman. A spirit. A youth. A summer that would never end."
     },
     {
       "t": "say",
@@ -169,13 +169,13 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I didn't frame you to keep you. I framed you because that's how you hang a painting."
+      "text": "[shot:closeup person]I didn't frame you to keep you. I framed you because that's how you hang a painting."
     },
     {
       "t": "say",
       "char": "Fire",
       "expr": "neutral",
-      "text": "We know, dork. That's why we're telling you. You're the first one who wasn't trying to keep us."
+      "text": "[shot:establish_b]We know, dork. That's why we're telling you. You're the first one who wasn't trying to keep us."
     },
     {
       "t": "say",
@@ -193,7 +193,7 @@
       "t": "say",
       "char": "Air",
       "expr": "neutral",
-      "text": "She's in here. Your girl. And when you find her you're going to want to carry her out, whole."
+      "text": "[shot:establish]She's in here. Your girl. And when you find her you're going to want to carry her out, whole."
     },
     {
       "t": "say",
@@ -215,13 +215,13 @@
     },
     {
       "t": "narrate",
-      "text": "Faust doesn't say anything for a while."
+      "text": "[shot:closeup person]Faust doesn't say anything for a while."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "sad",
-      "text": "(quiet) So what do we do."
+      "text": "[shot:establish_b](quiet) So what do we do."
     },
     {
       "t": "say",

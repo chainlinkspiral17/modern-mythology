@@ -548,3 +548,37 @@ metadata/fov = 35.0
 position = Vector3(-3.942, 1.109, -7.903)
 rotation = Vector3(-0.5236, -0.0783, 0.0)
 metadata/fov = 35.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__club_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(63.017, 1.612, -2.455)
+rotation = Vector3(-0.0700, -0.2618, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__club_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(63.367, 1.612, -5.113)
+rotation = Vector3(-0.0700, -3.1416, 0.0)
+metadata/fov = 45.0
+
+; the club office briefing (vol1 ch8): "Each of them has a t-shirt laid out" —
+; the three shirts on the table from the door side (pass 301)
+[node name="shot_insert_shirts__club_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(64.000, 1.550, -1.750)
+rotation = Vector3(-0.5700, 0.0000, 0.0)
+metadata/fov = 50.0
+
+; "There are four portable listening devices." — from Dean's side of the table (pass 301)
+[node name="shot_insert_listeners__club_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(64.300, 1.150, -3.950)
+rotation = Vector3(-0.5480, 3.1416, 0.0)
+metadata/fov = 40.0
+
+
+; "a small medical looking needle device" — the tray at the table's east end (pass 301)
+[node name="shot_insert_needles__club_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(65.600, 1.300, -1.950)
+rotation = Vector3(-0.4830, 0.7140, 0.0)
+metadata/fov = 32.0
