@@ -89,7 +89,7 @@
       "t": "say",
       "char": "Passing Stranger",
       "expr": "neutral",
-      "text": "Chuck right?"
+      "text": "[shot:closeup person_b]Chuck right?"
     },
     {
       "t": "say",
@@ -99,13 +99,13 @@
     },
     {
       "t": "narrate",
-      "text": "Not Chuck takes a step further and bumps into a woman, or rather, she clings to him."
+      "text": "[shot:establish]Not Chuck takes a step further and bumps into a woman, or rather, she clings to him."
     },
     {
       "t": "say",
       "char": "Bump Woman",
       "expr": "tired",
-      "text": "The day I've been having."
+      "text": "[shot:closeup person]The day I've been having."
     },
     {
       "t": "say",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "Not Chuck approaches the DJ who keeps her head low."
+      "text": "[shot:closeup person_b]Not Chuck approaches the DJ who keeps her head low."
     },
     {
       "t": "say",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "DJ pulls out a pad of cards and tears off Not Chuck one."
+      "text": "[shot:establish]DJ pulls out a pad of cards and tears off Not Chuck one."
     },
     {
       "t": "say",
@@ -167,7 +167,7 @@
     },
     {
       "t": "narrate",
-      "text": "It's just off the beach, a glow of lights, followed by a dune and a stretch of sand, leading to a white-capped moonlit beach, dotted with campfires and larger bonfires and other odd structures."
+      "text": "[shot:closeup person]It's just off the beach, a glow of lights, followed by a dune and a stretch of sand, leading to a white-capped moonlit beach, dotted with campfires and larger bonfires and other odd structures."
     },
     {
       "t": "choice",
@@ -184,17 +184,17 @@
     },
     {
       "t": "narrate",
-      "text": "From the top of the dune the fires run on down the beach as far as anybody can see, one and then another, like porch lights along a county road."
+      "text": "[shot:insert far]From the top of the dune the fires run on down the beach as far as anybody can see, one and then another, like porch lights along a county road."
     },
     {
       "t": "narrate",
-      "text": "Two women are sitting on a patchwork quilt by the fire. One is holding a guitar, the other is lying on her back looking up at the stars."
+      "text": "[shot:insert quilt]Two women are sitting on a patchwork quilt by the fire. One is holding a guitar, the other is lying on her back looking up at the stars."
     },
     {
       "t": "say",
       "char": "Guitar Gal",
       "expr": "neutral",
-      "text": "My dang kid is now making more money than me."
+      "text": "[shot:closeup person_b]My dang kid is now making more money than me."
     },
     {
       "t": "say",
@@ -212,17 +212,17 @@
       "t": "say",
       "char": "Star Gal",
       "expr": "neutral",
-      "text": "I don't understand people who don't look like their pictures. Why trick the fundamentals of the universe to lie about something everyone else can see very first thing? Light from the sun and moon and stars, doesn't try to fool us."
+      "text": "[shot:closeup person]I don't understand people who don't look like their pictures. Why trick the fundamentals of the universe to lie about something everyone else can see very first thing? Light from the sun and moon and stars, doesn't try to fool us."
     },
     {
       "t": "say",
       "char": "Guitar Gal",
       "expr": "neutral",
-      "text": "Light ages us. Every exposure speeds up our decay. People are cruel, but the universe is without remorse."
+      "text": "[shot:closeup person_b]Light ages us. Every exposure speeds up our decay. People are cruel, but the universe is without remorse."
     },
     {
       "t": "narrate",
-      "text": "Star gal stretches out, and hikes up her colorful dress to her knees."
+      "text": "[shot:establish]Star gal stretches out, and hikes up her colorful dress to her knees."
     },
     {
       "t": "say",
@@ -234,13 +234,13 @@
       "t": "say",
       "char": "Guitar Gal",
       "expr": "neutral",
-      "text": "We need to go someplace very far away."
+      "text": "[shot:closeup person_b]We need to go someplace very far away."
     },
     {
       "t": "say",
       "char": "Star Gal",
       "expr": "neutral",
-      "text": "For a very long time, or just a very good time?"
+      "text": "[shot:closeup person]For a very long time, or just a very good time?"
     },
     {
       "t": "say",
@@ -256,11 +256,11 @@
     },
     {
       "t": "narrate",
-      "text": "Guitar gal begins strumming something."
+      "text": "[shot:insert quilt]Guitar gal begins strumming something."
     },
     {
       "t": "narrate",
-      "text": "An OUT OF TOWNER is unloading a car in front of the car headlights. Not Chuck passes by without a look back."
+      "text": "[shot:establish]An OUT OF TOWNER is unloading a car in front of the car headlights. Not Chuck passes by without a look back."
     },
     {
       "t": "say",
@@ -272,7 +272,7 @@
       "t": "say",
       "char": "Not Chuck",
       "expr": "neutral",
-      "text": "Sure would. Bringing half your life with you to the beach is always a choice."
+      "text": "[shot:closeup person_b]Sure would. Bringing half your life with you to the beach is always a choice."
     },
     {
       "t": "narrate",
@@ -288,11 +288,11 @@
       "t": "say",
       "char": "Out of Towner",
       "expr": "surprised",
-      "text": "What?"
+      "text": "[shot:closeup person]What?"
     },
     {
       "t": "narrate",
-      "text": "Not Chuck waits for a beat, then TOURISTA enters."
+      "text": "[shot:establish]Not Chuck waits for a beat, then TOURISTA enters."
     },
     {
       "t": "say",
@@ -310,13 +310,13 @@
       "t": "say",
       "char": "Tourista",
       "expr": "neutral",
-      "text": "I signed up on a government website and picked a spot on a little map, but it's dark and I can't see anything past five feet in front of me."
+      "text": "[shot:closeup person]I signed up on a government website and picked a spot on a little map, but it's dark and I can't see anything past five feet in front of me."
     },
     {
       "t": "say",
       "char": "Not Chuck",
       "expr": "neutral",
-      "text": "Getting in late can do that. Where'd y'all come in from?"
+      "text": "[shot:closeup person_b]Getting in late can do that. Where'd y'all come in from?"
     },
     {
       "t": "say",

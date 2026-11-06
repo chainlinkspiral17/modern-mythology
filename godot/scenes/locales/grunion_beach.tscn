@@ -368,3 +368,16 @@ metadata/fov = 45.0
 position = Vector3(0.076, 1.612, -8.217)
 rotation = Vector3(-0.2618, 2.8798, 0.0)
 metadata/fov = 45.0
+
+; vol2 ch12x: "Two women are sitting on a patchwork quilt by the fire." (pass 302)
+[node name="shot_insert_quilt__beach_bonfire" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.200, 1.300, -5.600)
+rotation = Vector3(-0.5687, 0.5317, 0.0)
+metadata/fov = 45.0
+
+; "From the top of the dune the fires run on down the beach as far as anybody
+; can see, one and then another" — along the beach, east (pass 302)
+[node name="shot_insert_far__beach_bonfire" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 1.500, -5.500)
+rotation = Vector3(-0.0500, -1.5708, 0.0)
+metadata/fov = 40.0

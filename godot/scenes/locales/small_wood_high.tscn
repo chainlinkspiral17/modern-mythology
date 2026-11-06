@@ -373,3 +373,29 @@ metadata/fov = 35.0
 position = Vector3(-12.067, 0.992, 6.624)
 rotation = Vector3(-0.2618, 2.2163, 0.0)
 metadata/fov = 35.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__small_wood_high_art" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.298, 1.612, 2.019)
+rotation = Vector3(-0.0700, 1.8326, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__small_wood_high_art" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.035, 1.612, 3.326)
+rotation = Vector3(-0.0700, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; vol2 ch9: "all four of us sitting around a table, working on line drawings" (pass 302)
+[node name="shot_insert_table__small_wood_high_art" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.600, 1.450, 3.400)
+rotation = Vector3(-0.4562, 2.3192, 0.0)
+metadata/fov = 45.0
+
+; the art room's student work pinned up on the hall wall (pass 302)
+[node name="shot_insert_work__small_wood_high_art" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.600, 3.200)
+rotation = Vector3(0.1006, -0.1600, 0.0)
+metadata/fov = 50.0
