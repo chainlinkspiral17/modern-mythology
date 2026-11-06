@@ -252,14 +252,14 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Howdy gentlemen. What brings you here this fine afternoon?"
+      "text": "[shot:closeup person]Howdy gentlemen. What brings you here this fine afternoon?"
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "My name is Dickens Dean and I have a proposition for the three of you."
+      "text": "[shot:closeup person_b]My name is Dickens Dean and I have a proposition for the three of you."
     },
     {
       "t": "say",
@@ -278,7 +278,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "amused",
-      "text": "Sounds positively Faustian, no offense John."
+      "text": "[shot:establish]Sounds positively Faustian, no offense John."
     },
     {
       "t": "say",
@@ -297,7 +297,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Good. Progress. Art and beauty. Education. Entertainment."
+      "text": "[shot:closeup person_b]Good. Progress. Art and beauty. Education. Entertainment."
     },
     {
       "t": "say",
@@ -316,7 +316,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "But we have to make the choice to help you."
+      "text": "[shot:establish]But we have to make the choice to help you."
     },
     {
       "t": "say",
@@ -336,7 +336,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "She's just a girl."
+      "text": "[shot:closeup person_b]She's just a girl."
     },
     {
       "t": "say",
@@ -348,7 +348,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "So all you want us to do is help you find her."
+      "text": "[shot:closeup person]So all you want us to do is help you find her."
     },
     {
       "t": "say",
@@ -368,7 +368,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Aria."
+      "text": "[shot:closeup person_b]Aria."
     },
     {
       "t": "say",
@@ -381,7 +381,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Thank you. This is an awful lot of exposition to take in in such a short amount of time."
+      "text": "[shot:establish]Thank you. This is an awful lot of exposition to take in in such a short amount of time."
     },
     {
       "t": "say",
@@ -393,14 +393,14 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Give us your number and we'll get back to you."
+      "text": "[shot:closeup person]Give us your number and we'll get back to you."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Faust will be my go-between. He and I are going to your new office. From there, I'll get you the equipment you need to start on your journey."
+      "text": "[shot:closeup person_b]Faust will be my go-between. He and I are going to your new office. From there, I'll get you the equipment you need to start on your journey."
     },
     {
       "t": "say",
@@ -430,7 +430,7 @@
     },
     {
       "t": "narrate",
-      "text": "Through the open door, the album on the turn-table plays on to an empty room."
+      "text": "[shot:insert record]Through the open door, the album on the turn-table plays on to an empty room."
     },
     {
       "t": "flag",

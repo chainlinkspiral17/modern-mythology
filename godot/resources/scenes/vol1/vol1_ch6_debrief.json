@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Dickens Dean is sipping on coffee."
+      "text": "[shot:insert coffee]Dickens Dean is sipping on coffee."
     },
     {
       "t": "show",
@@ -54,20 +54,20 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "amused",
-      "text": "Feels pretty cool, don't it?"
+      "text": "[shot:closeup person]Feels pretty cool, don't it?"
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "How long have you possessed this technology?"
+      "text": "[shot:closeup person_b]How long have you possessed this technology?"
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "I was one of the first to know about it. It became available to the masses three of my years ago."
+      "text": "[shot:closeup person]I was one of the first to know about it. It became available to the masses three of my years ago."
     },
     {
       "t": "say",
@@ -86,27 +86,27 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Good call. Democratize the imagination, seed it across the possibly maybes."
+      "text": "[shot:establish]Good call. Democratize the imagination, seed it across the possibly maybes."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "It's about getting your message out there. I'm just here to let you know things are getting better. Across the multiverse, things are getting better. Free thinking nerds must spreading the word."
+      "text": "[shot:closeup person]It's about getting your message out there. I'm just here to let you know things are getting better. Across the multiverse, things are getting better. Free thinking nerds must spreading the word."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Yeah, but I can imagine there are some serious repercussions to all this."
+      "text": "[shot:closeup person_b]Yeah, but I can imagine there are some serious repercussions to all this."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "We're fast forwarding to some very cool stuff, so realize that whatever cool obstacle you're facing, it's all about making the right choices. Are you true to yourself, the moments that have led you to this in life?"
+      "text": "[shot:closeup person]We're fast forwarding to some very cool stuff, so realize that whatever cool obstacle you're facing, it's all about making the right choices. Are you true to yourself, the moments that have led you to this in life?"
     },
     {
       "t": "say",
@@ -119,7 +119,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "You're talking about our universe, aren't you? Just the general principle of human history thus far."
+      "text": "[shot:closeup person_b]You're talking about our universe, aren't you? Just the general principle of human history thus far."
     },
     {
       "t": "say",
@@ -139,7 +139,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "When I was growing up, I was one of the first weaned off book learning, introduced to hyper-subliminal implementation and higher education memory implants."
+      "text": "[shot:closeup person]When I was growing up, I was one of the first weaned off book learning, introduced to hyper-subliminal implementation and higher education memory implants."
     },
     {
       "t": "say",
@@ -152,7 +152,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "It would certainly give you a leg up."
+      "text": "[shot:establish]It would certainly give you a leg up."
     },
     {
       "t": "say",
@@ -165,20 +165,20 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "To give name to the place is hard to describe, the closest would be: A future in which I am always peering much of my life into the past."
+      "text": "[shot:closeup person]To give name to the place is hard to describe, the closest would be: A future in which I am always peering much of my life into the past."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "worried",
-      "text": "This is getting creepy."
+      "text": "[shot:closeup person_b]This is getting creepy."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Hmm. From what I've gathered of my own lifetime, I seem to be a consciousness, the closest I can describe it as would be a space fetus growing out nurtured by the stars and the nature of the cosmos."
+      "text": "[shot:closeup person]Hmm. From what I've gathered of my own lifetime, I seem to be a consciousness, the closest I can describe it as would be a space fetus growing out nurtured by the stars and the nature of the cosmos."
     },
     {
       "t": "say",

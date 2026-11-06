@@ -163,7 +163,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wagner presses play. A woman's voice, close, half-asleep."
+      "text": "[shot:closeup person]Wagner presses play. A woman's voice, close, half-asleep."
     },
     {
       "t": "say",
@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob presses play. A kid, maybe three, talking with his mouth full."
+      "text": "[shot:closeup person_b]Jacob presses play. A kid, maybe three, talking with his mouth full."
     },
     {
       "t": "say",
@@ -201,7 +201,7 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "Personal samples. From your library."
+      "text": "[shot:establish]Personal samples. From your library."
     },
     {
       "t": "say",
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust presses play. Fluorescent hum, a register drawer."
+      "text": "[shot:closeup person]Faust presses play. Fluorescent hum, a register drawer."
     },
     {
       "t": "say",
@@ -235,7 +235,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "Could be worse. Could be Eric."
+      "text": "[shot:closeup person_b]Could be worse. Could be Eric."
     },
     {
       "t": "say",
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust slaps the earbud. It goes quiet."
+      "text": "[shot:closeup person]Faust slaps the earbud. It goes quiet."
     },
     {
       "t": "say",
@@ -257,11 +257,11 @@
       "t": "say",
       "char": "Dickens Dean",
       "expr": "neutral",
-      "text": "Nobody does. Get in the car."
+      "text": "[shot:establish]Nobody does. Get in the car."
     },
     {
       "t": "narrate",
-      "text": "Jacob tries the driver's door. Locked. Wagner tries it. Locked. Faust reaches past them both and it opens like it was waiting on him."
+      "text": "[shot:insert judgement_day]Jacob tries the driver's door. Locked. Wagner tries it. Locked. Faust reaches past them both and it opens like it was waiting on him."
     },
     {
       "t": "say",
@@ -279,11 +279,11 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "I think tonight I'm the one who drives."
+      "text": "[shot:closeup person]I think tonight I'm the one who drives."
     },
     {
       "t": "narrate",
-      "text": "He gets in. The others pile in. The engine starts before he turns the key."
+      "text": "[shot:insert judgement_day]He gets in. The others pile in. The engine starts before he turns the key."
     },
     {
       "t": "flag",

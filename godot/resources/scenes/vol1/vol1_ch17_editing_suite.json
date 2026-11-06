@@ -139,19 +139,19 @@
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "Did I miss it. Did they make it. Did the boat come back."
+      "text": "[shot:closeup person_b]Did I miss it. Did they make it. Did the boat come back."
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Boat came back."
+      "text": "[shot:closeup person]Boat came back."
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "And the cat?"
+      "text": "[shot:closeup person_b]And the cat?"
     },
     {
       "t": "say",
@@ -163,7 +163,7 @@
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "(sitting down hard) Good. Good. She was tired."
+      "text": "[shot:establish](sitting down hard) Good. Good. She was tired."
     },
     {
       "t": "say",
@@ -175,29 +175,29 @@
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "(pointing at each in turn) Of course it's not finished, you said so on page one, you said I'm starting something I should never finish and then you were surprised when you didn't finish it. That's like being surprised your teeth fall out in the dream, where your teeth fall out."
+      "text": "[shot:closeup person_b](pointing at each in turn) Of course it's not finished, you said so on page one, you said I'm starting something I should never finish and then you were surprised when you didn't finish it. That's like being surprised your teeth fall out in the dream, where your teeth fall out."
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "I said it has to be completed."
+      "text": "[shot:closeup person]I said it has to be completed."
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "Completed's not finished. Completed is you went all the way there and you came all the way back and you brought something. Finished is you put it in a frame, so it can't leave."
+      "text": "[shot:closeup person_b]Completed's not finished. Completed is you went all the way there and you came all the way back and you brought something. Finished is you put it in a frame, so it can't leave."
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "sad",
-      "text": "(turning from the window, quietly) Then leave the frame empty."
+      "text": "[shot:establish](turning from the window, quietly) Then leave the frame empty."
     },
     {
       "t": "narrate",
-      "text": "They all look at the Fool's shirt."
+      "text": "[shot:closeup person_b]They all look at the Fool's shirt."
     },
     {
       "t": "say",
@@ -207,13 +207,13 @@
     },
     {
       "t": "narrate",
-      "text": "Nobody answers."
+      "text": "[shot:establish]Nobody answers."
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "(after a moment, to the Writer) So what do I tell them. The ones who came for an ending."
+      "text": "[shot:closeup person](after a moment, to the Writer) So what do I tell them. The ones who came for an ending."
     },
     {
       "t": "say",
@@ -231,23 +231,23 @@
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "Tell them to paint something."
+      "text": "[shot:establish]Tell them to paint something."
     },
     {
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "Tell them it's four in the morning and they're awake, so that counts."
+      "text": "[shot:closeup person_b]Tell them it's four in the morning and they're awake, so that counts."
     },
     {
       "t": "narrate",
-      "text": "THE DIRECTOR looks at the frozen frame a long time. He doesn't hit play. He doesn't hit stop. He leaves it there."
+      "text": "[shot:insert console]THE DIRECTOR looks at the frozen frame a long time. He doesn't hit play. He doesn't hit stop. He leaves it there."
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Fine. Roll credits over the back to camera."
+      "text": "[shot:closeup person]Fine. Roll credits over the back to camera."
     },
     {
       "t": "say",
@@ -257,7 +257,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE FOOL takes a fistful of popcorn, considers the screen, and says it like it's obvious, like it's what anyone would say."
+      "text": "[shot:closeup person_b]THE FOOL takes a fistful of popcorn, considers the screen, and says it like it's obvious, like it's what anyone would say."
     },
     {
       "t": "say",
@@ -267,11 +267,11 @@
     },
     {
       "t": "narrate",
-      "text": "THE DIRECTOR types it. On the monitor, over Faust's back, over the blank canvas, small and lowercase:\nfly not fall."
+      "text": "[shot:insert console]THE DIRECTOR types it. On the monitor, over Faust's back, over the blank canvas, small and lowercase:\nfly not fall."
     },
     {
       "t": "narrate",
-      "text": "The suite goes dark, all but the monitor."
+      "text": "[shot:establish]The suite goes dark, all but the monitor."
     },
     {
       "t": "flag",

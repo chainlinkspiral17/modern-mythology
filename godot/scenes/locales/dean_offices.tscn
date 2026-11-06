@@ -582,3 +582,36 @@ metadata/fov = 40.0
 position = Vector3(65.600, 1.300, -1.950)
 rotation = Vector3(-0.4830, 0.7140, 0.0)
 metadata/fov = 32.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__tutorial_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(35.087, 0.903, -2.459)
+rotation = Vector3(0.0350, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the tutorial (vol1 ch6): "A cute secretary is typing at her console." (pass 301)
+[node name="shot_insert_console__tutorial_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(37.200, 1.500, -4.900)
+rotation = Vector3(-0.1950, -0.3218, 0.0)
+metadata/fov = 45.0
+
+; "They watch a television program." — the set on the west wall, from the sofa (pass 301)
+[node name="shot_insert_tv__tutorial_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(33.400, 1.500, -4.000)
+rotation = Vector3(0.0744, 1.3909, 0.0)
+metadata/fov = 40.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__onei_office_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.990, 1.612, -6.094)
+rotation = Vector3(-0.0700, 2.3562, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__onei_office_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.923, 1.612, -4.181)
+rotation = Vector3(-0.0700, -0.7854, 0.0)
+metadata/fov = 45.0

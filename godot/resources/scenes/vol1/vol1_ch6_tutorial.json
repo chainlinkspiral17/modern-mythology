@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "John Faust is already lingering in the lobby. Jacob and Wagner pop into view. A cute secretary is typing at her console."
+      "text": "[shot:insert console]John Faust is already lingering in the lobby. Jacob and Wagner pop into view. A cute secretary is typing at her console."
     },
     {
       "t": "show",
@@ -57,19 +57,19 @@
       "t": "say",
       "char": "Secretary",
       "expr": "neutral",
-      "text": "Greetings gentlemen. My name is Olivia and I am here to help you adjust to your new equipment."
+      "text": "[shot:closeup person]Greetings gentlemen. My name is Olivia and I am here to help you adjust to your new equipment."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "What are you, AI, avatar?"
+      "text": "[shot:establish]What are you, AI, avatar?"
     },
     {
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "I am a very real person. The equipment goggles we gave you include projection windows into other dimensions. These office spaces were carved out of imagination, but occupy a very real volume in space-time."
+      "text": "[shot:closeup person]I am a very real person. The equipment goggles we gave you include projection windows into other dimensions. These office spaces were carved out of imagination, but occupy a very real volume in space-time."
     },
     {
       "t": "say",
@@ -87,17 +87,17 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Impressive."
+      "text": "[shot:establish]Impressive."
     },
     {
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "Try adjusting your viewpoint to Empathetic."
+      "text": "[shot:closeup person]Try adjusting your viewpoint to Empathetic."
     },
     {
       "t": "narrate",
-      "text": "The boys do."
+      "text": "[shot:establish]The boys do."
     },
     {
       "t": "narrate",
@@ -107,7 +107,7 @@
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "Notice how you hear one thing, but what I'm saying is actually quite different from how you perceive it."
+      "text": "[shot:closeup person]Notice how you hear one thing, but what I'm saying is actually quite different from how you perceive it."
     },
     {
       "t": "say",
@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob looks at his brother and smiles."
+      "text": "[shot:establish]Jacob looks at his brother and smiles."
     },
     {
       "t": "say",
@@ -141,7 +141,7 @@
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "Now switch the channel to Target Demographic."
+      "text": "[shot:closeup person]Now switch the channel to Target Demographic."
     },
     {
       "t": "choice",
@@ -158,7 +158,7 @@
     },
     {
       "t": "narrate",
-      "text": "For a moment longer, the lobby hums with everything nobody in it is saying."
+      "text": "[shot:establish]For a moment longer, the lobby hums with everything nobody in it is saying."
     },
     {
       "t": "narrate",
@@ -168,11 +168,11 @@
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "Here you will see the world as a product being designed and sold by invisible hands. People will reek of corporate identification and speak their affiliation."
+      "text": "[shot:closeup person]Here you will see the world as a product being designed and sold by invisible hands. People will reek of corporate identification and speak their affiliation."
     },
     {
       "t": "narrate",
-      "text": "They watch a television program."
+      "text": "[shot:insert tv]They watch a television program."
     },
     {
       "t": "narrate",
@@ -182,13 +182,13 @@
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "There are millions of other possible filters or windows into these realities. Be careful which doors you open, because if you're not strong or careful, you might not return."
+      "text": "[shot:closeup person]There are millions of other possible filters or windows into these realities. Be careful which doors you open, because if you're not strong or careful, you might not return."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "surprised",
-      "text": "Jesus. I think staring into the multiverse may be blinding."
+      "text": "[shot:establish]Jesus. I think staring into the multiverse may be blinding."
     },
     {
       "t": "say",
