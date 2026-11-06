@@ -106,7 +106,7 @@
     },
     {
       "t": "narrate",
-      "text": "Old men bend over the boards in the shade, pigeons working the gravel at their feet."
+      "text": "[shot:insert board]Old men bend over the boards in the shade, pigeons working the gravel at their feet."
     },
     {
       "t": "narrate",
@@ -118,11 +118,11 @@
     },
     {
       "t": "narrate",
-      "text": "People are actually flying kites."
+      "text": "[shot:insert kite]People are actually flying kites."
     },
     {
       "t": "narrate",
-      "text": "There is still a lot of fear out there. Japs and Germans and all that what comes next nonsense. There has been an enemy."
+      "text": "[shot:establish_b]There is still a lot of fear out there. Japs and Germans and all that what comes next nonsense. There has been an enemy."
     },
     {
       "t": "narrate",
@@ -138,7 +138,7 @@
     },
     {
       "t": "narrate",
-      "text": "No one has a problem with corporations. Incorporate is a good word, a swell word. America is in the upswing."
+      "text": "[shot:establish]No one has a problem with corporations. Incorporate is a good word, a swell word. America is in the upswing."
     },
     {
       "t": "narrate",
@@ -154,7 +154,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is something in the air that makes you aware of so much possibility. There is prosperity, but you still have to struggle. There is intellectualism, but also great ignorance."
+      "text": "[shot:insert pigeon]There is something in the air that makes you aware of so much possibility. There is prosperity, but you still have to struggle. There is intellectualism, but also great ignorance."
     },
     {
       "t": "narrate",
@@ -166,7 +166,7 @@
     },
     {
       "t": "narrate",
-      "text": "I come here to hide from reality. I can halt the grief, stop the clock on my education, delay the final schism with Christine. I have no family to need me, no friends who know me and have watched me make mistake after mistake."
+      "text": "[shot:establish_b]I come here to hide from reality. I can halt the grief, stop the clock on my education, delay the final schism with Christine. I have no family to need me, no friends who know me and have watched me make mistake after mistake."
     },
     {
       "t": "narrate",
@@ -178,7 +178,7 @@
     },
     {
       "t": "narrate",
-      "text": "Technology is trying so hard and works despite being so damn clumsy. Television and particularly radio are so enthusiastic, so immodest. At least the radio has grown into its own skin."
+      "text": "[shot:establish]Technology is trying so hard and works despite being so damn clumsy. Television and particularly radio are so enthusiastic, so immodest. At least the radio has grown into its own skin."
     },
     {
       "t": "narrate",
@@ -194,7 +194,7 @@
     },
     {
       "t": "narrate",
-      "text": "I go to libraries and borrow off the shelves. I write letters to myself, my unborn family. I want to tease the time stream, I want to fuck things up."
+      "text": "[shot:insert board]I go to libraries and borrow off the shelves. I write letters to myself, my unborn family. I want to tease the time stream, I want to fuck things up."
     },
     {
       "t": "narrate",
@@ -206,7 +206,7 @@
     },
     {
       "t": "narrate",
-      "text": "I need to experiment. I need to find a way to connect through to the present. If this is just a recurring night time dream state, fine."
+      "text": "[shot:establish_b]I need to experiment. I need to find a way to connect through to the present. If this is just a recurring night time dream state, fine."
     },
     {
       "t": "narrate",
@@ -222,7 +222,7 @@
     },
     {
       "t": "narrate",
-      "text": "I just watch and listen and think. I'm afraid to move and play and touch these lives with my strong father's fingers."
+      "text": "[shot:insert pigeon]I just watch and listen and think. I'm afraid to move and play and touch these lives with my strong father's fingers."
     },
     {
       "t": "narrate",
@@ -234,7 +234,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mark Twain sent his Connecticut Yankee to King Arthur's Court."
+      "text": "[shot:establish]Mark Twain sent his Connecticut Yankee to King Arthur's Court."
     },
     {
       "t": "narrate",
@@ -246,7 +246,7 @@
     },
     {
       "t": "narrate",
-      "text": "How easy would it be to rewrite history. Can I change the slightest thing, not for selfish reasons. If I can, should I."
+      "text": "[shot:establish_b]How easy would it be to rewrite history. Can I change the slightest thing, not for selfish reasons. If I can, should I."
     },
     {
       "t": "narrate",

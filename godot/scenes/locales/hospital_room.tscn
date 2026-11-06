@@ -421,3 +421,10 @@ metadata/fov = 45.0
 position = Vector3(-9.600, 1.150, -3.700)
 rotation = Vector3(0.0274, -2.2403, 0.0)
 metadata/fov = 45.0
+
+; vol3 ch5: "A television dangling from an odd angle ... apparently a duck channel";
+; "Dad turns away, watches the ducks." — the set on its arm, high on the E wall (pass 303)
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.500, 1.500, -2.600)
+rotation = Vector3(0.2064, -1.2611, 0.0)
+metadata/fov = 32.0

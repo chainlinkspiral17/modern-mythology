@@ -49,11 +49,11 @@
     },
     {
       "t": "narrate",
-      "text": "I looked at him. He looked serious for a second."
+      "text": "[shot:closeup person]I looked at him. He looked serious for a second."
     },
     {
       "t": "narrate",
-      "text": "He grabbed the cigarette from my lips and leaned over and kissed me before I knew it was happening. I let him come in closer. It felt good and he began petting the back of my neck, stroking my cheek. Then it was over."
+      "text": "[shot:insert radio]He grabbed the cigarette from my lips and leaned over and kissed me before I knew it was happening. I let him come in closer. It felt good and he began petting the back of my neck, stroking my cheek. Then it was over."
     },
     {
       "t": "narrate",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was smiling, looking forward."
+      "text": "[shot:insert windshield]He was smiling, looking forward."
     },
     {
       "t": "narrate",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nathaniel wanted to keep it quiet. What we were doing. Sneaking around, seeing each other. Kissing behind opened lockers, under bleachers, down on the beach. He wanted to keep us a secret."
+      "text": "[shot:establish]Nathaniel wanted to keep it quiet. What we were doing. Sneaking around, seeing each other. Kissing behind opened lockers, under bleachers, down on the beach. He wanted to keep us a secret."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "You want to do something this Christmas together, I said."
+      "text": "[shot:closeup person]You want to do something this Christmas together, I said."
     },
     {
       "t": "narrate",
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "I got up right next to him and looked him in the eyes."
+      "text": "[shot:closeup person_b]I got up right next to him and looked him in the eyes."
     },
     {
       "t": "narrate",
@@ -113,7 +113,7 @@
     },
     {
       "t": "narrate",
-      "text": "It would be my last Christmas with them. Before I graduate."
+      "text": "[shot:establish]It would be my last Christmas with them. Before I graduate."
     },
     {
       "t": "narrate",
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "I sighed and got up and left him alone."
+      "text": "[shot:insert truck]I sighed and got up and left him alone."
     },
     {
       "t": "narrate",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "He grabbed me and I saw tears in his eyes."
+      "text": "[shot:closeup person]He grabbed me and I saw tears in his eyes."
     },
     {
       "t": "narrate",
@@ -161,7 +161,7 @@
     },
     {
       "t": "narrate",
-      "text": "I don't want to be invisible forever, I said. You can't hide me like this."
+      "text": "[shot:closeup person_b]I don't want to be invisible forever, I said. You can't hide me like this."
     },
     {
       "t": "narrate",
@@ -186,7 +186,7 @@
     },
     {
       "t": "narrate",
-      "text": "The tide was out and the sand lay hard and grey to the water."
+      "text": "[shot:establish]The tide was out and the sand lay hard and grey to the water."
     },
     {
       "t": "bg",

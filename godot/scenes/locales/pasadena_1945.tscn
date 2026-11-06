@@ -350,3 +350,28 @@ script = ExtResource("14_dbgm")
 position = Vector3(-9.288, 0.878, -9.133)
 rotation = Vector3(-0.5236, -0.0673, 0.0)
 metadata/fov = 35.0
+
+; vol3 ch10: "Old men bend over the boards in the shade" (pass 303)
+[node name="shot_insert_board__park_chess" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(68.000, 1.350, -9.500)
+rotation = Vector3(-0.4010, 0.8380, 0.0)
+metadata/fov = 38.0
+
+; "pigeons working the gravel at their feet" (pass 303)
+[node name="shot_insert_pigeon__park_chess" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(71.500, 0.900, -12.000)
+rotation = Vector3(-0.2668, 0.0000, 0.0)
+metadata/fov = 45.0
+
+; "People are actually flying kites." (pass 303)
+[node name="shot_insert_kite__park_chess" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(74.000, 1.600, -16.000)
+rotation = Vector3(0.6772, -0.1974, 0.0)
+metadata/fov = 24.0
+
+
+; the park's SECOND wide: from the open ground back to the shade trees and the boards (pass 303)
+[node name="shot_establish_b__park_chess" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(78.000, 1.700, -16.000)
+rotation = Vector3(-0.0580, 1.9974, 0.0)
+metadata/fov = 60.0
