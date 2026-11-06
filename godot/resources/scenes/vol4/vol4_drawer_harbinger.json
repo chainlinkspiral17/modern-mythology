@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "The map is divided up into territories, of which there are four basic types: Population, Industrial, Agriculture, Military. Each territory has a value, from one to fifteen. A fifth territory, Water, also has value, but no type."
+      "text": "[shot:insert drawer]The map is divided up into territories, of which there are four basic types: Population, Industrial, Agriculture, Military. Each territory has a value, from one to fifteen. A fifth territory, Water, also has value, but no type."
     },
     {
       "t": "narrate",
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "The shards are roughly 1/4 as powerful as the main card, but can be deployed strategically in many different ways. Shards can also be assembled into brand new cards with unique properties. The final trump cards are assembled in this fashion."
+      "text": "[shot:establish]The shards are roughly 1/4 as powerful as the main card, but can be deployed strategically in many different ways. Shards can also be assembled into brand new cards with unique properties. The final trump cards are assembled in this fashion."
     },
     {
       "t": "narrate",
