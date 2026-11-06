@@ -116,7 +116,7 @@
     },
     {
       "t": "narrate",
-      "text": "Whew you're a big one. What do you weigh?"
+      "text": "[shot:insert door]Whew you're a big one. What do you weigh?"
     },
     {
       "t": "narrate",
@@ -136,7 +136,7 @@
     },
     {
       "t": "narrate",
-      "text": "Real hassle, from the sound of it."
+      "text": "[shot:establish]Real hassle, from the sound of it."
     },
     {
       "t": "narrate",
@@ -160,7 +160,7 @@
     },
     {
       "t": "narrate",
-      "text": "And now there's not. Most curious."
+      "text": "[shot:insert door]And now there's not. Most curious."
     },
     {
       "t": "narrate",
@@ -184,7 +184,7 @@
     },
     {
       "t": "narrate",
-      "text": "Pleasure."
+      "text": "[shot:establish]Pleasure."
     },
     {
       "t": "narrate",
@@ -210,7 +210,7 @@
     },
     {
       "t": "narrate",
-      "text": "My dad's a geologist, Andy says. I don't know what I want to do yet, make games probably."
+      "text": "[shot:insert door]My dad's a geologist, Andy says. I don't know what I want to do yet, make games probably."
     },
     {
       "t": "narrate",
@@ -246,7 +246,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sounds terrific, we'll have to get some of that back at the house to pass around to a select few, hey kid, perhaps you can introduce us to the chemist who is making this fine stuff when you're all straightened up now."
+      "text": "[shot:establish]Sounds terrific, we'll have to get some of that back at the house to pass around to a select few, hey kid, perhaps you can introduce us to the chemist who is making this fine stuff when you're all straightened up now."
     },
     {
       "t": "say",
@@ -272,7 +272,7 @@
     },
     {
       "t": "narrate",
-      "text": "Whereabouts."
+      "text": "[shot:insert door]Whereabouts."
     },
     {
       "t": "say",
@@ -298,7 +298,7 @@
       "t": "say",
       "char": "Andy",
       "expr": "neutral",
-      "text": "Sure, met many a Wiccan, have no problem with any other cultures really. They're all cool, as far as I can tell. Some prophets cooler than others, but then, they can't all be Shakespeare."
+      "text": "[shot:establish]Sure, met many a Wiccan, have no problem with any other cultures really. They're all cool, as far as I can tell. Some prophets cooler than others, but then, they can't all be Shakespeare."
     },
     {
       "t": "narrate",
