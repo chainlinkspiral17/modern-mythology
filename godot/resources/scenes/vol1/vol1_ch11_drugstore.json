@@ -257,13 +257,13 @@
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "To go further in you need a pass."
+      "text": "[shot:closeup person]To go further in you need a pass."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "What kind of pass."
+      "text": "[shot:closeup person_b]What kind of pass."
     },
     {
       "t": "say",
@@ -273,7 +273,7 @@
     },
     {
       "t": "narrate",
-      "text": "They have nothing. Faust's earbud clicks and another sample comes up out of the queue."
+      "text": "[shot:establish]They have nothing. Faust's earbud clicks and another sample comes up out of the queue."
     },
     {
       "t": "say",
@@ -285,7 +285,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "amused",
-      "text": "(cracking up) Emily. Oh my god."
+      "text": "[shot:closeup person_b](cracking up) Emily. Oh my god."
     },
     {
       "t": "say",
@@ -297,21 +297,21 @@
       "t": "say",
       "char": "Faust, Jacob, Wagner",
       "expr": "neutral",
-      "text": "(together, terrible Leeloo accent) Multi-pass."
+      "text": "[shot:establish](together, terrible Leeloo accent) Multi-pass."
     },
     {
       "t": "narrate",
-      "text": "Olivia stamps all three forms."
+      "text": "[shot:insert desk]Olivia stamps all three forms."
     },
     {
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "Pinball is a valid form of identification. Through the back. You'll see."
+      "text": "[shot:closeup person]Pinball is a valid form of identification. Through the back. You'll see."
     },
     {
       "t": "narrate",
-      "text": "At the rear of the store, where the pharmacy window should be, there are three aisles. The hanging signs over them read, in the same corporate font as COUGH & COLD:\nHISTORY. MUSIC. ART."
+      "text": "[shot:establish_b]At the rear of the store, where the pharmacy window should be, there are three aisles. The hanging signs over them read, in the same corporate font as COUGH & COLD:\nHISTORY. MUSIC. ART."
     },
     {
       "t": "narrate",
@@ -319,7 +319,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob's shirt-Air leans toward HISTORY. Wagner's shirt-Fire leans toward MUSIC. Faust's shirt-Water doesn't lean anywhere."
+      "text": "[shot:establish]Jacob's shirt-Air leans toward HISTORY. Wagner's shirt-Fire leans toward MUSIC. Faust's shirt-Water doesn't lean anywhere."
     },
     {
       "t": "narrate",
@@ -341,11 +341,11 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Switch to Target Demographic real quick. I want to see what they're selling."
+      "text": "[shot:closeup person_b]Switch to Target Demographic real quick. I want to see what they're selling."
     },
     {
       "t": "narrate",
-      "text": "They do. The signs flicker. HISTORY: A Heritage You Can Trust. MUSIC: Feel Something Today. ART: Express Yourself (Terms Apply)."
+      "text": "[shot:establish_b]They do. The signs flicker. HISTORY: A Heritage You Can Trust. MUSIC: Feel Something Today. ART: Express Yourself (Terms Apply)."
     },
     {
       "t": "say",
@@ -361,13 +361,13 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Whoever goes first leads. The other two follow and keep him tethered. Then we switch."
+      "text": "[shot:closeup person]Whoever goes first leads. The other two follow and keep him tethered. Then we switch."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Who goes first."
+      "text": "[shot:closeup person_b]Who goes first."
     },
     {
       "t": "flag",

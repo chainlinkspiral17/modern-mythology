@@ -53,7 +53,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "All right. We need to think."
+      "text": "[shot:closeup person_b]All right. We need to think."
     },
     {
       "t": "say",
@@ -71,7 +71,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "The air is different, a certain dramatic gloom hangs about it. The music in my head is dredg, nordic runes etched into my back."
+      "text": "[shot:establish]The air is different, a certain dramatic gloom hangs about it. The music in my head is dredg, nordic runes etched into my back."
     },
     {
       "t": "say",
@@ -83,7 +83,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Quiet, I hear him in your voice — wait, no, he's in all our voices. I can feel his presence in this world. He's always been here, always looking."
+      "text": "[shot:closeup person_b]Quiet, I hear him in your voice — wait, no, he's in all our voices. I can feel his presence in this world. He's always been here, always looking."
     },
     {
       "t": "say",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wagner puts his hand on his friend's shoulder."
+      "text": "[shot:establish]Wagner puts his hand on his friend's shoulder."
     },
     {
       "t": "say",
@@ -115,7 +115,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "You got us into this mess, you'll get us out, and you'll become a cliche and get the girl in the end."
+      "text": "[shot:closeup person_b]You got us into this mess, you'll get us out, and you'll become a cliche and get the girl in the end."
     },
     {
       "t": "narrate",
@@ -125,7 +125,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "sad",
-      "text": "Some part of me is always a stupid child, learning so much from every moment. How can adults turn this off and forget the joy of discovery?"
+      "text": "[shot:establish]Some part of me is always a stupid child, learning so much from every moment. How can adults turn this off and forget the joy of discovery?"
     },
     {
       "t": "narrate",
@@ -135,7 +135,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "warm",
-      "text": "Yeah, he's in us. Rock on."
+      "text": "[shot:closeup person_b]Yeah, he's in us. Rock on."
     },
     {
       "t": "choice",
@@ -152,7 +152,7 @@
     },
     {
       "t": "narrate",
-      "text": "The office is very quiet without his voice in it."
+      "text": "[shot:establish]The office is very quiet without his voice in it."
     },
     {
       "t": "narrate",

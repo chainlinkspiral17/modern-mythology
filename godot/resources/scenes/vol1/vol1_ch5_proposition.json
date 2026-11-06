@@ -64,7 +64,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Pleasure."
+      "text": "[shot:closeup person_b]Pleasure."
     },
     {
       "t": "say",
@@ -83,14 +83,14 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "You might say that."
+      "text": "[shot:closeup person]You might say that."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Excellent. I am a tourist in this fine city, and am friends with your friend John Faust."
+      "text": "[shot:closeup person_b]Excellent. I am a tourist in this fine city, and am friends with your friend John Faust."
     },
     {
       "t": "say",
@@ -120,7 +120,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob's cigarette burns down slowly while he looks the stranger over."
+      "text": "[shot:closeup person]Jacob's cigarette burns down slowly while he looks the stranger over."
     },
     {
       "t": "say",
@@ -132,14 +132,14 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Give my friends their due, Dickens Dean. They are as cool as me, if not moreso."
+      "text": "[shot:establish]Give my friends their due, Dickens Dean. They are as cool as me, if not moreso."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "We are but the company we keep."
+      "text": "[shot:closeup person_b]We are but the company we keep."
     },
     {
       "t": "say",
@@ -158,33 +158,33 @@
       "t": "say",
       "char": "Jacob",
       "expr": "amused",
-      "text": "Jesus, sounds like the premise of a bad live-action Japanese television show."
+      "text": "[shot:closeup person]Jesus, sounds like the premise of a bad live-action Japanese television show."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Or rock star, if you prefer. The gal I'm looking for is drawn to larger than life figures. She seems to be preying on them. But she's only after a certain sort of person."
+      "text": "[shot:closeup person_b]Or rock star, if you prefer. The gal I'm looking for is drawn to larger than life figures. She seems to be preying on them. But she's only after a certain sort of person."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Most guys don't mind being the prey sometimes."
+      "text": "[shot:closeup person]Most guys don't mind being the prey sometimes."
     },
     {
       "t": "say",
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Then you will be perfect for our little trap. I've opened up a club in this town, later on you'll need to get there and make a scene and see if you can draw her out."
+      "text": "[shot:closeup person_b]Then you will be perfect for our little trap. I've opened up a club in this town, later on you'll need to get there and make a scene and see if you can draw her out."
     },
     {
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "John Faust, you weren't kidding when you mentioned life taking a turn towards the surreal."
+      "text": "[shot:establish]John Faust, you weren't kidding when you mentioned life taking a turn towards the surreal."
     },
     {
       "t": "say",
