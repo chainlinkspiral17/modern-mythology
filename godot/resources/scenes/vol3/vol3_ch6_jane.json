@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then the fun ones:"
+      "text": "[shot:insert curtain]Then the fun ones:"
     },
     {
       "t": "narrate",
@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "Have you ever resorted physical violence as a result of playing a video game."
+      "text": "[shot:establish]Have you ever resorted physical violence as a result of playing a video game."
     },
     {
       "t": "narrate",
@@ -89,7 +89,7 @@
       "t": "say",
       "char": "Andy",
       "expr": "neutral",
-      "text": "Is it just tonight I can do this, or can I do it the whole time I'm here?"
+      "text": "[shot:insert curtain]Is it just tonight I can do this, or can I do it the whole time I'm here?"
     },
     {
       "t": "say",
@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "She flirts with Andy a little, touches his hand, bites her lip, asks him about himself in ways he assumes have nothing to do with nothing except to satisfy her own curiosity."
+      "text": "[shot:establish]She flirts with Andy a little, touches his hand, bites her lip, asks him about himself in ways he assumes have nothing to do with nothing except to satisfy her own curiosity."
     },
     {
       "t": "narrate",

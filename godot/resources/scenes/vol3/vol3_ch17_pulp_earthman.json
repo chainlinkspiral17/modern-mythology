@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is a woman at the window who hasn't slept. There is a big kid on the floor by the vent who has woken up and is sitting up now and has taken the subject's other hand."
+      "text": "[shot:insert window]There is a woman at the window who hasn't slept. There is a big kid on the floor by the vent who has woken up and is sitting up now and has taken the subject's other hand."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "Go on home, he says. Go on."
+      "text": "[shot:insert tv]Go on home, he says. Go on."
     },
     {
       "t": "narrate",
