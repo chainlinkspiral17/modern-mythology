@@ -389,3 +389,30 @@ metadata/fov = 35.0
 position = Vector3(-1.292, 0.992, -1.744)
 rotation = Vector3(-0.2618, 1.4746, 0.0)
 metadata/fov = 35.0
+
+; vol3 ch2: "Read this here, where my finger is" — the typewriter, black, big as
+; an engine block, the sheet in it (pass 302)
+[node name="shot_insert_typewriter__ron_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.200, 1.400, -1.800)
+rotation = Vector3(-0.3708, 1.0637, 0.0)
+metadata/fov = 38.0
+
+; "all these books on the floor, it really is not fit for a body" (pass 302)
+[node name="shot_insert_books__ron_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.500, -1.500)
+rotation = Vector3(-0.8221, 0.4266, 0.0)
+metadata/fov = 50.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__ron_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.862, 1.612, -1.738)
+rotation = Vector3(-0.0700, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__ron_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.050, 1.612, -3.650)
+rotation = Vector3(-0.0700, -2.3562, 0.0)
+metadata/fov = 45.0

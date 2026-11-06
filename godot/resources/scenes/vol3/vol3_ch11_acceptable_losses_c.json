@@ -360,7 +360,7 @@
     },
     {
       "t": "narrate",
-      "text": "Dad grabbed me to stop me from hitting the fence. People rushed over to meet me but then the ump stopped more from leaving the dugout. I was in someone's arms but then I was thrown away."
+      "text": "[shot:establish_b]Dad grabbed me to stop me from hitting the fence. People rushed over to meet me but then the ump stopped more from leaving the dugout. I was in someone's arms but then I was thrown away."
     },
     {
       "t": "narrate",
@@ -372,7 +372,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chris closes on third. The second baseman grabbed the ball out of the air. Chris was past third, running to home."
+      "text": "[shot:insert third]Chris closes on third. The second baseman grabbed the ball out of the air. Chris was past third, running to home."
     },
     {
       "t": "narrate",
@@ -380,11 +380,11 @@
     },
     {
       "t": "narrate",
-      "text": "So fast. The moment you have to watch. The train wreck moment."
+      "text": "[shot:establish]So fast. The moment you have to watch. The train wreck moment."
     },
     {
       "t": "narrate",
-      "text": "Collision. Ball hit glove. Chris hit catcher."
+      "text": "[shot:insert plate]Collision. Ball hit glove. Chris hit catcher."
     },
     {
       "t": "narrate",
@@ -396,7 +396,7 @@
     },
     {
       "t": "narrate",
-      "text": "Out, he yelled. Everyone yelled. I yelled."
+      "text": "[shot:establish_b]Out, he yelled. Everyone yelled. I yelled."
     },
     {
       "t": "narrate",
@@ -408,7 +408,7 @@
     },
     {
       "t": "narrate",
-      "text": "Confusion. Chris looked pissed. He wasn't crying."
+      "text": "[shot:establish]Confusion. Chris looked pissed. He wasn't crying."
     },
     {
       "t": "narrate",
@@ -432,11 +432,11 @@
     },
     {
       "t": "narrate",
-      "text": "To the books, the ump said, get the scorekeeper's books. Each team pulled one out. Confusion trying to get them on the field."
+      "text": "[shot:insert seat]To the books, the ump said, get the scorekeeper's books. Each team pulled one out. Confusion trying to get them on the field."
     },
     {
       "t": "narrate",
-      "text": "Terry was screaming at Chris. Screaming at him because he wasn't fast enough. Because he didn't try hard enough."
+      "text": "[shot:establish_b]Terry was screaming at Chris. Screaming at him because he wasn't fast enough. Because he didn't try hard enough."
     },
     {
       "t": "narrate",
@@ -452,7 +452,7 @@
     },
     {
       "t": "narrate",
-      "text": "Everyone was quiet, waiting for the results."
+      "text": "[shot:establish]Everyone was quiet, waiting for the results."
     },
     {
       "t": "narrate",
@@ -468,7 +468,7 @@
     },
     {
       "t": "narrate",
-      "text": "Everyone was quiet. Terry left Chris in the dust. He sat over the umps shoulder, watching them count up something."
+      "text": "[shot:establish_b]Everyone was quiet. Terry left Chris in the dust. He sat over the umps shoulder, watching them count up something."
     },
     {
       "t": "narrate",
@@ -476,7 +476,7 @@
     },
     {
       "t": "narrate",
-      "text": "The noise. The unbelievable noise. We won."
+      "text": "[shot:establish]The noise. The unbelievable noise. We won."
     },
     {
       "t": "narrate",
@@ -488,7 +488,7 @@
     },
     {
       "t": "narrate",
-      "text": "He grabbed his broken son off the ground and pulled him into his arms. Chris would have none of it. Terry was screaming and crying with joy."
+      "text": "[shot:establish_b]He grabbed his broken son off the ground and pulled him into his arms. Chris would have none of it. Terry was screaming and crying with joy."
     },
     {
       "t": "narrate",
@@ -500,7 +500,7 @@
     },
     {
       "t": "narrate",
-      "text": "The parents, the coaches would have none of it. They screamed. Terry grabbed the trophy from the box one of the umps was carrying out onto the field."
+      "text": "[shot:establish]The parents, the coaches would have none of it. They screamed. Terry grabbed the trophy from the box one of the umps was carrying out onto the field."
     },
     {
       "t": "narrate",
