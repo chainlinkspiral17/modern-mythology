@@ -488,15 +488,17 @@ metadata/fov = 40.0
 
 ; "Below, the dark, and now and then the lights of some town" — Andy's window (pass 303)
 [node name="shot_insert_win__plane_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(61.000, 1.250, -7.400)
-rotation = Vector3(-0.0518, -1.1205, 0.0)
+position = Vector3(61.000, 1.450, -7.750)
+rotation = Vector3(-0.2793, -1.4904, 0.0)
 metadata/fov = 40.0
+
 
 ; vol3 ch6 ("flight number one"): Andy's window by day (pass 303)
 [node name="shot_insert_win__plane_day" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(61.000, 1.250, -7.400)
-rotation = Vector3(-0.0518, -1.1205, 0.0)
+position = Vector3(61.000, 1.450, -7.750)
+rotation = Vector3(-0.2793, -1.4904, 0.0)
 metadata/fov = 40.0
+
 
 ; the hardcover notebook open on Andy's tray, the pen (pass 303)
 [node name="shot_insert_notebook__plane_day" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -506,6 +508,6 @@ metadata/fov = 40.0
 
 ; vol4 everyday in november: the window, the same seat (pass 303)
 [node name="shot_insert_win__plane_vol4" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(61.000, 1.250, -7.400)
-rotation = Vector3(-0.0518, -1.1205, 0.0)
+position = Vector3(61.000, 1.450, -7.750)
+rotation = Vector3(-0.2793, -1.4904, 0.0)
 metadata/fov = 40.0
