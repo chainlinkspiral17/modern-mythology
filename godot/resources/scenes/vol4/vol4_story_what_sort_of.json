@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chess motioned for the boy to follow her into the elevator, which he did at his own pace. He kept turned away from her. \"That nose of yours is something. Looks like a spoiled fruit.\""
+      "text": "[shot:insert trough]Chess motioned for the boy to follow her into the elevator, which he did at his own pace. He kept turned away from her. \"That nose of yours is something. Looks like a spoiled fruit.\""
     },
     {
       "t": "narrate",
@@ -117,7 +117,7 @@
       "t": "say",
       "char": "Norm",
       "expr": "neutral",
-      "text": "Norman Todd. Most people just call me Norm. Or Todd. Because Norman was that guy in Psycho. Norman Bates."
+      "text": "[shot:establish]Norman Todd. Most people just call me Norm. Or Todd. Because Norman was that guy in Psycho. Norman Bates."
     },
     {
       "t": "choice",

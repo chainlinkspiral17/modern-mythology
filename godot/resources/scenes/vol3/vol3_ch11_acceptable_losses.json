@@ -126,7 +126,7 @@
     },
     {
       "t": "narrate",
-      "text": "I keep pressing in on my skull. The bathroom looks like wet watercolor. Pastel, everything in tint."
+      "text": "[shot:closeup person]I keep pressing in on my skull. The bathroom looks like wet watercolor. Pastel, everything in tint."
     },
     {
       "t": "narrate",
@@ -146,7 +146,7 @@
     },
     {
       "t": "narrate",
-      "text": "There it is. Release. Oh there it is."
+      "text": "[shot:insert door_bath]There it is. Release. Oh there it is."
     },
     {
       "t": "narrate",
