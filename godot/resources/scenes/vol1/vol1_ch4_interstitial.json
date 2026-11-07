@@ -57,7 +57,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Both the main characters in our own life stories."
+      "text": "[shot:insert chalk]Both the main characters in our own life stories."
     },
     {
       "t": "say",
@@ -90,7 +90,7 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "And he doesn't mean that just you are fictional. You are still an awesome, wholly rewarding creation in your own right."
+      "text": "[shot:establish_b]And he doesn't mean that just you are fictional. You are still an awesome, wholly rewarding creation in your own right."
     },
     {
       "t": "say",
@@ -131,7 +131,7 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "How far off path have you strayed in dreamtime wanderings? How deep have you gone down the well of self-discovery?"
+      "text": "[shot:insert table]How far off path have you strayed in dreamtime wanderings? How deep have you gone down the well of self-discovery?"
     },
     {
       "t": "say",

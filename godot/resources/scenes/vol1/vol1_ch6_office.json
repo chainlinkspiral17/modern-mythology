@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "One channel holds: the same office, a half-second out of step with itself."
+      "text": "[shot:insert goggles]One channel holds: the same office, a half-second out of step with itself."
     },
     {
       "t": "say",
@@ -167,7 +167,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "amused",
-      "text": "You look younger than me, daddy-o."
+      "text": "[shot:insert card]You look younger than me, daddy-o."
     },
     {
       "t": "say",
@@ -200,7 +200,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "sad",
-      "text": "I'm a bad dad and that's why I'm here, that's why you're here. I don't know how to be a good dad. All I've ever done is lie to the ones I've loved."
+      "text": "[shot:establish]I'm a bad dad and that's why I'm here, that's why you're here. I don't know how to be a good dad. All I've ever done is lie to the ones I've loved."
     },
     {
       "t": "say",
