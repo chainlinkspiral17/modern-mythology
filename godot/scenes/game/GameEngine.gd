@@ -1494,13 +1494,13 @@ const XF_READY_MAX := 90            # frames to wait for a heavy set to load und
 # the plain dissolve.
 const XF_SHADER := preload("res://assets/shaders/vn_transition.gdshader")
 const XF_REGISTER_STYLE := {
-	"arcana":      {"edge": Color(1.0, 0.70, 0.30, 0.72), "scale": 2.4, "flow": Vector2(0.0, 0.45), "halftone": 0.0, "secs": 1.0},
-	"milk_honey":  {"edge": Color(0.95, 0.52, 0.78, 0.72), "scale": 1.8, "flow": Vector2(0.35, 0.25), "halftone": 0.0, "secs": 1.1},
-	"community":   {"edge": Color(1.0, 0.36, 0.62, 0.76), "scale": 3.6, "flow": Vector2(0.0, 0.0), "halftone": 1.0, "secs": 0.85},
-	"xerox":       {"edge": Color(0.30, 0.82, 0.80, 0.72), "scale": 3.6, "flow": Vector2(0.0, 0.0), "halftone": 1.0, "secs": 0.85},
-	"small_wood":  {"edge": Color(0.86, 0.80, 0.70, 0.44), "scale": 1.6, "flow": Vector2(0.25, 0.0), "halftone": 0.0, "secs": 1.1},
-	"signal":      {"edge": Color(0.36, 0.86, 0.84, 0.68), "scale": 2.8, "flow": Vector2(0.0, -0.3), "halftone": 0.0, "secs": 0.95},
-	"triumvirate": {"edge": Color(1.0, 0.56, 0.42, 0.68), "scale": 2.6, "flow": Vector2(-0.3, 0.2), "halftone": 0.0, "secs": 0.95},
+	"arcana":      {"edge": Color(1.0, 0.70, 0.30, 0.72), "scale": 2.4, "flow": Vector2(0.0, 0.45), "halftone": 0.0, "secs": 1.0, "fade": Color(0.07, 0.045, 0.02)},
+	"milk_honey":  {"edge": Color(0.95, 0.52, 0.78, 0.72), "scale": 1.8, "flow": Vector2(0.35, 0.25), "halftone": 0.0, "secs": 1.1, "fade": Color(0.11, 0.04, 0.08)},
+	"community":   {"edge": Color(1.0, 0.36, 0.62, 0.76), "scale": 3.6, "flow": Vector2(0.0, 0.0), "halftone": 1.0, "secs": 0.85, "fade": Color(0.94, 0.91, 0.84)},
+	"xerox":       {"edge": Color(0.30, 0.82, 0.80, 0.72), "scale": 3.6, "flow": Vector2(0.0, 0.0), "halftone": 1.0, "secs": 0.85, "fade": Color(0.92, 0.92, 0.90)},
+	"small_wood":  {"edge": Color(0.86, 0.80, 0.70, 0.44), "scale": 1.6, "flow": Vector2(0.25, 0.0), "halftone": 0.0, "secs": 1.1, "fade": Color(0.05, 0.06, 0.07)},
+	"signal":      {"edge": Color(0.36, 0.86, 0.84, 0.68), "scale": 2.8, "flow": Vector2(0.0, -0.3), "halftone": 0.0, "secs": 0.95, "fade": Color(0.02, 0.06, 0.07)},
+	"triumvirate": {"edge": Color(1.0, 0.56, 0.42, 0.68), "scale": 2.6, "flow": Vector2(-0.3, 0.2), "halftone": 0.0, "secs": 0.95, "fade": Color(0.08, 0.035, 0.02)},
 }
 var _xf_cover: ColorRect = null
 var _xf_src: String = ""            # the bg on screen (set by _do_bg, the resume path included)
@@ -1574,7 +1574,16 @@ func _transition_play(n: Dictionary, style: String) -> void:
 		_xf_cover.z_index = UI_Z + 39
 		add_child(_xf_cover)
 	var flash: bool = style == "flash"
-	_xf_cover.color = Color(0.95, 0.93, 0.88, 0.0) if flash else Color(0.01, 0.008, 0.005, 0.0)
+	# a FADE dips through the register's own colour (pass 305): the zines'
+	# riso paper, the others a dark of their own ink; plain black elsewhere
+	var fade_c: Color = Color(0.01, 0.008, 0.005)
+	var freg: String = _xf_register()
+	if XF_REGISTER_STYLE.has(freg):
+		var fst: Dictionary = XF_REGISTER_STYLE[freg]
+		if fst.has("fade") and not flash:
+			fade_c = fst["fade"]
+			print("[GameEngine] TRANSITION · fade through the %s register's colour" % freg)
+	_xf_cover.color = Color(0.95, 0.93, 0.88, 0.0) if flash else Color(fade_c.r, fade_c.g, fade_c.b, 0.0)
 	var t_out: float = XF_FLASH_OUT if flash else XF_FADE_OUT
 	var t_in: float = XF_FLASH_IN if flash else XF_FADE_IN
 	var tw_out := create_tween()

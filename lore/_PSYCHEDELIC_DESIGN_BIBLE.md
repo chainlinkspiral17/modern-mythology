@@ -147,8 +147,15 @@ a sodium-amber edge; milk_honey melts like an oil projector, rose at the
 edge; community and xerox break up through a riso dot screen (pink /
 teal ink); small_wood fogs off, signal sinks with teal, triumvirate
 turns against the clock with a warm edge. `domestic`, `base` and
-`slowstick` keep the plain dissolve. Fades (time passing) and flashes
-(dreams, memories) are the same in every register.
+`slowstick` keep the plain dissolve. Flashes (dreams, memories) are the
+same in every register.
+
+**The register's fade (2026-11-07, pass 305):** a FADE (time passing)
+dips through the register's own colour (`"fade"` in the same styles):
+community and xerox through their riso PAPER (a pale dip, the page
+between two prints); arcana through a sodium-dark brown, milk_honey a
+dark rose, small_wood a fog-dark, signal a teal-dark, triumvirate a
+warm dark. `domestic`, `base` and `slowstick` fade through black.
 
 ## Who pushes what
 

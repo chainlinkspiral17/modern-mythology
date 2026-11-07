@@ -3835,6 +3835,12 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-07 · pass 305: the register's own fade; the club street's reverse; three items closed.**
+- **The register's fade:** a fade through time used to dip through plain black in every volume. It now dips through the register's own colour (the zines through their riso paper; arcana sodium-dark, milk_honey dark rose, small_wood fog-dark, signal teal-dark, triumvirate warm dark; domestic / base / slowstick still black). Engine-tested on vol 7's bed → day cut: "fade through the milk_honey register's colour".
+- **The club street's reverse frame** stood against a building face that filled its right half; it now looks across the street to the lit storefronts (read by eye; wrong_room 0).
+- **Closed, not built:** the lighthouse base's "people's frame at night" (the preset is "looking up in darkness" — the text's own mood; V's memory there cuts to the column, the padlock and the wide); paintings' inserts aimed at a seeded spot (once resolved through bg_places, no painting carries an insert cue — every one is a 3D set); the stand-in check (pass 304).
+- **Draft N+1:** the Deck read of the fades (is the riso paper dip too bright between two dark scenes?); the drain grate (no line names it — low); the 15 chapters at exactly 12.
+
 **2026-11-07 · pass 304: no 3D hold over 12 lines in vols 1–7; long narration eases on by itself; the stand-in check.**
 - **Long narration:** the painting's camera and the director's long-hold rule both waited for a turn in the text (a new speaker, narration after talk). Pure narration has none — the 140-line arcana prelude never moved. Past half again the hold (9 lines on a painting, 12 on a set) they now ease on at the next line regardless. Engine-tested on the prelude: three moves in 30 lines.
 - **The last three sets over 12** (the bus two-shot, the sleep lab at night, the mirror room) each have a second wide now, read by eye (the sleep lab's first try was two-thirds north wall at 2 m — the obstruction gate; pulled back and widened). **Every chapter in vols 1–7 now cuts at least every 12 lines on a 3D set** (pass 299 thought it had this at 52 → 12; the real worst was 62).

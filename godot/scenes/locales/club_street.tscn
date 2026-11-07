@@ -376,8 +376,8 @@ rotation = Vector3(-0.0700, -0.2618, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; the club street reverse: across the street to the lit storefronts (pass 305; the first stood against a building face)
 [node name="shot_closeup_person_b__club_street_curb" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.376, 1.612, 4.375)
-rotation = Vector3(-0.0700, 2.8798, 0.0)
+position = Vector3(2.200, 1.612, 4.000)
+rotation = Vector3(-0.0698, -2.7925, 0.0)
 metadata/fov = 45.0
