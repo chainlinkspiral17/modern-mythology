@@ -323,6 +323,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-07 · a planner may place cuts; only read frames may be in its list (pass 303)
+
+**What happened:** about a hundred chapters of essay-like narration held
+one frame for 12–44 lines. Hand-placing every cut would take passes; a
+planner placed them (a cut about every five lines, at a line naming a
+frame's object, else rotation). Its mistakes all came from its INPUT, not
+its placement: a frame name typed wrong (blind), a frame from another
+area of the same scene (237 m off), a run on a second set in the same
+chapter.
+
+**Rule:** the planner's frame list is only frames rendered under that
+preset and read by eye; it runs pinned to one preset; closeups go on
+narration only. shot_marker and wrong_room both at zero before any
+commit — read their output, don't just run them. Dialogue scenes stay
+hand-cut (shot / reverse on the speakers' own lines).
+
 ### 2026-11-06 · measure what the engine plays, not what the file says (pass 300)
 
 **What happened:** two hold scans read each `bg` node's `src` as
