@@ -228,7 +228,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "What about us?"
+      "text": "[shot:insert coffee]What about us?"
     },
     {
       "t": "say",
@@ -258,7 +258,7 @@
       "char": "Dickens Dean",
       "role": "Antagonist",
       "expr": "neutral",
-      "text": "Well, I'll leave you three to your fun and games. I have to go back to my club to see about some long due business."
+      "text": "[shot:establish]Well, I'll leave you three to your fun and games. I have to go back to my club to see about some long due business."
     },
     {
       "t": "say",
@@ -290,7 +290,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Damn, well, guess that's our cue to exit stage left."
+      "text": "[shot:insert coffee]Damn, well, guess that's our cue to exit stage left."
     },
     {
       "t": "say",

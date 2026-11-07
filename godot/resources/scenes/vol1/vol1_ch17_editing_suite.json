@@ -51,7 +51,7 @@
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "Well. That's where it cuts."
+      "text": "[shot:insert console]Well. That's where it cuts."
     },
     {
       "t": "say",
@@ -81,7 +81,7 @@
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "That's not the girl."
+      "text": "[shot:establish]That's not the girl."
     },
     {
       "t": "say",
@@ -111,7 +111,7 @@
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "When does she arrive."
+      "text": "[shot:insert door]When does she arrive."
     },
     {
       "t": "say",

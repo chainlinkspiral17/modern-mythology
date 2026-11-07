@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "The audio devices in their ears crackle on all at once."
+      "text": "[shot:closeup person]The audio devices in their ears crackle on all at once."
     },
     {
       "t": "say",
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "They look down. The prints on their shirts are moving."
+      "text": "[shot:insert judgement_day]They look down. The prints on their shirts are moving."
     },
     {
       "t": "narrate",
@@ -115,7 +115,7 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "Dude your shirt just said hi."
+      "text": "[shot:establish]Dude your shirt just said hi."
     },
     {
       "t": "say",

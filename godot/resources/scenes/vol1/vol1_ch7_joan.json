@@ -68,7 +68,7 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "I like this one."
+      "text": "[shot:insert easel]I like this one."
     },
     {
       "t": "say",
@@ -98,7 +98,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "How is it any different from your own?"
+      "text": "[shot:establish_b]How is it any different from your own?"
     },
     {
       "t": "say",
@@ -128,7 +128,7 @@
       "t": "say",
       "char": "Joan",
       "expr": "neutral",
-      "text": "You say you are average, but you do not seem it."
+      "text": "[shot:insert paint_table]You say you are average, but you do not seem it."
     },
     {
       "t": "say",
@@ -171,7 +171,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "surprised",
-      "text": "It feels like warm skin."
+      "text": "[shot:insert canvas]It feels like warm skin."
     },
     {
       "t": "say",
@@ -199,7 +199,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Well, if I'm blind, perhaps you should guide the way."
+      "text": "[shot:insert easel]Well, if I'm blind, perhaps you should guide the way."
     },
     {
       "t": "say",

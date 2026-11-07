@@ -189,7 +189,7 @@
       "t": "say",
       "char": "Olivia",
       "expr": "neutral",
-      "text": "Thank you."
+      "text": "[shot:insert counter]Thank you."
     },
     {
       "t": "say",
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "An OLD WOMAN, the happy one from the pharmacy counter, comes up to the counter with her prescription bag still stapled shut."
+      "text": "[shot:establish_b]An OLD WOMAN, the happy one from the pharmacy counter, comes up to the counter with her prescription bag still stapled shut."
     },
     {
       "t": "say",

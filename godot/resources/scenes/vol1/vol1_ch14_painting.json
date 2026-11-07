@@ -247,7 +247,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "(after a moment) Did the frame just talk."
+      "text": "[shot:insert canvas](after a moment) Did the frame just talk."
     },
     {
       "t": "say",
@@ -275,7 +275,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "That's mine. I painted that after she left. I painted her winning."
+      "text": "[shot:establish_b]That's mine. I painted that after she left. I painted her winning."
     },
     {
       "t": "say",
@@ -315,7 +315,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "She set me up. With the easel. With all of it."
+      "text": "[shot:insert easel]She set me up. With the easel. With all of it."
     },
     {
       "t": "narrate",
