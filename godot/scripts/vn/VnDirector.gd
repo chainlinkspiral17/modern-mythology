@@ -1015,6 +1015,9 @@ func _hold_line(kind: String, speaker: String, cued: bool) -> void:
 	_hold_kind = kind
 	if kind == "say":
 		_hold_speaker = speaker
+	# a run of narration has no turns: past half again the hold, ease on anyway
+	if not turn and _hold_lines > HOLD_LINES + 4:
+		turn = true
 	if _hold_lines <= HOLD_LINES or not turn:
 		return
 	if _bg3d == null or not is_instance_valid(_bg3d) or not _bg3d.visible:

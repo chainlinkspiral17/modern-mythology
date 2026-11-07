@@ -2258,6 +2258,10 @@ func _frame_line(kind: String, speaker: String, cued: bool) -> void:
 	_frame_kind = kind
 	if kind == "say":
 		_frame_speaker = speaker
+	# narration runs on with no turn to wait for (an essay, a prelude of 140
+	# lines): past half again the hold, ease on at the next line anyway
+	if not turn and _frame_lines > FRAME_HOLD_LINES + 3:
+		turn = true
 	if _frame_lines <= FRAME_HOLD_LINES or not turn:
 		return
 	_frame_moves += 1
