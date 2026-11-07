@@ -260,6 +260,24 @@ spot_range = 8.00
 spot_angle = 30.0
 shadow_enabled = false
 
+; (pass 306) the exit sign over the entrance doors — the only light on that
+; wall; the door insert ("Jesse goes to the door") read black without it
+[node name="Entrance_Exit_Sign_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.800, 2.500, -0.350)
+light_color = Color(0.62, 1.0, 0.68, 1)
+light_energy = 1.5
+omni_range = 3.2
+shadow_enabled = false
+
+; (pass 306) the street's sodium light through the door glass (the glass is
+; amber in the model); placed in the vestibule, outside the doors
+[node name="Entrance_Street_Spill" type="OmniLight3D" parent="."]
+position = Vector3(3.800, 1.900, 1.100)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.8
+omni_range = 3.6
+shadow_enabled = false
+
 [node name="Work_Light_Head_Practical" type="OmniLight3D" parent="."]
 position = Vector3(5.150, 1.950, -0.980)
 light_color = Color(1.00, 0.86, 0.62, 1)
@@ -466,9 +484,10 @@ metadata/fov = 38.0
 
 ; insert: the ENTRANCE doors (Jesse at the door) — not the restroom door the text pass found nearest
 [node name="shot_insert_door__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.800, 1.500, -2.000)
-rotation = Vector3(-0.1027, -3.1416, 0.0)
-metadata/fov = 40.0
+position = Vector3(2.500, 1.600, -5.000)
+rotation = Vector3(-0.0394, -2.8805, 0.0)
+metadata/fov = 45.0
+
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bass__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
