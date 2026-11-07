@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "Carrie is standing there, smiling at him. Charlie eyes her suspiciously."
+      "text": "[shot:insert dryer]Carrie is standing there, smiling at him. Charlie eyes her suspiciously."
     },
     {
       "t": "show",
@@ -215,7 +215,7 @@
       "t": "say",
       "char": "Charlie",
       "expr": "amused",
-      "text": "Exactly!"
+      "text": "[shot:establish]Exactly!"
     },
     {
       "t": "narrate",

@@ -91,7 +91,7 @@
     },
     {
       "t": "narrate",
-      "text": "CAROLINE walks up to the bus overhang. She has a bag by her side. Her clothes are disheveled."
+      "text": "[shot:closeup person]CAROLINE walks up to the bus overhang. She has a bag by her side. Her clothes are disheveled."
     },
     {
       "t": "show",
@@ -123,7 +123,7 @@
       "t": "say",
       "char": "Charlie",
       "expr": "neutral",
-      "text": "Where you from?"
+      "text": "[shot:establish]Where you from?"
     },
     {
       "t": "say",

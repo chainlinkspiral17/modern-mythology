@@ -340,3 +340,17 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__bus_station" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.352, 1.612, 3.629)
+rotation = Vector3(-0.0700, -1.3090, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__bus_station" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.740, 1.612, 2.929)
+rotation = Vector3(-0.0700, 1.8326, 0.0)
+metadata/fov = 45.0
