@@ -354,3 +354,9 @@ metadata/fov = 45.0
 position = Vector3(-1.740, 1.612, 2.929)
 rotation = Vector3(-0.0700, 1.8326, 0.0)
 metadata/fov = 45.0
+
+; the bus two-shot's SECOND wide: across the aisle to the seats and the window (pass 304)
+[node name="shot_establish_b__bus_two_shot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(60.750, 1.250, -4.950)
+rotation = Vector3(-0.0698, -1.6581, 0.0)
+metadata/fov = 55.0

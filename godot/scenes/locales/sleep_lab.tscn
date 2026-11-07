@@ -460,3 +460,9 @@ metadata/fov = 45.0
 position = Vector3(40.800, 1.612, -12.531)
 rotation = Vector3(-0.0700, -3.1416, 0.0)
 metadata/fov = 45.0
+
+; the sleep lab at night's SECOND wide: round to the beds under the lit wall (pass 304)
+[node name="shot_establish_b__sleep_lab_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.450, 1.250, -2.200)
+rotation = Vector3(-0.0698, -0.4363, 0.0)
+metadata/fov = 65.0

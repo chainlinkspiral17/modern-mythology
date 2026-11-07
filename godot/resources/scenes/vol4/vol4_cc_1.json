@@ -204,7 +204,7 @@
     },
     {
       "t": "narrate",
-      "text": "The window throws the city across both their faces, a frame at a time."
+      "text": "[shot:establish_b]The window throws the city across both their faces, a frame at a time."
     },
     {
       "t": "say",
@@ -234,7 +234,7 @@
       "t": "say",
       "char": "Charlie",
       "expr": "neutral",
-      "text": "I'm taking creative license with this whole introduction scene, because I can't exactly be honest about how raw and honest our initial encounter felt. This is all in retrospect, all suspect to my emotion. Nothing objective."
+      "text": "[shot:establish]I'm taking creative license with this whole introduction scene, because I can't exactly be honest about how raw and honest our initial encounter felt. This is all in retrospect, all suspect to my emotion. Nothing objective."
     },
     {
       "t": "say",

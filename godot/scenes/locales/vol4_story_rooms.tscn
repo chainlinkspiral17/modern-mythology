@@ -531,3 +531,9 @@ metadata/fov = 45.0
 position = Vector3(300.747, 1.077, -0.490)
 rotation = Vector3(-0.4656, 0.2611, 0.0)
 metadata/fov = 35.0
+
+; the mirror room's SECOND wide: round to the wall and its dark glass (pass 304)
+[node name="shot_establish_b__mirror_room" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(262.450, 1.600, -0.950)
+rotation = Vector3(-0.0698, -0.8727, 0.0)
+metadata/fov = 55.0
