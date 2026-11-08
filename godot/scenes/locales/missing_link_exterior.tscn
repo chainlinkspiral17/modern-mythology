@@ -425,8 +425,8 @@ metadata/fov = 56.0
 
 ; insert: the road sign against the sky
 [node name="shot_insert_sign" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.6, 1.6, -3.5)
-rotation = Vector3(0.1399, 0.5646, 0.0)
+position = Vector3(-4.0, 1.6, -1.0)
+rotation = Vector3(0.4740, 0.4270, 0.0)
 metadata/fov = 44.0
 
 ; insert: the shuttle bench
