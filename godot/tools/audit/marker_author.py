@@ -385,7 +385,7 @@ def author_establish_b(locale, dry, preset=None):
         st = VO.frame_stats(R.to_b(npos), rx, ry, 60.0, boxes)
         if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes) or st["distinct"] < 4:
             continue
-        print("== %-28s shot_establish_b" + sfx + " at (%.1f, %.1f, %.1f) %.1fm · %+.0f° · %.0f° round · median %.1f distinct %d"
+        print(("== %-28s shot_establish_b" + sfx + " at (%.1f, %.1f, %.1f) %.1fm · %+.0f° · %.0f° round · median %.1f distinct %d")
               % (locale, npos[0], npos[1], npos[2], d, el, math.degrees(sep), st["median"], st["distinct"]))
         if not dry:
             blk = ["", "; the room's SECOND wide, authored by marker_author.py --establish-b (2026-09-12)",

@@ -1941,7 +1941,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/278.mp3"
     },

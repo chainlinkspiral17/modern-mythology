@@ -312,7 +312,7 @@
       "t": "say",
       "char": "Andy",
       "expr": "angry",
-      "text": "First off, there's no basketball hoop right here. And there are no speakers up in those windows and there is no umbrella table here and the paintings, the writing on the walls, it's all different.",
+      "text": "[shot:establish_b]First off, there's no basketball hoop right here. And there are no speakers up in those windows and there is no umbrella table here and the paintings, the writing on the walls, it's all different.",
       "voice": "assets/audio/voice/vol3_ch2_dreams_in_the_key_of_godhead/058.mp3"
     },
     {

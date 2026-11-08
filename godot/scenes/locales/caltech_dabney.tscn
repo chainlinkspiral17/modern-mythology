@@ -557,3 +557,10 @@ metadata/fov = 45.0
 position = Vector3(63.437, 1.612, -1.732)
 rotation = Vector3(-0.0700, -0.7854, 0.0)
 metadata/fov = 45.0
+
+; the room's SECOND wide, authored by marker_author.py --establish-b (2026-09-12)
+; from the far side of the room's look-point, so a long hold has a frame to rotate to
+[node name="shot_establish_b__dabney_courtyard_1945" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.644, 1.300, -9.675)
+rotation = Vector3(0.0000, -1.8326, 0.0)
+metadata/fov = 60.0
