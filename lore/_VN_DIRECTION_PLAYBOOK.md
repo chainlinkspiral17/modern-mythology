@@ -323,6 +323,27 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-08 · sweep the frames the cues use; a gate must resolve the way the engine does (pass 306)
+
+**What happened:** every gate was at zero, yet a sweep of every cue frame
+(rendered, luminance measured, darkest first) found frames no one could
+read: a fridge insert on a black couch, a crow under a dark roof, a door
+4.9 m from any lamp, a window 198 m down the road. And four sets rendered
+NO frames: the marker audit had counted a marker suffixed for another
+area of the same geometry as cover, while the director skips such a
+marker and borrows a substitute. Two "glass" walls were slabs: a pane
+built at alpha 1.0 never becomes glass, so the Pacific behind the monitor
+room and the drinks in the Dabney fridges could never show.
+
+**Rule:** existence gates ask the engine's question (`<name>__<this
+preset>`, else the plain name), never "does any marker with this stem
+exist". Brightness is not a gate: rank by luminance, then read by eye.
+Darkness the text names ("in the dark", a darkroom's safelight) stays.
+Fix the rest in this order: (1) re-aim to where the light is, (2) cut to
+another object the same line names, (3) light it from a fixture that is
+already in the set (a porch bulb, the moon in the window). Glass is
+written below alpha 0.98, and something is modelled behind it.
+
 ### 2026-11-07 · a planner may place cuts; only read frames may be in its list (pass 303)
 
 **What happened:** about a hundred chapters of essay-like narration held
