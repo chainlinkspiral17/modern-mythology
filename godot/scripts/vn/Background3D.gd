@@ -3960,7 +3960,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(102.4, 1.55, -3.2),
 		"camera_rotation": Vector3(-0.04, deg_to_rad(-90.0), 0.0),
 		"fov": 66.0,
-		"env": {"ambient_color": Color(0.40, 0.44, 0.60, 1), "ambient_energy": 0.18, "fog_color": Color(0.04, 0.05, 0.08, 1)},
+		# (2026-11-08) a night sky over the Pacific, seen through the west glass
+		"env": {"ambient_color": Color(0.40, 0.44, 0.60, 1), "ambient_energy": 0.18, "fog_color": Color(0.04, 0.05, 0.08, 1),
+			"sky_top": Color(0.03, 0.04, 0.10, 1), "sky_horizon": Color(0.17, 0.18, 0.30, 1),
+			"ground_horizon": Color(0.08, 0.10, 0.16, 1), "ground_bottom": Color(0.03, 0.04, 0.06, 1)},
 		"suppress_input": true,
 	},
 	"dean_tower_corridor": {

@@ -445,11 +445,13 @@ def build_monitor_room():
         make_box(f"Mon_Glass_Mullion_{k}", (MX0 + 0.02, 0.2 + k * 1.5, MH / 2.0), (0.06, 0.06, MH), (0.20, 0.18, 0.16, 1.0))
     # (kept between the club office, x < 68, and the glass)
     make_box("Ocean", (86.0, MD / 2.0, -6.0), (28.0, 60.0, 0.1), (0.10, 0.13, 0.20, 1.0))
-    make_box("Ocean_Horizon", (72.0, MD / 2.0, 4.0), (0.2, 60.0, 20.0), (0.22, 0.25, 0.40, 1.0))
-    # the far line of sky the comment promised, and a moon's path on the
-    # water: "the whole dark Pacific, and nothing moving on it" needs to
+    # (2026-11-08) the far sea only, up to the eye's horizon (z 1.5): above it
+    # the preset's own night sky shows (Background3D turns the env's sky
+    # colours into a ProceduralSky). It was a 20 m wall of "sky" that no
+    # light reached, and the window read black.
+    make_box("Ocean_Horizon", (72.0, MD / 2.0, -2.25), (0.2, 60.0, 7.5), (0.12, 0.15, 0.24, 1.0))
+    # a moon's path on the water: "the whole dark Pacific, and nothing moving on it" needs to
     # read as WATER, not as the glass's own black
-    make_box("Ocean_Horizon_Glow", (72.15, MD / 2.0, -4.6), (0.05, 60.0, 2.8), (0.38, 0.40, 0.54, 1.0))
     make_box("Ocean_Moonpath", (86.0, MD / 2.0 + 0.75, -5.94), (27.0, 2.2, 0.02), (0.50, 0.56, 0.70, 1.0))
     # the moon the path comes from — the visible source of the tscn's
     # Moon_On_Water light (a practical, per the lighting playbook)
