@@ -56,6 +56,22 @@ do
   fi
 done
 
+# 1b) (2026-11-08) a Steam library on another drive — a desktop Steam
+#     Machine keeps games on a second SSD: read Steam's own library list
+if [ -z "$BLENDER" ]; then
+  for vdf in "$HOME/.local/share/Steam/steamapps/libraryfolders.vdf" \
+             "$HOME/.steam/steam/steamapps/libraryfolders.vdf"; do
+    [ -f "$vdf" ] || continue
+    while IFS= read -r lib; do
+      if [ -x "$lib/steamapps/common/Blender/blender" ]; then
+        BLENDER="$lib/steamapps/common/Blender/blender"
+        echo "→ found Blender via Steam: $BLENDER"
+        break 2
+      fi
+    done < <(sed -n 's/^[[:space:]]*"path"[[:space:]]*"\(.*\)".*/\1/p' "$vdf")
+  done
+fi
+
 # 2) Blender via Flatpak
 if [ -z "$BLENDER" ]; then
   if command -v flatpak >/dev/null 2>&1; then
