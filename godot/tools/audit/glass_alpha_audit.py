@@ -33,6 +33,31 @@ NOT_PANE = re.compile(
     r"band|chain|top)", re.I)
 CALLS = {"make_box", "make_rot_box", "make_cyl", "make_chamfer_box", "_mb", "_mc"}
 
+# Parts read and judged OPAQUE ON PURPOSE (builder, name as the report
+# prints it) -> why. They are counted, not listed. Add a part here only
+# after reading it in its builder and, where it is on a cue frame, by render.
+JUDGED = {
+    ("build_cabin_interior.py", "EBed_Win_Glass"): "painted cedar view; nothing modelled behind",
+    ("build_hans_bakery_back_kitchen.py", "FOH_Street_Pane"): "painted street; nothing modelled behind",
+    ("build_chillwave_interior.py", "Dome_{}_Glass"): "a lit lamp dome (frosted)",
+    ("build_graustark.py", "Minstral_Porthole_{}_Glass"): "a porthole onto an unmodelled hull",
+    ("build_diner.py", "Wall_W_mid_glass_{}"): "COL_NIGHT_GLASS: the night window, opaque by design",
+    ("build_diner.py", "PhoneBooth_GlassEW_{}"): "faces a solid booth body",
+    ("build_diner.py", "PhoneBooth_GlassS"): "faces a solid booth body",
+    ("build_diner.py", "WestFormal_Glass_{}"): "drinkware",
+    ("build_diner.py", "PrivGlass_{}"): "drinkware",
+    ("build_diner.py", "Damb_{}_Glass"): "drinkware",
+    ("build_diner.py", "Formal_Glass_{}_{}"): "drinkware",
+    ("build_dean_offices.py", "{}_Glass_{}"): "goggle lenses",
+    ("build_dean_offices.py", "Lob_Entry_Glass_{}"): "frosted entry doors, shut; nothing modelled outside",
+    ("build_foxhole_bar.py", "Entrance_Door_Leaf_{}_Glass"): "painted with the street's sodium light",
+    ("build_club_sharp.py", "Arcade_Prize_Counter_Glass"): "a counter top; the prizes stand on it",
+    ("build_airport_cabin.py", "Store_Cooler_Glass"): "faces a solid cooler body; no stock modelled (N+1)",
+    ("build_copy_shop.py", "Shop_Front_Glass"): "night glass with the blinds down behind it",
+    ("build_caltech_dabney.py", "Sp_Window_Glass"): "painted daylight; nothing modelled outside",
+    ("build_carrie_city.py", "Dryer_Door_Glass"): "a dryer porthole; nothing inside",
+}
+
 
 def _const_colors(tree):
     """Module-level NAME = (r, g, b, a) assignments."""
@@ -94,6 +119,7 @@ def scan(path):
 def main():
     want = sys.argv[1:]
     total = 0
+    judged = 0
     for dirpath, _dirs, files in os.walk(BLENDER):
         for fn in sorted(files):
             if not (fn.startswith("build_") and fn.endswith(".py")):
@@ -101,6 +127,9 @@ def main():
             if want and not any(w in fn for w in want):
                 continue
             rows = scan(os.path.join(dirpath, fn))
+            keep = [(ln, nm) for ln, nm in rows if (fn, nm) not in JUDGED]
+            judged += len(rows) - len(keep)
+            rows = keep
             if not rows:
                 continue
             total += len(rows)
@@ -108,7 +137,8 @@ def main():
             for ln, name in rows:
                 print("   %5d  %s" % (ln, name))
     print("\nglass_alpha_audit · %d part(s) named as glass, written opaque "
-          "(alpha >= %.2f) — read each by render before changing it" % (total, ALPHA_MAX))
+          "(alpha >= %.2f), not yet judged — read each by render before changing it"
+          " · %d judged opaque on purpose (JUDGED)" % (total, ALPHA_MAX, judged))
 
 
 if __name__ == "__main__":

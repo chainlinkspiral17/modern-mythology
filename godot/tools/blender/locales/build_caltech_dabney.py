@@ -604,7 +604,7 @@ def build_tunnels():
         make_box(f"Rad_Sign_{k}" + TUN2003, (TX1 - 0.145, y, 1.55), (0.006, 0.30, 0.30), (0.96, 0.84, 0.20, 1.0))
         make_box(f"Rad_Sign_{k}_Trefoil" + TUN2003, (TX1 - 0.149, y, 1.55), (0.004, 0.14, 0.14), (0.12, 0.10, 0.12, 1.0))
     # the clean room behind reinforced glass (W side, y 32.5..35.5)
-    make_box("Clean_Glass", (TX0, 34.0, 1.5), (0.04, 3.0, 1.2), (0.70, 0.80, 0.84, 1.0))
+    make_box("Clean_Glass", (TX0, 34.0, 1.5), (0.04, 3.0, 1.2), (0.70, 0.80, 0.84, 0.30))   # (2026-11-08) glass: the clean room behind it is built
     for s in (-1, 1):
         make_box(f"Clean_Room_Side_{s:+d}", (TX0 - 1.5, 34.0 + s * 2.0, 1.4), (3.0, 0.2, 2.8), (0.92, 0.94, 0.94, 1.0))
     make_box("Clean_Room_Ceil", (TX0 - 1.5, 34.0, 2.84), (3.0, 4.0, 0.08), (0.94, 0.94, 0.94, 1.0))

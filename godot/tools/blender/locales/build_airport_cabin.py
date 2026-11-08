@@ -160,7 +160,7 @@ def build_gate():
             y = door_y + 1.0
             continue
         w = min(1.8, STORE_Y1 - 0.08 - y)
-        make_box(f"Store_Glass_{k}", (sx0, y + w / 2.0, 1.55), (0.02, w - 0.06, 3.0), (0.62, 0.72, 0.78, 1.0))
+        make_box(f"Store_Glass_{k}", (sx0, y + w / 2.0, 1.55), (0.02, w - 0.06, 3.0), (0.62, 0.72, 0.78, 0.30))   # (2026-11-08) glass: the store inside is built
         make_box(f"Store_Mullion_{k}", (sx0, y, 1.6), (0.06, 0.06, 3.2), CHROME)
         y += w
         k += 1
