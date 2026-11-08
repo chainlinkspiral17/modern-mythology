@@ -158,8 +158,11 @@ def fix_row(row, boxes):
         lo = [min(b[1][i] - b[2][i] for b in hidden) for i in range(3)]
         hi = [max(b[1][i] + b[2][i] for b in hidden) for i in range(3)]
         face = hi[n] if sg > 0 else lo[n]
-        if abs(c[n] - face) > H.FACE_TOL and not H.on_host(c, w, h, n, sg, wa, ha, boxes,
-                                                           {x[0] for x in hidden}, face):
+        fp = H.fitting_part(c, w, h, n, sg, wa, ha, hidden)
+        if fp is not None:
+            face = fp[2]
+        if H.FACE_TOL < abs(c[n] - face) <= 0.50 and not H.on_host(c, w, h, n, sg, wa, ha, boxes,
+                                                                    {x[0] for x in hidden}, face):
             new_c[n] = face
             why.append("onto the face (%.2f m)" % abs(c[n] - face))
         sw, sh = hi[wa] - lo[wa], hi[ha] - lo[ha]
@@ -167,7 +170,26 @@ def fix_row(row, boxes):
         off = max(abs(c[wa] - scx) / max(sw, 0.05), abs(c[ha] - scz) / max(sh, 0.05))
         rw, rh = w / max(sw, 0.01), h / max(sh, 0.01)
         ratio = (sw * sh) / max(w * h, 1e-6)
-        misfit = off > 0.15 or not (0.6 <= rw <= 1.6) or not (0.6 <= rh <= 1.6)
+        misfit = fp is None
+        # HALF-SIZE: the row's size is the part's half-extents (a sign 1.30 x
+        # 0.40 m carried a 0.65 x 0.20 picture; monitors half their body):
+        # the picture takes that part's full face — a screen part if the
+        # thing has one (the picture is what is ON the monitor)
+        half = None
+        for b in hidden:
+            bw, bhh = 2.0 * b[2][wa], 2.0 * b[2][ha]
+            if 0.45 <= w / max(bw, 1e-6) <= 0.55 and 0.45 <= h / max(bhh, 1e-6) <= 0.55:
+                half = b
+                break
+        if half is not None:
+            scr = [b for b in hidden if re.search(r"screen|display|glass", b[0], re.I)]
+            tgt = scr[0] if scr else half
+            tc, th = tgt[1], tgt[2]
+            new_c[n] = tc[n] + sg * th[n]
+            new_c[wa], new_c[ha] = tc[wa], tc[ha]
+            new_s = [2.0 * th[wa], 2.0 * th[ha]]
+            why.append("half-size row: the full face of %s (%.2fx%.2f → %.2fx%.2f)" % (tgt[0], w, h, new_s[0], new_s[1]))
+            misfit = False
         if misfit and 0.25 <= ratio <= 4.0 and sw > 0.02 and sh > 0.02:
             new_c[wa], new_c[ha] = scx, scz
             new_s = [sw, sh]

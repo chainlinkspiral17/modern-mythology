@@ -9306,8 +9306,8 @@
             0.7
           ],
           "size": [
-            0.2,
-            0.1
+            0.4,
+            0.2
           ],
           "facing": "-y",
           "hide": [
@@ -9646,8 +9646,8 @@
             0.7
           ],
           "size": [
-            0.2,
-            0.1
+            0.4,
+            0.2
           ],
           "facing": "-y",
           "hide": [
@@ -9981,13 +9981,13 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -2.06,
+            -2.46,
             5.98,
             0.7
           ],
           "size": [
-            0.2,
-            0.1
+            0.4,
+            0.2
           ],
           "facing": "-y",
           "hide": [
@@ -11807,12 +11807,12 @@
           "label": "Mural",
           "center": [
             -3.3,
-            -8.82,
+            -8.84,
             1.8
           ],
           "size": [
-            0.57,
-            0.51
+            1.15,
+            1.02
           ],
           "facing": "+y",
           "hide": [
@@ -12941,12 +12941,12 @@
           "label": "Soccer_Sign",
           "center": [
             -1.4,
-            1.0,
+            1.02,
             0.79
           ],
           "size": [
-            0.3,
-            0.07
+            0.6,
+            0.14
           ],
           "facing": "+y",
           "hide": [
@@ -15071,12 +15071,12 @@
           "label": "Produce_Sign",
           "center": [
             -10.0,
-            6.489,
+            6.47,
             3.4
           ],
           "size": [
-            2.0,
-            0.35
+            4.0,
+            0.7
           ],
           "facing": "-y",
           "hide": [
@@ -15152,13 +15152,13 @@
           "locale": "centro_grocery_aisle",
           "label": "Service_Desk_Sign",
           "center": [
-            13.286,
+            13.27,
             3.75,
             3.3
           ],
           "size": [
-            1.2,
-            0.25
+            2.4,
+            0.5
           ],
           "facing": "-x",
           "hide": [
@@ -15779,13 +15779,13 @@
           "locale": "kowalski_kitchen",
           "label": "TV",
           "center": [
-            -3.013,
-            0.53,
+            -3.0,
+            0.348,
             0.86
           ],
           "size": [
-            0.57,
-            0.33
+            1.02,
+            0.58
           ],
           "facing": "+y",
           "hide": [
@@ -15948,12 +15948,12 @@
           "label": "Marcus_Monitor",
           "center": [
             3.1,
-            -2.01,
+            -2.085,
             1.06
           ],
           "size": [
-            0.28,
-            0.17
+            0.56,
+            0.34
           ],
           "facing": "+y",
           "hide": [
@@ -17419,13 +17419,13 @@
           "locale": "cedar_tower",
           "label": "EPhoto",
           "center": [
-            5.878,
+            5.865,
             2.0,
             6.6
           ],
           "size": [
-            0.17,
-            0.13
+            0.34,
+            0.26
           ],
           "facing": "-x",
           "hide": [
@@ -17436,13 +17436,13 @@
           "locale": "cedar_tower",
           "label": "EPhoto",
           "center": [
-            5.878,
+            5.865,
             3.1,
             6.6
           ],
           "size": [
-            0.17,
-            0.13
+            0.34,
+            0.26
           ],
           "facing": "-x",
           "hide": [
@@ -17453,13 +17453,13 @@
           "locale": "cedar_tower",
           "label": "EPhoto",
           "center": [
-            5.878,
+            5.865,
             4.2,
             6.6
           ],
           "size": [
-            0.17,
-            0.13
+            0.34,
+            0.26
           ],
           "facing": "-x",
           "hide": [
@@ -17470,13 +17470,13 @@
           "locale": "cedar_tower",
           "label": "EPhoto",
           "center": [
-            5.878,
+            5.865,
             5.3,
             6.6
           ],
           "size": [
-            0.17,
-            0.13
+            0.34,
+            0.26
           ],
           "facing": "-x",
           "hide": [
@@ -17487,13 +17487,13 @@
           "locale": "cedar_tower",
           "label": "EPhoto",
           "center": [
-            5.878,
+            5.865,
             6.4,
             6.6
           ],
           "size": [
-            0.17,
-            0.13
+            0.34,
+            0.26
           ],
           "facing": "-x",
           "hide": [
@@ -17791,13 +17791,13 @@
           "locale": "new_orleans_apartment",
           "label": "TV",
           "center": [
-            2.75,
+            3.055,
             2.2,
             0.95
           ],
           "size": [
-            0.42,
-            0.28
+            0.72,
+            0.44
           ],
           "facing": "-x",
           "hide": [
@@ -18940,13 +18940,13 @@
           "locale": "elicia_apartment",
           "label": "Dead_Monitor",
           "center": [
-            -2.89,
+            -2.961,
             2.45,
             1.05
           ],
           "size": [
-            0.28,
-            0.17
+            0.5,
+            0.28
           ],
           "facing": "+x",
           "hide": [
@@ -18981,13 +18981,13 @@
           "locale": "elicia_apartment",
           "label": "Dead_Monitor",
           "center": [
-            -2.89,
+            -2.961,
             3.35,
             1.05
           ],
           "size": [
-            0.28,
-            0.17
+            0.5,
+            0.28
           ],
           "facing": "+x",
           "hide": [
@@ -22037,8 +22037,8 @@
             2.3
           ],
           "size": [
-            2.5,
-            0.13
+            5.0,
+            0.26
           ],
           "facing": "+y",
           "hide": [
@@ -22128,9 +22128,6 @@
             12.0
           ],
           "facing": "+x",
-          "hide": [
-            "Sea_Horizon_Haze"
-          ],
           "fit": "tile"
         }
       ]
@@ -22263,8 +22260,8 @@
             3.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "-y",
           "hide": [
@@ -23073,7 +23070,7 @@
           "label": "Bus_Stop_Sign",
           "center": [
             8.0,
-            8.77,
+            8.82,
             2.45
           ],
           "size": [
@@ -23113,12 +23110,12 @@
           "label": "Parish_Sign",
           "center": [
             25.1,
-            8.34,
+            8.42,
             2.6
           ],
           "size": [
-            1.3,
-            0.5
+            2.6,
+            1.0
           ],
           "facing": "-y",
           "hide": [
@@ -23564,25 +23561,7 @@
       "art_cat": "SIGN",
       "score_lines": 11,
       "score_mentions": 1,
-      "apply": [
-        {
-          "locale": "crumpled_barn",
-          "label": "Sign",
-          "center": [
-            1.2,
-            8.225,
-            1.75
-          ],
-          "size": [
-            0.9,
-            0.66
-          ],
-          "facing": "-y",
-          "hide": [
-            "Sign_Panel_Hi"
-          ]
-        }
-      ],
+      "apply": [],
       "inspect": true
     },
     {
@@ -24885,7 +24864,7 @@
           "label": "Office_Monitor",
           "center": [
             12.9,
-            0.91,
+            0.82,
             3.95
           ],
           "size": [
@@ -26967,13 +26946,13 @@
           "locale": "hospital_room",
           "label": "Wait_TV",
           "center": [
-            -10.249,
+            -10.218,
             3.8,
             2.1
           ],
           "size": [
-            0.45,
-            0.27
+            0.82,
+            0.46
           ],
           "facing": "+x",
           "hide": [
@@ -27380,7 +27359,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            -11.3,
+            -11.8,
             1.4
           ],
           "size": [
@@ -30686,12 +30665,12 @@
           "label": "County_Sign",
           "center": [
             4.0,
-            227.929,
+            227.92,
             2.05
           ],
           "size": [
-            1.0,
-            0.45
+            2.0,
+            0.9
           ],
           "facing": "-y",
           "hide": [
@@ -30729,12 +30708,12 @@
           "label": "Jetty_Sign",
           "center": [
             2.4,
-            -6.36,
+            -6.425,
             3.42
           ],
           "size": [
-            0.35,
-            0.23
+            0.7,
+            0.46
           ],
           "facing": "+y",
           "hide": [
@@ -30818,13 +30797,13 @@
           "locale": "small_wood_road",
           "label": "County_Sign",
           "center": [
-            3.189,
+            3.18,
             -72.0,
             2.6
           ],
           "size": [
-            0.6,
-            0.25
+            1.2,
+            0.5
           ],
           "facing": "-x",
           "hide": [
@@ -30903,7 +30882,7 @@
           "label": "Far",
           "center": [
             -24.0,
-            -56.2,
+            -56.5,
             2.4
           ],
           "size": [
@@ -30921,7 +30900,7 @@
           "label": "Far",
           "center": [
             -12.0,
-            -56.2,
+            -56.5,
             2.4
           ],
           "size": [
@@ -30939,7 +30918,7 @@
           "label": "Far",
           "center": [
             0.0,
-            -56.2,
+            -56.5,
             2.4
           ],
           "size": [
@@ -30957,7 +30936,7 @@
           "label": "Far",
           "center": [
             12.0,
-            -56.2,
+            -56.5,
             2.4
           ],
           "size": [
@@ -30975,7 +30954,7 @@
           "label": "Far",
           "center": [
             24.0,
-            -56.2,
+            -56.5,
             2.4
           ],
           "size": [
@@ -31694,12 +31673,12 @@
           "label": "Aisle_Sign",
           "center": [
             -7.5,
-            9.5,
+            9.515,
             2.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "+y",
           "hide": [
@@ -31712,12 +31691,12 @@
           "label": "Aisle_Sign",
           "center": [
             -4.5,
-            9.5,
+            9.515,
             2.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "+y",
           "hide": [
@@ -31730,12 +31709,12 @@
           "label": "Aisle_Sign",
           "center": [
             -1.5,
-            9.5,
+            9.515,
             2.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "+y",
           "hide": [
@@ -31748,12 +31727,12 @@
           "label": "Aisle_Sign",
           "center": [
             1.5,
-            9.5,
+            9.515,
             2.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "+y",
           "hide": [
@@ -31766,12 +31745,12 @@
           "label": "Aisle_Sign",
           "center": [
             4.5,
-            9.5,
+            9.515,
             2.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "+y",
           "hide": [
@@ -31784,12 +31763,12 @@
           "label": "Aisle_Sign",
           "center": [
             7.5,
-            9.5,
+            9.515,
             2.85
           ],
           "size": [
-            0.65,
-            0.2
+            1.3,
+            0.4
           ],
           "facing": "+y",
           "hide": [
@@ -32039,12 +32018,12 @@
           "label": "Photo",
           "center": [
             11.6,
-            1.6,
+            1.62,
             2.35
           ],
           "size": [
-            0.45,
-            0.15
+            0.9,
+            0.3
           ],
           "facing": "+y",
           "hide": [
@@ -32123,12 +32102,12 @@
           "label": "RX_Monitor",
           "center": [
             -4.1,
-            19.415,
+            19.402,
             1.69
           ],
           "size": [
-            0.26,
-            0.16
+            0.48,
+            0.28
           ],
           "facing": "-y",
           "hide": [
@@ -32166,12 +32145,12 @@
           "label": "RX_Monitor",
           "center": [
             -2.6,
-            19.415,
+            19.402,
             1.69
           ],
           "size": [
-            0.26,
-            0.16
+            0.48,
+            0.28
           ],
           "facing": "-y",
           "hide": [
@@ -32209,12 +32188,12 @@
           "label": "RX_Sign",
           "center": [
             -3.6,
-            15.295,
+            15.315,
             2.62
           ],
           "size": [
-            0.55,
-            0.15
+            1.1,
+            0.3
           ],
           "facing": "+y",
           "hide": [
@@ -32250,12 +32229,12 @@
           "label": "RX_Sign",
           "center": [
             1.0,
-            15.295,
+            15.315,
             2.62
           ],
           "size": [
-            0.55,
-            0.15
+            1.1,
+            0.3
           ],
           "facing": "+y",
           "hide": [
@@ -32291,12 +32270,12 @@
           "label": "RX_Sign",
           "center": [
             3.7,
-            15.295,
+            15.315,
             2.62
           ],
           "size": [
-            0.55,
-            0.15
+            1.1,
+            0.3
           ],
           "facing": "+y",
           "hide": [
@@ -33798,12 +33777,12 @@
           "label": "Register_Tablet",
           "center": [
             5.0,
-            2.048,
+            2.042,
             1.17
           ],
           "size": [
-            0.13,
-            0.09
+            0.23,
+            0.15
           ],
           "facing": "-y",
           "hide": [
@@ -34545,7 +34524,7 @@
           "label": "TV",
           "center": [
             -0.4,
-            5.65,
+            5.715,
             0.86
           ],
           "size": [
@@ -35312,7 +35291,7 @@
           "label": "Tepui_Far",
           "center": [
             11.0,
-            17.2,
+            17.3,
             4.8
           ],
           "size": [
@@ -52420,23 +52399,6 @@
           "hide": [
             "Oregon_Window_Sky_Day_0__oregon_home_day"
           ]
-        },
-        {
-          "locale": "vol3_rooms",
-          "label": "Oregon_Window_Sky_Day_1",
-          "center": [
-            306.4,
-            6.48,
-            1.45
-          ],
-          "size": [
-            1.8,
-            1.6
-          ],
-          "facing": "-y",
-          "hide": [
-            "Oregon_Window_Sky_Day_1__oregon_home_day"
-          ]
         }
       ]
     },
@@ -52587,7 +52549,7 @@
           ],
           "facing": "+x",
           "hide": [
-            "Steven_CRT_Screen"
+            "Steven_Computer_Screen"
           ],
           "glow": 0.8
         }
@@ -53611,42 +53573,7 @@
       "notes": "(2026-10-19, written from the builder and the scenes) Builder: Sky_Night_N and Sky_Night_E, the far cards past the N and E windows (400 x 200 m each; the city's ground meets them about a tenth up); the towers below stay 3D. Pre-2012 (the builder's undated vol 4). River and expressway invented.",
       "art_cat": "BACKLOT",
       "score_lines": 58,
-      "apply": [
-        {
-          "locale": "vol4_story_rooms",
-          "label": "Sky_Night_N",
-          "center": [
-            704.0,
-            189.9,
-            20.0
-          ],
-          "size": [
-            400.0,
-            200.0
-          ],
-          "facing": "-y",
-          "hide": [
-            "Sky_Night_N"
-          ]
-        },
-        {
-          "locale": "vol4_story_rooms",
-          "label": "Sky_Night_E",
-          "center": [
-            893.9,
-            3.0,
-            20.0
-          ],
-          "size": [
-            400.0,
-            200.0
-          ],
-          "facing": "-x",
-          "hide": [
-            "Sky_Night_E"
-          ]
-        }
-      ]
+      "apply": []
     },
     {
       "slug": "vol4_story_rooms_aaron_tv_game",
