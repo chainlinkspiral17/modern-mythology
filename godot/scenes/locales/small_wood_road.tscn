@@ -190,12 +190,16 @@ light_energy = 1.2
 omni_range = 7.0
 shadow_enabled = false
 
+; (2026-11-08) the basis tilted the beam 15 deg UP, from behind the lens: the
+; hood glowed and the road ahead stayed black (the dark-frame sweep's
+; darkest set). Now from the hood's front edge, 4 deg down the road.
 [node name="Headlights__small_wood_road_night" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.966, 0.259, 0, -0.259, 0.966, 0.9, 0.7, 19.6)
+transform = Transform3D(1, 0, 0, 0, 0.9976, -0.0698, 0, 0.0698, 0.9976, 0.9, 0.7, 17.4)
 light_color = Color(1, 0.94, 0.80, 1)
-light_energy = 3.0
-spot_range = 40.0
-spot_angle = 22.0
+light_energy = 9.0
+spot_range = 45.0
+spot_angle = 26.0
+spot_attenuation = 0.6
 shadow_enabled = false
 
 ; (pass 72, 2026-10-11) the suns above carry metadata/daylight and follow the mood's hour;
