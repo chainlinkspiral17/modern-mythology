@@ -2180,6 +2180,7 @@ const FRAME_GLANCE_LINES := 2
 # seeded glance. Paintings have no markers: this is how a cue aims at one.
 const PAINTING_SPOTS_PATH := "res://resources/vn/painting_spots.json"
 const FRAME_SPOT_ZOOM := 1.5
+const FRAME_SPOT_LIFT := 0.38    # where a spot lands, down the screen (the text box takes the bottom third)
 var _frame_src:     String  = ""
 var _painting_spots: Dictionary = {}
 var _painting_spots_loaded: bool = false
@@ -2252,9 +2253,13 @@ func _frame_shot(spec: String, speaker: String) -> void:
 			var spot: Array = _painting_spot(id)
 			if not spot.is_empty():
 				var zoom: float = float(spot[2]) if spot.size() > 2 else FRAME_SPOT_ZOOM
+				# after the push a point v of the picture sits at
+				# 0.5 + (v - 0.5) * zoom - off * reach on screen: solve for the
+				# offset that brings the spot to centre across and to SPOT_LIFT
+				# down (above the text box), clamped to the open margin
 				var reach: float = (zoom - 1.0) * 0.5 * FRAME_EDGE
-				var sx: float = clampf((float(spot[0]) - 0.5) / reach, -1.0, 1.0)
-				var sy: float = clampf((float(spot[1]) - 0.5) / reach, -1.0, 1.0)
+				var sx: float = clampf((float(spot[0]) - 0.5) * zoom / reach, -1.0, 1.0)
+				var sy: float = clampf(((float(spot[1]) - 0.5) * zoom + (0.5 - FRAME_SPOT_LIFT)) / reach, -1.0, 1.0)
 				_frame_to(zoom, Vector2(sx, sy), FRAME_CUE_SECS)
 				_frame_speaker = speaker
 				_frame_lines = 0

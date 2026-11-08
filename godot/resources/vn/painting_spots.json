@@ -37,7 +37,7 @@
   "assets/backgrounds/vol5_prelude_ep13_paper_cuts.jpg": {
     "bed": [0.42, 0.62, 1.4],
     "lamp": [0.07, 0.52, 1.8],
-    "camera": [0.13, 0.86, 1.8],
+    "camera": [0.13, 0.78, 1.8],
     "television": [0.95, 0.46, 1.8],
     "moon": [0.48, 0.16, 2.0],
     "window": [0.43, 0.22, 1.6]
@@ -122,5 +122,21 @@
     "door": [0.28, 0.4, 1.8],
     "drawings": [0.1, 0.22, 1.7],
     "windows": [0.66, 0.3, 1.4]
+  },
+  "assets/backgrounds/vol4_sister_carrie_notes.jpg": {
+    "title": [0.5, 0.31, 2.0],
+    "city": [0.2, 0.1, 1.8],
+    "books": [0.12, 0.5, 1.7],
+    "train_sketch": [0.32, 0.46, 2.0],
+    "figure_sketch": [0.76, 0.46, 2.0],
+    "men_sketch": [0.81, 0.6, 2.0],
+    "photo": [0.92, 0.42, 1.9],
+    "film": [0.6, 0.08, 1.8]
+  },
+  "assets/backgrounds/vol3_brick_wall_halloween_night.jpg": {
+    "houses": [0.72, 0.1, 1.8],
+    "highway": [0.14, 0.43, 1.8],
+    "wall": [0.78, 0.35, 1.6],
+    "kids": [0.33, 0.45, 2.0]
   }
 }

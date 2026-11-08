@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "first chapter, subtitled, a waif amid forces."
+      "text": "[shot:insert title]first chapter, subtitled, a waif amid forces."
     },
     {
       "t": "narrate",
@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"The city has its cunning wiles, no less than the infinitely smaller and more human tempter. There are large forces which allure with all the soulfulness of expression possible in the most cultured human. The gleam of a thousand lights is often as effective as the persuasive light in a wooing and fascinating eye."
+      "text": "[shot:insert city]\"The city has its cunning wiles, no less than the infinitely smaller and more human tempter. There are large forces which allure with all the soulfulness of expression possible in the most cultured human. The gleam of a thousand lights is often as effective as the persuasive light in a wooing and fascinating eye."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "\"Books were beyond her interest--knowledge a sealed book. In the intuitive graces she was still crude. She could scarcely toss her head gracefully."
+      "text": "[shot:insert books]\"Books were beyond her interest--knowledge a sealed book. In the intuitive graces she was still crude. She could scarcely toss her head gracefully."
     },
     {
       "t": "narrate",
@@ -77,11 +77,11 @@
     },
     {
       "t": "narrate",
-      "text": "The first meeting of Carrie and Charlie on the train heading into Chicago, in which he charms her within a moment. The amount of dialogue will be minimal. The emotions, gestures, and signals should do most of the talking."
+      "text": "[shot:insert train_sketch]The first meeting of Carrie and Charlie on the train heading into Chicago, in which he charms her within a moment. The amount of dialogue will be minimal. The emotions, gestures, and signals should do most of the talking."
     },
     {
       "t": "narrate",
-      "text": "Working with framing, incidental detail, and visual evocation, ie lighting, staging, blocking."
+      "text": "[shot:insert film]Working with framing, incidental detail, and visual evocation, ie lighting, staging, blocking."
     },
     {
       "t": "narrate",
@@ -101,11 +101,11 @@
     },
     {
       "t": "narrate",
-      "text": "In the beginning, we have to feel her unease of the men coming up to her, winning 'these small victories'... and her alienation with her new surroundings. She's not in her skin yet."
+      "text": "[shot:insert men_sketch]In the beginning, we have to feel her unease of the men coming up to her, winning 'these small victories'... and her alienation with her new surroundings. She's not in her skin yet."
     },
     {
       "t": "narrate",
-      "text": "She's not a tourist, but rather, a new tenant to the city of which she knows little about, has little contact to."
+      "text": "[shot:insert photo]She's not a tourist, but rather, a new tenant to the city of which she knows little about, has little contact to."
     },
     {
       "t": "narrate",
