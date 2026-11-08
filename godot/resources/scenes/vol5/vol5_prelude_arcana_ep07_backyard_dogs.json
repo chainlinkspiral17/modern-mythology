@@ -57,7 +57,7 @@
       "t": "say",
       "char": "Breaker",
       "expr": "neutral",
-      "text": "What is this we’re drinking today?"
+      "text": "[shot:insert cooler]What is this we’re drinking today?"
     },
     {
       "t": "say",
@@ -75,7 +75,7 @@
       "t": "say",
       "char": "Clinton",
       "expr": "neutral",
-      "text": "Neighbors had a row of it but they’re all done now."
+      "text": "[shot:insert neighbors]Neighbors had a row of it but they’re all done now."
     },
     {
       "t": "say",
@@ -129,7 +129,7 @@
       "t": "say",
       "char": "Breaker",
       "expr": "neutral",
-      "text": "Meaning?"
+      "text": "[shot:insert street]Meaning?"
     },
     {
       "t": "say",
@@ -169,7 +169,7 @@
     },
     {
       "t": "narrate",
-      "text": "Clinton gives him a look."
+      "text": "[shot:insert chairs]Clinton gives him a look."
     },
     {
       "t": "say",
@@ -211,7 +211,7 @@
       "t": "say",
       "char": "Breaker",
       "expr": "neutral",
-      "text": "It’s a beautiful thing, but that awful no good world is trying to find ways to catch up to you. To all of us."
+      "text": "[shot:insert street]It’s a beautiful thing, but that awful no good world is trying to find ways to catch up to you. To all of us."
     },
     {
       "t": "say",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "Clinton gets another fresh beer for the both of them."
+      "text": "[shot:insert cooler]Clinton gets another fresh beer for the both of them."
     },
     {
       "t": "say",

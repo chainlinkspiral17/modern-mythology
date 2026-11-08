@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "It is Arizona in the year 1964 and the exact coordinates of this doomed endeavor are now sky smoke."
+      "text": "[shot:insert sky_smoke]It is Arizona in the year 1964 and the exact coordinates of this doomed endeavor are now sky smoke."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "Orange kitty rolls around batting at glimmers of twilight dancing between the blades of the blinds. Iris watches her cat play, a glimpse of children playing tag pulls at the shadow of thought. Iris remembers youth, and what it felt like not to suffer in a broken down old body, the pure fresh escape of simple play."
+      "text": "[shot:insert trailer]Orange kitty rolls around batting at glimmers of twilight dancing between the blades of the blinds. Iris watches her cat play, a glimpse of children playing tag pulls at the shadow of thought. Iris remembers youth, and what it felt like not to suffer in a broken down old body, the pure fresh escape of simple play."
     },
     {
       "t": "narrate",
@@ -77,7 +77,7 @@
     },
     {
       "t": "narrate",
-      "text": "She wanders in a daze out into the setting close of day. She hears wind chime and further past a wail coming further down the way. Her trailer isn't far from the others, but it is the furthest out, save for Trini's which is past hers even further."
+      "text": "[shot:insert wind_chime]She wanders in a daze out into the setting close of day. She hears wind chime and further past a wail coming further down the way. Her trailer isn't far from the others, but it is the furthest out, save for Trini's which is past hers even further."
     },
     {
       "t": "narrate",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "He tries to do the math in his head, to figure out a way forward. Melody pleads with him to stop. Iris has been keeping a comfortable distance, watching this odd drama play out."
+      "text": "[shot:insert blocks]He tries to do the math in his head, to figure out a way forward. Melody pleads with him to stop. Iris has been keeping a comfortable distance, watching this odd drama play out."
     },
     {
       "t": "narrate",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stops hammering."
+      "text": "[shot:insert blocks]He stops hammering."
     },
     {
       "t": "narrate",
@@ -153,7 +153,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is walking towards John's place. She passes Rafael who paints recklessly on the roof of his trailer. The strong wind knocking him and his easel about."
+      "text": "[shot:insert rafael_roof]She is walking towards John's place. She passes Rafael who paints recklessly on the roof of his trailer. The strong wind knocking him and his easel about."
     },
     {
       "t": "narrate",
@@ -201,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "Iris wanders up to the museum. She looks at its exterior, the fine work that Devin has put in, the areas where shabbily cut corners. Inside the first section of the museum is a photo exhibit dedicated to the life and times of Grace Knight and company."
+      "text": "[shot:insert museum]Iris wanders up to the museum. She looks at its exterior, the fine work that Devin has put in, the areas where shabbily cut corners. Inside the first section of the museum is a photo exhibit dedicated to the life and times of Grace Knight and company."
     },
     {
       "t": "hide",
