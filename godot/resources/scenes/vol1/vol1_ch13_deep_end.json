@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "The coping is lined with kids sitting in a row with their boards across their knees, waiting to drop in. All of them are dead, and none of them seem bothered by it."
+      "text": "[shot:insert kids]The coping is lined with kids sitting in a row with their boards across their knees, waiting to drop in. All of them are dead, and none of them seem bothered by it."
     },
     {
       "t": "narrate",
@@ -125,7 +125,7 @@
     },
     {
       "t": "narrate",
-      "text": "Further down the coping there's a different crowd: boys in corpse paint, black and white, leather and spikes, sitting around a record player that plays the riff backward. They're arguing in low voices, and they've been arguing a long time."
+      "text": "[shot:insert corpse]Further down the coping there's a different crowd: boys in corpse paint, black and white, leather and spikes, sitting around a record player that plays the riff backward. They're arguing in low voices, and they've been arguing a long time."
     },
     {
       "t": "say",
@@ -171,7 +171,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wagner looks at the pool."
+      "text": "[shot:insert pool]Wagner looks at the pool."
     },
     {
       "t": "say",
@@ -267,7 +267,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wagner hears it. He looks down. Below him the pool is huge and blue and very far."
+      "text": "[shot:insert pool]Wagner hears it. He looks down. Below him the pool is huge and blue and very far."
     },
     {
       "t": "say",
@@ -315,7 +315,7 @@
     },
     {
       "t": "narrate",
-      "text": "All three come up for air in the deep end. Wagner is laughing, and he can't stop."
+      "text": "[shot:insert pool]All three come up for air in the deep end. Wagner is laughing, and he can't stop."
     },
     {
       "t": "say",
@@ -353,7 +353,7 @@
     },
     {
       "t": "narrate",
-      "text": "Up on the coping the corpse-painted boys watch. One of them takes off his spiked armband and sets it on the concrete, like he isn't going to need it anymore. He doesn't come down, but he stops arguing."
+      "text": "[shot:insert corpse]Up on the coping the corpse-painted boys watch. One of them takes off his spiked armband and sets it on the concrete, like he isn't going to need it anymore. He doesn't come down, but he stops arguing."
     },
     {
       "t": "say",

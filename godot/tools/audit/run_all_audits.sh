@@ -419,6 +419,18 @@ WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
 echo "$WROUT" | tail -1
 echo ""
 
+# ── Painting spots (2026-11-08) ───────────────────────────────
+# A painting has no markers; resources/vn/painting_spots.json names the
+# parts of a picture an insert can point at. Every key a real picture,
+# every spot on it, and no insert on a painting with spots naming one it
+# lacks (it would fall back to a seeded glance). Zero.
+echo "── painting_spot_audit.py ──"
+PSOUT="$(python3 painting_spot_audit.py 2>/dev/null)" || {
+    echo "$PSOUT" | grep -E "^(SPOTS|CUE)" | head -20
+    echo "$PSOUT" | tail -1; exit 1; }
+echo "$PSOUT" | tail -1
+echo ""
+
 # ── Far-plane gate (2026-10-31) ───────────────────────────────
 # The VN camera's far plane is 200 m unless a preset sets "far"; 80 open
 # views had their hills, tree lines, cloud decks and mesas wholly past it

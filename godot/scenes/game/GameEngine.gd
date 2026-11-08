@@ -2172,6 +2172,17 @@ var _frame_kind:    String  = ""
 var _frame_seed:    int     = 0
 var _frame_glance:  bool    = false    # an insert's push eases back out after FRAME_GLANCE_LINES
 const FRAME_GLANCE_LINES := 2
+# THE PAINTING'S NAMED SPOTS (2026-11-08): resources/vn/painting_spots.json
+# names the parts of a picture a line can point at — {"<bg src>": {"<id>":
+# [u, v] or [u, v, zoom]}}, u/v the spot's place on the picture (0..1 from
+# the top left). `[shot:insert pool]` on that painting pushes in on the
+# pool instead of a seeded spot; an id the picture does not name keeps the
+# seeded glance. Paintings have no markers: this is how a cue aims at one.
+const PAINTING_SPOTS_PATH := "res://resources/vn/painting_spots.json"
+const FRAME_SPOT_ZOOM := 1.5
+var _frame_src:     String  = ""
+var _painting_spots: Dictionary = {}
+var _painting_spots_loaded: bool = false
 
 
 func _frame_shift(sz: Vector2, s: float) -> Vector2:
@@ -2201,6 +2212,7 @@ func _frame_reset(src: String) -> void:
 	_frame_kind = ""
 	_frame_glance = false
 	_frame_seed = absi(src.hash())
+	_frame_src = src
 
 
 func _frame_to(scale: float, off: Vector2, secs: float) -> void:
@@ -2237,6 +2249,16 @@ func _frame_shot(spec: String, speaker: String) -> void:
 		"closeup":
 			_frame_to(1.11, Vector2(_frame_side(speaker), -0.25), FRAME_CUE_SECS)
 		"insert":
+			var spot: Array = _painting_spot(id)
+			if not spot.is_empty():
+				var zoom: float = float(spot[2]) if spot.size() > 2 else FRAME_SPOT_ZOOM
+				var reach: float = (zoom - 1.0) * 0.5 * FRAME_EDGE
+				var sx: float = clampf((float(spot[0]) - 0.5) / reach, -1.0, 1.0)
+				var sy: float = clampf((float(spot[1]) - 0.5) / reach, -1.0, 1.0)
+				_frame_to(zoom, Vector2(sx, sy), FRAME_CUE_SECS)
+				_frame_speaker = speaker
+				_frame_lines = 0
+				return
 			var h: int = absi((id + str(_frame_seed)).hash())
 			var ox: float = float(h % 1000) / 1000.0 * 1.6 - 0.8
 			var oy: float = float(int(h / 1000.0) % 1000) / 1000.0 * 1.2 - 0.6
@@ -2245,6 +2267,27 @@ func _frame_shot(spec: String, speaker: String) -> void:
 			_frame_to(1.0, Vector2.ZERO, FRAME_CUE_SECS)
 	_frame_speaker = speaker
 	_frame_lines = 0
+
+
+## the named spot `id` on the current painting, [u, v(, zoom)] — or []
+func _painting_spot(id: String) -> Array:
+	if not _painting_spots_loaded:
+		_painting_spots_loaded = true
+		if FileAccess.file_exists(PAINTING_SPOTS_PATH):
+			var txt: String = FileAccess.get_file_as_string(PAINTING_SPOTS_PATH)
+			var parsed: Variant = JSON.parse_string(txt)
+			if parsed is Dictionary:
+				_painting_spots = parsed
+	var key: String = _frame_src.trim_prefix("res://")
+	if id == "" or not _painting_spots.has(key):
+		return []
+	var spots: Dictionary = _painting_spots[key]
+	if not spots.has(id):
+		return []
+	var spot: Variant = spots[id]
+	if spot is Array and (spot as Array).size() >= 2:
+		return spot as Array
+	return []
 
 
 ## every spoken / narrated line on a painting: a long hold eases on at the
