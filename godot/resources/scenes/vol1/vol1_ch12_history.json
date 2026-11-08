@@ -87,11 +87,11 @@
     },
     {
       "t": "narrate",
-      "text": "Under them are long tables piled with ledgers, and the ledgers stretch off further than anyone can see."
+      "text": "[shot:insert ledgers]Under them are long tables piled with ledgers, and the ledgers stretch off further than anyone can see."
     },
     {
       "t": "narrate",
-      "text": "At the tables sit clerks with eyeshades and no faces, signing. Pens scratch everywhere, like rain on a tin roof."
+      "text": "[shot:insert clerk]At the tables sit clerks with eyeshades and no faces, signing. Pens scratch everywhere, like rain on a tin roof."
     },
     {
       "t": "narrate",
@@ -141,7 +141,7 @@
     },
     {
       "t": "narrate",
-      "text": "The nearest ledger flips open by itself. Rows and rows of names in faint pencil, the downwind list."
+      "text": "[shot:insert ledgers]The nearest ledger flips open by itself. Rows and rows of names in faint pencil, the downwind list."
     },
     {
       "t": "say",
@@ -157,7 +157,7 @@
     },
     {
       "t": "narrate",
-      "text": "A CLERK with no face slides a pen across to Jacob."
+      "text": "[shot:insert clerk]A CLERK with no face slides a pen across to Jacob."
     },
     {
       "t": "say",
@@ -205,7 +205,7 @@
     },
     {
       "t": "narrate",
-      "text": "Somewhere overhead, one of the hanging planes, a small one, single prop, unpainted, starts its engine."
+      "text": "[shot:insert small_plane]Somewhere overhead, one of the hanging planes, a small one, single prop, unpainted, starts its engine."
     },
     {
       "t": "say",

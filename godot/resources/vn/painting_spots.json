@@ -57,5 +57,11 @@
     "museum": [0.66, 0.48, 1.8],
     "rafael_roof": [0.91, 0.4, 1.9],
     "sunset": [0.25, 0.45, 1.5]
+  },
+  "assets/backgrounds/vol1_hall_of_ratifications.jpg": {
+    "planes": [0.45, 0.2, 1.4],
+    "ledgers": [0.4, 0.68, 1.6],
+    "clerk": [0.53, 0.66, 2.0],
+    "small_plane": [0.6, 0.36, 2.0]
   }
 }
