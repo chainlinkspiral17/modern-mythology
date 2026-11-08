@@ -176,7 +176,9 @@ _PASSABLE_RE = re.compile(r"(fog|haze|mist|smoke|steam|cloud|canopy|foliage|_C[0
 # window). A pane the builder made opaque on purpose (the diner's
 # night glass, alpha 1.0) will pass here and show a slab in the render
 # — the montage is the gate for those.
-_GLASS_RE = re.compile(r"(glass|_pane\b|pane_|_warm\b)", re.I)   # make_window's warm sun pane too
+# (2026-11-08) a windshield is glass too: the cab's Cab_Windshield is
+# alpha 0.35, and the night drive's road frame looks out through it
+_GLASS_RE = re.compile(r"(glass|_pane\b|pane_|_warm\b|windshield|windscreen)", re.I)   # make_window's warm sun pane too
 _SOLID_RE = re.compile(r"(trunk|stump|log|pole|post|butt)", re.I)
 
 

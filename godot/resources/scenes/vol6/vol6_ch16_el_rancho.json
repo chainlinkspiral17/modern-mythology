@@ -1226,7 +1226,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert turnout]BT pulls into the turnout. He parks. He kills the engine.",
+      "text": "BT pulls into the turnout. He parks. He kills the engine.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/220.mp3"
     },
     {
