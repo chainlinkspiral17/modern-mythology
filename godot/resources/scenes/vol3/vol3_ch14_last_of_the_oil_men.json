@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "He asks them where the old wells are\nThey whisper in an odd silence that suggests\nHe would not like the condition of the old wells\nNever mind he says with a wave of the hand."
+      "text": "[shot:insert wells]He asks them where the old wells are\nThey whisper in an odd silence that suggests\nHe would not like the condition of the old wells\nNever mind he says with a wave of the hand."
     },
     {
       "t": "narrate",
@@ -86,7 +86,7 @@
     },
     {
       "t": "narrate",
-      "text": "Steve's father was an oilman."
+      "text": "[shot:insert pumpjack]Steve's father was an oilman."
     },
     {
       "t": "narrate",
@@ -122,11 +122,11 @@
     },
     {
       "t": "narrate",
-      "text": "They used hyper-viscosity scrubbers to scratch the last of the scratch\nShot it into earth brought the last little bit out\nCleaned up actually made better than new\nHe'd show up and close the place down."
+      "text": "[shot:insert ground]They used hyper-viscosity scrubbers to scratch the last of the scratch\nShot it into earth brought the last little bit out\nCleaned up actually made better than new\nHe'd show up and close the place down."
     },
     {
       "t": "narrate",
-      "text": "Towns that still held on knew upon seeing him\nHe was Death walked in, nice guy though\nPlaying the part well\nTaking the very last little bit that's left, is all."
+      "text": "[shot:insert town]Towns that still held on knew upon seeing him\nHe was Death walked in, nice guy though\nPlaying the part well\nTaking the very last little bit that's left, is all."
     },
     {
       "t": "narrate",
@@ -142,7 +142,7 @@
     },
     {
       "t": "narrate",
-      "text": "He runs in the sun even though scientists tell him not to\nIt's dangerous they say\nSo he limits himself to moments when it really matters\nSo he can pay his due proper respect to the sun."
+      "text": "[shot:insert sun]He runs in the sun even though scientists tell him not to\nIt's dangerous they say\nSo he limits himself to moments when it really matters\nSo he can pay his due proper respect to the sun."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "Steve thinks about a nice wife and kids\nWhy not, the last oil man can ride off into the sunset\nSecure in the contents of his last great haul\nThe random rolling of life's great odds.\n."
+      "text": "[shot:insert sun]Steve thinks about a nice wife and kids\nWhy not, the last oil man can ride off into the sunset\nSecure in the contents of his last great haul\nThe random rolling of life's great odds.\n."
     },
     {
       "t": "flag",

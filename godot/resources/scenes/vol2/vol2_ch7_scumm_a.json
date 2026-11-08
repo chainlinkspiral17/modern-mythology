@@ -51,7 +51,7 @@
     },
     {
       "t": "narrate",
-      "text": "Everything flat. The sky is three blues stacked like paint chips at the hardware store. Under the bottom of the world there's a black strip with words in it:"
+      "text": "[shot:insert sky]Everything flat. The sky is three blues stacked like paint chips at the hardware store. Under the bottom of the world there's a black strip with words in it:"
     },
     {
       "t": "narrate",
@@ -59,11 +59,11 @@
     },
     {
       "t": "narrate",
-      "text": "I'm not in my body. I'm the pointer. A white crosshair that goes where I mean it to go, a beat behind the meaning, like the mouse on Ray's dad's computer."
+      "text": "[shot:insert pointer]I'm not in my body. I'm the pointer. A white crosshair that goes where I mean it to go, a beat behind the meaning, like the mouse on Ray's dad's computer."
     },
     {
       "t": "narrate",
-      "text": "Down in the street there's a boy in a coat too big for him and when I hover over him the line above the verbs says *Dean*. That's all. Not Nate."
+      "text": "[shot:insert boy]Down in the street there's a boy in a coat too big for him and when I hover over him the line above the verbs says *Dean*. That's all. Not Nate."
     },
     {
       "t": "narrate",
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "Every car in the dream town is the same minivan. Woodgrain down the sides, that brown-on-tan like a rec room wall, the long sliding door. They're parked nose to tail all down Hemlock and up past the Elk Lodge, more than the town has people."
+      "text": "[shot:insert minivans]Every car in the dream town is the same minivan. Woodgrain down the sides, that brown-on-tan like a rec room wall, the long sliding door. They're parked nose to tail all down Hemlock and up past the Elk Lodge, more than the town has people."
     },
     {
       "t": "narrate",
@@ -136,7 +136,7 @@
     },
     {
       "t": "narrate",
-      "text": "Hans in the bakery window. Real Hans wipes his hands on his apron before he shakes yours. Dream Hans is eleven pictures of a man lifting a loaf off a tray and setting it back, lifting it, setting it back, and the flour puffs off the bread the same puff every time down to the dot."
+      "text": "[shot:insert hans]Hans in the bakery window. Real Hans wipes his hands on his apron before he shakes yours. Dream Hans is eleven pictures of a man lifting a loaf off a tray and setting it back, lifting it, setting it back, and the flour puffs off the bread the same puff every time down to the dot."
     },
     {
       "t": "narrate",

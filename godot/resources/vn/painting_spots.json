@@ -63,5 +63,27 @@
     "ledgers": [0.4, 0.68, 1.6],
     "clerk": [0.53, 0.66, 2.0],
     "small_plane": [0.6, 0.36, 2.0]
+  },
+  "assets/backgrounds/vol5_prelude_ep15_lynchs_peak.jpg": {
+    "peak": [0.66, 0.14, 1.6],
+    "church": [0.34, 0.6, 1.9],
+    "sheriff": [0.77, 0.62, 1.9],
+    "street": [0.5, 0.8, 1.4]
+  },
+  "assets/backgrounds/vol3_oil_field_dusk.jpg": {
+    "pumpjack": [0.18, 0.36, 1.6],
+    "wells": [0.55, 0.5, 1.8],
+    "town": [0.92, 0.48, 2.0],
+    "sun": [0.78, 0.47, 1.8],
+    "ground": [0.5, 0.78, 1.4]
+  },
+  "assets/backgrounds/vol2_scumm_hemlock_vga.jpg": {
+    "sky": [0.48, 0.12, 1.6],
+    "verbs": [0.48, 0.93, 1.5],
+    "pointer": [0.7, 0.64, 2.0],
+    "boy": [0.66, 0.64, 2.0],
+    "minivans": [0.5, 0.55, 1.6],
+    "hans": [0.08, 0.42, 2.0],
+    "curtain": [0.92, 0.27, 2.0]
   }
 }

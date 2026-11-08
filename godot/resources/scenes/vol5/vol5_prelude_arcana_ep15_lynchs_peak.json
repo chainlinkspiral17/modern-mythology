@@ -77,7 +77,7 @@
       "t": "say",
       "char": "Samantha",
       "expr": "neutral",
-      "text": "But imagine, for a second, that you were. What kind of Eden would you make it?"
+      "text": "[shot:insert peak]But imagine, for a second, that you were. What kind of Eden would you make it?"
     },
     {
       "t": "say",
@@ -147,7 +147,7 @@
       "t": "say",
       "char": "Samantha",
       "expr": "neutral",
-      "text": "Desmond Daniels was a boy I stole glances at in Sunday school."
+      "text": "[shot:insert church]Desmond Daniels was a boy I stole glances at in Sunday school."
     },
     {
       "t": "say",
@@ -159,7 +159,7 @@
       "t": "say",
       "char": "Samantha",
       "expr": "neutral",
-      "text": "No, it isn't, but Cooper is. Richard Cooper, Officer Cooper, was a cop. I fell in love with him when I was seventeen. He was tall, dark, and handsome. He died in the line of duty. Hard to imagine in a small town, but it happened. And I was heartbroken."
+      "text": "[shot:insert sheriff]No, it isn't, but Cooper is. Richard Cooper, Officer Cooper, was a cop. I fell in love with him when I was seventeen. He was tall, dark, and handsome. He died in the line of duty. Hard to imagine in a small town, but it happened. And I was heartbroken."
     },
     {
       "t": "say",
