@@ -93,17 +93,21 @@ def build_window():
         make_box(f"Window_Frame_{nm}", c, sz, COL_WHITE)
     make_box("Window_Glass", (wx, ROOM_D, wz), (ww - 0.14, 0.01, wh - 0.14), (0.62, 0.70, 0.78, 0.45))
     make_box("Window_Stool", (wx, YN - 0.07, wz - wh / 2.0 - 0.015), (ww + 0.16, 0.16, 0.03), COL_WHITE)
-    rz = wz + wh / 2.0 + 0.16
-    for nm, oy, ext in (("Outer", 0.07, 0.95), ("Inner", 0.16, 0.85)):
-        make_cyl(f"Curtain_Rod_{nm}", (wx, YN - oy, rz + (0.04 if nm == "Outer" else 0.0)), 0.011, ww + 2 * ext - 0.4, (0.40, 0.38, 0.34, 1.0), segments=6, axis='X')
-    for k, x in enumerate((wx - ww / 2.0 - 0.38, wx + ww / 2.0 + 0.38)):
-        make_box(f"Curtain_Rod_Bracket_{k}", (x, YN - 0.08, rz + 0.02), (0.02, 0.16, 0.02), (0.40, 0.38, 0.34, 1.0))
-    # the blackout pair, pushed to both sides on the outer rod
-    for nm, x in (("W", wx - ww / 2.0 - 0.20), ("E", wx + ww / 2.0 + 0.20)):
-        make_box(f"Curtain_Blackout_{nm}", (x, YN - 0.07, (rz + 0.03 + 0.25) / 2.0), (0.34, 0.05, rz + 0.03 - 0.25), (0.16, 0.18, 0.24, 1.0))
-    # the regular pair on the inner rod, one panel half across the glass
-    make_box("Curtain_Regular_W", (wx - 0.30, YN - 0.16, (rz - 0.012 + 0.90) / 2.0), (0.52, 0.02, rz - 0.012 - 0.90), (0.86, 0.80, 0.66, 1.0))
-    make_box("Curtain_Regular_E", (wx + ww / 2.0 + 0.10, YN - 0.16, (rz - 0.012 + 0.90) / 2.0), (0.30, 0.04, rz - 0.012 - 0.90), (0.86, 0.80, 0.66, 1.0))
+    # (2026-11-08, the Deck: "diego's window looks all messed up") two flat
+    # boxes per pair, rods running 0.6 m past their brackets, the regular
+    # panel laid over the blackout one at another depth: now the shared
+    # make_curtains (folds, tie-backs, rod + finials + brackets) twice —
+    # the BLACKOUT pair pushed aside on the outer rod, the REGULAR pair
+    # half-drawn across the glass on the inner rod, 6 cm into the room
+    from _props.structure import make_curtains
+    make_curtains("Curtain_Blackout", (wx, YN, wz + 0.05), width=ww, height=wh, axis='X', room_dir=-1,
+                  color=(0.16, 0.18, 0.24, 1.0), open_frac=0.22, drop=0.55, rod_col=(0.40, 0.38, 0.34, 1.0))
+    make_curtains("Curtain_Regular", (wx, YN - 0.06, wz), width=ww, height=wh, axis='X', room_dir=-1,
+                  color=(0.86, 0.80, 0.66, 1.0), open_frac=0.40, drop=0.10, rod_col=(0.40, 0.38, 0.34, 1.0))
+    # the inner rod's brackets reach back to the wall (a double-rod bracket)
+    for sgn in (-1, +1):
+        make_box(f"Curtain_Regular_Bracket_Arm_{sgn:+d}", (wx + sgn * ((ww + 0.70) / 2.0 - 0.08), YN - 0.04, wz + wh / 2.0 + 0.20),
+                 (0.02, 0.08, 0.03), (0.40, 0.38, 0.34, 1.0))
     make_view("View_N", "N", ROOM_D, 0.0, kind="back", ground_z=0.0, seed=11)
 
 
