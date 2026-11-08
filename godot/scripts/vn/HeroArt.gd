@@ -122,7 +122,12 @@ static func apply(root: Node, locale: String, preset_id: String = "") -> int:
 	if not _rows_by_locale.has(locale):
 		return 0
 	var placed: int = 0
-	var items: Array = _rows_by_locale[locale]
+	# (2026-11-08) larger pictures first, so a smaller one laid over it on the
+	# same plane — a sign's text strip on its panel, one letter on the brand
+	# board, comics fanned over each other — STACKS on top (see _stack)
+	# instead of z-fighting with it
+	var items: Array = (_rows_by_locale[locale] as Array).duplicate()
+	items.sort_custom(func(a: Variant, b: Variant) -> bool: return _area(a) > _area(b))
 	for iv: Variant in items:
 		var it: Dictionary = iv
 		var slug: String = String(it["slug"])
@@ -131,6 +136,16 @@ static func apply(root: Node, locale: String, preset_id: String = "") -> int:
 			last_report[slug] = _why_missing(String(it["stem"]))
 			continue
 		var row: Dictionary = it["row"]
+		# (2026-11-08) a slug that NAMES views — `…__street_rain`, `…__suite_4am`
+		# — is a picture for those views only, like a builder part named
+		# `<Name>__<preset>`. Background3D strips such parts before the
+		# pictures are laid, so the quads were never stripped: every view of
+		# the editing suite showed the tide AND the 4 a.m. monitors, Pasadena
+		# its day street and its rain street on one plane.
+		var owners: PackedStringArray = slug.split("__").slice(1)
+		if preset_id != "" and not owners.is_empty() and not owners.has(preset_id) \
+				and _names_presets(owners):
+			continue
 		# (2026-10-27) a picture that belongs to some views of a set and not
 		# others: `not_presets` skips it there (vol 6's NexCorp logos are not
 		# on the same station in 2003)
@@ -147,6 +162,7 @@ static func apply(root: Node, locale: String, preset_id: String = "") -> int:
 			tex = _feathered(tex, feather)
 		var quad: MeshInstance3D = _quad(tex, row)
 		quad.name = "HeroArt_" + slug
+		var lvl: int = _stack(quad)
 		root.add_child(quad)
 		var hid: int = 0
 		var hide_v: Variant = row.get("hide", [])
@@ -154,13 +170,71 @@ static func apply(root: Node, locale: String, preset_id: String = "") -> int:
 			hid = _hide(root, hide_v as Array, quad)
 		placed_art.append({"slug": slug, "name": String(row.get("_name", slug)), "inspect": bool(row.get("_inspect", false)),
 			"cat": String(row.get("_cat", "")), "words": row.get("_words", PackedStringArray()),
-			"quad": quad, "size": (quad.mesh as QuadMesh).size})
+			"quad": quad, "size": (quad.mesh as QuadMesh).size, "lvl": lvl})
 		last_report[slug] = "placed (%dx%d px), %d stand-in piece(s) hidden" % [tex.get_width(), tex.get_height(), hid] \
 			if hid > 0 or (hide_v as Array).is_empty() else "placed, but its stand-in was NOT found (it may cover the picture)"
 		placed += 1
 	if placed > 0:
 		print("[HeroArt] %s: %d picture(s) laid on their surfaces" % [locale, placed])
 	return placed
+
+
+## Whether `parts` (a slug's `__` suffixes) name Background3D presets — a
+## numbered copy (`__2`) does not.
+static func _names_presets(parts: PackedStringArray) -> bool:
+	var bg: GDScript = load("res://scripts/vn/Background3D.gd") as GDScript
+	if bg == null:
+		return true
+	var cm: Dictionary = bg.get_script_constant_map()
+	var presets_v: Variant = cm.get("CAMERA_PRESETS", {})
+	if typeof(presets_v) != TYPE_DICTIONARY:
+		return true
+	var presets: Dictionary = presets_v
+	for p: String in parts:
+		if presets.has(p):
+			return true
+	return false
+
+
+static func _area(item: Variant) -> float:
+	var it: Dictionary = item
+	var row: Dictionary = it["row"]
+	var sz: Array = row.get("size", [1.0, 1.0])
+	return float(sz[0]) * float(sz[1])
+
+
+## (2026-11-08) a picture laid on the same plane as pictures already placed,
+## over them: lifted STACK_STEP above the highest it covers, so the two never
+## z-fight (hero_art_placement_audit's OVERLAP). Returns its stack level.
+const STACK_STEP := 0.002
+
+static func _stack(quad: MeshInstance3D) -> int:
+	var xf: Transform3D = quad.transform
+	var n: Vector3 = xf.basis.z.normalized()
+	var ax: Vector3 = xf.basis.x.normalized()
+	var ay: Vector3 = xf.basis.y.normalized()
+	var sz: Vector2 = (quad.mesh as QuadMesh).size
+	var top: int = -1
+	for pv: Variant in placed_art:
+		var p: Dictionary = pv
+		var other: MeshInstance3D = p.get("quad") as MeshInstance3D
+		if other == null or not is_instance_valid(other):
+			continue
+		var oxf: Transform3D = other.transform
+		if oxf.basis.z.normalized().dot(n) < 0.99:
+			continue
+		var d: Vector3 = oxf.origin - xf.origin
+		if absf(d.dot(n)) > 0.004 + STACK_STEP * float(int(p.get("lvl", 0))):
+			continue
+		var osz: Vector2 = p.get("size", Vector2.ONE)
+		var ox: float = maxf(0.0, (sz.x + osz.x) * 0.5 - absf(d.dot(ax)))
+		var oy: float = maxf(0.0, (sz.y + osz.y) * 0.5 - absf(d.dot(ay)))
+		if ox * oy >= 0.02 * minf(sz.x * sz.y, osz.x * osz.y):
+			top = maxi(top, int(p.get("lvl", 0)))
+	var lvl: int = top + 1
+	if lvl > 0:
+		quad.transform = Transform3D(xf.basis, xf.origin + n * STACK_STEP * float(lvl))
+	return lvl
 
 
 static func _why_missing(stem: String) -> String:

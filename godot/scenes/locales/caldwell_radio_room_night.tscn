@@ -191,7 +191,7 @@ shadow_enabled = false
 ; (2026-10-08) her bedroom's lights: the desk lamp (the window the street
 ; sees lit), the radio's amber dial, the bedside lamp
 [node name="Desk_Lamp_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.010, 1.040, -1.770)
+position = Vector3(1.920, 1.040, -1.770)
 light_color = Color(0.98, 0.84, 0.56, 1)
 light_energy = 0.85
 shadow_enabled = false

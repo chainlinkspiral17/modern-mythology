@@ -8889,7 +8889,8 @@
             "Nebula_Star_Arm_2",
             "Nebula_Star_Arm_3",
             "Nebula_Star_Arm_4",
-            "Nebula_Star_Core"
+            "Nebula_Star_Core",
+            "Nebula_Patch_4"
           ]
         }
       ],
@@ -11797,29 +11798,11 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read from ch2/ch10 (the patch 'opened onto nothing', with a shimmer at its edges).",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read from ch2/ch10 (the patch 'opened onto nothing', with a shimmer at its edges). (2026-11-08) Not laid on the set: the user, \"isn't the patch supposed to be a black void, maybe have a starfield shimmer to it.\" The patch is now a void in the game (scripts/LocaleVoid.gd: unlit black, a far starfield, the shimmer at its edges, from the canon \"a hole in the wall that opened onto nothing\"); a picture over it would paint the hole shut. The picture stays in the roster for the gallery.",
       "art_cat": "PICTURE",
       "score_lines": 598,
       "score_mentions": 13,
-      "apply": [
-        {
-          "locale": "board_lords_interior",
-          "label": "Mural",
-          "center": [
-            -3.3,
-            -8.84,
-            1.8
-          ],
-          "size": [
-            1.15,
-            1.02
-          ],
-          "facing": "+y",
-          "hide": [
-            "Mural_Patch"
-          ]
-        }
-      ],
+      "apply": [],
       "inspect": true
     },
     {
@@ -12329,7 +12312,7 @@
           "label": "Brand_*",
           "center": [
             0.025,
-            0.023,
+            0.12,
             2.5
           ],
           "size": [
@@ -12338,11 +12321,8 @@
           ],
           "facing": "+y",
           "hide": [
-            "Brand_KWIK_1",
-            "Brand_KWIK_2",
-            "Brand_KWIK_3",
-            "Brand_STOP_0",
-            "Brand_STOP_1",
+            "Brand_KWIK_",
+            "Brand_STOP_",
             "Brand_Sign_BG"
           ]
         }
@@ -12375,7 +12355,7 @@
           "label": "Brand_*",
           "center": [
             -1.2,
-            0.1,
+            0.12,
             2.5
           ],
           "size": [
@@ -12416,7 +12396,7 @@
           "label": "Brand_*",
           "center": [
             1.25,
-            0.1,
+            0.12,
             2.5
           ],
           "size": [
@@ -13113,14 +13093,14 @@
           "label": "Devil_*",
           "center": [
             256.5,
-            -384.545,
+            -384.575,
             2.2648
           ],
           "size": [
             1.4,
             3.24
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_Streak_0",
             "Devil_Daigle_Window_Left"
@@ -13131,14 +13111,14 @@
           "label": "Devil_*",
           "center": [
             263.5,
-            -384.545,
+            -384.605,
             2.2648
           ],
           "size": [
             1.4,
             3.24
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_Streak_2",
             "Devil_Daigle_Window_Right"
@@ -13149,14 +13129,14 @@
           "label": "Devil_*",
           "center": [
             260.0,
-            -384.54,
+            -384.565,
             2.265
           ],
           "size": [
             0.4,
             3.24
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_Streak_1"
           ]
@@ -13166,14 +13146,14 @@
           "label": "Devil_*",
           "center": [
             259.0,
-            -384.475,
+            -384.625,
             3.465
           ],
           "size": [
             0.6,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_SignPeel_0"
           ]
@@ -13183,14 +13163,14 @@
           "label": "Devil_*",
           "center": [
             260.2,
-            -384.475,
+            -384.625,
             3.665
           ],
           "size": [
             0.6,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_SignPeel_1"
           ]
@@ -13200,14 +13180,14 @@
           "label": "Devil_*",
           "center": [
             261.4,
-            -384.475,
+            -384.625,
             3.465
           ],
           "size": [
             0.6,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_SignPeel_2"
           ]
@@ -13239,7 +13219,7 @@
           "locale": "graustark",
           "label": "Devil_Daigle_Neon",
           "center": [
-            252.85,
+            267.15,
             -380.0,
             3.065
           ],
@@ -13247,7 +13227,7 @@
             1.6,
             0.46
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Devil_Daigle_Neon"
           ],
@@ -13280,7 +13260,7 @@
           "locale": "graustark",
           "label": "Devil_Daigle_NeonOpen",
           "center": [
-            252.95,
+            252.85,
             -379.0,
             3.065
           ],
@@ -13288,7 +13268,7 @@
             0.7,
             0.34
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Devil_Daigle_NeonOpen_Lit"
           ],
@@ -13321,7 +13301,7 @@
           "locale": "graustark",
           "label": "Devil_Daigle_NeonOpen",
           "center": [
-            252.95,
+            252.85,
             -379.9,
             3.065
           ],
@@ -13329,7 +13309,7 @@
             0.7,
             0.34
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Devil_Daigle_NeonOpen_Dead"
           ],
@@ -13363,14 +13343,14 @@
           "label": "Devil_Daigle_Sign",
           "center": [
             260.0,
-            -384.475,
+            -384.625,
             3.465
           ],
           "size": [
             5.0,
             0.9
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Devil_Daigle_Sign"
           ]
@@ -13445,15 +13425,15 @@
           "locale": "graustark",
           "label": "FarHill",
           "center": [
-            148.0,
-            7.5,
+            135.5,
+            -10.0,
             3.5
           ],
           "size": [
             35.0,
             12.0
           ],
-          "facing": "+y",
+          "facing": "-x",
           "hide": [
             "FarHill_1"
           ],
@@ -13486,15 +13466,15 @@
           "locale": "graustark",
           "label": "FarHill",
           "center": [
-            150.0,
-            59.0,
+            139.0,
+            45.0,
             4.5
           ],
           "size": [
             28.0,
             14.0
           ],
-          "facing": "+y",
+          "facing": "-x",
           "hide": [
             "FarHill_3"
           ],
@@ -13527,15 +13507,15 @@
           "locale": "graustark",
           "label": "FarHill",
           "center": [
-            144.0,
-            35.0,
+            134.0,
+            20.0,
             2.5
           ],
           "size": [
             30.0,
             10.0
           ],
-          "facing": "+y",
+          "facing": "-x",
           "hide": [
             "FarHill_2"
           ],
@@ -13568,15 +13548,15 @@
           "locale": "graustark",
           "label": "FarHill",
           "center": [
-            142.0,
-            -29.0,
+            133.0,
+            -45.0,
             1.5
           ],
           "size": [
-            18.0,
+            32.0,
             8.0
           ],
-          "facing": "+y",
+          "facing": "-x",
           "hide": [
             "FarHill_0"
           ],
@@ -13609,14 +13589,14 @@
           "label": "GasStation_Pump_screen",
           "center": [
             -68.0,
-            -39.8,
+            -39.82,
             1.1
           ],
           "size": [
             0.7,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "GasStation_Pump_0_screen"
           ],
@@ -13651,14 +13631,14 @@
           "label": "GasStation_Pump_screen",
           "center": [
             -68.0,
-            -36.8,
+            -36.82,
             1.1
           ],
           "size": [
             0.7,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "GasStation_Pump_1_screen"
           ],
@@ -13854,14 +13834,14 @@
           "label": "Graustark_Phone_Sign",
           "center": [
             -174.0,
-            54.49,
+            54.465,
             2.55
           ],
           "size": [
             0.8,
             0.2
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_Phone_Sign"
           ]
@@ -13975,14 +13955,14 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -156.0,
-            -106.0,
+            -106.2,
             3.4
           ],
           "size": [
             7.0,
             0.8
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_StripMall_Sign_0"
           ]
@@ -13992,14 +13972,14 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -148.0,
-            -106.0,
+            -106.2,
             3.4
           ],
           "size": [
             7.0,
             0.8
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_StripMall_Sign_1"
           ]
@@ -14009,14 +13989,14 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -140.0,
-            -106.0,
+            -106.2,
             3.4
           ],
           "size": [
             7.0,
             0.8
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_StripMall_Sign_2"
           ]
@@ -14026,14 +14006,14 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -132.0,
-            -106.0,
+            -106.2,
             3.4
           ],
           "size": [
             7.0,
             0.8
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_StripMall_Sign_3"
           ]
@@ -14043,14 +14023,14 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -124.0,
-            -106.0,
+            -106.2,
             3.4
           ],
           "size": [
             7.0,
             0.8
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_StripMall_Sign_4"
           ]
@@ -14407,7 +14387,7 @@
           "locale": "graustark",
           "label": "Temperance_Lounge_Sign",
           "center": [
-            -313.45,
+            -313.65,
             133.5,
             5.281
           ],
@@ -14415,7 +14395,7 @@
             0.6,
             4.0
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Temperance_Lounge_Sign"
           ],
@@ -14489,14 +14469,14 @@
           "label": "World_FrogShop_FrogSign",
           "center": [
             150.0,
-            295.5,
+            295.4,
             12.128
           ],
           "size": [
             1.8,
             0.9
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "World_FrogShop_FrogSign"
           ]
@@ -16467,14 +16447,14 @@
           "label": "WestExt_FormalPartition_Sign",
           "center": [
             -12.0,
-            -1.03,
+            -1.06,
             2.5
           ],
           "size": [
             1.6,
             0.16
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "WestExt_FormalPartition_Sign"
           ]
@@ -16507,15 +16487,15 @@
           "locale": "new_orleans_office",
           "label": "Out_Facade",
           "center": [
-            -7.0,
             0.0,
+            -0.1,
             -1.8
           ],
           "size": [
             14.0,
             3.6
           ],
-          "facing": "-x",
+          "facing": "-y",
           "hide": [
             "Out_Facade_Below"
           ],
@@ -18591,7 +18571,8 @@
             "MenuBoard_BG",
             "MenuBoard_Row_0",
             "MenuBoard_Row_1",
-            "MenuBoard_Row_2"
+            "MenuBoard_Row_2",
+            "MenuBoard_Row_3"
           ]
         }
       ],
@@ -19126,7 +19107,7 @@
           "locale": "new_auburn_road",
           "label": "Bypass_Sign",
           "center": [
-            -0.2,
+            5.38,
             96.0,
             2.4
           ],
@@ -19304,7 +19285,7 @@
           "locale": "new_auburn_road",
           "label": "Foxhole_Front_Sign",
           "center": [
-            22.06,
+            22.09,
             49.0,
             3.2
           ],
@@ -19312,7 +19293,7 @@
             3.0,
             0.7
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Foxhole_Front_Sign"
           ]
@@ -20046,7 +20027,7 @@
           "locale": "roberts_kitchen",
           "label": "TV",
           "center": [
-            -1.88,
+            -1.8825,
             2.65,
             0.81
           ],
@@ -20054,7 +20035,7 @@
             0.4,
             0.3
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "TV_Screen"
           ],
@@ -20981,14 +20962,14 @@
           "label": "StaffExit_ExitSign",
           "center": [
             5.0,
-            -5.05,
+            -5.0525,
             2.3
           ],
           "size": [
             0.5,
             0.16
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "StaffExit_ExitSign"
           ],
@@ -21904,14 +21885,14 @@
           "label": "Vestergaard_Plaque",
           "center": [
             -2.6,
-            -8.3,
+            -8.371,
             0.83
           ],
           "size": [
             0.42,
             0.16
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Vestergaard_Plaque"
           ]
@@ -23070,7 +23051,7 @@
           "label": "Bus_Stop_Sign",
           "center": [
             8.0,
-            8.82,
+            8.766,
             2.45
           ],
           "size": [
@@ -23110,7 +23091,7 @@
           "label": "Parish_Sign",
           "center": [
             25.1,
-            8.42,
+            8.336,
             2.6
           ],
           "size": [
@@ -24640,14 +24621,14 @@
           "label": "Graustark_Statue_Plaque",
           "center": [
             -130.0,
-            218.9,
+            218.75,
             3.013
           ],
           "size": [
             1.2,
             0.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Graustark_Statue_Plaque"
           ]
@@ -28399,7 +28380,9 @@
           "hide": [
             "Bulletin_Board",
             "Bulletin_Paper_1",
-            "Bulletin_Paper_2"
+            "Bulletin_Paper_2",
+            "Bulletin_Paper_0",
+            "Bulletin_Paper_3"
           ]
         }
       ],
@@ -28608,7 +28591,7 @@
           "label": "Ramp_Sign",
           "center": [
             -4.5,
-            4.194,
+            4.156,
             2.35
           ],
           "size": [
@@ -29922,14 +29905,14 @@
           "label": "Canopy_Logo",
           "center": [
             0.5,
-            -21.0,
+            -21.06,
             5.42
           ],
           "size": [
             3.4,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Canopy_Logo"
           ],
@@ -30014,7 +29997,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            -11.352,
+            -11.354,
             -11.5,
             1.36
           ],
@@ -30022,7 +30005,7 @@
             0.5,
             0.3
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_1_Display_-1"
           ],
@@ -30056,7 +30039,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            -11.352,
+            -11.354,
             -16.5,
             1.36
           ],
@@ -30064,7 +30047,7 @@
             0.5,
             0.3
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_2_Display_-1"
           ],
@@ -30098,7 +30081,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            -4.352,
+            -4.354,
             -11.5,
             1.36
           ],
@@ -30106,7 +30089,7 @@
             0.5,
             0.3
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_3_Display_-1"
           ],
@@ -30140,7 +30123,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            -4.352,
+            -4.354,
             -16.5,
             1.36
           ],
@@ -30148,7 +30131,7 @@
             0.5,
             0.3
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_4_Display_-1"
           ],
@@ -30203,7 +30186,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            3.352,
+            3.354,
             -11.5,
             1.36
           ],
@@ -30211,7 +30194,7 @@
             0.5,
             0.3
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Pump_5_Display_+1"
           ],
@@ -30245,7 +30228,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            3.352,
+            3.354,
             -16.5,
             1.36
           ],
@@ -30253,7 +30236,7 @@
             0.5,
             0.3
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Pump_6_Display_+1"
           ],
@@ -30287,7 +30270,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            10.352,
+            10.354,
             -11.5,
             1.36
           ],
@@ -30295,7 +30278,7 @@
             0.5,
             0.3
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Pump_7_Display_+1"
           ],
@@ -30329,7 +30312,7 @@
           "locale": "nexcorp_fueling_station",
           "label": "Pump_Display",
           "center": [
-            10.352,
+            10.354,
             -16.5,
             1.36
           ],
@@ -30337,7 +30320,7 @@
             0.5,
             0.3
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Pump_8_Display_+1"
           ],
@@ -30375,14 +30358,14 @@
           "label": "Pylon_Sign",
           "center": [
             16.0,
-            -30.21,
+            -30.212,
             7.6
           ],
           "size": [
             2.0,
             0.5
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Pylon_Sign_Logo"
           ],
@@ -30708,7 +30691,7 @@
           "label": "Jetty_Sign",
           "center": [
             2.4,
-            -6.425,
+            -6.356,
             3.42
           ],
           "size": [
@@ -31037,14 +31020,14 @@
           "label": "Ice_*",
           "center": [
             2.13,
-            -1.001,
+            -1.003,
             0.8
           ],
           "size": [
             0.6,
             1.1
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Ice_Merchandiser_Door_0"
           ]
@@ -31078,14 +31061,14 @@
           "label": "Ice_*",
           "center": [
             2.77,
-            -1.001,
+            -1.003,
             0.8
           ],
           "size": [
             0.6,
             1.1
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Ice_Merchandiser_Door_1"
           ]
@@ -31119,14 +31102,14 @@
           "label": "Ice_*",
           "center": [
             2.45,
-            -1.002,
+            -1.005,
             1.62
           ],
           "size": [
             1.3,
             0.34
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Ice_Merchandiser_Band",
             "Ice_Merchandiser_Lettering"
@@ -31329,14 +31312,14 @@
           "label": "Pump_Display",
           "center": [
             -1.5,
-            -4.26,
+            -4.28,
             1.4
           ],
           "size": [
             0.5,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Pump_0_Display"
           ]
@@ -31370,14 +31353,14 @@
           "label": "Pump_Display",
           "center": [
             1.5,
-            -4.26,
+            -4.28,
             1.4
           ],
           "size": [
             0.5,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Pump_1_Display"
           ]
@@ -31640,7 +31623,9 @@
             "Map_Paper",
             "Map_RoadH_1",
             "Map_RoadH_2",
-            "Map_Zone_G"
+            "Map_Zone_G",
+            "Map_RoadH_0",
+            "Map_RoadH_3"
           ]
         }
       ],
@@ -32652,14 +32637,14 @@
           "label": "GasStation_Pump_screen",
           "center": [
             -68.0,
-            -39.8,
+            -39.82,
             1.1
           ],
           "size": [
             0.7,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "GasStation_Pump_0_screen"
           ],
@@ -32694,14 +32679,14 @@
           "label": "GasStation_Pump_screen",
           "center": [
             -68.0,
-            -36.8,
+            -36.82,
             1.1
           ],
           "size": [
             0.7,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "GasStation_Pump_1_screen"
           ],
@@ -32734,7 +32719,7 @@
           "locale": "county_line_station",
           "label": "Pump_Display",
           "center": [
-            -6.352,
+            -6.354,
             1.4,
             1.31
           ],
@@ -32742,7 +32727,7 @@
             0.44,
             0.28
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_1_Display_-1"
           ],
@@ -32770,7 +32755,7 @@
           "locale": "county_line_station",
           "label": "Pump_Display",
           "center": [
-            -6.352,
+            -6.354,
             4.6,
             1.31
           ],
@@ -32778,7 +32763,7 @@
             0.44,
             0.28
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_2_Display_-1"
           ],
@@ -32806,7 +32791,7 @@
           "locale": "county_line_station",
           "label": "Pump_Display",
           "center": [
-            1.648,
+            1.646,
             1.4,
             1.31
           ],
@@ -32814,7 +32799,7 @@
             0.44,
             0.28
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_3_Display_-1"
           ],
@@ -32842,7 +32827,7 @@
           "locale": "county_line_station",
           "label": "Pump_Display",
           "center": [
-            1.648,
+            1.646,
             4.6,
             1.31
           ],
@@ -32850,7 +32835,7 @@
             0.44,
             0.28
           ],
-          "facing": "+x",
+          "facing": "-x",
           "hide": [
             "Pump_4_Display_-1"
           ],
@@ -33915,7 +33900,9 @@
             "Bulletin_Board",
             "Bulletin_Flyer_1",
             "Bulletin_Flyer_2",
-            "Bulletin_Flyer_3"
+            "Bulletin_Flyer_3",
+            "Bulletin_Flyer_0",
+            "Bulletin_Flyer_4"
           ]
         }
       ],
@@ -34865,14 +34852,14 @@
           "label": "Van_Logo",
           "center": [
             -9.9,
-            -38.408,
+            -38.411,
             1.6
           ],
           "size": [
             1.6,
             0.3
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Van_Logo_-1"
           ]
@@ -51654,7 +51641,7 @@
           "label": "Poster_1",
           "center": [
             -8.2,
-            1.94,
+            7.894,
             1.63
           ],
           "size": [
@@ -58294,7 +58281,7 @@
           "label": "Station_Sign",
           "center": [
             410.0,
-            -6.11,
+            -6.124,
             6.4
           ],
           "size": [
@@ -59825,7 +59812,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -59884,7 +59872,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -59940,7 +59929,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -59998,7 +59988,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -60056,7 +60047,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -60114,7 +60106,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -60172,7 +60165,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -60230,7 +60224,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -60288,7 +60283,8 @@
             "cabin_interior_day",
             "cabin_porch",
             "cabin_porch_dawn",
-            "cabin_porch_day"
+            "cabin_porch_day",
+            "cabin_interior_bed"
           ]
         }
       ]
@@ -60612,9 +60608,9 @@
           "locale": "honolulu_highrise",
           "label": "honolulu_final_cut_box",
           "center": [
-            9.707,
+            10.01,
             6.7,
-            1.22
+            1.37
           ],
           "size": [
             0.26,

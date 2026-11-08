@@ -3096,9 +3096,10 @@ def _build_town_square_statue():
                        (sx, sy - 0.40, fig_z + 1.6),
                        (0.16, 0.80, 0.18),
                        (0.42, 0.30, 0.18, 1.0))
-    # Inscription plate on the plinth
+    # Inscription plate on the plinth: ON its face (2026-11-08: at
+    # sy - 1.10 it sat 7.5 cm inside the 2.4 m plinth, never seen)
     ht._make_box_local("Graustark_Statue_Plaque",
-                       (sx, sy - 1.10, gz + 0.6),
+                       (sx, sy - 1.225, gz + 0.6),
                        (1.2, 0.05, 0.40),
                        (0.36, 0.26, 0.16, 1.0))
 

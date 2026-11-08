@@ -280,18 +280,21 @@ def build_shell():
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, WALL_THICK, 0.60), COL_BRAND_RED)
 
-    # KWIK STOP sign on the south brand panel (interior side)
-    make_box("Brand_Sign_BG", (0.0, 0.02, 2.50),
+    # KWIK STOP sign on the south brand panel (interior side). (2026-11-08)
+    # On the wall's room face, y = WALL_THICK/2: at y 0.02 the panel and its
+    # letters were inside the 20 cm wall, the sign never seen
+    # (hero_art_placement_audit)
+    make_box("Brand_Sign_BG", (0.0, WALL_THICK / 2 + 0.01, 2.50),
              (3.20, 0.02, 0.40), (0.96, 0.94, 0.86, 1.0))
     # K W I K (block letters as 4 small boxes)
     for i, letter_offset in enumerate([-1.20, -0.80, -0.40, 0.0]):
-        make_box(f"Brand_KWIK_{i}", (letter_offset, 0.03, 2.50),
+        make_box(f"Brand_KWIK_{i}", (letter_offset, WALL_THICK / 2 + 0.0225, 2.50),
                  (0.28, 0.005, 0.24), COL_BRAND_RED)
     # S T O P
     for i, letter_offset in enumerate([0.45, 0.85, 1.25, 1.65]):
         if letter_offset > 1.50:  # last letter clipped by panel edge
             continue
-        make_box(f"Brand_STOP_{i}", (letter_offset, 0.03, 2.50),
+        make_box(f"Brand_STOP_{i}", (letter_offset, WALL_THICK / 2 + 0.0225, 2.50),
                  (0.28, 0.005, 0.24), COL_BRAND_RED)
 
     # ── Glass double doors ──────────────────────────────────────

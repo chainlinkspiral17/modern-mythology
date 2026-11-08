@@ -99,9 +99,9 @@ def build_studio_nook():
         ox = mx+0.40 + math.cos(ang)*0.22
         oz = 1.20 + math.sin(ang)*0.22
         make_box(f"Ring_Light_{ri}", (ox, my-0.025, oz), (0.04, 0.02, 0.04), COL_RING_LIGHT)
-    # Laptop on desk
-    make_box("Laptop_Base", (mx+0.20, my, 0.40), (0.34, 0.24, 0.02), P.METAL_BLACK)
-    make_box("Laptop_Lid",  (mx+0.20, my+0.10, 0.50), (0.34, 0.02, 0.20), P.METAL_BLACK)
+    # (2026-11-08) the laptop is build_hero_props()'s open one, with its
+    # screen: this older closed one stood in the same desk spot, its lid
+    # 5 cm in front of the hero screen (hero_art_placement_audit)
 
 def build_decor():
     # clear of the window (2026-09-24: once the clock faced the room it overlapped it)

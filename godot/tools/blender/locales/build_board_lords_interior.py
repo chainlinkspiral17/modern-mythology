@@ -337,11 +337,16 @@ def build_hero_props():
              (0.28, 0.26, 0.24, 1.0))
     make_box("Sanderling_Leg", (-3.05, -8.85, 1.22), (0.06, 0.04, 0.44),
              (0.30, 0.28, 0.26, 1.0))
-    # the patch · flat, black, wrong · body first, the head this week
-    make_box("Mural_Patch", (-3.30, -8.855, 1.80), (1.15, 0.03, 1.02),   # on the mural (2026-09-22: 10 cm off it)
-             (0.06, 0.06, 0.07, 1.0))
-    make_box("Mural_Patch_Head", (-2.32, -8.855, 2.24), (0.52, 0.03, 0.46),
-             (0.06, 0.06, 0.07, 1.0))
+    # the patch · "a hole in the wall that opened onto nothing", "at its
+    # edges, a small shimmer" · body first, the head this week. (2026-11-08)
+    # IN FRONT of the bird it ate: at y -8.855 its face stood 2 cm behind
+    # the sanderling's (front -8.82), so the bird showed through the hole.
+    # LocaleVoid makes it a void at load (unlit black, a far starfield, the
+    # shimmer at its rim); the builder colour is only the fallback.
+    make_box("Mural_Patch", (-3.30, -8.805, 1.80), (1.15, 0.03, 1.02),
+             (0.0, 0.0, 0.0, 1.0))
+    make_box("Mural_Patch_Head", (-2.32, -8.805, 2.24), (0.52, 0.03, 0.46),
+             (0.0, 0.0, 0.0, 1.0))
 
     # ── the counter still life ──
     top = 0.95

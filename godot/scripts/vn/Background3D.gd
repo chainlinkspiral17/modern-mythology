@@ -33,6 +33,7 @@ const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
 ## glass is glass (2026-10-02) — preloaded, not by class_name: a fresh pull
 ## has no global-class cache entry for it until the editor rescans
 const GlassPass := preload("res://scripts/LocaleGlass.gd")
+const VoidPass := preload("res://scripts/LocaleVoid.gd")
 const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
@@ -6265,6 +6266,9 @@ func load_location(preset_id: String) -> bool:
 	# HERO ART (2026-10-12): the installed pictures (the alley mural, the
 	# photo in Diego's mirror ...) laid on their surfaces, stand-ins hidden.
 	HeroArtScript.apply(_location_instance, String(spec.get("scene", "")).get_file().get_basename(), preset_id)
+	# (2026-11-08) the substrate's holes are holes: Mural_Patch* / Void_*
+	# parts become unlit black with a far starfield and a shimmer at the edge
+	VoidPass.apply(_location_instance)
 	# PER-PRESET LIGHTS (2026-10-08), the markers' convention carried to
 	# lights: a Light3D named `<name>__<preset_id>` belongs to that preset's
 	# AREA of a shared set and is dropped, before it enters the tree (so the

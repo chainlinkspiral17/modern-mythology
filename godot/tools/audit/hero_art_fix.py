@@ -119,7 +119,7 @@ def flip_row(row, boxes):
     hide = [str(p) for p in (row.get("hide") or [])]
     if fc not in FLIP or not hide:
         return None
-    hidden = [b for b in boxes if any(b[0].startswith(p) for p in hide)]
+    hidden = H.hidden_by(row, boxes)
     if not hidden:
         return None
     n, sg = H.AXES[fc]
@@ -151,7 +151,7 @@ def fix_row(row, boxes):
     c = [float(v) for v in row["center"]]
     w, h = float(row["size"][0]), float(row["size"][1])
     hide = [str(p) for p in (row.get("hide") or [])]
-    hidden = [b for b in boxes if any(b[0].startswith(p) for p in hide)] if hide else []
+    hidden = H.hidden_by(row, boxes)
     new_c, new_s = list(c), [w, h]
     why = []
     if hidden:
@@ -162,7 +162,8 @@ def fix_row(row, boxes):
         if fp is not None:
             face = fp[2]
         if H.FACE_TOL < abs(c[n] - face) <= 0.50 and not H.on_host(c, w, h, n, sg, wa, ha, boxes,
-                                                                    {x[0] for x in hidden}, face):
+                                                                    {x[0] for x in hidden}, face) \
+                and not ((c[n] - face) * sg > 0 and H.on_post(c, w, h, n, sg, wa, ha, boxes)):
             new_c[n] = face
             why.append("onto the face (%.2f m)" % abs(c[n] - face))
         sw, sh = hi[wa] - lo[wa], hi[ha] - lo[ha]
@@ -253,6 +254,90 @@ def fix_row(row, boxes):
     return [round(v, 4) for v in new_c], [round(v, 4) for v in new_s], "; ".join(why)
 
 
+def turn_row(row, boxes):
+    """(2026-11-08) a picture that FACES-IN — into the pump, the shop wall,
+    the truck it is on — turns to face out of it, onto the stand-in's face
+    on the open side (or the solid's own face when the row hides nothing).
+    Kept only when the turned picture has no FACES-IN or OFF-FACE finding,
+    so a door-glass sign (seen both ways, nothing solid in front) never
+    turns. A picture buried > 20 cm (a far hill inside its hill) is read by
+    hand."""
+    slug = "?"
+    found = H.check_row(slug, row, boxes)
+    hit = [x for x in found if x.startswith("FACES-IN")]
+    if not hit:
+        return None
+    fc = str(row.get("facing", "")).lower()
+    if fc not in FLIP:
+        return None
+    m = re.search(r"faces into (\S+) .*(from|buried) ([\d.]+) m", hit[0])
+    if not m or (m.group(2) == "buried" and float(m.group(3)) > 0.20):
+        return None
+    n, sg = H.AXES[fc]
+    c = [float(v) for v in row["center"]]
+    w, h = float(row["size"][0]), float(row["size"][1])
+    wa, ha = H._plane_axes(n)
+    hidden = H.hidden_by(row, boxes)
+    if hidden:
+        fp = H.fitting_part(c, w, h, n, -sg, wa, ha, hidden)
+        if fp is not None:
+            c[n] = fp[2]
+        else:
+            c[n] = (max(b[1][n] + b[2][n] for b in hidden) if -sg > 0 else
+                    min(b[1][n] - b[2][n] for b in hidden))
+    else:
+        body = [b for b in boxes if b[0] == m.group(1)]
+        if not body:
+            return None
+        c[n] = body[0][1][n] - sg * body[0][2][n]
+    cand = dict(row, facing=FLIP[fc], center=[round(v, 4) for v in c])
+    after = H.check_row(slug, cand, boxes)
+    if any(x.startswith(("FACES-IN", "OFF-FACE")) for x in after):
+        return None
+    return FLIP[fc], cand["center"]
+
+
+_LOCALE_ROWS = {}
+
+
+def leftover_row(row, boxes):
+    """(2026-11-08) LEFTOVER: the stand-in's own piece left in front of its
+    picture. A post or pole the sign was centred on → the picture moves just
+    in front of it (the sign hangs on its post's face, not through it). A
+    thin detail (a pinned paper, a menu row, a road line ≤ 3 cm deep) →
+    the row hides it too, by its exact name."""
+    others = set()
+    for r2 in _LOCALE_ROWS.get(row["locale"], []):
+        if r2 is not row:
+            others |= {b[0] for b in H.hidden_by(r2, boxes)}
+    found = [x for x in H.check_row("?", row, boxes, others) if x.startswith("LEFTOVER")]
+    if not found:
+        return None
+    fc = str(row.get("facing", "")).lower()
+    n, sg = H.AXES[fc]
+    c = [float(v) for v in row["center"]]
+    hide = list(row.get("hide") or [])
+    why = []
+    byname = {b[0]: b for b in boxes}
+    for x in found:
+        m = re.search(r"LEFTOVER\s+\S+: (\S+) ", x)
+        if not m or m.group(1) not in byname:
+            continue
+        b = byname[m.group(1)]
+        front = b[1][n] + sg * b[2][n]
+        if re.search(r"post|pole", b[0], re.I):
+            want = front + sg * 0.004
+            if (want - c[n]) * sg > 0 and (want - c[n]) * sg <= 0.15:
+                c[n] = want
+                why.append("in front of %s (%.3f m)" % (b[0], abs(want - float(row["center"][n]))))
+        elif b[2][n] * 2.0 <= 0.03 and b[0] not in hide:
+            hide.append(b[0])
+            why.append("hides %s too" % b[0])
+    if not why:
+        return None
+    return [round(v, 4) for v in c], hide, "; ".join(why)
+
+
 def main():
     dry = "--dry" in sys.argv
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
@@ -260,6 +345,11 @@ def main():
     data = json.loads(src)
     moved = 0
     by_loc = {}
+    for e in data.get("entries", []):
+        if e.get("kind") == "art":
+            for r in e.get("apply", []) or []:
+                if isinstance(r, dict) and r.get("locale"):
+                    _LOCALE_ROWS.setdefault(r["locale"], []).append(r)
     for e in data.get("entries", []):
         if e.get("kind") != "art":
             continue
@@ -277,12 +367,19 @@ def main():
             # (automatic turning stays OFF: a sign on door glass faces both
             # ways and a set's cameras are mostly on one side of it — the
             # wrong-facing rows are read and turned by hand)
-            fl = None
+            fl = turn_row(r, boxes)
             if fl is not None:
                 print("%-26s %-34s faced into its object: turned %s → %s" % (loc, e.get("slug", "?"), r["facing"], fl[0]))
                 moved += 1
                 if not dry:
                     r["facing"], r["center"] = fl[0], fl[1]
+                continue
+            lf = leftover_row(r, boxes)
+            if lf is not None:
+                print("%-26s %-34s %s" % (loc, e.get("slug", "?"), lf[2]))
+                moved += 1
+                if not dry:
+                    r["center"], r["hide"] = lf[0], lf[1]
                 continue
             f = fix_row(r, boxes)
             if f is None:
