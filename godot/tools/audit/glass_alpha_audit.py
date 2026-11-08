@@ -29,7 +29,8 @@ NOT_PANE = re.compile(
     r"(mirror|eyeglass|glasses|spectacle|tumbler|whiskey|wine|beer|shot_glass|"
     r"pint|goblet|jar|bottle|cup|mug|lens|shard|ashtray|frame|mullion|sill|"
     r"rim|lid|panel|palette|crate|recess|basin|vanity|water|dish|broken|glint|"
-    r"header|storefronts)", re.I)
+    r"header|storefronts|propane|rack|rail|post|base|head|decal|bulb|seam|ledge|"
+    r"band|chain|top)", re.I)
 CALLS = {"make_box", "make_rot_box", "make_cyl", "make_chamfer_box", "_mb", "_mc"}
 
 

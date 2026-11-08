@@ -86,7 +86,7 @@ COL_CARD_GREEN     = (0.55, 0.70, 0.45, 1.0)   # one green card
 COL_PRECIPICE_DOOR = (0.18, 0.14, 0.10, 1.0)   # the too-tall narrow door
 COL_FLOOR_TILE_DK  = (0.30, 0.26, 0.18, 1.0)   # diner-tile dark check
 COL_CLOCK_FACE     = (0.96, 0.92, 0.84, 1.0)   # white clock face
-COL_PIE_CASE_GLASS = (0.78, 0.84, 0.86, 1.0)   # pie display glass
+COL_PIE_CASE_GLASS = (0.78, 0.84, 0.86, 0.30)   # pie display glass — alpha < 0.98 so LocaleGlass shows the pies (2026-11-08; at 1.0 every dome hid its pie)
 COL_NIGHT_GLASS    = (0.13, 0.15, 0.21, 1.0)   # the west windows at 3:47 AM (the Deck, 2026-10-02: "the windows
                                                # outside are too bright" — they were pie-case glass, near white)
 COL_REGISTER       = (0.40, 0.32, 0.22, 1.0)   # cash register brown

@@ -98,7 +98,12 @@ func _ready() -> void:
 	var mh_porch_banners: Array = []
 	var sales_rooftop_signs: Array = []
 	for mi in meshes:
-		mi.material_override = mat
+		# (2026-11-08) glass stays glass: LocaleGlass has already given a
+		# pane whose vertex alpha is below 0.98 its own transparent material,
+		# and one opaque override over every mesh painted it back to a slab
+		# (the diner's pie case hid its pies; every pane in these sets did).
+		if not _keeps_glass(mi):
+			mi.material_override = mat
 		applied += 1
 		if add_colliders and _should_have_collider(mi.name):
 			_ensure_static_collider(mi)
@@ -636,6 +641,16 @@ func _make_material() -> Material:
 	m.roughness = 1.0
 	m.metallic = 0.0
 	return m
+
+
+func _keeps_glass(mi: MeshInstance3D) -> bool:
+	if mi.mesh == null:
+		return false
+	for si in range(mi.mesh.get_surface_count()):
+		var bm: BaseMaterial3D = mi.get_surface_override_material(si) as BaseMaterial3D
+		if bm != null and bm.transparency != BaseMaterial3D.TRANSPARENCY_DISABLED:
+			return true
+	return false
 
 
 func _collect_mesh_instances(node: Node, acc: Array = []) -> Array:
