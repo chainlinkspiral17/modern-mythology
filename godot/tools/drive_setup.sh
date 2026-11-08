@@ -12,6 +12,8 @@
 #   bash godot/tools/drive_setup.sh --fresh    # start the sign-in over
 #   bash godot/tools/drive_setup.sh --read     # + a read-only view of the whole Drive
 #   bash godot/tools/drive_setup.sh --client   # use YOUR OWN Google client id (asks for it)
+#   bash godot/tools/drive_setup.sh --fresh --client   # a NEW machine: the first run there
+#   (--shared-client: sign in through rclone's shared app anyway — it sees only what that app made)
 #
 # YOUR OWN CLIENT ID (2026-10-01; https://rclone.org/drive/#making-your-own-client-id).
 # rclone's shared client id is rate-limited and is being retired; with
@@ -95,6 +97,23 @@ elif [ -f "$CLIENT_FILE" ]; then
 fi
 OWN=0
 [ -n "$CLIENT_ID" ] && [ -n "$CLIENT_SECRET" ] && OWN=1
+# (2026-11-08) a NEW machine has no .gdrive_client (it is gitignored), and
+# the project's Drive files have been made through YOUR app since
+# 2026-10-01: rclone's shared client at drive.file cannot see them, and
+# its sign-in dies listing shared drives (403 ACCESS_TOKEN_SCOPE_
+# INSUFFICIENT). Stop with the fix instead of signing in to an empty view.
+if [ "$OWN" = 0 ] && ! has_flag --read && ! has_flag --shared-client; then
+  echo
+  echo "No Google client id on this machine (godot/tools/.gdrive_client is not in git)."
+  echo "Your Drive files were made through your own Google app; connect with it:"
+  echo
+  echo "  bash godot/tools/drive_setup.sh --fresh --client"
+  echo
+  echo "It asks for the client id and secret: the same two the Deck uses —"
+  echo "on the Deck, in godot/tools/.gdrive_client; or Google Cloud console →"
+  echo "APIs & Services → Credentials → your OAuth client."
+  exit 1
+fi
 # the project connection: full scope under your own app (see the header)
 MAIN_SCOPE="drive.file"
 [ "$OWN" = 1 ] && MAIN_SCOPE="drive"
