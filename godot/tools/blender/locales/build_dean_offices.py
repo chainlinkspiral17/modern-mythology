@@ -437,12 +437,23 @@ def build_monitor_room():
                             baseboard_face_sign=-1, openings=[(RING_C[1], 1.0, 0.90, 2.0)])
     make_box("Mon_Hall_Dark", (MX1 + 1.2, RING_C[1], 1.0), (0.1, 1.6, 2.0), (0.06, 0.05, 0.05, 1.0))
     # the W wall is glass on the Pacific: mullions, the black water, a far line of sky
-    make_box("Mon_Glass", (MX0, MD / 2.0, MH / 2.0), (0.03, MD, MH), (0.12, 0.16, 0.22, 1.0))
+    # (2026-11-08) the pane is GLASS: alpha 0.25 (LocaleGlass makes it see-
+    # through). At alpha 1.0 it was a painted slab, and "Behind him the glass
+    # holds the whole dark Pacific" (vol4 daddy_c) cut to a black wall.
+    make_box("Mon_Glass", (MX0, MD / 2.0, MH / 2.0), (0.03, MD, MH), (0.12, 0.16, 0.22, 0.25))
     for k in range(5):
         make_box(f"Mon_Glass_Mullion_{k}", (MX0 + 0.02, 0.2 + k * 1.5, MH / 2.0), (0.06, 0.06, MH), (0.20, 0.18, 0.16, 1.0))
     # (kept between the club office, x < 68, and the glass)
-    make_box("Ocean", (86.0, MD / 2.0, -6.0), (28.0, 60.0, 0.1), (0.03, 0.05, 0.08, 1.0))
-    make_box("Ocean_Horizon", (72.0, MD / 2.0, 4.0), (0.2, 60.0, 20.0), (0.06, 0.08, 0.14, 1.0))
+    make_box("Ocean", (86.0, MD / 2.0, -6.0), (28.0, 60.0, 0.1), (0.10, 0.13, 0.20, 1.0))
+    make_box("Ocean_Horizon", (72.0, MD / 2.0, 4.0), (0.2, 60.0, 20.0), (0.22, 0.25, 0.40, 1.0))
+    # the far line of sky the comment promised, and a moon's path on the
+    # water: "the whole dark Pacific, and nothing moving on it" needs to
+    # read as WATER, not as the glass's own black
+    make_box("Ocean_Horizon_Glow", (72.15, MD / 2.0, -4.6), (0.05, 60.0, 2.8), (0.38, 0.40, 0.54, 1.0))
+    make_box("Ocean_Moonpath", (86.0, MD / 2.0 + 0.75, -5.94), (27.0, 2.2, 0.02), (0.50, 0.56, 0.70, 1.0))
+    # the moon the path comes from — the visible source of the tscn's
+    # Moon_On_Water light (a practical, per the lighting playbook)
+    make_cyl("Ocean_Moon", (72.3, MD / 2.0 + 0.75, 5.0), 1.3, 0.05, (1.0, 0.98, 0.90, 1.0), segments=16, axis='X')
     # the ring of monitors on desk segments round an open centre, open to the door
     rx, ry = RING_C
     R = 1.35

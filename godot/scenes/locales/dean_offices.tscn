@@ -288,6 +288,13 @@ light_color = Color(0.46, 0.54, 0.8, 1)
 light_energy = 0.1
 shadow_enabled = false
 
+[node name="Moon_On_Water__dean_monitor_room" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.0, 3.0, -4.2)
+light_color = Color(0.58, 0.64, 0.86, 1)
+light_energy = 7.0
+shadow_enabled = false
+omni_range = 26.0
+
 [node name="City_Glow_0__dean_tower_corridor" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.4, 1.6, -5.0)
 light_color = Color(1.0, 0.8, 0.56, 1)
@@ -653,6 +660,6 @@ metadata/fov = 35.0
 
 ; vol4 daddy (c): "Behind him the glass holds the whole dark Pacific" (pass 303)
 [node name="shot_insert_glass__dean_monitor_room" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(103.500, 1.600, -3.200)
-rotation = Vector3(0.0000, 1.5708, 0.0)
-metadata/fov = 55.0
+position = Vector3(102.300, 1.500, -3.000)
+rotation = Vector3(-0.0600, 1.5300, 0.0)
+metadata/fov = 62.0

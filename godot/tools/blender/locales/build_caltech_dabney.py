@@ -470,11 +470,20 @@ def build_game_room():
     fx = GX1 - 0.10 - 0.40
     for k in range(5):
         y = 1.0 + k * 0.96
-        make_box(f"Fridge_{k}_Body", (fx, y, 1.05), (0.80, 0.92, 2.10), (0.70, 0.72, 0.74, 1.0))
-        make_box(f"Fridge_{k}_Glass", (fx - 0.402, y, 1.10), (0.004, 0.74, 1.70), (0.42, 0.52, 0.58, 1.0))
+        # (2026-11-08) the body stops 0.10 short of the door, with cheeks and
+        # a cap round the gap: the stock (fx - 0.36) used to sit INSIDE a
+        # solid body, so no glass could ever show the drinks
+        make_box(f"Fridge_{k}_Body", (fx + 0.05, y, 1.05), (0.70, 0.92, 2.10), (0.70, 0.72, 0.74, 1.0))
+        for side in (-1, 1):
+            make_box(f"Fridge_{k}_Cheek_{side:+d}", (fx - 0.35, y + side * 0.45, 1.05), (0.10, 0.02, 2.10), (0.70, 0.72, 0.74, 1.0))
+        make_box(f"Fridge_{k}_Cap", (fx - 0.35, y, 2.08), (0.10, 0.92, 0.04), (0.70, 0.72, 0.74, 1.0))
+        # (2026-11-08) alpha 0.35: LocaleGlass makes the door see-through, so the
+        # drinks the prose stocks them with read (at 1.0 the door was a slab)
+        make_box(f"Fridge_{k}_Glass", (fx - 0.402, y, 1.10), (0.004, 0.74, 1.70), (0.42, 0.52, 0.58, 0.35))
         make_box(f"Fridge_{k}_Handle", (fx - 0.42, y + 0.32, 1.10), (0.03, 0.03, 0.60), (0.80, 0.80, 0.82, 1.0))
         make_box(f"Fridge_{k}_Grille", (fx - 0.402, y, 0.12), (0.004, 0.80, 0.16), (0.20, 0.20, 0.22, 1.0))
         for j in range(4):
+            make_box(f"Fridge_{k}_Shelf_{j}", (fx - 0.35, y, 0.31 + j * 0.40), (0.10, 0.88, 0.012), (0.80, 0.82, 0.84, 1.0))
             for m in range(5):
                 make_box(f"Fridge_Stock_{k}_{j}_{m}", (fx - 0.36, y - 0.28 + m * 0.14, 0.42 + j * 0.40), (0.06, 0.06, 0.20),
                          ((0.76, 0.84, 0.30, 1.0), (0.80, 0.30, 0.20, 1.0), (0.30, 0.50, 0.80, 1.0), (0.90, 0.60, 0.20, 1.0))[(k + j + m) % 4])
