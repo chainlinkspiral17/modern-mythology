@@ -953,6 +953,7 @@ var bg_is_3d: bool = false
 # portraits step back (fade out) so the object is the picture; they return on
 # the next line that is not one, or when someone speaks.
 var _insert_quiet: bool = false
+const INSERT_QUIET_ALPHA := 0.32
 var _quiet_tw: Tween = null
 
 
@@ -962,8 +963,15 @@ func set_insert_quiet(on: bool) -> void:
 	_insert_quiet = on
 	if _quiet_tw != null and _quiet_tw.is_valid():
 		_quiet_tw.kill()
-	_quiet_tw = create_tween()
-	_quiet_tw.tween_property(self, "modulate:a", 0.0 if on else 1.0, 0.25)
+	# (2026-11-08) the user: "portraits still just cutting out and not
+	# transitioning smoothly between shots." Every insert cut faded the whole
+	# cast to nothing in 0.25 s and back after — hundreds of blinks a
+	# chapter. Now they STEP BACK (dim to INSERT_QUIET_ALPHA) and return,
+	# eased, slowly enough to read as one move with the cut; the cast stands
+	# at the edges of the centre band, so the object in the middle stays
+	# clear.
+	_quiet_tw = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_quiet_tw.tween_property(self, "modulate:a", INSERT_QUIET_ALPHA if on else 1.0, 0.6 if on else 0.5)
 
 
 func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:

@@ -50,6 +50,9 @@ var _current_character: Node3D = null
 var _rest_cam_pos: Vector3
 var _rest_cam_fov: float
 var _rest_cam_rot: Vector3 = Vector3.ZERO
+var _shot_framed: bool = false
+var _shot_tw: Tween = null
+const SHOT_EASE_S := 0.55
 var _rest_key_color: Color
 var _rest_key_energy: float
 var _rest_fill_color: Color
@@ -656,6 +659,7 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 		if expression != "":
 			set_expression(expression)
 		return true
+	_shot_framed = false        # a new face starts on its own frame, not eased from the last
 	# Tear down any previously-loaded model
 	if _current_character != null and is_instance_valid(_current_character):
 		_current_character.queue_free()
@@ -896,6 +900,11 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	_shot_angle = angle
 	if _camera == null:
 		return
+	# (2026-11-08) the frame the lens is leaving, to ease from (below)
+	var from_pos: Vector3 = _rest_cam_pos
+	var from_rot: Vector3 = _rest_cam_rot
+	var from_fov: float = _rest_cam_fov
+	var had_frame: bool = _shot_framed
 	# a new shot (or an asked-for new take) rolls inside VARY; a held
 	# shot keeps its roll, so the frame does not twitch line to line
 	if changed or seed >= 0:
@@ -941,6 +950,26 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	_rest_cam_rot = _camera.rotation
 	_rest_cam_fov = fov
 	_motion_scale = frame_h / WIDE_FRAME_H
+	# (2026-11-08) the user: "portraits still just cutting out and not
+	# transitioning smoothly between shots." A new size used to CUT the
+	# portrait's lens line to line (mcu → cu → ecu). Now the lens eases from
+	# the frame it held to the new one — a push in, a breath out — over
+	# SHOT_EASE_S; the idle motion rides the eased rest values. The first
+	# frame of a portrait (nothing to ease from) is placed at once.
+	if had_frame and changed and is_inside_tree():
+		var to_pos: Vector3 = _rest_cam_pos
+		var to_rot: Vector3 = _rest_cam_rot
+		var to_fov: float = _rest_cam_fov
+		_rest_cam_pos = from_pos
+		_rest_cam_rot = from_rot
+		_rest_cam_fov = from_fov
+		if _shot_tw != null and _shot_tw.is_valid():
+			_shot_tw.kill()
+		_shot_tw = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		_shot_tw.tween_property(self, "_rest_cam_pos", to_pos, SHOT_EASE_S)
+		_shot_tw.tween_property(self, "_rest_cam_rot", to_rot, SHOT_EASE_S)
+		_shot_tw.tween_property(self, "_rest_cam_fov", to_fov, SHOT_EASE_S)
+	_shot_framed = true
 
 
 func get_shot() -> String:
