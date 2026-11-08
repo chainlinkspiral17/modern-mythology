@@ -181,7 +181,9 @@ def build_desk():
     make_box("Desk_Pen", (dx + 0.10, dy - 0.02, 0.765), (0.01, 0.14, 0.01), (0.12, 0.14, 0.30, 1.0))
     make_lathe("Desk_Mug_Pens", (dx + 0.16, dy - 0.45, 0.76), [(0.0, 0.0), (0.04, 0.0), (0.04, 0.10), (0.0, 0.10)], (0.92, 0.88, 0.80, 1.0), segments=10)
     # the corkboard: the Kwik Stop shift schedule, a photo strip, a ticket stub
-    cz = 1.55
+    # (2026-11-08) 12 cm higher: at 1.55 the desk lamp's shade stood across
+    # the board's lower corner from the desk chair
+    cz = 1.67
     make_box("Corkboard", (XE - 0.015, dy, cz), (0.03, 1.00, 0.66), (0.70, 0.54, 0.36, 1.0))
     make_box("Corkboard_Frame", (XE - 0.012, dy, cz), (0.024, 1.06, 0.72), COL_OAK_DK)
     for k, (oy, oz, w, h, col) in enumerate(((-0.28, 0.08, 0.26, 0.34, (0.94, 0.94, 0.92, 1.0)), (0.05, 0.12, 0.08, 0.26, (0.30, 0.30, 0.32, 1.0)),

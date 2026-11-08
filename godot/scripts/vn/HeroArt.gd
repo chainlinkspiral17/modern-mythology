@@ -440,7 +440,12 @@ static func _hide(root: Node, prefixes: Array, quad: MeshInstance3D = null) -> i
 			for n3: Node3D in src:
 				# (2026-10-14) relative to the room, not the world: apply() runs
 				# before the room is in the tree, where global_position errors
-				var local: Vector3 = inv * _rel_origin(root, n3)
+				# (2026-11-08) the mesh's own CENTRE: the builders leave every
+				# part's origin at the world origin (the GLB nodes carry no
+				# translation), so by origin no part was ever "under" a picture
+				# — a stand-in's extra pieces (the corkboard's frame, a fourth
+				# pinned card) never hid and stood in front of its picture
+				var local: Vector3 = inv * _rel_center(root, n3)
 				if absf(local.x) <= half.x and absf(local.y) <= half.y and absf(local.z) <= 0.30:
 					dst.append(n3)
 	var hidden: Array[Node3D] = near if not near.is_empty() else exact
@@ -449,6 +454,23 @@ static func _hide(root: Node, prefixes: Array, quad: MeshInstance3D = null) -> i
 	for n3: Node3D in near_parts:
 		n3.visible = false
 	return hidden.size() + near_parts.size()
+
+
+## A node's visual centre in `root`'s space: a mesh's AABB centre, else its
+## origin.
+static func _rel_center(root: Node, n: Node3D) -> Vector3:
+	var mi: MeshInstance3D = n as MeshInstance3D
+	if mi == null or mi.mesh == null:
+		return _rel_origin(root, n)
+	var c: Vector3 = mi.mesh.get_aabb().get_center()
+	var xf: Transform3D = n.transform
+	var p: Node = n.get_parent()
+	while p != null and p != root:
+		var p3: Node3D = p as Node3D
+		if p3 != null:
+			xf = p3.transform * xf
+		p = p.get_parent()
+	return xf * c
 
 
 ## A node's origin in `root`'s space, by walking up its parents (works

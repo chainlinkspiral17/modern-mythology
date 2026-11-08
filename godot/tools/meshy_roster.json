@@ -28240,20 +28240,17 @@
           "locale": "sam_bedroom",
           "label": "Corkboard",
           "center": [
-            2.279,
-            2.663,
-            1.56
+            2.2645,
+            2.7,
+            1.67
           ],
           "size": [
-            1.22,
-            0.7
+            1.06,
+            0.72
           ],
           "facing": "-x",
           "hide": [
-            "Corkboard",
-            "Corkboard_Pinned_0",
-            "Corkboard_Pinned_1",
-            "Corkboard_Pinned_2"
+            "Corkboard_Pinned_"
           ]
         }
       ],
