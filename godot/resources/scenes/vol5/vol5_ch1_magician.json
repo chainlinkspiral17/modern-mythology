@@ -50,7 +50,7 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:vol5_model_city][mood:arcana_neon][shot:insert model_city]The kingdom covered the floor.",
+      "text": "[mood:arcana_neon][shot:insert model_city]The kingdom covered the floor.",
       "voice": "assets/audio/voice/vol5_ch1_magician/008.mp3"
     },
     {

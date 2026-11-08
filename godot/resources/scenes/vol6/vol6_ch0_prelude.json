@@ -452,7 +452,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][panel:vol6_water_tower]The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall.",
+      "text": "[trip:1.2]The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/087.ogg"
     },
     {

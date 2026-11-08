@@ -43,7 +43,7 @@
   },
   {
    "t": "narrate",
-   "text": "[panel:vol6_speak_and_spell][shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town.",
+   "text": "[shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town.",
    "voice": "assets/audio/voice/vol6_ch4_speak_spell/008.mp3"
   },
   {
