@@ -309,7 +309,7 @@
     },
     {
       "t": "narrate",
-      "text": "Below him one of the little lit places brightens: an old city, a square, a stake and smoke."
+      "text": "[shot:insert square]Below him one of the little lit places brightens: an old city, a square, a stake and smoke."
     },
     {
       "t": "narrate",
@@ -329,7 +329,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob switches. The square comes up close. Smoke, crowd, and in the middle a girl in armor that doesn't fit her, hair cut short, chin up. Her back is turned to him, and across her back, under the armor straps, are painted lines: warm, strong, fierce brushwork, a coarse brush that scratched."
+      "text": "[shot:insert girl]Jacob switches. The square comes up close. Smoke, crowd, and in the middle a girl in armor that doesn't fit her, hair cut short, chin up. Her back is turned to him, and across her back, under the armor straps, are painted lines: warm, strong, fierce brushwork, a coarse brush that scratched."
     },
     {
       "t": "say",
@@ -371,7 +371,7 @@
     },
     {
       "t": "narrate",
-      "text": "The girl in the square turns her head, not all the way, just enough. She can't possibly hear an airplane from that century, but she looks up anyway."
+      "text": "[shot:insert girl]The girl in the square turns her head, not all the way, just enough. She can't possibly hear an airplane from that century, but she looks up anyway."
     },
     {
       "t": "say",
@@ -411,7 +411,7 @@
     },
     {
       "t": "narrate",
-      "text": "The plane dips and Jacob's stomach goes. The ledger-names start rising off the ground like smoke, thousands of them, all the downwind names, and fill up the sky around him. He can't see. The engine coughs."
+      "text": "[shot:insert smoke]The plane dips and Jacob's stomach goes. The ledger-names start rising off the ground like smoke, thousands of them, all the downwind names, and fill up the sky around him. He can't see. The engine coughs."
     },
     {
       "t": "say",
@@ -447,7 +447,7 @@
     },
     {
       "t": "narrate",
-      "text": "The names part. A horizon line comes back, clean and level."
+      "text": "[shot:insert horizon]The names part. A horizon line comes back, clean and level."
     },
     {
       "t": "say",
@@ -469,7 +469,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jacob banks away from the square. He looks back once. The girl is still looking up, or her painting is."
+      "text": "[shot:insert girl]Jacob banks away from the square. He looks back once. The girl is still looking up, or her painting is."
     },
     {
       "t": "narrate",

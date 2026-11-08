@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her back is to him, and on it are his brushstrokes, coarse-bristle lines down the spine, warm, strong, fierce."
+      "text": "[shot:insert back]Her back is to him, and on it are his brushstrokes, coarse-bristle lines down the spine, warm, strong, fierce."
     },
     {
       "t": "say",
@@ -377,7 +377,7 @@
     },
     {
       "t": "narrate",
-      "text": "She finishes a foe, and it falls apart into loose pigment. She turns."
+      "text": "[shot:insert foe]She finishes a foe, and it falls apart into loose pigment. She turns."
     },
     {
       "t": "show",
@@ -423,7 +423,7 @@
     },
     {
       "t": "narrate",
-      "text": "The figure in the battle looks from one of them to the other. For half a second, depending on who's watching, she's somebody else. Dickens sees something Faust doesn't, a color at the edge of her hair that might be a trick of the paint, a glint where glasses might be."
+      "text": "[shot:insert joan]The figure in the battle looks from one of them to the other. For half a second, depending on who's watching, she's somebody else. Dickens sees something Faust doesn't, a color at the edge of her hair that might be a trick of the paint, a glint where glasses might be."
     },
     {
       "t": "narrate",
@@ -559,7 +559,7 @@
     },
     {
       "t": "narrate",
-      "text": "Joan comes to Faust. Up close she's the woman from the foot of his bed, from the club, from his couch. Every eyelash and blemish of skin, far too real to be a dream."
+      "text": "[shot:insert joan]Joan comes to Faust. Up close she's the woman from the foot of his bed, from the club, from his couch. Every eyelash and blemish of skin, far too real to be a dream."
     },
     {
       "t": "say",
@@ -591,7 +591,7 @@
     },
     {
       "t": "narrate",
-      "text": "Joan smiles. She takes his hand and puts it on her back, on his own brushwork."
+      "text": "[shot:insert back]Joan smiles. She takes his hand and puts it on her back, on his own brushwork."
     },
     {
       "t": "say",
@@ -647,7 +647,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turns and walks back into the battle, deeper into the painting, past the foes and the smoke, toward an edge none of them can see. She doesn't look back. In the painting, for the first time, the battle is over. The strange foes lie down in the pigment and the smoke clears off into raw canvas."
+      "text": "[shot:insert smoke]She turns and walks back into the battle, deeper into the painting, past the foes and the smoke, toward an edge none of them can see. She doesn't look back. In the painting, for the first time, the battle is over. The strange foes lie down in the pigment and the smoke clears off into raw canvas."
     },
     {
       "t": "narrate",

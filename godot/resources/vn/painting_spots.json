@@ -1,8 +1,21 @@
 {
   "_doc": "Named parts of a 2D painting a cue can point at (GameEngine._painting_spot, 2026-11-08). Key: the bg src as resolve_bg gives it. Each spot: [u, v] or [u, v, zoom], u/v the spot's place on the picture from the top left (0..1); zoom defaults to 1.5. Place a spot by reading the picture on a grid; name it for the word the line uses.",
   "assets/backgrounds/vol1_deep_end_pool.jpg": {
-    "kids":   [0.20, 0.17],
+    "kids": [0.2, 0.17],
     "corpse": [0.82, 0.17],
-    "pool":   [0.50, 0.62]
+    "pool": [0.5, 0.62]
+  },
+  "assets/backgrounds/vol1_battle_painting.jpg": {
+    "joan": [0.5, 0.36],
+    "back": [0.47, 0.46, 1.7],
+    "foe": [0.86, 0.36],
+    "banner": [0.36, 0.1],
+    "smoke": [0.66, 0.16]
+  },
+  "assets/backgrounds/vol1_above_the_record.jpg": {
+    "square": [0.74, 0.63, 1.7],
+    "girl": [0.74, 0.65, 2.0],
+    "smoke": [0.76, 0.5],
+    "horizon": [0.55, 0.18, 1.4]
   }
 }
