@@ -392,8 +392,15 @@ def build_main_street_2026_09():
     make_box("Shop_Awning", (0.0, -0.62, 2.55), (4.0, 1.00, 0.06), (0.30, 0.34, 0.42, 1.0))
     for ai, ax in enumerate((-1.85, 1.85)):
         make_box(f"Shop_Awning_Arm_{ai}", (ax, -0.60, 2.50), (0.04, 1.02, 0.04), (0.20, 0.20, 0.22, 1.0))   # reaches the wall face and the awning
-    make_box("Shop_Sign", (0.0, -0.13, 2.85), (2.40, 0.06, 0.50), (0.22, 0.18, 0.16, 1.0))
-    make_box("Shop_Sign_Letters", (0.0, -0.165, 2.85), (2.00, 0.01, 0.22), (0.88, 0.80, 0.52, 1.0))
+    # (2026-11-08, the Deck: "sign text not visible, cutting through roof")
+    # the walls stop at CEIL (2.8) and the roof slab overhangs the front by
+    # 0.2, but the sign spans 2.60..3.10 — the roof cut through its letters.
+    # The parapet the comment above always meant: the front rises past the
+    # roof, covering its overhang, and the sign hangs on its face.
+    make_box("Facade_Parapet", (0.0, -0.05, CEIL + 0.30), (ROOM_W + 0.4, 0.30, 0.70), PAL_WALL["wall"])
+    make_box("Facade_Parapet_Cap", (0.0, -0.05, CEIL + 0.665), (ROOM_W + 0.5, 0.36, 0.04), (0.50, 0.46, 0.42, 1.0))
+    make_box("Shop_Sign", (0.0, -0.23, 2.95), (2.40, 0.06, 0.50), (0.22, 0.18, 0.16, 1.0))
+    make_box("Shop_Sign_Letters", (0.0, -0.265, 2.95), (2.00, 0.01, 0.22), (0.88, 0.80, 0.52, 1.0))
     make_box("Closed_Sign", (0.55, 0.014, 1.35), (0.22, 0.008, 0.14), (0.90, 0.88, 0.82, 1.0))   # on the door glass, street side
     # the far facade's breaks: laundromat (east of the mural), shoe repair (west)
     make_box("Laundromat_Door", (2.4, -8.92, 1.05), (0.95, 0.04, 2.10), (0.66, 0.64, 0.60, 1.0))

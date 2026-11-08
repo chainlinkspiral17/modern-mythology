@@ -8511,7 +8511,7 @@
           "locale": "cabin_interior",
           "label": "Forest_Band",
           "center": [
-            -15.5,
+            -15.0,
             0.25,
             7.5
           ],
@@ -8552,7 +8552,7 @@
           "locale": "cabin_interior",
           "label": "Forest_Band",
           "center": [
-            15.5,
+            15.0,
             0.25,
             7.5
           ],
@@ -8603,7 +8603,7 @@
           "label": "Forest_Band",
           "center": [
             0.0,
-            -18.0,
+            -17.5,
             7.5
           ],
           "size": [
@@ -8644,7 +8644,7 @@
           "label": "Forest_Band",
           "center": [
             0.0,
-            17.6,
+            17.1,
             7.5
           ],
           "size": [
@@ -8773,13 +8773,13 @@
           "locale": "lena_apartment",
           "label": "Canvas",
           "center": [
-            -2.473,
-            2.255,
-            1.175
+            3.05,
+            1.394,
+            1.2
           ],
           "size": [
-            0.68,
-            0.82
+            0.6,
+            0.72
           ],
           "facing": "-y",
           "hide": [
@@ -8815,13 +8815,13 @@
           "locale": "lena_apartment",
           "label": "Canvas",
           "center": [
-            -2.86,
-            2.385,
-            0.41
+            2.95,
+            0.11,
+            0.34
           ],
           "size": [
-            0.56,
-            0.72
+            0.52,
+            0.68
           ],
           "facing": "-y",
           "hide": [
@@ -8868,12 +8868,12 @@
           "label": "Nebula_*",
           "center": [
             -6.007,
-            1.347,
-            1.725
+            1.3,
+            1.7
           ],
           "size": [
-            2.15,
-            1.43
+            3.6,
+            2.2
           ],
           "facing": "+x",
           "hide": [
@@ -9015,7 +9015,7 @@
           "center": [
             -2.15,
             11.55,
-            0.09
+            0.18
           ],
           "size": [
             0.28,
@@ -9060,7 +9060,7 @@
           "label": "Hemlock_Across_Facade",
           "center": [
             0.0,
-            -7.6,
+            -7.3,
             2.0
           ],
           "size": [
@@ -9109,13 +9109,13 @@
           "locale": "salty_tome_interior",
           "label": "Nebula_*",
           "center": [
-            -0.825,
+            -0.85,
             11.888,
-            1.744
+            1.85
           ],
           "size": [
-            6.05,
-            1.56
+            7.3,
+            2.6
           ],
           "facing": "-y",
           "hide": [
@@ -9204,7 +9204,7 @@
           "center": [
             1.62,
             0.42,
-            0.555
+            0.669
           ],
           "size": [
             0.28,
@@ -9243,7 +9243,7 @@
           "locale": "hans_bakery_back_kitchen",
           "label": "Hemlock_Far",
           "center": [
-            -25.5,
+            -25.4,
             3.8,
             2.2
           ],
@@ -9285,7 +9285,7 @@
           "label": "Bin_Comic",
           "center": [
             -2.4,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9302,7 +9302,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.92,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9319,7 +9319,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.44,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9336,7 +9336,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.96,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9353,7 +9353,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.48,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9370,7 +9370,7 @@
           "label": "Bin_Comic",
           "center": [
             0.0,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9387,7 +9387,7 @@
           "label": "Bin_Comic",
           "center": [
             0.48,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9404,7 +9404,7 @@
           "label": "Bin_Comic",
           "center": [
             0.96,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9421,7 +9421,7 @@
           "label": "Bin_Comic",
           "center": [
             1.44,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9438,7 +9438,7 @@
           "label": "Bin_Comic",
           "center": [
             1.92,
-            2.55,
+            2.18,
             0.7
           ],
           "size": [
@@ -9455,7 +9455,7 @@
           "label": "Bin_Comic",
           "center": [
             -2.4,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9472,7 +9472,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.92,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9489,7 +9489,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.44,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9506,7 +9506,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.96,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9523,7 +9523,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.48,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9540,7 +9540,7 @@
           "label": "Bin_Comic",
           "center": [
             0.0,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9557,7 +9557,7 @@
           "label": "Bin_Comic",
           "center": [
             0.48,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9574,7 +9574,7 @@
           "label": "Bin_Comic",
           "center": [
             0.96,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9591,7 +9591,7 @@
           "label": "Bin_Comic",
           "center": [
             1.44,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9608,7 +9608,7 @@
           "label": "Bin_Comic",
           "center": [
             1.92,
-            2.95,
+            2.58,
             0.7
           ],
           "size": [
@@ -9625,7 +9625,7 @@
           "label": "Bin_Comic",
           "center": [
             -2.4,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9642,7 +9642,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.92,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9659,7 +9659,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.44,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9676,7 +9676,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.96,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9693,7 +9693,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.48,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9710,7 +9710,7 @@
           "label": "Bin_Comic",
           "center": [
             0.0,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9727,7 +9727,7 @@
           "label": "Bin_Comic",
           "center": [
             0.48,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9744,7 +9744,7 @@
           "label": "Bin_Comic",
           "center": [
             0.96,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9761,7 +9761,7 @@
           "label": "Bin_Comic",
           "center": [
             1.44,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9778,7 +9778,7 @@
           "label": "Bin_Comic",
           "center": [
             1.92,
-            3.8,
+            4.08,
             0.7
           ],
           "size": [
@@ -9795,7 +9795,7 @@
           "label": "Bin_Comic",
           "center": [
             -2.4,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9812,7 +9812,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.92,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9829,7 +9829,7 @@
           "label": "Bin_Comic",
           "center": [
             -1.44,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9846,7 +9846,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.96,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9863,7 +9863,7 @@
           "label": "Bin_Comic",
           "center": [
             -0.48,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9880,7 +9880,7 @@
           "label": "Bin_Comic",
           "center": [
             0.0,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9897,7 +9897,7 @@
           "label": "Bin_Comic",
           "center": [
             0.48,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9914,7 +9914,7 @@
           "label": "Bin_Comic",
           "center": [
             0.96,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9931,7 +9931,7 @@
           "label": "Bin_Comic",
           "center": [
             1.44,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9948,7 +9948,7 @@
           "label": "Bin_Comic",
           "center": [
             1.92,
-            4.2,
+            4.48,
             0.7
           ],
           "size": [
@@ -9964,8 +9964,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -2.4,
-            5.2,
+            -2.7,
+            5.98,
             0.7
           ],
           "size": [
@@ -9982,7 +9982,7 @@
           "label": "Bin_Comic",
           "center": [
             -2.06,
-            5.2,
+            5.98,
             0.7
           ],
           "size": [
@@ -9998,8 +9998,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -1.72,
-            5.2,
+            -2.22,
+            5.98,
             0.7
           ],
           "size": [
@@ -10015,8 +10015,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -1.38,
-            5.2,
+            -1.98,
+            5.98,
             0.7
           ],
           "size": [
@@ -10032,8 +10032,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -1.04,
-            5.2,
+            -1.74,
+            5.98,
             0.7
           ],
           "size": [
@@ -10049,8 +10049,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -0.7,
-            5.2,
+            -1.5,
+            5.98,
             0.7
           ],
           "size": [
@@ -10066,8 +10066,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -0.36,
-            5.2,
+            -1.26,
+            5.98,
             0.7
           ],
           "size": [
@@ -10083,8 +10083,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -0.02,
-            5.2,
+            -1.02,
+            5.98,
             0.7
           ],
           "size": [
@@ -10100,8 +10100,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            0.32,
-            5.2,
+            -0.78,
+            5.98,
             0.7
           ],
           "size": [
@@ -10117,8 +10117,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            0.66,
-            5.2,
+            -0.54,
+            5.98,
             0.7
           ],
           "size": [
@@ -10134,8 +10134,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -2.4,
-            5.6,
+            -2.7,
+            6.38,
             0.7
           ],
           "size": [
@@ -10151,8 +10151,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -2.06,
-            5.6,
+            -2.46,
+            6.38,
             0.7
           ],
           "size": [
@@ -10168,8 +10168,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -1.72,
-            5.6,
+            -2.22,
+            6.38,
             0.7
           ],
           "size": [
@@ -10185,8 +10185,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -1.38,
-            5.6,
+            -1.98,
+            6.38,
             0.7
           ],
           "size": [
@@ -10202,8 +10202,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -1.04,
-            5.6,
+            -1.74,
+            6.38,
             0.7
           ],
           "size": [
@@ -10219,8 +10219,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -0.7,
-            5.6,
+            -1.5,
+            6.38,
             0.7
           ],
           "size": [
@@ -10236,8 +10236,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -0.36,
-            5.6,
+            -1.26,
+            6.38,
             0.7
           ],
           "size": [
@@ -10253,8 +10253,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            -0.02,
-            5.6,
+            -1.02,
+            6.38,
             0.7
           ],
           "size": [
@@ -10270,8 +10270,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            0.32,
-            5.6,
+            -0.78,
+            6.38,
             0.7
           ],
           "size": [
@@ -10287,8 +10287,8 @@
           "locale": "cosmic_comics_interior",
           "label": "Bin_Comic",
           "center": [
-            0.66,
-            5.6,
+            -0.54,
+            6.38,
             0.7
           ],
           "size": [
@@ -10787,8 +10787,8 @@
           "locale": "cosmic_comics_interior",
           "label": "NewArrivals_Comic",
           "center": [
-            -0.55,
-            1.82,
+            2.55,
+            1.54,
             0.445
           ],
           "size": [
@@ -10804,8 +10804,8 @@
           "locale": "cosmic_comics_interior",
           "label": "NewArrivals_Comic",
           "center": [
-            0.0,
-            1.82,
+            3.1,
+            1.54,
             0.445
           ],
           "size": [
@@ -10821,8 +10821,8 @@
           "locale": "cosmic_comics_interior",
           "label": "NewArrivals_Comic",
           "center": [
-            0.55,
-            1.82,
+            3.65,
+            1.54,
             0.445
           ],
           "size": [
@@ -10838,8 +10838,8 @@
           "locale": "cosmic_comics_interior",
           "label": "NewArrivals_Comic",
           "center": [
-            -0.55,
-            2.2,
+            2.55,
+            1.92,
             0.445
           ],
           "size": [
@@ -10855,8 +10855,8 @@
           "locale": "cosmic_comics_interior",
           "label": "NewArrivals_Comic",
           "center": [
-            0.0,
-            2.2,
+            3.1,
+            1.92,
             0.445
           ],
           "size": [
@@ -10872,8 +10872,8 @@
           "locale": "cosmic_comics_interior",
           "label": "NewArrivals_Comic",
           "center": [
-            0.55,
-            2.2,
+            3.65,
+            1.92,
             0.445
           ],
           "size": [
@@ -12081,8 +12081,8 @@
           "label": "Shop_Sign",
           "center": [
             0.0,
-            -0.141,
-            2.85
+            -0.27,
+            2.95
           ],
           "size": [
             2.4,
@@ -12205,7 +12205,7 @@
           "label": "Aisle_TopSign",
           "center": [
             0.0,
-            5.17,
+            5.13,
             2.5
           ],
           "size": [
@@ -12737,7 +12737,7 @@
           "locale": "kwik_stop",
           "label": "PropaneCage_Sign",
           "center": [
-            -4.0,
+            -5.35,
             -1.51,
             1.46
           ],
@@ -12777,9 +12777,9 @@
           "locale": "kwik_stop",
           "label": "Pump_Display",
           "center": [
-            -2.2,
-            -2.473,
-            1.2
+            -3.5,
+            -13.2244,
+            1.35
           ],
           "size": [
             0.4,
@@ -12818,9 +12818,9 @@
           "locale": "kwik_stop",
           "label": "Pump_Display",
           "center": [
-            2.2,
-            -2.473,
-            1.2
+            3.5,
+            -13.2244,
+            1.35
           ],
           "size": [
             0.4,
@@ -13112,13 +13112,13 @@
           "locale": "graustark",
           "label": "Devil_*",
           "center": [
-            256.625,
+            256.5,
             -384.545,
-            2.265
+            2.2648
           ],
           "size": [
-            0.95,
-            1.62
+            1.4,
+            3.24
           ],
           "facing": "+y",
           "hide": [
@@ -13130,13 +13130,13 @@
           "locale": "graustark",
           "label": "Devil_*",
           "center": [
-            263.375,
+            263.5,
             -384.545,
-            2.265
+            2.2648
           ],
           "size": [
-            0.95,
-            1.62
+            1.4,
+            3.24
           ],
           "facing": "+y",
           "hide": [
@@ -13239,7 +13239,7 @@
           "locale": "graustark",
           "label": "Devil_Daigle_Neon",
           "center": [
-            267.1,
+            252.85,
             -380.0,
             3.065
           ],
@@ -13280,7 +13280,7 @@
           "locale": "graustark",
           "label": "Devil_Daigle_NeonOpen",
           "center": [
-            252.9,
+            252.95,
             -379.0,
             3.065
           ],
@@ -13321,7 +13321,7 @@
           "locale": "graustark",
           "label": "Devil_Daigle_NeonOpen",
           "center": [
-            252.9,
+            252.95,
             -379.9,
             3.065
           ],
@@ -13363,7 +13363,7 @@
           "label": "Devil_Daigle_Sign",
           "center": [
             260.0,
-            -384.55,
+            -384.475,
             3.465
           ],
           "size": [
@@ -13446,7 +13446,7 @@
           "label": "FarHill",
           "center": [
             148.0,
-            -10.0,
+            7.5,
             3.5
           ],
           "size": [
@@ -13487,7 +13487,7 @@
           "label": "FarHill",
           "center": [
             150.0,
-            45.0,
+            59.0,
             4.5
           ],
           "size": [
@@ -13528,7 +13528,7 @@
           "label": "FarHill",
           "center": [
             144.0,
-            20.0,
+            35.0,
             2.5
           ],
           "size": [
@@ -13569,11 +13569,11 @@
           "label": "FarHill",
           "center": [
             142.0,
-            -45.0,
+            -29.0,
             1.5
           ],
           "size": [
-            32.0,
+            18.0,
             8.0
           ],
           "facing": "+y",
@@ -13693,7 +13693,7 @@
           "label": "GasStation_Sign",
           "center": [
             -61.5,
-            -40.0,
+            -39.94,
             8.5
           ],
           "size": [
@@ -13813,7 +13813,7 @@
           "locale": "graustark",
           "label": "Graustark_FQ_Row_RestaurantSign",
           "center": [
-            -314.729,
+            -314.629,
             90.0,
             3.916
           ],
@@ -13975,7 +13975,7 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -156.0,
-            -106.1,
+            -106.0,
             3.4
           ],
           "size": [
@@ -13992,7 +13992,7 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -148.0,
-            -106.1,
+            -106.0,
             3.4
           ],
           "size": [
@@ -14009,7 +14009,7 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -140.0,
-            -106.1,
+            -106.0,
             3.4
           ],
           "size": [
@@ -14026,7 +14026,7 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -132.0,
-            -106.1,
+            -106.0,
             3.4
           ],
           "size": [
@@ -14043,7 +14043,7 @@
           "label": "Graustark_StripMall_Sign",
           "center": [
             -124.0,
-            -106.1,
+            -106.0,
             3.4
           ],
           "size": [
@@ -14083,7 +14083,7 @@
           "label": "Hwy_Sign",
           "center": [
             -115.0,
-            -10.25,
+            -10.2,
             13.6
           ],
           "size": [
@@ -14123,7 +14123,7 @@
           "label": "Park_SignPanel",
           "center": [
             -66.7,
-            -83.5,
+            -83.46,
             2.5
           ],
           "size": [
@@ -14407,7 +14407,7 @@
           "locale": "graustark",
           "label": "Temperance_Lounge_Sign",
           "center": [
-            -313.55,
+            -313.45,
             133.5,
             5.281
           ],
@@ -14449,7 +14449,7 @@
           "label": "Wheel_Casino_NeonDisc",
           "center": [
             -200.0,
-            292.95,
+            293.05,
             13.16
           ],
           "size": [
@@ -14489,7 +14489,7 @@
           "label": "World_FrogShop_FrogSign",
           "center": [
             150.0,
-            295.45,
+            295.5,
             12.128
           ],
           "size": [
@@ -14907,7 +14907,7 @@
           "label": "Entrance_Sign",
           "center": [
             0.0,
-            -0.164,
+            -0.11,
             3.6
           ],
           "size": [
@@ -15518,8 +15518,8 @@
             1.013
           ],
           "size": [
-            0.17,
-            0.17
+            0.27,
+            0.29
           ],
           "facing": "up",
           "hide": [
@@ -15561,7 +15561,7 @@
           "label": "Prints",
           "center": [
             2.95,
-            4.82,
+            4.77,
             1.115
           ],
           "size": [
@@ -15654,7 +15654,7 @@
           "locale": "finn_apartment",
           "label": "Coat_Canvas",
           "center": [
-            4.03,
+            3.99,
             3.1,
             1.28
           ],
@@ -15735,7 +15735,7 @@
           "label": "Out_N_Treeline",
           "center": [
             0.0,
-            17.6,
+            17.4,
             1.5
           ],
           "size": [
@@ -15780,7 +15780,7 @@
           "label": "TV",
           "center": [
             -3.013,
-            0.321,
+            0.53,
             0.86
           ],
           "size": [
@@ -15908,7 +15908,7 @@
           "label": "Across_Facade",
           "center": [
             0.0,
-            -7.2,
+            -6.9,
             2.0
           ],
           "size": [
@@ -15948,7 +15948,7 @@
           "label": "Marcus_Monitor",
           "center": [
             3.1,
-            -2.1,
+            -2.01,
             1.06
           ],
           "size": [
@@ -15991,7 +15991,7 @@
           "label": "Out_Facade",
           "center": [
             -0.2,
-            7.55,
+            7.45,
             -21.3
           ],
           "size": [
@@ -16031,7 +16031,7 @@
           "locale": "houston_office",
           "label": "Out_Facade",
           "center": [
-            -5.05,
+            -4.95,
             -6.5,
             -21.3
           ],
@@ -16161,7 +16161,7 @@
           "label": "DinerSign",
           "center": [
             0.0,
-            -6.325,
+            -6.25,
             4.4
           ],
           "size": [
@@ -16255,7 +16255,7 @@
           "center": [
             19.0,
             -7.6,
-            1.92
+            2.01
           ],
           "size": [
             0.84,
@@ -16299,7 +16299,7 @@
           "locale": "diner",
           "label": "RV_Distant",
           "center": [
-            -79.0,
+            -77.0,
             -8.0,
             0.5
           ],
@@ -16345,7 +16345,7 @@
           "locale": "diner",
           "label": "RV_Distant",
           "center": [
-            -77.0,
+            -75.5,
             6.0,
             0.0
           ],
@@ -16507,7 +16507,7 @@
           "locale": "new_orleans_office",
           "label": "Out_Facade",
           "center": [
-            0.0,
+            -7.0,
             0.0,
             -1.8
           ],
@@ -16742,13 +16742,13 @@
           "locale": "new_orleans_bar",
           "label": "Exit_Sign",
           "center": [
-            8.524,
+            8.535,
             7.85,
-            2.35
+            2.43
           ],
           "size": [
-            0.08,
-            0.19
+            0.11,
+            0.38
           ],
           "facing": "up",
           "hide": [
@@ -17712,7 +17712,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            -16.0,
+            -15.5,
             5.0
           ],
           "size": [
@@ -17791,7 +17791,7 @@
           "locale": "new_orleans_apartment",
           "label": "TV",
           "center": [
-            2.8,
+            2.75,
             2.2,
             0.95
           ],
@@ -17981,7 +17981,7 @@
           "label": "Hill",
           "center": [
             -40.0,
-            -72.0,
+            -57.0,
             9.0
           ],
           "size": [
@@ -18102,13 +18102,13 @@
           "locale": "daily_grind_interior",
           "label": "Menu",
           "center": [
-            2.475,
+            2.7,
             9.853,
-            2.733
+            2.75
           ],
           "size": [
-            2.4,
-            0.46
+            3.8,
+            1.0
           ],
           "facing": "-y",
           "hide": [
@@ -18435,13 +18435,13 @@
           "locale": "missing_link_interior",
           "label": "KitchenDoor_*",
           "center": [
-            0.652,
+            0.6,
             6.985,
-            1.074
+            1.02
           ],
           "size": [
-            0.57,
-            1.12
+            0.94,
+            2.03
           ],
           "facing": "-y",
           "hide": [
@@ -18537,11 +18537,11 @@
           "center": [
             3.9,
             0.148,
-            2.498
+            2.47
           ],
           "size": [
-            0.46,
-            0.23
+            0.92,
+            0.36
           ],
           "facing": "+y",
           "hide": [
@@ -18940,7 +18940,7 @@
           "locale": "elicia_apartment",
           "label": "Dead_Monitor",
           "center": [
-            -2.975,
+            -2.89,
             2.45,
             1.05
           ],
@@ -18981,7 +18981,7 @@
           "locale": "elicia_apartment",
           "label": "Dead_Monitor",
           "center": [
-            -2.975,
+            -2.89,
             3.35,
             1.05
           ],
@@ -19086,7 +19086,7 @@
           "locale": "elicia_apartment",
           "label": "Skyline",
           "center": [
-            -12.0,
+            -11.85,
             3.0,
             4.0
           ],
@@ -19126,7 +19126,7 @@
           "locale": "new_auburn_road",
           "label": "Bypass_Sign",
           "center": [
-            5.4,
+            -0.2,
             96.0,
             2.4
           ],
@@ -19400,7 +19400,7 @@
           "locale": "new_auburn_road",
           "label": "Marquee",
           "center": [
-            11.5,
+            11.43,
             35.5,
             3.1
           ],
@@ -19497,7 +19497,7 @@
           "locale": "new_auburn_road",
           "label": "NAPD_Sign",
           "center": [
-            -4.35,
+            -4.275,
             12.0,
             0.95
           ],
@@ -19840,12 +19840,12 @@
           "label": "Unit_*",
           "center": [
             11.945,
-            42.051,
-            1.819
+            42.0425,
+            1.7975
           ],
           "size": [
-            0.61,
-            0.35
+            0.905,
+            0.585
           ],
           "facing": "-x",
           "hide": [
@@ -20087,7 +20087,7 @@
           "locale": "roberts_kitchen",
           "label": "Window",
           "center": [
-            3.857,
+            5.355,
             3.5,
             1.55
           ],
@@ -20132,7 +20132,7 @@
           "label": "Sign",
           "center": [
             0.02,
-            -0.174,
+            -0.12,
             4.11
           ],
           "size": [
@@ -20274,8 +20274,8 @@
           "locale": "el_rancho_taqueria",
           "label": "Speaker_Broke_Sign",
           "center": [
-            4.54,
-            3.2,
+            6.0325,
+            6.2,
             1.12
           ],
           "size": [
@@ -20795,11 +20795,11 @@
           "center": [
             -2.0,
             0.111,
-            1.671
+            1.72
           ],
           "size": [
-            0.3,
-            0.55
+            0.6,
+            0.9
           ],
           "facing": "+y",
           "hide": [
@@ -20844,11 +20844,11 @@
           "center": [
             1.95,
             0.111,
-            1.634
+            1.68
           ],
           "size": [
-            0.28,
-            0.51
+            0.56,
+            0.84
           ],
           "facing": "+y",
           "hide": [
@@ -21021,7 +21021,7 @@
           "locale": "faust_apartment",
           "label": "Bike_*",
           "center": [
-            1.53,
+            1.48,
             0.56,
             0.33
           ],
@@ -21062,7 +21062,7 @@
           "locale": "faust_apartment",
           "label": "Bike_*",
           "center": [
-            1.53,
+            1.48,
             1.58,
             0.33
           ],
@@ -21341,7 +21341,7 @@
           "locale": "kestrel_mountain",
           "label": "Mountain",
           "center": [
-            -70.0,
+            -20.0,
             30.0,
             15.0
           ],
@@ -21563,7 +21563,7 @@
           "locale": "smolvud_jetty",
           "label": "Far",
           "center": [
-            -170.0,
+            -130.0,
             40.0,
             4.0
           ],
@@ -21813,7 +21813,7 @@
           "locale": "cape_perpetua_overlook",
           "label": "Bluff",
           "center": [
-            -6.1,
+            -5.6,
             12.0,
             -3.95
           ],
@@ -21860,7 +21860,7 @@
           "center": [
             -2.85,
             11.55,
-            0.58
+            0.694
           ],
           "size": [
             0.28,
@@ -22033,7 +22033,7 @@
           "label": "Aisle_Sign",
           "center": [
             -0.8,
-            4.0,
+            4.05,
             2.3
           ],
           "size": [
@@ -22073,7 +22073,7 @@
           "locale": "highway_101",
           "label": "Far",
           "center": [
-            -600.0,
+            -580.0,
             0.0,
             8.0
           ],
@@ -22165,7 +22165,7 @@
           "label": "Hash_Neon",
           "center": [
             2.0,
-            17.962,
+            17.92,
             4.0
           ],
           "size": [
@@ -22214,7 +22214,7 @@
           "label": "Sign",
           "center": [
             -6.464,
-            6.5,
+            6.38,
             4.7
           ],
           "size": [
@@ -22259,7 +22259,7 @@
           "label": "Sign",
           "center": [
             -5.9,
-            6.5,
+            6.455,
             3.85
           ],
           "size": [
@@ -22299,7 +22299,7 @@
           "label": "Sign",
           "center": [
             -5.15,
-            6.5,
+            6.455,
             3.85
           ],
           "size": [
@@ -22351,7 +22351,7 @@
           "label": "Gate_Sign",
           "center": [
             1.6,
-            1.854,
+            1.795,
             2.314
           ],
           "size": [
@@ -22394,7 +22394,7 @@
           "label": "Main_Sign",
           "center": [
             -4.0,
-            8.4,
+            8.31,
             3.45
           ],
           "size": [
@@ -22643,7 +22643,7 @@
           "label": "GasStation_Sign",
           "center": [
             -61.5,
-            -40.0,
+            -39.94,
             8.5
           ],
           "size": [
@@ -22726,7 +22726,7 @@
           "label": "Hwy_Sign",
           "center": [
             -115.0,
-            -10.25,
+            -10.3,
             13.6
           ],
           "size": [
@@ -22767,7 +22767,7 @@
           "label": "Park_SignPanel",
           "center": [
             -66.7,
-            -83.5,
+            -83.46,
             2.5
           ],
           "size": [
@@ -23073,7 +23073,7 @@
           "label": "Bus_Stop_Sign",
           "center": [
             8.0,
-            8.83,
+            8.77,
             2.45
           ],
           "size": [
@@ -23113,7 +23113,7 @@
           "label": "Parish_Sign",
           "center": [
             25.1,
-            8.448,
+            8.34,
             2.6
           ],
           "size": [
@@ -23160,7 +23160,7 @@
           "label": "Sign",
           "center": [
             -10.7,
-            5.42,
+            5.38,
             2.05
           ],
           "size": [
@@ -23201,7 +23201,7 @@
           "label": "Sign",
           "center": [
             -10.7,
-            5.42,
+            5.37,
             2.7
           ],
           "size": [
@@ -23308,7 +23308,7 @@
           "locale": "lena_studio",
           "label": "Old_Canvas",
           "center": [
-            0.2,
+            0.2625,
             4.3,
             0.49
           ],
@@ -23402,7 +23402,7 @@
           "label": "FarWindbreak",
           "center": [
             0.0,
-            760.0,
+            757.5,
             5.5
           ],
           "size": [
@@ -23420,7 +23420,7 @@
           "label": "FarWindbreak",
           "center": [
             0.0,
-            460.0,
+            457.5,
             4.5
           ],
           "size": [
@@ -23438,7 +23438,7 @@
           "label": "FarWindbreak",
           "center": [
             0.0,
-            260.0,
+            257.5,
             3.75
           ],
           "size": [
@@ -23456,7 +23456,7 @@
           "label": "FarWindbreak",
           "center": [
             0.0,
-            130.0,
+            127.5,
             3.0
           ],
           "size": [
@@ -23474,7 +23474,7 @@
           "label": "FarWindbreak",
           "center": [
             0.0,
-            60.0,
+            57.5,
             2.5
           ],
           "size": [
@@ -23522,13 +23522,13 @@
           "locale": "crumpled_barn",
           "label": "Sign",
           "center": [
-            0.649,
-            8.578,
-            1.448
+            0.9572,
+            8.705,
+            1.4031
           ],
           "size": [
-            0.57,
-            0.3
+            0.4412,
+            0.3093
           ],
           "facing": "-y",
           "hide": [
@@ -23614,13 +23614,13 @@
           "locale": "crumpled_barn",
           "label": "Sign",
           "center": [
-            0.902,
-            8.511,
-            1.593
+            1.0039,
+            8.71,
+            1.6103
           ],
           "size": [
-            0.12,
-            0.23
+            0.2254,
+            0.3808
           ],
           "facing": "-y",
           "hide": [
@@ -23800,8 +23800,8 @@
             1.062
           ],
           "size": [
-            0.29,
-            0.09
+            0.36,
+            0.18
           ],
           "facing": "up",
           "hide": [
@@ -24162,7 +24162,7 @@
           "label": "Across_Facade",
           "center": [
             0.0,
-            -9.05,
+            -8.925,
             2.2
           ],
           "size": [
@@ -24203,11 +24203,11 @@
           "center": [
             0.0,
             8.885,
-            2.525
+            2.55
           ],
           "size": [
-            2.4,
-            0.26
+            4.8,
+            0.42
           ],
           "facing": "-y",
           "hide": [
@@ -24372,11 +24372,11 @@
           "center": [
             -5.87,
             5.4,
-            1.663
+            1.7
           ],
           "size": [
-            0.2,
-            0.33
+            0.4,
+            0.5
           ],
           "facing": "+x",
           "hide": [
@@ -24415,11 +24415,11 @@
           "center": [
             5.878,
             3.2,
-            2.05
+            2.0
           ],
           "size": [
-            0.3,
-            0.5
+            0.6,
+            0.8
           ],
           "facing": "-x",
           "hide": [
@@ -24457,7 +24457,7 @@
           "label": "Billboard",
           "center": [
             119.5,
-            -12.0,
+            -11.94,
             6.48
           ],
           "size": [
@@ -24704,11 +24704,11 @@
           "center": [
             14.896,
             5.4,
-            1.663
+            1.7
           ],
           "size": [
-            0.2,
-            0.33
+            0.4,
+            0.5
           ],
           "facing": "-x",
           "hide": [
@@ -24885,7 +24885,7 @@
           "label": "Office_Monitor",
           "center": [
             12.9,
-            0.793,
+            0.91,
             3.95
           ],
           "size": [
@@ -25266,7 +25266,7 @@
           "label": "Strip_Across_Sign",
           "center": [
             -2.0,
-            -5.94,
+            -5.88,
             3.0
           ],
           "size": [
@@ -25468,7 +25468,7 @@
           "label": "Out_S_Facade",
           "center": [
             0.0,
-            -8.0,
+            -7.8,
             2.4
           ],
           "size": [
@@ -25507,7 +25507,7 @@
           "locale": "chillwave_interior",
           "label": "Display",
           "center": [
-            -2.55,
+            -2.505,
             0.55,
             0.58
           ],
@@ -25548,7 +25548,7 @@
           "locale": "chillwave_interior",
           "label": "Display",
           "center": [
-            -1.95,
+            -1.905,
             0.55,
             0.58
           ],
@@ -25591,7 +25591,7 @@
           "label": "House_Body_Facade",
           "center": [
             0.0,
-            8.1,
+            4.1,
             2.6
           ],
           "size": [
@@ -25631,7 +25631,7 @@
           "locale": "caldwell_porch_night",
           "label": "Neighbour_House_Facade",
           "center": [
-            21.0,
+            17.0,
             2.0,
             2.4
           ],
@@ -25672,7 +25672,7 @@
           "locale": "caldwell_porch_night",
           "label": "Street_House_Facade",
           "center": [
-            28.0,
+            23.5,
             19.0,
             2.1
           ],
@@ -25714,7 +25714,7 @@
           "label": "Street_House_Facade",
           "center": [
             -6.0,
-            24.0,
+            20.0,
             2.4
           ],
           "size": [
@@ -25755,7 +25755,7 @@
           "label": "Street_House_Facade",
           "center": [
             12.0,
-            21.0,
+            17.0,
             2.2
           ],
           "size": [
@@ -26197,11 +26197,11 @@
           "center": [
             1.727,
             1.45,
-            1.53
+            1.55
           ],
           "size": [
-            0.2,
-            0.36
+            0.4,
+            0.5
           ],
           "facing": "-x",
           "hide": [
@@ -27380,7 +27380,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            -12.0,
+            -11.3,
             1.4
           ],
           "size": [
@@ -27691,12 +27691,12 @@
           "label": "Painting",
           "center": [
             5.874,
-            4.946,
-            1.942
+            5.085,
+            1.95
           ],
           "size": [
-            0.51,
-            0.53
+            0.97,
+            0.8
           ],
           "facing": "-x",
           "hide": [
@@ -27736,12 +27736,12 @@
           "label": "Painting",
           "center": [
             5.874,
-            1.997,
-            1.905
+            2.085,
+            1.95
           ],
           "size": [
-            0.58,
-            0.44
+            1.07,
+            0.7
           ],
           "facing": "-x",
           "hide": [
@@ -28040,7 +28040,7 @@
           "label": "CounterRun_*",
           "center": [
             1.0,
-            5.195,
+            6.365,
             0.37
           ],
           "size": [
@@ -28080,7 +28080,7 @@
           "label": "CounterRun_*",
           "center": [
             -0.75,
-            5.195,
+            6.365,
             0.37
           ],
           "size": [
@@ -28120,7 +28120,7 @@
           "label": "CounterRun_*",
           "center": [
             1.0,
-            5.195,
+            6.365,
             0.76
           ],
           "size": [
@@ -28160,7 +28160,7 @@
           "label": "CounterRun_*",
           "center": [
             -0.75,
-            5.195,
+            6.365,
             0.76
           ],
           "size": [
@@ -28199,13 +28199,13 @@
           "locale": "el_rancho_taqueria",
           "label": "MenuBoard",
           "center": [
-            1.75,
-            5.88,
+            2.5,
+            8.86,
             2.05
           ],
           "size": [
-            2.24,
-            0.92
+            2.34,
+            1.02
           ],
           "facing": "-y",
           "hide": [
@@ -28327,7 +28327,7 @@
           "label": "Garden_Far",
           "center": [
             0.0,
-            17.5,
+            17.2,
             3.0
           ],
           "size": [
@@ -29070,8 +29070,8 @@
             0.026
           ],
           "size": [
-            0.45,
-            0.28
+            0.7,
+            0.56
           ],
           "facing": "up",
           "hide": [
@@ -29114,8 +29114,8 @@
             0.026
           ],
           "size": [
-            0.32,
-            0.2
+            0.5,
+            0.4
           ],
           "facing": "up",
           "hide": [
@@ -29153,7 +29153,7 @@
           "locale": "faust_apartment",
           "label": "Leaned_Canvas",
           "center": [
-            3.785,
+            3.738,
             5.95,
             0.422
           ],
@@ -29609,7 +29609,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            6.55,
+            6.45,
             -16.05
           ],
           "size": [
@@ -29692,7 +29692,7 @@
           "label": "Across_House_Facade",
           "center": [
             -8.0,
-            -28.5,
+            -25.0,
             1.5
           ],
           "size": [
@@ -29733,7 +29733,7 @@
           "label": "Across_House_Facade",
           "center": [
             3.0,
-            -28.5,
+            -25.0,
             1.5
           ],
           "size": [
@@ -29773,7 +29773,7 @@
           "locale": "kowalski_backyard",
           "label": "Across_House_Facade",
           "center": [
-            14.0,
+            9.5,
             -28.5,
             1.5
           ],
@@ -30564,7 +30564,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            17.5,
+            17.3,
             1.5
           ],
           "size": [
@@ -30605,7 +30605,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            5.1,
+            5.0,
             -1.9
           ],
           "size": [
@@ -30646,7 +30646,7 @@
           "label": "Out_Facade",
           "center": [
             0.0,
-            5.1,
+            5.0,
             4.2
           ],
           "size": [
@@ -30729,7 +30729,7 @@
           "label": "Jetty_Sign",
           "center": [
             2.4,
-            -6.445,
+            -6.36,
             3.42
           ],
           "size": [
@@ -30903,7 +30903,7 @@
           "label": "Far",
           "center": [
             -24.0,
-            -60.0,
+            -56.2,
             2.4
           ],
           "size": [
@@ -30921,7 +30921,7 @@
           "label": "Far",
           "center": [
             -12.0,
-            -60.0,
+            -56.2,
             2.4
           ],
           "size": [
@@ -30939,7 +30939,7 @@
           "label": "Far",
           "center": [
             0.0,
-            -60.0,
+            -56.2,
             2.4
           ],
           "size": [
@@ -30957,7 +30957,7 @@
           "label": "Far",
           "center": [
             12.0,
-            -60.0,
+            -56.2,
             2.4
           ],
           "size": [
@@ -30975,7 +30975,7 @@
           "label": "Far",
           "center": [
             24.0,
-            -60.0,
+            -56.2,
             2.4
           ],
           "size": [
@@ -31016,11 +31016,11 @@
           "center": [
             5.893,
             1.4,
-            1.6
+            1.55
           ],
           "size": [
-            0.23,
-            0.41
+            0.46,
+            0.62
           ],
           "facing": "-x",
           "hide": [
@@ -31826,11 +31826,11 @@
           "center": [
             6.9,
             14.593,
-            0.522
+            0.48
           ],
           "size": [
-            0.3,
-            0.54
+            0.6,
+            0.9
           ],
           "facing": "+y",
           "hide": [
@@ -31870,8 +31870,8 @@
             1.9
           ],
           "size": [
-            0.66,
-            0.3
+            0.9,
+            0.6
           ],
           "facing": "-y",
           "hide": [
@@ -32422,7 +32422,7 @@
           "label": "Billboard",
           "center": [
             119.5,
-            -12.0,
+            -12.06,
             6.48
           ],
           "size": [
@@ -32505,7 +32505,7 @@
           "locale": "riverfront",
           "label": "FarHill",
           "center": [
-            148.0,
+            135.5,
             -10.0,
             3.5
           ],
@@ -32547,7 +32547,7 @@
           "locale": "riverfront",
           "label": "FarHill",
           "center": [
-            150.0,
+            139.0,
             45.0,
             4.5
           ],
@@ -32589,7 +32589,7 @@
           "locale": "riverfront",
           "label": "FarHill",
           "center": [
-            144.0,
+            134.0,
             20.0,
             2.5
           ],
@@ -32631,7 +32631,7 @@
           "locale": "riverfront",
           "label": "FarHill",
           "center": [
-            142.0,
+            133.0,
             -45.0,
             1.5
           ],
@@ -33217,7 +33217,7 @@
           "label": "Facade",
           "center": [
             0.0,
-            5.0,
+            4.41,
             3.1
           ],
           "size": [
@@ -33627,11 +33627,11 @@
           "center": [
             5.873,
             0.9,
-            1.57
+            1.55
           ],
           "size": [
-            0.55,
-            0.49
+            1.1,
+            0.8
           ],
           "facing": "-x",
           "hide": [
@@ -34545,7 +34545,7 @@
           "label": "TV",
           "center": [
             -0.4,
-            5.733,
+            5.65,
             0.86
           ],
           "size": [
@@ -34711,7 +34711,7 @@
           "label": "House_Facade",
           "center": [
             -14.0,
-            12.0,
+            8.0,
             1.871
           ],
           "size": [
@@ -34729,7 +34729,7 @@
           "label": "House_Facade",
           "center": [
             -14.0,
-            -4.0,
+            -8.0,
             1.914
           ],
           "size": [
@@ -34746,7 +34746,7 @@
           "locale": "gallatin_water_tower",
           "label": "House_Facade",
           "center": [
-            -14.0,
+            -9.5,
             -20.0,
             1.808
           ],
@@ -34765,7 +34765,7 @@
           "label": "House_Facade",
           "center": [
             14.0,
-            8.0,
+            4.0,
             1.805
           ],
           "size": [
@@ -34783,7 +34783,7 @@
           "label": "House_Facade",
           "center": [
             14.0,
-            -8.0,
+            -12.0,
             1.757
           ],
           "size": [
@@ -34800,7 +34800,7 @@
           "locale": "gallatin_water_tower",
           "label": "House_Facade",
           "center": [
-            14.0,
+            9.5,
             -24.0,
             1.999
           ],
@@ -35312,7 +35312,7 @@
           "label": "Tepui_Far",
           "center": [
             11.0,
-            17.6,
+            17.2,
             4.8
           ],
           "size": [
@@ -49129,8 +49129,8 @@
           "locale": "natalie_apartment",
           "label": "Fanned_Card_2",
           "center": [
-            -0.57,
-            2.72,
+            1.98,
+            2.55,
             0.2775
           ],
           "size": [
@@ -49711,11 +49711,11 @@
           "center": [
             11.0,
             -3.89,
-            2.35
+            2.555
           ],
           "size": [
             2.4,
-            0.5
+            0.91
           ],
           "facing": "+y",
           "hide": [
@@ -49729,11 +49729,11 @@
           "center": [
             11.0,
             -3.917,
-            2.35
+            2.555
           ],
           "size": [
             2.4,
-            0.5
+            0.91
           ],
           "facing": "-y",
           "hide": [
@@ -51675,7 +51675,7 @@
           "label": "Poster_1",
           "center": [
             -8.2,
-            7.889,
+            2.06,
             1.63
           ],
           "size": [
@@ -52157,13 +52157,13 @@
           "locale": "airport_cabin",
           "label": "Notebook_Open",
           "center": [
-            61.55,
-            8.0,
+            61.48,
+            7.995,
             0.7675
           ],
           "size": [
-            0.3,
-            0.22
+            0.12,
+            0.154
           ],
           "facing": "up",
           "hide": [
@@ -52264,7 +52264,7 @@
           ],
           "size": [
             1.68,
-            0.5
+            1.18
           ],
           "facing": "+y",
           "hide": [
@@ -52281,7 +52281,7 @@
           ],
           "size": [
             1.68,
-            0.5
+            1.18
           ],
           "facing": "+y",
           "hide": [
@@ -52769,13 +52769,13 @@
           "locale": "chau_house",
           "label": "Win_Living_N1_Pane",
           "center": [
-            -1.5,
+            -2.3,
             13.97,
-            1.5
+            1.85
           ],
           "size": [
-            2.4,
-            1.4
+            2.6,
+            2.8
           ],
           "facing": "-y",
           "hide": [
@@ -52786,13 +52786,13 @@
           "locale": "chau_house",
           "label": "Win_Living_N2_Pane",
           "center": [
-            4.0,
+            4.5,
             13.97,
-            1.5
+            1.85
           ],
           "size": [
-            1.6,
-            1.3
+            2.2,
+            2.8
           ],
           "facing": "-y",
           "hide": [
@@ -52833,11 +52833,11 @@
           "center": [
             11.97,
             6.0,
-            1.5
+            1.7
           ],
           "size": [
-            1.4,
-            1.3
+            2.2,
+            2.4
           ],
           "facing": "-x",
           "hide": [
@@ -58485,11 +58485,11 @@
           "center": [
             -374.0,
             -20.16,
-            7.0
+            4.05
           ],
           "size": [
             4.4,
-            2.2
+            8.1
           ],
           "facing": "-y",
           "hide": [
@@ -58562,7 +58562,7 @@
           "label": "Office_Sign",
           "center": [
             -379.0,
-            2.92,
+            2.96,
             2.75
           ],
           "size": [
@@ -58660,7 +58660,7 @@
           "label": "cabin_interior_south_window_w",
           "center": [
             -2.0,
-            0.07,
+            0.1225,
             1.45
           ],
           "size": [
@@ -58711,7 +58711,7 @@
           "label": "cabin_interior_south_window_e",
           "center": [
             2.25,
-            0.07,
+            0.1225,
             1.45
           ],
           "size": [
@@ -59882,7 +59882,7 @@
           "label": "cabin_interior_south_window_w",
           "center": [
             -2.0,
-            0.07,
+            0.1225,
             1.45
           ],
           "size": [
@@ -59941,7 +59941,7 @@
           "label": "cabin_interior_south_window_e",
           "center": [
             2.25,
-            0.07,
+            0.1225,
             1.45
           ],
           "size": [
@@ -60643,8 +60643,8 @@
             3.3
           ],
           "size": [
-            3.8,
-            0.6
+            3.2,
+            0.32
           ],
           "facing": "-x",
           "hide": [
@@ -60773,7 +60773,7 @@
           "locale": "honolulu_highrise",
           "label": "honolulu_photo_parlour_sign",
           "center": [
-            -8.827,
+            -8.9,
             5.0,
             3.2
           ],
@@ -60816,7 +60816,7 @@
           "locale": "honolulu_highrise",
           "label": "honolulu_travel_agency_sign",
           "center": [
-            -8.827,
+            -8.9,
             10.5,
             3.2
           ],
@@ -60859,7 +60859,7 @@
           "locale": "honolulu_highrise",
           "label": "honolulu_suit_shop_sign",
           "center": [
-            8.827,
+            8.9,
             3.7,
             3.2
           ],
@@ -60902,7 +60902,7 @@
           "locale": "honolulu_highrise",
           "label": "honolulu_dry_cleaner_sign",
           "center": [
-            8.827,
+            8.9,
             12.3,
             3.2
           ],
