@@ -477,6 +477,8 @@ def build_game_room():
         for side in (-1, 1):
             make_box(f"Fridge_{k}_Cheek_{side:+d}", (fx - 0.35, y + side * 0.45, 1.05), (0.10, 0.02, 2.10), (0.70, 0.72, 0.74, 1.0))
         make_box(f"Fridge_{k}_Cap", (fx - 0.35, y, 2.08), (0.10, 0.92, 0.04), (0.70, 0.72, 0.74, 1.0))
+        # the kick plate the grille is set in (the body now stops short of the door)
+        make_box(f"Fridge_{k}_Kick", (fx - 0.35, y, 0.12), (0.10, 0.92, 0.24), (0.70, 0.72, 0.74, 1.0))
         # (2026-11-08) alpha 0.35: LocaleGlass makes the door see-through, so the
         # drinks the prose stocks them with read (at 1.0 the door was a slab)
         make_box(f"Fridge_{k}_Glass", (fx - 0.402, y, 1.10), (0.004, 0.74, 1.70), (0.42, 0.52, 0.58, 0.35))
