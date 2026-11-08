@@ -875,7 +875,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "What if — what if I want to stay.",
+      "text": "[shot:closeup person]What if — what if I want to stay.",
       "expr": "thinking",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/157.mp3"
     },
@@ -901,7 +901,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "I can be left here alone. Not — not happily. Not without grief. But I can be. I am, in the four-thirty hour, learning how. By the time you would leave, I will know.",
+      "text": "[shot:closeup person]I can be left here alone. Not — not happily. Not without grief. But I can be. I am, in the four-thirty hour, learning how. By the time you would leave, I will know.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/161.ogg"
     },

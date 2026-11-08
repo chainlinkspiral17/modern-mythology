@@ -515,7 +515,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "I'm fourteen minutes late.",
+      "text": "[shot:closeup elicia]I'm fourteen minutes late.",
       "char": "elicia",
       "voice": "assets/audio/voice/vol5_ch19_sun/094.mp3"
     },

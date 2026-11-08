@@ -556,7 +556,7 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday.",
+   "text": "[shot:closeup person]\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday.",
    "voice": "assets/audio/voice/vol6_ch3_back_room/086.ogg"
   },
   {

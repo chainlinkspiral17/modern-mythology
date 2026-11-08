@@ -565,7 +565,7 @@
     {
       "t": "say",
       "char": "alberto",
-      "text": "Eri. You should be running this firm.",
+      "text": "[shot:insert phone]Eri. You should be running this firm.",
       "voice": "assets/audio/voice/vol5_ch10_wheel/109.mp3"
     },
     {

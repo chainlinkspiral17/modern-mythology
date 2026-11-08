@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "She takes the dishtowel from him. She dries.",
+      "text": "[shot:insert sink_light]She takes the dishtowel from him. She dries.",
       "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/023.mp3"
     },
     {
@@ -162,7 +162,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine.",
+      "text": "[shot:insert window]In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine.",
       "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/029.mp3"
     },
     {

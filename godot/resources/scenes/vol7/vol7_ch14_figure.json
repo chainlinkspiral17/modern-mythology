@@ -512,7 +512,7 @@
     },
     {
       "char": "kai",
-      "text": "I am — I am not in Kestrel Mountain tonight. I am here. The face is here.",
+      "text": "[shot:insert face]I am — I am not in Kestrel Mountain tonight. I am here. The face is here.",
       "expr": "serious",
       "t": "say"
     },

@@ -101,7 +101,7 @@
       "t": "say",
       "char": "Tem",
       "expr": "cold",
-      "text": "\"He used Lena's name twice.\""
+      "text": "[shot:closeup person]\"He used Lena's name twice.\""
     },
     {
       "t": "say",

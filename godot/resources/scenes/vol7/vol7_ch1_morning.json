@@ -1590,7 +1590,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "What is going to happen to us.",
+      "text": "[shot:closeup person]What is going to happen to us.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol7_ch1_morning/230.mp3"
     },

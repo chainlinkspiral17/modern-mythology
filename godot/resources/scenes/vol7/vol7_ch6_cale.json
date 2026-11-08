@@ -615,7 +615,7 @@
     },
     {
       "char": "lena",
-      "text": "How do you know about the floors.",
+      "text": "[shot:closeup person]How do you know about the floors.",
       "expr": "serious",
       "t": "say"
     },
@@ -639,7 +639,7 @@
     },
     {
       "char": "cale",
-      "text": "The gallery was where the unfinished work was going to go. The pieces he started and didn't solve. He knew at twenty-eight he was going to die before some of them were finished. He told me he wanted somewhere to put them.",
+      "text": "[shot:closeup person]The gallery was where the unfinished work was going to go. The pieces he started and didn't solve. He knew at twenty-eight he was going to die before some of them were finished. He told me he wanted somewhere to put them.",
       "expr": "serious",
       "t": "say"
     },
