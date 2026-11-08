@@ -110,7 +110,7 @@ def build_store():
     for zz in (0.48, 2.32):
         make_box(f"Store_Window_Frame_Rail_{zz:.2f}", (41.8, y0, zz), (2.48, T + 0.02, 0.06), TRIM)
     make_box("Store_Door_Glass_Frame", (46.8, y0, 1.05), (0.98, 0.05, 2.08), (0.30, 0.30, 0.30, 1.0))
-    make_box("Store_Door_Glass_Pane", (46.8, y0, 1.15), (0.80, 0.02, 1.70), (0.62, 0.66, 0.68, 1.0))
+    make_box("Store_Door_Glass_Pane", (46.8, y0, 1.15), (0.80, 0.02, 1.70), (0.62, 0.66, 0.68, 0.30))   # (2026-11-08) glass: the counter and stock inside are built
     make_box("Store_Hours_Card_Mounted", (46.8, y0 - 0.025, 1.50), (0.20, 0.01, 0.14), (0.94, 0.92, 0.84, 1.0))
     # the counter at y 7 (x 41..46), the register, the stock behind it
     make_box("Counter_Front", (43.5, 7.0, 0.50), (5.0, 0.60, 1.00), (0.44, 0.34, 0.24, 1.0))

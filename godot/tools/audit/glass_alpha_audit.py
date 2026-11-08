@@ -30,7 +30,7 @@ NOT_PANE = re.compile(
     r"pint|goblet|jar|bottle|cup|mug|lens|shard|ashtray|frame|mullion|sill|"
     r"rim|lid|panel|palette|crate|recess|basin|vanity|water|dish|broken|glint|"
     r"header|storefronts|propane|rack|rail|post|base|head|decal|bulb|seam|ledge|"
-    r"band|chain|top)", re.I)
+    r"band|chain|top|liquid)", re.I)
 CALLS = {"make_box", "make_rot_box", "make_cyl", "make_chamfer_box", "_mb", "_mc"}
 
 # Parts read and judged OPAQUE ON PURPOSE (builder, name as the report
@@ -56,6 +56,13 @@ JUDGED = {
     ("build_copy_shop.py", "Shop_Front_Glass"): "night glass with the blinds down behind it",
     ("build_caltech_dabney.py", "Sp_Window_Glass"): "painted daylight; nothing modelled outside",
     ("build_carrie_city.py", "Dryer_Door_Glass"): "a dryer porthole; nothing inside",
+    ("build_editing_suite.py", "Suite_Window_Pane"): "the text: 'the one window and nothing out of it: a pale, featureless pane'",
+    ("build_wagner_home.py", "Jacob_Window_Pane_{}"): "on a solid house body",
+    ("build_nick_house.py", "Front_Window_Pane_{}"): "dark at night, 'no lamp lit behind them'",
+    ("build_small_wood_backyard.py", "House_Window_{}_Glass"): "on the house wall; nothing modelled inside",
+    ("build_centro_break_room.py", "Dock_Door_WireGlass"): "wired glass in a door",
+    ("build_cathedral_interior.py", "RiverWindow_Glass"): "a dark-blue painted slab; the runtime light brings the river's spill",
+    ("build_missing_link_exterior.py", "Diner_DoorGlass"): "COL_GLOW: the lit diner seen from outside",
 }
 
 

@@ -272,7 +272,7 @@ def build_gallery():
     # the glass front on y 0 with its doors kick-stopped open
     make_wall_with_openings("Gallery_Wall_S", ((x0 + x1) / 2, y0, 0.0), length=x1 - x0, height=H, thickness=0.16, axis='X', palette=PAL,
                             baseboard_face_sign=+1, openings=[(104.0, 1.4, 5.0, 2.6), (110.0, 1.4, 5.0, 2.6)])
-    make_box("Gallery_Front_Glass", (110.0, y0, 1.4), (5.0, 0.03, 2.6), (0.30, 0.36, 0.40, 1.0))
+    make_box("Gallery_Front_Glass", (110.0, y0, 1.4), (5.0, 0.03, 2.6), (0.30, 0.36, 0.40, 0.30))   # (2026-11-08) glass: the gallery inside is built
     make_box("Gallery_Door_L_Open", (103.0, y0 + 0.5, 1.15), (0.04, 0.95, 2.3), (0.30, 0.36, 0.40, 1.0))
     make_box("Gallery_Door_R_Open", (105.0, y0 + 0.5, 1.15), (0.04, 0.95, 2.3), (0.30, 0.36, 0.40, 1.0))
     make_box("Gallery_Doorstop", (105.0, y0 + 0.95, 0.03), (0.08, 0.14, 0.05), (0.40, 0.20, 0.14, 1.0))
