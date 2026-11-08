@@ -197,7 +197,7 @@ shadow_enabled = false
 omni_range = 5.0
 
 ; (round 3) the porch's bare bulb (Front_Porch_Bulb_*), the yard read by the moon
-[node name="Porch_Bulb__farm_porch_night" type="OmniLight3D" parent="."]
+[node name="Porch_Bulb__farm_porch_night__farm_living_night" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 2.2, 1.0)
 light_color = Color(1.0, 0.84, 0.56, 1)
 light_energy = 1.2
@@ -515,9 +515,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__farm_living_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.800, 1.212, -1.191)
-rotation = Vector3(-0.2618, -3.0916, 0.0)
-metadata/fov = 35.0
+position = Vector3(-1.000, 1.400, -2.600)
+rotation = Vector3(-0.1200, 3.1000, 0.0)
+metadata/fov = 46.0
 
 ; (2026-11-03) "painted what remained of the plaster": the painted plaster from a step back (1.1 m off)
 [node name="shot_insert_plaster__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]

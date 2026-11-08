@@ -459,9 +459,9 @@ rotation = Vector3(0.3000, -1.7680, 0.0)
 metadata/fov = 55.0
 
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(39.600, 2.550, 371.900)
-rotation = Vector3(0.1779, -0.4528, 0.0)
-metadata/fov = 34.0
+position = Vector3(40.500, 2.950, 372.600)
+rotation = Vector3(-0.0300, 0.0000, 0.0)
+metadata/fov = 20.0
 
 [node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(53.150, 1.620, 380.850)
