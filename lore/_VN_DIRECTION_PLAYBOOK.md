@@ -334,8 +334,10 @@ whose id the picture names pushes in on it.
 
 **Rule:** read the picture on a 10x10 grid, name each spot for the word
 the line uses (the clock, the raven, "sky smoke"), and cue it only on a
-line that names it. Keep a spot's v above ~0.62 or push it up: the text
-box covers the bottom third, and a spot behind it reads as nothing.
+line that names it. Give the spot's REAL place: the engine brings it to
+centre across and 0.38 down (above the text box), clamped to the margin
+the zoom opens — so a spot in the bottom fifth (a bottle in the gutter)
+can't climb clear of the box; cue something else on that line.
 Zoom 1.5 by default, 2.0 at most (past it the picture blurs). Engine-test
 with VnLineShot `--next 1 --wait 200` and read the frame; FRAME2D in the
 log shows the push. painting_spot_audit holds the file and the cues to
