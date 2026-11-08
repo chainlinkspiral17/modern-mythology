@@ -85,5 +85,25 @@
     "minivans": [0.5, 0.55, 1.6],
     "hans": [0.08, 0.42, 2.0],
     "curtain": [0.92, 0.27, 2.0]
+  },
+  "assets/backgrounds/vol5_prelude_ep19_ravensway.jpg": {
+    "broken_bridge": [0.28, 0.47, 1.8],
+    "water_tower": [0.75, 0.28, 1.6],
+    "window": [0.92, 0.45, 1.8],
+    "sunset": [0.26, 0.36, 1.6]
+  },
+  "assets/backgrounds/vol5_prelude_ep14_milk_and_honey.jpg": {
+    "torch": [0.32, 0.28, 1.9],
+    "store": [0.8, 0.44, 1.6],
+    "pumps": [0.1, 0.42, 1.8],
+    "trash": [0.73, 0.52, 2.0],
+    "vehicles": [0.5, 0.48, 1.7],
+    "pavement": [0.4, 0.62, 1.5]
+  },
+  "assets/backgrounds/vol2_scumm_missing_link_vga.jpg": {
+    "aud": [0.24, 0.2, 1.8],
+    "cup": [0.28, 0.4, 2.0],
+    "door": [0.82, 0.36, 1.7],
+    "window": [0.55, 0.22, 1.7]
   }
 }

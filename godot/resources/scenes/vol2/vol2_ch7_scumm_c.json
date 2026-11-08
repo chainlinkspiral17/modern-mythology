@@ -37,11 +37,11 @@
     },
     {
       "t": "narrate",
-      "text": "Missing Link is right where it's supposed to be and the light inside is the yellow of the inside of a pie. Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain."
+      "text": "[shot:insert aud]Missing Link is right where it's supposed to be and the light inside is the yellow of the inside of a pie. Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain."
     },
     {
       "t": "narrate",
-      "text": "She's pouring coffee into a cup that's already full and it goes over the rim, down the counter, onto the floor, out the door, and it doesn't stop, the way the river behind our house doesn't stop."
+      "text": "[shot:insert cup]She's pouring coffee into a cup that's already full and it goes over the rim, down the counter, onto the floor, out the door, and it doesn't stop, the way the river behind our house doesn't stop."
     },
     {
       "t": "narrate",
@@ -78,7 +78,7 @@
     },
     {
       "t": "narrate",
-      "text": "When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
+      "text": "[shot:insert aud]When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
     },
     {
       "t": "say",
@@ -119,7 +119,7 @@
     },
     {
       "t": "narrate",
-      "text": "When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
+      "text": "[shot:insert door]When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
     },
     {
       "t": "say",

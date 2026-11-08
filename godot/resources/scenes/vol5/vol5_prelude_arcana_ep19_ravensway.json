@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "Poets, preachers, and painter junkies, all peeking in through the fogged up window, broken prophets, all, during that brief and wondrous awful reign of chaos."
+      "text": "[shot:insert window]Poets, preachers, and painter junkies, all peeking in through the fogged up window, broken prophets, all, during that brief and wondrous awful reign of chaos."
     },
     {
       "t": "narrate",
@@ -109,7 +109,7 @@
     },
     {
       "t": "narrate",
-      "text": "Find the frog. He has much to show you.\nI tried calling him a name, and he got mad at me.\nEvery day at sunset he goes and sits on the edge of the broken bridge."
+      "text": "[shot:insert broken_bridge]Find the frog. He has much to show you.\nI tried calling him a name, and he got mad at me.\nEvery day at sunset he goes and sits on the edge of the broken bridge."
     },
     {
       "t": "narrate",
@@ -117,11 +117,11 @@
     },
     {
       "t": "narrate",
-      "text": "Go spend a moment in the shade under the water tower\nAnd you can practically feel the guilt, anguish and paranoia\nof burying a body (alive?) right there in that loose damp earth\nthat clumps when rubbed together."
+      "text": "[shot:insert water_tower]Go spend a moment in the shade under the water tower\nAnd you can practically feel the guilt, anguish and paranoia\nof burying a body (alive?) right there in that loose damp earth\nthat clumps when rubbed together."
     },
     {
       "t": "narrate",
-      "text": "The experience was almost too good\nsuch that upon leaving ravensway few ever wanted to return.\nOnce was enough, indeed."
+      "text": "[shot:insert sunset]The experience was almost too good\nsuch that upon leaving ravensway few ever wanted to return.\nOnce was enough, indeed."
     },
     {
       "t": "hide",
