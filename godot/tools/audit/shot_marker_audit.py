@@ -77,10 +77,20 @@ def markers_in(res_rel_path):
         return None
     src = open(path).read()
     names = set(re.findall(r'\[node name="(shot_[\w]+)"', src))
-    # A per-preset marker (`shot_closeup_person__salty_tome_alley`)
-    # covers the plain cue for its preset; existence is what this
-    # audit asks, so the base name counts too (2026-09-12).
-    return names | {n.split("__")[0] for n in names}
+    # The raw names: a per-preset marker
+    # (`shot_closeup_person__salty_tome_alley`) covers the plain cue
+    # for ITS preset only — see covers() (2026-11-08).
+    return names
+
+
+def covers(have, name, preset):
+    """The director's own reading (Background3D.find_shot_marker): the
+    `<name>__<preset>` override, else the plain name. A marker suffixed
+    for ANOTHER area of the same geometry is skipped there, so it does
+    not cover the cue here. Until 2026-11-08 this audit counted any
+    suffix as cover, and 5+ cues borrowed a substitute frame unseen
+    (the Blue Heron's journal insert sat on the Salty Tome's suffix)."""
+    return name in have or (name + "__" + preset) in have
 
 
 # ── Does the cued OBJECT even exist? ───────────────────────────
@@ -280,7 +290,7 @@ def main():
         if have is None:
             no_marker_support[preset] += n
             continue
-        if ("shot_%s_%s" % (typ, sid)) not in have:
+        if not covers(have, "shot_%s_%s" % (typ, sid), preset):
             gaps[preset][(typ, sid)] += n
 
     total_blind = sum(sum(c.values()) for c in gaps.values())

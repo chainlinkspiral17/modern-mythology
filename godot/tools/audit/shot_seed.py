@@ -64,7 +64,12 @@ def locale_markers(src):
     scene = p2s.get(preset)
     if not scene:
         return None, []
-    return os.path.basename(scene)[:-5], SM.markers_in(scene)
+    # the director's reading: plain names, plus THIS preset's overrides
+    # under their base name (another area's suffixed markers are skipped)
+    raw = SM.markers_in(scene) or set()
+    names = {n for n in raw if "__" not in n}
+    names |= {n.split("__")[0] for n in raw if n.endswith("__" + preset)}
+    return os.path.basename(scene)[:-5], names
 
 
 def words_for(cue_id):

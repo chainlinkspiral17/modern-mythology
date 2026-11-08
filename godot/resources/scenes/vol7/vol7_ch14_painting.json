@@ -296,7 +296,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert dumpster]The rain had been steady all night. The puddles in the alley were the puddles. The dumpster behind Petra's was the dumpster.",
+      "text": "[shot:wide alley]The rain had been steady all night. The puddles in the alley were the puddles. The dumpster behind Petra's was the dumpster.",
       "t": "narrate"
     },
     {
@@ -524,7 +524,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert lids]She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
+      "text": "[shot:insert face]She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
       "t": "narrate"
     },
     {
@@ -536,7 +536,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert paint]She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count.",
+      "text": "[shot:insert brush]She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count.",
       "t": "narrate"
     },
     {

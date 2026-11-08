@@ -284,7 +284,7 @@
     {
       "t": "say",
       "char": "gloria",
-      "text": "[shot:closeup person]He's never gonna eat, Hector.",
+      "text": "He's never gonna eat, Hector.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/055.mp3"
     },
     {
