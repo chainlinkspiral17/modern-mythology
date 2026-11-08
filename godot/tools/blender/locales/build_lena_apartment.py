@@ -116,6 +116,11 @@ def build_shell():
     make_wall("Wall_S_DoorFill_E", (0.875, 0.0, 0), length=0.25, height=2.0, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_cyl("Door_Knob", (0.34, 0.10, 1.00), 0.035, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
     make_box("Deadbolt", (0.34, 0.10, 1.22), (0.06, 0.03, 0.10), (0.74, 0.60, 0.30, 1.0))
+    # (2026-11-08) the entry's flush-mount: "Lena turned the deadbolt" (vol7
+    # ch7, a held beat) cut to a black door 5 m from the floor lamp. The
+    # tscn's Entry_Flushmount light hangs from this fixture.
+    make_cyl("Entry_Flushmount_Base", (0.30, 0.90, CEIL - 0.015), 0.16, 0.03, COL_FRAME, segments=14)
+    make_cyl("Entry_Flushmount_Glow", (0.30, 0.90, CEIL - 0.055), 0.13, 0.05, (1.0, 0.92, 0.74, 1.0), segments=14)
     # Four hooks, four coats — by the door
     for i, hx in enumerate((-2.35, -2.15, -1.95, -1.75)):   # (2026-09-22: three of four hung in the door gap; Wall_S_W is x -2.5..-1.0)
         make_cyl(f"Coat_Hook_{i}", (hx, 0.10, 1.70), 0.015, 0.06, COL_FRAME, axis='Y', segments=6)
