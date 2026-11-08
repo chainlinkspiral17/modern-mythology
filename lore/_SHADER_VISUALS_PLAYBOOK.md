@@ -242,6 +242,30 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-11-08 · every screen shape: px_scale, the wide VN, the painting's halo
+
+- **Pixel lengths are DESIGN pixels.** The painted / ASCII / dither shaders
+  were tuned at one screen pixel per canvas unit (the Deck). At 1440p a
+  "4 px" brush or a 10 px ASCII cell is half the size. `px_scale` (global
+  shader uniform, project.godot [shader_globals], set by ScreenMgr) is the
+  window's pixels per canvas unit: a shader that measures in pixels
+  divides FRAGCOORD by it and multiplies SCREEN_PIXEL_SIZE by it — pixel
+  to UV conversions still cancel exactly. A NEW pixel-based shader must do
+  the same (`global uniform float px_scale;`).
+- **The 3D set renders at the screen's own resolution.** Background3D sizes
+  its SubViewport in real pixels and scales the container down
+  (_fit_native); 3D DETAIL lowers Viewport.scaling_3d_scale for speed, so
+  the post-process still runs at full size and px_scale stays one value.
+- **Wide screens are opt-in per surface.** ScreenMgr.request_wide(self):
+  while such a surface is up the canvas EXPANDS to the screen's shape;
+  everything else keeps the 16:9 frame, pillarboxed. The VN spends the
+  width on the background (3D sets keep their vertical field and see more
+  of the room; paintings show whole at full height with
+  painting_halo.gdshader carrying them on past their edges — mirrored,
+  blurred, feathered, drifting in the trip's hue). Text and portraits stay
+  in ScreenMgr.center_band().
+
+
 ### 2026-10-23 · the sky is painted in the fog colour unless fog_sky_affect says otherwise (pass 158)
 
 - **What happened:** every exterior's sky had read as a grey-blue wall since the 3D backgrounds

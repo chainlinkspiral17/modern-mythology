@@ -19,6 +19,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -84,7 +87,7 @@ float luma(vec3 c) {
 
 void fragment() {
     vec2 uv = SCREEN_UV;
-    vec2 px = SCREEN_PIXEL_SIZE * edge_thickness;
+    vec2 px = (SCREEN_PIXEL_SIZE * px_scale) * edge_thickness;
 
     // 3x3 luminance Sobel
     float l00 = luma(texture(SCREEN_TEXTURE, uv + vec2(-px.x, -px.y)).rgb);
@@ -137,7 +140,7 @@ void fragment() {
     fill = mix(fill, scene_now * 1.8, scene_blend * bleed_mask);
 
     // Cheap bloom: sample a wider edge mask for the glow halo
-    vec2 gpx = SCREEN_PIXEL_SIZE * (edge_thickness + 3.0);
+    vec2 gpx = (SCREEN_PIXEL_SIZE * px_scale) * (edge_thickness + 3.0);
     float l00g = luma(texture(SCREEN_TEXTURE, uv + vec2(-gpx.x, -gpx.y)).rgb);
     float l20g = luma(texture(SCREEN_TEXTURE, uv + vec2( gpx.x, -gpx.y)).rgb);
     float l02g = luma(texture(SCREEN_TEXTURE, uv + vec2(-gpx.x,  gpx.y)).rgb);

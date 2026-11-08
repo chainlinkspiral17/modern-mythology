@@ -20,6 +20,9 @@
 // 2D), typically set by MoodCycler reading the player velocity.
 // ════════════════════════════════════════════════════════════════
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -57,7 +60,7 @@ void fragment() {
         float tw = 0.0;
         for (int i = 1; i <= 6; i++) {
             float fi = float(i);
-            vec2 off = -dir * fi * 2.2 * SCREEN_PIXEL_SIZE * motion_speed * 9.0;
+            vec2 off = -dir * fi * 2.2 * (SCREEN_PIXEL_SIZE * px_scale) * motion_speed * 9.0;
             vec3 s = texture(SCREEN_TEXTURE, SCREEN_UV + off).rgb;
             // max-blend keeps highlights streaking (anime feel)
             trail = max(trail, s * (1.0 - fi * 0.10));
@@ -65,7 +68,7 @@ void fragment() {
         }
 
         // ── SPEED LINES · per-cell ASCII strokes parallel to motion ──
-        vec2 frag = FRAGCOORD.xy;
+        vec2 frag = (FRAGCOORD.xy / px_scale);
         vec2 cell_idx = floor(frag / cell_size);
         vec2 local = fract(frag / cell_size);
 

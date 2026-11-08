@@ -11,6 +11,9 @@
 // is applied to the blurred result.
 // ════════════════════════════════════════════════════════════════
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -37,15 +40,15 @@ void fragment() {
             vec2 offset;
             if (blur_mode == 1) {
                 // Directional / motion
-                offset = motion_dir * fi * radius * SCREEN_PIXEL_SIZE;
+                offset = motion_dir * fi * radius * (SCREEN_PIXEL_SIZE * px_scale);
             } else if (blur_mode == 2) {
                 // Radial — direction is from screen centre outward
-                vec2 dir = normalize(SCREEN_UV - vec2(0.5)) * fi * radius * SCREEN_PIXEL_SIZE.x;
+                vec2 dir = normalize(SCREEN_UV - vec2(0.5)) * fi * radius * (SCREEN_PIXEL_SIZE * px_scale).x;
                 offset = dir;
             } else {
                 // Gaussian — combine N along axis-aligned dirs for cheap box-ish gauss
                 float ang = fi * 0.78539816;   // π/4 increments around the circle
-                offset = vec2(cos(ang), sin(ang)) * radius * SCREEN_PIXEL_SIZE;
+                offset = vec2(cos(ang), sin(ang)) * radius * (SCREEN_PIXEL_SIZE * px_scale);
             }
             acc += texture(SCREEN_TEXTURE, SCREEN_UV + offset).rgb * w;
             wsum += w;

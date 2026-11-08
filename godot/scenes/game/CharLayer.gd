@@ -315,6 +315,19 @@ const POSITIONS := {
 	"center": Vector2(250, 0),     # (2026-10-27) was -20: the middle of a three-shot sat 20 px over the others' eye line
 	"right":  Vector2(570, 0),
 }
+## WIDE SCREENS (2026-11-08): the slots stay at the edges of the centre
+## 16:9 band (ScreenMgr.center_band) — the extra width on a wide screen is
+## the background's, not the cast's (the user: "keep the text in the
+## center, and portraits on the edges of the center").
+func _slot_pos(pos: String) -> Vector2:
+	var p: Vector2 = POSITIONS[pos]
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	if sm != null and sm.has_method("center_band"):
+		var band: Rect2 = sm.call("center_band")
+		p.x += band.position.x
+	return p
+
+
 const SPRITE_W    := 780.0
 const SPRITE_H    := 900.0
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
@@ -853,7 +866,7 @@ func _process(delta: float) -> void:
 		var phase: float  = IDLE_PHASE[pos]
 		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
 		var entrance_y: float = float(node.get_meta("entrance_y")) if node.has_meta("entrance_y") else 0.0
-		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy + entrance_y)
+		node.position = _slot_pos(pos) + Vector2(pdx, idle_y + pdy + entrance_y)
 		# ── Subtle breath: ±1% scale on the tint_holder, longer period
 		# than position sway so the two motions don't beat against each
 		# other. Reads as the figure inhaling.
@@ -1469,7 +1482,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.clip_contents        = true
 	wrapper.custom_minimum_size  = Vector2(SPRITE_W, SPRITE_H)
 	wrapper.size                 = Vector2(SPRITE_W, SPRITE_H)
-	wrapper.position             = POSITIONS[pos]
+	wrapper.position             = _slot_pos(pos)
 	wrapper.modulate.a           = 0.0
 
 	var key       := char_key(char_name)

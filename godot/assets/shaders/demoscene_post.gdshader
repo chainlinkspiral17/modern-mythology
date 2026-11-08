@@ -25,6 +25,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 // filter_linear so the post-process samples smoothly when the
 // 1280×720 canvas is stretched to a larger window. filter_nearest
@@ -106,7 +109,7 @@ float ascii_ramp(float luma, vec2 cell) {
 
 void fragment() {
     vec2 uv = SCREEN_UV;
-    vec2 pixel_coord = FRAGCOORD.xy;
+    vec2 pixel_coord = (FRAGCOORD.xy / px_scale);
 
     // ── chromatic aberration ──
     vec3 col;

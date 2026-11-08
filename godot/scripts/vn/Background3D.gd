@@ -5996,6 +5996,62 @@ const TRIP_PAINT_UNDER: float = 0.85
 func _ready() -> void:
 	custom_minimum_size = Vector2(BG_W, BG_H)
 	_add_painted_pass()
+	# (2026-11-08) THE SET AT THE SCREEN'S OWN RESOLUTION. A SubViewport
+	# sized in canvas units renders 1280x720 and the window stretches it —
+	# soft at 1440p. _fit_native sizes it in real pixels and scales the
+	# container back down, so the set renders 1:1 on any screen, and fills
+	# the canvas's whole width (the camera keeps its vertical field: a wide
+	# screen sees more of the room to either side, never less above).
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	if sm != null and sm.has_signal("layout_changed"):
+		sm.connect("layout_changed", _fit_native_deferred)
+	var st: Node = get_node_or_null("/root/Settings")
+	if st != null and st.has_signal("settings_changed"):
+		st.connect("settings_changed", func(key: String, _v: Variant) -> void:
+			if key == "detail_3d":
+				_fit_native_deferred())
+	_fit_native_deferred()
+
+
+var _native_fit_pending: bool = false
+
+
+func _fit_native_deferred() -> void:
+	if _native_fit_pending:
+		return
+	_native_fit_pending = true
+	_fit_native.call_deferred()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PARENTED:
+		var pc: Control = get_parent() as Control
+		if pc != null and not pc.resized.is_connected(_fit_native_deferred):
+			pc.resized.connect(_fit_native_deferred)
+
+
+func _fit_native() -> void:
+	_native_fit_pending = false
+	if not is_inside_tree():
+		return
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	var k: float = 1.0
+	if sm != null and "px_scale" in sm:
+		k = maxf(float(sm.get("px_scale")), 1.0)
+	var area: Vector2 = get_parent_area_size()
+	if area.x < 1.0 or area.y < 1.0:
+		return
+	custom_minimum_size = Vector2.ZERO
+	set_anchors_preset(Control.PRESET_TOP_LEFT)
+	position = Vector2.ZERO
+	scale = Vector2(1.0 / k, 1.0 / k)
+	size = (area * k).round()
+	var st: Node = get_node_or_null("/root/Settings")
+	if _viewport != null:
+		var rs: float = 1.0
+		if st != null and st.has_method("get_3d_scale"):
+			rs = float(st.call("get_3d_scale"))
+		_viewport.scaling_3d_scale = rs
 
 
 func _process(_delta: float) -> void:
@@ -6424,6 +6480,8 @@ func _push_noise_shift() -> void:
 		return
 	var fov_v: float = deg_to_rad(_camera.fov)
 	var aspect: float = float(BG_W) / float(BG_H)
+	if _viewport != null and _viewport.size.y > 0:
+		aspect = float(_viewport.size.x) / float(_viewport.size.y)
 	var fov_h: float = 2.0 * atan(tan(fov_v * 0.5) * aspect)
 	var shift := Vector2(_camera.rotation.y / fov_h, _camera.rotation.x / fov_v)
 	if shift.distance_to(_noise_shift) > 1e-5:

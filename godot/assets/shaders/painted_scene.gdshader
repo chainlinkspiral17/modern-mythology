@@ -16,6 +16,9 @@
 // rides above this, inked). Static: nothing boils. `paint` 0 = off.
 // ════════════════════════════════════════════════════════════════
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 #include "res://assets/shaders/watercolor.gdshaderinc"
 
@@ -144,5 +147,5 @@ vec4 paint_from(sampler2D TEX, vec2 uv0, vec2 px) {
 }
 
 void fragment() {
-    COLOR = paint_from(screen_tex, SCREEN_UV, SCREEN_PIXEL_SIZE);
+    COLOR = paint_from(screen_tex, SCREEN_UV, (SCREEN_PIXEL_SIZE * px_scale));
 }

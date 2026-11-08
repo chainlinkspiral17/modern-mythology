@@ -28,6 +28,8 @@ var _trip_beat:      float  = 1.0    # THE TRIP mix · how much the beat shows
 var _trip_trails:    float  = 1.0    # THE TRIP mix · the feedback buffer (Minter light trails)
 var _auto_play:      bool   = false  # AUTO-PLAY: every chapter reads itself, choices picked
 var _hud_bar:        String = "auto" # TOP BAR: "auto" (shows on an update / at the top edge) | "always"
+var _wide_screens:   String = "fill" # WIDE SCREENS (2026-11-08): "fill" (wide-ready surfaces use the whole screen) | "pillarbox"
+var _detail_3d:      String = "native" # 3D DETAIL: "native" (every pixel) | "balanced" (0.75) | "fast" (0.5)
 
 
 var txt_scale: float:
@@ -106,6 +108,29 @@ var hud_bar: String:
 		_hud_bar = val
 		settings_changed.emit("hud_bar", val)
 		_save()
+
+var wide_screens: String:
+	get: return _wide_screens
+	set(val):
+		_wide_screens = val if val in ["fill", "pillarbox"] else "fill"
+		settings_changed.emit("wide_screens", _wide_screens)
+		_save()
+
+var detail_3d: String:
+	get: return _detail_3d
+	set(val):
+		_detail_3d = val if val in ["native", "balanced", "fast"] else "native"
+		settings_changed.emit("detail_3d", _detail_3d)
+		_save()
+
+
+## the 3D sets' render scale for the chosen detail (Viewport.scaling_3d_scale)
+func get_3d_scale() -> float:
+	match _detail_3d:
+		"balanced": return 0.75
+		"fast": return 0.5
+	return 1.0
+
 
 var window_mode: String:
 	get: return _window_mode
@@ -214,6 +239,10 @@ func _apply_window_mode(mode: String) -> void:
 			call_deferred("_resize_window", 1600, 900)
 		"1080p":
 			call_deferred("_resize_window", 1920, 1080)
+		"1440p":
+			call_deferred("_resize_window", 2560, 1440)
+		"ultrawide":
+			call_deferred("_resize_window", 3440, 1440)
 		"fullscreen":
 			call_deferred("_set_fullscreen")
 
@@ -276,6 +305,8 @@ func _load() -> void:
 	_trip_trails     = clampf(float(cfg.get_value("settings", "trip_trails", 1.0)), 0.0, 1.0)
 	_auto_play       = bool(cfg.get_value("settings",  "auto_play",      false))
 	_hud_bar         = str(cfg.get_value("settings",   "hud_bar",        "auto"))
+	_wide_screens    = str(cfg.get_value("settings",   "wide_screens",   "fill"))
+	_detail_3d       = str(cfg.get_value("settings",   "detail_3d",      "native"))
 	_apply_window_mode(_window_mode)
 
 
@@ -289,6 +320,8 @@ func _save() -> void:
 	cfg.set_value("settings", "skip_unread",     _skip_unread)
 	cfg.set_value("settings", "auto_advance_ms", _auto_advance_ms)
 	cfg.set_value("settings", "window_mode",     _window_mode)
+	cfg.set_value("settings", "wide_screens",    _wide_screens)
+	cfg.set_value("settings", "detail_3d",       _detail_3d)
 	cfg.set_value("settings", "haptics",         _haptics)
 	cfg.set_value("settings", "music_skin",      _music_skin)
 	cfg.set_value("settings", "music_viz",       _music_viz)

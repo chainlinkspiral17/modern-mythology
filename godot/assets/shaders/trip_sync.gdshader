@@ -40,6 +40,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform bool use_screen = true;
@@ -204,7 +207,7 @@ float sobel(sampler2D scr, sampler2D tex, vec2 uv, vec2 px) {
 
 void fragment() {
     vec2 uv = use_screen ? SCREEN_UV : UV;
-    vec2 px = use_screen ? SCREEN_PIXEL_SIZE : TEXTURE_PIXEL_SIZE;
+    vec2 px = use_screen ? (SCREEN_PIXEL_SIZE * px_scale) : TEXTURE_PIXEL_SIZE;
     float src_a = use_screen ? 1.0 : texture(TEXTURE, UV).a;
 
     // Identity path — never stamp anything when the dial is off.

@@ -26,6 +26,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -144,7 +147,7 @@ float glyph(int idx, vec2 p) {
 }
 
 void fragment() {
-    vec2 frag = FRAGCOORD.xy;
+    vec2 frag = (FRAGCOORD.xy / px_scale);
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
 
@@ -154,7 +157,7 @@ void fragment() {
     vec3 scene = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
     // Cell-center sample drives the ASCII glyph density only.
     vec2 cell_center_pix = (cell_idx + 0.5) * cell_size;
-    vec2 cell_center_uv = cell_center_pix * SCREEN_PIXEL_SIZE;
+    vec2 cell_center_uv = cell_center_pix * (SCREEN_PIXEL_SIZE * px_scale);
     vec3 cell_scene = texture(SCREEN_TEXTURE, cell_center_uv).rgb;
     float luma = dot(cell_scene, vec3(0.299, 0.587, 0.114));
 

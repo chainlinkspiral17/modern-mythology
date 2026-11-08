@@ -230,7 +230,17 @@ func _anchor_to(slot: String) -> void:
 	var vpr := get_viewport_rect()
 	if vpr.size.x > 1.0:
 		vp_w = vpr.size.x
-	var usable: float = maxf(vp_w - left_pad - right_pad, 1.0)
+	# WIDE SCREENS (2026-11-08): the text lives in the centre 16:9 band;
+	# the width past it belongs to the panoramic background
+	var band_x: float = 0.0
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	if sm != null and sm.has_method("center_band"):
+		var band: Rect2 = sm.call("center_band")
+		band_x = maxf(band.position.x, 0.0)
+		vp_w = minf(vp_w, band.size.x)
+	left_pad += band_x
+	right_pad += band_x
+	var usable: float = maxf(vp_w - (left_pad - band_x) - (right_pad - band_x), 1.0)
 	var occ: Array = []
 	var char_layer: Node = _get_char_layer()
 	if char_layer != null and char_layer.has_method("occupied_slots"):

@@ -13,6 +13,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -67,9 +70,9 @@ void fragment() {
 
     // Three layered glyph fields at different scales + scroll
     // speeds for a parallax shimmer
-    float g1 = layer_glyph(FRAGCOORD.xy, 1.0,  vec2(scroll_x, scroll_y),         0.0);
-    float g2 = layer_glyph(FRAGCOORD.xy, 1.4,  vec2(-scroll_x * 0.6, scroll_y * 0.5), 17.3);
-    float g3 = layer_glyph(FRAGCOORD.xy, 0.7,  vec2(scroll_x * 1.4, scroll_y * 1.4), 53.9);
+    float g1 = layer_glyph((FRAGCOORD.xy / px_scale), 1.0,  vec2(scroll_x, scroll_y),         0.0);
+    float g2 = layer_glyph((FRAGCOORD.xy / px_scale), 1.4,  vec2(-scroll_x * 0.6, scroll_y * 0.5), 17.3);
+    float g3 = layer_glyph((FRAGCOORD.xy / px_scale), 0.7,  vec2(scroll_x * 1.4, scroll_y * 1.4), 53.9);
 
     float glyphs = clamp(g1 + g2 * 0.7 + g3 * 0.5, 0.0, 1.0);
 

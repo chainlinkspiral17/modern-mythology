@@ -117,6 +117,12 @@ var _composition_active: bool    = false
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
 var _bg_frame:       Control     = null
+# WIDE SCREENS (2026-11-08): the painting's halo — on a screen wider than
+# the picture, the painting carried on past its edges, blurred, feathered
+# and drifting in the trip's hue (painting_halo.gdshader)
+var _bg_halo:        ColorRect   = null
+var _bg_halo_mat:    ShaderMaterial = null
+const PAINTING_HALO_SHADER := preload("res://assets/shaders/painting_halo.gdshader")
 var _dlg_scrim:      Control     = null
 
 # UI nodes pin themselves to this z so composition windows with
@@ -147,6 +153,11 @@ var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|m
 
 func _ready() -> void:
 	_build_layers()
+	# WIDE SCREENS (2026-11-08): the VN lays itself out for any width —
+	# panoramic backgrounds, the text and portraits in the centre band
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	if sm != null and sm.has_method("request_wide"):
+		sm.call("request_wide", self)
 	_producer = VN_PRODUCER_SCRIPT.new()
 	add_child(_producer)
 
@@ -189,6 +200,15 @@ func _build_layers() -> void:
 	_bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
+	_bg_halo = ColorRect.new()
+	_bg_halo.name = "PaintingHalo"
+	_bg_halo.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_bg_halo.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_bg_halo_mat = ShaderMaterial.new()
+	_bg_halo_mat.shader = PAINTING_HALO_SHADER
+	_bg_halo.material = _bg_halo_mat
+	_bg_halo.visible = false
+	add_child(_bg_halo)
 	# THE TRIP runs on the VN's backgrounds only (texture mode), never
 	# over the dialogue box: this root joins "trip_local" so TripSync's
 	# global screen layer steps aside while the VN is in the tree.
@@ -2132,12 +2152,55 @@ func _apply_bg_motion(delta: float) -> void:
 		_bg.position     = sway_pos + _frame_shift(_bg.size, s)
 		_bg.scale        = total_scale
 		_bg.rotation     = sway_rot
+	_update_painting_halo(s)
 
 	if _bg_composition != null and _bg_composition.get_child_count() > 0:
 		_bg_composition.pivot_offset = _bg_composition.size * 0.5
 		_bg_composition.position     = sway_pos + _frame_shift(_bg_composition.size, s)
 		_bg_composition.scale        = total_scale
 		_bg_composition.rotation     = sway_rot
+
+
+## WIDE SCREENS (2026-11-08): a painting narrower than the screen is shown
+## WHOLE at full height (contain, not cover — cover cut a quarter off the
+## top and bottom on 21:9), and the halo carries it on past its edges.
+## On a screen no wider than the picture nothing changes (cover, no halo).
+func _update_painting_halo(s: float) -> void:
+	if _bg == null or _bg_halo == null:
+		return
+	var tex: Texture2D = _bg.texture
+	var live: bool = tex != null and _frame_2d_live() and _bg.visible
+	var sz: Vector2 = _bg.size
+	var wide: bool = false
+	var ta: float = 16.0 / 9.0
+	if live and sz.y > 1.0 and tex.get_height() > 0:
+		ta = float(tex.get_width()) / float(tex.get_height())
+		wide = sz.x / sz.y > ta * 1.02
+	var want_mode: int = TextureRect.STRETCH_KEEP_ASPECT_CENTERED if wide else TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	if _bg.stretch_mode != want_mode:
+		_bg.stretch_mode = want_mode
+	_bg_halo.visible = wide
+	if not wide:
+		return
+	# where the painting is drawn right now: contain-centred in _bg's rect,
+	# then _bg's push / pan (scale about the rect's centre, then position)
+	var w: float = sz.y * ta
+	var x0: float = (sz.x - w) * 0.5
+	var c: Vector2 = _bg.position + sz * 0.5
+	var tl: Vector2 = c + (Vector2(x0, 0.0) - sz * 0.5) * s
+	var dim: Vector2 = Vector2(w, sz.y) * s
+	var hs: Vector2 = _bg_halo.size
+	if hs.x < 1.0 or hs.y < 1.0:
+		return
+	_bg_halo_mat.set_shader_parameter("painting", tex)
+	_bg_halo_mat.set_shader_parameter("img_rect", Vector4(tl.x / hs.x, tl.y / hs.y, dim.x / hs.x, dim.y / hs.y))
+	_bg_halo_mat.set_shader_parameter("aspect", hs.x / hs.y)
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null:
+		_bg_halo_mat.set_shader_parameter("hue", float(trip.get("hue_base")))
+		_bg_halo_mat.set_shader_parameter("flow", float(trip.get("t_flow")))
+		_bg_halo_mat.set_shader_parameter("energy", float(trip.get("energy")))
+		_bg_halo_mat.set_shader_parameter("trip", float(trip.get("amount")))
 
 
 # ── THE PAINTING'S CAMERA (2026-11-06, pass 300) ─────────────────
@@ -2258,7 +2321,14 @@ func _frame_shot(spec: String, speaker: String) -> void:
 				# offset that brings the spot to centre across and to SPOT_LIFT
 				# down (above the text box), clamped to the open margin
 				var reach: float = (zoom - 1.0) * 0.5 * FRAME_EDGE
-				var sx: float = clampf((float(spot[0]) - 0.5) * zoom / reach, -1.0, 1.0)
+				# (wide screens) the painting may fill only part of the width:
+				# a spot's distance from centre is a share of the PICTURE's
+				var frac: float = 1.0
+				if _bg != null and _bg.texture != null and _bg.size.y > 1.0 \
+						and _bg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_CENTERED:
+					var ta: float = float(_bg.texture.get_width()) / maxf(float(_bg.texture.get_height()), 1.0)
+					frac = minf(ta / (_bg.size.x / _bg.size.y), 1.0)
+				var sx: float = clampf((float(spot[0]) - 0.5) * zoom * frac / reach, -1.0, 1.0)
 				var sy: float = clampf(((float(spot[1]) - 0.5) * zoom + (0.5 - FRAME_SPOT_LIFT)) / reach, -1.0, 1.0)
 				_frame_to(zoom, Vector2(sx, sy), FRAME_CUE_SECS)
 				_frame_speaker = speaker

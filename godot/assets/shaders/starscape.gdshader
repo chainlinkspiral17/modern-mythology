@@ -18,6 +18,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -126,7 +129,7 @@ float fbm3(vec2 p) {
 }
 
 void fragment() {
-    vec2 frag = FRAGCOORD.xy;
+    vec2 frag = (FRAGCOORD.xy / px_scale);
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
 

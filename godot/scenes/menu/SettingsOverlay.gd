@@ -205,14 +205,15 @@ func _screen_size_section() -> VBoxContainer:
 	var pending := Settings.window_mode
 
 	var btn_row := _button_row(
-		["720p", "900p", "1080p", "FULLSCREEN"],
+		["720p", "900p", "1080p", "1440p", "ULTRAWIDE", "FULLSCREEN"],
 		Settings.window_mode.to_upper(),
 		func(v: String) -> void: pending = v.to_lower()
 	)
 	col.add_child(btn_row)
 
 	var hint := Label.new()
-	hint.text = "720p = 1280×720  ·  900p = 1600×900  ·  1080p = 1920×1080"
+	hint.text = "720p = 1280×720  ·  900p = 1600×900  ·  1080p = 1920×1080  ·  1440p = 2560×1440  ·  ULTRAWIDE = 3440×1440  ·  FULLSCREEN = the screen's own size"
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
 		hint.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
 	hint.add_theme_font_size_override("font_size", 14)
@@ -243,6 +244,23 @@ func _screen_size_section() -> VBoxContainer:
 	)
 	action_row.add_child(reset_btn)
 	col.add_child(action_row)
+
+	# WIDE SCREENS (2026-11-08): on a screen wider than 16:9 the story fills
+	# it — panoramic backgrounds, the text and portraits in the centre — or
+	# keeps the 16:9 frame with bars at the sides
+	col.add_child(_row_label("WIDE SCREENS"))
+	col.add_child(_button_row(
+		["FILL", "PILLARBOX"],
+		Settings.wide_screens.to_upper(),
+		func(v: String) -> void: Settings.wide_screens = v.to_lower()
+	))
+	# 3D DETAIL: the sets' render scale (native = every pixel of the screen)
+	col.add_child(_row_label("3D DETAIL"))
+	col.add_child(_button_row(
+		["NATIVE", "BALANCED", "FAST"],
+		Settings.detail_3d.to_upper(),
+		func(v: String) -> void: Settings.detail_3d = v.to_lower()
+	))
 
 	return col
 

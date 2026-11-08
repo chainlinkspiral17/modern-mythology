@@ -21,6 +21,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -84,7 +87,7 @@ float scroll_glyph(vec2 frag_coord, float t) {
 
 void fragment() {
     vec2 uv = SCREEN_UV;
-    vec2 px = SCREEN_PIXEL_SIZE * edge_thickness;
+    vec2 px = (SCREEN_PIXEL_SIZE * px_scale) * edge_thickness;
 
     // 3x3 luminance Sobel on the screen colour
     float l00 = luma(texture(SCREEN_TEXTURE, uv + vec2(-px.x, -px.y)).rgb);
@@ -103,7 +106,7 @@ void fragment() {
     float edge_mask = smoothstep(edge_threshold, edge_threshold * edge_softness, edge);
 
     // Scrolling ASCII pattern, painted IN edge regions only
-    float glyph = scroll_glyph(FRAGCOORD.xy, TIME * scroll_speed);
+    float glyph = scroll_glyph((FRAGCOORD.xy / px_scale), TIME * scroll_speed);
 
     vec3 scene = texture(SCREEN_TEXTURE, uv).rgb;
     vec3 edge_painted = mix(edge_bg_color.rgb, edge_color.rgb, glyph);

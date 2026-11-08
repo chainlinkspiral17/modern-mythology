@@ -29,6 +29,9 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
+// (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
+// design pixels, so a cell / brush / dither keeps its size at 1440p
+global uniform float px_scale;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -60,7 +63,7 @@ float luma(vec3 c) {
 }
 
 // Sample the screen at a cell-center coordinate (cell index → UV).
-// SCREEN_PIXEL_SIZE is passed in because some GL drivers (AMD Mesa /
+// (SCREEN_PIXEL_SIZE * px_scale) is passed in because some GL drivers (AMD Mesa /
 // Vangogh on Steam Deck) don't expose the built-in to helper
 // functions called from fragment() — only NVIDIA accepts it. Pass
 // it explicitly to compile portably.
@@ -160,10 +163,10 @@ float g_dark(vec2 p) {
 }
 
 void fragment() {
-    vec2 frag = FRAGCOORD.xy;
+    vec2 frag = (FRAGCOORD.xy / px_scale);
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
-    vec2 screen_px = SCREEN_PIXEL_SIZE;
+    vec2 screen_px = (SCREEN_PIXEL_SIZE * px_scale);
 
     // ── MULTI-SCALE FRAME SAMPLING ─────────────────────────────────
     // Each cell looks at THREE concentric rings of neighbors:
@@ -269,7 +272,7 @@ void fragment() {
     }
 
     vec3 cell_scene_col = texture(SCREEN_TEXTURE,
-        (cell_idx + 0.5) * cell_size * SCREEN_PIXEL_SIZE).rgb;
+        (cell_idx + 0.5) * cell_size * (SCREEN_PIXEL_SIZE * px_scale)).rgb;
     vec3 line;
     if (mono_with_red) {
         // red dominance = how much the red channel exceeds max(g,b).
@@ -284,7 +287,7 @@ void fragment() {
     }
     vec3 ascii_result = mix(fill_color.rgb, line, mask);
 
-    vec3 scene = texture(SCREEN_TEXTURE, frag * SCREEN_PIXEL_SIZE).rgb;
+    vec3 scene = texture(SCREEN_TEXTURE, frag * (SCREEN_PIXEL_SIZE * px_scale)).rgb;
     vec3 result = mix(scene, ascii_result, strength);
     COLOR = vec4(result, 1.0);
 }
