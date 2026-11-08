@@ -363,10 +363,12 @@ rotation = Vector3(0.0051, -2.2915, 0.0)
 metadata/fov = 36.0
 
 ; insert: the chicken coop behind the small house
+; (2026-11-08) stood 1.9 m from the coop's unlit side (solid black at night):
+; now back by the run, the coop and its chickens beside the house wall
 [node name="shot_insert_coop" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.327, 1.693, 27.034)
-rotation = Vector3(-0.2618, 2.0944, 0.0)
-metadata/fov = 42.0
+position = Vector3(-14.000, 1.400, 34.500)
+rotation = Vector3(-0.0698, 0.6458, 0.0)
+metadata/fov = 45.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
