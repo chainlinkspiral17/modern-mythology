@@ -365,7 +365,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jules shoves a hand into the coffin, and it begins to light up from the inside. Blinding light.",
+      "text": "[shot:insert light]Jules shoves a hand into the coffin, and it begins to light up from the inside. Blinding light.",
       "voice": "assets/audio/voice/vol3_ch2_starship_melody/062.mp3"
     },
     {
@@ -429,7 +429,7 @@
     },
     {
       "t": "narrate",
-      "text": "The core begins to chew on Melody. A sharp, cracking, twisting sound is heard from within. Suddenly, a pure white blade juts out from the top of the core. It cuts a narrow ribbon down the front of the face.",
+      "text": "[shot:insert light]The core begins to chew on Melody. A sharp, cracking, twisting sound is heard from within. Suddenly, a pure white blade juts out from the top of the core. It cuts a narrow ribbon down the front of the face.",
       "voice": "assets/audio/voice/vol3_ch2_starship_melody/072.mp3"
     },
     {
@@ -555,7 +555,7 @@
       "t": "say",
       "char": "Sentries",
       "expr": "worried",
-      "text": "The planet Earth.",
+      "text": "[shot:insert planet]The planet Earth.",
       "voice": "assets/audio/voice/vol3_ch2_starship_melody/091.mp3"
     },
     {
@@ -588,7 +588,7 @@
     },
     {
       "t": "narrate",
-      "text": "Melody disappears in an instant. Ghosted images of her fly about for a few seconds, then dissipate into nothingness.",
+      "text": "[shot:insert void]Melody disappears in an instant. Ghosted images of her fly about for a few seconds, then dissipate into nothingness.",
       "voice": "assets/audio/voice/vol3_ch2_starship_melody/096.mp3"
     },
     {
