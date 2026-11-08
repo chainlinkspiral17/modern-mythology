@@ -3835,6 +3835,11 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-08 · pass 308: a cue can point at a part of a painting.**
+- **The engine:** resources/vn/painting_spots.json names a picture's parts; `[shot:insert <id>]` on that picture pushes in on the spot (GameEngine._painting_spot). An id the picture does not name keeps the seeded glance. painting_spot_audit.py is in the full suite (keys real, spots in range, no insert on a painting with spots naming one it lacks).
+- **Twelve paintings, 71 cues, each on a line that names its spot:** the deep-end pool, the battle painting, the map of history and the hall of ratifications (vol1); the starship void, the oil field (vol3); the dream-town game (vol2); the classroom, Aria's room, the porch, the 1964 trailer camp, Lynch's Peak (vol5 preludes). Engine-tested a sample of each.
+- **Draft N+1:** the rest of the 2D long holds (the letters, the beach daycare, Ravensway, Milk and Honey, Sister Carrie's notes, the Missing Link game, the Halloween brick wall …); the vol1 introduction and vol2 title (no picture: what plays there?); the Deck read of pacing and fades.
+
 **2026-11-08 · pass 307: the coop by moonlight; a night sky over the Pacific; glass judged by render.**
 - **Gloria's coop** (vol2 ch2) has its cue back: the frame stands by the run, the coop and its chickens against the moonlit house wall (it stood 1.9 m from the coop's unlit side).
 - **The monitor room's window** shows a night sky: the horizon wall stops at the eye's horizon as far sea, and the preset's env carries sky colours (Background3D turns a flat background into a ProceduralSky). The moon hangs in the sky now, not on a wall.

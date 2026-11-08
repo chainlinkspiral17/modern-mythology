@@ -323,6 +323,24 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-08 · a painting has parts; name them so a line can point (pass 308)
+
+**What happened:** on a 2D painting, `[shot:insert X]` pushed in on a spot
+seeded from the id's hash, so no line could aim at what it names, and the
+paintings' long holds (a 140-line classroom, an 80-line pool) had only the
+painting's own drift. resources/vn/painting_spots.json now names a
+picture's parts (`{"<bg src>": {"<id>": [u, v(, zoom)]}}`); an insert
+whose id the picture names pushes in on it.
+
+**Rule:** read the picture on a 10x10 grid, name each spot for the word
+the line uses (the clock, the raven, "sky smoke"), and cue it only on a
+line that names it. Keep a spot's v above ~0.62 or push it up: the text
+box covers the bottom third, and a spot behind it reads as nothing.
+Zoom 1.5 by default, 2.0 at most (past it the picture blurs). Engine-test
+with VnLineShot `--next 1 --wait 200` and read the frame; FRAME2D in the
+log shows the push. painting_spot_audit holds the file and the cues to
+each other.
+
 ### 2026-11-08 · sweep the frames the cues use; a gate must resolve the way the engine does (pass 306)
 
 **What happened:** every gate was at zero, yet a sweep of every cue frame
