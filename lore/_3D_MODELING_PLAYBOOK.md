@@ -399,6 +399,24 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-08 · glass is three conditions, and each one failed somewhere (pass 306)
+
+- **A pane is written below alpha 0.98.** LocaleGlass only turns vertex alpha
+  under 0.98 into transparency. The monitor room's west wall and the Dabney
+  fridge doors were written at 1.0 and rendered as slabs — the whole Pacific
+  and a fridge full of drinks were never visible.
+- **Something is modelled behind it, and is not inside a solid.** The fridge
+  stock sat INSIDE the fridge body box; even glass could not show it. Stop
+  the body short of the door (cheeks and a cap round the gap).
+- **Nothing overrides it later.** LocaleSetup.gd laid one opaque
+  material_override over every mesh after the glass pass, so in the diner,
+  riverfront and the harmony sets no pane was ever glass (the pie case hid
+  its pies). A setup pass that assigns materials must skip a surface that
+  already carries a transparent override.
+- `tools/audit/glass_alpha_audit.py` lists parts named as glass but written
+  opaque. Read each by render: a mirror or a painted night window may be
+  meant opaque, and a pane with nothing behind it opens onto the void.
+
 ### 2026-11-02 · a stand-in named in the roster is a slot: never remove or rename it (pass 266)
 
 **Context:** pass 263 replaced Hollywood's flat 80 m far wall (`Hw_Far_N`) with
