@@ -2264,9 +2264,10 @@ const CAMERA_PRESETS := {
 	"meadowlark_circle": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
 		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
-		# The street runs E-W along blender y=0 from x=-30 to the bulb at
-		# x=22; lots 1402..1428 on the north side (houses at y 12.5), the
-		# Miller house at x=20 with the cracked head at (16.4, 5.6). Dawn:
+		# The street runs E-W along blender y=0 from x=-80 to the bulb at
+		# x=46; lots 1402..1428 on the north side, 18 m apart (houses at
+		# y 19.5, 2026-11-08: Texas lawns), the Miller house at x=34 with
+		# the cracked head at (25.9, 5.5). Dawn:
 		# camera in the street at the west end (blender -22, -1.5) looking
 		# EAST down the block — sprinkler fans lot by lot, the bulb and
 		# the Geller house closing the view, the water tower off right.
@@ -2279,11 +2280,11 @@ const CAMERA_PRESETS := {
 	"meadowlark_circle_night": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
 		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
-		# Midnight in mid-August, from the bulb (blender 24, 4) looking
+		# Midnight in mid-August, from the bulb (blender 48, 4) looking
 		# WEST back down the block: porch lights, the lit Salinas kitchen
 		# window south, the white sedan at the curb near-left, streetlamps
 		# receding. Scenes carry [mood:night]; the practicals do the rest.
-		"camera_origin": Vector3(24.0, 1.6, -4.0),
+		"camera_origin": Vector3(48.0, 1.6, -4.0),
 		"camera_rotation": Vector3(-0.02, 1.5708, 0.0),
 		"fov": 62.0,
 		# (pass 62) the circle at night, on the day sky added to the set

@@ -23,8 +23,10 @@ Every "different cul-de-sac" of ch23 renders as this one — the town
 is one shape repeated, which is the point of the chapter.
 
 Coordinate frame: Blender Z-up. The street runs east-west along y=0
-from the entry at x=-30 to the bulb at x=+22 (r 9). Lots 1402..1428
-line the north side west to east; three more face them on the south.
+from past the frame at x=-80 to the bulb at x=+46 (r 9). Lots 1402..1428
+line the north side west to east, 18 m apart (1414, the Hendersons, at
+x=-2; Miller at 34), houses at y=19.5; three more face them on the south.
+The Geller house closes the bulb's east end, facing west.
 The water tower stands off to the south-east. glTF export remaps to
 Godot (x, z, -y).
 
@@ -58,23 +60,61 @@ GLASS = (0.55, 0.62, 0.70, 0.55)
 GLASS_LIT = (0.98, 0.86, 0.58, 0.9)
 BULB_LIGHT = (1.0, 0.86, 0.58, 1.0)
 
-BULB_X, BULB_R = 22.0, 9.0
+BULB_X, BULB_R = 46.0, 9.0
+# (2026-11-08, the Deck: "you made the neighborhood too claustrophobic";
+# "the lawns are too tiny for texas lawns. texas lawns are sprawling";
+# "there is a sprinkler in the middle of the sidewalk. they should be in
+# lawns.") DRAFT 3 OF THE PLAN. Lots were 11 m apart with 10 m houses
+# (a metre between neighbours) and 3.5 m of grass to the walk, and each
+# lawn box ran 1.1 m over the sidewalk, so its sprinkler heads stood ON
+# the walk. Now a Gulf-Coast tract lot: 18 m (59 ft) frontage, the house
+# set back 10.5 m (34 ft) behind the sidewalk, the lawn the lot's full
+# width from the walk's back edge to the house, every head inside it.
+# The Henderson lot (1414) keeps its place, so its night scene stands;
+# Miller (1428), the bulb and the Geller house move east with the lots.
+HOUSE_Y = 19.5          # house centre off the street's centreline (was 12.5)
+HOUSE_D = 8.0
+WALK_BACK = 5.0         # the sidewalk's back edge (y 3.5 .. 5.0)
+LOT_W = 18.0
+FRONT_Y = HOUSE_Y - HOUSE_D / 2.0     # 15.5
+STREET_X0 = -130.0      # the street runs on west past the frame, under the far tree band
 
 
 def build_street():
     make_box("Ground_Far", (0.0, 0.0, -0.05), (700.0, 700.0, 0.02), (0.30, 0.34, 0.22, 1.0))
-    make_box("Meadowlark_Asphalt", (-4.0, 0.0, -0.03), (56.0, 7.0, 0.06), ASPHALT)
-    make_cyl("Meadowlark_Bulb", (BULB_X, 0.0, -0.03), BULB_R, 0.06, ASPHALT, segments=24)
+    sx0, sx1 = STREET_X0, BULB_X
+    make_box("Meadowlark_Asphalt", ((sx0 + sx1) / 2.0, 0.0, -0.03), (sx1 - sx0, 7.0, 0.06), ASPHALT)
+    make_cyl("Meadowlark_Bulb", (BULB_X, 0.0, -0.03), BULB_R, 0.06, ASPHALT, segments=32)
+    # the straight walks and curbs stop where the bulb's ring takes over
+    # (2026-11-08: they ran on across the bulb's asphalt)
+    walk_x1 = BULB_X - math.sqrt((BULB_R + 1.5) ** 2 - 4.25 ** 2) + 0.4
+    curb_x1 = BULB_X - math.sqrt(BULB_R ** 2 - 3.6 ** 2) + 0.2
     for sgn, nm in ((1, "N"), (-1, "S")):
-        make_box(f"Sidewalk_{nm}", (-4.0, sgn * 4.25, 0.02), (56.0, 1.50, 0.10), CONCRETE)
-        make_box(f"Curb_{nm}", (-4.0, sgn * 3.6, 0.03), (56.0, 0.20, 0.12), (0.56, 0.56, 0.54, 1.0))
-    make_cyl("Bulb_Sidewalk", (BULB_X, 0.0, 0.02), BULB_R + 1.5, 0.10, CONCRETE, segments=24)
-    make_cyl("Bulb_Asphalt_Top", (BULB_X, 0.0, -0.02), BULB_R, 0.08, ASPHALT, segments=24)
+        make_box(f"Sidewalk_{nm}", ((sx0 + walk_x1) / 2.0, sgn * 4.25, 0.02), (walk_x1 - sx0, 1.50, 0.10), CONCRETE)
+        make_box(f"Curb_{nm}", ((sx0 + curb_x1) / 2.0, sgn * 3.6, 0.03), (curb_x1 - sx0, 0.20, 0.12), (0.56, 0.56, 0.54, 1.0))
+    # the bulb's walk is a RING round its asphalt, with its curb (2026-11-08:
+    # a full disc at 7 cm lay over the bulb's asphalt — the whole turnaround
+    # read as concrete)
+    # … an ARC: open at the mouth, where the street and its walks come in
+    for nm, r_in, r_out, z_top, col, mouth in (("Bulb_Sidewalk", BULB_R + 0.1, BULB_R + 1.5, 0.07, CONCRETE, 5.0),
+                                              ("Bulb_Curb", BULB_R - 0.1, BULB_R + 0.1, 0.09, (0.56, 0.56, 0.54, 1.0), 3.7)):
+        r_mid = (r_in + r_out) / 2.0
+        half_gap = math.degrees(math.asin(min(1.0, mouth / r_mid)))
+        step = 6.0
+        k = 0
+        a = 180.0 + half_gap + step / 2.0
+        while a < 540.0 - half_gap - step / 2.0 + 1e-6:
+            t = math.radians(a)
+            seg = r_mid * math.radians(step) * 1.08
+            make_rot_box(f"{nm}_{k}", (BULB_X + r_mid * math.cos(t), r_mid * math.sin(t), z_top / 2.0 - 0.015),
+                         (seg, r_out - r_in, z_top + 0.03), col, yaw=t + math.pi / 2.0)
+            k += 1
+            a += step
     # center-line dashes
-    for i in range(10):
-        make_box(f"Center_Dash_{i}", (-30.0 + i * 5.5, 0.0, 0.001), (2.0, 0.12, 0.01), (0.80, 0.78, 0.60, 1.0))
+    for i in range(int((BULB_X - BULB_R - STREET_X0) / 5.5)):
+        make_box(f"Center_Dash_{i}", (STREET_X0 + 2.0 + i * 5.5, 0.0, 0.001), (2.0, 0.12, 0.01), (0.80, 0.78, 0.60, 1.0))
     # streetlamps that buzz at their subaudible frequency
-    for li, lx in enumerate((-22.0, -4.0, 14.0)):
+    for li, lx in enumerate((-40.0, -4.0, 30.0)):
         steel = (0.30, 0.30, 0.32, 1.0)
         make_lathe(f"Streetlamp_{li}_Pole", (lx, -4.9, 0.0), [(0.16, 0.0), (0.16, 0.10), (0.10, 0.16), (0.09, 3.0), (0.07, 5.9), (0.06, 6.0)], steel, segments=10)
         make_tube(f"Streetlamp_{li}_Arm", [(lx, -4.9, 5.85), (lx, -4.4, 6.05), (lx, -3.9, 6.0)], 0.04, steel, segments=6)
@@ -97,7 +137,7 @@ def build_house(tag, hx, hy, facing, col, lit_window=False, porch_on=False, gara
     mailbox stands at the curb."""
     f = facing
     front = "-Y" if f > 0 else "+Y"
-    W, D = 10.0, 8.0
+    W, D = 10.0, HOUSE_D
     front_y = hy - f * D / 2.0
     make_ranch_house(tag, hx, hy, front, col, ROOF, w=W, d=D, h=2.8, garage=garage,
                      lit=(False, True, False) if lit_window else (False, False, False), porch=True, shrubs=True)
@@ -105,30 +145,47 @@ def build_house(tag, hx, hy, facing, col, lit_window=False, porch_on=False, gara
         gx = hx + (W / 2.0 - 1.9) * (1 if f > 0 else -1)   # make_ranch_house puts the garage at u = -W/2 + 1.9
         drive_len = abs(front_y - f * 4.0) - 1.9
         make_box(f"{tag}_Driveway", (gx, front_y - f * (drive_len / 2.0 + 1.6), 0.015), (3.20, drive_len, 0.03), CONCRETE)
-    make_box(f"{tag}_Lawn", (hx + 1.5 * (1 if f > 0 else -1), (front_y - f * 4.6 + front_y) / 2.0, 0.006), (7.0, abs(front_y - (front_y - f * 4.6)), 0.012), LAWN)
+    # the lawn: the lot's whole frontage, from the sidewalk's back edge to
+    # the house (it ran 1.1 m over the walk, 7 m wide)
+    walk = f * WALK_BACK
+    make_box(f"{tag}_Lawn", (hx, (walk + front_y) / 2.0, 0.006), (LOT_W - 0.3, abs(front_y - walk), 0.012), LAWN)
     make_cyl(f"{tag}_Mailbox_Post", (hx + 5.2, f * 5.1, 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
     make_box(f"{tag}_Mailbox", (hx + 5.2, f * 5.1, 1.20), (0.22, 0.48, 0.24), (0.22, 0.26, 0.34, 1.0))
     if lot_num is not None:
         make_box(f"{tag}_Lot_Number", (hx + 5.2, f * (5.1 - 0.25), 1.20), (0.18, 0.004, 0.10), (0.92, 0.90, 0.86, 1.0))
 
 
+NORTH = [("Lot1402", -38.0), ("Lot1408", -20.0), ("Lot1414", -2.0), ("Lot1420", 16.0), ("Miller", 34.0)]
+SOUTH = [("Caldwell", -24.0), ("Salinas", -6.0), ("Kowalski", 12.0)]   # east of Kowalski: the NexCorp lot
+GELLER_X = BULB_X + BULB_R + 1.5 + 8.0 + HOUSE_D / 2.0     # past the bulb's walk and its own lawn
+
+
 def build_lots():
     # north side: 1402 .. 1428 west to east; Miller is 1428, nearest the bulb
-    north = [("Lot1402", -24.0), ("Lot1408", -13.0), ("Lot1414", -2.0), ("Lot1420", 9.0), ("Miller", 20.0)]
-    for i, (tag, hx) in enumerate(north):
-        build_house(tag, hx, 12.5, +1, HOUSE_COLS[i], lit_window=(tag == "Miller"), porch_on=False, lot_num=1402 + i * 6)
-    south = [("Caldwell", -18.0), ("Salinas", -6.0), ("Kowalski", 6.0)]
-    for i, (tag, hx) in enumerate(south):
-        build_house(tag, hx, -12.5, -1, HOUSE_COLS[5 + i], lit_window=(tag == "Salinas"), porch_on=False, lot_num=None)
+    # (2026-11-08) 18 m lots; 1414 (the Hendersons) keeps x -2
+    for i, (tag, hx) in enumerate(NORTH):
+        build_house(tag, hx, HOUSE_Y, +1, HOUSE_COLS[i], lit_window=(tag == "Miller"), porch_on=False, lot_num=1402 + i * 6)
+    for i, (tag, hx) in enumerate(SOUTH):
+        build_house(tag, hx, -HOUSE_Y, -1, HOUSE_COLS[(5 + i) % len(HOUSE_COLS)], lit_window=(tag == "Salinas"),
+                    porch_on=False, lot_num=None)
     # the car Sammy will drive to school, in the Salinas driveway
     # (2026-11-03) a car, not three boxes: make_car, backed in, nose to the street
-    make_car("Salinas_Car", -10.4, -6.6, 4.4, (0.52, 0.56, 0.60, 1.0), along="Y")
-    # the Geller house at the end of the cul-de-sac: porch light ON, Don at the window
-    build_house("Geller", 31.5, 0.0, +1, HOUSE_COLS[3], lit_window=True, porch_on=True, garage=False)
-    # standing at the window (2026-09-22: his feet were a metre up)
-    make_box("Don_Silhouette", (35.1, -4.6, 0.45), (0.40, 0.30, 0.90), (0.10, 0.10, 0.12, 1.0))
-    make_cyl("Don_Silhouette_Head", (35.1, -4.6, 0.99), 0.11, 0.18, (0.10, 0.10, 0.12, 1.0), segments=8)
-    make_cyl("Don_Water_Glass", (34.865, -4.6, 0.85), 0.035, 0.09, (0.80, 0.86, 0.90, 0.7), segments=8)   # in his hand
+    # (2026-11-08) on the drive (garage at hx - 3.1), its tail at the walk
+    make_car("Salinas_Car", -6.0 - 3.1, -7.4, 4.4, (0.52, 0.56, 0.60, 1.0), along="Y")
+    # the Geller house at the END of the cul-de-sac, facing down the street
+    # (west) across the bulb and its own lawn: porch light ON, Don at the
+    # lit window. (It stood on the bulb's asphalt, facing south.)
+    gx = GELLER_X
+    make_ranch_house("Geller", gx, 0.0, "-X", HOUSE_COLS[3], ROOF, w=10.0, d=HOUSE_D, h=2.8, garage=False,
+                     lit=(False, True, False), porch=True, shrubs=True)
+    front_x = gx - HOUSE_D / 2.0
+    lawn_x0 = BULB_X + BULB_R + 1.5
+    make_box("Geller_Lawn", ((lawn_x0 + front_x) / 2.0, 0.0, 0.006), (front_x - lawn_x0, LOT_W - 0.3, 0.012), LAWN)
+    make_box("Geller_Walk", ((lawn_x0 + front_x) / 2.0, 0.0, 0.016), (front_x - lawn_x0, 1.2, 0.03), CONCRETE)
+    # standing at the window, just inside it (the lit one is u 0.8)
+    make_box("Don_Silhouette", (front_x + 0.5, 0.8, 0.45), (0.30, 0.40, 0.90), (0.10, 0.10, 0.12, 1.0))
+    make_cyl("Don_Silhouette_Head", (front_x + 0.5, 0.8, 0.99), 0.11, 0.18, (0.10, 0.10, 0.12, 1.0), segments=8)
+    make_cyl("Don_Water_Glass", (front_x + 0.265, 0.8, 0.85), 0.035, 0.09, (0.80, 0.86, 0.90, 0.7), segments=8)   # in his hand
 
 
 def build_sprinklers():
@@ -144,12 +201,17 @@ def build_sprinklers():
     # counter-clockwise from +X (east) in the builder's frame — and
     # SprinklerFX steps each jet across it in impact-sprinkler ticks.
     # (The single heads stood a metre west of their lawns.)
-    for i, hx in enumerate((-24.0, -13.0, -2.0, 9.0)):
-        gx0, gx1 = hx - 2.0, hx + 1.5          # the grass, west of the driveway
-        gy0, gy1 = 3.9, 8.5
-        heads = ((gx0 + 0.35, gy0 + 0.35, 0, 115),        # SW corner: east -> north
-                 (gx1 - 0.35, gy0 + 0.35, 65, 180),       # SE corner: north -> west
-                 ((gx0 + gx1) / 2.0, gy1 - 0.45, 185, 355))   # by the house: toward the street
+    # (2026-11-08) the lawns are the lot's width and 10.5 m deep now; the
+    # heads stand IN them (they stood on the sidewalk: the lawn box ran
+    # over it), four to a lawn west of the drive plus one east of it
+    for i, (_tag, hx) in enumerate(NORTH[:4]):
+        gx0, gx1 = hx - LOT_W / 2.0 + 0.4, hx + 1.2     # the grass, west of the driveway
+        gy0, gy1 = WALK_BACK + 0.15, FRONT_Y - 1.1       # walk to the shrub line
+        heads = ((gx0 + 0.5, gy0 + 0.45, 0, 115),        # SW corner: east -> north
+                 (gx1 - 0.5, gy0 + 0.45, 65, 180),       # SE corner: north -> west
+                 (gx0 + 0.5, gy1 - 0.5, 270, 360),       # NW corner: south -> east
+                 ((gx0 + gx1) / 2.0, gy1 - 0.45, 185, 355),   # by the house: toward the street
+                 (hx + 6.8, gy0 + 0.45, 0, 180))         # the strip east of the drive
         for k, (sx, sy, a0, a1) in enumerate(heads):
             make_cyl(f"Sprinkler_Head_{i}_{k}_a{a0}_{a1}", (sx, sy, 0.042), 0.03, 0.06,
                      (0.24, 0.26, 0.24, 1.0), segments=6)
@@ -158,10 +220,12 @@ def build_sprinklers():
                  (gx1 - gx0 - 0.1, gy1 - gy0 - 0.1, 0.006), (0.28, 0.40, 0.24, 1.0))
         # the spray itself is PARTICLES, spawned at scene load by
         # SprinklerFX from every Sprinkler_Head_*
-    # the Miller head, left corner, cracked housing
-    mx = 20.0 - 3.6
-    make_cyl("Miller_Cracked_Head", (mx, 5.6, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
-    make_box("Miller_Head_Crack", (mx + 0.02, 5.6, 0.06), (0.012, 0.012, 0.02), (0.10, 0.10, 0.10, 1.0))
+    # the Miller head, "on the left corner of the yard" (the west front
+    # corner, as you face the house from the street), cracked housing —
+    # in the grass, half a metre behind the walk it etches
+    mx = NORTH[4][1] - LOT_W / 2.0 + 0.9
+    make_cyl("Miller_Cracked_Head", (mx, WALK_BACK + 0.5, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
+    make_box("Miller_Head_Crack", (mx + 0.02, WALK_BACK + 0.5, 0.06), (0.012, 0.012, 0.02), (0.10, 0.10, 0.10, 1.0))
     # the surgical stream is a particle emitter too (Miller_Cracked_Head)
     make_box("Miller_Arc_Splash", (mx - 0.9, 4.25, 0.075), (0.60, 0.30, 0.004), (0.50, 0.52, 0.56, 1.0))
     make_box("Sidewalk_Etch_Stripe", (mx - 0.9, 4.25, 0.0715), (0.55, 0.10, 0.003), (0.46, 0.46, 0.44, 1.0))
@@ -254,8 +318,8 @@ def build_henderson_2026_09():
     make_box("Maya_Bike_Bars", (3.8, 5.90, 0.98), (0.44, 0.03, 0.03), (0.30, 0.30, 0.32, 1.0))
     make_box("Bike_Chain", (3.6, 5.30, 0.75), (0.34, 0.02, 0.02), (0.36, 0.36, 0.38, 1.0))
     # the garage door's single open vent at the top, the Telecaster light in it
-    make_box("Henderson_Garage_Vent", (1.1, 8.435, 2.30), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))   # on the garage header (2026-09-22: 4 cm off it)
-    make_box("Henderson_Vent_Slats", (1.1, 8.427, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
+    make_box("Henderson_Garage_Vent", (1.1, FRONT_Y - 0.065, 2.30), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))   # on the garage header (2026-09-22: 4 cm off it)
+    make_box("Henderson_Vent_Slats", (1.1, FRONT_Y - 0.073, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
     # rain has mostly stopped: a puddle at the foot of the drive, the wet sheen on the truck's hood
     make_box("Driveway_Puddle", (1.5, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
     # the pickup's hood rises 4 cm over 1.47 m toward the cab (vehicles.py
