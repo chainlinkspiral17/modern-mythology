@@ -628,6 +628,8 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_trip_scene_start(scene_id, start_at)
 	_scene_id   = scene_id
 	_signatures_cued.clear()
+	_cast_seen.clear()
+	_cast_line = 0
 	# Coverage rotation: the director assigns each chapter its
 	# establish angle from this key (see VnDirector._rotation_marker).
 	if _director != null:
@@ -1048,7 +1050,66 @@ func _directed_seen(n: Dictionary, kind: String) -> Dictionary:
 		_director.call("consider_line", _s(d, "text"), kind, cued,
 			_s(n, "char") if kind == "say" else "")
 	_frame_line(kind, _s(n, "char") if kind == "say" else "", cued)
+	_cast_line_tick(kind, n, _s(d, "text"))
 	return d
+
+
+# ── THE CAST LEAVES WHEN THE TEXT LEAVES THEM (2026-11-08) ──────────
+# The user: "models hanging out in scenes and disappearing suddenly,
+# very jarring." A figure appeared when they first spoke and stood there
+# until a `hide` few scenes write — through long narration about other
+# things — then dropped out in one frame at the next place change. Now a
+# figure who has not spoken, thought or been named for PORTRAIT_IDLE_LINES
+# lines steps out (the slot's fade); they come back, fading in, when the
+# text turns to them again.
+const PORTRAIT_IDLE_LINES := 6
+var _cast_line: int = 0
+var _cast_seen: Dictionary = {}       # character key -> the line they were last in
+
+
+func _cast_note(char_name: String) -> void:
+	if _chars == null or char_name == "":
+		return
+	var key: String = String(_chars.call("char_key", char_name))
+	if key != "" and key != "none":
+		_cast_seen[key] = _cast_line
+
+
+func _cast_line_tick(kind: String, n: Dictionary, text: String) -> void:
+	if _chars == null or not _chars.has_method("visible_cast"):
+		return
+	_cast_line += 1
+	if kind == "say" or kind == "think":
+		_cast_note(_s(n, "char"))
+	var low: String = text.to_lower()
+	var cast: Dictionary = _chars.call("visible_cast")
+	for pos: Variant in cast:
+		var key: String = String(cast[pos])
+		if key == "":
+			continue
+		if not _cast_seen.has(key):
+			_cast_seen[key] = _cast_line
+		# named in the line ("Sam looks at her", "Mr. Henderson"): still in it
+		for part: String in key.split("_", false):
+			if part.length() >= 3 and _has_word(low, part):
+				_cast_seen[key] = _cast_line
+				break
+		if _cast_line - int(_cast_seen[key]) >= PORTRAIT_IDLE_LINES:
+			_chars.call("hide_at", String(pos))
+			_cast_seen.erase(key)
+			print("[GameEngine] CAST  %s steps out (%d lines without them)" % [key, PORTRAIT_IDLE_LINES])
+
+
+func _has_word(low: String, word: String) -> bool:
+	var at: int = low.find(word)
+	while at != -1:
+		var before: String = low[at - 1] if at > 0 else " "
+		var after_i: int = at + word.length()
+		var after: String = low[after_i] if after_i < low.length() else " "
+		if not _is_word_char(before) and not _is_word_char(after):
+			return true
+		at = low.find(word, at + 1)
+	return false
 
 
 func _phone_close() -> void:
@@ -1444,6 +1505,7 @@ func _show_now(n: Dictionary) -> void:
 		n.get("pos",  "center"),
 		n.get("facing", "")
 	)
+	_cast_note(char_name)
 	_cue_signature(char_name)
 
 
@@ -1752,7 +1814,9 @@ func _do_bg(n: Dictionary) -> void:
 	_frame_reset(src)
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:
-		_chars.call("hide_all")
+		# (2026-11-08) they fade with the room, not a frame before it
+		_chars.call("hide_all", true)
+		_cast_seen.clear()
 	_bg_place = place
 	if src == "":
 		_bg.texture = null
