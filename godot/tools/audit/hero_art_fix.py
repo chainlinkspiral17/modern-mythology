@@ -26,6 +26,7 @@ so the diff is only the rows that move.
 """
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -34,6 +35,111 @@ ROSTER = os.path.join(GODOT, "tools", "meshy_roster.json")
 sys.path.insert(0, HERE)
 import hero_art_placement_audit as H  # noqa: E402
 import vantage_obstruction_audit as VO  # noqa: E402
+
+
+FLIP = {"+x": "-x", "-x": "+x", "+y": "-y", "-y": "+y"}
+_CAMS = {}
+
+
+def cameras(locale):
+    """every viewpoint on a set, in BLENDER coordinates: the camera_origin of
+    each preset that loads it and each shot marker in its scene"""
+    if locale in _CAMS:
+        return _CAMS[locale]
+    import shot_marker_audit as SM
+    pts = []
+    p2s = SM.preset_to_scene()
+    bg = open(os.path.join(GODOT, "scripts", "vn", "Background3D.gd"), encoding="utf-8").read()
+    for preset, scene in p2s.items():
+        if os.path.basename(scene)[:-5] != locale:
+            continue
+        m = re.search(r'\n\t"%s": \{(.*?)\n\t\}' % re.escape(preset), bg, re.S)
+        if m:
+            o = re.search(r'"camera_origin": Vector3\(([-\d.]+),\s*([-\d.]+),\s*([-\d.]+)\)', m.group(1))
+            if o:
+                gx, gy, gz = (float(v) for v in o.groups())
+                pts.append((gx, -gz, gy))
+        tscn = os.path.join(GODOT, scene)
+        if os.path.exists(tscn):
+            src = open(tscn, encoding="utf-8").read()
+            for mm in re.finditer(r'\[node name="shot_[^"]*"[^\n]*\n(?:transform = Transform3D\([^)]*?([-\d.]+), ([-\d.]+), ([-\d.]+)\)\n|position = Vector3\(([-\d.]+), ([-\d.]+), ([-\d.]+)\))', src):
+                g = [x for x in mm.groups() if x is not None]
+                if len(g) == 3:
+                    gx, gy, gz = (float(v) for v in g)
+                    pts.append((gx, -gz, gy))
+    _CAMS[locale] = pts
+    return pts
+
+
+def viewers_behind(locale, c, n, sg, rect):
+    """cameras within 25 m that look at the picture's plane from in front of it
+    vs from behind it (in-plane within the picture's rect grown by 8 m)"""
+    wa, ha = H._plane_axes(n)
+    front = back = 0
+    for p in cameras(locale):
+        d = (p[n] - c[n]) * sg
+        if abs(d) < 0.05 or abs(d) > 25.0:
+            continue
+        if not (rect[0][0] - 8.0 <= p[wa] <= rect[0][1] + 8.0):
+            continue
+        if d > 0:
+            front += 1
+        else:
+            back += 1
+    return front, back
+
+
+def _blocked(face_c, n, sg, rect, boxes, skip):
+    """how much of a stand-in face's rect a solid in front of it (within
+    0.40 m, starting at or behind the face) covers"""
+    wa, ha = H._plane_axes(n)
+    (a0, a1), (b0, b1) = rect
+    area = max((a1 - a0) * (b1 - b0), 1e-6)
+    worst = 0.0
+    for b in boxes:
+        if b[0] in skip or H.NONSOLID.search(b[0]) or re.search(r"glass|curtain|blind", b[0], re.I):
+            continue
+        bc, bh = b[1], b[2]
+        ahead = (bc[n] + sg * bh[n] - face_c) * sg
+        starts = (bc[n] - sg * bh[n] - face_c) * sg
+        if not (0.005 < ahead <= 0.40) or starts > 0.05:
+            continue
+        cov = H._overlap_1d(a0, a1, bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
+              H._overlap_1d(b0, b1, bc[ha] - bh[ha], bc[ha] + bh[ha])
+        worst = max(worst, cov / area)
+    return worst
+
+
+def flip_row(row, boxes):
+    """a picture whose stand-in face on its facing side is buried in a solid
+    while the opposite face is open faces the wrong way (the Kowalski window
+    faced into the house; the New Orleans laundromat sign into its own box):
+    turn it to the open side, on that face"""
+    fc = str(row.get("facing", "")).lower()
+    hide = [str(p) for p in (row.get("hide") or [])]
+    if fc not in FLIP or not hide:
+        return None
+    hidden = [b for b in boxes if any(b[0].startswith(p) for p in hide)]
+    if not hidden:
+        return None
+    n, sg = H.AXES[fc]
+    wa, ha = H._plane_axes(n)
+    lo = [min(b[1][i] - b[2][i] for b in hidden) for i in range(3)]
+    hi = [max(b[1][i] + b[2][i] for b in hidden) for i in range(3)]
+    rect = ((lo[wa], hi[wa]), (lo[ha], hi[ha]))
+    skip = {b[0] for b in hidden}
+    face_here = hi[n] if sg > 0 else lo[n]
+    face_there = lo[n] if sg > 0 else hi[n]
+    if _blocked(face_here, n, sg, rect, boxes, skip) >= 0.9 and _blocked(face_there, n, -sg, rect, boxes, skip) < 0.3:
+        # … and only when the cameras that see it are on the other side
+        front, back = viewers_behind(row["locale"], [float(v) for v in row["center"]], n, sg, rect)
+        if back <= front:
+            return None
+        c = [float(v) for v in row["center"]]
+        c[n] = face_there
+        c[wa], c[ha] = (lo[wa] + hi[wa]) / 2.0, (lo[ha] + hi[ha]) / 2.0
+        return FLIP[fc], [round(v, 4) for v in c]
+    return None
 
 
 def fix_row(row, boxes):
@@ -52,7 +158,8 @@ def fix_row(row, boxes):
         lo = [min(b[1][i] - b[2][i] for b in hidden) for i in range(3)]
         hi = [max(b[1][i] + b[2][i] for b in hidden) for i in range(3)]
         face = hi[n] if sg > 0 else lo[n]
-        if abs(c[n] - face) > H.FACE_TOL:
+        if abs(c[n] - face) > H.FACE_TOL and not H.on_host(c, w, h, n, sg, wa, ha, boxes,
+                                                           {x[0] for x in hidden}, face):
             new_c[n] = face
             why.append("onto the face (%.2f m)" % abs(c[n] - face))
         sw, sh = hi[wa] - lo[wa], hi[ha] - lo[ha]
@@ -87,6 +194,38 @@ def fix_row(row, boxes):
         if best is not None and abs(best[0]) > H.FACE_TOL:
             new_c[n] = best[1]
             why.append("onto %s (%.2f m)" % (best[2], abs(best[0])))
+    # BURIED: a solid wholly over the picture that starts at or behind it —
+    # the picture is INSIDE that solid (a pump screen inside the pump body,
+    # a sign inside its building, an OPEN sign behind its own door). It
+    # moves out onto that solid's front face. A free-standing thing in front
+    # (it starts > 5 cm in front of the picture) is not this, and stays a
+    # COVERED finding for a reading.
+    c2 = new_c
+    w2, h2 = new_s
+    q0 = (c2[wa] - w2 / 2.0, c2[wa] + w2 / 2.0)
+    q1 = (c2[ha] - h2 / 2.0, c2[ha] + h2 / 2.0)
+    skip = {b[0] for b in hidden}
+    front = None
+    for b in boxes:
+        if b[0] in skip or H.NONSOLID.search(b[0]) or re.search(r"curtain|blind|drape|valance", b[0], re.I):
+            continue
+        bc, bh = b[1], b[2]
+        b_front = bc[n] + sg * bh[n]
+        b_back = bc[n] - sg * bh[n]
+        ahead = (b_front - c2[n]) * sg          # how far its front face is in front of the picture
+        starts = (b_back - c2[n]) * sg          # its back face, measured the same way
+        if not (0.01 < ahead <= 0.40) or starts > 0.05:
+            continue
+        cov = H._overlap_1d(q0[0], q0[1], bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
+              H._overlap_1d(q1[0], q1[1], bc[ha] - bh[ha], bc[ha] + bh[ha])
+        if cov < 0.9 * w2 * h2:
+            continue
+        if front is None or (b_front - front[0]) * sg > 0:
+            front = (b_front, b[0])
+    if front is not None:
+        new_c = list(new_c)
+        new_c[n] = front[0]
+        why.append("out of %s onto its face (%.2f m)" % (front[1], abs(front[0] - c2[n])))
     if not why:
         return None
     return [round(v, 4) for v in new_c], [round(v, 4) for v in new_s], "; ".join(why)
@@ -112,6 +251,16 @@ def main():
                 by_loc[loc] = VO.boxes_for(loc)
             boxes = by_loc[loc]
             if not boxes:
+                continue
+            # (automatic turning stays OFF: a sign on door glass faces both
+            # ways and a set's cameras are mostly on one side of it — the
+            # wrong-facing rows are read and turned by hand)
+            fl = None
+            if fl is not None:
+                print("%-26s %-34s faced into its object: turned %s → %s" % (loc, e.get("slug", "?"), r["facing"], fl[0]))
+                moved += 1
+                if not dry:
+                    r["facing"], r["center"] = fl[0], fl[1]
                 continue
             f = fix_row(r, boxes)
             if f is None:

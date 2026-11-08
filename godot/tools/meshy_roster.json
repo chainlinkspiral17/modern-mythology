@@ -8816,7 +8816,7 @@
           "label": "Canvas",
           "center": [
             2.95,
-            0.11,
+            -0.1,
             0.34
           ],
           "size": [
@@ -11807,7 +11807,7 @@
           "label": "Mural",
           "center": [
             -3.3,
-            -8.855,
+            -8.82,
             1.8
           ],
           "size": [
@@ -11853,7 +11853,7 @@
           "label": "Open_Sign",
           "center": [
             0.35,
-            0.06,
+            0.02,
             1.55
           ],
           "size": [
@@ -12287,7 +12287,7 @@
           "label": "ATM_Screen",
           "center": [
             4.8,
-            1.2,
+            1.21,
             1.16
           ],
           "size": [
@@ -12375,7 +12375,7 @@
           "label": "Brand_*",
           "center": [
             -1.2,
-            0.03,
+            0.1,
             2.5
           ],
           "size": [
@@ -12416,7 +12416,7 @@
           "label": "Brand_*",
           "center": [
             1.25,
-            0.03,
+            0.1,
             2.5
           ],
           "size": [
@@ -13166,7 +13166,7 @@
           "label": "Devil_*",
           "center": [
             259.0,
-            -384.58,
+            -384.475,
             3.465
           ],
           "size": [
@@ -13183,7 +13183,7 @@
           "label": "Devil_*",
           "center": [
             260.2,
-            -384.58,
+            -384.475,
             3.665
           ],
           "size": [
@@ -13200,7 +13200,7 @@
           "label": "Devil_*",
           "center": [
             261.4,
-            -384.58,
+            -384.475,
             3.465
           ],
           "size": [
@@ -14163,7 +14163,7 @@
           "label": "Park_SignText",
           "center": [
             -66.7,
-            -83.55,
+            -83.46,
             2.5
           ],
           "size": [
@@ -14449,7 +14449,7 @@
           "label": "Wheel_Casino_NeonDisc",
           "center": [
             -200.0,
-            293.05,
+            293.25,
             13.16
           ],
           "size": [
@@ -16254,14 +16254,14 @@
           "label": "PhoneBooth_Sign",
           "center": [
             19.0,
-            -7.6,
-            2.01
+            -8.025,
+            1.92
           ],
           "size": [
             0.84,
-            0.84
+            0.18
           ],
-          "facing": "up",
+          "facing": "-y",
           "hide": [
             "PhoneBooth_Sign"
           ]
@@ -16427,7 +16427,7 @@
           "label": "WestExt_BarPartition_Sign",
           "center": [
             -12.0,
-            1.97,
+            2.05,
             2.5
           ],
           "size": [
@@ -17619,7 +17619,7 @@
           "label": "Front_Sign",
           "center": [
             0.0,
-            -0.116,
+            0.1,
             2.7
           ],
           "size": [
@@ -18020,7 +18020,7 @@
           "locale": "daily_grind_interior",
           "label": "Kai_Laptop_Display",
           "center": [
-            -4.923,
+            -4.91,
             1.35,
             0.88
           ],
@@ -19925,7 +19925,7 @@
           "locale": "roberts_kitchen",
           "label": "Dining_Photo",
           "center": [
-            1.394,
+            1.398,
             0.75,
             1.7
           ],
@@ -19933,7 +19933,7 @@
             0.26,
             0.2
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Dining_Photo_0_Mat",
             "Dining_Photo_0_Pic"
@@ -19966,7 +19966,7 @@
           "locale": "roberts_kitchen",
           "label": "Dining_Photo",
           "center": [
-            1.392,
+            1.398,
             1.2,
             1.72
           ],
@@ -19974,7 +19974,7 @@
             0.2,
             0.26
           ],
-          "facing": "-x",
+          "facing": "+x",
           "hide": [
             "Dining_Photo_1_Pic"
           ]
@@ -20161,7 +20161,7 @@
           "label": "Sign",
           "center": [
             -2.2,
-            -0.205,
+            -0.12,
             4.36
           ],
           "size": [
@@ -20178,7 +20178,7 @@
           "label": "Sign",
           "center": [
             -1.58,
-            -0.205,
+            -0.12,
             4.36
           ],
           "size": [
@@ -20195,7 +20195,7 @@
           "label": "Sign",
           "center": [
             2.14,
-            -0.205,
+            -0.12,
             4.36
           ],
           "size": [
@@ -20212,7 +20212,7 @@
           "label": "Sign",
           "center": [
             -2.0,
-            -0.205,
+            -0.12,
             3.84
           ],
           "size": [
@@ -20229,7 +20229,7 @@
           "label": "Sign",
           "center": [
             2.0,
-            -0.205,
+            -0.12,
             3.84
           ],
           "size": [
@@ -21904,7 +21904,7 @@
           "label": "Vestergaard_Plaque",
           "center": [
             -2.6,
-            -8.367,
+            -8.3,
             0.83
           ],
           "size": [
@@ -21951,7 +21951,7 @@
           "label": "DR_Sign",
           "center": [
             -0.55,
-            -0.005,
+            0.055,
             1.62
           ],
           "size": [
@@ -22808,7 +22808,7 @@
           "label": "Park_SignText",
           "center": [
             -66.7,
-            -83.55,
+            -83.46,
             2.5
           ],
           "size": [
@@ -23523,7 +23523,7 @@
           "label": "Sign",
           "center": [
             0.9572,
-            8.705,
+            8.65,
             1.4031
           ],
           "size": [
@@ -23570,7 +23570,7 @@
           "label": "Sign",
           "center": [
             1.2,
-            8.62,
+            8.225,
             1.75
           ],
           "size": [
@@ -23615,7 +23615,7 @@
           "label": "Sign",
           "center": [
             1.0039,
-            8.71,
+            8.65,
             1.6103
           ],
           "size": [
@@ -24065,7 +24065,7 @@
           "locale": "salty_tome_interior",
           "label": "SlowTerminal_Screen",
           "center": [
-            2.79,
+            2.4,
             2.85,
             1.2
           ],
@@ -24498,7 +24498,7 @@
           "label": "Billboard",
           "center": [
             119.5,
-            -12.07,
+            -11.94,
             6.48
           ],
           "size": [
@@ -27822,7 +27822,7 @@
           "label": "Register_Tablet",
           "center": [
             1.55,
-            8.111,
+            8.09,
             1.28
           ],
           "size": [
@@ -29814,14 +29814,14 @@
           "label": "KWin_Glass",
           "center": [
             2.4,
-            0.07,
+            0.08,
             1.55
           ],
           "size": [
-            1.36,
+            1.35,
             0.88
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
             "KWin_Glass"
           ]
@@ -29943,7 +29943,7 @@
           "label": "Canopy_Logo",
           "center": [
             0.5,
-            -21.05,
+            -21.0,
             5.42
           ],
           "size": [
@@ -30522,14 +30522,14 @@
           "label": "Laundromat_Sign",
           "center": [
             0.9,
-            5.348,
+            5.354,
             -0.55
           ],
           "size": [
             2.4,
             0.46
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
             "Laundromat_Sign_Face",
             "Laundromat_Sign_Text"
@@ -31181,7 +31181,7 @@
           "locale": "nexcorp_gas_go",
           "label": "Locker_*",
           "center": [
-            -5.41,
+            -5.37,
             5.7,
             1.0
           ],
@@ -31198,7 +31198,7 @@
           "locale": "nexcorp_gas_go",
           "label": "Locker_*",
           "center": [
-            -5.41,
+            -5.37,
             6.25,
             1.0
           ],
@@ -31215,7 +31215,7 @@
           "locale": "nexcorp_gas_go",
           "label": "Locker_*",
           "center": [
-            -5.41,
+            -5.37,
             6.8,
             1.0
           ],
@@ -31232,7 +31232,7 @@
           "locale": "nexcorp_gas_go",
           "label": "Locker_*",
           "center": [
-            -5.41,
+            -5.37,
             7.35,
             1.0
           ],
@@ -31249,7 +31249,7 @@
           "locale": "nexcorp_gas_go",
           "label": "Locker_*",
           "center": [
-            -5.41,
+            -5.37,
             7.9,
             1.0
           ],
@@ -31266,7 +31266,7 @@
           "locale": "nexcorp_gas_go",
           "label": "Locker_*",
           "center": [
-            -5.41,
+            -5.37,
             8.45,
             1.0
           ],
@@ -31866,7 +31866,7 @@
           "label": "Office_Corkboard",
           "center": [
             4.4,
-            18.617,
+            18.4,
             1.9
           ],
           "size": [
@@ -33055,7 +33055,7 @@
           "label": "Hall_Poster",
           "center": [
             0.5,
-            -0.107,
+            0.1,
             1.55
           ],
           "size": [
@@ -35265,7 +35265,7 @@
           "locale": "graciela_bedroom",
           "label": "Photo",
           "center": [
-            -1.752,
+            -1.73,
             2.96,
             1.02
           ],
@@ -51675,7 +51675,7 @@
           "label": "Poster_1",
           "center": [
             -8.2,
-            2.06,
+            1.94,
             1.63
           ],
           "size": [
@@ -59423,7 +59423,7 @@
           "label": "cedar_tower_studio_south",
           "center": [
             -2.2,
-            0.07,
+            0.1,
             6.45
           ],
           "size": [

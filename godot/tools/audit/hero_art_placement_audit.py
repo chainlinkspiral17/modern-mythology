@@ -53,6 +53,28 @@ def _overlap_1d(a0, a1, b0, b1):
     return max(0.0, min(a1, b1) - max(a0, b0))
 
 
+def on_host(c, w, h, n, sg, wa, ha, boxes, skip, stand_face):
+    """the picture lies on the front face of a solid that wholly backs it and
+    reaches back past the stand-in's face — the stand-in is buried in that
+    solid (a sign board inside a building body) and the picture rightly sits
+    on the solid's face"""
+    q0 = (c[wa] - w / 2.0, c[wa] + w / 2.0)
+    q1 = (c[ha] - h / 2.0, c[ha] + h / 2.0)
+    for b in boxes:
+        if b[0] in skip:
+            continue
+        bc, bh = b[1], b[2]
+        if abs(bc[n] + sg * bh[n] - c[n]) > FACE_TOL:
+            continue
+        if (bc[n] - sg * bh[n] - stand_face) * sg > 0.01:
+            continue
+        cov = _overlap_1d(q0[0], q0[1], bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
+              _overlap_1d(q1[0], q1[1], bc[ha] - bh[ha], bc[ha] + bh[ha])
+        if cov >= 0.9 * w * h:
+            return True
+    return False
+
+
 def check_row(slug, row, boxes):
     out = []
     fc = str(row.get("facing", "")).lower()
@@ -74,7 +96,8 @@ def check_row(slug, row, boxes):
         lo = [min(b[1][i] - b[2][i] for b in hidden) for i in range(3)]
         hi = [max(b[1][i] + b[2][i] for b in hidden) for i in range(3)]
         face = hi[n] if sg > 0 else lo[n]
-        if abs(c[n] - face) > FACE_TOL:
+        if abs(c[n] - face) > FACE_TOL and not on_host(c, w, h, n, sg, wa, ha, boxes,
+                                                       {x[0] for x in hidden}, face):
             out.append("OFF-FACE   %s: %.2f m %s the stand-in's face (%s)" % (
                 slug, abs(c[n] - face), "off" if (c[n] - face) * sg > 0 else "inside", ",".join(hide)))
         sw, sh = hi[wa] - lo[wa], hi[ha] - lo[ha]
