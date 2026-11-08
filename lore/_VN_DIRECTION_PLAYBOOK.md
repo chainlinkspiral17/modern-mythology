@@ -342,7 +342,9 @@ Darkness the text names ("in the dark", a darkroom's safelight) stays.
 Fix the rest in this order: (1) re-aim to where the light is, (2) cut to
 another object the same line names, (3) light it from a fixture that is
 already in the set (a porch bulb, the moon in the window). Glass is
-written below alpha 0.98, and something is modelled behind it.
+written below alpha 0.98, and something is modelled behind it. The sweep is `tools/audit/dark_frame_sweep.py` (pass 307): run it in
+the background after any lighting or framing pass, and read the top of
+its list by eye.
 
 ### 2026-11-07 · a planner may place cuts; only read frames may be in its list (pass 303)
 

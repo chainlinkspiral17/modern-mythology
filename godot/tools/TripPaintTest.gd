@@ -123,9 +123,42 @@ func _ready() -> void:
 			for i in 6:
 				await get_tree().process_frame
 			await RenderingServer.frame_post_draw
-			get_viewport().get_texture().get_image().save_png(outdir.path_join(mname + ".png"))
+			var shot: Image = get_viewport().get_texture().get_image()
+			shot.save_png(outdir.path_join(mname + ".png"))
+			# (2026-11-08) --luma 1: the frame's brightness for dark_frame_sweep.py —
+			# mean and 90th percentile of the clear top 69% (the text box covers
+			# the rest), on a 160x90 copy so the read costs nothing
+			if String(args.get("luma", "")) != "":
+				print("LUMA %s %s" % [mname, _luma(shot)])
 		get_tree().quit(0)
 		return
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png(String(args.get("out", "/tmp/trip.png")))
 	get_tree().quit(0)
+
+
+## "<mean> <p90>" of the top 69% of a frame's luminance, 0..255, read on
+## a 160x90 copy (dark_frame_sweep.py ranks the cue frames by it).
+func _luma(src: Image) -> String:
+	var img: Image = src.duplicate() as Image
+	img.resize(160, 90, Image.INTERPOLATE_BILINEAR)
+	var rows: int = int(90.0 * 0.69)
+	var hist: PackedInt32Array = PackedInt32Array()
+	hist.resize(256)
+	var total: float = 0.0
+	var n: int = 0
+	for y in range(rows):
+		for x in range(160):
+			var c: Color = img.get_pixel(x, y)
+			var l: int = clampi(int(round((0.299 * c.r + 0.587 * c.g + 0.114 * c.b) * 255.0)), 0, 255)
+			hist[l] += 1
+			total += float(l)
+			n += 1
+	var acc: int = 0
+	var p90: int = 0
+	for i in range(256):
+		acc += hist[i]
+		if float(acc) >= float(n) * 0.9:
+			p90 = i
+			break
+	return "%.1f %d" % [total / float(maxi(n, 1)), p90]
