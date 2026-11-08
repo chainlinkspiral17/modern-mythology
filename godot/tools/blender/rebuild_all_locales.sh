@@ -23,10 +23,31 @@ mkdir -p "$(dirname "$LOG")"
 : > "$LOG"
 
 builders=()
+# (2026-11-08) THE CATHEDRAL'S SETS. Frasier's warehouse (cathedral_interior)
+# and the four prop sets it stages are built by the builders in THIS folder,
+# not locales/ — a full rebuild skipped them, so a new machine never had the
+# Magician's warehouse ("the interior of frasier's warehouse is either black
+# or missing"). builder:output, relative to this folder.
+EXTRA_SETS=(
+  "build_cathedral_interior.py:../../assets/3d/cathedral/cathedral_interior.glb"
+  "build_workbench_props.py:../../assets/3d/props/workbench_props.glb"
+  "build_regional_dioramas.py:../../assets/3d/dioramas/regions.glb"
+  "build_agent_figurines.py:../../assets/3d/agents/demon_figurines.glb"
+  "build_atmosphere_props.py:../../assets/3d/atmosphere/atmosphere.glb"
+)
+extra_stale() {   # the extra sets whose model is missing or older than its builder
+  local e b out
+  for e in "${EXTRA_SETS[@]}"; do
+    b="${e%%:*}"; out="${e#*:}"
+    if [ ! -f "$out" ] || [ "$b" -nt "$out" ]; then echo "$b"; fi
+  done
+}
 # (2026-10-27) --stale: only the sets whose GLB is older than its builder's last
 # commit (stale_sets.py) — the Deck's "thought this was fixed" was a set never rebuilt
 if [ "${1:-}" = "--stale" ]; then
   mapfile -t names < <(python3 "$SCRIPT_DIR/stale_sets.py")
+  mapfile -t extra < <(extra_stale)
+  names+=("${extra[@]}")
   echo "${#names[@]} stale set(s): ${names[*]}"
   set -- "${names[@]}"
   [ "$#" -eq 0 ] && { echo "nothing to rebuild"; exit 0; }
@@ -34,10 +55,11 @@ fi
 if [ "$#" -gt 0 ]; then
   for a in "$@"; do
     b="${a%.py}"; b="${b#build_}"
-    [ -f "locales/build_$b.py" ] && builders+=("build_$b.py") || echo "no builder for $a"
+    if [ -f "locales/build_$b.py" ] || [ -f "build_$b.py" ]; then builders+=("build_$b.py"); else echo "no builder for $a"; fi
   done
 else
   for f in locales/build_*.py; do builders+=("$(basename "$f")"); done
+  for e in "${EXTRA_SETS[@]}"; do builders+=("${e%%:*}"); done
 fi
 
 total=${#builders[@]}
