@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+"""glass_alpha_audit.py — builder parts NAMED as glass but written opaque.
+
+LocaleGlass (scripts/LocaleGlass.gd) makes a surface transparent only when
+its vertex alpha is below 0.98. A pane a builder writes at alpha 1.0 is a
+painted slab: the monitor room's west wall hid the whole Pacific, and the
+Dabney fridges' doors hid their drinks (pass 306, 2026-11-08).
+
+This is a REPORT, not a gate: not every opaque "glass" is a bug. A mirror
+is not a pane; a lit display or a dark night window may be meant opaque;
+and a pane with nothing modelled behind it would open onto the void if it
+were made transparent. Read each candidate by render before changing it.
+
+    python3 tools/audit/glass_alpha_audit.py           # every builder
+    python3 tools/audit/glass_alpha_audit.py diner     # builders matching
+"""
+import ast
+import os
+import re
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+BLENDER = os.path.normpath(os.path.join(HERE, "..", "blender"))
+ALPHA_MAX = 0.98
+
+GLASSY = re.compile(r"(glass|pane|windshield|storefront)", re.I)
+# drinkware, mirrors, spectacles and the like: named glass, not a pane
+NOT_PANE = re.compile(
+    r"(mirror|eyeglass|glasses|spectacle|tumbler|whiskey|wine|beer|shot_glass|"
+    r"pint|goblet|jar|bottle|cup|mug|lens|shard|ashtray|frame|mullion|sill|"
+    r"rim|lid|panel|palette|crate|recess|basin|vanity|water|dish|broken|glint|"
+    r"header|storefronts)", re.I)
+CALLS = {"make_box", "make_rot_box", "make_cyl", "make_chamfer_box", "_mb", "_mc"}
+
+
+def _const_colors(tree):
+    """Module-level NAME = (r, g, b, a) assignments."""
+    out = {}
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and isinstance(node.value, ast.Tuple):
+            vals = node.value.elts
+            if len(vals) == 4 and all(isinstance(v, ast.Constant) for v in vals):
+                for t in node.targets:
+                    if isinstance(t, ast.Name):
+                        out[t.id] = tuple(v.value for v in vals)
+    return out
+
+
+def _name_of(arg):
+    if isinstance(arg, ast.Constant) and isinstance(arg.value, str):
+        return arg.value
+    if isinstance(arg, ast.JoinedStr):
+        return "".join(v.value if isinstance(v, ast.Constant) else "{}" for v in arg.values)
+    return None
+
+
+def _alpha_of(call, consts):
+    """The colour argument's alpha: the last 4-tuple of constants, or a
+    module-level colour constant named among the arguments."""
+    for arg in reversed(call.args):
+        if isinstance(arg, ast.Tuple) and len(arg.elts) == 4 \
+                and all(isinstance(v, ast.Constant) for v in arg.elts):
+            return float(arg.elts[3].value)
+        if isinstance(arg, ast.Name) and arg.id in consts:
+            return float(consts[arg.id][3])
+    return None
+
+
+def scan(path):
+    src = open(path, encoding="utf-8").read()
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return []
+    consts = _const_colors(tree)
+    rows = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call) or not node.args:
+            continue
+        fn = node.func.id if isinstance(node.func, ast.Name) else \
+            node.func.attr if isinstance(node.func, ast.Attribute) else ""
+        if fn not in CALLS:
+            continue
+        name = _name_of(node.args[0])
+        if not name or not GLASSY.search(name) or NOT_PANE.search(name):
+            continue
+        a = _alpha_of(node, consts)
+        if a is not None and a >= ALPHA_MAX:
+            rows.append((node.lineno, name))
+    return rows
+
+
+def main():
+    want = sys.argv[1:]
+    total = 0
+    for dirpath, _dirs, files in os.walk(BLENDER):
+        for fn in sorted(files):
+            if not (fn.startswith("build_") and fn.endswith(".py")):
+                continue
+            if want and not any(w in fn for w in want):
+                continue
+            rows = scan(os.path.join(dirpath, fn))
+            if not rows:
+                continue
+            total += len(rows)
+            print("== %s" % os.path.relpath(os.path.join(dirpath, fn), BLENDER))
+            for ln, name in rows:
+                print("   %5d  %s" % (ln, name))
+    print("\nglass_alpha_audit · %d part(s) named as glass, written opaque "
+          "(alpha >= %.2f) — read each by render before changing it" % (total, ALPHA_MAX))
+
+
+if __name__ == "__main__":
+    main()
