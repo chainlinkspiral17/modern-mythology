@@ -424,6 +424,17 @@ echo ""
 # parts of a picture an insert can point at. Every key a real picture,
 # every spot on it, and no insert on a painting with spots naming one it
 # lacks (it would fall back to a seeded glance). Zero.
+# ── Trip direction (2026-11-08) ───────────────────────────────
+# resources/vn/trip_direction.json gives every scene its trip level,
+# register and beats (tools/trip_direction.py). Every id a chapter, every
+# level and beat in range, every register TripSync's. Zero.
+echo "── trip_direction_audit.py ──"
+TDOUT="$(python3 trip_direction_audit.py 2>/dev/null)" || {
+    echo "$TDOUT" | grep -E "^(SCENE|LEVEL|REG|BEAT)" | head -20
+    echo "$TDOUT" | tail -1; exit 1; }
+echo "$TDOUT" | tail -1
+echo ""
+
 echo "── painting_spot_audit.py ──"
 PSOUT="$(python3 painting_spot_audit.py 2>/dev/null)" || {
     echo "$PSOUT" | grep -E "^(SPOTS|CUE)" | head -20

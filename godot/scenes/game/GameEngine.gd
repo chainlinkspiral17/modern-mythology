@@ -442,6 +442,81 @@ func _apply_trip_cue(arg: String) -> void:
 		trip.call("apply_trip_cue", arg)
 
 
+# ── TRIP DIRECTION (2026-11-08) ──────────────────────────────────
+# The user: "direct the psychedelic effect for each scene."
+# resources/vn/trip_direction.json gives every scene its trip LEVEL (the
+# scene_scale it opens at: 0.35 a hospital bed … 1.45 a vision), an
+# optional REGISTER, and BEATS — a node where the trip swells (or drops)
+# for `hold` lines, then returns to the scene's level. Built by
+# tools/trip_direction.py from each scene's writing, a reason on every
+# entry; `locked` entries are hand-directed and never regenerated. An
+# inline `[trip:]` / `[register:]` cue on a line still wins at that line.
+const TRIP_DIRECTION_PATH := "res://resources/vn/trip_direction.json"
+static var _trip_dir: Dictionary = {}
+static var _trip_dir_loaded: bool = false
+var _trip_level: float = 1.0
+var _trip_beats: Dictionary = {}       # node index -> [trip, hold]
+var _trip_return_at: int = -1
+
+
+static func _trip_direction_for(scene_id: String) -> Dictionary:
+	if not _trip_dir_loaded:
+		_trip_dir_loaded = true
+		if FileAccess.file_exists(TRIP_DIRECTION_PATH):
+			var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(TRIP_DIRECTION_PATH))
+			if typeof(data) == TYPE_DICTIONARY:
+				var scenes: Variant = (data as Dictionary).get("scenes", {})
+				if typeof(scenes) == TYPE_DICTIONARY:
+					_trip_dir = scenes
+	var e: Variant = _trip_dir.get(scene_id, {})
+	if typeof(e) == TYPE_DICTIONARY:
+		return e as Dictionary
+	return {}
+
+
+func _trip_scene_start(scene_id: String, start_at: int) -> void:
+	_trip_beats.clear()
+	_trip_return_at = -1
+	_trip_level = 1.0
+	var e: Dictionary = _trip_direction_for(scene_id)
+	if e.is_empty():
+		return
+	_trip_level = clampf(float(e.get("level", 1.0)), 0.0, 1.5)
+	_apply_trip_cue(str(_trip_level))
+	print("[GameEngine] TRIP  %s opens at %.2f%s" % [scene_id, _trip_level,
+		(" · register " + String(e.get("register", ""))) if String(e.get("register", "")) != "" else ""])
+	var reg: String = String(e.get("register", ""))
+	if reg != "":
+		_apply_register_cue(reg)
+	var beats: Variant = e.get("beats", [])
+	if typeof(beats) == TYPE_ARRAY:
+		for b: Variant in beats:
+			if typeof(b) != TYPE_DICTIONARY:
+				continue
+			var bd: Dictionary = b as Dictionary
+			var at: int = int(bd.get("node", -1))
+			if at < 0:
+				continue
+			_trip_beats[at] = [clampf(float(bd.get("trip", _trip_level)), 0.0, 1.5), maxi(int(bd.get("hold", 4)), 1)]
+	# a load mid-scene picks up a beat it lands inside
+	for at: Variant in _trip_beats:
+		var bt: Array = _trip_beats[at]
+		if int(at) < start_at and int(at) + int(bt[1]) > start_at:
+			_apply_trip_cue(str(float(bt[0])))
+			_trip_return_at = int(at) + int(bt[1])
+
+
+func _trip_on_node(i: int) -> void:
+	if i == _trip_return_at:
+		_trip_return_at = -1
+		_apply_trip_cue(str(_trip_level))
+	if _trip_beats.has(i):
+		var bt: Array = _trip_beats[i]
+		_apply_trip_cue(str(float(bt[0])))
+		_trip_return_at = i + int(bt[1])
+		print("[GameEngine] TRIP  beat at node %d → %.2f for %d lines" % [i, float(bt[0]), int(bt[1])])
+
+
 # `[register:domestic]` / `[register:reset]` (2026-09-11). The volume
 # picks a register for the whole pillar, which is right until a chapter
 # inside it is a different KIND of room — the Lovers is a kitchen at
@@ -549,6 +624,8 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
 	_apply_trip_cue("reset")
 	_apply_register_cue("reset")
+	# … then at the level its TRIP DIRECTION gives it (2026-11-08)
+	_trip_scene_start(scene_id, start_at)
 	_scene_id   = scene_id
 	_signatures_cued.clear()
 	# Coverage rotation: the director assigns each chapter its
@@ -847,6 +924,7 @@ func _dispatch(n: Dictionary) -> void:
 			_show_now(held)
 	if _music != null:
 		_music.on_node(_node_idx - 1, n)
+	_trip_on_node(_node_idx - 1)
 	# Conditional nodes · cross-chapter callbacks.  A node carrying
 	# when_flag only plays if that flag is set (and, when "is" is
 	# present, equals that value); when_not_flag inverts.  Any node

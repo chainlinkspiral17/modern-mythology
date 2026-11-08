@@ -1,0 +1,3192 @@
+{
+ "_doc": "THE TRIP, directed per scene (2026-11-08). Built by tools/trip_direction.py from each scene's writing; GameEngine._trip_scene_start reads it. level = the scene_scale the scene opens at (0..1.5); register = an optional TripSync register; beats = a node where the trip swells or drops for `hold` lines. Hand-directed entries carry \"locked\": true and survive a rebuild. An inline [trip:] / [register:] cue on a line still wins there.",
+ "scenes": {
+  "meld_kaleidoscope_a": {
+   "level": 1.0,
+   "why": "the volume's own — kaleidoscop ×1, neon ×1",
+   "beats": [
+    {
+     "node": 23,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (hospital)"
+    }
+   ]
+  },
+  "meld_kaleidoscope_b": {
+   "level": 0.75,
+   "why": "grounded — sick ×1, hospital ×1"
+  },
+  "meld_kaleidoscope_c": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "meld_kaleidoscope_d": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "meld_kaleidoscope_e": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1",
+   "beats": [
+    {
+     "node": 22,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (cancer)"
+    }
+   ]
+  },
+  "meld_kaleidoscope_f": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "meld_kaleidoscope_g": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "meld_seam_1_2": {
+   "level": 1.0,
+   "why": "the volume's own — pulse ×1"
+  },
+  "meld_seam_2_3": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "meld_seam_3_4": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch10_longboat": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — judge ×3, bank ×1"
+  },
+  "vol1_ch11_aisles": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1"
+  },
+  "vol1_ch11_drugstore": {
+   "level": 1.0,
+   "why": "the volume's own — music ×4"
+  },
+  "vol1_ch12_history": {
+   "level": 0.75,
+   "why": "grounded — boss ×1, bank ×1, paperwork ×1"
+  },
+  "vol1_ch13_deep_end": {
+   "level": 1.4,
+   "why": "dreamlike — riff ×11, guitar ×2, float ×2, music ×1"
+  },
+  "vol1_ch14_painting": {
+   "level": 1.0,
+   "why": "the volume's own — spirit ×1, dream ×1",
+   "beats": [
+    {
+     "node": 96,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol1_ch15_river_turn": {
+   "level": 0.75,
+   "why": "grounded — judge ×3, grave ×1, bank ×1"
+  },
+  "vol1_ch16_four_am": {
+   "level": 1.0,
+   "why": "the volume's own — song ×3, music ×1"
+  },
+  "vol1_ch17_editing_suite": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, stars ×1"
+  },
+  "vol1_ch1_s2": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch2_act_one": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, music ×1",
+   "beats": [
+    {
+     "node": 8,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol1_ch2_painting": {
+   "level": 1.2,
+   "why": "leans uncanny — demon ×1, flame ×1, magic ×1"
+  },
+  "vol1_ch2_painting_b": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch2_park": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, magic ×1, angel ×1, danc ×1",
+   "beats": [
+    {
+     "node": 26,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol1_ch2_pharmacy": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch2_pharmacy_mirror": {
+   "level": 1.0,
+   "why": "the volume's own — spirit ×1, danc ×1"
+  },
+  "vol1_ch2_skatepark": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch3_bar": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch3_bar_b": {
+   "level": 1.0,
+   "why": "the volume's own — magic ×1"
+  },
+  "vol1_ch3_club": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×1, music ×1, ghost ×1"
+  },
+  "vol1_ch3_judgement_day": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1"
+  },
+  "vol1_ch3_outside": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch3_outside_b": {
+   "level": 1.0,
+   "why": "the volume's own — danc ×1"
+  },
+  "vol1_ch4_club_sharp": {
+   "level": 1.0,
+   "why": "the volume's own — danc ×2, music ×1"
+  },
+  "vol1_ch4_club_sharp_b": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol1_ch4_dream_bar": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×6"
+  },
+  "vol1_ch4_dream_bed": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×3, glow ×3, pulse ×1"
+  },
+  "vol1_ch4_dream_states": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×3"
+  },
+  "vol1_ch4_interstitial": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol1_ch4_lullaby": {
+   "level": 1.2,
+   "why": "leans uncanny — music ×2, angel ×1, dream ×1"
+  },
+  "vol1_ch4_waking": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol1_ch5_morning": {
+   "level": 1.0,
+   "why": "the volume's own — vision ×1"
+  },
+  "vol1_ch5_proposition": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, music ×1, magic ×1"
+  },
+  "vol1_ch6_debrief": {
+   "level": 1.0,
+   "why": "the volume's own — stars ×1, cosmos ×1, kaleidoscop ×1, dream ×1",
+   "beats": [
+    {
+     "node": 34,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol1_ch6_judgement_day": {
+   "level": 0.75,
+   "why": "grounded — judge ×2"
+  },
+  "vol1_ch6_office": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×3, music ×1"
+  },
+  "vol1_ch6_tutorial": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch7_ink": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch7_joan": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_ch8_club": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2"
+  },
+  "vol1_ch8_lifelines": {
+   "level": 1.0,
+   "why": "the volume's own — music ×2"
+  },
+  "vol1_ch8_triumvirate": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, music ×1, guitar ×1, riff ×1",
+   "beats": [
+    {
+     "node": 16,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol1_ch9_street": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_end": {
+   "level": 1.0,
+   "why": "the volume's own — neon ×1"
+  },
+  "vol1_finale": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_interlude_demographic": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1, dream ×1"
+  },
+  "vol1_introduction": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×4, stars ×2",
+   "beats": [
+    {
+     "node": 20,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol1_link_booth": {
+   "level": 1.0,
+   "why": "the volume's own — glow ×2",
+   "beats": [
+    {
+     "node": 8,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (glow)"
+    }
+   ]
+  },
+  "vol1_link_counter": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_end": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_jukebox": {
+   "level": 1.0,
+   "why": "the volume's own — song ×2"
+  },
+  "vol1_link_menu": {
+   "level": 1.0,
+   "why": "the volume's own — float ×1"
+  },
+  "vol1_link_outside": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_q_coat": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_q_cold": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_q_name": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_q_shuttle": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_q_where": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_shuttle": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_link_window": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_missing_link": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol1_prelude_editing_suite": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, pulse ×1"
+  },
+  "vol1_title": {
+   "level": 1.0,
+   "why": "the volume's own — spiral ×1"
+  },
+  "vol1_trailer_faust3": {
+   "level": 1.0,
+   "why": "the volume's own — magic ×1"
+  },
+  "vol2_bf_building": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_bf_dog": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_bf_end": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_bf_lot": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_bf_overlook": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_bf_picnic": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_bf_trail": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_briar_falls_interlude": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_ch10_frank": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words",
+   "beats": [
+    {
+     "node": 9,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol2_ch10_salmon": {
+   "level": 1.0,
+   "why": "the volume's own — swirl ×1",
+   "beats": [
+    {
+     "node": 14,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol2_ch10_spawning_grounds": {
+   "level": 1.0,
+   "why": "the volume's own — danc ×1"
+  },
+  "vol2_ch11_dickens_dean": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×3, vision ×1, dream ×1"
+  },
+  "vol2_ch11_terminal_velocity": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol2_ch11_the_room": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_ch12_drift_wood_intro": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_ch12x_beach_blanket_bingo": {
+   "level": 1.4,
+   "why": "dreamlike — music ×2, glow ×2, guitar ×2, stars ×2"
+  },
+  "vol2_ch12x_field_notes": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×2, float ×1"
+  },
+  "vol2_ch12x_loose_pages": {
+   "level": 0.75,
+   "why": "grounded — bill ×1, contract ×1"
+  },
+  "vol2_ch1_history_one": {
+   "level": 1.0,
+   "why": "the volume's own — danc ×1"
+  },
+  "vol2_ch2_cliffside": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words",
+   "beats": [
+    {
+     "node": 6,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol2_ch2_disappearance": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words",
+   "beats": [
+    {
+     "node": 18,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol2_ch2_ghost": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×2",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol2_ch2_interlude_one": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×5",
+   "beats": [
+    {
+     "node": 14,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol2_ch2_interlude_three": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_ch2_interlude_two": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×5, music ×2, float ×1",
+   "beats": [
+    {
+     "node": 38,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol2_ch2_seagash": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_ch3_points_of_impact": {
+   "level": 0.75,
+   "why": "grounded — police ×4, rent ×1, bill ×1, officer ×1"
+  },
+  "vol2_ch3_rewind": {
+   "level": 1.2,
+   "why": "leans uncanny — song ×2, sing ×1, sang ×1, stars ×1"
+  },
+  "vol2_ch4_lighthouse": {
+   "level": 1.0,
+   "why": "the volume's own — riff ×1, music ×1, ghost ×1, danc ×1"
+  },
+  "vol2_ch4_night_lights": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×6, flame ×1, spirit ×1, music ×1",
+   "beats": [
+    {
+     "node": 60,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol2_ch5_egretta": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1, concert ×1, vision ×1, ghost ×1"
+  },
+  "vol2_ch5_lessons_in_leaves": {
+   "level": 1.0,
+   "why": "the volume's own — kaleidoscop ×1, spiral ×1, spirit ×1, pulse ×1"
+  },
+  "vol2_ch6_ark": {
+   "level": 1.0,
+   "why": "the volume's own — sang ×2, dream ×2"
+  },
+  "vol2_ch6_mayhune": {
+   "level": 0.75,
+   "why": "grounded — doctor ×2, sick ×2, court ×1"
+  },
+  "vol2_ch6_sacrificial_pair": {
+   "level": 0.75,
+   "why": "grounded — money ×3"
+  },
+  "vol2_ch6_triptych": {
+   "level": 1.2,
+   "why": "leans uncanny — music ×1, riff ×1, song ×1, dream ×1"
+  },
+  "vol2_ch6_watcher": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2, ghost ×1, music ×1, sing ×1"
+  },
+  "vol2_ch7_scumm_a": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×5"
+  },
+  "vol2_ch7_scumm_b": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×3"
+  },
+  "vol2_ch7_scumm_c": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol2_ch7_scumm_d": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×5, spiral ×2",
+   "beats": [
+    {
+     "node": 45,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream, spiral)"
+    }
+   ]
+  },
+  "vol2_ch8_apple_peddler": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×4, dream ×2, spirit ×2"
+  },
+  "vol2_ch8_stories": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×2, shimmer ×1, spirit ×1, void ×1",
+   "beats": [
+    {
+     "node": 9,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (cancer, killed)"
+    },
+    {
+     "node": 34,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol2_ch9_art_class": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×1"
+  },
+  "vol2_ch9_flotsam": {
+   "level": 0.75,
+   "why": "grounded — died ×2"
+  },
+  "vol2_ch9_truck": {
+   "level": 0.75,
+   "why": "grounded — died ×3"
+  },
+  "vol2_drift_wood": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_end": {
+   "level": 0.75,
+   "why": "grounded — grief ×1, funeral ×1"
+  },
+  "vol2_finale": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_graveyard": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol2_title": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, music ×1, ghost ×1"
+  },
+  "vol3_ch10_notes_from_the_underground": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×5, song ×1, angel ×1",
+   "beats": [
+    {
+     "node": 38,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol3_ch11_acceptable_losses": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words",
+   "beats": [
+    {
+     "node": 53,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol3_ch11_acceptable_losses_b": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch11_acceptable_losses_c": {
+   "level": 1.0,
+   "why": "the volume's own — vision ×2"
+  },
+  "vol3_ch11_pulp_the_room_with_birds": {
+   "level": 1.0,
+   "why": "the volume's own — song ×1, singing ×1"
+  },
+  "vol3_ch12_uncle_nick": {
+   "level": 0.75,
+   "why": "grounded — money ×1, hospital ×1, insurance ×1"
+  },
+  "vol3_ch12_uncle_nick_b": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1",
+   "beats": [
+    {
+     "node": 71,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died, killed)"
+    }
+   ]
+  },
+  "vol3_ch13_sins_of_our_fathers": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, angel ×2, demon ×2, stars ×1",
+   "beats": [
+    {
+     "node": 14,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol3_ch14_last_of_the_oil_men": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×4, angel ×1, glow ×1, synth ×1",
+   "beats": [
+    {
+     "node": 20,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol3_ch17_pulp_earthman": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch19_ron_takes_notes": {
+   "level": 0.75,
+   "why": "grounded — hospital ×3"
+  },
+  "vol3_ch1_boy_from_pasadena": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, glow ×1, float ×1"
+  },
+  "vol3_ch2_dreams_in_the_key_of_godhead": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×4, magic ×1",
+   "beats": [
+    {
+     "node": 20,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol3_ch2_second_set_of_eyes": {
+   "level": 1.0,
+   "why": "the volume's own — angel ×2, magic ×1"
+  },
+  "vol3_ch2_starship_melody": {
+   "level": 1.2,
+   "why": "leans uncanny — void ×3, stars ×1, cosmos ×1, shimmer ×1"
+  },
+  "vol3_ch3_safari": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, spirit ×1"
+  },
+  "vol3_ch4_four_screens": {
+   "level": 1.0,
+   "why": "the volume's own — music ×3, concert ×1, ghost ×1, acid ×1",
+   "beats": [
+    {
+     "node": 31,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (hospital)"
+    }
+   ]
+  },
+  "vol3_ch4_invitation_only": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch4_names_in_neon": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×4, music ×3, neon ×2, vision ×2",
+   "beats": [
+    {
+     "node": 30,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (vision)"
+    }
+   ]
+  },
+  "vol3_ch4_the_coast": {
+   "level": 1.0,
+   "why": "the volume's own — vision ×1, music ×1"
+  },
+  "vol3_ch5_christine_first": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch5_flight": {
+   "level": 1.0,
+   "why": "the volume's own — music ×4, song ×1, melt ×1, vision ×1",
+   "beats": [
+    {
+     "node": 5,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (cancer)"
+    },
+    {
+     "node": 49,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (hospital)"
+    }
+   ]
+  },
+  "vol3_ch5_janessa_first": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch5_md_anderson": {
+   "level": 0.75,
+   "why": "grounded — hospital ×2, doctor ×2"
+  },
+  "vol3_ch5_non_stop_flights": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — email ×1, money ×1, debt ×1, sick ×1"
+  },
+  "vol3_ch5_pulp_the_ward": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch5_yellow_card": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — nurse ×4, hospital ×3, bill ×1, doctor ×1"
+  },
+  "vol3_ch6_arcadeum": {
+   "level": 0.75,
+   "why": "grounded — money ×3, meeting ×1, bank ×1"
+  },
+  "vol3_ch6_binder": {
+   "level": 1.4,
+   "why": "dreamlike — vision ×3, dream ×3, glow ×1, ghost ×1"
+  },
+  "vol3_ch6_couch": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×5, cosmos ×1, spiral ×1, music ×1"
+  },
+  "vol3_ch6_dabney": {
+   "level": 0.75,
+   "why": "grounded — court ×2, shift ×1"
+  },
+  "vol3_ch6_game_room": {
+   "level": 1.0,
+   "why": "the volume's own — angel ×1, neon ×1",
+   "beats": [
+    {
+     "node": 8,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol3_ch6_jane": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1, dream ×1",
+   "beats": [
+    {
+     "node": 39,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died, cancer)"
+    }
+   ]
+  },
+  "vol3_ch6_stacks": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2, nebula ×1"
+  },
+  "vol3_ch6_tunnels": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, lsd ×1"
+  },
+  "vol3_ch7_emulsion": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — sick ×2, cancer ×2, court ×1, died ×1"
+  },
+  "vol3_ch7_red_dust": {
+   "level": 1.0,
+   "why": "the volume's own — glow ×1, vision ×1, haze ×1, acid ×1"
+  },
+  "vol3_ch8_passengers": {
+   "level": 1.0,
+   "why": "the volume's own — music ×2, danc ×2, pulse ×1, haze ×1",
+   "beats": [
+    {
+     "node": 18,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (hospital)"
+    }
+   ]
+  },
+  "vol3_ch8_passengers_b": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, music ×1"
+  },
+  "vol3_ch8_passengers_c": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×3, rainbow ×1, music ×1"
+  },
+  "vol3_ch8_pulp_the_catwalk": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_ch9_backward_jaunt": {
+   "level": 1.0,
+   "why": "the volume's own — glow ×1",
+   "beats": [
+    {
+     "node": 8,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    }
+   ]
+  },
+  "vol3_end": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_finale": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_the_choice": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol3_title": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_board": {
+   "level": 1.0,
+   "why": "the volume's own — float ×2"
+  },
+  "vol4_board_gaps": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_cc_1": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_cc_2": {
+   "level": 1.0,
+   "why": "the volume's own — spirit ×1"
+  },
+  "vol4_cc_3": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×3, music ×2"
+  },
+  "vol4_cc_4": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_cc_5": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, void ×1"
+  },
+  "vol4_cc_6": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2, music ×1",
+   "beats": [
+    {
+     "node": 16,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol4_curtain_call": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_daddy_a": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×3"
+  },
+  "vol4_daddy_b": {
+   "level": 1.0,
+   "why": "the volume's own — angel ×1, danc ×1, dream ×1"
+  },
+  "vol4_daddy_c": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_drawer": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_drawer_creche": {
+   "level": 0.75,
+   "why": "grounded — nurse ×2"
+  },
+  "vol4_drawer_harbinger": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_drawer_iris": {
+   "level": 1.4,
+   "why": "dreamlike — vision ×3, dream ×2, ghost ×1"
+  },
+  "vol4_drawer_komodo_dawn": {
+   "level": 0.75,
+   "why": "grounded — money ×2, judge ×1"
+  },
+  "vol4_drawer_pantheon": {
+   "level": 1.2,
+   "why": "leans uncanny — guitar ×2, riff ×1, angel ×1, demon ×1"
+  },
+  "vol4_drawer_prospectus": {
+   "level": 1.0,
+   "why": "the volume's own — music ×2"
+  },
+  "vol4_drawer_retinal_burn": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_drawer_staturo": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_drawer_timber_grande": {
+   "level": 1.0,
+   "why": "the volume's own — vision ×1, demon ×1",
+   "beats": [
+    {
+     "node": 21,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    }
+   ]
+  },
+  "vol4_ed_toenine": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×1, demon ×1, magic ×1"
+  },
+  "vol4_end": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_finale": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_goggles": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×2, music ×1, danc ×1, magic ×1",
+   "beats": [
+    {
+     "node": 29,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol4_index_cards": {
+   "level": 1.4,
+   "why": "dreamlike — song ×2, sparkl ×1, sing ×1, angel ×1"
+  },
+  "vol4_poem_inward_tableaux": {
+   "level": 1.0,
+   "why": "the volume's own — kaleidoscop ×1"
+  },
+  "vol4_poem_mailbox_second": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_poem_modern_drunkard": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_poem_nourishment": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_poem_pinecone_first": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_poem_pinecone_second": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_poem_pinecone_third": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_poem_public_sanctuary": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1"
+  },
+  "vol4_poem_retinal_burn_first": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×1, stars ×1, magic ×1"
+  },
+  "vol4_poem_retinal_burn_second": {
+   "level": 1.0,
+   "why": "the volume's own — stars ×1, magic ×1"
+  },
+  "vol4_poem_retinal_burn_third": {
+   "level": 1.0,
+   "why": "the volume's own — stars ×1"
+  },
+  "vol4_scrap_careful_veneer": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_scrap_clean": {
+   "level": 0.75,
+   "why": "grounded — court ×2, insurance ×1"
+  },
+  "vol4_scrap_scraps": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_scrap_service_engine_soon": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_scrap_stained_glass": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_scrap_twirlwind": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_scrap_weep": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×5",
+   "beats": [
+    {
+     "node": 10,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol4_standoff": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_story_209": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol4_story_agwat": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_story_all_over_town": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1",
+   "beats": [
+    {
+     "node": 16,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol4_story_angry_fog": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1",
+   "beats": [
+    {
+     "node": 13,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    }
+   ]
+  },
+  "vol4_story_betterment_a": {
+   "level": 0.75,
+   "why": "grounded — died ×2"
+  },
+  "vol4_story_betterment_b": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×5, music ×1",
+   "beats": [
+    {
+     "node": 22,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol4_story_caltech": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×4, music ×1, magic ×1"
+  },
+  "vol4_story_chimes": {
+   "level": 1.4,
+   "why": "dreamlike — music ×4, dream ×3, glow ×1, cosmic ×1"
+  },
+  "vol4_story_cracked_and_broken": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×2, spirit ×1, void ×1"
+  },
+  "vol4_story_everyday_in_november": {
+   "level": 0.75,
+   "why": "grounded — doctor ×2",
+   "beats": [
+    {
+     "node": 14,
+     "trip": 1.1,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol4_story_heavy_breathing": {
+   "level": 0.75,
+   "why": "grounded — rent ×1, sick ×1"
+  },
+  "vol4_story_hit_a_wall": {
+   "level": 1.0,
+   "why": "the volume's own — music ×3, singing ×1"
+  },
+  "vol4_story_influx_a": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, music ×1",
+   "beats": [
+    {
+     "node": 36,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol4_story_influx_b": {
+   "level": 1.0,
+   "why": "the volume's own — singing ×2, song ×1"
+  },
+  "vol4_story_influx_c": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_story_jack_of_suede": {
+   "level": 1.4,
+   "why": "dreamlike — music ×5, concert ×2, shimmer ×1, singing ×1"
+  },
+  "vol4_story_liquid_pour": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol4_story_looking_forward_most": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2"
+  },
+  "vol4_story_map_of_the_city": {
+   "level": 1.0,
+   "why": "the volume's own — demon ×1"
+  },
+  "vol4_story_nothing_doing": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×1, void ×1, sparkl ×1"
+  },
+  "vol4_story_ourobouros": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_story_paper_cuts": {
+   "level": 1.2,
+   "why": "leans uncanny — music ×2, cosmic ×1, danc ×1, vision ×1"
+  },
+  "vol4_story_ps": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×3, cosmos ×1, glow ×1, magic ×1",
+   "beats": [
+    {
+     "node": 19,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream, glow)"
+    }
+   ]
+  },
+  "vol4_story_rescue_ranger": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol4_story_scumm": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2"
+  },
+  "vol4_story_seem": {
+   "level": 0.75,
+   "why": "grounded — bills ×1, money ×1, hospital ×1"
+  },
+  "vol4_story_static_electric": {
+   "level": 1.2,
+   "why": "leans uncanny — flame ×1, music ×1, danc ×1, spiral ×1"
+  },
+  "vol4_story_the_wasted_sentiment": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, sing ×1"
+  },
+  "vol4_story_two_player": {
+   "level": 1.0,
+   "why": "the volume's own — vision ×1"
+  },
+  "vol4_story_voices_in_a_crowded_room": {
+   "level": 1.0,
+   "why": "the volume's own — sing ×3, music ×3, danc ×2, dream ×2"
+  },
+  "vol4_story_what_sort_of": {
+   "level": 1.2,
+   "why": "leans uncanny — music ×3"
+  },
+  "vol4_story_wits_end": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_story_workinp": {
+   "level": 1.0,
+   "why": "the volume's own — glow ×2, vision ×1, dream ×1, music ×1",
+   "beats": [
+    {
+     "node": 22,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol4_title": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol4_video_tests": {
+   "level": 1.2,
+   "why": "leans uncanny — music ×1, neon ×1, ghost ×1"
+  },
+  "vol4_zine": {
+   "level": 1.0,
+   "why": "the volume's own — music ×4, demon ×3, dream ×2, angel ×1",
+   "beats": [
+    {
+     "node": 48,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (killed)"
+    },
+    {
+     "node": 82,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (gunshot)"
+    },
+    {
+     "node": 188,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (hospital)"
+    }
+   ]
+  },
+  "vol5_ch0_booth6": {
+   "level": 1.2,
+   "why": "leans uncanny — neon ×3, pulse ×1"
+  },
+  "vol5_ch0_closing": {
+   "level": 1.0,
+   "why": "the volume's own — song ×1"
+  },
+  "vol5_ch0_frasier": {
+   "level": 1.2,
+   "why": "leans uncanny — demon ×3, chord ×1, glow ×1"
+  },
+  "vol5_ch0_model_city": {
+   "level": 1.0,
+   "why": "the volume's own — pulse ×1"
+  },
+  "vol5_ch10_wheel": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — contract ×8, lawyer ×7, email ×5, court ×4"
+  },
+  "vol5_ch11_justice": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — contract ×13, shift ×1, meeting ×1, insurance ×1"
+  },
+  "vol5_ch12_hanged": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×9, music ×3, moonlight ×1, ghost ×1"
+  },
+  "vol5_ch13_death": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — court ×7, nurse ×6, died ×4, money ×3"
+  },
+  "vol5_ch14_temperance": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×2, angel ×1, dream ×1, pulse ×1"
+  },
+  "vol5_ch15_devil": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×4, ghost ×2, guitar ×2, song ×1"
+  },
+  "vol5_ch16_tower": {
+   "level": 0.75,
+   "why": "grounded — email ×7, rent ×4, griev ×2, bill ×1"
+  },
+  "vol5_ch17_star": {
+   "level": 1.0,
+   "why": "the volume's own — void ×5, stars ×1, cosmos ×1, float ×1",
+   "beats": [
+    {
+     "node": 121,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (void)"
+    }
+   ]
+  },
+  "vol5_ch18_moon": {
+   "level": 1.0,
+   "why": "the volume's own — sang ×1, danc ×1, music ×1, spiral ×1",
+   "beats": [
+    {
+     "node": 193,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (spiral, dream)"
+    }
+   ]
+  },
+  "vol5_ch19_sun": {
+   "level": 0.75,
+   "why": "grounded — email ×3, meeting ×3, contract ×1, judge ×1"
+  },
+  "vol5_ch1_magician": {
+   "level": 1.4,
+   "why": "dreamlike — demon ×10, ghost ×5, magic ×2, pulse ×2"
+  },
+  "vol5_ch20_judgement": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×3, danc ×2, music ×2, angel ×1"
+  },
+  "vol5_ch21_world": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×7, demon ×2, mushroom ×1, ghost ×1",
+   "beats": [
+    {
+     "node": 49,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 93,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    }
+   ]
+  },
+  "vol5_ch2_priestess": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×1, cosmic ×1, void ×1"
+  },
+  "vol5_ch2_priestess_b": {
+   "level": 1.0,
+   "why": "the volume's own — spiral ×1, glow ×1, void ×1, flame ×1",
+   "beats": [
+    {
+     "node": 46,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (funeral)"
+    }
+   ]
+  },
+  "vol5_ch3_empress": {
+   "level": 1.0,
+   "why": "the volume's own — swirl ×2, void ×2, cosmic ×1, float ×1",
+   "beats": [
+    {
+     "node": 21,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (shimmer, void)"
+    }
+   ]
+  },
+  "vol5_ch4_emperor": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×4, float ×1, spirit ×1, ghost ×1",
+   "beats": [
+    {
+     "node": 21,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    },
+    {
+     "node": 90,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol5_ch5_hierophant": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×2, shimmer ×1, spirit ×1"
+  },
+  "vol5_ch6_lovers": {
+   "level": 1.0,
+   "why": "the volume's own — angel ×1, cosmic ×1, void ×1, danc ×1; a kitchen-and-morning room (kitchen ×8, morning ×5, sink ×3): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 52,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (funeral)"
+    }
+   ]
+  },
+  "vol5_ch7_chariot": {
+   "level": 0.75,
+   "why": "grounded — money ×3, boss ×2, court ×2, email ×1"
+  },
+  "vol5_ch8_strength": {
+   "level": 1.0,
+   "why": "the volume's own — ghost ×6, neon ×5, float ×1, void ×1"
+  },
+  "vol5_ch9_hermit": {
+   "level": 1.2,
+   "why": "leans uncanny — void ×9, ghost ×3, dream ×2, rainbow ×1",
+   "beats": [
+    {
+     "node": 46,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (void)"
+    },
+    {
+     "node": 97,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (void, glow)"
+    }
+   ]
+  },
+  "vol5_prelude_arcana_channel": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol5_prelude_arcana_ep01_umbra": {
+   "level": 1.0,
+   "why": "the volume's own — angel ×1"
+  },
+  "vol5_prelude_arcana_ep02_in_flux": {
+   "level": 1.0,
+   "why": "the volume's own — singing ×2, dream ×1, music ×1, song ×1",
+   "beats": [
+    {
+     "node": 23,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol5_prelude_arcana_ep04_iris_title": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×1, melt ×1, dream ×1, music ×1"
+  },
+  "vol5_prelude_arcana_ep05_iris": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×3, ghost ×2, flame ×1"
+  },
+  "vol5_prelude_arcana_ep06_old_woman": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×4, flame ×1"
+  },
+  "vol5_prelude_arcana_ep07_backyard_dogs": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol5_prelude_arcana_ep08_autumn_crop": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol5_prelude_arcana_ep10_sound_of_silence": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×1, danc ×1, sing ×1",
+   "beats": [
+    {
+     "node": 15,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    }
+   ]
+  },
+  "vol5_prelude_arcana_ep11_writ_fer_rain": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol5_prelude_arcana_ep12_pour_1": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1"
+  },
+  "vol5_prelude_arcana_ep13_paper_cuts": {
+   "level": 1.2,
+   "why": "leans uncanny — glow ×2, dream ×2, music ×1, pulse ×1"
+  },
+  "vol5_prelude_arcana_ep14_milk_and_honey": {
+   "level": 1.0,
+   "why": "the volume's own — haze ×2"
+  },
+  "vol5_prelude_arcana_ep15_lynchs_peak": {
+   "level": 0.75,
+   "why": "grounded — officer ×1, died ×1"
+  },
+  "vol5_prelude_arcana_ep17_one_hundred_places": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2"
+  },
+  "vol5_prelude_arcana_ep18_sigsbees_deep": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×2"
+  },
+  "vol5_prelude_arcana_ep19_ravensway": {
+   "level": 1.0,
+   "why": "the volume's own — song ×1, magic ×1"
+  },
+  "vol5_prelude_arcana_ep20_sisters_wyrd": {
+   "level": 1.0,
+   "why": "the volume's own — spirit ×1, rainbow ×1"
+  },
+  "vol5_prelude_arcana_ep21_field_guide": {
+   "level": 1.0,
+   "why": "the volume's own — glow ×1"
+  },
+  "vol5_prelude_arcana_ep22_hanged_man": {
+   "level": 1.0,
+   "why": "the volume's own — music ×1"
+  },
+  "vol5_prelude_arcana_ep23_visitation": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol5_prelude_arcana_john_bar": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol5_prelude_arcana_john_shift": {
+   "level": 0.75,
+   "why": "grounded — boss ×2, shift ×1"
+  },
+  "vol5_prelude_arcana_liar_king": {
+   "level": 1.2,
+   "why": "leans uncanny — danc ×2, ghost ×2, dream ×2, flame ×1",
+   "beats": [
+    {
+     "node": 28,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (trance, void, float)"
+    }
+   ]
+  },
+  "vol5_test_tarot_fool": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch0_prelude": {
+   "level": 1.0,
+   "why": "the volume's own — spirit ×1, dream ×1, spiral ×1"
+  },
+  "vol6_ch10_home": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×13, haze ×7"
+  },
+  "vol6_ch10_night_shift": {
+   "level": 0.75,
+   "why": "grounded — shift ×17, interrog ×3, meeting ×1, clocked ×1"
+  },
+  "vol6_ch10_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch11_eileen": {
+   "level": 1.0,
+   "why": "the volume's own — float ×2; a kitchen-and-morning room (morning ×20, coffee ×10, kitchen ×8): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 46,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (float)"
+    },
+    {
+     "node": 114,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol6_ch11_kitchen": {
+   "level": 0.75,
+   "why": "grounded — died ×3, shift ×1, court ×1, interrog ×1; a kitchen-and-morning room (morning ×26, kitchen ×13, coffee ×12): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch11_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch12_cosmic": {
+   "level": 0.75,
+   "why": "grounded — invoice ×7, shift ×2, bank ×1"
+  },
+  "vol6_ch12_porch": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch12_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch13_home": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×11, shift ×1"
+  },
+  "vol6_ch13_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch13_two_a_days": {
+   "level": 1.0,
+   "why": "the volume's own — song ×2, music ×2, vision ×1, demon ×1"
+  },
+  "vol6_ch14_live_oak": {
+   "level": 1.2,
+   "why": "leans uncanny — song ×6, chord ×3, pulse ×1, guitar ×1"
+  },
+  "vol6_ch14_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch14_substation_nine": {
+   "level": 1.2,
+   "why": "leans uncanny — song ×26, sing ×2, singing ×2"
+  },
+  "vol6_ch15_home": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch15_kwik_stop": {
+   "level": 0.75,
+   "why": "grounded — shift ×3, money ×3, paperwork ×2, bank ×2"
+  },
+  "vol6_ch15_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch16_dawn": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×10, song ×7, haze ×4",
+   "beats": [
+    {
+     "node": 155,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol6_ch16_el_rancho": {
+   "level": 1.0,
+   "why": "the volume's own — song ×15, singing ×2, synth ×1, music ×1"
+  },
+  "vol6_ch16_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch17_porch": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×4, bills ×2, died ×1, funeral ×1; a kitchen-and-morning room (morning ×14, coffee ×8, kitchen ×4): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch17_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch17_table": {
+   "level": 0.75,
+   "why": "grounded — bill ×10, nurse ×3, sick ×2, money ×2; a kitchen-and-morning room (morning ×21, coffee ×17, kitchen ×10): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch18_letter": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×8",
+   "beats": [
+    {
+     "node": 15,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol6_ch18_stockroom": {
+   "level": 0.75,
+   "why": "grounded — shift ×13; a kitchen-and-morning room (coffee ×7, morning ×6, eggs ×4): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch18_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch19_chains": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×11, shift ×2, died ×1"
+  },
+  "vol6_ch19_depthchart": {
+   "level": 0.75,
+   "why": "grounded — bill ×6, doctor ×2, shift ×1"
+  },
+  "vol6_ch19_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch1_bedroom": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch1_cosmic_comics": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×2"
+  },
+  "vol6_ch1_garage": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch1_gas_and_go": {
+   "level": 0.75,
+   "why": "grounded — paperwork ×2, shift ×1"
+  },
+  "vol6_ch1_graciela": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch1_maya_bedroom": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×1"
+  },
+  "vol6_ch1_shift_change": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch1_stranger": {
+   "level": 0.75,
+   "why": "grounded — shift ×1, clocked ×1"
+  },
+  "vol6_ch20_bridge": {
+   "level": 1.4,
+   "why": "dreamlike — song ×29, chord ×9, music ×2, spiral ×1"
+  },
+  "vol6_ch20_prints": {
+   "level": 1.4,
+   "why": "dreamlike — song ×25, spiral ×2"
+  },
+  "vol6_ch20_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch21_cosmic": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×5, spiral ×2, vision ×1, glow ×1"
+  },
+  "vol6_ch21_porch": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch21_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch22_bianca": {
+   "level": 0.75,
+   "why": "grounded — court ×3, funeral ×3, died ×3, sick ×2; a kitchen-and-morning room (morning ×24, kitchen ×13, coffee ×10): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch22_foxhole": {
+   "level": 1.2,
+   "why": "leans uncanny — song ×12, chord ×4, singing ×4, sing ×2"
+  },
+  "vol6_ch22_inventory": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×5, song ×2, mushroom ×1, music ×1; a kitchen-and-morning room (morning ×20, eggs ×9, coffee ×7): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 41,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    },
+    {
+     "node": 311,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol6_ch22_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch22_sunday": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch22_vinton": {
+   "level": 0.75,
+   "why": "grounded — hospital ×2, email ×2, doctor ×1, sick ×1"
+  },
+  "vol6_ch23_sleep": {
+   "level": 0.75,
+   "why": "grounded — bill ×3, money ×1, shift ×1; a kitchen-and-morning room (kitchen ×7, morning ×6): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch23_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch23_sunday": {
+   "level": 0.75,
+   "why": "grounded — bill ×4, shift ×2"
+  },
+  "vol6_ch2_bindery": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×1"
+  },
+  "vol6_ch2_coda": {
+   "level": 1.0,
+   "why": "the volume's own — magic ×1"
+  },
+  "vol6_ch2_cosmic": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×1"
+  },
+  "vol6_ch2_dumpster": {
+   "level": 0.75,
+   "why": "grounded — shift ×1, officer ×1"
+  },
+  "vol6_ch2_gas_go_lot": {
+   "level": 0.75,
+   "why": "grounded — shift ×2; a kitchen-and-morning room (kitchen ×4, breakfast ×2): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch2_gas_oracles": {
+   "level": 1.0,
+   "why": "the volume's own — magic ×1, cosmic ×1"
+  },
+  "vol6_ch2_kwik_stop": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×1"
+  },
+  "vol6_ch2_maya_bedroom": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch2_pit_stop_kitchen": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — officer ×5, shift ×3"
+  },
+  "vol6_ch2_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch3_back_room": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×2"
+  },
+  "vol6_ch3_circle_k": {
+   "level": 1.2,
+   "why": "leans uncanny — cosmic ×2, vision ×1"
+  },
+  "vol6_ch3_coda": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×1"
+  },
+  "vol6_ch3_jesse_bedroom": {
+   "level": 1.2,
+   "why": "leans uncanny — chord ×3, guitar ×2"
+  },
+  "vol6_ch3_parking_lot": {
+   "level": 1.0,
+   "why": "the volume's own — cosmic ×1"
+  },
+  "vol6_ch3_pit_stop_office": {
+   "level": 0.75,
+   "why": "grounded — shift ×1, officer ×1"
+  },
+  "vol6_ch3_sam_bedroom": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×5",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol6_ch3_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch4_kitchen": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words; a kitchen-and-morning room (kitchen ×5, morning ×4, coffee ×1): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch4_kwik_stop": {
+   "level": 0.75,
+   "why": "grounded — shift ×1, police ×1, doctor ×1"
+  },
+  "vol6_ch4_maya_floor": {
+   "level": 1.0,
+   "why": "the volume's own — dream ×1",
+   "beats": [
+    {
+     "node": 44,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (funeral)"
+    }
+   ]
+  },
+  "vol6_ch4_miller_office": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch4_pit_stop": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×5, shift ×2"
+  },
+  "vol6_ch4_sam_list": {
+   "level": 0.75,
+   "why": "grounded — shift ×2, died ×1"
+  },
+  "vol6_ch4_speak_spell": {
+   "level": 1.0,
+   "why": "the volume's own — glow ×3, synth ×1, demon ×1"
+  },
+  "vol6_ch4_storm": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch4_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch5_garage": {
+   "level": 1.2,
+   "why": "leans uncanny — song ×8, music ×2, riff ×2, chord ×2"
+  },
+  "vol6_ch5_meadowlark": {
+   "level": 0.75,
+   "why": "grounded — lawyer ×1, arrest ×1"
+  },
+  "vol6_ch5_miller_drive": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — meeting ×6"
+  },
+  "vol6_ch5_radio": {
+   "level": 1.0,
+   "why": "the volume's own — demon ×1, dream ×1"
+  },
+  "vol6_ch5_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch5_truck": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×3, shift ×2, bank ×1, officer ×1"
+  },
+  "vol6_ch6_boyd": {
+   "level": 1.4,
+   "why": "dreamlike — demon ×9"
+  },
+  "vol6_ch6_fueling_station": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch6_interstate": {
+   "level": 0.75,
+   "why": "grounded — contract ×3, court ×1"
+  },
+  "vol6_ch6_jesse_bedroom": {
+   "level": 1.0,
+   "why": "the volume's own — music ×2, song ×1"
+  },
+  "vol6_ch6_kwik_stop_open": {
+   "level": 0.75,
+   "why": "grounded — police ×2"
+  },
+  "vol6_ch6_kwik_stop_slushie": {
+   "level": 0.75,
+   "why": "grounded — grief ×1, shift ×1"
+  },
+  "vol6_ch6_kwik_stop_text": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch6_maya_bedroom": {
+   "level": 1.0,
+   "why": "the volume's own — demon ×2"
+  },
+  "vol6_ch6_miller_kitchen": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch6_miller_truck": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — shift ×2, police ×1, officer ×1, lawyer ×1"
+  },
+  "vol6_ch6_pit_stop": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch6_safehouse": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch6_sam_bedroom": {
+   "level": 0.75,
+   "why": "grounded — court ×1, spreadsheet ×1, bill ×1; a kitchen-and-morning room (dishes ×3, morning ×3, kitchen ×2): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch6_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch6_tome": {
+   "level": 0.75,
+   "why": "grounded — contract ×1, bills ×1"
+  },
+  "vol6_ch7_ben_room": {
+   "level": 1.0,
+   "why": "the volume's own — demon ×1"
+  },
+  "vol6_ch7_henderson_driveway": {
+   "level": 0.75,
+   "why": "grounded — hospital ×2, court ×1"
+  },
+  "vol6_ch7_henderson_kitchen": {
+   "level": 0.75,
+   "why": "grounded — contract ×3, shift ×1, bill ×1"
+  },
+  "vol6_ch7_hospital": {
+   "level": 0.75,
+   "why": "grounded — hospital ×2, nurse ×1, shift ×1"
+  },
+  "vol6_ch7_pit_stop": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×7, shift ×2, contract ×1; a kitchen-and-morning room (kitchen ×5, morning ×5, coffee ×5): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch7_safehouse": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — shift ×4, doctor ×3"
+  },
+  "vol6_ch7_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch8_courthouse": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — court ×17, judge ×13, lawyer ×8, shift ×2",
+   "beats": [
+    {
+     "node": 26,
+     "trip": 0.85,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    },
+    {
+     "node": 102,
+     "trip": 0.85,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol6_ch8_hospital_318": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — police ×6, doctor ×2, arrest ×2, contract ×1"
+  },
+  "vol6_ch8_kowalski_kitchen": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — bill ×5, hospital ×2, shift ×1; a kitchen-and-morning room (kitchen ×5, eggs ×5, morning ×3): domestic register",
+   "register": "domestic"
+  },
+  "vol6_ch8_lake_palestine": {
+   "level": 0.75,
+   "why": "grounded — meeting ×2, sick ×1, lawyer ×1, died ×1"
+  },
+  "vol6_ch8_miller_truck": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch8_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol6_ch9_room": {
+   "level": 1.2,
+   "why": "leans uncanny — pulse ×8, dream ×6, spiral ×2, glow ×1"
+  },
+  "vol6_ch9_safehouse": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×9, spiral ×2, melt ×1, pulse ×1",
+   "beats": [
+    {
+     "node": 24,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    },
+    {
+     "node": 63,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (hospital)"
+    }
+   ]
+  },
+  "vol6_ch9_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch10_cabin": {
+   "level": 0.75,
+   "why": "grounded — died ×5, contract ×1, funeral ×1"
+  },
+  "vol7_ch10_morning": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×12, dream ×8, nebula ×1, song ×1",
+   "beats": [
+    {
+     "node": 100,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    },
+    {
+     "node": 179,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch10_per": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×1"
+  },
+  "vol7_ch10_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch11_bowl": {
+   "level": 1.4,
+   "why": "dreamlike — substrate ×49, spiral ×6, flame ×2, nebula ×1",
+   "beats": [
+    {
+     "node": 121,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    }
+   ]
+  },
+  "vol7_ch11_kestrel": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×38, spiral ×2, ghost ×1",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 103,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 129,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 157,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 190,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 206,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch11_per": {
+   "level": 0.75,
+   "why": "grounded — died ×8, funeral ×2, insurance ×1",
+   "beats": [
+    {
+     "node": 13,
+     "trip": 1.1,
+     "hold": 3,
+     "why": "the line turns visionary (spiral)"
+    }
+   ]
+  },
+  "vol7_ch11_stick": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×9, dream ×1",
+   "beats": [
+    {
+     "node": 46,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 99,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch11_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch12_kai": {
+   "level": 1.4,
+   "why": "dreamlike — substrate ×15, nebula ×2"
+  },
+  "vol7_ch12_lena": {
+   "level": 1.4,
+   "why": "dreamlike — substrate ×22, dream ×1, nebula ×1",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 55,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch12_morning": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×6; a kitchen-and-morning room (morning ×10, kitchen ×9, coffee ×9): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 47,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 99,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 151,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch12_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch13_cale": {
+   "level": 1.4,
+   "why": "dreamlike — dream ×29, substrate ×11, spiral ×1",
+   "beats": [
+    {
+     "node": 9,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (funeral)"
+    },
+    {
+     "node": 28,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch13_marina": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×28, spiral ×3, cosmic ×1",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 37,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 55,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 69,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 133,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (spiral, substrate)"
+    }
+   ]
+  },
+  "vol7_ch13_porch": {
+   "level": 0.75,
+   "why": "grounded — died ×2, police ×1"
+  },
+  "vol7_ch13_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch14_figure": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×2"
+  },
+  "vol7_ch14_painting": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×10, nebula ×1",
+   "beats": [
+    {
+     "node": 72,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch14_petra": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×9",
+   "beats": [
+    {
+     "node": 97,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch14_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch15_bread": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×1",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 64,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch15_loft": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words; a kitchen-and-morning room (kitchen ×8, morning ×7, coffee ×6): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 101,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch15_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch15_wagon": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch16_aud": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×15, nebula ×1; a kitchen-and-morning room (morning ×16, coffee ×5, breakfast ×3): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 23,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 84,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 118,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 147,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 198,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch16_eight": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×1"
+  },
+  "vol7_ch16_shop": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×9, substrate ×7",
+   "beats": [
+    {
+     "node": 12,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 77,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch16_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch17_aria": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×18, spiral ×1",
+   "beats": [
+    {
+     "node": 15,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 76,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch17_bakery": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×2, pulse ×2",
+   "beats": [
+    {
+     "node": 66,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 116,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (funeral)"
+    }
+   ]
+  },
+  "vol7_ch17_dawn": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×4, spiral ×1",
+   "beats": [
+    {
+     "node": 10,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (spiral, substrate)"
+    }
+   ]
+  },
+  "vol7_ch17_roy": {
+   "level": 1.0,
+   "why": "the volume's own — spiral ×1"
+  },
+  "vol7_ch17_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch18_home": {
+   "level": 1.4,
+   "why": "dreamlike — substrate ×16",
+   "beats": [
+    {
+     "node": 32,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 49,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch18_pool": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×22, stars ×1",
+   "beats": [
+    {
+     "node": 18,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 33,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 65,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 96,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 124,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch18_stick": {
+   "level": 0.75,
+   "why": "grounded — died ×5"
+  },
+  "vol7_ch18_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch19_cedar": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×8",
+   "beats": [
+    {
+     "node": 44,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 75,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch19_per": {
+   "level": 0.75,
+   "why": "grounded — funeral ×2; a kitchen-and-morning room (morning ×5, kitchen ×5, coffee ×3): domestic register",
+   "register": "domestic"
+  },
+  "vol7_ch19_ring": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×3"
+  },
+  "vol7_ch19_roy": {
+   "level": 1.0,
+   "why": "the volume's own — spiral ×1; a kitchen-and-morning room (kitchen ×5, morning ×2, coffee ×2): domestic register",
+   "register": "domestic"
+  },
+  "vol7_ch19_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch1_finn": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch1_morning": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×13, dream ×4; a kitchen-and-morning room (coffee ×29, eggs ×13, morning ×12): domestic register",
+   "register": "domestic",
+   "beats": [
+    {
+     "node": 182,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 256,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch20_calls": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch20_door": {
+   "level": 1.2,
+   "why": "leans uncanny — dream ×4",
+   "beats": [
+    {
+     "node": 29,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (dream)"
+    }
+   ]
+  },
+  "vol7_ch20_each": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×4"
+  },
+  "vol7_ch20_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch20_wall": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×4, dream ×1",
+   "beats": [
+    {
+     "node": 121,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch21_cabin": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×2"
+  },
+  "vol7_ch21_leaving": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×2"
+  },
+  "vol7_ch21_stub": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×1"
+  },
+  "vol7_ch21_tower": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×1"
+  },
+  "vol7_ch22_drive": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×13, portal ×2",
+   "beats": [
+    {
+     "node": 19,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died, was dead)"
+    },
+    {
+     "node": 34,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    },
+    {
+     "node": 85,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch22_floors": {
+   "level": 0.5,
+   "why": "plain: the weight lands without the trip — died ×5, grief ×1"
+  },
+  "vol7_ch22_portal": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×9, portal ×3",
+   "beats": [
+    {
+     "node": 21,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 60,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 94,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate, portal)"
+    }
+   ]
+  },
+  "vol7_ch22_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch23_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch2_afternoon": {
+   "level": 1.0,
+   "why": "the volume's own — nebula ×1"
+  },
+  "vol7_ch2_morning": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×6, nebula ×2, spiral ×1, dream ×1"
+  },
+  "vol7_ch3_apartment": {
+   "level": 1.0,
+   "why": "the volume's own — nebula ×2; a kitchen-and-morning room (kitchen ×6, coffee ×4, morning ×4): domestic register",
+   "register": "domestic"
+  },
+  "vol7_ch3_studio": {
+   "level": 1.0,
+   "why": "the volume's own — nebula ×2"
+  },
+  "vol7_ch4_alone": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×6, nebula ×1",
+   "beats": [
+    {
+     "node": 31,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch4_finn": {
+   "level": 1.0,
+   "why": "the volume's own — spiral ×1, substrate ×1",
+   "beats": [
+    {
+     "node": 82,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch5_cabin": {
+   "level": 1.0,
+   "why": "the volume's own — synth ×1",
+   "beats": [
+    {
+     "node": 41,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 107,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (is dead)"
+    }
+   ]
+  },
+  "vol7_ch5_roy": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_brandon": {
+   "level": 0.75,
+   "why": "grounded — died ×2"
+  },
+  "vol7_ch6_cale": {
+   "level": 0.75,
+   "why": "grounded — died ×3, money ×1"
+  },
+  "vol7_ch6_cale_opening": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_chillwave": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_get_going": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_nate": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_pattern_persistence": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×1",
+   "beats": [
+    {
+     "node": 25,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch6_sunday": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_tem_call": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_the_stick": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch6_why_lena": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch7_bridge": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch7_night": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×8",
+   "beats": [
+    {
+     "node": 40,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 58,
+     "trip": 1.35,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    }
+   ]
+  },
+  "vol7_ch7_six_oclock": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words",
+   "beats": [
+    {
+     "node": 55,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch8_aria": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_dark": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_finn_speaks": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_goodnight": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_kitchen": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_monday": {
+   "level": 1.0,
+   "why": "the volume's own — nebula ×1, float ×1"
+  },
+  "vol7_ch8_roy": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_six_oclock": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_the_apology": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_the_daughter": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words",
+   "beats": [
+    {
+     "node": 4,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch8_the_table": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch8_the_vessel": {
+   "level": 1.4,
+   "why": "dreamlike — substrate ×8",
+   "beats": [
+    {
+     "node": 4,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
+  },
+  "vol7_ch9_evening": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch9_stub": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_ch9_tuesday": {
+   "level": 0.75,
+   "why": "grounded — sick ×2, died ×1, police ×1, money ×1"
+  },
+  "vol7_epilogue_gallery": {
+   "level": 1.2,
+   "why": "leans uncanny — substrate ×16, portal ×1",
+   "beats": [
+    {
+     "node": 12,
+     "trip": 1.5,
+     "hold": 3,
+     "why": "the line turns visionary (substrate)"
+    },
+    {
+     "node": 60,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    },
+    {
+     "node": 79,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (was dead)"
+    }
+   ]
+  },
+  "vol7_epilogue_morning": {
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
+  },
+  "vol7_epilogue_submission": {
+   "level": 1.0,
+   "why": "the volume's own — substrate ×2"
+  },
+  "vol7_interlude_ii": {
+   "level": 1.2,
+   "why": "leans uncanny — demon ×2, sang ×1"
+  }
+ }
+}
