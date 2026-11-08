@@ -52,7 +52,6 @@ JUDGED = {
     ("build_dean_offices.py", "Lob_Entry_Glass_{}"): "frosted entry doors, shut; nothing modelled outside",
     ("build_foxhole_bar.py", "Entrance_Door_Leaf_{}_Glass"): "painted with the street's sodium light",
     ("build_club_sharp.py", "Arcade_Prize_Counter_Glass"): "a counter top; the prizes stand on it",
-    ("build_airport_cabin.py", "Store_Cooler_Glass"): "faces a solid cooler body; no stock modelled (N+1)",
     ("build_copy_shop.py", "Shop_Front_Glass"): "night glass with the blinds down behind it",
     ("build_caltech_dabney.py", "Sp_Window_Glass"): "painted daylight; nothing modelled outside",
     ("build_carrie_city.py", "Dryer_Door_Glass"): "a dryer porthole; nothing inside",

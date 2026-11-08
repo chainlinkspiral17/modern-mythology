@@ -212,8 +212,23 @@ def build_gate():
     make_box("Store_Counter", (sx0 + 1.6, STORE_Y1 - 1.6, 0.50), (1.40, 0.70, 1.00), (0.40, 0.42, 0.46, 1.0))
     make_box("Store_Register", (sx0 + 1.6, STORE_Y1 - 1.5, 1.08), (0.36, 0.30, 0.16), (0.16, 0.16, 0.18, 1.0))
     make_box("Store_CardRack", (sx0 + 1.1, STORE_Y1 - 1.70, 1.25), (0.30, 0.20, 0.50), (0.84, 0.36, 0.40, 1.0))
-    make_box("Store_Cooler", (scx + 2.0, STORE_Y1 - 0.48, 1.0), (2.4, 0.80, 2.0), (0.70, 0.72, 0.74, 1.0))
-    make_box("Store_Cooler_Glass", (scx + 2.0, STORE_Y1 - 0.884, 1.05), (2.2, 0.006, 1.70), (0.50, 0.60, 0.66, 1.0))
+    # (2026-11-08) the cooler is a case with drinks in it, seen through its
+    # glass from the concourse: the body stops 0.20 short of the door, with
+    # cheeks, a cap and a kick round the gap, three shelves of bottles
+    cx_c, cy_f = scx + 2.0, STORE_Y1 - 0.88          # centre x, front face y
+    make_box("Store_Cooler", (cx_c, cy_f + 0.50, 1.0), (2.4, 0.60, 2.0), (0.70, 0.72, 0.74, 1.0))
+    for side in (-1, 1):
+        make_box(f"Store_Cooler_Cheek_{side:+d}", (cx_c + side * 1.17, cy_f + 0.10, 1.0), (0.06, 0.20, 2.0), (0.70, 0.72, 0.74, 1.0))
+    make_box("Store_Cooler_Cap", (cx_c, cy_f + 0.10, 1.95), (2.4, 0.20, 0.10), (0.70, 0.72, 0.74, 1.0))
+    make_box("Store_Cooler_Kick", (cx_c, cy_f + 0.10, 0.10), (2.4, 0.20, 0.20), (0.30, 0.30, 0.32, 1.0))
+    cols = ((0.86, 0.20, 0.16, 1.0), (0.20, 0.46, 0.80, 1.0), (0.94, 0.70, 0.18, 1.0), (0.30, 0.66, 0.30, 1.0))
+    for j in range(3):
+        sz = 0.46 + j * 0.50
+        make_box(f"Store_Cooler_Shelf_{j}", (cx_c, cy_f + 0.10, sz), (2.28, 0.18, 0.012), (0.82, 0.84, 0.86, 1.0))
+        for m in range(14):
+            make_cyl(f"Store_Cooler_Bottle_{j}_{m}", (cx_c - 1.04 + m * 0.16, cy_f + 0.10, sz + 0.12), 0.032, 0.22,
+                     cols[(j + m) % 4], segments=8)
+    make_box("Store_Cooler_Glass", (cx_c, STORE_Y1 - 0.884, 1.05), (2.2, 0.006, 1.70), (0.50, 0.60, 0.66, 0.35))
     # the concourse's other storefront, shuttered, for depth
     make_box("Shop_Shutter", (STORE_X, 38.0, 1.5), (0.06, 10.0, 3.0), (0.56, 0.58, 0.60, 1.0))
     make_box("Shop_Fascia", (STORE_X, 38.0, 4.25), (0.30, 10.0, 2.50), (0.30, 0.30, 0.34, 1.0))   # up to the ceiling
