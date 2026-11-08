@@ -49,11 +49,11 @@
     },
     {
       "t": "narrate",
-      "text": "Shivering, he made his way quietly, softly, down the hallway, his feet light on the waxed wood floor. There was a room with old toys and a small library of large books. He continued down to the patio cordoned off with a fine cloth mesh. Children were playing in pots, burying seeds under instruction."
+      "text": "[shot:insert toys]Shivering, he made his way quietly, softly, down the hallway, his feet light on the waxed wood floor. There was a room with old toys and a small library of large books. He continued down to the patio cordoned off with a fine cloth mesh. Children were playing in pots, burying seeds under instruction."
     },
     {
       "t": "narrate",
-      "text": "He saw the beach just outside, swimsuits jogging along, sitting down to bathe, venturing out into the cold calm."
+      "text": "[shot:insert beach]He saw the beach just outside, swimsuits jogging along, sitting down to bathe, venturing out into the cold calm."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "Before lunch, Alex and the children drew in coloring books, listened to Grandma Tulsa tell a chapter in The Sea Shells and the Very Scary Storm Cloud storybook. She had a strange voice. Hard and man-like, but still very soft and gentle."
+      "text": "[shot:insert drawings]Before lunch, Alex and the children drew in coloring books, listened to Grandma Tulsa tell a chapter in The Sea Shells and the Very Scary Storm Cloud storybook. She had a strange voice. Hard and man-like, but still very soft and gentle."
     },
     {
       "t": "narrate",
@@ -98,11 +98,11 @@
     },
     {
       "t": "narrate",
-      "text": "A certain quiet settled into the place right after the meal had been eaten. Alex spread out on a sleeping mat, his back on the floor, chewing nails as stillness descended. An oscillating fan shook steadily overhead, papers tacked to the wall rustled."
+      "text": "[shot:insert mats]A certain quiet settled into the place right after the meal had been eaten. Alex spread out on a sleeping mat, his back on the floor, chewing nails as stillness descended. An oscillating fan shook steadily overhead, papers tacked to the wall rustled."
     },
     {
       "t": "narrate",
-      "text": "There were intermittent coughs and sneezes and sighs from all around him. He was comfortable in the middle of them all. Grandma Tulsa sat rocking in a chair, doing cross stitch in her lap."
+      "text": "[shot:insert rocking_chair]There were intermittent coughs and sneezes and sighs from all around him. He was comfortable in the middle of them all. Grandma Tulsa sat rocking in a chair, doing cross stitch in her lap."
     },
     {
       "t": "narrate",
@@ -118,11 +118,11 @@
     },
     {
       "t": "narrate",
-      "text": "The light from the windows seemed to bleed out dead. A reddish hue settled into the shadows. The children still slept in their spot, rooted by full tummies and strange visions behind eyelids."
+      "text": "[shot:insert windows]The light from the windows seemed to bleed out dead. A reddish hue settled into the shadows. The children still slept in their spot, rooted by full tummies and strange visions behind eyelids."
     },
     {
       "t": "narrate",
-      "text": "A shape and sound approached the door. Grandma Tulsa unlocked the door to let the stranger in. A storm of sand blew in, orange and yellow, a dervish of grit and salt."
+      "text": "[shot:insert door]A shape and sound approached the door. Grandma Tulsa unlocked the door to let the stranger in. A storm of sand blew in, orange and yellow, a dervish of grit and salt."
     },
     {
       "t": "narrate",

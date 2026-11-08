@@ -105,5 +105,22 @@
     "cup": [0.28, 0.4, 2.0],
     "door": [0.82, 0.36, 1.7],
     "window": [0.55, 0.22, 1.7]
+  },
+  "assets/backgrounds/vol4_letters.jpg": {
+    "letters": [0.52, 0.52, 1.6],
+    "bundle": [0.82, 0.52, 1.9],
+    "lamp": [0.15, 0.18, 1.8],
+    "flowers": [0.21, 0.22, 2.0],
+    "chair": [0.72, 0.33, 1.7],
+    "window": [0.76, 0.15, 1.7]
+  },
+  "assets/backgrounds/vol4_beach_daycare.jpg": {
+    "beach": [0.66, 0.48, 1.7],
+    "toys": [0.37, 0.48, 2.0],
+    "rocking_chair": [0.12, 0.55, 1.7],
+    "mats": [0.58, 0.62, 1.5],
+    "door": [0.28, 0.4, 1.8],
+    "drawings": [0.1, 0.22, 1.7],
+    "windows": [0.66, 0.3, 1.4]
   }
 }

@@ -33,11 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "this life is a series of letters strung together one after another."
+      "text": "[shot:insert letters]this life is a series of letters strung together one after another."
     },
     {
       "t": "narrate",
-      "text": "Some go undelivered, others change lives and there are those that exist on their own as a story to learn from and grow by. A concentrated bit of the self, opened, ingested and considered."
+      "text": "[shot:insert bundle]Some go undelivered, others change lives and there are those that exist on their own as a story to learn from and grow by. A concentrated bit of the self, opened, ingested and considered."
     },
     {
       "t": "narrate",
@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "Taking in a person so much thought is given to the exterior, their beauty and presence, their aura of affection can be like unto the light of creation. Life is brevity. I get caught up in the beauty of it all, it is very hard not to in the moment."
+      "text": "[shot:insert lamp]Taking in a person so much thought is given to the exterior, their beauty and presence, their aura of affection can be like unto the light of creation. Life is brevity. I get caught up in the beauty of it all, it is very hard not to in the moment."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "Right now all I feel is an ache, a hole where words need to go."
+      "text": "[shot:insert chair]Right now all I feel is an ache, a hole where words need to go."
     },
     {
       "t": "narrate",
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tasting the sweet milk of life, smelling the sun on the flowers,\nTouching the lips of a lover, hearing words for the magic they are, seeing the world unfold within your lifetime."
+      "text": "[shot:insert flowers]Tasting the sweet milk of life, smelling the sun on the flowers,\nTouching the lips of a lover, hearing words for the magic they are, seeing the world unfold within your lifetime."
     },
     {
       "t": "narrate",
@@ -113,7 +113,7 @@
     },
     {
       "t": "narrate",
-      "text": "Beauty is all around us, as we are forever chasing it\nand losing sight of why it can be lost or found."
+      "text": "[shot:insert window]Beauty is all around us, as we are forever chasing it\nand losing sight of why it can be lost or found."
     },
     {
       "t": "narrate",
