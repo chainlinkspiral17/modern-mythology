@@ -214,6 +214,8 @@ func _screen_size_section() -> VBoxContainer:
 	var hint := Label.new()
 	hint.text = "720p = 1280×720  ·  900p = 1600×900  ·  1080p = 1920×1080  ·  1440p = 2560×1440  ·  ULTRAWIDE = 3440×1440  ·  FULLSCREEN = the screen's own size"
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if not Settings.window_sizes_available():
+		hint.text = "Playing inside the Godot editor's Game tab: window sizes and fullscreen can't change here (the layout still follows the tab). Turn off \"Embed Game on Next Play\" in the Game tab, or run tools/play.sh."
 	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
 		hint.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
 	hint.add_theme_font_size_override("font_size", 14)

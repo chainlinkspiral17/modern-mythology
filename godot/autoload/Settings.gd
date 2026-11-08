@@ -231,7 +231,20 @@ func get_text_scale() -> float:
 	return _txt_scale
 
 
+## (2026-11-08) Run from the Godot editor, the game plays EMBEDDED in the
+## editor's Game tab (Godot 4.4+), and Godot ignores window size and
+## fullscreen requests there — SCREEN SIZE seemed to do nothing. The wide
+## layout still follows the tab's own size. To test window sizes: the Game
+## tab's menu → turn off "Embed Game on Next Play", or run the game on its
+## own (tools/play.sh).
+func window_sizes_available() -> bool:
+	return not Engine.is_embedded_in_editor()
+
+
 func _apply_window_mode(mode: String) -> void:
+	if not window_sizes_available():
+		push_warning("[Settings] window size '%s' not applied: the game is embedded in the editor's Game tab" % mode)
+		return
 	match mode:
 		"720p":
 			call_deferred("_resize_window", 1280, 720)
