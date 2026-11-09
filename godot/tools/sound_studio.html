@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern Mythology — Sound Studio</title>
+<style>
+  :root {
+    --bg: #0d121c; --panel: #161c2a; --panel2: #1f2638; --panel3: #283047;
+    --border: #2d3548; --accent: #c8a268; --accent-dim: #6d5c3e;
+    --text: #d8d4c8; --text-dim: #7c8398;
+    --good: #7cffb0; --warn: #ffb060; --bad: #ff6464; --info: #7cb6ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 13px/1.45 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  body { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100vh; overflow: hidden; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .mono { font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .dim { color: var(--text-dim); }
+
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 8px 14px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  header h1 { margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif; color: var(--accent); letter-spacing: .02em; }
+  .lanes { display: flex; gap: 4px; }
+  .lane { background: var(--bg); border: 1px solid var(--border); border-radius: 5px; padding: 5px 12px;
+    cursor: pointer; display: flex; flex-direction: column; min-width: 128px; text-align: left; }
+  .lane b { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-dim); }
+  .lane span { font-size: 11px; color: var(--text-dim); }
+  .lane.active { border-color: var(--accent); background: var(--panel2); }
+  .lane.active b { color: var(--accent); }
+  .lane .bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 4px; overflow: hidden; }
+  .lane .bar i { display: block; height: 100%; background: var(--good); }
+  .spacer { flex: 1; }
+  .chip { font-size: 11px; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--border);
+    color: var(--text-dim); white-space: nowrap; }
+  .chip.warn { color: var(--warn); border-color: #6b4a22; cursor: pointer; }
+  .chip.bad { color: var(--bad); border-color: #6e2a2a; }
+  .chip.good { color: var(--good); border-color: #2c5c44; }
+
+  main { display: grid; grid-template-columns: 270px minmax(0, 1fr) 430px; min-height: 0; }
+  .col { min-height: 0; overflow-y: auto; }
+  .nav { background: var(--panel); border-right: 1px solid var(--border); padding: 10px; }
+  .lib { background: var(--panel); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  .lib-scroll { overflow-y: auto; min-height: 0; flex: 1; padding: 0 10px 10px; }
+  h2 { margin: 12px 0 6px; font: 600 11px/1 ui-sans-serif, sans-serif; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .08em; }
+  h2:first-child { margin-top: 2px; }
+
+  button { background: var(--panel3); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px;
+    cursor: pointer; font-size: 12px; }
+  button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+  button.primary:hover:not(:disabled) { color: var(--bg); filter: brightness(1.1); }
+  button.ghost { background: transparent; }
+  button.danger:hover:not(:disabled) { border-color: var(--bad); color: var(--bad); }
+  button.rec.on { background: #7a1e26; border-color: var(--bad); color: #fff; }
+  .seg { display: flex; flex-wrap: wrap; gap: 4px; }
+  .seg button { padding: 3px 8px; font-size: 11px; background: var(--bg); color: var(--text-dim); }
+  .seg button.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  input[type=text], input[type=number], input[type=search], select, textarea {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px; min-width: 0; }
+  input:focus, select:focus, textarea:focus { outline: 1px solid var(--accent-dim); }
+
+  .navitem { display: block; width: 100%; text-align: left; background: transparent; border: 1px solid transparent;
+    border-radius: 4px; padding: 5px 7px; margin-bottom: 2px; }
+  .navitem.active { background: var(--panel2); border-color: var(--accent-dim); }
+  .navitem .t { display: flex; justify-content: space-between; gap: 8px; }
+  .navitem .t span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .navitem .n { color: var(--text-dim); font-size: 11px; white-space: nowrap; }
+  .navitem .bar { height: 2px; background: var(--border); margin-top: 4px; }
+  .navitem .bar i { display: block; height: 100%; background: var(--good); }
+  .navitem.done { opacity: .55; }
+
+  .slots { display: flex; flex-direction: column; min-height: 0; }
+  .toolbar { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--border);
+    background: var(--panel); flex-wrap: wrap; }
+  .toolbar .title { font: 600 14px ui-serif, Georgia, serif; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .toolbar label { font-size: 12px; color: var(--text-dim); display: flex; gap: 5px; align-items: center; cursor: pointer; }
+  .slotlist { overflow-y: auto; min-height: 0; flex: 1; }
+  .slot { display: grid; grid-template-columns: 34px 84px minmax(0, 1fr) auto; gap: 10px; align-items: start;
+    padding: 8px 12px; border-bottom: 1px solid #202739; cursor: pointer; border-left: 3px solid transparent; }
+  .slot:hover { background: #121826; }
+  .slot.armed { background: var(--panel2); border-left-color: var(--accent); }
+  .slot .idx { color: var(--text-dim); font-size: 11px; padding-top: 2px; }
+  .slot.nv { grid-template-columns: 44px minmax(0, 1fr) auto; }
+  .slot .who { font-weight: 600; color: var(--accent); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .slot .who.narr { color: var(--text-dim); font-weight: 400; font-style: italic; }
+  .slot .txt { font: 13px/1.45 ui-serif, Georgia, serif; }
+  .slot .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; overflow-wrap: anywhere; }
+  .slot .right { display: flex; gap: 6px; align-items: center; }
+  .st { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+  .st.outstanding { color: var(--warn); background: rgba(255,176,96,.1); }
+  .st.assigned { color: var(--good); background: rgba(124,255,176,.08); }
+  .st.unwired { color: var(--info); background: rgba(124,182,255,.1); }
+  .st.missing { color: var(--bad); background: rgba(255,100,100,.1); }
+  .play { width: 26px; height: 24px; padding: 0; border-radius: 50%; font-size: 10px; flex: none; }
+  .play.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .group-h { padding: 5px 12px; font-size: 11px; color: var(--text-dim); background: #10151f; border-bottom: 1px solid #202739;
+    position: sticky; top: 0; z-index: 1; }
+  .empty { padding: 36px 20px; text-align: center; color: var(--text-dim); }
+
+  .armed-card { padding: 10px; border-bottom: 1px solid var(--border); background: var(--panel2); }
+  .armed-card .hd { display: flex; gap: 8px; align-items: baseline; }
+  .armed-card .hd b { color: var(--accent); }
+  .armed-card .body { font: 13px/1.45 ui-serif, Georgia, serif; margin: 6px 0; max-height: 110px; overflow-y: auto; }
+  .armed-card .path { font-size: 11px; color: var(--text-dim); overflow-wrap: anywhere; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-top: 7px; }
+  .row input[type=text] { flex: 1; }
+  .hint { font-size: 11px; color: var(--text-dim); margin-top: 5px; }
+  .hint.warn { color: var(--warn); }
+
+  .tabs { display: flex; gap: 2px; padding: 8px 10px 0; border-bottom: 1px solid var(--border); }
+  .tab { background: transparent; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0;
+    padding: 5px 10px; color: var(--text-dim); }
+  .tab.active { background: var(--bg); border-color: var(--border); color: var(--accent); }
+  .libtools { display: flex; gap: 6px; padding: 8px 10px; align-items: center; }
+  .libtools input[type=search] { flex: 1; }
+  .item { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; align-items: center;
+    padding: 6px; border: 1px solid transparent; border-radius: 5px; margin-bottom: 3px; background: var(--bg); cursor: pointer; }
+  .item.sel { border-color: var(--accent-dim); }
+  .item.live { border-color: #2c5c44; }
+  .item .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+  .item .meta { font-size: 11px; color: var(--text-dim); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .item .acts { display: flex; gap: 4px; align-items: center; }
+  .item .acts button { padding: 3px 7px; font-size: 11px; }
+  .stars { letter-spacing: 1px; cursor: pointer; color: #414a61; user-select: none; }
+  .stars b { color: var(--accent); font-weight: 400; }
+  .badge { font-size: 9px; letter-spacing: .08em; padding: 1px 5px; border-radius: 3px; }
+  .badge.live { background: var(--good); color: var(--bg); font-weight: 700; }
+  .badge.game { border: 1px solid var(--border); color: var(--text-dim); }
+  .drop { border: 1px dashed var(--border); border-radius: 5px; padding: 10px; text-align: center; color: var(--text-dim);
+    font-size: 12px; margin: 8px 0; }
+  .dragging .drop { border-color: var(--accent); color: var(--accent); background: rgba(200,162,104,.06); }
+  .job { background: var(--bg); border: 1px solid var(--border); border-radius: 5px; padding: 6px 8px; margin-bottom: 4px; font-size: 12px; }
+  .job .bar { height: 3px; background: var(--border); margin-top: 5px; }
+  .job .bar i { display: block; height: 100%; background: var(--accent); transition: width .4s; }
+  .job.error { border-color: #6e2a2a; } .job.error .msg { color: var(--bad); }
+  .job.done .bar i { background: var(--good); }
+  .job .detail { color: var(--text-dim); font-size: 11px; margin-top: 4px; }
+
+  footer { background: var(--panel); border-top: 1px solid var(--border); padding: 7px 14px;
+    display: grid; grid-template-columns: auto 230px minmax(0, 1fr) auto auto; gap: 12px; align-items: center; }
+  footer .now { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+  footer canvas { width: 100%; height: 40px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; cursor: pointer; display: block; }
+  footer .time { font-size: 11px; color: var(--text-dim); min-width: 84px; text-align: right; }
+  .kbd { font: 10px ui-monospace, monospace; border: 1px solid var(--border); border-radius: 3px; padding: 0 4px; color: var(--text-dim); }
+
+  #toasts { position: fixed; right: 16px; bottom: 76px; display: flex; flex-direction: column; gap: 6px; z-index: 20; }
+  .toast { background: var(--panel3); border: 1px solid var(--border); border-left: 3px solid var(--good); border-radius: 4px;
+    padding: 8px 12px; max-width: 420px; font-size: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+  .toast.err { border-left-color: var(--bad); }
+  dialog { background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 6px; width: min(760px, 92vw); padding: 14px; }
+  dialog::backdrop { background: rgba(0,0,0,.6); }
+  dialog textarea { width: 100%; height: 46vh; font: 12px/1.45 ui-monospace, Menlo, monospace; resize: vertical; }
+  dialog h3 { margin: 0 0 8px; color: var(--accent); font: 600 14px ui-serif, Georgia, serif; }
+  dialog p { margin: 0 0 8px; color: var(--text-dim); font-size: 12px; }
+  @media (max-width: 1180px) { main { grid-template-columns: 220px minmax(0, 1fr) 360px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Sound Studio</h1>
+  <div class="lanes" id="lanes"></div>
+  <span class="spacer"></span>
+  <span id="envChips" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"></span>
+  <button class="ghost" id="refreshBtn" title="Rescan the project and library">Rescan</button>
+  <button class="ghost" id="helpBtn">Keys</button>
+</header>
+
+<main>
+  <aside class="col nav" id="nav"></aside>
+  <section class="slots">
+    <div class="toolbar" id="toolbar"></div>
+    <div class="slotlist" id="slotlist"></div>
+  </section>
+  <aside class="lib" id="lib">
+    <div class="armed-card" id="armed"></div>
+    <div class="tabs" id="libtabs"></div>
+    <div class="libtools" id="libtools"></div>
+    <div class="lib-scroll" id="libscroll"></div>
+  </aside>
+</main>
+
+<footer>
+  <button class="play" id="tPlay" style="width:34px;height:32px;font-size:12px">▶</button>
+  <div class="now" id="tNow"><span class="dim">Nothing playing</span></div>
+  <canvas id="tWave" height="40"></canvas>
+  <div class="time mono" id="tTime">0:00 / 0:00</div>
+  <div style="display:flex;gap:6px;align-items:center">
+    <button id="tA" title="Play what the game currently plays for this slot (A)">A · current</button>
+    <button id="tB" title="Play the selected library item (B)">B · candidate</button>
+    <input type="range" id="tVol" min="0" max="1" step="0.01" value="0.9" style="width:70px" title="Monitor volume">
+  </div>
+</footer>
+
+<div id="toasts"></div>
+<dialog id="dlg"><h3 id="dlgTitle"></h3><p id="dlgNote"></p><textarea id="dlgText" spellcheck="false"></textarea>
+  <div class="row" style="justify-content:flex-end"><button id="dlgCopy" class="primary">Copy</button><button id="dlgClose">Close</button></div></dialog>
+
+<script>
+'use strict';
+// ── tiny helpers ───────────────────────────────────────────────────────────
+const $ = (s) => document.querySelector(s);
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === 'class') e.className = v;
+    else if (k === 'style') e.style.cssText = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else if (k === 'value') e.value = v;
+    else if (k === 'checked' || k === 'disabled' || k === 'selected') e[k] = !!v;
+    else e.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat(3)) {
+    if (kid == null || kid === false) continue;
+    e.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  }
+  return e;
+}
+// replaceChildren() would print a literal "null" for skipped children; h() already drops them.
+function fill(el, ...kids) { el.replaceChildren(...kids.flat(3).filter(k => k != null && k !== false)); }
+async function api(path, body, raw) {
+  const opt = body === undefined ? {} : {
+    method: 'POST',
+    headers: Object.assign({'X-MM-Studio': '1'}, raw ? {} : {'Content-Type': 'application/json'}),
+    body: raw ? body : JSON.stringify(body),
+  };
+  const r = await fetch(path, opt);
+  let j;
+  try { j = await r.json(); } catch (e) { j = {error: 'The studio server did not answer. Is it still running?'}; }
+  if (!r.ok || j.error) throw new Error(j.error || r.statusText);
+  return j;
+}
+function toast(msg, err) {
+  const t = h('div', {class: 'toast' + (err ? ' err' : '')}, msg);
+  $('#toasts').append(t);
+  setTimeout(() => t.remove(), err ? 9000 : 4000);
+}
+const fmtDur = (s) => s == null ? '' : s < 10 ? s.toFixed(1) + 's' : Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+const fmtSize = (n) => n > 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
+const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
+const KIND_LABEL = {voice: 'Dialogue', sfx: 'SFX', music: 'Music'};
+const STATUS_LABEL = {outstanding: 'outstanding', assigned: 'assigned', unwired: 'on disk · not wired', missing: 'file missing'};
+function prefs() { try { return JSON.parse(localStorage.getItem('mm_sound_studio') || '{}'); } catch (e) { return {}; } }
+function savePrefs() {
+  try { localStorage.setItem('mm_sound_studio', JSON.stringify({lane: S.lane, vol: S.vol, navMode: S.navMode,
+    scene: S.scene, char: S.char, outstanding: S.outstanding, autoAdvance: S.autoAdvance, showGame: S.showGame, bound: S.bound})); } catch (e) {}
+}
+
+// ── state ──────────────────────────────────────────────────────────────────
+const P = prefs();
+const S = {
+  data: null, lane: P.lane || 'voice', vol: P.vol ?? 5, navMode: P.navMode || 'scene',
+  scene: P.scene || '', char: P.char || '', lines: [], linesTotal: 0,
+  outstanding: P.outstanding ?? true, autoAdvance: P.autoAdvance ?? true, bound: P.bound ?? false,
+  q: '', armed: '', libTab: 'cand', libQ: '', showGame: P.showGame ?? false, sel: '',
+  gen: {provider: '', seconds: 120, direction: '', renderer: 'builtin'},
+  rev: 0, recording: null, sfxForm: false,
+};
+
+function laneSlots() {
+  if (!S.data) return [];
+  if (S.lane === 'voice') return S.lines;
+  if (S.lane === 'sfx') return S.data.sfx;
+  return S.data.music.filter(m => (S.vol === null || m.vol === S.vol) && (!S.bound || (m.chapters || []).length));
+}
+function visibleSlots() {
+  const q = S.q.trim().toLowerCase();
+  return laneSlots().filter(s => {
+    if (S.outstanding && s.status === 'assigned' && s.slot !== S.armed) return false;
+    if (!q) return true;
+    return [s.text, s.char, s.title, s.desc, s.id, s.scene].some(v => v && String(v).toLowerCase().includes(q));
+  });
+}
+function findSlot(id) {
+  if (!S.data || !id) return null;
+  return S.lines.find(s => s.slot === id) || S.data.music.find(s => s.slot === id) || S.data.sfx.find(s => s.slot === id) || null;
+}
+const armedSlot = () => findSlot(S.armed);
+function candidates(slot) {
+  if (!slot || !S.data) return [];
+  return S.data.library.filter(it => it.link === slot.slot || it.live.includes(slot.slot));
+}
+function slotName(slot) {
+  if (!slot) return '';
+  return slot.kind === 'voice' ? `${slot.char === '_narrator' ? 'Narrator' : slot.char} · ${slot.scene} #${String(slot.index).padStart(3, '0')}` : (slot.title || slot.id);
+}
+
+// ── data loading ───────────────────────────────────────────────────────────
+function showOffline() {
+  // Opened as a file, or the server was stopped: say how to start it instead of an empty page.
+  fill($('#slotlist'), h('div', {class: 'empty'},
+    h('p', {style: 'font-size:14px;color:var(--text)'}, 'The Sound Studio needs its local server.'),
+    h('p', {}, 'In a terminal, from the repo:'),
+    h('pre', {class: 'mono', style: 'display:inline-block;text-align:left;background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:10px 14px;user-select:all'},
+      'cd godot/tools && ./run_sound_studio.sh'),
+    h('p', {}, 'It opens this page at http://127.0.0.1:8787/ with the project and library loaded.')));
+}
+async function refresh(keepLines) {
+  if (location.protocol === 'file:') return showOffline();
+  try {
+    S.data = await api('/api/state');
+    S.rev++;
+    if (!keepLines || S.lane === 'voice') await loadLines();
+    renderAll();
+    if (S.data.jobs.some(j => j.state === 'running')) pollJobs();
+  } catch (e) { toast(e.message, true); if (!S.data) showOffline(); }
+}
+async function loadLines(more) {
+  if (!S.data) return;
+  if (S.navMode === 'scene') {
+    if (!S.scene || !S.data.scenes.some(s => s.id === S.scene)) {
+      const first = S.data.scenes.find(s => (S.vol === null || s.vol === S.vol) && s.done < s.total) || S.data.scenes.find(s => S.vol === null || s.vol === S.vol);
+      S.scene = first ? first.id : '';
+    }
+    if (!S.scene) { S.lines = []; S.linesTotal = 0; return; }
+    const r = await api('/api/lines?limit=1000&scene=' + encodeURIComponent(S.scene));
+    S.lines = r.lines; S.linesTotal = r.total;
+  } else {
+    if (!S.char) { S.lines = []; S.linesTotal = 0; return; }
+    const offset = more ? S.lines.length : 0;
+    const r = await api(`/api/lines?limit=300&offset=${offset}&char=${encodeURIComponent(S.char)}` +
+      (S.vol === null ? '' : '&vol=' + S.vol) + (S.outstanding ? '&status=outstanding' : ''));
+    S.lines = more ? S.lines.concat(r.lines) : r.lines; S.linesTotal = r.total;
+  }
+}
+
+// ── header ─────────────────────────────────────────────────────────────────
+function renderHeader() {
+  const d = S.data;
+  const tot = {voice: [0, 0], sfx: [0, 0], music: [0, 0]};
+  d.scenes.forEach(s => { tot.voice[0] += s.done; tot.voice[1] += s.total; });
+  d.sfx.forEach(s => { tot.sfx[0] += s.status === 'assigned'; tot.sfx[1]++; });
+  d.music.forEach(s => { tot.music[0] += s.status === 'assigned'; tot.music[1]++; });
+  fill($('#lanes'), ...['voice', 'sfx', 'music'].map(k =>
+    h('button', {class: 'lane' + (S.lane === k ? ' active' : ''), onclick: () => setLane(k)},
+      h('b', {}, KIND_LABEL[k]),
+      h('span', {}, `${(tot[k][1] - tot[k][0]).toLocaleString()} outstanding of ${tot[k][1].toLocaleString()}`),
+      h('div', {class: 'bar'}, h('i', {style: `width:${pct(tot[k][0], tot[k][1])}%`})))));
+  const chips = [];
+  if (d.config_error) chips.push(h('span', {class: 'chip bad', title: d.config_error}, 'sound_providers.json error'));
+  if (!d.env.ffmpeg) chips.push(h('span', {class: 'chip bad', title: 'Without ffmpeg the studio can only copy files whose format already matches the slot.'}, 'ffmpeg missing'));
+  if (d.env.git_changes) chips.push(h('span', {class: 'chip warn', onclick: showCommit, title: 'Show the commit command'}, `${d.env.git_changes} uncommitted audio change${d.env.git_changes === 1 ? '' : 's'}`));
+  chips.push(h('span', {class: 'chip mono', title: 'Library folder'}, d.env.library.replace(/^.*\/(?=[^/]+\/[^/]+$)/, '…/')));
+  fill($('#envChips'), ...chips);
+}
+function showCommit() {
+  const repo = S.data.env.repo;
+  showText('Commit your audio work',
+    'update.sh stashes anything uncommitted before it pulls, so commit assignments before you update. The library itself is git-ignored; only game files, scene wiring and scores are committed.',
+    `cd ${repo} && git add godot/assets/audio godot/resources/scenes godot/resources/music_catalog.json godot/resources/sfx_catalog.json audio_library/scores && git commit -m "Audio: assign takes, SFX and music from the Sound Studio" && git push`);
+}
+function showText(title, note, text) {
+  $('#dlgTitle').textContent = title; $('#dlgNote').textContent = note || ''; $('#dlgText').value = text;
+  $('#dlg').showModal(); $('#dlgText').select();
+}
+$('#dlgClose').onclick = () => $('#dlg').close();
+$('#dlgCopy').onclick = async () => {
+  try { await navigator.clipboard.writeText($('#dlgText').value); toast('Copied.'); }
+  catch (e) { $('#dlgText').select(); document.execCommand('copy'); toast('Copied.'); }
+};
+$('#helpBtn').onclick = () => showText('Keyboard', 'Shortcuts work whenever you are not typing in a field.',
+  '↑ / ↓      previous / next slot\nN          next outstanding slot\n← / →      previous / next library item (and play it)\nSpace      play / pause\nA          play what the game currently has for the slot\nB          play the selected library item\nEnter      assign the selected library item to the slot\nR          record a take (dialogue lane)\nO          toggle "outstanding only"\n1-5        rate the selected library item');
+$('#refreshBtn').onclick = () => refresh();
+
+async function setLane(k) {
+  S.lane = k; S.armed = ''; S.sel = ''; S.q = ''; S.libTab = 'cand';
+  if (k === 'voice') await loadLines();
+  savePrefs(); renderAll();
+}
+
+// ── navigator ──────────────────────────────────────────────────────────────
+function volSeg(vols, onpick, allowAll) {
+  const b = (v, label) => h('button', {class: S.vol === v ? 'active' : '', onclick: () => onpick(v)}, label);
+  return h('div', {class: 'seg'}, allowAll ? b(null, 'all') : null, vols.map(v => b(v, 'vol ' + v)));
+}
+function renderNav() {
+  const d = S.data, nav = $('#nav');
+  const kids = [];
+  if (S.lane === 'voice') {
+    const vols = [...new Set(d.scenes.map(s => s.vol))].sort((a, b) => a - b);
+    kids.push(h('h2', {}, 'Volume'), volSeg(vols, async v => { S.vol = v; S.scene = ''; await loadLines(); savePrefs(); renderAll(); }, S.navMode === 'char'));
+    kids.push(h('h2', {}, 'Browse by'), h('div', {class: 'seg'},
+      h('button', {class: S.navMode === 'scene' ? 'active' : '', onclick: () => setNavMode('scene')}, 'scene'),
+      h('button', {class: S.navMode === 'char' ? 'active' : '', onclick: () => setNavMode('char')}, 'character')));
+    if (S.navMode === 'scene') {
+      const scenes = d.scenes.filter(s => S.vol === null || s.vol === S.vol);
+      kids.push(h('h2', {}, `Scenes · ${scenes.filter(s => s.done < s.total).length} need audio`));
+      for (const s of scenes) {
+        kids.push(h('button', {class: 'navitem' + (s.id === S.scene ? ' active' : '') + (s.done >= s.total ? ' done' : ''),
+          title: s.id, onclick: async () => { S.scene = s.id; S.armed = ''; await loadLines(); savePrefs(); renderAll(); }},
+          h('div', {class: 't'}, h('span', {}, (s.chapter ? s.chapter + ' · ' : '') + (s.title || s.id)),
+            h('span', {class: 'n'}, `${s.done}/${s.total}` + (s.attn ? ' ⚠' : ''))),
+          h('div', {class: 'bar'}, h('i', {style: `width:${pct(s.done, s.total)}%`}))));
+      }
+    } else {
+      const rows = Object.entries(d.chars).map(([ck, c]) => {
+        const v = S.vol === null ? [c.total, c.done] : (c.vols[String(S.vol)] || [0, 0]);
+        return {ck, total: v[0], done: v[1]};
+      }).filter(r => r.total).sort((a, b) => (b.total - b.done) - (a.total - a.done));
+      kids.push(h('h2', {}, `Characters · ${rows.length}`));
+      for (const r of rows) {
+        kids.push(h('button', {class: 'navitem' + (r.ck === S.char ? ' active' : '') + (r.done >= r.total ? ' done' : ''),
+          onclick: async () => { S.char = r.ck; S.armed = ''; await loadLines(); savePrefs(); renderAll(); }},
+          h('div', {class: 't'}, h('span', {}, r.ck === '_narrator' ? 'Narrator' : r.ck), h('span', {class: 'n'}, `${r.done}/${r.total}`)),
+          h('div', {class: 'bar'}, h('i', {style: `width:${pct(r.done, r.total)}%`}))));
+      }
+    }
+  } else if (S.lane === 'music') {
+    const vols = [...new Set(d.music.map(s => s.vol))].sort((a, b) => a - b);
+    kids.push(h('h2', {}, 'Volume'), volSeg(vols, v => { S.vol = v; savePrefs(); renderAll(); }, true));
+    kids.push(h('h2', {}, 'Show'), h('label', {class: 'dim', style: 'display:flex;gap:6px;cursor:pointer'},
+      h('input', {type: 'checkbox', checked: S.bound, onchange: e => { S.bound = e.target.checked; savePrefs(); renderAll(); }}),
+      'only tracks bound to a chapter'));
+    kids.push(h('h2', {}, 'Per volume'));
+    for (const v of vols) {
+      const all = d.music.filter(m => m.vol === v), done = all.filter(m => m.status === 'assigned').length;
+      kids.push(h('button', {class: 'navitem' + (S.vol === v ? ' active' : ''), onclick: () => { S.vol = v; savePrefs(); renderAll(); }},
+        h('div', {class: 't'}, h('span', {}, 'Volume ' + v), h('span', {class: 'n'}, `${done}/${all.length}`)),
+        h('div', {class: 'bar'}, h('i', {style: `width:${pct(done, all.length)}%`}))));
+    }
+  } else {
+    kids.push(h('h2', {}, 'SFX slots'),
+      h('p', {class: 'hint'}, 'Slots live in godot/resources/sfx_catalog.json. “Played by code” means a script already references the path, so assigning a file is all it takes to hear it in game.'),
+      h('button', {onclick: () => { S.sfxForm = !S.sfxForm; renderNav(); }}, S.sfxForm ? 'Cancel' : '+ New SFX slot'));
+    if (S.sfxForm) {
+      const id = h('input', {type: 'text', placeholder: 'id, e.g. door_bell', style: 'width:100%;margin-top:6px'});
+      const label = h('input', {type: 'text', placeholder: 'Label', style: 'width:100%;margin-top:6px'});
+      const brief = h('textarea', {placeholder: 'Brief: what it sounds like, how long', style: 'width:100%;margin-top:6px;height:70px'});
+      kids.push(id, label, brief, h('div', {class: 'row'}, h('button', {class: 'primary', onclick: async () => {
+        try { const r = await api('/api/sfx_slot', {id: id.value, label: label.value, brief: brief.value, group: 'scene'});
+          S.sfxForm = false; S.armed = r.slot; await refresh(true); toast('Slot added. Game code still has to play it.'); }
+        catch (e) { toast(e.message, true); } }}, 'Add slot')));
+    }
+  }
+  fill(nav, ...kids);
+}
+async function setNavMode(m) {
+  S.navMode = m; S.armed = '';
+  if (m === 'scene' && S.vol === null) S.vol = 5;
+  await loadLines(); savePrefs(); renderAll();
+}
+
+// ── slot list ──────────────────────────────────────────────────────────────
+function renderToolbar() {
+  let title = KIND_LABEL[S.lane];
+  if (S.lane === 'voice') {
+    if (S.navMode === 'scene') { const sc = S.data.scenes.find(s => s.id === S.scene); title = sc ? `${sc.title || sc.id}` : 'No scene'; }
+    else title = S.char ? (S.char === '_narrator' ? 'Narrator' : S.char) : 'Pick a character';
+  } else if (S.lane === 'music') title = S.vol === null ? 'All music' : 'Volume ' + S.vol + ' music';
+  const vis = visibleSlots();
+  fill($('#toolbar'), 
+    h('span', {class: 'title'}, title),
+    S.lane === 'voice' && S.navMode === 'scene' && S.scene ? h('span', {class: 'dim mono', style: 'font-size:11px'}, S.scene) : null,
+    h('span', {class: 'spacer'}),
+    h('label', {}, h('input', {type: 'checkbox', checked: S.outstanding, onchange: async e => {
+      S.outstanding = e.target.checked; if (S.lane === 'voice' && S.navMode === 'char') await loadLines(); savePrefs(); renderAll(); }}), 'outstanding only'),
+    S.lane === 'voice' ? h('label', {title: 'After assigning, arm the next outstanding line'}, h('input', {type: 'checkbox', checked: S.autoAdvance,
+      onchange: e => { S.autoAdvance = e.target.checked; savePrefs(); }}), 'auto-advance') : null,
+    h('input', {type: 'search', placeholder: 'Filter…', value: S.q, style: 'width:150px', oninput: e => { S.q = e.target.value; renderSlots(); }}),
+    h('span', {class: 'dim', id: 'shown', style: 'font-size:11px'}, `${vis.length} shown`));
+}
+function playBtn(key, fn, title) {
+  return h('button', {class: 'play' + (T.key === key && !T.audio.paused ? ' on' : ''), title, 'data-play': key,
+    onclick: (e) => { e.stopPropagation(); fn(); }}, T.key === key && !T.audio.paused ? '❚❚' : '▶');
+}
+function slotRow(s) {
+  const armed = s.slot === S.armed;
+  const cands = candidates(s).filter(c => c.kind !== 'score').length;
+  const right = h('div', {class: 'right'},
+    cands && s.status !== 'assigned' ? h('span', {class: 'chip', title: 'Library candidates linked to this slot'}, cands + ' cand.') : null,
+    s.tiny ? h('span', {class: 'chip warn', style: 'cursor:default', title: 'The file at this path is only a few KB: a placeholder, not a finished track'}, 'placeholder file') : null,
+    s.kind === 'sfx' ? h('span', {class: 'chip' + (s.wired ? ' good' : ''), title: s.wired ? 'A game script references this path' : 'No script plays this path yet'}, s.wired ? 'played by code' : 'not in code') : null,
+    h('span', {class: 'st ' + s.status}, STATUS_LABEL[s.status]),
+    s.current ? playBtn('slot:' + s.slot, () => playSlot(s), 'Play the current file') : h('span', {style: 'width:26px'}));
+  let mid;
+  if (s.kind === 'voice') {
+    mid = h('div', {}, h('div', {class: 'txt'}, s.text),
+      S.navMode === 'char' ? h('div', {class: 'sub mono'}, s.scene) : null);
+  } else {
+    mid = h('div', {}, h('div', {}, h('b', {}, s.title || s.id), ' ', h('span', {class: 'dim mono', style: 'font-size:11px'}, s.id)),
+      s.desc ? h('div', {class: 'txt', style: 'font-style:italic;font-size:12px'}, s.desc) : null,
+      h('div', {class: 'sub mono'}, s.target + (s.kind === 'music' && (s.chapters || []).length ? '  ·  ' + s.chapters.length + ' chapter' + (s.chapters.length === 1 ? '' : 's') : '')));
+  }
+  return h('div', {class: 'slot' + (armed ? ' armed' : '') + (s.kind === 'voice' ? '' : ' nv'), 'data-slot': s.slot, onclick: () => arm(s.slot)},
+    h('div', {class: 'idx mono'}, s.kind === 'voice' ? String(s.index).padStart(3, '0') : (s.kind === 'music' ? 'v' + s.vol : s.group || '')),
+    s.kind === 'voice' ? h('div', {class: 'who' + (s.ck === '_narrator' ? ' narr' : ''), title: s.char}, s.ck === '_narrator' ? 'narr.' : s.char) : null,
+    mid, right);
+}
+function renderSlots() {
+  const list = $('#slotlist'), vis = visibleSlots();
+  const shown = $('#shown'); if (shown) shown.textContent = `${vis.length} shown`;
+  if (!vis.length) {
+    const all = laneSlots().length;
+    fill(list, h('div', {class: 'empty'}, all ? (S.outstanding ? 'Nothing outstanding here. Untick “outstanding only” to see what is assigned.' : 'Nothing matches the filter.') :
+      (S.lane === 'voice' ? 'Pick a scene or character on the left.' : 'No slots.')));
+    return;
+  }
+  const kids = [];
+  vis.forEach(s => kids.push(slotRow(s)));
+  if (S.lane === 'voice' && S.navMode === 'char' && S.lines.length < S.linesTotal)
+    kids.push(h('div', {class: 'empty'}, h('button', {onclick: async () => { await loadLines(true); renderSlots(); renderToolbar(); }},
+      `Load more (${S.lines.length} of ${S.linesTotal})`)));
+  fill(list, ...kids);
+}
+function arm(id, noScroll) {
+  S.armed = id; S.sel = ''; S.libTab = 'cand';
+  const slot = armedSlot();
+  if (slot) {
+    const c = candidates(slot);
+    const live = c.find(x => x.live.includes(slot.slot));
+    const first = c.filter(x => x.kind !== 'score' && x !== live)[0];
+    S.sel = (first || live || {}).id || '';
+    const ready = Object.entries(S.data.providers).filter(([, p]) => p.kinds.includes(slot.kind));
+    if (!ready.some(([n]) => n === S.gen.provider)) S.gen.provider = (ready.find(([, p]) => p.ready) || ready[0] || [''])[0];
+  }
+  renderSlots(); renderLib();
+  if (!noScroll) { const el = document.querySelector(`[data-slot="${CSS.escape(id)}"]`); if (el) el.scrollIntoView({block: 'nearest'}); }
+}
+function step(dir, outstandingOnly) {
+  const vis = visibleSlots();
+  if (!vis.length) return;
+  let i = vis.findIndex(s => s.slot === S.armed);
+  for (let n = 0; n < vis.length; n++) {
+    i = (i + dir + vis.length) % vis.length;
+    if (i < 0) i = 0;
+    if (!outstandingOnly || vis[i].status !== 'assigned') { arm(vis[i].slot); return; }
+  }
+}
+
+// ── armed slot + library ───────────────────────────────────────────────────
+function renderArmed() {
+  const slot = armedSlot(), box = $('#armed');
+  if (!slot) {
+    fill(box, h('div', {class: 'dim'}, 'Select a slot to arm it. Then audition library items and press ', h('span', {class: 'kbd'}, 'Enter'), ' to assign.'));
+    return;
+  }
+  const kids = [h('div', {class: 'hd'}, h('b', {}, slotName(slot)), h('span', {class: 'st ' + slot.status}, STATUS_LABEL[slot.status]))];
+  kids.push(h('div', {class: 'body'}, slot.kind === 'voice' ? slot.text : (slot.desc || '')));
+  kids.push(h('div', {class: 'path mono'}, slot.current ? 'plays ' + slot.current : 'will write ' + (slot.target || `assets/audio/voice/${slot.scene}/${String(slot.index).padStart(3, '0')}.*`)));
+  const acts = [];
+  if (slot.kind === 'voice') acts.push(h('button', {class: 'rec' + (S.recording ? ' on' : ''), onclick: toggleRecord, title: 'Record a take from the microphone (R)'}, S.recording ? '■ Stop' : '● Record take'));
+  acts.push(h('button', {onclick: () => pickFiles(slot)}, 'Add files…'));
+  if (slot.status === 'unwired') acts.push(h('button', {class: 'primary', onclick: () => act('/api/wire', {slot: slot.slot}, 'Wired the file already on disk.')}, 'Wire it'));
+  if (slot.kind !== 'voice') acts.push(h('button', {onclick: () => showBrief(slot)}, 'Brief'));
+  if (slot.current) acts.push(h('button', {class: 'danger', onclick: () => { if (confirm('Unassign? The file goes back to the library as a candidate; the game falls silent for this slot.')) act('/api/unassign', {slot: slot.slot}, 'Unassigned. The file is back in the library.'); }}, 'Unassign'));
+  kids.push(h('div', {class: 'row'}, acts));
+  kids.push(genRow(slot));
+  // running jobs, plus anything that finished in the last two minutes
+  const jobs = (S.data.jobs || []).filter(j => j.state === 'running' || j.ended_ago < 120).slice(0, 3);
+  if (jobs.length) kids.push(h('div', {style: 'margin-top:8px'}, jobs.map(jobCard)));
+  fill(box, ...kids);
+}
+function genRow(slot) {
+  const provs = Object.entries(S.data.providers).filter(([, p]) => p.kinds.includes(slot.kind));
+  if (!provs.length) return h('div', {class: 'hint'}, 'No generation hook is configured for ' + KIND_LABEL[slot.kind].toLowerCase() + ' (tools/sound_providers.json).');
+  const cur = S.data.providers[S.gen.provider];
+  const sel = h('select', {onchange: e => { S.gen.provider = e.target.value; renderArmed(); }},
+    provs.map(([n, p]) => h('option', {value: n, selected: n === S.gen.provider}, p.label + (p.ready ? '' : ' (not ready)'))));
+  const row = [sel];
+  if (slot.kind === 'music') row.push(h('input', {type: 'number', min: 20, max: 300, step: 10, value: S.gen.seconds, style: 'width:62px', title: 'Target length in seconds',
+    onchange: e => { S.gen.seconds = +e.target.value || 120; }}));
+  if (cur && cur.makes === 'score') {
+    row.push(h('select', {title: 'How the score becomes audio', onchange: e => { S.gen.renderer = e.target.value; }},
+      Object.entries(S.data.renderers).map(([n, r]) => h('option', {value: n, selected: n === S.gen.renderer, disabled: !r.ready}, r.label + (r.ready ? '' : ' (n/a)')))));
+  }
+  row.push(h('button', {class: 'primary', disabled: !cur || !cur.ready, onclick: () => startGen(slot)}, 'Generate'));
+  const out = [h('div', {class: 'row'}, row)];
+  if (slot.kind !== 'voice') out.push(h('div', {class: 'row', style: 'margin-top:5px'}, h('input', {type: 'text', placeholder: 'Direction for this take (optional)', value: S.gen.direction,
+    oninput: e => { S.gen.direction = e.target.value; }})));
+  if (cur && !cur.ready) out.push(h('div', {class: 'hint warn'}, 'Not ready: ' + cur.why));
+  else if (cur && cur.makes === 'score') out.push(h('div', {class: 'hint'}, 'Writes a score and a .mid, then renders an mp3 into the library.'));
+  return h('div', {}, out);
+}
+function jobCard(j) {
+  return h('div', {class: 'job ' + j.state},
+    h('div', {style: 'display:flex;justify-content:space-between;gap:8px'}, h('span', {}, j.label), h('span', {class: 'dim'}, j.state === 'running' ? j.age + 's' : j.state)),
+    h('div', {class: 'msg dim'}, j.message),
+    j.state !== 'error' ? h('div', {class: 'bar'}, h('i', {style: `width:${Math.round(j.progress * 100)}%`})) : null,
+    j.detail ? h('div', {class: 'detail'}, j.detail) : null);
+}
+async function showBrief(slot) {
+  try {
+    const r = await api(`/api/brief?slot=${encodeURIComponent(slot.slot)}&seconds=${S.gen.seconds}`);
+    if (slot.kind === 'music') showText('Composer brief · ' + slot.title,
+      'Paste into any model that can write a score, save its JSON as a .score.json and drop it on the library to render. For text-to-audio sites, use the short prompt at the bottom.',
+      r.composer + '\n\n──────── SHORT PROMPT FOR TEXT-TO-AUDIO MODELS ────────\n' + r.audio);
+    else showText('Prompt · ' + slot.title, 'For any text-to-audio model. Drop the result on the library to audition it.', r.audio);
+  } catch (e) { toast(e.message, true); }
+}
+async function startGen(slot) {
+  try {
+    await api('/api/generate', {slot: slot.slot, provider: S.gen.provider, seconds: slot.kind === 'music' ? S.gen.seconds : null,
+      direction: S.gen.direction, renderer: S.gen.renderer});
+    pollJobs(true);
+  } catch (e) { toast(e.message, true); }
+}
+let pollTimer = null;
+async function pollJobs(now) {
+  if (pollTimer && !now) return;
+  clearTimeout(pollTimer);
+  const tick = async () => {
+    let jobs;
+    try { jobs = (await api('/api/jobs')).jobs; } catch (e) { pollTimer = null; return; }
+    const before = (S.data.jobs || []).filter(j => j.state === 'running').map(j => j.id);
+    S.data.jobs = jobs;
+    const finished = jobs.filter(j => before.includes(j.id) && j.state !== 'running');
+    if (finished.length) {
+      await refresh(true);
+      for (const j of finished) {
+        if (j.state === 'error') toast(j.label + ': ' + j.message, true);
+        else { toast(j.label + ' finished.'); const a = j.files.find(f => !/\.(mid|json)$/.test(f)); if (a) { S.sel = a; S.libTab = 'cand'; renderLib(); } }
+      }
+    } else renderArmed();
+    pollTimer = jobs.some(j => j.state === 'running') ? setTimeout(tick, 1000) : null;
+  };
+  pollTimer = setTimeout(tick, now ? 150 : 1000);
+}
+
+function libItems() {
+  const slot = armedSlot();
+  if (S.libTab === 'cand') return candidates(slot);
+  const q = S.libQ.trim().toLowerCase();
+  const kinds = S.lane === 'music' ? ['music', 'score'] : [S.lane];
+  return S.data.library.filter(it => (S.libTab === 'all' ? kinds.includes(it.kind) : true) && (S.showGame || !it.game) &&
+    (!q || (it.id + ' ' + it.note + ' ' + it.tags.join(' ')).toLowerCase().includes(q)));
+}
+function renderLib() {
+  renderArmed();
+  const slot = armedSlot();
+  const nC = candidates(slot).length;
+  const kinds = S.lane === 'music' ? ['music', 'score'] : [S.lane];
+  const nAll = S.data.library.filter(it => kinds.includes(it.kind) && (S.showGame || !it.game)).length;
+  const tab = (k, label) => h('button', {class: 'tab' + (S.libTab === k ? ' active' : ''), onclick: () => { S.libTab = k; renderLib(); }}, label);
+  fill($('#libtabs'), tab('cand', `For this slot · ${nC}`), tab('all', `All ${KIND_LABEL[S.lane].toLowerCase()} · ${nAll}`), tab('every', 'Everything'));
+  fill($('#libtools'), ...(S.libTab === 'cand' ? [] : [
+    h('input', {type: 'search', placeholder: 'Search the library…', value: S.libQ, oninput: e => { S.libQ = e.target.value; renderLibList(); }}),
+    h('label', {class: 'dim', style: 'font-size:11px;display:flex;gap:4px;white-space:nowrap;cursor:pointer', title: 'Also list files already in godot/assets/audio, to reuse one as a placeholder'},
+      h('input', {type: 'checkbox', checked: S.showGame, onchange: e => { S.showGame = e.target.checked; savePrefs(); renderLib(); }}), 'in-game files')]));
+  $('#libtools').style.display = S.libTab === 'cand' ? 'none' : 'flex';
+  renderLibList();
+}
+function stars(it) {
+  const el = h('span', {class: 'stars', title: 'Rate this take'});
+  for (let i = 1; i <= 5; i++) el.append(h(i <= it.rating ? 'b' : 'span', {onclick: (e) => { e.stopPropagation(); S.sel = it.id; rate(it, it.rating === i ? 0 : i); }}, '★'));
+  return el;
+}
+async function rate(it, n) {
+  it.rating = n; renderLibList();
+  try { await api('/api/meta', {item: it.id, rating: n}); } catch (e) { toast(e.message, true); }
+}
+function itemRow(it, slot) {
+  const isScore = it.kind === 'score';
+  const live = slot && it.live.includes(slot.slot);
+  const acts = [];
+  if (isScore) acts.push(h('button', {title: 'Render this score / MIDI to an mp3 with the renderer chosen above', onclick: (e) => { e.stopPropagation(); renderScore(it); }}, 'Render'));
+  else if (slot && !live) acts.push(h('button', {class: 'primary', onclick: (e) => { e.stopPropagation(); assign(it); }}, 'Assign'));
+  if (slot && !it.game && it.link !== slot.slot && S.libTab !== 'cand') acts.push(h('button', {title: 'Keep this item as a candidate for the armed slot', onclick: async (e) => { e.stopPropagation();
+    try { await api('/api/meta', {item: it.id, link: slot.slot}); await refresh(true); } catch (err) { toast(err.message, true); } }}, 'Link'));
+  if (!it.game) acts.push(h('button', {class: 'ghost danger', title: 'Move to audio_library/.trash', onclick: async (e) => { e.stopPropagation();
+    if (!confirm('Move ' + it.name + ' to the library trash?')) return;
+    try { await api('/api/trash', {item: it.id}); await refresh(true); } catch (err) { toast(err.message, true); } }}, '✕'));
+  return h('div', {class: 'item' + (it.id === S.sel ? ' sel' : '') + (live ? ' live' : ''), 'data-item': it.id, onclick: () => { S.sel = it.id; renderLibList(); if (!isScore) playItem(it); }},
+    isScore ? h('span', {class: 'dim', style: 'text-align:center', title: 'Score / MIDI'}, '♪') : playBtn('item:' + it.id, () => { S.sel = it.id; playItem(it); renderLibList(); }, 'Play'),
+    h('div', {style: 'min-width:0'},
+      h('div', {class: 'nm', title: it.id}, slot && it.link === slot.slot && slot.id && it.name.startsWith(slot.id + '__') ? it.name.slice(slot.id.length + 2) : it.name),
+      h('div', {class: 'meta'},
+        live ? h('span', {class: 'badge live'}, 'LIVE') : null,
+        it.game ? h('span', {class: 'badge game'}, 'IN GAME') : null,
+        isScore ? h('span', {}, it.ext === 'json' ? 'score' : 'midi') : h('span', {class: 'mono'}, fmtDur(it.dur)),
+        h('span', {}, it.ext + ' · ' + fmtSize(it.size)),
+        it.game || isScore ? null : stars(it),
+        h('span', {class: 'dim', style: 'cursor:text', title: 'Click to edit the note', onclick: (e) => { e.stopPropagation(); editNote(it); }}, it.note || (it.game ? '' : '+ note')),
+        S.libTab !== 'cand' ? h('span', {class: 'mono'}, it.dir) : null)),
+    h('div', {class: 'acts'}, acts));
+}
+function renderLibList() {
+  const slot = armedSlot(), items = libItems();
+  const kids = [];
+  if (S.libTab === 'cand' && !slot) kids.push(h('div', {class: 'empty'}, 'No slot armed.'));
+  else if (!items.length) kids.push(h('div', {class: 'empty'}, S.libTab === 'cand' ?
+    'No candidates yet. Record, generate, drop files here, or pick one from the other tabs.' : 'Nothing in the library matches.'));
+  else items.slice(0, 400).forEach(it => kids.push(itemRow(it, slot)));
+  if (items.length > 400) kids.push(h('div', {class: 'hint'}, `Showing 400 of ${items.length}. Search to narrow.`));
+  kids.push(h('div', {class: 'drop'}, slot && S.libTab === 'cand' ? `Drop audio, .mid or .score.json here to add candidates for this slot` : `Drop files here to add them to the ${KIND_LABEL[S.lane].toLowerCase()} library`));
+  fill($('#libscroll'), ...kids);
+}
+async function editNote(it) {
+  if (it.game) return;
+  const v = prompt('Note for ' + it.name, it.note || '');
+  if (v === null) return;
+  try { await api('/api/meta', {item: it.id, note: v}); it.note = v; renderLibList(); } catch (e) { toast(e.message, true); }
+}
+async function renderScore(it) {
+  try { await api('/api/render', {item: it.id, renderer: S.gen.renderer}); pollJobs(true); } catch (e) { toast(e.message, true); }
+}
+async function act(path, body, okMsg) {
+  try { await api(path, body); toast(okMsg); await refresh(); } catch (e) { toast(e.message, true); }
+}
+async function assign(it) {
+  const slot = armedSlot();
+  if (!slot || !it || it.kind === 'score') return;
+  const here = slot.slot;
+  try {
+    const r = await api('/api/assign', {slot: here, item: it.id});
+    toast(`Assigned → ${r.target}` + (r.converted ? ' (converted)' : '') + (r.kept.length ? ' · previous file kept in the library' : ''));
+    stopAudio();
+    await refresh();
+    if (S.autoAdvance && S.lane === 'voice') { S.armed = here; step(1, true); }
+  } catch (e) { toast(e.message, true); }
+}
+
+// ── uploads + recording ────────────────────────────────────────────────────
+async function upload(files, slot) {
+  let n = 0, last = '';
+  for (const f of files) {
+    try {
+      const qs = `name=${encodeURIComponent(f.name)}&kind=${S.lane}` + (slot ? `&slot=${encodeURIComponent(slot.slot)}` : '');
+      last = (await api('/api/upload?' + qs, f, true)).item; n++;
+    } catch (e) { toast(e.message, true); }
+  }
+  if (n) { toast(`Added ${n} file${n === 1 ? '' : 's'} to the library.`); await refresh(true); if (last && !/\.(mid|json)$/.test(last)) { S.sel = last; renderLibList(); } }
+}
+function pickFiles(slot) {
+  const inp = h('input', {type: 'file', multiple: true, accept: 'audio/*,.mid,.midi,.json'});
+  inp.onchange = () => upload([...inp.files], slot);
+  inp.click();
+}
+const libEl = $('#lib');
+['dragenter', 'dragover'].forEach(ev => libEl.addEventListener(ev, e => { e.preventDefault(); libEl.classList.add('dragging'); }));
+['dragleave', 'drop'].forEach(ev => libEl.addEventListener(ev, e => { e.preventDefault(); if (ev === 'drop' || e.target === libEl) libEl.classList.remove('dragging'); }));
+libEl.addEventListener('drop', e => { const files = [...(e.dataTransfer.files || [])]; if (files.length) upload(files, S.libTab === 'cand' ? armedSlot() : null); });
+
+function wavBlob(buf) {
+  // Godot can't import webm/opus, so a mic take is stored as 16-bit mono WAV.
+  const n = buf.length, ch = buf.numberOfChannels, out = new DataView(new ArrayBuffer(44 + n * 2));
+  const w = (o, s) => { for (let i = 0; i < s.length; i++) out.setUint8(o + i, s.charCodeAt(i)); };
+  w(0, 'RIFF'); out.setUint32(4, 36 + n * 2, true); w(8, 'WAVEfmt '); out.setUint32(16, 16, true); out.setUint16(20, 1, true);
+  out.setUint16(22, 1, true); out.setUint32(24, buf.sampleRate, true); out.setUint32(28, buf.sampleRate * 2, true);
+  out.setUint16(32, 2, true); out.setUint16(34, 16, true); w(36, 'data'); out.setUint32(40, n * 2, true);
+  const chans = []; for (let c = 0; c < ch; c++) chans.push(buf.getChannelData(c));
+  for (let i = 0; i < n; i++) {
+    let v = 0; for (let c = 0; c < ch; c++) v += chans[c][i];
+    v = Math.max(-1, Math.min(1, v / ch)); out.setInt16(44 + i * 2, v < 0 ? v * 0x8000 : v * 0x7FFF, true);
+  }
+  return new Blob([out], {type: 'audio/wav'});
+}
+async function toggleRecord() {
+  if (S.recording) { S.recording.rec.stop(); return; }
+  const slot = armedSlot();
+  if (!slot || slot.kind !== 'voice') return;
+  try {
+    stopAudio();
+    const stream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: false, noiseSuppression: false, autoGainControl: false}});
+    const rec = new MediaRecorder(stream), chunks = [];
+    rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+    rec.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop());
+      S.recording = null; renderArmed();
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const buf = await ctx.decodeAudioData(await new Blob(chunks, {type: rec.mimeType}).arrayBuffer());
+        ctx.close();
+        const d = new Date(), tag = [d.getHours(), d.getMinutes(), d.getSeconds()].map(x => String(x).padStart(2, '0')).join('');
+        await upload([new File([wavBlob(buf)], `${String(slot.index).padStart(3, '0')}_rec_${tag}.wav`, {type: 'audio/wav'})], slot);
+      } catch (e) { toast('Could not process the recording: ' + e.message, true); }
+    };
+    rec.start();
+    S.recording = {rec};
+    renderArmed();
+  } catch (e) { toast('Microphone: ' + e.message, true); }
+}
+
+// ── transport ──────────────────────────────────────────────────────────────
+const T = {audio: new Audio(), key: '', url: '', label: '', peaks: null, waves: new Map()};
+T.audio.preload = 'auto';
+function markPlaying() {
+  document.querySelectorAll('[data-play]').forEach(b => {
+    const on = b.dataset.play === T.key && !T.audio.paused;
+    b.classList.toggle('on', on); b.textContent = on ? '❚❚' : '▶';
+  });
+  $('#tPlay').textContent = T.audio.paused ? '▶' : '❚❚';
+}
+function play(key, url, label) {
+  if (T.key === key && T.url === url) { T.audio.paused ? T.audio.play() : T.audio.pause(); return; }
+  T.key = key; T.url = url; T.label = label; T.peaks = null;
+  T.audio.src = url; T.audio.play().catch(e => toast('Playback failed: ' + e.message, true));
+  $('#tNow').textContent = label;
+  drawWave(); loadWave(url);
+}
+function stopAudio() { T.audio.pause(); }
+const playSlot = (s) => s && s.current && play('slot:' + s.slot, `/audio?game=${encodeURIComponent(s.current)}&v=${S.rev}`, 'A · ' + slotName(s));
+const playItem = (it) => it && it.kind !== 'score' && play('item:' + it.id, `/audio?item=${encodeURIComponent(it.id)}&v=${it.mtime}`, 'B · ' + it.name);
+['play', 'pause', 'ended'].forEach(ev => T.audio.addEventListener(ev, markPlaying));
+T.audio.addEventListener('timeupdate', () => { drawWave();
+  $('#tTime').textContent = `${fmtClock(T.audio.currentTime)} / ${fmtClock(T.audio.duration)}`; });
+T.audio.addEventListener('error', () => { if (T.url) toast('This file would not play in the browser (it may still be fine in Godot).', true); });
+const fmtClock = (s) => isFinite(s) ? Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0') : '0:00';
+async function loadWave(url) {
+  if (T.waves.has(url)) { T.peaks = T.waves.get(url); drawWave(); return; }
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const buf = await ctx.decodeAudioData(await (await fetch(url)).arrayBuffer());
+    ctx.close();
+    const N = 600, d = buf.getChannelData(0), step = Math.max(1, Math.floor(d.length / N)), peaks = new Float32Array(N);
+    for (let i = 0; i < N; i++) { let m = 0; for (let j = i * step, e = Math.min(d.length, j + step); j < e; j += 8) { const v = Math.abs(d[j]); if (v > m) m = v; } peaks[i] = m; }
+    T.waves.set(url, peaks);
+    if (T.waves.size > 24) T.waves.delete(T.waves.keys().next().value);
+    if (T.url === url) { T.peaks = peaks; drawWave(); }
+  } catch (e) { /* the waveform is a nicety; playback already reports real failures */ }
+}
+function drawWave() {
+  const c = $('#tWave'), w = c.clientWidth, hgt = 40;
+  if (c.width !== w) c.width = w;
+  const g = c.getContext('2d');
+  g.clearRect(0, 0, w, hgt);
+  const prog = T.audio.duration ? T.audio.currentTime / T.audio.duration : 0;
+  if (T.peaks) {
+    const top = Math.max(0.05, ...T.peaks);
+    for (let x = 0; x < w; x++) {
+      const p = T.peaks[Math.floor(x / w * T.peaks.length)] / top, bar = Math.max(1, p * (hgt - 6));
+      g.fillStyle = x / w < prog ? '#c8a268' : '#3a445c';
+      g.fillRect(x, (hgt - bar) / 2, 1, bar);
+    }
+  } else { g.fillStyle = '#2d3548'; g.fillRect(0, hgt / 2, w, 1); g.fillStyle = '#c8a268'; g.fillRect(0, hgt / 2, w * prog, 1); }
+}
+$('#tWave').addEventListener('click', e => { if (T.audio.duration) T.audio.currentTime = e.offsetX / e.target.clientWidth * T.audio.duration; });
+$('#tPlay').onclick = () => { if (T.url) T.audio.paused ? T.audio.play() : T.audio.pause(); };
+$('#tVol').oninput = e => { T.audio.volume = +e.target.value; };
+T.audio.volume = 0.9;
+$('#tA').onclick = () => { const s = armedSlot(); if (s && s.current) playSlot(s); else toast('This slot has no file yet.', true); };
+$('#tB').onclick = () => { const it = S.data.library.find(x => x.id === S.sel); if (it) playItem(it); };
+window.addEventListener('resize', drawWave);
+
+// ── keyboard ───────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (!S.data || e.metaKey || e.ctrlKey || e.altKey || $('#dlg').open) return;
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  const items = libItems().filter(it => it.kind !== 'score');
+  const selIdx = items.findIndex(it => it.id === S.sel);
+  const k = e.key;
+  if (k === 'ArrowDown' || k === 'j') step(1);
+  else if (k === 'ArrowUp' || k === 'k') step(-1);
+  else if (k === 'n' || k === 'N') step(1, true);
+  else if (k === 'ArrowRight' || k === 'ArrowLeft') {
+    if (!items.length) return;
+    const it = items[(selIdx + (k === 'ArrowRight' ? 1 : -1) + items.length) % items.length];
+    S.sel = it.id; renderLibList(); T.key = ''; playItem(it);
+  }
+  else if (k === ' ') { if (T.url) T.audio.paused ? T.audio.play() : T.audio.pause(); }
+  else if (k === 'a' || k === 'A') $('#tA').click();
+  else if (k === 'b' || k === 'B') $('#tB').click();
+  else if (k === 'Enter') { if (selIdx >= 0) assign(items[selIdx]); }
+  else if (k === 'r' || k === 'R') toggleRecord();
+  else if (k === 'o' || k === 'O') { S.outstanding = !S.outstanding; savePrefs(); (S.lane === 'voice' && S.navMode === 'char' ? loadLines() : Promise.resolve()).then(renderAll); }
+  else if (/^[1-5]$/.test(k) && selIdx >= 0 && !items[selIdx].game) rate(items[selIdx], +k);
+  else return;
+  e.preventDefault();
+});
+
+function renderAll() {
+  if (!S.data) return;
+  if (S.armed && !findSlot(S.armed)) S.armed = '';
+  renderHeader(); renderNav(); renderToolbar(); renderSlots(); renderLib();
+}
+refresh();
+</script>
+</body>
+</html>

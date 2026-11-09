@@ -31,8 +31,13 @@ touching code:
 6. `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS
    thread gating, pressure curve, three-slot save. Read before
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
-7. The latest commit message on the working branch — recent context.
-8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+7. `lore/_AUDIO_PRODUCTION_PLAYBOOK.md` — dialogue / SFX / music
+   production: slots vs. library candidates, voice-file naming by
+   node index, the Sound Studio, generation hooks (Claude → MIDI →
+   render, outside audio models). Read before touching voice wiring,
+   `music_catalog.json`, `sfx_catalog.json`, or `godot/tools/sound_*`.
+8. The latest commit message on the working branch — recent context.
+9. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -88,6 +93,9 @@ Playbooks currently maintained:
   primary difficulty axis, named loss conditions as pedagogy.
 - `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS-lookup
   gating, mid-summer pressure curve (W6/W12/W18), three-slot save.
+- `lore/_AUDIO_PRODUCTION_PLAYBOOK.md` — slot / library / assign
+  contract, voice naming by node index, commit-before-update rule,
+  compose / render / generate hook stages, builtin-renderer ceiling.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.
@@ -115,6 +123,12 @@ cd godot/tools/blender
 
 The runner auto-detects Blender (Steam / Flatpak / AppImage / PATH)
 and writes the GLB to `godot/assets/3d/locales/<name>.glb`.
+
+Sound Studio (dialogue takes, SFX, music; opens in the browser):
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools && ./run_sound_studio.sh
+```
 
 ## Always give the user copy-paste commands
 

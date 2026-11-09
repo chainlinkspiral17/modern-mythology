@@ -1,0 +1,128 @@
+[
+ {
+  "id": "ui_click",
+  "group": "ui",
+  "label": "UI · click",
+  "src": "assets/audio/sfx/click.wav",
+  "brief": "Soft mechanical click. Card-flip ink. 80-120ms. Used for menu navigation and card plays."
+ },
+ {
+  "id": "ui_back",
+  "group": "ui",
+  "label": "UI · back / cancel",
+  "src": "assets/audio/sfx/back.ogg",
+  "brief": "Softer click with a low pitch descent. The 'no, not that' sound. 120ms."
+ },
+ {
+  "id": "ui_unlock",
+  "group": "ui",
+  "label": "UI · unlock chime",
+  "src": "assets/audio/sfx/unlock.ogg",
+  "brief": "Small bright two-note ping. Used when a cipher reveal, music track, or codex page unlocks. 600ms."
+ },
+ {
+  "id": "scene_advance",
+  "group": "scene",
+  "label": "Scene · advance",
+  "src": "assets/audio/sfx/scene_advance.ogg",
+  "brief": "Page-turn / inhalation. The breath between beats. 400ms."
+ },
+ {
+  "id": "choice_appear",
+  "group": "scene",
+  "label": "Scene · choice appears",
+  "src": "assets/audio/sfx/choice_appear.ogg",
+  "brief": "Slow rising hush of attention — the choice list emerging. 800ms. Mood: the room narrowing."
+ },
+ {
+  "id": "lore_token",
+  "group": "scene",
+  "label": "Lore · token revealed",
+  "src": "assets/audio/sfx/lore_token.ogg",
+  "brief": "Small bright ping, like a paper-thin glass tap. Used when a lore token is collected. 600ms."
+ },
+ {
+  "id": "gauntlet_dice_roll",
+  "group": "gauntlet",
+  "label": "Dice · gauntlet threshold roll",
+  "src": "assets/audio/sfx/gauntlet_dice_roll.ogg",
+  "brief": "Soft tumble against ceramic. Three to five dice on a formica counter. 700ms."
+ },
+ {
+  "id": "gauntlet_card_play",
+  "group": "gauntlet",
+  "label": "Card · play (gauntlet)",
+  "src": "assets/audio/sfx/gauntlet_card_play.ogg",
+  "brief": "Quiet card flip / soft thump. Card laid flat on the counter. 250ms."
+ },
+ {
+  "id": "gauntlet_bell_tone",
+  "group": "gauntlet",
+  "label": "Diner · brass call bell",
+  "src": "assets/audio/sfx/gauntlet_bell_tone.ogg",
+  "brief": "Brass call bell, single ring. Slight reverb of an interior room. 1.5s decay."
+ },
+ {
+  "id": "gauntlet_gravity_draw",
+  "group": "gauntlet",
+  "label": "Diner · gravity card draw",
+  "src": "assets/audio/sfx/gauntlet_gravity_draw.ogg",
+  "brief": "Low scrape — the room reaching for you. Felt-on-felt + a single low cello note. 800ms."
+ },
+ {
+  "id": "gauntlet_visitor_arrive",
+  "group": "gauntlet",
+  "label": "Diner · visitor arrives",
+  "src": "assets/audio/sfx/gauntlet_visitor_arrive.ogg",
+  "brief": "Front door bell, thin and brassy. Then a half-second of cooler outside air through the open door. 1s."
+ },
+ {
+  "id": "gauntlet_visitor_connect",
+  "group": "gauntlet",
+  "label": "Diner · visitor connection",
+  "src": "assets/audio/sfx/gauntlet_visitor_connect.ogg",
+  "brief": "Two-note rising chime. Warm, brief, intimate. 800ms."
+ },
+ {
+  "id": "gauntlet_visitor_claimed",
+  "group": "gauntlet",
+  "label": "Diner · visitor claimed / walks out",
+  "src": "assets/audio/sfx/gauntlet_visitor_claimed.ogg",
+  "brief": "Dropped tone, brass cooling. A held breath let out wrong. 1.2s."
+ },
+ {
+  "id": "gauntlet_item_pickup",
+  "group": "gauntlet",
+  "label": "Item · pickup",
+  "src": "assets/audio/sfx/gauntlet_item_pickup.ogg",
+  "brief": "Paper rustle / cloth fold / coin tap. Sub-cued depending on item kind. 250ms."
+ },
+ {
+  "id": "gauntlet_bundle",
+  "group": "gauntlet",
+  "label": "Bindle · assembled",
+  "src": "assets/audio/sfx/gauntlet_bundle.ogg",
+  "brief": "Cloth knotting closed. Quiet, deliberate. 800ms."
+ },
+ {
+  "id": "gauntlet_win",
+  "group": "gauntlet",
+  "label": "Sting · win (LEAP)",
+  "src": "assets/audio/sfx/gauntlet_win.ogg",
+  "brief": "Held breath releasing. A single rising chord that opens, then resolves. 4s."
+ },
+ {
+  "id": "gauntlet_loss",
+  "group": "gauntlet",
+  "label": "Sting · loss (reversed)",
+  "src": "assets/audio/sfx/gauntlet_loss.ogg",
+  "brief": "Falling tone, then silence. Not dramatic — settling. 4s."
+ },
+ {
+  "id": "gauntlet_lore_token",
+  "group": "gauntlet",
+  "label": "Gauntlet · lore token revealed",
+  "src": "assets/audio/sfx/gauntlet_lore_token.ogg",
+  "brief": "Small bright ping, like a paper-thin glass tap. Played when a lore token is collected during a gauntlet run. 600ms."
+ }
+]

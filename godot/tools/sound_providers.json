@@ -1,0 +1,92 @@
+{
+  "_comment": [
+    "Generation hooks for tools/sound_gen.py and the Sound Studio. Keys never go in this file:",
+    "reference them as ${ENV_VAR} and export them in the shell that starts the studio.",
+    "",
+    "Provider types:",
+    "  claude   Claude writes a score (mm-score/1); the studio turns it into .mid and renders it.",
+    "  http     POST a JSON body, get audio bytes back. Placeholders: {prompt} {text} {seconds}",
+    "           {seconds_int} {ms} {title} {id} {voice_id} {model}. A value that is exactly one",
+    "           numeric placeholder (\"{ms}\") is sent as a number.",
+    "  command  Run anything. Placeholders: {prompt_file} {out} {seconds} {id} {title}. The command",
+    "           must write {out}. With \"makes\": \"score\" it must write an mm-score/1 JSON instead",
+    "           and the studio renders it (use this to plug in another LLM as the composer).",
+    "",
+    "Renderers turn a score / .mid into audio: builtin (numpy synth), fluidsynth (needs a SoundFont),",
+    "or a command with placeholders {midi} {sketch} {out} {seconds} {title}. {sketch} is the builtin",
+    "render as a WAV, for audio-to-audio models that realise a sketch. The command must write {out} as WAV.",
+    "",
+    "Set \"enabled\": false to hide a hook without deleting it."
+  ],
+  "providers": {
+    "claude_score": {
+      "label": "Claude → MIDI → render",
+      "type": "claude",
+      "kinds": ["music"],
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "max_tokens": 64000,
+      "note": "Needs `pip install anthropic` and ANTHROPIC_API_KEY (or an `ant auth login` profile)."
+    },
+    "elevenlabs_music": {
+      "label": "ElevenLabs Music",
+      "type": "http",
+      "kinds": ["music"],
+      "url": "https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128",
+      "headers": {"xi-api-key": "${ELEVENLABS_API_KEY}", "Accept": "audio/mpeg"},
+      "body": {"prompt": "{prompt}", "music_length_ms": "{ms}", "model_id": "music_v1", "force_instrumental": true},
+      "ext": "mp3",
+      "note": "Endpoint and body written from memory of the ElevenLabs docs; not exercised from the build session."
+    },
+    "elevenlabs_sfx": {
+      "label": "ElevenLabs Sound Effects",
+      "type": "http",
+      "kinds": ["sfx"],
+      "url": "https://api.elevenlabs.io/v1/sound-generation?output_format=mp3_44100_128",
+      "headers": {"xi-api-key": "${ELEVENLABS_API_KEY}", "Accept": "audio/mpeg"},
+      "body": {"text": "{prompt}", "duration_seconds": "{seconds}", "prompt_influence": 0.5},
+      "ext": "mp3",
+      "note": "Endpoint and body written from memory of the ElevenLabs docs; not exercised from the build session."
+    },
+    "elevenlabs_voice": {
+      "label": "ElevenLabs voice (voice_map.json)",
+      "type": "http",
+      "kinds": ["voice"],
+      "url": "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128",
+      "headers": {"xi-api-key": "${ELEVENLABS_API_KEY}", "Accept": "audio/mpeg"},
+      "body": {"text": "{text}", "model_id": "{model}"},
+      "voice_settings_from_map": true,
+      "ext": "mp3",
+      "note": "Same request tools/elevenlabs_render.py makes; voice ids come from tools/voice_map.json."
+    },
+    "example_local_model": {
+      "label": "Example: local model via command",
+      "type": "command",
+      "kinds": ["music", "sfx"],
+      "enabled": false,
+      "cmd": "python3 /path/to/your_model.py --prompt-file {prompt_file} --seconds {seconds} --out {out}",
+      "ext": "wav",
+      "note": "Template. Point cmd at MusicGen, Stable Audio Open, a Suno wrapper, anything that writes {out}."
+    },
+    "example_other_llm_composer": {
+      "label": "Example: another LLM as composer",
+      "type": "command",
+      "kinds": ["music"],
+      "makes": "score",
+      "enabled": false,
+      "cmd": "python3 /path/to/your_llm_composer.py --brief {prompt_file} --out {out}",
+      "note": "Template. The script reads the composer brief and writes an mm-score/1 JSON to {out}."
+    }
+  },
+  "renderers": {
+    "fluidsynth": {
+      "soundfont": ""
+    },
+    "example_realise": {
+      "type": "command",
+      "label": "Example: realise the sketch with an audio model",
+      "enabled": false,
+      "cmd": "python3 /path/to/audio2audio.py --midi {midi} --sketch {sketch} --seconds {seconds} --out {out}"
+    }
+  }
+}

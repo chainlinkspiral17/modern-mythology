@@ -1,0 +1,8 @@
+# The library is local working material: raw takes, sound packs, generated
+# candidates. Only what gets ASSIGNED is committed, and that lives under
+# godot/assets/audio. Scores and MIDI are small and reproducible, so they are tracked.
+*
+!.gitignore
+!README.md
+!scores/
+!scores/**
