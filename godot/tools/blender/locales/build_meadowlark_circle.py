@@ -330,6 +330,69 @@ def build_henderson_2026_09():
     make_rot_box("Ben_Truck_Hood_Sheen", (-2.225, 2.4, 1.0012), (1.30, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0), pitch=0.0272)
 
 
+def build_home_cars_2026_11():
+    """THE CARS AT HOME (2026-11-09, the user, of the opening shot: "all the
+    cars need to be off the street, in their parking lots."). The prelude's
+    street — Sunday, 06:12, the sprinklers — showed Ben's truck, the Corolla
+    and the patrol vehicle at the Hendersons' curb and the vigil's white
+    sedan in the bulb: the cars of a rainy night in chapter 5 and of the
+    chapter 2 vigil, parked in every view of the street because the set had
+    one state. Each now belongs to the views its text puts it in (VIEW_GROUPS
+    below), and at dawn the cars are where their owners left them:
+      the Miller drive   the Corolla ("The Corolla starts in the driveway",
+                         ch11 / ch17; "his own daughter's Corolla", ch5)
+      the Henderson drive  Jim's truck ("the driveway is where Jesse's
+                         father parks", ch5; "His father's truck is in the
+                         driveway", ch14)
+      the Kowalski drive Ben's truck (his, ch5: "He is in his truck")
+      1408, 1420         a neighbour's car each
+    Nose in to the garage, 1.2 m off the door. Draft 2: the Chief's vehicle
+    ("back in his truck in his own driveway", ch4 — the drive holds one car
+    behind another only by blocking the walk); a Caldwell and a 1402 car for
+    the views that look west; a second car in the two-car households.
+    """
+    north = dict(NORTH)
+    south = dict(SOUTH)
+    gx_n = lambda tag: north[tag] + 3.1          # build_house: the garage side of a north lot
+    gx_s = lambda tag: south[tag] - 3.1
+    make_car("Home_Corolla", gx_n("Miller"), 10.60, 4.3, (0.72, 0.70, 0.64, 1.0), along="Y")
+    make_car("Home_Jim_Truck", gx_n("Lot1414"), 10.30, 5.6, (0.20, 0.24, 0.32, 1.0), pickup=True, along="Y")
+    make_car("Home_1408_Car", gx_n("Lot1408"), 10.50, 4.5, (0.46, 0.16, 0.14, 1.0), along="Y")
+    make_car("Home_1420_Car", gx_n("Lot1420"), 10.70, 4.1, (0.30, 0.42, 0.52, 1.0), hatch=True, along="Y")
+    make_car("Home_Ben_Truck", gx_s("Kowalski"), -10.30, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True, along="-Y")
+
+
+# WHICH VIEW A CAR BELONGS TO. A group's parts hang under an empty named
+# `<Group>__<preset>[__<preset>…]`; Background3D drops a tagged node (and so
+# its group) for every preset it does not name (the Kwik Stop's Peugeot does
+# the same). Names stay under Blender's 63 characters.
+#   the curb at the Hendersons' — ch5's rainy night, and the night view
+#     whose `insert cars` frames one of them
+#   the vigil's white sedan — the night views, and ch4's storm (its
+#     `insert sedan`); not the Sunday-dawn prelude
+#   the cars at home — the dawn street and the storm
+VIEW_GROUPS = (
+    ("Curb5__meadowlark_circle_henderson__meadowlark_circle_night", ("Ben_Truck", "Corolla", "Patrol_")),
+    ("Vigil__meadowlark_circle_night__meadowlark_circle_storm", ("White_Sedan", "Vigil_Thermos")),
+    ("AtHome__meadowlark_circle__meadowlark_circle_storm", ("Home_",)),
+)
+
+
+def _group_tagged(groups):
+    """Parent each group's parts under its tagged empty (Blender only; the
+    audits' recorder has no scene, and records the parts as they are)."""
+    try:
+        import bpy
+        for empty_name, prefixes in groups:
+            empty = bpy.data.objects.new(empty_name, None)
+            bpy.context.scene.collection.objects.link(empty)
+            for obj in list(bpy.data.objects):
+                if obj is not empty and obj.parent is None and obj.name.startswith(prefixes):
+                    obj.parent = empty
+    except Exception:
+        pass
+
+
 def main():
     clear_scene()
     build_street()
@@ -338,7 +401,9 @@ def main():
     build_vigil()
     build_water_tower()
     build_henderson_2026_09()
+    build_home_cars_2026_11()
     build_horizon()
+    _group_tagged(VIEW_GROUPS)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/meadowlark_circle.glb"))
     print(f"\n[build_meadowlark_circle] exporting to {out}")

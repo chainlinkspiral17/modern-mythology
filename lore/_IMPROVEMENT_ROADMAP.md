@@ -3835,6 +3835,69 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 321: six reads from the wide screen (cars, couches, the crow, the three-shot, the side-set, the empty frames).**
+- **The Harmony Creek opening** ("all the cars need to be off the street, in
+  their parking lots"): the street had ONE state — ch5's rainy-night curb
+  (Ben's truck, the Corolla, the patrol vehicle) and ch2's vigil sedan stood
+  in the Sunday-dawn prelude. Cars belong to views now
+  (build_meadowlark_circle VIEW_GROUPS, the Kwik Stop's Peugeot mechanism):
+  the curb cars in the Henderson and night views, the sedan in the night
+  views and the new `meadowlark_circle_storm` (ch4, whose `insert sedan`
+  frames it), and at dawn the cars at home in their drives — the Corolla at
+  the Millers', Jim's truck at the Hendersons', Ben's at the Kowalskis', a
+  neighbour's car at 1408 and 1420 (canon lines in the builder).
+- **The Dabney game room** ("the couches should be arranged so people are
+  watching the tvs or playing games on them, not off to the side"): the two
+  arms of the U faced EACH OTHER from the room's sides, 6.6 m apart. All
+  three face the wall of screens now, the arms forward (2.4 m off the
+  shelf), the carved one behind on the aisle; controllers at their feet.
+- **The crow in the rail:** HeroProp's `seat_center` took the lowest vertex
+  in the middle of the bounding box — a crow's box is stretched by tail and
+  beak, so that was the belly. It takes the lowest vertex under the TORSO
+  (the centroid of the upper 60 %), a fifth of the length either way.
+  UNVERIFIED on the model: crow.glb lives on the Steam Machine.
+- **Three on screen** ("characters aren't turning to face the character they
+  are talking to"): a centre SPEAKER faced forward. They face the one they
+  are talking to — a character named in the line, else the last other
+  speaker on screen. CharLayerStageTest 19/19.
+- **The side-set** (the Hendersons' garage at 21:9 showed its outer wall and
+  the bare horizon): on a wide screen a view now HOLDS its composed 16:9
+  width — the SubViewport stays 16:9, as wide as the screen, taller,
+  centred — unless its preset says `"wide": "expand"` (the Meadowlark
+  street does). Nothing new to either side; cameras, markers and director
+  moves keep their meaning. Cost: 34 % more 3D pixels than shown at 21:9.
+- **Empty frames** ("lots of frames still showing as empty"):
+  `empty_frame_audit.py` — thin slabs named frame / poster / photo / screen
+  … with no roster art row. Draft 1 reads 1,081 across 101 sets, most of it
+  noise still (seat monitors, stock, window frames, the parts of one
+  procedural poster counted separately). Rows written for Spencer's three
+  small frames (the two-girls snapshot the text names; a sprite sheet and a
+  game map, proposed).
+- **The steamboat model** ("riverboat model looks all messed up in the
+  renderer ... may need to declutter the noise around it"): the painted
+  pass, the post shaders and the trip washed its fine generated texture into
+  shards. A HeroProp now carries an unshaded twin on the art mask's layer
+  (`clarity`, 0.8 of a picture's), so those passes step back over a model as
+  they do over a picture, and a model the frame is about draws the rack
+  focus (ArtMask `_prop_centered`: the room softens and darkens round it).
+  Tested with a stand-in GLB; steamboat_model.glb is on the Steam Machine.
+- **The queue:** `lore/_EMPTY_FRAMES_2026_11.md` — 537 empty pictures in 100
+  sets (draft 1), by set.
+- **Draft 2 targets:**
+  - wide: a `wide_frame_audit` (cast the side bands of a 21:9 frame against
+    the set's boxes: where the 16:9 frame is enclosed and the bands are too,
+    the view may expand) so interiors earn the panorama one by one; inserts
+    and closeups lose 13 % top and bottom when held — read them on the Deck;
+  - empty frames: group a picture's parts by stem, drop the noise stems,
+    then write rows set by set from the text (nick_house, graustark, the
+    kitchens, the school first);
+  - cars: the Chief's vehicle at home; cars for the night view's west end;
+  - three-shot: an edge speaker addressing the OTHER edge across the centre
+    already faces inward — check the centre listener turns to the speaker,
+    not the addressee, on the Deck;
+  - the crow: look at it on the Deck; if it still sinks, send the
+    `[HeroProp] … stands N %` log line.
+
 **2026-11-09 · pass 320: the text's ground is the size of the text (the user: "the white box is obscuring too much, it should just be behind the text with a bit of edge buffer. i keep saying this, I want to feature the assets and art, the text is important, but everything is important.").**
 - **THE PLATE** (DialogueBox, all three skins): the standard skin's reading
   band — the skin's ground faded across the whole width of the bottom third,

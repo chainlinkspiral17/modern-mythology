@@ -40,6 +40,18 @@ extends Node3D
 @export var stand_in_root: NodePath        # the locale GLB instance holding the procedural stand-in
 @export var hide_prefixes: PackedStringArray = PackedStringArray()
 @export var matte: bool = true
+## (2026-11-09, the user, of the steamboat model on the workbench: "riverboat
+## model looks all messed up in the renderer, perhaps because it is so
+## complex, may need to declutter the noise around it.") A generated model
+## carries a fine painted texture; the watercolour pass, the locale's post
+## shaders and the trip wash every 4 px of it into the next and it comes out
+## as shards. The pictures already tell those passes where they are (ART
+## CLARITY, scripts/vn/ArtMask.gd: an unshaded twin on ART_LAYER, seen only
+## by the mask's camera); a model does the same. `clarity` is how far the
+## passes step back over it: 0 = not at all (the old look), 1 = as far as
+## over a picture.
+@export_range(0.0, 1.0) var clarity: float = 0.8
+const ART_LAYER: int = 1 << 19             # HeroArt.ART_LAYER
 
 var _model: Node3D = null
 
@@ -72,6 +84,36 @@ func _load() -> void:
 		_matte_materials(root)
 	_hide_stand_in()
 	add_to_group("hero_prop")
+	if clarity > 0.0:
+		_add_clarity_twins(root)
+
+
+## One unshaded twin per mesh, on the art mask's layer only: grey by
+## `clarity`, so the mask (and with it how far the passes step back) is
+## that fraction of a picture's.
+func _add_clarity_twins(root: Node3D) -> void:
+	var mat := StandardMaterial3D.new()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.albedo_color = Color(clarity, clarity, clarity, 1.0)
+	var made: int = 0
+	for n: Node in _collect_mesh_instances(root):
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi.mesh == null or mi.name == "ArtMaskTwin":
+			continue
+		mi.layers = mi.layers & ~ART_LAYER
+		var twin := MeshInstance3D.new()
+		twin.name = "ArtMaskTwin"
+		twin.mesh = mi.mesh
+		twin.skin = mi.skin
+		twin.material_override = mat
+		twin.layers = ART_LAYER
+		twin.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		mi.add_child(twin)
+		if not mi.skeleton.is_empty():
+			twin.skeleton = NodePath("../" + String(mi.skeleton))
+		made += 1
+	if made > 0:
+		add_to_group("hero_prop_clear")
 
 
 func _fit(root: Node3D) -> void:
@@ -126,15 +168,20 @@ func _fit(root: Node3D) -> void:
 	print("[HeroProp] %s: ext=(%.2f, %.2f, %.2f) scale=%.3f" % [name, ext.x, ext.y, ext.z, s])
 
 
-# The lowest vertex inside the middle half of the footprint (x and z within
-# 25 % of the box's half-size of its centre), in this node's space at unit
-# scale — where a bird stands. Falls back to the box's floor.
+# Where a perched bird STANDS, in this node's space at unit scale: the lowest
+# vertex under its body. (2026-11-09, the user: "crow prop embedded in rail".)
+# The first version took the lowest vertex in the middle of the bounding
+# BOX's footprint — but a crow's box is stretched one way by its tail and
+# the other by its beak, its middle is not over the feet, and the lowest
+# thing there was the belly: the belly sat on the rail and the feet went
+# down into it. A bird balances over its feet, so the feet are under the
+# TORSO: the centroid of the upper 60 % of the model's vertices. The floor
+# is the lowest vertex within a fifth of the body's length of that point
+# along its length (any distance across — the feet straddle), which leaves
+# out the tail tip hanging at the far end. Falls back to the box's floor.
 func _central_floor(meshes: Array[Node], box: AABB, fallback: float) -> float:
-	var c: Vector3 = box.get_center()
-	var hx: float = box.size.x * 0.25
-	var hz: float = box.size.z * 0.25
 	var inv: Transform3D = global_transform.affine_inverse()
-	var best: float = INF
+	var pts: PackedVector3Array = PackedVector3Array()
 	for n: Node in meshes:
 		var mi: MeshInstance3D = n as MeshInstance3D
 		if mi == null or mi.mesh == null:
@@ -144,10 +191,29 @@ func _central_floor(meshes: Array[Node], box: AABB, fallback: float) -> float:
 			var arrays: Array = mi.mesh.surface_get_arrays(si)
 			var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 			for v: Vector3 in verts:
-				var w: Vector3 = xf * v
-				if absf(w.x - c.x) <= hx and absf(w.z - c.z) <= hz and w.y < best:
-					best = w.y
-	return best if best < INF else fallback
+				pts.append(xf * v)
+	if pts.is_empty():
+		return fallback
+	var torso_y: float = box.position.y + box.size.y * 0.40
+	var sum: Vector3 = Vector3.ZERO
+	var count: int = 0
+	for w: Vector3 in pts:
+		if w.y >= torso_y:
+			sum += w
+			count += 1
+	var c: Vector3 = box.get_center() if count == 0 else sum / float(count)
+	var along_x: bool = box.size.x >= box.size.z
+	var reach: float = (box.size.x if along_x else box.size.z) * 0.20
+	var best: float = INF
+	for w: Vector3 in pts:
+		var d: float = absf(w.x - c.x) if along_x else absf(w.z - c.z)
+		if d <= reach and w.y < best:
+			best = w.y
+	if best == INF:
+		return fallback
+	print("[HeroProp] %s stands %.0f %% of its height above its lowest point (the tail hangs below the feet)" % [
+		name, 100.0 * (best - box.position.y) / maxf(box.size.y, 0.001)])
+	return best
 
 
 # The merged AABB of the model's meshes in THIS node's space (root's

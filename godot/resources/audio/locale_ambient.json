@@ -521,6 +521,10 @@
       "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.72
     },
+    "meadowlark_circle_storm": {
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
+      "gain": 0.72
+    },
     "vehicle_cab": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4

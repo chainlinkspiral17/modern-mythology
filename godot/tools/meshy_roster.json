@@ -50524,6 +50524,125 @@
       "text_body": "ステージ１　ジャングル\n← スタート　スクロール →\n敵兵　出現ポイント　①②③\nここでジャンプ　届く？（要確認）\n滝　─　上へスクロール\n橋　（渡ると爆発）\nパワーアップ　ここ\n砲台×２　弾速おそめ\n要塞　入口\nボス：門　コア３つ\nＢＧＭ切り替え　→\n画面　２５６×２２４\n８／１２　修正"
     },
     {
+      "slug": "caltech_dabney_spencer_photo_two_girls",
+      "kind": "art",
+      "name": "the framed snapshot of the two girls in Spencer's room",
+      "file": "caltech_dabney_spencer_photo_two_girls.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "caltech_dabney_spencer_photo_two_girls"
+      ],
+      "tag": "picture · caltech_dabney · 0.30 x 0.38 m · Spencer's room",
+      "aspect": "3:4",
+      "prompt": "A framed 4x6 party snapshot from 2003, seen flat and straight-on, filling the frame edge to edge: two young women posed together for a friend's point-and-shoot at a college house party, harsh on-camera flash, a dark room behind them with Christmas lights and a poster. One is Asian with straight black hair; the other has dyed hair, a pink gone almost neon. Both in costume for a theme night — glossy black vinyl outfits, club-kid, bare shoulders and midriffs, nothing explicit — arms round each other, mugging at the lens, a little red-eye. Slightly soft focus, a date stamp in orange in the corner, the print a little curled under the glass.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch6_game_room.json",
+          "text": "He sees a picture of a pretty Asian girl posed with Janessa and both are wearing an uncomfortable very little, Jessie with hair not so pink as neon explicit plugged in exploded, both the girls covered or not so covered in strategic locations with black vinyl paint-on."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") Frame_Small_0_Pic was a flat green slab. The picture is the one the text names in this room; rendered as a party snapshot, costume not nudity.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "caltech_dabney",
+          "label": "Frame_Small_0_Pic",
+          "center": [
+            80.133,
+            3.65,
+            1.75
+          ],
+          "size": [
+            0.3,
+            0.38
+          ],
+          "facing": "+x",
+          "hide": [
+            "Frame_Small_0_Pic"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "caltech_dabney_spencer_sprite_sheet",
+      "kind": "art",
+      "name": "the framed sheet of sprite studies in Spencer's room",
+      "file": "caltech_dabney_spencer_sprite_sheet.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "caltech_dabney_spencer_sprite_sheet"
+      ],
+      "tag": "picture · caltech_dabney · 0.30 x 0.38 m · Spencer's room",
+      "aspect": "3:4",
+      "prompt": "A framed sheet of hand-drawn video game sprite studies, seen flat and straight-on, filling the frame edge to edge, evenly lit: pale blue grid paper, a small running soldier figure drawn square by square in coloured pencil in eight animation poses across the top, below it a jump, a prone pose, an enemy turret and an explosion in three frames, each cell numbered in pencil, colour swatches down one margin with handwritten Japanese notes beside them. Yellowed paper, pin holes at the corners, one coffee ring.",
+      "canon": [],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the text names one frame's contents (the long stage sketch, caltech_dabney_contra_sketch) and 'Andy takes a frame off the wall' of several; this one's contents are proposed in keeping with it — invented, no real game's art. Frame_Small_1_Pic was a flat magenta slab. Edit before spending credits.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "caltech_dabney",
+          "label": "Frame_Small_1_Pic",
+          "center": [
+            80.133,
+            3.1,
+            1.7
+          ],
+          "size": [
+            0.3,
+            0.38
+          ],
+          "facing": "+x",
+          "hide": [
+            "Frame_Small_1_Pic"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "caltech_dabney_spencer_world_map",
+      "kind": "art",
+      "name": "the framed hand-inked game map in Spencer's room",
+      "file": "caltech_dabney_spencer_world_map.png",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "caltech_dabney_spencer_world_map"
+      ],
+      "tag": "picture · caltech_dabney · 0.30 x 0.38 m · Spencer's room",
+      "aspect": "3:4",
+      "prompt": "A framed hand-inked overworld map for an imaginary 1980s console adventure game, seen flat and straight-on, filling the frame edge to edge, evenly lit: graph paper, a coastline, a forest of tiny repeated tree tiles, a desert, a mountain range with a castle, a town of four houses, dotted paths between numbered locations, a legend box in one corner and a compass rose, all drawn in fine black pen with a few areas washed in watercolour. Handwritten Japanese labels. Foxed edges, a fold down the middle.",
+      "canon": [],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): proposed, like caltech_dabney_spencer_sprite_sheet — the text does not say what the other frames hold. Invented; no real game's map. Frame_Small_2_Pic was a flat grey-blue slab.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "caltech_dabney",
+          "label": "Frame_Small_2_Pic",
+          "center": [
+            80.133,
+            3.2,
+            1.25
+          ],
+          "size": [
+            0.3,
+            0.38
+          ],
+          "facing": "+x",
+          "hide": [
+            "Frame_Small_2_Pic"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "caltech_dabney_tunnel_graffiti__caltech_tunnels",
       "kind": "art",
       "name": "the graffiti on everything in the steam tunnels",

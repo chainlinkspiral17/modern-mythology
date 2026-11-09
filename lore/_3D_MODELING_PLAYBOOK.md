@@ -399,6 +399,31 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-09 · a set has STATES: a story's props belong to the views its text puts them in
+
+- **What happened:** the user, of the prelude's street: "all the cars need
+  to be off the street, in their parking lots." Meadowlark Circle had one
+  state: chapter 5's rainy-night curb (Ben's truck, the Corolla, the patrol
+  vehicle) and chapter 2's vigil sedan stood in the Sunday-dawn opening, and
+  in every other view of the street.
+- **Rule:** when a builder adds an object FOR A SCENE (a car that arrives, a
+  body, a parcel), it goes in a view group at once: its parts under an empty
+  named `<Group>__<preset>[__<preset>…]` (`_group_tagged`, VIEW_GROUPS in
+  build_meadowlark_circle, PEUGEOT_GROUPS in build_kwik_stop); Background3D
+  drops the group in every view not named. Keep the empty's name under 63
+  characters. A chapter that needs a different mix gets its own preset (the
+  same camera) rather than a compromise state.
+- **Rule:** where a thing rests when the story is not using it comes from
+  the text too ("the driveway is where Jesse's father parks"); quote the
+  line in the builder.
+- **A perched bird stands under its torso.** HeroProp `seat_center` used the
+  middle of the bounding box, which a tail and a beak pull off the feet: the
+  belly sat on the rail. The floor is the lowest vertex under the centroid
+  of the model's upper 60 %.
+- **Seats face what the room is for.** The Dabney couches formed a U by
+  facing each other across 6.6 m; "a U that smile wickedly up at a wall of
+  ... televisions" has every seat looking at the wall.
+
 ### 2026-11-09 · a lathe's centre must be INSIDE it, never at its tip (pass 311)
 
 - **What happened:** the full suite failed on winding_audit — Meadowlark's

@@ -1200,6 +1200,7 @@ func _clear_displaced() -> void:
 
 
 func hide_all(fade: bool = false) -> void:
+	_spoke.clear()
 	# Scene transitions hard-clear portraits immediately — on
 	# scene/chapter change we drop everything in the same frame so
 	# the next scene starts clean instead of overlapping a
@@ -1371,9 +1372,57 @@ func set_portrait_override(arg: String) -> void:
 ## update_expression and activate_speaker. kind is the line's node type:
 ## a spoken line plays at talking distance, a thought (or narration over
 ## one person alone) close — PortraitDirector.register().
+## (2026-11-09, the user: "characters aren't turning to face the character
+## they are talking to when there are three of them on screen at once.")
+## The edge slots face inward and a centre LISTENER turns to the speaker —
+## but a centre SPEAKER faced forward, out at the reader, whoever the line
+## was for. They face the one they are talking to now: a character named in
+## the line ("Ben, hand me that"), else the last other person who spoke and
+## is still on screen (the exchange they are in). Nobody to turn to (the
+## first line of a scene, a line to the room) → forward, as before.
+var _spoke: Array[String] = []          # who spoke, oldest first (say lines)
+
+
+func _face_addressee(speaker: String, text: String) -> void:
+	var cast: Dictionary = {}           # key → slot
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot == null or not is_instance_valid(slot["node"]) or (slot["node"] as Control).has_meta("fading"):
+			continue
+		cast[char_key(str(slot["name"]))] = pos
+	if String(cast.get(speaker, "")) != "center":
+		return                           # an edge speaker already faces inward
+	var target: String = ""
+	var low: String = " " + text.to_lower() + " "
+	for k: String in cast:
+		if k == speaker or k.length() < 3:
+			continue
+		var name_rx := RegEx.create_from_string("[^a-z]" + k.replace("_", " ") + "[^a-z]")
+		if name_rx != null and name_rx.search(low) != null:
+			target = String(cast[k])
+			break
+	if target == "":
+		for i in range(_spoke.size() - 1, -1, -1):
+			var k2: String = _spoke[i]
+			if k2 != speaker and cast.has(k2):
+				target = String(cast[k2])
+				break
+	if target != "left" and target != "right":
+		return
+	var node: Control = (_slots["center"] as Dictionary)["node"]
+	var flip: bool = _compute_flip(speaker, "center", target)
+	if _resolve_portrait_3d_glb(speaker) != "":
+		flip = not flip                  # the 3D-render inversion (see show_character)
+	node.set_meta("flip_x", -1.0 if flip else 1.0)
+
+
 func direct_line(char_name: String, text: String, expr: String, kind: String = "say") -> void:
 	_tick_displaced()
 	var speaker: String = char_key(char_name) if char_name != "" else ""
+	if kind == "say" and speaker != "":
+		_face_addressee(speaker, text)
+		_spoke.erase(speaker)
+		_spoke.append(speaker)
 	var present: int = 0
 	for pos_p: String in _slots:
 		var slot_p = _slots[pos_p]

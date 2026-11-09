@@ -73,7 +73,10 @@ func _process(delta: float) -> void:
 	if _vp.size != want:
 		_vp.size = want
 	var main_cam: Camera3D = _main_vp.get_camera_3d()
-	var pictures: bool = not HeroArtScript.placed_art.is_empty()
+	# pictures, and the generated models that ask the passes to step back
+	# over them too (HeroProp.clarity)
+	var pictures: bool = not HeroArtScript.placed_art.is_empty() \
+			or not get_tree().get_nodes_in_group("hero_prop_clear").is_empty()
 	if main_cam == null or main_cam == _cam or not pictures:
 		_set_keep(0.0)
 		_ease_focus(0.0, delta)
@@ -96,6 +99,11 @@ func _process(delta: float) -> void:
 	# at a readable size gets a gentle one of its own ("the director is not
 	# highlighting the art enough in the scenes in close ups")
 	var ambient: float = AMBIENT_FOCUS if _art_centered(main_cam) else 0.0
+	# a model the frame is ABOUT (an insert on it): the room around it
+	# softens and darkens more than for a picture on a wall — "declutter the
+	# noise around it"
+	if _prop_centered(main_cam):
+		ambient = maxf(ambient, PROP_FOCUS)
 	_ease_focus(maxf(focus_target, ambient), delta)
 
 
@@ -123,6 +131,37 @@ func _art_centered(cam: Camera3D) -> bool:
 		var top: Vector2 = cam.unproject_position(c + quad.global_transform.basis.y.normalized() * sz.y * 0.5) / vsz
 		var bot: Vector2 = cam.unproject_position(c - quad.global_transform.basis.y.normalized() * sz.y * 0.5) / vsz
 		if absf(top.y - bot.y) >= AMBIENT_MIN_H:
+			return true
+	return false
+
+
+## A clear model fills the middle of the frame: its seat point's height
+## above it projects inside the centre, and the model is at least
+## PROP_MIN_H of the frame tall.
+const PROP_FOCUS: float = 0.6
+const PROP_MIN_H: float = 0.18
+
+
+func _prop_centered(cam: Camera3D) -> bool:
+	var vsz: Vector2 = Vector2(_main_vp.size)
+	if vsz.y <= 0.0:
+		return false
+	for n: Node in get_tree().get_nodes_in_group("hero_prop_clear"):
+		var p: Node3D = n as Node3D
+		if p == null or not p.is_visible_in_tree():
+			continue
+		var sz: float = float(p.get("size_m")) if "size_m" in p else 0.3
+		var up: Vector3 = Vector3.UP * sz * (0.5 if bool(p.get("upright")) else 0.25)
+		var c: Vector3 = p.global_position + up
+		if cam.is_position_behind(c):
+			continue
+		var sp: Vector2 = cam.unproject_position(c) / vsz
+		if sp.x < 0.22 or sp.x > 0.78 or sp.y < 0.15 or sp.y > 0.85:
+			continue
+		var right: Vector3 = cam.global_transform.basis.x.normalized() * sz * 0.5
+		var a: Vector2 = cam.unproject_position(c - right) / vsz
+		var b: Vector2 = cam.unproject_position(c + right) / vsz
+		if absf(a.x - b.x) * vsz.x / vsz.y >= PROP_MIN_H:
 			return true
 	return false
 

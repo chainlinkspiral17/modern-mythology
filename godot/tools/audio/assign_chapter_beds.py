@@ -133,6 +133,7 @@ PLACES = {
         "nightmare_cell": "vol6_corporate_hum",
         "meadowlark_circle": "vol6_ambient",
         "meadowlark_circle_night": "vol6_ambient",
+        "meadowlark_circle_storm": "vol6_ambient",
         "meadowlark_circle_henderson": "vol6_ambient",
         "miller_kitchen": "vol6_new_auburn_kitchen",
         "miller_back_porch": "vol6_new_auburn_kitchen",

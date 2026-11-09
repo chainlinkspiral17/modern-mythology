@@ -2294,8 +2294,23 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-22.0, 1.6, 1.5),
 		"camera_rotation": Vector3(-0.02, -1.5708, 0.0),
 		"fov": 60.0,
+		"wide": "expand",          # the street runs past a 21:9 frame on both sides
 		"suppress_input": true,
 		"far": 650.0,   # (2026-10-31) its far scenery stood past the 200 m default
+	},
+	# (2026-11-09) THE SAME FRAME IN CHAPTER 4's STORM. The street's cars
+	# belong to views now (the builder's VIEW_GROUPS): the prelude's Sunday
+	# dawn has every car in its driveway and no vigil; the storm has the cars
+	# at home AND the white sedan its `insert sedan` frames.
+	"meadowlark_circle_storm": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		"camera_origin": Vector3(-22.0, 1.6, 1.5),
+		"camera_rotation": Vector3(-0.02, -1.5708, 0.0),
+		"fov": 60.0,
+		"wide": "expand",          # the street runs past a 21:9 frame on both sides
+		"suppress_input": true,
+		"far": 650.0,
 	},
 	"meadowlark_circle_night": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
@@ -6082,15 +6097,46 @@ func _fit_native() -> void:
 		return
 	custom_minimum_size = Vector2.ZERO
 	set_anchors_preset(Control.PRESET_TOP_LEFT)
-	position = Vector2.ZERO
+	# THE COMPOSED WIDTH ON A WIDE SCREEN (2026-11-09, the user, of the
+	# Hendersons' garage at 21:9: "it also shows the garage is a side-set,
+	# and breaks the illusion, need to reframe."). The camera keeps its
+	# vertical field, so a screen wider than 16:9 saw MORE to either side —
+	# 110 degrees across where 94 was composed — past the door frame to the
+	# set's outer wall and the bare horizon beside it. Every set was dressed,
+	# edge-treated and audited for the 16:9 frame's width. So on a wide
+	# screen the view HOLDS that width: the SubViewport stays 16:9, as wide
+	# as the screen and taller than it, centred — the screen shows the
+	# composed frame's middle band at native resolution, nothing new to
+	# either side, and no camera, marker or director move changes meaning.
+	# A view whose set runs past the wide frame opts in to the panorama:
+	# `"wide": "expand"` on its preset (a number is the hold itself: 0
+	# expands, 1 holds, 0.5 gives half of each).
+	var view_h: float = area.y
+	if sm != null and sm.has_method("is_wide_active") and bool(sm.call("is_wide_active")) \
+			and sm.has_method("canvas_size") and (sm.call("canvas_size") as Vector2).is_equal_approx(area):
+		var composed_h: float = area.x * float(BG_H) / float(BG_W)
+		if composed_h > area.y:
+			view_h = lerpf(area.y, composed_h, _wide_hold())
+	position = Vector2(0.0, (area.y - view_h) * 0.5)
 	scale = Vector2(1.0 / k, 1.0 / k)
-	size = (area * k).round()
+	size = (Vector2(area.x, view_h) * k).round()
 	var st: Node = get_node_or_null("/root/Settings")
 	if _viewport != null:
 		var rs: float = 1.0
 		if st != null and st.has_method("get_3d_scale"):
 			rs = float(st.call("get_3d_scale"))
 		_viewport.scaling_3d_scale = rs
+
+
+## How far the loaded view holds its composed 16:9 width on a wider screen:
+## 1 = holds it (the default), 0 = expands to the sides (`"wide": "expand"`).
+func _wide_hold() -> float:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return 1.0
+	var w: Variant = (CAMERA_PRESETS[_loaded_preset] as Dictionary).get("wide", "hold")
+	if w is String:
+		return 0.0 if String(w) == "expand" else 1.0
+	return clampf(float(w), 0.0, 1.0) if (w is float or w is int) else 1.0
 
 
 func _process(_delta: float) -> void:
@@ -6368,6 +6414,7 @@ func load_location(preset_id: String) -> bool:
 	_camera.make_current()
 	_start_camera_track(spec)
 	_loaded_preset = preset_id
+	_fit_native_deferred()       # the view's `wide` rule sizes the viewport
 	_hide_missing_notice()
 	# Re-apply any user-stamped MoodCycler overrides for this preset.
 	# Deferred a frame so the locale's PostProcess _ready has run and

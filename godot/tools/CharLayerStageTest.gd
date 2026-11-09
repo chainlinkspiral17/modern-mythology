@@ -62,6 +62,21 @@ func _initialize() -> void:
 	cl.show_character("bill", "neutral", "right")
 	_ok(_node_of("anita") == a0 and _slot_of("anita") == "center", "bill takes right; anita SLIDES to center, same portrait")
 	_ok(_slot_of("bill") == "right" and _slot_of("linda") == "left", "all three on stage")
+	# the centre SPEAKER faces who they are talking to (2026-11-09)
+	var want_r: float = -1.0 if cl._compute_flip("anita", "center", "right") else 1.0
+	var want_l: float = -1.0 if cl._compute_flip("anita", "center", "left") else 1.0
+	var want_f: float = -1.0 if cl._compute_flip("anita", "center", "forward") else 1.0
+	_ok(want_r != want_l, "left and right are different facings for the centre")
+	cl.activate_speaker("anita"); cl.direct_line("anita", "Well, here we are.", "", "say")
+	_ok(float(a0.get_meta("flip_x")) == want_f, "nobody has spoken: the centre speaker faces forward")
+	cl.activate_speaker("bill"); cl.direct_line("bill", "It is late.", "", "say")
+	_ok(float(a0.get_meta("flip_x")) == want_r, "bill (right) speaks: the centre listener turns to him")
+	cl.activate_speaker("anita"); cl.direct_line("anita", "It is always late.", "", "say")
+	_ok(float(a0.get_meta("flip_x")) == want_r, "the centre answers bill: she FACES him (was forward)")
+	cl.activate_speaker("anita"); cl.direct_line("anita", "Linda, hand me the plates.", "", "say")
+	_ok(float(a0.get_meta("flip_x")) == want_l, "a line that names linda (left): the centre turns to her")
+	cl.activate_speaker(""); cl.direct_line("", "The plates go round.", "", "narrate")
+	_ok(float(a0.get_meta("flip_x")) == want_f, "narration: the centre faces forward again")
 	cl.hide_all(false)
 	# re-shown at its own slot: a later hide center is not about it (vol 7 ch5)
 	cl.show_character("diego", "neutral", "center")

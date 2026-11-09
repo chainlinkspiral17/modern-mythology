@@ -22,8 +22,10 @@ THE COURTYARD (origin) — 2003, mid-afternoon of Andy's arrival; and 1945.
 THE SIDE YARD (x 16..30) — the couchmobile under its tarp, "a couch lifted
   on two large sets of wheels", the engine, the handlebar steering; the
   "overgrown ivy wall" between campus and Pasadena, the city beyond.
-THE GAME ROOM (x 60..72, the basement) — "black leather couches" in a U
-  facing the wall of TVs and monitors ("Cathode rays, LCD"), "miles of black
+THE GAME ROOM (x 60..72, the basement) — "Black leather couches form a U
+  that smile wickedly up at a wall of large screen televisions and computer
+  monitors": EVERY couch faces the wall (2026-11-09 — two used to face each
+  other from the room's sides), the wall of TVs and monitors ("Cathode rays, LCD"), "miles of black
   rubber twine", the shelf of game boxes and jewel cases under the screens,
   the refrigerators "big and industrial" down one wall, the beige PC with
   its floppy drive in one corner, the sit-down arcade cabinet in another,
@@ -458,11 +460,21 @@ def build_game_room():
         x = sx0 + 0.6 + k * 1.4
         make_tube(f"Cable_Stock_Floor_{k}", catenary((x, sy - 0.62, 0.64), (x + 0.5, sy - 1.10, 0.012), 0.10), 0.012,
                   (0.04, 0.04, 0.04, 1.0))
-    # the U of couches, the back one carved
+    # the U of couches, the back one carved. (2026-11-09, the user: "the
+    # couches should be arranged so people are watching the tvs or playing
+    # games on them, not off to the side.") The two arms stood against the
+    # room's sides facing EACH OTHER, 6.6 m apart, the floor before the
+    # screens empty. "Black leather couches form a U that smile wickedly up
+    # at a wall of large screen televisions": every seat looks at the wall
+    # now — the two arms forward, 2.4 m off the shelf (pad-cable distance),
+    # an aisle between them; the carved one behind, centred on the aisle.
+    # A U open to the screens, seen from the stairs.
     couch("Couch_Back", cx - 0.40, 3.80, 3.2, "+Y", carved=True)
-    couch("Couch_Left", GX0 + 2.30, 6.20, 2.6, "+X")
-    couch("Couch_Right", GX1 - 3.10, 6.20, 2.6, "-X")
-    for k, (x, y, yaw) in enumerate(((cx - 1.0, 6.4, 0.4), (cx + 0.8, 7.0, -0.9), (cx + 0.2, 5.6, 2.1))):
+    couch("Couch_Left", 63.40, 6.40, 2.6, "+Y")
+    couch("Couch_Right", 67.80, 6.40, 2.6, "+Y")
+    # controllers where the players dropped them: at the feet of the front
+    # couches, their cables toward the decks
+    for k, (x, y, yaw) in enumerate(((63.9, 7.35, 0.4), (67.2, 7.50, -0.9), (65.7, 5.30, 2.1))):
         make_rot_box(f"Controller_{k}", (x, y, 0.016), (0.15, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0), yaw=yaw)
     make_rot_box("Controller_Couch", (cx - 1.1, 3.90, 0.455), (0.15, 0.10, 0.03), (0.30, 0.30, 0.34, 1.0), yaw=0.3)
     make_box("Andy_Notebook", (cx + 0.6, 3.92, 0.455), (0.18, 0.24, 0.03), (0.16, 0.20, 0.30, 1.0))

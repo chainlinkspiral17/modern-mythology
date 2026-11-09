@@ -166,6 +166,23 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-11-09 · a wide screen holds the composed width (it does not widen the lens)
+
+- **What happened:** the first wide frames went out Hor+ — the camera kept
+  its vertical field, so 21:9 saw 110 degrees across where 94 was composed.
+  The user, of the Hendersons' garage: "it also shows the garage is a
+  side-set, and breaks the illusion, need to reframe." Every set was
+  dressed, edge-treated and audited at the 16:9 frame's width.
+- **Rule:** on a screen wider than 16:9 the 3D view HOLDS its composed
+  width: Background3D keeps the SubViewport 16:9 — as wide as the screen,
+  taller than it, centred (`_fit_native`) — so the screen shows the composed
+  frame's middle band at native resolution. No camera, marker, insert or
+  director move changes meaning; nothing new appears at the sides. A view
+  whose set runs past the wide frame opts in: `"wide": "expand"` on its
+  preset (a number is the hold: 0 expands, 1 holds).
+- **Rule:** a view earns `expand` by being LOOKED AT wide (ScreenProbe on a
+  1720x720 screen) or by an audit of its side bands — never by default.
+
 ### 2026-11-09 · what cannot be reproduced is made impossible, and made to speak
 
 - **What happened:** with the pick fixed the user sent a fullscreen
