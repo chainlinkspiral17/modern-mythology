@@ -161,6 +161,7 @@ func on_locale_changed() -> void:
 	_panel_words = PackedStringArray()
 	_insert_left = 0
 	# a new room: its pictures are new to the eye
+	ArtMaskScript.focus_target = 0.0
 	_art_used.clear()
 	_art_return = {}
 	_art_cooldown = 0
@@ -797,6 +798,7 @@ func _build_panel_card(id: String) -> Control:
 #     are GameEngine's and AudioMgr's.
 # ════════════════════════════════════════════════════════════════
 const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
+const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
 const ART_FOV := 30.0
 const ART_FILL := 0.64            # of the frame's height (or width, whichever binds)
 # With the text up (a noticing shot), the dialogue box owns the lower ~44 %
@@ -809,7 +811,7 @@ const ART_MAX_DIST := 3.2
 const ART_YAW := 0.10             # rad off square, toward the room's side
 const ART_PITCH := -0.04          # rad: a touch from above, as eyes meet a wall
 const ART_DRIFT := 0.008          # slower than a cue's drift: the stillness push
-const ART_COOLDOWN := 6
+const ART_COOLDOWN := 4          # (2026-11-09: 6 — "not highlighting the art enough")
 var _art_used: Dictionary = {}
 var _art_return: Dictionary = {}  # the frame an art shot left, to return to
 var _art_cooldown: int = 0
@@ -867,6 +869,7 @@ func _save_frame(cam: Camera3D) -> Dictionary:
 
 
 func _restore_frame(saved: Dictionary) -> void:
+	ArtMaskScript.focus_target = 0.0
 	var cam: Camera3D = _art_cam()
 	if cam == null or saved.is_empty():
 		return
@@ -886,6 +889,8 @@ func cut_to_art(p: Dictionary, with_text: bool = false) -> bool:
 	cam.global_transform = _art_pose(p, cam, with_text)
 	cam.fov = ART_FOV
 	cam.make_current()
+	# (2026-11-09) the picture in focus: fully clear, the room steps back
+	ArtMaskScript.focus_target = 1.0
 	_set_letterbox(true)
 	_drifting = true
 	_drift_rate = ART_DRIFT
@@ -926,6 +931,7 @@ func consider_line(text: String, kind: String, cued: bool, speaker: String = "")
 		if not cued:
 			_restore_frame(_art_return)
 		_art_return = {}
+		ArtMaskScript.focus_target = 0.0
 	if _art_cooldown > 0:
 		_art_cooldown -= 1
 	if cued or kind != "narrate" or _art_cooldown > 0 or not _still_list.is_empty():
@@ -1178,3 +1184,5 @@ func exit_stillness() -> void:
 	_still_list = []
 	_restore_frame(_still_return)
 	_still_return = {}
+	if not _art_return.is_empty():
+		ArtMaskScript.focus_target = 1.0   # back to a noticing shot: still on its picture

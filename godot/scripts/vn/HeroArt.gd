@@ -51,8 +51,16 @@ const OBJECT_WORDS: Array[String] = [
 	"flyer", "postcard", "drawing", "sketch", "album", "comic", "corkboard",
 	"bulletin", "collage", "screen", "monitor", "television", "tv", "sign",
 	"billboard", "banner", "marquee", "plaque", "neon", "tapestry", "nebula", "starfish",
-	"letter", "notice", "laptop",
+	"letter", "notice", "laptop", "window",
 ]
+## (2026-11-09) a picture also answers to its category's plain word — a
+## window's view to "window", a screen's picture to "screen" — so the
+## director notices it when the prose looks at it ("the director is not
+## highlighting the art enough")
+const CAT_WORDS: Dictionary = {
+	"WINDOW": ["window"], "SCREEN": ["screen", "monitor"], "SIGN": ["sign"],
+	"PICTURE": ["picture"], "PAINTED": ["mural", "painting"],
+}
 # (not "face", "table", "frame", "board", "note", "cover", "display": in
 # narration they are mostly people, furniture and figures of speech)
 
@@ -87,7 +95,12 @@ static func _load_roster() -> void:
 			row["_name"] = String(e.get("name", ""))
 			row["_inspect"] = bool(e.get("inspect", false))
 			row["_cat"] = String(e.get("art_cat", ""))
-			row["_words"] = _object_words(String(e.get("slug", "")) + " " + String(e.get("name", "")))
+			var words: PackedStringArray = _object_words(String(e.get("slug", "")) + " " + String(e.get("name", "")))
+			var cat_v: Variant = CAT_WORDS.get(String(e.get("art_cat", "")), [])
+			for cw: Variant in (cat_v as Array):
+				if not String(cw) in words:
+					words.append(String(cw))
+			row["_words"] = words
 			if not _rows_by_locale.has(loc):
 				_rows_by_locale[loc] = []
 			var lst: Array = _rows_by_locale[loc]

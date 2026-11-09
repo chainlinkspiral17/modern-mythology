@@ -392,6 +392,36 @@ def verdict(st):
     return why
 
 
+_CAMEL = re.compile(r"(?<=[a-z])(?=[A-Z])")
+_SUPPORT = {"pole", "poles", "post", "posts", "pylon", "bracket", "brackets", "pedestal", "footing"}
+
+
+def _holds(who, subj):
+    """(2026-11-09) a subject's own pole, post or bracket HOLDS it, it does
+    not hide it: the Cypress Motel's vacancy sign is mounted on its pole
+    (any ray to the sign's centre meets the pole's box first), the
+    carnival's faded banner hangs between its posts"""
+    parts = [p.lower() for p in _CAMEL.sub("_", who).split("_") if p]
+    if not any(p in _SUPPORT for p in parts):
+        return False
+    stems = {p.lower() for s in subj for p in _CAMEL.sub("_", s).split("_")[:2] if len(p) >= 4}
+    return any(p in stems for p in parts if p not in _SUPPORT)
+
+
+def _rests_on(b, subj_boxes):
+    """(2026-11-09) a thing standing ON the subject is what the insert
+    shows, not what hides it: the substrate's bowl on the cabin's table"""
+    if b is None:
+        return False
+    c, h = b[1], b[2]
+    for sb in subj_boxes:
+        sc, sh = sb[1], sb[2]
+        top = sc[2] + sh[2]
+        if abs((c[2] - h[2]) - top) <= 0.05 and abs(c[0] - sc[0]) <= sh[0] and abs(c[1] - sc[1]) <= sh[1]:
+            return True
+    return False
+
+
 def _occlusion(origin_b, target_b, boxes, subj):
     """Five rays from the lens toward the subject (centre + 6 cm
     offsets). Returns the name of the first non-subject object that
@@ -406,6 +436,7 @@ def _occlusion(origin_b, target_b, boxes, subj):
     side = tuple(v / sl for v in side)
     up2 = (d0[1] * side[2] - d0[2] * side[1], d0[2] * side[0] - d0[0] * side[2], d0[0] * side[1] - d0[1] * side[0])
     blockers = {}
+    byname = {b[0]: b for b in boxes}
     for ox, oy in ((0, 0), (0.06, 0), (-0.06, 0), (0, 0.06), (0, -0.06)):
         tgt = tuple(target_b[i] + side[i] * ox + up2[i] * oy for i in range(3))
         v = tuple(tgt[i] - origin_b[i] for i in range(3))
@@ -418,7 +449,8 @@ def _occlusion(origin_b, target_b, boxes, subj):
         # that stops within EMBED_TOL of the subject is the subject's
         # mount, not an occluder (2026-09-07: this alone freed most of
         # the 19 STUCK markers — every window, mirror and board).
-        if t is not None and who not in subj and t < vl - EMBED_TOL:
+        if t is not None and who not in subj and t < vl - EMBED_TOL and not _holds(who, subj) \
+                and not _rests_on(byname.get(who), [byname[x] for x in subj if x in byname]):
             blockers[who] = blockers.get(who, 0) + 1
     for who, k in blockers.items():
         if k >= 3:

@@ -22,6 +22,8 @@ const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
 const MASK_DIV: float = 4.0        # the mask renders at a quarter of the view
 const KEEP: float = 0.78           # the pictures keep most of their own pixels
 const FOCUS_EASE: float = 2.2      # per second, toward the target
+const AMBIENT_FOCUS: float = 0.35  # a picture prominent in the frame
+const AMBIENT_MIN_H: float = 0.08  # of the frame's height, to count
 
 ## The director's request (VnDirector): 1 while it holds on a picture.
 static var focus_target: float = 0.0
@@ -89,7 +91,40 @@ func _process(delta: float) -> void:
 	_cam.h_offset = main_cam.h_offset
 	_cam.v_offset = main_cam.v_offset
 	_set_keep(keep_level)
-	_ease_focus(focus_target, delta)
+	# (2026-11-09) the director's art shots ask for full focus; any frame —
+	# a closeup, a wide — where a picture faces the camera near the centre
+	# at a readable size gets a gentle one of its own ("the director is not
+	# highlighting the art enough in the scenes in close ups")
+	var ambient: float = AMBIENT_FOCUS if _art_centered(main_cam) else 0.0
+	_ease_focus(maxf(focus_target, ambient), delta)
+
+
+## A picture faces the camera, its centre in the frame's middle and its
+## height at least AMBIENT_MIN_H of the frame.
+func _art_centered(cam: Camera3D) -> bool:
+	var vsz: Vector2 = Vector2(_main_vp.size)
+	if vsz.y <= 0.0:
+		return false
+	for pv: Variant in HeroArtScript.placements():
+		var p: Dictionary = pv
+		var quad: Node3D = p.get("quad") as Node3D
+		if quad == null:
+			continue
+		var c: Vector3 = quad.global_position
+		if cam.is_position_behind(c):
+			continue
+		var to_cam: Vector3 = cam.global_position - c
+		if quad.global_transform.basis.z.dot(to_cam) <= 0.0:
+			continue
+		var sp: Vector2 = cam.unproject_position(c) / vsz
+		if sp.x < 0.2 or sp.x > 0.8 or sp.y < 0.12 or sp.y > 0.8:
+			continue
+		var sz: Vector2 = p.get("size", Vector2.ONE)
+		var top: Vector2 = cam.unproject_position(c + quad.global_transform.basis.y.normalized() * sz.y * 0.5) / vsz
+		var bot: Vector2 = cam.unproject_position(c - quad.global_transform.basis.y.normalized() * sz.y * 0.5) / vsz
+		if absf(top.y - bot.y) >= AMBIENT_MIN_H:
+			return true
+	return false
 
 
 func _ease_focus(target: float, delta: float) -> void:
