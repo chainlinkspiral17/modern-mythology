@@ -442,7 +442,10 @@ def build_back_lot_2026_10():
     doors = ((-8.0, "plain"), (-3.5, "plain"), (-1.0, "unit"), (1.5, "foxhole"), (5.5, "plain"), (9.0, "plain"))
     for k, (dy, kind) in enumerate(doors):
         y = my + dy
-        my_ = y - 0.85 if kind == "plain" and dy == -3.5 else y + 0.85   # (door 1's other side is the unit's window)
+        # (2026-11-09) every meter on its door's north side: door 1's south
+        # side IS the unit's papered window (window y my-5.45..-4.15), and
+        # the meter stood across it
+        my_ = y + 0.85
         make_box(f"BackWall_Meter_{k}", (wx - 0.07, my_, 1.50), (0.14, 0.30, 0.40), (0.62, 0.62, 0.60, 1.0))
         make_cyl(f"BackWall_Meter_{k}_Dial", (wx - 0.145, my_, 1.55), 0.07, 0.02, (0.80, 0.84, 0.86, 1.0), axis='X', segments=10)
         make_cyl(f"BackWall_Meter_{k}_Conduit", (wx - 0.04, my_, 2.85), 0.025, 2.30, steel, segments=6)

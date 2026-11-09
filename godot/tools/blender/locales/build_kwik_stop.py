@@ -1513,9 +1513,12 @@ def build_wall_ornaments():
     make_box("Sign_HandWash", (5.8975, 8.40, 1.80),   # on the wall
              (0.005, 0.40, 0.20), COL_PAPER)
     # ── Calendar (girl, beach, faded — corner-store classic)
-    make_box("Calendar", (-5.88, 5.40, 1.70),
+    # (2026-11-09) above the coffee backsplash (its top 1.90), on the bare
+    # wall: at 1.70 it hung inside the backsplash and behind the Slurpee
+    # machine's header from the counter
+    make_box("Calendar", (-5.8975, 5.40, 2.15),
              (0.005, 0.40, 0.50), COL_POSTER_FADED)
-    make_box("Calendar_GridTop", (-5.88 + 0.002 + 0.0191, 5.40, 1.55),
+    make_box("Calendar_GridTop", (-5.8975 + 0.0026, 5.40, 2.00),
              (0.001, 0.34, 0.20), COL_PAPER)
     # ── Sun-faded vintage movie poster, east wall above HotCase
     make_box("Poster_Faded", (5.88, 3.20, 2.00),
@@ -3005,9 +3008,13 @@ def build_hero_props_2026_08():
     make_box("Decal_Burger_Sign", (-2.9, 0.112, 1.10), (0.30, 0.008, 0.12), (0.94, 0.90, 0.80, 0.9))
     make_box("Decal_Burger_Eye", (-2.98, 0.111, 1.40), (0.05, 0.008, 0.05), (0.14, 0.14, 0.15, 1.0))
     # Convex security mirror above the door, angled at the counter
-    make_cyl("Convex_Mirror", (0.0, 0.30, 2.55), 0.28, 0.06, (0.62, 0.68, 0.72, 1.0), axis='Y', segments=14)
-    make_cyl("Convex_Mirror_Rim", (0.0, 0.27, 2.55), 0.30, 0.02, (0.94, 0.42, 0.20, 1.0), axis='Y', segments=14)
-    make_box("Convex_Mirror_Bracket", (0.0, 0.185, 2.55), (0.04, 0.17, 0.04), COL_METAL_BLACK)   # to the wall (2026-09-22)
+    # (2026-11-09) beside the KWIK STOP sign, not over its middle: since the
+    # sign came out of its wall onto the room face, the mirror hung across
+    # its lettering. East of the sign's end (x 1.82), over the window lintel.
+    mx_ = 2.25
+    make_cyl("Convex_Mirror", (mx_, 0.30, 2.55), 0.28, 0.06, (0.62, 0.68, 0.72, 1.0), axis='Y', segments=14)
+    make_cyl("Convex_Mirror_Rim", (mx_, 0.27, 2.55), 0.30, 0.02, (0.94, 0.42, 0.20, 1.0), axis='Y', segments=14)
+    make_box("Convex_Mirror_Bracket", (mx_, 0.185, 2.55), (0.04, 0.17, 0.04), COL_METAL_BLACK)   # to the wall (2026-09-22)
     # Rubber anti-fatigue mat on the working side of the counter
     make_box("AntiFatigue_Mat", (5.55, 4.5, 0.010), (0.80, 3.60, 0.015), (0.14, 0.14, 0.15, 1.0))
     # Employee break nook, NE corner: bench + two lockers
