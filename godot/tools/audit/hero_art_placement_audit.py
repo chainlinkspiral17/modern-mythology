@@ -70,13 +70,37 @@ def on_host(c, w, h, n, sg, wa, ha, boxes, skip, stand_face):
         bc, bh = b[1], b[2]
         if abs(bc[n] + sg * bh[n] - c[n]) > FACE_TOL:
             continue
-        if (bc[n] - sg * bh[n] - stand_face) * sg > 0.01:
+        # the host's back must lie BEHIND the stand-in's face — the stand-in
+        # buried in it. (2026-11-09: Lena's leaning canvases stand IN FRONT
+        # of the wall, 1 cm off it; their picture sat on the wall's outer
+        # face 21 cm away, facing out of the building, and passed as hosted)
+        if (bc[n] - sg * bh[n] - stand_face) * sg > -0.01:
             continue
         cov = _overlap_1d(q0[0], q0[1], bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
               _overlap_1d(q1[0], q1[1], bc[ha] - bh[ha], bc[ha] + bh[ha])
         if cov >= 0.9 * w * h:
             return True
     return False
+
+
+def camera_side(row, c, w, h, n, sg, wa, ha, hidden):
+    """(2026-11-09) the picture is laid on the far face of the wall or board
+    its stand-in is on, and EVERY camera that looks at that spot sees it from
+    the picture's side: the stand-in's side is never seen, so the picture is
+    where it is meant to be (the Cafe Olimpico's front sign, a far-shore
+    billboard). Needs a camera on the picture's side and none on the other."""
+    if not hidden:
+        return False
+    mid = sum(b[1][n] for b in hidden) / len(hidden)
+    if (mid - c[n]) * sg >= 0:
+        return False          # the stand-in is not behind the picture
+    try:
+        import hero_art_fix as F
+    except Exception:
+        return False
+    rect = ((c[wa] - w / 2.0, c[wa] + w / 2.0), (c[ha] - h / 2.0, c[ha] + h / 2.0))
+    front, back = F.viewers_behind(row["locale"], c, n, sg, rect)
+    return back == 0
 
 
 def on_post(c, w, h, n, sg, wa, ha, boxes):
@@ -207,7 +231,8 @@ def check_row(slug, row, boxes, others_hidden=frozenset()):
                 face = near_f
         if abs(c[n] - face) > FACE_TOL and not on_host(c, w, h, n, sg, wa, ha, boxes,
                                                        {x[0] for x in hidden}, face) \
-                and not ((c[n] - face) * sg > 0 and on_post(c, w, h, n, sg, wa, ha, boxes)):
+                and not ((c[n] - face) * sg > 0 and on_post(c, w, h, n, sg, wa, ha, boxes)) \
+                and not camera_side(row, c, w, h, n, sg, wa, ha, hidden):
             out.append("OFF-FACE   %s: %.2f m %s the stand-in's face (%s)" % (
                 slug, abs(c[n] - face), "off" if (c[n] - face) * sg > 0 else "inside", ",".join(hide)))
         # the picture against the hidden part it best matches (a sign hides its

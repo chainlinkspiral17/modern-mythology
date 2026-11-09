@@ -8816,14 +8816,14 @@
           "label": "Canvas",
           "center": [
             2.95,
-            -0.1,
+            0.168,
             0.34
           ],
           "size": [
             0.52,
             0.68
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
             "Canvas_Stack_A",
             "Canvas_Stack_B"
@@ -13673,14 +13673,14 @@
           "label": "GasStation_Sign",
           "center": [
             -61.5,
-            -39.94,
+            -40.06,
             8.5
           ],
           "size": [
             3.0,
             2.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "GasStation_Sign_Panel"
           ]
@@ -20113,14 +20113,14 @@
           "label": "Sign",
           "center": [
             0.02,
-            -0.12,
+            -0.212,
             4.11
           ],
           "size": [
             6.42,
             1.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Sign_Board",
             "Sign_El_Rancho_Letter_1",
@@ -20142,14 +20142,14 @@
           "label": "Sign",
           "center": [
             -2.2,
-            -0.12,
+            -0.212,
             4.36
           ],
           "size": [
             0.42,
             0.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Sign_Taqueria_Letter_0"
           ]
@@ -20159,14 +20159,14 @@
           "label": "Sign",
           "center": [
             -1.58,
-            -0.12,
+            -0.212,
             4.36
           ],
           "size": [
             0.42,
             0.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Sign_Taqueria_Letter_1"
           ]
@@ -20176,14 +20176,14 @@
           "label": "Sign",
           "center": [
             2.14,
-            -0.12,
+            -0.212,
             4.36
           ],
           "size": [
             0.42,
             0.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Sign_Taqueria_Letter_7"
           ]
@@ -20193,14 +20193,14 @@
           "label": "Sign",
           "center": [
             -2.0,
-            -0.12,
+            -0.212,
             3.84
           ],
           "size": [
             0.34,
             0.32
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Sign_El_Rancho_Letter_0"
           ]
@@ -20210,14 +20210,14 @@
           "label": "Sign",
           "center": [
             2.0,
-            -0.12,
+            -0.212,
             3.84
           ],
           "size": [
             0.34,
             0.32
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Sign_El_Rancho_Letter_8"
           ]
@@ -21932,14 +21932,14 @@
           "label": "DR_Sign",
           "center": [
             -0.55,
-            0.055,
+            -0.016,
             1.62
           ],
           "size": [
             0.3,
             0.22
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "DR_Sign"
           ]
@@ -22621,14 +22621,14 @@
           "label": "GasStation_Sign",
           "center": [
             -61.5,
-            -39.94,
+            -40.06,
             8.5
           ],
           "size": [
             3.0,
             2.4
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "GasStation_Sign_Panel"
           ]
@@ -31827,14 +31827,14 @@
           "label": "Office_Corkboard",
           "center": [
             4.4,
-            18.4,
+            18.629,
             1.9
           ],
           "size": [
             0.9,
             0.6
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
             "Office_Corkboard",
             "Office_Corkboard_Note_0",

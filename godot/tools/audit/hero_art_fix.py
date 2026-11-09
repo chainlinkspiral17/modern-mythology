@@ -163,7 +163,8 @@ def fix_row(row, boxes):
             face = fp[2]
         if H.FACE_TOL < abs(c[n] - face) <= 0.50 and not H.on_host(c, w, h, n, sg, wa, ha, boxes,
                                                                     {x[0] for x in hidden}, face) \
-                and not ((c[n] - face) * sg > 0 and H.on_post(c, w, h, n, sg, wa, ha, boxes)):
+                and not ((c[n] - face) * sg > 0 and H.on_post(c, w, h, n, sg, wa, ha, boxes)) \
+                and not H.camera_side(row, c, w, h, n, sg, wa, ha, hidden):
             new_c[n] = face
             why.append("onto the face (%.2f m)" % abs(c[n] - face))
         sw, sh = hi[wa] - lo[wa], hi[ha] - lo[ha]
@@ -237,7 +238,11 @@ def fix_row(row, boxes):
         b_back = bc[n] - sg * bh[n]
         ahead = (b_front - c2[n]) * sg          # how far its front face is in front of the picture
         starts = (b_back - c2[n]) * sg          # its back face, measured the same way
-        if not (0.01 < ahead <= 0.40) or starts > 0.05:
+        # (2026-11-09) the picture must be INSIDE the solid (its back face at
+        # or behind the picture): a solid that starts in front of a picture
+        # facing it is FACES-IN, turned by turn_row — pushing the picture out
+        # through it put Lena's canvas on the far side of the wall
+        if not (0.01 < ahead <= 0.40) or starts > -0.005:
             continue
         cov = H._overlap_1d(q0[0], q0[1], bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
               H._overlap_1d(q1[0], q1[1], bc[ha] - bh[ha], bc[ha] + bh[ha])
