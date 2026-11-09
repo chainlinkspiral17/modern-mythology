@@ -297,7 +297,9 @@ def build_hero_props():
     """2026-08-03 tail pass: Rick's notebook on the dry bench, and
     the 1974 avocado tile wainscot that makes this a converted
     half-bath (the floor is retinted avocado above)."""
-    make_box("Dry_Notebook", (0.55, ROOM_D - 0.30, 0.92), (0.15, 0.21, 0.02), (0.30, 0.26, 0.22, 1.0))   # on the dry bench (2026-09-09: hung over the floor at y 2.05)
+    # on the dry bench WEST of the wash sink (2026-11-09: at x 0.55 it lay
+    # inside the open-topped sink, x 0.47..0.97)
+    make_box("Dry_Notebook", (0.30, ROOM_D - 0.30, 0.92), (0.15, 0.21, 0.02), (0.30, 0.26, 0.22, 1.0))   # on the dry bench (2026-09-09: hung over the floor at y 2.05)
     for wy, wlen, wx, ax in ((1.7, 3.2, -1.28, 'Y'), (0.02, 2.4, 0.0, 'X')):
         if ax == 'Y':
             make_box("Wainscot_W", (wx, wy, 0.60), (0.03, wlen, 1.20), (0.46, 0.50, 0.30, 1.0))

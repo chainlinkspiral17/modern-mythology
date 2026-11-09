@@ -53,6 +53,10 @@ BACKDROP_HORIZON_SPAN = 60.0
 NAME_HINT = re.compile(r"sky|backdrop|horizon|cyclo", re.I)
 
 BOXES = []
+# (2026-11-09) the names recorded by a plain, axis-aligned make_box: their
+# recorded box IS the part (a cylinder's, a sphere's, a sloped quad's is
+# only its bounds). prop_overlap_audit's BURIED check reads only these.
+TRUE_BOXES = set()
 
 
 def _make_box(name, center, size, color=None, *a, **k):
@@ -64,6 +68,7 @@ def _make_box(name, center, size, color=None, *a, **k):
     # collision checks were double-conservative.
     BOXES.append((str(name), tuple(float(c) for c in center),
                   tuple(abs(float(s)) / 2.0 for s in size)))
+    TRUE_BOXES.add(str(name))
     return _obj_stub(name)
 
 

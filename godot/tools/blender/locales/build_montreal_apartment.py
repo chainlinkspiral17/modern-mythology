@@ -248,11 +248,13 @@ def build_use_states_d4():
     """D4 use states: Temperance is patience — the notebook open
     mid-entry, dishes drying, the kettle waiting."""
     # The notebook OPEN on the reading chair, pen in the gutter
-    make_box("Chair_Notebook_L", (-2.38, 2.28, 0.415), (0.14, 0.20, 0.015),
+    # ON the cushion (its top 0.51): at 0.415 the open notebook lay 10 cm
+    # inside it (2026-11-09)
+    make_box("Chair_Notebook_L", (-2.38, 2.28, 0.5175), (0.14, 0.20, 0.015),
              (0.90, 0.88, 0.82, 1.0))
-    make_box("Chair_Notebook_R", (-2.22, 2.30, 0.418), (0.14, 0.20, 0.015),
+    make_box("Chair_Notebook_R", (-2.22, 2.30, 0.5205), (0.14, 0.20, 0.015),
              (0.92, 0.90, 0.84, 1.0))
-    make_cyl("Chair_Pen", (-2.30, 2.29, 0.44), 0.006, 0.13,
+    make_cyl("Chair_Pen", (-2.30, 2.29, 0.534), 0.006, 0.13,
              (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
     # Drying rack by the fridge: two plates on edge, a bowl, a mug
     # ON the kitchen counter (Kitch_Top: x 2.1..2.9, y 3.85..5.15, top

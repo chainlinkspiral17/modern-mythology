@@ -143,6 +143,7 @@ def record_builder(path):
     _props helpers (via the audit stubs) and vendored local
     make_box/make_cyl definitions (by rebinding build_* globals)."""
     A.BOXES.clear()
+    A.TRUE_BOXES.clear()
     MESH_NAMES.clear()
     SPHERES.clear()
     src = open(path).read()
@@ -159,6 +160,7 @@ def record_builder(path):
     def rec_box(name, center, size, base_color=None, *a, **k):
         A.BOXES.append((str(name), tuple(float(c) for c in center),
                         tuple(abs(float(s)) / 2.0 for s in size)))
+        A.TRUE_BOXES.add(str(name))
         return A._obj_stub(name)
 
     def rec_cyl(name, center, radius, height, base_color=None,
@@ -765,6 +767,47 @@ def pierces(boxes):
     return out
 
 
+# (2026-11-09) BURIED: a thin detail — a sign, poster, plaque, letter,
+# frame, clock hand — wholly inside another solid is never seen from
+# anywhere. 158 were (the Kwik Stop and Gas&Go brand panels inside their
+# walls, a riverboat's 32 saloon windows, a studio's 46 photo books inside
+# a solid "shelf", the diner's door plaques inside their lintels). Read
+# between plain boxes only: a cylinder's, sphere's or sloped quad's box is
+# only its bounds.
+BURY_DETAIL = re.compile(r"poster|sign|letter|text|label|decal|photo|picture|frame|plaque|placard|calendar|"
+                         r"menu|map|print|flyer|note|sticker|logo|neon|number|clock|mirror|painting|banner", re.I)
+BURY_HOSTNOT = re.compile(r"glass|pane|window|water|liquid|fog|glow|light|beam|shaft|ray|haze|sky|cloud|wear_|"
+                          r"case\b|_case|cabinet|fridge|freezer|cooler|box\b|_box|drawer|bag|crate|bin\b|_bin|"
+                          r"tank|trunk|chest|closet|cab\b|_body|interior|room|zone|outline|volume|stock|terrain|"
+                          r"ground|hill|ridge|band|berm|mound|foliage|crown|canopy|leaf|tree|bush|hedge", re.I)
+
+
+# a part MADE to go into its host: a hook's mount, a cabinet's back, a bolt
+BURY_MOUNT = re.compile(r"hook|mount|bracket|anchor|screw|nail|bolt|_back\b|back$|cabinet", re.I)
+
+
+def buried(boxes, true_boxes):
+    out = []
+    hosts = [b for b in boxes if b[0] in true_boxes and min(b[2]) >= 0.04 and not BURY_HOSTNOT.search(b[0])]
+    for d in boxes:
+        if d[0] not in true_boxes or not BURY_DETAIL.search(d[0]) or d[0].startswith("Wear_") \
+                or BURY_MOUNT.search(d[0]):
+            continue
+        dc, dh = d[1], d[2]
+        if min(dh) > 0.02 or max(dh) > 4.0:
+            continue
+        for h in hosts:
+            if h is d:
+                continue
+            hc, hh = h[1], h[2]
+            # inside by more than 2 mm on every side: a face-mounted part
+            # (its back on the wall's face) is not buried
+            if all(hc[i] - hh[i] < dc[i] - dh[i] - 0.002 and hc[i] + hh[i] > dc[i] + dh[i] + 0.002 for i in range(3)):
+                out.append((min(dh), h[0], d[0], ["buried"]))
+                break
+    return out
+
+
 def _strips(view, prefix):
     """True when Background3D's preset `view` strips names starting with
     `prefix` (an EXCLUSIVE entry is honoured only then)."""
@@ -814,6 +857,7 @@ def main():
             print("%-32s (partial: %s)" % (name, err))
         hits = overlaps([b for b in boxes if b[0] not in MESH_NAMES])
         hits += pierces([b for b in boxes if b[0] not in MESH_NAMES])
+        hits += buried(boxes, A.TRUE_BOXES)
         hits = [h for h in hits if not _exclusive(name, h[1], h[2])]
         per[name] = len(hits)
         if hits:

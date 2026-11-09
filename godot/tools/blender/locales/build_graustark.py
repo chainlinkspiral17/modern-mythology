@@ -1770,6 +1770,8 @@ def _build_justice_courthouse():
                 t = -1 + 2 * c / 4
                 wx = cx + t * (W / 2 - 1.5)
                 wz = gz + 3.0 + r * 3.0
+                if side_sgn == -1 and r == 0 and c == 2:
+                    continue   # the front doors stand here (2026-11-09: the window was inside them)
                 # Limestone frame
                 ht._make_box_local(
                     f"Justice_Court_WinFrame_{side_sgn:+d}_R{r}C{c}",
@@ -1923,6 +1925,8 @@ def _build_death_hospital():
             for c in range(7):
                 tt = -1 + 2 * c / 6
                 wx_ = cx + tt * (W / 2 - 2.0)
+                if side_sgn == -1 and r == 0 and c == 3:
+                    continue   # the front doors stand here (2026-11-09: the window was inside them)
                 ht._make_box_local(
                     f"Death_Hosp_Win_{side_sgn:+d}_R{r}C{c}",
                     (wx_, side_y, gz + 2.0 + r * 3.0),
