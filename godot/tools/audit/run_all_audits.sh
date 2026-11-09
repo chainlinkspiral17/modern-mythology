@@ -14,6 +14,11 @@ echo "── drive_write_audit.py ──"
 python3 drive_write_audit.py || exit 1
 echo "── drive_guard_test.py ──"
 python3 drive_guard_test.py | tail -1; python3 drive_guard_test.py >/dev/null || exit 1
+# (2026-11-09) every gate below DEFERS its failure to the end: the suite
+# used to stop at the first one, and the gates after it never ran — a
+# roster that the Hero Studio loader rejects went out behind a failing
+# ambient gate that way. Only the Drive gates above stop the run.
+DEFERRED=""
 echo ""
 for f in audit_*.py; do
     echo "── $f ──"
@@ -39,7 +44,7 @@ echo "$BOUT" | tail -2
 BN="$(echo "$BOUT" | tail -1 | grep -oE "^[0-9]+ blind" | grep -oE "^[0-9]+")"
 if [ "${BN:-999}" -gt 0 ]; then
     echo "$BOUT" | grep "^==\|x  shot_"
-    echo "REGRESSION  $BN blind object cue(s) (ceiling 0)"; exit 1; fi
+    echo "REGRESSION  $BN blind object cue(s) (ceiling 0)"; DEFERRED="$DEFERRED shot_marker_audit"; fi
 echo ""
 
 # ── Preset-vantage gate (2026-08-11) ───────────────────────────
@@ -49,7 +54,7 @@ echo ""
 echo "── preset_vantage_audit.py ──"
 # Captured (not piped) so a nonzero exit fails the suite under set -e.
 VOUT="$(python3 preset_vantage_audit.py 2>/dev/null)" || {
-    echo "$VOUT" | grep -v "^\["; exit 1; }
+    echo "$VOUT" | grep -v "^\[" || true; DEFERRED="$DEFERRED preset_vantage_audit"; }
 echo "$VOUT" | grep -v "^\[" | tail -2
 echo ""
 
@@ -64,7 +69,7 @@ echo "── marker_aim_audit.py ──"
 AOUT="$(python3 marker_aim_audit.py 2>/dev/null)" && ARC=0 || ARC=$?
 AOUT="$(echo "$AOUT" | grep -v "^\[")"   || true
 if [ "$ARC" -ne 0 ]; then
-    echo "$AOUT" | grep -E "MISAIM|misaim"; exit 1; fi
+    echo "$AOUT" | grep -E "MISAIM|misaim" || true; DEFERRED="$DEFERRED marker_aim_audit"; fi
 echo "$AOUT" | tail -2
 echo ""
 
@@ -82,7 +87,7 @@ echo "── vn_story_audit.py ──"
 # for a month. Every other story problem still fails the suite.
 SOUT="$(python3 vn_story_audit.py 2>/dev/null)" || {
     SREAL="$(echo "$SOUT" | grep "PROBLEM" | grep -v "file missing" || true)"
-    if [ -n "$SREAL" ]; then echo "$SREAL"; exit 1; fi
+    if [ -n "$SREAL" ]; then echo "$SREAL"; DEFERRED="$DEFERRED vn_story_audit"; fi
     SMISS="$(echo "$SOUT" | grep -c "file missing" || true)"
     echo "$SMISS missing asset file(s), not a gate; the ones git does NOT ignore (to make):"
     echo "$SOUT" | grep "file missing" | sed -E 's/.*file missing: //' | sort -u | while read -r f; do
@@ -107,19 +112,19 @@ echo ""
 echo "── doorway_audit.py ──"
 DWOUT="$(python3 doorway_audit.py 2>/dev/null)" || {
     echo "$DWOUT" | grep -E "^(BLOCKED|ADRIFT)" | head -20
-    echo "REGRESSION  doorway_audit found a blocked or adrift door (ceiling 0)"; exit 1; }
+    echo "REGRESSION  doorway_audit found a blocked or adrift door (ceiling 0)"; DEFERRED="$DEFERRED doorway_audit"; }
 echo "$DWOUT" | tail -1
 echo ""
 
 echo "── light_direction_audit.py ──"
 LOUT="$(python3 light_direction_audit.py 2>/dev/null)" || {
-    echo "$LOUT" | grep -E "^(UPWARD|LEVEL)"; exit 1; }
+    echo "$LOUT" | grep -E "^(UPWARD|LEVEL)" || true; DEFERRED="$DEFERRED light_direction_audit"; }
 echo "$LOUT" | tail -1
 echo ""
 
 echo "── blender_dryrun_audit.py ──"
 DOUT="$(python3 blender_dryrun_audit.py 2>/dev/null)" || {
-    echo "$DOUT" | grep "FAIL"; exit 1; }
+    echo "$DOUT" | grep "FAIL" || true; DEFERRED="$DEFERRED blender_dryrun_audit"; }
 echo "$DOUT" | tail -1
 echo ""
 
@@ -173,7 +178,7 @@ PYGATE
 # exit fails the suite.
 echo "── vantage_obstruction_audit.py ──"
 OOUT="$(python3 vantage_obstruction_audit.py 2>/dev/null)" || {
-    echo "$OOUT" | grep -v "^\["; exit 1; }
+    echo "$OOUT" | grep -v "^\[" || true; DEFERRED="$DEFERRED vantage_obstruction_audit"; }
 echo "$OOUT" | grep -v "^\[" | tail -2
 echo ""
 
@@ -196,7 +201,7 @@ if [ "${MCOUNT:-999}" -gt "$MARKER_CEILING" ]; then
     # (2026-10-30) name them: the gate printed only its count, so a failure
     # sent the next session hunting through 169 locales for the culprit
     echo "$MOUT" | grep -E "^OBSTRUCTED|OBSTRUCTED " || true
-    echo "REGRESSION  $MCOUNT obstructed markers (ceiling $MARKER_CEILING)"; exit 1; fi
+    echo "REGRESSION  $MCOUNT obstructed markers (ceiling $MARKER_CEILING)"; DEFERRED="$DEFERRED vantage_markers"; fi
 echo ""
 
 # ── Furniture grammar (2026-09-07 · gated 2026-09-08) ──────────
@@ -216,7 +221,7 @@ for CLS in POKE CHAIR DESK LANE BED OUTSIDE; do
     N="$(echo "$GLINE" | grep -oE "$CLS [0-9]+" | grep -oE "[0-9]+$")"
     if [ "${N:-999}" -gt 0 ]; then
         echo "$GOUT" | grep "^   $CLS"
-        echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
+        echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; DEFERRED="$DEFERRED furniture_grammar_audit"; fi
 done
 # ── Expression-tint gate (2026-09-11) ─────────────────────────
 # CharLayer's EXPR_TINTS (what the game multiplies a portrait by) and
@@ -224,7 +229,7 @@ done
 # into a PNG) are the same table twice. The baker held six of the
 # game's thirty-one, so every other expression baked FLAT. Zero.
 echo "── expr_tint_audit.py ──"
-TOUT="$(python3 expr_tint_audit.py 2>/dev/null)" || { echo "$TOUT"; exit 1; }
+TOUT="$(python3 expr_tint_audit.py 2>/dev/null)" || { echo "$TOUT"; DEFERRED="$DEFERRED expr_tint_audit"; }
 echo "$TOUT" | tail -1
 echo ""
 
@@ -236,7 +241,7 @@ echo ""
 # missing, D'Ambrosio's booth_1/booth_6 swapped against the builder's
 # numbering, precipice_door absent. Zero.
 echo "── space_map_audit.py ──"
-SPOUT="$(python3 space_map_audit.py 2>/dev/null)" || { echo "$SPOUT"; exit 1; }
+SPOUT="$(python3 space_map_audit.py 2>/dev/null)" || { echo "$SPOUT"; DEFERRED="$DEFERRED space_map_audit"; }
 echo "$SPOUT" | tail -1
 echo ""
 
@@ -251,7 +256,7 @@ echo "$MOUT" | tail -1
 MN="$(echo "$MOUT" | tail -1 | grep -oE "[0-9]+ contradicted" | grep -oE "^[0-9]+")"
 if [ "${MN:-999}" -gt 0 ]; then
     echo "$MOUT" | grep "^MOOD"
-    echo "REGRESSION  $MN mood cue(s) the prose contradicts (ceiling 0)"; exit 1; fi
+    echo "REGRESSION  $MN mood cue(s) the prose contradicts (ceiling 0)"; DEFERRED="$DEFERRED mood_clock_audit"; fi
 echo ""
 
 # ── Music-coverage gate (2026-09-11) ──────────────────────────
@@ -266,11 +271,10 @@ echo ""
 # decor, the furniture FLOAT ceiling …) never ran: 2026-10-30 found ~1,650
 # floating parts across twenty vols 1-4 sets that way. They still fail
 # the suite, at the END, after every geometry gate has had its say.
-DEFERRED=""
 echo "── music_coverage_audit.py ──"
 MUOUT="$(python3 music_coverage_audit.py 2>/dev/null)" || {
     echo "$MUOUT" | grep "^SILENT\|^NOFILE" | head -20
-    echo "$MUOUT" | tail -1; DEFERRED="$DEFERRED music_coverage"; }
+    echo "$MUOUT" | tail -1 || true; DEFERRED="$DEFERRED music_coverage"; }
 echo "$MUOUT" | tail -1
 echo ""
 
@@ -284,7 +288,7 @@ echo ""
 echo "── audio_reference_audit.py ──"
 AROUT="$(python3 audio_reference_audit.py 2>/dev/null)" || {
     echo "$AROUT" | grep "^NOFILE\|^NOPRESET" | head -20
-    echo "$AROUT" | tail -1; DEFERRED="$DEFERRED audio_reference"; }
+    echo "$AROUT" | tail -1 || true; DEFERRED="$DEFERRED audio_reference"; }
 echo "$AROUT" | tail -1
 echo ""
 
@@ -297,7 +301,7 @@ echo ""
 echo "── finale_id_audit.py ──"
 FIOUT="$(python3 finale_id_audit.py 2>/dev/null)" || {
     echo "$FIOUT" | grep "^DEAD" | head -20
-    echo "$FIOUT" | tail -1; exit 1; }
+    echo "$FIOUT" | tail -1 || true; DEFERRED="$DEFERRED finale_id_audit"; }
 echo "$FIOUT" | tail -1
 echo ""
 
@@ -310,7 +314,7 @@ echo ""
 echo "── inside_out_audit.py ──"
 IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
     echo "$IOOUT" | grep -A1 "^PLACE" | head -30
-    echo "$IOOUT" | tail -1; exit 1; }
+    echo "$IOOUT" | tail -1 || true; DEFERRED="$DEFERRED inside_out_audit"; }
 echo "$IOOUT" | tail -1
 echo ""
 
@@ -322,7 +326,7 @@ echo ""
 echo "── placement_audit.py ──"
 PLOUT="$(python3 placement_audit.py 2>/dev/null)" || {
     echo "$PLOUT" | grep -E "^(OFF_WALL|FREE_SLAB|HALF_SLAB|TIGHT)" | head -20
-    echo "REGRESSION  placement_audit found a piece standing free of its wall (ceiling 0)"; exit 1; }
+    echo "REGRESSION  placement_audit found a piece standing free of its wall (ceiling 0)"; DEFERRED="$DEFERRED placement_audit"; }
 echo "$PLOUT" | tail -1
 echo ""
 
@@ -333,7 +337,7 @@ echo ""
 echo "── walkway_audit.py ──"
 WKOUT="$(python3 walkway_audit.py 2>/dev/null)" || {
     echo "$WKOUT" | grep "^CRAMPED" | head -20
-    echo "REGRESSION  walkway_audit found a lane too narrow to walk (ceiling 0)"; exit 1; }
+    echo "REGRESSION  walkway_audit found a lane too narrow to walk (ceiling 0)"; DEFERRED="$DEFERRED walkway_audit"; }
 echo "$WKOUT" | tail -1
 echo ""
 
@@ -343,7 +347,7 @@ echo ""
 echo "── case_access_audit.py ──"
 CAOUT="$(python3 case_access_audit.py 2>/dev/null)" || {
     echo "$CAOUT" | grep "^BLOCKED" | head -20
-    echo "REGRESSION  case_access_audit found a case whose doors cannot open (ceiling 0)"; exit 1; }
+    echo "REGRESSION  case_access_audit found a case whose doors cannot open (ceiling 0)"; DEFERRED="$DEFERRED case_access_audit"; }
 echo "$CAOUT" | tail -1
 echo ""
 
@@ -354,7 +358,7 @@ echo ""
 echo "── window_backing_audit.py ──"
 WBOUT="$(python3 window_backing_audit.py 2>/dev/null)" || {
     echo "$WBOUT" | grep "✗" | head -20
-    echo "REGRESSION  window_backing_audit found a window on a solid wall (ceiling 0)"; exit 1; }
+    echo "REGRESSION  window_backing_audit found a window on a solid wall (ceiling 0)"; DEFERRED="$DEFERRED window_backing_audit"; }
 echo "$WBOUT" | tail -1
 echo ""
 
@@ -366,7 +370,7 @@ echo ""
 echo "── seat_clearance_audit.py ──"
 SCOUT="$(python3 seat_clearance_audit.py 2>/dev/null)" || {
     echo "$SCOUT" | grep "✗" | head -20
-    echo "REGRESSION  seat_clearance_audit found facing seats with no room between (ceiling 0)"; exit 1; }
+    echo "REGRESSION  seat_clearance_audit found facing seats with no room between (ceiling 0)"; DEFERRED="$DEFERRED seat_clearance_audit"; }
 echo "$SCOUT" | tail -1
 echo ""
 
@@ -379,7 +383,7 @@ echo ""
 echo "── buried_decor_audit.py ──"
 BDOUT="$(python3 buried_decor_audit.py 2>/dev/null)" || {
     echo "$BDOUT" | grep "✗" | head -20
-    echo "REGRESSION  buried_decor_audit found wall decor inside a wall (ceiling 0)"; exit 1; }
+    echo "REGRESSION  buried_decor_audit found wall decor inside a wall (ceiling 0)"; DEFERRED="$DEFERRED buried_decor_audit"; }
 echo "$BDOUT" | tail -1
 echo ""
 
@@ -391,7 +395,7 @@ echo ""
 echo "── tscn_syntax_audit.py ──"
 TSOUT="$(python3 tscn_syntax_audit.py 2>/dev/null)" || {
     echo "$TSOUT" | grep -E "^(ARITY|UNDECL|MISSING|NOPARENT)" | head -20
-    echo "REGRESSION  tscn_syntax_audit found a scene Godot cannot parse (ceiling 0)"; exit 1; }
+    echo "REGRESSION  tscn_syntax_audit found a scene Godot cannot parse (ceiling 0)"; DEFERRED="$DEFERRED tscn_syntax_audit"; }
 echo "$TSOUT" | tail -1
 echo ""
 
@@ -402,7 +406,7 @@ echo ""
 echo "── trip_fight_audit.py ──"
 TFOUT="$(python3 trip_fight_audit.py 2>/dev/null)" || {
     echo "$TFOUT" | grep "^FIGHT" | head -20
-    echo "$TFOUT" | tail -1; exit 1; }
+    echo "$TFOUT" | tail -1 || true; DEFERRED="$DEFERRED trip_fight_audit"; }
 echo "$TFOUT" | tail -1
 echo ""
 
@@ -415,7 +419,7 @@ echo ""
 echo "── wrong_room_audit.py ──"
 WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
     echo "$WROUT" | grep "^ROOM" | head -20
-    echo "$WROUT" | tail -1; exit 1; }
+    echo "$WROUT" | tail -1 || true; DEFERRED="$DEFERRED wrong_room_audit"; }
 echo "$WROUT" | tail -1
 echo ""
 
@@ -431,14 +435,14 @@ echo ""
 echo "── trip_direction_audit.py ──"
 TDOUT="$(python3 trip_direction_audit.py 2>/dev/null)" || {
     echo "$TDOUT" | grep -E "^(SCENE|LEVEL|REG|BEAT)" | head -20
-    echo "$TDOUT" | tail -1; exit 1; }
+    echo "$TDOUT" | tail -1 || true; DEFERRED="$DEFERRED trip_direction_audit"; }
 echo "$TDOUT" | tail -1
 echo ""
 
 echo "── painting_spot_audit.py ──"
 PSOUT="$(python3 painting_spot_audit.py 2>/dev/null)" || {
     echo "$PSOUT" | grep -E "^(SPOTS|CUE)" | head -20
-    echo "$PSOUT" | tail -1; exit 1; }
+    echo "$PSOUT" | tail -1 || true; DEFERRED="$DEFERRED painting_spot_audit"; }
 echo "$PSOUT" | tail -1
 echo ""
 
@@ -450,7 +454,7 @@ echo ""
 echo "── sign_roof_audit.py ──"
 SROUT="$(python3 sign_roof_audit.py 2>/dev/null)" || {
     echo "$SROUT" | grep -E "^CUT" | head -20
-    echo "$SROUT" | tail -1; exit 1; }
+    echo "$SROUT" | tail -1 || true; DEFERRED="$DEFERRED sign_roof_audit"; }
 echo "$SROUT" | tail -1
 echo ""
 
@@ -463,7 +467,7 @@ echo ""
 echo "── hero_art_placement_audit.py --gate ──"
 HAOUT="$(python3 hero_art_placement_audit.py --gate 2>/dev/null)" || {
     echo "$HAOUT" | grep -E "^   (FACES-IN|OFF-FACE|MISFIT|FLOATING|NO-STANDIN|LEFTOVER|BADROW)" | head -20
-    echo "$HAOUT" | tail -1; exit 1; }
+    echo "$HAOUT" | tail -1 || true; DEFERRED="$DEFERRED hero_art_placement_audit"; }
 echo "$HAOUT" | tail -2
 echo ""
 
@@ -476,7 +480,7 @@ echo ""
 echo "── far_plane_audit.py ──"
 FPOUT="$(python3 far_plane_audit.py 2>/dev/null)" || {
     echo "$FPOUT" | grep "^CUT" | head -20
-    echo "$FPOUT" | tail -1; exit 1; }
+    echo "$FPOUT" | tail -1 || true; DEFERRED="$DEFERRED far_plane_audit"; }
 echo "$FPOUT" | tail -1
 echo ""
 
@@ -488,7 +492,7 @@ echo ""
 echo "── winding_audit.py ──"
 WDOUT="$(python3 winding_audit.py 2>/dev/null)" || {
     echo "$WDOUT" | grep "^REGRESSION" | head -20
-    echo "$WDOUT" | tail -1; exit 1; }
+    echo "$WDOUT" | tail -1 || true; DEFERRED="$DEFERRED winding_audit"; }
 echo "$WDOUT" | tail -1
 echo ""
 
@@ -508,35 +512,35 @@ OPOUT="$(python3 orphan_practical_audit.py 2>/dev/null)" && OPRC=0 || OPRC=$?   
 OPOUT="$(echo "$OPOUT" | grep -v "^\[build_")"   || true
 if [ "$OPRC" -ne 0 ]; then
     echo "$OPOUT" | grep -E "^(ORPHAN|DRIFTED)" | head -20
-    echo "REGRESSION  orphan_practical_audit found a light with no fixture (ceiling 0)"; exit 1; fi
+    echo "REGRESSION  orphan_practical_audit found a light with no fixture (ceiling 0)"; DEFERRED="$DEFERRED orphan_practical_audit"; fi
 echo "$OPOUT" | tail -1
 echo ""
 
 echo "── vn_skill_audit.py ──"
 SKOUT="$(python3 vn_skill_audit.py 2>/dev/null)" || {
     echo "$SKOUT" | grep -vE "^\s*$" | head -20
-    echo "REGRESSION  vn_skill_audit found a check the reader cannot pass (ceiling 0)"; exit 1; }
+    echo "REGRESSION  vn_skill_audit found a check the reader cannot pass (ceiling 0)"; DEFERRED="$DEFERRED vn_skill_audit"; }
 echo "$SKOUT" | tail -1
 echo ""
 
 echo "── support_audit.py (zero-regression gate) ──"
 SUOUT="$(python3 support_audit.py 2>/dev/null)" || {
     echo "$SUOUT" | grep -E "REGRESSION" | head -20
-    echo "REGRESSION  support_audit found a locale floating more than its baseline"; exit 1; }
+    echo "REGRESSION  support_audit found a locale floating more than its baseline"; DEFERRED="$DEFERRED support_audit"; }
 echo "$SUOUT" | tail -2
 echo ""
 
 echo "── vn_target_audit.py ──"
 TGOUT="$(python3 vn_target_audit.py 2>/dev/null)" || {
     echo "$TGOUT" | grep -vE "^\s*$" | head -20
-    echo "REGRESSION  vn_target_audit found a choice branch that lands wrong (ceiling 0)"; exit 1; }
+    echo "REGRESSION  vn_target_audit found a choice branch that lands wrong (ceiling 0)"; DEFERRED="$DEFERRED vn_target_audit"; }
 echo "$TGOUT" | tail -1
 echo ""
 
 echo "── page_length_audit.py ──"
 PLOUT="$(python3 page_length_audit.py 2>/dev/null)" || {
     echo "$PLOUT" | grep "^LONG" | head -20
-    echo "$PLOUT" | tail -1; DEFERRED="$DEFERRED page_length"; }
+    echo "$PLOUT" | tail -1 || true; DEFERRED="$DEFERRED page_length"; }
 echo "$PLOUT" | tail -1
 echo ""
 
@@ -549,7 +553,7 @@ echo ""
 echo "── locale_ambient_audit.py ──"
 LAOUT="$(python3 locale_ambient_audit.py 2>/dev/null)" || {
     echo "$LAOUT" | grep -E "^(NOHUM|NOFILE|OTHER)" | head -20
-    echo "$LAOUT" | tail -1; exit 1; }
+    echo "$LAOUT" | tail -1 || true; DEFERRED="$DEFERRED locale_ambient_audit"; }
 echo "$LAOUT" | tail -1
 echo ""
 
@@ -563,7 +567,7 @@ echo "$PHOUT" | tail -1
 PHN="$(echo "$PHOUT" | tail -1 | grep -oE "[0-9]+ unbacked" | grep -oE "^[0-9]+")"
 if [ "${PHN:-999}" -gt 0 ]; then
     echo "$PHOUT" | grep "^   L"
-    echo "REGRESSION  $PHN unbacked surface claim(s) (ceiling 0)"; exit 1; fi
+    echo "REGRESSION  $PHN unbacked surface claim(s) (ceiling 0)"; DEFERRED="$DEFERRED phantom_surface_audit"; fi
 echo ""
 
 # ── Prop budgets (2026-10-27) ─────────────────────────────────
@@ -571,7 +575,7 @@ echo ""
 # it is placed at, and a set's prop models together stay under two
 # characters' video memory. Nonzero fails.
 echo "── prop_budget_audit.py ──"
-python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; exit 1; }
+python3 prop_budget_audit.py || { echo "REGRESSION  prop_budget_audit (ceiling 0)"; DEFERRED="$DEFERRED prop_budget_audit"; }
 echo ""
 
 # FLOAT reached 2 on 2026-09-09 (two palmetto trunks on terrain samples)
@@ -581,7 +585,7 @@ FLOAT_CEILING=0
 N="$(echo "$GLINE" | grep -oE "FLOAT [0-9]+" | grep -oE "[0-9]+$")"
 if [ "${N:-999}" -gt "$FLOAT_CEILING" ]; then
     echo "$GOUT" | grep "^   FLOAT"
-    echo "REGRESSION  $N floating props (ceiling $FLOAT_CEILING)"; exit 1; fi
+    echo "REGRESSION  $N floating props (ceiling $FLOAT_CEILING)"; DEFERRED="$DEFERRED furniture_float"; fi
 echo ""
 
 if [ -n "$DEFERRED" ]; then

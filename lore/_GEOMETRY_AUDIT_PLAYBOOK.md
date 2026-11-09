@@ -158,6 +158,21 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-09 · a suite that stops at its first failure hides every gate after it (pass 314)
+
+- **What happened:** three art entries lost all their surfaces in pass 307,
+  and `meshy_pipeline.load_roster` (the Hero Studio's loader) exits on that.
+  The gate that runs the loader, `prop_budget_audit`, sits near the END of
+  `run_all_audits.sh` — and four runs in a row stopped earlier (winding,
+  support, locale ambient), each fixed and only THAT gate re-run before a
+  push. The broken roster went out behind them.
+- **Rule:** every gate defers its failure to the end (`DEFERRED`); only the
+  Drive gates stop the run. After fixing a failure, re-run the suite — or at
+  least every gate after the one that failed — before pushing. A `grep` that
+  prints a failing gate's lines gets `|| true` (under `set -e` a grep with no
+  match exits the script before the failure is recorded).
+- **Gate:** the suite's last line names every failed gate.
+
 ### 2026-11-09 · a depth floor is blind to THIN parts: ask the shape question instead (pass 309)
 
 - **The blind spot.** prop_overlap_audit skips any clip under 4 cm deep

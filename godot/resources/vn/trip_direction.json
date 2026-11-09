@@ -58,28 +58,30 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol1_ch10_longboat": {
-   "level": 0.5,
-   "why": "plain: the weight lands without the trip — judge ×3, bank ×1"
+   "level": 1.4,
+   "why": "(read 2026-11-09) the car becomes a boat: the street goes to water, the tires make the noise of oars, the wheel is a tiller and a wheel again, a figure hails them from the bank — a vision written in plain words the count cannot see (it had set this PLAIN on 'Judgement Day' and a river bank)",
+   "locked": true
   },
   "vol1_ch11_aisles": {
    "level": 1.0,
    "why": "the volume's own — music ×1"
   },
   "vol1_ch11_drugstore": {
-   "level": 1.0,
-   "why": "the volume's own — music ×4"
+   "level": 1.2,
+   "why": "leans uncanny — music ×4"
   },
   "vol1_ch12_history": {
-   "level": 0.75,
-   "why": "grounded — boss ×1, bank ×1, paperwork ×1"
+   "level": 1.4,
+   "why": "(read 2026-11-09) HISTORY is a hangar the size of a sky: an aircraft for every year, ledgers past sight, clerks with no faces; Jacob's shirt-Air lifts off him — dreamlike in plain words (count: 0.75)",
+   "locked": true
   },
   "vol1_ch13_deep_end": {
    "level": 1.4,
    "why": "dreamlike — riff ×11, guitar ×2, float ×2, music ×1"
   },
   "vol1_ch14_painting": {
-   "level": 1.0,
-   "why": "the volume's own — spirit ×1, dream ×1",
+   "level": 1.4,
+   "why": "(read 2026-11-09) the ART aisle opens onto the inside of a canvas, wet gesso, painted water / fire / air, the elementals stepping off the shirts — dreamlike in plain words",
    "beats": [
     {
      "node": 96,
@@ -87,11 +89,13 @@
      "hold": 3,
      "why": "a weight the trip steps back from (killed)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol1_ch15_river_turn": {
-   "level": 0.75,
-   "why": "grounded — judge ×3, grave ×1, bank ×1"
+   "level": 1.2,
+   "why": "(read 2026-11-09) Judgement Day waiting where the painted water meets the real, the boat pulling away, the drugstore shrinking to a star — leans uncanny",
+   "locked": true
   },
   "vol1_ch16_four_am": {
    "level": 1.0,
@@ -214,8 +218,8 @@
    "why": "leans uncanny — dream ×2, music ×1, magic ×1"
   },
   "vol1_ch6_debrief": {
-   "level": 1.0,
-   "why": "the volume's own — stars ×1, cosmos ×1, kaleidoscop ×1, dream ×1",
+   "level": 1.2,
+   "why": "leans uncanny — stars ×1, cosmos ×1, kaleidoscop ×1, dream ×1",
    "beats": [
     {
      "node": 34,
@@ -226,8 +230,8 @@
    ]
   },
   "vol1_ch6_judgement_day": {
-   "level": 0.75,
-   "why": "grounded — judge ×2"
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
   },
   "vol1_ch6_office": {
    "level": 1.2,
@@ -266,8 +270,9 @@
    ]
   },
   "vol1_ch9_street": {
-   "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "level": 1.2,
+   "why": "(read 2026-11-09) every streetlight with a halo and each halo its own halo, an ad for a product that does not exist yet, the shirt prints moving — leans uncanny",
+   "locked": true
   },
   "vol1_end": {
    "level": 1.0,
@@ -568,7 +573,7 @@
   },
   "vol2_ch6_mayhune": {
    "level": 0.75,
-   "why": "grounded — doctor ×2, sick ×2, court ×1; mostly remembering (remember ×8, childhood ×2): memory register",
+   "why": "grounded — doctor ×2, sick ×2; mostly remembering (remember ×8, childhood ×2): memory register",
    "register": "memory"
   },
   "vol2_ch6_sacrificial_pair": {
@@ -634,8 +639,9 @@
    "why": "the volume's own — ghost ×1"
   },
   "vol2_ch9_flotsam": {
-   "level": 0.75,
-   "why": "grounded — died ×2"
+   "level": 1.2,
+   "why": "(read 2026-11-09) a ghost narrates her own death and watches her killer from the trees, leaves pressing under feet that should not press them — uncanny, not a grief (count: grounded on 'died')",
+   "locked": true
   },
   "vol2_ch9_truck": {
    "level": 0.75,
@@ -860,8 +866,8 @@
    "why": "dreamlike — dream ×5, cosmos ×1, spiral ×1, music ×1"
   },
   "vol3_ch6_dabney": {
-   "level": 0.75,
-   "why": "grounded — court ×2, shift ×1"
+   "level": 1.0,
+   "why": "the volume's own — music ×1, song ×1"
   },
   "vol3_ch6_game_room": {
    "level": 1.0,
@@ -896,8 +902,8 @@
    "why": "the volume's own — dream ×1, lsd ×1"
   },
   "vol3_ch7_emulsion": {
-   "level": 0.5,
-   "why": "plain: the weight lands without the trip — sick ×2, cancer ×2, court ×1, died ×1"
+   "level": 0.75,
+   "why": "grounded — sick ×2, cancer ×2, died ×1, doctor ×1"
   },
   "vol3_ch7_red_dust": {
    "level": 1.0,
@@ -1028,8 +1034,8 @@
    "why": "dreamlike — vision ×3, dream ×2, ghost ×1"
   },
   "vol4_drawer_komodo_dawn": {
-   "level": 0.75,
-   "why": "grounded — money ×2, judge ×1"
+   "level": 1.0,
+   "why": "the volume's own — dream ×1, stars ×1"
   },
   "vol4_drawer_pantheon": {
    "level": 1.2,
@@ -1409,7 +1415,7 @@
   },
   "vol5_ch10_wheel": {
    "level": 0.5,
-   "why": "plain: the weight lands without the trip — contract ×8, lawyer ×7, email ×5, court ×4"
+   "why": "plain: the weight lands without the trip — contract ×8, lawyer ×7, email ×5, money ×2"
   },
   "vol5_ch11_justice": {
    "level": 0.5,
@@ -1421,7 +1427,7 @@
   },
   "vol5_ch13_death": {
    "level": 0.5,
-   "why": "plain: the weight lands without the trip — court ×7, nurse ×6, died ×4, money ×3; a grief / a hospital (hospice ×6, died ×4, hospital ×1): vigil register",
+   "why": "plain: the weight lands without the trip — nurse ×6, died ×4, money ×3, lawyer ×2; a grief / a hospital (hospice ×6, died ×4, hospital ×1): vigil register",
    "register": "vigil"
   },
   "vol5_ch14_temperance": {
@@ -1462,7 +1468,7 @@
   },
   "vol5_ch19_sun": {
    "level": 0.75,
-   "why": "grounded — email ×3, meeting ×3, contract ×1, judge ×1"
+   "why": "grounded — email ×3, meeting ×3, contract ×1"
   },
   "vol5_ch1_magician": {
    "level": 1.4,
@@ -1555,7 +1561,7 @@
   },
   "vol5_ch7_chariot": {
    "level": 0.75,
-   "why": "grounded — money ×3, boss ×2, court ×2, email ×1"
+   "why": "grounded — money ×3, boss ×2, email ×1, lawyer ×1"
   },
   "vol5_ch8_strength": {
    "level": 1.0,
@@ -1749,7 +1755,7 @@
   },
   "vol6_ch11_kitchen": {
    "level": 0.75,
-   "why": "grounded — died ×3, shift ×1, court ×1, interrog ×1; a kitchen-and-morning room (morning ×26, kitchen ×13, coffee ×12): domestic register",
+   "why": "grounded — died ×3, shift ×1, courthouse ×1, interrog ×1; a kitchen-and-morning room (morning ×26, kitchen ×13, coffee ×12): domestic register",
    "register": "domestic"
   },
   "vol6_ch11_stub": {
@@ -1937,7 +1943,7 @@
   },
   "vol6_ch22_bianca": {
    "level": 0.75,
-   "why": "grounded — court ×3, funeral ×3, died ×3, sick ×2; a kitchen-and-morning room (morning ×24, kitchen ×13, coffee ×10): domestic register",
+   "why": "grounded — funeral ×3, died ×3, court ×2, sick ×2; a kitchen-and-morning room (morning ×24, kitchen ×13, coffee ×10): domestic register",
    "register": "domestic"
   },
   "vol6_ch22_foxhole": {
@@ -2149,8 +2155,8 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol6_ch6_interstate": {
-   "level": 0.75,
-   "why": "grounded — contract ×3, court ×1"
+   "level": 1.0,
+   "why": "the volume's own — demon ×2"
   },
   "vol6_ch6_jesse_bedroom": {
    "level": 1.0,
@@ -2190,7 +2196,7 @@
   },
   "vol6_ch6_sam_bedroom": {
    "level": 0.75,
-   "why": "grounded — court ×1, spreadsheet ×1, bill ×1; a kitchen-and-morning room (dishes ×3, morning ×3, kitchen ×2): domestic register",
+   "why": "grounded — courthouse ×1, spreadsheet ×1, bill ×1; a kitchen-and-morning room (dishes ×3, morning ×3, kitchen ×2): domestic register",
    "register": "domestic"
   },
   "vol6_ch6_stub": {
@@ -2207,7 +2213,7 @@
   },
   "vol6_ch7_henderson_driveway": {
    "level": 0.75,
-   "why": "grounded — hospital ×2, court ×1"
+   "why": "grounded — hospital ×2, courthouse ×1"
   },
   "vol6_ch7_henderson_kitchen": {
    "level": 0.75,
@@ -2232,7 +2238,7 @@
   },
   "vol6_ch8_courthouse": {
    "level": 0.5,
-   "why": "plain: the weight lands without the trip — court ×17, judge ×13, lawyer ×8, shift ×2",
+   "why": "plain: the weight lands without the trip — judge ×13, courtroom ×8, lawyer ×8, court ×6",
    "beats": [
     {
      "node": 26,

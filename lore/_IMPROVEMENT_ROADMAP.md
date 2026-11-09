@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 314: the roster loads again; the suite reports every failure.**
+- Pass 307 emptied three art entries' `apply` (the sanderling patch made a
+  void; the Shanghai far cards and the barn's old high panel removed from
+  their builders) — `meshy_pipeline.load_roster` exits on an art entry with
+  no surface, so the Hero Studio could not load the roster from 6b7e3159
+  until 334a939f. Restored: the patch and the Shanghai cards keep rows OFF
+  in every view (`not_presets`); crumpled_barn_sign_2 re-laid on the rebuilt
+  sign's surf relief.
+- Why it got out: `run_all_audits.sh` stopped at its first failing gate, and
+  the loader's gate (prop_budget) is near the end. Now all 38 gates DEFER to
+  the end and the last line names every failure; only the Drive gates stop
+  the run.
+
 **2026-11-09 · pass 313: the trip, read — vol 7 and vol 6's flagged scenes (16 locks).**
 - Phase 3 of the VN plan, draft 2: the word-count direction read against the
   prose where counts mislead most (grief words in backstory; "dream" and
@@ -3853,9 +3866,21 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   the corpus; Judge, Nurse, DJ, The Demon mean what they say).
 - vol6_ch10_home locked 1.0 with one beat: the trip swells for the dream of
   the dock and the haze (13 lines), not the whole homecoming.
+- **Vols 5 → 1, the flagged scenes, and vol 1's 1.0s (5 more locks):** a
+  second scorer bug — `judge` matched "Judgement" (the Tarot card, Faust's
+  car Judgement Day): now the person only (=judge, =judges); six scenes
+  freed. Vol 1 writes its visions in PLAIN words the count cannot see —
+  locked: ch10_longboat 0.5 → 1.4 (the car becomes a boat), ch12_history
+  0.75 → 1.4 (the hangar the size of a sky, the faceless clerks),
+  ch14_painting 1.0 → 1.4 (inside the canvas), ch15_river_turn and ch9_street
+  1.0 → 1.2; vol2_ch9_flotsam (a ghost narrating her own death) 0.75 → 1.2.
+  A third scorer narrowing: `court` matched courtesy / courted / courtyard —
+  now court, courts, courtroom, courthouse. Vol 5's flagged scenes read right
+  as counted. 22 locks in all.
 - **Draft 3 targets:** vol 7's remaining 1.0 scenes read in full (the ch6 Cale
-  chain, ch8's apartment chain); vol 5 → vol 1 the same way; MEMORY for the
-  flashbacks the text names.
+  chain, ch8's apartment chain); vols 2–4 in full (vol 4's prose-poem
+  stories, vol 3's couch and binder); MEMORY for the flashbacks the text
+  names.
 
 **2026-11-09 · pass 312: portraits SLIDE between slots; `hide center` works on 3D sets.**
 - Phase 5 of the VN plan, draft 2. Two runtime faults under the 32 "jumps":

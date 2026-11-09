@@ -49,7 +49,7 @@ HIGH = [
 ]
 LOW = [
     "hospital", "funeral", "=grave", "grief", "griev", "=died", "cancer", "sick", "doctor",
-    "nurse", "court", "lawyer", "judge", "police", "officer", "arrest", "interrog", "contract",
+    "nurse", "=court", "=courts", "courtroom", "courthouse", "lawyer", "=judge", "=judges", "police", "officer", "arrest", "interrog", "contract",
     "paperwork", "invoice", "=rent", "money", "=bank", "debt", "homework", "boss", "meeting",
     "spreadsheet", "email", "=shift", "clocked", "taxes", "insurance", "=bill", "=bills",
 ]
@@ -77,7 +77,11 @@ CUE = re.compile(r"\[[^\]]*\]")
 # (score per 1000 words, minimum hits) → level. Absolute, not by rank: a
 # scene with little signal either way keeps the volume's own level (a single
 # "judge" in a short scene is not plainness; "death" is often the Tarot card
-# or a myth in this book, so only died / funeral / hospital count)
+# or a myth in this book, so only died / funeral / hospital count; likewise
+# "Judgement" is the Tarot card or Faust's car Judgement Day, so only the
+# person, judge / judges, counts (and "court" is the court, not courtesy,
+# courted or a courtyard) — 2026-11-09: vol1_ch10_longboat, where the
+# car becomes a boat, was set PLAIN on "Judgement Day" and a river "bank")
 def _level_for(score, hi_n, lo_n):
     if score >= 10.0 and hi_n >= 6:
         return 1.40, "dreamlike"
