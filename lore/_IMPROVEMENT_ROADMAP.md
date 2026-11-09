@@ -3835,6 +3835,54 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 311: the 14 duplicate window pictures — one per surface, or one per time of day.**
+- The user ("Are the pictures by day or night? ... I'll just let you decide"):
+  a contact sheet of the 23 pictures read from the Drive (read-only), then
+  the picks, made from the chapters that play in each room. A losing picture
+  is OFF by the established form (`not_presets` = every preset of its room);
+  no picture or file is deleted, each row's notes say why.
+- **Kept both, split by time:** MISSING LINK — night views (pumps, road) on
+  `missing_link_interior` (vol 1, vol 7 ch9 Tuesday night); the four day panes
+  on the NEW preset `missing_link_interior_noon` (vol 7 ch16 "at noon", its bg
+  repointed; the night street spill suffixed to the night key, a grey
+  `Daylight_Front__missing_link_interior_noon` through the front windows).
+  HOSPICE — the pre-dawn lot on `hospice_room_night` (ch13, canon), the garden
+  at first light on `hospice_room` (ch20, 10:47 AM).
+- **One kept:** Daily Grind — the per-pane views (win_s_0..2, win_w_0/1), not
+  the one view stretched over every pane; Kowalski + Roberts — the clean
+  views (the `_view` ones paint a window frame into the picture; Roberts' also
+  has a wooden fence for the builder's limestone); Sam — sam_bedroom_window
+  (ch0's cracked sprinkler jet); Montreal — the sunlit `_view` (the snow came
+  from a builder docstring, not the text: ch14 is "late-morning sunlight").
+- hero_art_placement_audit: DUPLICATE 14 → 0.
+- **Read in the room (renders with the pictures copied in, uncommitted):** two
+  window inserts were aimed wrong before any of this — vol 1's
+  `[shot:insert glass]` (shot_insert_glass__missing_link_interior) saw a grey
+  pane edge-on; now it stands at the west pane with the pumps, the bench and
+  the rain filling the frame. Vol 7 ch2's "stood at the window looking out
+  at the slate-gray light over Main" (daily_grind_interior shot_insert_window)
+  looked 50° down at the floor; now level, out across Main.
+- **The full suite's one failure, fixed:** winding_audit REGRESSION
+  meadowlark_circle 6 (baseline 2) — `_props/buildings.py`'s foundation
+  shrubs: a lathe whose centre was its own bottom tip, so every bottom face's
+  plane held the centre and `_fix_winding` tossed a coin on rounding; moving
+  the Meadowlark houses flipped four more. Centre moved to the shrub's middle
+  (same shape). 998 → 992 inside-out, baseline lowered. Deck --stale rebuilds
+  meadowlark_circle, new_auburn_road, small_wood_road (the helper's users).
+- **The scoped suite's support_audit, fixed (my pass 309 moves):** Thomas's
+  photo (caldwell_radio_room_night) had leaned on the lamp's base; moved
+  clear of it, it hung 2 cm over the desk — seated (its roster row follows,
+  z 0.85 → 0.83). Vol 4's sale banners, brought out from behind the fascia,
+  hung 30 cm from any shell — two `Sale_Banner_Clip_{k}_±1` per banner hook
+  them under the fascia (named OUT of the `Sale_Banner_Hang_k` prefix: HeroArt
+  hides prefixed parts under a picture). Deck rebuilds both via --stale.
+- **Draft 2 targets:** a night picture for the Kowalski kitchen window (ch7
+  hospital night plays there with a daytime yard) and a
+  `kowalski_kitchen_night` key — to LIST for the user to generate, not made;
+  Sam's room also plays at 6:13 dawn and in rain on one key; the noon Missing
+  Link's daylight read on the Deck (the room's key/fill are still the night
+  diner's warm fluorescents).
+
 **2026-11-09 · pass 310: the VN plan, and its first drafts — art clarity, the director on the art, scene registers, portraits held.**
 - **The plan:** `lore/_VN_IMPROVEMENT_PLAN_2026_11.md` (five phases with gates; status at its foot).
 - **Shipped:** ArtMask (the renderer steps back over pictures: 58 % → 91 % detail); art focus + ambient focus + wider noticing; registers memory / broadcast / vigil, art breath, the void on the beat; portrait_staging_fix (76 flickers retired in place; the `retired` node type).

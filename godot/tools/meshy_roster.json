@@ -18748,7 +18748,7 @@
       "prompt": "Exterior view only, looking out from the front of a small roadside diner and bus-stop depot on the Oregon coast. In the foreground the edge of a wet black asphalt apron, then a two-lane country road running left to right with a faded yellow dashed centre line, a rough meadow of wet grass beyond it, and a dark wall of Douglas fir, Sitka spruce and red alder about thirty metres off, rising to low forested coastal hills lost in drizzle. On the far left, the base of a tall pole sign. Steel-grey Pacific overcast, rain streaking the air, everything glossy and muted green-grey. 8:7 format.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) From build_outside (apron, road, field, treeline, pole sign west). Time chosen as rainy overcast day; vol1 plays at night in rain, vol7 at Saturday noon. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) From build_outside (apron, road, field, treeline, pole sign west). Time chosen as rainy overcast day; vol1 plays at night in rain, vol7 at Saturday noon. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) DAY: vol 7 ch16 at noon (missing_link_interior_noon) only; the night views show on the night key.",
       "art_cat": "WINDOW",
       "score_lines": 154,
       "score_mentions": 3,
@@ -18768,6 +18768,9 @@
           "facing": "+y",
           "hide": [
             "Window_0_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior"
           ]
         }
       ]
@@ -18788,7 +18791,7 @@
       "prompt": "Exterior view only, looking out from the front of a small roadside diner and bus-stop depot on the Oregon coast. Wet asphalt apron in the foreground with puddles reflecting the grey sky, a concrete pump island with an old red fuel pump on it, then the empty two-lane road, a strip of soggy meadow, and the dark ragged treeline of fir and spruce with alders at its edge; low cloud dragging across the forested hills behind. Fine rain, soft flat Pacific Northwest light, muted greens and slate greys. 8:7 format.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Pumps stand in front of windows 2-3 in the builder; time of day chosen. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Pumps stand in front of windows 2-3 in the builder; time of day chosen. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) DAY: vol 7 ch16 at noon (missing_link_interior_noon) only; the night views show on the night key.",
       "art_cat": "WINDOW",
       "score_lines": 154,
       "score_mentions": 3,
@@ -18808,6 +18811,9 @@
           "facing": "+y",
           "hide": [
             "Window_1_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior"
           ]
         }
       ]
@@ -18828,7 +18834,7 @@
       "prompt": "Exterior view only, looking out from the front of a small roadside diner and bus-stop depot on the Oregon coast. A retired fuel pump, grey and dead, stands on its island at the left; beyond the rain-slick apron, the two-lane road runs past with no traffic, its dashed line worn; across it a wet meadow of tall grass and fireweed going to seed, and the dense dark conifer treeline with a mist layer hanging in it. Overcast late-summer coastal weather, steady drizzle, low saturation. 8:7 format.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Retired west pump from the builder; time of day chosen. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Retired west pump from the builder; time of day chosen. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) DAY: vol 7 ch16 at noon (missing_link_interior_noon) only; the night views show on the night key.",
       "art_cat": "WINDOW",
       "score_lines": 154,
       "score_mentions": 3,
@@ -18848,6 +18854,9 @@
           "facing": "+y",
           "hide": [
             "Window_2_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior"
           ]
         }
       ]
@@ -18873,7 +18882,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Awning, bench and lamppost east of the door from the builder; daytime chosen (prose is night). (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Awning, bench and lamppost east of the door from the builder; daytime chosen (prose is night). (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) DAY: vol 7 ch16 at noon (missing_link_interior_noon) only; the night views show on the night key.",
       "art_cat": "WINDOW",
       "score_lines": 154,
       "score_mentions": 3,
@@ -18893,6 +18902,9 @@
           "facing": "+y",
           "hide": [
             "Window_3_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior"
           ]
         }
       ]
@@ -20682,7 +20694,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) garden contents (lawn, path, hedge, birch, bench, far trees) from builder D5; dawn and city from ch13/ch18 ('the particular yellow-grey that the Gulf Coast did in late April') (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) garden contents (lawn, path, hedge, birch, bench, far trees) from builder D5; dawn and city from ch13/ch18 ('the particular yellow-grey that the Gulf Coast did in late April') (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) DAY: the garden at first light shows on hospice_room (ch20, 10:47 AM); the pre-dawn lot shows on hospice_room_night (ch13).",
       "art_cat": "WINDOW",
       "score_lines": 131,
       "score_mentions": 12,
@@ -20702,6 +20714,9 @@
           "facing": "-y",
           "hide": [
             "Window_N_Glass"
+          ],
+          "not_presets": [
+            "hospice_room_night"
           ]
         }
       ]
@@ -20867,7 +20882,7 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Geography from the builder's alley (brick, moss, drainpipe with graffiti, blue bins); winter from the builder docstring. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Geography from the builder's alley (brick, moss, drainpipe with graffiti, blue bins); winter from the builder docstring. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) PICKED OFF: snow in the alley came from the builder docstring, not the text; the text is a shaft of late-morning sunlight (ch14, ch20 in spring). montreal_apartment_window_view shows.",
       "art_cat": "WINDOW",
       "score_lines": 123,
       "score_mentions": 3,
@@ -20887,6 +20902,9 @@
           "facing": "-y",
           "hide": [
             "Window_N_Glass"
+          ],
+          "not_presets": [
+            "montreal_apartment"
           ]
         }
       ]
@@ -21586,7 +21604,7 @@
           "center": [
             2.1,
             1.73,
-            0.85
+            0.83
           ],
           "size": [
             0.14,
@@ -56793,7 +56811,7 @@
           "text": "gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) PICKED OFF: a window frame is painted into the picture (a frame inside the real frame); kowalski_kitchen_window shows.",
       "art_cat": "WINDOW",
       "score_lines": 294,
       "score_mentions": 2,
@@ -56813,6 +56831,9 @@
           "facing": "-x",
           "hide": [
             "Window_E_Glass"
+          ],
+          "not_presets": [
+            "kowalski_kitchen"
           ]
         }
       ],
@@ -56840,7 +56861,7 @@
           "text": "A slow, maddeningly patient counterpoint to the frantic chirping of some unidentifiable bird just outside the window, probably plotting the demise of Mackenzie's newly sprouted tomato seedlings."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) PICKED OFF: a window frame painted into the picture, and a wooden fence where the builder has the limestone one; roberts_kitchen_window (spring Saturday morning, ch21) shows.",
       "art_cat": "WINDOW",
       "score_lines": 144,
       "score_mentions": 5,
@@ -56860,6 +56881,9 @@
           "facing": "-x",
           "hide": [
             "Window_E_Glass"
+          ],
+          "not_presets": [
+            "roberts_kitchen"
           ]
         }
       ]
@@ -56890,7 +56914,7 @@
           "text": "Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) PICKED OFF: one view stretched over the three front panes; each pane keeps its own (daily_grind_interior_win_s_0..2_glass, drawn per pane, same rainy late-August afternoon).",
       "art_cat": "WINDOW",
       "score_lines": 155,
       "score_mentions": 2,
@@ -56910,6 +56934,9 @@
           "facing": "+y",
           "hide": [
             "Win_S_0_Glass"
+          ],
+          "not_presets": [
+            "daily_grind_interior"
           ]
         },
         {
@@ -56927,6 +56954,9 @@
           "facing": "+y",
           "hide": [
             "Win_S_1_Glass"
+          ],
+          "not_presets": [
+            "daily_grind_interior"
           ]
         },
         {
@@ -56944,6 +56974,9 @@
           "facing": "+y",
           "hide": [
             "Win_S_2_Glass"
+          ],
+          "not_presets": [
+            "daily_grind_interior"
           ]
         }
       ]
@@ -56970,7 +57003,7 @@
           "text": "Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) PICKED OFF: the two side panes keep their own (daily_grind_interior_win_w_0/1_glass).",
       "art_cat": "WINDOW",
       "score_lines": 155,
       "score_mentions": 2,
@@ -56990,6 +57023,9 @@
           "facing": "+x",
           "hide": [
             "Win_W_0_Glass"
+          ],
+          "not_presets": [
+            "daily_grind_interior"
           ]
         },
         {
@@ -57007,6 +57043,9 @@
           "facing": "+x",
           "hide": [
             "Win_W_1_Glass"
+          ],
+          "not_presets": [
+            "daily_grind_interior"
           ]
         }
       ]
@@ -57038,7 +57077,7 @@
           "text": "Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) NIGHT: vol 1 and vol 7 ch9 (Tuesday night) on missing_link_interior; skips the noon preset.",
       "art_cat": "WINDOW",
       "score_lines": 154,
       "score_mentions": 3,
@@ -57058,6 +57097,9 @@
           "facing": "+y",
           "hide": [
             "Window_0_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior_noon"
           ]
         },
         {
@@ -57075,6 +57117,9 @@
           "facing": "+y",
           "hide": [
             "Window_2_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior_noon"
           ]
         }
       ],
@@ -57103,7 +57148,7 @@
           "text": "The glass is glazed with rain on the outside and breath on the inside."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) NIGHT: vol 1 and vol 7 ch9 on missing_link_interior; skips the noon preset.",
       "art_cat": "WINDOW",
       "score_lines": 154,
       "score_mentions": 3,
@@ -57123,6 +57168,9 @@
           "facing": "+y",
           "hide": [
             "Window_1_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior_noon"
           ]
         },
         {
@@ -57140,6 +57188,9 @@
           "facing": "+y",
           "hide": [
             "Window_3_Glass"
+          ],
+          "not_presets": [
+            "missing_link_interior_noon"
           ]
         }
       ],
@@ -57167,7 +57218,7 @@
           "text": "She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-10-27, meta-text pass: \"I want a rich, detailed meta-text\") Replaced the 'no readable letters' plate with the canon NexCorp logo on the mailbox; house number and street sign invented.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-10-27, meta-text pass: \"I want a rich, detailed meta-text\") Replaced the 'no readable letters' plate with the canon NexCorp logo on the mailbox; house number and street sign invented. (2026-11-09) PICKED OFF: sam_bedroom_window shows — it has ch0's cracked sprinkler throwing its jet across the sidewalk.",
       "art_cat": "WINDOW",
       "score_lines": 133,
       "score_mentions": 7,
@@ -57187,6 +57238,9 @@
           "facing": "-y",
           "hide": [
             "Window_Glass"
+          ],
+          "not_presets": [
+            "sam_bedroom"
           ]
         }
       ],
@@ -57219,7 +57273,7 @@
           "text": "Outside, the city of Simons, Louisiana, kept its quiet pre-dawn."
         }
       ],
-      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB.",
+      "notes": "WINDOW VIEW (2026-10-27): this pane looked onto nothing (no geometry behind the glass). Written from the scenes that look through it; HeroArt lays it on the pane and hides the glass. Pane rows measured from the built GLB. (2026-11-09) NIGHT: ch13's pre-dawn (hospice_room_night) only; the day room shows the garden.",
       "art_cat": "WINDOW",
       "score_lines": 131,
       "score_mentions": 12,
@@ -57239,6 +57293,9 @@
           "facing": "-y",
           "hide": [
             "Window_N_Glass"
+          ],
+          "not_presets": [
+            "hospice_room"
           ]
         }
       ]

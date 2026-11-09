@@ -239,6 +239,11 @@ def build_store():
         # (2026-11-09) hung below the fascia (its bottom at Z2 - 0.55), not
         # behind it: the top quarter of each banner was lost under it
         make_box(f"Sale_Banner_Hang_{k}", (x, 12.1, Z2 - 0.60 - 0.45), (2.6, 0.03, 0.9), ((0.80, 0.30, 0.26, 1.0), (0.86, 0.80, 0.56, 1.0))[k % 2])
+        # (2026-11-09) hung FROM the fascia: two clips from the banner's top
+        # edge up under the fascia (support_audit: the banners floated 30 cm
+        # off any shell once they came out from behind it)
+        for s in (-1, 1):
+            make_box(f"Sale_Banner_Clip_{k}_{s:+d}", (x + s * 1.1, 12.04, Z2 - 0.57), (0.03, 0.13, 0.10), (0.30, 0.30, 0.32, 1.0))
         make_rot_box(f"Sale_Banner_Fallen_{k}", (x + 0.6, 9.8 - (k % 2) * 1.2, 0.015), (2.0, 0.6, 0.03), ((0.74, 0.28, 0.24, 1.0), (0.80, 0.74, 0.52, 1.0))[k % 2],
                      yaw=0.3 * (k - 1.5))
     for k in range(3):

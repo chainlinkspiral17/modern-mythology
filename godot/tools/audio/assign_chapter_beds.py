@@ -190,6 +190,7 @@ PLACES = {
         "accretion_corridor": "vol7_kestrel_circle",
         "cathedral_interior": "vol5_cathedral_drone",
         "missing_link_interior": "vol1_diner_ambient",
+        "missing_link_interior_noon": "vol1_diner_ambient",   # ch16 at noon (2026-11-09)
     },
 }
 

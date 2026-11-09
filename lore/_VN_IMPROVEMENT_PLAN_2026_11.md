@@ -106,7 +106,8 @@ pictures were on screen.
 - **Outstanding:**
   - the 170 COVERED reads (most natural; the structural ones read one by
     one — the Caldwell porch's wall over the facade picture);
-  - the 14 DUPLICATE window pairs — the user picks which picture stays;
+  - ~~the 14 DUPLICATE window pairs~~ — picked 2026-11-09 (pass 311: the
+    Missing Link and the hospice split by time of day, the rest one each);
   - the Deck read of every rebuilt set WITH the installed pictures (this
     container has none): a contact sheet per preset, read against the
     audits;

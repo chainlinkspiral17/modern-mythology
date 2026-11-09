@@ -187,11 +187,20 @@ light_color = Color(0.5, 0.56, 0.66, 1)
 light_energy = 0.22
 shadow_enabled = false
 
-[node name="StreetSpill_Exterior" type="OmniLight3D" parent="."]
+[node name="StreetSpill_Exterior__missing_link_interior" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 1.4)
 light_color = Color(0.46, 0.54, 0.66, 1)
 light_energy = 0.7
 omni_range = 5.5
+shadow_enabled = false
+
+; (2026-11-09) noon, vol 7 ch16: an overcast coast daylight through the four
+; front windows (6500 K grey, broad and soft), in place of the night spill
+[node name="Daylight_Front__missing_link_interior_noon" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 1.6)
+light_color = Color(0.84, 0.88, 0.94, 1)
+light_energy = 1.1
+omni_range = 7.5
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -453,6 +462,6 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_glass__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.650, 1.382, -0.751)
-rotation = Vector3(-0.2618, -2.8198, 0.0)
-metadata/fov = 35.0
+position = Vector3(-3.550, 1.620, -1.250)
+rotation = Vector3(-0.0360, 2.8670, 0.0)
+metadata/fov = 46.0

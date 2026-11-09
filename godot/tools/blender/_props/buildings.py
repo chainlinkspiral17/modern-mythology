@@ -132,9 +132,15 @@ def make_ranch_house(prefix, cx, cy, front, wall_col, roof_col, w=11.0, d=8.0, h
         make_box(f"{prefix}_Garage_Apron", P(gu, fv + 1.6, 0.015), S(3.2, 3.0, 0.03), CONCRETE)
     # ── foundation shrubs
     if shrubs:
+        # (2026-11-09) the lathe's centre at the shrub's MIDDLE (0.42 up, the
+        # profile shifted down by as much — the same shape): make_lathe judges
+        # each face's winding from its centre, and a centre AT the bottom tip
+        # lies in the plane of every bottom face, so their winding was a coin
+        # toss on rounding — winding_audit found them inside out wherever the
+        # house happened to stand (Meadowlark: 6)
         for si, su in enumerate((1.9, 2.5, 4.6)):
-            make_lathe(f"{prefix}_Shrub_{si}", P(su, fv + 0.55, 0.12),
-                       [(0.0, 0.0), (0.38, 0.12), (0.46, 0.40), (0.34, 0.70), (0.0, 0.84)], SHRUB, segments=8)
+            make_lathe(f"{prefix}_Shrub_{si}", P(su, fv + 0.55, 0.54),
+                       [(0.0, -0.42), (0.38, -0.30), (0.46, -0.02), (0.34, 0.28), (0.0, 0.42)], SHRUB, segments=8)
 
 
 def make_shed(prefix, cx, cy, front="+X", w=3.0, d=2.4, h=2.3, wall_col=(0.50, 0.46, 0.40, 1.0), roof_col=(0.56, 0.58, 0.58, 1.0)):

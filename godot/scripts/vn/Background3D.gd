@@ -3133,6 +3133,22 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	"missing_link_interior_noon": {
+		"scene": "res://scenes/locales/missing_link_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_interior.glb",
+		# (2026-11-09) THE SAME DINER AT NOON: vol 7 ch16 ("He went to the
+		# Missing Link at noon", Saturday-busy). Vol 1 and vol 7's Tuesday
+		# night (ch9) keep the key above: rain on the glass, the lit pumps
+		# and the far streetlight in the windows. Here the four front panes
+		# carry the rainy-overcast DAY views (missing_link_interior_window_1-4,
+		# the night views skip this preset), the night street spill is
+		# suffixed to the key above, and a grey daylight comes in at the
+		# front windows (Daylight_Front__missing_link_interior_noon).
+		"camera_origin": Vector3(3.60, 1.65, -0.90),
+		"camera_rotation": Vector3(-0.089, deg_to_rad(50.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"cabin_interior": {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",

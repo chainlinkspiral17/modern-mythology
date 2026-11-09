@@ -114,11 +114,12 @@ def build_radio_desk():
     make_cyl("Log_Pencil", (x0 + 0.32, dy - 0.25, top + 0.005), 0.004, 0.15, (0.90, 0.72, 0.24, 1.0), axis='Y', segments=6)
     # a cup of tea gone cold, and Thomas
     make_cyl("Tea_Cup", (x0 + 0.12, dy + 0.62, top + 0.04), 0.04, 0.08, (0.92, 0.90, 0.86, 1.0), segments=10)
-    # (2026-11-09) the photo south of the lamp, the lamp at the desk's north
-    # end: at dy + 0.58 the lamp's base stood 9 cm in front of Thomas and hid
+    # (2026-11-09) the photo south of the lamp, standing ON the desk (it
+    # leaned on the lamp's base before; alone it hung 2 cm up), the lamp at
+    # the desk's north end: at dy + 0.58 the lamp's base stood 9 cm in front of Thomas and hid
     # three quarters of him from the chair
-    make_box("Thomas_Photo", (RX - 0.05, dy + 0.48, top + 0.11), (0.03, 0.14, 0.18), (0.62, 0.50, 0.34, 1.0))
-    make_box("Thomas_Photo_Print", (RX - 0.066, dy + 0.48, top + 0.11), (0.002, 0.10, 0.14), (0.42, 0.40, 0.38, 1.0))
+    make_box("Thomas_Photo", (RX - 0.05, dy + 0.48, top + 0.09), (0.03, 0.14, 0.18), (0.62, 0.50, 0.34, 1.0))
+    make_box("Thomas_Photo_Print", (RX - 0.066, dy + 0.48, top + 0.09), (0.002, 0.10, 0.14), (0.42, 0.40, 0.38, 1.0))
     # the desk lamp (the light the window shows the street)
     # (2026-11-08) 9 cm into the room: at x0 + 0.48 its base stood through
     # Thomas's photo frame (hero_art_placement_audit: FACES-IN)

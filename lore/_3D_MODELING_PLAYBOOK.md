@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-09 · a lathe's centre must be INSIDE it, never at its tip (pass 311)
+
+- **What happened:** the full suite failed on winding_audit — Meadowlark's
+  foundation shrubs inside out, 2 before the lots moved, 6 after. Nothing about
+  the shrubs had changed but where their houses stood.
+- **Why:** `make_lathe` passes its `center` to `_fix_winding`, which flips a
+  face when its normal points toward the centre. The shrub's profile started
+  at `(0.0, 0.0)` — the centre was the bottom tip, a vertex of every bottom
+  face — so for those faces the test is exactly zero and rounding decides.
+- **Rule:** give a lathe (or any helper that winds about a centre) a centre in
+  the solid's middle — shift the profile's z down by as much so the shape is
+  unchanged. A profile that closes to a point at `dz = 0` is the tell.
+- **Gate:** winding_audit (per-set baseline; lower it when a fix removes some).
+
 ### 2026-11-09 · a builder part's ORIGIN is the world origin: never place by it (pass 309)
 
 - **The fact.** `_finalize_mesh` writes every part's vertices in world space

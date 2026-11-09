@@ -385,6 +385,10 @@
       "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
       "gain": 0.9
     },
+    "missing_link_interior_noon": {
+      "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
+      "gain": 0.9
+    },
     "houston_office": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.8
