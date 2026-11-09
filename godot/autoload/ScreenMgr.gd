@@ -74,13 +74,6 @@ func _wide_surface_up() -> bool:
 	return false
 
 
-func _fill_setting() -> bool:
-	var st: Node = get_node_or_null("/root/Settings")
-	if st != null and "wide_screens" in st:
-		return String(st.get("wide_screens")) != "pillarbox"
-	return true
-
-
 ## What the screen is doing, in a sentence — shown in Settings under SCREEN
 ## SIZE and printed to the log on every change, so "it isn't taking" can be
 ## read off the screen instead of guessed at.
@@ -104,9 +97,7 @@ func describe() -> String:
 		elif r < 1.7:
 			shape = "%.2f:1" % r
 	var story: String
-	if not _fill_setting():
-		story = "the story keeps a 16:9 frame because WIDE SCREENS is on PILLARBOX"
-	elif win.y > 0 and float(win.x) / float(win.y) < 1.79:
+	if win.y > 0 and float(win.x) / float(win.y) < 1.79:
 		story = "the window is 16:9 — nothing wider to fill"
 	elif is_wide_active():
 		story = "the story fills the width"
@@ -134,9 +125,70 @@ func center_band() -> Rect2:
 
 
 func _wanted_aspect() -> int:
-	if _fill_setting() and _wide_surface_up():
+	if _wide_surface_up():
 		return Window.CONTENT_SCALE_ASPECT_EXPAND
 	return Window.CONTENT_SCALE_ASPECT_KEEP
+
+
+## THE WATCH (2026-11-09). The fill is decided in _refresh, which runs on a
+## signal; five rounds of "ultrawide still isn't rendering" on the user's
+## machine never reproduced here (Godot 4.6 and 4.7.2, with a window manager,
+## the same chapter fills). So the state is no longer trusted to signals:
+## twice a second the root's aspect is compared with what it should be and
+## put right, and a chapter that is up in a wide window WITHOUT filling it
+## says so on screen, with every fact that decides it — the next screenshot
+## carries the evidence.
+var _watch_t: float = 0.0
+var _alarm: Label = null
+var _healed: int = 0
+
+
+func _process(delta: float) -> void:
+	_watch_t += delta
+	if _watch_t < 0.5:
+		return
+	_watch_t = 0.0
+	var root: Window = get_tree().root
+	var want: int = _wanted_aspect()
+	if root.content_scale_aspect != want:
+		_healed += 1
+		push_warning("[ScreenMgr] the aspect was %d, should be %d — put right (%d time(s))" % [root.content_scale_aspect, want, _healed])
+		_refresh()
+	var win: Vector2 = Vector2(root.size)
+	var vis: Vector2 = root.get_visible_rect().size
+	var wide_window: bool = win.y > 0.0 and win.x / win.y > 1.9
+	var wide_canvas: bool = vis.y > 0.0 and vis.x / vis.y > 1.9
+	var chapter_up: bool = _wide_surface_up()
+	if chapter_up and wide_window and not wide_canvas:
+		_show_alarm("WIDE SCREEN NOT FILLING — please send this line.  window %s · canvas %s · aspect %d (want %d) · scale mode %d · scale size %s · wide surfaces %d · healed %d · Godot %s" % [
+			root.size, vis, root.content_scale_aspect, want, root.content_scale_mode, root.content_scale_size,
+			get_tree().get_nodes_in_group(WIDE_GROUP).size(), _healed, Engine.get_version_info().get("string", "?")])
+	elif _alarm != null:
+		_alarm.get_parent().queue_free()
+		_alarm = null
+
+
+func _show_alarm(text: String) -> void:
+	if _alarm == null:
+		var layer := CanvasLayer.new()
+		layer.layer = 120
+		layer.add_to_group("ui")                 # the F4 sweep hides it with the rest of the HUD
+		var fpc: Script = load("res://scripts/FirstPersonController.gd") as Script
+		if fpc != null:
+			layer.visible = bool(fpc.get("hud_visible"))
+		add_child(layer)
+		_alarm = Label.new()
+		_alarm.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_alarm.position = Vector2(24, 80)
+		_alarm.size = Vector2(1232, 120)
+		_alarm.add_theme_font_size_override("font_size", 18)
+		_alarm.add_theme_color_override("font_color", Color(1.0, 0.85, 0.2))
+		_alarm.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+		_alarm.add_theme_constant_override("outline_size", 6)
+		layer.add_child(_alarm)
+	if _alarm.text != text:
+		_alarm.text = text
+		print("[ScreenMgr] ", text)
 
 
 func _refresh() -> void:
@@ -159,6 +211,5 @@ func _refresh() -> void:
 	layout_changed.emit()
 
 
-func _on_setting(key: String, _val: Variant) -> void:
-	if key == "wide_screens":
-		_refresh()
+func _on_setting(_key: String, _val: Variant) -> void:
+	pass

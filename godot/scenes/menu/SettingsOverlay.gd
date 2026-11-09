@@ -265,15 +265,6 @@ func _screen_size_section() -> VBoxContainer:
 	action_row.add_child(reset_btn)
 	col.add_child(action_row)
 
-	# WIDE SCREENS (2026-11-08): on a screen wider than 16:9 the story fills
-	# it — panoramic backgrounds, the text and portraits in the centre — or
-	# keeps the 16:9 frame with bars at the sides
-	col.add_child(_row_label("WIDE SCREENS"))
-	col.add_child(_button_row(
-		["FILL", "PILLARBOX"],
-		Settings.wide_screens.to_upper(),
-		func(v: String) -> void: Settings.wide_screens = v.to_lower()
-	))
 	# 3D DETAIL: the sets' render scale (native = every pixel of the screen)
 	col.add_child(_row_label("3D DETAIL"))
 	col.add_child(_button_row(

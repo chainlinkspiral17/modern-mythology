@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 319: "give me a copy paste that opens a game that works" — the wide fill, unreproduced, made impossible to lose and loud when lost.**
+- The user's third screenshot: fullscreen 3440x1440, the chapter still in a
+  16:9 frame. Here it fills — Godot 4.6 and 4.7.2, openbox, fullscreen
+  granted, the same chapter, menu → chapter → menu → chapter.
+- **Shipped (draft 3):** PILLARBOX removed (always fill); ScreenMgr's watch
+  (twice a second the aspect is checked and put right); the on-screen line
+  when a chapter is up in a wide window without filling it; `play.sh` opens
+  fullscreen by itself (`-- --screen fullscreen`), finds the running
+  editor's Godot. Launched for real under openbox: fullscreen, saved.
+- **Draft 4 targets:** if the yellow line appears on the user's machine, it
+  holds the cause — fix from it; the MAIN MENU wide-ready (it keeps a 16:9
+  frame with black bars on a wide screen and reads as the bug — needs every
+  surface launched from the menu checked in an EXPAND canvas first: 21
+  slowsticks, the gauntlet, the community screen); test screen fixes on the
+  user's Godot version as a habit.
+
 **2026-11-09 · pass 318: "still not working" — the wide fill made durable, and the screen says what it is doing.**
 - The user's screenshot: a maximised wide debug window, the prelude in a 16:9
   frame with bars. Not reproduced with default settings (ScreenProbe on

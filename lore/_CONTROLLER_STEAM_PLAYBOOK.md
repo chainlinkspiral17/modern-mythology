@@ -166,6 +166,37 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-11-09 · what cannot be reproduced is made impossible, and made to speak
+
+- **What happened:** with the pick fixed the user sent a fullscreen
+  3440x1440 screenshot — the chapter still in a 16:9 frame: "ultrawide still
+  isn't rendering. I'm getting sick of this. It was clearly working
+  earlier." / "give me a copy paste that opens a game that works." The same
+  chapter fills here on Godot 4.6 AND 4.7.2 (downloaded from the SourceForge
+  mirror — GitHub is blocked), under a real window manager (openbox installs
+  with apt), fullscreen granted. Not reproduced.
+- **Rules:**
+  - **Test like the user's desktop.** `xvfb-run` alone has no window
+    manager: maximise and fullscreen are never granted. Start openbox first
+    (`openbox & sleep 1.5; godot …`). The user's Godot is NEWER than the
+    project's (4.7 rewrites `config/features` — the reason project.godot
+    changes on every open): test a screen fix on both.
+  - **An option that draws the complaint is removed, not explained.**
+    PILLARBOX is gone; `Settings.wide_screens` is always "fill".
+  - **State that decides the picture is watched, not trusted to a signal.**
+    ScreenMgr compares the root's aspect with what it should be twice a
+    second and puts it right.
+  - **The failure names itself on screen.** A chapter up in a wide window
+    that is not filling shows one yellow line with every deciding fact
+    (window, canvas, aspect, scale mode, wide surfaces, Godot version) —
+    HUD, F4 hides it. The user's next screenshot is the evidence; no one
+    has to be asked to open a page and copy a line.
+  - **The launcher carries its own settings.** `bash godot/tools/play.sh`
+    opens fullscreen through `-- --screen fullscreen` (Settings reads it),
+    finds Godot from the running editor's process, and depends on nothing
+    saved. The menu keeps a 16:9 frame (only chapters are wide-ready) — SAY
+    SO first, or the menu's bars read as the bug.
+
 ### 2026-11-09 · THE CAUSE: a lambda cannot write a captured local (the APPLY that always applied 720p)
 
 - **What happened:** the user, fourth message: "everytime I hit apply in

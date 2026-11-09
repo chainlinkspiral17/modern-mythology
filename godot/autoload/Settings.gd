@@ -109,12 +109,14 @@ var hud_bar: String:
 		settings_changed.emit("hud_bar", val)
 		_save()
 
+# (2026-11-09) ALWAYS "fill". The FILL / PILLARBOX option is gone: a wide
+# window showing the story in a 16:9 frame with bars was the user's complaint
+# for five rounds, and a saved "pillarbox" draws exactly that picture. No
+# saved state may put the bars back; the property stays for callers.
 var wide_screens: String:
-	get: return _wide_screens
-	set(val):
-		_wide_screens = val if val in ["fill", "pillarbox"] else "fill"
-		settings_changed.emit("wide_screens", _wide_screens)
-		_save()
+	get: return "fill"
+	set(_val):
+		pass
 
 var detail_3d: String:
 	get: return _detail_3d
@@ -221,6 +223,20 @@ var trip_trails: float:
 
 func _ready() -> void:
 	_load()
+	_apply_cmdline()
+
+
+## `-- --screen fullscreen|ultrawide|720p|…` after the engine's arguments
+## (tools/play.sh passes it): the window mode for this run, saved like a
+## pick in Settings — a launch that does not depend on what was saved.
+func _apply_cmdline() -> void:
+	var ua: PackedStringArray = OS.get_cmdline_user_args()
+	for i in ua.size():
+		if ua[i] == "--screen" and i + 1 < ua.size():
+			var want: String = ua[i + 1].to_lower()
+			if want in ["720p", "900p", "1080p", "1440p", "ultrawide", "fullscreen"]:
+				print("[Settings] --screen %s" % want)
+				window_mode = want
 
 
 func get_char_delay_ms() -> float:
