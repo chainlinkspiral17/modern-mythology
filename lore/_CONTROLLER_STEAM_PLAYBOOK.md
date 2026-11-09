@@ -166,6 +166,20 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-11-09 · the user plays from the EDITOR: debug runs must not be embedded
+
+- **What happened:** the user asked, more than once, for the ultrawide / max
+  resolution "in debug". Godot 4.4+ plays an editor run (F5) EMBEDDED in its
+  Game tab, where a game cannot change its window, so SCREEN SIZE did
+  nothing; sessions answered with `tools/play.sh` (a terminal launch), which
+  is not how the user plays. ("I keep repeating things.")
+- **Rule:** debug runs open in their own window — `python3
+  godot/tools/no_embed.py` (with Godot CLOSED) sets the project's
+  `[game_view] embed_on_play=false` in `.godot/editor/project_metadata.cfg`
+  (local, not in git). After that, F5 opens a real window and the saved
+  SCREEN SIZE applies (FULLSCREEN = the screen's own maximum; ULTRAWIDE =
+  3440×1440). Never answer a screen-size question with play.sh alone.
+
 ### 2026-09-03 · the fence ate the pad; Cabin Beaver's door had a pine in it
 
 "movement in pirate summer is completely broken" (Deck).
