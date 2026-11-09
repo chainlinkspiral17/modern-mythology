@@ -2977,7 +2977,10 @@ def build_oliver_tree_memorial_park():
     _make_box_local("OTPark_FlagPole_Base",
                     (fp_x, fp_y, fp_z + 0.15),
                     (0.80, 0.80, 0.30), COL_POOL_RIM)
-    _base_skirt("OTPark_FlagPole_Skirt", fp_x, fp_y, fp_z,
+    # (2026-11-09) a MOUND: the radius-1.1 skirt stood a whole green ball
+    # 1.2 m tall round the pole's foot (and swallowed the plaque); sunk so
+    # 25 cm shows, 1.4 m across
+    _base_skirt("OTPark_FlagPole_Skirt", fp_x, fp_y, fp_z - 0.95,
                  color=(0.30, 0.46, 0.20, 1.0), radius=1.10)
     flag_z = fp_z + FLAGPOLE_H * 0.50
     flag_w = 1.6
@@ -3006,8 +3009,9 @@ def build_oliver_tree_memorial_park():
     # Small brass plaque at the foot of the pole giving in-world
     # explanation for the half-mast position (the user found the
     # half-mast "curious" with no context — this answers why).
+    # on the pole itself, at eye height (2026-11-09: it hung inside the skirt)
     _make_box_local("OTPark_FlagPlaque",
-                    (fp_x, fp_y - 0.55, fp_z + 0.65),
+                    (fp_x, fp_y - 0.10 - 0.025, fp_z + 1.30),
                     (0.50, 0.04, 0.30), (0.55, 0.42, 0.20, 1.0))
 
     # ── 8 mature OAKS — natural height variation per pass-5 ───
@@ -5950,7 +5954,9 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     # backboard and the east wall). Just a flat box with an
     # "EMPLOYEES ONLY" plaque.
     emp_x = kw_cx + bay_w / 2 - 0.6
-    emp_y = cy + depth / 2 - 0.15
+    # (2026-11-09) on the back wall's room face (cy + depth/2 - 0.20): the
+    # door and its plaque stood inside the 20 cm wall
+    emp_y = cy + depth / 2 - 0.20 - 0.03
     _make_box_local("KwikShop_KwikStop_EmpDoor",
                     (emp_x, emp_y, ground_z + 1.05),
                     (0.90, 0.06, 2.10),
@@ -5978,15 +5984,15 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         poster_colors[k % 4])
     # 2 posters on the east partition interior face
     for k, py in enumerate((cy - 3.0, cy + 1.5)):
-        _make_box_local(f"KwikShop_KwikStop_PosterE_{k}",
-                        (kw_cx + bay_w / 2 - 0.13, py,
+        _make_box_local(f"KwikShop_KwikStop_PosterE_{k}",   # on the wall's face, not in it (2026-11-09)
+                        (kw_cx + bay_w / 2 - 0.221, py,
                          ground_z + 2.5),
                         (0.04, 0.80, 0.80),
                         poster_colors[(k + 2) % 4])
     # 1 poster on the back wall east of cooler (between cooler
     # east edge and counter west edge)
-    _make_box_local("KwikShop_KwikStop_PosterB_1",
-                    (kw_cx + 1.3, cy + depth / 2 - 0.13,
+    _make_box_local("KwikShop_KwikStop_PosterB_1",   # on the wall's face, not in it (2026-11-09)
+                    (kw_cx + 1.3, cy + depth / 2 - 0.221,
                      ground_z + 2.5),
                     (0.80, 0.04, 0.80),
                     poster_colors[0])
@@ -6908,17 +6914,21 @@ def _build_diner(cx, cy, ground_z):
                         (coffee_x + ox, coffee_y,
                          ground_z + 1.15),
                         0.07, 0.20, col_pot, segments=8)
-    # CLOCK on the back wall — round wall clock
-    _make_cyl_local(f"{name_prefix}_Clock",
-                    (cx, cy + depth / 2 - 0.21, ground_z + 2.50),
-                    0.30, 0.05,
-                    (0.92, 0.90, 0.88, 1.0), segments=12)
+    # CLOCK on the back wall — round wall clock, ON the wall's room face
+    # (y cy + depth/2 - 0.20). (2026-11-09) It was an upright cylinder —
+    # a disc lying flat, half inside the wall — and its hands were inside
+    # the wall: a disc on the wall now, the hands on its face
+    wall_face = cy + depth / 2 - 0.20
+    _make_cyl_y_local(f"{name_prefix}_Clock",
+                      (cx, wall_face - 0.025, ground_z + 2.50),
+                      0.30, 0.05,
+                      (0.92, 0.90, 0.88, 1.0), segments=16)
     _make_box_local(f"{name_prefix}_Clock_HandH",
-                    (cx, cy + depth / 2 - 0.18, ground_z + 2.55),
+                    (cx, wall_face - 0.06, ground_z + 2.55),
                     (0.02, 0.02, 0.18),
                     (0.10, 0.10, 0.10, 1.0))
     _make_box_local(f"{name_prefix}_Clock_HandM",
-                    (cx + 0.10, cy + depth / 2 - 0.18, ground_z + 2.45),
+                    (cx + 0.10, wall_face - 0.06, ground_z + 2.45),
                     (0.22, 0.02, 0.02),
                     (0.10, 0.10, 0.10, 1.0))
 
@@ -8574,6 +8584,27 @@ def _make_cyl_local(name, center, radius, height, color, segments=6):
             verts.append((cx + math.cos(ang) * radius,
                           cy + math.sin(ang) * radius,
                           cz + z_off))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([i, ni, ni + segments, i + segments])
+    faces.append(list(reversed(range(segments))))
+    faces.append(list(range(segments, segments * 2)))
+    return _finalize_mesh(name, verts, faces, color)
+
+
+def _make_cyl_y_local(name, center, radius, depth, color, segments=12):
+    """(2026-11-09) A disc whose axis runs along Y — a wall clock on a
+    north/south wall. _make_cyl_local only stands cylinders upright: the
+    diner's wall clock lay flat, half out of the wall."""
+    cx, cy, cz = center
+    h2 = depth / 2.0
+    verts = []
+    for ring in (0, 1):
+        y_off = -h2 if ring == 0 else h2
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            verts.append((cx + math.cos(ang) * radius, cy + y_off, cz + math.sin(ang) * radius))
     faces = []
     for i in range(segments):
         ni = (i + 1) % segments
@@ -16365,7 +16396,14 @@ def build_west_estates_neighborhood():
                               mid_y + ddy + perp_y * 0.08),
                              (mid_x - ddx + perp_x * 0.08,
                               mid_y - ddy + perp_y * 0.08)]:
-                dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+                # (2026-11-09) ON the road quad, which is flat between its
+                # four draped corners: at the terrain's own height mid-span
+                # a dash lay under the road wherever the ground dipped
+                tt = ((rx - x0) * dxs + (ry - y0) * dys) / (seg_len * seg_len)
+                ss = ((rx - x0) * perp_x + (ry - y0) * perp_y + hw) / (2.0 * hw)
+                z_l = rv[0][2] + (rv[1][2] - rv[0][2]) * tt
+                z_r = rv[3][2] + (rv[2][2] - rv[3][2]) * tt
+                dv.append((rx, ry, z_l + (z_r - z_l) * ss + 0.012))
             _finalize_mesh(f"{prefix}Dash_{i}", dv, [[0, 1, 2, 3]],
                             COL_DASH)
 

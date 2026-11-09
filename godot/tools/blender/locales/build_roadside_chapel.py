@@ -253,7 +253,7 @@ def build_facade_detail_2026_09(wood, trim):
     over the apron (a mood, not a mesh)."""
     glass = (0.14, 0.16, 0.22, 1.0)
     shadow = (0.64, 0.62, 0.57, 1.0)
-    fy = -0.085                           # the facade's front face is y -0.08
+    fy = -0.107                           # on the facade's front face, y -0.10 (2026-11-09: at -0.085 the lancets were inside the 20 cm wall)
     for sx in (-1, 1):
         wx = sx * 1.85
         make_box(f"Facade_Lancet_Frame_{sx:+d}", (wx, fy, 1.85), (0.74, 0.012, 1.62), trim)

@@ -275,12 +275,12 @@ def build_shell():
                  (-D_W/2 - 0.04, door_y, door_h + 0.06),
                  (0.06, door_w_v + 0.20, 0.10), COL_WOOD_TRIM)
     # Brass plaque "BAR" above the north door
-    make_box("Wall_W_doorPlaque_BAR",
-             (-D_W/2 - 0.03, door1_y, door_h + 0.20),
+    make_box("Wall_W_doorPlaque_BAR",   # on the lintel's ROOM face (2026-11-09: it hung inside the lintel)
+             (-D_W/2 + 0.021, door1_y, door_h + 0.20),
              (0.04, door1_w * 0.45, 0.10), COL_BRASS)
     # Brass plaque "FORMAL" above the south door
-    make_box("Wall_W_doorPlaque_FORMAL",
-             (-D_W/2 - 0.03, door2_y, door_h + 0.20),
+    make_box("Wall_W_doorPlaque_FORMAL",   # on the lintel's ROOM face (2026-11-09: it hung inside the lintel)
+             (-D_W/2 + 0.021, door2_y, door_h + 0.20),
              (0.04, door2_w * 0.70, 0.10), COL_BRASS)
 
     # ── EAST wall (parking-lot side) — front door + picture window ──
@@ -4874,7 +4874,10 @@ def build_riverboat_superstructure():
     ]:
         make_box(f"Saloon_Wall_{label}",
                  (x, y, saloon_cz), (sx, sy, saloon_h), COL_BOAT_HULL)
-    # A row of windows around the saloon (decorative — dark recesses)
+    # A row of windows around the saloon (decorative — dark recesses).
+    # (2026-11-09) ON the walls' outer faces (half-thickness 0.06): at
+    # +0.005 / +0.012 every pane and brass frame was inside the wall
+    sa_out = 0.06
     sa_win_h = 1.20
     sa_win_w = 0.70
     sa_win_z = saloon_floor_z + 0.70
@@ -4884,33 +4887,33 @@ def build_riverboat_superstructure():
         wy = -saloon_d/2 + (w + 0.5) * saloon_d / n_win_long
         for sgn_x, side in [(-1, 'W'), (+1, 'E')]:
             make_box(f"Saloon_Window_{side}_{w}",
-                     (sgn_x * (saloon_w/2 + 0.005), wy,
+                     (sgn_x * (saloon_w/2 + sa_out + 0.010), wy,
                       sa_win_z),
                      (0.02, sa_win_w, sa_win_h),
                      (0.30, 0.36, 0.42, 1.0))
             # Brass frame around each window
             make_box(f"Saloon_Window_{side}_{w}_FrameT",
-                     (sgn_x * (saloon_w/2 + 0.012), wy,
+                     (sgn_x * (saloon_w/2 + sa_out + 0.016), wy,
                       sa_win_z + sa_win_h/2 + 0.03),
                      (0.012, sa_win_w + 0.08, 0.06), COL_BRASS)
             make_box(f"Saloon_Window_{side}_{w}_FrameB",
-                     (sgn_x * (saloon_w/2 + 0.012), wy,
+                     (sgn_x * (saloon_w/2 + sa_out + 0.016), wy,
                       sa_win_z - sa_win_h/2 - 0.03),
                      (0.012, sa_win_w + 0.08, 0.06), COL_BRASS)
     for w in range(n_win_short):
         wx = -saloon_w/2 + (w + 0.5) * saloon_w / n_win_short
         for sgn_y, side in [(-1, 'S'), (+1, 'N')]:
             make_box(f"Saloon_Window_{side}_{w}",
-                     (wx, sgn_y * (saloon_d/2 + 0.005),
+                     (wx, sgn_y * (saloon_d/2 + sa_out + 0.010),
                       sa_win_z),
                      (sa_win_w, 0.02, sa_win_h),
                      (0.30, 0.36, 0.42, 1.0))
             make_box(f"Saloon_Window_{side}_{w}_FrameT",
-                     (wx, sgn_y * (saloon_d/2 + 0.012),
+                     (wx, sgn_y * (saloon_d/2 + sa_out + 0.016),
                       sa_win_z + sa_win_h/2 + 0.03),
                      (sa_win_w + 0.08, 0.012, 0.06), COL_BRASS)
             make_box(f"Saloon_Window_{side}_{w}_FrameB",
-                     (wx, sgn_y * (saloon_d/2 + 0.012),
+                     (wx, sgn_y * (saloon_d/2 + sa_out + 0.016),
                       sa_win_z - sa_win_h/2 - 0.03),
                      (sa_win_w + 0.08, 0.012, 0.06), COL_BRASS)
     # Saloon red trim band at the wall midpoint

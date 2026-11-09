@@ -176,7 +176,9 @@ def build_decor():
     make_wall_clock("Clock", (4.0, 7.900, 2.10),   # on the N wall (2026-09-23: 8 cm off it)
                     frozen_hour=4, frozen_min=22, facing='-Y')
     # Faded movie posters on west wall (3)
-    for pi, py in enumerate([2.5, 5.0, 7.0]):
+    # (2026-11-09) the second at y 3.8: at 5.0 it hung behind the purple
+    # rack accent (y 4.5..5.9), unseen
+    for pi, py in enumerate([2.5, 3.8, 7.0]):
         make_faded_poster(f"Poster_W_{pi}", (-4.8965, py, 1.70), into_room=+1)
     # Payphone east wall by door
     make_payphone("Payphone", (4.87, 1.40, 1.30))   # on the E wall (2026-09-23: 2 cm off it)

@@ -385,7 +385,16 @@ def build_coast_studio_2026_10(x0):
         make_cyl(f"Studio_Film_Canister_{i}", (tx + 0.32, ty + 0.9 + 0.06 * i, 0.95), 0.016, 0.05, (0.20, 0.20, 0.22, 1.0), segments=8)
     make_chair("Studio_Layout_Stool", tx + 0.75, ty, yaw=math.pi / 2.0, wood=(0.24, 0.24, 0.26, 1.0))
     # the shelf of photo books along the S wall (face y 0.08)
-    make_box("Studio_Book_Shelf", (x0 + 6.4, 0.08 + 0.17, 0.95), (2.4, 0.34, 1.9), (0.40, 0.32, 0.24, 1.0))
+    # (2026-11-09) a CASE, not a solid: the 2.4 x 0.34 x 1.9 block held
+    # all 46 photo books inside it, unseen. Back, sides, top, a board under
+    # each row (the back keeps the old name for anything that names it)
+    sh_col = (0.40, 0.32, 0.24, 1.0)
+    make_box("Studio_Book_Shelf", (x0 + 6.4, 0.08 + 0.01, 0.95), (2.4, 0.02, 1.9), sh_col)
+    for sgn, nm in ((-1, "W"), (1, "E")):
+        make_box(f"Studio_Book_Shelf_Side_{nm}", (x0 + 6.4 + sgn * 1.19, 0.08 + 0.17, 0.95), (0.02, 0.34, 1.9), sh_col)
+    make_box("Studio_Book_Shelf_Top", (x0 + 6.4, 0.08 + 0.17, 1.89), (2.4, 0.34, 0.02), sh_col)
+    for r in range(4):
+        make_box(f"Studio_Book_Shelf_Board_{r}", (x0 + 6.4, 0.08 + 0.17, 0.09 + r * 0.46), (2.36, 0.34, 0.02), sh_col)
     for r in range(4):
         bx = x0 + 5.26
         i = 0

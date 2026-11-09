@@ -187,10 +187,13 @@ def build_shell():
                             baseboard_face_sign=+1, openings=[(+4.20, 1.65, 2.20, 1.40)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, 0.20, 0.60), COL_WALL_NEXCORP)
-    # Brand sign — NEXCORP letters on white panel on the south wall
-    make_box("Brand_BG", (0.0, -0.02, 2.50), (3.00, 0.04, 0.36),
+    # Brand sign — NEXCORP letters on white panel on the south wall's ROOM
+    # face (the view looks at it from inside). (2026-11-09) At y -0.02 /
+    # -0.04 the panel and letters stood inside the 20 cm wall, like the
+    # Kwik Stop's — never seen from either side.
+    make_box("Brand_BG", (0.0, 0.10 + 0.02, 2.50), (3.00, 0.04, 0.36),
              (0.96, 0.96, 0.96, 1.0))
-    make_box("Brand_Letters", (0.0, -0.04, 2.50), (2.40, 0.005, 0.20),
+    make_box("Brand_Letters", (0.0, 0.10 + 0.0425, 2.50), (2.40, 0.005, 0.20),
              COL_WALL_NEXCORP)
     # Glass door + frame
     make_box("Door_Frame_T", (0.0, 0.0, 2.10), (3.00, 0.10, 0.08),
