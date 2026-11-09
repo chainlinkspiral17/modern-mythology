@@ -447,7 +447,8 @@
   },
   "vol2_ch12x_beach_blanket_bingo": {
    "level": 1.4,
-   "why": "dreamlike — music ×2, glow ×2, guitar ×2, stars ×2"
+   "why": "dreamlike — music ×2, glow ×2, guitar ×2, stars ×2; a studio / a signal going out (dj ×4, radio ×2): broadcast register",
+   "register": "broadcast"
   },
   "vol2_ch12x_field_notes": {
    "level": 1.0,
@@ -567,7 +568,8 @@
   },
   "vol2_ch6_mayhune": {
    "level": 0.75,
-   "why": "grounded — doctor ×2, sick ×2, court ×1"
+   "why": "grounded — doctor ×2, sick ×2, court ×1; mostly remembering (remember ×8, childhood ×2): memory register",
+   "register": "memory"
   },
   "vol2_ch6_sacrificial_pair": {
    "level": 0.75,
@@ -1419,7 +1421,8 @@
   },
   "vol5_ch13_death": {
    "level": 0.5,
-   "why": "plain: the weight lands without the trip — court ×7, nurse ×6, died ×4, money ×3"
+   "why": "plain: the weight lands without the trip — court ×7, nurse ×6, died ×4, money ×3; a grief / a hospital (hospice ×6, died ×4, hospital ×1): vigil register",
+   "register": "vigil"
   },
   "vol5_ch14_temperance": {
    "level": 1.0,
@@ -1999,7 +2002,8 @@
   },
   "vol6_ch2_maya_bedroom": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "the volume's own — no uncanny words; a studio / a signal going out (radio ×1): broadcast register",
+   "register": "broadcast"
   },
   "vol6_ch2_pit_stop_kitchen": {
    "level": 0.5,
@@ -2108,7 +2112,8 @@
   },
   "vol6_ch5_radio": {
    "level": 1.0,
-   "why": "the volume's own — demon ×1, dream ×1"
+   "why": "the volume's own — demon ×1, dream ×1; a studio / a signal going out (radio ×7, broadcast ×1): broadcast register",
+   "register": "broadcast"
   },
   "vol6_ch5_stub": {
    "level": 1.0,
@@ -2275,7 +2280,8 @@
   },
   "vol7_ch10_cabin": {
    "level": 0.75,
-   "why": "grounded — died ×5, contract ×1, funeral ×1"
+   "why": "grounded — died ×5, contract ×1, funeral ×1; a grief / a hospital (died ×5, funeral ×1): vigil register",
+   "register": "vigil"
   },
   "vol7_ch10_morning": {
    "level": 1.2,
@@ -2359,7 +2365,8 @@
   },
   "vol7_ch11_per": {
    "level": 0.75,
-   "why": "grounded — died ×8, funeral ×2, insurance ×1",
+   "why": "grounded — died ×8, funeral ×2, insurance ×1; a grief / a hospital (died ×8, funeral ×2): vigil register",
+   "register": "vigil",
    "beats": [
     {
      "node": 13,
@@ -2750,7 +2757,8 @@
   },
   "vol7_ch18_stick": {
    "level": 0.75,
-   "why": "grounded — died ×5"
+   "why": "grounded — died ×5; a grief / a hospital (died ×5): vigil register",
+   "register": "vigil"
   },
   "vol7_ch18_stub": {
    "level": 1.0,
@@ -2893,7 +2901,8 @@
   },
   "vol7_ch22_floors": {
    "level": 0.5,
-   "why": "plain: the weight lands without the trip — died ×5, grief ×1"
+   "why": "plain: the weight lands without the trip — died ×5, grief ×1; a grief / a hospital (died ×5): vigil register",
+   "register": "vigil"
   },
   "vol7_ch22_portal": {
    "level": 1.2,
@@ -3186,7 +3195,8 @@
   },
   "vol7_interlude_ii": {
    "level": 1.2,
-   "why": "leans uncanny — demon ×2, sang ×1"
+   "why": "leans uncanny — demon ×2, sang ×1; a studio / a signal going out (frequenc ×8, radio ×2, broadcast ×1): broadcast register",
+   "register": "broadcast"
   }
  }
 }

@@ -79,7 +79,8 @@ func _ready() -> void:
 		trip = null                      # --trip 0: the painted room alone
 	var inked: float = float(String(args.get("inked", "0.85")))
 	if trip != null:
-		trip.call("push_register", String(trip.call("register_for_volume", vol)), self)
+		# --register memory|broadcast|vigil|…: a scene register over the volume's (2026-11-09)
+		trip.call("push_register", String(args.get("register", String(trip.call("register_for_volume", vol)))), self)
 		mat = trip.call("attach", bg)
 		mat.set_shader_parameter("paint_under", inked)
 		mat.set_shader_parameter("art_aware", true)   # as GameEngine sets it (2026-11-09)

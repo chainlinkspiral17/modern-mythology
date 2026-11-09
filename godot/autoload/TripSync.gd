@@ -270,6 +270,32 @@ const REGISTERS: Dictionary = {
 		# the wake of afternoon sun on a wall: faint, slow, going nowhere
 		"fb_amount": 0.35, "fb_decay": 3.2, "fb_zoom": 0.05, "fb_spin": 0.00,
 	},
+	# ── 2026-11-09 · NEW REGISTERS for scenes, not pillars (the user:
+	# "direct the psychedelic effect for each scene … create new visual
+	# effects that are appropriate"). trip_direction.py assigns them from
+	# the writing; colour and light only, as every register.
+	# MEMORY · a remembered scene: an old print's palette, the colour wash
+	# low and still, a little grain, a long soft wake (the past lingers)
+	"memory": {
+		"palette_mode": 6, "line_amount": 0.45, "flow_amount": 0.55, "hue_amount": 0.20,
+		"ripple_amount": 0.30, "spark_amount": 0.0, "grain_amount": 0.35, "pulse_decay": 2.4,
+		"fb_amount": 0.55, "fb_decay": 1.6, "fb_zoom": 0.03, "fb_spin": 0.00,
+	},
+	# BROADCAST · a radio or TV studio, a signal going out: clean LED
+	# light on the lines, a ring of light on every beat (a transmission),
+	# the wake falling INWARD like a receiver's
+	"broadcast": {
+		"palette_mode": 7, "line_amount": 1.0, "flow_amount": 0.45, "hue_amount": 0.30,
+		"ripple_amount": 1.2, "spark_amount": 0.15, "grain_amount": 0.0, "pulse_decay": 4.2,
+		"fb_amount": 0.40, "fb_decay": 4.5, "fb_zoom": -0.10, "fb_spin": 0.00,
+	},
+	# VIGIL · a night watch, a hospital, a grief: indigo, almost no flow,
+	# one warm note on the kick; the trip is a held breath
+	"vigil": {
+		"palette_mode": 8, "line_amount": 0.40, "flow_amount": 0.30, "hue_amount": 0.10,
+		"ripple_amount": 0.25, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 2.0,
+		"fb_amount": 0.25, "fb_decay": 3.5, "fb_zoom": 0.00, "fb_spin": 0.00,
+	},
 	# slowsticks · the quietest register (draft 2B Deck verdict on the
 	# full neon overlay: "ugly and strobey"; draft 3: "stripped
 	# completely" — so a middle). A 2D game screen has UI edges

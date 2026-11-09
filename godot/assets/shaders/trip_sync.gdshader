@@ -185,6 +185,24 @@ vec3 aura_color(float hue, float kick) {
                      smoothstep(0.0, 0.5, w));
         c = mix(c, vec3(1.00, 0.88, 0.72), smoothstep(0.5, 1.0, w));
         return mix(c, vec3(1.0, 0.94, 0.86), kick * 0.25);
+    } else if (palette_mode == 6) {
+        // MEMORY (2026-11-09): a remembered scene as an old print — gold
+        // through rose to a faded teal, all of it low and sun-bleached
+        float w = fract(hue);
+        vec3 c = mix(vec3(1.00, 0.84, 0.55), vec3(0.96, 0.70, 0.66), smoothstep(0.0, 0.45, w));
+        c = mix(c, vec3(0.62, 0.80, 0.78), smoothstep(0.45, 0.85, w));
+        c = mix(c, vec3(1.00, 0.84, 0.55), smoothstep(0.85, 1.0, w));
+        return mix(c, vec3(1.0, 0.96, 0.88), kick * 0.30);
+    } else if (palette_mode == 7) {
+        // BROADCAST (2026-11-09): the studio's light — a clean LED cyan to
+        // white, magenta only on the kick (current hardware: no phosphor)
+        vec3 c = mix(vec3(0.30, 0.85, 1.00), vec3(0.92, 0.97, 1.00), 0.5 + 0.5 * sin(hue * 6.2831));
+        return mix(c, vec3(1.00, 0.30, 0.78), kick * 0.55);
+    } else if (palette_mode == 8) {
+        // VIGIL (2026-11-09): a night watch, a grief — deep indigo, one
+        // candle-warm note when the kick lands
+        vec3 c = mix(vec3(0.24, 0.22, 0.62), vec3(0.42, 0.34, 0.78), 0.5 + 0.5 * sin(hue * 6.2831));
+        return mix(c, vec3(1.00, 0.70, 0.40), kick * 0.40);
     }
     return hsv2rgb(vec3(hue, 0.88, 1.0));
 }

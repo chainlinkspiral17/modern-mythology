@@ -54,6 +54,14 @@ LOW = [
     "spreadsheet", "email", "=shift", "clocked", "taxes", "insurance", "=bill", "=bills",
 ]
 DOMESTIC = ["kitchen", "breakfast", "dishes", "coffee", "morning", "toast", "eggs", "=sink"]
+# (2026-11-09) the scene registers — new effects for kinds of scene, not pillars
+BROADCAST = ["radio", "broadcast", "transmitter", "microphone", "frequenc", "=dj", "wgur", "listener",
+             "airwave", "=on-air", "antenna", "=studio", "=tape", "editing", "monitors"]
+BROADCAST_SETS = ("wgur", "editing_suite", "radio_room", "transmitter", "broadcast", "studio_booth")
+MEMORY = ["remember", "=recalled", "=recalls", "childhood", "=memory", "=memories", "=nostalgia"]
+MEMORY_PHRASES = [r"\byears ago\b", r"\bback then\b", r"\bused to\b", r"\bthat summer\b", r"\bwhen (?:she|he|i|they) was (?:a )?(?:little|young|a kid|small)"]
+VIGIL = ["hospital", "hospice", "funeral", "=grave", "=died", "=dying", "=vigil", "=wake", "coffin", "casket",
+         "=mourn", "mourning", "=widow", "=morgue"]
 MORNING = ["morning", "breakfast"]
 VISION_LINE = ["dream", "vision", "hallucinat", "trance", "melt", "glow", "kaleidoscop", "swirl",
                "spiral", "float", "void", "portal", "substrate", "shimmer"]
@@ -106,18 +114,21 @@ def read_scenes():
                 continue
             sid = j.get("id") or fn[:-5]
             lines = []
+            sets = set()
             for i, n in enumerate(j["nodes"]):
+                if isinstance(n, dict) and isinstance(n.get("src"), str) and n["src"].startswith("3d:"):
+                    sets.add(n["src"][3:])
                 t = n.get("text") if isinstance(n, dict) else None
                 if isinstance(t, str) and t.strip():
                     lines.append((i, CUE.sub("", t).lower()))
             if lines:
-                out.append((sid, lines))
+                out.append((sid, lines, sets))
     return out
 
 
 def direct(scenes):
     rows = []
-    for sid, lines in scenes:
+    for sid, lines, sets in scenes:
         words = [w for _i, t in lines for w in TOK.findall(t)]
         n = max(len(words), 1)
         hi = _count(words, HIGH)
@@ -125,9 +136,9 @@ def direct(scenes):
         do = _count(words, DOMESTIC)
         k = 1000.0 / n
         score = sum(hi.values()) * k - 1.4 * sum(lo.values()) * k
-        rows.append((score, sid, lines, hi, lo, do, n, words))
+        rows.append((score, sid, lines, hi, lo, do, n, words, sets))
     plan = {}
-    for score, sid, lines, hi, lo, do, n, words in rows:
+    for score, sid, lines, hi, lo, do, n, words, sets in rows:
         level, label = _level_for(score, sum(hi.values()), sum(lo.values()))
         top_hi = ", ".join("%s ×%d" % kv for kv in hi.most_common(4))
         top_lo = ", ".join("%s ×%d" % kv for kv in lo.most_common(4))
@@ -145,6 +156,28 @@ def direct(scenes):
             entry["register"] = "domestic"
             entry["why"] += "; a kitchen-and-morning room (%s): domestic register" % \
                 ", ".join("%s ×%d" % kv for kv in do.most_common(3))
+        # (2026-11-09) the scene registers. A studio, a transmission going
+        # out → BROADCAST; a scene that is mostly remembering → MEMORY; a
+        # grief or a hospital the trip steps back from → VIGIL (indigo, a
+        # held breath, instead of the volume's colour at half strength)
+        k1000 = 1000.0 / n
+        text = " ".join(t for _i, t in lines)
+        bc = _count(words, BROADCAST)
+        if "register" not in entry and (any(any(b in st for b in BROADCAST_SETS) for st in sets) or
+                                         (sum(bc.values()) >= 6 and sum(bc.values()) * k1000 >= 5.0)):
+            entry["register"] = "broadcast"
+            entry["why"] += "; a studio / a signal going out (%s): broadcast register" % (
+                ", ".join("%s ×%d" % kv for kv in bc.most_common(3)) or ", ".join(sorted(sets)))
+        mm = _count(words, MEMORY)
+        mp = _phrase_hits(text, MEMORY_PHRASES)
+        mem_n = sum(mm.values()) + len(mp)
+        if "register" not in entry and mem_n >= 6 and sum(mm.values()) * k1000 >= 4.0:
+            entry["register"] = "memory"
+            entry["why"] += "; mostly remembering (%s): memory register" % ", ".join("%s ×%d" % kv for kv in mm.most_common(3))
+        vg = _count(words, VIGIL)
+        if "register" not in entry and level <= 0.75 and sum(vg.values()) >= 4:
+            entry["register"] = "vigil"
+            entry["why"] += "; a grief / a hospital (%s): vigil register" % ", ".join("%s ×%d" % kv for kv in vg.most_common(3))
         beats = []
         last = -99
         for i, t in lines:
@@ -198,9 +231,9 @@ def main():
         f.write("\n")
     lv = collections.Counter(e["level"] for e in plan.values())
     nb = sum(len(e.get("beats", [])) for e in plan.values())
-    nd = sum(1 for e in plan.values() if e.get("register") == "domestic")
-    print("trip_direction · %d scene(s) · levels %s · %d beat(s) · %d domestic · %d locked kept"
-          % (len(plan), dict(sorted(lv.items())), nb, nd, kept))
+    regs = collections.Counter(e.get("register", "-") for e in plan.values())
+    print("trip_direction · %d scene(s) · levels %s · %d beat(s) · registers %s · %d locked kept"
+          % (len(plan), dict(sorted(lv.items())), nb, dict(regs), kept))
     return 0
 
 
