@@ -200,7 +200,7 @@ shadow_enabled = false
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95, 1.95, -1.64)
-rotation = Vector3(-0.5246, 1.3378, 0.0)
+rotation = Vector3(-0.4911, 1.1361, 0.0)
 
 ; insert: the shop's glass front door with its bar (it looked up at the bell's clapper)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]

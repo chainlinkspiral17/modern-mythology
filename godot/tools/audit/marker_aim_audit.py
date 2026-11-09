@@ -182,6 +182,9 @@ def geometry_godot(locale):
     return out
 
 
+SUPPORT_WORDS = {"pole", "poles", "post", "posts", "pylon", "bracket", "brackets", "pedestal", "footing"}
+
+
 def matches_for(cue_id, geo):
     stems = [s for s in SYNONYMS.get(cue_id, []) + [cue_id, cue_id.rstrip("s")]
              if len(s) >= 3]
@@ -208,7 +211,16 @@ def matches_for(cue_id, geo):
         if any(p == w or p == w + "s" for p in parts for w in words) or \
                 any(f in flat for f in flats):
             hits.append((name, pos))
-    return hits
+    # (2026-11-08) a thing's SUPPORT is not the thing: the Missing Link's
+    # sign insert aimed at Sign_Pole — nearest the lens, "sign" in its name
+    # — eight degrees up, the sign itself out of the top of the frame, and
+    # passed. When a cue's matches include the thing itself, its poles,
+    # posts, legs, bases and brackets are not the subject.
+    def _support(nm):
+        low = CAMEL_RE.sub("_", nm).lower().split("_")
+        return any(p in SUPPORT_WORDS for p in low) and not any(p in words for p in low if p in SUPPORT_WORDS)
+    body = [h for h in hits if not _support(h[0])]
+    return body if body else hits
 
 
 def cluster_radius(dist):

@@ -348,7 +348,7 @@ metadata/fov = 14.0
 
 [node name="shot_insert_trail" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(4.588, 2.425, -6.693)
-rotation = Vector3(-0.2618, -0.7854, 0.0)
+rotation = Vector3(-0.0645, -0.7841, 0.0)
 metadata/fov = 35.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -404,7 +404,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_shelter__briar_falls_picnic" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-4.970, 1.562, -7.720)
-rotation = Vector3(-0.2618, 0.9202, 0.0)
+rotation = Vector3(-0.2903, 0.8065, 0.0)
 metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it

@@ -452,7 +452,7 @@ metadata/fov = 55.0
 ; the scoreboard past the track's north curve (rewind: R.I.P. — the CG has that moment)
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(7.000, 1.700, -131.728)
-rotation = Vector3(0.1273, 0.2727, 0.0)
+rotation = Vector3(0.1938, 0.4672, 0.0)
 metadata/fov = 38.0
 
 ; "The stadium lights hung over the field in a white haze": a visitors'-side bank over the firs

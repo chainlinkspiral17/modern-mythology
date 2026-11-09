@@ -338,13 +338,13 @@ script = ExtResource("14_dbgm")
 ; insert: the chain across Old Yachats Road, the way roads get when they have been decommissioned
 [node name="shot_insert_chain" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0, 1.4, -157.0)
-rotation = Vector3(-0.2418, 1.4056, 0.0)
+rotation = Vector3(-0.1493, 0.8761, 0.0)
 metadata/fov = 42.0
 
 ; insert: the green metal road-marker reading Old Yachats Road
 [node name="shot_insert_marker" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 1.5, -155.0)
-rotation = Vector3(0.1278, 0.8733, 0.0)
+rotation = Vector3(0.2917, 0.8719, 0.0)
 metadata/fov = 42.0
 
 ; insert: the guardrail, the swell line at the foot of the bluff below it
