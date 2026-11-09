@@ -11798,11 +11798,34 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read from ch2/ch10 (the patch 'opened onto nothing', with a shimmer at its edges). (2026-11-08) Not laid on the set: the user, \"isn't the patch supposed to be a black void, maybe have a starfield shimmer to it.\" The patch is now a void in the game (scripts/LocaleVoid.gd: unlit black, a far starfield, the shimmer at its edges, from the canon \"a hole in the wall that opened onto nothing\"); a picture over it would paint the hole shut. The picture stays in the roster for the gallery.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Read from ch2/ch10 (the patch 'opened onto nothing', with a shimmer at its edges). (2026-11-08) Not laid on the set: the user, \"isn't the patch supposed to be a black void, maybe have a starfield shimmer to it.\" The patch is now a void in the game (scripts/LocaleVoid.gd: unlit black, a far starfield, the shimmer at its edges, from the canon \"a hole in the wall that opened onto nothing\"); a picture over it would paint the hole shut. The picture stays in the roster for the gallery. (2026-11-09) its surface kept (prop_budget_audit: an art entry names one) and switched OFF in every view by not_presets, so the void shows.",
       "art_cat": "PICTURE",
       "score_lines": 598,
       "score_mentions": 13,
-      "apply": [],
+      "apply": [
+        {
+          "locale": "board_lords_interior",
+          "label": "Mural_Patch",
+          "center": [
+            -3.3,
+            -8.79,
+            1.8
+          ],
+          "size": [
+            1.15,
+            1.02
+          ],
+          "facing": "+y",
+          "hide": [
+            "Mural_Patch"
+          ],
+          "not_presets": [
+            "board_lords_interior",
+            "board_lords_office",
+            "main_street"
+          ]
+        }
+      ],
       "inspect": true
     },
     {
@@ -23556,11 +23579,29 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) One carved relief sign split across three stand-in pieces (low panel + rock, high panel, figure + hair); read from vol2 ch1 and the builder. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) One carved relief sign split across three stand-in pieces (low panel + rock, high panel, figure + hair); read from vol2 ch1 and the builder. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) re-laid on the rebuilt sign: the upper half of Sign_Board (its old high panel is gone), over the surf relief, beside sign_1 (rock) and sign_3 (figure).",
       "art_cat": "SIGN",
       "score_lines": 11,
       "score_mentions": 1,
-      "apply": [],
+      "apply": [
+        {
+          "locale": "crumpled_barn",
+          "label": "Sign",
+          "center": [
+            0.918,
+            8.725,
+            1.75
+          ],
+          "size": [
+            0.716,
+            0.36
+          ],
+          "facing": "+y",
+          "hide": [
+            "Sign_Surf"
+          ]
+        }
+      ],
       "inspect": true
     },
     {
@@ -53572,10 +53613,61 @@
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-19, written from the builder and the scenes) Builder: Sky_Night_N and Sky_Night_E, the far cards past the N and E windows (400 x 200 m each; the city's ground meets them about a tenth up); the towers below stay 3D. Pre-2012 (the builder's undated vol 4). River and expressway invented.",
+      "notes": "(2026-10-19, written from the builder and the scenes) Builder: Sky_Night_N and Sky_Night_E, the far cards past the N and E windows (400 x 200 m each; the city's ground meets them about a tenth up); the towers below stay 3D. Pre-2012 (the builder's undated vol 4). River and expressway invented. (2026-11-09) the far sky cards were removed from the builder (2026-10-30); the rows are kept (the roster loader needs a surface) and switched OFF in every view by not_presets until a far card stands there again.",
       "art_cat": "BACKLOT",
       "score_lines": 58,
-      "apply": []
+      "apply": [
+        {
+          "locale": "vol4_story_rooms",
+          "label": "Sky_Night_N",
+          "center": [
+            704.0,
+            189.9,
+            20.0
+          ],
+          "size": [
+            400.0,
+            200.0
+          ],
+          "facing": "-y",
+          "hide": [],
+          "not_presets": [
+            "aaron_bedroom",
+            "aaron_bedroom_blue",
+            "dead_store",
+            "dead_store_roof",
+            "dean_house_late",
+            "garage_level",
+            "mirror_room",
+            "shanghai_window_night"
+          ]
+        },
+        {
+          "locale": "vol4_story_rooms",
+          "label": "Sky_Night_E",
+          "center": [
+            893.9,
+            3.0,
+            20.0
+          ],
+          "size": [
+            400.0,
+            200.0
+          ],
+          "facing": "-x",
+          "hide": [],
+          "not_presets": [
+            "aaron_bedroom",
+            "aaron_bedroom_blue",
+            "dead_store",
+            "dead_store_roof",
+            "dean_house_late",
+            "garage_level",
+            "mirror_room",
+            "shanghai_window_night"
+          ]
+        }
+      ]
     },
     {
       "slug": "vol4_story_rooms_aaron_tv_game",

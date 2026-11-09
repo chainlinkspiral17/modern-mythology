@@ -3835,6 +3835,50 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 313: the trip, read — vol 7 and vol 6's flagged scenes (16 locks).**
+- Phase 3 of the VN plan, draft 2: the word-count direction read against the
+  prose where counts mislead most (grief words in backstory; "dream" and
+  "substrate" in TALK about the substrate).
+- Vol 7, 15 locks: up — ch18_pool 1.0 → 1.4 (Finn inside the Tideline stick),
+  ch11_kestrel 1.2 → 1.4 (inside Kestrel Mountain), ch20_each 1.0 → 1.4 (the
+  figure at the door is several people; Per sees his father), ch20_wall
+  1.0 → 1.2; down — ch12_kai, ch12_lena, ch13_cale, ch18_home 1.4 → 1.2 (talk,
+  not vision); ch10_cabin vigil → the volume's own (a bakery conversation);
+  ch22_floors plain/vigil → MEMORY 1.0 (Dean's life in photographs); kept as
+  read — ch11_per, ch18_stick (vigil), ch11_bowl 1.4, ch11_stick, ch21_leaving.
+- **A scorer bug:** `=bill` counted Bill Kowalski as a bill — six Kowalski
+  scenes read as paperwork (ch13_home, ch19_chains 0.5 → 1.0; ch19_depthchart,
+  ch23_sleep, ch23_sunday 0.75 → 1.0; ch8_kowalski_kitchen 0.5 → 0.75).
+  `NAME_NOT_WORD` drops capitalised "Bill" (the only true name/word clash in
+  the corpus; Judge, Nurse, DJ, The Demon mean what they say).
+- vol6_ch10_home locked 1.0 with one beat: the trip swells for the dream of
+  the dock and the haze (13 lines), not the whole homecoming.
+- **Draft 3 targets:** vol 7's remaining 1.0 scenes read in full (the ch6 Cale
+  chain, ch8's apartment chain); vol 5 → vol 1 the same way; MEMORY for the
+  flashbacks the text names.
+
+**2026-11-09 · pass 312: portraits SLIDE between slots; `hide center` works on 3D sets.**
+- Phase 5 of the VN plan, draft 2. Two runtime faults under the 32 "jumps":
+  (1) a character re-shown at another slot faded out at one edge while a NEW
+  portrait faded in at the other; (2) over a 3D set a "center" show stands at
+  an edge slot (CharLayer.show_character), so a script's `hide center` found
+  nothing and the portrait stayed up — the "lingering, then vanishing".
+- CharLayer now: a portrait leaving a slot (hide, or another character taking
+  the slot) fades but is HELD for DISPLACE_LINES (2) lines; shown again in that
+  time — a hide-and-reshow, a solo shot opening into a two-shot, a held show —
+  the same portrait SLIDES from where it stood (SLIDE_RATE, ~0.5 s) and fades
+  back up. A visible character shown at a new slot slides too. `hide center`
+  finds the portrait the script put at centre (slot "asked"). Unit test
+  (CharLayer alone, special-2D stand-ins): same node back, slides, held 2
+  lines then freed, scene change clears all — 10/10.
+- `tools/audit/portrait_motion_audit.py` (report): simulates the new stage.
+  Jumps 32 → 4 (43 moves now slide); POPS (on screen one line or less) 84.
+- **Draft 3 targets:** the POPS read by hand — most are the director following
+  the narration (vol6_ch23_sunday's arrivals: nine people through three slots,
+  one per line; the stockroom's goodbye round; vol1_ch3_club's INTERCUT) —
+  decide per scene: hold a core cast and let the box name the walk-ons, or keep
+  the parade; the Deck read of the slide speed at 21:9.
+
 **2026-11-09 · pass 311: the 14 duplicate window pictures — one per surface, or one per time of day.**
 - The user ("Are the pictures by day or night? ... I'll just let you decide"):
   a contact sheet of the 23 pictures read from the Drive (read-only), then

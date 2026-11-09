@@ -140,13 +140,16 @@ pictures were on screen.
   (0.35) when a picture is prominent; category words; cooldown 4. Engine-
   tested (vol6_ch1_bedroom 13 notices the window view). Draft 2: the arrival
   glance; a closeup that composes a picture behind the face on purpose.
-- **Phase 3 — draft 1 shipped.** Registers memory / broadcast / vigil (10
-  scenes so far); ART BREATH; the void on the beat. Draft 2: the chapter-by-
-  chapter reading pass with locks; MEMORY for flashbacks named in the text.
+- **Phase 3 — draft 2 shipped.** Draft 1: registers memory / broadcast /
+  vigil; ART BREATH; the void on the beat. Draft 2 (pass 313): vol 7's and
+  vol 6's flagged scenes read, 16 locks; the Bill-is-a-bill scorer bug. Draft
+  3: the rest of vol 7 in full, then vol 5 → 1; MEMORY for named flashbacks.
 - **Phase 4 — continuous.** All gates at zero except as noted in the roadmap.
-- **Phase 5 — draft 1 shipped.** 76 flickering staging nodes retired in place
-  (pops 55 → 39, jumps 36 → 32). Draft 2: the remaining 39 + 32 by hand;
-  speaker-side staging.
+- **Phase 5 — draft 2 shipped.** Draft 1: 76 flickering staging nodes retired
+  in place (pops 55 → 39, jumps 36 → 32). Draft 2 (pass 312): portraits SLIDE
+  between slots and a leaving portrait is held 2 lines (jumps 32 → 4, 43
+  slides); `hide center` works on 3D sets. Draft 3: the 84 one-line
+  appearances read by hand (portrait_motion_audit.py); speaker-side staging.
 
 ## Order of work
 

@@ -1708,8 +1708,17 @@
    "why": "the volume's own — spirit ×1, dream ×1, spiral ×1"
   },
   "vol6_ch10_home": {
-   "level": 1.4,
-   "why": "dreamlike — dream ×13, haze ×7"
+   "level": 1.0,
+   "why": "(read 2026-11-09) a homecoming and a shift at Centro Foods, the volume's own; the trip swells only for the dream of the dock and the haze (word count set the whole scene dreamlike)",
+   "locked": true,
+   "beats": [
+    {
+     "node": 54,
+     "trip": 1.45,
+     "hold": 13,
+     "why": "the dream of the dock: the rust-coloured haze moving in"
+    }
+   ]
   },
   "vol6_ch10_night_shift": {
    "level": 0.75,
@@ -1760,8 +1769,8 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol6_ch13_home": {
-   "level": 0.5,
-   "why": "plain: the weight lands without the trip — bill ×11, shift ×1"
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
   },
   "vol6_ch13_stub": {
    "level": 1.0,
@@ -1826,7 +1835,7 @@
   },
   "vol6_ch17_table": {
    "level": 0.75,
-   "why": "grounded — bill ×10, nurse ×3, sick ×2, money ×2; a kitchen-and-morning room (morning ×21, coffee ×17, kitchen ×10): domestic register",
+   "why": "grounded — nurse ×3, sick ×2, money ×2, hospital ×1; a kitchen-and-morning room (morning ×21, coffee ×17, kitchen ×10): domestic register",
    "register": "domestic"
   },
   "vol6_ch18_letter": {
@@ -1851,12 +1860,20 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol6_ch19_chains": {
-   "level": 0.5,
-   "why": "plain: the weight lands without the trip — bill ×11, shift ×2, died ×1"
+   "level": 1.0,
+   "why": "the volume's own — spirit ×1",
+   "beats": [
+    {
+     "node": 142,
+     "trip": 0.45,
+     "hold": 3,
+     "why": "a weight the trip steps back from (died)"
+    }
+   ]
   },
   "vol6_ch19_depthchart": {
-   "level": 0.75,
-   "why": "grounded — bill ×6, doctor ×2, shift ×1"
+   "level": 1.0,
+   "why": "the volume's own — synth ×1, demon ×1"
   },
   "vol6_ch19_stub": {
    "level": 1.0,
@@ -1959,8 +1976,8 @@
    "why": "grounded — hospital ×2, email ×2, doctor ×1, sick ×1"
   },
   "vol6_ch23_sleep": {
-   "level": 0.75,
-   "why": "grounded — bill ×3, money ×1, shift ×1; a kitchen-and-morning room (kitchen ×7, morning ×6): domestic register",
+   "level": 1.0,
+   "why": "the volume's own — song ×2, spiral ×1; a kitchen-and-morning room (kitchen ×7, morning ×6): domestic register",
    "register": "domestic"
   },
   "vol6_ch23_stub": {
@@ -1968,8 +1985,8 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol6_ch23_sunday": {
-   "level": 0.75,
-   "why": "grounded — bill ×4, shift ×2"
+   "level": 1.0,
+   "why": "the volume's own — no uncanny words"
   },
   "vol6_ch2_bindery": {
    "level": 1.0,
@@ -2236,8 +2253,8 @@
    "why": "plain: the weight lands without the trip — police ×6, doctor ×2, arrest ×2, contract ×1"
   },
   "vol6_ch8_kowalski_kitchen": {
-   "level": 0.5,
-   "why": "plain: the weight lands without the trip — bill ×5, hospital ×2, shift ×1; a kitchen-and-morning room (kitchen ×5, eggs ×5, morning ×3): domestic register",
+   "level": 0.75,
+   "why": "grounded — hospital ×2, shift ×1; a kitchen-and-morning room (kitchen ×5, eggs ×5, morning ×3): domestic register",
    "register": "domestic"
   },
   "vol6_ch8_lake_palestine": {
@@ -2279,9 +2296,9 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol7_ch10_cabin": {
-   "level": 0.75,
-   "why": "grounded — died ×5, contract ×1, funeral ×1; a grief / a hospital (died ×5, funeral ×1): vigil register",
-   "register": "vigil"
+   "level": 1.0,
+   "why": "(read 2026-11-09) a bakery back-kitchen conversation; the deaths are backstory (Per's father, Tem's grandfather's funeral in '42), not a grief in the room — the volume's own",
+   "locked": true
   },
   "vol7_ch10_morning": {
    "level": 1.2,
@@ -2311,7 +2328,7 @@
   },
   "vol7_ch11_bowl": {
    "level": 1.4,
-   "why": "dreamlike — substrate ×49, spiral ×6, flame ×2, nebula ×1",
+   "why": "(read 2026-11-09) Kai's vision in the basement and back: the substrate is in the cabin now — dreamlike",
    "beats": [
     {
      "node": 121,
@@ -2319,11 +2336,12 @@
      "hold": 3,
      "why": "a weight the trip steps back from (is dead)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch11_kestrel": {
-   "level": 1.2,
-   "why": "leans uncanny — substrate ×38, spiral ×2, ghost ×1",
+   "level": 1.4,
+   "why": "(read 2026-11-09) Kai INSIDE Kestrel Mountain: a path the substrate renders as basalt, Nate's imprint in the basement — dreamlike",
    "beats": [
     {
      "node": 25,
@@ -2361,11 +2379,12 @@
      "hold": 3,
      "why": "the line turns visionary (substrate)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch11_per": {
    "level": 0.75,
-   "why": "grounded — died ×8, funeral ×2, insurance ×1; a grief / a hospital (died ×8, funeral ×2): vigil register",
+   "why": "(read 2026-11-09) Per's testimony: his father's death, the locked room, three days in the papers — a grief told at the table: vigil",
    "register": "vigil",
    "beats": [
     {
@@ -2374,11 +2393,12 @@
      "hold": 3,
      "why": "the line turns visionary (spiral)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch11_stick": {
    "level": 1.2,
-   "why": "leans uncanny — substrate ×9, dream ×1",
+   "why": "(read 2026-11-09) lunch, then Tem's account of the basement and the cap going on — leans uncanny (kept)",
    "beats": [
     {
      "node": 46,
@@ -2392,19 +2412,21 @@
      "hold": 3,
      "why": "the line turns visionary (substrate)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch11_stub": {
    "level": 1.0,
    "why": "the volume's own — no uncanny words"
   },
   "vol7_ch12_kai": {
-   "level": 1.4,
-   "why": "dreamlike — substrate ×15, nebula ×2"
+   "level": 1.2,
+   "why": "(read 2026-11-09) the back office at Board Lords: two men TALKING about the substrate moving objects — leans uncanny, not dreamlike",
+   "locked": true
   },
   "vol7_ch12_lena": {
-   "level": 1.4,
-   "why": "dreamlike — substrate ×22, dream ×1, nebula ×1",
+   "level": 1.2,
+   "why": "(read 2026-11-09) the drive in and Lena's apartment, talk of the bowls and the leak — leans uncanny, not dreamlike",
    "beats": [
     {
      "node": 25,
@@ -2418,7 +2440,8 @@
      "hold": 3,
      "why": "a weight the trip steps back from (died)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch12_morning": {
    "level": 1.0,
@@ -2450,8 +2473,8 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol7_ch13_cale": {
-   "level": 1.4,
-   "why": "dreamlike — dream ×29, substrate ×11, spiral ×1",
+   "level": 1.2,
+   "why": "(read 2026-11-09) the cabin table at evening: Cale's history of Nate's playings (the 'dream' count is talk) — leans uncanny",
    "beats": [
     {
      "node": 9,
@@ -2465,7 +2488,8 @@
      "hold": 3,
      "why": "a weight the trip steps back from (died)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch13_marina": {
    "level": 1.2,
@@ -2702,8 +2726,8 @@
    "why": "the volume's own — no uncanny words"
   },
   "vol7_ch18_home": {
-   "level": 1.4,
-   "why": "dreamlike — substrate ×16",
+   "level": 1.2,
+   "why": "(read 2026-11-09) waking from five hours of substrate-time into the bedroom; the cedar hand is told, not seen — leans uncanny",
    "beats": [
     {
      "node": 32,
@@ -2717,11 +2741,12 @@
      "hold": 3,
      "why": "a weight the trip steps back from (died)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch18_pool": {
-   "level": 1.0,
-   "why": "the volume's own — substrate ×22, stars ×1",
+   "level": 1.4,
+   "why": "(read 2026-11-09) Finn INSIDE the Tideline stick: a rendered tide pool, a body not his, a prior player's imprint — the volume's most visionary passage (word count gave 1.0)",
    "beats": [
     {
      "node": 18,
@@ -2753,12 +2778,14 @@
      "hold": 3,
      "why": "a weight the trip steps back from (died)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch18_stick": {
    "level": 0.75,
-   "why": "grounded — died ×5; a grief / a hospital (died ×5): vigil register",
-   "register": "vigil"
+   "why": "(read 2026-11-09) Tem gives Finn Brandon's stick, from the apartment she and Petra cleared after he died: vigil",
+   "register": "vigil",
+   "locked": true
   },
   "vol7_ch18_stub": {
    "level": 1.0,
@@ -2840,16 +2867,17 @@
    ]
   },
   "vol7_ch20_each": {
-   "level": 1.0,
-   "why": "the volume's own — substrate ×4"
+   "level": 1.4,
+   "why": "(read 2026-11-09) the figure at the door is several people at once; Per sees his father in it — the visionary turn of the climax",
+   "locked": true
   },
   "vol7_ch20_stub": {
    "level": 1.0,
    "why": "the volume's own — no uncanny words"
   },
   "vol7_ch20_wall": {
-   "level": 1.0,
-   "why": "the volume's own — substrate ×4, dream ×1",
+   "level": 1.2,
+   "why": "(read 2026-11-09) the alley at dawn, thirty-five people at the face Lena painted, the eyes at the smallest opening — hushed, uncanny",
    "beats": [
     {
      "node": 121,
@@ -2857,7 +2885,8 @@
      "hold": 3,
      "why": "the line turns visionary (substrate)"
     }
-   ]
+   ],
+   "locked": true
   },
   "vol7_ch21_cabin": {
    "level": 1.0,
@@ -2865,7 +2894,8 @@
   },
   "vol7_ch21_leaving": {
    "level": 1.0,
-   "why": "the volume's own — substrate ×2"
+   "why": "(read 2026-11-09) the crowd's morning leaving, coffee and goodbyes, the diner opening — the comedown (kept at the volume's own)",
+   "locked": true
   },
   "vol7_ch21_stub": {
    "level": 1.0,
@@ -2900,9 +2930,10 @@
    ]
   },
   "vol7_ch22_floors": {
-   "level": 0.5,
-   "why": "plain: the weight lands without the trip — died ×5, grief ×1; a grief / a hospital (died ×5): vigil register",
-   "register": "vigil"
+   "level": 1.0,
+   "why": "(read 2026-11-09) the tower lobby hung with Dean's life in photographs (captions say 'died', the scene is not a death) — eerie and remembered: memory, not plain",
+   "register": "memory",
+   "locked": true
   },
   "vol7_ch22_portal": {
    "level": 1.2,

@@ -341,6 +341,9 @@ const IDLE_AMP    := 1.0
 const IDLE_PERIOD := 2.5
 const BREATH_AMP  := 0.0025
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
+## (2026-11-09) how fast a portrait slides to a new slot (per second, an
+## exponential ease: ~90 % of the way in 0.5 s — one move with the line)
+const SLIDE_RATE  := 4.6
 
 # Parallax: portraits counter-drift the bg sway (GameEngine drives the
 # bg with the same SWAY_PERIOD). Small amplitude to sell depth without
@@ -879,7 +882,17 @@ func _process(delta: float) -> void:
 		var phase: float  = IDLE_PHASE[pos]
 		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
 		var entrance_y: float = float(node.get_meta("entrance_y")) if node.has_meta("entrance_y") else 0.0
-		node.position = _slot_pos(pos) + Vector2(pdx, idle_y + pdy + entrance_y)
+		# (2026-11-09) a portrait moving between slots eases across
+		var slide_x: float = 0.0
+		if node.has_meta("slide_x"):
+			slide_x = float(node.get_meta("slide_x"))
+			slide_x = lerpf(slide_x, 0.0, 1.0 - exp(-SLIDE_RATE * delta))
+			if absf(slide_x) < 0.5:
+				node.remove_meta("slide_x")
+				slide_x = 0.0
+			else:
+				node.set_meta("slide_x", slide_x)
+		node.position = _slot_pos(pos) + Vector2(pdx + slide_x, idle_y + pdy + entrance_y)
 		# ── Subtle breath: ±1% scale on the tint_holder, longer period
 		# than position sway so the two motions don't beat against each
 		# other. Reads as the figure inhaling.
@@ -977,6 +990,7 @@ func set_insert_quiet(on: bool) -> void:
 func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:
 	if not POSITIONS.has(pos):
 		pos = "center"
+	var asked_pos: String = pos
 	if bg_is_3d and pos == "center":
 		var k := char_key(char_name)
 		var right_slot: Variant = _slots.get("right")
@@ -1015,23 +1029,42 @@ func show_character(char_name: String, expr: String, pos: String, facing: String
 	# at "center") leave both portraits on screen and the bug surfaces
 	# as "the same character appears twice" or "portraits repeating
 	# across scenes."
+	# (2026-11-09) the character MOVES: the same portrait slides to the new
+	# slot. It faded out at one edge and a new one faded in at the other —
+	# 32 such jumps across the chapters, mostly a solo shot opening into a
+	# two-shot ("portraits still just cutting out and not transitioning
+	# smoothly between shots"). A portrait hidden or displaced in the last
+	# DISPLACE_LINES lines comes back the same way: from where it stood.
+	if _displaced.has(key):
+		var d: Dictionary = _displaced[key]
+		_displaced.erase(key)
+		var dn: Variant = d.get("node")
+		if dn != null and is_instance_valid(dn):
+			_move_into(dn as Control, d["slot"] as Dictionary, String(d["pos"]), pos, asked_pos, char_name, expr, should_flip)
+			return
 	for other_pos: String in _slots:
 		if other_pos == pos:
 			continue
 		var other_slot = _slots[other_pos]
 		if other_slot != null and other_slot["name"] == key:
+			var mover: Variant = other_slot["node"]
+			if mover != null and is_instance_valid(mover) and not (mover as Control).has_meta("fading"):
+				_slots[other_pos] = null
+				_move_into(mover as Control, other_slot as Dictionary, other_pos, pos, asked_pos, char_name, expr, should_flip)
+				return
 			_fade_out_free(other_slot["node"])
 			_slots[other_pos] = null
 			break
 	var slot = _slots[pos]
 	if slot != null and slot["name"] != key:
-		# Different character in this slot — replace.
-		_fade_out_free(slot["node"])
+		# Different character in this slot — replace (held a moment: if the
+		# script shows them elsewhere next, they slide there)
+		_displace(pos)
 		slot = null
 	if slot == null:
 		var node := _make_portrait(char_name, expr, pos)
 		node.set_meta("flip_x", -1.0 if should_flip else 1.0)
-		_slots[pos] = {"name": key, "expr": expr, "node": node}
+		_slots[pos] = {"name": key, "expr": expr, "node": node, "asked": asked_pos}
 	else:
 		# Same character in this slot — just update expression. No new
 		# portrait node, no duplicate, no fade-in.
@@ -1053,9 +1086,94 @@ func update_expression(char_name: String, expr: String) -> void:
 
 func hide_at(pos: String) -> void:
 	var slot = _slots.get(pos)
+	if slot == null and bg_is_3d and pos == "center":
+		# (2026-11-09) over a 3D set a "center" show stands at an edge slot
+		# (show_character), so `hide center` found nothing and the portrait
+		# stayed up: hide the one the script put at centre
+		for p: String in _slots:
+			var s2 = _slots[p]
+			if s2 != null and String((s2 as Dictionary).get("asked", "")) == "center":
+				pos = p
+				slot = s2
+				break
 	if slot != null:
-		_fade_out_free(slot["node"])
-		_slots[pos] = null
+		_displace(pos)
+
+
+## (2026-11-09) A portrait leaving a slot fades out but is held for
+## DISPLACE_LINES text lines: shown again in that time (a hide-and-reshow,
+## a solo shot opening into a two-shot, a held show) it comes back from
+## where it stood instead of popping in anew.
+const DISPLACE_LINES := 2
+var _displaced: Dictionary = {}      # key -> {node, slot, pos, lines}
+
+func _displace(pos: String) -> void:
+	var s = _slots.get(pos)
+	_slots[pos] = null
+	if s == null:
+		return
+	var sd: Dictionary = s
+	var nd_v: Variant = sd.get("node")
+	if nd_v == null or not is_instance_valid(nd_v):
+		return
+	var nd: Control = nd_v
+	var k: String = String(sd.get("name", ""))
+	if _displaced.has(k):
+		var old: Variant = (_displaced[k] as Dictionary).get("node")
+		if old != null and is_instance_valid(old) and old != nd:
+			(old as Control).queue_free()
+	nd.set_meta("fading", true)
+	nd.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var tw := nd.create_tween()
+	tw.tween_property(nd, "modulate:a", 0.0, 0.35)
+	nd.set_meta("fade_tw", tw)
+	_displaced[k] = {"node": nd, "slot": sd, "pos": pos, "lines": 0}
+
+
+func _move_into(mc: Control, sd: Dictionary, from_pos: String, pos: String, asked_pos: String,
+		char_name: String, expr: String, should_flip: bool) -> void:
+	var occupant = _slots.get(pos)
+	if occupant != null and occupant != sd:
+		_displace(pos)
+	var from_x: float = _slot_pos(from_pos).x + (float(mc.get_meta("slide_x")) if mc.has_meta("slide_x") else 0.0)
+	mc.set_meta("slide_x", from_x - _slot_pos(pos).x)
+	mc.set_meta("pos", pos)
+	if mc.has_meta("fade_tw"):
+		var ft: Variant = mc.get_meta("fade_tw")
+		if ft != null and ft is Tween and (ft as Tween).is_valid():
+			(ft as Tween).kill()
+		mc.remove_meta("fade_tw")
+	if mc.has_meta("fading"):
+		mc.remove_meta("fading")
+		var back := mc.create_tween()
+		back.tween_property(mc, "modulate:a", 1.0, 0.3)
+	sd["asked"] = asked_pos
+	_slots[pos] = sd
+	if from_pos != pos:
+		print("[CharLayer] %s slides %s -> %s" % [char_key(char_name), from_pos, pos])
+	_update_expr(mc, char_name, expr)
+	sd["expr"] = expr
+	mc.set_meta("flip_x", -1.0 if should_flip else 1.0)
+
+
+## A line has played: portraits held longer than DISPLACE_LINES go.
+func _tick_displaced() -> void:
+	for k: Variant in _displaced.keys():
+		var d: Dictionary = _displaced[k]
+		d["lines"] = int(d.get("lines", 0)) + 1
+		if int(d["lines"]) > DISPLACE_LINES:
+			var nd: Variant = d.get("node")
+			if nd != null and is_instance_valid(nd):
+				(nd as Control).queue_free()
+			_displaced.erase(k)
+
+
+func _clear_displaced() -> void:
+	for k: Variant in _displaced.keys():
+		var nd: Variant = (_displaced[k] as Dictionary).get("node")
+		if nd != null and is_instance_valid(nd):
+			(nd as Control).queue_free()
+	_displaced.clear()
 
 
 func hide_all(fade: bool = false) -> void:
@@ -1067,13 +1185,15 @@ func hide_all(fade: bool = false) -> void:
 	# sees the drop.) A script's own `hide` in the middle of a scene
 	# FADES (2026-11-05, the user: "the hard cuts and disappearances
 	# feel weird in spots").
+	if not fade:
+		_clear_displaced()
 	for pos: String in _slots:
 		var slot = _slots.get(pos)
 		if slot != null:
 			var node: Control = slot["node"]
 			if is_instance_valid(node):
 				if fade:
-					_fade_out_free(node)
+					_displace(pos)
 				else:
 					node.queue_free()
 			_slots[pos] = null
@@ -1229,6 +1349,7 @@ func set_portrait_override(arg: String) -> void:
 ## a spoken line plays at talking distance, a thought (or narration over
 ## one person alone) close — PortraitDirector.register().
 func direct_line(char_name: String, text: String, expr: String, kind: String = "say") -> void:
+	_tick_displaced()
 	var speaker: String = char_key(char_name) if char_name != "" else ""
 	var present: int = 0
 	for pos_p: String in _slots:

@@ -69,6 +69,10 @@ GROUND_LINE = [r"\bdied\b", r"\bis dead\b", r"\bwas dead\b", r"\bfuneral", r"\bh
                r"\bgunshot", r"\bkilled\b"]
 
 TOK = re.compile(r"[a-z']+")
+# (2026-11-09) a NAME that is also a scored word: Bill Kowalski is not a bill
+# ("Bill brings over a plate" read vol 6's Kowalski kitchen as paperwork and
+# set it plain). Capitalised, it is the man; lowercase "bill" is money.
+NAME_NOT_WORD = re.compile(r"\bBill(?:'s)?\b")
 CUE = re.compile(r"\[[^\]]*\]")
 # (score per 1000 words, minimum hits) → level. Absolute, not by rank: a
 # scene with little signal either way keeps the volume's own level (a single
@@ -120,7 +124,7 @@ def read_scenes():
                     sets.add(n["src"][3:])
                 t = n.get("text") if isinstance(n, dict) else None
                 if isinstance(t, str) and t.strip():
-                    lines.append((i, CUE.sub("", t).lower()))
+                    lines.append((i, NAME_NOT_WORD.sub("", CUE.sub("", t)).lower()))
             if lines:
                 out.append((sid, lines, sets))
     return out

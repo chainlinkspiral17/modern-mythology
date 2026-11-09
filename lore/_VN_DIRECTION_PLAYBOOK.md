@@ -323,6 +323,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-09 · a portrait that moves is the same portrait; hide where the show stood (pass 312)
+
+- **What happened:** the user kept seeing portraits "cutting out and not
+  transitioning smoothly", after a pass that retired 76 flickering staging
+  nodes. Two faults sat under the scripts. A character re-shown at another
+  slot became a NEW portrait (fade out at one edge, fade in at the other).
+  And over a 3D set a "center" show is placed at an edge slot, so `hide
+  center` hid nothing: the portrait lingered until something replaced it.
+- **Rule:** staging changes are MOTION, not cuts. A portrait leaving a slot is
+  held a couple of lines; if the script brings the character back, the same
+  node slides from where it stood. Any remap of a script's slot (centre →
+  edge) must also remap the script's hide (slot "asked").
+- **Gate:** `tools/audit/portrait_motion_audit.py` simulates the stage the way
+  CharLayer plays it (report); the unit test drives CharLayer alone with
+  special-2D stand-ins, since this container has no hero models.
+
 ### 2026-11-08 · a painting has parts; name them so a line can point (pass 308)
 
 **What happened:** on a 2D painting, `[shot:insert X]` pushed in on a spot
