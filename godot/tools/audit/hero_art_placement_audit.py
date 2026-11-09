@@ -418,6 +418,12 @@ def main():
                 print("   " + x)
     print("\nhero_art_placement_audit · %d placement(s) read · %d with a finding · %s"
           % (total, bad, dict(by_kind)))
+    # (2026-11-09) --gate: the mechanical findings fail (hero_art_fix.py
+    # mends most of them); COVERED and DUPLICATE stay a read
+    gated = {k: v for k, v in by_kind.items() if k not in ("COVERED", "DUPLICATE")}
+    if "--gate" in sys.argv:
+        print("hero_art gate · %d mechanical finding(s) %s" % (sum(gated.values()), dict(gated)))
+        return 1 if gated else 0
     return 0
 
 

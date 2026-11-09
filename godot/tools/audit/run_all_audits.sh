@@ -442,6 +442,31 @@ PSOUT="$(python3 painting_spot_audit.py 2>/dev/null)" || {
 echo "$PSOUT" | tail -1
 echo ""
 
+# ── Signs out of roofs (2026-11-09) ────────────────────────────
+# "sign text not visible, cutting through roof? this is like this all
+# over." A sign / letter / neon part with a roof, parapet, eave or awning
+# spanning its whole thickness over 15 % of its face is inside it (53 were,
+# under the overlap audit's depth floors). Zero.
+echo "── sign_roof_audit.py ──"
+SROUT="$(python3 sign_roof_audit.py 2>/dev/null)" || {
+    echo "$SROUT" | grep -E "^CUT" | head -20
+    echo "$SROUT" | tail -1; exit 1; }
+echo "$SROUT" | tail -1
+echo ""
+
+# ── Hero pictures on their surfaces (2026-11-09) ──────────────
+# "texture art badly placed all over." Every roster art row against its
+# set: on its stand-in's face, the stand-in's size, facing OUT of its
+# object, no piece of its own stand-in left in front of it. Mechanical
+# findings fail (tools/audit/hero_art_fix.py mends most); COVERED and
+# DUPLICATE (two pictures for one surface: the user's pick) are read.
+echo "── hero_art_placement_audit.py --gate ──"
+HAOUT="$(python3 hero_art_placement_audit.py --gate 2>/dev/null)" || {
+    echo "$HAOUT" | grep -E "^   (FACES-IN|OFF-FACE|MISFIT|FLOATING|NO-STANDIN|LEFTOVER|BADROW)" | head -20
+    echo "$HAOUT" | tail -1; exit 1; }
+echo "$HAOUT" | tail -2
+echo ""
+
 # ── Far-plane gate (2026-10-31) ───────────────────────────────
 # The VN camera's far plane is 200 m unless a preset sets "far"; 80 open
 # views had their hills, tree lines, cloud decks and mesas wholly past it
