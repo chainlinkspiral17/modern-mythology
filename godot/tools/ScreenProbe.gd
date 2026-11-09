@@ -25,6 +25,9 @@ func _report(tag: String) -> void:
 		tag, DisplayServer.window_get_size(), DisplayServer.window_get_mode(), root.size,
 		root.get_visible_rect().size, root.content_scale_aspect, DisplayServer.screen_get_size()]
 	print(line)
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	if sm != null and sm.has_method("describe"):
+		print("[probe]    ", sm.call("describe"))
 	for n: Node in root.find_children("*", "SubViewportContainer", true, false):
 		var c: SubViewportContainer = n as SubViewportContainer
 		if not c.is_visible_in_tree():
@@ -65,4 +68,14 @@ func _run() -> void:
 			await get_tree().process_frame
 		_report("scene+%d" % ((k + 1) * 40))
 	await _shot("scene")
+	# back to the menu and in again: the menu keeps its 16:9 frame, the second
+	# chapter must fill the width like the first
+	main.call("_on_game_ended")
+	for i in 20:
+		await get_tree().process_frame
+	_report("menu again")
+	main.call("_on_play_requested", int(sc.get("vol", 1)), scene_id, 1)
+	for i in 60:
+		await get_tree().process_frame
+	_report("scene again")
 	get_tree().quit()

@@ -26,7 +26,7 @@ BASE="${1:-origin/claude/mythology-game-fiction-ji1t2g}"
 # Files no audit in run_all_audits.sh reads to judge the world's geometry,
 # cameras, story wiring or audio: tools, the portrait + hero-art runtime,
 # docs. Anything not matched here sends the run to the full suite.
-LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/ScreenProbe\.(gd|tscn)|godot/autoload/Settings\.gd|godot/scenes/previz/Previz\.gd|godot/tools/audit/window_api_audit\.py|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/audit/prop_budget_audit\.py|godot/tools/blender/slim_model\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
+LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/ScreenProbe\.(gd|tscn)|godot/autoload/(Settings|ScreenMgr)\.gd|godot/scenes/menu/SettingsOverlay\.gd|godot/scenes/previz/Previz\.gd|godot/tools/audit/window_api_audit\.py|godot/tools/lambda_capture_check\.py|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/audit/prop_budget_audit\.py|godot/tools/blender/slim_model\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
 
 # the Drive gates run on EVERY change, light or not (2026-10-13)
 python3 godot/tools/audit/drive_write_audit.py || { echo "EXIT 1"; exit 1; }
@@ -37,6 +37,10 @@ python3 godot/tools/audit/drive_guard_test.py >/dev/null || { echo "EXIT 1"; exi
 # setting isn't taking, still."): a size / mode set on the DisplayServer
 # directly leaves the game at its old size inside the new window
 python3 godot/tools/audit/window_api_audit.py || { echo "EXIT 1"; exit 1; }
+# and no lambda writes a captured local, anywhere (the APPLY button that
+# always applied 720p)
+python3 godot/tools/lambda_capture_check.py | tail -1
+python3 godot/tools/lambda_capture_check.py >/dev/null || { python3 godot/tools/lambda_capture_check.py | grep CAPTURE; echo "EXIT 1"; exit 1; }
 
 CHANGED="$( { git diff --name-only "$BASE"...HEAD 2>/dev/null; git diff --name-only; git diff --name-only --cached;
               git ls-files --others --exclude-standard; } | sort -u | grep -v '^$' )"
@@ -73,8 +77,9 @@ while IFS= read -r f; do
         *.py)   python3 -m py_compile "$f" 2>&1 && echo "   ok  py   $f" || { echo "   FAIL py   $f"; FAIL=1; } ;;
         *.json) python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" 2>&1 && echo "   ok  json $f" || { echo "   FAIL json $f"; FAIL=1; } ;;
         *.sh)   bash -n "$f" 2>&1 && echo "   ok  sh   $f" || { echo "   FAIL sh   $f"; FAIL=1; } ;;
-        *.gd)   { gdparse "$f" >/dev/null && python3 godot/tools/gdinfer_check.py "$f" | grep -q " 0 suspect"; } \
-                    && echo "   ok  gd   $f" || { echo "   FAIL gd   $f (gdparse / gdinfer_check)"; FAIL=1; } ;;
+        *.gd)   { gdparse "$f" >/dev/null && python3 godot/tools/gdinfer_check.py "$f" | grep -q " 0 suspect" \
+                      && python3 godot/tools/lambda_capture_check.py "$f" >/dev/null; } \
+                    && echo "   ok  gd   $f" || { echo "   FAIL gd   $f (gdparse / gdinfer_check / lambda_capture_check)"; FAIL=1; } ;;
         *.tscn) python3 godot/tools/audit/tscn_syntax_audit.py >/dev/null 2>&1 \
                     && echo "   ok  tscn $f" || { echo "   FAIL tscn $f (tscn_syntax_audit)"; FAIL=1; } ;;
         *)      echo "   --  $f" ;;

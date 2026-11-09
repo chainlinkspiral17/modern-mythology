@@ -201,15 +201,43 @@ func _screen_size_section() -> VBoxContainer:
 	col.add_theme_constant_override("separation", 8)
 	col.add_child(_row_label("SCREEN SIZE"))
 
-	# Track pending selection without immediately applying
-	var pending := Settings.window_mode
-
+	# (2026-11-09) A pick applies AT ONCE, like every other row on this page.
+	# It waited for a separate APPLY press: choosing ULTRAWIDE and closing
+	# the page changed nothing — one more way "the setting isn't taking".
 	var btn_row := _button_row(
 		["720p", "900p", "1080p", "1440p", "ULTRAWIDE", "FULLSCREEN"],
 		Settings.window_mode.to_upper(),
-		func(v: String) -> void: pending = v.to_lower()
+		func(v: String) -> void: Settings.window_mode = v.to_lower()
 	)
 	col.add_child(btn_row)
+
+	# WHAT THE SCREEN IS DOING, in words (2026-11-09, the user, three times:
+	# "Ultrawide setting isn't taking"): the window's real size and mode, the
+	# screen's, and whether the story fills the width — and if not, why.
+	var now_lbl := Label.new()
+	now_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		now_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	now_lbl.add_theme_font_size_override("font_size", 14)
+	now_lbl.add_theme_color_override("font_color", C_TXT)
+	col.add_child(now_lbl)
+	var sm: Node = get_node_or_null("/root/ScreenMgr")
+	if sm != null and sm.has_method("describe"):
+		var tell: Callable = func() -> void:
+			if is_instance_valid(now_lbl):
+				now_lbl.text = String(sm.call("describe"))
+		tell.call()
+		sm.connect("layout_changed", tell)
+		now_lbl.tree_exiting.connect(func() -> void:
+			if sm.is_connected("layout_changed", tell):
+				sm.disconnect("layout_changed", tell))
+		# a mode change that the desktop grants late (fullscreen) moves no
+		# signal this page hears: re-read twice a second while it is up
+		var tick := Timer.new()
+		tick.wait_time = 0.5
+		tick.autostart = true
+		tick.timeout.connect(tell)
+		now_lbl.add_child(tick)
 
 	var hint := Label.new()
 	hint.text = "720p = 1280×720  ·  900p = 1600×900  ·  1080p = 1920×1080  ·  1440p = 2560×1440  ·  ULTRAWIDE = 3440×1440  ·  FULLSCREEN = the screen's own size"
@@ -224,16 +252,6 @@ func _screen_size_section() -> VBoxContainer:
 
 	var action_row := HBoxContainer.new()
 	action_row.add_theme_constant_override("separation", 8)
-
-	var apply_btn := Button.new()
-	apply_btn.text = "APPLY"
-	apply_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	apply_btn.custom_minimum_size.y = 32
-	_style_toggle_btn(apply_btn, true)
-	apply_btn.pressed.connect(func() -> void:
-		Settings.window_mode = pending
-	)
-	action_row.add_child(apply_btn)
 
 	var reset_btn := Button.new()
 	reset_btn.text = "RESET TO 720p"

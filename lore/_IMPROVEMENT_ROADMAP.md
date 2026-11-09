@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 318: "still not working" — the wide fill made durable, and the screen says what it is doing.**
+- The user's screenshot: a maximised wide debug window, the prelude in a 16:9
+  frame with bars. Not reproduced with default settings (ScreenProbe on
+  vol6_ch0_prelude fills the width) — so the two states that draw that
+  picture were closed rather than a third guess made:
+  - the wide request is a group (`wide_ready`) read on every refresh (was a
+    one-shot list entry);
+  - the FILL / PILLARBOX option moved to a new key (`wide_fill`): an old
+    saved PILLARBOX is not read (ScreenProbe with `wide_screens="pillarbox"`
+    saved: fills);
+  - SCREEN SIZE applies on the press (the separate APPLY is gone).
+- **THE CAUSE, from the user's fourth message** ("everytime I hit apply in
+  the options menu, the window resizes down to 720"): the pick lived in a
+  local a lambda wrote and another read — lambdas capture by value, so APPLY
+  always applied the saved 720p. The pick now applies in the lambda that
+  receives it; pressed on the real page in a test: 1080p → 1920x1080,
+  ULTRAWIDE → 3440x1440, 900p → 1600x900, each saved.
+  `tools/lambda_capture_check.py` (new, on every change): 0 across 292
+  scripts, flags the old page.
+- **RIGHT NOW line** in Settings under SCREEN SIZE (`ScreenMgr.describe()`):
+  the window's real size and mode, the screen's, whether the story fills the
+  width and, if not, why. Also in the log on every change.
+- ScreenProbe: scene → menu → scene again (menu keeps 16:9, both chapters
+  fill).
+- **Draft 2 targets:** unverified on the user's desktop — if the bars remain,
+  the RIGHT NOW line is the next evidence; the main menu wide-ready; a real
+  window manager in the probe (maximise path).
+
 **2026-11-09 · pass 317: the ultrawide setting takes (the user: "Ultrawide setting isn't taking, still." / "In scenes are back to their old resolution.").**
 - **Reproduced** with a new probe (`tools/ScreenProbe.tscn`, the real menu →
   chapter flow on a 3440x1440 virtual screen): the OS window became

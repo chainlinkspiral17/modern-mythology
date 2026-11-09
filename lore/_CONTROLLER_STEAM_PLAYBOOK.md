@@ -166,6 +166,54 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-11-09 · THE CAUSE: a lambda cannot write a captured local (the APPLY that always applied 720p)
+
+- **What happened:** the user, fourth message: "everytime I hit apply in
+  the options menu, the window resizes down to 720." SettingsOverlay's
+  SCREEN SIZE kept the pick in a local (`var pending := Settings.window_mode`),
+  wrote it in the buttons' lambda (`func(v): pending = v`) and read it in
+  APPLY's lambda. GDScript lambdas capture locals BY VALUE: the write stayed
+  in the first lambda's copy, APPLY applied the size saved when the page
+  opened — 720p, every time. No pick of ULTRAWIDE or FULLSCREEN ever reached
+  Settings, from the day the row was written. The embed fix, the root-Window
+  fix and the fill fix were each real, and none was the reason.
+- **Rule:** a lambda never assigns a local of the enclosing function. Share
+  a value through a member, a one-element Array / Dictionary, or (best) do
+  the work in the lambda that receives it. `tools/lambda_capture_check.py`
+  flags every such write (292 scripts: 0 today; it flags the old page);
+  run_changed_audits.sh runs it on every change and per changed script.
+- **Rule:** drive a settings control by PRESSING it in a test
+  (`button.pressed.emit()` on the real overlay, then read Settings and the
+  window) — the probes set `Settings.window_mode` directly and walked past
+  the broken button three times.
+
+### 2026-11-09 · a screen complaint needs the SCREEN'S OWN WORDS before a third fix
+
+- **What happened:** after the root-Window fix the user: "still not
+  working", with a screenshot — the debug window maximised on the wide
+  monitor, the chapter in a 16:9 frame with black bars. Not the bug just
+  fixed (that one drew the picture unscaled in a corner). The same chapter
+  filled the width here with default settings: the picture is what
+  WIDE SCREENS = PILLARBOX looks like, or a lost wide request. Three rounds
+  were spent fixing what could be reproduced instead of reading what the
+  user's machine was doing.
+- **Rules:**
+  - **The game says what the screen is doing.** `ScreenMgr.describe()` —
+    "Window 3440×1390, maximised, on a 3440×1440 screen · wide (2.47:1). The
+    story fills the width." — is shown under SCREEN SIZE in Settings and
+    printed to the log on every change. A reason is always named
+    (PILLARBOX is on / the window is 16:9 / this page keeps a 16:9 frame /
+    inside the editor's Game tab). Ask for that line, not for a description.
+  - **A wide-ready surface is a GROUP member** (`wide_ready`), read fresh on
+    every refresh — not a list entry dropped by a one-shot signal.
+  - **A setting that can silently produce the complaint is reset once.** The
+    fill option moved to a new key (`wide_fill`); an old saved PILLARBOX is
+    not read.
+  - **A pick applies at once.** SCREEN SIZE waited for a separate APPLY
+    press; every other row on the page applied on the press.
+  - A screenshot from the user is worth more than a probe: when the first
+    fix "doesn't work", ask what the screen shows before writing a second.
+
 ### 2026-11-09 · the window changes through the root Window — and a screen fix is tested on a SCREEN
 
 - **What happened:** after the embed fix the user came back twice:

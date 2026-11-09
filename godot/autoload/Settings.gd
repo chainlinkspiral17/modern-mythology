@@ -307,7 +307,7 @@ func _resize_window(w: int, h: int) -> void:
 
 
 ## The root Window must be the size the OS window really is. Checked for a
-## second after a change (a window manager answers late); a mismatch is
+## second and a half after a change (a window manager answers late); a mismatch is
 ## corrected through the Window, which resizes the viewport.
 ## `fill_screen`: fullscreen was asked for. A desktop that does not grant it
 ## (no window manager, a compositor that ignores the request) leaves the
@@ -319,7 +319,9 @@ var _sync_serial: int = 0
 func _sync_root_window(fill_screen: bool) -> void:
 	_sync_serial += 1
 	var mine: int = _sync_serial
-	for i in 60:
+	var held: Vector2i = Vector2i.ZERO
+	var held_for: int = 0
+	for i in 90:
 		await get_tree().process_frame
 		if mine != _sync_serial:
 			return                      # a newer change took over
@@ -335,9 +337,18 @@ func _sync_root_window(fill_screen: bool) -> void:
 				root.position = DisplayServer.screen_get_position(screen)
 				root.size = scr
 				continue
-		if real.x > 0 and real.y > 0 and root.size != real:
-			push_warning("[Settings] the game window is %s, the game thought %s — corrected" % [real, root.size])
-			root.size = real
+		# only a mismatch that HOLDS (the same real size, ten frames running)
+		# is corrected: for a frame or two after a change the two disagree
+		# on their way to agreeing, and "correcting" then undid the change
+		if real.x > 0 and real.y > 0 and root.size != real and real == held:
+			held_for += 1
+			if held_for >= 10:
+				push_warning("[Settings] the game window is %s, the game thought %s — corrected" % [real, root.size])
+				root.size = real
+				held_for = 0
+		else:
+			held_for = 0
+		held = real
 
 
 func _load() -> void:
@@ -378,7 +389,12 @@ func _load() -> void:
 	_trip_trails     = clampf(float(cfg.get_value("settings", "trip_trails", 1.0)), 0.0, 1.0)
 	_auto_play       = bool(cfg.get_value("settings",  "auto_play",      false))
 	_hud_bar         = str(cfg.get_value("settings",   "hud_bar",        "auto"))
-	_wide_screens    = str(cfg.get_value("settings",   "wide_screens",   "fill"))
+	# (2026-11-09) "wide_fill", not the old "wide_screens": the user's wide
+	# window showed the story in a 16:9 frame with bars — the look of a saved
+	# PILLARBOX — after three rounds of "the ultrawide setting isn't taking".
+	# The old key is not read: every install starts on FILL again, and
+	# PILLARBOX is one press away (Settings shows which is on, in words).
+	_wide_screens    = str(cfg.get_value("settings",   "wide_fill",      "fill"))
 	_detail_3d       = str(cfg.get_value("settings",   "detail_3d",      "native"))
 	_apply_window_mode(_window_mode)
 
@@ -393,7 +409,7 @@ func _save() -> void:
 	cfg.set_value("settings", "skip_unread",     _skip_unread)
 	cfg.set_value("settings", "auto_advance_ms", _auto_advance_ms)
 	cfg.set_value("settings", "window_mode",     _window_mode)
-	cfg.set_value("settings", "wide_screens",    _wide_screens)
+	cfg.set_value("settings", "wide_fill",       _wide_screens)
 	cfg.set_value("settings", "detail_3d",       _detail_3d)
 	cfg.set_value("settings", "haptics",         _haptics)
 	cfg.set_value("settings", "music_skin",      _music_skin)
