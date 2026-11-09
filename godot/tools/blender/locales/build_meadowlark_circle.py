@@ -182,10 +182,12 @@ def build_lots():
     lawn_x0 = BULB_X + BULB_R + 1.5
     make_box("Geller_Lawn", ((lawn_x0 + front_x) / 2.0, 0.0, 0.006), (front_x - lawn_x0, LOT_W - 0.3, 0.012), LAWN)
     make_box("Geller_Walk", ((lawn_x0 + front_x) / 2.0, 0.0, 0.016), (front_x - lawn_x0, 1.2, 0.03), CONCRETE)
-    # standing at the window, just inside it (the lit one is u 0.8)
-    make_box("Don_Silhouette", (front_x + 0.5, 0.8, 0.45), (0.30, 0.40, 0.90), (0.10, 0.10, 0.12, 1.0))
-    make_cyl("Don_Silhouette_Head", (front_x + 0.5, 0.8, 0.99), 0.11, 0.18, (0.10, 0.10, 0.12, 1.0), segments=8)
-    make_cyl("Don_Water_Glass", (front_x + 0.265, 0.8, 0.85), 0.035, 0.09, (0.80, 0.86, 0.90, 0.7), segments=8)   # in his hand
+    # standing at the lit window (u 0.8), against the glass from the porch
+    # side: the house body is a solid box, so "inside" him was never seen
+    # (on the porch slab, its top at 0.24)
+    make_box("Don_Silhouette", (front_x - 0.30, 0.8, 0.69), (0.30, 0.40, 0.90), (0.10, 0.10, 0.12, 1.0))
+    make_cyl("Don_Silhouette_Head", (front_x - 0.30, 0.8, 1.23), 0.11, 0.18, (0.10, 0.10, 0.12, 1.0), segments=8)
+    make_cyl("Don_Water_Glass", (front_x - 0.485, 0.8, 1.09), 0.035, 0.09, (0.80, 0.86, 0.90, 0.7), segments=8)   # in his hand
 
 
 def build_sprinklers():
