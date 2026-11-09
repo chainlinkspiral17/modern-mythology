@@ -163,8 +163,10 @@ def build_shell():
              (0.04, 1.80, 1.20), P.METAL_STEEL)
     make_box("Window_E_Glass", (ROOM_W / 2.0 - 0.1425, 3.5, 1.55),
              (0.005, 1.70, 1.10), P.GLASS)
-    make_box("Window_E_Curtain", (ROOM_W / 2.0 - 0.16, 3.5, 1.55),
-             (0.01, 1.80, 1.20), COL_CURTAIN_SAGE)
+    # (2026-11-09) tied back at the sides: one 1.8 x 1.2 m panel hung
+    # closed over the whole window, the garden view behind it never seen
+    for cy_, nm in ((3.5 - 0.72, "Window_E_Curtain"), (3.5 + 0.72, "Window_E_Curtain_N")):
+        make_box(nm, (ROOM_W / 2.0 - 0.16, cy_, 1.55), (0.02, 0.36, 1.20), COL_CURTAIN_SAGE)
 
 
 def build_kitchen_island():

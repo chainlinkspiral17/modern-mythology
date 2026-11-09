@@ -171,7 +171,9 @@ def build_visitor_chair_and_decor():
         make_box(f"Dresser_Pull_{di}", (dxx+0.26, dyy, dz), (0.02, 0.14, 0.03), (0.72, 0.60, 0.34, 1.0))
     # A folded runner cloth + a small framed photo on the dresser top
     make_box("Dresser_Runner", (dxx, dyy, 0.93), (0.44, 0.60, 0.02), COL_BLANKET)
-    make_box("Dresser_Photo", (dxx-0.02, dyy+0.28, 1.02), (0.14, 0.02, 0.16), (0.46, 0.34, 0.22, 1.0))
+    # facing the ROOM (east, +x) at the top's back: it stood sideways, its
+    # face along the dresser, edge-on to every view (2026-11-09)
+    make_box("Dresser_Photo", (dxx-0.15, dyy+0.28, 1.02), (0.02, 0.14, 0.16), (0.46, 0.34, 0.22, 1.0))
     # Gentle wall crucifix on the W wall above the dresser
     make_box("Cross_Vert", (-2.89, dyy, 1.75), (0.03, 0.06, 0.34), (0.46, 0.34, 0.22, 1.0))
     make_box("Cross_Horiz", (-2.89, dyy, 1.80), (0.03, 0.24, 0.06), (0.46, 0.34, 0.22, 1.0))

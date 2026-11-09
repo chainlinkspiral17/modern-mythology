@@ -20646,7 +20646,7 @@
           "locale": "hospice_room",
           "label": "Dresser_Photo",
           "center": [
-            -2.64,
+            -2.759,
             3.68,
             1.02
           ],
@@ -20654,7 +20654,7 @@
             0.14,
             0.16
           ],
-          "facing": "-y",
+          "facing": "+x",
           "hide": [
             "Dresser_Photo"
           ]
