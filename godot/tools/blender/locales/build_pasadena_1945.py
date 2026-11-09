@@ -95,7 +95,11 @@ def storefront_block(prefix, x_face, y0, y1, side, storeys=2, seed=0, tall=False
                  (col[0] * 0.8, col[1] * 0.8, col[2] * 0.8, 1.0))
         make_box(p + "_Shopglass", (x_face - side * 0.01, y + w / 2.0, 1.5), (0.02, w - 1.4, 2.2), (0.30, 0.36, 0.40, 1.0))
         make_box(p + "_Door", (x_face - side * 0.012, y + 0.9, 1.1), (0.02, 0.9, 2.2), (0.30, 0.22, 0.16, 1.0))
-        make_box(p + "_Sign", (x_face - side * 0.02, y + w / 2.0, 3.0), (0.04, w - 1.6, 0.5), (0.90, 0.86, 0.74, 1.0))
+        # (2026-11-09) the sign band ABOVE the awning (its pitched top meets
+        # the wall at ~2.99) and under the cornice: at z 2.75..3.25 every
+        # awning cut across its sign's lower half
+        sg0, sg1 = 3.03, min(3.53, h - 0.36)
+        make_box(p + "_Sign", (x_face - side * 0.02, y + w / 2.0, (sg0 + sg1) / 2.0), (0.04, w - 1.6, sg1 - sg0), (0.90, 0.86, 0.74, 1.0))
         for f in range(1, storeys + (1 if tall else 0)):
             for j in range(int((w - 1.0) / 1.8)):
                 make_box(p + f"_Win_{f}_{j}", (x_face - side * 0.01, y + 1.2 + j * 1.8, 3.6 * f + 1.6), (0.02, 1.0, 1.4),

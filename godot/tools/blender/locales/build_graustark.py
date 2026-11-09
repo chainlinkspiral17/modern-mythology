@@ -2180,11 +2180,12 @@ def _build_star_iceco():
     ht._make_box_local("Star_IceCo_Parapet",
                        (cx, cy - D / 2 + 0.05, gz + H + 1.4),
                        (W * 0.9, 0.4, 2.8), COL_CONCRETE)
-    # Big "ICE" letters — 3 dark blocks on the parapet
+    # Big "ICE" letters — 3 dark blocks ON the parapet's face (2026-11-09:
+    # at cy - D/2 + 0.10 they stood 15 cm inside the 40 cm parapet, unseen)
     for i, t in enumerate([-1, 0, 1]):
         ht._make_box_local(
             f"Star_IceCo_Letter_{i}",
-            (cx + t * 3.5, cy - D / 2 + 0.10, gz + H + 1.4),
+            (cx + t * 3.5, cy - D / 2 - 0.15 - 0.10, gz + H + 1.4),
             (2.5, 0.20, 2.0), (0.20, 0.40, 0.62, 1.0))
     # Glass retail storefront on the front
     ht._make_box_local("Star_IceCo_Storefront",

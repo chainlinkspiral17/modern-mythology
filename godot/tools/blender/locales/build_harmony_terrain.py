@@ -10149,9 +10149,11 @@ def build_halsey_studios():
                     (cx, cy, ground_z + h + 0.10),
                     (w + 0.4, d + 0.4, 0.20), col_roof)
     # SIGN above the entry — a sideways wooden plank
+    # (2026-11-09) in front of the roof's 20 cm overhang, not through it:
+    # the plank's lower quarter stood inside the roof edge
     _make_box_local("HS_Studio_Sign",
                     (cx - w / 2 + side_l + dr_w / 2,
-                     cy - d / 2 - 0.18,
+                     cy - d / 2 - 0.28,
                      ground_z + h + 0.4),
                     (4.0, 0.14, 0.80), col_trim)
 
@@ -11118,8 +11120,9 @@ def build_library_and_bike_racks():
                      ground_z + h - 0.30),
                     (w + 0.4, 0.10, 0.30), col_trim)
     # Sign panel above the entry
+    # (2026-11-09) in front of the roof's overhang (it cut the panel's foot)
     _make_box_local("Lib_SignPanel",
-                    (cx, cy - d / 2 - 0.20,
+                    (cx, cy - d / 2 - 0.28,
                      ground_z + h + 0.30),
                     (8.0, 0.14, 0.80),
                     (0.18, 0.32, 0.55, 1.0))
@@ -13161,9 +13164,10 @@ def build_taqueria_el_rancho():
                     (cx, sign_y,
                      ground_z + h + 0.30 + sign_h_local + 0.05),
                     (w * 0.85 + 0.20, 0.16, 0.10), col_trim)
-    # Small overhead-light strip below the sign illuminating it
+    # Small overhead-light strip below the sign illuminating it — on the
+    # roof's front edge, not inside it (2026-11-09: wholly in the roof slab)
     _make_box_local(f"{name_prefix}_SignLightBar",
-                    (cx, sign_y,
+                    (cx, cy - d / 2 - 0.20 - 0.06,
                      ground_z + h + 0.10),
                     (w * 0.85, 0.10, 0.10), col_steel)
 
@@ -17039,7 +17043,9 @@ def build_strip_mall_nightclub():
 
     # ── NEON SIGN on the south face above the entry — "SCRATCH"
     # in hot pink on a darker purple panel mounted to the parapet.
-    sign_y = cy - depth / 2 - 0.18
+    # (2026-11-09) on the parapet's FACE (its front at cy - depth/2 - 0.29):
+    # at - 0.18 the panel stood inside the parapet, the neon half buried
+    sign_y = cy - depth / 2 - 0.29 - 0.095
     sign_h_local = 1.2
     _make_box_local(f"{name_prefix}_SignPanel",
                     (cx, sign_y, ground_z + height + 0.10 + sign_h_local / 2),

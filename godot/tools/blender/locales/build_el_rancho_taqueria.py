@@ -270,7 +270,9 @@ def build_exterior_2026_10():
         make_rot_box(f"Steer_Head_Painted_Horn_{s:+d}", (hx, hy + s * 0.60, hz + 0.40), (0.004, 0.70, 0.12), faded, roll=-s * 0.35)
         make_box(f"Steer_Head_Painted_Eye_{s:+d}", (hx - 0.001, hy + s * 0.15, hz + 0.08), (0.004, 0.08, 0.08), (0.36, 0.20, 0.14, 1.0))
     for i in range(9):
-        make_box(f"Steer_Wall_Name_Letter_{i}", (hx, hy - 1.6 + i * 0.40, hz + 1.12), (0.004, 0.28, 0.30), (0.86, 0.36, 0.22, 1.0))
+        # (2026-11-09) under the roof slab's overhang (its underside 2.90),
+        # not into it: at hz + 1.12 the top 12 cm of every letter was inside
+        make_box(f"Steer_Wall_Name_Letter_{i}", (hx, hy - 1.6 + i * 0.40, hz + 0.95), (0.004, 0.28, 0.30), (0.86, 0.36, 0.22, 1.0))
     # the side lot under the head, its stripes, BT's Altima in the spot, the pole light
     make_box("Lot_Asphalt", (-ox - 5.0, ROOM_D / 2.0, -0.02), (10.0, ROOM_D + 6.0, 0.04), (0.30, 0.30, 0.32, 1.0))
     for i, y in enumerate((0.6, 1.8 + 0.6, 4.2, 5.4)):
