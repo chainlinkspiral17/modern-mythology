@@ -399,6 +399,26 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-09 · a builder part's ORIGIN is the world origin: never place by it (pass 309)
+
+- **The fact.** `_finalize_mesh` writes every part's vertices in world space
+  and leaves the object at (0,0,0); the GLB nodes carry no translation. In
+  Godot every set part's `position` is zero.
+- **What it broke.** HeroArt hid a stand-in's pieces "under the picture" by
+  node origin — none ever was, so a row's exact names fell back to "every
+  match in the room" and a bare prefix's longer names (Corkboard_Frame,
+  Sign_Figure_S_Head) never hid: frames and heads stood in front of their
+  pictures ("placeholders obstructing the art", "a black box by the L").
+- **The rule.** Anything that asks WHERE a set part is reads the mesh's
+  AABB centre (`mesh.get_aabb().get_center()` through the parents' transform),
+  as the Python audits read box centres. Origins are only for nodes the
+  scene places (markers, lights, hero props).
+- **Two more from the same pass.** A picture can face INTO its object and
+  every audit passes it (47 did: pump screens on a pump's far side, storefront
+  signs turned to their own walls) — check the solid in front of a picture,
+  not only behind it. A lawn box that runs over the sidewalk puts its
+  sprinkler heads on the walk: size ground covers from the walk's back edge.
+
 ### 2026-11-08 · glass is three conditions, and each one failed somewhere (pass 306)
 
 - **A pane is written below alpha 0.98.** LocaleGlass only turns vertex alpha
