@@ -373,6 +373,12 @@ void fragment() {
             float am = art_mask_at(UV, TEXTURE_PIXEL_SIZE);
             vec3 base = tap(SCREEN_TEXTURE, TEXTURE, uv);
             col = mix(col, base, am * clamp(art_keep + 0.15 * art_focus, 0.0, 0.92));
+            // ART BREATH: a picture the director holds on breathes with the
+            // music — its edge (the mask's feather) takes a faint aura in the
+            // register's hue, lifting on the beat. Light only; nothing moves.
+            float band = clamp(4.0 * am * (1.0 - am), 0.0, 1.0);
+            vec3 breath = aura_color(hue_base, pulse) * band * art_focus * (0.18 + 0.30 * pulse) * amount;
+            col = 1.0 - (1.0 - col) * (1.0 - clamp(breath, 0.0, 1.0));
         }
         COLOR = vec4(clamp(col, 0.0, 1.0), src_a) * v_mod;
     }

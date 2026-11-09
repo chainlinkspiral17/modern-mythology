@@ -228,16 +228,24 @@ class VoidShimmer extends Node3D:
 	func _paint() -> void:
 		if _stars == null or _rim == null:
 			return
+		# (2026-11-09) the void breathes with the music: the beat brightens
+		# its rim and wakes its stars (light only; nothing moves)
+		var beat: float = 0.0
+		var loud: float = 0.0
+		var trip: Node = get_node_or_null("/root/TripSync")
+		if trip != null:
+			beat = clampf(float(trip.get("pulse")), 0.0, 1.0)
+			loud = clampf(float(trip.get("energy")), 0.0, 1.0)
 		for i in range(_stars.instance_count):
 			var tw: float = 0.5 + 0.5 * sin(_t * _speed[i] + _phase[i])
-			var a: float = 0.15 + 0.85 * tw * tw
+			var a: float = clampf(0.15 + 0.85 * tw * tw + 0.35 * beat * tw, 0.0, 1.0)
 			_stars.set_instance_color(i, Color(0.78, 0.84, 1.0, a))
 		var n: int = _rim.instance_count
 		for i in range(n):
 			var f: float = float(i) / float(n)
 			var run: float = 0.5 + 0.5 * sin(TAU * (f * 3.0 - _t * 0.12))
 			var flick: float = 0.5 + 0.5 * sin(_t * 2.3 + float(i) * 1.7)
-			var a2: float = 0.10 + 0.55 * run * run + 0.15 * flick
+			var a2: float = 0.10 + 0.55 * run * run + 0.15 * flick + 0.30 * beat + 0.15 * loud
 			# a faint hue drift, the substrate's colour at the seam
 			var hue: float = fposmod(0.58 + 0.08 * sin(_t * 0.2 + f * TAU), 1.0)
 			var col: Color = Color.from_hsv(hue, 0.35, 1.0, clampf(a2, 0.0, 1.0))
