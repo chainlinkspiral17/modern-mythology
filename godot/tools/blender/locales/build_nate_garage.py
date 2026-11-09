@@ -117,6 +117,8 @@ def build_finished_room():
         for c, x in enumerate([-3.0 + 0.75 * i for i in range(9)]):
             if (r + c) % 2:
                 continue
+            if (r, c) == (1, 7):
+                continue   # the poster's place (2026-11-09: this tile stood over its lower half)
             make_chamfer_box(f"Foam_N_{r}_{c}", (x, ROOM_D - 0.10 - 0.03, z), (0.60, 0.05, 0.60), COL_FOAM, chamfer=0.02)
     for r, z in enumerate((0.95, 1.85)):
         for c, y in enumerate([y0 + 0.45 + 0.75 * i for i in range(5)]):

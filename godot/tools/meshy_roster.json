@@ -14887,14 +14887,14 @@
           "label": "Entrance_Sign",
           "center": [
             0.0,
-            -0.11,
+            -0.2,
             3.6
           ],
           "size": [
             6.0,
             1.2
           ],
-          "facing": "+y",
+          "facing": "-y",
           "hide": [
             "Entrance_Sign",
             "Entrance_Sign_Letters"
@@ -23501,14 +23501,14 @@
           "label": "Sign",
           "center": [
             0.9572,
-            8.65,
+            8.725,
             1.4031
           ],
           "size": [
             0.4412,
             0.3093
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
             "Sign_Panel_Lo",
             "Sign_Rock"
@@ -23575,14 +23575,14 @@
           "label": "Sign",
           "center": [
             1.0039,
-            8.65,
+            8.735,
             1.6103
           ],
           "size": [
             0.2254,
             0.3808
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
             "Sign_Figure",
             "Sign_Hair"
