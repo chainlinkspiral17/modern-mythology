@@ -64,6 +64,7 @@ REQUIRED_FIELDS: dict[str, list[str]] = {
     "choice":     ["opts"],            # optional: prompt
     "videoscene": [],                  # engine currently no-ops this
     "gallery":    [],                  # engine no-ops this
+    "retired":    [],                  # a staging node retired in place (portrait_staging_fix.py)
 }
 KNOWN_TYPES = set(REQUIRED_FIELDS)
 

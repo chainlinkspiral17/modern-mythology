@@ -1862,8 +1862,11 @@
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/326.mp3"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      }
     },
     {
       "t": "narrate",
@@ -1876,10 +1879,13 @@
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/329.mp3"
     },
     {
-      "t": "show",
-      "char": "hugo",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "hugo",
+        "expr": "neutral",
+        "pos": "right"
+      }
     },
     {
       "t": "narrate",

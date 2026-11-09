@@ -218,24 +218,36 @@
       "voice": "assets/audio/voice/vol6_ch9_room/041.mp3"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      }
     },
     {
-      "t": "hide",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "left"
+      }
     },
     {
-      "t": "show",
-      "char": "boyd",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "boyd",
+        "expr": "neutral",
+        "pos": "right"
+      }
     },
     {
-      "t": "show",
-      "char": "diego",
-      "expr": "neutral",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "diego",
+        "expr": "neutral",
+        "pos": "left"
+      }
     },
     {
       "t": "narrate",
@@ -334,24 +346,36 @@
       "voice": "assets/audio/voice/vol6_ch9_room/063.mp3"
     },
     {
-      "t": "hide",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "left"
+      }
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      }
     },
     {
-      "t": "show",
-      "char": "boyd",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "boyd",
+        "expr": "neutral",
+        "pos": "right"
+      }
     },
     {
-      "t": "show",
-      "char": "diego",
-      "expr": "neutral",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "diego",
+        "expr": "neutral",
+        "pos": "left"
+      }
     },
     {
       "t": "narrate",

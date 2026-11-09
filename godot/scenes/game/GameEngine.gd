@@ -979,6 +979,10 @@ func _dispatch(n: Dictionary) -> void:
 		"cg":         _do_cg(n)
 		"videoscene": _do_videoscene(n)
 		"gallery":    _run_next()
+		# (2026-11-09) a staging node retired by tools/portrait_staging_fix.py
+		# (a hide-and-reshow flicker): kept in place so every node index —
+		# voice lines, saves, trip beats — still holds
+		"retired":    _run_next()
 		_:
 			push_warning("GameEngine: unknown node type '%s'" % n.get("t", ""))
 			_run_next()

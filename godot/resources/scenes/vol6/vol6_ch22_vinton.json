@@ -650,8 +650,11 @@
    "pos": "left"
   },
   {
-   "t": "hide",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "right"
+   }
   },
   {
    "t": "narrate",
@@ -670,10 +673,13 @@
    "pos": "left"
   },
   {
-   "t": "show",
-   "char": "eileen_kazantzakis",
-   "expr": "neutral",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "eileen_kazantzakis",
+    "expr": "neutral",
+    "pos": "right"
+   }
   },
   {
    "t": "narrate",

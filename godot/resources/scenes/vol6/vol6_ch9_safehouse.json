@@ -431,8 +431,11 @@
       "voice": "assets/audio/voice/vol6_ch9_safehouse/073.mp3"
     },
     {
-      "t": "hide",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "left"
+      }
     },
     {
       "t": "show",
@@ -441,10 +444,13 @@
       "pos": "right"
     },
     {
-      "t": "show",
-      "char": "diego",
-      "expr": "neutral",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "diego",
+        "expr": "neutral",
+        "pos": "left"
+      }
     },
     {
       "t": "narrate",

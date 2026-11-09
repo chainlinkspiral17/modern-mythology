@@ -359,14 +359,20 @@
    "t": "narrate"
   },
   {
-   "pos": "left",
-   "t": "hide"
+   "t": "retired",
+   "was": {
+    "pos": "left",
+    "t": "hide"
+   }
   },
   {
-   "char": "lena",
-   "expr": "neutral",
-   "pos": "left",
-   "t": "show"
+   "t": "retired",
+   "was": {
+    "char": "lena",
+    "expr": "neutral",
+    "pos": "left",
+    "t": "show"
+   }
   },
   {
    "text": "[shot:insert coat]Lena got her own coat. She went out to the porch.",

@@ -199,14 +199,20 @@
       "voice": "assets/audio/voice/vol6_ch20_bridge/035.mp3"
     },
     {
-      "t": "show",
-      "char": "nate",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "nate",
+        "expr": "neutral",
+        "pos": "right"
+      }
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      }
     },
     {
       "t": "show",

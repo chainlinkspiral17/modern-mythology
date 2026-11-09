@@ -49,7 +49,7 @@ COMPOSITIONS = os.path.join(SUBSTRATES, "compositions")
 NODE_TYPES = {
     "narrate", "say", "think", "choice", "show", "hide", "bg",
     "substrate", "composition", "bgm", "sfx", "flag", "jump", "end",
-    "interlude", "cg", "videoscene", "gallery",
+    "interlude", "cg", "videoscene", "gallery", "retired",
 }
 BEATS = {"still", "hit", "chill", "lift"}
 DIRECT_RX = re.compile(r"^\[(\w+):([^\]]*)\]")

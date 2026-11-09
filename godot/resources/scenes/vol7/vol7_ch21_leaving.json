@@ -496,14 +496,20 @@
       "t": "show"
     },
     {
-      "char": "kai",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "char": "tem",

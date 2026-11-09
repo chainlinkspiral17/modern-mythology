@@ -498,8 +498,11 @@
       "voice": "assets/audio/voice/vol6_ch21_cosmic/089.mp3"
     },
     {
-      "t": "hide",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "left"
+      }
     },
     {
       "t": "hide",
@@ -511,10 +514,13 @@
       "voice": "assets/audio/voice/vol6_ch21_cosmic/092.mp3"
     },
     {
-      "t": "show",
-      "char": "tombell",
-      "expr": "neutral",
-      "pos": "left"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "tombell",
+        "expr": "neutral",
+        "pos": "left"
+      }
     },
     {
       "t": "narrate",

@@ -394,12 +394,18 @@
       "t": "hide"
     },
     {
-      "pos": "left",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "left",
+        "t": "hide"
+      }
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "text": "[shot:establish]Kai brought the soup to the small kitchen table at six-twenty-something.",
@@ -414,10 +420,13 @@
       "t": "narrate"
     },
     {
-      "char": "tem",
-      "expr": "neutral",
-      "pos": "left",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "tem",
+        "expr": "neutral",
+        "pos": "left",
+        "t": "show"
+      }
     },
     {
       "char": "lena",
@@ -426,10 +435,13 @@
       "t": "show"
     },
     {
-      "char": "finn",
-      "expr": "neutral",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "finn",
+        "expr": "neutral",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
       "text": "[shot:insert table]Tem sat across from Lena. Kai sat on Lena's right. Finn sat on her left. The wobble in the table met Tem's elbow.",
@@ -466,8 +478,11 @@
       "t": "show"
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "char": "kai",
@@ -476,8 +491,11 @@
       "t": "say"
     },
     {
-      "pos": "left",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "left",
+        "t": "hide"
+      }
     },
     {
       "pos": "right",
@@ -492,16 +510,22 @@
       "t": "narrate"
     },
     {
-      "char": "tem",
-      "expr": "serious",
-      "pos": "left",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "tem",
+        "expr": "serious",
+        "pos": "left",
+        "t": "show"
+      }
     },
     {
-      "char": "lena",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "lena",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
       "char": "finn",

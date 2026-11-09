@@ -188,8 +188,11 @@
       "voice": "assets/audio/voice/vol6_ch2_cosmic/031.mp3"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      }
     },
     {
       "t": "narrate",
@@ -229,10 +232,13 @@
       "duration": 1600
     },
     {
-      "t": "show",
-      "char": "rick",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "rick",
+        "expr": "neutral",
+        "pos": "right"
+      }
     },
     {
       "t": "narrate",

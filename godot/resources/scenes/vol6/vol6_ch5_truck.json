@@ -57,24 +57,36 @@
    "voice": "assets/audio/voice/vol6_ch5_truck/009.mp3"
   },
   {
-   "t": "show",
-   "char": "maya",
-   "expr": "neutral",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "maya",
+    "expr": "neutral",
+    "pos": "right"
+   }
   },
   {
-   "t": "hide",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "right"
+   }
   },
   {
-   "t": "show",
-   "char": "maya",
-   "expr": "neutral",
-   "pos": "center"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "maya",
+    "expr": "neutral",
+    "pos": "center"
+   }
   },
   {
-   "t": "hide",
-   "pos": "center"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "center"
+   }
   },
   {
    "t": "show",
@@ -142,24 +154,36 @@
    "voice": "assets/audio/voice/vol6_ch5_truck/024.mp3"
   },
   {
-   "t": "show",
-   "char": "sam",
-   "expr": "nervous",
-   "pos": "center"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "sam",
+    "expr": "nervous",
+    "pos": "center"
+   }
   },
   {
-   "t": "hide",
-   "pos": "center"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "center"
+   }
   },
   {
-   "t": "show",
-   "char": "sam",
-   "expr": "nervous",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "sam",
+    "expr": "nervous",
+    "pos": "left"
+   }
   },
   {
-   "t": "hide",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "left"
+   }
   },
   {
    "t": "show",

@@ -164,8 +164,11 @@
       "t": "show"
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "lena",
@@ -190,10 +193,13 @@
       "t": "say"
     },
     {
-      "char": "kai",
-      "expr": "serious",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "serious",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
       "pos": "center",
@@ -270,8 +276,11 @@
       "t": "show"
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "kai",
@@ -304,14 +313,20 @@
       "t": "say"
     },
     {
-      "char": "finn",
-      "expr": "serious",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "finn",
+        "expr": "serious",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "char": "finn",
@@ -346,14 +361,20 @@
       "t": "narrate"
     },
     {
-      "char": "kai",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "kai",
@@ -362,14 +383,20 @@
       "t": "say"
     },
     {
-      "char": "finn",
-      "expr": "neutral",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "finn",
+        "expr": "neutral",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "char": "finn",
@@ -378,14 +405,20 @@
       "t": "say"
     },
     {
-      "char": "kai",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "kai",
@@ -394,14 +427,20 @@
       "t": "say"
     },
     {
-      "char": "finn",
-      "expr": "neutral",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "finn",
+        "expr": "neutral",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "char": "finn",
@@ -410,14 +449,20 @@
       "t": "say"
     },
     {
-      "char": "kai",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "kai",
@@ -426,10 +471,13 @@
       "t": "say"
     },
     {
-      "char": "finn",
-      "expr": "neutral",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "finn",
+        "expr": "neutral",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
       "pos": "center",
@@ -480,8 +528,11 @@
       "t": "show"
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "char": "kai",
@@ -508,14 +559,20 @@
       "t": "say"
     },
     {
-      "char": "lena",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "lena",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "lena",
@@ -524,10 +581,13 @@
       "t": "say"
     },
     {
-      "char": "kai",
-      "expr": "neutral",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "neutral",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
       "pos": "center",
@@ -588,8 +648,11 @@
       "t": "show"
     },
     {
-      "pos": "right",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "right",
+        "t": "hide"
+      }
     },
     {
       "char": "lena",
@@ -598,14 +661,20 @@
       "t": "say"
     },
     {
-      "char": "kai",
-      "expr": "neutral",
-      "pos": "right",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "kai",
+        "expr": "neutral",
+        "pos": "right",
+        "t": "show"
+      }
     },
     {
-      "pos": "center",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "center",
+        "t": "hide"
+      }
     },
     {
       "text": "[shot:insert door]Kai and Finn took their coats off the hooks. Kai put a hand on Lena's shoulder again at the door, the same way he had on the way in. Finn looked at Tem for a long beat without saying anything and then at Lena and then back at Tem.",
@@ -628,18 +697,24 @@
       "t": "narrate"
     },
     {
-      "pos": "left",
-      "t": "hide"
+      "t": "retired",
+      "was": {
+        "pos": "left",
+        "t": "hide"
+      }
     },
     {
       "pos": "right",
       "t": "hide"
     },
     {
-      "char": "lena",
-      "expr": "neutral",
-      "pos": "center",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "lena",
+        "expr": "neutral",
+        "pos": "center",
+        "t": "show"
+      }
     },
     {
       "text": "[beat:still][shot:insert deadbolt]Lena turned the deadbolt.",
@@ -650,10 +725,13 @@
       "t": "narrate"
     },
     {
-      "char": "tem",
-      "expr": "neutral",
-      "pos": "left",
-      "t": "show"
+      "t": "retired",
+      "was": {
+        "char": "tem",
+        "expr": "neutral",
+        "pos": "left",
+        "t": "show"
+      }
     },
     {
       "text": "[shot:establish]With two of them left in it the apartment was hers again. Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head.",

@@ -115,18 +115,24 @@
    "text": "They are rejoined."
   },
   {
-   "t": "hide",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "left"
+   }
   },
   {
    "t": "hide",
    "pos": "right"
   },
   {
-   "t": "show",
-   "char": "wagner",
-   "expr": "neutral",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "wagner",
+    "expr": "neutral",
+    "pos": "left"
+   }
   },
   {
    "t": "show",

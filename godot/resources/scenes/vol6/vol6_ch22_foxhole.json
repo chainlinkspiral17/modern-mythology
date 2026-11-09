@@ -142,14 +142,20 @@
    "voice": "assets/audio/voice/vol6_ch22_foxhole/026.mp3"
   },
   {
-   "t": "show",
-   "char": "jesse",
-   "expr": "neutral",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "jesse",
+    "expr": "neutral",
+    "pos": "left"
+   }
   },
   {
-   "t": "hide",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "left"
+   }
   },
   {
    "t": "show",
