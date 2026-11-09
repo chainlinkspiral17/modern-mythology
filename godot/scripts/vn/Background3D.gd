@@ -34,6 +34,7 @@ const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
 ## has no global-class cache entry for it until the editor rescans
 const GlassPass := preload("res://scripts/LocaleGlass.gd")
 const VoidPass := preload("res://scripts/LocaleVoid.gd")
+const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
 const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
@@ -5998,6 +5999,7 @@ const TRIP_PAINT_UNDER: float = 0.85
 func _ready() -> void:
 	custom_minimum_size = Vector2(BG_W, BG_H)
 	_add_painted_pass()
+	_add_art_mask()
 	# (2026-11-08) THE SET AT THE SCREEN'S OWN RESOLUTION. A SubViewport
 	# sized in canvas units renders 1280x720 and the window stretches it —
 	# soft at 1440p. _fit_native sizes it in real pixels and scales the
@@ -6140,6 +6142,19 @@ func _add_painted_pass() -> void:
 	rect.material = _painted_mat
 	layer.add_child(rect)
 	vp.add_child(layer)
+
+
+## (2026-11-09) ART CLARITY: the pictures' mask (scripts/vn/ArtMask.gd) —
+## the painted pass, the trip and the locale's post shaders step back over
+## the pictures instead of washing them into the wall.
+func _add_art_mask() -> void:
+	var vp: SubViewport = get_node_or_null("SubViewport") as SubViewport
+	if vp == null:
+		return
+	var am: Node = ArtMaskScript.new()
+	am.name = "ArtMask"
+	vp.add_child(am)
+	am.call("setup", vp)
 
 
 ## The volume's paper (GameEngine, on every 3D bg). 0 = the default stock.

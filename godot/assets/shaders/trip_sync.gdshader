@@ -43,6 +43,12 @@ shader_type canvas_item;
 // (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
 // design pixels, so a cell / brush / dither keeps its size at 1440p
 global uniform float px_scale;
+global uniform sampler2D art_mask;
+global uniform float art_keep;
+global uniform float art_focus;
+// set only on the 3D view's own material (GameEngine): the art mask is drawn
+// for that surface's UV and no other
+uniform bool art_aware = false;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform bool use_screen = true;
@@ -205,6 +211,19 @@ float sobel(sampler2D scr, sampler2D tex, vec2 uv, vec2 px) {
     return sqrt(gx * gx + gy * gy);
 }
 
+
+// (2026-11-09) ART CLARITY (scripts/vn/ArtMask.gd): white where a generated
+// picture is on screen. Feathered over a few taps: the mask is quarter-size.
+float art_mask_at(vec2 uv, vec2 px) {
+    vec2 d = px * 6.0;
+    float m = texture(art_mask, uv).r * 0.4;
+    m += texture(art_mask, uv + vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv - vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv + vec2(0.0, d.y)).r * 0.15;
+    m += texture(art_mask, uv - vec2(0.0, d.y)).r * 0.15;
+    return clamp(m, 0.0, 1.0);
+}
+
 void fragment() {
     vec2 uv = use_screen ? SCREEN_UV : UV;
     vec2 px = use_screen ? (SCREEN_PIXEL_SIZE * px_scale) : TEXTURE_PIXEL_SIZE;
@@ -330,6 +349,13 @@ void fragment() {
             col += vec3(g) * 0.05 * grain_amount * amount;
         }
 
+        // (2026-11-09) ART CLARITY: over a generated picture the trip steps
+        // back to a breath of its colour (the picture keeps its own)
+        if (art_aware && art_keep > 0.001) {
+            float am = art_mask_at(UV, TEXTURE_PIXEL_SIZE);
+            vec3 base = tap(SCREEN_TEXTURE, TEXTURE, uv);
+            col = mix(col, base, am * clamp(art_keep + 0.15 * art_focus, 0.0, 0.92));
+        }
         COLOR = vec4(clamp(col, 0.0, 1.0), src_a) * v_mod;
     }
 }

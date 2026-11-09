@@ -29,6 +29,9 @@ shader_type canvas_item;
 // (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
 // design pixels, so a cell / brush / dither keeps its size at 1440p
 global uniform float px_scale;
+global uniform sampler2D art_mask;
+global uniform float art_keep;
+global uniform float art_focus;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -146,6 +149,18 @@ float glyph(int idx, vec2 p) {
     return (p.x > 0.12 && p.x < 0.88 && p.y > 0.10 && p.y < 0.90) ? 1.0 : 0.0;
 }
 
+// (2026-11-09) ART CLARITY (scripts/vn/ArtMask.gd): white where a generated
+// picture is on screen. Feathered over a few taps: the mask is quarter-size.
+float art_mask_at(vec2 uv, vec2 px) {
+    vec2 d = px * 6.0;
+    float m = texture(art_mask, uv).r * 0.4;
+    m += texture(art_mask, uv + vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv - vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv + vec2(0.0, d.y)).r * 0.15;
+    m += texture(art_mask, uv - vec2(0.0, d.y)).r * 0.15;
+    return clamp(m, 0.0, 1.0);
+}
+
 void fragment() {
     vec2 frag = (FRAGCOORD.xy / px_scale);
     vec2 cell_idx = floor(frag / cell_size);
@@ -195,5 +210,9 @@ void fragment() {
 
     // Crossfade between the raw scene and the ASCII render
     vec3 result = mix(scene, ascii_pixel, strength);
+    // (2026-11-09) ART CLARITY: no glyphs over a generated picture
+    if (art_keep > 0.001) {
+        result = mix(result, scene, art_mask_at(SCREEN_UV, SCREEN_PIXEL_SIZE * px_scale) * art_keep);
+    }
     COLOR = vec4(result, 1.0);
 }

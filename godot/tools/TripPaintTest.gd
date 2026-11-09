@@ -17,6 +17,14 @@ func _ready() -> void:
 	for i in ua.size() - 1:
 		if ua[i].begins_with("--"):
 			args[ua[i].trim_prefix("--")] = ua[i + 1]
+	# (2026-11-09) ART CLARITY A/B: --art-keep 0 renders the pictures painted
+	# like the walls (before); --art-focus 1 the director's emphasis
+	var am_script: GDScript = load("res://scripts/vn/ArtMask.gd") as GDScript
+	if am_script != null:
+		if args.has("art-keep"):
+			am_script.set("keep_level", float(String(args["art-keep"])))
+		if args.has("art-focus"):
+			am_script.set("focus_target", float(String(args["art-focus"])))
 	var bg: SubViewportContainer = BG_SCENE.instantiate() as SubViewportContainer
 	add_child(bg)
 	bg.position = Vector2.ZERO
@@ -74,6 +82,7 @@ func _ready() -> void:
 		trip.call("push_register", String(trip.call("register_for_volume", vol)), self)
 		mat = trip.call("attach", bg)
 		mat.set_shader_parameter("paint_under", inked)
+		mat.set_shader_parameter("art_aware", true)   # as GameEngine sets it (2026-11-09)
 		# the TRAIL rig, mounted as GameEngine mounts it (2026-10-02: the
 		# stills without it "looked to fix this; in action, still terrible")
 		# --trails 0 leaves it off; --trails_paint 0 runs it as before the

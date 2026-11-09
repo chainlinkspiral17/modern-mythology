@@ -49,6 +49,18 @@ px_scale={
 "type": "float",
 "value": 1.0
 }
+art_mask={
+"type": "sampler2D",
+"value": ""
+}
+art_keep={
+"type": "float",
+"value": 0.0
+}
+art_focus={
+"type": "float",
+"value": 0.0
+}
 
 [display]
 

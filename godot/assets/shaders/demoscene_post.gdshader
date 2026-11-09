@@ -28,6 +28,9 @@ shader_type canvas_item;
 // (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
 // design pixels, so a cell / brush / dither keeps its size at 1440p
 global uniform float px_scale;
+global uniform sampler2D art_mask;
+global uniform float art_keep;
+global uniform float art_focus;
 
 // filter_linear so the post-process samples smoothly when the
 // 1280×720 canvas is stretched to a larger window. filter_nearest
@@ -107,6 +110,18 @@ float ascii_ramp(float luma, vec2 cell) {
     return fill;
 }
 
+// (2026-11-09) ART CLARITY (scripts/vn/ArtMask.gd): white where a generated
+// picture is on screen. Feathered over a few taps: the mask is quarter-size.
+float art_mask_at(vec2 uv, vec2 px) {
+    vec2 d = px * 6.0;
+    float m = texture(art_mask, uv).r * 0.4;
+    m += texture(art_mask, uv + vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv - vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv + vec2(0.0, d.y)).r * 0.15;
+    m += texture(art_mask, uv - vec2(0.0, d.y)).r * 0.15;
+    return clamp(m, 0.0, 1.0);
+}
+
 void fragment() {
     vec2 uv = SCREEN_UV;
     vec2 pixel_coord = (FRAGCOORD.xy / px_scale);
@@ -168,5 +183,10 @@ void fragment() {
         col = mix(col, ascii_col, ascii_strength);
     }
 
+    // (2026-11-09) ART CLARITY: the dither and quantize step back over a picture
+    if (art_keep > 0.001) {
+        float am = art_mask_at(uv, SCREEN_PIXEL_SIZE * px_scale);
+        col = mix(col, texture(SCREEN_TEXTURE, uv).rgb, am * art_keep);
+    }
     COLOR = vec4(col, 1.0);
 }

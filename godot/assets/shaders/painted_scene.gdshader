@@ -19,6 +19,9 @@ shader_type canvas_item;
 // (2026-11-08) window pixels per canvas unit (ScreenMgr): pixel lengths below stay in
 // design pixels, so a cell / brush / dither keeps its size at 1440p
 global uniform float px_scale;
+global uniform sampler2D art_mask;
+global uniform float art_keep;
+global uniform float art_focus;
 
 #include "res://assets/shaders/watercolor.gdshaderinc"
 
@@ -146,6 +149,36 @@ vec4 paint_from(sampler2D TEX, vec2 uv0, vec2 px) {
     return vec4(clamp(col, 0.0, 1.0), 1.0);
 }
 
+
+// (2026-11-09) ART CLARITY (scripts/vn/ArtMask.gd): white where a generated
+// picture is on screen. Feathered over a few taps: the mask is quarter-size.
+float art_mask_at(vec2 uv, vec2 px) {
+    vec2 d = px * 6.0;
+    float m = texture(art_mask, uv).r * 0.4;
+    m += texture(art_mask, uv + vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv - vec2(d.x, 0.0)).r * 0.15;
+    m += texture(art_mask, uv + vec2(0.0, d.y)).r * 0.15;
+    m += texture(art_mask, uv - vec2(0.0, d.y)).r * 0.15;
+    return clamp(m, 0.0, 1.0);
+}
+
 void fragment() {
-    COLOR = paint_from(screen_tex, SCREEN_UV, (SCREEN_PIXEL_SIZE * px_scale));
+    vec4 painted = paint_from(screen_tex, SCREEN_UV, (SCREEN_PIXEL_SIZE * px_scale));
+    if (art_keep > 0.001) {
+        // the picture keeps its own pixels (a breath of the paper stays, so it
+        // sits IN the room) …
+        float m = art_mask_at(SCREEN_UV, SCREEN_PIXEL_SIZE * px_scale);
+        vec3 src = texture(screen_tex, SCREEN_UV).rgb;
+        float k = m * clamp(art_keep + 0.22 * art_focus, 0.0, 1.0);
+        vec3 col = mix(painted.rgb, src * (1.0 + 0.07 * art_focus), k);
+        // … and while the director holds on it, the room around it steps
+        // back: a little greyer, darker toward the frame's edges
+        float away = (1.0 - m) * art_focus;
+        float rim = smoothstep(0.22, 0.78, length((SCREEN_UV - 0.5) * vec2(1.0, 1.3)));
+        float l = dot(col, vec3(0.299, 0.587, 0.114));
+        vec3 calm = mix(vec3(l), col, 0.6) * (1.0 - 0.32 * rim);
+        col = mix(col, calm, away * 0.75);
+        painted.rgb = clamp(col, 0.0, 1.0);
+    }
+    COLOR = painted;
 }

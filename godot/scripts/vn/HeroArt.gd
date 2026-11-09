@@ -22,6 +22,13 @@ const ROSTER := "res://tools/meshy_roster.json"
 const ART_ROOT := "res://assets/art/hero/"
 const EXTS: Array[String] = [".png", ".jpg", ".jpeg", ".webp"]
 const LIFT := 0.002          # off the surface, so the quad never fights it
+## (2026-11-09) ART CLARITY. The render layer of each picture's white twin,
+## seen only by ArtMask's camera (the main cameras drop it): the passes
+## after the render step back over the pictures where the mask is white.
+const ART_LAYER: int = 1 << 19
+## A picture lights itself a little from its own image, so a dim room does
+## not turn it to mud ("art is very murky"); a lit room barely changes.
+const ART_SELF_LIGHT: float = 0.22
 
 static var _rows_by_locale: Dictionary = {}
 static var _loaded: bool = false
@@ -317,11 +324,10 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	# like a poster it went dead in every night room. `glow` (roster row) is
 	# the emission energy: the picture itself lights, on top of the room's
 	var glow: float = float(row.get("glow", 0.0))
-	if glow > 0.0:
-		mat.emission_enabled = true
-		mat.emission_texture = tex
-		mat.emission = Color(1, 1, 1)
-		mat.emission_energy_multiplier = glow
+	mat.emission_enabled = true
+	mat.emission_texture = tex
+	mat.emission = Color(1, 1, 1)
+	mat.emission_energy_multiplier = glow if glow > 0.0 else ART_SELF_LIGHT
 	# (2026-10-13) never stretch: a backdrop card (`fit: tile`) far wider
 	# than any generator's widest frame (21:9) — a 150 m bluff, an 18 m
 	# treeline — repeats the picture across its width; any other surface
@@ -367,6 +373,20 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 			basis = Basis(Vector3.RIGHT, -PI / 2.0)
 			normal = Vector3(0, 1, 0)
 	mi.transform = Transform3D(basis, pos + normal * LIFT)
+	mi.layers = 1
+	# the picture's twin for the art mask: the same quad, unshaded white,
+	# on ART_LAYER only (ArtMask's camera sees it; the main cameras do not)
+	var twin := MeshInstance3D.new()
+	twin.name = "ArtMaskTwin"
+	twin.mesh = mesh
+	var tw_mat := StandardMaterial3D.new()
+	tw_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	tw_mat.albedo_color = Color(1, 1, 1, 1)
+	tw_mat.cull_mode = mat.cull_mode
+	twin.material_override = tw_mat
+	twin.layers = ART_LAYER
+	twin.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	mi.add_child(twin)
 	if not two_sided:
 		# the back: the picture's own average colour, darkened — the bare
 		# board or paper behind it, not a black hole and not the art reversed

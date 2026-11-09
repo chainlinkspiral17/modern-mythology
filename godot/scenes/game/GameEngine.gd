@@ -1915,6 +1915,9 @@ func _apply_bg_3d(preset_id: String) -> bool:
 			if tm != null and "TRIP_PAINT_UNDER" in _bg_3d_node:
 				var pu: float = float(_bg_3d_node.get("TRIP_PAINT_UNDER"))
 				tm.set_shader_parameter("paint_under", pu)
+				# (2026-11-09) ART CLARITY: this surface is the 3D view the
+				# art mask is drawn for — the trip steps back over pictures
+				tm.set_shader_parameter("art_aware", true)
 				# … and the TRAIL rig knows the surface is a painting (its
 				# halo and edge feed scale down — the ch 0 mud, 2026-10-02)
 				trip3d.set("paint_under_3d", pu)
