@@ -129,6 +129,24 @@ pictures were on screen.
 - **Gate:** the VnLineShot engine test over a busy chapter, checking the
   CAST log for pops (a portrait in and out within 2 lines).
 
+## Status (2026-11-09, end of the night)
+
+- **Phase 1 — draft 1 shipped.** ArtMask + the four passes + self-light.
+  Measured: picture edge detail 58 % → 91 % of the unpainted render (99 %
+  under focus). Draft 2: the Deck read with the installed pictures; tune
+  KEEP (0.78) and ART_SELF_LIGHT (0.22) per register if lit rooms bloom.
+- **Phase 2 — draft 1 shipped.** art_focus on every art shot; ambient focus
+  (0.35) when a picture is prominent; category words; cooldown 4. Engine-
+  tested (vol6_ch1_bedroom 13 notices the window view). Draft 2: the arrival
+  glance; a closeup that composes a picture behind the face on purpose.
+- **Phase 3 — draft 1 shipped.** Registers memory / broadcast / vigil (10
+  scenes so far); ART BREATH; the void on the beat. Draft 2: the chapter-by-
+  chapter reading pass with locks; MEMORY for flashbacks named in the text.
+- **Phase 4 — continuous.** All gates at zero except as noted in the roadmap.
+- **Phase 5 — draft 1 shipped.** 76 flickering staging nodes retired in place
+  (pops 55 → 39, jumps 36 → 32). Draft 2: the remaining 39 + 32 by hand;
+  speaker-side staging.
+
 ## Order of work
 
 1. Phase 1 + Phase 2 (this pass: the renderer and the director).

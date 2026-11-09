@@ -3835,6 +3835,11 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 310: the VN plan, and its first drafts — art clarity, the director on the art, scene registers, portraits held.**
+- **The plan:** `lore/_VN_IMPROVEMENT_PLAN_2026_11.md` (five phases with gates; status at its foot).
+- **Shipped:** ArtMask (the renderer steps back over pictures: 58 % → 91 % detail); art focus + ambient focus + wider noticing; registers memory / broadcast / vigil, art breath, the void on the beat; portrait_staging_fix (76 flickers retired in place; the `retired` node type).
+- **Draft N+1:** see the plan's status section.
+
 **2026-11-09 · pass 309: the audit learned to see what the Deck saw — pictures, stand-ins, the patch, the street.**
 - **The user:** "texture art badly placed all over"; "placeholders are obstructing the art, like this board"; "a black box by the L in the sign"; "isn't the patch supposed to be a black void, maybe have a starfield shimmer"; "a sprinkler in the middle of the sidewalk … texas lawns are sprawling"; "the audit has been awful. need to go through and fix EVERYTHING."
 - **Root causes found (all invisible to the old gates):** (1) HeroArt hid a stand-in's pieces "under the picture" by NODE ORIGIN, and every builder part's origin is the world origin — no piece was ever under any picture, so frames, lettering and pinned cards stood in front of their pictures (Sam's corkboard frame, the Missing Link figure's head). Now the mesh's AABB centre. (2) Pictures for other views (`slug__<preset>`) were laid in every view — the strip ran before HeroArt. (3) 47 pictures faced INTO their objects (pump screens, Graustark storefront signs, the Kwik Stop brand inside its wall). (4) Pictures on one plane z-fought; now stacked smaller-over-larger. (5) Meadowlark's lawn boxes ran over the sidewalk, so its sprinkler heads stood on it; lots 11 m apart.
