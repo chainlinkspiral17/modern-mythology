@@ -852,10 +852,14 @@
       "voice": "assets/audio/voice/vol6_ch21_cosmic/150.mp3"
     },
     {
-      "t": "show",
-      "char": "rick",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "rick",
+        "expr": "neutral",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) Rick's reply is a text: the phone shows it"
     },
     {
       "t": "say",
@@ -866,8 +870,12 @@
       "voice": "assets/audio/voice/vol6_ch21_cosmic/152.mp3"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) Rick's reply is a text: the phone shows it"
     },
     {
       "t": "narrate",

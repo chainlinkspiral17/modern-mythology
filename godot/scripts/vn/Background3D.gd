@@ -874,6 +874,25 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"kowalski_kitchen_night": {
+		"scene": "res://scenes/locales/kowalski_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/kowalski_kitchen.glb",
+		# (2026-11-09) THE SAME KITCHEN AT NIGHT: vol 6 ch7, home from the
+		# hospital late on a Saturday — "The Kowalski house, when they arrive,
+		# is dark except for the kitchen light"; "Outside, the Texas night does
+		# its small late-Saturday work." The daylight key and fill and the
+		# family room's lamps are suffixed to the day key; here the pendant
+		# and the under-cabinet light carry the room, a low moon through the
+		# back windows, and the window shows the yard at night
+		# (kowalski_kitchen_window_night — to generate).
+		"camera_origin": Vector3(3.70, 1.62, -0.85),
+		"camera_rotation": Vector3(-0.100, deg_to_rad(51.4), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.14, 0.12, 0.16, 1),
+			"ground_horizon": Color(0.09, 0.08, 0.09, 1), "ground_bottom": Color(0.04, 0.04, 0.04, 1),
+			"ambient_color": Color(0.40, 0.34, 0.30, 1), "ambient_energy": 0.42, "fog_color": Color(0.12, 0.10, 0.10, 1)},
+		"suppress_input": true,
+	},
 	"henderson_kitchen": {
 		"scene": "res://scenes/locales/henderson_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/henderson_kitchen.glb",

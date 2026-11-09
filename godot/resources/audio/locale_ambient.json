@@ -157,6 +157,10 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
+    "kowalski_kitchen_night": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
     "kowalski_kitchen": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9

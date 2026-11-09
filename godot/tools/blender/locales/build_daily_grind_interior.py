@@ -74,6 +74,17 @@ from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture
 X0, X1 = -6.0, 6.0
 Y0, Y1 = 0.0, 10.0
 CEIL = 3.6
+# the tin ceiling's panel grid (2026-11-09): panel centres at x = -0.2 + 0.6k,
+# y = 0.6k — on the table pendants; the ribs half a panel off
+TIN_RIB_X0 = -5.9
+TIN_RIB_Y0 = 0.3
+
+
+def tin_panel(x, y):
+    """The centre of the tin panel nearest (x, y): where a fixture hangs."""
+    cx = -0.2 + 0.6 * round((x + 0.2) / 0.6)
+    cy = 0.6 * round(y / 0.6)
+    return (round(cx, 3), round(cy, 3))
 HALL_Y1 = 12.6                   # the back hall's N wall
 HALL_X1 = -0.4                   # the back hall's E wall
 HALL_DOOR_X = -1.6               # the opening from the cafe into the hall
@@ -150,13 +161,24 @@ def build_shell():
     make_box("DoorBell_Arm", (dx + 0.30, Y0 + 0.16, 2.40), (0.03, 0.14, 0.03), COL_CHROME)
     make_cyl("DoorBell", (dx + 0.30, Y0 + 0.24, 2.34), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
     make_box("Door_Mat", (dx, 0.75, 0.005), (1.20, 0.80, 0.01), (0.24, 0.20, 0.18, 1.0))
-    # the pressed-tin ceiling: a plane and its panel ribs
+    # the pressed-tin ceiling: a plane and its panel ribs. (2026-11-09, the
+    # user: "the lights on the roof need to be arranged properly with the
+    # tiles on the roof, not haphazard") The 0.60 m grid is laid so every
+    # fixture hangs in the CENTRE of a panel: the table pendants (x -2.6,
+    # -0.2, 1.6; y 3.0, 4.2, 5.4) are 0.6 m multiples apart, so the panel
+    # centres are x = -0.2 + 0.6k, y = 0.6k and the ribs fall half a panel
+    # off them (TIN_RIB_X0 / TIN_RIB_Y0). Anything hung from the tin uses
+    # tin_panel() to sit on a panel centre.
     make_box("Ceil_Tin", (0.0, (Y0 + Y1) / 2.0, CEIL + 0.05), (X1 - X0 + 0.4, Y1 - Y0 + 0.4, 0.10), COL_TIN)
-    for k in range(1, 20):
-        make_box(f"Ceil_Tin_Rib_X_{k}", (X0 + k * 0.60, (Y0 + Y1) / 2.0, CEIL - 0.01), (0.03, Y1 - Y0, 0.02), (0.76, 0.72, 0.60, 1.0))
-    for k in range(1, 17):
-        make_box(f"Ceil_Tin_Rib_Y_{k}", (0.0, Y0 + k * 0.60, CEIL - 0.008), (X1 - X0, 0.03, 0.016), (0.76, 0.72, 0.60, 1.0))
-    make_smoke_detector("Smoke", (-1.5, 5.0, CEIL))
+    k = 0
+    while TIN_RIB_X0 + k * 0.60 < X1 - 0.05:
+        make_box(f"Ceil_Tin_Rib_X_{k}", (TIN_RIB_X0 + k * 0.60, (Y0 + Y1) / 2.0, CEIL - 0.01), (0.03, Y1 - Y0, 0.02), (0.76, 0.72, 0.60, 1.0))
+        k += 1
+    k = 0
+    while TIN_RIB_Y0 + k * 0.60 < Y1 - 0.05:
+        make_box(f"Ceil_Tin_Rib_Y_{k}", (0.0, TIN_RIB_Y0 + k * 0.60, CEIL - 0.008), (X1 - X0, 0.03, 0.016), (0.76, 0.72, 0.60, 1.0))
+        k += 1
+    make_smoke_detector("Smoke", (*tin_panel(-1.5, 5.0), CEIL))
 
 
 def build_hall():
@@ -387,7 +409,7 @@ def build_corner_table():
     make_box("Duffel", (tx + 0.65, ty + 1.05, 0.15), (0.55, 0.28, 0.30), (0.36, 0.40, 0.34, 1.0))
     make_box("Duffel_Strap", (tx + 0.65, ty + 1.05, 0.312), (0.42, 0.06, 0.024), (0.26, 0.28, 0.24, 1.0))
     # the pendant over it
-    _pendant("Pendant_Corner", tx, ty, 2.30)
+    _pendant("Pendant_Corner", *tin_panel(tx, ty), 2.30)    # on its tin panel, over the table
 
 
 def build_seating():
@@ -426,10 +448,11 @@ def build_seating():
                      (0.002, rnd.uniform(0.10, w * 0.5), rnd.uniform(0.06, h * 0.4)),
                      ((0.20, 0.30, 0.46, 1.0), (0.70, 0.40, 0.20, 1.0), (0.16, 0.16, 0.18, 1.0), (0.46, 0.56, 0.48, 1.0), (0.84, 0.70, 0.40, 1.0))[(k + m) % 5])
         make_box(f"Painting_{k}_Card", (X1 - 0.103, cy + w / 2.0 + 0.12, 1.65), (0.006, 0.10, 0.07), COL_PAPER)
-    make_box("Track_Rail", (5.10, 3.50, CEIL - 0.02), (0.05, 4.40, 0.04), COL_BLACK)
-    for k, cy in enumerate((2.00, 3.50, 5.00)):
-        make_cyl(f"Track_Head_{k}_Stem", (5.10, cy, CEIL - 0.09), 0.012, 0.10, COL_BLACK, segments=6)
-        make_rot_box(f"Track_Head_{k}_Lamp", (5.16, cy, CEIL - 0.17), (0.14, 0.08, 0.08), COL_BLACK, pitch=0.0, roll=0.0)
+    # the track runs down the middle of its row of tin panels (x 5.2)
+    make_box("Track_Rail", (5.20, 3.60, CEIL - 0.02), (0.05, 4.80, 0.04), COL_BLACK)
+    for k, cy in enumerate((1.80, 3.60, 5.40)):
+        make_cyl(f"Track_Head_{k}_Stem", (5.20, cy, CEIL - 0.09), 0.012, 0.10, COL_BLACK, segments=6)
+        make_rot_box(f"Track_Head_{k}_Lamp", (5.26, cy, CEIL - 0.17), (0.14, 0.08, 0.08), COL_BLACK, pitch=0.0, roll=0.0)
     # the condiment station by the door, on the E wall
     make_box("Condiment_Cabinet", (5.62, 0.75, 0.45), (0.52, 0.80, 0.90), COL_FIR_DK)
     make_box("Condiment_Top", (5.62, 0.75, 0.92), (0.56, 0.84, 0.04), COL_TOP)
@@ -508,11 +531,14 @@ def _pendant(prefix, x, y, bulb_z):
 
 
 def build_bar_pendants():
-    for k, px in enumerate((1.0, 2.6, 4.2)):
-        make_cyl(f"Pendant_Bar_{k}_Canopy", (px, 8.0, CEIL - 0.02), 0.07, 0.04, COL_BLACK, segments=10)
-        make_cyl(f"Pendant_Bar_{k}_Cord", (px, 8.0, (CEIL - 0.04 + 2.66) / 2.0), 0.006, CEIL - 0.04 - 2.66, COL_BLACK, segments=4)
-        make_lathe(f"Pendant_Bar_{k}_Shade", (px, 8.0, 2.46), [(0.0, 0.20), (0.04, 0.20), (0.18, 0.0), (0.0, 0.0)], (0.20, 0.34, 0.30, 1.0), segments=14)
-        make_cyl(f"Pendant_Bar_{k}_Bulb", (px, 8.0, 2.50), 0.045, 0.08, COL_BULB, segments=10)
+    # (2026-11-09) three tin panels apart along the counter (x 0.9-5.9),
+    # each on a panel centre: x 1.6 / 3.4 / 5.2, y 7.8
+    for k, px in enumerate((1.6, 3.4, 5.2)):
+        py = 7.8
+        make_cyl(f"Pendant_Bar_{k}_Canopy", (px, py, CEIL - 0.02), 0.07, 0.04, COL_BLACK, segments=10)
+        make_cyl(f"Pendant_Bar_{k}_Cord", (px, py, (CEIL - 0.04 + 2.66) / 2.0), 0.006, CEIL - 0.04 - 2.66, COL_BLACK, segments=4)
+        make_lathe(f"Pendant_Bar_{k}_Shade", (px, py, 2.46), [(0.0, 0.20), (0.04, 0.20), (0.18, 0.0), (0.0, 0.0)], (0.20, 0.34, 0.30, 1.0), segments=14)
+        make_cyl(f"Pendant_Bar_{k}_Bulb", (px, py, 2.50), 0.045, 0.08, COL_BULB, segments=10)
 
 
 # ═══════════════════════════════════════════════════════════ the outside

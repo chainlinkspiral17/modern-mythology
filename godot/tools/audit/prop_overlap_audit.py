@@ -146,6 +146,11 @@ def record_builder(path):
     A.TRUE_BOXES.clear()
     MESH_NAMES.clear()
     SPHERES.clear()
+    # (2026-11-09) the ceiling grids fixtures snap to (safety.on_ceiling_grid)
+    # are this builder's alone — one set's grid leaked into the next
+    _saf = sys.modules.get("_props.safety")
+    if isinstance(getattr(_saf, "CEILING_GRIDS", None), list):
+        _saf.CEILING_GRIDS.clear()
     src = open(path).read()
     src = re.sub(r"^if __name__.*$[\s\S]*", "", src, flags=re.M)
     g = {"__name__": "_overlap_probe", "__file__": path}

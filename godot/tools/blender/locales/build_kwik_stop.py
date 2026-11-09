@@ -223,6 +223,11 @@ COL_GLINT = (0.86, 0.90, 0.92, 1.0)   # where a glass pane is: two pale strips
 
 
 CEIL_Z   = 3.00
+# The ceiling's fluorescent fixtures, on the 1 m tile grid: each centred on a
+# PAIR of tiles (x on a grid line), y in the middle of a tile row. Read by
+# the fixtures (build_shell) AND their glow strips (build_diffuser_strips).
+FLUOR_ROWS_Y = (1.5, 4.5, 7.5)
+FLUOR_X_PITCH = 2.0
 WALL_THICK = 0.20
 
 
@@ -363,9 +368,11 @@ def build_shell():
         make_box(f"Ceiling_GridY_{j}", (0.0, float(j), CEIL_Z - 0.010),
                  (12.4, 0.04, 0.012), COL_CEILING_GRID)
     # Water stains on ceiling tiles — canonical convenience-store
-    # detail. Three darker patches at specific tile centres.
+    # detail. Three darker patches at specific tile centres (2026-11-09:
+    # they stood on the grid lines at x = -2, 1, 3; a tile's centre is a
+    # half metre — the grid runs on the whole metres)
     for stain_i, (sx, sy) in enumerate([
-        (-2.0, 2.5), (+1.0, 5.5), (+3.0, 7.5),
+        (-2.5, 3.5), (+1.5, 5.5), (+3.5, 6.5),
     ]):
         # a faint blotch, not a dark 0.8 m board (2026-09-24, the user:
         # "furniture on ceilings" — the stains read as slabs)
@@ -374,10 +381,16 @@ def build_shell():
                  (0.46, 0.38, 0.004),
                  tuple(COL_CEILING_TILE[k] * 0.72 + COL_CEILING_STAIN[k] * 0.28 for k in range(3)) + (1.0,))
 
-    # ── Fluorescent tube fixtures (3 rows of 2 each) ────────────
-    for j, ypos in enumerate([2.5, 5.0, 7.5]):
+    # ── Fluorescent tube fixtures (3 rows of 3) ─────────────────
+    # (2026-11-09, the user: "the lights on the roof need to be arranged
+    # properly with the tiles on the roof, not haphazard") Each fixture is
+    # centred on a PAIR of tiles — x on a grid line (it spans the two tiles
+    # either side), y in the middle of a tile row — and the rows are spaced
+    # evenly about the room's centre. They stood at x = ±2.4 and one row on
+    # the y = 5 grid line, straddling tiles at random.
+    for j, ypos in enumerate(FLUOR_ROWS_Y):
         for i in range(-1, 2):
-            xp = i * 2.4
+            xp = i * FLUOR_X_PITCH
             make_box(f"FluorTube_{j}_{i}",
                      (xp, ypos, CEIL_Z - 0.05),
                      (1.6, 0.36, 0.06), (0.96, 0.96, 0.92, 1.0))
@@ -1193,14 +1206,18 @@ def build_ceiling_infrastructure():
     # Second cam over door
     make_cyl("Cam_Dome2", (0.0, 1.0, CEIL_Z - 0.05),
              0.10, 0.10, COL_METAL_BLACK)
-    # Smoke detectors (two, distributed)
-    for d_i, (dx, dy) in enumerate([(-2.5, 6.0), (+2.5, 2.5)]):
-        make_cyl(f"SmokeDetect_{d_i}", (dx, dy, CEIL_Z - 0.04),
+    # Smoke detectors (two, distributed) — each in the centre of a tile
+    # (2026-11-09: (-2.5, 6.0) sat on the y = 6 bar)
+    for d_i, (dx, dy) in enumerate([(-1.5, 6.5), (+2.5, 2.5)]):
+        # flush to the tile (it hung 2 cm under it, held up only by the
+        # bar / the tube it happened to sit on)
+        make_cyl(f"SmokeDetect_{d_i}", (dx, dy, CEIL_Z - 0.02),
                  0.10, 0.04, COL_PAPER)
-        make_box(f"SmokeDetect_{d_i}_LED", (dx + 0.04, dy, CEIL_Z - 0.06),
+        make_box(f"SmokeDetect_{d_i}_LED", (dx + 0.04, dy, CEIL_Z - 0.044),
                  (0.012, 0.012, 0.012), COL_LOTTERY_RED)
-    # Sprinkler heads at tile-grid intersections
-    for sx, sy in [(-2.0, 3.5), (+2.0, 3.5), (-2.0, 6.5), (+2.0, 6.5)]:
+    # Sprinkler heads in the centres of their tiles (2026-11-09: "at
+    # tile-grid intersections" — they were at neither, x on a bar, y mid-tile)
+    for sx, sy in [(-2.5, 3.5), (+2.5, 3.5), (-2.5, 6.5), (+2.5, 6.5)]:
         make_cyl(f"Sprinkler_{sx:+.0f}_{sy:+.0f}",
                  (sx, sy, CEIL_Z - 0.04),
                  0.025, 0.08, COL_METAL_STEEL)
@@ -1938,11 +1955,14 @@ def build_endcap_soccer():
 def build_diffuser_strips():
     # Long thin light-emitting strips under each fluorescent tube
     # fixture — reads as "the tube is on." The FluorTube boxes
-    # already exist at (i*2.4, ypos, CEIL_Z-0.08); add a brighter,
-    # thinner strip directly below them.
-    for j, ypos in enumerate([2.5, 5.0, 7.5]):
+    # already exist at (i * FLUOR_X_PITCH, FLUOR_ROWS_Y[j]); add a
+    # brighter, thinner strip directly below them. (2026-11-09: this loop
+    # kept its own copy of the layout — when the tubes moved onto the tile
+    # grid the glow strips stayed behind, floating beside them. One layout,
+    # two readers.)
+    for j, ypos in enumerate(FLUOR_ROWS_Y):
         for i in range(-1, 2):
-            xp = i * 2.4
+            xp = i * FLUOR_X_PITCH
             make_box(f"DiffuserGlow_{j}_{i}",
                      (xp, ypos, CEIL_Z - 0.095),   # under the tube, which is flush now
                      (1.50, 0.16, 0.02), (1.0, 0.96, 0.86, 1.0))

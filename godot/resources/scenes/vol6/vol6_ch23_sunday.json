@@ -314,10 +314,14 @@
    "pos": "center"
   },
   {
-   "t": "show",
-   "char": "bill",
-   "expr": "neutral",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "bill",
+    "expr": "neutral",
+    "pos": "right"
+   },
+   "why": "(2026-11-09) the arrivals: the hosts hold the stage (Linda, Anita, and Bill when the narration reaches him); nine people through three slots, one per line, was a parade of one-line portraits"
   },
   {
    "t": "narrate",
@@ -330,10 +334,14 @@
    "voice": "assets/audio/voice/vol6_ch23_sunday/061.mp3"
   },
   {
-   "t": "show",
-   "char": "gracie",
-   "expr": "neutral",
-   "pos": "center"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "gracie",
+    "expr": "neutral",
+    "pos": "center"
+   },
+   "why": "(2026-11-09) the arrivals: the hosts hold the stage (Linda, Anita, and Bill when the narration reaches him); nine people through three slots, one per line, was a parade of one-line portraits"
   },
   {
    "t": "narrate",
@@ -341,16 +349,24 @@
    "voice": "assets/audio/voice/vol6_ch23_sunday/063.mp3"
   },
   {
-   "t": "show",
-   "char": "eileen",
-   "expr": "neutral",
-   "pos": "left"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "eileen",
+    "expr": "neutral",
+    "pos": "left"
+   },
+   "why": "(2026-11-09) the arrivals: the hosts hold the stage (Linda, Anita, and Bill when the narration reaches him); nine people through three slots, one per line, was a parade of one-line portraits"
   },
   {
-   "t": "show",
-   "char": "jim",
-   "expr": "neutral",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "jim",
+    "expr": "neutral",
+    "pos": "right"
+   },
+   "why": "(2026-11-09) the arrivals: the hosts hold the stage (Linda, Anita, and Bill when the narration reaches him); nine people through three slots, one per line, was a parade of one-line portraits"
   },
   {
    "t": "narrate",
@@ -368,10 +384,14 @@
    "voice": "assets/audio/voice/vol6_ch23_sunday/068.mp3"
   },
   {
-   "t": "show",
-   "char": "ben",
-   "expr": "neutral",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "ben",
+    "expr": "neutral",
+    "pos": "right"
+   },
+   "why": "(2026-11-09) the arrivals: the hosts hold the stage (Linda, Anita, and Bill when the narration reaches him); nine people through three slots, one per line, was a parade of one-line portraits"
   },
   {
    "t": "narrate",
@@ -379,10 +399,14 @@
    "voice": "assets/audio/voice/vol6_ch23_sunday/070.mp3"
   },
   {
-   "t": "show",
-   "char": "maya",
-   "expr": "neutral",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "show",
+    "char": "maya",
+    "expr": "neutral",
+    "pos": "right"
+   },
+   "why": "(2026-11-09) the arrivals: the hosts hold the stage (Linda, Anita, and Bill when the narration reaches him); nine people through three slots, one per line, was a parade of one-line portraits"
   },
   {
    "t": "narrate",

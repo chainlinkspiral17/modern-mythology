@@ -54,12 +54,28 @@ def build_interview():
                palette={"vinyl": (0.56, 0.58, 0.52, 1.0), "seam": (0.48, 0.50, 0.46, 1.0)})
     # the drop ceiling: grid tiles and two troffers
     make_box("Interview_Ceiling", ((x0 + x1) / 2, (y0 + y1) / 2, H + 0.02), (x1 - x0 + 0.3, y1 - y0 + 0.3, 0.04), (0.88, 0.88, 0.84, 1.0))
-    for k in range(1, 4):
-        make_box(f"Interview_Ceiling_Grid_X_{k}", (x0 + k * (x1 - x0) / 4, (y0 + y1) / 2, H - 0.004), (0.02, y1 - y0, 0.01), (0.70, 0.70, 0.66, 1.0))
-    for k in range(1, 4):
-        make_box(f"Interview_Ceiling_Grid_Y_{k}", ((x0 + x1) / 2, y0 + k * (y1 - y0) / 4, H - 0.004), (x1 - x0, 0.02, 0.01), (0.70, 0.70, 0.66, 1.0))
-    for k, fy in enumerate((1.4, 2.8)):
-        make_fluorescent_tube_fixture(f"Interview_Troffer_{k}", (2.3, fy, H), length=1.2, width=0.6)
+    # (2026-11-09, the user: "the lights on the roof need to be arranged
+    # properly with the tiles on the roof, not haphazard") a real drop-ceiling
+    # module — 1.2 x 0.6 m cells centred on the room — and each troffer FILLS
+    # a cell (its frame over the cell's tees). It was four even divisions
+    # (1.15 x 1.0 m cells) with the troffers across the grid lines.
+    cx_, cy_ = (x0 + x1) / 2, (y0 + y1) / 2
+    k = 0
+    gx = cx_ - 0.6 - 1.2 * math.floor((cx_ - 0.6 - x0) / 1.2)
+    while gx < x1 - 0.05:
+        if gx > x0 + 0.05:
+            make_box(f"Interview_Ceiling_Grid_X_{k}", (gx, cy_, H - 0.004), (0.02, y1 - y0, 0.01), (0.70, 0.70, 0.66, 1.0))
+            k += 1
+        gx += 1.2
+    k = 0
+    gy = cy_ - 0.3 - 0.6 * math.floor((cy_ - 0.3 - y0) / 0.6)
+    while gy < y1 - 0.05:
+        if gy > y0 + 0.05:
+            make_box(f"Interview_Ceiling_Grid_Y_{k}", (cx_, gy, H - 0.004), (x1 - x0, 0.02, 0.01), (0.70, 0.70, 0.66, 1.0))
+            k += 1
+        gy += 0.6
+    for k, fy in enumerate((cy_ - 0.6, cy_ + 0.6)):     # two cells, either side of the table's middle
+        make_fluorescent_tube_fixture(f"Interview_Troffer_{k}", (cx_, fy, H), length=1.2, width=0.6)
     # walls: the observation mirror in the west wall, the door in the east
     make_wall_with_openings("Interview_Wall_W", (x0, (y0 + y1) / 2, 0.0), length=y1 - y0 + 0.16, height=H, thickness=0.16, axis='Y',
                             palette=BLOCK, baseboard_face_sign=+1, openings=[(2.0, 1.45, 1.8, 0.9)])

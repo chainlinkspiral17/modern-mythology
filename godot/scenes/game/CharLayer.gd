@@ -1056,6 +1056,24 @@ func show_character(char_name: String, expr: String, pos: String, facing: String
 			_slots[other_pos] = null
 			break
 	var slot = _slots[pos]
+	if slot != null and slot["name"] != key and String((slot as Dictionary).get("asked", "")) == "center" \
+			and pos != "center" and _slots.get("center") == null:
+		# (2026-11-09) a THREE-SHOT on a 3D set: the script's "center" stood at
+		# this edge only because the edge was free; its owner is here now, so
+		# the centre character slides to the centre. It used to be replaced —
+		# show left / center / right lost the middle one at once (vol 6's
+		# Sunday party lost Anita a node after she appeared)
+		var occ: Dictionary = slot
+		var occ_node: Variant = occ.get("node")
+		if occ_node != null and is_instance_valid(occ_node):
+			var ok: String = String(occ.get("name", ""))
+			var occ_flip: bool = _compute_flip(ok, "center", "")
+			if _resolve_portrait_3d_glb(ok) != "":
+				occ_flip = not occ_flip
+			_slots[pos] = null
+			_move_into(occ_node as Control, occ, pos, "center", "center", ok,
+				String(occ.get("expr", "neutral")), occ_flip)
+			slot = null
 	if slot != null and slot["name"] != key:
 		# Different character in this slot — replace (held a moment: if the
 		# script shows them elsewhere next, they slide there)
@@ -1070,6 +1088,11 @@ func show_character(char_name: String, expr: String, pos: String, facing: String
 		# portrait node, no duplicate, no fade-in.
 		_update_expr(slot["node"], char_name, expr)
 		slot["expr"] = expr
+		# (2026-11-09) the script now places them HERE: a later `hide center`
+		# is not about them (vol 7 ch5: Finn shown at centre, re-shown at
+		# right beside Kai, then hidden by the script's hide of the empty
+		# centre two lines into his scene)
+		slot["asked"] = asked_pos
 		# Allow scene-JSON facing to re-flip an existing portrait
 		# without recreating it (char turns to face away mid-scene).
 		slot["node"].set_meta("flip_x", -1.0 if should_flip else 1.0)

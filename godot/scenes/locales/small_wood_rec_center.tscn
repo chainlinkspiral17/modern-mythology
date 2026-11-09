@@ -158,7 +158,7 @@ environment = SubResource("Env_Locale")
 ; ── RIG (2026-10-10): four of the six troffers lit (two dead), the party light's three heads, the street lamp
 ; the troffers still working
 [node name="Troffer_0_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-3.600, 2.780, -2.400)
+position = Vector3(-3.500, 2.780, -2.500)
 light_color = Color(0.92, 0.94, 0.88, 1)
 light_energy = 0.85
 shadow_enabled = false

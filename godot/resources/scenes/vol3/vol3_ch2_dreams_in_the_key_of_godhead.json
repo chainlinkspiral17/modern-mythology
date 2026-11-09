@@ -316,8 +316,12 @@
       "voice": "assets/audio/voice/vol3_ch2_dreams_in_the_key_of_godhead/058.mp3"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) Andy stays: the narration goes on with him and Jack"
     },
     {
       "t": "narrate",

@@ -1023,39 +1023,55 @@
   },
   "vol4_drawer_creche": {
    "level": 0.75,
-   "why": "grounded — nurse ×2"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (0.75)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_harbinger": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_iris": {
    "level": 1.4,
-   "why": "dreamlike — vision ×3, dream ×2, ghost ×1"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.4)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_komodo_dawn": {
    "level": 1.0,
-   "why": "the volume's own — dream ×1, stars ×1"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_pantheon": {
    "level": 1.2,
-   "why": "leans uncanny — guitar ×2, riff ×1, angel ×1, demon ×1"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.2)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_prospectus": {
    "level": 1.0,
-   "why": "the volume's own — music ×2"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_retinal_burn": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_staturo": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_drawer_timber_grande": {
    "level": 1.0,
-   "why": "the volume's own — vision ×1, demon ×1",
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
    "beats": [
     {
      "node": 21,
@@ -1063,7 +1079,9 @@
      "hold": 3,
      "why": "a weight the trip steps back from (is dead)"
     }
-   ]
+   ],
+   "register": "memory",
+   "locked": true
   },
   "vol4_ed_toenine": {
    "level": 1.2,
@@ -1139,31 +1157,43 @@
   },
   "vol4_scrap_careful_veneer": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_scrap_clean": {
    "level": 0.75,
-   "why": "grounded — court ×2, insurance ×1"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (0.75)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_scrap_scraps": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_scrap_service_engine_soon": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_scrap_stained_glass": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_scrap_twirlwind": {
    "level": 1.0,
-   "why": "the volume's own — no uncanny words"
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.0)",
+   "register": "memory",
+   "locked": true
   },
   "vol4_scrap_weep": {
    "level": 1.2,
-   "why": "leans uncanny — dream ×5",
+   "why": "(read 2026-11-09) a paper from the drawer — a dated document or scrap read now: the MEMORY register (an old print's wash) at the level the words gave (1.2)",
    "beats": [
     {
      "node": 10,
@@ -1171,7 +1201,9 @@
      "hold": 3,
      "why": "the line turns visionary (dream)"
     }
-   ]
+   ],
+   "register": "memory",
+   "locked": true
   },
   "vol4_standoff": {
    "level": 1.0,

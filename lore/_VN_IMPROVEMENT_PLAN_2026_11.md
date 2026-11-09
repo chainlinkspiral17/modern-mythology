@@ -148,8 +148,10 @@ pictures were on screen.
 - **Phase 5 — draft 2 shipped.** Draft 1: 76 flickering staging nodes retired
   in place (pops 55 → 39, jumps 36 → 32). Draft 2 (pass 312): portraits SLIDE
   between slots and a leaving portrait is held 2 lines (jumps 32 → 4, 43
-  slides); `hide center` works on 3D sets. Draft 3: the 84 one-line
-  appearances read by hand (portrait_motion_audit.py); speaker-side staging.
+  slides); `hide center` works on 3D sets. Draft 3 (pass 315): three-shots
+  keep their middle (it slides home); a re-show updates the slot; one-line
+  appearances 82 → 17 by the honest count, the rest read and kept; texts go to
+  the phone. Draft 4: speaker-side staging; four-in-three-slots scenes.
 
 ## Order of work
 

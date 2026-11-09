@@ -165,6 +165,7 @@ func on_locale_changed() -> void:
 	_art_used.clear()
 	_art_return = {}
 	_art_cooldown = 0
+	_arrival_lines = 0
 	_drift_rate = DRIFT_RATE
 	_hold_reset()
 
@@ -815,6 +816,15 @@ const ART_COOLDOWN := 4          # (2026-11-09: 6 — "not highlighting the art 
 var _art_used: Dictionary = {}
 var _art_return: Dictionary = {}  # the frame an art shot left, to return to
 var _art_cooldown: int = 0
+## (2026-11-09) THE ARRIVAL GLANCE: a new room's most important picture
+## (`inspect`), if the establishing frame holds it — in frame, facing the
+## camera, big enough to read, nothing solid between — is noticed once, on
+## the second narration line, for that line. Lines since the room changed;
+## -1 once the window (ARRIVAL_WINDOW lines) has passed.
+const ARRIVAL_FROM := 2
+const ARRIVAL_WINDOW := 4
+const ARRIVAL_MIN_H := 0.06       # of the frame's height
+var _arrival_lines: int = -1
 var _still_list: Array = []
 var _still_i: int = 0
 var _still_return: Dictionary = {}  # the exact frame stillness was entered from
@@ -934,6 +944,10 @@ func consider_line(text: String, kind: String, cued: bool, speaker: String = "")
 		ArtMaskScript.focus_target = 0.0
 	if _art_cooldown > 0:
 		_art_cooldown -= 1
+	if _arrival_lines >= 0:
+		_arrival_lines += 1
+		if _arrival_lines > ARRIVAL_WINDOW:
+			_arrival_lines = -1
 	if cued or kind != "narrate" or _art_cooldown > 0 or not _still_list.is_empty():
 		return
 	var words: PackedStringArray = _line_words(text)
@@ -955,18 +969,85 @@ func consider_line(text: String, kind: String, cued: bool, speaker: String = "")
 			continue
 		if best.is_empty() or (bool(p.get("inspect", false)) and not bool(best.get("inspect", false))):
 			best = p
-	if best.is_empty():
-		return
 	var cam: Camera3D = _art_cam()
 	if cam == null:
 		return
+	var why: String = "the line names it"
+	if best.is_empty():
+		if _arrival_lines < ARRIVAL_FROM:
+			return
+		best = _glance_target(cam)
+		if best.is_empty():
+			return
+		why = "the arrival glance: the room's piece, in the establishing frame"
+		_arrival_lines = -1
 	_art_return = _save_frame(cam)
 	if cut_to_art(best, true):
 		_art_used[String(best["slug"])] = true
 		_art_cooldown = ART_COOLDOWN
-		print("[VnDirector] NOTICE → %s (the line names it)" % best["slug"])
+		print("[VnDirector] NOTICE → %s (%s)" % [best["slug"], why])
 	else:
 		_art_return = {}
+
+
+## The room's `inspect` picture the current frame holds readably, or {}.
+func _glance_target(cam: Camera3D) -> Dictionary:
+	var vp: Viewport = cam.get_viewport()
+	if vp == null:
+		return {}
+	var vsz: Vector2 = vp.get_visible_rect().size
+	if vsz.y <= 0.0:
+		return {}
+	var eye: Vector3 = cam.global_position
+	for pv: Variant in HeroArtScript.placements():
+		var p: Dictionary = pv
+		if not bool(p.get("inspect", false)) or _art_used.has(String(p.get("slug", ""))):
+			continue
+		var quad: MeshInstance3D = p.get("quad") as MeshInstance3D
+		if quad == null:
+			continue
+		var c: Vector3 = quad.global_position
+		if cam.is_position_behind(c) or not cam.is_position_in_frustum(c):
+			continue
+		var to_eye: Vector3 = eye - c
+		if quad.global_transform.basis.z.normalized().dot(to_eye.normalized()) < 0.35:
+			continue
+		var sz: Vector2 = p.get("size", Vector2.ONE)
+		var up: Vector3 = quad.global_transform.basis.y.normalized() * sz.y * 0.5
+		var h: float = absf(cam.unproject_position(c + up).y - cam.unproject_position(c - up).y) / vsz.y
+		if h < ARRIVAL_MIN_H:
+			continue
+		if _line_blocked(quad, eye, c):
+			continue
+		return p
+	return {}
+
+
+## Something solid between the eye and the picture: any visible mesh of the
+## set whose box the sight line crosses (short of the picture's own wall).
+## Boxes over-reach, so this errs toward "blocked" — a glance is skipped, never
+## taken through a wall.
+func _line_blocked(quad: MeshInstance3D, eye: Vector3, c: Vector3) -> bool:
+	var root: Node = quad.get_parent()
+	if root == null:
+		return false
+	var dir: Vector3 = c - eye
+	var dist: float = dir.length()
+	if dist < 0.05:
+		return false
+	var to: Vector3 = eye + dir * ((dist - 0.15) / dist)
+	for n: Node in root.find_children("*", "MeshInstance3D", true, false):
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi == quad or not mi.is_visible_in_tree() or mi.mesh == null:
+			continue
+		if String(mi.name).begins_with("HeroArt_") or String(mi.name) == "ArtMaskTwin":
+			continue
+		var box: AABB = mi.global_transform * mi.get_aabb()
+		if box.has_point(eye):
+			continue          # a shell the camera stands inside (a room-sized mesh)
+		if box.intersects_segment(eye, to):
+			return true
+	return false
 
 
 # ── THE LONG HOLD (2026-11-06, pass 300) ─────────────────────────

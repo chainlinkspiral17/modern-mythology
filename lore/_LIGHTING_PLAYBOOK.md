@@ -151,6 +151,30 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-11-09 · a ceiling fixture belongs to the ceiling's grid (pass 316)
+
+- **What happened:** the user: "the lights on the roof need to be arranged
+  properly with the tiles on the roof, not haphazard." 151 fixtures in 38
+  sets were placed by eye — at ±2.4 m on a 1 m grid, one row on a grid line,
+  pendants over tables wherever the tables stood — so troffers straddled the
+  T-bars and canopies sat on them.
+- **Rule:** a fixture hung from a tiled ceiling sits centred in a tile, or
+  (longer than a tile) centred on the bar between the tiles it spans; a row of
+  fixtures is spaced in whole tiles. Place lights from the grid, not the
+  furniture — or lay the grid from the lights (the Daily Grind's tin moved,
+  the tables did not). The helpers snap automatically under a make_ceiling
+  grid; a hand-placed fixture uses the grid's own numbers. Move the
+  `<Fixture>_Practical` with it (practical_follow.py).
+- **One layout, every reader.** The Kwik Stop's tubes moved and their glow
+  strips stayed: build_diffuser_strips kept its own copy of the rows
+  ([2.5, 5.0, 7.5], i * 2.4), so six strips hung beside their fixtures and
+  support_audit caught them floating. A fixture's layout is ONE module
+  constant (FLUOR_ROWS_Y, FLUOR_X_PITCH) read by the fixture, its glow, its
+  practical; before moving a fixture, grep the builder for its old numbers.
+  The two smoke detectors had hung 2 cm under the tile all along, held up by
+  the bar / the tube they happened to touch — flush now.
+- **Gate:** ceiling_grid_audit.py (position), support_audit (a part left behind).
+
 ### 2026-11-04 · an insert at night is lit for the frame, not for the wide
 
 **Context:** the vols 5–7 insert survey (pass 291). The Hendersons' porch

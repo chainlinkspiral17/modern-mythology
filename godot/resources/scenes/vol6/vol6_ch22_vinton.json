@@ -448,8 +448,12 @@
    "voice": "assets/audio/voice/vol6_ch22_vinton/085.mp3"
   },
   {
-   "t": "hide",
-   "pos": "right"
+   "t": "retired",
+   "was": {
+    "t": "hide",
+    "pos": "right"
+   },
+   "why": "(2026-11-09) Eileen stays in the stands as Coach K comes in at left"
   },
   {
    "t": "show",

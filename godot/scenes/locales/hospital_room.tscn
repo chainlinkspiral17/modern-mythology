@@ -190,7 +190,7 @@ shadow_enabled = false
 ; Cool-white overhead fluorescents (blender fluor at y=1.5 & 3.5, CEIL 2.8)
 ; (2026-10-08) the waiting room next door: its four troffers
 [node name="Wait_Fluor_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-9.000, 2.550, -1.400)
+position = Vector3(-9.000, 2.550, -1.500)
 light_color = Color(0.92, 0.94, 0.90, 1)
 light_energy = 1.10
 shadow_enabled = false

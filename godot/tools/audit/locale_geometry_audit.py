@@ -426,6 +426,10 @@ def camera_presets():
 
 def run_builder(path):
     BOXES.clear()
+    safety = sys.modules.get("_props.safety")
+    grids = getattr(safety, "CEILING_GRIDS", None)
+    if isinstance(grids, list):
+        grids.clear()     # the ceiling grids are this builder's alone
     mod_dir = os.path.dirname(path)
     if mod_dir not in sys.path:
         sys.path.insert(0, mod_dir)
@@ -436,13 +440,23 @@ def run_builder(path):
     # builders gate their work behind main(); call every build_* fn
     fns = [v for k, v in g.items()
            if k.startswith("build_") and callable(v)]
-    for fn in fns:
-        try:
-            fn()
-        except TypeError:
-            pass          # takes args — part of a larger composition
-        except Exception:
-            pass
+
+    def _all():
+        for fn in fns:
+            try:
+                fn()
+            except TypeError:
+                pass          # takes args — part of a larger composition
+            except Exception:
+                pass
+    _all()
+    # (2026-11-09) the build_* functions run here in definition order, not
+    # the builder's: a fixture may be made before the ceiling it snaps to
+    # registers its grid (safety.on_ceiling_grid). With a grid known, record
+    # again, the grids in hand.
+    if isinstance(grids, list) and grids:
+        BOXES.clear()
+        _all()
     return list(BOXES), None
 
 

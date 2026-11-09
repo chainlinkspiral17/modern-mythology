@@ -272,7 +272,7 @@ omni_range = 6.50
 
 ; the pharmacy, the gate, the back corners
 [node name="Fluor_Rx_0_0_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00, 3.35, -17.00)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.500, 3.35, -17.500)
 light_color = Color(0.93, 0.97, 0.93, 1)
 light_energy = 0.75
 shadow_enabled = false
@@ -322,7 +322,7 @@ omni_range = 6.00
 
 ; the office: one 2x4 troffer, a shade green ("The fluorescents hum like a slow apology")
 [node name="Fluor_Office_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90, 3.35, -20.20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.500, 3.35, -20.500)
 light_color = Color(0.88, 1.00, 0.88, 1)
 light_energy = 0.95
 shadow_enabled = false

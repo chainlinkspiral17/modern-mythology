@@ -182,6 +182,11 @@ def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
     # bar and a drop ceiling read as a cage of beams (the pharmacy, the
     # editing suite). Still clear of the slab's face, so no z-fight.
     if with_grid:
+        # (2026-11-09) the grid is known to the fixtures hung from it: they
+        # snap into its tiles (safety.on_ceiling_grid). Imported here, at call
+        # time — the audit's recorder swaps the module in after this one loads.
+        from . import safety as _safety
+        _safety.register_ceiling_grid(cx - size_x / 2, cx + size_x / 2, cy - size_y / 2, cy + size_y / 2, ceil_z)
         for i in range(int(cx - size_x / 2), int(cx + size_x / 2) + 1):
             make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z - 0.0075),
                      (0.03, size_y, 0.004), grid)

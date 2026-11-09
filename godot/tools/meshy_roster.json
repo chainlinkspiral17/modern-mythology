@@ -15817,7 +15817,7 @@
       "prompt": "Exterior view only: the neighbour's side yard in a Harmony Creek planned-community subdivision, Southeast Texas, at midday in August. A patch of thick St. Augustine lawn (#667A47), a red push mower (#A8332A) left standing mid-lawn with its handle up, a young live oak with a dense rounded crown, a weathered cedar privacy fence along the lot line, and beyond it the beige brick and siding wall of the next ranch house with its AC unit. White, hazy, heat-bleached sky; hard noon sun, short shadows, everything a little dusty from drought. Ordinary, quiet, still.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) From the builder's E-yard (EYard_Lawn, EYard_Tree, red EYard_Mower) and 'the neighbour's yard and mower through the east one'; noon/August from ch13/ch19 prose. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) From the builder's E-yard (EYard_Lawn, EYard_Tree, red EYard_Mower) and 'the neighbour's yard and mower through the east one'; noon/August from ch13/ch19 prose. (2026-10-19) size doubled: laid at half its stand-in by hero_art_candidates' half-extent bug. (2026-11-09) day only: kowalski_kitchen_window_night shows on kowalski_kitchen_night (vol 6 ch7).",
       "art_cat": "WINDOW",
       "score_lines": 294,
       "score_mentions": 2,
@@ -15837,6 +15837,60 @@
           "facing": "-x",
           "hide": [
             "Window_E_Glass"
+          ],
+          "not_presets": [
+            "kowalski_kitchen_night"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kowalski_kitchen_window_night",
+      "kind": "art",
+      "name": "the view east out of the Kowalskis' kitchen window, late on a Saturday night",
+      "file": "kowalski_kitchen_window_night.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "kowalski_kitchen_window_night"
+      ],
+      "tag": "window · kowalski_kitchen · 1.5 x 1.1 m · night (vol 6 ch7)",
+      "prompt": "Exterior view only, at night: the neighbour's side yard in a Harmony Creek planned-community subdivision, Southeast Texas, late on a summer Saturday night. The same yard as by day — a patch of thick St. Augustine lawn, a red push mower (#A8332A) left standing mid-lawn with its handle up, a young live oak with a dense rounded crown, a weathered cedar privacy fence along the lot line, the beige brick and siding wall of the next ranch house with its AC unit — now almost dark: the lawn and the oak in deep blue-black shadow, a single porch light on the neighbour's side door throwing a small warm pool across the fence boards, the AC unit's edge catching it, a few lit windows far off between the houses, a hazy humid night sky with a faint orange glow of town on the horizon and no stars to speak of. Still, warm, ordinary, a little lonely.",
+      "canon": [
+        {
+          "src": "godot/resources/scenes/vol6/vol6_ch7_hospital.json",
+          "text": "The Kowalski house, when they arrive, is dark except for the kitchen light."
+        },
+        {
+          "src": "godot/resources/scenes/vol6/vol6_ch7_hospital.json",
+          "text": "Outside, the Texas night does its small late-Saturday work."
+        }
+      ],
+      "prompt_mode": "fallback",
+      "notes": "(2026-11-09) the night twin of kowalski_kitchen_window, for the new kowalski_kitchen_night key (vol 6 ch7, home late from the hospital). Same yard and mower as the day picture so the room reads as one place; the porch light and the town glow are invented. Shows only on kowalski_kitchen_night; until it is generated, the night window shows the builder's glass.",
+      "art_cat": "WINDOW",
+      "score_lines": 0,
+      "score_mentions": 0,
+      "apply": [
+        {
+          "locale": "kowalski_kitchen",
+          "label": "Window",
+          "center": [
+            4.857,
+            3.8,
+            1.55
+          ],
+          "size": [
+            1.5,
+            1.1
+          ],
+          "facing": "-x",
+          "hide": [
+            "Window_E_Glass"
+          ],
+          "not_presets": [
+            "kowalski_kitchen"
           ]
         }
       ]
@@ -56925,7 +56979,8 @@
             "Window_E_Glass"
           ],
           "not_presets": [
-            "kowalski_kitchen"
+            "kowalski_kitchen",
+            "kowalski_kitchen_night"
           ]
         }
       ],

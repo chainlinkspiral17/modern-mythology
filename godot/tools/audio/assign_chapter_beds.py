@@ -142,6 +142,7 @@ PLACES = {
         "henderson_kitchen": "vol6_new_auburn_kitchen",
         "henderson_porch_front": "vol6_new_auburn_kitchen",
         "kowalski_kitchen": "vol6_new_auburn_kitchen",
+        "kowalski_kitchen_night": "vol6_new_auburn_kitchen",   # ch7 (2026-11-09)
         "kowalski_backyard": "vol6_new_auburn_kitchen",
         "caldwell_kitchen_night": "vol6_new_auburn_kitchen",
         "caldwell_porch_night": "vol6_new_auburn_kitchen",

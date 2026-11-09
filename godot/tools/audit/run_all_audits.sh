@@ -137,7 +137,7 @@ echo ""
 # it with `prop_overlap_audit.py --write-baseline`. Never raise a
 # count to make the gate pass.
 echo "── prop_overlap_audit.py (zero-regression gate) ──"
-python3 - <<'PYGATE'
+python3 - <<'PYGATE' || DEFERRED="$DEFERRED prop_overlap_audit"
 import json
 import os
 import re
@@ -451,6 +451,16 @@ echo ""
 # over." A sign / letter / neon part with a roof, parapet, eave or awning
 # spanning its whole thickness over 15 % of its face is inside it (53 were,
 # under the overlap audit's depth floors). Zero.
+# ── Ceiling grid gate (2026-11-09, pass 316) ─────────────────
+# The user: "the lights on the roof need to be arranged properly with the
+# tiles on the roof, not haphazard." Every ceiling fixture under a tile
+# grid sits in a tile (or on the bar between the tiles it spans).
+echo "── ceiling_grid_audit.py ──"
+CGOUT="$(python3 ceiling_grid_audit.py --gate 2>/dev/null)" || {
+    echo "$CGOUT" | grep "^OFF" || true; DEFERRED="$DEFERRED ceiling_grid_audit"; }
+echo "$CGOUT" | tail -1
+echo ""
+
 echo "── sign_roof_audit.py ──"
 SROUT="$(python3 sign_roof_audit.py 2>/dev/null)" || {
     echo "$SROUT" | grep -E "^CUT" | head -20

@@ -4,8 +4,57 @@
 # detectors, sprinklers, conduit runs, HVAC vents. Reusable
 # across any commercial interior.
 # ════════════════════════════════════════════════════════════════
+import math
+
 from . import palette as P
 from .geometry import make_box, make_cyl
+
+
+# ── the drop ceiling's tile grid (2026-11-09) ─────────────────────
+# The user: "the lights on the roof need to be arranged properly with the
+# tiles on the roof, not haphazard." make_ceiling (structure.py) registers
+# each tile grid it lays; a fixture hung at that ceiling's height under it
+# (the fluorescent troffer, the smoke detector, the sprinkler, the vent, the
+# speaker — not the security camera, which is placed for its view)
+# snaps onto the grid: centred in its tile, or — when longer than a tile —
+# centred on the bar between the tiles it spans. ceiling_grid_audit gates it.
+CEILING_GRIDS = []      # dicts: x0 x1 y0 y1 z pitch ox oy
+EDGE_IN = 0.25          # a fixture keeps this far inside the ceiling's edge
+
+
+def register_ceiling_grid(x0, x1, y0, y1, z, pitch=1.0, origin=(0.0, 0.0)):
+    CEILING_GRIDS.append({"x0": x0, "x1": x1, "y0": y0, "y1": y1, "z": z,
+                          "pitch": pitch, "ox": origin[0], "oy": origin[1]})
+
+
+def _snap_axis(v, ext, o, p, lo, hi):
+    k = int(round(ext / p))
+    if ext > p * 1.05 and k % 2 == 0:
+        s = o + p * round((v - o) / p)              # an even run of tiles: on a bar
+    else:
+        s = o + p * (math.floor((v - o) / p) + 0.5)  # in a tile (or an odd run)
+    # keep the fixture inside the ROOM: a ceiling overhangs its walls (make_ceiling
+    # is laid ~0.2 m past them), and where a wall falls mid-tile the edge tile's
+    # centre is in the wall (2026-11-09: a camera's glass 16 cm into Wall_E)
+    lo_in, hi_in = lo + EDGE_IN, hi - EDGE_IN
+    while s - ext / 2.0 < lo_in and s + p + ext / 2.0 <= hi_in:
+        s += p
+    while s + ext / 2.0 > hi_in and s - p - ext / 2.0 >= lo_in:
+        s -= p
+    return round(s, 4)
+
+
+def on_ceiling_grid(cx, cy, ceil_z, ext_x=0.2, ext_y=0.2):
+    """(cx, cy) moved onto the tile grid of the ceiling it hangs from, if a
+    registered grid covers it at its height; else unchanged."""
+    for g in reversed(CEILING_GRIDS):
+        if abs(ceil_z - g["z"]) > 0.06:
+            continue
+        if not (g["x0"] - 0.01 <= cx <= g["x1"] + 0.01 and g["y0"] - 0.01 <= cy <= g["y1"] + 0.01):
+            continue
+        return (_snap_axis(cx, ext_x, g["ox"], g["pitch"], g["x0"], g["x1"]),
+                _snap_axis(cy, ext_y, g["oy"], g["pitch"], g["y0"], g["y1"]))
+    return cx, cy
 
 
 def make_security_camera(prefix, anchor, *, palette=None):
@@ -27,6 +76,7 @@ def make_smoke_detector(prefix, anchor, *, palette=None):
     body = palette.get("body", P.PAPER)
     led = palette.get("led", (0.86, 0.42, 0.32, 1.0))
     cx, cy, ceil_z = anchor
+    cx, cy = on_ceiling_grid(cx, cy, ceil_z, 0.20, 0.20)
     make_cyl(f"{prefix}_Body", (cx, cy, ceil_z - 0.02),   # ON the ceiling (2026-09-22: 2 cm under it, in 22 rooms)
              0.10, 0.04, body)
     make_box(f"{prefix}_LED", (cx + 0.04, cy, ceil_z - 0.045),
@@ -39,6 +89,7 @@ def make_sprinkler(prefix, anchor, *, palette=None):
     head = palette.get("head", P.METAL_STEEL)
     cap = palette.get("cap", P.METAL_BLACK)
     cx, cy, ceil_z = anchor
+    cx, cy = on_ceiling_grid(cx, cy, ceil_z, 0.08, 0.08)
     make_cyl(f"{prefix}_Stem", (cx, cy, ceil_z - 0.04),
              0.025, 0.08, head)
     make_box(f"{prefix}_Cap", (cx, cy, ceil_z - 0.10),
@@ -52,6 +103,7 @@ def make_hvac_vent(prefix, anchor, *, width=1.20, depth=0.60,
     frame = palette.get("frame", P.METAL_STEEL)
     slat = palette.get("slat", P.METAL_BLACK)
     cx, cy, ceil_z = anchor
+    cx, cy = on_ceiling_grid(cx, cy, ceil_z, width, depth)
     make_box(f"{prefix}_Frame", (cx, cy, ceil_z - 0.02),
              (width, depth, 0.04), frame)
     for s in range(slats):
@@ -66,6 +118,7 @@ def make_ceiling_speaker(prefix, anchor, *, palette=None):
     palette = palette or {}
     body = palette.get("body", P.PAPER)
     cx, cy, ceil_z = anchor
+    cx, cy = on_ceiling_grid(cx, cy, ceil_z, 0.30, 0.30)
     # dome top ON the ceiling (2026-09-22: it hung 4 cm under it)
     make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.04),
              0.16, 0.08, body)
@@ -121,6 +174,7 @@ def make_fluorescent_tube_fixture(prefix, anchor, *,
     diffuser = palette.get("diffuser", (1.0, 0.96, 0.86, 1.0))
     frame = palette.get("frame", P.METAL_STEEL)
     cx, cy, ceil_z = anchor
+    cx, cy = on_ceiling_grid(cx, cy, ceil_z, length + 0.10, width + 0.08)
     # Recessed means FLUSH: the frame's top touches the ceiling plane
     # (2026-09-22 support audit: every fixture from this helper hung
     # 9 cm below its ceiling, in the air, in seventeen rooms).

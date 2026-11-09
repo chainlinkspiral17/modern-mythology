@@ -255,16 +255,24 @@
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/041.mp3"
     },
     {
-      "t": "show",
-      "char": "Mackenzie",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "Mackenzie",
+        "expr": "neutral",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) a TEXT from Mackenzie: the phone shows it; she is not in the room"
     },
     {
-      "t": "show",
-      "char": "Mackenzie",
-      "expr": "neutral",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "show",
+        "char": "Mackenzie",
+        "expr": "neutral",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) a TEXT from Mackenzie: the phone shows it; she is not in the room"
     },
     {
       "t": "say",
@@ -272,15 +280,24 @@
       "role": "— text · 7:42pm —",
       "expr": "neutral",
       "text": "Are you okay.",
-      "voice": "assets/audio/voice/vol5_ch2_priestess_b/043.mp3"
+      "voice": "assets/audio/voice/vol5_ch2_priestess_b/043.mp3",
+      "via": "text"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) a TEXT from Mackenzie: the phone shows it; she is not in the room"
     },
     {
-      "t": "hide",
-      "pos": "right"
+      "t": "retired",
+      "was": {
+        "t": "hide",
+        "pos": "right"
+      },
+      "why": "(2026-11-09) a TEXT from Mackenzie: the phone shows it; she is not in the room"
     },
     {
       "t": "narrate",

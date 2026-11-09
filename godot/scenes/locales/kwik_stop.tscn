@@ -572,21 +572,21 @@ shadow_enabled = false
 omni_range = 2.90
 
 [node name="FluorTube_1_-1_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.400, 2.920, -5.000)
+position = Vector3(-2.000, 2.920, -4.500)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.67
 
 [node name="FluorTube_0_-1_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.400, 2.920, -2.500)
+position = Vector3(-2.000, 2.920, -1.500)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.67
 
 [node name="FluorTube_2_-1_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.400, 2.920, -7.500)
+position = Vector3(-2.000, 2.920, -7.500)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false

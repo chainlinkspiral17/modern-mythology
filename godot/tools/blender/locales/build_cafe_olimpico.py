@@ -193,8 +193,10 @@ def build_pendants_2026_09():
     middle, one over the seating — bulbs where the practicals are,
     canopies on the ceiling."""
     from _props.furniture import make_pendant
-    make_pendant("BarPendant", 0.0, 4.80, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.17)
-    make_pendant("SeatingPendant", 0.0, 1.80, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.20)
+    # (2026-11-09) each canopy in the centre of a ceiling tile (the grid runs
+    # on the whole metres; they hung on the x = 0 bar, between tiles)
+    make_pendant("BarPendant", 0.5, 4.50, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.17)
+    make_pendant("SeatingPendant", 0.5, 1.50, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.20)
 
 
 def build_front_and_street_2026_10():

@@ -3835,6 +3835,80 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 316: ceiling lights on their tiles (the user: "the lights on the roof need to be arranged properly with the tiles on the roof, not haphazard").**
+- **ceiling_grid_audit.py** (new): in every set with a drop-ceiling grid
+  (make_ceiling's GridX/GridY, a builder's Ceiling_Grid / Tin_Rib bars), each
+  ceiling fixture must sit centred in a tile, or — longer than a tile — centred
+  on the bar between the tiles it spans. First run: 151 off the grid in 38
+  sets.
+- **The systemic fix:** make_ceiling registers its grid
+  (`safety.register_ceiling_grid`); the ceiling fixture helpers (fluorescent
+  troffer, smoke detector, sprinkler, HVAC vent, speaker — not the security
+  camera, placed for its view) snap onto it (`safety.on_ceiling_grid`), kept
+  0.25 m inside the ceiling's edge (where a wall falls mid-tile, the edge
+  tile's centre is in the wall: three cameras' glass went 16 cm into Wall_E
+  on the first try) — every set fixes itself on rebuild, new ones too.
+  The recorder clears the grids per builder (one set's grid leaked into the
+  next). Checked in a real build (pharmacy's Rx fluorescent: (-4.0, 20.2) →
+  (-3.5, 20.5), its tile).
+- **By hand:** the Daily Grind's pressed tin re-laid so every pendant hangs in a
+  panel's centre (the table pendants were already 0.6 m multiples apart — the
+  grid moved, not the tables); the bar pendants respaced on panels; the track
+  down its panel row; the Kwik Stop's tubes centred on tile pairs, rows evenly
+  about the room, its stains and sprinklers in tile centres; the police
+  interview room a real 1.2 x 0.6 module with the troffers filling cells; the
+  Café Olimpico pendants and the Foxhole tube off the bars.
+- **practical_follow.py** (new): 15 practical lights followed their snapped
+  fixtures (orphan_practical_audit 0). Audit: 151 → 0; ceiling_grid_audit is
+  now a gate in run_all_audits.sh. The overlap gate (an embedded Python block)
+  still stopped the suite on failure — it defers now too.
+- **The suite's catch:** the Kwik Stop's six glow strips had their own copy of
+  the tube layout and stayed behind (support_audit: 8 floating). One layout
+  now (FLUOR_ROWS_Y / FLUOR_X_PITCH); the smoke detectors flush to their tiles.
+- **Deck:** the change is in `_props/structure.py` and `_props/safety.py`, so
+  `--stale` rebuilds every set that imports them (~115) — one long rebuild.
+- **Draft 2 targets:** fixtures hung outside the helpers (a builder's own
+  pendant loops) are only caught by the audit — gate it (`--gate`) once the
+  Deck read agrees; pendants via `_props.furniture.make_pendant` could snap too.
+- **Also this pass:** THE ARRIVAL GLANCE (VnDirector) — on the second
+  narration line in a new room, the room's `inspect` picture is noticed if
+  the establishing frame holds it. Parked inert: the sets are merged into
+  `Chunk_N` meshes, so the sight-line test by box always reads "blocked";
+  draft 2 needs a triangle test (or the mask, depth-aware).
+
+**2026-11-09 · pass 315: three-shots keep their middle; the walk-ons read by hand; the Kowalski kitchen at night.**
+- **Two more CharLayer faults** (over a 3D set a "center" show stands at a free
+  edge): (1) a THREE-SHOT — show left, center, right — lost its middle at once:
+  the right show replaced the centre character standing there (vol 6's Sunday
+  party lost Anita a node after she appeared). Now the centre character SLIDES
+  to the centre when the edge's owner arrives. (2) A character re-shown at the
+  slot they already held kept the slot's old "center", so a later `hide
+  center` hid them (vol 7 ch5: Finn, two lines into his scene). Now a re-show
+  updates it. `tools/CharLayerStageTest.gd` (headless, special-2D stand-ins):
+  14/14.
+- **portrait_motion_audit** now models the remap only over 3D sets and the
+  three-shot slide: one-line appearances 82 → 22 by the honest count, then
+  read one by one → 17 (kept: the goodbye round, the waitress pouring, a line
+  before a cut or a choice). Changed: vol6_ch23_sunday's arrivals (six walk-on
+  shows retired — the hosts hold the stage, narration names the rest);
+  Mackenzie's "Are you okay." (vol5_ch2_priestess_b) and Rick's reply
+  (vol6_ch21_cosmic) are TEXTS — `"via": "text"`, the phone, no portrait;
+  Andy stays (vol3_ch2_dreams…); Eileen stays in the stands (vol6_ch22_vinton).
+- **kowalski_kitchen_night** (vol 6 ch7, home from the hospital: "dark except
+  for the kitchen light"): the day's key, fill, back light and the family
+  room's lamps and TV suffixed to the day key; a low cool moon through the back
+  windows; a night env; ambience bed mapped. The day window picture skips the
+  night key; a NEW roster entry `kowalski_kitchen_window_night` (the same yard
+  and mower at night, a neighbour's porch light) waits for the user to
+  generate — until then the night window shows the builder's pale glass.
+- **MEMORY for the drawer:** vol 4's sixteen drawer papers and dated scraps
+  (design documents 2008–2013, the 2006 scraps) take the memory register at
+  their counted levels, locked (the trip now has 18 memory scenes). Vol 2's
+  1994 dream journals left as they are: the text does not say 1994 is past.
+- **Draft 3 targets:** the four people / three slots juggling in vol7_ch7
+  (Finn and Kai trade the right slot); generate the Kowalski night window;
+  the Deck read of the three-shot slide.
+
 **2026-11-09 · pass 314: the roster loads again; the suite reports every failure.**
 - Pass 307 emptied three art entries' `apply` (the sanderling patch made a
   void; the Shanghai far cards and the barn's old high panel removed from

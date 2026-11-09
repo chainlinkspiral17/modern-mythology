@@ -162,7 +162,7 @@ shadow_enabled = false
 omni_range = 4.2
 
 [node name="Interview_Troffer_1_Light" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 2.55, -2.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 2.55, -2.6)
 light_color = Color(0.92, 0.96, 1.0, 1)
 light_energy = 1.1
 shadow_enabled = false

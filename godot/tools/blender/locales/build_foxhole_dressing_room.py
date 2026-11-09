@@ -166,8 +166,9 @@ def build_hero_props():
             make_box(f"Folding_Chair_{fi}_LegB_{lx:.2f}", (lx, fy+0.15, 0.22), (0.025, 0.025, 0.44), steel)
     # The fluorescent overhead with the slow buzz — the ONLY named
     # light in the room
-    make_box("Fluor_Housing", (0.0, 2.0, 2.56), (1.20, 0.24, 0.08), (0.72, 0.72, 0.70, 1.0))
-    make_box("Fluor_Tube", (0.0, 2.0, 2.51), (1.05, 0.10, 0.03), (0.92, 0.95, 0.88, 1.0))
+    # (2026-11-09) down the middle of a row of tiles (it ran along the y = 2 bar)
+    make_box("Fluor_Housing", (0.0, 2.5, 2.56), (1.20, 0.24, 0.08), (0.72, 0.72, 0.70, 1.0))
+    make_box("Fluor_Tube", (0.0, 2.5, 2.51), (1.05, 0.10, 0.03), (0.92, 0.95, 0.88, 1.0))
     # The door + the marker sign
     # a painted steel stage door, darker than the wall, with its inside push
     # plate and lever (2026-11-04: it was the wall's colour and the insert read as plaster)

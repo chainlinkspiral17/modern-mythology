@@ -326,7 +326,7 @@ script = ExtResource("14_dbgm")
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-1.000, 2.720, -2.000)
+position = Vector3(-0.500, 2.720, -2.500)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
