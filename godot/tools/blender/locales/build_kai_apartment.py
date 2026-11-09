@@ -59,7 +59,8 @@ def build_desk_lamp():
     make_cyl("Lamp_Arm", (dx-0.30, dy+0.20, 0.96), 0.012, 0.30, P.METAL_BLACK)
     make_cyl("Lamp_Head", (dx-0.26, dy+0.20, 1.15), 0.06, 0.08, COL_ACCENT)   # on the arm's top (2026-09-24: 10 cm off it)
     for bi in range(3):
-        make_box(f"Desk_Book_{bi}", (dx+0.20+bi*0.12, dy, 0.80), (0.10, 0.22, 0.20), P.SNACK_TINTS[bi%len(P.SNACK_TINTS)])
+        # standing ON the top (0.76): at 0.80 they ran 2 cm through it (2026-11-09)
+        make_box(f"Desk_Book_{bi}", (dx+0.20+bi*0.12, dy, 0.86), (0.10, 0.22, 0.20), P.SNACK_TINTS[bi%len(P.SNACK_TINTS)])
 
 def build_posters():
     for pi in range(3):

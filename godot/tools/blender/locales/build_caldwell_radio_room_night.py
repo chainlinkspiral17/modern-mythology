@@ -114,12 +114,15 @@ def build_radio_desk():
     make_cyl("Log_Pencil", (x0 + 0.32, dy - 0.25, top + 0.005), 0.004, 0.15, (0.90, 0.72, 0.24, 1.0), axis='Y', segments=6)
     # a cup of tea gone cold, and Thomas
     make_cyl("Tea_Cup", (x0 + 0.12, dy + 0.62, top + 0.04), 0.04, 0.08, (0.92, 0.90, 0.86, 1.0), segments=10)
-    make_box("Thomas_Photo", (RX - 0.05, dy + 0.58, top + 0.11), (0.03, 0.14, 0.18), (0.62, 0.50, 0.34, 1.0))
-    make_box("Thomas_Photo_Print", (RX - 0.066, dy + 0.58, top + 0.11), (0.002, 0.10, 0.14), (0.42, 0.40, 0.38, 1.0))
+    # (2026-11-09) the photo south of the lamp, the lamp at the desk's north
+    # end: at dy + 0.58 the lamp's base stood 9 cm in front of Thomas and hid
+    # three quarters of him from the chair
+    make_box("Thomas_Photo", (RX - 0.05, dy + 0.48, top + 0.11), (0.03, 0.14, 0.18), (0.62, 0.50, 0.34, 1.0))
+    make_box("Thomas_Photo_Print", (RX - 0.066, dy + 0.48, top + 0.11), (0.002, 0.10, 0.14), (0.42, 0.40, 0.38, 1.0))
     # the desk lamp (the light the window shows the street)
     # (2026-11-08) 9 cm into the room: at x0 + 0.48 its base stood through
     # Thomas's photo frame (hero_art_placement_audit: FACES-IN)
-    make_lamp("Desk_Lamp", x0 + 0.39, dy + 0.52, base_z=top, h=0.42, shade_col=(0.86, 0.74, 0.46, 1.0))
+    make_lamp("Desk_Lamp", x0 + 0.39, dy + 0.60, base_z=top, h=0.42, shade_col=(0.86, 0.74, 0.46, 1.0))
     # the coax: off the transceiver's back, along the wall, out the sash
     make_tube("Coax", [(RX - 0.01, dy + 0.15, top + 0.17), (RX - 0.01, dy + 0.15, top + 0.40), (RX - 0.01, RY0 - 0.30, top + 0.40), (1.95, 0.16, 1.15)], 0.008, COL_BAKELITE)
     # her chair at the desk, facing the radio

@@ -93,6 +93,11 @@ ZONES = [
     (3.00, 4.60, 99.0, 99.0, 1.50, 1.20),       # its E corner (the trash)
     (-99.0, 4.60, 99.0, 99.0, 0.00, 1.20),      # the kitchen run: counters, sink, stove, fridge, the yard past the window
     (-99.0, -0.60, -1.60, 4.60, -1.50, 0.00),   # the living room (W of the partition at x -1.45)
+    # (2026-11-09) the cookbook case STAYS on the partition's face (x 1.37..
+    # 1.67): the dining line at 1.45 moved its body (centre 1.52) 1.5 m into
+    # the room — through the sideboard — and left its back panel on the wall
+    # (a zone splits a thing by each part's centre; first match wins)
+    (1.45, 0.45, 1.70, 1.55, 0.00, 0.00),       # the cookbook case, on the partition
     (1.45, -0.60, 99.0, 4.60, 1.50, 0.00),      # the dining room (E of the partition at x 1.2 and the photos on its face)
     (-1.15, 1.60, 1.10, 4.60, 0.00, 0.60),      # the island and its stools (clear of the W partition's frames)
 ]

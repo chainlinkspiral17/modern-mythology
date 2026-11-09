@@ -164,7 +164,10 @@ def build_dressing():
     for i in range(8):
         make_cyl(f"String_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.05), 0.028, 0.028, COL_ACCENT, segments=6)
     # Corner plant (wires the imported helper)
-    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.34, 0.42, 0.28, 1.0), "pot": (0.50, 0.34, 0.22, 1.0)})
+    # (2026-11-09) at the bed's foot, not its side: between the west wall
+    # and the bed there is 0.56 m and the plant spreads 0.68 m — its leaves
+    # ran through the bed deck
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.45, 2.60, 0.0), palette={"leaf": (0.34, 0.42, 0.28, 1.0), "pot": (0.50, 0.34, 0.22, 1.0)})
 
 def build_hero_props():
     """2026-08-03 hero-prop pass: bedside lamp, the two notebooks

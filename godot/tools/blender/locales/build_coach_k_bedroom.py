@@ -130,7 +130,9 @@ def build_dresser():
             make_cyl(f"Dresser_Knob_{r}_{kx:.1f}", (dx - 0.30, kx, 0.28 + r * 0.28),
                      0.02, 0.03, COL_BASE, segments=6, axis='X')
     # Framed photos, staggered
-    for pi, (py, ph) in enumerate(((dy - 0.5, 0.22), (dy - 0.1, 0.28), (dy + 0.45, 0.20))):
+    # (2026-11-09) photo 0 at dy - 0.30: at dy - 0.50 the laundry stack
+    # stood against it and covered three quarters of it
+    for pi, (py, ph) in enumerate(((dy - 0.30, 0.22), (dy - 0.1, 0.28), (dy + 0.45, 0.20))):
         make_box(f"Photo_{pi}", (dx + 0.05, py, 1.02 + ph / 2.0),   # standing ON the dresser (2026-09-23: 2 cm over it)
                  (0.02, 0.16, ph), COL_FRAME_DK)
         make_box(f"Photo_{pi}_Img", (dx + 0.03, py, 1.02 + ph / 2.0),

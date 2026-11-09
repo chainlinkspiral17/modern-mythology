@@ -43,6 +43,8 @@ COVER_FRAC = 0.08
 NONSOLID = re.compile(r"glow|light|beam\b|shaft|spray|mist|steam|smoke|dust|fog|haze|halo|wear_|stain|"
                       r"^view_|sky|cloud|_ray|ray_", re.I)
 GLASSY = re.compile(r"glass|pane|window|_win\b|_win_|screen|curtain|sheer", re.I)
+WIRY = re.compile(r"wire|cable|cord|string|chain|rod\b|_rod_", re.I)
+SLOPED = re.compile(r"roof|rafter|plank|purlin|eave", re.I)
 AXES = {"+x": (0, 1), "-x": (0, -1), "+y": (1, 1), "-y": (1, -1), "up": (2, 1), "+z": (2, 1)}
 
 
@@ -264,20 +266,32 @@ def check_row(slug, row, boxes, others_hidden=frozenset()):
     # pump screens on a pump's far side facing in, storefront signs turned
     # to the shop's own wall, a brand panel inside its wall. Seen from
     # anywhere the picture is the back of a quad, or behind the wall.
+    # (2026-11-09) the solids in front are SUMMED (the grocery's entrance
+    # sign faced its own wall across a lintel and two piers, none of them
+    # 60 % alone) and looked for 10 cm out (the crumpled barn's sign faced
+    # the gable wall 7.5 cm in front of it)
+    fin = []
     for b in boxes:
         if b[0] in skip or NONSOLID.search(b[0]) or GLASSY.search(b[0]):
             continue
         bc, bh = b[1], b[2]
         near = (bc[n] - sg * bh[n] - c[n]) * sg
         far = (bc[n] + sg * bh[n] - c[n]) * sg
-        if near > 0.06 or far < 0.04:
+        # (a picture 50 m "inside" a ridge is inside its bounding box, not
+        # the ridge; a sloped roof plank's box spans the gable window under
+        # it; a spinner's wires are wires)
+        if near > 0.10 or far < 0.04 or near < -0.30 or WIRY.search(b[0]) or \
+                (row.get("_cat") == "WINDOW" and SLOPED.search(b[0])):
             continue
         ov = _overlap_1d(q0[0], q0[1], bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
              _overlap_1d(q1[0], q1[1], bc[ha] - bh[ha], bc[ha] + bh[ha])
-        if ov / area >= 0.6:
-            out.append("FACES-IN   %s: faces into %s (%.0f%% of it, %s %.2f m)" % (
-                slug, b[0], ov / area * 100, "from" if near >= 0 else "buried", abs(near)))
-            break
+        if ov > 0:
+            fin.append((ov / area, b[0], near))
+    if fin and min(1.0, sum(f[0] for f in fin)) >= 0.6:
+        fin.sort(reverse=True)
+        out.append("FACES-IN   %s: faces into %s (%.0f%% of it, %s %.2f m)" % (
+            slug, fin[0][1], min(1.0, sum(f[0] for f in fin)) * 100,
+            "from" if fin[0][2] >= 0 else "buried", abs(fin[0][2])))
     # … and a stand-in's own sibling left standing in front of it (the KWIK
     # STOP letters the hide list skipped): any overlap shows
     stems = {re.sub(r"[_\d+-]+$", "", p) for p in hide}

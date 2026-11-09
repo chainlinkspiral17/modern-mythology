@@ -61,7 +61,7 @@ SPINES = [
 ]
 
 
-def _book_run(prefix, x, y0, y1, z, *, axis='Y', lean_slot=3, seed=0):
+def _book_run(prefix, x, y0, y1, z, *, axis='Y', lean_slot=3, seed=0, h_max=9.0):
     """A run of book spines filling [y0,y1] along Y (or [x0,x1] along X
     when axis='X' — then x is the fixed y). Every `lean_slot`-th slot
     is a gap or a leaning book so rows read hand-shelved."""
@@ -72,7 +72,7 @@ def _book_run(prefix, x, y0, y1, z, *, axis='Y', lean_slot=3, seed=0):
         k = (i * 7 + seed * 5) % len(SPINES)
         if (i + seed) % (lean_slot * 4) == lean_slot:
             continue  # a gap — somebody bought one
-        h = 0.19 + 0.055 * ((i * 3 + seed) % 4)
+        h = min(h_max, 0.19 + 0.055 * ((i * 3 + seed) % 4))
         d = 0.14 + 0.02 * ((i + seed) % 3)
         cy = y0 + w * (i + 0.5)
         if axis == 'Y':
@@ -158,8 +158,11 @@ def build_wall_cases():
                          COL_CASE_LT)
                 # books on every shelf except the very top of some bays
                 if zi < 5 or (b + zi) % 2 == 0:
+                    # (2026-11-09) the top shelf's books fit under the case
+                    # top (12 of them stood 3 cm through it)
                     _book_run(f"Books_{side}{b}_{zi}", wx, y0 + 0.08, y1 - 0.08,
-                              z + 0.02, seed=b * 6 + zi + (0 if side == "W" else 3))
+                              z + 0.02, seed=b * 6 + zi + (0 if side == "W" else 3),
+                              h_max=(2.92 - 0.025) - (z + 0.02) - 0.012)
     # Borges sign — back-left bay, third shelf down (canon)
     # on Case_W2's front face (2026-09-22: it hung in the open at y 7.8 where no case stands)
     make_box("Borges_Sign", (-1.695, 6.0, 2.11),   # on shelf S4's front edge

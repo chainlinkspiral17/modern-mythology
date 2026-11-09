@@ -772,9 +772,14 @@ def build_cabin_draft9_2026_10():
       main room's south-east corner was bare floor and plaster.
     """
     # the shelf
-    sx0, sx1, sy, sz = 1.45, 2.55, ROOM_D - 0.10 - 0.11, 1.55
+    # (2026-11-09) a WINDOW shelf: the second north window (opening x 1.40..
+    # 2.50) is behind it, and its back edge stood in the glass and the
+    # muntins. 6 cm off the glass now, as wide as the window's frame so the
+    # brackets bear on the jambs; the tins and jars against the daylight
+    # (the jar of beans no longer stands inside the grinder)
+    sx0, sx1, sy, sz = 1.30, 2.62, ROOM_D - 0.10 - 0.17, 1.55
     make_box("Stove_Shelf", ((sx0 + sx1) / 2.0, sy, sz), (sx1 - sx0, 0.22, 0.03), COL_WOOD)
-    for bi, bx in enumerate((sx0 + 0.12, sx1 - 0.12)):
+    for bi, bx in enumerate((sx0 + 0.07, sx1 - 0.07)):
         make_box(f"Stove_Shelf_Bracket_{bi}", (bx, ROOM_D - 0.10 - 0.08, sz - 0.10), (0.03, 0.16, 0.17), COL_IRON)
     tins = ((0.50, 0.18, 0.14, 0.16), (0.24, 0.32, 0.40, 0.13), (0.70, 0.64, 0.50, 0.11), (0.36, 0.20, 0.16, 0.09))
     for ti, (r, g, b, h) in enumerate(tins):

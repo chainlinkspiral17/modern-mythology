@@ -2996,11 +2996,13 @@ def build_southeast_bathroom():
                      (ux, uy, sz), (uw_x, uw_y, 0.04), COL_WOOD_TRIM)
     # Stacked boxes + cleaning supplies
     for b in range(3):
-        bx = BR_X_W + 0.8 + b * 0.40
+        # (2026-11-09) beside the shelf unit, in the 40 cm closet: from x
+        # BR_X_W + 0.8 the first stood through the unit's lowest board
+        bx = BR_X_W + 1.40 + b * 0.35
         # on the closet floor (top 0.0245; 2026-10-01: at 0.05 they stood
         # on the old floating floor tiles, which are flush now)
         make_box(f"SC_Box_{b}",
-                 (bx, -5.80, 0.2745),
+                 (bx, -5.75, 0.2745),
                  (0.30, 0.30, 0.50),
                  [(0.42, 0.32, 0.18, 1.0),
                   (0.62, 0.42, 0.30, 1.0),

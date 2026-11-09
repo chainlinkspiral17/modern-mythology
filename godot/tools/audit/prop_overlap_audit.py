@@ -717,6 +717,54 @@ EXCLUSIVE = {
 _STRIP_OK = {}
 
 
+# (2026-11-09) PIERCE: a thing's CONTENTS through a thin board. Maya's
+# books stood through their shelf, the bindery's top row through the case
+# top, a box through the closet's lowest shelf — and none of them was
+# ever reported: a book crossing a 2 cm board overlaps it by the board's
+# thickness, under every depth floor above (4 cm; 10 cm for anything named
+# shelf). This asks the other question: does the part come out of BOTH
+# faces of the board, inside its outline?
+PIERCE_PLATE = re.compile(r"shelf|shelv|board|plank|tray|sill|_top\b|top$|_top_|tabletop|counter|lid|deck", re.I)
+PIERCE_CONTENT = re.compile(r"book|binder|box|game|record|album|bottle|can_|_can|jar|cup|mug|vase|toy|jug|"
+                            r"carton|tin_|folder|magazine|comic|paperback|vhs|tape|cassette|cd_|dvd|photo|"
+                            r"figurine|trophy|candle|plant|pot_|_pot|basket|bin_", re.I)
+PIERCE_NOT = re.compile(r"wear_|cloth|vine|twine|liquid|tint|crown|outlet|wheel|case\b|_case|bookcase|"
+                        r"bookshelf|back$|_back\b|body|cabinet|rack|kiosk|frame|head|foot|end|lid|outline|"
+                        r"stock_game_box|wall|floor|ceil|post|pole|leg|rail|bracket|support|side|cord|wire|"
+                        r"cable|pipe|tube|rope|strap|chain", re.I)
+
+
+def pierces(boxes):
+    out = []
+    plates = [b for b in boxes if PIERCE_PLATE.search(b[0]) and not b[0].startswith("Wear_")
+              and not re.search(r"wall|floor|ground|road|roof", b[0], re.I)]
+    contents = [b for b in boxes if PIERCE_CONTENT.search(b[0]) and not PIERCE_NOT.search(b[0])]
+    for p in plates:
+        pc, ph = p[1], p[2]
+        t = min(range(3), key=lambda i: ph[i])
+        others = [i for i in range(3) if i != t]
+        if ph[t] > 0.03 or any(ph[i] < 3 * ph[t] for i in others):
+            continue
+        lo, hi = pc[t] - ph[t], pc[t] + ph[t]
+        for b in contents:
+            if b is p:
+                continue
+            bc, bh = b[1], b[2]
+            if max(bh) >= 1.0 or not (bc[t] - bh[t] < lo - 0.01 and bc[t] + bh[t] > hi + 0.01):
+                continue
+            ov = 1.0
+            for i in others:
+                o = min(pc[i] + ph[i], bc[i] + bh[i]) - max(pc[i] - ph[i], bc[i] - bh[i])
+                if o <= 0.005:
+                    ov = 0.0
+                    break
+                ov *= o
+            if ov >= 0.3 * (2 * bh[others[0]]) * (2 * bh[others[1]]):
+                d = min(lo - (bc[t] - bh[t]), (bc[t] + bh[t]) - hi)
+                out.append((d, p[0], b[0], ["pierces"]))
+    return out
+
+
 def _strips(view, prefix):
     """True when Background3D's preset `view` strips names starting with
     `prefix` (an EXCLUSIVE entry is honoured only then)."""
@@ -765,6 +813,7 @@ def main():
         if err:
             print("%-32s (partial: %s)" % (name, err))
         hits = overlaps([b for b in boxes if b[0] not in MESH_NAMES])
+        hits += pierces([b for b in boxes if b[0] not in MESH_NAMES])
         hits = [h for h in hits if not _exclusive(name, h[1], h[2])]
         per[name] = len(hits)
         if hits:
