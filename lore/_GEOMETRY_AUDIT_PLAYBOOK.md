@@ -158,6 +158,32 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-09 · a depth floor is blind to THIN parts: ask the shape question instead (pass 309)
+
+- **The blind spot.** prop_overlap_audit skips any clip under 4 cm deep
+  (10 cm for anything named shelf), because touching parts read as clips.
+  But a thin part's whole thickness is under that floor: a book through a
+  2 cm board, a sign letter inside a parapet, a poster inside a wall, a
+  clock's hands inside the wall all "overlap" by 1–3 cm. 53 signs stood in
+  roofs, 158 details were wholly buried, 23 contents pierced their boards —
+  none was ever reported. The user saw them ("the books are poking
+  through", "sign text cutting through roof", "placeholders obstructing").
+- **The rule.** For thin parts ask the SHAPE question, not the depth one:
+  PIERCE — does it come out of BOTH faces of the board inside its outline?
+  BURIED — is it inside the host by more than 2 mm on every side?
+  sign_roof_audit — does a roof part span the sign's whole thickness over
+  15 % of its face? A part mounted into its backer (its back in it, its face
+  proud) passes all three.
+- **Read between true boxes.** A cylinder's, sphere's or sloped quad's
+  recorded box is only its bounds (a label on a round jar, dashes on a
+  draped road quad, a sign under a sloped awning all read as buried).
+  `locale_geometry_audit.TRUE_BOXES` names the plain make_box parts; the
+  BURIED check reads only those.
+- **Copied builders copy bugs.** The Gas&Go's brand panel sat inside its
+  wall exactly like the Kwik Stop's, and two builders still read a wall
+  thickness that had since changed (the chapel's lancets, the saloon's
+  windows): when a wall is thickened, grep for things placed "on its face".
+
 ### 2026-11-05 · the establishing scan (pass 293): a second wide stands where a tree or a canopy is not
 
 - **What happened:** every preset wide and `shot_establish` marker of
