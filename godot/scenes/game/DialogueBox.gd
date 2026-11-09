@@ -93,6 +93,11 @@ func setup(skin: Dictionary) -> void:
 	# reference so terminal/paper don't poke a freed node.
 	_spk_rule     = null
 	_last_speaker = ""
+	_plate = null
+	_measure = null
+	_band = null
+	_tapes.clear()
+	_plate_snap = true
 	match _variant:
 		SkinDB.DLG_PAPER:    _build_paper()
 		SkinDB.DLG_TERMINAL: _build_terminal()
@@ -337,6 +342,77 @@ func _band_texture(ground: Color) -> GradientTexture2D:
 	return t
 
 
+# ── THE PLATE ─────────────────────────────────────────────────────────
+# The text's ground hugs the text. `_measure` is the body's twin holding
+# the WHOLE line (the body itself holds only what has been typed so far),
+# so the plate is the line's final size from its first character and does
+# not grow as the words appear.
+const PLATE_ALPHA := 0.88
+const PLATE_PAD_X := 26.0
+const PLATE_PAD_TOP := 14.0
+const PLATE_PAD_BOT := 18.0
+
+var _plate: Control = null
+var _plate_snap: bool = true
+var _measure: RichTextLabel = null
+var _tapes: Array[ColorRect] = []
+
+
+func _make_measure() -> void:
+	_measure = RichTextLabel.new()
+	_measure.bbcode_enabled = true
+	_measure.fit_content = false
+	_measure.scroll_active = false
+	_measure.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_measure.modulate = Color(1, 1, 1, 0)       # laid out, never seen
+	_measure.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_measure)
+
+
+## The rect the plate should have now (this box's coordinates): the whole
+## line's text, the speaker's name when one is up, and the buffer.
+func _plate_target() -> Rect2:
+	_measure.offset_left = _body.offset_left
+	_measure.offset_right = _body.offset_right
+	_measure.offset_top = _body.offset_top
+	_measure.offset_bottom = _body.offset_bottom
+	var cw: float = float(_measure.get_content_width())
+	var ch: float = float(_measure.get_content_height())
+	if cw < 2.0 or ch < 2.0:
+		return Rect2()
+	var r := Rect2(Vector2(_body.offset_left, _body.offset_top), Vector2(cw, ch))
+	if _speaker != null and _speaker.visible and _speaker.text != "":
+		var ss: Vector2 = _speaker.get_minimum_size()
+		r = r.merge(Rect2(_speaker.position, Vector2(ss.x, ss.y + 4.0)))
+	return r.grow_individual(PLATE_PAD_X, PLATE_PAD_TOP, PLATE_PAD_X, PLATE_PAD_BOT)
+
+
+func _update_plate(delta: float) -> void:
+	if _plate == null or _measure == null or _body == null:
+		return
+	var want: Rect2 = _plate_target()
+	if want.size.x < 2.0:
+		_plate.visible = false
+		_plate_snap = true
+		return
+	_plate.visible = true
+	if _plate_snap:
+		_plate_snap = false
+		_plate.position = want.position
+		_plate.size = want.size
+	else:
+		var k: float = 1.0 - exp(-delta * 16.0)
+		_plate.position = _plate.position.lerp(want.position, k)
+		_plate.size = _plate.size.lerp(want.size, k)
+	# the paper's tape rides its top-left corner; the terminal's rule its top edge
+	for i in _tapes.size():
+		if is_instance_valid(_tapes[i]):
+			_tapes[i].position = _plate.position + Vector2(20.0 + 100.0 * i, -11.0 - 2.0 * i)
+	if _rule != null and _variant == SkinDB.DLG_TERMINAL and _rule.texture != null:
+		_rule.position = _plate.position
+		_rule.size = Vector2(_plate.size.x, 2.0)
+
+
 func _build_standard() -> void:
 	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
 	# Box height is viewport-relative so the column reaches from just
@@ -354,18 +430,27 @@ func _build_standard() -> void:
 	_std_inner_top = float(pad[0]) + 6.0
 	_std_inner_bot = float(pad[2]) + 18.0
 
-	# The reading band: the skin's dlg_bg as a vertical fade that begins
-	# above the box (over the speaker name) and settles to near-opaque
-	# under the body. It is the only ground the text gets — no outline.
+	# THE PLATE (2026-11-09) replaces the reading band. The band was the
+	# skin's ground as a fade across the WHOLE width of the bottom third —
+	# over the set, over the portrait's shoulders. The user: "the white box
+	# is obscuring too much, it should just be behind the text with a bit of
+	# edge buffer. i keep saying this, I want to feature the assets and art,
+	# the text is important, but everything is important." So the ground is
+	# a soft-edged plate the size of THIS line's text (and the speaker's
+	# name), plus a buffer — _update_plate sizes it every frame.
 	var ground: Color = _skin.get("dlg_bg", Color(0.03, 0.025, 0.02, 0.96))
-	_band = TextureRect.new()
-	_band.texture = _band_texture(ground)
-	_band.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_band.stretch_mode = TextureRect.STRETCH_SCALE
-	_band.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_band.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_band.offset_top = -READ_BAND_RISE
-	add_child(_band)
+	var plate := Panel.new()
+	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var pst := StyleBoxFlat.new()
+	pst.bg_color = Color(ground.r, ground.g, ground.b, ground.a * PLATE_ALPHA)
+	pst.set_corner_radius_all(12)
+	pst.shadow_color = Color(ground.r, ground.g, ground.b, ground.a * 0.34)
+	pst.shadow_size = 16                      # the feathered edge
+	pst.anti_aliasing = true
+	plate.add_theme_stylebox_override("panel", pst)
+	add_child(plate)
+	_plate = plate
+	_plate_snap = true
 
 	# The panel stays transparent; it only carries the content margins.
 	_bg = Panel.new()
@@ -417,6 +502,7 @@ func _build_standard() -> void:
 	_apply_rtl_font(_body, _body_font_path, _body_base_size,
 					_skin.get("txt_color", Color(0.98, 0.97, 0.94)), true)
 	add_child(_body)
+	_make_measure()
 
 	# Advance cursor
 	_cursor = Label.new()
@@ -463,15 +549,20 @@ func _build_terminal() -> void:
 	style.content_margin_bottom = pad[2]
 	style.content_margin_left   = pad[3]
 	_bg.add_theme_stylebox_override("panel", style)
+	_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_bg)
+	# (2026-11-09) the terminal's panel hugs the text too (THE PLATE)
+	_bg.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_plate = _bg
+	_plate_snap = true
 
 	var rule_stops: Array = _skin.get("rule", [])
 	if rule_stops.size() > 0:
 		_rule = TextureRect.new()
 		_rule.texture = SkinDB.make_rule_tex(rule_stops)
+		_rule.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		_rule.stretch_mode = TextureRect.STRETCH_SCALE
-		_rule.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-		_rule.custom_minimum_size.y = 2.0
+		_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		add_child(_rule)
 	else:
 		_rule = TextureRect.new()
@@ -506,6 +597,7 @@ func _build_terminal() -> void:
 	_apply_rtl_font(_body, _body_font_path, _body_base_size,
 					_skin.get("txt_color", Color(0.78, 0.84, 0.94)), true)
 	add_child(_body)
+	_make_measure()
 
 	_cursor = Label.new()
 	_cursor.text = CURSOR_CHAR
@@ -533,10 +625,17 @@ func _build_paper() -> void:
 	style.content_margin_bottom = pad[2]
 	style.content_margin_left   = pad[3]
 	_bg.add_theme_stylebox_override("panel", style)
+	_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_bg)
+	# (2026-11-09) the sheet of paper is the size of what is typed on it
+	# (THE PLATE); the tape rides its top-left corner
+	_bg.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_plate = _bg
+	_plate_snap = true
 
 	# Tape strips
 	var tape_col: Color = _skin.get("tape_color", Color(1.0, 0.86, 0.39, 0.5))
+	_tapes.clear()
 	_add_tape_strip(Vector2(pad[3] + 20, 0), 76, 22, -1.5, tape_col)
 	_add_tape_strip(Vector2(pad[3] + 120, -2), 76, 22, 2.0, tape_col)
 
@@ -571,6 +670,7 @@ func _build_paper() -> void:
 	_apply_rtl_font(_body, _body_font_path, _body_base_size,
 					_skin.get("txt_color", Color(0.10, 0.10, 0.10)), true)
 	add_child(_body)
+	_make_measure()
 
 	_cursor = Label.new()
 	_cursor.text = CURSOR_CHAR
@@ -646,6 +746,9 @@ func _fit_body_size(text: String) -> void:
 	else:
 		size = _fit_size_by_count(text)
 	_apply_rtl_font(_body, _body_font_path, size, col, true)
+	if _measure != null:
+		_apply_rtl_font(_measure, _body_font_path, size, col, true)
+		_measure.text = vis
 
 
 # Fallback shrink when we can't measure (layout not ready): scale the
@@ -659,6 +762,7 @@ func _fit_size_by_count(text: String) -> int:
 
 
 func _process(delta: float) -> void:
+	_update_plate(delta)
 	if _typing:
 		_char_timer -= delta
 		if _char_timer <= 0.0:
@@ -735,6 +839,11 @@ func _count_visible(text: String) -> int:
 
 func _place_cursor() -> void:
 	if _body == null or _cursor == null:
+		return
+	# in the plate's bottom-right corner, past the text's right edge (it sat
+	# at the corner of the whole column box, far from a short line)
+	if _plate != null and _plate.visible:
+		_cursor.position = _plate.position + _plate.size - Vector2(21.0, 25.0)
 		return
 	var r: Rect2 = _body.get_rect()
 	_cursor.position = Vector2(r.end.x - 24, r.end.y - 26)
@@ -831,3 +940,4 @@ func _add_tape_strip(pos: Vector2, w: int, h: int, angle_deg: float, col: Color)
 	strip.pivot_offset       = Vector2(w * 0.5, h * 0.5)
 	strip.rotation_degrees   = angle_deg
 	add_child(strip)
+	_tapes.append(strip)

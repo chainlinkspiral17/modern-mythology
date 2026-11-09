@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 320: the text's ground is the size of the text (the user: "the white box is obscuring too much, it should just be behind the text with a bit of edge buffer. i keep saying this, I want to feature the assets and art, the text is important, but everything is important.").**
+- **THE PLATE** (DialogueBox, all three skins): the standard skin's reading
+  band — the skin's ground faded across the whole width of the bottom third,
+  over the set and the portraits' shoulders — is gone. The ground is a
+  soft-edged plate the size of THIS line's text (plus the speaker's name)
+  and a 26 / 14 / 18 px buffer. A hidden twin of the body holds the whole
+  line, so the plate has its final size from the first character. The
+  terminal (vol 3) and paper (vol 4) panels hug the text the same way; the
+  paper's tape rides the sheet's corner, the terminal's rule its top edge;
+  the advance cursor sits in the plate's corner.
+- **Draft 2 targets:** read every skin on the Deck with portraits up (the
+  plate beside a portrait, the plate under a three-shot); the plate's
+  opacity per skin against bright sets (0.88 of the skin's ground now); the
+  choice menu and the backlog in the same language; a line that changes
+  column side mid-exchange slides its plate — check it does not swim.
+
 **2026-11-09 · pass 319: "give me a copy paste that opens a game that works" — the wide fill, unreproduced, made impossible to lose and loud when lost.**
 - The user's third screenshot: fullscreen 3440x1440, the chapter still in a
   16:9 frame. Here it fills — Godot 4.6 and 4.7.2, openbox, fullscreen
