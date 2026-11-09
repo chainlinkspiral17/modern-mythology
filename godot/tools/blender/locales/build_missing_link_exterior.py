@@ -179,8 +179,10 @@ def build_pole_sign():
     for nm, yy in (("N", 6.615), ("S", 6.385)):
         make_box(f"Sign_Figure_{nm}", (-5.8, yy, 4.62), (0.24, 0.01, 0.50), (0.24, 0.16, 0.10, 1.0))
         make_box(f"Sign_Figure_{nm}_Head", (-5.78, yy, 4.93), (0.12, 0.01, 0.12), (0.24, 0.16, 0.10, 1.0))
-    make_box("Sign_Arrow", (-5.9, 6.5, 3.85), (1.3, 0.09, 0.4), COL_SIGN_RED)
-    make_box("Sign_Arrow_Tip", (-5.15, 6.5, 3.85), (0.28, 0.09, 0.7), COL_SIGN_RED)
+    # (2026-11-09) its tail mounted INTO the pole's east face (x -6.28), not
+    # through the pole: the arrow's tail ran across it, which stood in front of its picture
+    make_box("Sign_Arrow", (-5.66, 6.5, 3.85), (1.3, 0.09, 0.4), COL_SIGN_RED)
+    make_box("Sign_Arrow_Tip", (-4.91, 6.5, 3.85), (0.28, 0.09, 0.7), COL_SIGN_RED)
 
 
 def build_depot_awning():

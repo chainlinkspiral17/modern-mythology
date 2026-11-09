@@ -47,6 +47,10 @@ DARK = (0.26, 0.17, 0.11, 1.0); DARK2 = (0.32, 0.21, 0.13, 1.0); BRASS = (0.74, 
 LEATHER = (0.20, 0.16, 0.14, 1.0); CARPET = (0.30, 0.20, 0.22, 1.0)
 BAR_Y = 12.0                       # the bar rail between the gallery and the well
 WIN_YS = (5.0, 9.5, 14.0)
+# (2026-11-09) the tall windows start ABOVE the 2.4 m wainscot (sill 2.5,
+# head 4.9 as before): from 1.5 the wainscot ran across their lower 0.9 m
+WIN_Z0, WIN_Z1 = 2.50, 4.90
+WIN_ZC, WIN_H = (WIN_Z0 + WIN_Z1) / 2.0, WIN_Z1 - WIN_Z0
 
 
 def build_shell():
@@ -54,7 +58,7 @@ def build_shell():
     make_box("Aisle_Carpet", (0.0, BAR_Y / 2.0, 0.005), (1.8, BAR_Y - 0.4, 0.01), CARPET)
     make_box("Well_Carpet", (0.0, (BAR_Y + FN) / 2.0, 0.005), (W - 1.0, FN - BAR_Y - 0.6, 0.01), (0.26, 0.22, 0.30, 1.0))
     make_wall_with_openings("Wall_W", (XW, D / 2.0, 0), length=D + 0.4, height=H, axis='Y', palette=PAL, baseboard_face_sign=+1,
-                            openings=[(y, 3.2, 1.6, 3.4) for y in WIN_YS])
+                            openings=[(y, WIN_ZC, 1.6, WIN_H) for y in WIN_YS])
     make_wall_with_openings("Wall_E", (XE, D / 2.0, 0), length=D + 0.4, height=H, axis='Y', palette=PAL, baseboard_face_sign=-1,
                             openings=[(12.7, 1.10, 1.0, 2.2)])
     make_wall("Wall_N", (0.0, YN, 0), length=W + 0.4, height=H, axis='X', palette=PAL, baseboard_face_sign=-1)
@@ -77,9 +81,9 @@ def build_shell():
         make_box(f"Wainscot_Cap_{tag}", cc, cs, DARK2)
     # tall windows with blinds on the W wall
     for i, y in enumerate(WIN_YS):
-        make_box(f"Window_W_{i}_Glass", (XW, y, 3.2), (0.01, 1.6, 3.4), (0.72, 0.80, 0.84, 0.25))
-        for k in range(14):
-            make_box(f"Window_W_{i}_Blind_{k}", (XW + 0.05, y, 1.70 + k * 0.22), (0.01, 1.60, 0.05), (0.86, 0.84, 0.78, 1.0))
+        make_box(f"Window_W_{i}_Glass", (XW, y, WIN_ZC), (0.01, 1.6, WIN_H), (0.72, 0.80, 0.84, 0.25))
+        for k in range(10):
+            make_box(f"Window_W_{i}_Blind_{k}", (XW + 0.05, y, WIN_Z0 + 0.12 + k * 0.22), (0.01, 1.60, 0.05), (0.86, 0.84, 0.78, 1.0))
     # the back double doors and the side door by the defense table
     for i, s in enumerate((-1, 1)):
         make_box(f"Back_Door_{i}", (s * 0.5, FS - 0.02, 1.30), (0.96, 0.05, 2.58), DARK2)
