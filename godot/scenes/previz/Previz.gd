@@ -896,9 +896,10 @@ func _toggle_view() -> void:
 ## Clean full-screen capture view: native-res fullscreen, all UI hidden behind it.
 func _toggle_fullscreen() -> void:
 	_fullscreen = not _fullscreen
-	DisplayServer.window_set_mode(
-		DisplayServer.WINDOW_MODE_FULLSCREEN if _fullscreen else DisplayServer.WINDOW_MODE_WINDOWED
-	)
+	# through the root Window, never the DisplayServer directly (Settings.gd,
+	# 2026-11-09: a change behind the Window's back leaves the game at its
+	# old size inside the new window)
+	get_tree().root.mode = Window.MODE_FULLSCREEN if _fullscreen else Window.MODE_WINDOWED
 	_ui_on = not _fullscreen   # clean render in fullscreen; UI back when windowed
 	_apply_chrome()
 

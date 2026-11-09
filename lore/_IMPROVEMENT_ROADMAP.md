@@ -3835,6 +3835,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 317: the ultrawide setting takes (the user: "Ultrawide setting isn't taking, still." / "In scenes are back to their old resolution.").**
+- **Reproduced** with a new probe (`tools/ScreenProbe.tscn`, the real menu →
+  chapter flow on a 3440x1440 virtual screen): the OS window became
+  3440x1440 and the game kept drawing 1280x720 in its corner. Settings set
+  the size on the DisplayServer directly; the root Window never heard.
+- **Draft 1 shipped:** every size / mode change through the root Window;
+  `_sync_root_window` checks and corrects for a second after; a size equal to
+  the screen is fullscreen (ULTRAWIDE on a 3440x1440 monitor was a maximised
+  window before); borderless fallback where fullscreen is not granted;
+  Previz's fullscreen toggle the same way. Probe after: root.size (3440,
+  1440), canvas (1720, 720), the set rendered at 3440x1440 — windowed (on a
+  3840x2160 screen), fullscreen path, and back down to 720p.
+  `window_api_audit.py` runs on every change (run_changed_audits.sh).
+- **Draft 2 targets:** the probe ran without a window manager — the Deck /
+  Steam Machine desktop (KDE) is the real read; the menu stays a 16:9 frame
+  on a wide screen by design (only the VN is wide-ready) — make the main
+  menu wide-ready next so the setting SHOWS before a chapter starts; the
+  SCREEN SIZE row should print the size the window really got.
+
 **2026-11-09 · pass 316: ceiling lights on their tiles (the user: "the lights on the roof need to be arranged properly with the tiles on the roof, not haphazard").**
 - **ceiling_grid_audit.py** (new): in every set with a drop-ceiling grid
   (make_ceiling's GridX/GridY, a builder's Ceiling_Grid / Tin_Rib bars), each

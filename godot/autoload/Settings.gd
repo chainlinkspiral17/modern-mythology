@@ -260,24 +260,84 @@ func _apply_window_mode(mode: String) -> void:
 			call_deferred("_set_fullscreen")
 
 
+## (2026-11-09, the user: "Ultrawide setting isn't taking, still." / "In
+## scenes are back to their old resolution.") The size went to the
+## DisplayServer directly, behind the root Window's back: the OS window grew
+## to 3440x1440 and the game went on believing it was 1280x720 — the picture
+## at its old resolution in a corner of the new window (ScreenProbe shows
+## it: window (3440, 1440), root.size (1280, 720)). The DisplayServer records
+## the size it was asked for, so the "window changed" event that would tell
+## the root Window never fires. EVERY size / mode change goes through the
+## root Window (its setters call the DisplayServer AND resize the viewport);
+## _sync_root_window then checks the two agree and makes them.
 func _set_fullscreen() -> void:
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	var root: Window = get_tree().root
+	root.borderless = false
+	root.mode = Window.MODE_FULLSCREEN
+	_sync_root_window.call_deferred(true)
 
 
 func _resize_window(w: int, h: int) -> void:
 	# (2026-10-19) Fit the screen's USABLE area (the taskbar and the window's
 	# title bar take some of it): a 1080p window on a smaller display ran past
 	# its bottom and right. Too big to fit → maximised; else centred inside it.
+	var root: Window = get_tree().root
 	var screen: int = DisplayServer.window_get_current_screen()
+	# (2026-11-09) A size that IS the screen (ULTRAWIDE on a 3440x1440
+	# monitor, 1440p on a 1440p one) is that screen's fullscreen: maximised
+	# it lost the title bar's and the taskbar's rows and was never the
+	# resolution asked for.
+	var scr: Vector2i = DisplayServer.screen_get_size(screen)
+	if w == scr.x and h == scr.y:
+		_set_fullscreen()
+		return
+	root.borderless = false
+	if root.mode != Window.MODE_WINDOWED:
+		root.mode = Window.MODE_WINDOWED
 	var usable: Rect2i = DisplayServer.screen_get_usable_rect(screen)
 	var deco: Vector2i = DisplayServer.window_get_size_with_decorations() - DisplayServer.window_get_size()
 	var room: Vector2i = usable.size - deco
 	if w > room.x or h > room.y:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		root.mode = Window.MODE_MAXIMIZED
+		_sync_root_window.call_deferred(false)
 		return
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	DisplayServer.window_set_size(Vector2i(w, h))
-	DisplayServer.window_set_position(usable.position + (usable.size - Vector2i(w, h) - deco) / 2)
+	root.size = Vector2i(w, h)
+	root.position = usable.position + (usable.size - Vector2i(w, h) - deco) / 2
+	_sync_root_window.call_deferred(false)
+
+
+## The root Window must be the size the OS window really is. Checked for a
+## second after a change (a window manager answers late); a mismatch is
+## corrected through the Window, which resizes the viewport.
+## `fill_screen`: fullscreen was asked for. A desktop that does not grant it
+## (no window manager, a compositor that ignores the request) leaves the
+## window at its old size — after 45 frames the window is made a borderless
+## one the size of the screen instead, which is the same picture.
+var _sync_serial: int = 0
+
+
+func _sync_root_window(fill_screen: bool) -> void:
+	_sync_serial += 1
+	var mine: int = _sync_serial
+	for i in 60:
+		await get_tree().process_frame
+		if mine != _sync_serial:
+			return                      # a newer change took over
+		var root: Window = get_tree().root
+		var real: Vector2i = DisplayServer.window_get_size()
+		if fill_screen and i == 45:
+			var screen: int = DisplayServer.window_get_current_screen()
+			var scr: Vector2i = DisplayServer.screen_get_size(screen)
+			if real.x < scr.x - 8 or real.y < scr.y - 8:
+				push_warning("[Settings] fullscreen was not granted (window %s on a %s screen) — borderless, the screen's size" % [real, scr])
+				root.mode = Window.MODE_WINDOWED
+				root.borderless = true
+				root.position = DisplayServer.screen_get_position(screen)
+				root.size = scr
+				continue
+		if real.x > 0 and real.y > 0 and root.size != real:
+			push_warning("[Settings] the game window is %s, the game thought %s — corrected" % [real, root.size])
+			root.size = real
 
 
 func _load() -> void:

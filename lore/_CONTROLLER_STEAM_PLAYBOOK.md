@@ -166,6 +166,39 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-11-09 · the window changes through the root Window — and a screen fix is tested on a SCREEN
+
+- **What happened:** after the embed fix the user came back twice:
+  "Ultrawide setting isn't taking, still." / "In scenes are back to their
+  old resolution." Settings sized the window with
+  `DisplayServer.window_set_size`. The OS window grew to 3440x1440; the root
+  Window node stayed 1280x720 (the DisplayServer records the size it was
+  asked for, so its "window changed" callback never fires) — the game drew
+  at its OLD resolution in a corner of the new window, menu and scenes both,
+  and at boot from the saved setting too. Two sessions "fixed" the screen
+  size without once running the game on a screen of that size.
+- **Rule:** a size / mode / position change of the game's window goes
+  through `get_tree().root` (`.size`, `.mode`, `.position`): the Window's
+  setters call the DisplayServer AND resize the viewport. Never
+  `DisplayServer.window_set_size|mode|position` (gate:
+  `window_api_audit.py`, in run_changed_audits.sh on every change).
+  Settings then checks for a second that root.size == the real window
+  (`_sync_root_window`) and corrects it.
+- **A size that IS the screen is fullscreen.** ULTRAWIDE on a 3440x1440
+  monitor "did not fit" (title bar + taskbar) and fell to MAXIMISED — never
+  the resolution asked for. Now it is that screen's fullscreen. Where
+  fullscreen is not granted (no window manager, a compositor that ignores
+  it), 45 frames later the window becomes a borderless one of the screen's
+  size.
+- **Test:** `tools/ScreenProbe.tscn` — the real Main scene, the mode set as
+  the overlay sets it, a chapter started as the menu starts it; prints the
+  window, root.size, the canvas and the 3D set's render size at each step
+  and captures the SCREEN (the X root, not the game's viewport — a lost
+  window only shows there). Run it under `xvfb-run -s "-screen 0
+  3440x1440x24"` AND a larger screen (3840x2160: the windowed path) before
+  saying a screen-size fix works. Good: `root.size (3440, 1440) · canvas
+  (1720, 720)` in a scene, Background3D viewport (3440, 1440).
+
 ### 2026-11-09 · the user plays from the EDITOR: debug runs must not be embedded
 
 - **What happened:** the user asked, more than once, for the ultrawide / max
