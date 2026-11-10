@@ -450,9 +450,9 @@ rotation = Vector3(-0.0895, -1.9541, 0.0)
 metadata/fov = 58.0
 
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.300, 1.450, -0.550)
-rotation = Vector3(-0.1510, -0.0000, 0.0)
-metadata/fov = 45.0
+position = Vector3(0.300, 1.500, -0.450)
+rotation = Vector3(-0.2900, -0.0000, 0.0)
+metadata/fov = 50.0
 
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.300, 1.500, -3.300)
@@ -490,9 +490,9 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_heater__finn_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.636, 0.660, -2.197)
-rotation = Vector3(-0.2618, -0.1810, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.450, 0.850, -2.750)
+rotation = Vector3(-0.3270, -1.0410, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_kettle__finn_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -527,3 +527,38 @@ metadata/fov = 35.0
 position = Vector3(0.708, 1.185, -1.421)
 rotation = Vector3(-0.5236, -0.0454, 0.0)
 metadata/fov = 35.0
+
+; ── draft 5 (pass 331, 2026-11-10) ──
+; THE KITCHEN CROW ("the back of the chair across from him", ch5 / ch9): the
+; day and dusk views; the night view strips it (the bird is by the bed there)
+[node name="HP_Kitchen_Crow" type="Node3D" parent="."]
+position = Vector3(0.300, 0.951, -2.911)
+script = ExtResource("hp_hero_prop")
+glb_path = "res://assets/3d/props/crow.glb"
+size_m = 0.34
+upright = true
+seat_center = true
+stand_in_root = NodePath("../Interior")
+hide_prefixes = PackedStringArray("Kitchen_Crow_")
+
+[node name="shot_insert_crow__finn_apartment_day" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.250, 1.300, -1.550)
+rotation = Vector3(-0.1360, 0.6350, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_crow__finn_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.250, 1.300, -1.550)
+rotation = Vector3(-0.1360, 0.6350, 0.0)
+metadata/fov = 40.0
+
+; "The kitchen window faced south ... The face was looking out at the town" (ch12)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.750, 1.600, -1.600)
+rotation = Vector3(0.0000, 3.1416, 0.0)
+metadata/fov = 38.0
+
+; "His own wax canvas coat was on the hook" (ch18): the closet, one leaf open
+[node name="shot_insert_coat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.750, 1.400, -6.000)
+rotation = Vector3(-0.0760, -3.0240, 0.0)
+metadata/fov = 42.0

@@ -3835,6 +3835,62 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 331: Finn's apartment, draft 5 — the crow was in the wrong room; the radio, the closet, the town.**
+- Last of the backgrounds queue (307 lines over three views). READ by
+  render on eighteen real lines first:
+- **Every kitchen crow line cut to the bed.** "The crow was on the back of
+  the chair across from him" (ch5, ch9) is the kitchen; "the chair beside
+  the bed" (ch12, ch18) is the bedroom. One crow was built, by the bed.
+  `Kitchen_Crow` (and its hero-prop node) perches on the N kitchen chair;
+  the DAY view strips the bedroom bird, the NIGHT view strips the kitchen
+  one, the dusk view keeps both (no lens there sees the two at once), and
+  `insert crow` has day and dusk markers on the kitchen chair.
+- **The set's most-used closeup looked at a bare wall** (`closeup person`,
+  18 lines: the partition behind the table). THE RADIO — "He could hear the
+  radio going faintly through the door" (ch5), lost in draft 4's rebuild —
+  is back: a taped portable on a small console on that wall, its log
+  notebook, pencil, tape roll, batteries. The cap on its peg by the door.
+- **"His own wax canvas coat was on the hook"** (ch18) played on a bare
+  wall: there was no closet. Built east of the bedroom doorway, one leaf
+  open on the coat (the notebook's corner out of the right pocket), the
+  other shut on the rail; the dresser moved north, clear of the leaves.
+  `insert coat` is new and the line is directed to it.
+- **South.** "The kitchen window faced south. South was the direction of
+  Cape Perpetua ... the tower on the bluff ... The face was looking out at
+  the town" (ch12_kai) played on the bare partition; past the S window was
+  one flat roofline and a band of sea (the sea is west). Town roofs
+  stepping down, the bluff, the tower with its lit top floor, the cape;
+  `insert window` is new; ch12_kai:82 / :84 / :88 are directed (hexagon,
+  window, the bedroom).
+- `insert heater` looked at the heater's blank side from 1.3 m (a black
+  slab): re-authored on its grille and glow from across the corner.
+- **KNOT, left as it is.** The text has ONE kitchen window — it "faced
+  south" and he "stood at the kitchen window looking down at the alley".
+  The set has the sink window over the alley on the W wall and a S window
+  to the town, and since pass 203 the roster gives each its own picture
+  (day and night). Re-planning the compass would orphan four of the
+  user's pictures for no gain on screen.
+- 614 → 729 parts. support / overlap / furniture grammar / doorway /
+  window backing / walkway / marker aim: 0.
+- Suite: one real failure, mine — the closet's two leaves read to
+  placement_audit as free-standing wall slabs (I had renamed them off
+  "door" to quiet doorway_audit, which had flagged the dresser 0.47 m in
+  front of them: that one was real and the dresser moved). They are
+  `Closet_Wardrobe_Door_*` now, which both audits read as furniture
+  doors. The gates that read this room were re-run after it, not the
+  whole suite. The coat took three colours: anything under about a third
+  of the wall's light in linear terms is a black cut-out in the night view.
+- **Draft 6 targets.** (1) A PRE-DAWN twin of the night view for
+  ch12_morning: its five kitchen `insert crow` lines still cut to the
+  bedroom bird (the night view is also ch18_home, where "the crow was
+  still in the bedroom"); the twin needs the night window pictures' roster
+  rows too. (2) ch12_kai's six kitchen lines show the kitchen crow though
+  the bird "went to the back of the chair in the bedroom". (3) `insert
+  cedar` (ch18_home:17, in the bedroom, the cedar on his palm) shows the
+  kitchen desk. (4) The notebook to palm size (roster note). (5) A
+  bathroom door; the dish rack; the crates' contents; rain in the alley.
+  (6) Poster_W is an empty picture.
+
 **2026-11-10 · pass 330: Henderson kitchen, draft 5 — the front wall was a hole; the house around the kitchen.**
 - Fifth of the backgrounds queue (322 lines: ch7 the confession dinner,
   ch20 the prints, ch22 after the Foxhole, ch23 the piano). READ by render

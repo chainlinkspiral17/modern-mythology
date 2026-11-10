@@ -3361,6 +3361,9 @@ const CAMERA_PRESETS := {
 		# the entry door (E wall) looking W across the kitchen.
 		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch18 Aria (mood:night) and ch12 Morning's 4:42 on the dusk rig.
 		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		# (2026-11-10, pass 331) the crow is on the chair beside the bed in
+		# these chapters: the kitchen bird leaves this view.
+		"strip": ["Kitchen_Crow_", "HP_Kitchen_Crow"],
 		"camera_origin": Vector3(3.60, 1.62, -2.00),
 		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
 		"fov": 62.0,
@@ -3381,6 +3384,9 @@ const CAMERA_PRESETS := {
 		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch12 Kai (11:15), ch12 Morning (after the bakery, morning), ch5 (morning_bright)
 		# on the dusk rig.
 		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		# (2026-11-10, pass 331) ch5: "The crow was on the back of the chair
+		# across from him" — the kitchen bird; the bedroom one leaves this view.
+		"strip": ["Crow_", "HP_Crow"],
 		"camera_origin": Vector3(3.60, 1.62, -2.00),
 		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
 		"fov": 62.0,

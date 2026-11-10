@@ -149,7 +149,14 @@ posters, screens with no picture: `empty_frame_audit`).
   kitchen doorway is a cased opening in the W wall onto a front hall (front door, a full stair up into a dark
   well, a back door) and, across the hall, the dining room nobody dines in: carpet, a chandelier with no table
   under it, the small table that holds the lamp, lit. 636 → 918 parts. Draft 6 targets in the roadmap.
-- Next: finn_apartment.
+- **finn_apartment — draft 5 (pass 331, 2026-11-10).** A crow on the kitchen chair for the day and dusk views
+  (every kitchen crow line cut to the bed), the radio on its console behind the table, the bedroom closet with
+  the wax canvas coat on its hook, the town / bluff / tower past the S window, four lines directed. The
+  compass knot (one kitchen window in the text, two in the set) is left: both windows carry roster pictures.
+  614 → 729 parts. Draft 6 targets in the roadmap (first: a pre-dawn twin for ch12_morning's crow).
+- The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
+  natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (briefs
+  for the first two are below, read but not built).
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 
@@ -218,16 +225,53 @@ text fixes:
 - To read by render before any change: which chair the crow shots hold (kitchen vs bedroom — the text moves
   the crow between them by line), what `insert door` shows, and the night view's window.
 
-Plan for draft 5 (not built yet):
-- COMPASS. The builder's "W" wall (sink window, alley, bakery) is TRUE SOUTH; its "S" window is true east
-  (Hemlock, inland: no sea there); its "N" bedroom window is true west (the sea). Re-label, move the sea band
-  to the bedroom window's view, hills/treeline inland; light the morning from the Hemlock side.
-- The kitchen window's view is a brick wall top to bottom (bakery wall 6.8 m): "The face was looking out at
-  the town" — lower the bakery's back wall to a storey and a half, roofs beyond, the bluff and its tower,
-  the cape.
-- THE CLOSET in the bedroom with the hook and the wax canvas coat (ch18_home); the coat hangs by the entry
-  door now and the bedroom has an open clothes rail.
-- The radio (ch5) on the counter; then read by render: crow shots (kitchen chair vs bedroom chair per line).
+Built the same day as pass 331. The plan's COMPASS item was dropped on reading the roster: both windows
+already carry pictures (pass 203), so the set keeps its two windows.
+
+## Brief for kowalski_kitchen (read 2026-11-10; not built)
+
+296 lines (`kowalski_kitchen` 248: ch19_chains 95, ch13_home 57, ch8 44, ch19_depthchart 29, ch23_sleep 23;
+`kowalski_kitchen_night` 48: ch7_hospital). What the text fixes:
+
+- "He goes in through the garage" (ch13) — the door from the garage is how the family comes in; "Ben goes to
+  the door. At the door he pauses." The driveway, the open garage, Bill's truck on the street on Fridays.
+- The kitchen table: Bill "with the Sentinel" (the crossword: `insert crossword` x5), Anita with coffee, in
+  scrubs at night ("dark except for the kitchen light. Ben's mother is at the table"); Daisy the dog under it.
+- The counter (Ben makes a sandwich with his back to the table; Gracie eats cereal at it), the stove (Bill
+  cooking eggs), "the cabinet to the left of the stove" (hot sauce), "the small under-cabinet light" (ch19
+  night), the kitchen window (Bill "yelling about the weeds" through it).
+- Stairs DOWN to the basement bedroom ("Maya goes downstairs"; "Bathroom is at the bottom of the ...") and
+  UP ("He goes upstairs to bed"); a hallway from which the parents' bedroom door is seen ("by the angle of the
+  bedroom door from the hallway"); the living room with the TV (the noon news; `insert couch` x3).
+- Shots in use: closeup person 17, establish 11, closeup person_b 10, insert crossword 5, closeup bill /
+  anita 4, closeup ben 4, closeup gracie 3, insert phone 3, insert couch 3, insert table 3, establish_b 2,
+  insert eggs 2, insert garage, establish_c.
+- To read by render before any change: what stands in the garage door's place, whether the stairs and hall
+  exist past the kitchen, what `insert couch` and `insert garage` show, the night view's one light.
+- The builder (draft 5, 10.0 x 6.4) already has the family room, the garage door and the hall opening. Its
+  note "nothing in the prose climbs a stair here" is wrong: "Maya goes downstairs" / "She goes upstairs. The
+  kitchen is full." (basement, ch7-8) and "He goes upstairs to bed" / "He kisses her cheek. He goes upstairs"
+  (ch7, ch19). The stairs are the first target, in the hall.
+
+## Brief for natalie_apartment (read 2026-11-10; not built)
+
+294 lines (`natalie_apartment_night` 268: ch12_hanged 146, ch18_moon 122; `natalie_apartment` 26: ch18_moon
+13, ch20_judgement 13). A studio in LA, read at night. What the text fixes:
+
+- The door with its deadbolt ("closed the door behind her with her hip. The deadbolt clunked"), shoes off and
+  a duffel "just inside the door"; `insert door` x6.
+- "A nest": discarded dance shoes, "stacks of books leaning at precarious Borgesian angles", chipped
+  porcelain, the bookshelf with "the small step-stool" by it; the Borges open on the floor.
+- "moonlight slanting through the blinds" / "a stray beam of streetlight" / the streetlight that flickers
+  outside her window; THE WINDOWSILL where the Hanged Man is set face-up and watches (`insert card` x9).
+- The record player — "a Dual 1219 ... bought at a yard sale in 2014", the Nina Simone LP, the tonearm that
+  lifts itself (`insert tonearm` x3, `record_player` x3, `platter`); "the ancient refrigerator" that cycles;
+  the kitchen counter (her phone rings on it), the stove and kettle, "the under-cabinet light".
+- THE FUTON with "a quilt woven with threads the color of twilight"; "the small low table she used for
+  readings", the lamp under its scarf, the rug she sits cross-legged on; the bathroom door with the uniform
+  on its back.
+- To read by render before any change: the window and its blinds at night (streetlight outside, the sill
+  with the card), whether the nest reads (books, shoes) or the room is bare, what `insert door` shows.
 
 ## Reading it
 

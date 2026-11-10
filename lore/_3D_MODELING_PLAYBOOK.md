@@ -399,6 +399,29 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-10 · a companion that moves between rooms is TWO props, one per view (Finn's crow, pass 331)
+
+- **What happened.** Finn's crow is on "the back of the chair across from
+  him" in the kitchen for two chapters and on "the chair beside the bed"
+  for two more. One crow was built, by the bed; `insert crow` on a kitchen
+  line cut to the bedroom, bed in frame.
+- **Rules.**
+  1. For a thing the text MOVES (an animal, a bag, a coat), list where it
+     is line by line before building it. Each resting place gets its own
+     copy; a view's `"strip"` removes the copies that view's chapters do
+     not have (`"strip": ["Kitchen_Crow_", "HP_Kitchen_Crow"]`), and the
+     cue's marker is tagged per view (`shot_insert_crow__<view>`).
+  2. Two copies may share a view only when no marker and no wide can see
+     both (here: the partition between them) — and say so in the builder.
+  3. A hero-prop node (`HP_*`) is a copy too: one node per resting place,
+     each hiding its own stand-in prefix.
+  4. When one view holds chapters that disagree, the view needs a twin; a
+     twin also needs the roster rows laid "only in" its sibling. That is a
+     pass of its own — record it, do not half-do it.
+  5. READ THE ROSTER before re-planning a set's windows: a window with a
+     picture row is the user's composition. (The compass re-plan drafted
+     for this set would have orphaned four pictures.)
+
 ### 2026-11-10 · an opening is SOMEBODY'S doorway, and the room is one room of a house (Henderson kitchen, pass 330)
 
 - **What happened.** The Henderson kitchen's front wall had a 2 m x 2 m

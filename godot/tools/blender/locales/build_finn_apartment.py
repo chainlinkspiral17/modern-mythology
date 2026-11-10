@@ -28,16 +28,39 @@ Coordinate frame: Blender Z-up. y=0 is the S wall (Hemlock side); +Y
 runs north; the W wall is over the alley. glTF export remaps to Godot
 (x, z, -y).
 
-Draft 5 targets: a bathroom door off the bedroom; the kitchen's dish
-rack and a towel on the oven bar; the crates' contents; rain on the
-alley (puddles under the bakery light); Deck framing of the preset from
-the entry door and the bedroom from its doorway.
+DRAFT 5 (pass 331, 2026-11-10) — read by render on eighteen real lines.
+  - THE CROW IS IN TWO ROOMS. "The crow was on the back of the chair
+    across from him" (ch5, ch9: the kitchen), "on the back of the chair
+    beside the bed" (ch12, ch18). Only the bedroom crow was built, so
+    every kitchen crow line cut to the bed. `Kitchen_Crow` perches on the
+    N kitchen chair; the day view strips the bedroom bird, the night view
+    the kitchen one, the dusk view (ch9, ch18_stick) keeps both — no lens
+    there sees the two at once.
+  - THE RADIO ("He could hear the radio going faintly through the door",
+    ch5) was lost in draft 4's rebuild: a taped portable on a small
+    console on the partition wall, in the frame of the set's most-used
+    closeup, which looked at a bare wall.
+  - THE CLOSET ("He went to the closet. His own wax canvas coat was on
+    the hook", ch18): east of the bedroom doorway, one leaf open on the
+    coat. The cap on its peg by the entry.
+  - SOUTH OF THE S WINDOW: "South was the direction of Cape Perpetua ...
+    the tower on the bluff above old-Yachats. The face was looking out at
+    the town" (ch12) — it saw a flat roofline and a band of sea (the sea
+    is west). Town roofs stepping down, the bluff, the tower, the cape.
+  (The text has ONE kitchen window, facing south over the alley; the set
+  has the sink window over the alley on the W wall and a S window to the
+  town, each with its own picture in the roster since pass 203. Left.)
+
+Draft 6 targets: a pre-dawn twin of the night view so ch12_morning's
+five kitchen crow lines find the crow in the kitchen; a bathroom door
+off the bedroom; the kitchen's dish rack and a towel on the oven bar;
+the crates' contents; rain on the alley; the notebook to palm size.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_prism, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_prism, make_rot_box, export_glb
 from _props.furniture import make_chair, make_lamp
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings
 from _props.decor import make_floor_plant, make_faded_poster
@@ -208,6 +231,10 @@ def build_kitchen_table():
     make_cyl("Food_Plate", (tx + 0.25, ty - 0.25, T + 0.006), 0.12, 0.012, (0.92, 0.90, 0.86, 1.0), segments=14)
     make_box("Food_Sandwich", (tx + 0.25, ty - 0.25, T + 0.032), (0.12, 0.09, 0.04), (0.82, 0.66, 0.40, 1.0))
     make_box("Paper_Bag", (tx + 0.50, ty + 0.30, T + 0.11), (0.16, 0.10, 0.22), (0.68, 0.54, 0.36, 1.0))
+    # THE CROW ON THE CHAIR ACROSS FROM HIM (draft 5): the kitchen bird, on
+    # the N chair's back, looking at the wood
+    make_cyl("KT_Chair_N_Perch_Rail", (tx, ty + 0.72 + 0.17, 0.93), 0.022, 0.40, (0.36, 0.26, 0.17, 1.0), segments=6, axis='X')
+    make_crow("Kitchen_Crow", tx, ty + 0.72 + 0.17, 0.952, facing=1.0)
     make_lathe("Table_Mug", (tx + 0.42, ty - 0.20, T), [(0.0, 0.0), (0.042, 0.0), (0.044, 0.09), (0.0, 0.09)], (0.86, 0.84, 0.78, 1.0), segments=10)
 
 
@@ -266,6 +293,96 @@ def ey_hook():
     return EDOOR[0] + 0.70
 
 
+def build_radio_2026_11():
+    """THE RADIO (ch5: "He could hear the radio going faintly through the
+    door"; vol7 ch2: "the shortwave receiver from his grandfather"). A
+    battery portable held together with electrical tape on its own small
+    console against the partition wall, the log notebook and a pencil
+    beside it, the roll of tape, spare batteries. Small, worn: a rig,
+    not a shack."""
+    wood = (0.40, 0.29, 0.19, 1.0)
+    cx, cy, T = -1.35, PART_Y - 0.06 - 0.20, 0.70
+    make_chamfer_box("Radio_Console_Top", (cx, cy, T - 0.015), (0.80, 0.36, 0.03), wood)
+    for li, (ox, oy) in enumerate(((-0.36, -0.14), (0.36, -0.14), (-0.36, 0.14), (0.36, 0.14))):
+        make_box(f"Radio_Console_Leg_{li}", (cx + ox, cy + oy, (T - 0.03) / 2.0), (0.04, 0.04, T - 0.03), wood)
+    make_box("Radio_Console_Shelf", (cx, cy, 0.22), (0.72, 0.30, 0.02), wood)
+    bake = (0.30, 0.20, 0.14, 1.0); tape = (0.08, 0.08, 0.09, 1.0)
+    rx, ry = cx - 0.12, cy + 0.03
+    make_chamfer_box("Radio_Body", (rx, ry, T + 0.105), (0.34, 0.13, 0.21), bake)
+    make_box("Radio_DialFace", (rx + 0.07, ry - 0.066, T + 0.145), (0.15, 0.004, 0.07), (0.88, 0.84, 0.70, 1.0))
+    make_box("Radio_Dial_Needle", (rx + 0.05, ry - 0.069, T + 0.145), (0.004, 0.002, 0.06), (0.70, 0.16, 0.12, 1.0))
+    for si in range(5):
+        make_box(f"Radio_Speaker_Slat_{si}", (rx - 0.09, ry - 0.066, T + 0.06 + si * 0.025), (0.12, 0.004, 0.010), (0.16, 0.11, 0.08, 1.0))
+    for ki, kx in enumerate((0.03, 0.11)):
+        make_cyl(f"Radio_Knob_{ki}", (rx + kx, ry - 0.075, T + 0.065), 0.016, 0.02, (0.82, 0.78, 0.66, 1.0), axis='Y', segments=8)
+    for ti, tx_ in enumerate((-0.135, 0.02)):
+        make_box(f"Radio_Tape_Band_{ti}", (rx + tx_, ry, T + 0.105), (0.03, 0.134, 0.214), tape)
+    make_box("Radio_Tape_Corner", (rx + 0.155, ry - 0.05, T + 0.19), (0.034, 0.034, 0.034), tape)
+    make_tube("Radio_Antenna", [(rx + 0.14, ry + 0.04, T + 0.20), (rx + 0.20, ry + 0.05, T + 0.48), (rx + 0.25, ry + 0.055, T + 0.72)], 0.004, COL_STEEL, segments=4)
+    make_box("Radio_Log_Notebook", (cx + 0.22, cy - 0.04, T + 0.007), (0.13, 0.19, 0.014), (0.26, 0.34, 0.30, 1.0))
+    make_box("Radio_Log_Spiral", (cx + 0.152, cy - 0.04, T + 0.008), (0.008, 0.19, 0.016), (0.55, 0.56, 0.58, 1.0))
+    make_cyl("Radio_Pencil", (cx + 0.22, cy - 0.04, T + 0.018), 0.004, 0.15, (0.86, 0.66, 0.20, 1.0), axis='Y', segments=6)
+    make_lathe("Radio_Tape_Roll", (cx + 0.33, cy + 0.10, T), [(0.022, 0.0), (0.042, 0.0), (0.042, 0.02), (0.022, 0.02)], tape, segments=12)
+    for bi in range(2):
+        make_cyl(f"Radio_Battery_{bi}", (cx + 0.30 + bi * 0.035, cy - 0.13, T + 0.012), 0.012, 0.05, (0.72, 0.52, 0.18, 1.0), axis='Y', segments=8)
+    make_wall_outlet("Outlet_Radio", (cx - 0.55, PART_Y + 0.04), axis='X', face_sign=-1, z=0.30, aged=True)   # the kit assumes a 20 cm wall; the partition is 12
+    # the wool cap on its peg by the entry ("He pulled the wool cap over
+    # his hair and the coat over the wool cap", ch9)
+    py = ey_hook() + 0.36
+    make_box("Cap_Peg", (XE - 0.03, py, 1.70), (0.05, 0.02, 0.02), COL_STEEL)
+    make_blob("Wool_Cap", (XE - 0.07, py, 1.63), 0.085, (0.30, 0.34, 0.40, 1.0), noise=0.10, seed=4, squash=0.85)
+
+
+def build_closet_2026_11():
+    """THE CLOSET (ch18: "He went back to the bedroom ... He went to the
+    closet. His own wax canvas coat was on the hook. He patted the right
+    outside pocket."). East of the bedroom doorway against the
+    partition: a built-in 1.5 m wide, one leaf standing open on the coat
+    on its hook, the other shut on the rail."""
+    wood = (0.70, 0.70, 0.64, 1.0)       # painted, like the walls
+    y0 = PART_Y + 0.06                    # the partition's bedroom face
+    x0, x1, dep, H = 2.50, XE, 0.62, 2.10
+    make_box("Closet_Side_W", (x0 + 0.02, y0 + dep / 2.0, H / 2.0), (0.04, dep, H), wood)
+    make_box("Closet_Top", ((x0 + x1) / 2.0, y0 + dep / 2.0, H + 0.02), (x1 - x0, dep, 0.04), wood)
+    make_box("Closet_Fascia", ((x0 + x1) / 2.0, y0 + dep - 0.02, (H + 0.04 + CEIL) / 2.0), (x1 - x0, 0.04, CEIL - H - 0.04), wood)
+    make_box("Closet_Mullion", ((x0 + 0.04 + x1) / 2.0, y0 + dep - 0.02, H / 2.0), (0.04, 0.04, H), wood)
+    lw = (x1 - x0 - 0.04 - 0.04) / 2.0
+    # the E leaf, shut
+    make_box("Closet_Wardrobe_Door_E", (x1 - lw / 2.0, y0 + dep - 0.015, H / 2.0), (lw - 0.01, 0.03, H - 0.03), (0.66, 0.66, 0.60, 1.0))
+    make_cyl("Closet_Wardrobe_Door_E_Knob", ((x0 + 0.04 + x1) / 2.0 + 0.07, y0 + dep + 0.012, 1.0), 0.016, 0.03, P.METAL_BLACK, axis='Y', segments=8)
+    # the W leaf, standing open: hinged at the side panel, swung into the room
+    a = math.radians(8.0)
+    hx, hy = x0 + 0.05, y0 + dep
+    make_rot_box("Closet_Wardrobe_Door_W", (hx - math.sin(a) * lw / 2.0, hy + math.cos(a) * lw / 2.0, H / 2.0), (0.03, lw - 0.01, H - 0.03),
+                 (0.66, 0.66, 0.60, 1.0), yaw=a)
+    # inside: the shelf, the rail and what hangs on it behind the shut leaf
+    make_box("Closet_Shelf", ((x0 + 0.04 + x1) / 2.0, y0 + 0.20, 1.86), (x1 - x0 - 0.04, 0.40, 0.02), wood)
+    make_cyl("Closet_Rail", ((x0 + 0.04 + x1) / 2.0, y0 + 0.30, 1.72), 0.013, x1 - x0 - 0.04, COL_STEEL, axis='X', segments=6)
+    for gi, (gx, col, ln) in enumerate(((3.50, (0.34, 0.38, 0.44, 1.0), 0.86), (3.68, (0.62, 0.58, 0.50, 1.0), 0.78), (3.86, (0.28, 0.30, 0.26, 1.0), 0.92))):
+        make_box(f"Closet_Hanger_{gi}", (gx, y0 + 0.30, 1.70), (0.02, 0.36, 0.03), (0.40, 0.30, 0.20, 1.0))
+        make_box(f"Closet_Garment_{gi}", (gx, y0 + 0.30, 1.685 - ln / 2.0), (0.06, 0.42, ln), col)
+    for bi in range(2):
+        make_box(f"Closet_Shelf_Box_{bi}", (3.05 + bi * 0.50, y0 + 0.20, 1.87 + 0.09), (0.40, 0.30, 0.18), ((0.62, 0.52, 0.38, 1.0), (0.52, 0.46, 0.38, 1.0))[bi])
+    # THE HOOK and the wax canvas coat, on the back wall behind the open leaf
+    kx = 2.98
+    make_box("Closet_Coat_Hook", (kx, y0 + 0.03, 1.66), (0.02, 0.06, 0.02), COL_STEEL)
+    # pale waxed khaki: at (0.40, 0.34, 0.22) and again at (0.60, 0.50, 0.31) the
+    # coat was a black cut-out in the night view — a third of the wall's light
+    # in linear terms, and the night's painted pass crushes that to nothing
+    wax = (0.78, 0.68, 0.46, 1.0)
+    make_chamfer_box("Closet_Wax_Coat", (kx, y0 + 0.085, 1.17), (0.52, 0.10, 0.96), wax)
+    make_box("Closet_Wax_Coat_Collar", (kx, y0 + 0.10, 1.63), (0.24, 0.09, 0.07), (0.50, 0.36, 0.22, 1.0))
+    for si, sx in enumerate((-0.30, 0.30)):
+        make_chamfer_box(f"Closet_Wax_Coat_Sleeve_{si}", (kx + sx, y0 + 0.085, 1.22), (0.11, 0.09, 0.70), (0.72, 0.62, 0.41, 1.0))
+    for pi_, px in enumerate((-0.14, 0.14)):
+        make_box(f"Closet_Wax_Coat_Pocket_{pi_}", (kx + px, y0 + 0.138, 0.95), (0.16, 0.008, 0.17), (0.68, 0.58, 0.38, 1.0))
+        make_box(f"Closet_Wax_Coat_Flap_{pi_}", (kx + px, y0 + 0.144, 1.02), (0.17, 0.008, 0.05), (0.60, 0.50, 0.32, 1.0))
+    # the notebook's corner out of the right outside pocket
+    make_box("Closet_Pocket_Notebook", (kx - 0.14, y0 + 0.132, 1.045), (0.08, 0.012, 0.05), (0.26, 0.17, 0.11, 1.0))
+    for bi, bx in enumerate((-0.10, 0.08)):
+        make_box(f"Closet_Shoe_{bi}", (kx + bx, y0 + 0.22, 0.05), (0.10, 0.27, 0.10), (0.20, 0.17, 0.14, 1.0))
+
+
 def build_bedroom():
     # the raised platform bed on turned posts, head at the W wall, crates under it
     bx, by, bw, bd = BED_X, BED_Y, 2.06, 1.44
@@ -303,7 +420,7 @@ def build_bedroom():
     make_box("Wool_Socks", (bx + bw / 2.0 + 0.25, by - 0.55, 0.012), (0.20, 0.14, 0.02), (0.62, 0.58, 0.50, 1.0))
     make_cyl("Rug", (bx + bw / 2.0 + 0.35, by - 0.30, 0.010), 0.62, 0.006, COL_ACCENT, segments=20)
     # the dresser on the E wall: the change bowl and the truck keys
-    dy = 5.6
+    dy = 6.2      # clear of the closet's leaves (draft 5: it stood 0.47 m in front of them at 5.6)
     make_chamfer_box("Dresser", (XE - 0.24, dy, 0.48), (0.46, 1.10, 0.96), COL_WOOD)
     for di in range(3):
         make_box(f"Dresser_Drawer_{di}", (XE - 0.475, dy, 0.24 + di * 0.27), (0.01, 0.98, 0.22), (0.34, 0.24, 0.16, 1.0))
@@ -369,9 +486,26 @@ def build_outside():
         make_box(f"Out_Bakery_Window_{wi}", (bwx + 0.16, wy, gz + 4.5), (0.04, 1.2, 1.0), (0.30, 0.34, 0.40, 1.0))
     make_box("Out_Alley_Bin", (bwx + 0.9, 4.6, gz + 0.55), (1.1, 0.8, 1.1), (0.26, 0.36, 0.30, 1.0))
     make_box("Out_Alley_Puddle", (XW - 3.0, 2.4, gz + 0.03), (1.6, 0.9, 0.01), (0.36, 0.38, 0.44, 1.0))
-    make_box("Out_S_Ground", (0.0, -4.0, -3.03), (16.0, 7.0, 0.05), (0.34, 0.34, 0.36, 1.0))
-    make_box("Out_S_Roofline", (0.0, -7.5, -1.0), (18.0, 0.4, 4.4), (0.44, 0.40, 0.36, 1.0))
-    make_box("Out_S_Sea", (0.0, -14.0, 1.4), (40.0, 0.3, 0.9), (0.42, 0.52, 0.60, 1.0))
+    # S: the town (draft 5). "South was the direction of Cape Perpetua ...
+    # the tower on the bluff above old-Yachats. The face was looking out at
+    # the town." Roofs stepping down from the window, the bluff, the tower
+    # with its lit top floor, the cape past it. (It was one flat roofline
+    # and a band of sea; the sea is west.)
+    make_box("Out_S_Ground", (0.0, -22.0, -3.03), (70.0, 44.0, 0.05), (0.30, 0.32, 0.30, 1.0))
+    make_box("Out_S_Street", (0.0, -5.0, -3.0), (70.0, 5.0, 0.03), (0.24, 0.24, 0.26, 1.0))
+    roofs = ((0.36, 0.30, 0.26, 1.0), (0.30, 0.32, 0.34, 1.0), (0.40, 0.34, 0.28, 1.0), (0.28, 0.30, 0.28, 1.0))
+    sides = ((0.62, 0.58, 0.52, 1.0), (0.54, 0.44, 0.36, 1.0), (0.58, 0.60, 0.56, 1.0), (0.50, 0.50, 0.46, 1.0))
+    for hi, (hx_, hy_, hw_, hd_, hh_) in enumerate(((-7.5, -10.5, 6.0, 5.0, 3.4), (-0.6, -10.0, 5.2, 4.6, 2.6), (5.4, -11.0, 6.4, 5.2, 3.8),
+                                                  (-11.0, -19.0, 7.0, 5.0, 2.4), (-3.2, -18.5, 6.0, 5.0, 1.8), (3.6, -19.5, 5.6, 4.8, 2.2),
+                                                  (10.5, -18.5, 6.5, 5.0, 2.8), (-6.0, -27.0, 8.0, 5.0, 1.2), (4.5, -27.5, 9.0, 5.0, 1.4))):
+        make_box(f"Out_S_House_{hi}", (hx_, hy_, -3.0 + hh_ / 2.0), (hw_, hd_, hh_), sides[hi % 4])
+        make_prism(f"Out_S_House_{hi}_Roof", (hx_, hy_, -3.0 + hh_), [(-hw_ / 2.0 - 0.2, 0.0), (hw_ / 2.0 + 0.2, 0.0), (0.0, 1.3)], hd_ + 0.3, roofs[hi % 4], axis="Y")
+        make_box(f"Out_S_House_{hi}_Window", (hx_ + hw_ * 0.18, hy_ + hd_ / 2.0 + 0.02, -3.0 + hh_ - 0.9), (0.7, 0.04, 0.8), (0.86, 0.72, 0.44, 1.0) if hi % 3 == 0 else (0.22, 0.26, 0.32, 1.0))
+    make_box("Out_S_Bluff", (6.0, -46.0, 0.2), (46.0, 10.0, 6.4), (0.16, 0.24, 0.20, 1.0))
+    make_box("Out_S_Bluff_Low", (-12.0, -42.0, -1.2), (40.0, 8.0, 3.6), (0.20, 0.28, 0.22, 1.0))
+    make_box("Out_S_Tower", (9.0, -44.0, 7.2), (1.6, 1.6, 7.6), (0.50, 0.50, 0.48, 1.0))
+    make_box("Out_S_Tower_Top", (9.0, -44.0, 11.3), (1.9, 1.9, 0.9), (0.42, 0.62, 0.48, 1.0))
+    make_box("Out_S_Cape", (-22.0, -70.0, 2.5), (60.0, 12.0, 11.0), (0.20, 0.26, 0.28, 1.0))
     make_box("Out_N_Ground", (0.0, ROOM_D + 4.0, -3.03), (16.0, 7.0, 0.05), (0.30, 0.36, 0.26, 1.0))
     make_box("Out_N_House", (1.5, ROOM_D + 4.5, -0.6), (7.0, 3.2, 4.8), (0.62, 0.58, 0.52, 1.0))
     make_prism("Out_N_Roof", (1.5, ROOM_D + 4.5, 1.8), [(-3.8, 0.0), (3.8, 0.0), (0.0, 1.6)], 3.4, (0.32, 0.26, 0.22, 1.0), axis="Y")
@@ -385,7 +519,9 @@ def main():
     build_kitchen_run()
     build_kitchen_table()
     build_living()
+    build_radio_2026_11()
     build_bedroom()
+    build_closet_2026_11()
     build_ceiling()
     build_wear()
     build_outside()
