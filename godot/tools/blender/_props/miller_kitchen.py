@@ -42,7 +42,20 @@ THE ROOM (blender, +Y north = the street side, z up):
     kitchen, the coffee table, the armchair, the TV on its console, the
     bookshelf, the floor lamp, the window onto the backyard.
 
-Draft 2 of both locales. Draft 3 targets: the upstairs landing seen from
+DRAFT 3 (2026-11-10, the backgrounds queue: 800 + 259 lines play here):
+the bones the text names and the house lacked — THE MUDROOM and the way to
+the garage (ch4, ch3), the garage attached on the street side instead of
+across a drive, THE STAIR to the floor above (it stopped 1.7 m up), THE HALL
+CLOSET under it (ch5), the drying rack (ch3), the back porch and the wicker
+chair outside the back door (ch15), the yard's far edge. Draft 4 targets:
+the upstairs landing at the stair's head (it rises into a dark well); the
+garage behind its door for ch1 ("Sam's father is in the garage"); the front
+door's glass ("Through the front-door glass she can see who is on the
+porch", ch22) and a porch beyond it; the family room's evening practicals;
+the D2 pass (every wall is one flat tone); the three sideboard photos as
+upright frames so they can take pictures; a mudroom window.
+
+Draft 2 of both locales (2026-10-07). Its draft 3 targets were: the upstairs landing seen from
 the stair's foot; the family room's evening practicals; Sammy's school
 things on the island; the sedan's two silhouettes.
 """
@@ -67,6 +80,8 @@ WIN_N = (SINK_X, 1.55, 1.50, 1.05)            # the sink window: x, z, w, h
 WIN_E = (3.40, 1.55, 1.60, 1.15)              # the east window: y, z, w, h
 DOOR_E_Y = 0.95
 DOOR_HALL_Y = 1.60
+MUD_DOOR_Y = 5.30                             # the doorway to the mudroom (2026-11-10)
+MUD_X1, MUD_Y0 = 6.8, 4.2                     # the mudroom's E and S wall lines (its N wall is the house's, Y1)
 
 PAL = {"wall": (0.93, 0.90, 0.82, 1.0), "baseboard": (0.92, 0.91, 0.87, 1.0)}
 PAL_FR = {"wall": (0.82, 0.80, 0.72, 1.0), "baseboard": (0.92, 0.91, 0.87, 1.0)}
@@ -87,7 +102,8 @@ def build_shell():
     make_wall_with_openings("Wall_N", (0.0, Y1, 0), length=X1 - X0 + 0.4, height=CEIL, axis='X', palette=PAL,
                             baseboard_face_sign=-1, openings=[(WIN_N[0], WIN_N[1], WIN_N[2], WIN_N[3])])
     make_wall_with_openings("Wall_E", (X1, (Y0 + Y1) / 2.0, 0), length=Y1 - Y0 + 0.4, height=CEIL, axis='Y', palette=PAL,
-                            baseboard_face_sign=-1, openings=[(WIN_E[0], WIN_E[1], WIN_E[2], WIN_E[3]), (DOOR_E_Y, 1.04, 0.90, 2.08)])
+                            baseboard_face_sign=-1, openings=[(WIN_E[0], WIN_E[1], WIN_E[2], WIN_E[3]), (DOOR_E_Y, 1.04, 0.90, 2.08),
+                                                              (MUD_DOOR_Y, 1.05, 0.90, 2.10)])
     make_wall_with_openings("Wall_W", (X0, (Y0 + Y1) / 2.0, 0), length=Y1 - Y0 + 0.4, height=CEIL, axis='Y', palette=PAL,
                             baseboard_face_sign=+1, openings=[(DOOR_HALL_Y, 1.05, 0.90, 2.10)])
     make_wall_with_openings("Wall_S", (0.0, Y0, 0), length=X1 - X0 + 0.4, height=CEIL, axis='X', palette=PAL,
@@ -117,8 +133,17 @@ def build_shell():
         make_box(f"Back_Door_Casing_{'S' if sgn < 0 else 'N'}", (XE - 0.01, DOOR_E_Y + sgn * 0.49, 1.06), (0.02, 0.08, 2.12), TRIM)
     make_box("Hall_Doorway_Casing_Head", (XW + 0.01, DOOR_HALL_Y, 2.15), (0.02, 1.06, 0.10), TRIM)
     make_box("Back_Door_Casing_Head", (XE - 0.01, DOOR_E_Y, 2.13), (0.02, 1.06, 0.10), TRIM)
-    make_box("Back_Door", (X1, DOOR_E_Y, 1.04), (0.05, 0.86, 2.06), (0.92, 0.91, 0.87, 1.0))
-    make_box("Back_Door_Window", (X1 - 0.027, DOOR_E_Y, 1.55), (0.004, 0.50, 0.70), (0.62, 0.70, 0.74, 1.0))
+    # (2026-11-10) the back door's light is GLASS: the leaf was a solid slab
+    # with a grey pane laid on it, and the back porch ("Bianca is at the back
+    # porch with the wicker chair ... looks up when Sam comes in", ch15) could
+    # not be seen from the kitchen. A lower panel, two stiles and a top rail
+    # round a pane LocaleGlass makes clear.
+    door_col = (0.92, 0.91, 0.87, 1.0)
+    make_box("Back_Door", (X1, DOOR_E_Y, 0.605), (0.05, 0.86, 1.19), door_col)                    # z 0.01 .. 1.20
+    make_box("Back_Door_Rail_Top", (X1, DOOR_E_Y, 1.985), (0.05, 0.86, 0.17), door_col)            # z 1.90 .. 2.07
+    for sgn in (-1, 1):
+        make_box(f"Back_Door_Stile_{sgn:+d}", (X1, DOOR_E_Y + sgn * 0.34, 1.55), (0.05, 0.18, 0.70), door_col)
+    make_box("Back_Door_Window", (X1, DOOR_E_Y, 1.55), (0.006, 0.50, 0.70), (0.62, 0.70, 0.74, 0.28))
     make_cyl("Back_Door_Knob", (X1 - 0.045, DOOR_E_Y - 0.33, 1.00), 0.028, 0.04, (0.70, 0.66, 0.58, 1.0), axis='X', segments=8)
     # THE GREEN TERRYCLOTH ROBE on its hook by the back door
     make_cyl("Robe_Hook", (XE - 0.03, DOOR_E_Y + 0.80, 1.62), 0.015, 0.06, (0.30, 0.28, 0.26, 1.0), axis='X', segments=6)
@@ -184,6 +209,15 @@ def build_north_run():
     make_box("Paper_Towel_Base", (0.05, YN - 0.20, TOP_Z + 0.006), (0.14, 0.14, 0.012), STEEL)
     make_cyl("Paper_Towel_Roll", (0.05, YN - 0.20, TOP_Z + 0.14), 0.06, 0.26, (0.96, 0.94, 0.90, 1.0), segments=10)
     make_box("Dish_Soap", (SINK_X + 0.36, YN - 0.08, TOP_Z + 0.09), (0.05, 0.035, 0.18), (0.30, 0.62, 0.40, 1.0))
+    # THE DRYING RACK (2026-11-10): "She clears her bowl. She puts it in the
+    # drying rack next to her father's mug" (ch3) — there was no rack
+    rx, ry = 0.42, YN - 0.32
+    make_box("Drying_Rack_Tray", (rx, ry, TOP_Z + 0.006), (0.40, 0.30, 0.012), (0.80, 0.80, 0.78, 1.0))
+    for k, dy in enumerate((-0.13, 0.13)):
+        make_tube(f"Drying_Rack_Rail_{k}", [(rx - 0.19, ry + dy, TOP_Z + 0.012), (rx - 0.19, ry + dy, TOP_Z + 0.085),
+                                            (rx + 0.19, ry + dy, TOP_Z + 0.085), (rx + 0.19, ry + dy, TOP_Z + 0.012)], 0.005, STEEL, segments=5)
+    for k in range(5):
+        make_box(f"Drying_Rack_Wire_{k}", (rx - 0.16 + k * 0.045, ry, TOP_Z + 0.050), (0.004, 0.26, 0.070), STEEL)
     make_box("Fruit_Bowl_Counter_Base", (1.00, YN - 0.30, TOP_Z + 0.005), (0.01, 0.01, 0.01), (0.90, 0.88, 0.84, 1.0))
     make_taper_cyl("Fruit_Bowl_Counter", (0.95, YN - 0.30, TOP_Z + 0.04), 0.07, 0.14, 0.08, (0.88, 0.86, 0.80, 1.0), segments=12)
     for k, (fx, fy, col) in enumerate(((-0.04, 0.0, (0.94, 0.70, 0.20, 1.0)), (0.05, 0.03, (0.80, 0.20, 0.18, 1.0)), (0.0, -0.05, (0.56, 0.70, 0.26, 1.0)))):
@@ -265,17 +299,47 @@ def build_west_and_hall():
     make_box("Hall_Coat_Rail", (HALL_X + 0.115, 5.40, 1.65), (0.03, 0.90, 0.08), OAK_DK)
     for k, col in enumerate(((0.30, 0.34, 0.42, 1.0), (0.62, 0.46, 0.30, 1.0), (0.24, 0.24, 0.26, 1.0))):
         make_box(f"Hall_Coat_{k}", (HALL_X + 0.18, 5.10 + k * 0.30, 1.22), (0.12, 0.26, 0.80), col)
-    for k in range(9):
-        y = 0.80 - k * 0.28
-        h = 0.19 * (k + 1)
-        make_box(f"Stair_Tread_{k}", (HALL_X + 0.60, y, h / 2.0), (0.96, 0.28, h), OAK)
-        make_box(f"Stair_Tread_{k}_Nose", (HALL_X + 0.60, y + 0.13, h - 0.012), (0.98, 0.04, 0.025), OAK_DK)
+    # (2026-11-10) THE STAIR REACHES THE FLOOR ABOVE. It was nine risers that
+    # stopped 1.7 m up under a flat ceiling, a level bar for a handrail and
+    # balusters that went negative — and the text lives on this stair ("He
+    # comes downstairs at 07:14", "The sound of feet on the floor above",
+    # "a voice calls up the stairs"). Fifteen risers of 18.3 cm on a 27 cm
+    # going, the rail raked with them up to the ceiling, the well a dark
+    # opening over the upper flight; and under the upper flight THE HALL
+    # CLOSET ("the album in the hall closet", ch5).
+    RISE, GOING, NST = CEIL / 15.0, 0.27, 15
+    sx_e = HALL_X + 1.08                               # the stair's open (east) face
+    for k in range(NST):
+        y = 0.80 - k * GOING
+        h = RISE * (k + 1)
+        make_box(f"Stair_Tread_{k}", (HALL_X + 0.60, y, h / 2.0), (0.96, GOING + 0.01, h), OAK)
+        make_box(f"Stair_Tread_{k}_Nose", (HALL_X + 0.60, y + GOING / 2.0, h - 0.012), (0.98, 0.04, 0.025), OAK_DK)
+        # the spandrel: the flight's open side is a painted wall up to the
+        # treads, not a stack of oak blocks
+        make_box(f"Stair_Spandrel_{k}", (sx_e + 0.006, y, (h - 0.03) / 2.0), (0.012, GOING + 0.01, h - 0.03), PAL_FR["wall"])
     make_box("Stair_Newel", (HALL_X + 1.14, 1.00, 0.60), (0.09, 0.09, 1.20), TRIM)
-    make_rot_box("Stair_Handrail", (HALL_X + 1.14, -0.30, 1.48), (0.05, 2.70, 0.06), OAK_DK, roll=0.0, pitch=0.0, yaw=0.0)
-    for k in range(8):
-        y = 0.70 - k * 0.28
-        z0 = 0.19 * (k + 1)
-        make_box(f"Stair_Baluster_{k}", (HALL_X + 1.14, y, z0 + (1.45 - z0) / 2.0), (0.025, 0.025, 1.45 - z0), TRIM)
+    rake = math.atan2(RISE, GOING)
+    # the rail from the newel (y 0.95, z 1.13) up to the ceiling line
+    run_y = (CEIL - 0.04 - 1.13) / math.tan(rake)
+    make_rot_box("Stair_Handrail", (HALL_X + 1.14, 0.95 - run_y / 2.0, (1.13 + CEIL - 0.04) / 2.0),
+                 (0.05, run_y / math.cos(rake), 0.06), OAK_DK, pitch=-rake)
+    for k in range(NST):
+        y = 0.80 - k * GOING
+        z0 = RISE * (k + 1)
+        top = min(z0 + 0.90, CEIL - 0.06)
+        if top - z0 > 0.25:
+            make_box(f"Stair_Baluster_{k}", (HALL_X + 1.14, y, (z0 + top) / 2.0), (0.025, 0.025, top - z0), TRIM)
+    # the well: the ceiling opens over the flight where the headroom runs out
+    make_box("Stairwell_Opening", (HALL_X + 0.60, -1.70, CEIL - 0.004), (1.00, 2.90, 0.008), (0.16, 0.15, 0.15, 1.0))
+    # the hall closet under the upper flight (treads 12..14 stand 2.4 m and more)
+    cy = -2.62
+    make_box("Hall_Closet_Door", (sx_e + 0.024, cy, 0.96), (0.024, 0.66, 1.92), KK.WHITE_SHAKER)
+    for k, (dz, hh) in enumerate(((1.40, 0.86), (0.48, 0.70))):
+        make_box(f"Hall_Closet_Door_Panel_{k}", (sx_e + 0.038, cy, dz), (0.004, 0.50, hh), KK.WHITE_SHAKER_DK)
+    for sgn in (-1, 1):
+        make_box(f"Hall_Closet_Casing_{sgn:+d}", (sx_e + 0.022, cy + sgn * 0.37, 0.98), (0.020, 0.07, 1.96), TRIM)
+    make_box("Hall_Closet_Casing_Head", (sx_e + 0.022, cy, 1.99), (0.020, 0.81, 0.07), TRIM)
+    make_cyl("Hall_Closet_Knob", (sx_e + 0.062, cy + 0.25, 1.00), 0.025, 0.04, KK.NICKEL, axis='X', segments=8)
     for k in range(3):
         make_box(f"Hall_Photo_{k}_Frame", (HALL_X + 0.112, 2.60 + k * 0.55, 1.55), (0.024, 0.34, 0.42), OAK_DK)
         make_box(f"Hall_Photo_{k}", (HALL_X + 0.126, 2.60 + k * 0.55, 1.55), (0.004, 0.28, 0.34),
@@ -382,14 +446,38 @@ def build_outside(sedan):
         make_box("White_Sedan_Glass", (-1.9, 16.24, 1.13), (2.00, 0.02, 0.32), (0.22, 0.26, 0.30, 1.0))
         for wi, (wx2, wy2) in enumerate(((-3.0, 16.12), (-0.2, 16.12), (-3.0, 17.88), (-0.2, 17.88))):
             make_cyl(f"White_Sedan_Wheel_{wi}", (wx2, wy2, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
-    # east: the drive, the garage with its one lit window
-    make_box("Thru_E_Driveway", (7.0, 3.5, -0.03), (4.6, 12.0, 0.05), (0.56, 0.55, 0.52, 1.0))
+    # east (2026-11-10): the garage is ATTACHED, forward on the street side,
+    # reached through the mudroom ("He goes to the mudroom ... Sam hears him
+    # leave through the garage. The garage door motor hums", ch4) — it was a
+    # separate building across a drive. From the east window and the back
+    # door: the mudroom's and the garage's south wall running east, its one
+    # window lit; the side yard; the back porch and the wicker chair ("Bianca
+    # is at the back porch with the wicker chair", ch15); a fence, the
+    # neighbour's wall past it.
+    siding = (0.86, 0.84, 0.78, 1.0)
+    make_box("Thru_E_Lawn_Near", (6.85, -1.25, -0.04), (4.3, 10.5, 0.05), grass)          # x 4.7 .. 9.0, y -6.5 .. 4.0
     make_box("Thru_E_Lawn", (12.0, 3.0, -0.04), (6.0, 20.0, 0.05), grass)
-    make_box("Thru_E_Garage_Wall", (9.6, 3.5, 1.5), (0.25, 7.0, 3.0), (0.86, 0.84, 0.78, 1.0))
-    make_box("Thru_E_Garage_Roofline", (9.6, 3.5, 3.2), (0.6, 7.4, 0.4), (0.40, 0.38, 0.35, 1.0))
-    make_box("Thru_E_Garage_Window", (9.46, 3.4, 1.6), (0.03, 0.9, 0.7), (0.95, 0.85, 0.55, 1.0))
-    make_box("Thru_E_Garage_Mullion", (9.45, 3.4, 1.6), (0.02, 0.06, 0.72), (0.30, 0.30, 0.34, 1.0))
-    make_box("Thru_E_Step", (X1 + 0.35, DOOR_E_Y, -0.02), (0.50, 1.00, 0.06), (0.62, 0.60, 0.56, 1.0))
+    make_box("Thru_E_Lawn_Far", (19.0, 3.0, -0.04), (8.0, 20.0, 0.05), grass)
+    make_box("Thru_E_Mud_Siding", ((X1 + 0.1 + MUD_X1 + 0.1) / 2.0, MUD_Y0 - 0.115, 1.5), (MUD_X1 - X1, 0.03, 3.0), siding)   # from the house wall's outer face
+    make_box("Thru_E_Garage_Wall", (10.4, MUD_Y0, 1.5), (7.0, 0.25, 3.0), siding)          # x 6.9 .. 13.9
+    make_box("Thru_E_Garage_Roofline", (9.3, MUD_Y0 - 0.10, 3.2), (9.6, 0.6, 0.4), (0.40, 0.38, 0.35, 1.0))
+    make_box("Thru_E_Garage_Window", (9.2, MUD_Y0 - 0.14, 1.6), (0.9, 0.03, 0.7), (0.95, 0.85, 0.55, 1.0))
+    make_box("Thru_E_Garage_Mullion", (9.2, MUD_Y0 - 0.16, 1.6), (0.06, 0.02, 0.72), (0.30, 0.30, 0.34, 1.0))
+    make_box("Thru_E_Fence", (15.0, 3.0, 0.90), (0.05, 20.0, 1.80), (0.62, 0.52, 0.40, 1.0))
+    make_box("Thru_E_Neighbor_Wall", (19.5, 2.0, 1.8), (6.0, 9.0, 3.6), (0.80, 0.82, 0.78, 1.0))
+    make_box("Thru_E_Neighbor_Roof", (19.5, 2.0, 4.0), (6.6, 9.6, 0.8), (0.36, 0.32, 0.28, 1.0))
+    # the back porch: a slab outside the back door, the wicker chair, its little table
+    make_box("Back_Porch_Slab", (5.85, 0.80, -0.02), (2.3, 3.0, 0.06), (0.62, 0.60, 0.56, 1.0))
+    wicker = (0.76, 0.64, 0.44, 1.0)
+    wicker_dk = (0.62, 0.50, 0.32, 1.0)
+    wcx, wcy = 5.95, 1.55
+    make_chamfer_box("Porch_Wicker_Seat", (wcx, wcy, 0.24), (0.62, 0.60, 0.44), wicker, chamfer=0.03)
+    make_chamfer_box("Porch_Wicker_Cushion", (wcx - 0.02, wcy, 0.49), (0.52, 0.52, 0.07), (0.56, 0.62, 0.52, 1.0), chamfer=0.025)
+    make_chamfer_box("Porch_Wicker_Back", (wcx + 0.27, wcy, 0.72), (0.10, 0.62, 0.60), wicker_dk, chamfer=0.03)
+    for sgn in (-1, 1):
+        make_chamfer_box(f"Porch_Wicker_Arm_{sgn:+d}", (wcx, wcy + sgn * 0.30, 0.56), (0.56, 0.08, 0.22), wicker_dk, chamfer=0.025)
+    make_cyl("Porch_Table_Top", (6.00, 2.08, 0.46), 0.20, 0.03, wicker_dk, segments=12)
+    make_cyl("Porch_Table_Post", (6.00, 2.08, 0.225), 0.04, 0.45, wicker_dk, segments=8)
     # south: the backyard past the family room window
     make_box("Thru_S_Lawn", (0.0, FR_Y - 6.0, -0.04), (22.0, 11.8, 0.05), grass)
     make_box("Thru_S_Fence", (0.0, FR_Y - 9.0, 0.90), (22.0, 0.05, 1.80), (0.62, 0.52, 0.40, 1.0))
@@ -446,6 +534,9 @@ def dress_family():
     make_cyl("Notebook_Spiral_Coil", (TX - 0.50 - 0.10, TY - 0.35, 0.779), 0.006, 0.26, (0.70, 0.70, 0.72, 1.0), axis='Y', segments=6)
     top = 0.77
     dress_french_toast()
+    # her cereal bowl and her father's mug in the drying rack (ch3)
+    make_cyl("Rack_Mug_Dad", (0.52, YN - 0.36, TOP_Z + 0.012 + 0.048), 0.04, 0.095, (0.24, 0.30, 0.44, 1.0), segments=10)
+    make_taper_cyl("Rack_Bowl", (0.50, YN - 0.24, TOP_Z + 0.012 + 0.035), 0.045, 0.075, 0.07, (0.92, 0.90, 0.84, 1.0), segments=12)
     # Mike's coffee and his phone at the counter by the coffee maker
     make_cyl("Mike_Coffee_Mug", (-2.95, YN - 0.42, TOP_Z + 0.048), 0.04, 0.095, (0.30, 0.36, 0.52, 1.0), segments=10)
     make_box("Phone_Cell", (-2.75, YN - 0.46, TOP_Z + 0.006), (0.075, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
@@ -507,6 +598,82 @@ def build_wear_and_infra():
     make_wall_outlet("Outlet_FR", (-1.4, FR_Y), axis='X', face_sign=1, z=0.30)
 
 
+def build_mudroom():
+    """THE MUDROOM (2026-11-10). "He stands. He kisses her mother on the
+    temple. He squeezes Sam's shoulder on the way past. He goes to the
+    mudroom. Sam hears him put on his uniform. Sam hears him leave through
+    the garage. The garage door motor hums. The garage door closes." (ch4)
+    "He leaves through the garage." (ch3) There was no mudroom and no way to
+    a garage: the back door let onto a drive. A cased doorway in the E wall
+    north of the window; beyond it a tiled room 2.2 x 2.7 with the bench,
+    the hooks his uniform shirt and duty belt hang on, his boots under the
+    bench, and in its far wall the door to the garage."""
+    cx = (X1 + 0.1 + MUD_X1 - 0.1) / 2.0                # 5.65
+    cy = (MUD_Y0 + 0.1 + YN) / 2.0                      # 5.60
+    make_box("Mud_Floor", (cx, cy, -0.008), (MUD_X1 - X1, YN - MUD_Y0 + 0.1, 0.02), (0.50, 0.50, 0.48, 1.0))
+    for k in range(4):                                  # the tile's joints
+        make_box(f"Mud_Floor_Joint_X_{k}", (4.95 + k * 0.50, cy, 0.0025), (0.008, YN - MUD_Y0 - 0.2, 0.001), (0.38, 0.38, 0.37, 1.0))
+    for k in range(5):
+        make_box(f"Mud_Floor_Joint_Y_{k}", (cx, 4.55 + k * 0.50, 0.0025), (MUD_X1 - X1 - 0.2, 0.008, 0.001), (0.38, 0.38, 0.37, 1.0))
+    make_wall("Mud_Wall_S", (cx, MUD_Y0, 0), length=MUD_X1 - X1 + 0.2, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Mud_Wall_N", (cx, Y1, 0), length=MUD_X1 - X1 + 0.2, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
+    make_wall("Mud_Wall_E", (MUD_X1, (MUD_Y0 + Y1) / 2.0, 0), length=Y1 - MUD_Y0 + 0.2, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=-1)
+    make_box("Mud_Ceil", (cx, cy, CEIL + 0.04), (MUD_X1 - X1 + 0.2, Y1 - MUD_Y0 + 0.2, 0.08), (0.96, 0.95, 0.92, 1.0))
+    # the doorway's casing, both faces of the E wall, and its threshold
+    for sgn in (-1, 1):
+        make_box(f"Mud_Doorway_Casing_{'S' if sgn < 0 else 'N'}", (XE - 0.01, MUD_DOOR_Y + sgn * 0.49, 1.06), (0.02, 0.08, 2.12), TRIM)
+        make_box(f"Mud_Doorway_Casing_Out_{'S' if sgn < 0 else 'N'}", (X1 + 0.11, MUD_DOOR_Y + sgn * 0.49, 1.06), (0.02, 0.08, 2.12), TRIM)
+    make_box("Mud_Doorway_Casing_Head", (XE - 0.01, MUD_DOOR_Y, 2.15), (0.02, 1.06, 0.10), TRIM)
+    make_box("Mud_Doorway_Casing_Out_Head", (X1 + 0.11, MUD_DOOR_Y, 2.15), (0.02, 1.06, 0.10), TRIM)
+    make_box("Mud_Threshold", (X1, MUD_DOOR_Y, 0.006), (0.22, 0.88, 0.012), OAK_DK)
+    make_light_switch("Switch_Mud", (X1, MUD_DOOR_Y - 0.66), axis='Y', face_sign=-1, z=1.20)
+    # the door to the garage, in the far wall, straight through the doorway
+    gx = MUD_X1 - 0.1
+    make_box("Garage_Door_Leaf", (gx - 0.02, MUD_DOOR_Y, 1.03), (0.04, 0.86, 2.06), (0.90, 0.89, 0.85, 1.0))
+    for k, (dy, dz, hh) in enumerate(((-0.20, 1.50, 0.78), (0.20, 1.50, 0.78), (-0.20, 0.55, 0.62), (0.20, 0.55, 0.62))):
+        make_box(f"Garage_Door_Panel_{k}", (gx - 0.042, MUD_DOOR_Y + dy, dz), (0.004, 0.30, hh), (0.82, 0.81, 0.77, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"Garage_Door_Casing_{sgn:+d}", (gx - 0.01, MUD_DOOR_Y + sgn * 0.47, 1.06), (0.02, 0.08, 2.12), TRIM)
+    make_box("Garage_Door_Casing_Head", (gx - 0.01, MUD_DOOR_Y, 2.14), (0.02, 1.02, 0.08), TRIM)
+    make_cyl("Garage_Door_Knob", (gx - 0.07, MUD_DOOR_Y - 0.33, 1.00), 0.028, 0.05, KK.NICKEL, axis='X', segments=8)
+    make_cyl("Garage_Door_Deadbolt", (gx - 0.055, MUD_DOOR_Y - 0.33, 1.14), 0.024, 0.03, KK.NICKEL, axis='X', segments=8)
+    make_box("Mud_Doormat", (gx - 0.42, MUD_DOOR_Y, 0.008), (0.50, 0.80, 0.012), (0.30, 0.28, 0.24, 1.0))
+    # the bench on the N wall: a seat on two ends, a shoe shelf under it
+    by = YN - 0.20
+    make_box("Mud_Bench_Seat", (5.65, by, 0.46), (1.50, 0.40, 0.04), OAK)
+    for sgn in (-1, 1):
+        make_box(f"Mud_Bench_End_{sgn:+d}", (5.65 + sgn * 0.73, by, 0.22), (0.04, 0.38, 0.44), KK.WHITE_SHAKER)
+    make_box("Mud_Bench_Shelf", (5.65, by, 0.12), (1.42, 0.36, 0.02), KK.WHITE_SHAKER)
+    make_box("Mud_Bench_Back", (5.65, YN - 0.01, 0.90), (1.50, 0.02, 0.84), KK.WHITE_SHAKER)        # beadboard to the hook rail
+    for k in range(6):
+        make_box(f"Mud_Bench_Bead_{k}", (5.05 + k * 0.24, YN - 0.022, 0.90), (0.006, 0.004, 0.80), KK.WHITE_SHAKER_DK)
+    make_box("Mud_Hook_Rail", (5.65, YN - 0.015, 1.62), (1.50, 0.03, 0.09), OAK_DK)
+    for k in range(5):
+        make_cyl(f"Mud_Hook_{k}", (5.05 + k * 0.30, YN - 0.058, 1.62), 0.012, 0.06, KK.NICKEL, axis='Y', segments=6)
+    make_box("Mud_Top_Shelf", (5.65, YN - 0.14, 1.86), (1.50, 0.28, 0.03), KK.WHITE_SHAKER)
+    make_box("Mud_Top_Basket", (5.25, YN - 0.16, 1.975), (0.36, 0.24, 0.20), (0.62, 0.48, 0.30, 1.0))
+    # what hangs there: the uniform shirt on its hanger, the duty belt, a rain shell
+    navy = (0.12, 0.15, 0.24, 1.0)
+    make_box("Mud_Uniform_Hanger", (5.35, YN - 0.11, 1.56), (0.40, 0.012, 0.02), OAK_DK)
+    make_box("Mud_Uniform_Hanger_Neck", (5.35, YN - 0.098, 1.60), (0.012, 0.014, 0.07), KK.NICKEL)
+    make_chamfer_box("Mud_Uniform_Shirt", (5.35, YN - 0.12, 1.20), (0.44, 0.10, 0.70), navy, chamfer=0.02)
+    make_box("Mud_Uniform_Badge", (5.24, YN - 0.173, 1.38), (0.05, 0.004, 0.06), (0.80, 0.70, 0.36, 1.0))
+    make_box("Mud_Duty_Belt", (5.95, YN - 0.10, 1.36), (0.06, 0.07, 0.50), (0.10, 0.10, 0.11, 1.0))
+    make_box("Mud_Duty_Belt_Holster", (5.95, YN - 0.145, 1.16), (0.09, 0.05, 0.16), (0.10, 0.10, 0.11, 1.0))
+    make_box("Mud_Duty_Belt_Buckle", (5.95, YN - 0.138, 1.58), (0.05, 0.006, 0.04), (0.70, 0.70, 0.72, 1.0))
+    make_chamfer_box("Mud_Rain_Coat", (6.25, YN - 0.10, 1.225), (0.36, 0.09, 0.78), (0.28, 0.32, 0.24, 1.0), chamfer=0.02)
+    # his boots under the bench, a pair of her sneakers kicked off beside them
+    for k, bx in enumerate((5.25, 5.42)):
+        make_chamfer_box(f"Mud_Boot_{k}_Foot", (bx, by - 0.02, 0.175), (0.11, 0.30, 0.09), (0.10, 0.10, 0.11, 1.0), chamfer=0.02)
+        make_chamfer_box(f"Mud_Boot_{k}_Shaft", (bx, by + 0.07, 0.30), (0.10, 0.12, 0.16), (0.10, 0.10, 0.11, 1.0), chamfer=0.015)
+    for k, (bx, yw) in enumerate(((5.90, 0.2), (6.06, -0.3))):
+        make_rot_box(f"Mud_Sneaker_{k}", (bx, by - 0.02, 0.175), (0.10, 0.27, 0.09), (0.90, 0.90, 0.88, 1.0), yaw=yw)
+    # the flush light (the tscn hangs Mud_Flushmount_Practical from it)
+    make_cyl("Mud_Flushmount_Base", (cx, cy, CEIL - 0.015), 0.15, 0.03, (0.72, 0.70, 0.66, 1.0), segments=14)
+    make_cyl("Mud_Flushmount_Glow", (cx, cy, CEIL - 0.055), 0.12, 0.05, (1.0, 0.94, 0.80, 1.0), segments=14)
+    make_wall_outlet("Outlet_Mud", (cx + 0.5, MUD_Y0), axis='X', face_sign=1, z=0.30)
+
+
 def build_east_window():
     make_window("East_Window", (XE, WIN_E[0], WIN_E[1]), width=WIN_E[2], height=WIN_E[3], axis='Y', room_dir=-1, see_through=True,
                 palette={"frame": TRIM})
@@ -539,6 +706,7 @@ def build_kitchen(variant):
     build_family_room()
     build_ceiling()
     build_east_window()
+    build_mudroom()
     build_wear_and_infra()
     build_outside(sedan=(variant == "family"))
     if variant == "family":

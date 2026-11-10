@@ -3835,6 +3835,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 325: the Miller house draft 3 — the mudroom, the stair, the closet, the porch.**
+- Second of the backgrounds queue (800 lines as miller_kitchen, 259 as
+  bianca_kitchen_morning: one build). Read for the bones first (the pass-324
+  rule). The text has: "He goes to the mudroom. Sam hears him put on his
+  uniform. Sam hears him leave through the garage. The garage door motor
+  hums" (ch4); "He comes downstairs at 07:14" / "feet on the floor above";
+  "the album in the hall closet" (ch5); "puts it in the drying rack next to
+  her father's mug" (ch3); "Bianca is at the back porch with the wicker
+  chair" (ch15). The house had no mudroom and a garage across a drive, a
+  stair of nine risers that stopped 1.7 m up under a flat ceiling (a level
+  handrail, balusters of negative height), no closet, no rack, and a back
+  door whose window was a grey pane on a solid slab.
+- **Built** (`_props/miller_kitchen.py`, both locales; 719 → 862 parts): the
+  mudroom through a cased doorway in the E wall — tile, the bench, the hooks
+  with his uniform shirt and duty belt, his boots, the door to the garage
+  straight ahead, its own light; the garage attached on the street side;
+  fifteen risers to the floor above with a raked rail and a dark well; the
+  hall closet under the upper flight; the drying rack (her bowl and his mug
+  in the family mornings); the back door as stiles, rails and clear glass;
+  the porch slab and the wicker chair; the side yard to a fence and the
+  neighbour's wall.
+- **Draft 4 targets** (in the module's docstring): the upstairs landing; the
+  garage behind its door (ch1); the front door's glass and a porch (ch22);
+  the family room's evening practicals; the D2 pass; the sideboard photos
+  as upright frames; a mudroom window; a marker for the mudroom doorway
+  ("He goes to the mudroom") and one up the stair.
+
 **2026-11-10 · pass 324: lena_apartment draft 8 — what the text names and the room lacked, and her walls.**
 - First of the backgrounds queue (941 lines on 645 parts). Read from the
   twenty scenes that play there, not from the builder. The room had no

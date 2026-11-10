@@ -132,6 +132,34 @@ posters, screens with no picture: `empty_frame_audit`).
 | `vol4_story_rooms` | 2 | 8 | 4 | 35 | 5036 | 2 | 4 |
 | `riverfront` | 2 | 2 | 5 | 18 | 5375 | 2 | 8 |
 
+## Passes since this table was measured
+
+- **lena_apartment** — draft 8 (2026-11-10, pass 324): 645 → 789 parts; the bathroom door, the kitchen's
+  fronts, the closet, the radiator, her five studies, the alley.
+- **miller_kitchen / bianca_kitchen_morning** — draft 3 (2026-11-10, pass 325): 719 → 862 parts; the mudroom
+  and the attached garage, the stair to the floor above, the hall closet, the drying rack, the back porch.
+- Next: hans_bakery_back_kitchen → board_lords_interior → henderson_kitchen → finn_apartment.
+
+## Brief for the next pass: hans_bakery_back_kitchen (read 2026-11-10, not yet built)
+
+695 lines play on the preset `hans_bakery_back_kitchen`, and the scenes are not in a back kitchen. From the
+text (vol7 ch15_loft 111–116, ch17_roy 8–19, ch17_aria 171, ch17_bakery 7 / 39 / 95, ch10_cabin 9 / 24):
+
+- **Two rooms.** "The bakery's MAIN ROOM ... had three long tables: the worktable, the cooling rack table, and
+  the dining table Hans had moved in in 2046". "Per is at the BACK KITCHEN ... on the bench in the back kitchen
+  with a coffee." The table scenes are in the main room; the back kitchen is next door.
+- **The front is in the same room.** "At six twelve the bell rang at the front of the bakery ... She walked to
+  the front of the room. Greta came out from behind the front counter ... went to the door. She opened it. ...
+  He stood at the door for a count. He looked across the room at the ten at the table." The builder has a
+  south wall with a pass window and the front of house beyond it.
+- **Also named:** the back door (the dining table's end "nearest the back door"); the kettle, Greta at it,
+  "Hans's wedding-photo on the wall behind her"; the kitchenette sink; the peg the canvas coat hangs on and
+  "the bench by the door" with the wooden box; Greta's cloth "folded in a particular drawer"; the bell "that
+  had been at the door of the house since the house was built" — the bakery is in a house; the loft.
+- **So:** the next pass is a PLAN pass, not a detail pass — one main room with the front counter and belled
+  door at one end, the three long tables, the kettle wall with the wedding photograph, the back door; a
+  doorway to the back kitchen (ovens, the bench). Check `hans_bakery_back_door` (10 lines) against it.
+
 ## Reading it
 
 - **Thin and heavily used** (the first targets): `lena_apartment` (941 lines, 645 parts), `miller_kitchen`

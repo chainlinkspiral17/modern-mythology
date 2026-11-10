@@ -206,6 +206,16 @@ light_energy = 0.5
 shadow_enabled = false
 metadata/daylight = true
 
+; (2026-11-10) the mudroom's flush light: the room beyond the E doorway is lit,
+; so the doorway reads as a way through and not a dark hole
+[node name="Mud_Flushmount_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.650, 2.550, -5.600)
+light_color = Color(1.00, 0.92, 0.78, 1)
+light_energy = 0.90
+omni_range = 3.2
+omni_attenuation = 1.2
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

@@ -17,6 +17,11 @@
  "ben_bedroom": {
   "draw": 92
  },
+ "bianca_kitchen_morning": {
+  "draw": 230,
+  "prims": 103392,
+  "objects": 400
+ },
  "bindery": {
   "draw": 60,
   "prims": 110656,
@@ -206,6 +211,11 @@
   "draw": 152,
   "prims": 66474,
   "objects": 322
+ },
+ "miller_kitchen": {
+  "draw": 116,
+  "prims": 35088,
+  "objects": 286
  },
  "miller_office": {
   "draw": 104,
