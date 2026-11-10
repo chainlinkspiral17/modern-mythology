@@ -293,9 +293,12 @@ func _rotation_marker() -> Node3D:
 	# shot_establish marker if present, else null meaning "the
 	# Background3D preset vantage". Alternates extend the deck; they
 	# never evict the original framing from rotation.
-	var variants: Array = [_bg3d.find_shot_marker("shot_establish")]
+	# (2026-11-10) find_establish_marker: a preset in a second area of the
+	# set never rotates through the first area's plain establishing frames
+	var finder: String = "find_establish_marker" if _bg3d.has_method("find_establish_marker") else "find_shot_marker"
+	var variants: Array = [_bg3d.call(finder, "shot_establish")]
 	for suffix in ["b", "c", "d", "e"]:
-		var m: Node3D = _bg3d.find_shot_marker("shot_establish_" + suffix)
+		var m: Node3D = _bg3d.call(finder, "shot_establish_" + suffix)
 		if m != null:
 			variants.append(m)
 	if variants.size() <= 1 or scene_key == "":
@@ -1137,8 +1140,9 @@ func _ease_hold() -> void:
 		print("[VnDirector] HOLD → back to the room's wide")
 		return
 	if _bg3d.has_method("find_shot_marker"):
+		var hold_finder: String = "find_establish_marker" if _bg3d.has_method("find_establish_marker") else "find_shot_marker"
 		for marker_name: String in ["shot_establish_b", "shot_establish"]:
-			var m: Node3D = _bg3d.call("find_shot_marker", marker_name) as Node3D
+			var m: Node3D = _bg3d.call(hold_finder, marker_name) as Node3D
 			if m == null:
 				continue
 			var tf: Transform3D = m.global_transform

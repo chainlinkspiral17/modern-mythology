@@ -151,6 +151,25 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-11-10 · read a set in the mood its lines PLAY in (Board Lords, pass 329)
+
+- **What happened.** Board Lords had been through four drafts of props and
+  wear and nobody had looked at a `day_bright` line in it: the ambient was a
+  saturated purple at 0.75 under purple fog, two of three ceiling tubes had
+  no light, and a shop on Main at ten in the morning played as dusk.
+- **Rules.**
+  1. Render a set with `VnLineShot` on real lines (their own `[mood:]`),
+     not only with `TripPaintTest` — the palette a set was authored in is
+     not the mood its scenes ask for.
+  2. A set's colour identity lives in its Back light and post tint. The
+     AMBIENT is the time of day: keep it near neutral and bright enough
+     that a "bright" mood is bright.
+  3. One light per visible fixture, AT the fixture (`orphan_practical_audit`
+     checks names, not that a fixture has a light at all — count them).
+  4. A window or glass door onto daylight gets a daylight spot through it.
+  5. "Glass" laid on a solid slab shows the slab. A glazed door is a frame
+     with alpha panes and something modelled beyond it.
+
 ### 2026-11-09 · a ceiling fixture belongs to the ceiling's grid (pass 316)
 
 - **What happened:** the user: "the lights on the roof need to be arranged

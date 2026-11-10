@@ -28,9 +28,9 @@
   "objects": 230
  },
  "board_lords_interior": {
-  "draw": 86,
-  "prims": 29064,
-  "objects": 256
+  "draw": 180,
+  "prims": 43588,
+  "objects": 350
  },
  "briar_falls": {
   "draw": 130,

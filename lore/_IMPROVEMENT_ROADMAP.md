@@ -3835,6 +3835,52 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 329: Board Lords, draft 5 — daylight, a glass door, the office as a room, four shots that looked at nothing.**
+- Fourth of the backgrounds queue (598 lines in the shop, 66 in the office).
+  The plan agreed with the text; what the READ by render found did not:
+- **It was dusk at ten in the morning.** The set's ambient was a saturated
+  purple (0.62, 0.46, 0.74) at 0.75 under a purple fog, one of three ceiling
+  tubes had a light, and that one stood 0.3 m off its fixture: every
+  `day_bright` line played dim and violet. Ambient to a pale daylight, fog
+  thinned, a light per tube, two daylight spots through the front window and
+  the door. The set's purple stays in the Back light and the post tint.
+- **The glass door was a slab.** One 1.9 m box with a "glass" panel laid on
+  its face: the glass showed the slab, and a shop on Main had no Main in its
+  door. A glazed pair in a frame now (real alpha), Main Street through it;
+  the OPEN card, the taped note and the street-side CLOSED card sit on the
+  glass where they were (their art rows have not moved).
+- **The back office was a 1.9 x 1.4 m nook** behind a partition, with no
+  door, for a 66-line scene in which Finn sits at the desk, lays the hexagon
+  on it, and "Kai came in ... closed the door behind him ... sat down on the
+  box of bearings". It is a room (3.1 x 3.1) north of the shop through the
+  door that used to be "the alley door"; the alley door is in the office's
+  own N wall. The HEXAGON lay on the shop's counter: it is on Devon's desk.
+  A tool board, a parts shelf, a stock shelf behind the counter where the
+  nook was. Two full-height wall slivers were standing inside the old nook
+  (an infill hard-coded to y 7.0 from before the building was deepened).
+- **Shots.** `insert door` (four of its six lines are "the bell rang")
+  stopped below the header: it holds the bell now, and `insert bell` is new
+  (ch5_roy 16). `insert counter` sat 0.5 m off the floor behind the stool
+  looking at a wall — the counter was NAMED "Register", so the cue resolved
+  to the only part with the word in it, the stool. `insert deckwall` looked
+  37 degrees up at the ceiling grid. `insert bearings` (three shop lines
+  about customers buying bearings) showed Devon's cartons in the office:
+  there is a tray of boxed sets on the counter. `insert hexagon` follows the
+  hexagon. The truck is `Toyota_Truck` (it answered `closeup finn`).
+- **A director fix found here:** a preset that lives in a second area of a
+  set (the office, the bakery's back kitchen) rotated `[shot:establish]`
+  through the FIRST area's plain `shot_establish_b / _c`: "The back office
+  was the back office" played on the shop floor.
+  `Background3D.find_establish_marker` — such a preset takes its own
+  establishing markers or its preset vantage.
+- 862 → 1,002 parts, 180 draw calls.
+- **Draft 6 targets:** the kettle knot stands (ch5 "in the back room" / ch16
+  "from under the counter") — the user's call; D2 on the shop's walls (one
+  flat field behind the repair bench and above the deck wall), the drop-tile
+  ceiling (reads as an office); the office's window and the alley beyond its
+  door; the note and sign as readable cards; `shot_establish_b` and the
+  `main_street` preset on a Deck; the three kids on the parents' bench.
+
 **2026-11-10 · pass 328: the bakery, draft 6 — a PLAN pass (the main room, the front of it, the back kitchen).**
 - Third of the backgrounds queue (`lore/_BACKGROUND_STATUS_2026_11.md`): 695
   lines on one preset called `hans_bakery_back_kitchen`, 664 of them at the

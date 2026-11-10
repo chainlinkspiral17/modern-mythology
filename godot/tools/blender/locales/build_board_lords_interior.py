@@ -65,6 +65,7 @@ COL_FLOOR = (0.44, 0.34, 0.24, 1.0); COL_SEAM = (0.28, 0.20, 0.14, 1.0)
 COL_WOOD = (0.42, 0.30, 0.18, 1.0)
 COL_STEEL = (0.58, 0.60, 0.62, 1.0)
 COL_GLASS = (0.80, 0.86, 0.90, 0.35)   # daylight in the pane — nothing is transparent here, and shot_insert_door read black off the old dark slab (2026-09-25)
+OFFICE_X0, OFFICE_Y1 = 1.3, 10.8   # draft 5: the back office is a ROOM north of the shop (x 1.3 .. 4.5, y ROOM_D .. 10.8)
 CROW_X = 4.3   # the kit pickup's cab centre (rear glass 3.61 .. windshield 5.02, recorded)
 # Deck graphics — a mixed wall of boards
 DECK_TINTS = [(0.72, 0.26, 0.22, 1.0), (0.26, 0.44, 0.62, 1.0), (0.86, 0.72, 0.26, 1.0),
@@ -75,8 +76,9 @@ DECK_TINTS = [(0.72, 0.26, 0.22, 1.0), (0.26, 0.44, 0.62, 1.0), (0.86, 0.72, 0.2
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    # (draft 5) the E wall runs on past the N wall: it is the back office's too
+    make_wall("Wall_E", (+ROOM_W/2.0, OFFICE_Y1/2.0, 0), length=OFFICE_Y1+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     # Back wall with a gap for the alley door (x ~ +3.4)
     make_wall("Wall_N_W", (-1.0, ROOM_D, 0), length=7.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Wall_N_E", (4.15, ROOM_D, CEIL/2.0), (0.9, 0.20, CEIL), PAL_WALL["wall"])
@@ -91,11 +93,30 @@ def build_shell():
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
-    # Alley door leaf ("He pulled the truck out of the alley")
-    make_box("Alley_Door", (3.15, ROOM_D-0.04, 1.03), (0.90, 0.05, 2.05), (0.34, 0.30, 0.28, 1.0))
-    # Front door: bell + reversible OPEN/CLOSED + the taped note
-    make_box("Front_Door", (0.0, 0.04, 1.02), (1.90, 0.04, 2.04), (0.30, 0.28, 0.26, 1.0))
-    make_box("Front_Door_Glass", (0.0, 0.03, 1.20), (1.50, 0.02, 1.55), COL_GLASS)
+    # (draft 5) THE OFFICE DOOR — "Kai came in two minutes later. Kai closed
+    # the door behind him." It was "the alley door": the office was a nook
+    # behind a partition and this opening led outside. The alley door is in
+    # the office's own N wall now (build_office).
+    make_box("Office_Door", (3.15, ROOM_D-0.04, 1.03), (0.90, 0.05, 2.05), (0.40, 0.32, 0.24, 1.0))
+    make_cyl("Office_Door_Knob", (2.80, ROOM_D-0.085, 1.02), 0.028, 0.04, COL_STEEL, axis='Y', segments=8)
+    # Front door: bell + reversible OPEN/CLOSED + the taped note.
+    # DRAFT 5 (2026-11-10): a GLAZED storefront pair. The door was one
+    # 1.9 m slab with a "glass" panel laid on its face, so the glass showed
+    # the slab: "At eleven-oh-six the bell over the door rang" played on a
+    # navy rectangle, and a shop on Main had no Main in its door. Two
+    # leaves in a frame, real glass (alpha), the street through it. The
+    # panes keep the old slab's two faces (y 0.02 / 0.055), so the OPEN
+    # card, the taped note and the street-side CLOSED card still sit on
+    # glass and their art rows have not moved.
+    frame = (0.26, 0.25, 0.26, 1.0)
+    for e, ex in (("W", -0.97), ("E", 0.97)):
+        make_box(f"Front_Door_Jamb_{e}", (ex, 0.0, 1.10), (0.06, 0.22, 2.20), frame)
+    for e, lx in (("W", -0.47), ("E", 0.47)):                 # each leaf 0.94 wide, x 0 .. +-0.94
+        for se, sx in (("In", lx - 0.435), ("Out", lx + 0.435)):
+            make_box(f"Front_Door_{e}_Stile_{se}", (sx, 0.0375, 1.10), (0.07, 0.035, 2.16), frame)
+        make_box(f"Front_Door_{e}_Rail_Top", (lx, 0.0375, 2.13), (0.80, 0.035, 0.10), frame)
+        make_box(f"Front_Door_{e}_Rail_Bottom", (lx, 0.0375, 0.15), (0.80, 0.035, 0.26), frame)
+        make_box(f"Front_Door_Glass_{e}", (lx, 0.0375, 1.18), (0.80, 0.035, 1.80), (0.72, 0.80, 0.86, 0.22))
     # (2026-09-22: the bell hangs from a bracket under the header — it
     # floated over the door with nothing holding it)
     make_box("Door_Bell_Bracket", (0.0, 0.16, 2.44), (0.03, 0.12, 0.12), (0.22, 0.20, 0.18, 1.0))
@@ -106,10 +127,14 @@ def build_shell():
                (0.74, 0.58, 0.28, 1.0), segments=12)
     make_cyl("Door_Bell_Clapper", (0.0, 0.16, 2.22), 0.007, 0.03, (0.30, 0.26, 0.18, 1.0), segments=5)
     # (draft 3) the push bar and the kick plate
-    make_tube("Front_Door_Bar", [(-0.70, 0.085, 1.02), (0.70, 0.085, 1.02)], 0.016, COL_STEEL, segments=6)
-    for bx in (-0.66, 0.66):
-        make_box(f"Front_Door_Bar_Post_{bx:+.1f}", (bx, 0.07, 1.02), (0.03, 0.03, 0.03), COL_STEEL)
-    make_box("Front_Door_Kick", (0.0, 0.065, 0.16), (1.70, 0.006, 0.24), COL_STEEL)
+    # (draft 5: a push bar and a kick plate on each leaf, stile to stile)
+    for e, lx in (("W", -0.47), ("E", 0.47)):
+        # (named for what they are, not "door": the nearest part with the cue's
+        # word in it is what marker_aim judges the door shot against)
+        make_tube(f"Front_Push_Bar_{e}", [(lx - 0.40, 0.085, 1.02), (lx + 0.40, 0.085, 1.02)], 0.016, COL_STEEL, segments=6)
+        for pe, bx in (("In", lx - 0.435), ("Out", lx + 0.435)):
+            make_box(f"Front_Push_Bar_{e}_Post_{pe}", (bx, 0.07, 1.02), (0.03, 0.03, 0.03), COL_STEEL)
+        make_box(f"Front_Kick_Plate_{e}", (lx, 0.058, 0.15), (0.78, 0.006, 0.22), COL_STEEL)
     make_box("Open_Sign", (0.35, 0.06, 1.55), (0.24, 0.01, 0.16), (0.86, 0.82, 0.72, 1.0))
     make_box("Taped_Note", (0.35, 0.06, 1.74), (0.14, 0.008, 0.10), (0.94, 0.92, 0.84, 1.0))
 
@@ -149,7 +174,10 @@ def build_counter():
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
-    top_z = make_counter("Register", (2.25, 5.380, 0.0), length=1.00, depth=2.40, height=0.95,
+    # (draft 5: the counter is NAMED the counter. It was "Register", so
+    # [shot:insert counter] resolved to the only part with the word in it —
+    # the stool behind it — and three lines "at the counter" played on a wall.)
+    top_z = make_counter("Counter", (2.25, 5.380, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": (0.52, 0.42, 0.30, 1.0),
                                   "top": (0.30, 0.22, 0.14, 1.0), "kick": (0.24, 0.18, 0.12, 1.0)})
     make_register("Register", (2.6, 5.280, top_z))
@@ -158,7 +186,7 @@ def build_counter():
     make_box("Register_Drawer_Pull", (1.75, 4.880, 0.72), (0.10, 0.015, 0.03), COL_STEEL)
     # The stool behind the counter
     # (draft 3: the kit stool — turned legs, a foot ring)
-    make_stool("Counter_Stool", 2.25, 6.15, h=0.72, wood=COL_WOOD)
+    make_stool("Till_Stool", 2.25, 6.15, h=0.72, wood=COL_WOOD)
     # Kettle on its small electric burner, the low shelf at the
     # counter's west end (draft 3: a profile with spout + bail, a coil)
     make_box("Under_Shelf", (0.75, 5.5, 0.28), (0.60, 0.60, 0.03), COL_WOOD)
@@ -217,39 +245,103 @@ def build_repair_back():
 
 
 def build_office():
-    """The back office: Devon's old desk, the chair Devon also left,
-    two cardboard boxes of bearings on the floor."""
-    # (draft 3: the partition at y 6.1 — at 6.0 it ran through the
-    # counter's back edge, which is at 5.93. 2026-09-25: with the N wall
-    # at 7.0 the office was 0.85 m deep and the alley door opened onto
-    # Devon's chair; the building is 7.6 deep now, the office 1.4 m,
-    # the desk against the E wall SOUTH of the door's swing (y 6.64..
-    # 7.54, x 2.70..3.60), Devon's chair north of it with its back to
-    # the alley door, the bearings boxes on the floor at the counter's
-    # east end)
-    make_box("Office_Part", (3.55, 6.1, CEIL/2.0), (1.90, 0.10, CEIL), PAL_WALL["wall"])
-    make_chamfer_box("Devon_Desk", (4.000, 6.375, 0.37), (0.80, 0.55, 0.74), COL_WOOD)
-    make_box("Devon_Desk_Drawer", (4.000, 6.660, 0.55), (0.36, 0.02, 0.12), (0.34, 0.24, 0.16, 1.0))
-    make_box("Devon_Desk_Drawer_Pull", (4.000, 6.675, 0.55), (0.08, 0.01, 0.02), COL_STEEL)
-    # the chair Devon also left — a kit chair facing the desk (-Y)
+    """THE BACK OFFICE (ch12_kai, 66 lines): "The back office was the back
+    office. Devon's old desk against the wall, a chair Devon had also left,
+    two cardboard boxes of bearings on the floor. Finn sat at the chair. He
+    took the cloth out of the bag. He laid the hexagon on the desk. Kai came
+    in two minutes later. Kai closed the door behind him ... Kai sat down on
+    the box of bearings."
+
+    DRAFT 5 (2026-11-10; CLAUDE.md "build big"). It was a 1.9 x 1.4 m nook
+    behind a partition with no door, the camera's back against a wall, and
+    the hexagon lay on the SHOP's counter. It is a room now: 3.1 x 3.1,
+    north of the shop through the door in the N wall; the desk on the E
+    wall with the hexagon on it, Devon's chair, the two boxes where Kai
+    sits within reach of the desk, a parts shelf, the alley door in its own
+    N wall ("He went around to the back. He pulled the truck out of the
+    alley")."""
     import math as _m
-    make_chair("Devon_Chair", 4.00, 6.95, yaw=_m.pi, wood=COL_WOOD, w=0.40)
-    # two cardboard boxes of bearings — on the floor at the counter's
-    # east end (ch12: Kai sits on one and looks at the hexagon), one flap open
-    # (pass 68, 2026-10-11) INSIDE the office, along its west end — "two cardboard
-    # boxes of bearings on the floor" in the room Kai closes the door of, the one he
-    # sits on to look at the hexagon (they stood at the counter's east end, outside)
-    for bi, bx in enumerate((2.85, 3.22)):   # side by side against the partition, clear of the alley door's 0.9 m
-        make_box(f"Bearings_Box_{bi}", (bx, 6.32, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
-    make_rot_box("Bearings_Box_1_Flap", (3.22, 6.19, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
-    make_box("Bearings_Box_0_Label", (2.68, 6.32, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
-    # (pass 68) the office's own light: Devon's gooseneck desk lamp, a bare bulb over the nook
-    make_cyl("Devon_Desk_Lamp_Base", (4.25, 6.22, 0.755), 0.07, 0.03, COL_STEEL, segments=10)
-    make_box("Devon_Desk_Lamp_Arm", (4.25, 6.22, 0.92), (0.02, 0.02, 0.30), COL_STEEL)
-    make_box("Devon_Desk_Lamp_Head", (4.17, 6.30, 1.08), (0.14, 0.12, 0.08), (0.30, 0.30, 0.32, 1.0))
-    make_box("Devon_Desk_Lamp_Bulb", (4.17, 6.30, 1.035), (0.08, 0.07, 0.01), (1.0, 0.92, 0.72, 1.0))
-    make_cyl("Office_Bulb_Cord", (3.55, 6.85, CEIL - 0.15), 0.006, 0.30, (0.20, 0.20, 0.22, 1.0), segments=4)
-    make_lathe("Office_Bulb", (3.55, 6.85, CEIL - 0.40), [(0.015, 0.0), (0.03, 0.03), (0.035, 0.08), (0.02, 0.10), (0.0, 0.10)], (1.0, 0.92, 0.72, 1.0), segments=8)
+    ox0, ox1, oy0, oy1 = OFFICE_X0, ROOM_W/2.0, ROOM_D, OFFICE_Y1
+    cx = (ox0 + ox1) / 2.0
+    fy0, fy1 = oy0 + 0.2, oy1 + 0.1                # its floor and ceiling start past the shop's (no shared strip)
+    fcy, fd = (fy0 + fy1) / 2.0, fy1 - fy0
+    make_floor("Office_Floor", (cx, fcy, 0.0), size_x=ox1 - ox0 + 0.2, size_y=fd,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
+    make_wall("Office_Wall_W", (ox0, (oy0 + oy1) / 2.0 + 0.1, 0), length=oy1 - oy0 + 0.2, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Office_Wall_N", (cx, oy1, 0), length=ox1 - ox0 + 0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(2.25, 1.05, 0.95, 2.10)])
+    make_ceiling("Office_Ceil", (cx, fcy, CEIL), size_x=ox1 - ox0 + 0.2, size_y=fd, with_grid=False, with_stains=True)
+    # the alley door: a steel leaf, closed, its bar
+    make_box("Alley_Door", (2.25, oy1 - 0.04, 1.05), (0.95, 0.05, 2.10), (0.34, 0.36, 0.38, 1.0))
+    make_box("Alley_Door_Bar", (2.25, oy1 - 0.08, 1.02), (0.70, 0.03, 0.05), COL_STEEL)
+    # ── Devon's old desk against the E wall, its drawers to the room ──
+    dx, dy = ox1 - 0.10 - 0.40, 9.30               # 0.75 deep, 1.40 long
+    make_chamfer_box("Devon_Desk", (dx, dy, 0.37), (0.75, 1.40, 0.74), COL_WOOD)
+    for k, ky in enumerate((dy - 0.40, dy + 0.40)):
+        make_box(f"Devon_Desk_Drawer_{k}", (dx - 0.385, ky, 0.55), (0.02, 0.40, 0.14), (0.34, 0.24, 0.16, 1.0))
+        make_box(f"Devon_Desk_Drawer_{k}_Pull", (dx - 0.4025, ky, 0.55), (0.015, 0.10, 0.03), COL_STEEL)
+    # the chair Devon also left, facing the desk
+    make_chair("Devon_Chair", dx - 0.80, dy, yaw=-_m.pi / 2.0, wood=COL_WOOD, w=0.42)
+    # the gooseneck lamp at the desk's north end
+    make_cyl("Devon_Desk_Lamp_Base", (dx + 0.18, dy + 0.52, 0.755), 0.07, 0.03, COL_STEEL, segments=10)
+    make_box("Devon_Desk_Lamp_Arm", (dx + 0.18, dy + 0.52, 0.92), (0.02, 0.02, 0.30), COL_STEEL)
+    make_box("Devon_Desk_Lamp_Head", (dx + 0.10, dy + 0.44, 1.08), (0.14, 0.12, 0.08), (0.30, 0.30, 0.32, 1.0))
+    make_box("Devon_Desk_Lamp_Bulb", (dx + 0.10, dy + 0.44, 1.035), (0.08, 0.07, 0.01), (1.0, 0.92, 0.72, 1.0))
+    # ── THE HEXAGON on its cloth, on the desk ("He laid the hexagon on the desk") ──
+    top = 0.74
+    hx0, hy0 = dx - 0.02, dy - 0.10
+    make_box("Hexagon_Cloth", (hx0, hy0, top + 0.006), (0.60, 0.64, 0.012), (0.82, 0.78, 0.70, 1.0))
+    for hi in range(6):
+        a = _m.pi / 3.0 * hi + _m.pi / 6.0
+        make_box(f"Hexagon_Ring_{hi}", (hx0 + 0.19 * _m.cos(a), hy0 + 0.19 * _m.sin(a), top + 0.03), (0.085, 0.07, 0.036), (0.60, 0.44, 0.28, 1.0))
+    make_box("Hexagon_Center_Face", (hx0, hy0, top + 0.037), (0.10, 0.10, 0.05), (0.66, 0.48, 0.30, 1.0))
+    make_box("Hexagon_Face_Inlay", (hx0, hy0 + 0.02, top + 0.066), (0.06, 0.05, 0.008), (0.38, 0.26, 0.16, 1.0))
+    make_box("Hexagon_Aria_Piece", (hx0 - 0.20, hy0 - 0.27, top + 0.03), (0.06, 0.16, 0.036), (0.60, 0.44, 0.28, 1.0))
+    # ── the two cardboard boxes of bearings, on the floor by the desk's
+    # north end (Kai sits on one and looks at the hexagon) ──
+    for bi, bx in enumerate((3.00, 3.42)):
+        make_box(f"Bearings_Box_{bi}", (bx, oy1 - 0.10 - 0.20, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
+    make_rot_box("Bearings_Box_1_Flap", (3.42, oy1 - 0.10 - 0.36, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
+    make_box("Bearings_Box_0_Label", (3.00, oy1 - 0.10 - 0.342, 0.18), (0.16, 0.004, 0.10), (0.92, 0.90, 0.84, 1.0))
+    # the bare bulb over the room
+    make_cyl("Office_Bulb_Cord", (2.90, 9.20, CEIL - 0.15), 0.006, 0.30, (0.20, 0.20, 0.22, 1.0), segments=4)
+    make_lathe("Office_Bulb", (2.90, 9.20, CEIL - 0.40), [(0.015, 0.0), (0.03, 0.03), (0.035, 0.08), (0.02, 0.10), (0.0, 0.10)], (1.0, 0.92, 0.72, 1.0), segments=8)
+    # ── a parts shelf on the W wall: four steel shelves, boxed wheels and trucks ──
+    sx, sy0, sy1 = ox0 + 0.10 + 0.21, 8.45, 9.85
+    for k, (px, py) in enumerate(((sx - 0.19, sy0), (sx + 0.19, sy0), (sx - 0.19, sy1), (sx + 0.19, sy1))):
+        make_box(f"Office_Shelf_Post_{k}", (px, py, 0.95), (0.03, 0.03, 1.90), COL_STEEL)
+    for k, sz in enumerate((0.25, 0.75, 1.25, 1.75)):
+        make_box(f"Office_Shelf_{k}", (sx, (sy0 + sy1) / 2.0, sz), (0.41, sy1 - sy0 + 0.03, 0.025), COL_STEEL)
+        for b in range(4):
+            col = ((0.62, 0.50, 0.34, 1.0), (0.30, 0.34, 0.44, 1.0), (0.66, 0.30, 0.24, 1.0), (0.82, 0.78, 0.66, 1.0))[(k + b) % 4]
+            make_box(f"Office_Shelf_{k}_Box_{b}", (sx, sy0 + 0.20 + b * 0.33, sz + 0.0125 + 0.09), (0.30, 0.26, 0.18), col)
+    # ── the tool board on the N wall over the boxes (D2: the wall behind
+    # Kai's seat was bare plaster) ──
+    by = oy1 - 0.10
+    make_box("Tool_Board", (3.62, by - 0.008, 1.55), (1.40, 0.016, 0.80), (0.66, 0.54, 0.36, 1.0))
+    for k, (tx, tz) in enumerate(((3.08, 1.72), (3.34, 1.72), (3.60, 1.72))):       # three skate tools: a T
+        make_box(f"Tool_T_{k}_Bar", (tx, by - 0.026, tz + 0.06), (0.16, 0.02, 0.03), COL_STEEL)
+        make_box(f"Tool_T_{k}_Stem", (tx, by - 0.026, tz - 0.035), (0.03, 0.02, 0.16), COL_STEEL)
+    for k, tx in enumerate((3.86, 3.98, 4.10, 4.22)):                              # wrenches, short to long
+        make_box(f"Tool_Wrench_{k}", (tx, by - 0.022, 1.74 - k * 0.02), (0.03, 0.012, 0.18 + k * 0.04), COL_STEEL)
+    for k, tx in enumerate((3.10, 3.42)):                                           # rolls of grip tape on a rod
+        make_cyl(f"Tool_Grip_Roll_{k}", (tx, by - 0.066, 1.34), 0.05, 0.24, (0.10, 0.10, 0.11, 1.0), axis='X', segments=10)
+    make_cyl("Tool_Grip_Rod", (3.26, by - 0.066, 1.34), 0.008, 0.70, COL_STEEL, axis='X', segments=6)
+    for k, tx in enumerate((2.94, 3.58)):
+        make_box(f"Tool_Grip_Rod_Bracket_{k}", (tx, by - 0.041, 1.34), (0.02, 0.05, 0.03), COL_STEEL)
+    for k, tx in enumerate((3.86, 4.06, 4.26)):                                     # spare trucks on pegs
+        make_box(f"Tool_Truck_{k}", (tx, by - 0.04, 1.34), (0.15, 0.048, 0.05), (0.50, 0.52, 0.55, 1.0))
+    # a mat inside the alley door, the light switch by the office door
+    make_box("Office_Mat", (2.25, oy1 - 0.10 - 0.42, 0.008), (0.80, 0.55, 0.016), (0.26, 0.24, 0.22, 1.0))
+    make_light_switch("Office_Switch", (2.48, oy0), axis='X', face_sign=1, z=1.25, aged=True)
+    # ── behind the counter, where the nook was: a stock shelf on the E wall ──
+    kx, ky0, ky1 = ox1 - 0.10 - 0.21, 6.35, 7.25
+    for k, (px, py) in enumerate(((kx - 0.19, ky0), (kx + 0.19, ky0), (kx - 0.19, ky1), (kx + 0.19, ky1))):
+        make_box(f"Stock_Shelf_Post_{k}", (px, py, 0.85), (0.03, 0.03, 1.70), COL_STEEL)
+    for k, sz in enumerate((0.30, 0.85, 1.40)):
+        make_box(f"Stock_Shelf_{k}", (kx, (ky0 + ky1) / 2.0, sz), (0.41, ky1 - ky0 + 0.03, 0.025), COL_STEEL)
+        for b in range(3):
+            make_box(f"Stock_Shelf_{k}_Box_{b}", (kx, ky0 + 0.16 + b * 0.29, sz + 0.0125 + 0.08), (0.30, 0.24, 0.16), DECK_TINTS[(k * 3 + b) % len(DECK_TINTS)])
 
 
 def build_retail():
@@ -359,22 +451,15 @@ def build_hero_props():
     make_box("Bread_Knife", (1.45, 5.18, top + 0.035), (0.34, 0.035, 0.012),
              COL_STEEL)
 
-    make_box("Hexagon_Cloth", (2.95, 5.50, top + 0.006), (0.64, 0.64, 0.012),
-             (0.82, 0.78, 0.70, 1.0))
-    import math as _m
-    for hi in range(6):
-        a = _m.pi / 3.0 * hi + _m.pi / 6.0
-        hx = 2.95 + 0.19 * _m.cos(a)
-        hy = 5.50 + 0.19 * _m.sin(a)
-        make_box(f"Hexagon_Ring_{hi}", (hx, hy, top + 0.03), (0.085, 0.07, 0.036),
-                 (0.60, 0.44, 0.28, 1.0))
-    make_box("Hexagon_Center_Face", (2.95, 5.50, top + 0.038), (0.10, 0.10, 0.05),
-             (0.66, 0.48, 0.30, 1.0))
-    make_box("Hexagon_Face_Inlay", (2.95, 5.52, top + 0.066), (0.06, 0.05, 0.008),
-             (0.38, 0.26, 0.16, 1.0))
-    make_box("Hexagon_Aria_Piece", (2.95, 5.86, top + 0.03), (0.16, 0.06, 0.036),
-             (0.60, 0.44, 0.28, 1.0))
-
+    # (draft 5: the hexagon is on Devon's desk in the back office, where the
+    # text lays it — build_office.) In its place, what three shop lines cut
+    # to ("a man ... who needed bearings"): the bearings for sale, a tray of
+    # boxed sets by the register. [shot:insert bearings] used to show Devon's
+    # two cartons in the office.
+    make_box("Bearings_Tray", (3.10, 5.20, top + 0.01), (0.44, 0.30, 0.02), (0.30, 0.22, 0.14, 1.0))
+    for bi in range(8):
+        make_box(f"Bearings_Set_{bi}", (2.95 + (bi % 4) * 0.10, 5.13 + (bi // 4) * 0.14, top + 0.045), (0.08, 0.11, 0.05),
+                 DECK_TINTS[(bi * 3 + 1) % len(DECK_TINTS)])
     make_box("Shop_Phone", (1.90, 5.78, top + 0.008), (0.16, 0.075, 0.014),
              (0.10, 0.10, 0.12, 1.0))
     make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.017 - 0.0196), (0.14, 0.062, 0.004),
@@ -421,7 +506,7 @@ def build_main_street_2026_09():
     # Finn's truck in the parking lane along Main (draft 3: the kit
     # pickup; the 09-07 move to "the curb" put the old box body on the
     # sidewalk, y -2.15..-0.35 — the sidewalk is -2.0..-0.2)
-    make_car("Finn_Truck", 4.6, -3.25, 4.9, (0.44, 0.48, 0.42, 1.0), pickup=True, along="X")
+    make_car("Toyota_Truck", 4.6, -3.25, 4.9, (0.44, 0.48, 0.42, 1.0), pickup=True, along="X")
     # the crow rides the cab roof while they get in (ch5: "The crow
     # stayed on Finn's shoulder" — then the truck)
     from _props.creatures import make_crow
@@ -473,12 +558,6 @@ def build_draft3_2026_09():
 
 
 
-def build_door_infill_alley_door_2026_09():
-    """Alley_Door was narrower than its wall opening (the user, 2026-09-24:
-    "doorways ... misaligned"): close the gap to the door and its frame."""
-    make_wall("Wall_Fill_Alley_Door_W", (2.600, 7.000, 0), length=0.200, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_Fill_Alley_Door_E", (3.650, 7.000, 0), length=0.100, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-
 def build_draft4_2026_10():
     """DRAFT 4 (2026-10-09, the overnight run), from vol 7 ch 2/5/9/10/12/16.
 
@@ -518,14 +597,16 @@ def build_draft4_2026_10():
                 make_cyl(f"Rack_Board_{bi}_Wheel_{ti}_{wi}", (bx + wx, ry + 0.165, tz), 0.026, 0.028, urethane, axis='X', segments=10)
     # the bottom board — the old Tess Mariana from 2034, the crack in its deck
     make_box("Rack_Board_0_Crack", (rx0 + 0.18, ry + 0.102, 0.62), (0.006, 0.002, 0.22), (0.30, 0.22, 0.14, 1.0))
-    # ── the new decks on the partition behind the counter ──
+    # ── the new decks behind the counter (draft 5: on the N wall — the
+    # partition they hung on is gone with the office nook) ──
+    ny = ROOM_D - 0.10 - 0.015
     for di in range(6):
-        dx = 2.85 + di * 0.30
+        dx = 1.00 + di * 0.28
         tint = (0.24, 0.26, 0.28, 1.0) if di in (2, 3) else DECK_TINTS[(di * 5 + 2) % len(DECK_TINTS)]
-        make_chamfer_box(f"NewDeck_{di}", (dx, 6.035, 1.55), (0.22, 0.03, 0.82), tint, chamfer=0.01)
+        make_chamfer_box(f"NewDeck_{di}", (dx, ny, 1.55), (0.22, 0.03, 0.82), tint, chamfer=0.01)
         if di in (2, 3):   # Lena's Tide Pool Geometries: long black curves on a deep gray ground
-            make_box(f"NewDeck_{di}_Line", (dx, 6.018, 1.55), (0.02, 0.004, 0.70), (0.06, 0.06, 0.07, 1.0))
-        make_box(f"NewDeck_{di}_Peg", (dx, 6.035, 1.975), (0.04, 0.03, 0.03), COL_STEEL)
+            make_box(f"NewDeck_{di}_Line", (dx, ny - 0.017, 1.55), (0.02, 0.004, 0.70), (0.06, 0.06, 0.07, 1.0))
+        make_box(f"NewDeck_{di}_Peg", (dx, ny, 1.975), (0.04, 0.03, 0.03), COL_STEEL)
     # ── the hoodie rounder ──
     hx, hy = 1.30, 2.40
     make_lathe("Rounder_Base", (hx, hy, 0.0), [(0.32, 0.0), (0.30, 0.04), (0.05, 0.06), (0.0, 0.06)], COL_STEEL, segments=14)
@@ -572,7 +653,6 @@ def main():
     build_draft4_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/board_lords_interior.glb"))
-    build_door_infill_alley_door_2026_09()
     print(f"\n[build_board_lords_interior] exporting to {out}")
     export_glb(out)
 

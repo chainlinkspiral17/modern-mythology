@@ -2888,12 +2888,15 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
 		# (pass 68, 2026-10-11) vol7 ch12 Kai: "The back office was the back
 		# office. Devon's old desk against the wall, a chair Devon had also left,
-		# two cardboard boxes of bearings on the floor." The nook behind the
-		# partition at blender y 6.1 (godot z -6.1), x 2.6..4.5, the alley door
-		# in its N wall. Camera at the partition's west end looking at the desk.
+		# two cardboard boxes of bearings on the floor." (draft 5, 2026-11-10)
+		# A ROOM north of the shop through the door in its N wall: godot x
+		# 1.3..4.5, z -7.6..-10.8 — it was a 1.9 x 1.4 m nook behind a
+		# partition. The desk on the E wall (godot 4.0,-9.3) with the hexagon
+		# on it, Devon's chair, the two boxes by the alley door in the N wall.
+		# Camera in the SW corner by the shop door looking NE at the desk.
 		# Markers suffixed __board_lords_office.
-		"camera_origin": Vector3(2.72, 1.50, -6.25),
-		"camera_rotation": Vector3(-0.441, -1.041, 0.0),
+		"camera_origin": Vector3(1.75, 1.55, -8.00),
+		"camera_rotation": Vector3(-0.253, -1.027, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -6754,6 +6757,27 @@ func find_shot_marker(marker_name: String) -> Node3D:
 			marker_name + "__" + _loaded_preset, true, false) as Node3D
 		if local != null:
 			return local
+	return _location_instance.find_child(marker_name, true, false) as Node3D
+
+
+## An ESTABLISHING marker for the loaded preset (2026-11-10). A preset that
+## overrides the generic pair (`shot_closeup_person__<preset>`) lives in a
+## second area of the geometry — the shop's back office, the bakery's back
+## kitchen — and the PLAIN shot_establish_b / _c stand in the first. The
+## office's `[shot:establish]` rotated through the shop's establish_c:
+## "The back office was the back office. Devon's old desk against the wall"
+## played on the shop floor. Such a preset takes its own (`…__<preset>`)
+## establishing markers or none (the caller falls back to the preset's vantage).
+func find_establish_marker(marker_name: String) -> Node3D:
+	if not has_locale_loaded():
+		return null
+	if _loaded_preset != "":
+		var local: Node3D = _location_instance.find_child(
+			marker_name + "__" + _loaded_preset, true, false) as Node3D
+		if local != null:
+			return local
+		if _location_instance.find_child("shot_closeup_person__" + _loaded_preset, true, false) != null:
+			return null
 	return _location_instance.find_child(marker_name, true, false) as Node3D
 
 

@@ -141,7 +141,10 @@ posters, screens with no picture: `empty_frame_audit`).
 - **hans_bakery_back_kitchen — draft 6 (pass 328, 2026-11-10): a plan pass.** One main room from the belled
   street door and front counter to the kitchenette wall, three long tables, and a real back kitchen through a
   doorway (new preset `hans_bakery_ovens`). 870 → 1,140 parts. Draft 7 targets in the roadmap.
-- Next: board_lords_interior → henderson_kitchen → finn_apartment.
+- **board_lords_interior — draft 5 (pass 329, 2026-11-10).** Daylight (it was dusk at ten in the morning), a
+  glazed front door with Main through it, the back office as a real room with the hexagon on Devon's desk, and
+  five shots that looked at nothing re-aimed. 862 → 1,002 parts.
+- Next: henderson_kitchen → finn_apartment.
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 
@@ -163,7 +166,7 @@ text (vol7 ch15_loft 111–116, ch17_roy 8–19, ch17_aria 171, ch17_bakery 7 / 
   door at one end, the three long tables, the kettle wall with the wedding photograph, the back door; a
   doorway to the back kitchen (ovens, the bench). Check `hans_bakery_back_door` (10 lines) against it.
 
-## Brief for the next pass: board_lords_interior (read 2026-11-10, not yet built)
+## Brief for board_lords_interior (read 2026-11-10; BUILT the same day, pass 329 — the render found more than the brief)
 
 598 lines on `board_lords_interior` (ch9_tuesday 131, ch16_shop 76, ch16_aud 65, ch5_roy 63, ch10_per 58,
 ch2_morning 26) and 66 on `board_lords_office` (ch12_kai). Unlike the bakery, the PLAN agrees with the text

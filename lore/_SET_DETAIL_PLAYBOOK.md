@@ -84,6 +84,28 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-10 · the brief is a guess until the frames are read (Board Lords, pass 329)
+
+- **What happened.** The brief, written from the text and the builder's
+  docstring, said "the plan agrees; a detail pass; add the bell". The bell
+  was already there. The first contact sheet showed what the brief could
+  not: dusk lighting, an opaque glass door, an office too small to stand in,
+  and four shots framed on a ceiling, a wall, a stool and the wrong boxes.
+- **Rules.**
+  1. A pass starts with a contact sheet of the set's presets AND its most
+     used shots, on real lines. The brief is revised from that.
+  2. Name a part for what a line will call it. The counter was "Register":
+     `[shot:insert counter]` found the stool. A cue resolves to the NEAREST
+     part carrying its word — keep the word off hardware (the door's push
+     bar), off other rooms' props (Devon's bearings), off a character's
+     belongings (the truck).
+  3. A scene of two people in a room needs a room: a desk, a chair, where
+     the second one sits, a door to close, and a wall behind each of them
+     that is not bare. 1.9 x 1.4 m is a cupboard.
+  4. After moving a wall, look for what hung on it (six new decks were left
+     in mid-air) and for old patches built to hard-coded coordinates (two
+     wall slivers at the N wall's former line).
+
 ### 2026-11-10 · when the text names two rooms, a detail pass on one is the wrong pass (the bakery, pass 328)
 
 - **What happened.** Five drafts had detailed a "back kitchen" — wear, wiring,
