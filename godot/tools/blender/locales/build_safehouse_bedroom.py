@@ -59,7 +59,7 @@ def build_shell():
                palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.36, 0.26, 0.16, 1.0)}, style="plank")
     make_wall("Wall_W", (XW, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
     make_wall_with_openings("Wall_E", (XE, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL,
-                            baseboard_face_sign=-1, openings=[(WIN_E_Y, 1.45, 0.80, 1.10)])
+                            baseboard_face_sign=-1, openings=[(WIN_E_Y, 1.42, 1.30, 1.44)])   # 2026-11-10 ("look at windows, if they are too small"): was 0.80 x 1.10
     make_wall_with_openings("Wall_N", (0.0, YN, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
                             baseboard_face_sign=-1, openings=[(WIN_X, WIN_Z, WIN_W, WIN_H)])
     make_wall_with_openings("Wall_S", (0.0, YS, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
@@ -81,9 +81,9 @@ def build_shell():
     make_cyl("Curtain_Rod_N", (WIN_X, FN - 0.05, 2.33), 0.012, WIN_W + 0.80, STEEL, axis='X', segments=6)
     for i, cx in enumerate((WIN_X - WIN_W / 2.0 - 0.36, WIN_X + WIN_W / 2.0 + 0.36)):
         make_box(f"Curtain_Rod_Bracket_{i}", (cx, FN - 0.03, 2.33), (0.02, 0.06, 0.03), STEEL)
-    make_box("Window_E_Sill", (FE - 0.07, WIN_E_Y, 0.88), (0.16, 0.92, 0.04), WHITE)
-    make_box("Window_E_Glass", (XE, WIN_E_Y, 1.45), (0.01, 0.80, 1.10), (0.74, 0.80, 0.84, 0.18))
-    make_box("Window_E_Meeting_Rail", (XE, WIN_E_Y, 1.45), (0.05, 0.80, 0.05), WHITE)
+    make_box("Window_E_Sill", (FE - 0.07, WIN_E_Y, 0.70), (0.16, 1.42, 0.04), WHITE)
+    make_box("Window_E_Glass", (XE, WIN_E_Y, 1.42), (0.01, 1.30, 1.44), (0.74, 0.80, 0.84, 0.18))
+    make_box("Window_E_Meeting_Rail", (XE, WIN_E_Y, 1.42), (0.05, 1.30, 0.05), WHITE)
     for i, (x0, x1) in enumerate(((DOOR_X - DOOR_W / 2.0 - 0.05, DOOR_X - DOOR_W / 2.0), (DOOR_X + DOOR_W / 2.0, DOOR_X + DOOR_W / 2.0 + 0.05))):
         make_box(f"Door_Casing_{i}", ((x0 + x1) / 2.0, FS + 0.01, DOOR_H / 2.0), (0.05, 0.02, DOOR_H), WHITE)
     make_box("Door_Casing_Head", (DOOR_X, FS + 0.01, DOOR_H + 0.03), (DOOR_W + 0.10, 0.02, 0.06), WHITE)

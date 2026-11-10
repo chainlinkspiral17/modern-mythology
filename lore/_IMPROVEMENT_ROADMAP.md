@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 334: WINDOWS, the cabin (2,165 lines) and the safehouse bedroom.**
+- Six of the cabin's windows, each to what its wall allows: the KITCHEN
+  window 0.95 → 1.20 tall (to the loft deck above it; its outside casing
+  follows); SOUTH-WEST 1.00 → 1.50 tall, sill 0.80 ("the chair by the
+  south window"); WEST 1.00 x 1.00 → 1.20 x 1.15 (over the counter, under
+  the loft ledger); the EAST BEDROOM's 1.02 → 1.40 tall, sill 0.95 over
+  the bed ("the window above the bed gave her the gray-green of cedars");
+  the main room's EAST window 1.24 x 0.94 → 1.40 x 1.40, its curtains
+  with it; NORTH-EAST by the stove, sill 1.30 → 1.05. Twelve picture rows
+  (day and night) re-set to the new glass.
+- safehouse_bedroom's E window 0.80 x 1.10 → 1.30 x 1.44 (its head kept
+  under the picture rail).
+- The tool still counts 83 (25 sets): its SMALL line is 1.00 x 1.10 and
+  the cabin's loft, gable, shop and south-east windows are under it; the
+  six enlarged ones are over it now. Left in the cabin: the SOUTH-EAST window (the cedar
+  shelf over the desk runs ACROSS it at mid-height — a plan fault to
+  settle with the text first), the loft and gable windows (high, small on
+  purpose), Olaf's shop window; the cabin's porch build shows the old
+  sizes from outside.
+- Next on the list: roberts_kitchen (a sink window with its sill at 1.5 m),
+  bungalow, nate_garage, small_wood_farmhouse, lake_house, coach_k_bedroom.
+
 **2026-11-10 · pass 333: WINDOWS — "Look at windows, if they are too small." They were.**
 - The user, mid-pass. Measured first: `tools/audit/window_size_audit.py`
   groups every window's frame parts and reports width, height, sill and

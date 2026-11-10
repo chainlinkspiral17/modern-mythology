@@ -190,17 +190,17 @@ def build_shell():
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM}, style="plank")
     # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
     # (draft 10) a window in the W wall NORTH of Olaf's shop (the shop abuts y 0.4..6.1)
-    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(7.10, 1.55, 1.00, 1.00)])
-    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.450, 1.750, 1.460, 1.020), (6.200, 1.600, 1.240, 0.940)])   # (draft 14: the bed window a third larger)   # (2026-10-09) the main room's E window with the stove corner (+2)
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(7.10, 1.625, 1.20, 1.15)])
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.450, 1.650, 1.460, 1.400), (6.200, 1.650, 1.400, 1.400)])   # (draft 14: the bed window a third larger)   # (2026-10-09) the main room's E window with the stove corner (+2)
     # the N wall built round a REAL opening for the kitchen window
     # (2026-09-23: the wall was solid, so the crow "seen through the
     # glass" on the outside sill was never in any frame)
-    kw_x0, kw_x1, kw_z0, kw_z1 = -3.40, -1.80, 1.005, 1.955   # (draft 14: a pair, 1.60) (2026-10-09) with the kitchen, -1 m
+    kw_x0, kw_x1, kw_z0, kw_z1 = -3.40, -1.80, 1.005, 2.205   # (draft 14: a pair, 1.60) (2026-10-09) with the kitchen, -1 m
     wn_x0, wn_x1 = -(ROOM_W + 0.2) / 2.0, (ROOM_W + 0.4) / 2.0   # west end flush with Wall_W's outer face: Olaf's shop abuts it (2026-10-08)
     wcol = PAL_WALL["wall"]
     # (draft 10) the N wall east of the kitchen window is cut for a SECOND window
     # by the stove (x 1.40..2.50, z 1.30..2.30), between the antlers and the pipe
-    ne_x0, ne_x1, ne_z0, ne_z1 = 1.40, 2.50, 1.30, 2.30
+    ne_x0, ne_x1, ne_z0, ne_z1 = 1.40, 2.50, 1.05, 2.30   # 2026-11-10: sill 1.05 (was 1.30)
     make_box("Wall_N", ((kw_x1 + ne_x0) / 2.0, ROOM_D, CEIL / 2.0), (ne_x0 - kw_x1, 0.20, CEIL), wcol)
     make_box("Wall_N_E", ((ne_x1 + wn_x1) / 2.0, ROOM_D, CEIL / 2.0), (wn_x1 - ne_x1, 0.20, CEIL), wcol)
     make_box("Wall_N_E_Sill", ((ne_x0 + ne_x1) / 2.0, ROOM_D, ne_z0 / 2.0), (ne_x1 - ne_x0, 0.20, ne_z0), wcol)
@@ -217,7 +217,7 @@ def build_shell():
     make_box("Wall_N_Base", (0.0, ROOM_D - 0.106, 0.08), (ROOM_W + 0.4, 0.012, 0.16), PAL_WALL["baseboard"])
     # the outside sill the crow stands on
     make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.70, 0.35, 0.04), wcol)
-    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.000, 1.450, 1.700, 1.000)])   # (draft 10: a pair, 1.70) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.000, 1.550, 1.700, 1.500)])   # (draft 10: a pair, 1.70) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.250, 1.450, 0.950, 0.950)])   # (2026-10-09: with the east room's desk, +0.25) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.45), (2.0, 0.20, 0.90), PAL_WALL["wall"])
     # (draft 10) no flat ceiling: the room is open to the roof — see
@@ -314,7 +314,7 @@ def build_kitchen():
     # see_through (2026-09-24): the crow on the OUTSIDE sill is the reason
     # this window exists, and the glass + warm pane render opaque — the
     # crow insert was filming a grey pane
-    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.48), width=1.60, height=0.95,
+    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.605), width=1.60, height=1.20,   # 2026-11-10: 1.20 tall, to the loft deck (was 0.95)
                 see_through=True)
     # …and the black rotary phone on a small table beside it
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
@@ -652,8 +652,8 @@ def build_daybed():
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("South_Window_W", (-2.0, 0.10, 1.45), width=1.70, height=1.00, room_dir=+1)   # (draft 10: a pair, was 1.10)
-    make_box("South_Window_W_Mullion", (-2.0, 0.155, 1.45), (0.06, 0.07, 1.00), COL_WOOD_DK)
+    make_window("South_Window_W", (-2.0, 0.10, 1.55), width=1.70, height=1.50, room_dir=+1)   # 2026-11-10 ("look at windows, if they are too small"): 1.50 tall, sill 0.80 (was 1.00)   # (draft 10: a pair, was 1.10)
+    make_box("South_Window_W_Mullion", (-2.0, 0.155, 1.55), (0.06, 0.07, 1.50), COL_WOOD_DK)
     make_chair("SWChair", -1.70, 0.95, yaw=3.1416, wood=COL_WOOD, w=0.44)
 
 
@@ -674,13 +674,14 @@ def build_east_room():
         # The window above the bed (E wall) — cedars beyond
         # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
         # were offset from the wall's CENTRE line — inside the wall, never visible)
-        make_frame_ring("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.60, 1.15), COL_WOOD_DK)
+        # (2026-11-10: 1.40 tall, sill 0.95 over the bed — it was 1.02 with its sill at 1.24)
+        make_frame_ring("EBed_Win_Frame", (2.88, 1.45, 1.65), (0.04, 1.60, 1.53), COL_WOOD_DK)
         # "the window above the bed gave her the gray-green of cedars" (ch1):
         # the glass was a dark solid pane with nothing behind it (sheet 42) —
         # it is the cedars' grey-green now, with a cross of glazing bars
-        make_box("EBed_Win_Glass", (2.85, 1.45, 1.75), (0.02, 1.46, 1.02), (0.50, 0.58, 0.52, 1.0))
-        make_box("EBed_Win_Muntin_V", (2.835, 1.45, 1.75), (0.01, 0.04, 1.02), COL_WOOD_DK)
-        make_box("EBed_Win_Muntin_H", (2.835, 1.45, 1.75), (0.01, 1.46, 0.04), COL_WOOD_DK)
+        make_box("EBed_Win_Glass", (2.85, 1.45, 1.65), (0.02, 1.46, 1.40), (0.50, 0.58, 0.52, 1.0))
+        make_box("EBed_Win_Muntin_V", (2.835, 1.45, 1.65), (0.01, 0.04, 1.40), COL_WOOD_DK)
+        make_box("EBed_Win_Muntin_H", (2.835, 1.45, 1.65), (0.01, 1.46, 0.04), COL_WOOD_DK)
     with _shift(0.25, 0.0):   # the desk under its S window (+0.25)
         # Writing desk against the S wall + the south window over it —
         # the kit table: turned legs, an apron, a stretcher (draft 5)
@@ -744,11 +745,12 @@ def build_wall_dressing():
     with _shift(1.0, 2.0):   # the main room's E window, by the stove
         # Curtained E window in the main… now inside the east room wall
         # segment north of the partition (main room's east outlook)
-        make_frame_ring("Window_E_Frame", (2.88, 4.2, 1.6), (0.04, 1.4, 1.1), COL_WOOD_DK, bar=0.08)
-        make_box("Window_E_Glass", (2.85, 4.2, 1.6), (0.02, 1.24, 0.94), COL_GLASS)
+        # (2026-11-10: 1.40 x 1.40 — it was 1.24 x 0.94)
+        make_frame_ring("Window_E_Frame", (2.88, 4.2, 1.65), (0.04, 1.56, 1.56), COL_WOOD_DK, bar=0.08)
+        make_box("Window_E_Glass", (2.85, 4.2, 1.65), (0.02, 1.40, 1.40), COL_GLASS)
         for sgn in (-1, +1):
-            make_box("Window_E_Curtain_%+d" % sgn, (2.815, 4.2 + sgn * 0.55, 1.6),
-                     (0.05, 0.34, 1.14), (0.60, 0.28, 0.24, 1.0))
+            make_box("Window_E_Curtain_%+d" % sgn, (2.815, 4.2 + sgn * 0.63, 1.65),
+                     (0.05, 0.34, 1.60), (0.60, 0.28, 0.24, 1.0))
 
 
 def build_runner_2026_10():
@@ -870,17 +872,18 @@ def build_architecture_2026_10():
         make_box(f"Gable_{nm}_Win_Muntin_V", (fx - e * 0.015, 4.0, 4.75), (0.01, 0.04, 0.86), COL_WOOD_DK)
         make_box(f"Gable_{nm}_Win_Muntin_H", (fx - e * 0.015, 4.0, 4.75), (0.01, 1.16, 0.04), COL_WOOD_DK)
     # the west window north of the shop (opening y 6.60..7.60, z 1.05..2.05)
-    make_frame_ring("West_Window_Frame", (-ROOM_W / 2.0 + 0.12, 7.10, 1.55), (0.04, 1.10, 1.10), COL_WOOD_DK)
-    make_box("West_Window_Glass", (-ROOM_W / 2.0 + 0.15, 7.10, 1.55), (0.02, 0.96, 0.96), glass)
-    make_box("West_Window_Muntin_V", (-ROOM_W / 2.0 + 0.135, 7.10, 1.55), (0.01, 0.04, 0.96), COL_WOOD_DK)
-    make_box("West_Window_Muntin_H", (-ROOM_W / 2.0 + 0.135, 7.10, 1.55), (0.01, 0.96, 0.04), COL_WOOD_DK)
-    make_box("West_Window_Sill", (-ROOM_W / 2.0 + 0.16, 7.10, 1.02), (0.14, 1.16, 0.04), COL_WOOD_DK)
+    # (2026-11-10: 1.20 x 1.15 over the counter, to the loft ledger — it was 1.00 x 1.00)
+    make_frame_ring("West_Window_Frame", (-ROOM_W / 2.0 + 0.12, 7.10, 1.625), (0.04, 1.30, 1.25), COL_WOOD_DK)
+    make_box("West_Window_Glass", (-ROOM_W / 2.0 + 0.15, 7.10, 1.625), (0.02, 1.16, 1.11), glass)
+    make_box("West_Window_Muntin_V", (-ROOM_W / 2.0 + 0.135, 7.10, 1.625), (0.01, 0.04, 1.11), COL_WOOD_DK)
+    make_box("West_Window_Muntin_H", (-ROOM_W / 2.0 + 0.135, 7.10, 1.625), (0.01, 1.16, 0.04), COL_WOOD_DK)
+    make_box("West_Window_Sill", (-ROOM_W / 2.0 + 0.16, 7.10, 1.02), (0.14, 1.36, 0.04), COL_WOOD_DK)
     # the second north window, by the stove (opening x 1.40..2.50, z 1.30..2.30)
-    make_frame_ring("North_Window_E_Frame", (1.95, ROOM_D - 0.12, 1.80), (1.20, 0.04, 1.10), COL_WOOD_DK)
-    make_box("North_Window_E_Glass", (1.95, ROOM_D - 0.15, 1.80), (1.06, 0.02, 0.96), glass)
-    make_box("North_Window_E_Muntin_V", (1.95, ROOM_D - 0.135, 1.80), (0.04, 0.01, 0.96), COL_WOOD_DK)
-    make_box("North_Window_E_Muntin_H", (1.95, ROOM_D - 0.135, 1.80), (1.06, 0.01, 0.04), COL_WOOD_DK)
-    make_box("North_Window_E_Sill", (1.95, ROOM_D - 0.16, 1.27), (1.26, 0.14, 0.04), COL_WOOD_DK)
+    make_frame_ring("North_Window_E_Frame", (1.95, ROOM_D - 0.12, 1.675), (1.20, 0.04, 1.35), COL_WOOD_DK)
+    make_box("North_Window_E_Glass", (1.95, ROOM_D - 0.15, 1.675), (1.06, 0.02, 1.21), glass)
+    make_box("North_Window_E_Muntin_V", (1.95, ROOM_D - 0.135, 1.675), (0.04, 0.01, 1.21), COL_WOOD_DK)
+    make_box("North_Window_E_Muntin_H", (1.95, ROOM_D - 0.135, 1.675), (1.06, 0.01, 0.04), COL_WOOD_DK)
+    make_box("North_Window_E_Sill", (1.95, ROOM_D - 0.16, 1.02), (1.26, 0.14, 0.04), COL_WOOD_DK)
     # ── the annex's ceiling: the east room under its own low cedar lid ──
     make_box("East_Room_Ceil", (2.65, 1.50, ANNEX_CEIL + 0.03), (2.50, 2.80, 0.06), (0.52, 0.38, 0.25, 1.0))   # inside the walls' faces (x 1.4..3.9, y 0.1..2.9)
     for ji, jy in enumerate((0.90, 2.00)):
@@ -1046,8 +1049,8 @@ def build_draft13_2026_10():
             make_box(f"Tie_Beam_{bi}_Brace_{nm}_Leaf_Vein", (e * 3.46, by - 0.06 - 0.012, 2.86), (0.006, 0.004, 0.18), timber)
     # the sills' end-blocks
     for e in (-1, 1):
-        make_box(f"West_Window_Sill_Block_{'S' if e < 0 else 'N'}", (-ROOM_W / 2.0 + 0.17, 7.10 + e * 0.61, 1.03), (0.16, 0.06, 0.06), COL_WOOD_DK)
-        make_box(f"North_Window_E_Sill_Block_{'W' if e < 0 else 'E'}", (1.95 + e * 0.66, ROOM_D - 0.17, 1.28), (0.06, 0.16, 0.06), COL_WOOD_DK)
+        make_box(f"West_Window_Sill_Block_{'S' if e < 0 else 'N'}", (-ROOM_W / 2.0 + 0.17, 7.10 + e * 0.71, 1.03), (0.16, 0.06, 0.06), COL_WOOD_DK)
+        make_box(f"North_Window_E_Sill_Block_{'W' if e < 0 else 'E'}", (1.95 + e * 0.66, ROOM_D - 0.17, 1.03), (0.06, 0.16, 0.06), COL_WOOD_DK)
         make_box(f"Loft_Window_Sill_Block_{'W' if e < 0 else 'E'}", (-2.60 + e * 0.51, ROOM_D - 0.17, 2.53), (0.06, 0.16, 0.06), COL_WOOD_DK)
     # the gable windows' outside casing
     for e, nm in ((-1, "W"), (1, "E")):
@@ -1070,8 +1073,8 @@ def build_draft15_2026_10():
     targets: a window seat where the south chair stands (the chair is canon —
     the seat would take its place); the tie beams' ends shaped; the gable
     windows' muntins as a sash; the stove's thimble plate carved."""
-    kw_x0, kw_x1, kw_z0, kw_z1 = -3.40, -1.80, 1.005, 1.955
-    make_frame_ring("Kitchen_Window_Casing", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.13, (kw_z0 + kw_z1) / 2.0 + 0.02), (1.80, 0.04, 1.10), (0.46, 0.34, 0.22, 1.0))
+    kw_x0, kw_x1, kw_z0, kw_z1 = -3.40, -1.80, 1.005, 2.205
+    make_frame_ring("Kitchen_Window_Casing", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.13, (kw_z0 + kw_z1) / 2.0 + 0.02), (1.80, 0.04, kw_z1 - kw_z0 + 0.15), (0.46, 0.34, 0.22, 1.0))
     make_box("Loft_Footboard", (-3.25, 7.00 - 0.95 - 0.03, LOFT_Z + 0.10 + 0.20), (1.34, 0.04, 0.40), COL_WOOD_DK)
     make_box("East_Room_Door_Lintel", (1.975, 2.90 - 0.10 - 0.025, 2.13), (1.02, 0.05, 0.14), (0.38, 0.27, 0.17, 1.0))
     for ci, cx_ in enumerate([1.975 - 0.40 + 0.16 * i for i in range(6)]):

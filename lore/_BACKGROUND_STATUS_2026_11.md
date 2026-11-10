@@ -159,7 +159,8 @@ posters, screens with no picture: `empty_frame_audit`).
   five lines directed. 791 → 899 parts. Draft 7 targets in the roadmap.
 - **WINDOWS (pass 333, 2026-11-10; the user: "Look at windows, if they are too small").** Ten sets' windows
   enlarged (bedrooms, Finn's apartment, the Henderson garage, the Pit Stop office); `window_size_audit.py`
-  measures every set (84 still under a house window's size in 26 sets — the cabin first).
+  measures every set. Pass 334: six of the cabin's windows and the safehouse bedroom's east window
+  (83 still flagged in 25 sets: roberts_kitchen, bungalow, nate_garage, the farmhouse kitchens next).
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (briefs
   for the first two are below, read but not built).
