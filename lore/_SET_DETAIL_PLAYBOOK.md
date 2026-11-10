@@ -84,6 +84,34 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-10 · lena_apartment draft 8 · the text has a floor plan in it: list the DOORS and the STORAGE first
+
+- **What happened:** eight drafts in, the apartment had no bathroom door,
+  no closet, no drawers and no cabinet — all of them named in the scenes
+  ("Tem went into the bathroom"; "the crack in the ceiling above the
+  closet"; "the second drawer down"; "from the cabinet") — while it had a
+  SECOND thermostat the text does not, with the insert shot aimed at it.
+  Earlier passes read the prose for hero objects (the stick, the hexagon,
+  the letter) and never for the plan.
+- **Rule:** before any detail pass, grep the set's scenes for the room's
+  bones — door, bathroom, closet, stairs, hall, window, drawer, cabinet,
+  shelf, "above", "behind", "outside" — and list every one against the
+  builder. A room named in passing (a bathroom someone goes into) is a DOOR
+  the set must have, even if no scene goes through it.
+- **Rule:** count the fixtures the text gives ONE of (the thermostat, the
+  clock, the phone). Two in the set means a shot is on the wrong one.
+- **An artist's home has her work in it.** Pinned studies are a sheet, a
+  blocked mark, four bits of tape and an art row — five of them cost 35
+  parts. What they show comes from what the text says she makes.
+- **A new part's NAME can steal a shot.** `Counter_Door_Sink_L_Knob` became
+  the `insert sink` subject; `marker_reaim --tight` moved "table" inserts to
+  the nearest thing called table. After adding parts, run marker_aim_audit
+  and read WHICH part each marker now claims.
+- **Don't cover a generated view to tick a target.** The draft-6 list had
+  "the front window's blind"; the window carries a generated street view
+  now. Dropped, and said so in the docstring.
+
+
 ### 2026-10-21 · re-plan by region: `plan.zoned`
 
 **Context:** the Roberts house's four zones shared one 8 × 6 m box, and each

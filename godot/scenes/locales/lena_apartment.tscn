@@ -358,11 +358,12 @@ position = Vector3(-2.224, 1.030, -1.456)
 rotation = Vector3(-0.2021, 2.5185, 0.0)
 metadata/fov = 36.0
 
-; insert: the nightstand
+; insert: the nightstand — her sketchbook on it, where she left it
+; (2026-11-10: the lens stood where the dresser now is; from over the bed's edge)
 [node name="shot_insert_nightstand" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.000, 1.100, -5.400)
-rotation = Vector3(-0.7276, 0.7356, 0.0)
-metadata/fov = 36.0
+position = Vector3(-1.950, 1.150, -5.350)
+rotation = Vector3(-0.6900, -0.5517, 0.0)
+metadata/fov = 38.0
 
 ; insert: the Estuary 7 stick on the side table (ch7/ch8 six-oclock)
 [node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -557,12 +558,15 @@ position = Vector3(1.390, 0.650, -0.296)
 rotation = Vector3(-0.2618, -0.2663, 0.0)
 metadata/fov = 35.0
 
+; (2026-11-10) "The thermostat above the bed read sixty-one" (ch3): it framed a
+; second thermostat on the front room's E wall, since removed — from over the
+; foot of the bed to the one the text names
+; (2026-11-10) close on it, from over the pillows: the dial is a quarter of the frame
 [node name="shot_insert_thermostat__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.799, 1.662, -1.947)
-rotation = Vector3(-0.2618, -0.8061, 0.0)
-metadata/fov = 35.0
+position = Vector3(-2.330, 1.760, -5.720)
+rotation = Vector3(0.1203, 0.2303, 0.0)
+metadata/fov = 30.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_pillow__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.500, 1.350, -4.300)
 rotation = Vector3(-0.3980, 0.0, 0.0)
@@ -581,12 +585,12 @@ rotation = Vector3(-0.5236, 1.5818, 0.0)
 metadata/fov = 35.0
 
 ; insert: the radiator pipe in its corner, the corner in the frame
+; (2026-11-10) the radiator under the front window and its pipe up the corner (it framed the pipe alone on a bare wall)
 [node name="shot_insert_radiator__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.300, 1.400, -0.900)
-rotation = Vector3(-0.0792, -2.1126, 0.0)
-metadata/fov = 38.0
+position = Vector3(1.150, 1.300, -1.750)
+rotation = Vector3(-0.4590, -2.5629, 0.0)
+metadata/fov = 40.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__lena_apartment" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.205, 1.662, -1.688)
 rotation = Vector3(-0.3347, 2.4158, 0.0)

@@ -3835,6 +3835,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 324: lena_apartment draft 8 — what the text names and the room lacked, and her walls.**
+- First of the backgrounds queue (941 lines on 645 parts). Read from the
+  twenty scenes that play there, not from the builder. The room had no
+  bathroom door ("Tem went into the bathroom at six-forty"), no kitchen
+  doors or drawers ("the second drawer down", "the kitchen drawer"), no
+  shelf over the stove or cabinet (ch10), no closet or ceiling crack (ch8),
+  no sketchbook (interlude ii), no boots or apron (ch12), no lamp on the
+  hall table (ch10), a radiator pipe with no radiator (ch3) — and two
+  thermostats where the text has one, with the `insert thermostat` shot on
+  the wrong one. All built / corrected (build_draft8_2026_11): 645 → 788
+  parts.
+- **Her walls:** five studies pinned up, each a sheet with tape and a roster
+  art row (lena_apartment_study_octopus / _kite / _tidepool / _mural /
+  _swatches) — the painter's home had not one of her pictures in it.
+- **Edges:** the alley wall ran 6.5 m and stopped at the apartment's floor
+  level, upstairs; it is the building opposite now, from the alley's floor
+  to a storey above the window, with the alley floor and her own building's
+  wall under the window.
+- **Shots:** the radiator insert framed a pipe on a bare wall (re-framed on
+  the radiator); the nightstand and thermostat inserts re-authored; the
+  preset's comment still described the 5 x 5 dorm studio.
+- **Found:** `marker_reaim.py --tight` re-aimed two "table" inserts at the
+  SIDE table (the text's is the kitchen table) — restored by hand; a part
+  named `…_Sink_…` hijacks the `insert sink` subject (renamed Basin).
+- **Draft 9 targets** (in the builder's docstring): the D2 pass proper (the
+  walls are still one flat peach each — picture rail, two tones, the
+  ceiling's own); the bathroom behind its door; the stair landing; the two
+  bedroom posters as pictures; D4 on the counter; a bedroom-doorway camera;
+  the window chair from the kit; Deck: do the studies read at their sizes.
+
 **2026-11-10 · THE BACKGROUNDS, MEASURED (the user: "Background models still need a lot of work.").**
 - `lore/_BACKGROUND_STATUS_2026_11.md`: all 116 sets by lines played, with
   views, markers, lights, parts, held views (edges) and empty pictures.

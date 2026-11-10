@@ -3119,11 +3119,16 @@ const CAMERA_PRESETS := {
 	"lena_apartment": {
 		"scene": "res://scenes/locales/lena_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
-		# Studio apartment 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.6). Bed
-		# on the W side (godot -1.25,-2.5), desk + laptop on the E (godot
-		# 1.25,-1.5), packed bookshelf on the E wall (godot 2.3,-3.8), rug
-		# centre, fairy lights on the N wall. Camera SE corner just inside
-		# the door looking NW across the rug to the bed, window/lights beyond.
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
 		"camera_origin": Vector3(1.5, 1.58, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,
@@ -3138,11 +3143,16 @@ const CAMERA_PRESETS := {
 		# suffixed to lena_apartment; this preset brings the street lamp's spill
 		# through the window and a night env; the floor lamp and the fairy
 		# lights serve both.
-		# Studio apartment 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.6). Bed
-		# on the W side (godot -1.25,-2.5), desk + laptop on the E (godot
-		# 1.25,-1.5), packed bookshelf on the E wall (godot 2.3,-3.8), rug
-		# centre, fairy lights on the N wall. Camera SE corner just inside
-		# the door looking NW across the rug to the bed, window/lights beyond.
+		# (2026-11-10: this comment still described the 5 x 5 dorm studio.)
+		# A one-bedroom over the Salty Tome, 7 x 6.6 (godot x∈[-3.5,3.5],
+		# z∈[0,-6.6], ceil 2.6): the front door in the S wall; the kitchen
+		# down the W wall behind its own partition (godot x -0.1) with a
+		# cased doorway; the front room E of it — the window chair, the
+		# easel in the SE corner, the bathroom door in the E wall; behind
+		# the partition at godot z -3.6 the bedroom (W) and the couch nook
+		# (E) with its two back windows. Camera in the front room looking
+		# NW through the kitchen doorway: the table, the counter, the
+		# mural window; the bedroom door and her pinned studies beside it.
 		"camera_origin": Vector3(1.5, 1.58, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,

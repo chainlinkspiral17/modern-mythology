@@ -40,6 +40,14 @@ blind, the chairs' cushion) plus: the main room's new floor between the
 table and the nook wants a second rug or a plant; the bedroom's empty
 east half (a dresser, her clothes on the chair).
 
+DRAFT 8 (2026-11-10): what the text names and the room lacked — the
+bathroom door, the kitchen's doors and drawers and its shelf and cabinet,
+the bedroom closet with the crack over it, a dresser, the sketchbook, the
+boots, the apron, the unused lamp, a radiator on the pipe; one thermostat;
+five of her studies pinned to the walls; the alley's wall, floor and near
+wall below the kitchen window. Its draft 9 targets are in
+build_draft8_2026_11's docstring.
+
 Coordinate frame: Blender Z-up, y=0 front (Hemlock) wall with the
 door, +Y into the apartment, walls x=±3.5, back wall y=6.6, ceiling
 2.6 (2026-10-09: was ±2.5 and 5.0). Kitchen along the W wall; bedroom nook behind a partition at
@@ -507,7 +515,18 @@ def build_starfish_nebula_2026_08():
     star = (0.88, 0.84, 0.66, 1.0)
     patch = (0.41, 0.33, 0.28, 1.0)  # almost the brick, not quite
     # The wall itself, running past the window frame both ways.
-    make_box("Nebula_AlleyWall", (wx, 1.30, 1.60), (0.15, 6.5, 3.2), brick)
+    # (2026-11-10, EDGES) The apartment is upstairs ("He went up the stairs.
+    # He knocked.") and the wall stopped at the apartment's floor level, 6.5 m
+    # long: from the sink the eye went under it and round it into the void.
+    # It is the building opposite now — from the alley's floor, 3.2 m down,
+    # to a storey above the window, north to the back of the block — and the
+    # alley has a floor and Lena's own building a wall below her window.
+    # (The alley opens on Hemlock at y 0: nothing of it runs south into the
+    # street the front window looks down on.)
+    make_box("Nebula_AlleyWall", (wx, 5.475, 0.70), (0.15, 14.85, 8.2), brick)          # y -1.95 .. 12.9
+    make_box("Alley_Floor", ((wx + (-ROOM_W/2.0 - 0.10)) / 2.0, 6.45, -3.225), (2.6, 12.9, 0.05), (0.26, 0.26, 0.27, 1.0))
+    make_box("Alley_NearWall", (-ROOM_W/2.0 - 0.16, 6.45, -1.72), (0.10, 12.9, 3.36), (0.40, 0.28, 0.23, 1.0))
+    make_box("Alley_Floor_Runnel", (wx + 1.30, 6.45, -3.197), (0.22, 12.9, 0.006), (0.18, 0.18, 0.20, 1.0))   # the wet centre drain line
     # The mural ground and its bands, proud of the wall by paint.
     make_box("Nebula_Ground", (wx + 0.083, 1.30, 1.70), (0.012, 3.6, 2.2), deep)
     make_box("Nebula_Band_Violet", (wx + 0.090, 0.75, 1.95), (0.010, 1.9, 0.85), violet)
@@ -584,11 +603,9 @@ def build_wear_personality_2026_08():
     # ── SIXTY-ONE DEGREES ──────────────────────────────────────
     # The thermostat reads what it reads; the draft towel at the
     # door base is how a cold apartment answers its own door.
-    with shifted(globals(), 1.0, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the E wall
-        make_box("Thermostat_Body", (2.382, 2.2, 1.45), (0.035, 0.14, 0.10),
-                 (0.86, 0.84, 0.78, 1.0))
-        make_box("Thermostat_Needle", (2.36, 2.19, 1.45), (0.008, 0.05, 0.012),
-                 (0.72, 0.24, 0.18, 1.0))
+    # (2026-11-10) the second thermostat that stood on the front room's E wall
+    # is gone: "The thermostat above the bed read sixty-one" (ch3) — there is
+    # one, in the bedroom, and the `insert thermostat` marker frames it now.
     make_box("Wear_DraftTowel", (0.60, 0.14, 0.035), (0.85, 0.14, 0.07),
              (0.55, 0.50, 0.42, 1.0))
     # ── THE CROWDING (weeks, so: objects, not floor) ───────────
@@ -742,8 +759,9 @@ def build_draft4_2026_09():
     # ── the switch by the door (S wall, east of the door) ──
     make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on Wall_S_E (the opening runs x -1..1)
     # ── the space heater's cord to the E wall ──
-    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 3.15), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_2", (1.21, 3.45, 0.10), (ROOM_W / 2.0 - 0.13, 3.15, 0.30), sag=0.04)
+    # (2026-11-10: north of the bathroom door's casing, which ends at 3.16)
+    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 3.33), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_2", (1.21, 3.45, 0.10), (ROOM_W / 2.0 - 0.13, 3.33, 0.30), sag=0.04)
     # ── the fairy lights' cord down the N wall's east end ──
     make_wall_outlet("Outlet_E_3", (ROOM_W / 2.0, 6.20), axis='Y', face_sign=-1, z=0.30, aged=True)
     make_cord_run("Cord_3", (3.02, ROOM_D - 0.10, 2.05), (ROOM_W / 2.0 - 0.13, 6.20, 0.30), sag=0.0)
@@ -762,6 +780,209 @@ def build_draft4_2026_09():
     make_rot_box("Slipper_R", (-2.61, 4.43, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=-0.12)
 
 
+def build_draft8_2026_11():
+    """DRAFT 8 (2026-11-10, the backgrounds queue: 941 lines play here on 645
+    parts) — WHAT THE TEXT NAMES AND THE ROOM LACKED, AND HER WALLS.
+
+    Read from the twenty scenes that play here, not from the builder:
+      the bathroom   "Tem went into the bathroom at six-forty. The shower
+                     came on" (ch10); "a spare toothbrush in the bathroom in
+                     the small drawer" (ch7) — there was no bathroom door.
+                     One now, on the front room's E wall.
+      the kitchen    "He pulled the cone filter down from the shelf above the
+                     stove and the bag of the dark French from the cabinet"
+                     (ch10); "four bowls and four spoons in the second drawer
+                     down" (ch8); "slid the sheet with the one word into the
+                     kitchen drawer" (ch6). The counter was one brown slab
+                     with no doors, no drawers, no shelf, no cabinet.
+      the bedroom    "the small crack in the ceiling above the closet"
+                     (ch8 Monday); "Her sketchbook is on the bedside table
+                     ... The pencils are in the drawer" (interlude ii). No
+                     closet, no crack, no sketchbook; and nowhere to keep
+                     clothes — a dresser.
+      by the door    "The boots were by the door, the apron was over the back
+                     of the kitchen chair" (ch12).
+      the hall table "the side table outside the bedroom where Lena kept the
+                     lamp she did not use" (ch10) — the table had no lamp.
+      the radiator   "the small click of the radiator pipe in the corner"
+                     (ch3) — the pipe ran to nothing.
+      the thermostat one, above the bed (ch3); the second on the E wall is
+                     removed.
+    HER WALLS. She painted a thirty-foot mural and "had been making the
+    octopus her whole life", and every wall of her home was a bare plane.
+    Five studies are pinned up — each a paper sheet with tape at its corners
+    and a roster art row (lena_apartment_study_*): the octopus, the kite of
+    starfish, a tide pool, the mural's colour study, a card of swatches.
+    EDGES: the alley (build_starfish_nebula).
+
+    NOT DONE, on purpose: the front window's blind (the draft-6 target) —
+    it would stripe the generated street view the window now carries.
+
+    DRAFT 9 targets: the bathroom behind its door, for the day a scene goes
+    in (one wall of tile, the mirror cabinet with "the small drawer"); the
+    stair landing outside the front door for "He went up the stairs. He
+    knocked" / "They came up the stairwell two at a time"; the D2 pass
+    proper — the walls are still one flat peach each: a picture rail, the
+    paint a tone darker below it, the ceiling's own tone; the two faded
+    posters in the bedroom as pictures; D4 on the counter (a cup in the
+    drainer, the butter dish from ch6); a camera in the bedroom doorway for
+    the Monday morning; the window chair is still slabs — the kit's armchair
+    when there is one; and Deck: do the five studies read at the sizes they
+    hang at, or should the octopus be bigger?
+    """
+    from _props.furniture import make_lamp as _lamp
+    paint = (0.62, 0.68, 0.58, 1.0)          # the kitchen's old sage enamel
+    paint_dk = (0.50, 0.56, 0.47, 1.0)
+    china = (0.86, 0.84, 0.78, 1.0)
+    paper = (0.93, 0.91, 0.84, 1.0)
+    tape = (0.86, 0.80, 0.62, 1.0)
+    iron = (0.80, 0.78, 0.72, 1.0)
+
+    # ── THE KITCHEN'S FRONTS · the counter's face is x -2.80, y 0.81 .. 2.40 ──
+    fx = -2.80
+    make_box("Counter_ToeKick", (fx + 0.003, 1.605, 0.05), (0.006, 1.59, 0.10), (0.14, 0.11, 0.09, 1.0))
+    # under the sink: a pair of doors; south of them a narrow one; a drawer
+    # stack; a last door by the fridge
+    for nm, y0, y1 in (("Counter_Door_S", 0.83, 1.06), ("Counter_Door_Basin_L", 1.08, 1.29),
+                       ("Counter_Door_Basin_R", 1.31, 1.52), ("Counter_Door_N", 2.00, 2.38)):
+        make_box(nm, (fx + 0.008, (y0 + y1) / 2.0, 0.49), (0.016, y1 - y0, 0.70), paint)
+        make_box(nm + "_Panel", (fx + 0.0165, (y0 + y1) / 2.0, 0.49), (0.002, y1 - y0 - 0.07, 0.60), paint_dk)
+        ky = y1 - 0.045 if nm.endswith(("_S", "_L")) else y0 + 0.045
+        make_cyl(nm + "_Knob", (fx + 0.027, ky, 0.76), 0.013, 0.02, china, axis='X', segments=8)
+    for k, zc in enumerate((0.74, 0.56, 0.38, 0.20)):          # top drawer first
+        out = 0.075 if k == 1 else 0.0      # "the second drawer down", left a hand's width open
+        make_box(f"Counter_Drawer_{k}", (fx + 0.008 + out, 1.77, zc), (0.016, 0.40, 0.16), paint)
+        make_cyl(f"Counter_Drawer_{k}_Knob", (fx + 0.027 + out, 1.77, zc), 0.013, 0.02, china, axis='X', segments=8)
+        if out:
+            # the open drawer's box, and the four spoons' handles in it
+            make_box(f"Counter_Drawer_{k}_Side_S", (fx + out / 2.0, 1.585, zc - 0.01), (out, 0.012, 0.12), COL_WOOD)
+            make_box(f"Counter_Drawer_{k}_Side_N", (fx + out / 2.0, 1.955, zc - 0.01), (out, 0.012, 0.12), COL_WOOD)
+            make_box(f"Counter_Drawer_{k}_Floor", (fx + out / 2.0, 1.77, zc - 0.066), (out, 0.36, 0.008), COL_WOOD)
+            for si in range(4):
+                make_box(f"Drawer_Spoon_{si}", (fx + 0.040, 1.66 + si * 0.035, zc - 0.058), (0.060, 0.012, 0.006), COL_STEEL)
+    # the cabinet the coffee lives in, on the wall between the window and the fridge
+    make_box("Upper_Cabinet", (-3.25, 2.20, 1.80), (0.30, 0.44, 0.70), paint)
+    make_box("Upper_Cabinet_Door", (-3.092, 2.20, 1.80), (0.016, 0.40, 0.66), paint)
+    make_box("Upper_Cabinet_Door_Panel", (-3.083, 2.20, 1.80), (0.002, 0.33, 0.57), paint_dk)
+    make_cyl("Upper_Cabinet_Knob", (-3.073, 2.05, 1.53), 0.013, 0.02, china, axis='X', segments=8)
+    # the shelf above the stove: the filters, the spare cone, a tea tin
+    make_box("Stove_Shelf", (-3.29, 0.50, 1.80), (0.22, 0.66, 0.025), COL_WOOD)
+    for k, sy in enumerate((0.24, 0.76)):
+        make_box(f"Stove_Shelf_Bracket_{k}", (-3.31, sy, 1.725), (0.18, 0.02, 0.125), COL_FRAME)
+    make_box("Stove_Shelf_Filters", (-3.30, 0.34, 1.8625), (0.13, 0.14, 0.10), (0.90, 0.86, 0.74, 1.0))
+    make_box("Stove_Shelf_Filters_Label", (-3.234, 0.34, 1.8625), (0.002, 0.10, 0.05), (0.44, 0.30, 0.22, 1.0))
+    make_lathe("Stove_Shelf_Cone", (-3.28, 0.54, 1.8125), [(0.025, 0.0), (0.03, 0.005), (0.062, 0.085), (0.064, 0.09), (0.0, 0.09)],
+               (0.80, 0.78, 0.72, 1.0), segments=10)
+    make_cyl("Stove_Shelf_Tin", (-3.30, 0.72, 1.8725), 0.045, 0.12, (0.30, 0.40, 0.44, 1.0), segments=10)
+
+    # ── the apron over the back of the kitchen chair (KChair_0: its back rail
+    #    is at x -2.06, y 1.20 .. 1.62, top 0.905) ──
+    apron = (0.22, 0.26, 0.34, 1.0)
+    make_box("Apron_Out", (-2.085, 1.41, 0.67), (0.012, 0.30, 0.48), apron)
+    make_box("Apron_Over", (-2.058, 1.41, 0.913), (0.066, 0.30, 0.012), apron)
+    make_box("Apron_In", (-2.020, 1.41, 0.81), (0.012, 0.30, 0.20), apron)
+    make_box("Apron_String", (-2.085, 1.585, 0.50), (0.012, 0.012, 0.30), (0.74, 0.70, 0.62, 1.0))
+
+    # ── the boots by the door, on their tray, west of the leaf's swing ──
+    make_box("Boot_Tray", (-0.64, 0.29, 0.006), (0.44, 0.36, 0.012), (0.20, 0.20, 0.21, 1.0))
+    for k, bx in enumerate((-0.73, -0.56)):
+        make_chamfer_box(f"Boot_{k}_Foot", (bx, 0.275, 0.057), (0.10, 0.27, 0.09), (0.26, 0.19, 0.14, 1.0), chamfer=0.02)
+        make_chamfer_box(f"Boot_{k}_Shaft", (bx, 0.195, 0.20), (0.095, 0.11, 0.20), (0.26, 0.19, 0.14, 1.0), chamfer=0.015)
+        make_box(f"Boot_{k}_Sole", (bx, 0.275, 0.006 + 0.012), (0.105, 0.275, 0.012), (0.10, 0.09, 0.08, 1.0))
+
+    # ── the lamp she does not use, on the table outside the bedroom ──
+    _lamp("Hall_Lamp", -2.08, 3.31, base_z=0.68, h=0.40, shade_col=(0.80, 0.74, 0.60, 1.0))
+
+    # ── THE BATHROOM DOOR · the front room's E wall (its face x 3.40), leaf y 2.30 .. 3.10 ──
+    ex = ROOM_W / 2.0 - 0.10
+    for nm, jy in (("Bath_Door_Jamb_S", 2.265), ("Bath_Door_Jamb_N", 3.135)):
+        make_box(nm, (ex - 0.015, jy, 1.05), (0.03, 0.07, 2.10), COL_WOOD)
+    make_box("Bath_Door_Head", (ex - 0.015, 2.70, 2.14), (0.03, 0.94, 0.08), COL_WOOD)
+    make_box("Bath_Door", (ex - 0.010, 2.70, 1.02), (0.02, 0.80, 2.04), (0.84, 0.80, 0.72, 1.0))
+    for k, (py, pz, ph) in enumerate(((2.51, 1.50, 0.78), (2.89, 1.50, 0.78), (2.51, 0.55, 0.62), (2.89, 0.55, 0.62))):
+        make_box(f"Bath_Door_Panel_{k}", (ex - 0.021, py, pz), (0.002, 0.28, ph), (0.76, 0.72, 0.64, 1.0))
+    make_cyl("Bath_Door_Knob", (ex - 0.045, 2.39, 1.00), 0.03, 0.05, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
+    make_box("Bath_Door_Threshold", (ex - 0.03, 2.70, 0.008), (0.06, 0.80, 0.016), (0.50, 0.38, 0.26, 1.0))
+    make_box("Bath_Door_Light", (ex - 0.004, 2.70, 0.019), (0.008, 0.76, 0.006), (0.98, 0.92, 0.74, 1.0))   # the line of light under it
+
+    # ── THE RADIATOR under the front window (the corner's pipe is the building's riser) ──
+    for k in range(10):
+        make_chamfer_box(f"Radiator_Fin_{k}", (1.64 + k * 0.08, 0.20, 0.40), (0.05, 0.13, 0.56), iron, chamfer=0.012)
+    for k, rx in enumerate((1.64, 2.36)):
+        make_box(f"Radiator_Foot_{k}", (rx, 0.20, 0.06), (0.04, 0.10, 0.12), iron)
+    # the header and the return the columns are cast onto (they hung in the air between the two feet)
+    make_box("Radiator_Rail_Bottom", (2.00, 0.20, 0.14), (0.77, 0.08, 0.05), iron)
+    make_box("Radiator_Rail_Top", (2.00, 0.20, 0.66), (0.77, 0.08, 0.05), iron)
+    make_cyl("Radiator_Valve", (2.44, 0.20, 0.20), 0.025, 0.07, (0.60, 0.50, 0.30, 1.0), axis='X', segments=8)
+    # its supply goes down through the floor at the valve (a run along the
+    # baseboard to the corner pipe crossed in front of the leaning boards)
+    make_tube("Radiator_Supply", [(2.44, 0.20, 0.20), (2.475, 0.20, 0.17), (2.48, 0.20, 0.10), (2.48, 0.20, 0.0)], 0.016,
+              (0.60, 0.56, 0.50, 1.0), segments=6)
+    make_cyl("Radiator_Supply_Collar", (2.48, 0.20, 0.008), 0.035, 0.016, (0.60, 0.56, 0.50, 1.0), segments=10)
+
+    # ── THE BEDROOM ──
+    # the closet: a door in the bedroom's E wall, the closet itself boxed into
+    # the dead corner of the nook behind the partition's stub
+    wx_ = -0.725                                   # Bedroom_Wall_E's line (0.20 thick)
+    make_box("Closet_Wall_E", (-0.05, 4.175, CEIL / 2.0), (0.10, 0.95, CEIL), PAL_WALL["wall"])
+    make_box("Closet_Wall_N", (-0.3625, 4.60, CEIL / 2.0), (0.525, 0.10, CEIL), PAL_WALL["wall"])
+    make_box("Closet_Wall_E_Base", (0.006, 4.175, 0.08), (0.012, 0.95, 0.16), PAL_WALL["baseboard"])
+    make_box("Closet_Wall_N_Base", (-0.3125, 4.656, 0.08), (0.625, 0.012, 0.16), PAL_WALL["baseboard"])
+    # (the leaf is y 3.76 .. 4.38: clear of the bed's footboard at 4.43)
+    for nm, jy in (("Closet_Door_Jamb_S", 3.735), ("Closet_Door_Jamb_N", 4.405)):
+        make_box(nm, (wx_ - 0.115, jy, 1.03), (0.03, 0.05, 2.06), COL_WOOD)
+    make_box("Closet_Door_Head", (wx_ - 0.115, 4.07, 2.10), (0.03, 0.72, 0.08), COL_WOOD)
+    make_box("Closet_Door", (wx_ - 0.110, 4.07, 1.01), (0.02, 0.62, 2.02), (0.84, 0.80, 0.72, 1.0))
+    for k, pz in enumerate((1.50, 0.55)):
+        make_box(f"Closet_Door_Panel_{k}", (wx_ - 0.121, 4.07, pz), (0.002, 0.46, 0.78 if k == 0 else 0.62), (0.76, 0.72, 0.64, 1.0))
+    make_cyl("Closet_Door_Knob", (wx_ - 0.145, 4.31, 1.00), 0.03, 0.05, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
+    # "the small crack in the ceiling above the closet that the upstairs
+    # neighbor's bathtub had made in 2050"
+    for k, (cx_, cy_, ln, yw) in enumerate(((-0.98, 4.02, 0.26, 0.35), (-1.21, 4.13, 0.24, 0.62), (-1.40, 4.29, 0.22, 0.20), (-1.58, 4.34, 0.16, 0.85))):
+        make_rot_box(f"Ceil_Crack_{k}", (cx_, cy_, CEIL - 0.004), (ln, 0.008, 0.003), (0.46, 0.40, 0.34, 1.0), yaw=yw)
+    # the dresser on the E wall, her clothes folded on it
+    make_chamfer_box("Dresser", (-1.035, 5.20, 0.39), (0.40, 0.90, 0.78), COL_WOOD, chamfer=0.012)
+    make_box("Dresser_Top", (-1.035, 5.20, 0.79), (0.43, 0.94, 0.02), COL_OAK)
+    for k, zc in enumerate((0.62, 0.38, 0.14)):
+        make_box(f"Dresser_Drawer_{k}", (-1.240, 5.20, zc), (0.010, 0.84, 0.20), (0.50, 0.37, 0.24, 1.0))
+        for j, ky in enumerate((4.98, 5.42)):
+            make_cyl(f"Dresser_Pull_{k}_{j}", (-1.254, ky, zc), 0.013, 0.018, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
+    make_chamfer_box("Dresser_Folded_Sweater", (-1.03, 5.44, 0.835), (0.30, 0.32, 0.07), (0.34, 0.40, 0.46, 1.0), chamfer=0.02)
+    make_chamfer_box("Dresser_Folded_Shirt", (-1.03, 5.44, 0.895), (0.28, 0.30, 0.05), (0.78, 0.72, 0.62, 1.0), chamfer=0.015)
+    make_cyl("Dresser_Dish", (-1.04, 4.92, 0.808), 0.06, 0.016, china, segments=10)
+    # her sketchbook on the bedside table, where she left it; one pencil
+    make_box("Sketchbook", (-1.63, 6.02, 0.609), (0.17, 0.13, 0.018), (0.16, 0.16, 0.18, 1.0))
+    make_box("Sketchbook_Pages", (-1.63, 6.02, 0.609), (0.172, 0.124, 0.012), paper)
+    make_cyl("Sketchbook_Pencil", (-1.60, 6.03, 0.622), 0.004, 0.15, (0.80, 0.66, 0.24, 1.0), axis='Y', segments=6)
+
+    # ── HER WALLS · five studies pinned up (each has a roster art row) ──
+    def study(nm, center, w, h, facing, mark):
+        """a sheet of paper flat on a wall, tape at its corners, a blocked
+        mark on it until its picture is generated"""
+        ax = 0 if facing in ("+x", "-x") else 1
+        sg = 1.0 if facing[0] == "+" else -1.0
+        def sz(t, a, b):            # (thickness, across, up) → box size
+            return (t, a, b) if ax == 0 else (a, t, b)
+        def at(off_n, off_a, off_z):
+            c = list(center)
+            c[ax] += sg * off_n
+            c[1 - ax] += off_a
+            c[2] += off_z
+            return tuple(c)
+        make_box(nm, at(0.002, 0.0, 0.0), sz(0.004, w, h), paper)
+        make_box(nm + "_Mark", at(0.0045, 0.0, 0.0), sz(0.001, w * 0.62, h * 0.58), mark)
+        for k, (sa, sz_) in enumerate(((-1, 1), (1, 1), (-1, -1), (1, -1))):
+            make_box(f"{nm}_Tape_{k}", at(0.0052, sa * (w / 2.0 - 0.012), sz_ * (h / 2.0 - 0.010)), sz(0.001, 0.040, 0.022), tape)
+    # over the hall table, on the wall the bedroom door is in (its S face y 3.50)
+    study("Study_Octopus", (-2.50, 3.50, 1.56), 0.34, 0.46, "-y", (0.24, 0.18, 0.34, 1.0))
+    study("Study_Kite", (-2.10, 3.50, 1.70), 0.32, 0.22, "-y", (0.86, 0.80, 0.62, 1.0))
+    study("Study_Tidepool", (-2.08, 3.50, 1.40), 0.28, 0.30, "-y", (0.18, 0.40, 0.44, 1.0))
+    # the nook's W wall (the bedroom wall's east face, x -0.625): the mural's colour study
+    study("Study_Mural", (-0.625, 5.55, 1.56), 0.92, 0.42, "+x", (0.13, 0.10, 0.26, 1.0))
+    # the E wall, between the easel's corner and the bathroom door: the swatch card
+    study("Study_Swatches", (ex, 1.98, 1.52), 0.22, 0.30, "-x", (0.62, 0.32, 0.42, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -775,6 +996,7 @@ def main():
     build_wear_personality_2026_08()
     build_hero_props_2026_09()
     build_draft4_2026_09()
+    build_draft8_2026_11()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_S", "S", 0.0, 2.00, kind="street", ground_z=-3.2, seed=11)   # Hemlock, one floor down
     make_view("View_N", "N", ROOM_D, 1.55, kind="back", ground_z=-3.2, seed=6)       # (2026-10-21) the back of the block

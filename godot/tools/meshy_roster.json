@@ -62591,6 +62591,246 @@
       ]
     },
     {
+      "slug": "lena_apartment_study_octopus",
+      "kind": "art",
+      "name": "Lena's octopus study, pinned by the bedroom door",
+      "file": "lena_apartment_study_octopus.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_study_octopus"
+      ],
+      "tag": "picture · lena_apartment · 0.34 x 0.46 m",
+      "aspect": "3:4",
+      "prompt": "A working study on a single sheet of heavy paper, seen flat and straight-on, filling the frame edge to edge, the paper's deckled edge and a strip of masking tape at each corner just inside the frame, evenly lit: an octopus drawn in ink line and washes of violet and indigo gouache, moving over a tide-pool floor, its eight arms uncoiled in a careful arrangement, each sucker a small pale ring, the mantle spotted. Pencil construction lines still showing under the paint, colour notes written small in pencil down one margin, a coffee ring in a corner.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch20_each.json",
+          "text": "Tem had not, until Lena's face, understood that Lena had been making the octopus her whole life. The octopus in spring of 2050 on the wall had been the visible part."
+        },
+        {
+          "src": "vol7/vol7_ch11_per.json",
+          "text": "A crow on a fencepost at the level of the rim, head turned three-quarters to the viewer. An octopus a quarter of the way around, eight arms in the careful uncoiled arrangement of an octopus moving over a tide-pool floor."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-10, draft 8 of the apartment: every wall of the painter's home was bare.) The octopus is the figure the text says she has made her whole life, in the arrangement it describes. The sheet is pinned beside the bedroom door / in the nook; the picture is hers — an eight-armed octopus, not the substrate's seven-and-a-half. AUTHOR'S CALL: the octopus is a late reveal about Lena (ch11, ch20) — if it should not hang in plain sight from chapter 3, leave this one ungenerated and the sheet stays a blocked study.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "Study_Octopus",
+          "center": [
+            -2.5,
+            3.492,
+            1.56
+          ],
+          "size": [
+            0.34,
+            0.46
+          ],
+          "facing": "-y",
+          "hide": [
+            "Study_Octopus_Mark",
+            "Study_Octopus_Tape_"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_study_kite",
+      "kind": "art",
+      "name": "Lena's study of the kite of starfish",
+      "file": "lena_apartment_study_kite.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_study_kite"
+      ],
+      "tag": "picture · lena_apartment · 0.32 x 0.22 m",
+      "aspect": "3:2",
+      "prompt": "A working study on a single sheet of heavy paper, seen flat and straight-on, filling the frame edge to edge, the paper's deckled edge and a strip of masking tape at each corner just inside the frame, evenly lit: a triangular kite made of starfish — a dozen five-armed sea stars in ochre, rose and cream arranged point to point into a kite shape with a tail of smaller stars — floating over the dark blue wash of a tide pool. Gouache over pencil, the kite's geometry ruled lightly first, a measurement written beside it in feet.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch10_morning.json",
+          "text": "The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool."
+        },
+        {
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-10, draft 8 of the apartment: every wall of the painter's home was bare.) The kite of starfish is a section of the Starfish Nebula mural the text names. The sheet is pinned beside the bedroom door / in the nook; the picture is hers — a study for the wall, with the wall's measurement on it.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "Study_Kite",
+          "center": [
+            -2.1,
+            3.492,
+            1.7
+          ],
+          "size": [
+            0.32,
+            0.22
+          ],
+          "facing": "-y",
+          "hide": [
+            "Study_Kite_Mark",
+            "Study_Kite_Tape_"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_study_tidepool",
+      "kind": "art",
+      "name": "Lena's tide-pool study",
+      "file": "lena_apartment_study_tidepool.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_study_tidepool"
+      ],
+      "tag": "picture · lena_apartment · 0.28 x 0.30 m",
+      "aspect": "1:1",
+      "prompt": "A working study on a single sheet of heavy paper, seen flat and straight-on, filling the frame edge to edge, the paper's deckled edge and a strip of masking tape at each corner just inside the frame, evenly lit: a tide pool seen from straight above: anemones in sea-green and rust, a purple sea star, mussels, bull kelp, the dark rim of basalt, the water's surface indicated by a few white gouache glints. Loose, fast, painted on the rocks — a grain of sand stuck in the paint, a date in pencil from the spring of 2050.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050."
+        },
+        {
+          "src": "vol7/vol7_ch10_morning.json",
+          "text": "The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-10): the mural has 'what was meant to be a tide pool' under its kite; a study from the rocks is proposed. Edit before spending credits.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "Study_Tidepool",
+          "center": [
+            -2.08,
+            3.492,
+            1.4
+          ],
+          "size": [
+            0.28,
+            0.3
+          ],
+          "facing": "-y",
+          "hide": [
+            "Study_Tidepool_Mark",
+            "Study_Tidepool_Tape_"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_study_mural",
+      "kind": "art",
+      "name": "the Starfish Nebula colour study in Lena's nook",
+      "file": "lena_apartment_study_mural.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_study_mural"
+      ],
+      "tag": "picture · lena_apartment · 0.92 x 0.42 m",
+      "aspect": "21:9",
+      "prompt": "A long horizontal colour study for a thirty-foot alley mural, gouache on a strip of heavy paper, seen flat and straight-on, filling the frame edge to edge, masking tape at its corners, evenly lit: a deep indigo night-sky ground swirling into nebula bands of violet, teal and dusty rose; at the centre a huge cream five-armed starfish glowing like a constellation; an octopus to one side, a triangular kite of starfish, tide-pool creatures drifting through the cosmic wash. A pencil grid drawn over the whole for scaling up to the wall, the squares numbered along the bottom edge, drips of paint on the margin.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050."
+        },
+        {
+          "src": "vol7/vol7_ch10_morning.json",
+          "text": "The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool."
+        },
+        {
+          "src": "vol7/vol7_ch20_each.json",
+          "text": "Tem had not, until Lena's face, understood that Lena had been making the octopus her whole life. The octopus in spring of 2050 on the wall had been the visible part."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-10, draft 8 of the apartment: every wall of the painter's home was bare.) The mural is outside her kitchen window (lena_apartment_nebula_1); this is its colour study, gridded for the wall. The sheet is pinned beside the bedroom door / in the nook; the picture is hers — the study agrees with that picture's palette and figures.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "Study_Mural",
+          "center": [
+            -0.617,
+            5.55,
+            1.56
+          ],
+          "size": [
+            0.92,
+            0.42
+          ],
+          "facing": "+x",
+          "hide": [
+            "Study_Mural_Mark",
+            "Study_Mural_Tape_"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lena_apartment_study_swatches",
+      "kind": "art",
+      "name": "the swatch card on Lena's wall by the easel",
+      "file": "lena_apartment_study_swatches.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena_apartment_study_swatches"
+      ],
+      "tag": "picture · lena_apartment · 0.22 x 0.30 m",
+      "aspect": "3:4",
+      "prompt": "A painter's swatch card, seen flat and straight-on, filling the frame edge to edge, masking tape at its corners: a sheet of heavy paper with four rows of hand-brushed rectangles of exterior masonry paint — indigos, violets, teals, a dusty rose, a cream — each with a handwritten note in pencil beside it (a paint code, a mixing ratio, a tick or a cross), one swatch circled twice. Thumbprints of paint at the edge.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch3_apartment.json",
+          "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-10): proposed — the mural's colours as she mixed them; the text gives the mural, not the card. Edit before spending credits.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "lena_apartment",
+          "label": "Study_Swatches",
+          "center": [
+            3.392,
+            1.98,
+            1.52
+          ],
+          "size": [
+            0.22,
+            0.3
+          ],
+          "facing": "-x",
+          "hide": [
+            "Study_Swatches_Mark",
+            "Study_Swatches_Tape_"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "finn_apartment_south_window_night",
       "kind": "art",
       "name": "the town to the south from Finn's kitchen window — at night",
