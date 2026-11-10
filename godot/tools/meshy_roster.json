@@ -57514,6 +57514,1840 @@
       "text_body": "NexCorp\n[on the mailbox] 2214\n[street sign at the mouth of the circle] CREEKSIDE CT"
     },
     {
+      "slug": "miller_kitchen_photo_sam_one",
+      "kind": "art",
+      "name": "the family-room photo: Sam at one",
+      "file": "miller_kitchen_photo_sam_one.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_photo_sam_one"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.20 m",
+      "aspect": "3:2",
+      "prompt": "A framed family snapshot, seen flat and straight-on, filling the frame edge to edge, the print itself and nothing around it: a one-year-old girl with fine brown hair sitting on a kitchen floor in a yellow sleeper, one hand in a mixing bowl of dry cereal, looking up at the camera with her mouth open. Late-2000s point-and-shoot, direct flash, a strip of linoleum and a cabinet door behind her, colours a little warm with age.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch5_miller_drive.json",
+          "text": "The photographs are of Sam, at various ages, from one through fourteen."
+        },
+        {
+          "src": "lore/planned_community/sam_miller.md",
+          "text": "Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") FR_Photo_0 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "FR_Photo_0",
+          "center": [
+            -0.4,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_0"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "FR_Photo_0",
+          "center": [
+            -0.4,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_0"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miller_kitchen_photo_sam_six",
+      "kind": "art",
+      "name": "the family-room photo: Sam at six",
+      "file": "miller_kitchen_photo_sam_six.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_photo_sam_six"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.20 m",
+      "aspect": "3:2",
+      "prompt": "A framed family snapshot, seen flat and straight-on, filling the frame edge to edge, the print itself and nothing around it: a six-year-old girl with brown hair to her chin, tilted to one side as if she slept on it, grinning with a front tooth missing, on a suburban driveway beside a small bicycle with training wheels, squinting into morning sun. A 2014 phone photo, a ranch house and a lawn sprinkler behind her.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch5_miller_drive.json",
+          "text": "The photographs are of Sam, at various ages, from one through fourteen."
+        },
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Her hair is on one side of her head in the way it always is when she wakes — the small tilt that has been the same since she was three."
+        },
+        {
+          "src": "lore/planned_community/sam_miller.md",
+          "text": "Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") FR_Photo_1 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "FR_Photo_1",
+          "center": [
+            0.08,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_1"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "FR_Photo_1",
+          "center": [
+            0.08,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_1"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miller_kitchen_photo_sam_ten",
+      "kind": "art",
+      "name": "the family-room photo: Sam at ten",
+      "file": "miller_kitchen_photo_sam_ten.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_photo_sam_ten"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.20 m",
+      "aspect": "3:2",
+      "prompt": "A framed family snapshot, seen flat and straight-on, filling the frame edge to edge, the print itself and nothing around it: a ten-year-old girl with brown hair in a ponytail holding up a small sunfish on a line at the end of a wooden dock, a wide Texas lake behind her in flat summer light, an adult's arm in a plaid sleeve just in frame steadying the rod. Mid-2010s phone photo, slightly overexposed water.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch5_miller_drive.json",
+          "text": "The photographs are of Sam, at various ages, from one through fourteen."
+        },
+        {
+          "src": "lore/planned_community/sam_miller.md",
+          "text": "Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") FR_Photo_2 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "FR_Photo_2",
+          "center": [
+            0.56,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_2"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "FR_Photo_2",
+          "center": [
+            0.56,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_2"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miller_kitchen_photo_sam_fourteen",
+      "kind": "art",
+      "name": "the family-room photo: Sam at fourteen",
+      "file": "miller_kitchen_photo_sam_fourteen.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_photo_sam_fourteen"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.20 m",
+      "aspect": "3:2",
+      "prompt": "A framed family snapshot, seen flat and straight-on, filling the frame edge to edge, the print itself and nothing around it: a fourteen-year-old girl with brown hair to her shoulders in a white dress and a paper mortarboard, holding a rolled middle-school promotion certificate in a school gymnasium, half-smiling, embarrassed, folding chairs and a banner out of focus behind her. Phone photo from 2022, indoor light.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch5_miller_drive.json",
+          "text": "The photographs are of Sam, at various ages, from one through fourteen."
+        },
+        {
+          "src": "lore/planned_community/sam_miller.md",
+          "text": "Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") FR_Photo_3 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "FR_Photo_3",
+          "center": [
+            1.04,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_3"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "FR_Photo_3",
+          "center": [
+            1.04,
+            -4.87,
+            2.05
+          ],
+          "size": [
+            0.28,
+            0.2
+          ],
+          "facing": "+y",
+          "hide": [
+            "FR_Photo_3"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miller_kitchen_hall_photo_family",
+      "kind": "art",
+      "name": "the hall photo: the three of them",
+      "file": "miller_kitchen_hall_photo_family.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_hall_photo_family"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.34 m",
+      "aspect": "3:4",
+      "prompt": "A framed studio family portrait from about 2016, seen flat and straight-on, filling the frame edge to edge: a mottled blue studio backdrop, a barrel-chested man in his early forties with close-cropped hair in a pressed plaid shirt, a woman in her thirties with brown hair in a clip and a cardigan, and between them their eight-year-old daughter with brown hair to her shoulders, all three in the stiff smile of a department-store sitting. Soft even studio light, the matte finish of a store print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/sam_miller.md",
+          "text": "Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019."
+        },
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one"
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") Hall_Photo_0 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "Hall_Photo_0",
+          "center": [
+            -6.47,
+            2.6,
+            1.55
+          ],
+          "size": [
+            0.28,
+            0.34
+          ],
+          "facing": "+x",
+          "hide": [
+            "Hall_Photo_0"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "Hall_Photo_0",
+          "center": [
+            -6.47,
+            2.6,
+            1.55
+          ],
+          "size": [
+            0.28,
+            0.34
+          ],
+          "facing": "+x",
+          "hide": [
+            "Hall_Photo_0"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miller_kitchen_hall_photo_chief",
+      "kind": "art",
+      "name": "the hall photo: the Chief's department portrait",
+      "file": "miller_kitchen_hall_photo_chief.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_hall_photo_chief"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.34 m",
+      "aspect": "3:4",
+      "prompt": "A framed official police department portrait, seen flat and straight-on, filling the frame edge to edge: a barrel-chested man in his late thirties with close-cropped hair in a dark navy dress uniform with a chief's badge and collar stars, shoulders square, unsmiling, in front of a United States flag and a Texas flag. Flat official portrait lighting, the look of a municipal photo taken the year he was sworn in.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one"
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") Hall_Photo_1 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "Hall_Photo_1",
+          "center": [
+            -6.47,
+            3.15,
+            1.55
+          ],
+          "size": [
+            0.28,
+            0.34
+          ],
+          "facing": "+x",
+          "hide": [
+            "Hall_Photo_1"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "Hall_Photo_1",
+          "center": [
+            -6.47,
+            3.15,
+            1.55
+          ],
+          "size": [
+            0.28,
+            0.34
+          ],
+          "facing": "+x",
+          "hide": [
+            "Hall_Photo_1"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miller_kitchen_hall_photo_sam_school",
+      "kind": "art",
+      "name": "the hall photo: Sam's school portrait",
+      "file": "miller_kitchen_hall_photo_sam_school.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miller_kitchen_hall_photo_sam_school"
+      ],
+      "tag": "picture · miller_kitchen · 0.28 x 0.34 m",
+      "aspect": "3:4",
+      "prompt": "A framed high-school yearbook portrait, seen flat and straight-on, filling the frame edge to edge: a seventeen-year-old girl with brown hair to her shoulders in a plain dark top, head tilted slightly, a guarded half-smile, against a grey-blue mottled school-photo backdrop. Flat school-portrait lighting, the faint sheen of a lab print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/sam_miller.md",
+          "text": "Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") Hall_Photo_2 was a flat slab of colour. The text gives the family (Sam, an only child; her father the police chief, a former marine; her mother Bianca) and that the album holds Sam 'from one through fourteen'; this print's moment is proposed from that. No photograph of the father as a young man hangs here: ch3 has Sam dream of one 'she has never seen'.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "miller_kitchen",
+          "label": "Hall_Photo_2",
+          "center": [
+            -6.47,
+            3.7,
+            1.55
+          ],
+          "size": [
+            0.28,
+            0.34
+          ],
+          "facing": "+x",
+          "hide": [
+            "Hall_Photo_2"
+          ]
+        },
+        {
+          "locale": "bianca_kitchen_morning",
+          "label": "Hall_Photo_2",
+          "center": [
+            -6.47,
+            3.7,
+            1.55
+          ],
+          "size": [
+            0.28,
+            0.34
+          ],
+          "facing": "+x",
+          "hide": [
+            "Hall_Photo_2"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_guadalupe",
+      "kind": "art",
+      "name": "Our Lady of Guadalupe in Graciela's kitchen",
+      "file": "ramos_kitchen_guadalupe.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_guadalupe"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.38 x 0.54 m",
+      "aspect": "2:3",
+      "prompt": "A devotional print of Our Lady of Guadalupe in the traditional composition, seen flat and straight-on, filling the frame edge to edge: the Virgin standing in a rose-pink gown and a blue-green mantle scattered with gold stars, hands joined, head bowed to her right, a golden mandorla of rays around her, a dark crescent moon under her feet held up by a small angel, roses at the border. A mid-century offset lithograph, colours softened and a little yellowed, a water mark at one corner.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning). Also hangs in graciela_bedroom (the same print over her altar / by her door).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Guadalupe_Print",
+          "center": [
+            -1.7,
+            0.13,
+            1.58
+          ],
+          "size": [
+            0.38,
+            0.54
+          ],
+          "facing": "+y",
+          "hide": [
+            "Guadalupe_Print",
+            "Guadalupe_Figure_",
+            "Guadalupe_Mandorla"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Guadalupe_Print",
+          "center": [
+            -1.7,
+            0.13,
+            1.58
+          ],
+          "size": [
+            0.38,
+            0.54
+          ],
+          "facing": "+y",
+          "hide": [
+            "Guadalupe_Print",
+            "Guadalupe_Figure_",
+            "Guadalupe_Mandorla"
+          ]
+        },
+        {
+          "locale": "graciela_bedroom",
+          "label": "Guadalupe_Image",
+          "center": [
+            1.858,
+            1.45,
+            1.62
+          ],
+          "size": [
+            0.36,
+            0.54
+          ],
+          "facing": "-x",
+          "hide": [
+            "Guadalupe_Image",
+            "Guadalupe_Figure",
+            "Guadalupe_Mandorla",
+            "Guadalupe_Robe"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_sacred_heart",
+      "kind": "art",
+      "name": "the Sacred Heart in Graciela's kitchen",
+      "file": "ramos_kitchen_sacred_heart.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_sacred_heart"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.29 x 0.39 m",
+      "aspect": "3:4",
+      "prompt": "A devotional print of the Sacred Heart of Jesus in the traditional composition, seen flat and straight-on, filling the frame edge to edge: Christ half-length in a white tunic and red mantle, one hand raised in blessing, the other pointing to a burning heart ringed with thorns on his chest, a soft halo, a plain warm-brown ground. An old chromolithograph, faded toward ochre, fine cracks in the varnish.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning). Also hangs in graciela_bedroom (the same print over her altar / by her door).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Sacred_Heart_Print",
+          "center": [
+            -2.37,
+            3.95,
+            1.7
+          ],
+          "size": [
+            0.29,
+            0.39
+          ],
+          "facing": "+x",
+          "hide": [
+            "Sacred_Heart_Print",
+            "Sacred_Heart_Figure",
+            "Sacred_Heart_Halo",
+            "Sacred_Heart_Heart"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Sacred_Heart_Print",
+          "center": [
+            -2.37,
+            3.95,
+            1.7
+          ],
+          "size": [
+            0.29,
+            0.39
+          ],
+          "facing": "+x",
+          "hide": [
+            "Sacred_Heart_Print",
+            "Sacred_Heart_Figure",
+            "Sacred_Heart_Halo",
+            "Sacred_Heart_Heart"
+          ]
+        },
+        {
+          "locale": "graciela_bedroom",
+          "label": "SacredHeart_Img",
+          "center": [
+            1.6,
+            0.157,
+            1.6
+          ],
+          "size": [
+            0.28,
+            0.38
+          ],
+          "facing": "+y",
+          "hide": [
+            "SacredHeart_Img",
+            "SacredHeart_Heart"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_wedding_photo",
+      "kind": "art",
+      "name": "the wedding photograph in Graciela's kitchen",
+      "file": "ramos_kitchen_wedding_photo.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_wedding_photo"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.27 x 0.35 m",
+      "aspect": "3:4",
+      "prompt": "A studio wedding portrait from the mid-1970s, seen flat and straight-on, filling the frame edge to edge, printed in warm sepia: a small upright young bride of about twenty in a high-necked lace dress and a long veil, a bouquet of white roses, beside a young groom in a dark suit with wide lapels and a carnation, both looking just past the camera, a painted studio backdrop of a balustrade. Soft studio light, the oval vignette of a Gulf Coast portrait studio of the time.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Wedding_Photo",
+          "center": [
+            1.3,
+            0.13,
+            0.92
+          ],
+          "size": [
+            0.27,
+            0.35
+          ],
+          "facing": "+y",
+          "hide": [
+            "Wedding_Photo",
+            "Wedding_Photo_Couple",
+            "Wedding_Photo_Veil"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Wedding_Photo",
+          "center": [
+            1.3,
+            0.13,
+            0.92
+          ],
+          "size": [
+            0.27,
+            0.35
+          ],
+          "facing": "+y",
+          "hide": [
+            "Wedding_Photo",
+            "Wedding_Photo_Couple",
+            "Wedding_Photo_Veil"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_hutch_photo",
+      "kind": "art",
+      "name": "the photo on top of the hutch in Graciela's kitchen",
+      "file": "ramos_kitchen_hutch_photo.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_hutch_photo"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.15 x 0.19 m",
+      "aspect": "3:4",
+      "prompt": "A small framed baby portrait from 2007, seen flat and straight-on, filling the frame edge to edge: a baby boy of a few months with a head of black curls propped on a white blanket in a department-store photo studio, wide dark eyes, a soft blue backdrop. A lab print, slightly faded.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Hutch_Top_Photo",
+          "center": [
+            2.181,
+            3.5,
+            2.1
+          ],
+          "size": [
+            0.15,
+            0.19
+          ],
+          "facing": "-x",
+          "hide": [
+            "Hutch_Top_Photo"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Hutch_Top_Photo",
+          "center": [
+            2.181,
+            3.5,
+            2.1
+          ],
+          "size": [
+            0.15,
+            0.19
+          ],
+          "facing": "-x",
+          "hide": [
+            "Hutch_Top_Photo"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_hall_photo_communion",
+      "kind": "art",
+      "name": "the hall photo: a first communion",
+      "file": "ramos_kitchen_hall_photo_communion.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_hall_photo_communion"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.24 x 0.32 m",
+      "aspect": "3:4",
+      "prompt": "A framed first-communion portrait from the early 1980s, seen flat and straight-on, filling the frame edge to edge: a solemn seven-year-old boy with combed black hair in a white shirt and a white ribbon armband, holding a candle and a small missal, in front of a parish-hall curtain. A colour studio print gone slightly magenta with age.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Hall_Photo_0",
+          "center": [
+            0.75,
+            -1.471,
+            1.55
+          ],
+          "size": [
+            0.24,
+            0.32
+          ],
+          "facing": "+y",
+          "hide": [
+            "Hall_Photo_0"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Hall_Photo_0",
+          "center": [
+            0.75,
+            -1.471,
+            1.55
+          ],
+          "size": [
+            0.24,
+            0.32
+          ],
+          "facing": "+y",
+          "hide": [
+            "Hall_Photo_0"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_hall_photo_beach",
+      "kind": "art",
+      "name": "the hall photo: the beach",
+      "file": "ramos_kitchen_hall_photo_beach.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_hall_photo_beach"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.24 x 0.32 m",
+      "aspect": "3:4",
+      "prompt": "A framed family snapshot from about 2010, seen flat and straight-on, filling the frame edge to edge: a small upright woman in her fifties in a sun hat and a flowered blouse standing in the shallows of a flat brown Gulf beach, holding the hand of a three-year-old boy with black curls in swim trunks, both squinting, a pier far behind them. A drugstore print, the colours a little washed out.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+        },
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Hall_Photo_1",
+          "center": [
+            1.17,
+            -1.471,
+            1.61
+          ],
+          "size": [
+            0.24,
+            0.32
+          ],
+          "facing": "+y",
+          "hide": [
+            "Hall_Photo_1"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Hall_Photo_1",
+          "center": [
+            1.17,
+            -1.471,
+            1.61
+          ],
+          "size": [
+            0.24,
+            0.32
+          ],
+          "facing": "+y",
+          "hide": [
+            "Hall_Photo_1"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_hall_photo_drumline",
+      "kind": "art",
+      "name": "the hall photo: Diego in his band uniform",
+      "file": "ramos_kitchen_hall_photo_drumline.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_hall_photo_drumline"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.24 x 0.32 m",
+      "aspect": "3:4",
+      "prompt": "A framed high-school marching band portrait from about 2023, seen flat and straight-on, filling the frame edge to edge: a sixteen-year-old boy with black curls in a navy-and-gold band uniform with the shako under one arm and a pair of drumsticks in his other hand, a snare drum on its carrier at his feet, standing on a football field's sideline, trying not to smile. A school photographer's outdoor portrait, afternoon light.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09, the user: \"lots of frames still showing as empty\"): the builder hangs this in Graciela's kitchen / hall; the text gives the household (Graciela, seventy-one, the rosary, the church clothes, two husbands, a son, her grandson Diego with black curls) but not this picture — proposed from that, edit before spending credits. Applies to both builds of the kitchen (grandmother_kitchen_morning, ramos_kitchen_morning).",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "Hall_Photo_2",
+          "center": [
+            1.59,
+            -1.471,
+            1.67
+          ],
+          "size": [
+            0.24,
+            0.32
+          ],
+          "facing": "+y",
+          "hide": [
+            "Hall_Photo_2"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "Hall_Photo_2",
+          "center": [
+            1.59,
+            -1.471,
+            1.67
+          ],
+          "size": [
+            0.24,
+            0.32
+          ],
+          "facing": "+y",
+          "hide": [
+            "Hall_Photo_2"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_00",
+      "kind": "art",
+      "name": "Diego's school picture, kindergarten",
+      "file": "ramos_kitchen_school_photo_00.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_00"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2012, seen flat and straight-on, filling the frame edge to edge: a 5-year-old boy with black curls, a gap-toothed grin and a collared shirt buttoned to the top, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_0",
+          "center": [
+            0.45,
+            0.125,
+            1.18
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_0"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_0",
+          "center": [
+            0.45,
+            0.125,
+            1.18
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_0"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_01",
+      "kind": "art",
+      "name": "Diego's school picture, first grade",
+      "file": "ramos_kitchen_school_photo_01.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_01"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2013, seen flat and straight-on, filling the frame edge to edge: a 6-year-old boy with black curls, a careful smile, a clip-on tie, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_1",
+          "center": [
+            0.62,
+            0.125,
+            1.31
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_1"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_1",
+          "center": [
+            0.62,
+            0.125,
+            1.31
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_1"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_02",
+      "kind": "art",
+      "name": "Diego's school picture, second grade",
+      "file": "ramos_kitchen_school_photo_02.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_02"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2014, seen flat and straight-on, filling the frame edge to edge: a 7-year-old boy with black curls, two front teeth missing, a striped polo, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_2",
+          "center": [
+            0.79,
+            0.125,
+            1.28
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_2"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_2",
+          "center": [
+            0.79,
+            0.125,
+            1.28
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_2"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_03",
+      "kind": "art",
+      "name": "Diego's school picture, third grade",
+      "file": "ramos_kitchen_school_photo_03.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_03"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2015, seen flat and straight-on, filling the frame edge to edge: a 8-year-old boy with black curls, a wide grin, a cowlick in the curls, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_3",
+          "center": [
+            0.96,
+            0.125,
+            1.41
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_3"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_3",
+          "center": [
+            0.96,
+            0.125,
+            1.41
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_3"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_04",
+      "kind": "art",
+      "name": "Diego's school picture, fourth grade",
+      "file": "ramos_kitchen_school_photo_04.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_04"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2016, seen flat and straight-on, filling the frame edge to edge: a 9-year-old boy with black curls, a closed-mouth smile, a button-down a size too big, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_4",
+          "center": [
+            1.13,
+            0.125,
+            1.38
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_4"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_4",
+          "center": [
+            1.13,
+            0.125,
+            1.38
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_4"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_05",
+      "kind": "art",
+      "name": "Diego's school picture, fifth grade",
+      "file": "ramos_kitchen_school_photo_05.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_05"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2017, seen flat and straight-on, filling the frame edge to edge: a 10-year-old boy with black curls, braces just on, a guarded smile, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_5",
+          "center": [
+            1.3,
+            0.125,
+            1.51
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_5"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_5",
+          "center": [
+            1.3,
+            0.125,
+            1.51
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_5"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_06",
+      "kind": "art",
+      "name": "Diego's school picture, sixth grade",
+      "file": "ramos_kitchen_school_photo_06.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_06"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2018, seen flat and straight-on, filling the frame edge to edge: a 11-year-old boy with black curls, hair grown out, a hooded sweatshirt, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_6",
+          "center": [
+            1.47,
+            0.125,
+            1.48
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_6"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_6",
+          "center": [
+            1.47,
+            0.125,
+            1.48
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_6"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_07",
+      "kind": "art",
+      "name": "Diego's school picture, seventh grade",
+      "file": "ramos_kitchen_school_photo_07.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_07"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2019, seen flat and straight-on, filling the frame edge to edge: a 12-year-old boy with black curls, a half-smile, eyes off to one side, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_7",
+          "center": [
+            1.64,
+            0.125,
+            1.61
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_7"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_7",
+          "center": [
+            1.64,
+            0.125,
+            1.61
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_7"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_08",
+      "kind": "art",
+      "name": "Diego's school picture, eighth grade",
+      "file": "ramos_kitchen_school_photo_08.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_08"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2020, seen flat and straight-on, filling the frame edge to edge: a 13-year-old boy with black curls, a face mask pulled down under his chin, tired eyes, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_8",
+          "center": [
+            1.81,
+            0.125,
+            1.58
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_8"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_8",
+          "center": [
+            1.81,
+            0.125,
+            1.58
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_8"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_09",
+      "kind": "art",
+      "name": "Diego's school picture, ninth grade",
+      "file": "ramos_kitchen_school_photo_09.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_09"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2021, seen flat and straight-on, filling the frame edge to edge: a 14-year-old boy with black curls, a thin first moustache, a band T-shirt under an open flannel, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_9",
+          "center": [
+            1.98,
+            0.125,
+            1.71
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_9"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_9",
+          "center": [
+            1.98,
+            0.125,
+            1.71
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_9"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ramos_kitchen_school_photo_10",
+      "kind": "art",
+      "name": "Diego's school picture, tenth grade",
+      "file": "ramos_kitchen_school_photo_10.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramos_kitchen_school_photo_10"
+      ],
+      "tag": "picture · the Ramos kitchen · 0.10 x 0.13 m",
+      "aspect": "3:4",
+      "prompt": "A wallet-size school picture from 2022, seen flat and straight-on, filling the frame edge to edge: a 15-year-old boy with black curls, a real smile, a denim jacket, head and shoulders against a mottled blue school-photo backdrop. Flat school-portrait flash, the glossy look of a picture-day print.",
+      "canon": [
+        {
+          "src": "lore/planned_community/diego_ramos.md",
+          "text": "Nineteen. Black curls. A small scar on his left forearm from a snare-rim catch."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the builder's 'Diego's school pictures climbing the wall, K to tenth' — eleven small prints, one a year; the text gives only his black curls and that he is nineteen. Proposed; the eleven can be generated as a set or left. Applies to both builds of the kitchen.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "grandmother_kitchen_morning",
+          "label": "School_Photo_10",
+          "center": [
+            2.15,
+            0.125,
+            1.68
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_10"
+          ]
+        },
+        {
+          "locale": "ramos_kitchen_morning",
+          "label": "School_Photo_10",
+          "center": [
+            2.15,
+            0.125,
+            1.68
+          ],
+          "size": [
+            0.1,
+            0.13
+          ],
+          "facing": "+y",
+          "hide": [
+            "School_Photo_10"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "foxhole_bar_flyer_aug22",
+      "kind": "art",
+      "name": "the Saturday 8/22 flyer on the Foxhole's walls",
+      "file": "foxhole_bar_flyer_aug22.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "foxhole_bar_flyer_aug22"
+      ],
+      "tag": "picture · foxhole_bar · 0.60 x 0.80 m · posted 4 times",
+      "aspect": "3:4",
+      "prompt": "A photocopied gig flyer blown up to poster size and taped to a bar wall, seen flat and straight-on, filling the frame edge to edge: two colours only — black ink on faded mustard-yellow paper — the photocopier's grain and a streak down one side, tape at the corners, one corner curled. Across the top the venue name THE FOXHOLE in chunky hand-drawn block lettering, slightly uneven, clearly drawn with a marker by one person years ago. Beneath it, in the same hand and in typewriter text, exactly: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO). A crude photocopied drawing of a fox's head in the lower corner.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "Beneath the title: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO)."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-09, the user: \"lots of frames still showing as empty\") Flyer_E_* / Flyer_W_* were nine procedural slabs with bars for type. This is the flyer the text gives word for word (ch14); the week's show is posted four times round the room, as a venue does. The fox's head is proposed.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_E_0_Body",
+          "center": [
+            5.888,
+            6.2,
+            1.6
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "-x",
+          "hide": [
+            "Flyer_E_0_"
+          ]
+        },
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_E_3_Body",
+          "center": [
+            5.888,
+            8.75,
+            1.95
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "-x",
+          "hide": [
+            "Flyer_E_3_"
+          ]
+        },
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_W_1_Body",
+          "center": [
+            -5.888,
+            4.5,
+            2.0
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "+x",
+          "hide": [
+            "Flyer_W_1_"
+          ]
+        },
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_W_3_Body",
+          "center": [
+            -5.888,
+            6.3,
+            2.0
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "+x",
+          "hide": [
+            "Flyer_W_3_"
+          ]
+        }
+      ],
+      "text_body": "THE FOXHOLE\nSATURDAY 8/22\nDOORS 8 PM // 21+ // CASH BAR\n9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN)\n11 PM: DJ CHESS (SAN ANTONIO)"
+    },
+    {
+      "slug": "foxhole_bar_flyer_open_mic",
+      "kind": "art",
+      "name": "the open-mic flyer on the Foxhole's walls",
+      "file": "foxhole_bar_flyer_open_mic.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "foxhole_bar_flyer_open_mic"
+      ],
+      "tag": "picture · foxhole_bar · 0.60 x 0.80 m · posted 3 times",
+      "aspect": "3:4",
+      "prompt": "A photocopied gig flyer blown up to poster size and taped to a bar wall, seen flat and straight-on, filling the frame edge to edge: two colours only — black ink on faded salmon-pink paper — the photocopier's grain and a streak down one side, tape at the corners, one corner curled. Across the top the venue name THE FOXHOLE in chunky hand-drawn block lettering, slightly uneven, clearly drawn with a marker by one person years ago. Beneath it: OPEN MIC — EVERY THURSDAY — SIGN-UP 7 PM — MUSIC 8 PM — THREE SONGS OR TEN MINUTES — NO COVER // 21+ // CASH BAR. A photocopied drawing of a microphone on a stand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the house style is the text's (half-letter, photocopied, two colours, the 2019 block lettering); an open-mic night at this venue is proposed — the text's open mic is 'in Selma'. Edit before spending credits.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_E_1_Body",
+          "center": [
+            5.888,
+            7.05,
+            1.95
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "-x",
+          "hide": [
+            "Flyer_E_1_"
+          ]
+        },
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_E_4_Body",
+          "center": [
+            5.888,
+            9.6,
+            1.6
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "-x",
+          "hide": [
+            "Flyer_E_4_"
+          ]
+        },
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_W_2_Body",
+          "center": [
+            -5.888,
+            5.4,
+            1.7
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "+x",
+          "hide": [
+            "Flyer_W_2_"
+          ]
+        }
+      ],
+      "text_body": "THE FOXHOLE\nOPEN MIC — EVERY THURSDAY\nSIGN-UP 7 PM — MUSIC 8 PM\nTHREE SONGS OR TEN MINUTES\nNO COVER // 21+ // CASH BAR"
+    },
+    {
+      "slug": "foxhole_bar_flyer_dj_saturdays",
+      "kind": "art",
+      "name": "the Saturday DJ-slot flyer on the Foxhole's walls",
+      "file": "foxhole_bar_flyer_dj_saturdays.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "foxhole_bar_flyer_dj_saturdays"
+      ],
+      "tag": "picture · foxhole_bar · 0.60 x 0.80 m · posted 2 times",
+      "aspect": "3:4",
+      "prompt": "A photocopied gig flyer blown up to poster size and taped to a bar wall, seen flat and straight-on, filling the frame edge to edge: two colours only — black ink on faded mint-green paper — the photocopier's grain and a streak down one side, tape at the corners, one corner curled. Across the top the venue name THE FOXHOLE in chunky hand-drawn block lettering, slightly uneven, clearly drawn with a marker by one person years ago. Beneath it: SATURDAYS ALL SUMMER — LIVE BAND 9 PM — DJ 11 PM 'TIL CLOSE — DOORS 8 PM // 21+ // CASH BAR. A photocopied drawing of a turntable.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "in the small overlapping booking patterns that small venues in this part of Texas use when they have, for the season, chosen to start running a regular DJ slot. Jesse has not, before this afternoon, paid attention."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE (2026-11-09): the house style and the season's regular DJ slot are the text's; the wording of this flyer is proposed. Edit before spending credits.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_E_2_Body",
+          "center": [
+            5.888,
+            7.9,
+            1.6
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "-x",
+          "hide": [
+            "Flyer_E_2_"
+          ]
+        },
+        {
+          "locale": "foxhole_bar",
+          "label": "Flyer_W_0_Body",
+          "center": [
+            -5.888,
+            3.6,
+            1.7
+          ],
+          "size": [
+            0.6,
+            0.8
+          ],
+          "facing": "+x",
+          "hide": [
+            "Flyer_W_0_"
+          ]
+        }
+      ],
+      "text_body": "THE FOXHOLE\nSATURDAYS ALL SUMMER\nLIVE BAND 9 PM — DJ 11 PM 'TIL CLOSE\nDOORS 8 PM // 21+ // CASH BAR"
+    },
+    {
       "slug": "hospice_room_window_view",
       "kind": "art",
       "name": "the parking lot below the hospice window before dawn",

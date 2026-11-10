@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 323: the first three households' pictures (28 rows from the empty-frame queue).**
+- The Miller house (7 photos, applied to both builds of the kitchen), Graciela's
+  house (the Guadalupe, the Sacred Heart, the wedding photograph, four family
+  photos, Diego's eleven school pictures; the two prints again in her
+  bedroom), the Foxhole (the flyer ch14 quotes word for word, posted four
+  times, and two house flyers). Every placement read by
+  hero_art_placement_audit (0 mechanical findings). The queue: 537 → 449
+  pictures (and the audit no longer counts mirrors, cabinet sides, a bike's
+  frame). `lore/_EMPTY_FRAMES_2026_11.md` lists what is written and what is
+  left.
+- **Found:** Graciela's dresser photos face the wall in the model; the Miller
+  sideboard photos are tilted boxes HeroArt cannot lay a quad on; calendars
+  are dates and wait for the timeline.
+- **Draft 2 targets:** the next households by how much they are seen
+  (roberts_kitchen's gallery wall, the Henderson house, cosmic_comics'
+  posters, the diner's chalkboard); turn Graciela's dresser photos round in
+  the builder; an upright option for the tilted sideboard frames; the 24
+  arcade screens of club_sharp and the 24 lab screens of small_wood_high as
+  ONE picture each posted many times (the Foxhole flyer pattern).
+
 **2026-11-09 · pass 322: the panorama, earned view by view (wide_frame_audit).**
 - Pass 321 made every view hold its composed 16:9 width on a wide screen (the
   garage's outer wall); only the Meadowlark street expanded, by hand.

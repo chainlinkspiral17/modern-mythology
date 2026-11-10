@@ -41,7 +41,8 @@ NOT = re.compile(r"window|door|bed_?frame|frame_(top|bot|bottom|left|right|l|r|n
                  r"_body|_back$|_leg|_cable|_cord|_bracket|_mount|_shelf|_post|_pole|scaffold|truss|chassis|"
                  r"wear_|stain|shadow|fluor|troffer|light|lamp|vent|grille|ceil|skylight|"
                  r"fridge|cooler|freezer|oven|microwave|washer|dryer|display_case|case_|aquarium|"
-                 r"camera|projector|speaker|radio|phone|laptop_base|keyboard", re.I)
+                 r"camera|projector|speaker|radio|phone|laptop_base|keyboard|mirror|cabinet_upper|"
+                 r"bike_frame|sofa_frame|stool|easel_leg", re.I)
 MIN_SIDE = 0.12
 MAX_THICK = 0.04
 # not pictures: stock on shelves, the glazing bars of a window, a seat-back
