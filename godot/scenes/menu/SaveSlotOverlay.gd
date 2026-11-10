@@ -241,6 +241,16 @@ func _delete_slot(slot: int) -> void:
 	_rebuild()
 
 
+## (2026-11-10) Escape / pad-back closes this panel, as its own button does
+## (the main menu had no way out of it but the mouse).
+func _input(event: InputEvent) -> void:
+	if not is_visible_in_tree():
+		return
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("menu_back"):
+		get_viewport().set_input_as_handled()
+		_close()
+
+
 func _close() -> void:
 	visible = false
 	closed.emit()

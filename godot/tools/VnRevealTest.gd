@@ -33,8 +33,13 @@ func _ready() -> void:
 	_run.call_deferred()
 
 
+## A paper or cream text box: dark words on a light plate (set by _run).
+var _dark_ink: bool = false
+
+
 func _lit(img: Image) -> PackedByteArray:
-	# 1 where the frame is lit like text (the plate over black is dark)
+	# 1 where the frame is text: lit on a dark plate, or (a paper / cream
+	# box) dark on a light one
 	var w: int = img.get_width()
 	var h: int = img.get_height()
 	var out := PackedByteArray()
@@ -42,7 +47,8 @@ func _lit(img: Image) -> PackedByteArray:
 	var data: PackedByteArray = img.get_data()      # RGBA8
 	for i in w * h:
 		var o: int = i * 4
-		out[i] = 1 if (int(data[o]) + int(data[o + 1]) + int(data[o + 2])) > 330 else 0
+		var sum: int = int(data[o]) + int(data[o + 1]) + int(data[o + 2])
+		out[i] = 1 if ((sum < 240) if _dark_ink else (sum > 330)) else 0
 	return out
 
 
@@ -177,7 +183,15 @@ func _run() -> void:
 	add_child(bg)
 	var dlg: Control = DLG.instantiate()
 	add_child(dlg)
-	dlg.call("setup", SkinDB.get_for_vol(5))
+	# --vol N: that volume's text box (3 terminal, 4 paper, 5 standard);
+	# --scale S: TEXT SIZE in the options (0.82 small … 1.3 large)
+	var scale_was: float = Settings.get_text_scale()
+	if String(_args.get("scale", "")) != "":
+		Settings.set("txt_scale", float(String(_args.get("scale", "1"))))
+	var skin: Dictionary = SkinDB.get_for_vol(int(String(_args.get("vol", "5"))))
+	dlg.call("setup", skin)
+	var ground: Color = skin.get("dlg_bg", Color(0.03, 0.025, 0.02, 0.96))
+	_dark_ink = ground.get_luminance() > 0.5
 	for i in 5:
 		await get_tree().process_frame
 	var size: Vector2i = get_viewport().get_texture().get_size()
@@ -190,6 +204,8 @@ func _run() -> void:
 			dlg.call("set_extra_occupied", side)
 			if li == 3:
 				dlg.call("show_say", "The Demon", LINES[li])
+			elif li == 2:
+				dlg.call("show_think", "Frasier", LINES[li])      # italics: [i]…[/i] around the line
 			else:
 				dlg.call("show_narrate", LINES[li])
 			var frames: Array = []
@@ -217,22 +233,29 @@ func _run() -> void:
 				var stray: int = 0
 				var outside: int = 0
 				var pr: Rect2 = plates[fi]
+				# dark ink is only ink ON the light plate (everything off it is the black stage)
+				var inner: Rect2 = pr.intersection(plate).grow(-22.0)
 				for i in f.size():
 					if f[i] == 1:
+						var x: float = float(i % w) / sx
+						var y: float = float(i / w) / sx
+						if _dark_ink:
+							if inner.has_point(Vector2(x, y)) and fin[i] == 0:
+								stray += 1
+							continue
 						if fin[i] == 0:
 							stray += 1
 						if fi > 20:
-							var x: float = float(i % w) / sx
-							var y: float = float(i / w) / sx
 							if x < pr.position.x - 1.0 or x > pr.end.x + 1.0 or y < pr.position.y - 1.0 or y > pr.end.y + 1.0:
 								outside += 1
-				if stray > 12:
+				# frames 0-1: the name plate pops in; the last: the cursor lands
+				if stray > 12 and fi > 1 and fi < frames.size() - 1:
 					print("      frame %d of %d: %d stray px" % [fi, frames.size(), stray])
 					moved_frames += 1
 					worst = maxi(worst, stray)
 					if out != "" and moved_frames == 1:
 						(await _grab()).save_png("%s/moved_%d_%s.png" % [out, li + 1, side if side != "" else "none"])
-				if outside > 12:
+				if outside > 12 and fi < frames.size() - 1:
 					print("      frame %d of %d: %d px outside the plate %s" % [fi, frames.size(), outside, pr])
 					outside_frames += 1
 			if moved_frames > 0:
@@ -246,5 +269,7 @@ func _run() -> void:
 			if out != "":
 				final_img.save_png("%s/final_%d_%s.png" % [out, li + 1, side if side != "" else "none"])
 	Settings.trip_amount = trip_was
+	if String(_args.get("scale", "")) != "":
+		Settings.set("txt_scale", scale_was)
 	print("[VnRevealTest] %d case(s) · %d finding(s)" % [cases, _bad])
 	get_tree().quit(1 if _bad > 0 else 0)

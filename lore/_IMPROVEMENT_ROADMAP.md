@@ -3872,6 +3872,24 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   `resources/vn/portrait_sides.json` names the views where the figure
   stands left (text lower right); the warehouse is the first. CharLayer
   `lone_side`, set by GameEngine with `bg_is_3d`.
+- **Later the same pass** (the user: "Continue"):
+  - `VnRevealTest` across every text box (vols 1–7: standard, terminal,
+    paper, cream) and TEXT SIZE 0.82 / 1.0 / 1.3, with an italic line and a
+    named speaker: 0 findings. (A paper or cream box is dark ink on a light
+    plate; the test reads those now.)
+  - `VnMenuFlowProbe --main 1`: the main menu's SETTINGS, MUSIC PLAYER and
+    GALLERY open on top and take their own clicks; Escape closes the first
+    two and now the save panel. The GALLERY keeps its ✕ only — it hosts
+    games and viewers that take Escape themselves.
+  - `portrait_side_audit.py`: ADVICE for the hand-written flanks (it reads
+    the set's boxes through each view's text and figure zones). It writes
+    nothing: most of the cast's models are not in a checkout, so its calls
+    could not be checked against pictures. It agrees with the user on the
+    warehouse (left 1.32 / right 1.38) and is confident about the garage
+    (0.52 / 1.07) — a candidate for the user's eye. `--check` is a gate.
+  - seen while testing: with NO figure up, narration is a centred 980 px
+    column — in the garage it sits on the drum kit. Draft 3: narration with
+    nobody on screen takes a side column too, the side the view directs.
 - **Draft 2 targets:**
   - the user reads the build line and the riverboat after
     `slim steamboat_model --force`; if the typing still breaks on a build

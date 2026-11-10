@@ -116,7 +116,87 @@ func _to_line() -> void:
 	await _frames(3)
 
 
+func _all_buttons(root: Node, out: Array) -> void:
+	for c in root.get_children():
+		if c is Button and (c as Button).is_visible_in_tree():
+			out.append(c)
+		_all_buttons(c, out)
+
+
+func _open_panels(root: Node) -> Array:
+	# the main menu's overlays that are up (full-rect Controls it added, with a `closed` signal)
+	var up: Array = []
+	for c in root.get_children():
+		if c is Control and (c as Control).visible and c.has_signal("closed"):
+			up.append(c)
+	return up
+
+
+## --main 1: the MAIN MENU's panels the same way — every button on the menu
+## whose click opens a panel: the panel is on top (what is under the pointer
+## at one of its own buttons is that button), and Escape closes it and
+## leaves the menu as it was.
+func _run_main() -> void:
+	var menu: Control = load("res://scenes/menu/MainMenu.tscn").instantiate()
+	get_tree().root.add_child(menu)
+	await _frames(40)
+	var btns: Array = []
+	_all_buttons(menu, btns)
+	var names: Array = []
+	for b in btns:
+		names.append((b as Button).text.strip_edges())
+	print("  main menu buttons: %s" % ", ".join(names))
+	var opened: int = 0
+	for want: String in ["SETTINGS", "MUSIC PLAYER", "GALLERY", "LOAD GAME", "CONTINUE"]:
+		var b: Button = _find_button(menu, want)
+		if b == null or _open_panels(menu).size() > 0:
+			continue
+		await _click(b, want)
+		await _frames(6)
+		var up: Array = _open_panels(menu)
+		if up.is_empty():
+			continue                      # this one opens no panel here (nothing to load, …)
+		opened += 1
+		var panel: Control = up[0]
+		var inner: Array = []
+		_all_buttons(panel, inner)
+		# one of its own buttons that is on screen (a long panel scrolls)
+		var screen: Rect2 = Rect2(Vector2.ZERO, get_viewport().get_visible_rect().size).grow(-8.0)
+		var ib: Button = null
+		for cand in inner:
+			if screen.has_point((cand as Button).get_global_rect().get_center()):
+				ib = cand
+				break
+		if ib != null:
+			var at: Vector2 = ib.get_global_rect().get_center()
+			var mv := InputEventMouseMotion.new()
+			mv.position = at
+			mv.global_position = at
+			get_viewport().push_input(mv, true)
+			await _frames(2)
+			var hov: Control = get_viewport().gui_get_hovered_control()
+			if hov != ib and (hov == null or not (ib.is_ancestor_of(hov) or panel.is_ancestor_of(hov))):
+				_flag("%s: its button '%s' is not what is under the pointer (%s is)" % [want, ib.text, hov.get_path() if hov != null else NodePath("nothing")])
+		await _key(KEY_ESCAPE)
+		await _frames(6)
+		if _open_panels(menu).size() > 0:
+			if want == "GALLERY":
+				# it hosts games and viewers that take Escape themselves; its ✕ closes it
+				print("  note · GALLERY: Escape does not close it (by design for now; its ✕ does)")
+			else:
+				_flag("%s: Escape does not close it" % want)
+			for p2 in _open_panels(menu):
+				(p2 as Control).visible = false
+		if not menu.is_inside_tree() or not menu.visible:
+			_flag("%s: Escape took the main menu with it" % want)
+	print("[VnMenuFlowProbe] main menu · %d panel(s) opened · %d finding(s)" % [opened, _bad])
+	get_tree().quit(1 if _bad > 0 else 0)
+
+
 func _run() -> void:
+	if String(_args.get("main", "")) == "1":
+		await _run_main()
+		return
 	var cfg_path: String = "user://settings.cfg"
 	var saved: PackedByteArray = FileAccess.get_file_as_bytes(cfg_path)
 	Settings.set("auto_play", false)
