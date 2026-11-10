@@ -3030,14 +3030,32 @@ const CAMERA_PRESETS := {
 	"hans_bakery_back_kitchen": {
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
-		# DRAFT 5 (2026-10-09): back-of-house 9 x 7.6 (godot x in [-4.5,4.5],
-		# z in [0,-7.6], ceil 3.0). The bake line on the N wall (counter +
-		# mixer W, deck oven + proofer E at godot 3.0,-7.1), the communal
-		# table mid-room (godot 0,-1.6..-5.1), the Hemlock window W
-		# (z -3.8), prep bench SW, racks E. Camera SE just inside the door
-		# looking NW across the table to the counter and the window.
+		# DRAFT 6 (2026-11-10): THE MAIN ROOM (the id is historical: 664 of
+		# its 695 lines are at the dining table, not in a back kitchen).
+		# godot x in [-4.5,4.5], z from +4.4 (the street wall: the belled
+		# door, the front window, the front counter) to -7.6 (the
+		# kitchenette wall, the wedding photograph, the doorway to the back
+		# kitchen at x 3.05). The dining table mid-room (godot 0,-1.8..-5.2),
+		# the worktable in the E aisle, the cooling rack table on the E
+		# wall, the Hemlock window and the back door W. Camera SE, just W of
+		# the cooling rack table, looking NW across the dining table.
 		"camera_origin": Vector3(3.20, 1.62, -0.90),
 		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"hans_bakery_ovens": {
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# (draft 6, 2026-11-10) THE BACK KITCHEN, vol7 ch10: "Per was at the
+		# back kitchen ... at the floured board ... Hans was at the stove. He
+		# had two trays out of the oven." North of the main room through the
+		# doorway (godot x in [-0.9,4.5], z -7.6..-12.4): the stove on the N
+		# wall, the island (the board W, the trays E), the deck oven and the
+		# proofer NE, the bench by the door with Per's box. Camera just
+		# inside the doorway looking NW. Markers suffixed __hans_bakery_ovens.
+		"camera_origin": Vector3(3.40, 1.62, -8.15),
+		"camera_rotation": Vector3(-0.09, 0.70, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

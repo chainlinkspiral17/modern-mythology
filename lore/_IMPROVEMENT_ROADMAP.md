@@ -3835,6 +3835,54 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 328: the bakery, draft 6 — a PLAN pass (the main room, the front of it, the back kitchen).**
+- Third of the backgrounds queue (`lore/_BACKGROUND_STATUS_2026_11.md`): 695
+  lines on one preset called `hans_bakery_back_kitchen`, 664 of them at the
+  dining table. Read for the bones first (the pass-324 rule): the text has a
+  MAIN ROOM ("three long tables: the worktable, the cooling rack table, and
+  the dining table"), whose back door and FRONT are both in it ("the bell
+  rang at the front of the bakery ... She walked to the front of the room.
+  Greta came out from behind the front counter ... went to the door ... He
+  looked across the room at the ten at the table"), a kettle with "Hans's
+  wedding-photo on the wall behind her", a kitchenette sink — and a BACK
+  KITCHEN next door ("Per came in from the back kitchen"; "on the bench in
+  the back kitchen"; "at the floured board ... Hans was at the stove. He had
+  two trays out of the oven"; the coat's peg and "the bench by the door").
+  The set had one room with the dining table and the ovens in it and the
+  front of house behind a wall with a pass window.
+- **Built** (`build_hans_bakery_back_kitchen.py`, 870 → 1,140 parts, 104
+  draw calls): the south wall and its pass window are gone — the room runs
+  from the street wall (the belled door on the table's axis, the front
+  window as the roster's picture, the front counter with its case of "two
+  loaves of the rye and the country and twelve Sunday rolls", bread shelves,
+  a waiting bench) under a header to the kitchenette wall (the sink, the
+  kettle on a sideboard under the wedding photograph, the doorway). The
+  third long table (the cooling rack table) on the E wall; the worktable is
+  draft 5's baker's bench. THE BACK KITCHEN is a room (5.4 x 4.8): the deck
+  oven, proofer, mixer, speed rack, flour and the door bench moved into it
+  by `shifted()`, plus the stove, the island (the floured board, the two
+  trays), a steel counter. New preset `hans_bakery_ovens` (ch10's 31 lines).
+- **Shots:** `[shot:insert box]` (8 uses) aimed at Per's box on the door
+  bench while its lines are about the box on the TABLE — there is one now.
+  `insert sill` aimed at the pass window's sill; the line is at the Hemlock
+  window. `insert bakery_light` played an interior shade for "the bakery's
+  back-kitchen light was on" (seen from the street) and for the BELL — now
+  `insert back_light` (the wall-pack over the back door, from the lot) and
+  `insert bell`. New: `insert counter`, `insert kettle`, `insert photo`,
+  and the back kitchen's four. Five scene lines re-directed.
+- Both views pass the wide-frame read and take the panorama.
+- **To generate:** `hans_bakery_wedding_photo` (the photograph: Greta's
+  brown eyes, forty-five years married; the church and clothes are
+  proposed). `hans_bakery_front_window` is unchanged and still outstanding.
+- **Draft 7 targets:** the front end's D2/D3 (price rail, till cord, wear
+  along the counter, the window's display ledge); the back kitchen's D2–D4
+  and a window; the loft stair ("He came down at five-thirty"); the
+  kitchenette as a real unit; lathed scored loaves; `Calendar` and
+  `Poster_E` are empty pictures; a Deck read of `shot_establish_b` (the
+  whole length of the room to the street door) and of `shot_insert_back_light`
+  (the hemlock's canopy fills its right edge); `closeup greta` at the
+  counter and `closeup roy` at the door.
+
 **2026-11-10 · pass 327: "Keep digging." — the options under the pause menu, the riverboat kept whole, Frasier to the left, the build that says which it is.**
 - The user, on pass 326: "That wasn't what caused my glitch. Keep digging.
   It types outside the box and then moved the too long word to the next

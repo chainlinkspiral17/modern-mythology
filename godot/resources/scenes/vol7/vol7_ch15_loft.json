@@ -395,7 +395,7 @@
    "t": "bg"
   },
   {
-   "text": "[mood:morning_bright][shot:insert bakery_light]Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four.",
+   "text": "[mood:morning_bright][shot:insert back_light]Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four.",
    "t": "narrate"
   },
   {
@@ -599,11 +599,11 @@
    "t": "narrate"
   },
   {
-   "text": "Greta was at the kettle. Sixty-six. The kind of woman who had been keeping a house and a bakery and a Swiss husband running for forty-five years by being competent at every job nobody had thought to thank her for.",
+   "text": "[shot:insert kettle]Greta was at the kettle. Sixty-six. The kind of woman who had been keeping a house and a bakery and a Swiss husband running for forty-five years by being competent at every job nobody had thought to thank her for.",
    "t": "narrate"
   },
   {
-   "text": "She had a wool sweater on under the apron. She had the same brown eyes as Hans's wedding-photo on the wall behind her. She turned when Marina came in.",
+   "text": "[shot:insert photo]She had a wool sweater on under the apron. She had the same brown eyes as Hans's wedding-photo on the wall behind her. She turned when Marina came in.",
    "t": "narrate"
   },
   {

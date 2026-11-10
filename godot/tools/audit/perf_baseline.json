@@ -161,6 +161,11 @@
   "prims": 22076,
   "objects": 370
  },
+ "hans_bakery_back_kitchen": {
+  "draw": 104,
+  "prims": 59628,
+  "objects": 274
+ },
  "henderson_kitchen": {
   "draw": 106
  },

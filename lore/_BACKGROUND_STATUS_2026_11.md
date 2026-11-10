@@ -138,9 +138,12 @@ posters, screens with no picture: `empty_frame_audit`).
   fronts, the closet, the radiator, her five studies, the alley.
 - **miller_kitchen / bianca_kitchen_morning** — draft 3 (2026-11-10, pass 325): 719 → 862 parts; the mudroom
   and the attached garage, the stair to the floor above, the hall closet, the drying rack, the back porch.
-- Next: hans_bakery_back_kitchen → board_lords_interior → henderson_kitchen → finn_apartment.
+- **hans_bakery_back_kitchen — draft 6 (pass 328, 2026-11-10): a plan pass.** One main room from the belled
+  street door and front counter to the kitchenette wall, three long tables, and a real back kitchen through a
+  doorway (new preset `hans_bakery_ovens`). 870 → 1,140 parts. Draft 7 targets in the roadmap.
+- Next: board_lords_interior → henderson_kitchen → finn_apartment.
 
-## Brief for the next pass: hans_bakery_back_kitchen (read 2026-11-10, not yet built)
+## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 
 695 lines play on the preset `hans_bakery_back_kitchen`, and the scenes are not in a back kitchen. From the
 text (vol7 ch15_loft 111–116, ch17_roy 8–19, ch17_aria 171, ch17_bakery 7 / 39 / 95, ch10_cabin 9 / 24):
@@ -159,6 +162,27 @@ text (vol7 ch15_loft 111–116, ch17_roy 8–19, ch17_aria 171, ch17_bakery 7 / 
 - **So:** the next pass is a PLAN pass, not a detail pass — one main room with the front counter and belled
   door at one end, the three long tables, the kettle wall with the wedding photograph, the back door; a
   doorway to the back kitchen (ovens, the bench). Check `hans_bakery_back_door` (10 lines) against it.
+
+## Brief for the next pass: board_lords_interior (read 2026-11-10, not yet built)
+
+598 lines on `board_lords_interior` (ch9_tuesday 131, ch16_shop 76, ch16_aud 65, ch5_roy 63, ch10_per 58,
+ch2_morning 26) and 66 on `board_lords_office` (ch12_kai). Unlike the bakery, the PLAN agrees with the text
+(rebuilt 2026-08 as the skate shop it is): the front door and its sign, the front window onto Main and the
+sanderling mural, the parents' bench against that window, the counter with the register and its small drawer and
+the stool behind it, the repair counter "in the back" under "the small fluorescent", the lathe, the back office
+(Devon's desk, his chair, two boxes of bearings), the alley and the truck. So this one is a DETAIL pass:
+
+- **Named and missing:** the BELL ("The bell had not rung. The shop was the two of them" — ch5_roy 50; a bell on
+  a spring over the door has been a draft target since September); the note "taped to the inside of the door
+  above the sign" and the CLOSED/OPEN sign as a part that can be read (no lettering: a card with two faces).
+- **A knot for the user, not for a builder to settle:** the kettle. ch5_roy 12 / 50 have "the kettle in the back
+  room"; ch16 (the builder's docstring quotes it) has him pull "the kettle out from under the counter" onto "the
+  small electric burner". The set has the second. Flag it; do not move it.
+- **Check by render before building:** `shot_establish_b` and the `main_street` preset for the street's depth
+  (a draft-4 target that was never read); the deck wall's glass; the three kids on the bench by the window
+  (ch16_shop 70) against the bench's length.
+- **Then the method:** D2 wall pass (the deck wall is one colour field), D4 use states (a board on the repair
+  bench with its trucks off — ch9's cracked board "from the bus rack"), D5 the alley past the office door.
 
 ## Reading it
 

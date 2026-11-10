@@ -718,7 +718,7 @@
     },
     {
       "char": "hans",
-      "text": "[shot:insert basket]In '37 Roy came into the bakery in November and stood at the front counter and bought a loaf of the rye. He had been coming in for six years by then.",
+      "text": "[shot:insert counter]In '37 Roy came into the bakery in November and stood at the front counter and bought a loaf of the rye. He had been coming in for six years by then.",
       "expr": "serious",
       "t": "say"
     },

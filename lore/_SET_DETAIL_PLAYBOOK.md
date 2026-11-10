@@ -84,6 +84,30 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-10 · when the text names two rooms, a detail pass on one is the wrong pass (the bakery, pass 328)
+
+- **What happened.** Five drafts had detailed a "back kitchen" — wear, wiring,
+  kit chairs, lathed bowls — in which a dining table for thirteen stood beside
+  a deck oven, with the shop behind a wall. The text has a main room (three
+  long tables, the front counter and the belled door at one end, the back
+  door at the other) and a back kitchen next to it. No amount of detail makes
+  the wrong plan right; `Build BIG` had already enlarged it once.
+- **Rules.**
+  1. Before a detail pass, list from the text every ROOM the scenes name and
+     which lines happen in which. A preset whose id names one room and whose
+     lines happen in another is a plan defect, however good the props.
+  2. A plan pass moves whole areas, not parts: `plan.shifted()` carries an
+     area's furniture, wear and wiring to its new room in one line.
+  3. A marker's name is a promise. `insert box` aimed at the wrong box,
+     `insert sill` at the wrong sill, `insert bakery_light` at a shade indoors
+     for a light seen from the street: after a plan pass run
+     `marker_aim_audit` and READ each cue's lines, not only its geometry.
+  4. A removed part can be another row's anchor: the canvas bag's art row
+     moved with its bench; the front window kept its pane's name, place and
+     size so the user's picture still fits. Grep the roster first.
+  5. A picture window gets a real hole in its wall even when a painting will
+     fill it (`window_backing_audit`).
+
 ### 2026-11-10 · lena_apartment draft 8 · the text has a floor plan in it: list the DOORS and the STORAGE first
 
 - **What happened:** eight drafts in, the apartment had no bathroom door,

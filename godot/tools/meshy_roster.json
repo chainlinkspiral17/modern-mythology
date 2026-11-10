@@ -9203,8 +9203,8 @@
           "locale": "hans_bakery_back_kitchen",
           "label": "Canvas",
           "center": [
-            1.62,
-            0.42,
+            1.37,
+            8.02,
             0.669
           ],
           "size": [
@@ -61284,6 +61284,53 @@
           "facing": "+y",
           "hide": [
             "FOH_Street_Pane"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hans_bakery_wedding_photo",
+      "kind": "art",
+      "name": "Hans's wedding photograph, on the bakery wall",
+      "file": "hans_bakery_wedding_photo.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "hans_bakery_wedding_photo"
+      ],
+      "tag": "picture · hans_bakery_back_kitchen · 0.32 x 0.42 m",
+      "aspect": "3:4",
+      "prompt": "A framed wedding photograph seen flat and straight-on, filling the frame edge to edge: a young couple on their wedding day standing close outside a small wooden church, the bride in a plain white dress with brown eyes looking straight at the camera, the groom in a dark suit beside her, both in their early twenties, a little stiff, a little amused. Overcast daylight, the soft colour and slight fade of a print that has hung on a kitchen wall for decades.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch15_loft.json",
+          "text": "Greta was at the kettle. Sixty-six. The kind of woman who had been keeping a house and a bakery and a Swiss husband running for forty-five years by being competent at every job nobody had thought to thank her for."
+        },
+        {
+          "src": "vol7/vol7_ch15_loft.json",
+          "text": "She had a wool sweater on under the apron. She had the same brown eyes as Hans's wedding-photo on the wall behind her. She turned when Marina came in."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-10, bakery draft 6) The text gives the photograph, the wall behind the kettle, Greta's brown eyes in it and forty-five years of marriage. The church, the dress and the suit are proposed; change them freely. Hangs on the main room's north wall over the sideboard where the kettle stands.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "hans_bakery_back_kitchen",
+          "label": "Wedding_Photo_Print",
+          "center": [
+            -0.9,
+            7.47,
+            1.62
+          ],
+          "size": [
+            0.32,
+            0.42
+          ],
+          "facing": "-y",
+          "hide": [
+            "Wedding_Photo_Print"
           ]
         }
       ]
