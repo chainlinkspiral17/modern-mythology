@@ -3835,6 +3835,69 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 330: Henderson kitchen, draft 5 — the front wall was a hole; the house around the kitchen.**
+- Fifth of the backgrounds queue (322 lines: ch7 the confession dinner,
+  ch20 the prints, ch22 after the Foxhole, ch23 the piano). READ by render
+  on twelve real lines first:
+- **The kitchen's front wall had a 2 m x 2 m open hole** (x -1..1) straight
+  onto the lawn and the houses across Magnolia. Establishing shots turned
+  south showed the street; `closeup person` ("Yeah, Mom. It is.") looked
+  out of it; `[shot:insert door~]` on "At seven oh-eight the basement door
+  opens" framed the hole's lintel, not the basement door. Three stub treads
+  under the front window were the stairs.
+- **The text has a house.** "He opens the front door quietly ... Jesse, at
+  the kitchen doorway" (ch22); "He goes upstairs to shower. He comes down"
+  (ch7); "The dining room has been, for fourteen years, the room where the
+  small table that holds the lamp lives" (ch23). The porch build's front is
+  flat: the door, the kitchen window east of it. So the S wall is CLOSED
+  (the front window widened to 1.5 m, an oak sideboard, fruit, cookbooks on
+  the long wall; the guitar in the corner with its face to the room), and
+  the doorway is a cased opening in the W wall onto:
+  - **the front hall** (2.2 m clear, oak boards): the six-panel front door,
+    hooks and two coats, a full thirteen-riser stair up along the shared
+    wall into a dark well (ceiling cut for headroom, newel, rail, a baluster
+    a tread), a back door;
+  - **the dining room** across the hall (4.2 x 4.6, sage, carpet with
+    vacuum lanes): a brass chandelier hung where a table would stand and
+    nothing under it, the front window in curtains, and THE SMALL TABLE
+    WITH THE LAMP against the far wall, lit — on the line of sight from the
+    kitchen through both openings.
+- **Shots.** `insert door` re-authored on the basement door from the SE
+  corner, looking into the crack (the door got two sunk panels and a
+  lighter brown: it read as a black card in every low mood; the stair bulb
+  reaches the landing now). New `insert doorway` (ch20 "He goes to the
+  door. He turns.") and `closeup doorway` (ch22 "Jesse, at the kitchen
+  doorway") hold the doorway with the hall and the lamp past it;
+  `establish_c` ("He goes upstairs") is a wide from the fridge corner across
+  the table to the doorway. New `closeup eileen` (across the table) and
+  `closeup mrs_henderson` (at the sink) — both cues had no marker.
+  `insert table` stepped inside the room (it stood in the hole).
+- 636 → 918 parts. support / overlap / furniture grammar / doorway /
+  window backing / walkway / marker aim: 0.
+- **Audit.** `wide_frame_audit` counted a ray that landed on a STREET as
+  void (it skipped everything on the obstruction audit's PASSABLE list,
+  which names streets): a flat slab of 16 m² or more is ground now. 17
+  more views would clear; none is added to `wide_views.json` unseen.
+  `closeup jesse` turned from the front window to the sideboard and guitar
+  corner (the wider window put open sky in its side bands).
+- Suite: one real failure, mine — the fruit bowl's lathe was a deep hollow
+  and came out inside-out (winding_audit); a shallow dish now. The gates
+  that read this room were re-run after it (winding, support, overlap,
+  furniture grammar, marker aim, wide frame, perf), not the whole suite.
+- **Draft 6 targets.** (1) A second camera area for the hall
+  (`henderson_hall`: the stair from its foot, the front door from inside)
+  so "He goes upstairs" and "He opens the front door quietly" can be SEEN;
+  (2) the two house fronts do not agree in metres (porch build: kitchen
+  window 2.5 m east of the door; here 5.9 m) — re-plan the porch build's
+  front to this plan, with the dining window lit by the lamp; (3) hall
+  D2/D3 (wear at the door, outlets, the return-air grille, a runner on the
+  stair), the upstairs landing past the well; (4) the directional lights
+  have no shadows, so hall and dining are as bright as the kitchen: a
+  dimmer far room wants shadowed keys or per-room light masks; (5) the
+  Calendar is an empty picture; cabinet doors ajar; the coffee maker's
+  cord; (6) the living room ("Through the wall he can hear his parents in
+  the living room", ch23) is nowhere yet.
+
 **2026-11-10 · pass 329: Board Lords, draft 5 — daylight, a glass door, the office as a room, four shots that looked at nothing.**
 - Fourth of the backgrounds queue (598 lines in the shop, 66 in the office).
   The plan agreed with the text; what the READ by render found did not:

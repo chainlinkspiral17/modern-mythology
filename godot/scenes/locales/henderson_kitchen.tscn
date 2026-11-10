@@ -186,8 +186,8 @@ shadow_enabled = false
 [node name="Basement_Bulb_Practical" type="OmniLight3D" parent="."]
 position = Vector3(5.750, 0.250, -1.600)
 light_color = Color(1.0, 0.82, 0.55, 1)
-light_energy = 0.55
-omni_range = 3.2
+light_energy = 0.9
+omni_range = 4.6
 shadow_enabled = false
 
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
@@ -341,9 +341,9 @@ metadata/fov = 56.0
 
 ; rotation C: from the hall door north over the table to the stove run
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.6, 1.5, -0.7)
-rotation = Vector3(-0.160303, -0.244979, 0)
-metadata/fov = 54.0
+position = Vector3(2.500, 1.600, -3.900)
+rotation = Vector3(-0.0810, 1.9510, 0.0)
+metadata/fov = 58.0
 
 ; insert: the basement door
 [node name="shot_insert_basement" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -353,14 +353,14 @@ metadata/fov = 42.0
 
 ; insert: the place settings
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.000, 1.250, 0.040)
-rotation = Vector3(-0.2794, -0.0116, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.000, 1.250, -0.450)
+rotation = Vector3(-0.2016, 0.0000, 0.0)
+metadata/fov = 48.0
 
 ; insert: the Telecaster on its stand by the stairs
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 0.9, -1.0)
-rotation = Vector3(-0.0363, -2.3842, 0.0)
+position = Vector3(-2.200, 0.950, -1.700)
+rotation = Vector3(-0.4400, 2.7690, 0.0)
 metadata/fov = 42.0
 
 ; insert: the small spiral notebook, the bridge lyrics
@@ -403,9 +403,9 @@ metadata/fov = 50.0
 
 ; insert: the door (the basement door, cracked the small specific way)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568, 1.775, -2.300)
-rotation = Vector3(0.2181, 2.8995, 0.0)
-metadata/fov = 42.0
+position = Vector3(2.100, 1.450, -0.450)
+rotation = Vector3(-0.2394, -0.6966, 0.0)
+metadata/fov = 46.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
@@ -425,7 +425,7 @@ metadata/fov = 45.0
 ; closeup: Jesse at the south chair, from the north side (the sink window behind the lens)
 [node name="shot_closeup_jesse" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.350, 1.400, -3.550)
-rotation = Vector3(-0.1892, 2.8999, 0.0)
+rotation = Vector3(-0.1892, 2.4500, 0.0)
 metadata/fov = 42.0
 
 ; closeup: Jim Henderson at the east chair, from the west side
@@ -464,3 +464,42 @@ metadata/fov = 35.0
 position = Vector3(1.173, 1.233, -1.652)
 rotation = Vector3(-0.2792, 0.8185, 0.0)
 metadata/fov = 35.0
+
+; ── draft 5 (pass 330, 2026-11-10): the house around the kitchen ──
+; the kitchen doorway (W wall), the hall and the dining room's lamp past it
+[node name="shot_insert_doorway" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.500, -1.750)
+rotation = Vector3(-0.1120, 1.6650, 0.0)
+metadata/fov = 50.0
+
+[node name="shot_closeup_doorway" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.200, 1.550, -1.220)
+rotation = Vector3(-0.0480, 1.4350, 0.0)
+metadata/fov = 40.0
+
+; "Eileen, across the table" (ch7)
+[node name="shot_closeup_eileen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.450, -2.200)
+rotation = Vector3(-0.1620, 1.1800, 0.0)
+metadata/fov = 42.0
+
+; "She is at the sink, drying her hands" (ch3)
+[node name="shot_closeup_mrs_henderson" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.550, -3.200)
+rotation = Vector3(-0.1150, 0.4950, 0.0)
+metadata/fov = 45.0
+
+; the small table that holds the lamp (ch23), in the dining room nobody dines in
+[node name="Dining_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.590, 1.150, -2.350)
+light_color = Color(1.0, 0.80, 0.52, 1)
+light_energy = 1.1
+omni_range = 4.6
+shadow_enabled = false
+
+[node name="Hall_Ceiling_Dome_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.450, 2.400, -1.400)
+light_color = Color(1.0, 0.88, 0.68, 1)
+light_energy = 0.7
+omni_range = 4.2
+shadow_enabled = false

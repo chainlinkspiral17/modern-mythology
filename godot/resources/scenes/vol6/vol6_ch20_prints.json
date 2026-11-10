@@ -748,7 +748,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]He gets up. He puts his cup in the sink. He goes to the door. He turns.",
+      "text": "[shot:insert doorway]He gets up. He puts his cup in the sink. He goes to the door. He turns.",
       "voice": "assets/audio/voice/vol6_ch20_prints/116.mp3"
     },
     {

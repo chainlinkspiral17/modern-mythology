@@ -144,7 +144,12 @@ posters, screens with no picture: `empty_frame_audit`).
 - **board_lords_interior — draft 5 (pass 329, 2026-11-10).** Daylight (it was dusk at ten in the morning), a
   glazed front door with Main through it, the back office as a real room with the hexagon on Devon's desk, and
   five shots that looked at nothing re-aimed. 862 → 1,002 parts.
-- Next: henderson_kitchen → finn_apartment.
+- **henderson_kitchen — draft 5 (pass 330, 2026-11-10): the house around the kitchen.** The front wall had a
+  2 m open hole onto the lawn; it is closed (one wider window, an oak sideboard under the long wall). The
+  kitchen doorway is a cased opening in the W wall onto a front hall (front door, a full stair up into a dark
+  well, a back door) and, across the hall, the dining room nobody dines in: carpet, a chandelier with no table
+  under it, the small table that holds the lamp, lit. 636 → 918 parts. Draft 6 targets in the roadmap.
+- Next: finn_apartment.
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 
@@ -186,6 +191,43 @@ the stool behind it, the repair counter "in the back" under "the small fluoresce
   (ch16_shop 70) against the bench's length.
 - **Then the method:** D2 wall pass (the deck wall is one colour field), D4 use states (a board on the repair
   bench with its trucks off — ch9's cracked board "from the bus rack"), D5 the alley past the office door.
+
+## Brief for finn_apartment (read 2026-11-10)
+
+307 lines across three views (`finn_apartment_night` 156: ch18_home 82, ch12_morning 74; `finn_apartment_day`
+96: ch5_cabin 80, ch12_kai 12, ch12_morning 4; `finn_apartment` 55: ch9_evening 28, ch18_stick 27). What the
+text fixes:
+
+- "a one-bedroom above the kayak shop"; "at the corner of Hemlock and the alley that ran behind the bakery".
+- THE KITCHEN WINDOW: "He stood at the kitchen window looking down at the alley" (ch12_morning) AND "The
+  kitchen window faced south. South was the direction of Cape Perpetua ... The face was looking out at the
+  town" (ch12_kai). One window: south, over the alley. The builder has it on the W wall ("the W wall is over
+  the alley") with a second S window "toward the street and the sea" — the plan disagrees with the text.
+- The kitchen: "the small kitchen table" with the folded cloth, the charred wood, later the hexagon; "the
+  chair across from him" (the crow's, in the kitchen); "the chair by the table"; "the space heater in the
+  corner"; "the duffel in the corner"; "the counter" (the cone and the kettle); "the kitchen light"; the radio
+  ("He could hear the radio going faintly through the door", ch5); the door Kai knocks at, never locked by
+  day; boots and coat pulled on at the door (ch5).
+- The bedroom, through "the doorway" the crow flies low through: the bed, the wool blanket; "the chair beside
+  the bed" (his grandmother's, 2046) with the crow on its back; the side table with a drawer, the reader on
+  it; "the bedroom's ceiling light"; "the dresser" (handkerchiefs); "the closet" with "the hook" his wax
+  canvas coat hangs on (ch18_home) — the builder has no closet.
+- Shots in use: closeup person 18, insert crow 10, closeup finn 8, closeup person_b 8, insert table 6,
+  establish 5, insert duffel 3, insert hexagon 3, insert charred_wood 3, insert phone / reader / door 2,
+  heater, kettle, coffee, cloth, cedar, notebook, stick, sleeve, blanket, closeup kai.
+- To read by render before any change: which chair the crow shots hold (kitchen vs bedroom — the text moves
+  the crow between them by line), what `insert door` shows, and the night view's window.
+
+Plan for draft 5 (not built yet):
+- COMPASS. The builder's "W" wall (sink window, alley, bakery) is TRUE SOUTH; its "S" window is true east
+  (Hemlock, inland: no sea there); its "N" bedroom window is true west (the sea). Re-label, move the sea band
+  to the bedroom window's view, hills/treeline inland; light the morning from the Hemlock side.
+- The kitchen window's view is a brick wall top to bottom (bakery wall 6.8 m): "The face was looking out at
+  the town" — lower the bakery's back wall to a storey and a half, roofs beyond, the bluff and its tower,
+  the cape.
+- THE CLOSET in the bedroom with the hook and the wax canvas coat (ch18_home); the coat hangs by the entry
+  door now and the bedroom has an open clothes rail.
+- The radio (ch5) on the counter; then read by render: crow shots (kitchen chair vs bedroom chair per line).
 
 ## Reading it
 

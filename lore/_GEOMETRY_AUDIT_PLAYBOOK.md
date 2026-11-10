@@ -158,6 +158,28 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-10 · one audit's "passable" is not another's "nothing" (wide_frame_audit, pass 330)
+
+- **What happened.** A new wide in the Henderson kitchen was HELD on
+  ultrawide: "void 2 % → 8 %". The rays that "met nothing" landed in the
+  middle of Magnolia Street, through the front window.
+- **Cause.** `wide_frame_audit` borrowed `vantage_obstruction_audit`'s
+  PASSABLE list to skip glass. That list also names streets and roads —
+  right for "does anything stand in the lens's way", wrong for "did the
+  ray run off the set". Every view with a street beyond a window was
+  counting the street as void.
+- **Rules.**
+  1. A name list borrowed from another audit is re-read against THIS
+     audit's question before it is trusted. Here: a flat slab of 16 m² or
+     more is ground whatever it is called.
+  2. Before changing a set to satisfy a gate, dump the offending rays and
+     see where they land (`W.hit` per ray, print the ground point). The
+     first fix here was a far-ground slab that changed nothing, because
+     the miss was never past the far lawn.
+  3. Loosening a ray test changes what the whole list would clear (185 →
+     202 views pass): the gate re-reads only the views already listed, and
+     nothing is added to `wide_views.json` without a look at it wide.
+
 ### 2026-11-09 · a suite that stops at its first failure hides every gate after it (pass 314)
 
 - **What happened:** three art entries lost all their surfaces in pass 307,

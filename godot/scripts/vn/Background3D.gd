@@ -897,11 +897,15 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/henderson_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/henderson_kitchen.glb",
 		# Family kitchen 6.5×5.5 (godot x∈[-3.25,3.25], z∈[0,-5.5], ceil
-		# 2.6). Table centre (godot 0,-2.75), sink+counter NW (godot
-		# -1.625,-4.5), stove centre-N (1.625,-4.5), fridge NE (godot
-		# 2.75,-4.5). Camera in the SE quadrant just inside the door
-		# looking NW across the table toward the sink corner — the whole
-		# kitchen in one 3/4 wide.
+		# 2.6). Table centre (godot 0,-2.75), sink under its window NW
+		# (-1.625,-5.1), stove N (1.625,-5.1), fridge and the basement
+		# door on the E wall. Draft 5 (2026-11-10): the S wall is the
+		# house front (closed, one window); the kitchen DOORWAY is in the
+		# W wall (z -0.95..-2.05) onto the front hall (x -5.55..-3.35:
+		# front door, the stair up) and the dining room past it (the lamp
+		# on its small table at x -9.6). Camera in the SE corner looking
+		# NW across the table: the sink wall, and the doorway with the
+		# hall and the lamp through it at frame left.
 		"camera_origin": Vector3(2.2, 1.58, -0.8),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,

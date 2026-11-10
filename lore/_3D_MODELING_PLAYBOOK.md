@@ -399,6 +399,37 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-10 · an opening is SOMEBODY'S doorway, and the room is one room of a house (Henderson kitchen, pass 330)
+
+- **What happened.** The Henderson kitchen's front wall had a 2 m x 2 m
+  hole in it, with a lintel over it and the front lawn beyond. Every wide
+  that turned south showed the street; "At seven oh-eight the basement door
+  opens" framed the hole; three stub treads under the front window were
+  "the stairs". The builder's own notes called the hole "the front door".
+- **Cause.** A one-room template: four walls, and a gap wherever the room
+  was entered from. Nobody had asked what the gap was. The text names two
+  different things ("He opens the front door quietly ... Jesse, at the
+  kitchen doorway") and a house around them (stairs up, a dining room
+  nobody dines in, a living room heard through a wall), and the porch
+  build draws the house front flat: the door, the kitchen window east of it.
+- **Rules.**
+  1. Every opening in a shell is named for what it is — a cased doorway to
+     a built room, a door in its frame, a window with a view — before the
+     wall is cut. A gap onto the view kit is a missing wall.
+  2. Before a room's plan is touched, grep the text for the HOUSE: front
+     door, doorway, stairs, hall, the other rooms by name. Then open the
+     exterior build of the same house; the two fronts must agree on what is
+     left and right of the door.
+  3. The rooms next door are built as far as a lens can see into them, and
+     one prose-anchored thing is put on the line of sight (here the lamp on
+     its small table, 13 m from the camera through two openings). A doorway
+     onto a lit room is the cheapest depth a kitchen can have.
+  4. A shared wall's far face needs its own paint and baseboard
+     (`make_wall` gives one side); a cased opening is cut one casing-bar
+     bigger a side and the jambs line the cut (`_cased` in the builder).
+  5. A stair is a full flight into a dark well with its ceiling cut for
+     headroom — never three treads. A stub is a stump.
+
 ### 2026-11-10 · look at the FILE before blaming the renderer (the riverboat in shards, pass 326)
 
 - **What happened.** "riverboat model looks all messed up in the renderer."

@@ -51,7 +51,13 @@ MARKER = re.compile(r'\[node name="(shot_[^"]+)" type="Marker3D"[^\n]*\n((?:[^\[
 def solids(boxes, view):
     out = []
     for name, c, h in boxes:
-        if VO.PASSABLE.search(name) or not VO._in_view(name, view) or not VO._not_stripped(name, view):
+        if not VO._in_view(name, view) or not VO._not_stripped(name, view):
+            continue
+        # a flat slab 16 m2 or more is GROUND whatever it is called: the
+        # obstruction audit's PASSABLE list names streets and roads (nothing
+        # stands on a lens's way there), and a ray that landed on the street
+        # across from a front window was being counted as void (pass 330)
+        if VO.PASSABLE.search(name) and not (h[2] <= 0.08 and h[0] * h[1] >= 4.0):
             continue
         out.append((c[0] - h[0], c[1] - h[1], c[2] - h[2], c[0] + h[0], c[1] + h[1], c[2] + h[2]))
     return out

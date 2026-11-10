@@ -167,7 +167,9 @@
   "objects": 274
  },
  "henderson_kitchen": {
-  "draw": 106
+  "draw": 94,
+  "prims": 57200,
+  "objects": 264
  },
  "honolulu_highrise": {
   "draw": 218,
