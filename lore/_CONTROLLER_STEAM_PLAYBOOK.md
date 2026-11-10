@@ -182,6 +182,15 @@ that nobody needs it.
   preset (a number is the hold: 0 expands, 1 holds).
 - **Rule:** a view earns `expand` by being LOOKED AT wide (ScreenProbe on a
   1720x720 screen) or by an audit of its side bands — never by default.
+- **The audit** (pass 322): `tools/audit/wide_frame_audit.py --write` casts
+  the bands for every view and every marker and writes
+  `resources/vn/wide_views.json` (183 of 423 cleared); the suite's `--gate`
+  re-reads the cleared ones. Void (a ray below the horizon that meets
+  nothing) is the sure sign of a set edge; sky is compared with the frame's
+  own. It is blind to a band that hits the WRONG thing — pin `"wide":
+  "hold"` on the preset when the Deck shows one. A tscn node line contains
+  `]` inside `groups=["vn_shot"]`: a marker regex that stops at the first
+  `]` parses no markers and passes everything (the first run cleared 333).
 
 ### 2026-11-09 · what cannot be reproduced is made impossible, and made to speak
 

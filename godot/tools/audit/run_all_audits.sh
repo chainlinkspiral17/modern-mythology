@@ -461,6 +461,16 @@ CGOUT="$(python3 ceiling_grid_audit.py --gate 2>/dev/null)" || {
 echo "$CGOUT" | tail -1
 echo ""
 
+# wide_frame_audit (2026-11-09): a view cleared for the panorama on a wide
+# screen (resources/vn/wide_views.json) must still pass — its 21:9 side bands
+# open no void and no more sky than the composed frame. A set that changes
+# under a cleared view fails here; re-run --write and look at it wide.
+echo "── wide_frame_audit.py --gate ──"
+WFOUT="$(python3 wide_frame_audit.py --gate 2>/dev/null)" || {
+    echo "$WFOUT" | grep "^STALE" || true; DEFERRED="$DEFERRED wide_frame_audit"; }
+echo "$WFOUT" | tail -1
+echo ""
+
 echo "── sign_roof_audit.py ──"
 SROUT="$(python3 sign_roof_audit.py 2>/dev/null)" || {
     echo "$SROUT" | grep -E "^CUT" | head -20

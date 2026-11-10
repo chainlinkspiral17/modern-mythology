@@ -6,6 +6,8 @@ extends Node
 ##
 ##   xvfb-run -a -s "-screen 0 3440x1440x24" godot --path godot \
 ##     res://tools/ScreenProbe.tscn -- --mode ultrawide --scene vol6_ch7_hospital --out /abs/dir
+##   --node N --once [--wait 160]: start at node N, one capture, quit (a wide
+##   look at one view — wide_frame_audit's reads are checked this way)
 
 const MAIN := preload("res://scenes/Main.tscn")
 var _args: Dictionary = {}
@@ -62,7 +64,14 @@ func _run() -> void:
 	await _shot("menu")
 	var scene_id: String = String(_args.get("scene", "vol6_ch7_hospital"))
 	var sc: Dictionary = SceneDataDB.get_scene(scene_id)
-	main.call("_on_play_requested", int(sc.get("vol", 1)), scene_id, 1)
+	main.call("_on_play_requested", int(sc.get("vol", 1)), scene_id, maxi(1, int(String(_args.get("node", "1")))))
+	if _args.has("once"):
+		for i in int(String(_args.get("wait", "160"))):
+			await get_tree().process_frame
+		_report("scene")
+		await _shot("scene")
+		get_tree().quit()
+		return
 	for k in 4:
 		for i in 40:
 			await get_tree().process_frame

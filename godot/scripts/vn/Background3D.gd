@@ -6130,10 +6130,37 @@ func _fit_native() -> void:
 
 ## How far the loaded view holds its composed 16:9 width on a wider screen:
 ## 1 = holds it (the default), 0 = expands to the sides (`"wide": "expand"`).
+## Which views have EARNED the panorama: resources/vn/wide_views.json, written
+## by tools/audit/wide_frame_audit.py (their 21:9 side bands open no void and
+## no more sky than the composed frame, for the establishing frame and every
+## shot marker). A preset's own "wide" key wins over the list.
+const WIDE_VIEWS := "res://resources/vn/wide_views.json"
+static var _wide_expand: Dictionary = {}
+static var _wide_loaded: bool = false
+
+
+static func _load_wide_views() -> void:
+	_wide_loaded = true
+	if not FileAccess.file_exists(WIDE_VIEWS):
+		return
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(WIDE_VIEWS))
+	if not (parsed is Dictionary):
+		return
+	var data: Dictionary = parsed
+	var names: Array = data.get("expand", [])
+	for n: Variant in names:
+		_wide_expand[String(n)] = true
+
+
 func _wide_hold() -> float:
 	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
 		return 1.0
-	var w: Variant = (CAMERA_PRESETS[_loaded_preset] as Dictionary).get("wide", "hold")
+	var spec: Dictionary = CAMERA_PRESETS[_loaded_preset]
+	if not spec.has("wide"):
+		if not _wide_loaded:
+			_load_wide_views()
+		return 0.0 if _wide_expand.has(_loaded_preset) else 1.0
+	var w: Variant = spec["wide"]
 	if w is String:
 		return 0.0 if String(w) == "expand" else 1.0
 	return clampf(float(w), 0.0, 1.0) if (w is float or w is int) else 1.0

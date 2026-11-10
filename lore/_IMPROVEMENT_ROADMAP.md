@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-09 · pass 322: the panorama, earned view by view (wide_frame_audit).**
+- Pass 321 made every view hold its composed 16:9 width on a wide screen (the
+  garage's outer wall); only the Meadowlark street expanded, by hand.
+  `wide_frame_audit.py` now reads all 423 views: rays through the 16:9 frame
+  and through the two side bands a 21:9 screen adds, for the establishing
+  frame and every shot marker that plays in the view. Below the horizon and
+  meeting nothing = the VOID (the set's ground has run out); above it and
+  meeting nothing = open SKY. A view expands when its bands open no void
+  (+2 %) and no more sky than the frame has (+10 %).
+- **183 views may expand, 240 hold** (91 on the establishing frame, 149 on
+  a marker). `resources/vn/wide_views.json`; Background3D reads it (a
+  preset's own `"wide"` key wins). The Hendersons' garage: void 0 → 15 %,
+  sky 12 → 62 % — held. Looked at wide (ScreenProbe `--node N --once`, 1720
+  x 720, openbox): the diner, the Miller kitchen, the Henderson kitchen,
+  Sam's bedroom, the cathedral — set to both edges.
+- **Suite gate** (`--gate`): every cleared view is re-read; a set that
+  changes under one fails until it is re-written and looked at.
+- **The plate with portraits** (pass 320's target): read on three lines; a
+  centre portrait still has the plate across its chest (the column is
+  centred when the only figure is) — draft 3: the plate below a centre
+  figure's collar, or to its side.
+- **Draft 3 targets:** the audit cannot see a band that HITS something wrong
+  (another room's back, an unfinished wall) — read the cleared views on the
+  Deck, chapter by chapter, and pin `"wide": "hold"` on any that show it; the
+  240 held views are a list of sets whose edges stop at the 16:9 frame —
+  build them out (SCALE + EDGES) and they clear themselves; the marker test
+  holds a whole view for one marker — a per-shot rule would let the wide
+  establish expand and only the insert hold.
+
 **2026-11-09 · pass 321: six reads from the wide screen (cars, couches, the crow, the three-shot, the side-set, the empty frames).**
 - **The Harmony Creek opening** ("all the cars need to be off the street, in
   their parking lots"): the street had ONE state — ch5's rainy-night curb
