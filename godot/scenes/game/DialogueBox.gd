@@ -77,11 +77,50 @@ var _std_inner_bot:  float  = 0.0
 
 func _ready() -> void:
 	Settings.settings_changed.connect(_on_settings_changed)
+	get_viewport().size_changed.connect(_on_viewport_resized)
 
 
 func _on_settings_changed(key: String, _val) -> void:
 	if key == "txt_scale" and not _skin.is_empty():
-		setup(_skin)
+		_rebuild_keeping_line()
+
+
+## (2026-11-10, the user: "making choices in the menu still breaks the
+## game.") TEXT SIZE in the options rebuilt this box from nothing — and the
+## line on screen went with it: an empty box under the menu, and an empty
+## screen after it until the next page. The rebuilt box takes the line back:
+## the same speaker, the same words, as far along as they were.
+func _rebuild_keeping_line() -> void:
+	var line: String = _full_text
+	var who: String = _last_speaker
+	var named: bool = _speaker != null and is_instance_valid(_speaker) and _speaker.visible
+	var slot: String = _col_slot
+	var was_typing: bool = _typing
+	var at: int = _char_idx
+	setup(_skin)
+	if line == "":
+		return
+	if named and who != "":
+		_present_speaker(who)
+	_anchor_to(slot)
+	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
+	_start_type(line)
+	if was_typing:
+		_char_idx = at
+		_body.visible_characters = at
+	else:
+		finish_typing()
+
+
+## The window changed size under a line (SCREEN SIZE in the options, a
+## window dragged): the column is placed and the line fitted again.
+func _on_viewport_resized() -> void:
+	if _body == null or not is_instance_valid(_body) or _skin.is_empty():
+		return
+	_anchor_to(_col_slot)
+	if _full_text != "":
+		_fit_body_size(_full_text)
+		_plate_snap = true
 
 
 func setup(skin: Dictionary) -> void:
@@ -274,17 +313,26 @@ func _anchor_to(slot: String) -> void:
 	elif side == "right":
 		target_l = left_pad + spare
 		target_r = -right_pad
-	var tw := create_tween().set_parallel(true)
-	tw.tween_property(_body, "offset_left", target_l, 0.25)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tw.tween_property(_body, "offset_right", target_r, 0.25)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# (2026-11-10, the user: "text is partially rendering outside the
+	# background box on the right before it continues to the next line" /
+	# "make the text work. don't break it on screen like this.") The column
+	# used to SLIDE to its place over a quarter second while the line was
+	# already being fitted and typed: the font was fitted at the old, wider
+	# column, the column then narrowed, the passage wrapped to a line more
+	# than the box holds and its last line was cut off at the screen edge.
+	# The column is in its place before the first character; only the plate
+	# glides (_update_plate).
+	var moved: bool = absf(_body.offset_left - target_l) > 0.5 \
+			or absf(_body.offset_right - target_r) > 0.5
+	_body.offset_left = target_l
+	_body.offset_right = target_r
 	if _speaker != null:
-		tw.tween_property(_speaker, "position:x", target_l, 0.25)\
-			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	if _spk_rule != null and _spk_rule.visible:
-		tw.tween_property(_spk_rule, "position:x", target_l, 0.25)\
-			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		_speaker.position.x = target_l
+	if _spk_rule != null:
+		_spk_rule.position.x = target_l
+	# a column that changes under a line already up: fit that line again
+	if moved and _full_text != "" and visible:
+		_fit_body_size(_full_text)
 
 
 func is_typing() -> bool:
@@ -296,7 +344,7 @@ func finish_typing() -> void:
 		return
 	_typing        = false
 	_char_timer    = 0.0
-	_body.text     = _full_text
+	_body.visible_characters = -1
 	# No scroll_to_line — box auto-fits the whole passage; jumping to the
 	# last line was hiding the opening lines on click.
 	_cursor.visible = true
@@ -372,10 +420,7 @@ func _make_measure() -> void:
 ## The rect the plate should have now (this box's coordinates): the whole
 ## line's text, the speaker's name when one is up, and the buffer.
 func _plate_target() -> Rect2:
-	_measure.offset_left = _body.offset_left
-	_measure.offset_right = _body.offset_right
-	_measure.offset_top = _body.offset_top
-	_measure.offset_bottom = _body.offset_bottom
+	_sync_measure()
 	var cw: float = float(_measure.get_content_width())
 	var ch: float = float(_measure.get_content_height())
 	if cw < 2.0 or ch < 2.0:
@@ -689,8 +734,16 @@ func _start_type(text: String) -> void:
 	_typing     = true
 	_char_timer = 0.0
 	_cursor.visible = false
+	# THE REVEAL (2026-11-10): the body holds the WHOLE line from the first
+	# character and shows it a character at a time (visible_characters,
+	# counted AFTER the line is shaped), so every word is on its final line
+	# from its first letter. Before, the body held only the typed part: a
+	# half-typed word fitted on the upper line, ran past the plate's edge,
+	# then jumped down a line when its last letters arrived.
+	_body.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
+	_body.visible_characters = 0
+	_body.text = text
 	_fit_body_size(text)
-	_body.text = ""
 	# (pass 82) The first line after a setup() measures before the label
 	# has a layout and falls back to the character-count guess, which
 	# clipped a five-line passage's last line. Measure again one frame
@@ -707,10 +760,7 @@ func _refit_once() -> void:
 		return
 	_refit_pending = false
 	_fit_body_size(_full_text)
-	if not _typing:
-		_body.text = _full_text
-	else:
-		_body.text = _substr_visible(_full_text, _char_idx)
+	_body.visible_characters = _char_idx if _typing else -1
 
 
 # Auto-fit: keep the big size for short/medium lines; step the font
@@ -721,34 +771,61 @@ func _fit_body_size(text: String) -> void:
 		return
 	var col: Color = _skin.get("txt_color", Color(0.98, 0.97, 0.94))
 	var vis: String = _substr_visible(text, _count_visible(text))
-	# Available inner height of the box (box height minus the top/bottom
-	# text padding). The whole passage must fit inside this — no scroll.
-	var avail: float = _std_box_h - _std_inner_top - _std_inner_bot
 	var floor_size: int = maxi(16, int(_body_base_size * 0.5))
 	var size: int = _body_base_size
-	if avail > 1.0 and vis != "":
-		# Measure at the real render width and step the font down until the
-		# rendered content fits the box top-to-bottom. get_content_height()
-		# validates the line cache synchronously, so this is accurate in
-		# one call (no await needed).
-		while size > floor_size:
-			_apply_rtl_font(_body, _body_font_path, size, col, true)
-			_body.text = vis
-			var ch: float = _body.get_content_height()
-			if ch <= 1.0:
-				# Layout not ready (e.g. first frame) — fall back to the
-				# character-count heuristic below rather than loop forever.
-				size = _fit_size_by_count(text)
-				break
-			if ch <= avail:
-				break
-			size -= 2
+	# (2026-11-10) Measured on the hidden twin at the body's own column, so
+	# the body's text is never touched while it types. A long passage first
+	# gets a TALLER box (the text rises, up to BOX_MAX_FRAC of the screen);
+	# only a passage too long for that has its type stepped down.
+	var box_h: float = _std_box_h
+	if _measure != null and vis != "":
+		_sync_measure()
+		_apply_rtl_font(_measure, _body_font_path, size, col, true)
+		_measure.text = text
+		var ch: float = float(_measure.get_content_height())
+		if ch <= 1.0:
+			# Layout not ready (first frame): the character-count guess;
+			# _refit_once measures for real a frame later.
+			size = _fit_size_by_count(text)
+		else:
+			var max_h: float = maxf(_std_box_h, _viewport_h() * BOX_MAX_FRAC)
+			box_h = clampf(ch + _std_inner_top + _std_inner_bot, _std_box_h, max_h)
+			var avail: float = box_h - _std_inner_top - _std_inner_bot
+			while ch > avail and size > floor_size:
+				size -= 2
+				_apply_rtl_font(_measure, _body_font_path, size, col, true)
+				ch = float(_measure.get_content_height())
 	else:
 		size = _fit_size_by_count(text)
+	_set_box_h(box_h)
 	_apply_rtl_font(_body, _body_font_path, size, col, true)
 	if _measure != null:
+		_sync_measure()
 		_apply_rtl_font(_measure, _body_font_path, size, col, true)
-		_measure.text = vis
+		_measure.text = text
+
+
+## How much of the screen's height a long passage's box may take.
+const BOX_MAX_FRAC := 0.46
+
+
+func _viewport_h() -> float:
+	var vpr := get_viewport_rect()
+	return vpr.size.y if vpr.size.y > 1.0 else 720.0
+
+
+func _set_box_h(h: float) -> void:
+	if absf(offset_top + h) < 0.5:
+		return
+	offset_top = -h
+	custom_minimum_size.y = h
+
+
+func _sync_measure() -> void:
+	_measure.offset_left = _body.offset_left
+	_measure.offset_right = _body.offset_right
+	_measure.offset_top = _body.offset_top
+	_measure.offset_bottom = _body.offset_bottom
 
 
 # Fallback shrink when we can't measure (layout not ready): scale the
@@ -765,20 +842,27 @@ func _process(delta: float) -> void:
 	_update_plate(delta)
 	if _typing:
 		_char_timer -= delta
-		if _char_timer <= 0.0:
+		# (2026-11-10) As many characters as the frame's time covers. It was
+		# one character a frame at most, so the type's speed was the frame
+		# rate's: FAST (10 ms) could not beat 16.7 ms at 60 fps, and a heavy
+		# set at 30 fps typed every speed at 33 ms.
+		var base := Settings.get_char_delay_ms() / 1000.0
+		var total: int = _count_visible(_full_text)
+		var steps: int = 0
+		while _char_timer <= 0.0 and _char_idx < total:
+			steps += 1
 			_char_idx += 1
-			var shown := _substr_visible(_full_text, _char_idx)
-			_body.text = shown
 			# Punctuation-aware pacing (2026-07 presentation wave): the
 			# reveal breathes with the prose instead of ticking flatly.
 			# Sentence stops hold longest, clause marks hold a little;
 			# everything scales off the user's char-delay setting.
-			var base := Settings.get_char_delay_ms() / 1000.0
-			_char_timer = base * _pause_mult_after(shown)
-			# No scroll_to_line — the box auto-fits the whole passage, and
-			# scrolling to the last line was hiding the opening lines.
-			if _char_idx >= _count_visible(_full_text):
+			_char_timer += base * _pause_mult_after(_substr_visible(_full_text, _char_idx))
+		if steps > 0:
+			_char_timer = maxf(_char_timer, -base)      # a hitch does not bank a burst
+			_body.visible_characters = _char_idx
+			if _char_idx >= total:
 				_typing     = false
+				_body.visible_characters = -1
 				_cursor.visible = true
 	elif _cursor != null and _cursor.visible:
 		_cursor_t += delta
@@ -793,7 +877,7 @@ func _process(delta: float) -> void:
 func _pause_mult_after(shown: String) -> float:
 	if shown.is_empty():
 		return 1.0
-	var c := shown[shown.length() - 1]
+	var c: String = shown[shown.length() - 1]
 	match c:
 		".", "!", "?":
 			return 7.0
