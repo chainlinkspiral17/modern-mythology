@@ -86,6 +86,30 @@ var _auto_chip: Label = null
 # AUTO_CG_S and dismissed.
 const AUTO_CHOICE_S := 2.5
 const AUTO_CG_S := 4.0
+# (2026-11-10, the user: "auto-play isn't working ... it's taking a long time
+# between continuing.") Three things were wrong. A title card with no
+# duration of its own ("A chirp", most of them) waited for a key for ever:
+# auto-play simply stopped there. The pause after a line was 2.2 – 7 s
+# counted from the END of the typing, as if nobody had read a word while it
+# typed. And AUTO ADVANCE (1 / 3 / 5 s) ran its own clock from the START of
+# the line, whose only effect was to snap a long line's typing shut — then
+# the 7 s began. Now there is one pause, counted once:
+#   · AUTO ADVANCE set  → exactly that long after the line has finished;
+#   · AUTO ADVANCE off  → a reading pace for the whole line, less the time
+#     it took to type (AUTO_READ_CPS), never under AUTO_MIN_S;
+#   · a voiced line     → AUTO_VOICE_TAIL_S after the voice ends;
+#   · a title card      → AUTO_CARD_S, then it turns itself.
+# AUTO ADVANCE on its own (auto-play off) turns the pages the same way but
+# leaves the choices to the reader.
+const AUTO_CARD_S := 2.4
+const AUTO_READ_CPS := 24.0
+const AUTO_MIN_S := 0.9
+const AUTO_MAX_S := 4.5
+const AUTO_VOICE_TAIL_S := 0.7
+var _auto_line_t: float = 0.0
+var _auto_from_setting: bool = false
+var _auto_voiced: bool = false
+var _auto_voice_cap: float = 0.0
 var _auto_user_off: bool = false
 var _auto_wait_t: float = 0.0
 var _choice_key: String = ""
@@ -2136,8 +2160,10 @@ func _do_videoscene(_n: Dictionary) -> void:
 
 func _wait() -> void:
 	_waiting = true
-	var ms: int = Settings.auto_advance_ms
-	_auto_timer = ms / 1000.0 if ms > 0 else 0.0
+	# the pause after a line is _tick_reading_comfort's alone (see AUTO_CARD_S)
+	_auto_timer = 0.0
+	_auto_line_t = 0.0
+	_auto_voiced = false
 
 
 func _process(delta: float) -> void:
@@ -2186,9 +2212,9 @@ func _auto_pick_choice() -> void:
 	_choices.call("_on_chosen", idx)
 
 
-func _toggle_auto_mode() -> void:
+func _toggle_auto_mode(quiet: bool = false) -> void:
 	_auto_mode = not _auto_mode
-	if Settings.auto_play:
+	if Settings.auto_play or Settings.auto_advance_ms > 0:
 		_auto_user_off = not _auto_mode
 	_auto_read_t = 0.0
 	if _auto_chip == null:
@@ -2205,6 +2231,8 @@ func _toggle_auto_mode() -> void:
 		_auto_chip.add_to_group("ui")
 		add_child(_auto_chip)
 	_auto_chip.visible = _auto_mode
+	if quiet:
+		return
 	var sb := get_node_or_null("/root/SFXBank")
 	if sb: sb.play("blip", 0.3)
 
@@ -2219,18 +2247,35 @@ func _tick_reading_comfort(delta: float) -> void:
 			and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE \
 			and get_tree().get_first_node_in_group("vn_input_blocker") == null:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	if Settings.auto_play and not _auto_mode and not _auto_user_off and not _transition_lock:
-		_toggle_auto_mode()
+	var auto_set: bool = Settings.auto_play or Settings.auto_advance_ms > 0
+	if auto_set and not _auto_mode and not _auto_user_off and not _transition_lock:
+		_toggle_auto_mode(true)
+		_auto_from_setting = true
+	elif not auto_set and _auto_mode and _auto_from_setting:
+		# switched off in the options: AUTO goes off with it
+		_auto_from_setting = false
+		_toggle_auto_mode(true)
 	# hands-free page turn: a beat after the typewriter rests,
 	# scaled to how much was just read
 	if not _auto_mode or _transition_lock or _photo_on \
-			or _backlog_overlay != null or _interlude.visible \
+			or _backlog_overlay != null \
 			or get_tree().get_first_node_in_group("vn_input_blocker") != null:
 		_auto_read_t = 0.0
 		_auto_wait_t = 0.0
 		return
+	if _interlude.visible:
+		# a title card with no duration of its own waited for a key for ever
+		_auto_read_t = 0.0
+		_auto_wait_t += delta
+		if _auto_wait_t >= AUTO_CARD_S:
+			_auto_wait_t = 0.0
+			_interlude.call("try_advance")
+		return
 	if _choices.visible:
 		_auto_read_t = 0.0
+		if not Settings.auto_play:
+			_auto_wait_t = 0.0      # the choice is the reader's
+			return
 		_auto_wait_t += delta
 		if _auto_wait_t >= AUTO_CHOICE_S:
 			_auto_wait_t = 0.0
@@ -2243,23 +2288,45 @@ func _tick_reading_comfort(delta: float) -> void:
 			_cg.call("_dismiss")
 		return
 	_auto_wait_t = 0.0
-	if _dlg == null or not _dlg.visible or bool(_dlg.call("is_typing")):
+	if _dlg == null or not _dlg.visible or not _waiting:
+		_auto_read_t = 0.0
+		return
+	_auto_line_t += delta           # since the line began to appear
+	if bool(_dlg.call("is_typing")):
 		_auto_read_t = 0.0
 		return
 	# a voiced line plays out before the page turns — unless the next page
 	# is the same passage's unvoiced continuation (the recording spans it)
-	if AudioMgr.is_voice_playing() and not _next_is_voiceless_text():
-		_auto_read_t = 0.0
-		return
+	if AudioMgr.is_voice_playing():
+		if not _auto_voiced:
+			_auto_voiced = true
+			# the longest this line's voice can hold the page: what it has
+			# left to say, and a second. A player that never reports its end
+			# (no audio device, a stalled stream) does not stop the story.
+			_auto_voice_cap = _auto_line_t + AudioMgr.voice_time_left() + 1.0
+		if not _next_is_voiceless_text() and _auto_line_t < _auto_voice_cap:
+			_auto_read_t = 0.0
+			return
 	_auto_read_t += delta
+	if _auto_read_t >= _auto_hold():
+		_auto_read_t = 0.0
+		_advance()
+
+
+## The pause between a line coming to rest and the page turning (AUTO).
+func _auto_hold() -> float:
+	var ms: int = Settings.auto_advance_ms
+	if ms > 0:
+		return float(ms) / 1000.0
+	if _auto_voiced and (not AudioMgr.is_voice_playing() or _auto_line_t >= _auto_voice_cap):
+		return AUTO_VOICE_TAIL_S
 	var chars: int = 0
 	var bl: Array = _dlg.get("backlog")
 	if not bl.is_empty():
 		chars = String((bl[bl.size() - 1] as Dictionary).get("text", "")).length()
-	var hold: float = clampf(1.3 + float(chars) * 0.03, 2.2, 7.0)
-	if _auto_read_t >= hold:
-		_auto_read_t = 0.0
-		_advance()
+	# the whole line at a reading pace, less the time it has been on screen
+	var typed_s: float = _auto_line_t - _auto_read_t
+	return clampf(0.6 + float(chars) / AUTO_READ_CPS - typed_s, AUTO_MIN_S, AUTO_MAX_S)
 
 
 # Background idle motion. Bg now displays in fit-mode (whole image

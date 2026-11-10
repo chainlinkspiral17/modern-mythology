@@ -704,6 +704,19 @@ func is_voice_playing() -> bool:
 	return _voice.playing
 
 
+## Seconds the current voice line still has to run (0 when none is playing
+## or its length is unknown). AUTO waits on this, not on `playing` alone: a
+## player that never reports its end (no audio device, a stalled stream)
+## must not hold the page for ever.
+func voice_time_left() -> float:
+	if not _voice.playing or _voice.stream == null:
+		return 0.0
+	var total: float = _voice.stream.get_length()
+	if total <= 0.0:
+		return 0.0
+	return maxf(total - _voice.get_playback_position(), 0.0)
+
+
 func get_current_track() -> String:
 	return _current_src
 

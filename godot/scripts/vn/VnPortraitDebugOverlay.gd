@@ -328,6 +328,14 @@ func _build_ui() -> void:
 # Rebuilt every refresh tick. Preserves _selected_key across rebuilds
 # when the chosen portrait is still active.
 func _rebuild_picker() -> void:
+	# (2026-11-10) Hidden (the default: this panel is opt-in), it still
+	# rebuilt its whole control tree twice a second for the length of every
+	# scene, and threw "Nonexistent 'float' constructor" on each pass when a
+	# portrait's shader had a uniform nobody had written yet — a script
+	# error twice a second in a run from the editor. Nothing to build while
+	# nobody can see it; the tick after it is shown builds it.
+	if not visible:
+		return
 	for c in _picker_list.get_children():
 		c.queue_free()
 	var active: Array = []
@@ -514,7 +522,7 @@ func _rebuild_controls(sel) -> void:
 	var cur_strength: float = 0.0
 	var mat: ShaderMaterial = p3d.material as ShaderMaterial
 	if mat != null:
-		cur_strength = float(mat.get_shader_parameter("strength"))
+		cur_strength = _shader_get_float(mat, "strength", cur_strength)
 	_add_pm_row("master strength %.2f" % cur_strength,
 		_bump_shader.bind(p3d, "strength", -0.125, 0.0, 1.0, sel),
 		_bump_shader.bind(p3d, "strength", +0.125, 0.0, 1.0, sel))
@@ -540,7 +548,7 @@ func _rebuild_controls(sel) -> void:
 		var nm: String = fx[1]
 		var cur: float = 0.0
 		if mat != null:
-			cur = float(mat.get_shader_parameter(u))
+			cur = _shader_get_float(mat, u, 0.0)
 		_add_pm_row("%s %.2f" % [nm, cur],
 			_bump_shader.bind(p3d, u, -0.125, 0.0, 1.0, sel),
 			_bump_shader.bind(p3d, u, +0.125, 0.0, 1.0, sel))
@@ -548,13 +556,13 @@ func _rebuild_controls(sel) -> void:
 	# 7c. Pixelate + posterize use non-0..1 ranges
 	var pix_cur: float = 1.0
 	if mat != null:
-		pix_cur = float(mat.get_shader_parameter("pixelate_size"))
+		pix_cur = _shader_get_float(mat, "pixelate_size", pix_cur)
 	_add_pm_row("pixelate %.0f" % pix_cur,
 		_bump_shader.bind(p3d, "pixelate_size", -2.0, 1.0, 32.0, sel),
 		_bump_shader.bind(p3d, "pixelate_size", +2.0, 1.0, 32.0, sel))
 	var post_cur: float = 32.0
 	if mat != null:
-		post_cur = float(mat.get_shader_parameter("posterize_lvl"))
+		post_cur = _shader_get_float(mat, "posterize_lvl", post_cur)
 	_add_pm_row("posterize %.0f" % post_cur,
 		_bump_shader.bind(p3d, "posterize_lvl", -2.0, 2.0, 32.0, sel),
 		_bump_shader.bind(p3d, "posterize_lvl", +2.0, 2.0, 32.0, sel))
@@ -562,7 +570,7 @@ func _rebuild_controls(sel) -> void:
 	# 7d. Temp shift is -1..+1 (cool to warm)
 	var temp_cur: float = 0.0
 	if mat != null:
-		temp_cur = float(mat.get_shader_parameter("temp_shift"))
+		temp_cur = _shader_get_float(mat, "temp_shift", temp_cur)
 	_add_pm_row("temp shift %+.2f" % temp_cur,
 		_bump_shader.bind(p3d, "temp_shift", -0.10, -1.0, 1.0, sel),
 		_bump_shader.bind(p3d, "temp_shift", +0.10, -1.0, 1.0, sel))
@@ -1235,7 +1243,7 @@ func _bump_shader(p3d: Node, param: String, delta: float, lo: float, hi: float, 
 	var mat: ShaderMaterial = p3d.material as ShaderMaterial
 	if mat == null:
 		return
-	var cur: float = float(mat.get_shader_parameter(param))
+	var cur: float = _shader_get_float(mat, param, lo)
 	cur = clamp(cur + delta, lo, hi)
 	mat.set_shader_parameter(param, cur)
 	# Stamp into VnDebugState so the value survives a portrait
