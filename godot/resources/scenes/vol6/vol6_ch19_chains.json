@@ -1187,7 +1187,7 @@
   },
   {
    "t": "narrate",
-   "text": "He kisses her cheek. He goes upstairs.",
+   "text": "[shot:insert stair]He kisses her cheek. He goes upstairs.",
    "voice": "assets/audio/voice/vol6_ch19_chains/205.mp3"
   },
   {

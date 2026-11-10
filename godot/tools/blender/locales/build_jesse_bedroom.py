@@ -20,7 +20,7 @@ from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_
 from _props.furniture import make_bed
 
 ROOM_W = 4.8; ROOM_D = 5.1; CEIL = 2.6
-WIN_W = (3.0, 1.50, 1.10, 1.10)   # (along y, z, w, h) — the west window's cut
+WIN_W = (3.05, 1.46, 1.60, 1.48)   # 2026-11-10: was 1.10 x 1.10, sill 0.95   # (along y, z, w, h) — the west window's cut
 # Plum-charcoal walls, amber accent — dark and warm, a practice-space vibe.
 PAL_WALL = {"wall": (0.34, 0.29, 0.33, 1.0), "baseboard": (0.20, 0.16, 0.18, 1.0)}
 COL_FLOOR = (0.34, 0.28, 0.24, 1.0); COL_CARPET = (0.40, 0.36, 0.38, 1.0); COL_SEAM = (0.20, 0.16, 0.14, 1.0); COL_WOOD = (0.40, 0.30, 0.20, 1.0)
@@ -40,7 +40,7 @@ def build_shell():
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.50, 1.20, 1.00)])   # cut 2026-10-07: the window was a pane on a solid wall
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.60, 1.50, 1.30)])   # cut 2026-10-07: the window was a pane on a solid wall; 2026-11-10: 1.50 x 1.30 (was 1.20 x 1.00)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
@@ -92,7 +92,7 @@ def build_posters():
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00, see_through=True)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.60), width=1.50, height=1.30, see_through=True)   # 2026-11-10 ("look at windows, if they are too small"): was 1.20 x 1.00, head 2.00
     make_window("Window_W", (-ROOM_W/2.0 + 0.10, WIN_W[0], WIN_W[1]), width=WIN_W[2] - 0.10, height=WIN_W[3] - 0.10,
                 axis='Y', room_dir=+1, see_through=True)
     from _props.structure import make_curtains
@@ -162,7 +162,7 @@ def build_dressing():
         make_box(f"Dresser_Drawer_{di}", (ROOM_W/2.0-0.52, ROOM_D-0.5, 0.24+di*0.24), (0.02, 0.78, 0.16), (0.28, 0.20, 0.14, 1.0))
     # Warm string lights along the north wall
     for i in range(8):
-        make_cyl(f"String_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.05), 0.028, 0.028, COL_ACCENT, segments=6)
+        make_cyl(f"String_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.44), 0.028, 0.028, COL_ACCENT, segments=6)
     # Corner plant (wires the imported helper)
     # (2026-11-09) at the bed's foot, not its side: between the west wall
     # and the bed there is 0.56 m and the plant spreads 0.68 m — its leaves

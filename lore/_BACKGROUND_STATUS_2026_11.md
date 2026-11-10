@@ -154,6 +154,12 @@ posters, screens with no picture: `empty_frame_audit`).
   the wax canvas coat on its hook, the town / bluff / tower past the S window, four lines directed. The
   compass knot (one kitchen window in the text, two in the set) is left: both windows carry roster pictures.
   614 → 729 parts. Draft 6 targets in the roadmap (first: a pre-dawn twin for ch12_morning's crow).
+- **kowalski_kitchen — draft 6 (pass 332, 2026-11-10).** The stair hall (flight up, the basement door ajar
+  on a real flight down, the bedroom door) behind a 1.8 m cased opening; stair / basement / door shots and
+  five lines directed. 791 → 899 parts. Draft 7 targets in the roadmap.
+- **WINDOWS (pass 333, 2026-11-10; the user: "Look at windows, if they are too small").** Ten sets' windows
+  enlarged (bedrooms, Finn's apartment, the Henderson garage, the Pit Stop office); `window_size_audit.py`
+  measures every set (84 still under a house window's size in 26 sets — the cabin first).
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (briefs
   for the first two are below, read but not built).

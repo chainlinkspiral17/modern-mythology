@@ -53,7 +53,7 @@ COL_FLOOR = (0.60, 0.50, 0.38, 1.0); COL_SEAM = (0.46, 0.36, 0.26, 1.0)
 COL_WOOD = (0.50, 0.38, 0.26, 1.0); COL_WOOD_DK = (0.40, 0.30, 0.20, 1.0)
 COL_WHITE = (0.90, 0.88, 0.84, 1.0)
 DOOR = (1.30, 1.04, 0.86, 2.08)
-WIN = (0.0, 1.50, 1.20, 1.10)
+WIN = (0.0, 1.46, 1.60, 1.48)   # 2026-11-10 ("look at windows, if they are too small"): was 1.20 x 1.10, sill 0.95
 
 
 def build_shell():

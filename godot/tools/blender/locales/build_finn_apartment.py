@@ -73,9 +73,10 @@ ROOM_W = 8.4; ROOM_D = 7.6; CEIL = 2.7   # draft 4 (2026-10-09): was 5.0 x 5.4 x
 XW, XE, YS, YN = -ROOM_W / 2.0 + 0.10, ROOM_W / 2.0 - 0.10, 0.10, ROOM_D - 0.10
 PART_Y = 3.90                      # kitchen / bedroom partition (centre line)
 PDOOR = (1.6, 1.05, 0.90, 2.10)    # the doorway in it — "the crow flew low through the doorway"
-WIN_W = (2.20, 1.55, 1.10, 1.00)   # the kitchen window over the sink, W wall (y, z, w, h)
-WIN_S = (1.80, 1.55, 0.90, 0.95)   # the S window, toward the street and the sea (x, z, w, h)
-WIN_N = (0.0, 1.55, 1.30, 1.10)    # the bedroom's N window
+# 2026-11-10 ("look at windows, if they are too small"): the three were 1.10 x 1.00, 0.90 x 0.95 and 1.30 x 1.10
+WIN_W = (2.22, 1.675, 1.50, 1.25)  # the kitchen window over the sink, W wall (y, z, w, h)
+WIN_S = (1.85, 1.46, 1.50, 1.48)   # the S window, toward the street and the sea (x, z, w, h)
+WIN_N = (0.0, 1.46, 1.70, 1.48)     # the bedroom's N window
 EDOOR = (2.40, 1.05, 0.92, 2.10)   # the entry door from the stairs, E wall (y, ...)
 PAL_WALL = {"wall": (0.78, 0.78, 0.72, 1.0), "baseboard": (0.62, 0.46, 0.30, 1.0)}   # coastal grey-green (the warm cream read pink under the lamps)
 COL_FLOOR = (0.66, 0.50, 0.32, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
@@ -505,7 +506,11 @@ def build_outside():
     make_box("Out_S_Bluff_Low", (-12.0, -42.0, -1.2), (40.0, 8.0, 3.6), (0.20, 0.28, 0.22, 1.0))
     make_box("Out_S_Tower", (9.0, -44.0, 7.2), (1.6, 1.6, 7.6), (0.50, 0.50, 0.48, 1.0))
     make_box("Out_S_Tower_Top", (9.0, -44.0, 11.3), (1.9, 1.9, 0.9), (0.42, 0.62, 0.48, 1.0))
-    make_box("Out_S_Cape", (-22.0, -70.0, 2.5), (60.0, 12.0, 11.0), (0.20, 0.26, 0.28, 1.0))
+    # CAPE PERPETUA: a headland 240 m high fills the top of a south window.
+    # (At 11 m it left open sky over the roofs once the S window was made a
+    # real window, and the wide view could no longer run to a wide screen.)
+    make_box("Out_S_Cape", (-30.0, -74.0, 9.0), (150.0, 14.0, 30.0), (0.20, 0.26, 0.28, 1.0))
+    make_box("Out_S_Cape_Shoulder", (-10.0, -62.0, 3.0), (110.0, 10.0, 12.0), (0.18, 0.25, 0.24, 1.0))
     make_box("Out_N_Ground", (0.0, ROOM_D + 4.0, -3.03), (16.0, 7.0, 0.05), (0.30, 0.36, 0.26, 1.0))
     make_box("Out_N_House", (1.5, ROOM_D + 4.5, -0.6), (7.0, 3.2, 4.8), (0.62, 0.58, 0.52, 1.0))
     make_prism("Out_N_Roof", (1.5, ROOM_D + 4.5, 1.8), [(-3.8, 0.0), (3.8, 0.0), (0.0, 1.6)], 3.4, (0.32, 0.26, 0.22, 1.0), axis="Y")

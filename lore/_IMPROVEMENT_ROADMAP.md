@@ -3835,6 +3835,90 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 333: WINDOWS — "Look at windows, if they are too small." They were.**
+- The user, mid-pass. Measured first: `tools/audit/window_size_audit.py`
+  groups every window's frame parts and reports width, height, sill and
+  head (`--plan` also reads what stands under and beside each one and says
+  how far it can grow). **323 windows in 88 sets; 98 in 34 sets were under
+  a house window's size**, and the pattern is one thing: HEIGHT. The room
+  template cuts a 1.2 x 1.0 m window with its sill at 1.0 m — a kitchen
+  sink window — and it was in the bedrooms, the apartments, the garage. A
+  bedroom double-hung is about 1.5 m tall with its sill at 0.7.
+- **Enlarged this pass (ten sets, 98 → 84):** sam_bedroom 1.30 x 1.10 →
+  1.70 x 1.48; diego_bedroom 1.20 x 1.10 → 1.60 x 1.48; maya_bedroom N
+  1.20 x 1.00 → 1.60 x 1.30 (her headboard holds the sill; the fairy
+  lights and their light went above the head); jesse_bedroom N → 1.50 x
+  1.30, W 1.10 x 1.10 → 1.60 x 1.48; finn_apartment kitchen 1.10 x 1.00 →
+  1.50 x 1.25 (the sink holds the sill), S 0.90 x 0.95 → 1.50 x 1.48, N
+  1.30 x 1.10 → 1.70 x 1.48; henderson_garage 1.10 x 0.90 → 1.50 x 1.24
+  and 0.95 x 0.80 → 1.30 x 1.20; ben_bedroom 1.00 x 0.92 → 1.50 x 1.48;
+  kai_apartment 1.20 x 1.00 → 1.50 x 1.30; pit_stop_office 0.90 x 1.00 →
+  1.40 x 1.48; the lit kitchen window on the Henderson house front 0.90 x
+  1.05 → 1.10 x 1.25. Sills lowered wherever nothing stands under them.
+- **Pictures moved with their windows.** Nine roster rows (the user's
+  window pictures in Sam's, Diego's, Finn's and Kai's rooms) were re-set
+  to the new glass, centre and size; HeroArt never stretches, it shows the
+  picture's middle band where the shape changed.
+- Suite: two real failures, both from making windows bigger. (a) Sam's
+  curtains carry three picture rows too and grew with the window —
+  hero_art_placement_audit MISFIT; rows re-set. (b) Finn's S window, now
+  a real window, put open sky in the wide view's side bands
+  (wide_frame_audit --gate): Cape Perpetua stood 11 m high behind the
+  town; a 240 m headland fills the top of a south window, so it is 24 m
+  at 74 m now. The gates that read those rooms were re-run, not the suite.
+- **Draft targets (the rest of the list, by lines played).**
+  (1) **cabin_interior** — ten of its eleven windows are ~1.0 m tall under
+  a 3.4 m ceiling, 2,165 lines play there, and it carries 19 window
+  picture rows and 108 markers: a pass of its own, with renders. `--plan`
+  gives: EBed 1.60 x 1.09 → 1.60 x 1.58; Window_E 1.40 x 1.02 → 1.44 x
+  1.48; South_W 1.88 x 1.10 → 2.11 x 1.48; South_E, Shop, Kitchen and
+  North_E to 1.25 - 1.36 tall.
+  (2) roberts_kitchen (sink 0.94, living 1.10 tall), bungalow kitchen,
+  nate_garage (foam panels hold both), safehouse_bedroom E (0.80 wide),
+  coach_k_bedroom (curtained), small_wood_farmhouse and wagner_home
+  kitchens, lake_house, caldwell_kitchen_night, graustark's shotgun
+  windows (0.85 x 1.20: a shotgun house's are tall).
+  (3) Small on purpose, leave: portholes, the tugboat, the equipment
+  shed, new_orleans_office's AC sash and leaded window (read the text
+  first), basement windows.
+  (4) The thresholds flag only under 1.00 wide / 1.10 tall; a second read
+  at 1.30 tall would catch the 1.1 - 1.25 m living-room windows.
+  (5) Make the template's default a bedroom window so new rooms start right.
+
+**2026-11-10 · pass 332: Kowalski kitchen, draft 6 — the stairs the text climbs.**
+- First of the next six sets (296 lines). READ by render on eighteen real
+  lines: the kitchen and family room hold up; three things did not.
+- **"Nothing in the prose climbs a stair here"** (draft 5's note) is wrong.
+  "There's a bed downstairs ... Maya goes downstairs" and "He goes upstairs
+  to bed" (ch7), "She goes upstairs. The kitchen is full" (ch8, up from
+  the basement), "He kisses her cheek. He goes upstairs" (ch19) all played
+  on a kitchen wide. The hall was a 2.4 x 1.3 m stub behind a 1 m slot.
+  It is a STAIR HALL now (3.7 x 3.4) behind a 1.8 m cased opening: the
+  flight up climbing west along its back wall into a dark well (newel,
+  rail, a baluster a tread), THE BASEMENT DOOR under the flight's top,
+  ajar, a real flight going down beneath the upper one with a bulb at its
+  foot, the parents' bedroom door shut on the W wall, a runner, a light.
+  `insert stair` and `insert basement` are new and four lines are directed
+  to them. The hall photo's roster row moved with its wall.
+- **Four closeups were the same picture** (bill, person, person_b, ben all
+  look west over the table at the family room). `closeup door` is new for
+  "At the door he pauses" (the garage door, the boots, Bill's jacket);
+  `closeup gracie` looked at the bare S wall and now holds the counter and
+  the sink window; `insert garage` stood at 2.3 m looking down the door
+  and is a level view of the door corner.
+- The basement door took three tries: hinged west it hid its own opening;
+  hinged east and seen from the hall's far side the landing read as a
+  closet; the flight now starts inside the door's width, so the shot
+  shows the first step down into the dark. It still does not read
+  plainly as a staircase.
+- **Draft 7 targets.** (1) The S wall between the garage door and the hall
+  is 3 m of blank plaster in three shots; (2) `closeup person` /
+  `person_b` / `bill` still share one background — give Bill's the kitchen
+  run behind him; (3) ch8:5-8 (Maya waking in the basement) plays on the
+  kitchen: a basement bedroom is a set of its own; (4) "The garage is
+  open" (ch13:7) wants the driveway side; (5) upper cabinet doors, the
+  dish rack, the couch's throw (draft 5's list).
+
 **2026-11-10 · pass 331: Finn's apartment, draft 5 — the crow was in the wrong room; the radio, the closet, the town.**
 - Last of the backgrounds queue (307 lines over three views). READ by
   render on eighteen real lines first:

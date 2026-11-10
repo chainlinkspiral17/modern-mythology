@@ -96,10 +96,13 @@ def build_house():
     make_box("Win_Up_Frame", (-1.6, 0.02, HOUSE_H - 0.42), (1.1, 0.08, 0.75), COL_TRIM)
     make_box("Win_Up", (-1.6, 0.05, HOUSE_H - 0.42), (0.98, 0.02, 0.62), COL_DARKGLASS)
     # THE lit window
-    make_box("Win_Kitchen_Frame", (1.45, 0.04, 1.55), (0.90, 0.10, 1.05), COL_TRIM)
-    make_box("Win_Kitchen_LIT", (1.45, 0.07, 1.55), (0.78, 0.02, 0.92), COL_LITGLASS)
-    make_box("Win_Kitchen_Mull", (1.45, 0.085, 1.55), (0.04, 0.02, 0.92), COL_TRIM)
-    make_box("Win_Kitchen_Sill", (1.45, 0.10, 1.0), (1.00, 0.14, 0.05), COL_TRIM)
+    # (2026-11-10, "look at windows, if they are too small": 1.10 x 1.25 —
+    # the garage door stops it going wider; it was 0.90 x 1.05. The kitchen
+    # build's own front window is 1.5 m: the two fronts still disagree.)
+    make_box("Win_Kitchen_Frame", (1.50, 0.04, 1.55), (1.10, 0.10, 1.25), COL_TRIM)
+    make_box("Win_Kitchen_LIT", (1.50, 0.07, 1.55), (0.98, 0.02, 1.12), COL_LITGLASS)
+    make_box("Win_Kitchen_Mull", (1.50, 0.085, 1.55), (0.04, 0.02, 1.12), COL_TRIM)
+    make_box("Win_Kitchen_Sill", (1.50, 0.10, 0.90), (1.20, 0.14, 0.05), COL_TRIM)
 
 
 def build_porch():

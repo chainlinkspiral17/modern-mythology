@@ -15,7 +15,9 @@
   "objects": 234
  },
  "ben_bedroom": {
-  "draw": 92
+  "draw": 100,
+  "prims": 15744,
+  "objects": 270
  },
  "bianca_kitchen_morning": {
   "draw": 230,
@@ -115,6 +117,11 @@
   "prims": 75272,
   "objects": 278
  },
+ "diego_bedroom": {
+  "draw": 98,
+  "prims": 33192,
+  "objects": 268
+ },
  "diner": {
   "draw": 1248
  },
@@ -134,9 +141,9 @@
   "objects": 3910
  },
  "finn_apartment": {
-  "draw": 418,
-  "prims": 116352,
-  "objects": 588
+  "draw": 404,
+  "prims": 116048,
+  "objects": 574
  },
  "foxhole_stage": {
   "draw": 56,
@@ -166,10 +173,20 @@
   "prims": 59628,
   "objects": 274
  },
+ "henderson_garage": {
+  "draw": 226,
+  "prims": 58768,
+  "objects": 396
+ },
  "henderson_kitchen": {
   "draw": 94,
   "prims": 57200,
   "objects": 264
+ },
+ "henderson_porch_front": {
+  "draw": 70,
+  "prims": 5940,
+  "objects": 240
  },
  "honolulu_highrise": {
   "draw": 218,
@@ -184,10 +201,25 @@
   "prims": 64204,
   "objects": 366
  },
+ "jesse_bedroom": {
+  "draw": 232,
+  "prims": 78960,
+  "objects": 402
+ },
+ "kai_apartment": {
+  "draw": 72,
+  "prims": 13844,
+  "objects": 242
+ },
  "kestrel_mountain": {
   "draw": 142,
   "prims": 7748,
   "objects": 312
+ },
+ "kowalski_kitchen": {
+  "draw": 100,
+  "prims": 52648,
+  "objects": 270
  },
  "kwik_stop": {
   "draw": 1024,
@@ -213,6 +245,11 @@
   "draw": 94,
   "prims": 50444,
   "objects": 264
+ },
+ "maya_bedroom": {
+  "draw": 158,
+  "prims": 84992,
+  "objects": 328
  },
  "miller_back_porch": {
   "draw": 152,
@@ -288,6 +325,11 @@
  "pharmacy": {
   "draw": 1096
  },
+ "pit_stop_office": {
+  "draw": 88,
+  "prims": 10440,
+  "objects": 258
+ },
  "portland_downtown": {
   "draw": 114,
   "prims": 31524,
@@ -305,6 +347,11 @@
   "draw": 290,
   "prims": 151840,
   "objects": 460
+ },
+ "sam_bedroom": {
+  "draw": 118,
+  "prims": 26180,
+  "objects": 288
  },
  "sapo_falls": {
   "draw": 112,

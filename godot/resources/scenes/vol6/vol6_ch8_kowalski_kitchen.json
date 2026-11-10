@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "She goes upstairs.",
+      "text": "[shot:insert basement]She goes upstairs.",
       "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/009.mp3"
     },
     {

@@ -56,7 +56,7 @@ def build_shell():
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=bb)
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.50, 1.20, 1.00)])   # cut 2026-10-07: the window was a pane on a solid wall
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.60, 1.60, 1.30)])   # cut 2026-10-07: the window was a pane on a solid wall; 2026-11-10: 1.60 x 1.30 (was 1.20 x 1.00)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
@@ -137,7 +137,7 @@ def build_rug():
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00, see_through=True)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.60), width=1.60, height=1.30, see_through=True)   # 2026-11-10 ("look at windows, if they are too small"): was 1.20 x 1.00, head 2.00
 
 def build_ceiling_infra():
     # A 1991 bedroom: one dome fixture, no shop tubes (lamp is the
@@ -222,9 +222,9 @@ def build_dressing():
     make_floor_plant("Plant", (ROOM_W/2.0-0.5, 0.7, 0.0), palette={"leaf": (0.40, 0.60, 0.42, 1.0), "pot": (0.42, 0.72, 0.70, 1.0)})
     # Warm string / fairy lights along the north wall
     for i in range(8):
-        make_cyl(f"Fairy_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.05), 0.028, 0.028, (1.0, 0.84, 0.6, 1.0), segments=6)
+        make_cyl(f"Fairy_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.44), 0.028, 0.028, (1.0, 0.84, 0.6, 1.0), segments=6)
         if i < 7:
-            make_tube(f"Fairy_String_{i}", [(-1.4+i*0.4, ROOM_D-0.12, 2.06), (-1.2+i*0.4, ROOM_D-0.12, 2.02), (-1.0+i*0.4, ROOM_D-0.12, 2.06)], 0.003, (0.30, 0.30, 0.28, 1.0), segments=4)
+            make_tube(f"Fairy_String_{i}", [(-1.4+i*0.4, ROOM_D-0.12, 2.45), (-1.2+i*0.4, ROOM_D-0.12, 2.41), (-1.0+i*0.4, ROOM_D-0.12, 2.45)], 0.003, (0.30, 0.30, 0.28, 1.0), segments=4)
 
 def build_hero_props():
     """2026-08-03 hero-prop pass. THE LOOSE THIRD FLOORBOARD —

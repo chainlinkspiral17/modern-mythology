@@ -436,9 +436,9 @@ metadata/fov = 42.0
 
 ; closeup: Gracie at the table's south chair, from the north
 [node name="shot_closeup_gracie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.300, 1.400, -4.550)
-rotation = Vector3(-0.1827, 2.9825, 0.0)
-metadata/fov = 42.0
+position = Vector3(2.200, 1.400, -3.200)
+rotation = Vector3(-0.1000, 0.4346, 0.0)
+metadata/fov = 45.0
 
 ; closeup: Ben at the garage door ("at the door he pauses"), from the kitchen
 [node name="shot_closeup_ben" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -449,9 +449,9 @@ metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_garage__kowalski_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.700, 2.293, -2.140)
-rotation = Vector3(-0.4613, 3.0869, 0.0)
-metadata/fov = 35.0
+position = Vector3(3.200, 1.500, -2.600)
+rotation = Vector3(-0.1500, -2.9510, 0.0)
+metadata/fov = 45.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_couch__kowalski_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -467,9 +467,9 @@ metadata/fov = 35.0
 
 ; (2026-11-09) the night key frames the same objects (kowalski_kitchen_night, vol 6 ch7)
 [node name="shot_insert_garage__kowalski_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.700, 2.293, -2.140)
-rotation = Vector3(-0.4613, 3.0869, 0.0)
-metadata/fov = 35.0
+position = Vector3(3.200, 1.500, -2.600)
+rotation = Vector3(-0.1500, -2.9510, 0.0)
+metadata/fov = 45.0
 
 [node name="shot_insert_couch__kowalski_kitchen_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.258, 1.097, -3.186)
@@ -481,3 +481,35 @@ position = Vector3(3.117, 0.971, -1.697)
 rotation = Vector3(-0.2893, 0.5296, 0.0)
 metadata/fov = 35.0
 
+; ── draft 6 (pass 332, 2026-11-10): the stair hall ──
+; "He goes upstairs to bed" (ch7), "He kisses her cheek. He goes upstairs" (ch19)
+[node name="shot_insert_stair" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.550, -1.200)
+rotation = Vector3(-0.0935, 2.5940, 0.0)
+metadata/fov = 50.0
+
+; "Maya goes downstairs" (ch7), "She goes upstairs. The kitchen is full" (ch8)
+[node name="shot_insert_basement" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.550, 1.500, 0.550)
+rotation = Vector3(-0.3000, -3.1200, 0.0)
+metadata/fov = 50.0
+
+; "At the door he pauses" (ch13): the garage door, the boots, Bill's jacket
+[node name="shot_closeup_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.400, 1.550, -2.100)
+rotation = Vector3(-0.1000, -2.5880, 0.0)
+metadata/fov = 42.0
+
+[node name="Basement_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.550, -0.280, 3.025)
+light_color = Color(1.0, 0.82, 0.55, 1)
+light_energy = 1.0
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Hall_Ceiling_Light_Practical__kowalski_kitchen" type="OmniLight3D" parent="."]
+position = Vector3(-0.600, 2.500, 1.200)
+light_color = Color(1.0, 0.90, 0.72, 1)
+light_energy = 0.7
+omni_range = 4.2
+shadow_enabled = false

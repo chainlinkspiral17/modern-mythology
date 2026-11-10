@@ -418,7 +418,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Maya goes downstairs.",
+   "text": "[shot:insert basement]Maya goes downstairs.",
    "voice": "assets/audio/voice/vol6_ch7_hospital/068.mp3"
   },
   {
@@ -530,7 +530,7 @@
   },
   {
    "t": "narrate",
-   "text": "He goes upstairs to bed.",
+   "text": "[shot:insert stair]He goes upstairs to bed.",
    "voice": "assets/audio/voice/vol6_ch7_hospital/086.mp3"
   },
   {

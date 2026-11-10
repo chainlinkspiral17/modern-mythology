@@ -351,17 +351,125 @@ def build_family_room():
     make_light_switch("Switch_1", (gx - 0.70, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
     make_box("Key_Hooks", (gx + 0.70, 0.11, 1.45), (0.30, 0.02, 0.08), wood)
     make_box("Key_Hooks_Keys", (gx + 0.66, 0.13, 1.38), (0.04, 0.02, 0.07), (0.70, 0.70, 0.66, 1.0))
-    # the hall beyond the opening: its floor, walls, the bedroom door SHUT
+    # (the hall is build_hall_2026_11's now, draft 6)
+
+
+def build_hall_2026_11():
+    """THE STAIR HALL (draft 6). Draft 5's note said "nothing in the prose
+    climbs a stair here"; it does, in three chapters — "Sweetheart.
+    There's a bed downstairs ... Maya goes downstairs" and "He goes
+    upstairs to bed" (ch7), "She goes upstairs. The kitchen is full"
+    (ch8, up from the basement), "He kisses her cheek. He goes upstairs"
+    (ch19). The hall was a 2.4 x 1.3 m stub behind a 1 m slot. It is a
+    room now (3.7 x 3.4) behind a 1.8 m cased opening: the flight UP
+    climbing west along its S wall into a dark well, THE BASEMENT DOOR
+    under the flight's top, ajar, a real flight going down beneath the
+    upper one with a bulb at its foot, and the parents' bedroom door,
+    shut, on the W wall (night-shift sleep: "by the angle of the bedroom
+    door from the hallway", ch13)."""
+    import math
+    trim = (0.86, 0.84, 0.78, 1.0); oak = (0.56, 0.42, 0.27, 1.0); dark = (0.30, 0.27, 0.24, 1.0)
+    riser = (0.88, 0.85, 0.78, 1.0)
     hx = HALL_OPEN[0]
-    make_box("Hall_Floor", (hx, -0.75, -0.01), (2.4, 1.3, 0.02), COL_FLOOR)
-    make_wall("Hall_Wall_S", (hx, -1.50, 0), length=2.6, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    for nm, x, bb in (("Hall_Wall_W", hx - 1.20, +1), ("Hall_Wall_E", hx + 1.20, -1)):
-        make_wall(nm, (x, -0.75, 0), length=1.3, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
-    make_box("Hall_Ceil", (hx, -0.75, CEIL + 0.01), (2.4, 1.3, 0.02), (0.92, 0.90, 0.86, 1.0))
-    make_box("Bedroom_Door_Leaf", (hx + 0.20, -1.38, 1.035), (0.84, 0.04, 2.07), (0.86, 0.84, 0.78, 1.0))
-    make_cyl("Bedroom_Door_Knob", (hx + 0.52, -1.34, 1.0), 0.028, 0.05, (0.62, 0.58, 0.48, 1.0), segments=8, axis='Y')
-    make_box("Hall_Photo", (hx - 0.70, -1.385, 1.55), (0.36, 0.02, 0.28), (0.20, 0.16, 0.12, 1.0))
-    make_box("Hall_Photo_Image", (hx - 0.70, -1.373, 1.55), (0.30, 0.004, 0.22), (0.62, 0.56, 0.46, 1.0))
+    xc, yc = (HX0 + HX1) / 2.0, HY0 / 2.0
+    # the cased opening from the kitchen
+    for nm, c in (("A", hx - HALL_CLEAR / 2.0 - CASE / 2.0), ("B", hx + HALL_CLEAR / 2.0 + CASE / 2.0)):
+        make_box(f"Hall_Opening_Jamb_{nm}", (c, 0.0, 1.05), (CASE, 0.24, 2.10), trim)
+    make_box("Hall_Opening_Head", (hx, 0.0, 2.10 + CASE / 2.0), (HALL_CLEAR + 2 * CASE, 0.24, CASE), trim)
+    # floor: all of it but the stairwell under the flight
+    make_box("Hall_Floor", (xc, (ST_Y1 - 0.2) / 2.0, -0.01), (HX1 - HX0 + 0.2, -ST_Y1 - 0.2 + 0.0, 0.02), COL_FLOOR)
+    make_box("Hall_Floor_Landing", ((HX0 - 0.1 + BD_X0 + 0.42) / 2.0, (HY0 - 0.1 + ST_Y1) / 2.0, -0.01), (BD_X0 + 0.42 - HX0 + 0.1, ST_Y1 - HY0 + 0.1, 0.02), COL_FLOOR)
+    make_box("Hall_Floor_Foot", ((ST_FOOT_X + HX1 + 0.1) / 2.0, (HY0 - 0.1 + ST_Y1) / 2.0, -0.01), (HX1 + 0.1 - ST_FOOT_X, ST_Y1 - HY0 + 0.1, 0.02), COL_FLOOR)
+    # walls
+    make_wall("Hall_Wall_S", (xc, HY0 - 0.10, 0), length=HX1 - HX0 + 0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Hall_Wall_W", (HX0 - 0.10, yc, 0), length=-HY0, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Hall_Wall_E", (HX1 + 0.10, yc, 0), length=-HY0, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
+    # ceiling, the up-flight's well left open (from the fourth tread on)
+    well_x1 = ST_FOOT_X - 3 * ST_RUN
+    make_box("Hall_Ceil", (xc, (ST_Y1 - 0.1) / 2.0, CEIL + 0.01), (HX1 - HX0 + 0.2, -ST_Y1 - 0.1, 0.02), (0.92, 0.90, 0.86, 1.0))
+    make_box("Hall_Ceil_Foot", ((well_x1 + HX1 + 0.1) / 2.0, (HY0 - 0.1 + ST_Y1) / 2.0, CEIL + 0.01), (HX1 + 0.1 - well_x1, ST_Y1 - HY0 + 0.1, 0.02), (0.92, 0.90, 0.86, 1.0))
+    wz = CEIL + 0.02 + 1.30
+    make_box("Hall_Well_N", ((HX0 + well_x1) / 2.0, ST_Y1 + 0.05, wz), (well_x1 - HX0, 0.10, 2.60), dark)
+    make_box("Hall_Well_E", (well_x1 + 0.05, (HY0 + ST_Y1) / 2.0, wz), (0.10, ST_Y1 - HY0 + 0.2, 2.60), dark)
+    make_box("Hall_Well_S", ((HX0 + well_x1) / 2.0, HY0 - 0.10, wz), (well_x1 - HX0 + 0.2, 0.20, 2.60), dark)
+    make_box("Hall_Well_W", (HX0 - 0.10, (HY0 + ST_Y1) / 2.0, wz), (0.20, ST_Y1 - HY0 + 0.2, 2.60), dark)
+    make_box("Hall_Well_Cap", ((HX0 + well_x1) / 2.0, (HY0 + ST_Y1) / 2.0, CEIL + 2.67), (well_x1 - HX0 + 0.3, ST_Y1 - HY0 + 0.3, 0.10), (0.18, 0.16, 0.15, 1.0))
+    # THE FLIGHT UP: thirteen risers climbing west. The first two steps
+    # are solid; from the third the flight is a slab on a skirt wall, the
+    # basement flight running under it.
+    sy = (HY0 + ST_Y1) / 2.0; sw = ST_Y1 - HY0
+    for i in range(ST_N - 1):
+        top = (i + 1) * ST_RISE
+        x = ST_FOOT_X - (i + 0.5) * ST_RUN
+        if i < 2:
+            make_box(f"Hall_Stair_Step_{i}", (x, sy, (top - 0.03) / 2.0), (ST_RUN, sw, top - 0.03), riser)
+        else:
+            make_box(f"Hall_Stair_Step_{i}", (x, sy, top - 0.03 - 0.11), (ST_RUN, sw, 0.22), riser)
+            if x + ST_RUN / 2.0 > BD_X1 + 0.02:      # the skirt wall, east of the basement door
+                x0_ = max(x - ST_RUN / 2.0, BD_X1 + 0.08)
+                make_box(f"Hall_Stair_Skirt_{i}", ((x0_ + x + ST_RUN / 2.0) / 2.0, ST_Y1 - 0.04, (top - 0.25) / 2.0), (x + ST_RUN / 2.0 - x0_, 0.08, top - 0.25), PAL_WALL["wall"])
+        make_box(f"Hall_Stair_Tread_{i}", (x + 0.012, sy, top - 0.015), (ST_RUN + 0.024, sw, 0.03), oak)
+        make_box(f"Hall_Stair_Baluster_{i}", (x, ST_Y1 - 0.04, top + 0.45), (0.03, 0.03, 0.90), riser)
+    top_x = ST_FOOT_X - (ST_N - 1) * ST_RUN
+    make_box("Hall_Stair_Landing", ((HX0 + top_x) / 2.0, sy, 2.60 - 0.11), (top_x - HX0, sw, 0.22), riser)
+    make_box("Hall_Stair_Landing_Top", ((HX0 + top_x) / 2.0 + 0.012, sy, 2.60 - 0.015), (top_x - HX0 + 0.024, sw, 0.03), oak)
+    make_box("Hall_Stair_Newel", (ST_FOOT_X + 0.06, ST_Y1 - 0.04, 0.56), (0.10, 0.10, 1.12), oak)
+    make_box("Hall_Stair_Newel_Cap", (ST_FOOT_X + 0.06, ST_Y1 - 0.04, 1.14), (0.13, 0.13, 0.04), oak)
+    slope = ST_RISE / ST_RUN
+    make_tube("Hall_Stair_Rail", [(ST_FOOT_X + 0.06, ST_Y1 - 0.04, 1.00), (top_x, ST_Y1 - 0.04, 1.00 + (ST_FOOT_X + 0.06 - top_x) * slope)], 0.025, oak)
+    # THE BASEMENT DOOR, under the flight's top: its frame, the leaf ajar
+    # into the hall, the wall over it up to the flight
+    bw = BD_X1 - BD_X0
+    for nm, c in (("A", BD_X0 - 0.03), ("B", BD_X1 + 0.03)):
+        make_box(f"Basement_Doorframe_Jamb_{nm}", (c, ST_Y1 - 0.04, 1.02), (0.06, 0.12, 2.04), trim)
+    make_box("Basement_Doorframe_Head", ((BD_X0 + BD_X1) / 2.0, ST_Y1 - 0.04, 2.07), (bw + 0.12, 0.12, 0.06), trim)
+    make_box("Hall_Stair_Wall_Over_Door", ((HX0 + BD_X1 + 0.06) / 2.0, ST_Y1 - 0.04, (2.10 + 2.38) / 2.0), (BD_X1 + 0.06 - HX0, 0.08, 0.28), PAL_WALL["wall"])
+    # hinged at its EAST jamb and stood well open against the hall, so a lens
+    # in the hall looks past its edge down the lit flight (the first try
+    # hinged it west: the leaf hid the opening from every angle the hall has)
+    a = math.radians(68.0)
+    lx_, ly_ = -math.cos(a), math.sin(a)                     # along the leaf, hinge -> free edge
+    make_rot_box("Basement_Door", (BD_X1 + lx_ * bw / 2.0, ST_Y1 + ly_ * bw / 2.0, 1.02), (bw - 0.02, 0.04, 2.02), trim, yaw=-a)
+    make_cyl("Basement_Door_Knob", (BD_X1 + lx_ * (bw - 0.08) + math.sin(a) * 0.045, ST_Y1 + ly_ * (bw - 0.08) + math.cos(a) * 0.045, 1.00), 0.028, 0.05, (0.62, 0.58, 0.48, 1.0), segments=8, axis='X')
+    # THE FLIGHT DOWN, under the upper one: the landing inside the door,
+    # thirteen steps falling east, the well's walls, the bulb at the foot
+    # (the steps start INSIDE the door's width: with the landing as wide as
+    # the door, a lens at the door saw a closet — a floor and a back wall)
+    BS_X0 = BD_X0 + 0.42
+    for k in range(ST_N):
+        z = -(k + 1) * ST_RISE
+        x = BS_X0 + (k + 0.5) * ST_RUN
+        make_box(f"Basement_Step_{k}", (x, sy, z - 0.03), (ST_RUN, sw, 0.06), (0.36, 0.28, 0.20, 1.0))
+        make_box(f"Basement_Riser_{k}", (x - ST_RUN / 2.0 + 0.005, sy, z + ST_RISE / 2.0 - 0.03), (0.01, sw, ST_RISE), dark)
+    bx1 = BS_X0 + ST_N * ST_RUN
+    depth = ST_N * ST_RISE
+    make_box("Basement_Well_N", ((BS_X0 + bx1 + 1.0) / 2.0, ST_Y1 + 0.05, -depth / 2.0 - 0.02), (bx1 + 1.0 - BS_X0, 0.10, depth), dark)
+    make_box("Basement_Well_S", ((BS_X0 + bx1 + 1.0) / 2.0, HY0 - 0.05, -depth / 2.0 - 0.02), (bx1 + 1.0 - BS_X0, 0.10, depth), dark)
+    make_box("Basement_Well_End", (bx1 + 1.05, sy, -depth / 2.0 - 0.02), (0.10, sw + 0.2, depth), (0.08, 0.07, 0.07, 1.0))
+    # the basement's slab, the whole length of the well (the grammar audit
+    # reads anything with no floor under it as standing outside the set)
+    make_box("Basement_Well_Floor", ((BS_X0 + bx1 + 1.1) / 2.0, sy, -depth - 0.03), (bx1 + 1.1 - BS_X0, sw + 0.2, 0.06), (0.14, 0.13, 0.12, 1.0))
+    make_box("Basement_Well_Lid", ((ST_FOOT_X + bx1 + 1.1) / 2.0, sy, -0.10), (bx1 + 1.1 - ST_FOOT_X, sw + 0.2, 0.12), dark)
+    blx = bx1 + 0.45
+    make_cyl("Basement_Bulb_Socket", (blx, sy, -0.20), 0.02, 0.08, (0.20, 0.18, 0.16, 1.0), segments=8)
+    make_cyl("Basement_Bulb", (blx, sy, -0.28), 0.035, 0.08, (1.0, 0.90, 0.66, 1.0), segments=8)
+    make_tube("Basement_Handrail", [(BS_X0 + 0.10, HY0 + 0.06, 0.88 - ST_RISE), (bx1 - 0.10, HY0 + 0.06, 0.88 - depth)], 0.02, oak)
+    # the parents' bedroom door, shut, on the W wall
+    by = -1.25
+    make_box("Bedroom_Door_Leaf", (HX0 - 0.02, by, 1.035), (0.04, 0.84, 2.07), trim)
+    make_cyl("Bedroom_Door_Knob", (HX0 + 0.03, by - 0.32, 1.0), 0.028, 0.05, (0.62, 0.58, 0.48, 1.0), segments=8, axis='X')
+    for nm, y in (("A", by - 0.455), ("B", by + 0.455)):
+        make_box(f"Bedroom_Door_Casing_{nm}", (HX0 + 0.01, y, 1.07), (0.02, 0.07, 2.14), trim)
+    make_box("Bedroom_Door_Casing_Head", (HX0 + 0.01, by, 2.105), (0.02, 0.98, 0.07), trim)
+    # the photo on the stair wall, low on the flight (it hung on the stub's back wall)
+    make_box("Hall_Photo", (-0.30, HY0 + 0.012, 2.00), (0.36, 0.02, 0.28), (0.20, 0.16, 0.12, 1.0))
+    make_box("Hall_Photo_Image", (-0.30, HY0 + 0.024, 2.00), (0.30, 0.004, 0.22), (0.62, 0.56, 0.46, 1.0))
+    # the hall's light, a runner, the switch at the opening
+    make_cyl("Hall_Ceiling_Light", (-0.60, -1.20, CEIL - 0.04), 0.15, 0.08, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_box("Hall_Runner", (-0.80, -1.25, 0.006), (2.60, 0.80, 0.008), (0.44, 0.30, 0.24, 1.0))
+    make_box("Hall_Runner_Field", (-0.80, -1.25, 0.011), (2.40, 0.60, 0.004), (0.60, 0.46, 0.34, 1.0))
+    from _props.detail import make_light_switch
+    make_light_switch("Hall_Switch", (HX1 + 0.10, -0.45), axis='Y', face_sign=-1, z=1.20, aged=True)
 
 
 def build_family_fill():
@@ -425,7 +533,14 @@ from _props.plan import shifted
 _OLD = dict(ROOM_W=6.0, ROOM_D=5.0)
 SH_TF = (2.0, 0.8)      # the table + pendant + table props, the fridge, the E window, the E yard
 SH_W = (-2.0, 1.0)      # the couch + Daisy's spot, the plant, the calendar
-HALL_OPEN = (-0.40, 1.05, 1.00, 2.10)
+CASE = 0.08
+HALL_CLEAR = 1.80                       # draft 6: a cased opening 1.8 m clear (it was a 1.0 m slot)
+HALL_OPEN = (-0.40, (2.10 + CASE) / 2.0, HALL_CLEAR + 2 * CASE, 2.10 + CASE)
+# the stair hall (draft 6)
+HX0, HX1, HY0 = -3.00, 0.70, -3.50      # its W, E and S faces (the N face is the kitchen's S wall)
+ST_FOOT_X, ST_Y1 = 0.30, -2.55          # the up-flight's foot (it climbs WEST along the S wall) and its open side
+ST_RISE, ST_RUN, ST_N = 0.20, 0.25, 13
+BD_X0, BD_X1 = -2.95, -2.15             # the basement door, under the flight's top
 GARAGE_DOOR = (3.70, 1.04, 0.86, 2.08)
 
 
@@ -436,6 +551,7 @@ def _in(sh):
 def main():
     clear_scene()
     build_shell()
+    build_hall_2026_11()
     build_counter()
     build_counter_dressing()
     build_clock()

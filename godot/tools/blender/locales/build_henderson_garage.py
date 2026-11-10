@@ -39,8 +39,9 @@ CEIL = 2.7
 # the side yard over the milk crate (E wall), and a small one in the back
 # wall over the mower, onto the back fence. Plain aluminium, no casing — a
 # garage is unfinished. (along, z, w, h) per make_wall_with_openings.
-WIN_E = (4.45, 1.55, 1.10, 0.90)
-WIN_N = (-1.75, 1.60, 0.95, 0.80)
+# 2026-11-10 ("look at windows, if they are too small"): were 1.10 x 0.90 and 0.95 x 0.80
+WIN_E = (4.40, 1.62, 1.50, 1.24)
+WIN_N = (-1.70, 1.64, 1.30, 1.20)
 
 COL_WALL = (0.62, 0.60, 0.55, 1.0)      # unpainted drywall grey-tan
 COL_BASE = (0.40, 0.38, 0.34, 1.0)

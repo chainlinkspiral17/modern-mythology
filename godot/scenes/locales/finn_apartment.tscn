@@ -553,9 +553,9 @@ metadata/fov = 40.0
 
 ; "The kitchen window faced south ... The face was looking out at the town" (ch12)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.750, 1.600, -1.600)
-rotation = Vector3(0.0000, 3.1416, 0.0)
-metadata/fov = 38.0
+position = Vector3(1.850, 1.560, -1.900)
+rotation = Vector3(-0.0500, 3.1416, 0.0)
+metadata/fov = 46.0
 
 ; "His own wax canvas coat was on the hook" (ch18): the closet, one leaf open
 [node name="shot_insert_coat" type="Marker3D" parent="." groups=["vn_shot"]]

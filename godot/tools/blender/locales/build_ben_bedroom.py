@@ -63,7 +63,7 @@ def build_shell():
         make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
                   axis='Y', palette=pal, baseboard_face_sign=bb)
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
-              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.450, 1.540, 1.000, 0.920)])
+              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.600, 1.460, 1.500, 1.480)])   # 2026-11-10: was 1.00 x 0.92
     # South wall split around the door opening (west of center)
     make_wall("Wall_S_E", (0.85, 0.0, 0), length=ROOM_W - 1.5, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=+1)
@@ -179,12 +179,16 @@ def build_gear_and_pack():
              segments=6, axis='X')
     # A REAL window on the north wall (the cicadas are loud through
     # it; the old build was a single 6 cm stick inside the wall)
-    make_box("Window_Frame_T", (0.45, ROOM_D - 0.12, 2.02), (1.06, 0.05, 0.06), COL_FRAME_DK)
-    make_box("Window_Frame_B", (0.45, ROOM_D - 0.12, 1.06), (1.06, 0.05, 0.06), COL_FRAME_DK)
-    make_box("Window_Frame_L", (-0.06, ROOM_D - 0.12, 1.54), (0.05, 0.05, 1.02), COL_FRAME_DK)
-    make_box("Window_Frame_R", (0.96, ROOM_D - 0.12, 1.54), (0.05, 0.05, 1.02), COL_FRAME_DK)
-    make_box("Window_Glass", (0.45, ROOM_D - 0.12, 1.54), (1.00, 0.005, 0.92), (0.14, 0.17, 0.24, 0.6))
-    make_box("Window_Sill", (0.45, ROOM_D - 0.17, 1.02), (1.14, 0.14, 0.05), COL_FRAME_DK)
+    # 2026-11-10 ("look at windows, if they are too small"): 1.50 x 1.48,
+    # sill 0.72 — it was 1.00 x 0.92 with its sill at 1.08
+    wx, wz, ww, wh = 0.60, 1.46, 1.50, 1.48
+    make_box("Window_Frame_T", (wx, ROOM_D - 0.12, wz + wh / 2.0 + 0.02), (ww + 0.06, 0.05, 0.06), COL_FRAME_DK)
+    make_box("Window_Frame_B", (wx, ROOM_D - 0.12, wz - wh / 2.0 - 0.02), (ww + 0.06, 0.05, 0.06), COL_FRAME_DK)
+    make_box("Window_Frame_L", (wx - ww / 2.0 - 0.01, ROOM_D - 0.12, wz), (0.05, 0.05, wh + 0.10), COL_FRAME_DK)
+    make_box("Window_Frame_R", (wx + ww / 2.0 + 0.01, ROOM_D - 0.12, wz), (0.05, 0.05, wh + 0.10), COL_FRAME_DK)
+    make_box("Window_Frame_Meeting_Rail", (wx, ROOM_D - 0.12, wz), (ww, 0.05, 0.04), COL_FRAME_DK)
+    make_box("Window_Glass", (wx, ROOM_D - 0.12, wz), (ww, 0.005, wh), (0.14, 0.17, 0.24, 0.6))
+    make_box("Window_Sill", (wx, ROOM_D - 0.17, wz - wh / 2.0 - 0.06), (ww + 0.14, 0.14, 0.05), COL_FRAME_DK)
 
 
 

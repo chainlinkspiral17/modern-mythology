@@ -84,6 +84,29 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-11-10 · a window is sized for its ROOM, not copied from the kitchen (pass 333)
+
+- **What happened.** The user: "Look at windows, if they are too small."
+  98 windows in 34 sets were — nearly all the same 1.2 x 1.0 m opening
+  with its sill at 1.0 m, the template's kitchen-sink window, in bedrooms,
+  apartments and a garage. Short windows high in a wall are a large part
+  of why a room reads as a box.
+- **Rules.**
+  1. Sizes to start from (clear opening): bedroom / living double-hung
+     1.5 - 1.8 wide x 1.45 - 1.5 tall, sill 0.70, head 2.15 - 2.2; over a
+     counter or sink the sill stays at the backsplash (1.05) and the
+     window grows UP and WIDE (1.5 x 1.25); a garage 1.3 - 1.5 x 1.2; a
+     picture window 2.0+ wide. Under a tall ceiling the head goes up with it.
+  2. `python3 godot/tools/audit/window_size_audit.py --plan <set>` before
+     cutting: it reads what stands under the sill (a headboard, a mini
+     fridge) and what hangs beside it, and gives the room it has.
+  3. A window moves with everything hung on it: curtains and rods, the
+     stool, string lights over its head, the practical light tied to
+     them, markers aimed at it — and the ROSTER'S PICTURE ROW (centre and
+     size; scratch `refit_rows.py`). An old-sized picture in a bigger
+     opening leaves a gap of nothing around it.
+  4. The exterior build of the same house gets the same window.
+
 ### 2026-11-10 · the brief is a guess until the frames are read (Board Lords, pass 329)
 
 - **What happened.** The brief, written from the text and the builder's

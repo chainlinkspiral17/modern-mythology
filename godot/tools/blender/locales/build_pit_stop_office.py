@@ -23,7 +23,7 @@ ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
 # The office window (2026-10-21, the Deck: "interiors need more windows"):
 # one window in the W wall between the floor safe and the pegboard, onto
 # the side lot and the road, the blinds half up. (along y, z, w, h)
-WIN_W = (2.10, 1.55, 0.90, 1.00)
+WIN_W = (2.15, 1.46, 1.40, 1.48)   # 2026-11-10 ("look at windows, if they are too small"): was 0.90 x 1.00
 PAL_WALL = {"wall":(0.78,0.70,0.58,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
 COL_FLOOR = (0.62,0.52,0.42,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.20,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)

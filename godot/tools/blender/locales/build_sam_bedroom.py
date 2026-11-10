@@ -58,7 +58,7 @@ COL_WHITE = (0.92, 0.92, 0.90, 1.0)
 COL_BEDDING = (0.90, 0.90, 0.88, 1.0); COL_QUILT = (0.58, 0.68, 0.88, 1.0)
 COL_KWIK = (0.78, 0.18, 0.16, 1.0)       # the Kwik Stop red
 DOOR = (1.30, 1.04, 0.86, 2.08)
-WIN = (0.0, 1.50, 1.30, 1.10)
+WIN = (0.0, 1.46, 1.70, 1.48)   # 2026-11-10 ("look at windows, if they are too small"): was 1.30 x 1.10, sill 0.95
 
 
 def build_shell():
