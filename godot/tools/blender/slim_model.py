@@ -15,16 +15,21 @@ heroes/_full/). Steps:
   2. every mesh over its share of --tris gets a COLLAPSE decimate with its
      texture seams LOCKED (UVs and the normal map carry the surface detail;
      the silhouette keeps its shape at ~120k for a full figure);
-  2b. THE REBUILD (2026-11-10) when the locked cut misses the budget, or
-     comes out in shards: the model is welded, fused into one skin when it
-     is a pile of small parts, cut to the budget, given NEW texture
-     coordinates, and its colour, metal/roughness and a normal map are BAKED
-     across from the untouched original. Before this the fallback released
-     the seams and collapsed anyway — on a model whose atlas is thousands of
-     tiny islands that tore every island from its neighbours: the riverboat
-     installed as 10,000 triangles in 2,884 loose pieces, two edges in
-     three open, and no renderer setting could draw it as a boat (the user:
-     "riverboat model still broken looking. thought this was fixed.");
+  2b. A MODEL THAT WILL NOT CUT KEEPS ITS SHAPE (2026-11-10). When the
+     locked cut misses the budget the model stays as the locked cut left
+     it — whole, heavier than its class — and "over_budget" says so. From
+     2026-10-27 the fallback released the seams and collapsed anyway; on a
+     model whose atlas is thousands of tiny islands that tore every island
+     from its neighbours: the riverboat went from a working 12 MB model to
+     10,000 triangles in 2,884 loose pieces (the user: "It used to be a
+     functional model." / "Still looks exploded"). A model is worth more
+     than its budget line.
+  2c. THE REBUILD, only when asked (--lock 0, `slim --rebuild`) or when a
+     cut comes out in shards: welded, fused into one skin when it is a pile
+     of small parts, cut to the budget, NEW texture coordinates, colour /
+     metal-roughness / a normal map BAKED from the untouched original. It
+     does not look like the original up close — the user, of a first try:
+     "That wasnt what the model looked like." — so it is never the default;
   3. images: the base colour and the normal map at most --tex px, every
      other map (metal-roughness, emission) at most --tex-small;
   4. export GLB with JPEG images at --quality.
@@ -439,6 +444,7 @@ def main():
     tris_in = sum(_tris(ob) for ob in meshes)
     passes = []
     rebuilt = None
+    over_budget = False
     if tris_in > o["tris"]:
         # (2026-10-27) the seam lock gives way when it must: a Meshy model cut
         # into thousands of tiny UV islands is mostly seam vertices, and with
@@ -482,8 +488,15 @@ def main():
                     bpy.data.meshes.remove(old)
             got = sum(_tris(ob) for ob in meshes)
             passes.append([factor, got])
-        locked_ok = bool(passes) and passes[-1][1] <= o["tris"] * 1.10 and not _shattered(meshes)
-        if not locked_ok:
+        in_budget = bool(passes) and passes[-1][1] <= o["tris"] * 1.10
+        shards = bool(passes) and _shattered(meshes)
+        if passes and not in_budget and not shards:
+            # it keeps its shape; a fragment atlas shrunk to a prop's map
+            # size is a smear, so its maps keep a size that holds the islands
+            over_budget = True
+            o["tex"] = max(o["tex"], 2048)
+            o["tex_small"] = max(o["tex_small"], 1024)
+        if not passes or shards:
             glass = [ob for ob in meshes if _see_through(ob)]
             solid = [ob for ob in meshes if ob not in glass]
             if solid:
@@ -534,7 +547,7 @@ def main():
         "tris_in": tris_in, "tris_out": tris_out,
         "bytes_in": os.path.getsize(src), "bytes_out": os.path.getsize(dst),
         "images": scaled, "passes": passes,
-        "rebuilt": rebuilt, "integrity": integrity,
+        "rebuilt": rebuilt, "integrity": integrity, "over_budget": over_budget, "budget": o["tris"],
         "seams_released": False}), flush=True)
 
 

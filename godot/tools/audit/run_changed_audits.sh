@@ -26,7 +26,7 @@ BASE="${1:-origin/claude/mythology-game-fiction-ji1t2g}"
 # Files no audit in run_all_audits.sh reads to judge the world's geometry,
 # cameras, story wiring or audio: tools, the portrait + hero-art runtime,
 # docs. Anything not matched here sends the run to the full suite.
-LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/ScreenProbe\.(gd|tscn)|godot/autoload/(Settings|ScreenMgr)\.gd|godot/scenes/menu/SettingsOverlay\.gd|godot/scenes/game/(DialogueBox|ChoiceMenu)\.gd|godot/scenes/previz/Previz\.gd|godot/tools/audit/window_api_audit\.py|godot/tools/lambda_capture_check\.py|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/audit/prop_budget_audit\.py|godot/tools/blender/slim_model\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/scripts/vn/ArtMask\.gd|godot/tools/audit/empty_frame_audit\.py|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
+LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/ScreenProbe\.(gd|tscn)|godot/autoload/(Settings|ScreenMgr)\.gd|godot/scenes/menu/(SettingsOverlay|MusicPlayerOverlay)\.gd|godot/scenes/game/(DialogueBox|ChoiceMenu)\.gd|godot/scenes/previz/Previz\.gd|godot/tools/audit/window_api_audit\.py|godot/tools/lambda_capture_check\.py|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/audit/prop_budget_audit\.py|godot/tools/blender/slim_model\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/scripts/vn/ArtMask\.gd|godot/tools/audit/empty_frame_audit\.py|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
 
 # the Drive gates run on EVERY change, light or not (2026-10-13)
 python3 godot/tools/audit/drive_write_audit.py || { echo "EXIT 1"; exit 1; }
@@ -68,6 +68,18 @@ if echo "$CHANGED" | grep -Eq 'godot/scenes/game/ChoiceMenu\.gd|godot/resources/
         echo "$CP_OUT" | grep -q " 0 finding(s)" || { echo "$CP_OUT" | grep "✗" | head -20; echo "EXIT 1"; exit 1; }
     else
         echo "choice gate · no GODOT_BIN: not run (godot --headless --path godot res://tools/VnChoiceProbe.tscn)"
+    fi
+fi
+# MENU GATE (2026-11-10): the pause menu and the options worked with a real
+# mouse over a line of the story (tools/VnMenuFlowProbe) — the options opened
+# UNDER the pause menu and Escape left them over a running story.
+if echo "$CHANGED" | grep -Eq 'godot/scenes/menu/(SettingsOverlay|MusicPlayerOverlay)\.gd|godot/scenes/game/(InGameMenu|GameEngine|HudBar)\.gd|godot/tools/VnMenuFlowProbe'; then
+    if [ -n "${GODOT_BIN:-}" ]; then
+        MF_OUT="$("$GODOT_BIN" --headless --path godot res://tools/VnMenuFlowProbe.tscn 2>/dev/null | grep -E "✗|VnMenuFlowProbe\]" || true)"
+        echo "$MF_OUT" | tail -1
+        echo "$MF_OUT" | grep -q "\] 0 finding(s)" || { echo "$MF_OUT" | grep "✗" | head -20; echo "EXIT 1"; exit 1; }
+    else
+        echo "menu gate · no GODOT_BIN: not run (godot --headless --path godot res://tools/VnMenuFlowProbe.tscn)"
     fi
 fi
 HEAVY="$(echo "$CHANGED" | grep -Ev "$LIGHT" || true)"

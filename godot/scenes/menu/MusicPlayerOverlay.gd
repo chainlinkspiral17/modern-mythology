@@ -150,7 +150,35 @@ const _SYNTH_ENTRY := {
 }
 
 
+## (2026-11-10, the user: "making choices in the menu still breaks the
+## game.") Opened from the pause menu, this panel (and the options, the same way) was drawn UNDER it (the
+## pause menu sits 19 layers higher) while, being later in the tree, it took
+## every click: SETTINGS looked like it did nothing, the pause menu's buttons
+## went dead, and Escape closed the pause menu, un-paused the story and left
+## this panel (and the options, the same way) sitting over it. So: it rises over whatever is up when it
+## opens, and Escape closes IT, first (see _input).
+func _rise_over_siblings() -> void:
+	var par: Node = get_parent()
+	if par == null:
+		return
+	var top: int = z_index
+	for sib in par.get_children():
+		if sib != self and sib is CanvasItem and (sib as CanvasItem).visible:
+			top = maxi(top, (sib as CanvasItem).z_index + 1)
+	z_index = top
+
+
+func _input(event: InputEvent) -> void:
+	if not is_visible_in_tree():
+		return
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("menu_back"):
+		get_viewport().set_input_as_handled()
+		visible = false
+		closed.emit()
+
+
 func open() -> void:
+	_rise_over_siblings()
 	# Always rebuild — cheap and avoids stale-cache bugs after
 	# unlock changes or hot-reload of the catalog.
 	for ch in get_children():

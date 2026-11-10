@@ -1866,6 +1866,16 @@ def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
     if not force and tris and tris <= budget["tris"] * 1.05 and side <= budget["tex"]:
         model_texture_settings(path, kind, log=log)
         return {"ok": True, "skipped": True, "why": f"already in budget ({tris} triangles, {side}px)"}
+    # a model that would not cut and was left whole (see slim_model 2b): not cut again each run
+    kept = path.parent / "_full" / (path.stem + ".kept.json")
+    if not force and kept.exists():
+        try:
+            if int(json.loads(kept.read_text()).get("tris", -1)) == tris:
+                model_texture_settings(path, kind, log=log)
+                return {"ok": True, "skipped": True,
+                        "why": f"kept whole at {tris} triangles (it does not cut to {budget['tris']} without breaking)"}
+        except (OSError, ValueError):
+            pass
     blender = find_blender()
     if not blender:
         log(f"    slim · {path.name}: no Blender found — left full size (install Blender from Steam, then run: "
@@ -1913,6 +1923,13 @@ def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
     except OSError:
         pass
     rb = info.get("rebuilt")
+    kept = full_dir / (path.stem + ".kept.json")
+    if info.get("over_budget"):
+        kept.write_text(json.dumps({"tris": info["tris_out"], "budget": budget["tris"]}) + "\n")
+        log(f"    slim · {path.name}: KEPT WHOLE at {info['tris_out']} triangles — it does not cut to its budget of "
+            f"{budget['tris']} without breaking. (`slim {path.stem} --rebuild` makes a budget-sized stand-in; it will not look the same.)")
+    else:
+        kept.unlink(missing_ok=True)
     log(f"    slim · {path.name}: {info['tris_in']} → {info['tris_out']} triangles, "
         f"{info['bytes_in'] / 1e6:.1f} → {info['bytes_out'] / 1e6:.1f} MB (original in {rel(full)})"
         + ((" · REBUILT: " + ("fused into one skin, " if rb.get("fused") else "") +

@@ -67,6 +67,32 @@ case "$MODE" in
 esac
 
 echo "· Godot: ${GODOT[*]}"
+# (2026-11-10) WHICH BUILD: say what this checkout is before it runs, and say
+# so loudly when a pull did not land — a merge left half-done, files in
+# conflict, or commits on the server this checkout does not have. A fix that
+# is not on the machine looks exactly like a fix that did not work.
+if command -v git >/dev/null 2>&1 && git -C "$ROOT" rev-parse --git-dir >/dev/null 2>&1; then
+	BR="claude/mythology-game-fiction-ji1t2g"
+	echo "· build: $(git -C "$ROOT" log -1 --format='%h  %cd  %s' --date=format:'%m-%d %H:%M' 2>/dev/null)"
+	if [ -f "$(git -C "$ROOT" rev-parse --git-dir)/MERGE_HEAD" ] || [ -n "$(git -C "$ROOT" diff --name-only --diff-filter=U 2>/dev/null)" ]; then
+		echo ""
+		echo "  !! THE LAST PULL DID NOT FINISH — this is NOT the new version. Files in conflict:"
+		git -C "$ROOT" diff --name-only --diff-filter=U 2>/dev/null | sed 's/^/       /'
+		echo "  !! Send Claude these lines."
+		echo ""
+	fi
+	if timeout 12 git -C "$ROOT" fetch -q origin "$BR" 2>/dev/null; then
+		BEHIND="$(git -C "$ROOT" rev-list --count "HEAD..origin/$BR" 2>/dev/null || echo 0)"
+		if [ "${BEHIND:-0}" -gt 0 ]; then
+			echo ""
+			echo "  !! THIS CHECKOUT IS $BEHIND COMMIT(S) BEHIND — the newest fixes are not in the game you are about to see."
+			echo "  !! Newest on the server: $(git -C "$ROOT" log -1 --format='%h  %s' "origin/$BR" 2>/dev/null)"
+			echo ""
+		else
+			echo "· up to date with the server"
+		fi
+	fi
+fi
 # (2026-11-10) Godot plays a model from its import cache, not from the .glb:
 # a model the pipeline just re-cut (`meshy_pipeline.py slim` leaves this
 # mark) is re-imported first, or the game would show the old one.

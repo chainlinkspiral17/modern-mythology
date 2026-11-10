@@ -36,6 +36,7 @@ func _ready() -> void:
 	if st != null and st.has_signal("settings_changed"):
 		st.connect("settings_changed", _on_setting)
 	_refresh.call_deferred()
+	print("[ScreenMgr] %s" % build_stamp())
 
 
 ## A surface that lays itself out for any width asks for the full screen.
@@ -72,6 +73,38 @@ func _wide_surface_up() -> bool:
 		if is_instance_valid(n) and n.is_inside_tree() and not n.is_queued_for_deletion():
 			return true
 	return false
+
+
+## WHICH BUILD IS THIS (2026-11-10). The user, after a fix that tested right
+## here: "That wasn't what caused my glitch. Keep digging." Nothing on screen
+## said whether the game in front of them had the fix in it — a pull that
+## did not land, an exported build, an editor run of an older checkout all
+## look the same from inside. The checkout's commit, read from .git, shown
+## in Settings and printed at start: "BUILD 779d93e9 · pulled 11-10 04:40".
+func build_stamp() -> String:
+	var root: String = ProjectSettings.globalize_path("res://")
+	if root == "":
+		return "BUILD · an exported game (not the checkout — re-export to update it)"
+	var git: String = root.path_join("..").simplify_path().path_join(".git")
+	var head: String = FileAccess.get_file_as_string(git.path_join("HEAD")).strip_edges()
+	if head == "":
+		return "BUILD · no git checkout beside the game"
+	var commit: String = head
+	if head.begins_with("ref: "):
+		var ref: String = head.substr(5).strip_edges()
+		commit = FileAccess.get_file_as_string(git.path_join(ref)).strip_edges()
+		if commit == "":
+			for line: String in FileAccess.get_file_as_string(git.path_join("packed-refs")).split("\n"):
+				if line.ends_with(" " + ref):
+					commit = line.get_slice(" ", 0)
+	var out: String = "BUILD %s" % commit.left(8)
+	var fetched: int = FileAccess.get_modified_time(git.path_join("FETCH_HEAD"))
+	if fetched > 0:
+		var t: Dictionary = Time.get_datetime_dict_from_unix_time(fetched + Time.get_time_zone_from_system().get("bias", 0) * 60)
+		out += " · last pull %02d-%02d %02d:%02d" % [int(t["month"]), int(t["day"]), int(t["hour"]), int(t["minute"])]
+	if FileAccess.file_exists(git.path_join("MERGE_HEAD")):
+		out += " · A PULL IS HALF-FINISHED (a merge did not complete): this is NOT the new version"
+	return out
 
 
 ## What the screen is doing, in a sentence — shown in Settings under SCREEN
