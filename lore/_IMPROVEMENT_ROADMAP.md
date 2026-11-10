@@ -3835,6 +3835,16 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · THE BACKGROUNDS, MEASURED (the user: "Background models still need a lot of work.").**
+- `lore/_BACKGROUND_STATUS_2026_11.md`: all 116 sets by lines played, with
+  views, markers, lights, parts, held views (edges) and empty pictures.
+  Half of the VN's 19,240 3D lines play in 15 sets; most of those have
+  350–900 parts against the model chapters' 2,000–6,500.
+- **The next passes, in order:** lena_apartment → miller_kitchen →
+  hans_bakery_back_kitchen → board_lords_interior → henderson_kitchen →
+  finn_apartment, each to the model-chapter method in that file (read the
+  scenes, SCALE, EDGES, the D2–D6 detail pass, pictures, contact sheet).
+
 **2026-11-10 · pass 323: the first three households' pictures (28 rows from the empty-frame queue).**
 - The Miller house (7 photos, applied to both builds of the kitchen), Graciela's
   house (the Guadalupe, the Sacred Heart, the wedding photograph, four family
