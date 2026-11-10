@@ -961,6 +961,15 @@ func _fire_blink(node: Control) -> void:
 # to cover).
 var bg_is_3d: bool = false
 
+# (2026-11-10, the user: "Text box still obstructing art, so maybe direct and
+# move Frasier to the left.") A lone figure over a 3D set always took the
+# RIGHT flank, so the text always took the lower LEFT of the picture —
+# whatever the view had there. Which flank a lone figure takes is DIRECTION,
+# per view: resources/vn/portrait_sides.json names the views where the
+# figure stands left (and the text, opposite it, sits lower right).
+# GameEngine sets this with bg_is_3d on every background change.
+var lone_side: String = "right"
+
 
 # (2026-10-28) while the director holds an insert on a narrated line the
 # portraits step back (fade out) so the object is the picture; they return on
@@ -993,12 +1002,15 @@ func show_character(char_name: String, expr: String, pos: String, facing: String
 	var asked_pos: String = pos
 	if bg_is_3d and pos == "center":
 		var k := char_key(char_name)
-		var right_slot: Variant = _slots.get("right")
-		var left_slot: Variant = _slots.get("left")
-		if right_slot == null or (right_slot is Dictionary and right_slot["name"] == k):
-			pos = "right"
-		elif left_slot == null or (left_slot is Dictionary and left_slot["name"] == k):
-			pos = "left"
+		# the flank this view gives a lone figure first (lone_side), then the other
+		var first: String = "left" if lone_side == "left" else "right"
+		var second: String = "right" if first == "left" else "left"
+		var first_slot: Variant = _slots.get(first)
+		var second_slot: Variant = _slots.get(second)
+		if first_slot == null or (first_slot is Dictionary and first_slot["name"] == k):
+			pos = first
+		elif second_slot == null or (second_slot is Dictionary and second_slot["name"] == k):
+			pos = second
 	# Store the slug, not the raw display name, so identity checks work
 	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
 	var key := char_key(char_name)

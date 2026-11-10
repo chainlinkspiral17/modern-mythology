@@ -420,8 +420,11 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
      fetched read-only from their Drive before any fix is written — a fix
      tested on a stand-in for a file nobody looked at is a guess.
   2. A reduction never collapses across released seams. Over budget with
-     the seams locked → THE REBUILD: weld, fuse when it is a pile of parts,
-     cut, new texture coordinates, maps baked from the original.
+     the seams locked → the model KEEPS ITS SHAPE, heavier than its class
+     (pass 327: "It used to be a functional model" — it was, at 12 MB, until
+     a budget line was enforced on it). THE REBUILD (weld, fuse, cut, new
+     texture coordinates, baked maps) makes a different-looking model and is
+     only for `slim --rebuild` or a cut that comes out in shards.
   3. A cut is judged by what it IS (in one piece), not by its count. `slim`
      re-cuts a shattered model, refuses a shattered result, and never takes
      a shattered file for an original.

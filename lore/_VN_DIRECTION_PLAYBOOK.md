@@ -323,6 +323,36 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-10 · a probe that calls the function has not pressed the button (pass 327)
+
+- **What happened.** "making choices in the menu still breaks the game."
+  Pass 326 found two real breaks (the choice list off the bottom, TEXT SIZE
+  emptying the box) and neither was it. The options panel opened UNDER the
+  pause menu while taking its clicks, and Escape left it over a running
+  story. The probe written for pass 326 opened the panel by calling
+  `_open_settings()` and pressed options by emitting `pressed`: layering,
+  hit-testing and Escape never ran.
+- **Rules.**
+  1. A UI probe moves the pointer and clicks (`push_input`, canvas
+     coordinates), asks what is under the pointer before it clicks
+     (`gui_get_hovered_control`), and presses the keys a reader presses.
+     Calling the handler tests the handler.
+  2. A panel opened from another panel rises over it when it opens and
+     takes Escape first. z_index decides what is SEEN, tree order decides
+     what is CLICKED: when they disagree, one panel is visible and another
+     is live.
+  3. When a fix tests right and the user still sees the fault, the next
+     question is "is the fix on that machine?" — and the game must be able
+     to answer it on its own screen (the build line), not the user.
+  4. A pixel test must first be made deaf to everything that is not the
+     subject: five of five first findings in `VnRevealTest` were its own.
+  5. What worked before is the first candidate for the fix. The riverboat
+     "used to be a functional model": restore the path that made it, before
+     inventing a new one.
+  6. Which flank a lone figure takes is direction, per view
+     (`resources/vn/portrait_sides.json`): the text sits opposite, so name
+     the views whose lower left is the picture.
+
 ### 2026-11-10 · the text box is laid out ONCE, before the first character (pass 326)
 
 - **What happened.** A half-typed word ran past the plate's right edge and

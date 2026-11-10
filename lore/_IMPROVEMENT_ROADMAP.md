@@ -3835,6 +3835,57 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 327: "Keep digging." — the options under the pause menu, the riverboat kept whole, Frasier to the left, the build that says which it is.**
+- The user, on pass 326: "That wasn't what caused my glitch. Keep digging.
+  It types outside the box and then moved the too long word to the next
+  line. That wasnt what the model looked like. It used to be a functional
+  model. Text box still obstructing art, so maybe direct and move Frasier to
+  the left. Still looks exploded".
+- **The menu glitch** (`VnMenuFlowProbe`, a REAL mouse: MENU, SETTINGS, an
+  option, ✕, RESUME, Escape). SETTINGS and MUSIC PLAYER opened UNDER the
+  pause menu (z 101 under 120) while, later in the tree, they took every
+  click; Escape closed the pause menu, un-paused the story and left the
+  options over it (the user's own screenshot: the options over a line still
+  typing). Both panels rise over whatever is up when they open; Escape
+  closes them first. Pass 326's `VnOptionsProbe` called the open functions
+  and emitted `pressed` itself and so saw none of it — the lesson of pass
+  319 (press the actual button) learned a second time.
+- **The riverboat.** It was a working model until 2026-10-27, when the
+  reducer gained a fallback that forced an uncuttable model to its budget.
+  Pass 326 replaced that fallback with a rebuild — a different model, by
+  default. Now a model the locked cut cannot bring to budget KEEPS ITS
+  SHAPE (over_budget, `.kept.json`, maps held at 2048); the rebuild is only
+  for `slim --rebuild` or a cut in shards.
+- **The typing.** `VnRevealTest` compares every typing frame pixel by pixel
+  with the finished line — the box alone at each column, and the real
+  engine flow (set and cast hidden) — on Godot 4.6 and 4.7.2, ultrawide: no
+  word moves. Every first "finding" was the test's own (THE TRIP's glow,
+  the cursor, the name plate's pop, a window still resizing, a portrait's
+  step-back tween). So the fix of pass 326 holds wherever it can be run;
+  whether it is RUNNING on the user's machine was not knowable — hence:
+- **Which build.** `ScreenMgr.build_stamp()` (commit + last pull, read from
+  .git) in Settings under SCREEN SIZE and in the log; `play.sh` prints the
+  build and is loud about a half-finished pull, conflicts, or a checkout
+  behind the server.
+- **Direction: the lone figure's flank.** A lone figure over a 3D set always
+  stood RIGHT, so the text always took the picture's lower LEFT.
+  `resources/vn/portrait_sides.json` names the views where the figure
+  stands left (text lower right); the warehouse is the first. CharLayer
+  `lone_side`, set by GameEngine with `bg_is_3d`.
+- **Draft 2 targets:**
+  - the user reads the build line and the riverboat after
+    `slim steamboat_model --force`; if the typing still breaks on a build
+    that carries pass 326, the stamp says so and the cause is on that
+    machine (settings.cfg, text scale, the Godot build) — ask for those.
+  - the lone figure's flank chosen by the PICTURE: project the set's art
+    rows and hero props through each view's camera and keep the text off
+    them (a generated table under the hand-written one); decided when the
+    shot lands, not when the `show` runs (the show precedes its closeup).
+  - `VnMenuFlowProbe` for the main menu's overlays and the MUSIC PLAYER;
+    a pad's B button through the same flow.
+  - the pause menu's settings as a page of the pause menu, not a second
+    panel over it.
+
 **2026-11-10 · pass 326: the text box that broke on screen, auto-play that stopped, the options that wiped the line, the riverboat in shards.**
 - Four reports in one evening, each with a cause that was in the code or the
   file and none in the place first looked:

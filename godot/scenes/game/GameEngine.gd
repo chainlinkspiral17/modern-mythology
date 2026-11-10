@@ -2011,11 +2011,32 @@ func _apply_bg_3d(preset_id: String) -> bool:
 		_director.call("on_locale_changed")
 	if _chars != null:
 		_chars.set("bg_is_3d", true)   # portraits flank, center stays clear
+		_chars.set("lone_side", _portrait_side_for(preset_id))
 	if _bg_3d_node.has_method("queue_load"):
 		_bg_3d_node.call("queue_load", preset_id)
 	else:
 		_bg_3d_node.call_deferred("load_location", preset_id)
 	return true
+
+# The flank a lone figure takes in this view (the text sits opposite it):
+# resources/vn/portrait_sides.json, "presets": {"<preset id>": "left"}; a
+# view not named there takes the file's "default" (right).
+const PORTRAIT_SIDES := "res://resources/vn/portrait_sides.json"
+var _portrait_sides: Dictionary = {}
+var _portrait_sides_read: bool = false
+
+
+func _portrait_side_for(preset_id: String) -> String:
+	if not _portrait_sides_read:
+		_portrait_sides_read = true
+		if FileAccess.file_exists(PORTRAIT_SIDES):
+			var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(PORTRAIT_SIDES))
+			if parsed is Dictionary:
+				_portrait_sides = parsed
+	var presets: Dictionary = _portrait_sides.get("presets", {})
+	var side: String = String(presets.get(preset_id, _portrait_sides.get("default", "right")))
+	return "left" if side == "left" else "right"
+
 
 func _clear_bg_3d() -> void:
 	# Leaving the locale: crossfade the ambient bed back out and let

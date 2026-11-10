@@ -53,7 +53,117 @@ func _grab() -> Image:
 	return img
 
 
+## --engine scene:node --lines N: the same comparison on the REAL flow — the
+## engine reading a scene (its speakers, portraits' slots, shots and page
+## turns), with the set and the portraits hidden so a lit pixel is text.
+func _run_engine(spec: String, n_lines: int, out: String) -> void:
+	var parts: PackedStringArray = spec.split(":")
+	var scene_id: String = parts[0]
+	var node_i: int = int(parts[1]) if parts.size() > 1 else 1
+	var sc: Dictionary = SceneDataDB.get_scene(scene_id)
+	var eng: Node = load("res://scenes/game/GameEngine.tscn").instantiate()
+	get_tree().root.add_child(eng)
+	await get_tree().process_frame
+	eng.call("start", int(sc.get("vol", 1)), scene_id, -1, max(node_i, 1))
+	var dlg: Control = eng.get("_dlg")
+	# the window settles (fullscreen is granted a few frames in) before anything is measured
+	for i in 90:
+		await get_tree().process_frame
+	var size: Vector2i = get_viewport().get_texture().get_size()
+	var w: int = size.x
+	var sx: float = float(size.x) / get_viewport().get_visible_rect().size.x
+	print("  frame %s · canvas %s · Godot %s" % [size, get_viewport().get_visible_rect().size, Engine.get_version_info()["string"]])
+	var done: int = 0
+	var last_text: String = ""
+	var guard: int = 0
+	while done < n_lines and guard < 20000:
+		guard += 1
+		await get_tree().process_frame
+		# a black stage: the set, the cast and the HUD out of the picture
+		for nm: String in ["_bg_3d_node", "_bg", "_chars", "_hud", "_bg_composition", "_substrate"]:
+			var nd: Variant = eng.get(nm)
+			if nd != null and is_instance_valid(nd) and nd is CanvasItem:
+				(nd as CanvasItem).modulate.a = 0.0
+				if nm == "_chars":
+					(nd as CanvasItem).visible = false      # its own tweens write modulate (the insert step-back)
+		var card: Control = eng.get("_interlude")
+		if card != null and card.visible:
+			card.call("try_advance")
+			continue
+		if (eng.get("_choices") as Control).visible:
+			(eng.get("_choices") as Control).call("_on_chosen", 0)
+			continue
+		var text: String = String(dlg.get("_full_text"))
+		if not dlg.visible or text == "" or text == last_text or not bool(dlg.call("is_typing")):
+			if bool(eng.get("_waiting")) and not bool(dlg.call("is_typing")):
+				last_text = text          # a line already at rest: turn the page
+				eng.call("_advance")
+			continue
+		last_text = text
+		var frames: Array = []
+		var plates: Array = []
+		while bool(dlg.call("is_typing")) and frames.size() < 3000:
+			var gi: Image = await _grab()
+			frames.append(_lit(gi))
+			plates.append((dlg.get("_plate") as Control).get_global_rect())
+			if out != "" and done == int(String(_args.get("dump", "0"))) and frames.size() % 5 == 0:
+				gi.save_png("%s/eng_%03d.png" % [out, frames.size()])
+		for i in 25:
+			await get_tree().process_frame
+		var fin_img: Image = await _grab()
+		var fin: PackedByteArray = _lit(fin_img)
+		if fin_img.get_width() != w or (frames.size() > 0 and (frames[0] as PackedByteArray).size() != fin.size()):
+			print("  -- %s: the window changed size during this line; not compared" % text.left(28))
+			size = get_viewport().get_texture().get_size()
+			w = size.x
+			sx = float(size.x) / get_viewport().get_visible_rect().size.x
+			done += 1
+			continue
+		if out != "" and done == int(String(_args.get("dump", "0"))):
+			fin_img.save_png("%s/eng_final.png" % out)
+		var moved: int = 0
+		var outside_n: int = 0
+		var first_bad: int = -1
+		for fi in range(2, frames.size() - 1):          # frame 0-1: the name plate pops; the last: the cursor
+			var f: PackedByteArray = frames[fi]
+			var stray: int = 0
+			var outside: int = 0
+			var pr: Rect2 = plates[fi]
+			for i in f.size():
+				if f[i] == 1:
+					if fin[i] == 0:
+						stray += 1
+					if fi > 20:
+						var x: float = float(i % w) / sx
+						var y: float = float(i / w) / sx
+						if x < pr.position.x - 1.0 or x > pr.end.x + 1.0 or y < pr.position.y - 1.0 or y > pr.end.y + 1.0:
+							outside += 1
+			if stray > 12:
+				moved += 1
+				if first_bad < 0:
+					first_bad = fi
+			if outside > 12:
+				outside_n += 1
+		done += 1
+		var where: String = "%s#%d '%s…'" % [String(eng.get("_scene_id")), int(eng.get("_node_idx")) - 1, text.left(28)]
+		if moved > 0 or outside_n > 0:
+			_bad += 1
+			print("  ✗ %s: %d of %d typing frames differ from the finished line (first at %d), %d with text outside the plate" % [where, moved, frames.size(), first_bad, outside_n])
+		else:
+			print("  ok %s: %d typing frames" % [where, frames.size()])
+	eng.queue_free()
+
+
 func _run() -> void:
+	if String(_args.get("engine", "")) != "":
+		Settings.set("auto_play", false)
+		var trip0: float = Settings.trip_amount
+		Settings.trip_amount = 0.0
+		await _run_engine(String(_args.get("engine", "")), int(String(_args.get("lines", "8"))), String(_args.get("out", "")))
+		Settings.trip_amount = trip0
+		print("[VnRevealTest] engine · %d finding(s)" % _bad)
+		get_tree().quit(1 if _bad > 0 else 0)
+		return
 	Settings.set("auto_play", false)
 	# THE TRIP's glow breathes around the letters: off, so a lit pixel is text
 	var trip_was: float = Settings.trip_amount

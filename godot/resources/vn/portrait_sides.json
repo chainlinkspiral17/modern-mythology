@@ -1,0 +1,7 @@
+{
+  "_comment": "DIRECTION: the flank a lone figure takes over a 3D set, per view (Background3D preset id). The text sits opposite the figure, in the lower third of that side — so name a view here when its lower LEFT is what the picture is about. Read by GameEngine._portrait_side_for; a view not named takes `default`. (2026-11-10, the user: \"Text box still obstructing art, so maybe direct and move Frasier to the left.\")",
+  "default": "right",
+  "presets": {
+    "cathedral_interior": "left"
+  }
+}
