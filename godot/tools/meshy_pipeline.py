@@ -1811,13 +1811,46 @@ def model_texture_settings(glb, kind, log=print):
     return wrote
 
 
+def _fetch_full(full, log=print):
+    """The untouched original of a slimmed model, fetched from the Drive when
+    this machine does not have it (a checkout's drive-pull leaves _full/
+    out). Returns True when `full` is there afterwards."""
+    import subprocess
+    full = Path(full)
+    if full.exists():
+        return True
+    rc = _rclone()
+    if not rc:
+        return False
+    full.parent.mkdir(parents=True, exist_ok=True)
+    (full.parent / ".gdignore").touch()
+    log(f"    slim · fetching the original {rel(full)} from the Drive …")
+    try:
+        # drive-read: Drive → this checkout (writes only a local file)
+        subprocess.run([rc, "copyto", f"{DRIVE_REMOTE}/{rel(full)}", str(full)],
+                       capture_output=True, text=True, timeout=3600)
+    except (OSError, subprocess.SubprocessError):
+        return False
+    return full.exists() and full.stat().st_size > 0
+
+
 def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
     """Cut one installed model to SLIM_BUDGET[kind] (kind: a budget class,
     budget_class(entry); a bare kind still works); the original goes to
     _full/. fresh: `path` was just downloaded — it IS the new original and
     replaces any older one in _full/. force: re-slim from _full/ even when
-    in budget. Returns a dict (ok, skipped, tris_in/out, bytes_in/out, why)."""
+    in budget. free_seams (`slim --rebuild`): skip the locked cut, go straight
+    to slim_model's rebuild. Returns a dict (ok, skipped, tris_in/out,
+    bytes_in/out, why).
+
+    (2026-11-10) A model that is IN SHARDS (meshy_integrity) is never
+    "already in budget": it is re-cut from its original, which is fetched
+    from the Drive when this machine lacks it. A shattered file is never
+    taken for an original, and a cut that comes out shattered is not
+    installed. The riverboat sat in the game as 2,884 loose pieces for two
+    weeks because the triangle count was all this function looked at."""
     import subprocess
+    import meshy_integrity
     path = Path(path)
     budget = SLIM_BUDGET.get(kind)
     if budget is None or not path.exists():
@@ -1825,6 +1858,11 @@ def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
     tris, side = glb_budget(path)
     if fresh:
         force = False
+    state = meshy_integrity.measure(path) or {}
+    shards = bool(state.get("shattered")) and not fresh
+    if shards:
+        log(f"    slim · {path.name}: IN SHARDS ({state['tris']} triangles in {state['pieces']} loose pieces) — re-cutting from its original")
+        force = True
     if not force and tris and tris <= budget["tris"] * 1.05 and side <= budget["tex"]:
         model_texture_settings(path, kind, log=log)
         return {"ok": True, "skipped": True, "why": f"already in budget ({tris} triangles, {side}px)"}
@@ -1837,6 +1875,11 @@ def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
     full_dir.mkdir(exist_ok=True)
     (full_dir / ".gdignore").touch()
     full = full_dir / path.name
+    if not fresh and not full.exists() and (force or shards):
+        _fetch_full(full, log=log)
+    if shards and not full.exists():
+        return {"ok": False, "why": f"{path.name} is in shards and its original ({rel(full)}) is neither on this "
+                                    f"machine nor reachable on the Drive — re-install the model from Hero Studio"}
     if fresh or not full.exists():
         import shutil as _sh
         _sh.copy2(path, full)
@@ -1856,11 +1899,26 @@ def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
         tmp.unlink(missing_ok=True)
         return {"ok": False, "why": "Blender failed: " + ((r.stderr or r.stdout or "")[-400:]).strip()}
     info = json.loads(line[5:])
+    after = info.get("integrity") or meshy_integrity.measure(tmp) or {}
+    if after.get("shattered"):
+        tmp.unlink(missing_ok=True)
+        return {"ok": False, "why": f"the cut came out in shards ({after.get('tris')} triangles in "
+                                    f"{after.get('pieces')} loose pieces) — not installed; the file is as it was"}
     os.replace(tmp, path)
+    # Godot plays a model from its import cache: tell the launcher
+    # (tools/play.sh) to re-import before the next run
+    try:
+        (REPO / ".godot").mkdir(exist_ok=True)
+        (REPO / ".godot" / "models_changed").touch()
+    except OSError:
+        pass
+    rb = info.get("rebuilt")
     log(f"    slim · {path.name}: {info['tris_in']} → {info['tris_out']} triangles, "
         f"{info['bytes_in'] / 1e6:.1f} → {info['bytes_out'] / 1e6:.1f} MB (original in {rel(full)})"
-        + (" · seams released to reach the budget — look it over for dark specks at UV seams"
-           if info.get("seams_released") else ""))
+        + ((" · REBUILT: " + ("fused into one skin, " if rb.get("fused") else "") +
+            "new texture coordinates, " + " + ".join(rb.get("baked", [])) + " baked from the original"
+            + (" · left as cut: " + ", ".join(rb["kept_as_cut"]) if rb.get("kept_as_cut") else ""))
+           if rb else ""))
     info.update(ok=True, skipped=False)
     _drop_stale_maps(path, log)
     model_texture_settings(path, kind, log=log)
@@ -1870,7 +1928,8 @@ def slim_glb(path, kind, log=print, force=False, fresh=False, free_seams=False):
 def _drop_stale_maps(glb, log=print):
     """The maps Godot extracted from the full-size model (<stem>_0.jpg … or
     <stem>_Image_0.jpg …) that the slim one no longer names: left alone they
-    stay imported — and exported — at 4096. Only digit / Image_<n> names."""
+    stay imported — and exported — at 4096. Only digit / Image_<n> names and
+    the rebuild's own Slim_<Map> names."""
     glb = Path(glb)
     j = _glb_json(glb) or {}
     keep = set()
@@ -1878,7 +1937,7 @@ def _drop_stale_maps(glb, log=print):
         keep.add(im.get("name") or str(i))
     dropped = 0
     for f in glb.parent.glob(f"{glb.stem}_*"):
-        m = re.fullmatch(re.escape(glb.stem) + r"_((?:Image_)?\d+)\.(?:jpg|jpeg|png)(\.import)?", f.name)
+        m = re.fullmatch(re.escape(glb.stem) + r"_((?:Image_)?\d+|Slim_[A-Za-z]+)\.(?:jpg|jpeg|png)(\.import)?", f.name)
         if m and m.group(1) not in keep:
             f.unlink()
             dropped += 1
@@ -1907,7 +1966,7 @@ def cmd_slim(args):
             skipped += 1
         elif res.get("ok"):
             done += 1
-            if res.get("seams_released"):
+            if res.get("rebuilt"):
                 released.append(e["slug"])
             before += b0
             after += out.stat().st_size
@@ -1918,9 +1977,10 @@ def cmd_slim(args):
                 break
     print(f"slimmed {done} model(s) ({before / 1e6:.0f} → {after / 1e6:.0f} MB), {skipped} already in budget, {failed} failed")
     if released:
-        print(f"seams released to reach the budget (look these over for dark specks): {', '.join(released)}")
+        print(f"rebuilt (new texture coordinates, maps baked from the original) — look these over in the game: {', '.join(released)}")
     if done:
-        print("Godot re-imports them the next time the project opens (or: bash godot/tools/reimport_models.sh). "
+        print("Godot re-imports them the next time the project opens in the editor, and `bash godot/tools/play.sh` "
+              "re-imports before it starts the game (or: bash godot/tools/reimport_models.sh). "
               "Then SAVE in Hero Studio puts the slim models and the _full/ originals on the Drive.")
     return 1 if failed else 0
 
@@ -3883,8 +3943,10 @@ def main():
     p = sub.add_parser("slim", help="cut installed hero / demon / prop models to the game budget (Blender; originals kept in _full/)")
     p.add_argument("slugs", nargs="*", help="only these (default: every model over budget)")
     p.add_argument("--force", action="store_true", help="re-slim from the _full/ original even when in budget")
-    p.add_argument("--free-seams", action="store_true",
-                   help="re-cut from the _full/ original with the UV seams free (no locked pass): for a model the locked cut distorted")
+    p.add_argument("--rebuild", "--free-seams", dest="free_seams", action="store_true",
+                   help="re-cut from the _full/ original by REBUILDING it (welded, fused when it is a pile of parts, new "
+                        "texture coordinates, maps baked from the original): for a model the locked cut distorted. "
+                        "A model in shards is rebuilt without being asked.")
     sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
     sub.add_parser("budget", help="what the models cost: per budget class, disk + video memory (measured / estimated), the heaviest sets")
 

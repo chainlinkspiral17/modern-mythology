@@ -26,7 +26,7 @@ BASE="${1:-origin/claude/mythology-game-fiction-ji1t2g}"
 # Files no audit in run_all_audits.sh reads to judge the world's geometry,
 # cameras, story wiring or audio: tools, the portrait + hero-art runtime,
 # docs. Anything not matched here sends the run to the full suite.
-LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/ScreenProbe\.(gd|tscn)|godot/autoload/(Settings|ScreenMgr)\.gd|godot/scenes/menu/SettingsOverlay\.gd|godot/scenes/game/DialogueBox\.gd|godot/scenes/previz/Previz\.gd|godot/tools/audit/window_api_audit\.py|godot/tools/lambda_capture_check\.py|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/audit/prop_budget_audit\.py|godot/tools/blender/slim_model\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/scripts/vn/ArtMask\.gd|godot/tools/audit/empty_frame_audit\.py|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
+LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/ScreenProbe\.(gd|tscn)|godot/autoload/(Settings|ScreenMgr)\.gd|godot/scenes/menu/SettingsOverlay\.gd|godot/scenes/game/(DialogueBox|ChoiceMenu)\.gd|godot/scenes/previz/Previz\.gd|godot/tools/audit/window_api_audit\.py|godot/tools/lambda_capture_check\.py|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/audit/prop_budget_audit\.py|godot/tools/blender/slim_model\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/scripts/vn/ArtMask\.gd|godot/tools/audit/empty_frame_audit\.py|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
 
 # the Drive gates run on EVERY change, light or not (2026-10-13)
 python3 godot/tools/audit/drive_write_audit.py || { echo "EXIT 1"; exit 1; }
@@ -42,6 +42,12 @@ python3 godot/tools/audit/window_api_audit.py || { echo "EXIT 1"; exit 1; }
 python3 godot/tools/lambda_capture_check.py | tail -1
 python3 godot/tools/lambda_capture_check.py >/dev/null || { python3 godot/tools/lambda_capture_check.py | grep CAPTURE; echo "EXIT 1"; exit 1; }
 
+# no installed model is in shards (2026-11-10, the riverboat: 10,000 triangles
+# in 2,884 loose pieces sat in the game for two weeks because a triangle
+# count was the only gate). Reads the .glb files; none on this machine = pass.
+python3 godot/tools/meshy_integrity.py --gate | tail -1
+python3 godot/tools/meshy_integrity.py --gate >/dev/null || { python3 godot/tools/meshy_integrity.py --gate | grep "✗"; echo "EXIT 1"; exit 1; }
+
 CHANGED="$( { git diff --name-only "$BASE"...HEAD 2>/dev/null; git diff --name-only; git diff --name-only --cached;
               git ls-files --others --exclude-standard; } | sort -u | grep -v '^$' )"
 if [ -z "$CHANGED" ]; then
@@ -51,6 +57,19 @@ fi
 # re-measured (tools/PerfProbe.gd) and may not draw more than its cap — see
 # perf_gate.py. Without Godot it notes the rooms and passes.
 python3 godot/tools/audit/perf_gate.py --changed "$BASE" || { echo "EXIT 1"; exit 1; }
+# CHOICE GATE (2026-11-10, the user: "making choices in the menu still breaks
+# the game"): every choice in the game laid out and its first and last
+# option clicked (tools/VnChoiceProbe) when the menu or a scene changed.
+# Needs Godot, as the perf gate does; without it, it notes that and passes.
+if echo "$CHANGED" | grep -Eq 'godot/scenes/game/ChoiceMenu\.gd|godot/resources/scenes/|godot/tools/VnChoiceProbe'; then
+    if [ -n "${GODOT_BIN:-}" ]; then
+        CP_OUT="$("$GODOT_BIN" --headless --path godot res://tools/VnChoiceProbe.tscn 2>/dev/null | grep -E "✗|VnChoiceProbe\]" || true)"
+        echo "$CP_OUT" | tail -1
+        echo "$CP_OUT" | grep -q " 0 finding(s)" || { echo "$CP_OUT" | grep "✗" | head -20; echo "EXIT 1"; exit 1; }
+    else
+        echo "choice gate · no GODOT_BIN: not run (godot --headless --path godot res://tools/VnChoiceProbe.tscn)"
+    fi
+fi
 HEAVY="$(echo "$CHANGED" | grep -Ev "$LIGHT" || true)"
 if [ -n "${FULL:-}" ] || [ -n "$HEAVY" ]; then
     [ -n "$HEAVY" ] && { echo "full suite — these can move the world:"; echo "$HEAVY" | head -20 | sed 's/^/   /'; }

@@ -3835,6 +3835,79 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 326: the text box that broke on screen, auto-play that stopped, the options that wiped the line, the riverboat in shards.**
+- Four reports in one evening, each with a cause that was in the code or the
+  file and none in the place first looked:
+- **"text is partially rendering outside the background box on the right
+  before it continues to the next line" / "make the text work. don't break
+  it on screen like this."** Three causes. (1) The typewriter set the body
+  to the typed SUBSTRING each tick, so a half-typed word fitted on the upper
+  line, ran past the plate (sized to the whole line), then dropped. THE
+  REVEAL: the body holds the whole line and shows it with
+  `visible_characters` (counted after shaping). (2) `_anchor_to` SLID the
+  column to its place over 0.25 s while `_fit_body_size` had already fitted
+  the font at the old, wider column; the passage then wrapped to a line more
+  than the box holds (the user's screenshot: a fourth line cut off at the
+  screen edge). The column is in place before the first character. (3) the
+  box was a fixed 31 % of the screen: three lines at reading size. A long
+  passage now gets a taller box (up to 46 %) before its type shrinks.
+  Typing also follows the clock, not the frame rate (one character a frame
+  was the ceiling: FAST could not beat 16.7 ms).
+- **"auto-play isn't working ... it's taking a long time between
+  continuing."** A title card with no duration of its own waited for a key
+  for ever: auto-play stopped at every "A chirp". The pause after a line was
+  2.2 – 7 s counted from the END of the typing; AUTO ADVANCE ran a second
+  clock from the START of the line that only snapped the typing shut. One
+  pause now (GameEngine `_auto_hold`): AUTO ADVANCE's seconds when set, else
+  a reading pace for the whole line less the time it took to type; a voiced
+  line turns 0.7 s after its voice, and a voice that never reports its end
+  cannot hold the page (`AudioMgr.voice_time_left`). AUTO ADVANCE alone now
+  turns pages too and leaves the choices to the reader.
+- **"making choices in the menu still breaks the game."** Two breaks, each
+  reproduced by a probe that does what a reader does. (1) THE CHOICE MENU:
+  its column hung from the screen's centre DOWNWARD (top at mid-screen), so
+  every option pushed the list toward the bottom edge. Five reached it; the
+  hubs have 7, 10, 13, 21 and 31. `VnChoiceProbe` lays out all 163 choices
+  and clicks the first and last option of each: 98 findings before. Now the
+  column grows both ways from the centre and the list is fitted
+  (`_fit_options`: reading size → tighter → two columns → scroll); a long
+  option wraps instead of widening the column off the right edge. 0
+  findings, none scroll. (2) THE OPTIONS: `VnOptionsProbe` presses every
+  option over a line — TEXT SIZE rebuilt the text box EMPTY and the line
+  vanished until the next page. The rebuilt box takes the line back; a
+  resize under a line re-places and re-fits it. Found on the way: `VnPortraitDebugOverlay`, hidden, rebuilt its whole
+  panel twice a second for the length of every scene and threw a script
+  error on each pass when a portrait shader had an unwritten uniform.
+- **"riverboat model still broken looking. thought this was fixed."** It was
+  never the renderer. Pass 318 gave props a "renderer steps back" treatment
+  tested on a different model; the steamboat's FILE was in shards:
+  `slim_model.py`'s fallback (seams released, collapse anyway) had cut the
+  106 MB original to 10,000 triangles in 2,884 loose pieces, 68 % of edges
+  open. Fetched the game copy read-only from the user's Drive to see it.
+  THE REBUILD replaces that fallback: weld, fuse into one skin when it is a
+  pile of parts, cut, NEW texture coordinates, colour / metal-roughness / a
+  normal map baked from the original. `meshy_integrity.py` (no Blender)
+  measures loose pieces and open edges; `slim` re-cuts a shattered model
+  from its original (fetched from the Drive when the machine lacks it),
+  never takes a shattered file for an original, never installs a shattered
+  cut. Tested on a stand-in with every triangle its own UV island (the old
+  cut loses the hull; the new one is whole, 0 % open) — NOT on the real
+  original (106 MB, over the connector's limit) and only on Blender 4.2.
+- **Draft 2 targets:**
+  - the user re-cuts the steamboat (`meshy_pipeline.py slim`) and looks at
+    it in the warehouse; if Blender 5 rejects a call in the rebuild, fix it
+    from the message. Then `meshy_integrity.py` over every installed model.
+  - rebuild: the last black specks (texels under deck clutter), a cage from
+    the low mesh's own normals, a per-part budget so small parts keep shape.
+  - text: the plate's own grow-with-the-box motion on a long passage; the
+    speaker name on a grown box against a portrait's chin; `VnTypeTest` in
+    the suite (it needs a renderer-free canvas wider than 16:9).
+  - auto-play: an AUTO PACE option (slower / reading / brisk) in place of
+    the two rows; a voiced passage whose pages run ahead of the voice.
+  - choices: column-major numbering in two columns (1–16 down the left),
+    keys for options past 9, the scrim across the whole screen (it covers
+    the middle 80 % × 70 % only), `VnChoiceProbe` on a wide canvas.
+
 **2026-11-10 · pass 325: the Miller house draft 3 — the mudroom, the stair, the closet, the porch.**
 - Second of the backgrounds queue (800 lines as miller_kitchen, 259 as
   bianca_kitchen_morning: one build). Read for the bones first (the pass-324

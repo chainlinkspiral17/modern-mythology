@@ -67,6 +67,14 @@ case "$MODE" in
 esac
 
 echo "· Godot: ${GODOT[*]}"
+# (2026-11-10) Godot plays a model from its import cache, not from the .glb:
+# a model the pipeline just re-cut (`meshy_pipeline.py slim` leaves this
+# mark) is re-imported first, or the game would show the old one.
+if [ -f "$ROOT/godot/.godot/models_changed" ]; then
+	echo "· models changed on disk: re-importing first (a minute or two) …"
+	"${GODOT[@]}" --headless --path "$ROOT/godot" --import >/dev/null 2>&1 || true
+	rm -f "$ROOT/godot/.godot/models_changed"
+fi
 echo "· screen: $MODE   (lines starting [ScreenMgr] below say what the window is doing)"
 if [ "${#GAME_ARGS[@]}" -gt 0 ]; then
 	exec "${GODOT[@]}" --path "$ROOT/godot" -- "${GAME_ARGS[@]}"

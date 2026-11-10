@@ -167,7 +167,10 @@ func _rebuild() -> void:
 	# ── MISC ──────────────────────────────────────────────────────────────────
 	# ("SKIP UNREAD TEXT" removed 2026-07 — no gameplay code ever read
 	# Settings.skip_unread; the Settings var stays for save compat.)
-	vbox.add_child(_row_label("AUTO ADVANCE"))
+	# (2026-11-10) one pause, said plainly: the page turns this long after a
+	# line has finished appearing (GameEngine._auto_hold). OFF with AUTO-PLAY
+	# on is a reading pace that follows the line's length.
+	vbox.add_child(_row_label("AUTO ADVANCE  ·  the pause after each line (off: a reading pace)"))
 	var aa_options := ["OFF", "1 SEC", "3 SEC", "5 SEC"]
 	var aa_values  := [0, 1000, 3000, 5000]
 	var aa_current := "OFF"

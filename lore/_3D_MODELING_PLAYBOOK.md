@@ -399,6 +399,36 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-10 · look at the FILE before blaming the renderer (the riverboat in shards, pass 326)
+
+- **What happened.** "riverboat model looks all messed up in the renderer."
+  The model was not in the checkout, so the fix was made blind: props got a
+  "renderer steps back" treatment, tested on a different model, and it was
+  reported as addressed. The user: "riverboat model still broken looking.
+  thought this was fixed." The file was the problem: 10,000 triangles in
+  2,884 loose pieces, 68 % of its edges open.
+- **Cause.** `slim_model.py` cuts a model to its budget with the texture
+  seams locked; when that missed the budget its fallback released the seams
+  and collapsed anyway. On a generated model whose atlas is thousands of
+  tiny islands, the mesh is split at every island's edge — the collapse
+  tore each island from its neighbours. The gate afterwards was a triangle
+  count, which a pile of shards passes.
+- **Rules.**
+  1. A model that looks wrong is opened and MEASURED first:
+     `python3 godot/tools/meshy_integrity.py <file>` (loose pieces, open
+     edges; no Blender). A user's model that is not in the checkout is
+     fetched read-only from their Drive before any fix is written — a fix
+     tested on a stand-in for a file nobody looked at is a guess.
+  2. A reduction never collapses across released seams. Over budget with
+     the seams locked → THE REBUILD: weld, fuse when it is a pile of parts,
+     cut, new texture coordinates, maps baked from the original.
+  3. A cut is judged by what it IS (in one piece), not by its count. `slim`
+     re-cuts a shattered model, refuses a shattered result, and never takes
+     a shattered file for an original.
+  4. Say what was not tested. The rebuild was proven on a stand-in (every
+     triangle its own island) with Blender 4.2 — not on the 106 MB original
+     and not on the user's Blender.
+
 ### 2026-11-09 · a set has STATES: a story's props belong to the views its text puts them in
 
 - **What happened:** the user, of the prelude's street: "all the cars need

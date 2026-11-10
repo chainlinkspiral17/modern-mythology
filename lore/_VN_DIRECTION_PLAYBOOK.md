@@ -323,6 +323,39 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-10 · the text box is laid out ONCE, before the first character (pass 326)
+
+- **What happened.** A half-typed word ran past the plate's right edge and
+  then dropped a line; a four-line passage lost its last line off the bottom
+  of the screen; TEXT SIZE in the options emptied the box; auto-play stopped
+  at every title card and waited up to 12 s after a long line.
+- **Rules.**
+  1. The body holds the WHOLE line and reveals it (`visible_characters`,
+     after shaping). Never set a label to a growing substring: wrapping is
+     decided by what is in the label.
+  2. Nothing that decides the layout may still be moving when the fit is
+     measured. The column snaps; only the plate glides. A tween on a
+     label's width is a re-wrap on every frame.
+  3. The box grows before the type shrinks; the fit is measured on the
+     hidden twin, never on the body.
+  4. A rebuilt text box takes its line back (`_rebuild_keeping_line`).
+  5. Timing follows the clock: characters per frame, not one a frame.
+  6. AUTO has one pause, counted once (`_auto_hold`), and every state that
+     waits for a key needs an AUTO way out (the title card had none).
+  6b. A list is fitted to the screen it is on. A Control placed with
+     PRESET_CENTER and no height grows DOWN from the centre
+     (`grow_vertical` defaults to END): set GROW_DIRECTION_BOTH, and give a
+     list of unknown length a fit ladder and a scroll of last resort. The
+     choice column ran off the bottom for any hub over five options.
+  7. Test what the reader sees happen (`VnChoiceProbe` clicks the first and
+     last option of every choice in the game): `VnTypeTest` checks every FRAME of
+     the typing, `VnAutoPlayProbe` reads a scene on the clock,
+     `VnOptionsProbe` presses every option over a line. A rested-line
+     screenshot (VnLineShot) cannot see any of these.
+  8. A headless run's delta is capped and its audio and frame-post-draw
+     never finish: time by the game's own clock, and do not read a stall
+     behind a voice or a dissolve there as a bug.
+
 ### 2026-11-09 · a portrait that moves is the same portrait; hide where the show stood (pass 312)
 
 - **What happened:** the user kept seeing portraits "cutting out and not
