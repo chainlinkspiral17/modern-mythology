@@ -41,6 +41,18 @@ people is not an empty floor — staged figures on the floor for ch22);
 cable runs from the stage to the FOH snake; the bar's beer-tap handles
 told apart; flyers layered by date; the mirror ball? (no — not this
 room); Deck framing of both presets with the stage rig lit.
+
+PASS 342 (2026-11-11, read by render): the entrance glass hid behind its
+own leaves from inside (now through the leaf, sodium); the scene lights all
+six tower fixtures and two backdrop cans, the FOH board has its glow; the
+door insert looks at the doors and a new `insert stage` stands just inside
+them looking up the room (ch20 106 / 108).
+NEXT-PASS TARGETS: the gig crowd for ch22 ("a hundred and ten people" — the
+floor is empty at ten o'clock); the vestibule past the glass (a street, the
+Tacoma and the Civic in the lot, not a black box); the booth insert shoots
+past the east truss tower (a reverse from the restroom wall needs the PA
+moved); the stage reads purple-dark at the back-wall wide — a hazer and the
+white spike ("a single white spike at the end of the cycle") as a cue.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -102,7 +114,10 @@ def build_shell():
     # backstage door propped open a hand
     for li, lx in enumerate((DOOR_X - DOOR_W / 4.0, DOOR_X + DOOR_W / 4.0)):
         make_box(f"Entrance_Door_Leaf_{li}", (lx, 0.06, 1.18), (DOOR_W / 2.0 - 0.04, 0.05, 2.34), (0.20, 0.20, 0.22, 1.0))
-        make_box(f"Entrance_Door_Leaf_{li}_Glass", (lx, 0.03, 1.50), (DOOR_W / 2.0 - 0.30, 0.012, 1.10), (0.62, 0.50, 0.30, 1.0))
+        # the glass runs through the leaf, proud of both faces: at y 0.03 it hid
+        # behind its own leaf from inside, and the door insert read as two black
+        # slabs (pass 342); the street's sodium in it
+        make_box(f"Entrance_Door_Leaf_{li}_Glass", (lx, 0.06, 1.50), (DOOR_W / 2.0 - 0.30, 0.058, 1.10), (0.88, 0.66, 0.36, 1.0))
         make_tube(f"Entrance_Door_Leaf_{li}_Bar", [(lx - 0.30, 0.11, 1.05), (lx + 0.30, 0.11, 1.05)], 0.016, COL_STEEL, segments=6)
     make_box("Entrance_Exit_Sign", (DOOR_X, 0.12, 2.62), (0.42, 0.06, 0.16), (0.24, 0.84, 0.36, 1.0))
     for ri, ry in enumerate((3.2, 4.6)):

@@ -126,7 +126,7 @@
   },
   {
    "t": "narrate",
-   "text": "Chess is at the small DJ booth at the side of the stage with her laptop open and Ramón at her elbow.",
+   "text": "[shot:insert booth]Chess is at the small DJ booth at the side of the stage with her laptop open and Ramón at her elbow.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/024.mp3"
   },
   {
@@ -1014,12 +1014,12 @@
   },
   {
    "t": "narrate",
-   "text": "Carl is at the front by the rail with two girls from Selma who came up for the show. Nate is at the door of the venue with his phone, on a call with somebody who is probably his girlfriend.",
+   "text": "[shot:establish]Carl is at the front by the rail with two girls from Selma who came up for the show. Nate is at the door of the venue with his phone, on a call with somebody who is probably his girlfriend.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/184.mp3"
   },
   {
    "t": "narrate",
-   "text": "Em is at the booth talking to Chess about a song they have been talking about for a month.",
+   "text": "[shot:insert booth]Em is at the booth talking to Chess about a song they have been talking about for a month.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/185.mp3"
   },
   {

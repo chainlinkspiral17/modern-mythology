@@ -180,7 +180,10 @@ posters, screens with no picture: `empty_frame_audit`).
   mother's photograph squared and given a roster slot. 577 → 1,007 parts. The second six are through a pass.
 - **centro_break_room — draft 4 (pass 341, 2026-11-11).** Shots for the fridge (its sign built), the bulletin
   board, the microwave and Doug's chair with the thermos; the table shot above the table; five lines directed.
-- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar → new_orleans_office → new_auburn_courtroom →
+- **foxhole_bar — draft 3 (pass 342, 2026-11-11).** A stage insert from just inside the entrance (the walk-in
+  lines played on the work light in the dark), the entrance glass visible from inside, all six tower fixtures
+  and a backdrop wash lit, the booth / beer / cooler inserts re-framed, three ch22 lines directed.
+- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office → new_auburn_courtroom →
   hospital_room → centro_stockroom.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the

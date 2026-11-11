@@ -210,7 +210,7 @@ shadow_enabled = false
 position = Vector3(-4.150, 3.000, -12.100)
 rotation = Vector3(-0.3478, -1.2240, 0)
 light_color = Color(0.62, 0.26, 0.86, 1)
-light_energy = 8.0
+light_energy = 12.0
 spot_range = 12.00
 spot_angle = 40.0
 shadow_enabled = false
@@ -219,7 +219,7 @@ shadow_enabled = false
 position = Vector3(4.150, 3.000, -12.100)
 rotation = Vector3(-0.3478, 1.2240, 0)
 light_color = Color(0.26, 0.55, 0.96, 1)
-light_energy = 8.0
+light_energy = 12.0
 spot_range = 12.00
 spot_angle = 40.0
 shadow_enabled = false
@@ -228,7 +228,7 @@ shadow_enabled = false
 position = Vector3(-4.150, 3.800, -12.100)
 rotation = Vector3(-0.7645, -1.9068, 0)
 light_color = Color(0.86, 0.62, 0.22, 1)
-light_energy = 5.0
+light_energy = 9.0
 spot_range = 12.00
 spot_angle = 40.0
 shadow_enabled = false
@@ -237,7 +237,7 @@ shadow_enabled = false
 position = Vector3(4.150, 2.000, -12.100)
 rotation = Vector3(-0.2437, 0.8999, 0)
 light_color = Color(0.86, 0.26, 0.60, 1)
-light_energy = 5.0
+light_energy = 9.0
 spot_range = 10.00
 spot_angle = 30.0
 shadow_enabled = false
@@ -246,7 +246,7 @@ shadow_enabled = false
 position = Vector3(-0.550, 3.700, -12.150)
 rotation = Vector3(-1.2056, -0.4825, 0)
 light_color = Color(1.00, 0.86, 0.66, 1)
-light_energy = 6.0
+light_energy = 9.0
 spot_range = 8.00
 spot_angle = 30.0
 shadow_enabled = false
@@ -255,9 +255,57 @@ shadow_enabled = false
 position = Vector3(0.550, 3.700, -12.150)
 rotation = Vector3(-1.0815, -0.0303, 0)
 light_color = Color(0.96, 0.70, 0.52, 1)
-light_energy = 5.0
+light_energy = 8.0
 spot_range = 8.00
 spot_angle = 30.0
+shadow_enabled = false
+
+; (pass 342) the other two of the six tower fixtures, and two cans on the lip pipe
+; washing the backdrop: the stage read small and dim purple from the back wall
+[node name="Truss_0_LED_0_Practical" type="SpotLight3D" parent="."]
+position = Vector3(-4.150, 2.000, -12.100)
+rotation = Vector3(-0.2437, -0.8999, 0)
+light_color = Color(0.30, 0.40, 0.98, 1)
+light_energy = 9.0
+spot_range = 10.00
+spot_angle = 30.0
+shadow_enabled = false
+
+[node name="Truss_1_LED_2_Practical" type="SpotLight3D" parent="."]
+position = Vector3(4.150, 3.800, -12.100)
+rotation = Vector3(-0.7645, 1.9068, 0)
+light_color = Color(0.78, 0.26, 0.90, 1)
+light_energy = 9.0
+spot_range = 12.00
+spot_angle = 40.0
+shadow_enabled = false
+
+[node name="Par_Light_0_Practical" type="SpotLight3D" parent="."]
+position = Vector3(-2.750, 3.700, -12.200)
+rotation = Vector3(-0.4850, 0.0, 0)
+light_color = Color(0.46, 0.24, 0.92, 1)
+light_energy = 6.0
+spot_range = 7.00
+spot_angle = 38.0
+shadow_enabled = false
+
+[node name="Par_Light_5_Practical" type="SpotLight3D" parent="."]
+position = Vector3(2.750, 3.700, -12.200)
+rotation = Vector3(-0.4850, 0.0, 0)
+light_color = Color(0.30, 0.30, 0.96, 1)
+light_energy = 6.0
+spot_range = 7.00
+spot_angle = 38.0
+shadow_enabled = false
+
+; (pass 342) the board's own glow — the console's meters and the clip-on desk lamp a
+; sound man keeps on the board; "Ricky drinks Topo Chico from the cooler under the board"
+; rendered the desk as a black slab
+[node name="FOH_Console_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.600, 1.550, -6.500)
+light_color = Color(1.00, 0.84, 0.62, 1)
+light_energy = 2.60
+omni_range = 2.80
 shadow_enabled = false
 
 ; (pass 306) the exit sign over the entrance doors — the only light on that
@@ -274,7 +322,7 @@ shadow_enabled = false
 [node name="Entrance_Street_Spill" type="OmniLight3D" parent="."]
 position = Vector3(3.800, 1.900, 1.100)
 light_color = Color(1.0, 0.72, 0.42, 1)
-light_energy = 0.8
+light_energy = 1.4
 omni_range = 3.6
 shadow_enabled = false
 
@@ -478,16 +526,25 @@ metadata/fov = 48.0
 
 ; the DJ booth (vol6: "Chess winks at Jesse from the booth on her way to the first drop")
 [node name="shot_insert_booth__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.500, 1.650, -11.700)
-rotation = Vector3(-0.5397, -0.4964, 0.0)
-metadata/fov = 38.0
+position = Vector3(3.900, 1.650, -10.200)
+rotation = Vector3(-0.1660, -0.4330, 0.0)
+metadata/fov = 40.0
 
-; insert: the ENTRANCE doors (Jesse at the door) — not the restroom door the text pass found nearest
+; insert: the ENTRANCE doors (Jesse at the door), the street's sodium in their glass
+; (pass 342: closer — it read as the work light and the exit sign in the dark)
 [node name="shot_insert_door__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.500, 1.600, -5.000)
-rotation = Vector3(-0.0394, -2.8805, 0.0)
+position = Vector3(2.6, 1.6, -3.6)
+rotation = Vector3(-0.08, -2.817, 0.0)
 metadata/fov = 45.0
 
+
+; (pass 342) the room from the door: Jesse just inside the entrance, the floor and
+; the lit stage up the far end ("The room, when he steps inside" · "The lights are
+; doing — Jesse registers, standing at the door — a slow specific cycle")
+[node name="shot_insert_stage__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.600, 1.650, -0.900)
+rotation = Vector3(-0.0120, 0.2040, 0.0)
+metadata/fov = 55.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bass__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -498,14 +555,14 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_cooler__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.749, 0.788, -5.791)
-rotation = Vector3(-0.2618, -0.2692, 0.0)
-metadata/fov = 35.0
+position = Vector3(3.9, 1.3, -4.7)
+rotation = Vector3(-0.33, 0.423, 0.0)
+metadata/fov = 45.0
 
 [node name="shot_insert_beer__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.263, 1.432, -1.855)
-rotation = Vector3(-0.2618, 1.0494, 0.0)
-metadata/fov = 35.0
+position = Vector3(1.0, 1.55, -3.6)
+rotation = Vector3(-0.138, 2.176, 0.0)
+metadata/fov = 45.0
 
 ; insert: the stage-lip rail the kids stand at — not the bar's foot rail
 [node name="shot_insert_rail__foxhole_bar" type="Marker3D" parent="." groups=["vn_shot"]]

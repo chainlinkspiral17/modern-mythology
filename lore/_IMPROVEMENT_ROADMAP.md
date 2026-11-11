@@ -3835,6 +3835,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 342: the Foxhole — the camera stood in the dark at the back; now it stands at the door.**
+- Second of the third six (214 lines). READ by render on eighteen lines.
+  The room (12 x 16 m black box, the stage across the north end, the rail,
+  FOH mid-room, the bar on the back wall) holds. The shots and the light:
+- ch20 "The room, when he steps inside" → "The lights are doing — Jesse
+  registers, standing at the door" played on the WORK LIGHT and the exit
+  sign in the dark (the door insert, held from the line outside). New
+  `insert stage`: Jesse just inside the entrance, the floor, FOH and the
+  lit stage up the far end; 106 and 108 directed to it. The door insert
+  looks at the doors from closer in.
+- The entrance glass sat BEHIND its own leaves (y 0.03 against a leaf at
+  0.035-0.085): from inside the doors were two black slabs. The glass now
+  runs through the leaf, sodium-coloured, the street spill raised.
+- "The stage at the front is lit ... by six programmable LED fixtures":
+  the scene lit four. All six now, energies up (12 / 9), and two lip-pipe
+  cans washing the backdrop purple and blue — the stage read small and dim
+  from the back wall.
+- The booth insert was a black tabletop from above: now a medium on the
+  booth from the floor (the east truss tower framing its left edge). The
+  beer insert pulls back to the bar with the back bar's bottles behind the
+  bottle; the cooler insert stands off Ricky's stool (it shot through it)
+  and the board has its glow (`FOH_Console_Practical`).
+- ch22: "Chess is at the small DJ booth" (24) and "Em is at the booth
+  talking to Chess" (187) → `insert booth`; "Carl is at the front by the
+  rail ... Nate is at the door" (186) held on the beer bottle → establish.
+- Parts unchanged (659).
+- **Draft N+1 targets.** The gig crowd for ch22 ("a hundred and ten people
+  in front of him" — the floor is empty at ten o'clock); the street past
+  the glass (the lot, the Tacoma, the Civic) instead of a black vestibule;
+  the white spike at the end of the light cycle as a cue; a reverse on the
+  booth from the restroom wall (needs the PA moved).
+
 **2026-11-11 · pass 341: the Centro break room — the room holds; the shots were held over from the line before.**
 - First of the third six (234 lines). READ by render on eighteen lines:
   draft 3's room (the crew table, Doug's chair against the back wall, the

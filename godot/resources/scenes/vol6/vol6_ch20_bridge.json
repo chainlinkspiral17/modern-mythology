@@ -589,7 +589,7 @@
     },
     {
       "t": "narrate",
-      "text": "The room, when he steps inside, is in the small magic-hour state of a venue being rehearsed in.",
+      "text": "[shot:insert stage]The room, when he steps inside, is in the small magic-hour state of a venue being rehearsed in.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/105.mp3"
     },
     {
@@ -599,7 +599,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]The lights are doing — Jesse registers, standing at the door — a slow specific cycle of deep blue into deep purple into a small magenta, with a single white spike at the end of the cycle that comes and goes in maybe two seconds.",
+      "text": "[shot:insert stage]The lights are doing — Jesse registers, standing at the door — a slow specific cycle of deep blue into deep purple into a small magenta, with a single white spike at the end of the cycle that comes and goes in maybe two seconds.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/107.mp3"
     },
     {

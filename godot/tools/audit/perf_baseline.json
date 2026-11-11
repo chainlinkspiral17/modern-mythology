@@ -150,6 +150,11 @@
   "prims": 116048,
   "objects": 574
  },
+ "foxhole_bar": {
+  "draw": 690,
+  "prims": 22852,
+  "objects": 860
+ },
  "foxhole_stage": {
   "draw": 56,
   "prims": 11764,
