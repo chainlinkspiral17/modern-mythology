@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her apartment wasn't a space; it was a nest woven from discarded dance shoes soft as moth wings, stacks of books leaning at precarious Borgesian angles, chipped porcelain teacups holding dried herbs, and tarot decks fanned out on the floor like fallen leaves revealing cryptic patterns.",
+      "text": "[shot:insert books]Her apartment wasn't a space; it was a nest woven from discarded dance shoes soft as moth wings, stacks of books leaning at precarious Borgesian angles, chipped porcelain teacups holding dried herbs, and tarot decks fanned out on the floor like fallen leaves revealing cryptic patterns.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/015.ogg"
     },
     {
@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it.",
+      "text": "[shot:insert uniform]She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/025.ogg"
     },
     {
@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "She set it face-up on the windowsill, where she would, in the morning, decide what to do with it.",
+      "text": "[shot:insert sill]She set it face-up on the windowsill, where she would, in the morning, decide what to do with it.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/052.mp3"
     },
     {
@@ -600,7 +600,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert card]She picked up the Hanged Man from the windowsill.",
+      "text": "[shot:insert sill]She picked up the Hanged Man from the windowsill.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/114.mp3"
     },
     {
@@ -630,7 +630,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She set the Hanged Man back on the windowsill.",
+      "text": "[shot:insert sill]She set the Hanged Man back on the windowsill.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/120.mp3"
     },
     {
@@ -777,7 +777,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Hanged Man, on the windowsill, watched.",
+      "text": "[shot:insert sill]The Hanged Man, on the windowsill, watched.",
       "voice": "assets/audio/voice/vol5_ch12_hanged/148.mp3"
     },
     {

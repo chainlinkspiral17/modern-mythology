@@ -318,7 +318,7 @@ def build_east_wing():
               palette=PAL_APT_WALL, baseboard_face_sign=-1)
     nx = (x0 + 0.2 + x1 + 0.1) / 2.0
     make_wall_with_openings("Wing_Wall_N", (nx, ROOM_D, 0), length=x1 - x0 - 0.1, height=CEIL_Z, axis='X',
-                            palette=PAL_APT_WALL, baseboard_face_sign=-1, openings=[(6.0, 1.45, 1.10, 1.20)])
+                            palette=PAL_APT_WALL, baseboard_face_sign=-1, openings=[(6.0, 1.46, 1.50, 1.48)])   # 2026-11-10 ("look at windows, if they are too small"): was 1.10 x 1.20
     make_wall("Wing_Wall_S", (nx, 0.0, 0), length=x1 - x0 - 0.1, height=CEIL_Z, axis='X',
               palette=PAL_APT_WALL, baseboard_face_sign=+1)
     make_wall("Wing_Wall_Bath", ((x0 + 0.1 + x1 - 0.1) / 2.0, 2.20, 0), length=x1 - x0 - 0.2, height=CEIL_Z, axis='X',
@@ -352,11 +352,21 @@ def build_east_wing():
     # the closet, on the bedroom's N wall
     make_box("Closet_Door", (4.55, ROOM_D - 0.125, 1.00), (0.70, 0.05, 2.00), door_col)
     make_box("Closet_Door_Casing", (4.55, ROOM_D - 0.105, 2.04), (0.80, 0.02, 0.08), COL_WOOD_TRIM)
+    # THE UNIFORM (ch12: "She hung the uniform on the back of the bathroom
+    # door, where it would air out overnight") — on an over-door hook, on the
+    # face the room can see (the door is shut; its back is the bathroom's)
+    maroon = (0.50, 0.14, 0.22, 1.0)
+    make_box("Bath_Door_Hook", (x0 - 0.04, BATH_DOOR_Y + 0.05, 1.97), (0.03, 0.05, 0.12), (0.62, 0.62, 0.60, 1.0))
+    make_chamfer_box("Bath_Door_Uniform_Dress", (x0 - 0.060, BATH_DOOR_Y + 0.05, 1.43), (0.07, 0.40, 0.98), maroon, chamfer=0.02)
+    make_box("Bath_Door_Uniform_Collar", (x0 - 0.099, BATH_DOOR_Y + 0.05, 1.85), (0.008, 0.22, 0.10), (0.94, 0.90, 0.84, 1.0))
+    make_box("Bath_Door_Uniform_Name_Tag", (x0 - 0.099, BATH_DOOR_Y - 0.06, 1.66), (0.008, 0.07, 0.025), (0.94, 0.90, 0.84, 1.0))
+    for si, sy_ in enumerate((-0.22, 0.22)):
+        make_chamfer_box(f"Bath_Door_Uniform_Sleeve_{si}", (x0 - 0.060, BATH_DOOR_Y + 0.05 + sy_, 1.70), (0.06, 0.09, 0.36), (0.46, 0.12, 0.20, 1.0), chamfer=0.02)
     make_cyl("Closet_Door_Knob", (4.80, ROOM_D - 0.17, 0.98), 0.025, 0.04, (0.72, 0.62, 0.36, 1.0), axis='Y', segments=8)
     # the bedroom's window onto the back, curtained
-    make_window("Bed_Window_N", (6.0, ROOM_D - 0.10, 1.45), width=1.00, height=1.10, see_through=True)
+    make_window("Bed_Window_N", (6.0, ROOM_D - 0.10, 1.46), width=1.40, height=1.38, see_through=True)
     from _props.structure import make_curtains
-    make_curtains("Bed_Window_N_Curtain", (6.0, ROOM_D - 0.10, 1.45), width=1.00, height=1.10,
+    make_curtains("Bed_Window_N_Curtain", (6.0, ROOM_D - 0.10, 1.46), width=1.40, height=1.38,
                   color=(0.72, 0.56, 0.58, 1.0), open_frac=0.28)
     make_view("View_Bed_N", "N", ROOM_D, 6.0, kind="back", ground_z=0.0, span=12.0, seed=8)
 
@@ -387,10 +397,10 @@ def build_hero_props():
     step-stool, the scarf lamp, the blinds."""
     # The Dual turntable on its stand, "the record player in the corner"
     # (draft 5: the SW corner, the far end of the rug from the futon)
-    make_box("Turntable_Stand", (-3.00, 1.20, 0.30), (0.50, 0.42, 0.60), (0.36, 0.26, 0.17, 1.0))
-    make_box("Turntable_Plinth", (-3.00, 1.20, 0.66), (0.42, 0.36, 0.10), (0.30, 0.22, 0.14, 1.0))
+    make_box("Turntable_Stand", (-3.00, 1.20, 0.30), (0.50, 0.42, 0.60), (0.46, 0.33, 0.21, 1.0))   # (draft 6: lighter — the Dual was a black cut-out in the night view)
+    make_box("Turntable_Plinth", (-3.00, 1.20, 0.66), (0.42, 0.36, 0.10), (0.56, 0.40, 0.24, 1.0))
     # (draft 3: platter, spindle, tonearm pivot + arm as profiles)
-    make_lathe("Turntable_Platter", (-3.03, 1.20, 0.71), [(0.0, 0.0), (0.15, 0.0), (0.155, 0.02), (0.14, 0.03), (0.0, 0.03)], (0.12, 0.12, 0.13, 1.0), segments=14)
+    make_lathe("Turntable_Platter", (-3.03, 1.20, 0.71), [(0.0, 0.0), (0.15, 0.0), (0.155, 0.02), (0.14, 0.03), (0.0, 0.03)], (0.66, 0.67, 0.68, 1.0), segments=14)
     make_cyl("Turntable_Spindle", (-3.03, 1.20, 0.755), 0.004, 0.03, (0.60, 0.62, 0.63, 1.0), segments=6)
     make_lathe("Turntable_Pivot", (-2.84, 1.33, 0.71), [(0.025, 0.0), (0.025, 0.05), (0.0, 0.05)], (0.60, 0.62, 0.63, 1.0), segments=8)
     make_tube("Turntable_Tonearm", [(-2.84, 1.33, 0.765), (-2.90, 1.28, 0.765), (-3.00, 1.16, 0.752)], 0.006, (0.60, 0.62, 0.63, 1.0), segments=5)
@@ -525,6 +535,8 @@ def build_hero_props_2026_09():
     make_chair("Writing_Chair", 1.75, 1.25, yaw=3.14159, wood=wood, w=0.40)
     # ── NATALIE'S PHONE · kitchen counter north (top 0.98) ──
     # (2026-10-02: "Natalies_Phone" carried the closeup-natalie cue word)
+    # its screen lit: it rings (ch12) — the phone was a black slab on a dark counter
+    make_box("Her_Phone_Screen", (-1.85, 5.05, 0.9915), (0.058, 0.120, 0.001), (0.78, 0.88, 0.98, 1.0))
     make_box("Her_Phone", (-1.85, 5.05, 0.9855), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
 

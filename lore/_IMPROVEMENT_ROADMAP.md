@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 336: Natalie's apartment, draft 6 — the room holds; six shots did not show what their lines say.**
+- Second of the next six sets (294 lines, nearly all at night). READ by
+  render on eighteen real lines: draft 5's plan (the futon facing the
+  window, the reading table, the record player in the corner) is right.
+  What failed is what the camera was given:
+- "Her apartment ... a nest woven from discarded dance shoes ... stacks of
+  books leaning at precarious Borgesian angles" played on a DOOR SLAB
+  filling the frame (`insert door` held from two lines before, from 0.6 m).
+  `insert door` stepped back to the door, the hooks and her shoes;
+  `insert books` is new (the leaning stacks, the stool, the dance shoes).
+- "She hung the uniform on the back of the bathroom door" — the same slab,
+  and no uniform anywhere. Built (maroon, cream collar, the name tag) on an
+  over-door hook on the face the room sees; `insert uniform` is new.
+- THE WINDOWSILL was never framed, though the Hanged Man "watches" from it
+  through both chapters: "She set it face-up on the windowsill" played on
+  a near-black floor. `insert sill` is new (the card, the herb teacups,
+  the window over them) and five lines are directed to it.
+- THE DUAL was a black cut-out in the night view (`insert tonearm`,
+  `record_player`, `platter`: seven lines): walnut plinth, aluminium
+  platter. Her phone "rang" as a black slab on a dark counter: its screen
+  is lit.
+- Her bedroom window 1.10 x 1.20 → 1.50 x 1.48, its curtains with it.
+- **Draft 7 targets.** The Hanged Man card is 10 cm on a 1.9 m sill — a
+  closer `insert card` variant for the sill lines; the streetlight
+  "flickering in patterns" has no fixture outside the W window; the
+  bathroom past its door is unbuilt (the uniform hangs on the room side);
+  `insert blinds` is a tight crop of one slat edge; the nest corner is
+  dark at night.
+
 **2026-11-10 · pass 335: WINDOWS, a second read at 1.36 m — Lena's, the Kowalski east window, the Henderson sink window.**
 - The tool's SMALL line (1.00 x 1.10) misses the windows that are merely
   short. Read again for anything under 1.36 m tall in the sets with the

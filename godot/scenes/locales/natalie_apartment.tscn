@@ -428,9 +428,9 @@ metadata/fov = 24.0
 
 ; insert: the apartment door — the bell, the stairs, the second set of feet (vol5)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.450, 1.450, -1.900)
-rotation = Vector3(-0.2130, 3.0330, 0.0)
-metadata/fov = 45.0
+position = Vector3(0.600, 1.500, -2.600)
+rotation = Vector3(-0.1230, 2.6840, 0.0)
+metadata/fov = 46.0
 
 ; insert: the desk, the dream journal open after three years (vol5)
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -470,7 +470,7 @@ metadata/fov = 35.0
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_tonearm__natalie_apartment_night" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.550, 1.250, -0.850)
-rotation = Vector3(-0.7200, 0.9100, 0.0)
+rotation = Vector3(-0.7373, 0.7527, 0.0)
 metadata/fov = 46.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
@@ -507,3 +507,22 @@ metadata/fov = 35.0
 position = Vector3(-0.400, 1.500, -1.600)
 rotation = Vector3(-0.0291, 2.9956, 0.0)
 metadata/fov = 45.0
+
+; ── draft 6 (pass 336, 2026-11-11) ──
+; "She set it face-up on the windowsill" / "The Hanged Man, on the windowsill, watched" (ch12)
+[node name="shot_insert_sill" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.200, 1.150, -1.600)
+rotation = Vector3(-0.3750, 0.9810, 0.0)
+metadata/fov = 40.0
+
+; "She hung the uniform on the back of the bathroom door" (ch12)
+[node name="shot_insert_uniform" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.450, -1.550)
+rotation = Vector3(0.1623, -1.9738, 0.0)
+metadata/fov = 42.0
+
+; "a nest woven from discarded dance shoes ... stacks of books leaning at precarious Borgesian angles" (ch12)
+[node name="shot_insert_books" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.000, -2.300)
+rotation = Vector3(-0.1826, 2.3602, 0.0)
+metadata/fov = 46.0

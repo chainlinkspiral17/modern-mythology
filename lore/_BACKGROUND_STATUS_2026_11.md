@@ -163,9 +163,12 @@ posters, screens with no picture: `empty_frame_audit`).
   (83 still flagged in 25 sets: roberts_kitchen, bungalow, nate_garage, the farmhouse kitchens next).
   Pass 335 (a second read at 1.36 m tall): Lena's front and kitchen windows, the Kowalski east window, the
   Henderson sink window.
+- **natalie_apartment — draft 6 (pass 336, 2026-11-11).** Shots: the windowsill with the Hanged Man, the
+  uniform on the bathroom door (built), the leaning books; the door shot stepped back; the turntable and the
+  ringing phone made readable at night; the bedroom window enlarged. Draft 7 targets in the roadmap.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
-  natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (briefs
-  for the first two are below, read but not built).
+  natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
+  first two are done: passes 332 and 336; chillwave_interior is next).
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 
