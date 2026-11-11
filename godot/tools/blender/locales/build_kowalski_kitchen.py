@@ -75,7 +75,7 @@ def build_shell():
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1,
-                            openings=[(3.0 + SH_TF[1], 1.550, 1.500, 1.100)])
+                            openings=[(3.0 + SH_TF[1], 1.450, 1.500, 1.400)])   # 2026-11-10: 1.40 tall, sill 0.75 (was 1.10)
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
                             palette=PAL_WALL, baseboard_face_sign=-1, openings=[(SINK_X, 1.52, 1.50, 1.00), (-3.0, 1.52, 1.60, 1.10)])
     # the S wall: the hall opening W, the garage door E
@@ -150,8 +150,8 @@ def build_clock():
 def build_window():
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_frame_ring("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
-    make_box("Window_E_Glass", (ROOM_W/2.0-0.1425, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
+    make_frame_ring("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.45), (0.04, 1.60, 1.50), P.METAL_STEEL)
+    make_box("Window_E_Glass", (ROOM_W/2.0-0.1425, ROOM_D/2.0+0.5, 1.45), (0.005, 1.50, 1.40), (0.78, 0.84, 0.86, 0.55))
 
 def build_ceiling_infra():
     # Family kitchen: flush dome + over-table pendant, no shop tubes

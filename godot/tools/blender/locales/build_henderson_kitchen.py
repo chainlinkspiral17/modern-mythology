@@ -92,7 +92,7 @@ def build_shell():
     # sink for a long minute ... Through the open window, the cicadas
     # are loud" (ch14) — the N wall was solid and the sink faced plaster
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(SINK_X, 1.62, 1.20, 0.92)])
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(SINK_X, 1.67, 1.50, 1.06)])   # 2026-11-10: 1.50 x 1.06 (was 1.20 x 0.92)
     # the house FRONT (draft 5): one wall, the front window in it. It had
     # a 2 m open hole at x -1..1 onto the lawn with a lintel over it.
     make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1,
@@ -116,8 +116,8 @@ def build_counter():
     K.sink("Sink", SINK_X, Y_BACK, TOP_Z)
     K.range_("Stove", RANGE_X, Y_BACK, TOP_Z)
     K.dishwasher("Dishwasher", SINK_X + 0.90, Y_BACK - 0.62, TOP_Z)
-    for nm, a, b in (("Upper_W", -ROOM_W/2.0 + 0.10, SINK_X - 0.70),
-                     ("Upper_Mid", SINK_X + 0.70, -0.30),
+    for nm, a, b in (("Upper_W", -ROOM_W/2.0 + 0.10, SINK_X - 0.90),      # (2026-11-10: the uppers step back for a wider sink window)
+                     ("Upper_Mid", SINK_X + 0.90, -0.30),
                      ("Upper_E", RANGE_X + 0.55, ROOM_W/2.0 - 0.10)):
         K.upper_run(nm, a, b, Y_BACK, z0=1.46, z1=2.20, body=OAK, pull=BRASS, rail=OAK_DK)
     K.backsplash("Splash", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, TOP_Z, 1.11, tile=ALMOND,
@@ -131,9 +131,9 @@ def build_counter():
     make_traffic_wear("Wear_Path_Sink", [(SINK_X, Y_BACK - 1.35), (0.0, Y_BACK - 1.70), (RANGE_X, Y_BACK - 0.95)], width=0.45,
                       tint=(0.68, 0.53, 0.35, 1.0))
     # the open window over the sink: sash up, the screen in
-    make_window("Sink_Window", (SINK_X, Y_BACK, 1.62), width=1.20, height=0.92, room_dir=-1,
+    make_window("Sink_Window", (SINK_X, Y_BACK, 1.67), width=1.50, height=1.06, room_dir=-1,
                 see_through=True, palette={"frame": (0.92, 0.90, 0.84, 1.0)})
-    make_box("Sink_Window_Sill", (SINK_X, Y_BACK - 0.06, 1.62 - 0.46 - 0.02), (1.34, 0.12, 0.04), (0.92, 0.90, 0.84, 1.0))
+    make_box("Sink_Window_Sill", (SINK_X, Y_BACK - 0.06, 1.67 - 0.53 - 0.02), (1.64, 0.12, 0.04), (0.92, 0.90, 0.84, 1.0))
     # the kettle his mother uses and his father does not (ch20), on the
     # back left burner
     kx, ky = RANGE_X - 0.19, Y_BACK - 0.33 + 0.16

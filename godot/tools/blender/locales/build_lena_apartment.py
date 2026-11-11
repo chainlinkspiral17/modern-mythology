@@ -98,7 +98,7 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # (2026-10-07) Wall_W out of the loop: its window is cut
-    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.30, 1.50, 1.10, 1.10)])
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.20, 1.60, 1.50, 1.30)])   # 2026-11-10 ("look at windows, if they are too small"): was 1.10 x 1.10
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     # (2026-10-21, the Deck: "interiors need more windows" / "too boxy") the
     # couch nook's back wall — the blank wall seen through the cased opening
@@ -110,7 +110,7 @@ def build_shell():
         make_curtains(f"Nook_Curtain_{k}", (wx, ROOM_D - 0.10, 1.50), width=0.95, height=1.30,
                       color=(0.82, 0.78, 0.66, 1.0), open_frac=0.32, drop=0.12)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.00, 1.42, 1.00, 1.20)])   # (2026-10-09: +0.25, clear of the fridge) cut 2026-10-07: its window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.05, 1.50, 1.60, 1.44)])   # 2026-11-10: was 1.00 x 1.20   # (2026-10-09: +0.25, clear of the fridge) cut 2026-10-07: its window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     # The front door itself, ajar-closed in the opening, with the
@@ -194,7 +194,7 @@ def build_kitchen():
     with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the kitchen run on the W wall
         # The window over the sink → the alley + the Starfish Nebula mural
         # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-        make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
+        make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.20, 1.60), width=1.50, height=1.30, axis='Y', room_dir=+1, see_through=True)
         # the kitchen's ceiling dome over the counter run (2026-10-26: the night
         # preset lit the room from the floor lamp alone; "Lena cut more bread" at
         # past nine was a black counter) — authored in the run's shifted frame
@@ -302,7 +302,7 @@ def build_front_room():
     # The front window (Wall_S_E) — "she went to the front window
     # and looked down"
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Front_Window", (2.00, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1, see_through=True)
+    make_window("Front_Window", (2.05, 0.10, 1.50), width=1.60, height=1.44, room_dir=+1, see_through=True)
     with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the couch nook
         # Couch against the partition's east reach, facing south — its west
         # end at 0.17, clear of the bedroom door's swing (x to 0.08) and

@@ -15828,11 +15828,11 @@
           "center": [
             4.857,
             3.8,
-            1.55
+            1.45
           ],
           "size": [
             1.5,
-            1.1
+            1.4
           ],
           "facing": "-x",
           "hide": [
@@ -15879,11 +15879,11 @@
           "center": [
             4.857,
             3.8,
-            1.55
+            1.45
           ],
           "size": [
             1.5,
-            1.1
+            1.4
           ],
           "facing": "-x",
           "hide": [
@@ -57087,11 +57087,11 @@
           "center": [
             4.858,
             3.8,
-            1.55
+            1.45
           ],
           "size": [
             1.5,
-            1.1
+            1.4
           ],
           "facing": "-x",
           "hide": [
@@ -61066,13 +61066,13 @@
           "locale": "lena_apartment",
           "label": "lena_apartment_front_window",
           "center": [
-            2.0,
+            2.05,
             0.07,
-            1.42
+            1.5
           ],
           "size": [
-            1.08,
-            1.26
+            1.68,
+            1.5
           ],
           "facing": "+y",
           "hide": [],
@@ -62523,13 +62523,13 @@
           "locale": "lena_apartment",
           "label": "lena_apartment_front_window",
           "center": [
-            2.0,
+            2.05,
             0.07,
-            1.42
+            1.5
           ],
           "size": [
-            1.08,
-            1.26
+            1.68,
+            1.5
           ],
           "facing": "+y",
           "hide": [],

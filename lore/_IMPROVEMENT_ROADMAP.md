@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-10 · pass 335: WINDOWS, a second read at 1.36 m — Lena's, the Kowalski east window, the Henderson sink window.**
+- The tool's SMALL line (1.00 x 1.10) misses the windows that are merely
+  short. Read again for anything under 1.36 m tall in the sets with the
+  most lines: lena_apartment (948 lines) FRONT window 1.00 x 1.20 →
+  1.60 x 1.44 over the radiator, KITCHEN window 1.10 x 1.10 → 1.50 x 1.30
+  (to the upper cabinet); kowalski_kitchen's EAST window by the table
+  1.10 → 1.40 tall, sill 0.75; henderson_kitchen's SINK window 1.20 x
+  0.92 → 1.50 x 1.06 (the uppers step back 0.2 m each side). Five picture
+  rows moved (Lena's front window day / night, the Kowalski window x 3).
+- Looked at and LEFT: roberts_kitchen's sink window (set above the tile
+  band after a Deck note, "rack or window overlapping tile") and its
+  living window (the sofa and the painted panel hold it); nate_garage
+  (foam panels both sides); the bungalow and farmhouse sink windows
+  (0.1 - 0.2 m to gain).
+- Still short, by lines: salty_tome_interior's kitchenette window,
+  miller_kitchen / bianca_kitchen (one template: sink 1.15, east 1.25),
+  hans_bakery Win_W, pit_stop_interior's kitchen window, natalie's bed
+  window (with her pass), missing_link's four, the street sets' house
+  windows (new_auburn_road, meadowlark_circle: 1.42 x 1.12 on every lot).
+
 **2026-11-10 · pass 334: WINDOWS, the cabin (2,165 lines) and the safehouse bedroom.**
 - Six of the cabin's windows, each to what its wall allows: the KITCHEN
   window 0.95 → 1.20 tall (to the loft deck above it; its outside casing
