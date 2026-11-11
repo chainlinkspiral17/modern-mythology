@@ -201,7 +201,7 @@ shadow_enabled = false
 ; marker_reaim.py
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.850, 1.420, 0.500)
-rotation = Vector3(-0.3282, -0.7493, 0.0)
+rotation = Vector3(-0.2241, -0.7805, 0.0)
 metadata/fov = 30.0
 
 [node name="shot_insert_blanket" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -466,9 +466,8 @@ metadata/fov = 35.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_table__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.934, 0.556, -2.569)
-rotation = Vector3(-0.2618, 2.1176, 0.0)
-metadata/fov = 35.0
+position = Vector3(0.662, 1.093, -2.372)
+rotation = Vector3(-0.8299, 2.0828, 0.0)
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_door__caldwell_porch_night" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -482,3 +481,68 @@ metadata/fov = 35.0
 position = Vector3(0.662, 1.093, -2.372)
 rotation = Vector3(-0.5236, 2.1313, 0.0)
 metadata/fov = 35.0
+
+; ── draft 6 (pass 338, 2026-11-11): the cul-de-sac at night ──
+[node name="Street_Lamp_Head_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(7.500, 5.600, 4.400)
+light_color = Color(1.0, 0.72, 0.40, 1)
+light_energy = 2.4
+omni_range = 13.0
+shadow_enabled = false
+
+[node name="Street_Lamp_B_Head_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(-15.000, 5.600, 11.900)
+light_color = Color(1.0, 0.72, 0.40, 1)
+light_energy = 2.4
+omni_range = 13.0
+shadow_enabled = false
+
+; the two porch lights that are on across the street; the far one is Don Geller's (ch21)
+[node name="Across_House_0_Porch_Light_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(-19.650, 1.950, 20.200)
+light_color = Color(1.0, 0.84, 0.56, 1)
+light_energy = 1.4
+omni_range = 6.0
+shadow_enabled = false
+
+[node name="Across_House_3_Porch_Light_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(22.350, 1.950, 20.200)
+light_color = Color(1.0, 0.84, 0.56, 1)
+light_energy = 1.6
+omni_range = 6.5
+shadow_enabled = false
+
+; the lit windows spill on their lawns
+[node name="Across_House_1_Window_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(-4.100, 1.550, 19.900)
+light_color = Color(1.0, 0.84, 0.56, 1)
+light_energy = 1.0
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Across_House_3_Window_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(23.900, 1.550, 19.900)
+light_color = Color(1.0, 0.84, 0.56, 1)
+light_energy = 1.0
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Street_Lamp_C_Head_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(-11.000, 5.600, 4.400)
+light_color = Color(1.0, 0.72, 0.40, 1)
+light_energy = 2.4
+omni_range = 13.0
+shadow_enabled = false
+
+[node name="Neighbour_W_Porch_Light_Practical__caldwell_porch_night" type="OmniLight3D" parent="."]
+position = Vector3(-14.600, 1.950, 0.900)
+light_color = Color(1.0, 0.84, 0.56, 1)
+light_energy = 1.4
+omni_range = 6.0
+shadow_enabled = false
+
+; "The cicadas, in the cedar across the cul-de-sac, are loud" (ch14)
+[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.200, 1.600, -1.300)
+rotation = Vector3(0.0743, 2.4748, 0.0)
+metadata/fov = 46.0

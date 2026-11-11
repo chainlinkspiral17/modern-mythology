@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 338: the Caldwell porch at night — past the railing there was nothing.**
+- Fourth of the next six sets (221 lines: ch12, ch21, ch19, ch23, ch14).
+  READ by render: the porch itself holds (the wicker, the second chair,
+  the tea table, the lamp). The night past the railing was a flat black
+  band under the sky. "The cul-de-sac is quiet", "The cicadas, in the
+  cedar across the cul-de-sac, are loud", "Don Geller's porch light, three
+  doors down ... is also on", "A car comes down the street at nine
+  fifty-three" all looked at 12 m of lawn and street, two blank roofline
+  cards 11 and 18 m out (in the street), and a streetlamp with no light.
+- **THE CUL-DE-SAC** (`build_culdesac_2026_11`): lawn and street 80 m
+  long, the far sidewalk and lawns, four houses across with doors,
+  garages, driveways, mailboxes, two lit windows and two porch lights on
+  (Don Geller's the far one), THE CEDAR, the bulb at the west end with two
+  more houses, the neighbour's house on this side with a lit window,
+  three streetlamps that light the ground (night-tagged practicals), the
+  roofline cards moved 34 and 44 m back. The hedge blob across the porch's
+  own door gap is gone; a front walk runs to the curb.
+- **Shots.** `insert table` ("a glass of iced tea on the small table")
+  showed chair legs: re-aimed. `insert cedar` is new (ch14:143). The bike
+  was `MayaBike_*` and the re-aim tool turned `closeup maya` onto its
+  handlebars: it is `Porch_Bike_*` now.
+- Caught before and by the suite, all mine: four driveways built with a
+  negative length came out inside-out (winding_audit); the first cedar
+  shot looked through a conduit's bounding box, the second through the
+  screen door (vantage_obstruction_audit) — it looks over the railing
+  between two posts now.
+- 500 → 589 parts. Both views stay held at 16:9 (open sky past the
+  porch roof, as before).
+- **Draft 7 targets.** (1) THE PORCH HAS NO STEPS — its floor is at grade,
+  and "Ben climbs the porch steps" / "She climbs the porch steps": raise
+  the porch 0.45 m or drop the yard (the day view's lawn party stands on
+  the same grade). (2) The houses are boxes with cards for doors and
+  windows: porches, shutters, a car in a driveway. (3) The cedar is four
+  blobs. (4) "She turns off the porch light" has no dark state. (5) The
+  radio is a box with a panel.
+
 **2026-11-11 · pass 337: ChillWave's back room — 117 lines of one conversation played on a wall of shelves.**
 - Third of the next six sets. The count in the status table (267) held a
   dead scene file (`vol7_ch6_cale`, not in the index, a copy of the seven

@@ -169,9 +169,12 @@ posters, screens with no picture: `empty_frame_audit`).
 - **chillwave_interior — back room (pass 337, 2026-11-11).** 7.0 x 3.4 → 7.0 x 5.4; the two chairs of the
   conversation, the stick box on the bench behind her, the transformer and strip on the wall, a free-standing
   shelf row; the view and closeups moved to the chairs. 601 → 741 parts.
+- **caldwell_porch_night — draft 6 (pass 338, 2026-11-11).** The cul-de-sac past the railing (it was a
+  black band): street, houses across with lit windows and porch lights, the cedar, working streetlamps, the
+  neighbour's house. 500 → 589 parts. First target next: the porch has no steps.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
-  first three are done: passes 332, 336, 337; caldwell_porch_night is next).
+  first four are done: passes 332, 336, 337, 338; miller_back_porch is next).
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 

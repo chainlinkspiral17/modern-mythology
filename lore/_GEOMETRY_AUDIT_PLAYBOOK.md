@@ -158,6 +158,27 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-11 · part names are read by FOUR tools: say what the part is, and nothing else (passes 331 - 338)
+
+- **What happened, four times in a week.** A closet's leaves named `*_Door_*`
+  were "blocked doorways" (doorway_audit); renamed `*_Leaf_*` they were
+  "free-standing wall slabs" (placement_audit). A uniform hanging on a door
+  "blocked" it until it carried the door's own prefix. Sticks renamed off
+  their box's prefix for the shot tool then "clipped" the box
+  (prop_overlap_audit). A bike named `MayaBike_*` took the `closeup maya`
+  cue and `marker_reaim.py` turned her closeup onto its handlebars.
+- **Rules.**
+  1. A thing that belongs to a host takes the host's PREFIX
+     (`Bath_Door_Uniform_*`, `StickBox_Stick_*`): the overlap and doorway
+     audits read a shared prefix as one assembly.
+  2. A furniture door is `*_Wardrobe_Door_*` / `*_Cabinet_Door_*`: "door"
+     keeps it out of the slab hunt, the furniture word out of the doorway hunt.
+  3. No character's name in a prop's name. `marker_reaim.py` without
+     `--tight` re-aims CLOSEUPS too: run it with `--tight`, or on a set
+     whose prop names you have read, and diff the .tscn afterwards.
+  4. A cue word matches at a word boundary (`_Stick_`, not `StickBox`):
+     name the part the line names.
+
 ### 2026-11-10 · one audit's "passable" is not another's "nothing" (wide_frame_audit, pass 330)
 
 - **What happened.** A new wide in the Henderson kitchen was HELD on

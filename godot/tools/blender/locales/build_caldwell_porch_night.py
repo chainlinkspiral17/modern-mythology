@@ -9,6 +9,24 @@ paths, runner arcs, cup rings, the mat's scuff, the rail worn where
 hands go); D3 (switch, conduit, hose bib); D5 (a hedge, the streetlamp
 down the block, the houses across).
 
+DRAFT 6 (pass 338, 2026-11-11) — THE CUL-DE-SAC. Read by render: past
+the railing was a flat black band under the sky. "The cul-de-sac is
+quiet" · "The cicadas, in the cedar across the cul-de-sac, are loud" ·
+"Don Geller's porch light, three doors down ... is also on" · "A car
+comes down the street at nine fifty-three" all looked at nothing: a 12 m
+strip of lawn and street, two blank roofline cards, an unlit lamp.
+build_culdesac_2026_11: the lawn and the street run 80 m, the far
+sidewalk and lawns, four houses across with doors, garages, windows (two
+lit), porch lights (two on, Don Geller's the far one), driveways and
+mailboxes, THE CEDAR, the bulb of the cul-de-sac at the west end, a second
+streetlamp; the roofline cards stand 34 and 44 m back behind them. The
+hedge blob that stood across the porch's own door gap is gone, a front
+walk in its place.
+Draft 7 targets: THE PORCH HAS NO STEPS — its floor is at grade ("Ben
+climbs the porch steps", "She climbs the porch steps"): raise the porch
+0.45 m or drop the yard (the day view's lawn party stands on the same
+grade); the cedar as layered fronds; cars in the driveways.
+
 DRAFT 5 targets: the screen door as mesh on a frame with a spring; the
 logs with bark; the hanging planter's chain; the street lamp's sodium
 practical for the nine-fifty-three car; Deck: night establish and
@@ -169,20 +187,20 @@ def build_dressing():
     # wheel at bx+0.50 reached the wall plane).
     bx, by = 2.15, 0.35   # rear wheel and its spokes clear of the east wall (2026-09-18)
     for wx in (bx-0.50, bx+0.50):
-        make_cyl(f"MayaBike_Wheel_{wx:.1f}", (wx, by, 0.33), 0.32, 0.04,
+        make_cyl(f"Porch_Bike_Wheel_{wx:.1f}", (wx, by, 0.33), 0.32, 0.04,
                  P.METAL_BLACK, segments=14, axis='Y')
-        make_cyl(f"MayaBike_Hub_{wx:.1f}", (wx, by, 0.33), 0.05, 0.06, (0.62, 0.64, 0.66, 1.0), segments=8, axis='Y')
+        make_cyl(f"Porch_Bike_Hub_{wx:.1f}", (wx, by, 0.33), 0.05, 0.06, (0.62, 0.64, 0.66, 1.0), segments=8, axis='Y')
         for sk in range(6):
             ang = sk * 0.5236
             import math as _mm
-            make_tube(f"MayaBike_Spoke_{wx:.1f}_{sk}", [(wx - 0.28 * _mm.cos(ang), by, 0.33 - 0.28 * _mm.sin(ang)), (wx + 0.28 * _mm.cos(ang), by, 0.33 + 0.28 * _mm.sin(ang))], 0.003, (0.62, 0.64, 0.66, 1.0), segments=4)
-    make_box("MayaBike_TopBar", (bx, by, 0.60), (0.70, 0.03, 0.04), (0.30,0.42,0.55,1.0))
-    make_box("MayaBike_DownBar", (bx-0.12, by, 0.47), (0.52, 0.03, 0.04), (0.30,0.42,0.55,1.0))
-    make_box("MayaBike_SeatPost", (bx-0.28, by, 0.68), (0.03, 0.03, 0.16), (0.30,0.42,0.55,1.0))   # (2026-09-22: seat, bars and basket hung loose)
-    make_box("MayaBike_HeadTube", (bx+0.36, by, 0.70), (0.03, 0.03, 0.20), (0.30,0.42,0.55,1.0))
-    make_chamfer_box("MayaBike_Seat", (bx-0.28, by, 0.76), (0.15, 0.06, 0.05), P.METAL_BLACK)
-    make_box("MayaBike_Bars", (bx+0.36, by, 0.80), (0.05, 0.28, 0.04), P.METAL_BLACK)
-    make_chamfer_box("MayaBike_Basket", (bx+0.47, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
+            make_tube(f"Porch_Bike_Spoke_{wx:.1f}_{sk}", [(wx - 0.28 * _mm.cos(ang), by, 0.33 - 0.28 * _mm.sin(ang)), (wx + 0.28 * _mm.cos(ang), by, 0.33 + 0.28 * _mm.sin(ang))], 0.003, (0.62, 0.64, 0.66, 1.0), segments=4)
+    make_box("Porch_Bike_TopBar", (bx, by, 0.60), (0.70, 0.03, 0.04), (0.30,0.42,0.55,1.0))
+    make_box("Porch_Bike_DownBar", (bx-0.12, by, 0.47), (0.52, 0.03, 0.04), (0.30,0.42,0.55,1.0))
+    make_box("Porch_Bike_SeatPost", (bx-0.28, by, 0.68), (0.03, 0.03, 0.16), (0.30,0.42,0.55,1.0))   # (2026-09-22: seat, bars and basket hung loose)
+    make_box("Porch_Bike_HeadTube", (bx+0.36, by, 0.70), (0.03, 0.03, 0.20), (0.30,0.42,0.55,1.0))
+    make_chamfer_box("Porch_Bike_Seat", (bx-0.28, by, 0.76), (0.15, 0.06, 0.05), P.METAL_BLACK)
+    make_box("Porch_Bike_Bars", (bx+0.36, by, 0.80), (0.05, 0.28, 0.04), P.METAL_BLACK)
+    make_chamfer_box("Porch_Bike_Basket", (bx+0.47, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
     # Doormat at the door.
     make_box("Doormat", (0.0, 0.55, 0.02), (0.90, 0.55, 0.03), P.RUBBER_MAT)
     make_box("Doormat_Trim", (0.0, 0.55, 0.03), (0.78, 0.44, 0.02), (0.36,0.30,0.22,1.0))
@@ -289,13 +307,17 @@ def build_draft4_2026_09():
     make_tube("Conduit_1", [(-ROOM_W/2.0 + 0.10, 0.17, 0.30), (-ROOM_W/2.0 + 0.10, 0.17, CEIL - 0.24), (-1.725, 0.17, CEIL - 0.24)], 0.01, (0.36, 0.36, 0.38, 1.0), segments=5)
     make_cyl("Hose_Bib", (2.60, ROOM_D - 0.10, 0.45), 0.02, 0.12, (0.62, 0.60, 0.56, 1.0), axis='Y', segments=6)
     # D5
+    # (the bike is Porch_Bike_*: as MayaBike_* it carried the closeup-maya cue
+    # word and the re-aim tool turned her closeup to its handlebars)
     for hi in range(9):
+        if hi == 4:
+            continue            # (draft 6) it stood across the porch's own door gap
         hx = -5.6 + hi * 1.4
         from _props.geometry import make_blob
         make_blob(f"Hedge_{hi}", (hx, -1.0, 0.45), 0.7, (0.24, 0.36, 0.20, 1.0), noise=0.18, seed=40 + hi, squash=0.7)
     make_lathe("Street_Lamp_Post", (7.5, -4.4, -0.03), [(0.14, 0.0), (0.09, 0.10), (0.06, 5.6), (0.07, 5.8), (0.0, 5.8)], (0.24, 0.24, 0.26, 1.0), segments=8)
     make_lathe("Street_Lamp_Head", (7.5, -4.4, 5.72), [(0.0, 0.0), (0.12, 0.05), (0.16, 0.18), (0.0, 0.22)], (0.98, 0.84, 0.50, 1.0), segments=10)
-    make_far_bands("Far", (0.42, 0.38, 0.36, 1.0), [(11.0, 12.0, 4.5, 0.85), (18.0, 16.0, 6.0, 0.7)], sides="S", cy=0.0, profile="roofline")
+    make_far_bands("Far", (0.42, 0.38, 0.36, 1.0), [(34.0, 46.0, 5.0, 0.60), (44.0, 60.0, 7.0, 0.45)], sides="S", cy=0.0, profile="roofline")   # (draft 6) behind the houses across: they stood 11 and 18 m out, in the street
 
 
 
@@ -430,9 +452,83 @@ def build_yard_party_2026_10():
         make_cyl(f"Street_Tree_{k}_Trunk", (gx, gy, 1.6), 0.24, 3.2, (0.36, 0.28, 0.22, 1.0), segments=8)
         make_blob(f"Street_Tree_{k}_Crown", (gx, gy, 4.6), 2.6, (0.26, 0.40, 0.22, 1.0), noise=0.22, seed=330 + k, squash=0.7)
 
+def build_culdesac_2026_11():
+    """THE CUL-DE-SAC AT NIGHT (draft 6) — what the porch looks at."""
+    from _props.geometry import make_blob
+    lawn = (0.13, 0.19, 0.13, 1.0); asphalt = (0.20, 0.20, 0.23, 1.0); conc = (0.44, 0.43, 0.42, 1.0)
+    lit = (1.0, 0.84, 0.50, 1.0); dark = (0.16, 0.19, 0.26, 1.0)
+    # this side: the lawn either way of the yard, the front walk, the curb
+    for nm, x in (("W", -23.0), ("E", 23.0)):
+        make_box(f"Lawn_Front_{nm}", (x, -2.2, -0.033), (34.0, 3.6, 0.05), lawn)
+    make_box("Front_Walk", (0.0, -2.05, -0.004), (1.20, 3.90, 0.012), conc)
+    make_box("Curb_Near", (7.0, -4.06, 0.02), (66.0, 0.12, 0.12), (0.50, 0.49, 0.47, 1.0))
+    # the street: the near lane was 12 m of strip; west of it, and the far lane
+    make_box("Street_Strip_W", (-23.0, -6.0, -0.03), (34.0, 4.0, 0.05), (0.26, 0.26, 0.28, 1.0))
+    make_box("Street_Far_Lane", (0.0, -9.75, -0.03), (80.0, 3.5, 0.05), (0.25, 0.25, 0.27, 1.0))
+    make_cyl("Culdesac_Bulb", (-33.0, -7.8, -0.028), 6.5, 0.05, (0.26, 0.26, 0.28, 1.0), segments=24)
+    make_box("Curb_Far", (7.0, -11.56, 0.02), (66.0, 0.12, 0.12), (0.50, 0.49, 0.47, 1.0))
+    make_box("Walk_Far", (7.0, -12.3, -0.02), (66.0, 1.2, 0.05), conc)   # ends at the bulb
+    make_box("Lawn_Across", (0.0, -18.4, -0.033), (80.0, 11.0, 0.05), lawn)
+    make_box("Ground_Beyond_S", (0.0, -42.0, -0.04), (120.0, 36.4, 0.05), (0.10, 0.14, 0.11, 1.0))
+    # the four houses across
+    bodies = ((0.46, 0.42, 0.38, 1.0), (0.38, 0.42, 0.46, 1.0), (0.50, 0.46, 0.38, 1.0), (0.40, 0.38, 0.42, 1.0))
+    for k, hx in enumerate((-21.0, -7.0, 7.0, 21.0)):
+        hy, hw, hd, hh = -24.0, 10.0, 7.0, 3.3
+        fy = hy + hd / 2.0                       # the front, facing the street
+        pre = f"Across_House_{k}"
+        make_box(f"{pre}_Facade", (hx, hy, hh / 2.0), (hw, hd, hh), bodies[k])
+        rh = hd / 4.0 + 0.25
+        rz = hh + rh * math.sin(0.42) + 0.06
+        make_rot_box(f"{pre}_Roof_N", (hx, hy + hd / 4.0, rz), (hw + 0.6, 2.0 * rh, 0.16), (0.20, 0.20, 0.23, 1.0), roll=-0.42)
+        make_rot_box(f"{pre}_Roof_S", (hx, hy - hd / 4.0, rz), (hw + 0.6, 2.0 * rh, 0.16), (0.20, 0.20, 0.23, 1.0), roll=0.42)
+        g = -1 if k % 2 == 0 else 1              # the garage on alternate ends
+        make_box(f"{pre}_Garage_Door", (hx + g * 3.2, fy + 0.02, 1.10), (2.6, 0.04, 2.2), (0.62, 0.61, 0.58, 1.0))
+        make_box(f"{pre}_Driveway", (hx + g * 3.2, (fy - 12.9) / 2.0, -0.004), (2.9, -12.9 - fy, 0.012), conc)   # (a negative length built it inside-out)
+        make_box(f"{pre}_Front_Door", (hx - g * 0.6, fy + 0.02, 1.03), (0.95, 0.04, 2.06), (0.24, 0.16, 0.14, 1.0))
+        make_box(f"{pre}_Front_Door_Stoop", (hx - g * 0.6, fy + 0.45, 0.07), (1.5, 0.9, 0.14), conc)
+        make_box(f"{pre}_Window", (hx - g * 2.9, fy + 0.02, 1.55), (1.8, 0.04, 1.3), lit if k in (1, 3) else dark)
+        make_box(f"{pre}_Window_Frame", (hx - g * 2.9, fy + 0.01, 1.55), (1.96, 0.03, 1.46), (0.80, 0.78, 0.72, 1.0))
+        make_box(f"{pre}_Porch_Light", (hx - g * 1.35, fy + 0.06, 1.95), (0.14, 0.12, 0.22), lit if k in (0, 3) else (0.30, 0.30, 0.32, 1.0))
+        make_box(f"{pre}_Mailbox_Post", (hx + g * 1.3, -11.75, 0.50), (0.08, 0.08, 1.0), (0.30, 0.24, 0.18, 1.0))
+        make_box(f"{pre}_Mailbox", (hx + g * 1.3, -11.75, 1.08), (0.20, 0.46, 0.22), (0.20, 0.20, 0.22, 1.0))
+    # THE CEDAR across the cul-de-sac (the cicadas are in it)
+    cx, cy = -13.5, -15.6
+    make_cyl("Cedar_Trunk", (cx, cy, 2.6), 0.36, 5.2, (0.22, 0.17, 0.13, 1.0), segments=8)
+    for bi, (bz, br) in enumerate(((3.6, 2.9), (5.6, 2.4), (7.4, 1.8), (9.0, 1.1))):
+        make_blob(f"Cedar_Crown_{bi}", (cx + (0.2 if bi % 2 else -0.15), cy, bz), br, (0.09, 0.19, 0.14, 1.0), noise=0.22, seed=470 + bi, squash=0.62)
+    # WEST, where the porch's own wide looks: the neighbour's house on this
+    # side (a lit side window, its porch light), the two houses round the
+    # bulb at the end, a lamp on this side of the street
+    nb = (0.44, 0.40, 0.36, 1.0)
+    make_box("Neighbour_W_Facade", (-17.0, 3.6, 1.65), (9.0, 8.0, 3.3), nb)
+    make_rot_box("Neighbour_W_Roof_N", (-17.0, 5.6, 3.3 + 2.25 * math.sin(0.42) + 0.06), (9.6, 4.5, 0.16), (0.20, 0.20, 0.23, 1.0), roll=-0.42)
+    make_rot_box("Neighbour_W_Roof_S", (-17.0, 1.6, 3.3 + 2.25 * math.sin(0.42) + 0.06), (9.6, 4.5, 0.16), (0.20, 0.20, 0.23, 1.0), roll=0.42)
+    make_box("Neighbour_W_Window_E", (-12.48, 3.0, 1.55), (0.04, 1.6, 1.3), lit)
+    make_box("Neighbour_W_Window_E_Frame", (-12.49, 3.0, 1.55), (0.03, 1.76, 1.46), (0.80, 0.78, 0.72, 1.0))
+    make_box("Neighbour_W_Window_S", (-18.5, -0.42, 1.55), (1.8, 0.04, 1.3), dark)
+    make_box("Neighbour_W_Porch_Light", (-14.6, -0.46, 1.95), (0.14, 0.12, 0.22), lit)
+    make_box("Neighbour_W_Front_Door", (-15.4, -0.42, 1.03), (0.95, 0.04, 2.06), (0.24, 0.16, 0.14, 1.0))
+    make_box("Neighbour_W_Driveway", (-20.0, -2.2, -0.004), (2.9, 3.6, 0.012), conc)
+    for k, (hy, wl) in enumerate(((-2.0, True), (-13.5, False))):
+        pre = f"Bulb_House_{k}"
+        make_box(f"{pre}_Facade", (-46.0, hy, 1.65), (7.0, 9.0, 3.3), bodies[(k + 2) % 4])
+        make_rot_box(f"{pre}_Roof_W", (-47.75, hy, 3.3 + 2.0 * math.sin(0.42) + 0.06), (4.0, 9.6, 0.16), (0.20, 0.20, 0.23, 1.0), pitch=0.42)
+        make_rot_box(f"{pre}_Roof_E", (-44.25, hy, 3.3 + 2.0 * math.sin(0.42) + 0.06), (4.0, 9.6, 0.16), (0.20, 0.20, 0.23, 1.0), pitch=-0.42)
+        make_box(f"{pre}_Window", (-42.48, hy + 2.0, 1.55), (0.04, 1.8, 1.3), lit if wl else dark)
+        make_box(f"{pre}_Front_Door", (-42.48, hy - 1.2, 1.03), (0.04, 0.95, 2.06), (0.24, 0.16, 0.14, 1.0))
+        make_box(f"{pre}_Garage_Door", (-42.48, hy - 3.0, 1.10), (0.04, 2.4, 2.2), (0.62, 0.61, 0.58, 1.0))
+    make_box("Lawn_Bulb_End", (-46.0, -7.8, -0.036), (14.0, 30.0, 0.05), lawn)
+    make_lathe("Street_Lamp_C_Post", (-11.0, -4.4, -0.03), [(0.14, 0.0), (0.09, 0.10), (0.06, 5.6), (0.07, 5.8), (0.0, 5.8)], (0.24, 0.24, 0.26, 1.0), segments=8)
+    make_lathe("Street_Lamp_C_Head", (-11.0, -4.4, 5.72), [(0.0, 0.0), (0.12, 0.05), (0.16, 0.18), (0.0, 0.22)], (0.98, 0.84, 0.50, 1.0), segments=10)
+    # the second streetlamp, across and down toward the bulb
+    make_lathe("Street_Lamp_B_Post", (-15.0, -11.9, -0.03), [(0.14, 0.0), (0.09, 0.10), (0.06, 5.6), (0.07, 5.8), (0.0, 5.8)], (0.24, 0.24, 0.26, 1.0), segments=8)
+    make_lathe("Street_Lamp_B_Head", (-15.0, -11.9, 5.72), [(0.0, 0.0), (0.12, 0.05), (0.16, 0.18), (0.0, 0.22)], (0.98, 0.84, 0.50, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
+    build_culdesac_2026_11()
     build_railing()
     build_chairs()
     build_lived_in_2026_10()

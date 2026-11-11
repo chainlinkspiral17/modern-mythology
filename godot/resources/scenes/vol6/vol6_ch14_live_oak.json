@@ -835,7 +835,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cicadas, in the cedar across the cul-de-sac, are loud.",
+      "text": "[shot:insert cedar]The cicadas, in the cedar across the cul-de-sac, are loud.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/141.mp3"
     },
     {
