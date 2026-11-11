@@ -154,10 +154,14 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_BankerGreen" type="DirectionalLight3D" parent="."]
+; (pass 343) the key is the August afternoon sun over the Marigny. It was a
+; banker's-lamp GREEN directional — a sun cannot be a desk lamp — and it turned
+; the street, the cottages and the whole warehouse below green (the lamp's own
+; green glow is Practical_BankerLamp, on the shade)
+[node name="Key_Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 3, 1)
-light_color = Color(0.62, 0.96, 0.62, 1)
-light_energy = 0.55
+light_color = Color(1.0, 0.86, 0.64, 1)
+light_energy = 0.75
 shadow_enabled = false
 
 [node name="Fill_EastWindow" type="DirectionalLight3D" parent="."]
@@ -351,11 +355,12 @@ position = Vector3(-0.450, 1.180, -1.550)
 rotation = Vector3(-0.3626, -0.4049, 0.0)
 metadata/fov = 34.0
 
-; through the leaded window: the streetlight across, the man in the charcoal suit (re-aimed 2026-10-05 for the canon-scale room)
+; through the leaded window: the streetlight across, the man in the charcoal suit — a storey down, so the
+; lens looks DOWN (pass 343: it looked level, at the cottages' upper floor, and the man was never in it)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.720, 1.520, -0.780)
-rotation = Vector3(-0.0887, -2.9758, 0.0)
-metadata/fov = 40.0
+position = Vector3(0.85, 1.55, -0.45)
+rotation = Vector3(-0.403, -3.0128, 0.0)
+metadata/fov = 38.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_coffee__new_orleans_office" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -368,3 +373,23 @@ metadata/fov = 35.0
 position = Vector3(0.064, 1.598, -1.205)
 rotation = Vector3(-0.2908, 1.7731, 0.0)
 metadata/fov = 35.0
+
+; (pass 343) through the lookout, a storey down into the warehouse: brick and graffiti,
+; the trusses, the cypress beam on its hoists ("The warehouse below the office")
+[node name="shot_insert_warehouse__new_orleans_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.700, 1.700, -2.850)
+rotation = Vector3(-0.4490, -0.1500, 0.0)
+metadata/fov = 60.0
+
+; (pass 343) the cypress beam, "not going up straight", on its two chain hoists
+[node name="shot_insert_beam__new_orleans_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.700, 1.700, -2.850)
+rotation = Vector3(-0.3190, -0.1920, 0.0)
+metadata/fov = 42.0
+
+; (pass 343) Jimmy's window unit in its sash ("The office was hot ... the window
+; air-conditioning unit Jimmy had installed")
+[node name="shot_insert_air_conditioner__new_orleans_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.200, 1.450, -1.500)
+rotation = Vector3(-0.2880, 2.6640, 0.0)
+metadata/fov = 45.0

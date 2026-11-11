@@ -45,6 +45,17 @@ stair to. Now:
     planks, a clawfoot tub, the crew's radio on a sawhorse, a work light.
 Draft 5 targets (the lunch litter went in 2026-10-05): the radio's practical; the
 iron stair outside the front door; the man's cigarette ember.
+
+PASS 343 (2026-11-11, read by render): the lookout and the leaded window
+glass thinned (0.18 / 0.22 green-grey turned the warehouse and the street
+olive); the scene's key was a GREEN directional named for the banker's
+lamp — it is the afternoon sun now; inserts for the warehouse, the beam and
+Jimmy's AC; the window insert looks DOWN at the man by the streetlight.
+NEXT-PASS TARGETS: an Alberto set for vol 5 ch20's Houston montage line (the
+Houston office is Erica's; the line plays on this desk's phone); light in
+the warehouse's high dark (a clerestory, the roof's skylight) so "Towering
+ceilings lost in shadow" has a shadow to be lost in; the crew radio's
+practical; the iron stair outside the front door; the cigarette's ember.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -124,7 +135,7 @@ def build_openings():
     for nm, fx, fz, sx, sz in (("T", LEAD_X, lz + lh / 2.0 - 0.03, lw, 0.06), ("B", LEAD_X, lz - lh / 2.0 + 0.03, lw, 0.06),
                                ("L", LEAD_X - lw / 2.0 + 0.03, lz, 0.06, lh - 0.12), ("R", LEAD_X + lw / 2.0 - 0.03, lz, 0.06, lh - 0.12)):
         make_box(f"Leaded_Window_Frame_{nm}", (fx, 0.0, fz), (sx, 0.20, sz), WOOD)
-    make_box("Leaded_Window_Pane", (LEAD_X, 0.0, lz), (lw - 0.12, 0.008, lh - 0.12), (0.60, 0.66, 0.62, 0.22))
+    make_box("Leaded_Window_Pane", (LEAD_X, 0.0, lz), (lw - 0.12, 0.008, lh - 0.12), (0.76, 0.76, 0.70, 0.10))   # (pass 343) thinner: the 0.22 green turned the street green
     for k in (-1, 0, 1):
         make_box(f"Leaded_Window_Came_V_{k:+d}", (LEAD_X + k * 0.125, 0.006, lz), (0.012, 0.006, lh - 0.12), (0.20, 0.20, 0.20, 1.0))
     for k in (-1, 0, 1):
@@ -135,7 +146,7 @@ def build_openings():
                                ("L", LOOK_X - ow / 2.0 + 0.03, oz, 0.06, oh - 0.12), ("R", LOOK_X + ow / 2.0 - 0.03, oz, 0.06, oh - 0.12),
                                ("M", LOOK_X, oz, 0.04, oh - 0.12)):
         make_box(f"Lookout_Frame_{nm}", (fx, D, fz), (sx, 0.20, sz), WOOD)
-    make_box("Lookout_Pane", (LOOK_X, D, oz), (ow - 0.12, 0.008, oh - 0.12), (0.72, 0.78, 0.78, 0.18))
+    make_box("Lookout_Pane", (LOOK_X, D, oz), (ow - 0.12, 0.008, oh - 0.12), (0.80, 0.80, 0.76, 0.08))   # (pass 343) the warehouse read olive through it
 
 
 def build_desk_and_chairs():

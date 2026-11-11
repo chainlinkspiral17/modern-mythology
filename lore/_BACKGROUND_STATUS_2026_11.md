@@ -183,7 +183,10 @@ posters, screens with no picture: `empty_frame_audit`).
 - **foxhole_bar — draft 3 (pass 342, 2026-11-11).** A stage insert from just inside the entrance (the walk-in
   lines played on the work light in the dark), the entrance glass visible from inside, all six tower fixtures
   and a backdrop wash lit, the booth / beer / cooler inserts re-framed, three ch22 lines directed.
-- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office → new_auburn_courtroom →
+- **new_orleans_office — draft 5 (pass 343, 2026-11-11).** The key light was a green "banker's lamp" sun and
+  the glass was tinted: the street and the warehouse read olive. Sun and glass fixed; inserts for the
+  warehouse, the beam and the AC; the window insert looks down at the man by the streetlight.
+- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office ✔ → new_auburn_courtroom →
   hospital_room → centro_stockroom.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the

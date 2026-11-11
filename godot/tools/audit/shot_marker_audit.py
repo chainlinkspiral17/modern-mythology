@@ -171,6 +171,10 @@ SYNONYMS = {
     "notebook": ["notebook", "note", "journal", "ledger"],
     "window": ["window", "win_", "sash", "pane"],
     "tide_pool": ["tide", "pool", "anemone"],
+    # (2026-11-11, pass 343) the New Orleans office: the warehouse a storey down
+    # through the lookout (the cypress beam is its centre), Jimmy's window unit
+    "warehouse": ["warehouse", "cypress", "sawhorse"],
+    "air_conditioner": ["ac_unit", "air_conditioner", "aircon"],
     "cedar": ["cedar"], "stick": ["stick", "cart", "sleeve"],
     "hexagon": ["hex"], "patch": ["patch", "salal", "moss"],
     "canvas": ["canvas", "easel", "painting"],

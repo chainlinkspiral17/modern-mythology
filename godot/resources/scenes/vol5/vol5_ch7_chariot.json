@@ -75,7 +75,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran,",
+      "text": "[shot:insert air_conditioner]The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran,",
       "voice": "assets/audio/voice/vol5_ch7_chariot/014.ogg"
     },
     {
@@ -175,12 +175,12 @@
     },
     {
       "t": "narrate",
-      "text": "The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation.",
+      "text": "[shot:insert warehouse]The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/034.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing.",
+      "text": "It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing.",
       "voice": "assets/audio/voice/vol5_ch7_chariot/035.ogg"
     },
     {
@@ -200,7 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "The hammer had been hanging the same thing — a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more,",
+      "text": "[shot:insert beam]The hammer had been hanging the same thing — a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more,",
       "voice": "assets/audio/voice/vol5_ch7_chariot/039.ogg"
     },
     {

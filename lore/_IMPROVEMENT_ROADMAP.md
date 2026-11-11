@@ -3835,6 +3835,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 343: the New Orleans office — the world past the glass was green.**
+- Third of the third six (198 lines, vol 5 ch5 / ch7 / ch20). READ by
+  render on eighteen lines. Draft 4's canon-scale room (twelve by ten, the
+  AC, the leaded window, the lookout, the warehouse and the Marigny a
+  storey down) holds. What did not:
+- The scene's KEY was a green DirectionalLight3D named Key_BankerGreen — a
+  sun coloured like a desk lamp — and it lit the street, the cottages and
+  the whole warehouse green. Now Key_Sun, the August afternoon. The glass
+  in the lookout and the leaded window (0.18 / 0.22 alpha, green-grey) put
+  a second olive wash over both views: thinned to 0.08 / 0.10, neutral.
+- "The warehouse below the office" and "It smelled of old wood" played on
+  the desk lamp and the clock wall. New `insert warehouse` (through the
+  lookout, down onto the floor: brick, graffiti, ladders, the work light)
+  and `insert beam` ("The hammer had been hanging the same thing — a
+  section of reclaimed cypress beam"); lines 34 / 35 / 39 directed.
+- "The office was hot ... the window air-conditioning unit Jimmy had
+  installed" cut to the leaded window: new `insert air_conditioner`.
+- "Across the street, an older man ... leaning against a streetlight" — the
+  window insert looked level, at the cottages' upper floor; the man was a
+  storey down and never in it. It looks down now; he and the streetlight
+  are in the frame.
+- shot_marker_audit SYNONYMS: `warehouse` (cypress / sawhorse) and
+  `air_conditioner` (AC_Unit — "ac" is under the three-letter stem floor).
+- Shot-tool note: VnLineShot jumps to a line while the set loads, so an
+  insert's portrait step-back (CharLayer INSERT_QUIET_ALPHA) never shows in
+  its frames; in play the cut lands first and the portrait dims.
+- **Knot (staging, not canon):** ch20 118-119 "In Houston, his older son
+  Alberto received a phone call ... He walked to his window" plays here —
+  there is no Alberto set (houston_office is Erica's PetroTex tower).
+- **Draft N+1 targets.** Alberto's Houston office; the warehouse's high
+  dark given a light to be lost from; the crew radio practical; the iron
+  stair; the cigarette's ember.
+
 **2026-11-11 · pass 342: the Foxhole — the camera stood in the dark at the back; now it stands at the door.**
 - Second of the third six (214 lines). READ by render on eighteen lines.
   The room (12 x 16 m black box, the stage across the north end, the rail,
