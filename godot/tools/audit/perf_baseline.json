@@ -201,6 +201,11 @@
   "prims": 64204,
   "objects": 366
  },
+ "houston_office": {
+  "draw": 452,
+  "prims": 32892,
+  "objects": 622
+ },
  "jesse_bedroom": {
   "draw": 232,
   "prims": 78960,

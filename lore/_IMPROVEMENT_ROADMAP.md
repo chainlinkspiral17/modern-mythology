@@ -3835,6 +3835,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 340: the Houston office — Houston was not out the window.**
+- Last of the six (242 lines: Wheel, Justice, Judgement). READ by render:
+  the room holds (draft 4's corner office). What the lines look at did not.
+- **Past the glass** "Houston in late afternoon" was a grey horizon over a
+  grey plane that read as sea: seven towers 95 - 140 m out, lost in the
+  fog, nothing between them and the freeway. The blocks between the
+  streets are built out now (low and mid rises, rooftop plant, mullion
+  bands, kept out of the towers' and the hawk's footprints), a second
+  ring of lighter glass towers stands N and W from 55 m, the fog is
+  0.0015 (it was 0.004).
+- **"Outside her window ... the freeway traffic doing its slow desperate
+  ballet ... twelve stories below"** played on `establish_b` — a view of
+  the FILES and the door, its back to the glass (and six other lines with
+  it). It stands at the N glass looking down at the freeway between the
+  towers now.
+- **The monitors** were blank white: the inbox (the motion's subject line
+  open, a red verdict line) on the first, a page of the settlement on the
+  second, named under `Monitor_Screen` so the user's monitor picture hides
+  them when it exists.
+- **Her mother's photograph** was a 12 cm card turned 20 degrees that no
+  art plane could face: squared to her chair, and a new roster slot,
+  `houston_office_mother_photo` (to generate).
+- 577 → 1,007 parts.
+- **Seen, not mine:** the portrait shown for `erica` in this checkout is a
+  stand-in (a man in sunglasses) — `erica_campbell.glb` is not in the
+  checkout, so the fallback shows; on the Deck the real model should load.
+  Worth a look there.
+- **Draft 6 targets.** Wheel's end at DUSK ("The Houston dusk was now full
+  color ... a light came on in an office"): a dusk twin with lit windows
+  and the freeway's lights; `insert monitor` frames the second monitor —
+  the inbox wants its own insert for "the email notification"; `Hall_Art`
+  is an empty picture; the hawk at insert scale.
+
 **2026-11-11 · pass 339: the Miller back porch — the crepe myrtle filled the frame; her chair was never in the view.**
 - Fifth of the next six sets (255 lines, nearly all in the morning view).
   READ by render on eighteen real lines:

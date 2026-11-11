@@ -149,7 +149,7 @@ ambient_light_energy = 0.70
 fog_enabled = true
 fog_light_color = Color(0.74, 0.72, 0.68, 1)
 fog_light_energy = 0.4
-fog_density = 0.004
+fog_density = 0.0015   ; (pass 340) 0.004 took the towers 100 m out
 adjustment_enabled = true
 adjustment_brightness = 1.02
 adjustment_contrast = 1.04
@@ -358,9 +358,9 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot coverage — DRAFT 4 (2026-10-09), the partner office
 ; reverse: from the NW glass corner across the desk to the files, the door and the hall
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.900, 1.650, -6.300)
-rotation = Vector3(-0.0665, -2.2361, 0.0)
-metadata/fov = 54.0
+position = Vector3(-1.000, 1.700, -6.550)
+rotation = Vector3(-0.6084, -0.1261, 0.0)
+metadata/fov = 62.0
 
 ; closeup: Erica at the teak desk from its east end — the W glass and the city behind her (not the monitors' backs)
 [node name="shot_closeup_erica" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -34,7 +34,23 @@ Marcus's desk. No diplomas — the photograph is "the only personal item".
 Coordinates: Blender Z-up, x -4.5..4.5, y 0 (the S wall, the door) ..
 7.0 (the N glass); the hall is y -3.6..0. glTF export -> Godot (x, z, -y).
 
-Draft 5 targets: the city at dusk (lit windows, the freeway's lights)
+DRAFT 5 (pass 340, 2026-11-11) — read by render on eighteen real lines.
+The office holds. What the lines look at did not: past the glass "Houston
+in late afternoon" was a grey horizon over a grey plane that read as sea
+(seven towers 95 - 140 m out, lost in the fog, nothing between them and
+the freeway); "Outside her window ..." played on a view of the FILES and
+the door, its back to the glass; "Erica Campbell stared at the email
+notification ... Denied" and "She pulled up the PetroTex settlement
+agreement on her monitor" were a blank white screen; the photograph of
+her mother was a tilted 12 cm card no camera could square. So: the city
+built out (build_city_blocks_2026_11: the blocks between the streets
+filled with low and mid rises, a second ring of towers N and W, the
+nearest at 55 m, lighter glass with mullion bands), the fog thinned; the
+monitor shows an inbox with the motion's subject line open, the second
+monitor a page of the settlement; the photograph squared to her chair
+(a roster picture slot: houston_office_mother_photo).
+
+Draft 6 targets: the city at dusk (lit windows, the freeway's lights)
 as a per-preset variant for Wheel's end; the files' label holders
 legible at insert scale; Marcus as a presence (his jacket on his chair).
 """
@@ -149,6 +165,28 @@ def build_desk():
                      SCREEN if i == 0 else (0.86, 0.86, 0.82, 1.0), yaw=yaw)
         make_box(f"{nm}_Neck", (dx + mx, dy - 0.20, top + 0.09), (0.05, 0.04, 0.16), CHROME)
         make_box(f"{nm}_Foot", (dx + mx, dy - 0.20, top + 0.005), (0.22, 0.16, 0.01), CHROME)
+    # (draft 5) what is ON the screens: the inbox with the motion's subject
+    # line open ("The motion was denied"), and the settlement on the second
+    # (they were blank white panels). Named under Monitor_Screen so a
+    # picture laid on the screen hides them.
+    sx, sy, sz = dx - 0.34, dy - 0.18 + 0.0185, top + 0.30
+    ui = (("Sidebar", -0.235, 0.0, 0.09, 0.28, (0.22, 0.26, 0.32, 1.0)),
+          ("Topbar", 0.045, 0.135, 0.47, 0.022, (0.20, 0.36, 0.62, 1.0)),
+          ("List", -0.095, -0.01, 0.19, 0.25, (0.93, 0.94, 0.95, 1.0)),
+          ("Selected", -0.095, 0.095, 0.19, 0.035, (0.78, 0.84, 0.94, 1.0)),
+          ("Subject", 0.12, 0.095, 0.21, 0.018, (0.10, 0.10, 0.12, 1.0)),
+          ("Verdict", 0.06, 0.06, 0.09, 0.016, (0.66, 0.12, 0.12, 1.0)))
+    for nm, ox, oz, w, h, col in ui:
+        make_box(f"Monitor_Screen_UI_{nm}", (sx + ox, sy, sz + oz), (w, 0.001, h), col)
+    for li in range(7):
+        make_box(f"Monitor_Screen_UI_Line_{li}", (sx + 0.12, sy, sz + 0.02 - li * 0.022), (0.20 - (li % 3) * 0.03, 0.001, 0.006), (0.52, 0.54, 0.58, 1.0))
+        make_box(f"Monitor_Screen_UI_Row_{li}", (sx - 0.095, sy + 0.0004, sz + 0.06 - li * 0.03), (0.17, 0.001, 0.005), (0.62, 0.64, 0.68, 1.0))
+    yaw2 = -0.22
+    for li in range(10):
+        off = -0.16 + 0.0 * li
+        cx2, cz2 = dx + 0.36 + 0.0185 * _m.sin(-yaw2), top + 0.40 - li * 0.022
+        make_rot_box(f"Second_Monitor_Screen_Text_{li}", (cx2, dy - 0.18 + 0.0185 * _m.cos(yaw2), cz2), (0.34 - (li % 4) * 0.04, 0.001, 0.006),
+                     (0.36, 0.38, 0.42, 1.0) if li else (0.10, 0.10, 0.12, 1.0), yaw=yaw2)
     make_box("Keyboard", (dx - 0.20, dy + 0.18, top + 0.008), (0.42, 0.14, 0.016), (0.20, 0.20, 0.22, 1.0))
     make_box("Desk_Pad", (dx - 0.05, dy + 0.18, top + 0.002), (0.90, 0.42, 0.004), (0.18, 0.18, 0.20, 1.0))
     # the phone, the chrome lamp, the photograph on the corner
@@ -156,9 +194,12 @@ def build_desk():
     make_tube("Desk_Phone_Handset", [(dx - 0.90, dy + 0.12, top + 0.065), (dx - 0.82, dy + 0.12, top + 0.095), (dx - 0.74, dy + 0.12, top + 0.065)], 0.016, (0.12, 0.12, 0.14, 1.0), segments=8)
     make_box("Desk_Phone_Cell", (dx + 0.55, dy + 0.30, top + 0.005), (0.075, 0.15, 0.01), (0.10, 0.10, 0.12, 1.0))
     make_lamp("Erica_Lamp", dx + 0.88, dy - 0.25, base_z=top, h=0.52, shade_col=CHROME, body_col=CHROME)
-    make_rot_box("Mother_Photo_Galveston", (dx + 0.92, dy + 0.30, top + 0.075), (0.16, 0.025, 0.14), CHROME, yaw=0.35, roll=0.0)
-    make_rot_box("Mother_Photo_Galveston_Print", (dx + 0.915, dy + 0.316, top + 0.075), (0.12, 0.004, 0.10), (0.74, 0.66, 0.50, 1.0), yaw=0.35)
-    make_rot_box("Mother_Photo_Galveston_Hat", (dx + 0.915, dy + 0.318, top + 0.10), (0.06, 0.002, 0.025), (0.92, 0.86, 0.66, 1.0), yaw=0.35)
+    # (draft 5) square to her chair, so a picture can be laid on it: it was
+    # turned 20 degrees and no art plane could face it
+    make_box("Mother_Photo_Galveston", (dx + 0.92, dy + 0.30, top + 0.085), (0.20, 0.025, 0.16), CHROME)
+    make_box("Mother_Photo_Galveston_Stand", (dx + 0.92, dy + 0.26, top + 0.04), (0.03, 0.06, 0.08), CHROME)
+    make_box("Mother_Photo_Galveston_Print", (dx + 0.92, dy + 0.3135, top + 0.085), (0.16, 0.002, 0.12), (0.74, 0.66, 0.50, 1.0))
+    make_box("Mother_Photo_Galveston_Hat", (dx + 0.92, dy + 0.3150, top + 0.115), (0.07, 0.001, 0.03), (0.92, 0.86, 0.66, 1.0))
     # the eleven-page draft, squared; Marcus's coffee and his card
     make_box("DAmbrosio_Contract", (dx - 0.50, dy + 0.30, top + 0.006), (0.216, 0.279, 0.012), PAPER)
     make_box("Contract_Top_Sheet", (dx - 0.50, dy + 0.30, top + 0.0125), (0.200, 0.262, 0.001), (0.98, 0.98, 0.96, 1.0))
@@ -311,6 +352,55 @@ def build_city():
     make_box("Hawk_Tail", (hx, hy - 0.28, hz), (0.18, 0.14, 0.02), (0.62, 0.30, 0.18, 1.0))
 
 
+def build_city_blocks_2026_11():
+    """(draft 5) Downtown between the streets: the blocks filled with low
+    and mid rises (rooftops with plant, the odd parking deck), and a second
+    ring of towers N and W, the nearest 55 m out — what "Houston in late
+    afternoon" is through the glass. The towers are lighter than draft 4's
+    (blue-grey glass with mullion bands) so the fog does not take them."""
+    gz = GROUND_Z
+    blocks_x = ((-110.0, -60.0), (-60.0, -18.0), (-18.0, 26.0), (26.0, 70.0), (70.0, 120.0))
+    blocks_y = ((8.0, 22.0), (29.0, 63.0), (77.0, 111.0), (125.0, 170.0))
+    tones = ((0.56, 0.54, 0.50, 1.0), (0.46, 0.48, 0.50, 1.0), (0.62, 0.58, 0.52, 1.0), (0.40, 0.44, 0.48, 1.0), (0.52, 0.50, 0.46, 1.0))
+    # the footprints already taken: draft 4's towers, the ring below, the
+    # hawk's column (a block must not stand in any of them)
+    taken = [(-40.0, 95.0, 30.0, 26.0), (12.0, 120.0, 34.0, 30.0), (60.0, 96.0, 26.0, 26.0), (-95.0, 84.0, 28.0, 34.0),
+             (-100.0, -20.0, 30.0, 30.0), (110.0, 140.0, 30.0, 30.0), (-24.0, 62.0, 22.0, 18.0), (-6.0, 18.0, 4.0, 4.0)]
+    ring = ((-60.0, 58.0, 22.0, 22.0, 96.0), (38.0, 72.0, 24.0, 20.0, 130.0), (-130.0, 40.0, 26.0, 26.0, 140.0),
+            (88.0, 60.0, 20.0, 20.0, 88.0), (-150.0, 120.0, 30.0, 30.0, 175.0), (-78.0, 150.0, 26.0, 26.0, 120.0),
+            (-70.0, -60.0, 24.0, 24.0, 104.0), (-140.0, -10.0, 24.0, 30.0, 82.0), (150.0, 100.0, 26.0, 26.0, 110.0))
+    taken += [(tx, ty, tw, td) for tx, ty, tw, td, th in ring]
+
+    def free(cx, cy, w, d):
+        return all(abs(cx - tx) > (w + tw) / 2.0 + 1.0 or abs(cy - ty) > (d + td) / 2.0 + 1.0 for tx, ty, tw, td in taken)
+    k = 0
+    for bi, (x0, x1) in enumerate(blocks_x):
+        for bj, (y0, y1) in enumerate(blocks_y):
+            if bj == 1 and abs((x0 + x1) / 2.0) < 140:
+                continue                       # the freeway runs through this band
+            for sub in range(2):
+                cx = x0 + 7.0 + (x1 - x0 - 14.0) * (0.25 + 0.5 * sub)
+                cy = (y0 + y1) / 2.0
+                w = (x1 - x0 - 14.0) * 0.42; d = (y1 - y0) - 8.0
+                h = (8.0, 14.0, 22.0, 34.0, 18.0, 46.0, 12.0)[(k * 3 + bi) % 7]
+                if not free(cx, cy, w, d):
+                    k += 1
+                    continue
+                make_box(f"Out_Block_{k}", (cx, cy, gz + h / 2.0), (w, d, h), tones[k % len(tones)])
+                make_box(f"Out_Block_{k}_Roof", (cx + w * 0.18, cy - d * 0.15, gz + h + 0.9), (w * 0.22, d * 0.2, 1.8), (0.66, 0.66, 0.64, 1.0))
+                for f in range(int(h / 3.6)):
+                    make_box(f"Out_Block_{k}_Band_{f}", (cx, cy - d / 2.0 - 0.02, gz + 2.0 + f * 3.6), (w + 0.02, 0.02, 0.9), (0.30, 0.34, 0.40, 1.0))
+                k += 1
+    # the second ring of towers, nearer and lighter
+    glass = ((0.48, 0.58, 0.68, 1.0), (0.62, 0.66, 0.70, 1.0), (0.40, 0.50, 0.60, 1.0), (0.70, 0.68, 0.62, 1.0))
+    for i, (tx, ty, tw, td, th) in enumerate(ring):
+        make_box(f"Out_Tower_B_{i}", (tx, ty, gz + th / 2.0), (tw, td, th), glass[i % len(glass)])
+        make_box(f"Out_Tower_B_{i}_Crown", (tx, ty, gz + th + 2.5), (tw * 0.7, td * 0.7, 5.0), glass[(i + 1) % len(glass)])
+        for f in range(0, int(th / 4.0), 2):
+            for face, (fx, fy, sw, sd) in enumerate(((0.0, -td / 2.0 - 0.02, tw + 0.02, 0.02), (tw / 2.0 + 0.02, 0.0, 0.02, td + 0.02))):
+                make_box(f"Out_Tower_B_{i}_Band_{f}_{face}", (tx + fx, ty + fy, gz + 1.5 + f * 4.0), (sw, sd, 0.5), (0.80, 0.82, 0.84, 1.0))
+
+
 def build_details():
     make_wall_outlet("Outlet_E", (XE, 6.3), axis='Y', face_sign=-1, aged=False)
     make_wall_outlet("Outlet_S", (-0.6, YS), axis='X', face_sign=1, aged=False)
@@ -321,7 +411,7 @@ def build_details():
 
 def main():
     clear_scene()
-    build_shell(); build_glass_walls(); build_desk(); build_files(); build_seating(); build_door_and_hall(); build_city(); build_details()
+    build_shell(); build_glass_walls(); build_desk(); build_files(); build_seating(); build_door_and_hall(); build_city(); build_city_blocks_2026_11(); build_details()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_office.glb"))
     print(f"\n[build_houston_office] exporting to {out}")
     export_glb(out)

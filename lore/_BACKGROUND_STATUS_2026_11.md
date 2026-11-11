@@ -175,9 +175,12 @@ posters, screens with no picture: `empty_frame_audit`).
 - **miller_back_porch — draft 4 (pass 339, 2026-11-11).** The crepe myrtle as a tree in the yard's corner (it
   was a pink blob filling the frame), the morning view from the west end with her wicker chair in it, the small
   table at the wicker's arm with the coffee pot, the screens framed. 367 → 417 parts.
+- **houston_office — draft 5 (pass 340, 2026-11-11).** The city past the glass built out (it was a grey horizon
+  over a plane), the window shot looking down at the freeway (it faced the files), content on both monitors, the
+  mother's photograph squared and given a roster slot. 577 → 1,007 parts. The second six are through a pass.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
-  first five are done: passes 332, 336 - 339; houston_office is next).
+  all six through a pass: 332, 336 - 340).
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 

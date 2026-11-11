@@ -61336,6 +61336,50 @@
       ]
     },
     {
+      "slug": "houston_office_mother_photo",
+      "kind": "art",
+      "name": "Erica's photograph of her mother in Galveston, on the corner of her desk",
+      "file": "houston_office_mother_photo.png",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "houston_office_mother_photo"
+      ],
+      "tag": "picture · houston_office · 0.16 x 0.12 m · insert",
+      "aspect": "4:3",
+      "prompt": "A small framed snapshot seen flat and straight-on, filling the frame edge to edge: a Black woman of fifty-one in a wide sun hat on the beach at Galveston in 1996, smiling warmly at someone just outside the frame, the Gulf and a pale summer sky behind her, wind in the hat brim. The colour and soft grain of a 1990s drugstore print, a little faded.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "She looked at the small framed photograph on the corner of the desk, the only personal item in the office — her mother, age fifty-one, in a sun hat in Galveston in 1996, smiling at someone outside the frame whose identity Erica had never been told."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "(2026-11-11, Houston office draft 5) The age, the sun hat, Galveston, 1996 and the smile at someone outside the frame are the text's. That she is Black follows the roster's Erica Campbell entry; the beach behind her is proposed. The frame was turned 20 degrees on the desk and is square to Erica's chair now so the picture can lie on it.",
+      "art_cat": "PICTURE",
+      "apply": [
+        {
+          "locale": "houston_office",
+          "label": "Mother_Photo_Galveston_Print",
+          "center": [
+            0.92,
+            5.2135,
+            0.865
+          ],
+          "size": [
+            0.16,
+            0.12
+          ],
+          "facing": "+y",
+          "hide": [
+            "Mother_Photo_Galveston_Print",
+            "Mother_Photo_Galveston_Hat"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "finn_apartment_south_window",
       "kind": "art",
       "name": "the town to the south from Finn's kitchen window",
