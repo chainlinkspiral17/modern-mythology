@@ -166,9 +166,12 @@ posters, screens with no picture: `empty_frame_audit`).
 - **natalie_apartment — draft 6 (pass 336, 2026-11-11).** Shots: the windowsill with the Hanged Man, the
   uniform on the bathroom door (built), the leaning books; the door shot stepped back; the turntable and the
   ringing phone made readable at night; the bedroom window enlarged. Draft 7 targets in the roadmap.
+- **chillwave_interior — back room (pass 337, 2026-11-11).** 7.0 x 3.4 → 7.0 x 5.4; the two chairs of the
+  conversation, the stick box on the bench behind her, the transformer and strip on the wall, a free-standing
+  shelf row; the view and closeups moved to the chairs. 601 → 741 parts.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
-  first two are done: passes 332 and 336; chillwave_interior is next).
+  first three are done: passes 332, 336, 337; caldwell_porch_night is next).
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 

@@ -351,8 +351,8 @@ metadata/fov = 45.0
 
 ; through the doorway: inventory + workbench + stick box
 [node name="shot_wide_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.7, 1.62, -4.9)
-rotation = Vector3(-0.0399997, 0.62, 0)
+position = Vector3(-1.900, 1.600, -5.500)
+rotation = Vector3(-0.0600, -1.3520, 0.0)
 metadata/fov = 62.0
 
 ; the three-slot box, Estuary 7 label (the_stick)
@@ -384,9 +384,9 @@ metadata/fov = 42.0
 
 ; insert: he was at the workbench
 [node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.4, -5.7)
-rotation = Vector3(-0.8783, -0.0493, 0.0)
-metadata/fov = 42.0
+position = Vector3(1.400, 1.450, -7.000)
+rotation = Vector3(-0.3031, -1.7450, 0.0)
+metadata/fov = 46.0
 
 ; closeups (2026-10-10, the vol7 ch6 chain): Cale at the workbench, and the visitor in the folding chair
 [node name="shot_closeup_person__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -402,14 +402,14 @@ metadata/fov = 42.0
 ; ── named closeups in the back room (pass 88): Cale at his bench chair, Lena and Tem standing
 ; closeup: Cale at the bench chair ("set down the small thing he had been working on"), from the north-west
 [node name="shot_closeup_cale__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.100, 1.450, -7.300)
-rotation = Vector3(-0.2194, -2.3036, 0.0)
+position = Vector3(1.550, 1.250, -6.250)
+rotation = Vector3(-0.0500, 1.5210, 0.0)
 metadata/fov = 42.0
 
 ; closeup: Lena standing in the back room's middle ("She did not move"), from beside the bench
 [node name="shot_closeup_lena__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.900, 1.550, -5.600)
-rotation = Vector3(-0.0279, 1.1071, 0.0)
+position = Vector3(0.750, 1.250, -6.300)
+rotation = Vector3(-0.0500, -1.6510, 0.0)
 metadata/fov = 42.0
 
 ; closeup: Tem standing in the back room's south half, from the east along the room's long axis (the N inventory shelf filled a frame taken from the south)
@@ -421,9 +421,9 @@ metadata/fov = 42.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_transformer__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.221, 1.194, -5.760)
-rotation = Vector3(-0.1666, -0.4899, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.000, 1.550, -6.700)
+rotation = Vector3(0.1365, -1.1247, 0.0)
+metadata/fov = 38.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_counter__chillwave_interior" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -439,15 +439,9 @@ metadata/fov = 46.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_chair__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.775, 0.692, -5.160)
-rotation = Vector3(-0.2618, -0.2812, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_table__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.500, 1.350, -6.200)
-rotation = Vector3(-0.6247, 2.4088, 0.0)
-metadata/fov = 38.0
+position = Vector3(0.900, 1.100, -5.200)
+rotation = Vector3(-0.5364, 0.3271, 0.0)
+metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
@@ -462,3 +456,17 @@ metadata/fov = 45.0
 position = Vector3(-1.134, 1.612, -3.966)
 rotation = Vector3(-0.0700, -1.8326, 0.0)
 metadata/fov = 45.0
+
+; ── pass 337 (2026-11-11): the back room ──
+; "The wooden box held three sticks. The third was Estuary 7" — on the bench behind her
+[node name="shot_insert_stick__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.250, 1.450, -5.950)
+rotation = Vector3(-0.3240, -2.0180, 0.0)
+metadata/fov = 40.0
+
+[node name="Practical_Dome_Rows" type="OmniLight3D" parent="."]
+position = Vector3(-0.500, 2.550, -9.000)
+light_color = Color(1.0, 0.90, 0.72, 1)
+light_energy = 0.9
+omni_range = 5.0
+shadow_enabled = false

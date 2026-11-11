@@ -3121,10 +3121,14 @@ const CAMERA_PRESETS := {
 		# shelves N/W with brass letter tabs, Cale's workbench E
 		# (soldering iron, transformer, LED strip, task lamp), the
 		# crate by the doorway, the three-slot stick box on its table
-		# (godot -2.4,-5.2). Camera at the doorway looking NW so the
-		# stick box, shelves and workbench chair share the frame.
-		"camera_origin": Vector3(1.7, 1.62, -4.9),
-		"camera_rotation": Vector3(-0.04, 0.62, 0.0),
+		# (godot -2.4,-5.2). (pass 337, 2026-11-11) 7 x 5.4 now: the two
+		# chairs of the conversation (hers, folding, its back to the
+		# bench at godot 1.85,-6.15; his facing her), the stick box ON
+		# the bench behind her, the transformer on the wall, a free-
+		# standing shelf row at z -8.1. Camera at the west shelves
+		# looking east: both chairs, the bench, the rows at frame left.
+		"camera_origin": Vector3(-1.9, 1.60, -5.5),
+		"camera_rotation": Vector3(-0.06, -1.352, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

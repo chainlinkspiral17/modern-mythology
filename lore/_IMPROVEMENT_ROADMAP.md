@@ -3835,6 +3835,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 337: ChillWave's back room — 117 lines of one conversation played on a wall of shelves.**
+- Third of the next six sets. The count in the status table (267) held a
+  dead scene file (`vol7_ch6_cale`, not in the index, a copy of the seven
+  split scenes): 151 lines really play here, 117 of them in the back room.
+- READ by render: the back room's wide — the frame under "I knew Nate
+  Dean", "Yours. Bench behind you", "She sat with her hands in her lap" —
+  was two walls of shelves from the doorway. No bench, no chairs.
+  `insert workbench` ("He was at the workbench") looked straight down at a
+  box stool's seat. The room was 7.0 x 3.4 m.
+- **Rebuilt to the text.** "There was a chair. She sat. He unplugged the
+  soldering iron from the strip on the wall ... pulled a second chair over
+  from the corner, and sat" · "a folding metal one" · "The transformer on
+  the wall hummed" · "Bench behind you, third slot in the wooden box":
+  the room is 7.0 x 5.4 (ROOM_D 10); a free-standing double row of cedar
+  shelving with an aisle behind it; her FOLDING METAL CHAIR with its back
+  to the bench, Cale's chair facing her; THE WOODEN BOX on the bench (it
+  stood on its own table across the room); the transformer and the power
+  strip on the wall over the bench, the iron's plug pulled.
+- **Camera.** The back-room view stands at the west shelves looking east
+  (both chairs, the bench, the rows at frame left); `closeup lena` has the
+  bench and the box behind her, `closeup cale` the shelves; `insert
+  workbench` / `transformer` / `chair` re-authored; nate:16 ("His thumb
+  went still on the table") goes to the workbench — there is no table.
+- 601 → 741 parts.
+- Suite: one real failure, mine — the stick box was a solid block with a
+  lid and its three sticks pierced the lid (prop_overlap_audit, once I had
+  renamed them off the box's prefix for the shot audit). It is an open
+  box now, floor, walls and dividers, the sticks standing in it. The gates
+  that read this room were re-run after it, not the whole suite.
+- **Next draft.** The sticks are 10 cm boxes in rows: sleeves with spine
+  labels, gaps, one lying flat; the folding chair is dark against the
+  bench in the wide; the closet it came out of; a back door (he smokes
+  "on his back porch"); `closeup tem` is used on Cale's lines in three
+  scenes (a cue name left from another draft — check the speaker);
+  the dead `vol7_ch6_cale.json` wants removing or indexing (ask).
+
 **2026-11-11 · pass 336: Natalie's apartment, draft 6 — the room holds; six shots did not show what their lines say.**
 - Second of the next six sets (294 lines, nearly all at night). READ by
   render on eighteen real lines: draft 5's plan (the futon facing the

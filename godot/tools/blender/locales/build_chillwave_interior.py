@@ -19,13 +19,39 @@ Rebuilt to the prose:
   three-slot WOODEN STICK BOX with the Estuary 7 label.
 
 Per the aesthetic bible: warm cedar modernity, no neon cosplay.
-Room: door/S wall at blender y=0, extends +Y; 7.0 x 8.0, ceil 2.8.
+Room: door/S wall at blender y=0, extends +Y; 7.0 x 10.0, ceil 2.8.
+
+DRAFT (pass 337, 2026-11-11) — THE BACK ROOM. 117 lines of one long
+conversation play there and its wide showed two walls of shelves: no
+bench, no chairs, nobody's place. It was 7.0 x 3.4 m. Read against the
+text: "There was a chair. She sat. He unplugged the soldering iron
+from the strip on the wall, moved a few small parts off the bench into
+a tray, pulled a second chair over from the corner, and sat" · "The
+chair under her was a folding metal one" · "The transformer on the
+wall hummed" · "Yours. Bench behind you, third slot in the wooden
+box."
+  - 7.0 x 5.4 now (ROOM_D 10): the inventory is a room — a free-
+    standing double row of cedar shelving and an aisle behind it, as
+    well as the wall units.
+  - THE CONVERSATION: her folding metal chair with its back to the
+    bench, Cale's chair pulled over facing her.
+  - THE WOODEN BOX is on the bench behind her (it stood on a table of
+    its own across the room); the TRANSFORMER and the POWER STRIP are
+    on the wall over the bench.
+  - The view stands at the west shelves looking east: both chairs, the
+    bench and its box behind her, the rows running back on the left.
+Next draft: the sticks are 10 cm boxes in rows — sleeves with spine
+labels, gaps, a stick lying flat; the shelves' letter tabs as real
+dividers; the closet the folding chair came out of; a back door (he
+smokes "on his back porch"); the front shop's counter side.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+import math
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, make_tube, export_glb
+from _props.furniture import make_chair
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant
@@ -34,7 +60,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
                            make_wall_tint_band, make_threshold, make_wall_outlet,
                            make_light_switch, make_cord_run, make_thermostat)
 
-ROOM_W = 7.0; ROOM_D = 8.0; CEIL = 2.8
+ROOM_W = 7.0; ROOM_D = 10.0; CEIL = 2.8   # pass 337: the back room 3.4 -> 5.4 m deep (was ROOM_D 8.0)
 PART_Y = 4.6          # front-shop / back-room partition
 PAL_WALL = {"wall": (0.82, 0.74, 0.62, 1.0), "baseboard": (0.40, 0.30, 0.20, 1.0)}
 COL_FLOOR = (0.52, 0.40, 0.28, 1.0); COL_SEAM = (0.36, 0.27, 0.18, 1.0)
@@ -213,14 +239,25 @@ def build_back_inventory():
     for si in range(3):
         make_box(f"Crate_InStick_{si}", (2.45+si*0.15, PART_Y+0.55, 0.50),
                  (0.10, 0.16, 0.14), STICK_TINTS[si])
-    # The three-slot WOODEN BOX — Estuary 7 in the third slot, its
-    # label a pale panel on the box face (vol7_ch6_the_stick).
-    make_box("StickBox", (-2.4, 5.2, 0.86), (0.80, 0.30, 0.22), COL_CEDAR)
-    make_box("StickBox_Table", (-2.4, 5.2, 0.38), (0.90, 0.44, 0.75), COL_CEDAR_DK)
-    for si in range(3):
-        make_box(f"StickBox_Slot_{si}", (-2.64+si*0.24, 5.14, 0.90),
-                 (0.16, 0.16, 0.16), STICK_TINTS[(si*2) % len(STICK_TINTS)])
-    make_box("StickBox_E7_Label", (-2.16, 5.04, 0.83), (0.14, 0.005, 0.05), (0.90, 0.88, 0.80, 1.0))
+    # (the three-slot WOODEN BOX is on the bench now — build_workbench)
+    # THE ROWS (pass 337): a free-standing double run of cedar shelving
+    # across the deeper room, an aisle behind it to the N wall's units
+    rface, rx0, rx1, rh = 8.10, -2.40, 1.40, 2.00
+    for side, sg in (("S", -1), ("N", +1)):
+        pre = f"InvRow_{side}"
+        make_box(f"{pre}_Back", ((rx0 + rx1) / 2.0, rface + sg * 0.01, rh / 2.0), (rx1 - rx0, 0.02, rh), COL_CEDAR_DK)
+        for e, x in (("W", rx0 + 0.015), ("E", rx1 - 0.015)):
+            make_box(f"{pre}_Side_{e}", (x, rface + sg * 0.19, rh / 2.0), (0.03, 0.38, rh), COL_CEDAR_DK)
+        make_box(f"{pre}_Top", ((rx0 + rx1) / 2.0, rface + sg * 0.19, rh + 0.015), (rx1 - rx0, 0.38, 0.03), COL_CEDAR_DK)
+        for zi in range(4):
+            sz = 0.30 + zi * 0.44
+            make_box(f"{pre}_Shelf_{zi}", ((rx0 + rx1) / 2.0, rface + sg * 0.19, sz), (rx1 - rx0 - 0.06, 0.34, 0.04), COL_CEDAR)
+            for ci in range(11):
+                if (ci * 7 + zi * 3 + (side == "N")) % 9 == 0:
+                    continue                      # a gap where one is out
+                make_box(f"{pre}_Stick_{zi}_{ci}", (rx0 + 0.25 + ci * 0.33, rface + sg * 0.19, sz + 0.10),
+                         (0.10, 0.16, 0.16), STICK_TINTS[(zi * 2 + ci + (side == "N")) % len(STICK_TINTS)])
+            make_box(f"{pre}_Tab_{zi}", (rx0 + 0.20 + ((zi * 2) % 5) * 0.72, rface + sg * 0.37, sz + 0.02), (0.08, 0.02, 0.06), COL_BRASS)
 
 
 def build_workbench():
@@ -241,9 +278,34 @@ def build_workbench():
              axis='X', segments=6)
     make_box("Solder_Sponge", (bx-0.30, 5.7, 0.945), (0.10, 0.08, 0.025), (0.80, 0.74, 0.30, 1.0))
     # Bench transformer (the heavy hum in the corner of the scene).
-    make_box("Transformer", (bx+0.10, 7.3, 1.04), (0.30, 0.34, 0.28), (0.36, 0.38, 0.40, 1.0))
-    make_cyl("Transformer_Dial", (bx-0.06, 7.3, 1.12), 0.05, 0.03, (0.20, 0.20, 0.22, 1.0),
+    # ("The transformer on the wall hummed faintly even with the iron
+    # unplugged" — pass 337: on the backboard, it sat on the bench)
+    wallx = ROOM_W/2.0 - 0.145
+    make_box("Transformer", (wallx - 0.09, 7.3, 1.62), (0.18, 0.34, 0.30), (0.42, 0.44, 0.46, 1.0))
+    make_cyl("Transformer_Dial", (wallx - 0.195, 7.3, 1.66), 0.05, 0.03, (0.20, 0.20, 0.22, 1.0),
              axis='X', segments=10)
+    for fi in range(4):
+        make_box(f"Transformer_Fin_{fi}", (wallx - 0.09, 7.16 + fi * 0.09, 1.79), (0.16, 0.02, 0.04), (0.34, 0.36, 0.38, 1.0))
+    # "the strip on the wall", the iron's plug pulled and hanging by it
+    make_box("Power_Strip", (wallx - 0.02, 6.05, 1.20), (0.04, 0.46, 0.07), (0.86, 0.84, 0.78, 1.0))
+    for ki in range(4):
+        make_box(f"Power_Strip_Socket_{ki}", (wallx - 0.042, 5.90 + ki * 0.10, 1.20), (0.004, 0.05, 0.04), (0.30, 0.30, 0.32, 1.0))
+    make_tube("Solder_Cord", [(bx + 0.06, 5.78, 0.95), (bx + 0.30, 5.86, 0.94), (wallx - 0.05, 5.92, 1.02), (wallx - 0.05, 5.92, 1.10)], 0.005, (0.16, 0.16, 0.18, 1.0), segments=4)
+    make_box("Solder_Plug", (wallx - 0.05, 5.92, 1.12), (0.03, 0.03, 0.04), (0.16, 0.16, 0.18, 1.0))
+    # THE WOODEN BOX, on the bench behind her chair: three slots, Estuary 7
+    # in the third, "Ines Rocha 2046 in his small careful hand on the white label"
+    kx, ky = bx + 0.24, 5.50
+    # an open box: a floor, four walls, two dividers — the sticks stand IN
+    # it (the first try was a solid block with a lid the sticks pierced)
+    make_box("StickBox", (kx, ky, 0.93 + 0.04), (0.26, 0.62, 0.08), COL_CEDAR)
+    for nm, ox, oy, sx_, sy_ in (("W", -0.136, 0.0, 0.012, 0.644), ("E", 0.136, 0.0, 0.012, 0.644),
+                                 ("S", 0.0, -0.316, 0.26, 0.012), ("N", 0.0, 0.316, 0.26, 0.012)):
+        make_box(f"StickBox_Wall_{nm}", (kx + ox, ky + oy, 0.93 + 0.075), (sx_, sy_, 0.15), COL_CEDAR_DK)
+    for di, oy in enumerate((-0.095, 0.095)):
+        make_box(f"StickBox_Divider_{di}", (kx, ky + oy, 0.93 + 0.14), (0.26, 0.008, 0.06), COL_CEDAR_DK)
+    for si in range(3):
+        make_box(f"StickBox_Stick_{si}", (kx, ky - 0.19 + si * 0.19, 0.93 + 0.08 + 0.08), (0.16, 0.10, 0.16), STICK_TINTS[(si*2) % len(STICK_TINTS)])
+    make_box("StickBox_E7_Label", (kx - 0.0815, ky + 0.19, 0.93 + 0.19), (0.003, 0.08, 0.05), (0.92, 0.90, 0.82, 1.0))
     # The LED strip he's wiring, uncoiled across the bench.
     make_box("LED_Strip", (bx-0.05, 6.5, 0.945), (0.45, 0.04, 0.012), (0.90, 0.92, 0.86, 1.0))
     make_box("LED_Strip_Coil", (bx+0.20, 6.15, 0.95), (0.16, 0.16, 0.04), (0.82, 0.84, 0.80, 1.0))
@@ -257,19 +319,25 @@ def build_workbench():
     make_cyl("TaskLamp_Clamp", (bx+0.30, 7.5, 0.96), 0.04, 0.08, (0.22, 0.22, 0.24, 1.0), segments=8)
     make_cyl("TaskLamp_Arm", (bx+0.22, 7.45, 1.25), 0.015, 0.55, (0.22, 0.22, 0.24, 1.0))
     make_cyl("TaskLamp_Head", (bx+0.13, 7.35, 1.50), 0.08, 0.12, (0.96, 0.90, 0.72, 1.0), segments=10)   # on its arm (2026-09-23: 7.5 cm off it)
-    # Cale's chair at the bench + THE second chair (he stayed in
-    # the chair while she stood at the stick box).
-    for ci, (cx, cy, ang_tag) in enumerate([(bx-0.85, 6.4, "Bench"), (0.6, 6.6, "Second")]):
-        make_box(f"Chair_{ang_tag}_Seat", (cx, cy, 0.45), (0.44, 0.44, 0.05), COL_CEDAR)
-        make_box(f"Chair_{ang_tag}_Back", (cx+(0.20 if ci == 0 else -0.20), cy, 0.75),
-                 (0.05, 0.44, 0.55), COL_CEDAR)
-        for li2, (lxo, lyo) in enumerate([(-0.18, -0.18), (0.18, -0.18), (-0.18, 0.18), (0.18, 0.18)]):
-            make_box(f"Chair_{ang_tag}_Leg_{li2}", (cx+lxo, cy+lyo, 0.22), (0.05, 0.05, 0.44), COL_CEDAR_DK)
+    # THE TWO CHAIRS, as the conversation leaves them (pass 337): hers, "a
+    # folding metal one Cale had probably grabbed out of the closet", its
+    # back to the bench; his, "a second chair over from the corner", facing
+    # her. (They were two box stools, one at the bench, one mid-floor.)
+    fx, fy = 1.85, 6.15
+    steel = (0.64, 0.62, 0.56, 1.0); pad = (0.30, 0.30, 0.33, 1.0)
+    make_box("Folding_Chair_Seat", (fx, fy, 0.45), (0.38, 0.40, 0.025), pad)
+    make_box("Folding_Chair_Back", (fx + 0.20, fy, 0.80), (0.02, 0.40, 0.20), pad)
+    for sg in (-1, 1):
+        make_box(f"Folding_Chair_Upright_{sg:+d}", (fx + 0.20, fy + sg * 0.19, 0.45), (0.022, 0.022, 0.90), steel)
+        make_box(f"Folding_Chair_Front_Foot_{sg:+d}", (fx - 0.17, fy + sg * 0.19, 0.225), (0.022, 0.022, 0.45), steel)
+        make_box(f"Folding_Chair_Rail_{sg:+d}", (fx + 0.015, fy + sg * 0.19, 0.43), (0.39, 0.022, 0.022), steel)
+    make_box("Folding_Chair_Brace", (fx - 0.17, fy, 0.16), (0.018, 0.38, 0.018), steel)
+    make_chair("Cale_Chair", 0.60, 6.30, yaw=-math.pi / 2.0, wood=COL_CEDAR_DK, seat_col=COL_CEDAR, w=0.44)
 
 
 def build_ceiling_infra():
     # Domestic warm dome fixtures — no fluorescents in Cale's shop.
-    for di, (dx, dy) in enumerate([(0.0, 2.2), (0.0, 6.2)]):
+    for di, (dx, dy) in enumerate([(0.0, 2.2), (0.0, 6.2), (-0.5, 9.0)]):
         make_cyl(f"Dome_{di}_Base", (dx, dy, CEIL-0.02), 0.16, 0.03, COL_STEEL, segments=12)
         make_cyl(f"Dome_{di}_Glass", (dx, dy, CEIL-0.10), 0.13, 0.13, (0.96, 0.90, 0.76, 1.0), segments=12)
     make_smoke_detector("Smoke", (-1.5, ROOM_D/2.0, CEIL))
@@ -332,7 +400,7 @@ def build_detail_pass_2026_08():
     make_cord_run("Cord_Register_C", (-1.52, 3.85, 0.03), (-3.38, 3.00, 0.03), sag=0.0)
     make_cord_run("Cord_Register_D", (-3.38, 3.00, 0.03), (-3.39, 3.00, 0.30), sag=0.0)
     make_cord_run("Cord_TaskLamp", (3.0, 7.5, 0.95), (3.39, 6.9, 0.30))
-    make_cord_run("Cord_Transformer", (3.05, 7.3, 0.92), (3.39, 6.9, 0.30))
+    make_cord_run("Cord_Transformer", (3.30, 7.2, 1.48), (3.39, 6.9, 0.30))
 
 
 def build_use_states_2026_08():
