@@ -186,7 +186,11 @@ posters, screens with no picture: `empty_frame_audit`).
 - **new_orleans_office — draft 5 (pass 343, 2026-11-11).** The key light was a green "banker's lamp" sun and
   the glass was tinted: the street and the warehouse read olive. Sun and glass fixed; inserts for the
   warehouse, the beam and the AC; the window insert looks down at the man by the streetlight.
-- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office ✔ → new_auburn_courtroom →
+- **new_auburn_courtroom — draft 3 (pass 344, 2026-11-11).** Miriam's Subaru rebuilt as a wagon (it read as a
+  box truck), facing the right way for the passenger door; a block across the street; the bench and the side
+  door lit and shot; the defense table insert; the chapter's close moved into the Miller kitchen.
+- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office ✔ →
+  new_auburn_courtroom ✔ →
   hospital_room → centro_stockroom.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the

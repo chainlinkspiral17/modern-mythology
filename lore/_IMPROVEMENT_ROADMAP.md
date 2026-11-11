@@ -3835,6 +3835,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 344: the New Auburn courtroom — the car was a frame of slabs; the doors and the bench were black.**
+- Fourth of the third six (vol 6 ch8, 165 lines). READ by render on
+  eighteen lines. The room (16 x 22 m, coffered ceiling, two banks of
+  pews, the well, the bench, the jury box) holds. What did not:
+- "a 2009 Subaru wagon, dark green, immaculate" was a hollow frame —
+  pan, two side slabs, a block hood, a roof — that read as a box truck.
+  Rebuilt as a wagon: raked hood and windshield, the long roof with its
+  rails, glass all round, pillars, mirrors, lamps, bumpers, hubs, a dash
+  and wheel, front seats and the rear bench. It faces WEST now, so the
+  open door at the curb is the passenger's (Miriam "at the wheel"), and
+  the quilt's outline lies on that seat. The curb insert is a front
+  three-quarter from the sidewalk; the quilt insert looks in through the
+  open door.
+- A downtown block across the street (five brick storefronts, awnings,
+  shop glass, upper windows): the curb shot ended in grey.
+- "She takes the bench" was a black slab: a can over the bench
+  (`Bench_Can_Practical`) and the insert raised to the seal and flags.
+- "escorted out the side door" looked at the BACK doors in shadow: the
+  door insert is on the side door now, under a new exit sign with its
+  practical. "He sits at the defense table" looked at the prosecution
+  chairs' backs: the table insert is on the defense table.
+- The globes brighter and wider (1.0 / 6.5 → 1.8 / 8.5): the gallery sat
+  dark under a lit ceiling.
+- Staging: ch8's close ("But the house, when they walk through the door,
+  will smell of the cooking ... Pot roast") played in the courtroom. A
+  `bg 3d:miller_kitchen` before "The house, for the first time in nine
+  years" (vn_insert_node; no gotos or beats moved) and "set the third
+  plate" → insert table.
+- **Draft N+1 targets.** The twelve and the press row as figures; the
+  hallway past the back doors; sun bars through the blinds on the pews;
+  the 15:04 dusk variant; the pews and wainscot still read olive in the
+  arcana_cool lines.
+
 **2026-11-11 · pass 343: the New Orleans office — the world past the glass was green.**
 - Third of the third six (198 lines, vol 5 ch5 / ch7 / ch20). READ by
   render on eighteen lines. Draft 4's canon-scale room (twelve by ten, the

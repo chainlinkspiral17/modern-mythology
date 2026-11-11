@@ -294,6 +294,11 @@
   "prims": 139636,
   "objects": 384
  },
+ "new_auburn_courtroom": {
+  "draw": 186,
+  "prims": 28756,
+  "objects": 356
+ },
  "new_auburn_road": {
   "draw": 846,
   "prims": 208080,

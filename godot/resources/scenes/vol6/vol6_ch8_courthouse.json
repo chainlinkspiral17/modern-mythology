@@ -1022,6 +1022,10 @@
       "voice": "assets/audio/voice/vol6_ch8_courthouse/184.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
+    },
+    {
       "t": "narrate",
       "text": "The house, for the first time in nine years, will be — formally, on paper — a house her father does not, today, live in.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/185.mp3"
@@ -1038,7 +1042,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's mother will, without comment, set the third plate.",
+      "text": "[shot:insert table]Sam's mother will, without comment, set the third plate.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/188.mp3"
     },
     {

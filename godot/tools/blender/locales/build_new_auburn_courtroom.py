@@ -30,6 +30,16 @@ x -8..8. glTF export -> Godot (x, z, -y).
 
 Draft 2 targets: the twelve and Sam's group as figures; the hallway
 outside the doors; a dusk variant for the 15:04 exit.
+
+PASS 344 (2026-11-11, read by render): the gallery sat dark under a lit
+ceiling (globes brighter, wider); the bench and side-door inserts were black
+(a can over the bench, an exit sign over the side door, the door insert on
+the SIDE door the text uses); Miriam's Subaru was a hollow frame of slabs
+that read as a box truck — a wagon now, facing west so the open door at the
+curb is the passenger's; a downtown block across the street.
+NEXT-PASS TARGETS: the twelve in the gallery and the press row (figures);
+the hallway past the back doors; the windows' blinds casting bars on the
+pews (a sun spot per window); the dusk variant for the 15:04 exit.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -91,6 +101,11 @@ def build_shell():
     make_box("Side_Door", (FE - 0.02, 12.7, 1.10), (0.05, 0.96, 2.18), DARK2)
     make_cyl("Side_Door_Knob", (FE - 0.07, 12.35, 1.00), 0.03, 0.05, BRASS, axis='X', segments=8)
     make_wall_clock("Clock", (0.0, FS, 4.6), frozen_hour=1, frozen_min=54, facing='+Y')
+    # (pass 344) the exit sign over the side door, and the can over the bench: the
+    # door and bench inserts rendered black ("escorted out the side door" / "She takes the bench")
+    make_box("Side_Door_Exit_Sign", (FE - 0.06, 12.7, 2.48), (0.06, 0.42, 0.16), (0.86, 0.22, 0.16, 1.0))
+    make_cyl("Bench_Can", (0.0, FN - 1.9, H - 0.06), 0.16, 0.10, (0.86, 0.84, 0.78, 1.0), segments=12)
+    make_cyl("Bench_Can_Lens", (0.0, FN - 1.9, H - 0.115), 0.12, 0.01, (0.98, 0.94, 0.84, 1.0), segments=12)
     # pendant fixtures down the room
     for i, y in enumerate((4.0, 9.0, 14.0, 19.0)):
         for j, x in enumerate((-4.0, 4.0)):
@@ -190,11 +205,16 @@ def build_outside():
 def build_curb():
     """Outside the back doors: the courthouse steps down to the curb, and
     at the curb Miriam's car — "a 2009 Subaru wagon, dark green,
-    immaculate", its passenger door open toward the steps, and on the
-    seat "a single faint outline of a quilt" (Sam: "Twilight-colored").
-    Hollow-bodied (pan, sides, hood, tailgate, roof) so the seat reads
-    through the open door — after courthouse_chamber's 2026-09 build."""
+    immaculate, with a silver-haired woman at the wheel" — its front
+    passenger door open toward the steps, and on that seat "a single faint
+    outline of a quilt". (Pass 344: rebuilt as a wagon — raked hood and
+    windshield, the long roof with its rails, glass all round, bumpers and
+    lamps; it was a hollow frame of slabs that read as a box truck. It
+    faces WEST now, so the open door at the curb is the passenger's.)
+    Hollow-bodied so the seat reads through the open door."""
     green = (0.16, 0.30, 0.20, 1.0); green_dk = (0.12, 0.24, 0.16, 1.0)
+    glass = (0.26, 0.30, 0.36, 1.0); chrome = (0.74, 0.76, 0.78, 1.0); rubber = (0.10, 0.10, 0.11, 1.0)
+    trim = (0.08, 0.10, 0.09, 1.0); seat = (0.34, 0.32, 0.30, 1.0)
     make_box("Steps_Landing", (0.0, -1.2, -0.10), (6.0, 2.4, 0.20), (0.70, 0.68, 0.62, 1.0))
     for k in range(4):
         make_box(f"Steps_{k}", (0.0, -2.6 - k * 0.36, -0.30 - k * 0.18), (6.0, 0.36, 0.18), (0.70, 0.68, 0.62, 1.0))
@@ -203,22 +223,82 @@ def build_curb():
     make_box("Curb_Kerb", (0.0, -6.9, gz + 0.06), (24.0, 0.20, 0.14), (0.66, 0.64, 0.60, 1.0))
     make_box("Curb_Street", (0.0, -10.5, gz - 0.02), (40.0, 7.0, 0.06), (0.30, 0.30, 0.32, 1.0))
     cy, z0 = -8.6, gz + 0.01
-    make_box("Green_Subaru_Pan", (0.0, cy, z0 + 0.40), (4.60, 1.80, 0.10), green_dk)
-    make_box("Green_Subaru_Side_S", (0.0, cy - 0.87, z0 + 0.72), (4.60, 0.06, 0.55), green)
-    make_box("Green_Subaru_Side_N_Rear", (-1.2, cy + 0.87, z0 + 0.72), (2.20, 0.06, 0.55), green)
-    make_box("Green_Subaru_Hood", (1.75, cy, z0 + 0.75), (1.10, 1.70, 0.60), green)
-    make_box("Green_Subaru_Tailgate", (-2.05, cy, z0 + 0.85), (0.50, 1.70, 0.80), green)
-    make_box("Green_Subaru_Roof", (-0.4, cy, z0 + 1.43), (3.20, 1.80, 0.06), green)
-    for i, x in enumerate((1.15, -1.95)):
-        for s in (-1, 1):
-            make_box(f"Green_Subaru_Pillar_{i}_{s:+d}", (x, cy + s * 0.85, z0 + 1.15), (0.06, 0.06, 0.50), green_dk)
-    make_box("Green_Subaru_Windshield", (1.15, cy, z0 + 1.22), (0.04, 1.60, 0.36), (0.60, 0.70, 0.76, 0.35))
-    make_box("Green_Subaru_Door_Open", (0.85, cy + 1.35, z0 + 0.72), (0.06, 0.90, 0.55), green)
-    for wi, (wx, wy) in enumerate(((-1.5, cy - 0.995), (1.5, cy - 0.995), (-1.5, cy + 0.995), (1.5, cy + 0.995))):
-        make_cyl(f"Green_Subaru_Wheel_{wi}", (wx, wy, z0 + 0.32), 0.32, 0.25, (0.12, 0.12, 0.13, 1.0), axis='Y', segments=10)
-    make_box("Subaru_Seat", (0.35, cy + 0.42, z0 + 0.675), (0.50, 0.50, 0.45), (0.34, 0.32, 0.30, 1.0))
-    make_box("Subaru_Seat_Back", (0.05, cy + 0.42, z0 + 1.10), (0.10, 0.50, 0.40), (0.34, 0.32, 0.30, 1.0))
-    make_box("Quilt_Outline", (0.38, cy + 0.42, z0 + 0.9015), (0.30, 0.30, 0.003), (0.46, 0.44, 0.48, 1.0))
+    N, T = -2.30, 2.30                 # nose (west) and tail (east)
+    yN, yS = cy + 0.85, cy - 0.85      # the flanks: N at the curb (passenger), S the street (driver)
+    # the floor pan, the nose, the hood, the windshield, the roof and its rails, the tailgate
+    make_box("Green_Subaru_Pan", (0.0, cy, z0 + 0.36), (4.40, 1.66, 0.12), green_dk)
+    make_box("Green_Subaru_Nose", (N + 0.03, cy, z0 + 0.64), (0.06, 1.70, 0.44), green)
+    def raked(nm, a, b, width, col, th=0.04):
+        (ua, za), (ub, zb) = a, b
+        slope = (zb - za) / (ub - ua)
+        make_rot_box(nm, ((ua + ub) / 2.0, cy, z0 + (za + zb) / 2.0), (math.hypot(ub - ua, zb - za), width, th), col,
+                     pitch=-math.atan(slope))
+    raked("Green_Subaru_Hood", (N + 0.02, 0.86), (-1.20, 0.98), 1.70, green)
+    raked("Green_Subaru_Windshield", (-1.20, 1.00), (-0.55, 1.44), 1.56, glass, th=0.02)
+    make_box("Green_Subaru_Roof", (0.80, cy, z0 + 1.475), (2.70, 1.66, 0.05), green)
+    for s in (-1, 1):
+        make_box(f"Green_Subaru_Roof_Rail_{s:+d}", (0.80, cy + s * 0.70, z0 + 1.55), (2.40, 0.04, 0.03), trim)
+        for fx in (-0.30, 1.90):
+            make_box(f"Green_Subaru_Roof_Rail_Foot_{s:+d}_{fx:+.1f}", (fx, cy + s * 0.70, z0 + 1.515), (0.08, 0.05, 0.05), trim)
+    raked("Green_Subaru_Rear_Glass", (2.15, 1.44), (2.27, 1.04), 1.50, glass, th=0.02)
+    make_box("Green_Subaru_Tailgate", (T - 0.03, cy, z0 + 0.71), (0.06, 1.70, 0.58), green)
+    # the flanks: the street side whole; the curb side's front door open
+    make_box("Green_Subaru_Side_S", (0.0, yS, z0 + 0.70), (4.50, 0.04, 0.56), green)
+    make_box("Green_Subaru_Side_N_Fender", ((N + -1.25) / 2.0, yN, z0 + 0.70), (-1.25 - N, 0.04, 0.56), green)
+    make_box("Green_Subaru_Side_N_Rear", ((-0.15 + T) / 2.0, yN, z0 + 0.70), (T + 0.15, 0.04, 0.56), green)
+    make_box("Green_Subaru_Side_Glass_S", (0.80, yS, z0 + 1.20), (2.60, 0.02, 0.40), glass)
+    make_box("Green_Subaru_Side_Glass_N", (1.00, yN, z0 + 1.20), (2.20, 0.02, 0.40), glass)
+    for s, yy in ((-1, yS), (1, yN)):
+        for px in (-0.15, 1.00, 2.12):
+            make_box(f"Green_Subaru_Pillar_{s:+d}_{px:+.2f}", (px, yy + s * 0.012, z0 + 1.20), (0.07, 0.012, 0.44), trim)
+        make_box(f"Green_Subaru_Rocker_{s:+d}", (0.0, yy + s * 0.012, z0 + 0.45), (3.40, 0.012, 0.07), trim)
+        # on the flank (the curb side's on the fender, ahead of the open door)
+        make_box(f"Green_Subaru_Mirror_{s:+d}", (-1.05 if s < 0 else -1.31, yy + s * 0.08, z0 + 1.02), (0.10, 0.14, 0.12), green)
+    make_box("Green_Subaru_Door_Handle_S", (-0.70, yS - 0.012, z0 + 0.90), (0.14, 0.012, 0.03), chrome)
+    # the open passenger door, hinged at its front edge, swung out toward the steps
+    a = math.radians(62.0)
+    hx, hy = -1.25, yN
+    dcx, dcy = hx + 0.53 * math.cos(a), hy + 0.53 * math.sin(a)
+    make_rot_box("Green_Subaru_Door_Open", (dcx, dcy, z0 + 0.70), (1.06, 0.05, 0.56), green, yaw=a)
+    make_rot_box("Green_Subaru_Door_Open_Glass", (dcx, dcy, z0 + 1.17), (0.92, 0.02, 0.40), glass, yaw=a)   # standing on the leaf (0.98)
+    # lamps, grille, plates, bumpers
+    for s in (-1, 1):
+        make_box(f"Green_Subaru_Headlight_{s:+d}", (N - 0.006, cy + s * 0.55, z0 + 0.74), (0.012, 0.34, 0.14), (0.90, 0.90, 0.82, 1.0))
+        make_box(f"Green_Subaru_Taillight_{s:+d}", (T + 0.006, cy + s * 0.66, z0 + 0.86), (0.012, 0.22, 0.24), (0.78, 0.14, 0.10, 1.0))
+    for gi in range(3):
+        make_box(f"Green_Subaru_Grille_{gi}", (N - 0.004, cy, z0 + 0.62 + gi * 0.06), (0.008, 0.70, 0.025), rubber)
+    make_box("Green_Subaru_Plate_R", (T + 0.008, cy, z0 + 0.60), (0.008, 0.30, 0.15), (0.90, 0.88, 0.82, 1.0))
+    make_chamfer_box("Green_Subaru_Bumper_F", (N - 0.06, cy, z0 + 0.46), (0.12, 1.72, 0.16), rubber, chamfer=0.03)
+    make_chamfer_box("Green_Subaru_Bumper_R", (T + 0.06, cy, z0 + 0.46), (0.12, 1.72, 0.16), rubber, chamfer=0.03)
+    for wi, (wx, wy) in enumerate(((-1.45, yS - 0.02), (1.45, yS - 0.02), (-1.45, yN + 0.02), (1.45, yN + 0.02))):
+        make_cyl(f"Green_Subaru_Wheel_{wi}", (wx, wy, z0 + 0.32), 0.32, 0.22, rubber, axis='Y', segments=14)
+        make_cyl(f"Green_Subaru_Wheel_{wi}_Hub", (wx, wy + (0.115 if wy > cy else -0.115), z0 + 0.32), 0.17, 0.01, chrome, axis='Y', segments=12)
+    # inside: the dash, the wheel, the seats (the passenger's with the quilt's outline), the rear bench
+    make_box("Green_Subaru_Dash", (-1.10, cy, z0 + 0.86), (0.36, 1.56, 0.22), trim)
+    make_cyl("Green_Subaru_Steering_Wheel", (-0.88, cy - 0.40, z0 + 1.00), 0.18, 0.03, trim, axis='X', segments=14)
+    for nm, sy in (("Subaru_Seat", cy + 0.40), ("Subaru_Seat_Driver", cy - 0.40)):
+        make_box(nm, (-0.62, sy, z0 + 0.63), (0.50, 0.50, 0.14), seat)
+        make_rot_box(f"{nm}_Back", (-0.33, sy, z0 + 0.98), (0.10, 0.50, 0.58), seat, pitch=0.18)
+    make_box("Subaru_Rear_Bench", (0.55, cy, z0 + 0.63), (0.50, 1.50, 0.14), seat)
+    make_rot_box("Subaru_Rear_Bench_Back", (0.84, cy, z0 + 0.98), (0.10, 1.50, 0.58), seat, pitch=0.18)
+    make_box("Quilt_Outline", (-0.62, cy + 0.40, z0 + 0.7015), (0.32, 0.32, 0.003), (0.46, 0.44, 0.48, 1.0))
+    # across the street: downtown New Auburn's block — brick storefronts, their awnings and glass
+    make_box("Curb_Sidewalk_Far", (0.0, -14.9, gz + 0.06), (40.0, 2.6, 0.12), (0.62, 0.60, 0.56, 1.0))
+    make_box("Curb_Ground_Far", (0.0, -32.0, gz - 0.06), (80.0, 30.0, 0.10), (0.46, 0.50, 0.34, 1.0))
+    fronts = ((-13.5, 7.5, 6.8, (0.58, 0.34, 0.26, 1.0)), (-6.0, 7.5, 8.4, (0.70, 0.62, 0.50, 1.0)),
+              (1.5, 7.5, 7.2, (0.52, 0.30, 0.24, 1.0)), (9.0, 7.5, 6.2, (0.66, 0.56, 0.44, 1.0)),
+              (16.5, 7.5, 7.6, (0.56, 0.40, 0.30, 1.0)))
+    for fi, (fx, fw, fh, col) in enumerate(fronts):
+        yy = -16.6
+        make_box(f"Out_Front_{fi}", (fx, yy - 2.0, gz + fh / 2.0), (fw, 4.0, fh), col)
+        make_box(f"Out_Front_{fi}_Shop_Glass", (fx, yy + 0.01, gz + 1.45), (fw - 1.6, 0.02, 2.1), glass)
+        make_box(f"Out_Front_{fi}_Door", (fx + fw / 2.0 - 1.1, yy + 0.015, gz + 1.15), (0.95, 0.02, 2.2), trim)
+        make_rot_box(f"Out_Front_{fi}_Awning", (fx, yy + 0.55, gz + 2.95), (fw - 0.8, 1.1, 0.05),
+                     ((0.22, 0.34, 0.30, 1.0), (0.56, 0.20, 0.18, 1.0))[fi % 2], roll=0.25)
+        for wi in range(4):
+            make_box(f"Out_Front_{fi}_Window_{wi}", (fx - fw / 2.0 + 1.1 + wi * (fw - 2.2) / 3.0, yy + 0.01, gz + fh - 1.9),
+                     (0.9, 0.02, 1.4), glass)
+        make_box(f"Out_Front_{fi}_Cornice", (fx, yy + 0.08, gz + fh - 0.2), (fw, 0.16, 0.3), (0.80, 0.76, 0.66, 1.0))
 
 
 def main():
