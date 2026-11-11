@@ -15,7 +15,17 @@ that replaced it) and the dock door in the break room's own wall. Now
 DOUG'S CHAIR against the back (N) wall, lockers and the time clock, the
 doorway standing open on the corridor with the dock door at its far
 end, the radio keyed to the microwave.
-Draft 4 targets: the crew's things on the lockers (names on tape); the
+DRAFT 4 (pass 341, 2026-11-11) — read by render: the room holds; the
+lines' shots did not. ch10's tour of the room ("There is a microwave ...
+There is a refrigerator with a sign that says LABEL YOUR FOOD OR IT GETS
+THROWN OUT ... There is a bulletin board with a printed schedule")
+played on the dock door, held from the line before; "Doug, on his chair
+against the wall" on the book on the floor; "He sits at the table across
+from Doug" through a wall of chair backs from knee height. The fridge's
+SIGN is built (it was a 16 cm note), and the shots are the scene's:
+insert fridge / board / microwave / thermos (Doug's chair and the
+thermos at its feet), insert table from above the table.
+Draft 5 targets: the crew's things on the lockers (names on tape); the
 corridor's dock door lit by the dock's sodium lamp through its wire
 glass; Deck framing.
 """
@@ -140,6 +150,14 @@ def build_fridge():
     make_box("Fridge_Kick", (fx, fy, 0.05), (0.68, 0.52, 0.10), (0.30, 0.30, 0.30, 1.0))
     # Magnets / a note on the door
     make_box("Fridge_Note", (fx+0.3925, fy-0.10, 1.45), (0.005, 0.16, 0.20), P.PAPER)
+    # (draft 4) THE SIGN: "LABEL YOUR FOOD OR IT GETS THROWN OUT in a hand
+    # that is, by Marisol's later confirmation, Jessa's" — a sheet of copy
+    # paper taped at eye height, the words in marker
+    make_box("Fridge_Sign", (fx+0.3925, fy+0.08, 1.62), (0.005, 0.22, 0.28), (0.96, 0.96, 0.92, 1.0))
+    for li, (ln, lz) in enumerate(((0.17, 1.71), (0.18, 1.665), (0.15, 1.62), (0.17, 1.575))):
+        make_box(f"Fridge_Sign_Marker_{li}", (fx+0.3955, fy+0.08, lz), (0.001, ln, 0.022), (0.08, 0.08, 0.10, 1.0) if li < 3 else (0.70, 0.10, 0.10, 1.0))
+    for ti, tz_ in enumerate((1.755, 1.485)):
+        make_box(f"Fridge_Sign_Tape_{ti}", (fx+0.3965, fy+0.08, tz_), (0.001, 0.08, 0.025), (0.86, 0.84, 0.72, 1.0))
 
 def build_board():
     # on the wall face (2026-09-23: board and notices inside the N wall)

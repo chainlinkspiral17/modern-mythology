@@ -506,12 +506,12 @@
     },
     {
       "t": "narrate",
-      "text": "There is a microwave that has been at Centro since 2009. There is a refrigerator with a sign that says LABEL YOUR FOOD OR IT GETS THROWN OUT in a hand that is, by Marisol's later confirmation, Jessa's.",
+      "text": "[shot:insert fridge]There is a microwave that has been at Centro since 2009. There is a refrigerator with a sign that says LABEL YOUR FOOD OR IT GETS THROWN OUT in a hand that is, by Marisol's later confirmation, Jessa's.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/095.ogg"
     },
     {
       "t": "narrate",
-      "text": "There is a bulletin board with a printed schedule and a printed inventory countdown — INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS — and a printed safety reminder from the corporate office about not propping the cooler doors with milk crates.",
+      "text": "[shot:insert board]There is a bulletin board with a printed schedule and a printed inventory countdown — INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS — and a printed safety reminder from the corporate office about not propping the cooler doors with milk crates.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/096.ogg"
     },
     {
@@ -539,7 +539,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marisol is at the microwave heating up a tupperware of something her sister-in-law sent down on Sunday. Doug is at the chair against the wall with the Karamazov open on his lap.",
+      "text": "[shot:insert microwave]Marisol is at the microwave heating up a tupperware of something her sister-in-law sent down on Sunday. Doug is at the chair against the wall with the Karamazov open on his lap.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/101.ogg"
     },
     {
@@ -744,7 +744,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert paperback]Doug, on his chair against the wall, turns a page of the Karamazov.",
+      "text": "[shot:insert thermos]Doug, on his chair against the wall, turns a page of the Karamazov.",
       "voice": "assets/audio/voice/vol6_ch10_night_shift/135.mp3"
     },
     {

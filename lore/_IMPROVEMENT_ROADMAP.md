@@ -3835,6 +3835,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 341: the Centro break room — the room holds; the shots were held over from the line before.**
+- First of the third six (234 lines). READ by render on eighteen lines:
+  draft 3's room (the crew table, Doug's chair against the back wall, the
+  kitchenette, lockers, the corridor to the dock) is right. The shots:
+- ch10's tour of the room — "There is a microwave ... There is a
+  refrigerator with a sign that says LABEL YOUR FOOD OR IT GETS THROWN
+  OUT ... There is a bulletin board with a printed schedule" — played on
+  the DOCK DOOR, held from the line before. New `insert fridge` /
+  `insert board` / `insert microwave` (with the radio above it) and the
+  three lines directed. The fridge SIGN is built (it was a 16 cm note):
+  taped copy paper, the words in marker, the last line red.
+- "Doug, on his chair against the wall" and "Doug is in his standard
+  break-room position — the chair against the back wall, thermos at his
+  feet" showed the book lying on the floor (right for ch22, where "he sets
+  it on the floor beside his chair", not here). New `insert thermos`: his
+  chair and the thermos at its feet; two lines directed.
+- "He sits at the table across from Doug" was a wall of chair backs from
+  knee height: `insert table` is above the table now.
+- 432 → 439 parts.
+- **Draft 5 targets.** The crew's names on tape on the lockers; the dock
+  door lit by the dock's sodium lamp through its wire glass; the bulletin
+  board's notices (a roster slot exists: `centro_break_room_bulletinboard`).
+
 **2026-11-11 · pass 340: the Houston office — Houston was not out the window.**
 - Last of the six (242 lines: Wheel, Justice, Judgement). READ by render:
   the room holds (draft 4's corner office). What the lines look at did not.

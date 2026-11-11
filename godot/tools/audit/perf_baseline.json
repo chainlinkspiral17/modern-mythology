@@ -69,6 +69,11 @@
   "prims": 66468,
   "objects": 300
  },
+ "centro_break_room": {
+  "draw": 64,
+  "prims": 25176,
+  "objects": 234
+ },
  "centro_grocery_aisle": {
   "draw": 214
  },

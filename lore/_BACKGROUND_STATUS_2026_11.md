@@ -178,6 +178,10 @@ posters, screens with no picture: `empty_frame_audit`).
 - **houston_office — draft 5 (pass 340, 2026-11-11).** The city past the glass built out (it was a grey horizon
   over a plane), the window shot looking down at the freeway (it faced the files), content on both monitors, the
   mother's photograph squared and given a roster slot. 577 → 1,007 parts. The second six are through a pass.
+- **centro_break_room — draft 4 (pass 341, 2026-11-11).** Shots for the fridge (its sign built), the bulletin
+  board, the microwave and Doug's chair with the thermos; the table shot above the table; five lines directed.
+- Third six (by lines over parts): centro_break_room ✔ → foxhole_bar → new_orleans_office → new_auburn_courtroom →
+  hospital_room → centro_stockroom.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
   all six through a pass: 332, 336 - 340).
