@@ -1369,8 +1369,13 @@ const CAMERA_PRESETS := {
 		# planter, house wall to the N. Camera in the NE corner (by the
 		# house wall) looking SW across the rockers toward the railing: the
 		# porch furniture in the fore, the open railing beyond.
-		"camera_origin": Vector3(2.3, 1.62, -3.4),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
+		# (pass 339, 2026-11-11) from the WEST end, so her mother's wicker
+		# chair "against the back wall" and the small table beside it are in
+		# the frame (left), the house door behind them, the crepe myrtle in
+		# the yard's corner through the east screen. (It stood beside her
+		# chair looking out at the yard: the chair was never in the view.)
+		"camera_origin": Vector3(-2.5, 1.55, -2.2),
+		"camera_rotation": Vector3(-0.123, -1.821, 0.0),
 		"fov": 62.0,
 		"env": {"sky_top": Color(0.42, 0.60, 0.86, 1), "sky_horizon": Color(0.88, 0.88, 0.82, 1),
 			"ground_horizon": Color(0.58, 0.56, 0.48, 1), "ground_bottom": Color(0.30, 0.30, 0.26, 1),

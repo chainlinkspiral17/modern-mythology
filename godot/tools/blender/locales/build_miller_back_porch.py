@@ -21,6 +21,29 @@ edges; the yard as a heightfield with the brown patches following it;
 the crepe myrtle's trunks as tapered lathes; the neighbor's house past
 the east fence; Deck: the sheet's establish at dusk and `insert bowls`.
 
+DRAFT 4 (pass 339, 2026-11-11) — read by render on eighteen real lines.
+  - THE CREPE MYRTLE filled every frame it was in (seven lines): one pink
+    blob 2 m tall standing 2.4 m off the screen. "The crepe myrtle in the
+    corner is in late bloom": it stands in the yard's corner now, 9 m out,
+    a multi-trunk tree — five smooth pale trunks splaying from the base, a
+    green crown, the pink panicles on the crown's top and edges.
+  - THE SMALL TABLE BESIDE HER: "the wicker chair with the second pot of
+    coffee on the small table beside her and the cordless on the table
+    too" (ch22). The table stood by the rocker 1.5 m from her chair; it is
+    at the wicker's arm now, with the pot.
+  - THE SCREENS did not read at all (a 30 % alpha sheet): a frame of
+    battens and a top rail on the knee walls, the mesh between.
+  - The morning view looked from beside her chair out at the yard, so the
+    chair "against the back wall" was never in it: it stands at the west
+    end now, the wicker and the house door on the left, the myrtle through
+    the east screen. "insert porch" (the porch from the yard) has its part
+    to aim at (the steps are Porch_Step_*).
+Draft 5 targets: the yard is still a flat plane with brown boxes; the
+fence wires; sprinklers ("Friday is a sprinkler day"); Don Geller's house
+over the fence (the porch light Bianca watches is HIS, `insert
+porch_light` points at the porch lamp); the night view (ch22 Sunday) as
+its own pass.
+
 Coordinate frame: Blender Z-up, y=0 yard side (railing/steps), +Y
 toward the house wall at y=4.0, x=±3.0, ceiling 2.8. glTF export
 remaps to Godot (x, z, -y).
@@ -62,6 +85,19 @@ def build_shell():
         make_box(nm, (cx, 0.0, 0.50), (w, 0.16, 1.00), PAL_WALL["wall"])
         make_box(nm+"_Screen", (cx, 0.0, 1.80), (w, 0.01, 1.60), COL_SCREEN)
     make_box("Screen_AboveDoor", (0.0, 0.0, CEIL-0.15), (2.0, 0.01, 0.30), COL_SCREEN)
+    # (draft 4) the screen FRAME: a batten every metre and a top rail on the
+    # knee walls — at 30 % alpha the mesh alone never read as a screen
+    sf = (0.86, 0.84, 0.78, 1.0)
+    for nm, x in (("W", -ROOM_W/2.0), ("E", ROOM_W/2.0)):
+        make_box(f"Screen_Frame_{nm}_Rail", (x, ROOM_D/2.0, 2.62), (0.07, ROOM_D - 0.16, 0.06), sf)
+        make_box(f"Screen_Frame_{nm}_Sill", (x, ROOM_D/2.0, 1.025), (0.20, ROOM_D - 0.16, 0.05), sf)
+        for bi in range(1, 4):
+            make_box(f"Screen_Frame_{nm}_Batten_{bi}", (x, bi * ROOM_D / 4.0, 1.82), (0.05, 0.05, 1.56), sf)
+    for nm, x0, x1 in (("SW", -ROOM_W/2.0 + 0.08, -0.52), ("SE", 0.52, ROOM_W/2.0 - 0.08)):
+        make_box(f"Screen_Frame_{nm}_Rail", ((x0 + x1) / 2.0, 0.0, 2.62), (x1 - x0, 0.07, 0.06), sf)
+        make_box(f"Screen_Frame_{nm}_Sill", ((x0 + x1) / 2.0, 0.0, 1.025), (x1 - x0, 0.20, 0.05), sf)
+        for bi in range(1, 3):
+            make_box(f"Screen_Frame_{nm}_Batten_{bi}", (x0 + (x1 - x0) * bi / 3.0, 0.0, 1.82), (0.05, 0.05, 1.56), sf)
     for px, py in ((-ROOM_W/2.0, 0.0), (ROOM_W/2.0, 0.0),
                    (-ROOM_W/2.0, ROOM_D), (ROOM_W/2.0, ROOM_D)):
         make_box(f"Post_{px:.0f}_{py:.0f}", (px, py, CEIL/2.0), (0.16, 0.16, CEIL), COL_WOOD)
@@ -155,26 +191,36 @@ def build_yard():
         make_box(f"Yard_Brown_{i}", (px, py, -0.435), (pw, pd, 0.045), COL_GRASS_DRY)
     # Three treads from the screen door down to grade
     for si in range(3):
-        make_chamfer_box(f"Step_{si}_Tread", (0.0, -0.35 - si*0.32, -0.02 - si*0.15),
+        make_chamfer_box(f"Porch_Step_{si}_Tread", (0.0, -0.35 - si*0.32, -0.02 - si*0.15),
                          (1.3, 0.34, 0.04), COL_WOOD, chamfer=0.008)
-        make_box(f"Step_{si}_Riser", (0.0, -0.19 - si*0.32, -0.095 - si*0.15),
+        make_box(f"Porch_Step_{si}_Riser", (0.0, -0.19 - si*0.32, -0.095 - si*0.15),
                  (1.26, 0.03, 0.15), (0.36, 0.26, 0.16, 1.0))
     # stringers under the treads, both sides, down to grade
     for sgn in (-1, 1):
-        make_rot_box(f"Step_Stringer_{sgn:+d}", (sgn * 0.66, -0.67, -0.30), (0.04, 1.10, 0.18), (0.36, 0.26, 0.16, 1.0), pitch=0.44)
-    # The crepe myrtle, late bloom, in the corner of the back yard
-    mx, my = 2.6, -2.2
-    for ti, (dx, dy) in enumerate(((0.0, 0.0), (0.14, 0.10), (-0.12, 0.08))):
-        make_cyl(f"Myrtle_Trunk_{ti}", (mx+dx, my+dy, 1.0-0.44), 0.05, 2.0,
-                 (0.55, 0.46, 0.40, 1.0), segments=6)
-    for bi, (dx, dy, dz, r) in enumerate(((0.0, 0.0, 2.3, 0.75), (0.45, 0.2, 2.0, 0.55),
-                                          (-0.4, 0.15, 2.1, 0.5), (0.1, -0.3, 2.55, 0.45))):
-        # 2026-08-04: the crepe myrtle's bloom clusters were flat
-        # cylinders. Blobs now — flowering mass, not pink pucks.
-        from _props.geometry import make_blob
-        make_blob(f"Myrtle_Canopy_{bi}", (mx+dx, my+dy, dz-0.40),
-                  r * 1.05, (0.86, 0.52, 0.62, 1.0), noise=0.24,
-                  seed=61 + bi, squash=0.75)
+        make_rot_box(f"Porch_Step_Stringer_{sgn:+d}", (sgn * 0.66, -0.67, -0.30), (0.04, 1.10, 0.18), (0.36, 0.26, 0.16, 1.0), pitch=0.44)
+    # THE CREPE MYRTLE in the yard's corner (draft 4): five smooth pale
+    # trunks splaying from one base, a green crown, the pink panicles on
+    # the crown's top and edges. (It was one 2 m pink blob 2.4 m from the
+    # screen, and filled the frame of every line that named it.)
+    from _props.geometry import make_blob
+    mx, my, gz = 5.4, -6.8, -0.44
+    bark = (0.66, 0.56, 0.50, 1.0)
+    for ti, (ang, lean) in enumerate(((0.3, 0.26), (1.5, 0.30), (2.6, 0.22), (3.8, 0.32), (5.0, 0.24))):
+        tx, ty = mx + math.cos(ang) * 1.05 * lean * 3.0, my + math.sin(ang) * 1.05 * lean * 3.0
+        make_tube(f"Myrtle_Trunk_{ti}", [(mx + math.cos(ang) * 0.06, my + math.sin(ang) * 0.06, gz), ((mx + tx) / 2.0, (my + ty) / 2.0, gz + 1.5), (tx, ty, gz + 3.0)], 0.065 - ti * 0.004, bark, segments=7)
+    leaf = (0.30, 0.42, 0.24, 1.0); bloom = (0.88, 0.48, 0.64, 1.0); bloom_dk = (0.76, 0.38, 0.54, 1.0)
+    for ci, (dx, dy, dz, r) in enumerate(((0.0, 0.0, 3.3, 1.35), (0.9, 0.3, 3.0, 0.95), (-0.9, 0.2, 3.1, 1.0), (0.2, -0.8, 3.0, 0.95), (-0.1, 0.9, 3.2, 0.9))):
+        make_blob(f"Myrtle_Crown_{ci}", (mx + dx, my + dy, gz + dz), r, leaf, noise=0.22, seed=61 + ci, squash=0.72)
+    # the bloom: late, heavy — panicles over most of the crown's top and
+    # its outer edge (the first pass's 16 small ones read as a green tree)
+    for pi_ in range(30):
+        a_ = pi_ * 2.39996
+        rr = 0.35 + 1.25 * ((pi_ * 7) % 10) / 10.0
+        make_blob(f"Myrtle_Crown_Bloom_{pi_}", (mx + math.cos(a_) * rr, my + math.sin(a_) * rr, gz + 3.95 - 0.38 * rr + 0.2 * ((pi_ * 3) % 4) / 4.0),
+                  0.42, bloom if pi_ % 3 else bloom_dk, noise=0.30, seed=120 + pi_, squash=0.80)
+    for fi in range(10):
+        a_ = fi * 1.7
+        make_box(f"Myrtle_Fallen_{fi}", (mx + math.cos(a_) * (1.2 + 0.2 * (fi % 3)), my + math.sin(a_) * (1.2 + 0.2 * (fi % 3)), gz + 0.028), (0.12, 0.10, 0.004), bloom)
     # The neighbor's oak, farther off (the mockingbird's)
     make_cyl("Oak_Trunk", (-6.5, -5.5, 1.6-0.44), 0.22, 3.2, (0.36, 0.28, 0.20, 1.0), segments=8)
     from _props.geometry import make_blob as _mb_oak
@@ -207,16 +253,24 @@ def build_dressing():
     hanging planter (EAST side — the old comment said SW and lied)."""
     cy = ROOM_D/2.0
     COL_TERRA = (0.66, 0.40, 0.26, 1.0); COL_LEAF = (0.36, 0.48, 0.30, 1.0)
-    make_cyl("SideTbl_Top", (0.0, cy, 0.44), 0.28, 0.04, COL_WOOD, segments=16)
-    make_lathe("SideTbl_Col", (0.0, cy, 0.04), [(0.06, 0.0), (0.045, 0.04), (0.035, 0.14), (0.05, 0.22), (0.035, 0.30), (0.05, 0.38)], COL_WOOD, segments=10)
+    # THE SMALL TABLE BESIDE HER (draft 4: "the wicker chair with the second
+    # pot of coffee on the small table beside her and the cordless on the
+    # table too", ch22) — at the wicker's west arm; it stood by the rocker
+    tx0, cy = 0.46, ROOM_D - 0.70
+    make_cyl("SideTbl_Top", (tx0, cy, 0.44), 0.28, 0.04, COL_WOOD, segments=16)
+    make_lathe("SideTbl_Col", (tx0, cy, 0.04), [(0.06, 0.0), (0.045, 0.04), (0.035, 0.14), (0.05, 0.22), (0.035, 0.30), (0.05, 0.38)], COL_WOOD, segments=10)
     # three legs splayed out from the column's foot (draft 3)
     for li in range(3):
         ang = li * (2.0 * math.pi / 3.0)
-        make_rot_box(f"SideTbl_Leg_{li}", (math.cos(ang) * 0.12, cy + math.sin(ang) * 0.12, 0.05),
+        make_rot_box(f"SideTbl_Leg_{li}", (tx0 + math.cos(ang) * 0.12, cy + math.sin(ang) * 0.12, 0.05),
                      (0.24, 0.035, 0.03), COL_WOOD, yaw=ang, pitch=-0.35)
-    make_cyl("Mug_Body", (0.10, cy - 0.05, 0.505), 0.045, 0.09, (0.82, 0.36, 0.24, 1.0), segments=12)
-    make_cyl("Mug_Handle", (0.16, cy - 0.05, 0.535), 0.02, 0.03, (0.82, 0.36, 0.24, 1.0), axis='X', segments=8)
-    make_box("Newspaper", (-0.13, cy + 0.02, 0.475), (0.20, 0.14, 0.02), (0.80, 0.78, 0.72, 1.0))
+    make_cyl("Mug_Body", (tx0 + 0.10, cy - 0.05, 0.505), 0.045, 0.09, (0.82, 0.36, 0.24, 1.0), segments=12)
+    make_cyl("Mug_Handle", (tx0 + 0.16, cy - 0.05, 0.535), 0.02, 0.03, (0.82, 0.36, 0.24, 1.0), axis='X', segments=8)
+    make_box("Newspaper", (tx0 - 0.02, cy - 0.16, 0.475), (0.20, 0.14, 0.02), (0.80, 0.78, 0.72, 1.0))
+    # the second pot: a glass carafe on its trivet
+    make_cyl("Coffee_Pot_Trivet", (tx0 - 0.14, cy + 0.12, 0.464), 0.08, 0.008, (0.30, 0.24, 0.18, 1.0), segments=10)
+    make_lathe("Coffee_Pot", (tx0 - 0.14, cy + 0.12, 0.468), [(0.0, 0.0), (0.07, 0.0), (0.075, 0.05), (0.06, 0.12), (0.035, 0.15), (0.04, 0.17), (0.0, 0.17)], (0.42, 0.26, 0.16, 1.0), segments=12)
+    make_cyl("Coffee_Pot_Lid", (tx0 - 0.14, cy + 0.12, 0.645), 0.042, 0.012, P.METAL_BLACK, segments=10)
     make_box("Doormat", (0.0, 0.55, 0.012), (0.90, 0.55, 0.02), (0.34, 0.26, 0.18, 1.0))
     make_floor_plant("Plant", (ROOM_W/2.0 - 0.55, ROOM_D - 0.6, 0.0),
                      palette={"leaf": COL_LEAF, "pot": COL_TERRA})
@@ -309,7 +363,7 @@ def build_draft3_2026_09():
     for ri, rx in enumerate((-1.72, -1.28)):
         make_box(f"Wear_Arc_{ri}", (rx, cy, 0.006), (0.06, 0.95, 0.004), floor_pale)
     make_cyl("Wear_CupRing_A", (1.20 - 0.34, ROOM_D - 0.65 + 0.12, 0.626), 0.040, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
-    make_cyl("Wear_CupRing_B", (0.10, cy + 0.12, 0.462), 0.045, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_cyl("Wear_CupRing_B", (0.56, ROOM_D - 0.58, 0.462), 0.045, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
     make_scuff_band("Wear_Scuff_Threshold", (0.0, 0.29), 0.80, axis='X', height=0.03, band_z=0.02, tint=(0.26, 0.19, 0.13, 1.0))
     for bi, (bx, by) in enumerate(((2.45, 0.62), (2.30, 0.95), (2.52, 1.20), (2.36, 1.42))):
         make_rot_box(f"Bark_Litter_{bi}", (bx, by, 0.006), (0.05, 0.03, 0.01), (0.28, 0.19, 0.12, 1.0), yaw=0.7 * bi)
@@ -337,9 +391,9 @@ def build_bianca_night_2026_10():
     cordless on the patio table beside her. She is not, this hour, on the line
     with anyone." The cordless handset, face-up on the side table's top by the
     rocker, its antenna stub."""
-    cy = ROOM_D / 2.0
-    make_rot_box("Cordless_Phone", (0.12, cy + 0.06, 0.46 + 0.0125), (0.055, 0.17, 0.025), (0.86, 0.85, 0.80, 1.0), yaw=0.35)
-    make_rot_box("Cordless_Phone_Keys", (0.12, cy + 0.06, 0.46 + 0.0255), (0.040, 0.08, 0.001), (0.30, 0.30, 0.32, 1.0), yaw=0.35)
+    cy = ROOM_D - 0.70          # (draft 4) the table is at the wicker's arm
+    make_rot_box("Cordless_Phone", (0.60, cy + 0.08, 0.46 + 0.0125), (0.055, 0.17, 0.025), (0.86, 0.85, 0.80, 1.0), yaw=0.35)
+    make_rot_box("Cordless_Phone_Keys", (0.60, cy + 0.08, 0.46 + 0.0255), (0.040, 0.08, 0.001), (0.30, 0.30, 0.32, 1.0), yaw=0.35)
 
 def main():
     clear_scene()

@@ -3835,6 +3835,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 339: the Miller back porch — the crepe myrtle filled the frame; her chair was never in the view.**
+- Fifth of the next six sets (255 lines, nearly all in the morning view).
+  READ by render on eighteen real lines:
+- **THE CREPE MYRTLE** — seven lines name it — was one 2 m pink blob 2.4 m
+  off the screen: every frame it was in was a wall of magenta. "The crepe
+  myrtle in the corner is in late bloom": it stands in the yard's corner,
+  9 m out — five smooth pale trunks splaying from one base, a green crown,
+  thirty pink panicles over its top and edge, petals on the grass.
+- **The morning view** stood beside her chair looking at the yard, so "a
+  wicker chair ... against the back wall" was in none of its frames. It
+  stands at the west end now: the wicker, the table beside it and the
+  house door on the left, the screens and the yard on the right.
+- **"The small table beside her"** with "the second pot of coffee" and the
+  cordless (ch22) stood by the rocker 1.5 m away: it is at the wicker's
+  arm, with a carafe on a trivet; the cordless / phone / coffee inserts
+  re-authored on it (the pot was moved once — it hid the phone).
+- **THE SCREENS** (a 30 % alpha sheet) did not read at all: a frame of
+  battens, a top rail and a sill on the knee walls. "It is screened in"
+  reads now.
+- `insert porch` aimed at the hanging lamp (the only part with "porch" in
+  its name): the steps are `Porch_Step_*` and the shot is the porch from
+  the yard. `insert door` ("The door closes", Sam going in) is the house
+  door. The myrtle's blooms are `Myrtle_Crown_Bloom_*` — named as foliage,
+  or support_audit reads them as floating.
+- 367 → 417 parts.
+- **Draft 5 targets.** The yard is a flat plane with brown boxes (a
+  heightfield, the patches following it); the fence's wires; the
+  sprinklers ("Friday is a sprinkler day"); DON GELLER'S HOUSE over the
+  fence — the porch light Bianca watches is his, and `insert porch_light`
+  points at her own lamp; `closeup bianca` / `person` look out from her
+  chair at the yard and the lamp (her POV — check against the portrait);
+  the night view (ch22 Sunday) as its own pass.
+
 **2026-11-11 · pass 338: the Caldwell porch at night — past the railing there was nothing.**
 - Fourth of the next six sets (221 lines: ch12, ch21, ch19, ch23, ch14).
   READ by render: the porch itself holds (the wicker, the second chair,

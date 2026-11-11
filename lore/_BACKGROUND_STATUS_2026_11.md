@@ -172,9 +172,12 @@ posters, screens with no picture: `empty_frame_audit`).
 - **caldwell_porch_night — draft 6 (pass 338, 2026-11-11).** The cul-de-sac past the railing (it was a
   black band): street, houses across with lit windows and porch lights, the cedar, working streetlamps, the
   neighbour's house. 500 → 589 parts. First target next: the porch has no steps.
+- **miller_back_porch — draft 4 (pass 339, 2026-11-11).** The crepe myrtle as a tree in the yard's corner (it
+  was a pink blob filling the frame), the morning view from the west end with her wicker chair in it, the small
+  table at the wicker's arm with the coffee pot, the screens framed. 367 → 417 parts.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
-  first four are done: passes 332, 336, 337, 338; miller_back_porch is next).
+  first five are done: passes 332, 336 - 339; houston_office is next).
 
 ## Brief for hans_bakery_back_kitchen (read 2026-11-10; BUILT the same day, pass 328)
 
