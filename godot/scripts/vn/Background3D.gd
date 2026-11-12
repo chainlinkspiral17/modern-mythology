@@ -1149,6 +1149,13 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.6, 1.7, -1.0),
 		"camera_rotation": Vector3(-0.034, 0.365, 0.0),
 		"fov": 64.0,
+		# (2026-11-11, pass 346) "By two AM Diego is in the stockroom": the open
+		# dock door showed the DOCK preset's pre-dawn — its rust smear and a
+		# pink horizon. This view is the middle of the night: the smear leaves
+		# it and the sky is night (the dock keeps its dawn).
+		"strip": ["Sky_Thermal_Smear_"],
+		"env": {"sky_top": Color(0.03, 0.04, 0.09, 1), "sky_horizon": Color(0.10, 0.10, 0.15, 1),
+			"ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.02, 0.02, 0.03, 1)},
 		"suppress_input": true,
 		"far": 550.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},

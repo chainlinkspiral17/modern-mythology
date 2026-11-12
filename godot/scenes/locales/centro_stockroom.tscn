@@ -358,11 +358,12 @@ metadata/fov = 42.0
 ; (2026-09-24: the smear is on the eastern HORIZON above the cedar —
 ; the camera stood 2 m from it looking up at a slab; now from the dock)
 
-; insert: the bale at the eighth pallet
+; insert: the bale at the eighth pallet — the baler against the east wall and the strapped
+; bale on the floor beside it (pass 346: 0.8 m off the bale's side, a tan slab filled the frame)
 [node name="shot_insert_bale" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.9, -1.1)
-rotation = Vector3(-0.6386, -2.8081, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.600, 1.650, -1.900)
+rotation = Vector3(-0.3943, -2.1487, 0.0)
+metadata/fov = 50.0
 
 ; insert: his hands stop
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
