@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 357: the cedar tower's fourth-floor landing gets a light.**
+- Pass 356's N+1. The portal landing (vol 7 ch22: "The door was unmarked.
+  It was cedar. Above the door's handle was a window, six inches by six")
+  read near black: raw, the four Portal_Sconce practicals stand INSIDE the
+  portal room past the door, and the landing had no light of its own.
+  `Landing_Glow` (warm, over the landing): the door, its handle and the
+  milky window ("as if its glass had been replaced by a single thick layer
+  of frosted substrate") read under the dream mood.
+- **Draft N+1 targets.** "She looked through. The portal room was sixty
+  feet by sixty" stays on the frosted pane — a view through it into the
+  room (the smart-glass wall, Aria at the far door) would answer the line;
+  a fixture for the landing light (a cedar sconce) so it is a practical.
+
 **2026-11-12 · pass 356: the seventh six — read; the cedar tower's clearing in afternoon light.**
 - The seventh six by lines played (kwik_stop and the diner are model
   chapters; graustark and the grocery aisle are large builds read

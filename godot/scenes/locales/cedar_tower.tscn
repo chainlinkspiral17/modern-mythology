@@ -484,6 +484,16 @@ light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.20
 
+; (pass 357) the fourth-floor LANDING had no light of its own (the portal sconces are
+; inside the room past the door): "The door was unmarked. It was cedar. Above the door's
+; handle was a window, six inches by six" read black under the dream mood
+[node name="Landing_Glow" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 18.300, -2.000)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 1.40
+omni_range = 4.50
+shadow_enabled = false
+
 [node name="Portal_Sconce_0_-9_Back_Practical" type="OmniLight3D" parent="."]
 position = Vector3(-8.980, 16.900, -6.000)
 light_color = Color(0.950, 0.780, 0.500, 1)
