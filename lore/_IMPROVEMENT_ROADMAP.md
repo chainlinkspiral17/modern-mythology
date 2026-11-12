@@ -3835,6 +3835,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 355: the sixth six — read; Jesse's door gets the hall light.**
+- The sixth six by lines over parts: jesse_bedroom, diego_bedroom,
+  maya_bedroom, accretion_basement, el_rancho_taqueria, cafe_olimpico. READ
+  by render, three lines each: Café Olímpico (John and Elicia featured by
+  pass 348), Diego's room, El Rancho, Maya's floor and the basement stair
+  hold.
+- jesse_bedroom: "He gets up. He puts the Telecaster back in its case. He
+  opens his bedroom door" — the door insert read BLACK at night (the lamps
+  are at the room's far end). `Hall_Spill_Under_Door`: the hall light along
+  the floor inside the threshold; the door and its knob read.
+- **Draft N+1 targets.** The accretion basement is grey-dark (vol 7 ch11
+  Kestrel); El Rancho's booth insert is a red slab close-up; Maya's rug
+  insert from straight above.
+
 **2026-11-12 · pass 354: the Henderson garage, Sam's bedroom, the Pit Stop — read; two lines directed.**
 - The rest of the fifth six's reads (henderson_garage incl. its day view,
   sam_bedroom, pit_stop_interior): eighteen + ten lines; they hold.

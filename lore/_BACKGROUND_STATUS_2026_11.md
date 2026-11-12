@@ -211,6 +211,8 @@ posters, screens with no picture: `empty_frame_audit`).
   tideline_survey and hospice_room read and hold.
 - Fifth six (by lines over parts): nightmare_cell ✔ → tideline_survey (read) → hospice_room (read) →
   henderson_garage (354, two lines) → sam_bedroom (read) → pit_stop_interior (read). The fifth six are through a pass.
+- Sixth six (pass 355): jesse_bedroom ✔ (the door's hall light) → diego_bedroom → maya_bedroom →
+  accretion_basement → el_rancho_taqueria → cafe_olimpico (all read, hold).
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
   all six through a pass: 332, 336 - 340).
