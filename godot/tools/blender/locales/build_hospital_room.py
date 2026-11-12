@@ -1,4 +1,18 @@
-"""hospital_room — vol5-7 locale (auto-generated placement script)."""
+"""hospital_room — vol5-7 locale (auto-generated placement script).
+
+Room 318 of New Auburn General (vol 6 ch8) and the waiting room next door
+(ch7). PASS 345 (2026-11-11, read by render): every closeup of Linda framed
+the window, the vitals monitor and the TV — no bed — for a woman "sitting
+up" in it; the closeups (person / linda / maya / gracie) are on the bed, the
+bedside and the visitor's chair now. The door opened onto a black void: the
+third-floor corridor is built (handrail, doors across, troffers, 318's
+number plate).
+NEXT-PASS TARGETS: the TV's screen (a picture, not a black slab); the view
+from the window three storeys up reads as pale haze — the street below with
+its parking lot and the hospital's own wing across; Linda's radio? (she
+"learned the radio" — at home, not here); a nurse's station glimpsed at
+the corridor's end.
+"""
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
@@ -314,6 +328,42 @@ def build_room_318_lived_in_2026_10():
     make_tube("Call_Button_Cord", [(0.32, 3.34, 0.60), (0.40, 3.70, 0.45), (0.45, 4.40, 0.80), (BED_X + 0.45, NF - 0.08, 1.30)], 0.004, grey)
     make_chamfer_box("Visitor_Pillow", (-1.70, 1.66, 0.52), (0.36, 0.24, 0.12), (0.82, 0.86, 0.88, 1.0), chamfer=0.03)
 
+def build_corridor_2026_11():
+    """THE CORRIDOR (pass 344, 2026-11-11). Room 318's door and the waiting
+    room's double doors open south onto nothing: "When Maya comes through
+    the door, with Anita and Gracie behind her" framed a black void past the
+    open leaf. The third-floor corridor, 2.4 m wide, the length of both
+    rooms: vinyl with its seam strip, the far wall with its handrail and
+    bumper guard, two doors across (a supply room, Room 321), the room
+    number beside 318's door, troffers down the ceiling."""
+    from _props.safety import make_fluorescent_tube_fixture
+    CX0, CX1, CY = -11.0, 3.2, -2.4
+    pal = {"wall": (0.80, 0.80, 0.74, 1.0), "baseboard": (0.30, 0.30, 0.30, 1.0)}
+    make_floor("Corr_Floor", ((CX0 + CX1) / 2.0, CY / 2.0, 0.0), size_x=CX1 - CX0, size_y=-CY,
+               palette={"vinyl": (0.66, 0.64, 0.58, 1.0), "seam": (0.40, 0.40, 0.38, 1.0)})
+    make_box("Corr_Floor_Stripe", ((CX0 + CX1) / 2.0, CY / 2.0, 0.004), (CX1 - CX0 - 0.4, 0.20, 0.006), (0.36, 0.50, 0.60, 1.0))
+    make_wall("Corr_Wall_S", ((CX0 + CX1) / 2.0, CY, 0), length=CX1 - CX0, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
+    make_wall("Corr_Wall_E", (CX1, CY / 2.0, 0), length=-CY, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall("Corr_Wall_W", (CX0, CY / 2.0, 0), length=-CY, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
+    make_ceiling("Corr_Ceil", ((CX0 + CX1) / 2.0, CY / 2.0, CEIL), size_x=CX1 - CX0, size_y=-CY)
+    # the handrail and the bumper guard down the far wall
+    # in runs between the doors across (it ran across both doors)
+    for ri, (a, b) in enumerate(((CX0 + 0.3, -8.45), (-7.15, -2.25), (-0.95, CX1 - 0.3))):
+        make_box(f"Corr_Handrail_{ri}", ((a + b) / 2.0, CY + 0.16, 0.90), (b - a, 0.05, 0.06), (0.62, 0.52, 0.40, 1.0))
+        make_box(f"Corr_Bumper_{ri}", ((a + b) / 2.0, CY + 0.115, 0.30), (b - a, 0.03, 0.14), (0.74, 0.74, 0.70, 1.0))
+        for e in (a + 0.25, b - 0.25):
+            make_box(f"Corr_Handrail_{ri}_Bracket_{e:+.2f}", (e, CY + 0.13, 0.86), (0.04, 0.06, 0.06), (0.55, 0.57, 0.58, 1.0))
+    # two doors across the corridor, closed
+    for di, (dx, label) in enumerate(((-1.6, (0.24, 0.40, 0.60, 1.0)), (-7.8, (0.24, 0.40, 0.60, 1.0)))):
+        make_box(f"Corr_Door_{di}", (dx, CY + 0.13, 1.05), (0.92, 0.05, 2.10), (0.62, 0.66, 0.70, 1.0))
+        make_box(f"Corr_Door_{di}_Light", (dx + 0.20, CY + 0.16, 1.55), (0.20, 0.01, 0.40), (0.30, 0.34, 0.40, 1.0))
+        make_box(f"Corr_Door_{di}_Sign", (dx + 0.75, CY + 0.105, 1.55), (0.22, 0.01, 0.16), label)
+    # 318's number plate beside its door, on the corridor face
+    make_box("Room_318_Sign", (1.35, -0.105, 1.55), (0.22, 0.01, 0.16), (0.24, 0.40, 0.60, 1.0))
+    make_box("Room_318_Sign_Numerals", (1.35, -0.111, 1.56), (0.14, 0.002, 0.05), (0.94, 0.94, 0.92, 1.0))
+    for j, x in enumerate((0.0, -4.4, -8.8)):
+        make_fluorescent_tube_fixture(f"Corr_Fluor_{j}", (x, CY / 2.0, CEIL), length=1.40, width=0.34)
+
 def main():
     clear_scene()
     build_shell()
@@ -326,6 +376,7 @@ def main():
     build_window()
     build_ceiling_infra()
     build_waiting_room()
+    build_corridor_2026_11()
     build_detail_pass_2026_08()
     build_hero_props_2026_09()
     build_room_318_lived_in_2026_10()

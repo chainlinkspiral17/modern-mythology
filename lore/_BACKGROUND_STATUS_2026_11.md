@@ -189,9 +189,12 @@ posters, screens with no picture: `empty_frame_audit`).
 - **new_auburn_courtroom — draft 3 (pass 344, 2026-11-11).** Miriam's Subaru rebuilt as a wagon (it read as a
   box truck), facing the right way for the passenger door; a block across the street; the bench and the side
   door lit and shot; the defense table insert; the chapter's close moved into the Miller kitchen.
+- **hospital_room — draft N (pass 345, 2026-11-11).** Closeups on the bed (they framed the window and the TV);
+  closeup markers for Linda, Maya and Gracie; the corridor past the open door (it was a black void).
+- **centro_stockroom — draft N (pass 346, 2026-11-11).** Night through the dock door at 2 AM (it showed the
+  dock's dawn smear); the bale insert stands back from the bale.
 - Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office ✔ →
-  new_auburn_courtroom ✔ →
-  hospital_room → centro_stockroom.
+  new_auburn_courtroom ✔ → hospital_room ✔ → centro_stockroom ✔. The third six are through a pass.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
   all six through a pass: 332, 336 - 340).

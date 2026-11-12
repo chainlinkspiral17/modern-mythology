@@ -3835,6 +3835,44 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-11 · pass 346: the Centro stockroom — two AM showed the dawn.**
+- Sixth of the third six (vol 6 ch18, 46 lines). READ by render on
+  sixteen lines. The room (racks both walls, the pallet and jack, the
+  baler, the open roll-up) holds. What did not:
+- "By two AM Diego is in the stockroom" — through the open dock door the
+  DOCK preset's pre-dawn showed: the rust thermal smear and a pink
+  horizon (ch10 / ch16's dawn, the same GLB). The `centro_stockroom`
+  preset now strips `Sky_Thermal_Smear_` and carries a night sky env;
+  `centro_dock` keeps its dawn.
+- "The bale is at the corner" was a tan slab 0.8 m off the bale's side —
+  and the chapter's first lines inherited it. The bale insert stands back
+  in the aisle (the strapped bale and the baler beside it, the rack's end
+  at the frame edge); "The second half of the shift" → establish.
+- **Draft N+1 targets.** "The bale's wire-tying device is on the floor
+  beside the bale" — not built; the gloves drawer ("Jessa keeps in the
+  stockroom drawer"); the pile of pallets he folds (nine) by the bale; the
+  dock's sodium lamp out on the apron at night.
+
+**2026-11-11 · pass 345: the hospital room — Linda's closeups never held the bed.**
+- Fifth of the third six (vol 6 ch8, 121 + 6 lines). READ by render on
+  eighteen lines. The room (the bed at the headwall, the curtain, the IV,
+  the window, the sink by the door) holds; the wides were right.
+- Every closeup of Linda ("Linda Caldwell is sitting up", "Linda's face
+  changes") and Maya fell back to `closeup_person`, which framed the
+  window, the vitals monitor and the TV — no bed. It is on the bed's head
+  now (headwall, pillow, window light), and the room has its own
+  `closeup_linda`, `closeup_maya` (at the bedside, from the head of the
+  bed) and `closeup_gracie` ("the visitor's chair, which is too large for
+  her").
+- "When Maya comes through the door, with Anita and Gracie behind her"
+  framed a black void past the open leaf. The third-floor corridor is
+  built: 2.4 m, the length of both rooms, vinyl and its stripe, the
+  handrail and bumper on the far wall, two doors across, 318's number
+  plate, three troffers with their practicals.
+- **Draft N+1 targets.** The TV's screen; the window's view three storeys
+  up (pale haze — the lot and the hospital's wing across); a nurses'
+  station at the corridor's end.
+
 **2026-11-11 · pass 344: the New Auburn courtroom — the car was a frame of slabs; the doors and the bench were black.**
 - Fourth of the third six (vol 6 ch8, 165 lines). READ by render on
   eighteen lines. The room (16 x 22 m, coffered ceiling, two banks of

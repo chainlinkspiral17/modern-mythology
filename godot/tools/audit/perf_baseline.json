@@ -77,6 +77,11 @@
  "centro_grocery_aisle": {
   "draw": 214
  },
+ "centro_stockroom": {
+  "draw": 124,
+  "prims": 43324,
+  "objects": 294
+ },
  "chau_house": {
   "draw": 148,
   "prims": 143072,
@@ -204,7 +209,9 @@
   "objects": 388
  },
  "hospital_room": {
-  "draw": 100
+  "draw": 196,
+  "prims": 28400,
+  "objects": 366
  },
  "houston_bayou": {
   "draw": 196,
