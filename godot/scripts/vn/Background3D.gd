@@ -3270,9 +3270,14 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.3, 1.62, -0.9),
 		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
 		"fov": 62.0,
-		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+		# (2026-11-12, pass 347) an overcast coast morning, not a lamp-lit
+		# room: "the gray hour before the rain became visible". The warm
+		# pine read deep orange and dark under a near-white ambient at 0.95
+		# with every oil lamp lit; the ambient is the cool grey of the sky
+		# through four windows now, brighter, and the fog grey with it.
+		"env": {"sky_top": Color(0.52, 0.58, 0.66, 1), "sky_horizon": Color(0.80, 0.82, 0.84, 1),
 			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
-			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.80, 0.78, 1)},
+			"ambient_color": Color(0.74, 0.80, 0.88, 1), "ambient_energy": 1.60, "fog_color": Color(0.70, 0.74, 0.78, 1)},
 		"style_pack": "raw_observation",
 		"suppress_input": true,
 	},
@@ -3350,6 +3355,13 @@ const CAMERA_PRESETS := {
 		# wall it was all wall; square on, the wall filled 67 % at 1.8 m)
 		"camera_rotation": Vector3(0.05, -2.55, 0.0),
 		"fov": 58.0,
+		# (2026-11-12, pass 347) "Lena woke at the cabin in the gray hour before
+		# the rain became visible": the view had no env, so it took the night
+		# rig's lamp-orange ambient with neither rig's directionals. The grey
+		# of first light through the window over the bed.
+		"env": {"sky_top": Color(0.40, 0.46, 0.54, 1), "sky_horizon": Color(0.66, 0.70, 0.72, 1),
+			"ambient_color": Color(0.66, 0.72, 0.80, 1), "ambient_energy": 1.20, "fog_color": Color(0.60, 0.64, 0.68, 1)},
+		"style_pack": "raw_observation",
 		"suppress_input": true,
 	},
 	"finn_apartment": {

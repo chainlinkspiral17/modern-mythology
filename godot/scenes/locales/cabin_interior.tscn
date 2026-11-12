@@ -148,7 +148,8 @@ sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.42, 0.28, 1)
-ambient_light_energy = 0.55
+; (pass 347) 0.55 → 0.68: the walls went to aged cedar (darker than the orange they were)
+ambient_light_energy = 0.68
 fog_enabled = true
 fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.28, 0.20, 1)

@@ -195,6 +195,15 @@ posters, screens with no picture: `empty_frame_audit`).
   dock's dawn smear); the bale insert stands back from the bale.
 - Third six (by lines over parts): centro_break_room ✔ → foxhole_bar ✔ → new_orleans_office ✔ →
   new_auburn_courtroom ✔ → hospital_room ✔ → centro_stockroom ✔. The third six are through a pass.
+- **cabin_interior — pass 347 (2026-11-12).** The day and the bed views were orange-dark ("the gray hour"): the
+  walls to aged cedar, an overcast ambient, first light on the bed view. A resume no longer carries the last
+  room's [shot:] across a bg cut (GameEngine).
+- **hans_bakery_back_kitchen — read (2026-11-12), no change.** Eighteen lines across ch15 / ch17 / ch18 hold:
+  lit, the long table, the counters. One question for Andy, recorded: the six-box black figure on the
+  substrate-bowl's rim — the text has CARVED crows on the bowls ("The crow on Roy's bowl ... turned its head")
+  and Kai's real crow on that rim only for ch17 Aria 76-88. Which is it, and should every bowl carry its own?
+- Fourth six (by lines over parts): cabin_interior ✔ → hans_bakery_back_kitchen (read) → salty_tome_interior →
+  cosmic_comics_interior → vehicle_cab → bianca_kitchen_morning.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
   all six through a pass: 332, 336 - 340).

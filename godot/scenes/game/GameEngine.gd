@@ -774,6 +774,14 @@ func _fast_forward_to(target: int) -> void:
 				last_env[String(n.get("t", ""))] = i
 				if String(n.get("t", "")) == "bg":
 					last_panel = ""
+					# (2026-11-12, pass 347) a new room starts at its own
+					# frame, as it does in play (VnDirector.on_locale_changed
+					# clears the shot): a resume after a bg cut replayed the
+					# PREVIOUS room's last [shot:] in the new one — vol7 ch1's
+					# "She got up." opened the day room on the bed view's
+					# "insert cedar" (a table edge), ch18's stockroom on the
+					# break room's coffee.
+					last_shot = ""
 			"narrate", "say", "think", "interlude":
 				# Remember only the last mood/shot direction seen.
 				# "interlude" is in this list because its title text

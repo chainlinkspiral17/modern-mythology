@@ -105,7 +105,7 @@ OLD_W = 6.0; OLD_D = 6.0
 # the stove, the south-west window widened to a pair.
 LOFT_Z = 2.30      # the loft deck's underside — "the cedar ceiling above the kitchen"
 ANNEX_CEIL = 2.60  # the east room's ceiling
-PAL_WALL = {"wall": (0.62, 0.46, 0.32, 1.0), "baseboard": (0.32, 0.22, 0.14, 1.0)}
+PAL_WALL = {"wall": (0.52, 0.42, 0.33, 1.0), "baseboard": (0.32, 0.22, 0.14, 1.0)}   # (pass 347) aged cedar ("the cedar wall of the cabin"); 0.62/0.46/0.32 read as orange paint
 COL_FLOOR = (0.42, 0.30, 0.20, 1.0); COL_SEAM = (0.22, 0.14, 0.10, 1.0)
 COL_WOOD = (0.42, 0.30, 0.18, 1.0)
 COL_WOOD_DK = (0.34, 0.24, 0.15, 1.0)
@@ -835,7 +835,7 @@ def build_architecture_2026_10():
     ridge_y = ROOM_D / 2.0
     ridge_z = under_s(ridge_y)
     under_n = lambda y: ridge_z - pitch * (y - ridge_y)
-    plank, timber = (0.60, 0.45, 0.30, 1.0), (0.38, 0.27, 0.17, 1.0)
+    plank, timber = (0.50, 0.40, 0.31, 1.0), (0.38, 0.27, 0.17, 1.0)   # (pass 347) aged cedar, with the walls
     # the roof's underside, planked (a hair under the slabs so it does not fight them)
     def plank_piece(name, ya, yb, under, x0, x1):
         _prism_ccw(name, ((x0 + x1) / 2.0, 0.0, 0.0),

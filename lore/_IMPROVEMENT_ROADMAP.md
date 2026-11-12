@@ -3835,6 +3835,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 347: the cabin — vol 7's mornings were orange; a resume replayed the last room's shot.**
+- First of the fourth six (cabin_interior: 2,144 lines over thirty
+  chapter runs, the most-played set in vol 7). READ by render on eighteen
+  lines across ch1, ch4, ch11, ch13, ch15, ch19, ch20.
+- "Lena woke at the cabin in the gray hour before the rain became
+  visible" and the whole morning (cabin_interior_day, 272 lines in ch1
+  alone) read deep orange and dark. Traced: not the post stack (the old
+  film / liminal tints are at strength 0) — MM_NO_POST showed the same;
+  an ambient ×4 test turned the walls BRIGHT orange: the wall albedo
+  itself (0.62 / 0.46 / 0.32) read as orange paint. The text: "the cedar
+  wall of the cabin". Walls and roof planks to aged cedar (0.52 / 0.42 /
+  0.33); the day preset's ambient is an overcast grey-blue at 1.60 (was a
+  near-white 0.95) with a grey sky; the night rig's ambient 0.55 → 0.68
+  to hold its level on the darker wood. The bed view (cabin_interior_bed,
+  "the gray hour") had no env at all — it took the night rig's lamp
+  ambient with neither rig's directionals: first-light grey now.
+- ENGINE: a resume (a loaded save, and every VnLineShot frame) replayed
+  the last [shot:] seen before the line — across a bg cut. "She got up."
+  opened the day room on the bed view's "insert cedar" (a table edge);
+  ch18's stockroom opened on the break room's coffee. GameEngine's replay
+  clears the shot at every bg node, as VnDirector.on_locale_changed does
+  in play.
+- **Draft N+1 targets.** The night frames (ch11 Per / Bowl) are red-black
+  under the trip: read them with the trip at its chapter level and give
+  the table its lamp pool; the closeup tem frame is the kitchen window
+  under the loft for every Tem line — her own corners (the stove, the
+  rocker); the dust motes read as snow at 1280.
+
 **2026-11-11 · pass 346: the Centro stockroom — two AM showed the dawn.**
 - Sixth of the third six (vol 6 ch18, 46 lines). READ by render on
   sixteen lines. The room (racks both walls, the pallet and jack, the
