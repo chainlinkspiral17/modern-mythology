@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 358: the eighth six — read; Club Sharp's faces against the lit cage.**
+- The eighth six: daily_grind_interior, elicia_apartment, roberts_kitchen,
+  club_sharp, grandmother_kitchen_morning, new_auburn_road. READ by
+  render: Daily Grind in the rain, Elicia's apartment (featured by 348),
+  the Roberts and grandmother kitchens hold.
+- club_sharp (vol 1 ch8): every closeup (Dickens, Faust, Jacob) falls back
+  to closeup_person / person_b, and closeup_person faced the black back
+  wall under the # neon — Dickens Dean's lines played on darkness. Raw the
+  club is right ("lit like a stage in the middle of a bar": the cage in its
+  spot, the dance floor). closeup_person looks back at the lit cage and
+  floor from beyond it; person_b looks from the cage's side toward the #
+  across the floor, clear of the bars.
+- **Draft N+1 targets.** Closeup markers of the club's own (dickens, faust,
+  jacob) with their own grounds; new_auburn_road's lines are few in the
+  sample — read the ch14 / ch22 drives.
+
 **2026-11-12 · pass 357: the cedar tower's fourth-floor landing gets a light.**
 - Pass 356's N+1. The portal landing (vol 7 ch22: "The door was unmarked.
   It was cedar. Above the door's handle was a window, six inches by six")

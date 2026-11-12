@@ -483,16 +483,18 @@ rotation = Vector3(-0.2239, 1.8129, 0.0)
 metadata/fov = 60.0
 
 ; closeup: Dickens Dean in his booth on the dais, the # over him
+; (pass 358) the faces against the lit cage and floor, not the black back wall (Dickens
+; Dean's lines played on the # sign over darkness)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.000, 1.650, -11.000)
-rotation = Vector3(-0.0713, -0.0000, 0.0)
+position = Vector3(1.2, 1.65, -10.4)
+rotation = Vector3(-0.174, -2.678, 0.0)
 metadata/fov = 42.0
 
 ; reverse: from the booth over the dance floor to the bar and the bowling glass
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.000, 1.700, -16.400)
-rotation = Vector3(-0.0578, -2.9078, 0.0)
-metadata/fov = 42.0
+position = Vector3(4.4, 1.6, -7.0)
+rotation = Vector3(-0.02, 0.547, 0.0)
+metadata/fov = 44.0
 
 ; insert: the absinthe on the booth table
 [node name="shot_insert_absinthe" type="Marker3D" parent="." groups=["vn_shot"]]
