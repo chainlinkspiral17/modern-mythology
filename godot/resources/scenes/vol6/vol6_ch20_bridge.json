@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert snare]Practice today is at his garage. Carl pulled up with the snare at four-forty-eight. Nate came over with the bass at four-fifty-two.",
+      "text": "[shot:establish]Practice today is at his garage. Carl pulled up with the snare at four-forty-eight. Nate came over with the bass at four-fifty-two.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/018.mp3"
     },
     {
@@ -488,7 +488,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert truck]He goes inside. He eats a sandwich his mother had left in the fridge for him.",
+      "text": "[shot:establish]He goes inside. He eats a sandwich his mother had left in the fridge for him.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/085.mp3"
     },
     {

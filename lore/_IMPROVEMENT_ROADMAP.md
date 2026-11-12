@@ -3835,6 +3835,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 354: the Henderson garage, Sam's bedroom, the Pit Stop — read; two lines directed.**
+- The rest of the fifth six's reads (henderson_garage incl. its day view,
+  sam_bedroom, pit_stop_interior): eighteen + ten lines; they hold.
+- vol 6 ch20: the first line in the garage by day, "Practice today is at
+  his garage", opened on the snare insert → establish; "He goes inside. He
+  eats a sandwich" was tagged to the truck → establish.
+- **Draft N+1 targets.** The Pit Stop's "At 15:15 he gets up. He leaves a
+  ten-dollar bill on the table" plays on the griddle (there is no dining
+  room in the set); ch15 "He sleeps when the street sounds ..." plays in
+  Sam's room (whose "he"? — a montage line, recorded).
+
 **2026-11-12 · pass 353: the fifth six, first reads — the nightmare cell lit; the tide pools and the hospice hold.**
 - The fifth six by lines over parts: nightmare_cell → tideline_survey →
   hospice_room → henderson_garage → sam_bedroom → pit_stop_interior.
