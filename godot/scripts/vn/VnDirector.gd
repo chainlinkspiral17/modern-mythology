@@ -22,6 +22,9 @@
 # ════════════════════════════════════════════════════════════════
 extends Node
 
+## (2026-11-12) the close-up subject changed (GameEngine → CharLayer.set_featured)
+signal featured_changed(key: String)
+
 # Preload-by-path: HeroImage's class_name may miss the first editor
 # scan after a pull; the explicit path always resolves.
 const HeroImageScript := preload("res://scenes/games/estuary_3/HeroImage.gd")
@@ -86,6 +89,9 @@ var _overlay_parent: Control = null
 # read), then the room comes back (consider_line).
 const INSERT_HOLD := 3
 var _insert_left: int = 0
+## (2026-11-12) whose close-up the camera holds ("" = the room, an insert,
+## a picture): CharLayer features that figure (GameEngine hands it on).
+var _featured: String = ""
 var _insert_words: PackedStringArray = PackedStringArray()
 var _panel_words: PackedStringArray = PackedStringArray()
 
@@ -160,6 +166,9 @@ func on_locale_changed() -> void:
 	_dismiss_panel()
 	_panel_words = PackedStringArray()
 	_insert_left = 0
+	if _featured != "":
+		_featured = ""
+		featured_changed.emit("")
 	# a new room: its pictures are new to the eye
 	ArtMaskScript.focus_target = 0.0
 	_art_used.clear()
@@ -358,6 +367,15 @@ func _try_apply_shot() -> void:
 		return
 	_pending_shot = ""
 	_insert_left = INSERT_HOLD if shot_type == "insert" else 0
+	# the close-up's subject: the named figure, or the speaker for the
+	# generic face pair; every other cut features no one
+	var was_featured: String = _featured
+	if shot_type == "closeup":
+		_featured = _pending_speaker if (shot_id == "person" or shot_id == "person_b" or shot_id == "") else shot_id
+	else:
+		_featured = ""
+	if _featured != was_featured:
+		featured_changed.emit(featured_key())
 	_insert_words = _line_words(shot_id.replace("_", " ")) if shot_type == "insert" else PackedStringArray()
 
 	var marker: Node3D = null
@@ -930,6 +948,12 @@ static func _line_words(text: String) -> PackedStringArray:
 ## text is describing"; a portrait card stood over the object the insert was
 ## cut to show (vol 5 ch16: the recording camera behind a portrait). GameEngine
 ## asks after each line and the portraits step back while it holds.
+func featured_key() -> String:
+	if insert_showing():
+		return ""
+	return _featured
+
+
 func insert_showing() -> bool:
 	return _insert_left > 0 or not _art_return.is_empty()
 

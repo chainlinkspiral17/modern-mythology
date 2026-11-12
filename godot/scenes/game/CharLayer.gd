@@ -344,6 +344,17 @@ const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
 ## (2026-11-09) how fast a portrait slides to a new slot (per second, an
 ## exponential ease: ~90 % of the way in 0.5 s — one move with the line)
 const SLIDE_RATE  := 4.6
+# FEATURED (2026-11-12, the user: "Portraits still aren't being featured" —
+# "too small / at the edges"). A [shot:closeup X] moved only the set's
+# camera; X's cut-out stayed the same size at its flank. While the camera
+# holds X's close-up, X steps in: larger about the eye line (the face stays
+# level — the 11-01 note against faces bobbing between lines — and the body
+# grows under the text band) and across toward the middle of the frame.
+# Eased in with the cut, out when the camera leaves.
+const FEATURE_GROW  := 0.30      # scale +30 % at full feature
+const FEATURE_SHIFT := 0.55      # of the way from a flank slot to the frame's middle
+const FEATURE_EYE_Y := 0.26      # the pivot: the eye line, as a fraction of the slot's height
+const FEATURE_RATE  := 3.2
 
 # Parallax: portraits counter-drift the bg sway (GameEngine drives the
 # bg with the same SWAY_PERIOD). Small amplitude to sell depth without
@@ -794,6 +805,7 @@ var _bust_blinkers: Array = []
 # DialogueBox reference is cached lazily (it lives in GameEngine's
 # tree, a sibling subtree of ours).
 var _active_speaker_key: String = ""
+var _featured_key: String = ""
 var _dlg_ref: Node = null
 var _talk_flip: float = 0.0
 
@@ -892,7 +904,16 @@ func _process(delta: float) -> void:
 				slide_x = 0.0
 			else:
 				node.set_meta("slide_x", slide_x)
-		node.position = _slot_pos(pos) + Vector2(pdx + slide_x, idle_y + pdy + entrance_y)
+		# (2026-11-12) the featured figure eases toward the frame's middle
+		var feat: float = float(node.get_meta("feature")) if node.has_meta("feature") else 0.0
+		var feat_goal: float = 1.0 if (_featured_key != "" and _is_featured(String(slot["name"]))) else 0.0
+		if absf(feat - feat_goal) > 0.001:
+			feat = lerpf(feat, feat_goal, 1.0 - exp(-FEATURE_RATE * delta))
+			if absf(feat - feat_goal) < 0.002:
+				feat = feat_goal
+			node.set_meta("feature", feat)
+		var feat_dx: float = (_slot_pos("center").x - _slot_pos(pos).x) * FEATURE_SHIFT * feat
+		node.position = _slot_pos(pos) + Vector2(pdx + slide_x + feat_dx, idle_y + pdy + entrance_y)
 		# ── Subtle breath: ±1% scale on the tint_holder, longer period
 		# than position sway so the two motions don't beat against each
 		# other. Reads as the figure inhaling.
@@ -918,8 +939,11 @@ func _process(delta: float) -> void:
 				# write the meta and this is the sole read site.
 				if node.has_meta("kind") and String(node.get_meta("kind")) == "composition":
 					flip_x = 1.0
-				tint_holder.pivot_offset = tint_holder.size * 0.5
-				tint_holder.scale = Vector2(flip_x * breath_s, breath_s)
+				var grow: float = 1.0 + FEATURE_GROW * feat
+				tint_holder.pivot_offset = Vector2(tint_holder.size.x * 0.5, tint_holder.size.y * (FEATURE_EYE_Y if feat > 0.0 else 0.5))
+				tint_holder.scale = Vector2(flip_x * breath_s * grow, breath_s * grow)
+				# the featured figure in front of anyone it now overlaps
+				node.z_index = 2 if feat > 0.5 else node.z_index
 		# Blink overlay disabled — was a fixed-anchor dark band at
 		# slot y=30-42%, which only aligned with eye-level when the
 		# portrait was a tight face crop centered in the slot.
@@ -977,6 +1001,25 @@ var lone_side: String = "right"
 var _insert_quiet: bool = false
 const INSERT_QUIET_ALPHA := 0.32
 var _quiet_tw: Tween = null
+
+
+## (2026-11-12) the character the scene camera holds in close-up ("" = none).
+func set_featured(key: String) -> void:
+	_featured_key = key.strip_edges().to_lower()
+
+
+## Does this slot's figure answer the close-up's name? The marker ids are
+## short ("sam", "mrs_miller", "dean"); the cast keys are the speaker
+## names ("sam", "linda_caldwell", "chief_miller"): a whole key, or its
+## first or last word.
+func _is_featured(slot_name: String) -> bool:
+	var k: String = char_key(slot_name)
+	if k == _featured_key:
+		return true
+	var parts: PackedStringArray = k.split("_", false)
+	if parts.is_empty():
+		return false
+	return parts[0] == _featured_key or parts[parts.size() - 1] == _featured_key
 
 
 func set_insert_quiet(on: bool) -> void:

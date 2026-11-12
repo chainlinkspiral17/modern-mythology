@@ -284,6 +284,8 @@ func _build_layers() -> void:
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# (2026-11-12) the close-up's subject steps in the moment the cut lands
+	_director.connect("featured_changed", Callable(_chars, "set_featured"))
 	# Portrait layer sits ABOVE the background but strictly BELOW the
 	# dialogue/UI band (UI_Z=100). Must be < UI_Z so activate_speaker's
 	# per-portrait z_index bump (active speaker = +1, relative to this
@@ -1175,6 +1177,7 @@ func _do_narrate(n: Dictionary) -> void:
 	_push_scene_light()
 	_chars.call("direct_line", "", text, "", "narrate")
 	_chars.call("set_insert_quiet", _director != null and bool(_director.call("insert_showing")))
+	_chars.call("set_featured", String(_director.call("featured_key")) if _director != null else "")
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -1220,6 +1223,7 @@ func _do_say(n: Dictionary) -> void:
 	_push_scene_light()
 	_chars.call("set_insert_quiet", false)
 	_chars.call("direct_line", char_name.to_lower(), text, expr, "say")
+	_chars.call("set_featured", String(_director.call("featured_key")) if _director != null else "")
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
 	if via == "text":
@@ -1245,6 +1249,7 @@ func _do_think(n: Dictionary) -> void:
 	_push_scene_light()
 	_chars.call("set_insert_quiet", false)
 	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr, "think")
+	_chars.call("set_featured", String(_director.call("featured_key")) if _director != null else "")
 	_dlg.visible = true
 	_dlg.call("show_think", char_name, _s(n, "text"))
 	AudioMgr.play_voice(_s(n, "voice"))

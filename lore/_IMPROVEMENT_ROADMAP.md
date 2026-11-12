@@ -3835,6 +3835,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 348: portraits FEATURED — the close-up's subject steps in.**
+- The user: "Portraits still aren't being featured" → (asked) "too small / at
+  the edges". Read by render on nine lines with local heroes (Alberto,
+  Nicola, Elicia, John, Dante, Antonio, Frasier): every figure stood
+  torso-up in its flank slot, the head an eighth of the frame, and a
+  [shot:closeup X] moved only the SET's camera — X's cut-out kept its size
+  and its edge. Nothing tied the scene camera to the cast.
+- VnDirector records whose close-up the camera holds (the named figure;
+  the speaker for the generic person / person_b pair; an insert, a wide,
+  a picture or a new room clears it) and emits `featured_changed`;
+  GameEngine hands it to CharLayer (signal + every say / think / narrate).
+  CharLayer.set_featured: that figure eases (rate 3.2) to +30 % about its
+  EYE LINE — the face holds its height (the 11-01 note against faces
+  bobbing between lines), the body grows under the text band — and 55 % of
+  the way from its flank to the frame's middle, in front of anyone it now
+  overlaps; it eases back when the camera leaves. Names match a whole key
+  or its first / last word ("sam", "dean", "mrs_miller").
+- The talking-distance grammar (PortraitDirector, 10-19) is unchanged: the
+  portrait camera still frames torso-up in conversation; the cut-out
+  itself is what grows.
+- Shot-tool note: a VnLineShot frame resumes on a replayed [shot:] with no
+  speaker, so a replayed closeup person features no one; in play the cut
+  lands on the speaker's line.
+- **Draft N+1 targets.** Lines with no close-up (narration over the room,
+  the wide) still stand the cast at the flanks: a lone figure on the wide
+  could take the third nearest the text's far side; a long line's text box
+  covers a centre figure (Elicia) — the box should give way to a featured
+  figure; check on the Deck at 1280x800 and on a 21:9 screen.
+
 **2026-11-12 · pass 347: the cabin — vol 7's mornings were orange; a resume replayed the last room's shot.**
 - First of the fourth six (cabin_interior: 2,144 lines over thirty
   chapter runs, the most-played set in vol 7). READ by render on eighteen
