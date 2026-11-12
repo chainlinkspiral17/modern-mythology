@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 353: the fifth six, first reads — the nightmare cell lit; the tide pools and the hospice hold.**
+- The fifth six by lines over parts: nightmare_cell → tideline_survey →
+  hospice_room → henderson_garage → sam_bedroom → pit_stop_interior.
+  READ by render on eighteen lines across the first three.
+- nightmare_cell (vol 6 ch9, 127 lines) read BLACK on every line — Sam,
+  Boyd, Diego, "The door, when it opens, is opened by a man named Doyle".
+  The text: "The room has one fluorescent overhead, set behind a wire
+  cage ... The bulb in the cage stays on." A 09-24 pass had kept "the
+  cell dark"; raw (no trip, no post) the walls were near black, the tube
+  lighting only the ceiling round it. Tube 2.6 → 4.2 (range 9), the faint
+  key 0.2 → 0.5, ambient 1.0 → 1.55: cold green-grey concrete under the
+  tube; the device's red LED still reads in its corner.
+- tideline_survey (vol 7 ch18, the first and second pools) and
+  hospice_room (vol 5 ch13 night, ch20 day): read; they hold.
+- **Draft N+1 targets.** The cell's closeups (Sam, Boyd, Diego) frame bare
+  wall: the cot, the table and the door as their grounds; the second
+  pool's old man; the hospice's TV slab.
+
 **2026-11-12 · pass 352: the text gives way to a figure in the middle.**
 - Pass 349's N+1. A centre-slot figure alone counted as no side, so a
   long line's box was centred over it (Elicia's "I am broke, I am evicted

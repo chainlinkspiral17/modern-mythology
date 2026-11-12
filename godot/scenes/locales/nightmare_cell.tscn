@@ -133,7 +133,8 @@ background_mode = 1
 background_color = Color(0.02, 0.02, 0.02, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.48, 0.40, 1)
-ambient_light_energy = 1.0
+; (pass 353) "The bulb in the cage stays on": the cell read black on every line
+ambient_light_energy = 1.55
 ; (2026-09-24, sheet 28: was 0.55 — dark-albedo set under the night/dusk
 ; palette moods rendered black; the shader playbook's 2026-07-12 rule: ambient 1.0-1.8)
 fog_enabled = true
@@ -159,8 +160,8 @@ environment = SubResource("Env_Locale")
 [node name="CagedTube_Practical" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.22, -2.1)
 light_color = Color(0.85, 0.95, 0.82, 1)
-light_energy = 2.6
-omni_range = 7.0
+light_energy = 4.2
+omni_range = 9.0
 omni_attenuation = 1.0
 shadow_enabled = false
 
@@ -178,7 +179,7 @@ shadow_enabled = false
 [node name="Key_Tube" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.985, -0.157, 0.073, 0, 0.423, 0.906, -0.174, 0.893, -0.416, 0, 4, -2)
 light_color = Color(0.7, 0.85, 0.72, 1)
-light_energy = 0.2
+light_energy = 0.5
 shadow_enabled = false
 
 [node name="Fill_Faint" type="DirectionalLight3D" parent="."]

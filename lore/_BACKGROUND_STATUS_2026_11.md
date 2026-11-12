@@ -207,6 +207,10 @@ posters, screens with no picture: `empty_frame_audit`).
   six are through a pass. Montage lines set elsewhere that play in the set on screen (record, not invent):
   vol 5 ch20 Alberto in Houston (Antonio's office); vol 6 ch22 Sunday "At one fifteen Sunday morning the town
   is in the dark" and ch23 "At the Diaz house ... Diego has been awake" (Bianca's kitchen).
+- **nightmare_cell — pass 353 (2026-11-12).** It read black; "The bulb in the cage stays on" — lit cold.
+  tideline_survey and hospice_room read and hold.
+- Fifth six (by lines over parts): nightmare_cell ✔ → tideline_survey (read) → hospice_room (read) →
+  henderson_garage → sam_bedroom → pit_stop_interior.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
   all six through a pass: 332, 336 - 340).
