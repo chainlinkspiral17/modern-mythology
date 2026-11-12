@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 351: Cosmic Comics and the vehicle cab — read; two lines directed.**
+- Fourth and fifth of the fourth six. Cosmic Comics (cosmic_comics_interior +
+  back_office, 660 lines, vol 6 ch1-4, 12, 21): eighteen lines read — the
+  store, the counter, the back office and the spiral-notebook art hold.
+  "She has, at this moment, Rick notes, a small sedimentary smile" held the
+  previous line's one-way-mirror insert (dark glass): → closeup maya (she
+  is the line; pass 348 features her). "The wanderer blinks again. He looks
+  around." was tagged to the till: → establish.
+- vehicle_cab (441 lines, its night / rear / side / corolla / altima
+  presets): eighteen lines read; the shared cab holds. No change.
+- **Draft N+1 targets.** Cosmic: "The keys are heavy" — the keys insert is
+  a dark counter; the store's purple wash under the night trip. Cab: the
+  world through the windshield is blocky blue; the El Rancho drive-thru's
+  orange wall is a flat slab.
+
 **2026-11-12 · pass 350: the Salty Tome — the alley's sky was a clear noon.**
 - Third of the fourth six (salty_tome_interior and its alley / kitchenette
   / office presets: ~860 lines across vol 7 ch8, 14, 16, 18, 20, 21). READ

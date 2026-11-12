@@ -203,7 +203,10 @@ posters, screens with no picture: `empty_frame_audit`).
   substrate-bowl's rim — the text has CARVED crows on the bowls ("The crow on Roy's bowl ... turned its head")
   and Kai's real crow on that rim only for ch17 Aria 76-88. Which is it, and should every bowl carry its own?
 - Fourth six (by lines over parts): cabin_interior ✔ → hans_bakery_back_kitchen (read) → salty_tome_interior ✔ (pass 350, the alley under cloud) →
-  cosmic_comics_interior → vehicle_cab → bianca_kitchen_morning.
+  cosmic_comics_interior ✔ (351, two lines) → vehicle_cab (read) → bianca_kitchen_morning (read). The fourth
+  six are through a pass. Montage lines set elsewhere that play in the set on screen (record, not invent):
+  vol 5 ch20 Alberto in Houston (Antonio's office); vol 6 ch22 Sunday "At one fifteen Sunday morning the town
+  is in the dark" and ch23 "At the Diaz house ... Diego has been awake" (Bianca's kitchen).
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the
   all six through a pass: 332, 336 - 340).

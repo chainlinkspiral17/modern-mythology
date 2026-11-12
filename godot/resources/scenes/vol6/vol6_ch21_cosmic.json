@@ -422,7 +422,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert till]The wanderer blinks again. He looks around.",
+      "text": "[shot:establish]The wanderer blinks again. He looks around.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/077.mp3"
     },
     {
