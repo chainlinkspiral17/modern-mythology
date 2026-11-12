@@ -202,7 +202,7 @@ posters, screens with no picture: `empty_frame_audit`).
   lit, the long table, the counters. One question for Andy, recorded: the six-box black figure on the
   substrate-bowl's rim — the text has CARVED crows on the bowls ("The crow on Roy's bowl ... turned its head")
   and Kai's real crow on that rim only for ch17 Aria 76-88. Which is it, and should every bowl carry its own?
-- Fourth six (by lines over parts): cabin_interior ✔ → hans_bakery_back_kitchen (read) → salty_tome_interior →
+- Fourth six (by lines over parts): cabin_interior ✔ → hans_bakery_back_kitchen (read) → salty_tome_interior ✔ (pass 350, the alley under cloud) →
   cosmic_comics_interior → vehicle_cab → bianca_kitchen_morning.
 - The queue of 2026-11-10 is through its first pass. Next six, by lines over parts: kowalski_kitchen →
   natalie_apartment → chillwave_interior → caldwell_porch_night → miller_back_porch → houston_office (the

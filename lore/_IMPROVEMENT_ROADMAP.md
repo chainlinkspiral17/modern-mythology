@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 350: the Salty Tome — the alley's sky was a clear noon.**
+- Third of the fourth six (salty_tome_interior and its alley / kitchenette
+  / office presets: ~860 lines across vol 7 ch8, 14, 16, 18, 20, 21). READ
+  by render on eighteen lines.
+- The alley presets (`salty_tome_alley`, `salty_tome_alley_patch`) had no
+  env and took the bookstore's clear blue sky — under "the gray-blue of
+  late August on the Oregon coast at the hour before the sun", "dim — rain
+  on the asphalt", "the gray-blue going to dark". Both carry an overcast
+  coastal grey now (sky, a cooler ambient at 0.85, grey fog).
+- The face on the wall renders as its block stand-in in this container (the
+  painting is the user's hero art, not in the checkout) — read it on the
+  Deck.
+- **Draft N+1 targets.** "Lena lay on the couch" frames the office lamp, not
+  the couch; the alley at 7:50 ("The streetlights had come on") has no
+  streetlight practical; rain on the asphalt (a wet sheen, puddles); the
+  crowd of ch21 ("The crowd in the alley had been at the wall for nearly
+  two hours") — no one is there.
+
 **2026-11-12 · pass 349: a lone figure is the subject; the step-in follows the framing.**
 - Pass 348's N+1: lines with no close-up left the cast at the flanks. One
   figure alone on screen (and no insert holding) now stands HALF-featured

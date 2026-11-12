@@ -2950,6 +2950,13 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.8, 1.60, -9.5),
 		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
 		"fov": 58.0,
+		# (2026-11-12, pass 350) the Oregon coast under cloud: every alley scene
+		# is first light, dusk or rain ("the gray-blue of late August on the
+		# Oregon coast at the hour before the sun", "dim — rain on the asphalt",
+		# "the gray-blue going to dark"); it took the bookstore's clear blue.
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
 		"strip": ["Face_"],
 		"suppress_input": true,
 	},
@@ -3044,6 +3051,13 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.8, 1.60, -9.5),
 		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
 		"fov": 58.0,
+		# (2026-11-12, pass 350) the Oregon coast under cloud: every alley scene
+		# is first light, dusk or rain ("the gray-blue of late August on the
+		# Oregon coast at the hour before the sun", "dim — rain on the asphalt",
+		# "the gray-blue going to dark"); it took the bookstore's clear blue.
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
 		"suppress_input": true,
 	},
 	"hans_bakery_back_kitchen": {
