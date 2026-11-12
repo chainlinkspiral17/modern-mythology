@@ -355,6 +355,10 @@ const FEATURE_GROW  := 0.30      # scale +30 % at full feature
 const FEATURE_SHIFT := 0.55      # of the way from a flank slot to the frame's middle
 const FEATURE_EYE_Y := 0.26      # the pivot: the eye line, as a fraction of the slot's height
 const FEATURE_RATE  := 3.2
+# (2026-11-12, pass 349) one figure alone on screen is the scene's subject:
+# it stands half-featured — a held place, not a per-line move — and a
+# close-up of it takes the rest of the step.
+const LONE_FEATURE  := 0.5
 
 # Parallax: portraits counter-drift the bg sway (GameEngine drives the
 # bg with the same SWAY_PERIOD). Small amplitude to sell depth without
@@ -882,6 +886,7 @@ func _process(delta: float) -> void:
 	var sway_phase: float = _t * TAU / PARALLAX_PERIOD
 	var pdx: float = -sin(sway_phase) * PARALLAX_X_AMP
 	var pdy: float = -cos(sway_phase * 0.7) * PARALLAX_Y_AMP
+	var lone: bool = _present_count() == 1 and not _insert_quiet
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
@@ -906,7 +911,8 @@ func _process(delta: float) -> void:
 				node.set_meta("slide_x", slide_x)
 		# (2026-11-12) the featured figure eases toward the frame's middle
 		var feat: float = float(node.get_meta("feature")) if node.has_meta("feature") else 0.0
-		var feat_goal: float = 1.0 if (_featured_key != "" and _is_featured(String(slot["name"]))) else 0.0
+		var feat_goal: float = 1.0 if (_featured_key != "" and _is_featured(String(slot["name"]))) \
+				else (LONE_FEATURE if lone else 0.0)
 		if absf(feat - feat_goal) > 0.001:
 			feat = lerpf(feat, feat_goal, 1.0 - exp(-FEATURE_RATE * delta))
 			if absf(feat - feat_goal) < 0.002:
@@ -939,7 +945,12 @@ func _process(delta: float) -> void:
 				# write the meta and this is the sole read site.
 				if node.has_meta("kind") and String(node.get_meta("kind")) == "composition":
 					flip_x = 1.0
-				var grow: float = 1.0 + FEATURE_GROW * feat
+				# a figure the portrait camera already holds close (the bust and
+				# in) grows less: its face is large, and +30 % put the chin
+				# under the text band (pass 349, Antonio's narration)
+				var sz: String = String(node.get_meta("shot_size")) if node.has_meta("shot_size") else "wide"
+				var grow_max: float = FEATURE_GROW if (sz == "wide" or sz == "medium") else FEATURE_GROW * 0.35
+				var grow: float = 1.0 + grow_max * feat
 				tint_holder.pivot_offset = Vector2(tint_holder.size.x * 0.5, tint_holder.size.y * (FEATURE_EYE_Y if feat > 0.0 else 0.5))
 				tint_holder.scale = Vector2(flip_x * breath_s * grow, breath_s * grow)
 				# the featured figure in front of anyone it now overlaps
@@ -1004,6 +1015,19 @@ var _quiet_tw: Tween = null
 
 
 ## (2026-11-12) the character the scene camera holds in close-up ("" = none).
+## Figures on screen and not leaving.
+func _present_count() -> int:
+	var n: int = 0
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot == null:
+			continue
+		var nd: Variant = slot["node"]
+		if nd != null and is_instance_valid(nd) and not (nd as Control).has_meta("fading"):
+			n += 1
+	return n
+
+
 func set_featured(key: String) -> void:
 	_featured_key = key.strip_edges().to_lower()
 
@@ -1495,7 +1519,7 @@ func direct_line(char_name: String, text: String, expr: String, kind: String = "
 		var p3d: Node = node.get_meta("portrait3d")
 		if p3d == null or not is_instance_valid(p3d) or not p3d.has_method("set_shot"):
 			continue
-		entries.append({"key": char_key(str(slot["name"])), "p3d": p3d})
+		entries.append({"key": char_key(str(slot["name"])), "p3d": p3d, "node": node})
 	var speaker_size: String = "mcu" if reg == "intimate" else "wide"
 	# the speaker first, so listeners can size off them
 	for e_v: Variant in entries:
@@ -1520,6 +1544,7 @@ func direct_line(char_name: String, text: String, expr: String, kind: String = "
 		if not _scene_light.is_empty():
 			p3d.call("set_scene_light", _scene_light)
 		p3d.call("set_shot", speaker_size, String(pick["angle"]), take)
+		(e["node"] as Control).set_meta("shot_size", speaker_size)
 		_shot_memory[speaker] = {"size": speaker_size, "score": int(pick.get("score", 0)), "register": reg}
 	for e_v: Variant in entries:
 		var e: Dictionary = e_v
@@ -1532,6 +1557,7 @@ func direct_line(char_name: String, text: String, expr: String, kind: String = "
 		if not _scene_light.is_empty():
 			p3d2.call("set_scene_light", _scene_light)
 		p3d2.call("set_shot", String(pick2["size"]), String(pick2["angle"]))
+		(e["node"] as Control).set_meta("shot_size", String(pick2["size"]))
 		_shot_memory.erase(k)        # a listener who speaks next starts fresh
 	_last_speaker_key = speaker
 	_portrait_override = {}

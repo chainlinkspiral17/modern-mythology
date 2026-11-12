@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 349: a lone figure is the subject; the step-in follows the framing.**
+- Pass 348's N+1: lines with no close-up left the cast at the flanks. One
+  figure alone on screen (and no insert holding) now stands HALF-featured
+  (LONE_FEATURE 0.5: +15 % about the eye line, a quarter of the way in) — a
+  held place for the scene, not a per-line move; a close-up of it takes
+  the rest of the step.
+- The step-in follows the portrait camera: a figure already framed at the
+  bust or closer (PortraitDirector mcu / cu / ecu — narration over one
+  person alone) grows a third as much. At the full +30 % Antonio's
+  narration close-up put his chin under the text band; it sits clear now.
+  CharLayer records each figure's framing as `shot_size` meta in
+  direct_line.
+- Read by render: Alberto, Nicola, Frasier, Dante alone; Antonio on his
+  narration and his close-ups; John and Elicia as a pair.
+- **Draft N+1 targets.** A long line's box over a centre figure (Elicia);
+  the phone-call box (Frasier's call) stands over the caller's figure;
+  read on the Deck at 1280x800 and a 21:9 screen.
+
 **2026-11-12 · pass 348: portraits FEATURED — the close-up's subject steps in.**
 - The user: "Portraits still aren't being featured" → (asked) "too small / at
   the edges". Read by render on nine lines with local heroes (Alberto,
