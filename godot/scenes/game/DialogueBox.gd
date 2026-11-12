@@ -303,7 +303,14 @@ func _anchor_to(slot: String) -> void:
 		side = "left"
 	elif slot == "left" and not occ.has("right"):
 		side = "right"
-	var col_w: float = minf(READ_MAX_COL, usable * (0.58 if side != "" else 1.0))
+	# (2026-11-12, pass 352) a figure in the middle (the centre slot, or one
+	# featured in from a flank) is not covered: the column takes a free side
+	# and narrows; a centre figure alone puts the text on the left. A long
+	# line's box had stood over Elicia's face.
+	var mid: bool = occ.has("center") and not (occ.has("left") and occ.has("right"))
+	if mid and side == "":
+		side = "right" if occ.has("left") else "left"
+	var col_w: float = minf(READ_MAX_COL, usable * ((0.44 if mid else 0.58) if side != "" else 1.0))
 	var spare: float = maxf(usable - col_w, 0.0)
 	var target_l: float = left_pad + spare * 0.5
 	var target_r: float = -(right_pad + spare * 0.5)

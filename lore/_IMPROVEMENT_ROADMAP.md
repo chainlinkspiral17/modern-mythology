@@ -3835,6 +3835,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 352: the text gives way to a figure in the middle.**
+- Pass 349's N+1. A centre-slot figure alone counted as no side, so a
+  long line's box was centred over it (Elicia's "I am broke, I am evicted
+  in twenty-three days ..." covered all but her head); a figure featured in
+  from a flank was not reported as standing in the middle at all.
+- CharLayer.occupied_slots reports "center" while a figure is featured in
+  from a flank; DialogueBox: when the middle is taken (and not all three
+  slots), the column takes the free side and narrows (58 % → 44 % of the
+  band); a centre figure alone puts the text on the left.
+- Read by render: Elicia's long line (a narrow column, her face clear and
+  featured), Antonio's narration close-up, John / Elicia, Nicola.
+- **Draft N+1 targets.** Three on screen with the middle featured leaves no
+  free side: the box should drop a line of height (smaller measure) rather
+  than cover; read on the Deck 1280x800 and 21:9.
+
 **2026-11-12 · pass 351: Cosmic Comics and the vehicle cab — read; two lines directed.**
 - Fourth and fifth of the fourth six. Cosmic Comics (cosmic_comics_interior +
   back_office, 660 lines, vol 6 ch1-4, 12, 21): eighteen lines read — the

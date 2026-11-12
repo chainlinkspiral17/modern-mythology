@@ -761,6 +761,11 @@ func occupied_slots() -> Array[String]:
 		var node: Control = (slot as Dictionary).get("node") as Control
 		if node != null and is_instance_valid(node) and node.visible:
 			out.append(pos)
+			# (2026-11-12, pass 352) a figure featured in from a flank stands in
+			# the middle too: the text column must give way to it
+			if pos != "center" and _featured_key != "" and _is_featured(String((slot as Dictionary).get("name", ""))) \
+					and not out.has("center"):
+				out.append("center")
 	return out
 
 
