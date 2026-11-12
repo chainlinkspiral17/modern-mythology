@@ -3835,6 +3835,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 356: the seventh six — read; the cedar tower's clearing in afternoon light.**
+- The seventh six by lines played (kwik_stop and the diner are model
+  chapters; graustark and the grocery aisle are large builds read
+  separately): school_field_evening, new_orleans_bar, cabin_road,
+  cedar_tower, new_orleans_apartment, missing_link_interior. READ by render,
+  three lines each; the apartment, the bar, the field, the Missing Link hold.
+- cedar_tower_exterior (vol 7 ch22: "at three forty-three on a September
+  Monday afternoon", "the late-afternoon light") had no env and built its
+  sky from the scene's flat brown background: the clearing and the tower
+  read red-black. A late-afternoon coastal sky and ambient; the tower
+  stands whole against it.
+- A scan for first-lines-in-a-room tagged to an insert found 125; most
+  are deliberate (the alarm on waking, the door as one steps in, the
+  sprinklers at dawn) — left to the per-set reads, not rewritten.
+- **Draft N+1 targets.** The portal landing (dream_blur + arcana_warm) is
+  near black — read it against the text ("the six-by-six translucent
+  window"); cabin_road frames the wagon's dark interior.
+
 **2026-11-12 · pass 355: the sixth six — read; Jesse's door gets the hall light.**
 - The sixth six by lines over parts: jesse_bedroom, diego_bedroom,
   maya_bedroom, accretion_basement, el_rancho_taqueria, cafe_olimpico. READ

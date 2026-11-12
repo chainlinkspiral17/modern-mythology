@@ -6024,6 +6024,13 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(47.0, 1.70, 30.0),
 		"camera_rotation": Vector3(0.10, -0.02, 0.0),
 		"fov": 60.0,
+		# (2026-11-12, pass 356) "at three forty-three on a September Monday
+		# afternoon" / "the late-afternoon light": the view had no env and
+		# built its sky from the scene's flat brown background — the clearing
+		# and the tower read red-black. A late-afternoon coastal sky.
+		"env": {"sky_top": Color(0.44, 0.55, 0.70, 1), "sky_horizon": Color(0.86, 0.80, 0.68, 1),
+			"ground_horizon": Color(0.40, 0.40, 0.34, 1), "ground_bottom": Color(0.18, 0.18, 0.15, 1),
+			"ambient_color": Color(0.82, 0.78, 0.70, 1), "ambient_energy": 1.05, "fog_color": Color(0.72, 0.72, 0.68, 1)},
 		"suppress_input": true,
 		"far": 600.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
