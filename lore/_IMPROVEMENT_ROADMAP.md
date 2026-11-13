@@ -3835,6 +3835,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 362: the dark-frame sweep, first reads — two afternoon arrivals on the night porch.**
+- dark_frame_sweep running over all 326 presets (scratch; ~5 h). First
+  ninety read: most frames under the reading line are the text's own night
+  (Small Wood road "EXT. DRIVING AROUND — NIGHT", the after-party stools,
+  the night cab, the cabin porch at 10:50 PM by the kerosene lamp).
+- cabin_porch (the night porch) carried two AFTERNOONS: vol 7 ch13 Cale
+  ("Cale drove up at four-forty" — late August) and ch19 Roy ("Roy came up
+  the road at four-twelve"); every closeup and insert of both read
+  red-black. Both bg nodes → cabin_porch_day (it has every marker they
+  cue: cale, roy, tem, person / person_b, cedar, crow, truck). ch13
+  Marina ("driving in at ten", "rain ... since seven") and ch13 Porch
+  (10:50 PM) stay at night.
+
 **2026-11-13 · pass 361: Jesse's room at two hours — the hall light under the door is the evening's.**
 - A correction to pass 355. dark_frame_sweep's JUDGED_DARK had kept
   jesse_bedroom's door insert dark on purpose — vol 6 ch14 (10:48 PM):
