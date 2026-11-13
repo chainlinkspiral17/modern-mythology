@@ -127,16 +127,10 @@ def build_car_and_curb():
     """Jesse's sedan nose-in on the driveway; mailbox; the live oak
     the street is named for, dark overhead at the curb."""
     cx, cy = 3.4, 3.4
-    make_box("Car_Body", (cx, cy, 0.52), (1.75, 4.2, 0.55), COL_CAR)
-    make_box("Car_Cabin", (cx, cy + 0.1, 0.98), (1.55, 2.2, 0.42), COL_CAR_DK)
-    make_box("Car_Windshield", (cx, cy - 1.0, 0.95), (1.45, 0.06, 0.38), COL_GLASS)
-    make_box("Car_Rear_Glass", (cx, cy + 1.2, 0.95), (1.45, 0.06, 0.36), COL_GLASS)
-    for sy in (-1.4, 1.4):
-        for sx in (-0.85, 0.85):
-            make_cyl(f"Car_Wheel_{sx:+.1f}_{sy:+.1f}", (cx + sx, cy + sy, 0.30),
-                     0.30, 0.16, (0.10, 0.10, 0.11, 1.0), segments=12, axis='X')
-    make_box("Car_Bumper_F", (cx, cy - 2.12, 0.42), (1.7, 0.10, 0.22), COL_CAR_DK)
-    make_box("Car_Plate", (cx, cy - 2.17, 0.55), (0.32, 0.02, 0.16), (0.6, 0.6, 0.58, 1.0))
+    # (pass 364) the shared sedan (vehicles.make_car), nose to the garage — it
+    # was a body box, a cabin box and two glass slabs
+    from _props.vehicles import make_car
+    make_car("Car", cx, cy, 4.3, COL_CAR, along="-Y")
     # Mailbox at the curb on a post
     make_box("Mailbox_Post", (-1.2, YARD_D - 0.3, 0.55), (0.08, 0.08, 1.1), COL_TREE)
     make_box("Mailbox", (-1.2, YARD_D - 0.3, 1.18), (0.24, 0.5, 0.24), COL_MAILBOX)
@@ -164,24 +158,17 @@ def build_hero_props():
     vehicles), Ben's truck at the curb, the garage door at the
     driveway's end."""
     steel = (0.55, 0.57, 0.58, 1.0)
-    # Jim's truck nose-in ahead of the sedan
-    tx, ty = 3.4, 6.9
-    make_box("JimTruck_Bed", (tx, ty+0.8, 0.78), (1.8, 2.0, 0.72), (0.30, 0.34, 0.30, 1.0))
-    make_box("JimTruck_Cab", (tx, ty-0.6, 1.05), (1.7, 1.4, 0.62), (0.30, 0.34, 0.30, 1.0))
-    make_box("JimTruck_Glass", (tx, ty-0.6, 1.10), (1.5, 1.2, 0.44), (0.14, 0.16, 0.20, 1.0))
-    for wx in (tx-0.85, tx+0.85):
-        for wy in (ty-0.9, ty+1.2):
-            make_cyl(f"JimTruck_Wheel_{wx:.1f}_{wy:.1f}", (wx, wy, 0.34), 0.34, 0.22,
-                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='X')
-    # Ben's truck at the curb, parallel
-    bx, by = -2.0, 9.6
-    make_box("BenTruck_Body", (bx, by, 0.72), (3.9, 1.7, 0.66), (0.46, 0.36, 0.26, 1.0))
-    make_box("BenTruck_Cab", (bx+0.9, by, 1.18), (1.5, 1.55, 0.52), (0.46, 0.36, 0.26, 1.0))
-    make_box("BenTruck_Glass", (bx+0.9, by, 1.20), (1.3, 1.35, 0.40), (0.14, 0.16, 0.20, 1.0))
-    for wx in (bx-1.2, bx+1.2):
-        for wy in (by-0.85, by+0.85):
-            make_cyl(f"BenTruck_Wheel_{wx:.1f}_{wy:.1f}", (wx, wy, 0.32), 0.32, 0.22,
-                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
+    # (pass 364) both trucks were boxes. His father's truck parks ON THE STREET
+    # ("His father's truck is on the street, where Bill parks on Fridays") —
+    # a real pickup does not fit the 3 m of driveway behind the Civic — east
+    # of Ben's, clear of the streetlamp; Ben's is the shared green pickup of
+    # Meadowlark Circle and the garage curb. No character names in props
+    # (they answer closeup cues): Father_Truck.
+    from _props.vehicles import make_car
+    # both at the north curb, nose to tail, the father's clear of the streetlamp
+    # pole at x 5.6 (furniture_grammar: a truck in the travel lane breaks LANE)
+    make_car("Father_Truck", 2.9, 9.6, 4.8, (0.30, 0.34, 0.30, 1.0), pickup=True)
+    make_car("BenTruck", -2.6, 9.6, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
     # Garage door at the driveway terminus (the fold-out table +
     # broom closet live behind it)
     make_box("Garage_Door", (3.4, 0.03, 1.15), (2.60, 0.06, 2.30), (0.80, 0.78, 0.72, 1.0))
@@ -192,12 +179,10 @@ def build_hero_props():
 
 def build_hero_props_2026_09():
     """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
-
-    THE PHONE ("In the truck, before he starts it, his phone
-    buzzes."): face-up on the hood of the car in the drive — the
-    truck's cabin is solid, so the phone rides where the insert can
-    see it."""
-    make_box("Jesses_Phone", (3.6, 1.9, 0.8005), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))   # on the hood (2026-09-24: 2.5 cm over it)
+    (pass 364) The phone on the car's hood is gone: no chapter cues a phone
+    insert on this set — "In the truck, before he starts it, his phone
+    buzzes" plays in the vehicle cab."""
+    return
 
 
 def main():

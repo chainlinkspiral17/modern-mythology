@@ -311,11 +311,6 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; insert: in the truck, before he starts it, his phone buzzes
-[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 1.25, -1.3)
-rotation = Vector3(-0.5321, -0.5880, 0.0)
-metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
@@ -344,10 +339,12 @@ shadow_enabled = false
 omni_range = 7.00
 
 ; insert: the driveway from the lawn, the sedan on it and Jim's truck at its curb end, the kitchen window lit (it stood 50 cm from the sedan's door at night: black; from the curb end the truck's bed hid it)
-[node name="shot_insert_driveway__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.300, 1.600, -5.600)
-rotation = Vector3(-0.3926, -1.9815, 0.0)
-metadata/fov = 48.0
+; (pass 364) a WIDE of the house from the front walk: the Civic in the drive, the lit
+; garage and porch — "His parents' house is mostly dark. The kitchen light is on"
+[node name="shot_wide_driveway__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.500, 1.600, -7.800)
+rotation = Vector3(-0.0573, -2.6972, 0.0)
+metadata/fov = 52.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_porch__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -363,6 +360,6 @@ metadata/fov = 35.0
 
 ; insert: Ben's truck at the curb, three-quarter from the lawn under the street lamp (it looked down at a wheel at night: black)
 [node name="shot_insert_truck__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.400, 1.500, -8.000)
-rotation = Vector3(-0.1889, 1.0358, 0.0)
-metadata/fov = 44.0
+position = Vector3(3.000, 1.600, -7.600)
+rotation = Vector3(-0.1110, 1.1903, 0.0)
+metadata/fov = 52.0

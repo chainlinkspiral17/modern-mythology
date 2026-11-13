@@ -3835,6 +3835,31 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 364: the Henderson front yard — three box vehicles become cars; the truck on the street.**
+- From the sweep: henderson_porch_front's driveway and truck inserts. All
+  three vehicles were boxes (the Civic in the drive, "Jim's" truck nose-in
+  behind it, Ben's at the curb, Ben's reddish where Meadowlark's is green).
+  Now the shared helper (vehicles.make_car): the Civic as a sedan, Ben's
+  the green pickup, and his father's truck ON THE STREET — the text: "His
+  father's truck is on the street, where Bill parks on Fridays"; a real
+  pickup does not fit the 3 m of drive behind the Civic. Renamed
+  Father_Truck (no character names in props: closeup jim / bill exist).
+  It stood in the travel lane first (furniture_grammar LANE): now at the
+  north curb nose to tail with Ben's, clear of the streetlamp pole.
+- The phone on the old car's hood (and its insert) existed for "In the
+  truck, before he starts it, his phone buzzes" — which plays in the
+  vehicle cab; no chapter cues a phone insert here. Removed; shot_marker
+  audit: 0 blind cues.
+- ch14 "He pulls into his driveway at ten forty-eight. His parents' house
+  is mostly dark. The kitchen light is on" was a wheel in close-up: now
+  `wide driveway` from the front walk (the Civic, the lit garage, the
+  porch and its lamp) — an insert's 8° rule would centre the concrete.
+  "Ben gets up. He walks to his truck" stood 0.6 m off the bumper: now from
+  up the sidewalk under the streetlamp.
+- LESSON (prop_overlap / vantage audits): make_car bodies are prisms read
+  as boxes — a thing lying on a hood is "inside" the body's box. Name it
+  in the car's family (`Car_Hood_*`) or put it elsewhere.
+
 **2026-11-13 · pass 363: Ben's truck at the Hendersons' curb — a pickup, lit by the garage.**
 - From the sweep: henderson_garage `insert truck` (vol 6 ch5 "They walk to
   the curb. Ben's truck. Bench seat. Four people.") read as a black blob.
