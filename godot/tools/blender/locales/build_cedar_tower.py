@@ -441,7 +441,11 @@ def build_draft2_density_2026_08():
 def build_exterior():
     """The clearing at x≈+45: gravel, the wagon, the tower — seven
     floors of cedar band + glass band, the seventh running the
-    garden."""
+    garden. PASS 366 (2026-11-13): the palm panel and its green LED beside
+    the right-hand door (vol 7 ch22). Next: the doors as "cedar,
+    hand-built ... the kind of doors a fishing-cabin had, scaled up"
+    (planks, strap hinges — they are two flat slabs); a variant with the
+    doors open for "The three of them stood at the open doorway"."""
     X = 45.0
     make_box("Ext_Gravel", (X, -9.0, 0.0), (30.0, 48.0, 0.06), GRAVEL)   # the clearing runs south under the establish (2026-09-30; to y -33 for the 37 m lens, 2026-10-21)
     # The tower: SEVENTY FEET ON A SIDE (canon: "seventy feet on a side at
@@ -476,6 +480,12 @@ def build_exterior():
         # 2.5 m their tops ran into the glass band above, so the doorway
         # gate could not read the tower as their wall)
         make_box(f"Tower_Door_{sgn:+d}", (X + sgn * 0.5, TY - TS / 2.0 - 0.06, 1.05), (0.95, 0.06, 2.10), CEDAR_DK)
+    # (pass 366) "There was no handle. No doorknob. A small black panel beside
+    # the right-hand door at chest height — the size of a deck of cards ... A
+    # small green LED at the panel's corner lit up." The doors had nothing
+    # beside them. (Named for its cue, `panel`; no `door` / `tower` in the name.)
+    make_box("Palm_Panel", (X + 1.15, TY - TS / 2.0 - 0.012, 1.30), (0.065, 0.024, 0.09), (0.05, 0.05, 0.06, 1.0))
+    make_box("Palm_Panel_LED", (X + 1.15 + 0.022, TY - TS / 2.0 - 0.026, 1.30 + 0.034), (0.012, 0.006, 0.012), GREEN_LED)
     # The wagon in the clearing
     wx, wy = X - 6.0, 2.5
     make_box("Wagon_Body", (wx, wy, 0.95), (1.95, 4.4, 1.15), (0.36, 0.40, 0.38, 1.0))

@@ -475,3 +475,10 @@ metadata/fov = 35.0
 position = Vector3(-3.971, 1.182, -1.540)
 rotation = Vector3(-0.2618, 1.1681, 0.0)
 metadata/fov = 35.0
+
+; (pass 366) the bath: "disposable razors found behind the mirror" — the mirror cabinet over the
+; sink, its door ajar, the razors on its shelf (the plain `mirror` is Mrs. Chau's dresser's)
+[node name="shot_insert_mirror__chau_bath" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.900, 1.550, -0.900)
+rotation = Vector3(-0.0263, -1.2075, 0.0)
+metadata/fov = 32.0

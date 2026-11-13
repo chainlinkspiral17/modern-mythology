@@ -323,6 +323,37 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-13 · an insert can land in the wrong room too; a marker with no cue is a frame nobody sees (pass 366)
+
+- **What happened.** wrong_room_audit checked closeups and exempted
+  inserts: "an insert IS a cut to wherever the object is." Nine inserts
+  cut to the wrong room for months with every gate green: a bathroom line
+  ("razors found behind the mirror") to another room's dresser mirror, an
+  upstairs bedroom to the living room's television a floor down, a
+  parking-lot van to a different van 275 m away, a tower's ground doors
+  to its fourth-floor landing.
+- **Why.** One .tscn holds several rooms; a cue resolves by marker NAME.
+  The first pass to need "a mirror" authors the plain `shot_insert_mirror`
+  in ITS room; a later chapter in another room of the same file cues
+  `insert mirror`, shot_marker_audit finds a marker (not blind), and the
+  cut goes to the first room.
+- **The rule.** In a .tscn that serves more than one preset, an object
+  marker is authored for its preset: `shot_insert_<id>__<preset>`. A
+  plain marker is for an object every preset of the file can honestly cut
+  to. wrong_room_audit now reports a plain-marker insert that stands in
+  another preset's area or on another storey; each is read by render and
+  either fixed or recorded in KEPT_INSERT with the reason.
+- **Found the same way: frames nobody sees.** The motel pool ("Red silt
+  settles on the skin of the water"), the motel television and the gas
+  station's ice chest each had a marker, authored for a line, and no cue
+  on that line — while a WRONG line elsewhere cued the pool. 223 insert
+  markers in 86 scenes are reached by no cue. Authoring a marker is half
+  the job: cue the line in the same pass, and read the frame.
+- **How the sweep found it.** The dark-frame sweep listed a TV in a dark
+  room under a bedroom preset. The frame was dark because it was the
+  wrong room. A dark frame is a question about the cut before it is a
+  question about the light.
+
 ### 2026-11-10 · a probe that calls the function has not pressed the button (pass 327)
 
 - **What happened.** "making choices in the menu still breaks the game."

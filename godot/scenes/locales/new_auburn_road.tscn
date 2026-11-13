@@ -657,5 +657,18 @@ position = Vector3(-6.500, 1.700, -113.000)
 rotation = Vector3(0.0093, 2.2236, 0.0)
 metadata/fov = 48.0
 
+; (pass 366) ch20 "in the lot in front of The Foxhole's front door, a 2019 Toyota Tacoma ... and a
+; smaller cargo van with a logo on the side": from the lot, the van's logo side square on and the
+; Tacoma's tail at frame left — the plain `van` is the storm's
+; transport van on the two-lane, 275 m from this lot
+[node name="shot_insert_van__new_auburn_strip_mall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(26.000, 1.600, -47.600)
+rotation = Vector3(-0.0172, -1.2925, 0.0)
+metadata/fov = 55.0
 
-
+; (pass 366) vol 4 "chimes" plays on the two-lane: "pushed the back of the small car three feet
+; north" — the sedan on THIS road from behind (the plain `sedan` is the one in the strip mall's lot)
+[node name="shot_insert_sedan__new_auburn_two_lane" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.900, 1.000, -294.600)
+rotation = Vector3(-0.0537, -0.5358, 0.0)
+metadata/fov = 42.0

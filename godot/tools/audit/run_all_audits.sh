@@ -416,9 +416,12 @@ echo ""
 # the shore, 15.7 m away — 70 cuts in 21 chapters. Per-preset markers
 # (`<name>__<preset>`) fix it; this resolves every closeup cue the way
 # the engine does and fails past 8 m from the preset camera. Zero.
+# (pass 366) Inserts too: an `insert` / `wide` cue on a plain marker that
+# stands in ANOTHER preset's area, or on another storey, is read by render
+# and kept with a reason (KEPT_INSERT) or fixed — nine cut to the wrong room.
 echo "── wrong_room_audit.py ──"
 WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
-    echo "$WROUT" | grep "^ROOM" | head -20
+    echo "$WROUT" | grep -E "^(ROOM|AREA|STALE)" | head -20
     echo "$WROUT" | tail -1 || true; DEFERRED="$DEFERRED wrong_room_audit"; }
 echo "$WROUT" | tail -1
 echo ""

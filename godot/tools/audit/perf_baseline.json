@@ -69,6 +69,11 @@
   "prims": 66468,
   "objects": 300
  },
+ "cedar_tower": {
+  "draw": 178,
+  "prims": 44036,
+  "objects": 348
+ },
  "centro_break_room": {
   "draw": 64,
   "prims": 25176,
@@ -351,6 +356,11 @@
  },
  "pharmacy": {
   "draw": 1096
+ },
+ "pit_stop_interior": {
+  "draw": 560,
+  "prims": 63020,
+  "objects": 730
  },
  "pit_stop_office": {
   "draw": 88,

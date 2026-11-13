@@ -146,7 +146,7 @@
     },
     {
       "t": "narrate",
-      "text": "Red silt settles on the skin of the water and turns slowly there."
+      "text": "[shot:insert pool]Red silt settles on the skin of the water and turns slowly there."
     },
     {
       "t": "bg",
@@ -154,7 +154,7 @@
     },
     {
       "t": "narrate",
-      "text": "Kathy had sat on the single bed in the empty room, the television on while they played outside. She watched the first thing that came on, a strange cartoon HBO played in the middle of the afternoon."
+      "text": "[shot:insert tv]Kathy had sat on the single bed in the empty room, the television on while they played outside. She watched the first thing that came on, a strange cartoon HBO played in the middle of the afternoon."
     },
     {
       "t": "narrate",

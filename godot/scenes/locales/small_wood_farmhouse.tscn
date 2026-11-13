@@ -538,3 +538,16 @@ metadata/fov = 35.0
 position = Vector3(31.000, 1.450, 13.600)
 rotation = Vector3(-0.0350, -0.8727, 0.0)
 metadata/fov = 55.0
+
+; (pass 366) the narrator's room: "Often I'd just keep reading from twelve at night until the next
+; morning" / "The paperback's pages had gone soft at the corners" — the nightstand under the
+; reading lamp (these lines cued `tv`: the living room's television, a floor below)
+[node name="shot_insert_paperback__ranch_bedroom_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.950, 3.720, -9.000)
+rotation = Vector3(-0.5674, 0.7086, 0.0)
+metadata/fov = 34.0
+
+[node name="shot_insert_paperback__ranch_bedroom_lamp" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.950, 3.720, -9.000)
+rotation = Vector3(-0.5674, 0.7086, 0.0)
+metadata/fov = 34.0

@@ -49,7 +49,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.vehicles import make_car
-from _props.geometry import make_blob, make_lathe,  clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.geometry import make_blob, make_lathe,  clear_scene, make_box, make_cyl, make_tube, export_glb, make_rot_box
 from _props.views import make_view
 from _props.structure import make_frame_ring,  make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import (make_counter, make_counter_bullnose, make_register,
@@ -614,7 +614,12 @@ def build_back_lot_2026_10():
     lot's north edge. Draft 2 targets: the dumpster's stencil and sliding
     side door; the screen door's spring and the latch; the kitchen's exhaust
     fan over the window; a delivery truck's tire marks; the heat shimmer
-    (a mood); the lot at night for the ch4 rain scene if it ever cuts out."""
+    (a mood); the lot at night for the ch4 rain scene if it ever cuts out.
+    PASS 366 (2026-11-13): the three prints and the bag lie on the bread
+    rack's top tray in this preset (build_prints_2026_09); ch2's print
+    inserts had cut indoors. Next: the prints as pictures (the dreadlocked
+    woman, the small figure in the hat, the man in the charcoal suit) —
+    three hero-art entries for Andy to generate."""
     steel, steel_dk = (0.60, 0.62, 0.64, 1.0), (0.30, 0.31, 0.34, 1.0)
     dmx, dmy = -1.0, ROOM_D + 3.0
     # ── the back door: steel leaf open outward on its W hinge, the screen door shut in the opening ──
@@ -731,6 +736,18 @@ def build_prints_2026_09():
     for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.035, 0.02), (0.07, 0.04))):
         make_box(f"Print_8x10_{pi}", (2.80 + dx, 4.52 + dy, 1.0118 + pi * 0.0015), (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0))   # on the lunch table's top (2026-09-25: 5 mm inside it)
     make_box("Prints_Paper_Bag", (2.95, 4.82, 1.115), (0.16, 0.10, 0.22), (0.72, 0.60, 0.42, 1.0))
+    # (pass 366) vol6 ch2 plays at the dumpster, and its three `insert prints`
+    # cut INDOORS to the lunch counter above. In the back lot the prints lie
+    # fanned on the bread rack's top tray by the back door ("Ben takes out
+    # his phone. He photographs all three"), the bag beside them. Suffixed:
+    # the lot's rack is bare in every other view.
+    ry, rz = ROOM_D + 0.55, 1.26
+    for pi, (px, yaw) in enumerate(((2.10, 0.10), (2.25, -0.06), (2.40, 0.12))):
+        make_rot_box(f"Lot_Print_8x10_{pi}__pit_stop_back_lot", (px, ry + 0.01 * pi, rz + 0.00075 + pi * 0.0016),
+                     (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0), yaw=yaw)
+        make_rot_box(f"Lot_Print_8x10_{pi}_Border__pit_stop_back_lot", (px, ry + 0.01 * pi, rz + 0.0003 + pi * 0.0016),
+                     (0.215, 0.265, 0.0006), (0.92, 0.91, 0.88, 1.0), yaw=yaw)
+    make_box("Lot_Prints_Paper_Bag__pit_stop_back_lot", (2.56, ry - 0.05, rz + 0.11), (0.10, 0.16, 0.22), (0.72, 0.60, 0.42, 1.0))
 
 
 def main():

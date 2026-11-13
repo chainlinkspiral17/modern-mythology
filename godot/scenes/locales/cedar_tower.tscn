@@ -522,6 +522,13 @@ light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
 
+; (pass 366) "The panel registered something. A small green LED at the panel's corner lit up":
+; the black panel beside the right-hand door, its LED lit, the door's edge at frame left
+[node name="shot_insert_panel__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(45.750, 1.420, -6.450)
+rotation = Vector3(-0.1235, -0.4266, 0.0)
+metadata/fov = 30.0
+
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_wagon__cedar_tower_exterior" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(35.000, 1.500, 2.000)

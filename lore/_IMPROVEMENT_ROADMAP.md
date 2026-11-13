@@ -3835,6 +3835,77 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 366: wrong-room INSERTS — nine cues cut to another area of a shared set; the gate learns them.**
+- From the sweep: the narrator's upstairs bedroom (vol 2) cued `insert tv`
+  twice and cut a floor DOWN to the living room's television, in the
+  dark, on lines that are about reading. wrong_room_audit had checked
+  closeups only ("an insert IS a cut to wherever the object is"). That
+  holds until two rooms of one .tscn each have an object of the same
+  name. A scan by distance and storey, every hit read by render, found
+  nine wrong cuts:
+  - ranch_bedroom_night / _lamp `tv` → `paperback` (the nightstand under
+    the reading lamp, the clock radio's red face), own markers.
+  - cedar_tower_exterior `door` → the fourth-floor landing's door, 14 m
+    up. Now `insert panel`: the text's "small black panel beside the
+    right-hand door at chest height ... A small green LED at the panel's
+    corner lit up" did not exist — built (Palm_Panel + LED).
+  - new_auburn_strip_mall `van` → the storm's transport van on the
+    two-lane, 275 m off, for "a smaller cargo van with a logo on the side
+    that says RAMÓN VARGAS LIGHTING". The lot's own marker now (the
+    Tacoma's tail at frame left, the van's logo side square on).
+  - new_auburn_two_lane `sedan` (vol 4 "chimes") → the strip mall lot's
+    sedan; now the sedan on that road from behind. Its `marquee` cue (a
+    line about a television show) removed.
+  - desert_gas_station `pool` → the motel's pool, 802 m off, on a line
+    about the highway: now `establish`. The motel's pool and television
+    markers and the station's ice chest had NO cue anywhere: cued on the
+    lines they were built for ("Red silt settles on the skin of the
+    water"; "the television on"; "reaches into an outdoor ice cooler").
+  - amanda_fort_close `candy_dish` (the hall's, on a dream line with no
+    candy) and afterparty_room `dryer` (the sister's house, on "Carrie is
+    standing there, smiling at him"): cues removed.
+  - chau_bath `mirror` → Mrs. Chau's dresser mirror, for "disposable
+    razors found behind the mirror": the bath's own marker on the mirror
+    cabinet, its door ajar, the razors on the shelf.
+  - pit_stop_back_lot `prints` ×3 → the lunch counter INDOORS (built
+    before the back lot existed). The prints lie fanned on the bread
+    rack's top tray by the back door now, the bag beside them (suffixed
+    props), with the lot's own marker.
+- THE GATE: wrong_room_audit reports an `insert` / `wide` cue on a plain
+  marker that stands > 8 m off AND in another preset's area (that
+  preset's camera at under half the distance), or > 2.2 m above or below
+  the camera. 44 such cuts were read and are right (KEPT_INSERT, each
+  with its reason: the tower on the hill, the bus across the lot, the
+  table indoors a porch line remembers); a kept entry that no longer
+  applies fails as STALE. 0 unjudged.
+- OPEN, found on the way (next passes):
+  - **223 insert markers no cue reaches** (86 scenes;
+    scratch scan, to promote): frames authored for lines that never got
+    the cue — miller_office (bills, cabinet, laptop, window),
+    kai_apartment (chair, desk, futon, kitchen, window), sam_bedroom,
+    parish_cemetery, the Salty Tome's alley … Read each against its
+    chapter and cue the line that names it, or delete the marker.
+  - vol5_ch21_world 137–143: Sofia in Rio de Janeiro plays on the
+    Graustark wreck (her dream is of Graustark; her apartment has no
+    set). The notebook insert borrows the shotgun house's. For Andy.
+  - the Chaus' mirror cabinet is a solid box (no interior, no shelf
+    depth; the razors sit in its face); the fogged door has no wiped
+    streak (the builder's own draft 5 list).
+  - the tower's doors do not open on "The double-doors eased open".
+
+**2026-11-13 · pass 365: Natalie's night floor — the streetlight beam the text gives; the deck reads as cards.**
+- From the sweep: natalie_apartment_night `insert deck` (vol 5 ch12 "She
+  did not, however, put the card back in the deck" / "She shuffled the
+  rest of the deck") read 24/255: a dark purple slab on a dark rug.
+- The text has the light: the Hanged Man "lay face up, catching a stray
+  beam of streetlight". A warm spot from the west window's blinds lies
+  across the rug where the two face-up cards and the deck are (night
+  preset only). The deck's stack is card-cream at the edges with a worn
+  lavender back on top; the insert frames the deck and both cards.
+- Draft 6 of the room's night. Next: the beam's slat shadows (it is a
+  plain cone; the blinds would rule it); the Wheel of Fortune on top of
+  the deck after "She allowed it the third time".
+
 **2026-11-13 · pass 364: the Henderson front yard — three box vehicles become cars; the truck on the street.**
 - From the sweep: henderson_porch_front's driveway and truck inserts. All
   three vehicles were boxes (the Civic in the drive, "Jim's" truck nose-in
