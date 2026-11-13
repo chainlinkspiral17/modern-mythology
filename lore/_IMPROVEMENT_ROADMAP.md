@@ -3835,6 +3835,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-12 · pass 359: the ninth and tenth sixes — read; Kestrel Mountain shows its town.**
+- Ninth six: montreal_apartment (Faust's painting), lake_palestine,
+  riverboat_interior (Dante, the D. Dean card), faust_apartment (Elicia),
+  meadowlark_circle, bungalow. Tenth six: nate_garage, kestrel_mountain,
+  equipment_shed, ramos_kitchen_morning, safehouse_bedroom,
+  houston_design_studio. READ by render, three lines each; all hold but
+  Kestrel.
+- kestrel_mountain (vol 7 ch11): "He looked down the path ... He could
+  see, far below, a town in a valley" and "The town in the valley below
+  was lit now" played on the path's foot looking UP the mountain — the
+  town was never in a frame. New `shot_wide_town` (a wide, not an insert:
+  the town is the view, 60 m off) from the bend high on the path back down
+  to the square, the fountain and the church spire; both lines directed.
+  The bowl insert stood 1.7 m off a palm-sized bowl (a red ring in a
+  corner): half a metre now, a tighter lens.
+- **Draft N+1 targets.** The bowl's carved figures ("an octopus at the
+  rim with what looked like seven and a half arms") are not modelled — a
+  hero-art slot for the bowl's face; the town's "low golden light" at the
+  exit is the noon sky.
+
 **2026-11-12 · pass 358: the eighth six — read; Club Sharp's faces against the lit cage.**
 - The eighth six: daily_grind_interior, elicia_apartment, roberts_kitchen,
   club_sharp, grandmother_kitchen_morning, new_auburn_road. READ by

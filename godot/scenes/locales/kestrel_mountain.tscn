@@ -323,8 +323,17 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot · kestrel_mountain (2026-09-03) ───────────────────────
 ; insert: the cedar bowl on the plank at the stream, the size of his palm
 [node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.6, -24.6)
-rotation = Vector3(-0.5585, -0.2111, 0.0)
+; (pass 359) half a metre off the bowl: at 1.7 m the palm-sized bowl was a red ring in a corner
+position = Vector3(0.150, 3.980, -25.550)
+rotation = Vector3(-0.5340, -0.3220, 0.0)
+metadata/fov = 34.0
+
+; (pass 359) a WIDE from the bend high on the path, back down to the town at its foot:
+; "He could see, far below, a town in a valley" — the establish at the path's foot never
+; showed it (a wide, not an insert: the town is the view, 60 m off, not an object)
+[node name="shot_wide_town" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 6.400, -44.000)
+rotation = Vector3(-0.0500, 3.1330, 0.0)
 metadata/fov = 42.0
 
 ; insert: the hedge at the bend, waist-high, red berries
