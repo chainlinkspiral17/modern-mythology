@@ -205,7 +205,7 @@ shadow_enabled = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48, 1.30, -4.45)
 light_color = Color(0.98, 0.82, 0.56, 1)
 light_energy = 1.2
-omni_range = 4.2
+omni_range = 6.0   ; (pass 367) 4.2 stopped a metre short of the door: the slippers by it were unlit
 shadow_enabled = false
 
 [node name="WindowGlowSoft__hospice_room" type="OmniLight3D" parent="."]
@@ -399,8 +399,10 @@ position = Vector3(0.778, 0.870, -3.453)
 rotation = Vector3(-0.2618, -0.1175, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_door__hospice_room_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.477, 1.557, -0.290)
-rotation = Vector3(-0.2618, 1.7913, 0.0)
+; (pass 367) "On the floor by the door: a pair of slippers Alice had not worn in three weeks."
+; text_focus_pass (2026-10-27) had named this frame `door` and aimed it at the door's window at
+; head height; it was never cued. The line's object is the slippers: named for them, on them.
+[node name="shot_insert_slippers__hospice_room_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.250, 0.750, -1.050)
+rotation = Vector3(-0.5329, 2.1815, 0.0)
 metadata/fov = 35.0

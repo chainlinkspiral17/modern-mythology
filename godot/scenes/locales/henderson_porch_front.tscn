@@ -359,7 +359,8 @@ rotation = Vector3(-0.2618, -2.9021, 0.0)
 metadata/fov = 35.0
 
 ; insert: Ben's truck at the curb, three-quarter from the lawn under the street lamp (it looked down at a wheel at night: black)
+; (pass 367) from the lawn east of the drive, under the lamp: the truck's lit end and near flank
 [node name="shot_insert_truck__henderson_porch_front" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.000, 1.600, -7.600)
-rotation = Vector3(-0.1110, 1.1903, 0.0)
+position = Vector3(5.200, 1.600, -7.400)
+rotation = Vector3(-0.1466, 1.0883, 0.0)
 metadata/fov = 52.0

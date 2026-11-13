@@ -335,7 +335,7 @@
   },
   {
    "t": "narrate",
-   "text": "The dressing room is, by Foxhole standard, a storage closet with two folding chairs and a clothing rack and a sign on the door that says DRESSING ROOM in marker. The fluorescent overhead has a slow buzz.",
+   "text": "[shot:insert folding]The dressing room is, by Foxhole standard, a storage closet with two folding chairs and a clothing rack and a sign on the door that says DRESSING ROOM in marker. The fluorescent overhead has a slow buzz.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/061.mp3"
   },
   {

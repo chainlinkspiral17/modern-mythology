@@ -90,7 +90,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya slides the knife under the edge of the third board. The board lifts. Easier than she expects. Somebody has lifted it before.",
+      "text": "[shot:insert board]Maya slides the knife under the edge of the third board. The board lifts. Easier than she expects. Somebody has lifted it before.",
       "voice": "assets/audio/voice/vol6_ch4_maya_floor/016.mp3"
     },
     {

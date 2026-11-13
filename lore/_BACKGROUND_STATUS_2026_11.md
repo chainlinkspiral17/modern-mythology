@@ -207,6 +207,15 @@ posters, screens with no picture: `empty_frame_audit`).
   six are through a pass. Montage lines set elsewhere that play in the set on screen (record, not invent):
   vol 5 ch20 Alberto in Houston (Antonio's office); vol 6 ch22 Sunday "At one fifteen Sunday morning the town
   is in the dark" and ch23 "At the Diaz house ... Diego has been awake" (Bianca's kitchen).
+- **The dark-frame sweep, read to the end — passes 356–367 (2026-11-12/13).** All 326 presets' cued frames
+  rendered (1,495) and every frame below the line read by eye. Fixed from it: the cedar tower's afternoon
+  and its fourth-floor landing, Club Sharp's faces, Kestrel Mountain's town and golden hour, Jesse's door,
+  the cabin porch's afternoons, Ben's truck (garage and front yard, now real pickups), Natalie's night deck
+  (the text's streetlight beam), the parked Altima's dome light. 82 frames stay dark because the text is
+  (JUDGED_DARK, each with its reason). **Two new gates came out of it:** wrong-room INSERTS (pass 366: nine
+  cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
+  to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
+  39 now have their line, 186 remain under a ratchet).
 - **nightmare_cell — pass 353 (2026-11-12).** It read black; "The bulb in the cage stays on" — lit cold.
   tideline_survey and hospice_room read and hold.
 - Fifth six (by lines over parts): nightmare_cell ✔ → tideline_survey (read) → hospice_room (read) →

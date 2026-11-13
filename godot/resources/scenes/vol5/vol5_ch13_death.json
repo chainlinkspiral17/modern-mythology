@@ -119,7 +119,7 @@
     },
     {
       "t": "narrate",
-      "text": "On the floor by the door: a pair of slippers Alice had not worn in three weeks.",
+      "text": "[shot:insert slippers]On the floor by the door: a pair of slippers Alice had not worn in three weeks.",
       "voice": "assets/audio/voice/vol5_ch13_death/023.ogg"
     },
     {

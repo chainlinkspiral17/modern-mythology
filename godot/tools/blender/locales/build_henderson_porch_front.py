@@ -17,6 +17,13 @@ edge.
 Coordinate frame: Blender Z-up. y=0 is the house FRONT WALL; +Y runs
 toward the street; the curb is at y=YARD_D. glTF export remaps to
 Godot (x, z, -y).
+
+PASS 364 / 367 (2026-11-13): the three vehicles are cars (vehicles.make_car);
+the father's truck is ON THE STREET (the text), west of Ben's under the live
+oak; Ben's stands in the streetlamp's pool in front of the walk.
+NEXT-PASS TARGETS: the kitchen window lit from inside on practice nights
+(ch14 "The kitchen light is on"); the neighbours' drives past the frame
+edges; the porch lamp's fixture; the oak's roots heaving the sidewalk.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -165,10 +172,13 @@ def build_hero_props():
     # Meadowlark Circle and the garage curb. No character names in props
     # (they answer closeup cues): Father_Truck.
     from _props.vehicles import make_car
-    # both at the north curb, nose to tail, the father's clear of the streetlamp
-    # pole at x 5.6 (furniture_grammar: a truck in the travel lane breaks LANE)
-    make_car("Father_Truck", 2.9, 9.6, 4.8, (0.30, 0.34, 0.30, 1.0), pickup=True)
-    make_car("BenTruck", -2.6, 9.6, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
+    # both at the north curb, nose to tail (furniture_grammar: a truck in the
+    # travel lane breaks LANE). (pass 367) Ben's stands in front of the walk,
+    # in the streetlamp's pool; the father's west of it under the live oak.
+    # Pass 364 had the father's EAST of Ben's — between the lamp and Ben's
+    # truck, a black flank filling `insert truck` ("He walks to his truck").
+    make_car("Father_Truck", -4.4, 9.6, 4.8, (0.30, 0.34, 0.30, 1.0), pickup=True)
+    make_car("BenTruck", 1.0, 9.6, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
     # Garage door at the driveway terminus (the fold-out table +
     # broom closet live behind it)
     make_box("Garage_Door", (3.4, 0.03, 1.15), (2.60, 0.06, 2.30), (0.80, 0.78, 0.72, 1.0))

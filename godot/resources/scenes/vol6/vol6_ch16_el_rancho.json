@@ -728,7 +728,7 @@
     },
     {
       "t": "narrate",
-      "text": "The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW.",
+      "text": "[shot:insert speaker]The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/135.mp3"
     },
     {
@@ -1257,7 +1257,7 @@
     },
     {
       "t": "narrate",
-      "text": "He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas.",
+      "text": "[shot:insert flautas]He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/225.mp3"
     },
     {
@@ -1294,7 +1294,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert packet]Diego pours one of the green-sauce packets over the open end of the burrito anyway.",
+      "text": "Diego pours one of the green-sauce packets over the open end of the burrito anyway.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/232.mp3"
     },
     {

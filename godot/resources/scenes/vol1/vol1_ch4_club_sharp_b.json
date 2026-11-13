@@ -43,7 +43,7 @@
    "t": "say",
    "char": "Joan",
    "expr": "neutral",
-   "text": "Clearly, you need a shot of absinthe to clear away cobwebs."
+   "text": "[shot:insert absinthe]Clearly, you need a shot of absinthe to clear away cobwebs."
   },
   {
    "t": "say",

@@ -124,7 +124,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya parks the bike.",
+   "text": "[shot:insert bike]Maya parks the bike.",
    "voice": "assets/audio/voice/vol6_ch12_porch/022.mp3"
   },
   {
@@ -330,7 +330,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya drinks her iced tea.",
+   "text": "[shot:insert tea]Maya drinks her iced tea.",
    "voice": "assets/audio/voice/vol6_ch12_porch/055.mp3"
   },
   {
@@ -477,7 +477,7 @@
   },
   {
    "t": "narrate",
-   "text": "She makes a sandwich. She eats it at the kitchen counter. She drinks a glass of water.",
+   "text": "[shot:insert counter]She makes a sandwich. She eats it at the kitchen counter. She drinks a glass of water.",
    "voice": "assets/audio/voice/vol6_ch12_porch/080.mp3"
   },
   {

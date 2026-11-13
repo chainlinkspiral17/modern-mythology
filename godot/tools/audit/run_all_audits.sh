@@ -426,6 +426,18 @@ WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
 echo "$WROUT" | tail -1
 echo ""
 
+# ── Orphan insert markers (pass 367, 2026-11-13) ──────────────
+# An insert marker is half a shot; the cue on the line that names the
+# object is the other half. 223 authored frames were reached by no cue
+# (the motel pool, the motel television, the ice chest had markers and a
+# wrong line elsewhere borrowed one). A ratchet: the count may only fall —
+# a new marker ships with its cue, and the frame is read.
+echo "── orphan_marker_audit.py --gate ──"
+OMOUT="$(python3 orphan_marker_audit.py --gate 2>/dev/null)" || {
+    echo "$OMOUT" | grep "^REGRESSION" || true; DEFERRED="$DEFERRED orphan_marker_audit"; }
+echo "$OMOUT" | grep "orphan_marker_audit ·" | tail -1
+echo ""
+
 # ── Painting spots (2026-11-08) ───────────────────────────────
 # A painting has no markers; resources/vn/painting_spots.json names the
 # parts of a picture an insert can point at. Every key a real picture,

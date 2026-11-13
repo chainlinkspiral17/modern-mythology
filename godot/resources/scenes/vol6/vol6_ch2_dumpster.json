@@ -676,7 +676,7 @@
     },
     {
       "t": "narrate",
-      "text": "He crushed the Powerade bottle one more time, for good measure, and walked to his truck.",
+      "text": "[shot:insert truck]He crushed the Powerade bottle one more time, for good measure, and walked to his truck.",
       "voice": "assets/audio/voice/vol6_ch2_dumpster/104.mp3"
     },
     {

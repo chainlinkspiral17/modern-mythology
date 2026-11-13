@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, in the kitchen, pouring herself a glass of water before bed, pauses at the window. She hears the dogs. She does not, yet, know to hear the Morse.",
+      "text": "[shot:insert window]Maya, in the kitchen, pouring herself a glass of water before bed, pauses at the window. She hears the dogs. She does not, yet, know to hear the Morse.",
       "voice": "assets/audio/voice/vol6_ch5_radio/034.ogg"
     },
     {

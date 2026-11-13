@@ -372,11 +372,13 @@ light_energy = 1.5
 omni_range = 20.0
 shadow_enabled = false
 
+; (pass 367) they eat in the parked car: the dome is the light they eat by. At 0.45 the driver's
+; seat was black and the leaking packet on it read 13/255 ("The packet leaks slowly", cued 3x)
 [node name="Dome_Light__vehicle_cab_altima_night" type="OmniLight3D" parent="."]
 position = Vector3(9.500, 1.480, -0.200)
 light_color = Color(1.00, 0.90, 0.70, 1)
-light_energy = 0.45
-omni_range = 2.20
+light_energy = 0.80
+omni_range = 2.60
 shadow_enabled = false
 
 [node name="Phone_Glow__vehicle_cab_altima_night" type="OmniLight3D" parent="."]

@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya parks the bike. She climbs the porch steps.",
+      "text": "[shot:insert bike]Maya parks the bike. She climbs the porch steps.",
       "voice": "assets/audio/voice/vol6_ch21_porch/008.mp3"
     },
     {

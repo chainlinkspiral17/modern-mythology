@@ -788,7 +788,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is at the bale at the eighth pallet's lid when his hands stop.",
+      "text": "[shot:insert hands]He is at the bale at the eighth pallet's lid when his hands stop.",
       "voice": "assets/audio/voice/vol6_ch18_stockroom/144.mp3"
     },
     {

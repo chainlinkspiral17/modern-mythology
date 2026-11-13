@@ -323,6 +323,31 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-13 · cueing by the word is a proposal; one in four fails when read (pass 367)
+
+- **What happened.** 52 uncued lines named the object of an orphan insert
+  marker. Every one passed shot_marker_audit, wrong_room_audit and
+  marker_aim. Rendered and read, 13 were wrong: six too dark to read, four
+  where the WORD matched and the object did not (`lids` = eyelids, not can
+  lids; `paint` = the painted face, not the cans; the crow on a car roof,
+  not the crow on the traffic light; the dog "at Bill's feet" shown on the
+  couch), a blank elevator wall, an abstract top-down bed, and two frames
+  so tight they were unreadable (fixed by re-aiming).
+- **The rule.** A word match is a candidate list. The cut exists when the
+  frame has been rendered ON ITS LINE and read against the sentence: is it
+  this object, at this moment of the scene, lit enough to see? Keep a
+  count of what was tried and dropped; it is the honest measure of the
+  pass.
+- **Order of objects in a scene matters.** A prop is modelled in ONE state
+  (the packet already on the seat; the dog already on the couch). An
+  insert may only be cued from the line where the text puts the object in
+  that state — earlier lines show the future.
+- **After moving a prop for a gate, re-render the whole set.** Pass 364
+  moved a truck out of the travel lane and into another insert's
+  foreground; marker_aim and vantage_obstruction stayed green (the
+  subject was still on axis, the camera still clear) while the frame
+  became a black flank. Found a day later by the dark-frame sweep.
+
 ### 2026-11-13 · an insert can land in the wrong room too; a marker with no cue is a frame nobody sees (pass 366)
 
 - **What happened.** wrong_room_audit checked closeups and exempted

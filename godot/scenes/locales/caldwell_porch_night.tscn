@@ -369,9 +369,11 @@ rotation = Vector3(-0.549797, 0.785398, 0)
 metadata/fov = 42.0
 
 ; insert: Maya's bike at the porch steps
+; (pass 367: first cued, first read — at 1 m the frame was two black wheel discs; from the
+; rockers' side now, the whole bike against the east rail, the street's night past it)
 [node name="shot_insert_bike" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2, 1.1, -1.4)
-rotation = Vector3(-0.5334, 3.0157, 0.0)
+position = Vector3(2.000, 1.350, -2.300)
+rotation = Vector3(-0.3882, -3.0648, 0.0)
 metadata/fov = 44.0
 
 ; insert: her phone buzzes at the stoplight

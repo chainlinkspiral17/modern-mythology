@@ -3835,6 +3835,69 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 367: frames nobody saw — 39 authored inserts get their line; the sweep is read to the end.**
+- THE ORPHANS. 223 insert markers were reached by no cue (pass 366's
+  open item). For each, the uncued lines that name its object were
+  listed (orphan_marker_audit.py --lines); 52 confident matches were
+  cued, ALL 52 rendered and read. 39 kept: the green robe on the hook by
+  the back door, the lathe Kai wakes, the brochure rack and the feather
+  at Briar Falls, the crow on Finn's dashboard, Maya's bike at the porch,
+  the iced tea, the sharpie face on the after-party mirror, the squat
+  rack's missing bolt, the cordless on Graciela's table, the loose
+  board, the fridge and its papers, Diego's cot, the ceiling fan Sam
+  counts, the church across the street, the Missing Link's sign and
+  menu … 13 dropped after reading:
+  - too dark to read (the sets need light before the cut): the Dabney
+    game room's controllers, Nick's grandmother's recliner, the flyer
+    on Nate's amp, the Civic in Nate's drive, the Altima's turnout, the
+    Tome's dumpster;
+  - the WORD matched, not the object: `lids` (the mural's eyelids —
+    the marker frames paint-can lids), `paint` (the painted face — the
+    marker frames cans), the crow "on the roof" of a moving car (the
+    marker is the crow on a traffic light), Daisy "at Bill's feet" /
+    "under the table" (the dog is modelled on the couch — cued on "He
+    sits with Daisy on the couch" instead);
+  - a blank frame: the elevator; an abstract one: Sam's bed from above.
+  Fixed on reading: the bike insert was two black wheel discs at 1 m
+  (pulled back to the whole bike on the rail); "On the floor by the
+  door: a pair of slippers" framed the door's window at head height
+  (renamed `slippers`, aimed at them; the under-cabinet light now
+  reaches the door).
+- THE GATE: orphan_marker_audit.py — a ratchet (ceiling 186, from 223):
+  a new marker ships with its cue. Wired into run_all_audits.sh.
+- THE SWEEP, read to the end (326 presets, 1,495 frames). 82 frames
+  below the line are dark because the text is (night porches, cars at
+  night, the Foxhole, Club Sharp's line-on-black, "lit only by the
+  small under-cabinet light") — each recorded in JUDGED_DARK with its
+  reason; the sweep now reports 0 to read. Fixed from its last stretch:
+  - the Altima at four-fifteen AM: the dome light they eat by, 0.45 →
+    0.80 (the leaking packet on the driver's seat read 13/255). The
+    packet insert on "Diego pours one of the green-sauce packets" showed
+    the RED packet on the seat ten lines before it lands there: that cue
+    removed, the open flauta box cued where BT opens it.
+  - MY OWN REGRESSION (pass 364): parking the father's truck at the
+    curb EAST of Ben's put its black flank across `insert truck` ("Ben
+    gets up. He walks to his truck"). The father's truck stands west,
+    under the live oak; Ben's in front of the walk in the streetlamp's
+    pool; the insert sees its lit end. LESSON: after moving a prop to
+    satisfy one gate, re-render every frame of the set, not only the
+    frame the gate named.
+- OPEN:
+  - 186 orphans left. ~25 are dead duplicates in copied scene files
+    (cabin_interior_bed.tscn carries the cabin's whole marker set;
+    miller_back_porch.tscn carries vol 7's porch markers) — delete.
+    The rest want light or a line: next batch.
+  - Sets too dark for a cut that the text asks for: dabney_game_room
+    (controllers), nick_living_night (the recliner in the television's
+    light), nate_garage / nate_driveway at night, the Tome's alley
+    dumpster.
+  - MONTAGE lines that play on another character's room (for Andy):
+    vol6_ch19_chains:234 "Maya, in her bed at her grandmother's, is
+    asleep" on Coach K's bedroom (and its bed insert);
+    vol6_ch7_hospital:96 the Hendersons' couch on the Kowalskis'.
+  - A bike's wheels are solid black discs (caldwell porch): rims and
+    spokes that read.
+
 **2026-11-13 · pass 366: wrong-room INSERTS — nine cues cut to another area of a shared set; the gate learns them.**
 - From the sweep: the narrator's upstairs bedroom (vol 2) cued `insert tv`
   twice and cut a floor DOWN to the living room's television, in the

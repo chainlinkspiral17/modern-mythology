@@ -211,7 +211,7 @@
   },
   {
    "t": "narrate",
-   "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes.",
+   "text": "[shot:insert daisy]He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes.",
    "voice": "assets/audio/voice/vol6_ch13_home/035.ogg"
   },
   {

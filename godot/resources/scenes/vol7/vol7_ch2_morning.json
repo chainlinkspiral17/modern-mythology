@@ -113,7 +113,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/021.mp3"
     },
     {
-      "text": "She made a coffee for herself before the doors opened. She drank it standing at the bar looking through the front window at the slate-gray light over Main.",
+      "text": "[shot:insert window]She made a coffee for herself before the doors opened. She drank it standing at the bar looking through the front window at the slate-gray light over Main.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/022.mp3"
     },
@@ -534,7 +534,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/091.mp3"
     },
     {
-      "text": "He unlocked the front door. He flipped the CLOSED sign. He went behind the counter and woke the small repair lathe in the back. He sat on the stool behind the counter and looked at his hands.",
+      "text": "[shot:insert lathe]He unlocked the front door. He flipped the CLOSED sign. He went behind the counter and woke the small repair lathe in the back. He sat on the stool behind the counter and looked at his hands.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/092.mp3"
     },
@@ -775,7 +775,7 @@
       "t": "bg"
     },
     {
-      "text": "He went out to his truck at eleven oh-six. The crow was on the dashboard. The crow had not, since Wednesday afternoon when Finn had driven up, left the dashboard.",
+      "text": "[shot:insert crow]He went out to his truck at eleven oh-six. The crow was on the dashboard. The crow had not, since Wednesday afternoon when Finn had driven up, left the dashboard.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/138.mp3"
     },
@@ -842,7 +842,7 @@
       "voice": "assets/audio/voice/vol7_ch2_morning/150.mp3"
     },
     {
-      "text": "The crow on the dashboard tilted its head at him.",
+      "text": "[shot:insert crow]The crow on the dashboard tilted its head at him.",
       "t": "narrate",
       "voice": "assets/audio/voice/vol7_ch2_morning/151.mp3"
     },

@@ -810,7 +810,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back.",
+      "text": "[shot:insert bed]He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back.",
       "voice": "assets/audio/voice/vol6_ch20_prints/127.mp3"
     },
     {

@@ -76,7 +76,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits in the chair beside the bed.",
+      "text": "[shot:insert bed]She sits in the chair beside the bed.",
       "voice": "assets/audio/voice/vol6_ch9_safehouse/014.mp3"
     },
     {

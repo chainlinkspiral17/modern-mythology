@@ -860,7 +860,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, on the cot, weeps.",
+      "text": "[shot:insert cot]Diego, on the cot, weeps.",
       "voice": "assets/audio/voice/vol6_ch9_room/156.mp3"
     },
     {

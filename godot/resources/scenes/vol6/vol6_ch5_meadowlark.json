@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "She watches the ceiling fan. She counts the clicks. Three, six, nine.",
+      "text": "[shot:insert fan]She watches the ceiling fan. She counts the clicks. Three, six, nine.",
       "voice": "assets/audio/voice/vol6_ch5_meadowlark/037.ogg"
     },
     {

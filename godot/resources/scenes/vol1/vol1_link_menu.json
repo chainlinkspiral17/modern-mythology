@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:liminal_interior]The menu is laminated and slightly tacky. It has been hand-typed on a typewriter and photocopied at some point in the last decade or two.",
+   "text": "[shot:insert menu][mood:liminal_interior]The menu is laminated and slightly tacky. It has been hand-typed on a typewriter and photocopied at some point in the last decade or two.",
    "voice": "assets/audio/voice/vol1_link_menu/001.mp3"
   },
   {
