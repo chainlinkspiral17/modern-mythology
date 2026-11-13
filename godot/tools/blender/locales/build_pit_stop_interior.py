@@ -731,23 +731,25 @@ def build_hero_props_2026_09():
 
 def build_prints_2026_09():
     """THE PRINTS ("Jesse opens the paper bag. He takes out three
-    eight-by-tens. He hands them to Ben.") — the bag and the three
-    prints fanned on the lunch counter west of the card terminal."""
-    for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.035, 0.02), (0.07, 0.04))):
-        make_box(f"Print_8x10_{pi}", (2.80 + dx, 4.52 + dy, 1.0118 + pi * 0.0015), (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0))   # on the lunch table's top (2026-09-25: 5 mm inside it)
-    make_box("Prints_Paper_Bag", (2.95, 4.82, 1.115), (0.16, 0.10, 0.22), (0.72, 0.60, 0.42, 1.0))
+    eight-by-tens. He hands them to Ben.") — in the back lot, where the
+    scene plays. (pass 368) The 2026-09 set on the lunch counter indoors is
+    gone: it predated the back lot, no line cut to it any more, and it lay
+    on the counter in every other Pit Stop scene of the book."""
     # (pass 366) vol6 ch2 plays at the dumpster, and its three `insert prints`
-    # cut INDOORS to the lunch counter above. In the back lot the prints lie
+    # cut INDOORS to the lunch counter. In the back lot the prints lie
     # fanned on the bread rack's top tray by the back door ("Ben takes out
     # his phone. He photographs all three"), the bag beside them. Suffixed:
     # the lot's rack is bare in every other view.
+    # (pass 368) the roster lays the third print's picture on print 2 and the
+    # bag's on the bag's north face (meshy_roster: pit_stop_interior_print /
+    # _prints, back-lot view only): print 2 lies square, the bag broad to the lot.
     ry, rz = ROOM_D + 0.55, 1.26
-    for pi, (px, yaw) in enumerate(((2.10, 0.10), (2.25, -0.06), (2.40, 0.12))):
+    for pi, (px, yaw) in enumerate(((2.07, 0.10), (2.20, -0.06), (2.33, 0.0))):
         make_rot_box(f"Lot_Print_8x10_{pi}__pit_stop_back_lot", (px, ry + 0.01 * pi, rz + 0.00075 + pi * 0.0016),
                      (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0), yaw=yaw)
         make_rot_box(f"Lot_Print_8x10_{pi}_Border__pit_stop_back_lot", (px, ry + 0.01 * pi, rz + 0.0003 + pi * 0.0016),
                      (0.215, 0.265, 0.0006), (0.92, 0.91, 0.88, 1.0), yaw=yaw)
-    make_box("Lot_Prints_Paper_Bag__pit_stop_back_lot", (2.56, ry - 0.05, rz + 0.11), (0.10, 0.16, 0.22), (0.72, 0.60, 0.42, 1.0))
+    make_box("Lot_Prints_Paper_Bag__pit_stop_back_lot", (2.52, ry - 0.05, rz + 0.11), (0.16, 0.10, 0.22), (0.72, 0.60, 0.42, 1.0))
 
 
 def main():

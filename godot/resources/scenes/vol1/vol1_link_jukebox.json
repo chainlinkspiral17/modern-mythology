@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:liminal_interior]The jukebox is a Wurlitzer of the wrong vintage to be in a diner this size. The selection wheel sticks at K and again at S. The card behind the glass has been hand-typed on the same typewriter as the menu and has been corrected, in pencil, more than once.",
+   "text": "[shot:insert juke][mood:liminal_interior]The jukebox is a Wurlitzer of the wrong vintage to be in a diner this size. The selection wheel sticks at K and again at S. The card behind the glass has been hand-typed on the same typewriter as the menu and has been corrected, in pencil, more than once.",
    "voice": "assets/audio/voice/vol1_link_jukebox/001.mp3"
   },
   {

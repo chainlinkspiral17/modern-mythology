@@ -15516,19 +15516,22 @@
           "locale": "pit_stop_interior",
           "label": "Print",
           "center": [
-            2.835,
-            4.54,
-            1.013
+            2.33,
+            11.57,
+            1.2655
           ],
           "size": [
-            0.27,
-            0.29
+            0.215,
+            0.265
           ],
           "facing": "up",
           "hide": [
-            "Print_8x10_0",
-            "Print_8x10_1",
-            "Print_8x10_2"
+            "Lot_Print_8x10_2"
+          ],
+          "not_presets": [
+            "pit_stop_interior",
+            "pit_stop_kitchen",
+            "pit_stop_back_booth"
           ]
         }
       ],
@@ -15563,17 +15566,22 @@
           "locale": "pit_stop_interior",
           "label": "Prints",
           "center": [
-            2.95,
-            4.77,
-            1.115
+            2.52,
+            11.55,
+            1.37
           ],
           "size": [
             0.16,
             0.22
           ],
-          "facing": "-y",
+          "facing": "+y",
           "hide": [
-            "Prints_Paper_Bag"
+            "Lot_Prints_Paper_Bag"
+          ],
+          "not_presets": [
+            "pit_stop_interior",
+            "pit_stop_kitchen",
+            "pit_stop_back_booth"
           ]
         }
       ],

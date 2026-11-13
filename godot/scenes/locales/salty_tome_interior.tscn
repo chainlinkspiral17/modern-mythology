@@ -455,7 +455,6 @@ rotation = Vector3(-0.4981, -0.6651, 0.0)
 metadata/fov = 42.0
 
 
-
 ; insert: the four bowls at the wall
 [node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0.7, -10.9)
@@ -572,19 +571,6 @@ size_m = 0.345
 length_axis = "x"
 stand_in_root = NodePath("../Interior")
 hide_prefixes = PackedStringArray("Cat_Loaf", "Cat_Ear")
-
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_lids__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.129, 1.713, -9.634)
-rotation = Vector3(-0.2618, -1.1849, 0.0)
-metadata/fov = 35.0
-
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
-[node name="shot_insert_paint__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.101, 0.732, -11.142)
-rotation = Vector3(-0.2618, 0.8582, 0.0)
-metadata/fov = 35.0
 
 
 [node name="shot_insert_seat__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -180,7 +180,7 @@
     {
       "t": "say",
       "char": "Bill Kowalski",
-      "text": "Hot sauce is in the cabinet to the left of the stove if you want it.",
+      "text": "[shot:insert hotsauce]Hot sauce is in the cabinet to the left of the stove if you want it.",
       "expr": "neutral",
       "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/031.mp3"
     },

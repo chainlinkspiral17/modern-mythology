@@ -11,7 +11,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:liminal_interior]The booth in the corner has a wall of framed photographs above it. None of them are labeled. None of them are recent. All of them are square.",
+   "text": "[shot:insert photo][mood:liminal_interior]The booth in the corner has a wall of framed photographs above it. None of them are labeled. None of them are recent. All of them are square.",
    "voice": "assets/audio/voice/vol1_link_booth/001.mp3"
   },
   {

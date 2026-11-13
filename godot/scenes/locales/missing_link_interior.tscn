@@ -415,12 +415,6 @@ position = Vector3(0.750, 1.550, -4.200)
 rotation = Vector3(-0.5271, -0.0907, 0.0)
 metadata/fov = 38.0
 
-; out the rain-glazed window: the apron, the pumps (vol1_link_window)
-[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.100, 1.450, -1.700)
-rotation = Vector3(-0.0817, 3.0671, 0.0)
-metadata/fov = 48.0
-
 ; the front door and its bell
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(3.000, 1.600, -2.600)
@@ -451,8 +445,6 @@ metadata/fov = 45.0
 position = Vector3(-4.337, 1.651, -5.987)
 rotation = Vector3(-0.5236, 1.3705, 0.0)
 metadata/fov = 35.0
-
-
 
 
 [node name="shot_insert_counter__missing_link_interior" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -1268,7 +1268,7 @@
   },
   {
    "t": "narrate",
-   "text": "Eileen is asleep.",
+   "text": "[shot:insert sleeper]Eileen is asleep.",
    "voice": "assets/audio/voice/vol6_ch19_chains/222.mp3"
   },
   {
