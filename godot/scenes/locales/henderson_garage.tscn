@@ -187,6 +187,17 @@ omni_range = 6.0
 omni_attenuation = 1.6
 shadow_enabled = false
 
+; (pass 363) the bare bulb's light out the open bay and down the driveway: "They walk
+; to the curb. Ben's truck." — the truck's flank toward the house read black against the
+; dusk sky (the dusk key is low from the west, behind it)
+[node name="Garage_Mouth_Spill__henderson_garage" type="OmniLight3D" parent="."]
+position = Vector3(0.600, 2.100, 1.400)
+light_color = Color(1.00, 0.82, 0.55, 1)
+light_energy = 1.6
+omni_range = 8.0
+omni_attenuation = 0.8
+shadow_enabled = false
+
 ; A dusk KEY (2026-09-24): the scene had only a 0.14 fill, so Ben's
 ; truck at the curb rendered black and MoodCycler's sun rotation fell on
 ; the fill. Low warm sun from the west, 25 deg down.
@@ -361,8 +372,8 @@ metadata/fov = 42.0
 ; insert: Ben's truck at the curb — bench seat, four people
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482, 1.569, 3.684)
-rotation = Vector3(-0.5195, 2.4564, 0.0)
-metadata/fov = 42.0
+rotation = Vector3(-0.1888, -3.1166, 0.0)
+metadata/fov = 54.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)

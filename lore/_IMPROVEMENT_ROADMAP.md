@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 363: Ben's truck at the Hendersons' curb — a pickup, lit by the garage.**
+- From the sweep: henderson_garage `insert truck` (vol 6 ch5 "They walk to
+  the curb. Ben's truck. Bench seat. Four people.") read as a black blob.
+  Three faults: the truck was four boxes in a reddish brown (Meadowlark
+  Circle builds Ben's truck as the shared green pickup, vehicles.make_car;
+  the text gives no colour, so the established look wins); the insert
+  pointed south-west and 30° down at a wheel; the flank toward the house
+  had no light (the dusk key is low from the west, behind it).
+- make_car("Ben_Truck", pickup) at the same curb spot; the insert aims at
+  the cab (54° lens); `Garage_Mouth_Spill__henderson_garage`, the bare
+  bulb's warm light out the open bay (an omni — a spot drew a hard disc on
+  the door).
+- The sweep (at 153 / 326 so far) otherwise confirms night the text asks
+  for: the Foxhole at night, the Grunion beach, the night cab, "the glass
+  holds the whole dark Pacific".
+
 **2026-11-13 · pass 362: the dark-frame sweep, first reads — two afternoon arrivals on the night porch.**
 - dark_frame_sweep running over all 326 presets (scratch; ~5 h). First
   ninety read: most frames under the reading line are the text's own night

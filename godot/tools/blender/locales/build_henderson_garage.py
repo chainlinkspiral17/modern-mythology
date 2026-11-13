@@ -288,14 +288,11 @@ def build_hero_props_2026_09():
     # ── BEN'S TRUCK · at the curb, past the driveway ──
     make_box("Street_Curbline", (0.0, -6.5, -0.035), (8.00, 2.60, 0.05),
              (0.32, 0.32, 0.33, 1.0))
-    make_box("Ben_Truck_Body", (0.6, -6.4, 0.62), (4.40, 1.80, 0.65),
-             (0.55, 0.28, 0.22, 1.0))
-    make_box("Ben_Truck_Cab", (-0.1, -6.4, 1.22), (1.60, 1.70, 0.55),
-             (0.48, 0.24, 0.19, 1.0))
-    for wi, (wx2, wy2) in enumerate(((-0.9, -5.375), (2.1, -5.375),
-                                     (-0.9, -7.425), (2.1, -7.425))):
-        make_cyl(f"Ben_Truck_Wheel_{wi}", (wx2, wy2, 0.32), 0.32, 0.25,
-                 (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+    # (pass 363) the shared pickup (vehicles.make_car), green as on Meadowlark
+    # Circle — it was four boxes in a different colour, and the insert ("They
+    # walk to the curb. Ben's truck. Bench seat.") read as a black blob
+    from _props.vehicles import make_car
+    make_car("Ben_Truck", 0.6, -6.4, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
 
 
 
