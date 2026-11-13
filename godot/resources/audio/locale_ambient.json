@@ -205,6 +205,10 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
+    "jesse_bedroom_late": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.85
+    },
     "jesse_bedroom_day": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85

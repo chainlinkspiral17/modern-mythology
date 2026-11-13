@@ -1406,6 +1406,20 @@ const CAMERA_PRESETS := {
 		"env": {"ambient_color": Color(0.46, 0.42, 0.56, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
 		"suppress_input": true,
 	},
+	# (2026-11-13, pass 361) THE SAME ROOM after the house is asleep: vol 6 ch14
+	# ("He pulls into his driveway at ten forty-eight" · "The light under the door
+	# is off" · "He thinks, in the dark"). The night rig carries over
+	# (`__jesse_bedroom__jesse_bedroom_late`); the evening's hall light under the
+	# door (`Hall_Spill_Under_Door__jesse_bedroom`) does not.
+	"jesse_bedroom_late": {
+		"scene": "res://scenes/locales/jesse_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
+		"fov": 58.0,
+		"env": {"ambient_color": Color(0.46, 0.42, 0.56, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
 	"jesse_bedroom_day": {
 		"scene": "res://scenes/locales/jesse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",

@@ -170,13 +170,13 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 ; (pass 60, 2026-10-11) the authored rig is suffixed to jesse_bedroom: its time-of-day twin below brings its own
-[node name="Key_DeskLamp__jesse_bedroom" type="DirectionalLight3D" parent="."]
+[node name="Key_DeskLamp__jesse_bedroom__jesse_bedroom_late" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.86, 0.88, 0.96, 1)
 light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill_Window__jesse_bedroom" type="DirectionalLight3D" parent="."]
+[node name="Fill_Window__jesse_bedroom__jesse_bedroom_late" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.92, 1)
 light_energy = 0.45
@@ -192,7 +192,7 @@ light_energy = 1.5
 omni_range = 2.8
 shadow_enabled = false
 
-[node name="Back_Mood__jesse_bedroom" type="DirectionalLight3D" parent="."]
+[node name="Back_Mood__jesse_bedroom__jesse_bedroom_late" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.42, 0.52, 0.74, 1)
 light_energy = 0.2
@@ -397,8 +397,10 @@ shadow_enabled = false
 omni_range = 2.32
 
 ; (pass 355) the hall light under the door: the door insert ("He opens his bedroom
-; door. He goes downstairs") read black at night — the lamps are at the room's far end
-[node name="Hall_Spill_Under_Door" type="OmniLight3D" parent="."]
+; door. He goes downstairs") read black at night — the lamps are at the room's far end.
+; (pass 361) the evening only: ch14's late night is jesse_bedroom_late, where "The light
+; under the door is off" and "He thinks, in the dark"
+[node name="Hall_Spill_Under_Door__jesse_bedroom" type="OmniLight3D" parent="."]
 position = Vector3(0.000, 0.080, -0.180)
 light_color = Color(1.00, 0.86, 0.64, 1)
 light_energy = 0.90

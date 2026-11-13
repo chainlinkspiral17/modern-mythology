@@ -53,7 +53,8 @@ JUDGED_DARK = {
     ("nightmare_cell", "shot_insert_door"): "the text: 'The room has no windows.'",
     ("nightmare_cell", "shot_insert_doors"): "the text: 'The room has no windows.'",
     ("nightmare_cell", "shot_closeup_person"): "the text: 'The room has no windows.'",
-    ("jesse_bedroom", "shot_insert_door"): "the text: 'The light under the door is off', 'in the dark'",
+    # (pass 361) ch14 late only — ch3's evening door has the hall light under it
+    ("jesse_bedroom_late", "shot_insert_door"): "the text: 'The light under the door is off', 'in the dark'",
     ("lighthouse_base_up", "shot_insert_padlock"): "the preset is 'looking up in darkness' (pass 305)",
     ("lighthouse_base_up", "shot_insert_column"): "the preset is 'looking up in darkness' (pass 305)",
     ("beach_night", "shot_closeup_person"): "the night sea behind a face",

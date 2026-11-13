@@ -3835,6 +3835,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 361: Jesse's room at two hours — the hall light under the door is the evening's.**
+- A correction to pass 355. dark_frame_sweep's JUDGED_DARK had kept
+  jesse_bedroom's door insert dark on purpose — vol 6 ch14 (10:48 PM):
+  "His parents' bedroom door is closed. The light under the door is off",
+  "He thinks, in the dark: the door was open two inches." Pass 355 lit
+  the threshold for ch3's evening ("He opens his bedroom door. He goes
+  downstairs to say goodnight to his mother") without reading that list,
+  so ch14 showed a lit gap under a dark house's door.
+- The room now plays at two hours: `jesse_bedroom` (the evening — the
+  hall light, `Hall_Spill_Under_Door__jesse_bedroom`) and
+  `jesse_bedroom_late` (ch14 node 105 on: the night rig, renamed
+  `__jesse_bedroom__jesse_bedroom_late`, no hall light). Its ambient bed
+  added; JUDGED_DARK keys the late view.
+- LESSON: before lighting a dark frame, read dark_frame_sweep.JUDGED_DARK
+  — a frame may be dark because the text says so.
+
 **2026-11-13 · pass 360: Kestrel Mountain walked out in the golden light.**
 - Pass 359's N+1. vol 7 ch11 from node 203 walks the same path back
   down: "The town in the valley below was lit now ... with a low golden
