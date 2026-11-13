@@ -3835,6 +3835,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 360: Kestrel Mountain walked out in the golden light.**
+- Pass 359's N+1. vol 7 ch11 from node 203 walks the same path back
+  down: "The town in the valley below was lit now ... with a low golden
+  light", "a stone hut on the side of a mountain in late afternoon light",
+  "in the descending light", and at the square "The fountain at this
+  angle, in the golden light". The scene had one rig, the morning's cool
+  high key (a comment pointed at a golden mood "at node 133" that no
+  longer exists). New preset `kestrel_mountain_golden` (the climb's
+  camera) and the square both carry a low-sun env; the morning key is
+  `Key_High__kestrel_mountain`, and `Key_Golden__kestrel_mountain_golden__
+  kestrel_mountain_square` is a warm sun low from the west. Node 203's bg
+  → the golden view; its ambient bed added (locale_ambient_audit caught
+  the gap). "He went down the path" → establish (the bowl insert had held
+  over the hut).
+- **Draft N+1 targets.** Long shadows (the key is shadowless — the
+  compatibility renderer's budget); the cloud cap catching the sunset.
+- Eleventh six read, no change: kowalski_backyard (Ben's grandmother's
+  house), briar_falls (vol 2 — red edges on black is the deliberate
+  `lithograph` mood, "concept-art match: pure black + warm red", on all
+  eight Briar Falls chapters), nexcorp_fueling_station, miriam_subaru
+  (Nicola featured), smolvud_jetty.
+
 **2026-11-12 · pass 359: the ninth and tenth sixes — read; Kestrel Mountain shows its town.**
 - Ninth six: montreal_apartment (Faust's painting), lake_palestine,
   riverboat_interior (Dante, the D. Dean card), faust_apartment (Elicia),

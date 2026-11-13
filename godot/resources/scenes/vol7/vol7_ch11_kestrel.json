@@ -1027,7 +1027,7 @@
    "t": "narrate"
   },
   {
-   "src": "3d:kestrel_mountain",
+   "src": "3d:kestrel_mountain_golden",
    "t": "bg"
   },
   {
@@ -1051,7 +1051,7 @@
    "t": "narrate"
   },
   {
-   "text": "He went down the path. The first station was as he had passed it. He did not, this time, go into the hut. The bench inside was empty, the wise old man no longer sitting on it.",
+   "text": "[shot:establish]He went down the path. The first station was as he had passed it. He did not, this time, go into the hut. The bench inside was empty, the wise old man no longer sitting on it.",
    "t": "narrate"
   },
   {

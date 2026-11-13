@@ -609,6 +609,10 @@
       "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
       "gain": 0.4
     },
+    "kestrel_mountain_golden": {
+      "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
+      "gain": 0.4
+    },
     "kestrel_mountain_square": {
       "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
       "gain": 0.4

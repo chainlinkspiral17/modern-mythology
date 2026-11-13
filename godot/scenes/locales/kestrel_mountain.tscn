@@ -173,11 +173,20 @@ environment = SubResource("Env_Locale")
 ; (north), a soft sky fill; the ending's low golden light lives in the
 ; mood at node 133. The hut's door and the square's lamps are the
 ; practicals.
-[node name="Key_High" type="DirectionalLight3D" parent="."]
+; (pass 360) the morning key belongs to the climb (kestrel_mountain); the walk out
+; and the square take Key_Golden, the low western sun the text gives them
+[node name="Key_High__kestrel_mountain" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 8, 0)
 light_color = Color(0.90, 0.92, 0.96, 1)
 light_energy = 0.95
 shadow_enabled = false
+
+[node name="Key_Golden__kestrel_mountain_golden__kestrel_mountain_square" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.2100, -1.5708, 0.0)
+light_color = Color(1.00, 0.76, 0.46, 1)
+light_energy = 1.05
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Sky_Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)

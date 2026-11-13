@@ -2663,6 +2663,23 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 		"far": 450.0,   # (2026-10-31) its far scenery stood past the 200 m default
 	},
+	# (2026-11-13, pass 360) THE SAME PATH WALKED OUT (vol 7 ch11 from node 203):
+	# "The town in the valley below was lit now ... with a low golden light",
+	# "a stone hut on the side of a mountain in late afternoon light", "in the
+	# descending light". The scene's morning key is suffixed to kestrel_mountain;
+	# this view and the square take the low western sun (Key_Golden__…).
+	"kestrel_mountain_golden": {
+		"scene": "res://scenes/locales/kestrel_mountain.tscn",
+		"requires_glb": "res://assets/3d/locales/kestrel_mountain.glb",
+		"camera_origin": Vector3(0.2, 1.6, 9.0),
+		"camera_rotation": Vector3(0.05, 0.0, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.42, 0.50, 0.70, 1), "sky_horizon": Color(0.98, 0.78, 0.50, 1),
+			"ground_horizon": Color(0.46, 0.40, 0.32, 1), "ground_bottom": Color(0.20, 0.17, 0.14, 1),
+			"ambient_color": Color(0.92, 0.80, 0.62, 1), "ambient_energy": 0.85, "fog_color": Color(0.86, 0.72, 0.54, 1)},
+		"suppress_input": true,
+		"far": 450.0,
+	},
 	"kestrel_mountain_square": {
 		"scene": "res://scenes/locales/kestrel_mountain.tscn",
 		"requires_glb": "res://assets/3d/locales/kestrel_mountain.glb",
@@ -2674,6 +2691,11 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(6.25, 1.60, 31.00),
 		"camera_rotation": Vector3(-0.02, 0.262, 0.0),
 		"fov": 55.0,
+		# (pass 360) walked out at the end of ch11: "The fountain at this angle,
+		# in the golden light"
+		"env": {"sky_top": Color(0.42, 0.50, 0.70, 1), "sky_horizon": Color(0.98, 0.78, 0.50, 1),
+			"ground_horizon": Color(0.46, 0.40, 0.32, 1), "ground_bottom": Color(0.20, 0.17, 0.14, 1),
+			"ambient_color": Color(0.92, 0.80, 0.62, 1), "ambient_energy": 0.85, "fog_color": Color(0.86, 0.72, 0.54, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 7 — the corridor behind the hedge (re-homed off cabin_interior
