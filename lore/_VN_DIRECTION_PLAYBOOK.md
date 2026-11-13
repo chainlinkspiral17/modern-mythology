@@ -323,6 +323,25 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-13 · a resume must replay the director's STATE, not the last cue (pass 369)
+
+- **What happened.** `_fast_forward_to` remembered "the last [shot:] seen"
+  and applied it. That is right for a close-up (held until the next cue)
+  and wrong for an insert, which play leaves after INSERT_HOLD lines. A
+  save loaded eight lines after an insert opened on the insert.
+- **How it was found.** VnLineShot jumps to a line the way a load does, so
+  every set-reading render since pass 347 has been a RESUME render. A
+  frame that looks wrong for its line is either a wrong cut or a replay
+  that differs from play — check which before touching the marker.
+- **The rule.** Anything the director decides line by line (an insert's
+  hold, a long-hold cut-away, a noticing shot) is state. The replay either
+  simulates it from the lines it skipped, with the director's own counting
+  function, or the resume shows a frame play never did.
+- **A removed prop has dependents.** Deleting the Pit Stop's indoor prints
+  broke two roster pictures that hid them; hero_art_placement_audit said
+  so (NO-STANDIN). Grep the roster (`"hide"`), the .tscn markers and the
+  audits' kept-lists for a part's name before deleting it.
+
 ### 2026-11-13 · cueing by the word is a proposal; one in four fails when read (pass 367)
 
 - **What happened.** 52 uncued lines named the object of an orphan insert

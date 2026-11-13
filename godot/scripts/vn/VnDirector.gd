@@ -89,6 +89,9 @@ var _overlay_parent: Control = null
 # read), then the room comes back (consider_line).
 const INSERT_HOLD := 3
 var _insert_left: int = 0
+## (pass 369) a resume's insert, with the lines of hold it has left (resume_shot)
+var _resume_spec: String = ""
+var _resume_left: int = 0
 ## (2026-11-12) whose close-up the camera holds ("" = the room, an insert,
 ## a picture): CharLayer features that figure (GameEngine hands it on).
 var _featured: String = ""
@@ -341,6 +344,51 @@ func apply_shot(spec: String) -> void:
 	_try_apply_shot()
 
 
+## A RESUME SEES WHAT PLAY SAW (pass 369, 2026-11-13). GameEngine's replay
+## re-applied the last [shot:] however long ago it was cued. In play an
+## insert is a glance (INSERT_HOLD lines, longer while the lines name it);
+## a save loaded eight lines after vol 3 ch11's "[shot:insert pillow]"
+## opened on the pillow — a white slab through the scene's hardest lines —
+## where play had been back in the room for five. `texts_since`: the uncued
+## lines played since the cue. The room if the hold has run out; else the
+## insert, with what it has left.
+func resume_shot(spec: String, texts_since: Array) -> void:
+	var s: String = spec.strip_edges()
+	if s.ends_with("~"):
+		s = s.substr(0, s.length() - 1).strip_edges()
+	if s.to_lower().begins_with("insert "):
+		var left: int = insert_left_after(s, texts_since)
+		if left <= 0:
+			apply_shot("establish")
+			return
+		_resume_spec = s
+		_resume_left = left
+	apply_shot(spec)
+
+
+## The lines of hold an insert has left after `texts_since` (0: the room is
+## back) — _hold_or_leave_insert's count, without the camera.
+static func insert_left_after(spec: String, texts_since: Array) -> int:
+	var parts: PackedStringArray = spec.strip_edges().split(" ", false)
+	if parts.size() < 2:
+		return 0
+	var words: PackedStringArray = _line_words(String(parts[1]).to_lower().replace("_", " "))
+	var left: int = INSERT_HOLD
+	for tv: Variant in texts_since:
+		var named: bool = false
+		for w: String in _line_words(String(tv)):
+			if w in words:
+				named = true
+				break
+		if named:
+			left = INSERT_HOLD
+			continue
+		left -= 1
+		if left <= 0:
+			return 0
+	return left
+
+
 func _try_apply_shot() -> void:
 	if _pending_shot == "":
 		return
@@ -367,6 +415,10 @@ func _try_apply_shot() -> void:
 		return
 	_pending_shot = ""
 	_insert_left = INSERT_HOLD if shot_type == "insert" else 0
+	if _resume_spec != "":
+		if shot_type == "insert" and _resume_spec == spec and _resume_left > 0:
+			_insert_left = _resume_left
+		_resume_spec = ""
 	# the close-up's subject: the named figure, or the speaker for the
 	# generic face pair; every other cut features no one
 	var was_featured: String = _featured

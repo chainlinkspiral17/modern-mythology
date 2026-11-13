@@ -3835,6 +3835,67 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-13 · pass 369: a resume sees what play saw — a loaded save no longer reopens on an insert the scene had left.**
+- Found reading the thirteenth six (lake_house, vol 3 ch11): the frame
+  for "I don't know what to say ... 'I'm sorry, I'm sorry'" was a white
+  slab — the `pillow` insert cued EIGHT lines earlier. In play an insert
+  is a glance (three lines, longer while the lines name it; pass 190);
+  GameEngine's replay re-applied the last `[shot:]` however old, so a
+  save loaded anywhere in those lines opened on the pillow and held it
+  three lines more, through the hardest lines of the scene.
+- THE FIX: the replay collects the uncued lines played since the cue;
+  VnDirector.resume_shot counts the hold the way play does
+  (insert_left_after) and applies the room when it has run out, or the
+  insert with the lines it has left. Read by render at +0, +1, +2 (the
+  pillow), +3 and +8 (the room); a close-up resume is unchanged.
+- The pillow insert itself was 0.6 m off a white box: pulled back to the
+  cot's head, the pillow, the unzipped sleeping bag. "He sobs in his
+  pillow" is CHRIS's pillow — the cue showed the narrator's cot; Chris's
+  bed has its own frame (`insert bed`) now.
+- The thirteenth six, read by render, three lines each: small_wood_road,
+  lake_house, tideline_survey_second, foxhole_dressing_room,
+  honolulu_highrise, small_wood_backyard — all hold but the above.
+- NEXT: a resume does not replay the director's LONG-HOLD cut-away
+  (_hold_line) or a noticing shot; a probe that plays a chapter straight
+  and compares each line's camera to a resume at that line would gate
+  the whole class.
+
+**2026-11-13 · pass 368: the orphans, second batch — 12 more lines cut to their frame; 42 dead markers deleted.**
+- The markers whose NAME differs from the text's word (searched by the
+  phrase their comment quotes, and by synonym). 12 cued, all 12 rendered
+  and read, all 12 kept: the crack through the post office's tiles
+  ("cracked in a single precise line"), the Frog's paddlewheel cover,
+  Elicia at the window over Montreal's lights, the COMPUTER GAMES sign,
+  the Missing Link's jukebox and its wall of square photographs, the
+  stadium lights in the haze, the noon news with the sound off, the hot
+  sauce cabinet, Eileen asleep, Maya's hands on the closed laptop, the
+  hand across the café table.
+- DELETED, 42 markers no line can reach: cabin_interior_bed.tscn's 26
+  (a copy of the cabin's whole set in a file only the bed preset uses),
+  miller_back_porch.tscn's five vol 7 leftovers, and eleven authored by
+  word for the wrong sense or doubled by a better frame (a "window" of
+  time, eyelids as can lids, a key ring beside the `keys` frame, "five
+  weeks" as an abstract dash shot, the diner radio for "static between
+  radio stations", the Missing Link window beside `glass`, the dark
+  turnout).
+- The Pit Stop's lunch counter carried the three prints and the paper
+  bag in EVERY interior scene of the book (built 2026-09 for a chapter
+  that has played at the dumpster since pass 65). Removed with their
+  marker; the back lot's set (pass 366) is the scene's.
+  hero_art_placement_audit caught what that broke: the roster's two
+  pictures for them (the third print — "A man in a charcoal suit,
+  looking directly at the camera" — and the crumpled bag) hid stand-ins
+  that no longer existed. Both placements moved to the rack's set
+  (back-lot view only); the third print lies square for its picture.
+- Ratchet: 186 → 133.
+- NEXT: the 133 left are mostly (a) sets with no line for the object any
+  more (cabin_road's mile marker, salal and creek stones; the carnival
+  lot; the parish cemetery's four) — read the chapters for the passage
+  before deleting; (b) frames that need light first (dabney_game_room,
+  nate_garage, nate_driveway, the Tome's alley dumpster, the Altima's
+  picnic table); (c) first-inserts from marker_author (2026-09-10) that
+  frame furniture nobody mentions.
+
 **2026-11-13 · pass 367: frames nobody saw — 39 authored inserts get their line; the sweep is read to the end.**
 - THE ORPHANS. 223 insert markers were reached by no cue (pass 366's
   open item). For each, the uncued lines that name its object were

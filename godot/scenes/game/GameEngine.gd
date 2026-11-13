@@ -744,6 +744,9 @@ func _fast_forward_to(target: int) -> void:
 	var last_trip: String = "reset"
 	var last_register: String = "reset"
 	var last_shot: String = ""
+	# (pass 369) the uncued lines played since that cue: an insert is held
+	# INSERT_HOLD of them in play, then the room returns (VnDirector.resume_shot)
+	var since_shot: Array = []
 	# (2026-10-27) a page panel open at the save point is open after the resume
 	# too: the last [panel:id] not closed by a [panel:off] or a new bg
 	var last_panel: String = ""
@@ -784,12 +787,14 @@ func _fast_forward_to(target: int) -> void:
 					# "insert cedar" (a table edge), ch18's stockroom on the
 					# break room's coffee.
 					last_shot = ""
+					since_shot.clear()
 			"narrate", "say", "think", "interlude":
 				# Remember only the last mood/shot direction seen.
 				# "interlude" is in this list because its title text
 				# carries directives too (see _dispatch) — a resume
 				# past a title card must not lose its mood.
 				var text: String = _s(n, "text")
+				var had_shot: bool = false
 				if text.begins_with("["):
 					while true:
 						var m := _direct_rx.search(text)
@@ -798,11 +803,19 @@ func _fast_forward_to(target: int) -> void:
 						var arg: String = m.get_string(2).strip_edges()
 						match m.get_string(1):
 							"mood": last_mood = arg
-							"shot": last_shot = arg
+							"shot":
+								last_shot = arg
+								had_shot = true
 							"trip": last_trip = arg
 							"register": last_register = arg
 							"panel": last_panel = "" if arg.to_lower() == "off" else arg
 						text = text.substr(m.get_end(0))
+				# the lines the director sees (consider_line): not a title card
+				if String(n.get("t", "")) != "interlude":
+					if had_shot:
+						since_shot.clear()
+					elif last_shot != "":
+						since_shot.append(text)
 			_:
 				pass
 	# Environment nodes in original relative order.
@@ -818,7 +831,7 @@ func _fast_forward_to(target: int) -> void:
 	if _director != null:
 		if last_shot != "":
 			_director.call("set_line_speaker", "")
-			_director.call("apply_shot", last_shot)
+			_director.call("resume_shot", last_shot, since_shot)
 		if last_mood != "":
 			_director.call("apply_mood", last_mood)
 		if last_panel != "":
