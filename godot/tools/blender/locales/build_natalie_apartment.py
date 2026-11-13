@@ -63,6 +63,10 @@ living room: an east wing holds the bedroom (bed, nightstand lamp, the
 closet, a curtained back window) through an open doorway, and "the
 bathroom door", shut. The coffee table 11 cm off the futon's slats is
 gone. Floor 66 m² (was 44), 35% filled, 59% walkable; markers re-aimed.
+PASS 365 (2026-11-13): the night deck insert read as a black block — the
+deck's stack is card-cream with a worn lavender back; the night preset has
+the text's "stray beam of streetlight" across the rug (scene light).
+Next: slat shadows ruling the beam; the Wheel of Fortune face-down on top.
 Draft 6 targets: the crib corner as a variant; the bedroom's own preset
 (the bed, "she went to sleep"); a uniform on the bathroom door's back;
 from draft 4's list: the L-counter's corner as one piece; the fridge's
@@ -479,10 +483,12 @@ def build_use_states_d4():
              (0.88, 0.84, 0.72, 1.0))
     make_box("Tarot_Card_B", (RUG_X - 0.45, RUG_Y - 0.50, 0.024), (0.07, 0.12, 0.004),
              (0.88, 0.84, 0.72, 1.0))
+    # (pass 365) the stack reads as cards: cream edges, a worn lavender back on
+    # top — it was one dark purple slab, a black block on the night rug
     make_box("Tarot_Deck", (RUG_X - 0.80, RUG_Y - 0.55, 0.037), (0.075, 0.125, 0.03),
-             (0.30, 0.24, 0.38, 1.0))
+             (0.80, 0.76, 0.66, 1.0))
     make_box("Tarot_Deck_Skew", (RUG_X - 0.795, RUG_Y - 0.555, 0.057), (0.075, 0.125, 0.012),
-             (0.32, 0.26, 0.40, 1.0))
+             (0.52, 0.42, 0.60, 1.0))
     # Coffee mug on the kitchen counter + the ring it left earlier
     make_mug("Counter_Mug", -1.2, 4.95, 0.98, (0.62, 0.28, 0.24, 1.0))
     make_cyl("Counter_MugRing", (-0.95, 4.90, 0.981), 0.045, 0.002,

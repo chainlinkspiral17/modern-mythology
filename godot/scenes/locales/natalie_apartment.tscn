@@ -234,6 +234,19 @@ light_energy = 1.0
 shadow_enabled = false
 omni_range = 2.6
 
+; (pass 365) ch12: the Hanged Man "lay face up, catching a stray beam of streetlight" — the beam
+; comes in through the W window's blinds and lies across the rug where the two cards and the deck
+; are (the deck insert read 24/255 mean: a black block on a black rug)
+[node name="Streetlight_Beam__natalie_apartment_night" type="SpotLight3D" parent="."]
+position = Vector3(-3.300, 1.900, -2.600)
+rotation = Vector3(-0.4697, -1.7069, 0.0)
+light_color = Color(1.0, 0.80, 0.56, 1)
+light_energy = 6.0
+shadow_enabled = false
+spot_range = 6.5
+spot_angle = 10.0
+spot_attenuation = 0.6
+
 [node name="Entry_Light__natalie_apartment_night" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.1, -0.5)
 light_color = Color(1.0, 0.90, 0.72, 1)
@@ -415,10 +428,11 @@ metadata/fov = 40.0
 ; insert: the worn deck, shuffled (vol5)
 ; (draft 5, 2026-10-21: the rug runs west from the futon now; the deck lies
 ; on its west half, blender (0.2, 2.0), the lens low off its SW corner)
+; (pass 365) the deck and the two face-up cards together, in the streetlight beam
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.050, 0.700, -1.550)
-rotation = Vector3(-0.9080, -0.5070, 0.0)
-metadata/fov = 32.0
+position = Vector3(0.000, 0.870, -1.440)
+rotation = Vector3(-0.8727, -0.5084, 0.0)
+metadata/fov = 40.0
 
 ; insert: her phone on the kitchen counter, ringing (vol5)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
