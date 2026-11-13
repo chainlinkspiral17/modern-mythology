@@ -3856,6 +3856,12 @@ pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
   `lithograph` mood, "concept-art match: pure black + warm red", on all
   eight Briar Falls chapters), nexcorp_fueling_station, miriam_subaru
   (Nicola featured), smolvud_jetty.
+- Twelfth six read, no change: gym_weight_room (vol 6 ch13),
+  new_orleans_room (vol 5 ch20; John and Antonio featured),
+  cape_perpetua_overlook (vol 7 ch12 night), caldwell_radio_room_night
+  (vol 6 ch2), grunion_beach (vol 2 interlude, dusk). Next by lines
+  played: lake_house, small_wood_road, foxhole_dressing_room and the sets
+  under 40 lines.
 
 **2026-11-12 · pass 359: the ninth and tenth sixes — read; Kestrel Mountain shows its town.**
 - Ninth six: montreal_apartment (Faust's painting), lake_palestine,
