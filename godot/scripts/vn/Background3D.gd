@@ -6085,6 +6085,18 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"nexcorp_gas_go_handoff": {
+		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",
+		# (pass 372) 15:11 to 15:14 of vol 6 ch1: the same store, with the white
+		# NexCorp van parked beside the Louisiana pickup in the back lot and its
+		# two men out (parts suffixed `__nexcorp_gas_go_handoff`). The camera is
+		# nexcorp_gas_go's: "Skip, from where he is standing, cannot see any of this."
+		"camera_origin": Vector3(3.00, 1.70, -5.50),
+		"camera_rotation": Vector3(-0.161, -3.049, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"cliffside_circus": {
 		"scene": "res://scenes/locales/cliffside_circus.tscn",
 		"requires_glb": "res://assets/3d/locales/cliffside_circus.glb",

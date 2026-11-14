@@ -86,6 +86,35 @@ def bulb_park(bulb_cx, bulb_cy, bulb_r, angle_deg, along, gap=0.12):
     return (bulb_cx + math.cos(a) * rr, bulb_cy + math.sin(a) * rr)
 
 
+def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck):
+    """THE AUDITS READ A PRISM AS ITS BOUNDING BOX (pass 372). Over a pickup's
+    bed or a sedan's hood that box is air up to the roof line: anything lying
+    there read as "inside the body", and a camera above the bed as inside the
+    truck (pass 364 took a phone off a hood for it; the Gas & Go's envelope
+    "flat in the pickup's bed" could not be framed). Under the audit stubs
+    the body is recorded as it stands — a low box the whole length (pan to
+    deck) and a tall one over the cab. In Blender this does nothing."""
+    import sys
+    A = sys.modules.get("locale_geometry_audit")
+    boxes = getattr(A, "BOXES", None) if A is not None else None
+    if boxes is None:
+        return
+    name = f"{prefix}_Body"
+    for k in range(len(boxes) - 1, -1, -1):
+        if boxes[k][0] == name:
+            del boxes[k]
+            break
+    else:
+        return
+    half = lambda t: tuple(abs(float(x)) for x in t)
+    # the profile's own length (tail + 0.10 .. nose): the bumper, grille and
+    # lamps sit ON the nose face and must still touch it
+    boxes.append((name, P((nose + tail) / 2.0 + 0.05, 0.0, z0 + (0.42 + deck) / 2.0),
+                  half(S((nose - tail - 0.10) / 2.0, hw - 0.02, (deck - 0.42) / 2.0))))
+    boxes.append((name + "_Cab", P((cab_u0 + cab_u1) / 2.0, 0.0, z0 + (deck + roof) / 2.0),
+                  half(S(abs(cab_u1 - cab_u0) / 2.0, hw - 0.02, (roof - deck) / 2.0))))
+
+
 def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=False, along="X", z0=0.0, glass_col=None):
     glass = glass_col or GLASS_DK
     P, S, side_axis, wheel_axis = _frame(cx, cy, along)
@@ -132,6 +161,13 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     else:
         ws_u, ws_z, ws_h = nose - 1.40, z0 + 1.19, 0.46
         cab_u0, cab_u1 = tail + 1.30, nose - 1.10
+    # the greenhouse BETWEEN the glass: the roof's span, reaching 6 cm under each
+    # pane's top edge so the panes touch it. Pillar foot to pillar foot (the
+    # first cut) put a brick's face in front of the raked windshield — the cab's
+    # own window insert read as hidden behind the car.
+    gh0, gh1 = (nose - 3.44, nose - 2.19) if pickup else ((tail + 0.84, nose - 1.79) if hatch else (tail + 1.09, nose - 1.64))
+    _audit_body(prefix, P, S, nose, tail, hw, z0, gh0, gh1,
+                1.70 if pickup else (1.48 if hatch else 1.46), 1.04 if pickup else 1.00)
     # (2026-11-01) the glass LIES ON the body's rake: a vertical plate half
     # buried in the slope read, from above and in front, as a board stood
     # up on the hood (the curtain call's por puesto, every parked sedan).

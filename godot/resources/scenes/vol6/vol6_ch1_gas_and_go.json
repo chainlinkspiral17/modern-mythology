@@ -66,8 +66,12 @@
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/011.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:nexcorp_gas_go_handoff"
+    },
+    {
       "t": "narrate",
-      "text": "At 15:11, a white NexCorp Residential Solutions van enters the lot and parks next to the Louisiana pickup. Two men get out. They are wearing navy polo shirts with the NexCorp logo on the chest, khaki pants, work boots.",
+      "text": "[shot:insert van]At 15:11, a white NexCorp Residential Solutions van enters the lot and parks next to the Louisiana pickup. Two men get out. They are wearing navy polo shirts with the NexCorp logo on the chest, khaki pants, work boots.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/012.ogg"
     },
     {
@@ -94,6 +98,10 @@
       "t": "narrate",
       "text": "The pickup window goes up. The van pulls out of the lot and turns south on Gallatin.",
       "voice": "assets/audio/voice/vol6_ch1_gas_and_go/017.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:nexcorp_gas_go"
     },
     {
       "t": "narrate",

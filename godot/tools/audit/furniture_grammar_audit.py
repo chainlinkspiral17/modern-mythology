@@ -136,6 +136,7 @@ TOPISH = re.compile(r"(top|surface|slab)(_[0-9]+)?$", re.I)
 
 def part_class(name):
     """The last non-numeric word of a part name: Car_0_Wheel_FL → wheel."""
+    name = name.split("__")[0]      # (pass 372) a `__<preset>` suffix is not part of the name's words
     parts = re.split(r"_", re.sub(r"(?<=[a-z])(?=[A-Z])", "_", name))
     parts = [p for p in parts if not re.fullmatch(r"[+\-]?\d+|[+\-]?\d|[A-Z]{1,2}", p)]
     return parts[-1].lower() if parts else name.lower()
@@ -143,12 +144,12 @@ def part_class(name):
 
 def family(name):
     """The first two words of a name — the ASSEMBLY (Car_0_Wheel_0_Hub → Car_0)."""
-    parts = name.split("_")
+    parts = name.split("__")[0].split("_")
     return "_".join(parts[:2]) if len(parts) > 2 else parts[0]
 
 
 def prefix_of(name):
-    parts = name.split("_")
+    parts = name.split("__")[0].split("_")
     if len(parts) == 1:
         return name
     # numeric / sign suffixes and generic part words belong to the parent

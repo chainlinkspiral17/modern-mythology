@@ -3835,6 +3835,59 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 372: the Gas & Go hand-off — the white van and its two men exist; cars are recorded as they stand.**
+- Found reading the fourteenth six (nexcorp_gas_go, vol 6 ch1). Lines
+  12–16 are the chapter's event: "At 15:11, a white NexCorp Residential
+  Solutions van enters the lot and parks next to the Louisiana pickup.
+  Two men get out. They are wearing navy polo shirts ... One of them taps
+  twice on the driver's window." The back lot held a black box "pickup"
+  and nothing else from 15:04 to the end; the frame for the van's line
+  was the pickup alone.
+  - The pickup is the shared pickup in black (vehicles.make_car), nose
+    north, its tail and Louisiana plate to the lot; the envelope in its
+    bed.
+  - **A new view, `nexcorp_gas_go_handoff`** (same store, same camera):
+    the white van parked a man's width east of the pickup, and the two
+    men — one at the driver's window, one between the vehicles. Every
+    part is suffixed for that view, so the lot is the pickup's alone
+    before 15:11 and after the van pulls out. The chapter switches view
+    at 15:11 and back at "The pickup stays." (two `bg` nodes; the
+    chapter has no index jumps, its voice files are named per node).
+  - `insert van` from the lot to the south: the pickup's tail, the van's,
+    the man between them. `insert pickup` in the hand-off view shows the
+    man at the window. Read by render at 15:04, 15:11, 15:14, 15:17.
+- THE AUDITS READ A CAR AS A BRICK. A prism is recorded as its bounding
+  box; over a pickup's bed or a sedan's hood that is air up to the roof.
+  The envelope "flat in the pickup's bed" read as inside the truck, the
+  camera over the bed as inside it (pass 364 deleted a phone from a hood
+  for the same reason). vehicles.make_car now records its body under the
+  audit stubs as a low box the whole length plus the roof's span between
+  the glass. Support and overlap re-read over every set: 0 and 0. The
+  first suite run caught three consequences, all fixed: the roster's
+  picture of the envelope floated over the lower bed (moved, and it
+  hides the stand-in now); a greenhouse box drawn pillar-foot to
+  pillar-foot hid the cab set's own windshield insert (narrowed to the
+  roof span); and furniture_grammar read `…_Hand_L__<preset>` as a part
+  called "handoff" — it strips a `__<preset>` suffix before reading a
+  name's words now.
+- The fourteenth six, read by render, three lines each: nexcorp_gas_go,
+  bindery, missing_link_exterior, cliffside_circus (cyan line on navy is
+  its 1902 mood), bus_station, small_wood_police — all hold but the
+  above. OPEN from it: the bus's window ("The window throws the city
+  across both their faces, a frame at a time") is a blank pale panel —
+  a picture for Andy to generate, or a moving strip.
+- The fifteenth six, read by render, three lines each: miller_office,
+  sea_cave, oregon_lighthouse (its "looking up in darkness" frame is
+  judged dark), pit_stop_office, portland_downtown, county_line_station
+  — all hold.
+- The sixteenth six, read the same way: bar_exterior, small_wood_field,
+  small_wood_rec_center, louisiana_road, smolvud_coop, lena_studio — all
+  hold. Next by lines played: coach_k_bedroom, ben_bedroom,
+  vol4_apartments, dean_house_1994, skatepark, riverfront, kai_apartment.
+- NEXT for the lot: the car wash tunnel it is "behind" (the pad stands
+  in open ground east of the store); the van's sliding door; the men's
+  logo patches; the driver, a figure at the pickup's wheel.
+
 **2026-11-14 · pass 371: details buried in thin slabs — the gate learns thin hosts; eight brought out.**
 - Pass 370's flyer had lain INSIDE its amp's grille since it was built.
   prop_overlap's `buried` check only took hosts 8 cm thick or more, so a

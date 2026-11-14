@@ -49258,14 +49258,16 @@
           "center": [
             8.6,
             0.1,
-            1.0835
+            1.0105
           ],
           "size": [
             0.24,
             0.16
           ],
           "facing": "up",
-          "hide": []
+          "hide": [
+            "Pickup_Bed_Manila_Envelope"
+          ]
         }
       ]
     },

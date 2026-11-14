@@ -339,6 +339,11 @@
  "nexcorp_fueling_station": {
   "draw": 174
  },
+ "nexcorp_gas_go": {
+  "draw": 178,
+  "prims": 39892,
+  "objects": 348
+ },
  "nick_house": {
   "draw": 82,
   "prims": 22640,

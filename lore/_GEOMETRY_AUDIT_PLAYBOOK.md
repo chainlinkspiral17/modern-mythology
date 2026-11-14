@@ -158,6 +158,24 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · a helper that knows its shape should tell the audits (pass 372)
+
+- **What happened.** `make_prism` is recorded as its bounding box. For a
+  wall or a kerb that is the shape; for a car's side profile it is a brick
+  as tall as the roof over the hood and the bed. Twice the brick decided
+  what could be in a set: a phone could not lie on a hood (pass 364,
+  deleted), an envelope could not be framed in a pickup's bed (pass 372).
+- **The rule.** When a kit helper builds a shape whose box is mostly air,
+  the HELPER records the honest boxes under the stubs (it knows its own
+  profile): `vehicles._audit_body` replaces the prism's entry with a low
+  box and a greenhouse box, as `_placed()` in the farmhouse builder already
+  rewrites recorded boxes. Do not teach each audit about cars.
+- **Check the whole repo after changing what a helper records.** The first
+  version ended the low box 5 cm short of the nose and started the
+  greenhouse after the rear glass: every bumper, grille, headlight and
+  rear window on a Y-aligned car "floated" (52 across two sets). support
+  and prop_overlap over all builders, before the suite.
+
 ### 2026-11-14 · a floor on the HOST hid a whole class: sheets inside thin slabs (pass 371)
 
 - **What happened.** The Foxhole flyer "taped to the amp's grille" was a

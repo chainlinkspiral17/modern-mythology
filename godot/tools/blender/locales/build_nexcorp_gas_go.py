@@ -750,20 +750,18 @@ def build_hero_props_2026_09():
     black = (0.10, 0.10, 0.11, 1.0)
     manila = (0.82, 0.72, 0.50, 1.0)
     # ── THE BLACK PICKUP · back lot, NE of the building ──
-    make_box("Backlot_Pad", (8.6, 1.5, -0.03), (4.5, 7.0, 0.05),
+    # (pass 372) the pad runs east under the van's space; the pickup is the
+    # shared pickup in black (it was three boxes and four cylinders), nose
+    # north, its tail and the Louisiana plate to the lot.
+    make_box("Backlot_Pad", (9.5, 1.5, -0.03), (6.4, 7.0, 0.05),
              (0.40, 0.40, 0.41, 1.0))
-    make_box("Pickup_Body", (8.6, 1.6, 0.78), (1.90, 4.60, 0.60), black)
-    make_box("Pickup_Cab", (8.6, 2.35, 1.38), (1.75, 1.55, 0.60),
-             (0.13, 0.13, 0.15, 1.0))
-    make_box("Pickup_Tailgate", (8.6, -0.73, 0.83), (1.80, 0.06, 0.55), black)
-    make_box("Louisiana_Plate", (8.6, -0.767, 0.62), (0.30, 0.008, 0.15),
+    from _props.vehicles import make_car
+    make_car("Pickup", 8.6, 1.6, 5.2, black, pickup=True, along="Y")
+    make_box("Pickup_Plate_Louisiana", (8.6, -0.906, 0.62), (0.30, 0.008, 0.15),
              (0.86, 0.84, 0.76, 1.0))
-    for wi, (wx2, wy2) in enumerate(((7.525, 2.6), (9.675, 2.6),
-                                     (7.525, 0.0), (9.675, 0.0))):
-        make_cyl(f"Pickup_Wheel_{wi}", (wx2, wy2, 0.36), 0.36, 0.25,
-                 (0.16, 0.16, 0.17, 1.0), axis='X', segments=10)
     # ── THE ENVELOPE · flat in the bed ──
-    make_box("Manila_Envelope", (8.6, 0.10, 1.0815), (0.24, 0.16, 0.003), manila)
+    make_box("Pickup_Bed_Manila_Envelope", (8.6, 0.10, 1.0075), (0.24, 0.16, 0.003), manila)
+    build_handoff_2026_11()
     # ── THE THERMOMETER · on the SW canopy post ──
     make_cyl("Lot_Thermometer", (-3.5, -1.78, 1.70), 0.09, 0.030,
              (0.92, 0.90, 0.85, 1.0), axis='Y', segments=10)
@@ -773,6 +771,52 @@ def build_hero_props_2026_09():
     make_box("Pending_Folder", (4.05, 8.30, 0.766), (0.24, 0.32, 0.010), manila)   # ON the desk (2026-09-22: 0.6 m south of it)
     make_box("Pending_Folder_Tab", (3.92, 8.49, 0.7725), (0.060, 0.090, 0.003),
              (0.76, 0.64, 0.42, 1.0))
+
+
+def build_handoff_2026_11():
+    """THE HAND-OFF (pass 372, vol 6 ch1). "At 15:11, a white NexCorp
+    Residential Solutions van enters the lot and parks next to the Louisiana
+    pickup. Two men get out. They are wearing navy polo shirts with the
+    NexCorp logo on the chest, khaki pants, work boots ... One of them taps
+    twice on the driver's window." The chapter's event had no picture: the
+    lot held the pickup alone from 15:04 to the end. The van and the two men
+    exist in the view `nexcorp_gas_go_handoff` only (15:11 to 15:14); every
+    part is suffixed, so the lot is the pickup's before and after.
+    NEXT: the van's sliding door and roof rack; the men's logo patches; the
+    car wash tunnel the lot is "behind" (the pad stands in open ground)."""
+    HO = "__nexcorp_gas_go_handoff"
+    white, navy, dark = (0.92, 0.92, 0.90, 1.0), (0.14, 0.20, 0.42, 1.0), (0.10, 0.11, 0.13, 1.0)
+    vx, vy = 11.4, 1.5            # east of the pickup, nose north, a man's width between them
+    make_box("NexVan_Cargo" + HO, (vx, vy - 0.70, 1.235), (1.95, 3.80, 1.63), white)
+    make_box("NexVan_Cab" + HO, (vx, vy + 1.55, 1.16), (1.95, 0.70, 1.48), white)
+    make_box("NexVan_Hood" + HO, (vx, vy + 2.25, 0.80), (1.90, 0.70, 0.76), white)
+    make_box("NexVan_Windshield" + HO, (vx, vy + 1.905, 1.52), (1.70, 0.012, 0.60), dark)
+    make_box("NexVan_Bumper" + HO, (vx, vy + 2.62, 0.52), (1.90, 0.08, 0.18), (0.30, 0.30, 0.32, 1.0))
+    make_box("NexVan_Rear_Seam" + HO, (vx, vy - 2.606, 1.235), (0.02, 0.012, 1.50), (0.50, 0.50, 0.50, 1.0))
+    for s, nm in ((-1, "W"), (1, "E")):
+        make_box(f"NexVan_Cab_Glass_{nm}" + HO, (vx + s * 0.981, vy + 1.55, 1.50), (0.012, 0.52, 0.50), dark)
+        make_box(f"NexVan_Band_{nm}" + HO, (vx + s * 0.981, vy - 0.70, 1.35), (0.012, 3.20, 0.30), navy)
+        make_box(f"NexVan_Band_Mark_{nm}" + HO, (vx + s * 0.988, vy + 0.40, 1.35), (0.004, 0.36, 0.18), (0.90, 0.92, 0.96, 1.0))
+        for k, wy in enumerate((vy + 1.75, vy - 1.75)):
+            make_cyl(f"NexVan_Wheel_{nm}_{k}" + HO, (vx + s * 0.87, wy, 0.36), 0.36, 0.24, (0.16, 0.16, 0.17, 1.0), axis='X', segments=12)
+    # the two men: one at the pickup driver's window (west), one between the vehicles
+    import _props.figures as FIG
+    names = [n for n in dir(FIG) if n.startswith("make_") and n not in ("make_standing_figure", "make_seated_figure")]
+    orig = {n: getattr(FIG, n) for n in names}
+
+    def suffixed(fn):
+        def w(name, *a, **k):
+            return fn(str(name) + HO, *a, **k)
+        return w
+    for n in names:
+        setattr(FIG, n, suffixed(orig[n]))
+    try:
+        khaki = (0.66, 0.58, 0.42, 1.0)
+        FIG.make_standing_figure("NexMan_Window", 7.22, 2.55, heading=math.pi / 2.0, coat=navy, pants=khaki, arms="front")
+        FIG.make_standing_figure("NexMan_Between", 9.98, 2.10, heading=-math.pi / 2.0, coat=navy, pants=khaki, h=1.80)
+    finally:
+        for n in names:
+            setattr(FIG, n, orig[n])
 
 
 def main():

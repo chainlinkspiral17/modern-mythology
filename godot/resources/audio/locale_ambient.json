@@ -849,6 +849,10 @@
       "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
       "gain": 0.82
     },
+    "nexcorp_gas_go_handoff": {
+      "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
+      "gain": 0.82
+    },
     "parish_cemetery": {
       "bed": "assets/audio/bgm/vol2_graveyard_solo.wav",
       "gain": 0.82

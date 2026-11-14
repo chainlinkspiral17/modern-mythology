@@ -329,6 +329,14 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
+; (pass 372) "a white NexCorp Residential Solutions van enters the lot and parks next to the
+; Louisiana pickup. Two men get out": from the lot to the south — the pickup's tail left, the
+; van's right, the man between them and the man at the driver's window — the hand-off view only
+[node name="shot_insert_van__nexcorp_gas_go_handoff" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.000, 1.700, 5.000)
+rotation = Vector3(-0.0996, -0.0250, 0.0)
+metadata/fov = 52.0
+
 ; insert: the black pickup in the lot from the store's door (it looked straight down at a wheel)
 [node name="shot_insert_pickup" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(5.400, 1.600, 2.300)
@@ -337,9 +345,11 @@ metadata/fov = 46.0
 
 
 ; insert: the manila envelope, not sealed (ch2)
+; (pass 372) from beside the bed's west rail, down onto it (the pickup is a pickup now: the old
+; pose stood inside its bed wall)
 [node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 1.5, 0.5)
-rotation = Vector3(-0.3964, -0.9273, 0.0)
+position = Vector3(7.450, 1.750, 0.600)
+rotation = Vector3(-0.5027, -1.0240, 0.0)
 metadata/fov = 42.0
 
 
