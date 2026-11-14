@@ -17,6 +17,10 @@ vantage_obstruction_audit.boxes_for) and reports:
   FLOATING    no hide row and no surface right behind the quad covering it
   COVERED     another part of the set stands in front of the picture over
               more than 8 % of it, within 40 cm (a sign, a band, a shelf)
+  STRIPPED    (pass 374) a view of the set lays the picture although every
+              part it replaces is gone from that view (a `strip`, a view tag):
+              the picture hangs on nothing — the canvas bag's in the alley's
+              crowd views, the night ridges in the farmhouse's day view
   SUNK        (pass 373) the quad's own plane lies INSIDE a solid that covers
               it, behind that solid's viewer-side face: the picture is drawn
               behind the face of its wall or frame and is never seen
@@ -212,6 +216,17 @@ def check_row(slug, row, boxes, others_hidden=frozenset()):
     q1 = (c[ha] - h / 2.0, c[ha] + h / 2.0)
     area = max(w * h, 1e-6)
     hide = [str(p) for p in (row.get("hide") or [])]
+    # (pass 374) the views that lay this picture, and only the parts one of
+    # them shows WITH it: a figure of the 10:45 crowd does not stand in a
+    # picture the crowd's views do not lay
+    import view_tags as VT
+    own_s = VT.owners(slug)
+    notp = set(row.get("not_presets") or [])
+    pic_views = {v for v, sc in VT.scenes().items()
+                 if sc == row.get("locale") and v not in notp and (own_s is None or v in own_s)}
+    all_boxes = boxes
+    if pic_views:
+        boxes = [b for b in boxes if "__" not in b[0] or VT.owners(b[0]) is None or (VT.owners(b[0]) & pic_views)]
     hidden = hidden_by(row, boxes)
     if hidden and fitting_part(c, w, h, n, sg, wa, ha, hidden) is None:
         # nothing hidden is the picture's size: the label's part may be (the
@@ -275,6 +290,15 @@ def check_row(slug, row, boxes, others_hidden=frozenset()):
         if not support and not hide and not is_view:
             out.append("FLOATING   %s: no surface behind the picture at %s" % (
                 slug, ", ".join("%.2f" % v for v in c)))
+    # (pass 374) STRIPPED: the views that still lay this picture where its
+    # stand-in is not (HeroArt skips a view in `not_presets`, and a slug
+    # tagged `__<view>` is laid in its own views only)
+    names = [b[0] for b in hidden_by(row, all_boxes)]
+    if names:
+        gone = sorted(v for v in pic_views if not any(VT.in_view(nm, v) for nm in names))
+        if gone:
+            out.append("STRIPPED   %s: laid in %s, where the part it replaces (%s) is not" % (
+                slug, ", ".join(gone[:5]), names[0]))
     # (pass 373) SUNK. The Starfish Nebula's picture stood 6 mm behind the
     # face of the alley's brick; the diner's five wall photographs 8 mm
     # inside their frames' slabs; the Kowalskis' kitchen window inside its

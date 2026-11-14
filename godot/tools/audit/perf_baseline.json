@@ -403,9 +403,9 @@
   "objects": 272
  },
  "salty_tome_interior": {
-  "draw": 386,
-  "prims": 186240,
-  "objects": 556
+  "draw": 388,
+  "prims": 206376,
+  "objects": 558
  },
  "sam_bedroom": {
   "draw": 118,
@@ -443,9 +443,9 @@
   "objects": 248
  },
  "small_wood_farmhouse": {
-  "draw": 636,
-  "prims": 209100,
-  "objects": 806
+  "draw": 642,
+  "prims": 212676,
+  "objects": 812
  },
  "small_wood_field": {
   "draw": 276,

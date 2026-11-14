@@ -438,6 +438,16 @@ OMOUT="$(python3 orphan_marker_audit.py --gate 2>/dev/null)" || {
 echo "$OMOUT" | grep "orphan_marker_audit ·" | tail -1
 echo ""
 
+# ── View groups (pass 374, 2026-11-14) ─────────────────────────
+# A part tagged with a VIEW GROUP (Background3D.VIEW_GROUPS) is in that
+# group's views. A group that names a view that does not exist, or that
+# shares a view's id, is a part in the wrong views.
+echo "── view_tags.py ──"
+VTOUT="$(python3 view_tags.py 2>/dev/null)" || {
+    echo "$VTOUT" | grep "^UNKNOWN\|^CLASH" || true; DEFERRED="$DEFERRED view_tags"; }
+echo "$VTOUT" | grep "view_tags ·" | tail -1
+echo ""
+
 # ── Painting spots (2026-11-08) ───────────────────────────────
 # A painting has no markers; resources/vn/painting_spots.json names the
 # parts of a picture an insert can point at. Every key a real picture,

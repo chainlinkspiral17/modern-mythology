@@ -222,6 +222,9 @@ posters, screens with no picture: `empty_frame_audit`).
   been built INSIDE the wall (it and its roster picture never showed): brought out. The same defect, found by
   a new SUNK gate: the diner's five wall photographs, the Kowalski kitchen window from the yard, Little
   Switzerland's sign, the flyer on Nate's amp. Draft 2 targets in the roadmap (ch21's leaving first).
+  **Pass 374, draft 2:** ch21's leaving — three more views by the clock (10:45 the leaving, 11:00 the thinning,
+  11:30 the twelve), the wagon, two pickups and Hans's van on the street past the entrance. View groups
+  (`Background3D.VIEW_GROUPS`, `tools/audit/view_tags.py`) so a part can be in any set of views.
 - **nightmare_cell — pass 353 (2026-11-12).** It read black; "The bulb in the cage stays on" — lit cold.
   tideline_survey and hospice_room read and hold.
 - Fifth six (by lines over parts): nightmare_cell ✔ → tideline_survey (read) → hospice_room (read) →

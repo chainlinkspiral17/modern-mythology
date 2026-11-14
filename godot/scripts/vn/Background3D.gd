@@ -35,6 +35,27 @@ const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
 const GlassPass := preload("res://scripts/LocaleGlass.gd")
 const VoidPass := preload("res://scripts/LocaleVoid.gd")
 const ArtMaskScript := preload("res://scripts/vn/ArtMask.gd")
+## VIEW GROUPS (pass 374). A part of a set belongs to the views its name
+## tags (`<Name>__<view>[__<view>…]`, see _strip_other_preset_lights). A part
+## of three views overran Blender's 63-character names, so a tag may be a
+## GROUP: a short name that stands for a list of views. `Vg_Roy_Torso__st_gvab`
+## is in the four views of "st_gvab" and nowhere else. The builders check
+## their groups against this table (a tag that names nothing would put the
+## part in EVERY view); tools/audit/view_tags.py reads it for the gates.
+const VIEW_GROUPS := {
+	# vol 7 ch20-21, the alley behind the Salty Tome by the clock:
+	# g 6:59 gather · v 7:15 vigil · a 10:45 leaving · b 11:00 thinning · c 11:30 twelve
+	"st_gv": ["salty_tome_gather", "salty_tome_vigil"],
+	"st_gva": ["salty_tome_gather", "salty_tome_vigil", "salty_tome_leaving"],
+	"st_gvab": ["salty_tome_gather", "salty_tome_vigil", "salty_tome_leaving", "salty_tome_thinning"],
+	"st_gvabc": ["salty_tome_gather", "salty_tome_vigil", "salty_tome_leaving", "salty_tome_thinning", "salty_tome_twelve"],
+	"st_va": ["salty_tome_vigil", "salty_tome_leaving"],
+	"st_vab": ["salty_tome_vigil", "salty_tome_leaving", "salty_tome_thinning"],
+	"st_ab": ["salty_tome_leaving", "salty_tome_thinning"],
+	"st_abc": ["salty_tome_leaving", "salty_tome_thinning", "salty_tome_twelve"],
+	"st_bc": ["salty_tome_thinning", "salty_tome_twelve"],
+}
+
 const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
@@ -3111,7 +3132,7 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
 			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
 			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
-		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow"],
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "View_W_Parked_Car_"],
 		"suppress_input": true,
 	},
 	"salty_tome_vigil": {
@@ -3128,7 +3149,55 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
 			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
 			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
-		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "Alley_Glasses", "Alley_Newspaper"],
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "Alley_Glasses", "Alley_Newspaper", "View_W_Parked_Car_"],
+		"suppress_input": true,
+	},
+	"salty_tome_leaving": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 374) vol 7 ch21, 10:45: "The crowd in the alley had been at the
+		# wall for nearly two hours when the leaving began." The vigil's crowd
+		# less the first to go; Marit "seated on the milk crate with her bowl
+		# in her lap", Per behind her. Tem is at the entrance for the whole
+		# chapter ("She crossed from the wall to Tem at the entrance of the
+		# alley"): the vigil's vantage.
+		"camera_origin": Vector3(-5.15, 1.95, -9.75),
+		"camera_rotation": Vector3(-0.020, -1.174, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "Alley_Glasses", "Alley_Newspaper", "View_W_Parked_Car_", "Kai_Notebook"],
+		"suppress_input": true,
+	},
+	"salty_tome_thinning": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 374) vol 7 ch21, 11:00: Marit and Per gone, the crowd thinner;
+		# Roy and Aud at the wall, "Olaus's bowl in the canvas bag at his feet"
+		"camera_origin": Vector3(-5.15, 1.95, -9.75),
+		"camera_rotation": Vector3(-0.020, -1.174, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "Alley_Glasses", "Alley_Newspaper", "View_W_Parked_Car_", "Kai_Notebook"],
+		"suppress_input": true,
+	},
+	"salty_tome_twelve": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 374) vol 7 ch21, 11:30: "The crowd had thinned to perhaps
+		# twelve people, mostly older townspeople" — at the wall now; Lena,
+		# Finn with the crow, Kai; Greta and Hans at the van's open back door
+		# on the street
+		"camera_origin": Vector3(-5.15, 1.95, -9.75),
+		"camera_rotation": Vector3(-0.020, -1.174, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "Alley_Glasses", "Alley_Newspaper", "View_W_Parked_Car_", "Kai_Notebook"],
 		"suppress_input": true,
 	},
 	"hans_bakery_back_kitchen": {
@@ -6723,6 +6792,11 @@ func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
 		for part: String in String(n.name).split("__").slice(1):
 			if CAMERA_PRESETS.has(part):
 				owners.append(part)
+			elif VIEW_GROUPS.has(part):
+				# (pass 374) a group tag: every view it stands for
+				var members: Array = VIEW_GROUPS[part]
+				for gv: Variant in members:
+					owners.append(String(gv))
 		if owners.is_empty() or preset_id in owners:
 			continue
 		doomed.append(n)

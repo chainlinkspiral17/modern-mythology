@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · "is this part there?" has one answer: view_tags (pass 374)
+- A part is in the views its name tags (`__<view>`), or a VIEW GROUP's
+  (`__st_gvab`, `Background3D.VIEW_GROUPS`), and leaves a view that strips
+  its prefix. Six audits each had their own half of that rule; all ask
+  `tools/audit/view_tags.py` now (`owners`, `in_view`, `never_together`).
+  A new gate that reads part names calls it, never `split("__")`.
+- A group tag that is not in the engine's table is not a tag: the part
+  would be in EVERY view. The builder that uses groups asserts each one
+  against Background3D.gd at build time.
+- Two more classes found by asking the question per view: parts that no
+  view shows together are not clips; a picture whose stand-in a view
+  strips hangs on nothing there unless the row's `not_presets` names the
+  view (STRIPPED) — the farmhouse's night ridges were laid in its day
+  view.
+- A helper that looks a part up BY NAME (vehicles._audit_body) must allow
+  for the tag on the end.
+
 ### 2026-11-14 · "on the wall" is a number: a stand-in sunk in its host takes its picture with it (pass 373)
 - The Starfish Nebula was built at `wall_centre - 0.105` on a wall whose
   face is at `- 0.12`: 1.5 cm inside the brick. Nothing reported it for

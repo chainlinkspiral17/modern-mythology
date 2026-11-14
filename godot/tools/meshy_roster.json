@@ -9029,7 +9029,12 @@
           "not_presets": [
             "blue_heron_1997",
             "blue_heron_1997_lounge",
-            "blue_heron_1997_sea_wall"
+            "blue_heron_1997_sea_wall",
+            "salty_tome_gather",
+            "salty_tome_vigil",
+            "salty_tome_leaving",
+            "salty_tome_thinning",
+            "salty_tome_twelve"
           ]
         }
       ],
@@ -55102,7 +55107,10 @@
           "hide": [
             "Far_Ridge_Band_0"
           ],
-          "fit": "tile"
+          "fit": "tile",
+          "not_presets": [
+            "little_switzerland"
+          ]
         },
         {
           "locale": "small_wood_farmhouse",
@@ -55120,7 +55128,10 @@
           "hide": [
             "Far_Ridge_Band_1"
           ],
-          "fit": "tile"
+          "fit": "tile",
+          "not_presets": [
+            "little_switzerland"
+          ]
         },
         {
           "locale": "small_wood_farmhouse",
@@ -55138,7 +55149,10 @@
           "hide": [
             "Far_Ridge_Band_2"
           ],
-          "fit": "tile"
+          "fit": "tile",
+          "not_presets": [
+            "little_switzerland"
+          ]
         },
         {
           "locale": "small_wood_farmhouse",
@@ -55156,7 +55170,10 @@
           "hide": [
             "Far_Ridge_Band_3"
           ],
-          "fit": "tile"
+          "fit": "tile",
+          "not_presets": [
+            "little_switzerland"
+          ]
         }
       ]
     },
@@ -55201,7 +55218,10 @@
           "hide": [
             "Far_Cloud_Band_Moonlit"
           ],
-          "fit": "tile"
+          "fit": "tile",
+          "not_presets": [
+            "little_switzerland"
+          ]
         }
       ]
     },

@@ -100,8 +100,11 @@ def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck):
     if boxes is None:
         return
     name = f"{prefix}_Body"
+    tag = ""
     for k in range(len(boxes) - 1, -1, -1):
-        if boxes[k][0] == name:
+        # (pass 374) … or `<prefix>_Body__<view tag>`: a car built for some views only
+        if boxes[k][0] == name or boxes[k][0].startswith(name + "__"):
+            tag = boxes[k][0][len(name):]
             del boxes[k]
             break
     else:
@@ -109,9 +112,9 @@ def _audit_body(prefix, P, S, nose, tail, hw, z0, cab_u0, cab_u1, roof, deck):
     half = lambda t: tuple(abs(float(x)) for x in t)
     # the profile's own length (tail + 0.10 .. nose): the bumper, grille and
     # lamps sit ON the nose face and must still touch it
-    boxes.append((name, P((nose + tail) / 2.0 + 0.05, 0.0, z0 + (0.42 + deck) / 2.0),
+    boxes.append((name + tag, P((nose + tail) / 2.0 + 0.05, 0.0, z0 + (0.42 + deck) / 2.0),
                   half(S((nose - tail - 0.10) / 2.0, hw - 0.02, (deck - 0.42) / 2.0))))
-    boxes.append((name + "_Cab", P((cab_u0 + cab_u1) / 2.0, 0.0, z0 + (deck + roof) / 2.0),
+    boxes.append((name + "_Cab" + tag, P((cab_u0 + cab_u1) / 2.0, 0.0, z0 + (deck + roof) / 2.0),
                   half(S(abs(cab_u1 - cab_u0) / 2.0, hw - 0.02, (roof - deck) / 2.0))))
 
 

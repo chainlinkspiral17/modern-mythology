@@ -474,8 +474,10 @@ def _near_fraction_owned(origin_b, pitch, yaw, fov, boxes, subj):
 
 
 def _in_view(name, view):
-    owners = [p for p in name.split("__")[1:] if p in PRESET_IDS]
-    return not owners or view in owners
+    # (pass 374) the one rule, shared with the engine: tags and VIEW GROUPS
+    import view_tags
+    own = view_tags.owners(name)
+    return own is None or view in own
 
 
 PRESET_IDS = set()

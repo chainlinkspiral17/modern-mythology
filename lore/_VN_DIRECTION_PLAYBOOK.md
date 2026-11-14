@@ -323,6 +323,22 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-14 · a morning is several views; say who is in which with one letter each (pass 374)
+- The vigil's morning is five views of one alley (6:59, 7:15, 10:45,
+  11:00, 11:30). The builder's table gives every figure and prop the
+  letters of the views it is in ("gvab"); a helper turns that into the
+  view's tag or a view group's. Reading the table against the text is the
+  staging check: who has arrived, who has gone, what is in whose hands.
+- Before a `bg` node goes into a chapter, check what is keyed to its node
+  indexes: VOICE FILES (`assets/audio/voice/<scene>/<NNN>`), trip beats,
+  jumps and choices. None for ch20 and ch21; a chapter with voice lines
+  needs its files renumbered with it.
+- When a cue is removed, look at what it leaves: the alley's `seat` frame
+  had one cue, on "the passenger seat" of a wagon. The frame went with it.
+- A person who stands in the line of sight of their own prop hides it:
+  the crow on Finn's right shoulder was behind his head from every frame
+  on the alley's side. Put the thing on the camera's side of the person.
+
 ### 2026-11-14 · a crowd is a VIEW with its own frames, staged by the clock (pass 373)
 - When the text fills a place ("perhaps thirty-five people in the
   alley"), build the people as a view of the set (`<set>_<state>`, parts

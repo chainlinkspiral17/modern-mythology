@@ -263,30 +263,15 @@ def best_subject(hits, pos, fwd):
     return best_name, cen, ang, dist
 
 
-_VIEWS = None
-
-
 def in_view(name, view):
     """(pass 373) Is the part `name` in the view `view`? A part tagged
-    `__<preset>[__<preset>…]` exists only in those views, and a view's
-    `strip` prefixes leave it (Background3D). A marker's subject is a part
-    of ITS view: the office's `closeup petra` was judged against a mug
-    that stands in the alley only in the two crowd views of vol 7 ch20."""
-    global _VIEWS
-    if _VIEWS is None:
-        ids, strips = set(), {}
-        src = open(os.path.join(ROOT, "scripts", "vn", "Background3D.gd")).read()
-        for mm in re.finditer(r'\n\t"(\w+)": \{(.*?)\n\t\},', src, re.S):
-            ids.add(mm.group(1))
-            st = re.search(r'"strip":\s*\[([^\]]*)\]', mm.group(2))
-            if st:
-                strips[mm.group(1)] = [t.strip().strip('"') for t in st.group(1).split(",") if t.strip()]
-        _VIEWS = (ids, strips)
-    ids, strips = _VIEWS
-    owners = [p for p in name.split("__")[1:] if p in ids]
-    if owners and view not in owners:
-        return False
-    return not any(name.startswith(pf) for pf in strips.get(view, ()))
+    `__<preset>[__<preset>…]` (or with a view group, pass 374) exists only
+    in those views, and a view's `strip` prefixes leave it (Background3D).
+    A marker's subject is a part of ITS view: the office's `closeup petra`
+    was judged against a mug that stands in the alley only in the two crowd
+    views of vol 7 ch20."""
+    import view_tags
+    return view_tags.in_view(name, view)
 
 
 def in_plain_view(name, marker, marker_names):
@@ -294,9 +279,9 @@ def in_plain_view(name, marker, marker_names):
     `<marker>__<view>` of its own, so a part tagged for such a view can be
     its subject (the stockroom's `smear` exists in the one view that cues
     it); a part whose every view overrides the marker cannot."""
-    in_view("", "")
-    owners = [p for p in name.split("__")[1:] if p in _VIEWS[0]]
-    return not owners or any((marker + "__" + o) not in marker_names for o in owners)
+    import view_tags
+    owners = view_tags.owners(name)
+    return owners is None or any((marker + "__" + o) not in marker_names for o in owners)
 
 
 def angle_to(pos, fwd, target):

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:salty_tome_alley",
+      "src": "3d:salty_tome_twelve",
       "t": "bg"
     },
     {
@@ -54,7 +54,7 @@
       "t": "say"
     },
     {
-      "text": "Tem walked to the van. Hans was at the open back door with four loaves of rye wrapped in linen on the wooden tray Greta used for transit. He gave the loaves to Tem.",
+      "text": "[shot:insert tray]Tem walked to the van. Hans was at the open back door with four loaves of rye wrapped in linen on the wooden tray Greta used for transit. He gave the loaves to Tem.",
       "t": "narrate"
     },
     {
@@ -97,7 +97,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]He got in the van. Greta got in the passenger side. They drove back to the bakery.",
+      "text": "[shot:establish c]He got in the van. Greta got in the passenger side. They drove back to the bakery.",
       "t": "narrate"
     },
     {
@@ -132,7 +132,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert wall]The remaining twelve townspeople at the wall watched the three of them pack up without saying anything. There was no announcement that the gathering was ending. The substrate at the wall had stopped doing what it had been doing.",
+      "text": "[shot:insert mural]The remaining twelve townspeople at the wall watched the three of them pack up without saying anything. There was no announcement that the gathering was ending. The substrate at the wall had stopped doing what it had been doing.",
       "t": "narrate"
     },
     {
@@ -144,7 +144,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert seat]She got in the wagon. Kai got in the passenger seat. Finn followed in his Toyota. They drove up Main to the cabin road. They reached the cabin at twelve-fifteen.",
+      "text": "[shot:insert wagon]She got in the wagon. Kai got in the passenger seat. Finn followed in his Toyota. They drove up Main to the cabin road. They reached the cabin at twelve-fifteen.",
       "t": "narrate"
     },
     {

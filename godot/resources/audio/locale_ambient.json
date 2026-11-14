@@ -941,6 +941,18 @@
       "bed": "assets/audio/bgm/vol7_painting_room.wav",
       "gain": 0.82
     },
+    "salty_tome_leaving": {
+      "bed": "assets/audio/bgm/vol7_painting_room.wav",
+      "gain": 0.82
+    },
+    "salty_tome_thinning": {
+      "bed": "assets/audio/bgm/vol7_painting_room.wav",
+      "gain": 0.82
+    },
+    "salty_tome_twelve": {
+      "bed": "assets/audio/bgm/vol7_painting_room.wav",
+      "gain": 0.82
+    },
     "salty_tome_kitchenette": {
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82

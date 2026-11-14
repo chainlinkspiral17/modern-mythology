@@ -42,6 +42,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import vantage_obstruction_audit as VO  # noqa: E402
+import view_tags as VT  # noqa: E402
 import wide_frame_audit as WF  # noqa: E402
 
 GODOT = os.path.normpath(os.path.join(HERE, "..", ".."))
@@ -124,8 +125,8 @@ def art_points(scene_name, view, roster):
                 name, body = m.group(1), m.group(2)
                 if "assets/3d/props/" not in body:
                     continue
-                tag = name.partition("__")[2]
-                if tag and view not in tag.split("__"):
+                own = VT.owners(name)       # (pass 374) tags and view groups
+                if own is not None and view not in own:
                     continue
                 pm = re.search(r"position = Vector3\(([^)]+)\)", body)
                 tm = re.search(r"transform = Transform3D\(([^)]+)\)", body)

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:salty_tome_alley",
+      "src": "3d:salty_tome_leaving",
       "t": "bg"
     },
     {
@@ -45,7 +45,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]Margaret from the co-op was the first.",
+      "text": "[shot:establish b]Margaret from the co-op was the first.",
       "t": "narrate"
     },
     {
@@ -91,7 +91,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]Three other townspeople left behind Margaret in the next ten minutes. Quietly. With nods to Tem at the entrance. No goodbye-speeches. The leaving had been given a shape by Margaret and the shape held.",
+      "text": "[shot:establish c]Three other townspeople left behind Margaret in the next ten minutes. Quietly. With nods to Tem at the entrance. No goodbye-speeches. The leaving had been given a shape by Margaret and the shape held.",
       "t": "narrate"
     },
     {
@@ -99,7 +99,7 @@
       "t": "narrate"
     },
     {
-      "text": "Marit was seated on the milk crate with her bowl in her lap. She had been seated since seven-fifty when Lena had brought her the crate from inside the bookstore. Per had not asked her to sit.",
+      "text": "[shot:closeup marit]Marit was seated on the milk crate with her bowl in her lap. She had been seated since seven-fifty when Lena had brought her the crate from inside the bookstore. Per had not asked her to sit.",
       "t": "narrate"
     },
     {
@@ -171,8 +171,12 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]He closed her door. He went around. He got in. He drove her down to Hans's.",
+      "text": "[shot:establish d]He closed her door. He went around. He got in. He drove her down to Hans's.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:salty_tome_thinning",
+      "t": "bg"
     },
     {
       "text": "Marina came to Tem at the alley's entrance at eleven. She was in her foundation coat. Her wagon was parked at the head of Hemlock where she had left it last night.",
@@ -256,7 +260,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face]Roy had been at Aud's side since the face had closed its eyes. He had Olaus's bowl in the canvas bag at his feet at the wall. He had not, by Tem's read, let his hand off the canvas bag's strap.",
+      "text": "[shot:insert bag]Roy had been at Aud's side since the face had closed its eyes. He had Olaus's bowl in the canvas bag at his feet at the wall. He had not, by Tem's read, let his hand off the canvas bag's strap.",
       "t": "narrate"
     },
     {
@@ -399,7 +403,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert notebook]Cale took the notebook from his coat pocket. He held it.",
+      "text": "Cale took the notebook from his coat pocket. He held it.",
       "t": "narrate"
     },
     {
@@ -418,7 +422,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert notebook]He put the notebook back in his coat.",
+      "text": "He put the notebook back in his coat.",
       "t": "narrate"
     },
     {
@@ -480,7 +484,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]He walked to his F-150. He drove down Main to ChillWave Video. He unlocked the front door at twelve forty-eight.",
+      "text": "[shot:establish c]He walked to his F-150. He drove down Main to ChillWave Video. He unlocked the front door at twelve forty-eight.",
       "t": "narrate"
     },
     {
@@ -516,6 +520,10 @@
       "expr": "neutral",
       "pos": "center",
       "t": "show"
+    },
+    {
+      "src": "3d:salty_tome_twelve",
+      "t": "bg"
     },
     {
       "text": "Lena, Finn, Kai were at the wall with Tem at eleven-thirty. The four of them were the only members of the cast still at the alley.",
@@ -607,7 +615,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]She turned to Tem.",
+      "text": "[shot:establish b]She turned to Tem.",
       "t": "narrate"
     },
     {
@@ -636,7 +644,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]She walked to her car with the crow on her shoulder. She drove to her apartment on Cedar Place.",
+      "text": "[shot:establish c]She walked to her car with the crow on her shoulder. She drove to her apartment on Cedar Place.",
       "t": "narrate"
     },
     {

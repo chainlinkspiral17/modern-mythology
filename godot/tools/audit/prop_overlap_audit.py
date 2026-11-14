@@ -872,6 +872,10 @@ def main():
         hits += pierces([b for b in boxes if b[0] not in MESH_NAMES])
         hits += buried(boxes, A.TRUE_BOXES)
         hits = [h for h in hits if not _exclusive(name, h[1], h[2])]
+        # (pass 374) … and by their view tags: a figure of the 7:15 crowd and
+        # one of the 11:30 crowd stand on the same asphalt in different views
+        import view_tags
+        hits = [h for h in hits if not view_tags.never_together(h[1], h[2])]
         per[name] = len(hits)
         if hits:
             print("== %s · %d objects · %d clips" % (name, len(boxes), len(hits)))

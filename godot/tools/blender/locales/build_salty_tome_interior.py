@@ -748,8 +748,9 @@ def build_alley_2026_10():
 
 
 def build_vigil_2026_11():
-    """THE VIGIL (pass 373, vol 7 ch20 "The Wall"). The volume's last
-    morning fills this alley and every frame of it was empty asphalt:
+    """THE VIGIL AND THE LEAVING (passes 373-374, vol 7 ch20 "The Wall" and
+    ch21). The volume's last morning fills this alley, and all of it played
+    on empty asphalt:
 
       "People started arriving at six fifty-six. Petra came out the back
       door of the bookstore with a coffee thermos and four mugs. She set
@@ -763,44 +764,68 @@ def build_vigil_2026_11():
       bakery ... Three teenagers from the consolidated middle school. Two
       of the foundation's drone-tenders in wax canvas. Soren ... Bernie
       Lund ... Frog Petersen"
-      "the perhaps thirty-five people in the alley"
+      "The crowd in the alley had been at the wall for nearly two hours
+      when the leaving began. ... Marit was seated on the milk crate with
+      her bowl in her lap. She had been seated since seven-fifty when Lena
+      had brought her the crate from inside the bookstore."
+      "The crowd had thinned to perhaps twelve people, mostly older
+      townspeople who did not have shifts to return to. Hans had gone back
+      to his van ... Greta was at the van's open back door arranging the
+      empty brioche baskets in stacks."
 
-    Two views of the same alley, so the plain one stays the empty alley of
-    ch14/16/18:
-      salty_tome_gather  6:59 to 7:15 — the sixteen at the wall (parts
-                         tagged for both views), Petra among them
-      salty_tome_vigil   7:15 on — twenty more: the town behind them,
-                         Marit at the crate with her bowl, Marina beside
-                         it, Petra back at her door with her arms
-                         crossed, Greta's two baskets
-    and in both: the thermos and the four mugs by the dumpster; ON THE
-    CRATE the three bowls left in the bakery's order (Marit's place in the
-    row is empty: she holds hers "in both hands"), Finn's cedar bell-piece "at the center", the notebook;
-    the crow "on his shoulder" (the views strip the dumpster's crow, the
-    brush jar, the takeaway cup, the canvas bag and ch21's bowls on the
-    asphalt). The figures are _props.figures: backs, coats and heights —
-    the portraits are the faces. The half-circle in front of the face and
-    the crate is left open: nobody stands with their back to the picture.
+    FIVE VIEWS of the same alley, by the clock (the plain one stays the
+    empty alley of ch14/16/18). Each part says which views it is in with one
+    letter per view; T() turns that into the part's tag — the view's id, or
+    a VIEW GROUP (Background3D.VIEW_GROUPS, checked at the end of this
+    function: a part of three views overran Blender's 63-character names):
+      g  salty_tome_gather    ch20  6:59  sixteen at the wall, Petra among them
+      v  salty_tome_vigil     ch20  7:15  thirty-six: the town behind them, Marit
+                                          standing with her bowl, Marina at the crate
+      a  salty_tome_leaving   ch21 10:45  the crowd after two hours: Marit seated on
+                                          the second crate, Per behind her
+      b  salty_tome_thinning  ch21 11:00  those who are still there; Roy's canvas bag
+      c  salty_tome_twelve    ch21 11:30  "perhaps twelve", at the wall now; Greta and
+                                          Hans at the van's open back door
+    A figure the lines are still bringing in, or walking out, is left out of
+    that view: the portrait is the picture of her. The half-circle in front
+    of the face and the crate stays open.
 
-    NEXT (draft 2): ch21's "remaining twelve" and the leaving; Hans's van
-    and the trucks at the entrance, Tem's wagon; Marina kneeling with her
-    hand ON the bowl (she stoops); Per's arm round Cale; mugs in hands;
-    hoods and umbrellas for the rain; lines 0-32 still show ch21's bowls on
-    the asphalt (the bowls go on the crate at line 13)."""
+    On Hemlock's side street past the entrance, in every crowd view: "Tem
+    stood at the entrance of the alley with the wagon" — the wagon's tail at
+    the alley's mouth, a pickup ahead of it and one behind, "Hans parked at
+    the entrance behind the trucks".
+
+    KNOT (flagged, not fixed): ch20 has Finn set the cedar bell-piece "on
+    the crate beside the bowls"; ch21 has it "in Finn's coat pocket since
+    Sunday afternoon". It is on the crate in g and v and gone from a on.
+
+    NEXT (draft 3): each leave-taking as its own state (Roy and Aud stand at
+    the wall 40 lines after they drive off; the van stays after "They drove
+    back to the bakery"); Marina kneeling with her hand ON the bowl; Per's
+    arm round Cale; mugs in hands; hoods and umbrellas for the rain; Finn's
+    Toyota and Aud's car; ch20's first 32 lines still show ch21's bowls on
+    the asphalt."""
     import _props.figures as FIG
     import _props.creatures as CRE
+    import _props.vehicles as VEH
     from _props.geometry import make_blob
-    GA, VI = "__salty_tome_gather", "__salty_tome_vigil"
-    GV = GA + VI
+    VIEW = {"g": "salty_tome_gather", "v": "salty_tome_vigil", "a": "salty_tome_leaving",
+            "b": "salty_tome_thinning", "c": "salty_tome_twelve"}
+    used = set()
+
+    def T(m):
+        m = "".join(ch for ch in "gvabc" if ch in m)
+        used.add(m)
+        return "__" + (VIEW[m] if len(m) == 1 else "st_" + m)
 
     class _tagged:
-        """Every part a _props helper makes inside the block takes `tag`
-        (Background3D drops a tagged part in the views it does not name)."""
-        def __init__(self, tag):
-            self.tag, self.saved = tag, []
+        """Every part a _props helper makes inside the block takes the tag
+        of the views `m` names (Background3D drops a tagged part elsewhere)."""
+        def __init__(self, m):
+            self.tag, self.saved = T(m), []
 
         def __enter__(self):
-            for mod in (FIG, CRE):
+            for mod in (FIG, CRE, VEH):
                 for n in dir(mod):
                     fn = getattr(mod, n)
                     if n.startswith("make_") and callable(fn) and getattr(fn, "__module__", None) != mod.__name__:
@@ -821,102 +846,181 @@ def build_vigil_2026_11():
     blond, red = (0.66, 0.54, 0.32, 1.0), (0.48, 0.22, 0.12, 1.0)
     skins = ((0.66, 0.52, 0.44, 1.0), (0.78, 0.64, 0.56, 1.0), (0.50, 0.36, 0.28, 1.0), (0.36, 0.25, 0.20, 1.0), (0.70, 0.56, 0.46, 1.0))
     wax = (0.62, 0.52, 0.32, 1.0)
-    # ── the seven and the first arrivals, at the wall (both views) ──
+    plum = (0.42, 0.26, 0.36, 1.0); wool = (0.44, 0.38, 0.32, 1.0)
+
+    def stand(prefix, x, y, h, coat, hair, views, skin=0, heading=None, **kw):
+        with _tagged(views):
+            return FIG.make_standing_figure(prefix, x, y, heading=face(x, y) if heading is None else heading, h=h,
+                                            coat=coat, hair=hair, skin=skins[skin % len(skins)], **kw)
+
+    # ── the seven and the first arrivals, at the wall ──
+    #    (name, x, y, height, coat, hair, the views, more)
     early = (
-        ("Margaret", -4.30, 11.25, 1.66, (0.20, 0.36, 0.38, 1.0), grey, {}),
-        ("CoopA", -3.85, 11.22, 1.78, (0.34, 0.36, 0.24, 1.0), black, {}),
-        ("CoopB", -4.08, 10.72, 1.70, (0.50, 0.28, 0.18, 1.0), brown, {}),
-        ("Cale", -3.25, 11.25, 1.74, (0.20, 0.20, 0.22, 1.0), brown, {}),
-        ("Per", -2.80, 11.25, 1.84, (0.16, 0.20, 0.34, 1.0), blond, {}),
-        ("Lena", -2.15, 10.95, 1.68, (0.48, 0.48, 0.50, 1.0), black, {"arms": "folded"}),
-        ("Roy", 0.35, 11.25, 1.76, (0.42, 0.32, 0.22, 1.0), grey, {}),
-        ("Aud", 0.80, 11.22, 1.62, (0.18, 0.30, 0.24, 1.0), white, {}),
-        ("Finn", 1.30, 11.25, 1.80, (0.24, 0.28, 0.34, 1.0), brown, {}),
-        ("Kai", 1.80, 11.30, 1.75, (0.20, 0.32, 0.50, 1.0), black, {}),
-        ("Wren", 2.25, 11.45, 1.55, (0.78, 0.62, 0.20, 1.0), brown, {}),
-        ("WrenMom", 2.78, 11.02, 1.66, (0.42, 0.18, 0.22, 1.0), brown, {}),
-        ("Hans", 3.25, 11.30, 1.82, (0.76, 0.74, 0.70, 1.0), grey, {}),
-        ("Greta", 3.70, 11.28, 1.64, (0.52, 0.30, 0.30, 1.0), blond, {}),
-        ("Jameson", 4.20, 11.25, 1.80, (0.14, 0.14, 0.16, 1.0), black, {}),
-        ("Hannes", 4.65, 11.25, 1.72, (0.36, 0.42, 0.50, 1.0), brown, {}),
+        ("Margaret", -4.30, 11.25, 1.66, (0.20, 0.36, 0.38, 1.0), grey, "gv", {}),
+        ("CoopA", -3.85, 11.22, 1.78, (0.34, 0.36, 0.24, 1.0), black, "gv", {}),
+        ("CoopB", -4.08, 10.72, 1.70, (0.50, 0.28, 0.18, 1.0), brown, "gv", {}),
+        ("Cale", -3.25, 11.25, 1.74, (0.20, 0.20, 0.22, 1.0), brown, "gva", {}),
+        ("Per", -2.80, 11.25, 1.84, (0.16, 0.20, 0.34, 1.0), blond, "gv", {}),
+        ("Lena", -2.15, 10.95, 1.68, (0.48, 0.48, 0.50, 1.0), black, "gvabc", {"arms": "folded"}),
+        ("Roy", 0.35, 11.25, 1.76, (0.42, 0.32, 0.22, 1.0), grey, "gvab", {}),
+        ("Aud", 0.80, 11.22, 1.62, (0.18, 0.30, 0.24, 1.0), white, "gvab", {}),
+        ("Finn", 1.30, 11.25, 1.80, (0.24, 0.28, 0.34, 1.0), brown, "gvabc", {}),
+        ("Kai", 1.80, 11.30, 1.75, (0.20, 0.32, 0.50, 1.0), black, "gvabc", {}),
+        ("Wren", 2.25, 11.45, 1.55, (0.78, 0.62, 0.20, 1.0), brown, "gv", {}),
+        ("WrenMom", 2.78, 11.02, 1.66, (0.42, 0.18, 0.22, 1.0), brown, "gv", {}),
+        ("Hans", 3.25, 11.30, 1.82, (0.76, 0.74, 0.70, 1.0), grey, "gva", {}),
+        ("Greta", 3.70, 11.28, 1.64, (0.52, 0.30, 0.30, 1.0), blond, "gva", {}),
+        ("Jameson", 4.20, 11.25, 1.80, (0.14, 0.14, 0.16, 1.0), black, "gvabc", {}),
+        ("Hannes", 4.65, 11.25, 1.72, (0.36, 0.42, 0.50, 1.0), brown, "gvabc", {}),
     )
-    with _tagged(GV):
-        for i, (nm, x, y, h, coat, hair, kw) in enumerate(early):
-            FIG.make_standing_figure("Vg_" + nm, x, y, heading=face(x, y), h=h, coat=coat, hair=hair,
-                                     skin=skins[i % len(skins)], **kw)
-        # "Finn at the wall with the crow on his shoulder"
-        fx, fy, fh, fs = 1.30, 11.25, face(1.30, 11.25), 1.80 / 1.72
-        CRE.make_crow("Vg_FinnCrow", fx + 0.23 * fs * math.cos(fh), fy - 0.23 * fs * math.sin(fh), 1.37 * fs,
+    for i, (nm, x, y, h, coat, hair, views, kw) in enumerate(early):
+        stand("Vg_" + nm, x, y, h, coat, hair, views, skin=i, **kw)
+    # "Finn at the wall with the crow on his shoulder" (it steps to Lena's arm at 11:30)
+    fx, fy, fh, fs = 1.30, 11.25, face(1.30, 11.25), 1.80 / 1.72
+    with _tagged("gvabc"):
+        # on his LEFT shoulder, the alley's side (on the right his own head hid it from the south)
+        CRE.make_crow("Vg_FinnCrow", fx - 0.23 * fs * math.cos(fh), fy + 0.23 * fs * math.sin(fh), 1.37 * fs,
                       facing=-1.0, scale=0.85)
-    with _tagged(GA):
-        # "Petra stood at the wall."
-        FIG.make_standing_figure("Vg_PetraW", -2.65, 10.72, heading=face(-2.65, 10.72), h=1.66,
-                                 coat=(0.42, 0.26, 0.36, 1.0), hair=grey)
-    # ── "She watched Marit at the milk crate with her bowl held in both hands" (the vigil: in the
-    #    gather she is still walking down the alley, and her portrait is the picture of her) ──
+    # "Petra stood at the wall." / "Petra at the back door of the bookstore with her arms crossed"
+    stand("Vg_PetraW", -2.65, 10.72, 1.66, plum, grey, "g")
+    stand("Vv_PetraD", -3.30, 9.55, 1.66, plum, grey, "va", heading=0.80, arms="folded")
+    # ── MARIT. 7:15 "with her bowl held in both hands"; from 7:50 "seated on the milk crate
+    #    with her bowl in her lap" (the crate "Lena had brought her ... from inside the bookstore"),
+    #    Per behind her: "Per put his hand on her shoulder" ──
     cedar = (0.55, 0.38, 0.26, 1.0); cedar_dk = (0.44, 0.30, 0.20, 1.0); walnut = (0.34, 0.23, 0.16, 1.0)
-    with _tagged(VI):
-        bx, by, bz = FIG.make_standing_figure("Vv_Marit", -1.60, 11.03, heading=face(-1.60, 11.03), h=1.58,
-                                              coat=(0.44, 0.38, 0.32, 1.0), hair=white, arms="front", stoop=0.10)
-    make_cyl("Vv_Marit_Bowl" + VI, (bx, by, bz + 0.03), 0.046, 0.045, cedar, segments=12)
-    make_cyl("Vv_Marit_Bowl_Rim" + VI, (bx, by, bz + 0.054), 0.036, 0.004, cedar_dk, segments=12)
-    # ── on the crate: the three bowls left, the cedar bell-piece, (Kai_Notebook stays) ──
-    for nm, cx, col in (("Grandfather", -1.745, cedar), ("Substrate", -1.650, cedar_dk), ("Roy", -1.460, walnut)):
-        make_cyl(f"Ch20_Bowl_{nm}" + GV, (cx, 11.675, 0.3425), 0.046, 0.045, col, segments=12)
-        make_cyl(f"Ch20_Bowl_{nm}_Rim" + GV, (cx, 11.675, 0.3665), 0.036, 0.004,
+    bx, by, bz = stand("Vv_Marit", -1.60, 11.03, 1.58, wool, white, "v", arms="front", stoop=0.10)
+    make_cyl("Vv_Marit_Bowl" + T("v"), (bx, by, bz + 0.03), 0.046, 0.045, cedar, segments=12)
+    make_cyl("Vv_Marit_Bowl_Rim" + T("v"), (bx, by, bz + 0.054), 0.036, 0.004, cedar_dk, segments=12)
+    make_box("Seat_Crate" + T("abc"), (-0.95, 11.15, 0.16), (0.35, 0.35, 0.32), (0.50, 0.42, 0.30, 1.0))
+    with _tagged("a"):
+        lx, ly, lz = FIG.make_seated_figure("Va_Marit", -0.95, 11.15, heading=0.20, seat_h=0.32, h=1.58,
+                                            coat=wool, hair=white, arms="lap")
+    # on her thighs (the hands' height is 5 cm over them): "her bowl in her lap"
+    lap = lz - 0.05 * (1.58 / 1.72)
+    make_cyl("Va_Marit_Bowl" + T("a"), (lx, ly, lap + 0.0225), 0.046, 0.045, cedar, segments=12)
+    make_cyl("Va_Marit_Bowl_Rim" + T("a"), (lx, ly, lap + 0.0465), 0.036, 0.004, cedar_dk, segments=12)
+    stand("Va_Per", -0.95, 10.60, 1.84, (0.16, 0.20, 0.34, 1.0), blond, "a", heading=0.0, arms="front")
+    # ── MARINA. 7:26 "She put her hand on her grandfather's bowl"; at 10:45 she is at the wall ──
+    stand("Vv_Marina", -2.08, 11.55, 1.70, (0.46, 0.16, 0.18, 1.0), black, "v", heading=1.45, arms="front", stoop=0.45)
+    stand("Va_Marina", -2.08, 11.50, 1.70, (0.46, 0.16, 0.18, 1.0), black, "a", heading=0.30)
+    # ── the town behind them (7:15), thinning by the clock ──
+    crowd = (
+        ("Mechanic", -3.55, 10.45, 1.78, (0.22, 0.26, 0.34, 1.0), black, "va", {"pants": (0.22, 0.26, 0.34, 1.0)}),
+        ("BakeryW", -3.05, 10.10, 1.62, (0.80, 0.76, 0.66, 1.0), red, "va", {}),
+        ("Soren", -2.50, 10.22, 1.76, (0.30, 0.22, 0.16, 1.0), blond, "v", {}),
+        ("Bernie", -1.88, 10.10, 1.74, (0.80, 0.66, 0.16, 1.0), grey, "vab", {}),
+        ("Frog", -1.28, 10.05, 1.68, (0.30, 0.36, 0.26, 1.0), white, "vab", {"stoop": 0.18}),
+        ("Teen1", -0.66, 10.10, 1.58, (0.62, 0.20, 0.20, 1.0), brown, "v", {}),
+        ("Teen2", -0.14, 10.20, 1.63, (0.24, 0.24, 0.28, 1.0), black, "v", {}),
+        ("Teen3", 0.22, 10.66, 1.52, (0.30, 0.50, 0.56, 1.0), blond, "v", {}),
+        ("DroneA", -1.85, 9.52, 1.80, wax, brown, "va", {}),
+        ("DroneB", -1.32, 9.60, 1.72, (0.56, 0.48, 0.30, 1.0), black, "va", {}),
+        ("Row3A", -0.74, 9.50, 1.64, (0.36, 0.26, 0.44, 1.0), grey, "vab", {}),
+        ("Row3B", -0.18, 9.62, 1.78, (0.44, 0.44, 0.46, 1.0), grey, "vab", {}),
+        ("East1", 3.80, 10.45, 1.70, (0.26, 0.34, 0.30, 1.0), grey, "vab", {}),
+        ("East2", 4.30, 10.20, 1.84, (0.18, 0.18, 0.20, 1.0), black, "v", {}),
+        ("East3", 4.80, 10.50, 1.60, (0.60, 0.36, 0.28, 1.0), white, "vab", {}),
+        ("East4", 3.85, 9.72, 1.74, (0.34, 0.30, 0.40, 1.0), white, "vab", {}),
+        ("East5", 4.40, 9.58, 1.66, (0.70, 0.68, 0.62, 1.0), grey, "vab", {}),
+    )
+    look = {}
+    for i, (nm, x, y, h, coat, hair, views, kw) in enumerate(crowd):
+        stand("Vv_" + nm, x, y, h, coat, hair, views, skin=i + 2, **kw)
+        look[nm] = (h, coat, hair, i + 2, kw)
+    # ── 11:30: "The crowd had thinned to perhaps twelve people, mostly older townspeople" /
+    #    "The remaining twelve townspeople at the wall": ten of them have come up to the wall
+    #    (Jameson and Hannes never left it) ──
+    for nm, x, y in (("Mechanic", -4.40, 11.25), ("BakeryW", -3.90, 11.22), ("Bernie", -3.40, 11.25), ("Frog", -2.90, 11.25),
+                     ("Row3A", 0.35, 11.25), ("Row3B", 0.80, 11.22), ("East1", 2.30, 11.30), ("East3", 2.80, 11.28),
+                     ("East4", 3.25, 11.30), ("East5", 3.70, 11.28)):
+        h, coat, hair, sk, kw = look[nm]
+        stand("Vw_" + nm, x, y, h, coat, hair, "c", skin=sk, **kw)
+    # ── ON THE CRATE. The bakery's order: "Roy's at the right end, then Marit's, then the
+    #    substrate-bowl, then Marina's grandfather's at the left". Marit takes hers at 7:10; Roy has
+    #    his in the canvas bag by 10:45; Marina's is "wrapped in the cloth Marina had left it in". ──
+    def bowl(nm, cx, col, views):
+        make_cyl(f"Ch20_Bowl_{nm}" + T(views), (cx, 11.675, 0.3425), 0.046, 0.045, col, segments=12)
+        make_cyl(f"Ch20_Bowl_{nm}_Rim" + T(views), (cx, 11.675, 0.3665), 0.036, 0.004,
                  (col[0] * 0.78, col[1] * 0.78, col[2] * 0.78, 1.0), segments=12)
-    make_lathe("Ch20_Cedar_Bell" + GV, (-1.60, 11.585, 0.32),
+    bowl("Grandfather", -1.745, cedar, "gva")
+    bowl("Substrate", -1.650, cedar_dk, "gvabc")
+    bowl("Roy", -1.460, walnut, "gv")
+    make_blob("Ch21_Bowl_Wrapped" + T("bc"), (-1.745, 11.675, 0.362), 0.062, (0.84, 0.80, 0.70, 1.0), noise=0.10, seed=4, squash=0.70)
+    make_lathe("Ch20_Cedar_Bell" + T("gv"), (-1.60, 11.585, 0.32),
                [(0.0, 0.0), (0.032, 0.0), (0.030, 0.018), (0.020, 0.048), (0.012, 0.064), (0.0, 0.070)], cedar, segments=12)
+    # "He had Olaus's bowl in the canvas bag at his feet at the wall"
+    make_box("Wall_Canvas_Bag" + T("ab"), (0.35, 11.64, 0.14), (0.34, 0.18, 0.28), (0.62, 0.58, 0.48, 1.0))
+    make_box("Wall_Canvas_Bag_Strap" + T("ab"), (0.35, 11.64, 0.30), (0.04, 0.20, 0.04), (0.50, 0.46, 0.38, 1.0))
     # ── Petra's thermos and the four mugs, on the asphalt by the dumpster ──
-    make_cyl("Alley_Thermos" + GV, (1.22, 9.92, 0.14), 0.050, 0.28, (0.16, 0.30, 0.24, 1.0), segments=12)
-    make_cyl("Alley_Thermos_Cap" + GV, (1.22, 9.92, 0.305), 0.042, 0.05, (0.70, 0.72, 0.74, 1.0), segments=12)
-    make_box("Alley_Thermos_Handle" + GV, (1.282, 9.92, 0.17), (0.024, 0.026, 0.14), COL_BLACK)
+    tm = T("gvab")
+    make_cyl("Alley_Thermos" + tm, (1.22, 9.92, 0.14), 0.050, 0.28, (0.16, 0.30, 0.24, 1.0), segments=12)
+    make_cyl("Alley_Thermos_Cap" + tm, (1.22, 9.92, 0.305), 0.042, 0.05, (0.70, 0.72, 0.74, 1.0), segments=12)
+    make_box("Alley_Thermos_Handle" + tm, (1.282, 9.92, 0.17), (0.024, 0.026, 0.14), COL_BLACK)
     for k, (mx, my, col) in enumerate(((1.02, 9.80, (0.86, 0.84, 0.78, 1.0)), (1.14, 9.70, (0.30, 0.42, 0.56, 1.0)),
                                        (1.34, 9.74, (0.86, 0.84, 0.78, 1.0)), (1.42, 9.90, (0.62, 0.34, 0.26, 1.0)))):
-        make_cyl(f"Alley_Mug_{k}" + GV, (mx, my, 0.045), 0.040, 0.09, col, segments=12)
-        make_box(f"Alley_Mug_{k}_Ear" + GV, (mx, my - 0.048, 0.045), (0.012, 0.022, 0.05), col)
-    # ── the vigil: the town behind them ──
-    crowd = (
-        ("Mechanic", -3.55, 10.45, 1.78, (0.22, 0.26, 0.34, 1.0), black, {"pants": (0.22, 0.26, 0.34, 1.0)}),
-        ("BakeryW", -3.05, 10.10, 1.62, (0.80, 0.76, 0.66, 1.0), red, {}),
-        ("Soren", -2.50, 10.22, 1.76, (0.30, 0.22, 0.16, 1.0), blond, {}),
-        ("Bernie", -1.88, 10.10, 1.74, (0.80, 0.66, 0.16, 1.0), grey, {}),
-        ("Frog", -1.28, 10.05, 1.68, (0.30, 0.36, 0.26, 1.0), white, {"stoop": 0.18}),
-        ("Teen1", -0.66, 10.10, 1.58, (0.62, 0.20, 0.20, 1.0), brown, {}),
-        ("Teen2", -0.14, 10.20, 1.63, (0.24, 0.24, 0.28, 1.0), black, {}),
-        ("Teen3", 0.22, 10.66, 1.52, (0.30, 0.50, 0.56, 1.0), blond, {}),
-        ("DroneA", -1.85, 9.52, 1.80, wax, brown, {}),
-        ("DroneB", -1.32, 9.60, 1.72, (0.56, 0.48, 0.30, 1.0), black, {}),
-        ("Row3A", -0.74, 9.50, 1.64, (0.36, 0.26, 0.44, 1.0), grey, {}),
-        ("Row3B", -0.18, 9.62, 1.78, (0.44, 0.44, 0.46, 1.0), brown, {}),
-        ("East1", 3.80, 10.45, 1.70, (0.26, 0.34, 0.30, 1.0), red, {}),
-        ("East2", 4.30, 10.20, 1.84, (0.18, 0.18, 0.20, 1.0), black, {}),
-        ("East3", 4.80, 10.50, 1.60, (0.60, 0.36, 0.28, 1.0), white, {}),
-        ("East4", 3.85, 9.72, 1.74, (0.34, 0.30, 0.40, 1.0), brown, {}),
-        ("East5", 4.40, 9.58, 1.66, (0.70, 0.68, 0.62, 1.0), grey, {}),
-    )
-    with _tagged(VI):
-        for i, (nm, x, y, h, coat, hair, kw) in enumerate(crowd):
-            FIG.make_standing_figure("Vv_" + nm, x, y, heading=face(x, y), h=h, coat=coat, hair=hair,
-                                     skin=skins[(i + 2) % len(skins)], **kw)
-        # "She came up to the wall. She put her hand on her grandfather's bowl."
-        FIG.make_standing_figure("Vv_Marina", -2.08, 11.55, heading=1.45, h=1.70, coat=(0.46, 0.16, 0.18, 1.0),
-                                 hair=black, arms="front", stoop=0.45)
-        # "Petra at the back door of the bookstore with her arms crossed against the morning cold"
-        FIG.make_standing_figure("Vv_PetraD", -3.30, 9.55, heading=0.80, h=1.66, coat=(0.42, 0.26, 0.36, 1.0),
-                                 hair=grey, arms="folded")
+        make_cyl(f"Alley_Mug_{k}" + tm, (mx, my, 0.045), 0.040, 0.09, col, segments=12)
+        make_box(f"Alley_Mug_{k}_Ear" + tm, (mx, my - 0.048, 0.045), (0.012, 0.022, 0.05), col)
     # ── "a basket of brioche Hans had baked yesterday and a basket of the morning's rye" ──
     wicker = (0.62, 0.48, 0.28, 1.0); cloth = (0.90, 0.88, 0.82, 1.0)
-    make_cyl("Alley_Basket_Brioche" + VI, (1.10, 10.62, 0.37), 0.15, 0.10, wicker, segments=14)
-    make_box("Alley_Basket_Brioche_Cloth" + VI, (1.10, 10.62, 0.424), (0.22, 0.22, 0.008), cloth)
+    tb = T("va")
+    make_cyl("Alley_Basket_Brioche" + tb, (1.10, 10.62, 0.37), 0.15, 0.10, wicker, segments=14)
+    make_box("Alley_Basket_Brioche_Cloth" + tb, (1.10, 10.62, 0.424), (0.22, 0.22, 0.008), cloth)
     for k, (ox, oy) in enumerate(((-0.055, -0.05), (0.06, -0.04), (-0.05, 0.06), (0.055, 0.065))):
-        make_blob(f"Alley_Brioche_{k}" + VI, (1.10 + ox, 10.62 + oy, 0.462), 0.052, (0.80, 0.58, 0.26, 1.0),
+        make_blob(f"Alley_Brioche_{k}" + T("v"), (1.10 + ox, 10.62 + oy, 0.462), 0.052, (0.80, 0.58, 0.26, 1.0),
                   noise=0.06, seed=k + 3, squash=0.75)
-    make_cyl("Alley_Basket_Rye" + VI, (0.98, 10.16, 0.05), 0.16, 0.10, wicker, segments=14)
-    make_box("Alley_Basket_Rye_Cloth" + VI, (0.98, 10.16, 0.104), (0.24, 0.24, 0.008), cloth)
+    make_cyl("Alley_Basket_Rye" + tb, (0.98, 10.16, 0.05), 0.16, 0.10, wicker, segments=14)
+    make_box("Alley_Basket_Rye_Cloth" + tb, (0.98, 10.16, 0.104), (0.24, 0.24, 0.008), cloth)
     for k, (ox, oy) in enumerate(((-0.06, 0.0), (0.06, -0.03), (0.0, 0.07))):
-        make_blob(f"Alley_Rye_Loaf_{k}" + VI, (0.98 + ox, 10.16 + oy, 0.150), 0.060, (0.40, 0.27, 0.17, 1.0),
+        make_blob(f"Alley_Rye_Loaf_{k}" + T("v"), (0.98 + ox, 10.16 + oy, 0.150), 0.060, (0.40, 0.27, 0.17, 1.0),
                   noise=0.06, seed=k + 11, squash=0.70)
+    # ── THE STREET PAST THE ENTRANCE (every crowd view; the views strip the street's two box
+    #    cars). Noses north along the near curb: the wagon's tail at the alley's mouth. ──
+    sx = -9.20
+    with _tagged("gvabc"):
+        VEH.make_car("St_TruckA", sx, 18.6, 5.2, (0.52, 0.50, 0.46, 1.0), pickup=True, along="Y")
+        VEH.make_car("St_Wagon", sx, 13.3, 4.4, (0.26, 0.34, 0.32, 1.0), hatch=True, along="Y")
+        VEH.make_car("St_TruckB", sx, 7.9, 5.2, (0.16, 0.20, 0.30, 1.0), pickup=True, along="Y")
+    # Hans's van: a cab, a cargo box open at the back (floor, sides, roof), the rear shut until
+    # 11:30, then "the van's open back door" and the baskets "in stacks", the rye "wrapped in linen
+    # on the wooden tray Greta used for transit"
+    cream = (0.86, 0.82, 0.72, 1.0); vdark = (0.10, 0.11, 0.13, 1.0)
+    vy, tv = 2.6, T("gvabc")
+    tail = vy - 2.2
+    make_box("St_Van_Floor" + tv, (sx, vy - 0.55, 0.50), (1.90, 3.30, 0.16), cream)
+    make_box("St_Van_Roof" + tv, (sx, vy - 0.55, 2.00), (1.90, 3.30, 0.08), cream)
+    for sg, nm in ((-1, "W"), (1, "E")):
+        make_box(f"St_Van_Side_{nm}" + tv, (sx + sg * 0.93, vy - 0.55, 1.27), (0.04, 3.30, 1.38), cream)
+        make_box(f"St_Van_Side_{nm}_Stripe" + tv, (sx + sg * 0.952, vy - 0.55, 1.20), (0.006, 2.80, 0.22), (0.46, 0.30, 0.20, 1.0))
+        for k, wy in enumerate((vy + 1.45, vy - 1.45)):
+            make_cyl(f"St_Van_Wheel_{nm}_{k}" + tv, (sx + sg * 0.86, wy, 0.36), 0.36, 0.24, (0.16, 0.16, 0.17, 1.0), axis='X', segments=12)
+        make_box(f"St_Van_Cab_Glass_{nm}" + tv, (sx + sg * 0.952, vy + 1.45, 1.52), (0.006, 0.50, 0.46), vdark)
+    make_box("St_Van_Bulkhead" + tv, (sx, vy + 1.08, 1.27), (1.82, 0.04, 1.38), cream)
+    make_box("St_Van_Cab" + tv, (sx, vy + 1.45, 1.22), (1.90, 0.70, 1.60), cream)
+    make_box("St_Van_Hood" + tv, (sx, vy + 2.05, 0.80), (1.86, 0.50, 0.76), cream)
+    make_box("St_Van_Windshield" + tv, (sx, vy + 1.806, 1.56), (1.66, 0.012, 0.56), vdark)
+    make_box("St_Van_Bumper" + tv, (sx, vy + 2.33, 0.52), (1.86, 0.06, 0.18), (0.30, 0.30, 0.32, 1.0))
+    make_box("St_Van_Rear_Shut" + T("gvab"), (sx, tail - 0.02, 1.27), (1.82, 0.04, 1.38), cream)
+    tc = T("c")
+    for sg, nm in ((-1, "W"), (1, "E")):
+        make_box(f"St_Van_Rear_Leaf_{nm}" + tc, (sx + sg * 0.93, tail - 0.47, 1.27), (0.04, 0.90, 1.38), cream)
+    for k, (ox, n) in enumerate(((-0.52, 3), (-0.16, 2))):
+        for j in range(n):
+            make_cyl(f"St_Van_Basket_{k}_{j}" + tc, (sx + ox, tail + 0.30, 0.63 + j * 0.10), 0.15, 0.10, wicker, segments=14)
+    make_box("St_Van_Rye_Tray" + tc, (sx + 0.30, tail + 0.30, 0.595), (0.50, 0.36, 0.03), (0.50, 0.38, 0.24, 1.0))
+    for k in range(4):
+        make_blob(f"St_Van_Rye_Loaf_{k}" + tc, (sx + 0.15 + (k % 2) * 0.30, tail + 0.21 + (k // 2) * 0.18, 0.66), 0.075,
+                  (0.84, 0.80, 0.70, 1.0), noise=0.06, seed=k + 21, squash=0.62)
+    # either side of the open back, so the tray shows between them from the sidewalk behind
+    stand("Vw_Greta", sx - 0.55, tail - 0.70, 1.64, (0.52, 0.30, 0.30, 1.0), blond, "c", heading=0.25, arms="front")
+    stand("Vw_Hans", sx + 0.65, tail - 0.90, 1.82, (0.76, 0.74, 0.70, 1.0), grey, "c", heading=-0.35, arms="front")
+    # every group this function used must be in the engine's table, or its parts would be
+    # in EVERY view of the set (a crowd in the alley of ch14)
+    gd = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "scripts", "vn", "Background3D.gd"))
+    src = open(gd, encoding="utf-8").read()
+    for m in sorted(used):
+        if len(m) > 1:
+            want = '"st_%s": [%s]' % (m, ", ".join('"%s"' % VIEW[ch] for ch in m))
+            assert want in src, "Background3D.VIEW_GROUPS lacks %s" % want
 
 
 def build_browsing_floor_2026_10():

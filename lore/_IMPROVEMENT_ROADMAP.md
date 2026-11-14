@@ -3835,6 +3835,81 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 374: THE LEAVING — ch21's crowd thins by the clock; view groups; pictures left hanging where their stand-in is stripped.**
+- vol7_ch21_leaving (136 lines) and the first 30 of ch21_cabin open on the
+  same crowd — "The crowd in the alley had been at the wall for nearly two
+  hours when the leaving began" — and still played on the empty alley.
+  Draft 2 of the vigil: **three more views**, by the clock.
+  - `salty_tome_leaving` (10:45): the vigil's crowd less the first to go;
+    Marit "seated on the milk crate with her bowl in her lap" (the second
+    crate, "from inside the bookstore"), Per behind her with his hand at
+    her shoulder; Marina at the wall.
+  - `salty_tome_thinning` (11:00): those still there; Roy and Aud, "Olaus's
+    bowl in the canvas bag at his feet at the wall".
+  - `salty_tome_twelve` (11:30, and ch21_cabin): "perhaps twelve people,
+    mostly older townspeople" — ten of the 7:15 crowd come up to the wall,
+    Jameson and Hannes who never left it; Lena, Finn with the crow, Kai;
+    on the crate "now two" bowls, Marina's "wrapped in the cloth".
+  - **The street past the entrance, in all five crowd views**: the wagon's
+    tail at the alley's mouth ("Tem stood at the entrance of the alley
+    with the wagon"), a pickup ahead and one behind, "Hans parked at the
+    entrance behind the trucks" — his van, shut until 11:30, then "the
+    van's open back door", the baskets "in stacks", the rye "wrapped in
+    linen on the wooden tray", Greta and Hans either side.
+  - 22 frames across the three views (each its own closeup pair and
+    pinned wides; Marit seated, the crate, the bowl in her lap, the bag,
+    the crow, the two bowls, the twelve along the wall, the wagon, the
+    tray). ch21_leaving switches view at 10:45, at "Marina came to Tem"
+    and at "Lena, Finn, Kai were at the wall" (two bg nodes; no voice
+    files, trip beats or jumps are keyed to its indexes).
+  - Cues fixed while reading: `insert seat` on "She got in the wagon. Kai
+    got in the passenger seat" cut to the alley crate (the word, not the
+    thing — it cuts to the wagon; the frame's only cue, so the frame is
+    deleted); `insert face` on Roy's canvas bag; `insert notebook` twice
+    on a notebook that is in Cale's coat; `insert wall` on "the remaining
+    twelve townspeople at the wall" (the mural frame); the line that seats
+    Marit had no frame of her.
+- **VIEW GROUPS.** A part of three views overran Blender's 63-character
+  names (`…__salty_tome_gather__salty_tome_vigil__salty_tome_leaving`). A
+  tag may now be a group — `Vg_Roy_Torso__st_gvab` — that stands for a
+  list of views (`Background3D.VIEW_GROUPS`). The builder checks every
+  group it uses against that table (a tag that named nothing would put a
+  crowd in every view of the set). **One rule for the gates**: a new
+  `tools/audit/view_tags.py` answers "which views is this part in" (tags,
+  groups, strips) for the obstruction, aim, wide-frame, portrait-side,
+  overlap and placement audits; the overlap gate no longer reports two
+  parts no view shows together (the 7:15 crowd and the 11:30 crowd stand
+  on the same asphalt).
+- **A new gate, STRIPPED** (hero_art_placement_audit): a view lays a
+  picture although every part it replaces is gone from that view. Found:
+  the canvas bag's picture in the alley's crowd views (mine, from pass
+  373 — it hung where Marina stands), and **the night ridges and the
+  moonlit cloud in the farmhouse's DAY view** (`little_switzerland`, vol 2
+  ch1's arrival): 360 m of night valley behind a summer pasture, for
+  anyone who has those two pictures. Six rows take `not_presets`. The
+  audit also stops judging a picture against parts that share no view
+  with it.
+- A car built under a view tag keeps its audit body (vehicles._audit_body
+  matched the untagged name only).
+- KNOT, flagged not fixed: ch20 has Finn set the cedar bell-piece "on the
+  crate beside the bowls"; ch21_cabin has it "in Finn's coat pocket since
+  Sunday afternoon". The set shows it on the crate in ch20's two views
+  and not in ch21's three.
+- Read by render: 27 frames of ch21 across the three views, re-read after
+  each restage (the crow moved to Finn's left shoulder — his own head hid
+  it from the south; the van's back restaged so the tray shows between
+  Greta and Hans).
+- Deck must REBUILD salty_tome_interior.
+- DRAFT 3 targets (the vigil and the leaving): each leave-taking as its
+  own state (Roy and Aud stand at the wall 40 lines after they drive off;
+  the van stays after "They drove back to the bakery"; the two bowls stay
+  after they are packed); ch20 line 27 has Petra set the thermos down six
+  lines before the view that has it; lines 0-32 still show ch21's bowls
+  on the asphalt; Finn's Toyota and Aud's car; Marina kneeling with her
+  hand ON the bowl; hoods and umbrellas (it is raining); the foot of the
+  wall is dark in every low frame (a practical for the crate); a lock on
+  the farmhouse's service door.
+
 **2026-11-14 · pass 373: THE VIGIL — the town stands in the alley for vol 7's last morning; the Starfish Nebula was inside the wall.**
 - Found reading vol7_ch20_wall line by line. The text fills the alley
   ("People started arriving at six fifty-six ... By seven-fifteen the
