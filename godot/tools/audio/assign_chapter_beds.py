@@ -173,6 +173,9 @@ PLACES = {
         "foxhole_bar": "vol1_club_thump",
         "foxhole_stage": "vol1_club_thump",
         "foxhole_dressing_room": "vol1_club_thump",
+        "foxhole_check": "vol1_club_thump",     # (pass 375) ch22's three states of the same room
+        "foxhole_show": "vol1_club_thump",
+        "foxhole_after": "vol1_club_thump",
     },
     7: {
         "cabin_interior": "vol7_cabin_woodstove",
@@ -182,6 +185,11 @@ PLACES = {
         "cabin_porch": "vol7_cabin_woodstove",   # Tem's porch (2026-10-08: was the Millers' Texas porch)
         "lena_apartment": "vol7_apartment_rain",
         "salty_tome_alley": "vol7_painting_room",
+        "salty_tome_gather": "vol7_painting_room",      # (passes 373-374) the alley's last morning, by the clock
+        "salty_tome_vigil": "vol7_painting_room",
+        "salty_tome_leaving": "vol7_painting_room",
+        "salty_tome_thinning": "vol7_painting_room",
+        "salty_tome_twelve": "vol7_painting_room",
         "salty_tome_interior": "vol7_shop_signal_bell",
         "salty_tome_kitchenette": "vol7_shop_signal_bell",
         "board_lords_interior": "vol7_shop_signal_bell",

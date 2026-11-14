@@ -216,6 +216,10 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **foxhole_bar — pass 375 (2026-11-14), THE SHOW, draft 1.** vol 6 ch22's "room of about a hundred and ten
+  people" played in an empty venue: three views by the clock (`foxhole_check`, `foxhole_show`, `foxhole_after`),
+  about a hundred figures on the floor, the band, Ricky, Chess, the bartender. Other crowd lines with no
+  figures are listed in the roadmap entry.
 - **salty_tome_interior, the alley — pass 373 (2026-11-14), THE VIGIL, draft 1.** vol 7 ch20 fills the alley
   with "perhaps thirty-five people" and played on empty asphalt: two crowd views (`salty_tome_gather`, sixteen
   at the wall; `salty_tome_vigil`, thirty-six), each with its own frames. And the Starfish Nebula mural had

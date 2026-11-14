@@ -54,6 +54,10 @@ const VIEW_GROUPS := {
 	"st_ab": ["salty_tome_leaving", "salty_tome_thinning"],
 	"st_abc": ["salty_tome_leaving", "salty_tome_thinning", "salty_tome_twelve"],
 	"st_bc": ["salty_tome_thinning", "salty_tome_twelve"],
+	# vol 6 ch22, The Foxhole by the clock: k 5:45 sound check · s 9:00 the set · t 10:00 Chess's set
+	"fx_ks": ["foxhole_check", "foxhole_show"],
+	"fx_st": ["foxhole_show", "foxhole_after"],
+	"fx_kst": ["foxhole_check", "foxhole_show", "foxhole_after"],
 }
 
 const CAMERA_PRESETS := {
@@ -1580,6 +1584,41 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.40, 1.62, -9.00),
 		"camera_rotation": Vector3(0.0129, 0.5071, 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"foxhole_check": {
+		"scene": "res://scenes/locales/foxhole_bar.tscn",
+		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
+		# (pass 375) vol 6 ch22, 5:45: sound check. foxhole_bar's own vantage,
+		# with the band at their places, Chess and Ramón at the booth, Ricky
+		# at the board (parts tagged for this view; see VIEW_GROUPS "fx_…").
+		"camera_origin": Vector3(1.40, 1.70, -0.90),
+		"camera_rotation": Vector3(0.0151, 0.1365, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"foxhole_show": {
+		"scene": "res://scenes/locales/foxhole_bar.tscn",
+		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
+		# (pass 375) vol 6 ch22, 9:00: "a hundred and ten people in front of
+		# him". The vantage is Jesse's, at his mic stage-left of centre,
+		# over the room to the board and the bar. "The house lights dim."
+		"camera_origin": Vector3(-1.90, 2.35, -13.15),
+		"camera_rotation": Vector3(-0.112, -2.818, 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.30, 0.32, 0.48, 1), "ambient_energy": 0.60, "fog_color": Color(0.06, 0.05, 0.09, 1)},
+		"suppress_input": true,
+	},
+	"foxhole_after": {
+		"scene": "res://scenes/locales/foxhole_bar.tscn",
+		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
+		# (pass 375) vol 6 ch22, 10:00: "By ten Chess is up and the room is
+		# hers ... Jesse, at the bar in the back": from the back wall over the
+		# room's heads to the stage and the booth.
+		"camera_origin": Vector3(1.40, 2.00, -0.90),
+		"camera_rotation": Vector3(-0.0300, 0.1365, 0.0),
+		"fov": 64.0,
+		"env": {"ambient_color": Color(0.30, 0.32, 0.48, 1), "ambient_energy": 0.60, "fog_color": Color(0.06, 0.05, 0.09, 1)},
 		"suppress_input": true,
 	},
 	"foxhole_dressing_room": {

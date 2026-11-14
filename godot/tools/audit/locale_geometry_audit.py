@@ -374,7 +374,11 @@ def install_stubs():
                      # the bigger-room shift (2026-10-09): a context manager;
                      # stubbed, `with shifted(...)` raised and the builder
                      # recorded only up to its first shifted group
-                     "plan"):
+                     "plan",
+                     # (pass 375) the builders' view-tag helper: a context
+                     # manager too — stubbed, The Foxhole recorded without
+                     # the hundred and six people the pass had just built
+                     "view_tags"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")
         if not os.path.exists(mpath):
             continue

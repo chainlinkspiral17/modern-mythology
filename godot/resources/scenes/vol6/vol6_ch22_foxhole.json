@@ -94,7 +94,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:foxhole_bar"
+   "src": "3d:foxhole_check"
   },
   {
    "t": "narrate",
@@ -486,7 +486,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:foxhole_stage"
+   "src": "3d:foxhole_show"
   },
   {
    "t": "hide",
@@ -512,7 +512,7 @@
   },
   {
    "t": "narrate",
-   "text": "The crowd noise rises and then dips and then rises again — the standard pre-show shift of a room of about a hundred and ten people deciding to give the next forty-five minutes of their attention to the band that is about to come on.",
+   "text": "[shot:establish b]The crowd noise rises and then dips and then rises again — the standard pre-show shift of a room of about a hundred and ten people deciding to give the next forty-five minutes of their attention to the band that is about to come on.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/091.mp3"
   },
   {
@@ -576,7 +576,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Carl counts off.",
+   "text": "[shot:establish b]Carl counts off.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/103.mp3"
   },
   {
@@ -586,7 +586,7 @@
   },
   {
    "t": "narrate",
-   "text": "The room moves. Not all of the room. Most of the room is standing and bobbing and listening — the standard middle bell of a small Texas venue audience.",
+   "text": "[shot:establish d]The room moves. Not all of the room. Most of the room is standing and bobbing and listening — the standard middle bell of a small Texas venue audience.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/105.mp3"
   },
   {
@@ -596,7 +596,7 @@
   },
   {
    "t": "narrate",
-   "text": "At the front of the stage against the lip is one kid. The kid is twenty-five, six-two, in a black T-shirt for a band Jesse does not recognize, with hair down to his shoulders. The kid is at the rail. By the second verse the kid is fully headbanging.",
+   "text": "[shot:insert kid]At the front of the stage against the lip is one kid. The kid is twenty-five, six-two, in a black T-shirt for a band Jesse does not recognize, with hair down to his shoulders. The kid is at the rail. By the second verse the kid is fully headbanging.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/107.mp3"
   },
   {
@@ -638,7 +638,7 @@
   },
   {
    "t": "narrate",
-   "text": "He plays it now in the room, with the amp through the PA, with a hundred and ten people in front of him — and the figure sounds different.",
+   "text": "[shot:establish d]He plays it now in the room, with the amp through the PA, with a hundred and ten people in front of him — and the figure sounds different.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/115.mp3"
   },
   {
@@ -668,7 +668,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The first chorus comes. The room has stopped moving. The kid at the rail is still headbanging. The rest of the room is heavy.",
+   "text": "[shot:establish c]The first chorus comes. The room has stopped moving. The kid at the rail is still headbanging. The rest of the room is heavy.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/121.mp3"
   },
   {
@@ -723,7 +723,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]and the small late evening, in mid-august",
+   "text": "[shot:establish b]and the small late evening, in mid-august",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/132.mp3"
   },
   {
@@ -748,7 +748,7 @@
   },
   {
    "t": "narrate",
-   "text": "The room, on the last line, does the thing.",
+   "text": "[shot:establish d]The room, on the last line, does the thing.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/137.mp3"
   },
   {
@@ -763,7 +763,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Carl rolls the high-hat. Nate walks the root down. Em comes back in on the third verse. Jesse plays the lead break clean for the first time in twelve playings.",
+   "text": "[shot:establish b]Carl rolls the high-hat. Nate walks the root down. Em comes back in on the third verse. Jesse plays the lead break clean for the first time in twelve playings.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/140.mp3"
   },
   {
@@ -778,7 +778,7 @@
   },
   {
    "t": "narrate",
-   "text": "The kid at the rail, for the first time in the set, has both his hands on the rail and is breathing.",
+   "text": "[shot:insert kid]The kid at the rail, for the first time in the set, has both his hands on the rail and is breathing.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/143.mp3"
   },
   {
@@ -971,7 +971,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:foxhole_stage"
+   "src": "3d:foxhole_after"
   },
   {
    "t": "hide",
@@ -979,7 +979,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:foxhole_bar"
+   "src": "3d:foxhole_after"
   },
   {
    "t": "show",
@@ -1014,7 +1014,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Carl is at the front by the rail with two girls from Selma who came up for the show. Nate is at the door of the venue with his phone, on a call with somebody who is probably his girlfriend.",
+   "text": "[shot:establish b]Carl is at the front by the rail with two girls from Selma who came up for the show. Nate is at the door of the venue with his phone, on a call with somebody who is probably his girlfriend.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/184.mp3"
   },
   {
@@ -1024,7 +1024,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert rail]Jesse watches the room. The kid who had been at the rail is now talking to a different kid who he had apparently come with. The two of them are at a high-top to the left of the stage. The kid is gesturing.",
+   "text": "[shot:insert high_top]Jesse watches the room. The kid who had been at the rail is now talking to a different kid who he had apparently come with. The two of them are at a high-top to the left of the stage. The kid is gesturing.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/186.mp3"
   },
   {

@@ -158,6 +158,22 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · a gate that passes on what it did not build has told you nothing (pass 375)
+- A new `_props` module that a builder CALLS INTO (a context manager, a
+  class, anything that is not a `make_*` recorder) must be on
+  `locale_geometry_audit.install_stubs`'s real-module list. Stubbed, it
+  raises inside the builder; the recorder keeps what was made before the
+  line and reports the set `partial` — and overlap, support and the frame
+  gates then pass on that part. The Foxhole "passed" with none of its
+  hundred figures.
+- So after adding parts, read the gate's own count: `clean (1233
+  objects)` for a room that had just gained 1,300 parts was the tell. A
+  `partial:` line in any gate's output is the first thing to fix, before
+  reading any other result.
+- One tube is one box to the gates: a mic cord from the capsule to the
+  back of the stage boxed in the singer's place. A cable that changes
+  direction is two parts (the drop, the run).
+
 ### 2026-11-14 · "is this part there?" has one answer: view_tags (pass 374)
 - A part is in the views its name tags (`__<view>`), or a VIEW GROUP's
   (`__st_gvab`, `Background3D.VIEW_GROUPS`), and leaves a view that strips

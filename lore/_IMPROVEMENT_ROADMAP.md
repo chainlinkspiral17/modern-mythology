@@ -3835,6 +3835,74 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 375: THE SHOW — a hundred and ten people at The Foxhole; the audits had been building the room without them.**
+- Found by a scan made for it: every line that names a crowd, against the
+  figures in its view. vol6_ch22_foxhole — "a room of about a hundred and
+  ten people", "the kid at the rail", the band, Ricky at the board — played
+  in a venue with no one in it (the builder's own notes had "the gig crowd
+  for ch22" as a target since October).
+  - **Three views of the venue by the clock** (the plain foxhole_bar and
+    foxhole_stage stay the empty room of vol 1 and ch20): `foxhole_check`
+    (5:45, sound check: Em at her mic, Carl at the kit, Nate at his rig,
+    Chess and Ramón at the booth, Ricky at the board), `foxhole_show`
+    (9:00: about a hundred on the floor — five packed rows behind the rail,
+    a looser middle, the bar and the door — a third of the front with an
+    arm up, the kid stooped at the rail, the bartender) and `foxhole_after`
+    (10:00, Chess's set: most of the room still there; Carl at the rail
+    with the two girls from Selma, Nate at the door, Em at the booth, the
+    kid and his friend at the high-top).
+  - The show's vantage is Jesse's, from his mic over the room ("with a
+    hundred and ten people in front of him"); pinned wides from the back
+    wall and the west wall; Em at the mic from either wing; the kid from
+    the stage. "The house lights dim": the two crowd views are dim and
+    blue, with a low wash over the floor. 16 frames across the three views.
+  - **No node was added to the chapter** — its four `bg` nodes changed
+    view in place, so voice files and saves keep their indexes. That is
+    the method when the chapter already cuts where the state changes.
+  - Fixed on the way: the kit stood where a seated drummer's shins are
+    (moved a quarter metre down the riser, the throne where it was); each
+    mic cord was one tube from the mic to the back of the stage, boxing in
+    the place a singer stands (now a drop and a floor run); the room's
+    west side had no light — "at a high-top to the left of the stage"
+    played in the dark (a beer sign's neon on the west wall); `insert
+    rail` on the kid who has left the rail for the high-top.
+- **THE AUDITS HAD BUILT THE ROOM WITHOUT THE CROWD.** The builders' new
+  shared helper (`_props/view_tags.py`: the letters-to-tag table the Tome
+  had inline) was not on the audit stubs' list of modules to run for
+  real. Stubbed, its context manager raised, the builder stopped at the
+  first figure, and overlap, support and the frame gates all passed on an
+  empty venue (the suite fails a `partial` build, so it would not have
+  shipped — but four quick gates had told me it was clean). On the list
+  now. With the crowd recorded the gates found the cords and a frame
+  blocked by a figure.
+- **A hundred people were 2,650 draw calls** (3,340 for the room; the cap
+  is 2,000). The stage and the floor are reached by more lamps than the
+  renderer lights per object, so the load-time merge leaves every part
+  there separate — thirteen a figure. Each figure is now joined into ONE
+  mesh at build (`_props.geometry.join_prefix`; the gates still read the
+  thirteen parts): 956 draw calls, and the GLB a megabyte smaller. (The
+  Tome's alley merges at load and did not need it: 388.) I had first
+  "recorded" the 3,340 as the new baseline; a baseline is not a fix.
+- `tools/audio/assign_chapter_beds.py` knows the eight new views of
+  passes 373-375 (the ambient gate failed the Foxhole's three: a vol 1
+  bed in a vol 6 chapter needs its row).
+- Read by render: 23 lines of ch22 across the three views, twice.
+- Deck must REBUILD foxhole_bar.
+- DRAFT 2 targets (the show): from the back wall the room is silhouettes
+  against the stage — right for a club, but the wides read dark on the
+  Deck's screen until a hazer and the tower fixtures' beams exist ("a
+  single white spike at the end of the cycle"); drinks in hands and on
+  the high-tops, phones up; Nate's phone; the bass frame at sound check is
+  an amp and a shoulder; the vestibule past the glass and the lot (the
+  Tacoma, the Civic); ch20's visit and vol 1's two nights have no one
+  either.
+- THE SCAN (worth keeping as a tool): the other views where the text
+  names a crowd and the set has no figures — el_rancho_taqueria (vol 4:
+  "a large crowd of them beating each other up"), pit_stop_kitchen (vol 6
+  ch2: "The small crowd had gotten larger"), small_wood_field_night (vol
+  2: "The crowd was electric", one figure), small_wood_high_class (vol 4:
+  "a packed assembly hall").
+
 **2026-11-14 · pass 374: THE LEAVING — ch21's crowd thins by the clock; view groups; pictures left hanging where their stand-in is stripped.**
 - vol7_ch21_leaving (136 lines) and the first 30 of ch21_cabin open on the
   same crowd — "The crowd in the alley had been at the wall for nearly two

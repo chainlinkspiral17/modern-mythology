@@ -151,7 +151,10 @@ def build_backline():
     """Carl's kit on the riser, Jesse's amp and Nate's bass rig, the mics,
     the wedges at the lip, the PA flanking the stage on the floor."""
     rz = STAGE_TOP + 0.31
-    dx, dy = 0.0, 14.7
+    # (pass 375) the kit a quarter metre toward the lip, the throne where it was: seated on it,
+    # a drummer's shins stood in the kick drum
+    dx, dy = 0.0, 14.45
+    ty = 15.32
     shell = (0.62, 0.20, 0.16, 1.0); chrome = COL_STEEL; brass = (0.86, 0.72, 0.30, 1.0)
     make_cyl("Drum_Kick", (dx, dy, rz + 0.28), 0.28, 0.42, (0.74, 0.70, 0.66, 1.0), axis='Y', segments=16)
     make_cyl("Drum_Kick_Head", (dx, dy - 0.215, rz + 0.28), 0.27, 0.01, (0.92, 0.90, 0.86, 1.0), axis='Y', segments=16)
@@ -164,9 +167,9 @@ def build_backline():
     for ci, (cx, cy, ch, cr) in enumerate(((-0.62, 0.06, 0.95, 0.22), (0.64, -0.06, 1.15, 0.26), (-0.82, -0.46, 0.82, 0.16))):
         make_cyl(f"Drum_Cym_Stand_{ci}", (dx + cx, dy + cy, rz + ch / 2.0), 0.014, ch, chrome, segments=6)
         make_cyl(f"Drum_Cym_{ci}", (dx + cx, dy + cy, rz + ch + 0.01), cr, 0.02, brass, segments=16)
-    make_cyl("Drum_Throne_Post", (dx, dy + 0.62, rz + 0.25), 0.02, 0.50, chrome, segments=6)
-    make_lathe("Drum_Throne_Seat", (dx, dy + 0.62, rz + 0.50), [(0.0, 0.0), (0.17, 0.0), (0.18, 0.03), (0.15, 0.08), (0.0, 0.09)], (0.12, 0.12, 0.12, 1.0), segments=12)
-    make_lathe("Drum_Throne_Foot", (dx, dy + 0.62, rz), [(0.26, 0.0), (0.26, 0.02), (0.03, 0.05), (0.0, 0.05)], chrome, segments=10)
+    make_cyl("Drum_Throne_Post", (dx, ty, rz + 0.25), 0.02, 0.50, chrome, segments=6)
+    make_lathe("Drum_Throne_Seat", (dx, ty, rz + 0.50), [(0.0, 0.0), (0.17, 0.0), (0.18, 0.03), (0.15, 0.08), (0.0, 0.09)], (0.12, 0.12, 0.12, 1.0), segments=12)
+    make_lathe("Drum_Throne_Foot", (dx, ty, rz), [(0.26, 0.0), (0.26, 0.02), (0.03, 0.05), (0.0, 0.05)], chrome, segments=10)
     # amps on the stage deck (Jesse stage-left of centre, Nate stage-right)
     for prefix, ax in (("Stage_Amp", -2.4), ("Bass_Amp", 2.4)):
         make_box(f"{prefix}_Cab", (ax, 14.3, STAGE_TOP + 0.40), (0.74, 0.46, 0.80), COL_CAB)
@@ -188,8 +191,12 @@ def build_backline():
         make_cyl(f"Mic_{mi}_Pole", (mx, my, STAGE_TOP + 0.74), 0.012, 1.40, COL_STEEL, segments=6)
         make_tube(f"Mic_{mi}_Clip", [(mx, my, STAGE_TOP + 1.44), (mx, my - 0.08, STAGE_TOP + 1.48)], 0.012, COL_BLACK, segments=5)
         make_cyl(f"Mic_{mi}_Mic", (mx, my - 0.13, STAGE_TOP + 1.50), 0.024, 0.12, (0.12, 0.12, 0.13, 1.0), axis='Y', segments=8)
-        make_tube(f"Mic_{mi}_Cord", [(mx, my - 0.17, STAGE_TOP + 1.50), (mx + 0.05, my - 0.12, STAGE_TOP + 0.9),
-                                     (mx + 0.10, my + 0.10, STAGE_TOP + 0.01), (mx + 0.6, my + 0.9, STAGE_TOP + 0.01)], 0.006, COL_BLACK, segments=4)
+        # (pass 375) down the stand, then away along the deck in its own run: one tube from the mic
+        # to the back of the stage boxed in the place a singer stands
+        make_tube(f"Mic_{mi}_Cord", [(mx, my - 0.17, STAGE_TOP + 1.50), (mx + 0.02, my - 0.10, STAGE_TOP + 0.9),
+                                     (mx + 0.03, my + 0.0, STAGE_TOP + 0.02)], 0.006, COL_BLACK, segments=4)
+        make_tube(f"Mic_{mi}_Cord_Run", [(mx + 0.03, my + 0.0, STAGE_TOP + 0.008), (mx + 0.45, my + 0.05, STAGE_TOP + 0.008),
+                                         (mx + 0.75, my + 0.9, STAGE_TOP + 0.008)], 0.006, COL_BLACK, segments=4)
     # wedges at the lip, angled up at the players
     for wi, wx in enumerate((-1.9, 0.0, 1.9)):
         make_rot_box(f"Wedge_{wi}", (wx, 12.35, STAGE_TOP + 0.215), (0.56, 0.42, 0.30), COL_CAB, pitch=0.35)
@@ -278,6 +285,10 @@ def build_floor():
         hx = -5.2
         make_lathe(f"HighTop_{hi}_Base", (hx, hy, 0.0), [(0.26, 0.0), (0.26, 0.02), (0.05, 0.04), (0.04, 1.02), (0.0, 1.02)], COL_BLACK, segments=12)
         make_cyl(f"HighTop_{hi}_Top", (hx, hy, 1.05), 0.36, 0.04, (0.26, 0.20, 0.16, 1.0), segments=16)
+    # (pass 375) a beer sign's neon on the west wall over the high-tops: that side of the room had no
+    # light of its own, and "the two of them are at a high-top to the left of the stage" played in the dark
+    make_box("West_Wall_Neon", (-5.92, 8.60, 2.35), (0.04, 1.10, 0.30), (0.98, 0.46, 0.24, 1.0))
+    make_box("West_Wall_Neon_Back", (-5.945, 8.60, 2.35), (0.01, 1.24, 0.44), (0.10, 0.09, 0.09, 1.0))
     make_lathe("HighTop_1_Bottle", (-5.1, 7.45, 1.07), [(0.03, 0.0), (0.03, 0.15), (0.012, 0.21), (0.012, 0.24), (0.0, 0.24)], COL_BOTTLE_AMBER, segments=8)
     # the one work light at the back of the room, the floor's tape marks
     make_lathe("Work_Light_Stand", (5.3, 0.8, 0.0), [(0.25, 0.0), (0.03, 0.04), (0.02, 1.90), (0.0, 1.90)], COL_TRUSS, segments=8)
@@ -323,6 +334,135 @@ def build_bar():
     make_box("Bar_Rag", (BAR_X1 - 1.10, BAR_Y - 0.40, top_z + 0.006), (0.30, 0.20, 0.012), (0.82, 0.80, 0.74, 1.0))
 
 
+def build_show_2026_11():
+    """THE SHOW (pass 375, vol 6 ch22). The venue had no one in it:
+
+      "Em is on the stage with her mic in her hand checking the cord. Carl
+      is at the kit ... Nate is plugging the bass into the house DI. Chess
+      is at the small DJ booth at the side of the stage with her laptop
+      open and Ramón at her elbow." · "Ricky has white hair pulled back in
+      a small tail."
+      "a room of about a hundred and ten people" · "Most of the room is
+      standing and bobbing and listening ... About a third of the room is
+      moving more" · "At the front of the stage against the lip is one
+      kid. The kid is twenty-five, six-two, in a black T-shirt ... with
+      hair down to his shoulders. The kid is at the rail. By the second
+      verse the kid is fully headbanging."
+      "By ten Chess is up and the room is hers." · "Carl is at the front
+      by the rail with two girls from Selma ... Nate is at the door of the
+      venue with his phone" · "Em is at the booth talking to Chess" · "The
+      two of them are at a high-top to the left of the stage."
+
+    Three views by the clock (the plain foxhole_bar / foxhole_stage stay the
+    empty room of the other chapters); a part's letters say which it is in:
+      k  foxhole_check   5:45  sound check: the band at their places, Chess
+                               and Ramón at the booth, Ricky at the board
+      s  foxhole_show    9:00  the set: about a hundred on the floor, the kid at the
+                               rail, the band on stage (Jesse's place is
+                               the lens), the bartender
+      t  foxhole_after  10:00  Chess's set: most of the room still there;
+                               Carl at the rail with the two girls, Nate at
+                               the door, Em at the booth, the kid and his
+                               friend at the high-top
+    The figures are _props.figures (the portraits are the faces). Lanes are
+    left where the lens stands: the bar's east end, the line from the back
+    wall, the pit between the rail and the lip.
+
+    NEXT (draft 2): drinks in hands and on the high-tops; phones held up;
+    the two girls and the friend are the crowd's own figures recoloured;
+    Nate's phone; a hazer in the stage light ("a single white spike at the
+    end of the cycle"); the vestibule past the glass; ch20's visit and vol 1's
+    nights have no one either."""
+    import random
+    import _props.figures as FIG
+    from _props.view_tags import Views
+    V = Views("fx", {"k": "foxhole_check", "s": "foxhole_show", "t": "foxhole_after"})
+    rnd = random.Random(22)
+    black, brown, blond, red = (0.10, 0.09, 0.09, 1.0), (0.24, 0.17, 0.12, 1.0), (0.66, 0.54, 0.32, 1.0), (0.48, 0.22, 0.12, 1.0)
+    white, grey = (0.86, 0.85, 0.82, 1.0), (0.56, 0.55, 0.55, 1.0)
+    hairs = (black, brown, brown, blond, red, (0.32, 0.22, 0.14, 1.0), black, (0.30, 0.46, 0.62, 1.0), (0.66, 0.28, 0.46, 1.0), grey)
+    tees = ((0.10, 0.10, 0.11, 1.0), (0.14, 0.14, 0.18, 1.0), (0.20, 0.24, 0.34, 1.0), (0.42, 0.16, 0.16, 1.0), (0.24, 0.34, 0.26, 1.0),
+            (0.50, 0.46, 0.40, 1.0), (0.60, 0.28, 0.44, 1.0), (0.72, 0.70, 0.66, 1.0), (0.30, 0.20, 0.36, 1.0), (0.68, 0.52, 0.20, 1.0),
+            (0.12, 0.12, 0.13, 1.0), (0.16, 0.30, 0.36, 1.0))
+    jeans = ((0.14, 0.16, 0.24, 1.0), (0.10, 0.10, 0.11, 1.0), (0.30, 0.34, 0.44, 1.0), (0.36, 0.30, 0.24, 1.0))
+    skins = ((0.66, 0.52, 0.44, 1.0), (0.78, 0.64, 0.56, 1.0), (0.50, 0.36, 0.28, 1.0), (0.36, 0.25, 0.20, 1.0), (0.70, 0.56, 0.46, 1.0), (0.60, 0.44, 0.34, 1.0))
+
+    people = []
+
+    def stand(prefix, x, y, h, coat, hair, views, heading, **kw):
+        people.append(prefix)
+        with V.tagged(views, FIG):
+            return FIG.make_standing_figure(prefix, x, y, heading=heading, h=h, coat=coat, hair=hair, **kw)
+
+    S, N = math.pi, 0.0            # facing the room (south) / the stage (north)
+    # ── the band (Jesse's place, stage-left of centre, is the lens) ──
+    stand("Fx_Em", 0.0, 12.98, 1.60, (0.14, 0.12, 0.14, 1.0), black, "ks", S, z0=STAGE_TOP, arms="front", pants=jeans[1])
+    people.append("Fx_Carl")
+    with V.tagged("ks", FIG):
+        FIG.make_seated_figure("Fx_Carl", 0.0, 15.40, heading=S, seat_h=0.59, z0=STAGE_TOP + 0.31, h=1.78,
+                               coat=(0.30, 0.30, 0.34, 1.0), hair=brown, arms="table")
+    stand("Fx_Nate", 2.00, 13.40, 1.82, (0.20, 0.26, 0.22, 1.0), black, "ks", S, z0=STAGE_TOP, arms="front", pants=jeans[0])
+    # ── the house: Chess and Ramón at the booth, Ricky at the board, the bartender ──
+    # (named for the job: a part called Chess is the subject of every `closeup chess` in the set)
+    stand("Fx_Deejay", 5.05, 13.62, 1.66, (0.52, 0.20, 0.30, 1.0), black, "kst", S, arms="front", skin=skins[2])
+    stand("Fx_Ramon", 5.62, 13.60, 1.74, (0.20, 0.22, 0.28, 1.0), black, "kst", S - 0.5, skin=skins[2])
+    stand("Fx_Ricky", 2.85, 5.92, 1.76, (0.26, 0.26, 0.28, 1.0), white, "kst", N, z0=0.20, arms="front")
+    stand("Fx_Bartender", -3.20, 1.25, 1.75, (0.12, 0.12, 0.13, 1.0), brown, "st", N, arms="front")
+    # ── 9:00 · the kid at the rail ──
+    stand("Fx_Kid", -0.50, 10.95, 1.88, (0.08, 0.08, 0.09, 1.0), brown, "s", N, arms="front", stoop=0.42, pants=jeans[1])
+    # ── 10:00 · where they have gone ──
+    after = (("Fx_KidT", -4.55, 9.95, 1.88, (0.08, 0.08, 0.09, 1.0), brown, -1.9, {"pants": jeans[1]}),
+             ("Fx_KidFriend", -5.35, 9.12, 1.76, (0.36, 0.20, 0.16, 1.0), black, 0.3, {}),
+             ("Fx_CarlT", -1.55, 10.95, 1.78, (0.30, 0.30, 0.34, 1.0), brown, 1.2, {}),
+             ("Fx_Selma_A", -0.92, 10.94, 1.64, (0.62, 0.30, 0.46, 1.0), blond, -1.3, {}),
+             ("Fx_Selma_B", -1.20, 10.36, 1.60, (0.70, 0.62, 0.30, 1.0), black, 0.2, {}),
+             ("Fx_EmT", 5.10, 11.95, 1.60, (0.14, 0.12, 0.14, 1.0), black, N, {"pants": jeans[1]}),
+             ("Fx_NateT", 3.55, 0.95, 1.82, (0.20, 0.26, 0.22, 1.0), black, S + 0.6, {"arms": "front", "pants": jeans[0]}))
+    for nm, x, y, h, coat, hair, hd, kw in after:
+        stand(nm, x, y, h, coat, hair, "t", hd, **kw)
+    # ── the room: five rows packed behind the rail, a looser middle, the bar and the door ──
+    spots = []
+    for r, y in enumerate((10.92, 10.34, 9.76, 9.18, 8.60)):
+        n = 15 - (r % 2)
+        for k in range(n):
+            spots.append((-4.20 + (k + 0.5 * (r % 2)) * 0.60 + rnd.uniform(-0.06, 0.06), y + rnd.uniform(-0.07, 0.07), r))
+    for r, y in enumerate((7.65, 6.75, 5.85, 4.95, 4.05)):
+        for k in range(9):
+            spots.append((-4.30 + k * 1.06 + (0.4 if r % 2 else 0.0) + rnd.uniform(-0.18, 0.18), y + rnd.uniform(-0.15, 0.15), 5 + r))
+    spots += [(-5.02, 3.02, 10), (-4.20, 3.08, 10), (-3.42, 2.98, 10), (3.05, 2.70, 10), (4.70, 2.55, 10), (5.05, 3.70, 10)]
+    # no one where a thing stands, or where a lens does
+    solids = ((2.6, 6.4, 1.75, 1.45),       # the FOH platform and Ricky
+              (-5.2, 5.0, 0.75, 0.75), (-5.2, 7.4, 0.75, 0.75), (-5.2, 9.8, 0.75, 0.75),   # the high-tops
+              (4.95, 11.0, 0.70, 0.70), (-4.95, 11.0, 0.70, 0.70))                          # the PA
+    lenses = ((1.4, 2.4, 1.05, 2.2),        # the line from the back wall (the 10:00 vantage, the door insert)
+              (3.9, 10.4, 0.60, 0.75),      # the booth frame, and its line past the PA
+              (-3.9, 9.3, 1.00, 0.60))      # the high-top frame and its lane to the table
+    gone_at_ten = [(a[1], a[2]) for a in after]
+    k_n = 0
+    for x, y, row in spots:
+        if any(abs(x - cx) < hx and abs(y - cy) < hy for cx, cy, hx, hy in solids + lenses):
+            continue
+        if row == 0 and abs(x + 0.50) < 0.34:
+            continue                         # the kid's place on the rail
+        views = "st" if rnd.random() < 0.78 else "s"
+        if any(math.hypot(x - ax, y - ay) < 0.62 for ax, ay in gone_at_ten):
+            views = "s"
+        arms = "down"
+        if row <= 2 and rnd.random() < 0.34:
+            arms = "up_r" if rnd.random() < 0.7 else "up"
+        stand(f"Fx_C{k_n:03d}", x, y, rnd.uniform(1.56, 1.90), tees[rnd.randrange(len(tees))], hairs[rnd.randrange(len(hairs))],
+              views, math.atan2(-x, 15.0 - y) * 0.5 + rnd.uniform(-0.16, 0.16), arms=arms,
+              pants=jeans[rnd.randrange(len(jeans))], skin=skins[rnd.randrange(len(skins))])
+        k_n += 1
+    print(f"[build_foxhole_bar] the room: {k_n} on the floor")
+    V.check()
+    # one mesh a person (the stage and the floor are reached by more lamps than a load-time
+    # merge may fold: thirteen parts a figure were 2,650 draw calls)
+    from _props.geometry import join_prefix
+    folded = sum(int(join_prefix(pfx) or 0) for pfx in people)
+    print(f"[build_foxhole_bar] {len(people)} figures, {folded} parts folded into them")
+
+
 def build_walls_dressing():
     """Flyers on the walls (the show posters of a venue that books every
     week), the PA hang points, the smoke detectors."""
@@ -342,6 +482,7 @@ def main():
     build_rig()
     build_floor()
     build_bar()
+    build_show_2026_11()
     build_walls_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_bar.glb"))

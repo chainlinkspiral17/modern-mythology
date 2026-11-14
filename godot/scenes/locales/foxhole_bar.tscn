@@ -569,3 +569,120 @@ metadata/fov = 45.0
 position = Vector3(0.900, 1.350, -9.900)
 rotation = Vector3(-0.3554, 0.5555, 0.0)
 metadata/fov = 38.0
+
+; ══ SOUND CHECK (pass 375, vol 6 ch22 5:45): the frames of `foxhole_check` ══
+; "Nate is plugging the bass into the house DI": Nate at his rig, from the stage
+[node name="shot_insert_bass__foxhole_check" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 2.000, -12.900)
+rotation = Vector3(-0.3245, -0.9561, 0.0)
+metadata/fov = 46.0
+
+; "Chess is at the small DJ booth at the side of the stage with her laptop open and Ramón at her elbow"
+[node name="shot_insert_booth__foxhole_check" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.600, 1.650, -10.400)
+rotation = Vector3(-0.1957, -0.5376, 0.0)
+metadata/fov = 42.0
+
+; "Ricky drinks Topo Chico from the cooler under the board": the cooler, Ricky at the desk over it
+[node name="shot_insert_cooler__foxhole_check" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.900, 1.300, -4.700)
+rotation = Vector3(-0.3295, 0.4229, 0.0)
+metadata/fov = 45.0
+
+; ══ THE SET (pass 375, vol 6 ch22 9:00): the frames of `foxhole_show` ══
+; Em at the mic from Jesse's side of the stage, the room past her
+[node name="shot_closeup_person__foxhole_show" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.300, 2.150, -12.450)
+rotation = Vector3(-0.0425, -1.3567, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__foxhole_show" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.300, 2.150, -12.450)
+rotation = Vector3(-0.0425, 1.3567, 0.0)
+metadata/fov = 45.0
+
+; "Carl counts off": from the back of the room, over a hundred heads to the lit stage
+[node name="shot_establish_b__foxhole_show" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.800, 2.600, -3.200)
+rotation = Vector3(-0.0711, -0.0815, 0.0)
+metadata/fov = 62.0
+
+; "The room has stopped moving. The kid at the rail is still headbanging": the room from the west wall, the rail and the lip
+[node name="shot_establish_c__foxhole_show" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.300, 2.250, -8.600)
+rotation = Vector3(-0.1057, -1.1008, 0.0)
+metadata/fov = 60.0
+
+; "with a hundred and ten people in front of him": the view's own vantage, Jesse's, so a line can ask for it
+[node name="shot_establish_d__foxhole_show" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.900, 2.350, -13.150)
+rotation = Vector3(-0.1122, -2.8177, 0.0)
+metadata/fov = 64.0
+
+; "At the front of the stage against the lip is one kid ... The kid is at the rail": from the stage, the room behind him
+[node name="shot_insert_kid__foxhole_show" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.950, -12.250)
+rotation = Vector3(-0.2604, 2.2997, 0.0)
+metadata/fov = 42.0
+
+; ══ CHESS'S SET (pass 375, vol 6 ch22 10:00): the frames of `foxhole_after` ══
+; at the bar's east end, along the bar to the bartender and the neon
+[node name="shot_closeup_person__foxhole_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.650, -2.950)
+rotation = Vector3(-0.0360, 1.8070, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__foxhole_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.700, 1.650, -3.100)
+rotation = Vector3(-0.0340, -1.7415, 0.0)
+metadata/fov = 45.0
+
+; "Carl is at the front by the rail with two girls from Selma": from the back, over the room to the rail and the empty stage
+[node name="shot_establish_b__foxhole_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.800, 2.600, -3.200)
+rotation = Vector3(-0.0711, -0.0815, 0.0)
+metadata/fov = 62.0
+
+; "Chess winks at Jesse from the booth" / "Em is at the booth talking to Chess": over the heads to the booth
+[node name="shot_insert_booth__foxhole_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.900, 2.200, -10.400)
+rotation = Vector3(-0.3455, -0.4315, 0.0)
+metadata/fov = 42.0
+
+; "The bartender slides him the bottle. He drinks.": the bottle on the bar's east end
+[node name="shot_insert_beer__foxhole_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 1.550, -3.600)
+rotation = Vector3(-0.1383, 2.1763, 0.0)
+metadata/fov = 45.0
+
+; "The two of them are at a high-top to the left of the stage. The kid is gesturing."
+[node name="shot_insert_high_top__foxhole_after" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.200, 1.500, -9.000)
+rotation = Vector3(-0.1932, 1.1989, 0.0)
+metadata/fov = 50.0
+
+; (pass 375) "The house lights dim": a low blue wash over the floor in the two crowd views, so the
+; room is a hundred heads and shoulders and not a black field under the stage light
+[node name="House_Wash__fx_st" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 4.000, -7.600)
+light_color = Color(0.36, 0.44, 0.82, 1)
+light_energy = 2.20
+shadow_enabled = false
+omni_range = 9.50
+omni_attenuation = 1.30
+
+; (pass 375) the bridge lyrics by Jesse's amp, for the sound-check view (the plain frame is 13 m
+; from that view's camera, by the show's)
+[node name="shot_insert_lyrics__foxhole_check" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.550, 1.450, -13.050)
+rotation = Vector3(-0.7448, -0.7086, 0)
+metadata/fov = 40.0
+
+; (pass 375) the beer sign's neon over the west wall's high-tops
+[node name="West_Wall_Neon_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.550, 2.300, -8.600)
+light_color = Color(1.0, 0.66, 0.42, 1)
+light_energy = 4.20
+shadow_enabled = false
+omni_range = 5.20
+omni_attenuation = 1.20

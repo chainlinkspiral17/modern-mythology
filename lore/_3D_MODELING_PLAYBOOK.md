@@ -399,6 +399,21 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-14 · a crowd is one mesh a person, and its room is measured before it is called built (pass 375)
+- `_props.figures` makes a person from thirteen parts. Where few lamps
+  reach (the Tome's alley) StaticMerge folds them at load; in a venue with
+  twenty lamps it cannot (a chunk may not take more lamps than the
+  renderer lights per object), and a hundred people were 2,650 draw calls.
+  Join each figure at build: `join_prefix("<prefix>")` after the figure is
+  made (it keeps the view tag and the vertex colours; under the audit
+  stubs it does nothing, so the gates still see every part).
+- Run `perf_gate.py <room>` after any pass that adds hundreds of parts,
+  BEFORE `--update`. `--update` records; it does not judge. If the number
+  is over the cap, the pass is not built yet.
+- Parts for a set's other states carry the letters of the views they are
+  in (`_props/view_tags.Views`): `V.tag("st")`, `with V.tagged("s", FIG):`,
+  `V.check()` last. The group must be in `Background3D.VIEW_GROUPS`.
+
 ### 2026-11-10 · a companion that moves between rooms is TWO props, one per view (Finn's crow, pass 331)
 
 - **What happened.** Finn's crow is on "the back of the chair across from

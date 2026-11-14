@@ -323,6 +323,26 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-14 · look for the crowd the text names; change a view in place when the chapter already cuts there (pass 375)
+- A scan found the Foxhole: every line with crowd words ("a room of about
+  a hundred and ten people") against the figures in that line's view. Run
+  it after any pass that adds a view; read the hits, the word list is
+  noisy ("packed a bag").
+- If the chapter already has a `bg` node where the state changes, change
+  that node's view and add nothing: voice files, trip beats and saves are
+  keyed to node indexes. Insert a node only when the change falls inside
+  a run of lines.
+- A room of a hundred needs LANES before it needs people: mark where each
+  lens stands and the line it looks along, and generate the crowd around
+  them. Over-the-heads frames want the lens at 2.1 m or more and no raised
+  arm within a metre.
+- A club from the back wall is silhouettes against the stage. Give the
+  dark side of a room its own practical (a neon over the high-tops) before
+  cutting to someone standing there.
+- Do not name a figure for a cast member unless a `closeup <name>` frame
+  in that view is meant for it: a part called Chess became the subject of
+  the room's `closeup chess` frame, 164 degrees behind it.
+
 ### 2026-11-14 · a morning is several views; say who is in which with one letter each (pass 374)
 - The vigil's morning is five views of one alley (6:59, 7:15, 10:45,
   11:00, 11:30). The builder's table gives every figure and prop the

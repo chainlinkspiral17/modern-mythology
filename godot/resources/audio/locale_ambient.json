@@ -417,6 +417,18 @@
       "bed": "assets/audio/bgm/vol1_club_thump.wav",
       "gain": 0.85
     },
+    "foxhole_check": {
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
+      "gain": 0.85
+    },
+    "foxhole_show": {
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
+      "gain": 0.8
+    },
+    "foxhole_after": {
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
+      "gain": 0.85
+    },
     "foxhole_dressing_room": {
       "bed": "assets/audio/bgm/vol1_club_thump.wav",
       "gain": 0.8
