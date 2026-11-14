@@ -41,7 +41,7 @@
 extends Node3D
 
 const CELL := 4.0           # a room's cells; a big exterior grows them (_cell_for)
-const CELL_MAX := 12.0
+const CELL_MAX := 64.0      # (pass 382) was 12: see _cell_for
 const MIN_CELL := 1.0
 const FRAME_BUDGET_USEC := 6000
 const SUN_SHADOW_MAX_M := 60.0
@@ -182,7 +182,7 @@ func _plan() -> void:
 
 ## 4 m cells suit a room; a town (graustark, the riverfront) at 4 m is
 ## still thousands of chunks. The cell grows with the set's footprint —
-## a sixteenth of its longer side, 4 to 12 m — and culling stays useful.
+## a sixteenth of its longer side, 4 to 64 m.
 func _cell_for(cands: Array) -> float:
 	if cands.is_empty():
 		return CELL
@@ -191,7 +191,25 @@ func _cell_for(cands: Array) -> float:
 	for info: Dictionary in cands:
 		var b: AABB = info["aabb"]
 		box = box.merge(b)
-	return clampf(maxf(box.size.x, box.size.z) / 16.0, CELL, CELL_MAX)
+	# (pass 382) The cap was 12 m, which a set over 192 m across hits: a
+	# kilometre of Harmony Creek was 2,034 chunks and 3,837 draw calls in
+	# its worst view, Graustark 1,254. Measured (PerfProbe, worst of four
+	# views; draw calls / triangles):
+	#   cap 12   harmony 3,837 / 761 k    graustark 1,254 / 405 k
+	#   cap 48           909 / 816 k                440 / 434 k
+	#   cap 64           699 / 819 k                368 / 462 k
+	#   cap 96           487 / 859 k                330 / 452 k
+	# Bigger chunks cull less, and it costs 8 % more triangles for five
+	# times fewer draw calls — the Compatibility renderer pays per call.
+	# The lamp rule is unchanged (_split_for_lights halves a chunk more
+	# lamps reach than the renderer lights), and transparent parts are
+	# never merged, so the picture is the same.
+	var side: float = maxf(box.size.x, box.size.z)
+	var cap: float = CELL_MAX
+	var env: String = OS.get_environment("MM_MERGE_CELL_MAX")    # measuring knob (PerfProbe)
+	if env != "":
+		cap = float(env)
+	return clampf(side / 16.0, CELL, cap)
 
 
 func _scan_rules(root: Node, keep: Array[String], animated: Dictionary) -> void:

@@ -3835,6 +3835,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 382: the big outdoor sets draw in a fifth of the calls (Harmony Creek 3,837 → 699).**
+- The owed perf pass on harmony_terrain (recorded at 3,837 draw calls in
+  pass 376, the heaviest set in the game, under every Harmony exterior and
+  six highway views). PerfProbe: StaticMerge had folded its 22,102 parts
+  into 2,034 chunks on a 12 m grid, with 516 left loose. The grid grows
+  with the set — a sixteenth of its longer side — but was capped at 12 m,
+  which any set over 192 m across hits. A kilometre of town at 12 m.
+- Measured at five caps (worst of four views; draw calls / triangles):
+  12 m 3,837 / 761 k · 48 m 909 / 816 k · 64 m 699 / 819 k · 96 m 487 /
+  859 k; Graustark 1,254 → 440 → 368 → 330. Bigger chunks cull less and it
+  costs 8 % more triangles for five times fewer calls. The cap is 64 m.
+  Also: riverfront 471 → 161, small_wood_road 802 → 208, highway_101
+  808 → 158, the school field 410 → 130.
+- The picture is the same: the lamp rule is unchanged (a chunk more lamps
+  reach than the renderer lights still halves), transparent parts are
+  never merged. Seven sets rendered at both caps; the difference between
+  them is smaller than between two runs at the same cap (animated grain,
+  water). Read side by side.
+- `MM_MERGE_CELL_MAX=<m>` is a measuring knob for PerfProbe. All 109
+  baselines re-recorded: 86 rooms down, 16 the same, the sum of every
+  room's worst view 41,034 → 32,845 calls. Seven went UP and were read:
+  each measures the same or higher at the old cap, so none is from this
+  pass — they had grown since their last recording, which the gate
+  allows under 2,000 (the NexCorp fuelling station 174 → 580, the copy
+  shop 100 → 194). The probe itself wanders by about 30 calls between
+  runs on a room with animated parts (missing_link_interior 96 / 124).
+- No rebuild on the Deck: this is the game's own load-time step.
+- NEXT: 349 chunks + 29 loose parts still make 699 calls — the sun's
+  shadow passes draw the casters again (objects 1,559); a set this size
+  wants its far half out of the shadow range. Frame TIME is not measured
+  here (software renderer): read Steam's overlay on Harmony Creek and
+  Graustark before and after.
+
 **2026-11-14 · pass 381: the suite in 13 minutes, not two hours; a gate for shaders that drop fades.**
 - The scoped suite had grown from about 80 minutes to over two hours
   ("audit taking over an hour for simple fixes", 10-13 — and it had crept

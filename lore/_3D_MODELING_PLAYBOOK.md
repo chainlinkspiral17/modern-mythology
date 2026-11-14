@@ -399,6 +399,20 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-14 · a cap chosen for rooms was costing the towns five times their draw calls (pass 382)
+- StaticMerge's cell grows with the set but was capped at 12 m — set
+  when the biggest sets were a block wide. Measure before trusting a
+  constant: PerfProbe with `MM_MERGE_CELL_MAX=<m>` at several values,
+  draw calls AND triangles. Culling "staying useful" was worth 8 % of the
+  triangles; the calls were worth 5×.
+- To claim "the picture is the same", render both ways and diff — and
+  render the same way TWICE first. The post stack animates (grain,
+  water); two runs at one setting differ in 8–12 % of pixels. A diff is
+  only evidence against that floor.
+- `perf_gate.py --update` records and does not judge: after a change
+  meant to lower counts, diff the baseline file and read every room
+  that went UP.
+
 ### 2026-11-14 · winding is settled at the export, once, for every closed shell (pass 379)
 - Do not reason about winding in a helper. `turn_closed_meshes_outward()`
   (`_props.geometry`) runs before every export and before `join_prefix`:

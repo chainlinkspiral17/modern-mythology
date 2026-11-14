@@ -5,9 +5,9 @@
   "objects": 392
  },
  "apple_peddler": {
-  "draw": 88,
-  "prims": 14292,
-  "objects": 258
+  "draw": 114,
+  "prims": 11140,
+  "objects": 284
  },
  "bayou_lighthouse": {
   "draw": 64,
@@ -26,7 +26,7 @@
  },
  "bindery": {
   "draw": 60,
-  "prims": 110656,
+  "prims": 109312,
   "objects": 230
  },
  "board_lords_interior": {
@@ -35,18 +35,18 @@
   "objects": 350
  },
  "briar_falls": {
-  "draw": 130,
-  "prims": 57844,
-  "objects": 300
+  "draw": 90,
+  "prims": 59132,
+  "objects": 260
  },
  "bus_station": {
   "draw": 80,
-  "prims": 19652,
+  "prims": 19524,
   "objects": 250
  },
  "cabin_interior": {
   "draw": 8786,
-  "prims": 353912,
+  "prims": 350408,
   "objects": 6396
  },
  "caldwell_porch_night": {
@@ -55,24 +55,24 @@
   "objects": 396
  },
  "caltech_dabney": {
-  "draw": 178,
-  "prims": 122616,
-  "objects": 348
+  "draw": 170,
+  "prims": 122892,
+  "objects": 340
  },
  "cape_perpetua_overlook": {
   "draw": 136,
-  "prims": 30048,
+  "prims": 18412,
   "objects": 306
  },
  "carrie_city": {
   "draw": 130,
-  "prims": 66468,
+  "prims": 90158,
   "objects": 300
  },
  "cedar_tower": {
-  "draw": 178,
-  "prims": 44036,
-  "objects": 348
+  "draw": 132,
+  "prims": 68488,
+  "objects": 302
  },
  "centro_break_room": {
   "draw": 64,
@@ -80,17 +80,19 @@
   "objects": 234
  },
  "centro_grocery_aisle": {
-  "draw": 214
+  "draw": 220,
+  "prims": 708792,
+  "objects": 390
  },
  "centro_stockroom": {
-  "draw": 124,
-  "prims": 43324,
-  "objects": 294
+  "draw": 88,
+  "prims": 43796,
+  "objects": 258
  },
  "chau_house": {
-  "draw": 148,
-  "prims": 143072,
-  "objects": 318
+  "draw": 152,
+  "prims": 170152,
+  "objects": 322
  },
  "chillwave_interior": {
   "draw": 64,
@@ -98,39 +100,39 @@
   "objects": 234
  },
  "club_street": {
-  "draw": 110,
-  "prims": 14180,
-  "objects": 280
+  "draw": 104,
+  "prims": 10812,
+  "objects": 274
  },
  "copy_shop": {
-  "draw": 100,
-  "prims": 24684,
-  "objects": 270
+  "draw": 194,
+  "prims": 41668,
+  "objects": 364
  },
  "crumpled_barn": {
-  "draw": 192,
-  "prims": 58072,
-  "objects": 326
+  "draw": 108,
+  "prims": 596628,
+  "objects": 260
  },
  "daily_grind_interior": {
-  "draw": 474,
-  "prims": 275672,
-  "objects": 644
+  "draw": 444,
+  "prims": 275816,
+  "objects": 614
  },
  "dean_house_1994": {
-  "draw": 100,
-  "prims": 17668,
-  "objects": 270
+  "draw": 72,
+  "prims": 21908,
+  "objects": 242
  },
  "dean_offices": {
-  "draw": 124,
-  "prims": 109504,
-  "objects": 294
+  "draw": 110,
+  "prims": 117816,
+  "objects": 280
  },
  "desert_route": {
-  "draw": 108,
-  "prims": 75272,
-  "objects": 278
+  "draw": 90,
+  "prims": 85784,
+  "objects": 260
  },
  "diego_bedroom": {
   "draw": 98,
@@ -138,119 +140,119 @@
   "objects": 268
  },
  "diner": {
-  "draw": 1262,
-  "prims": 76360,
-  "objects": 2130
+  "draw": 1194,
+  "prims": 81160,
+  "objects": 2062
  },
  "editing_suite": {
-  "draw": 64,
-  "prims": 12952,
-  "objects": 234
+  "draw": 36,
+  "prims": 24252,
+  "objects": 54
  },
  "ember_ash_office": {
-  "draw": 100,
-  "prims": 17820,
-  "objects": 270
+  "draw": 72,
+  "prims": 16712,
+  "objects": 90
  },
  "faust_apartment": {
-  "draw": 4216,
-  "prims": 154396,
-  "objects": 3910
+  "draw": 4188,
+  "prims": 153234,
+  "objects": 3730
  },
  "finn_apartment": {
-  "draw": 404,
-  "prims": 116048,
-  "objects": 574
+  "draw": 376,
+  "prims": 114940,
+  "objects": 394
  },
  "foxhole_bar": {
-  "draw": 956,
-  "prims": 111628,
-  "objects": 1126
+  "draw": 928,
+  "prims": 109750,
+  "objects": 946
  },
  "foxhole_stage": {
-  "draw": 56,
-  "prims": 11764,
-  "objects": 226
+  "draw": 28,
+  "prims": 10656,
+  "objects": 46
  },
  "frog_knows_best": {
-  "draw": 56,
-  "prims": 20292,
-  "objects": 226
+  "draw": 28,
+  "prims": 19184,
+  "objects": 46
  },
  "graciela_bedroom": {
-  "draw": 66,
-  "prims": 17636,
-  "objects": 236
+  "draw": 38,
+  "prims": 16528,
+  "objects": 56
  },
  "graustark": {
-  "draw": 1254,
-  "prims": 538858,
-  "objects": 1424
+  "draw": 368,
+  "prims": 461620,
+  "objects": 386
  },
  "grunion_beach": {
-  "draw": 202,
-  "prims": 22700,
-  "objects": 372
+  "draw": 66,
+  "prims": 29856,
+  "objects": 84
  },
  "hans_bakery_back_kitchen": {
-  "draw": 104,
-  "prims": 59628,
-  "objects": 274
+  "draw": 76,
+  "prims": 58520,
+  "objects": 94
  },
  "harmony_terrain": {
-  "draw": 3837,
-  "prims": 761070,
-  "objects": 4697
+  "draw": 699,
+  "prims": 818574,
+  "objects": 1559
  },
  "henderson_garage": {
-  "draw": 226,
-  "prims": 58768,
-  "objects": 396
+  "draw": 198,
+  "prims": 57660,
+  "objects": 216
  },
  "henderson_kitchen": {
-  "draw": 94,
-  "prims": 57048,
-  "objects": 264
+  "draw": 66,
+  "prims": 55940,
+  "objects": 84
  },
  "henderson_porch_front": {
-  "draw": 72,
-  "prims": 12260,
-  "objects": 242
+  "draw": 44,
+  "prims": 11152,
+  "objects": 62
  },
  "honolulu_highrise": {
-  "draw": 218,
-  "prims": 50516,
-  "objects": 388
+  "draw": 244,
+  "prims": 62856,
+  "objects": 262
  },
  "hospital_room": {
-  "draw": 196,
-  "prims": 28400,
-  "objects": 366
+  "draw": 178,
+  "prims": 27516,
+  "objects": 196
  },
  "houston_bayou": {
-  "draw": 196,
-  "prims": 64204,
-  "objects": 366
+  "draw": 110,
+  "prims": 71048,
+  "objects": 128
  },
  "houston_office": {
-  "draw": 452,
-  "prims": 32892,
-  "objects": 622
+  "draw": 170,
+  "prims": 33184,
+  "objects": 188
  },
  "jesse_bedroom": {
-  "draw": 232,
-  "prims": 78960,
-  "objects": 402
+  "draw": 204,
+  "prims": 77852,
+  "objects": 222
  },
  "kai_apartment": {
-  "draw": 72,
-  "prims": 13844,
-  "objects": 242
+  "draw": 44,
+  "prims": 12736,
+  "objects": 62
  },
  "kestrel_mountain": {
-  "draw": 142,
-  "prims": 7748,
-  "objects": 312
+  "draw": 60,
+  "prims": 8128,
+  "objects": 78
  },
  "kowalski_backyard": {
   "draw": 180,
@@ -258,92 +260,94 @@
   "objects": 198
  },
  "kowalski_kitchen": {
-  "draw": 100,
-  "prims": 52648,
-  "objects": 270
+  "draw": 72,
+  "prims": 51540,
+  "objects": 90
  },
  "kwik_stop": {
-  "draw": 1024,
-  "prims": 514068,
-  "objects": 1804
+  "draw": 884,
+  "prims": 505660,
+  "objects": 1664
  },
  "lake_house": {
-  "draw": 134,
-  "prims": 42788,
-  "objects": 304
+  "draw": 72,
+  "prims": 44736,
+  "objects": 90
  },
  "lena_apartment": {
-  "draw": 236,
-  "prims": 158444,
-  "objects": 406
- },
- "link_house": {
-  "draw": 1512,
-  "prims": 502968,
-  "objects": 1682
- },
- "little_league": {
-  "draw": 94,
-  "prims": 50444,
-  "objects": 264
- },
- "little_switzerland": {
-  "draw": 70,
-  "prims": 9024,
-  "objects": 88
- },
- "maya_bedroom": {
-  "draw": 158,
-  "prims": 84992,
-  "objects": 328
- },
- "miller_back_porch": {
-  "draw": 304,
-  "prims": 80458,
-  "objects": 474
- },
- "miller_kitchen": {
-  "draw": 116,
-  "prims": 35088,
-  "objects": 286
- },
- "miller_office": {
-  "draw": 104,
-  "prims": 27100,
-  "objects": 274
- },
- "missing_link_interior": {
-  "draw": 90
- },
- "montreal_apartment": {
-  "draw": 56,
-  "prims": 44228,
+  "draw": 208,
+  "prims": 157336,
   "objects": 226
  },
+ "link_house": {
+  "draw": 1250,
+  "prims": 504076,
+  "objects": 1268
+ },
+ "little_league": {
+  "draw": 58,
+  "prims": 44224,
+  "objects": 76
+ },
+ "little_switzerland": {
+  "draw": 54,
+  "prims": 9312,
+  "objects": 72
+ },
+ "maya_bedroom": {
+  "draw": 130,
+  "prims": 83884,
+  "objects": 148
+ },
+ "miller_back_porch": {
+  "draw": 276,
+  "prims": 79350,
+  "objects": 294
+ },
+ "miller_kitchen": {
+  "draw": 88,
+  "prims": 33980,
+  "objects": 106
+ },
+ "miller_office": {
+  "draw": 76,
+  "prims": 25992,
+  "objects": 94
+ },
+ "missing_link_interior": {
+  "draw": 96,
+  "prims": 35528,
+  "objects": 114
+ },
+ "montreal_apartment": {
+  "draw": 28,
+  "prims": 43120,
+  "objects": 46
+ },
  "natalie_apartment": {
-  "draw": 214,
-  "prims": 139636,
-  "objects": 384
+  "draw": 186,
+  "prims": 138528,
+  "objects": 204
  },
  "nate_garage": {
-  "draw": 174,
-  "prims": 48444,
-  "objects": 344
+  "draw": 146,
+  "prims": 47336,
+  "objects": 164
  },
  "new_auburn_courtroom": {
-  "draw": 186,
-  "prims": 28756,
-  "objects": 356
+  "draw": 158,
+  "prims": 27648,
+  "objects": 176
  },
  "new_auburn_road": {
-  "draw": 846,
-  "prims": 208080,
-  "objects": 1016
+  "draw": 308,
+  "prims": 216120,
+  "objects": 326
  },
  "new_orleans_apartment": {
-  "draw": 74,
-  "prims": 27788,
-  "objects": 244
+  "draw": 46,
+  "prims": 26680,
+  "objects": 64
  },
  "new_orleans_office": {
   "draw": 80,
@@ -351,187 +355,193 @@
   "objects": 98
  },
  "new_orleans_room": {
-  "draw": 160,
-  "prims": 35336,
-  "objects": 330
+  "draw": 132,
+  "prims": 34228,
+  "objects": 150
  },
  "nexcorp_fueling_station": {
-  "draw": 174
+  "draw": 580,
+  "prims": 436024,
+  "objects": 598
  },
  "nexcorp_gas_go": {
-  "draw": 178,
-  "prims": 39892,
-  "objects": 348
+  "draw": 150,
+  "prims": 38784,
+  "objects": 168
  },
  "nick_house": {
-  "draw": 82,
-  "prims": 22640,
-  "objects": 252
+  "draw": 62,
+  "prims": 40344,
+  "objects": 80
  },
  "oregon_lighthouse": {
-  "draw": 218,
-  "prims": 24180,
-  "objects": 378
+  "draw": 189,
+  "prims": 22040,
+  "objects": 196
  },
  "parsonage_1945": {
-  "draw": 76,
-  "prims": 16552,
-  "objects": 246
+  "draw": 48,
+  "prims": 54292,
+  "objects": 66
  },
  "pasadena_1945": {
-  "draw": 164,
-  "prims": 55808,
-  "objects": 334
+  "draw": 72,
+  "prims": 102312,
+  "objects": 90
  },
  "pharmacy": {
-  "draw": 1096
+  "draw": 1094,
+  "prims": 1065612,
+  "objects": 1112
  },
  "pit_stop_interior": {
-  "draw": 560,
-  "prims": 62884,
-  "objects": 730
+  "draw": 532,
+  "prims": 61776,
+  "objects": 550
  },
  "pit_stop_office": {
-  "draw": 88,
-  "prims": 10440,
-  "objects": 258
+  "draw": 60,
+  "prims": 9332,
+  "objects": 78
  },
  "portland_downtown": {
-  "draw": 114,
-  "prims": 31524,
-  "objects": 284
+  "draw": 88,
+  "prims": 119480,
+  "objects": 106
  },
  "riverfront": {
-  "draw": 471
+  "draw": 161,
+  "prims": 206950,
+  "objects": 1001
  },
  "safehouse_bedroom": {
-  "draw": 102,
-  "prims": 22528,
-  "objects": 272
+  "draw": 64,
+  "prims": 21420,
+  "objects": 82
  },
  "salty_tome_interior": {
-  "draw": 388,
-  "prims": 206552,
-  "objects": 558
+  "draw": 360,
+  "prims": 205444,
+  "objects": 378
  },
  "sam_bedroom": {
-  "draw": 118,
-  "prims": 26180,
-  "objects": 288
+  "draw": 90,
+  "prims": 25072,
+  "objects": 108
  },
  "sapo_falls": {
-  "draw": 112,
-  "prims": 7732,
-  "objects": 282
+  "draw": 68,
+  "prims": 28840,
+  "objects": 86
  },
  "sea_cave": {
-  "draw": 106,
-  "prims": 32922,
-  "objects": 276
+  "draw": 60,
+  "prims": 36190,
+  "objects": 78
  },
  "simon_apartment": {
-  "draw": 54,
-  "prims": 14360,
-  "objects": 224
+  "draw": 26,
+  "prims": 13252,
+  "objects": 44
  },
  "skatepark": {
-  "draw": 146,
-  "prims": 29476,
-  "objects": 316
+  "draw": 52,
+  "prims": 29936,
+  "objects": 70
  },
  "sleep_lab": {
-  "draw": 348,
-  "prims": 31240,
-  "objects": 518
+  "draw": 324,
+  "prims": 33468,
+  "objects": 342
  },
  "small_wood_backyard": {
-  "draw": 78,
-  "prims": 28592,
-  "objects": 248
+  "draw": 48,
+  "prims": 28772,
+  "objects": 66
  },
  "small_wood_farmhouse": {
-  "draw": 642,
-  "prims": 212676,
-  "objects": 812
+  "draw": 446,
+  "prims": 205024,
+  "objects": 464
  },
  "small_wood_field": {
-  "draw": 276,
-  "prims": 363420,
-  "objects": 446
+  "draw": 102,
+  "prims": 395856,
+  "objects": 120
  },
  "small_wood_high": {
-  "draw": 226,
-  "prims": 151964,
-  "objects": 396
+  "draw": 198,
+  "prims": 150856,
+  "objects": 216
  },
  "small_wood_police": {
-  "draw": 144,
-  "prims": 33188,
-  "objects": 314
+  "draw": 116,
+  "prims": 32132,
+  "objects": 134
  },
  "small_wood_ranch": {
-  "draw": 102,
-  "prims": 16944,
-  "objects": 272
+  "draw": 74,
+  "prims": 23468,
+  "objects": 92
  },
  "small_wood_town": {
-  "draw": 62,
-  "prims": 54196,
-  "objects": 232
+  "draw": 32,
+  "prims": 53088,
+  "objects": 50
  },
  "smolvud_coop": {
-  "draw": 72,
-  "prims": 43940,
-  "objects": 242
+  "draw": 44,
+  "prims": 42832,
+  "objects": 62
  },
  "smolvud_jetty": {
-  "draw": 118,
-  "prims": 5900,
-  "objects": 288
+  "draw": 52,
+  "prims": 25056,
+  "objects": 70
  },
  "static_drive_in": {
-  "draw": 68,
-  "prims": 12004,
-  "objects": 238
+  "draw": 40,
+  "prims": 10896,
+  "objects": 58
  },
  "tideline_survey": {
-  "draw": 106,
-  "prims": 9404,
-  "objects": 276
+  "draw": 48,
+  "prims": 11608,
+  "objects": 66
  },
  "tulsa_house": {
-  "draw": 74,
-  "prims": 24688,
-  "objects": 244
+  "draw": 26,
+  "prims": 60460,
+  "objects": 44
  },
  "vehicle_cab": {
-  "draw": 424,
-  "prims": 45992,
-  "objects": 594
+  "draw": 390,
+  "prims": 17400,
+  "objects": 408
  },
  "vol3_rooms": {
-  "draw": 358,
-  "prims": 271896,
-  "objects": 528
+  "draw": 266,
+  "prims": 270636,
+  "objects": 284
  },
  "vol4_apartments": {
-  "draw": 100,
-  "prims": 21832,
-  "objects": 270
+  "draw": 72,
+  "prims": 21596,
+  "objects": 90
  },
  "vol4_story_rooms": {
-  "draw": 176,
-  "prims": 340736,
-  "objects": 346
+  "draw": 106,
+  "prims": 338924,
+  "objects": 124
  },
  "wagner_home": {
-  "draw": 190,
-  "prims": 79260,
-  "objects": 360
+  "draw": 122,
+  "prims": 105056,
+  "objects": 140
  },
  "writers_desk": {
-  "draw": 126,
-  "prims": 47088,
-  "objects": 296
+  "draw": 112,
+  "prims": 55092,
+  "objects": 130
  }
 }

@@ -216,6 +216,9 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **the big outdoor sets — pass 382 (2026-11-14).** Harmony Creek, Graustark, the riverfront, the highways and
+  the school field draw in a third to a fifth of the calls they did (Harmony 3,837 → 699): the load-time merge
+  used a grid sized for rooms. Same picture; nothing to rebuild.
 - **the cast, every chapter — pass 380 (2026-11-14).** 3D portraits never faded in or out and never stepped
   back for a close-up of an object: their shader dropped the game's dimming. Fixed; the painted look itself is
   unchanged. 25 more unused close-up frames given their lines (105 left), three re-aimed.
