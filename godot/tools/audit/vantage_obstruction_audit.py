@@ -303,32 +303,76 @@ def ray_dir(pitch, yaw, dh, dv):
     return (fg[0], -fg[2], fg[1])
 
 
+_SOLID = {}
+
+
+def _solid(boxes, ignore):
+    """The boxes a ray can hit, with their bounds worked out once (pass 381).
+    cast() ran two pattern matches on every box for every ray — 200 rays a
+    marker, 3,000 boxes in a crowded set, 4,000 markers: most of the gate's
+    forty minutes was re.search. Same boxes, same order, same answers."""
+    key = (id(boxes), ignore.pattern)
+    hit = _SOLID.get(key)
+    if hit is not None and hit[0] is boxes and hit[1] == len(boxes):
+        return hit[2]
+    if len(_SOLID) > 48:
+        _SOLID.clear()
+    out = [(name, c[0] - h[0], c[0] + h[0], c[1] - h[1], c[1] + h[1], c[2] - h[2], c[2] + h[2])
+           for name, c, h in boxes if not (ignore.search(name) or PASSABLE.search(name))]
+    _SOLID[key] = (boxes, len(boxes), out)
+    return out
+
+
 def cast(origin_b, d, boxes, ignore=None):
     """Nearest slab hit along d from origin_b. Returns (t, name)."""
     best, who = None, None
     ox, oy, oz = origin_b
     if ignore is None:
         ignore = IGNORE
-    for name, c, h in boxes:
-        if ignore.search(name) or PASSABLE.search(name):
-            continue
+    dx, dy, dz = d
+    ax, ay, az = abs(dx) < 1e-9, abs(dy) < 1e-9, abs(dz) < 1e-9
+    for name, x0, x1, y0, y1, z0, z1 in _solid(boxes, ignore):
         tmin, tmax = 0.0, 1e9
-        ok = True
-        for o, dd, cc, hh in ((ox, d[0], c[0], h[0]), (oy, d[1], c[1], h[1]), (oz, d[2], c[2], h[2])):
-            lo, hi = cc - hh, cc + hh
-            if abs(dd) < 1e-9:
-                if o < lo or o > hi:
-                    ok = False
-                    break
+        if ax:
+            if ox < x0 or ox > x1:
                 continue
-            t1, t2 = (lo - o) / dd, (hi - o) / dd
+        else:
+            t1, t2 = (x0 - ox) / dx, (x1 - ox) / dx
             if t1 > t2:
                 t1, t2 = t2, t1
-            tmin, tmax = max(tmin, t1), min(tmax, t2)
+            if t1 > tmin:
+                tmin = t1
+            if t2 < tmax:
+                tmax = t2
             if tmin > tmax:
-                ok = False
-                break
-        if ok and tmin > 0.02 and (best is None or tmin < best):
+                continue
+        if ay:
+            if oy < y0 or oy > y1:
+                continue
+        else:
+            t1, t2 = (y0 - oy) / dy, (y1 - oy) / dy
+            if t1 > t2:
+                t1, t2 = t2, t1
+            if t1 > tmin:
+                tmin = t1
+            if t2 < tmax:
+                tmax = t2
+            if tmin > tmax:
+                continue
+        if az:
+            if oz < z0 or oz > z1:
+                continue
+        else:
+            t1, t2 = (z0 - oz) / dz, (z1 - oz) / dz
+            if t1 > t2:
+                t1, t2 = t2, t1
+            if t1 > tmin:
+                tmin = t1
+            if t2 < tmax:
+                tmax = t2
+            if tmin > tmax:
+                continue
+        if tmin > 0.02 and (best is None or tmin < best):
             best, who = tmin, name
     return best, who
 

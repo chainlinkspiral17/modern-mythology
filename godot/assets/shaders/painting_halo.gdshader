@@ -38,6 +38,16 @@ vec2 mirror_uv(vec2 uv) {
 	return mix(m, 2.0 - m, step(1.0, m));
 }
 
+// (pass 381) the panel's own fade: CgPanel fades itself in and out by
+// modulate, and this pass wrote COLOR outright, so on a wide screen the
+// halo popped while the picture faded (the 3D portrait shader's flaw,
+// pass 380; shader_modulate_audit holds the rest).
+varying vec4 v_mod;
+
+void vertex() {
+	v_mod = COLOR;
+}
+
 void fragment() {
 	vec2 rel = (UV - img_rect.xy) / max(img_rect.zw, vec2(1e-4));
 	// signed distance to the painting's edge, in screen-width units
@@ -66,5 +76,5 @@ void fragment() {
 	// the trip's hue rides the margins: drifting with the music's register
 	col = mix(col, hue_shift(col, hue + flow * 0.01 + far * 0.08), 0.55 * trip);
 	col *= dim * (1.0 + energy * 0.25 * trip) * mix(1.0, 0.72, far);
-	COLOR = vec4(col, a);
+	COLOR = vec4(col, a) * v_mod;
 }

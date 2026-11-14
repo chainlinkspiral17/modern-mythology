@@ -158,6 +158,18 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · a suite nobody can time grows until nobody runs it (pass 381)
+- The suite's log had no clock. One gate went from a few minutes to
+  forty as the crowd passes multiplied its boxes, and the only sign was
+  "the suite takes two hours now". `run_all_audits.sh` stamps every
+  header with `t+${SECONDS}s`; read the gaps after any pass that adds
+  geometry in bulk.
+- In a per-ray, per-box loop, nothing but arithmetic: name tests
+  (`IGNORE.search`, `PASSABLE.search`) belong in a list built once per
+  box list (`_solid`), keyed by the list's identity and length.
+- Prove a speed-up changes nothing: run the old file and the new one
+  with `--all` on several sets and `cmp` the output.
+
 ### 2026-11-14 · a face gate reads per shell, and a baseline is a list to read, not a number to hold (pass 379)
 - `winding_audit` asked for the WHOLE mesh to be closed and its total
   volume negative. Three blind spots, each large: a shell with only some

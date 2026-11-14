@@ -3835,6 +3835,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 381: the suite in 13 minutes, not two hours; a gate for shaders that drop fades.**
+- The scoped suite had grown from about 80 minutes to over two hours
+  ("audit taking over an hour for simple fixes", 10-13 — and it had crept
+  back). Every gate header now prints the suite's elapsed seconds, which
+  showed the whole of it: `vantage_obstruction_audit --markers` alone was
+  forty minutes. Its ray cast ran two pattern matches on every box for
+  every ray (200 rays a marker, 3,000 boxes in a crowded set, 4,000
+  markers), and the crowds of passes 373–378 had multiplied the boxes.
+  The boxes a ray can hit are now worked out once per set with their
+  bounds: 142 s for every set, output byte-identical on six sets read
+  both ways. The full suite: 766 s.
+- **`shader_modulate_audit`** (new gate): a canvas shader that assigns
+  COLOR must carry the vertex colour (`v_mod`) or be listed as a screen
+  pass with what it is drawn on. 22 shaders read; 15 are full-screen
+  passes nothing fades by modulate (listed, each with its surface); the
+  portrait shader (fixed in 380) and one more were the real ones —
+  `painting_halo`: on a wide screen the halo round a picture panel popped
+  while the panel faded. Fixed. The gate flags the old portrait shader
+  (checked by putting the flaw back).
+- NEXT: the slowest gates left are furniture_grammar (171 s), the
+  sightlines (141 s), the dry run (133 s), doorways (58 s); perf_gate's
+  Godot runs when builders change are the next long pole and are not
+  stamped yet (they run in the scoped pre-phase).
+
 **2026-11-14 · pass 380: 3D portraits never faded or stepped back; 25 more frames given their line.**
 - **The cast's shader threw away every fade.** Reading the frame for "The
   crow landed, instead, on the traffic light" (vol 5 ch18): Nicola's
