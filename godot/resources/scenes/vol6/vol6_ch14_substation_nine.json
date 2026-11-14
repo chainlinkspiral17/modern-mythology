@@ -738,7 +738,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse, in the garage, with the order written on the back of the flyer in Nate's handwriting, registers — with the small careful attention that he has, all summer, been giving to things that are not, technically,",
+   "text": "[shot:insert flyer]Jesse, in the garage, with the order written on the back of the flyer in Nate's handwriting, registers — with the small careful attention that he has, all summer, been giving to things that are not, technically,",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/130.ogg"
   },
   {
@@ -906,7 +906,7 @@
   },
   {
    "t": "narrate",
-   "text": "He gets in the Civic. He drives home.",
+   "text": "[shot:insert civic]He gets in the Civic. He drives home.",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/160.mp3"
   },
   {

@@ -413,16 +413,20 @@ rotation = Vector3(-0.0320, -0.6947, 0.0)
 metadata/fov = 42.0
 
 ; insert (driveway): the Civic, loaded
+; (pass 370) from the lawn on the street lamp's side: its lit flank, the open bay beyond (3 m off
+; its dark east side the car was a black slab)
 [node name="shot_insert_civic__nate_driveway" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.200, 1.400, 2.200)
-rotation = Vector3(-0.1945, 1.9757, 0.0)
-metadata/fov = 40.0
+position = Vector3(-4.600, 1.500, 5.600)
+rotation = Vector3(-0.1860, -0.9380, 0.0)
+metadata/fov = 46.0
 
 ; insert: the flyer on Amp_0, the set order on its back
+; (pass 370) square to the grille (it stood 62 degrees off the sheet's face — and the sheet was
+; inside the grille)
 [node name="shot_insert_flyer" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.200, 1.100, -5.200)
-rotation = Vector3(-0.6447, 0.9254, 0.0)
-metadata/fov = 40.0
+position = Vector3(-1.750, 0.750, -4.750)
+rotation = Vector3(-0.3817, 0.2709, 0.0)
+metadata/fov = 36.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_bass__nate_driveway" type="Marker3D" parent="." groups=["vn_shot"]]

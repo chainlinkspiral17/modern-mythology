@@ -158,8 +158,13 @@ def build_finished_room():
     make_box("Box_Fan_Foot_W", (-0.45, 4.25, 0.015), (0.06, 0.22, 0.03), (0.60, 0.60, 0.58, 1.0))
     make_box("Box_Fan_Foot_E", (-0.05, 4.25, 0.015), (0.06, 0.22, 0.03), (0.60, 0.60, 0.58, 1.0))
     # the Foxhole flyer, the set order on its back in Nate's hand, taped to Amp_0's grille
-    make_box("Flyer", (-2.05, 5.835, 0.30), (0.22, 0.004, 0.28), (0.90, 0.88, 0.80, 1.0))
-    make_box("Flyer_Tape", (-2.05, 5.832, 0.45), (0.06, 0.003, 0.03), (0.86, 0.84, 0.70, 0.8))
+    # (pass 370) ON the grille: at y 5.835 the sheet lay INSIDE the grille's
+    # 2 cm slab (5.83..5.85) and had never been seen — a sheet 4 mm thick
+    # is under prop_overlap's depth floor. Its face is 3 mm proud now.
+    make_box("Flyer", (-2.05, 5.826, 0.30), (0.22, 0.004, 0.28), (0.90, 0.88, 0.80, 1.0))
+    make_box("Flyer_Tape", (-2.05, 5.8225, 0.45), (0.06, 0.003, 0.03), (0.86, 0.84, 0.70, 0.8))
+    for k, zz in enumerate((0.38, 0.34, 0.30, 0.26, 0.22)):      # the set order, five lines in ballpoint
+        make_box(f"Flyer_Line_{k}", (-2.05 - 0.01 * (k % 2), 5.8235, zz), (0.15 - 0.02 * (k % 3), 0.001, 0.008), (0.16, 0.18, 0.34, 1.0))
     # the power strip and the cable run along the N wall's base
     make_box("Power_Strip", (0.6, ROOM_D - 0.10 - 0.05, 0.03), (0.34, 0.06, 0.05), (0.86, 0.86, 0.84, 1.0))
 

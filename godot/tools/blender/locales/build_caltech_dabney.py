@@ -474,8 +474,16 @@ def build_game_room():
     couch("Couch_Right", 67.80, 6.40, 2.6, "+Y")
     # controllers where the players dropped them: at the feet of the front
     # couches, their cables toward the decks
+    # (pass 370) the pads were near-black on a dark carpet — `insert controller`
+    # read as nothing. Console grey, and the two at the couches' feet trail
+    # their cables to the decks ("their cables toward the decks" was a comment
+    # with no cable).
     for k, (x, y, yaw) in enumerate(((63.9, 7.35, 0.4), (67.2, 7.50, -0.9), (65.7, 5.30, 2.1))):
-        make_rot_box(f"Controller_{k}", (x, y, 0.016), (0.15, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0), yaw=yaw)
+        make_rot_box(f"Controller_{k}", (x, y, 0.016), (0.15, 0.10, 0.03), (0.50, 0.50, 0.54, 1.0), yaw=yaw)
+        make_rot_box(f"Controller_{k}_Pad", (x, y, 0.033), (0.05, 0.05, 0.006), (0.16, 0.16, 0.18, 1.0), yaw=yaw)
+    for k, (x0_, y0_, x1_) in enumerate(((63.93, 7.42, 64.1), (67.22, 7.57, 67.3))):
+        make_box(f"Controller_{k}_Cable", ((x0_ + x1_) / 2.0, (y0_ + sy - 0.62) / 2.0, 0.005), (abs(x1_ - x0_) + 0.008, sy - 0.62 - y0_, 0.008),
+                 (0.10, 0.10, 0.11, 1.0))
     make_rot_box("Controller_Couch", (cx - 1.1, 3.90, 0.455), (0.15, 0.10, 0.03), (0.30, 0.30, 0.34, 1.0), yaw=0.3)
     make_box("Andy_Notebook", (cx + 0.6, 3.92, 0.455), (0.18, 0.24, 0.03), (0.16, 0.20, 0.30, 1.0))
     # the refrigerators down the E wall: big, industrial, glass doors, drinks

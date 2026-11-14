@@ -42,7 +42,7 @@ import wrong_room_audit as W  # noqa: E402
 GODOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SCENES = os.path.join(GODOT, "resources", "scenes")
 CUE = re.compile(r"\[shot:(\w+)\s+(\w+)~?\]")
-CEILING = 133       # 2026-11-13, pass 368 (223 at the first count; 367: 39 cued; 368: 12 cued, 42 dead ones deleted)
+CEILING = 130       # 2026-11-13, pass 370 (223 at the first count; 367: 39 cued; 368: 12 cued, 42 dead deleted; 370: 3 lit and cued)
 
 
 def survey():

@@ -206,6 +206,15 @@ light_energy = 0.9
 shadow_enabled = false
 omni_range = 3.6
 
+; (pass 370) the screens' light on the carpet at the left couch's feet, where a pad lies
+; ("Controllers strewn about"): the wall glow reached it at a grazing angle only
+[node name="Screen_Spill_Floor__dabney_game_room" type="OmniLight3D" parent="."]
+position = Vector3(64.100, 0.900, -7.700)
+light_color = Color(0.66, 0.74, 1.0, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 2.2
+
 [node name="Screen_Spill_Couch__dabney_couch_carving" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 1.0, -4.9)
 light_color = Color(0.62, 0.68, 0.96, 1)
@@ -513,10 +522,13 @@ position = Vector3(69.300, 1.350, -1.500)
 rotation = Vector3(-0.0500, -0.9300, 0.0)
 metadata/fov = 50.0
 
+; (pass 370) "Controllers strewn about": down from the left couch's edge onto the pad on the
+; carpet, its cable running off toward the decks (it looked along the back couch in the dark;
+; a wider try put the pad under the text box)
 [node name="shot_insert_controller__dabney_game_room" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(65.692, 0.667, -3.901)
-rotation = Vector3(-0.2618, 1.5720, 0.0)
-metadata/fov = 35.0
+position = Vector3(64.250, 0.550, -6.950)
+rotation = Vector3(-0.8727, 0.7188, 0.0)
+metadata/fov = 40.0
 
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_hallways__caltech_tunnels" type="Marker3D" parent="." groups=["vn_shot"]]
