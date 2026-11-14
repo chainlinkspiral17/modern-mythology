@@ -388,6 +388,38 @@ def install_stubs():
         sys.modules["_props." + real_mod] = real
         setattr(pkg, real_mod, real)
         exec(compile(open(mpath).read(), mpath, "exec"), real.__dict__)
+    # (pass 376) THE OTHER PEOPLE. human_sculpt.human_figure builds a person
+    # straight on bpy, past every recorder: Graustark's street people, the
+    # parishioners at St. Jude, Harmony Creek's neighbours and the New
+    # Orleans office's were invisible to every gate — a figure in front of
+    # a lens, in a doorway or through a table was nobody's finding. Each is
+    # recorded as a standing person: two legs, a torso, a head.
+    heights = {"male_avg": 1.80, "male_tall": 1.90, "male_heavy": 1.74, "female_avg": 1.66,
+               "female_slim": 1.68, "teen": 1.66, "child": 1.10, "elderly": 1.66}
+
+    def _rec_human(name, base_x, base_y, base_z, scale=1.0, facing='-Y', body_type='male_avg', *a, **k):
+        h = heights.get(str(body_type), 1.75) * float(scale)
+        x, y, z = float(base_x), float(base_y), float(base_z)
+        wide = (0.28 if str(body_type) == "male_heavy" else 0.22) * float(scale)
+        deep = 0.13 * float(scale)
+        across_y = str(facing).upper().lstrip('+-') == 'X'      # the shoulders run across the way they face
+        hx, hy = (deep, wide) if across_y else (wide, deep)
+        ox, oy = (0.0, 0.09 * float(scale)) if across_y else (0.09 * float(scale), 0.0)
+        leg_h = 0.47 * h
+        for side, sg in (("L", -1.0), ("R", 1.0)):
+            BOXES.append(("%s_Leg_%s" % (name, side), (x + sg * ox, y + sg * oy, z + leg_h / 2.0),
+                          (0.075 * float(scale), 0.075 * float(scale), leg_h / 2.0)))
+        BOXES.append(("%s_Torso" % name, (x, y, z + leg_h + 0.175 * h), (hx, hy, 0.175 * h)))
+        BOXES.append(("%s_Head" % name, (x, y, z + 0.91 * h), (0.11 * float(scale), 0.11 * float(scale), 0.09 * h)))
+        px, py = (0.0, 0.26 * float(scale)) if across_y else (0.26 * float(scale), 0.0)
+        return {"hands": {"L": (x - px, y - py, z + 0.46 * h), "R": (x + px, y + py, z + 0.46 * h)},
+                "head_base_z": z + 0.86 * h, "shoulder_z": z + 0.80 * h}
+
+    for hs_name in ("human_sculpt", "human_sculpt_v2"):
+        hs = _Any(hs_name)
+        hs.human_figure = _rec_human
+        hs.PROP = {}
+        sys.modules[hs_name] = hs
     global STUBS_ON
     STUBS_ON = True
 

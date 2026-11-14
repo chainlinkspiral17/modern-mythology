@@ -158,6 +158,19 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · anything built straight on bpy is invisible until the stubs record it (pass 376)
+- The recorders stand in for `_props` helpers. A module that makes meshes
+  with `bpy.data.meshes.new` itself (human_sculpt) leaves nothing in
+  BOXES: thirty-odd people in three sets had never been in any gate's
+  list. `install_stubs` gives such a module a recorder of its own (a
+  person as legs, torso, head). When a builder imports a helper from
+  outside `_props`, check that something records what it makes.
+- The first run of a gate over newly recorded parts is a find list, not a
+  regression: eight figures had stood inside walls and a deck since they
+  were placed. Read each; they are real.
+- A face frame's subject is near the lens. A cue's name can match a part
+  across a 900 m set; closeups look within 30 m.
+
 ### 2026-11-14 · a gate that passes on what it did not build has told you nothing (pass 375)
 - A new `_props` module that a builder CALLS INTO (a context manager, a
   class, anything that is not a `make_*` recorder) must be on

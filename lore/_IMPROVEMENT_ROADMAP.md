@@ -3835,6 +3835,49 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 376: the people the gates could not see — eight of them were inside walls.**
+- `human_sculpt.human_figure` (Graustark's street people and band, the
+  parishioners at St. Jude, Harmony Creek's neighbours, the New Orleans
+  office) builds a person straight on bpy, past every recorder the
+  audits have. No gate had ever seen one of them: a figure in front of a
+  lens, in a doorway or inside a wall was nobody's finding. The audit
+  stubs now record each as a standing person (two legs, a torso, a head).
+- With them recorded the overlap gate found, in Graustark: the two patrons
+  of Daigle's half a metre INSIDE the bar's wall (never seen — now either
+  side of its door, clear of the window pictures); the ice plant's worker
+  two metres inside the plant (now on its truck dock); the carnival's
+  caretaker inside his ticket booth's solid box (beside it); the frog
+  shop's owner in the shop's wall (outside by his door); and the
+  bandstand's three players standing THROUGH its deck to the shin (on it
+  now — `NPC_STAND_ON`, for a figure that stands on something). In Harmony
+  Creek: the diner's patron stood through a stool, Maya in the copier.
+  Overlap 30 + 3 → 0.
+- No frame was blocked by one of them (aim and sightlines over all 1,922
+  frames: clean). One false subject: the frog's `closeup` "aimed" at the
+  frog shop's owner 438 m away once he was recorded — a face frame's
+  subject is now looked for within 30 m.
+- The crowd report (crowd_line_audit) counts these people too now, so
+  St. Jude reads its four parishioners.
+- **harmony_terrain was never under the draw-call gate and is at 3,837
+  (the cap is 2,000).** Touching its builder put it in front of the gate
+  for the first time. Six vol 6 views use it. Its number is recorded as
+  its baseline so it cannot grow, which is not the same as fixed: a perf
+  pass is owed (16,584 parts; what the load-time merge leaves separate
+  and why — the Foxhole's answer was one mesh a figure).
+- Rebuilding harmony_terrain here for the first time since 11-09 showed
+  one more inside-out mesh than its baseline: the diner's wall clock, from
+  the Y-axis disc helper written that day (the circle put in XZ mirrors
+  it; the upright cylinder's face order turned it inside-out). Rewound.
+  The baseline had held because the set file here was older than the
+  builder: **a gate that reads GLBs is only as current as the last
+  rebuild** — rebuild a set when its builder changes, in the same pass.
+- Deck must REBUILD graustark and harmony_terrain.
+- NEXT: the recorder knows `pose='standing'` only (a seated or leaning
+  human_figure is recorded upright); St. Jude's "small crowd leaving the
+  service" is four people and Maya's father "talking to some men near the
+  church steps" is not among them; Graustark's 37 extras have never been
+  read by render where a vol 5 frame can see them.
+
 **2026-11-14 · pass 375: THE SHOW — a hundred and ten people at The Foxhole; the audits had been building the room without them.**
 - Found by a scan made for it: every line that names a crowd, against the
   figures in its view. vol6_ch22_foxhole — "a room of about a hundred and

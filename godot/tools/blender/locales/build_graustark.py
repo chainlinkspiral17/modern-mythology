@@ -4330,6 +4330,18 @@ TIER_1_LABELS = {
 # Spawn list — every entry is (label, x, y, facing, body_type).
 # Palette is picked from position seed so the layout is
 # deterministic. Total ~28 humans distributed across town zones.
+# (pass 376) THE GATES COULD NOT SEE THESE PEOPLE. human_sculpt builds a
+# figure straight on bpy, past the audits' recorders: with them recorded
+# the overlap gate found eight standing inside a building's box or to the
+# knees in a deck. A label here stands ON something: (x, y) of the thing's
+# own ground reference, and its height above that ground.
+NPC_STAND_ON = {
+    "Band_horn": (-150.0, 120.0, 0.50),         # the bandstand's deck (they stood through it)
+    "Band_bass": (-150.0, 120.0, 0.50),
+    "Band_drums": (-150.0, 120.0, 0.50),
+    "Star_IceCo_worker": (180.0, -300.0, 1.20),  # the ice plant's truck dock
+}
+
 NPC_SPAWNS = [
     # ── Town square (courthouse + bandstand + sun garden) ──
     ("TS_visitor_1",     -130.0, +230.0, '-Y', 'male_avg'),
@@ -4371,13 +4383,15 @@ NPC_SPAWNS = [
     # quarter, out of Joanna's frames (she lives alone with the animals).
     ("Hermit_keeper",    +24.0, -388.0,  '+X', 'elderly'),
     # ── Daigle's roadhouse patrons (outside) ──
-    ("Daigle_patron1",   +256.0, -384.0, '+Y', 'male_heavy'),
-    ("Daigle_patron2",   +264.0, -384.0, '+Y', 'male_tall'),
+    # (pass 376) outside, either side of the door: at y -384.0 they stood half a metre INSIDE
+    # the bar's wall, behind its windows' pictures, and were never seen
+    ("Daigle_patron1",   +258.3, -385.5, '+X', 'male_heavy'),
+    ("Daigle_patron2",   +261.6, -385.7, '-X', 'male_tall'),
     # ── Drive-in lot ──
     ("DriveIn_couple_1", -500.0, +192.0, '+Y', 'male_avg'),
     ("DriveIn_couple_2", -498.0, +192.0, '+Y', 'female_avg'),
     # ── Carnival caretaker ──
-    ("Carnival_caretaker", -474.0, +400.0, '+X', 'elderly'),
+    ("Carnival_caretaker", -472.2, +400.0, '+X', 'elderly'),     # (pass 376) beside the booth: he stood inside its solid box
     # ── Magician cathedral approach ──
     ("Cath_visitor",      +318.5, +372.0, '-X', 'male_avg'),
     # ── Church entrance ──
@@ -4389,7 +4403,7 @@ NPC_SPAWNS = [
     ("Church_priest",    -202.0, +178.1, '-Y', 'elderly'),
     ("Church_attendee",  -197.6, +178.1, '-X', 'female_avg'),
     # ── Frog shop owner ──
-    ("Frog_owner",       +152.0, +296.0, '-Y', 'male_heavy'),
+    ("Frog_owner",       +151.3, +294.5, '-Y', 'male_heavy'),    # (pass 376) outside by his door (he stood in the shop's wall)
     # ── Gas station attendant + customer ──
     ("Garage_attendant", -180.0, -158.0, '+Y', 'male_avg'),
     ("Garage_customer",  -178.0, -166.0, '-Y', 'female_slim'),
@@ -4414,7 +4428,7 @@ NPC_SPAWNS = [
     ("Montreal_walker1", +480.0, +320.0, '-Y', 'female_slim'),
     ("Montreal_walker2", +486.0, +318.0, '-Y', 'elderly'),
     # ── Ice plant worker on the dock ──
-    ("Star_IceCo_worker", +186.0, -304.0, '-X', 'male_avg'),
+    ("Star_IceCo_worker", +186.0, -308.0, '-Y', 'male_avg'),     # (pass 376) on the truck dock (NPC_STAND_ON); he stood 2 m inside the plant's wall
     # ── Old Armory steps ──
     ("Armory_visitor",   +200.0, -322.0, '+Y', 'male_avg'),
     # ── Boat dock / RF parking lot (extras for atmosphere) ──
@@ -4792,6 +4806,9 @@ def build_district_characters_and_props():
     placed_hero = placed_planar = placed_prim = failed = 0
     for label, x, y, facing, body_type in NPC_SPAWNS:
         z = RUIN_FILL_Z if _in_ruin_fill(x, y) else graustark_elevation(x, y)
+        if label in NPC_STAND_ON:
+            _rx, _ry, _hh = NPC_STAND_ON[label]
+            z = graustark_elevation(_rx, _ry) + _hh
         try:
             # 1. Hero GLB
             if label in HERO_GLB_PATHS:

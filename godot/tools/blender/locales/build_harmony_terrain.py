@@ -8097,7 +8097,7 @@ def build_commercial_cluster():
             (0.92, 0.92, 0.86, 1.0), (0.32, 0.18, 0.32, 1.0),
             "arms_crossed", SKIN_LIGHT, "full", 'elderly'),
         # Maya Daigle — 16yo
-        ("Maya",     cc_x + 3.0, cc_y + 2.5, 0.92, "bowl",
+        ("Maya",     cc_x + 3.0, cc_y + 2.35, 0.92, "bowl",     # (pass 376) a hand's width off the copier she stood in
             (0.40, 0.18, 0.42, 1.0), (0.20, 0.20, 0.24, 1.0),
             "hands_on_counter", SKIN_LIGHT, "none", 'teen'),
     ]
@@ -8134,7 +8134,7 @@ def build_commercial_cluster():
             (0.42, 0.65, 0.32, 1.0), (0.32, 0.18, 0.32, 1.0),
             "standing", 'child', SKIN_LIGHT),
         # Diner patron — older guy at the counter.
-        ("DinerPatron", dn_x - 2.0, dn_y + 0.6, '+Y', 1.0, "cap",
+        ("DinerPatron", dn_x - 1.0, dn_y + 0.6, '+Y', 1.0, "cap",     # (pass 376) between two stools: he stood through one
             (0.62, 0.42, 0.78, 1.0), (0.18, 0.22, 0.30, 1.0),
             "hands_on_counter", 'male_heavy', SKIN_LIGHT),
         # Cosmic Comics browser — older woman.
@@ -8605,12 +8605,15 @@ def _make_cyl_y_local(name, center, radius, depth, color, segments=12):
         for i in range(segments):
             ang = 2.0 * math.pi * i / segments
             verts.append((cx + math.cos(ang) * radius, cy + y_off, cz + math.sin(ang) * radius))
+    # (pass 376) wound the other way from the upright cylinder: putting the
+    # circle in XZ mirrors it, and with the upright's face order the disc
+    # was inside-out (winding_audit, once the set was rebuilt)
     faces = []
     for i in range(segments):
         ni = (i + 1) % segments
-        faces.append([i, ni, ni + segments, i + segments])
-    faces.append(list(reversed(range(segments))))
-    faces.append(list(range(segments, segments * 2)))
+        faces.append([i, i + segments, ni + segments, ni])
+    faces.append(list(range(segments)))
+    faces.append(list(reversed(range(segments, segments * 2))))
     return _finalize_mesh(name, verts, faces, color)
 
 

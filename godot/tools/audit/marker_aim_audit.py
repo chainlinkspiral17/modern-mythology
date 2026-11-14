@@ -331,6 +331,13 @@ def main():
                 if m.group(1) == "closeup" and cue_id in PERSON_CUES:
                     # her things are not her (Lena_Phone_Screen)
                     hits = []
+                if m.group(1) == "closeup":
+                    # (pass 376) a face frame's subject stands in front of it: a
+                    # part of that name across town is someone else (the frog's
+                    # closeup "aimed" at the frog shop's owner, 438 m away, once
+                    # the stubs recorded Graustark's street people)
+                    hits = [h for h in hits
+                            if sum((a - b) ** 2 for a, b in zip(h[1], pos)) ** 0.5 <= 30.0]
                 if "__" in m.group(2):
                     # A per-preset marker frames its preset's AREA. The
                     # ruins' `child` frame is a face at the ruins; the

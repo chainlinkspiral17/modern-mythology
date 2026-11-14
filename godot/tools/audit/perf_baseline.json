@@ -195,6 +195,11 @@
   "prims": 59628,
   "objects": 274
  },
+ "harmony_terrain": {
+  "draw": 3837,
+  "prims": 761070,
+  "objects": 4697
+ },
  "henderson_garage": {
   "draw": 226,
   "prims": 58768,
@@ -339,9 +344,9 @@
   "objects": 244
  },
  "new_orleans_office": {
-  "draw": 108,
-  "prims": 18048,
-  "objects": 278
+  "draw": 80,
+  "prims": 16940,
+  "objects": 98
  },
  "new_orleans_room": {
   "draw": 160,
