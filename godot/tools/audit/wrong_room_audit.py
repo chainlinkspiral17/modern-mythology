@@ -77,6 +77,7 @@ _DIORAMA = "the Estuary 7 diorama: its parts, from above"
 _KESTREL = "Kestrel Mountain is one walk on several terraces"
 # (preset, marker): why — each read by render (pass 366) and kept.
 KEPT_INSERT = {
+    ("diner_interior", "shot_insert_jukebox"): "the jukebox stands in the alcove through the diner's west door (blender y +5); the formal room is y -6..-1 — nearest camera, not the same room (pass 380)",
     ("graustark_wreck", "shot_insert_notebook"): "Sofia's notebook in Rio — no set of its own; the shotgun house's notebook stands in",
     ("graustark_wreck", "shot_insert_smoke_ring"): "the Frog on the bank over the wreck",
     ("graustark_ruins", "shot_insert_sinkhole"): "the sinkhole, across the ruins",

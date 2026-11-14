@@ -1064,8 +1064,18 @@ func set_insert_quiet(on: bool) -> void:
 	# eased, slowly enough to read as one move with the cut; the cast stands
 	# at the edges of the centre band, so the object in the middle stays
 	# clear.
+	# (pass 380) ...unless one of them stands in the centre: that figure is
+	# over the object itself (vol 5 ch18: Nicola's face across the crow on
+	# the traffic light, at 32 %). With a figure in the centre slot the cast
+	# steps all the way out for the insert. The fade is real now (the 3D
+	# portrait's shader used to drop it), so this is an eased 0.6 s, not the
+	# blink the 2026-11-08 note describes.
+	var quiet_to: float = INSERT_QUIET_ALPHA
+	var centre = _slots.get("center")
+	if centre != null and centre["node"] != null and is_instance_valid(centre["node"]):
+		quiet_to = 0.0
 	_quiet_tw = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	_quiet_tw.tween_property(self, "modulate:a", INSERT_QUIET_ALPHA if on else 1.0, 0.6 if on else 0.5)
+	_quiet_tw.tween_property(self, "modulate:a", quiet_to if on else 1.0, 0.6 if on else 0.5)
 
 
 func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:
@@ -1419,6 +1429,14 @@ func activate_speaker(char_name: String) -> void:
 			target_mod   = Color(0.74, 0.77, 0.84, INACTIVE_ALPHA)
 			target_scale = INACTIVE_SCALE
 			node.z_index = 0
+		# (pass 380) A 3D figure's shader threw every modulate away until
+		# now, so the listener's dim (and its 55 % alpha: the room showing
+		# through a figure with no card behind it) has never been seen on
+		# the painted cast. The shader keeps modulate now, for the fades;
+		# the look the cast has had stays as it was — no dim, fully solid.
+		# Whether a listener should recede is the user's call.
+		if node.has_meta("portrait3d"):
+			target_mod = Color(1.0, 1.0, 1.0, 1.0)
 		node.pivot_offset = Vector2(SPRITE_W * 0.5, SPRITE_H * 0.5)
 		# Target figure_holder (not the wrapper) so the dimming only
 		# affects the figure — the static backdrop and scrim behind it
@@ -2272,6 +2290,15 @@ func _apply_texture_tint(wrapper: Control, expr: String) -> void:
 		return
 	var tint_holder: Control = wrapper.get_meta("tint") as Control
 	if tint_holder == null:
+		return
+	if wrapper.has_meta("portrait3d"):
+		# (pass 380) the flat colour per expression (sad 0.72/0.82/1.00,
+		# angry 1.00/0.55/0.50) was made for the mono card portraits. It was
+		# layered on the 3D render "for consistency" and never showed (the
+		# portrait shader dropped modulate). Now that it would: Portrait3D's
+		# own mood table already carries the expression in light, camera
+		# and motion, and a watercolour face multiplied to red is not that.
+		tint_holder.modulate = Color.WHITE
 		return
 	tint_holder.modulate = EXPR_TINTS.get(expr, EXPR_TINTS["neutral"])
 

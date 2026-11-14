@@ -3835,6 +3835,63 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 380: 3D portraits never faded or stepped back; 25 more frames given their line.**
+- **The cast's shader threw away every fade.** Reading the frame for "The
+  crow landed, instead, on the traffic light" (vol 5 ch18): Nicola's
+  portrait stood at full strength over the crow. The layer WAS at 32 %
+  (pass 10-28's "portraits step back on an insert") — the portrait did
+  not care. `portrait_demon_static.gdshader` writes COLOR on all three of
+  its paths, which drops the node's modulate and everything above it. So
+  on a 3D portrait nothing the game set by modulate has ever shown: not
+  the 0.35 s fade in, not the fade out, not the step back. They popped in,
+  popped out, and stood over every insert — the user's "portraits still
+  just cutting out and not transitioning smoothly" (11-08) and "a portrait
+  card stood over the object" (10-28) were this, both times answered by
+  changing tween numbers that could not be seen.
+  - The shader carries the modulate across now (`v_mod`, as
+    `trip_sync.gdshader` already did).
+  - What that would ALSO have switched on, and is kept off: the flat
+    colour wash per expression (angry = ×(1.00, 0.55, 0.50), made for the
+    mono card portraits) and the listener's dim to 55 % alpha. Neither
+    has ever been seen on the painted cast; the look stays as it was.
+    **The user's call:** should a listener recede (a cool tint, solid)?
+  - A figure in the CENTRE slot steps all the way out for an insert (at
+    32 % its face lay across the object); side figures stay at 32 %.
+  - An insert cut still waiting on its set to load counts as an insert
+    (`insert_showing`), so the first line under a new background quiets
+    the cast too.
+- **Frames nobody saw (draft 4 of that sweep): 130 → 105.** 28 lines read
+  for the frames built for them; each rendered and read; 25 kept:
+  the jukebox (ch0), the set list taped up at the Foxhole, the wall of
+  decks, three kitchens' tables where a hand takes a hand, the one-way
+  glass at Cosmic, Jesse's desk drawer, the creek stones on the cabin
+  road, the grandmother's lit window and her quilt, Sam's bed, the
+  scoreboard, the picnic table at the lay-by, the five Doug pushes across,
+  Centro's meat case and back office, the Hendersons' basement door, the
+  blanket Petra brings, the dumpster, Coach K's curtain, Graciela's
+  curtain and crucifix, the Frog's tobacco tin, Finn's paper bag, and the
+  crow on the traffic light (moved from a line where it had already flown;
+  the next line cuts back wide).
+  - Three re-aimed: Sam's bed (it framed a bed leg), the scoreboard (four
+    orange blocks from 3 m; now the whole board from the field), the
+    dumpster (two green planes; pulled back).
+  - Three cues taken back out, frames too dark to read: the crumpled
+    barn's lean, Nick's grandma's recliner, Finn's nightstand at 4:42.
+- Not cued, and why: the Board Lords crow rides the truck's cab roof but
+  the text has it "on the dashboard" (the kit truck is a solid body: no
+  cab to put it in); Finn's plate and sandwich are on his table in a
+  chapter where he has forgotten to eat and Kai takes him out (a prop the
+  text does not have); the "second letter" on the grandmother's table is
+  thought about at Centro, never laid down in the kitchen; Lena's easel
+  canvas against "It's a big piece. Six by eight." in "your studio".
+- NEXT: 105 frames left (about 45 belong to chapters not on this branch);
+  the three dark frames want light, not a cue; an insert holds while the
+  next lines still name its subject — after "Then it took off" the crow
+  would have sat there three more lines without the cut back (a rule for
+  the hold: leave when the line says the subject left); Deck-check the
+  fades at speed (skip mode kills tweens — does a portrait ever stay at
+  alpha 0 now that alpha counts?).
+
 **2026-11-14 · pass 379: parts drawn inside-out — 3,963 of them, in 117 of 169 sets.**
 - Pass 377's figures (torso and skull wound inward) were one case of a
   class the winding gate had held under a baseline since pass 254: 841

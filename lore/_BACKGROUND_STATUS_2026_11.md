@@ -216,6 +216,9 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **the cast, every chapter — pass 380 (2026-11-14).** 3D portraits never faded in or out and never stepped
+  back for a close-up of an object: their shader dropped the game's dimming. Fixed; the painted look itself is
+  unchanged. 25 more unused close-up frames given their lines (105 left), three re-aimed.
 - **every set — pass 379 (2026-11-14), parts drawn inside-out.** 3,963 closed parts in 117 of the 169 sets
   were wound inward (drawn by their far inner faces, lit from behind): car wheels, church and house roofs, the
   cabin's berms and ferns, a hill, a river bank, window arches, lamp shades, chair and table legs. One step at

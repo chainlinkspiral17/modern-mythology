@@ -392,10 +392,11 @@ rotation = Vector3(-0.0498, -1.9451, 0.0)
 metadata/fov = 45.0
 
 ; the bed, the sheets pushed aside (vol6 ch0)
+; (pass 380) re-aimed: it looked straight down at a bed leg and the rug; now from the foot, down the sheet to the pillows
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.350, 1.350, -2.550)
-rotation = Vector3(-0.9547, 0.7923, 0.0)
-metadata/fov = 42.0
+position = Vector3(0.450, 1.600, -2.750)
+rotation = Vector3(-0.4516, 1.1723, 0.0)
+metadata/fov = 50.0
 
 ; ── named closeup (pass 87): Sam at the desk with the WEDNESDAY LIST (the plain pair frames the bed)
 ; closeup: Sam at the desk chair, from the north-west across the desk corner (from the west the E wall filled the frame)

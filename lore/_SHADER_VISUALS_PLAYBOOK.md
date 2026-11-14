@@ -242,6 +242,22 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-11-14 · a canvas shader that writes COLOR drops the node's modulate (pass 380)
+- In a `canvas_item` fragment, assigning `COLOR = …` discards the vertex
+  colour — which is where a node's `modulate`, `self_modulate` and every
+  ancestor's arrive. Every tween on `modulate:a` above such a node does
+  nothing you can see. The 3D portrait shader did this on all three
+  paths: the cast never faded, never dimmed, never stepped back.
+- Carry it: `varying vec4 v_mod; void vertex() { v_mod = COLOR; }` and
+  multiply each output by `v_mod`. Do not multiply by the fragment's
+  incoming COLOR — it already has TEXTURE folded in.
+- When a shader starts honouring modulate, read what ELSE was being set
+  on that subtree and never showing (here: an expression colour wash and
+  a 55 % listener alpha). Decide each one; do not let them switch on by
+  accident.
+- A fix made by changing tween numbers must be SEEN to change the frame.
+  Two earlier passes tuned a dim that could not render.
+
 ### 2026-11-08 · every screen shape: px_scale, the wide VN, the painting's halo
 
 - **Pixel lengths are DESIGN pixels.** The painted / ASCII / dither shaders

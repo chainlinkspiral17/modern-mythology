@@ -383,7 +383,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pushes a five across the table.",
+      "text": "[shot:insert five]He pushes a five across the table.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/072.mp3"
     },
     {
@@ -1221,7 +1221,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available.",
+      "text": "[shot:insert table]He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available.",
       "voice": "assets/audio/voice/vol6_ch16_el_rancho/219.mp3"
     },
     {

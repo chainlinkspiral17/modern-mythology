@@ -1007,7 +1007,13 @@ func featured_key() -> String:
 
 
 func insert_showing() -> bool:
-	return _insert_left > 0 or not _art_return.is_empty()
+	# (pass 380) an insert cut still waiting on the set to load is an insert
+	# too: the first line under a new background asked before the cut
+	# landed, was told "no", and the portraits stood at full strength over
+	# the object the line cut to (vol 5 ch18: the crow on the traffic light,
+	# behind Natalie)
+	return _insert_left > 0 or not _art_return.is_empty() \
+		or _pending_shot.to_lower().begins_with("insert")
 
 
 ## Every text line passes here before it shows (GameEngine). `cued`: the

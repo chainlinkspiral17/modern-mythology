@@ -956,12 +956,12 @@
     },
     {
       "t": "narrate",
-      "text": "The crow, which had been on the roof, did not go with them. The crow landed, instead, on the traffic light above the gas-station exit. It sat there for a moment, shrugged its feathers, cocked its head at Natalie.",
+      "text": "[shot:insert crow]The crow, which had been on the roof, did not go with them. The crow landed, instead, on the traffic light above the gas-station exit. It sat there for a moment, shrugged its feathers, cocked its head at Natalie.",
       "voice": "assets/audio/voice/vol5_ch18_moon/175.ogg"
     },
     {
       "t": "narrate",
-      "text": "Then it took off, flying north.",
+      "text": "[shot:establish]Then it took off, flying north.",
       "voice": "assets/audio/voice/vol5_ch18_moon/176.ogg"
     },
     {
@@ -971,7 +971,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]The crow had come to deliver. The crow had delivered. The crow was going home.",
+      "text": "The crow had come to deliver. The crow had delivered. The crow was going home.",
       "voice": "assets/audio/voice/vol5_ch18_moon/178.ogg"
     },
     {

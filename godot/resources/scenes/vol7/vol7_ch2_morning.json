@@ -623,7 +623,7 @@
     },
     {
       "char": "kai",
-      "text": "She is the only person on this coast making decks that look like this. You are not going to find a better deck. I give you mate's rates because you have been coming in here since you were eleven.",
+      "text": "[shot:insert deckwall]She is the only person on this coast making decks that look like this. You are not going to find a better deck. I give you mate's rates because you have been coming in here since you were eleven.",
       "expr": "neutral",
       "t": "say",
       "voice": "assets/audio/voice/vol7_ch2_morning/108.mp3"

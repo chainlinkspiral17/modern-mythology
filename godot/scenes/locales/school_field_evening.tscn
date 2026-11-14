@@ -407,10 +407,11 @@ rotation = Vector3(0.00361989, -3.14159, 0)
 metadata/fov = 54.0
 
 ; insert: the scoreboard beyond the north end zone
+; (pass 380) re-aimed: 3 m from the panel it was four orange blocks; now the whole board on its posts, from the field
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.000, 4.617, -115.950)
-rotation = Vector3(0.4363, 0.0000, 0.0)
-metadata/fov = 44.0
+position = Vector3(5.000, 2.200, -104.000)
+rotation = Vector3(0.3347, 0.3278, 0.0)
+metadata/fov = 34.0
 
 ; insert: the home stands behind the home bench, the press box on top (draft 5: the stands moved east)
 [node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]

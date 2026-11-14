@@ -174,7 +174,7 @@
   },
   {
    "t": "narrate",
-   "text": "She lies on her back on the bed.",
+   "text": "[shot:insert bed]She lies on her back on the bed.",
    "voice": "assets/audio/voice/vol6_ch15_home/033.mp3"
   },
   {

@@ -200,7 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "She heard him leave. She heard the truck start. She heard the sound of the engine getting smaller until it was nothing.",
+      "text": "[shot:insert curtain]She heard him leave. She heard the truck start. She heard the sound of the engine getting smaller until it was nothing.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/038.mp3"
     },
     {
@@ -221,7 +221,7 @@
     {
       "t": "think",
       "char": "Graciela",
-      "text": "He is his father's son. And I could not stop his father either.",
+      "text": "[shot:insert altar]He is his father's son. And I could not stop his father either.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/042.mp3"
     },
     {

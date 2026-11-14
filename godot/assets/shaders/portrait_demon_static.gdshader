@@ -140,10 +140,25 @@ vec3 hsv2rgb(vec3 c) {
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 
+// (pass 380) The node's MODULATE, carried across. Every path below WRITES
+// COLOR, which threw away whatever the game had set on the portrait or on
+// anything above it: the 0.35 s fade in and out, the listener's dim, the
+// step back to 32 % while the camera holds on an object. A 3D portrait
+// has never faded — it popped in, popped out, and stood at full strength
+// over every insert ("portraits still just cutting out", 2026-11-08; "a
+// portrait card stood over the object", 2026-10-28). In fragment() COLOR
+// already has TEXTURE folded in, so the vertex colour is what to carry
+// (trip_sync.gdshader does the same).
+varying vec4 v_mod;
+
+void vertex() {
+    v_mod = COLOR;
+}
+
 void fragment() {
     // Master gate — strength=0 → pure pass-through.
     if (strength <= 0.001 && look <= 0.001) {
-        COLOR = texture(TEXTURE, UV);
+        COLOR = texture(TEXTURE, UV) * v_mod;
     } else if (strength <= 0.001) {
         // ── THE PAINTED HERO, draft 2 (2026-10-02): a watercolour, not a
         //    cartoon. The model from watercolor.gdshaderinc: wash regions,
@@ -232,7 +247,7 @@ void fragment() {
         vec3 outc = mix(runc, col, step(0.001, a) * clamp(a / max(outa, 1e-3), 0.0, 1.0));
         outa = max(outa, run);
         outa *= 1.0 - smoothstep(0.80, 1.0, UV.y) * look_fade * look;
-        COLOR = vec4(clamp(outc, 0.0, 1.0), outa);
+        COLOR = vec4(clamp(outc, 0.0, 1.0), outa) * v_mod;
     } else {
         float t_frame = floor(TIME * chaos_rate) / chaos_rate;
         float seed    = t_frame * 11.7;
@@ -353,6 +368,6 @@ void fragment() {
         float demon_weight = max(aberration_str, noise_str) * strength * 0.4;
         col *= mix(vec3(1.0), tint.rgb, demon_weight);
 
-        COLOR = vec4(col, a);
+        COLOR = vec4(col, a) * v_mod;
     }
 }

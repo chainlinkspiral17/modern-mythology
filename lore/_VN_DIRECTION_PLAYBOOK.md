@@ -323,6 +323,25 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-14 · a frame's name is not its picture: read what it frames, then read the frame (pass 380)
+- Before giving a line an unused insert, ask the aim gate what the marker
+  frames (`subject` of the part it resolves to) and read the builder's
+  comment for the line it was made for. "bag" was a paper bag from ch18,
+  not the duffel; "crow" in the Subaru set was the crow on the gas
+  station's light, a line played in another set; "five" was a
+  five-dollar bill; "hands" is the worn patch on a table.
+- Then render it. Of 28 cued, 3 were too dark to read and 3 framed the
+  wrong part of the right thing (a bed leg; a scoreboard from 3 m). A
+  cue to a murky frame is worse than no cue.
+- Do not cue a prop the text does not have (a sandwich on the table of a
+  man who has forgotten to eat) or one that contradicts it (a crow on
+  the roof for "on the dashboard"). List them; they are set notes.
+- An insert holds while the following lines keep naming its subject. When
+  the subject LEAVES in the text ("Then it took off"), cut back wide on
+  that line or it sits there for three more.
+- A figure in the centre slot is over the insert's object: it steps all
+  the way out; side figures step back to 32 %.
+
 ### 2026-11-14 · a group needs a middle; a child's line wants a child's lens (passes 377-378)
 - An `insert` of several people is judged like any insert: the nearest
   one's cluster must be on the axis. Four ladies spread over five metres
