@@ -331,7 +331,8 @@ def build_kitchen():
     make_cyl("Hand_Sink_Faucet", (-3.2, KN - 0.04, 1.00), 0.015, 0.10, steel, segments=6)
     make_box("Hand_Sink_Spout", (-3.2, KN - 0.10, 1.045), (0.025, 0.12, 0.02), steel)
     make_box("Hand_Sink_Soap", (-2.92, KN - 0.025, 1.02), (0.08, 0.05, 0.12), (0.90, 0.88, 0.84, 1.0))
-    make_box("Hand_Sink_Sign", (-3.62, KN - 0.006, 1.00), (0.18, 0.004, 0.12), (0.92, 0.92, 0.88, 1.0))
+    make_box("Hand_Sink_Sign", (-3.62, KN - 0.013, 1.00), (0.18, 0.004, 0.12), (0.92, 0.92, 0.88, 1.0))   # ON the FRP panel (pass 371: it lay inside its 1 cm)
+    make_box("Hand_Sink_Sign_Band", (-3.62, KN - 0.0155, 1.035), (0.16, 0.001, 0.03), (0.70, 0.16, 0.14, 1.0))
     # ── W end: the walk-in (door E, the milk crates beside it) ──
     make_box("WalkIn_Body", (-4.55, 7.45, 1.30), (1.70, 2.50, 2.60), (0.60, 0.62, 0.64, 1.0))
     make_box("WalkIn_Door", (-3.68, 7.05, 1.05), (0.06, 0.90, 2.10), steel)

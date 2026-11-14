@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · a floor on the HOST hid a whole class: sheets inside thin slabs (pass 371)
+
+- **What happened.** The Foxhole flyer "taped to the amp's grille" was a
+  4 mm box at y 5.835 inside a grille spanning 5.83..5.85. Every gate was
+  green for a month: `buried` took only hosts 8 cm thick or more; the
+  overlap pass skips parts under its depth floor; marker_aim found the
+  subject on axis; vantage_obstruction found nothing in FRONT of it (it
+  was inside the thing in front). The insert that cut to it showed an
+  amp.
+- **The rule.** When a check has a size floor, ask what lives under the
+  floor. Paper, labels, signs and decals are the thinnest parts in a set
+  and the ones the text points at. A thin part is placed by its FACE:
+  host face ± (its own half thickness + 1 mm), computed from the host's
+  box, never typed as a bare coordinate.
+- **Verify a widened gate both ways.** Feed it the old boxes (it must
+  fire) and the fixed ones (it must not) before trusting a zero.
+
 ### 2026-11-11 · part names are read by FOUR tools: say what the part is, and nothing else (passes 331 - 338)
 
 - **What happened, four times in a week.** A closet's leaves named `*_Door_*`

@@ -218,9 +218,11 @@ def build_moon_dressing():
                  (0.10, 0.06, 0.020),
                  (0.18, 0.16, 0.14, 1.0))
         # Cream label
+        # (pass 371) on the SPINE: the label lay flat between this cassette
+        # and the next ("labeled with broadcast dates" — unseen in a stack)
         make_box("MoonCassette_%d_Label" % ci,
-                 (cam_x + 0.20, cam_y + 0.10, counter_z + 0.025 + ci * 0.022),
-                 (0.09, 0.05, 0.0005),
+                 (cam_x + 0.20, cam_y + 0.10 - 0.0305, counter_z + 0.012 + ci * 0.022),
+                 (0.09, 0.001, 0.012),
                  (0.94, 0.90, 0.80, 1.0))
 
     # Notebook with sigil sketches (next to the camera)

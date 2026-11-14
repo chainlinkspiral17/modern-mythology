@@ -3835,6 +3835,58 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 371: details buried in thin slabs — the gate learns thin hosts; eight brought out.**
+- Pass 370's flyer had lain INSIDE its amp's grille since it was built.
+  prop_overlap's `buried` check only took hosts 8 cm thick or more, so a
+  sheet inside a 2 cm slab was nobody's finding. Hosts from 8 mm count
+  now (0.5 mm margin in a thin one). Run over all 169 builders it found
+  eight, all brought out:
+  - the Pit Stop kitchen's hand-wash sign, inside the 1 cm wall panel
+    (on it now, with its red band);
+  - Frog Knows Best: the calendar inside the west pegboard (on its face)
+    and the wall clock at the board's top edge, its lower half behind
+    it (on the wall above);
+  - the Static Drive-In's cassettes "labeled with broadcast dates": each
+    label lay flat between its cassette and the next (on the spines);
+  - Grunion Beach: the last footprint of the walk, under the wet sand
+    band's top.
+  The gate reads the old flyer and sign as buried and the fixed ones as
+  clear (checked on the recorded boxes); 0 across the repo.
+- NEXT: the same question for parts under buried()'s name filter
+  (BURY_DETAIL: posters, signs, labels, flyers ...): a cup inside a
+  shelf board is `pierces`' job; a part of ANY name wholly inside
+  another solid is still unlisted — count them before gating.
+
+**2026-11-13 · pass 370: three frames that needed light (or to exist) before their cut.**
+- From pass 367's "too dark to read" list, each fixed at the set, then
+  cued and read:
+  - **Nate's garage, the flyer** (vol 6 ch14 "with the order written on
+    the back of the flyer in Nate's handwriting"): the sheet had been
+    modelled INSIDE the amp's grille slab — 4 mm of paper at y 5.835 in a
+    grille spanning 5.83..5.85 — and had never been visible in any
+    frame. It is taped ON the grille now, with five ballpoint lines of
+    set order; the insert stands square to it (it was 62° off the
+    sheet's face).
+  - **Nate's driveway, the Civic** ("He gets in the Civic. He drives
+    home."): the insert stood 3 m off the car's unlit east flank — a
+    black slab. From the lawn on the street lamp's side: the lit flank,
+    the open bay and the house beyond.
+  - **The Dabney game room, the controllers** (vol 3 ch6 "Controllers
+    strewn about"): near-black pads on a dark carpet. Console grey with
+    a D-pad, the two at the couches' feet trailing cables to the decks
+    (the builder's comment said "their cables toward the decks"; there
+    were none); the screens' spill on the carpet; the insert looks down
+    from the left couch's edge with the pad clear of the text box.
+- LESSON (geometry audits): a thin sheet fully inside a thicker slab is
+  invisible to prop_overlap (both under the depth floor) and to the
+  marker gates (the subject is "on axis" and nothing stands in front of
+  it — it is inside the thing in front). Only the render shows it.
+  Candidate gate: a part whose box lies wholly inside another part's
+  box, neither named as its container.
+- Ratchet 133 → 130.
+- NEXT: the Tome alley's dumpster and the Altima's picnic table (both
+  night, both dark); a "buried part" audit per the lesson.
+
 **2026-11-13 · pass 369: a resume sees what play saw — a loaded save no longer reopens on an insert the scene had left.**
 - Found reading the thirteenth six (lake_house, vol 3 ch11): the frame
   for "I don't know what to say ... 'I'm sorry, I'm sorry'" was a white

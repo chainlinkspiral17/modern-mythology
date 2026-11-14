@@ -55,9 +55,9 @@
   "objects": 396
  },
  "caltech_dabney": {
-  "draw": 150,
-  "prims": 90280,
-  "objects": 320
+  "draw": 178,
+  "prims": 122616,
+  "objects": 348
  },
  "cape_perpetua_overlook": {
   "draw": 136,
@@ -184,9 +184,9 @@
   "draw": 1254
  },
  "grunion_beach": {
-  "draw": 200,
-  "prims": 22076,
-  "objects": 370
+  "draw": 202,
+  "prims": 22700,
+  "objects": 372
  },
  "hans_bakery_back_kitchen": {
   "draw": 104,
@@ -306,6 +306,11 @@
   "prims": 139636,
   "objects": 384
  },
+ "nate_garage": {
+  "draw": 174,
+  "prims": 48444,
+  "objects": 344
+ },
  "new_auburn_courtroom": {
   "draw": 186,
   "prims": 28756,
@@ -359,7 +364,7 @@
  },
  "pit_stop_interior": {
   "draw": 560,
-  "prims": 62860,
+  "prims": 62884,
   "objects": 730
  },
  "pit_stop_office": {
@@ -459,6 +464,11 @@
   "draw": 118,
   "prims": 5900,
   "objects": 288
+ },
+ "static_drive_in": {
+  "draw": 68,
+  "prims": 12004,
+  "objects": 238
  },
  "tideline_survey": {
   "draw": 106,

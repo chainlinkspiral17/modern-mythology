@@ -793,7 +793,12 @@ BURY_MOUNT = re.compile(r"hook|mount|bracket|anchor|screw|nail|bolt|_back\b|back
 
 def buried(boxes, true_boxes):
     out = []
-    hosts = [b for b in boxes if b[0] in true_boxes and min(b[2]) >= 0.04 and not BURY_HOSTNOT.search(b[0])]
+    # (pass 371) THIN hosts too. The floor was 8 cm (min half 0.04): the Foxhole
+    # flyer "taped to the amp's grille" lay inside the grille's 2 cm slab and was
+    # never seen; a hand-wash sign lay inside a 1 cm wall panel. A host from 8 mm
+    # thick counts; in a thin one the margin is 0.5 mm (a sheet in a slab has
+    # little room to be "well inside").
+    hosts = [b for b in boxes if b[0] in true_boxes and min(b[2]) >= 0.004 and not BURY_HOSTNOT.search(b[0])]
     for d in boxes:
         if d[0] not in true_boxes or not BURY_DETAIL.search(d[0]) or d[0].startswith("Wear_") \
                 or BURY_MOUNT.search(d[0]):
@@ -807,7 +812,8 @@ def buried(boxes, true_boxes):
             hc, hh = h[1], h[2]
             # inside by more than 2 mm on every side: a face-mounted part
             # (its back on the wall's face) is not buried
-            if all(hc[i] - hh[i] < dc[i] - dh[i] - 0.002 and hc[i] + hh[i] > dc[i] + dh[i] + 0.002 for i in range(3)):
+            m = 0.002 if min(hh) >= 0.04 else 0.0005
+            if all(hc[i] - hh[i] < dc[i] - dh[i] - m and hc[i] + hh[i] > dc[i] + dh[i] + m for i in range(3)):
                 out.append((min(dh), h[0], d[0], ["buried"]))
                 break
     return out

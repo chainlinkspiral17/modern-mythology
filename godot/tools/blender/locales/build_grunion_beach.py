@@ -382,7 +382,8 @@ def build_shore_2026_09():
         fy = 0.4 + t * 7.9
         if (fx + 1.0) ** 2 + (fy - 5.0) ** 2 < 0.9 ** 2:
             continue                     # (the bonfire burns on this stretch of the walk now)
-        make_box("Footprint_%d" % k, (fx, fy, 0.031), (0.11, 0.26, 0.004), FOOT)
+        # (pass 371) on the wet band (y 7.9..10.1, top 0.035) a print at 0.031 was under the sand
+        make_box("Footprint_%d" % k, (fx, fy, 0.038 if fy > 7.85 else 0.031), (0.11, 0.26, 0.004), FOOT)
     # the wrack line at the high-tide mark (y 7.3-7.8), ragged
     WRACK = (0.14, 0.15, 0.11, 1.0)
     for i in range(40):
