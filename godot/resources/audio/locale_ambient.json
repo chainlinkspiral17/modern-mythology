@@ -945,6 +945,10 @@
       "bed": "assets/audio/bgm/vol7_painting_room.wav",
       "gain": 0.82
     },
+    "salty_tome_arrive": {
+      "bed": "assets/audio/bgm/vol7_painting_room.wav",
+      "gain": 0.82
+    },
     "salty_tome_gather": {
       "bed": "assets/audio/bgm/vol7_painting_room.wav",
       "gain": 0.82

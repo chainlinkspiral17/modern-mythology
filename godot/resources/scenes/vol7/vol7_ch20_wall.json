@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:salty_tome_alley",
+      "src": "3d:salty_tome_arrive",
       "t": "bg"
     },
     {
@@ -143,7 +143,7 @@
       "t": "narrate"
     },
     {
-      "text": "Petra came out the back door of the bookstore with a coffee thermos and four mugs. She set the thermos on the asphalt by the dumpster. She came to the wall.",
+      "text": "[shot:insert thermos]Petra came out the back door of the bookstore with a coffee thermos and four mugs. She set the thermos on the asphalt by the dumpster. She came to the wall.",
       "t": "narrate"
     },
     {

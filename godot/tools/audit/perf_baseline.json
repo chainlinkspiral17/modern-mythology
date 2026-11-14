@@ -183,7 +183,9 @@
   "objects": 236
  },
  "graustark": {
-  "draw": 1254
+  "draw": 1254,
+  "prims": 538858,
+  "objects": 1424
  },
  "grunion_beach": {
   "draw": 202,
@@ -409,7 +411,7 @@
  },
  "salty_tome_interior": {
   "draw": 388,
-  "prims": 206376,
+  "prims": 206552,
   "objects": 558
  },
  "sam_bedroom": {

@@ -399,6 +399,23 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-14 · a lofted closed mesh is wound by its basis; measure the volume, don't reason about it (pass 377)
+- `human_sculpt` lofts a torso and a skull as rings round an axis from a
+  (side, forward) pair that the figure's `facing` picks. Which way the
+  quads face depends on that pair's handedness, and for every facing in
+  use they faced inward: 75 people across three sets were drawn by the
+  inner far side of their own chest and head. Nobody saw it as "inside
+  out" — it read as figures that were dark on the sunny side.
+- Do not fix this by swapping the index order in the loop (right for one
+  facing, wrong for a mirrored one). Finish every closed part through a
+  check: `_wound_outward(verts, faces)` sums the signed volume and
+  reverses the faces when it is negative. Use it for any new lofted or
+  capped mesh.
+- `winding_audit` reads the GLBs, so it is only as current as the last
+  rebuild, and its baseline had recorded these as normal for months. A
+  ceiling that only stops things getting worse is not a statement that
+  what is under it is right: `--list <set>` and read the names.
+
 ### 2026-11-14 · a crowd is one mesh a person, and its room is measured before it is called built (pass 375)
 - `_props.figures` makes a person from thirteen parts. Where few lamps
   reach (the Tome's alley) StaticMerge folds them at load; in a venue with

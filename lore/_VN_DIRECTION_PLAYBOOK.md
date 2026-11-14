@@ -323,6 +323,20 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-14 · a group needs a middle; a child's line wants a child's lens (passes 377-378)
+- An `insert` of several people is judged like any insert: the nearest
+  one's cluster must be on the axis. Four ladies spread over five metres
+  have no middle — stand them in one knot (within a metre and a half) and
+  aim at it. People named in a line stand TOGETHER in the set.
+- Vol 5 ch5 §I is told by a seven-year-old: the frames of the grown-ups
+  are from 1.15 to 1.2 m, looking up. Take the lens's height from who is
+  looking.
+- A face frame for someone who ENTERS looks at where they enter from (the
+  church's doors), not at the room behind the speaker: "Mr. Quentin Paul"
+  had been a parked car.
+- When every person in a stretch of lines is walking, the view of it has
+  their things and not them (the arrival at the wall).
+
 ### 2026-11-14 · look for the crowd the text names; change a view in place when the chapter already cuts there (pass 375)
 - A scan found the Foxhole: every line with crowd words ("a room of about
   a hundred and ten people") against the figures in that line's view. Run

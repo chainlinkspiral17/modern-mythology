@@ -5973,7 +5973,7 @@ def build_st_jude_sunday_2026_10():
     exhaust in the heat, two parked cars, the fellowship table on the
     lawn (cloth, the lemonade dispenser, the cup stack, cookies), the
     trash can on the sidewalk with a cup in it, the parish sign, a live
-    oak with moss, four parishioners in Sunday clothes.
+    oak with moss, thirteen parishioners in Sunday clothes (pass 377).
 
     Draft 2: heat shimmer (a post-process for `lunch`); the priest's
     figure at the door is the district hero — check its framing."""
@@ -6028,17 +6028,41 @@ def build_st_jude_sunday_2026_10():
              seed=oi + 3, squash=0.7)
     for mi, (mx, my) in enumerate(((-1.6, -1.4), (1.2, -1.8), (-2.4, 0.2), (2.4, 0.6))):
         _mb(f"StJude_Oak_Moss_{mi}", (-213.5 + mx, 180.5 + my, 3.9), (0.22, 0.10, 1.0), (0.56, 0.58, 0.48, 1.0))
-    # the small crowd leaving the service
-    # (2026-11-04, pass 292) the two women who stood at the lemonade table
-    # are 3 m up the lawn toward the steps: Maya's closeup is at that table,
-    # and a figure beside a portrait reads as a double.
-    for fi, (fx, fy, face, body, jacket, pants, hair) in enumerate((
-            (-192.4, 184.9, '-X', 'female_avg', (0.62, 0.30, 0.44, 1.0), (0.62, 0.30, 0.44, 1.0), (0.82, 0.72, 0.52, 1.0)),
-            (-196.9, 184.9, '+X', 'female_slim', (0.30, 0.42, 0.62, 1.0), (0.30, 0.42, 0.62, 1.0), (0.66, 0.62, 0.58, 1.0)),
-            (-203.9, 178.6, '+X', 'male_avg', (0.16, 0.16, 0.20, 1.0), (0.16, 0.16, 0.20, 1.0), (0.20, 0.16, 0.12, 1.0)),
-            (-209.8, 179.2, '+Y', 'male_heavy', (0.40, 0.36, 0.30, 1.0), (0.22, 0.22, 0.26, 1.0), (0.42, 0.40, 0.38, 1.0)))):
-        human_figure(f"StJude_Parishioner_{fi}", base_x=fx, base_y=fy, base_z=0.02, scale=1.0, facing=face,
+    # THE SMALL CROWD LEAVING THE SERVICE (pass 377; it was four people and
+    # none of them the ones the text names). "Daddy was talking to some men
+    # near the church steps" · "The ladies with tight smiles and too much
+    # hairspray" · "His eyes swept over the small crowd leaving the service"
+    # · "Mr. Paul stopped near Daddy. Clapped one of the other men on the
+    # shoulder". Thirteen: Daddy and three men in a knot west of the steps;
+    # four ladies on the lawn east of the portico (the two of pass 292 are
+    # still 3 m up the lawn from the lemonade table: Maya's closeup is at
+    # that table, and a figure beside a portrait reads as a double); the
+    # man under the oak; an old couple going west along the sidewalk; a
+    # mother and her boy coming down the lawn. Mr. Paul and Maya are the
+    # portraits. Names say who: `insert daddy` and `insert lady` find them.
+    dark_suit = (0.16, 0.16, 0.20, 1.0)
+    people = (
+        # the men at the steps
+        ("StJude_Daddy", -204.0, 178.8, '-X', 'male_avg', (0.30, 0.34, 0.44, 1.0), (0.22, 0.22, 0.26, 1.0), (0.20, 0.16, 0.12, 1.0)),
+        ("StJude_Man_0", -205.3, 178.7, '+X', 'male_avg', dark_suit, dark_suit, (0.20, 0.16, 0.12, 1.0)),
+        ("StJude_Man_1", -204.6, 179.7, '-Y', 'male_heavy', (0.46, 0.40, 0.32, 1.0), (0.30, 0.26, 0.22, 1.0), (0.52, 0.50, 0.48, 1.0)),
+        ("StJude_Man_2", -204.7, 177.9, '+Y', 'male_tall', (0.24, 0.30, 0.26, 1.0), (0.18, 0.18, 0.20, 1.0), (0.10, 0.09, 0.09, 1.0)),
+        ("StJude_Man_3", -209.8, 179.2, '+Y', 'male_heavy', (0.40, 0.36, 0.30, 1.0), (0.22, 0.22, 0.26, 1.0), (0.42, 0.40, 0.38, 1.0)),
+        # the ladies, one knot (a frame of four people spread over five metres has no middle)
+        ("StJude_Lady_0", -193.5, 184.5, '-X', 'female_avg', (0.62, 0.30, 0.44, 1.0), (0.62, 0.30, 0.44, 1.0), (0.82, 0.72, 0.52, 1.0)),
+        ("StJude_Lady_1", -195.9, 184.9, '+X', 'female_slim', (0.30, 0.42, 0.62, 1.0), (0.30, 0.42, 0.62, 1.0), (0.66, 0.62, 0.58, 1.0)),
+        ("StJude_Lady_2", -194.2, 185.0, '-Y', 'female_avg', (0.80, 0.74, 0.50, 1.0), (0.80, 0.74, 0.50, 1.0), (0.90, 0.86, 0.74, 1.0)),
+        ("StJude_Lady_3", -195.2, 184.3, '+X', 'elderly', (0.36, 0.52, 0.46, 1.0), (0.36, 0.52, 0.46, 1.0), (0.84, 0.84, 0.86, 1.0)),
+        # leaving
+        ("StJude_Couple_0", -207.6, 176.4, '-X', 'elderly', (0.34, 0.32, 0.30, 1.0), (0.24, 0.24, 0.26, 1.0), (0.80, 0.80, 0.80, 1.0)),
+        ("StJude_Couple_1", -208.5, 176.6, '-X', 'female_avg', (0.50, 0.30, 0.34, 1.0), (0.50, 0.30, 0.34, 1.0), (0.78, 0.76, 0.74, 1.0)),
+        ("StJude_Mother", -195.6, 179.0, '-Y', 'female_slim', (0.86, 0.80, 0.66, 1.0), (0.86, 0.80, 0.66, 1.0), (0.24, 0.16, 0.10, 1.0)),
+        ("StJude_Boy", -194.9, 178.8, '-Y', 'child', (0.86, 0.86, 0.84, 1.0), (0.20, 0.22, 0.30, 1.0), (0.24, 0.16, 0.10, 1.0)),
+    )
+    for fi, (nm, fx, fy, face, body, jacket, pants, hair) in enumerate(people):
+        human_figure(nm, base_x=fx, base_y=fy, base_z=0.02, scale=1.0, facing=face,
                      body_type=body, skin_color=(0.74, 0.58, 0.46, 1.0) if fi % 2 else (0.58, 0.42, 0.32, 1.0),
+                     hair_style='bowl' if 'Lady' in nm or nm in ('StJude_Couple_1', 'StJude_Mother') else 'short',
                      hair_color=hair, jacket_color=jacket, pants_color=pants, shoe_color=(0.12, 0.10, 0.09, 1.0))
 
 

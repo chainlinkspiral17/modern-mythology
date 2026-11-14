@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ladies with tight smiles and too much hairspray had patted her on the head and said aren't you a precious little thing in voices that meant something other than what the words said.",
+      "text": "[shot:insert lady]The ladies with tight smiles and too much hairspray had patted her on the head and said aren't you a precious little thing in voices that meant something other than what the words said.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/016.ogg"
     },
     {
@@ -125,7 +125,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder — a hard, deliberate sound, the sound of two pieces of wood being put together in a way that meant something.",
+      "text": "[shot:insert daddy]Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder — a hard, deliberate sound, the sound of two pieces of wood being put together in a way that meant something.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/024.ogg"
     },
     {
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Then he turned. Sharp. Strode toward a long black car idling by the curb. Moving like he owned the damn sidewalk and maybe the sky too.",
+      "text": "[shot:insert car]Then he turned. Sharp. Strode toward a long black car idling by the curb. Moving like he owned the damn sidewalk and maybe the sky too.",
       "voice": "assets/audio/voice/vol5_ch5_hierophant/030.mp3"
     },
     {

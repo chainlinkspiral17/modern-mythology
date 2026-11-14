@@ -54,6 +54,11 @@ const VIEW_GROUPS := {
 	"st_ab": ["salty_tome_leaving", "salty_tome_thinning"],
 	"st_abc": ["salty_tome_leaving", "salty_tome_thinning", "salty_tome_twelve"],
 	"st_bc": ["salty_tome_thinning", "salty_tome_twelve"],
+	# r 6:43 arrive (pass 378): the seven's things, before anyone else comes
+	"st_rgv": ["salty_tome_arrive", "salty_tome_gather", "salty_tome_vigil"],
+	"st_rgva": ["salty_tome_arrive", "salty_tome_gather", "salty_tome_vigil", "salty_tome_leaving"],
+	"st_rgvab": ["salty_tome_arrive", "salty_tome_gather", "salty_tome_vigil", "salty_tome_leaving", "salty_tome_thinning"],
+	"st_rgvabc": ["salty_tome_arrive", "salty_tome_gather", "salty_tome_vigil", "salty_tome_leaving", "salty_tome_thinning", "salty_tome_twelve"],
 	# vol 6 ch22, The Foxhole by the clock: k 5:45 sound check · s 9:00 the set · t 10:00 Chess's set
 	"fx_ks": ["foxhole_check", "foxhole_show"],
 	"fx_st": ["foxhole_show", "foxhole_after"],
@@ -334,7 +339,10 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/graustark.glb",
 		# St. Jude's Acadian Church from across its street on a Sunday (Hierophant §I): the black car idling at the curb, the steps, the fellowship table — 2026-10-05.
 		"camera_origin": Vector3(-194.50, 1.65, -168.60),
-		"camera_rotation": Vector3(0.273, 0.383, 0.0),
+		# (pass 377) tilted down from 0.273: the frame was the steeple and the
+		# sky, and "Daddy was talking to some men near the church steps" had
+		# the steps under the text box
+		"camera_rotation": Vector3(0.150, 0.383, 0.0),
 		"fov": 60.0,
 		# (pass 62) ch5 lunch on the dusk sky added to Graustark
 		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
@@ -3154,6 +3162,23 @@ const CAMERA_PRESETS := {
 		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
 			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
 			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"suppress_input": true,
+	},
+	"salty_tome_arrive": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 378) vol 7 ch20, 6:43: "The seven of them got out." The plain
+		# alley's vantage with ch20's things in it — the four bowls on the
+		# crate (the plain alley has ch21's, on the asphalt), the cedar, the
+		# notebook, Petra's thermos by the dumpster, the wagon and the trucks
+		# past the mouth. No figures: all seven are walking in these lines.
+		"camera_origin": Vector3(0.8, 1.60, -9.5),
+		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "View_W_Parked_Car_"],
 		"suppress_input": true,
 	},
 	"salty_tome_gather": {

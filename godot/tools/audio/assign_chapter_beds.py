@@ -185,6 +185,7 @@ PLACES = {
         "cabin_porch": "vol7_cabin_woodstove",   # Tem's porch (2026-10-08: was the Millers' Texas porch)
         "lena_apartment": "vol7_apartment_rain",
         "salty_tome_alley": "vol7_painting_room",
+        "salty_tome_arrive": "vol7_painting_room",      # (pass 378)
         "salty_tome_gather": "vol7_painting_room",      # (passes 373-374) the alley's last morning, by the clock
         "salty_tome_vigil": "vol7_painting_room",
         "salty_tome_leaving": "vol7_painting_room",

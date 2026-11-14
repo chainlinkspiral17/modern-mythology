@@ -916,3 +916,34 @@ metadata/fov = 50.0
 position = Vector3(-9.250, 1.700, 1.300)
 rotation = Vector3(-0.4889, -0.1732, 0.0)
 metadata/fov = 46.0
+
+; ══ THE ARRIVAL (pass 378, vol 7 ch20 6:43): the frames of `salty_tome_arrive` ══
+; the alley's pair
+[node name="shot_closeup_person__salty_tome_arrive" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.509, 1.975, -9.667)
+rotation = Vector3(-0.0700, 0.6736, 0.0)
+metadata/fov = 45.0
+
+; its reverse
+[node name="shot_closeup_person_b__salty_tome_arrive" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.196, 1.975, -9.667)
+rotation = Vector3(-0.0700, -0.6736, 0.0)
+metadata/fov = 45.0
+
+; "People started arriving at six fifty-six": from the entrance down the empty alley
+[node name="shot_establish_b__salty_tome_arrive" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.300, 1.620, -10.400)
+rotation = Vector3(0.0244, -1.4347, 0.0)
+metadata/fov = 58.0
+
+; "She took the four bowls out one at a time and arranged them on the crate in the order they had been at the bakery": the row of four (the plain alley's `bowls` are ch21's, on the asphalt three metres west)
+[node name="shot_insert_bowls__salty_tome_arrive" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 0.950, -10.900)
+rotation = Vector3(-0.6865, -0.0000, 0.0)
+metadata/fov = 38.0
+
+; "She set the thermos on the asphalt by the dumpster": the thermos and the four mugs
+[node name="shot_insert_thermos__salty_tome_arrive" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.000, -10.420)
+rotation = Vector3(-0.7509, -2.2143, 0.0)
+metadata/fov = 42.0

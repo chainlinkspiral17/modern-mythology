@@ -3835,6 +3835,64 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 378: the wall chapter's first 32 lines — 6:43, the seven's things in the alley.**
+- A sixth view, `salty_tome_arrive`, for vol7_ch20_wall from its first
+  line to "Margaret came at six fifty-nine" (the chapter's own first `bg`
+  node changes view; nothing is added). Those lines played on the plain
+  alley: ch21's bowls on the asphalt three metres from the crate while
+  "She took the four bowls out one at a time and arranged them on the
+  crate in the order they had been at the bakery"; no thermos when "She
+  set the thermos on the asphalt by the dumpster"; an empty street past
+  the mouth. Now: the FOUR bowls on the crate (Marit's in the row until
+  she lifts it), the cedar and the notebook, Petra's thermos and mugs,
+  the wagon and the trucks at the mouth. No figures: every one of the
+  seven is walking in these lines, and the portraits are the picture of
+  them. Its own closeup pair, the entrance wide, `insert bowls` (the row
+  on the crate) and `insert thermos` (new cue on Petra's line).
+- The STRIPPED gate of pass 374 did its job on the first new view: the
+  canvas bag's picture would have hung in it. One roster row.
+- NEXT: the seven themselves (six standing a little back from the wall
+  would be wrong for most of these lines — stage by the line, or leave
+  them the portraits); the things arrive by the line (the bowls are on
+  the crate three lines before Tem carries them to it).
+
+**2026-11-14 · pass 377: St. Jude's on a Sunday — the small crowd leaving the service (vol 5 ch5).**
+- §I of the Hierophant is seven-year-old Maya outside the church: "Daddy
+  was talking to some men near the church steps", "The ladies with tight
+  smiles and too much hairspray", "His eyes swept over the small crowd
+  leaving the service", "Mr. Paul stopped near Daddy. Clapped one of the
+  other men on the shoulder", "Strode toward a long black car idling by
+  the curb". Read by render: the establishing frame was the steeple and
+  the sky with the steps under the text box; the lawn had four
+  parishioners and none of the groups the text names; **"Mr. Quentin
+  Paul" cut to a red parked car** (the face frame looked away from the
+  church, down the street); the black car was never on screen.
+  - Thirteen people (the set's own figures): Daddy and three men in a knot
+    west of the steps, four ladies in a knot on the lawn (still 3 m up
+    from the lemonade table, pass 292's reason), the man under the oak, an
+    old couple going west along the sidewalk, a mother and her boy.
+  - The view tilts down from the steeple to the people. `closeup paul`
+    looks up the front walk at the steps, the portico and the dark of the
+    doors. New frames from a seven-year-old's height: `insert lady`,
+    `insert daddy`; and `insert car` for the black car and its exhaust.
+- **Every person from the second figure helper was inside-out.** The suite
+  stopped this pass on `winding_audit` (graustark 281 against 263): each
+  `human_sculpt` figure's torso and skull were closed meshes wound inward,
+  so the renderer drew the far inner faces of a chest and a head, lit from
+  behind. Nine new parishioners added eighteen. Fixed in the helper, not
+  in the count: `_wound_outward()` measures a closed mesh's signed volume
+  and reverses its faces when negative, whatever basis the figure's
+  facing picks. graustark 263 → 181, harmony_terrain 98 → 30,
+  new_orleans_office 1 → 0 (75 people turned right side out); baselines
+  lowered. What is left in graustark (181) and harmony_terrain (30) is
+  roofs, raised sidewalks and bridge approaches — owed.
+- Deck must REBUILD graustark, harmony_terrain, new_orleans_office.
+- NEXT: the ladies are four colours in a row (hats, handbags, one turned
+  to another); Daddy is told from the other men only by his coat; Mr.
+  Paul walks through an empty doorway (the portrait is him); heat shimmer
+  ("The heat shimmered off the asphalt like angry ghosts") is still not
+  drawn; the idling car's exhaust is one puff.
+
 **2026-11-14 · pass 376: the people the gates could not see — eight of them were inside walls.**
 - `human_sculpt.human_figure` (Graustark's street people and band, the
   parishioners at St. Jude, Harmony Creek's neighbours, the New Orleans

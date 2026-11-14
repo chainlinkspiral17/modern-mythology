@@ -53,6 +53,25 @@ import bpy
 
 # ── PRIMITIVES ─────────────────────────────────────────────────────
 
+def _wound_outward(verts, faces):
+    """(pass 378) A CLOSED mesh's faces, turned outward if they are not. The
+    torso and the skull are rings lofted round an axis: which way their
+    quads face depends on the handedness of the (side, forward) pair the
+    figure's `facing` picks, and for every facing in use it came out
+    inward — each person in Graustark and Harmony Creek was drawn by the
+    far inner faces of their own chest and head, lit from behind
+    (winding_audit: two inside-out meshes a figure). The signed volume says
+    which way a closed mesh is wound, whatever the basis."""
+    vol = 0.0
+    for f in faces:
+        x0, y0, z0 = verts[f[0]]
+        for i in range(1, len(f) - 1):
+            x1, y1, z1 = verts[f[i]]
+            x2, y2, z2 = verts[f[i + 1]]
+            vol += x0 * (y1 * z2 - z1 * y2) - y0 * (x1 * z2 - z1 * x2) + z0 * (x1 * y2 - y1 * x2)
+    return faces if vol >= 0.0 else [list(reversed(f)) for f in faces]
+
+
 def _finalize_mesh(name, verts, faces, color):
     mesh = bpy.data.meshes.new(name + "_mesh")
     mesh.from_pydata(verts, [], faces)
@@ -612,7 +631,7 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
         for k in range(segments):
             nk = (k + 1) % segments
             faces.append([bot_cap_center, nk, k])
-        _finalize_mesh(f"{name}_Torso", verts, faces, jacket_color)
+        _finalize_mesh(f"{name}_Torso", verts, _wound_outward(verts, faces), jacket_color)
 
         # ── CHEST CURVE · two soft bumps on the front of the upper
         # torso (pec area) so the chest reads as a chest rather
@@ -1014,7 +1033,7 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     for k in range(segments):
         nk = (k + 1) % segments
         skull_faces.append([chin_i, bot_base + nk, bot_base + k])
-    _finalize_mesh(f"{name}_Head_Skull", skull_verts, skull_faces,
+    _finalize_mesh(f"{name}_Head_Skull", skull_verts, _wound_outward(skull_verts, skull_faces),
                     skin_color)
 
     # ── HAIRLINE · darker thin band at the top of the forehead

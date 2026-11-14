@@ -773,11 +773,16 @@ def build_vigil_2026_11():
       to his van ... Greta was at the van's open back door arranging the
       empty brioche baskets in stacks."
 
-    FIVE VIEWS of the same alley, by the clock (the plain one stays the
+    SIX VIEWS of the same alley, by the clock (the plain one stays the
     empty alley of ch14/16/18). Each part says which views it is in with one
     letter per view; T() turns that into the part's tag — the view's id, or
     a VIEW GROUP (Background3D.VIEW_GROUPS, checked at the end of this
     function: a part of three views overran Blender's 63-character names):
+      r  salty_tome_arrive    ch20  6:43  "The seven of them got out": no figures (every one
+                                          of the seven is walking in these lines — the portraits);
+                                          the wagon and the trucks at the mouth, the FOUR bowls on
+                                          the crate "in the order they had been at the bakery",
+                                          the cedar, the notebook, Petra's thermos (pass 378)
       g  salty_tome_gather    ch20  6:59  sixteen at the wall, Petra among them
       v  salty_tome_vigil     ch20  7:15  thirty-six: the town behind them, Marit
                                           standing with her bowl, Marina at the crate
@@ -799,7 +804,7 @@ def build_vigil_2026_11():
     the crate beside the bowls"; ch21 has it "in Finn's coat pocket since
     Sunday afternoon". It is on the crate in g and v and gone from a on.
 
-    NEXT (draft 3): each leave-taking as its own state (Roy and Aud stand at
+    NEXT (draft 3): the seven in the first 32 lines (r has only their things); each leave-taking as its own state (Roy and Aud stand at
     the wall 40 lines after they drive off; the van stays after "They drove
     back to the bakery"); Marina kneeling with her hand ON the bowl; Per's
     arm round Cale; mugs in hands; hoods and umbrellas for the rain; Finn's
@@ -809,12 +814,12 @@ def build_vigil_2026_11():
     import _props.creatures as CRE
     import _props.vehicles as VEH
     from _props.geometry import make_blob
-    VIEW = {"g": "salty_tome_gather", "v": "salty_tome_vigil", "a": "salty_tome_leaving",
-            "b": "salty_tome_thinning", "c": "salty_tome_twelve"}
+    VIEW = {"r": "salty_tome_arrive", "g": "salty_tome_gather", "v": "salty_tome_vigil",
+            "a": "salty_tome_leaving", "b": "salty_tome_thinning", "c": "salty_tome_twelve"}
     used = set()
 
     def T(m):
-        m = "".join(ch for ch in "gvabc" if ch in m)
+        m = "".join(ch for ch in "rgvabc" if ch in m)
         used.add(m)
         return "__" + (VIEW[m] if len(m) == 1 else "st_" + m)
 
@@ -942,17 +947,18 @@ def build_vigil_2026_11():
         make_cyl(f"Ch20_Bowl_{nm}" + T(views), (cx, 11.675, 0.3425), 0.046, 0.045, col, segments=12)
         make_cyl(f"Ch20_Bowl_{nm}_Rim" + T(views), (cx, 11.675, 0.3665), 0.036, 0.004,
                  (col[0] * 0.78, col[1] * 0.78, col[2] * 0.78, 1.0), segments=12)
-    bowl("Grandfather", -1.745, cedar, "gva")
-    bowl("Substrate", -1.650, cedar_dk, "gvabc")
-    bowl("Roy", -1.460, walnut, "gv")
+    bowl("Grandfather", -1.745, cedar, "rgva")
+    bowl("Substrate", -1.650, cedar_dk, "rgvabc")
+    bowl("Marit", -1.555, cedar, "r")          # in the row until she lifts it at 7:10
+    bowl("Roy", -1.460, walnut, "rgv")
     make_blob("Ch21_Bowl_Wrapped" + T("bc"), (-1.745, 11.675, 0.362), 0.062, (0.84, 0.80, 0.70, 1.0), noise=0.10, seed=4, squash=0.70)
-    make_lathe("Ch20_Cedar_Bell" + T("gv"), (-1.60, 11.585, 0.32),
+    make_lathe("Ch20_Cedar_Bell" + T("rgv"), (-1.60, 11.585, 0.32),
                [(0.0, 0.0), (0.032, 0.0), (0.030, 0.018), (0.020, 0.048), (0.012, 0.064), (0.0, 0.070)], cedar, segments=12)
     # "He had Olaus's bowl in the canvas bag at his feet at the wall"
     make_box("Wall_Canvas_Bag" + T("ab"), (0.35, 11.64, 0.14), (0.34, 0.18, 0.28), (0.62, 0.58, 0.48, 1.0))
     make_box("Wall_Canvas_Bag_Strap" + T("ab"), (0.35, 11.64, 0.30), (0.04, 0.20, 0.04), (0.50, 0.46, 0.38, 1.0))
     # ── Petra's thermos and the four mugs, on the asphalt by the dumpster ──
-    tm = T("gvab")
+    tm = T("rgvab")
     make_cyl("Alley_Thermos" + tm, (1.22, 9.92, 0.14), 0.050, 0.28, (0.16, 0.30, 0.24, 1.0), segments=12)
     make_cyl("Alley_Thermos_Cap" + tm, (1.22, 9.92, 0.305), 0.042, 0.05, (0.70, 0.72, 0.74, 1.0), segments=12)
     make_box("Alley_Thermos_Handle" + tm, (1.282, 9.92, 0.17), (0.024, 0.026, 0.14), COL_BLACK)
@@ -976,7 +982,7 @@ def build_vigil_2026_11():
     # ── THE STREET PAST THE ENTRANCE (every crowd view; the views strip the street's two box
     #    cars). Noses north along the near curb: the wagon's tail at the alley's mouth. ──
     sx = -9.20
-    with _tagged("gvabc"):
+    with _tagged("rgvabc"):
         VEH.make_car("St_TruckA", sx, 18.6, 5.2, (0.52, 0.50, 0.46, 1.0), pickup=True, along="Y")
         VEH.make_car("St_Wagon", sx, 13.3, 4.4, (0.26, 0.34, 0.32, 1.0), hatch=True, along="Y")
         VEH.make_car("St_TruckB", sx, 7.9, 5.2, (0.16, 0.20, 0.30, 1.0), pickup=True, along="Y")

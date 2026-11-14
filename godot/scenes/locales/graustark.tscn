@@ -758,11 +758,11 @@ light_color = Color(0.78, 0.82, 0.92, 1)
 light_energy = 0.40
 shadow_enabled = false
 
-; ── the Hierophant (2026-10-05): St. Jude's on a Sunday, the park by the Old Armory
+; (pass 377) "Then he walked out of the church ... Mr. Quentin Paul": from the sidewalk up the front walk to the steps, the portico and the dark of the doors, the men at the left (it looked the other way, at a red parked car on the street)
 [node name="shot_closeup_paul__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-194.000, 1.300, -180.200)
-rotation = Vector3(-0.0702, -2.2565, 0.0)
-metadata/fov = 42.0
+position = Vector3(-198.600, 1.450, -176.600)
+rotation = Vector3(0.0350, 0.3081, 0.0)
+metadata/fov = 46.0
 
 ; closeup: Maya at the lemonade table, from the church side looking over its east end to the lawn (pass 292: from the east the parishioners stood in her frame; straight back, the church attendee did)
 [node name="shot_closeup_maya__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -862,3 +862,21 @@ metadata/fov = 35.0
 position = Vector3(-31.631, 0.415, 4.390)
 rotation = Vector3(-0.5236, 0.2398, 0.0)
 metadata/fov = 35.0
+
+; (pass 377) "Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder": the knot of men by the steps, from a seven-year-old's height
+[node name="shot_insert_daddy__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-201.900, 1.200, -177.200)
+rotation = Vector3(0.0173, 0.9828, 0.0)
+metadata/fov = 46.0
+
+; (pass 377) "The ladies with tight smiles and too much hairspray had patted her on the head": the four of them, looked up at
+[node name="shot_insert_lady__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-194.600, 1.150, -181.900)
+rotation = Vector3(0.0247, 0.1419, 0.0)
+metadata/fov = 54.0
+
+; (pass 377) "Strode toward a long black car idling by the curb": the black car and its exhaust, from the sidewalk
+[node name="shot_insert_car__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-201.600, 1.350, -176.600)
+rotation = Vector3(-0.1120, 2.1016, 0.0)
+metadata/fov = 44.0
