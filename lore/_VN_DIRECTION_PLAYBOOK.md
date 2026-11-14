@@ -323,6 +323,29 @@ stillness is the player's own camera.
 
 ## Recent lessons
 
+### 2026-11-14 · a crowd is a VIEW with its own frames, staged by the clock (pass 373)
+- When the text fills a place ("perhaps thirty-five people in the
+  alley"), build the people as a view of the set (`<set>_<state>`, parts
+  tagged for it) and switch with a `bg` node at the line. Check first
+  what is keyed to node indexes (trip beats, jumps, choices) — two
+  inserted nodes moved a trip beat.
+- The plain view's frames are authored for the empty place: a crowd view
+  takes its own closeup pair (over the heads, from a wall), its own wides
+  (pin them: `[shot:establish b]`, a bare `[shot:establish]` picks ONE
+  variant per chapter by hash), and its own inserts. Leave the ground in
+  front of the subject open — nobody stands with their back to the
+  picture — and put the lenses there.
+- Stage by the clock. A figure standing at the crate from the first line
+  of the view is there before the line that walks her down the alley. If
+  one view must cover the arrivals, leave out the person the lines are
+  still bringing in; her portrait is the picture of her.
+- A frame of forearms from the side reads as nothing. The object the
+  hands hold, or the place it left (the row on the crate with a gap), is
+  the frame.
+- Read EVERY cue of the chapter, not only the new ones: the pass found
+  the face's eyes cropped at the line where they open, a wall insert that
+  looked at the wrong wall, and a coffee cue on another coffee.
+
 ### 2026-11-13 · a resume must replay the director's STATE, not the last cue (pass 369)
 
 - **What happened.** `_fast_forward_to` remembered "the last [shot:] seen"

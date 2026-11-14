@@ -407,7 +407,7 @@ def build_alley_2026_08():
     for zi2, (r, col) in enumerate([(0.18, (0.78, 0.62, 0.50, 1.0)), (0.32, (0.80, 0.64, 0.52, 1.0)),
                                     (0.42, (0.82, 0.66, 0.54, 1.0)), (0.45, (0.82, 0.66, 0.54, 1.0)),
                                     (0.42, (0.80, 0.64, 0.52, 1.0)), (0.30, (0.78, 0.62, 0.50, 1.0))]):
-        make_box(f"Face_Band_{zi2}", (fx, AL_Y1-0.13, 2.30-zi2*0.18), (r*2.0, 0.02, 0.18), col)
+        make_box(f"Face_Tone_{zi2}", (fx, AL_Y1-0.13, 2.30-zi2*0.18), (r*2.0, 0.02, 0.18), col)
     for ei3, exo in enumerate([-0.18, 0.18]):
         make_box(f"Face_Eye_{ei3}", (fx+exo, AL_Y1-0.145, 2.12), (0.10, 0.015, 0.05),
                  (0.20, 0.22, 0.26, 1.0))
@@ -633,15 +633,34 @@ def build_alley_2026_09():
     from _props.creatures import make_crow
     cedar = (0.55, 0.38, 0.26, 1.0); cedar_dk = (0.44, 0.30, 0.20, 1.0)
     AL_Y1 = 12.0
-    # nebula ground + bands (inside the wall's paint depth), the patch in front
-    make_box("Nebula_Ground", (-0.8, AL_Y1 - 0.105, 1.85), (7.0, 0.010, 2.60), (0.13, 0.10, 0.26, 1.0))
-    make_box("Nebula_Band_Violet", (-3.2, AL_Y1 - 0.100, 2.30), (2.6, 0.008, 0.9), (0.34, 0.20, 0.46, 1.0))
-    make_box("Nebula_Band_Teal", (1.6, AL_Y1 - 0.100, 1.55), (2.4, 0.008, 1.0), (0.16, 0.38, 0.44, 1.0))
-    make_box("Nebula_Band_Rose", (-2.4, AL_Y1 - 0.098 - 0.0256, 1.10), (1.8, 0.006, 0.55), (0.62, 0.32, 0.42, 1.0))
-    make_box("Nebula_Star_Core", (2.2, AL_Y1 - 0.097 - 0.0261, 2.45), (0.34, 0.005, 0.34), (0.88, 0.84, 0.66, 1.0))
-    make_box("Substrate_Patch", (-0.8, AL_Y1 - 0.116, 1.85), (2.2, 0.006, 2.2), (0.06, 0.06, 0.07, 1.0))
+    # (pass 373) THE MURAL WAS INSIDE THE WALL. The brick's face is at
+    # AL_Y1 - 0.12; the ground stood 1.5 cm BEHIND it, the violet and teal
+    # bands 2 cm, the patch 1 mm — "the Starfish Nebula mural Lena had painted
+    # across two months in the spring of 2050" was bare brick with a rose
+    # block and a yellow square on it, in every alley frame since September.
+    # Layers, each proud of the one behind: ground (its back on the brick),
+    # the three bands, then the star and the patch; the face stands over all.
+    # Named Field / Sweep (they were Ground / Band): the camera gates skip
+    # parts called ground or band as terrain, so a frame of the mural read
+    # as a frame of bare wall. The face's planes are Face_Tone_* for the same.
+    make_box("Nebula_Field", (-0.8, AL_Y1 - 0.123, 1.85), (7.0, 0.006, 2.60), (0.13, 0.10, 0.26, 1.0))
+    make_box("Nebula_Sweep_Violet", (-3.2, AL_Y1 - 0.128, 2.30), (2.6, 0.004, 0.9), (0.34, 0.20, 0.46, 1.0))
+    make_box("Nebula_Sweep_Teal", (1.6, AL_Y1 - 0.128, 1.55), (2.4, 0.004, 1.0), (0.16, 0.38, 0.44, 1.0))
+    make_box("Nebula_Sweep_Rose", (-2.4, AL_Y1 - 0.128, 1.10), (1.8, 0.004, 0.55), (0.62, 0.32, 0.42, 1.0))
+    make_box("Nebula_Star_Core", (2.2, AL_Y1 - 0.132, 2.45), (0.34, 0.004, 0.34), (0.88, 0.84, 0.66, 1.0))
+    # THE PATCH: "The patch was the size of her torso, maybe slightly
+    # bigger"; "The substrate had eaten the paint and had not, in the eating,
+    # touched the brick" — bare brick in the mural (it was a 2.2 m black
+    # square), under the face in every view that has the face
+    make_box("Substrate_Patch", (-0.8, AL_Y1 - 0.132, 1.80), (0.60, 0.004, 0.80), (0.52, 0.35, 0.28, 1.0))
     # Lena's hand on the wall over the patch
-    make_box("Hand_Wall_Print", (-0.15, AL_Y1 - 0.121, 1.50), (0.09, 0.004, 0.11), (0.30, 0.28, 0.30, 1.0))
+    make_box("Hand_Wall_Print", (-0.70, AL_Y1 - 0.136, 1.62), (0.09, 0.004, 0.11), (0.36, 0.26, 0.24, 1.0))
+    # "She painted the curling of the hair in the bone black against the
+    # brick": the brick the face and its hair are painted on (the hair's
+    # dark sheets vanished into the nebula's dark ground once that showed).
+    # A `Face_` part: it goes with the face (the patch view, 1997) and under
+    # the face's picture.
+    make_box("Face_Hair_Brick", (-0.8, AL_Y1 - 0.135, 1.715), (1.60, 0.002, 1.93), (0.50, 0.33, 0.26, 1.0))
     # the milk crate at the foot of the wall + what is on it
     make_box("Wall_Crate", (-1.6, 11.55, 0.16), (0.35, 0.35, 0.32), (0.55, 0.45, 0.30, 1.0))
     make_cyl("Brush_Jar", (-1.70, 11.66, 0.375), 0.040, 0.11, (0.72, 0.76, 0.74, 0.6), segments=10)
@@ -728,6 +747,178 @@ def build_alley_2026_10():
     make_view("View_W", "W", -5.6, 10.5, kind="street", seed=5)
 
 
+def build_vigil_2026_11():
+    """THE VIGIL (pass 373, vol 7 ch20 "The Wall"). The volume's last
+    morning fills this alley and every frame of it was empty asphalt:
+
+      "People started arriving at six fifty-six. Petra came out the back
+      door of the bookstore with a coffee thermos and four mugs. She set
+      the thermos on the asphalt by the dumpster. ... Margaret came at six
+      fifty-nine with two co-op workers ... Aud put her hand on Roy's arm
+      ... Jameson came at seven-oh-three with Hannes. Wren came at
+      seven-oh-five with her mother"
+      "The town kept coming. By seven-fifteen the alley was — Tem
+      registered, standing back — full. Perhaps thirty people. Perhaps
+      more. ... The mechanic from old-Waldport. The woman who ran the
+      bakery ... Three teenagers from the consolidated middle school. Two
+      of the foundation's drone-tenders in wax canvas. Soren ... Bernie
+      Lund ... Frog Petersen"
+      "the perhaps thirty-five people in the alley"
+
+    Two views of the same alley, so the plain one stays the empty alley of
+    ch14/16/18:
+      salty_tome_gather  6:59 to 7:15 — the sixteen at the wall (parts
+                         tagged for both views), Petra among them
+      salty_tome_vigil   7:15 on — twenty more: the town behind them,
+                         Marit at the crate with her bowl, Marina beside
+                         it, Petra back at her door with her arms
+                         crossed, Greta's two baskets
+    and in both: the thermos and the four mugs by the dumpster; ON THE
+    CRATE the three bowls left in the bakery's order (Marit's place in the
+    row is empty: she holds hers "in both hands"), Finn's cedar bell-piece "at the center", the notebook;
+    the crow "on his shoulder" (the views strip the dumpster's crow, the
+    brush jar, the takeaway cup, the canvas bag and ch21's bowls on the
+    asphalt). The figures are _props.figures: backs, coats and heights —
+    the portraits are the faces. The half-circle in front of the face and
+    the crate is left open: nobody stands with their back to the picture.
+
+    NEXT (draft 2): ch21's "remaining twelve" and the leaving; Hans's van
+    and the trucks at the entrance, Tem's wagon; Marina kneeling with her
+    hand ON the bowl (she stoops); Per's arm round Cale; mugs in hands;
+    hoods and umbrellas for the rain; lines 0-32 still show ch21's bowls on
+    the asphalt (the bowls go on the crate at line 13)."""
+    import _props.figures as FIG
+    import _props.creatures as CRE
+    from _props.geometry import make_blob
+    GA, VI = "__salty_tome_gather", "__salty_tome_vigil"
+    GV = GA + VI
+
+    class _tagged:
+        """Every part a _props helper makes inside the block takes `tag`
+        (Background3D drops a tagged part in the views it does not name)."""
+        def __init__(self, tag):
+            self.tag, self.saved = tag, []
+
+        def __enter__(self):
+            for mod in (FIG, CRE):
+                for n in dir(mod):
+                    fn = getattr(mod, n)
+                    if n.startswith("make_") and callable(fn) and getattr(fn, "__module__", None) != mod.__name__:
+                        self.saved.append((mod, n, fn))
+                        setattr(mod, n, (lambda f, t: (lambda name, *a, **k: f(str(name) + t, *a, **k)))(fn, self.tag))
+            return self
+
+        def __exit__(self, *exc):
+            for mod, n, fn in self.saved:
+                setattr(mod, n, fn)
+            return False
+
+    def face(x, y, k=0.75):
+        # turned toward the face on the wall (heading 0 = +Y, the wall)
+        return math.atan2(-0.8 - x, 12.6 - y) * k
+
+    grey, white, brown, black = (0.60, 0.60, 0.60, 1.0), (0.86, 0.85, 0.82, 1.0), (0.24, 0.17, 0.12, 1.0), (0.10, 0.09, 0.09, 1.0)
+    blond, red = (0.66, 0.54, 0.32, 1.0), (0.48, 0.22, 0.12, 1.0)
+    skins = ((0.66, 0.52, 0.44, 1.0), (0.78, 0.64, 0.56, 1.0), (0.50, 0.36, 0.28, 1.0), (0.36, 0.25, 0.20, 1.0), (0.70, 0.56, 0.46, 1.0))
+    wax = (0.62, 0.52, 0.32, 1.0)
+    # ── the seven and the first arrivals, at the wall (both views) ──
+    early = (
+        ("Margaret", -4.30, 11.25, 1.66, (0.20, 0.36, 0.38, 1.0), grey, {}),
+        ("CoopA", -3.85, 11.22, 1.78, (0.34, 0.36, 0.24, 1.0), black, {}),
+        ("CoopB", -4.08, 10.72, 1.70, (0.50, 0.28, 0.18, 1.0), brown, {}),
+        ("Cale", -3.25, 11.25, 1.74, (0.20, 0.20, 0.22, 1.0), brown, {}),
+        ("Per", -2.80, 11.25, 1.84, (0.16, 0.20, 0.34, 1.0), blond, {}),
+        ("Lena", -2.15, 10.95, 1.68, (0.48, 0.48, 0.50, 1.0), black, {"arms": "folded"}),
+        ("Roy", 0.35, 11.25, 1.76, (0.42, 0.32, 0.22, 1.0), grey, {}),
+        ("Aud", 0.80, 11.22, 1.62, (0.18, 0.30, 0.24, 1.0), white, {}),
+        ("Finn", 1.30, 11.25, 1.80, (0.24, 0.28, 0.34, 1.0), brown, {}),
+        ("Kai", 1.80, 11.30, 1.75, (0.20, 0.32, 0.50, 1.0), black, {}),
+        ("Wren", 2.25, 11.45, 1.55, (0.78, 0.62, 0.20, 1.0), brown, {}),
+        ("WrenMom", 2.78, 11.02, 1.66, (0.42, 0.18, 0.22, 1.0), brown, {}),
+        ("Hans", 3.25, 11.30, 1.82, (0.76, 0.74, 0.70, 1.0), grey, {}),
+        ("Greta", 3.70, 11.28, 1.64, (0.52, 0.30, 0.30, 1.0), blond, {}),
+        ("Jameson", 4.20, 11.25, 1.80, (0.14, 0.14, 0.16, 1.0), black, {}),
+        ("Hannes", 4.65, 11.25, 1.72, (0.36, 0.42, 0.50, 1.0), brown, {}),
+    )
+    with _tagged(GV):
+        for i, (nm, x, y, h, coat, hair, kw) in enumerate(early):
+            FIG.make_standing_figure("Vg_" + nm, x, y, heading=face(x, y), h=h, coat=coat, hair=hair,
+                                     skin=skins[i % len(skins)], **kw)
+        # "Finn at the wall with the crow on his shoulder"
+        fx, fy, fh, fs = 1.30, 11.25, face(1.30, 11.25), 1.80 / 1.72
+        CRE.make_crow("Vg_FinnCrow", fx + 0.23 * fs * math.cos(fh), fy - 0.23 * fs * math.sin(fh), 1.37 * fs,
+                      facing=-1.0, scale=0.85)
+    with _tagged(GA):
+        # "Petra stood at the wall."
+        FIG.make_standing_figure("Vg_PetraW", -2.65, 10.72, heading=face(-2.65, 10.72), h=1.66,
+                                 coat=(0.42, 0.26, 0.36, 1.0), hair=grey)
+    # ── "She watched Marit at the milk crate with her bowl held in both hands" (the vigil: in the
+    #    gather she is still walking down the alley, and her portrait is the picture of her) ──
+    cedar = (0.55, 0.38, 0.26, 1.0); cedar_dk = (0.44, 0.30, 0.20, 1.0); walnut = (0.34, 0.23, 0.16, 1.0)
+    with _tagged(VI):
+        bx, by, bz = FIG.make_standing_figure("Vv_Marit", -1.60, 11.03, heading=face(-1.60, 11.03), h=1.58,
+                                              coat=(0.44, 0.38, 0.32, 1.0), hair=white, arms="front", stoop=0.10)
+    make_cyl("Vv_Marit_Bowl" + VI, (bx, by, bz + 0.03), 0.046, 0.045, cedar, segments=12)
+    make_cyl("Vv_Marit_Bowl_Rim" + VI, (bx, by, bz + 0.054), 0.036, 0.004, cedar_dk, segments=12)
+    # ── on the crate: the three bowls left, the cedar bell-piece, (Kai_Notebook stays) ──
+    for nm, cx, col in (("Grandfather", -1.745, cedar), ("Substrate", -1.650, cedar_dk), ("Roy", -1.460, walnut)):
+        make_cyl(f"Ch20_Bowl_{nm}" + GV, (cx, 11.675, 0.3425), 0.046, 0.045, col, segments=12)
+        make_cyl(f"Ch20_Bowl_{nm}_Rim" + GV, (cx, 11.675, 0.3665), 0.036, 0.004,
+                 (col[0] * 0.78, col[1] * 0.78, col[2] * 0.78, 1.0), segments=12)
+    make_lathe("Ch20_Cedar_Bell" + GV, (-1.60, 11.585, 0.32),
+               [(0.0, 0.0), (0.032, 0.0), (0.030, 0.018), (0.020, 0.048), (0.012, 0.064), (0.0, 0.070)], cedar, segments=12)
+    # ── Petra's thermos and the four mugs, on the asphalt by the dumpster ──
+    make_cyl("Alley_Thermos" + GV, (1.22, 9.92, 0.14), 0.050, 0.28, (0.16, 0.30, 0.24, 1.0), segments=12)
+    make_cyl("Alley_Thermos_Cap" + GV, (1.22, 9.92, 0.305), 0.042, 0.05, (0.70, 0.72, 0.74, 1.0), segments=12)
+    make_box("Alley_Thermos_Handle" + GV, (1.282, 9.92, 0.17), (0.024, 0.026, 0.14), COL_BLACK)
+    for k, (mx, my, col) in enumerate(((1.02, 9.80, (0.86, 0.84, 0.78, 1.0)), (1.14, 9.70, (0.30, 0.42, 0.56, 1.0)),
+                                       (1.34, 9.74, (0.86, 0.84, 0.78, 1.0)), (1.42, 9.90, (0.62, 0.34, 0.26, 1.0)))):
+        make_cyl(f"Alley_Mug_{k}" + GV, (mx, my, 0.045), 0.040, 0.09, col, segments=12)
+        make_box(f"Alley_Mug_{k}_Ear" + GV, (mx, my - 0.048, 0.045), (0.012, 0.022, 0.05), col)
+    # ── the vigil: the town behind them ──
+    crowd = (
+        ("Mechanic", -3.55, 10.45, 1.78, (0.22, 0.26, 0.34, 1.0), black, {"pants": (0.22, 0.26, 0.34, 1.0)}),
+        ("BakeryW", -3.05, 10.10, 1.62, (0.80, 0.76, 0.66, 1.0), red, {}),
+        ("Soren", -2.50, 10.22, 1.76, (0.30, 0.22, 0.16, 1.0), blond, {}),
+        ("Bernie", -1.88, 10.10, 1.74, (0.80, 0.66, 0.16, 1.0), grey, {}),
+        ("Frog", -1.28, 10.05, 1.68, (0.30, 0.36, 0.26, 1.0), white, {"stoop": 0.18}),
+        ("Teen1", -0.66, 10.10, 1.58, (0.62, 0.20, 0.20, 1.0), brown, {}),
+        ("Teen2", -0.14, 10.20, 1.63, (0.24, 0.24, 0.28, 1.0), black, {}),
+        ("Teen3", 0.22, 10.66, 1.52, (0.30, 0.50, 0.56, 1.0), blond, {}),
+        ("DroneA", -1.85, 9.52, 1.80, wax, brown, {}),
+        ("DroneB", -1.32, 9.60, 1.72, (0.56, 0.48, 0.30, 1.0), black, {}),
+        ("Row3A", -0.74, 9.50, 1.64, (0.36, 0.26, 0.44, 1.0), grey, {}),
+        ("Row3B", -0.18, 9.62, 1.78, (0.44, 0.44, 0.46, 1.0), brown, {}),
+        ("East1", 3.80, 10.45, 1.70, (0.26, 0.34, 0.30, 1.0), red, {}),
+        ("East2", 4.30, 10.20, 1.84, (0.18, 0.18, 0.20, 1.0), black, {}),
+        ("East3", 4.80, 10.50, 1.60, (0.60, 0.36, 0.28, 1.0), white, {}),
+        ("East4", 3.85, 9.72, 1.74, (0.34, 0.30, 0.40, 1.0), brown, {}),
+        ("East5", 4.40, 9.58, 1.66, (0.70, 0.68, 0.62, 1.0), grey, {}),
+    )
+    with _tagged(VI):
+        for i, (nm, x, y, h, coat, hair, kw) in enumerate(crowd):
+            FIG.make_standing_figure("Vv_" + nm, x, y, heading=face(x, y), h=h, coat=coat, hair=hair,
+                                     skin=skins[(i + 2) % len(skins)], **kw)
+        # "She came up to the wall. She put her hand on her grandfather's bowl."
+        FIG.make_standing_figure("Vv_Marina", -2.08, 11.55, heading=1.45, h=1.70, coat=(0.46, 0.16, 0.18, 1.0),
+                                 hair=black, arms="front", stoop=0.45)
+        # "Petra at the back door of the bookstore with her arms crossed against the morning cold"
+        FIG.make_standing_figure("Vv_PetraD", -3.30, 9.55, heading=0.80, h=1.66, coat=(0.42, 0.26, 0.36, 1.0),
+                                 hair=grey, arms="folded")
+    # ── "a basket of brioche Hans had baked yesterday and a basket of the morning's rye" ──
+    wicker = (0.62, 0.48, 0.28, 1.0); cloth = (0.90, 0.88, 0.82, 1.0)
+    make_cyl("Alley_Basket_Brioche" + VI, (1.10, 10.62, 0.37), 0.15, 0.10, wicker, segments=14)
+    make_box("Alley_Basket_Brioche_Cloth" + VI, (1.10, 10.62, 0.424), (0.22, 0.22, 0.008), cloth)
+    for k, (ox, oy) in enumerate(((-0.055, -0.05), (0.06, -0.04), (-0.05, 0.06), (0.055, 0.065))):
+        make_blob(f"Alley_Brioche_{k}" + VI, (1.10 + ox, 10.62 + oy, 0.462), 0.052, (0.80, 0.58, 0.26, 1.0),
+                  noise=0.06, seed=k + 3, squash=0.75)
+    make_cyl("Alley_Basket_Rye" + VI, (0.98, 10.16, 0.05), 0.16, 0.10, wicker, segments=14)
+    make_box("Alley_Basket_Rye_Cloth" + VI, (0.98, 10.16, 0.104), (0.24, 0.24, 0.008), cloth)
+    for k, (ox, oy) in enumerate(((-0.06, 0.0), (0.06, -0.03), (0.0, 0.07))):
+        make_blob(f"Alley_Rye_Loaf_{k}" + VI, (0.98 + ox, 10.16 + oy, 0.150), 0.060, (0.40, 0.27, 0.17, 1.0),
+                  noise=0.06, seed=k + 11, squash=0.70)
+
+
 def build_browsing_floor_2026_10():
     """THE BROWSING FLOOR (2026-10-21, the Deck: "poorly arranged"). The shop
     floor held one gondola and a band of bare boards between it and the N
@@ -791,6 +982,7 @@ def main():
     build_hero_props_2026_09()
     build_alley_2026_09()
     build_alley_2026_10()
+    build_vigil_2026_11()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")

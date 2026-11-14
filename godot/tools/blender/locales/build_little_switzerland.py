@@ -111,7 +111,7 @@ def build_village():
     for px in (-11.6, -9.8):
         make_box(f"Sign_Post_{px:.1f}", (px, 5.4, 1.15), (0.14, 0.14, 2.3), COL_TIMBER)
     make_box("Sign_Panel", (-10.7, 5.42, 2.05), (2.2, 0.08, 0.85), COL_SIGN)
-    make_box("Sign_Trim", (-10.7, 5.40, 2.05), (2.35, 0.06, 1.0), COL_SIGN_TRIM)
+    make_box("Sign_Trim", (-10.7, 5.425, 2.05), (2.35, 0.06, 1.0), COL_SIGN_TRIM)   # (pass 373) behind the panel's face (it stood in front of it: the sign was a blank board)
     make_box("Sign_Peak", (-10.7, 5.42, 2.70), (1.4, 0.10, 0.30), COL_ROOF)
     # Split-rail fence along the pull-off
     for i in range(8):

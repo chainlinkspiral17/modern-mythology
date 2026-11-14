@@ -216,6 +216,12 @@ posters, screens with no picture: `empty_frame_audit`).
   cues cut to another area of a shared set — a bathroom line to another room's mirror, an upstairs bedroom
   to the television a floor down) and ORPHAN MARKERS (pass 367: 223 authored insert frames no line cut to;
   39 now have their line, 186 remain under a ratchet).
+- **salty_tome_interior, the alley — pass 373 (2026-11-14), THE VIGIL, draft 1.** vol 7 ch20 fills the alley
+  with "perhaps thirty-five people" and played on empty asphalt: two crowd views (`salty_tome_gather`, sixteen
+  at the wall; `salty_tome_vigil`, thirty-six), each with its own frames. And the Starfish Nebula mural had
+  been built INSIDE the wall (it and its roster picture never showed): brought out. The same defect, found by
+  a new SUNK gate: the diner's five wall photographs, the Kowalski kitchen window from the yard, Little
+  Switzerland's sign, the flyer on Nate's amp. Draft 2 targets in the roadmap (ch21's leaving first).
 - **nightmare_cell — pass 353 (2026-11-12).** It read black; "The bulb in the cage stays on" — lit cold.
   tideline_survey and hospice_room read and hold.
 - Fifth six (by lines over parts): nightmare_cell ✔ → tideline_survey (read) → hospice_room (read) →

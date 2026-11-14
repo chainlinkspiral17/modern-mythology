@@ -211,7 +211,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert wall]The far end of the alley was the brick wall of the laundromat.",
+      "text": "[shot:insert laundromat]The far end of the alley was the brick wall of the laundromat.",
       "t": "narrate"
     },
     {

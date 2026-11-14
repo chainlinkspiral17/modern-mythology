@@ -138,7 +138,9 @@
   "objects": 268
  },
  "diner": {
-  "draw": 1248
+  "draw": 1262,
+  "prims": 76360,
+  "objects": 2130
  },
  "editing_suite": {
   "draw": 64,
@@ -243,6 +245,11 @@
   "prims": 7748,
   "objects": 312
  },
+ "kowalski_backyard": {
+  "draw": 180,
+  "prims": 16984,
+  "objects": 198
+ },
  "kowalski_kitchen": {
   "draw": 100,
   "prims": 52648,
@@ -272,6 +279,11 @@
   "draw": 94,
   "prims": 50444,
   "objects": 264
+ },
+ "little_switzerland": {
+  "draw": 70,
+  "prims": 9024,
+  "objects": 88
  },
  "maya_bedroom": {
   "draw": 158,
@@ -391,9 +403,9 @@
   "objects": 272
  },
  "salty_tome_interior": {
-  "draw": 290,
-  "prims": 151840,
-  "objects": 460
+  "draw": 386,
+  "prims": 186240,
+  "objects": 556
  },
  "sam_bedroom": {
   "draw": 118,

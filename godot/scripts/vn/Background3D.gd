@@ -3096,6 +3096,41 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
 		"suppress_input": true,
 	},
+	"salty_tome_gather": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 373) vol 7 ch20, 6:59 to 7:15: the alley's own vantage with
+		# the seventeen who are at the wall by then (parts tagged
+		# `__salty_tome_gather__salty_tome_vigil`), Petra's thermos and mugs
+		# by the dumpster, the bowls on the crate. Its frames are its own
+		# (`…__salty_tome_gather`): the plain alley's are authored for an
+		# empty alley.
+		"camera_origin": Vector3(0.8, 1.60, -9.5),
+		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow"],
+		"suppress_input": true,
+	},
+	"salty_tome_vigil": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 373) vol 7 ch20 from 7:15: "the alley was — Tem registered,
+		# standing back — full. Perhaps thirty people." Thirty-six figures.
+		# The vantage is Tem's: "She stood at the entrance of the alley with
+		# the wagon and watched" — from the entrance down the alley, over
+		# the town's backs to the face.
+		"camera_origin": Vector3(-5.15, 1.95, -9.75),
+		"camera_rotation": Vector3(-0.020, -1.174, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.45, 0.52, 1), "sky_horizon": Color(0.64, 0.67, 0.70, 1),
+			"ground_horizon": Color(0.36, 0.38, 0.40, 1), "ground_bottom": Color(0.16, 0.17, 0.18, 1),
+			"ambient_color": Color(0.70, 0.73, 0.78, 1), "ambient_energy": 0.85, "fog_color": Color(0.56, 0.60, 0.64, 1)},
+		"strip": ["Brush_Jar", "Paint_Brush", "Alley_Coffee_Cup", "Canvas_Bag", "Cedar_Bowl_", "Carved_Cedar", "Alley_Crow", "HP_Alley_Crow", "Alley_Glasses", "Alley_Newspaper"],
+		"suppress_input": true,
+	},
 	"hans_bakery_back_kitchen": {
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",

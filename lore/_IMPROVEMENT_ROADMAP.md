@@ -3835,6 +3835,99 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 373: THE VIGIL — the town stands in the alley for vol 7's last morning; the Starfish Nebula was inside the wall.**
+- Found reading vol7_ch20_wall line by line. The text fills the alley
+  ("People started arriving at six fifty-six ... By seven-fifteen the
+  alley was — Tem registered, standing back — full. Perhaps thirty people
+  ... the perhaps thirty-five people in the alley") and every one of its
+  137 lines played on empty asphalt.
+  - **Two new views of the same alley** (draft 1), so ch14/16/18 keep the
+    empty one: `salty_tome_gather` (6:59, sixteen at the wall, Petra among
+    them) and `salty_tome_vigil` (7:15, twenty more: the town behind them
+    in three rows, the mechanic, the bakery woman, three teenagers, two
+    drone-tenders in wax canvas, Soren, Bernie Lund, Frog Petersen; Marit
+    at the crate "with her bowl held in both hands", Marina stooped beside
+    it, Petra back at her door "with her arms crossed"). Figures are
+    `_props.figures` — coats, heights, hair, each turned toward the face;
+    the portraits stay the faces. The half-circle in front of the face and
+    the crate is left open.
+  - In both views: Petra's thermos and four mugs "on the asphalt by the
+    dumpster"; on the crate the three bowls left in the bakery's order
+    (Marit's place empty), the cedar bell-piece "at the center", the
+    notebook; Finn's crow "on his shoulder" (the crow model over a
+    stand-in). Vigil only: Greta's baskets of brioche and rye. The views
+    strip ch14's brush jar and cup, ch21's bowls on the asphalt, the
+    dumpster's crow.
+  - **Each view has its own frames** (the plain alley's are authored for an
+    empty alley): the vigil's vantage is Tem's, "at the entrance of the
+    alley with the wagon"; over-the-heads closeups from the store's wall;
+    three pinned wides (`establish b` toward the face, `c` from the
+    laundromat's end, `d` the entrance); the face, the crate, Marit with
+    her bowl (a level closeup: from above she read as coats), the mural
+    along its foot, the notebook, the baskets. The chapter
+    switches view at "Margaret came at six fifty-nine" and at "The town
+    kept coming" (two `bg` nodes; the trip beat two nodes on moved with
+    them). Marit's figure is the vigil's only: she walks down the alley
+    for ten lines of the gather, and standing at the crate from its first
+    line she was there before she arrived.
+  - Cues fixed while reading: "the face on the wall opened its eyes"
+    played on a frame that ended UNDER the eyes (`closeup face`,
+    `insert face` re-aimed, in every alley chapter); `insert wall`
+    looked SOUTH at the store's lamp-lit back wall (nine lines about the
+    mural wall on blank brick; ch14's laundromat line gets its own
+    `insert laundromat`); `insert coffee` on Marina's "one stop in Salem
+    for coffee" cut to the cup on the crate (removed).
+- **THE STARFISH NEBULA WAS INSIDE THE WALL.** The brick's face is 12 cm
+  off the wall's centre; the mural's ground was built 1.5 cm BEHIND it,
+  two of its bands 2 cm, the patch 1 mm — and the roster's picture of the
+  mural 6 mm. "The Starfish Nebula mural Lena had painted across two
+  months in the spring of 2050" has been bare brick with a rose block and
+  a yellow square since September, with or without the picture. Brought
+  out in layers (ground, sweeps, star and patch, then the face); the patch
+  is the text's ("the size of her torso"; "The substrate had eaten the
+  paint and had not ... touched the brick": bare brick, it was a 2.2 m
+  black square); the face's hair gets the brick it is painted "against".
+- **A new gate, SUNK** (hero_art_placement_audit): a wall-hung picture
+  whose own plane lies inside a solid that covers it. OFF-FACE passed
+  these (the stand-in was sunk the same way) and COVERED starts looking
+  1 cm out. It found, besides the mural: **the diner's five framed
+  photographs** (8 mm inside their frames' slabs), **the Kowalskis'
+  kitchen window from the yard** (the pane inside the frame), **Little
+  Switzerland's sign** (its trim stood in front of its panel: a blank
+  board), **the flyer on Nate's amp** (the row never followed pass 371's
+  move). All five fixed; the gate is at 0.
+- Two gates learn VIEWS: marker_aim judged a frame against every part of
+  the set, whatever view the part belongs to (the office's `closeup petra`
+  "aimed" at a mug that stands in the alley in two views); it reads only
+  the frame's own view now — and found that vol 2's `insert door` on "She
+  walked to the service porch ... unlocked the door" framed the FRONT
+  door (re-aimed at the service door; the cue on the bedroom door
+  upstairs, a shell, removed). furniture_grammar no longer reads a
+  turned figure's arm as poking through its waist (the recorder keeps
+  bounds, not the turn). The mural's parts are Field / Sweep / Tone (they
+  were Ground / Band, names the camera gates skip as terrain: a frame of
+  the mural read as a frame of bare wall, and passed or failed on the
+  median of five rays).
+- Read by render: all 25 cued lines of ch20 across four rounds, ch14's
+  wall, patch and laundromat lines, ch16's face, the farmhouse door, the
+  Kowalski yard, Little Switzerland's sign.
+- Deck must REBUILD salty_tome_interior, diner, kowalski_backyard,
+  little_switzerland.
+- DRAFT 2 targets (the vigil): ch21 opens on the same crowd ("The
+  thirty-five people had eaten and drunk"; "The remaining twelve
+  townspeople at the wall") and still plays on the empty alley; Hans's
+  van, the trucks and Tem's wagon at the entrance; Marina kneeling with
+  her hand ON the bowl; Per's arm round Cale, Aud's hand on Roy's arm;
+  mugs in hands; hoods and umbrellas (it is raining); ch20's first 32
+  lines still show ch21's bowls on the asphalt (they go on the crate at
+  line 13); the mural's other three patches and ch16's eaten "bottom-left
+  quadrant"; a frame of the diner's photo wall (no marker looks at it).
+- OPEN, for Andy: ch14 says of the face "The closed eyes were at the
+  height of her chest" and the hair "came down to about the height of her
+  waist"; the stand-in's eyes are at 2.1 m and the picture's centre at
+  1.6 m. Lower the face to the text's height, or is it right as it
+  stands? (The vigil's frames work at either.)
+
 **2026-11-14 · pass 372: the Gas & Go hand-off — the white van and its two men exist; cars are recorded as they stand.**
 - Found reading the fourteenth six (nexcorp_gas_go, vol 6 ch1). Lines
   12–16 are the chapter's event: "At 15:11, a white NexCorp Residential

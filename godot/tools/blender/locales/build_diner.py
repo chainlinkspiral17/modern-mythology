@@ -4239,9 +4239,11 @@ def build_wall_decor():
         make_box(f"WallPhoto_Frame_{i}",
                  (+4.93, fy, 2.40),
                  (0.04, 0.55, 0.42), COL_PHOTO_FRAME)
+        # (pass 373) proud of the frame's face (they shared it, and the
+        # roster's picture stood 8 mm inside the frame's slab: never seen)
         make_box(f"WallPhoto_Image_{i}",
-                 (+4.92, fy, 2.40),
-                 (0.02, 0.45, 0.34), COL_NAPKIN)
+                 (+4.906, fy, 2.40),
+                 (0.008, 0.45, 0.34), COL_NAPKIN)
     # Neon "OPEN" sign in the front window (south of front-door area —
     # still on south wall above galley, high enough to clear the hood)
     make_box("NeonOpenSign",

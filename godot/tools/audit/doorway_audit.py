@@ -41,8 +41,21 @@ THIN = 0.012
 CLEAR = 0.9
 
 
+def figure_prefixes(boxes):
+    """(pass 373) the stand-in PEOPLE of a set (_props.figures): a prefix that
+    has a head, a torso and a leg. A person at a door is using it — "Petra at
+    the back door of the bookstore with her arms crossed against the morning
+    cold" — and steps aside; furniture does not."""
+    names = [b[0].split("__")[0] for b in boxes]
+    heads = {n[:-len("_Head")] for n in names if n.endswith("_Head")}
+    torsos = {n[:-len("_Torso")] for n in names if n.endswith("_Torso")}
+    legs = {n[:-len("_Leg_L")] for n in names if n.endswith("_Leg_L")}
+    return heads & torsos & legs
+
+
 def audit(loc, boxes):
     out = []
+    people = figure_prefixes(boxes)
     for n, c, h in boxes:
         if not DOOR.search(n) or DOOR_PART.search(n):
             continue
@@ -107,6 +120,8 @@ def audit(loc, boxes):
                     continue
                 if max(h2) < 0.05 or (min(h2) < THIN and not re.search(r"glass|pane|screen|fence|gate|grille", n2, re.I)):
                     continue                       # small clutter, a sheet on the wall
+                if any(n2.startswith(pp + "_") for pp in people):
+                    continue                       # a person at the door (pass 373)
                 if all(c2[i] - h2[i] < zhi[i] - 0.01 and c2[i] + h2[i] > zlo[i] + 0.01 for i in range(3)):
                     if WALLISH.search(n2) and h2[2] > 0.8:
                         continue                   # the wall the door sits in

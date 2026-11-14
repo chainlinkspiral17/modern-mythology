@@ -93,7 +93,7 @@ def build_house_back():
     make_box("Slider_Glass_R", (-2.15, 0.09, 1.05), (0.85, 0.03, 1.95), COL_GLASS)
     # Kitchen window (east half), sill + two panes
     make_box("KWin_Frame", (2.4, 0.04, 1.55), (1.5, 0.10, 1.0), COL_TRIM)
-    make_box("KWin_Glass", (2.4, 0.07, 1.55), (1.35, 0.02, 0.88), COL_GLASS)
+    make_box("KWin_Glass", (2.4, 0.094, 1.55), (1.35, 0.008, 0.88), COL_GLASS)   # (pass 373) proud of the frame's yard face (it was inside the slab)
     make_box("KWin_Mullion", (2.4, 0.08, 1.55), (0.04, 0.02, 0.9), COL_TRIM)
     make_box("KWin_Sill", (2.4, 0.10, 1.02), (1.6, 0.14, 0.05), COL_TRIM)
     # Eave + gutter

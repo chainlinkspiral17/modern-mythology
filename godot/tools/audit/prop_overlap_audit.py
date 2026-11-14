@@ -718,6 +718,8 @@ BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "overlap_bas
 EXCLUSIVE = {
     # vol1 ch11's all-night drugstore: the lot is water in drugstore_purgatory
     "pharmacy": [("Purg_", "Out_", "drugstore_purgatory")],
+    # vol7 ch20: the bowls stand on the crate where ch14's brush jar stood (both crowd views strip it)
+    "salty_tome_interior": [("Ch20_", "Brush_Jar", "salty_tome_gather")],
 }
 
 

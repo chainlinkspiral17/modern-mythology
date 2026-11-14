@@ -17,6 +17,9 @@ vantage_obstruction_audit.boxes_for) and reports:
   FLOATING    no hide row and no surface right behind the quad covering it
   COVERED     another part of the set stands in front of the picture over
               more than 8 % of it, within 40 cm (a sign, a band, a shelf)
+  SUNK        (pass 373) the quad's own plane lies INSIDE a solid that covers
+              it, behind that solid's viewer-side face: the picture is drawn
+              behind the face of its wall or frame and is never seen
 
 A report, not yet a gate: each finding is read and fixed in the roster
 (the stand-in's own geometry is the truth) or the builder.
@@ -38,6 +41,8 @@ sys.path.insert(0, HERE)
 import vantage_obstruction_audit as VO  # noqa: E402
 
 FACE_TOL = 0.04
+LIFT = 0.002            # HeroArt.LIFT: the quad stands this far off its centre, toward the viewer
+SUNK_MIN = 0.001        # m · a solid's face this far in front of the quad's plane hides it
 COVER_DEPTH = 0.40
 COVER_FRAC = 0.08
 NONSOLID = re.compile(r"glow|light|beam\b|shaft|spray|mist|steam|smoke|dust|fog|haze|halo|wear_|stain|"
@@ -270,6 +275,28 @@ def check_row(slug, row, boxes, others_hidden=frozenset()):
         if not support and not hide and not is_view:
             out.append("FLOATING   %s: no surface behind the picture at %s" % (
                 slug, ", ".join("%.2f" % v for v in c)))
+    # (pass 373) SUNK. The Starfish Nebula's picture stood 6 mm behind the
+    # face of the alley's brick; the diner's five wall photographs 8 mm
+    # inside their frames' slabs; the Kowalskis' kitchen window inside its
+    # frame; a garage flyer inside an amp's grille. Every one passed OFF-FACE
+    # (the stand-in it replaces was sunk the same way) and COVERED (which
+    # starts looking 1 cm out). A wall-hung quad only: a picture lying on a
+    # table or a truck bed is the support audits' question.
+    if n != 2:
+        plane = c[n] + sg * LIFT
+        hid_names = {b[0] for b in hidden} | set(others_hidden)
+        for b in boxes:
+            if b[0] in hid_names or NONSOLID.search(b[0]) or GLASSY.search(b[0]) or WIRY.search(b[0]):
+                continue
+            bc, bh = b[1], b[2]
+            face_b, back_b = bc[n] + sg * bh[n], bc[n] - sg * bh[n]
+            if sg * (face_b - plane) <= SUNK_MIN or sg * (plane - back_b) <= 0.0:
+                continue
+            cov = _overlap_1d(q0[0], q0[1], bc[wa] - bh[wa], bc[wa] + bh[wa]) * \
+                  _overlap_1d(q1[0], q1[1], bc[ha] - bh[ha], bc[ha] + bh[ha])
+            if cov >= 0.9 * area:
+                out.append("SUNK       %s: %.0f mm behind the face of %s" % (slug, sg * (face_b - plane) * 1000.0, b[0]))
+                break
     # anything standing in front of the picture
     skip = {b[0] for b in hidden} | set(support) | set(others_hidden)
     covers = collections.Counter()

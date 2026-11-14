@@ -263,6 +263,42 @@ def best_subject(hits, pos, fwd):
     return best_name, cen, ang, dist
 
 
+_VIEWS = None
+
+
+def in_view(name, view):
+    """(pass 373) Is the part `name` in the view `view`? A part tagged
+    `__<preset>[__<preset>…]` exists only in those views, and a view's
+    `strip` prefixes leave it (Background3D). A marker's subject is a part
+    of ITS view: the office's `closeup petra` was judged against a mug
+    that stands in the alley only in the two crowd views of vol 7 ch20."""
+    global _VIEWS
+    if _VIEWS is None:
+        ids, strips = set(), {}
+        src = open(os.path.join(ROOT, "scripts", "vn", "Background3D.gd")).read()
+        for mm in re.finditer(r'\n\t"(\w+)": \{(.*?)\n\t\},', src, re.S):
+            ids.add(mm.group(1))
+            st = re.search(r'"strip":\s*\[([^\]]*)\]', mm.group(2))
+            if st:
+                strips[mm.group(1)] = [t.strip().strip('"') for t in st.group(1).split(",") if t.strip()]
+        _VIEWS = (ids, strips)
+    ids, strips = _VIEWS
+    owners = [p for p in name.split("__")[1:] if p in ids]
+    if owners and view not in owners:
+        return False
+    return not any(name.startswith(pf) for pf in strips.get(view, ()))
+
+
+def in_plain_view(name, marker, marker_names):
+    """A PLAIN marker serves every view of its scene that has no
+    `<marker>__<view>` of its own, so a part tagged for such a view can be
+    its subject (the stockroom's `smear` exists in the one view that cues
+    it); a part whose every view overrides the marker cannot."""
+    in_view("", "")
+    owners = [p for p in name.split("__")[1:] if p in _VIEWS[0]]
+    return not owners or any((marker + "__" + o) not in marker_names for o in owners)
+
+
 def angle_to(pos, fwd, target):
     dx = target[0] - pos[0]
     dy = target[1] - pos[1]
@@ -291,6 +327,7 @@ def main():
         geo = geometry_godot(locale)
         if not geo:
             continue
+        marker_names = {mk[0] for mk in markers}
         for name, pos, rot in markers:
             fwd = yxz_forward(*rot)
             m = re.match(r"shot_(insert|closeup)_(\w+)$", name)
@@ -300,6 +337,12 @@ def main():
                 # person frame; the subject is still "person"
                 cue_id = m.group(2).split("__")[0]
                 hits = matches_for(cue_id, geo)
+                # (pass 373) only the parts of this marker's view
+                if "__" in m.group(2):
+                    view = m.group(2).split("__", 1)[1]
+                    hits = [h for h in hits if in_view(h[0], view)]
+                else:
+                    hits = [h for h in hits if in_plain_view(h[0], name, marker_names)]
                 if m.group(1) == "closeup" and cue_id in PERSON_CUES:
                     # her things are not her (Lena_Phone_Screen)
                     hits = []

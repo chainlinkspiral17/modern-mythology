@@ -513,11 +513,13 @@ position = Vector3(4.778, 1.178, -7.030)
 rotation = Vector3(-0.2618, -1.5454, 0.0)
 metadata/fov = 35.0
 
-; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
+; (pass 373) "She walked to the service porch, pulled on a jacket and unlocked the door" / "She locked
+; the secondary service door": the SERVICE door, from the hall (the word pass had aimed it at the front
+; door, ajar — the wrong door, and off-centre once the gate judged it against this view's own parts)
 [node name="shot_insert_door__farm_living_night" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.000, 1.400, -2.600)
-rotation = Vector3(-0.1200, 3.1000, 0.0)
-metadata/fov = 46.0
+position = Vector3(3.400, 1.450, -2.000)
+rotation = Vector3(-0.1700, -1.5708, 0.0)
+metadata/fov = 42.0
 
 ; (2026-11-03) "painted what remained of the plaster": the painted plaster from a step back (1.1 m off)
 [node name="shot_insert_plaster__ranch_second_house" type="Marker3D" parent="." groups=["vn_shot"]]

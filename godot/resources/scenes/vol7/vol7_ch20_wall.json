@@ -135,7 +135,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert wall]The closed eyes were not, this morning, all the way closed. The eyes were open by what Tem could read at the wall as the smallest possible amount.",
+      "text": "[shot:closeup face]The closed eyes were not, this morning, all the way closed. The eyes were open by what Tem could read at the wall as the smallest possible amount.",
       "t": "narrate"
     },
     {
@@ -171,7 +171,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face]Margaret came at six fifty-nine with two co-op workers Tem recognized by face. Margaret nodded at Finn and at Tem and went and stood at the wall.",
+      "src": "3d:salty_tome_gather",
+      "t": "bg"
+    },
+    {
+      "text": "Margaret came at six fifty-nine with two co-op workers Tem recognized by face. Margaret nodded at Finn and at Tem and went and stood at the wall.",
       "t": "narrate"
     },
     {
@@ -183,7 +187,7 @@
       "t": "narrate"
     },
     {
-      "text": "Wren came at seven-oh-five with her mother — a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
+      "text": "[shot:insert face]Wren came at seven-oh-five with her mother — a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
       "t": "narrate"
     },
     {
@@ -300,7 +304,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]The town kept coming. By seven-fifteen the alley was — Tem registered, standing back — full. Perhaps thirty people. Perhaps more. Tem counted to twenty-eight and stopped.",
+      "src": "3d:salty_tome_vigil",
+      "t": "bg"
+    },
+    {
+      "text": "The town kept coming. By seven-fifteen the alley was — Tem registered, standing back — full. Perhaps thirty people. Perhaps more. Tem counted to twenty-eight and stopped.",
       "t": "narrate"
     },
     {
@@ -312,7 +320,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert coffee]Marina's wagon came up Hemlock at seven twenty-six. She had driven straight from the foundation's hotel at three forty-five with one stop in Salem for coffee. Four and a half hours in three forty-something.",
+      "text": "Marina's wagon came up Hemlock at seven twenty-six. She had driven straight from the foundation's hotel at three forty-five with one stop in Salem for coffee. Four and a half hours in three forty-something.",
       "t": "narrate"
     },
     {
@@ -404,7 +412,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]The mouth closed.",
+      "text": "[shot:closeup face]The mouth closed.",
       "t": "narrate"
     },
     {
@@ -416,7 +424,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]For a long count nobody in the alley said anything.",
+      "text": "[shot:establish b]For a long count nobody in the alley said anything.",
       "t": "narrate"
     },
     {
@@ -506,11 +514,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]The crowd in the alley did not, for a long count, leave. Petra brought out the coffee thermos and the four mugs.",
+      "text": "[shot:establish c]The crowd in the alley did not, for a long count, leave. Petra brought out the coffee thermos and the four mugs.",
       "t": "narrate"
     },
     {
-      "text": "Greta went up to Hans's van and brought back a basket of brioche Hans had baked yesterday and a basket of the morning's rye. The crowd ate.",
+      "text": "[shot:insert basket]Greta went up to Hans's van and brought back a basket of brioche Hans had baked yesterday and a basket of the morning's rye. The crowd ate.",
       "t": "narrate"
     },
     {
@@ -526,11 +534,11 @@
       "t": "hide"
     },
     {
-      "text": "Tem stood back from the wall. She stood at the entrance of the alley with the wagon and watched.",
+      "text": "[shot:establish d]Tem stood back from the wall. She stood at the entrance of the alley with the wagon and watched.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert crate]She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again.",
+      "text": "[shot:closeup marit]She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again.",
       "t": "narrate"
     },
     {
@@ -554,7 +562,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert wall]She watched the perhaps thirty-five people in the alley at the wall. She watched the substrate doing what the substrate had been doing.",
+      "text": "[shot:insert mural]She watched the perhaps thirty-five people in the alley at the wall. She watched the substrate doing what the substrate had been doing.",
       "t": "narrate"
     },
     {

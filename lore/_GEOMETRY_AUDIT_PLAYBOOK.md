@@ -158,6 +158,28 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · "on the wall" is a number: a stand-in sunk in its host takes its picture with it (pass 373)
+- The Starfish Nebula was built at `wall_centre - 0.105` on a wall whose
+  face is at `- 0.12`: 1.5 cm inside the brick. Nothing reported it for
+  ten weeks — `buried()` reads only parts NAMED like a detail (poster,
+  sign, print ...), the placement audit compared the picture with a
+  stand-in that was sunk the same way, and COVERED starts 1 cm out.
+- The check that found it asks the renderer's question: does the quad's
+  own plane lie inside a solid that covers it (SUNK). Five sets had one.
+  When a class turns up by reading a frame, scan every set for it before
+  fixing the one.
+- A part's NAME decides whether the camera gates can see it: IGNORE skips
+  `ground` and `band` as terrain. A mural made of `Nebula_Ground` and
+  `Nebula_Band_*` was invisible to them, so a frame of the mural was
+  judged as a frame of bare wall — and passed or failed on the median
+  distance of five rays. Name a painted plane for what it is (Field,
+  Sweep, Tone), never for a word the gates read as land.
+- A gate that reads names must read them PER VIEW: a part tagged
+  `__<view>` is not in the other views. marker_aim matched a mug in the
+  alley's crowd views as the subject of the office's `closeup petra`.
+- AABBs lie about turned things: a figure's arm "pokes through" its waist
+  at 45 degrees. Thirty-six figures each turned to the face found it.
+
 ### 2026-11-14 · a helper that knows its shape should tell the audits (pass 372)
 
 - **What happened.** `make_prism` is recorded as its bounding box. For a

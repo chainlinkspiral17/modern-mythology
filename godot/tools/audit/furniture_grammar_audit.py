@@ -296,6 +296,12 @@ def check_poke(boxes):
                     continue
                 if part_class(a[0]) == "back" and not re.search(r"(seat|cushion)$", b[0], re.I):
                     continue
+                # (pass 373) a figure's arm hangs BESIDE its waist. Turned off
+                # the axes, the two boxes' recorded bounds overlap in plan
+                # (the recorder keeps a part's bounds, not its turn): the
+                # vigil's crowd, each turned toward the face, "poked" 12 times
+                if part_class(a[0]) == "arm" and part_class(b[0]) in ("waist", "torso", "skirt"):
+                    continue
                 if ahi[2] > bhi[2] + POKE_TOL and alo[2] < blo[2] - POKE_TOL:
                     out.append((pre, a[0], b[0], ahi[2] - bhi[2]))
     return out
