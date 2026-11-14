@@ -141,12 +141,14 @@ def build_pool():
     make_blob("Foam_Mound_E", (1.8, 12.35, 0.22), 1.0, COL_FOAM,
               noise=0.2, seed=13, squash=0.4)
     # Mist: translucent blobs climbing the column base + a low bank
-    make_blob("Mist_Lo", (0.0, 12.2, 1.5), 2.0, COL_MIST,   # (short of the alcove's ledge camera at y 14.3)
-              noise=0.22, seed=21, squash=0.6)
-    make_blob("Mist_Hi", (0.4, 12.9, 3.4), 1.5, COL_MIST,
-              noise=0.24, seed=22, squash=0.7)
-    make_blob("Mist_Bank", (0.0, 11.2, 0.8), 3.0, COL_MIST,
-              noise=0.2, seed=23, squash=0.3)
+    # (pass 379) smooth-shaded: lit facet by facet the mist read as cut glass
+    from _props.geometry import shade_smooth
+    shade_smooth(make_blob("Mist_Lo", (0.0, 12.2, 1.5), 2.0, COL_MIST,   # (short of the alcove's ledge camera at y 14.3)
+                           noise=0.22, seed=21, squash=0.6))
+    shade_smooth(make_blob("Mist_Hi", (0.4, 12.9, 3.4), 1.5, COL_MIST,
+                           noise=0.24, seed=22, squash=0.7))
+    shade_smooth(make_blob("Mist_Bank", (0.0, 11.2, 0.8), 3.0, COL_MIST,
+                           noise=0.2, seed=23, squash=0.3))
 
 
 def build_foreground():

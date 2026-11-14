@@ -399,6 +399,25 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-11-14 · winding is settled at the export, once, for every closed shell (pass 379)
+- Do not reason about winding in a helper. `turn_closed_meshes_outward()`
+  (`_props.geometry`) runs before every export and before `join_prefix`:
+  each closed shell is made to agree with itself and then turned outward
+  by its signed volume. A new builder that exports on its own must call
+  it (see the eleven that do); the shared `export_glb` already does.
+- What it does not touch: open sheets, planes, anything with an edge used
+  once or three times. A wall quad or a ground plane is still wound by
+  whoever made it — face it at the camera.
+- Opt out with the custom property `inward` on the object, for a shell
+  that really is meant to be seen from inside. None exists today: rooms
+  are slabs, the sky is not a mesh, glass is drawn two-sided.
+- `_fix_winding(verts, faces, center)` is still there for open shapes. For
+  a closed one it is right only when `center` is inside every face's
+  plane — not for an L, an arch, a sagging tube or a fern.
+- A count held under a baseline had 841; the real number was 3,963. When a
+  gate says "N known, don't add more", list the N and read what the rule
+  that counts them cannot see.
+
 ### 2026-11-14 · a lofted closed mesh is wound by its basis; measure the volume, don't reason about it (pass 377)
 - `human_sculpt` lofts a torso and a skull as rings round an axis from a
   (side, forward) pair that the figure's `facing` picks. Which way the

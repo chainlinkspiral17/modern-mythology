@@ -31,9 +31,39 @@ class _VC(dict):
 class _Poly:
     def __init__(self, start, n, verts=()):
         self.loop_indices = range(start, start + n); self.vertices = tuple(verts); self.material_index = 0
+class _Co:
+    """A vertex's position, read and written in place (the diner turns its
+    clock hands by assigning v.co[1], v.co[2])."""
+    __slots__ = ("_l", "_i")
+    def __init__(self, l, i): self._l, self._i = l, i
+    def _set(self, k, v):
+        c = list(self._l[self._i]); c[k] = v; self._l[self._i] = tuple(c)
+    x = property(lambda s: s._l[s._i][0], lambda s, v: s._set(0, v))
+    y = property(lambda s: s._l[s._i][1], lambda s, v: s._set(1, v))
+    z = property(lambda s: s._l[s._i][2], lambda s, v: s._set(2, v))
+    def __getitem__(self, k): return self._l[self._i][k]
+    def __setitem__(self, k, v): self._set(k, v)
+    def __iter__(self): return iter(self._l[self._i])
+    def __len__(self): return 3
+class _Vert:
+    __slots__ = ("_l", "_i")
+    def __init__(self, l, i): self._l, self._i = l, i
+    @property
+    def co(self): return _Co(self._l, self._i)
+    @co.setter
+    def co(self, v): self._l[self._i] = tuple(v)
+class _Verts:
+    """mesh.vertices over the kit's own coordinate list — made on the way
+    past, not kept (a town is a million and a half of them). (pass 379: the
+    export's winding step reads positions, so the dry run has to carry them)"""
+    def __init__(self): self._co = []
+    def __len__(self): return len(self._co)
+    def __iter__(self): return (_Vert(self._co, i) for i in range(len(self._co)))
+    def __getitem__(self, i): return _Vert(self._co, i)
 class Mesh(_Any):
     def __init__(self, name):
         object.__setattr__(self, "name", name); object.__setattr__(self, "_loops", 0)
+        object.__setattr__(self, "vertices", _Verts())
         object.__setattr__(self, "polygons", []); object.__setattr__(self, "vertex_colors", _VC(self))
         object.__setattr__(self, "materials", []); object.__setattr__(self, "users", 0)
     def from_pydata(self, verts, edges, faces):
@@ -47,13 +77,21 @@ class Mesh(_Any):
                 STATS["bad"].append((self.name, "bad face %r (nv=%d)" % (list(f)[:6], nv))); break
             self.polygons.append(_Poly(start, len(f), f)); start += len(f)
         self._loops = start
+        if not self.vertices._co and all(len(v) == 3 for v in verts):
+            self.vertices._co = [tuple(v) for v in verts]
         STATS["meshes"] += 1; STATS["verts"] += nv; STATS["faces"] += len(faces)
     def update(self, *a, **k): pass
+    def as_pointer(self): return id(self)
 
 class _Obj(_Any):
     def __init__(self, name, data=None):
         object.__setattr__(self, "name", name); object.__setattr__(self, "data", data if data is not None else Mesh(name + "_mesh"))
         object.__setattr__(self, "users", 1)
+        # (pass 379) a mesh object says so, and has no custom properties: the
+        # export's winding step asks both, and under _Any every object was
+        # "not a mesh" and "marked inward" — the step would have run on nothing
+        object.__setattr__(self, "type", "MESH" if isinstance(self.data, Mesh) else "EMPTY")
+    def get(self, key, default=None): return default
 
 class _Coll(list):
     def new(self, name, data=None, *a, **k):

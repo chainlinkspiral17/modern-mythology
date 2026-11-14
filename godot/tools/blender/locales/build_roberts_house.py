@@ -986,6 +986,10 @@ def export_glb():
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, OUTPUT_NAME)
     # Select all
+    # (pass 379) every closed shell wound inward is turned outward at this
+    # last step: wheels, ferns, roofs, berms (see turn_closed_meshes_outward)
+    from _props.geometry import turn_closed_meshes_outward
+    turn_closed_meshes_outward()
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.export_scene.gltf(
         filepath=out_path,

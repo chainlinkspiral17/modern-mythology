@@ -518,9 +518,10 @@ def build_gorge_2026_10():
         make_box(f"Gorge_Stream_{i}", (gx, y, fl + 0.06), (min(3.0, hw), 4.2, 0.05), COL_WATER_SHELF)
     # the third stage's mist: "a slow soft column, and the column does not
     # move with the wind" — many soft overlapping puffs, straight up
+    from _props.geometry import shade_smooth    # (pass 379) mist has no facets
     for k in range(14):
-        make_blob(f"Falls_Mist_Column_{k}", (3.0 + 1.1 * math.sin(k * 1.7), 43.0 + 0.9 * math.cos(k * 1.3), -32.0 + k * 3.2),
-                  5.6 - 0.10 * k, (0.92, 0.92, 0.90, 0.07), noise=0.35, seed=560 + k, squash=1.1)
+        shade_smooth(make_blob(f"Falls_Mist_Column_{k}", (3.0 + 1.1 * math.sin(k * 1.7), 43.0 + 0.9 * math.cos(k * 1.3), -32.0 + k * 3.2),
+                               5.6 - 0.10 * k, (0.92, 0.92, 0.90, 0.07), noise=0.35, seed=560 + k, squash=1.1))
     # (round 2) ferns on the shelf's banks and the bluff's ledges, the spray
     # veil drifting off the column's face
     from _props.trees import make_fern

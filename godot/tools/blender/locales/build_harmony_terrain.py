@@ -2015,6 +2015,13 @@ def export_glb():
     out_path = os.path.join(out_dir, OUTPUT_NAME)
     print(f"\n[build_harmony_terrain] exporting to {out_path}")
     print(f"[build_harmony_terrain] scene objects: {len(bpy.context.scene.objects)}")
+    # (pass 379) every closed shell wound inward is turned outward at this
+    # last step: wheels, ferns, roofs, berms (see turn_closed_meshes_outward)
+    _bl = os.path.dirname(_SCRIPT_DIR)        # this builder imports no _props of its own
+    if _bl not in sys.path:
+        sys.path.insert(0, _bl)
+    from _props.geometry import turn_closed_meshes_outward
+    turn_closed_meshes_outward()
     bpy.ops.object.select_all(action='SELECT')
     base = {
         'filepath': out_path, 'export_format': 'GLB',

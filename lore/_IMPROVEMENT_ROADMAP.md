@@ -3835,6 +3835,65 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-14 · pass 379: parts drawn inside-out — 3,963 of them, in 117 of 169 sets.**
+- Pass 377's figures (torso and skull wound inward) were one case of a
+  class the winding gate had held under a baseline since pass 254: 841
+  closed meshes in 29 sets, each drawn by its far inner faces and lit from
+  behind. Reading the names: every car wheel and hub in Graustark and the
+  riverfront, the four church and house roofs and both water-tower roofs,
+  the forest berms round the cabin and 106 of its ferns, a river bank, the
+  crumpled barn's hill, the sea cave's riverbed, 68 window arches, the
+  diner's booth lamps and register keys, the Kwik Stop's crown moulding
+  and peg hooks, raised sidewalks in Harmony Creek, three car bodies.
+- They came from some two hundred call sites of helpers that decide a
+  face's side by a centre test (wrong for any shape whose centre lies
+  outside it) or by the handedness of an axis pair (wrong for half the
+  axes). Fixed once, at the last step, instead of helper by helper:
+  `_props.geometry.turn_closed_meshes_outward()` runs before every export
+  (the shared exporter and the eleven builders that export on their own)
+  and before `join_prefix`. A shell every edge of which is shared by
+  exactly two faces has an inside; its signed volume says which way it is
+  wound; a shell whose faces disagree with each other is first made to
+  agree. Open sheets and planes are not touched. Glass is drawn two-sided
+  (LocaleGlass), so domes and panes are unaffected.
+- **The gate was reading too little.** It asked for the whole mesh to be
+  closed and its total volume negative. That missed every shell with only
+  SOME faces inward (a turned chair leg with rings missing from outside:
+  2,804 parts in the 144 sets measured before their rebuild), every cone
+  (a collapsed tip read as an open edge), and an inward shell joined to a
+  larger outward one. `winding_audit` now reads per shell and keeps a
+  second count, "some faces inward". Both are 0 in all 169 sets and the
+  baseline is empty: any new one fails the suite.
+- All 169 sets rebuilt here (23 min); harmony_district and harmony_terrain
+  import no `_props` of their own and needed the path added.
+- Read by render (sixteen views across the sets that changed most): the
+  church roof, the barn's hill, the cabin's ferns, chair and table legs,
+  lamp shades all read as solids lit from outside; nothing went dim.
+- Found while reading those frames: **the cabin road's mist was two
+  boxes** — a glass crate across the road at 14 m. Now nine flattened
+  drifts (on the creek, between the trunks, up in the boughs) at half the
+  alpha, and `shade_smooth()` on mist blobs there and at both falls: lit
+  facet by facet, mist read as cut glass and the outline pass drew every
+  facet. Still geometry, still faintly lined where drifts overlap; the
+  cabin road's "Clearing_Glow" is a pale 5 m panel standing in the trees.
+- The dry-run gate stopped the suite: its stand-in `bpy` had no `bmesh`,
+  and under it every object was "not a mesh", so the new step would have
+  run on nothing. The stand-in now carries vertex positions (read and
+  written in place), says which objects are meshes, and has a small
+  `bmesh`; the dry run turns the same 31 parts in Finn's apartment that
+  Blender does. The step is the last thing before the export — an
+  exception there leaves no GLB on the Deck — and it is now exercised on
+  all 169 builders in 70 s.
+- Deck must REBUILD every set (the shared helper changed, so `--stale`
+  picks them all up; allow an hour or two).
+- NEXT: lamps whose light sits inside a shade that is now a solid from
+  outside — read the lamp-heavy rooms again (diner booths, Daily Grind,
+  the Chau house) for any that went dim; StaticMerge bakes a mirrored
+  part's transform without checking its handedness (not measured); the
+  five builders outside `locales/` (cathedral, workbench, dioramas,
+  figurines, atmosphere) export without the step and are not read by the
+  gate.
+
 **2026-11-14 · pass 378: the wall chapter's first 32 lines — 6:43, the seven's things in the alley.**
 - A sixth view, `salty_tome_arrive`, for vol7_ch20_wall from its first
   line to "Margaret came at six fifty-nine" (the chapter's own first `bg`

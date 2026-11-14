@@ -684,6 +684,10 @@ def export_glb():
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, OUTPUT_NAME)
     print(f"\n[build_nexcorp_gas_go] exporting to {out_path}")
+    # (pass 379) every closed shell wound inward is turned outward at this
+    # last step: wheels, ferns, roofs, berms (see turn_closed_meshes_outward)
+    from _props.geometry import turn_closed_meshes_outward
+    turn_closed_meshes_outward()
     try:    # one mesh per stocked fixture (2026-10-07, _props.geometry.join_stock)
         from _props.geometry import join_stock
         join_stock()

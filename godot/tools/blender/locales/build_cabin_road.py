@@ -52,7 +52,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 _LOC = os.path.dirname(os.path.abspath(__file__))
 if _LOC not in sys.path: sys.path.insert(0, _LOC)
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_rot_box, make_tube, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_rot_box, make_tube, export_glb, shade_smooth
 
 COL_ASPHALT = (0.24, 0.24, 0.25, 1.0)   # wet coastal asphalt
 COL_GRAVEL = (0.52, 0.48, 0.42, 1.0)
@@ -204,8 +204,26 @@ def build_forest():
 
 def build_atmosphere():
     """Coastal mist hanging in the stand + the clearing gap ahead."""
-    make_box("Mist_Low", (0.0, 14.0, 1.6), (12.0, 3.0, 1.6), COL_MIST)
-    make_box("Mist_High", (2.0, 18.0, 3.4), (10.0, 2.5, 2.0), COL_MIST)
+    # (pass 379) the mist was two boxes: a glass crate across the road at
+    # 14 m and another behind it, hard edges and all (read by render while
+    # checking the winding sweep). Mist has no edges: a low bank lying on
+    # the creek, drifts between the trunks either side, thin veils deeper
+    # in the stand ("The mist on the cedars", ch21) — flattened blobs at
+    # half the old alpha, so they add up only where they overlap.
+    mist = [  # (x, y, z, radius, squash, alpha)
+        (-0.5, 10.2, 0.55, 3.6, 0.16, 0.20),   # lying on the creek
+        (2.2, 11.0, 0.70, 2.8, 0.18, 0.18),
+        (-5.5, 13.5, 1.30, 3.4, 0.30, 0.18),   # between the trunks, west
+        (5.8, 14.5, 1.50, 3.6, 0.30, 0.18),    # east
+        (-1.0, 17.0, 1.10, 4.2, 0.22, 0.16),   # across the road, deeper
+        (3.0, 20.0, 2.40, 4.6, 0.30, 0.16),
+        (-6.5, 21.0, 3.20, 4.0, 0.34, 0.14),   # up in the boughs
+        (7.0, 23.0, 3.80, 4.4, 0.34, 0.14),
+        (0.5, 25.0, 2.00, 5.5, 0.30, 0.16),    # the far veil before the bend
+    ]
+    for k, (mx, my, mz, mr, msq, ma) in enumerate(mist):
+        shade_smooth(make_blob(f"Mist_{k}", (mx, my, mz), mr, COL_MIST[:3] + (ma,),
+                               noise=0.24, seed=40 + k, squash=msq, rings=6, segments=12))
     # The clearing gap — a lighter break in the treewall where the
     # road disappears toward the cabin
     make_box("Clearing_Glow", (4.5, 21.5, 2.6), (3.4, 0.3, 5.0), (0.78, 0.80, 0.74, 1.0))

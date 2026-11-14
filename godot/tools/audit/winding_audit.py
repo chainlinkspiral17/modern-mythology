@@ -9,10 +9,12 @@ far inner faces and lit from behind. This reads every GLB and, for each
 CLOSED mesh (every edge shared by exactly two triangles, positions welded),
 takes its signed volume: inside out is negative.
 
-Pass 254 fixed the helpers (4,309 -> 994); what is left is single faces in
-non-convex shapes that _fix_winding's centre test misjudges. Each set is held
-at or under winding_baseline.json; lower it with --write-baseline after a
-pass removes some, and never raise a count to pass.
+Pass 254 fixed the helpers (4,309 -> 994). Pass 379 turned the rest outward
+at the export (_props.geometry.turn_closed_meshes_outward) and made this read
+per shell, with a second count for shells whose faces disagree. Each set is
+held at or under winding_baseline.json; lower it with --write-baseline after
+a pass removes some, and never raise a count to pass. A new inward part means
+a builder exports without that step, or a GLB that was not rebuilt.
 
     python3 godot/tools/audit/winding_audit.py                    # gate
     python3 godot/tools/audit/winding_audit.py --list <set>       # the meshes
@@ -41,60 +43,123 @@ def _acc(j, b, bin_off, i):
     return [struct.unpack_from("<" + fmt * n, b, o + k * st) for k in range(a["count"])]
 
 
-def inside_out(path):
+def scan(path):
+    """(inside_out, mixed) for one GLB: the nodes with a closed shell wound
+    INWARD, and the nodes with a closed shell whose faces DISAGREE (some
+    wound inward: a turned leg with every other ring missing from outside).
+
+    (pass 379) Read per SHELL, not per mesh: positions are welded, faces
+    that share a welded vertex are one shell, and a shell is closed when
+    every edge of it is shared by exactly two triangles. Before this the
+    whole mesh had to be closed and its total volume negative, which missed
+    an inward shell joined to a larger outward one, any shell joined to an
+    open sheet, every cone (its collapsed tip left degenerate triangles
+    that read as open edges) and every shell with only SOME faces inward."""
     b = open(path, "rb").read()
     ln = struct.unpack("<I", b[12:16])[0]
     j = json.loads(b[20:20 + ln])
     bo = 20 + ln + 8
-    out = []
+    inward, mixed = [], []
     for n in j.get("nodes", []):
         if "mesh" not in n:
             continue
+        n_in = n_mix = False
         for pr in j["meshes"][n["mesh"]]["primitives"]:
             if "indices" not in pr or "POSITION" not in pr.get("attributes", {}):
                 continue
             P = _acc(j, b, bo, pr["attributes"]["POSITION"])
             I = [x[0] for x in _acc(j, b, bo, pr["indices"])]
-            key = {}
-            idx = [key.setdefault(tuple(round(c, 4) for c in P[i]), len(key)) for i in I]
-            edges = collections.Counter()
+            key, co = {}, []
+            idx = []
+            for i in I:
+                k = tuple(round(c, 4) for c in P[i])
+                w = key.get(k)
+                if w is None:
+                    w = key[k] = len(co)
+                    co.append(P[i])
+                idx.append(w)
+            parent = list(range(len(co)))
+
+            def find(x):
+                while parent[x] != x:
+                    parent[x] = parent[parent[x]]
+                    x = parent[x]
+                return x
+            tris = []
             for t in range(0, len(idx) - 2, 3):
                 a, c, d = idx[t:t + 3]
-                edges[(a, c) if a < c else (c, a)] += 1
-                edges[(c, d) if c < d else (d, c)] += 1
-                edges[(d, a) if d < a else (a, d)] += 1
-            if not edges or any(v != 2 for v in edges.values()):
-                continue
-            v = 0.0
-            for t in range(0, len(I) - 2, 3):
-                p, q, r = P[I[t]], P[I[t + 1]], P[I[t + 2]]
-                v += (p[0] * (q[1] * r[2] - q[2] * r[1]) - p[1] * (q[0] * r[2] - q[2] * r[0])
-                      + p[2] * (q[0] * r[1] - q[1] * r[0])) / 6.0
-            if v < -1e-6:
-                out.append(n.get("name", ""))
-    return out
+                if a == c or c == d or d == a:
+                    continue            # a collapsed corner: no face
+                tris.append((a, c, d))
+                ra, rc, rd = find(a), find(c), find(d)
+                parent[rc] = ra
+                parent[rd] = ra
+            shells = {}
+            for tr in tris:
+                shells.setdefault(find(tr[0]), []).append(tr)
+            for sh in shells.values():
+                if len(sh) < 4:
+                    continue
+                und = collections.Counter()
+                dirs = collections.Counter()
+                for a, c, d in sh:
+                    for u, v in ((a, c), (c, d), (d, a)):
+                        und[(u, v) if u < v else (v, u)] += 1
+                        dirs[(u, v)] += 1
+                if any(v != 2 for v in und.values()):
+                    continue            # open, or three faces on an edge
+                if any(v != 1 for v in dirs.values()):
+                    n_mix = True
+                    continue
+                v = 0.0
+                for a, c, d in sh:
+                    p, q, r = co[a], co[c], co[d]
+                    v += (p[0] * (q[1] * r[2] - q[2] * r[1]) - p[1] * (q[0] * r[2] - q[2] * r[0])
+                          + p[2] * (q[0] * r[1] - q[1] * r[0])) / 6.0
+                if v < -1e-8:
+                    n_in = True
+        if n_in:
+            inward.append(n.get("name", ""))
+        if n_mix:
+            mixed.append(n.get("name", ""))
+    return inward, mixed
+
+
+def inside_out(path):
+    return scan(path)[0]
 
 
 def main():
     args = sys.argv[1:]
     if "--list" in args:
         name = args[args.index("--list") + 1]
-        for m in inside_out(os.path.join(GLB, name + ".glb")):
+        inward, mixed = scan(os.path.join(GLB, name + ".glb"))
+        for m in inward:
             print(m)
+        for m in mixed:
+            print(m + "   (some faces inward)")
         return 0
-    counts = {}
+    counts, mixed = {}, {}
     for p in sorted(glob.glob(os.path.join(GLB, "*.glb"))):
-        counts[os.path.basename(p)[:-4]] = len(inside_out(p))
+        a, m = scan(p)
+        counts[os.path.basename(p)[:-4]] = len(a)
+        mixed[os.path.basename(p)[:-4]] = len(m)
     if "--write-baseline" in args:
-        json.dump({"_doc": "winding_audit.py: inside-out closed meshes per set; lower only",
-                   "counts": {k: v for k, v in sorted(counts.items()) if v}}, open(BASELINE, "w"), indent=1)
-        print("baseline written: %d inside-out across %d set(s)" % (sum(counts.values()), len(counts)))
+        json.dump({"_doc": "winding_audit.py: per set, closed shells wound inward (counts) and closed "
+                           "shells with some faces inward (mixed); lower only",
+                   "counts": {k: v for k, v in sorted(counts.items()) if v},
+                   "mixed": {k: v for k, v in sorted(mixed.items()) if v}}, open(BASELINE, "w"), indent=1)
+        print("baseline written: %d inside-out, %d mixed across %d set(s)"
+              % (sum(counts.values()), sum(mixed.values()), len(counts)))
         return 0
-    base = json.load(open(BASELINE)).get("counts", {}) if os.path.exists(BASELINE) else {}
-    bad = [(k, v, base.get(k, 0)) for k, v in counts.items() if v > base.get(k, 0)]
-    for k, v, b in bad:
-        print("REGRESSION  %-30s %d inside-out (baseline %d) · --list %s" % (k, v, b, k))
-    print("winding_audit · %d set(s) · %d inside-out closed mesh(es) · %d regression(s)" % (len(counts), sum(counts.values()), len(bad)))
+    doc = json.load(open(BASELINE)) if os.path.exists(BASELINE) else {}
+    base, mbase = doc.get("counts", {}), doc.get("mixed", {})
+    bad = [(k, v, base.get(k, 0), "inside-out") for k, v in counts.items() if v > base.get(k, 0)]
+    bad += [(k, v, mbase.get(k, 0), "with some faces inward") for k, v in mixed.items() if v > mbase.get(k, 0)]
+    for k, v, b, what in bad:
+        print("REGRESSION  %-30s %d %s (baseline %d) · --list %s" % (k, v, what, b, k))
+    print("winding_audit · %d set(s) · %d inside-out closed shell(s) · %d with some faces inward · %d regression(s)"
+          % (len(counts), sum(counts.values()), sum(mixed.values()), len(bad)))
     return 1 if bad else 0
 
 

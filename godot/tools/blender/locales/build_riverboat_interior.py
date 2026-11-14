@@ -1878,6 +1878,10 @@ def export_glb():
     print(f"[build_riverboat_interior] scene objects: "
           f"{len(bpy.context.scene.objects)}")
 
+    # (pass 379) every closed shell wound inward is turned outward at this
+    # last step: wheels, ferns, roofs, berms (see turn_closed_meshes_outward)
+    from _props.geometry import turn_closed_meshes_outward
+    turn_closed_meshes_outward()
     bpy.ops.object.select_all(action='SELECT')
     base = {
         'filepath': out_path, 'export_format': 'GLB',

@@ -166,6 +166,138 @@ def gltf_color_kwargs(op=None):
     return kw
 
 
+def _inward_faces(me):
+    """The polygons of mesh `me` to reverse so that every CLOSED shell in it
+    faces outward: a list of polygon indices ([] when nothing is wrong).
+    Shells that are open, share an edge with a third face, or cannot be
+    oriented are left exactly as built."""
+    key = {}
+    wid = [key.setdefault((round(v.co.x, 4), round(v.co.y, 4), round(v.co.z, 4)), len(key))
+           for v in me.vertices]
+    co = [None] * len(key)
+    for v, w in zip(me.vertices, wid):
+        co[w] = (v.co.x, v.co.y, v.co.z)
+    polys = []
+    for p in me.polygons:
+        loop = []
+        for vi in p.vertices:
+            w = wid[vi]
+            if not loop or loop[-1] != w:
+                loop.append(w)
+        if len(loop) > 1 and loop[0] == loop[-1]:
+            loop.pop()
+        polys.append(loop if len(loop) >= 3 else None)
+    edge_faces = {}
+    for fi, loop in enumerate(polys):
+        if loop is None:
+            continue
+        n = len(loop)
+        for i in range(n):
+            a, b = loop[i], loop[(i + 1) % n]
+            edge_faces.setdefault((a, b) if a < b else (b, a), []).append((fi, a < b))
+    adj = {}
+    open_faces = set()
+    for uses in edge_faces.values():
+        if len(uses) != 2:
+            open_faces.update(f for f, _d in uses)
+            for f, _d in uses:
+                adj.setdefault(f, [])
+            # an edge used once or three times still joins its faces into one
+            # shell (so the whole shell is left alone), without orienting them
+            for f, _d in uses[1:]:
+                adj[uses[0][0]].append((f, None))
+                adj[f].append((uses[0][0], None))
+            continue
+        (f1, d1), (f2, d2) = uses
+        adj.setdefault(f1, []).append((f2, d1 == d2))
+        adj.setdefault(f2, []).append((f1, d1 == d2))
+    flip = [False] * len(polys)
+    seen = [False] * len(polys)
+    out = []
+    for s in range(len(polys)):
+        if polys[s] is None or seen[s]:
+            continue
+        seen[s] = True
+        comp, stack, ok = [s], [s], True
+        while stack:
+            f = stack.pop()
+            for g, same in adj.get(f, ()):
+                want = flip[f] if same is None else (flip[f] != same)
+                if not seen[g]:
+                    seen[g] = True
+                    flip[g] = want
+                    comp.append(g)
+                    stack.append(g)
+                elif same is not None and flip[g] != want:
+                    ok = False          # a Moebius strip: not ours to judge
+        if not ok or any(f in open_faces for f in comp) or len(comp) < 4:
+            continue
+        vol = 0.0
+        for f in comp:
+            loop = polys[f][::-1] if flip[f] else polys[f]
+            x0, y0, z0 = co[loop[0]]
+            for i in range(1, len(loop) - 1):
+                x1, y1, z1 = co[loop[i]]
+                x2, y2, z2 = co[loop[i + 1]]
+                vol += x0 * (y1 * z2 - z1 * y2) - y0 * (x1 * z2 - z1 * x2) + z0 * (x1 * y2 - y1 * x2)
+        if abs(vol) < 1e-9:
+            continue                    # a folded sheet: no inside to speak of
+        inward = vol < 0.0
+        out.extend(f for f in comp if flip[f] != inward)
+    return out
+
+
+def turn_closed_meshes_outward(objs=None, quiet=False):
+    """(pass 379) Reverse the faces of every closed shell that is wound
+    INWARD, in every mesh object (or in `objs`). Call it before a join and
+    before the export.
+
+    winding_audit held 841 of these under a baseline for two weeks: wheels
+    and hubs along X, ferns, church and house roofs, forest berms, a river
+    bank, a hill, arches, door handles, lamp bulbs. Each came from a helper
+    that decides a face's side by a centre test (wrong for any shape whose
+    centre is outside it) or by the handedness of an axis pair (wrong for
+    half the axes). A part wound inward is drawn by its far inner faces and
+    lit from behind — it reads as a dark, hollow thing on the sunny side.
+
+    One rule, at the last step, instead of two hundred helpers: a shell
+    every edge of which is shared by exactly two faces has an inside, its
+    signed volume says which way it is wound, and nothing in these sets is
+    meant to be seen from its inside (rooms are built from slabs, the sky
+    is not a mesh). A shell whose faces disagree with each other is first
+    made to agree. Open sheets, planes and anything not orientable are not
+    touched. An object carrying the custom property `inward` is left alone.
+    Returns the number of mesh objects changed."""
+    if bpy is None:
+        return 0
+    import bmesh
+    done, names = set(), []
+    for o in (list(bpy.data.objects) if objs is None else list(objs)):
+        if o.type != 'MESH' or o.data is None or o.get("inward"):
+            continue
+        me = o.data
+        ptr = me.as_pointer()
+        if ptr in done or len(me.polygons) < 4:
+            continue
+        done.add(ptr)
+        turn = _inward_faces(me)
+        if not turn:
+            continue
+        bm = bmesh.new()
+        bm.from_mesh(me)
+        bm.faces.ensure_lookup_table()
+        for i in turn:
+            bm.faces[i].normal_flip()
+        bm.to_mesh(me)
+        bm.free()
+        me.update()
+        names.append(o.name)
+    if names and not quiet:
+        print(f"[props.winding] turned {len(names)} closed mesh(es) outward: "
+              + ", ".join(names[:400]))
+    return len(names)
+
+
 def join_stock(marker="_Stock_"):
     """Join every mesh whose name holds `marker` into ONE mesh per
     fixture (the name before the marker) — 2026-10-07: a stocked store
@@ -211,6 +343,7 @@ def join_prefix(prefix):
     objs = [o for o in bpy.data.objects if o.type == 'MESH' and o.name.startswith(prefix + "_")]
     if len(objs) < 2:
         return 0
+    turn_closed_meshes_outward(objs, quiet=True)    # a joined shell hides from the last step
     first = objs[0].name
     tag = first[first.index("__"):] if "__" in first else ""
     bpy.ops.object.select_all(action='DESELECT')
@@ -231,6 +364,7 @@ def export_glb(out_path, *, export_lights=False, export_cameras=False):
         return
     import os
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    turn_closed_meshes_outward()
     join_stock()
     bpy.ops.object.select_all(action='SELECT')
     base = {'filepath': out_path, 'export_format': 'GLB',
@@ -525,6 +659,20 @@ def make_blob(name, center, radius, base_color, noise=0.22, seed=0,
                               squash, noise, seed)
     return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
                           base_color)
+
+
+def shade_smooth(obj):
+    """(pass 379) Smooth-shade a part: the light runs across it without a
+    step at each facet. For MIST, steam and smoke only — a translucent blob
+    lit facet by facet reads as cut glass, and the outline pass draws every
+    facet's edge. Solid things keep their facets (they are the art scale).
+    Returns `obj`; does nothing under the audit stubs."""
+    me = getattr(obj, "data", None)
+    if me is None or not hasattr(me, "polygons"):
+        return obj
+    for p in me.polygons:
+        p.use_smooth = True
+    return obj
 
 
 def make_soft_box(name, center, size, base_color, yaw=0.0, *, round=0.3, puff=0.0,

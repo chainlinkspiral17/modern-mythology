@@ -158,6 +158,27 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-14 · a face gate reads per shell, and a baseline is a list to read, not a number to hold (pass 379)
+- `winding_audit` asked for the WHOLE mesh to be closed and its total
+  volume negative. Three blind spots, each large: a shell with only some
+  faces inward (2,804 parts — the total volume stays positive), a cone
+  (the collapsed tip's degenerate triangles read as open edges, so the
+  mesh was skipped), and an inward shell joined to a bigger outward one.
+  It now welds positions, splits each primitive into shells, drops
+  collapsed triangles, and reports two counts: wound inward, and "some
+  faces inward" (an edge both of whose triangles run it the same way).
+- Both counts are 0 everywhere and the baseline is empty. Keep it empty:
+  a new one means a builder exporting without
+  `turn_closed_meshes_outward()`, or a GLB that was not rebuilt.
+- The gate reads GLBs, so its answer is as old as the last rebuild. After
+  a helper change, rebuild every set before believing a zero.
+- A stand-in that answers anything hides code that asks. Under the dry
+  run's permissive `bpy`, `o.type != 'MESH'` was always true and
+  `o.get("inward")` always truthy: a step written against real objects
+  silently did nothing there. When a step reads objects, give the
+  stand-in real answers (`type`, `get`, `vertices`, `as_pointer`) and
+  check a count from it (`STATS["turned_meshes"]`).
+
 ### 2026-11-14 · anything built straight on bpy is invisible until the stubs record it (pass 376)
 - The recorders stand in for `_props` helpers. A module that makes meshes
   with `bpy.data.meshes.new` itself (human_sculpt) leaves nothing in
