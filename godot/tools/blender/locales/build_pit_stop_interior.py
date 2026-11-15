@@ -143,6 +143,19 @@ def _booth(tag, by, corner=False):
         # check folder Lydia leaves without being asked.
         make_cyl(f"Booth_{tag}_WaterGlass", (bx+0.35, by+0.20, 0.82), 0.04, 0.13, (0.80, 0.86, 0.88, 0.7), segments=8)
         make_box(f"Booth_{tag}_CheckFolder", (bx+0.30, by-0.22, 0.775), (0.16, 0.22, 0.015), (0.16, 0.16, 0.18, 1.0))
+        # (pass 390) the two coffees (vol 6 ch7: "Eileen orders the egg-white
+        # scramble and a coffee. Ben orders the short stack and a coffee";
+        # "Lydia arrives with the coffee … Lydia pours"; "She drinks her
+        # coffee"). There were none: that close-up looked across the room at
+        # the pots behind the pie case. A diner mug on a saucer at each bench
+        # (the top's surface is 0.765), Eileen's south. (Parts are named by
+        # BENCH: a person's name in a part name is read as that person by the
+        # close-up tools — shot_closeup_ben aimed at "…_Ben_Handle".)
+        for k, (who, cy_) in enumerate((("S", by - 0.18), ("N", by + 0.18))):
+            make_cyl(f"Booth_{tag}_Coffee_{who}_Saucer", (bx + 0.05, cy_, 0.769), 0.075, 0.008, (0.94, 0.92, 0.86, 1.0), segments=14)
+            make_cyl(f"Booth_{tag}_Coffee_{who}_Cup", (bx + 0.05, cy_, 0.813), 0.042, 0.08, (0.94, 0.92, 0.86, 1.0), segments=12)
+            make_cyl(f"Booth_{tag}_Coffee_{who}_Surface", (bx + 0.05, cy_, 0.8535), 0.036, 0.001, (0.22, 0.13, 0.08, 1.0), segments=12)
+            make_box(f"Booth_{tag}_Coffee_{who}_Handle", (bx + 0.05 + 0.050, cy_, 0.815), (0.016, 0.010, 0.045), (0.94, 0.92, 0.86, 1.0))
 
 
 def build_booths():

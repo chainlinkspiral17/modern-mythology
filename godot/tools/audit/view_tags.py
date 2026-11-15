@@ -10,6 +10,11 @@ belong to some of them only:
                                 stands for a list of views — a part of three
                                 views overran Blender's 63-character names)
   a view's `strip` prefixes     leave that view, tagged or not
+  a PARENT empty `<Name>__<view>` that a builder hangs every `<Prefix>*`
+                                object under (pass 390: the pharmacy's
+                                Purgatory dock, `Purg_*` under
+                                "Purgatory__drugstore_purgatory") — the
+                                prefix is in that empty's views
 
 Every gate that asks "is this part there?" asks here, so the engine's rule
 and the audits' are one rule:
@@ -27,7 +32,27 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GD = os.path.normpath(os.path.join(HERE, "..", "..", "scripts", "vn", "Background3D.gd"))
+LOCALES = os.path.normpath(os.path.join(HERE, "..", "blender", "locales"))
 _STATE = None
+_PARENTED = None
+
+
+def _parented():
+    """{prefix: tag string} for builders that parent every object named
+    `<prefix>…` to an empty named `<Name>__<tags>`: the empty's tags are the
+    parts' views (Background3D hides the empty, and its children with it)."""
+    global _PARENTED
+    if _PARENTED is None:
+        _PARENTED = {}
+        import glob as _g
+        for path in _g.glob(os.path.join(LOCALES, "build_*.py")):
+            src = open(path, encoding="utf-8").read()
+            for m in re.finditer(r'objects\.new\("(\w+?)__(\w+)",\s*None\)', src):
+                tail = src[m.end():m.end() + 600]
+                pm = re.search(r'name\.startswith\("(\w+)"\)', tail)
+                if pm:
+                    _PARENTED[pm.group(1)] = m.group(2)
+    return _PARENTED
 
 
 def _load():
@@ -77,7 +102,13 @@ def owners(name):
     carries no view tag (it is in every view of its set)."""
     ids, _strips, grp, _scene = _load()
     out = set()
-    for part in name.split("__")[1:]:
+    tags = name.split("__")[1:]
+    if not tags:
+        for pf, tg in _parented().items():
+            if name.startswith(pf):
+                tags = tg.split("__")
+                break
+    for part in tags:
         if part in ids:
             out.add(part)
         elif part in grp:

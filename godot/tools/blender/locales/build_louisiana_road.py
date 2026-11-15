@@ -71,16 +71,19 @@ def build_grass_and_swamp():
              (0.10, 0.15, 0.15, 1.0))
     # Near-road grass strips (the settlement block keeps its lawn)
     make_box("Grass_W", (-5.50, 6.0, 0.02), (4.60, 24.0, 0.04), COL_GRASS)
-    make_box("Grass_E", (+5.50, 6.0, 0.02), (4.60, 24.0, 0.04), COL_GRASS)
-    # Swamp water patches east
+    # (pass 390) the E strip ENDS where the swamp floor begins (x 6.0 - 6.3):
+    # 4.6 m wide it ran 1.5 m over the swamp pools, and their water and lily
+    # pads lay under the turf
+    make_box("Grass_E", (+4.75, 6.0, 0.02), (3.10, 24.0, 0.04), COL_GRASS)
+    # Swamp water patches east, on the swamp floor (its top is -0.002)
     for wi, (wx, wy) in enumerate([(7.5, 2.0), (8.5, 5.0), (7.5, 9.0), (8.0, 13.0)]):
-        make_cyl(f"SwampWater_{wi}", (wx, wy, 0.024), 1.20, 0.006, COL_SWAMP_WATER, segments=12)
-        # Lily pads
+        make_cyl(f"SwampWater_{wi}", (wx, wy, 0.001), 1.20, 0.006, COL_SWAMP_WATER, segments=12)
+        # Lily pads, on the water
         for li in range(3):
             ang = li * 2.094
             lx = wx + math.cos(ang) * 0.40
             ly = wy + math.sin(ang) * 0.40
-            make_cyl(f"Lily_{wi}_{li}", (lx, ly, 0.030), 0.20, 0.005, COL_LILY, segments=8)
+            make_cyl(f"Lily_{wi}_{li}", (lx, ly, 0.0065), 0.20, 0.005, COL_LILY, segments=8)
 
 
 def build_cypress_trees():

@@ -158,6 +158,22 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-11-15 · a part's view can come from its PARENT (pass 390)
+
+- **What happened:** buried_flat_audit held ten plank seams of the
+  pharmacy's Purgatory dock "inside" the parking lot. The dock exists
+  only in `drugstore_purgatory`, and that view strips the lot — but the
+  dock's parts carry no `__view` tag: the builder hangs every `Purg_*`
+  object under ONE empty named `Purgatory__drugstore_purgatory`, and
+  Background3D hides the empty (and its children) elsewhere.
+- **Fix:** `view_tags._parented()` reads builders for
+  `objects.new("<Name>__<views>", None)` followed by a
+  `name.startswith("<Prefix>")` loop; `owners()` gives an untagged part
+  with that prefix the empty's views. Every gate that asks "is this part
+  there?" now agrees with the engine for parented groups.
+- **Rule:** a finding on a part that "can't be there" in some view is a
+  view-tag question before it is a geometry one.
+
 ### 2026-11-15 · the thick half: a thing standing IN the top it stands on (passes 388 - 389)
 
 - **What happened:** the Kwik Stop's hot case stood 7 cm inside its

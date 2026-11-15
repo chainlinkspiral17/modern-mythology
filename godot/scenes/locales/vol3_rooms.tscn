@@ -625,7 +625,7 @@ script = ExtResource("14_dbgm")
 ; authored by text_focus_pass.py (2026-10-27): the line names it, the camera goes to it
 [node name="shot_insert_plate__pizza_party_window" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1501.415, 0.992, -1.708)
-rotation = Vector3(-0.2618, -0.5071, 0.0)
+rotation = Vector3(-0.0486, -0.6409, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_cameras__coast_bathroom" type="Marker3D" parent="." groups=["vn_shot"]]

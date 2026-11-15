@@ -683,7 +683,10 @@ def build_pizza():
                     make_chair(f"Party_Chair_{r}_{k}_{s:+d}{c:+d}", x0 + 2.4 + k * 2.6 + c * 0.6, y + s * 0.75,
                                yaw=(0.0 if s < 0 else math.pi), wood=(0.30, 0.24, 0.20, 1.0))
     for k in range(4):
-        make_box(f"Plate_Pile_{k}", (x0 + 1.8 + k * 2.2, 2.4 + (k % 2) * 2.8, 0.78), (0.26, 0.26, 0.08), (0.94, 0.94, 0.92, 1.0))
+        # (pass 390) at a table's END, clear of its two pizzas (±0.55, 0.44
+        # boxes): pile 0 stood in the middle of the first table's pizza
+        pk, pr = ((0, 0), (1, 1), (2, 0), (2, 1))[k]
+        make_box(f"Plate_Pile_{k}", (x0 + 2.4 + pk * 2.6 - 0.98, (2.4, 5.2)[pr], 0.78), (0.26, 0.26, 0.08), (0.94, 0.94, 0.92, 1.0))
         make_cyl(f"Party_Cup_{k}", (x0 + 2.2 + k * 2.2, 2.2 + (k % 2) * 2.8, 0.80), 0.04, 0.12, (0.86, 0.20, 0.20, 1.0), segments=8)
     make_box("Pizza_Box_Open", (x0 + 4.9, 5.2, 0.76), (0.40, 0.40, 0.03), (0.86, 0.80, 0.66, 1.0))
     make_box("Projection_Screen_Hang", (x0 + 6.0, 8.0 - 0.08 - 0.04, 1.6), (3.0, 0.02, 1.9), (0.94, 0.94, 0.92, 1.0))

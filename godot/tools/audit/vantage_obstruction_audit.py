@@ -517,7 +517,8 @@ def _half_known():
         import json as _j
         fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "half_hidden_baseline.json")
         try:
-            _HALF_KNOWN = set(_j.load(open(fp)).get("to_read", []))
+            _d = _j.load(open(fp))
+            _HALF_KNOWN = set(_d.get("to_read", [])) | set(_d.get("judged", {}))
         except (OSError, ValueError):
             _HALF_KNOWN = set()
     return _HALF_KNOWN

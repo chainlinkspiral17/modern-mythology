@@ -3835,6 +3835,48 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-11-15 · pass 390: the coffees at the corner booth; the half-hidden frames read; four buried sets closed.**
+- **The Pit Stop's corner booth had no coffee.** "Eileen orders the
+  egg-white scramble and a coffee. Ben orders the short stack and a
+  coffee"; "Lydia pours"; "She drinks her coffee" — that close-up looked
+  across the room at the pots behind the pie case (half behind it). Two
+  diner mugs on saucers now, one at each bench, and the close-up is
+  Eileen's mug with Ben's beyond it. (The mugs are named by BENCH: named
+  `…_Ben_…`, the close-up tools took a mug for Ben.)
+- **The half-hidden frames, read by render** (pass 387's list): the
+  Foxhole stage, the Galactus floor bars, the cabin blanket and both coat
+  frames read and are kept (`judged`, with the reason, in
+  `half_hidden_baseline.json`). Wrong, for pass 391: the jukebox is behind
+  the bar top ("blinking through its red eye" — only its marquee shows);
+  "He leans against the dumpster" frames no dumpster; "Jessa is at the
+  back office" frames the checkouts; "a flame-shape pressed into the wood
+  with a heated iron" frames the kettle on the stove (the line's subject
+  is the MARK on the bowl's base); the crow on Finn's dashboard is behind
+  his phone; the wagon "came up the road" is lost in the window.
+- **Buried flats 59 → 23** (Harmony Creek's shops only):
+  - The pharmacy's Purgatory dock (10) was a false reading: its parts hang
+    under an empty tagged for that one view, which strips the lot.
+    `view_tags` now reads a builder's tagged PARENT empty (the prefix it
+    takes), so every gate knows those parts are in that view only.
+  - The casino's serviced wheel (9): the bearing cage, bearings and
+    spindle of the service call lay ON the assembled wheel (inside its
+    brass). On the open felt now, the cage a ring the bearings sit in.
+  - Vol 3's party (4): a plate pile stood in the middle of a pizza; the
+    piles are at the tables' ends.
+  - Louisiana (4): the east grass strip ran 1.5 m over the swamp pools;
+    it ends at the swamp floor, the pools and pads lie on it.
+- Riverfront (9) is not a lift: **the August park was laid out as if
+  River Road's centre line (x −55) were its edge.** The bench, half the
+  bandstand and the jogging path stand in the road's east lane, the lawn
+  covers the east sidewalk. Wants the park moved into the real buffer
+  (5.8 m between the sidewalk and the lot curb) or the road narrowed
+  there — read the park view first.
+- Deck must REBUILD pit_stop_interior, le_roulant_casino, vol3_rooms,
+  louisiana_road.
+- NEXT: the six frames above; Harmony Creek's shops (a slab-aware floor
+  height for the shopkeepers, their stand discs and the interior dressing:
+  all sit at ground level under a 10 cm shop floor); the riverfront park.
+
 **2026-11-15 · pass 389: 42 things standing inside the furniture they stand on.**
 - The THICK half of pass 386's question, as a gate (`sunk_thing_audit`,
   below). Asked of every set: 42 loose things in 20 sets stood 1.5 - 6 cm

@@ -404,41 +404,47 @@ def build_wheel_wave2_props():
     rt_x = 0.0
     rt_y = +4.50              # the real table (was y 1.0 — carpet)
     felt_z = 0.86
+    # (pass 390) the parts on the felt stood ON the assembled wheel (its brass
+    # rim 0.85 - 0.91 at x -0.85): the bearings and cage lay inside it. They
+    # are on the open felt now, east of the wheel, over the betting layout
+    # (its squares' tops are 0.8625; the cloth lies on them).
+    sv_x = rt_x + 0.95
+    cloth_top = felt_z + 0.0075
     # A protective cloth (dark blue) on which the parts rest
     make_box("ServiceCloth_OnFelt",
-             (rt_x - 0.60, rt_y, felt_z + 0.01),
+             (sv_x - 0.60, rt_y, felt_z + 0.005),
              (0.90, 0.70, 0.005),
              (0.14, 0.20, 0.34, 1.0))
     # Bearing cage (a small ring)
-    make_cyl("Wheel_BearingCage",
-             (rt_x - 0.80, rt_y - 0.14, felt_z + 0.02),
-             0.14, 0.03,
-             (0.62, 0.62, 0.60, 1.0), segments=16, axis='Z')
+    # a RING (a disc lidded the bearings), on the cloth
+    from _props.geometry import make_lathe as _ring
+    _ring("Wheel_BearingCage", (sv_x - 0.80, rt_y - 0.14, cloth_top),
+          [(0.115, 0.0), (0.14, 0.0), (0.14, 0.03), (0.115, 0.03)], (0.62, 0.62, 0.60, 1.0), segments=20)
     # Bearings inside the cage (8 small spheres approximated as cyl)
     import math
     for bi in range(8):
         ang = bi * (2 * math.pi / 8)
-        bx = rt_x - 0.80 + math.cos(ang) * 0.10
-        by = rt_y - 0.14 + math.sin(ang) * 0.10
+        bx = sv_x - 0.80 + math.cos(ang) * 0.095
+        by = rt_y - 0.14 + math.sin(ang) * 0.095
         make_cyl("Wheel_Bearing_%d" % bi,
-                 (bx, by, felt_z + 0.03),
+                 (bx, by, cloth_top + 0.009),
                  0.018, 0.018,
                  (0.86, 0.86, 0.88, 1.0), segments=6, axis='Z')
 
     # Spindle in padded cradle (a shorter cylinder resting on cloth)
-    make_cyl("Wheel_Spindle_Body",
-             (rt_x - 0.30, rt_y - 0.08, felt_z + 0.03),
+    make_cyl("Wheel_Spindle_Body",            # on its cradle (its axis lies along y)
+             (sv_x - 0.30, rt_y - 0.08, cloth_top + 0.02 + 0.04),
              0.040, 0.30,
              (0.72, 0.72, 0.74, 1.0), segments=12, axis='Y')
     # Padded cradle underneath (a small V-shape)
     make_box("Wheel_Spindle_Cradle",
-             (rt_x - 0.30, rt_y - 0.08, felt_z + 0.014),
+             (sv_x - 0.30, rt_y - 0.08, cloth_top + 0.01),
              (0.30, 0.10, 0.02),
              (0.42, 0.30, 0.22, 1.0))
     # Hairline crack in the spindle housing (a fine dark line)
-    make_box("Wheel_Spindle_HairlineCrack",
-             (rt_x - 0.30, rt_y - 0.075, felt_z + 0.048),
-             (0.12, 0.001, 0.0005),
+    make_box("Wheel_Spindle_HairlineCrack",   # along the housing's top
+             (sv_x - 0.30, rt_y - 0.075, cloth_top + 0.02 + 0.08 + 0.00025),
+             (0.001, 0.12, 0.0005),
              (0.20, 0.14, 0.10, 1.0))
 
     # Terry's Gulf Coast Gaming service case (silver, marked)
